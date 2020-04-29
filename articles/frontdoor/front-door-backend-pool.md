@@ -1,6 +1,6 @@
 ---
-title: Back-ends en backendpools in Azure Front Door| Microsoft Documenten
-description: In dit artikel wordt beschreven welke backends en backendpools zich in frontdoorconfiguratie bevinden.
+title: Back-end-en back-end-Pools in azure front-deur | Microsoft Docs
+description: In dit artikel wordt beschreven welke back-end-en back-endservers zich in de voor deur bevinden.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -12,88 +12,88 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 18b165d83bfa154348842542bd8323a40330aa2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80293472"
 ---
-# <a name="backends-and-backend-pools-in-azure-front-door"></a>Back-ends en backend-zwembaden in Azure Front Door
-In dit artikel worden concepten beschreven over het toewijzen van uw app-implementatie met Azure Front Door. Het verklaart ook de verschillende termen in Front Door configuratie rond app backends.
+# <a name="backends-and-backend-pools-in-azure-front-door"></a>Back-end-en back-end-Pools in azure front-deur
+In dit artikel wordt beschreven hoe u de implementatie van uw app kunt toewijzen met behulp van de voor deur van Azure. Ook worden de verschillende termen in de voor deur configuratie van de back-end van apps uitgelegd.
 
 ## <a name="backends"></a>Back-ends
-Een back-end is gelijk aan de implementatie-instantie van een app in een regio. Front Door ondersteunt zowel Azure- als niet-Azure-backends, zodat de regio niet alleen beperkt is tot Azure-regio's. Het kan ook uw on-premises datacenter of een app-exemplaar in een andere cloud zijn.
+Een back-end is gelijk aan het implementatie-exemplaar van een app in een regio. De voor deur ondersteunt zowel Azure-als niet-Azure-back-ends, waardoor de regio niet alleen is beperkt tot Azure-regio's. Het kan ook uw on-premises Data Center of een app-exemplaar in een andere cloud zijn.
 
-Backends voor de voordeur verwijzen naar de hostnaam of het openbare IP-adres van uw app, die clientaanvragen kan dienen. Backends mogen niet worden verward met uw databaselaag, opslaglaag, enzovoort. Back-ends moeten worden gezien als het openbare eindpunt van uw app back-end. Wanneer u een backend toevoegt in een backendpool voor de voordeur, moet u ook het volgende toevoegen:
+Back-ends voor de voor deur verwijzen naar de hostnaam of het open bare IP-adres van uw app, die client aanvragen kan verwerken. Back-ends mogen niet worden verward met uw data base-laag, opslaglaag, enzovoort. Back-ends moeten worden weer gegeven als het open bare eind punt van de back-end van uw app. Wanneer u een back-end in een back-end van een front-deur groep toevoegt, moet u ook het volgende toevoegen:
 
-- **Backendhosttype**. Het type resource dat u wilt toevoegen. Front Door ondersteunt automatisch afspelen van uw app backends van app-service, cloudservice of opslag. Als u een andere bron in Azure of zelfs een niet-Azure-backend wilt, selecteert u **Aangepaste host**.
+- **Type back-end**. Het type resource dat u wilt toevoegen. Front deur ondersteunt automatische detectie van uw app-back-ends vanuit app service, Cloud service of Storage. Als u een andere resource wilt in azure of zelfs een back-end die niet van Azure is, selecteert u **aangepaste host**.
 
     >[!IMPORTANT]
-    >Tijdens de configuratie valideren API's niet of de backend niet toegankelijk is vanuit frontdooromgevingen. Zorg ervoor dat de voordeur uw backend kan bereiken.
+    >Tijdens de configuratie valideert Api's niet als de back-end niet toegankelijk is vanaf de front-deur omgevingen. Zorg ervoor dat de front-deur uw back-end kan bereiken.
 
-- **Naam van een abonnement en backendhost**. Als u aangepaste **host** niet hebt geselecteerd voor het type backendhost, selecteert u uw backend door het juiste abonnement en de bijbehorende backendhostnaam in de gebruikersinterface te kiezen.
+- De hostnaam van het **abonnement en de back-end**. Als u geen **aangepaste host** voor het type back-end hebt geselecteerd, selecteert u uw back-end door het juiste abonnement en de bijbehorende back-end-hostnaam in de gebruikers interface te kiezen.
 
-- **Koptekst voor backendhost**. De waarde van de hostheader die voor elk verzoek naar de backend wordt verzonden. Zie [Backend hostheader](#hostheader)voor meer informatie .
+- **Back-end-host-header**. De waarde van de host-header die wordt verzonden naar de back-end voor elke aanvraag. Zie voor meer informatie [back-end-host-header](#hostheader).
 
-- **Prioriteit**. Wijs prioriteiten toe aan uw verschillende backends wanneer u een primaire servicebackend wilt gebruiken voor al het verkeer. Geef ook back-ups als de primaire of de back-upback-ups niet beschikbaar zijn. Zie [Prioriteit](front-door-routing-methods.md#priority)voor meer informatie.
+- **Prioriteit**. Wijs prioriteiten toe aan uw verschillende back-ends wanneer u een primaire service back-end voor al het verkeer wilt gebruiken. Geef ook back-ups op als de primaire of de back-end niet beschikbaar zijn. Zie [Priority](front-door-routing-methods.md#priority)voor meer informatie.
 
-- **Gewicht**. Wijs gewichten toe aan uw verschillende backends om het verkeer gelijkmatig of op basis van gewichtscoëfficiënten over een reeks backends te verdelen. Zie [Gewichten](front-door-routing-methods.md#weighted)voor meer informatie.
+- **Gewicht**. Wijs gewichten toe aan uw verschillende back-ends voor het distribueren van verkeer over een reeks back-ends, hetzij gelijkmatig, hetzij op basis van gewichts coëfficiënten. Zie [gewichten](front-door-routing-methods.md#weighted)voor meer informatie.
 
-### <a name="backend-host-header"></a><a name = "hostheader"></a>Backendhostkop
+### <a name="backend-host-header"></a><a name = "hostheader"></a>Host-header van back-end
 
-Aanvragen die door Front Door naar een backend worden doorgestuurd, bevatten een hostheaderveld dat de backend gebruikt om de beoogde bron op te halen. De waarde voor dit veld komt meestal van de backend URI en heeft de host en poort.
+Aanvragen die door de voor deur naar een back-end worden doorgestuurd, bevatten een host-header veld dat door de back-end wordt gebruikt om de doel resource op te halen. De waarde voor dit veld is doorgaans afkomstig van de back-end-URI en heeft de host en poort.
 
-Een aanvraag voor `www.contoso.com` een hostheader wordt bijvoorbeeld www.contoso.com. Als u Azure-portal gebruikt om uw back-end te configureren, is de standaardwaarde voor dit veld de hostnaam van de backend. Als uw backend contoso-westus.azurewebsites.net is, wordt in de Azure-portal de automatisch ingevulde waarde voor de backendhostkop contoso-westus.azurewebsites.net. Als u echter Azure Resource Manager-sjablonen of een andere methode gebruikt zonder dit veld expliciet in te stellen, stuurt Front Door de inkomende hostnaam als de waarde voor de hostkoptekst. Als het verzoek is\.ingediend voor www contoso.com en uw backend is contoso-westus.azurewebsites.net met een\.leeg koptekstveld, stelt De voordeur de hostheader in als contoso.com.
+Een aanvraag voor `www.contoso.com` heeft bijvoorbeeld de hostheader www.contoso.com. Als u Azure Portal gebruikt voor het configureren van uw back-end, is de standaard waarde voor dit veld de hostnaam van de back-end. Als uw back-end contoso-westus.azurewebsites.net is, wordt in de Azure Portal de automatisch gevulde waarde voor de host-header van de back-end contoso-westus.azurewebsites.net. Als u echter Azure Resource Manager sjablonen of een andere methode gebruikt zonder dit veld expliciet in te stellen, stuurt front deur de binnenkomende hostnaam als de waarde voor de host-header. Als de aanvraag voor www\.-contoso.com is gemaakt en uw back-end contoso-westus.azurewebsites.net met een leeg header-veld heeft, wordt de hostheader door de voor deur\.ingesteld als www-contoso.com.
 
-Voor de meeste back-ends voor apps (Azure Web Apps, Blob-opslag en Cloud Services) moet de hostkopovereenkomen met het domein van de backend. De frontendhost die naar uw backend leidt, gebruikt echter een andere hostnaam, zoals www.contoso.net.
+Voor de meeste app-back-ends (Azure Web Apps, Blob Storage en Cloud Services) moet de host-header overeenkomen met het domein van de back-end. De frontend-host die naar uw back-end stuurt, gebruikt echter een andere hostnaam, zoals www.contoso.net.
 
-Als voor uw backend de hostheader moet overeenkomen met de naam van de backendhost, moet u ervoor zorgen dat de backendhostkop de backend-backend bevat.
+Als voor uw back-end de host-header moet overeenkomen met de naam van de back-end, moet u ervoor zorgen dat de back-endserver de hostnaam van de host bevat.
 
-#### <a name="configuring-the-backend-host-header-for-the-backend"></a>De backend-hostkop voor de backend configureren
+#### <a name="configuring-the-backend-host-header-for-the-backend"></a>De host-header van de back-end voor de back-end configureren
 
-Ga als u het veld **backendhostheader** configureren voor een backend in de sectie backendpool:
+Het veld voor de **back-end-host-header** configureren voor een back-end in de back-endadresgroep-groep:
 
-1. Open uw bron voor de voordeur en selecteer de backendpool met de backend om te configureren.
+1. Open de resource van de voor deur en selecteer de back-end-pool met de te configureren back-end.
 
-2. Voeg een backend toe als u dit nog niet hebt gedaan of bewerk een bestaande backend.
+2. Voeg een back-end toe als u dit nog niet hebt gedaan, of bewerk een bestaande.
 
-3. Stel het veld backendhostheader in op een aangepaste waarde of laat het leeg. De hostnaam voor de binnenkomende aanvraag wordt gebruikt als de waarde van de hostheader.
+3. Stel het veld voor de back-end-host-header in op een aangepaste waarde of laat dit vak leeg. De hostnaam voor de binnenkomende aanvraag wordt gebruikt als de waarde voor de host-header.
 
-## <a name="backend-pools"></a>Backend pools
-Een backend pool in Front Door verwijst naar de set backends die vergelijkbaar verkeer voor hun app ontvangen. Met andere woorden, het is een logische groepering van uw app-exemplaren over de hele wereld die hetzelfde verkeer ontvangen en reageren met verwacht gedrag. Deze backends worden geïmplementeerd in verschillende regio's of binnen dezelfde regio. Alle backends kunnen in de active/actieve implementatiemodus of wat wordt gedefinieerd als actieve/passieve configuratie.
+## <a name="backend-pools"></a>Back-end-Pools
+Een back-end-groep in de deur verwijst naar de set back-ends die soortgelijk verkeer voor hun app ontvangen. Met andere woorden, het is een logische groepering van uw app-instanties over de hele wereld die hetzelfde verkeer ontvangen en op de verwachte manier reageert. Deze back-ends worden geïmplementeerd in verschillende regio's of binnen dezelfde regio. Alle back-ends kunnen zich in de Active/Active-implementatie modus bevindt of wat is gedefinieerd als actieve/passieve configuratie.
 
-Een backend pool definieert hoe de verschillende backends moeten worden geëvalueerd via health probes. Het definieert ook hoe load balancing optreedt tussen hen.
+Een back-end-pool definieert hoe de verschillende back-ends moeten worden geëvalueerd via status controles. Ook wordt gedefinieerd hoe taak verdeling tussen deze items wordt uitgevoerd.
 
 ### <a name="health-probes"></a>Statuscontroles
-Front Door stuurt periodieke HTTP/HTTPS-sondeverzoeken naar elk van uw geconfigureerde backends. Sondeaanvragen bepalen de nabijheid en status van elke backend om het saldo van uw eindgebruikersaanvragen te laden. Instellingen voor statussen voor een backendpool definiëren hoe we de status van app-backends peilen. De volgende instellingen zijn beschikbaar voor de configuratie van de taakverdeling:
+Met de voor deur worden periodiek HTTP/HTTPS-test aanvragen verzonden naar elk van de geconfigureerde back-ends. Test aanvragen bepalen de nabijheid en status van elke back-end om uw aanvragen van uw eind gebruikers te verdelen. De status test instellingen voor een back-end-pool bepalen hoe we de status van app-back-ends controleren. De volgende instellingen zijn beschikbaar voor de configuratie van de taak verdeling:
 
-- **Pad:** de URL die wordt gebruikt voor sondeaanvragen voor alle backends in de backendpool. Als een van uw backends bijvoorbeeld is contoso-westus.azurewebsites.net en het pad is ingesteld op /probe/test.aspx, worden frontdoor-omgevingen, ervan uitgaande dat het protocol is ingesteld op HTTP, aanvragen voor statussonde naar http\:-contoso-westus.azurewebsites.net/probe/test.aspx verzonden.
+- **Pad**: de URL die wordt gebruikt voor het testen van aanvragen voor alle back-ends in de back-end-pool. Als een van uw back-ends bijvoorbeeld contoso-westus.azurewebsites.net is en het pad is ingesteld op/probe/test.aspx, worden de front-deur omgevingen, ervan uitgaande dat het protocol is ingesteld op HTTP, status test aanvragen verzonden\:naar http//contoso-westus.azurewebsites.net/probe/test.aspx.
 
-- **Protocol:** hiermee bepaalt u of u de aanvragen voor statussonde sonde van Front Door naar uw backends wilt verzenden met HTTP- of HTTPS-protocol.
+- **Protocol**: definieert of de Health probe-aanvragen van de voor deur naar uw back-end moeten worden verzonden met het HTTP-of HTTPS-protocol.
 
-- **Methode**:De HTTP-methode die moet worden gebruikt voor het verzenden van statussondes. Opties zijn GET of HEAD (standaard).
+- **Methode**: de HTTP-methode die moet worden gebruikt voor het verzenden van status controles. De opties zijn GET of HEAD (standaard).
     > [!NOTE]
-    > Voor lagere belasting en kosten op uw backends, Front Door beveelt het gebruik van HEAD verzoeken voor de gezondheid sondes.
+    > Voor een lagere belasting en kosten op uw back-end wordt aanbevolen om hoofd aanvragen voor status tests te gebruiken.
 
-- **Interval (seconden):** hiermee definieert u de frequentie van statussondes naar uw backends of de intervallen waarin elk van de frontdooromgevingen een sonde verzendt.
+- **Interval (seconden)**: definieert de frequentie van de status tests voor uw back-ends of de intervallen waarin elk van de voor deur omgevingen een sonde verzendt.
 
     >[!NOTE]
-    >Voor snellere failovers stelt u het interval in op een lagere waarde. Hoe lager de waarde, hoe hoger het volume van de health probe die uw backends ontvangen. Als het interval bijvoorbeeld is ingesteld op 30 seconden met bijvoorbeeld 100 pop-opsteken wereldwijd door de voordeur, ontvangt elke backend ongeveer 200 sondeaanvragen per minuut.
+    >Voor snellere failovers stelt u het interval in op een lagere waarde. Hoe lager de waarde, hoe hoger het volume van de status test uw back-ends worden ontvangen. Als het interval bijvoorbeeld is ingesteld op 30 seconden met zeggen, 100 front deur Pop's wereld wijd, ontvangt elke back-end ongeveer 200 test aanvragen per minuut.
 
-Zie [Gezondheidssondes voor](front-door-health-probes.md)meer informatie.
+Zie [status tests](front-door-health-probes.md)voor meer informatie.
 
-### <a name="load-balancing-settings"></a>Instellingen voor taakverdeling
-Load-balancing-instellingen voor de backendpool definiëren hoe we statussondes evalueren. Deze instellingen bepalen of de backend gezond of ongezond is. Ze controleren ook hoe je het verkeer tussen verschillende backends in de backend pool inbalansbrengen. De volgende instellingen zijn beschikbaar voor de configuratie van de taakverdeling:
+### <a name="load-balancing-settings"></a>Instellingen voor taak verdeling
+Instellingen voor taak verdeling voor de back-end-pool bepalen hoe de status tests worden geëvalueerd. Deze instellingen bepalen of de back-end in orde of beschadigd is. Ze controleren ook hoe de taak verdeling van verkeer tussen verschillende back-ends in de back-end-pool wordt gebalanceerd. De volgende instellingen zijn beschikbaar voor de configuratie van de taak verdeling:
 
-- **Steekproefgrootte**. Identificeert hoeveel monsters van de gezondheid sondes die we moeten overwegen voor backend gezondheid evaluatie.
+- **Voorbeeld grootte**. Hiermee wordt aangegeven hoeveel voor beelden van status tests er nodig zijn om de status van de back-end te evalueren.
 
-- **Succesvolle steekproefgrootte**. Hiermee definieert u de steekproefgrootte zoals eerder vermeld, het aantal succesvolle voorbeelden dat nodig is om de backend gezond aan te roepen. Stel dat een interval voor de statussonde van de voordeur 30 seconden is, de steekproefgrootte 5 is en de winnende steekproefgrootte 3 is. Elke keer dat we de gezondheidssondes voor uw backend evalueren, kijken we naar de laatste vijf monsters over 150 seconden (5 x 30). Ten minste drie succesvolle sondes zijn nodig om de backend als gezond te verklaren.
+- De **voorbeeld grootte is voltooid**. Hiermee definieert u de voorbeeld grootte zoals eerder vermeld, het aantal geslaagde steek proeven dat nodig is voor het aanroepen van de back-end in orde. Stel dat het interval voor de status test voor de voor deur 30 seconden is, de voorbeeld grootte 5 is en een geslaagde voorbeeld grootte is ingesteld op 3. Telkens wanneer we de status controles voor uw back-end evalueren, bekijken we de laatste vijf steek proeven van meer dan 150 seconden (5 x 30). Ten minste drie geslaagde tests zijn vereist voor het declareren van de backend als in orde.
 
-- **Latentiegevoeligheid (extra latentie)**. Hiermee bepaalt u of u wilt dat Front Door het verzoek verzendt naar backends binnen het latentiemeetgevoeligheidsbereik of het verzoek doorstuurt naar de dichtstbijzijnde backend.
+- **Latentie gevoeligheid (extra latentie)**. Hiermee definieert u of u de aanvraag wilt verzenden naar back-ends binnen het gevoeligheids bereik voor latentie meting of door sturen van de aanvraag naar de dichtstbijzijnde back-end.
 
-Zie [Op de minst latentie gebaseerde routeringsmethode](front-door-routing-methods.md#latency)voor meer informatie .
+Zie voor meer informatie [op minste latentie gebaseerde routerings methode](front-door-routing-methods.md#latency).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een voordeurprofiel maken](quickstart-create-front-door.md)
-- [Hoe Voordeur werkt](front-door-routing-architecture.md)
+- [Een voor deur profiel maken](quickstart-create-front-door.md)
+- [De werking van de voor deur](front-door-routing-architecture.md)

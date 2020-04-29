@@ -1,6 +1,6 @@
 ---
-title: Kern-IO-activiteiten | Microsoft Azure Maps
-description: Leer hoe u XML en gegevens efficiënt lezen en schrijven met behulp van kernbibliotheken uit de ruimtelijke IO-module.
+title: Core i/o-bewerkingen | Microsoft Azure kaarten
+description: Informatie over het efficiënt lezen en schrijven van XML en gescheiden gegevens met behulp van kern bibliotheken in de ruimtelijke IO-module.
 author: philmea
 ms.author: philmea
 ms.date: 03/03/2020
@@ -9,54 +9,54 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 0b8fe1b319dc480879944d28f10645025a8cb38e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80371446"
 ---
-# <a name="core-io-operations"></a>Core IO-bewerkingen
+# <a name="core-io-operations"></a>Core i/o-bewerkingen
 
-De ruimtelijke IO-module biedt niet alleen tools om ruimtelijke gegevensbestanden te lezen, maar stelt ook onderliggende bibliotheken bloot om XML te lezen en te schrijven en gegevens snel en efficiënt af te gebak.
+Naast het leveren van hulpprogram ma's voor het lezen van ruimtelijke gegevens bestanden, worden in de ruimtelijke IO-module de belangrijkste onderliggende bibliotheken weer gegeven voor het lezen en schrijven van XML en het snel en efficiënt verkorten van gegevens.
 
-De `atlas.io.core` naamruimte bevat twee klassen op laag niveau die snel CSV- en XML-gegevens kunnen lezen en schrijven. Deze basisklassen geven de aanmaningen en schrijvers van ruimtelijke gegevens in de Module Ruimtelijke IO. Gebruik ze gerust om extra lees- en schrijfondersteuning toe te voegen voor CSV- of XML-bestanden.
+De `atlas.io.core` naam ruimte bevat twee klassen op laag niveau die snel CSV-en XML-gegevens kunnen lezen en schrijven. Deze basis klassen zijn voorzien van de lezers en schrijvers van ruimtelijke gegevens in de ruimtelijke IO-module. U kunt ze gebruiken om extra lees-en schrijf ondersteuning toe te voegen voor CSV-of XML-bestanden.
  
-## <a name="read-delimited-files"></a>Afgebakende bestanden lezen
+## <a name="read-delimited-files"></a>Bestanden met scheidings tekens lezen
 
-De `atlas.io.core.CsvReader` klasse leest tekenreeksen die afgebakende gegevenssets bevatten. Deze klasse biedt twee methoden voor het lezen van gegevens:
+De `atlas.io.core.CsvReader` klasse leest teken reeksen die gescheiden gegevens sets bevatten. Deze klasse biedt twee methoden voor het lezen van gegevens:
 
-- De `read` functie leest de volledige gegevensset en retourneert een tweedimensionale reeks tekenreeksen die alle cellen van de afgebakende gegevensset vertegenwoordigen.
-- De `getNextRow` functie leest elke regel tekst in een afgebakende gegevensset en retourneert een reeks tekenreeksen die alle cellen in die regel van gegevensset weergeeft. De gebruiker kan de rij verwerken en elk onnodig geheugen uit die rij verwijderen voordat hij de volgende rij verwerkt. Dus, functie is efficiënter geheugen.
+- De `read` functie leest de volledige gegevensset en retourneert een tweedimensionale matrix met teken reeksen die alle cellen van de gescheiden gegevensset vertegenwoordigen.
+- Met `getNextRow` de functie wordt elke regel tekst in een gescheiden gegevensset gelezen en wordt een matrix van teken reeks geretourneerd die alle cellen in die gegevensset vertegenwoordigt. De gebruiker kan de rij verwerken en overbodige geheugen uit die rij verwijderen voordat de volgende rij wordt verwerkt. Functie is dus meer geheugen efficiënt.
 
-Standaard gebruikt de lezer het kommateken als de scheidingsteken. De scheidingsteken kan echter worden gewijzigd in een `'auto'`enkel teken of ingesteld op . Wanneer ingesteld `'auto'`op , de lezer analyseert de eerste regel tekst in de tekenreeks. Vervolgens selecteert u het meest voorkomende teken in de onderstaande tabel om te gebruiken als de scheidingsteken.
+De Reader gebruikt standaard het punt komma als scheidings teken. Het scheidings teken kan echter worden gewijzigd in een wille keurig teken `'auto'`of worden ingesteld op. Als deze is `'auto'`ingesteld op, wordt de eerste regel tekst in de teken reeks door de lezer geanalyseerd. Vervolgens wordt het meest voorkomende teken geselecteerd uit de onderstaande tabel om te gebruiken als scheidings tekens.
 
 | | |
 | :-- | :-- |
 | Komma | `,` |
 | Tab | `\t` |
-| Pipe | `|` |
+| Teer | `|` |
 
-Deze lezer ondersteunt ook tekstkwalificatietoernooien die worden gebruikt om cellen te verwerken die het tekensteken van de scheiding bevatten. Het teken`'"'`( ) is de standaard tekstkwalificatie, maar kan worden gewijzigd in een enkel teken.
+Deze lezer ondersteunt ook tekst indicators die worden gebruikt voor het afhandelen van cellen die het scheidings teken bevatten. Het aanhalings`'"'`teken () is de standaard tekst indicator, maar kan worden gewijzigd in één wille keurig teken.
 
-## <a name="write-delimited-files"></a>Afgebakende bestanden schrijven
+## <a name="write-delimited-files"></a>Bestanden met scheidings tekens schrijven
 
-Het `atlas.io.core.CsvWriter` schrijft een array van objecten als een afgebakende tekenreeks. Elk teken kan worden gebruikt als scheidingsteken of als tekstkwalificatie. De standaardscheidingsscheiding is`','`komma ( ) en de`'"'`standaardtekstkwalificatie is het teken () aanhalinggeven.
+Het `atlas.io.core.CsvWriter` schrijft een matrix van objecten als een teken reeks met scheidings tekens. Eén wille keurig teken kan worden gebruikt als scheidings tekens of als een tekst kwalificatie. Het standaard scheidings teken is`','`komma () en de standaard tekst indicator is het`'"'`aanhalings teken ().
 
-Volg de onderstaande stappen om deze klasse te gebruiken:
+Als u deze klasse wilt gebruiken, volgt u de onderstaande stappen:
 
-- Maak een instantie van de klasse en stel optioneel een aangepaste scheidingsteken of tekstkwalificatie in.
-- Schrijf gegevens naar de `write` klasse `writeRow` met behulp van de functie of de functie. Geef `write` voor de functie een tweedimensionale array van objecten door die meerdere rijen en cellen vertegenwoordigen. Als u `writeRow` de functie wilt gebruiken, geeft u een array met objecten door die een rij gegevens met meerdere kolommen vertegenwoordigen.
-- Roep `toString` de functie aan om de afgebakende tekenreeks op te halen. 
-- Roep eventueel de `clear` methode aan om de schrijver herbruikbaar te `delete` maken en de toewijzing van resources te verminderen, of roep de methode aan om de instantie van de schrijver te verwijderen.
+- Maak een instantie van de klasse en stel optioneel een aangepaste scheidings teken of tekst kwalificatie in.
+- Gegevens schrijven naar de klasse met behulp van `write` de `writeRow` functie of de functie. Voor de `write` functie geeft u een tweedimensionale matrix met objecten weer die meerdere rijen en cellen vertegenwoordigen. Als u de `writeRow` functie wilt gebruiken, geeft u een matrix met objecten door die een rij met gegevens met meerdere kolommen vertegenwoordigen.
+- Roep de `toString` functie aan om de teken reeks met scheidings tekens op te halen. 
+- Desgewenst kunt u de `clear` methode aanroepen om de schrijver te herbruikbaar maken en de resource toewijzing te verminderen, `delete` of de methode aanroepen om de instantie van de schrijver te verwijderen.
 
 > [!Note]
-> Het aantal geschreven kolommen wordt beperkt tot het aantal cellen in de eerste rij van de gegevens die aan de schrijver worden doorgegeven.
+> Het aantal geschreven kolommen wordt beperkt tot het aantal cellen in de eerste rij van de gegevens die worden door gegeven aan de schrijver.
 
 ## <a name="read-xml-files"></a>XML-bestanden lezen
 
-De `atlas.io.core.SimpleXmlReader` klasse is sneller bij het `DOMParser`ontwijs maken van XML-bestanden dan . De `atlas.io.core.SimpleXmlReader` klasse vereist echter dat XML-bestanden goed worden opgemaakt. XML-bestanden die niet goed zijn opgemaakt, bijvoorbeeld ontbrekende sluittags, zullen waarschijnlijk resulteren in een fout.
+De `atlas.io.core.SimpleXmlReader` klasse is sneller bij het parseren van `DOMParser`XML-bestanden dan. Voor de klasse `atlas.io.core.SimpleXmlReader` zijn echter XML-bestanden met de juiste indeling vereist. XML-bestanden die geen goede indeling hebben, bijvoorbeeld het ontbreken van afsluit codes, resulteren waarschijnlijk in een fout.
 
-De volgende code laat zien `SimpleXmlReader` hoe u de klasse gebruikt om een XML-tekenreeks in een JSON-object te ontleden en deze te serialiseren tot een gewenste indeling.
+De volgende code laat zien hoe u de `SimpleXmlReader` klasse kunt gebruiken om een XML-teken reeks te parseren in een JSON-object en deze te serialiseren naar een gewenste indeling.
 
 ```javascript
 //Create an instance of the SimpleXmlReader and parse an XML string into a JSON object.
@@ -80,9 +80,9 @@ if (xmlDoc && xmlDoc.root && xmlDoc.root.tagName && xmlDoc.root.tagName === '<Yo
 
 ## <a name="write-xml-files"></a>XML-bestanden schrijven
 
-De `atlas.io.core.SimpleXmlWriter` klasse schrijft goed geformatteerde XML op een geheugenefficiënte manier.
+De `atlas.io.core.SimpleXmlWriter` klasse schrijft goed opgemaakte XML op een efficiënte manier van geheugen.
 
-De volgende code laat zien `SimpleXmlWriter` hoe u de klasse gebruiken om een goed opgemaakte XML-tekenreeks te genereren.
+De volgende code laat zien hoe u met behulp van de `SimpleXmlWriter` klasse een goed opgemaakte XML-teken reeks genereert.
 
 ```javascript
 //Create an instance of the SimpleXmlWriter class.
@@ -115,7 +115,7 @@ writer.writeEndElement().writeEndDocument();
 var xmlString = writer.toString();
 ```
 
-De gegenereerde XML uit de bovenstaande code ziet er als volgt uit.
+De gegenereerde XML van de bovenstaande code zou er als volgt uitzien.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -128,21 +128,21 @@ De gegenereerde XML uit de bovenstaande code ziet er als volgt uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de lessen en methoden die in dit artikel worden gebruikt:
+Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
 > [CsvReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvreader)
 
 > [!div class="nextstepaction"]
-> [CsvWriter (CsvWriter)](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvwriter)
+> [CsvWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvwriter)
 
 > [!div class="nextstepaction"]
 > [SimpleXmlReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlreader)
 
 > [!div class="nextstepaction"]
-> [SimpleXmlWriter SimpleXmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlwriter)
+> [SimpleXmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlwriter)
 
-Zie de volgende artikelen voor meer codevoorbeelden die u aan uw kaarten toevoegen:
+Raadpleeg de volgende artikelen voor meer code voorbeelden om toe te voegen aan uw kaarten:
 
 > [!div class="nextstepaction"]
-> [Details van ondersteunde gegevensindeling](spatial-io-supported-data-format-details.md)
+> [Details van ondersteunde gegevens indeling](spatial-io-supported-data-format-details.md)

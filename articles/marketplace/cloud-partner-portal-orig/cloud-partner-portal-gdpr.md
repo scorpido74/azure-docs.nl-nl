@@ -1,6 +1,6 @@
 ---
-title: NALEVING VAN DE AVG | Azure Marketplace
-description: Cloud Partner Portal en GDPR.
+title: AVG-naleving | Azure Marketplace
+description: Cloud Partner-portal en AVG.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,39 +8,39 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: f09bc60a59ff2a6e21d0cdae1917a1faed072ea4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280283"
 ---
-<a name="cloud-partner-portal-gdpr-compliance"></a>Naleving van gdpr-portal voor cloudpartners
+<a name="cloud-partner-portal-gdpr-compliance"></a>AVG-naleving van Cloud Partner-portal
 ====================================
 
-[Algemene Verordening Gegevensbescherming (AVG)](https://ec.europa.eu/info/law/law-topic/data-protection/reform_en/) is een wetgeving inzake gegevensbescherming en privacy van de Europese Unie (EU). De AVG legt regels op aan bedrijven, overheidsinstanties, non-profitorganisaties en andere organisaties die goederen en diensten aanbieden aan mensen in de EU, of die gegevens verzamelen en analyseren die zijn gekoppeld aan EU-ingezetenen.
+[AVG (AVG)](https://ec.europa.eu/info/law/law-topic/data-protection/reform_en/) is een gegevens beschermings-en privacybeleid recht van de Europese Unie (EU). De AVG legt regels vast over bedrijven, overheids instanties, non-profit organisaties en andere bedrijven die goederen en diensten aan personen in de EU aanbieden of die gegevens verzamelen en analyseren die zijn gekoppeld aan de inwoners van de EU.
 
-Cloud Partner Portal biedt gedetailleerde informatie over de verwerking van klantgegevens en de beveiligingsmaatregelen die worden gebruikt om die gegevens te beschermen. Deze informatie is toegankelijk via haar in-product ervaringen.
+Cloud Partner-portal biedt gedetailleerde informatie over de verwerking van klant gegevens en de beveiligings maatregelen die worden gebruikt voor het beveiligen van die gegevens. Deze informatie is toegankelijk via de product ervaring.
 
 <a name="discover"></a>Ontdekken
 --------
 
-Cloud Partner Portal geeft toegang tot al uw gegevens op het tabblad Gebruikers. U uw persoonsgegevens daar identificeren. Zie onze [documentatie](./cloud-partner-portal-manage-users.md)voor meer informatie over het toevoegen/verwijderen van gebruikers.
+Cloud Partner-portal hebt toegang tot al uw gegevens op het tabblad gebruikers. U kunt hier uw persoonlijke gegevens identificeren. Zie onze [documentatie](./cloud-partner-portal-manage-users.md)voor meer informatie over het toevoegen/verwijderen van gebruikers.
 
 <a name="manage"></a>Beheren
 ------
 
-U uw persoonlijke gegevens beheren door op verwijderen op uw gebruikersaccount te drukken op het tabblad Gebruikers. We hebben rollen van een **eigenaar** en een **bijdrager** die aan elke specifieke gebruiker kunnen worden toegewezen en beide kunnen worden toegewezen/gekopieerd/bijgewerkt/verwijderd.
+U kunt uw persoonlijke gegevens beheren door op het tabblad gebruikers op verwijderen te klikken in uw gebruikers account. We hebben rollen van een **eigenaar** en een **bijdrager** die aan elke specifieke gebruiker kan worden toegewezen, en beide kunnen worden toegewezen/gekopieerd/bijgewerkt/verwijderd.
 
-<a name="consent"></a>Toestemming
+<a name="consent"></a>Vergunning
 -------
 
-Voor het beheren van toestemming in Cloud Partner Portal krijgt u altijd in eerste instantie een overeenkomst met een uitgeversovereenkomst te zien, waarmee u akkoord moet gaan om een uitgever bij Microsoft te zijn. Als u niet instemt met het uitgeversovereenkomstcontract, beperken we de uitgever om niet met Microsoft te kunnen verkopen.
+Voor het beheren van de toestemming in Cloud Partner-portal, wordt u in eerste instantie altijd een overeenkomst voor Publisher-overeenkomsten weer gegeven waaraan u akkoord moet gaan om een uitgever van micro soft te zijn. Als u niet akkoord gaat met het overeenkomst contract van de uitgever, kunnen we de uitgever beperken om niet te verkopen met micro soft.
 
 <a name="related-links"></a>Verwante koppelingen
 -------------
 
--   [Hoe en waar\' Microsoft klantgegevens naartoe stuurt, inclusief geolocaties](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
--   [Onderaannemers die toegang hebben\' tot klantgegevens](https://aka.ms/Online_Serv_Subcontractor_List)
--   [Details over Azure-beveiligingsmaatregelen die door Microsoft worden beheerd](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
--   [Details over\'het proces van privacybeoordelingen van Microsoft, uitgevoerd voor alle producten, inclusief alle Azure-services](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards)
--   [Welke gegevens Microsoft verzamelt en verwerkt van klantsystemen en eindgebruikers](https://www.microsoft.com/trustcenter/privacy/you-own-your-data)
+-   [Hoe en waar micro soft klant\' gegevens verzendt, met inbegrip van geo-locaties](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
+-   [Onderaannemers die toegang hebben tot de gegevens\' van klanten](https://aka.ms/Online_Serv_Subcontractor_List)
+-   [Details over Azure-beveiligings maatregelen die door micro soft worden beheerd](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
+-   [Details over het\'proces van privacybeleid van micro soft s, uitgevoerd voor alle producten, inclusief alle Azure-Services](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards)
+-   [Welke gegevens micro soft verzamelt en verwerkt van klant systemen en eind gebruikers](https://www.microsoft.com/trustcenter/privacy/you-own-your-data)

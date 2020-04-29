@@ -1,7 +1,7 @@
 ---
-title: PII Detection cognitieve vaardigheid (preview)
+title: PERSOONLIJKE detectie cognitieve vaardigheid (preview-versie)
 titleSuffix: Azure Cognitive Search
-description: Persoonlijk identificeerbare informatie uit tekst in een verrijkingspijplijn in Azure Cognitive Search extraheren en maskeren. Deze vaardigheid is momenteel in openbare preview.
+description: U haalt persoonlijke gegevens op uit tekst in een verrijkings pijplijn in azure Cognitive Search. Deze vaardigheid is momenteel beschikbaar als open bare preview.
 manager: nitinme
 author: careyjmac
 ms.author: chalton
@@ -9,58 +9,58 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: f21200bc6f5b25f3330f5bb87c0843caa5a84e56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80298885"
 ---
-#    <a name="pii-detection-cognitive-skill"></a>PII Detectie cognitieve vaardigheid
+#    <a name="pii-detection-cognitive-skill"></a>PERSOONLIJKE detectie cognitieve vaardigheid
 
 > [!IMPORTANT] 
-> Deze vaardigheid is momenteel in openbare preview. Preview-functionaliteit wordt geleverd zonder overeenkomst op serviceniveau en wordt niet aanbevolen voor productieworkloads. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie. Er is momenteel geen portal of .NET SDK-ondersteuning.
+> Deze vaardigheid is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Er is momenteel geen portal-of .NET SDK-ondersteuning.
 
-De **PII Detection-vaardigheid** haalt persoonlijk identificeerbare informatie uit een invoertekst en geeft u de mogelijkheid om deze op verschillende manieren uit die tekst te maskeren. Deze vaardigheid maakt gebruik van de machine learning-modellen van [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) in Cognitive Services.
+De persoonlijke **detectie** -vaardigheid extraheert persoons gegevens uit een invoer tekst en biedt u de mogelijkheid om deze op verschillende manieren te maskeren in de tekst. Deze vaardigheid maakt gebruik van de machine learning modellen van [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) in cognitive Services.
 
 > [!NOTE]
-> Terwijl u het bereik uitbreidt door de frequentie van de verwerking te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureerbare bron voor cognitive services toevoegen.](cognitive-search-attach-cognitive-services.md) Er worden kosten in rekening gebracht bij het aanroepen van API's in Cognitive Services en voor het extraheren van afbeeldingen als onderdeel van de fase van het kraken van documenten in Azure Cognitive Search. Er zijn geen kosten voor tekstextractie uit documenten.
+> Als u het bereik uitbreidt door de verwerkings frequentie te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureer bare Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in azure Cognitive Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
 >
-> Uitvoering van ingebouwde vaardigheden wordt in rekening gebracht tegen de bestaande [Cognitive Services pay-as-you-go prijs.](https://azure.microsoft.com/pricing/details/cognitive-services/) De prijzen voor imageextractie worden beschreven op de [prijspagina azure cognitive search.](https://go.microsoft.com/fwlink/?linkid=2042400)
+> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Text.PIIDetectionSkill
+Micro soft. skills. Text. PIIDetectionSkill
 
 ## <a name="data-limits"></a>Gegevenslimieten
-De maximale grootte van een record moet 50.000 tekens zijn, gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Als u uw gegevens moet opsplitsen voordat u deze naar de vaardigheid verzendt, u overwegen de [vaardigheid Text Split te](cognitive-search-skill-textsplit.md)gebruiken.
+De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)door. Als u uw gegevens moet opsplitsen voordat u deze naar de vaardigheid verzendt, kunt u overwegen de [Kwalificatie tekst splitsen](cognitive-search-skill-textsplit.md)te gebruiken.
 
-## <a name="skill-parameters"></a>Vaardigheidsparameters
+## <a name="skill-parameters"></a>Vaardigheids parameters
 
-Parameters zijn hoofdlettergevoelig en zijn allemaal optioneel.
+Para meters zijn hoofdletter gevoelig en zijn optioneel.
 
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
-| standaardLanguageCode |    Taalcode van de invoertekst. Voorlopig wordt `en` alleen steun. |
-| minimaalPrecisie | Een waarde tussen 0,0 en 1,0. Als de betrouwbaarheidsscore `piiEntities` (in de uitvoer) lager is dan de ingestelde `minimumPrecision` waarde, wordt de entiteit niet geretourneerd of gemaskeerd. De standaardinstelling is 0,0. |
-| maskingMode | Een parameter die verschillende manieren biedt om de gedetecteerde PII in de invoertekst te maskeren. De volgende opties worden ondersteund: <ul><li>`none`(standaard): Dit betekent dat er geen `maskedText` maskering wordt uitgevoerd en dat de uitvoer niet wordt geretourneerd. </li><li> `redact`: Met deze optie worden de gedetecteerde entiteiten uit de invoertekst verwijderd en niet vervangen door iets. Houd er rekening mee dat `piiEntities` in dit geval de verschuiving in de uitvoer ten opzichte van de oorspronkelijke tekst zal zijn en niet de gemaskerde tekst. </li><li> `replace`: Deze optie vervangt de gedetecteerde entiteiten `maskingCharacter` door het teken in de parameter.  Het teken wordt herhaald tot de lengte van de gedetecteerde entiteit, zodat de verschuivingen correct `maskedText`overeenkomen met zowel de invoertekst als de uitvoer .</li></ul> |
-| maskerenKarakter | Het teken dat wordt gebruikt om de `maskingMode` tekst te `replace`gemaskeerd als de parameter is ingesteld op . De volgende opties worden `*` ondersteund: `#` `X`(standaard), , . Deze parameter kan `null` `maskingMode` alleen worden `replace`als deze niet is ingesteld op . |
+| defaultLanguageCode |    De taal code van de invoer tekst. Alleen voor nu wordt `en` alleen ondersteund. |
+| minimumPrecision | Een waarde tussen 0,0 en 1,0. Als de betrouwbaarheids Score (in `piiEntities` de uitvoer) lager is dan de `minimumPrecision` ingestelde waarde, wordt de entiteit niet geretourneerd of gemaskeerd. De standaard waarde is 0,0. |
+| maskingMode | Een para meter die verschillende manieren biedt om de gedetecteerde PII in de invoer tekst te maskeren. De volgende opties worden ondersteund: <ul><li>`none`(standaard): Dit betekent dat er geen maskering wordt uitgevoerd en dat `maskedText` de uitvoer niet wordt geretourneerd. </li><li> `redact`: Met deze optie worden de gedetecteerde entiteiten uit de invoer tekst verwijderd en worden ze niet vervangen door iets anders. In dit geval is de verschuiving in de `piiEntities` uitvoer gerelateerd aan de oorspronkelijke tekst en niet de gemaskeerde tekst. </li><li> `replace`: Met deze optie worden de gedetecteerde entiteiten vervangen door het teken dat `maskingCharacter` is opgegeven in de para meter.  Het teken wordt herhaald tot de lengte van de gedetecteerde entiteit, zodat de verschuivingen goed overeenkomen met zowel de invoer tekst als de uitvoer `maskedText`.</li></ul> |
+| maskingCharacter | Het teken dat wordt gebruikt om de tekst te maskeren als de `maskingMode` para meter is ingesteld `replace`op. De volgende opties worden ondersteund: `*` (standaard), `#`, `X`. Deze para meter kan alleen `null` worden `maskingMode` opgegeven als niet is `replace`ingesteld op. |
 
 
-## <a name="skill-inputs"></a>Vaardigheidsingangen
+## <a name="skill-inputs"></a>Vaardigheids invoer
 
-| Invoernaam      | Beschrijving                   |
+| Invoer naam      | Beschrijving                   |
 |---------------|-------------------------------|
 | languageCode    | Optioneel. De standaardwaarde is `en`.  |
-| tekst          | De tekst om te analyseren.          |
+| tekst          | De tekst die moet worden geanalyseerd.          |
 
-## <a name="skill-outputs"></a>Vaardigheidsuitvoer
+## <a name="skill-outputs"></a>Vaardigheids uitvoer
 
-| Uitvoernaam      | Beschrijving                   |
+| Uitvoer naam      | Beschrijving                   |
 |---------------|-------------------------------|
-| piiEntiteiten | Een array met complexe typen die de volgende velden bevat: <ul><li>tekst (De werkelijke PII zoals geëxtraheerd)</li> <li>type</li><li>Subtype</li><li>score (Hogere waarde betekent dat het meer kans om een echte entiteit)</li><li>verschuiving (in de invoertekst)</li><li>lengte</li></ul> </br> [Mogelijke types en subTypes zijn hier te vinden.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
-| gemaskeerdTekst | Als `maskingMode` deze uitvoer is `none`ingesteld op een andere waarde dan , is deze uitvoer het `maskingMode`tekenreeksresultaat van de maskering die wordt uitgevoerd op de invoertekst zoals beschreven door de geselecteerde .  Als `maskingMode` deze `none`is ingesteld op, zal deze uitvoer niet aanwezig zijn. |
+| piiEntities | Een matrix met complexe typen die de volgende velden bevat: <ul><li>tekst (de werkelijke PII als geëxtraheerd)</li> <li>type</li><li>subType</li><li>Score (hogere waarde betekent dat er waarschijnlijk een echte entiteit is)</li><li>offset (in de invoer tekst)</li><li>lengte</li></ul> </br> [Mogelijke typen en subtypen kunt u hier vinden.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
+| maskedText | Als `maskingMode` is ingesteld op een andere waarde dan `none`, wordt deze uitvoer het teken reeks resultaat van de maskering die wordt uitgevoerd op de invoer tekst, zoals wordt `maskingMode`beschreven door de geselecteerde.  Als `maskingMode` is ingesteld op `none`, is deze uitvoer niet aanwezig. |
 
-##    <a name="sample-definition"></a>Voorbeelddefinitie
+##    <a name="sample-definition"></a>Voorbeeld definitie
 
 ```json
   {
@@ -85,7 +85,7 @@ Parameters zijn hoofdlettergevoelig en zijn allemaal optioneel.
     ]
   }
 ```
-##    <a name="sample-input"></a>Voorbeeldinvoer
+##    <a name="sample-input"></a>Voorbeeld invoer
 
 ```json
 {
@@ -127,16 +127,16 @@ Parameters zijn hoofdlettergevoelig en zijn allemaal optioneel.
 }
 ```
 
-Houd er rekening mee dat de verschuivingen die zijn geretourneerd voor entiteiten in de uitvoer van deze vaardigheid rechtstreeks worden geretourneerd vanuit de [Text Analytics-API,](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)wat betekent dat als u ze gebruikt om te indexeren in de oorspronkelijke tekenreeks, u de klasse [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) in .NET moet gebruiken om de juiste inhoud te extraheren.  [Meer details vindt u hier.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
+Houd er rekening mee dat de verplaatsingen die worden geretourneerd voor entiteiten in de uitvoer van deze vaardigheid rechtstreeks worden geretourneerd uit de [Text Analytics-API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview). Dit betekent dat als u deze gebruikt om te indexeren in de oorspronkelijke teken reeks, u de [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) -klasse in .net moet gebruiken om de juiste inhoud te extra heren.  [Meer informatie vindt u hier.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
 
-## <a name="error-and-warning-cases"></a>Fout- en waarschuwingsaanvragen
-Als de taalcode voor het document niet wordt ondersteund, wordt een waarschuwing geretourneerd en worden geen entiteiten geëxtraheerd.
-Als uw tekst leeg is, wordt er een waarschuwing weergegeven.
-Als uw tekst groter is dan 50.000 tekens, worden alleen de eerste 50.000 tekens geanalyseerd en wordt er een waarschuwing uitgegeven.
+## <a name="error-and-warning-cases"></a>Fout-en waarschuwings cases
+Als de taal code voor het document niet wordt ondersteund, wordt een waarschuwing geretourneerd en worden er geen entiteiten geëxtraheerd.
+Als uw tekst leeg is, wordt er een waarschuwing gegenereerd.
+Als uw tekst groter is dan 50.000 tekens, worden alleen de eerste 50.000 tekens geanalyseerd en wordt er een waarschuwing gegeven.
 
-Als de vaardigheid een waarschuwing `maskedText` retourneert, kan de uitvoer leeg zijn.  Dit betekent dat als u verwacht dat de output te bestaan voor input in latere vaardigheden, zal het niet werken zoals bedoeld. Houd hier rekening mee bij het schrijven van uw skillset definitie.
+Als de vaardigheid een waarschuwing retourneert, kan de `maskedText` uitvoer leeg zijn.  Dit betekent dat als u verwacht dat de uitvoer bestaat voor invoer in latere vaardig heden, deze niet werkt zoals bedoeld. Houd dit in acht wanneer u uw definitie van uw vaardig heden schrijft.
 
 ## <a name="see-also"></a>Zie ook
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
-+ [Een vaardighedenset definiëren](cognitive-search-defining-skillset.md)
++ [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)

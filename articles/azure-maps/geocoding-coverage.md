@@ -1,6 +1,6 @@
 ---
-title: Dekking van geocodering | Microsoft Azure Maps
-description: Het proces van het converteren van locatieadres naar breedte- en lengtecoördinaten staat bekend als geocodering. In dit artikel vindt u meer informatie over regio's met geocoderingsdekking in Microsoft Azure Maps.
+title: Dekking voor geocodering | Microsoft Azure kaarten
+description: Het proces voor het converteren van een locatie adres naar de breedte-en lengte graad-coördinaten wordt geocodering genoemd. In dit artikel vindt u informatie over regio's met geocoderings dekking in Microsoft Azure Maps.
 author: philmea
 ms.author: philmea
 ms.date: 12/31/2019
@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 9836bd35b16c4c308b7c9d096b104c0cec68a34c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335652"
 ---
-# <a name="azure-maps-geocoding-coverage"></a>Azure Maps-dekking voor geocodering
+# <a name="azure-maps-geocoding-coverage"></a>Geocoderings dekking Azure Maps
 
-Wanneer u zoekt naar een locatie met Azure Maps, neemt de zoekservice, bijvoorbeeld [Zoekadres op,](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)uw zoektermen en retourneert u de breedte- en lengtecoördinaten. Dit proces wordt geocodering genoemd. Azure Maps heeft echter niet hetzelfde niveau van informatie en nauwkeurigheid voor alle regio's en landen. Gebruik dit artikel om te bepalen naar wat voor soort locaties u betrouwbaar zoeken in elke regio. 
+Wanneer u zoekt naar een locatie met Azure Maps, de zoek service, bijvoorbeeld [Zoek adres ophalen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress), worden uw zoek termen opgehaald en worden de coördinaten voor de breedte graad en lengte graad geretourneerd. Dit proces wordt geocodering genoemd. Azure Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor alle regio's en landen. Gebruik dit artikel om te bepalen met welke typen locaties u in elke regio betrouwbaar kunt zoeken. 
 
-De mogelijkheid om te geocoderen in een land/regio is afhankelijk van de dekking van de gegevens op de weg en de geocoderingsprecisie van de geocoderingsservice. De volgende categorisaties worden gebruikt, geef het niveau van geocoderingsondersteuning in elk land/regio aan.
-* **Adrespunten** - Adresgegevens kunnen worden opgelost tot een breedte-/lengtegraadcoördin binnen het adrespakket (eigendomsgrens). Soms aangeduid als 'Rooftop' nauwkeurig. Dit is het hoogste niveau van nauwkeurigheid dat beschikbaar is voor adressen. 
-* **Huisnummers** - Adressen worden geïnterpoleerd naar een breedtegraad/lengtegraad coördinaat op straat.
-* **Straatniveau** - Adressen worden opgelost op de breedtegraad/lengtegraad van de straat die het adres bevat. Het huisnummer mag niet worden verwerkt.
-* **Stadsniveau** - Plaatsnamen van de stad worden gesteund.
+De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van de weg en de geocoderings nauwkeurigheid van de geocoderings service. De volgende categorisaties worden gebruikt om het niveau van geocoderings ondersteuning in elk land/elke regio in te stellen.
+* **Adres punten** -adres gegevens kunnen worden omgezet naar een breedte graad/lengte graad binnen het perceel van het adres (eigenschaps grens). Ook wel nauw keurig aangeduid als ' Rooftop '. Dit is het hoogste nauwkeurigheids niveau dat beschikbaar is voor adressen. 
+* **Huis nummers** : adressen worden geïnterpoleerd naar een coördinaat van een breedte graad/lengte graad in het adres.
+* **Straat niveau** : adressen worden omgezet in de coördinaat van de breedte graad/lengte graad van de straat die het adres bevat. Het huis nummer mag niet worden verwerkt.
+* Namen van **plaatsnamen en plaatsnamen** worden ondersteund.
 
 ## <a name="americas"></a>Noord- en Zuid-Amerika
 
-| Land/regio                                       | Adrespunten | Huisnummers | Straatniveau | Stadsniveau | Aandachtspunten |
+| Land/regio                                       | Adres punten | Huis nummers | Straat niveau | Niveau van de stad | Interessante punten |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Anguilla                                            |                 |                |              |      ✓     |          ✓         |
 | Antarctica                                          |                 |                |              |      ✓     |          ✓         |
@@ -48,7 +48,7 @@ De mogelijkheid om te geocoderen in een land/regio is afhankelijk van de dekking
 | Costa Rica                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Cuba                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Dominica                                            |                 |                |       ✓      |      ✓     |          ✓         |
-| Dominicana                                          |                 |                |       ✓      |      ✓     |          ✓         |
+| Dominicaansea                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Ecuador                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | El Salvador                                         |                 |                |       ✓      |      ✓     |          ✓         |
 | Falklandeilanden                                    |                 |                |              |      ✓     |          ✓         |
@@ -69,26 +69,26 @@ De mogelijkheid om te geocoderen in een land/regio is afhankelijk van de dekking
 | Paraguay                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Peru                                                |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Puerto Rico                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Sint-Barthélemie                                    |                 |                |       ✓      |      ✓     |          ✓         |
+| Saint--Barthélemy                                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Kitts en Nevis                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Lucia                                         |                 |                |              |      ✓     |          ✓         |
 | Saint-Martin                                        |                 |                |       ✓      |      ✓     |          ✓         |
-| Saint Pierre en Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
+| Saint-Pierre en Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Vincent en de Grenadines                    |                 |                |              |      ✓     |          ✓         |
 | Sint Maarten                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Zuid-Georgië en de Zuidelijke Sandwich-eilanden        |                 |                |              |      ✓     |          ✓         |
 | Suriname                                            |                 |                |              |      ✓     |          ✓         |
 | Trinidad en Tobago                                 |                 |                |       ✓      |      ✓     |          ✓         |
-| Verenigde Staten Kleine Afgelegen eilanden                |                 |                |              |      ✓     |          ✓         |
+| Verenigde Staten ondergeschikte afgelegen eilanden                |                 |                |              |      ✓     |          ✓         |
 | Verenigde Staten van Amerika                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Uruguay                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Britse Maagdeneilanden                              |                 |                |              |      ✓     |          ✓         |
-| Amerikaanse Maagdeneilanden                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Amerikaanse Maagden eilanden                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 
 ## <a name="asia-pacific"></a>Azië en Stille Oceaan
 
-| Land/regio                                      | Adrespunten |Huisnummers | Straatniveau | Stadsniveau | Aandachtspunten |
+| Land/regio                                      | Adres punten |Huis nummers | Straat niveau | Niveau van de stad | Interessante punten |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Amerikaans-Samoa                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Australië                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -104,7 +104,7 @@ De mogelijkheid om te geocoderen in een land/regio is afhankelijk van de dekking
 | Cookeilanden                                        |                 |                |              |      ✓     |          ✓         |
 | Fiji                                                |                  |                |              |      ✓     |          ✓        |
 | Frans-Polynesië                                    |                 |                |              |      ✓     |          ✓         |
-| Gehoord eiland en McDonald Eilanden                   |                 |                |              |      ✓     |          ✓         |
+| Heard Island en McDonald eilanden                   |                 |                |              |      ✓     |          ✓         |
 | Hongkong SAR                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indonesië                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | India                                               |        ✓        |        ✓       |       ✓      |      ✓     |                   |
@@ -130,10 +130,10 @@ De mogelijkheid om te geocoderen in een land/regio is afhankelijk van de dekking
 | Filipijnen                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Pitcairn                                            |                 |                |              |      ✓     |          ✓         |
 | Samoa                                               |                 |                |              |      ✓     |          ✓         |
-| Senkaku-eilanden                                     |        ✓        |                |              |      ✓     |          ✓         |
+| Senkakuman eilanden                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Singapore                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Salomonseilanden                                     |                 |                |              |      ✓     |          ✓         |
-| Zuidelijke Koerilen                                     |        ✓        |                |              |      ✓     |          ✓         |
+| Zuidelijk Kurils                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Sri Lanka                                           |                 |                |              |      ✓     |          ✓         |
 | Taiwan                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Thailand                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
@@ -147,7 +147,7 @@ De mogelijkheid om te geocoderen in een land/regio is afhankelijk van de dekking
 
 ## <a name="europe"></a>Europa
 
-| Land/regio                                      | Adrespunten |Huisnummers | Straatniveau | Stadsniveau | Aandachtspunten |
+| Land/regio                                      | Adres punten |Huis nummers | Straat niveau | Niveau van de stad | Interessante punten |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Albanië                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Andorra                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -175,7 +175,7 @@ De mogelijkheid om te geocoderen in een land/regio is afhankelijk van de dekking
 | Hongarije                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | IJsland                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Ierland                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Isle Of Man                                         |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Isle of man                                         |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Italië                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Jan Mayen                                           |        ✓        |                |              |      ✓     |          ✓         |
 | Jersey                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -195,7 +195,7 @@ De mogelijkheid om te geocoderen in een land/regio is afhankelijk van de dekking
 | Noorwegen                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Polen                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Portugal                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| +Azoren en Madeira                                 |                 |                |       ✓      |      ✓     |          ✓         |
+| + Azoren en Madeira                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | Roemenië                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Russische Federatie                                  |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | San Marino                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -203,7 +203,7 @@ De mogelijkheid om te geocoderen in een land/regio is afhankelijk van de dekking
 | Slowakije                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Slovenië                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Spanje                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Svalbard                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
+| Jan                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Zweden                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Zwitserland                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Tadzjikistan                                          |                 |                |              |      ✓     |          ✓         |
@@ -212,12 +212,12 @@ De mogelijkheid om te geocoderen in een land/regio is afhankelijk van de dekking
 | Oekraïne                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Verenigd Koninkrijk                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Oezbekistan                                          |                 |                |              |      ✓     |          ✓         |
-| Vaticaanstad                                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Vaticaan stad                                        |                 |                |       ✓      |      ✓     |          ✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Midden-Oosten en Afrika
 
-| Land/regio                                      | Adrespunten |Huisnummers | Straatniveau | Stadsniveau | Aandachtspunten |
+| Land/regio                                      | Adres punten |Huis nummers | Straat niveau | Niveau van de stad | Interessante punten |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Afghanistan                                         |                 |                |              |      ✓     |          ✓         |
 | Algerije                                             |                 |                |       ✓      |      ✓     |          ✓         |
@@ -285,7 +285,7 @@ De mogelijkheid om te geocoderen in een land/regio is afhankelijk van de dekking
 | Soedan                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Swaziland                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Syrië                                               |                 |                |              |      ✓     |          ✓         |
-| São Tomé en Príncipe                               |                 |                |       ✓      |      ✓     |          ✓         |
+| Sao Tomé en principe                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Tanzania                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Togo                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Tunesië                                             |        ✓        |                |       ✓      |      ✓     |          ✓         |
@@ -299,7 +299,7 @@ De mogelijkheid om te geocoderen in een land/regio is afhankelijk van de dekking
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de zoekreferentiepagina's [voor](https://docs.microsoft.com/rest/api/maps/search) meer informatie over geocodering van Azure Maps.
+Zie de pagina met [Zoek](https://docs.microsoft.com/rest/api/maps/search) informatie voor meer informatie over Azure Maps geocodering.
 
-Meer informatie over de [dekkingsgebieden voor de verkeersservice Kaarten](traffic-coverage.md). 
+Meer informatie over de [dekkings gebieden voor de service Maps-verkeer](traffic-coverage.md). 
 

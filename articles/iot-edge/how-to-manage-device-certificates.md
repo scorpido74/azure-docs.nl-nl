@@ -1,6 +1,6 @@
 ---
-title: Apparaatcertificaten beheren - Azure IoT Edge | Microsoft Documenten
-description: Maak testcertificaten, installeer en beheer ze op een Azure IoT Edge-apparaat om zich voor te bereiden op productie-implementatie.
+title: Apparaat certificaten beheren-Azure IoT Edge | Microsoft Docs
+description: Test certificaten maken, installeren en beheren op een Azure IoT Edge apparaat om de productie-implementatie voor te bereiden.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,67 +9,67 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c18c3d560adb3c3cae54bda808ee5842c260fd6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79539206"
 ---
-# <a name="manage-certificates-on-an-iot-edge-device"></a>Certificaten beheren op een IoT Edge-apparaat
+# <a name="manage-certificates-on-an-iot-edge-device"></a>Certificaten op een IoT Edge apparaat beheren
 
-Alle IoT Edge-apparaten gebruiken certificaten om veilige verbindingen te maken tussen de runtime en alle modules die op het apparaat worden uitgevoerd. IoT Edge-apparaten die functioneren als gateways gebruiken dezelfde certificaten om ook verbinding te maken met hun downstream-apparaten.
+Alle IoT Edge apparaten gebruiken certificaten voor het maken van beveiligde verbindingen tussen de runtime en alle modules die op het apparaat worden uitgevoerd. IoT Edge apparaten als gateways functioneren, gebruiken deze zelfde certificaten ook om verbinding te maken met hun downstream-apparaten.
 
 ## <a name="install-production-certificates"></a>Productiecertificaten installeren
 
-Wanneer u IoT Edge voor het eerst installeert en uw apparaat indient, is het apparaat ingesteld met tijdelijke certificaten, zodat u de service testen.
-Deze tijdelijke certificaten verlopen binnen 90 dagen of kunnen opnieuw worden ingesteld door uw machine opnieuw op te starten.
-Zodra u klaar bent om uw apparaten naar een productiescenario te verplaatsen of u een gatewayscenario wilt maken, moet u uw eigen certificaten verstrekken.
-In dit artikel worden de stappen getoond om certificaten op uw IoT Edge-apparaten te installeren.
+Wanneer u IoT Edge voor het eerst installeert en uw apparaat inricht, wordt het apparaat ingesteld met tijdelijke certificaten, zodat u de service kunt testen.
+Deze tijdelijke certificaten verlopen over 90 dagen of kunnen opnieuw worden ingesteld door de computer opnieuw op te starten.
+Wanneer u klaar bent om uw apparaten te verplaatsen naar een productie scenario of als u een gateway scenario wilt maken, moet u uw eigen certificaten opgeven.
+In dit artikel worden de stappen beschreven voor het installeren van certificaten op uw IoT Edge-apparaten.
 
-Zie [Begrijpen hoe Azure IoT Edge certificaten gebruikt](iot-edge-certs.md)voor meer informatie over de verschillende typen certificaten en hun rollen in een IoT Edge-scenario.
+Zie [begrijpen hoe Azure IOT Edge certificaten gebruikt](iot-edge-certs.md)voor meer informatie over de verschillende typen certificaten en hun rollen in een IOT Edge scenario.
 
 >[!NOTE]
->De term "root CA" die in dit artikel wordt gebruikt, verwijst naar het hoogste overheidscertificaat van de certificaatketen voor uw IoT-oplossing. U hoeft de certificaatbasis van een gesyndiceerde certificaatautoriteit of de hoofdmap van de certificeringsinstantie van uw organisatie niet te gebruiken. In veel gevallen is het eigenlijk een tussentijds ca-openbaar certificaat.
+>De term ' basis-CA ' die in dit artikel wordt gebruikt, verwijst naar het open bare certificaat van de bovenste instantie van de certificaat keten voor uw IoT-oplossing. U hoeft niet de hoofdmap van het certificaat van een extern gepubliceerde certificerings instantie of de basis van de certificerings instantie van uw organisatie te gebruiken. In veel gevallen is het eigenlijk een openbaar certificaat van een tussenliggend CA.
 
 ### <a name="prerequisites"></a>Vereisten
 
-* Een IoT Edge-apparaat dat wordt uitgevoerd op [Windows](how-to-install-iot-edge-windows.md) of [Linux.](how-to-install-iot-edge-linux.md)
-* Laat een CA-certificaat (root certificate authority) certificeren, zelf ondertekend of gekocht bij een vertrouwde commerciële certificaatautoriteit zoals Baltimore, Verisign, DigiCert of GlobalSign.
+* Een IoT Edge apparaat, dat wordt uitgevoerd op [Windows](how-to-install-iot-edge-windows.md) of [Linux](how-to-install-iot-edge-linux.md).
+* Beschikken over een basis certificaat voor een certificerings instantie (CA), ofwel zelf ondertekend of gekocht bij een vertrouwde commerciële certificerings instantie, zoals Baltimore, VeriSign, DigiCert of GlobalSign.
 
-Als u nog geen basiscertificaatautoriteit hebt, maar IoT Edge-functies wilt uitproberen waarvoor productiecertificaten nodig zijn (zoals gatewayscenario's), u [democertificaten maken om de functies van iot edge-apparaten te testen.](how-to-create-test-certificates.md)
+Als u nog geen basis certificerings instantie hebt, maar IoT Edge functies wilt uitproberen waarvoor productie certificaten zijn vereist (zoals de gateway scenario's), kunt u [demo certificaten maken om IOT Edge-apparaatfuncties te testen](how-to-create-test-certificates.md).
 
-### <a name="create-production-certificates"></a>Productiecertificaten maken
+### <a name="create-production-certificates"></a>Productie certificaten maken
 
-U moet uw eigen certificaatautoriteit gebruiken om de volgende bestanden te maken:
+U moet uw eigen certificerings instantie gebruiken om de volgende bestanden te maken:
 
 * Basis-CA
-* Apparaat CA-certificaat
-* De privésleutel van apparaat CA
+* CA-certificaat van apparaat
+* Persoonlijke sleutel van de apparaat-CA
 
-In dit artikel is wat we de *hoofd-CA* noemen niet de hoogste certificaatinstantie voor een organisatie. Het is de hoogste certificaatautoriteit voor het IoT Edge-scenario, dat de IoT Edge-hubmodule, gebruikersmodules en downstream-apparaten gebruiken om vertrouwen tussen elkaar te vestigen.
+In dit artikel wordt verwezen naar de *basis-CA* , maar niet de hoogste certificerings instantie voor een organisatie. Het is de bovenste certificerings instantie voor het IoT Edge scenario, die door de IoT Edge hub-module, gebruikers modules en downstream-apparaten wordt gebruikt om een vertrouwens relatie tussen elkaar te leggen.
 
-Als u een voorbeeld van deze certificaten wilt zien, controleert u de scripts waarmee democertificaten worden gemaakt in [CA-certificaten beheren voor voorbeelden en zelfstudies.](https://github.com/Azure/iotedge/tree/master/tools/CACertificates)
+Als u een voor beeld van deze certificaten wilt zien, bekijkt u de scripts die demo certificaten maken bij het [beheren van test-CA-certificaten voor voor beelden en zelf studies](https://github.com/Azure/iotedge/tree/master/tools/CACertificates).
 
-### <a name="install-certificates-on-the-device"></a>Certificaten installeren op het apparaat
+### <a name="install-certificates-on-the-device"></a>Certificaten op het apparaat installeren
 
-Installeer uw certificaatketen op het IoT Edge-apparaat en configureer de IoT Edge-runtime om naar de nieuwe certificaten te verwijzen.
+Installeer uw certificaat keten op het IoT Edge apparaat en configureer de IoT Edge-runtime om te verwijzen naar de nieuwe certificaten.
 
-Als u bijvoorbeeld de voorbeeldscripts hebt gebruikt om democertificaten te [maken,](how-to-create-test-certificates.md)kopieert u de volgende bestanden naar uw IoT-Edge-apparaat:
+Als u bijvoorbeeld de voorbeeld scripts hebt gebruikt om [demo certificaten te maken](how-to-create-test-certificates.md), kopieert u de volgende bestanden naar uw IOT-edge-apparaat:
 
-* Apparaat CA-certificaat:`<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
-* De privésleutel van apparaat CA:`<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
-* Wortel CA:`<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
+* CA-certificaat van apparaat:`<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
+* Persoonlijke sleutel van de apparaat-CA:`<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
+* Basis-CA:`<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
-1. Kopieer de drie certificaat- en sleutelbestanden naar uw IoT Edge-apparaat.
+1. Kopieer de drie certificaat-en sleutel bestanden naar uw IoT Edge-apparaat.
 
-   U een service zoals [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) of een functie zoals Secure copy [protocol](https://www.ssh.com/ssh/scp/) gebruiken om de certificaatbestanden te verplaatsen.  Als u de certificaten hebt gegenereerd op het IoT Edge-apparaat zelf, u deze stap overslaan en het pad naar de werkmap gebruiken.
+   U kunt een service zoals [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) of een functie zoals [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) gebruiken om de certificaat bestanden te verplaatsen.  Als u de certificaten op het IoT Edge apparaat zelf hebt gegenereerd, kunt u deze stap overs Laan en het pad naar de werkmap gebruiken.
 
-1. Open het IoT Edge security daemon config-bestand.
+1. Open het IoT Edge Security daemon config-bestand.
 
-   * Windows:`C:\ProgramData\iotedge\config.yaml`
-   * Linux:`/etc/iotedge/config.yaml`
+   * Windows`C:\ProgramData\iotedge\config.yaml`
+   * Spreek`/etc/iotedge/config.yaml`
 
-1. Stel de **certificaateigenschappen** in het config.yaml-bestand in op het volledige pad naar het certificaat en de belangrijkste bestanden op het IoT Edge-apparaat. Verwijder `#` het teken voordat de certificaateigenschappen de vier regels ongedaan maken. Zorg ervoor dat de **certificaten:** lijn heeft geen voorafgaande witruimte en dat geneste items worden ingesprongen door twee spaties. Bijvoorbeeld:
+1. Stel de **certificaat** eigenschappen in het bestand config. yaml in op het volledige pad naar het certificaat en de sleutel bestanden op het IOT edge apparaat. Verwijder het `#` teken vóór de eigenschappen van het certificaat om de vier regels op te heffen. Zorg ervoor dat de regel **certificaten:** geen voor gaande witruimte heeft en dat geneste items met twee spaties worden inge sprongen. Bijvoorbeeld:
 
    * Windows:
 
@@ -89,29 +89,29 @@ Als u bijvoorbeeld de voorbeeldscripts hebt gebruikt om democertificaten te [mak
         trusted_ca_certs: "<path>/root-ca.root.ca.cert.pem"
       ```
 
-1. Zorg er op Linux-apparaten voor dat de **gebruiker leesmachtigingen** heeft voor de map met de certificaten.
+1. Controleer op Linux-apparaten of de gebruiker **iotedge** Lees machtigingen heeft voor de directory die de certificaten bevat.
 
-1. Als u al eerder andere certificaten voor IoT Edge op het apparaat hebt gebruikt, verwijdert u de bestanden in de volgende twee mappen voordat u IoT Edge start of opnieuw start:
+1. Als u eerder andere certificaten voor IoT Edge op het apparaat hebt gebruikt, verwijdert u de bestanden in de volgende twee directory's voordat u IoT Edge start of opnieuw opstart:
 
    * Windows: `C:\ProgramData\iotedge\hsm\certs` en`C:\ProgramData\iotedge\hsm\cert_keys`
 
    * Linux: `/var/lib/iotedge/hsm/certs` en`/var/lib/iotedge/hsm/cert_keys`
 
-## <a name="customize-certificate-lifetime"></a>Certificaatlevensduur aanpassen
+## <a name="customize-certificate-lifetime"></a>Levens duur van certificaten aanpassen
 
-IoT Edge genereert in verschillende gevallen automatisch certificaten op het apparaat, waaronder:
+IoT Edge automatisch certificaten op het apparaat genereren in verschillende gevallen, waaronder:
 
-* Als u geen eigen productiecertificaten verstrekt bij het installeren en inrichten van IoT Edge, genereert de IoT Edge-beveiligingsmanager automatisch een **CA-certificaat voor apparaten.** Dit zelfondertekende certificaat is alleen bedoeld voor ontwikkelings- en testscenario's, niet voor productie. Dit certificaat verloopt na 90 dagen.
-* De IoT Edge-beveiligingsmanager genereert ook een **CA-certificaat voor werkbelasting** dat is ondertekend door het CA-certificaat van het apparaat
+* Als u geen eigen productie certificaten opgeeft wanneer u IoT Edge installeert en inricht, wordt door de IoT Edge Security Manager automatisch een **CA-certificaat**voor een apparaat gegenereerd. Dit zelfondertekende certificaat is alleen bedoeld voor ontwikkelings-en test scenario's, niet voor productie. Dit certificaat verloopt na 90 dagen.
+* De IoT Edge Security Manager genereert ook een **CA-certificaat** dat is ondertekend door het CA-certificaat van de apparaat
 
-Zie [Begrijpen hoe Azure IoT Edge certificaten gebruikt](iot-edge-certs.md)voor meer informatie over de functie van de verschillende certificaten op een IoT Edge-apparaat.
+Zie [begrijpen hoe Azure IOT Edge certificaten gebruikt](iot-edge-certs.md)voor meer informatie over de functie van de verschillende certificaten op een IOT edge apparaat.
 
-Voor deze twee automatisch gegenereerde certificaten u de **auto_generated_ca_lifetime_days** vlag instellen in config.yaml om het aantal dagen voor de levensduur van de certificaten te configureren.
+Voor deze twee automatisch gegenereerde certificaten hebt u de optie om de **auto_generated_ca_lifetime_days** vlag in config. yaml in te stellen om het aantal dagen voor de levens duur van de certificaten te configureren.
 
 >[!NOTE]
->Er is een derde automatisch gegenereerd certificaat dat de IoT Edge-beveiligingsbeheer maakt, het **IoT Edge-hubservercertificaat.** Dit certificaat heeft altijd een 90-dagen, maar wordt automatisch verlengd voordat het verloopt. De **waarde auto_generated_ca_lifetime_days** heeft geen invloed op dit certificaat.
+>Er is een derde automatisch gegenereerd certificaat dat IoT Edge Security Manager maakt, het **IOT Edge hub-server certificaat**. Dit certificaat heeft altijd een 90 dag, maar wordt automatisch verlengd voordat het verloopt. De waarde van de **auto_generated_ca_lifetime_days** heeft geen invloed op dit certificaat.
 
-Als u de vervaldatum van het certificaat wilt configureren op iets anders dan de standaard90-dagen, voegt u de waarde in dagen toe aan de **sectie certificaten** van het config.yaml-bestand.
+Als u het verlopen van het certificaat wilt configureren naar een andere waarde dan de standaard 90 dagen, voegt u het gedeelte dagen aan de sectie **certificaten** van het bestand config. yaml toe.
 
 ```yaml
 certificates:
@@ -121,11 +121,11 @@ certificates:
   auto_generated_ca_lifetime_days: <value>
 ```
 
-Als u uw eigen CA-certificaten voor apparaat hebt opgegeven, is deze waarde nog steeds van toepassing op het CA-certificaat voor werkbelasting, mits de door u ingestelde levensduur korter is dan de levensduur van het CA-certificaat van het apparaat.
+Als u uw eigen CA-certificaten voor het apparaat hebt opgegeven, is deze waarde nog steeds van toepassing op het CA-certificaat van de werk belasting, op voor waarde dat de ingestelde levens duur korter is dan de levens duur van het CA-certificaat van de apparaat.
 
-Voer de volgende stappen uit nadat u de vlag in het bestand config.yaml hebt opgegeven:
+Nadat u de vlag hebt opgegeven in het bestand config. yaml, voert u de volgende stappen uit:
 
-1. Verwijder de inhoud `hsm` van de map.
+1. De inhoud van de `hsm` map verwijderen.
 
    Windows: `C:\ProgramData\iotedge\hsm\certs and C:\ProgramData\iotedge\hsm\cert_keys` Linux:`/var/lib/iotedge/hsm/certs and /var/lib/iotedge/hsm/cert_keys`
 
@@ -143,7 +143,7 @@ Voer de volgende stappen uit nadat u de vlag in het bestand config.yaml hebt opg
    sudo systemctl restart iotedge
    ```
 
-1. Bevestig de instelling voor de levensduur.
+1. Bevestig de instelling voor de levens duur.
 
    Windows:
 
@@ -157,8 +157,8 @@ Voer de volgende stappen uit nadat u de vlag in het bestand config.yaml hebt opg
    sudo iotedge check --verbose
    ```
 
-   Controleer de uitvoer van de **productiegereedheid: certificaten** controleren, waarbij het aantal dagen wordt weergegeven totdat de automatisch gegenereerde CA-certificaten van het apparaat verlopen.
+   Controleer de uitvoer van de **gereedheid voor productie: certificaten** controle, waarin het aantal dagen wordt vermeld waarna de automatisch GEGENEREERDe CA-certificaten verlopen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Het installeren van certificaten op een IoT Edge-apparaat is een noodzakelijke stap voordat u uw oplossing in productie implementeert. Meer informatie over hoe u u voorbereidt op het [implementeren van uw IoT Edge-oplossing in productie.](production-checklist.md)
+Het installeren van certificaten op een IoT Edge apparaat is een nood zakelijke stap voordat u uw oplossing in de productie omgeving implementeert. Meer informatie over het [voorbereiden van de implementatie van uw IOT EDGE oplossing in productie](production-checklist.md).

@@ -1,6 +1,6 @@
 ---
-title: Geneste virtualisatie inschakelen op een sjabloon-VM in Azure Lab Services (Script) | Microsoft Documenten
-description: Meer informatie over het maken van een sjabloon-vm met meerdere VM's erin.  Met andere woorden, schakel geneste virtualisatie in op een sjabloon-VM in Azure Lab Services.
+title: Geneste virtualisatie inschakelen op een sjabloon-VM in Azure Lab Services (script) | Microsoft Docs
+description: Meer informatie over het maken van een sjabloon-VM met meerdere virtuele machines in.  Met andere woorden, schakel geneste virtualisatie in op een sjabloon-VM in Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,42 +14,42 @@ ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
 ms.openlocfilehash: 56e5ad21f94521565b4df193b2450a1c994b66f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79503034"
 ---
-# <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>Geneste virtualisatie inschakelen op een virtuele sjabloonmachine in Azure Lab Services met behulp van een script
+# <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>Geneste virtualisatie inschakelen op een virtuele machine van een sjabloon in Azure Lab Services met behulp van een script
 
-Geneste virtualisatie stelt u in staat om een multi-VM-omgeving te maken in de virtuele machine van een lab. Als u de sjabloon publiceert, krijgt elke gebruiker in het lab een virtuele machine die is ingesteld met meerdere VM's erin.  Zie [Geneste virtualisatie inschakelen op een virtuele sjabloon in Azure Lab Services](how-to-enable-nested-virtualization-template-vm.md)voor meer informatie over geneste virtualisatie en Azure Lab Services.
+Met geneste virtualisatie kunt u een multi-VM-omgeving maken in de virtuele machine van een lab. Als u de sjabloon publiceert, wordt elke gebruiker in het lab voorzien van een virtuele machine die is ingesteld met meerdere virtuele machines in de test omgeving.  Zie voor meer informatie over geneste virtualisatie en Azure Lab Services [geneste virtualisatie inschakelen op een virtuele machine van een sjabloon in Azure Lab Services](how-to-enable-nested-virtualization-template-vm.md).
 
-De stappen in dit artikel richten zich op het instellen van geneste virtualisatie voor Windows Server 2016 of Windows Server 2019. U gebruikt een script om een sjabloonmachine in te stellen met Hyper-V.  De volgende stappen zullen u begeleiden bij het gebruik van de [Lab Services Hyper-V scripts.](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV)
+De stappen in dit artikel zijn gericht op het instellen van geneste virtualisatie voor Windows Server 2016 of Windows Server 2019. U gebruikt een script voor het instellen van de sjabloon computer met Hyper-V.  De volgende stappen begeleiden u bij het gebruik van de [Lab-Services Hyper-V-scripts](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV).
 
 >[!IMPORTANT]
->Selecteer **Groot (geneste virtualisatie)** of **Medium (geneste virtualisatie)** voor de grootte van de virtuele machine bij het maken van het lab.  Geneste virtualisatie werkt anders niet.  
+>Selecteer **groot (geneste virtualisatie)** of **Gemiddeld (geneste virtualisatie)** voor de grootte van de virtuele machine bij het maken van het lab.  Geneste virtualisatie werkt anders niet.  
 
 ## <a name="run-script"></a>Script uitvoeren
 
-1. Als u Internet Explorer gebruikt, moet `https://github.com` u mogelijk toevoegen aan de lijst met vertrouwde sites.
+1. Als u Internet Explorer gebruikt, moet u mogelijk toevoegen `https://github.com` aan de lijst met vertrouwde websites.
     1. Open Internet Explorer.
-    1. Selecteer het tandwielpictogram en kies **internetopties**.  
-    1. Wanneer het dialoogvenster **Internetopties** wordt weergegeven, selecteert u **Beveiliging**, **selecteer Vertrouwde sites**, klik op knop **Sites.**
-    1. Wanneer het dialoogvenster **Vertrouwde** `https://github.com` sites wordt weergegeven, voegt u toe aan de lijst met vertrouwde websites en selecteert u **Sluiten**.
+    1. Selecteer het tandwiel pictogram en kies **Internet opties**.  
+    1. Wanneer het dialoog venster **Internet opties** wordt weer gegeven, selecteert u **beveiliging**, selecteer **vertrouwde sites**en klikt u op de knop **sites** .
+    1. Wanneer het dialoog venster **vertrouwde sites** wordt weer `https://github.com` gegeven, voegt u toe aan de lijst met vertrouwde websites en selecteert u **sluiten**.
 
         ![Vertrouwde sites](../media/how-to-enable-nested-virtualization-template-vm-using-script/trusted-sites-dialog.png)
-1. Download de Git-repository-bestanden zoals beschreven in de volgende stappen.
-    1. Ga [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/)naar.
-    1. Klik op de knop **Klonen of Downloaden.**
-    1. Klik **op ZIP downloaden**.
-    1. Het ZIP-bestand extraheren
+1. Down load de Git-opslagplaats bestanden zoals beschreven in de volgende stappen.
+    1. Ga naar [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/).
+    1. Klik op de knop **klonen of downloaden** .
+    1. Klik op **down load zip**.
+    1. Het ZIP-bestand uitpakken
 
     >[!TIP]
-    >Je de Git repository ook klonen op [https://github.com/Azure/azure-devtestlab.git](https://github.com/Azure/azure-devtestlab.git).
+    >U kunt ook de Git-opslag plaats [https://github.com/Azure/azure-devtestlab.git](https://github.com/Azure/azure-devtestlab.git)klonen op.
 
-1. **Start PowerShell** in **de beheerdersmodus.**
-1. Navigeer in het PowerShell-venster naar de map met het gedownloade script. Als u vanuit de bovenste map van de archiefbestanden navigeert, bevindt het script zich op `azure-devtestlab\samples\ClassroomLabs\Scripts\HyperV\`.
-1. Mogelijk moet u het uitvoeringsbeleid wijzigen om het script uit te voeren. Voer de volgende opdracht uit:
+1. Start **Power shell** in de **beheerders** modus.
+1. Navigeer in het Power shell-venster naar de map met het gedownloade script. Als u vanuit de bovenste map van de opslagplaats bestanden navigeert, bevindt het script zich `azure-devtestlab\samples\ClassroomLabs\Scripts\HyperV\`op.
+1. Mogelijk moet u het uitvoerings beleid wijzigen om het script uit te voeren. Voer de volgende opdracht uit:
 
     ```powershell
     Set-ExecutionPolicy bypass -force
@@ -62,8 +62,8 @@ De stappen in dit artikel richten zich op het instellen van geneste virtualisati
     ```
 
     > [!NOTE]
-    > Het script kan vereisen dat de machine opnieuw wordt opgestart. Volg de instructies van het script en voer het script opnieuw uit totdat **script voltooid** is in de uitvoer.
-1. Vergeet niet om het uitvoeringsbeleid te resetten. Voer de volgende opdracht uit:
+    > Het script vereist mogelijk dat de computer opnieuw wordt opgestart. Volg de instructies in het script en voer het script opnieuw uit totdat het **script is voltooid** wordt weer gegeven in de uitvoer.
+1. Vergeet niet om het uitvoerings beleid opnieuw in te stellen. Voer de volgende opdracht uit:
 
     ```powershell
     Set-ExecutionPolicy default -force
@@ -71,13 +71,13 @@ De stappen in dit artikel richten zich op het instellen van geneste virtualisati
 
 ## <a name="conclusion"></a>Conclusie
 
-Nu is uw sjabloonmachine klaar om virtuele Hyper-V-machines te maken. Zie [Een virtuele machine maken in Hyper-V](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v) voor instructies over het maken van virtuele hyperv-virtuele machines. Zie ook [Microsoft Evaluation Center](https://www.microsoft.com/evalcenter/) om beschikbare besturingssystemen en software te bekijken.  
+Uw sjabloon machine is nu gereed voor het maken van virtuele Hyper-V-machines. Zie [een virtuele machine maken in Hyper-v](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v) voor instructies over het maken van virtuele Hyper-v-machines. Zie ook [micro soft Evaluation Center](https://www.microsoft.com/evalcenter/) om beschik bare besturings systemen en software te bekijken.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De volgende stappen zijn gebruikelijk voor het opzetten van een lab.
+De volgende stappen zijn gebruikelijk voor het instellen van elk lab.
 
 - [Gebruikers toevoegen](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Quotum instellen](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Een schema instellen](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [Koppelingen naar e-mailregistratie naar studenten](how-to-configure-student-usage.md#send-invitations-to-users)
+- [Quota instellen](how-to-configure-student-usage.md#set-quotas-for-users)
+- [Een planning instellen](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+- [E-mail registratie koppelingen naar studenten](how-to-configure-student-usage.md#send-invitations-to-users)

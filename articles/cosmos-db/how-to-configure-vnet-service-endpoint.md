@@ -1,99 +1,99 @@
 ---
 title: Toegang op basis van virtueel netwerk configureren voor een Azure Cosmos-account
-description: In dit document worden de stappen beschreven die nodig zijn om een eindpunt voor de virtuele netwerkservice in te stellen voor Azure Cosmos DB.
+description: In dit document worden de stappen beschreven die nodig zijn voor het instellen van een service-eind punt voor een virtueel netwerk voor Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: mjbrown
 ms.openlocfilehash: 442623880c1b95f3d7e038ae44832b74853d2c4a
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80366234"
 ---
-# <a name="configure-access-from-virtual-networks-vnet"></a>Toegang vanaf virtuele netwerken configureren (VNet)
+# <a name="configure-access-from-virtual-networks-vnet"></a>Toegang vanaf virtuele netwerken (VNet) configureren
 
-U kunt Azure Cosmos DB-accounts configureren om alleen toegang toe te staan vanaf een specifiek subnet van een virtueel Azure-netwerk. Ga als lid van het e-mailaccount van Azure Cosmos met verbindingen van een subnet in een virtueel netwerk:
+U kunt Azure Cosmos DB-accounts configureren om alleen toegang toe te staan vanaf een specifiek subnet van een virtueel Azure-netwerk. De toegang tot een Azure Cosmos DB account beperken met verbindingen van een subnet in een virtueel netwerk:
 
-1. Schakel het subnet in om het subnet en de virtuele netwerkidentiteit naar Azure Cosmos DB te verzenden. U dit bereiken door een serviceeindpunt voor Azure Cosmos DB in te schakelen op het specifieke subnet.
+1. Schakel het subnet in om de identiteit van het subnet en het virtuele netwerk naar Azure Cosmos DB te verzenden. U kunt dit doen door een service-eind punt in te scha kelen voor Azure Cosmos DB op het specifieke subnet.
 
-1. Voeg een regel toe in het Azure Cosmos DB-account om het subnet op te geven als bron waaruit het account kan worden geopend.
+1. Voeg een regel toe aan het Azure Cosmos DB-account om het subnet op te geven als bron waarvan het account toegang kan krijgen.
 
 > [!NOTE]
-> Wanneer een serviceeindpunt voor uw Azure Cosmos DB-account is ingeschakeld op een subnet, schakelt de bron van het verkeer dat Azure Cosmos DB bereikt, over van een openbaar IP naar een virtueel netwerk en subnet. De verkeerwisseling is van toepassing op een Azure Cosmos DB-account dat is geopend vanaf dit subnet. Als uw Azure Cosmos DB-accounts een IP-gebaseerde firewall hebben om dit subnet toe te staan, komen aanvragen van het subnet met service-ingeschakeld niet langer overeen met de IP-firewallregels en worden ze afgewezen.
+> Wanneer een service-eind punt voor uw Azure Cosmos DB-account in een subnet is ingeschakeld, wordt de bron van het verkeer dat Azure Cosmos DB overschakelt van een openbaar IP-adres naar een virtueel netwerk en subnet. Het wisselen van verkeer is van toepassing op alle Azure Cosmos DB accounts die vanuit dit subnet toegankelijk zijn. Als uw Azure Cosmos DB accounts een op IP gebaseerde firewall hebben om dit subnet toe te staan, komen aanvragen van het service-subnet niet meer overeen met de IP-firewall regels en worden deze geweigerd.
 >
-> Zie voor meer informatie de stappen die zijn beschreven in de [migratie van een IP-firewallregel naar een](#migrate-from-firewall-to-vnet) sectie met lijst met lijst met virtuele netwerktoegangsbeheer van dit artikel.
+> Zie de stappen die worden beschreven in de sectie [migreren van een IP-firewall regel naar een lijst met virtuele netwerk toegangs beheer](#migrate-from-firewall-to-vnet) in dit artikel voor meer informatie.
 
-In de volgende secties wordt beschreven hoe u een eindpunt voor virtuele netwerkservice configureert voor een Azure Cosmos DB-account.
+In de volgende secties wordt beschreven hoe u een service-eind punt voor een virtueel netwerk configureert voor een Azure Cosmos DB-account.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="configure-a-service-endpoint-by-using-the-azure-portal"></a><a id="configure-using-portal"></a>Een serviceeindpunt configureren met behulp van de Azure-portal
+## <a name="configure-a-service-endpoint-by-using-the-azure-portal"></a><a id="configure-using-portal"></a>Een service-eind punt configureren met behulp van de Azure Portal
 
-### <a name="configure-a-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>Een serviceeindpunt configureren voor een bestaand virtueel Azure-netwerk en subnet
+### <a name="configure-a-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>Een service-eind punt configureren voor een bestaand virtueel Azure-netwerk en-subnet
 
-1. Zoek in het blade **Alle bronnen** het Azure Cosmos DB-account dat u wilt beveiligen.
+1. Ga op de Blade **alle resources** naar het Azure Cosmos DB account dat u wilt beveiligen.
 
-1. Selecteer **Firewalls en virtuele netwerken** in het instellingenmenu en kies ervoor om toegang toe te staan vanuit geselecteerde **netwerken.**
+1. Selecteer **firewalls en virtuele netwerken** in het menu instellingen en kies ervoor om toegang vanaf **geselecteerde netwerken**toe te staan.
 
-1. Als u toegang wilt verlenen tot het subnet van een bestaand virtueel netwerk, selecteert u onder **Virtuele netwerken**de optie Bestaand **Virtueel Azure-netwerk toevoegen**.
+1. Als u toegang wilt verlenen tot een bestaand subnet van een virtueel netwerk, selecteert u onder **virtuele netwerken** **bestaande Azure Virtual Network toevoegen**.
 
-1. Selecteer het **abonnement** waarvan u een virtueel Azure-netwerk wilt toevoegen. Selecteer de Azure **Virtual-netwerken** en **subnetten** die u toegang wilt bieden tot uw Azure Cosmos DB-account. Selecteer vervolgens **Inschakelen** om geselecteerde netwerken met serviceeindpunten in te schakelen voor "Microsoft.AzureCosmosDB". Als deze is voltooid, selecteert u **Toevoegen**.
+1. Selecteer het **abonnement** waarvan u een virtueel Azure-netwerk wilt toevoegen. Selecteer de virtuele Azure- **netwerken** en **subnetten** die u toegang wilt verlenen tot uw Azure Cosmos DB-account. Selecteer vervolgens **inschakelen** om geselecteerde netwerken met Service-eind punten in te scha kelen voor ' micro soft. AzureCosmosDB '. Wanneer het is voltooid, selecteert u **toevoegen**.
 
    ![Virtueel netwerk en subnet selecteren](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
 
-1. Nadat het Azure Cosmos DB-account is ingeschakeld voor toegang vanuit een virtueel netwerk, wordt alleen verkeer van dit gekozen subnet mogelijk gemaakt. Het virtuele netwerk en subnet dat u hebt toegevoegd, moeten worden weergegeven zoals weergegeven in de volgende schermafbeelding:
+1. Nadat het Azure Cosmos DB-account is ingeschakeld voor toegang vanuit een virtueel netwerk, is verkeer alleen toegestaan vanuit het gekozen subnet. Het virtuele netwerk en het subnet dat u hebt toegevoegd, moeten worden weer gegeven zoals in de volgende scherm afbeelding:
 
-   ![Virtueel netwerk en subnet dat is geconfigureerd](./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
+   ![Het virtuele netwerk en het subnet zijn geconfigureerd](./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
 
 > [!NOTE]
-> Als u eindpunten voor virtuele netwerkservice wilt inschakelen, hebt u de volgende abonnementsmachtigingen nodig:
->   * Abonnement met virtueel netwerk: netwerkbijdrager
->   * Abonnement met Azure Cosmos DB-account: DocumentDB-accountbijdrager
->   * Als uw virtuele netwerk en Azure Cosmos DB-account zich in verschillende abonnementen `Microsoft.DocumentDB` bevinden, moet u ervoor zorgen dat het abonnement met een virtueel netwerk ook is geregistreerd als resourceprovider is geregistreerd. Zie Het artikel [Azure-bronproviders en -typen](../azure-resource-manager/management/resource-providers-and-types.md) als u een bronprovider wilt registreren.
+> Als u service-eind punten voor virtuele netwerken wilt inschakelen, hebt u de volgende abonnements machtigingen nodig:
+>   * Abonnement met virtueel netwerk: Inzender voor netwerken
+>   * Abonnement met Azure Cosmos DB account: Inzender van DocumentDB-account
+>   * Als uw virtuele netwerk en Azure Cosmos DB account zich in verschillende abonnementen bevinden, moet u ervoor zorgen dat er voor het abonnement `Microsoft.DocumentDB` dat een virtueel netwerk heeft, ook een resource provider is geregistreerd. Als u een resource provider wilt registreren, raadpleegt u het artikel [Azure-resource providers en-typen](../azure-resource-manager/management/resource-providers-and-types.md) .
 
-Hier zijn de aanwijzingen voor het registreren van een abonnement bij resource provider.
+Hier vindt u de instructies voor het registreren van een abonnement bij een resource provider.
 
-### <a name="configure-a-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>Een serviceeindpunt configureren voor een nieuw virtueel Azure-netwerk en subnet
+### <a name="configure-a-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>Een service-eind punt configureren voor een nieuw virtueel Azure-netwerk en-subnet
 
-1. Zoek in het blade **Alle bronnen** het Azure Cosmos DB-account dat u wilt beveiligen.  
+1. Ga op de Blade **alle resources** naar het Azure Cosmos DB account dat u wilt beveiligen.  
 
-1. Selecteer **Firewalls en Azure virtuele netwerken** in het instellingenmenu en kies ervoor om toegang toe te staan vanuit geselecteerde **netwerken.**  
+1. Selecteer **firewalls en virtuele netwerken van Azure** in het menu instellingen en kies ervoor om toegang vanaf **geselecteerde netwerken**toe te staan.  
 
-1. Als u toegang wilt verlenen tot een nieuw virtueel Azure-netwerk, selecteert u onder **Virtuele netwerken**de optie Nieuw virtueel **netwerk toevoegen**.  
+1. Als u toegang wilt verlenen tot een nieuw virtueel Azure-netwerk, selecteert u onder **virtuele netwerken** **nieuwe virtuele netwerk toevoegen**.  
 
-1. Geef de details op die nodig zijn om een nieuw virtueel netwerk te maken en selecteer **Vervolgens Maken**. Het subnet wordt gemaakt met een serviceeindpunt voor "Microsoft.AzureCosmosDB" ingeschakeld.
+1. Geef de vereiste gegevens op voor het maken van een nieuw virtueel netwerk en selecteer vervolgens **maken**. Het subnet wordt gemaakt met een service-eind punt voor ' micro soft. AzureCosmosDB ' ingeschakeld.
 
    ![Een virtueel netwerk en subnet selecteren voor een nieuw virtueel netwerk](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-Als uw Azure Cosmos DB-account wordt gebruikt door andere Azure-services, zoals Azure Cognitive Search, of is geopend vanuit Stream analytics of Power BI, geeft u toegang toe door Verbindingen accepteren te selecteren **vanuit wereldwijde Azure-datacenters.**
+Als uw Azure Cosmos DB-account wordt gebruikt door andere Azure-Services zoals Azure Cognitive Search, of als het is geopend vanuit stream Analytics of Power BI, kunt u toegang toestaan door verbindingen accepteren te selecteren in de **wereld wijde Azure-data centers**.
 
-Als u vanuit de portal toegang hebt tot Azure Cosmos DB-statistieken, moet u **Toegang toestaan vanuit Azure-portalopties** inschakelen. Zie het artikel [Een IP-firewall configureren](how-to-configure-firewall.md) voor meer informatie over deze opties. Nadat u de toegang hebt ingeschakeld, selecteert **u Opslaan** om de instellingen op te slaan.
+Om ervoor te zorgen dat u toegang hebt tot Azure Cosmos DB metrische gegevens uit de portal, moet u **toegang toestaan via Azure Portal** opties inschakelen. Zie het artikel [een IP-Firewall configureren](how-to-configure-firewall.md) voor meer informatie over deze opties. Nadat u toegang hebt ingeschakeld, selecteert u **Opslaan** om de instellingen op te slaan.
 
 ## <a name="remove-a-virtual-network-or-subnet"></a><a id="remove-vnet-or-subnet"></a>Een virtueel netwerk of subnet verwijderen
 
-1. Zoek in het blade **Alle resources** het Azure Cosmos DB-account waarvoor u serviceeindpunten hebt toegewezen.  
+1. Ga op de Blade **alle resources** naar het Azure Cosmos DB account waarvoor u service-eind punten hebt toegewezen.  
 
-1. Selecteer **Firewalls en virtuele netwerken** in het instellingenmenu.  
+1. Selecteer **firewalls en virtuele netwerken** in het menu instellingen.  
 
-1. Als u een virtuele netwerk- of subnetregel wilt verwijderen, selecteert u **...** naast het virtuele netwerk of subnet en selecteert **u Verwijderen**.
+1. Als u een virtuele netwerk-of subnet-regel wilt verwijderen, selecteert u **...** naast het virtuele netwerk of subnet en selecteert u **verwijderen**.
 
    ![Een virtueel netwerk verwijderen](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
 
 1. Klik op **Opslaan** om uw wijzigingen toe te passen.
 
-## <a name="configure-a-service-endpoint-by-using-azure-powershell"></a><a id="configure-using-powershell"></a>Een serviceeindpunt configureren met Azure PowerShell
+## <a name="configure-a-service-endpoint-by-using-azure-powershell"></a><a id="configure-using-powershell"></a>Een service-eind punt configureren met behulp van Azure PowerShell
 
 > [!NOTE]
-> Wanneer u PowerShell of azure CLI gebruikt, moet u de volledige lijst met IP-filters en virtuele netwerkALS opgeven in parameters, niet alleen de parameters die moeten worden toegevoegd.
+> Wanneer u Power shell of de Azure CLI gebruikt, moet u ervoor zorgen dat u de volledige lijst met IP-filters en virtuele netwerk-Acl's opgeeft in para meters, niet alleen de items die moeten worden toegevoegd.
 
-Gebruik de volgende stappen om een serviceeindpunt te configureren voor een Azure Cosmos DB-account met Azure PowerShell:  
+Gebruik de volgende stappen om een service-eind punt te configureren voor een Azure Cosmos DB-account met behulp van Azure PowerShell:  
 
-1. Installeer [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) en [meld u aan](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  
+1. Installeer [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) en [Meld u aan](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  
 
-1. Schakel het serviceeindpunt in voor een bestaand subnet van een virtueel netwerk.  
+1. Schakel het service-eind punt in voor een bestaand subnet van een virtueel netwerk.  
 
    ```powershell
    $resourceGroupName = "<Resource group name>"
@@ -110,7 +110,7 @@ Gebruik de volgende stappen om een serviceeindpunt te configureren voor een Azur
       -ServiceEndpoint $serviceEndpoint | Set-AzVirtualNetwork
    ```
 
-1. Ontvang virtuele netwerkinformatie.
+1. Gegevens van virtueel netwerk ophalen.
 
    ```powershell
    $vnet = Get-AzVirtualNetwork `
@@ -120,14 +120,14 @@ Gebruik de volgende stappen om een serviceeindpunt te configureren voor een Azur
    $subnetId = $vnet.Id + "/subnets/" + $subnetName
    ```
 
-1. Een Cosmos DB Virtual Network-regel voorbereiden
+1. Een Cosmos DB Virtual Network regel voorbereiden
 
    ```powershell
    $vnetRule = New-AzCosmosDBVirtualNetworkRule `
       -Id $subnetId
    ```
 
-1. Azure Cosmos DB-accounteigenschappen bijwerken met de nieuwe eindpuntconfiguratie van het virtuele netwerk: 
+1. Azure Cosmos DB account eigenschappen bijwerken met de nieuwe Virtual Network eindpunt configuratie: 
 
    ```powershell
    $accountName = "<Cosmos DB account name>"
@@ -139,7 +139,7 @@ Gebruik de volgende stappen om een serviceeindpunt te configureren voor een Azur
       -VirtualNetworkRuleObject @($vnetRule)
    ```
 
-1. Voer de volgende opdracht uit om te controleren of uw Azure Cosmos DB-account is bijgewerkt met het eindpunt van de virtuele netwerkservice dat u in de vorige stap hebt geconfigureerd:
+1. Voer de volgende opdracht uit om te controleren of uw Azure Cosmos DB-account is bijgewerkt met het virtuele netwerk service-eind punt dat u in de vorige stap hebt geconfigureerd:
 
    ```powershell
    $account = Get-AzCosmosDBAccount `
@@ -150,13 +150,13 @@ Gebruik de volgende stappen om een serviceeindpunt te configureren voor een Azur
    $account.VirtualNetworkRules
    ```
 
-## <a name="configure-a-service-endpoint-by-using-the-azure-cli"></a><a id="configure-using-cli"></a>Een serviceeindpunt configureren met de Azure CLI
+## <a name="configure-a-service-endpoint-by-using-the-azure-cli"></a><a id="configure-using-cli"></a>Een service-eind punt configureren met behulp van de Azure CLI
 
-Azure Cosmos-accounts kunnen worden geconfigureerd voor serviceeindpunten wanneer ze op een later tijdstip worden gemaakt of bijgewerkt als het subnet er al voor is geconfigureerd. Serviceeindpunten kunnen ook worden ingeschakeld op het Cosmos-account waar het subnet nog niet voor hen is geconfigureerd en vervolgens beginnen te werken wanneer het subnet later is geconfigureerd. Deze flexibiliteit zorgt ervoor dat beheerders die geen toegang hebben tot zowel het Cosmos-account als de virtuele netwerkbronnen, hun configuraties onafhankelijk van elkaar kunnen maken.
+Azure Cosmos-accounts kunnen worden geconfigureerd voor service-eind punten wanneer deze op een later tijdstip worden gemaakt of bijgewerkt als het subnet al voor hen is geconfigureerd. Service-eind punten kunnen ook worden ingeschakeld voor het Cosmos-account waarin het subnet nog niet is geconfigureerd en die vervolgens zal werken wanneer het subnet later wordt geconfigureerd. Met deze flexibiliteit kunnen beheerders die geen toegang hebben tot zowel het Cosmos-account als de virtuele netwerk bronnen, hun configuraties onafhankelijk van elkaar maken.
 
-### <a name="create-a-new-cosmos-account-and-connect-it-to-a-back-end-subnet-for-a-new-virtual-network"></a>Maak een nieuw Cosmos-account aan en verbind deze met een back-end subnet voor een nieuw virtueel netwerk
+### <a name="create-a-new-cosmos-account-and-connect-it-to-a-back-end-subnet-for-a-new-virtual-network"></a>Een nieuw Cosmos-account maken en deze verbinden met een back-end-subnet voor een nieuw virtueel netwerk
 
-In dit voorbeeld wordt het virtuele netwerk en subnet gemaakt met serviceeindpunten die zijn ingeschakeld voor beide wanneer ze worden gemaakt.
+In dit voor beeld wordt het virtuele netwerk en het subnet gemaakt met Service-eind punten die zijn ingeschakeld voor beide wanneer ze worden gemaakt.
 
 ```azurecli-interactive
 # Create an Azure Cosmos Account with a service endpoint connected to a backend subnet
@@ -200,9 +200,9 @@ az cosmosdb create \
    --virtual-network-rules $svcEndpoint
 ```
 
-### <a name="connect-and-configure-a-cosmos-account-to-a-back-end-subnet-independently"></a>Een Cosmos-account verbinden en configureren met een back-endsubnet onafhankelijk
+### <a name="connect-and-configure-a-cosmos-account-to-a-back-end-subnet-independently"></a>Verbinding maken en configureren van een Cosmos-account op een back-end-subnet onafhankelijk
 
-Dit voorbeeld is bedoeld om te laten zien hoe u een Azure Cosmos-account koppelen aan een bestaand nieuw virtueel netwerk waarbij het subnet nog niet is geconfigureerd voor serviceeindpunten. Dit gebeurt met `--ignore-missing-vnet-service-endpoint` behulp van de parameter. Hierdoor kan de configuratie voor het Cosmos-account foutloos worden voltooid voordat de configuratie van het subnet van het virtuele netwerk is voltooid. Zodra de subnetconfiguratie is voltooid, is het Cosmos-account toegankelijk via het geconfigureerde subnet.
+Dit voor beeld is bedoeld om te laten zien hoe u een Azure Cosmos-account verbindt met een bestaand nieuw virtueel netwerk waar het subnet nog niet is geconfigureerd voor service-eind punten. Dit wordt gedaan met behulp `--ignore-missing-vnet-service-endpoint` van de para meter. Hierdoor kan de configuratie voor het Cosmos-account zonder fouten worden voltooid voordat de configuratie naar het subnet van het virtuele netwerk is voltooid. Zodra de configuratie van het subnet is voltooid, is het Cosmos-account toegankelijk via het geconfigureerde subnet.
 
 ```azurecli-interactive
 # Create an Azure Cosmos Account with a service endpoint connected to a backend subnet
@@ -258,15 +258,15 @@ az network vnet subnet update \
    --service-endpoints Microsoft.AzureCosmosDB
 ```
 
-## <a name="migrating-from-an-ip-firewall-rule-to-a-virtual-network-acl"></a><a id="migrate-from-firewall-to-vnet"></a>Migreren van een IP-firewallregel naar een acl voor virtueel netwerk
+## <a name="migrating-from-an-ip-firewall-rule-to-a-virtual-network-acl"></a><a id="migrate-from-firewall-to-vnet"></a>Migreren van een IP-firewall regel naar een virtuele netwerk-ACL
 
-Als u een Azure Cosmos DB-account wilt migreren van HET gebruik van IP-firewallregels naar het gebruik van eindpunten voor virtuele netwerkservices, gebruikt u de volgende stappen.
+Voer de volgende stappen uit om een Azure Cosmos DB-account te migreren met behulp van IP-firewall regels voor het gebruik van service-eind punten van een virtueel netwerk.
 
-Nadat een Azure Cosmos DB-account is geconfigureerd voor een serviceeindpunt voor een subnet, worden aanvragen van dat subnet verzonden naar Azure Cosmos DB met virtuele netwerk- en subnetbrongegevens in plaats van een openbaar IP-adres van de bron. Deze aanvragen komen niet langer overeen met een IP-filter dat is geconfigureerd op het Azure Cosmos DB-account, daarom zijn de volgende stappen nodig om downtime te voorkomen.
+Nadat een Azure Cosmos DB account is geconfigureerd voor een service-eind punt voor een subnet, worden aanvragen van dat subnet verzonden naar Azure Cosmos DB met virtuele netwerk-en subnet gegevens in plaats van een openbaar IP-bron adres. Deze aanvragen komen niet meer overeen met een IP-filter dat is geconfigureerd op het Azure Cosmos DB-account. Daarom zijn de volgende stappen nodig om uitval tijd te voor komen.
 
-Schakel het eindpunt van de Azure Cosmos DB-service op het virtuele netwerk en subnet in met de bovenstaande stap in 'Het serviceeindpunt inschakelen voor een bestaand subnet van een virtueel netwerk'.
+Voordat u doorgaat, schakelt u het Azure Cosmos DB Service-eind punt in op het virtuele netwerk en subnet met behulp van de hierboven weer gegeven stap in het service-eind punt inschakelen voor een bestaand subnet van een virtueel netwerk.
 
-1. Informatie over virtuele netwerken en subnets:
+1. Informatie over virtueel netwerk en subnet ophalen:
 
    ```powershell
    $resourceGroupName = "myResourceGroup"
@@ -281,14 +281,14 @@ Schakel het eindpunt van de Azure Cosmos DB-service op het virtuele netwerk en s
    $subnetId = $vnet.Id + "/subnets/" + $subnetName
    ```
 
-1. Een nieuw object met de regel van het virtuele netwerk voorbereiden voor het Azure Cosmos DB-account:
+1. Een nieuw Virtual Network-regel object voorbereiden voor het Azure Cosmos DB-account:
 
    ```powershell
    $vnetRule = New-AzCosmosDBVirtualNetworkRule `
       -Id $subnetId
    ```
 
-1. Werk het Azure Cosmos DB-account bij om serviceeindpunttoegang vanaf het subnet in te schakelen:
+1. Werk het Azure Cosmos DB-account bij om service Endpoint-toegang vanuit het subnet in te scha kelen:
 
    ```powershell
    Update-AzCosmosDBAccount `
@@ -298,10 +298,10 @@ Schakel het eindpunt van de Azure Cosmos DB-service op het virtuele netwerk en s
       -VirtualNetworkRuleObject @($vnetRule)
    ```
 
-1. Herhaal de vorige stappen voor alle Azure Cosmos DB-accounts die vanaf het subnet worden geopend.
+1. Herhaal de vorige stappen voor alle Azure Cosmos DB accounts die vanuit het subnet toegankelijk zijn.
 
-1. Verwijder de IP-firewallregel voor het subnet uit de Firewallregels van het Azure Cosmos DB-account.
+1. Verwijder de IP-firewall regel voor het subnet uit de firewall regels van het Azure Cosmos DB-account.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie het ondersteuningsartikel Firewall om een firewall voor Azure Cosmos DB [te](firewall-support.md) configureren.
+* Zie het artikel [firewall ondersteuning](firewall-support.md) voor het configureren van een firewall voor Azure Cosmos db.

@@ -1,6 +1,6 @@
 ---
-title: Weersdekking | Microsoft Azure Maps
-description: In dit artikel vindt u meer informatie over de weersdekking in Microsoft Azure Maps.
+title: Weers cover Microsoft Azure kaarten
+description: In dit artikel vindt u meer informatie over de weer dekking van Microsoft Azure kaarten.
 author: philmea
 ms.author: philmea
 ms.date: 11/20/2019
@@ -9,28 +9,28 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 60761f7641d8cf87121992fce9050aea0f0b434b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80333571"
 ---
-# <a name="azure-maps-weather-coverage"></a>Azure Maps weerdekking
+# <a name="azure-maps-weather-coverage"></a>Weer dekking Azure Maps
 
-In dit artikel vindt u dekkingsgegevens voor Azure Maps [Weather Services.](https://aka.ms/AzureMapsWeatherService) Azure Maps Weergegevensservices retourneert details zoals radartegels, huidige weersomstandigheden, weersvoorspellingen en het weer langs een route.
+In dit artikel vindt u informatie over de dekking van Azure Maps [weer Services](https://aka.ms/AzureMapsWeatherService). Azure Maps weer gegevens Services retourneert details zoals radar tegels, huidige weers omstandigheden, weers verwachtingen en het weers bericht langs een route.
 
-Azure Maps heeft niet hetzelfde niveau van informatie en nauwkeurigheid voor alle landen en regio's.
+Azure Maps heeft niet hetzelfde niveau van informatie en nauw keurigheid voor alle landen en regio's.
 
-In de volgende tabel vindt u informatie over wat voor soort weersinformatie u opvragen bij elk land/regio.
+De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvragen van elk land/elke regio.
 
 | Symbool | Betekenis |
 |--------|---------|
-|*       |Dekt het weer langs route, huidige omstandigheden, uurvoorspelling, kwartaalprognose en dagelijkse prognose-API's |
+|*       |Behandelt weer berichten over route, huidige omstandigheden, prognose per uur, prognose van kwartaal dagen en dagelijkse prognose-Api's |
 
 
 ## <a name="americas"></a>Noord- en Zuid-Amerika
 
-| Land/regio              |  Satelliettegels | Minute Forecast, Radar Tiles | Andere* | 
+| Land/regio              |  Satelliet tegels | Minuut prognose, radar tegels | Daarenteg | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Anguilla                                 | ✓ |   |  ✓| 
 | Antarctica                               | ✓ |   |  ✓|
@@ -74,20 +74,20 @@ In de volgende tabel vindt u informatie over wat voor soort weersinformatie u op
 | Paraguay                                 | ✓ |   |  ✓| 
 | Peru                                     | ✓ |   |  ✓| 
 | Puerto Rico                              | ✓ |   |  ✓| 
-| Sint-Barthélemie                         | ✓ |   |  ✓| 
+| Saint--Barthélemy                         | ✓ |   |  ✓| 
 | Saint Kitts en Nevis                    | ✓ |   |  ✓| 
 | Saint Lucia                              | ✓ |   |  ✓| 
 | Saint-Martin                             | ✓ |   |  ✓| 
-| Saint Pierre en Miquelon                | ✓ |   |  ✓| 
+| Saint-Pierre en Miquelon                | ✓ |   |  ✓| 
 | Saint Vincent en de Grenadines         | ✓ |   |  ✓| 
-| Sint Eustatius                           | ✓ |   |  ✓|  
+| Sint-Eustatius                           | ✓ |   |  ✓|  
 | Sint Maarten                             | ✓ |   |  ✓| 
-| Zuid-Georgië en Zuid-Sandwich eilanden | ✓ |   |  ✓| 
+| Zuid-Georgië en de zuidelijke Sandwich eilanden | ✓ |   |  ✓| 
 | Suriname                                 | ✓ |   |  ✓| 
 | Trinidad en Tobago                      | ✓ |   |  ✓| 
 | Turks- en Caicoseilanden                 | ✓ |   |  ✓| 
-| Amerikaanse afgelegen eilanden                    | ✓ |   |  ✓| 
-| Amerikaanse Maagdeneilanden                      | ✓ |   |  ✓| 
+| Amerikaanse ondergeschikte afgelegen eilanden                    | ✓ |   |  ✓| 
+| Amerikaanse Maagden eilanden                      | ✓ |   |  ✓| 
 | Verenigde Staten                            | ✓ | ✓ |  ✓| 
 | Uruguay                                  | ✓ |   |  ✓| 
 | Venezuela                                | ✓ |   |  ✓| 
@@ -95,7 +95,7 @@ In de volgende tabel vindt u informatie over wat voor soort weersinformatie u op
 
 ## <a name="middle-east-and-africa"></a>Midden-Oosten en Afrika
 
-| Land/regio              |  Satelliettegels | Minute Forecast, Radar Tiles | Andere* | 
+| Land/regio              |  Satelliet tegels | Minuut prognose, radar tegels | Daarenteg | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Algerije                     | ✓               |                              |        ✓| 
 | Angola                      | ✓               |                              |        ✓| 
@@ -111,7 +111,7 @@ In de volgende tabel vindt u informatie over wat voor soort weersinformatie u op
 | Tsjaad                        | ✓               |                              |        ✓| 
 | Comoren                     | ✓               |                              |        ✓| 
 | Congo (DRC)                 | ✓               |                              |        ✓|
-| Ivoorkust               | ✓               |                              |        ✓| 
+| Ivoor kust               | ✓               |                              |        ✓| 
 | Djibouti                    | ✓               |                              |        ✓| 
 | Egypte                       | ✓               |                              |        ✓| 
 | Equatoriaal-Guinea           | ✓               |                              |        ✓| 
@@ -150,8 +150,8 @@ In de volgende tabel vindt u informatie over wat voor soort weersinformatie u op
 | Qatar                       | ✓               |                              |        ✓| 
 | Réunion                     | ✓               |                              |        ✓| 
 | Rwanda                      | ✓               |                              |        ✓| 
-| St Helena, Hemelvaart, Tristan da Cunha        | ✓               |                              |        ✓| 
-| São Tomé en Príncipe       | ✓               |                              |        ✓| 
+| Sint-Helena, Ascension en Tristan da Cunha        | ✓               |                              |        ✓| 
+| Sao Tomé en principe       | ✓               |                              |        ✓| 
 | Saoedi-Arabië                | ✓               |                              |        ✓| 
 | Senegal                     | ✓               |                              |        ✓| 
 | Seychellen                  | ✓               |                              |        ✓| 
@@ -174,7 +174,7 @@ In de volgende tabel vindt u informatie over wat voor soort weersinformatie u op
 
 ## <a name="asia-pacific"></a>Azië en Stille Oceaan
 
-| Land/regio              |  Satelliettegels | Minute Forecast, Radar Tiles | Andere* | 
+| Land/regio              |  Satelliet tegels | Minuut prognose, radar tegels | Daarenteg | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Afghanistan                       | ✓ |   |  ✓| 
 | Amerikaans-Samoa                    | ✓ |   |  ✓| 
@@ -191,7 +191,7 @@ In de volgende tabel vindt u informatie over wat voor soort weersinformatie u op
 | Fiji                              | ✓ |   |  ✓| 
 | Frans-Polynesië                  | ✓ |   |  ✓| 
 | Guam                              | ✓ |   |  ✓| 
-| Gehoord eiland en McDonald Eilanden | ✓ |   |  ✓| 
+| Heard Island en McDonald eilanden | ✓ |   |  ✓| 
 | Hongkong SAR                     | ✓ |   |  ✓| 
 | India                             | ✓ |   |  ✓| 
 | Indonesië                         | ✓ |   |  ✓| 
@@ -220,7 +220,7 @@ In de volgende tabel vindt u informatie over wat voor soort weersinformatie u op
 | Palau                             | ✓ |   |  ✓| 
 | Papoea-Nieuw-Guinea                  | ✓ |   |  ✓| 
 | Filipijnen                       | ✓ |   |  ✓| 
-| Pitcairn eilanden                  | ✓ |   |  ✓| 
+| Pitcairneilanden                  | ✓ |   |  ✓| 
 | Samoa                             | ✓ |   |  ✓| 
 | Singapore                         | ✓ |   |  ✓| 
 | Salomonseilanden                   | ✓ |   |  ✓| 
@@ -241,7 +241,7 @@ In de volgende tabel vindt u informatie over wat voor soort weersinformatie u op
 
 ## <a name="europe"></a>Europa
 
-| Land/regio              |  Satelliettegels | Minute Forecast, Radar Tiles | Andere* | 
+| Land/regio              |  Satelliet tegels | Minuut prognose, radar tegels | Daarenteg | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|
 | Albanië                | ✓ |   |  ✓| 
 | Andorra                | ✓ |   |  ✓| 
@@ -254,7 +254,7 @@ In de volgende tabel vindt u informatie over wat voor soort weersinformatie u op
 | Bulgarije               | ✓ |   |  ✓| 
 | Kroatië                | ✓ | ✓ |  ✓| 
 | Cyprus                 | ✓ |   |  ✓| 
-| Tsjechië                | ✓ | ✓ |  ✓| 
+| Czechia                | ✓ | ✓ |  ✓| 
 | Denemarken                | ✓ | ✓ |  ✓| 
 | Estland                | ✓ | ✓ |  ✓| 
 | Faeröer          | ✓ |   |  ✓| 
@@ -292,11 +292,11 @@ In de volgende tabel vindt u informatie over wat voor soort weersinformatie u op
 | Slowakije               | ✓ | ✓ |  ✓| 
 | Slovenië               | ✓ | ✓ |  ✓| 
 | Spanje                  | ✓ | ✓ |  ✓| 
-| Svalbard               | ✓ |   |  ✓|
+| Jan               | ✓ |   |  ✓|
 | Jan Mayen              | ✓ |   |  ✓| 
 | Zweden                 | ✓ | ✓ |  ✓| 
 | Zwitserland            | ✓ | ✓ |  ✓| 
 | Turkije                 | ✓ |   |  ✓| 
 | Oekraïne                | ✓ |   |  ✓| 
 | Verenigd Koninkrijk         | ✓ | ✓ |  ✓| 
-| Vaticaanstad           | ✓ |   |  ✓| 
+| Vaticaan stad           | ✓ |   |  ✓| 

@@ -1,6 +1,6 @@
 ---
-title: Het Windows-besturingssysteem patchen in uw Service Fabric-cluster
-description: In dit artikel wordt besproken hoe u patching van het besturingssysteem op een Service Fabric-cluster automatiseren met behulp van Patch Orchestration-toepassing.
+title: Het Windows-besturings systeem in uw Service Fabric cluster bijwerken
+description: In dit artikel wordt beschreven hoe u patches van besturings systemen kunt automatiseren op een Service Fabric cluster met behulp van patch Orchestration-toepassing.
 services: service-fabric
 documentationcenter: .net
 author: athinanthny
@@ -15,78 +15,78 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
 ms.openlocfilehash: 857a4da0b24d600ecc572933af578e2e8faf501a
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80366319"
 ---
-# <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Het Windows-besturingssysteem patchen in uw Service Fabric-cluster
+# <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Het Windows-besturings systeem in uw Service Fabric cluster bijwerken
 
 > 
 > [!IMPORTANT]
-> Vanaf 30 april 2019 wordt Patch Orchestration Application versie 1.2.* niet meer ondersteund. Zorg ervoor dat u een upgrade uitvoert naar de nieuwste versie.
+> Vanaf 30 april 2019 wordt patch Orchestration Application versie 1,2. * niet meer ondersteund. Zorg ervoor dat u een upgrade uitvoert naar de nieuwste versie.
 
 > [!NOTE]
-> Het krijgen van [automatische os-afbeeldingsupgrades op uw virtuele machineschaalset](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) is de beste manier om uw besturingssysteem te laten patchen in Azure. Upgrades van virtuele machineschaalsets op basis van automatische os-afbeeldingvereisen zilver of meer duurzaamheid op een schaalset.
+> Het downloaden van [automatische installatie kopieën van besturings systemen op de schaalset voor virtuele machines](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) is de best practice voor het bewaren van uw besturings systeem in Azure. Voor virtuele-machine schaal sets op basis van automatische installatie kopieën van besturings systemen is een grotere duurzaamheid vereist voor een schaalset.
 >
 
- Patch Orchestration Application (POA) is een wrapper rond de Azure Service Fabric Repair Manager-service, waarmee op configuratie gebaseerde OS-patchplanning voor niet-Azure gehoste clusters mogelijk is. POA is niet vereist voor niet-door Azure gehoste clusters, maar het plannen van patchinstallatie per updatedomein is vereist om clusterhosts van Service Fabric te patchen zonder downtime.
+ Patch Orchestration Application (POA) is een wrapper rond de Azure Service Fabric Repair Manager-service, waarmee de patch planning op basis van het besturings systeem kan worden geconfigureerd voor niet door Azure gehoste clusters. POA is niet vereist voor niet door Azure gehoste clusters, maar het plannen van een patch-installatie per update domein is vereist voor het patchen van Service Fabric cluster-hosts zonder uitval tijd.
 
-POA is een Service Fabric-toepassing die patching van besturingssystemen op een Service Fabric-cluster automatiseert zonder downtime.
+POA is een Service Fabric toepassing waarmee het besturings systeem wordt geautomatiseerd op een Service Fabric cluster zonder uitval tijd.
 
 POA biedt de volgende functies:
 
-- **Installatie van automatische update van het besturingssysteem**. Updates van het besturingssysteem worden automatisch gedownload en geïnstalleerd. Clusterknooppunten worden indien nodig opnieuw opgestart zonder dat clusterdowntime nodig is.
+- **Automatische installatie**van de update van het besturings systeem. Updates van het besturings systeem worden automatisch gedownload en geïnstalleerd. Cluster knooppunten worden indien nodig opnieuw opgestart zonder dat er uitval tijd in het cluster ontstaat.
 
-- **Clusterbewuste patching en gezondheidsintegratie**. Terwijl POA updates toepast, wordt de status van de clusterknooppunten bewaakt. Clusterknooppunten worden één knooppunt tegelijk bijgewerkt of één updatedomein tegelijk. Als de status van het cluster naar beneden gaat als gevolg van het patchproces, wordt patchen gestopt om verzwarende het probleem te voorkomen.
+- **Integratie van cluster bewuste patches en status**. Tijdens POA worden updates toegepast, wordt de status van de cluster knooppunten gecontroleerd. Cluster knooppunten worden één knoop punt tegelijk of per update domein per keer bijgewerkt. Als de status van het cluster uitvalt vanwege het patch proces, wordt patches gestopt om te voor komen dat het probleem wordt verergerd.
 
-## <a name="internal-details-of-poa"></a>Interne details van POA
+## <a name="internal-details-of-poa"></a>Interne Details van POA
 
-POA bestaat uit de volgende subcomponenten:
+POA bestaat uit de volgende subonderdelen:
 
-- **Coördinator Service**: Deze statige dienst is verantwoordelijk voor:
-    - Coördineren van de Windows Update-taak op het hele cluster.
-    - Het resultaat van voltooide Windows Update-bewerkingen opslaan.
+- **Coördinator service**: dit stateful service is verantwoordelijk voor:
+    - De Windows Update-taak coördineren op het hele cluster.
+    - Het resultaat van voltooide Windows Update bewerkingen opslaan.
 
-- **Node Agent Service**: Deze statusloze service wordt uitgevoerd op alle clusterknooppunten van ServiceFabric. De dienst is verantwoordelijk voor:
-    - Bootstrapping the Node Agent NTService.
-    - Toezicht houden op de Node Agent NTService.
+- **Knoop punt-Agent service**: dit stateless service uitgevoerd op alle service Fabric cluster knooppunten. De service is verantwoordelijk voor:
+    - De NTService van de knooppunt agent Boots trappen.
+    - De NTService van de knooppunt agent bewaken.
 
-- **Node Agent NTService**: Deze Windows NT-service wordt uitgevoerd op een hoger niveau bevoegdheid (SYSTEEM). De Node Agent Service en de Coördinatorservice draaien daarentegen op een lager niveau (NETWORK SERVICE). De service is verantwoordelijk voor het uitvoeren van de volgende Windows Update-taken op alle clusterknooppunten:
-    - Automatische Windows-updates op het knooppunt uitschakelen.
-    - Het downloaden en installeren van Windows-updates volgens het beleid dat de gebruiker heeft opgegeven.
-    - Het opnieuw starten van de installatie van updates na Windows.
-    - Uploadde de resultaten van Windows-updates naar de coördinatorservice.
-    - Statusrapporten rapporteren als een bewerking is mislukt nadat alle pogingen zijn uitput.
+- **NTService van de knoop punt-agent**: deze Windows NT-service wordt uitgevoerd op een privilege op een hoger niveau (systeem). De node Agent-service en de coördinator service worden daarentegen uitgevoerd met een bevoegdheid op lager niveau (netwerk SERVICE). De service is verantwoordelijk voor het uitvoeren van de volgende Windows Update taken op alle cluster knooppunten:
+    - Automatische Windows-updates op het knoop punt uit te scha kelen.
+    - Het downloaden en installeren van Windows-updates volgens het beleid dat door de gebruiker is gegeven.
+    - De installatie van de computer na Windows-updates opnieuw starten.
+    - Het uploaden van de resultaten van Windows-updates naar de coördinator-service.
+    - Rapportage van status rapporten als een bewerking is mislukt nadat alle pogingen zijn uitgeput.
 
 > [!NOTE]
-> POA gebruikt de service Service Fabric Repair Manager-service om het knooppunt uit te schakelen of in te schakelen en gezondheidscontroles uit te voeren. De reparatietaak die door POA is gemaakt, houdt de voortgang van Windows Update voor elk knooppunt bij.
+> POA maakt gebruik van de service Service Fabric Repair Manager om het knoop punt in of uit te scha kelen en status controles uit te voeren. De herstel taak die door POA is gemaakt, houdt de Windows Update voortgang van elk knoop punt bij.
 
 ## <a name="prerequisites"></a>Vereisten
 
 > [!NOTE]
-> De vereiste minimum .NET Framework-versie is 4.6.
+> De vereiste minimale .NET Framework versie is 4,6.
 
-### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>De service Reparatiebeheer inschakelen (als deze nog niet wordt uitgevoerd)
+### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>De Repair Manager-service inschakelen (als deze nog niet wordt uitgevoerd)
 
-POA vereist dat de service Reparatiebeheer is ingeschakeld op het cluster.
+POA vereist dat de Repair Manager-service is ingeschakeld op het cluster.
 
 #### <a name="azure-clusters"></a>Azure-clusters
 
-Azure-clusters in de zilverduurzaamheidslaag hebben standaard de Service Reparatiebeheer ingeschakeld. Azure-clusters in de goudduurzaamheidslaag kunnen de Reparatiemanager-service wel of niet hebben ingeschakeld, afhankelijk van wanneer deze clusters zijn gemaakt. Azure-clusters in de bronzen duurzaamheidslaag hebben standaard niet de service Reparatiebeheer ingeschakeld. Als de service al is ingeschakeld, u deze zien in de sectie Systeemservices in Service Fabric Explorer.
+De Repair Manager-service is standaard ingeschakeld voor Azure-clusters op de duurzaamheids categorie zilver. Afhankelijk van de manier waarop deze clusters zijn gemaakt, is het mogelijk dat de Repair Manager-service niet is ingeschakeld voor Azure-clusters in de laag voor duurzaamheid van het goud. Azure-clusters in de laag Bronze duurzaamheid hebben standaard niet de Repair Manager-service ingeschakeld. Als de service al is ingeschakeld, kunt u deze bekijken in de sectie systeem services in Service Fabric Explorer.
 
 ##### <a name="the-azure-portal"></a>Azure Portal
-U Reparatiebeheer inschakelen vanuit de Azure-portal wanneer u het cluster instelt. Wanneer u het cluster configureert, selecteert u de optie **Reparatiebeheer opnemen** onder **Invoegtoepassingfuncties**.
+U kunt Repair Manager van de Azure Portal inschakelen tijdens het instellen van het cluster. Wanneer u het cluster configureert, selecteert u de optie **Repair Manager** toevoegen onder **invoeg**toepassingen.
 
-![Afbeelding van het inschakelen van Reparatiebeheer vanuit de Azure-portal](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
+![Afbeelding van het inschakelen van Repair Manager van de Azure Portal](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
-##### <a name="the-azure-resource-manager-deployment-model"></a>Het implementatiemodel azure resource manager
-U ook het [implementatiemodel azure resource manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) gebruiken om de service Reparatiebeheer in te schakelen op nieuwe en bestaande clusters van servicefabric. Download de sjabloon voor het cluster dat u wilt implementeren. U de voorbeeldsjablonen gebruiken of een aangepaste Azure Resource Manager-implementatiemodelsjabloon maken. 
+##### <a name="the-azure-resource-manager-deployment-model"></a>Het Azure Resource Manager-implementatie model
+U kunt ook het [Azure Resource Manager-implementatie model](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) gebruiken om de Repair Manager-service in te scha kelen op nieuwe en bestaande service Fabric clusters. Haal de sjabloon op voor het cluster dat u wilt implementeren. U kunt de voorbeeld sjablonen gebruiken of een aangepaste sjabloon voor Azure Resource Manager implementatie model maken. 
 
-Ga als volgt te werk om de service Reparatiebeheer in te schakelen met de [sjabloon Azure Resource Manager-implementatiemodel:](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)
+Ga als volgt te werk om de Repair Manager-service in te scha kelen met behulp van de [Azure Resource Manager-implementatie model sjabloon](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm):
 
-1. Controleer of `apiVersion` dit is ingesteld op *2017-07-01-preview* voor de *Microsoft.ServiceFabric/clusters-bron.* Als het anders is, moet `apiVersion` u updaten naar *2017-07-01-preview* of hoger:
+1. Controleer of het `apiVersion` is ingesteld op *2017-07-01-preview* voor de resource *micro soft. ServiceFabric/clusters* . Als dat niet het geval is, moet u `apiVersion` bijwerken naar *2017-07-01-preview* of hoger:
 
     ```json
     {
@@ -98,7 +98,7 @@ Ga als volgt te werk om de service Reparatiebeheer in te schakelen met de [sjabl
     }
     ```
 
-1. Schakel de service Reparatiebeheer `addonFeatures` in door `fabricSettings` de volgende sectie na de sectie toe te voegen:
+1. Schakel de Repair Manager-service in door de `addonFeatures` volgende sectie toe `fabricSettings` te voegen na de sectie:
 
     ```json
     "fabricSettings": [
@@ -109,15 +109,15 @@ Ga als volgt te werk om de service Reparatiebeheer in te schakelen met de [sjabl
     ],
     ```
 
-3. Nadat u uw clustersjabloon met deze wijzigingen hebt bijgewerkt, past u deze toe en laat u de update voltooien. U nu de service Reparatiebeheer in uw cluster zien. Het heet *fabric:/System/RepairManagerService* in de sectie systeemservices in Service Fabric Explorer. 
+3. Nadat u de cluster sjabloon met deze wijzigingen hebt bijgewerkt, past u deze toe en laat u de update volt ooien. U kunt nu de Repair Manager-service zien die in uw cluster wordt uitgevoerd. Het heet *Fabric:/System/RepairManagerService* in de sectie systeem services van service Fabric Explorer. 
 
 ### <a name="standalone-on-premises-clusters"></a>Zelfstandige on-premises clusters
 
-Als u de service Reparatiebeheer wilt inschakelen op een nieuw of bestaand cluster van Servicefabric, u de [configuratie-instellingen voor het zelfstandige Windows-cluster gebruiken.](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest)
+Als u de Repair Manager-service wilt inschakelen op een nieuw of bestaand Service Fabric cluster, kunt u de [configuratie-instellingen voor een zelfstandig Windows-cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest)gebruiken.
 
-Ga als u de service Reparatiebeheer inschakelen:
+De Repair Manager-service inschakelen:
 
-1. Controleer of `apiVersion` in [Algemene clusterconfiguraties](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations) is ingesteld op *04-2017* of hoger, zoals hier wordt weergegeven:
+1. Controleer of [algemene cluster configuraties](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations) is ingesteld op 04-2017 of hoger, zoals hier wordt weer gegeven: *04-2017* `apiVersion`
 
     ```json
     {
@@ -128,7 +128,7 @@ Ga als u de service Reparatiebeheer inschakelen:
     }
     ```
 
-1. Schakel de service Reparatiebeheer `addonFeatures` in door `fabricSettings` de volgende sectie na de sectie toe te voegen, zoals hier wordt weergegeven:
+1. Schakel de Repair Manager-service in door de `addonFeatures` volgende sectie toe `fabricSettings` te voegen na de sectie, zoals hier wordt weer gegeven:
 
     ```json
     "fabricSettings": [
@@ -139,69 +139,69 @@ Ga als u de service Reparatiebeheer inschakelen:
     ],
     ```
 
-1. Werk uw clustermanifest bij met deze wijzigingen met behulp van het bijgewerkte clustermanifest [en maak een nieuw cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server) of upgrade de [clusterconfiguratie.](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server) 
+1. Het cluster manifest bijwerken met deze wijzigingen met behulp van het bijgewerkte cluster manifest [een nieuw cluster maken of een](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server) [upgrade van de cluster configuratie uitvoeren](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server). 
 
-   Nadat het cluster is uitgevoerd met een bijgewerkt clustermanifest, u de service Reparatiebeheer in uw cluster zien. Het heet *fabric:/System/RepairManagerService,* en het staat in de sectie systeemservices in Service Fabric Explorer.
+   Wanneer het cluster wordt uitgevoerd met een bijgewerkt cluster manifest, ziet u de Repair Manager-service die in het cluster wordt uitgevoerd. Het heet *Fabric:/System/RepairManagerService*en is de sectie systeem services in service Fabric Explorer.
 
-### <a name="configure-windows-updates-for-all-nodes"></a>Windows-updates configureren voor alle knooppunten
+### <a name="configure-windows-updates-for-all-nodes"></a>Windows-updates configureren voor alle knoop punten
 
-Automatische Windows-updates kunnen leiden tot verlies van beschikbaarheid, omdat meerdere clusterknooppunten tegelijkertijd opnieuw kunnen worden opgestart. POA probeert standaard de automatische Windows-updates op elk clusterknooppunt uit te schakelen. Als de instellingen echter worden beheerd door een beheerder of een groepsbeleid, raden we u aan het windows update-beleid expliciet in te stellen op 'Melden voor downloaden'.
+Automatische Windows-updates kunnen leiden tot een Beschikbaarheids verlies, omdat meerdere cluster knooppunten tegelijk kunnen worden gestart. POA probeert standaard de automatische Windows-updates op elk cluster knooppunt uit te scha kelen. Als de instellingen echter worden beheerd door een beheerder of een groepsbeleid, raden we u aan het beleid voor Windows Update expliciet in te stellen op ' waarschuwen voordat downloaden '.
 
-## <a name="download-the-application-package"></a>Het toepassingspakket downloaden
+## <a name="download-the-application-package"></a>Het toepassings pakket downloaden
 
-Als u het toepassingspakket wilt downloaden, gaat u naar de [releasepagina patchorchestration-toepassing](https://github.com/microsoft/Service-Fabric-POA/releases/latest/) op GitHub.
+Als u het toepassings pakket wilt downloaden, gaat u naar de [pagina patch Orchestration Application release](https://github.com/microsoft/Service-Fabric-POA/releases/latest/) op github.
 
 ## <a name="configure-poa-behavior"></a>POA-gedrag configureren
 
-U POA-gedrag configureren om aan uw behoeften te voldoen. Overschrijf de standaardwaarden door de toepassingsparameter door te geven terwijl u de toepassing maakt of bijwerkt. U toepassingsparameters opgeven `ApplicationParameter` door `Start-ServiceFabricApplicationUpgrade` `New-ServiceFabricApplication` de of cmdlets op te geven.
+U kunt POA-gedrag configureren om te voldoen aan uw behoeften. De standaard waarden onderdrukken door door gegeven in de toepassings parameter tijdens het maken of bijwerken van de toepassing. U kunt toepassings parameters opgeven door `ApplicationParameter` in te stellen `Start-ServiceFabricApplicationUpgrade` op `New-ServiceFabricApplication` de cmdlets.
 
 | Parameter        | Type                          | Details |
 |:-|-|-|
-|MaxResultsToCache    |Lange                              | Het maximum aantal Windows Update-resultaten dat in de cache moet worden opgeslagen. <br><br>De standaardwaarde is 3000, ervan uitgaande dat: <br> &nbsp;&nbsp;- Het aantal knooppunten is 20. <br> &nbsp;&nbsp;- Het aantal updates voor een knooppunt per maand is 5. <br> &nbsp;&nbsp;- Het aantal resultaten per operatie kan 10 zijn. <br> &nbsp;&nbsp;- De resultaten van de afgelopen drie maanden moeten worden opgeslagen. |
-|Goedkeuringsbeleid voor taken   |Enum <br> { NodeWise, UpgradeDomainWise }                          |Taakgoedkeuringsbeleid geeft het beleid aan dat door de coördinatorservice moet worden gebruikt om Windows-updates te installeren op de clusterknooppunten van de servicestructuur.<br><br>De toegestane waarden zijn: <br>*NodeWise*: Windows-updates worden één knooppunt tegelijk geïnstalleerd. <br> *UpgradeDomainWise:* Windows-updates worden één updatedomein tegelijk geïnstalleerd. (Hoogstens kunnen alle knooppunten die behoren tot een updatedomein voor een Windows-update gaan.)<br><br> Zie de [sectie Veelgestelde vragen](#frequently-asked-questions) om te bepalen welk beleid het meest geschikt is voor uw cluster.
-|LogsDiskQuotaInMB   |Lange  <br> (Standaard: *1024*)               | De maximale grootte van patch orchestration app logs in MB, die lokaal kan worden gehandhaafd op knooppunten.
-| WUQuery WUQuery               | tekenreeks<br>(Standaard: *IsInstalled=0*)                | Query om Windows-updates te ontvangen. Zie WuQuery voor meer [informatie.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-| WindowsOSOnlyUpdates installeren | *Booleaanse* <br> (standaard: onwaar)                 | Gebruik deze vlag om te bepalen welke updates moeten worden gedownload en geïnstalleerd. Volgende waarden zijn toegestaan <br>true - Installeert alleen Windows-besturingssysteem updates.<br>false - Installeert alle beschikbare updates op de machine.          |
-| WUOperationTimeOutInMinutes WUOperationTimeOutInMinutes | Int <br>(Standaard: *90*)                   | Hiermee geeft u de time-out op voor een Windows Update-bewerking (zoeken of downloaden of installeren). Als de bewerking niet binnen de opgegeven time-out is voltooid, wordt deze afgebroken.       |
-| WURescheduleCount     | Int <br> (Standaard: *5*)                  | Het maximum aantal keren dat de service de Windows-update opnieuw plant als een bewerking voortdurend mislukt.          |
-| WURescheduleTimeInMinutes | Int <br>(Standaard: *30*) | Het interval waarmee de service de Windows-updates opnieuw plant als de fout is mislukt, blijft bestaan. |
-| WUFrequency WUFrequency           | Door komma's gescheiden tekenreeks (standaard: *wekelijks, woensdag, 7:00:00*)     | De frequentie voor het installeren van Windows-updates. De notatie en mogelijke waarden zijn: <br>&nbsp;&nbsp;- Maandelijks: DD, HH:MM:SS (bijvoorbeeld *maandelijks, 5,12:22:32*)<br>Toegestane waarden voor veld DD (dag) zijn getallen van 1 tot en met 28 en "laatste". <br> &nbsp;&nbsp;- Weekblad, DAG, HH:MM:SS (bijvoorbeeld *Wekelijks, dinsdag, 12:22:32*)  <br> &nbsp;&nbsp;- Dagelijks, HH:MM:SS (bijvoorbeeld *Dagelijks, 12:22:32*)  <br> &nbsp;&nbsp;-  *Geen* geeft aan dat Windows-updates niet moeten worden uitgevoerd.  <br><br> Tijden zijn in UTC.|
-| WindowsUpdateEula accepteren | Booleaans <br>(Standaard: *true)* | Door deze vlag in te stellen, accepteert de toepassing de licentieovereenkomst voor eindgebruikers voor Windows Update namens de eigenaar van de machine.              |
+|MaxResultsToCache    |Omvang                              | Het maximum aantal Windows Update resultaten dat in de cache moet worden opgeslagen. <br><br>De standaard waarde is 3000, ervan uitgaande dat: <br> &nbsp;&nbsp;-Het aantal knoop punten is 20. <br> &nbsp;&nbsp;-Het aantal updates voor een knoop punt per maand is 5. <br> &nbsp;&nbsp;-Het aantal resultaten per bewerking mag 10 zijn. <br> &nbsp;&nbsp;-De resultaten voor de afgelopen drie maanden moeten worden opgeslagen. |
+|TaskApprovalPolicy   |Enum <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy geeft het beleid aan dat door de coördinator service moet worden gebruikt om Windows-updates op de Service Fabric cluster knooppunten te installeren.<br><br>De toegestane waarden zijn: <br>*NodeWise*: Windows-updates worden één knoop punt tegelijk geïnstalleerd. <br> *UpgradeDomainWise*: Windows-updates worden per keer één update domein geïnstalleerd. (De meeste knoop punten die deel uitmaken van een update domein kunnen naar een Windows-Update gaan.)<br><br> Zie de sectie [Veelgestelde vragen](#frequently-asked-questions) om te bepalen welk beleid het meest geschikt is voor uw cluster.
+|LogsDiskQuotaInMB   |Omvang  <br> (Standaard: *1024*)               | De maximale grootte van Logboeken voor patch indelings toepassingen in MB, die lokaal kan worden bewaard op knoop punten.
+| WUQuery               | tekenreeks<br>(Standaard: *IsInstalled = 0*)                | Query uitvoeren om Windows-updates op te halen. Zie WuQuery voor meer informatie [.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
+| InstallWindowsOSOnlyUpdates | *Booleaans* <br> (standaard: onwaar)                 | Gebruik deze markering om te bepalen welke updates moeten worden gedownload en geïnstalleerd. De volgende waarden zijn toegestaan <br>True: installeert alleen updates van het Windows-besturings systeem.<br>onwaar: alle beschik bare updates op de computer worden geïnstalleerd.          |
+| WUOperationTimeOutInMinutes | Int <br>(Standaard: *90*)                   | Hiermee geeft u de time-out voor een Windows Update bewerking (zoeken of downloaden of installeren). Als de bewerking niet binnen de opgegeven time-out wordt voltooid, wordt deze afgebroken.       |
+| WURescheduleCount     | Int <br> (Standaard: *5*)                  | Het maximum aantal keren dat de service de Windows-Update opnieuw plant als een bewerking permanent mislukt.          |
+| WURescheduleTimeInMinutes | Int <br>(Standaard: *30*) | Het interval waarmee de Windows-updates opnieuw worden gepland als de fout zich blijft voordoen. |
+| WUFrequency           | Door komma's gescheiden teken reeks (standaard: *wekelijks, woensdag, 7:00:00*)     | De frequentie voor het installeren van Windows-updates. De notatie en mogelijke waarden zijn: <br>&nbsp;&nbsp;-Maandelijks: DD, uu: MM: SS (bijvoorbeeld *maandelijks, 5, 12:22:32*)<br>Toegestane waarden voor het veld DD (dag) zijn getallen van 1 tot en met 28 en de laatste. <br> &nbsp;&nbsp;-Wekelijks, dag, uu: MM: SS (bijvoorbeeld *wekelijks, dinsdag, 12:22:32*)  <br> &nbsp;&nbsp;-Dagelijks, uu: MM: SS (bijvoorbeeld *dagelijks, 12:22:32*)  <br> &nbsp;&nbsp;-  *Geen* geeft aan dat Windows-updates niet mogen worden uitgevoerd.  <br><br> Tijden zijn UTC.|
+| AcceptWindowsUpdateEula | Booleaans <br>(Standaard: *True*) | Door deze vlag in te stellen, accepteert de toepassing de gebruiksrecht overeenkomst voor Windows Update namens de eigenaar van de computer.              |
 
 > [!TIP]
-> Als u wilt dat Windows-updates onmiddellijk plaatsvinden, stelt u in `WUFrequency` ten opzichte van de implementatietijd van de toepassing. Stel dat u een testcluster met vijf nodes hebt en van plan bent de app rond 17:00 uur UTC te implementeren. Als u ervan uitgaat dat de upgrade of implementatie van de toepassing hooguit 30 minuten duurt, stelt u de WUFrequency in als *dagelijks, 17:30:00*.
+> Als u wilt dat Windows-updates onmiddellijk worden uitgevoerd `WUFrequency` , stelt u in ten opzichte van de implementatie tijd van de toepassing. Stel dat u een test cluster met vijf knoop punten hebt en u de app op ongeveer 5:00 uur UTC wilt implementeren. Als u ervan uitgaat dat de upgrade of implementatie van de toepassing 30 minuten Maxi maal duurt, stelt u de WUFrequency als dagelijks in op *17:30:00*.
 
 ## <a name="deploy-poa"></a>POA implementeren
 
-1. Voltooi alle vereiste stappen om het cluster voor te bereiden.
-1. Implementeer POA zoals elke andere Service Fabric-app. Zie [Toepassingen implementeren en verwijderen met PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)als u deze wilt implementeren door PowerShell te gebruiken.
-1. Als u de toepassing wilt configureren `ApplicationParameter` op `New-ServiceFabricApplication` het moment van implementatie, geeft u de toepassing door aan de cmdlet. Voor uw gemak hebben we het script Deploy.ps1 samen met de toepassing geleverd. Ga als u het script gaat gebruiken:
+1. Alle vereiste stappen volt ooien om het cluster voor te bereiden.
+1. Implementeer POA zoals andere Service Fabric-apps. Zie [toepassingen implementeren en verwijderen met](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)behulp van Power shell om deze te implementeren met behulp van Power shell.
+1. Als u de toepassing op het tijdstip van de implementatie wilt configureren `ApplicationParameter` , geeft `New-ServiceFabricApplication` u de door aan de cmdlet. Voor uw gemak hebben we het script Deploy. ps1 samen met de toepassing voorzien. Het script gebruiken:
 
-    - Maak verbinding met een `Connect-ServiceFabricCluster`cluster van servicefabric met behulp van .
-    - Voer het PowerShell-script Deploy.ps1 uit met de juiste `ApplicationParameter` waarde.
+    - Verbinding maken met een Service Fabric cluster met `Connect-ServiceFabricCluster`behulp van.
+    - Voer het Power shell-script Deploy. ps1 uit `ApplicationParameter` met de juiste waarde.
 
 > [!NOTE]
 > Bewaar het script en de toepassingsmap *PatchOrchestrationApplication* in dezelfde map.
 
-## <a name="upgrade-poa"></a>POA upgraden
+## <a name="upgrade-poa"></a>POA bijwerken
 
-Als u uw POA-versie wilt upgraden met PowerShell, volgt u de instructies in de upgrade van de [Service Fabric-toepassing met PowerShell.](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-tutorial-powershell)
+Volg de instructies in [service Fabric toepassing bijwerken met behulp van Power](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-tutorial-powershell)shell om een upgrade uit te voeren van uw POA-versie met behulp van Power shell.
 
 ## <a name="remove-poa"></a>POA verwijderen
 
-Als u de toepassing wilt verwijderen, volgt u de instructies in [Toepassingen implementeren en verwijdert u toepassingen met PowerShell.](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)
+Als u de toepassing wilt verwijderen, volgt u de instructies in [toepassingen implementeren en verwijderen met behulp van Power shell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
 
-Voor uw gemak hebben we het Undeploy.ps1-script samen met de toepassing geleverd. Ga als u het script gaat gebruiken:
+Voor uw gemak hebben we het PS1-script undeploy en de toepassing voorzien. Het script gebruiken:
 
-  - Maak verbinding met een ```Connect-ServiceFabricCluster```cluster van servicefabric met behulp van .
-  - Voer het PowerShell-script Undeploy.ps1 uit.
+  - Verbinding maken met een Service Fabric cluster met ```Connect-ServiceFabricCluster```behulp van.
+  - Voer het Power shell-script undeploy. ps1 uit.
 
 > [!NOTE]
 > Bewaar het script en de toepassingsmap *PatchOrchestrationApplication* in dezelfde map.
 
-## <a name="view-the-windows-update-results"></a>De resultaten van Windows Update weergeven
+## <a name="view-the-windows-update-results"></a>De Windows Update resultaten weer geven
 
-POA stelt REST API's bloot om de historische resultaten aan gebruikers weer te geven. Hier is een voorbeeld van het resultaat JSON:
+POA maakt REST-Api's beschikbaar om de historische resultaten voor gebruikers weer te geven. Hier volgt een voor beeld van de JSON van het resultaat:
 
 ```json
 [
@@ -233,76 +233,76 @@ POA stelt REST API's bloot om de historische resultaten aan gebruikers weer te g
 ]
 ```
 
-De VELDEN JSON worden beschreven in de volgende tabel:
+De JSON-velden worden in de volgende tabel beschreven:
 
 Veld | Waarden | Details
 -- | -- | --
-OperationResult (OperationResult) | 0 - Geslaagd<br> 1 - Geslaagd met fouten<br> 2 - Mislukt<br> 3 - Afgebroken<br> 4 - Afgebroken met time-out | Geeft het resultaat van de algehele bewerking aan, waarbij gewoonlijk een of meer updates worden geïnstalleerd.
-Resultaatcode | Hetzelfde als OperationResult | Dit veld geeft het resultaat van de installatiebewerking voor een individuele update aan.
-OperationType | 1 - Installatie<br> 0 - Zoeken en downloaden| Installatie is standaard het enige OperationType dat in de resultaten wordt weergegeven.
-WindowsUpdateQuery | Standaard is 'IsInstalled=0' | De Windows Update-query die is gebruikt om naar updates te zoeken. Zie [WuQuery voor](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)meer informatie.
-Opnieuw opstartenvereist | true - reboot was vereist<br> false - reboot was niet nodig | Geeft aan of een reboot nodig was om de installatie van updates te voltooien.
-OperationStarttijd | DateTime | Geeft aan op welk tijdstip de bewerking (Download/installatie) is gestart.
-OperationTime (OperationTime) | DateTime | Geeft het tijdstip aan waarop de bewerking is voltooid (Downloaden/installeren).
-Hresult | 0 - Succesvol<br> andere - mislukking| Geeft de reden voor het mislukken van de Windows-update met updateID "7392acaf-6a85-427c-8a8d-058c25beb0d6".
+Kan operationresult niet | 0: voltooid<br> 1-geslaagd met fouten<br> 2-mislukt<br> 3-afgebroken<br> 4-afgebroken met time-out | Hiermee wordt het resultaat van de algehele bewerking aangegeven, waarbij doorgaans een of meer updates worden geïnstalleerd.
+ResultCode | Hetzelfde als kan operationresult niet | In dit veld wordt het resultaat van de installatie bewerking voor een afzonderlijke update aangegeven.
+OperationType | 1-installatie<br> 0: zoeken en downloaden| Standaard is installatie de enige OperationType die wordt weer gegeven in de resultaten.
+WindowsUpdateQuery | De standaard waarde is ' IsInstalled = 0 ' | De Windows Update query die is gebruikt om naar updates te zoeken. Zie [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)voor meer informatie.
+RebootRequired | waar-opnieuw opstarten is vereist<br> ONWAAR-opnieuw opstarten is niet vereist | Geeft aan of opnieuw opstarten is vereist om de installatie van updates te volt ooien.
+OperationStartTime | DateTime | Geeft de tijd aan waarop de bewerking (downloaden/installeren) is gestart.
+OperationTime | DateTime | Geeft de tijd aan waarop de bewerking (downloaden/installeren) is voltooid.
+HResult | 0-geslaagd<br> overige-fout| Hiermee wordt de reden aangegeven voor het mislukken van de Windows-Update met updateID ' 7392acaf-6a85-427c-8a8d-058c25beb0d6 '.
 
-Als er nog geen update is gepland, is het resultaat JSON leeg.
+Als er nog geen update is gepland, is de JSON van het resultaat leeg.
 
-Meld u aan bij het cluster om de resultaten van Windows Update op te vragen. Ontdek het replica-IP-adres voor het primaire adres van de Coördinatorservice en&gt;&lt;open de volgende URL vanuit de browser: http://&lt;REPLICA-IP : ApplicationPort&gt;/PatchOrchestrationApplication/v1/GetWindowsUpdateResults.
+Meld u aan bij het cluster om Windows Update resultaten op te vragen. Zoek het IP-adres van de replica voor het primaire adres van de coördinator-service en open de volgende URL vanuit de browser&lt;: http://replica&gt;-&lt;IP&gt;: ApplicationPort/PatchOrchestrationApplication/v1/GetWindowsUpdateResults.
 
-Het REST-eindpunt voor de CoördinatorService heeft een dynamische poort. Als u de exacte URL wilt controleren, raadpleegt u Service Fabric Explorer. De resultaten zijn bijvoorbeeld *http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults*beschikbaar op .
+Het REST-eind punt voor de coördinator service heeft een dynamische poort. Als u de exacte URL wilt controleren, raadpleegt u Service Fabric Explorer. De resultaten zijn bijvoorbeeld beschikbaar op *http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults*.
 
-![Afbeelding van het REST-eindpunt](media/service-fabric-patch-orchestration-application/Rest_Endpoint.png)
+![Afbeelding van het REST-eind punt](media/service-fabric-patch-orchestration-application/Rest_Endpoint.png)
 
-Als de omgekeerde proxy is ingeschakeld op het cluster, hebt u ook toegang tot de URL van buiten het cluster.
+Als de omgekeerde proxy is ingeschakeld op het cluster, kunt u ook toegang krijgen tot de URL van buiten het cluster.
 
-Het eindpunt dat u moet raken is *http://&lt;SERVERURL:&gt;&lt;REVERSEPROXYPORT&gt;/PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults*.
+Het eind punt waarop u moet drukken, *is&lt;http://&gt;SERVERURL&lt;:&gt;REVERSEPROXYPORT/PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults*.
 
-Als u de omgekeerde proxy in het cluster wilt inschakelen, volgt u de instructies in [Reverse proxy in Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy). 
+Als u de omgekeerde proxy op het cluster wilt inschakelen, volgt u de instructies in [reverse proxy in Azure service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy). 
 
 > 
 > [!WARNING]
-> Nadat de omgekeerde proxy is geconfigureerd, zijn alle microservices in het cluster die een HTTP-eindpunt blootleggen, adresseerbaar van buiten het cluster.
+> Nadat de omgekeerde proxy is geconfigureerd, zijn alle micro Services in het cluster die een HTTP-eind punt beschikbaar stellen van buiten het cluster adresseerbaar.
 
-## <a name="diagnostics-and-health-events"></a>Diagnostische en gezondheidsevenementen
+## <a name="diagnostics-and-health-events"></a>Diagnostische en status gebeurtenissen
 
-In dit gedeelte wordt besproken hoe u problemen met patchupdates opsporen of diagnosticeren via POA op servicefabricclusters.
+In deze sectie wordt beschreven hoe u problemen met patch-updates oplost of diagnosticeert via POA op Service Fabric clusters.
 
 > [!NOTE]
-> Om veel van de volgende opgeroepen, zelfdiagnostische verbeteringen te krijgen, moet u POA-versie 1.4.0 of hoger hebben geïnstalleerd.
+> Als u een groot aantal van de volgende, zelf diagnostische verbeteringen wilt ontvangen, moet u POA-versie 1.4.0 of hoger hebben geïnstalleerd.
 
-De Node Agent NTService maakt [reparatietaken](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtask?view=azure-dotnet) voor het installeren van updates op de knooppunten. Elke taak wordt vervolgens voorbereid door de coördinator service volgens de taak goedkeuring beleid. Ten slotte worden de voorbereide taken goedgekeurd door Reparatiebeheer, dat geen taak goedkeurt als het cluster in een ongezonde staat verkeert. 
+De knooppunt agent NTService maakt [reparatie taken](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtask?view=azure-dotnet) voor het installeren van updates op de knoop punten. Elke taak wordt vervolgens voor bereid door de coördinator service volgens het goedkeurings beleid voor de taak. Ten slotte worden de voor bereide taken goedgekeurd door Repair Manager, waarbij geen enkele taak wordt goedgekeurd als het cluster een slechte status heeft. 
 
-Om u te helpen begrijpen hoe updates verlopen op een knooppunt, gaan we stap voor stap:
+Ga als volgt te werk om inzicht te krijgen in hoe updates worden uitgevoerd op een knoop punt:
 
-1. NodeAgentNTService, dat op elk knooppunt wordt uitgevoerd, zoekt naar beschikbare Windows-updates op het geplande tijdstip. Als er updates beschikbaar zijn, worden ze gedownload op het knooppunt.
+1. NodeAgentNTService wordt uitgevoerd op elk knoop punt en zoekt naar beschik bare Windows-updates op het geplande tijdstip. Als er updates beschikbaar zijn, worden deze gedownload op het knoop punt.
 
-1. Nadat de updates zijn gedownload, maakt de Node Agent NTService een bijbehorende reparatietaak voor het knooppunt met de naam *POS___\<unique_id>*. U deze reparatietaken bekijken met de cmdlet [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) of met SFX in de sectie knooppuntdetails. Nadat de reparatietaak is gemaakt, wordt deze snel verplaatst naar [ *de* status Geclaimd](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
+1. Nadat de updates zijn gedownload, maakt de NTService van de knooppunt agent een bijbehorende herstel taak voor het knoop punt met de naam *\<POS___ unique_id>*. U kunt deze herstel taken weer geven met behulp van de cmdlet [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) of met behulp van sfx in de sectie knooppunt Details. Nadat de herstel taak is gemaakt, wordt deze snel verplaatst naar de [status *geclaimd* ](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
 
-1. De coördinatorservice zoekt regelmatig naar reparatietaken in *geclaimde* status en werkt deze vervolgens bij naar *de status Voorbereiden* op basis van taakgoedkeuringsbeleid. Als Taakgoedkeuringsbeleid is geconfigureerd als NodeWise, wordt een reparatietaak die overeenkomt met een knooppunt alleen voorbereid als er momenteel geen andere reparatietaak is in *de status Voorbereiden,* *Goedgekeurd,* *Uitvoeren*of *Herstellen.* 
+1. De coördinator service zoekt regel matig naar herstel taken *in de* aangegeven status en werkt deze vervolgens bij om de status op basis van TaskApprovalPolicy te *voorbereiden* . Als TaskApprovalPolicy is geconfigureerd om te worden NodeWise, wordt een herstel taak die overeenkomt met een knoop punt alleen voor bereid als er momenteel geen andere herstel taak is voor het *voorbereiden*, *goed keuren*, *uitvoeren*of *herstellen* van de status. 
 
-   In het geval van UpgradeWise TaskApprovalPolicy zijn er taken in de voorgaande statussen alleen voor knooppunten die tot hetzelfde updatedomein behoren. Nadat een reparatietaak is verplaatst naar de status *Voorbereiden,* wordt het bijbehorende servicestructuurknooppunt [uitgeschakeld](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) met de intentie om *opnieuw op*te starten .
+   Op dezelfde manier zijn er in het geval van UpgradeWise TaskApprovalPolicy alleen taken in de voor gaande status voor knoop punten die deel uitmaken van hetzelfde update domein. Nadat een herstel taak is verplaatst om de status *voor te bereiden* , wordt het bijbehorende service Fabric knoop punt [uitgeschakeld](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) , waarbij de bedoeling is ingesteld op *opnieuw starten*.
 
-   POA-versies 1.4.0 en later gebeurtenissen plaatsen met de eigenschap ClusterPatchingStatus op CoordinatorService om de knooppunten weer te geven die worden gepatcht. De updates worden geïnstalleerd op _poanode_0, zoals weergegeven in de volgende afbeelding:
+   POA-versies 1.4.0 en hoger plaatsen gebeurtenissen met de eigenschap ClusterPatchingStatus op CoordinatorService om de knoop punten weer te geven waarop een patch wordt uitgevoerd. De updates worden geïnstalleerd op _poanode_0, zoals wordt weer gegeven in de volgende afbeelding:
 
-    [![Afbeelding van de clusterpatchstatus](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png)](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png#lightbox)
+    [![Afbeelding van de status van de cluster patching](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png)](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png#lightbox)
 
-1. Nadat het knooppunt is uitgeschakeld, wordt de reparatietaak verplaatst naar *de status Uitvoeren.* 
+1. Nadat het knoop punt is uitgeschakeld, wordt de herstel taak verplaatst naar de status *bezig met uitvoeren* . 
    
    > [!NOTE]
-   > Een knooppunt dat vastzit in *de status Uitgeschakeld,* kan een nieuwe reparatietaak blokkeren, waardoor de patchbewerking op het cluster wordt gestopt.
+   > Een knoop punt dat zich in de *Uitgeschakelde* status bevindt, kan een nieuwe herstel taak blok keren, waardoor de patch bewerking op het cluster wordt gestopt.
 
-1. Wanneer de reparatietaak in *de* uitvoeringsstatus staat, begint de patchinstallatie op dat knooppunt. Nadat de patch is geïnstalleerd, kan het knooppunt wel of niet opnieuw worden gestart, afhankelijk van de patch. Vervolgens wordt de reparatietaak verplaatst naar *Herstelstatus,* waarmee het knooppunt opnieuw wordt inschakelt. De reparatietaak wordt vervolgens gemarkeerd als voltooid.
+1. Wanneer de herstel taak de status *bezig met uitvoeren* heeft, begint de installatie van de patch op dat knoop punt. Nadat de patch is geïnstalleerd, is het mogelijk dat het knoop punt niet opnieuw wordt opgestart, afhankelijk van de patch. Vervolgens wordt de herstel taak verplaatst naar *herstel* status, waarmee het knoop punt opnieuw wordt ingeschakeld. De herstel taak wordt vervolgens als voltooid gemarkeerd.
 
-   In POA-versies 1.4.0 en hoger u de status van de update vinden door de\<statusgebeurtenissen op NodeAgentService te bekijken met de eigenschap WUOperationStatus-NodeName>. De gemarkeerde secties in de volgende afbeeldingen tonen de status van Windows-updates op knooppunten *poanode_0* en *poanode_2:*
+   In POA-versies 1.4.0 en hoger kunt u de status van de update vinden door de status gebeurtenissen op NodeAgentService te bekijken met de WUOperationStatus\<-nodenaam> eigenschap. De gemarkeerde secties in de volgende installatie kopieën tonen de status van Windows-updates op knoop punten *poanode_0* en *poanode_2*:
 
-   [![Afbeelding van de bewerkingsstatus van Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
+   [![Afbeelding van Windows Update bewerkings status](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 
-   [![Afbeelding van de bewerkingsstatus van Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
+   [![Afbeelding van Windows Update bewerkings status](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
-   U de details ook krijgen met PowerShell. Om dit te doen, maakt u verbinding met het cluster en haalt u de status van de reparatietaak op met [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps). 
+   U kunt de details ook ophalen met behulp van Power shell. Hiervoor maakt u verbinding met het cluster en haalt u de status van de reparatie taak op met behulp van [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps). 
    
-   In het volgende voorbeeld bevindt de taak 'POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15' de taak *DownloadComplete.* Dit betekent dat updates zijn gedownload op het *poanode_2* knooppunt en dat de installatie wordt geprobeerd wanneer de taak wordt verplaatst naar de status *Uitvoeren.*
+   In het volgende voor beeld bevindt de taak ' POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15 ' zich in de *DownloadComplete* -status. Dit betekent dat er updates zijn gedownload op het knoop punt *poanode_2* en dat de installatie wordt uitgevoerd wanneer de taak wordt verplaatst naar de status *bezig met uitvoeren* .
 
    ``` powershell
     D:\service-fabric-poa-bin\service-fabric-poa-bin\Release> $k = Get-ServiceFabricRepairTask -TaskId "POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15"
@@ -311,209 +311,209 @@ Om u te helpen begrijpen hoe updates verlopen op een knooppunt, gaan we stap voo
     {"ExecutorSubState":2,"ExecutorTimeoutInMinutes":90,"RestartRequestedTime":"0001-01-01T00:00:00"}
     ```
 
-   Als er nog meer problemen moeten worden gevonden, meldt u zich aan bij uw virtuele machine (VM) of VM's en leert u hierover met Windows-gebeurtenislogboeken. De eerder genoemde reparatietaak kan alleen in de volgende executorsubstates bestaan:
+   Als er meer problemen moeten worden gevonden, meldt u zich aan bij uw virtuele machine (VM) of Vm's en leert u deze met behulp van Windows-gebeurtenis Logboeken. De eerder genoemde reparatie taak kan alleen voor komen in de volgende Substatussen van de module:
 
-      ExecuteurSubState | Beschrijving
+      ExecutorSubState | Beschrijving
     -- | -- 
-      None |  Impliceert dat er geen lopende operatie op het knooppunt. De staat kan in transitie zijn.
-      DownloadCompleted=2 | Impliceert dat de downloadbewerking is voltooid met succes, gedeeltelijke fout of uitval.
-      Installatiegoedgekeurd=3 | Impliceert dat de downloadbewerking eerder is voltooid en Reparatiebeheer de installatie heeft goedgekeurd.
-      InstallationInProgress=4 | Komt overeen met de stand van uitvoering van de reparatietaak.
-      Installatievoltooid=5 | Impliceert dat de installatie met succes, gedeeltelijk succes, of mislukking werd voltooid.
-      Opnieuw opstartenGevraagd=6 | Impliceert dat de patchinstallatie is voltooid en dat er een in behandeling zijnde herstartactie op het knooppunt is.
-      Opnieuw opstartenNietnodig=7 |  Impliceert dat de herstart niet nodig was nadat de patchinstallatie was voltooid.
-      RestartCompleted=8 | Impliceert dat de herstart met succes is voltooid.
-      OperationCompleted=9 | De windows update-bewerking is voltooid.
-      OperationAborted=10 | Impliceert dat de Windows Update-bewerking is afgebroken.
+      Geen = 1 |  Betekent dat er geen actieve bewerking op het knoop punt is. De status kan in overgang zijn.
+      DownloadCompleted = 2 | Houdt in dat de Download bewerking is voltooid met succes, gedeeltelijk mislukt of mislukt.
+      InstallationApproved = 3 | Houdt in dat de Download bewerking eerder is voltooid en dat de installatie is goedgekeurd door Repair Manager.
+      InstallationInProgress = 4 | Komt overeen met de status van het uitvoeren van de herstel taak.
+      InstallationCompleted = 5 | Houdt in dat de installatie is voltooid met succes, gedeeltelijk geslaagd of mislukt.
+      RestartRequested = 6 | Houdt in dat de installatie van de patch is voltooid en dat er een bewerking voor opnieuw starten in behandeling is op het knoop punt.
+      RestartNotNeeded = 7 |  Impliceert dat het opnieuw opstarten niet nodig is nadat de installatie van de patch is voltooid.
+      RestartCompleted = 8 | Betekent dat de herstart is voltooid.
+      OperationCompleted = 9 | De Windows Update bewerking is voltooid.
+      OperationAborted = 10 | Betekent dat de Windows Update bewerking is afgebroken.
 
-1. In POA-versies 1.4.0 en hoger, wanneer een node-updatepoging is voltooid, wordt een gebeurtenis met de eigenschap "WUOperationStatus-[NodeName]" op NodeAgentService geplaatst om u op de hoogte te stellen wanneer de volgende poging om de Windows-updates te downloaden en te installeren begint. Dit wordt weergegeven in de volgende afbeelding:
+1. In POA versies 1.4.0 en hoger, wanneer een update poging van het knoop punt is voltooid, wordt een gebeurtenis met de eigenschap ' WUOperationStatus-[nodenaam] ' op NodeAgentService geplaatst om u te waarschuwen wanneer de volgende poging om de Windows-updates te downloaden en te installeren wordt gestart. Dit wordt weer gegeven in de volgende afbeelding:
 
-     [![Afbeelding van de bewerkingsstatus van Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
+     [![Afbeelding van Windows Update bewerkings status](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
 
 ### <a name="diagnostics-logs"></a>Logboeken met diagnostische gegevens
 
-Patch orchestration-toepassingslogboeken worden verzameld als onderdeel van de runtime-logboeken van Service Fabric.
+Patch Orchestration-toepassings logboeken worden verzameld als onderdeel van de runtime-logboeken van Service Fabric.
 
-U logboeken vastleggen met behulp van het diagnoseprogramma of de pijplijn naar keuze. POA gebruikt de volgende vaste provider---geïdentificeerde gegevens om gebeurtenissen te registreren via [gebeurtenisbron:](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1)
+U kunt Logboeken vastleggen met behulp van het diagnostische hulp programma of de pijp lijn van uw keuze. POA maakt gebruik van de volgende vaste provider-Id's voor het registreren van gebeurtenissen via de [gebeurtenis bron](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1):
 
 - e39b723c-590c-4090-abb0-11e3e6616346
 - fc0028ff-bfdc-499f-80dc-ed922c52c5e9
 - 24afa313-0d3b-4c7c-b485-1047fd964b60
 - 05dc046c-60e9-4ef7-965e-91660adffa68
 
-### <a name="health-reports"></a>Gezondheidsrapporten
+### <a name="health-reports"></a>Status rapporten
 
-POA publiceert ook gezondheidsrapporten tegen de Node Agent Service of de Coördinator Service in de volgende scenario's:
+POA publiceert ook status rapporten voor de knoop punt-Agent service of de coördinator-service in de volgende scenario's:
 
-* De Node Agent NTService is uitgeschakeld
+* De NTService van de knooppunt agent is niet beschikbaar
 
-   Als de Node Agent NTService op een knooppunt staat, wordt een gezondheidsrapport op waarschuwingniveau gegenereerd tegen de Node Agent Service.
+   Als de NTService van de knoop punt op een knoop punt niet beschikbaar is, wordt er een status rapport op waarschuwings niveau gegenereerd voor de knoop punt Agent service.
 
-* De service Reparatiebeheer is niet ingeschakeld
+* De Repair Manager-service is niet ingeschakeld
 
-   Als de service Reparatiebeheer niet op het cluster wordt gevonden, wordt een gezondheidsrapport op waarschuwingniveau gegenereerd voor de coördinatorservice.
+   Als de Repair Manager-service niet op het cluster wordt gevonden, wordt er een status rapport op waarschuwings niveau gegenereerd voor de coördinator service.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-**V: Waarom zie ik mijn cluster in een foutstatus wanneer POA wordt uitgevoerd?**
+**V: Waarom wordt mijn cluster in een fout status weer geven wanneer POA wordt uitgevoerd?**
 
-A: Tijdens het installatieproces schakelt POA knooppunten uit of start opnieuw op, wat tijdelijk kan resulteren in een ongezond cluster.
+A: tijdens het installatie proces worden knoop punten door POA uitgeschakeld of opnieuw gestart. Dit kan tijdelijk leiden tot een slecht cluster.
 
-Afhankelijk van het beleid van de toepassing kan één knooppunt naar beneden gaan tijdens een patchbewerking *of* kan een volledig updatedomein in één keer naar beneden gaan.
+Afhankelijk van het beleid van de toepassing kan één knoop punt worden uitgevoerd tijdens een patch bewerking *of* kan een volledig update domein in één keer omlaag gaan.
 
-Tegen het einde van de installatie van Windows-updates worden de knooppunten na het opnieuw opstarten opnieuw ingeschakeld.
+Aan het einde van de installatie van Windows-updates, worden de knoop punten opnieuw ingeschakeld na het opnieuw opstarten.
 
-In het volgende voorbeeld ging het cluster tijdelijk naar een foutstatus omdat twee knooppunten waren uitgeschakeld en het beleid MaxPercentageUnhealthyNodes is geschonden. De fout is tijdelijk totdat de patchbewerking kan beginnen.
+In het volgende voor beeld heeft het cluster tijdelijk een fout status gekregen omdat twee knoop punten niet beschikbaar waren en het MaxPercentageUnhealthyNodes-beleid werd geschonden. De fout is tijdelijk totdat de patch bewerking kan worden gestart.
 
-![Afbeelding van ongezonde cluster](media/service-fabric-patch-orchestration-application/MaxPercentage_causing_unhealthy_cluster.png)
+![Afbeelding van een beschadigd cluster](media/service-fabric-patch-orchestration-application/MaxPercentage_causing_unhealthy_cluster.png)
 
-Als het probleem blijft bestaan, raadpleegt u de sectie Probleemoplossing.
+Als het probleem zich blijft voordoen, raadpleegt u de sectie probleem oplossing.
 
-**V: Wat kan ik doen als POA in een waarschuwingsstatus verkeert?**
+**V: wat kan ik doen als POA een waarschuwings status heeft?**
 
-A: Controleer of een gezondheidsrapport dat is geplaatst tegen de toepassing de hoofdoorzaak aangeeft. Meestal bevat de waarschuwing details van het probleem. Als het probleem van voorbijgaande aard is, wordt verwacht dat de toepassing automatisch wordt hersteld.
+A: Controleer of een status rapport dat is gepost op de toepassing, de hoofd oorzaak aangeeft. Normaal gesp roken bevat de waarschuwing Details van het probleem. Als het probleem zich tijdelijk voordoet, wordt verwacht dat de toepassing automatisch wordt hersteld.
 
-**V: Wat kan ik doen als mijn cluster ongezond is en ik een dringende update van het besturingssysteem moet uitvoeren?**
+**V: wat kan ik doen als mijn cluster beschadigd is en ik een urgente update van het besturings systeem moet uitvoeren?**
 
-A: POA installeert geen updates terwijl het cluster niet in orde is. Probeer uw cluster naar een gezonde staat te brengen om de POA-werkstroom te deblokkeren.
+A: POA installeert geen updates terwijl het cluster beschadigd is. Probeer het cluster naar een goede staat te brengen om de POA-werk stroom te blok keren.
 
-**V: Moet ik het goedkeuringsbeleid instellen als "NodeWise" of "UpgradeDomainWise" voor mijn cluster?**
+**V: moet ik TaskApprovalPolicy instellen als ' NodeWise ' of ' UpgradeDomainWise ' voor mijn cluster?**
 
-A: De instelling "UpgradeDomainWise" versnelt de algehele clusterreparatie door alle knooppunten die deel uitmaken van een updatedomein parallel te patchen. Tijdens het proces zijn knooppunten die deel uitmaken van een volledig updatedomein niet beschikbaar (in [ *de status Uitgeschakeld).* ](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)
+A: de instelling ' UpgradeDomainWise ' versnelt de volledige reparatie van het cluster door patching uit te zetten op alle knoop punten die deel uitmaken van een update domein. Tijdens het proces zijn knoop punten die deel uitmaken van een geheel update domein niet beschikbaar ( [ *uitgeschakeld* ](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)).
 
-De instelling 'NodeWise' patcht daarentegen slechts één knooppunt tegelijk, wat zou betekenen dat het automatisch patchen van de cluster langer kan duren. Echter, slechts een knooppunt op zijn hoogst zou niet beschikbaar zijn (in *uitgeschakeldstaat)* tijdens het patchproces.
+De instelling ' NodeWise ' houdt daarentegen slechts één knoop punt in beslag, wat inhoudt dat de algehele cluster patches mogelijk langer duren. Tijdens het patch proces is echter slechts één knoop punt niet beschikbaar (in de status *uitgeschakeld* ).
 
-Als uw cluster kan tolereren dat wordt uitgevoerd op een N-1-aantal updatedomeinen tijdens de patchcyclus (waarbij N het totale aantal updatedomeinen op uw cluster is), u het beleid instellen als 'UpgradeDomainWise'. Anders stelt u het in op 'NodeWise'.
+Als uw cluster gedurende een patch-cyclus kan worden uitgevoerd op een N-1 aantal update domeinen (waarbij N het totale aantal update domeinen in uw cluster is), kunt u het beleid instellen als ' UpgradeDomainWise '. Zo niet, dan stelt u deze in op ' NodeWise '.
 
-**V: Hoeveel tijd kost het om een knooppunt te patchen?**
+**V: hoe lang duurt het om een knoop punt te patchen?**
 
-A: Het patchen van een knooppunt kan enkele minuten (bijvoorbeeld [Windows Defender-definitieupdates)](https://www.microsoft.com/en-us/wdsi/definitions)tot uren duren (bijvoorbeeld [Windows Cumulatieve updates).](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update) De tijd die nodig is om een knooppunt te patchen, hangt vooral af van: 
+A: het bijwerken van een knoop punt kan enkele minuten duren (zoals [definitie-updates voor Windows Defender](https://www.microsoft.com/en-us/wdsi/definitions)) in uren (bijvoorbeeld [cumulatieve Windows-updates](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)). De benodigde tijd voor het patchen van een knoop punt is vooral afhankelijk van: 
  - De grootte van de updates.
- - Het aantal updates, die moeten worden toegepast in een patchvenster.
- - De tijd die nodig is om de updates te installeren, het knooppunt opnieuw op te starten (indien nodig) en de installatiestappen na het opnieuw opstarten te voltooien.
- - De prestaties van de VM of machine en netwerkomstandigheden.
+ - Het aantal updates dat moet worden toegepast in een patch venster.
+ - De tijd die nodig is voor het installeren van de updates, het opnieuw opstarten van het knoop punt (indien nodig) en het volt ooien van de installatie stappen na opnieuw opstarten.
+ - De prestaties van de virtuele machine of computer en netwerk omstandigheden.
 
-**V: Hoe lang duurt het om een heel cluster te patchen?**
+**V: hoe lang duurt het om een volledig cluster te patchen?**
 
-A: De tijd die nodig is om een heel cluster te patchen, is afhankelijk van:
+A: de benodigde tijd voor het patchen van een volledig cluster is afhankelijk van:
 
-- De tijd die nodig is om een knooppunt te patchen.
+- De tijd die nodig is om een knoop punt te patchen.
 
-- Het beleid van de Coördinator Service. Het standaardbeleid, 'NodeWise', resulteert in het patchen van slechts één knooppunt tegelijk, een benadering die langzamer is dan het gebruik van 'UpgradeDomainWise'. 
+- Het beleid van de coördinator service. Het standaard beleid ' NodeWise ' resulteert in het patchen van slechts één knoop punt tegelijk, een benadering die langzamer is dan het gebruik van ' UpgradeDomainWise '. 
 
-   Bijvoorbeeld: Als het patchen van een knooppunt ~1 uur duurt, vereist het patchen van een cluster met 20 knooppunten (hetzelfde type knooppunten) met 5 updatedomeinen, die elk 4 knooppunten bevatten:
-    - Voor "NodeWise": ~20 uur.
-    - Voor "UpgradeDomainwise": ~5 uur.
+   Bijvoorbeeld: als een knoop punt ~ 1 uur duurt om een patch uit te voeren, moet u een cluster van 20 knoop punten (hetzelfde type knoop punt) bijwerken met 5 update domeinen, elk met 4 knoop punten, om het volgende te doen:
+    - Voor "NodeWise": ~ 20 uur.
+    - Voor "UpgradeDomainWise": ~ 5 uur.
 
-- De clusterbelasting. Elke patchbewerking vereist het verplaatsen van de werkbelasting van de klant naar andere beschikbare knooppunten in het cluster. Een knooppunt dat wordt gepatcht zou in [ *uitschakelen* staat](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling) gedurende deze tijd. Als het cluster bijna piekbelasting uitvoert, duurt het uitschakelen langer. Daarom lijkt het algehele patchproces traag te zijn in dergelijke stressomstandigheden.
+- De cluster belasting. Voor elke patch bewerking moet de werk belasting van de klant worden verplaatst naar andere beschik bare knoop punten in het cluster. Een van de knoop punten die worden bijgewerkt, zou tijdens deze tijd de [status *uitschakelen* ](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling) kunnen hebben. Als het cluster wordt uitgevoerd bij een piek belasting, neemt het proces meer tijd in beslag. Daarom zou het algemene proces van patches langzaam kunnen lijken in dergelijke extreme omstandigheden.
 
-- Clusterstatusfouten tijdens het patchen. Elke [verslechtering](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error) [van](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction) de status van het cluster zou het patchproces onderbreken. Dit probleem zou toevoegen aan de totale tijd die nodig is om het hele cluster patch.
+- Cluster status fouten tijdens het uitvoeren van patches. Bij een [afname](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error) in de [status van het cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction) wordt het patch proces onderbroken. Dit probleem zou de totale tijd die nodig is om het hele cluster op te lossen, toe te voegen.
 
-**V: Waarom zie ik een aantal updates in de Windows Update-resultaten die worden verkregen via REST API, maar niet onder de Windows Update-geschiedenis op de machine?**
+**V: Waarom worden sommige updates in de Windows Update resultaten weer geven die zijn verkregen via REST API, maar niet onder de Windows Update geschiedenis op de computer?**
 
-A: Sommige productupdates worden alleen weergegeven in hun eigen update- of patchgeschiedenis. Windows Defender-updates worden bijvoorbeeld al dan niet weergegeven in de geschiedenis van Windows Update op Windows Server 2016.
+A: sommige product updates worden alleen in hun eigen update-of patch geschiedenis weer gegeven. Updates van Windows Defender worden bijvoorbeeld mogelijk wel of niet weer gegeven in Windows Update geschiedenis van Windows Server 2016.
 
-**V: Kan POA worden gebruikt om mijn dev-cluster (cluster met één knooppunt) te patchen?**
+**V: kan POA worden gebruikt om mijn ontwikkel cluster (een cluster met één knoop punt) te patchen?**
 
-A: Nee, POA kan niet worden gebruikt om een cluster met één knooppunt te patchen. Deze beperking is door het ontwerp, omdat [Service Fabric-systeemservices](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services) of andere klantapps downtime zouden veroorzaken. Daarom zou patchen reparatie taken nooit worden goedgekeurd door Repair Manager.
+A: Nee, POA kan niet worden gebruikt voor het patchen van een cluster met één knoop punt. Deze beperking is zo ontworpen, omdat [service Fabric systeem services](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services) of andere klant-apps downtime zouden kunnen opleveren. Daarom worden herstel taken voor patches nooit goedgekeurd door Repair Manager.
 
-**V: Hoe patch ik clusternodes op Linux?**
+**V: Hoe kan ik patch cluster knooppunten op Linux?**
 
-A: Zie [Azure virtual machine scale set automatic OS image upgrades](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)voor meer informatie over het orkestreren van updates op Linux.
+A: voor meer informatie over het indelen van updates in Linux, raadpleegt u de [Azure virtual machine-schaal sets automatische upgrades van besturings systemen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade).
 
-**V: Waarom duurt de updatecyclus zo lang?**
+**V: Waarom wordt de update cyclus zo lang duren?**
 
-A: Query voor het resultaat JSON, voer de updatecyclus in voor alle knooppunten en vervolgens u proberen de tijd te vinden die nodig is voor de installatie van de update op elk knooppunt met behulp van OperationStartTime en OperationTime (OperationCompletionTime). 
+A: Voer een query uit voor de JSON van het resultaat, geef de update cyclus voor alle knoop punten op en probeer vervolgens de tijd te achterhalen die wordt gebruikt door de installatie van de update op elk knoop punt met behulp van OperationStartTime en OperationTime (OperationCompletionTime). 
 
-Als er een groot tijdvenster is waarin geen update plaatsvindt, kan het cluster in een foutstatus staan en kan Reparatiebeheer daarom geen POA-reparatietaken goedkeuren. Als de update-installatie lang duurt op een knooppunt, is dat knooppunt mogelijk niet bijgewerkt in een tijdje. Veel updates kunnen in afwachting van de installatie, wat kan leiden tot vertragingen. 
+Als er sprake is van een groot tijd venster waarin geen update plaatsvindt, kan het cluster een fout status hebben en daarom kan Repair Manager geen POA-herstel taken goed keuren. Als de installatie van de update lange tijd in beslag neemt op een knoop punt, is het mogelijk dat het knoop punt in een tijdje niet is bijgewerkt. Een groot aantal updates kan wachten op installatie, wat kan leiden tot vertragingen. 
 
-Het is ook mogelijk dat node patching is geblokkeerd omdat het vastzit in *de status Uitschakelen.* Dit gebeurt meestal omdat het uitschakelen van het knooppunt kan leiden tot situaties van quorum- of gegevensverlies.
+Het kan ook zijn dat het bijwerken van het knoop punt wordt geblokkeerd omdat het vastloopt aan het *uitschakelen* van de status. Dit gebeurt meestal doordat het uitschakelen van het knoop punt kan leiden tot problemen met het quorum of gegevens verlies.
 
-**V: Waarom moet het knooppunt worden uitgeschakeld wanneer POA het patcht?**
+**V: Waarom moet het knoop punt worden uitgeschakeld wanneer POA wordt bijgewerkt?**
 
-A: POA schakelt het knooppunt uit met een intentie *voor opnieuw starten,* waardoor alle Service Fabric-services die op het knooppunt worden uitgevoerd, worden gestopt of opnieuw worden toegewezen. POA doet dit om ervoor te zorgen dat toepassingen niet eindigen met behulp van een mix van nieuwe en oude DLL's, dus we raden niet patchen van een knooppunt zonder uit te schakelen.
+A: POA schakelt het knoop punt uit met een *herstart* intentie, waarmee alle service Fabric services die op het knoop punt worden uitgevoerd, worden gestopt of opnieuw worden toegewezen. POA doet er alles aan om ervoor te zorgen dat toepassingen niet eindigen met een combi natie van nieuwe en oude Dll's. Daarom raden we u aan om een knoop punt niet te repareren zonder het uit te scha kelen.
 
-**V: Wat is het maximum aantal knooppunten dat kan worden bijgewerkt met behulp van POA?**
+**V: wat is het maximum aantal knoop punten dat kan worden bijgewerkt met behulp van POA?**
 
-A: POA gebruikt Service Fabric Repair Manager om reparatietaken voor knooppunten voor updates te maken. Er kunnen echter niet meer dan 250 reparatietaken tegelijkertijd aanwezig zijn. Momenteel maakt POA reparatietaken voor elk knooppunt op hetzelfde moment, zodat POA niet meer dan 250 knooppunten in een cluster kan bijwerken. 
+A: POA gebruikt Service Fabric Repair Manager om herstel taken voor knoop punten voor updates te maken. Er kunnen echter niet meer dan 250 reparatie taken tegelijkertijd aanwezig zijn. Op dit moment maakt POA herstel taken voor elk knoop punt op hetzelfde moment, zodat POA niet meer dan 250 knoop punten in een cluster kan bijwerken. 
 
 ## <a name="disclaimers"></a>Disclaimers
 
-- POA accepteert namens de gebruiker de licentieovereenkomst voor eindgebruikers voor Windows Update. Optioneel kan de instelling worden uitgeschakeld in de configuratie van de toepassing.
+- POA accepteert de gebruiksrecht overeenkomst voor Windows Update namens de gebruiker. De instelling kan eventueel worden uitgeschakeld in de configuratie van de toepassing.
 
-- POA verzamelt telemetrie om het gebruik en de prestaties bij te houden. De telemetrie van de toepassing volgt de instelling van de telemetrie-instelling van de Service Fabric-runtime (die standaard is ingeschakeld).
+- POA verzamelt telemetrie om het gebruik en de prestaties bij te houden. De telemetrie van de toepassing volgt de instelling van de telemetrie-instelling van de Service Fabric runtime (deze is standaard ingeschakeld).
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-In deze sectie worden mogelijke oplossingen voor het oplossen van problemen met patchknooppunten mogelijk gemaakt.
+In deze sectie vindt u mogelijke oplossingen voor het oplossen van problemen met patch knooppunten.
 
-### <a name="a-node-is-not-coming-back-to-up-state"></a>Een knooppunt komt niet terug naar de staat
+### <a name="a-node-is-not-coming-back-to-up-state"></a>Een knoop punt is niet teruggestuurd naar de status up
 
-* Het knooppunt zit mogelijk vast in de status *Uitschakelen* omdat:
+* Het knoop punt is mogelijk vastgelopen in de status *uitschakelen* omdat:
 
-  - Er is een veiligheidscontrole in behandeling. Om deze situatie te verhelpen, moet u ervoor zorgen dat er voldoende knooppunten beschikbaar zijn in een gezonde staat.
+  - Er is een veiligheids controle in behandeling. Om deze situatie te verhelpen, moet u ervoor zorgen dat er voldoende knoop punten in een goede staat zijn.
 
-* Het knooppunt zit mogelijk vast in *de status Uitgeschakeld* omdat:
+* Het knoop punt is *uitgeschakeld* vanwege de volgende status:
 
-  - Het was handmatig uitgeschakeld.
-  - Het werd uitgeschakeld vanwege een lopende Azure-infrastructuurtaak.
-  - Het werd tijdelijk uitgeschakeld door POA om het knooppunt te patchen.
+  - Deze is hand matig uitgeschakeld.
+  - Deze is uitgeschakeld vanwege een voortdurende Azure-infrastructuur taak.
+  - Het is tijdelijk uitgeschakeld door POA om het knoop punt te patchen.
 
-* Het knooppunt kan in down staat worden geplakt omdat:
+* Het knoop punt kan zich in de status omlaag bezitten omdat:
 
-  - Het werd handmatig in down state geplaatst.
-  - Het ondergaat een herstart (die kan worden geactiveerd door POA).
-  - Het heeft een defecte VM of machine, of het heeft problemen met de netwerkverbinding.
+  - Deze is hand matig in een lagere status geplaatst.
+  - Er wordt een herstart uitgevoerd (dit wordt mogelijk veroorzaakt door POA).
+  - Er is een defecte VM of machine of er zijn problemen met de netwerk verbinding.
 
-### <a name="updates-were-skipped-on-some-nodes"></a>Updates werden overgeslagen op sommige knooppunten
+### <a name="updates-were-skipped-on-some-nodes"></a>Updates zijn overgeslagen op enkele knoop punten
 
-POA probeert een Windows-update te installeren volgens het herschikkingsbeleid. De service probeert het knooppunt te herstellen en de update over te slaan volgens het toepassingsbeleid.
+POA probeert een Windows-Update op basis van het beleid voor opnieuw plannen te installeren. De service probeert het knoop punt te herstellen en de update op basis van het toepassings beleid over te slaan.
 
-In een dergelijk geval wordt een gezondheidsrapport op waarschuwingsniveau gegenereerd tegen de Node Agent Service. Het resultaat van Windows Update bevat ook de mogelijke reden voor de storing.
+In een dergelijk geval wordt een status rapport op waarschuwings niveau gegenereerd voor de knoop punt Agent service. Het Windows Update resultaat bevat ook de mogelijke reden voor de fout.
 
-### <a name="the-health-of-the-cluster-goes-to-error-while-the-update-is-being-installed"></a>De status van het cluster gaat naar fouten tijdens de installatie van de update
+### <a name="the-health-of-the-cluster-goes-to-error-while-the-update-is-being-installed"></a>De status van het cluster gaat naar een fout terwijl de update wordt geïnstalleerd
 
-Een defecte Windows-update kan de status van een toepassing of cluster op een bepaald knooppunt of updatedomein naar beneden halen. POA stopt met een volgende Windows Update-bewerking totdat het cluster weer in orde is.
+Een defecte Windows-Update kan de status van een toepassing of cluster op een bepaald knoop punt of update domein innemen. POA wordt elke volgende Windows Update bewerking beëindigd totdat het cluster weer in orde is.
 
-Een beheerder moet ingrijpen en bepalen waarom de toepassing of het cluster ongezond is geworden vanwege Windows Update.
+Een beheerder moet ingrijpen en bepalen waarom de toepassing of het cluster slecht is geworden vanwege Windows Update.
 
-## <a name="poa-release-notes"></a>POA release notes
+## <a name="poa-release-notes"></a>Release opmerkingen bij POA
 
 >[!NOTE]
-> Voor POA-versies 1.4.0 en hoger vindt u releasenotes en releases op de [releasepagina patchorchestration-toepassing](https://github.com/microsoft/Service-Fabric-POA/releases/) op GitHub.
+> Voor POA-versies 1.4.0 en hoger kunt u release opmerkingen en releases vinden op de [release pagina patch Orchestration Application](https://github.com/microsoft/Service-Fabric-POA/releases/) op github.
 
 ### <a name="version-110"></a>Versie 1.1.0
-- Publieke release
+- Open bare versie
 
 ### <a name="version-111"></a>Versie 1.1.1
-- Een bug opgelost in SetupEntryPoint van NodeAgentService waardoor de installatie van NodeAgentNTService werd verhinderd.
+- Er is een fout opgelost in SetupEntryPoint van NodeAgentService waardoor NodeAgentNTService niet is geïnstalleerd.
 
 ### <a name="version-120"></a>Versie 1.2.0
 
-- Bugfixes rond het opnieuw opstarten van het systeem workflow.
-- Bug fix in het maken van RM taken als gevolg van welke health check tijdens het voorbereiden van reparatie taken gebeurde niet zoals verwacht.
-- Wijzigde de opstartmodus voor Windows-service POANodeSvc van automatisch naar vertraagd automatisch.
+- Fout oplossingen rond de werk stroom voor het opnieuw opstarten van het systeem.
+- Fout oplossing bij het maken van RM-taken als gevolg waarvan de status controle tijdens het voorbereiden van herstel taken niet gebeurt zoals verwacht.
+- De opstart modus voor Windows-service POANodeSvc gewijzigd van automatisch in delayed-auto.
 
 ### <a name="version-121"></a>Versie 1.2.1
 
-- Bug fix in cluster scale-down workflow. Geïntroduceerd garbage collection logica voor POA reparatie taken die behoren tot niet-bestaande knooppunten.
+- Fout oplossing in de werk stroom Scale-down van het cluster. Geïntroduceerde garbage-verzamelings logica voor POA-herstel taken die horen bij niet-bestaande knoop punten.
 
 ### <a name="version-122"></a>Versie 1.2.2
 
-- Diverse bugfixes.
-- Binaries zijn nu ondertekend.
-- Toegevoegd sfpkg link voor de toepassing.
+- Diverse oplossingen voor fouten.
+- Binaire bestanden zijn nu ondertekend.
+- De sfpkg-koppeling voor de toepassing is toegevoegd.
 
 ### <a name="version-130"></a>Versie 1.3.0
 
-- Als u WindowsOSOnlyUpdates instelt op false, worden nu alle beschikbare updates geïnstalleerd.
-- Hiermee is de logica van het uitschakelen van automatische updates gewijzigd. Dit lost een bug op waarbij automatische updates niet werden uitgeschakeld op Server 2016 en hoger.
-- Parameterized plaatsingsbeperking voor zowel de microservices van POA voor geavanceerde use cases.
+- Als InstallWindowsOSOnlyUpdates is ingesteld op False, worden alle beschik bare updates geïnstalleerd.
+- De logica voor het uitschakelen van automatische updates is gewijzigd. Hiermee wordt een bug opgelost waarbij automatische updates niet zijn uitgeschakeld op de server 2016 en hoger.
+- De plaatsings beperking met para meters voor de micro services van POA voor geavanceerde use cases.
 
 ### <a name="version-131"></a>Versie 1.3.1
-- Regressie oplossen waarbij POA 1.3.0 niet werkt op Windows Server 2012 R2 of eerder vanwege een storing in het uitschakelen van automatische updates. 
-- Het oplossen van bug waar installWindowsOSOnlyUpdates configuratie wordt altijd gekozen als True.
-- Standaardwaarde van WindowsOSOnlyUpdates installeren wijzigen in False.
+- Herstellen van regressie waarbij POA 1.3.0 niet werkt op Windows Server 2012 R2 of eerder vanwege een fout bij het uitschakelen van automatische updates. 
+- Bug corrigeren waarbij de InstallWindowsOSOnlyUpdates-configuratie altijd waar is.
+- De standaard waarde van InstallWindowsOSOnlyUpdates wijzigen in false.
 
 ### <a name="version-132"></a>Versie 1.3.2
-- Als er knooppunten zijn met een naam die een subset is van de huidige knooppuntnaam, wordt een probleem opgelost dat van invloed is op de levenscyclus van het patchen op een knooppunt. Voor dergelijke knooppunten is het mogelijk dat patchen is gemist of dat er een reboot in behandeling is.
+- Het oplossen van een probleem dat van invloed is op de levens cyclus van patches op een knoop punt, als er knoop punten zijn met een naam die een subset is van de naam van het huidige knoop punt. Voor dergelijke knoop punten is het mogelijk dat patches zijn gemist of opnieuw opstarten in behandeling is.

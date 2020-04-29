@@ -1,6 +1,6 @@
 ---
-title: Bank- en belastinggegevens toevoegen | Azure Marketplace
-description: Voeg bank- en belastinggegevens toe aan uw Dev Center-account.
+title: Bank-en belasting gegevens toevoegen | Azure Marketplace
+description: Bank-en belasting gegevens toevoegen aan uw ontwikkelaars centrum-account.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dsindona
 ms.openlocfilehash: 40a73e386ce618d7254ec7cb1f95dcde6f82d65a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80286656"
 ---
-# <a name="add-bank-and-tax-information"></a>Bank- en belastinggegevens toevoegen  
+# <a name="add-bank-and-tax-information"></a>Bank-en belasting gegevens toevoegen  
 
-De bank en fiscale informatie is vereist voor alle commerciële aanbiedingen met behulp van de transact listing type.  
+De Bank-en belasting informatie is vereist voor alle commerciële aanbiedingen met het transactie vermeldings type.  
 
-## <a name="partner-center"></a>Partnercentrum
+## <a name="partner-center"></a>Partner centrum
 
-Bank- en belastinginformatie wordt nu beheerd binnen het Partner Center. Instructies voor het configureren van deze instellingen vindt u op de pagina 'Overzicht commerciële marktplaats' van [Uw Partnercenteraccount beheren.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#payout-account)
+Bank-en belasting gegevens worden nu beheerd in het partner centrum. Instructies voor het configureren van deze instellingen kunt u vinden op de pagina overzicht van commerciële Marketplace van [uw partner centrum-account beheren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#payout-account).
 
 
 ## <a name="next-steps"></a>Volgende stappen
-*   Ga naar de pagina [Azure Marketplace en AppSource Publisher Guide.](./marketplace-publishers-guide.md)  
+*   Ga naar de pagina [met Publisher-hand leiding voor Azure Marketplace en AppSource](./marketplace-publishers-guide.md) .  
  
 ---

@@ -1,6 +1,6 @@
 ---
-title: De resultaten van een taak downloaden - Azure Media Services
-description: In dit artikel wordt uitgelegd hoe u de resultaten van een taak downloaden.
+title: De resultaten van een taak downloaden-Azure Media Services
+description: In dit artikel wordt beschreven hoe u de resultaten van een taak kunt downloaden.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,21 +12,21 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: bae7104eaded8c2ed153bc141faf7eba0bb86bae
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80346303"
 ---
 # <a name="download-the-results-of-a-job"></a>De resultaten van een taak downloaden
 
-In Azure Media Services moet u bij het verwerken van uw video's (bijvoorbeeld coderen of analyseren) een [uitvoerasset](assets-concept.md) maken om het resultaat van uw [taak](transforms-jobs-concept.md)op te slaan. U deze resultaten vervolgens downloaden naar een lokale map met behulp van Media Service en Storage API's. 
+In Azure Media Services moet u bij het verwerken van uw Video's (bijvoorbeeld code ring of analyse) een uitvoer [activum](assets-concept.md) maken om het resultaat van uw [taak](transforms-jobs-concept.md)op te slaan. U kunt deze resultaten vervolgens downloaden naar een lokale map met behulp van media service en opslag-Api's. 
 
-Dit artikel laat zien hoe u de resultaten downloaden met Java en .NET SDKs.
+In dit artikel wordt beschreven hoe u de resultaten kunt downloaden met behulp van Java-en .NET-Sdk's.
 
 ## <a name="prerequisites"></a>Vereisten 
 
-Beheervan [activa controleren](manage-asset-concept.md).
+[Beheer assets](manage-asset-concept.md)controleren.
 
 ## <a name="java"></a>Java
 
@@ -71,7 +71,7 @@ private static void downloadResults(MediaManager manager, String resourceGroup, 
 }
 ```
 
-Zie het voorbeeld van de volledige code: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/src/main/java/sample/EncodingWithMESPredefinedPreset.java)
+Bekijk het volledige code voorbeeld: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/src/main/java/sample/EncodingWithMESPredefinedPreset.java)
 
 ## <a name="net"></a>.NET
 
@@ -120,8 +120,8 @@ private async static Task DownloadResults(IAzureMediaServicesClient client, stri
 }
 ```
 
-Zie het voorbeeld van de volledige code: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
+Bekijk het volledige code voorbeeld: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Een taakinvoer maken op basis van een HTTPS-URL](job-input-from-http-how-to.md).
+[Een taak invoer maken op basis van een HTTPS-URL](job-input-from-http-how-to.md).

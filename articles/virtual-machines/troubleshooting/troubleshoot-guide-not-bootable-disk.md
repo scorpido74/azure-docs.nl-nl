@@ -1,6 +1,6 @@
 ---
-title: Opstartfout – "dit is geen opstartbare schijf"
-description: In dit artikel worden stappen gezet om problemen op te lossen waarbij de schijf niet kan worden opgestart in een Azure Virtual Machine
+title: Opstart fout – "Dit is geen opstart bare schijf"
+description: Dit artikel bevat stappen voor het oplossen van problemen waarbij de schijf niet kan worden opgestart in een virtuele machine van Azure
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
@@ -15,99 +15,99 @@ ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80300977"
 ---
-# <a name="boot-error--this-is-not-a-bootable-disk"></a>Opstartfout : dit is geen opstartschijf
+# <a name="boot-error--this-is-not-a-bootable-disk"></a>Opstart fout: dit is geen opstart bare schijf
 
-In dit artikel worden stappen gezet om problemen op te lossen waarbij de schijf niet kan worden opgestart in een Virtuele Machine (Azure).
+Dit artikel bevat stappen voor het oplossen van problemen waarbij de schijf niet kan worden opgestart in een Azure virtual machine (VM).
 
 ## <a name="symptoms"></a>Symptomen
 
-Wanneer u [Opstartdiagnose](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de schermafbeelding van de vm weer te geven, ziet u dat de schermafbeelding een prompt weergeeft met het bericht 'Dit is geen opstartbare schijf. Plaats een opstartbare floppy en druk op een toets om het opnieuw te proberen...'.
+Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat de scherm opname een prompt met het bericht ' Dit is geen opstart bare schijf ' wordt weer gegeven. Plaats een opstart bare diskette en druk op een wille keurige toets om het opnieuw te proberen....
 
    Afbeelding 1
 
-   ![Figuur 1 toont het bericht *"Dit is geen opstartbare schijf. Plaats een opstartbare floppy en druk op een toets om het opnieuw te proberen..."*](media/troubleshoot-guide-not-bootable-disk/1.jpg)
+   ![In afbeelding 1 ziet u het bericht * "Dit is geen opstart bare schijf. Plaats een opstart bare diskette en druk op een wille keurige toets om het opnieuw te proberen... "*](media/troubleshoot-guide-not-bootable-disk/1.jpg)
 
 ## <a name="cause"></a>Oorzaak
 
-Dit foutbericht betekent dat het opstartproces van het besturingssysteem geen actieve systeempartitie kan vinden. Deze fout kan ook betekenen dat er een ontbrekende verwijzing in het BCD-archief (Boot Configuration Data) is, waardoor de Windows-partitie niet kan worden gevonden.
+Dit fout bericht betekent dat het opstart proces van het besturings systeem kan geen actieve systeem partitie vinden. Deze fout kan ook betekenen dat er een ontbrekende verwijzing is in het archief van de Boot Configuration Data (BCD), waardoor de Windows-partitie niet kan worden gevonden.
 
 ## <a name="solution"></a>Oplossing
 
-### <a name="process-overview"></a>Overzicht van proces
+### <a name="process-overview"></a>Overzicht van het proces
 
-1. Een reparatievm maken en openen.
-2. Partitiestatus instellen op Actief.
-3. Repareer de schijfpartitie.
-4. **Aanbevolen:** Voordat u de VM opnieuw opbouwt, schakelt u de verzameling seriële console en geheugendump in.
-5. De oorspronkelijke vm opnieuw opbouwen.
+1. Een herstel-VM maken en openen.
+2. Stel de partitie status in op actief.
+3. Herstel de schijf partitie.
+4. **Aanbevolen**: voordat u de virtuele machine opnieuw bouwt, schakelt u seriële console-en geheugen dump verzameling in.
+5. Bouw de oorspronkelijke VM opnieuw op.
 
    > [!NOTE]
-   > Wanneer u deze opstartfout tegenkomt, is het besturingssysteem van de gast niet operationeel. U lost problemen op in de offlinemodus om dit probleem op te lossen.
+   > Wanneer deze opstart fout optreedt, is het gast besturingssysteem niet operationeel. U kunt problemen oplossen in de offline modus om dit probleem op te lossen.
 
-### <a name="create-and-access-a-repair-vm"></a>Een reparatievm maken en openen
+### <a name="create-and-access-a-repair-vm"></a>Een herstel-VM maken en openen
 
-1. Gebruik stap 1-3 van de [VM-reparatieopdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een reparatie-vm voor te bereiden.
-2. Verbinding met extern bureaublad gebruiken verbinding maken met de VM Repareren.
+1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een herstel-VM voor te bereiden.
+2. Gebruik Verbinding met extern bureaublad verbinding maken met de herstel-VM.
 
-### <a name="set-partition-status-to-active"></a>Partitiestatus instellen op Actief
+### <a name="set-partition-status-to-active"></a>Partitie status instellen op actief
 
-Generatie 1 VM's moeten eerst controleren of de OS-partitie, die het BCD-archief bevat, is gemarkeerd als *actief.* Als u een generatie 2-VM hebt, gaat u verder [naar Fix the Disk Partition](#fix-the-disk-partition), omdat de *statusvlag* in de latere generatie is afgeschaft.
+Virtuele machines van de eerste generatie moeten eerst verifiëren dat de besturingssysteem partitie, die het BCD-archief bevat, is gemarkeerd als *actief*. Als u een virtuele machine van de tweede generatie hebt, gaat u verder met het [herstellen van de schijf partitie](#fix-the-disk-partition), omdat de *status* markering is afgeschaft tijdens de volgende generatie.
 
-1. Open een opdrachtprompt met verhoogde bevoegdheid *(cmd.exe).*
-2. Voer *schijfonderdeel* in om het gereedschap DISKPART te starten.
-3. Voer *lijstschijf* in om de schijven op het systeem weer te geven en het bijgevoegde BE VHD te identificeren.
-4. Zodra het aangesloten BE VHD zich bevindt, voert u *seldisk #* in om de schijf te selecteren.  Zie figuur 2, waar Schijf 1 het aangesloten OS VHD is.
+1. Open een opdracht prompt met verhoogde bevoegdheid *(cmd. exe)*.
+2. Voer *Disk Part* in om het hulp programma Disk Part te starten.
+3. Voer een *lijst schijf* in om de schijven op het systeem weer te geven en de gekoppelde VHD van het station te identificeren.
+4. Zodra de gekoppelde VHD van het besturings systeem is gevonden, voert u de *Sel-schijf #* in om de schijf te selecteren.  Zie afbeelding 2, waarbij schijf 1 de gekoppelde VHD van het besturings systeem is.
 
    Afbeelding 2
 
-   ![Figuur 2 toont het venster *DISKPART*met de uitvoer van de opdracht lijstschijf, Schijf 0 en Schijf 1 die in de tabel worden weergegeven.  Toont ook de uitvoer van de opdracht selschijf 1, Schijf 1 is de geselecteerde schijf](media/troubleshoot-guide-not-bootable-disk/2.jpg)
+   ![Afbeelding 2 toont het venster * Disk part * met de uitvoer van de lijst schijf opdracht, schijf 0 en schijf 1 die in de tabel worden weer gegeven.  Geeft ook de uitvoer van de opdracht sel disk 1 weer, schijf 1 is de geselecteerde schijf](media/troubleshoot-guide-not-bootable-disk/2.jpg)
 
-5. Zodra de schijf is geselecteerd, voert u *lijstpartitie* in om de partities van de geselecteerde schijf weer te geven.
-6. Zodra de opstartpartitie is geïdentificeerd, voert u *selpartitie #* in om de partitie te selecteren.  Meestal is de opstartpartitie ongeveer 350 MB groot.  Zie figuur 3, waarbij partitie 1 de opstartpartitie is.
+5. Zodra de schijf is geselecteerd, voert u *lijst partitie* in om de partities van de geselecteerde schijf weer te geven.
+6. Zodra de opstart partitie is geïdentificeerd, voert u *Sel Partition #* in om de partitie te selecteren.  Normaal gesp roken is de opstart partitie ongeveer 350 MB groot.  Zie afbeelding 3, waarbij partitie 1 de opstart partitie is.
 
-   Figuur 3
+   Afbeelding 3
 
-   ![Figuur 3 toont het venster *DISKPART*met de uitvoer van de opdracht *lijstpartitie*. Partitie 1 en Partitie 2 worden weergegeven in de tabel. Het toont ook de uitvoer van de *sel partitie 1* opdracht, wanneer Partitie 1 de geselecteerde schijf is.](media/troubleshoot-guide-not-bootable-disk/3.jpg)
+   ![In afbeelding 3 wordt het venster * Disk part * weer gegeven met de uitvoer van de * List-partitie * opdracht. Partitie 1 en partitie 2 worden in de tabel weer gegeven. Ook wordt de uitvoer van de * sel-partitie 1 *-opdracht weer gegeven wanneer partitie 1 de geselecteerde schijf is.](media/troubleshoot-guide-not-bootable-disk/3.jpg)
 
-7. Voer 'detailpartitie' in om de status van de partitie te controleren. Zie figuur 4, waar de partitie *actief is: Nee*of figuur 5, waarbij de partitie 'Actief: Ja' is.
+7. Voer ' detail Partition ' in om de status van de partitie te controleren. Zie afbeelding 4, waarbij de partitie *actief is: Nee*of afbeelding 5, waarbij de partitie ' actief: Ja ' is.
 
-   Figuur 4
+   Afbeelding 4
 
-   ![Figuur 4 toont het *DISKPART*-venster met de uitvoer van de opdracht *detailpartitie*, wanneer partitie 1 is ingesteld op *Actief: Nee*](media/troubleshoot-guide-not-bootable-disk/4.jpg)
+   ![In afbeelding 4 wordt het venster * Disk part * weer gegeven met de uitvoer van de * detail partitie * opdracht wanneer partitie 1 is ingesteld op * actief: Nee *](media/troubleshoot-guide-not-bootable-disk/4.jpg)
 
-   Figuur 5
+   Afbeelding 5
 
-   ![Figuur 5 toont het venster *DISKPART*met de uitvoer van de opdracht *detailpartitie*, wanneer partitie 1 is ingesteld op *Actief: Ja*.](media/troubleshoot-guide-not-bootable-disk/5.jpg)
+   ![In afbeelding 5 wordt het venster * Disk part * weer gegeven met de uitvoer van de * detail partitie * opdracht, wanneer partitie 1 is ingesteld op * actief: Ja *.](media/troubleshoot-guide-not-bootable-disk/5.jpg)
 
-8. Als de partitie **niet actief**is, voert u *actief* in om de *actieve* vlag te wijzigen.
-9. Controleer of de statuswijziging correct is uitgevoerd door *detailpartitie te*typen .
+8. Als de partitie **niet actief**is, voert u *actief* in om de vlag *actief* te wijzigen.
+9. Controleer of de status wijziging correct is uitgevoerd door *Details partitie*te typen.
 
-   Figuur 6
+   Afbeelding 6
 
-   ![Figuur 6 toont het venster van het schijfonderdeel met de uitvoer van *detailpartitie*, wanneer partitie 1 is ingesteld op *Actief: Ja*](media/troubleshoot-guide-not-bootable-disk/6.jpg)
+   ![In afbeelding 6 wordt het venster Disk part weer gegeven met de uitvoer van * opdracht Details Partition * Wanneer partitie 1 is ingesteld op * actief: Ja *](media/troubleshoot-guide-not-bootable-disk/6.jpg)
 
-10. Voer *de afsluiting in* om het gereedschap DISKPART te sluiten en uw configuratiewijzigingen op te slaan.
+10. Voer *Exit* in om het hulp programma Disk Part te sluiten en de configuratie wijzigingen op te slaan.
 
-### <a name="fix-the-disk-partition"></a>De schijfpartitie herstellen
+### <a name="fix-the-disk-partition"></a>De schijf partitie herstellen
 
-1. Open een opdrachtprompt met verhoogde bevoegdheid (cmd.exe).
-2. Gebruik de volgende opdracht om *CHKDSK* op de schijf(en) uit te voeren en fouten op te lossen:
+1. Open een opdracht prompt met verhoogde bevoegdheid (cmd. exe).
+2. Gebruik de volgende opdracht om *chkdsk* op de schijven uit te voeren en fouten op te lossen:
 
    `chkdsk <DRIVE LETTER>: /f`
 
-   Als u de opdracht '/f' toevoegt, worden eventuele fouten op de schijf opgelost. Zorg ervoor <DRIVE LETTER> dat u de letter van het bijgevoegde OS VHD vervangt.
+   Als u de opdracht optie/f toevoegt, worden eventuele fouten op de schijf hersteld. Zorg ervoor dat u <DRIVE LETTER> vervangt door de letter van de gekoppelde VHD van het besturings systeem.
 
-### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Aanbevolen: Voordat u de VM opnieuw opbouwt, schakelt u de verzameling seriële console en geheugendump in
+### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Aanbevolen: voordat u de virtuele machine opnieuw bouwt, schakelt u seriële console-en geheugen dump verzameling in
 
-Voer het volgende script uit om geheugendumpverzameling en seriële console in te schakelen:
+Voer het volgende script uit om geheugen dump verzameling en seriële console in te scha kelen:
 
-1. Open een opdrachtpromptsessie met verhoogde bevoegdheid (Uitvoeren als beheerder).
+1. Open een opdracht prompt sessie met verhoogde bevoegdheden (als administrator uitvoeren).
 2. Voer de volgende opdrachten uit:
 
    Seriële console inschakelen
@@ -116,13 +116,13 @@ Voer het volgende script uit om geheugendumpverzameling en seriële console in t
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-3. Controleer of de vrije ruimte op de OS-schijf evenveel is als de geheugengrootte (RAM) op de VM.
+3. Controleer of de beschik bare ruimte op de besturingssysteem schijf net zo groot is als de geheugen grootte (RAM) op de virtuele machine.
 
-   Als er niet genoeg ruimte op de OS-schijf is, moet u de locatie wijzigen waar het geheugendumpbestand wordt gemaakt en verwijzen naar een gegevensschijf die is gekoppeld aan de VM die voldoende vrije ruimte heeft. Als u de locatie wilt wijzigen, vervangt u "%SystemRoot%" door de stationsletter (bijvoorbeeld 'F:') van de gegevensschijf in de onderstaande opdrachten.
+   Als er onvoldoende ruimte beschikbaar is op de besturingssysteem schijf, wijzigt u de locatie waar het geheugen dump bestand wordt gemaakt en verwijst naar alle gegevens schijven die zijn gekoppeld aan de VM met voldoende vrije ruimte. Als u de locatie wilt wijzigen, vervangt u '% System root% ' door de stationsletter (bijvoorbeeld ' F: ') van de gegevens schijf in de onderstaande opdrachten.
 
-#### <a name="suggested-configuration-to-enable-os-dump"></a>Voorgestelde configuratie om OS Dump in te schakelen
+#### <a name="suggested-configuration-to-enable-os-dump"></a>Voorgestelde configuratie voor het inschakelen van de dump van het besturings systeem
 
-**Kapotte OS-schijf laden:**
+**Beschadigde besturingssysteem schijf laden**:
 
 `REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM`
 
@@ -142,10 +142,10 @@ Voer het volgende script uit om geheugendumpverzameling en seriële console in t
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**Kapotte OS-schijf uitladen:**
+**Beschadigde besturingssysteem schijf verwijderen:**
 
 `REG UNLOAD HKLM\BROKENSYSTEM`
 
-### <a name="rebuild-the-original-vm"></a>De oorspronkelijke vm opnieuw opbouwen
+### <a name="rebuild-the-original-vm"></a>De oorspronkelijke VM opnieuw samen stellen
 
-Gebruik [stap 5 van de VM-reparatieopdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de VM opnieuw in elkaar te zetten.
+Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de virtuele machine opnieuw samen te stellen.

@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met een WFS-service (Web Feature Service) | Microsoft Azure Maps
-description: Meer informatie over hoe u verbinding maken met een WFS-service en vervolgens de WFS-service opvraagt met de Azure Maps-webSDK en de module Ruimtelijke IO.
+title: Verbinding maken met een WFS-service (Web Feature Service) | Microsoft Azure kaarten
+description: Meer informatie over hoe u verbinding maakt met een WFS-service en hoe u vervolgens een query kunt uitvoeren op de WFS-service met de Azure Maps Web SDK en de ruimtelijke IO-module.
 author: philmea
 ms.author: philmea
 ms.date: 03/03/2020
@@ -9,43 +9,43 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 8b511395eb61e8845aaa11e5ca7a490dc461424d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334207"
 ---
 # <a name="connect-to-a-wfs-service"></a>Verbinding maken met een WFS-service
 
-Een Web Feature Service (WFS) is een webservice voor het opvragen van ruimtelijke gegevens met een gestandaardiseerde API die wordt gedefinieerd door het Open Geospatial Consortium (OGC). Met `WfsClient` de klasse in de ruimtelijke IO-module kunnen ontwikkelaars verbinding maken met een WFS-service en querygegevens van de service.
+Een Web Feature Service (WFS) is een webservice voor het opvragen van ruimtelijke gegevens met een gestandaardiseerde API die is gedefinieerd door de Open Geospatial Consortium (OGC). Met `WfsClient` de klasse in de ruimtelijke IO-module kunnen ontwikkel aars verbinding maken met een WFS-service en query's uitvoeren op gegevens van de service.
 
-De volgende functies worden `WfsClient` ondersteund door de klasse:
+De volgende functies worden ondersteund door de `WfsClient` klasse:
 
-- Ondersteunde versies: `1.0.0` `1.1.0`, en`2.0.0`
-- Ondersteunde filteroperatoren: binaire vergelijkingen, logica, `bbox`wiskunde, waarde en .
-- Verzoeken worden `HTTP GET` alleen met behulp van.
+- Ondersteunde versies: `1.0.0`, `1.1.0`en`2.0.0`
+- Ondersteunde filter operators: binaire vergelijkingen, logica, wiskunde, waarde en `bbox`.
+- Aanvragen worden alleen gemaakt `HTTP GET` met behulp van.
 - Ondersteunde bewerkingen:
 
     | | |
     | :-- | :-- |
-    | GetCapabilities GetCapabilities GetCapabilities GetCapabilit | Hiermee genereert u een metagegevensdocument met geldige WFS-bewerkingen en parameters |
-    | GetFeature (GetFeature) | Geeft als resultaat een selectie functies uit een gegevensbron |
-    | DescribeFeatureType | Geeft als resultaat de ondersteunde functietypen |
+    | GetCapabilities | Hiermee wordt een meta gegevens document gegenereerd met geldige WFS-bewerkingen en-para meters |
+    | GetFeature | Hiermee wordt een selectie van functies uit een gegevens bron geretourneerd |
+    | DescribeFeatureType | Retourneert de ondersteunde functie typen |
 
 ## <a name="using-the-wfs-client"></a>De WFS-client gebruiken
 
-De `atlas.io.ogc.WfsClient` klasse in de ruimtelijke IO-module maakt het eenvoudig om een WFS-service op te vragen en de antwoorden om te zetten in GeoJSON-objecten. Dit GeoJSON-object kan vervolgens voor andere toewijzingsdoeleinden worden gebruikt.
+Met `atlas.io.ogc.WfsClient` de klasse in de ruimtelijke IO-module kunt u eenvoudig een query uitvoeren op een WFS-service en de antwoorden converteren naar geojson-objecten. Dit geojson-object kan vervolgens worden gebruikt voor andere toewijzings doeleinden.
 
-Met de volgende code wordt een WFS-service opgevraagd en worden de geretourneerde functies op de kaart weergegeven.
+Met de volgende code wordt een query uitgevoerd op een WFS-service en worden de geretourneerde functies op de kaart weer gegeven.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Eenvoudig WFS-voorbeeld' src='//codepen.io/azuremaps/embed/MWwvVYY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie het <a href='https://codepen.io/azuremaps/pen/MWwvVYY/'>voorbeeld pen eenvoudig WFS</a> van Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Eenvoudig WFS-voor beeld' src='//codepen.io/azuremaps/embed/MWwvVYY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk het <a href='https://codepen.io/azuremaps/pen/MWwvVYY/'>eenvoudige WFS-voor beeld</a> van Pen<a href='https://codepen.io/azuremaps'>@azuremaps</a>door Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="supported-filters"></a>Ondersteunde filters
 
-De specificatie voor de WFS-standaard maakt gebruik van OGC-filters. De onderstaande filters worden ondersteund door de WFS-client, ervan uitgaande dat de service die wordt aangeroepen ook deze filters ondersteunt. Aangepaste filtertekenreeksen kunnen `CustomFilter` in de klasse worden doorgegeven.
+De specificatie voor de WFS-standaard maakt gebruik van OGC-filters. De onderstaande filters worden ondersteund door de WFS-client, ervan uitgaande dat de service die wordt aangeroepen ook deze filters ondersteunt. Aangepaste filter teken reeksen kunnen worden door gegeven `CustomFilter` aan de klasse.
 
 **Logische operators**
 
@@ -53,19 +53,19 @@ De specificatie voor de WFS-standaard maakt gebruik van OGC-filters. De ondersta
 - `Or`
 - `Not`
 
-**Waardebeheerders**
+**Operator waarde**
 
 - `GmlObjectId`
 - `ResourceId`
 
-**Wiskundige operatoren**
+**Reken kundige Opera tors**
 
 - `Add`
 - `Sub`
 - `Mul`
 - `Div`
 
-**Vergelijkingsoperatoren**
+**Vergelijkings operators**
 
 - `PropertyIsEqualTo`
 - `PropertyIsNotEqualTo`
@@ -82,19 +82,19 @@ De volgende code toont het gebruik van verschillende filters met de WFS-client.
 
 <br/>
 
-<iframe height='500' scrolling='no' title= 'Voorbeelden van WFS-filters' src='//codepen.io/azuremaps/embed/NWqvYrV/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de voorbeelden van Pen <a href='https://codepen.io/azuremaps/pen/NWqvYrV/'>WFS-filteren</a> van Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title= 'Voor beelden van WFS-filter' src='//codepen.io/azuremaps/embed/NWqvYrV/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de WFS-Azure Maps <a href='https://codepen.io/azuremaps/pen/NWqvYrV/'>voor beelden</a> voor pen<a href='https://codepen.io/azuremaps'>@azuremaps</a>-filters op <a href='https://codepen.io'>CodePen</a>().
 </iframe>
 
-## <a name="wfs-service-explorer"></a>WFS-serviceverkenner
+## <a name="wfs-service-explorer"></a>WFS service Explorer
 
-De volgende code gebruikt de WFS-client om WFS-services te verkennen. Selecteer een eigenschapstekstlaag in de service en zie de bijbehorende legenda.
+De volgende code maakt gebruik van de WFS-client om WFS services te verkennen. Selecteer een laag met het type eigenschap in de service en Bekijk de bijbehorende legenda.
 
 <br/>
 
-<iframe height='700' style='width: 100%;' scrolling='no' title= 'WFS-serviceverkenner' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de Pen <a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>WFS-serviceexplorer</a> van Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' style='width: 100%;' scrolling='no' title= 'WFS service Explorer' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>WFS service Explorer</a> door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Als u toegang wilt krijgen tot WFS-services die worden gehost op niet-CORS-enabled-eindpunten, kan een cors-proxyservice worden doorgegeven aan de `proxyService` optie van de WFS-client, zoals hieronder wordt weergegeven. 
+Om toegang te krijgen tot WFS-services die worden gehost op niet-CORS-eind punten, kan een proxy service `proxyService` met CORS worden door gegeven aan de optie van de WFS-client, zoals hieronder wordt weer gegeven. 
 
 ```JavaScript
 //Create the WFS client to access the service and use the proxy service settings
@@ -106,7 +106,7 @@ client = new atlas.io.ogc.WfsClient({
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de lessen en methoden die in dit artikel worden gebruikt:
+Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
 > [WfsClient](https://docs.microsoft.com/JavaScript/api/azure-maps-spatial-io/atlas.io.ogc.wfsclient)
@@ -114,10 +114,10 @@ Meer informatie over de lessen en methoden die in dit artikel worden gebruikt:
 > [!div class="nextstepaction"]
 > [WfsServiceOptions](https://docs.microsoft.com/JavaScript/api/azure-maps-spatial-io/atlas.wfsserviceoptions)
 
-Zie de volgende artikelen voor meer codevoorbeelden die u aan uw kaarten toevoegen:
+Raadpleeg de volgende artikelen voor meer code voorbeelden om toe te voegen aan uw kaarten:
 
 > [!div class="nextstepaction"]
-> [Benut kernactiviteiten](spatial-io-core-operations.md)
+> [Kern bewerkingen gebruiken](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
-> [Details van ondersteunde gegevensindeling](spatial-io-supported-data-format-details.md)
+> [Details van ondersteunde gegevens indeling](spatial-io-supported-data-format-details.md)

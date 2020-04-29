@@ -1,6 +1,6 @@
 ---
-title: Onboarding API voor Azure-apps in de commerciële marketplace
-description: API-vereisten voor Azure-apps in commerciële marktplaats op Microsoft Partner Center.
+title: Onboarding van API voor Azure-apps in de commerciële Marketplace
+description: API-vereisten voor Azure-apps in de commerciële Marketplace op het micro soft Partner Center.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,48 +8,48 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.openlocfilehash: cc4d56058ce3985ec3a1d9124ef4ec73ff6be1a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80279756"
 ---
-# <a name="api-for-onboarding-azure-apps-in-partner-center"></a>API voor onboarding Azure-apps in Partnercenter
+# <a name="api-for-onboarding-azure-apps-in-partner-center"></a>API voor het onboarden van Azure-apps in het partner centrum
 
-Gebruik de *API voor het indienen van partnercentrumom* programmatisch inzendingen te maken voor Azure-aanbiedingen en deze te publiceren.  Deze API is handig als uw account veel aanbiedingen beheert en u het indieningsproces voor deze aanbiedingen wilt automatiseren en optimaliseren.
+Gebruik de *inzendings-API van partner Center* om programmatisch query's uit te geven, inzendingen te maken en Azure-aanbiedingen te publiceren.  Deze API is handig als uw account veel aanbiedingen beheert en u het verzend proces voor deze aanbiedingen wilt automatiseren en optimaliseren.
 
 ## <a name="api-prerequisites"></a>API-vereisten
 
-Er zijn een paar programmatische elementen die u nodig hebt om de Partner Center API voor Azure-producten te gebruiken: 
+Er zijn enkele programmatische activa die u nodig hebt om de Partner Center-API voor Azure-producten te kunnen gebruiken: 
 
 - een Azure Active Directory-toepassing.
-- een Azure Active Directory -toegangstoken (Azure Active Directory).
+- een toegangs token voor Azure Active Directory (Azure AD).
 
-### <a name="step-1-complete-prerequisites-for-using-the-partner-center-submission-api"></a>Stap 1: Vereisten voltooien voor het gebruik van de API voor het indienen van het Partnercenter
+### <a name="step-1-complete-prerequisites-for-using-the-partner-center-submission-api"></a>Stap 1: vereisten voor het gebruik van de inzendings-API van partner Center volt ooien
 
-Voordat u code gaat schrijven om de API voor indiening van het Partnercenter aan te roepen, moet u ervoor zorgen dat u de volgende vereisten hebt voltooid.
+Voordat u begint met het schrijven van code voor het aanroepen van de inzendings-API van het partner centrum, moet u ervoor zorgen dat u de volgende vereisten hebt voltooid.
 
-- U (of uw organisatie) moet een Azure AD-map hebben en u moet algemene [beheerdersmachtiging](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) voor de map hebben. Als u al Office 365 of andere zakelijke services van Microsoft gebruikt, beschikt u al over de Azure AD-map. Anders u zonder extra kosten [een nieuw Azure AD maken in partnercentrum.](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account)
+- U (of uw organisatie) moet een Azure AD-adres lijst hebben en u moet over [globale beheerders](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) machtigingen voor de map beschikken. Als u al Office 365 of andere zakelijke services van micro soft gebruikt, hebt u al een Azure AD-adres lijst. Als dat niet het geval is, kunt u [een nieuwe Azure AD in het partner centrum maken](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account) zonder dat hiervoor extra kosten in rekening worden gebracht.
 
-- U moet [een Azure AD-toepassing koppelen aan uw Partner Center-account](https://docs.microsoft.com/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account) en uw tenant-id, client-id en sleutel verkrijgen. U hebt deze waarden nodig om een Azure AD-toegangstoken te verkrijgen, dat u gebruikt bij aanroepen naar de Microsoft Store-indienings-API.
+- U moet [een Azure AD-toepassing koppelen aan uw partner centrum-account](https://docs.microsoft.com/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account) en uw Tenant-id, client-ID en-sleutel verkrijgen. U hebt deze waarden nodig voor het verkrijgen van een Azure AD-toegangs token dat u gebruikt in aanroepen van de Microsoft Store Submission-API.
 
-#### <a name="how-to-associate-an-azure-ad-application-with-your-partner-center-account"></a>Een Azure AD-toepassing koppelen aan uw Partner Center-account
+#### <a name="how-to-associate-an-azure-ad-application-with-your-partner-center-account"></a>Een Azure AD-toepassing koppelen aan uw partner centrum-account
 
-Als u de Api voor het indienen van de Microsoft Store wilt gebruiken, moet u een Azure AD-toepassing koppelen aan uw Partner Center-account, de tenant-id en de client-id voor de toepassing ophalen en een sleutel genereren. De Azure AD-toepassing vertegenwoordigt de app of service van waaruit u de API voor het indienen van partnercentrumen wilt aanroepen. U hebt de tenant-id, client-id en sleutel nodig om een Azure AD-toegangstoken te verkrijgen dat u doorgeeft aan de API.
+Als u de Microsoft Store indienings-API wilt gebruiken, moet u een Azure AD-toepassing koppelen aan uw partner centrum-account, de Tenant-ID en de client-ID voor de toepassing ophalen en een sleutel genereren. De Azure AD-toepassing vertegenwoordigt de app of service van waaruit u de inzendings-API van het partner centrum wilt aanroepen. U hebt de Tenant-ID, de client-ID en de sleutel nodig voor het verkrijgen van een Azure AD-toegangs token dat u doorgeeft aan de API.
 
 >[!Note]
->U hoeft deze taak slechts één keer uit te voeren. Nadat u de tenant-id, client-id en sleutel hebt, u ze opnieuw gebruiken wanneer u een nieuw Azure AD-toegangstoken wilt maken.
+>U hoeft deze taak slechts één keer uit te voeren. Nadat u de Tenant-ID, client-ID en sleutel hebt, kunt u deze telkens opnieuw gebruiken wanneer u een nieuw Azure AD-toegangs token wilt maken.
 
-1. In Partnercentrum [koppelt u het PartnerCenter-account van uw organisatie aan de Azure AD-map van uw organisatie.](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center)
-1. Voeg vervolgens op de pagina **Gebruikers** in het gedeelte **Accountinstellingen** van Partnercentrum [de Azure AD-toepassing toe](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#add-azure-ad-applications-to-your-partner-center-account) die de app of service vertegenwoordigt die u gebruikt om toegang te krijgen tot inzendingen voor uw Partner Center-account. Zorg ervoor dat u deze toepassing de rol **Manager** toewijst. Als de toepassing nog niet bestaat in uw Azure AD-map, u [een nieuwe Azure AD-toepassing maken in partnercentrum](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#create-a-new-azure-ad-application-account-in-your-organizations-directory-and-add-it-to-your-partner-center-account).
-1. Ga terug naar de pagina **Gebruikers,** klik op de naam van uw Azure AD-toepassing om naar de toepassingsinstellingen te gaan en kopieer de waarden **tenant-id** en **client-id.**
-1. Klik **op Nieuwe toets toevoegen**. Kopieer op het volgende scherm de waarde **Sleutel.** Je hebt geen toegang meer tot deze informatie nadat je deze pagina hebt verlaten. Zie [Sleutels beheren voor een Azure AD-toepassing voor](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#manage-keys)meer informatie.
+1. Koppel in partner centrum het [partner centrum-account van uw organisatie aan de Azure AD-Directory van uw organisatie](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center).
+1. Voeg vervolgens vanaf de pagina **gebruikers** in de sectie **account instellingen** van het partner centrum [de Azure AD-toepassing toe](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#add-azure-ad-applications-to-your-partner-center-account) die de app of service vertegenwoordigt die u gaat gebruiken voor toegang tot inzendingen voor uw partner centrum-account. Zorg ervoor dat u deze toepassing de rol **Manager** toewijst. Als de toepassing nog niet bestaat in uw Azure AD-adres lijst, kunt u [een nieuwe Azure AD-toepassing maken in partner centrum](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#create-a-new-azure-ad-application-account-in-your-organizations-directory-and-add-it-to-your-partner-center-account).
+1. Ga terug naar de pagina **gebruikers** , klik op de naam van uw Azure AD-toepassing om naar de toepassings instellingen te gaan en kopieer de **Tenant-ID** en **client-id-** waarden.
+1. Klik op **nieuwe sleutel toevoegen**. Kopieer de **sleutel** waarde op het volgende scherm. Nadat u deze pagina verlaat, hebt u geen toegang meer tot deze gegevens. Zie [sleutels voor een Azure AD-toepassing beheren](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#manage-keys)voor meer informatie.
 
-### <a name="step-2-obtain-an-azure-ad-access-token"></a>Stap 2: Een Azure AD-toegangstoken verkrijgen
+### <a name="step-2-obtain-an-azure-ad-access-token"></a>Stap 2: een Azure AD-toegangs token verkrijgen
 
-Voordat u een van de methoden in de API voor indiening van het Partnercentrum aanroept, moet u eerst een Azure AD-toegangstoken verkrijgen dat u doorgeeft aan de **autorisatiekop** van elke methode in de API. Nadat u een toegangstoken hebt verkregen, hebt u 60 minuten om het te gebruiken voordat het verloopt. Nadat het token is verlopen, u het token vernieuwen, zodat u het blijven gebruiken in toekomstige oproepen naar de API.
+Voordat u een van de methoden in de inzendings-API van partner Center aanroept, moet u eerst een Azure AD-toegangs token verkrijgen dat u doorgeeft aan de **autorisatie** -header van elke methode in de API. Nadat u een toegangs token hebt verkregen, hebt u 60 minuten om het te gebruiken voordat het verloopt. Nadat het token is verlopen, kunt u het token vernieuwen zodat u het kunt blijven gebruiken in toekomstige aanroepen naar de API.
 
-Als u het toegangstoken wilt verkrijgen, volgt u de instructies in [Service to Service Calls met behulp van clientreferenties](https://azure.microsoft.com/documentation/articles/active-directory-protocols-oauth-service-to-service/) om een `HTTP POST` naar het `https://login.microsoftonline.com/<tenant_id>/oauth2/token` eindpunt te verzenden. Hier is een voorbeeld verzoek:
+Als u het toegangs token wilt verkrijgen, volgt u de instructies in [service to service-aanroepen met behulp van client referenties](https://azure.microsoft.com/documentation/articles/active-directory-protocols-oauth-service-to-service/) om een `HTTP POST` naar het `https://login.microsoftonline.com/<tenant_id>/oauth2/token` eind punt te verzenden. Hier volgt een voorbeeld aanvraag:
 
 JSONCopy
 ```Json
@@ -63,10 +63,10 @@ grant_type=client_credentials
 &resource= https://api.partner.microsoft.com
 ```
 
-Voor de *tenant_id* `POST URI` waarde in de *parameters en client_id* en *client_secret,* geeft u de tenant-id, de client-id en de sleutel voor uw toepassing op die u in de vorige sectie hebt opgehaald uit partnercentrum. Voor de *resourceparameter* moet `https://api.partner.microsoft.com`u opgeven .
+Voor de *tenant_id* waarde in de `POST URI` para meters en *client_id* en *client_secret* geeft u de Tenant-id, de client-id en de sleutel voor uw toepassing op die u in het vorige gedeelte van partner centrum hebt opgehaald. Voor de para meter *resource* moet u opgeven `https://api.partner.microsoft.com`.
 
-### <a name="step-3-use-the-microsoft-store-submission-api"></a>Stap 3: De API voor het indienen van de Microsoft Store gebruiken
+### <a name="step-3-use-the-microsoft-store-submission-api"></a>Stap 3: de Microsoft Store inzendings-API gebruiken
 
-Nadat u een Azure AD-toegangstoken hebt, u methoden aanroepen in de API voor indiening van het Partnercentrum. Als u inzendingen wilt maken of bijwerken, roept u doorgaans meerdere methoden aan in de API voor het indienen van het Partnercentrum in een specifieke volgorde. Zie de swagger van de inname-API voor informatie over elk scenario en de syntaxis van elke methode.
+Nadat u een Azure AD-toegangs token hebt, kunt u methoden aanroepen in de inzendings-API van partner Center. Als u verzen dingen wilt maken of bijwerken, roept u doorgaans meerdere methoden in de Partner Center-API voor verzenden in een specifieke volg orde aan. Voor informatie over elk scenario en de syntaxis van elke methode raadpleegt u de API-Swagger voor opname-api's.
 
 https://apidocs.microsoft.com/services/partneringestion/

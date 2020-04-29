@@ -1,6 +1,6 @@
 ---
-title: Controlefeedback verwerken voor Azure Apps-aanbieding in de commerciële marketplace
-description: Controlefeedback voor Azure Apps-aanbieding voor vermelding of verkoop in het Azure Marketplace-, AppSource- of Via het CSP-programma (Cloud Solution Provider) verwerken met behulp van de Commerciële Marketplace-portal in Microsoft Partner Center.
+title: Verwerkings feedback voor Azure apps-aanbieding in de commerciële Marketplace
+description: Beoordelings feedback voor Azure apps-aanbieding verwerken voor het aanbieden of verkopen in azure Marketplace, AppSource of via het programma Cloud Solution Provider (CSP) met behulp van de portal voor commerciële Marketplace in micro soft Partner Center.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,27 +8,27 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.openlocfilehash: 3932f3fc71dc6427b6cdf93d3a7bc58534a9981c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80279790"
 ---
 # <a name="handling-review-feedback"></a>Beoordelingsfeedback verwerken
 
-In dit artikel wordt uitgelegd hoe u toegang krijgt tot de Azure DevOps-omgeving die wordt gebruikt door het Microsoft Azure Marketplace-beoordelingsteam. Als er tijdens de **microsoft-beoordelingsstap** kritieke problemen worden gevonden in uw Azure-toepassingsaanbieding, u zich bij dit systeem aanmelden om gedetailleerde informatie over deze problemen weer te geven (feedback bekijken). Nadat u al deze problemen hebt opgelost, moet u uw aanbieding opnieuw indienen om deze te blijven publiceren op de Azure Marketplace. In het volgende diagram ziet u hoe dit feedbackproces zich verhoudt tot het publicatieproces.
+In dit artikel wordt uitgelegd hoe u toegang krijgt tot de Azure DevOps-omgeving die wordt gebruikt door het Microsoft Azure Marketplace beoordelings team. Als er in uw Azure-toepassings aanbieding kritieke problemen zijn gevonden tijdens de stap van **micro soft Review** , kunt u zich aanmelden bij dit systeem om gedetailleerde informatie over deze problemen te bekijken (feedback beoordelen). Nadat u al deze problemen hebt opgelost, moet u uw aanbieding opnieuw verzenden om deze te kunnen publiceren op de Azure Marketplace. In het volgende diagram ziet u hoe dit feedback proces is gekoppeld aan het publicatie proces.
 
-![Feedbackproces bekijken](./media/review-feedback-process.png)
+![Feedback proces controleren](./media/review-feedback-process.png)
 
-Doorgaans worden beoordelingskwesties aangeduid als pull request (PR). Elke PR is gekoppeld aan een online [Azure DevOps](https://azure.microsoft.com/services/devops/) (voorheen Visual Studio Team Services (VSTS)) item, dat details over het probleem bevat. In de volgende afbeelding wordt een voorbeeld van de ervaring van het Partnercentrum weergegeven als er problemen worden gevonden tijdens beoordelingen. 
+Normaal gesp roken raadpleegt u problemen als pull-aanvraag (PR). Elke PR is gekoppeld aan een online [Azure DevOps](https://azure.microsoft.com/services/devops/) (voorheen Visual Studio Team Services (VSTS)) item met details over het probleem. In de volgende afbeelding ziet u een voor beeld van de ervaring van het partner centrum als er problemen zijn gevonden tijdens de evaluatie. 
 
 ![Publicatiestatus](./media/publishing-status.png)
 
-De PR met specifieke details over de indiening wordt vermeld in de link 'Certificeringsrapport bekijken'. Voor complexe situaties kunnen de beoordelings- en ondersteuningsteams u ook een e-mail sturen.
+De PR met specifieke details over de inzending wordt vermeld in de koppeling ' certificerings rapport weer geven '. Voor complexe situaties kunnen de teams met beoordelings-en ondersteunings team u ook een e-mail sturen.
 
-## <a name="azure-devops-access"></a>Azure DevOps-toegang
+## <a name="azure-devops-access"></a>Toegang tot Azure DevOps
 
-Alle gebruikers met toegang tot de rol 'ontwikkelaar' in partnercentrum hebben toegang tot de PR-items waarnaar wordt verwezen in de feedback van de beoordeling.
+Alle gebruikers met toegang tot de rol ' ontwikkelaar ' in het partner centrum hebben toegang tot het weer geven van de PR-items waarnaar wordt verwezen in de feedback van de beoordeling.
 
 <!---
 To view the PR items referenced in review feedback, publishers must first be granted proper authorization. Otherwise, new publishers receive a 401 - Not Authorized response page when trying to view PRs. To request access to this Azure DevOps repository, perform the following steps:
@@ -48,30 +48,30 @@ To view the PR items referenced in review feedback, publishers must first be gra
 
 If the incident creation was successful, a confirmation page is displayed. Save the confirmation information on this page for your reference. The Microsoft Support Team should reply to your access request within a few business days. --->
 
-## <a name="reviewing-the-pull-request"></a>Het pull-verzoek bekijken
+## <a name="reviewing-the-pull-request"></a>De pull-aanvraag controleren
 
-Gebruik de volgende procedure om problemen te bekijken die zijn gedocumenteerd in de pull-aanvraag.
+Gebruik de volgende procedure om de problemen te bekijken die worden beschreven in de pull-aanvraag.
 
-1. Klik in de gedeelten **van Microsoft-recensie** van het formulier Publiceren op een PR-koppeling om uw browser te starten en navigeer naar **de** startpagina (startpagina) voor deze PR. In de volgende afbeelding wordt een voorbeeld weergegeven van de startpagina van kritieke problemen voor de aanbieding van de Contoso-voorbeeld-app. Deze pagina bevat nuttige overzichtsinformatie over de beoordelingsproblemen in de Azure-app.
+1. Klik in de sectie **micro soft beoordeling** van het formulier publicatie stappen op een PR-koppeling om uw browser te openen en navigeer naar de pagina **overzicht** (Home) voor deze PR. In de volgende afbeelding ziet u een voor beeld van de start pagina van het kritieke probleem voor de aanbieding van de voor beeld-app van contoso. Deze pagina bevat nuttige samenvattings informatie over de beoordelings problemen die in de Azure-app zijn gevonden.
 
-    [![Startpagina van aanvraag trekken](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
-    <br/> *Klik op de afbeelding om uit te vouwen.*
+    [![Start pagina pull-aanvraag](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
+    <br/> *Klik op de afbeelding om uit te breiden.*
 
-1. (Optioneel) Klik aan de rechterkant van het venster in de sectie **Beleid**op het probleembericht (in dit voorbeeld: **Beleidsvalidatie is mislukt)** om de details op laag niveau van het probleem te onderzoeken, inclusief de bijbehorende logboekbestanden. Fouten worden meestal onder aan de logboekbestanden weergegeven.
-1. **Selecteer** bestanden om de lijstbestanden weer te geven die de technische elementen voor deze aanbieding bevatten in het menu aan de linkerkant van de startpagina. De Microsoft-beoordelaars moeten opmerkingen hebben toegevoegd waarin de ontdekte kritieke problemen worden beschreven. In het volgende voorbeeld zijn twee problemen ontdekt.
+1. Beschrijving Klik aan de rechter kant van het venster in het gedeelte **beleid**op het probleem bericht (in dit voor beeld: **beleids validatie mislukt**) om de details op laag niveau van het probleem te onderzoeken, inclusief de bijbehorende logboek bestanden. Fouten worden doorgaans weer gegeven aan de onderkant van de logboek bestanden.
+1. Selecteer in het menu aan de linkerkant van de start pagina de optie **bestanden** om de lijst bestanden weer te geven waaruit de technische activa voor deze aanbieding bestaan. De micro soft-revisoren moeten opmerkingen hebben toegevoegd waarin de gedetecteerde kritieke problemen worden beschreven. In het volgende voor beeld zijn er twee problemen ontdekt.
 
-    [![Startpagina van aanvraag trekken](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
-    <br/> *Klik op de afbeelding om uit te vouwen.*
+    [![Start pagina pull-aanvraag](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
+    <br/> *Klik op de afbeelding om uit te breiden.*
 
-1. Klik op elk opmerkingsknooppunt in de linkerstructuur om naar de opmerking in de context van de omringende code te navigeren. Repareer uw broncode in het project van uw team om het probleem te verhelpen dat door de opmerking wordt beschreven.
+1. Klik op elk opmerkings knooppunt in de linker boom structuur om naar de opmerking in de context van de omringende code te navigeren. Corrigeer de bron code in het project van uw team om het probleem te verhelpen dat wordt beschreven in de opmerking.
 
 >[!Note]
->U de technische elementen van uw aanbieding niet bewerken binnen de Azure DevOps-omgeving van het beoordelingsteam. Voor uitgevers is dit een alleen-lezen omgeving voor de opgenomen broncode. U echter antwoorden op de opmerkingen achterlaten ten behoeve van het Microsoft-beoordelingsteam.
+>U kunt de technische activa van uw aanbieding niet bewerken in de Azure DevOps-omgeving van het beoordelings team. Voor uitgevers is dit een alleen-lezen omgeving voor de Inge sloten bron code. U kunt echter reacties op reacties geven op het voor deel van het micro soft Review-team.
 
-   In het volgende voorbeeld heeft de uitgever het eerste nummer beoordeeld, gecorrigeerd en geantwoord.
+   In het volgende voor beeld heeft de uitgever gecontroleerd, gecorrigeerd en gereageerd op het eerste probleem.
 
-   ![Eerste fix en commentaar antwoord](./media/first-comment-reply.png)
+   ![Eerste oplossing en antwoord op Opmerking](./media/first-comment-reply.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u de kritieke problemen hebt verholpen die zijn gedocumenteerd in de e-meter-NL beoordeling, moet u [uw Azure-app-aanbieding opnieuw publiceren.](./create-new-azure-apps-offer.md#publish)
+Nadat u de kritieke problemen hebt gecorrigeerd die in de beoordelings PR (s) zijn beschreven, moet u [uw Azure-app-aanbieding opnieuw publiceren](./create-new-azure-apps-offer.md#publish).

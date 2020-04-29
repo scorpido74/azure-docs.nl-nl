@@ -1,6 +1,6 @@
 ---
-title: azcopy login | Microsoft Documenten
-description: Dit artikel bevat referentie-informatie voor de azcopy login commando.
+title: azcopy-aanmelding | Microsoft Docs
+description: In dit artikel vindt u Naslag informatie voor de azcopy-aanmeld opdracht.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,28 +9,28 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: d07d1a706635a7f269a9a51769ae6f8bbf57df3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295410"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
-Logt in bij Azure Active Directory om toegang te krijgen tot Azure Storage-bronnen.
+Meldt zich aan bij Azure Active Directory om toegang te krijgen tot Azure Storage resources.
 
-## <a name="synopsis"></a>Synopsis
+## <a name="synopsis"></a>Samen vatting
 
-Meld u aan bij Azure Active Directory om toegang te krijgen tot Azure Storage-bronnen.
+Meld u aan bij Azure Active Directory om toegang te krijgen tot Azure Storage resources.
 
-Als u wilt worden geautoriseerd voor uw Azure Storage-account, moet u de rol **opslagblobgegevensbijdrage aan** uw gebruikersaccount toewijzen in de context van het opslagaccount, de bovenliggende brongroep of het bovenliggende abonnement.
+Als u wilt worden gemachtigd voor uw Azure Storage-account, moet u de rol van **BLOB-gegevens** voor de opslag in uw gebruikers account toewijzen in de context van het opslag account, de bovenliggende resource groep of het bovenliggende abonnement.
 
-Deze opdracht cache gecodeerde inloggegevens voor de huidige gebruiker met behulp van het os ingebouwde mechanismen.
+Met deze opdracht worden de versleutelde aanmeldings gegevens voor de huidige gebruiker in de cache opgeslagen met de ingebouwde mechanismen van het besturings systeem.
 
-Zie de voorbeelden voor meer informatie.
+Raadpleeg de voor beelden voor meer informatie.
 
 > [!IMPORTANT]
-> Als u een omgevingsvariabele instelt met behulp van de opdrachtregel, is die variabele leesbaar in de geschiedenis van de opdrachtregel. Overweeg variabelen te wissen die referenties bevatten uit de geschiedenis van de opdrachtregel. Om te voorkomen dat variabelen in uw geschiedenis worden weergegeven, u een script gebruiken om de gebruiker om hun referenties te vragen en de omgevingsvariabele in te stellen.
+> Als u een omgevings variabele instelt met behulp van de opdracht regel, wordt die variabele leesbaar in de opdracht regel geschiedenis. U kunt variabelen met referenties uit de opdracht regel geschiedenis wissen. Als u wilt voor komen dat variabelen in uw geschiedenis worden weer gegeven, kunt u een script gebruiken om de gebruiker om referenties te vragen en de omgevings variabele in te stellen.
 
 ```azcopy
 azcopy login [flags]
@@ -39,87 +39,87 @@ azcopy login [flags]
 ## <a name="related-conceptual-articles"></a>Gerelateerde conceptuele artikelen
 
 - [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
-- [Gegevens overbrengen met AzCopy- en Blob-opslag](storage-use-azcopy-blobs.md)
-- [Gegevens overbrengen met AzCopy en bestandsopslag](storage-use-azcopy-files.md)
-- [AzCopy configureren, optimaliseren en oplossen](storage-use-azcopy-configure.md)
+- [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
+- [Gegevens overdragen met AzCopy en File Storage](storage-use-azcopy-files.md)
+- [AzCopy configureren, optimaliseren en problemen oplossen](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Voorbeelden
 
-Log interactief in met standaard AAD-tenant-id ingesteld op gemeenschappelijk:
+Interactief aanmelden met de standaard-Tenant-ID voor AAD die is ingesteld op algemeen:
 
 ```azcopy
 azcopy login
 ```
 
-Log interactief in met een opgegeven tenant-id:
+Interactief aanmelden met een opgegeven Tenant-ID:
 
 ```azcopy
 azcopy login --tenant-id "[TenantID]"
 ```
 
-Log in met de door het systeem toegewezen identiteit van een virtuele machine (VM):
+Meld u aan met de door het systeem toegewezen identiteit van een virtuele machine (VM):
 
 ```azcopy
 azcopy login --identity
 ```
 
-Meld u aan met de door de gebruiker toegewezen identiteit van een VM en een client-id van de service-identiteit:
+Meld u aan met de door de gebruiker toegewezen identiteit van een virtuele machine en een client-ID van de service-identiteit:
 
 ```azcopy
 azcopy login --identity --identity-client-id "[ServiceIdentityClientID]"
 ```
 
-Meld u aan met de door de gebruiker toegewezen identiteit van een VM en een object-id van de service-identiteit:
+Meld u aan met de door de gebruiker toegewezen identiteit van een virtuele machine en een object-ID van de service-identiteit:
 
 ```azcopy
 azcopy login --identity --identity-object-id "[ServiceIdentityObjectID]"
 ```
 
-Meld u aan met de door de gebruiker toegewezen identiteit van een VM en een resource-id van de service-identiteit:
+Meld u aan met de door de gebruiker toegewezen identiteit van een virtuele machine en een resource-ID van de service-identiteit:
 
 ```azcopy
 azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/resourcegroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myID"
 ```
 
-Log in als serviceprincipal met behulp van een klantgeheim. Stel de omgevingsvariabele AZCOPY_SPA_CLIENT_SECRET voor het klantgeheim voor secret based service principal auth.
+Meld u aan als service-principal met behulp van een client geheim. Stel de omgevings variabele AZCOPY_SPA_CLIENT_SECRET in op het client geheim voor de geheim verificatie van de Service-Principal.
 
 ```azcopy
 azcopy login --service-principal
 ```
 
-Log in als serviceprincipal met een certificaat en wachtwoord. Stel de omgevingsvariabele in AZCOPY_SPA_CERT_PASSWORD het wachtwoord van het certificaat in voor de hoofdautorisatie van de service op basis van cert.
+Meld u aan als service-principal met behulp van een certificaat en wacht woord. Stel de omgevings variabele AZCOPY_SPA_CERT_PASSWORD in op het wacht woord van het certificaat voor autorisatie van de Service-Principal op basis van certificaten.
 
 ```azcopy
 azcopy login --service-principal --certificate-path /path/to/my/cert
 ```
 
-Zorg ervoor dat u /path/to/my/cert behandelt als een pad naar een PEM- of PKCS12-bestand. AzCopy bereikt niet de systeemcert store om uw certificaat te verkrijgen.
+Zorg ervoor dat/path/to/my/CERT wordt behandeld als een pad naar een PEM-of PKCS12/pfx-profiel-bestand. AzCopy is niet bereikbaar in het systeem certificaat archief om uw certificaat te verkrijgen.
 
---certificaat-pad is verplicht bij het doen van cert-based service principal auth.
+--het certificaatpad is verplicht bij het uitvoeren van de Service-Principal auth op basis van certificaten.
 
 ## <a name="options"></a>Opties
 
 |Optie|Beschrijving|
 |--|--|
-|--aad-eindpunt|Het Azure Active Directory-eindpunt dat moet worden gebruikt. De standaardwaarde (`https://login.microsoftonline.com`) is correct voor de openbare Azure-cloud. Stel deze parameter in bij het verifiëren in een nationale cloud. Zie [eindpunten azure AD-verificatie](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+|--Aad-eind punt|Het Azure Active Directory-eind punt dat moet worden gebruikt. De standaard waarde`https://login.microsoftonline.com`() is correct voor de open bare Azure-Cloud. Stel deze para meter in wanneer u een verificatie uitvoert in een nationale Cloud. Zie [Azure AD-verificatie-eind punten](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 Deze vlag is niet nodig voor Managed Service Identity.|
-|--application-id-tekenreeks|Toepassings-id van door de gebruiker toegewezen identiteit. Vereist voor service principal auth.|
-|--certificaat-padtekenreeks|Pad naar certificaat voor SPN-verificatie. Vereist voor certificaatgebaseerde serviceprincipal auth.|
-|-h, --help|Help-inhoud weergeven voor de aanmeldingsopdracht.|
-|--identiteit|inloggen met behulp van de identiteit van de virtuele machine, ook wel managed service identity (MSI) genoemd.|
-|--identity-client-id tekenreeks|Client-id van door de gebruiker toegewezen identiteit.|
-|tekenreeks --identiteit-object-id|Object-id van door de gebruiker toegewezen identiteit.|
-|--identity-resource-id-tekenreeks|Resource-id van door de gebruiker toegewezen identiteit.|
-|--service-principal|Log in via SPN (Service Principal Name) met behulp van een certificaat of een geheim. Het clientgeheim of certificaatwachtwoord moet in de juiste omgevingsvariabele worden geplaatst. Typ `AzCopy env` om namen en beschrijvingen van omgevingsvariabelen te bekijken.|
-|--tenant-id-tekenreeks| de Azure active directory tenant ID die moet worden gebruikt voor interactieve aanmelding op OAuth-apparaten.|
+|--reeks van toepassing-id|De toepassings-ID van de door de gebruiker toegewezen identiteit. Vereist voor Service Principal auth.|
+|--teken reeks voor certificaatpad|Het pad naar het certificaat voor SPN-verificatie. Vereist voor verificatie op basis van een service-principal voor certificaten.|
+|-h,--Help|Help-inhoud voor de aanmeldings opdracht weer geven.|
+|--identiteit|Meld u aan met de identiteit van de virtuele machine, ook wel Managed Service Identity (MSI) genoemd.|
+|--identiteit-client-id-teken reeks|De client-ID van de door de gebruiker toegewezen identiteit.|
+|--identiteits teken reeks-object-id|De object-ID van de door de gebruiker toegewezen identiteit.|
+|--identiteits teken reeks van bron-id|De resource-ID van de door de gebruiker toegewezen identiteit.|
+|--Service-Principal|Meld u aan via SPN (Service Principal Name) met behulp van een certificaat of een geheim. Het client geheim of het certificaat wachtwoord moet in de juiste omgevings variabele worden geplaatst. Typ `AzCopy env` om namen en beschrijvingen van omgevings variabelen weer te geven.|
+|--teken reeks voor Tenant-id| de Tenant-ID van Azure Active Directory die moet worden gebruikt voor de interactieve aanmelding van OAuth-apparaten.|
 
-## <a name="options-inherited-from-parent-commands"></a>Opties die zijn overgenomen van bovenliggende opdrachten
+## <a name="options-inherited-from-parent-commands"></a>Opties overgenomen van bovenliggende opdrachten
 
 |Optie|Beschrijving|
 |---|---|
-|--cap-mbps uint32|Caps de overdrachtssnelheid, in megabits per seconde. De doorvoer van moment tot moment kan enigszins afwijken van de dop. Als deze optie is ingesteld op nul of wordt weggelaten, wordt de doorvoer niet afgetopt.|
-|--uitvoer-type tekenreeks|Indeling van de uitvoer van de opdracht. De keuzes zijn: tekst, json. De standaardwaarde is "tekst".|
+|--Cap-Mbps uint32|De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.|
+|--type teken reeks voor uitvoer|De indeling van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is "text".|
 
 ## <a name="see-also"></a>Zie ook
 
-- [azcopie](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

@@ -1,6 +1,6 @@
 ---
 title: Verificatie op basis van certificaten met Azure Cosmos DB en Active Directory
-description: Meer informatie over het configureren van een Azure AD-identiteit voor verificatie op basis van certificaten voor toegangssleutels vanuit Azure Cosmos DB.
+description: Meer informatie over het configureren van een Azure AD-identiteit voor verificatie op basis van certificaten voor toegang tot sleutels van Azure Cosmos DB.
 author: voellm
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,51 +8,51 @@ ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
 ms.openlocfilehash: 085280a8064e4d12ac63939ada7cdb296d47dc70
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80365779"
 ---
-# <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Verificatie op basis van certificaten voor een Azure AD-identiteit voor toegang tot sleutels vanuit een Azure Cosmos DB-account
+# <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Verificatie op basis van certificaten voor een Azure AD-identiteit om toegang te krijgen tot sleutels van een Azure Cosmos DB-account
 
-Met verificatie op basis van certificaten kan de clienttoepassing worden geverifieerd door Azure AD (Azure Active Directory) te gebruiken met een clientcertificaat. U kunt verificatie op basis van certificaten uitvoeren op een computer waarvoor u een id nodig hebt, zoals een on-premises computer of virtuele machine in Azure. Uw toepassing kan vervolgens Azure Cosmos DB-sleutels lezen zonder dat de sleutels rechtstreeks in de toepassing staan. In dit artikel wordt beschreven hoe u een voorbeeld van Azure AD-toepassing maakt, deze configureert voor verificatie op basis van certificaten, u aanmeldt bij Azure met de nieuwe toepassingsidentiteit en vervolgens de sleutels ophaalt uit uw Azure Cosmos-account. In dit artikel wordt Azure PowerShell gebruikt om de identiteiten in te stellen en wordt een C#-voorbeeld-app verstrekt die sleutels verifieert en toegang heeft tot sleutels vanuit uw Azure Cosmos-account.  
+Met verificatie op basis van certificaten kan de clienttoepassing worden geverifieerd door Azure AD (Azure Active Directory) te gebruiken met een clientcertificaat. U kunt verificatie op basis van certificaten uitvoeren op een computer waarvoor u een id nodig hebt, zoals een on-premises computer of virtuele machine in Azure. Uw toepassing kan vervolgens Azure Cosmos DB sleutels lezen zonder de sleutels rechtstreeks in de toepassing te hebben. In dit artikel wordt beschreven hoe u een voor beeld van een Azure AD-toepassing maakt, hoe u deze configureert voor verificatie op basis van certificaten, zich aanmeldt bij Azure met de nieuwe toepassings-id en vervolgens de sleutels uit uw Azure Cosmos-account haalt. In dit artikel worden Azure PowerShell gebruikt voor het instellen van de identiteiten en biedt een C#-voor beeld-app waarmee sleutels worden geverifieerd en geopend vanuit uw Azure Cosmos-account.  
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Installeer de [nieuwste versie](/powershell/azure/install-az-ps) van Azure PowerShell.
+* Installeer de [meest recente versie](/powershell/azure/install-az-ps) van Azure PowerShell.
 
-* Als u geen [Azure-abonnement](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
+* Als u nog geen [abonnement op Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
 
 ## <a name="register-an-app-in-azure-ad"></a>Een app bij Azure AD registreren
 
-In deze stap registreert u een voorbeeldwebtoepassing in uw Azure AD-account. Deze toepassing wordt later gebruikt om de sleutels van uw Azure Cosmos DB-account te lezen. Gebruik de volgende stappen om een toepassing te registreren: 
+In deze stap maakt u een voor beeld van een webtoepassing in uw Azure AD-account. Deze toepassing wordt later gebruikt voor het lezen van de sleutels uit uw Azure Cosmos DB-account. Gebruik de volgende stappen om een toepassing te registreren: 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
-1. Open het deelvenster Azure **Active Directory,** ga naar het deelvenster **App-registraties** en selecteer **Nieuwe registratie**. 
+1. Open het deel venster **Active Directory** van Azure, ga naar het deel venster **app-registraties** en selecteer **nieuwe registratie**. 
 
-   ![Nieuwe toepassingsregistratie in Active Directory](./media/certificate-based-authentication/new-app-registration.png)
+   ![Nieuwe toepassings registratie in Active Directory](./media/certificate-based-authentication/new-app-registration.png)
 
-1. Vul het **aanvraagformulier register** in met de volgende gegevens:  
+1. Vul **een toepassings formulier registreren** in met de volgende details:  
 
-   * **Naam** – Geef een naam op voor uw toepassing, het kan elke naam zijn, zoals "sampleApp".
-   * **Ondersteunde accounttypen** : kies **alleen Accounts in deze organisatiemap (Standaardmap)** zodat resources in uw huidige map toegang krijgen tot deze toepassing. 
-   * **URL omleiden** : kies toepassing van het type **Web** en geef een URL op waar uw toepassing wordt gehost, het kan elke URL zijn. In dit voorbeeld u een `https://sampleApp.com` test-URL opgeven, zoals het goed is, zelfs als de app niet bestaat.
+   * **Naam** : Geef een naam op voor uw toepassing. Dit kan een wille keurige naam zijn, zoals ' sampleApp '.
+   * **Ondersteunde account typen** : Kies **accounts in deze organisatie-Directory alleen (standaard directory),** zodat resources in uw huidige map toegang hebben tot deze toepassing. 
+   * **Omleidings-URL** : Kies toepassing van het type **Web** en geef een URL op waar uw toepassing wordt gehost. Dit kan een wille keurige URL zijn. Voor dit voor beeld kunt u een test-URL opgeven, `https://sampleApp.com` zoals in de richting van de app, zelfs als deze niet bestaat.
 
-   ![Een voorbeeldwebtoepassing registreren](./media/certificate-based-authentication/register-sample-web-app.png)
+   ![Een voor beeld-webtoepassing registreren](./media/certificate-based-authentication/register-sample-web-app.png)
 
-1. Selecteer **Registreren** nadat u het formulier hebt ingevuld.
+1. Selecteer **registreren** nadat u het formulier hebt ingevuld.
 
-1. Nadat de app is geregistreerd, maak een notitie van de **Applicatie(client) ID** en **Object ID**, zult u deze gegevens gebruiken in de volgende stappen. 
+1. Nadat de app is geregistreerd, noteert u de **toepassings-id** en de **object-id**. u gebruikt deze gegevens in de volgende stappen. 
 
-   ![De toepassings- en object--geïdentificeerde gegevens ophalen](./media/certificate-based-authentication/get-app-object-ids.png)
+   ![De toepassings-en object-Id's ophalen](./media/certificate-based-authentication/get-app-object-ids.png)
 
 ## <a name="install-the-azuread-module"></a>De AzureAD-module installeren
 
-In deze stap installeert u de Azure AD PowerShell-module. Deze module is vereist om de id van de toepassing die u in de vorige stap hebt geregistreerd, te verkrijgen en een zelfondertekend certificaat aan die toepassing te koppelen. 
+In deze stap installeert u de Azure AD Power shell-module. Deze module is vereist om de ID op te halen van de toepassing die u in de vorige stap hebt geregistreerd en om een zelfondertekend certificaat aan die toepassing te koppelen. 
 
-1. Open Windows PowerShell ISE met beheerdersrechten. Als u dit nog niet hebt gedaan, installeert u de AZ PowerShell-module en maakt u verbinding met uw abonnement. Als u meerdere abonnementen hebt, u de context van het huidige abonnement instellen zoals weergegeven in de volgende opdrachten:
+1. Open Windows PowerShell ISE met beheerders rechten. Als u dit nog niet hebt gedaan, installeert u de AZ Power shell-module en maakt u verbinding met uw abonnement. Als u meerdere abonnementen hebt, kunt u de context van het huidige abonnement instellen, zoals wordt weer gegeven in de volgende opdrachten:
 
    ```powershell
    Install-Module -Name Az -AllowClobber
@@ -63,16 +63,16 @@ In deze stap installeert u de Azure AD PowerShell-module. Deze module is vereist
    Set-AzContext $context 
    ```
 
-1. De [AzureAD-module](/powershell/module/azuread/?view=azureadps-2.0) installeren en importeren
+1. De [AzureAD](/powershell/module/azuread/?view=azureadps-2.0) -module installeren en importeren
 
    ```powershell
    Install-Module AzureAD
    Import-Module AzureAD 
    ```
 
-## <a name="sign-into-your-azure-ad"></a>Aanmelden bij uw Azure-advertentie
+## <a name="sign-into-your-azure-ad"></a>Meld u aan bij uw Azure AD
 
-Meld u aan bij uw Azure AD waar u de toepassing hebt geregistreerd. Gebruik de opdracht Connect-AzureAD om u aan te melden bij uw account en voer uw Azure-accountreferenties in het pop-upvenster in. 
+Meld u aan bij uw Azure AD waar u de toepassing hebt geregistreerd. Gebruik de opdracht Connect-AzureAD om u aan te melden bij uw account, voer uw referenties voor uw Azure-account in in het pop-upvenster. 
 
 ```powershell
 Connect-AzureAD 
@@ -80,7 +80,7 @@ Connect-AzureAD
 
 ## <a name="create-a-self-signed-certificate"></a>Een zelfondertekend certificaat maken
 
-Open een ander exemplaar van Windows PowerShell ISE en voer de volgende opdrachten uit om een zelfondertekend certificaat te maken en de sleutel te lezen die aan het certificaat is gekoppeld:
+Open nog een exemplaar van Windows PowerShell ISE en voer de volgende opdrachten uit om een zelfondertekend certificaat te maken en lees de sleutel die aan het certificaat is gekoppeld:
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "Cert:\CurrentUser\My" -Subject "CN=sampleAppCert" -KeySpec KeyExchange
@@ -89,7 +89,7 @@ $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
 
 ## <a name="create-the-certificate-based-credential"></a>De op certificaten gebaseerde referentie maken 
 
-Voer vervolgens de volgende opdrachten uit om de object-id van uw toepassing op te halen en de op certificaten gebaseerde referenties te maken. In dit voorbeeld stellen we dat het certificaat na een jaar verloopt, u het instellen op elke vereiste einddatum.
+Voer vervolgens de volgende opdrachten uit om de object-ID van uw toepassing op te halen en de op certificaten gebaseerde referentie te maken. In dit voor beeld stellen we het certificaat in op verlopen na een jaar. u kunt dit instellen op elke vereiste eind datum.
 
 ```powershell
 $application = Get-AzureADApplication -ObjectId <Object_ID_of_Your_Application>
@@ -97,47 +97,47 @@ $application = Get-AzureADApplication -ObjectId <Object_ID_of_Your_Application>
 New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyIdentifier "Key1" -Type AsymmetricX509Cert -Usage Verify -Value $keyValue -EndDate "2020-01-01"
 ```
 
-De bovenstaande opdracht resulteert in de uitvoer vergelijkbaar met de screenshot hieronder:
+De bovenstaande opdracht resulteert in de uitvoer die lijkt op de onderstaande scherm afbeelding:
 
-![Op certificaten gebaseerde uitvoer van referenties](./media/certificate-based-authentication/certificate-based-credential-output.png)
+![Uitvoer van referenties voor het maken van een certificaat](./media/certificate-based-authentication/certificate-based-credential-output.png)
 
-## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Uw Azure Cosmos-account configureren om de nieuwe identiteit te gebruiken
+## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Uw Azure Cosmos-account configureren voor het gebruik van de nieuwe identiteit
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
-1. Als u naar uw Azure Cosmos-account navigeert, opent u het **IAM-blad (Access Control).**
+1. Ga naar uw Azure Cosmos-account en open de Blade **toegangs beheer (IAM)** .
 
-1. Selecteer **Roltoewijzing toevoegen** en **toevoegen**. Voeg de voorbeeldapp toe die u in de vorige stap hebt gemaakt met de rol **Inzender** zoals weergegeven in de volgende schermafbeelding:
+1. Selecteer **functie toewijzing** **toevoegen** en toevoegen. Voeg de sampleApp die u in de vorige stap hebt gemaakt, toe aan de rol **Inzender** , zoals weer gegeven in de volgende scherm afbeelding:
 
-   ![Azure Cosmos-account configureren om de nieuwe identiteit te gebruiken](./media/certificate-based-authentication/configure-cosmos-account-with-identify.png)
+   ![Azure Cosmos-account configureren voor het gebruik van de nieuwe identiteit](./media/certificate-based-authentication/configure-cosmos-account-with-identify.png)
 
 1. Selecteer **Opslaan** nadat u het formulier hebt ingevuld
 
 ## <a name="register-your-certificate-with-azure-ad"></a>Uw certificaat registreren bij Azure AD
 
-U de op certificaten gebaseerde referenties koppelen aan de clienttoepassing in Azure AD vanuit de Azure-portal. Als u de referentie wilt koppelen, moet u het certificaatbestand uploaden met de volgende stappen:
+U kunt de op certificaten gebaseerde referentie koppelen aan de client toepassing in azure AD vanuit het Azure Portal. Als u de referentie wilt koppelen, moet u het certificaat bestand uploaden met de volgende stappen:
 
-In de Azure-appregistratie voor de clienttoepassing:
+In de registratie van de Azure-app voor de client toepassing:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
-1. Open het deelvenster Azure **Active Directory,** ga naar het deelvenster **App-registraties** en open de voorbeeld-app die u in de vorige stap hebt gemaakt. 
+1. Open het deel venster **Active Directory** van Azure, ga naar het deel venster **app-registraties** en open de voor beeld-app die u in de vorige stap hebt gemaakt. 
 
-1. Selecteer **Certificaten & geheimen** en upload vervolgens het **certificaat**. Blader door het certificaatbestand dat u in de vorige stap hebt gemaakt om te uploaden.
+1. Selecteer **certificaten & geheimen** en upload vervolgens het **certificaat**. Blader door het certificaat bestand dat u in de vorige stap hebt gemaakt om dit te uploaden.
 
-1. Selecteer **Toevoegen**. Nadat het certificaat is geüpload, worden de duimafdruk, begindatum en vervaldatumwaarden weergegeven.
+1. Selecteer **Toevoegen**. Nadat het certificaat is geüpload, worden de vinger afdruk, de start datum en de verval waarden weer gegeven.
 
-## <a name="access-the-keys-from-powershell"></a>Toegang tot de sleutels vanuit PowerShell
+## <a name="access-the-keys-from-powershell"></a>Toegang tot de sleutels in Power shell
 
-In deze stap meldt u zich aan bij Azure met behulp van de toepassing en het certificaat dat u hebt gemaakt en toegang tot de sleutels van uw Azure Cosmos-account. 
+In deze stap meldt u zich aan bij Azure met behulp van de toepassing en het certificaat dat u hebt gemaakt en opent u de sleutels van uw Azure Cosmos-account. 
 
-1. Maak in eerste instantie de referenties van het Azure-account wissen die u hebt gebruikt om u aan te melden bij uw account. U referenties wissen met behulp van de volgende opdracht:
+1. Wis eerst de referenties van het Azure-account dat u hebt gebruikt om u aan te melden bij uw account. U kunt referenties wissen met behulp van de volgende opdracht:
 
    ```powershell
    Disconnect-AzAccount -Username <Your_Azure_account_email_id> 
    ```
 
-1. Vervolgens u valideren dat u zich aanmelden bij azure portal met behulp van de referenties van de toepassing en toegang krijgen tot de Azure Cosmos DB-sleutels:
+1. Vervolgens controleert u of u zich kunt aanmelden bij Azure Portal met behulp van de referenties van de toepassing en toegang tot de Azure Cosmos DB sleutels:
 
    ```powershell
    Login-AzAccount -ApplicationId <Your_Application_ID> -CertificateThumbprint $cert.Thumbprint -ServicePrincipal -Tenant <Tenant_ID_of_your_application>
@@ -148,13 +148,13 @@ In deze stap meldt u zich aan bij Azure met behulp van de toepassing en het cert
       -Type "Keys"
    ```
 
-In de vorige opdracht worden de primaire en secundaire hoofdsleutels van uw Azure Cosmos-account weergegeven. U het activiteitenlogboek van uw Azure Cosmos-account bekijken om te valideren dat het verzoek om sleutels ophalen is geslaagd en dat de gebeurtenis wordt gestart door de toepassing 'voorbeeldapp'.
+Met de vorige opdracht worden de primaire en secundaire hoofd sleutels van uw Azure Cosmos-account weer gegeven. U kunt het activiteiten logboek van uw Azure Cosmos-account weer geven om te valideren dat de aanvraag voor het ophalen van sleutels is geslaagd en dat de gebeurtenis wordt geïnitieerd door de toepassing ' sampleApp '.
 
-![Het aanroepen van ophaalsleutels valideren in het Azure AD](./media/certificate-based-authentication/activity-log-validate-results.png)
+![De aanroep Get Keys in azure AD valideren](./media/certificate-based-authentication/activity-log-validate-results.png)
 
 ## <a name="access-the-keys-from-a-c-application"></a>Toegang tot de sleutels vanuit een C#-toepassing 
 
-U dit scenario ook valideren door toegang te krijgen tot sleutels vanuit een C#-toepassing. De volgende C#-consoletoepassing, die toegang heeft tot Azure Cosmos DB-sleutels met behulp van de app die is geregistreerd in Active Directory. Zorg ervoor dat u de tenantId, clientID, certName, resourcegroepnaam, abonnements-ID, Azure Cosmos-accountnaamgegevens bijwerkt voordat u de code uitvoert. 
+U kunt dit scenario ook valideren door sleutels van een C#-toepassing te openen. De volgende C#-console toepassing die toegang heeft tot Azure Cosmos DB sleutels met behulp van de app die is geregistreerd in Active Directory. Zorg ervoor dat u de tenantId, clientID, certnaam, naam van de resource groep, de abonnements-ID, de naam van de Azure Cosmos-accountnaam bijwerkt voordat u de code uitvoert. 
 
 ```csharp
 using System;
@@ -236,15 +236,15 @@ namespace TodoListDaemonWithCert
 }
 ```
 
-Met dit script worden de primaire en secundaire hoofdtoetsen uitgevoerd, zoals in de volgende schermafbeelding wordt weergegeven:
+Met dit script worden de primaire en secundaire hoofd sleutels uitgevoerd, zoals weer gegeven in de volgende scherm afbeelding:
 
-![csharp-toepassingsuitvoer](./media/certificate-based-authentication/csharp-application-output.png)
+![uitvoer van csharp-toepassing](./media/certificate-based-authentication/csharp-application-output.png)
 
-Net als in de vorige sectie u het activiteitenlogboek van uw Azure Cosmos-account bekijken om te valideren dat de gebeurtenis aanvragen voor ophalen sleutels wordt gestart door de toepassing 'voorbeeldapp'. 
+Net als bij de vorige sectie kunt u het activiteiten logboek van uw Azure Cosmos-account bekijken om te valideren dat de aanvraag voor het ophalen van sleutels wordt gestart door de toepassing ' sampleApp '. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Azure Cosmos-sleutels beveiligen met Azure Key Vault](access-secrets-from-keyvault.md)
 
-* [Beveiligingsbasislijn voor Azure Cosmos DB](security-baseline.md)
+* [Beveiligings basislijn voor Azure Cosmos DB](security-baseline.md)

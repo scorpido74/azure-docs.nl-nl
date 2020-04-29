@@ -1,6 +1,6 @@
 ---
-title: Problemen oplossen met intermitterende uitgaande verbindingsfouten in Azure App Service
-description: Problemen met intermitterende verbindingsfouten en gerelateerde prestatieproblemen in Azure App Service oplossen
+title: Problemen met terugkerende uitgaande verbindings fouten in Azure App Service oplossen
+description: Problemen oplossen met onregelmatige verbindings fouten en gerelateerde prestatie problemen in Azure App Service
 author: v-miegge
 manager: barbkess
 ms.topic: troubleshooting
@@ -8,169 +8,169 @@ ms.date: 03/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
 ms.openlocfilehash: 028ddccdb989d35710e387081b08a3b973d75bdc
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80367549"
 ---
-# <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Problemen oplossen met intermitterende uitgaande verbindingsfouten in Azure App Service
+# <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Problemen met terugkerende uitgaande verbindings fouten in Azure App Service oplossen
 
-Met dit artikel u intermitterende verbindingsfouten en gerelateerde prestatieproblemen oplossen in [Azure App Service.](https://docs.microsoft.com/azure/app-service/overview) Dit onderwerp geeft meer informatie over en probleemoplossingsmethoden voor, uitputting van SNAT-poorten (Source Address Network Translation). Als u op enig moment in dit artikel meer hulp nodig hebt, neemt u contact op met de Azure-experts van de [MSDN Azure- en de Stack Overflow-forums.](https://azure.microsoft.com/support/forums/) U ook een Azure-ondersteuningsincident indienen. Ga naar de [Azure Support-site](https://azure.microsoft.com/support/options/) en selecteer **Ondersteuning opdoen**.
+Dit artikel helpt u bij het oplossen van onregelmatige verbindings fouten en gerelateerde prestatie problemen in [Azure app service](https://docs.microsoft.com/azure/app-service/overview). In dit onderwerp vindt u meer informatie over het oplossen van problemen met methoden voor het afronden van de bron adres netwerk omzetting (SNAT)-poorten. Als u op elk gewenst moment meer hulp nodig hebt, neemt u contact op met de Azure-experts op [MSDN Azure en de stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
 
 ## <a name="symptoms"></a>Symptomen
 
-Toepassingen en functies die worden gehost op de Azure App-service kunnen een of meer van de volgende symptomen vertonen:
+Toepassingen en functies die worden gehost op Azure-app service, kunnen een of meer van de volgende symptomen ondervinden:
 
-* Trage responstijden op alle of sommige exemplaren in een serviceplan.
-* Intermitterende 5xx- of **Bad Gateway-fouten**
-* Foutberichten time-out
-* Kon geen verbinding maken met externe eindpunten (zoals SQLDB, Service Fabric, andere App-services enz.)
+* Trage reactie tijden voor alle of een aantal exemplaren in een service abonnement.
+* Onregelmatige 5xx of **onjuiste gateway** fouten
+* Time-outfout berichten
+* Kan geen verbinding maken met externe eind punten (zoals SQLDB, Service Fabric, andere app-Services, enzovoort)
 
 ## <a name="cause"></a>Oorzaak
 
-Een belangrijke oorzaak van deze symptomen is dat de toepassingsinstantie niet in staat is om een nieuwe verbinding met het externe eindpunt te openen omdat het een van de volgende limieten heeft bereikt:
+Een grote oorzaak van deze symptomen is dat het toepassings exemplaar geen nieuwe verbinding met het externe eind punt kan openen omdat een van de volgende limieten is bereikt:
 
-* TCP-verbindingen: er is een limiet aan het aantal uitgaande verbindingen dat kan worden gemaakt. Dit is gekoppeld aan de grootte van de werknemer die wordt gebruikt.
-* SNAT-poorten: Zoals besproken in [uitgaande verbindingen in Azure,](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)gebruikt Azure de vertaling van het bronnetwerkadres (SNAT) en een Load Balancer (niet blootgesteld aan klanten) om te communiceren met eindpunten buiten Azure in de openbare IP-adresruimte. Elke instantie op Azure App-service krijgt in eerste instantie een vooraf toegewezen aantal van **128** SNAT-poorten. Deze limiet is van invloed op het openen van verbindingen met dezelfde host- en poortcombinatie. Als uw app verbindingen maakt met een mix van adres- en poortcombinaties, gebruikt u uw SNAT-poorten niet. De SNAT-poorten zijn opgebruikt wanneer u herhaaldelijk naar hetzelfde adres en dezelfde poortcombinatie bent gebeld. Zodra een poort is vrijgegeven, is de poort beschikbaar voor hergebruik als dat nodig is. De Azure Network load balancer herwint de SNAT-poort alleen van gesloten verbindingen na 4 minuten wachten.
+* TCP-verbindingen: er is een limiet voor het aantal uitgaande verbindingen dat kan worden gemaakt. Dit is gekoppeld aan de grootte van de gebruikte werk nemer.
+* SNAT-poorten: zoals beschreven in [uitgaande verbindingen in azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections), gebruikt azure bron Network Address Translation (SNAT) en een Load Balancer (niet zichtbaar voor klanten) om te communiceren met eind punten buiten Azure in de open bare IP-adres ruimte. Elk exemplaar van Azure-app service krijgt in eerste instantie een vooraf toegewezen aantal SNAT-poorten van **128** . Deze limiet is van invloed op het openen van verbindingen met dezelfde combi natie van host en poort. Als uw app verbinding maakt met een combi natie van combi Naties van adressen en poorten, gebruikt u geen SNAT-poorten. De SNAT-poorten worden gebruikt wanneer u herhaaldelijk aanroepen naar dezelfde combi natie van adres en poort hebt. Zodra een poort is vrijgegeven, kan de poort zo nodig opnieuw worden gebruikt. Het Azure-netwerk load balancer de SNAT-poort alleen vrijmaken van gesloten verbindingen na een wacht tijd van 4 minuten.
 
-Wanneer toepassingen of functies snel een nieuwe verbinding openen, kunnen ze hun vooraf toegewezen quotum van de 128 poorten snel uitputten. Ze worden vervolgens geblokkeerd totdat er een nieuwe SNAT-poort beschikbaar komt, hetzij door het dynamisch toewijzen van extra SNAT-poorten, hetzij door hergebruik van een teruggewonnen SNAT-poort. Toepassingen of functies die zijn geblokkeerd vanwege dit onvermogen om nieuwe verbindingen te maken, zullen een of meer van de problemen ondervinden die in het gedeelte **Symptomen** van dit artikel worden beschreven.
+Wanneer toepassingen of functies snel een nieuwe verbinding openen, kunnen ze snel hun vooraf toegewezen quotum van de 128 poorten. Ze worden vervolgens geblokkeerd totdat een nieuwe SNAT-poort beschikbaar komt, hetzij via dynamische toewijzing van extra SNAT-poorten, hetzij via hergebruik van een vrijgemaakte SNAT-poort. Toepassingen of functies die worden geblokkeerd vanwege het feit dat er geen nieuwe verbindingen kunnen worden gemaakt, zullen beginnen met een of meer van de problemen die worden beschreven in de sectie **symptomen** van dit artikel.
 
-## <a name="avoiding-the-problem"></a>Het probleem vermijden
+## <a name="avoiding-the-problem"></a>Het probleem voor komen
 
-Het vermijden van het SNAT-poortprobleem betekent het vermijden van het herhaaldelijk maken van nieuwe verbindingen met dezelfde host en poort.
+Als het SNAT-poort probleem wordt voor komen, wordt het maken van nieuwe verbindingen herhaaldelijk op dezelfde host en poort voor komen.
 
-Algemene strategieën voor het beperken van snat-poortuitputting worden besproken in het gedeelte Probleemoplossen van de uitgaande verbindingen van [Azure-documentatie.](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#problemsolving) **Outbound connections of Azure** Van deze strategieën zijn de volgende strategieën van toepassing op apps en functies die worden gehost op azure-app-service.
+Algemene strategieën voor het beperken van de SNAT-poort uitputting worden besproken in de [sectie probleem oplossing](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#problemsolving) van de **uitgaande verbindingen van de Azure** -documentatie. Van deze strategieën zijn de volgende van toepassing op apps en functies die worden gehost op Azure-app service.
 
-### <a name="modify-the-application-to-use-connection-pooling"></a>De toepassing wijzigen om verbindingspooling te gebruiken
+### <a name="modify-the-application-to-use-connection-pooling"></a>De toepassing wijzigen voor het gebruik van groepsgewijze verbindingen
 
-* Voor het bundelen van HTTP-verbindingen controleert u [HTTP-verbindingen groep met HttpClientFactory](https://docs.microsoft.com/aspnet/core/performance/performance-best-practices#pool-http-connections-with-httpclientfactory).
-* Voor informatie over SQL Server-verbindingspooling controleert [u SQL Server Connection Pooling (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
-* Voor het implementeren van pooling met entiteitskadertoepassingen, controleert u [DbContext-pooling](https://docs.microsoft.com/ef/core/what-is-new/ef-core-2.0#dbcontext-pooling).
+* Voor het groeperen van HTTP-verbindingen bekijkt u [HTTP-verbindingen pool met HttpClientFactory](https://docs.microsoft.com/aspnet/core/performance/performance-best-practices#pool-http-connections-with-httpclientfactory).
+* Raadpleeg [SQL Server Connection Pooling (ADO.net)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)voor informatie over SQL Server groepsgewijze verbindingen.
+* Raadpleeg [DbContext pooling](https://docs.microsoft.com/ef/core/what-is-new/ef-core-2.0#dbcontext-pooling)voor meer over het implementeren van groepen met Entity Framework-toepassingen.
 
-Hier volgt een verzameling koppelingen voor het implementeren van Connection pooling by different solution stack.
+Hier volgt een verzameling koppelingen voor het implementeren van verbindings groepen door verschillende oplossings stacks.
 
 #### <a name="node"></a>Knooppunt
 
-Standaard worden verbindingen voor NodeJS niet in leven gehouden. Hieronder vindt u de populaire databases en pakketten voor het bundelen van verbindingen die voorbeelden bevatten voor hoe ze te implementeren.
+Standaard worden verbindingen voor NodeJS niet actief bewaard. Hieronder vindt u de populaire data bases en pakketten voor groepsgewijze verbindingen die voor beelden bevatten voor het implementeren ervan.
 
 * [MySQL](https://github.com/mysqljs/mysql#pooling-connections)
-* [MongoDB MongoDB](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
+* [MongoDB](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
 * [PostgreSQL](https://node-postgres.com/features/pooling)
 * [SQL Server](https://github.com/tediousjs/node-mssql#connection-pools)
 
-HTTP In leven
+HTTP-keepalive
 
 * [agentkeepalive](https://www.npmjs.com/package/agentkeepalive)
-* [Node.js v13.9.0 Documentatie](https://nodejs.org/api/http.html)
+* [Documentatie voor node. js v 13.9.0](https://nodejs.org/api/http.html)
 
 #### <a name="java"></a>Java
 
-Hieronder vindt u de populaire bibliotheken die worden gebruikt voor JDBC-koppelingspooling die voorbeelden bevatten voor de implementatie ervan: JDBC Connection Pooling.
+Hieronder vindt u de populaire bibliotheken die worden gebruikt voor JDBC-verbindings Pools, met voor beelden voor het implementeren ervan: JDBC-verbindings groepen.
 
 * [Tomcat 8](https://tomcat.apache.org/tomcat-8.0-doc/jdbc-pool.html)
 * [C3p0](https://github.com/swaldman/c3p0)
-* [HikariCP HikariCP](https://github.com/brettwooldridge/HikariCP)
+* [HikariCP](https://github.com/brettwooldridge/HikariCP)
 * [Apache DBCP](https://commons.apache.org/proper/commons-dbcp/)
 
-HTTP-verbinding pooling
+Pooling van HTTP-verbindingen
 
-* [Apache-verbindingsbeheer](https://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html)
-* [KlassepoolinghttpClientConnectionManager](http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/impl/conn/PoolingHttpClientConnectionManager.html)
+* [Apache-verbindings beheer](https://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html)
+* [Klasse PoolingHttpClientConnectionManager](http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/impl/conn/PoolingHttpClientConnectionManager.html)
 
 #### <a name="php"></a>PHP
 
-Hoewel PHP geen ondersteuning biedt voor het poolen van verbindingen, u proberen permanente databaseverbindingen met uw back-endserver te gebruiken.
+Hoewel PHP geen ondersteuning biedt voor groepsgewijze verbindingen, kunt u permanente database verbindingen met de back-endserver proberen.
  
 * MySQL-server
 
-   * [MySQLi-aansluitingen](https://www.php.net/manual/mysqli.quickstart.connections.php) voor nieuwere versies
-   * [mysql_pconnect](https://www.php.net/manual/function.mysql-pconnect.php) voor oudere versies van PHP
+   * [Mysqli-verbindingen](https://www.php.net/manual/mysqli.quickstart.connections.php) voor nieuwere versies
+   * [mysql_pconnect](https://www.php.net/manual/function.mysql-pconnect.php) voor oudere versies van php
 
-* Andere gegevensbronnen
+* Andere gegevens bronnen
 
-   * [PHP-verbindingsbeheer](https://www.php.net/manual/en/pdo.connections.php)
+   * [PHP-verbindings beheer](https://www.php.net/manual/en/pdo.connections.php)
 
 #### <a name="python"></a>Python
 
 * [MySQL](https://github.com/mysqljs/mysql#pooling-connections)
-* [MongoDB MongoDB](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
+* [MongoDB](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
 * [PostgreSQL](https://node-postgres.com/features/pooling)
-* [SQL Server](https://github.com/tediousjs/node-mssql#connection-pools) (LET OP: SQLAlchemy kan worden gebruikt met andere databases naast MicrosoftSQL Server)
-* [HTTP Keep-alive](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)(Keep-Alive is automatisch bij het gebruik van [sessies sessie-objecten](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)).
+* [SQL Server](https://github.com/tediousjs/node-mssql#connection-pools) (Opmerking: sqlalchemy kan worden gebruikt met andere data bases dan MicrosoftSQL server)
+* [HTTP-keepalive](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)(Keep-Alive wordt automatisch gebruikt bij het gebruik van [sessie-objecten](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)voor sessies).
 
-Voor andere omgevingen, review provider of driver-specifieke documenten voor het implementeren van verbinding pooling in uw toepassingen.
+Raadpleeg voor andere omgevingen de provider of stuur programma-specifieke documenten voor het implementeren van verbindings groepen in uw toepassingen.
 
-### <a name="modify-the-application-to-reuse-connections"></a>De toepassing wijzigen om verbindingen opnieuw te gebruiken
+### <a name="modify-the-application-to-reuse-connections"></a>Wijzig de toepassing om verbindingen opnieuw te gebruiken
 
-*  Controleer [Verbindingen beheren in Azure-functies](https://docs.microsoft.com/azure/azure-functions/manage-connections)voor extra aanwijzers en voorbeelden over het beheren van verbindingen in Azure-functies.
+*  Zie [verbindingen beheren in azure functions](https://docs.microsoft.com/azure/azure-functions/manage-connections)voor aanvullende pointers en voor beelden over het beheren van verbindingen in azure functions.
 
-### <a name="modify-the-application-to-use-less-aggressive-retry-logic"></a>De toepassing wijzigen om minder agressieve logica voor nieuwe try's te gebruiken
+### <a name="modify-the-application-to-use-less-aggressive-retry-logic"></a>De toepassing wijzigen voor het gebruik van minder agressieve nieuwe logica
 
-* Voor aanvullende richtlijnen en voorbeelden, bekijk [opnieuw proberen patroon](https://docs.microsoft.com/azure/architecture/patterns/retry).
+* Bekijk het [nieuwe patroon](https://docs.microsoft.com/azure/architecture/patterns/retry)voor meer informatie en voor beelden.
 
-### <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a>Keepalives gebruiken om de uitgaande idle time-out opnieuw in te stellen
+### <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a>Keepalives gebruiken om de uitgaande time-out voor inactiviteit opnieuw in te stellen
 
-* Voor het implementeren van keepalives voor Node.js apps, review [My node application is making excessive outbound calls](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls).
+* Voor het implementeren van keepalives voor node. js-apps, [moet u controleren of de toepassing van mijn knoop punt buitensporige uitgaande oproepen](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls)maakt.
 
-### <a name="additional-guidance-specific-to-app-service"></a>Aanvullende richtlijnen die specifiek zijn voor app-service:
+### <a name="additional-guidance-specific-to-app-service"></a>Aanvullende richt lijnen die specifiek zijn voor App Service:
 
-* Een [load test](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test) moet real world data simuleren in een constante voedingssnelheid. Het testen van apps en functies onder echte wereldstress kan snat-poortuitputtingsproblemen van tevoren identificeren en oplossen.
-* Zorg ervoor dat de back-endservices snel reacties kunnen retourneren. Voor het oplossen van prestatieproblemen met Azure SQL-database, controleert [u problemen met azure SQL-database-prestatieproblemen met Intelligente Inzichten.](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow)
-* Schaal het App-serviceplan op naar meer exemplaren. Zie [Een app schalen in Azure App Service](https://docs.microsoft.com/azure/app-service/manage-scale-up)voor meer informatie over schalen. Aan elke werknemerinstantie in een app-serviceplan wordt een aantal SNAT-poorten toegewezen. Als u uw gebruik over meer exemplaren verspreidt, u het SNAT-poortgebruik per instantie onder de aanbevolen limiet van 100 uitgaande verbindingen krijgen, per uniek extern eindpunt.
-* Overweeg om over te stappen op [App Service Environment (ASE),](https://docs.microsoft.com/azure/app-service/environment/using-an-ase)waar u één uitgaand IP-adres toegewezen hebt en de limieten voor verbindingen en SNAT-poorten veel hoger zijn.
+* Een [belasting test](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test) moet de werkelijke gegevens in een constante voedings snelheid simuleren. Door apps en functies te testen onder echte wereld wijde stress kunnen de SNAT-poort afvoer problemen voor tijdig worden opgespoord en opgelost.
+* Zorg ervoor dat de back-end-services snel reacties kunnen retour neren. Raadpleeg [Azure SQL database prestatie problemen oplossen met intelligent Insights](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow)voor meer informatie over het oplossen van prestatie problemen met Azure SQL database.
+* Uitschalen naar meer exemplaren van het App Service plan. Zie [een app schalen in azure app service](https://docs.microsoft.com/azure/app-service/manage-scale-up)voor meer informatie over schalen. Aan elk worker-exemplaar in een app service-plan is een aantal SNAT-poorten toegewezen. Als u uw gebruik verspreid over meer instanties, kunt u het SNAT-poort gebruik per exemplaar verkrijgen onder de aanbevolen limiet van 100 uitgaande verbindingen, per uniek extern eind punt.
+* Overweeg om over te stappen op [app service Environment (ASE)](https://docs.microsoft.com/azure/app-service/environment/using-an-ase), waarbij u één uitgaand IP-adres hebt toegewezen en de limieten voor verbindingen en SNAT-poorten veel hoger zijn.
 
-Het vermijden van de uitgaande TCP-limieten is gemakkelijker op te lossen, omdat de limieten worden ingesteld op de grootte van uw werknemer. U de limieten zien in [Sandbox Cross VM Numerieke limieten - TCP-verbindingen](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
+Het voor komen van de uitgaande TCP-limieten is gemakkelijker te oplossen, omdat de limieten worden ingesteld op basis van de grootte van uw werk nemer. U kunt de limieten in [sandbox cross-VM numerieke limieten weer geven-TCP-verbindingen](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Naam beperken|Beschrijving|Klein (A1)|Medium (A2)|Groot (A3)|Geïsoleerde laag (ASE)|
+|Limiet naam|Beschrijving|Klein (a1)|Middel groot (a2)|Groot (a3)|Geïsoleerde laag (ASE)|
 |---|---|---|---|---|---|
-|Verbindingen|Aantal verbindingen over hele VM|1920|3968|8064|16.000|
+|Verbindingen|Aantal verbindingen voor de hele virtuele machine|1920|3968|8064|16.000|
 
-Om uitgaande TCP-limieten te voorkomen, u de grootte van uw werknemers vergroten of horizontaal schalen.
+Als u uitgaande TCP-limieten wilt voor komen, kunt u de grootte van uw werk nemers verg Roten of horizon taal schalen.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als u de twee soorten uitgaande verbindingslimieten kent en wat uw app doet, moet het gemakkelijker zijn om problemen op te lossen. Als u weet dat uw app veel gesprekken voert naar hetzelfde opslagaccount, vermoedt u mogelijk een SNAT-limiet. Als uw app een groot aantal oproepen naar eindpunten over het hele internet maakt, zou u vermoeden dat u de VM-limiet bereikt.
+Als u de twee typen uitgaande verbindings limieten kent, en wat uw app doet, moet u de problemen gemakkelijker oplossen. Als u weet dat uw app veel aanroepen naar hetzelfde opslag account maakt, verdacht u mogelijk een SNAT-limiet. Als uw app een groot aantal aanroepen naar eind punten via internet maakt, zou u vermoeden dat u de limiet van de virtuele machine bereikt.
 
-Als u het toepassingsgedrag niet voldoende kent om de oorzaak snel te bepalen, zijn er enkele tools en technieken beschikbaar in App Service om te helpen met die bepaling.
+Als u het gedrag van de toepassing niet kent om de oorzaak snel te bepalen, zijn er enkele hulp middelen en technieken beschikbaar in App Service om u te helpen bij die bepaling.
 
-### <a name="find-snat-port-allocation-information"></a>SNAT-poorttoewijzingsgegevens zoeken
+### <a name="find-snat-port-allocation-information"></a>Informatie over de toewijzing van SNAT-poorten zoeken
 
-U [App Service Diagnostics](https://docs.microsoft.com/azure/app-service/overview-diagnostics) gebruiken om SNAT-poorttoewijzingsgegevens te zoeken en de toewijzingsstatistiek van SNAT-poorten van een App Service-site te observeren. Ga als volgt te werk om snat-poorttoewijzingsgegevens te vinden:
+U kunt [app service diagnostische](https://docs.microsoft.com/azure/app-service/overview-diagnostics) gegevens gebruiken om informatie over de SNAT-poort toewijzing te vinden en de toewijzings metriek voor de SNAT-poorten van een app service site te bekijken. Voer de volgende stappen uit om informatie over de SNAT-poort toewijzing te vinden:
 
-1. Als u toegang wilt krijgen tot diagnostische gegevens van App Service, navigeert u naar uw web-app of App Service-omgeving in de [Azure-portal.](https://portal.azure.com/) Selecteer in de linkernavigatie **De optie Diagnose stellen en problemen oplossen**.
-2. Beschikbaarheids- en prestatiecategorie selecteren
-3. Selecteer de tegel SNAT-poortuitputting in de lijst met beschikbare tegels onder de categorie. De praktijk is om het onder de 128 te houden.
-Als je het nodig hebt, kun je nog steeds een ondersteuningsticket openen en de support engineer krijgt de statistiek van back-end voor je.
+1. Om toegang te krijgen tot App Service diagnostische gegevens, gaat u naar uw App Service web-app of App Service Environment in de [Azure Portal](https://portal.azure.com/). Selecteer in het linkernavigatievenster **problemen vaststellen en oplossen**.
+2. De categorie Beschik baarheid en prestaties selecteren
+3. Selecteer de tegel SNAT-poort uitputting in de lijst met beschik bare tegels onder de categorie. De praktijk is het volgende te bedenken onder 128.
+Als u dit nodig hebt, kunt u nog steeds een ondersteunings ticket openen. de ondersteunings technicus krijgt de metric van back-end voor u.
 
-Aangezien het gebruik van de SNAT-poort niet beschikbaar is als statistiek, is het niet mogelijk om automatisch te schalen op basis van het gebruik van de SNAT-poort of om automatische schaal te configureren op basis van de toewijzingsstatistiek van SNAT-poorten.
+Houd er rekening mee dat het gebruik van de SNAT-poort niet beschikbaar is als metriek. het is niet mogelijk om automatisch te schalen op basis van het gebruik van de SNAT-poort, of om automatische schalen te configureren op basis van de toewijzings metriek voor de SNAT-poorten.
 
 ### <a name="tcp-connections-and-snat-ports"></a>TCP-verbindingen en SNAT-poorten
 
-TCP-verbindingen en SNAT-poorten zijn niet direct gerelateerd. Een TCP-verbindingsgebruiksdetector is opgenomen in het blade diagnose- en problemen oplossen van een App Service-site. Zoek naar de term "TCP-verbindingen" om het te vinden.
+TCP-verbindingen en SNAT-poorten zijn niet rechtstreeks gerelateerd. Een gebruiks detectie voor TCP-verbindingen is opgenomen in de Blade problemen vaststellen en oplossen van een App Service-site. Zoek naar de zin TCP-verbindingen om deze te vinden.
 
-* De SNAT-poorten worden alleen gebruikt voor externe netwerkstromen, terwijl de totale TCP-verbindingen lokale netbackverbindingen bevatten.
-* Een SNAT-poort kan worden gedeeld door verschillende stromen, als de stromen verschillen in protocol, IP-adres of poort. De statistiek TCP Connections telt elke TCP-verbinding.
-* De limiet voor TCP-verbindingen gebeurt op het niveau van de werknemerinstantie. De uitgaande taakverdeling voor Azure Network maakt geen gebruik van de statistiek TCP-verbindingen voor SNAT-poortbeperking.
-* De limieten voor TCP-verbindingen worden beschreven in [Sandbox Cross VM Numerieke limieten - TCP-verbindingen](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
+* De SNAT-poorten worden alleen gebruikt voor externe netwerk stromen, terwijl het totale aantal TCP-verbindingen lokale loop back-verbindingen bevat.
+* Een SNAT-poort kan worden gedeeld door verschillende stromen, als de stromen verschillend zijn in een van de protocollen, het IP-adres of de poort. De metrische gegevens voor TCP-verbindingen tellen elke TCP-verbinding.
+* De limiet voor TCP-verbindingen treedt op op het niveau van het worker-exemplaar. De uitgaande taak verdeling van het Azure-netwerk maakt geen gebruik van de TCP-verbindings gegevens voor de limiet voor SNAT-poorten.
+* De limieten voor TCP-verbindingen worden beschreven in [sandbox cross-VM-numerieke limieten-TCP-verbindingen](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Naam beperken|Beschrijving|Klein (A1)|Medium (A2)|Groot (A3)|Geïsoleerde laag (ASE)|
+|Limiet naam|Beschrijving|Klein (a1)|Middel groot (a2)|Groot (a3)|Geïsoleerde laag (ASE)|
 |---|---|---|---|---|---|
-|Verbindingen|Aantal verbindingen over hele VM|1920|3968|8064|16.000|
+|Verbindingen|Aantal verbindingen voor de hele virtuele machine|1920|3968|8064|16.000|
 
-### <a name="webjobs-and-database-connections"></a>WebJobs- en databaseverbindingen
+### <a name="webjobs-and-database-connections"></a>Webjobs en database verbindingen
  
-Als SNAT-poorten zijn uitgeput, wanneer WebJobs geen verbinding kan maken met de Azure SQL-database, is er geen statistiek om aan te geven hoeveel verbindingen worden geopend door elk afzonderlijk webtoepassingsproces. Als u de problematische WebJob wilt vinden, verplaatst u verschillende WebJobs naar een ander App Service-abonnement om te zien of de situatie verbetert of dat er een probleem in een van de plannen blijft. Herhaal het proces totdat u de problematische WebJob vindt.
+Als de SNAT-poorten zijn uitgeput, waarbij webjobs geen verbinding kunnen maken met de Azure-SQL database, is er geen metriek om te laten zien hoeveel verbindingen door elk afzonderlijk webtoepassingsproces worden geopend. Als u de problematische Webtaak wilt vinden, kunt u verschillende webjobs naar een andere App Service plan verplaatsen om te zien of de situatie zich verbetert of als er een probleem in een van de plannen blijft. Herhaal dit proces totdat u de problematische Webtaak hebt gevonden.
 
-### <a name="using-snat-ports-sooner"></a>SNAT-poorten sneller gebruiken
+### <a name="using-snat-ports-sooner"></a>Een SNAT-poort gebruiken
 
-U geen Azure-instellingen wijzigen om de gebruikte SNAT-poorten eerder vrij te geven, omdat alle SNAT-poorten worden vrijgegeven volgens de onderstaande voorwaarden en het gedrag is door het ontwerp.
+U kunt geen Azure-instellingen wijzigen om de gebruikte SNAT-poorten eerder vrij te geven, omdat alle SNAT-poorten worden vrijgegeven volgens de onderstaande voor waarden en het gedrag inherent is aan het ontwerp.
  
-* Als een server of client FINACK verzendt, wordt de [SNAT-poort](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#tcp-snat-port-release) na 240 seconden vrijgegeven.
-* Als een RST wordt gezien, wordt de SNAT-poort na 15 seconden vrijgegeven.
-* Als er een idle time-out is bereikt, wordt de poort vrijgegeven.
+* Als een van de servers of de client FINACK verzendt, [wordt de SNAT-poort](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#tcp-snat-port-release) na 240 seconden vrijgegeven.
+* Als een RST wordt weer gegeven, wordt de SNAT-poort na 15 seconden vrijgegeven.
+* Als er een time-out voor inactiviteit is bereikt, wordt de poort vrijgegeven.
  
 ## <a name="additional-information"></a>Aanvullende informatie
 
-* [SNAT met App-service](https://4lowtherabbit.github.io/blogs/2019/10/SNAT/)
-* [Problemen met trage app-prestaties in Azure App-service oplossen](https://docs.microsoft.com/azure/app-service/troubleshoot-performance-degradation)
+* [SNAT met App Service](https://4lowtherabbit.github.io/blogs/2019/10/SNAT/)
+* [Problemen met prestatie problemen met langzame apps in Azure App Service oplossen](https://docs.microsoft.com/azure/app-service/troubleshoot-performance-degradation)

@@ -1,6 +1,6 @@
 ---
-title: Publicatie van aanbiedingen automatiseren | Azure Marketplace
-description: Hier wordt uitgelegd hoe u de workflow voor het publiceren van virtuele machines programmatisch automatiseren.
+title: Automatische aanbieding publiceren | Azure Marketplace
+description: Hierin wordt uitgelegd hoe u de werk stroom voor het publiceren van virtuele machines programmatisch kunt automatiseren.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,26 +8,26 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: 25c7429dc369fb8fc70a135950b16c0a5997656b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280334"
 ---
 <a name="automate-offer-publishing"></a>Publicatie aanbiedingen automatiseren
 =========================
 
-U de VM-publicatieworkflow ook programmatisch automatiseren met behulp van de API's in de sectie [API-verwijzing.](./cloud-partner-portal-api-overview.md) Er zijn twee verschillende scenario's om rekening mee te houden tijdens de planning van automatisering: bied de eerste publicatie en de daaropvolgende publicatie van aanbiedingen.
+U kunt de werk stroom voor de VM-publicatie ook programmatisch automatiseren met behulp van de Api's in het gedeelte [API Reference](./cloud-partner-portal-api-overview.md) . Er zijn twee verschillende scenario's waarmee u rekening moet houden bij het plannen van Automation: bieden de eerste publicatie en de volgende aanbieding publiceren.
 
 
 <a name="offer-initial-publishing"></a>Eerste publicatie aanbieden
 -------------------------
 
-Wanneer u een aanbieding voor de eerste keer publiceert, zijn een paar extra stappen vereist voordat u naar de marketplace wordt geüpload.  U moet bijvoorbeeld de metagegevens voorbereiden en een aanbiedingsconcept maken. De eerste publicatiewerkstroom wordt weergegeven in het volgende diagram.
+Wanneer u een aanbieding voor de eerste keer publiceert, zijn er enkele extra stappen nodig voordat u deze uploadt naar de Marketplace.  U moet bijvoorbeeld de meta gegevens voorbereiden en een concept van de aanbieding maken. De eerste publicatie werk stroom wordt weer gegeven in het volgende diagram.
 
-![Interacties van een publicatie van een eerste aanbieding](media/cloud-partner-portal-automate-offer-publishing/first-time-offer-publishing.png)
+![Interacties van een eerste aanbiedings publicatie](media/cloud-partner-portal-automate-offer-publishing/first-time-offer-publishing.png)
 
-De volgende voorbeeldcode toont deze stappen aan.
+In de volgende voorbeeld code ziet u deze stappen.
 
 ``` csharp
   CreateOfferAndPublish()
@@ -74,12 +74,12 @@ De volgende voorbeeldcode toont deze stappen aan.
 ```
 
 
-<a name="subsequent-offer-publishing"></a>Latere publicatie van aanbiedingen
+<a name="subsequent-offer-publishing"></a>Volgende aanbieding publiceren
 ---------------------------
 
-Zodra de virtuele machine (VM) is geïntegreerd in een pijplijn voor continue integratie, u de publicatieworkflow automatiseren om elke keer dat een nieuwe virtuele harde schijf (VHD) wordt gemaakt, uit te voeren.  Deze werkstroom wordt geïllustreerd door de volgende diagram- en voorbeeldcode.
+Zodra de aanbieding van de virtuele machine (VM) is geïntegreerd in een pijp lijn voor continue integratie, kunt u de werk stroom voor publiceren automatiseren om elke keer dat er een nieuwe virtuele harde schijf (VHD) wordt gemaakt, uit te voeren.  Deze werk stroom wordt geïllustreerd door het volgende diagram en voorbeeld code.
 
-![Interacties van latere aanbiedingspublicaties](media/cloud-partner-portal-automate-offer-publishing/update-offer-and-publish.png)
+![Interacties van volgende aanbiedings publicaties](media/cloud-partner-portal-automate-offer-publishing/update-offer-and-publish.png)
 
 ``` csharp
     UpdateOfferAndPublish()

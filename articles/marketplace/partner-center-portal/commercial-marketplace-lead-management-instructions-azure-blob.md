@@ -1,6 +1,6 @@
 ---
-title: Azure Table in commercieel marktplaatsprogramma| Azure Marketplace
-description: Leadbeheer configureren voor Azure Blob
+title: Azure-tabel in het programma voor commerciële Marketplace | Azure Marketplace
+description: Beheer van leads voor Azure-Blob configureren
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,84 +8,84 @@ ms.topic: conceptual
 ms.date: 7/30/2019
 ms.author: dsindona
 ms.openlocfilehash: 062252b007e22fcd2644c8b647fc0ecc2f5938cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80285245"
 ---
-# <a name="lead-management-instructions-for-azure-blob"></a>Instructies voor leadbeheer voor Azure Blob
+# <a name="lead-management-instructions-for-azure-blob"></a>Instructies voor het beheer van potentiële klanten voor Azure Blob
 
 >[!Caution]
->De Azure Blob-optie om leads van uw marktplaatsaanbieding te verwerken, is afgeschaft. Als u momenteel een aanbieding hebt gepubliceerd met leadbeheerconfiguratie voor Azure Blob, ontvangt u geen klantleads meer. Werk uw configuratie van het leadbeheer bij naar een van de andere opties voor leadbeheer. Meer informatie over de andere opties op de [bestemmingspagina voor leadbeheer."](./commercial-marketplace-get-customer-leads.md)
+>De optie Azure Blob voor het verwerken van leads van uw Marketplace-aanbieding is afgeschaft. Als u momenteel een aanbieding hebt gepubliceerd met lead management-configuratie voor Azure Blob, ontvangt u geen leads meer van de klant. Werk de configuratie van uw lead beheer bij naar een van de andere opties voor het beheer van leads. Meer informatie over de andere opties op de [landings pagina voor het beheer van leads](./commercial-marketplace-get-customer-leads.md).
 
-Als uw CRM-systeem (Customer Relationship Management) niet expliciet wordt ondersteund in het Partnercentrum voor het ontvangen van Azure Marketplace- en AppSource-leads, u een Azure Blob gebruiken om deze leads te verwerken. U er vervolgens voor kiezen om de gegevens te exporteren en te importeren in uw CRM-systeem. De instructies in dit artikel geven u het proces van het maken van een Azure Storage-account en een Azure Blob onder dat account. Bovendien u een nieuwe stroom maken met Microsoft Flow om een e-mailmelding te verzenden wanneer uw aanbieding een lead ontvangt.
+Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt ondersteund in het partner centrum voor het ontvangen van Azure Marketplace-en AppSource-leads, kunt u een Azure-Blob gebruiken om deze leads af te handelen. U kunt de gegevens vervolgens exporteren en importeren in uw CRM-systeem. De instructies in dit artikel geven u door het proces van het maken van een Azure Storage-account en een Azure-Blob onder dat account. Daarnaast kunt u een nieuwe stroom maken met behulp van Microsoft Flow om een e-mail bericht te verzenden wanneer uw aanbieding een lead ontvangt.
 
 
-## <a name="how-to-configure-azure-blob"></a>Azure Blob configureren
+## <a name="how-to-configure-azure-blob"></a>Azure-Blob configureren
 
-1. Als u geen Azure-account hebt, u [een gratis proefaccount maken.](https://azure.microsoft.com/pricing/free-trial/)
-1. Nadat uw Azure-account actief is, meldt u zich aan bij de [Azure-portal.](https://portal.azure.com)
-1. Maak in de Azure-portal een opslagaccount met de volgende procedure.  
-    1. Selecteer **+Een resource maken** op de linkermenubalk.  Het **nieuwe** deelvenster (mes) wordt rechts weergegeven.
-    2. Selecteer **Opslag** in het deelvenster **Nieuw.**  **Een lijst met aanbevolen** gegevens wordt rechts weergegeven.
-    3. Selecteer het **opslagaccount** om het aanmaken van een account te starten.  Volg de instructies in het artikel [Een opslagaccount aanmaken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
+1. Als u geen Azure-account hebt, kunt u [een gratis proef account maken](https://azure.microsoft.com/pricing/free-trial/).
+1. Nadat uw Azure-account actief is, meldt u zich aan bij de [Azure Portal](https://portal.azure.com).
+1. Maak in de Azure Portal een opslag account met behulp van de volgende procedure.  
+    1. Selecteer **+ een resource maken** in de menu balk links.  Het **nieuwe** deel venster (Blade) wordt aan de rechter kant weer gegeven.
+    2. Selecteer **opslag** in het deel venster **Nieuw** .  Er wordt een **Aanbevolen** lijst aan de rechter kant weer gegeven.
+    3. Selecteer het **opslag account** om te beginnen met het maken van het account.  Volg de instructies in het artikel [een opslag account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 
-    ![Stappen om een Azure-opslagaccount te maken](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-create.png)
+    ![Stappen voor het maken van een Azure Storage-account](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-create.png)
 
-    Selecteer [Snelstart-zelfstudie voor](https://docs.microsoft.com/azure/storage/)meer informatie over opslagaccounts .  Zie [opslagprijzen](https://azure.microsoft.com/pricing/details/storage/)voor meer informatie over opslagprijzen.
+    Selecteer voor meer informatie over opslag accounts [Snelstartgids zelf studie](https://docs.microsoft.com/azure/storage/).  Zie [prijzen voor opslag](https://azure.microsoft.com/pricing/details/storage/)voor meer informatie over prijzen voor opslag.
 
-4. Wacht tot uw opslagaccount is ingericht, een proces dat doorgaans enkele minuten duurt.  Ga vervolgens naar uw opslagaccount vanaf de **startpagina** van de Azure-portal door **Alle resources weergeven** te selecteren of **alle bronnen** te selecteren op de linkernavigatiemenubalk van de Azure-portal.
+4. Wacht tot uw opslag account is ingericht, een proces dat doorgaans een paar minuten in beslag neemt.  Ga vervolgens naar uw opslag account vanaf de **Start** pagina van de Azure portal door **alle resources weer geven** te selecteren of door **alle resources** te selecteren in de linker navigatie balk van de Azure Portal.
 
-    ![Toegang tot uw Azure-opslagaccount](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-access.png)
+    ![Toegang tot uw Azure Storage-account](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-access.png)
 
-5. Selecteer **access-sleutels** in het deelvenster Access en kopieer de waarde van de *verbindingstekenreeks* voor de sleutel. Sla deze waarde op, omdat dit de waarde van de *opslagaccountverbinding is* die u in de publicatieportal moet verstrekken om leads voor uw marktplaatsaanbieding te ontvangen.
+5. Selecteer in het deel venster opslag account de optie **toegangs sleutels** en kopieer de *verbindings reeks* waarde voor de sleutel. Sla deze waarde op als dit de waarde voor de *verbindings reeks voor het opslag account* is die u moet opgeven in de portal voor publiceren om leads voor uw Marketplace-aanbieding te ontvangen.
 
-     Een voorbeeld van een verbindingssteek is:
+     Een voor beeld van een verbinding Sting is:
 
      ```sql
      DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
      ```
 
-    ![Azure-opslagsleutel](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
+    ![Azure-opslag sleutel](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
 
-6. Selecteer **Blobs**op de pagina met uw opslagaccount .
+6. Selecteer op de pagina opslag account de optie **blobs**.
 
-   ![Azure-opslagsleutel](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
+   ![Azure-opslag sleutel](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
 
-7. Eenmaal op de blobs-pagina selecteert u de knop **+ Container.**
+7. Selecteer de knop **+ container** op de pagina blobs.
 
-8. Typ een **naam** voor uw nieuwe container. De containernaam mag alleen kleine letters bevatten, moet beginnen met een letter of cijfer en mag alleen letters, cijfers en het streepje (-) bevatten. Zie [Containers, blobs en metagegevens benoemen en verwijzen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)voor meer informatie over container- en blobnamen.
+8. Voer een **naam** in voor de nieuwe container. De containernaam mag alleen kleine letters bevatten, moet beginnen met een letter of cijfer en mag alleen letters, cijfers en het streepje (-) bevatten. Zie [containers, blobs en meta gegevens benoemen en hiernaar verwijzen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)voor meer informatie over container-en BLOB-namen.
 
-    Sla deze waarde op, omdat dit de *containernaamwaarde* is die u in de publicatieportal moet opgeven om leads voor uw marktplaatsaanbieding te ontvangen.
+    Sla deze waarde op omdat dit de waarde voor de *container naam* is die u in de portal voor publiceren moet opgeven om leads voor uw Marketplace-aanbieding te ontvangen.
 
-9. Stel het niveau van openbare toegang tot de container in als **Privé (geen anonieme toegang)**.
+9. Stel het niveau van open bare toegang tot de container in als **privé (geen anonieme toegang)**.
 
 10. Selecteer **OK** om de container te maken.
 
     ![Nieuwe container](./media/commercial-marketplace-lead-management-instructions-azure-blob/new-container.png)
 
-## <a name="configure-your-offer-to-send-leads-to-the-azure-blob"></a>Uw aanbieding configureren om leads naar de Azure Blob te verzenden
+## <a name="configure-your-offer-to-send-leads-to-the-azure-blob"></a>Uw aanbieding configureren voor het verzenden van leads naar de Azure-Blob
 
-Wanneer u klaar bent om de leadmanagementgegevens voor uw aanbieding in de publicatieportal te configureren, volgt u de volgende stappen:
+Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbieding te configureren in de portal voor publiceren, volgt u de onderstaande stappen:
 
-1. Navigeer naar de pagina **Installatie van aanbieding** voor uw aanbieding.
-2. Selecteer **Verbinding maken** onder de sectie Leadbeheer.
+1. Navigeer naar de pagina voor het instellen van de **aanbieding** voor uw aanbieding.
+2. Selecteer **verbinding maken** in het gedeelte Lead beheer.
 
-    ![Aanbieding verbinden](./media/commercial-marketplace-lead-management-instructions-azure-blob/connect-offer.png)
+    ![Connect-aanbieding](./media/commercial-marketplace-lead-management-instructions-azure-blob/connect-offer.png)
 
-3. Selecteer **Azure Blob** voor de hoofdbestemming in het pop-upvenster Verbindingsdetails.
+3. Selecteer in het pop-upvenster verbindings Details de optie **Azure Blob** voor de doel locatie van de lead.
 
-    ![Detail verbinden](./media/commercial-marketplace-lead-management-instructions-azure-blob/connect-details.png) 
+    ![Details verbinden](./media/commercial-marketplace-lead-management-instructions-azure-blob/connect-details.png) 
 
-4. Geef de **tekenreeks Containernaam** en **Opslagaccountverbinding op die** u hebt gekregen door deze instructies te volgen.
+4. Geef de **container naam** en de **verbindings reeks voor het opslag account** op die u hebt gevolgd door deze instructies.
 
-    * Voorbeeld van containernaam:`marketplaceleadcontainer`
-    * Voorbeeld van tekenreeks `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![opslagaccountverbinding: verbindingsdetail](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
+    * Container naam voor beeld:`marketplaceleadcontainer`
+    * Voor beeld van verbindings reeks voor `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![opslag account: Details van verbinding](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
 5. Selecteer **Opslaan**.
 
     > [!NOTE]
-    > U moet de rest van de aanbieding voltooien en publiceren voordat u leads voor de aanbieding ontvangen.
+    > U moet de configuratie van de rest van de aanbieding volt ooien en publiceren voordat u leads voor de aanbieding kunt ontvangen.
 
 

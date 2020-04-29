@@ -1,7 +1,7 @@
 ---
-title: Diagnose van een probleem met vm-netwerkroutering - Azure CLI
+title: Een VM-netwerk routerings probleem vaststellen-Azure CLI
 titleSuffix: Azure Network Watcher
-description: In dit artikel leert u hoe u een probleem met het routeren van een virtuele machine-netwerk diagnosticeren met behulp van de volgende hopmogelijkheid van Azure Network Watcher.
+description: In dit artikel leert u hoe u een probleem met de netwerk routering van een virtuele machine kunt vaststellen met behulp van de volgende hop-functionaliteit van Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
 author: damendo
@@ -18,31 +18,31 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
 ms.openlocfilehash: ae139ea7aca7c3896fcd7b0acf2bf6673490a2f4
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80382899"
 ---
-# <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Diagnose van een probleem met de routering van een netwerk voor virtuele machines - Azure CLI
+# <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Een probleem met de netwerk routering van een virtuele machine diagnosticeren-Azure CLI
 
-In dit artikel implementeert u een virtuele machine (VM) en controleert u de communicatie naar een IP-adres en URL. U stelt de oorzaak van mislukte communicatie vast en leert hoe u dit probleem kunt oplossen.
+In dit artikel implementeert u een virtuele machine (VM) en controleert u de communicatie met een IP-adres en een URL. U stelt de oorzaak van mislukte communicatie vast en leert hoe u dit probleem kunt oplossen.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest de Azure CLI lokaal te installeren en te gebruiken, moet u in dit artikel de Azure CLI-versie 2.0.28 of hoger uitvoeren. Voer `az --version` uit om te zien welke versie is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). Nadat u de Azure CLI-versie hebt geverifieerd, voert u uit `az login` om een verbinding met Azure te maken. De Azure CLI-opdrachten in dit artikel zijn opgemaakt om in een Bash-shell uit te voeren.
+Als u ervoor kiest om de Azure CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.28 of hoger uitvoeren. Voer `az --version` uit om te zien welke versie is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). Nadat u de Azure CLI-versie hebt gecontroleerd `az login` , voert u uit om een verbinding te maken met Azure. De Azure CLI-opdrachten in dit artikel zijn ingedeeld om te worden uitgevoerd in een bash-shell.
 
 ## <a name="create-a-vm"></a>Een virtuele machine maken
 
-Voordat u een VM kunt maken, maakt u eerst een resourcegroep die de VM bevat. Maak een resourcegroep maken met [az group create](/cli/azure/group#az-group-create). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* op de *locatie Eastus geaald:*
+Voordat u een VM kunt maken, maakt u eerst een resourcegroep die de VM bevat. Maak een resourcegroep maken met [az group create](/cli/azure/group#az-group-create). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak een VM met [az vm create](/cli/azure/vm#az-vm-create). Als SSH-sleutels niet al bestaan op de standaardlocatie van de sleutel, worden ze met deze opdracht gemaakt. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`. In het volgende voorbeeld wordt een VM met de naam *myVm gemaakt:*
+Maak een VM met [az vm create](/cli/azure/vm#az-vm-create). Als SSH-sleutels niet al bestaan op de standaardlocatie van de sleutel, worden ze met deze opdracht gemaakt. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`. In het volgende voor beeld wordt een VM gemaakt met de naam *myVm*:
 
 ```azurecli-interactive
 az vm create \
@@ -52,15 +52,15 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Het maken van de virtuele machine duurt een paar minuten. Ga niet verder met de resterende stappen totdat de VM is gemaakt en de Azure CLI de uitvoer retourneert.
+Het maken van de virtuele machine duurt een paar minuten. Ga niet verder met de resterende stappen totdat de virtuele machine is gemaakt en de Azure CLI uitvoer retourneert.
 
 ## <a name="test-network-communication"></a>Netwerkcommunicatie testen
 
-Als u de netwerkcommunicatie met Network Watcher wilt testen, moet u eerst een netwerkwatcher in de regio inschakelen waarin de VM zich bevindt en vervolgens de volgende hopcapaciteit van Network Watcher gebruiken om de communicatie te testen.
+Als u de netwerk communicatie met Network Watcher wilt testen, moet u eerst een Network Watcher inschakelen in de regio waarin de virtuele machine zich bevindt die u wilt testen en vervolgens de volgende hop-mogelijkheid Network Watcher gebruiken om de communicatie te testen.
 
 ### <a name="enable-network-watcher"></a>Netwerk-watcher inschakelen
 
-Als u al een netwerkwatcher hebt ingeschakeld in de regio Oost-VS, gaat u naar [Volgende hop gebruiken.](#use-next-hop) Gebruik de [opdracht az-netwerkwatcher om](/cli/azure/network/watcher#az-network-watcher-configure) een netwerkwatcher in de regio Oost-VS te maken:
+Als u al een Network Watcher hebt ingeschakeld in de regio VS-Oost, gaat u verder met de [volgende hop](#use-next-hop). Gebruik de opdracht [AZ Network Watcher configure](/cli/azure/network/watcher#az-network-watcher-configure) om een netwerk-Watcher te maken in de regio VS-Oost:
 
 ```azurecli-interactive
 az network watcher configure \
@@ -71,7 +71,7 @@ az network watcher configure \
 
 ### <a name="use-next-hop"></a>Volgende hop gebruiken
 
-Azure maakt automatisch routes naar standaardbestemmingen. U kunt uw eigen, aangepaste routes maken om die standaardroutes te overschrijven. Soms hebben aangepaste routes tot gevolg dat de communicatie mislukt. Als u de routering van een VM wilt testen, gebruikt u [de show-next-hop van AZ-netwerkwatcher](/cli/azure/network/watcher?view=azure-cli-latest#az-network-watcher-show-next-hop) om de volgende routering hop te bepalen wanneer het verkeer is bestemd voor een specifiek adres.
+Azure maakt automatisch routes naar standaardbestemmingen. U kunt uw eigen, aangepaste routes maken om die standaardroutes te overschrijven. Soms hebben aangepaste routes tot gevolg dat de communicatie mislukt. Als u de route ring van een virtuele machine wilt testen, gebruikt u [AZ Network Watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest#az-network-watcher-show-next-hop) om de volgende routerings-hop te bepalen wanneer het verkeer voor een specifiek adres bestemd is.
 
 Uitgaande communicatie van de VM naar een van de IP-adressen testen voor www.bing.com:
 
@@ -85,7 +85,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-Na een paar seconden, de uitvoer informeert u dat de **nextHopType** is **internet,** en dat de **routeTableId** is **Systeem route**. Dit resultaat laat u weten dat er een geldige route naar de bestemming is.
+Na een paar seconden is de uitvoer informeert dat de **NextHopType** **Internet**is en dat de **routeTableId** **systeem route**is. Dit leidt ertoe dat u weet dat er een geldige route naar de bestemming is.
 
 Uitgaande communicatie van de VM naar 172.31.0.100 testen:
 
@@ -99,11 +99,11 @@ az network watcher show-next-hop \
   --out table
 ```
 
-De geretourneerde uitvoer informeert u dat **Geen** de **nextHopType**is en dat de **routeTableId** ook **Systeemroute**is. Hieruit kunt u afleiden dat er wel een geldige systeemroute is naar de bestemming, maar dat er geen volgende hop is voor het routeren van het verkeer naar de bestemming.
+De uitvoer heeft informeert dat **geen** **nextHopType**is en dat de **routeTableId** ook **systeem routes**zijn. Hieruit kunt u afleiden dat er wel een geldige systeemroute is naar de bestemming, maar dat er geen volgende hop is voor het routeren van het verkeer naar de bestemming.
 
 ## <a name="view-details-of-a-route"></a>Details van een route weergeven
 
-Als u de routering verder wilt analyseren, bekijkt u de effectieve routes voor de netwerkinterface met de opdracht [az-netwerk nic show-effective-route-table:](/cli/azure/network/nic#az-network-nic-show-effective-route-table)
+Als u de route ring verder wilt analyseren, controleert u de meest efficiënte routes voor de netwerk interface met de opdracht [AZ Network NIC show-ingangsdatum-route tabel](/cli/azure/network/nic#az-network-nic-show-effective-route-table) :
 
 ```azurecli-interactive
 az network nic show-effective-route-table \
@@ -129,9 +129,9 @@ De volgende tekst is opgenomen in de geretourneerde uitvoer:
 },
 ```
 
-Toen u `az network watcher show-next-hop` de opdracht gebruikte om uitgaande communicatie te testen naar 13.107.21.200 in [Use next hop,](#use-next-hop)werd de route met het **adresVoorvoegsel** 0.0.0.0/0** gebruikt om verkeer naar het adres te leiden, omdat geen enkele andere route in de uitvoer het adres bevat. De standaardinstelling is dat alle adressen die niet zijn opgegeven in het adresvoorvoegsel van een andere route, worden doorgestuurd naar internet.
+Wanneer u de opdracht `az network watcher show-next-hop` hebt gebruikt voor het testen van uitgaande communicatie naar 13.107.21.200 in de [volgende hop](#use-next-hop), is de route met de **addressPrefix** 0.0.0.0/0 * * gebruikt voor het routeren van verkeer naar het adres, omdat geen enkele andere route in de uitvoer het adres bevat. De standaardinstelling is dat alle adressen die niet zijn opgegeven in het adresvoorvoegsel van een andere route, worden doorgestuurd naar internet.
 
-Wanneer u `az network watcher show-next-hop` de opdracht echter gebruikte om uitgaande communicatie naar 172.31.0.100 te testen, liet het resultaat u weten dat er geen volgende hoptype was. In de geretourneerde uitvoer ziet u ook de volgende tekst:
+Wanneer u de opdracht `az network watcher show-next-hop` hebt gebruikt voor het testen van uitgaande communicatie naar 172.31.0.100, heeft het resultaat gemeld dat er geen type voor de volgende hop is. In de geretourneerde uitvoer ziet u ook de volgende tekst:
 
 ```
 {
@@ -149,7 +149,7 @@ Wanneer u `az network watcher show-next-hop` de opdracht echter gebruikte om uit
 },
 ```
 
-Zoals u zien in `az network watcher nic show-effective-route-table` de uitvoer van de opdracht, hoewel er een standaardroute naar het voorvoegsel 172.16.0.0/12 is, dat het 172.31.0.100-adres bevat, is het **volgendeHopType** **Geen**. Azure maakt een standaardroute naar 172.16.0.0/12, maar stelt geen volgend hoptype in, tenzij daar een reden voor is. Als u bijvoorbeeld het adresbereik 172.16.0.0/12 hebt toegevoegd aan de adresruimte van het virtuele netwerk, wijzigt Azure het **nextHopType** in **virtueel netwerk** voor de route. Een controle zou dan **virtueel netwerk** als **nextHopType**tonen.
+Zoals u kunt zien in de uitvoer van de `az network watcher nic show-effective-route-table` opdracht, is er een standaard route naar het voor voegsel 172.16.0.0/12, dat het 172.31.0.100-adres bevat, de **nextHopType** is **geen**. Azure maakt een standaardroute naar 172.16.0.0/12, maar stelt geen volgend hoptype in, tenzij daar een reden voor is. Als u bijvoorbeeld het adres bereik 172.16.0.0/12 hebt toegevoegd aan de adres ruimte van het virtuele netwerk, wijzigt Azure de **nextHopType** in het **virtuele netwerk** voor de route. Een controle wordt vervolgens het **virtuele netwerk** weer gegeven als de **nextHopType**.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -161,6 +161,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een VM gemaakt en netwerkroutering van de VM gediagnosticeerd. U hebt geleerd dat Azure verschillende standaardroutes maakt en u hebt de routering naar twee verschillende bestemmingen getest. Lees hier meer over [routering in Azure](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en hoe u [aangepaste routes maakt](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
+In dit artikel hebt u een virtuele machine gemaakt en een diagnose van de netwerk routering van de virtuele machine. U hebt geleerd dat Azure verschillende standaardroutes maakt en u hebt de routering naar twee verschillende bestemmingen getest. Lees hier meer over [routering in Azure](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en hoe u [aangepaste routes maakt](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
 
-Voor uitgaande VM-verbindingen u ook de latentie en toegestane en geweigerde netwerkverkeer tussen de VM en een eindpunt bepalen met behulp van de capaciteit [voor het oplossen van verbindingsproblemen](network-watcher-connectivity-cli.md) van Network Watcher. U de communicatie tussen een VM en een eindpunt, zoals een IP-adres of URL, na verloop van tijd controleren met behulp van de mogelijkheid voor netwerkwatcher-verbindingsmonitor. Zie [Een netwerkverbinding controleren](connection-monitor.md)voor meer informatie.
+Voor uitgaande VM-verbindingen kunt u ook de latentie en het toegestane en geweigerde netwerk verkeer tussen de virtuele machine en een eind punt bepalen met behulp van de [verbindings problemen](network-watcher-connectivity-cli.md) met de verbinding van Network Watcher. U kunt de communicatie tussen een virtuele machine en een eind punt, zoals een IP-adres of URL, na verloop van tijd bewaken met behulp van de Network Watcher-functie verbindings monitor. Zie [een netwerk verbinding bewaken](connection-monitor.md)voor meer informatie.

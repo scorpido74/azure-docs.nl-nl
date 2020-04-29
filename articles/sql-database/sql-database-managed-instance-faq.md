@@ -1,6 +1,6 @@
 ---
 title: Veelgestelde vragen over beheerdere exemplaren
-description: VEELgestelde vragen voor SQL Database-beheerde instantie (FAQ)
+description: Veelgestelde vragen over SQL Database beheerde exemplaren
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,223 +12,223 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
 ms.openlocfilehash: 393d67b200a4f8d44cb001b3a7e2e491209e9d58
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80364163"
 ---
-# <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>VEELgestelde vragen voor SQL Database-beheerde instantie (FAQ)
+# <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Veelgestelde vragen over SQL Database beheerde exemplaren
 
-Dit artikel bevat veel van de meest voorkomende vragen over [SQL Database beheerde instantie](sql-database-managed-instance.md).
+Dit artikel bevat veel van de meest voorkomende vragen over [SQL database beheerde instantie](sql-database-managed-instance.md).
 
 ## <a name="supported-features"></a>Ondersteunde functies
 
-**Waar vind ik een lijst met functies die worden ondersteund op beheerde instantie?**
+**Waar vind ik een lijst met functies die worden ondersteund in een beheerd exemplaar?**
 
-Zie Azure SQL Database versus SQL [Server](sql-database-features.md)voor een lijst met ondersteunde functies in beheerde instantie.
+Zie [Azure SQL database versus SQL Server](sql-database-features.md)voor een lijst met ondersteunde functies in het beheerde exemplaar.
 
-Zie [T-SQL-verschillen van SQL Server](sql-database-managed-instance-transact-sql-information.md)voor verschillen in syntaxis en gedrag tussen de door Azure SQL Database beheerde instantie en on-premises SQL Server.
+Zie voor verschillen in de syntaxis en het gedrag tussen Azure SQL Database beheerde instantie en on-premises SQL Server [T-SQL-verschillen van SQL Server](sql-database-managed-instance-transact-sql-information.md).
 
 
-## <a name="tech-spec--resource-limits"></a>Technische specificaties & resourcelimieten
+## <a name="tech-spec--resource-limits"></a>Technische specificaties & resource limieten
  
-**Waar vind ik technische kenmerken en resourcelimieten voor beheerde bijvoorbeeld?**
+**Waar vind ik technische kenmerken en resource limieten voor een beheerd exemplaar?**
 
-Voor beschikbare hardware generatie kenmerken, zie [technische verschillen in hardware generaties](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
-Zie [technische verschillen tussen servicelagen](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)voor beschikbare servicelagen en hun kenmerken.
+Zie [technische verschillen in hardware generaties](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)voor de beschik bare kenmerken voor het genereren van hardware.
+Zie [technische verschillen tussen service lagen](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)voor de beschik bare service lagen en hun kenmerken.
 
 ## <a name="known-issues--bugs"></a>Bekende problemen & bugs
 
 **Waar vind ik bekende problemen en bugs?**
 
-Voor bugs en bekende problemen zie [bekende problemen](sql-database-release-notes.md#known-issues).
+Zie [bekende problemen](sql-database-release-notes.md#known-issues)voor bugs en bekende problemen.
 
 ## <a name="new-features"></a>Nieuwe functies
 
-**Waar vind ik de nieuwste functies en de functies in openbare preview?**
+**Waar vind ik de nieuwste functies en de functies van de open bare preview?**
 
-Zie [releasenotes](sql-database-release-notes.md?tabs=managed-instance)voor nieuwe en voorbeeldfuncties.
+Zie [release opmerkingen](sql-database-release-notes.md?tabs=managed-instance)voor nieuwe en preview-functies.
 
-## <a name="deployment-times"></a>Implementatietijden 
+## <a name="deployment-times"></a>Implementatie tijden 
 
-**Hoeveel tijd kost het om een instantie te maken of bij te werken of om een database te herstellen?**
+**Hoe lang duurt het om een exemplaar te maken of bij te werken of om een Data Base te herstellen?**
 
-De verwachte tijd om nieuwe beheerde instantie te maken of de servicelaag (vCores, opslag) te wijzigen, is afhankelijk van verschillende factoren. Bekijk de [managementactiviteiten](/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) 
+De verwachte tijd voor het maken van een nieuw beheerd exemplaar of het wijzigen van de servicelaag (vCores, opslag) is afhankelijk van verschillende factoren. Bekijk de [beheer bewerkingen](/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) 
 
-## <a name="naming-convention"></a>Naming
+## <a name="naming-convention"></a>Naamgevings Conventie
 
-**Kan een beheerde instantie dezelfde naam hebben als on-premises SQL Server?**
+**Kan een beheerd exemplaar dezelfde naam hebben als de on-premises SQL Server?**
 
-Het wijzigen van de naam van beheerde instantie wordt niet ondersteund.
+Het wijzigen van de naam van een beheerd exemplaar wordt niet ondersteund.
 
-Beheerde instantie standaard DNS-zone *.database.windows.net* kan worden gewijzigd. 
+Standaard-DNS-zone van het beheerde exemplaar *. database.Windows.net* kan worden gewijzigd. 
 
-Als u een andere DNS-zone wilt gebruiken in plaats van de standaardinstelling, *contoso.com*bijvoorbeeld : 
-- Gebruik CliConfig om een alias te definiëren. De tool is slechts een register instellingen wrapper, dus het kan worden gedaan met behulp van groepsbeleid of script ook.
-- Gebruik de optie *CNAME* met *TrustServerCertificate=true.*
+Als u een andere DNS-zone wilt gebruiken in plaats van de standaard instelling, bijvoorbeeld *. contoso.com*: 
+- Gebruik CliConfig voor het definiëren van een alias. Het hulp programma is slechts een wrapper voor register instellingen en kan daarom ook worden uitgevoerd met groeps beleid of script.
+- Gebruik *CNAME* met de optie *TrustServerCertificate = True* .
 
-## <a name="move-db-from-mi"></a>DB verplaatsen van MI 
+## <a name="move-db-from-mi"></a>Data base verplaatsen van MI 
 
-**Hoe kan ik de database verplaatsen van beheerde instantie terug naar SQL Server of Azure SQL Database?**
+**Hoe kan ik data base van een beheerd exemplaar terugplaatsen naar SQL Server of Azure SQL Database?**
 
-U [de database exporteren naar BACPAC](sql-database-export.md) en vervolgens het [BACPAC-bestand importeren.]( sql-database-import.md) Dit is een aanbevolen aanpak als uw database kleiner is dan 100 GB.
+U kunt [Data Base exporteren naar BACPAC](sql-database-export.md) en vervolgens [het BACPAC-bestand importeren]( sql-database-import.md). Dit is een aanbevolen benadering als uw data base kleiner is dan 100 GB.
 
-Transactionele replicatie kan worden gebruikt als alle tabellen in de database primaire sleutels hebben.
+Transactionele replicatie kan worden gebruikt als alle tabellen in de data base primaire sleutels hebben.
 
-Native `COPY_ONLY` back-ups uit beheerde instantie kunnen niet worden hersteld naar SQL Server omdat beheerde instantie een hogere databaseversie heeft in vergelijking met SQL Server.
+Systeem `COPY_ONLY` eigen back-ups die zijn gemaakt van het beheerde exemplaar, kunnen niet worden hersteld naar SQL Server omdat het beheerde exemplaar een hogere database versie heeft dan SQL Server.
 
-## <a name="migrate-instance-db"></a>Instantie DB migreren
+## <a name="migrate-instance-db"></a>Instantie-data base migreren
 
-**Hoe kan ik mijn instantiedatabase migreren naar één Azure SQL-database?**
+**Hoe kan ik mijn exemplaar database migreren naar een enkele Azure SQL Database?**
 
-Een optie is om [de database te exporteren naar een BACPAC](sql-database-export.md) en vervolgens het [BACPAC-bestand te importeren.](sql-database-import.md) 
+U kunt [de data base ook exporteren naar een BACPAC](sql-database-export.md) en vervolgens [het BACPAC-bestand importeren](sql-database-import.md). 
 
-Dit is de aanbevolen aanpak als uw database kleiner is dan 100 GB. Transactionele replicatie kan worden gebruikt als alle tabellen in de database primaire sleutels hebben.
+Dit is de aanbevolen benadering als uw data base kleiner is dan 100 GB. Transactionele replicatie kan worden gebruikt als alle tabellen in de data base primaire sleutels hebben.
 
-## <a name="switch-hardware-generation"></a>Switch-hardwaregeneratie 
+## <a name="switch-hardware-generation"></a>Hardware-generatie scha kelen 
 
-**Kan ik mijn beheerde instantie hardware generatie tussen Gen 4 en Gen 5 online?**
+**Kan ik de hardware-generatie van beheerde exemplaren tussen gen 4 en Gen 5 online veranderen?**
 
-Geautomatiseerd online schakelen tussen hardwaregeneraties is mogelijk als beide hardwaregeneraties beschikbaar zijn in de regio waar uw beheerde instantie is ingericht. In dit geval u [de overzichtspagina van het vCore-model](sql-database-service-tiers-vcore.md) bekijken waarin u uitlegt hoe u schakelen tussen hardwaregeneraties.
+Geautomatiseerde online switches tussen de hardware is mogelijk als beide generaties beschikbaar zijn in de regio waar uw beheerde exemplaar is ingericht. In dit geval kunt u de [overzichts pagina](sql-database-service-tiers-vcore.md) van het vCore-model controleren, waarin wordt uitgelegd hoe u tussen de hardware gegenereerd.
 
-Dit is een langlopende bewerking, omdat een nieuw beheerd exemplaar op de achtergrond wordt ingericht en databases automatisch worden overgedragen tussen de oude en de nieuwe instantie met een snelle failover aan het einde van het proces. 
+Dit is een langlopende bewerking als een nieuw beheerd exemplaar wordt ingericht op de achtergrond en data bases worden automatisch overgebracht tussen het oude en het nieuwe exemplaar met een snelle failover aan het einde van het proces. 
 
-Als beide hardwaregeneraties niet in dezelfde regio worden ondersteund, is het wijzigen van de hardwaregeneratie mogelijk, maar moet handmatig worden uitgevoerd. Dit vereist dat u een nieuw exemplaar indient in de regio waar de gewenste hardwaregeneratie beschikbaar is, en handmatig gegevens back-ups en herstellen tussen het oude en het nieuwe exemplaar.
+Als beide generaties niet in dezelfde regio worden ondersteund, is het wijzigen van de hardware mogelijk, maar moet u deze hand matig uitvoeren. Hiervoor moet u een nieuw exemplaar inrichten in de regio waar de gewenste hardware-generatie beschikbaar is, en hand matig back-ups maken en gegevens herstellen tussen het oude en het nieuwe exemplaar.
 
 
 ## <a name="tune-performance"></a>Prestaties afstemmen
 
-**Hoe stem ik de prestaties van mijn beheerde instantie af?**
+**De prestaties van mijn beheerde exemplaar Hoe kan ik afstemmen?**
 
-Algemeen doel beheerde instantie maakt gebruik van externe opslag vanwege welke grootte van gegevens en logbestanden belangrijk is voor de prestaties. Zie [Impact van de bestandsgrootte van het logboek op de prestaties van beheerde instantie voor algemeen gebruik](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)voor meer informatie .
+Algemeen beheerde instantie gebruikt externe opslag, omdat de grootte van de gegevens en logboek bestanden op de prestaties van belang is. Zie [impact van de grootte van het logboek bestand op algemeen prestaties van het beheerde exemplaar](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)voor meer informatie.
 
-Als uw werkbelasting uit veel kleine transacties bestaat, u overwegen het verbindingstype over te schakelen van proxy naar omleidingsmodus.
+Als uw werk belasting uit veel kleine trans acties bestaat, kunt u overwegen om het verbindings type van de proxy naar de omleidings modus te scha kelen.
 
-## <a name="maximum-storage-size"></a>Maximale opslaggrootte
+## <a name="maximum-storage-size"></a>Maximale opslag grootte
 
-**Wat is de maximale opslaggrootte voor beheerde bijvoorbeeld?**
+**Wat is de maximale opslag grootte voor het beheerde exemplaar?**
 
-De opslaggrootte voor beheerde instantie is afhankelijk van de geselecteerde servicelaag (Algemeen doel of Bedrijfskritiek). Zie [Kenmerk servicelaag](sql-database-service-tiers-general-purpose-business-critical.md)voor opslagbeperkingen van deze servicelagen .
+De opslag grootte voor het beheerde exemplaar is afhankelijk van de geselecteerde servicelaag (Algemeen of Bedrijfskritiek). Zie [kenmerk](sql-database-service-tiers-general-purpose-business-critical.md)van de servicelaag voor opslag beperkingen van deze service lagen.
 
-## <a name="back-up-storage-cost"></a>Back-ups van opslagkosten 
+## <a name="back-up-storage-cost"></a>Back-ups van opslag kosten 
 
-**Wordt de back-upopslag afgetrokken van mijn beheerde instantieopslag?**
+**Wordt de back-upopslag afgetrokken van mijn beheerde exemplaar opslag?**
 
-Nee, back-upopslag wordt niet afgetrokken van de opslagruimte van uw beheerde instantie. De back-upopslag is onafhankelijk van de opslagruimte van de instantie en is niet beperkt in omvang. Back-upopslag wordt beperkt door de periode om de back-up van uw instantiedatabases te behouden, configureerbaar van 7 tot 35 dagen. Zie [Geautomatiseerde back-ups voor](https://docs.microsoft.com/azure/sql-database/sql-database-automated-backups)meer informatie.
+Nee, back-upopslag wordt niet afgetrokken van de opslag ruimte voor uw beheerde exemplaar. De back-upopslag is onafhankelijk van de opslag ruimte van het exemplaar en is niet beperkt. Back-upopslag wordt beperkt door de tijds periode voor het bewaren van de back-up van uw exemplaar databases, te configureren van 7 tot 35 dagen. Zie [automatische back-ups](https://docs.microsoft.com/azure/sql-database/sql-database-automated-backups)voor meer informatie.
 
 ## <a name="track-billing"></a>Facturering bijhouden
 
-**Is er een manier om mijn factureringskosten voor mijn beheerde exemplaar bij te houden?**
+**Is er een manier om mijn facturerings kosten voor mijn beheerde exemplaar bij te houden?**
 
-U dit doen met de [Azure Cost Management-oplossing.](/azure/cost-management/) Navigeer naar **abonnementen** in de [Azure-portal](https://portal.azure.com) en selecteer **Kostenanalyse**. 
+U kunt dit doen met behulp van de [Azure Cost Management-oplossing](/azure/cost-management/). Navigeer naar **abonnementen** in het [Azure Portal](https://portal.azure.com) en selecteer **kosten analyse**. 
 
-Gebruik de optie **Geaccumuleerde kosten** en `microsoft.sql/managedinstances`filter vervolgens op het type **Resource** als . 
+Gebruik de optie **geaccumuleerde kosten** en filter vervolgens op het **resource type** als `microsoft.sql/managedinstances`. 
   
-## <a name="inbound-nsg-rules"></a>Binnenkomende NSG-regels
+## <a name="inbound-nsg-rules"></a>Inkomende NSG-regels
 
-**Hoe kan ik inkomende NSG-regels instellen voor beheerpoorten?**
+**Hoe kan ik binnenkomende NSG-regels instellen voor beheer poorten?**
 
-Beheerde instantie controle vliegtuig handhaaft NSG regels die beheerpoorten te beschermen.
+Beheer van beheerde exemplaren beheert NSG-regels die beheer poorten beveiligen.
 
-Hier is wat beheerpoorten worden gebruikt voor:
+Hier ziet u welke beheer poorten worden gebruikt voor:
 
-Havens 9000 en 9003 worden gebruikt door de Service Fabric-infrastructuur. De primaire rol van servicestructuur is om het virtuele cluster gezond te houden en de doelstatus te behouden in termen van aantal componentreplica's.
+Poorten 9000 en 9003 worden gebruikt door Service Fabric-infra structuur. Service Fabric primaire rol moet het virtuele cluster in orde blijven en de doel status in termen van het aantal onderdeel replica's blijven.
 
-Poorten 1438, 1440 en 1452 worden gebruikt door knooppuntagent. Node-agent is een toepassing die binnen het cluster wordt uitgevoerd en wordt gebruikt door het besturingsvlak om beheeropdrachten uit te voeren.
+Poorten 1438, 1440 en 1452 worden gebruikt door de knooppunt agent. Knoop punt-agent is een toepassing die in het cluster wordt uitgevoerd en die wordt gebruikt door het besturings vlak om beheer opdrachten uit te voeren.
 
-Naast NSG-regels beschermt de ingebouwde firewall de instantie op de netwerklaag. Op de toepassingslaag wordt de communicatie met de certificaten beveiligd.
+Naast de NSG-regels wordt het exemplaar in de netwerklaag beveiligd door de ingebouwde firewall. Op de Application Layer-communicatie wordt beveiligd met de certificaten.
   
-Zie [Azure SQL Database managed instance built-in firewall](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)voor meer informatie en hoe u de ingebouwde firewall verifiëren.
+Zie [Azure SQL database Managed instance built-in Firewall](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)voor meer informatie over het controleren van de ingebouwde firewall.
 
 
-## <a name="mitigate-data-exfiltration-risks"></a>Risico's voor gegevensexfiltratie beperken  
+## <a name="mitigate-data-exfiltration-risks"></a>Gegevens exfiltration Risico's beperken  
 
-**Hoe kan ik risico's op data-exfiltratie beperken?**
+**Hoe kan ik de gegevens exfiltration Risico's beperken?**
 
-Om eventuele risico's voor gegevensexfiltratie te beperken, wordt klanten aangeraden een reeks beveiligingsinstellingen en -besturingselementen toe te passen:
+Klanten wordt aangeraden een aantal beveiligings instellingen en-besturings elementen toe te passen om eventuele gegevens exfiltration Risico's te beperken:
 
-- Schakel [Transparent Data Encryption (TDE)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql) in op alle databases.
-- Common Language Runtime (CLR) uitschakelen. Dit wordt ook ter plaatse aanbevolen.
-- Gebruik alleen Azure Active Directory (AAD)-verificatie.
-- Toegang instantie met een laag geprivilegieerd DBA-account.
-- Configureer JiT jumpbox access voor sysadmin account.
-- Schakel [SQL-auditing](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)in en integreer deze met waarschuwingsmechanismen.
-- Schakel de [bedreigingsdetectie](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) in vanuit de [ADS-suite (Advanced Data Security).](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+- Schakel [transparent Data Encryption (TDE)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql) in voor alle data bases.
+- Common language runtime (CLR) uitschakelen. Dit wordt ook aanbevolen voor on-premises.
+- Alleen Azure Active Directory (AAD)-verificatie gebruiken.
+- Access-exemplaar met een account met beperkte bevoegdheden.
+- Configureer de JiT JumpBox-toegang voor het sysadmin-account.
+- Schakel [SQL auditing](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)in en integreer deze met waarschuwings mechanismen.
+- Schakel de [detectie van bedreigingen](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) in het pakket [Advanced Data Security (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) in.
 
 
-## <a name="cost-saving-use-cases"></a>Kostenbesparende use cases
+## <a name="cost-saving-use-cases"></a>Gebruiks voorbeelden besparen
 
-**Waar vind ik use cases en daaruit voortvloeiende kostenbesparingen met beheerde instantie?**
+**Waar vind ik use cases en resulterende kosten besparingen met een beheerd exemplaar?**
 
-Beheerde casestudies voor bijvoorbeeld:
+Case-study's voor beheerde instanties:
 
 - [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
-- [Kmd](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
+- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
 - [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
 - [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)  
-Om een beter inzicht te krijgen in de voordelen, kosten en risico's die verbonden zijn aan het implementeren van azure SQL Database-beheerde instantie, is er ook een onderzoek van Forrester: [Total Economic Impact of MI](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
+Om een beter inzicht te krijgen in de voor delen, kosten en risico's die zijn gekoppeld aan het implementeren van Azure SQL Database beheerde instantie, is er ook een Forrester studie: [totale economische impact van Mi](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
 
 
-## <a name="dns-refresh"></a>DNS-vernieuwing 
+## <a name="dns-refresh"></a>DNS vernieuwen 
 
 **Kan ik DNS vernieuwen?**
 
-Momenteel bieden we geen functie om dns-serverconfiguratie voor beheerde bijvoorbeeld te vernieuwen.
+Momenteel bieden we geen functie voor het vernieuwen van de DNS-server configuratie voor een beheerd exemplaar.
 
-DNS-configuratie wordt uiteindelijk vernieuwd:
+De DNS-configuratie wordt uiteindelijk vernieuwd:
 
-- Wanneer DHCP lease verloopt.
+- Wanneer de DHCP-lease verloopt.
 - Op platform upgrade.
 
-Als tijdelijke oplossing u de beheerde instantie downgraden naar 4 vCore en daarna opnieuw upgraden. Dit heeft een neveneffect van het vernieuwen van de DNS-configuratie.
+Als tijdelijke oplossing kunt u het beheerde exemplaar downgradeen naar 4 vCore en het later opnieuw bijwerken. Dit heeft een neven effect van het vernieuwen van de DNS-configuratie.
 
 
 ## <a name="ip-address"></a>IP-adres
 
-**Kan ik verbinding maken met beheerde instantie via ip-adres?**
+**Kan ik verbinding maken met een beheerd exemplaar met behulp van een IP-adres?**
 
-Verbinding maken met beheerde instantie via IP-adres wordt niet ondersteund. Beheerde instantiehostnaamkaarten voor het laden van balancer voor het virtuele cluster van beheerde instantie. Aangezien een virtueel cluster meerdere beheerde instanties kan hosten, kan de verbinding niet worden doorgestuurd naar de juiste beheerde instantie zonder de naam op te geven.
+Het is niet mogelijk om verbinding te maken met een beheerd exemplaar met een IP-adres. De hostnaam van het beheerde exemplaar wordt toegewezen aan load balancer voor het virtuele cluster van het beheerde exemplaar. Als één virtueel cluster kan hosten voor meerdere beheerde exemplaren kan de verbinding niet worden gerouteerd naar de juiste beheerde instantie zonder de naam op te geven.
 
-Zie [Virtuele clusterconnectiviteitsarchitectuur](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture)voor meer informatie over beheerde voorbeeldarchitectuur.
+Zie [connectiviteits architectuur voor virtuele clusters](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture)voor meer informatie over de architectuur van een beheerd exemplaar van een virtueel cluster.
 
-**Kan een beheerde instantie een statisch IP-adres hebben?**
+**Kan een beheerd exemplaar een statisch IP-adres hebben?**
 
-In zeldzame maar noodzakelijke situaties moeten we mogelijk een online migratie van een beheerde instantie naar een nieuw virtueel cluster doen. Indien nodig is deze migratie het gevolg van veranderingen in onze technologiestack die gericht zijn op het verbeteren van de veiligheid en betrouwbaarheid van de service. Als u migreert naar een nieuw virtueel cluster, wordt het IP-adres gewijzigd dat is toegewezen aan de hostnaam van de beheerde instantie. De beheerde instantieservice claimt geen statische IP-adresondersteuning en behoudt zich het recht voor om deze zonder kennisgeving te wijzigen als onderdeel van reguliere onderhoudscycli.
+In zeldzame maar nood zakelijke situaties moet u mogelijk een online migratie van een beheerd exemplaar uitvoeren naar een nieuw virtueel cluster. Als dat nodig is, wordt deze migratie veroorzaakt door wijzigingen in onze technologie stack, die gericht is op het verbeteren van de beveiliging en betrouw baarheid van de service. Migreren naar een nieuw virtueel cluster resulteert in het wijzigen van het IP-adres dat is toegewezen aan de hostnaam van het beheerde exemplaar. De service Managed instance claimt geen ondersteuning voor statische IP-adressen en behoudt zich het recht voor om deze te wijzigen zonder kennisgeving als onderdeel van normale onderhouds cycli.
 
-Om deze reden raden we ten zeerste af te vertrouwen op onveranderlijkheid van het IP-adres, omdat het onnodige downtime kan veroorzaken.
+Daarom raden wij u ten zeerste aan om te vertrouwen op Onveranderbaarheid van het IP-adres, omdat dit onnodig downtime kan veroorzaken.
 
-## <a name="change-time-zone"></a>Tijdzone wijzigen
+## <a name="change-time-zone"></a>Tijd zone wijzigen
 
-**Kan ik de tijdzone voor een bestaand beheerd exemplaar wijzigen?**
+**Kan ik de tijd zone wijzigen voor een bestaande beheerde instantie?**
 
-Tijdzoneconfiguratie kan worden ingesteld wanneer een beheerde instantie voor de eerste keer is ingericht. Het wijzigen van de tijdzone van de bestaande beheerde instantie wordt niet ondersteund. Zie [tijdzonebeperkingen](sql-database-managed-instance-timezone.md#limitations)voor meer informatie .
+De configuratie van de tijd zone kan worden ingesteld wanneer een beheerd exemplaar voor de eerste keer wordt ingericht. Het wijzigen van de tijd zone van het bestaande beheerde exemplaar wordt niet ondersteund. Zie [beperkingen voor tijd zones](sql-database-managed-instance-timezone.md#limitations)voor meer informatie.
 
-Tijdelijke oplossingen omvatten het maken van een nieuw beheerde instantie met de juiste tijdzone en vervolgens het uitvoeren van een handmatige back-up en herstel, of wat we aanbevelen, het uitvoeren van een [cross-instance point-in-time herstellen](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/).
+Tijdelijke oplossingen zijn onder andere het maken van een nieuw beheerd exemplaar met de juiste tijd zone en vervolgens een hand matige back-up maken en herstellen, of wat wij adviseren, het [herstellen van een exemplaar naar een ander tijdstip](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/)uitvoeren.
 
 
-## <a name="resolve-performance-issues"></a>Prestatieproblemen oplossen
+## <a name="resolve-performance-issues"></a>Prestatie problemen oplossen
 
-**Hoe los ik prestatieproblemen op met mijn beheerde instantie?**
+**Prestatie problemen Hoe kan ik oplossen met mijn beheerde exemplaar?**
 
-Voor een prestatievergelijking tussen beheerde instantie en SQL Server is een goed uitgangspunt [Best practices voor prestatievergelijking tussen Azure SQL managed instance en SQL](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210) Server-artikel.
+Voor een vergelijking van de prestaties tussen het beheerde exemplaar en SQL Server, is een goed uitgangs punt [Aanbevolen procedures voor de prestatie vergelijking tussen Azure SQL Managed instance en SQL Server](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210) artikel.
 
-Het laden van gegevens is vaak trager op beheerde instantie dan in SQL Server vanwege het verplichte volledige herstelmodel en [beperkingen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics) op de doorvoer van transactielogboekschrijftransacties. Soms kan dit worden verwerkt door tijdelijke gegevens in tempdb te laden in plaats van in de gebruikersdatabase, of door geclusterde kolomarchief of geheugengeoptimaliseerde tabellen te gebruiken.
+Het laden van gegevens is vaak langzamer op het beheerde exemplaar dan in SQL Server vanwege een verplicht volledig herstel model en [limieten](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics) voor schrijf doorvoer in transactie logboek. Dit kan soms worden omzeild door het laden van tijdelijke gegevens in TempDB in plaats van de gebruikers database, of met behulp van geclusterde column Store of tabellen die zijn geoptimaliseerd voor geheugen.
 
 
 ## <a name="restore-encrypted-backup"></a>Versleutelde back-up herstellen
 
-**Kan ik mijn versleutelde database herstellen naar beheerde instantie?**
+**Kan ik mijn versleutelde data base herstellen naar een beheerd exemplaar?**
 
-Ja, u hoeft uw database niet te decoderen om deze te kunnen herstellen naar beheerde instantie. U moet een certificaat/sleutel die wordt gebruikt als een encryptiesleutelbeschermer in het bronsysteem aan de beheerde instantie verstrekken om gegevens uit het versleutelde back-upbestand te kunnen lezen. Er zijn twee mogelijke manieren om het te doen:
+Ja, u hoeft uw data base niet te ontsleutelen zodat deze kan worden hersteld naar een beheerd exemplaar. U moet een certificaat/sleutel opgeven die wordt gebruikt als een versleutelings sleutel beveiliging in het bron systeem naar het beheerde exemplaar om gegevens te kunnen lezen uit het versleutelde back-upbestand. Er zijn twee manieren waarop u dit kunt doen:
 
-- *Upload certificaatbeschermer naar de beheerde instantie*. Het kan alleen met PowerShell worden gedaan. Het [voorbeeldscript](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate) beschrijft het hele proces.
-- *Upload asymmetrische key-protector naar Azure Key Vault (AKV) en punt beheerde instantie aan.* Deze aanpak lijkt op bring-your-own-key (BYOK) TDE use case die ook akv-integratie gebruikt om de encryptiesleutel op te slaan. Als u de sleutel niet wilt gebruiken als een encryptiesleutelbeschermer en alleen de sleutel beschikbaar wilt stellen voor beheerde bijvoorbeeld om versleutelde database(s) te herstellen, instructies voor [het instellen van BYOK TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)op te volgen en het selectievakje niet aan te vinken *Maak de geselecteerde sleutel de standaard TDE-beveiliging*.
+- *Upload certificaat beveiliging naar het beheerde exemplaar*. Dit kan alleen worden gedaan met behulp van Power shell. In het [voorbeeld script](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate) wordt het hele proces beschreven.
+- De *asymmetrische sleutel beveiliging uploaden naar Azure Key Vault (Azure) en het beheerde exemplaar*. Deze benadering lijkt op het gebruik van de BYOK-TDE-use-case (uw eigen sleutel), die ook gebruikmaakt van Azure-integratie om de versleutelings sleutel op te slaan. Als u de sleutel niet wilt gebruiken als een versleutelings sleutel beveiliging en alleen de sleutel beschikbaar wilt maken voor een beheerd exemplaar om versleutelde data bases te herstellen, volgt u de instructies voor het [instellen van BYOK TDe](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)en schakelt u het selectie vakje de *geselecteerde sleutel de standaard TDe-Protector maken*in.
 
-Zodra u de versleutelingsbeveiliging beschikbaar stelt aan beheerde instantie, u doorgaan met de standaardprocedure voor het herstellen van de database.
+Wanneer u de versleutelings beveiliging hebt gemaakt voor een beheerd exemplaar, kunt u door gaan met de standaard procedure voor het herstellen van data bases.
 
-## <a name="migrate-from-single-db"></a>Migreren van enkele DB 
+## <a name="migrate-from-single-db"></a>Migreren van één data base 
 
-**Hoe kan ik migreren van Azure SQL Database single of elastic pool naar beheerde instantie?**
+**Hoe kan ik migreren van Azure SQL Database enkele of elastische pool naar een beheerd exemplaar?**
 
-Beheerde instantie biedt dezelfde prestatieniveaus per reken- en opslaggrootte als andere implementatieopties van Azure SQL Database. Als u gegevens wilt consolideren op één exemplaar of als u gewoon een functie nodig hebt die uitsluitend in beheerde instantie wordt ondersteund, u uw gegevens migreren met behulp van bacpac-functionaliteit (export/import).
+Beheerde instantie biedt dezelfde prestatie niveaus per Compute en opslag grootte als andere implementatie opties van Azure SQL Database. Als u gegevens wilt consolideren voor één exemplaar of als u alleen een functie nodig hebt die uitsluitend wordt ondersteund in het beheerde exemplaar, kunt u uw gegevens migreren met behulp van de functionaliteit voor exporteren/importeren (BACPAC).

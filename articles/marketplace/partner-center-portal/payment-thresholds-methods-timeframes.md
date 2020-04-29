@@ -1,45 +1,45 @@
 ---
-Description: De geschatte tijd om betalingen over te maken, toepasselijke betalingsdrempels en Microsoft-marktplaatsen van waaruit u betalingen ontvangen, kan variëren afhankelijk van uw land/regio en het type uitbetalingsaccount.
-title: Betalingsdrempels, methoden en termijnen in de commerciële markt | Azure Marketplace
+Description: De geschatte tijd voor het overdragen van betalingen, toepasselijke betalings drempels en micro soft-markt plaatsen van waaruit u betalingen kunt ontvangen, kan variëren, afhankelijk van uw land/regio en het account type voor de betaling.
+title: Betalings drempels, methoden en tijd frames in commerciële Marketplace | Azure Marketplace
 ms.date: 12/10/2019
 ms.topic: conceptual
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.openlocfilehash: fe18fab4a2ea61f41e017704105e37f28c20e456
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80279722"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Betalingsdrempels, methoden en tijdsbestek
 
-De geschatte tijd om betalingen over te maken en Microsoft-marktplaatsen waarvan u betalingen ontvangen, kunnen variëren afhankelijk van uw land/regio en het type uitbetalingsaccount. In dit onderwerp worden de betalingsmethoden beschreven die in elk land/regio worden ondersteund.
+De geschatte tijd voor het overdragen van betalingen en micro soft-markt plaatsen van waaruit u betalingen kunt ontvangen, kan variëren, afhankelijk van uw land/regio en het account type voor de betaling. In dit onderwerp vindt u een overzicht van de betalings methoden die in elk land of elke regio worden ondersteund.
 
-Voor een bepaald land/regio gebruiken we ACH/SEPA of overschrijving om onze betalingen te leveren. Bovendien ondersteunen sommige landen/regio's PayPal als betalingsmethode.
+Voor een bepaald land/regio zullen we ACH/SEPA of overschrijving gebruiken om onze betalingen te leveren. Daarnaast ondersteunen sommige landen/regio's PayPal als betalings methode.
 
-## <a name="number-of-days-for-payments-to-reach-payout-account"></a>Aantal dagen voor betalingen om uitbetalingsaccount te bereiken
+## <a name="number-of-days-for-payments-to-reach-payout-account"></a>Aantal dagen voor betalingen om het uitbetalings account te bereiken
 
-We sturen doorgaans elke betaling die binnen een bepaalde maand moet worden betaald op de 15e dag van die maand, maar het duurt extra tijd voordat de betaling uw account bereikt. Het aantal dagen is afhankelijk van de betaalmethode die we voor uw account gebruiken, zoals hieronder beschreven.
+Normaal gesp roken verstuurt de betaling in een bepaalde maand op de vijftiende dag van de maand, maar duurt het langer om uw account te bereiken. De hoeveelheid dagen is afhankelijk van de betalings wijze die we voor uw account gebruiken, zoals hieronder wordt beschreven.
 
 > [!NOTE]
-> De onderstaande dagen zijn bij benadering; een bepaalde uitbetaling kan een langere of kortere hoeveelheid tijd in beslag nemen.
+> De dagen die hieronder worden weer gegeven, zijn ongeveer gelijk aan. een bepaalde uitbetaling kan een langere of korter tijd duren.
 
-| Betalingswijze     | Aantal dagen om de uitbetalingsrekening te bereiken     |
+| Betalingswijze     | Aantal dagen voor het bereiken van het uitbetalings account     |
 |--------------------|--------------------------------------------|
 | PayPal             | 1 werkdag                             |
-| ACH/SEPA           | 2-3 werkdagen                          |
-| Overschrijving      | 7-10 werkdagen                         |
+| ACH/SEPA           | 2-3 werk dagen                          |
+| Overschrijving      | 7-10 werk dagen                         |
 
-Bekijk de onderstaande tabellen om de landen/regio's te bekijken waarin deze betalingsmethoden voor elke marktplaats worden gebruikt.
+Als u wilt zien in welke landen/regio's deze betalings wijzen worden gebruikt voor elke Marketplace, raadpleegt u de onderstaande tabellen.
 
-## <a name="payment-methods-in-countriesregions"></a>Betalingsmethoden in landen/regio's
+## <a name="payment-methods-in-countriesregions"></a>Betalings wijzen in landen/regio's
 
 > [!NOTE]
-> Betalingsdrempels in alle regio's bedragen $ 50 USD.
+> De betalings drempels in alle regio's zijn $50 USD.
 
-| Land                          | Azure Marketplace | Winkel, Reclame, Mixer en Minecraft | Office | PayPal-betalingen |
+| Land                          | Azure Marketplace | Store, Advertising, mixer en Minecraft | Office | PayPal-betalingen |
 |----------------------------------|-------------------|------------------------------------------|--------|-----------------|
 | Afghanistan                      | Ja               | Ja                                      | Nee     | Nee              |
 | Albanië                          | Ja               | Ja                                      | Ja    | Ja             |
@@ -74,9 +74,9 @@ Bekijk de onderstaande tabellen om de landen/regio's te bekijken waarin deze bet
 | Colombia                         | Ja               | Ja                                      | Ja    | Ja             |
 | Comoren                          | Ja               | Ja                                      | Nee     | Nee              |
 | Congo (DRC)                      | Ja               | Ja                                      | Ja    | Nee              |
-| Congo, Republiek Congo               | Ja               | Ja                                      | Ja    | Nee              |
+| Congo, Republiek               | Ja               | Ja                                      | Ja    | Nee              |
 | Costa Rica                       | Ja               | Ja                                      | Ja    | Ja             |
-| Ivoorkust                    | Ja               | Ja                                      | Ja    | Nee              |
+| Côte D'Ivoire                    | Ja               | Ja                                      | Ja    | Nee              |
 | Kroatië                          | Ja               | Ja                                      | Ja    | Nee              |
 | Cyprus                           | Ja               | Ja                                      | Ja    | Ja             |
 | Tsjechië                   | Ja               | Ja                                      | Ja    | Ja             |
@@ -89,7 +89,7 @@ Bekijk de onderstaande tabellen om de landen/regio's te bekijken waarin deze bet
 | Eritrea                          | Ja               | Ja                                      | Ja    | Nee              |
 | Estland                          | Ja               | Ja                                      | Ja    | Ja             |
 | Ethiopië                         | Ja               | Ja                                      | Ja    | Nee              |
-| Fiji-eilanden                     | Ja               | Ja                                      | Nee     | Nee              |
+| Fiji                     | Ja               | Ja                                      | Nee     | Nee              |
 | Finland                          | Ja               | Ja                                      | Ja    | Ja             |
 | Frankrijk                           | Ja               | Ja                                      | Ja    | Ja             |
 | Georgië                          | Ja               | Ja                                      | Ja    | Ja             |
@@ -138,7 +138,7 @@ Bekijk de onderstaande tabellen om de landen/regio's te bekijken waarin deze bet
 | Marokko                          | Ja               | Ja                                      | Ja    | Nee              |
 | Mozambique                       | Ja               | Ja                                      | Ja    | Ja             |
 | Nepal                            | Ja               | Ja                                      | Ja    | Nee              |
-| Nederland, De                 | Ja               | Ja                                      | Ja    | Ja             |
+| Nederland, de                 | Ja               | Ja                                      | Ja    | Ja             |
 | Nieuw-Zeeland                      | Ja               | Ja                                      | Ja    | Ja             |
 | Nicaragua                        | Ja               | Ja                                      | Ja    | Ja             |
 | Niger                            | Ja               | Ja                                      | Ja    | Nee              |

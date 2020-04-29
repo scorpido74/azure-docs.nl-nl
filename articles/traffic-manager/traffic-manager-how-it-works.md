@@ -1,6 +1,6 @@
 ---
-title: Hoe Azure Traffic Manager werkt | Microsoft Documenten
-description: In dit artikel u begrijpen hoe Traffic Manager verkeer doorstuurt voor hoge prestaties en beschikbaarheid van uw webtoepassingen
+title: Hoe werkt Azure Traffic Manager? Microsoft Docs
+description: Dit artikel helpt u te begrijpen hoe Traffic Manager verkeer routeert voor hoge prestaties en beschik baarheid van uw webtoepassingen
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -13,91 +13,91 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: rohink
 ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80294857"
 ---
-# <a name="how-traffic-manager-works"></a>Hoe verkeersmanager werkt
+# <a name="how-traffic-manager-works"></a>Hoe Traffic Manager werkt
 
-Azure Traffic Manager stelt u in staat om de verdeling van het verkeer over de eindpunten van uw toepassing te beheren. Een eindpunt is een internetgerichte service die binnen of buiten Azure wordt gehost.
+Met Azure Traffic Manager kunt u de distributie van verkeer over de eind punten van uw toepassing beheren. Een eindpunt is een internetgerichte service die binnen of buiten Azure wordt gehost.
 
-Traffic Manager biedt twee belangrijke voordelen:
+Traffic Manager biedt twee belang rijke voor delen:
 
-- Verdeling van het verkeer volgens een van de verschillende [verkeersrouteringsmethoden](traffic-manager-routing-methods.md)
-- [Continue bewaking van de status van eindpunt](traffic-manager-monitoring.md) en automatische failover wanneer eindpunten mislukken
+- Distributie van verkeer op basis van een van de verschillende [routerings methoden voor verkeer](traffic-manager-routing-methods.md)
+- [Voortdurende bewaking van de status van het eind punt](traffic-manager-monitoring.md) en automatische failover wanneer eind punten mislukken
 
 Wanneer een client probeert verbinding maken met een service, moet deze eerst de DNS-naam van de service omzetten naar een IP-adres. De client maakt vervolgens verbinding met dat IP-adres om toegang te krijgen tot de service.
 
-**Het belangrijkste punt om te begrijpen is dat Traffic Manager werkt op DNS-niveau.**  Traffic Manager gebruikt DNS om clients naar specifieke serviceeindpunten te leiden op basis van de regels van de verkeersrouteringsmethode. Clients maken **rechtstreeks**verbinding met het geselecteerde eindpunt . Traffic Manager is geen proxy of gateway. Traffic Manager ziet het verkeer niet passeren tussen de klant en de service.
+**Het belangrijkste punt om te begrijpen is dat Traffic Manager op het DNS-niveau werkt.**  Traffic Manager DNS gebruikt om clients te leiden naar specifieke service-eind punten op basis van de regels van de methode voor het routeren van verkeer. Clients maken **rechtstreeks**verbinding met het geselecteerde eind punt. Traffic Manager is geen proxy of gateway. Het verkeer dat door de client en de service wordt door Traffic Manager wordt niet weer gegeven.
 
-## <a name="traffic-manager-example"></a>Voorbeeld van Verkeersmanager
+## <a name="traffic-manager-example"></a>Traffic Manager-voor beeld
 
-Contoso Corp heeft een nieuw partnerportaal ontwikkeld. De URL voor `https://partners.contoso.com/login.aspx`deze portal is . De toepassing wordt gehost in drie regio's van Azure. Om de beschikbaarheid te verbeteren en de wereldwijde prestaties te maximaliseren, gebruiken ze Traffic Manager om clientverkeer te distribueren naar het dichtstbijzijnde beschikbare eindpunt.
+Contoso Corp heeft een nieuwe partner portal ontwikkeld. De URL voor deze portal is `https://partners.contoso.com/login.aspx`. De toepassing wordt gehost in drie regio's van Azure. Om de beschik baarheid te verbeteren en de wereld wijde prestaties te maximaliseren, gebruiken ze Traffic Manager om client verkeer te distribueren naar het dichtstbijzijnde beschik bare eind punt.
 
-Om deze configuratie te bereiken, voeren ze de volgende stappen uit:
+Om deze configuratie te vervolledigen, moet u de volgende stappen uitvoeren:
 
-1. Implementeer drie exemplaren van hun service. De DNS-namen van deze implementaties zijn 'contoso-us.cloudapp.net', 'contoso-eu.cloudapp.net' en 'contoso-asia.cloudapp.net'.
-1. Maak een Traffic Manager-profiel met de naam 'contoso.trafficmanager.net' en configureer het om de verkeersrouteringsmethode 'Prestaties' over de drie eindpunten te gebruiken.
-1. Configureer hun ijdelheiddomeinnaam 'partners.contoso.com', om naar 'contoso.trafficmanager.net' te wijzen, met behulp van een DNS CNAME-record.
+1. Implementeer drie instanties van de service. De DNS-namen van deze implementaties zijn ' contoso-us.cloudapp.net ', ' contoso-eu.cloudapp.net ' en ' contoso-asia.cloudapp.net '.
+1. Maak een Traffic Manager-profiel met de naam ' contoso.trafficmanager.net ' en configureer dit voor het gebruik van de methode voor het routeren van verkeer van prestaties in de drie eind punten.
+1. Configureer de Vanity-domein naam, ' partners.contoso.com ', om naar ' contoso.trafficmanager.net ' te verwijzen, met behulp van een DNS CNAME-record.
 
-![DNS-configuratie van Traffic Manager][1]
+![DNS-configuratie Traffic Manager][1]
 
 > [!NOTE]
-> Wanneer u een ijdelheidsdomein gebruikt met Azure Traffic Manager, moet u een CNAME gebruiken om uw ijdelheidsdomeinnaam naar uw Traffic Manager-domeinnaam te leiden. Dns-standaarden staan u niet toe om een CNAME te maken op de 'apex' (of root) van een domein. Zo u geen CNAME maken voor 'contoso.com' (ook wel een 'naakt' domein genoemd). U alleen een CNAME maken voor een domein onder 'contoso.com', zoals 'www.contoso.com'. Om deze beperking te omzeilen, raden we u aan uw DNS-domein te hosten op [Azure DNS](../dns/dns-overview.md) en [Alias-records](../dns/tutorial-alias-tm.md) te gebruiken om uw profiel van verkeersbeheer aan te wijzen. U ook een eenvoudige HTTP-omleiding gebruiken om aanvragen voor 'contoso.com' te sturen naar een alternatieve naam zoals 'www.contoso.com'.
+> Wanneer u een Vanity-domein met Azure Traffic Manager gebruikt, moet u een CNAME gebruiken om uw Vanity-domein naam naar de domein naam van uw Traffic Manager te wijzen. Met DNS-standaarden kunt u geen CNAME maken op de ' Apex ' (of root) van een domein. Daarom kunt u geen CNAME maken voor ' contoso.com ' (ook wel een ' Blot ' domein genoemd). U kunt alleen een CNAME maken voor een domein onder ' contoso.com ', zoals ' www.contoso.com '. Als u deze beperking wilt omzeilen, kunt u het beste uw DNS-domein hosten op [Azure DNS](../dns/dns-overview.md) en [alias records](../dns/tutorial-alias-tm.md) gebruiken om te verwijzen naar uw Traffic Manager-profiel. U kunt ook een eenvoudige HTTP-omleiding gebruiken om aanvragen voor ' contoso.com ' om te leiden naar een alternatieve naam, zoals ' www.contoso.com '.
 
-### <a name="how-clients-connect-using-traffic-manager"></a>Hoe clients verbinding maken met Traffic Manager
+### <a name="how-clients-connect-using-traffic-manager"></a>Hoe clients verbinding maken via Traffic Manager
 
-Als een client de pagina `https://partners.contoso.com/login.aspx`aanvraagt, voert de client de volgende stappen uit om de DNS-naam op te lossen en een verbinding tot stand te brengen:
+Wanneer een client de pagina `https://partners.contoso.com/login.aspx`opvraagt, voert de client de volgende stappen uit om de DNS-naam op te lossen en een verbinding tot stand te brengen:
 
-![Verbindingsinstelling met verkeersbeheer][2]
+![De verbinding tot stand brengen met behulp van Traffic Manager][2]
 
-1. De client stuurt een DNS-query naar de geconfigureerde recursieve DNS-service om de naam 'partners.contoso.com' op te lossen. Een recursieve DNS-service, ook wel een 'local DNS'-service genoemd, host DNS-domeinen niet rechtstreeks. Integendeel, de client off-laadt het werk van het contact opnemen met de verschillende gezaghebbende DNS-diensten over het internet die nodig zijn om een DNS-naam op te lossen.
-2. Om de DNS-naam op te lossen, vindt de recursieve DNS-service de naamservers voor het domein 'contoso.com'. Vervolgens neemt het contact op met die naamservers om de 'partners.contoso.com' DNS-record aan te vragen. De contoso.com DNS-servers de CNAME-record retourneren die naar contoso.trafficmanager.net wijst.
-3. Vervolgens vindt de recursieve DNS-service de naamservers voor het domein 'trafficmanager.net', die worden geleverd door de Azure Traffic Manager-service. Vervolgens stuurt het een verzoek om de 'contoso.trafficmanager.net' DNS-record naar die DNS-servers.
-4. De naamservers van Traffic Manager ontvangen het verzoek. Ze kiezen een eindpunt op basis van:
+1. De client verzendt een DNS-query naar de geconfigureerde recursieve DNS-service om de naam ' partners.contoso.com ' op te lossen. Een recursieve DNS-service, ook wel ' lokale DNS-service ' genoemd, host geen DNS-domeinen rechtstreeks. In plaats daarvan wordt de-client uit-geladen om contact op te nemen met de verschillende gezaghebbende DNS-services via internet die nodig zijn om een DNS-naam op te lossen.
+2. De recursieve DNS-service detecteert de naam servers voor het domein ' contoso.com ' om de DNS-naam op te lossen. Vervolgens neemt het contact op met deze naam servers om de DNS-record ' partners.contoso.com ' aan te vragen. De DNS-servers van contoso.com retour neren de CNAME-record die verwijst naar contoso.trafficmanager.net.
+3. Vervolgens vindt de recursieve DNS-service de naam servers voor het domein ' trafficmanager.net ', die door de Azure Traffic Manager-service worden verschaft. Vervolgens wordt een aanvraag voor de DNS-record ' contoso.trafficmanager.net ' verzonden naar deze DNS-servers.
+4. De Traffic Manager naam servers ontvangen de aanvraag. Ze kiezen een eind punt op basis van:
 
-    - De geconfigureerde status van elk eindpunt (uitgeschakelde eindpunten worden niet geretourneerd)
-    - De huidige status van elk eindpunt, zoals bepaald door de statuscontroles van verkeersbeheerbeheer. Zie [Eindpuntbewaking van verkeersbeheer voor](traffic-manager-monitoring.md)meer informatie .
-    - De gekozen verkeersrouteringsmethode. Zie [Routeringsmethoden voor verkeersbeheer](traffic-manager-routing-methods.md).
+    - De geconfigureerde status van elk eind punt (uitgeschakelde eind punten worden niet geretourneerd)
+    - De huidige status van elk eind punt, zoals bepaald door de Traffic Manager status controles. Zie [Traffic Manager endpoint monitoring](traffic-manager-monitoring.md)voor meer informatie.
+    - De gekozen methode voor het routeren van verkeer. Zie [Traffic Manager routerings methoden](traffic-manager-routing-methods.md)voor meer informatie.
 
-5. Het gekozen eindpunt wordt geretourneerd als een andere DNS CNAME-record. Laten we in dit geval aannemen contoso-us.cloudapp.net is teruggekeerd.
-6. Vervolgens vindt de recursieve DNS-service de naamservers voor het domein 'cloudapp.net'. Het neemt contact op met die naamservers om de 'contoso-us.cloudapp.net' DNS-record aan te vragen. Een DNS'A-record met het IP-adres van het in de VS gevestigde serviceeindpunt wordt geretourneerd.
-7. De recursieve DNS-service consolideert de resultaten en retourneert één DNS-antwoord op de client.
-8. De client ontvangt de DNS-resultaten en maakt verbinding met het opgegeven IP-adres. De client maakt rechtstreeks verbinding met het eindpunt van de applicatieservice, niet via Traffic Manager. Aangezien het een HTTPS-eindpunt is, voert de client de benodigde SSL/TLS-handshake uit en maakt vervolgens een HTTP GET-verzoek voor de pagina '/login.aspx'.
+5. Het gekozen eind punt wordt geretourneerd als een andere DNS CNAME-record. In dit geval laten we ons zeggen dat contoso-us.cloudapp.net wordt geretourneerd.
+6. Vervolgens vindt de recursieve DNS-service de naam servers voor het domein ' cloudapp.net '. Er wordt contact opgenomen met deze naam servers om de DNS-record ' contoso-us.cloudapp.net ' aan te vragen. Er wordt een DNS A-record geretourneerd met het IP-adres van het service-eind punt dat is gebaseerd op de VS.
+7. De recursieve DNS-service consolideert de resultaten en retourneert één DNS-antwoord naar de client.
+8. De client ontvangt de DNS-resultaten en maakt verbinding met het opgegeven IP-adres. De client maakt rechtstreeks verbinding met het eind punt van de toepassings service, niet via Traffic Manager. Omdat het een HTTPS-eind punt is, voert de client de benodigde SSL/TLS-Handshake uit en wordt vervolgens een HTTP GET-aanvraag voor de pagina '/login.aspx ' gemaakt.
 
-De recursieve DNS-service slaat de DNS-antwoorden die deze ontvangt in de cache. De DNS-resolver op het clientapparaat slaat ook het resultaat in de cache. Met Caching kunnen volgende DNS-query's sneller worden beantwoord met behulp van gegevens uit de cache in plaats van andere naamservers op te vragen. De duur van de cache wordt bepaald door de eigenschap 'time-to-live' (TTL) van elke DNS-record. Kortere waarden resulteren in een snellere vervaldatum van de cache en dus meer retourvluchten naar de naamservers van Traffic Manager. Langere waarden betekenen dat het langer kan duren om verkeer weg te leiden van een mislukt eindpunt. Met Traffic Manager u de TTL die wordt gebruikt in DNS-antwoorden van Traffic Manager zo laag zijn als 0 seconden en tot 2.147.483.647 seconden (het maximale bereik dat voldoet aan [RFC-1035),](https://www.ietf.org/rfc/rfc1035.txt)zodat u de waarde kiezen die de behoeften van uw toepassing het beste in evenwicht brengt.
+De recursieve DNS-service slaat de DNS-antwoorden op die het ontvangt. De DNS-resolver op het client apparaat slaat ook het resultaat op in het cache geheugen. Met caching kunnen volgende DNS-query's sneller worden beantwoord met behulp van gegevens uit de cache in plaats van een query uit te voeren op andere naam servers. De duur van de cache wordt bepaald door de eigenschap time-to-Live (TTL) van elke DNS-record. Kortere waarden leiden ertoe dat het cache geheugen sneller verloopt en dat er dus Retouren naar de Traffic Manager naam servers worden geretourneerd. Meer waarden betekenen dat het langer kan duren om verkeer te sturen van een mislukt eind punt. Met Traffic Manager kunt u de TTL configureren die wordt gebruikt in Traffic Manager DNS-antwoorden op Maxi maal 0 seconden en Maxi maal 2.147.483.647 seconden (het maximum bereik dat compatibel is met [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt)), zodat u de waarde kunt kiezen die het beste de behoeften van uw toepassing verlaagt.
 
 ## <a name="faqs"></a>Veelgestelde vragen
 
-* [Welk IP-adres gebruikt Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-ip-address-does-traffic-manager-use)
+* [Welk IP-adres Traffic Manager gebruiken?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-ip-address-does-traffic-manager-use)
 
-* [Welke typen verkeer kunnen worden omgeleid met Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-traffic-can-be-routed-using-traffic-manager)
+* [Welk type verkeer kan worden gerouteerd met Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-traffic-can-be-routed-using-traffic-manager)
 
-* [Ondersteunt Traffic Manager "sticky" sessies?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
+* [Ondersteunt Traffic Manager ' Sticky ' sessies?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
 
 * [Waarom zie ik een HTTP-fout bij het gebruik van Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-seeing-an-http-error-when-using-traffic-manager)
 
-* [Wat is de impact van de prestaties van het gebruik van Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-the-performance-impact-of-using-traffic-manager)
+* [Wat is de invloed van de prestaties van het gebruik van Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-the-performance-impact-of-using-traffic-manager)
 
-* [Welke toepassingsprotocollen kan ik gebruiken met Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-application-protocols-can-i-use-with-traffic-manager)
+* [Welke toepassings protocollen kan ik gebruiken met Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-application-protocols-can-i-use-with-traffic-manager)
 
-* [Kan ik Traffic Manager gebruiken met een 'naakte' domeinnaam?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
+* [Kan ik Traffic Manager gebruiken met de domein naam ' Blot '?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
 
-* [Houdt Traffic Manager rekening met het subnetadres van de client bij het verwerken van DNS-query's?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
+* [Houdt Traffic Manager rekening met het subnet van de client wanneer DNS-query's worden verwerkt?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
 
-* [Wat is DNS TTL en welke invloed heeft het op mijn gebruikers?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-dns-ttl-and-how-does-it-impact-my-users)
+* [Wat is een DNS TTL en wat is van invloed op mijn gebruikers?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-dns-ttl-and-how-does-it-impact-my-users)
 
-* [Hoe hoog of laag kan ik de antwoorden van TTL for Traffic Manager instellen?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
+* [Hoe hoog of laag kan ik de TTL instellen voor Traffic Manager reacties?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
 
-* [Hoe kan ik het aantal query's dat naar mijn profiel komt begrijpen?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
+* [Hoe kan ik inzicht krijgen in het volume van query's die worden verzonden naar mijn profiel?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over eindpuntbewaking van Traffic Manager [en automatische failover](traffic-manager-monitoring.md).
+Meer informatie over Traffic Manager [endpoint-bewaking en automatische failover](traffic-manager-monitoring.md).
 
-Meer informatie over [verkeersrouteringsmethoden voor](traffic-manager-routing-methods.md)Traffic Manager .
+Meer informatie over methoden voor het [routeren](traffic-manager-routing-methods.md)van Traffic Manager verkeer.
 
 <!--Image references-->
 [1]: ./media/traffic-manager-how-traffic-manager-works/dns-configuration.png

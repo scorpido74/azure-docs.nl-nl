@@ -1,7 +1,7 @@
 ---
 title: Latente Dirichlet-toewijzing
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module Latente Dirichlet-toewijzing om anders niet-geclassificeerde tekst te groeperen in een aantal categorieën.
+description: Meer informatie over hoe u de Dirichlet-toewijzings module kunt gebruiken om niet-geclassificeerde tekst in een aantal categorieën te groeperen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,196 +10,196 @@ author: likebupt
 ms.author: keli19
 ms.date: 03/11/2020
 ms.openlocfilehash: 1384491489c175ffc338f80a99aa8d5050f835d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80109223"
 ---
 # <a name="latent-dirichlet-allocation"></a>Latente Dirichlet-toewijzing
 
-In dit artikel wordt beschreven hoe u de module **Latente Dirichlet-toewijzing** gebruiken in Azure Machine Learning-ontwerper (voorbeeld), om anders niet-geclassificeerde tekst te groeperen in een aantal categorieën. 
+In dit artikel wordt beschreven hoe u de **Dirichlet-toewijzings** module in azure machine learning Designer (preview) gebruikt om niet-geclassificeerde tekst in een aantal categorieën te groeperen. 
 
-Latente Dirichlet Allocation (LDA) wordt vaak gebruikt in natural language processing (NLP) om teksten te vinden die vergelijkbaar zijn. Een andere veel voorkomende term is *topic modeling*.
+Latente Dirichlet toewijzing (LDA) wordt vaak gebruikt in natuurlijke taal verwerking (NLP) om teksten te vinden die vergelijkbaar zijn. Een andere algemene term is een *onderwerp model lering*.
 
-Deze module neemt een kolom tekst en genereert deze uitvoer:
+Deze module haalt een tekst kolom op en genereert de volgende uitvoer:
 
-+ De brontekst, samen met een score voor elke categorie
++ De bron tekst, samen met een score voor elke categorie
 
-+ Een functiematrix, met geëxtraheerde termen en coëfficiënten voor elke categorie
++ Een functie matrix met geëxtraheerde voor waarden en coëfficiënten voor elke categorie
 
-+ Een transformatie, die u opslaan en opnieuw toepassen op nieuwe tekst die wordt gebruikt als invoer
++ Een trans formatie, die u kunt opslaan en opnieuw Toep assen op nieuwe tekst die als invoer wordt gebruikt
 
-Deze module maakt gebruik van de scikit-learn bibliotheek. Zie voor meer informatie over scikit-learn de [GitHub repository, met tutorials en een uitleg van het algoritme.
+Deze module maakt gebruik van de scikit-Learn-bibliotheek. Zie voor meer informatie over scikit-informatie de [GitHub-opslag plaats, die zelf studies bevat en een uitleg van de algoritme.
 
-### <a name="more-about-latent-dirichlet-allocation-lda"></a>Meer informatie over Latente Dirichlet Allocation (LDA)
+### <a name="more-about-latent-dirichlet-allocation-lda"></a>Meer informatie over de Dirichlet-toewijzing (LDA)
 
-Over het algemeen is LDA geen methode voor classificatie op zich, maar maakt gebruik van een generatieve aanpak. Wat dit betekent is dat u geen bekende klassenlabels hoeft te leveren en vervolgens de patronen af te leiden.  In plaats daarvan genereert het algoritme een probabilistisch model dat wordt gebruikt om groepen onderwerpen te identificeren. U het probabilistische model gebruiken om bestaande trainingsaanvragen of nieuwe aanvragen die u aan het model verstrekt, als invoer te classificeren.
+LDA is over het algemeen geen methode voor classificatie per se, maar maakt gebruik van een pregeneratieve benadering. Dit betekent dat u geen bekende klassen labels hoeft op te geven en vervolgens de patronen af te leiden.  In plaats daarvan wordt een Probabilistic-model gegenereerd dat wordt gebruikt om groepen met onderwerpen te identificeren. U kunt het Probabilistic-model gebruiken voor het classificeren van bestaande trainings cases of nieuwe cases die u aan het model levert als invoer.
 
-Een generatief model kan de voorkeur hebben omdat het vermijdt het maken van sterke veronderstellingen over de relatie tussen de tekst en categorieën, en gebruikt alleen de verdeling van woorden om wiskundig model onderwerpen.
+Een kernvast model kan worden voor keuren, omdat het voor komt dat er sterke hypo Thesen worden gemaakt over de relatie tussen de tekst en categorieën, en wordt alleen de distributie van woorden gebruikt voor wiskundige model onderwerpen.
 
-+ De theorie wordt besproken in dit artikel, beschikbaar als PDF-download: [Latente Dirichlet Allocatie: Blei, Ng en Jordanië](https://ai.stanford.edu/~ang/papers/nips01-lda.pdf)
++ De theorie wordt in dit document besproken, beschikbaar als PDF-down load: latente [Dirichlet toewijzing: Blei, ng en Jordanië](https://ai.stanford.edu/~ang/papers/nips01-lda.pdf)
 
-+ De implementatie in deze module is gebaseerd op de [scikit-learn bibliotheek](https://github.com/scikit-learn/scikit-learn/blob/master/sklearn/decomposition/_lda.py) voor LDA.
++ De implementatie in deze module is gebaseerd op de [scikit-Learn-bibliotheek](https://github.com/scikit-learn/scikit-learn/blob/master/sklearn/decomposition/_lda.py) voor Lda.
 
-Zie voor meer informatie de sectie [Technische notities.](#technical-notes)
+Zie de sectie met [technische opmerkingen](#technical-notes) voor meer informatie.
 
-## <a name="how-to-configure-latent-dirichlet-allocation"></a>Latente Dirichlet-toewijzing configureren
+## <a name="how-to-configure-latent-dirichlet-allocation"></a>De toewijzing van latente Dirichlet configureren
 
-Deze module vereist een gegevensset die een kolom tekst bevat, ruw of vooraf verwerkt.
+Deze module vereist een gegevensset die een kolom met tekst bevat, hetzij RAW ofwel preprocesd.
 
-1. Voeg de **module Latente Dirichlet-toewijzing** toe aan uw pijplijn.
+1. Voeg de **Dirichlet-toewijzings** module aan uw pijp lijn toe.
 
-2. Geef als invoer voor de module een gegevensset op met een of meer tekstkolommen.
+2. Geef als invoer voor de module een gegevensset op die een of meer tekst kolommen bevat.
 
-3. Kies **voor Doelkolommen**een of meer kolommen met tekst die u wilt analyseren.
+3. Kies voor **doel kolommen**een of meer kolommen met tekst die u wilt analyseren.
 
-    U meerdere kolommen kiezen, maar deze moeten van het tekenreeksgegevenstype zijn.
+    U kunt meerdere kolommen kiezen, maar deze moeten van het teken reeks gegevens type zijn.
 
-    Omdat LDA een grote functiematrix uit de tekst maakt, analyseert u doorgaans één tekstkolom.
+    In het algemeen, omdat LDA een grote functie matrix maakt op basis van de tekst, analyseert u doorgaans een enkele tekst kolom.
 
-4. Typ **voor Aantal onderwerpen dat u wilt modelleren**een geheel getal tussen 1 en 1000 dat aangeeft hoeveel categorieën of onderwerpen u uit de invoertekst wilt afleiden.
+4. Typ een geheel getal tussen 1 en 1000 dat aangeeft hoeveel categorieën of onderwerpen u wilt afleiden van de invoer tekst voor het **aantal onderwerpen dat moet worden gemodelleerd**.
 
-    Standaard worden er 5 onderwerpen gemaakt.
+    Standaard worden er vijf onderwerpen gemaakt.
 
-5. Voor **N-grammen,** geef de maximale lengte van N-gram gegenereerd tijdens hashing.
+5. Voor **n-gram**geeft u de maximale lengte van n-gram op die tijdens hashing wordt gegenereerd.
 
-    De standaardinstelling is 2, wat betekent dat zowel bigrammen als unigrammen worden gegenereerd.
+    De standaard waarde is 2, wat betekent dat zowel bigrams als unigrams worden gegenereerd.
 
-6. Selecteer de optie **Normaliseren** om uitvoerwaarden om te zetten in waarschijnlijkheden. In plaats van de getransformeerde waarden als gehele getallen weer te geven, worden waarden in de uitvoer- en functiegegevensset als volgt getransformeerd:
+6. Selecteer de optie **normaliseren** om uitvoer waarden te converteren naar kansen. In plaats van de getransformeerde waarden als gehele getallen weer te geven, worden waarden in de uitvoer-en functie gegevensset als volgt getransformeerd:
 
-    + Waarden in de gegevensset worden weergegeven `P(topic|document)`als een waarschijnlijkheid waarbij .
+    + De waarden in de gegevensset worden weer gegeven als een kans `P(topic|document)`waarbij.
 
-    + Waarden in de matrix van het functieonderwerp `P(word|topic)`worden weergegeven als een waarschijnlijkheid waarbij .
+    + Waarden in de matrix van het functie-onderwerp worden weer gegeven als `P(word|topic)`een kans waar.
 
     > [!NOTE] 
-    > In Azure Machine Learning designer (preview), omdat de bibliotheek die we gebaseerd, scikit-learn, niet langer ondersteuning voor ongenormaliseerde *doc_topic_distr* uitvoer van versie 0.19, dus in deze module, **Normalize** parameter kan alleen worden toegepast op **Feature Topic matrix** output, Getransformeerd **dataset** output is altijd genormaliseerd.
+    > In Azure Machine Learning Designer (preview), omdat de bibliotheek die we hebben gebaseerd, scikit-Learn niet langer ondersteuning bieden voor niet-genormaliseerde *doc_topic_distr* uitvoer van versie 0,19, kan in deze module **normaliseren** para meter alleen worden toegepast op de matrix uitvoer van de **functie** , **getransformeerde gegevensset** -uitvoer wordt altijd genormaliseerd.
 
-7. Selecteer de optie, **Alle opties weergeven**en stel deze in op TRUE als u deze wilt weergeven en stel vervolgens extra geavanceerde parameters in.
+7. Selecteer de optie, **alle opties weer geven**en stel deze in op waar als u aanvullende geavanceerde para meters wilt weer geven en instellen.
 
-    Deze parameters zijn specifiek voor de scikit-learn implementatie van LDA. Er zijn een aantal goede tutorials over LDA in scikit-leren, evenals de officiële [scikit-learn document](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html).
+    Deze para meters zijn specifiek voor de scikit-leer implementatie van LDA. Er zijn een aantal goede zelf studies over LDA in scikit-informatie, evenals het officiële [scikit-document](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html).
 
-    + **Rho parameter**. Geef een voorafgaande waarschijnlijkheid voor de spaarzaamheid van onderwerpdistributies. Komt overeen met `topic_word_prior` de parameter van sklearn. U zou de waarde 1 gebruiken als u verwacht dat de verdeling van woorden vlak is; d.w.z., worden alle woorden verondersteld gelijkwaarschijnlijk. Als u denkt dat de meeste woorden schaars lijken, u deze instellen op een veel lagere waarde.
+    + **Rho-para meter**. Geef een eerdere kans op voor de sparsity van onderwerp-distributies. Komt overeen met de `topic_word_prior` para meter sklearn. U gebruikt de waarde 1 als u verwacht dat de distributie van woorden plat is; dat wil zeggen dat alle woorden worden verondersteld equiprobable. Als u denkt dat de meeste woorden verspreid worden weer gegeven, kunt u deze op een veel lagere waarde instellen.
 
-    + **Alfaparameter**. Geef een eerdere waarschijnlijkheid op voor de sparsity van onderwerpgewichten per document.  Komt overeen met `doc_topic_prior` de parameter van sklearn.
+    + **Alfa-para meter**. Geef een eerdere kans op voor de sparsity van het onderwerp gewicht per document.  Komt overeen met de `doc_topic_prior` para meter sklearn.
 
-    + **Geschat aantal documenten**. Typ een getal dat de beste schatting geeft van het aantal documenten (rijen) dat wordt verwerkt. Hierdoor kan de module een hashtabel van voldoende grootte toewijzen.  Komt overeen `total_samples` met de parameter in scikit-learn.
+    + Het **geschatte aantal documenten**. Typ een getal dat de beste schatting aangeeft van het aantal documenten (rijen) dat wordt verwerkt. Hiermee kan de module een hash-tabel met voldoende grootte toewijzen.  Komt overeen met `total_samples` de para meter in scikit-learn.
 
-    + **Grootte van de partij**. Typ een getal dat aangeeft hoeveel rijen er in elke batch tekst naar LDA-model worden verzonden. Komt overeen `batch_size` met de parameter in scikit-learn.
+    + **De grootte van de batch**. Typ een getal dat aangeeft hoeveel rijen moeten worden ingevoegd in elke batch tekst die wordt verzonden naar het LDA-model. Komt overeen met `batch_size` de para meter in scikit-learn.
 
-    + **Initiële waarde van iteratie die wordt gebruikt in het leerupdateschema**. Geef de beginwaarde op die het leerpercentage voor vroege iteraties in online leren vermindert. Komt overeen `learning_offset` met de parameter in scikit-learn.
+    + De **begin waarde van de iteratie die wordt gebruikt voor het plannen van de trainings update**. Geef de begin waarde op die de downweights-Learning frequentie voor vroege iteraties in online training aangeeft. Komt overeen met `learning_offset` de para meter in scikit-learn.
 
-    + **Stroom toegepast op de iteratie tijdens updates**. Geef aan welk vermogen het aantal iteraties is toegepast om de leersnelheid tijdens online updates te bepalen. Komt overeen `learning_decay` met de parameter in scikit-learn.
+    + **Kracht die tijdens de updates op de herhaling wordt toegepast**. Geef het energie niveau op dat wordt toegepast op het aantal iteraties voor het beheren van het leer tempo tijdens online-updates. Komt overeen met `learning_decay` de para meter in scikit-learn.
 
-    + **Aantal doorgangen over de gegevens**. Geef het maximum aantal keren op dat het algoritme over de gegevens wordt gecyclus. Komt overeen `max_iter` met de parameter in scikit-learn.
+    + **Aantal Passes over de gegevens**. Geef het maximum aantal keren op dat het algoritme voor de gegevens wordt gerecycled. Komt overeen met `max_iter` de para meter in scikit-learn.
 
-8. Selecteer de **optie, Bouw woordenboek van ngrammen** of **Build woordenboek van ngrams voorafgaand aan LDA**, als u wilt de n-gram lijst te maken in een eerste pass, voordat het classificeren van tekst.
+8. Selecteer de optie, maak een **woorden lijst van ngrams** of maak een **woorden lijst van ngrams vóór LDA**. Als u de n-gram lijst in een eerste keer wilt maken, moet u voordat u tekst classificeert.
 
-    Als u het oorspronkelijke woordenboek vooraf maakt, u het woordenboek later gebruiken bij het bekijken van het model. Het is over het algemeen gemakkelijker om resultaten in kaart te brengen naar tekst in plaats van numerieke indexen. Het opslaan van het woordenboek duurt echter langer en gebruikt extra opslag.
+    Als u de eerste woorden lijst vooraf maakt, kunt u later de woorden lijst gebruiken bij het controleren van het model. Het is over het algemeen eenvoudiger om resultaten toe te wijzen aan tekst in plaats van numerieke indexen. Het opslaan van de woorden lijst duurt echter langer en het gebruik van extra opslag ruimte.
 
-9. Typ **voor Maximale grootte van ngramwoordenboek**het totale aantal rijen dat kan worden gemaakt in het n-gramwoordenboek.
+9. Voor de **maximale grootte van de ngram woorden lijst**, typt u het totale aantal rijen dat kan worden gemaakt in de n-gram-woorden lijst.
 
-    Deze optie is handig voor het regelen van de grootte van het woordenboek. Als het aantal ngrammen in de invoer echter groter is dan deze grootte, kunnen er botsingen optreden.
+    Deze optie is handig voor het beheren van de grootte van de woorden lijst. Als het aantal ngrams in de invoer echter deze grootte overschrijdt, kunnen er conflicten optreden.
 
-10. Verzend de pijplijn. De LDA-module gebruikt de stelling van Bayes om te bepalen welke onderwerpen aan afzonderlijke woorden kunnen worden gekoppeld. Woorden zijn niet uitsluitend gekoppeld aan onderwerpen of groepen; in plaats daarvan heeft elke n-gram een geleerde kans om geassocieerd te worden met een van de ontdekte klassen.
+10. Verzend de pijp lijn. De LDA-module maakt gebruik van Bayes theorema om te bepalen welke onderwerpen kunnen worden gekoppeld aan afzonderlijke woorden. Woorden die niet exclusief zijn gekoppeld aan onderwerpen of groepen; in plaats daarvan heeft elke n-gram een geleerde kans om te koppelen aan een van de gedetecteerde klassen.
 
 ## <a name="results"></a>Resultaten
 
-De module heeft twee uitgangen:
+De module heeft twee uitvoer:
 
-+ **Getransformeerde gegevensset**: bevat de invoertekst en een opgegeven aantal gedetecteerde categorieën, samen met de scores voor elk tekstvoorbeeld voor elke categorie.
++ **Getransformeerde gegevensset**: bevat de invoer tekst en een opgegeven aantal gedetecteerde categorieën, samen met de scores voor elk tekst voorbeeld voor elke categorie.
 
-+ **Functieonderwerpmatrix**: De meest linkse kolom bevat de uitgepakte tekstfunctie en er is een kolom voor elke categorie met de score voor die functie in die categorie.
++ **Functie onderwerp matrix**: de meest linkse kolom bevat de geëxtraheerde tekst functie en er is een kolom voor elke categorie met daarin de score voor die functie in die categorie.
 
 
-### <a name="lda-transformation"></a>LDA-transformatie
+### <a name="lda-transformation"></a>LDA-trans formatie
 
-Deze module wordt ook uitgevoerd met de *LDA-transformatie* die LDA toepast op de gegevensset.
+Deze module voert ook de *LDA-trans formatie* uit waarmee Lda op de gegevensset wordt toegepast.
 
-U deze transformatie opslaan door de gegevensset te registreren onder het tabblad **Uitvoer+logboeken** in het rechterdeelvenster van de module en deze opnieuw te gebruiken voor andere gegevenssets. Dit kan handig zijn als u hebt getraind op een groot corpus en de coëfficiënten of categorieën wilt hergebruiken.
+U kunt deze trans formatie opslaan door gegevensset te registreren onder uitvoer, tabblad **Logboeken** in het rechterdeel venster van de module en deze opnieuw te gebruiken voor andere gegevens sets. Dit kan handig zijn als u hebt getraind op een grote verzameling en u de coëfficiënten of categorieën opnieuw wilt gebruiken.
 
-### <a name="refining-an-lda-model-or-results"></a>Een LDA-model of -resultaten verfijnen
+### <a name="refining-an-lda-model-or-results"></a>Een LDA-model of-resultaten verfijnen
 
-Meestal u geen enkel LDA-model maken dat aan alle behoeften voldoet, en zelfs een model dat voor één taak is ontworpen, vereist mogelijk veel iteraties om de nauwkeurigheid te verbeteren. We raden u aan al deze methoden uit te proberen om uw model te verbeteren:
+Doorgaans kunt u slechts één LDA-model maken dat aan alle behoeften voldoet, en zelfs een model dat is ontworpen voor de ene taak kan veel iteraties vereisen om de nauw keurigheid te verbeteren. We raden u aan al deze methoden te proberen om uw model te verbeteren:
 
-+ De modelparameters wijzigen
++ De para meters van het model wijzigen
 + Visualisatie gebruiken om de resultaten te begrijpen
-+ Het krijgen van de feedback van deskundigen op het gebied van het onderwerp om na te gaan of de gegenereerde onderwerpen nuttig zijn.
++ U krijgt de feedback over experts om te bepalen of de gegenereerde onderwerpen nuttig zijn.
 
-Kwalitatieve maatregelen kunnen ook nuttig zijn voor de beoordeling van de resultaten. Als u de resultaten van onderwerpmodellering wilt evalueren, u rekening houden met:
+Kwalitatieve maat regelen kunnen ook handig zijn voor het beoordelen van de resultaten. Als u de resultaten van een onderwerpen model wilt evalueren, kunt u overwegen:
 
-+ Nauwkeurigheid - Zijn soortgelijke items echt vergelijkbaar?
-+ Diversiteit - Kan het model onderscheid maken tussen vergelijkbare items wanneer dat nodig is voor het zakelijke probleem?
-+ Schaalbaarheid - Werkt het op een breed scala aan tekstcategorieën of alleen op een smal doeldomein?
++ Nauw keurigheid: vergelijk bare items zijn heel vergelijkbaar?
++ Diversiteit: kan het model onderscheid tussen vergelijk bare items als dat nodig is voor het bedrijfs probleem?
++ Schaal baarheid: werkt alleen in een breed scala aan tekst categorieën of alleen op een beperkt doel domein?
 
-De nauwkeurigheid van modellen op basis van LDA kan vaak worden verbeterd door natuurlijke taalverwerking te gebruiken om tekst schoon te maken, samen te vatten en te vereenvoudigen of te categoriseren. De volgende technieken, die allemaal worden ondersteund in Azure Machine Learning, kunnen bijvoorbeeld de nauwkeurigheid van de classificatie verbeteren:
+De nauw keurigheid van modellen gebaseerd op LDA kan vaak worden verbeterd door gebruik te maken van natuurlijke taal verwerking om tekst te reinigen, samen te vatten en te vereenvoudigen of te categoriseren. De volgende technieken, die allemaal worden ondersteund in Azure Machine Learning, kunnen de classificatie nauw keurigheid verbeteren:
 
-+ Woordverwijdering stoppen
++ Verwijderen van woorden stoppen
 
-+ Case normalisatie
++ Case-normalisatie
 
-+ Lemmatization of stemming
++ Lemmatisering of stam gebruik
 
 + Herkenning van tekeneenheden
 
-Zie [Tekst vooraf verwerken](preprocess-text.md)voor meer informatie.
+Zie [preproces-tekst](preprocess-text.md)voor meer informatie.
 
-In de ontwerper u ook R- of Python-bibliotheken gebruiken voor tekstverwerking: [R Script uitvoeren,](execute-r-script.md) [Python Script uitvoeren](execute-python-script.md)
+In de ontwerp functie kunt u ook R-of python-bibliotheken gebruiken voor tekst verwerking: [r-script uitvoeren](execute-r-script.md), [python-script uitvoeren](execute-python-script.md)
 
 
 
-## <a name="technical-notes"></a>Technische notities
+## <a name="technical-notes"></a>Technische opmerkingen
 
-Deze sectie bevat implementatiedetails, tips en antwoorden op veelgestelde vragen.
+Deze sectie bevat implementatie details, tips en antwoorden op veelgestelde vragen.
 
-### <a name="implementation-details"></a>Uitvoeringsdetails
+### <a name="implementation-details"></a>Implementatie Details
 
-Standaard worden de verdelingen van uitvoer voor getransformeerde gegevensset en feature-topic matrix genormaliseerd als waarschijnlijkheden.
+Standaard worden de distributies van uitvoer voor getransformeerde gegevensset en functie-topic genormaliseerd als kansen.
 
-+ De getransformeerde gegevensset wordt genormaliseerd als de voorwaardelijke waarschijnlijkheid van onderwerpen die een document krijgen. In dit geval is de som van elke rij gelijk aan 1.
++ De getransformeerde gegevensset wordt genormaliseerd als de voorwaardelijke kans van onderwerpen op basis van een document. In dit geval is de som van elke rij gelijk aan 1.
 
-+ De functie-onderwerp matrix wordt genormaliseerd als de voorwaardelijke waarschijnlijkheid van woorden gegeven een onderwerp. In dit geval is de som van elke kolom gelijk aan 1.
++ De functie-onderwerp matrix wordt genormaliseerd als de voorwaardelijke waarschijnlijkheid van woorden op basis van een onderwerp. In dit geval is de som van elke kolom gelijk aan 1.
 
 > [!TIP]
-> Af en toe kan de module een leeg onderwerp retourneren, wat meestal wordt veroorzaakt door de pseudo-random initialisatie van het algoritme.  Als dit gebeurt, u proberen gerelateerde parameters te wijzigen, zoals de maximale grootte van het N-gramwoordenboek of het aantal bits dat u moet gebruiken voor het hashing van de functie.
+> Af en toe kan de module een leeg onderwerp retour neren. dit wordt meestal veroorzaakt door de pseudo-wille keurige initialisatie van de algoritme.  Als dit het geval is, kunt u de bijbehorende para meters wijzigen, zoals de maximale grootte van de N-gram-woorden lijst of het aantal bits dat moet worden gebruikt voor functie-hashing.
 
-### <a name="lda-and-topic-modeling"></a>LDA en onderwerpmodellering
+### <a name="lda-and-topic-modeling"></a>LDA en topics model lering
 
-Latente Dirichlet Allocation (LDA) wordt vaak gebruikt voor *content-based topic modeling*, wat in feite betekent dat categorieën leren van niet-geclassificeerde tekst. In content-based topic modeling is een onderwerp een verdeling over woorden.
+Latente Dirichlet-toewijzing (LDA) wordt vaak gebruikt voor *model lering op basis van inhoud*. Dit houdt in dat categorieën worden leren van niet-geclassificeerde tekst. In een onderwerp dat is gebaseerd op inhouds modellen, is een onderwerp een distributie over woorden.
 
-Stel dat u een corpus van klantbeoordelingen hebt verstrekt dat veel, veel producten bevat. De tekst van beoordelingen die zijn ingediend door veel klanten in de tijd zou bevatten veel termen, waarvan sommige worden gebruikt in meerdere onderwerpen.
+Stel dat u een verzameling hebt geleverd met beoordelingen van klanten die veel, veel producten bevatten. De tekst van beoordelingen die zijn ingediend door veel klanten gedurende een bepaalde periode, bevat veel voor waarden, waarvan sommige worden gebruikt in meerdere onderwerpen.
 
-Een **onderwerp** dat wordt geïdentificeerd door het LDA-proces kan beoordelingen voor een individueel product A vertegenwoordigen of een groep productbeoordelingen vertegenwoordigen. Voor LDA is het onderwerp zelf slechts een waarschijnlijkheidsverdeling over de tijd voor een reeks woorden.
+Een **onderwerp** dat wordt geïdentificeerd door het LDA-proces, kan beoordelingen vertegenwoordigen voor een afzonderlijk product A, of het kan een groep product beoordelingen vertegenwoordigen. Voor LDA is het onderwerp zelf een waarschijnlijke verdeling van de duur van een aantal woorden.
 
-Termen zijn zelden exclusief voor een product, maar kunnen verwijzen naar andere producten, of algemene termen die van toepassing zijn op alles ("geweldig", "verschrikkelijk"). Andere termen kunnen lawaaiwoorden zijn.  Het is echter belangrijk om te begrijpen dat de LDA-methode niet beweert om alle woorden in het universum vast te leggen, of om te begrijpen hoe woorden gerelateerd zijn, afgezien van waarschijnlijkheden van co-optreden. Het kan alleen woorden groeperen die in het doeldomein zijn gebruikt.
+De termen zijn zelden exclusief voor een product, maar kunnen verwijzen naar andere producten, of algemene voor waarden die van toepassing zijn op alles (' geweldig ', ' Awful '). Andere voor waarden kunnen ruis woorden zijn.  Het is echter belang rijk om te begrijpen dat de LDA-methode niet van toepassing is op het vastleggen van alle woorden in het universum, of om te begrijpen hoe woorden zijn gerelateerd, afgezien van de waarschijnlijkheid van co-instantie. Hiermee kunnen alleen woorden worden gegroepeerd die in het doel domein zijn gebruikt.
 
-Nadat de term-indexen zijn berekend, worden afzonderlijke rijen tekst vergeleken met behulp van een op afstand gebaseerde gelijkenismeting, om te bepalen of twee stukken tekst op elkaar lijken.  U bijvoorbeeld merken dat het product meerdere namen heeft die sterk gecorreleerd zijn. Of, je zou kunnen vinden dat sterk negatieve termen worden meestal geassocieerd met een bepaald product. U de gelijkenismaatregel zowel gebruiken om gerelateerde termen te identificeren als om aanbevelingen te maken.
+Nadat de termen van de term zijn berekend, worden afzonderlijke tekst rijen vergeleken met behulp van een op afstand gebaseerde soort gelijke maat eenheid om te bepalen of twee stukken tekst op elkaar lijken.  U kunt bijvoorbeeld zien dat het product meerdere namen heeft die sterk worden gecorreleerd. Het is ook mogelijk dat zeer negatieve voor waarden doorgaans zijn gekoppeld aan een bepaald product. U kunt de maat eenheid van de overeenkomst gebruiken om gerelateerde voor waarden te identificeren en aanbevelingen te maken.
 
-###  <a name="module-parameters"></a>Moduleparameters
+###  <a name="module-parameters"></a>Module parameters
 
-|Name|Type|Bereik|Optioneel|Standaard|Beschrijving|  
+|Naam|Type|Bereik|Optioneel|Standaard|Beschrijving|  
 |----------|----------|-----------|--------------|-------------|-----------------|  
-|Doelkolom(en)|Kolomselectie||Vereist|StringFunctie|Naam of index van doelkolom|  
-|Aantal onderwerpen dat moet worden gemodelleerd|Geheel getal|[1;1000]|Vereist|5|Modelleer de documentverdeling op N-onderwerpen|  
-|N-grammen|Geheel getal|[1;10]|Vereist|2|Bestelling van N-grammen gegenereerd tijdens hashing|  
-|Normalize|Booleaans|Waar of onwaar|Vereist|waar|Normaliseer de uitvoer naar waarschijnlijkheden.  De getransformeerde gegevensset wordt P(onderwerp&#124;document) en de matrix van het functieonderwerp wordt P(word&#124;topic)|  
-|Alle opties weergeven|Booleaans|Waar of onwaar|Vereist|False|Presenteert aanvullende parameters die specifiek zijn voor scikit-learn online LDA|  
-|Rho, parameter|Drijvend|[0.00001;1.0]|Van toepassing wanneer het selectievakje **Alle opties weergeven** is ingeschakeld|0,01|Onderwerpwoord voorafgaande distributie|  
-|Alfaparameter|Drijvend|[0.00001;1.0]|Van toepassing wanneer het selectievakje **Alle opties weergeven** is ingeschakeld|0,01|Voorafgaande distributie van documentonderwerp|  
-|Geschat aantal documenten|Geheel getal|[1;int. MaxWaarde]|Van toepassing wanneer het selectievakje **Alle opties weergeven** is ingeschakeld|1000|Geschat aantal documenten (Komt overeen met total_samples parameter)|  
-|Grootte van de partij|Geheel getal|[1;1024]|Van toepassing wanneer het selectievakje **Alle opties weergeven** is ingeschakeld|32|Grootte van de partij|  
-|Initiële waarde van iteratie die wordt gebruikt in het updateschema voor leersnelheid|Geheel getal|[0;int. MaxWaarde]|Van toepassing wanneer het selectievakje **Alle opties weergeven** is ingeschakeld|0|Initiële waarde die leersnelheid voor vroege iteraties downweights. Komt overeen met de parameter learning_offset|  
-|Stroom toegepast op de iteratie tijdens updates|Drijvend|[0.0;1.0]|Van toepassing wanneer het selectievakje **Alle opties weergeven** is ingeschakeld|0.5|Kracht toegepast op het aantal iteraties om de leersnelheid te controleren. Komt overeen met de parameter learning_decay |  
-|Aantal trainingsiteraties|Geheel getal|[1;1024]|Van toepassing wanneer het selectievakje **Alle opties weergeven** is ingeschakeld|25|Aantal trainingsiteraties|  
-|Het woordenboek van ngrams bouwen|Booleaans|Waar of onwaar|Van toepassing wanneer het selectievakje **Alle opties weergeven** *niet* is ingeschakeld|True|Bouwt een woordenboek van ngrammen voorafgaand aan het berekenen van LDA. Handig voor modelinspectie en -interpretatie|  
-|Maximale grootte van ngramwoordenboek|Geheel getal|[1;int. MaxWaarde]|Van toepassing wanneer de optie **Het woordenboek van het bouwen van ngrammen** waar is|20.000|Maximale grootte van het ngrams woordenboek. Als het aantal tokens in de invoer deze grootte overschrijdt, kunnen er botsingen optreden|  
-|Aantal bits dat moet worden gebruikt voor functiehashing|Geheel getal|[1;31]|Hiermee wordt van toepassing wanneer het selectievakje **Alle opties weergeven** *niet* is ingeschakeld en Het woordenboek van bouwen **van ngrammen** onwaar is|12|Aantal bits dat moet worden gebruikt voor functiehashing| 
-|Het woordenboek van ngrams bouwen voorafgaand aan LDA|Booleaans|Waar of onwaar|Van toepassing wanneer het selectievakje **Alle opties weergeven** is ingeschakeld|True|Bouwt een woordenboek van ngrammen voorafgaand aan LDA. Handig voor modelinspectie en -interpretatie|  
-|Maximum aantal ngrammen in woordenboek|Geheel getal|[1;int. MaxWaarde]|Hiermee wordt van toepassing wanneer het selectievakje **Alle opties weergeven** is ingeschakeld en de optie **Het woordenboek van Ngramten** maken waar is|20.000|Maximale grootte van het woordenboek. Als het aantal tokens in de invoer deze grootte overschrijdt, kunnen er botsingen optreden|  
-|Aantal hashbits|Geheel getal|[1;31]|Hiermee wordt van toepassing wanneer het selectievakje **Alle opties weergeven** is ingeschakeld en de optie **Het woordenboek van Ngramten** maken is Onwaar|12|Aantal bits dat moet worden gebruikt tijdens functiehashing|   
+|Doel kolom (men)|Kolom selectie||Vereist|StringFeature|Naam of index van doel kolom|  
+|Aantal te model lerene onderwerpen|Geheel getal|[1; 1000]|Vereist|5|De document distributie met N onderwerpen model leren|  
+|N-gram|Geheel getal|[1; 10]|Vereist|2|Volg orde van N-gram gegenereerd tijdens hashing|  
+|Normaliseren|Booleaans|Waar of onwaar|Vereist|waar|Normaliseer uitvoer naar kansen.  De getransformeerde gegevensset is P (onderwerp&#124;document) en de matrix van het functie onderwerp is P (woord&#124;onderwerp)|  
+|Alle opties weer geven|Booleaans|Waar of onwaar|Vereist|False|Geeft aanvullende para meters die specifiek zijn voor scikit-Learn Online LDA|  
+|Rho-para meter|Drijvend|[0.00001; 1.0]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd|0,01|Voorafgaande distributie over onderwerps woord|  
+|Alpha-para meter|Drijvend|[0.00001; 1.0]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd|0,01|Document onderwerp voorafgaande distributie|  
+|Geschat aantal documenten|Geheel getal|[1; int. MaxValue|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd|1000|Het geschatte aantal documenten (komt overeen met total_samples para meter)|  
+|Grootte van de batch|Geheel getal|[1; 1024]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd|32|Grootte van de batch|  
+|Aanvankelijke waarde van herhaling die wordt gebruikt voor de update planning voor het trainings tempo|Geheel getal|[0; int. MaxValue|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd|0|Aanvankelijke waarde voor downweights Learning rate voor vroege iteraties. Komt overeen met de para meter learning_offset|  
+|Kracht toegepast op de herhaling tijdens updates|Drijvend|[0,0; 1.0]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd|0.5|Kracht toegepast op het aantal iteraties om het leer tempo te beheren. Komt overeen met de para meter learning_decay |  
+|Aantal opleidings herhalingen|Geheel getal|[1; 1024]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd|25|Aantal opleidings herhalingen|  
+|Woorden lijst van ngrams bouwen|Booleaans|Waar of onwaar|Van toepassing wanneer het selectie vakje **alle opties weer geven** *is uitgeschakeld*|True|Bouwt een woorden lijst van ngrams vóór de Computing LDA. Nuttig voor model inspectie en-interpretatie|  
+|Maximale grootte van ngram-woorden lijst|Geheel getal|[1; int. MaxValue|Van toepassing wanneer de keuze **lijst Dictionary van Ngrams** waar is|20.000|Maximale grootte van de ngrams-woorden lijst. Als het aantal tokens in de invoer groter is dan deze grootte, kunnen er conflicten optreden|  
+|Aantal bits dat moet worden gebruikt voor functie-hashing|Geheel getal|[1; 31]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is *niet* geselecteerd en het **bouwen van de woorden lijst ngrams** is ingesteld op False|12|Aantal bits dat moet worden gebruikt voor functie-hashing| 
+|Build Dictionary van ngrams vóór LDA|Booleaans|Waar of onwaar|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd|True|Hiermee maakt u een woorden lijst met ngrams vóór LDA. Nuttig voor model inspectie en-interpretatie|  
+|Maximum aantal ngrams in woorden lijst|Geheel getal|[1; int. MaxValue|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd en de optie **woorden lijst van ngrams** is ingesteld op True|20.000|Maximum grootte van de woorden lijst. Als het aantal tokens in de invoer groter is dan deze grootte, kunnen er conflicten optreden|  
+|Aantal hash-bits|Geheel getal|[1; 31]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd en de optie **woorden lijst van ngrams** is ingesteld op False|12|Aantal bits dat moet worden gebruikt tijdens hashing van functies|   
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning.   
-Zie [Uitzonderingen en foutcodes voor de ontwerper voor](designer-error-codes.md)een lijst met fouten die specifiek zijn voor de modules.
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning.   
+Zie [uitzonde ringen en fout codes voor de ontwerp functie](designer-error-codes.md)voor een lijst met fouten die specifiek zijn voor de modules.

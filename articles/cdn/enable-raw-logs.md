@@ -1,6 +1,6 @@
 ---
-title: Azure CDN HTTP-raw-logboeken
-description: In dit artikel worden de Azure CDN HTTP-raw-logboeken beschreven.
+title: Onbewerkte HTTP-logboeken Azure CDN
+description: In dit artikel worden de Azure CDN RAW-Logboeken beschreven.
 services: cdn
 author: sohamnchatterjee
 manager: danielgi
@@ -11,91 +11,91 @@ ms.topic: article
 ms.date: 03/23/2020
 ms.author: sohamnc
 ms.openlocfilehash: c6e8570746ae3dd0051dbec084c89d90580d28b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80371639"
 ---
-# <a name="azure-cdn-http-raw-logs"></a>Azure CDN HTTP-raw-logboeken
-Raw-logboeken bieden uitgebreide informatie over bewerkingen en fouten die belangrijk zijn voor controle en probleemoplossing. Raw logs verschillen van activiteit logs. Activiteitslogboeken bieden inzicht in de bewerkingen die worden uitgevoerd op Azure-resources. Raw logs bieden een record van de activiteiten van uw resource.
+# <a name="azure-cdn-http-raw-logs"></a>Onbewerkte HTTP-logboeken Azure CDN
+Onbewerkte logboeken bieden uitgebreide informatie over bewerkingen en fouten die belang rijk zijn voor controle en probleem oplossing. Onbewerkte logboeken verschillen van activiteiten Logboeken. Met activiteiten logboeken krijgt u inzicht in de bewerkingen die worden uitgevoerd op Azure-resources. Onbewerkte logboeken bieden een overzicht van de bewerkingen van uw resource.
 
 > [!IMPORTANT]
-> De functie HTTP raw logs is beschikbaar voor Azure CDN van Microsoft.
+> De functie voor onbewerkte HTTP-Logboeken is beschikbaar voor Azure CDN van micro soft.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint. 
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
+Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="configuration"></a>Configuratie
 
-Ga als lid van het Programma Voor Uw Azure CDN vanuit Microsoft-profiel: 
+RAW-logboeken voor uw Azure CDN van het micro soft-profiel configureren: 
 
-1. Selecteer in het menu van de Azure-portal **alle bronnen** >> **\<uw-CDN-profiel>**.
+1. Selecteer in het menu Azure Portal **alle resources** >> **\<uw-CDN-profiel>**.
 
 2. Selecteer onder **Bewaking** de optie **Diagnostische instellingen**.
 
 3. Selecteer **+ Diagnostische instelling toevoegen**.
 
-    ![CDN-diagnostische instelling](./media/cdn-raw-logs/raw-logs-01.png)
+    ![Instelling voor CDN-diagnose](./media/cdn-raw-logs/raw-logs-01.png)
 
     > [!IMPORTANT]
-    > Raw-logboeken zijn alleen beschikbaar in het profielniveau, terwijl geaggregeerde http-statuscodelogboeken beschikbaar zijn in het eindpuntniveau.
+    > Onbewerkte logboeken zijn alleen beschikbaar in het profiel niveau, terwijl geaggregeerde HTTP-status code logboeken beschikbaar zijn op het niveau van het eind punt.
 
-4. Voer **onder Diagnostische instellingen**een naam in voor de diagnostische instelling onder De naam Diagnostische **instellingen**.
+4. Voer onder **Diagnostische instellingen**een naam in voor de diagnostische instelling onder **naam van diagnostische instellingen**.
 
-5. Selecteer het **logboek** en stel de retentie in dagen in.
+5. Selecteer het **logboek** en stel de Bewaar periode in dagen in.
 
-6. Selecteer de **doelgegevens**. Bestemmingsopties zijn:
+6. Selecteer de **doel gegevens**. Bestemmings opties zijn:
     * **Verzenden naar Log Analytics**
-        * Selecteer de werkruimte **Abonnement** en **Logboekanalyse**.
-    * **Archiveren naar een opslagaccount**
-        * Selecteer het **abonnement** en het **opslagaccount**.
-    * **Streamen naar een gebeurtenishub**
-        * Selecteer de **naamruimte van**de **gebeurtenishub,** **gebeurtenishub (optioneel)** en **de beleidsnaam van de gebeurtenishub**.
+        * Selecteer het **abonnement** en de **log Analytics-werk ruimte**.
+    * **Archiveren naar een opslag account**
+        * Selecteer het **abonnement** en het **opslag account**.
+    * **Streamen naar een Event Hub**
+        * Selecteer het **abonnement**, de **Event hub-naam ruimte**, de naam van de **Event hub (optioneel)** en de naam van het **Event hub-beleid**.
 
-    ![CDN-diagnostische instelling](./media/cdn-raw-logs/raw-logs-02.png)
+    ![Instelling voor CDN-diagnose](./media/cdn-raw-logs/raw-logs-02.png)
 
 7. Selecteer **Opslaan**.
 
-## <a name="raw-logs-properties"></a>Eigenschappen van raw-logboeken
+## <a name="raw-logs-properties"></a>Eigenschappen van onbewerkte logboeken
 
-Azure CDN van Microsoft Service biedt momenteel Raw-logboeken. Raw-logboeken bieden afzonderlijke API-aanvragen bij elke vermelding met het volgende schema: 
+Azure CDN van de micro soft-service biedt momenteel onbewerkte Logboeken. RAW-logboeken bieden afzonderlijke API-aanvragen voor elke vermelding met het volgende schema: 
 
 | Eigenschap              | Beschrijving                                                                                                                                                                                          |
 |-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| TrackingReferentie     | De unieke referentietekenreeks die een aanvraag van Front Door identificeert en ook als X-Azure-Ref-header naar de client wordt verzonden. Vereist voor het zoeken naar details in de toegangslogboeken voor een specifiek verzoek. |
-| HttpMethod            | HTTP-methode die door de aanvraag wordt gebruikt.                                                                                                                                                                     |
-| HttpVersie           | Type van de aanvraag of verbinding.                                                                                                                                                                   |
-| RequestUri            | URI van het ontvangen verzoek.                                                                                                                                                                         |
-| AanvragenBytes          | De grootte van het HTTP-aanvraagbericht in bytes, inclusief de aanvraagkoppen en de aanvraaginstantie.                                                                                                   |
-| ResponseBytes         | Bytes die door de backendserver als antwoord worden verzonden.                                                                                                                                                    |
-| Useragent             | Het browsertype dat de client heeft gebruikt.                                                                                                                                                               |
-| ClientIp              | Het IP-adres van de klant die het verzoek heeft ingediend.                                                                                                                                                  |
-| Tijdgenomen             | De tijdsduur die de actie heeft ondernomen, in milliseconden.                                                                                                                                            |
-| SecurityProtocol (SecurityProtocol)      | De TLS/SSL-protocolversie die door het verzoek of null wordt gebruikt als er geen versleuteling is.                                                                                                                           |
-| Eindpunt              | De CDN-eindpunthost is geconfigureerd onder het bovenliggende CDN-profiel.                                                                                                                                   |
-| Naam back-endhost     | De naam van de backendhost of -oorsprong waar aanvragen worden verzonden.                                                                                                                                |
-| Verzonden naar oorsprongschild | Als dit waar is, betekent dit dat het verzoek is beantwoord vanuit de cache van Origin Shield in plaats van de edge pop. Origin shield is een bovenliggende cache die wordt gebruikt om de hitratio in de cache te verbeteren.                                       |
-| Httpstatuscode        | De HTTP-statuscode is geretourneerd van de proxy.                                                                                                                                                        |
-| HttpStatusDetails     | Resulterende status op het verzoek. Betekenis van deze tekenreekswaarde is te vinden in een statusreferentietabel.                                                                                              |
-| Pop                   | De randpop, die op het verzoek van de gebruiker reageerde. De afkortingen van POP's zijn luchthavencodes van hun respectievelijke metro's.                                                                                   |
-| Cachestatus          | Betekent dat het object is geretourneerd uit de cache of afkomstig is van de oorsprong.                                                                                                             |
+| TrackingReference     | De unieke verwijzings reeks die een aanvraag identificeert die wordt geleverd door de voor deur, ook verzonden als X-Azure-ref-header naar de client. Vereist voor het zoeken naar details in de logboeken van de toegang voor een specifieke aanvraag. |
+| HttpMethod            | De HTTP-methode die door de aanvraag wordt gebruikt.                                                                                                                                                                     |
+| HttpVersion           | Het type van de aanvraag of verbinding.                                                                                                                                                                   |
+| RequestUri            | De URI van de ontvangen aanvraag.                                                                                                                                                                         |
+| RequestBytes          | De grootte van het HTTP-aanvraag bericht in bytes, met inbegrip van de aanvraag headers en de hoofd tekst van de aanvraag.                                                                                                   |
+| ResponseBytes         | Bytes dat als reactie door de back-endserver wordt verzonden.                                                                                                                                                    |
+| User agent             | Het browser type dat door de client wordt gebruikt.                                                                                                                                                               |
+| ClientIp              | Het IP-adres van de client die de aanvraag heeft ingediend.                                                                                                                                                  |
+| TimeTaken             | De duur van de actie in milliseconden.                                                                                                                                            |
+| Exemplaar      | De TLS/SSL-protocol versie die wordt gebruikt door de aanvraag of null als er geen versleuteling is.                                                                                                                           |
+| Eindpunt              | De CDN-eindpunt-host is geconfigureerd onder het bovenliggende CDN-profiel.                                                                                                                                   |
+| Hostnaam van back-end     | De naam van de back-end-host of de oorsprong waar aanvragen worden verzonden.                                                                                                                                |
+| Verzonden naar het oorspronkelijke schild | Als dit het geval is, betekent dit dat de aanvraag is beantwoord van de oorspronkelijke schild in de cache in plaats van de Edge-pop. Schild van oorsprong is een bovenliggende cache die wordt gebruikt om de verhouding van de cache treffers te verbeteren.                                       |
+| Http status code        | De HTTP-status code die is geretourneerd door de proxy.                                                                                                                                                        |
+| HttpStatusDetails     | De resulterende status van de aanvraag. De betekenis van deze teken reeks waarde is te vinden in een status verwijzings tabel.                                                                                              |
+| Keuzemenu                   | De rand pop, die op de aanvraag van de gebruiker reageerde. De afkortingen van Pop's zijn luchthaven codes van hun respectieve metro lijnen.                                                                                   |
+| Cache status          | Geeft aan of het object is geretourneerd uit de cache of afkomstig is van de oorsprong.                                                                                                             |
 > [!IMPORTANT]
-> De HTTP Raw-logboekenfunctie is automatisch beschikbaar voor profielen die na **25 februari 2020**zijn gemaakt of bijgewerkt. Voor eerder gemaakte CDN-profielen moet het CDN-eindpunt worden bijgewerkt na het instellen van logboekregistratie. Men kan bijvoorbeeld naar geofiltering onder CDN-eindpunten navigeren en elk land blokkeren dat niet relevant is voor hun werkbelasting en op opslaan drukken. 
+> De functie voor onbewerkte HTTP-Logboeken is automatisch beschikbaar voor profielen die na **25 februari 2020**zijn gemaakt of bijgewerkt. Voor CDN-profielen die u eerder hebt gemaakt, moet het CDN-eind punt bij het instellen van de logboek registratie worden bijgewerkt. Een voor beeld: er kan naar geo-filtering onder CDN-eind punten worden genavigeerd en elk land dat niet relevant is voor hun werk belasting, blok keren en op Opslaan drukken. 
 
 > [!NOTE]
-> De logboeken kunnen onder uw Log Analytics-profiel worden bekeken door een query uit te voeren. Een voorbeeldquery lijkt op AzureDiagnostics | waar categorie == "AzureCdnAccessLog"
+> De logboeken kunnen worden weer gegeven onder uw Log Analytics-profiel door een query uit te voeren. Een voorbeeld query zou er als volgt uitzien als AzureDiagnostics | Where Category = = "AzureCdnAccessLog"
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u HTTP raw-logboeken ingeschakeld voor de Microsoft CDN-service.
+In dit artikel hebt u HTTP RAW-logboeken ingeschakeld voor de micro soft CDN-service.
 
-Zie voor meer informatie over Azure CDN en de andere Azure-services die in dit artikel worden genoemd:
+Zie voor meer informatie over Azure CDN en de andere Azure-Services die in dit artikel worden genoemd:
 
-* [Analyseren](cdn-log-analysis.md) Azure CDN-gebruikspatronen.
+* [Analyseren](cdn-log-analysis.md) Gebruiks patronen Azure CDN.
 
-* Meer informatie over [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
+* Meer informatie over [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
 
-* [Loganalytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)configureren in Azure Monitor .
+* [Log Analytics configureren in azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).

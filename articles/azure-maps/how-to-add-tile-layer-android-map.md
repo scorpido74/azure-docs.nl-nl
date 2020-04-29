@@ -1,6 +1,6 @@
 ---
-title: Een tegellaag toevoegen aan Android-kaarten | Microsoft Azure Maps
-description: In dit artikel leert u hoe u een tegellaag op een kaart weergeeft met de Microsoft Azure Maps Android SDK.
+title: Een tegel laag toevoegen aan Android-kaarten | Microsoft Azure kaarten
+description: In dit artikel leert u hoe u een tegel laag op een kaart kunt weer geven met behulp van de Microsoft Azure Mapss Android SDK.
 author: philmea
 ms.author: philmea
 ms.date: 04/26/2019
@@ -9,46 +9,46 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: f98598bd1307bb1b46ff23814780c5f809b9ac90
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335567"
 ---
-# <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Een tegellaag toevoegen aan een kaart met de Azure Maps Android SDK
+# <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Een tegel laag aan een kaart toevoegen met behulp van de Azure Maps Android SDK
 
-In dit artikel ziet u hoe u een tegellaag op een kaart renderen met de Azure Maps Android SDK. Met tegellagen u afbeeldingen boven op basiskaarttegels van Azure Maps plaatsen. Meer informatie over azure maps-tegelsysteem is te vinden in de [zoomniveaus en tegelrasterdocumentatie.](zoom-levels-and-tile-grid.md)
+In dit artikel wordt beschreven hoe u een tegel laag op een kaart kunt weer geven met behulp van de Azure Maps Android SDK. Met tegel lagen kunt u afbeeldingen boven op Azure Maps basis kaart tegels plaatsen. Meer informatie over Azure Maps tegel systeem vindt u in de documentatie over het [Zoom niveau en het tegel raster](zoom-levels-and-tile-grid.md) .
 
-Een tegellaag laadt tegels van een server. Deze afbeeldingen kunnen vooraf worden weergegeven en opgeslagen zoals elke andere afbeelding op een server, met behulp van een naamgevingsconventie die de tegellaag begrijpt. Of deze beelden kunnen worden weergegeven met een dynamische service die de beelden in de buurt van real-time genereert. Er zijn drie verschillende tegelservicenaamgevingsconventies die worden ondersteund door de klasse Azure Maps TileLayer:
+Een tegel laag wordt in tegels van een server geladen. Deze installatie kopieën kunnen vooraf worden weer gegeven en opgeslagen, zoals elke andere installatie kopie op een server, met behulp van een naamgevings Conventie die de laag van de tegel begrijpt. Het is ook mogelijk dat deze installatie kopieën worden weer gegeven met een dynamische service die de afbeeldingen bijna in real time genereert. Er worden drie verschillende naamgevings conventies voor tegel Services ondersteund door Azure Maps klasse TileLayer:
 
-* X, Y, Zoomnotatie - Op basis van het zoomniveau is x de kolom en y is de rijpositie van de tegel in het tegelraster.
-* Quadkey-notatie - Combinatie x, y, zoominformatie in op één tekenreekswaarde die een unieke id voor een tegel is.
-* Selectiekader - Selectiekadercoördinaten kunnen worden gebruikt om `{west},{south},{east},{north}` een afbeelding op te geven in de indeling die vaak wordt gebruikt door [Web Mapping Services (WMS).](https://www.opengeospatial.org/standards/wms)
+* X, Y, zoom notatie: gebaseerd op het zoom niveau, x is de kolom en Y de rijpositie van de tegel in het tegel raster.
+* Quadkey notatie: combi natie x, y en zoom informatie in een enkele teken reeks waarde die een unieke id voor een tegel is.
+* Omsluitende Box-coördinaten kunnen worden gebruikt om een afbeelding op te geven in de indeling `{west},{south},{east},{north}` die wordt gebruikt door [Web MAPPING Services (WMS)](https://www.opengeospatial.org/standards/wms).
 
 > [!TIP]
-> Een TileLayer is een geweldige manier om grote datasets op de kaart te visualiseren. Niet alleen kan een tegellaag uit een afbeelding worden gegenereerd, maar kunnen vectorgegevens ook als tegellaag worden weergegeven. Door vectorgegevens als een tegellaag weer te geven, hoeft het kaartbesturingselement alleen de tegels te laden die veel kleiner kunnen zijn in bestandsgrootte dan de vectorgegevens die ze vertegenwoordigen. Deze techniek wordt gebruikt door velen die miljoenen rijen gegevens op de kaart moeten renderen.
+> Een TileLayer is een uitstekende manier om grote gegevens sets op de kaart te visualiseren. U kunt niet alleen een tegel laag genereren op basis van een afbeelding, maar u kunt ook vector gegevens weer geven als een tegel laag. Door vector gegevens als een tegel laag te renderen, hoeft het kaart besturings element alleen de tegels te laden die veel kleiner kunnen zijn dan de vector gegevens die ze vertegenwoordigen. Deze techniek wordt gebruikt door veel die miljoenen rijen met gegevens op de kaart moeten weer geven.
 
-De tegel-URL die in een tegellaag wordt doorgegeven, moet een http/https-URL zijn naar een TileJSON-bron of een URL-sjabloon voor tegels die de volgende parameters gebruikt: 
+De tegel-URL die wordt door gegeven aan een tegel laag moet een HTTP/HTTPS-URL zijn naar een TileJSON-resource of een tegel-URL-sjabloon die gebruikmaakt van de volgende para meters: 
 
-* `{x}`- X-positie van de tegel. Ook `{y}` behoeften `{z}`en .
-* `{y}`- Y positie van de tegel. Ook `{x}` behoeften `{z}`en .
-* `{z}`- Zoomniveau van de tegel. Ook `{x}` behoeften `{y}`en .
-* `{quadkey}`- Tile quadkey-id op basis van de naamconventie van het Bing Maps-tegelsysteem.
-* `{bbox-epsg-3857}`- Een selectielijst met `{west},{south},{east},{north}` het formaat in het EPSG 3857 Spatial Reference System.
-* `{subdomain}`- Een tijdelijke aanduiding voor de subdomeinwaarden, als de subdomeinwaarde is opgegeven.
+* `{x}`-X-positie van de tegel. Ook nodig `{y}` en `{z}`.
+* `{y}`-Y-positie van de tegel. Ook nodig `{x}` en `{z}`.
+* `{z}`-Zoom niveau van de tegel. Ook nodig `{x}` en `{y}`.
+* `{quadkey}`-Tegel quadkey-id gebaseerd op de naam Conventie voor Bing Maps-tegel systeem.
+* `{bbox-epsg-3857}`-Een teken reeks voor selectie kader met de `{west},{south},{east},{north}` indeling in het EPSG 3857 Spatial Reference System.
+* `{subdomain}`-Een tijdelijke aanduiding voor de waarden van het subdomein als de subdomeinwaarde is opgegeven.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u het proces in dit artikel wilt voltooien, moet u [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installeren om een kaart te laden.
+Om het proces in dit artikel te volt ooien, moet u [Azure Maps ANDROID SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installeren om een kaart te laden.
 
 
-## <a name="add-a-tile-layer-to-the-map"></a>Een tegellaag toevoegen aan de kaart
+## <a name="add-a-tile-layer-to-the-map"></a>Een tegel laag aan de kaart toevoegen
 
- In dit voorbeeld ziet u hoe u een tegellaag maakt die naar een set tegels verwijst. Deze tegels maken gebruik van het betegelsysteem "x, y, zoom". De bron van deze tegellaag is een weerradar overlay van de [Iowa Environmental Mesonet van Iowa State University](https://mesonet.agron.iastate.edu/ogc/). 
+ Dit voor beeld laat zien hoe u een tegel laag maakt die verwijst naar een set tegels. Deze tegels gebruiken het tegel systeem x, y, zoomen. De bron van deze tegel laag is een weers radar-overlay van de [Iowa Environment Mesonet van de Iowa State University](https://mesonet.agron.iastate.edu/ogc/). 
 
-U een tegellaag aan de kaart toevoegen door de onderstaande stappen te volgen.
+U kunt een tegel laag toevoegen aan de kaart door de volgende stappen uit te voeren.
 
-1. Bewerk **opnieuw > lay-out > activity_main.xml,** zodat het lijkt op de onderstaande:
+1. Bewerk de **indeling res > > activity_main. XML** , zodat deze er als volgt uitziet:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ U een tegellaag aan de kaart toevoegen door de onderstaande stappen te volgen.
     </FrameLayout>
     ```
 
-2. Kopieer het volgende codefragment hieronder naar de `MainActivity.java` methode **onCreate()** van uw klasse.
+2. Kopieer het volgende code fragment hieronder in de methode **onCreate ()** van uw `MainActivity.java` klasse.
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,9 +84,9 @@ U een tegellaag aan de kaart toevoegen door de onderstaande stappen te volgen.
     });
     ```
     
-    Het codefragment hierboven verkrijgt eerst een azure maps-kaartbeheerinstantie met behulp van de terugroepmethode **onReady().** Vervolgens wordt `TileLayer` een object gemaakt en wordt een opgemaakte **url van xyz-tegels** in de `tileUrl` optie doorgegeven. De dekking van de laag `0.8` is ingesteld op en aangezien de tegels van de tegelservice die `tileSize` worden gebruikt tegels van 256 pixels zijn, wordt deze informatie doorgegeven aan de optie. De tegellaag wordt vervolgens doorgegeven aan de maps layer manager.
+    In het bovenstaande code fragment wordt eerst een exemplaar van Azure Maps kaart besturings element opgehaald met de call back methode **onReady ()** . Vervolgens wordt een `TileLayer` -object gemaakt en wordt een geopmaakde **xyz** - `tileUrl` tegel-URL in de optie door gegeven. De dekking van de laag is ingesteld op `0.8` en sinds de tegels van de tegel service die wordt gebruikt, zijn 256 pixel tegels, wordt `tileSize` deze informatie door gegeven aan de optie. De laag van de tegel wordt vervolgens door gegeven aan de Maps Layer Manager.
 
-    Na het toevoegen van `MainActivity.java` de code fragment hierboven, moet je eruit zien als de onderstaande:
+    Nadat u het code fragment hierboven hebt toegevoegd `MainActivity.java` , ziet uw er als volgt uit:
     
     ```Java
     package com.example.myapplication;
@@ -168,15 +168,15 @@ U een tegellaag aan de kaart toevoegen door de onderstaande stappen te volgen.
     }
     ```
 
-Als u uw toepassing nu uitvoert, ziet u een regel op de kaart zoals hieronder te zien:
+Als u de toepassing nu uitvoert, ziet u een regel op de kaart zoals hieronder wordt weer gegeven:
 
 <center>
 
-![Android-kaartlijn](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
+![Android-kaart lijn](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het volgende artikel voor meer informatie over manieren om kaartstijlen in te stellen
+Raadpleeg het volgende artikel voor meer informatie over manieren om kaart stijlen in te stellen
 
 > [!div class="nextstepaction"]
-> [Kaartstijlen wijzigen in Android-kaarten](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Kaart stijlen wijzigen in Android-kaarten](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)

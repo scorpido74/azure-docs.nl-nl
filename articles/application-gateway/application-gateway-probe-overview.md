@@ -1,6 +1,6 @@
 ---
-title: Overzicht van statusbewaking voor Azure Application Gateway
-description: Azure Application Gateway bewaakt de status van alle resources in de back-endgroep en verwijdert automatisch alle resources die als ongezond worden beschouwd uit de groep.
+title: Overzicht van status controle voor de Azure-toepassing-gateway
+description: Azure-toepassing gateway controleert de status van alle resources in de back-end-pool en verwijdert automatisch alle bronnen die worden beschouwd als een slechte status van de groep.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,46 +8,46 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: victorh
 ms.openlocfilehash: c5a53167c6a4ca6c886b858a1608eaa173185bd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335847"
 ---
-# <a name="application-gateway-health-monitoring-overview"></a>Overzicht van statusbewaking van toepassingsgateway
+# <a name="application-gateway-health-monitoring-overview"></a>Overzicht van Application Gateway status controle
 
-Azure Application Gateway bewaakt standaard de status van alle resources in de back-endgroep en verwijdert automatisch alle resources die als ongezond worden beschouwd uit de groep. Application Gateway blijft de exemplaren met slechte status bewaken en voegt deze weer aan de goede back-end-adrespool toe zodra ze beschikbaar komen en beantwoorden aan de statuscontroles. Toepassingsgateway verzendt de statussondes met dezelfde poort die is gedefinieerd in de back-end HTTP-instellingen. Deze configuratie zorgt ervoor dat de sonde dezelfde poort test die klanten zouden gebruiken om verbinding te maken met de backend. 
+Azure-toepassing gateway controleert standaard de status van alle resources in de back-end-groep en verwijdert automatisch alle bronnen die worden beschouwd als een slechte status van de groep. Application Gateway blijft de exemplaren met slechte status bewaken en voegt deze weer aan de goede back-end-adrespool toe zodra ze beschikbaar komen en beantwoorden aan de statuscontroles. Application Gateway verzendt de status tests met dezelfde poort die is gedefinieerd in de back-end-HTTP-instellingen. Deze configuratie zorgt ervoor dat de test wordt uitgevoerd op dezelfde poort die door klanten zou worden gebruikt om verbinding te maken met de back-end. 
 
-Het gebruik van het bron-IP-adres Application Gateway voor statussondes is afhankelijk van de backendpool:
+Het bron-IP-adres Application Gateway gebruikt voor status tests is afhankelijk van de back-end-groep:
  
-- Als de backendpool een openbaar eindpunt is, is het bronadres het openbare IP-adres van de toepassingsgateway.
-- Als de backendpool een privéeindpunt is, is het ip-adres van de bron afkomstig van de subnet-privé-IP-adresruimte van de toepassingsgateway.
+- Als de back-end-pool een openbaar eind punt is, is het bron adres het open bare IP-adres van de Application Gateway-frontend.
+- Als de back-end-pool een persoonlijk eind punt is, is het IP-bron adres van de toepassings gateway van het subnet persoonlijke IP-adres ruimte.
 
 
-![voorbeeld van toepassingsgateways][1]
+![test voorbeeld van Application Gateway][1]
 
-Naast het gebruik van standaard statussondebewaking, u de statussonde ook aanpassen aan de vereisten van uw toepassing. In dit artikel worden zowel standaard- als aangepaste statussondes behandeld.
+Naast het gebruik van de standaard controle van de status test, kunt u ook de status test aanpassen aan de vereisten van uw toepassing. In dit artikel worden zowel standaard als aangepaste status controles behandeld.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="default-health-probe"></a>Standaardstatussonde
+## <a name="default-health-probe"></a>Standaard status test
 
-Een toepassingsgateway configureert automatisch een standaardstatussonde wanneer u geen aangepaste sondeconfiguratie instelt. Het controlegedrag werkt door een HTTP-aanvraag in te dienen bij de IP-adressen die zijn geconfigureerd voor de back-endpool. Voor standaardsondes als de backend http-instellingen zijn geconfigureerd voor HTTPS, gebruikt de sonde ook HTTPS om de status van de backends te testen.
+Een toepassings gateway configureert automatisch een standaard status test wanneer u geen aangepaste test configuratie instelt. Het bewakings gedrag werkt door een HTTP-aanvraag in te stellen voor de IP-adressen die zijn geconfigureerd voor de back-end-pool. Voor standaard tests als de back-end-http-instellingen voor HTTPS zijn geconfigureerd, gebruikt de test HTTPS en de test status van de back-ends.
 
-Bijvoorbeeld: u configureert de toepassingsgateway om back-endservers A, B en C te gebruiken om HTTP-netwerkverkeer op poort 80 te ontvangen. De standaardstatusbewaking test de drie servers elke 30 seconden op een gezonde HTTP-respons. Een gezonde HTTP-reactie heeft een [statuscode](https://msdn.microsoft.com/library/aa287675.aspx) tussen 200 en 399.
+Bijvoorbeeld: u configureert uw toepassings gateway voor het gebruik van back-endservers A, B en C om HTTP-netwerk verkeer te ontvangen op poort 80. De standaard status bewaking test de drie servers om de 30 seconden voor een gezonde HTTP-reactie. Een gezond HTTP-antwoord heeft een [status code](https://msdn.microsoft.com/library/aa287675.aspx) tussen 200 en 399.
 
-Als de standaardsondecontrole mislukt voor server A, wordt deze door de toepassingsgateway uit de back-endpool verwijderd en wordt het netwerkverkeer niet meer naar deze server geleid. De standaardsonde blijft nog steeds controleren op server A om de 30 seconden. Wanneer server A reageert op één verzoek van een standaardstatussonde, wordt deze weer als gezond toegevoegd aan de back-endpool en begint het verkeer weer naar de server te stromen.
+Als de standaard controle van de test voor Server A mislukt, wordt deze door de toepassings gateway verwijderd uit de back-end-pool en wordt het netwerk verkeer niet meer naar deze server gestroomt. De standaard test blijft altijd elke 30 seconden controleren op server. Als server A reageert op een aanvraag van een standaard status test, wordt deze als gezond toegevoegd aan de back-end-pool en wordt het verkeer opnieuw naar de server verzonden.
 
-### <a name="probe-matching"></a>Sondematching
+### <a name="probe-matching"></a>Testen vergelijken
 
-Standaard wordt een HTTP(S)-antwoord met statuscode tussen 200 en 399 als gezond beschouwd. Aangepaste statussondes ondersteunen bovendien twee overeenkomende criteria. Matchingcriteria kunnen worden gebruikt om optioneel de standaardinterpretatie van wat een gezonde respons maakt, te wijzigen.
+Standaard wordt een HTTP (S)-antwoord met de status code tussen 200 en 399 als gezond beschouwd. Aangepaste Health-tests ondersteunen daarnaast twee overeenkomende criteria. Overeenkomende criteria kunnen worden gebruikt voor het aanpassen van de standaard interpretatie van wat een gezonde reactie doet.
 
-Hieronder volgen de volgende criteria: 
+Hier volgen de overeenkomende criteria: 
 
-- **HTTP-antwoordstatuscode match** - Probe matching criterium voor het accepteren van door de gebruiker opgegeven http-antwoordcode of antwoordcode bereiken. Individuele door komma's gescheiden antwoordstatuscodes of een reeks statuscode worden ondersteund.
-- **HTTP response body match** - Probe matching criterium dat kijkt naar HTTP response body en overeenkomt met een door de gebruiker opgegeven tekenreeks. De overeenkomst zoekt alleen naar de aanwezigheid van door de gebruiker opgegeven tekenreeks in de reactietekst en is geen volledige reguliere expressieovereenkomst.
+- **Status code overeenkomst van http-antwoord** : test matching criterium voor het accepteren van door de gebruiker opgegeven HTTP-antwoord code of het bereik van antwoord codes. Afzonderlijke door komma's gescheiden antwoord status codes of een bereik met status code wordt ondersteund.
+- **Overeenkomst voor de hoofd tekst van het HTTP-antwoord die overeenkomt** met het criterium van de HTTP-reactie en overeenkomt met een door de gebruiker opgegeven teken reeks. De overeenkomst zoekt alleen naar de aanwezigheid van de door de gebruiker opgegeven teken reeks in de tekst van het antwoord en is geen volledige reguliere expressie.
 
-Wedstrijdcriteria kunnen worden `New-AzApplicationGatewayProbeHealthResponseMatch` opgegeven met behulp van de cmdlet.
+Er kunnen match criteria worden opgegeven met `New-AzApplicationGatewayProbeHealthResponseMatch` behulp van de cmdlet.
 
 Bijvoorbeeld:
 
@@ -55,59 +55,59 @@ Bijvoorbeeld:
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 ```
-Zodra de wedstrijdcriteria zijn opgegeven, kan deze worden `-Match` gekoppeld aan de configuratie van de sonde met behulp van een parameter in PowerShell.
+Zodra de match criteria zijn opgegeven, kan deze worden gekoppeld aan de test configuratie met `-Match` behulp van een para meter in Power shell.
 
-### <a name="default-health-probe-settings"></a>Instellingen voor standaardstatussonde
+### <a name="default-health-probe-settings"></a>Standaard instellingen voor status controle
 
-| Sonde, eigenschap | Waarde | Beschrijving |
+| Probe-eigenschap | Waarde | Beschrijving |
 | --- | --- | --- |
-| Probe URL |http://127.0.0.1:\<port\>/ |URL-pad |
-| Interval |30 |De hoeveelheid tijd in seconden om te wachten voordat de volgende statussonde wordt verzonden.|
-| Time-out |30 |De hoeveelheid tijd in seconden dat de toepassingsgateway wacht op een sonderespons voordat de sonde als ongezond wordt gemarkeerd. Als een sonde als gezond terugkeert, wordt de bijbehorende backend onmiddellijk gemarkeerd als gezond.|
-| Ongezonde drempelwaarde |3 |Bepaalt hoeveel sondes te sturen in het geval er een storing van de reguliere gezondheid sonde. Deze extra statussen worden snel achter elkaar verzonden om de status van de backend snel te bepalen en wachten niet op het sondeinterval. Deze behaivor is slechts v1 SKU. In het geval van v2 SKU wachten de statussondes op het interval. De back-endserver wordt gemarkeerd nadat het aantal opeenvolgende sondefouten de ongezonde drempelwaarde heeft bereikt. |
+| Test-URL |http://127.0.0.1:\<port\>/ |URL-pad |
+| Interval |30 |De hoeveelheid tijd in seconden die moet worden gewacht voordat de volgende status test wordt verzonden.|
+| Time-out |30 |De hoeveelheid tijd in seconden die de toepassings gateway wacht op een test reactie voordat de test wordt gemarkeerd als beschadigd. Als een test wordt geretourneerd als in orde, wordt de bijbehorende back-end direct gemarkeerd als in orde.|
+| Drempel waarde voor onjuiste status |3 |Bepaalt hoeveel tests er moeten worden verzonden als er een fout is opgetreden van de normale status test. Deze aanvullende Health-tests worden snel achter elkaar verzonden om de status van de back-end snel te bepalen en niet te wachten op het test interval. Deze behaivor is alleen v1-SKU. In het geval van v2 SKU wordt het interval gewacht op de status. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
 
 > [!NOTE]
-> De poort is dezelfde poort als de back-end HTTP-instellingen.
+> De poort is dezelfde poort als de back-end-HTTP-instellingen.
 
-De standaardsonde kijkt\/alleen naar http: /127.0.0.1:\<poort\> om de status van de status te bepalen. Als u de statussonde moet configureren om naar een aangepaste URL te gaan of andere instellingen te wijzigen, moet u aangepaste sondes gebruiken.
+De standaard test zoekt alleen op http:\//127.0.0.1:\<poort\> om de status te bepalen. Als u de status test moet configureren om naar een aangepaste URL te gaan of andere instellingen te wijzigen, moet u aangepaste tests gebruiken.
 
-### <a name="probe-intervals"></a>Sondeintervallen
+### <a name="probe-intervals"></a>Sonde-intervallen
 
-Alle exemplaren van Application Gateway sonde de backend onafhankelijk van elkaar. Dezelfde sondeconfiguratie is van toepassing op elke instantie van Application Gateway. Als de sondeconfiguratie bijvoorbeeld is om statussondes elke 30 seconden te verzenden en de toepassingsgateway twee instanties heeft, verzenden beide instanties de statussonde elke 30 seconden.
+Alle exemplaren van Application Gateway testen de back-end onafhankelijk van elkaar. Dezelfde test configuratie is van toepassing op elk Application Gateway-exemplaar. Als de test configuratie bijvoorbeeld elke 30 seconden status controles verzendt en de toepassings gateway twee exemplaren heeft, worden beide instanties elke 30 seconden de status test verzonden.
 
-Ook als er meerdere luisteraars zijn, dan sondes elke luisteraar de backend onafhankelijk van elkaar. Als er bijvoorbeeld twee listeners naar dezelfde backendpool wijzen op twee verschillende poorten (geconfigureerd door twee backend http-instellingen), sonde elke listener onafhankelijk van elkaar dezelfde backend. In dit geval zijn er twee sondes van elke toepassingsgatewayinstantie voor de twee listeners. Als er in dit scenario twee exemplaren van de toepassingsgateway zijn, ziet de backend virtuele machine vier sondes per het geconfigureerde sondeinterval.
+Als er meerdere listeners zijn, controleert elke listener de back-end onafhankelijk van elkaar. Als er bijvoorbeeld twee listeners zijn die verwijzen naar dezelfde back-end-groep op twee verschillende poorten (geconfigureerd met twee back-end-http-instellingen), wordt de dezelfde back-end onafhankelijk door elke listener gecontroleerd. In dit geval zijn er twee tests van elk toepassings gateway-exemplaar voor de twee listeners. Als er in dit scenario twee exemplaren van de toepassings gateway zijn, ziet u op de virtuele machine van de back-end vier tests volgens het geconfigureerde test interval.
 
-## <a name="custom-health-probe"></a>Aangepaste statussonde
+## <a name="custom-health-probe"></a>Aangepaste status test
 
-Met aangepaste sondes u een meer gedetailleerde controle hebben over de statusbewaking. Wanneer u aangepaste sondes gebruikt, u het sondeinterval, de URL en het te testen pad configureren en hoeveel mislukte antwoorden moeten worden geaccepteerd voordat u de instantie back-endpool als ongezond markeert.
+Met aangepaste tests kunt u de controle over de status controle nauw keuriger maken. Wanneer u aangepaste tests gebruikt, kunt u het test interval, de URL en het pad dat moet worden getest en het aantal mislukte antwoorden dat moet worden geaccepteerd, configureren voordat de back-end-pool instantie als beschadigd wordt gemarkeerd.
 
-### <a name="custom-health-probe-settings"></a>Aangepaste statussondeinstellingen
+### <a name="custom-health-probe-settings"></a>Instellingen voor aangepaste Health probe
 
-In de volgende tabel vindt u definities voor de eigenschappen van een aangepaste statussonde.
+De volgende tabel bevat definities voor de eigenschappen van een aangepaste status test.
 
-| Sonde, eigenschap | Beschrijving |
+| Probe-eigenschap | Beschrijving |
 | --- | --- |
-| Name |Naam van de sonde. Deze naam wordt gebruikt om te verwijzen naar de sonde in back-end HTTP-instellingen. |
-| Protocol |Protocol gebruikt om de sonde te sturen. De sonde gebruikt het protocol dat is gedefinieerd in de back-end HTTP-instellingen |
-| Host |Host naam om de sonde te sturen. Alleen van toepassing wanneer multi-site is geconfigureerd op Application Gateway, gebruik anders '127.0.0.1'. Deze waarde verschilt van de naam VM-host. |
-| Pad |Relatief pad van de sonde. Het geldige pad begint met '/'. |
-| Interval |Sonde interval in seconden. Deze waarde is het tijdsinterval tussen twee opeenvolgende sondes. |
-| Time-out |Sonde time-out in seconden. Als een geldig antwoord niet binnen deze time-outperiode wordt ontvangen, wordt de sonde gemarkeerd als mislukt.  |
-| Ongezonde drempelwaarde |Sonde opnieuw proberen tellen. De back-endserver wordt gemarkeerd nadat het aantal opeenvolgende sondefouten de ongezonde drempelwaarde heeft bereikt. |
+| Naam |De naam van de test. Deze naam wordt gebruikt om te verwijzen naar de test in back-end-HTTP-instellingen. |
+| Protocol |Het protocol dat wordt gebruikt om de test te verzenden. De test gebruikt het protocol dat is gedefinieerd in de back-end-HTTP-instellingen |
+| Host |De hostnaam voor het verzenden van de test. Alleen van toepassing als multi-site is geconfigureerd op Application Gateway, anders ' 127.0.0.1 ' gebruiken. Deze waarde wijkt af van de naam van de VM-host. |
+| Pad |Het relatieve pad van de test. Het geldige pad wordt gestart vanaf/. |
+| Interval |Test interval in seconden. Deze waarde is het tijds interval tussen twee opeenvolgende tests. |
+| Time-out |Time-out van de test (in seconden). Als er binnen deze time-outperiode geen geldig antwoord wordt ontvangen, wordt de test als mislukt gemarkeerd.  |
+| Drempel waarde voor onjuiste status |Aantal nieuwe pogingen testen. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
 
 > [!IMPORTANT]
-> Als Application Gateway is geconfigureerd voor één site, moet standaard de hostnaam worden opgegeven als '127.0.0.1', tenzij anders geconfigureerd in aangepaste sonde.
-> Voor referentie wordt een \<aangepaste\>\<sonde verzonden naar protocol ://\>host :\<poortpad\>\<\>. De gebruikte poort is dezelfde poort als gedefinieerd in de back-end HTTP-instellingen.
+> Als Application Gateway voor één site is geconfigureerd, moet de hostnaam standaard worden opgegeven als 127.0.0.1, tenzij anders geconfigureerd in de aangepaste test.
+> Voor een verwijzing naar een aangepaste test wordt \<verzonden\>naar protocol\<:/\>/\<host\>\<:\>poort pad. De poort die wordt gebruikt, is de poort die is gedefinieerd in de back-end-HTTP-instellingen.
 
-## <a name="nsg-considerations"></a>NSG-overwegingen
+## <a name="nsg-considerations"></a>NSG overwegingen
 
-U moet binnenkomend internetverkeer toestaan op TCP-poorten 65503-65534 voor de Application Gateway v1 SKU en TCP-poorten 65200-65535 voor de v2 SKU met het doelsubnet als **GatewayManager-servicetag.** **Any** Dit poortbereik is vereist voor azure-infrastructuurcommunicatie.
+U moet binnenkomend Internet verkeer toestaan op TCP-poorten 65503-65534 voor de Application Gateway v1-SKU en TCP-poorten 65200-65535 voor de v2-SKU met het doel-subnet als **enige** en bron als **GatewayManager** -service label. Dit poort bereik is vereist voor de communicatie van Azure-infra structuur.
 
-Bovendien kan uitgaande internetverbinding niet worden geblokkeerd en moet binnenkomend verkeer afkomstig van de **AzureLoadBalancer-tag** worden toegestaan.
+Daarnaast kan uitgaande internet connectiviteit niet worden geblokkeerd en moet binnenkomend verkeer dat afkomstig is van het label **AzureLoadBalancer** , worden toegestaan.
 
-Zie [Configuratieoverzicht Application Gateway](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet)voor meer informatie.
+Zie [Application Gateway configuratie-overzicht](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-Nadat u meer te weten bent gekomen over de statusbewaking van de toepassingsgateway, u een [aangepaste statussonde](application-gateway-create-probe-portal.md) configureren in de Azure-portal of een [aangepaste statussonde](application-gateway-create-probe-ps.md) met PowerShell en het implementatiemodel azure resource manager.
+Nadat u hebt gebruikgemaakt van Application Gateway status controle, kunt u een [aangepaste Health probe](application-gateway-create-probe-portal.md) in de Azure portal of een [aangepaste status test](application-gateway-create-probe-ps.md) configureren met behulp van power shell en het Azure Resource Manager-implementatie model.
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png

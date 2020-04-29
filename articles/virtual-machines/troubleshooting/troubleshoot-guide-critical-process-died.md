@@ -1,5 +1,5 @@
 ---
-title: Windows-stopfout -
+title: Windows-Stop fout-
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,77 +15,77 @@ ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 9e4c4b9c809a626c71b4a7e9235d917b442be160
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80373360"
 ---
-# <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Windows Stop Error - #0x000000EF 'Kritieke proces overleden'
+# <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Windows-Stop fout-#0x000000EF kritiek proces is gestorven
 
-In dit artikel worden stappen gezet om problemen op te lossen waarbij een kritiek proces overlijdt tijdens het opstarten in een Azure VM.
+Dit artikel bevat stappen voor het oplossen van problemen waarbij een kritiek proces sterft tijdens het opstarten van een Azure-VM.
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u [Opstartdiagnose](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de schermafbeelding van de vm weer te geven, ziet u dat de schermafbeelding de fout *weergeeft #0x000000EF* met het bericht *Kritieke proces is overleden.*
+Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat in de scherm opname de fout *#0x000000EF* wordt weer gegeven met het *kritieke proces*van het bericht.
 
-!["Uw pc liep in een probleem en moet opnieuw opstarten. We verzamelen alleen wat foutinfo en dan kun je opnieuw starten. (##% compleet) Als u meer wilt weten, u later online zoeken naar deze fout: 0x00000EF](media/troubleshoot-guide-critical-process-died/1.jpg)
+![' Er is een probleem opgetreden in de PC en opnieuw moet worden opgestart. Er worden alleen fout gegevens verzameld en vervolgens kunt u de computer opnieuw opstarten. (# #% voltooid) Als u meer wilt weten, kunt u later online zoeken naar deze fout: 0x000000EF "](media/troubleshoot-guide-critical-process-died/1.jpg)
 
 ## <a name="cause"></a>Oorzaak
 
-Meestal is dit te wijten aan een kritisch systeemproces niet tijdens het opstarten. U meer lezen over kritieke procesproblemen bij[Bug Check 0xEF: CRITICAL_PROCESS_DIED](https://docs.microsoft.com/windows-hardware/drivers/debugger/bug-check-0xef--critical-process-died).
+Dit wordt meestal veroorzaakt door een essentieel systeem proces dat niet kan worden opgestart. Meer informatie over kritieke proces problemen vindt u op "[bug check 0xEF: CRITICAL_PROCESS_DIED](https://docs.microsoft.com/windows-hardware/drivers/debugger/bug-check-0xef--critical-process-died)".
 
 ## <a name="solution"></a>Oplossing
 
-### <a name="process-overview"></a>Procesoverzicht:
+### <a name="process-overview"></a>Overzicht van het proces:
 
-1. Een reparatievm maken en openen.
-2. Los elke OS-corruptie op.
-3. **Aanbevolen:** Voordat u de VM opnieuw opbouwt, schakelt u de verzameling seriële console en geheugendump in.
-4. Herbouw de VM.
+1. Een herstel-VM maken en openen.
+2. Herstel eventuele beschadiging van het besturings systeem.
+3. **Aanbevolen**: voordat u de virtuele machine opnieuw bouwt, schakelt u seriële console-en geheugen dump verzameling in.
+4. Bouw de virtuele machine opnieuw op.
 
 > [!NOTE]
-> Bij het tegenkomen van deze opstartfout is het besturingssysteem van de gast niet operationeel. U lost problemen op in de offlinemodus om dit probleem op te lossen.
+> Wanneer deze opstart fout optreedt, is het gast besturingssysteem niet operationeel. U gaat problemen oplossen in de offline modus om dit probleem op te lossen.
 
-### <a name="create-and-access-a-repair-vm"></a>Een reparatievm maken en openen
+### <a name="create-and-access-a-repair-vm"></a>Een herstel-VM maken en openen
 
-1. Gebruik [stap 1-3 van de VM-reparatieopdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een reparatie-vm voor te bereiden.
-2. Verbinding met extern bureaublad gebruiken verbinding maken met de VM Repareren.
+1. Gebruik [stap 1-3 van de VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een herstel-VM voor te bereiden.
+2. Gebruik Verbinding met extern bureaublad verbinding maken met de herstel-VM.
 
-### <a name="fix-any-os-corruption"></a>Los elke beschadiging van het besturingssysteem op
+### <a name="fix-any-os-corruption"></a>Eventuele beschadiging van het besturings systeem herstellen
 
-1. Open een opdrachtprompt met verhoogde bevoegdheid.
-2. Voer de volgende opdracht System File Checker (SFC) uit:
+1. Open een opdracht prompt met verhoogde bevoegdheden.
+2. Voer de volgende System File Checker (SFC) opdracht uit:
 
    `sfc /scannow /offbootdir=<BOOT DISK DRIVE>:\ /offwindir=<BROKEN DISK DRIVE>:\windows`
 
-   * Waar < OPSTARTSCHIJF > is, is het opstartvolume van de Reparatie-VM (meestal "C:") en < BROKEN DISK DRIVE > de schijfletter voor de aangesloten schijf van de kapotte VM. Vervang de meer dan / minder dan symbolen, evenals de tekst daarin, bijvoorbeeld "< tekst hier >", door de juiste letter.
+   * Waarbij < opstart schijf station > het opstart volume van de herstel-VM is (meestal C:) en < gebroken schijf station > de stationsletter is voor de gekoppelde schijf van de verbroken virtuele machine. Vervang de symbolen groter dan/kleiner dan en de tekst erin, bijvoorbeeld ' < tekst hier > ', met de juiste letter.
 
-3. Gebruik vervolgens [stap 5 van de VM-reparatieopdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de VM opnieuw in elkaar te zetten en te zien of deze wordt opgestart.
-4. Als de VM nog steeds niet wordt opgestart, gaat u verder met het verzamelen van het geheugendumpbestand.
+3. Gebruik vervolgens [stap 5 van de VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de virtuele machine opnieuw samen te stellen en te zien of deze wordt opgestart.
+4. Als de virtuele machine nog steeds niet wordt opgestart, gaat u verder met het verzamelen van het geheugen dump bestand.
 
-### <a name="collect-the-memory-dump-file"></a>Het geheugendumpbestand verzamelen
+### <a name="collect-the-memory-dump-file"></a>Het geheugen dump bestand verzamelen
 
-Als het probleem blijft bestaan na het uitvoeren van SFC, is analyse van een geheugendumpbestand vereist om de oorzaak van het probleem te bepalen. Voer de volgende stappen uit om het geheugendumpbestand te verzamelen:
+Als het probleem zich blijft voordoen nadat u SFC hebt uitgevoerd, is analyse van een geheugen dump bestand vereist om de oorzaak van het probleem te bepalen. Voer de volgende stappen uit om het geheugen dump bestand te verzamelen:
 
-### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>De OS-schijf koppelen aan een nieuwe reparatie-vm
+### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>De besturingssysteem schijf koppelen aan een nieuwe herstel-VM
 
-1. Gebruik [stap 1-3 van de VM-reparatieopdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een nieuwe reparatie-vm voor te bereiden.
-2. Verbinding met extern bureaublad gebruiken verbinding maken met de VM Repareren.
+1. Gebruik [stap 1-3 van de VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een nieuwe herstel-VM voor te bereiden.
+2. Gebruik Verbinding met extern bureaublad verbinding maken met de herstel-VM.
 
-### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Zoek het dumpbestand en stuur een ondersteuningsticket in
+### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Het dump bestand zoeken en een ondersteunings ticket verzenden
 
-3. Ga op de reparatie-vm naar de Windows-map in de bijgevoegde OS-schijf. Als de stuurprogrammaletter die is toegewezen aan de gekoppelde osschijf *F*is, moet u naar *F:\Windows gaan.*
-4. Zoek het *memory.dmp-bestand* en [dien vervolgens een ondersteuningsticket in](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) bij het geheugendumpbestand.
+3. Ga op de virtuele machine herstellen naar de map Windows in de gekoppelde besturingssysteem schijf. Als de stuur programma-letter die is toegewezen aan de gekoppelde besturingssysteem schijf *F*, gaat u naar *F:\Windows*.
+4. Zoek het bestand *Memory. dmp* en [Verzend een ondersteunings ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) met het geheugen dump bestand.
 
    > [!NOTE]
-   > Als u het dumpbestand niet vinden, voert u de onderstaande stappen uit om geheugendumpverzameling en seriële console in te schakelen, gaat u terug naar deze sectie en herhaalt u de stappen in de bovenstaande taak om het geheugendumpbestand te verzamelen.
+   > Als u het dump bestand niet kunt vinden, voert u de onderstaande stappen uit om geheugen dump verzameling en seriële console in te scha kelen, gaat u terug naar deze sectie en herhaalt u de stappen in de bovenstaande taak om het geheugen dump bestand te verzamelen.
 
-### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Aanbevolen: Voordat u de VM opnieuw opbouwt, schakelt u de verzameling seriële console en geheugendump in
+### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Aanbevolen: voordat u de virtuele machine opnieuw bouwt, schakelt u seriële console-en geheugen dump verzameling in
 
-Voer het volgende script uit om geheugendumpverzameling en seriële console in te schakelen:
+Voer het volgende script uit om geheugen dump verzameling en seriële console in te scha kelen:
 
-1. Open een opdrachtpromptsessie met verhoogde bevoegdheid (Uitvoeren als beheerder).
+1. Open een opdracht prompt sessie met verhoogde bevoegdheden (als administrator uitvoeren).
 2. Voer de volgende opdrachten uit:
 
    Seriële console inschakelen
@@ -94,15 +94,15 @@ Voer het volgende script uit om geheugendumpverzameling en seriële console in t
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-   Vervang groter dan of minder dan symbolen, evenals de tekst erin, bijvoorbeeld "< tekst hier >".
+   Vervang de symbolen groter dan of kleiner dan en de tekst hierin, bijvoorbeeld ' < tekst hier > '.
 
-3. Controleer of de vrije ruimte op de OS-schijf evenveel is als de geheugengrootte (RAM) op de VM.
+3. Controleer of de beschik bare ruimte op de besturingssysteem schijf net zo groot is als de geheugen grootte (RAM) op de virtuele machine.
 
-Als er niet genoeg ruimte op de OS-schijf is, moet u de locatie wijzigen waar het geheugendumpbestand wordt gemaakt en verwijzen naar een gegevensschijf die is gekoppeld aan de VM die voldoende vrije ruimte heeft. Als u de locatie wilt wijzigen, vervangt u "%SystemRoot%" door de stationsletter (bijvoorbeeld 'F:') van de gegevensschijf in de onderstaande opdrachten.
+Als er onvoldoende ruimte beschikbaar is op de besturingssysteem schijf, wijzigt u de locatie waar het geheugen dump bestand wordt gemaakt en verwijst naar alle gegevens schijven die zijn gekoppeld aan de VM met voldoende vrije ruimte. Als u de locatie wilt wijzigen, vervangt u '% System root% ' door de stationsletter (bijvoorbeeld ' F: ') van de gegevens schijf in de onderstaande opdrachten.
 
-#### <a name="suggested-configuration-to-enable-os-dump"></a>Voorgestelde configuratie om OS Dump in te schakelen
+#### <a name="suggested-configuration-to-enable-os-dump"></a>Voorgestelde configuratie voor het inschakelen van de dump van het besturings systeem
 
-**Kapotte OS-schijf laden:**
+**Beschadigde besturingssysteem schijf laden**:
 
 `REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM`
 
@@ -122,10 +122,10 @@ Als er niet genoeg ruimte op de OS-schijf is, moet u de locatie wijzigen waar he
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**Kapotte OS-schijf uitladen:**
+**Beschadigde besturingssysteem schijf verwijderen:**
 
 `REG UNLOAD HKLM\BROKENSYSTEM`
 
-### <a name="rebuild-the-original-vm"></a>De oorspronkelijke vm opnieuw opbouwen
+### <a name="rebuild-the-original-vm"></a>De oorspronkelijke VM opnieuw samen stellen
 
-Gebruik [stap 5 van de VM-reparatieopdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de VM opnieuw in elkaar te zetten.
+Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de virtuele machine opnieuw samen te stellen.

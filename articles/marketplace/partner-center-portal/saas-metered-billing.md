@@ -1,6 +1,6 @@
 ---
-title: Facturering met gemeten facturering met behulp van de marktplaatsmeetservice | Azure Marketplace
-description: Deze documentatie is een handleiding voor ISV's die SaaS-aanbiedingen publiceren met flexibele factureringsmodellen.
+title: Facturering met data limieten met Marketplace meter service | Azure Marketplace
+description: Deze documentatie is een hand leiding voor Isv's die SaaS-aanbiedingen publiceren met flexibele facturerings modellen.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,133 +8,133 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 8e5a4813301cbab16d1cffabaaa60688f6e826ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80281320"
 ---
-# <a name="metered-billing-using-the-marketplace-metering-service"></a>Facturering met gemeten gemeten met behulp van de marktplaatsmetingservice
+# <a name="metered-billing-using-the-marketplace-metering-service"></a>Facturering met data limieten met behulp van Marketplace-meet service
 
-Met de Marketplace-meetservice u software-as-a-service -aanbiedingen (SaaS) maken in het commerciële marktplaatsprogramma die in rekening worden gebracht volgens niet-standaardeenheden.  Voordat u deze aanbieding publiceert, definieert u de factureringsdimensies, zoals bandbreedte, tickets of e-mails die zijn verwerkt.  Klanten betalen vervolgens op basis van hun verbruik van deze dimensies, waarbij uw systeem Microsoft informeert via de Marketplace-meetservice-API van factureerbare gebeurtenissen wanneer deze zich voordoen.  
+Met de Marketplace-meet service kunt u SaaS-aanbiedingen (Software-as-a-Service) maken in het commerciële Marketplace-programma dat wordt gefactureerd op basis van niet-standaard eenheden.  Voordat u deze aanbieding publiceert, definieert u de facturerings dimensies, zoals band breedte, tickets of e-mail berichten die zijn verwerkt.  Klanten betalen vervolgens op basis van het verbruik van deze dimensies, waarbij uw systeem micro soft informeert via de Marketplace meter Service API van factureer bare gebeurtenissen wanneer deze zich voordoen.  
 
-## <a name="prerequisites-for-metered-billing"></a>Voorwaarden voor facturering met datameter
+## <a name="prerequisites-for-metered-billing"></a>Vereisten voor facturering met data limiet
 
-Om een SaaS-aanbieding te laten gebruiken voor facturering met datameter, moet het:
+Om een SaaS-aanbieding te kunnen gebruiken, moet deze:
 
-* Voldoe aan alle aanbiedingsvereisten voor een [verkoop via Microsoft-aanbieding](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft) zoals beschreven in [Een SaaS-aanbieding maken.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer)
-* Integreer met de [SaaS Fulfillment API's](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) voor klanten om uw aanbod in te richten en aan te sluiten.  
-* Wees geconfigureerd voor het **forfaitaire** prijsmodel voor het opladen van klanten voor uw service.  Afmetingen zijn een optionele uitbreiding van het forfaitaire prijsmodel. 
-* Integreer met de [API's van de Marketplace-meetservice](./marketplace-metering-service-apis.md) om Microsoft op de hoogte te stellen van factureerbare gebeurtenissen.
+* Voldoen aan de vereisten van de aanbieding voor een [verkoop via micro soft-aanbieding](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft) , zoals beschreven in [een SaaS-aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer).
+* Integreer met de [SaaS-fulfillment-api's](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) voor klanten om uw aanbieding in te richten en er verbinding mee te maken.  
+* Worden geconfigureerd voor het prijs model voor **vaste kosten** voor het opladen van klanten voor uw service.  Dimensies zijn een optionele uitbrei ding voor het prijs model voor vaste tarieven. 
+* Integreer met de [api's van de Marketplace-meet service](./marketplace-metering-service-apis.md) om micro soft te informeren over factureer bare gebeurtenissen.
 
 >[!Note]
->De Marketplace-meetservice is alleen beschikbaar voor het factureringsmodel met vaste tariefen en is niet van toepassing op het factureringsmodel per gebruiker.
+>Marketplace-meet service is alleen beschikbaar voor het facturerings model vast tarief en is niet van toepassing op het facturerings model per gebruiker.
 
-## <a name="how-metered-billing-fits-in-with-pricing"></a>Hoe facturering met datameter past bij de prijsstelling
+## <a name="how-metered-billing-fits-in-with-pricing"></a>Hoe gefactureerde facturering past bij de prijzen
 
-Als het gaat om het definiëren van het aanbod samen met de prijsmodellen, is het belangrijk om de aanbiedingshiërarchie te begrijpen.
+Wanneer het gaat om het definiëren van de aanbieding samen met de prijs modellen, is het belang rijk om inzicht te krijgen in de aanbiedings hiërarchie.
 
-* Elke SaaS-aanbieding is geconfigureerd om via Microsoft te verkopen of niet.  Deze instelling kan niet worden gewijzigd nadat een aanbieding is gepubliceerd.
-* Elke SaaS-aanbieding, geconfigureerd om te verkopen via Microsoft, kan een of meer abonnementen hebben. Een gebruiker abonneert zich op de SaaS-aanbieding, maar wordt gekocht via Microsoft in het kader van een abonnement.
-* Aan elk plan is een prijsmodel gekoppeld: **vast tarief** of **per gebruiker.** Alle abonnementen in een aanbieding moeten aan hetzelfde prijsmodel worden gekoppeld. Er kan bijvoorbeeld geen aanbieding zijn waarbij een van de plannen een vast prijsmodel is en een ander is per prijsmodel per gebruiker.
-* Binnen elk abonnement dat is geconfigureerd voor een factureringsmodel met een vast tarief, zijn ten minste één terugkerende vergoeding (die $ 0 kan zijn) inbegrepen:
-    * Terugkerende **maandelijkse** kosten: vaste maandelijkse kosten die vooraf worden betaald bij een maandelijkse herhaling wanneer de gebruiker het abonnement koopt.
-    * Terugkerende **jaarlijkse** kosten: vaste jaarlijkse vergoeding die vooraf wordt betaald bij een jaarlijkse herhaling wanneer de gebruiker het plan koopt.
-* Naast de terugkerende kosten kan het plan ook optionele afmetingen bevatten die worden gebruikt om klanten in rekening te brengen voor gebruik dat niet in het vaste tarief is inbegrepen.   Elke dimensie vertegenwoordigt een factureerbare eenheid die uw service met Microsoft communiceert via de [API voor marketplace-meetservice.](./marketplace-metering-service-apis.md)
+* Elke SaaS-aanbieding is zo geconfigureerd dat deze wordt verkocht via micro soft of niet.  Deze instelling kan niet worden gewijzigd nadat een aanbieding is gepubliceerd.
+* Elk SaaS-aanbod dat is geconfigureerd om te worden verkocht via micro soft, kan een of meer abonnementen hebben. Een gebruiker meldt zich aan bij de SaaS-aanbieding, maar wordt aangeschaft via micro soft binnen de context van een abonnement.
+* Aan elk abonnement is een prijs model gekoppeld: **vast tarief** of **per gebruiker**. Alle abonnementen in een aanbieding moeten aan hetzelfde prijs model zijn gekoppeld. Een voor beeld: er kan geen aanbieding zijn waarin een van de abonnementen een prijs model voor vaste tarieven is en een andere prijs model per gebruiker.
+* Binnen elk schema dat is geconfigureerd voor een facturerings model met een vast tarief, is ten minste één terugkerend tarief (dat kan $0), opgenomen:
+    * Terugkerende **maandelijkse** kosten: vaste maandelijkse kosten die vooraf zijn betaald op een maandelijks terugkeer patroon wanneer de gebruiker het abonnement koopt.
+    * Terugkerende **jaarlijkse** kosten: forfaitaire jaarlijkse kosten die vooraf worden betaald bij een jaarlijks terugkeer patroon wanneer de gebruiker het abonnement koopt.
+* Naast de terugkerende kosten kan het plan ook optionele dimensies bevatten die worden gebruikt om klanten in rekening te brengen voor gebruik dat niet in het vast tarief is opgenomen.   Elke dimensie vertegenwoordigt een factureer bare eenheid die uw service communiceert met micro soft via de [Marketplace meter Service-API](./marketplace-metering-service-apis.md).
 
-## <a name="sample-offer"></a>Voorbeeldaanbieding
+## <a name="sample-offer"></a>Voor beeld aanbieding
 
-Contoso is bijvoorbeeld een uitgever met een SaaS-service genaamd Contoso Notification Services (CNS). CNS stelt klanten in staat om meldingen te verzenden via e-mail of sms. Contoso is geregistreerd als uitgever in Partner Center voor het commerciële marktplaatsprogramma om aanbiedingen aan Azure-klanten te publiceren.  Er zijn twee plannen gekoppeld aan CNS, hieronder beschreven:
+Contoso is bijvoorbeeld een uitgever met een SaaS-service met de naam contoso Notification Services (CNS). Met CNS kunnen klanten meldingen verzenden via e-mail of tekst. Contoso is geregistreerd als een uitgever in het partner centrum voor het programma voor commerciële Marketplace voor het publiceren van aanbiedingen aan Azure-klanten.  Er zijn twee plannen gekoppeld aan CNS, die hieronder worden beschreven:
 
-* Basisplan
-    * Stuur 10000 e-mails en 1000 sms'jes voor $ 0 per maand
-    * Buiten de 10000 e-mails, betalen $ 1 voor elke 100 e-mails
-    * Naast de 1000 teksten, betaal $0.02 voor elke tekst
+* Basis plan
+    * 10000 e-mails en 1000 teksten verzenden voor $0/maand
+    * Na de 10000 e-mails betaalt u $1 voor elke 100 e-mail berichten
+    * Na de 1000 teksten betaalt u voor elke tekst een bedrag van $0,02
 * Premium-abonnement
-    * Stuur 50000 e-mails en 10000 sms'jes voor $ 350/maand
-    * Buiten de 50000 e-mails, betalen 0,5 dollar voor elke 100 e-mails
-    * Naast de 10000 teksten, betaal $0.01 voor elke tekst
+    * 50000 e-mails en 10000 teksten verzenden voor $350/maand
+    * Na de 50000 e-mails betaalt u $0,5 voor elke 100 e-mail berichten
+    * Na de 10000 teksten betaalt u voor elke tekst een bedrag van $0,01
 
-Een Azure-klant die zich abonneert op de CNS-service, kan de hoeveelheid tekst en e-mails per maand verzenden op basis van het geselecteerde abonnement.  Contoso meet het gebruik tot de meegeleverde hoeveelheid zonder gebruiksgebeurtenissen naar Microsoft te verzenden.  Wanneer klanten meer verbruiken dan de meegeleverde hoeveelheid, hoeven ze geen plannen te wijzigen of iets anders te doen.  Contoso meet de overschrijding buiten de meegeleverde hoeveelheid en start met het uitzenden van gebruiksgebeurtenissen naar Microsoft voor extra gebruik met behulp van de [Marketplace-meetservice-API.](./marketplace-metering-service-apis.md)  Microsoft brengt op zijn beurt kosten in rekening voor het extra gebruik zoals opgegeven door de uitgever.
+Een Azure-klant die zich abonneert op de CNS-service, kan het inbegrepen aantal tekst en e-mails per maand verzenden op basis van het geselecteerde plan.  Contoso meet het gebruik tot het inbegrepen aantal zonder gebruik van gebeurtenissen naar micro soft te verzenden.  Wanneer klanten meer dan het inbegrepen aantal verbruiken, hoeven ze geen plannen te wijzigen of iets anders te doen.  Contoso meet de overschrijding buiten het inbegrepen aantal en start het verzenden van gebruiks gebeurtenissen naar micro soft voor extra gebruik met de [Marketplace meter Service-API](./marketplace-metering-service-apis.md).  Micro soft brengt de klant in rekening voor het aanvullende gebruik zoals opgegeven door de uitgever.
 
-## <a name="billing-dimensions"></a>Factureringsafmetingen
+## <a name="billing-dimensions"></a>Facturerings dimensies
 
-Factureringsafmetingen worden gebruikt om met de klant te communiceren over hoe deze worden gefactureerd voor het gebruik van de software, en ook om gebruiksgebeurtenissen aan Microsoft te communiceren. Zij worden als volgt gedefinieerd:
+Facturerings dimensies worden gebruikt om aan de klant te communiceren over hoe ze worden gefactureerd voor het gebruik van de software en om gebruiks gebeurtenissen te communiceren met micro soft. Ze worden als volgt gedefinieerd:
 
-* **Dimensie-id:** de onveranderlijke id waarnaar wordt verwezen tijdens het uitzenden van gebruiksgebeurtenissen.
-* **Dimensienaam:** de weergavenaam die aan de dimensie is gekoppeld, bijvoorbeeld "verzonden tekstberichten".
-* **Maateenheid**: de beschrijving van de factureringseenheid, bijvoorbeeld "per sms" of "per 100 e-mails".
+* **Dimensie-id**: de onveranderbare id waarnaar wordt verwezen tijdens het verzenden van gebruiks gebeurtenissen.
+* **Dimensie naam**: de weergave naam die aan de dimensie is gekoppeld, bijvoorbeeld ' verzonden tekst berichten '.
+* **Maat eenheid**: de beschrijving van de facturerings eenheid, bijvoorbeeld ' per SMS-bericht ' of ' per 100 e-mail berichten '.
 * **Prijs per eenheid**: de prijs voor één eenheid van de dimensie.  
-* **Inbegrepen hoeveelheid voor de maandelijkse termijn**: hoeveelheid dimensie die per maand is opgenomen voor klanten die de terugkerende maandelijkse kosten betalen, moet een geheel getal zijn.
-* **Inbegrepen hoeveelheid voor de jaarlijkse looptijd**: hoeveelheid dimensie die per maand is opgenomen voor klanten die de terugkerende jaarlijkse vergoeding betalen, moet een geheel getal zijn.
+* **Inbegrepen hoeveelheid voor maandelijkse periode**: de hoeveelheid dimensie die per maand wordt opgenomen voor klanten die de terugkerende maandelijkse kosten betalen, moet een geheel getal zijn.
+* **Inbegrepen hoeveelheid voor jaarlijkse periode**: de hoeveelheid dimensie die per maand wordt opgenomen voor klanten die de terugkerende jaarlijkse kosten betalen, moet een geheel getal zijn.
 
-Factureringsdimensies worden gedeeld in alle plannen voor een aanbieding.  Sommige kenmerken zijn van toepassing op de dimensie voor alle plannen en andere kenmerken zijn planspecifiek.
+Facturerings dimensies worden gedeeld in alle abonnementen voor een aanbieding.  Sommige kenmerken zijn van toepassing op de dimensie over alle plannen en andere kenmerken zijn specifiek voor een plan.
 
-De kenmerken die de dimensie zelf definiëren, worden gedeeld in alle plannen voor een aanbieding.  Voordat u de aanbieding publiceert, is een wijziging in deze kenmerken vanuit de context van een plan van invloed op de dimensiedefinitie in alle plannen.  Zodra u de aanbieding publiceert, zijn deze kenmerken niet meer bewerkbaar.  Deze kenmerken zijn:
+De kenmerken die de dimensie zelf definiëren, worden verdeeld over alle abonnementen voor een aanbieding.  Voordat u de aanbieding publiceert, is een wijziging in deze kenmerken van de context van een plan van invloed op de dimensie definitie voor alle plannen.  Zodra u de aanbieding hebt gepubliceerd, kunnen deze kenmerken niet meer worden bewerkt.  Deze kenmerken zijn:
 
 * Id
-* Name
+* Naam
 * Meeteenheid
 
-De andere kenmerken van een dimensie zijn specifiek voor elk plan en kunnen verschillende waarden hebben van plan tot plan.  Voordat u het plan publiceert, u deze waarden bewerken en alleen dit plan wordt beïnvloed.  Zodra u het plan publiceert, zijn deze kenmerken niet meer bewerkbaar.  Deze kenmerken zijn:
+De andere kenmerken van een dimensie zijn specifiek voor elk plan en kunnen verschillende waarden hebben van plan tot plan.  Voordat u het abonnement publiceert, kunt u deze waarden bewerken. Dit geldt alleen voor dit abonnement.  Zodra u het abonnement hebt gepubliceerd, kunnen deze kenmerken niet meer worden bewerkt.  Deze kenmerken zijn:
 
 * Prijs per eenheid
 * Inbegrepen hoeveelheid voor maandelijkse klanten 
 * Inbegrepen hoeveelheid voor jaarlijkse klanten 
 
-Dimensions hebben ook twee speciale concepten, "ingeschakeld" en "oneindig":
+Dimensies hebben ook twee speciale concepten: ' enabled ' en ' infinite '.
 
-* **Ingeschakeld** geeft aan dat dit plan deelneemt aan deze dimensie.  U dit niet-gecontroleerd laten controleren als u een nieuw plan maakt dat geen gebruiksgebeurtenissen verzendt op basis van deze dimensie.  Ook worden eventuele nieuwe dimensies die zijn toegevoegd nadat een plan voor het eerst is gepubliceerd, weergegeven als "niet ingeschakeld" op het reeds gepubliceerde plan.  Een uitgeschakelde dimensie wordt niet weergegeven in lijsten met dimensies voor een abonnement dat door klanten wordt gezien.
-* **Infinite**, vertegenwoordigd door het oneindige symbool "",, geeft aan dat dit plan deelneemt aan deze dimensie, maar niet meter gebruik tegen deze dimensie.  Als u uw klanten wilt aangeven dat de functionaliteit die door deze dimensie wordt vertegenwoordigd, in het plan is opgenomen, maar zonder beperking van het gebruik.  Een dimensie met oneindig gebruik wordt weergegeven in lijsten met dimensies voor een plan dat door klanten wordt gezien, met een indicatie dat dit plan nooit in rekening wordt gebracht.
+* **Ingeschakeld** geeft aan dat dit plan deelneemt aan deze dimensie.  U kunt dit selectie vakje uitschakelen als u een nieuw plan maakt dat geen gebruiks gebeurtenissen op basis van deze dimensie verzendt.  Daarnaast worden nieuwe dimensies die zijn toegevoegd nadat een plan voor het eerst werd gepubliceerd, weer gegeven als ' niet ingeschakeld ' in het al gepubliceerde abonnement.  Een uitgeschakelde dimensie wordt niet weer gegeven in een lijst met dimensies voor een plan dat door klanten wordt gezien.
+* **Oneindig**, vertegenwoordigd door het oneindigheids teken "∞", geeft aan dat dit plan deelneemt aan deze dimensie, maar geen gebruik te maken van deze dimensie.  Als u aan uw klanten wilt aangeven dat de functionaliteit die wordt vertegenwoordigd door deze dimensie, in het plan is opgenomen, maar zonder limiet voor gebruik.  Een dimensie met oneindig gebruik wordt weer gegeven in een lijst met dimensies voor een plan dat door klanten wordt gezien, met een indicatie dat er nooit kosten in rekening worden gebracht voor dit abonnement.
 
 >[!Note] 
->De volgende scenario's worden expliciet ondersteund: <br> - U een nieuwe dimensie toevoegen aan een nieuw plan.  De nieuwe dimensie is niet ingeschakeld voor reeds gepubliceerde plannen. <br> - U een **vast plan** zonder afmetingen publiceren, vervolgens een nieuw plan toevoegen en een nieuwe dimensie voor dat plan configureren. De nieuwe dimensie zal niet worden ingeschakeld voor reeds gepubliceerde plannen.
+>De volgende scenario's worden expliciet ondersteund: <br> -U kunt een nieuwe dimensie toevoegen aan een nieuw plan.  De nieuwe dimensie wordt niet ingeschakeld voor al gepubliceerde plannen. <br> -U kunt een schema voor **vaste kosten** publiceren zonder dimensies, vervolgens een nieuw plan toevoegen en een nieuwe dimensie voor dat plan configureren. De nieuwe dimensie wordt niet ingeschakeld voor al gepubliceerde plannen.
 
 ## <a name="constraints"></a>Beperkingen
 
-### <a name="trial-behavior"></a>Proefgedrag
+### <a name="trial-behavior"></a>Proef gedrag
 
-Facturering met een gemeten beperking via de marketplace-meetservice is niet compatibel met het aanbieden van een gratis proefperiode.  Het is niet mogelijk om een plan te configureren voor zowel facturering met datameter als een gratis proefperiode.
+Facturering met data limieten met Marketplace-meet service is niet compatibel met een gratis proef versie.  Het is niet mogelijk om een abonnement te configureren voor het gebruik van zowel een gefactureerde facturering als een gratis proef versie.
 
-### <a name="locking-behavior"></a>Vergrendelingsgedrag
+### <a name="locking-behavior"></a>Vergrendelings gedrag
 
-Omdat een dimensie die wordt gebruikt met de Marketplace-meetservice inzicht geeft in hoe een klant voor de service betaalt, zijn alle details voor een dimensie niet meer bewerkbaar zodra u deze publiceert.  Het is belangrijk dat u uw afmetingen volledig hebt gedefinieerd voor een plan voordat u publiceert.
+Omdat een dimensie die wordt gebruikt met de Marketplace-meet service, een goed beeld vormt van de manier waarop een klant betaalt voor de service, kunnen alle Details voor een dimensie niet meer worden gewijzigd nadat u deze hebt gepubliceerd.  Het is belang rijk dat u uw dimensies volledig hebt gedefinieerd voor een plan voordat u publiceert.
   
-Zodra een aanbieding met een dimensie is gepubliceerd, kunnen de details op aanbiedingsniveau voor die dimensie niet langer worden gewijzigd:
+Zodra een aanbieding is gepubliceerd met een dimensie, kunnen de details van het aanbod niveau voor die dimensie niet meer worden gewijzigd:
 
 * Id
-* Name
+* Naam
 * Meeteenheid
 
-Zodra een plan is gepubliceerd, kunnen de details op planniveau niet meer worden gewijzigd:
+Zodra een plan is gepubliceerd, kunnen de details op plan niveau niet meer worden gewijzigd:
 
 * Prijs per eenheid
-* Inbegrepen hoeveelheid voor de maandelijkse termijn
-* Opgenomen hoeveelheid voor de jaarlijkse looptijd
-* Of de dimensie is ingeschakeld voor het plan
+* Inbegrepen hoeveelheid voor maandelijkse periode
+* Inbegrepen hoeveelheid voor jaar periode
+* Hiermee wordt aangegeven of de dimensie is ingeschakeld voor het plan
 
-### <a name="upper-limits"></a>Bovengrenzen
+### <a name="upper-limits"></a>Bovengrens
 
-Het maximum aantal dimensies dat kan worden geconfigureerd voor één aanbieding is 18 unieke afmetingen.
+Het maximum aantal dimensies dat kan worden geconfigureerd voor een enkele aanbieding is 18 unieke dimensies.
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-Als je een van de volgende opties hebt, kun je een ondersteuningsticket openen.
+Als u een van de volgende hebt, kunt u een ondersteunings ticket openen.
 
-* Technische problemen met marketplace meeting service API.
-* Een probleem dat moet worden geëscaleerd als gevolg van een fout of bug aan uw kant (bijvoorbeeld. verkeerde gebruiksgebeurtenis).
-* Alle andere problemen met betrekking tot facturering met datameter. 
+* Technische problemen met Marketplace meter Service-API.
+* Een probleem dat moet worden geëscaleerd vanwege een fout of bug aan de zijkant (bijvoorbeeld verkeerde gebruiks gebeurtenis).
+* Alle andere problemen met betrekking tot facturering met data limiet. 
 
-Volg de onderstaande stappen om je supportticket in te dienen:
+Volg de onderstaande stappen om uw ondersteunings ticket in te dienen:
 
-1. Ga naar de [ondersteuningspagina.](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff) De eerste paar vervolgkeuzemenu's worden automatisch voor u ingevuld. Voor Marketplace-ondersteuning u de productfamilie identificeren als **Cloud- en Online Services,** het product als **Marketplace-uitgever.**  Wijzig de vooraf ingevulde vervolgkeuzemenuselecties niet.
-2. Selecteer onder 'Selecteer de productversie' het **beheer van de live-aanbieding**.
-3. Kies **SaaS-apps**onder 'Selecteer een categorie die het probleem het beste beschrijft.
-4. Selecteer onder 'Selecteer een probleem dat het probleem het beste beschrijft' facturering **met datameter**.
-5. Door de knop **Volgende te** selecteren, wordt u doorverwezen naar de pagina Details van **het probleem,** waar u meer details over uw probleem invoeren.
+1. Ga naar de [ondersteunings pagina](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). De eerste paar vervolg keuzemenu's worden automatisch ingevuld. Voor Marketplace-ondersteuning identificeert u de product familie als **Cloud en Online Services**, het product als **Marketplace-Uitgever**.  Wijzig de vooraf gevulde vervolg menu selecties niet.
+2. Selecteer **Live offer Management**onder ' Selecteer de product versie '.
+3. Kies onder Selecteer een categorie die het probleem het beste beschrijft " **SaaS-apps**.
+4. Selecteer in het gedeelte Selecteer een probleem dat het beste het probleem beschrijft de optie **gefactureerd factureren**.
+5. Als u de knop **volgende** selecteert, wordt u omgeleid naar de pagina met details van het **probleem** , waar u meer informatie kunt invoeren over uw probleem.
 
-Zie [Ondersteuning voor het commerciële marktplaatsprogramma in partnercentrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support) voor meer opties voor ondersteuning van uitgevers.
+Zie [ondersteuning voor het programma voor commerciële Marketplace in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support) voor meer ondersteunings opties voor Publisher.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [API's voor marketplace-meetservice voor](./marketplace-metering-service-apis.md) meer informatie.
+- Zie [api's voor Marketplace metering service](./marketplace-metering-service-apis.md) voor meer informatie.

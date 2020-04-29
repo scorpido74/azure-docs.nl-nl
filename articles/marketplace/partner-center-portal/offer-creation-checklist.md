@@ -1,6 +1,6 @@
 ---
-title: SaaS bieden creatie checklist - Commerciële Marktplaats voor Azure
-description: De details die u verstrekken in het SaaS-proces voor het maken van de producten. - Commerciële marktplaats voor Azure
+title: Controle lijst voor het maken van SaaS-aanbiedingen-commerciële Marketplace voor Azure
+description: De details die u kunt opgeven in het proces voor het maken van SaaS-aanbiedingen. -Commerciële Marketplace voor Azure
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,157 +8,157 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.openlocfilehash: 60111b6a23c76314383c5f95be3eb4b38f90d3e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80281337"
 ---
 # <a name="saas-offer-creation-checklist"></a>Controlelijst voor SaaS-aanbieding maken
 
-Het SaaS-aanbodcreatieproces neemt u mee door meerdere pagina's. Hier zijn de details die u opgeven op elke pagina, met links om meer te weten te komen over elk item.
+Het proces voor het maken van SaaS-aanbiedingen leidt u door meerdere pagina's. Hier vindt u de details die u op elke pagina kunt opgeven, met koppelingen voor meer informatie over elk item.
 
-Objecten die u moet opgeven of opgeven, worden hieronder vermeld. Sommige gebieden zijn optioneel of hebben standaardwaarden die u naar wens wijzigen. U hoeft niet te werken aan deze secties in de volgorde hier vermeld.
+De items die u moet opgeven of opgeven, worden hieronder vermeld. Sommige gebieden zijn optioneel of bevatten standaard waarden, die u naar wens kunt wijzigen. U hoeft niet aan deze secties te werken in de volg orde die hier wordt vermeld.
 
 | **Item**    | **Doel**  |
 | :---------- | :-------------------|
-| [**Nieuw aanbod Modaal**](#new-offer-modal) | Verzamelt identiteitsgegevens van aanbiedingen.  |
-| [Pagina Aanbiedingsinstelling](#offer-setup-page) | Hiermee u zich aanmelden om belangrijke functies te gebruiken en te kiezen hoe u uw aanbieding via Microsoft verkopen.  |
-| [Pagina Eigenschappen](#properties-page) | Definieer de categorieën en bedrijfstakken die worden gebruikt om uw aanbieding op de marktplaatsen, de juridische contracten die uw aanbieding ondersteunen en uw app-versie te groeperen. |
-| [Aanbiedingspagina](#offer-listing-page) | Definieer de aanbiedingsgegevens die in de markt moeten worden weergegeven, inclusief beschrijvingen van uw aanbieding en marketingmiddelen. |
-| [Voorbeeldpagina](#preview-page) | Definieer een beperkte preview-doelgroep voor het vrijgeven van je aanbieding voordat je je aanbieding live publiceert aan de bredere doelgroep(s). |
-| [Pagina Technische configuratie aanbieden](#technical-configuration-page)  | Alleen beschikbaar als u ervoor kiest om de aanbieding via Microsoft te verkopen. Definieer de technische details (URL-pad, webhook, tenant-id en app-id) die worden gebruikt om verbinding te maken met uw aanbieding. |
-| [**Nieuw plan Modaal**](#plan-identity-modal) | Verzamelt identiteitsgegevens van het plan.  |
-| [Pagina Aanbieding plannen](#plan-listing-page)  | Alleen beschikbaar als u ervoor kiest om de aanbieding via Microsoft te verkopen. Definieer de details die worden gebruikt om het plan in de marktplaats weer te geven.  |
-| [Pagina Prijsprijzen & plannen](#plan-pricing--availability-page)  | Alleen beschikbaar als u ervoor kiest om de aanbieding via Microsoft te verkopen.  Verzamelt de bedrijfskenmerken (prijsmodel), doelgroep en marktbeschikbaarheid voor elk plan (versie) van uw aanbieding.  |
-| [Aanbiedingspagina voor teststation](#test-drive-listing-page)  | Alleen beschikbaar als u ervoor kiest om een proefrit aan te bieden voor uw aanbieding. Definieer de details die worden gebruikt om de testrit op de marktplaats weer te geven.  |
-| Pagina Technische configuratie van teststation  | Alleen beschikbaar als u ervoor kiest om een proefrit aan te bieden voor uw aanbieding. Definieer de technische details voor de demonstratie (of "proefrit") waarmee klanten uw aanbieding kunnen proberen voordat ze zich ertoe verbinden deze te kopen.  |
-| [Pagina bekijken en publiceren](#review-and-publish-page)  | Selecteer de wijzigingen die u wilt publiceren, bekijk de status van elke pagina en geef notities aan het certificeringsteam.  |
+| [**Nieuwe aanbieding modaal**](#new-offer-modal) | Verzamelt identiteits gegevens van de aanbieding.  |
+| [Pagina aanbieding instellen](#offer-setup-page) | Met kunt u zich aanmelden voor belang rijke functies en kiezen hoe u uw aanbieding via micro soft wilt verkopen.  |
+| [Eigenschappen pagina](#properties-page) | Definieer de categorieën en industrieën die worden gebruikt voor het groeperen van uw aanbieding op Marketplace, de juridische contracten die uw aanbieding ondersteunen en uw app-versie. |
+| [Aanbiedings pagina](#offer-listing-page) | Definieer de details van de aanbieding die moeten worden weer gegeven op Marketplace, inclusief beschrijvingen van uw aanbieding en marketing assets. |
+| [Voorbeeld pagina](#preview-page) | Definieer een beperkte preview-doel groep voor het vrijgeven van uw aanbieding voordat u uw aanbieding Live publiceert naar de bredere doel groep (en) van de Marketplace. |
+| [Pagina technische configuratie aanbieding](#technical-configuration-page)  | Alleen beschikbaar als u selecteert om het aanbod via micro soft te verkopen. Definieer de technische details (URL-pad, webhook, Tenant-ID en App-ID) die worden gebruikt om verbinding te maken met uw aanbieding. |
+| [**Nieuw plan modaal**](#plan-identity-modal) | Verzamelt informatie over plan identiteit.  |
+| [Aanbiedings pagina plannen](#plan-listing-page)  | Alleen beschikbaar als u selecteert om het aanbod via micro soft te verkopen. Definieer de details die worden gebruikt om het abonnement in de Marketplace weer te geven.  |
+| [Pagina met prijs & Beschik baarheid plannen](#plan-pricing--availability-page)  | Alleen beschikbaar als u selecteert om het aanbod via micro soft te verkopen.  Verzamelt de bedrijfs kenmerken (prijs model), de beschik baarheid van de doel groep en de markt voor elk abonnement (versie) van uw aanbieding.  |
+| [Lijst pagina test station](#test-drive-listing-page)  | Deze optie is alleen beschikbaar als u een test drive voor uw aanbieding aanbiedt. Definieer de details die worden gebruikt om de test drive in de Marketplace weer te geven.  |
+| Pagina voor technische configuratie van test station  | Deze optie is alleen beschikbaar als u een test drive voor uw aanbieding aanbiedt. Definieer de technische Details voor de demonstratie (of ' test drive ') waarmee klanten uw aanbieding kunnen proberen voordat ze zich door voeren om deze aan te schaffen.  |
+| [Pagina controleren en publiceren](#review-and-publish-page)  | Selecteer de wijzigingen die u wilt publiceren, Bekijk de status van elke pagina en geef notities op het certificerings team.  |
 
 
-## <a name="new-offer-modal"></a>Nieuw aanbod modaal 
+## <a name="new-offer-modal"></a>Nieuwe aanbieding modaal 
 
-De eerste informatie die u zal worden gevraagd om te verstrekken zijn een ID en alias voor uw aanbod. 
+De eerste informatie die u moet opgeven, is een ID en alias voor uw aanbieding. 
 
 | **Veldnaam**    | **Opmerkingen**   |  
 | :---------------- | :-----------| 
-| Aanbiedings-id  | Vereist, kan niet worden gewijzigd na de schepping. Maximaal 50 tekens en mag alleen bestaan uit kleine letters, alfanumerieke tekens, streepjes of underscores. |
-| Alias aanbieden  | Vereist. |
+| Aanbiedings-id  | Vereist, kan niet worden gewijzigd na het maken. Maxi maal 50 tekens en mag alleen bestaan uit kleine letters, alfanumerieke tekens, streepjes of onderstrepingen. |
+| Aanbiedings alias  | Vereist. |
 
-## <a name="offer-setup-page"></a>Pagina Aanbiedingsinstelling
+## <a name="offer-setup-page"></a>Pagina aanbieding instellen
 
-De pagina met het instellen van aanbiedingen is waar u zich aanmelden voor verschillende kanalen en het verkopen van bewegingen, evenals het gebruik van belangrijke functies, zoals een testrit en klantleads. 
+Op de pagina aanbieding instellen kunt u kiezen uit verschillende kanalen en verkoop bewegingen, en kunt u het gebruik van belang rijke functies, zoals test drive en leads van klanten, declareren. 
 
 | **Veldnaam**    | **Opmerkingen**   | 
 | :---------------- | :-----------|  
-| Wilt u verkopen via Microsoft?  | Vereist. Standaard: Ja |
-| Hoe wilt u dat potentiële klanten interactie hebben met de aanbiedingsvermelding? (Oproep tot actie)  | Vereist als u niet via Microsoft verkoopt. Standaard: Gratis proefversie, opties: "Nu krijgen", "Gratis proefversie", "Neem contact met mij op" |
-| URL van proef  | Vereist als 'Gratis proefversie' is geselecteerd, omdat klanten moeten communiceren met de aanbiedingsvermelding. |
-| URL van aanbieding  | Vereist als 'Nu krijgen' is geselecteerd, omdat de manier waarop klanten moeten communiceren met de aanbiedingsvermelding |
-| Kanalen  | Optioneel. Standaard: u hebt zich niet aangemeld voor het CSP-kanaal (reseller).  |
-| Test Drive | Optioneel. Standaard: geen testrit ingeschakeld.  |
-| Type teststation | Vereist indien ingeschakeld een proefrit. Standaard: geen geselecteerd. Opties: Azure Resource Manager, Dynamics 365 voor Business Central, Dynamics 365 voor Klantbetrokkenheid, Dynamics 365 voor Operations, Logic-app, Power BI.  |
-| Leadmanagement - verbinding maken met een CRM-systeem | Vereist als u verkoopt via Microsoft, of als aanbiedingsaanbiedingen als 'Neem contact met mij op'. Standaard: geen CRM-systeem aangesloten. CRM-opties: Azure-tabel, Azure-blob, Dynamics CRM online, HTTPs' eindpunt, Marketo, Salesforce  |
+| Wilt u door micro soft verkopen?  | Vereist. Standaard: Ja |
+| Hoe wilt u dat potentiële klanten met de aanbieding kunnen communiceren? (Actie aanroepen)  | Vereist als niet wordt verkocht via micro soft. Standaard: gratis proef versie, opties: ' nu downloaden ', ' gratis proef versie ', ' contact met mij opnemen '. |
+| URL van proef versie  | Vereist als ' gratis proef versie ' is geselecteerd, als de manier waarop klanten moeten communiceren met de aanbieding. |
+| Aanbiedings-URL  | Vereist als ' nu ophalen ' is geselecteerd, als de manier waarop klanten moeten communiceren met de aanbiedings vermelding |
+| Kanalen  | Optioneel. Standaard: geen gekozen voor het CSP-kanaal (reseller).  |
+| Test Drive | Optioneel. Standaard: er is geen test drive ingeschakeld.  |
+| Type van het test station | Vereist als een test drive is ingeschakeld. Standaard: geen geselecteerd. Opties: Azure Resource Manager, Dynamics 365 voor bedrijven Central, Dynamics 365 voor klant betrokkenheid, Dynamics 365 voor Operations, Logic app, Power BI.  |
+| Lead beheer-verbinding maken met een CRM-systeem | Vereist als er wordt verkocht via micro soft, of als een aanbieding wordt aangeboden als ' contact met mij opnemen '. Standaard: er is geen CRM-systeem verbonden. CRM-opties: Azure Table, Azure-Blob, Dynamics CRM Online, HTTPs-eind punt, Marketo, Sales Force  |
 
 ## <a name="properties-page"></a>De pagina Eigenschappen
 
-Op de pagina Eigenschappen definieert u de categorieën en bedrijfstakken die worden gebruikt om uw aanbieding op de marktplaatsen, de juridische contracten ter ondersteuning van uw aanbieding en uw app-versie te groeperen. Zorg ervoor dat u volledige en nauwkeurige details over uw aanbod op deze pagina, zodat het op de juiste manier wordt weergegeven en aangeboden aan de juiste set van klanten. 
+Op de pagina eigenschappen definieert u de categorieën en industrieën die worden gebruikt voor het groeperen van uw aanbieding op Marketplace, de juridische contracten die uw aanbieding ondersteunen en uw app-versie. Zorg ervoor dat u volledige en nauw keurige Details opgeeft over uw aanbieding op deze pagina, zodat deze correct wordt weer gegeven en aan de juiste set klanten wordt aangeboden. 
 
 | **Veldnaam**    | **Opmerkingen**   | 
 | :---------------- | :-----------|  
-| Categorie en subcategorie | Vereist 1 en max 3. Standaard: geen geselecteerd. |
-| Industrieën en subindustrieën | Optioneel. max 2 L1 Industries en max 2 subindustrieën binnen elke L1-industrie, Standaard: Geen geselecteerd |
-| App-versie  | Optioneel. Standaard: Geen. |
-| Standaardcontract gebruiken  | Optioneel. Standaard: niet geselecteerd.  | |
-| Gebruiksvoorwaarden  | Vereist als het standaardcontract niet is geselecteerd.  |
+| Categorie en subcategorie | Vereist 1 en Maxi maal 3. Standaard: geen geselecteerd. |
+| Industrieën en subbranches | Optioneel. Maxi maal 2 L1-industrieën en Maxi maal 2 subbranches binnen elke L1-industrie, standaard: geen geselecteerd |
+| App-versie  | Optioneel. Standaard: geen. |
+| Standaard contract gebruiken  | Optioneel. Standaard: niet geselecteerd.  | |
+| Gebruiksvoorwaarden  | Vereist als het standaard contract niet is geselecteerd.  |
 
-## <a name="offer-listing-page"></a>Aanbiedingspagina aanbieden
+## <a name="offer-listing-page"></a>Aanbiedings pagina
 
-Op de aanbiedingspagina geeft u de tekst en afbeeldingen op die klanten zien bij het bekijken van de vermelding van uw aanbieding op de marktplaats. 
+De pagina met de vermelding bevat de tekst en afbeeldingen die klanten zien wanneer ze de aanbieding van uw aanbieding op Marketplace bekijken. 
 
 | **Veldnaam**    | **Opmerkingen**   |
 | :---------------- | :-----------| 
-| Name  | Vereist, max 50 chars. |
-| Samenvatting  | Vereist, max 100 chars. | 
-| Beschrijving  | Vereist, max 3000 chars. |
-| Instructies voor aan de slag  | Vereist, max 3000 chars. |
-| Instructies voor aan de slag  | Vereist, max 3000 chars. |
-| Zoektrefwoorden  | Optionele, aanbevolen, max 3 zoekwoorden. |
-| URL van het privacybeleid  | Vereist. |
-| URL van CSP-programmamarketingmaterialen  | Optioneel. |
-| Nuttige koppelingen Titel + URL  | Optioneel. |
-| Titel van ondersteunende documenten + Bestand  | Vereist, min 1 en max 3. Moet PDF-bestandsindeling zijn. |
-| Schermopnamen  | Vereist, min 1 screenshot en max 5; vier of meer aanbevolen. Moet 1280 X 720 in PNG-formaat. |
-| Winkellogo's (klein, gemiddeld, groot, breed, held)  | Klein (48 X 48) en Large (216 X 216) vereist; andere maten optioneel, maar aanbevolen: Medium (90 x 90), Wide (255 x 115), Hero (815 x 290). Moet in PNG-formaat. |
-| Video's naam + URL + miniatuur  | Optionele, aanbevolen, max 4 video's. Miniatuur moet 1280 x 720 in PNG-indeling zijn. Video moet worden gehost in YouTube of Vimeo. |
-| Contactpersonen (CSP-programma, engineering, ondersteuning)  | Technische en ondersteuningscontactpersoon vereist (naam, e-mail en telefoonnummer); CSP-programma contact optioneel, maar aanbevolen. |
-| URL voor ondersteuning  | Vereist. |
+| Naam  | Vereist, Maxi maal 50 tekens. |
+| Samenvatting  | Vereist, Maxi maal 100 tekens. | 
+| Beschrijving  | Vereist, Maxi maal 3000 tekens. |
+| Aan de slag-instructies  | Vereist, Maxi maal 3000 tekens. |
+| Aan de slag-instructies  | Vereist, Maxi maal 3000 tekens. |
+| Tref woorden zoeken  | Optioneel, aanbevolen, Maxi maal 3 tref woorden. |
+| URL van privacybeleid  | Vereist. |
+| URL van het CSP-programma marketing materiaal  | Optioneel. |
+| Titel van handige koppelingen + URL  | Optioneel. |
+| Titel van ondersteunende documenten + bestand  | Vereist, min 1 en Maxi maal 3. Moet PDF-bestands indeling zijn. |
+| Schermopnamen  | Vereist, min 1 scherm afbeelding en maximum 5; vier of meer aanbevolen. Moet 1280 X 720 zijn in PNG-indeling. |
+| Winkel logo's (klein, normaal, groot, breed, held)  | Klein (48 X 48) en groot (216 X 216) vereist; andere formaten optioneel, maar aanbevolen: gemiddeld (90 x 90), breed (255 x 115), held (815 x 290). Moet de PNG-indeling hebben. |
+| Video's naam + URL + miniatuur  | Optioneel, aanbevolen, Maxi maal 4 Video's. De miniatuur moet 1280 x 720 zijn in PNG-indeling. Video moet worden gehost in YouTube of Vimeo. |
+| Contacts (CSP-programma, techniek, ondersteuning)  | Technische hulp en ondersteuning vereist (naam, e-mail adres en telefoon nummer); CSP-programma contact opnemen optioneel, maar aanbevolen. |
+| Ondersteunings-URL  | Vereist. |
 
-## <a name="preview-page"></a>Voorbeeldpagina
+## <a name="preview-page"></a>Voorbeeld pagina
 
-Op de voorbeeldpagina geeft u de doelgroep op die toegang moet hebben tot uw aanbiedingsvoorbeeld, om te controleren of de aanbieding aan al uw vereisten voldoet voordat deze live gaat. 
+Op de voorbeeld pagina kunt u opgeven dat de doel groep toegang heeft tot uw Preview-voor beeld om te controleren of de aanbieding aan al uw vereisten voldoet voordat deze live gaat. 
 
 | **Veldnaam**    | **Opmerkingen**   | 
 | :---------------- | :-----------| 
-| AAD/MSA e-mail + beschrijving | Vereist, min 1 en max 10 als handmatig ingevoerd, of tot 20 als het uploaden van een CSV-bestand. |
+| AAD/MSA e-mail + beschrijving | Vereist, min 1 en maximum 10 als deze hand matig worden ingevoerd of Maxi maal 20 als een CSV-bestand wordt geüpload. |
 
 ## <a name="technical-configuration-page"></a>Pagina technische configuratie 
 
-Op de pagina technische configuratie geeft u de technische details op die Door Microsoft worden gebruikt om verbinding te maken met uw aanbieding. Deze pagina is niet zichtbaar voor u als u hebt besloten niet te verkopen via Microsoft.
+Op de pagina technische configuratie kunt u de technische gegevens opgeven die door micro soft worden gebruikt om verbinding te maken met uw aanbieding. Deze pagina is niet zichtbaar voor u als u ervoor hebt gekozen om niet via micro soft te verkopen.
 
 | **Veldnaam**    | **Opmerkingen**   |  
 | :---------------- | :-----------| 
-| URL van bestemmingspagina | Vereist als u verkoopt via Microsoft. |
-| Verbinding webhook | Vereist als u verkoopt via Microsoft. |
-| Azure AD-tenant-id | Vereist als u verkoopt via Microsoft. |
-| Azure AD-app-id | Vereist als u verkoopt via Microsoft. |
+| URL van landings pagina | Vereist als er wordt verkocht via micro soft. |
+| Verbindings-webhook | Vereist als er wordt verkocht via micro soft. |
+| Azure AD-tenant-id | Vereist als er wordt verkocht via micro soft. |
+| Azure AD-App-ID | Vereist als er wordt verkocht via micro soft. |
 
-## <a name="plan-identity-modal"></a>Plan identiteit modaal
+## <a name="plan-identity-modal"></a>De identiteit van het modale abonnement
 
-De eerste informatie die u wordt gevraagd te verstrekken zijn een naam en een ID voor uw plan. Deze pagina is niet zichtbaar voor u als u hebt besloten niet te verkopen via Microsoft.
-
-| **Veldnaam**    | **Opmerkingen**   |  
-| :---------------- | :-----------| 
-| Plan-id  | Vereist als u verkoopt via Microsoft. Het kan niet worden veranderd na de schepping. Maximaal 50 tekens en mag alleen bestaan uit kleine letters, alfanumerieke tekens, streepjes of underscores. |
-| Naam van het plan  | Vereist als u verkoopt via Microsoft. Moet uniek zijn in alle plannen in het aanbod. Max 50 tekens. |
-
-## <a name="plan-listing-page"></a>Aanbiedingspagina plannen
-
-Op de pagina met abonnementsvermeldingen u de tekst die klanten kunnen zien bij het bekijken van het abonnement op de marktplaats. Deze pagina is niet zichtbaar voor u als u hebt besloten niet te verkopen via Microsoft.
+De eerste stukjes informatie die u wilt opgeven, zijn een naam en een ID voor uw abonnement. Deze pagina is niet zichtbaar voor u als u hebt besloten niet via micro soft te verkopen.
 
 | **Veldnaam**    | **Opmerkingen**   |  
 | :---------------- | :-----------| 
-| Beschrijving van het plan   | Vereist als u verkoopt via Microsoft. Max 500 tekens. | |
+| Plan-ID  | Vereist als er wordt verkocht via micro soft. Het kan niet worden gewijzigd nadat het is gemaakt. Maxi maal 50 tekens en mag alleen bestaan uit kleine letters, alfanumerieke tekens, streepjes of onderstrepingen. |
+| Naam van het plan  | Vereist als er wordt verkocht via micro soft. Moet uniek zijn in alle abonnementen van de aanbieding. Maxi maal 50 tekens. |
 
-## <a name="plan-pricing--availability-page"></a>Pagina Prijzen plannen & beschikbaarheid
+## <a name="plan-listing-page"></a>Aanbiedings pagina plannen
 
-De pagina planprijzen en beschikbaarheid is de plaats waar u de bedrijfskenmerken, doelgroep en marktbeschikbaarheid voor elk abonnement (versie) van uw aanbieding definieert. Deze pagina is niet zichtbaar voor u als u hebt besloten niet te verkopen via Microsoft.
+Op de pagina plan vermelding kunt u de tekst opgeven die klanten kunnen zien wanneer ze het plan in de Marketplace bekijken. Deze pagina is niet zichtbaar voor u als u ervoor hebt gekozen om niet via micro soft te verkopen.
+
+| **Veldnaam**    | **Opmerkingen**   |  
+| :---------------- | :-----------| 
+| Plan beschrijving   | Vereist als er wordt verkocht via micro soft. Maxi maal 500 tekens. | |
+
+## <a name="plan-pricing--availability-page"></a>Pagina met prijs & Beschik baarheid plannen
+
+Op de pagina prijzen en beschik baarheid plannen kunt u de bedrijfs kenmerken, de doel groep en de beschik baarheid van de markt voor elk abonnement (versie) van uw aanbieding definiëren. Deze pagina is niet zichtbaar voor u als u ervoor hebt gekozen om niet via micro soft te verkopen.
 
 | **Veldnaam**    | **Opmerkingen**   | 
 | :---------------- | :-----------| 
-| Beschikbaarheid van de markt  | Vereist, min 1 en max 141. |
-| Prijsmodel  | Vereist. Standaard: vast tarief. Opties: Vast tarief, per gebruiker. |
-| Minimum- en maximumzitplaatsen  | Optioneel, alleen beschikbaar als het prijsmodel op basis van een stoel is geselecteerd. |
-| Factureringstermijn  | Vereist. Standaard: maandelijks. Opties: Maandelijks, Jaarlijks. |
-| Prijs  | Vereist USD per maand, als de maandelijkse factureringstermijn is geselecteerd; of USD per jaar als de jaarlijkse factureringstermijn is geselecteerd. |
-| Doelgroep plannen  | Optioneel. Standaard: openbaar plan. Opties: Openbaar, Privé per tenant-id |
-| Doelgroep met beperkte abonnement (tenant-id + beschrijving)  | Vereist als privé-abonnement is geselecteerd. Min 1 en max 10 tenant-id's als deze handmatig worden ingevoerd. Max 20000 als CSV-bestand wordt geïmporteerd. |
+| Beschik baarheid van de markt  | Vereist, min 1 en Max. 141. |
+| Prijs model  | Vereist. Standaard: vast aantal. Opties: vast aantal, per gebruiker. |
+| Minimum-en maximum aantal stoelen  | Optioneel: alleen beschikbaar als het prijs model op basis van de Seat is geselecteerd. |
+| Facturerings termijn  | Vereist. Standaard: maandelijks. Opties: maandelijks, jaarlijks. |
+| Prijs  | Vereist USD per maand, als de maandelijkse facturerings periode is geselecteerd. of USD per jaar als de jaarlijkse facturerings periode is geselecteerd. |
+| Doel groep plannen  | Optioneel. Standaard: openbaar abonnement. Opties: openbaar, privé op Tenant-ID |
+| Doel groep voor beperkt abonnement (Tenant-ID + beschrijving)  | Vereist als privé plan is geselecteerd. Min 1 en Maxi maal 10 Tenant-Id's, indien hand matig ingevoerd. Maxi maal 20000 als CSV-bestand wordt geïmporteerd. |
 
-## <a name="test-drive-listing-page"></a>Aanbiedingspagina teststation
+## <a name="test-drive-listing-page"></a>Lijst pagina test station
 
-Alleen beschikbaar als u ervoor kiest om een proefrit aan te bieden voor uw aanbieding. Definieer de details die worden gebruikt om de testrit op de marktplaats weer te geven.
+Deze optie is alleen beschikbaar als u een test drive voor uw aanbieding aanbiedt. Definieer de details die worden gebruikt om de test drive in de Marketplace weer te geven.
 
 | **Veldnaam**    | **Opmerkingen**   | 
 | :---------------- | :-----------| 
 | Beschrijving  | Vereist. |
-| Gebruikersnaamnaam + bestand  | Vereist, max 1 doc. Moet PDF-formaat zijn. |
-| Videonaam, URL + miniatuur  | Optioneel, aanbevolen. Miniatuur moet 533 x 324 zijn in JPGP- of PNG-indeling. Video moet worden gehost in YouTube of Vimeo. |
+| Hand matige naam en bestand van de gebruiker  | Vereist, Maxi maal 1 document. moet PDF-indeling hebben. |
+| Video naam, URL + miniatuur  | Optioneel, aanbevolen. De miniatuur moet 533 x 324 zijn in JPGP-of PNG-indeling. Video moet worden gehost in YouTube of Vimeo. |
 
-## <a name="review-and-publish-page"></a>Pagina bekijken en publiceren
+## <a name="review-and-publish-page"></a>Pagina controleren en publiceren
 
 | **Veldnaam**    | **Opmerkingen**   | 
 | :---------------- | :-----------| 
-| Notities voor certificering  | Optioneel. |
+| Opmerkingen voor certificering  | Optioneel. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

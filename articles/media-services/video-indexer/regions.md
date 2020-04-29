@@ -1,7 +1,7 @@
 ---
-title: Regio's waarin Video Indexer beschikbaar is - Azure
+title: Regio's waar Video Indexer beschikbaar is-Azure
 titleSuffix: Azure Media Services
-description: In dit artikel wordt gesproken over Azure-regio's waarin Azure Media Services Video Indexer beschikbaar is.
+description: Dit artikel spreekt over Azure-regio's waarin Azure Media Services Video Indexer beschikbaar is.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -11,27 +11,27 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: c91b38fcbfb9b517651adead010408425e519a82
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80382746"
 ---
-# <a name="azure-regions-in-which-video-indexer-exists"></a>Azure-regio's waarin Video-indexer bestaat
+# <a name="azure-regions-in-which-video-indexer-exists"></a>Azure-regio's waarin Video Indexer bestaat
 
-Video Indexer API's bevatten een **locatieparameter** die u moet instellen op het Azure-gebied waarnaar de aanroep moet worden doorgestuurd. Dit moet een [Azure-gebied zijn waarin Video Indexer beschikbaar is.](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all)
+Video Indexer-Api's bevatten een **locatie** parameter die u moet instellen op de Azure-regio waarin de aanroep moet worden gerouteerd. Dit moet een Azure-regio zijn waarin [video indexer beschikbaar is](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all).
 
 ## <a name="locations"></a>Locaties
 
-De **locatieparameter** moet de codenaam azure-regio als waarde krijgen. Als u Video Indexer in de voorbeeldmodus gebruikt, moet u *'proefversie'* als waarde plaatsen. Als u anders de codenaam wilt krijgen van het Azure-gebied waarin uw account zich bevindt en naar uw oproep moet worden doorgestuurd, u de volgende regel uitvoeren in [Azure CLI:](/cli/azure)
+De **locatie** parameter moet de naam van de Azure-regio code krijgen als waarde. Als u Video Indexer in de preview-modus gebruikt, moet u *' proef versie '* als waarde invoeren. Als u de code naam wilt ophalen van de Azure-regio waarin uw account zich bevindt en dat uw oproep moet worden doorgestuurd, kunt u de volgende regel uitvoeren in [Azure cli](/cli/azure):
 
 ```azurecli-interactive
 az account list-locations
 ```
 
-Zodra u de bovenstaande regel uitvoert, krijgt u een lijst met alle Azure-regio's. Navigeer naar het Azure-gebied met de *weergaveNaam die* u zoekt en gebruik de *naamwaarde* voor de **locatieparameter.**
+Wanneer u de hierboven weer gegeven regel hebt uitgevoerd, krijgt u een lijst met alle Azure-regio's. Ga naar de Azure-regio met de *DisplayName* die u zoekt en gebruik de *naam* waarde voor de **locatie** parameter.
 
-Voor de Azure-regio West US 2 (hieronder weergegeven) gebruikt u bijvoorbeeld 'westus2' voor de **locatieparameter.**
+Voor de Azure-regio vs-West 2 (hieronder weer gegeven) gebruikt u bijvoorbeeld ' westus2 ' voor de **locatie** parameter.
 
 ```json
    {
@@ -46,6 +46,6 @@ Voor de Azure-regio West US 2 (hieronder weergegeven) gebruikt u bijvoorbeeld 'w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Taalmodel aanpassen met API's](customize-language-model-with-api.md)
-- [Merkenmodel aanpassen met API's](customize-brands-model-with-api.md)
-- [Persoonsmodel aanpassen met API's](customize-person-model-with-api.md)
+- [Taal model aanpassen met behulp van Api's](customize-language-model-with-api.md)
+- [Het merk model aanpassen met behulp van Api's](customize-brands-model-with-api.md)
+- [Persoonlijk model aanpassen met behulp van Api's](customize-person-model-with-api.md)

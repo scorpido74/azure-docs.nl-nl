@@ -1,7 +1,7 @@
 ---
-title: Beeldanalyse cognitieve vaardigheid
+title: Cognitieve vaardigheid van Image Analysis
 titleSuffix: Azure Cognitive Search
-description: Extraer semantische tekst door middel van beeldanalyse met behulp van de cognitieve vaardigheid Image Analysis in een AI-verrijkingspijplijn in Azure Cognitive Search.
+description: Extraheer semantische tekst via afbeeldings analyse met behulp van de functie voor het analyseren van de afbeeldings analyse in een AI-pijp lijn in azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,44 +9,44 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 4ff6972e2f7ea219a1c8c8dbabbf9fe12a8fa59e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80369480"
 ---
-# <a name="image-analysis-cognitive-skill"></a>Beeldanalyse cognitieve vaardigheid
+# <a name="image-analysis-cognitive-skill"></a>Cognitieve vaardigheid van Image Analysis
 
-De **vaardigheid Image Analysis** haalt een uitgebreide set visuele functies uit op basis van de afbeeldingsinhoud. U bijvoorbeeld een bijschrift genereren uit een afbeelding, tags genereren of beroemdheden en oriëntatiepunten identificeren. Deze vaardigheid maakt gebruik van de machine learning modellen die door [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) in Cognitive Services. 
+De kwalificatie **analyse van installatie kopieën** extraheert een uitgebreide set visuele functies op basis van de inhoud van de installatie kopie. U kunt bijvoorbeeld een bijschrift genereren op basis van een afbeelding, tags genereren of beroemdheden en bezienswaardigheden identificeren. Deze vaardigheid maakt gebruik van de machine learning modellen van [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) in cognitive Services. 
 
 > [!NOTE]
-> Kleine volumes (minder dan 20 transacties) kunnen gratis worden uitgevoerd in Azure Cognitive Search, maar grotere workloads vereisen [het koppelen van een factureerbare cognitive services-bron.](cognitive-search-attach-cognitive-services.md) Er worden kosten in rekening gebracht bij het aanroepen van API's in Cognitive Services en voor het extraheren van afbeeldingen als onderdeel van de fase van het kraken van documenten in Azure Cognitive Search. Er zijn geen kosten voor tekstextractie uit documenten.
+> Kleine volumes (minder dan 20 trans acties) kunnen gratis worden uitgevoerd in azure Cognitive Search, maar voor grotere werk belastingen moet [een factureer bare Cognitive Services resource worden gekoppeld](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in azure Cognitive Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
 >
-> Uitvoering van ingebouwde vaardigheden wordt in rekening gebracht tegen de bestaande [Cognitive Services pay-as-you-go prijs.](https://azure.microsoft.com/pricing/details/cognitive-services/) De prijzen voor imageextractie worden beschreven op de [prijspagina azure cognitive search.](https://go.microsoft.com/fwlink/?linkid=2042400)
+> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Vision.ImageAnalysisSkill 
+Micro soft. skills. Vision. ImageAnalysisSkill 
 
-## <a name="skill-parameters"></a>Vaardigheidsparameters
+## <a name="skill-parameters"></a>Vaardigheids parameters
 
 Parameters zijn hoofdlettergevoelig.
 
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
-| standaardLanguageCode   |  Een tekenreeks die aangeeft welke taal moet terugkeren. De herkenningsresultaten van de service worden geretourneerd in een bepaalde taal. Als deze parameter niet is opgegeven, is de standaardwaarde 'nl'. <br/><br/>Ondersteunde talen zijn: <br/>*nl* - Engels (standaard) <br/> *es* - Spaans <br/> *ja* - Japans <br/> *pt* - Portugees <br/> *zh* - Vereenvoudigd Chinees|
-| visualFeatures |  Een array met tekenreeksen die aangeven welke visuele functietypen moeten terugkeren. Geldige typen visuele functies zijn:  <ul><li>*volwassen* - detecteert of het beeld pornografisch van aard is (toont naaktheid of een seksuele daad), of is bloederig (toont extreem geweld of bloed). Seksueel suggestieve inhoud (ook bekend als pikante inhoud) wordt ook gedetecteerd.</li><li>*merken* - detecteert verschillende merken binnen een afbeelding, inclusief de geschatte locatie. De *merken* visuele functie is alleen beschikbaar in het Engels.</li><li> *categorieën* - categoriseert beeldinhoud op basis van een taxonomie gedefinieerd in de Cognitive Services [Computer Vision documentatie](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy). </li><li>*description* - beschrijft de inhoud van de afbeelding met een volledige zin in ondersteunde talen.</li><li>*gezichten* - detecteert of er gezichten aanwezig zijn. Indien aanwezig, genereert coördinaten, geslacht en leeftijd.</li><li> *objecten* - detecteert verschillende objecten in een afbeelding, inclusief de geschatte locatie. De visuele functie *voor objecten* is alleen beschikbaar in het Engels.</li><li> *tags* - tags de afbeelding met een gedetailleerde lijst van woorden met betrekking tot de inhoud van de afbeelding.</li></ul> Namen van visuele kenmerken zijn hoofdlettergevoelig. Houd er rekening mee dat de visuele functies *kleur* en *imageType* zijn afgeschaft, maar deze functionaliteit kan nog steeds worden geopend via een [aangepaste vaardigheid.](https://go.microsoft.com/fwlink/?linkid=2121117)|
-| Details   | Een array met tekenreeksen die aangeven welke domeinspecifieke details moeten worden retournerd. Geldige typen visuele functies zijn: <ul><li>*beroemdheden* - identificeert beroemdheden als gedetecteerd in het beeld.</li><li>*oriëntatiepunten* - identificeert oriëntatiepunten als deze in de afbeelding worden gedetecteerd. </li></ul> |
+| defaultLanguageCode   |  Een teken reeks die aangeeft welke taal moet worden geretourneerd. De service retourneert herkennings resultaten in een opgegeven taal. Als deze para meter niet wordt opgegeven, is de standaard waarde "en". <br/><br/>Ondersteunde talen zijn: <br/>*en* -Engels (standaard) <br/> *es* -Spaans <br/> *Ja* , Japans <br/> *PT* -Portugees <br/> *zh* -vereenvoudigd Chinees|
+| visualFeatures |  Een matrix met teken reeksen die aangeeft welke Visual-functie typen moeten worden geretourneerd. Geldige typen visuele functies zijn:  <ul><li>*volwassene* : detecteert of de installatie kopie een porno grafie heeft (komt voor een naaktheid of een geslachte handeling) of is benchmarks (voor beeld van extreem geweld of bloed). Er wordt ook een expliciete suggestie voor inhoud (ook wel ongepaste-inhoud) gedetecteerd.</li><li>*Brands* : detecteert verschillende merken in een installatie kopie, met inbegrip van de geschatte locatie. De visuele functie *Brands* is alleen beschikbaar in het Engels.</li><li> *Categorieën* : de afbeeldings inhoud wordt gecategoriseerd op basis van een taxonomie die is gedefinieerd in de Cognitive Services [Computer Vision documentatie](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy). </li><li>*Beschrijving* : Hiermee wordt de afbeeldings inhoud met een volledige zin in ondersteunde talen beschreven.</li><li>*gezichten* : detecteert of er gezichten aanwezig zijn. Indien aanwezig, worden coördinaten, geslacht en leeftijd gegenereerd.</li><li> *objecten* : detecteert verschillende objecten in een installatie kopie, met inbegrip van de geschatte locatie. De Visual-functie voor *objecten* is alleen beschikbaar in het Engels.</li><li> *Tags* : Tags de afbeelding met een gedetailleerde lijst met woorden die betrekking hebben op de inhoud van de installatie kopie.</li></ul> Namen van visuele functies zijn hoofdletter gevoelig. Houd er rekening mee dat de visuele functies *kleur* en *imageType* zijn afgeschaft, maar deze functionaliteit kan nog steeds worden geopend via een [aangepaste vaardigheid](https://go.microsoft.com/fwlink/?linkid=2121117).|
+| nadere   | Een matrix met teken reeksen die aangeeft welke specifieke details van het domein moeten worden geretourneerd. Geldige typen visuele functies zijn: <ul><li>*beroemdheden* : identificeert beroemdheden als deze wordt gedetecteerd in de installatie kopie.</li><li>*bezienswaardigheden* : identificeert bezienswaardigheden als deze worden gedetecteerd in de installatie kopie. </li></ul> |
 
-## <a name="skill-inputs"></a>Vaardigheidsingangen
+## <a name="skill-inputs"></a>Vaardigheids invoer
 
-| Invoernaam      | Beschrijving                                          |
+| Invoer naam      | Beschrijving                                          |
 |---------------|------------------------------------------------------|
-| installatiekopie         | Complex Type. Werkt momenteel alleen met het veld '/document/normalized_images', ```imageAction``` geproduceerd door de Azure ```none```Blob-indexer wanneer deze is ingesteld op een andere waarde dan . Zie het [voorbeeld](#sample-output) voor meer informatie.|
+| installatiekopie         | Complex type. Momenteel werkt alleen met het veld '/document/normalized_images ', dat door de indexer van Azure Blob ```imageAction``` is geproduceerd wanneer is ingesteld op een ```none```andere waarde dan. Zie het voor [beeld](#sample-output) voor meer informatie.|
 
 
 
-##  <a name="sample-skill-definition"></a>Voorbeeldvaardigheidsdefinitie
+##  <a name="sample-skill-definition"></a>Voor beeld van vaardigheids definitie
 
 ```json
         {
@@ -86,7 +86,7 @@ Parameters zijn hoofdlettergevoelig.
             ]
         }
 ```
-### <a name="sample-index-for-only-the-categories-description-faces-and-tags-fields"></a>Voorbeeldindex (alleen voor de categorieën, beschrijvingen, gezichten en tagsvelden)
+### <a name="sample-index-for-only-the-categories-description-faces-and-tags-fields"></a>Voor beeld van index (alleen voor de velden categorieën, beschrijving, gezichten en Tags)
 ```json
 {
     "fields": [
@@ -298,7 +298,7 @@ Parameters zijn hoofdlettergevoelig.
 }
 
 ```
-### <a name="sample-output-field-mapping-for-the-above-index"></a>Veldtoewijzing van voorbeelduitvoervelden (voor de bovenstaande index)
+### <a name="sample-output-field-mapping-for-the-above-index"></a>Voorbeeld toewijzing van uitvoer velden (voor de bovenstaande index)
 ```json
     "outputFieldMappings": [
         {
@@ -322,9 +322,9 @@ Parameters zijn hoofdlettergevoelig.
             "targetFieldName": "brands"
         }
 ```
-### <a name="variation-on-output-field-mappings-nested-properties"></a>Variatie op toewijzingen van uitvoervelden (geneste eigenschappen)
+### <a name="variation-on-output-field-mappings-nested-properties"></a>Variatie op uitvoer veld toewijzingen (geneste eigenschappen)
 
-U uitvoerveldtoewijzingen definiëren voor eigenschappen op een lager niveau, zoals alleen oriëntatiepunten of beroemdheden. Zorg er in dit geval voor dat uw indexschema een veld heeft om specifiek oriëntatiepunten te bevatten.
+U kunt uitvoer veld toewijzingen definiëren voor eigenschappen op lagere niveaus, zoals alleen bezienswaardigheden of beroemdheden. Zorg er in dit geval voor dat het index schema een veld heeft dat de specifieke bezienswaardigheden bevat.
 
 ```json
     "outputFieldMappings": [
@@ -333,7 +333,7 @@ U uitvoerveldtoewijzingen definiëren voor eigenschappen op een lager niveau, zo
             "targetFieldName": "celebrities"
         }
 ```
-##  <a name="sample-input"></a>Voorbeeldinvoer
+##  <a name="sample-input"></a>Voorbeeld invoer
 
 ```json
 {
@@ -509,20 +509,20 @@ U uitvoerveldtoewijzingen definiëren voor eigenschappen op een lager niveau, zo
 ```
 
 
-## <a name="error-cases"></a>Foutgevallen
-In de volgende foutgevallen worden geen elementen geëxtraheerd.
+## <a name="error-cases"></a>Fout cases
+In de volgende gevallen worden er geen elementen geëxtraheerd.
 
 | Foutcode | Beschrijving |
 |------------|-------------|
-| Niet ondersteunde taal | De verstrekte taal wordt niet ondersteund. |
-| Ongeldig beeldurl | De URL van de afbeelding is slecht geformatteerd of niet toegankelijk.|
-| Ongeldige afbeeldingsopmaak | Invoergegevens zijn geen geldige afbeelding. |
-| Ongeldigeafbeeldingsgrootte | De invoerafbeelding is te groot. |
-| NotSupportedVisualFeature NotSupportedVisualFeature NotSupportedVisualFeature NotSupport  | Opgegeven functietype is niet geldig. |
-| NotSupportedImage NotSupportedImage | Niet-ondersteunde afbeelding, bijvoorbeeld kinderpornografie. |
-| OngeldigDetails | Niet-ondersteund domeinspecifiek model. |
+| NotSupportedLanguage | De gegeven taal wordt niet ondersteund. |
+| InvalidImageUrl | De afbeeldings-URL heeft een ongeldige indeling of is niet toegankelijk.|
+| InvalidImageFormat | De invoer gegevens zijn geen geldige installatie kopie. |
+| InvalidImageSize | De invoer afbeelding is te groot. |
+| NotSupportedVisualFeature  | Het opgegeven functie type is niet geldig. |
+| NotSupportedImage | Niet-ondersteunde installatie kopie, bijvoorbeeld onderliggende porno grafie. |
+| InvalidDetails | Niet-ondersteund domein-specifiek model. |
 
-Als u de fout `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"`vergelijkbaar met, controleer het pad. Zowel beroemdheden als bezienswaardigheden `detail`zijn eigenschappen onder .
+Als u de fout melding ziet `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"`, controleert u het pad. Zowel beroemdheden als bezienswaardigheden zijn eigenschappen `detail`.
 
 ```json
 "categories":[  
@@ -541,5 +541,5 @@ Als u de fout `"One or more skills are invalid. Details: Error in skill #<num>: 
 ## <a name="see-also"></a>Zie ook
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
-+ [Een vaardighedenset definiëren](cognitive-search-defining-skillset.md)
++ [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
 + [Indexeerfunctie maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

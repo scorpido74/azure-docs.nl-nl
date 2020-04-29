@@ -1,6 +1,6 @@
 ---
-title: Gebruikers beheren op cloudpartnerportal | Azure Marketplace
-description: Gebruikers beheren op cloudpartnerportal
+title: Gebruikers beheren in de Cloud Partner Portal | Azure Marketplace
+description: Gebruikers beheren in de Cloud Partner Portal
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,53 +8,53 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: 441f466fcbeb05d06d565dbe1af237d01554d844
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280215"
 ---
-<a name="managing-users-on-cloud-partner-portal"></a>Gebruikers beheren op cloudpartnerportal
+<a name="managing-users-on-cloud-partner-portal"></a>Gebruikers beheren in de Cloud Partner Portal
 ======================================
 
-Met de Cloud Partner Portal u gebruikers toevoegen met op rollen gebaseerde toegang tot aanbiedingen van virtuele machines. Het helpt bij het beheren van toegang en machtigingen terwijl meerdere mensen aan aanbiedingen werken.
+Met de Cloud Partner-portal kunt u gebruikers toevoegen met op rollen gebaseerde toegang tot aanbiedingen van virtuele machines. Het helpt bij het beheren van toegang en machtigingen terwijl meerdere mensen aan aanbiedingen werken.
 
-Voer de onderstaande stappen uit om gebruikers toe te **voegen en rollen toe te wijzen** voor het publiceren van aanbiedingen:
+Volg de onderstaande stappen om **gebruikers toe te voegen en rollen** toe te wijzen voor het publiceren van aanbiedingen.
 
-<a name="step-1-to-add-users-and-assign-roles-click-the-users-tab-on-the-left-side-navigation-pane"></a>Step 1. Als u gebruikers wilt toevoegen en rollen wilt toewijzen, klikt u op het tabblad Gebruikers in het navigatiedeelvenster aan de linkerkant.
+<a name="step-1-to-add-users-and-assign-roles-click-the-users-tab-on-the-left-side-navigation-pane"></a>Step 1. Als u gebruikers wilt toevoegen en rollen wilt toewijzen, klikt u op het tabblad gebruikers in het navigatie deel venster aan de linkerkant.
 --------------------------------------------------------------------------------------------
 
-![Tabblad Gebruikers](./media/cloud-partner-portal-how-to-manage-users/userstab.png)
+![Tabblad gebruikers](./media/cloud-partner-portal-how-to-manage-users/userstab.png)
 
-<a name="step-2-click-add-user"></a>Stap 2. Klik op Gebruiker toevoegen.
+<a name="step-2-click-add-user"></a>Stap 2. Klik op gebruiker toevoegen.
 -----------------------
 
 ![Gebruiker toevoegen selecteren](./media/cloud-partner-portal-how-to-manage-users/adduser.png)
 
-<a name="step-3-type-email-address-and-select-a-role-assignment"></a>Stap 3. Typ e-mailadres en selecteer een roltoewijzing.
+<a name="step-3-type-email-address-and-select-a-role-assignment"></a>Stap 3. Typ e-mail adres en selecteer een roltoewijzing.
 --------------------------------------------------------
 
-U de nieuwe gebruiker toevoegen als 'eigenaar' of 'bijdrager'.
+U kunt de nieuwe gebruiker toevoegen als ' eigenaar ' of ' Inzender '.
 
-**E-mail:** Voeg de e-mailadressen toe van teamgenoten die werken aan het publiceren van de aanbieding. Microsoft-accounts (Outlook, Hotmail en Live) en org-id's worden ondersteund.
+**E-mail**: Voeg de e-mail adressen toe van de team leden die werken met het publiceren van de aanbieding. Micro soft-accounts (Outlook, Hotmail en live) en organisatie-Id's worden ondersteund.
 
-o Voeg een 'team/groep e-mail alias/beveiligingsgroep' toe voor het geval de persoon die aan de aanbieding werkt de organisatie verlaat.
+o een team/groep e-mail alias/beveiligings groep toevoegen als de persoon die in de aanbieding werkt, de organisatie verlaat.
 
-o Ervoor zorgen dat e-id's die op de Cloud Partner Portal worden verstrekt, worden gecontroleerd op communicatie van Microsoft.
+o Controleer of de e-mail-Id's die op het Cloud Partner-portal worden gegeven, worden bewaakt voor elke communicatie van micro soft.
 
-**Functie:** Raadpleeg de onderstaande tabel om het juiste gebruikersroltype te identificeren.
+**Rol**: Raadpleeg de onderstaande tabel om het juiste type gebruikersrol te identificeren.
 
-![Rolrollenniveau](./media/cloud-partner-portal-how-to-manage-users/assignrole.png)
-![toewijzen](./media/cloud-partner-portal-how-to-manage-users/roleaccesslevel.png)
+![Niveau van](./media/cloud-partner-portal-how-to-manage-users/assignrole.png)
+![rol rollen toewijzen](./media/cloud-partner-portal-how-to-manage-users/roleaccesslevel.png)
 
-Momenteel hebben alleen eigenaren toegang tot de tabbladen Azure-uitbetalingen en Azure-klanten in Insights.
+Op dit moment hebben alleen eigen aren toegang tot de tabbladen Azure-uitbetalingen en Azure-klanten in inzichten.
 
-<a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>Stap 4. Selecteer de publishername die u aan de nieuwe gebruiker wilt toevoegen en klik op Toevoegen om de gebruikerstoevoeging te voltooien.
+<a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>Stap 4. Selecteer de naam van de uitgever die u aan de nieuwe gebruiker wilt toevoegen en klik vervolgens op toevoegen om de gebruikers toevoeging te volt ooien.
 ----------------------------------------------------------------------------------------------------------------------------
 
 > [!NOTE]
-> De 'uitgeversnamen' waarvoor uw e-mail als eigenaar of bijdrager wordt toegevoegd, worden weergegeven in de vervolgkeuzelijst van Publisher voor selectie.'
+> De naam van de uitgever waarvoor uw e-mail adres is toegevoegd als eigenaar of mede werker wordt weer gegeven in de vervolg keuzelijst van de Publisher voor selectie.
 
-![Rol toewijzen - uitgever selecteren](./media/cloud-partner-portal-how-to-manage-users/assignselectpublisher.png)
+![Rol toewijzen: Selecteer Uitgever](./media/cloud-partner-portal-how-to-manage-users/assignselectpublisher.png)
 
-Als u een gebruiker moet verwijderen die is toegevoegd, hoeft u alleen maar naar de e-mail te zoeken op het tabblad Gebruikers en vervolgens op de knop Verwijderen aan de rechterkant te drukken.
+Als u een gebruiker wilt verwijderen die is toegevoegd, hoeft u alleen maar op het tabblad gebruikers te zoeken naar hun e-mail en vervolgens op de knop verwijderen aan de rechter kant te klikken.

@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met een Azure Lab Services VM van Mac | Microsoft Documenten
+title: Verbinding maken met een Azure Lab Services-VM vanuit Mac | Microsoft Docs
 description: Dit artikel
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
@@ -14,37 +14,37 @@ ms.topic: article
 ms.date: 03/17/2020
 ms.author: spelluru
 ms.openlocfilehash: 0d3484c1008e00bcfde3adb399e925c0e054f49e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79503086"
 ---
-# <a name="connect-to-a-vm-using-rdp-on-a-mac"></a>Verbinding maken met een vm met RDP op een Mac
-In dit gedeelte ziet u hoe een student vanaf een Mac verbinding kan maken met een lab-vm in een klaslokaal met RDP.
+# <a name="connect-to-a-vm-using-rdp-on-a-mac"></a>Verbinding maken met een virtuele machine met behulp van RDP op een Mac
+In deze sectie wordt uitgelegd hoe een student via RDP verbinding kan maken met een leslokaal-VM van een klas hoofd omgeving.
 
-## <a name="install-microsoft-remote-desktop-on-a-mac"></a>Microsoft Remote Desktop installeren op een Mac
-1. Open de App Store op uw Mac en zoek naar **Microsoft Remote Desktop**.
+## <a name="install-microsoft-remote-desktop-on-a-mac"></a>Microsoft Extern bureaublad installeren op een Mac
+1. Open de App Store op uw Mac en zoek naar **Microsoft extern bureaublad**.
 
     ![Microsoft Extern bureaublad](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
-1. Installeer de nieuwste versie van Microsoft Remote Desktop. 
+1. Installeer de meest recente versie van Microsoft Extern bureaublad. 
 
-## <a name="access-the-vm-from-your-mac-using-rdp"></a>Toegang tot de VM vanaf uw Mac met RDP
-1. Open het **RDP-bestand** dat op uw computer is gedownload en **Microsoft Extern bureaublad** is geïnstalleerd. Het moet beginnen met het verbinden met de VM. 
+## <a name="access-the-vm-from-your-mac-using-rdp"></a>Toegang tot de virtuele machine vanaf uw Mac met RDP
+1. Open het **RDP** -bestand dat op uw computer is gedownload met **Microsoft extern bureaublad** geïnstalleerd. Het moet beginnen met het maken van verbinding met de virtuele machine. 
 
     ![Verbinding maken met de virtuele machine](../media/how-to-use-classroom-lab/connect-linux-vm.png)
-1. Selecteer **Doorgaan** als u de volgende waarschuwing ontvangt. 
+1. Selecteer **door gaan** als u de volgende waarschuwing ontvangt. 
 
-    ![Certificaatwaarschuwing](../media/how-to-use-classroom-lab/certificate-error.png)
-1. Je zou de VM moeten zien. 
+    ![Certificaat waarschuwing](../media/how-to-use-classroom-lab/certificate-error.png)
+1. De virtuele machine wordt weer geven. 
 
     > [!NOTE]
-    > Het volgende voorbeeld is voor een CentOS Linux VM. 
+    > Het volgende voor beeld is voor een CentOS Linux-VM. 
 
     ![VM](../media/how-to-use-classroom-lab/vm-ui.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Extern bureaublad gebruiken voor virtuele Linux-machines](how-to-use-remote-desktop-linux-student.md) voor meer informatie over het maken van verbinding met Linux-VM's met RDP
+Zie [extern bureau blad gebruiken voor virtuele Linux-machines](how-to-use-remote-desktop-linux-student.md) voor meer informatie over het maken van verbinding met Linux-vm's met behulp van RDP.
 
 
