@@ -1,6 +1,6 @@
 ---
-title: Bewaarbeleid instellen in Azure DevTest Labs | Microsoft Documenten
-description: Meer informatie over het configureren van een bewaarbeleid, het opruimen van de fabriek en het stoppen van oude afbeeldingen van DevTest Labs.
+title: Bewaar beleid instellen in Azure DevTest Labs | Microsoft Docs
+description: Meer informatie over het configureren van een Bewaar beleid, het opschonen van de fabriek en het buiten gebruik stellen van oude installatie kopieën van DevTest Labs.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: a472c500ee6b968b1459e65e49a352b81e5ea6ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76759411"
 ---
-# <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Bewaarbeleid instellen in Azure DevTest Labs
-Dit artikel behandelt het instellen van een bewaarbeleid, het opruimen van de fabriek en het terugtrekken van oude afbeeldingen van alle andere DevTest Labs in de organisatie. 
+# <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Bewaar beleid instellen in Azure DevTest Labs
+In dit artikel vindt u informatie over het instellen van een Bewaar beleid, het opschonen van de fabriek en het buiten gebruik stellen van oude installatie kopieën van alle andere DevTest Labs in de organisatie. 
 
 ## <a name="prerequisites"></a>Vereisten
 Zorg ervoor dat u deze artikelen hebt gevolgd voordat u verder gaat:
@@ -29,51 +29,51 @@ Zorg ervoor dat u deze artikelen hebt gevolgd voordat u verder gaat:
 - [Een fabrieksinstallatiekopie uitvoeren vanuit Azure DevOps](image-factory-set-up-devops-lab.md)
 - [Aangepaste installatiekopieën opslaan en distribueren naar meerdere labs](image-factory-save-distribute-custom-images.md)
 
-De volgende items moeten al op hun plaats zijn:
+De volgende items moeten al aanwezig zijn:
 
-- Een lab voor de imagefabriek in Azure DevTest Labs
-- Een of meer doel Azure DevTest Labs waar de fabriek gouden beelden zal distribueren
-- Een Azure DevOps-project dat wordt gebruikt om de afbeeldingsfabriek te automatiseren.
-- Broncodelocatie met de scripts en configuratie (in ons voorbeeld in hetzelfde DevOps-project hierboven gebruikt)
-- Een builddefinitie voor het orkestreren van de Azure Powershell-taken
+- Een Lab voor de installatie kopie-Factory in Azure DevTest Labs
+- Een of meer doel Azure DevTest Labs waar de fabriek Golden-installatie kopieën zal distribueren
+- Een Azure DevOps-project waarmee de installatie kopie-Factory wordt geautomatiseerd.
+- Locatie van de bron code met de scripts en configuratie (in dit voor beeld in hetzelfde DevOps-project dat hierboven wordt gebruikt)
+- Een build-definitie voor het organiseren van de Azure Power shell-taken
  
-## <a name="setting-the-retention-policy"></a>Het bewaarbeleid instellen
-Voordat u de opschonestappen configureert, bepaalt u hoeveel historische afbeeldingen u wilt behouden in de DevTest Labs. Wanneer u het artikel [Een afbeeldingsfabriek uitvoeren van Azure DevOps](image-factory-set-up-devops-lab.md) hebt gevolgd, hebt u verschillende buildvariabelen geconfigureerd. Een van hen was **ImageRetention**. U stelt deze `1`variabele in op , wat betekent dat de DevTest Labs geen geschiedenis van aangepaste afbeeldingen zal onderhouden. Alleen de meest recente gedistribueerde afbeeldingen zullen beschikbaar zijn. Als u deze `2`variabele wijzigt in , wordt de meest recente gedistribueerde afbeelding plus de vorige weergegeven. U deze waarde instellen om het aantal historische afbeeldingen te definiëren dat u wilt behouden in uw DevTest Labs.
+## <a name="setting-the-retention-policy"></a>Het Bewaar beleid instellen
+Voordat u de stappen voor opschonen configureert, definieert u hoeveel historische installatie kopieën u in de DevTest Labs wilt behouden. Wanneer u het artikel [een installatie kopie uitvoeren uit de Azure DevOps uitvoert](image-factory-set-up-devops-lab.md) , hebt u verschillende build-variabelen geconfigureerd. Een van deze is **ImageRetention**. U stelt deze variabele in `1`op, wat betekent dat de DevTest Labs geen geschiedenis van aangepaste installatie kopieën bijhoudt. Alleen de meest recente gedistribueerde installatie kopieën zijn beschikbaar. Als u deze variabele wijzigt in `2`, wordt de meest recente gedistribueerde installatie kopie plus de vorige opgenomen. U kunt deze waarde instellen om het aantal historische installatie kopieën te definiëren dat u wilt behouden in uw DevTest Labs.
 
-## <a name="cleaning-up-the-factory"></a>Het schoonmaken van de fabriek
-De eerste stap in het schoonmaken van de fabriek is het verwijderen van de gouden Beeld VM's uit de beeldfabriek. Er is een script om deze taak te doen, net als onze vorige scripts. De eerste stap is het toevoegen van een andere **Azure Powershell-taak** aan de builddefinitie zoals weergegeven in de volgende afbeelding:
+## <a name="cleaning-up-the-factory"></a>De fabriek opschonen
+De eerste stap bij het opschonen van de fabriek bestaat uit het verwijderen van de industriële installatie kopie-Vm's uit de installatie kopie-Factory. Er is een script om deze taak uit te voeren op dezelfde manier als onze vorige scripts. De eerste stap bestaat uit het toevoegen van een andere **Azure Power shell** -taak aan de build-definitie, zoals wordt weer gegeven in de volgende afbeelding:
 
-![PowerShell-stap](./media/set-retention-policy-cleanup/powershell-step.png)
+![Power shell-stap](./media/set-retention-policy-cleanup/powershell-step.png)
 
-Zodra u de nieuwe taak in de lijst hebt, selecteert u het item en vult u alle details in zoals in de volgende afbeelding wordt weergegeven:
+Wanneer u de nieuwe taak in de lijst hebt, selecteert u het item en vult u alle details in, zoals wordt weer gegeven in de volgende afbeelding:
 
-![Oude afbeeldingen opruimen PowerShell-taak](./media/set-retention-policy-cleanup/configure-powershell-task.png)
+![De Power shell-taak oude installatie kopieën opruimen](./media/set-retention-policy-cleanup/configure-powershell-task.png)
 
-De scriptparameters `-DevTestLabName $(devTestLabName)`zijn: .
+De script parameters zijn: `-DevTestLabName $(devTestLabName)`.
 
-## <a name="retire-old-images"></a>Oude afbeeldingen met pensioen laten gaan 
-Met deze taak worden alle oude afbeeldingen verwijderd, zodat alleen een geschiedenis overeenkomt met de variabele **ImageRetention build.** Voeg een extra **Azure Powershell-buildtaak** toe aan onze builddefinitie. Zodra deze is toegevoegd, selecteert u de taak en vult u de details in zoals weergegeven in de volgende afbeelding: 
+## <a name="retire-old-images"></a>Oude installatie kopieën buiten gebruik stellen 
+Met deze taak worden oude installatie kopieën verwijderd, waarbij alleen een geschiedenis wordt bijgehouden die overeenkomt met de **ImageRetention** -build-variabele. Een extra **Azure Power shell** -build-taak toevoegen aan de build-definitie. Zodra deze is toegevoegd, selecteert u de taak en vult u de details in, zoals wordt weer gegeven in de volgende afbeelding: 
 
-![Oude afbeeldingen met pensioen zetten PowerShell-taak](./media/set-retention-policy-cleanup/retire-old-image-task.png)
+![De Power shell-taak oude installatie kopieën buiten gebruik stellen](./media/set-retention-policy-cleanup/retire-old-image-task.png)
 
-De scriptparameters zijn:`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
+De script parameters zijn:`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
 
-## <a name="queue-the-build"></a>Wachtrij de build
-Nu u de builddefinitie hebt voltooid, moet u een nieuwe build in de wachtrij plaatsen om ervoor te zorgen dat alles werkt. Nadat de build is voltooid, worden de nieuwe aangepaste afbeeldingen weergegeven in het doellab en als u het laboratorium voor de afbeeldingsfabriek controleert, ziet u geen ingerichte VM's. Bovendien als u in de rij verder bouwt, ziet u de opruimtaken taken met pensioen oude aangepaste beelden uit de DevTest Labs in overeenstemming met de retentiewaarde in de build variabelen.
+## <a name="queue-the-build"></a>De build in de wachtrij plaatsen
+Nu u de build-definitie hebt voltooid, moet u een nieuwe build in de wachtrij plaatsen om er zeker van te zijn dat alles werkt. Nadat de build is voltooid, worden de nieuwe aangepaste installatie kopieën weer gegeven in het bestemmings Lab en als u het lab van de installatie kopie op de afbeelding controleert, ziet u geen ingerichte Vm's. Als u nog meer builds in de wachtrij hebt geplaatst, ziet u dat de verouderde taken voor het buiten gebruik stellen van oude aangepaste installatie kopieën uit de DevTest Labs in overeenstemming zijn met de retentie waarde die is ingesteld in de build-variabelen.
 
 > [!NOTE]
-> Als u de buildpijplijn aan het einde van het laatste artikel in de reeks hebt uitgevoerd, verwijdert u handmatig de virtuele machines die in het laboratorium voor de afbeeldingsfabriek zijn gemaakt voordat u een nieuwe build in de rij staat.  De handmatige opruimstap is alleen nodig terwijl we alles instellen en controleren of het werkt.
+> Als u de build-pijp lijn aan het einde van het laatste artikel in de reeks hebt uitgevoerd, verwijdert u hand matig de virtuele machines die zijn gemaakt in het lab voor installatie kopieën voordat u een nieuwe build maakt in de wachtrij.  De stap hand matig opschonen is alleen nodig om alles uit te stellen en te controleren of deze werkt.
 
 
 
 ## <a name="summary"></a>Samenvatting
-Nu heb je een draaiende beeldfabriek die op aanvraag aangepaste afbeeldingen kan genereren en distribueren naar je labs. Op dit punt, het is gewoon een kwestie van het krijgen van uw beelden goed ingesteld en het identificeren van de doellaboratoria. Zoals vermeld in het vorige artikel, de **Labs.json** bestand in uw **configuratie** map geeft aan welke afbeeldingen beschikbaar moeten worden gesteld in elk van de doellabs. Terwijl u andere DevTest Labs aan uw organisatie toevoegt, hoeft u alleen maar een vermelding in de Labs.json toe te voegen voor het nieuwe lab.
+U hebt nu een image Factory die aangepaste installatie kopieën kan genereren en distribueren naar uw Labs op aanvraag. Op dit moment is het slechts een kwestie van het correct instellen van uw installatie kopieën en het identificeren van de doel-Labs. Zoals vermeld in het vorige artikel, specificeert het bestand **Labs. json** dat zich in de map **Configuration** bevindt welke installatie kopieën beschikbaar moeten worden gemaakt in elk van de doel-Labs. Wanneer u andere DevTest Labs toevoegt aan uw organisatie, hoeft u alleen maar een vermelding toe te voegen aan de laboratoria. json voor het nieuwe lab.
 
-Het toevoegen van een nieuwe afbeelding aan uw fabriek is ook eenvoudig. Wanneer u een nieuwe afbeelding in uw fabriek wilt opnemen, opent u de [Azure-portal,](https://portal.azure.com)navigeert u naar uw factory DevTest Labs, selecteert u de knop om een VM toe te voegen en kiest u de gewenste marketplace-afbeelding en artefacten. In plaats van de knop **Maken** te selecteren om de nieuwe vm te maken, selecteert u **Sjabloon Azure Resource Manager weergeven**en slaat u de sjabloon op als een .json-bestand ergens in de map **GoldenImages** in uw opslagplaats. De volgende keer dat u uw afbeeldingsfabriek uitvoert, wordt uw aangepaste afbeelding gemaakt.
+Het toevoegen van een nieuwe installatie kopie aan uw fabriek is ook eenvoudig. Wanneer u een nieuwe installatie kopie in uw fabriek wilt toevoegen, gaat u naar [Azure Portal](https://portal.azure.com)de DevTest Labs en selecteert u de knop voor het toevoegen van een virtuele machine en kiest u de gewenste installatie kopie en artefacten van de Marketplace. In plaats van de knop **maken** te selecteren om de nieuwe VM te maken, selecteert u **Azure Resource Manager sjabloon weer geven**en slaat u de sjabloon op als een JSON-bestand ergens in de map **GoldenImages** in uw opslag plaats. De volgende keer dat u de installatie kopie-Factory uitvoert, wordt uw aangepaste installatie kopie gemaakt.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-1. [Plan uw build/release](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) om de afbeeldingsfabriek periodiek uit te voeren. Het vernieuwt uw in de fabriek gegenereerde afbeeldingen regelmatig.
-2. Maak meer gouden beelden voor uw fabriek. U ook overwegen [artefacten](devtest-lab-artifact-author.md) te maken om extra onderdelen van uw VM-installatietaken te scripten en de artefacten in uw fabrieksafbeeldingen op te nemen.
-4. Maak een [aparte build/release](/azure/devops/pipelines/overview?view=azure-devops-2019) om het **DistributeImages-script** afzonderlijk uit te voeren. U dit script uitvoeren wanneer u wijzigingen aanbrengt in Labs.json en afbeeldingen laten kopiëren naar doellabs zonder dat u alle afbeeldingen opnieuw hoeft te maken.
+1. [Plan uw build/release](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) om de installatie kopie in de fabriek periodiek uit te voeren. De door de fabriek gegenereerde installatie kopieën worden regel matig vernieuwd.
+2. Maak meer gouden installatie kopieën voor uw fabriek. U kunt ook overwegen om [artefacten te maken](devtest-lab-artifact-author.md) om extra onderdelen van uw VM-installatie taken te script en de artefacten in uw fabrieks installatie kopieën op te nemen.
+4. Maak een [afzonderlijke build/release](/azure/devops/pipelines/overview?view=azure-devops-2019) om het **DistributeImages** -script afzonderlijk uit te voeren. U kunt dit script uitvoeren wanneer u wijzigingen aanbrengt in Labs. json en installatie kopieën die zijn gekopieerd naar doel Labs, zonder dat u alle installatie kopieën opnieuw hoeft te maken.
 

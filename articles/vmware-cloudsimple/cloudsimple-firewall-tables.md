@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-oplossing door CloudSimple - Firewalltabellen
-description: Meer informatie over CloudSimple private cloud firewall tabellen en firewall regels.
+title: Azure VMware-oplossing op CloudSimple-firewall tabellen
+description: Meer informatie over CloudSimple-firewall tabellen en firewall regels voor de privécloud.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -9,56 +9,56 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 89bef6cef48f2b972aa3f931008b0db84431b832
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77025041"
 ---
-# <a name="firewall-tables-overview"></a>Overzicht van firewalltabellen
+# <a name="firewall-tables-overview"></a>Overzicht van Firewall tabellen
 
-In een firewalltabel worden regels weergegeven voor het filteren van netwerkverkeer van en naar Private Cloud-bronnen. U firewalltabellen toepassen op een VLAN/subnet. De regels regelen het netwerkverkeer tussen een bronnetwerk of IP-adres en een doelnetwerk of IP-adres.
+Een firewall tabel bevat regels voor het filteren van netwerk verkeer naar en van de Privécloud. U kunt Firewall tabellen Toep assen op een VLAN/subnet. De regels bepalen netwerk verkeer tussen een bron netwerk of IP-adres en een bestemmings netwerk of IP-adres.
 
 ## <a name="firewall-rules"></a>Firewall-regels
 
-In de volgende tabel worden de parameters in een firewallregel beschreven.
+In de volgende tabel worden de para meters in een firewall regel beschreven.
 
 | Eigenschap | Details |
 | ---------| --------|
-| **Naam** | Een naam die op unieke wijze de firewallregel en het doel ervan identificeert. |
-| **Prioriteit** | Een getal tussen 100 en 4096, met 100 als hoogste prioriteit. Regels worden in prioriteitsvolgorde verwerkt. Wanneer verkeer een regelovereenkomst tegenkomt, wordt de regelverwerking gestopt. Als gevolg hiervan worden regels met lagere prioriteiten met dezelfde kenmerken als regels met hogere prioriteiten niet verwerkt.  Zorg ervoor dat er geen tegenstrijdige regels zijn. |
-| **Staatstracking** | Tracking kan stateloos zijn (Private Cloud, Internet of VPN) of stateful (Public IP).  |
-| **Protocol** | Opties zijn Any, TCP of UDP. Als je ICMP nodig hebt, gebruik dan Any. |
-| **Richting** | Hiermee wordt aangegeven of de regel van toepassing is op binnenkomend of uitgaand verkeer. |
-| **Actie** | Toestaan of weigeren voor het type verkeer dat in de regel is gedefinieerd. |
-| **Bron** | Een IP-adres, cidr-blok (classless inter-domain routing) (bijvoorbeeld 10.0.0.0/24) of Any.  Als u een bereik, een servicetag of toepassingsbeveiligingsgroep opgeeft, u minder beveiligingsregels maken. |
-| **Bronpoort** | Haven waaruit netwerkverkeer afkomstig is.  U een afzonderlijke poort of bereik van poorten opgeven, zoals 443 of 8000-8080. Als u bereiken opgeeft, hoeft u minder beveiligingsregels te maken. |
-| **Bestemming** | Een IP-adres, cidr-blok (classless inter-domain routing) (bijvoorbeeld 10.0.0.0/24) of Any.  Als u een bereik, een servicetag of toepassingsbeveiligingsgroep opgeeft, u minder beveiligingsregels maken.  |
-| **Bestemmingspoort** | Poort waarnaar het netwerkverkeer stroomt.  U een afzonderlijke poort of bereik van poorten opgeven, zoals 443 of 8000-8080. Als u bereiken opgeeft, hoeft u minder beveiligingsregels te maken.|
+| **Naam** | Een naam die een unieke identificatie vormt van de firewall regel en het doel ervan. |
+| **Prioriteiten** | Een getal tussen 100 en 4096, met 100 de hoogste prioriteit. Regels worden in volg orde van prioriteit verwerkt. Wanneer het verkeer een regel overeenkomst tegen komt, stopt de verwerking van de regel. Als gevolg hiervan worden regels met een lagere prioriteit die dezelfde kenmerken hebben als regels met hogere prioriteiten, niet verwerkt.  Wees voorzichtig om conflicterende regels te voor komen. |
+| **Status bijhouden** | Bijhouden kan stateless (Privécloud, Internet of VPN) of stateful (openbaar IP-adres) zijn.  |
+| **Protocolsubstatus** | De opties zijn onder andere TCP of UDP. Als ICMP vereist is, gebruikt u een. |
+| **Draaien** | Hiermee wordt aangegeven of de regel van toepassing is op binnenkomend of uitgaand verkeer. |
+| **Actie** | Het type verkeer dat in de regel is gedefinieerd, toestaan of weigeren. |
+| **Bron** | Een IP-adres, een CIDR-blok (Classless Inter-Domain Routing) (10.0.0.0/24) of een wille keurig.  Als u een bereik, een servicetag of een toepassings beveiligings groep opgeeft, kunt u minder beveiligings regels maken. |
+| **Bron poort** | Poort van waaruit het netwerk verkeer afkomstig is.  U kunt een afzonderlijke poort of een bereik van poorten opgeven, zoals 443 of 8000-8080. Als u bereiken opgeeft, hoeft u minder beveiligingsregels te maken. |
+| **Beoogde** | Een IP-adres, een CIDR-blok (Classless Inter-Domain Routing) (10.0.0.0/24) of een wille keurig.  Als u een bereik, een servicetag of een toepassings beveiligings groep opgeeft, kunt u minder beveiligings regels maken.  |
+| **Doel poort** | Poort waarnaar het netwerk verkeer loopt.  U kunt een afzonderlijke poort of een bereik van poorten opgeven, zoals 443 of 8000-8080. Als u bereiken opgeeft, hoeft u minder beveiligingsregels te maken.|
 
 ### <a name="stateless"></a>Stateless
 
-Een staatloze regel kijkt alleen naar afzonderlijke pakketten en filtert ze op basis van de regel.  
-Er kunnen aanvullende regels nodig zijn voor de doorstroming van het verkeer in de omgekeerde richting.  Gebruik staatloze regels voor verkeer tussen de volgende punten:
+Een staatloze regel ziet er alleen uit bij afzonderlijke pakketten en filtert deze op basis van de regel.  
+Er zijn mogelijk extra regels vereist voor de verkeers stroom in de omgekeerde richting.  Gebruik stateless regels voor verkeer tussen de volgende punten:
 
-* Subnetten van private clouds
-* On-premises subnet en een Private Cloud-subnet
-* Internetverkeer vanuit de Private Clouds
+* Subnetten van persoonlijke Clouds
+* On-premises subnet en een persoonlijk Cloud subnet
+* Internet verkeer van de Privécloud
 
 ### <a name="stateful"></a>Stateful
 
- Een stateful regel is zich bewust van de verbindingen die er doorheen gaan. Voor bestaande verbindingen wordt een stroomrecord gemaakt. Communicatie wordt toegestaan of geweigerd op basis van de verbindingsstatus van de stroomrecord.  Gebruik dit regeltype voor openbare IP-adressen om verkeer van internet te filteren.
+ Een stateful regel is op de hoogte van de verbindingen die het passeren. Voor bestaande verbindingen wordt een stroomrecord gemaakt. Communicatie wordt toegestaan of geweigerd op basis van de verbindingsstatus van de stroomrecord.  Gebruik dit regel type voor open bare IP-adressen voor het filteren van verkeer van het internet.
 
 ### <a name="default-rules"></a>Standaardregels
 
-In elke firewalltabel worden de volgende standaardregels gemaakt.
+In elke firewall tabel worden de volgende standaard regels gemaakt.
 
-|Prioriteit|Name|Staatstracking|Richting|Verkeerstype|Protocol|Bron|Bronpoort|Doel|Doelpoort|Actie|
+|Prioriteit|Naam|Status bijhouden|Richting|Verkeers type|Protocol|Bron|Bronpoort|Doel|Doelpoort|Bewerking|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
-|65000|allow-all-to-internet|Stateful|Uitgaand|Openbaar IP- of internetverkeer|Alle|Alle|Alle|Alle|Alle|Toestaan|
-|65001|deny-all-from-internet|Stateful|Inkomend|Openbaar IP- of internetverkeer|Alle|Alle|Alle|Alle|Alle|Weigeren|
-|65002|allow-all-to-intranet|Stateless|Uitgaand|Privécloud intern of VPN-verkeer|Alle|Alle|Alle|Alle|Alle|Toestaan|
-|65003|allow-all-from-intranet|Stateless|Inkomend|Privécloud intern of VPN-verkeer|Alle|Alle|Alle|Alle|Alle|Toestaan|
+|65000|alles-naar-Internet toestaan|Stateful|Uitgaand|Openbaar IP-of Internet verkeer|Alle|Alle|Alle|Alle|Alle|Toestaan|
+|65001|weigeren: alle van Internet|Stateful|Inkomend|Openbaar IP-of Internet verkeer|Alle|Alle|Alle|Alle|Alle|Weigeren|
+|65002|alles-naar-intranet toestaan|Stateless|Uitgaand|Intern of VPN-verkeer in de privécloud|Alle|Alle|Alle|Alle|Alle|Toestaan|
+|65003|toestaan-alles-uit-intranet|Stateless|Inkomend|Intern of VPN-verkeer in de privécloud|Alle|Alle|Alle|Alle|Alle|Toestaan|
 
 ## <a name="next-steps"></a>Volgende stappen
 

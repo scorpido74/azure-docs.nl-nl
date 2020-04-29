@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus-beheerbibliotheken| Microsoft Documenten
-description: In dit artikel wordt uitgelegd hoe u Azure Service Bus-beheerbibliotheken gebruiken om naamruimten en entiteiten van servicebussen dynamisch in te richten.
+title: Azure Service Bus-beheer bibliotheken | Microsoft Docs
+description: In dit artikel wordt uitgelegd hoe u Azure Service Bus-beheer bibliotheken kunt gebruiken om Service Bus naam ruimten en entiteiten dynamisch in te richten.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -15,44 +15,44 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: d0e90d9278ede97de04ad8efeaa59d94a4567f66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76756263"
 ---
 # <a name="service-bus-management-libraries"></a>Service Bus-beheerbibliotheken
 
-De azure servicebusbeheerbibliotheken kunnen servicebusnaamruimten en -entiteiten dynamisch inrichten. Dit maakt complexe implementaties en messaging-scenario's mogelijk en maakt het mogelijk om programmatisch te bepalen welke entiteiten moeten worden ingerichte. Deze bibliotheken zijn momenteel beschikbaar voor .NET.
+De Azure Service Bus-beheer bibliotheken kunnen Service Bus naam ruimten en entiteiten dynamisch inrichten. Zo kunt u complexe implementaties en bericht scenario's maken en kunt u programmatisch bepalen welke entiteiten moeten worden ingericht. Deze bibliotheken zijn momenteel beschikbaar voor .NET.
 
 ## <a name="supported-functionality"></a>Ondersteunde functionaliteit
 
-* Namespace maken, bijwerken, verwijderen
+* Naam ruimte maken, bijwerken, verwijderen
 * Wachtrij maken, bijwerken, verwijderen
 * Onderwerp maken, bijwerken, verwijderen
-* Het maken, bijwerken, verwijderen van een abonnement
+* Abonnementen maken, bijwerken, verwijderen
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u aan de slag wilt met de beheerbibliotheken van ServiceBus, moet u zich verifiëren met de Azure AD-service (Azure Directory). Azure AD vereist dat u verifieert als serviceprincipal, die toegang biedt tot uw Azure-bronnen. Zie een van de volgende artikelen voor informatie over het maken van een serviceprincipal:  
+Als u de Service Bus-beheer bibliotheken wilt gaan gebruiken, moet u zich verifiëren met de service Azure Active Directory (Azure AD). Voor Azure AD moet u worden geverifieerd als Service-Principal, waarmee u toegang hebt tot uw Azure-resources. Zie een van de volgende artikelen voor meer informatie over het maken van een Service-Principal:  
 
-* [De Azure-portal gebruiken om Active Directory-toepassing en serviceprincipal te maken die toegang hebben tot bronnen](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+* [Gebruik de Azure Portal om Active Directory-toepassing en Service-Principal te maken die toegang hebben tot resources](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 * [Azure PowerShell gebruiken om een service-principal te maken voor toegang tot resources](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [Azure CLI gebruiken om een service-principal te maken voor toegang tot resources](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-Deze zelfstudies bieden `AppId` u een `TenantId`(client-ID) en `ClientSecret` (verificatiesleutel), die allemaal worden gebruikt voor verificatie door de beheerbibliotheken. U moet **eigenaarmachtigingen** hebben voor de resourcegroep waarop u wilt uitvoeren.
+Deze zelf studies bieden u een `AppId` (client-id) `TenantId`,, `ClientSecret` en (verificatie sleutel), die allemaal worden gebruikt voor verificatie door de beheer bibliotheken. U moet **eigenaars** machtigingen hebben voor de resource groep waarop u wilt uitvoeren.
 
-## <a name="programming-pattern"></a>Programmeerpatroon
+## <a name="programming-pattern"></a>Programmerings patroon
 
-Het patroon om een Service Bus-bron te manipuleren volgt een algemeen protocol:
+Het patroon voor het bewerken van een Service Bus resource volgt een gemeen schappelijk Protocol:
 
-1. Een token verkrijgen bij Azure AD met de **Microsoft.IdentityModel.Clients.ActiveDirectory-bibliotheek:**
+1. Een token verkrijgen van Azure AD met behulp van de **micro soft. Identity model. clients. ActiveDirectory** -bibliotheek:
    ```csharp
    var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
    var result = await context.AcquireTokenAsync("https://management.azure.com/", new ClientCredential(clientId, clientSecret));
    ```
-2. Maak `ServiceBusManagementClient` het object:
+2. Maak het `ServiceBusManagementClient` object:
 
    ```csharp
    var creds = new TokenCredentials(token);
@@ -61,7 +61,7 @@ Het patroon om een Service Bus-bron te manipuleren volgt een algemeen protocol:
        SubscriptionId = SettingsCache["SubscriptionId"]
    };
    ```
-3. Stel `CreateOrUpdate` de parameters in op de opgegeven waarden:
+3. Stel de `CreateOrUpdate` para meters in op uw opgegeven waarden:
 
    ```csharp
    var queueParams = new QueueCreateOrUpdateParameters()
@@ -70,14 +70,14 @@ Het patroon om een Service Bus-bron te manipuleren volgt een algemeen protocol:
        EnablePartitioning = true
    };
    ```
-4. Voer de oproep uit:
+4. De aanroep uitvoeren:
 
    ```csharp
    await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, QueueName, queueParams);
    ```
 
-## <a name="complete-code-to-create-a-queue"></a>Code voltooien om een wachtrij te maken
-Hier is de volledige code om een servicebuswachtrij te maken: 
+## <a name="complete-code-to-create-a-queue"></a>Volledige code voor het maken van een wachtrij
+Dit is de volledige code voor het maken van een Service Bus wachtrij: 
 
 ```csharp
 using System;
@@ -164,7 +164,7 @@ namespace SBusADApp
 ```
 
 > [!IMPORTANT]
-> Zie voor een volledig voorbeeld het [voorbeeld van .NET-beheer op GitHub](https://github.com/Azure-Samples/service-bus-dotnet-management/). 
+> Zie het voor [beeld van .net Management op github](https://github.com/Azure-Samples/service-bus-dotnet-management/)voor een volledig voor beeld. 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Microsoft.Azure.Management.ServiceBus API-verwijzing](/dotnet/api/Microsoft.Azure.Management.ServiceBus)
+[Naslag informatie voor micro soft. Azure. Management. ServiceBus API](/dotnet/api/Microsoft.Azure.Management.ServiceBus)

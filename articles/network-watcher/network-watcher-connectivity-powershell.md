@@ -1,7 +1,7 @@
 ---
-title: Problemen met verbindingen oplossen - Azure PowerShell
+title: Problemen met verbindingen oplossen-Azure PowerShell
 titleSuffix: Azure Network Watcher
-description: Meer informatie over het gebruik van de mogelijkheden voor het oplossen van verbindingen van Azure Network Watcher met PowerShell.
+description: Meer informatie over het gebruik van de functie verbinding oplossen van Azure Network Watcher met behulp van Power shell.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -14,36 +14,36 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: abc9389c2c5fd5576795c26a89e3941b6eb5a939
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76842832"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Problemen met verbindingen met Azure Network Watcher oplossen met PowerShell
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Problemen met de verbinding met Azure Network Watcher oplossen met Power shell
 
 > [!div class="op_single_selector"]
 > - [Portal](network-watcher-connectivity-portal.md)
-> - [Powershell](network-watcher-connectivity-powershell.md)
+> - [Zo](network-watcher-connectivity-powershell.md)
 > - [Azure-CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
-Meer informatie over het gebruik van verbindingsproblemen om te controleren of een directe TCP-verbinding van een virtuele machine naar een bepaald eindpunt kan worden gemaakt.
+Meer informatie over het gebruik van verbindings problemen oplossen om te controleren of een directe TCP-verbinding van een virtuele machine naar een bepaald eind punt tot stand kan worden gebracht.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-* Een exemplaar van Network Watcher in de regio die u wilt oplossen van een verbinding.
-* Virtuele machines om verbindingen met op te lossen.
+* Een exemplaar van Network Watcher in de regio waarvoor u problemen met een verbinding wilt oplossen.
+* Virtuele machines voor het oplossen van verbindingen met.
 
 > [!IMPORTANT]
-> Het oplossen van verbindingsproblemen vereist `AzureNetworkWatcherExtension` dat de VM die u oplost, de VM-extensie heeft geïnstalleerd. Voor het installeren van de extensie op een Windows VM bezoek [Azure Network Watcher Agent virtuele machine extensie voor Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en voor Linux VM bezoek Azure Network Watcher Agent virtuele machine extensie voor [Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). De extensie is niet vereist op het eindpunt van de bestemming.
+> Verbindings problemen oplossen vereist dat de `AzureNetworkWatcherExtension` VM-extensie is geïnstalleerd op de VM die u wilt oplossen. Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). De uitbrei ding is niet vereist voor het eind punt van de bestemming.
 
-## <a name="check-connectivity-to-a-virtual-machine"></a>De verbinding met een virtuele machine controleren
+## <a name="check-connectivity-to-a-virtual-machine"></a>Controleer de verbinding met een virtuele machine
 
-In dit voorbeeld wordt een verbinding met een virtuele bestemmingsmachine over poort 80 gecontroleerd. In dit voorbeeld moet u Network Watcher hebben ingeschakeld in de regio met de bron-VM.  
+In dit voor beeld wordt een verbinding met een bestemmings virtuele machine gecontroleerd via poort 80. In dit voor beeld moet Network Watcher zijn ingeschakeld in de regio met de bron-VM.  
 
 ### <a name="example"></a>Voorbeeld
 
@@ -64,7 +64,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Antwoord
 
-Het volgende antwoord komt uit het vorige voorbeeld.  In dit antwoord `ConnectionStatus` is het **onbereikbaar**. U zien dat alle verzonden sondes zijn mislukt. De connectiviteit is mislukt bij het virtuele toestel `NetworkSecurityRule` als gevolg van een door de gebruiker geconfigureerde **UserRule_Port80**, geconfigureerd om binnenkomend verkeer op poort 80 te blokkeren. Deze informatie kan worden gebruikt om verbindingsproblemen te onderzoeken.
+Het volgende antwoord is afkomstig uit het vorige voor beeld.  In dit antwoord is de `ConnectionStatus` **onbereikbaar**. U kunt zien dat alle probe-verzen ding is mislukt. De connectiviteit op het virtuele apparaat is mislukt vanwege een door de gebruiker `NetworkSecurityRule` geconfigureerde **UserRule_Port80**, geconfigureerd om inkomend verkeer op poort 80 te blok keren. Deze informatie kan worden gebruikt om verbindings problemen te onderzoeken.
 
 ```
 ConnectionStatus : Unreachable
@@ -135,9 +135,9 @@ Hops             : [
                    ]
 ```
 
-## <a name="validate-routing-issues"></a>Routeringsproblemen valideren
+## <a name="validate-routing-issues"></a>Routerings problemen valideren
 
-In dit voorbeeld wordt de verbinding tussen een virtuele machine en een extern eindpunt gecontroleerd. In dit voorbeeld moet u Network Watcher hebben ingeschakeld in de regio met de bron-VM.  
+In dit voor beeld wordt de verbinding tussen een virtuele machine en een extern eind punt gecontroleerd. In dit voor beeld moet Network Watcher zijn ingeschakeld in de regio met de bron-VM.  
 
 ### <a name="example"></a>Voorbeeld
 
@@ -155,7 +155,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Antwoord
 
-In het volgende `ConnectionStatus` voorbeeld wordt het weergegeven als **Onbereikbaar**. In `Hops` de details `Issues` u zien onder dat het `UserDefinedRoute`verkeer werd geblokkeerd als gevolg van een. 
+In het volgende voor beeld wordt `ConnectionStatus` de wordt weer gegeven als **onbereikbaar**. In de `Hops` Details kunt u zien `Issues` dat het verkeer is geblokkeerd vanwege een. `UserDefinedRoute` 
 
 ```
 ConnectionStatus : Unreachable
@@ -198,9 +198,9 @@ Hops             : [
                    ]
 ```
 
-## <a name="check-website-latency"></a>Websitelatentie controleren
+## <a name="check-website-latency"></a>Website latentie controleren
 
-In het volgende voorbeeld wordt de verbinding met een website gecontroleerd. In dit voorbeeld moet u Network Watcher hebben ingeschakeld in de regio met de bron-VM.  
+In het volgende voor beeld wordt de verbinding met een website gecontroleerd. In dit voor beeld moet Network Watcher zijn ingeschakeld in de regio met de bron-VM.  
 
 ### <a name="example"></a>Voorbeeld
 
@@ -219,7 +219,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Antwoord
 
-In het volgende antwoord kunt `ConnectionStatus` u de shows zien als **Bereikbaar**. Wanneer een verbinding succesvol is, worden latentiewaarden opgegeven.
+In het volgende antwoord ziet u dat de `ConnectionStatus` weer gave kan worden weer gegeven als **bereikbaar**. Wanneer een verbinding tot stand is gebracht, worden er latentie waarden gegeven.
 
 ```
 ConnectionStatus : Reachable
@@ -250,9 +250,9 @@ Hops             : [
                    ]
 ```
 
-## <a name="check-connectivity-to-a-storage-endpoint"></a>De verbinding met een opslageindpunt controleren
+## <a name="check-connectivity-to-a-storage-endpoint"></a>Connectiviteit met een opslag eindpunt controleren
 
-In het volgende voorbeeld wordt de verbinding van een virtuele machine naar een blogopslagaccount gecontroleerd. In dit voorbeeld moet u Network Watcher hebben ingeschakeld in de regio met de bron-VM.  
+In het volgende voor beeld wordt de connectiviteit van een virtuele machine naar een blog-opslag account gecontroleerd. In dit voor beeld moet Network Watcher zijn ingeschakeld in de regio met de bron-VM.  
 
 ### <a name="example"></a>Voorbeeld
 
@@ -271,7 +271,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Antwoord
 
-De volgende json is het voorbeeldantwoord van het uitvoeren van de vorige cmdlet. Omdat de bestemming bereikbaar `ConnectionStatus` is, wordt de accommodatie weergegeven als **Bereikbaar.**  U krijgt de details over het aantal hop dat nodig is om de opslagblob en latentie te bereiken.
+De volgende JSON is het voorbeeld antwoord van het uitvoeren van de vorige cmdlet. Als de bestemming bereikbaar is, wordt de `ConnectionStatus` eigenschap weer gegeven als **bereikbaar**.  U vindt de details over het aantal hops dat is vereist om de opslag-Blob en latentie te bereiken.
 
 ```json
 ConnectionStatus : Reachable
@@ -304,6 +304,6 @@ Hops             : [
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bepaal of bepaalde verkeer is toegestaan in of uit uw VM door naar [Ip-stroom controleren controleren.](diagnose-vm-network-traffic-filtering-problem.md)
+Bepaal of er al dan niet een bepaald verkeer is toegestaan in of uit uw virtuele machine door te kijken naar de [IP-stroom](diagnose-vm-network-traffic-filtering-problem.md)controleren.
 
-Zie Netwerkbeveiligingsgroepen beheren om de gedefinieerde netwerkbeveiligingsgroep en beveiligingsregels op te sporen als het verkeer wordt geblokkeerd en dat niet mag, [raadpleegt u Netwerkbeveiligingsgroepen](../virtual-network/manage-network-security-group.md) beheren om de gedefinieerde netwerkbeveiligingsgroep en beveiligingsregels op te sporen.
+Als verkeer wordt geblokkeerd en dit niet moet worden weer geven, raadpleegt u [netwerk beveiligings groepen beheren](../virtual-network/manage-network-security-group.md) om de netwerk beveiligings groep en beveiligings regels die zijn gedefinieerd, bij te houden.

@@ -1,7 +1,7 @@
 ---
-title: Schaalbaarheidsdoelen voor blob-opslagaccounts met premium pagina
+title: Schaalbaarheids doelen voor Premium-pagina-Blob Storage-accounts
 titleSuffix: Azure Storage
-description: Een blob-opslagaccount met een premium prestatiepagina is geoptimaliseerd voor lees-/schrijfbewerkingen. Dit type opslagaccount maakt een back-to-meen van een onbeheerde schijf voor een virtuele Azure-machine.
+description: Een pagina voor het Blob-opslag account voor Premium-prestaties is geoptimaliseerd voor lees-en schrijf bewerkingen. Dit type opslag account maakt een back-up van een onbeheerde schijf voor een virtuele machine van Azure.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,41 +10,41 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: e134c69f5d602cb4369e9410e3e2b9d3478b11a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76756246"
 ---
-# <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Schaalbaarheids- en prestatiedoelen voor blob-opslagaccounts met premium pagina's
+# <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Schaalbaarheids-en prestatie doelen voor Premium-pagina-Blob Storage-accounts
 
 [!INCLUDE [storage-scalability-intro-include](../../../includes/storage-scalability-intro-include.md)]
 
-## <a name="scale-targets-for-premium-page-blob-accounts"></a>Doelen schalen voor blobaccounts met premium pagina's
+## <a name="scale-targets-for-premium-page-blob-accounts"></a>Schaal doelen voor Premium-pagina-BLOB-accounts
 
-Een blob-opslagaccount met premium prestaties is geoptimaliseerd voor lees-/schrijfbewerkingen. Dit type opslagaccount maakt een back-to-meen van een onbeheerde schijf voor een virtuele Azure-machine.
+Een pagina-Blob-opslag account voor Premium-prestaties is geoptimaliseerd voor lees-en schrijf bewerkingen. Dit type opslag account maakt een back-up van een onbeheerde schijf voor een virtuele machine van Azure.
 
 > [!NOTE]
-> Microsoft raadt aan om beheerde schijven te gebruiken met Virtuele Azure-machines (VM's) indien mogelijk. Zie overzicht van Azure [Disk Storage voor Windows VM's voor](../../virtual-machines/windows/managed-disks-overview.md)meer informatie over beheerde schijven.
+> Micro soft raadt u aan om Managed disks te gebruiken met Azure virtual machines (Vm's), indien mogelijk. Zie [overzicht van Azure Disk Storage voor Windows-vm's](../../virtual-machines/windows/managed-disks-overview.md)voor meer informatie over beheerde schijven.
 
-Premium paginablob-opslagaccounts hebben de volgende schaalbaarheidsdoelen:
+Voor Premium-pagina-Blob Storage-accounts gelden de volgende schaalbaarheids doelen:
 
-| Totale accountcapaciteit                            | Totale bandbreedte voor een lokaal redundantopslagaccount                     |
+| Totale account capaciteit                            | Totale band breedte voor een lokaal redundante opslag account                     |
 | ------------------------------------------------- | --------------------------------------------------------------------------- |
-| Schijfcapaciteit: 4 TB (individuele schijf)/ 35 TB (cumulatief totaal van alle schijven) <br>Momentopnamecapaciteit: 10 TB | Tot 50 gigabit per seconde voor inbound<sup>1</sup> + outbound<sup>2</sup> |
+| Schijf capaciteit: 4 TB (afzonderlijke schijf)/35 TB (cumulatief totaal van alle schijven) <br>Moment opname capaciteit: 10 TB | Maxi maal 50 gigabits per seconde voor inkomend<sup>1</sup> + uitgaand<sup>2</sup> |
 
-<sup>1</sup> Alle gegevens (aanvragen) die naar een opslagaccount worden verzonden
+<sup>1</sup> alle gegevens (aanvragen) die worden verzonden naar een opslag account
 
-<sup>2</sup> Alle gegevens (antwoorden) die worden ontvangen van een opslagaccount
+<sup>2</sup> alle gegevens (antwoorden) die zijn ontvangen van een opslag account
 
-Een premium paginablobaccount is een account voor algemene doeleinden dat is geconfigureerd voor premium prestaties. V2-opslagaccounts voor algemene doeleinden worden aanbevolen.
+Een Premium-pagina-BLOB-account is een algemeen account dat is geconfigureerd voor Premium-prestaties. V2-opslag accounts voor algemeen gebruik worden aanbevolen.
 
-Als u premium paginablob-opslagaccounts gebruikt voor niet-beheerde schijven en uw toepassing de schaalbaarheidsdoelen van één opslagaccount overschrijdt, raadt Microsoft u aan te migreren naar beheerde schijven. Zie overzicht van Azure [Disk Storage voor Windows VM's](../../virtual-machines/windows/managed-disks-overview.md) of [Azure Disk Storage voor Linux VM's voor](../../virtual-machines/linux/managed-disks-overview.md)meer informatie over beheerde schijven.
+Als u opslag accounts voor Premium-pagina-blobs gebruikt voor onbeheerde schijven en uw toepassing de schaalbaarheids doelen van één opslag account overschrijdt, raadt micro soft aan om te migreren naar beheerde schijven. Zie [overzicht van Azure Disk Storage voor Windows-vm's](../../virtual-machines/windows/managed-disks-overview.md) of [Azure Disk Storage overzicht voor Linux-vm's](../../virtual-machines/linux/managed-disks-overview.md)voor meer informatie over beheerde schijven.
 
-Als u niet migreren naar beheerde schijven, bouwt u uw toepassing om meerdere opslagaccounts te gebruiken en uw gegevens over die opslagaccounts te verdelen. Als u bijvoorbeeld 51 TB-schijven wilt koppelen aan meerdere VM's, spreidt u deze over twee opslagaccounts. 35 TB is de limiet voor één premium opslagaccount. Zorg ervoor dat één premium prestatieopslagaccount nooit meer dan 35 TB aan ingerichte schijven heeft.
+Als u niet kunt migreren naar Managed disks, bouwt u uw toepassing voor het gebruik van meerdere opslag accounts en partitioneert u uw gegevens in deze opslag accounts. Als u bijvoorbeeld schijven van 51 TB wilt aansluiten op meerdere Vm's, moet u deze verdelen over twee opslag accounts. 35 TB is de limiet voor één Premium-opslag account. Zorg ervoor dat één Premium-prestatie opslag account nooit meer dan 35 TB aan ingerichte schijven heeft.
 
 ## <a name="see-also"></a>Zie ook
 
-- [Schaalbaarheid en prestatiedoelen voor standaardopslagaccounts](../common/scalability-targets-standard-account.md)
-- [Schaalbaarheidsdoelen voor premium block blob-opslagaccounts](../blobs/scalability-targets-premium-block-blobs.md)
-- [Azure-abonnementslimieten en -quota](../../azure-resource-manager/management/azure-subscription-service-limits.md)
+- [Schaalbaarheids-en prestatie doelen voor standaard opslag accounts](../common/scalability-targets-standard-account.md)
+- [Schaalbaarheids doelen voor Premium Block Blob Storage-accounts](../blobs/scalability-targets-premium-block-blobs.md)
+- [Limieten en quota voor Azure-abonnementen](../../azure-resource-manager/management/azure-subscription-service-limits.md)

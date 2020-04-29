@@ -1,7 +1,7 @@
 ---
-title: Grote gegevensset indexeren met ingebouwde indexeerders
+title: Grote gegevensset indexeren met ingebouwde Indexeer functies
 titleSuffix: Azure Cognitive Search
-description: Strategieën voor het indexeren van grote gegevens of rekenintensieve indexering via batchmodus, resourcing en technieken voor geplande, parallelle en gedistribueerde indexering.
+description: Strategieën voor het indexeren van grote gegevens of reken kundige, intensieve indexering via de batch modus, het opruimen en technieken voor geplande, parallelle en gedistribueerde indexeringen.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,102 +9,102 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 4ad5e961e390b60784355ff3bc72aca4a2f73e11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77190967"
 ---
-# <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Grote gegevenssets indexeren in Azure Cognitive Search
+# <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Grote gegevens sets indexeren in azure Cognitive Search
 
-Naarmate de gegevensvolumes toenemen of de verwerkingsbehoeften veranderen, u merken dat eenvoudige of standaardindexeringsstrategieën niet langer praktisch zijn. Voor Azure Cognitive Search zijn er verschillende benaderingen voor het aanpassen van grotere gegevenssets, variërend van hoe u een aanvraag voor het uploaden van gegevens structureert tot het gebruik van een bronspecifieke indexeerder voor geplande en gedistribueerde workloads.
+Naarmate gegevens volumes groeien of verwerkings behoeften veranderen, is het mogelijk dat eenvoudige of standaard indexerings strategieën niet meer praktisch zijn. Voor Azure Cognitive Search zijn er verschillende benaderingen voor het maken van grotere gegevens sets, variërend van de manier waarop u een aanvraag voor het uploaden van gegevens structureert, voor het gebruik van een bron-specifieke Indexeer functie voor geplande en gedistribueerde werk belastingen.
 
-Dezelfde technieken zijn ook van toepassing op langlopende processen. In het bijzonder zijn de stappen die in [parallelle indexering](#parallel-indexing) worden beschreven nuttig voor rekenintensieve indexering, zoals beeldanalyse of natuurlijke taalverwerking in een [AI-verrijkingspijplijn](cognitive-search-concept-intro.md).
+Dezelfde technieken zijn ook van toepassing op langlopende processen. Met name de stappen die worden beschreven in [parallelle indexering](#parallel-indexing) zijn handig voor reken kundige indexen, zoals afbeeldings analyses of natuurlijke taal verwerking in een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md).
 
-In de volgende secties worden drie technieken onderzocht voor het indexeren van grote hoeveelheden gegevens.
+In de volgende secties worden drie technieken voor het indexeren van grote hoeveel heden gegevens besproken.
 
-## <a name="option-1-pass-multiple-documents"></a>Optie 1: Meerdere documenten doorgeven
+## <a name="option-1-pass-multiple-documents"></a>Optie 1: meerdere documenten door geven
 
-Een van de eenvoudigste mechanismen voor het indexeren van een grotere gegevensset is het indienen van meerdere documenten of records in één aanvraag. Zolang de volledige payload minder dan 16 MB is, kan een aanvraag tot 1000 documenten verwerken in een bulkuploadbewerking. Deze limieten zijn van toepassing of u de [API Documenten REST toevoegen](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) of de [indexmethode](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) gebruikt in de .NET SDK. Voor beide API's zou u 1000 documenten verpakken in de hoofdtekst van elk verzoek.
+Een van de eenvoudigste mechanismen voor het indexeren van een grotere gegevensset is het indienen van meerdere documenten of records in één aanvraag. Zolang de volledige Payload minder is dan 16 MB, kan een aanvraag tot 1000 documenten in een bulk upload bewerking verwerken. Deze limieten zijn van toepassing, ongeacht of u de [rest API documenten toevoegen](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) of de [methode index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) gebruikt in de .NET SDK. Voor beide API'S, pakt u 1000-documenten in de hoofd tekst van elke aanvraag.
 
-Batchindexering wordt geïmplementeerd voor individuele aanvragen met REST of .NET of via indexers. Een paar indexeerders werken onder verschillende limieten. In het bijzonder stelt Azure Blob-indexering batchgrootte in op 10 documenten als erkenning van de grotere gemiddelde documentgrootte. Voor indexers op basis van de [API Voor indexeren kunt](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)u het `BatchSize` argument instellen om deze instelling aan te passen aan de kenmerken van uw gegevens. 
-
-> [!NOTE]
-> Als u de grootte van het document laag wilt houden, moet u voorkomen dat niet-opvraagbare gegevens aan een index worden toegevoegd. Afbeeldingen en andere binaire gegevens zijn niet direct doorzoekbaar en mogen niet worden opgeslagen in de index. Als u niet-opvraagbare gegevens wilt integreren in zoekresultaten, moet u een niet-doorzoekbaar veld definiëren dat een URL-verwijzing naar de bron opslaat.
-
-## <a name="option-2-add-resources"></a>Optie 2: Resources toevoegen
-
-Services die zijn ingericht op een van de [standaardprijsniveaus](search-sku-tier.md) hebben vaak onderbenutte capaciteit voor zowel opslag als workloads (query's of indexering), waardoor [het verhogen van de partitie en replica telt](search-capacity-planning.md) een voor de hand liggende oplossing voor het accommoderen van grotere gegevenssets. Voor de beste resultaten hebt u beide resources nodig: partities voor opslag en replica's voor het werk voor het innemen van gegevens.
-
-Het verhogen van replica's en partities zijn factureerbare gebeurtenissen die uw kosten verhogen, maar tenzij u continu indexeert onder maximale belasting, u schaal toevoegen voor de duur van het indexeringsproces en vervolgens resourceniveaus naar beneden aanpassen nadat de indexering is Klaar.
-
-## <a name="option-3-use-indexers"></a>Optie 3: Indexers gebruiken
-
-[Indexers](search-indexer-overview.md) worden gebruikt om ondersteunde Azure-gegevensbronnen te crawlen voor doorzoekbare inhoud. Hoewel niet specifiek bedoeld voor grootschalige indexering, zijn verschillende indexermogelijkheden bijzonder nuttig voor het accommoderen van grotere gegevenssets:
-
-+ Planners u pakket uit indexeren op regelmatige tijdstippen, zodat u het verspreiden over de tijd.
-+ Geplande indexering kan worden hervat bij het laatst bekende stoppunt. Als een gegevensbron niet volledig binnen een periode van 24 uur is gecrawld, wordt de indexer op dag twee hervat met indexeren, waar deze ook was gebleven.
-+ Het verdelen van gegevens in kleinere afzonderlijke gegevensbronnen maakt parallelle verwerking mogelijk. U brongegevens opsplitsen in kleinere componenten, zoals in meerdere containers in Azure Blob-opslag, en vervolgens overeenkomstige, meerdere [gegevensbronobjecten](https://docs.microsoft.com/rest/api/searchservice/create-data-source) maken in Azure Cognitive Search die parallel kunnen worden geïndexeerd.
+Batch indexering wordt geïmplementeerd voor afzonderlijke aanvragen met behulp van REST of .NET of via Indexeer functies. Een paar Indexeer functies kunnen worden gebruikt onder verschillende limieten. Met de indexering van Azure Blob wordt de Batch grootte bij 10 documenten ingesteld op het herkennen van de grotere gemiddelde document grootte. Voor Indexeer functies op basis van de [rest API Indexeer functie maken](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer), kunt u het `BatchSize` argument instellen om deze instelling aan te passen, zodat deze beter overeenkomt met de kenmerken van uw gegevens. 
 
 > [!NOTE]
-> Indexers zijn gegevensbronspecifiek, dus het gebruik van een indexerbenadering is alleen haalbaar voor geselecteerde gegevensbronnen op Azure: [SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Blob-opslag,](search-howto-indexing-azure-blob-storage.md) [Tabelopslag](search-howto-indexing-azure-tables.md), [Cosmos DB](search-howto-index-cosmosdb.md).
+> Voorkom dat de document grootte kleiner wordt door niet-query bare gegevens toe te voegen aan een index. Afbeeldingen en andere binaire gegevens kunnen niet rechtstreeks worden doorzocht en mogen niet worden opgeslagen in de index. Als u niet-query bare gegevens wilt integreren in Zoek resultaten, moet u een niet-doorzoekbaar veld definiëren waarin een URL-verwijzing naar de resource wordt opgeslagen.
+
+## <a name="option-2-add-resources"></a>Optie 2: resources toevoegen
+
+Services die zijn ingericht in een van de [standaard prijs categorieën](search-sku-tier.md) , hebben vaak weinig gebruikte capaciteit voor zowel opslag als werk belastingen (query's of indexeringen), waardoor [het verhogen van de partitie en replica](search-capacity-planning.md) een duidelijke oplossing telt voor grotere gegevens sets. Voor de beste resultaten moet u beide bronnen gebruiken: partities voor opslag en replica's voor de gegevens opname.
+
+Het verg Roten van replica's en partities zijn factureer bare gebeurtenissen waarmee uw kosten worden verhoogd, maar tenzij u continu wilt indexeren onder maximale belasting, kunt u een schaal voor de duur van het indexerings proces toevoegen en vervolgens de resource niveaus weer herstellen nadat het indexeren is voltooid.
+
+## <a name="option-3-use-indexers"></a>Optie 3: Indexeer functies gebruiken
+
+[Indexeer functies](search-indexer-overview.md) worden gebruikt voor het verkennen van ondersteunde Azure-gegevens bronnen voor Doorzoek bare inhoud. Hoewel het niet specifiek is bedoeld voor grootschalig indexeren, zijn verschillende indexerings mogelijkheden bijzonder nuttig voor grotere gegevens sets:
+
++ Met planners kunt u indexeren op regel matige intervallen uitdelen, zodat u deze in de loop van de tijd kan verdelen.
++ Geplande indexering kan worden hervat op het laatste bekende stop punt. Als een gegevens bron niet volledig in een 24-uurs venster wordt verkend, wordt de indexering hervat op dag twee op elke locatie waar deze is gebleven.
++ Het partitioneren van gegevens in kleinere afzonderlijke gegevens bronnen maakt parallelle verwerking mogelijk. U kunt bron gegevens opsplitsen in kleinere onderdelen, zoals in meerdere containers in Azure Blob Storage, en vervolgens bijbehorende, meerdere [gegevens bron objecten](https://docs.microsoft.com/rest/api/searchservice/create-data-source) maken in azure Cognitive Search die parallel kunnen worden geïndexeerd.
+
+> [!NOTE]
+> Indexeer functies zijn gegevens bron-specifiek, dus het gebruik van een indexerings benadering is alleen haalbaar voor geselecteerde gegevens bronnen op Azure: [SQL database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Blob Storage](search-howto-indexing-azure-blob-storage.md), [Table Storage](search-howto-indexing-azure-tables.md), [Cosmos DB](search-howto-index-cosmosdb.md).
 
 ### <a name="scheduled-indexing"></a>Geplande indexering
 
-Indexerplanning is een belangrijk mechanisme voor het verwerken van grote gegevenssets, evenals traag lopende processen zoals beeldanalyse in een cognitieve zoekpijplijn. Indexerverwerking werkt binnen een periode van 24 uur. Als de verwerking niet binnen 24 uur is voltooid, kan het gedrag van indexerplanning in uw voordeel werken. 
+De planning van de Indexeer functie is een belang rijk mechanisme voor het verwerken van grote gegevens sets, evenals trage processen zoals het analyseren van afbeeldingen in een cognitieve Zoek pijplijn. De verwerking van de Indexeer functie werkt binnen een 24-uurs venster. Als de verwerking niet binnen 24 uur wordt voltooid, kan het gedrag van het plannen van de Indexeer functie worden gebruikt voor uw voor deel. 
 
-Volgens het ontwerp begint de geplande indexering met specifieke intervallen, waarbij een taak doorgaans wordt voltooid voordat deze wordt hervat met het volgende geplande interval. Als de verwerking echter niet binnen het interval wordt voltooid, stopt de indexer (omdat de tijd opis). Bij het volgende interval wordt de verwerking hervat waar het voor het laatst is gebleven, waarbij het systeem bijhoudt waar dat gebeurt. 
+Geplande indexering begint op specifieke intervallen, met een taak die doorgaans wordt voltooid voordat het volgende geplande interval wordt hervat. Als de verwerking echter niet binnen het interval wordt voltooid, stopt de indexer (omdat deze verouderd is). Bij het volgende interval wordt de verwerking hervat, waar deze zich de laatste keer bevindt, waarbij het systeem bijhoudt waar dit gebeurt. 
 
-In de praktijk, voor index belastingen verspreid over meerdere dagen, u de indexer op een 24-uurs schema. Wanneer de indexering wordt hervat voor de volgende 24-uurscyclus, wordt deze opnieuw gestart bij het laatst bekende goede document. Op deze manier kan een indexeerder zich een weg banen door een documentachterstand gedurende een reeks dagen totdat alle onverwerkte documenten zijn verwerkt. Zie [Grote gegevenssets indexeren in Azure Blob-opslag](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)voor meer informatie over deze aanpak. Zie [API voor indexeren maken](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) of [indexeren voor Azure Cognitive Search voor](search-howto-schedule-indexers.md)meer informatie over het instellen van schema's in het algemeen.
+In de praktijk is het mogelijk om de Indexeer functie op een 24-uurs schema in te stellen. Wanneer het indexeren voor de volgende 24 uur wordt hervat, wordt het opnieuw gestart bij het laatst bekende goede document. Op deze manier kan een Indexeer functie worden gebruikt tijdens een document achterstand over een reeks dagen tot alle niet-verwerkte documenten worden verwerkt. Zie voor meer informatie over deze aanpak [grote gegevens sets indexeren in Azure Blob-opslag](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Zie voor meer informatie over het instellen van planningen in het algemeen [Indexeer functie maken rest API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) of Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md).
 
 <a name="parallel-indexing"></a>
 
 ### <a name="parallel-indexing"></a>Parallelle indexering
 
-Een parallelle indexeringsstrategie is gebaseerd op het indexeren van meerdere gegevensbronnen in unino, waarbij elke gegevensbrondefinitie een subset van de gegevens opgeeft. 
+Een strategie voor parallelle indexering is gebaseerd op het indexeren van meerdere gegevens bronnen in gelijktijdig, waarbij elke definitie van de gegevens bron een subset van de gegevens bevat. 
 
-Voor niet-routinematige, rekenintensieve indexeringsvereisten - zoals OCR op gescande documenten in een pijplijn voor cognitief onderzoek, beeldanalyse of natuurlijke taalverwerking - is een parallelle indexeringsstrategie vaak de juiste aanpak voor het voltooien van een langlopend proces in de kortste tijd. Als u queryaanvragen elimineren of verminderen, is parallelle indexering van een service die query's niet tegelijkertijd verwerkt, uw beste strategieoptie voor het verwerken van een grote hoeveelheid slowprocessinginhoud. 
+Voor niet-routine matige, computerintensieve, reken vereisten, zoals OCR op gescande documenten in een cognitieve Zoek pijplijn, afbeeldings analyse of natuurlijke taal verwerking, is de juiste benadering voor het volt ooien van een langlopend proces in de kortste periode. Als u query aanvragen kunt elimineren of beperken, is parallelle indexering van een service die niet tegelijkertijd query's afhandelt, uw beste strategie optie voor het werken met een grote inhoud van trage verwerking. 
 
 Parallelle verwerking heeft de volgende elementen:
 
-+ Brongegevens onderverdelen tussen meerdere containers of meerdere virtuele mappen in dezelfde container. 
-+ Breng elke mini-gegevensset in kaart met zijn eigen [gegevensbron](https://docs.microsoft.com/rest/api/searchservice/create-data-source), gekoppeld aan zijn eigen [indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
-+ Raadpleeg voor cognitief zoeken dezelfde [vaardigheden in](https://docs.microsoft.com/rest/api/searchservice/create-skillset) elke indexerdefinitie.
-+ Schrijf in dezelfde doelzoekindex. 
-+ Plan alle indexers op hetzelfde moment uit te voeren.
++ Verdeel bron gegevens over meerdere containers of meerdere virtuele mappen binnen dezelfde container. 
++ Wijs elke mini maal gegevensset toe aan een eigen [gegevens bron](https://docs.microsoft.com/rest/api/searchservice/create-data-source), gekoppeld aan een eigen [Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
++ Voor cognitieve Zoek opdrachten verwijzen we naar dezelfde [vaardig heden](https://docs.microsoft.com/rest/api/searchservice/create-skillset) in elke Indexeer functie definitie.
++ Schrijf naar dezelfde doel zoek index. 
++ Plannen dat alle Indexeer functies op hetzelfde moment worden uitgevoerd.
 
 > [!NOTE]
-> In Azure Cognitive Search u geen afzonderlijke replica's of partities toewijzen aan indexering of queryverwerking. Het systeem bepaalt hoe resources worden gebruikt. Als u de impact op de queryprestaties wilt begrijpen, u proberen parallelle indexering in een testomgeving te gebruiken voordat u deze in productie rolt.  
+> In azure Cognitive Search kunt u geen afzonderlijke replica's of partities toewijzen aan indexering of query verwerking. Het systeem bepaalt hoe bronnen worden gebruikt. Als u wilt weten wat het effect is op de prestaties van query's, kunt u parallelle indexering uitproberen in een test omgeving voordat u deze naar productie rolt.  
 
 ### <a name="how-to-configure-parallel-indexing"></a>Parallelle indexering configureren
 
-Voor indexers is de verwerkingscapaciteit losjes gebaseerd op één indexersubsysteem voor elke service-eenheid (SU) die door uw zoekservice wordt gebruikt. Meerdere gelijktijdige indexeerders zijn mogelijk op Azure Cognitive Search-services die zijn ingericht op basis- of standaardlagen met ten minste twee replica's. 
+Voor Indexeer functies is de verwerkings capaciteit soepel gebaseerd op één indexerings subsysteem voor elke service-eenheid (SU) die wordt gebruikt door uw zoek service. Er zijn meerdere gelijktijdige Indexeer functies mogelijk op Azure Cognitive Search Services die zijn ingericht op basis-of standaard lagen met ten minste twee replica's. 
 
-1. Controleer in de [Azure-portal](https://portal.azure.com)op de **pagina** Overzicht van uw zoekservicedashboard de **prijslaag** om te controleren of deze geschikt is voor parallelle indexering. Zowel Basic- als Standard-lagen bieden meerdere replica's.
+1. Controleer in de [Azure Portal](https://portal.azure.com)op de pagina **overzicht** van het zoek service dashboard de **prijs categorie** om te bevestigen dat deze parallelle indexering kan bevatten. De lagen basis en standaard bieden meerdere replica's.
 
-2. Verhoog in > **Instellingenschaal** [replica's](search-capacity-planning.md) voor parallelle verwerking: één extra replica voor elke indexerwerkbelasting. **Settings** Laat een voldoende aantal achter voor het bestaande queryvolume. Het opofferen van queryworkloads voor indexering is geen goede afweging.
+2. Verhoog in **instellingen** > **schaal** [replica's](search-capacity-planning.md) voor parallelle verwerking: een extra replica voor elke Indexeer functie-workload. Geef een voldoende waarde voor het bestaande query volume. Het voldoet niet aan query werkbelastingen voor indexering is geen goede balans.
 
-3. Gegevens distribueren naar meerdere containers op een niveau dat Azure Cognitive Search-indexeerders kunnen bereiken. Dit kunnen meerdere tabellen zijn in Azure SQL Database, meerdere containers in Azure Blob-opslag of meerdere verzamelingen. Definieer één gegevensbronobject voor elke tabel of container.
+3. Distribueer gegevens in meerdere containers op een niveau dat door Azure Cognitive Search Indexeer functies kan worden bereikt. Dit kan meerdere tabellen zijn in Azure SQL Database, meerdere containers in Azure Blob Storage of meerdere verzamelingen. Definieer één gegevens bron object voor elke tabel of container.
 
-4. Meerdere indexers maken en plannen om parallel te lopen:
+4. Meerdere Indexeer functies maken en plannen om parallel uit te voeren:
 
-   + Neem een service met zes replica's aan. Configureer zes indexers, elk toegewezen aan een gegevensbron met een zesde van de gegevensset voor een 6-wegsplitsing van de gehele gegevensset. 
+   + Ga ervan uit dat een service met zes replica's. U kunt zes Indexeer functies configureren, die zijn toegewezen aan een gegevens bron die een-zesde van de gegevensset bevat voor een 6 richtings splitsing van de gehele gegevensset. 
 
-   + Wijs elke indexeerder op dezelfde index. Voor cognitieve zoekworkloads wijst u elke indexeerder naar dezelfde vaardigheden.
+   + Wijs elke Indexeer functie aan dezelfde index toe. Voor cognitieve Zoek werkbelastingen wijst u elke Indexeer functie aan dezelfde vaardig heden toe.
 
-   + Plan binnen elke indexerdefinitie hetzelfde run-time uitvoeringspatroon. Hiermee `"schedule" : { "interval" : "PT8H", "startTime" : "2018-05-15T00:00:00Z" }` maakt u bijvoorbeeld een schema op 2018-05-15 op alle indexeerders, die met intervallen van acht uur worden uitgevoerd.
+   + In elke indexers definitie kunt u hetzelfde run-time uitvoerings patroon plannen. `"schedule" : { "interval" : "PT8H", "startTime" : "2018-05-15T00:00:00Z" }` Maakt bijvoorbeeld een planning voor 2018-05-15 op alle Indexeer functies, die worden uitgevoerd op een interval van acht uur.
 
-Op de geplande tijd beginnen alle indexeerders met de uitvoering, laden gegevens, het toepassen van verrijkingen (als u een cognitieve zoekpijplijn hebt geconfigureerd) en schrijven naar de index. Azure Cognitive Search vergrendelt de index niet voor updates. Gelijktijdige schrijfbewerkingen worden beheerd, met opnieuw proberen als een bepaalde schrijven niet lukt bij de eerste poging.
+Op de geplande tijd starten alle Indexeer functies, het laden van gegevens, het Toep assen van verrijkingen (als u een cognitieve Zoek pijplijn hebt geconfigureerd) en het schrijven naar de index. De index voor updates wordt niet vergrendeld door Azure Cognitive Search. Gelijktijdige schrijf bewerkingen worden beheerd met een nieuwe poging als een bepaalde schrijf bewerking niet kan worden uitgevoerd bij de eerste poging.
 
 > [!Note]
-> Bij het verhogen van replica's u overwegen het aantal partities te verhogen als de indexgrootte naar verwachting aanzienlijk zal toenemen. Partities slaan segmenten van geïndexeerde inhoud op; hoe meer partities je hebt, hoe kleiner het segment dat je moet opslaan.
+> Bij het verg Roten van replica's, overweeg dan het aantal partities te verhogen als de index grootte wordt geprojecteerd om aanzienlijk te verg Roten. Partities bevatten segmenten van geïndexeerde inhoud; Hoe meer partities u hebt, des te kleiner het segment dat elke partitie bevat om op te slaan.
 
 ## <a name="see-also"></a>Zie ook
 
 + [Overzicht van de indexeerfunctie](search-indexer-overview.md)
-+ [Indexering in de portal](search-import-data-portal.md)
-+ [Azure SQL Database-indexer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Indexeren in de portal](search-import-data-portal.md)
++ [Indexeer functie Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 + [Indexeerfunctie voor Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Indexeerfunctie voor Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Indexeerfunctie voor Azure Table Storage](search-howto-indexing-azure-tables.md)
-+ [Beveiliging in Azure Cognitive Search](search-security-overview.md)
++ [Beveiliging in azure Cognitive Search](search-security-overview.md)

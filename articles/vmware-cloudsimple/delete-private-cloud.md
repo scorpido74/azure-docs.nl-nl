@@ -1,6 +1,6 @@
 ---
-title: Een Azure VMware-oplossing verwijderen door CloudSimple Private Cloud
-description: Beschrijft hoe u een CloudSimple Private Cloud verwijdert.
+title: Een Azure VMware-oplossing verwijderen via CloudSimple Private Cloud
+description: Hierin wordt beschreven hoe u een CloudSimple-Privécloud verwijdert.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/06/2019
@@ -9,52 +9,52 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6bc3e7030c500ea2d6072a1cce0f0b3d9fc62801
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024752"
 ---
-# <a name="delete-a-cloudsimple-private-cloud"></a>Een CloudSimple Private Cloud verwijderen
+# <a name="delete-a-cloudsimple-private-cloud"></a>Een CloudSimple-Privécloud verwijderen
 
-CloudSimple biedt de flexibiliteit om een Private Cloud te verwijderen.  Een Private Cloud bestaat uit een of meer vSphere-clusters. Elk cluster kan 3 tot 16 knooppunten hebben. Wanneer u een Private Cloud verwijdert, worden alle clusters verwijderd.
+CloudSimple biedt de flexibiliteit voor het verwijderen van een Privécloud.  Een Privécloud bestaat uit een of meer vSphere-clusters. Elk cluster kan 3 tot 16 knoop punten bevatten. Wanneer u een Privécloud verwijdert, worden alle clusters verwijderd.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Als u een Private Cloud verwijdert, wordt de hele Private Cloud verwijderd.  Alle onderdelen van de Private Cloud worden verwijderd.  Als u een van de gegevens wilt bewaren, moet u ervoor zorgen dat u een back-up van de gegevens hebt gemaakt naar on-premises opslag of Azure-opslag.
+Als een Privécloud wordt verwijderd, wordt de volledige Privécloud verwijderd.  Alle onderdelen van de Privécloud worden verwijderd.  Als u gegevens wilt bewaren, moet u ervoor zorgen dat u een back-up hebt gemaakt van de gegevens naar on-premises opslag of Azure Storage.
 
-De onderdelen van een Private Cloud zijn:
+De onderdelen van een Privécloud zijn:
 
-* CloudSimple-knooppunten
+* CloudSimple-knoop punten
 * Virtuele machines
 * VLAN's/subnetten
-* Alle gebruikersgegevens die zijn opgeslagen in de Private Cloud
-* Alle firewallregelbijlagen bij een VLAN/Subnet
+* Alle gebruikers gegevens die in de Privécloud zijn opgeslagen
+* Alle bijlagen van firewall regels naar een VLAN/subnet
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
+Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="delete-a-private-cloud"></a>Een privécloud verwijderen
 
-1. [Toegang tot de CloudSimple-portal](access-cloudsimple-portal.md).
+1. [Toegang tot de CloudSimple-Portal](access-cloudsimple-portal.md).
 
-2. Open de pagina **Resources.**
+2. Open de pagina **resources** .
 
-3. Klik op de Private Cloud die u wilt verwijderen
+3. Klik op de Privécloud die u wilt verwijderen
 
-4. Klik op de overzichtspagina op **Verwijderen**.
+4. Klik op de pagina samen vatting op **verwijderen**.
 
-    ![Private cloud verwijderen](media/delete-private-cloud.png)
+    ![Privécloud verwijderen](media/delete-private-cloud.png)
 
-5. Voer op de bevestigingspagina de naam van de private cloud in en klik op **Verwijderen**. 
+5. Voer op de pagina Bevestiging de naam van de Privécloud in en klik op **verwijderen**. 
 
-    ![Private cloud verwijderen - bevestigen](media/delete-private-cloud-confirm.png)
+    ![Privécloud verwijderen-bevestigen](media/delete-private-cloud-confirm.png)
 
-De Private Cloud is gemarkeerd voor verwijdering.  Het verwijderingsproces begint na drie uur en verwijdert de Private Cloud.
+De Privécloud is gemarkeerd voor verwijdering.  Het verwijderings proces wordt na drie uur gestart en de Privécloud wordt verwijderd.
 
 > [!CAUTION]
-> Knooppunten moeten worden verwijderd na verwijdering van de Private Cloud.  Het meten van knooppunten wordt voortgezet totdat knooppunten uit uw abonnement worden verwijderd.
+> Knoop punten moeten worden verwijderd na het verwijderen van de Privécloud.  Door knoop punten te meten, worden de kassa knooppunten verwijderd uit uw abonnement.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
-title: Pakketopnames beheren met Azure Network Watcher - REST API | Microsoft Documenten
-description: Op deze pagina wordt uitgelegd hoe u de functie voor het vastleggen van pakketten van Network Watcher beheert met Azure REST API
+title: Pakket opnames beheren met Azure Network Watcher-REST API | Microsoft Docs
+description: Op deze pagina wordt uitgelegd hoe u de functie pakket opname van Network Watcher beheert met behulp van Azure REST API
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,43 +12,43 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 5199cf95452f93db2c2dd747fcabc67a6722d31e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76840890"
 ---
-# <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Pakketopnames beheren met Azure Network Watcher met Azure REST API
+# <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Pakket opnames beheren met Azure Network Watcher met behulp van Azure REST API
 
 > [!div class="op_single_selector"]
-> - [Azure-portal](network-watcher-packet-capture-manage-portal.md)
-> - [Powershell](network-watcher-packet-capture-manage-powershell.md)
+> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
+> - [Zo](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure-CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
-Met Network Watcher-pakketopname u opnamesessies maken om het verkeer van en naar een virtuele machine bij te houden. Er zijn filters beschikbaar voor de opnamesessie om ervoor te zorgen dat u alleen het gewenste verkeer vastlegt. Packet capture helpt bij het diagnosticeren van netwerkafwijkingen, zowel reactief als proactief. Andere toepassingen zijn het verzamelen van netwerkstatistieken, het verkrijgen van informatie over netwerkinbraken, het opsporen van client-servercommunicatie en nog veel meer. Door op afstand pakketopnames te kunnen activeren, verlicht deze mogelijkheid de last van het handmatig en op de gewenste machine uitvoeren van een pakket, wat kostbare tijd bespaart.
+Met Network Watcher-pakket opname kunt u opname sessies maken om verkeer van en naar een virtuele machine bij te houden. Er worden filters voor de opname sessie gegeven om ervoor te zorgen dat u alleen het gewenste verkeer vastlegt. Met pakket opname kunt u netwerk afwijkingen zowel reactief als proactief vaststellen. Andere gebruiken zijn onder andere het verzamelen van netwerk statistieken, het verkrijgen van informatie over inbreuken op het netwerk, het opsporen van fouten in client-server communicatie en nog veel meer. Doordat pakket opnames op afstand kunnen worden geactiveerd, vereenvoudigt deze mogelijkheid de belasting van het hand matig uitvoeren van een pakket opname en op de gewenste computer, waardoor kost bare tijd wordt bespaard.
 
-In dit artikel neemt u de verschillende beheertaken mee die momenteel beschikbaar zijn voor het vastleggen van pakketten.
+Dit artikel begeleidt u door de verschillende beheer taken die momenteel beschikbaar zijn voor pakket opname.
 
-- [**Een pakketopname krijgen**](#get-a-packet-capture)
-- [**Alle pakketopnames weergeven**](#list-all-packet-captures)
-- [**De status van een pakketopname opvragen**](#query-packet-capture-status)
-- [**Een pakketopname starten**](#start-packet-capture)
-- [**Een pakketopname stoppen**](#stop-packet-capture)
-- [**Een pakketopname verwijderen**](#delete-packet-capture)
+- [**Pakket opname ophalen**](#get-a-packet-capture)
+- [**Alle pakket opnames weer geven**](#list-all-packet-captures)
+- [**De status van een pakket opname opvragen**](#query-packet-capture-status)
+- [**Een pakket opname starten**](#start-packet-capture)
+- [**Een pakket opname stoppen**](#stop-packet-capture)
+- [**Een pakket opname verwijderen**](#delete-packet-capture)
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit scenario roept u de Network Watcher Rest API op om IP Flow Verify uit te voeren. ARMclient wordt gebruikt om de REST API aan te roepen met PowerShell. ARMClient is te vinden op chocolatey bij [ARMClient op Chocolatey](https://chocolatey.org/packages/ARMClient)
+In dit scenario roept u de Network Watcher rest API aan om de IP-stroom te controleren. ARMclient wordt gebruikt om de REST API aan te roepen met behulp van Power shell. ARMClient is in Choco lade op [ARMClient op Choco lade](https://chocolatey.org/packages/ARMClient) gevonden
 
-In dit scenario wordt ervan uitgegaan dat u de stappen in [Een netwerkwatcher maken](network-watcher-create.md) al hebt gevolgd om een netwerkwatcher te maken.
+In dit scenario wordt ervan uitgegaan dat u de stappen in [Create a Network Watcher](network-watcher-create.md) voor het maken van een Network Watcher, al hebt gevolgd.
 
-> Packet capture vereist een `AzureNetworkWatcherExtension`virtuele machine-extensie. Voor het installeren van de extensie op een Windows VM bezoek [Azure Network Watcher Agent virtuele machine extensie voor Windows](../virtual-machines/windows/extensions-nwa.md) en voor Linux VM bezoek Azure Network Watcher Agent virtuele machine extensie voor [Linux](../virtual-machines/linux/extensions-nwa.md).
+> Voor pakket opname is een extensie `AzureNetworkWatcherExtension`van een virtuele machine vereist. Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md).
 
-## <a name="log-in-with-armclient"></a>Inloggen met ARMClient
+## <a name="log-in-with-armclient"></a>Aanmelden met ARMClient
 
 ```powershell
 armclient login
@@ -56,12 +56,12 @@ armclient login
 
 ## <a name="retrieve-a-virtual-machine"></a>Een virtuele machine ophalen
 
-Voer het volgende script uit om een virtuele machine terug te sturen. Deze informatie is nodig voor het starten van een packet capture.
+Voer het volgende script uit om een virtuele machine te retour neren. Deze informatie is nodig voor het starten van een pakket opname.
 
 De volgende code heeft variabelen nodig:
 
-- **abonnementId** - De abonnements-id kan ook worden opgehaald met de **Get-AzSubscription** cmdlet.
-- **resourceGroupName** - De naam van een resourcegroep die virtuele machines bevat.
+- **subscriptionId** -de abonnements-id kan ook worden opgehaald met de cmdlet **Get-AzSubscription** .
+- **resourceGroupName** : de naam van een resource groep die virtuele machines bevat.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -70,7 +70,7 @@ $resourceGroupName = "<resource group name>"
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-Van de volgende uitvoer wordt de id van de virtuele machine in het volgende voorbeeld gebruikt.
+Vanuit de volgende uitvoer wordt de id van de virtuele machine in het volgende voor beeld gebruikt.
 
 ```json
 ...
@@ -86,9 +86,9 @@ Van de volgende uitvoer wordt de id van de virtuele machine in het volgende voor
 ```
 
 
-## <a name="get-a-packet-capture"></a>Een pakketopname krijgen
+## <a name="get-a-packet-capture"></a>Pakket opname ophalen
 
-In het volgende voorbeeld wordt de status van één pakketopname
+In het volgende voor beeld wordt de status van één pakket opname opgehaald
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -97,7 +97,7 @@ $networkWatcherName = "NetworkWatcher_westcentralus"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/packetCaptures/${packetCaptureName}/querystatus?api-version=2016-12-01"
 ```
 
-De volgende antwoorden zijn voorbeelden van een standaardantwoord dat wordt geretourneerd bij het opvragen van de status van een pakketopname.
+De volgende antwoorden zijn voor beelden van een typische reactie die wordt geretourneerd bij het uitvoeren van een query op de status van een pakket opname.
 
 ```json
 {
@@ -120,9 +120,9 @@ De volgende antwoorden zijn voorbeelden van een standaardantwoord dat wordt gere
 }
 ```
 
-## <a name="list-all-packet-captures"></a>Alle pakketopnames weergeven
+## <a name="list-all-packet-captures"></a>Alle pakket opnames weer geven
 
-In het volgende voorbeeld worden alle pakketopnamesessies in een regio optewel.
+In het volgende voor beeld worden alle sessies voor pakket opname in een regio opgehaald.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -131,7 +131,7 @@ $networkWatcherName = "NetworkWatcher_westcentralus"
 armclient get "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/packetCaptures?api-version=2016-12-01"
 ```
 
-Het volgende antwoord is een voorbeeld van een typische reactie die wordt geretourneerd bij het verkrijgen van alle pakketopnames
+Het volgende antwoord is een voor beeld van een typisch antwoord dat wordt geretourneerd bij het ophalen van alle pakket opnames
 
 ```json
 {
@@ -194,9 +194,9 @@ ture_17_23_15_364.cap",
 }
 ```
 
-## <a name="query-packet-capture-status"></a>Status voor het vastleggen van querypakketten
+## <a name="query-packet-capture-status"></a>Status query pakket vastleggen
 
-In het volgende voorbeeld worden alle pakketopnamesessies in een regio optewel.
+In het volgende voor beeld worden alle sessies voor pakket opname in een regio opgehaald.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -206,7 +206,7 @@ $packetCaptureName = "TestPacketCapture5"
 armclient get "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/packetCaptures/${packetCaptureName}/querystatus?api-version=2016-12-01"
 ```
 
-Het volgende antwoord is een voorbeeld van een standaardantwoord dat wordt geretourneerd bij het opvragen van de status van een pakketopname.
+Het volgende antwoord is een voor beeld van een typisch antwoord dat wordt geretourneerd bij het uitvoeren van een query op de status van een pakket opname.
 
 ```json
 {
@@ -219,9 +219,9 @@ Het volgende antwoord is een voorbeeld van een standaardantwoord dat wordt geret
 }
 ```
 
-## <a name="start-packet-capture"></a>Pakketopname starten
+## <a name="start-packet-capture"></a>Pakket opname starten
 
-In het volgende voorbeeld wordt een pakketopname gemaakt op een virtuele machine.  Het voorbeeld is geparameteriseerd om flexibiliteit mogelijk te maken bij het maken van een voorbeeld.
+In het volgende voor beeld wordt een pakket opname gemaakt op een virtuele machine.  Het voor beeld is para meters om flexibiliteit te bieden bij het maken van een voor beeld.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -271,9 +271,9 @@ $requestBody = @"
 armclient PUT "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/packetCaptures/${packetCaptureName}?api-version=2016-07-01" $requestbody
 ```
 
-## <a name="stop-packet-capture"></a>Pakketopname stoppen
+## <a name="stop-packet-capture"></a>Pakket opname stoppen
 
-In het volgende voorbeeld wordt een pakketopname op een virtuele machine gestopt.  Het voorbeeld is geparameteriseerd om flexibiliteit mogelijk te maken bij het maken van een voorbeeld.
+In het volgende voor beeld wordt het vastleggen van pakketten op een virtuele machine gestopt.  Het voor beeld is para meters om flexibiliteit te bieden bij het maken van een voor beeld.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -283,9 +283,9 @@ $packetCaptureName = "TestPacketCapture5"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/packetCaptures/${packetCaptureName}/stop?api-version=2016-12-01"
 ```
 
-## <a name="delete-packet-capture"></a>Pakketvastleggen verwijderen
+## <a name="delete-packet-capture"></a>Pakket opname verwijderen
 
-In het volgende voorbeeld wordt een pakketopname op een virtuele machine verwijderd.  Het voorbeeld is geparameteriseerd om flexibiliteit mogelijk te maken bij het maken van een voorbeeld.
+In het volgende voor beeld wordt een pakket opname op een virtuele machine verwijderd.  Het voor beeld is para meters om flexibiliteit te bieden bij het maken van een voor beeld.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -297,13 +297,13 @@ armclient delete "https://management.azure.com/subscriptions/${subscriptionId}/R
 ```
 
 > [!NOTE]
-> Als u een pakketopname verwijdert, wordt het bestand in het opslagaccount niet verwijderd
+> Als u een pakket opname verwijdert, wordt het bestand niet verwijderd uit het opslag account
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg aan [de slag met Azure Blob-opslag met .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)voor instructies voor het downloaden van bestanden uit azure-opslagaccounts. Een ander hulpmiddel dat kan worden gebruikt is Storage Explorer. Meer informatie over Storage Explorer vindt u hier via de volgende link: [Storage Explorer](https://storageexplorer.com/)
+Raadpleeg aan de [slag met Azure Blob Storage met .net](../storage/blobs/storage-dotnet-how-to-use-blobs.md)voor instructies voor het downloaden van bestanden van Azure Storage-accounts. Een ander hulp programma dat kan worden gebruikt, is Storage Explorer. Meer informatie over Storage Explorer kunt u vinden op de volgende koppeling: [Storage Explorer](https://storageexplorer.com/)
 
-Meer informatie over het automatiseren van pakketopnames met virtuele machinewaarschuwingen door [het maken van een waarschuwingsgeactiveerde pakketopname te](network-watcher-alert-triggered-packet-capture.md) bekijken
+Meer informatie over het automatiseren van pakket opnames met waarschuwingen voor virtuele machines door het weer geven van [een waarschuwing gegenereerde pakket opname maken](network-watcher-alert-triggered-packet-capture.md)
 
 
 

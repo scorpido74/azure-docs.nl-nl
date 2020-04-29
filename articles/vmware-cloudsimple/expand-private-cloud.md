@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-oplossing uitbreiden met CloudSimple Private Cloud
-description: Beschrijft hoe u een bestaande CloudSimple Private Cloud uitbreidt om capaciteit toe te voegen in een bestaand of nieuw cluster
+title: Vouw de Azure VMware-oplossing uit via CloudSimple Private Cloud
+description: Hierin wordt beschreven hoe u een bestaande CloudSimple-Privécloud uitbreidt om capaciteit toe te voegen aan een bestaand of nieuw cluster
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/06/2019
@@ -9,52 +9,52 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: a82ba1b433e62ed1c4b72b8e942d4ade29f26c4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77025296"
 ---
-# <a name="expand-a-cloudsimple-private-cloud"></a>Een CloudSimple Private Cloud uitbreiden
+# <a name="expand-a-cloudsimple-private-cloud"></a>Een CloudSimple-Privécloud uitbreiden
 
-CloudSimple biedt de flexibiliteit om een Private Cloud dynamisch uit te breiden. U beginnen met een kleinere configuratie en vervolgens uitbreiden als u een hogere capaciteit nodig hebt. Of u een Private Cloud maken op basis van de huidige behoeften en vervolgens uitbreiden naarmate het verbruik toeneemt.
+CloudSimple biedt de flexibiliteit voor het dynamisch uitbreiden van een Privécloud. U kunt beginnen met een kleinere configuratie en vervolgens uitbreiden naarmate u meer capaciteit nodig hebt. U kunt ook een Privécloud maken op basis van huidige behoeften en vervolgens uitvouwen naarmate het verbruik groeit.
 
-Een Private Cloud bestaat uit een of meer vSphere-clusters. Elk cluster kan 3 tot 16 knooppunten hebben.  Wanneer u een Private Cloud uitbreidt, voegt u knooppunten toe aan het bestaande cluster of maakt u een nieuw cluster. Als u een bestaand cluster wilt uitbreiden, moeten extra knooppunten hetzelfde type (SKU) zijn als de bestaande knooppunten. Voor het maken van een nieuw cluster kunnen de knooppunten van een ander type zijn. Zie de sectie Limieten in het overzichtsartikel over private cloud van [CloudSimple](cloudsimple-private-cloud.md) voor meer informatie over private cloud-limieten.
+Een Privécloud bestaat uit een of meer vSphere-clusters. Elk cluster kan 3 tot 16 knoop punten bevatten.  Wanneer u een Privécloud uitbreidt, voegt u knoop punten toe aan het bestaande cluster of maakt u een nieuw cluster. Als u een bestaand cluster wilt uitbreiden, moeten extra knoop punten van hetzelfde type (SKU) zijn als de bestaande knoop punten. Voor het maken van een nieuw cluster kunnen de knoop punten van een ander type zijn. Zie voor meer informatie over limieten voor Privécloud de sectie limieten in het [overzichts artikel CloudSimple Private Cloud](cloudsimple-private-cloud.md) .
 
-Er wordt een private cloud gemaakt met een standaard **datacenter** op vCenter.  Elk datacenter fungeert als een top-level management entiteit.  Voor een nieuw cluster biedt CloudSimple de keuze om toe te voegen aan het bestaande datacenter of een nieuw datacenter te maken.
+Een privécloud wordt gemaakt met een standaard **datacenter** op vCenter.  Elk Data Center fungeert als een beheer entiteit op het hoogste niveau.  Voor een nieuw cluster biedt CloudSimple de mogelijkheid om toe te voegen aan het bestaande Data Center of een nieuw Data Center te maken.
 
-Als onderdeel van de nieuwe clusterconfiguratie configureert CloudSimple de VMware-infrastructuur.  De instellingen omvatten opslaginstellingen voor vSAN-schijfgroepen, VMware Hoge beschikbaarheid en Distributed Resource Scheduler (DRS).
+Als onderdeel van de nieuwe cluster configuratie, configureert CloudSimple de VMware-infra structuur.  De instellingen omvatten opslag instellingen voor vSAN-schijf groepen, VMware-hoge Beschik baarheid en gedistribueerde resource planner (DRS).
 
-Een Private Cloud kan meerdere keren worden uitgebreid. Uitbreiding kan alleen worden gedaan wanneer u binnen de algemene node grenzen blijft. Elke keer dat u een Private Cloud uitvouwt, voegt u toe aan het bestaande cluster of maakt u een nieuw cluster.
+Een Privécloud kan meerdere keren worden uitgebreid. Uitbrei ding kan alleen worden uitgevoerd als u binnen de algehele knooppunt limieten blijft. Telkens wanneer u een Privécloud uitbreidt die u toevoegt aan het bestaande cluster of een nieuwe maakt.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Knooppunten moeten worden ingericht voordat u uw Private Cloud uitbreiden.  Zie [Knooppunten voor VMware-oplossing voor VMware door CloudSimple - Azure](create-nodes.md) voor meer informatie over het inrichten van knooppunten.  Voor het maken van een nieuw cluster moet u ten minste drie beschikbare knooppunten van dezelfde SKU hebben.
+Knoop punten moeten worden ingericht voordat u uw Privécloud kunt uitbreiden.  Zie voor meer informatie over het inrichten van knoop punten [richt knooppunten inrichten voor VMware-oplossing door CloudSimple-Azure-](create-nodes.md) artikel.  Voor het maken van een nieuw cluster moeten er ten minste drie beschik bare knoop punten van dezelfde SKU zijn.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
+Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="expand-a-private-cloud"></a>Een privécloud uitbreiden
 
-1. [Toegang tot de CloudSimple-portal](access-cloudsimple-portal.md).
+1. [Toegang tot de CloudSimple-Portal](access-cloudsimple-portal.md).
 
-2. Open de pagina **Resources** en selecteer de Private Cloud waarvoor u wilt uitbreiden.
+2. Open de pagina **resources** en selecteer de privécloud die u wilt uitbreiden.
 
-3. Klik in het samengevatte gedeelte op **Uitvouwen**.
+3. Klik in de sectie samen vatting op **uitvouwen**.
 
-    ![Private cloud uitbreiden](media/resources-expand-private-cloud.png)
+    ![Open de privécloud](media/resources-expand-private-cloud.png)
 
-4. Kies of u uw bestaande cluster wilt uitbreiden of een nieuw vSphere-cluster wilt maken. Als u wijzigingen aanbrengt, wordt de overzichtsinformatie op de pagina bijgewerkt.
+4. Kies of u uw bestaande cluster wilt uitbreiden of een nieuw vSphere-cluster wilt maken. Wanneer u wijzigingen aanbrengt, wordt de samenvattings informatie op de pagina bijgewerkt.
 
-    * Als u uw bestaande cluster wilt uitbreiden, klikt u op **Bestaand cluster uitvouwen**. Selecteer het cluster dat u wilt uitbreiden en voer het aantal knooppunten in dat u wilt toevoegen. Elk cluster kan maximaal 16 knooppunten hebben.
-    * Als u een nieuw cluster wilt toevoegen, klikt u op **Nieuw cluster maken**. Voer een naam in voor het cluster. Selecteer een bestaand datacenter of voer een naam in om een nieuw datacenter te maken. Kies het knooppunttype. U een ander knooppunttype kiezen bij het maken van een nieuw vSphere-cluster, maar niet bij het uitbreiden van een bestaand vSphere-cluster. Selecteer het aantal knooppunten. Elk nieuw cluster moet ten minste drie knooppunten hebben.
+    * Als u uw bestaande cluster wilt uitbreiden, klikt u op **bestaand cluster uitvouwen**. Selecteer het cluster dat u wilt uitbreiden en voer het aantal knoop punten in dat u wilt toevoegen. Elk cluster kan Maxi maal 16 knoop punten bevatten.
+    * Klik op **Nieuw cluster maken**om een nieuw cluster toe te voegen. Voer een naam in voor het cluster. Selecteer een bestaand Data Center of voer een naam in om een nieuw Data Center te maken. Kies het knooppunt type. U kunt een ander type knoop punt kiezen bij het maken van een nieuw vSphere-cluster, maar niet bij het uitbreiden van een bestaand vSphere-cluster. Selecteer het aantal knoop punten. Elk nieuw cluster moet ten minste drie knoop punten hebben.
 
-    ![Private cloud uitbreiden - knooppunten toevoegen](media/resources-expand-private-cloud-add-nodes.png)
+    ![Open de privécloud en voeg knoop punten toe](media/resources-expand-private-cloud-add-nodes.png)
 
-5. Klik **op Verzenden** om de privécloud uit te vouwen.
+5. Klik op **verzenden** om de privécloud uit te vouwen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [VMware-VM's in Azure gebruiken](quickstart-create-vmware-virtual-machine.md)
-* Meer informatie over [Private Clouds](cloudsimple-private-cloud.md)
+* Meer informatie over [persoonlijke Clouds](cloudsimple-private-cloud.md)

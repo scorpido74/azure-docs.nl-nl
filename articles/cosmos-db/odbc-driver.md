@@ -1,153 +1,153 @@
 ---
-title: Verbinding maken met Azure Cosmos DB met behulp van BI-analysetools
-description: Meer informatie over het gebruik van het Azure Cosmos DB ODBC-stuurprogramma om tabellen en weergaven te maken, zodat genormaliseerde gegevens kunnen worden weergegeven in BI- en data-analysesoftware.
+title: Verbinding maken met Azure Cosmos DB met behulp van BI Analytics-hulpprogram ma's
+description: Meer informatie over het gebruik van het ODBC-stuur programma van Azure Cosmos DB voor het maken van tabellen en weer gaven zodat genormaliseerde gegevens kunnen worden weer gegeven in de BI-en gegevens analyse software.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: sngun
 ms.openlocfilehash: 8be17f0b624c5c34709fb420adb434b77dbc0d91
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721078"
 ---
-# <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Verbinding maken met Azure Cosmos DB met behulp van BI-analysetools met het ODBC-stuurprogramma
+# <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Met het ODBC-stuur programma verbinding maken met Azure Cosmos DB met behulp van BI Analytics-hulpprogram ma's
 
-Met het Azure Cosmos DB ODBC-stuurprogramma u verbinding maken met Azure Cosmos DB met behulp van BI-analysetools zoals SQL Server Integration Services, Power BI Desktop en Tableau, zodat u in die oplossingen visualisaties van uw Azure DB Cosmos-gegevens analyseren en maken.
+Met het ODBC-stuur programma voor Azure Cosmos DB kunt u verbinding maken met Azure Cosmos DB met behulp van BI Analytics-hulpprogram ma's zoals SQL Server Integration Services, Power BI Desktop en tableau, zodat u in deze oplossingen visualisaties van uw Azure Cosmos DB gegevens kunt analyseren en maken.
 
 Het ODBC-stuurprogramma van Azure Cosmos DB is compatibel met ODBC 3.8 en ondersteunt ANSI SQL-92-syntaxis. Het stuurprogramma biedt uitgebreide functies waarmee u gegevens in Azure Cosmos DB opnieuw kunt normaliseren. Met behulp van het stuurprogramma kunt u gegevens in Azure Cosmos DB weergeven als tabellen en weergaven. Met het stuurprogramma kunt u SQL-bewerkingen uitvoeren op de tabellen en weergaven, zoals groeperen op query's, invoegingen, updates en verwijderingen.
 
 > [!NOTE]
-> Verbinding maken met Azure Cosmos DB met het ODBC-stuurprogramma wordt momenteel alleen ondersteund voor Azure Cosmos DB SQL API-accounts.
+> Het is momenteel niet mogelijk om verbinding te maken met Azure Cosmos DB met het ODBC-stuur programma voor Azure Cosmos DB SQL-API-accounts.
 
 ## <a name="why-do-i-need-to-normalize-my-data"></a>Waarom moet ik mijn gegevens normaliseren?
-Azure Cosmos DB is een schemaloze database, die snelle applicatieontwikkeling en de mogelijkheid om te herhalen op gegevensmodellen mogelijk maakt zonder te worden beperkt tot een strikt schema. Eén Azure Cosmos-database kan JSON-documenten van verschillende structuren bevatten. Dit is ideaal voor snelle applicatieontwikkeling, maar wanneer u rapporten van uw gegevens wilt analyseren en maken met behulp van gegevensanalyse en BI-tools, moeten de gegevens vaak worden afgevlakt en moeten ze zich houden aan een specifiek schema.
+Azure Cosmos DB is een schemaloze data base waarmee u Rapid Application Development en de mogelijkheid om gegevens modellen te herhalen zonder dat u zich hoeft te beperken tot een strikt schema. Eén Azure Cosmos-data base kan JSON-documenten van verschillende structuren bevatten. Dit is ideaal voor Rapid Application Development, maar wanneer u rapporten van uw gegevens wilt analyseren en maken met behulp van gegevens analyse en BI-hulpprogram ma's, moeten de gegevens vaak worden afgevlakt en voldoen aan een specifiek schema.
 
-Dit is waar de ODBC bestuurder komt in. Door het ODBC-stuurprogramma te gebruiken, u gegevens in Azure Cosmos DB nu opnieuw normaliseren in tabellen en weergaven die passen bij uw gegevensanalyse- en rapportagebehoeften. De gerenormaliseerde schema's hebben geen invloed op de onderliggende gegevens en beperken ontwikkelaars niet om zich eraan te houden. In plaats daarvan u odbc-compatibele tools gebruiken om toegang te krijgen tot de gegevens. Dus nu is uw Azure Cosmos-database niet alleen een favoriet voor uw ontwikkelingsteam, maar uw gegevensanalisten zullen het ook geweldig vinden.
+Hier wordt het ODBC-stuur programma meegeleverd. Met behulp van het ODBC-stuur programma kunt u gegevens in Azure Cosmos DB nu opnieuw normaliseren in tabellen en weer gaven die voldoen aan de behoeften van uw gegevens analyse en-rapportage. De hergebruikte schema's hebben geen invloed op de onderliggende gegevens en kunnen ontwikkel aars niet verfijnen. In plaats daarvan kunt u gebruikmaken van ODBC-compatibele hulpprogram ma's voor toegang tot de gegevens. Nu is uw Azure Cosmos-data base niet alleen een favoriet voor uw ontwikkel team, maar uw gegevens analisten zullen het ook leuker maken.
 
-Laten we beginnen met de ODBC driver.
+Laten we aan de slag met het ODBC-stuur programma.
 
-## <a name="step-1-install-the-azure-cosmos-db-odbc-driver"></a><a id="install"></a>Stap 1: Het Azure Cosmos DB ODBC-stuurprogramma installeren
+## <a name="step-1-install-the-azure-cosmos-db-odbc-driver"></a><a id="install"></a>Stap 1: het ODBC-stuur programma voor Azure Cosmos DB installeren
 
-1. Download de stuurprogramma's voor uw omgeving:
+1. Down load de Stuur Programma's voor uw omgeving:
 
-    | Installer | Ondersteunde besturingssystemen| 
+    | Installatie programma | Ondersteunde besturingssystemen| 
     |---|---| 
-    |[Microsoft Azure Cosmos DB ODBC 64-bit.msi](https://aka.ms/cosmos-odbc-64x64) voor 64-bits Windows| 64-bits versies van Windows 8.1 of hoger, Windows 8, Windows 7, Windows Server 2012 R2, Windows Server 2012 en Windows Server 2008 R2.| 
-    |[Microsoft Azure Cosmos DB ODBC 32x64-bit.msi](https://aka.ms/cosmos-odbc-32x64) voor 32-bits op 64-bits Windows| 64-bits versies van Windows 8.1 of hoger, Windows 8, Windows 7, Windows XP, Windows Vista, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 en Windows Server 2003.| 
-    |[Microsoft Azure Cosmos DB ODBC 32-bit.msi](https://aka.ms/cosmos-odbc-32x32) voor 32-bits Windows|32-bits versies van Windows 8.1 of hoger, Windows 8, Windows 7, Windows XP en Windows Vista.|
+    |[Microsoft Azure Cosmos DB ODBC 64-bit. msi](https://aka.ms/cosmos-odbc-64x64) voor 64-bits Windows| 64-bits versies van Windows 8,1 of hoger, Windows 8, Windows 7, Windows Server 2012 R2, Windows Server 2012 en Windows Server 2008 R2.| 
+    |[Microsoft Azure Cosmos db odbc 32x64-bit. msi](https://aka.ms/cosmos-odbc-32x64) voor 32-bits op 64-bits Windows| 64-bits versies van Windows 8,1 of hoger, Windows 8, Windows 7, Windows XP, Windows Vista, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 en Windows Server 2003.| 
+    |[Microsoft Azure Cosmos DB ODBC 32-bit. msi](https://aka.ms/cosmos-odbc-32x32) voor 32-bits Windows|32-bits versies van Windows 8,1 of hoger, Windows 8, Windows 7, Windows XP en Windows Vista.|
 
-    Voer het msi-bestand lokaal uit, waarmee de **wizard Microsoft Azure Cosmos DB ODBC-stuurprogramma-installatie**wordt gestart. 
+    Voer het MSI-bestand lokaal uit, waarmee de **installatie wizard voor het Microsoft Azure Cosmos DB ODBC-stuur programma**wordt gestart. 
 
-1. Voltooi de installatiewizard met de standaardinvoer om het ODBC-stuurprogramma te installeren.
+1. Voltooi de installatie wizard met de standaard invoer om het ODBC-stuur programma te installeren.
 
-1. Open de **ODBC Data source Administrator-app** op uw computer. U dit doen door **ODBC-gegevensbronnen** te typen in het zoekvak van Windows. 
-    U bevestigen dat het stuurprogramma is geïnstalleerd door op het tabblad **Stuurprogramma's** te klikken en ervoor te zorgen dat **Microsoft Azure Cosmos DB ODBC-stuurprogramma** wordt weergegeven.
+1. Open de **ODBC-gegevens bron beheer-** app op uw computer. U kunt dit doen door **ODBC-gegevens bronnen** te typen in het zoekvak van Windows. 
+    U kunt bevestigen dat het stuur programma is geïnstalleerd door op het tabblad **Stuur Programma's** te klikken en ervoor te zorgen dat **Microsoft Azure Cosmos db odbc-stuur programma** wordt weer gegeven.
 
-    ![Azure Cosmos DB ODBC-gegevensbronbeheerder](./media/odbc-driver/odbc-driver.png)
+    ![Azure Cosmos DB ODBC-gegevens bron beheerder](./media/odbc-driver/odbc-driver.png)
 
-## <a name="step-2-connect-to-your-azure-cosmos-database"></a><a id="connect"></a>Stap 2: Verbinding maken met uw Azure Cosmos-database
+## <a name="step-2-connect-to-your-azure-cosmos-database"></a><a id="connect"></a>Stap 2: verbinding maken met uw Azure Cosmos-data base
 
-1. Nadat [u het Azure Cosmos DB ODBC-stuurprogramma](#install)hebt geïnstalleerd, klikt u in het venster **ODBC-gegevensbronbeheerder** op **Toevoegen**. U een gebruiker of systeemdsn maken. In dit voorbeeld maakt u een DSN voor gebruikers.
+1. Nadat u [het ODBC-stuur programma voor Azure Cosmos DB hebt geïnstalleerd](#install), klikt u in het venster **ODBC-gegevens bron beheer** op **toevoegen**. U kunt een gebruikers-of systeem-DSN maken. In dit voor beeld maakt u een gebruikers-DSN.
 
-1. Selecteer **microsoft Azure Cosmos DB ODBC-stuurprogramma**in het venster Nieuwe **gegevensbron maken** en klik op **Voltooien**.
+1. Selecteer **Microsoft Azure Cosmos DB ODBC-stuur programma**in het venster **nieuwe gegevens bron maken** en klik op **volt ooien**.
 
-1. Vul in het venster **Azure Cosmos DB ODBC Driver SDN Setup** de volgende gegevens in: 
+1. Vul in **Azure Cosmos DB het venster Sdn-configuratie van ODBC-stuur programma** de volgende gegevens in: 
 
-    ![Azure Cosmos DB ODBC Driver DSN-installatievenster](./media/odbc-driver/odbc-driver-dsn-setup.png)
-    - **Naam van de bron van**gegevens: uw eigen vriendelijke naam voor de ODBC DSN. Deze naam is uniek voor uw Azure Cosmos DB-account, dus geef deze de juiste naam als u meerdere accounts hebt.
-    - **Beschrijving**: Een korte beschrijving van de gegevensbron.
-    - **Host:** URI voor uw Azure Cosmos DB-account. U dit ophalen op de pagina Azure Cosmos DB Keys in de Azure-portal, zoals weergegeven in de volgende schermafbeelding. 
-    - **Toegangssleutel:** de primaire of secundaire, lees-geschreven of alleen-lezen sleutel van de Azure Cosmos DB Keys-pagina in de Azure-portal, zoals weergegeven in de volgende schermafbeelding. We raden u aan de alleen-lezen sleutel te gebruiken als de DSN wordt gebruikt voor alleen-lezen gegevensverwerking en -rapportage.
-    ![Pagina Azure Cosmos DB Keys](./media/odbc-driver/odbc-cosmos-account-keys.png)
-    - **Access-sleutel versleutelen voor**: Selecteer de beste keuze op basis van de gebruikers van deze machine. 
+    ![Configuratie venster voor Azure Cosmos DB ODBC-stuur programma-DSN](./media/odbc-driver/odbc-driver-dsn-setup.png)
+    - **Naam van gegevens bron**: uw eigen beschrijvende naam voor de ODBC-DSN. Deze naam is uniek voor uw Azure Cosmos DB-account, dus geef het de juiste naam als u meerdere accounts hebt.
+    - **Beschrijving**: een korte beschrijving van de gegevens bron.
+    - **Host**: URI voor uw Azure Cosmos DB-account. U kunt dit ophalen op de pagina Azure Cosmos DB sleutels in de Azure Portal, zoals wordt weer gegeven in de volgende scherm afbeelding. 
+    - **Toegangs sleutel**: de primaire of secundaire, alleen-lezen of alleen-lezen sleutel van de pagina Azure Cosmos DB sleutels in de Azure Portal, zoals weer gegeven in de volgende scherm afbeelding. U wordt aangeraden de alleen-lezen sleutel te gebruiken als de DSN wordt gebruikt voor alleen-lezen gegevens verwerking en-rapportage.
+    ![Pagina Azure Cosmos DB sleutels](./media/odbc-driver/odbc-cosmos-account-keys.png)
+    - **Toegangs sleutel versleutelen voor**: Selecteer de beste keuze op basis van de gebruikers van deze computer. 
     
-1. Klik **op** de knop Testen om te controleren of u verbinding maken met uw Azure Cosmos DB-account. 
+1. Klik op de knop **testen** om te controleren of u verbinding kunt maken met uw Azure Cosmos DB-account. 
 
-1.  Klik **op Geavanceerde opties** en stel de volgende waarden in:
-    *  **REST API-versie:** selecteer de [REST API-versie](https://docs.microsoft.com/rest/api/cosmos-db/) voor uw bewerkingen. De standaardinstelling 2015-12-16. Als u containers met [grote partitiesleutels hebt](large-partition-keys.md) en REST API-versie 2018-12-31 vereist:
-        - Typ in **2018-12-31** voor REST API-versie
-        - Typ 'regedit' in het menu **Start** om de **registereditor-toepassing** te zoeken en te openen.
-        - Navigeer in registereditor naar het pad: **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC. INI**
-        - Maak een nieuwe subsleutel met dezelfde naam als uw DSN, bijvoorbeeld "Contoso Account ODBC DSN".
-        - Navigeer naar de subsleutel 'Contoso-account ODBC DSN'.
-        - Klik met de rechtermuisknop om een nieuwe **tekenreekswaarde** toe te voegen:
+1.  Klik op **Geavanceerde opties** en stel de volgende waarden in:
+    *  **Rest API versie**: selecteer de [rest API versie](https://docs.microsoft.com/rest/api/cosmos-db/) voor uw bewerkingen. De standaard waarde is 2015-12-16. Als u containers met [grote partitie sleutels](large-partition-keys.md) hebt en REST API versie 2018-12-31 hebt vereist:
+        - Typ **2018-12-31** voor rest API versie
+        - Typ ' regedit ' in het menu **Start** om de toepassing **REGI ster-editor** te zoeken en te openen.
+        - Navigeer in de REGI ster-editor naar het pad: **computer \ HKEY_LOCAL_MACHINE \software\odbc\odbc. INI**
+        - Maak een nieuwe subsleutel met dezelfde naam als uw DSN, bijvoorbeeld ' contoso-account ODBC-DSN '.
+        - Navigeer naar de subsleutel ' contoso account ODBC DSN '.
+        - Klik met de rechter muisknop om een nieuwe **teken reeks** waarde toe te voegen:
             - Waardenaam: **IgnoreSessionToken**
             - Waardegegevens: **1**
-            ![Instellingen voor registereditor](./media/odbc-driver/cosmos-odbc-edit-registry.png)
-    - **Queryconsistentie:** selecteer het [consistentieniveau](consistency-levels.md) voor uw bewerkingen. De standaardinstelling is Sessie.
-    - **Aantal nieuwe pogingen**: Voer het aantal keren in dat u een bewerking opnieuw wilt proberen als de oorspronkelijke aanvraag niet wordt voltooid vanwege de beperking van het servicetarief.
-    - **Schemabestand**: U hebt hier een aantal opties.
-        - Standaard scant de chauffeur de eerste pagina met gegevens voor alle containers om het schema van elke container te bepalen. Dit staat bekend als Container Mapping. Zonder een schemabestand gedefinieerd, moet het stuurprogramma de scan voor elke stuurprogrammasessie uitvoeren en kan dit resulteren in een hogere opstarttijd van een toepassing met behulp van de DSN. We raden u aan altijd een schemabestand voor een DSN te koppelen.
-        - Als u al een schemabestand hebt (mogelijk een bestand dat u hebt gemaakt met behulp van de schema-editor), u op **Bladeren**klikken, naar het bestand navigeren, op **Opslaan**klikken en vervolgens op **OK**klikken.
-        - Als u een nieuw schema wilt maken, klikt u op **OK**en klikt u vervolgens op **Schema-editor** in het hoofdvenster. Ga dan naar de schema-editor informatie. Nadat u het nieuwe schemabestand hebt gemaakt, moet u terug naar het venster **Geavanceerde opties** gaan om het nieuw gemaakte schemabestand op te nemen.
+            ![REGI ster-editor-instellingen](./media/odbc-driver/cosmos-odbc-edit-registry.png)
+    - **Consistentie van query's**: Selecteer het [consistentie niveau](consistency-levels.md) voor uw bewerkingen. De standaard waarde is Session.
+    - **Aantal nieuwe pogingen**: Geef het aantal keren op dat een bewerking opnieuw moet worden uitgevoerd als de eerste aanvraag niet is voltooid als gevolg van de service limiet.
+    - **Schema bestand**: u hebt hier een aantal opties.
+        - Standaard wordt de eerste pagina met gegevens voor alle containers door het stuur programma gecontroleerd om het schema van elke container te bepalen. Dit staat bekend als container toewijzing. Zonder dat er een schema bestand is gedefinieerd, moet het stuur programma de scan uitvoeren voor elke stuur programma-sessie en kan dit leiden tot een hogere opstart tijd van een toepassing die de DSN gebruikt. U wordt aangeraden altijd een schema bestand voor een DSN te koppelen.
+        - Als u al een schema bestand hebt (mogelijk een dat u hebt gemaakt met de schema-editor), klikt u op **Bladeren**, navigeert u naar het bestand, klikt u op **Opslaan**en klikt u vervolgens op **OK**.
+        - Als u een nieuw schema wilt maken, klikt u op **OK**en klikt u vervolgens in het hoofd venster op **schema-editor** . Ga vervolgens verder met de informatie over de schema-editor. Nadat u het nieuwe schema bestand hebt gemaakt, gaat u terug naar het venster **Geavanceerde opties** om het zojuist gemaakte schema bestand op te slaan.
 
-1. Zodra u het **DSN-installatievenster azure cosmos DB ODBC-stuurprogramma** hebt voltooid en gesloten, wordt de nieuwe DSN-gebruiker toegevoegd aan het tabblad DSN voor gebruiker.
+1. Zodra u Azure Cosmos DB het venster **Setup van ODBC-stuur programma-DSN** hebt voltooid en gesloten, wordt de nieuwe gebruikers-DSN toegevoegd aan het tabblad gebruikers-DSN.
 
-    ![Nieuwe Azure Cosmos DB ODBC DSN op het tabblad DSN voor gebruikers](./media/odbc-driver/odbc-driver-user-dsn.png)
+    ![Nieuwe Azure Cosmos DB ODBC-DSN op het tabblad gebruikers-DSN](./media/odbc-driver/odbc-driver-user-dsn.png)
 
-## <a name="step-3-create-a-schema-definition-using-the-container-mapping-method"></a><a id="#container-mapping"></a>Stap 3: Een schemadefinitie maken met de methode voor containertoewijzing
+## <a name="step-3-create-a-schema-definition-using-the-container-mapping-method"></a><a id="#container-mapping"></a>Stap 3: een schema definitie maken met behulp van de container toewijzings methode
 
-Er zijn twee soorten bemonsteringsmethoden die u gebruiken: **containertoewijzing** of **tabelscheidingen.** Een bemonsteringssessie kan beide bemonsteringsmethoden gebruiken, maar elke container kan alleen een specifieke bemonsteringsmethode gebruiken. In de onderstaande stappen wordt een schema gemaakt voor de gegevens in een of meer containers met behulp van de methode voor containertoewijzing. Met deze bemonsteringsmethode worden de gegevens op de pagina van een container opgehaald om de structuur van de gegevens te bepalen. Het zet een container om in een tabel aan de ODBC-kant. Deze bemonsteringsmethode is efficiënt en snel wanneer de gegevens in een container homogeen zijn. Als een container heterogene gegevens bevat, raden we u aan de kaartmethode voor [tabelbedelingen te](#table-mapping) gebruiken, omdat deze een robuustere bemonsteringsmethode biedt om de gegevensstructuren in de container te bepalen. 
+Er zijn twee soorten bemonsterings methoden die u kunt gebruiken: **container toewijzing** of **tabel scheidings tekens**. Een steekproef sessie kan gebruikmaken van beide steekproef methoden, maar elke container kan alleen een specifieke steekproef methode gebruiken. Met de volgende stappen maakt u een schema voor de gegevens in een of meer containers met behulp van de container toewijzings methode. Met deze steekproef methode worden de gegevens in de pagina van een container opgehaald om de structuur van de gegevens te bepalen. Er wordt een container naar een tabel op de ODBC-zijde getransponeren. Deze steekproef methode is efficiënt en snel wanneer de gegevens in een container homo geen zijn. Als een container hetero geen gegevens bevat, kunt u het beste de [toewijzings methode voor tabel scheidingen](#table-mapping) gebruiken, aangezien deze een krachtigere bemonsterings methode biedt om de gegevens structuren in de container te bepalen. 
 
-1. Nadat u stappen 1-4 hebt voltooid in [Verbinding maken met uw Azure Cosmos-database,](#connect)klikt u op **Schema-editor** in het venster **Azure Cosmos DB ODBC-stuurprogramma DSN-installatie.**
+1. Klik na het volt ooien van de stappen 1-4 in [verbinding maken met uw Azure Cosmos-data base](#connect)op **schema-editor** in het venster **Azure Cosmos db odbc-stuur programma-DSN instellen** .
 
-    ![Knop Schema-editor in het venster Azure Cosmos DB ODBC Driver DSN Setup](./media/odbc-driver/odbc-driver-schema-editor.png)
-1. Klik in het venster **Schema-editor** op **Nieuw maken**.
-    In het venster **Schema genereren** worden alle containers weergegeven in het Azure Cosmos DB-account. 
+    ![De knop schema-editor in het venster Azure Cosmos DB ODBC-stuur programma-DSN instellen](./media/odbc-driver/odbc-driver-schema-editor.png)
+1. Klik in het venster **schema-editor** op **nieuwe maken**.
+    In het venster **schema genereren** worden alle containers in het Azure Cosmos DB-account weer gegeven. 
 
-1. Selecteer een of meer containers die u wilt samplen en klik op **Voorbeeld**. 
+1. Selecteer een of meer containers om voor beelden te selecteren en klik vervolgens op voor **beeld**. 
 
-1. Op het tabblad **Ontwerpweergave** worden de database, het schema en de tabel weergegeven. In de tabelweergave wordt in de scan de set eigenschappen weergegeven die zijn gekoppeld aan de kolomnamen (SQL-naam, bronnaam, enz.).
-    Voor elke kolom u de naam VAN DE KOLOM SQL, het SQL-type, SQL-lengte (indien van toepassing), Schaal (indien van toepassing), Precisie (indien van toepassing) en Nullable wijzigen.
-    - U **Kolom verbergen** op **true** instellen als u die kolom wilt uitsluiten van queryresultaten. Kolommen met de tekst Kolom verbergen = waar worden niet geretourneerd voor selectie en projectie, hoewel ze nog steeds deel uitmaken van het schema. U bijvoorbeeld alle vereiste eigenschappen van het Azure Cosmos DB-systeem verbergen, te beginnen met _.
-    - De **id-kolom** is het enige veld dat niet kan worden verborgen omdat het wordt gebruikt als de primaire sleutel in het genormaliseerde schema. 
+1. Op het tabblad **ontwerp weergave** worden de data base, het schema en de tabel weer gegeven. In de tabel weergave geeft de scan de set eigenschappen weer die zijn gekoppeld aan de kolom namen (SQL-naam, bron naam, enzovoort).
+    Voor elke kolom kunt u de SQL-naam van de kolom, het SQL-type, de SQL-lengte (indien van toepassing), de schaal (indien van toepassing), de nauw keurigheid (indien van toepassing) en Null-waarden wijzigen.
+    - U kunt de **kolom verbergen** instellen op **True** als u die kolom wilt uitsluiten van query resultaten. Kolommen die zijn gemarkeerd voor kolom verbergen = True, worden niet geretourneerd voor selectie en projectie, hoewel ze nog steeds deel uitmaken van het schema. U kunt bijvoorbeeld alle vereiste eigenschappen van Azure Cosmos DB systeem die beginnen met ' _ ' verbergen.
+    - De kolom **id** is het enige veld dat niet kan worden verborgen omdat het wordt gebruikt als primaire sleutel in het genormaliseerde schema. 
 
-1. Nadat u klaar bent met het definiëren van het schema, klikt u op **Bestand** | **opslaan,** navigeert u naar de map om het schema op te slaan en klikt u vervolgens op **Opslaan**.
+1. Wanneer u klaar bent met het definiëren van het schema, klikt u op **bestand** | **Opslaan**, gaat u naar de Directory om het schema op te slaan en klikt u vervolgens op **Opslaan**.
 
-1. Als u dit schema met een DSN wilt gebruiken, opent u het **azure cosmos DB ODBC-stuurprogramma dsn-installatievenster** (via de ODBC-gegevensbronbeheerder), klikt u op **Geavanceerde opties**en navigeert u vervolgens in het vak **Schemabestand** naar het opgeslagen schema. Als u een schemabestand opslaat in een bestaand DSN, wordt de DSN-verbinding met het bereik gewijzigd op de gegevens en structuur die door het schema zijn gedefinieerd.
+1. Als u dit schema met een DSN wilt gebruiken, opent u het **venster Azure Cosmos DB ODBC driver DSN Setup** (via de ODBC-gegevens bron beheerder), klikt u op **Geavanceerde opties**en navigeert u in het vak **schema bestand** naar het opgeslagen schema. Als u een schema bestand opslaat in een bestaande DSN, wijzigt de DSN-verbinding met de scope naar de gegevens en structuur die door schema zijn gedefinieerd.
 
-## <a name="step-4-create-a-schema-definition-using-the-table-delimiters-mapping-method"></a><a id="table-mapping"></a>Stap 4: Een schemadefinitie maken met de toewijzingsmethode voor tabelscheidingen
+## <a name="step-4-create-a-schema-definition-using-the-table-delimiters-mapping-method"></a><a id="table-mapping"></a>Stap 4: een schema definitie maken met behulp van de toewijzings methode voor tabel scheidingen
 
-Er zijn twee soorten bemonsteringsmethoden die u gebruiken: **containertoewijzing** of **tabelscheidingen.** Een bemonsteringssessie kan beide bemonsteringsmethoden gebruiken, maar elke container kan alleen een specifieke bemonsteringsmethode gebruiken. 
+Er zijn twee soorten bemonsterings methoden die u kunt gebruiken: **container toewijzing** of **tabel scheidings tekens**. Een steekproef sessie kan gebruikmaken van beide steekproef methoden, maar elke container kan alleen een specifieke steekproef methode gebruiken. 
 
-Met de volgende stappen wordt een schema gemaakt voor de gegevens in een of meer containers met de **toewijzingsmethode voor tabelscheidingen.** We raden u aan deze bemonsteringsmethode te gebruiken wanneer uw containers heterogene gegevens bevatten. U deze methode gebruiken om de bemonstering te richten op een set kenmerken en de bijbehorende waarden. Als een document bijvoorbeeld een eigenschap 'Type' bevat, u de steekproef naar de waarden van deze eigenschap scopen. Het eindresultaat van de steekproef is een reeks tabellen voor elk van de waarden voor tekst die u hebt opgegeven. Type = auto produceert bijvoorbeeld een tabel Auto terwijl Type = Vlak een vliegtuigtabel zou produceren.
+Met de volgende stappen maakt u een schema voor de gegevens in een of meer containers met behulp van de toewijzings methode voor **tabel scheidingen** . U wordt aangeraden deze steekproef methode te gebruiken wanneer uw containers heterogene gegevens typen bevatten. U kunt deze methode gebruiken om de steek proef te beperken tot een set kenmerken en de bijbehorende waarden. Als een document bijvoorbeeld een eigenschap ' type ' bevat, kunt u de steek proef bereiken op de waarden van deze eigenschap. Het eind resultaat van de steek proef is een set tabellen voor elk van de waarden van het type dat u hebt opgegeven. Typ bijvoorbeeld = auto produceert een auto-tabel terwijl type = vlak een vlak tabel produceert.
 
-1. Nadat u stappen 1-4 hebt voltooid in [Verbinding maken met uw Azure Cosmos-database,](#connect)klikt u op **Schema-editor** in het venster Azure Cosmos DB ODBC-stuurprogramma DSN-installatie.
+1. Klik na het volt ooien van de stappen 1-4 in [verbinding maken met uw Azure Cosmos-data base](#connect)op **schema-editor** in het venster Azure Cosmos DB ODBC-stuur programma-DSN instellen.
 
-1. Klik in het venster **Schema-editor** op **Nieuw maken**.
-    In het venster **Schema genereren** worden alle containers weergegeven in het Azure Cosmos DB-account. 
+1. Klik in het venster **schema-editor** op **nieuwe maken**.
+    In het venster **schema genereren** worden alle containers in het Azure Cosmos DB-account weer gegeven. 
 
-1. Selecteer een container op het tabblad **Voorbeeldweergave** in de kolom **Toewijzingsdefinitie** voor de container klik op **Bewerken**. Selecteer vervolgens in het venster **Toewijzingsdefinitie** de methode **Tabelscheidingen.** Ga daarna als volgt te werk:
+1. Selecteer een container op het tabblad **voor beeld weergave** in de kolom **toewijzings definitie** voor de container en klik op **bewerken**. Selecteer vervolgens in het venster **toewijzings definitie** de methode **tabel scheidings tekens** . Ga daarna als volgt te werk:
 
-    a. Typ in het vak **Kenmerken** de naam van een eigenschap van de scheidingsteken. Dit is een eigenschap in uw document die u wilt scope de bemonstering om, bijvoorbeeld, Stad en druk op enter. 
+    a. Typ in het vak **kenmerken** de naam van een scheidings eigenschap. Dit is een eigenschap in uw document waarin u de steek proef wilt bereiken, bijvoorbeeld City, en druk op ENTER. 
 
-    b. Als u de steekproef alleen wilt scopen met bepaalde waarden voor het kenmerk dat u hierboven hebt ingevoerd, selecteert u het kenmerk in het selectievak, voert u een waarde in het vak **Waarde** in (bijvoorbeeld Seattle) en drukt u op Enter. U meerdere waarden voor kenmerken blijven toevoegen. Zorg ervoor dat het juiste kenmerk is geselecteerd wanneer u waarden invoert.
+    b. Als u de steek proef alleen wilt beperken tot bepaalde waarden voor het kenmerk dat u hierboven hebt opgegeven, selecteert u het kenmerk in het selectie vakje, voert u een waarde in het vak **waarde** (bijvoorbeeld Seattle) in en drukt u op ENTER. U kunt door gaan met het toevoegen van meerdere waarden voor kenmerken. Zorg ervoor dat u het juiste kenmerk hebt geselecteerd wanneer u waarden invoert.
 
-    Als u bijvoorbeeld een **waarde voor kenmerken** van City opneemt en u wilt dat uw tabel alleen rijen met een stadswaarde van New York en Dubai bevat, voert u City in het vak Kenmerken en New York en vervolgens Dubai in het vak **Waarden** in.
+    Als u bijvoorbeeld een **kenmerk** waarde van City opneemt en u wilt beperken dat de tabel alleen rijen met de waarde City en Dubai bevat, voert u plaats in het vak kenmerken in en in New York en vervolgens Dubai in het vak **waarden** .
 
 1. Klik op **OK**. 
 
-1. Nadat u de toewijzingsdefinities voor de containers hebt voltooid die u wilt samplen, klikt u in het venster **Schemaeditor** op **Voorbeeld**.
-     Voor elke kolom u de naam VAN DE KOLOM SQL, het SQL-type, SQL-lengte (indien van toepassing), Schaal (indien van toepassing), Precisie (indien van toepassing) en Nullable wijzigen.
-    - U **Kolom verbergen** op **true** instellen als u die kolom wilt uitsluiten van queryresultaten. Kolommen met de tekst Kolom verbergen = waar worden niet geretourneerd voor selectie en projectie, hoewel ze nog steeds deel uitmaken van het schema. U bijvoorbeeld alle vereiste eigenschappen van het `_`Azure Cosmos DB-systeem verbergen, te beginnen met.
-    - De **id-kolom** is het enige veld dat niet kan worden verborgen omdat het wordt gebruikt als de primaire sleutel in het genormaliseerde schema. 
+1. Klik na het volt ooien van de toewijzings definities voor de containers die u wilt bemonsteren in het venster **schema-editor** op voor **beeld**.
+     Voor elke kolom kunt u de SQL-naam van de kolom, het SQL-type, de SQL-lengte (indien van toepassing), de schaal (indien van toepassing), de nauw keurigheid (indien van toepassing) en Null-waarden wijzigen.
+    - U kunt de **kolom verbergen** instellen op **True** als u die kolom wilt uitsluiten van query resultaten. Kolommen die zijn gemarkeerd voor kolom verbergen = True, worden niet geretourneerd voor selectie en projectie, hoewel ze nog steeds deel uitmaken van het schema. U kunt bijvoorbeeld alle vereiste eigenschappen van het Azure Cosmos DB systeem verbergen, te beginnen `_`met.
+    - De kolom **id** is het enige veld dat niet kan worden verborgen omdat het wordt gebruikt als primaire sleutel in het genormaliseerde schema. 
 
-1. Nadat u klaar bent met het definiëren van het schema, klikt u op **Bestand** | **opslaan,** navigeert u naar de map om het schema op te slaan en klikt u vervolgens op **Opslaan**.
+1. Wanneer u klaar bent met het definiëren van het schema, klikt u op **bestand** | **Opslaan**, gaat u naar de Directory om het schema op te slaan en klikt u vervolgens op **Opslaan**.
 
-1. Klik terug in het **dsn-installatievenster azure cosmos DB ODBC-stuurprogramma op** **Geavanceerde opties**. Navigeer vervolgens in het vak **Schemabestand** naar het opgeslagen schemabestand en klik op **OK**. Klik nogmaals op **OK** om de DSN op te slaan. Hiermee wordt het schema opgeslagen dat u hebt gemaakt op de DSN. 
+1. Klik in Azure Cosmos DB het venster **Setup van ODBC-stuur programma-DSN** op **Geavanceerde opties**. Ga vervolgens naar het opgeslagen schema bestand in het vak **schema bestand** en klik op **OK**. Klik nogmaals op **OK** om de DSN op te slaan. Hiermee wordt het schema opgeslagen dat u hebt gemaakt in de DSN. 
 
-## <a name="optional-set-up-linked-server-connection"></a>(Optioneel) Gekoppelde serververbinding instellen
+## <a name="optional-set-up-linked-server-connection"></a>Beschrijving Verbinding met de gekoppelde server instellen
 
-U Azure Cosmos DB opvragen vanuit SQL Server Management Studio (SSMS) door een gekoppelde serververbinding in te stellen.
+U kunt een query uitvoeren op Azure Cosmos DB van SQL Server Management Studio (SSMS) door een gekoppelde server verbinding in te stellen.
 
-1. Maak een systeemgegevensbron zoals beschreven in `SDS Name` [stap 2,](#connect)bijvoorbeeld genoemd .
+1. Maak een systeemgegevens bron zoals beschreven in [stap 2](#connect), met de naam `SDS Name`bijvoorbeeld.
 
 1. [Installeer SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) en maak verbinding met de server. 
 
-1. Maak in de SSMS-queryeditor `DEMOCOSMOS` een gekoppeld serverobject voor de gegevensbron met de volgende opdrachten. Vervang `DEMOCOSMOS` de naam voor uw `SDS Name` gekoppelde server en de naam van uw systeemgegevensbron.
+1. Maak in de SSMS-query-editor een gekoppeld server `DEMOCOSMOS` object voor de gegevens bron met de volgende opdrachten. Vervang `DEMOCOSMOS` door de naam van de gekoppelde server en `SDS Name` met de naam van de gegevens bron van uw systeem.
 
     ```sql
     USE [master]
@@ -160,19 +160,19 @@ U Azure Cosmos DB opvragen vanuit SQL Server Management Studio (SSMS) door een g
     GO
     ```
     
-Als u de nieuwe gekoppelde servernaam wilt zien, vernieuwt u de lijst Gekoppelde servers.
+Als u de nieuwe naam van de gekoppelde server wilt zien, moet u de lijst met gekoppelde servers vernieuwen.
 
 ![Gekoppelde server in SSMS](./media/odbc-driver/odbc-driver-linked-server-ssms.png)
 
-### <a name="query-linked-database"></a>Gekoppelde database met query's
+### <a name="query-linked-database"></a>Gekoppelde data base van query
 
-Als u de gekoppelde database wilt opvragen, voert u een SSMS-query in. In dit voorbeeld selecteert de query in de `customers`tabel in de container met de naam :
+Voer een SSMS-query in om een query uit te voeren op de gekoppelde data base. In dit voor beeld wordt de query geselecteerd uit de tabel in de container `customers`met de naam:
 
 ```sql
 SELECT * FROM OPENQUERY(DEMOCOSMOS, 'SELECT *  FROM [customers].[customers]')
 ```
 
-Voer de query uit. Het resultaat moet vergelijkbaar zijn met dit:
+Voer de query uit. Het resultaat moet er ongeveer als volgt uitzien:
 
 ```
 attachments/  1507476156    521 Bassett Avenue, Wikieup, Missouri, 5422   "2602bc56-0000-0000-0000-59da42bc0000"   2015-02-06T05:32:32 +05:00 f1ca3044f17149f3bc61f7b9c78a26df
@@ -183,7 +183,7 @@ attachments/  1507476156    570 Ruby Street, Spokane, Idaho, 9025       "2602c15
 ```
 
 > [!NOTE]
-> De gekoppelde Cosmos DB-server ondersteunt geen naamgeving in vier delen. Een fout wordt geretourneerd vergelijkbaar met het volgende bericht:
+> De gekoppelde Cosmos DB server biedt geen ondersteuning voor de namen van vier delen. Er wordt een fout geretourneerd die vergelijkbaar is met het volgende bericht:
 
 ```
 Msg 7312, Level 16, State 1, Line 44
@@ -191,57 +191,57 @@ Msg 7312, Level 16, State 1, Line 44
 Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server "DEMOCOSMOS". A four-part name was supplied, but the provider does not expose the necessary interfaces to use a catalog or schema.
 ``` 
 
-## <a name="optional-creating-views"></a>(Optioneel) Weergaven maken
-U weergaven definiëren en maken als onderdeel van het bemonsteringsproces. Deze weergaven zijn gelijk aan SQL-weergaven. Ze zijn alleen-lezen en zijn scope de selecties en projecties van de Azure Cosmos DB SQL query gedefinieerd. 
+## <a name="optional-creating-views"></a>Beschrijving Weer gaven maken
+U kunt weer gaven definiëren en maken als onderdeel van het bemonsterings proces. Deze weer gaven zijn gelijk aan SQL-weer gaven. Ze zijn alleen-lezen en zijn het bereik van de selecties en projecties van de gedefinieerde Azure Cosmos DB SQL-query. 
 
-Als u een weergave voor uw gegevens wilt maken, klikt u in het venster **Schema-editor** in de kolom **Definities weergeven** op **Toevoegen aan** de rij van de container om te samplen. 
-    ![Een weergave van gegevens maken](./media/odbc-driver/odbc-driver-create-view.png)
-
-
-Ga vervolgens in het venster **Definities weergeven** als volgt te werk:
-
-1. Klik **op Nieuw,** voer een naam in voor de weergave, bijvoorbeeld EmployeesfromSeattleView en klik op **OK**.
-
-1. Voer in het venster **Weergave bewerken** een Azure Cosmos DB-query in. Dit moet bijvoorbeeld `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"`een Azure Cosmos DB [SQL-query](how-to-sql-query.md)zijn en vervolgens op **OK**klikken.
-
-    ![Query toevoegen bij het maken van een weergave](./media/odbc-driver/odbc-driver-create-view-2.png)
+Als u een weer gave voor uw gegevens wilt maken, klikt u in het venster **schema-editor** in de kolom **weergave definities** op **toevoegen** op de rij van de container om een voor beeld te geven. 
+    ![Een weer gave van gegevens maken](./media/odbc-driver/odbc-driver-create-view.png)
 
 
-U veel weergaven maken zoals u wilt. Zodra u klaar bent met het definiëren van de weergaven, u de gegevens bekijken. 
+Ga vervolgens als volgt te werk in het venster **weergave definities** :
 
-## <a name="step-5-view-your-data-in-bi-tools-such-as-power-bi-desktop"></a>Stap 5: Uw gegevens weergeven in BI-hulpprogramma's zoals Power BI Desktop
+1. Klik op **Nieuw**, voer een naam in voor de weer gave, bijvoorbeeld EmployeesfromSeattleView, en klik vervolgens op **OK**.
 
-U uw nieuwe DSN gebruiken om verbinding te maken met Azure Cosmos DB met alle ODBC-compatibele hulpprogramma's - deze stap laat u gewoon zien hoe u verbinding maken met Power BI Desktop en een Power BI-visualisatie maken.
+1. Voer in het venster **weer gave bewerken** een Azure Cosmos DB query in. Dit moet een [Azure Cosmos DB SQL-query](how-to-sql-query.md)zijn, bijvoorbeeld `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"`en klik vervolgens op **OK**.
+
+    ![Query toevoegen bij het maken van een weer gave](./media/odbc-driver/odbc-driver-create-view-2.png)
+
+
+U kunt een groot aantal weer gaven maken zoals u wilt. Wanneer u klaar bent met het definiëren van de weer gaven, kunt u de gegevens vervolgens van een steek proef nemen. 
+
+## <a name="step-5-view-your-data-in-bi-tools-such-as-power-bi-desktop"></a>Stap 5: uw gegevens weer geven in BI-hulpprogram ma's zoals Power BI Desktop
+
+U kunt uw nieuwe DSN gebruiken om verbinding te maken met Azure Cosmos DB met alle ODBC-compatibele hulpprogram ma's. deze stap laat zien hoe u verbinding maakt met Power BI Desktop en hoe u een Power BI visualisatie maakt.
 
 1. Open Power BI Desktop.
 
-1. Klik **op Gegevens opvragen**.
+1. Klik op **gegevens ophalen**.
 
     ![Gegevens ophalen in Power BI](./media/odbc-driver/odbc-driver-power-bi-get-data.png)
 
-1. Klik in het venster **Gegevens opvragen** op **Andere** | **ODBC** | **Connect**.
+1. Klik in het venster **gegevens ophalen** op **andere** | **ODBC-** | **verbinding**.
 
-    ![Kies ODBC-gegevensbron in Power BI-gegevens](./media/odbc-driver/odbc-driver-power-bi-get-data-2.png)
+    ![ODBC-gegevens bron kiezen in Power BI gegevens ophalen](./media/odbc-driver/odbc-driver-power-bi-get-data-2.png)
 
-1. Selecteer in het venster **Van ODBC** de gegevensbronnaam die u hebt gemaakt en klik op **OK**. U de vermeldingen **met geavanceerde opties** leeg laten.
+1. Selecteer in het venster **van ODBC** de naam van de gegevens bron die u hebt gemaakt en klik vervolgens op **OK**. U kunt de **Geavanceerde opties** leeg laten.
 
-    ![Kies Gegevensbronnaam (DSN) in Power BI-gegevens](./media/odbc-driver/odbc-driver-power-bi-get-data-3.png)
+    ![De naam van de gegevens bron (DSN) kiezen in Power BI gegevens ophalen](./media/odbc-driver/odbc-driver-power-bi-get-data-3.png)
 
-1. Selecteer in **de gegevensbron Toegang tot een gegevensbron met een ODBC-stuurprogrammavenster** de optie **Standaard of Aangepast** en klik op **Verbinden**. U hoeft de eigenschappen van de **referentieverbindingstekenreeks**niet op te nemen.
+1. Selecteer in het venster **toegang tot een gegevens bron met een ODBC-stuur programma** de optie **standaard of aangepast** en klik vervolgens op **verbinding maken**. U hoeft de **referentie Connection String eigenschappen**niet op te neemen.
 
-1. Vouw in het **venster Navigator** in het linkerdeelvenster de database, het schema uit en selecteer vervolgens de tabel. Het resultatenvenster bevat de gegevens met behulp van het schema dat u hebt gemaakt.
+1. Vouw in het **Navigatie** venster in het linkerdeel venster de data base en het schema uit en selecteer vervolgens de tabel. Het deel venster met resultaten bevat de gegevens met behulp van het schema dat u hebt gemaakt.
 
-    ![Tabel selecteren in Power BI-gegevens opvragen](./media/odbc-driver/odbc-driver-power-bi-get-data-4.png)
+    ![Selecteer een tabel in Power BI gegevens ophalen](./media/odbc-driver/odbc-driver-power-bi-get-data-4.png)
 
-1. Als u de gegevens in Power BI-bureaublad wilt visualiseren, schakelt u het selectievakje voor de tabelnaam in en klikt u op **Laden**.
+1. Als u de gegevens in Power BI bureau blad wilt visualiseren, schakelt u het selectie vakje voor de tabel naam in en klikt u vervolgens op **laden**.
 
-1. Selecteer in Power BI-bureaublad helemaal links het tabblad Gegevens ![Tabblad Gegevens in Power BI-bureaublad](./media/odbc-driver/odbc-driver-data-tab.png) om te bevestigen dat uw gegevens zijn geïmporteerd.
+1. Selecteer in Power BI Desktop helemaal links het tabblad gegevens ![Het tabblad gegevens in Power BI Desktop](./media/odbc-driver/odbc-driver-data-tab.png) controleren of uw gegevens zijn geïmporteerd.
 
-1. U nu visuals maken met Power BI ![door op het](./media/odbc-driver/odbc-driver-report-tab.png)tabblad Rapportrapport in Power BI-bureaublad te klikken, op **Nieuwe visual**te klikken en vervolgens de tegel aan te maken. Zie [Visualisatietypen in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/)voor meer informatie over het maken van visualisaties in Power BI.
+1. U kunt nu visuals maken met behulp van Power BI door te klikken ![op het tabblad rapport](./media/odbc-driver/odbc-driver-report-tab.png)rapporten in Power bi Desktop, op **nieuwe Visual**te klikken en vervolgens uw tegel aan te passen. Zie [visualisatie typen in Power bi](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/)voor meer informatie over het maken van visualisaties in Power bi Desktop.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als u de volgende fout ontvangt, moet u ervoor zorgen dat de waarden **host-** en **toegangssleutel** die u de Azure-portal in [stap 2](#connect) hebt gekopieerd, correct zijn en vervolgens opnieuw proberen. Gebruik de kopieerknoppen rechts van de waarden **Host-** en **Access-sleutel** in de Azure-portal om de waarden foutloos te kopiëren.
+Als u het volgende fout bericht ontvangt, moet u ervoor zorgen dat de **host** en de **toegangs sleutel** waarden die u hebt gekopieerd in [stap 2](#connect) de juiste Azure Portal zijn en probeer het opnieuw. Gebruik de Kopieer knoppen aan de rechter kant van de **host** en **toegangs sleutel** waarden in de Azure Portal om de fout vrije waarden te kopiëren.
 
     [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}`
 

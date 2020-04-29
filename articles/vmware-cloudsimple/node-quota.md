@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-oplossing voor CloudSimple - CloudSimple-knooppuntquotum
-description: Beschrijft de quotalimieten voor CloudSimple-knooppunten en hoe u een verhoging van het quotum aanvragen
+title: Azure VMware-oplossing door CloudSimple-CloudSimple-knooppunt quota
+description: Beschrijft de quotum limieten voor CloudSimple-knoop punten en hoe u kunt aanvragen voor een toename van quotum
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/19/2019
@@ -9,33 +9,33 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 83dc9e26e03eb955d88340d1ed21084d4e685ed8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77019635"
 ---
-# <a name="cloudsimple-node-quota-limits"></a>Quotalimieten voor CloudSimple-knooppunt
+# <a name="cloudsimple-node-quota-limits"></a>Quotum limieten voor CloudSimple-knoop punten
 
-Vier knooppunten is het standaardaantal dat beschikbaar is voor aankoop wanneer uw abonnement is ingeschakeld voor de CloudSimple-service.  U elk [knooppunttype](cloudsimple-node.md) kopen in de Azure-portal.  Ten minste drie knooppunten van dezelfde SKU zijn vereist om een Private Cloud te maken.  Als u de knooppunten hebt gekocht, ziet u mogelijk een fout wanneer u extra knooppunten probeert aan te schaffen.
+Vier knoop punten is de standaard hoeveelheid die beschikbaar is voor aankoop wanneer uw abonnement is ingeschakeld voor de CloudSimple-service.  U kunt elk [type knoop punt](cloudsimple-node.md) kopen via de Azure Portal.  Er zijn ten minste drie knoop punten van dezelfde SKU vereist voor het maken van een Privécloud.  Als u de knoop punten hebt aangeschaft, ziet u mogelijk een fout melding wanneer u probeert extra knoop punten aan te schaffen.
 
 ## <a name="quota-increase"></a>Verhoging van quotum
 
-U het knooppuntquotum verhogen door een ondersteuningsaanvraag in te dienen. Het serviceoperations-team evalueert de aanvraag en werkt met u samen om het knooppuntquotum te verhogen.  Selecteer de volgende opties wanneer u een nieuw ticket opent:
+U kunt het quotum van het knoop punt verhogen door een ondersteunings aanvraag in te dienen. Het team voor service bewerkingen evalueert de aanvraag en werkt samen met u om het quotum van het knoop punt te verhogen.  Selecteer de volgende opties wanneer u een nieuw ticket opent:
 
-* Type probleem: **Technisch**
-* Abonnement: **uw abonnements-id**
-* Servicetype: **VMware-oplossing door CloudSimple**
-* **Probleemtype: Quotum voor speciale knooppunten**
-* Probleemsubtype: **Quotum voor speciale knooppunten verhogen**
-* Betreft: **Quotaverhoging**
+* Probleem type: **technisch**
+* Abonnement: **uw abonnement-id**
+* Service type: **VMware-oplossing op CloudSimple**
+* Probleem type: **quotum toegewezen knoop punten**
+* Subtype van probleem: het **quotum van toegewezen knoop punten verhogen**
+* Onderwerp: **quotum toename**
 
-Geef in de details van het ondersteuningsticket het vereiste aantal knooppunten en knooppunt SKU op.
+Geef in de details van het ondersteunings ticket het vereiste aantal knoop punten en de node-SKU op.
 
-* Knooppunt SKU
-* Aantal extra knooppunten waarvoor u de quotumverhoging aanvraagt
+* Node-SKU
+* Aantal extra knoop punten waarvoor u de quota verhoging wilt verhogen
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Knooppunten kopen](create-nodes.md)
-* [Overzicht van CloudSimple-knooppunten](cloudsimple-node.md)
+* [Overzicht van CloudSimple-knoop punten](cloudsimple-node.md)

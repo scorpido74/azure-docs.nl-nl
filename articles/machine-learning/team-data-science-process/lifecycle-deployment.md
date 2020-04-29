@@ -1,6 +1,6 @@
 ---
-title: Implementatiefase van de levenscyclus van het Team Data Science Process
-description: De doelen, taken en deliverables voor de implementatiefase van uw data-science projecten
+title: Implementatie fase van de team data Science proces levenscyclus
+description: De doelen, taken en producten voor de implementatie fase van uw data-Science-projecten
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1138c95274c769186a9a29aa4d35517e378baeae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76720483"
 ---
-# <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Implementatiefase van de levenscyclus van het Team Data Science Process
+# <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Implementatie fase van de team data Science proces levenscyclus
 
-In dit artikel worden de doelen, taken en deliverables beschreven die zijn gekoppeld aan de implementatie van het Team Data Science Process (TDSP). Dit proces biedt een aanbevolen levenscyclus die u gebruiken om uw data-science-projecten te structureren. De levenscyclus schetst de belangrijkste fasen die projecten doorgaans uitvoeren, vaak iteratief:
+In dit artikel vindt u een overzicht van de doelen, taken en producten die zijn gekoppeld aan de implementatie van het team data Science process (TDSP). Dit proces biedt een aanbevolen levens cyclus die u kunt gebruiken om uw projecten met een gegevens wetenschap te structureren. De levens cyclus bevat een overzicht van de belangrijkste fasen die door projecten meestal worden uitgevoerd, vaak iteratief:
 
    1. **Inzicht in het bedrijf**
    2. **Gegevens verzamelen en begrijpen**
@@ -28,47 +28,47 @@ In dit artikel worden de doelen, taken en deliverables beschreven die zijn gekop
    4. **Implementatie**
    5. **Aanvaarding van de klant**
 
-Hier is een visuele weergave van de TDSP-levenscyclus: 
+Hier volgt een visuele representatie van de levens cyclus van TDSP: 
 
-![TDSP-levenscyclus](./media/lifecycle/tdsp-lifecycle2.png) 
+![TDSP levenscyclus](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goal"></a>Doel
-Implementeer modellen met een gegevenspijplijn naar een productie- of productie-achtige omgeving voor acceptatie door de eindgebruiker. 
+Implementeer modellen met een gegevens pijplijn naar een productie-of productie omgeving voor eind gebruikers acceptatie. 
 
-## <a name="how-to-do-it"></a>Hoe doe je dat?
+## <a name="how-to-do-it"></a>Hoe u dit doet
 De belangrijkste taak die in deze fase wordt behandeld:
 
-**Het model operationaliseren**: Implementeer het model en de pijplijn naar een productie- of productie-achtige omgeving voor toepassingsverbruik.
+**Operationeel maken het model**: Implementeer het model en de pijp lijn op een productie-of productie omgeving voor het verbruik van toepassingen.
 
 ### <a name="operationalize-a-model"></a>Een model operationeel maken
-Nadat u een set modellen hebt die goed presteren, u ze operationeel maken voor andere toepassingen om te consumeren. Afhankelijk van de zakelijke vereisten worden voorspellingen in realtime of op batchbasis gedaan. Als u modellen wilt implementeren, stelt u ze bloot met een open API-interface. De interface maakt het mogelijk om het model gemakkelijk te gebruiken uit verschillende toepassingen, zoals:
+Nadat u een set modellen hebt die goed pres teren, kunt u deze operationeel maken voor andere toepassingen die u wilt gebruiken. Afhankelijk van de bedrijfs vereisten worden de voor spellingen in realtime of op basis van een batch gemaakt. Als u modellen wilt implementeren, kunt u ze beschikbaar maken met een open API-interface. Met de-interface kan het model eenvoudig worden gebruikt vanuit verschillende toepassingen, zoals:
 
    * Online websites
    * Spreadsheets 
    * Dashboards
-   * Line-of-business toepassingen 
-   * Back-endtoepassingen 
+   * Line-of-business-toepassingen 
+   * Back-end-toepassingen 
 
-Zie [Een Azure Machine Learning-webservice implementeren](../studio/deploy-a-machine-learning-web-service.md)voor voorbeelden van modeloperationalisatie met een Azure Machine Learning-webservice. Het is een aanbevolen praktijk om telemetrie en monitoring in te bouwen in het productiemodel en de gegevenspijplijn die u implementeert. Deze praktijk helpt bij het volgende rapportering van de systeemstatus en het oplossen van problemen.  
+Zie [Deploy a Azure machine learning web service](../studio/deploy-a-machine-learning-web-service.md)(Engelstalig) voor voor beelden van model uitoefening met een Azure machine learning-webservice. Het is een best practice om telemetrie te bouwen en te controleren in het productie model en de gegevens pijplijn die u implementeert. Deze werk wijze helpt bij het volgen van de systeem status rapportage en probleem oplossing.  
 
 ## <a name="artifacts"></a>Artefacten
 
-* Een statusdashboard met de systeemstatus en de belangrijkste statistieken
-* Een definitief modelleringsrapport met implementatiegegevens
-* Een definitief architectuurdocument voor oplossingen
+* Een status dashboard waarin de metrische gegevens van de systeem status en de sleutel worden weer gegeven
+* Een laatste model rapport met implementatie Details
+* Een laatste document van de oplossings architectuur
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Hier vindt u koppelingen naar elke stap in de levenscyclus van de TDSP:
+Hier vindt u koppelingen naar elke stap in de levens cyclus van de TDSP:
 
    1. [Inzicht in het bedrijf](lifecycle-business-understanding.md)
-   2. [Data acquisitie en begrip](lifecycle-data.md)
+   2. [Gegevens verkrijgen en meer informatie](lifecycle-data.md)
    3. [Modelleren](lifecycle-modeling.md)
    4. [Implementatie](lifecycle-deployment.md)
    5. [Aanvaarding van de klant](lifecycle-acceptance.md)
 
-We bieden volledige walkthroughs die alle stappen in het proces voor specifieke scenario's demonstreren. Het artikel [Voorbeeld walkthroughs](walkthroughs.md) bevat een lijst met de scenario's met koppelingen en miniatuurbeschrijvingen. De walkthroughs illustreren hoe u cloud-, on-premises tools en services combineren in een workflow of pijplijn om een intelligente toepassing te maken. 
+We bieden volledige instructies voor het demonstreren van alle stappen in het proces voor specifieke scenario's. Het artikel [voorbeeld](walkthroughs.md) scenario's bevat een lijst met de scenario's met koppelingen en miniaturen. In de scenario's wordt uitgelegd hoe u Cloud, on-premises hulpprogram ma's en services in een werk stroom of pijp lijn kunt combi neren om een intelligente toepassing te maken. 
 
-Zie [De TDSP](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)gebruiken met Azure Machine Learning voor voorbeelden van het uitvoeren van stappen in TDSP's die Azure Machine Learning Studio gebruiken.
+Zie [de TDSP gebruiken met Azure machine learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)voor voor beelden van het uitvoeren van stappen in TDSPs die gebruikmaken van Azure machine learning Studio.

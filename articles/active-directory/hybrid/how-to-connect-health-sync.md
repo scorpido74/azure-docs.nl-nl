@@ -17,10 +17,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61490f75d12967f7f396d5f767f2d2e696474572
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76897206"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>De Azure AD Connect synchronisatie met Azure AD Connect Health bewaken
@@ -70,7 +70,7 @@ Deze functie genereert een rapport over synchronisatiefouten die zich voordoen w
 * Het rapport bevat informatie over fouten die zijn vastgelegd door de synchronisatieclient (Azure AD Connect versie 1.1.281.0 of later)
 * Het bevat de fouten die zijn opgetreden tijdens de laatste synchronisatie op de synchronisatie-engine. ('Exporteren' op de Azure AD-connector.)
 * Azure AD Connect Health-agent voor synchronisatie moet uitgaande connectiviteit hebben met de vereiste eindpunten om de meest recente gegevens in het rapport te kunnen opnemen.
-* Het rapport wordt **na elke 30 minuten bijgewerkt** met behulp van de gegevens die zijn geüpload door de Azure AD Connect Health-agent voor synchronisatie. Het biedt de volgende belangrijke mogelijkheden
+* Het rapport wordt **na elke 30 minuten bijgewerkt** met behulp van de gegevens die zijn geüpload door Azure AD Connect Health-Agent voor synchronisatie. Het biedt de volgende belang rijke mogelijkheden
 
   * Classificatie van fouten
   * Lijst van objecten met fouten per categorie
@@ -114,12 +114,12 @@ Als u op Exporteren klikt, downloadt u een CSV-bestand met alle informatie over 
 In het specifieke scenario met synchronisatiefout door dubbel kenmerk waarbij een bronankerupdate van de gebruiker is betrokken, kunt u het probleem rechtstreeks vanuit de portal oplossen. Lees meer over [Diagnose and remediate duplicated attribute sync errors](how-to-connect-health-diagnose-sync-errors.md) (Synchronisatiefouten door dubbel kenmerk analyseren en herstellen)
 
 ## <a name="related-links"></a>Verwante koppelingen
-* [Problemen oplossen tijdens synchronisatie](tshoot-connect-sync-errors.md)
+* [Probleemoplossings fouten tijdens de synchronisatie](tshoot-connect-sync-errors.md)
 * [Duplicate Attribute Resiliency](how-to-connect-syncservice-duplicate-attribute-resiliency.md) (Tolerantie van Dubbel-kenmerk)
 * [Azure AD Connect Health (Engelstalig)](whatis-hybrid-identity-health.md)
 * [De Azure AD Connect Health-agent installeren](how-to-connect-health-agent-install.md)
-* [Azure AD Connect-statusbewerkingen](how-to-connect-health-operations.md)
+* [Azure AD Connect Health Operations (Engelstalig)](how-to-connect-health-operations.md)
 * [Azure AD Connect Health gebruiken met AD FS](how-to-connect-health-adfs.md)
 * [Azure AD Connect Health gebruiken met AD DS](how-to-connect-health-adds.md)
 * [Veelgestelde vragen over Azure AD Connect Health](reference-connect-health-faq.md)
-* [Versiegeschiedenis van Azure AD Connect-status](reference-connect-health-version-history.md)
+* [Geschiedenis van Azure AD Connect Health-versie](reference-connect-health-version-history.md)

@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 742bc307c90ad58b83b7d4c92f9546b87c163c3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77019278"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect-database verplaatsen van SQL Server Express naar SQL Server 
@@ -25,24 +25,24 @@ In dit document wordt beschreven hoe u de Azure AD Connect-database verplaatst v
 ## <a name="about-this-scenario"></a>Over dit scenario
 Hier volgt kort wat informatie over dit scenario.  In dit scenario is Azure AD Connect-versie (1.1.819.0) geïnstalleerd op een enkele Windows Server 2016-domeincontroller.  Voor de bijbehorende database wordt gebruikgemaakt van het ingebouwde SQL Server 2012 Express Edition.  De database wordt verplaatst naar een SQL Server 2017-server.
 
-![scenarioarchitectuur](media/how-to-connect-install-move-db/move1.png)
+![scenario architectuur](media/how-to-connect-install-move-db/move1.png)
 
 ## <a name="move-the-azure-ad-connect-database"></a>De Azure AD Connect-database verplaatsen
 Voer de volgende stappen uit om de Azure AD Connect-database te verplaatsen naar een externe SQL-server.
 
 1. Ga op de Azure AD Connect-server naar **Services** en stop de service **Microsoft Azure AD Sync**.
-2. Zoek de **map %ProgramFiles%\Microsoft Azure AD Sync\Data** en kopieer de **ADSync.mdf-** en **ADSync_log.ldf-bestanden** naar de externe SQL Server.
+2. Ga naar de map **%ProgramFiles%\Microsoft Azure AD Sync\Data** en kopieer de bestanden **ADSync. MDF** en **ADSync_log. ldf** naar de externe SQL Server.
 3. Start de service **Microsoft Azure AD Sync** opnieuw op de Azure AD Connect-server.
 4. Verwijder Azure AD Connect in het configuratiescherm bij Programma’s > Programma's en onderdelen.  Selecteer Microsoft Azure AD Connect en klik bovenaan op Verwijderen.
 5. Open SQL Server Management Studio op de externe SQL-server.
 6. Klik met de rechtermuisknop op Databases en selecteer Bijvoegen.
 7. Klik op het scherm **Databases bijvoegen** op **Toevoegen** en ga naar het bestand ADSync.mdf.  Klik op **OK**.
-   ![database bijvoegen](media/how-to-connect-install-move-db/move2.png)
+   ![data base koppelen](media/how-to-connect-install-move-db/move2.png)
 
 8. Zodra de database is bijgevoegd, gaat u terug naar de Azure AD Connect-server en installeert u Azure AD Connect.
 9. Zodra de MSI-installatie is voltooid, wordt de wizard Azure AD Connect gestart met de Express-installatiemodus. Sluit het scherm door op het pictogram Afsluiten te klikken.
    ![Welkom](./media/how-to-connect-install-move-db/db1.png)
-10. Start een nieuwe opdrachtprompt of PowerShell-sessie. Navigeer naar \<mapstation>\programmabestanden\Microsoft Azure AD Connect. Voer de opdracht .\AzureADConnect.exe /useexistingdatabase uit om de wizard Azure AD Connect te starten in de installatiemodus Bestaande database gebruiken.
+10. Start een nieuwe opdrachtprompt of PowerShell-sessie. Navigeer naar het \<mappad> \program files\microsoft Azure AD Connect. Voer de opdracht .\AzureADConnect.exe /useexistingdatabase uit om de wizard Azure AD Connect te starten in de installatiemodus Bestaande database gebruiken.
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. U wordt verwelkomd met het scherm Welkom bij Azure AD Connect. Nadat u akkoord bent gegaan met de licentievoorwaarden en privacyverklaring, klikt u op **Doorgaan**.
     ![Welkom](./media/how-to-connect-install-move-db/db3.png)
@@ -64,7 +64,7 @@ Voer de volgende stappen uit om de Azure AD Connect-database te verplaatsen naar
     ![Welkom](./media/how-to-connect-install-move-db/db8.png)
  
  
-17. Klik op het scherm **Klaar om te configureren** op **Installeren**.
+17. Klik in het scherm **gereed voor configuratie** op **installeren**.
     ![Welkom](./media/how-to-connect-install-move-db/db9.png)
  
  

@@ -1,6 +1,6 @@
 ---
-title: Land-/regiohiërarchie gebruikt door geografische routering - Azure Traffic Manager
-description: In dit artikel wordt de hiërarchie Land/Regio weergegeven die wordt gebruikt door het geografische routeringstype Azure Traffic Manager
+title: Land-of regio hiërarchie die wordt gebruikt door geografische route ring-Azure Traffic Manager
+description: In dit artikel wordt de land/regio-hiërarchie weer gegeven die wordt gebruikt door Azure Traffic Manager geografisch routerings type
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -13,681 +13,681 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: rohink
 ms.openlocfilehash: 19445c06ccf08d2d7916545ad495c56883616c7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938633"
 ---
-# <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Land-/regiohiërarchie die wordt gebruikt door Azure Traffic Manager voor de routeringsmethode voor geografisch verkeer
+# <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>De land/regio-hiërarchie die door Azure Traffic Manager wordt gebruikt voor geografische verkeers routerings methode
 
-In dit artikel worden de landen en regio's weergegeven die worden gebruikt door de **methode voor geografische** verkeersroutering in Azure Traffic Manager. U deze informatie ook programmatisch verkrijgen door de REST API van [Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/)te bellen. 
+In dit artikel vindt u een lijst met de landen en regio's die worden gebruikt door de methode voor **geografische** verkeers routering in azure Traffic Manager. U kunt deze informatie ook via een programma verkrijgen door de [rest API van Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/)aan te roepen. 
 
-- WERELD(Wereld)
+- WERELD (wereld)
 
-    - GEO-EU(Europa)
+    - GEO-EU (Europa)
 
-        - AD(Andorra)
+        - AD (Andorra)
 
-        - AL(Albanië)
+        - AL (Albanië)
 
-        - AT(Oostenrijk)
+        - OM (Oosten rijk)
 
-        - AX(Åland-eilanden)
+        - AX (Åland eilanden)
 
-        - BA(Bosnië en Herzegovina)
+        - BA (Bosnië en Herzegovina)
 
-        - BE(België)
+        - (België)
 
-        - BG(Bulgarije)
+        - BG (Bulgarije)
 
-        - BY(Wit-Rusland)
+        - DOOR (Belarus)
 
-        - CH(Zwitserland)
+        - CH (Zwitser land)
 
-        - CY(Cyprus)
+        - CY (Cyprus)
 
-        - CZ(Tsjechië)
+        - CZ (Tsjechische Republiek)
 
-        - DE(Duitsland)
+        - DE (Duitsland)
 
-        - DK(Denemarken)
+        - DK (Denemarken)
 
-        - EE(Estland)
+        - EE (Estland)
 
-        - ES(Spanje)
+        - ES (Spanje)
 
-        - FI(Finland)
+        - FI (Finland)
 
-        - FO(Faeröer)
+        - FO (Faeröer eilanden)
 
-        - FR(Frankrijk)
+        - FR (Frank rijk)
 
-        - GB(Verenigd Koninkrijk)
+        - GB (Verenigd Konink rijk)
 
-        - GG(Guernsey)
+        - GG (Guernsey)
 
-        - GI(Gibraltar)
+        - GI (Gibraltar)
 
-        - GR(Griekenland)
+        - GR (Grieken land)
 
-        - HR(Kroatië)
+        - HR (Kroatië)
 
-        - HU(Hongarije)
+        - HU (Hongarije)
 
-        - IE(Ierland)
+        - IE (Ierland)
 
-        - IM(Eiland Man)
+        - Chat (Isle of man)
 
-        - IS(IJsland)
+        - IS (IJsland)
 
-        - IT(Italië)
+        - IT (Italië)
 
-        - JE(Jersey)
+        - JE (Jersey)
 
-        - LI(Liechtenstein)
+        - LI (Liechtenstein)
 
-        - LT(Litouwen)
+        - LT (Litouwen)
 
-        - LU(Luxemburg)
+        - LU (Luxemburg)
 
-        - LV(Letland)
+        - LV (Letland)
 
-        - MC(Monaco)
+        - MC (Monaco)
 
-        - MD(Moldavië)
+        - MD (Moldavië)
 
-        - ME(Montenegro)
+        - ME (Montenegro)
 
-        - MK(Noord-Macedonië)
+        - MK (Noord-Macedonië)
 
-        - MT(Malta)
+        - MT (Malta)
 
-        - NL(Nederland)
+        - NL (Nederland)
 
-        - NO(Noorwegen)
+        - Nee (Noor wegen)
 
-        - PL(Polen)
+        - PL (Polen)
 
-        - PT(Portugal)
+        - PT (Portugal)
 
-        - RO(Roemenië)
+        - RO (Roemenië)
 
-        - RS(Servië)
+        - RS (Servië)
 
-        - RU(Rusland)
+        - RU (Rusland)
 
-        - SE(Zweden)
+        - SE (Zweden)
 
-        - SI(Slovenië)
+        - SI (Slovenië)
 
-        - SJ(Svalbard)
+        - SJ (spits bergen)
 
-        - SK(Slowakije)
+        - SK (Slowakije)
 
-        - SM(San Marino)
+        - SM (San Marino)
 
-        - UA(Oekraïne)
-            - Regio de Krim
+        - UA (Oekraïne)
+            - Regio Krim
 
-        - VA (Vaticaanstad)
+        - VA (Vaticaan stad)
 
-        - XJ(Jan Mayen)
+        - XJ (Jan Mayen)
 
-        - XK(Kosovo)
+        - XK (Kosovo)
 
-    - GEO-ME(Midden-Oosten)
+    - GEO-ME (Midden-Oosten)
 
-        - AE(Verenigde Arabische Emiraten)
+        - AE (Verenigde Arabische Emiraten)
 
-        - BH(Bahrein)
+        - BH (Bahrein)
 
-        - IL(Israël)
+        - IL (Israël)
 
-        - IQ(Irak)
+        - IQ (Irak)
 
-        - IR(Iran)
+        - IR (Iran)
 
-        - JO(Jordanië)
+        - JO (Jordanië)
 
-        - KW(Koeweit)
+        - KW (Koeweit)
 
-        - LB(Libanon)
+        - LB (Libanon)
 
-        - OM(Oman)
+        - OM (Oman)
 
-        - PS(Palestijnse Autoriteit)
+        - PS (Palestijnse autoriteit)
 
-        - QA(Qatar)
+        - QA (Qatar)
 
-        - SY(Syrië)
+        - SY (Syrië)
 
-        - SA(Saoedi-Arabië)
+        - SA (Saudi-Arabië)
 
-        - TR(Turkije)
+        - TR (Turkije)
 
-        - YE(Jemen)
+        - YE (Jemen)
 
-    - GEO-NA (Noord-Amerika / Midden-Amerika / Caribisch gebied)
+    - GEO-NA (Noord-Amerika/Centraal-Amerika/Caribisch gebied)
 
-        - AG(Antigua en Barbuda)
+        - AG (Antigua en Barbuda)
 
-        - AI(Anguilla)
+        - AI (Anguilla)
 
-        - AW(Aruba)
+        - AW (Aruba)
 
-        - BB(Barbados)
+        - BB (Barbados)
 
-        - BL(Saint Barthélemy)
+        - BL (Saint--Barthélemy)
 
-        - BM(Bermuda)
+        - BM (Bermuda)
 
-        - BQ(Bonaire)
+        - BQ (Bonaire)
 
-        - BS(Bahama's)
+        - BS (Bahama's)
 
-        - BZ(Belize)
+        - BZ (Belize)
 
-        - CA(Canada)
+        - CA (Canada)
 
-            - CA-AB(Alberta)
+            - CA-AB (Alberta)
 
-            - CA-BC(British Columbia)
+            - CA-BC (Brits-Colombia)
 
-            - CA-MB(Manitoba)
+            - CA-MB (Manitoba)
 
-            - CA-NB(New Brunswick)
+            - CA-NB (nieuwe Brunswick)
 
-            - CA-NL(Newfoundland en Labrador)
+            - CA-NL (Newfoundland en Labrador)
 
-            - CA-NS(Nova Scotia)
+            - CA-NS (Nova Scotia)
 
-            - CA-NT(Northwest Territories)
+            - CA-NT (Noordwest-gebieden)
 
-            - CA-NU(Nunavut)
+            - CA-NU (Nunavut)
 
-            - CA-ON(Ontario)
+            - CA-aan (Ontario)
 
-            - CA-PE(Prins Edward Island)
+            - CA-PE (Prince Edward-eiland)
 
-            - CA-QC(Québec)
+            - CA-QC (Québec)
 
-            - CA-SK(Saskatchewan)
+            - CA-SK (Saskatchewan)
 
-            - CA-YT(Yukon Territory)
+            - CA-YT (Yukon-rayon)
 
-        - CR(Costa Rica)
+        - CR (Costa Rica)
 
-        - CU(Cuba)
+        - CU (Cuba)
 
-        - CW(CuraÃ§ao)
+        - CW (CuraÃ § ao)
 
-        - DM(Dominica)
+        - DM (Dominica)
 
-        - DO(Dominicaanse Republiek)
+        - DOEN (Dominicaanse Republiek)
 
-        - GD(Grenada)
+        - GD (Grenada)
 
-        - GL(Groenland)
+        - GL (groen land)
 
-        - GP(Guadeloupe)
+        - GP (Guadeloupe)
 
-        - GT(Guatemala)
+        - GT (Guatemala)
 
-        - HN(Honduras)
+        - HN (Honduras)
 
-        - HT(Haïti)
+        - HT (Haïti)
 
-        - JM(Jamaica)
+        - JM (Jamaica)
 
-        - KN(Saint Kitts en Nevis)
+        - KN (Saint Kitts en Nevis)
 
-        - KY(Kaaimaneilanden)
+        - KY (Caymaneilanden)
 
-        - LC(Saint Lucia)
+        - LC (Saint Lucia)
 
-        - MF(Sint Maarten)
+        - MF (Saint-Martin)
 
-        - MQ(Martinique)
+        - MQ (Martinique)
 
-        - MS(Montserrat)
+        - MS (Montserrat)
 
-        - MX(Mexico)
+        - MX (Mexico)
 
-        - NI(Nicaragua)
+        - NI (Nicaragua)
 
-        - PA(Panama)
+        - PA (Panama)
 
-        - PM(Saint Pierre en Miquelon)
+        - PM (Saint-Pierre en Miquelon)
 
-        - PR(Puerto Rico)
+        - PR (Puerto Rico)
 
-        - SV(El Salvador)
+        - SV (El Salvador)
 
-        - SX(Sint Maarten)
+        - SX (Sint Maarten)
 
-        - TC(Turks- en Caicoseilanden)
+        - TC (Turks-en Caicos-eilanden)
 
-        - TT(Trinidad en Tobago)
+        - TT (Trinidad en Tobago)
 
-        - UM(Vs Afgelegen eilanden)
+        - UM (Amerikaanse ondergeschikte afgelegen eilanden)
 
-        - VS(Verenigde Staten)
+        - VS (Verenigde Staten)
 
-            - VS-AK(Alaska)
+            - VS-AK (Alaska)
 
-            - US-AL(Alabama)
+            - VS-AL (Alabama)
 
-            - VS-AR(Arkansas)
+            - VS-AR (Arkansas)
 
-            - VS-AZ(Arizona)
+            - US-AZ (Arizona)
 
-            - VS-CA(Californië)
+            - VS-CA (Californië)
 
-            - VS-CO(Colorado)
+            - VS-CO (Colorado)
 
-            - US-CT(Connecticut)
+            - VS-CT (Connecticut)
 
-            - US-DC(District of Columbia)
+            - VS-DC (district of Colombia)
 
-            - US-DE(Delaware)
+            - VS-DE (Delaware)
 
-            - VS-FL(Florida)
+            - VS-FL (Florida)
 
-            - VS-GA(Georgië)
+            - VS-GA (Georgië)
 
-            - US-HI(Hawaï)
+            - US-HI (Hawaï)
 
-            - VS-IA(Iowa)
+            - US-IA (Iowa)
 
-            - US-ID(Idaho)
+            - US-ID (Idaho)
 
-            - VS-IL(Illinois)
+            - US-IL (Illinois)
 
-            - US-IN(Indiana)
+            - US-IN (Indiana)
 
-            - US-KS(Kansas)
+            - US-KS (Kansas)
 
-            - US-KY(Kentucky)
+            - VS-KY (Kentucky)
 
-            - VS-LA(Louisiana)
+            - VS-LA (Louisiana)
 
-            - VS-MA(Massachusetts)
+            - VS-MA (Massachusetts)
 
-            - US-MD(Maryland)
+            - US-MD (Mary land)
 
-            - US-ME(Maine)
+            - VS (Maine)
 
-            - US-MI(Michigan)
+            - US-MI (Michigan)
 
-            - VS-MN(Minnesota)
+            - VS-MN (Minnesota)
 
-            - US-MO(Missouri)
+            - VS-MO (Missouri)
 
-            - VS-MS(Mississippi)
+            - VS-MS (Mississippi)
 
-            - VS-MT(Montana)
+            - VS-MT (Montana)
 
-            - US-NC(North Carolina)
+            - US-NC (Noord-Carolina)
 
-            - US-ND(North Dakota)
+            - VS-ND (Noord-Dakota)
 
-            - US-NE(Nebraska)
+            - VS-NE (Nebraska)
 
-            - VS-NH(New Hampshire)
+            - VS-NH (nieuwe Hampshire)
 
-            - VS-NJ(New Jersey)
+            - VS-NJ (New Jersey)
 
-            - VS-NM(New Mexico)
+            - VS-NM (nieuwe Mexico)
 
-            - US-NV(Nevada)
+            - VS NV (Nevada)
 
-            - VS-NY(New York)
+            - VS-NY (New York)
 
-            - US-OH(Ohio)
+            - US-OH (Ohio)
 
-            - US-OK(Oklahoma)
+            - US-OK (Oklahoma)
 
-            - VS-OR(Oregon)
+            - VS-of (Oregon)
 
-            - VS-PA(Pennsylvania)
+            - VS-PA (Pennsylvania)
 
-            - US-RI(Rhode Island)
+            - VS-RI (Rhode-eiland)
 
-            - US-SC(South Carolina)
+            - VS-SC (Zuid-Carolina)
 
-            - US-SD(South Dakota)
+            - VS-SD (Zuid-Dakota)
 
-            - US-TN(Tennessee)
+            - VS-TN (Tennessee)
 
-            - US-TX(Texas)
+            - VS-TX (Texas)
 
-            - VS-UT(Utah)
+            - US-UT (Utah)
 
-            - VS-VA(Virginia)
+            - VS-VA (Virginia)
 
-            - VS-VT(Vermont)
+            - VS-VT (Vermont)
 
-            - VS-WA(Washington)
+            - VS-WA (Washington)
 
-            - VS-WI(Wisconsin)
+            - VS-WI (Wisconsin)
 
-            - VS-WV(West Virginia)
+            - VS-WV (westelijke Virginia)
 
-            - US-WY(Wyoming)
+            - VS-WY (Wyoming)
 
-        - VC(Saint Vincent and the Grenadines)
+        - VC (Saint Vincent en de Grenadines)
 
-        - VG(Britse Maagdeneilanden)
+        - VG (Britse Maagden eilanden)
 
-        - VI(Amerikaanse Maagdeneilanden)
+        - VI (Amerikaanse Maagden eilanden)
 
-        - XE(Sint Eustatius)
+        - XE (Sint-Eustatius)
 
-        - XS(Saba)
+        - XS (Saba)
 
-    - GEO-AS(Azië)
+    - GEO-AS (Azië)
 
-        - AF(Afghanistan)
+        - AF (Afghanistan)
 
-        - AM(Armenië)
+        - AM (Armenië)
 
-        - AZ(Azerbeidzjan)
+        - AZ (Azerbeidzjan)
 
-        - BD(Bangladesh)
+        - BD (Bangladesh)
 
-        - BN(Brunei)
+        - BN (Brunei)
 
-        - BT(Bhutan)
+        - BT (Bhutan)
 
-        - CC(Cocos (Keeling) Eilanden)
+        - CC-eilanden (Cocos)
 
-        - GN(China)
+        - CN (China)
 
-        - CX(Christmas Island)
+        - CX (Christmas eiland)
 
-        - GE(Georgië)
+        - GE (Georgië)
 
-        - HK(Hong Kong SAR)
+        - HK (Hong Kong SAR)
 
-        - ID(Indonesië)
+        - ID (Indonesië)
 
-        - IN(India)
+        - IN (India)
 
-        - IO (British Indian Ocean Territory)
+        - IO (Brits territorium in de Indische Oceaan)
 
-        - JP(Japan)
+        - JP (Japan)
 
-        - KG(Kirgizië)
+        - KG (Kirgizië)
 
-        - KH(Cambodja)
+        - KH (Cambodja)
 
-        - KP(Noord-Korea)
+        - Vermeerwaarde (Noord-Korea)
 
-        - KR(Korea)
+        - KR (Korea)
 
-        - KZ(Kazachstan)
+        - KZ (Kazachstan)
 
-        - LA(Laos)
+        - LA (Laos)
 
-        - LK(Sri Lanka)
+        - LK (Sri Lanka)
 
-        - MM(Myanmar)
+        - MM (Myanmar)
 
-        - MN(Mongolië)
+        - MN (Mongolië)
 
-        - MO(Macao SAR)
+        - MO (Macau SAR)
 
-        - MV(Malediven)
+        - MV (Maldiven)
 
-        - MY (Maleisië)
+        - MIJN (Maleisië)
 
-        - NP(Nepal)
+        - NP (Nepal)
 
-        - PH(Filippijnen)
+        - PH (Filipijnen)
 
-        - PK(Pakistan)
+        - PK (Pakistan)
 
-        - SG(Singapore)
+        - AG (Singapore)
 
-        - TH(Thailand)
+        - TH (Thai land)
 
-        - TJ(Tadzjikistan)
+        - TJ (Tadzjikistan)
 
-        - TL(Timor_Leste)
+        - TL (Timor_Leste)
 
-        - TM(Turkmenistan)
+        - TM (Turkmenistan)
 
-        - TW(Taiwan)
+        - TW (Taiwan)
 
-        - UZ(Oezbekistan)
+        - UZ (Oezbekistan)
 
-        - VN(Vietnam)
+        - VN (Vietnam)
 
-    - GEO-AF(Afrika)
+    - GEO-AF (Afrika)
 
-        - AO(Angola)
+        - AO (Angola)
 
-        - BF(Burkina Faso)
+        - BF (Burkina Faso)
 
-        - BI(Burundi)
+        - BI (Burundi)
 
-        - BJ(Benin)
+        - BJ (Benin)
 
-        - BV(Bouvet Eiland)
+        - BV (Bouvet eiland)
 
-        - BW(Botswana)
+        - BW (Botswana)
 
-        - CD(Congo (DRC))
+        - CD (Congo (DRC))
 
-        - CF(Centraal-Afrikaanse Republiek)
+        - CF (Centraal-Afrikaanse Republiek)
 
-        - CI(Ivoorkust)
+        - CI (Côte d'Ivoire)
 
-        - CM(Kameroen)
+        - CM (Kameroen)
 
-        - CV(Cabo Verde)
+        - CV (Cabo Verde)
 
-        - DJ(Djibouti)
+        - DJ (Djibouti)
 
-        - DZ(Algerije)
+        - DZ (Algerije)
 
-        - EG(Egypte)
+        - BIJVOORBEELD (Egypte)
 
-        - ER(Eritrea)
+        - Er (Eritrea)
 
-        - ET(Ethiopië)
+        - ET (Ethiopië)
 
-        - GA(Gabon)
+        - GA (Gabon)
 
-        - GH(Ghana)
+        - GH (Ghana)
 
-        - GM(Gambia)
+        - GM (Gambia)
 
-        - GN(Guinee)
+        - GN (Guinee)
 
-        - GQ(Equatoriaal-Guinea)
+        - GQ (Equatoriaal-Guinea)
 
-        - GW(Guinea_Bissau)
+        - GW (Guinea_Bissau)
 
-        - KE(Kenia)
+        - KE (Kenia)
 
-        - KM(Comoren)
+        - KM (Comoren)
 
-        - LR(Liberia)
+        - LR (Liberia)
 
-        - LS(Lesotho)
+        - LS (Lesotho)
 
-        - LY(Libië)
+        - (Libië)
 
-        - MA(Marokko)
+        - MA (Marokko)
 
-        - MG(Madagaskar)
+        - MG (Madagaskar)
 
-        - ML(Mali)
+        - ML (Mali)
 
-        - MR(Mauritanië)
+        - MR (Mauritanië)
 
-        - MU(Mauritius)
+        - MU (Mauritius)
 
-        - MW(Malawi)
+        - MW (Malawi)
 
-        - MZ(Mozambique)
+        - MZ (Mozambique)
 
-        - NA(Namibië)
+        - NA (Namibië)
 
-        - NE(Niger)
+        - NE (Niger)
 
-        - NG(Nigeria)
+        - AARDGAS (Nigeria)
 
-        - RE(Réunion)
+        - RE (Réunion)
 
-        - RW(Rwanda)
+        - RW (Rwanda)
 
-        - SC(Seychellen)
+        - SC (Seychellen)
 
-        - SD(Soedan)
+        - SD (Soedan)
 
-        - SH (St Helena, Ascension, Tristan da Cunha)
+        - SH (Sint-Helena, Ascension en Tristan da Cunha)
 
-        - SL(Sierra Leone)
+        - SL (Sierra Leone)
 
-        - SN(Senegal)
+        - SN (Senegal)
 
-        - SO(Somalië)
+        - SO (Somalië)
 
-        - SS(Zuid-Soedan)
+        - SS (Zuid-Soedan)
 
-        - ST(São Tomé en Príncipe)
+        - ST (Sao Tomé en principe)
 
-        - SZ(Swaziland)
+        - SZ (Swaziland)
 
-        - TD(Tsjaad)
+        - TD (Tsjaad)
 
-        - TF(Franse Zuidelijke Gebieden)
+        - TF (Franse zuidelijke gebieden)
 
-        - TG(Togo)
+        - TG (Togo)
 
-        - TN(Tunesië)
+        - TN (Tunesië)
 
-        - TZ(Tanzania)
+        - TZ (Tanzania)
 
-        - UG(Oeganda)
+        - MG (Uganda)
 
-        - YT(Mayotte)
+        - YT (Mayotte)
 
-        - ZA(Zuid-Afrika)
+        - ZA (Zuid-Afrika)
 
-        - ZM(Zambia)
+        - ZM (Zambia)
 
-        - ZW(Zimbabwe)
+        - ZW (Zimbabwe)
 
-    - GEO-AN(Antarctica)
+    - GEO-a (Antarctica)
 
-        - AQ(Antarctica)
+        - AQ (Antarctica)
 
-    - GEO-SA(Zuid-Amerika)
+    - GEO-SA (Zuid-Amerika)
 
-        - AR(Argentinië)
+        - AR (Argentinië)
 
-        - BO(Bolivia)
+        - BO (Bolivia)
 
-        - BR(Brazilië)
+        - BR (Brazilië)
 
-        - CL(Chili)
+        - CL (Chili)
 
-        - CO(Colombia)
+        - CO (Colombia)
 
-        - EG(Ecuador)
+        - EC (Ecuador)
 
-        - FK(Falklandeilanden)
+        - FK (Falklandeilanden)
 
-        - GF(Frans-Guyana)
+        - GF (Frans-Guyana)
 
-        - GS(South Georgia and South Sandwich Islands)
+        - GS (Zuid-Georgië en zuidelijke Sandwich eilanden)
 
-        - GY(Guyana)
+        - GY (Guyana)
 
-        - PE(Peru)
+        - PE (Peru)
 
-        - PY(Paraguay)
+        - PY (Paraguay)
 
-        - SR(Suriname)
+        - SR (Suriname)
 
-        - UY(Uruguay)
+        - UY (Uruguay)
 
-        - VE(Venezuela)
+        - VE (Venezuela)
 
-    - GEO-AP(Australië / Stille Oceaan)
+    - GEO-AP (Australië/Pacific)
 
-        - AS(Amerikaans Samoa)
+        - Als (Amerikaans-Samoa)
 
-        - AU(Australië)
+        - AU (Australië)
 
-            - AU-ACT (Australian Capital Territory)
+            - AU-ACT (Australische kapitaal rayon)
 
-            - AU-NSW(New South Wales)
+            - AU-NSW (nieuwe South Wales)
 
-            - AU-NT(Noordelijk Territorium)
+            - AU-NT (Northern-gebied)
 
-            - AU-QLD(Queensland)
+            - AU-QLD (Queens land)
 
-            - AU-SA(Zuid-Australië)
+            - AU-SA (Zuid-Australië)
 
-            - AU-TAS(Tasmanië)
+            - AU-taa (Tasmanië)
 
-            - AU-VIC(Victoria)
+            - AU-VIC (Victoria)
 
-            - AU-WA(West-Australië)
+            - AU-WA (West-Australië)
 
-        - CK(Cook eilanden)
+        - Verzonken (Cook eilanden)
 
-        - FJ(Fiji)
+        - FJ (Fiji)
 
-        - FM(Micronesië)
+        - FM (Micronesië)
 
-        - GU(Guam)
+        - GU (Guam)
 
-        - HM(Heard Island en McDonald Islands)
+        - HM (Heard Island and McDonald eilanden)
 
-        - KI(Kiribati)
+        - KI (Kiribati)
 
-        - MH(Marshalleilanden)
+        - MH (Marshall eilanden)
 
         - MP (Noordelijke Marianen)
 
-        - NC(Nieuw-Caledonië)
+        - NC (Nieuw-Caledonië)
 
-        - NF(Norfolk Island)
+        - NF (Norfolk eiland)
 
-        - NR(Nauru)
+        - NR (Nauru)
 
-        - NU(Niue)
+        - NU (Niue)
 
-        - NZ(Nieuw-Zeeland)
+        - NZ (Nieuw-Zeeland)
 
-        - PF(Frans-Polynesië)
+        - PF (Frans-Polynesië)
 
-        - PG (Papoea-Nieuw-Guinea)
+        - PAG (Papoea-Nieuw-Guinea)
 
-        - PN(Pitcairn-eilanden)
+        - PN (Pitcairneilanden)
 
-        - PW(Palau)
+        - PW (Palau)
 
-        - SB(Salomonseilanden)
+        - SB (Salomons eilanden)
 
-        - TK(Tokelau)
+        - TK (Tokelau)
 
-        - NAAR(Tonga)
+        - NAAR (Tonga)
 
-        - TV(Tuvalu)
+        - TV (Tuvalu)
 
-        - VU(Vanuatu)
+        - VU (Vanuatu)
 
-        - WF(Wallis en Futuna)
+        - WF (Wallis en Futuna)
 
-        - WS(Samoa)
+        - WS (Samoa)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [de methode voor het routeren van geografisch verkeer in Azure Traffic Manager](traffic-manager-routing-methods.md#geographic).
+- Meer informatie over de [methode voor geografische verkeers routering in Azure Traffic Manager](traffic-manager-routing-methods.md#geographic).

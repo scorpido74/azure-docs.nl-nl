@@ -1,369 +1,369 @@
 ---
-title: Azure Service Fabric CLI- sfctl-knooppunt
-description: Meer informatie over sfctl, de opdrachtregelinterface van Azure Service Fabric. Bevat een lijst met opdrachten voor het beheren van clusterknooppunten.
+title: Azure Service Fabric CLI-sfctl-knoop punt
+description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het beheren van cluster knooppunten.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 5881e6485003abd4fd23a7f6d06a428e768c00fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76905876"
 ---
 # <a name="sfctl-node"></a>sfctl node
-Beheer de knooppunten die een cluster vormen.
+De knoop punten beheren die een cluster vormen.
 
 ## <a name="commands"></a>Opdrachten
 
 |Opdracht|Beschrijving|
 | --- | --- |
-| add-configuration-parameter-overrides | Hiermee voegt u de lijst met configuratieoverschrijvingen toe aan het opgegeven knooppunt. |
-| uitschakelen | Deactiveer een clusterknooppunt servicestructuur met de opgegeven deactiveringsintentie. |
-| inschakelen | Activeer een clusterknooppunt servicestructuur dat momenteel is gedeactiveerd. |
-| get-configuration-overrides | Hier wordt de lijst met configuratieoverschrijvingen op het opgegeven knooppunt weergegeven. |
-| Gezondheid | Krijgt de gezondheid van een Service Fabric-knooppunt. |
-| Info | Hier vindt u informatie over een specifiek knooppunt in het cluster Servicefabric. |
-| list | Hier wordt de lijst met knooppunten weergegeven in het cluster Servicefabric. |
-| laden | Krijgt de laadinformatie van een Service Fabric-knooppunt. |
-| verwijderen-configuratie-overschrijvingen | Hiermee verwijdert u configuratieoverschrijvingen op het opgegeven knooppunt. |
-| verwijderstatus | Hiermee waarschuwt Service Fabric dat de aanhoudende status op een knooppunt permanent is verwijderd of verloren is gegaan. |
-| rapport-gezondheid | Hiermee stuurt u een gezondheidsrapport op het servicestructuurknooppunt. |
-| restart | Start opnieuw een clusterknooppunt servicestructuur opnieuw. |
-| Overgang | Hiermee start of stopt u een clusterknooppunt. |
-| overgangsstatus | Hiermee wordt de voortgang van een bewerking gestart met StartNodeTransition. |
+| add-Configuration-para meter-onderdrukkingen | Hiermee wordt de lijst met overschrijvingen van de configuratie toegevoegd aan het opgegeven knoop punt. |
+| uitschakelen | Deactiveer een Service Fabric cluster knooppunt met de opgegeven deactiveren-intentie. |
+| inschakelen | Activeer een Service Fabric cluster knooppunt dat momenteel is gedeactiveerd. |
+| ophalen-configuratie-onderdrukkingen | Hiermee haalt u de lijst met configuratie-onderdrukkingen op het opgegeven knoop punt op. |
+| status | Hiermee wordt de status van een Service Fabric knoop punt opgehaald. |
+| Info | Hiermee wordt de informatie opgehaald over een specifiek knoop punt in het Service Fabric cluster. |
+| list | Hiermee haalt u de lijst met knoop punten in het Service Fabric-cluster op. |
+| laden | Hiermee worden de gegevens van een Service Fabric knoop punt geladen. |
+| verwijderen-configuratie-onderdrukkingen | Hiermee verwijdert u de configuratie onderdrukkingen op het opgegeven knoop punt. |
+| Verwijder status | Hiermee wordt Service Fabric dat de persistente status op een knoop punt permanent is verwijderd of verloren is gegaan. |
+| rapport-status | Hiermee verzendt u een status rapport op het knoop punt Service Fabric. |
+| restart | Hiermee wordt een Service Fabric cluster knooppunt opnieuw opgestart. |
+| geschakeld | Hiermee wordt een cluster knooppunt gestart of gestopt. |
+| overgang-status | Hiermee wordt de voortgang opgehaald van een bewerking die is gestart met StartNodeTransition. |
 
-## <a name="sfctl-node-add-configuration-parameter-overrides"></a>sfctl node add-configuration-parameter-overrides sfctl node add-configuration-parameter-overrides sfctl node add-configuration-parameter-overrides sfc
-Hiermee voegt u de lijst met configuratieoverschrijvingen toe aan het opgegeven knooppunt.
+## <a name="sfctl-node-add-configuration-parameter-overrides"></a>sfctl-knooppunt toevoegen-configuratie-para meter-onderdrukkingen
+Hiermee wordt de lijst met overschrijvingen van de configuratie toegevoegd aan het opgegeven knoop punt.
 
-Deze api maakt het toevoegen van alle bestaande configuratieoverschrijvingen op het opgegeven knooppunt mogelijk.
-
-### <a name="arguments"></a>Argumenten
-
-|Argument|Beschrijving|
-| --- | --- |
-| --config-parameter-override-list [Vereist] | Beschrijving voor het toevoegen van lijst met configuratieoverschrijvingen. |
-| --node-name [Vereist] | De naam van het knooppunt. |
-| --kracht | Het toevoegen van configuratieoverschrijvingen op opgegeven knooppunten forceren. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
-
-### <a name="global-arguments"></a>Globale argumenten
-
-|Argument|Beschrijving|
-| --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
-
-## <a name="sfctl-node-disable"></a>sfctl-knooppunt uitschakelen
-Deactiveer een clusterknooppunt servicestructuur met de opgegeven deactiveringsintentie.
-
-Deactiveer een clusterknooppunt servicestructuur met de opgegeven deactiveringsintentie. Zodra de deactivering aan de gang is, kan de deactiveringsintentie worden verhoogd, maar niet worden verminderd (bijvoorbeeld een knooppunt dat wordt gedeactiveerd met de intentie Onderbreken, kan verder worden gedeactiveerd met Opnieuw starten, maar niet andersom. Knooppunten kunnen worden gereactiveerd met behulp van de bewerking Een knooppunt activeren wanneer ze zijn gedeactiveerd. Als de deactivering niet is voltooid, wordt de deactivering geannuleerd. Een knooppunt dat naar beneden gaat en weer omhoog komt terwijl gedeactiveerd, moet nog steeds opnieuw worden geactiveerd voordat services op dat knooppunt worden geplaatst.
+Met deze API kunnen alle bestaande configuratie onderdrukkingen op het opgegeven knoop punt worden toegevoegd.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --node-name [Vereist] | De naam van het knooppunt. |
-| --deactivering-intent | Beschrijft de intentie of reden voor het deactiveren van het knooppunt. De mogelijke waarden volgen. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --config-para meter-override-lijst [vereist] | Beschrijving voor het toevoegen van een lijst met configuratie-onderdrukkingen. |
+| --node-name [required] | De naam van het knoop punt. |
+| --forceren | Het toevoegen van configuratie-onderdrukkingen op opgegeven knoop punten forceren. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-node-enable"></a>sfctl node enable
-Activeer een clusterknooppunt servicestructuur dat momenteel is gedeactiveerd.
+## <a name="sfctl-node-disable"></a>sfctl-knoop punt uitschakelen
+Deactiveer een Service Fabric cluster knooppunt met de opgegeven deactiveren-intentie.
 
-Hiermee activeert u een clusterknooppunt servicestructuur dat momenteel is gedeactiveerd. Eenmaal geactiveerd, zal het knooppunt opnieuw een levensvatbaar doelwit voor het plaatsen van nieuwe replica's, en alle gedeactiveerde replica's die nog op het knooppunt zal worden gereactiveerd.
+Deactiveer een Service Fabric cluster knooppunt met de opgegeven deactiveren-intentie. Als de deactivering is voltooid, kan het deactiveren van de inschakeling worden verhoogd, maar niet worden verkleind (een knoop punt dat is gedeactiveerd met de pauze intentie kan echter nog verder worden gedeactiveerd met opnieuw opstarten, maar niet op de andere manier. Knoop punten kunnen opnieuw worden geactiveerd met behulp van de bewerking een knoop punt activeren op elk gewenst moment nadat ze zijn gedeactiveerd. Als de deactivering is niet voltooid, wordt de deactivering geannuleerd. Een knoop punt dat omlaag gaat en een back-up maakt terwijl het deactiveren is uitgeschakeld, moet nog steeds opnieuw worden geactiveerd voordat de services op dat knoop punt worden geplaatst.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --node-name [Vereist] | De naam van het knooppunt. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --node-name [required] | De naam van het knoop punt. |
+| --deactiveren-intentie | Beschrijft het doel of de reden voor het deactiveren van het knoop punt. De mogelijke waarden zijn als volgt. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-node-get-configuration-overrides"></a>sfctl node get-configuration-overrides sfctl node get-configuration-overrides sfctl node get-configuration-overrides sfc
-Hier wordt de lijst met configuratieoverschrijvingen op het opgegeven knooppunt weergegeven.
+## <a name="sfctl-node-enable"></a>sfctl-knoop punt inschakelen
+Activeer een Service Fabric cluster knooppunt dat momenteel is gedeactiveerd.
 
-Deze api maakt het mogelijk om alle bestaande configuratieoverschrijvingen op het opgegeven knooppunt te krijgen.
+Hiermee activeert u een Service Fabric cluster knooppunt dat momenteel is gedeactiveerd. Wanneer het knoop punt eenmaal is geactiveerd, wordt het opnieuw een levensvatbaar doel om nieuwe replica's te plaatsen en worden gedeactiveerde replica's op het knoop punt opnieuw geactiveerd.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --node-name [Vereist] | De naam van het knooppunt. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --node-name [required] | De naam van het knoop punt. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-node-health"></a>sfctl node gezondheid
-Krijgt de gezondheid van een Service Fabric-knooppunt.
+## <a name="sfctl-node-get-configuration-overrides"></a>Get-configuratie van sfctl-knoop punt-onderdrukkingen
+Hiermee haalt u de lijst met configuratie-onderdrukkingen op het opgegeven knoop punt op.
 
-Krijgt de gezondheid van een Service Fabric-knooppunt. Gebruik EventsHealthStateFilter om het verzamelen van statusgebeurtenissen die op het knooppunt worden gerapporteerd op basis van de status te filteren. Als het knooppunt dat u opgeeft op naam niet bestaat in het statusarchief, wordt een fout geretourneerd.
+Met deze API kunnen alle bestaande configuratie onderdrukkingen op het opgegeven knoop punt worden opgehaald.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --node-name [Vereist] | De naam van het knooppunt. |
-| --events-health-state-filter | Hiermee u de verzameling HealthEvent-objecten filteren die zijn geretourneerd op basis van de status. De mogelijke waarden voor deze parameter omvatten de gehele waarde van een van de volgende statussen. Alleen gebeurtenissen die overeenkomen met het filter worden geretourneerd. Alle gebeurtenissen worden gebruikt om de geaggregeerde status te evalueren. Als dit niet is opgegeven, worden alle items geretourneerd. De statuswaarden zijn op vlag gebaseerde opsomming, dus de waarde kan een combinatie zijn van deze waarden, verkregen met behulp van de bitwise 'OR'-operator. Als de opgegeven waarde bijvoorbeeld 6 is, worden alle gebeurtenissen met de statuswaarde Van OK (2) en Waarschuwing (4) geretourneerd.  <br> - Standaard - Standaardwaarde. Komt overeen met elke HealthState. De waarde is nul.  <br> - Geen - Filter dat niet overeenkomt met een HealthState-waarde. Gebruikt om geen resultaten op een bepaalde verzameling van staten terug te keren. De waarde is 1.  <br> - Ok - Filter dat overeenkomt met invoer met HealthState-waarde Ok. De waarde is 2.  <br> - Waarschuwing - Filter dat overeenkomt met invoer met Waarschuwing voor de waarde HealthState. De waarde is 4.  <br> - Fout - Filter dat overeenkomt met invoer met Statuswaardefout. De waarde is 8.  <br> - Alles - Filter dat overeenkomt met de invoer met een healthstate-waarde. De waarde is 65535. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --node-name [required] | De naam van het knoop punt. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-node-info"></a>sfctl node info
-Hier vindt u informatie over een specifiek knooppunt in het cluster Servicefabric.
+## <a name="sfctl-node-health"></a>status van sfctl-knoop punt
+Hiermee wordt de status van een Service Fabric knoop punt opgehaald.
 
-Het antwoord bevat de naam, status, id, status, uptime en andere details over het knooppunt.
+Hiermee wordt de status van een Service Fabric knoop punt opgehaald. Gebruik EventsHealthStateFilter om de verzameling van status gebeurtenissen die op het knoop punt zijn gerapporteerd, te filteren op basis van de status. Als het knoop punt dat u opgeeft met de naam niet bestaat in de Health Store, wordt er een fout geretourneerd.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --node-name [Vereist] | De naam van het knooppunt. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --node-name [required] | De naam van het knoop punt. |
+| --gebeurtenissen-status-filter | Hiermee kunt u het verzamelen van HealthEvent-objecten die zijn geretourneerd op basis van de status wordt gefilterd. De mogelijke waarden voor deze para meter zijn gehele getallen van een van de volgende statussen. Alleen gebeurtenissen die overeenkomen met het filter worden geretourneerd. Alle gebeurtenissen worden gebruikt om de geaggregeerde status te evalueren. Als u niets opgeeft, worden alle vermeldingen geretourneerd. De status waarden zijn inventarisatie op basis van een vlag, waardoor de waarde kan bestaan uit een combi natie van deze waarden, verkregen met behulp van de operator bitsgewijze ' of '. Als de opgegeven waarde bijvoorbeeld 6 is, worden alle gebeurtenissen met HealthState waarde OK (2) en waarschuwing (4) geretourneerd.  <br> -Standaard-standaard waarde. Komt overeen met een wille keurige HealthState. De waarde is nul.  <br> -Geen: filter dat niet overeenkomt met een HealthState-waarde. Wordt gebruikt om geen resultaten te retour neren voor een bepaalde verzameling statussen. De waarde is 1.  <br> -OK-filter dat overeenkomt met de invoer met HealthState waarde OK. De waarde is 2.  <br> -Waarschuwings filter dat overeenkomt met invoer met HealthState-waarde waarschuwing. De waarde is 4.  <br> -Fout filter dat overeenkomt met de invoer met de HealthState-waarde fout. De waarde is 8.  <br> -Alle-filter die overeenkomt met invoer met een wille keurige waarde van HealthState. De waarde is 65535. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-node-list"></a>sfctl node lijst
-Hier wordt de lijst met knooppunten weergegeven in het cluster Servicefabric.
+## <a name="sfctl-node-info"></a>sfctl-knooppunt gegevens
+Hiermee wordt de informatie opgehaald over een specifiek knoop punt in het Service Fabric cluster.
 
-Het antwoord bevat de naam, status, id, status, uptime en andere details over de knooppunten.
+Het antwoord bevat de naam, status, ID, status, uptime en andere details over het knoop punt.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --continuation-token | De parameter vervolgtoken wordt gebruikt om volgende set resultaten te verkrijgen. Een vervolgtoken met een niet-lege waarde wordt opgenomen in de reactie van de API wanneer de resultaten van het systeem niet in één reactie passen. Wanneer deze waarde wordt doorgegeven aan de volgende API-aanroep, retourneert de API de volgende set resultaten. Als er geen verdere resultaten zijn, bevat het vervolgtoken geen waarde. De waarde van deze parameter mag niet worden gecodeerd met url's. |
-| --max-resultaten | Het maximum aantal resultaten dat moet worden geretourneerd als onderdeel van de paginaquery's. Deze parameter definieert de bovengrens op het aantal geretourneerde resultaten. De geretourneerde resultaten kunnen lager zijn dan de opgegeven maximale resultaten als ze niet in het bericht passen volgens de maximale beperkingen voor de grootte van het bericht die in de configuratie zijn gedefinieerd. Als deze parameter nul is of niet is opgegeven, bevat de paginaquery zoveel mogelijk resultaten die in het retourbericht passen. |
-| --node-status-filter | Hiermee u de knooppunten filteren op basis van de NodeStatus. Alleen de knooppunten die overeenkomen met de opgegeven filterwaarde worden geretourneerd. De filterwaarde kan een van de volgende zijn.  Standaardstandaard.\: |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --node-name [required] | De naam van het knoop punt. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-node-load"></a>sfctl node belasting
-Krijgt de laadinformatie van een Service Fabric-knooppunt.
+## <a name="sfctl-node-list"></a>lijst met sfctl-knoop punten
+Hiermee haalt u de lijst met knoop punten in het Service Fabric-cluster op.
 
-Hiermee haalt u de laadgegevens van een servicefabricknooppunt op voor alle statistieken waarvoor belasting of capaciteit is gedefinieerd.
+Het antwoord bevat de naam, status, ID, status, uptime en andere details over de knoop punten.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --node-name [Vereist] | De naam van het knooppunt. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --vervolg token | De vervolg token parameter wordt gebruikt om de volgende set resultaten op te halen. Een vervolg token met een niet-lege waarde wordt opgenomen in het antwoord van de API wanneer de resultaten van het systeem niet in één antwoord passen. Wanneer deze waarde wordt door gegeven aan de volgende API-aanroep, retourneert de API de volgende set resultaten. Als er geen verdere resultaten zijn, bevat het vervolg token geen waarde. De waarde van deze para meter mag geen URL-code ring zijn. |
+| --Max-resultaten | Het maximum aantal resultaten dat moet worden geretourneerd als onderdeel van de query's in de pagina. Met deze para meter wordt de bovengrens gedefinieerd voor het aantal geretourneerde resultaten. De geretourneerde resultaten kunnen kleiner zijn dan de opgegeven maximum resultaten als ze niet in het bericht passen conform de maximale grootte van de berichten die in de configuratie is gedefinieerd. Als deze para meter nul is of niet is opgegeven, bevat de opgevraagde query zoveel mogelijk resultaten die in het retour bericht passen. |
+| --knoop punt-status-filter | Hiermee kunt u de knoop punten filteren op basis van de NodeStatus. Alleen de knoop punten die overeenkomen met de opgegeven filter waarde worden geretourneerd. De filter waarde kan een van de volgende waarden hebben.  Standaard\: instelling. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-node-remove-configuration-overrides"></a>sfctl node remove-configuration-overrides sfctl node remove-configuration-overrides sfctl node remove-configuration-overrides sfc
-Hiermee verwijdert u configuratieoverschrijvingen op het opgegeven knooppunt.
+## <a name="sfctl-node-load"></a>laden van sfctl-knoop punt
+Hiermee worden de gegevens van een Service Fabric knoop punt geladen.
 
-Deze api maakt het verwijderen van alle bestaande configuratieoverschrijvingen op opgegeven knooppunt mogelijk.
+Hiermee haalt u de gegevens van de belasting van een Service Fabric knoop punt op voor alle metrische gegevens waarvoor de belasting of capaciteit is gedefinieerd.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --node-name [Vereist] | De naam van het knooppunt. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --node-name [required] | De naam van het knoop punt. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-node-remove-state"></a>sfctl-knooppunt verwijderen
-Hiermee waarschuwt Service Fabric dat de aanhoudende status op een knooppunt permanent is verwijderd of verloren is gegaan.
+## <a name="sfctl-node-remove-configuration-overrides"></a>sfctl-knoop punt Remove-configuratie-onderdrukkingen
+Hiermee verwijdert u de configuratie onderdrukkingen op het opgegeven knoop punt.
 
-Dit houdt in dat het niet mogelijk is om de aanhoudende toestand van dat knooppunt te herstellen. Dit gebeurt meestal als een harde schijf is schoongeveegd, of als een harde schijf crasht. Het knooppunt moet naar beneden zijn om deze bewerking succesvol te laten zijn. Met deze bewerking weet Service Fabric dat de replica's op dat knooppunt niet meer bestaan en dat Service Fabric moet stoppen met wachten tot die replica's weer omhoog komen. Voer deze cmdlet niet uit als de toestand op het knooppunt niet is verwijderd en het knooppunt weer intact kan komen met zijn toestand. Als u begint met Service Fabric 6.5, wijzigt u, om deze API voor seednodes te gebruiken, de seednodes in gewone (niet-seed)-knooppunten en u deze API aanroepen om de knooppuntstatus te verwijderen. Als het cluster op Azure wordt uitgevoerd, probeert Service Fabric het automatisch te wijzigen in een niet-zaadknooppunt nadat het startknooppunt is uitgeschakeld. Om dit mogelijk te maken, moet u ervoor zorgen dat het aantal niet-zaadknooppunten in het primaire knooppunttype niet lager is dan het aantal downseedknooppunten. Voeg indien nodig meer knooppunten toe aan het primaire knooppunttype om dit te bereiken. Als het start-en seed-knooppunt Down naar verwachting niet weer wordt opgehaald met de status intact, verwijdert u het knooppunt uit het cluster, zie https\:-docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes.
+Met deze API kunnen alle bestaande configuratie onderdrukkingen op het opgegeven knoop punt worden verwijderd.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --node-name [Vereist] | De naam van het knooppunt. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --node-name [required] | De naam van het knoop punt. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-node-report-health"></a>sfctl node report-health
-Hiermee stuurt u een gezondheidsrapport op het servicestructuurknooppunt.
+## <a name="sfctl-node-remove-state"></a>status van sfctl-knoop punt verwijderen
+Hiermee wordt Service Fabric dat de persistente status op een knoop punt permanent is verwijderd of verloren is gegaan.
 
-Rapporteert de status van het opgegeven servicestructuurknooppunt. Het rapport moet de informatie bevatten over de bron van het gezondheidsrapport en de eigenschap waarop het wordt gerapporteerd. Het rapport wordt verzonden naar een Service Fabric-gatewayknooppunt, dat doorstuurt naar de gezondheidswinkel. Het rapport kan worden geaccepteerd door de gateway, maar afgewezen door het gezondheidsarchief na extra validatie. Het statusarchief kan het rapport bijvoorbeeld afwijzen vanwege een ongeldige parameter, zoals een verouderd volgnummer. Als u wilt zien of het rapport is toegepast in het gezondheidsarchief, controleert u of het rapport wordt weergegeven in de sectie HealthEvents.
+Dit betekent dat het niet mogelijk is om de persistente status van het knoop punt te herstellen. Dit gebeurt doorgaans als een harde schijf schoon is gewist of als een harde schijf vastloopt. Het knoop punt moet actief zijn om deze bewerking te kunnen volt ooien. Met deze bewerking wordt Service Fabric weet dat de replica's op dat knoop punt niet meer bestaan en dat Service Fabric moet stoppen met wachten op de replica's om een back-up te maken. Voer deze cmdlet niet uit als de status op het knoop punt niet is verwijderd en er een back-up van het knoop punt kan worden gemaakt met de status intact. Ga vanaf Service Fabric 6,5 om deze API voor Seed-knoop punten te gebruiken, wijzig de Seed-knoop punten in normale (niet-Seed) knoop punten en roep deze API vervolgens aan om de knooppunt status te verwijderen. Als het cluster wordt uitgevoerd op Azure, probeert Service Fabric het Seed-knoop punt automatisch te wijzigen in een niet-Seed-knoop punt. Om dit te doen, moet u ervoor zorgen dat het aantal niet-Seed-knoop punten in het primaire knooppunt type niet kleiner is dan het aantal knoop punten in het lagere knoop punt. Indien nodig voegt u meer knoop punten toe aan het primaire knooppunt type om dit te doen. Als er voor een zelfstandig cluster niet wordt verwacht dat er een back-up wordt gemaakt van de status intact, verwijdert u het knoop punt uit het cluster en raadpleegt u HTTPS\://docs.Microsoft.com/en-US/Azure/service-Fabric/service-Fabric-cluster-Windows-Server-Add-Remove-nodes.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --health-property [Vereist] | De eigenschap van de gezondheidsinformatie. <br><br> Een entiteit kan statusrapporten voor verschillende eigenschappen hebben. De eigenschap is een tekenreeks en geen vaste opsomming om de verslaggever flexibiliteit om de toestand voorwaarde die het rapport triggers categoriseren. Een verslaggever met SourceId "LocalWatchdog" kan bijvoorbeeld de status van de beschikbare schijf op een knooppunt controleren, zodat het de eigenschap 'Beschikbare schijf' op dat knooppunt kan rapporteren. Dezelfde verslaggever kan de verbinding met het knooppunt controleren, zodat hij een eigenschap "Connectiviteit" op hetzelfde knooppunt kan melden. In het gezondheidsarchief worden deze rapporten behandeld als afzonderlijke statusgebeurtenissen voor het opgegeven knooppunt. Samen met de SourceId identificeert het pand op unieke wijze de gezondheidsinformatie. |
-| --gezondheidstoestand [Vereist] | Mogelijke waarden\: zijn 'Ongeldig', 'Ok', 'Waarschuwing', 'Fout', 'Onbekend'. |
-| --node-name [Vereist] | De naam van het knooppunt. |
-| --source-id [Vereist] | De bronnaam die de client/waakhond/systeemcomponent identificeert die de gezondheidsinformatie heeft gegenereerd. |
-| --beschrijving | De beschrijving van de gezondheidsinformatie. <br><br> Het vertegenwoordigt gratis tekst die wordt gebruikt om menselijke leesbare informatie over het rapport toe te voegen. De maximale tekenreekslengte voor de beschrijving is 4096 tekens. Als de meegeleverde tekenreeks langer is, wordt deze automatisch afgekapt. Wanneer afgekapt, bevatten de laatste tekens van de beschrijving een markering "[Afgekapt]", en de totale tekenreeksgrootte is 4096 tekens. De aanwezigheid van de markering geeft aan gebruikers aan dat er een afsplitsing is opgetreden. Houd er rekening mee dat wanneer deze wordt afgekapt, de beschrijving minder dan 4096 tekens uit de oorspronkelijke tekenreeks bevat. |
-| --onmiddellijke | Een vlag die aangeeft of het rapport onmiddellijk moet worden verzonden. <br><br> Er wordt een gezondheidsrapport verzonden naar een Service Fabric-gatewaytoepassing, die doorstuurt naar de statuswinkel. Als Onmiddellijk is ingesteld op true, wordt het rapport onmiddellijk vanuit HTTP Gateway naar het gezondheidsarchief verzonden, ongeacht de fabricclientinstellingen die de HTTP-gatewaytoepassing gebruikt. Dit is handig voor kritieke rapporten die zo snel mogelijk moeten worden verzonden. Afhankelijk van de timing en andere voorwaarden kan het verzenden van het rapport nog steeds mislukken, bijvoorbeeld als de HTTP-gateway is gesloten of het bericht de gateway niet bereikt. Als Onmiddellijk is ingesteld op false, wordt het rapport verzonden op basis van de statusclientinstellingen van de HTTP-gateway. Daarom wordt het batched volgens de HealthReportSendInterval-configuratie. Dit is de aanbevolen instelling omdat de statusclient hiermee statusrapportageberichten naar het gezondheidsarchief en de verwerking van gezondheidsrapporten kan optimaliseren. Rapporten worden standaard niet onmiddellijk verzonden. |
-| --verwijderen-wanneer het is verlopen | Waarde die aangeeft of het rapport wordt verwijderd uit het gezondheidsarchief wanneer het verloopt. <br><br> Als het rapport is ingesteld op true, wordt het rapport uit het gezondheidsarchief verwijderd nadat het is verlopen. Als het rapport is ingesteld op false, wordt het als een fout behandeld wanneer het is verlopen. De waarde van deze eigenschap is standaard onjuist. Wanneer clients periodiek rapporteren, moeten ze RemoveWhenExpired false (standaard) instellen. Op deze manier, is de verslaggever heeft problemen (bijvoorbeeld impasse) en kan niet melden, de entiteit wordt geëvalueerd op fout wanneer het gezondheidsrapport verloopt. Hiermee wordt de entiteit als foutstatus aandeind. |
-| --sequence-nummer | Het volgnummer voor dit gezondheidsrapport als een numerieke tekenreeks. <br><br> Het rapportreeksnummer wordt door het statusarchief gebruikt om verouderde rapporten te detecteren. Als dit niet is opgegeven, wordt een volgnummer automatisch gegenereerd door de statusclient wanneer een rapport wordt toegevoegd. |
-| --time-out -t | Standaard\: 60. |
-| --ttl | De duur waarvoor dit gezondheidsrapport geldig is. In dit veld wordt de ISO8601-indeling gebruikt voor het opgeven van de duur. <br><br> Wanneer klanten periodiek rapporteren, moeten ze rapporten verzenden met een hogere frequentie dan de tijd om te leven. Als klanten rapporteren over de overgang, kunnen ze de tijd instellen om te leven op oneindig. Wanneer de tijd om te leven verloopt, wordt de statusgebeurtenis die de statusgegevens bevat, verwijderd uit het gezondheidsarchief, als RemoveWhenExpired true is of geëvalueerd bij een fout, als RemoveWhenExpired false. Als dit niet is opgegeven, is de tijd om standaard te leven in een oneindige waarde. |
+| --node-name [required] | De naam van het knoop punt. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-node-restart"></a>sfctl node herstart
-Start opnieuw een clusterknooppunt servicestructuur opnieuw.
+## <a name="sfctl-node-report-health"></a>sfctl-knooppunt rapport-status
+Hiermee verzendt u een status rapport op het knoop punt Service Fabric.
 
-Hiermee start u een clusterknooppunt servicestructuur opnieuw dat al is gestart.
+Hiermee wordt de status van het opgegeven Service Fabric knoop punt gerapporteerd. Het rapport moet de informatie bevatten over de bron van het status rapport en de eigenschap waarvoor deze is gerapporteerd. Het rapport wordt verzonden naar een Service Fabric gateway-knoop punt dat wordt doorgestuurd naar de Health Store. Het rapport kan worden geaccepteerd door de gateway, maar door de Health Store na een extra validatie afgewezen. Het Health Store kan bijvoorbeeld het rapport afwijzen vanwege een ongeldige para meter, zoals een verouderd volgorde nummer. Als u wilt zien of het rapport is toegepast in de Health Store, controleert u of het rapport wordt weer gegeven in de sectie HealthEvents.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --node-name [Vereist] | De naam van het knooppunt. |
-| --create-fabric-dump | Geef True op om een dump van het fabricnodeproces te maken. Deze is hoofdlettergevoelig.  Standaard\: false. |
-| --node-instance-id | De instantie-id van het doelknooppunt. Als instantie-id is opgegeven, wordt het knooppunt alleen opnieuw gestart als deze overeenkomt met de huidige instantie van het knooppunt. Een standaardwaarde van "0" komt overeen met een instantie-id. De instantie-ID kan worden verkregen met behulp van knooppuntquery's.  Standaard\: 0. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --status-Property [required] | De eigenschap van de status informatie. <br><br> Een entiteit kan status rapporten voor verschillende eigenschappen hebben. De eigenschap is een teken reeks en geen vaste inventarisatie om de flexibiliteit van de rapporter in te stellen voor het categoriseren van de status voorwaarde waarmee het rapport wordt geactiveerd. Zo kan een rapporter met SourceId "LocalWatchdog" de status van de beschik bare schijf op een knoop punt bewaken, zodat de eigenschap "AvailableDisk" op dat knoop punt kan worden gerapporteerd. Dezelfde rapportage functie kan de verbinding met het knoop punt bewaken, zodat een eigenschap ' connectiviteit ' op hetzelfde knoop punt kan worden gerapporteerd. In de Health Store worden deze rapporten behandeld als afzonderlijke status gebeurtenissen voor het opgegeven knoop punt. Samen met de SourceId wordt met de eigenschap een unieke identificatie van de status informatie aangeduid. |
+| --status (vereist) | Mogelijke waarden zijn\: ' Unknown ', ' OK ', ' warn ', ' error ', ' Unknown '. |
+| --node-name [required] | De naam van het knoop punt. |
+| --bron-id [vereist] | De bron naam die het client/watchdog/systeem onderdeel identificeert dat de status informatie heeft gegenereerd. |
+| --Beschrijving | De beschrijving van de status informatie. <br><br> Hiermee wordt de vrije tekst aangegeven die wordt gebruikt om informatie over het rapport toe te voegen dat wordt gelezen. De maximale teken reeks lengte van de beschrijving is 4096 tekens. Als de gegeven teken reeks langer is, wordt deze automatisch afgekapt. Wanneer de laatste tekens van de beschrijving worden afgekapt, bevatten ze een markering [afgekapt] en de totale teken reeks grootte is 4096 tekens. De aanwezigheid van de markering geeft aan dat gebruikers de afkap ping hebben plaatsgevonden. Houd er rekening mee dat de beschrijving kleiner is dan 4096 tekens uit de oorspronkelijke teken reeks. |
+| --Immediate | Een vlag die aangeeft of het rapport direct moet worden verzonden. <br><br> Een status rapport wordt verzonden naar een Service Fabric gateway-toepassing, die wordt doorgestuurd naar de Health Store. Als direct is ingesteld op True, wordt het rapport direct van de HTTP-gateway naar de Health Store verzonden, ongeacht de instellingen van de Fabric-client die door de HTTP-gateway toepassing worden gebruikt. Dit is handig voor kritieke rapporten die zo snel mogelijk moeten worden verzonden. Afhankelijk van de timing en andere voor waarden, kan het verzenden van het rapport nog steeds mislukken, bijvoorbeeld als de HTTP-gateway is gesloten of als het bericht de gateway niet bereikt. Als direct is ingesteld op False, wordt het rapport verzonden op basis van de status client instellingen van de HTTP-gateway. Daarom wordt deze batch gebaseerd op de HealthReportSendInterval-configuratie. Dit is de aanbevolen instelling omdat de Health-client de status rapport berichten kan optimaliseren naar Health Store en dat de status rapporten worden verwerkt. Standaard worden rapporten niet onmiddellijk verzonden. |
+| --verwijderen-verlopen | Waarde die aangeeft of het rapport wordt verwijderd uit Health Store wanneer het is verlopen. <br><br> Als deze eigenschap is ingesteld op True, wordt het rapport verwijderd uit de Health Store nadat het is verlopen. Als deze eigenschap is ingesteld op False, wordt het rapport als een fout beschouwd wanneer het is verlopen. De waarde van deze eigenschap is standaard onwaar. Wanneer clients periodiek een rapport rapporteren, moeten ze RemoveWhenExpired False instellen (standaard). Op deze manier heeft de rapporter problemen (bijvoorbeeld deadlock) en kan het rapport niet worden gerapporteerd. de entiteit wordt geëvalueerd als er een fout optreedt wanneer het status rapport verloopt. Hiermee wordt de entiteit gemarkeerd als de fout status. |
+| --Volg nummer | Het Volg nummer voor dit status rapport als een numerieke teken reeks. <br><br> Het Volg nummer van het rapport wordt door de Health Store gebruikt voor het detecteren van verouderde rapporten. Als u niets opgeeft, wordt er automatisch een Volg nummer gegenereerd door de Health-client wanneer een rapport wordt toegevoegd. |
+| --time-out-t | Standaard\: 60. |
+| --TTL | De duur waarvoor dit status rapport geldig is. Dit veld maakt gebruik van de ISO8601-indeling voor het opgeven van de duur. <br><br> Wanneer clients periodiek rapporteren, moeten ze rapporten met een hogere frequentie verzenden dan live. Als clients rapporteren over overgang, kunnen ze de TTL-waarde (time to Live) instellen op oneindig. Wanneer time to Live verloopt, wordt de status gebeurtenis die de status informatie bevat verwijderd uit Health Store, als RemoveWhenExpired is ingesteld op True, of bij fout geëvalueerd als RemoveWhenExpired False is. Als u niets opgeeft, wordt de time-to-Live-waarde standaard ingesteld op oneindig. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-node-transition"></a>sfctl node overgang
-Hiermee start of stopt u een clusterknooppunt.
+## <a name="sfctl-node-restart"></a>sfctl-knoop punt opnieuw opstarten
+Hiermee wordt een Service Fabric cluster knooppunt opnieuw opgestart.
 
-Hiermee start of stopt u een clusterknooppunt.  Een clusterknooppunt is een proces, niet de os-instantie zelf.  Als u een knooppunt wilt starten, geeft u het in 'Start' door voor de parameter NodeTransitionType. Als u een knooppunt wilt stoppen, geeft u de opdracht in 'Stoppen' voor de parameter NodeTransitionType. Deze API start de bewerking - wanneer de API wordt geretourneerd, is het mogelijk dat het knooppunt nog niet klaar is met de overgang. Bel GetNodeTransitionProgress met dezelfde OperationId om de voortgang van de bewerking te krijgen.
+Hiermee wordt een Service Fabric cluster knooppunt dat al is gestart, opnieuw gestart.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --node-instance-id [Vereist] | De knooppuntinstantie-id van het doelknooppunt. Dit kan worden bepaald via de GetNodeInfo API. |
-| --node-name [Vereist] | De naam van het knooppunt. |
-| --node-transition-type [Vereist] | Geeft het type overgang aan dat moet worden uitgevoerd.  NodeTransitionType.Start start een gestopt knooppunt. NodeTransitionType.Stop stopt een knooppunt dat omhoog is. |
-| --operation-id [Vereist] | Een GUID die een aanroep van deze API identificeert.  Dit wordt doorgegeven aan de bijbehorende GetProgress API. |
-| --stop-duration-in-seconden [Vereist] | De duur, in seconden, om het knooppunt gestopt te houden.  De minimumwaarde is 600, het maximum is 14400.  Na afloop van deze tijd komt het knooppunt automatisch weer omhoog. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --node-name [required] | De naam van het knoop punt. |
+| --Create-Fabric-dump | Geef waar op om een dump van het Fabric-knooppunt proces te maken. Deze is hoofdlettergevoelig.  De\: standaard waarde is False. |
+| --knoop punt-exemplaar-id | De exemplaar-ID van het doel knooppunt. Als de exemplaar-ID is opgegeven, wordt het knoop punt alleen opnieuw opgestart als het overeenkomt met het huidige exemplaar van het knoop punt. De standaard waarde ' 0 ' komt overeen met een exemplaar-ID. De exemplaar-ID kan worden verkregen met behulp van de query node ophalen.  Standaard\: waarde is 0. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-node-transition-status"></a>sfctl node transition-status
-Hiermee wordt de voortgang van een bewerking gestart met StartNodeTransition.
+## <a name="sfctl-node-transition"></a>overgang van sfctl-knoop punt
+Hiermee wordt een cluster knooppunt gestart of gestopt.
 
-Hiermee wordt de voortgang van een bewerking gestart met StartNodeTransition met behulp van de meegeleverde OperationId.
+Hiermee wordt een cluster knooppunt gestart of gestopt.  Een cluster knooppunt is een proces, niet de instantie van het besturings systeem zelf.  Als u een knoop punt wilt starten, geeft u ' Start ' door voor de para meter NodeTransitionType. Als u een knoop punt wilt stoppen, geeft u ' Stop ' door voor de para meter NodeTransitionType. Met deze API wordt de bewerking gestart: wanneer de API het knoop punt retourneert, is de overgang mogelijk nog niet voltooid. Roep GetNodeTransitionProgress aan met dezelfde OperationId om de voortgang van de bewerking op te halen.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --node-name [Vereist] | De naam van het knooppunt. |
-| --operation-id [Vereist] | Een GUID die een aanroep van deze API identificeert.  Dit wordt doorgegeven aan de bijbehorende GetProgress API. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --knoop punt-exemplaar-id [vereist] | De exemplaar-ID van het knoop punt van het doel knooppunt. Dit kan worden bepaald met behulp van de GetNodeInfo-API. |
+| --node-name [required] | De naam van het knoop punt. |
+| --knoop punt-overgang-type [vereist] | Hiermee wordt het type overgang aangegeven dat moet worden uitgevoerd.  NodeTransitionType. Start een gestopt knoop punt wordt gestart. Met NodeTransitionType. stop wordt een knoop punt gestopt dat actief is. |
+| --bewerking-id [vereist] | Een GUID die een aanroep van deze API identificeert.  Dit wordt door gegeven aan de bijbehorende GetProgress-API. |
+| --Stop-duur-in-seconden [vereist] | De duur in seconden om te voor komen dat het knoop punt wordt gestopt.  De minimum waarde is 600, het maximum is 14400.  Nadat deze tijd is verstreken, wordt er automatisch een back-up gemaakt van het knoop punt. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
+
+## <a name="sfctl-node-transition-status"></a>overgang van sfctl-knoop punt-status
+Hiermee wordt de voortgang opgehaald van een bewerking die is gestart met StartNodeTransition.
+
+Hiermee wordt de voortgang opgehaald van een bewerking die is gestart met StartNodeTransition met behulp van de meegeleverde OperationId.
+
+### <a name="arguments"></a>Argumenten
+
+|Argument|Beschrijving|
+| --- | --- |
+| --node-name [required] | De naam van het knoop punt. |
+| --bewerking-id [vereist] | Een GUID die een aanroep van deze API identificeert.  Dit wordt door gegeven aan de bijbehorende GetProgress-API. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
+
+### <a name="global-arguments"></a>Algemene argumenten
+
+|Argument|Beschrijving|
+| --- | --- |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Stel](service-fabric-cli.md) de SERVICE Fabric CLI in.
-- Meer informatie over het gebruik van de CLI van de ServiceFabric met behulp van de [voorbeeldscripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Stel](service-fabric-cli.md) de service Fabric cli in.
+- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).

@@ -1,7 +1,7 @@
 ---
-title: NSG-controle automatiseren - Weergave beveiligingsgroep
+title: NSG-controle automatiseren-beveiligings groeps weergave
 titleSuffix: Azure Network Watcher
-description: Op deze pagina vindt u instructies voor het configureren van controle van een netwerkbeveiligingsgroep
+description: Op deze pagina vindt u instructies voor het configureren van de controle van een netwerk beveiligings groep
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,41 +13,41 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 59c1b6e6c281a736a79d110bd7d943344bcd5130
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76840975"
 ---
-# <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>NSG-controle automatiseren met azure Network Watcher Security-groepsweergave
+# <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>NSG auditing automatiseren met de beveiligings groeps weergave van Azure Network Watcher
 
-Klanten staan vaak voor de uitdaging om de beveiligingshouding van hun infrastructuur te verifiëren. Deze uitdaging is niet anders voor hun VM's in Azure. Het is belangrijk om een vergelijkbaar beveiligingsprofiel te hebben op basis van de NSG-regels (Network Security Group). Met de weergave Beveiligingsgroep u nu de lijst met regels op een VM binnen een NSG krijgen. U een gouden NSG-beveiligingsprofiel definiëren en Security Group View op een wekelijkse cadans initiëren en de uitvoer vergelijken met het gouden profiel en een rapport maken. Op deze manier u met gemak alle VM's identificeren die niet voldoen aan het voorgeschreven beveiligingsprofiel.
+Klanten worden vaak geconfronteerd met de uitdaging van het controleren van de beveiligings postuur van hun infra structuur. Deze uitdaging is niet anders voor hun virtuele machines in Azure. Het is belang rijk dat u een soortgelijk beveiligings profiel gebruikt op basis van de regels voor de netwerk beveiligings groep (NSG). Met de weer gave beveiligings groep kunt u nu de lijst met regels die zijn toegepast op een virtuele machine in een NSG ophalen. U kunt een Golden NSG-beveiligings profiel definiëren en de weer gave van de beveiligings groep op een wekelijkse uitgebracht initiëren en de uitvoer vergelijken met het profiel Golden en een rapport maken. Op deze manier kunt u alle Vm's die niet voldoen aan het vereiste beveiligings profiel, gemakkelijk identificeren.
 
-Zie [Overzicht netwerkbeveiliging](../virtual-network/security-overview.md)als u niet bekend bent met netwerkbeveiligingsgroepen.
+Zie [overzicht van netwerk beveiliging](../virtual-network/security-overview.md)als u niet bekend bent met netwerk beveiligings groepen.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit scenario vergelijkt u een bekende goede basislijn met de resultaten van de beveiligingsgroepweergave die zijn geretourneerd voor een virtuele machine.
+In dit scenario vergelijkt u een bekende goede basis lijn met de resultaten van de weer gave van de beveiligings groep die voor een virtuele machine worden geretourneerd.
 
-In dit scenario wordt ervan uitgegaan dat u de stappen in [Een netwerkwatcher maken](network-watcher-create.md) al hebt gevolgd om een netwerkwatcher te maken. In het scenario wordt ook ervan uitgegaan dat er een resourcegroep met een geldige virtuele machine bestaat om te worden gebruikt.
+In dit scenario wordt ervan uitgegaan dat u de stappen in [Create a Network Watcher](network-watcher-create.md) voor het maken van een Network Watcher, al hebt gevolgd. In het scenario wordt ervan uitgegaan dat er een resource groep met een geldige virtuele machine bestaat om te worden gebruikt.
 
 ## <a name="scenario"></a>Scenario
 
-Het scenario dat in dit artikel wordt behandeld, krijgt de weergave van de beveiligingsgroep voor een virtuele machine.
+In het scenario dat in dit artikel wordt behandeld, wordt de beveiligings groep weer gegeven voor een virtuele machine.
 
-In dit scenario zult u:
+In dit scenario gaat u als volgt te werkt:
 
-- Een bekende goede regelset ophalen
-- Een virtuele machine ophalen met Rest API
-- Beveiligingsgroepweergave voor virtuele machine bekijken
-- Reactie evalueren
+- Een bekende goede regel set ophalen
+- Een virtuele machine met rest API ophalen
+- De weer gave van de beveiligings groep voor de virtuele machine ophalen
+- Antwoord evalueren
 
 ## <a name="retrieve-rule-set"></a>Regelset ophalen
 
-De eerste stap in dit voorbeeld is om te werken met een bestaande basislijn. Het volgende voorbeeld is een json die is `Get-AzNetworkSecurityGroup` geëxtraheerd uit een bestaande netwerkbeveiligingsgroep met behulp van de cmdlet die als basislijn voor dit voorbeeld wordt gebruikt.
+De eerste stap in dit voor beeld is het werken met een bestaande basis lijn. In het volgende voor beeld wordt een JSON geëxtraheerd uit een bestaande netwerk beveiligings groep met `Get-AzNetworkSecurityGroup` behulp van de cmdlet die als basis lijn voor dit voor beeld wordt gebruikt.
 
 ```json
 [
@@ -114,33 +114,33 @@ De eerste stap in dit voorbeeld is om te werken met een bestaande basislijn. Het
 ]
 ```
 
-## <a name="convert-rule-set-to-powershell-objects"></a>Regelingesteld converteren naar PowerShell-objecten
+## <a name="convert-rule-set-to-powershell-objects"></a>Regel instellingen converteren naar Power shell-objecten
 
-In deze stap lezen we een json-bestand dat eerder is gemaakt met de regels die naar verwachting in de netwerkbeveiligingsgroep voor dit voorbeeld staan.
+In deze stap lezen we een JSON-bestand dat eerder is gemaakt met de regels die naar verwachting worden opgenomen in de netwerk beveiligings groep voor dit voor beeld.
 
 ```powershell
 $nsgbaserules = Get-Content -Path C:\temp\testvm1-nsg.json | ConvertFrom-Json
 ```
 
-## <a name="retrieve-network-watcher"></a>Netwerkwatcher ophalen
+## <a name="retrieve-network-watcher"></a>Network Watcher ophalen
 
-De volgende stap is het ophalen van de instantie Network Watcher. De `$networkWatcher` variabele wordt `AzNetworkWatcherSecurityGroupView` doorgegeven aan de cmdlet.
+De volgende stap bestaat uit het ophalen van het Network Watcher-exemplaar. De `$networkWatcher` variabele wordt door gegeven aan `AzNetworkWatcherSecurityGroupView` de cmdlet.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 ```
 
-## <a name="get-a-vm"></a>Een vm
+## <a name="get-a-vm"></a>Een virtuele machine ophalen
 
-Een virtuele machine is `Get-AzNetworkWatcherSecurityGroupView` nodig om de cmdlet tegen te draaien. In het volgende voorbeeld wordt een VM-object weergegeven.
+Een virtuele machine is vereist om de `Get-AzNetworkWatcherSecurityGroupView` cmdlet uit te voeren. In het volgende voor beeld wordt een VM-object opgehaald.
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName "testrg" -Name "testvm1"
 ```
 
-## <a name="retrieve-security-group-view"></a>Weergave beveiligingsgroep ophalen
+## <a name="retrieve-security-group-view"></a>Weer gave van beveiligings groep ophalen
 
-De volgende stap is het ophalen van het resultaat van de beveiligingsgroepweergave. Dit resultaat wordt vergeleken met de "baseline" json die eerder werd getoond.
+De volgende stap is het ophalen van het resultaat van de beveiligings groep weer geven. Dit resultaat wordt vergeleken met de JSON van de basis lijn die eerder is weer gegeven.
 
 ```powershell
 $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
@@ -148,9 +148,9 @@ $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatche
 
 ## <a name="analyzing-the-results"></a>De resultaten analyseren
 
-Het antwoord wordt gegroepeerd op netwerkinterfaces. De verschillende typen regels die worden geretourneerd, zijn effectieve en standaardbeveiligingsregels. Het resultaat wordt verder uitgesplitst naar de manier waarop het wordt toegepast, hetzij op een subnet of een virtuele NIC.
+Het antwoord wordt gegroepeerd op netwerk interfaces. De verschillende soorten regels die worden geretourneerd, zijn effectief en standaard beveiligings regels. Het resultaat wordt verder onderverdeeld in de manier waarop het wordt toegepast, hetzij op een subnet of een virtuele NIC.
 
-In het volgende PowerShell-script worden de resultaten van de weergave beveiligingsgroep vergeleken met een bestaande uitvoer van een NSG. Het volgende voorbeeld is een eenvoudig voorbeeld van `Compare-Object` hoe de resultaten kunnen worden vergeleken met cmdlet.
+Met het volgende Power shell-script worden de resultaten van de weer gave van de beveiligings groep vergeleken met een bestaande uitvoer van een NSG. Het volgende voor beeld is een eenvoudig voor beeld van hoe de resultaten kunnen worden `Compare-Object` vergeleken met de cmdlet.
 
 ```powershell
 Compare-Object -ReferenceObject $nsgbaserules `
@@ -158,7 +158,7 @@ Compare-Object -ReferenceObject $nsgbaserules `
 -Property Name,Description,Protocol,SourcePortRange,DestinationPortRange,SourceAddressPrefix,DestinationAddressPrefix,Access,Priority,Direction
 ```
 
-Het volgende voorbeeld is het resultaat. U zien dat twee van de regels die in de eerste regelset stonden, niet aanwezig waren in de vergelijking.
+Het volgende voor beeld is het resultaat. U ziet dat twee van de regels in de eerste regelset niet aanwezig waren in de vergelijking.
 
 ```
 Name                     : My2ndRuleDoNotDelete
@@ -188,7 +188,7 @@ SideIndicator            : <=
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Netwerkbeveiligingsgroepen beheren](../virtual-network/manage-network-security-group.md) om de netwerkbeveiligingsgroep en beveiligingsregels in kwestie op te sporen als de instellingen zijn gewijzigd.
+Als de instellingen zijn gewijzigd, raadpleegt u [netwerk beveiligings groepen beheren](../virtual-network/manage-network-security-group.md) om de netwerk beveiligings groep en beveiligings regels te traceren die in kwestie zijn.
 
 
 

@@ -1,7 +1,7 @@
 ---
-title: Inhoudsmodellen aanpassen in Azure Media Services Video Indexer
+title: Inhouds modellen aanpassen in Azure Media Services Video Indexer
 titleSuffix: Azure Media Services
-description: Dit artikel geeft links naar de conceptuele artikelen die de voordelen van elk type aanpassing uitleggen. In dit artikel wordt ook links naar handleidingen gekoppeld die laten zien hoe u de aanpassing van elk model implementeren.
+description: In dit artikel vindt u koppelingen naar de conceptuele artikelen waarin de voor delen van elk type aanpassing worden uitgelegd. Dit artikel bevat ook koppelingen naar hand leidingen die laten zien hoe u de aanpassing van elk model kunt implementeren.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -11,39 +11,39 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: anzaman
 ms.openlocfilehash: 09e6fd8530ddb1745a92c6f31f4d5a5843a2ac10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76513164"
 ---
-# <a name="customizing-content-models-in-video-indexer"></a>Inhoudsmodellen aanpassen in Video-indexer
+# <a name="customizing-content-models-in-video-indexer"></a>Inhouds modellen aanpassen in Video Indexer
 
-Met Video Indexer u een aantal van zijn modellen aanpassen om te worden aangepast aan uw specifieke use case. Deze modellen omvatten [merken,](customize-brands-model-overview.md) [taal](customize-language-model-overview.md)en [persoon](customize-person-model-overview.md). U deze modellen eenvoudig aanpassen met behulp van de Video Indexer-website of API.
+Met Video Indexer kunt u sommige modellen aanpassen zodat deze aan uw specifieke use-case kunnen worden aangepast. Deze modellen zijn onder andere [Brands](customize-brands-model-overview.md), [taal](customize-language-model-overview.md)en [persoon](customize-person-model-overview.md). U kunt deze modellen eenvoudig aanpassen met behulp van de Video Indexer website of API.
 
-Dit artikel geeft links naar artikelen die de voordelen van elk type aanpassing uitleggen. Het artikel verwijst ook naar handleidingen die laten zien hoe u de aanpassing van elk model implementeren.
+Dit artikel bevat koppelingen naar artikelen waarin de voor delen van elk type aanpassing worden uitgelegd. Het artikel bevat ook koppelingen naar hand leidingen die laten zien hoe u de aanpassing van elk model kunt implementeren.
 
 ## <a name="animated-characters"></a>Geanimeerde tekens
 
-* [Detectie van geanimeerde tekens](animated-characters-recognition.md)
+* [Detectie van animatie tekens](animated-characters-recognition.md)
 
-## <a name="brands-model"></a>Merken model
+## <a name="brands-model"></a>Brands model
 
-* [Het modeloverzicht van de merken aanpassen](customize-brands-model-overview.md)
-* [Het merkenmodel aanpassen met behulp van de website Video Indexer](customize-brands-model-with-website.md)
-* [Het merkenmodel aanpassen met de API voor videoindexer](customize-brands-model-with-api.md)
+* [Het model overzicht van de Brands aanpassen](customize-brands-model-overview.md)
+* [Het merk model aanpassen met behulp van de Video Indexer-website](customize-brands-model-with-website.md)
+* [Het merk model aanpassen met behulp van de Video Indexer-API](customize-brands-model-with-api.md)
  
 ## <a name="language-model"></a>Taalmodel
 
-* [Overzicht van taalmodellen aanpassen](customize-language-model-overview.md)
-* [Taalmodellen aanpassen met de website Video Indexer](customize-language-model-with-website.md)
-* [Taalmodellen aanpassen met de API videoindexer](customize-language-model-with-api.md)
+* [Overzicht van taal modellen aanpassen](customize-language-model-overview.md)
+* [Taal modellen aanpassen met behulp van de Video Indexer-website](customize-language-model-with-website.md)
+* [Taal modellen aanpassen met behulp van de Video Indexer-API](customize-language-model-with-api.md)
  
-## <a name="person-model"></a>Het model van de persoon
+## <a name="person-model"></a>Model van persoon
 
-* [Overzicht van persoonsmodellen aanpassen](customize-person-model-overview.md)
-* [Persoonsmodellen aanpassen met de website Video Indexer](customize-person-model-with-website.md)
-* [Persoonsmodellen aanpassen met de API voor video-indexer](customize-person-model-with-api.md)
+* [Overzicht van persoons modellen aanpassen](customize-person-model-overview.md)
+* [Persoonlijke modellen aanpassen met behulp van de Video Indexer-website](customize-person-model-with-website.md)
+* [Persoonlijke modellen aanpassen met behulp van de Video Indexer-API](customize-person-model-with-api.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,7 +1,7 @@
 ---
-title: Beperkingen en details van api-indelingen ondersteunen
+title: Beperkingen en Details van de ondersteuning van API-indelingen
 titleSuffix: Azure API Management
-description: Details over bekende problemen en beperkingen voor Open API-, WSDL- en WADL-indelingen ondersteunen in Azure API Management.
+description: Meer informatie over bekende problemen en beperkingen met betrekking tot de indelingen van open API, WSDL en WADL in azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -15,94 +15,94 @@ ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
 ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76513368"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-importbeperkingen en bekende problemen
 
 ## <a name="about-this-list"></a>Over deze lijst
 
-Wanneer u een API importeert, u bepaalde beperkingen tegenkomen of problemen identificeren die moeten worden verholpen voordat u de import uitvoeren. In dit artikel worden deze beperkingen, georganiseerd door de importindeling van de API, documenteerd. Het beschrijft ook hoe OpenAPI-export werkt.
+Bij het importeren van een API hebt u mogelijk enkele beperkingen of worden er problemen geïdentificeerd die moeten worden opgelost voordat u het importeren kunt uitvoeren. In dit artikel worden deze beperkingen gedocumenteerd, ingedeeld op basis van de import indeling van de API. Ook wordt beschreven hoe OpenAPI export werkt.
 
-## <a name="openapiswagger-import-limitations"></a><a name="open-api"> </a>OpenAPI/Swagger importbeperkingen
+## <a name="openapiswagger-import-limitations"></a><a name="open-api"> </a>Beperkingen bij het importeren van OpenAPI/Swagger
 
-Als u fouten ontvangt bij het importeren van uw OpenAPI-document, controleert u of u het vooraf hebt gevalideerd. U dat doen met behulp van de ontwerper in de Azure-portal (Design - Front End - OpenAPI Specification Editor), of met een hulpprogramma van derden, zoals <a href="https://editor.swagger.io">Swagger Editor.</a>
+Als u fouten ontvangt bij het importeren van uw OpenAPI-document, moet u ervoor zorgen dat u het hebt gevalideerd. U kunt dit doen met behulp van de designer in de Azure Portal (OpenAPI specificatie-editor voor ontwerp vooraf) of met een hulp programma van derden, zoals <a href="https://editor.swagger.io">Swagger editor</a>.
 
 ### <a name="general"></a><a name="open-api-general"> </a>Algemeen
 
--   Vereiste parameters voor zowel pad als query moeten unieke namen hebben. (In OpenAPI hoeft een parameternaam alleen uniek te zijn binnen een locatie, bijvoorbeeld pad, query, koptekst. In API-beheer staan we echter toe dat bewerkingen worden gediscrimineerd door zowel pad- als queryparameters (die OpenAPI niet ondersteunt). Daarom vereisen we dat parameternamen uniek zijn binnen de gehele URL-sjabloon.)
--   `\$ref`verwijzingen kunnen niet verwijzen naar externe bestanden.
--   `x-ms-paths`en `x-servers` zijn de enige ondersteunde extensies.
--   Aangepaste extensies worden genegeerd bij importeren en worden niet opgeslagen of bewaard voor export.
--   `Recursion`- API Management ondersteunt geen definities die recursief zijn gedefinieerd (bijvoorbeeld schema's die naar zichzelf verwijzen).
--   De URL van bronbestand (indien beschikbaar) wordt toegepast op relatieve server-URL's.
--   Beveiligingsdefinities worden genegeerd.
--   Inline-schemadefinities voor API-bewerkingen worden niet ondersteund. Schemadefinities worden gedefinieerd in het API-bereik en kunnen worden verwezen in api-bewerkingenaanvragen of antwoordscopes.
--   Een gedefinieerde URL-parameter moet deel uitmaken van de URL-sjabloon.
--   `Produces`trefwoord, waarin MIME-typen worden geretourneerd door een API, wordt niet ondersteund. 
+-   De vereiste para meters voor beide paden en query's moeten unieke namen hebben. (In OpenAPI moet een parameter naam alleen uniek zijn binnen een locatie, bijvoorbeeld pad, query, koptekst. In API Management we echter toestaan dat bewerkingen worden doorzocht met behulp van pad-en query parameters (wat niet wordt ondersteund door OpenAPI). Daarom moeten parameter namen uniek zijn binnen de volledige URL-sjabloon.)
+-   `\$ref`pointers kunnen niet verwijzen naar externe bestanden.
+-   `x-ms-paths`en `x-servers` zijn de enige ondersteunde uitbrei dingen.
+-   Aangepaste extensies worden genegeerd bij het importeren en worden niet opgeslagen of bewaard om te worden geëxporteerd.
+-   `Recursion`-API Management ondersteunt definities recursief gedefinieerd (bijvoorbeeld schema's die naar zichzelf verwijzen).
+-   De URL van het bron bestand (indien beschikbaar) wordt toegepast op relatieve server-Url's.
+-   Beveiligings definities worden genegeerd.
+-   Inline schema definities voor API-bewerkingen worden niet ondersteund. Schema definities worden gedefinieerd in het API-bereik en waarnaar kan worden verwezen in API-bewerkings aanvragen of-antwoord bereiken.
+-   Een gedefinieerde URL-para meter moet deel uitmaken van de URL-sjabloon.
+-   `Produces`het sleutel woord, waarmee MIME-typen worden beschreven die worden geretourneerd door een API, worden niet ondersteund. 
 
 ### <a name="openapi-version-2"></a><a name="open-api-v2"> </a>OpenAPI versie 2
 
 -   Alleen JSON-indeling wordt ondersteund.
 
-### <a name="openapi-version-3"></a><a name="open-api-v3"> </a>OpenAPI versie 3
+### <a name="openapi-version-3"></a><a name="open-api-v3"> </a>OpenAPI-versie 3
 
--   Als `servers` er veel zijn opgegeven, probeert API Management de eerste URL van HTTP's te selecteren. Als er geen HTTPs URL's zijn - de eerste HTTP-URL. Als er geen HTTP-URL's zijn, is de URL van de server leeg.
--   `Examples`wordt niet ondersteund, `example` maar wel.
+-   Als er `servers` veel zijn opgegeven, probeert API Management de eerste HTTPS-URL te selecteren. Als er geen HTTPs-Url's zijn, de eerste HTTP-URL. Als er geen HTTP-Url's zijn, de URL van de server is leeg.
+-   `Examples`wordt niet ondersteund, `example` maar is.
 
-## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI-import-, update- en exportmechanismen
+## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI importeren, bijwerken en exporteren
 
-### <a name="add-new-api-via-openapi-import"></a>Nieuwe API toevoegen via OpenAPI-import
+### <a name="add-new-api-via-openapi-import"></a>Nieuwe API toevoegen via OpenAPI importeren
 
-Voor elke bewerking in het OpenAPI-document wordt een nieuwe bewerking gemaakt `operationId` met `summary` respectievelijk de naam van de Azure-bron en de weergavenaam. `operationId`waarde wordt genormaliseerd volgens de onderstaande regels. `summary`waarde wordt geïmporteerd zoals het is en de lengte is beperkt tot 300 tekens.
+Voor elke bewerking die in het OpenAPI-document is gevonden, wordt een nieuwe bewerking gemaakt met de naam van de Azure- `operationId` resource `summary` en de weergave naam die is ingesteld op respectievelijk. `operationId`de waarde wordt genormaliseerd volgens de regels die hieronder worden beschreven. `summary`de waarde wordt geïmporteerd als-is en de lengte is beperkt tot 300 tekens.
 
-Als `operationId` niet is opgegeven (dat wil `null`zeggen, niet aanwezig of leeg), wordt azure-resourcenaamwaarde gegenereerd `get-foo`door bijvoorbeeld HTTP-methode en padsjabloon te combineren.
+Als `operationId` niet wordt opgegeven (dat wil zeggen, niet `null`aanwezig of leeg), wordt de waarde van de Azure-resource naam gegenereerd door de combi natie van HTTP-methode `get-foo`en pad-sjabloon, bijvoorbeeld.
 
-Als `summary` de waarde niet is opgegeven `null`(dat wil `display name` zeggen, `operationId`niet aanwezig of leeg), wordt de waarde ingesteld op . Als `operationId` deze niet is opgegeven, wordt de waarde van de weergavenaam `Get - /foo`gegenereerd door bijvoorbeeld http-methode en padsjabloon te combineren.
+Als `summary` niet wordt opgegeven (dat wil zeggen, niet `null`aanwezig of leeg), `display name` wordt de waarde ingesteld `operationId`op. Als `operationId` niet is opgegeven, wordt de weergave naam waarde gegenereerd door de combi natie van de HTTP-methode en de `Get - /foo`pad-sjabloon, bijvoorbeeld.
 
 ### <a name="update-an-existing-api-via-openapi-import"></a>Een bestaande API bijwerken via OpenAPI-import
 
-Tijdens het importeren van bestaande API wordt gewijzigd om api's te matchen die in het OpenAPI-document worden beschreven. Elke bewerking in het OpenAPI-document wordt gekoppeld `operationId` aan de bestaande bewerking door de waarde ervan te vergelijken met de naam van de Azure-bron van de bestaande bewerking.
+Tijdens het importeren wordt de bestaande API gewijzigd in overeenstemming met de API die in het OpenAPI-document wordt beschreven. Elke bewerking in het OpenAPI-document wordt vergeleken met de bestaande bewerking door de `operationId` waarde ervan te vergelijken met de Azure-resource naam van de bestaande bewerking.
 
-Als er een overeenkomst wordt gevonden, worden de eigenschappen van bestaande bewerking 'in-place' bijgewerkt.
+Als er een overeenkomst wordt gevonden, worden de eigenschappen van de bestaande bewerking ' in-place ' bijgewerkt.
 
-Als er geen overeenkomst wordt gevonden, wordt er een nieuwe bewerking gemaakt met behulp van de regels die in de bovenstaande sectie worden beschreven. Voor elke nieuwe bewerking probeert de import beleid te kopiëren van een bestaande bewerking met dezelfde HTTP-methode en padsjabloon.
+Als er geen overeenkomst wordt gevonden, wordt er een nieuwe bewerking gemaakt met behulp van de regels die in de bovenstaande sectie worden beschreven. Voor elke nieuwe bewerking wordt geprobeerd beleid te kopiëren van een bestaande bewerking met dezelfde HTTP-methode en hetzelfde pad.
 
 Alle bestaande niet-overeenkomende bewerkingen worden verwijderd.
 
-Volg de volgende richtlijnen om import voorspelbaarder te maken:
+Volg deze richt lijnen om de import bewerking meer voorspelbaar te maken:
 
-- Zorg ervoor `operationId` dat u voor elke bewerking de eigenschap opgeeft.
-- Zich te `operationId` onthouden van verandering na de eerste import.
-- Wijzig `operationId` nooit en http-methode of padsjabloon tegelijkertijd.
+- Zorg ervoor dat u `operationId` de eigenschap voor elke bewerking opgeeft.
+- U hoeft niet `operationId` meer te wijzigen nadat u de eerste keer hebt geïmporteerd.
+- Nooit tegelijkertijd `operationId` wijzigen en de HTTP-methode of het pad naar de sjabloon.
 
 ### <a name="export-api-as-openapi"></a>API exporteren als OpenAPI
 
-Voor elke bewerking wordt de naam van `operationId`de Azure-bron geëxporteerd als `summary`een , en wordt de weergavenaam geëxporteerd als een .
-Normalisatieregels voor de werkingId
+Voor elke bewerking wordt de naam van de Azure-resource geëxporteerd als `operationId`een, en de weergave naam wordt geëxporteerd als `summary`een.
+Normalisatie regels voor operationId
 
 - Converteren naar kleine letters.
-- Vervang elke reeks niet-alfanumerieke tekens door een `GET-/foo/{bar}?buzz={quix}` enkel streepje, `get-foo-bar-buzz-quix-`bijvoorbeeld, zal worden omgezet in .
-- Trim streepjes aan beide zijden, bijvoorbeeld, `get-foo-bar-buzz-quix-` zal worden`get-foo-bar-buzz-quix`
-- Afgekapt om te passen bij 76 tekens, vier tekens minder dan de maximumlimiet voor een resourcenaam.
-- Gebruik de overige vier tekens voor een deduplicatie achtervoegsel, indien nodig, in de vorm van `-1, -2, ..., -999`.
+- Vervang elke reeks van niet-alfanumerieke tekens door één streepje, bijvoorbeeld `GET-/foo/{bar}?buzz={quix}` worden omgezet in. `get-foo-bar-buzz-quix-`
+- Streepjes op beide zijden knippen worden bijvoorbeeld `get-foo-bar-buzz-quix-``get-foo-bar-buzz-quix`
+- Afkappen tot 76 tekens, vier tekens kleiner dan maximum limiet voor een resource naam.
+- Gebruik, indien nodig, nog vier tekens voor een achtervoegsel voor ontdubbeling in de vorm `-1, -2, ..., -999`van.
 
 
 ## <a name="wsdl"></a><a name="wsdl"> </a>WSDL
 
-WSDL-bestanden worden gebruikt om SOAP-pass-through en SOAP-to-REST API's te maken.
+WSDL-bestanden worden gebruikt voor het maken van SOAP-Pass-Through-en SOAP-to-REST-Api's.
 
--   **SOAP bindingen** -Alleen SOAP bindingen van stijl "document" en "letterlijke" codering worden ondersteund. Er is geen ondersteuning voor "rpc" stijl of SOAP-Encoding.
--   **WSDL:Import** - Dit kenmerk wordt niet ondersteund. Klanten moeten de invoer samenvoegen tot één document.
--   **Berichten met meerdere onderdelen** - Dit soort berichten worden niet ondersteund.
--   **WCF wsHttpBinding** - SOAP-services die zijn gemaakt met Windows Communication Foundation moeten basicHttpBinding - wsHttpBinding gebruiken.
--   **MTOM** - Diensten die gebruikmaken van MTOM <em>kunnen</em> werken. Officiële ondersteuning wordt op dit moment niet aangeboden.
--   **Recursie** - Typen die recursief worden gedefinieerd (bijvoorbeeld verwijzen naar een array van zichzelf) worden niet ondersteund door APIM.
--   **Meerdere naamruimten** - Meerdere naamruimten kunnen in een schema worden gebruikt, maar alleen de doelnaamruimte kan worden gebruikt om berichtonderdelen te definiëren. Andere naamruimten dan het doel, die worden gebruikt om andere invoer- of uitvoerelementen te definiëren, blijven niet behouden. Hoewel een dergelijk WSDL-document kan worden geïmporteerd, hebben bij export alle berichtonderdelen de doelnaamruimte van de WSDL.
--   **Arrays** - SOAP-to-REST-transformatie ondersteunt alleen verpakte arrays in het onderstaande voorbeeld:
+-   **SOAP-bindingen** : alleen SOAP-bindingen met de stijl document en letterlijke code ring worden ondersteund. Er is geen ondersteuning voor "RPC"-stijl of SOAP-encoding.
+-   **WSDL: import** -dit kenmerk wordt niet ondersteund. Klanten moeten de Imports samen voegen in één document.
+-   **Berichten met meerdere onderdelen** : deze typen berichten worden niet ondersteund.
+-   **WCF wsHttpBinding** -SOAP-services die zijn gemaakt met Windows Communication Foundation moeten BasicHttpBinding-wsHttpBinding gebruiken. dit wordt niet ondersteund.
+-   **MTOM** -services die gebruikmaken van MTOM <em>kunnen</em> werken. Er wordt op dit moment geen officiële ondersteuning aangeboden.
+-   **Recursie** -typen die recursief worden gedefinieerd (bijvoorbeeld verwijzen naar een matrix zelf) worden niet ondersteund door APIM.
+-   **Meerdere naam ruimten** : meerdere naam ruimten kunnen worden gebruikt in een schema, maar alleen de doel naam ruimte kan worden gebruikt voor het definiëren van bericht delen. Andere naam ruimten dan het doel, die worden gebruikt voor het definiëren van andere invoer-of uitvoer elementen, blijven niet behouden. Hoewel een dergelijk WSDL-document kan worden geïmporteerd, is bij het exporteren van alle bericht onderdelen de doel naam ruimte van de WSDL.
+-   **Matrices** -SOAP-to-rest trans formatie ondersteunt alleen ingepakte matrices die in het onderstaande voor beeld worden weer gegeven:
 
 ```xml
     <complexType name="arrayTypeName">
@@ -121,4 +121,4 @@ WSDL-bestanden worden gebruikt om SOAP-pass-through en SOAP-to-REST API's te mak
 
 ## <a name="wadl"></a><a name="wadl"> </a>WADL
 
-Momenteel zijn er geen bekende WADL import problemen.
+Er zijn momenteel geen bekende problemen met de WADL-import.

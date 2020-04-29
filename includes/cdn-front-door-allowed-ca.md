@@ -9,63 +9,63 @@ ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
 ms.openlocfilehash: 9397c5f075c1d6653920d19766d5d6a740294ec7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67330757"
 ---
-De volgende CV's zijn toegestaan wanneer u uw eigen certificaat maakt:
+De volgende Ca's zijn toegestaan wanneer u uw eigen certificaat maakt:
 
-- Externe CA-hoofdwortel toevoegen
-- AlphaSSL-hoofdCA
-- AME Infra CA 01
-- AME Infra CA 02
-- Ameroot Ameroot
+- AddTrust externe CA-basis
+- AlphaSSL basis-CA
+- AAM infra structuur CA 01
+- AAM infra CA 02
+- Ameroot
 - APCA-DM3P
-- Autopilot Root CA
-- Baltimore CyberTrust Root
-- Klasse 3 Openbare Primaire Certificeringsinstantie
-- COMODO RSA-certificeringsinstantie
-- COMODO RSA-domeinvalidatie Secure Server CA
-- D-TRUST Root Klasse 3 CA 2 2009
+- Auto Pilot-basis-CA
+- Baltimore Cyber Trust Root
+- Klasse 3 open bare primaire certificerings instantie
+- COMODO RSA-certificerings instantie
+- COMODO RSA-domein validatie beveiligde server-CA
+- D-vertrouwde basis klasse 3 CA 2 2009
 - DigiCert Cloud Services CA-1
-- DigiCert Global Root CA
+- DigiCert globale basis-CA
 - DigiCert High Assurance CA-3
-- DigiCert High Assurance EV Root CA
-- DigiCert SHA2 Extended Validation Server CA
-- DigiCert SHA2 High Assurance Server CA
+- DigiCert High Assurance EV-basis-CA
+- CA voor DigiCert SHA2 uitgebreide validatie server
+- DigiCert SHA2 High Assurance Server-CA
 - DigiCert SHA2 Secure Server CA
-- DST Root CA X3
-- D-trust Root Klasse 3 CA 2 2009
-- Encryptie overal DV TLS CA
-- Root-certificeringsinstantie toevertrouwen
-- Root Certification Authority toevertrouwen - G2
-- Entrust.net Certificeringsinstantie (2048)
-- GeoTrust Global CA
-- GeoTrust Primaire Certificeringsinstantie
-- GeoTrust Primary Certification Authority - G2
-- Geotrust RSA CA 2018
+- De DST-basis-CA x3
+- D-vertrouwde basis klasse 3 CA 2 2009
+- Versleutelen overal DV TLS-CA
+- Basis certificerings instantie vertrouwen
+- De bevoegdheid basis certificerings instantie-G2
+- Entrust.net-certificerings instantie (2048)
+- Globale certificerings instantie GeoTrust
+- Primaire certificerings instantie voor geovertrouwen
+- Primaire certificerings instantie voor geovertrouwen-G2
+- GeoTrust RSA CA 2018
 - GlobalSign
-- GlobalSign Extended Validation CA - SHA256 - G2
-- GlobalSign Organization Validation CA - G2
-- GlobalSign Root CA
-- Go Daddy Root Certificate Authority - G2
-- Go Daddy Secure Certificate Authority - G2
-- QuoVadis Root CA2 G3
+- CA voor uitgebreide validatie van GlobalSign-SHA256-G2
+- CA-GlobalSign organisatie validatie-G2
+- GlobalSign basis-CA
+- Go Daddy-basis certificerings instantie-G2
+- Go Daddy Secure Certificate Authority-G2
+- QuoVadis root CA2 G3
 - RapidSSL RSA CA 2018
-- Symantec Klasse 3 EV SSL CA - G3
-- Symantec Class 3 Secure Server CA - G4
-- Symantec Enterprise Mobile Root voor Microsoft
-- Ontdooien primaire wortel CA
-- Thawte Primaire Wortel CA - G2
-- Thawte Primaire Wortel CA - G3
+- Symantec Class 3 EV SSL CA-G3
+- Symantec Class 3 Secure Server CA-G4
+- Symantec Enter prise Mobile-hoofdmap voor micro soft
+- Thawte primaire basis-CA
+- Thawte Primary-basis certificerings instantie-G2
+- Thawte Primary-basis certificerings instantie-G3
 - Thawte RSA CA 2018
-- Ontdooien tijdstempeling CA
-- TrustAsia TLS RSA CA
-- VeriSign Class 3 Extended Validation SSL CA
-- VeriSign Class 3 Extended Validation SSL SGC CA
-- VeriSign Klasse 3 Openbare Primaire Certificeringsinstantie - G5
-- VeriSign International Server CA - Klasse 3
-- VeriSign Time Stamping Service Root
-- VeriSign Universal Root Certification Authority
+- CA voor Thawte-tijds tempel
+- TrustAsia TLS RSA-CA
+- SSL-CA voor uitgebreide validatie van VeriSign-klasse 3
+- Uitgebreide SSL-certificerings instantie van VeriSign-klasse 3
+- VeriSign-klasse 3 open bare primaire certificerings instantie-G5
+- CA van VeriSign International Server-klasse 3
+- Basis voor de service voor VeriSign-tijds tempels
+- Universele basis certificerings instantie voor VeriSign

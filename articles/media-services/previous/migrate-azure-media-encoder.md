@@ -1,6 +1,6 @@
 ---
-title: Migreren van Azure Media Encoder naar Media Encoder Standard | Microsoft Documenten
-description: In dit onderwerp wordt besproken hoe u migreren van Azure Media Encoder naar de mediaprocessor Media Encoder Standard.
+title: Migreren van Azure Media Encoder naar Media Encoder Standard | Microsoft Docs
+description: In dit onderwerp wordt beschreven hoe u migreert van Azure Media Encoder naar de Media Encoder Standard-media processor.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,21 +14,21 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
 ms.openlocfilehash: f8fe1b13db6473e80f0d7cdc638b775a0c8062c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76513498"
 ---
 # <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Migreren van Azure Media Encoder naar Media Encoder Standard
 
-In dit artikel worden de stappen besproken voor het migreren van de verouderde Azure Media Encoder (AME) mediaprocessor (die wordt verwijderd) naar de Media Encoder Standard-mediaprocessor. Zie voor de pensioendata dit [onderwerp met oudere onderdelen.](legacy-components.md)
+In dit artikel worden de stappen beschreven voor het migreren van de verouderde Azure Media Encoder (AAM) media processor (die buiten gebruik wordt gesteld) naar de Media Encoder Standard-media processor. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) .
 
-Bij het coderen van bestanden met AME gebruikten `H264 Adaptive Bitrate MP4 Set 1080p`klanten meestal een benoemde voorinstellingstekenreeks zoals . Om te migreren, moet uw code worden bijgewerkt om de **Media Encoder Standard** mediaprocessor te gebruiken `H264 Multiple Bitrate 1080p`in plaats van AME, en een van de gelijkwaardige [systeemvoorinstellingen](media-services-mes-presets-overview.md) zoals . 
+Bij het coderen van bestanden met AAM gebruiken klanten meestal een teken reeks met `H264 Adaptive Bitrate MP4 Set 1080p`een naam zoals. Als u wilt migreren, moet uw code worden bijgewerkt om gebruik te kunnen maken van de **Media Encoder Standard** media processor in plaats van AAM en een van de equivalente [systeem voorinstellingen](media-services-mes-presets-overview.md) zoals `H264 Multiple Bitrate 1080p`. 
 
-## <a name="migrating-to-media-encoder-standard"></a>Migreren naar Media Encoder-standaard
+## <a name="migrating-to-media-encoder-standard"></a>Migreren naar Media Encoder Standard
 
-Hier is een typisch C#-codevoorbeeld dat de verouderde mediaprocessor gebruikt. 
+Hier volgt een voor beeld van een C#-code die gebruikmaakt van de verouderde media processor. 
 
 ```csharp
 // Declare a new job. 
@@ -45,7 +45,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
     TaskOptions.None); 
 ```
 
-Hier is de bijgewerkte versie die Media Encoder Standard gebruikt.
+Dit is de bijgewerkte versie die gebruikmaakt van Media Encoder Standard.
 
 ```csharp
 // Declare a new job. 
@@ -64,13 +64,13 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>Geavanceerde scenario's 
 
-Als u uw eigen coderingsvoorinstelling voor AME had gemaakt met behulp van het schema, is er een [gelijkwaardig schema voor Media Encoder Standard.](media-services-mes-schema.md) Als u vragen heeft over hoe u de oudere instellingen in kaart brengen aan de nieuwe encoder, neem dan contact met ons op viamailto:amshelp@microsoft.com  
+Als u uw eigen coderings voorinstelling voor AAM hebt gemaakt met behulp van het bijbehorende schema, is er een [gelijkwaardig schema voor Media Encoder Standard](media-services-mes-schema.md). Als u vragen hebt over het toewijzen van de oudere instellingen aan de nieuwe encoder, kunt u contact met ons opnemen viamailto:amshelp@microsoft.com  
 ## <a name="known-differences"></a>Bekende verschillen 
 
-Media Encoder Standard is robuuster, betrouwbaarder, heeft betere prestaties en produceert een betere kwaliteit output dan de oude AME encoder. Daarnaast doet u het volgende: 
+Media Encoder Standard is robuuster, betrouwbaarder, heeft betere prestaties en levert een betere kwaliteit van de uitvoer dan het oudere AAM-coderings programma. Daarnaast doet u het volgende: 
 
-* Media Encoder Standard produceert uitvoerbestanden met een andere naamgevingsconventie dan AME.
-* Media Encoder Standard produceert artefacten zoals bestanden met de [metagegevens van](media-services-input-metadata-schema.md) het invoerbestand en de [metagegevens van het uitvoerbestand(en).](media-services-output-metadata-schema.md)
+* Media Encoder Standard produceert uitvoer bestanden met een andere naam Conventie dan AAM.
+* Media Encoder Standard produceert artefacten, zoals bestanden met de meta gegevens van het [invoer bestand](media-services-input-metadata-schema.md) en de [meta gegevens van het uitvoer bestand](media-services-output-metadata-schema.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

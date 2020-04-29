@@ -1,6 +1,6 @@
 ---
-title: Ontwerp van een contentbeveiligingssysteem met toegangscontrole met Azure Media Services | Microsoft Documenten
-description: Meer informatie over het in licentie geven van de Microsoft Smooth Streaming Client Porting Kit.
+title: Ontwerp van een inhouds beschermings systeem met toegangs beheer met Azure Media Services | Microsoft Docs
+description: Meer informatie over licenties voor de micro soft Smooth Streaming client Porting kit.
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -15,237 +15,237 @@ ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.openlocfilehash: 68f42aa13288c2416257f3ba6c0b6072c1572977
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162987"
 ---
-# <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Ontwerp van een contentbeveiligingssysteem met toegangsbeheer met Azure Media Services 
+# <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Ontwerp van een inhouds beschermings systeem met toegangs beheer met Azure Media Services 
 
 ## <a name="overview"></a>Overzicht
 
-Het ontwerpen en bouwen van een drm-subsysteem (Digital Rights Management) voor een over-the-top (OTT) of online streaming oplossing is een complexe taak. Operators/online videoproviders besteden deze taak doorgaans uit aan gespecialiseerde DRM-serviceproviders. Het doel van dit document is om een referentieontwerp en implementatie van een end-to-end DRM-subsysteem te presenteren in een OTT- of online streaming-oplossing.
+Het ontwerpen en bouwen van een Digital Rights Management-subsysteem (DRM) voor een over-the-top (OTT) of online streaming-oplossing is een complexe taak. Opera tors/online video providers doen deze taak doorgaans door aan gespecialiseerde DRM-service providers. Het doel van dit document is een referentie ontwerp en implementatie van een end-to-end DRM-subsysteem in een OTT of online streaming-oplossing te presen teren.
 
-De beoogde lezers voor dit document zijn ingenieurs die werken in DRM subsystemen van OTT of online streaming / multiscreen oplossingen of lezers die geïnteresseerd zijn in DRM subsystemen. De veronderstelling is dat lezers bekend zijn met ten minste één van de DRM-technologieën op de markt, zoals PlayReady, Widevine, FairPlay of Adobe Access.
+De doel lezers voor dit document zijn technici die werken in DRM-subsystemen van OTT of online streaming/multiscreen-oplossingen of lezers die geïnteresseerd zijn in DRM-subsystemen. De veronderstelling is dat lezers bekend zijn met ten minste één van de DRM-technologieën op de markt, zoals PlayReady, Widevine, FairPlay of Adobe Access.
 
-In deze discussie over DRM, we ook gemeenschappelijke encryptie (CENC) met multi-DRM. Een belangrijke trend in online streaming en de OTT-industrie is het gebruik van CENC met multi-native DRM op verschillende clientplatforms. Deze trend is een verschuiving ten opzichte van de vorige die een enkele DRM en zijn client SDK gebruikt voor verschillende clientplatforms. Wanneer u CENC gebruikt met multi-native DRM, worden zowel PlayReady als Widevine versleuteld volgens de [Common Encryption (ISO/IEC 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specificatie.
+In deze bespreking van DRM bevatten we ook common Encryption (CENC) met multi-DRM. Een belang rijke trend in online streaming en de OTT-industrie is het gebruik van CENC met een multi-native DRM op verschillende client platforms. Deze trend is een verschuiving van de vorige die één DRM en de client-SDK heeft gebruikt voor verschillende client platforms. Wanneer u CENC gebruikt met multi-native DRM, worden zowel PlayReady als Widevine versleuteld volgens de specificatie van de [common Encryption (ISO/IEC 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) .
 
-De voordelen van CENC met multi-DRM zijn dat het:
+De voor delen van CENC met multi-DRM zijn:
 
-* Verlaagt de coderingskosten omdat één versleutelingsproces wordt gebruikt om verschillende platforms met zijn eigen DRM's te targeten.
-* Vermindert de kosten van het beheer van versleutelde assets omdat slechts één exemplaar van versleutelde assets nodig is.
-* Elimineert drm-clientlicentiekosten omdat de native DRM-client meestal gratis is op zijn eigen platform.
+* Verlaagt de versleutelings kosten omdat één versleutelings proces wordt gebruikt om verschillende platforms te richten met de eigen DRMs.
+* Verlaagt de kosten voor het beheren van versleutelde assets omdat er slechts één exemplaar van versleutelde activa nodig is.
+* Elimineert de kosten voor DRM-client licenties omdat de systeem eigen DRM-client doorgaans vrij is op het systeem eigen platform.
 
-Microsoft is een actieve promotor van DASH en CENC samen met een aantal grote spelers in de industrie. Azure Media Services biedt ondersteuning voor DASH en CENC. Zie voor recente aankondigingen de volgende blogs:
+Micro soft is een actieve promotie van een streepje en CENC samen met enkele grote bedrijven. Azure Media Services biedt ondersteuning voor DASH en CENC. Voor recente aankondigingen raadpleegt u de volgende blogs:
 
 *  [Google Widevine-services voor het leveren van licenties in Azure Media Services aankondigen](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/)
-* [Azure Media Services voegt Google Widevine-verpakkingen toe voor het leveren van een multi-DRM-stream](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)  
+* [Azure Media Services voegt Google Widevine-verpakking toe voor het leveren van een multi-DRM-stroom](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)  
 
-### <a name="goals-of-the-article"></a>Doelstellingen van het artikel
+### <a name="goals-of-the-article"></a>Doel stellingen van het artikel
 
-De doelstellingen van dit artikel zijn:
+De doel stellingen van dit artikel zijn:
 
-* Geef een referentieontwerp van een DRM-subsysteem dat CENC met multi-DRM gebruikt.
-* Geef een referentie-implementatie op een Azure/Media Services-platform.
-* Bespreek een aantal ontwerp- en implementatieonderwerpen.
+* Geef een referentie ontwerp op van een DRM-subsysteem dat gebruikmaakt van CENC met multi-DRM.
+* Geef een referentie-implementatie op in een Azure/Media Services-platform.
+* Bespreek enkele onderwerpen over ontwerpen en implementeren.
 
-In het artikel heeft de term "multi-DRM" betrekking op de volgende producten:
+In het artikel wordt de term ' multi-DRM ' behandeld in de volgende producten:
 
-* Microsoft PlayReady
+* Micro soft PlayReady
 * Google Widevine
 * Apple FairPlay 
 
-In de volgende tabel wordt een overzicht van de native platform/native app en browsers die door elke DRM worden ondersteund.
+De volgende tabel bevat een overzicht van de systeem eigen app en browsers die door elke DRM worden ondersteund.
 
-| **Client platform** | **Ondersteuning voor Native DRM** | **Browser/app** | **Streaming-indelingen** |
+| **Client platform** | **Systeem eigen DRM-ondersteuning** | **Browser/app** | **Streaming-indelingen** |
 | --- | --- | --- | --- |
-| **Smart TV's, operator STB's, OTT STB's** |PlayReady voornamelijk, en/of Widevine, en/of andere |Linux, Opera, WebKit, andere |Verschillende formaten |
-| **Windows 10-apparaten (Windows-pc, Windows-tablets, Windows Phone, Xbox)** |PlayReady |Microsoft Edge/IE11/EME<br/><br/><br/>Universeel Windows-platform |DASH (voor HLS wordt PlayReady niet ondersteund)<br/><br/>DASH, Smooth Streaming (voor HLS wordt PlayReady niet ondersteund) |
-| **Android-apparaten (telefoon, tablet, tv)** |Widevine |Chrome/EME |DASH, HLS |
-| **iOS (iPhone, iPad), OS X-clients en Apple TV** |FairPlay |Safari 8+/EME |HLS |
+| **Smart Tv's, operator STBs, OTT STBs** |PlayReady voornamelijk, en/of Widevine, en/of andere |Linux, Opera, WebKit, Overig |Verschillende indelingen |
+| **Windows 10-apparaten (Windows-PC, Windows-tablets, Windows Phone, Xbox)** |PlayReady |Micro soft Edge/IE11/EME<br/><br/><br/>Universeel Windows-platform |STREEPJE (voor HLS, PlayReady wordt niet ondersteund)<br/><br/>DASH, Smooth Streaming (voor HLS, PlayReady wordt niet ondersteund) |
+| **Android-apparaten (telefoon, Tablet, TV)** |Widevine |Chrome/EME |STREEPJE, HLS |
+| **iOS (iPhone, iPad), OS X-clients en Apple TV** |FairPlay |Safari 8 +/EME |HLS |
 
-Gezien de huidige status van implementatie voor elke DRM, wil een service doorgaans twee of drie DRM's implementeren om ervoor te zorgen dat u alle typen eindpunten op de beste manier aanpakt.
+Als u de huidige status van de implementatie voor elke DRM overweegt, wil een service doorgaans twee of drie DRMs implementeren om ervoor te zorgen dat u alle typen eind punten op de beste manier adresseert.
 
-Er is een afweging tussen de complexiteit van de servicelogica en de complexiteit aan de clientzijde om een bepaald niveau van gebruikerservaring op de verschillende klanten te bereiken.
+Er is een verhouding tussen de complexiteit van de service logica en de complexiteit aan de client zijde om een bepaald niveau van gebruikers ervaring op de verschillende clients te bereiken.
 
-Houd er rekening mee dat u wilt dat uw selectie wordt gemaakt:
+Denk aan het volgende om uw keuze te maken:
 
-* PlayReady is native geïmplementeerd in elk Windows-apparaat, op sommige Android-apparaten, en beschikbaar via software SDKs op vrijwel elk platform.
-* Widevine is native geïmplementeerd in elk Android-apparaat, in Chrome en in sommige andere apparaten.
-* FairPlay is alleen beschikbaar op iOS- en Mac OS-clients of via iTunes.
+* PlayReady is systeem eigen geïmplementeerd in elk Windows-apparaat, op sommige Android-apparaten en beschikbaar via software-Sdk's op vrijwel elk platform.
+* Widevine wordt systeem eigen geïmplementeerd in elk Android-apparaat, in Chrome en op andere apparaten.
+* FairPlay is alleen beschikbaar op iOS-en Mac OS-clients of via iTunes.
 
 Er zijn twee opties voor een typische multi-DRM:
 
 * PlayReady en Widevine
 * PlayReady, Widevine en FairPlay
 
-## <a name="a-reference-design"></a>Een referentieontwerp
-Deze sectie presenteert een referentieontwerp dat agnost is naar de technologieën die worden gebruikt om het te implementeren.
+## <a name="a-reference-design"></a>Een referentie ontwerp
+Deze sectie bevat een referentie ontwerp dat neutraal is voor de technologieën die worden gebruikt om het te implementeren.
 
-Een DRM-subsysteem kan de volgende componenten bevatten:
+Een DRM-subsysteem kan de volgende onderdelen bevatten:
 
 * Sleutelbeheer
 * DRM-verpakking
 * Levering van DRM-licentie
-* Entitlement check
+* Controle op rechten
 * Verificatie/autorisatie
 * Speler
-* Origin/content delivery network (CDN)
+* Herkomst/Content Delivery Network (CDN)
 
-Het volgende diagram illustreert de interactie op hoog niveau tussen de componenten in een DRM-subsysteem:
+In het volgende diagram ziet u de interactie op hoog niveau tussen de onderdelen in een DRM-subsysteem:
 
 ![DRM-subsysteem met CENC](./media/media-services-cenc-with-multidrm-access-control/media-services-generic-drm-subsystem-with-cenc.png)
 
-Het ontwerp heeft drie basislagen:
+Het ontwerp heeft drie basis lagen:
 
-* Een back-officelaag (zwart) wordt niet extern belicht.
-* Een DMZ-laag (donkerblauw) bevat alle eindpunten die het publiek onder ogen zien.
-* Een openbare internetlaag (lichtblauw) bevat het CDN en spelers met verkeer over het openbare internet.
+* Een back-uplaag (zwart) wordt niet extern weer gegeven.
+* Een DMZ-laag (donker blauw) bevat alle eind punten die het publiek belichten.
+* Een open bare Internet-laag (licht blauw) bevat de CDN en spelers met verkeer via het open bare Internet.
 
-Er moet ook een content management tool om DRM bescherming te controleren, ongeacht of het statische of dynamische encryptie. De ingangen voor DRM-versleuteling zijn:
+Er moet ook een hulp programma voor inhouds beheer zijn om DRM-beveiliging te beheren, ongeacht of het statisch of dynamisch versleutelen is. De invoer voor DRM-versleuteling omvat:
 
 * MBR-video-inhoud
-* Inhoudstoets
-* URL's voor licentieverwerving
+* Inhouds sleutel
+* Url's voor licenties ophalen
 
-Hier is de stroom op hoog niveau tijdens de afspeeltijd:
+Dit is de stroom op hoog niveau tijdens de afspeel tijd:
 
 * De gebruiker is geverifieerd.
-* Er wordt een autorisatietoken gemaakt voor de gebruiker.
-* DRM beschermde inhoud (manifest) wordt gedownload naar de speler.
-* De speler dient een aanvraag voor licentieverwerving in om servers in licentie te geven, samen met een sleutel-ID en een autorisatietoken.
+* Er wordt een autorisatie token voor de gebruiker gemaakt.
+* Met DRM beveiligde inhoud (manifest) wordt gedownload naar de speler.
+* De speler verzendt een aanvraag voor het ophalen van licenties naar licentie servers, samen met een sleutel-ID en een autorisatie token.
 
-In het volgende gedeelte wordt het ontwerp van sleutelbeheer besproken.
+In de volgende sectie wordt het ontwerp van sleutel beheer besproken.
 
-| **ContentKey-to-asset** | **Scenario** |
+| **ContentKey-to-Asset** | **Scenario** |
 | --- | --- |
-| 1-op-1 |Het eenvoudigste geval. Het biedt de beste controle. Maar deze regeling resulteert over het algemeen in de hoogste licentieleveringskosten. Ten minste is één licentieaanvraag vereist voor elk beschermd actief. |
-| 1-op-veel |U dezelfde inhoudssleutel gebruiken voor meerdere elementen. Voor alle elementen in een logische groep, zoals een genre of de subset van een genre (of filmgen), u bijvoorbeeld één inhoudssleutel gebruiken. |
-| Veel-op-1 |Voor elk item zijn meerdere inhoudssleutels nodig. <br/><br/>Als u bijvoorbeeld dynamische CENC-beveiliging moet toepassen met multi-DRM voor MPEG-DASH en dynamische AES-128-versleuteling voor HLS, hebt u twee afzonderlijke inhoudssleutels nodig. Elke inhoudssleutel heeft een eigen ContentKeyType nodig. (Voor de inhoudssleutel die wordt gebruikt voor dynamische CENC-beveiliging, gebruikt u ContentKeyType.CommonEncryption. Gebruik ContentKeyType.EnvelopeEncryption voor de inhoudssleutel die wordt gebruikt voor dynamische AES-128-versleuteling.)<br/><br/>Als ander voorbeeld u in CENC-bescherming van DASH-inhoud in theorie één inhoudssleutel gebruiken om de videostream en een andere inhoudssleutel te beschermen om de audiostream te beschermen. |
-| Veel-op-veel |Combinatie van de vorige twee scenario's. Voor elk van de meerdere elementen in dezelfde activagroep wordt één set inhoudssleutels gebruikt. |
+| 1-op-1 |Het eenvoudigste geval. Het biedt het kleinste besturings element. Maar deze rang schikking resulteert in het algemeen in de hoogste verzend kosten van de licentie. Er is mini maal één licentie aanvraag vereist voor elke beveiligde Asset. |
+| 1-op-veel |U kunt dezelfde inhouds sleutel voor meerdere assets gebruiken. Voor alle assets in een logische groep, zoals een genre of de subset van een genre (of film gen), kunt u bijvoorbeeld één inhouds sleutel gebruiken. |
+| Veel-op-1 |Er zijn meerdere inhouds sleutels nodig voor elke Asset. <br/><br/>Als u bijvoorbeeld dynamische CENC-beveiliging met multi-DRM wilt Toep assen voor MPEG-DASH en dynamische AES-128-versleuteling voor HLS, hebt u twee afzonderlijke inhouds sleutels nodig. Elke inhouds sleutel heeft zijn eigen ContentKeyType nodig. (Gebruik ContentKeyType. CommonEncryption voor de inhouds sleutel die wordt gebruikt voor dynamische CENC-beveiliging. Gebruik ContentKeyType. EnvelopeEncryption voor de inhouds sleutel die wordt gebruikt voor dynamische AES-128-versleuteling.)<br/><br/>Een ander voor beeld: in CENC-beveiliging van de onderbroken inhoud kunt u in theorie één inhouds sleutel gebruiken om de video stroom en een andere inhouds sleutel te beveiligen om de audio stroom te beveiligen. |
+| Veel-op-veel |Combi natie van de voor gaande twee scenario's. Er wordt één set inhouds sleutels gebruikt voor elk van de meerdere activa in dezelfde activa groep. |
 
-Een andere belangrijke factor om te overwegen is het gebruik van persistente en niet-persistente licenties.
+Een andere belang rijke factor om rekening mee te houden is het gebruik van permanente en niet-permanente licenties.
 
-Waarom zijn deze overwegingen belangrijk?
+Waarom zijn deze overwegingen belang rijk?
 
-Als u een openbare cloud gebruikt voor licentielevering, hebben persistente en niet-persistente licenties een directe invloed op de kosten voor licentielevering. De volgende twee verschillende ontwerpcases illustreren:
+Als u een open bare Cloud gebruikt voor het leveren van licenties, hebben permanente en niet-permanente licenties direct invloed op de leverings kosten van licenties. De volgende twee verschillende ontwerp cases dienen ter illustratie:
 
-* Maandelijks abonnement: gebruik een permanente licentie en 1-op-veel content key-to-asset mapping. Voor alle kinderfilms gebruiken we bijvoorbeeld één contentsleutel voor versleuteling. In dat geval:
+* Maandelijks abonnement: gebruik een permanente licentie en een 1-op-veel-inhouds sleutel-naar-Asset-toewijzing. Voor de films van alle kinderen gebruiken we bijvoorbeeld één inhouds sleutel voor versleuteling. In dat geval:
 
-    Totaal aantal aangevraagde licenties voor films/apparaten voor alle kinderen = 1
+    Totaal aantal aangevraagde licenties voor alle kinderen films/apparaat = 1
 
-* Maandelijks abonnement: gebruik een niet-permanente licentie en 1-op-1-toewijzing tussen inhoudssleutel en asset. In dat geval:
+* Maandelijks abonnement: gebruik een niet-permanente licentie en een 1-op-1-toewijzing tussen inhouds sleutel en Asset. In dat geval:
 
-    Totaal aantal aangevraagde licenties voor films/apparaten voor alle kinderen = [aantal films bekeken] x [aantal sessies]
+    Totaal aantal aangevraagde licenties voor alle kinderen films/apparaat = [aantal gevolgde films] x [aantal sessies]
 
-De twee verschillende ontwerpen resulteren in zeer verschillende licentie aanvraag patronen. De verschillende patronen leiden tot verschillende licentieleveringskosten als licentieleveringsservice wordt geleverd door een openbare cloud zoals Media Services.
+De twee verschillende ontwerpen resulteren in zeer verschillende licentie-aanvraag patronen. De verschillende patronen resulteren in verschillende leverings kosten voor licenties als de licentie leverings service wordt geleverd door een open bare Cloud, zoals Media Services.
 
-## <a name="map-design-to-technology-for-implementation"></a>Kaartontwerp naar technologie voor implementatie
-Vervolgens wordt het generieke ontwerp toegewezen aan technologieën op het Azure/Media Services-platform door aan te geven welke technologie voor elke bouwsteen moet worden gebruikt.
+## <a name="map-design-to-technology-for-implementation"></a>Ontwerp van de technologie voor implementatie
+Vervolgens wordt het algemene ontwerp toegewezen aan technologieën op het Azure/Media Services-platform door op te geven welke technologie voor elke bouw steen moet worden gebruikt.
 
-In de volgende tabel ziet u de toewijzing.
+De volgende tabel toont de toewijzing.
 
-| **Bouwsteen** | **Technologie** |
+| **Bouw steen** | **Technologie** |
 | --- | --- |
 | **Speler** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
-| **Identiteitsprovider (IDP)** |Azure Active Directory (Azure AD) |
-| **Beveiligingstokenservice (STS)** |Azure AD |
-| **DRM-beveiligingswerkstroom** |Dynamische bescherming van Media Services |
-| **Levering van DRM-licentie** |* Media Services licentie levering (PlayReady, Widevine, FairPlay) <br/>* Axinom licentie server <br/>* Aangepaste PlayReady licentieserver |
-| **Oorsprong** |Streamingeindpunt voor Media Services |
+| **ID-provider (IDP)** |Azure Active Directory (Azure AD) |
+| **Security Token Service (STS)** |Azure AD |
+| **DRM-beveiligings werk stroom** |Dynamische beveiliging Media Services |
+| **Levering van DRM-licentie** |* Media Services licentie levering (PlayReady, Widevine, FairPlay) <br/>* Axinom-licentie server <br/>* Aangepaste PlayReady-licentie server |
+| **Oorsprong** |Media Services streaming-eind punt |
 | **Sleutelbeheer** |Niet nodig voor referentie-implementatie |
-| **Inhoudsbeheer** |Een C#-consoletoepassing |
+| **Inhoudsbeheer** |Een C#-console toepassing |
 
-Met andere woorden, zowel IDP als STS worden gebruikt met Azure AD. De [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) wordt gebruikt voor de speler. Zowel Media Services als Media Player ondersteunen DASH en CENC met multi-DRM.
+Met andere woorden, zowel IDP als STS worden gebruikt met Azure AD. De [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/) wordt gebruikt voor de speler. Zowel Media Services als Media Player ondersteunen DASH en CENC met multi-DRM.
 
-In het volgende diagram ziet u de algemene structuur en stroom met de vorige technologietoewijzing:
+In het volgende diagram ziet u de algehele structuur en stroom met de vorige technologie toewijzing:
 
 ![CENC op Media Services](./media/media-services-cenc-with-multidrm-access-control/media-services-cenc-subsystem-on-AMS-platform.png)
 
-Om dynamische CENC-versleuteling in te stellen, gebruikt de tool voor inhoudsbeheer de volgende ingangen:
+Voor het instellen van dynamische CENC-versleuteling gebruikt het hulp programma voor inhouds beheer de volgende invoer:
 
 * Inhoud openen
-* Inhoudssleutel van sleutelgeneratie/beheer
-* URL's voor licentieverwerving
+* Inhouds sleutel van sleutel generatie/-beheer
+* Url's voor licenties ophalen
 * Een lijst met gegevens uit Azure AD
 
-Hier is de uitvoer van de content management tool:
+Dit is de uitvoer van het hulp programma voor inhouds beheer:
 
-* ContentKeyAuthorizationPolicy bevat de specificatie over hoe licentielevering een JSON Web Token (JWT) en DRM-licentiespecificaties verifieert.
-* AssetDeliveryPolicy bevat specificaties voor streamingformaat, DRM-bescherming en URL's voor licentieverwerving.
+* ContentKeyAuthorizationPolicy bevat de specificatie over hoe licentie levering een JSON Web Token (JWT) en DRM-licentie specificaties verifieert.
+* AssetDeliveryPolicy bevat specificaties voor de streaming-indeling, DRM-beveiliging en Url's voor het verkrijgen van licenties.
 
-Hier is de stroom tijdens runtime:
+Dit is de stroom tijdens runtime:
 
-* Bij gebruikersverificatie wordt een JWT gegenereerd.
-* Een van de claims in de JWT is een groepsclaim die de groepsobject-id GetiteldUserGroup bevat. Deze claim wordt gebruikt om de rechtencontrole te doorstaan.
-* De speler downloadt het clientmanifest van door CENC beveiligde inhoud en identificeert het volgende:
+* Bij de verificatie van de gebruiker wordt er een JWT gegenereerd.
+* Een van de claims in de JWT is een groepering claim die de groeps object-ID EntitledUserGroup bevat. Deze claim wordt gebruikt om de controle op rechten uit te geven.
+* De speler downloadt het client manifest van met CENC beveiligde inhoud en identificeert het volgende:
    * Sleutel-ID.
-   * De inhoud is CENC-beveiligd.
-   * URL's voor licentieverwerving.
-* De speler maakt een licentie verwerving verzoek op basis van de browser / DRM ondersteund. In de aanvraag voor het verkrijgen van licenties worden ook de sleutel-ID en de JWT ingediend. De licentieleveringsservice verifieert de JWT en de claims voordat deze de benodigde licentie uitgeeft.
+   * De inhoud is CENC beveiligd.
+   * Url's voor het aanschaffen van licenties.
+* Er wordt een aanvraag voor het ophalen van licenties gemaakt op basis van de browser/DRM die wordt ondersteund. De sleutel-ID en de JWT worden ook in de aanvraag voor licentie aanschaf verzonden. De service licentie levering verifieert de JWT en de claims die zijn opgenomen voordat de benodigde licentie wordt uitgegeven.
 
 ## <a name="implementation"></a>Implementatie
-### <a name="implementation-procedures"></a>Uitvoeringsprocedures
-Implementatie omvat de volgende stappen:
+### <a name="implementation-procedures"></a>Implementatie procedures
+De implementatie omvat de volgende stappen:
 
-1. Testassets voorbereiden. Encode/package a test video to multi-bitrate fragmented MP4 in Media Services. Dit actief is *niet* DRM-beschermd. DRM bescherming wordt gedaan door dynamische bescherming later.
+1. Test assets voorbereiden. Een test video coderen/verpakken naar gefragmenteerde MP4 met multi-bitrate in Media Services. Deze asset is *niet* beveiligd met DRM. DRM-beveiliging wordt later door dynamische beveiliging uitgevoerd.
 
-2. Maak een sleutel-id en een inhoudssleutel (optioneel uit een sleutelzaad). In dit geval is het sleutelbeheersysteem niet nodig omdat er slechts één sleutel-id en inhoudssleutel nodig zijn voor een paar testelementen.
+2. Maak een sleutel-ID en een inhouds sleutel (optioneel vanuit een sleutel Seed). In dit geval is het sleutel beheersysteem niet nodig omdat er slechts één sleutel-ID en inhouds sleutel zijn vereist voor een aantal test assets.
 
-3. Gebruik de Media Services API om multi-DRM-licentieleveringsservices voor het testitem te configureren. Als u aangepaste licentieservers gebruikt van uw bedrijf of de leveranciers van uw bedrijf in plaats van licentieservices in Media Services, u deze stap overslaan. U url's voor licentieverwerving opgeven in de stap wanneer u licentielevering configureert. De Media Services API is nodig om een aantal gedetailleerde configuraties op te geven, zoals autorisatiebeleidsbeperking en licentieresponssjablonen voor verschillende DRM-licentieservices. Op dit moment biedt de Azure-portal niet de benodigde gebruikersinterface voor deze configuratie. Zie [PlayReady en/of Widevine dynamic common encryption gebruiken](media-services-protect-with-playready-widevine.md)voor informatie op API-niveau en voorbeeldcode.
+3. Gebruik de Media Services-API voor het configureren van multi-DRM-licentie leverings Services voor het test activum. Als u aangepaste licentie servers gebruikt door uw bedrijf of leveranciers van uw bedrijf in plaats van licentie services in Media Services, kunt u deze stap overs Laan. U kunt Url's voor aanschaf van licenties opgeven in de stap wanneer u licentie levering configureert. De Media Services-API is vereist om een aantal gedetailleerde configuraties op te geven, zoals beperking van het autorisatie beleid en sjablonen voor licentie reacties voor verschillende DRM-licentie services. Op dit moment biedt de Azure Portal niet de benodigde gebruikers interface voor deze configuratie. Zie voor informatie over het API-niveau en voorbeeld code [PlayReady en/of Widevine Dynamic common Encryption gebruiken](media-services-protect-with-playready-widevine.md).
 
-4. Gebruik de Media Services API om het beleid voor het leveren van activa voor het testitem te configureren. Zie [PlayReady en/of Widevine dynamic common encryption gebruiken](media-services-protect-with-playready-widevine.md)voor informatie op API-niveau en voorbeeldcode.
+4. Gebruik de Media Services-API om het beleid voor de levering van assets voor de test Asset te configureren. Zie voor informatie over het API-niveau en voorbeeld code [PlayReady en/of Widevine Dynamic common Encryption gebruiken](media-services-protect-with-playready-widevine.md).
 
-5. Een Azure AD-tenant maken en configureren in Azure.
+5. Een Azure AD-Tenant maken en configureren in Azure.
 
-6. Maak een paar gebruikersaccounts en -groepen in uw Azure AD-tenant. Maak ten minste een groep 'Gebruiker met recht' en voeg een gebruiker toe aan deze groep. Gebruikers in deze groep slagen voor het verkrijgen van een licentie. Gebruikers die niet in deze groep zitten, slagen niet voor de verificatiecontrole en kunnen geen licentie verkrijgen. Lidmaatschap van deze groep 'Gebruiker' is een vereiste groepsclaim in de JWT die is uitgegeven door Azure AD. U geeft deze claimvereiste op in de stap wanneer u services voor multi-DRM-licentieservices configureert.
+6. Maak een paar gebruikers accounts en-groepen in uw Azure AD-Tenant. Maak ten minste een groep getiteld gebruiker en voeg een gebruiker toe aan deze groep. Gebruikers in deze groep geven de rechten controle bij het aanschaffen van licenties door. Gebruikers die niet in deze groep zijn, kunnen de verificatie controle niet door geven en kunnen geen licentie verkrijgen. Lidmaatschap van deze groep ' getiteld gebruiker ' is een vereiste claim voor groepen in de JWT die is uitgegeven door Azure AD. U geeft deze claim vereiste op in de stap wanneer u multi-DRM-licentie leverings Services configureert.
 
-7. Maak een ASP.NET MVC-app om je videospeler te hosten. Deze ASP.NET-app is beveiligd met gebruikersverificatie tegen de Azure AD-tenant. De juiste claims zijn opgenomen in de toegangstokens die zijn verkregen na gebruikersverificatie. We raden OpenID Connect API aan voor deze stap. Installeer de volgende NuGet-pakketten:
+7. Maak een ASP.NET MVC-app om uw video speler te hosten. Deze ASP.NET-app wordt beveiligd met de gebruikers verificatie voor de Azure AD-Tenant. De juiste claims zijn opgenomen in de toegangs tokens die zijn verkregen na de verificatie van de gebruiker. U kunt OpenID Connect Connect API voor deze stap aanbevelen. Installeer de volgende NuGet-pakketten:
 
-   * Microsoft.Azure.ActiveDirectory.GraphClient installeren
-   * Installatiepakket Microsoft.Owin.Security.OpenIdConnect
-   * Installatiepakket Microsoft.Owin.Security.Cookies
-   * Installatiepakket Microsoft.Owin.Host.SystemWeb
-   * Installatiepakket Microsoft.IdentityModel.Clients.ActiveDirectory
+   * Installeer-package micro soft. Azure. ActiveDirectory. GraphClient
+   * Installeer-package micro soft. Owin. Security. OpenIdConnect
+   * Installeer-package micro soft. Owin. Security. cookies
+   * Installeer-package micro soft. Owin. host. SystemWeb
+   * Installeer-package micro soft. Identity model. clients. ActiveDirectory
 
-8. Maak een speler met behulp van de [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/). Gebruik de [Azure Media Player ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) om aan te geven welke DRM-technologie op verschillende DRM-platforms moet worden gebruikt.
+8. Een speler maken met behulp van de [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/). Gebruik de [Azure Media Player PROTECTIONINFO API](https://amp.azure.net/libs/amp/latest/docs/) om op te geven welke DRM-technologie op verschillende DRM-platforms moet worden gebruikt.
 
-9. In de volgende tabel ziet u de testmatrix.
+9. In de volgende tabel wordt de test matrix weer gegeven.
 
-    | **Drm** | **Browser** | **Resultaat voor de rechthebbende gebruiker** | **Resultaat voor gebruiker zonder recht** |
+    | **Digital** | **Browser** | **Resultaat van gebruiker met recht** | **Resultaat voor onbevoegd gebruiker** |
     | --- | --- | --- | --- |
-    | **PlayReady** |Microsoft Edge of Internet Explorer 11 op Windows 10 |Slagen |Mislukt |
-    | **Widevine** |Chrome, Firefox, Opera |Slagen |Mislukt |
-    | **FairPlay** |Safari op macOS      |Slagen |Mislukt |
-    | **AES-128** |De meeste moderne browsers  |Slagen |Mislukt |
+    | **PlayReady** |Micro soft Edge of Internet Explorer 11 op Windows 10 |Anders |Mislukt |
+    | **Widevine** |Chrome, Firefox, Opera |Anders |Mislukt |
+    | **FairPlay** |Safari op macOS      |Anders |Mislukt |
+    | **AES-128** |Meest moderne browsers  |Anders |Mislukt |
 
-Zie [Een Azure Media Services OWIN MVC-app integreren met Azure Active Directory en beperking van de weergave van inhoudssleutels op basis van JWT-claims](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)voor informatie over het instellen van Azure AD voor een ASP.NET MVC-speler- app.
+Voor informatie over het instellen van Azure AD voor een ASP.NET MVC Player-app raadpleegt u [een Azure Media Services op OWIN MVC gebaseerde app integreren met Azure Active Directory en de levering van de inhouds sleutel beperken op basis van JWT-claims](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/).
 
-Zie [JWT-tokenverificatie in Azure Media Services en dynamische versleuteling](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)voor meer informatie.  
+Zie [JWT-token verificatie in azure Media Services en dynamische versleuteling](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)voor meer informatie.  
 
 Voor informatie over Azure AD:
 
-* U informatie over ontwikkelaars vinden in de [handleiding van Azure Active Directory-ontwikkelaars.](../../active-directory/azuread-dev/v1-overview.md)
-* U beheerdersgegevens vinden in [Uw Azure AD-tenantmap beheren.](../../active-directory/fundamentals/active-directory-administer.md)
+* In de [hand leiding voor ontwikkel aars van Azure Active Directory](../../active-directory/azuread-dev/v1-overview.md)vindt u informatie voor ontwikkel aars.
+* U kunt beheerders informatie vinden in [uw Azure AD-Tenant Directory beheren](../../active-directory/fundamentals/active-directory-administer.md).
 
-### <a name="some-issues-in-implementation"></a>Enkele kwesties bij de uitvoering
-Gebruik de volgende informatie over probleemoplossing voor hulp bij implementatieproblemen.
+### <a name="some-issues-in-implementation"></a>Enkele problemen in de implementatie
+Gebruik de volgende informatie voor probleem oplossing voor hulp bij implementatie problemen.
 
-* De URL van de uitgever moet eindigen met "/". Het publiek moet de client-id van de spelertoepassing zijn. Voeg ook "/" toe aan het einde van de URL van de uitgever.
+* De URL van de uitgever moet eindigen op '/'. De doel groep moet de client-ID van de Player-toepassing zijn. Voeg ook '/' toe aan het einde van de URL van de uitgever.
 
         <add key="ida:audience" value="[Application Client ID GUID]" />
         <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
 
-    In de [JWT Decoder](http://jwt.calebb.net/), zie je **aud** en **iss,** zoals weergegeven in de JWT:
+    In de [JWT-decoder](http://jwt.calebb.net/)ziet u **AUD** en **ISS**, zoals wordt weer gegeven in de JWT:
 
-    ![JWT JWT](./media/media-services-cenc-with-multidrm-access-control/media-services-1st-gotcha.png)
+    ![JWT](./media/media-services-cenc-with-multidrm-access-control/media-services-1st-gotcha.png)
 
-* Machtigingen toevoegen aan de toepassing in Azure AD op het tabblad **Configureren** van de toepassing. Machtigingen zijn vereist voor elke toepassing, zowel lokale als geïmplementeerde versies.
+* Voeg machtigingen toe aan de toepassing in azure AD op het tabblad **configureren** van de toepassing. Er zijn machtigingen vereist voor elke toepassing, zowel lokale als geïmplementeerde versies.
 
     ![Machtigingen](./media/media-services-cenc-with-multidrm-access-control/media-services-perms-to-other-apps.png)
 
-* Gebruik de juiste uitgever wanneer u dynamische CENC-beveiliging instelt.
+* Gebruik de juiste verlener wanneer u dynamische CENC-beveiliging instelt.
 
         <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
 
@@ -253,226 +253,226 @@ Gebruik de volgende informatie over probleemoplossing voor hulp bij implementati
 
         <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
 
-    De GUID is de Azure AD-tenant-id. De GUID is te vinden in het pop-upmenu **Eindpunten** in de Azure-portal.
+    De GUID is de ID van de Azure AD-Tenant. De GUID vindt u in het pop-upmenu **endpoints** in het Azure Portal.
 
-* Subsidie groep lidmaatschap claims privileges. Controleer of dit het volgende in het manifestbestand van azure AD-toepassingen staat: 
+* Claim machtigingen voor groepslid maatschap verlenen. Controleer of het volgende voor komt in het manifest bestand van de Azure AD-toepassing: 
 
-    "groupMembershipClaims": "Alles" (de standaardwaarde is null)
+    "groupMembershipClaims": "all" (de standaard waarde is null)
 
-* Stel het juiste TokenType in wanneer u beperkingen maakt.
+* Stel het juiste token type in wanneer u beperkings vereisten maakt.
 
         objTokenRestrictionTemplate.TokenType = TokenType.JWT;
 
-    Omdat u naast SWT (ACS) ondersteuning voor JWT (Azure AD) toevoegt, is de standaard TokenType TokenType.JWT. Als u SWT/ACS gebruikt, moet u het token instellen op TokenType.SWT.
+    Omdat u ondersteuning voor JWT (Azure AD) toevoegt naast SWT (ACS), is het standaard token type token. JWT. Als u SWT/ACS gebruikt, moet u het token instellen op token type. SWT.
 
 ## <a name="additional-topics-for-implementation"></a>Aanvullende onderwerpen voor implementatie
-In dit gedeelte worden enkele aanvullende onderwerpen besproken in ontwerp en implementatie.
+In deze sectie worden enkele aanvullende onderwerpen in het ontwerp en de implementatie besproken.
 
 ### <a name="http-or-https"></a>HTTP of HTTPS?
-De ASP.NET MVC-spelertoepassing moet het volgende ondersteunen:
+De ASP.NET MVC Player-toepassing moet het volgende ondersteunen:
 
-* Gebruikersverificatie via Azure AD, dat onder HTTPS staat.
-* JWT-uitwisseling tussen de client en Azure AD, die onder HTTPS staat.
-* DRM-licentieverwerving door de klant, die onder HTTPS moet vallen als de licentielevering wordt geleverd door Media Services. De PlayReady-productsuite verplicht geen HTTPS voor licentielevering. Als uw PlayReady-licentieserver zich buiten Media Services bevindt, u HTTP of HTTPS gebruiken.
+* Gebruikers verificatie via Azure AD, dat zich onder HTTPS bevindt.
+* JWT-uitwisseling tussen de client en Azure AD, die zich onder HTTPS bevindt.
+* DRM-licentie verwerving door de client, die onder HTTPS moet vallen als licentie levering wordt geleverd door Media Services. De PlayReady-product suite vereist geen HTTPS voor licentie levering. Als uw PlayReady-licentie server zich buiten Media Services bevindt, kunt u HTTP of HTTPS gebruiken.
 
-De ASP.NET spelertoepassing gebruikt HTTPS als best practice, dus Media Player staat op een pagina onder HTTPS. Http heeft echter de voorkeur voor streaming, dus je moet rekening houden met het probleem van gemengde inhoud.
+De ASP.NET Player-toepassing maakt gebruik van HTTPS als een best practice, dus Media Player bevindt zich op een pagina onder HTTPS. HTTP verdient echter de voor keur voor streaming, dus u moet rekening houden met het probleem van gemengde inhoud.
 
-* De browser staat geen gemengde inhoud toe. Maar plug-ins zoals Silverlight en de OSMF plug-in voor smooth en DASH laten het toe. Gemengde inhoud is een beveiligingsprobleem vanwege de dreiging van de mogelijkheid om kwaadaardige JavaScript te injecteren, waardoor klantgegevens in gevaar kunnen komen. Browsers blokkeren deze mogelijkheid standaard. De enige manier om er omheen te werken is aan de server (oorsprong) kant door het toestaan van alle domeinen (ongeacht HTTPS of HTTP). Dit is waarschijnlijk ook geen goed idee.
-* Vermijd gemengde inhoud. Zowel de player-applicatie als Media Player moeten HTTP of HTTPS gebruiken. Bij het afspelen van gemengde inhoud, de silverlightSS tech vereist clearing een mixed-content waarschuwing. De flashSS-technologie verwerkt gemengde inhoud zonder waarschuwing voor gemengde inhoud.
-* Als je streaming-eindpunt vóór augustus 2014 is gemaakt, wordt er geen https ondersteund. Maak en gebruik in dit geval een nieuw streamingeindpunt voor HTTPS.
+* De browser staat geen gemengde inhoud toe. Invoeg toepassingen zoals Silverlight en de OSMF-invoeg toepassing voor Smooth en DASH bieden dit wel. Gemengde inhoud is een beveiligings probleem vanwege de dreiging van de mogelijkheid om schadelijke Java script te injecteren. Dit kan ertoe leiden dat klant gegevens risico lopen. Browsers blok keren deze functie standaard. De enige manier om deze te omzeilen, is op de server (oorsprong) naast elkaar door alle domeinen toe te staan (ongeacht HTTPS of HTTP). Dit is waarschijnlijk geen goed idee.
+* Vermijd gemengde inhoud. Zowel de toepassing van de speler als de Media Player moet HTTP of HTTPS gebruiken. Bij het afspelen van gemengde inhoud moet de Silverlight-Tech-technologie een waarschuwing voor gemengde inhoud wissen. De IT-techniek behandelt gemengde inhoud zonder waarschuwing over gemengde inhoud.
+* Als uw streaming-eind punt is gemaakt vóór 2014 augustus, wordt er geen ondersteuning geboden voor HTTPS. In dit geval maakt en gebruikt u een nieuw streaming-eind punt voor HTTPS.
 
-In de referentie-implementatie voor DRM-beveiligde inhoud staan zowel de toepassing als streaming onder HTTPS. Voor open inhoud heeft de speler geen verificatie of licentie nodig, dus u HTTP of HTTPS gebruiken.
+In de referentie-implementatie voor inhoud die is beveiligd met DRM, zijn zowel de toepassing als de streaming onder HTTPS. Voor Open inhoud heeft de speler geen verificatie of een licentie nodig, zodat u HTTP of HTTPS kunt gebruiken.
 
-### <a name="azure-active-directory-signing-key-rollover"></a>Rollover van Azure Active Directory-ondertekeningssleutel
-Het ondertekenen van key rollover is een belangrijk punt om rekening mee te houden bij uw implementatie. Als je het negeert, werkt het afgewerkte systeem uiteindelijk niet meer volledig, hooguit binnen zes weken.
+### <a name="azure-active-directory-signing-key-rollover"></a>Rollover van de handtekening sleutel Azure Active Directory
+Rollover van de handtekening sleutel is een belang rijk punt om rekening mee te houden in uw implementatie. Als u deze negeert, stopt het voltooide systeem uiteindelijk binnen zes weken helemaal.
 
-Azure AD gebruikt industriestandaarden om vertrouwen te creëren tussen zichzelf en toepassingen die Azure AD gebruiken. Azure AD gebruikt in het bijzonder een ondertekeningssleutel die bestaat uit een openbaar en privésleutelpaar. Wanneer Azure AD een beveiligingstoken maakt dat informatie over de gebruiker bevat, wordt het door Azure AD ondertekend met een privésleutel voordat het wordt teruggestuurd naar de toepassing. Om te controleren of het token geldig is en afkomstig is van Azure AD, moet de toepassing de handtekening van het token valideren. De toepassing maakt gebruik van de openbare sleutel die is blootgesteld door Azure AD en die is opgenomen in het metagegevensdocument van de federatie van de tenant. Deze openbare sleutel en de ondertekeningssleutel waaruit deze is afgeleid, is dezelfde die wordt gebruikt voor alle tenants in Azure AD.
+Azure AD maakt gebruik van industrie normen om een vertrouwens relatie tot stand te brengen tussen zichzelf en toepassingen die gebruikmaken van Azure AD. In het bijzonder maakt Azure AD gebruik van een handtekening sleutel die bestaat uit een openbaar en een persoonlijk sleutel paar. Wanneer Azure AD een beveiligings token maakt dat informatie over de gebruiker bevat, wordt het ondertekend door Azure AD met een persoonlijke sleutel voordat het wordt teruggestuurd naar de toepassing. Om te controleren of het token geldig is en afkomstig is van Azure AD, moet de toepassing de hand tekening van het token valideren. De toepassing maakt gebruik van de open bare sleutel die wordt weer gegeven door Azure AD die is opgenomen in het federatieve meta gegevens document van de Tenant. Deze open bare sleutel en de ondertekeningssleutel waarvan deze is afgeleid, zijn hetzelfde als de sleutel die wordt gebruikt voor alle tenants in azure AD.
 
-Zie [Belangrijke informatie over het ondertekenen van sleutelrollover in Azure AD](../../active-directory/active-directory-signing-key-rollover.md)voor meer informatie over de rollover van Azure-ad-
+Zie [belang rijke informatie over de rollover van de handtekening sleutel in azure AD](../../active-directory/active-directory-signing-key-rollover.md)voor meer informatie over de sleutel rollover van Azure AD.
 
-Tussen het [publiek-private sleutelpaar](https://login.microsoftonline.com/common/discovery/keys/):
+Tussen het [open bare-persoonlijke sleutel paar](https://login.microsoftonline.com/common/discovery/keys/):
 
-* De privésleutel wordt door Azure AD gebruikt om een JWT te genereren.
-* De openbare sleutel wordt gebruikt door een toepassing zoals DRM-licentieservices in Media Services om de JWT te verifiëren.
+* De persoonlijke sleutel wordt door Azure AD gebruikt voor het genereren van een JWT.
+* De open bare sleutel wordt gebruikt door een toepassing zoals DRM-licentie levering Services in Media Services om de JWT te controleren.
 
-Om veiligheidsredenen roteert Azure AD het certificaat periodiek (om de zes weken). In het geval van inbreuken op de beveiliging kan de sleutelrollover op elk gewenst moment plaatsvinden. Daarom moeten de licentieservices in Media Services de openbare sleutel bijwerken die wordt gebruikt omdat Azure AD het sleutelpaar roteert. Anders mislukt tokenverificatie in Media Services en wordt er geen licentie uitgegeven.
+Uit veiligheids overwegingen roteert Azure AD het certificaat regel matig (elke zes weken). In het geval van inbreuk op de beveiliging kan de sleutel rollover op elk moment worden uitgevoerd. Daarom moeten de services voor het leveren van licenties in Media Services de open bare sleutel bijwerken die als Azure AD wordt gebruikt, het sleutel paar draaien. Als dat niet het geval is, mislukt de verificatie van tokens in Media Services en wordt er geen licentie verleend.
 
-Als u deze service wilt instellen, stelt u TokenRestrictionTemplate.OpenIdConnectDiscoveryDocument in wanneer u DRM-licentieservices configureert.
+Als u deze service wilt instellen, stelt u TokenRestrictionTemplate. OpenIdConnectDiscoveryDocument in wanneer u DRM-licentie leverings Services configureert.
 
-Hier is de JWT stroom:
+Dit is de JWT-stroom:
 
-* Azure AD geeft de JWT uit met de huidige privésleutel voor een geverifieerde gebruiker.
-* Wanneer een speler een CENC met multi-DRM-beveiligde inhoud ziet, wordt eerst de JWT gevonden die is uitgegeven door Azure AD.
-* De speler stuurt een licentie verwerving aanvraag met de JWT om de levering van licenties in Media Services licentie.
-* De licentieservices in Media Services gebruiken de huidige/geldige openbare sleutel van Azure AD om de JWT te verifiëren voordat licenties worden uitgegeven.
+* Azure AD verzendt de JWT met de huidige persoonlijke sleutel voor een geverifieerde gebruiker.
+* Wanneer een speler een CENC met multi-DRM beveiligde inhoud ziet, zoekt deze eerst naar de JWT die is uitgegeven door Azure AD.
+* De speler verzendt een aanvraag voor het ophalen van licenties met de JWT voor het leveren van licentie services in Media Services.
+* De services voor het leveren van licenties in Media Services gebruiken de huidige/geldige open bare sleutel van Azure AD om de JWT te verifiëren voordat de licenties worden uitgegeven.
 
-DRM-licentieservices controleren altijd op de huidige/geldige openbare sleutel van Azure AD. De openbare sleutel die wordt gepresenteerd door Azure AD is de sleutel die wordt gebruikt om een JWT te verifiëren die is uitgegeven door Azure AD.
+DRM-licentie leverings Services controleren altijd op de huidige/geldige open bare sleutel van Azure AD. De open bare sleutel die wordt gepresenteerd door Azure AD is de sleutel die wordt gebruikt om een JWT te verifiëren die is uitgegeven door Azure AD.
 
-Wat gebeurt er als de sleutelrollover plaatsvindt nadat Azure AD een JWT genereert, maar voordat de JWT door spelers naar DRM-licentieservices in Media Services wordt verzonden voor verificatie?
+Wat gebeurt er als de sleutel rollover plaatsvindt nadat Azure AD een JWT heeft gegenereerd, maar voordat de JWT door spelers wordt verzonden naar DRM-services voor het leveren van licenties in Media Services voor verificatie?
 
-Omdat een sleutel op elk moment kan worden omgerold, is er altijd meer dan één geldige openbare sleutel beschikbaar in het metagegevensdocument van de federatie. Media Services-licentielevering kan een van de sleutels gebruiken die in het document zijn opgegeven. Omdat een sleutel kan binnenkort worden gerold, een andere zou kunnen worden de vervanging, enzovoort.
+Omdat er op elk moment een sleutel kan worden doorgevoerd, is er altijd meer dan één geldige open bare sleutel beschikbaar in het document met federatieve meta gegevens. Media Services licentie levering kan elk van de in het document opgegeven sleutels gebruiken. Omdat een sleutel mogelijk binnenkort wordt gedistribueerd, is het mogelijk dat de code wordt vervangen.
 
-### <a name="where-is-the-access-token"></a>Waar is het toegangstoken?
-Als u kijkt naar hoe een web-app een API-app aanroept onder [Toepassingsidentiteit met OAuth 2.0-clientreferenties verlenen,](../../active-directory/azuread-dev/web-api.md)is de verificatiestroom als volgt:
+### <a name="where-is-the-access-token"></a>Waar bevindt zich het toegangs token?
+Als u kijkt hoe een web-app een API-app aanroept onder [toepassings identiteit met OAuth 2,0-client referenties toewijzen](../../active-directory/azuread-dev/web-api.md), is de verificatie stroom als volgt:
 
-* Een gebruiker meldt zich in de webtoepassing aan bij Azure AD. Zie [Webbrowser naar webtoepassing voor](../../active-directory/azuread-dev/web-app.md)meer informatie.
-* Het eindpunt azure AD-autorisatie leidt de gebruikersagent terug naar de clienttoepassing met een autorisatiecode. De gebruikersagent retourneert de autorisatiecode naar de omleidingsURI van de clienttoepassing.
-* De webtoepassing moet een toegangstoken aanschaffen, zodat deze kan worden geverifieerd naar de web-API en de gewenste bron kan ophalen. Het maakt een verzoek naar het eindpunt van het Azure AD-token en biedt de referentie- en client-id en de toepassings-ID URI van de web-API. Het presenteert de autorisatiecode om te bewijzen dat de gebruiker toestemming heeft gegeven.
-* Azure AD verifieert de toepassing en retourneert een JWT-toegangstoken dat wordt gebruikt om de web-API aan te roepen.
-* Via HTTPS gebruikt de webtoepassing het geretourneerde JWT-toegangstoken om de JWT-tekenreeks toe te voegen met een aanduiding "Drager" in de kop autorisatie van het verzoek aan de web-API. De web-API valideert vervolgens de JWT. Als de validatie is geslaagd, wordt de gewenste bron geretourneerd.
+* Een gebruiker meldt zich aan bij Azure AD in de webtoepassing. Zie webbrowser [to Web Application](../../active-directory/azuread-dev/web-app.md)(Engelstalig) voor meer informatie.
+* Het Azure AD-autorisatie-eind punt stuurt de gebruikers agent terug naar de client toepassing met een autorisatie code. De gebruikers agent retourneert de autorisatie code naar de omleidings-URI van de client toepassing.
+* De webtoepassing moet een toegangs token verkrijgen zodat het kan worden geverifieerd bij de Web-API en de gewenste resource kan ophalen. Hiermee wordt een aanvraag voor het Azure AD-token eindpunt gemaakt en worden de referenties, de client-ID en de URI van de toepassings-ID van de Web-API verstrekt. Het geeft de autorisatie code om te bewijzen dat de gebruiker heeft gestemd.
+* Azure AD verifieert de toepassing en retourneert een JWT-toegangs token dat wordt gebruikt om de Web-API aan te roepen.
+* Via HTTPS gebruikt de webtoepassing het geretourneerde JWT-toegangs token om de JWT-teken reeks toe te voegen met de aanduiding ' Bearer ' in de koptekst ' autorisatie ' van de aanvraag naar de Web-API. De Web-API valideert vervolgens de JWT. Als de validatie is geslaagd, wordt de gewenste resource geretourneerd.
 
-In deze identiteitsstroom van toepassingen vertrouwt de web-API dat de webtoepassing de gebruiker heeft geverifieerd. Om deze reden wordt dit patroon een vertrouwd subsysteem genoemd. Het [autorisatiestroomdiagram](https://docs.microsoft.com/azure/active-directory/active-directory-protocols-oauth-code) beschrijft hoe de autorisatie-code-grant-stroom werkt.
+In deze toepassings identiteits stroom vertrouwt de Web-API dat de gebruiker de webtoepassing heeft geverifieerd. Daarom wordt dit patroon een vertrouwd subsysteem genoemd. In het [diagram autorisatie stroom](https://docs.microsoft.com/azure/active-directory/active-directory-protocols-oauth-code) wordt beschreven hoe autorisatie-granting flow werkt.
 
-Licentieverwerving met tokenbeperking volgt hetzelfde vertrouwde subsysteempatroon. De licentieleveringsservice in Media Services is de web-API-bron of de 'back-endbron' waartoe een webtoepassing toegang moet hebben. Waar is het toegangstoken?
+Het ophalen van licenties met token beperking volgt hetzelfde patroon van het vertrouwde subsysteem. De service voor het leveren van licenties in Media Services is de Web-API-resource of de ' back-end-bron ' die een webtoepassing nodig heeft om toegang te krijgen. Waar bevindt zich het toegangs token?
 
-Het toegangstoken wordt verkregen uit Azure AD. Na succesvolle gebruikersverificatie wordt een autorisatiecode geretourneerd. De autorisatiecode wordt vervolgens, samen met de client-id en de app-sleutel, gebruikt om te wisselen voor het toegangstoken. Het toegangstoken wordt gebruikt om toegang te krijgen tot een 'aanwijzer'-toepassing die verwijst naar of vertegenwoordigt naar de mediaservices-licentieservice.
+Het toegangs token wordt verkregen van Azure AD. Na een geslaagde gebruikers verificatie wordt een autorisatie code geretourneerd. De autorisatie code wordt vervolgens gebruikt samen met de client-ID en de app-sleutel voor het uitwisselen van het toegangs token. Het toegangs token wordt gebruikt voor toegang tot een pointer-toepassing die verwijst naar of die de Media Services License delivery-service vertegenwoordigt.
 
-Ga als volgt te werk om de aanwijzer-app in Azure AD te registreren en te configureren:
+Als u de pointer-app in azure AD wilt registreren en configureren, voert u de volgende stappen uit:
 
-1. In de Azure AD-tenant:
+1. In de Azure AD-Tenant:
 
-   * Voeg een toepassing (resource) toe met de aanmeldings-URL https://[resource_name].azurewebsites.net/. 
-   * Voeg een app-id toe met de URL https://[aad_tenant_name].onmicrosoft.com/[resource_name].
+   * Voeg een toepassing (resource) toe met de aanmeldings-URL https://[resource_name]. azurewebsites. net/. 
+   * Voeg een app-ID toe met de URL https://[aad_tenant_name]. onmicrosoft. com/[resource_name].
 
 2. Voeg een nieuwe sleutel toe voor de resource-app.
 
-3. Werk het app-manifestbestand bij zodat de eigenschap groupMembershipClaims de waarde "groupMembershipClaims" heeft: "Alles".
+3. Werk het manifest bestand van de app bij zodat de eigenschap groupMembershipClaims de waarde "groupMembershipClaims": "all" heeft.
 
-4. Voeg in de Azure AD-app die naar de web-app voor spelers verwijst, in de sectie **Machtigingen voor andere toepassingen**de resource-app toe die in stap 1 is toegevoegd. Selecteer **Onder Gedelegeerde machtiging**de optie Toegang **[resource_name]**. Met deze optie geeft de web-app toestemming om toegangstokens te maken die toegang hebben tot de bron-app. Doe dit voor zowel de lokale als geïmplementeerde versie van de web-app als u zich ontwikkelt met Visual Studio en de Azure-webapp.
+4. Voeg in de Azure AD-app die verwijst naar de Web-App van de speler, in de sectie **machtigingen voor andere toepassingen**, de resource-app toe die is toegevoegd in stap 1. Onder **gedelegeerde machtiging**selecteert u **toegang [RESOURCE_NAME]**. Met deze optie geeft u de Web-App toestemming om toegangs tokens te maken die toegang hebben tot de resource-app. Doe dit voor zowel de lokale als de geïmplementeerde versie van de web-app als u ontwikkelt met Visual Studio en de Azure-web-app.
 
-De JWT uitgegeven door Azure AD is het toegangstoken dat wordt gebruikt om toegang te krijgen tot de aanwijzerbron.
+De JWT die is uitgegeven door Azure AD is het toegangs token dat wordt gebruikt om toegang te krijgen tot de pointer-resource.
 
-### <a name="what-about-live-streaming"></a>Hoe zit het met live streaming?
-De vorige discussie richtte zich op on-demand activa. Hoe zit het met live streaming?
+### <a name="what-about-live-streaming"></a>Hoe zit het met live streamen?
+De vorige discussie is gericht op activa op aanvraag. Hoe zit het met live streamen?
 
-U precies hetzelfde ontwerp en dezelfde implementatie gebruiken om live streaming in Media Services te beschermen door het item dat aan een programma is gekoppeld, als een VOD-asset te behandelen.
+U kunt precies hetzelfde ontwerp en dezelfde implementatie gebruiken om live streamen in Media Services te beveiligen door de activa die aan een programma zijn gekoppeld als een VOD-Asset te behandelen.
 
-Om live streaming in Media Services te doen, moet je een kanaal maken en vervolgens een programma maken onder het kanaal. Als u het programma wilt maken, moet u een asset maken die het live archief voor het programma bevat. Als u CENC multi-DRM-bescherming van de live-inhoud wilt bieden, past u dezelfde instelling/verwerking toe op het actief alsof het een VOD-asset is voordat u het programma start.
+Met name als u live streamen wilt uitvoeren in Media Services, moet u een kanaal maken en vervolgens een programma maken onder het kanaal. Als u het programma wilt maken, moet u een Asset maken die het Live Archief voor het programma bevat. Als u CENC met multi-DRM-beveiliging van de live-inhoud wilt bieden, moet u dezelfde instelling/verwerking Toep assen op de Asset alsof het een VOD-activum was voordat u het programma start.
 
-### <a name="what-about-license-servers-outside-media-services"></a>Hoe zit het met licentieservers buiten Media Services?
-Vaak hebben klanten geïnvesteerd in een licentieserverfarm in hun eigen datacenter of een bedrijf dat wordt gehost door DRM-serviceproviders. Met Media Services Content Protection u in hybride modus werken. Inhoud kan worden gehost en dynamisch worden beveiligd in Media Services, terwijl DRM-licenties worden geleverd door servers buiten Media Services. Houd in dit geval rekening met de volgende wijzigingen:
+### <a name="what-about-license-servers-outside-media-services"></a>Hoe zit het met licentie servers buiten Media Services?
+Klanten die in een licentie server farm zijn belegd, zijn vaak opgenomen in hun eigen data centrum of op een host die wordt gehost door DRM-service providers. Met Media Services Content Protection kunt u in de hybride modus uitvoeren. Inhoud kan worden gehost en dynamisch worden beveiligd in Media Services, terwijl DRM-licenties worden geleverd door servers buiten Media Services. In dit geval moet u rekening houden met de volgende wijzigingen:
 
-* STS moet tokens uitgeven die acceptabel zijn en kunnen worden geverifieerd door de licentieserverfarm. De Widevine-licentieservers van Axinom vereisen bijvoorbeeld een specifieke JWT die een rechtenbericht bevat. Daarom moet je een STS hebben om zo'n JWT uit te geven. Ga voor informatie over dit type implementatie naar het [Azure Documentation Center](https://azure.microsoft.com/documentation/) en zie [Axinom gebruiken om Widevine-licenties te leveren aan Azure Media Services.](media-services-axinom-integration.md)
-* U hoeft geen licentieleveringsservice (ContentKeyAuthorizationPolicy) meer te configureren in Media Services. U moet url's voor licentieverwerving (voor PlayReady, Widevine en FairPlay) opgeven wanneer u AssetDeliveryPolicy configureert om CENC in te stellen met multi-DRM.
+* STS moet tokens uitgeven die acceptabel zijn en kunnen worden geverifieerd door de licentie server-farm. De Widevine-licentie servers die door Axinom worden verschaft, vereisen bijvoorbeeld een specifieke JWT die een toeslag bericht bevat. Daarom moet u een STS hebben om een dergelijke JWT te kunnen uitgeven. Voor informatie over dit type implementatie gaat u naar het [Azure-documentatie centrum](https://azure.microsoft.com/documentation/) en raadpleegt u [Axinom gebruiken om Widevine-licenties te leveren aan Azure Media Services](media-services-axinom-integration.md).
+* Het is niet meer nodig om de ContentKeyAuthorizationPolicy (License Delivery Service) in Media Services te configureren. U moet de Url's voor de aangeschafte licenties (voor PlayReady, Widevine en FairPlay) opgeven wanneer u AssetDeliveryPolicy configureert om CENC met multi-DRM in te stellen.
 
-### <a name="what-if-i-want-to-use-a-custom-sts"></a>Wat als ik een aangepaste STS wil gebruiken?
-Een klant kan ervoor kiezen om een aangepaste STS te gebruiken om JWT's te leveren. Redenen zijn onder meer:
+### <a name="what-if-i-want-to-use-a-custom-sts"></a>Wat moet ik doen als ik een aangepaste STS wil gebruiken?
+Een klant kan ervoor kiezen om een aangepaste STS te gebruiken om JWTs te bieden. Redenen zijn onder andere:
 
-* De IDP die door de klant wordt gebruikt, ondersteunt STS niet. In dit geval kan een aangepaste STS een optie zijn.
-* De klant heeft mogelijk een flexibelere of strengere controle nodig om STS te integreren met het factureringssysteem voor abonnees van de klant. Een MVPD-operator kan bijvoorbeeld meerdere OTT-abonneepakketten aanbieden, zoals premium, basic en sport. De operator kan de claims in een token willen koppelen aan het pakket van een abonnee, zodat alleen de inhoud in een specifiek pakket beschikbaar wordt gesteld. In dit geval biedt een aangepaste STS de nodige flexibiliteit en controle.
+* De IDP die door de klant wordt gebruikt, biedt geen ondersteuning voor STS. In dit geval kan een aangepaste STS een optie zijn.
+* De klant heeft mogelijk meer flexibeler of nauw keurigere controle over het integreren van STS met het facturerings systeem voor abonnees van de klant. Een MVPD-operator kan bijvoorbeeld meerdere OTT-abonnee pakketten aanbieden, zoals Premium, Basic en sport. De operator zou mogelijk moeten overeenkomen met de claims in een token met het pakket van een abonnee, zodat alleen de inhoud van een specifiek pakket beschikbaar wordt gemaakt. In dit geval biedt een aangepaste STS de benodigde flexibiliteit en controle.
 
-Wanneer u een aangepaste STS gebruikt, moeten twee wijzigingen worden aangebracht:
+Wanneer u een aangepaste STS gebruikt, moeten er twee wijzigingen worden aangebracht:
 
-* Wanneer u de licentieleveringsservice voor een asset configureert, moet u de beveiligingssleutel opgeven die wordt gebruikt voor verificatie door de aangepaste STS in plaats van de huidige sleutel van Azure AD. (Meer details volgen.) 
-* Wanneer een JTW-token wordt gegenereerd, wordt een beveiligingssleutel opgegeven in plaats van de privésleutel van het huidige X509-certificaat in Azure AD.
+* Wanneer u de service voor het leveren van licenties voor een Asset configureert, moet u de beveiligings sleutel opgeven die wordt gebruikt voor verificatie door de aangepaste STS in plaats van de huidige sleutel van Azure AD. (Meer details volgen.) 
+* Wanneer er een JTW-token wordt gegenereerd, wordt een beveiligings sleutel opgegeven in plaats van de persoonlijke sleutel van het huidige x509-certificaat in azure AD.
 
-Er zijn twee soorten beveiligingssleutels:
+Er zijn twee soorten beveiligings sleutels:
 
-* Symmetrische sleutel: Dezelfde sleutel wordt gebruikt om een JWT te genereren en te verifiëren.
-* Asymmetrische sleutel: Een publiek-private sleutelpaar in een X509-certificaat wordt gebruikt met een privésleutel om een JWT te versleutelen/genereren en met de openbare sleutel om het token te verifiëren.
+* Symmetrische sleutel: dezelfde sleutel wordt gebruikt om een JWT te genereren en te verifiëren.
+* Asymmetrische sleutel: een combi natie van open bare en persoonlijke sleutels in een x509-certificaat wordt gebruikt met een persoonlijke sleutel voor het versleutelen/genereren van een JWT en met de open bare sleutel om het token te verifiëren.
 
 > [!NOTE]
-> Als u .NET Framework/C# als ontwikkelingsplatform gebruikt, moet het X509-certificaat dat wordt gebruikt voor een asymmetrische beveiligingssleutel ten minste 2048 een sleutellengte hebben. Dit is een vereiste van het klasse System.IdentityModel.Tokens.X509AsymmetricSecurityKey in .NET Framework. Anders wordt de volgende uitzondering gegooid:
+> Als u .NET Framework/C# als uw ontwikkel platform gebruikt, moet het x509-certificaat dat wordt gebruikt voor een asymmetrische beveiligings sleutel, een sleutel lengte hebben van ten minste 2048. Dit is een vereiste van de klasse System. Identity model. tokens. X509AsymmetricSecurityKey in .NET Framework. Anders wordt de volgende uitzonde ring gegenereerd:
 > 
-> IDX10630: Het 'System.IdentityModel.Tokens.X509AsymmetricSecurityKey' voor ondertekening mag niet kleiner zijn dan '2048' bits.
+> IDX10630: de ' System. Identity model. tokens. X509AsymmetricSecurityKey voor ondertekening mag niet kleiner zijn dan ' 2048 ' bits.
 
 ## <a name="the-completed-system-and-test"></a>Het voltooide systeem en de test
-In deze sectie vindt u de volgende scenario's in het voltooide end-to-end-systeem, zodat u een basisbeeld van het gedrag hebben voordat u een aanmeldingsaccount krijgt:
+In deze sectie worden de volgende scenario's in het voltooide end-to-end-systeem door lopen, zodat u een basis afbeelding van het gedrag kunt hebben voordat u een aanmeldings account krijgt:
 
 * Als u een niet-geïntegreerd scenario nodig hebt:
 
-    * Voor video-assets die worden gehost in Media Services die onbeschermd of DRM-beveiligd zijn, maar zonder tokenverificatie (het uitgeven van een licentie aan degene die daarom heeft gevraagd), u deze testen zonder u aan te melden. Schakel over naar HTTP als uw videostreaming via HTTP is.
+    * Voor video-assets die worden gehost in Media Services die niet zijn beveiligd of die zijn beveiligd met DRM, maar zonder token verificatie (waarbij een licentie wordt verleend aan wie het is aangevraagd), kunt u deze testen zonder u aan te melden. Schakel over naar HTTP als uw video-streaming via HTTP is.
 
 * Als u een end-to-end geïntegreerd scenario nodig hebt:
 
-    * Voor videoassets onder dynamische DRM-beveiliging in Media Services, waarbij de tokenverificatie en JWT zijn gegenereerd door Azure AD, moet u zich aanmelden.
+    * Voor video-assets onder dynamische DRM-beveiliging in Media Services, waarbij de token verificatie en JWT worden gegenereerd door Azure AD, moet u zich aanmelden.
 
-Voor de speler webapplicatie en de aanmelding, zie [deze website](https://openidconnectweb.azurewebsites.net/).
+Zie [deze website](https://openidconnectweb.azurewebsites.net/)voor de webtoepassing van de speler en de aanmelding.
 
 ### <a name="user-sign-in"></a>Gebruikersaanmelding
-Om het end-to-end geïntegreerde DRM-systeem te testen, moet u een account hebben gemaakt of toegevoegd.
+Als u het end-to-end geïntegreerde DRM-systeem wilt testen, moet u een account hebben gemaakt of toegevoegd.
 
-Welke rekening?
+Welk account?
 
-Hoewel Azure oorspronkelijk alleen toegang toestond voor Gebruikers van Microsoft-accountgebruikers, is toegang nu toegestaan door gebruikers van beide systemen. Alle Azure-eigenschappen vertrouwen nu op Azure AD voor verificatie en Azure AD verifieert organisatiegebruikers. Er is een federatierelatie gemaakt waarin Azure AD het consumentenidentiteitssysteem van het Microsoft-account vertrouwt om gebruikers van consumenten te verifiëren. Als gevolg hiervan kan Azure AD microsoft-accounts en native Azure AD-accounts verifiëren.
+Hoewel Azure oorspronkelijk alleen toegang heeft toegestaan door Microsoft-account gebruikers, is toegang nu toegestaan door gebruikers van beide systemen. Alle Azure-eigenschappen vertrouwen nu Azure AD voor verificatie en Azure AD verifieert organisatorische gebruikers. Er is een Federatie relatie gemaakt waarbij Azure AD het Microsoft-account Consumer-identiteits systeem vertrouwt om consumenten gebruikers te verifiëren. Als gevolg hiervan kan Azure AD gast-micro soft-accounts en systeem eigen Azure AD-accounts verifiëren.
 
-Omdat Azure AD het Microsoft-accountdomein vertrouwt, u alle accounts van een van de volgende domeinen toevoegen aan de aangepaste Azure AD-tenant en het account gebruiken om u aan te melden:
+Omdat Azure AD het Microsoft-account domein vertrouwt, kunt u accounts uit de volgende domeinen toevoegen aan de aangepaste Azure AD-Tenant en het account gebruiken om u aan te melden:
 
 | **Domeinnaam** | **Domain** |
 | --- | --- |
-| **Aangepast Azure AD-tenantdomein** |somename.onmicrosoft.com |
-| **Bedrijfsdomein** |microsoft.com |
-| **Microsoft-accountdomein** |outlook.com, live.com, hotmail.com |
+| **Aangepast Azure AD-Tenant domein** |somename.onmicrosoft.com |
+| **Bedrijfs domein** |microsoft.com |
+| **Microsoft-account domein** |outlook.com, live.com, hotmail.com |
 
-U contact opnemen met een van de auteurs om een account voor u te laten maken of toevoegen.
+U kunt contact opnemen met een van de auteurs om een account voor u te maken of toe te voegen.
 
-De volgende schermafbeeldingen tonen verschillende aanmeldingspagina's die door verschillende domeinaccounts worden gebruikt:
+In de volgende scherm afbeeldingen worden verschillende aanmeldings pagina's weer gegeven die worden gebruikt door verschillende domein accounts:
 
-**Aangepast Azure AD-tenantdomeinaccount:** de aangepaste aanmeldingspagina van het aangepaste Azure AD-tenantdomein.
+**Aangepast domein account voor Azure AD-Tenant**: de aangepaste aanmeldings pagina van het aangepaste domein van de Azure AD-Tenant.
 
-![Aangepast Azure AD-tenantdomeinaccount](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
+![Aangepast Azure AD-Tenant domein account](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
 
-**Microsoft-domeinaccount met smartcard:** de aanmeldingspagina die is aangepast door Microsoft corporate IT met tweestapsverificatie.
+**Micro soft-domein account met Smart Card**: de aanmeldings pagina die door micro soft wordt aangepast met twee ledige verificatie.
 
-![Aangepast Azure AD-tenantdomeinaccount](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
+![Aangepast Azure AD-Tenant domein account](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
 
-**Microsoft-account**: de aanmeldingspagina van het Microsoft-account voor consumenten.
+**Microsoft-account**: de aanmeldings pagina van de Microsoft-account voor consumenten.
 
-![Aangepast Azure AD-tenantdomeinaccount](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain3.png)
+![Aangepast Azure AD-Tenant domein account](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain3.png)
 
-### <a name="use-encrypted-media-extensions-for-playready"></a>Versleutelde media-extensies gebruiken voor PlayReady
-In een moderne browser met EME-ondersteuning (Encrypted Media Extensions) voor PlayReady, zoals Internet Explorer 11 op Windows 8.1 of hoger en Microsoft Edge-browser op Windows 10, is PlayReady de onderliggende DRM voor EME.
+### <a name="use-encrypted-media-extensions-for-playready"></a>Versleutelde Media-extensies gebruiken voor PlayReady
+In een moderne browser met versleutelde Media-extensies (EME) voor PlayReady-ondersteuning, zoals Internet Explorer 11 op Windows 8,1 of hoger en micro soft Edge-browser op Windows 10, is PlayReady het onderliggende DRM voor EME.
 
 ![EME gebruiken voor PlayReady](./media/media-services-cenc-with-multidrm-access-control/media-services-eme-for-playready1.png)
 
-Het gebied voor donkere spelers is omdat PlayReady-beveiliging voorkomt dat u een schermopname van beveiligde video maakt.
+Het donkere gebied van de speler is omdat PlayReady Protection voor komt dat u een scherm opname van beveiligde video maakt.
 
-De volgende screenshot toont de plug-ins voor spelers en Microsoft Security Essentials (MSE)/EME-ondersteuning:
+De volgende scherm afbeelding toont de invoeg toepassingen van de speler en de ondersteuning van MSE (micro soft Security Essentials)/EME:
 
-![Plug-ins voor spelers voor PlayReady](./media/media-services-cenc-with-multidrm-access-control/media-services-eme-for-playready2.png)
+![Player-invoeg toepassingen voor PlayReady](./media/media-services-cenc-with-multidrm-access-control/media-services-eme-for-playready2.png)
 
-Met EME in Microsoft Edge en Internet Explorer 11 op Windows 10 kan [PlayReady SL3000](https://www.microsoft.com/playready/features/EnhancedContentProtection.aspx/) worden aangeroepen op Windows 10-apparaten die het ondersteunen. PlayReady SL3000 ontgrendelt de stroom van verbeterde premium content (4K, HDR) en nieuwe content delivery modellen (voor verbeterde content).
+EME in micro soft Edge en Internet Explorer 11 op Windows 10 toestaan [PLAYREADY SL3000](https://www.microsoft.com/playready/features/EnhancedContentProtection.aspx/) te worden aangeroepen op Windows 10-apparaten die dit ondersteunen. PlayReady SL3000 ontgrendelt de stroom van uitgebreide Premium-inhoud (4.000, HDR) en nieuwe inhouds leverings modellen (voor uitgebreide inhoud).
 
-Om zich te concentreren op de Windows-apparaten, PlayReady is de enige DRM in de hardware beschikbaar op Windows-apparaten (PlayReady SL3000). Een streamingdienst kan PlayReady via EME of via een Universal Windows Platform-toepassing gebruiken en een hogere videokwaliteit bieden door PlayReady SL3000 te gebruiken dan een andere DRM. Inhoud tot 2K stroomt meestal via Chrome of Firefox en inhoud tot 4K loopt via Microsoft Edge/Internet Explorer 11 of een Universele Windows Platform-toepassing op hetzelfde apparaat. Het bedrag is afhankelijk van service-instellingen en implementatie.
+PlayReady is het enige DRM-apparaat in de hardware die beschikbaar is op Windows-apparaten (PlayReady SL3000) om zich te richten op de Windows-apparaten. Een streaming-service kan PlayReady gebruiken via EME of via een Universeel Windows-platform toepassing en een hogere video kwaliteit bieden met PlayReady SL3000 dan een ander DRM. Inhoud van Maxi maal 2.000 stromen via Chrome of Firefox, en inhoud tot 4.000 stromen via micro soft Edge/Internet Explorer 11 of een Universeel Windows-platform-toepassing op hetzelfde apparaat. De hoeveelheid is afhankelijk van de service-instellingen en-implementatie.
 
 #### <a name="use-eme-for-widevine"></a>EME gebruiken voor Widevine
-In een moderne browser met EME/Widevine-ondersteuning, zoals Chrome 41+ op Windows 10, Windows 8.1, Mac OSX Yosemite en Chrome op Android 4.4.4, is Google Widevine de DRM achter EME.
+In een moderne browser met ondersteuning voor EME/Widevine, zoals Chrome 41 + op Windows 10, Windows 8,1, Mac OSX Yosemite en Chrome op Android 4.4.4, is Google Widevine de DRM achter EME.
 
 ![EME gebruiken voor Widevine](./media/media-services-cenc-with-multidrm-access-control/media-services-eme-for-widevine1.png)
 
-Widevine weerhoudt u er niet van om een schermopname van beveiligde video te maken.
+Widevine voor komt niet dat u een scherm opname van beveiligde video maakt.
 
-![Plug-ins voor spelers voor Widevine](./media/media-services-cenc-with-multidrm-access-control/media-services-eme-for-widevine2.png)
+![Player-invoeg toepassingen voor Widevine](./media/media-services-cenc-with-multidrm-access-control/media-services-eme-for-widevine2.png)
 
-### <a name="unentitled-users"></a>Gebruikers zonder recht
-Als een gebruiker geen lid is van de groep 'Gebruikers recht', voldoet de gebruiker niet aan de controle van het recht. De multi-DRM licentie service weigert vervolgens om de gevraagde licentie uit te geven zoals getoond. De gedetailleerde beschrijving is "License acquire failed", wat is ontworpen.
+### <a name="unentitled-users"></a>Gebruikers onrechtden
+Als een gebruiker geen lid is van de groep getiteld gebruikers, wordt de controle niet door gegeven aan de gebruiker. De multi-DRM-licentie service weigert vervolgens de aangevraagde licentie te verlenen, zoals wordt weer gegeven. De gedetailleerde beschrijving is ' licentie ophalen mislukt ', zoals is ontworpen.
 
-![Gebruikers zonder recht](./media/media-services-cenc-with-multidrm-access-control/media-services-unentitledusers.png)
+![Gebruikers onrechtden](./media/media-services-cenc-with-multidrm-access-control/media-services-unentitledusers.png)
 
-### <a name="run-a-custom-security-token-service"></a>Een aangepaste beveiligingstokenservice uitvoeren
-Als u een aangepaste STS uitvoert, wordt de JWT uitgegeven door de aangepaste STS met behulp van een symmetrische of een asymmetrische toets.
+### <a name="run-a-custom-security-token-service"></a>Een aangepaste beveiligings token service uitvoeren
+Als u een aangepaste STS uitvoert, wordt de JWT door de aangepaste STS uitgegeven door een symmetrische of asymmetrische sleutel te gebruiken.
 
-In de volgende schermafbeelding wordt een scenario weergegeven waarin een symmetrische sleutel wordt gebruikt (met Chrome):
+De volgende scherm afbeelding toont een scenario dat gebruikmaakt van een symmetrische sleutel (met Chrome):
 
-![Aangepaste STS met een symmetrische toets](./media/media-services-cenc-with-multidrm-access-control/media-services-running-sts1.png)
+![Aangepaste STS met een symmetrische sleutel](./media/media-services-cenc-with-multidrm-access-control/media-services-running-sts1.png)
 
-De volgende schermafbeelding toont een scenario dat een asymmetrische sleutel gebruikt via een X509-certificaat (met behulp van een moderne Microsoft-browser):
+De volgende scherm afbeelding toont een scenario dat gebruikmaakt van een asymmetrische sleutel via een x509-certificaat (met behulp van een micro soft moderne browser):
 
-![Aangepaste STS met een asymmetrische toets](./media/media-services-cenc-with-multidrm-access-control/media-services-running-sts2.png)
+![Aangepaste STS met een asymmetrische sleutel](./media/media-services-cenc-with-multidrm-access-control/media-services-running-sts2.png)
 
-In beide voorgaande gevallen blijft gebruikersverificatie hetzelfde. Het gebeurt via Azure AD. Het enige verschil is dat JWT's worden uitgegeven door de aangepaste STS in plaats van Azure AD. Wanneer u dynamische CENC-beveiliging configureert, geeft de licentieservicebeperking het type JWT aan, een symmetrische of een asymmetrische sleutel.
+In beide gevallen blijft de verificatie van de gebruiker hetzelfde. Het wordt uitgevoerd via Azure AD. Het enige verschil is dat JWTs worden uitgegeven door de aangepaste STS in plaats van met Azure AD. Wanneer u dynamische CENC-beveiliging configureert, wordt door de licentie delivery service-beperking het type JWT opgegeven, ofwel een symmetrische of een asymmetrische sleutel.
 
 ## <a name="summary"></a>Samenvatting
 
-Dit document besprak CENC met multi-native DRM en toegangscontrole via tokenverificatie, het ontwerp en de implementatie ervan met azure, mediaservices en mediaspeler.
+In dit document wordt CENC met multi-native DRM-en toegangs beheer via token verificatie, het ontwerp en de implementatie ervan besproken met behulp van Azure, Media Services en Media Player.
 
-* Er werd een referentieontwerp gepresenteerd dat alle benodigde componenten bevat in een DRM/CENC-subsysteem.
-* Er is een referentie-implementatie gepresenteerd op Azure, Media Services en Media Player.
-* Enkele onderwerpen die direct betrokken zijn bij het ontwerp en de uitvoering werden ook besproken.
+* Er is een referentie ontwerp weer gegeven dat alle benodigde onderdelen bevat in een DRM-CENC-subsysteem.
+* Er is een referentie-implementatie aangeboden op Azure, Media Services en Media Player.
+* Sommige onderwerpen die rechtstreeks betrokken zijn bij het ontwerp en de implementatie, worden ook besproken.
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en onderworpen aan de servicevoorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

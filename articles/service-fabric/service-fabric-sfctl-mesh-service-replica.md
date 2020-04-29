@@ -1,73 +1,73 @@
 ---
-title: Azure Service Fabric CLI- sfctl mesh-servicereplica
-description: Meer informatie over sfctl, de opdrachtregelinterface van Azure Service Fabric. Bevat een lijst met opdrachten voor het verkrijgen van replicagegevens voor een toepassingsbronnen.
+title: Azure Service Fabric CLI-sfctl-mesh service-replica
+description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het ophalen van replica Details voor een toepassings bronnen.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: ac604ec0a854964746ef34627b054e853662265f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76905954"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh service-replica
-Download replicadetails en lijstreplica's van een bepaalde service in een toepassingsbron.
+Replica Details ophalen en replica's van een bepaalde service in een toepassings bron weer geven.
 
 ## <a name="commands"></a>Opdrachten
 
 |Opdracht|Beschrijving|
 | --- | --- |
-| list | Hiermee worden alle replica's van een service weergegeven. |
-| weergeven | Krijgt de gegeven replica van de service van een toepassing. |
+| list | Een lijst met alle replica's van een service. |
+| weergeven | Hiermee wordt de opgegeven replica van de service van een toepassing opgehaald. |
 
-## <a name="sfctl-mesh-service-replica-list"></a>sfctl mesh service-replica lijst
-Hiermee worden alle replica's van een service weergegeven.
+## <a name="sfctl-mesh-service-replica-list"></a>sfctl-mesh service-replica lijst
+Een lijst met alle replica's van een service.
 
-Krijgt de informatie over alle replica's van een service. De informatie bevat de beschrijving en andere eigenschappen van de servicereplica.
-
-### <a name="arguments"></a>Argumenten
-
-|Argument|Beschrijving|
-| --- | --- |
-| --app-naam --applicatie-naam [Vereist] | De naam van de toepassing. |
-| --servicenaam [Vereist] | De naam van de service. |
-
-### <a name="global-arguments"></a>Globale argumenten
-
-|Argument|Beschrijving|
-| --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
-
-## <a name="sfctl-mesh-service-replica-show"></a>sfctl mesh service-replica show
-Krijgt de gegeven replica van de service van een toepassing.
-
-Hiermee krijgt u de informatie over de servicereplica met de voornaam. De informatie bevat de beschrijving en andere eigenschappen van de servicereplica.
+Hiermee wordt de informatie opgehaald over alle replica's van een service. De informatie bevat de beschrijving en andere eigenschappen van de service replica.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --app-naam --applicatie-naam [Vereist] | De naam van de toepassing. |
-| --naam -n [Vereist] | De naam van de servicereplica. |
-| --servicenaam [Vereist] | De naam van de service. |
+| --app-naam--Application name [required] | De naam van de toepassing. |
+| --Service-naam [vereist] | De naam van de service. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
+
+## <a name="sfctl-mesh-service-replica-show"></a>sfctl-mesh service-replica show
+Hiermee wordt de opgegeven replica van de service van een toepassing opgehaald.
+
+Hiermee wordt de informatie opgehaald over de service replica met de opgegeven naam. De informatie bevat de beschrijving en andere eigenschappen van de service replica.
+
+### <a name="arguments"></a>Argumenten
+
+|Argument|Beschrijving|
+| --- | --- |
+| --app-naam--Application name [required] | De naam van de toepassing. |
+| --naam-n [vereist] | De naam van de service replica. |
+| --Service-naam [vereist] | De naam van de service. |
+
+### <a name="global-arguments"></a>Algemene argumenten
+
+|Argument|Beschrijving|
+| --- | --- |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Stel de SERVICE Fabric CLI [in.](service-fabric-cli.md)
-- Meer informatie over het gebruik van de CLI van de ServiceFabric met behulp van de [voorbeeldscripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Stel](service-fabric-cli.md) de service Fabric cli in.
+- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).

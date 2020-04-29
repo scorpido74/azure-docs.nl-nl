@@ -1,7 +1,7 @@
 ---
-title: CloudSimple-activiteitenbeheer
+title: Beheer van CloudSimple-activiteiten
 titleSuffix: Azure VMware Solution by CloudSimple
-description: Beschrijft activiteitsconcepten op VMware Solution by CloudSimple
+description: Hierin worden de activiteiten concepten van de VMware-oplossing beschreven door CloudSimple
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/30/2019
@@ -10,31 +10,31 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 985fcc0aa99723fde5e0c11babe3777c31cbd4c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77025092"
 ---
-# <a name="activity-management-overview"></a>Overzicht van activiteitenbeheer
+# <a name="activity-management-overview"></a>Overzicht activiteiten beheer
 
-CloudSimple houdt alle activiteiten bij die van invloed kunnen zijn op de werking van uw Private Cloud-omgeving. Activiteiten omvatten waarschuwingen, gebeurtenissen, taken en controleactiviteiten. Op [de pagina's Activiteit](monitor-activity.md) vat u alle huidige activiteit samen en u inzoomen op meer informatie.
+CloudSimple houdt alle activiteiten bij die van invloed kunnen zijn op de werking van uw Privécloud. Activiteiten zijn waarschuwingen, gebeurtenissen, taken en controle activiteiten. Op de [activiteiten pagina's](monitor-activity.md) wordt een overzicht gegeven van alle huidige activiteiten en kunt u inzoomen op aanvullende informatie.
 
 ## <a name="events"></a>Gebeurtenissen
 
-Gebeurtenissen volgen gebruikers- en systeemactiviteiten op de CloudSimple-portal. Gebeurtenissen tonen de activiteit die is gekoppeld aan een specifieke resource en de ernst van de impact.  U de gebeurtenissen bekijken via de CloudSimple-portal.
+Gebeurtenissen volgen gebruikers-en systeem activiteiten in de CloudSimple-Portal. Gebeurtenissen tonen de activiteit die is gekoppeld aan een specifieke resource en de ernst van de impact.  U kunt de gebeurtenissen in de CloudSimple-Portal bekijken.
 
 ## <a name="alerts"></a>Waarschuwingen
 
-Waarschuwingen zijn meldingen van significante activiteiten in uw CloudSimple-omgeving. Gebeurtenissen die van invloed zijn op facturering of gebruikerstoegang worden weergegeven als waarschuwingen.  U waarschuwingen van de CloudSimple-portal bevestigen.
+Waarschuwingen zijn meldingen van belang rijke activiteiten in uw CloudSimple-omgeving. Gebeurtenissen die van invloed zijn op facturering of gebruikers toegang, worden weer gegeven als waarschuwingen.  U kunt waarschuwingen in de CloudSimple-Portal bevestigen.
 
 ## <a name="tasks"></a>Taken
 
-Taken houden elke gebruikersbewerking bij die meer dan 30 seconden in beslag neemt. U de voortgang van een taak volgen via de CloudSimple-portal.  Voor voltooide taken bevat de informatie de totale tijd voor voltooiing.
+Taken volgen een wille keurige gebruikers bewerking die meer dan 30 seconden in beslag neemt. U kunt de voortgang van een taak in de CloudSimple-Portal bewaken.  Voor voltooide taken bevat de informatie de totale tijd voor het volt ooien van de gegevens.
 
 ## <a name="audit"></a>Controleren
 
-Controlelogboeken houden de gebruikersbewerkingen bij. Controlelogboeken bevatten de parameters die door de gebruiker voor de bewerking zijn opgegeven.  U controlelogboeken gebruiken om de gebruikersactiviteit voor alle gebruikers te controleren.
+Controle logboeken houden gebruikers bewerkingen bij. Audit logboeken bevatten de para meters die door de gebruiker zijn opgegeven voor de bewerking.  U kunt controle Logboeken gebruiken om de gebruikers activiteit voor alle gebruikers te bewaken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

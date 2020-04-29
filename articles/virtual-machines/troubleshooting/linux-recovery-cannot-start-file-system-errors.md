@@ -1,6 +1,6 @@
 ---
-title: Problemen met het starten van Linux-vm's oplossen als gevolg van fouten in het bestandssysteem | Microsoft Documenten
-description: Legt uit waarom Linux VM niet kan starten en hoe het probleem op te lossen.
+title: Problemen met het starten van Linux VM oplossen vanwege bestandssysteem fouten | Microsoft Docs
+description: In dit artikel wordt uitgelegd waarom Linux VM niet kan worden gestart en hoe het probleem kan worden opgelost.
 services: virtual-machines-linux
 documentationcenter: ''
 author: v-miegge
@@ -15,19 +15,19 @@ ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
 ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76842398"
 ---
-# <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Problemen met het starten van Linux VM's oplossen als gevolg van fouten in het bestandssysteem
+# <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Problemen met het starten van een Linux-VM oplossen vanwege bestandssysteem fouten
 
-U geen verbinding maken met een Virtuele Azure Linux-machine (VM) met Behulp van Secure Shell (SSH). Wanneer u de functie Diagnostische gegevens opstart uitvoert op [azure-portal,](https://portal.azure.com/)ziet u logboekvermeldingen die lijken op de volgende voorbeelden.
+U kunt geen verbinding maken met een virtuele machine van Azure Linux met behulp van Secure Shell (SSH). Wanneer u de functie diagnostische gegevens over opstarten uitvoert op [Azure Portal](https://portal.azure.com/), worden logboek vermeldingen weer gegeven die lijken op de volgende voor beelden.
 
 ## <a name="examples"></a>Voorbeelden
 
-Hieronder volgen voorbeelden van mogelijke fouten.
+Hier volgen enkele voor beelden van mogelijke fouten.
 
 ### <a name="example-1"></a>Voorbeeld 1 
 
@@ -57,7 +57,7 @@ An error occurred while mounting /.
 
 ### <a name="example-4"></a>Voorbeeld 4 
 
-Dit voorbeeld wordt veroorzaakt door een schone fsck. In dit geval zijn er ook extra gegevensschijven gekoppeld aan de VM (/dev/sdc1 en /dev/sde1).
+Dit voor beeld wordt veroorzaakt door een schone fsck. In dit geval zijn er ook extra gegevens schijven gekoppeld aan de VM (/dev/sdc1 en/dev/sde1).
 
 ```
 Checking all file systems. 
@@ -69,13 +69,13 @@ Checking all file systems.
 /dev/sde1 : clean, 51/67043328 files, 4259482/268173037 blocks
 ```
 
-Dit probleem kan optreden als het bestandssysteem niet netjes is afgesloten of opslaggerelateerde problemen. De problemen omvatten hardware- of softwarefouten, problemen met stuurprogramma's of programma's, schrijffouten, enz. Het is altijd belangrijk om een back-up van kritieke gegevens te hebben. De hulpprogramma's die in dit artikel worden beschreven, kunnen helpen bij het herstellen van bestandssystemen, maar het is dat gegevensverlies nog steeds kan optreden.
+Dit probleem kan optreden als het bestands systeem niet op de juiste wijze is afgesloten of problemen met betrekking tot opslag. De problemen zijn onder andere hardware-of software fouten, problemen met stuur Programma's of Program ma's, schrijf fouten enz. Het is altijd belang rijk om een back-up te maken van belang rijke gegevens. De hulpprogram ma's die in dit artikel worden beschreven, kunnen helpen bij het herstellen van bestands systemen, maar het kan ook gebeuren dat er gegevens verloren gaan.
 
-Linux heeft verschillende bestandssysteemcheckers beschikbaar. De meest voorkomende voor de distributies in Azure zijn: [FSCK,](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific) [E2FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific), en [Xfs_repair](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair).
+Linux heeft verschillende bestandssysteem controles beschikbaar. De meest voorkomende distributies in azure zijn: [FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific), [E2FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)en [Xfs_repair](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair).
 
 ## <a name="resolution"></a>Oplossing
 
-Als u dit probleem wilt oplossen, start u de VM op in de noodmodus met behulp van de [seriële console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux) en gebruikt u dat gereedschap om het bestandssysteem te herstellen. Zie het gedeelte [Vm offline herstellen](#repair-the-vm-offline) van dit artikel als de seriële console niet is ingeschakeld op uw virtuele machine of niet werkt.
+Om dit probleem op te lossen, start u de virtuele machine op in de nood herstel modus met behulp van de [seriële console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux) en gebruikt u het hulp programma om het bestands systeem te herstellen. Als de seriële console niet is ingeschakeld op uw virtuele machine of niet werkt, raadpleegt u de sectie [de virtuele machine offline herstellen](#repair-the-vm-offline) in dit artikel.
 
 ## <a name="use-the-serial-console"></a>Via de seriële console
 
@@ -83,74 +83,74 @@ Als u dit probleem wilt oplossen, start u de VM op in de noodmodus met behulp va
 
    > [!Note]
    > Zie voor meer informatie over het gebruik van seriële console voor Linux:
-   > * [Seriële console gebruiken om toegang te krijgen tot GRUB en de modus voor één gebruiker](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
-   > * [Seriële console gebruiken voor SysRq- en NMI-gesprekken](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-nmi-sysrq)
+   > * [Seriële console gebruiken voor toegang tot de GRUB en de modus voor één gebruiker](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
+   > * [Seriële console gebruiken voor SysRq-en NMI-aanroepen](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-nmi-sysrq)
 
-2. Selecteer de knop Aan/uit-pictogram en selecteer VM opnieuw starten. (Als de seriële console niet is ingeschakeld of niet is verbonden, ziet u de knop niet.)
+2. Selecteer de knop aan/uit en selecteer vervolgens VM opnieuw opstarten. (Als de seriële console niet is ingeschakeld of niet is verbonden, ziet u de knop niet.)
 
    ![AFBEELDING](./media/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck/restart-vm.png)
 
-3. Start de VM in de noodmodus.
+3. Start de virtuele machine op in de nood herstel modus.
 
-4. Voer het wachtwoord van uw root-account in om u aan te melden bij de noodmodus.
+4. Voer het wacht woord van uw hoofd account in om u aan te melden bij de nood herstel modus.
 
-5. Gebruik xfs_repair met de optie -n om de fouten in het bestandssysteem te detecteren. In het volgende voorbeeld gaan we ervan uit dat de systeempartitie /dev/sda1 is. Vervang deze door de juiste waarde voor uw vm:
+5. Gebruik xfs_repair met de-n optie om de fouten in het bestands systeem te detecteren. In het volgende voor beeld wordt ervan uitgegaan dat de systeem partitie/dev/sda1. is Vervang deze door de juiste waarde voor uw virtuele machine:
 
    ```
    xfs_repair -n /dev/sda1
    ```
 
-6. Voer de volgende opdracht uit om het bestandssysteem te herstellen:
+6. Voer de volgende opdracht uit om het bestands systeem te herstellen:
 
    ```
    xfs_repair /dev/sda1
    ```
 
-7. Als u het foutbericht "FOUT: het bestandssysteem heeft waardevolle metadata wijzigingen in een logboek dat moet worden afgespeeld", maak een tijdelijke directory en monteer het bestandssysteem:
+7. Als het fout bericht ' fout: het bestands systeem heeft waardevolle wijzigingen in de meta gegevens in een logboek dat opnieuw moet worden afgespeeld ' wordt weer gegeven, maakt u een tijdelijke map en koppelt u het bestands systeem:
 
    ```
    mkdir /temp
    mount /dev/sda1 /temp
    ```
 
-8. Als de schijf niet wordt gemonteerd, voert u de opdracht xfs_repair uit met de optie -L (force log zeroing):
+8. Als de schijf niet kan worden gekoppeld, voert u de xfs_repair opdracht uit met de optie-L (geforceerde logboek registratie toestaan):
 
    ```
    xfs_repair /dev/sda1 -L
    ```
 
-9. Probeer vervolgens het bestandssysteem te monteren. Als de schijf is gemonteerd, ontvangt u de volgende uitvoer:
+9. Probeer vervolgens het bestands systeem te koppelen. Als de schijf is gekoppeld, wordt de volgende uitvoer weer gegeven:
  
    ```
    XFS (sda1): Mounting V1 Filesystem
    XFS (sda1): Ending clean mount
    ```
 
-10. Start de VM opnieuw en controleer of het probleem is opgelost.
+10. Start de virtuele machine opnieuw op en controleer of het probleem is opgelost.
 
     ```
     Reboot -f
     ```
 
-## <a name="repair-the-vm-offline"></a>De VM offline herstellen
+## <a name="repair-the-vm-offline"></a>De virtuele machine offline herstellen
 
-1. Bevestig de systeemschijf van de VM als gegevensschijf aan een herstel-vm (elke werkende Linux-VM). Hiervoor u [CLI-opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) gebruiken of de herstel-VM automatiseren met behulp van de [vm-reparatieopdrachten.](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)
+1. Koppel de systeem schijf van de virtuele machine als een gegevens schijf aan een herstel-VM (wille keurige werkende Linux-machine). U kunt hiervoor [cli-opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) gebruiken of u kunt de herstel-VM instellen met behulp van de opdrachten voor het herstellen van de [virtuele machine](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
 
-2. Zoek het schijflabel van de systeemschijf die u hebt aangesloten. In dit geval gaan we ervan uit dat het label van de systeemschijf die u hebt aangesloten /dev/sdc1 is. Vervang deze door de juiste waarde voor uw vm.
+2. Zoek het label station van de systeem schijf die u hebt gekoppeld. In dit geval gaan we ervan uit dat het label van de systeem schijf die u hebt gekoppeld,/dev/sdc1. is Vervang deze door de juiste waarde voor uw virtuele machine.
 
-3. Gebruik xfs_repair met de optie -n om de fouten in het bestandssysteem te detecteren.
+3. Gebruik xfs_repair met de-n optie om de fouten in het bestands systeem te detecteren.
 
    ```
    xfs_repair -n /dev/sdc1
    ```
 
-4. Voer de volgende opdracht uit om het bestandssysteem te herstellen:
+4. Voer de volgende opdracht uit om het bestands systeem te herstellen:
 
    ```
    xfs_repair /dev/sdc1
    ```
 
-5. Als u het foutbericht "FOUT: het bestandssysteem heeft waardevolle metadata wijzigingen in een logboek dat moet worden afgespeeld", maak een tijdelijke directory en monteer het bestandssysteem:
+5. Als het fout bericht ' fout: het bestands systeem heeft waardevolle wijzigingen in de meta gegevens in een logboek dat opnieuw moet worden afgespeeld ' wordt weer gegeven, maakt u een tijdelijke map en koppelt u het bestands systeem:
 
    ```
    mkdir /temp
@@ -158,13 +158,13 @@ Als u dit probleem wilt oplossen, start u de VM op in de noodmodus met behulp va
    mount /dev/sdc1 /temp
    ```
 
-   Als de schijf niet wordt gemonteerd, voert u de opdracht xfs_repair uit met de optie -L (force log zeroing):
+   Als de schijf niet kan worden gekoppeld, voert u de xfs_repair opdracht uit met de optie-L (geforceerde logboek registratie toestaan):
 
    ```
    xfs_repair /dev/sdc1 -L
    ```
 
-6. Probeer vervolgens het bestandssysteem te monteren. Als de schijf is gemonteerd, ontvangt u de volgende uitvoer:
+6. Probeer vervolgens het bestands systeem te koppelen. Als de schijf is gekoppeld, wordt de volgende uitvoer weer gegeven:
 
    ```
    XFS (sdc1): Mounting V1 Filesystem
@@ -172,12 +172,12 @@ Als u dit probleem wilt oplossen, start u de VM op in de noodmodus met behulp va
    XFS (sdc1): Ending clean mount
    ```
 
-7. Maak de oorspronkelijke virtuele harde schijf los en maak vervolgens een vm van de oorspronkelijke systeemschijf. Hiervoor u [CLI-opdrachten](troubleshoot-recovery-disks-linux.md) of de [VM-reparatieopdrachten](repair-linux-vm-using-azure-virtual-machine-repair-commands.md) gebruiken als u deze hebt gebruikt om de herstel-vm te maken.
+7. Ontkoppel de oorspronkelijke virtuele harde schijf en maak vervolgens een virtuele machine van de oorspronkelijke systeem schijf. Hiervoor kunt u [cli-opdrachten](troubleshoot-recovery-disks-linux.md) of de opdrachten voor het [herstellen](repair-linux-vm-using-azure-virtual-machine-repair-commands.md) van de VM gebruiken als u deze hebt gebruikt om de herstel-VM te maken.
 
 8. Controleer of het probleem is opgelost.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Problemen met een Linux-vm oplossen door de OS-schijf aan een herstelvm te koppelen met de Azure CLI 2.0](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [De portal gebruiken om een gegevensschijf aan een Linux-vm te koppelen](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal)
+* [Problemen met een virtuele Linux-machine oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met de Azure CLI 2,0](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
+* [Een gegevens schijf koppelen aan een virtuele Linux-machine met behulp van de portal](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal)
 

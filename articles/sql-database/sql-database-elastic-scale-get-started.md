@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met Elastic Database Tools
-description: Basisuitleg van de functie Elastic Database Tools van Azure SQL Database, inclusief een eenvoudig uit te voeren voorbeeld-app.
+title: Aan de slag met Elastic Database-Hulpprogram Ma's
+description: Basis uitleg van het onderdeel Elastic Database Hulpprogram Ma's van Azure SQL Database, met inbegrip van een eenvoudige voor beeld-app.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,53 +12,53 @@ ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 4577f611287a27366b1168e07565861c16fe0e38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76987019"
 ---
-# <a name="get-started-with-elastic-database-tools"></a>Aan de slag met Elastic Database Tools
+# <a name="get-started-with-elastic-database-tools"></a>Aan de slag met Elastic Database-Hulpprogram Ma's
 
-Dit document laat u kennismaken met de ontwikkelaarservaring voor de [elastische databaseclientbibliotheek](sql-database-elastic-database-client-library.md) door u te helpen een voorbeeld-app uit te voeren. De voorbeeld-app maakt een eenvoudige geshardtoepassing en verkent de belangrijkste mogelijkheden van de functie Elastic Database Tools van Azure SQL Database. Het richt zich op use cases voor [shard map management,](sql-database-elastic-scale-shard-map-management.md) [data-dependent routing,](sql-database-elastic-scale-data-dependent-routing.md)en [multi-shard querying](sql-database-elastic-scale-multishard-querying.md). De clientbibliotheek is beschikbaar voor .NET en Java. 
+Dit document bevat een inleiding tot de ervaring voor ontwikkel aars voor de [client bibliotheek voor Elastic data base](sql-database-elastic-database-client-library.md) door u te helpen een voor beeld-app uit te voeren. Met de voor beeld-app wordt een eenvoudige Shard-toepassing gemaakt en worden de belangrijkste functies van de functie Hulpprogram Ma's voor Elastic Database van Azure SQL Database verkend. Het richt zich op het gebruik van cases voor [Shard-toewijzings beheer](sql-database-elastic-scale-shard-map-management.md), [gegevens afhankelijke route ring](sql-database-elastic-scale-data-dependent-routing.md)en [query's met meerdere Shard](sql-database-elastic-scale-multishard-querying.md). De client bibliotheek is beschikbaar voor .NET en in Java. 
 
-## <a name="elastic-database-tools-for-java"></a>Elastic Database Tools voor Java
+## <a name="elastic-database-tools-for-java"></a>Elastic Database-Hulpprogram Ma's voor Java
 
 ### <a name="prerequisites"></a>Vereisten
 
-* Een Java Developer Kit (JDK), versie 1.8 of hoger
+* Een JDK (Java Developer Kit), versie 1,8 of hoger
 * [Maven](https://maven.apache.org/download.cgi)
-* Een SQL Database-server in Azure of een lokaal SQL Server-exemplaar
+* Een SQL Database-Server in azure of een lokale SQL Server instantie
 
-### <a name="download-and-run-the-sample-app"></a>De voorbeeld-app downloaden en uitvoeren
+### <a name="download-and-run-the-sample-app"></a>De voor beeld-app downloaden en uitvoeren
 
-Ga als volgt te werk om de JAR-bestanden te bouwen en aan de slag te gaan met het voorbeeldproject: 
-1. Kloon de [GitHub-repository](https://github.com/Microsoft/elastic-db-tools-for-java) met de clientbibliotheek, samen met de voorbeeld-app. 
+Ga als volgt te werk om de JAR-bestanden te maken en aan de slag te gaan met het voorbeeld project: 
+1. Kloon de [github-opslag plaats](https://github.com/Microsoft/elastic-db-tools-for-java) met de client bibliotheek, samen met de voor beeld-app. 
 
-2. Bewerk het bestand _./sample/src/main/resources/resource.properties_ om het volgende in te stellen:
+2. Bewerk het _./sample/src/main/resources/resource.Properties_ -bestand om het volgende in te stellen:
     * TEST_CONN_USER
     * TEST_CONN_PASSWORD
     * TEST_CONN_SERVER_NAME
 
-3. Voer de volgende opdracht uit om het voorbeeldproject te bouwen in de _./sample-map:_
+3. Als u het voorbeeld project wilt maken, voert u in de map _./sample_ de volgende opdracht uit:
 
     ```
     mvn install
     ```
     
-4. Voer de volgende opdracht uit om het voorbeeldproject te starten in de _./sample-map:_ 
+4. Als u het voorbeeld project wilt starten, voert u in de map _./sample_ de volgende opdracht uit: 
     
     ```
     mvn -q exec:java "-Dexec.mainClass=com.microsoft.azure.elasticdb.samples.elasticscalestarterkit.Program"
     ```
     
-5. Voor meer informatie over de mogelijkheden van de clientbibliotheek, experimenteert u met de verschillende opties. Ontdek gerust de code om meer te weten te komen over de implementatie van de voorbeeld-app.
+5. Voor meer informatie over de mogelijkheden van de client bibliotheek kunt u experimenteren met de verschillende opties. U kunt de code verkennen voor meer informatie over de implementatie van de voor beeld-app.
 
     ![Voortgang-java][5]
     
-Gefeliciteerd! U hebt uw eerste geshard toepassing met succes gebouwd en uitgevoerd met behulp van Elastic Database Tools op Azure SQL Database. Gebruik Visual Studio of SQL Server Management Studio om verbinding te maken met uw SQL-database en snel te kijken naar de scherven die het voorbeeld heeft gemaakt. U ziet nieuwe voorbeeldsharddatabases en een shardmapmanagerdatabase die het voorbeeld heeft gemaakt. 
+Gefeliciteerd! U hebt uw eerste Shard-toepassing gemaakt en uitgevoerd met behulp van Elastic Database-Hulpprogram Ma's op Azure SQL Database. Gebruik Visual Studio of SQL Server Management Studio om verbinding te maken met uw SQL database en Bekijk een kort overzicht van de Shards waarin het voor beeld is gemaakt. U ziet nieuwe voor beelden van Shard-data bases en een Shard map Manager-Data Base die het voor beeld heeft gemaakt. 
 
-Als u de clientbibliotheek wilt toevoegen aan uw eigen Maven-project, voegt u de volgende afhankelijkheid toe aan uw POM-bestand:
+Voeg de volgende afhankelijkheden toe aan uw POM-bestand om de client bibliotheek toe te voegen aan uw eigen Maven-project:
 
 ```xml
 <dependency> 
@@ -68,72 +68,72 @@ Als u de clientbibliotheek wilt toevoegen aan uw eigen Maven-project, voegt u de
 </dependency> 
 ```
 
-## <a name="elastic-database-tools-for-net"></a>Hulpmiddelen voor elastische database voor .NET
+## <a name="elastic-database-tools-for-net"></a>Elastic Database-Hulpprogram Ma's voor .NET
 
 ### <a name="prerequisites"></a>Vereisten
 
-* Visual Studio 2012 of hoger met C#. Download een gratis versie bij [Visual Studio Downloads](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
-* NuGet 2.7 of hoger. Zie [NuGet installeren voor](https://docs.nuget.org/docs/start-here/installing-nuget)de nieuwste versie.
+* Visual Studio 2012 of hoger met C#. Down load een gratis versie van [Visual Studio down loads](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
+* NuGet 2,7 of hoger. Zie [Installing NuGet](https://docs.nuget.org/docs/start-here/installing-nuget)om de nieuwste versie te downloaden.
 
-### <a name="download-and-run-the-sample-app"></a>De voorbeeld-app downloaden en uitvoeren
+### <a name="download-and-run-the-sample-app"></a>De voor beeld-app downloaden en uitvoeren
 
-Als u de bibliotheek wilt installeren, gaat u naar [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). De bibliotheek is geïnstalleerd met de voorbeeld-app die in de volgende sectie wordt beschreven.
+Als u de bibliotheek wilt installeren, gaat u naar [micro soft. Azure. SqlDatabase. ElasticScale. client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). De-bibliotheek wordt geïnstalleerd met de voor beeld-app die wordt beschreven in de volgende sectie.
 
-Voer de volgende stappen uit om het voorbeeld te downloaden en uit te voeren: 
+Voer de volgende stappen uit om het voor beeld te downloaden en uit te voeren: 
 
-1. Download het [voorbeeld Elastic DB Tools voor Azure SQL - Aan de slag.](https://github.com/Azure/elastic-db-tools) Rits het voorbeeld uit naar een locatie die u kiest.
+1. Down load de [Hulpprogram ma's voor elastische data bases voor Azure SQL-voor beeld aan](https://github.com/Azure/elastic-db-tools)de slag. Decomprimeer het voor beeld naar een locatie die u kiest.
 
-2. Als u een project wilt maken, opent u de *ElasticScaleStarterKit.sln-oplossing* vanuit de *C#-map.*
+2. Als u een project wilt maken, opent u de oplossing *ElasticScaleStarterKit. SLN* vanuit de *C#* -Directory.
 
-3. Open het *bestand app.config* in de oplossing voor het voorbeeldproject. Volg vervolgens de instructies in het bestand om de naam van uw Azure SQL Database-server en uw aanmeldingsgegevens (gebruikersnaam en wachtwoord) toe te voegen.
+3. Open het bestand *app. config* in de oplossing voor het voorbeeld project. Volg vervolgens de instructies in het bestand om de naam van uw Azure SQL Database-Server toe te voegen en uw aanmeldings gegevens (gebruikers naam en wacht woord).
 
-4. Maak de toepassing en voer deze uit. Wanneer u wordt gevraagd, schakelt u Visual Studio in om de NuGet-pakketten van de oplossing te herstellen. Met deze actie wordt de nieuwste versie van de elastische databaseclientbibliotheek van NuGet gedownload.
+4. Maak de toepassing en voer deze uit. Wanneer u hierom wordt gevraagd, schakelt u Visual Studio in om de NuGet-pakketten van de oplossing te herstellen. Met deze actie wordt de meest recente versie van de client bibliotheek voor Elastic data base gedownload van NuGet.
 
-5. Voor meer informatie over de mogelijkheden van de clientbibliotheek, experimenteert u met de verschillende opties. Let op de stappen die de toepassing neemt in de console-uitvoer en voel je vrij om de code achter de schermen te verkennen.
+5. Voor meer informatie over de mogelijkheden van de client bibliotheek kunt u experimenteren met de verschillende opties. Let op de stappen die de toepassing uitvoert in de-console-uitvoer en u kunt de code op de achtergrond verkennen.
    
     ![Voortgang][4]
 
-Gefeliciteerd! U hebt uw eerste geshard toepassing met succes gebouwd en uitgevoerd met Elastic Database Tools in SQL Database. Gebruik Visual Studio of SQL Server Management Studio om verbinding te maken met uw SQL-database en snel te kijken naar de scherven die het voorbeeld heeft gemaakt. U ziet nieuwe voorbeeldsharddatabases en een shardmapmanagerdatabase die het voorbeeld heeft gemaakt.
+Gefeliciteerd! U hebt uw eerste Shard-toepassing gemaakt en uitgevoerd met behulp van Elastic Database-Hulpprogram Ma's op SQL Database. Gebruik Visual Studio of SQL Server Management Studio om verbinding te maken met uw SQL database en Bekijk een kort overzicht van de Shards waarin het voor beeld is gemaakt. U ziet nieuwe voor beelden van Shard-data bases en een Shard map Manager-Data Base die het voor beeld heeft gemaakt.
 
 > [!IMPORTANT]
-> We raden u aan altijd de nieuwste versie van Management Studio te gebruiken, zodat u gesynchroniseerd blijft met updates voor Azure en SQL Database. [SQL Server Management Studio bijwerken](https://msdn.microsoft.com/library/mt238290.aspx).
+> U wordt aangeraden altijd de nieuwste versie van Management Studio te gebruiken, zodat u gesynchroniseerd blijft met updates voor Azure en SQL Database. [SQL Server Management Studio bijwerken](https://msdn.microsoft.com/library/mt238290.aspx).
 
-## <a name="key-pieces-of-the-code-sample"></a>Sleutelstukken van het codemonster
+## <a name="key-pieces-of-the-code-sample"></a>Belangrijkste onderdelen van het code voorbeeld
 
-* **Shards en shardkaarten beheren:** de code illustreert hoe u met shards, bereiken en toewijzingen werken in het *ShardManagementUtils.cs* bestand. Zie [Databases uitschalen met de shardmapmanager](https://go.microsoft.com/?linkid=9862595)voor meer informatie.  
+* **Shards-en Shard-kaarten beheren**: de code illustreert hoe u kunt werken met Shards, bereiken en toewijzingen in het *ShardManagementUtils.cs* -bestand. Zie [data bases schalen met Shard-toewijzings beheer](https://go.microsoft.com/?linkid=9862595)voor meer informatie.  
 
-* **Gegevensafhankelijke routering**: Het routeren van transacties naar de juiste shard wordt weergegeven in het *DataDependentRoutingSample.cs* bestand. Zie [Gegevensafhankelijke routering voor](https://go.microsoft.com/?linkid=9862596)meer informatie. 
+* **Gegevens afhankelijke route ring**: route ring van trans acties naar de juiste Shard wordt weer gegeven in het *DataDependentRoutingSample.cs* -bestand. Zie [gegevens afhankelijke route ring](https://go.microsoft.com/?linkid=9862596)voor meer informatie. 
 
-* **Query's over meerdere scherven:** Het opvragen over shards wordt geïllustreerd in het *MultiShardQuerySample.cs* bestand. Zie [Multishard query's voor](https://go.microsoft.com/?linkid=9862597)meer informatie.
+* **Query's uitvoeren via meerdere Shards**: het uitvoeren van query's op Shards wordt geïllustreerd in het *MultiShardQuerySample.cs* -bestand. Zie [multi-Shard query's](https://go.microsoft.com/?linkid=9862597)voor meer informatie.
 
-* **Lege scherven toevoegen:** Het iteratieve toevoegen van nieuwe lege scherven wordt uitgevoerd door de code in het *CreateShardSample.cs* bestand. Zie [Databases uitschalen met de shardmapmanager](https://go.microsoft.com/?linkid=9862595)voor meer informatie.
+* **Lege Shards toevoegen**: het iteratieve toevoegen van nieuwe lege Shards wordt uitgevoerd door de code in het *CreateShardSample.cs* -bestand. Zie [data bases schalen met Shard-toewijzings beheer](https://go.microsoft.com/?linkid=9862595)voor meer informatie.
 
-## <a name="other-elastic-scale-operations"></a>Andere elastische schaalbewerkingen
+## <a name="other-elastic-scale-operations"></a>Andere Elastic Scale-bewerkingen
 
-* **Een bestaande shard splitsen**: de mogelijkheid om shards te splitsen wordt geleverd door het gereedschap splitsen. Zie [Gegevens verplaatsen tussen geschaalde clouddatabases](sql-database-elastic-scale-overview-split-and-merge.md)voor meer informatie.
+* **Een bestaande Shard splitsen**: de mogelijkheid om Shards te splitsen, wordt bepaald door het hulp programma voor splitsen en samen voegen. Zie [gegevens verplaatsen tussen uitgeschaalde Cloud databases](sql-database-elastic-scale-overview-split-and-merge.md)voor meer informatie.
 
-* **Bestaande shards samenvoegen**: Shard-samenvoegingen worden ook uitgevoerd met het gereedschap splitsen samenvoegen. Zie [Gegevens verplaatsen tussen geschaalde clouddatabases](sql-database-elastic-scale-overview-split-and-merge.md)voor meer informatie.   
+* Het samen voegen van **bestaande Shards**: Shard-samen voegingen worden ook uitgevoerd met behulp van de functie voor splitsen en samen voegen. Zie [gegevens verplaatsen tussen uitgeschaalde Cloud databases](sql-database-elastic-scale-overview-split-and-merge.md)voor meer informatie.   
 
 ## <a name="cost"></a>Kosten
 
-De bibliotheek Elastic Database Tools is gratis. Wanneer u Hulpmiddelen voor elastic database gebruikt, hoeft u geen extra kosten te maken die hoger zijn dan de kosten van uw Azure-gebruik. 
+De bibliotheek met Elastic Database Hulpprogram Ma's is gratis. Wanneer u Elastic Database-Hulpprogram Ma's gebruikt, zijn er geen extra kosten in rekening gebracht dan de kosten van uw Azure-gebruik. 
 
-De voorbeeldtoepassing maakt bijvoorbeeld nieuwe databases. De kosten van deze mogelijkheid zijn afhankelijk van de SQL Database-editie die u kiest en het Azure-gebruik van uw toepassing.
+De voorbeeld toepassing maakt bijvoorbeeld nieuwe data bases. De kosten van deze mogelijkheid zijn afhankelijk van de SQL Database versie die u kiest en het Azure-gebruik van uw toepassing.
 
-Zie SQL [Database-prijsdetails voor](https://azure.microsoft.com/pricing/details/sql-database/)prijsinformatie.
+Zie [SQL database prijs](https://azure.microsoft.com/pricing/details/sql-database/)informatie voor prijzen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen voor meer informatie over hulpmiddelen voor elastic database:
+Raadpleeg de volgende artikelen voor meer informatie over Elastic Database-Hulpprogram Ma's:
 
-* Codevoorbeelden: 
-  * Elastic Database Tools ([.NET](https://github.com/Azure/elastic-db-tools), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
-  * [Elastic Database Tools voor Azure SQL - Entiteitframework-integratie](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
-  * [Shardelasticiteit op scriptcentrum](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
-* Blog: [Aankondiging elastic scale](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
-* Kanaal 9: [Overzichtsvideo Elastische schaal](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* Discussieforum: [Azure SQL Database-forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
-* Om prestaties te meten: [Prestatiemeteritems voor shardmapbeheer](sql-database-elastic-database-client-library.md)
+* Code voorbeelden: 
+  * Elastic Database-Hulpprogram Ma's ([.net](https://github.com/Azure/elastic-db-tools), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
+  * [Elastic Database-Hulpprogram Ma's voor integratie met Azure SQL-Entity Framework](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
+  * [Shard-elasticiteit op Script Center](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
+* Blog: [aankondiging voor Elastic Scale](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
+* Channel 9: [overzicht van video over Elastic Scale](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
+* Discussie forum: [Azure SQL database Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
+* Prestaties meten: [prestatie meter items voor Shard-toewijzings beheer](sql-database-elastic-database-client-library.md)
 
 <!--Anchors-->
 [The Elastic Scale Sample Application]: #The-Elastic-Scale-Sample-Application

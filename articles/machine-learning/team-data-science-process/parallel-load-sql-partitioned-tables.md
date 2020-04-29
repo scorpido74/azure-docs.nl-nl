@@ -1,6 +1,6 @@
 ---
-title: Parallel bulkgegevens importeren in SQL-partitietabellen - Team Data Science Process
-description: Partitietabellen bouwen voor snelle parallelle bulkimporteren van gegevens naar een SQL Server-database.
+title: Parallelle bulk gegevens importeren in SQL-partitie tabellen-team data Science process
+description: Bouw gepartitioneerde tabellen voor snelle, parallelle bulk import van gegevens in een SQL Server-Data Base.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,28 +12,28 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 673a801e218d055bf482dc97972e36584cddd402
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721333"
 ---
-# <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Tabellen bouwen en optimaliseren voor snelle parallelle invoer van gegevens in een SQL Server op een Azure VM
+# <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Tabellen maken en optimaliseren voor snelle parallelle invoer van gegevens in een SQL Server op een virtuele machine van Azure
 
-In dit artikel wordt beschreven hoe u partitietabellen maken voor het snel parallel importeren van gegevens naar een SQL Server-database. Voor het laden/overzetten van big data naar een SQL-database kan het importeren van gegevens naar de SQL DB en volgende query's worden verbeterd met behulp van *partitietabellen en weergaven.* 
+In dit artikel wordt beschreven hoe u gepartitioneerde tabellen maakt voor snelle, parallelle bulk import van gegevens in een SQL Server-Data Base. Voor het big data van het laden/overdragen naar een SQL database, kunnen gegevens worden geïmporteerd in de SQL-data base en de volgende query's worden verbeterd met behulp van *gepartitioneerde tabellen en weer gaven*. 
 
-## <a name="create-a-new-database-and-a-set-of-filegroups"></a>Een nieuwe database en een set bestandsgroepen maken
-* [Maak een nieuwe database,](https://technet.microsoft.com/library/ms176061.aspx)als deze nog niet bestaat.
-* Voeg databasebestandsgroepen toe aan de database, die de partitiefysieke bestanden bevat. 
-* Dit kan met [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) als er nieuw is of [ALS](https://msdn.microsoft.com/library/bb522682.aspx) de database al bestaat.
-* Voeg een of meer bestanden (indien nodig) toe aan elke databasebestandsgroep.
+## <a name="create-a-new-database-and-a-set-of-filegroups"></a>Een nieuwe data base en een set bestands groepen maken
+* [Maak een nieuwe data base](https://technet.microsoft.com/library/ms176061.aspx), als deze nog niet bestaat.
+* Voeg database bestands groepen toe aan de data base, die de gepartitioneerde fysieke bestanden bevat. 
+* U kunt dit doen met [Create Data](https://technet.microsoft.com/library/ms176061.aspx) Base als New of [ALTER data base](https://msdn.microsoft.com/library/bb522682.aspx) als de data base al bestaat.
+* Voeg een of meer bestanden (indien nodig) toe aan elke Data Base-bestands groep.
   
   > [!NOTE]
-  > Geef de doelbestandsgroep op, die gegevens voor deze partitie bevat en de fysieke databasebestandsnaam(s) waar de bestandsgroepgegevens worden opgeslagen.
+  > Geef de doel groep op. Deze bevat gegevens voor deze partitie en de fysieke database bestandsnaam (n) waarin de bestands groeps gegevens worden opgeslagen.
   > 
   > 
 
-In het volgende voorbeeld wordt een nieuwe database gemaakt met drie andere bestandsgroepen dan de primaire en logboekgroepen, met één fysiek bestand in elk bestand. De databasebestanden worden gemaakt in de standaard map SQL Server-gegevens, zoals geconfigureerd in de SQL Server-instantie. Zie [Bestandslocaties voor standaardinstellingen en benoemde exemplaren van SQL Server voor](https://msdn.microsoft.com/library/ms143547.aspx)meer informatie over de standaardbestandslocaties.
+In het volgende voor beeld wordt een nieuwe data base gemaakt met drie andere bestands groepen dan de primaire en logboek groepen, die één fysiek bestand bevatten. De database bestanden worden gemaakt in de standaardmap SQL Server Data, zoals geconfigureerd in het SQL Server-exemplaar. Zie [Bestands locaties voor standaard-en benoemde exemplaren van SQL Server](https://msdn.microsoft.com/library/ms143547.aspx)voor meer informatie over de standaard bestands locaties.
 
     DECLARE @data_path nvarchar(256);
     SET @data_path = (SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1)
@@ -54,11 +54,11 @@ In het volgende voorbeeld wordt een nieuwe database gemaakt met drie andere best
         ( NAME = ''LogFileGroup'', FILENAME = ''' + @data_path + '<log_file_name>.ldf'' , SIZE = 1024KB , FILEGROWTH = 10%)
     ')
 
-## <a name="create-a-partitioned-table"></a>Een partitietabel maken
-Als u een partitietabel(en) wilt maken volgens het gegevensschema dat is toegewezen aan de databasebestandsgroepen die in de vorige stap zijn gemaakt, moet u eerst een partitiefunctie en -schema maken. Wanneer gegevens bulk worden geïmporteerd naar de partitietabel(s), worden records verdeeld over de bestandsgroepen volgens een partitieschema, zoals hieronder beschreven.
+## <a name="create-a-partitioned-table"></a>Een gepartitioneerde tabel maken
+Als u gepartitioneerde tabel (len) wilt maken op basis van het gegevens schema, toegewezen aan de database bestands groepen die in de vorige stap zijn gemaakt, moet u eerst een partitie functie en-schema maken. Wanneer gegevens bulksgewijs worden geïmporteerd in de gepartitioneerde tabel (len), worden records verdeeld over de bestands groepen volgens een partitie schema, zoals hieronder wordt beschreven.
 
-### <a name="1-create-a-partition-function"></a>1. Een partitiefunctie maken
-[Een partitiefunctie maken](https://msdn.microsoft.com/library/ms187802.aspx) Met deze functie wordt het bereik gedefinieerd van waarden/grenzen die in elke afzonderlijke partitietabel\_moeten worden opgenomen, bijvoorbeeld om partities per maand (een datumtijdveld)\_in het jaar 2013 te beperken:
+### <a name="1-create-a-partition-function"></a>1. een partitie functie maken
+[Een partitie functie maken](https://msdn.microsoft.com/library/ms187802.aspx) Deze functie definieert het bereik van waarden/grenzen die moeten worden opgenomen in elke afzonderlijke partitie tabel, bijvoorbeeld om de partities per maand (een\_datum\_veld) in het jaar 2013:
   
         CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
         AS RANGE RIGHT FOR VALUES (
@@ -66,8 +66,8 @@ Als u een partitietabel(en) wilt maken volgens het gegevensschema dat is toegewe
             '20130501', '20130601', '20130701', '20130801',
             '20130901', '20131001', '20131101', '20131201' )
 
-### <a name="2-create-a-partition-scheme"></a>2. Een partitieschema maken
-[Een partitieschema maken](https://msdn.microsoft.com/library/ms179854.aspx). Met dit schema wordt elk partitiebereik in de partitiefunctie toegewezen aan een fysieke bestandsgroep, bijvoorbeeld:
+### <a name="2-create-a-partition-scheme"></a>2. een partitie schema maken
+[Maak een partitie schema](https://msdn.microsoft.com/library/ms179854.aspx). Dit schema wijst elk partitie bereik in de partitie functie toe aan een fysieke bestands groep, bijvoorbeeld:
   
         CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
         PARTITION <DatetimeFieldPFN> TO (
@@ -75,7 +75,7 @@ Als u een partitietabel(en) wilt maken volgens het gegevensschema dat is toegewe
         <filegroup_5>, <filegroup_6>, <filegroup_7>, <filegroup_8>,
         <filegroup_9>, <filegroup_10>, <filegroup_11>, <filegroup_12> )
   
-  Voer de volgende query uit om de bereiken die in elke partitie van kracht zijn volgens de functie/regeling te verifiëren:
+  Voer de volgende query uit om te controleren of de bereiken van invloed zijn op elke partitie op basis van de functie/het schema:
   
         SELECT psch.name as PartitionScheme,
             prng.value AS PartitionValue,
@@ -85,23 +85,23 @@ Als u een partitietabel(en) wilt maken volgens het gegevensschema dat is toegewe
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
 
-### <a name="3-create-a-partition-table"></a>3. Een partitietabel maken
-[Maak een partitietabel](https://msdn.microsoft.com/library/ms174979.aspx)(s) op basis van uw gegevensschema en geef het partitieschema en het beperkingsveld op dat wordt gebruikt om de tabel te partitioneren, bijvoorbeeld:
+### <a name="3-create-a-partition-table"></a>3. Maak een partitie tabel
+[Maak gepartitioneerde tabel](https://msdn.microsoft.com/library/ms174979.aspx)(len) op basis van uw gegevens schema en geef het partitie schema en het beperkings veld op dat wordt gebruikt voor het partitioneren van de tabel, bijvoorbeeld:
   
         CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
 
-Zie [Partitietabellen en -indexen maken](https://msdn.microsoft.com/library/ms188730.aspx)voor meer informatie .
+Zie [gepartitioneerde tabellen en indexen maken](https://msdn.microsoft.com/library/ms188730.aspx)voor meer informatie.
 
-## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>Bulk importeert de gegevens voor elke afzonderlijke partitietabel
+## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>De gegevens voor elke afzonderlijke partitie tabel bulksgewijs importeren
 
-* U BCP, BULK INSERT of andere methoden gebruiken, zoals [de wizard SQL Server Migration](https://sqlazuremw.codeplex.com/). In het gegeven voorbeeld wordt de BCP-methode gebruikt.
-* [Wijzig de database](https://msdn.microsoft.com/library/bb522682.aspx) om het registratieschema voor transacties te wijzigen in BULK_LOGGED om de overhead van logboekregistratie te minimaliseren, bijvoorbeeld:
+* U kunt BCP, BULK INSERT of andere methoden gebruiken, zoals [SQL Server wizard Migratie](https://sqlazuremw.codeplex.com/). In het voor beeld wordt de methode BCP gebruikt.
+* Wijzig [de data base om het](https://msdn.microsoft.com/library/bb522682.aspx) transactie logboek schema te wijzigen in BULK_LOGGED om de overhead van logboek registratie te minimaliseren, bijvoorbeeld:
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* Als u het laden van gegevens wilt versnellen, start u de bulkimportbewerkingen parallel. Zie 1 TB laden [in minder dan 1 uur](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)voor tips over het versnellen van het importeren van big data in SQL Server-databases.
+* Om het laden van gegevens te versnellen, start u de bulksgewijze import bewerkingen parallel. Zie [1 TB in minder dan 1 uur laden](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)voor tips over het versnellen van het bulksgewijs importeren van big data in SQL server-data bases.
 
-Het volgende PowerShell-script is een voorbeeld van parallelle gegevensladen met BCP.
+Het volgende Power shell-script is een voor beeld van het laden van parallelle gegevens met behulp van BCP.
 
     # Set database name, input data directory, and output log directory
     # This example loads comma-separated input data files
@@ -165,22 +165,22 @@ Het volgende PowerShell-script is een voorbeeld van parallelle gegevensladen met
     date
 
 
-## <a name="create-indexes-to-optimize-joins-and-query-performance"></a>Indexen maken om joins en queryprestaties te optimaliseren
-* Als u gegevens voor modellering uit meerdere tabellen haalt, maakt u indexen op de joinsleutels om de joinprestaties te verbeteren.
-* [Maak indexen](https://technet.microsoft.com/library/ms188783.aspx) (geclusterd of niet-geclusterd) die dezelfde bestandsgroep targeten voor elke partitie, bijvoorbeeld:
+## <a name="create-indexes-to-optimize-joins-and-query-performance"></a>Indexen maken om samen voegingen en query prestaties te optimaliseren
+* Als u gegevens ophaalt voor model lering uit meerdere tabellen, maakt u indexen op de koppelings sleutels om de prestaties van de verbinding te verbeteren.
+* [Maak indexen](https://technet.microsoft.com/library/ms188783.aspx) (geclusterd of niet-geclusterd) die dezelfde bestands groep voor elke partitie hebben, bijvoorbeeld:
   
         CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
-  Of
+  of
   
         CREATE INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
   
   > [!NOTE]
-  > U ervoor kiezen om de indexen te maken voordat u de gegevens in bulk importeert. Indexcreatie voordat bulk importeren vertraagt het laden van gegevens.
+  > U kunt ervoor kiezen om de indexen te maken voordat u de gegevens bulksgewijs importeert. Het maken van een index voor het bulksgewijs importeren vertraagt het laden van gegevens.
   > 
   > 
 
-## <a name="advanced-analytics-process-and-technology-in-action-example"></a>Voorbeeld van geavanceerd analyseproces en -technologie in actie
-Zie [Team Data Science Process in Action: SQL Server gebruiken](sql-walkthrough.md)voor een end-to-end walkthrough-voorbeeld met behulp van het Team Data Science Process met een openbare gegevensset.
+## <a name="advanced-analytics-process-and-technology-in-action-example"></a>Geavanceerd analyse proces en technologie in actie voorbeeld
+Voor een end-to-end-scenario voor beeld met behulp van het team data Science-proces met een open bare gegevensset raadpleegt u [team data Science process in actie: using SQL Server](sql-walkthrough.md).
 

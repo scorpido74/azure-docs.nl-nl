@@ -9,21 +9,21 @@ ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 8e0e549f88caf4a541642bab77faf54b5e536b29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71174944"
 ---
-## <a name="deploy-an-image-with-marketplace-terms"></a>Een afbeelding implementeren met Marketplace-termen
+## <a name="deploy-an-image-with-marketplace-terms"></a>Een installatie kopie implementeren met Marketplace-voor waarden
 
-Sommige VM-afbeeldingen in de Azure Marketplace hebben aanvullende licentie- en aankoopvoorwaarden die u moet accepteren voordat u ze programmatisch implementeren.  
+Sommige VM-installatie kopieën in de Azure Marketplace hebben aanvullende licentie-en aankoop voorwaarden die u moet accepteren voordat u ze via een programma kunt implementeren.  
 
-Als u een vm uit een dergelijke afbeelding wilt implementeren, moet u zowel de voorwaarden van de afbeelding accepteren als programmatische implementatie inschakelen. U hoeft dit slechts één keer per abonnement te doen. Daarna moet u elke keer dat u een VM programmatisch implementeert vanuit de afbeelding, ook *parameters voor aankoopplannen* opgeven.
+Als u een virtuele machine van een dergelijke installatie kopie wilt implementeren, moet u de voor waarden van de installatie kopie accepteren en programmatische implementatie inschakelen. U hoeft dit slechts één keer per abonnement te doen. Telkens wanneer u een virtuele machine via een programma vanuit de installatie kopie implementeert, moet u ook de para meters van het *aankoop plan* opgeven.
 
-In de volgende secties wordt uitgelegd hoe u:
+In de volgende secties ziet u hoe u:
 
-* Controleren of een Marketplace-afbeelding aanvullende licentievoorwaarden heeft 
-* Accepteer de voorwaarden programmatisch
-* Parameters voor aankoopplannen opgeven wanneer u een VM programmatisch implementeert
+* Nagaan of er aanvullende licentie voorwaarden zijn voor een Marketplace-installatie kopie 
+* De termen via een programma accepteren
+* De para meters van het aankoop plan opgeven wanneer u een virtuele machine programmatisch implementeert
 

@@ -10,68 +10,68 @@ ms.author: dpalled
 manager: cshankar
 ms.date: 02/03/2020
 ms.openlocfilehash: 5be6e7937a6e1f710b8e2576a9058963413fb6c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76984539"
 ---
-1. Selecteer in de [Azure-portal](https://ms.portal.azure.com/)de optie **Azure Active Directory** > **App-registraties** > **Nieuwe registratie**.
+1. Selecteer in de [Azure Portal](https://ms.portal.azure.com/) **Azure Active Directory** > **app-registraties** > **nieuwe registratie**.
 
-   [![Nieuwe toepassingsregistratie in Azure Active Directory](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
+   [![Nieuwe toepassings registratie in Azure Active Directory](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
 
-    Uw app wordt hier vermeld nadat u deze hebt geregistreerd.
+    Uw app wordt hier weer gegeven nadat u deze hebt geregistreerd.
 
-1. Geef de toepassing een naam en selecteer **Accounts in deze organisatiemap alleen** om de ondersteunde **accounttypen** op te geven die toegang hebben tot de API. Kies een geldige URI om gebruikers om te leiden naar nadat ze zich hebben geverifieerd en **Registreer .**
+1. Geef de toepassing een naam en selecteer **accounts in deze organisatie Directory alleen** om de **ondersteunde account typen** op te geven die toegang kunnen krijgen tot de API. Kies een geldige URI voor het omleiden van gebruikers naar nadat ze zijn geverifieerd en **Registreer**deze vervolgens.
 
    [![De toepassing maken in Azure Active Directory](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
 
-1. Belangrijke Azure Active Directory-app-informatie wordt weergegeven in het **overzichtsblad van** de lijst van de app. Selecteer uw app onder **Bezeten toepassingen**en vervolgens **Overzicht**.
+1. Belang rijk Azure Active Directory app-gegevens worden weer gegeven op de Blade **overzicht** van de lijst met apps. Selecteer uw app onder **toepassingen in eigendom**en klik vervolgens op **overzicht**.
 
-   [![De toepassings-id kopiëren](media/time-series-insights-aad-registration/active-directory-copy-application-id.png)](media/time-series-insights-aad-registration/active-directory-copy-application-id.png#lightbox)
+   [![De toepassings-ID kopiëren](media/time-series-insights-aad-registration/active-directory-copy-application-id.png)](media/time-series-insights-aad-registration/active-directory-copy-application-id.png#lightbox)
 
-   Kopieer uw **applicatie-id (client)** om te gebruiken in uw clienttoepassing.
+   Kopieer de **client-id** die moet worden gebruikt in uw client toepassing.
 
-1. Het **verificatieblad** geeft belangrijke verificatieconfiguratie-instellingen op. 
+1. De Blade **verificatie** specificeert belang rijke instellingen voor verificatie configuratie. 
 
-    1. Voeg **omleidings-URI's** toe en configureer **Toegangstokens** door **een platform toe te**voegen .
+    1. Voeg **omleidings-uri's** toe en configureer **toegangs tokens** door **+ een platform toe te voegen**.
 
-    1. Bepaal of de app een **openbare client** is of niet door **Ja** of **Nee**te selecteren.
+    1. Bepaal of de app een **open bare client** is of niet door **Ja** of **Nee**te selecteren.
 
     1. Controleer welke accounts en tenants worden ondersteund.
 
-    [![Impliciete subsidie configureren](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
+    [![Impliciete toekenning configureren](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
 
-1. Nadat u het juiste platform hebt geselecteerd, configureert u uw **OMLEIDINGs-URI's** en **Toegangstokens** in het zijpaneel rechts van de gebruikersinterface.
+1. Nadat u het juiste platform hebt geselecteerd, configureert u de **omleidings-uri's** en **toegangs tokens** in het deel venster aan de rechter kant van de gebruikers interface.
 
-    1. **Omleidings-URI's** moeten overeenkomen met het adres dat door de verificatieaanvraag wordt opgegeven:
+    1. **Omleidings-uri's** moeten overeenkomen met het adres dat is opgegeven door de verificatie aanvraag:
 
-        * Selecteer **Openbare client (mobiel & desktop)** voor apps die worden gehost in een lokale ontwikkelingsomgeving. Zorg ervoor dat **u de openbare client instelt** op **Ja.**
-        * Selecteer **Web**voor apps met één pagina die worden gehost op Azure App Service .
+        * Voor apps die worden gehost in een lokale ontwikkel omgeving selecteert u **open bare client (mobiele & bureau blad)**. Zorg ervoor dat de **open bare client** is ingesteld op **Ja**.
+        * Voor apps met één pagina die worden gehost op Azure App Service, selecteert u **Web**.
 
-    1. Bepaal of een **aanmeldings-URL** geschikt is.
+    1. Bepaal of een **Afmeldings-URL** geschikt is.
 
-    1. Schakel de impliciete subsidiestroom in door **Access-tokens** of **ID-tokens te**controleren.
+    1. Schakel de impliciete toekennings stroom in door **toegangs tokens** of **id-tokens**te controleren.
 
-    [![Omleidings-URI's maken](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png)](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png#lightbox)
+    [![Omleidings-Uri's maken](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png)](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png#lightbox)
 
-    Klik **op Configureren**en sla **op.**
+    Klik op **configureren**en vervolgens op **Opslaan**.
 
-1. Selecteer **Certificaten & geheimen** dan Nieuw **clientgeheim** om een toepassingswachtwoord te maken dat uw client-app kan gebruiken om zijn identiteit te bewijzen.
+1. Selecteer **certificaten & geheimen** en vervolgens **Nieuw client geheim** voor het maken van een toepassings wachtwoord dat door uw client-app kan worden gebruikt om de identiteit ervan te bewijzen.
 
-   [![Een nieuw klantgeheim maken](media/time-series-insights-aad-registration/active-directory-application-keys-save.png)](media/time-series-insights-aad-registration/active-directory-application-keys-save.png#lightbox)
+   [![Een nieuw client geheim maken](media/time-series-insights-aad-registration/active-directory-application-keys-save.png)](media/time-series-insights-aad-registration/active-directory-application-keys-save.png#lightbox)
 
-   Uw client geheim wachtwoord zal dan worden weergegeven. Kopieer de sleutel naar uw favoriete teksteditor.
+   Uw client geheim wacht woord wordt dan weer gegeven. Kopieer de sleutel naar uw favoriete tekst editor.
 
    > [!NOTE]
-   > U in plaats daarvan een certificaat importeren. Voor verbeterde beveiliging wordt een certificaat aanbevolen. Als u een certificaat wilt gebruiken, selecteert u **Certificaat uploaden**.
+   > U kunt in plaats daarvan een certificaat importeren. Voor een betere beveiliging wordt een certificaat aanbevolen. Als u een certificaat wilt gebruiken, selecteert u **certificaat uploaden**.
 
-1. Uw Azure Active Directory-app Azure TIme-serie Insights koppelen. **API-machtigingen** > **toevoegen Voeg een machtigings-API's** > toe die mijn organisatie**gebruikt**. 
+1. Koppel uw Azure Active Directory app Azure TIme Series Insights. Selecteer **API-machtigingen** > **een machtigings** > **-api's toevoegen die mijn organisatie gebruikt**. 
 
     [![Een API koppelen aan uw Azure Active Directory-app](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
 
-   Typ `Azure Time Series Insights` in de zoekbalk en selecteer `Azure Time Series Insights`.
+   Typ `Azure Time Series Insights` in de zoek balk en selecteer `Azure Time Series Insights`.
 
-1. Geef vervolgens de vriendelijke API-machtiging op die uw app nodig heeft. **Gedelegeerde machtigingen** worden standaard gemarkeerd. Kies vervolgens een **machtigingstype**en selecteer Machtigingen toevoegen .
+1. Geef vervolgens de type API-machtiging op die uw app vereist. Standaard worden **gedelegeerde machtigingen** gemarkeerd. Kies een machtigings type en selecteer vervolgens **machtigingen toevoegen**.
 
-    [![Het soort API-machtiging opgeven dat uw app nodig heeft](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png)](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png#lightbox)
+    [![Geef het type API-machtiging op dat voor uw app is vereist](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png)](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png#lightbox)

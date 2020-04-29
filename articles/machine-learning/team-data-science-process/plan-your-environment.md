@@ -1,6 +1,6 @@
 ---
-title: Scenario's identificeren en het analyseproces plannen - Team Data Science Process | Azure Machine Learning
-description: Identificeer scenario's en plan voor gegevensverwerking van geavanceerde analyses door een reeks belangrijke vragen te overwegen.
+title: Scenario's identificeren en het analyse proces plannen-team data Science process | Azure Machine Learning
+description: Bepaal scenario's en plan geavanceerde analyse van gegevens verwerking door een reeks belang rijke vragen te beschouwen.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,151 +12,151 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76710323"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Scenario's en plannen identificeren voor geavanceerde analytische gegevensverwerking
 
-Welke resources zijn nodig om een omgeving te maken die geavanceerde analyseverwerking op een gegevensset kan uitvoeren? In dit artikel worden een reeks vragen gesteld die kunnen helpen bij het identificeren van taken en bronnen die relevant zijn voor uw scenario.
+Welke resources zijn er nodig om een omgeving te maken die geavanceerde analyse verwerking op een gegevensset kan uitvoeren? In dit artikel wordt een reeks vragen gesteld die u kan helpen bij het identificeren van taken en resources die relevant zijn voor uw scenario.
 
-Zie [Wat is het Team Data Science Process (TDSP)](overview.md)voor meer informatie over de volgorde van stappen op hoog niveau voor voorspellende analyses. Voor elke stap zijn specifieke resources nodig voor de taken die relevant zijn voor uw specifieke scenario.
+Zie [Wat is het team data Science process (TDSP)](overview.md)voor meer informatie over de volg orde van de stappen op hoog niveau voor Predictive Analytics. Elke stap vereist specifieke resources voor de taken die relevant zijn voor uw specifieke scenario.
 
-Beantwoord belangrijke vragen in de volgende gebieden om uw scenario te identificeren:
+Vraag de belangrijkste vragen op de volgende gebieden om uw scenario te identificeren:
 
-* datalogistiek
-* gegevenskenmerken
-* gegevenssetkwaliteit
-* voorkeurstools en talen
+* gegevens logistiek
+* gegevens kenmerken
+* kwaliteit van gegevensset
+* Aanbevolen hulpprogram ma's en talen
 
-## <a name="logistic-questions-data-locations-and-movement"></a>Logistieke vragen: datalocaties en beweging
+## <a name="logistic-questions-data-locations-and-movement"></a>Logistiek vragen: gegevens locaties en verplaatsing
 
-De logistieke vragen hebben betrekking op de volgende punten:
+De logistiek vragen hebben betrekking op de volgende items:
 
-* locatie van gegevensbron
-* doelbestemming in Azure
-* vereisten voor het verplaatsen van de gegevens, inclusief de planning, het bedrag en de betrokken resources
+* gegevens bron locatie
+* doel bestemming in azure
+* vereisten voor het verplaatsen van de gegevens, met inbegrip van de planning, het bedrag en de betrokken resources
 
-Het kan nodig zijn om de gegevens meerdere keren te verplaatsen tijdens het analyseproces. Een veelvoorkomend scenario is om lokale gegevens te verplaatsen naar een of andere vorm van opslag op Azure en vervolgens naar Machine Learning Studio.
+Mogelijk moet u de gegevens tijdens het analyse proces meerdere keren verplaatsen. Een veelvoorkomend scenario is het verplaatsen van lokale gegevens naar een vorm van opslag in Azure en vervolgens naar Machine Learning Studio.
 
-### <a name="what-is-your-data-source"></a>Wat is uw gegevensbron?
+### <a name="what-is-your-data-source"></a>Wat is uw gegevens bron?
 
-Zijn uw gegevens lokaal of in de cloud? Mogelijke locaties zijn:
+Bevindt uw gegevens zich lokaal of in de Cloud? Mogelijke locaties zijn:
 
-* een openbaar HTTP-adres
-* een lokale of netwerkbestandslocatie
+* een openbaar beschikbaar HTTP-adres
+* de locatie van een lokaal of netwerk bestand
 * een SQL Server-database
 * een Azure Storage-container
 
 ### <a name="what-is-the-azure-destination"></a>Wat is de Azure-bestemming?
 
-Waar moeten uw gegevens zijn voor verwerking of modellering? 
+Waar moeten uw gegevens worden verwerkt of gemodelleerd? 
 
 * Azure Blob Storage
-* SQL Azure-databases
+* SQL Azure-data bases
 * SQL Server op virtuele Azure-machine
 * HDInsight (Hadoop op Azure) of Hive-tabellen
 * Azure Machine Learning
-* Monteerbare Azure virtuele harde schijven
+* Koppel bare virtuele harde schijven van Azure
 
-### <a name="how-are-you-going-to-move-the-data"></a>Hoe ga je de gegevens verplaatsen?
+### <a name="how-are-you-going-to-move-the-data"></a>Hoe gaat u de gegevens verplaatsen?
 
-Zie voor procedures en resources om gegevens in te nemen of te laden in verschillende opslag- en verwerkingsomgevingen:
+Zie voor procedures en bronnen voor het opnemen of laden van gegevens in een groot aantal verschillende opslag-en verwerkings omgevingen:
 
 * [Gegevens voor analysedoeleinden in opslagomgevingen laden](ingest-data.md)
-* [Uw trainingsgegevens importeren in Azure Machine Learning Studio (klassiek) uit verschillende gegevensbronnen](../studio/import-data.md)
+* [Importeer uw trainings gegevens in Azure Machine Learning Studio (klassiek) van verschillende gegevens bronnen](../studio/import-data.md)
 
-### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>Moeten de gegevens regelmatig worden verplaatst of tijdens de migratie worden gewijzigd?
+### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>Moeten de gegevens worden verplaatst volgens een regel matig schema of worden gewijzigd tijdens de migratie?
 
-Overweeg Azure Data Factory (ADF) te gebruiken wanneer gegevens voortdurend moeten worden gemigreerd. ADF kan nuttig zijn voor:
+Overweeg het gebruik van Azure Data Factory (ADF) wanneer gegevens voortdurend moeten worden gemigreerd. ADF kan handig zijn voor:
 
-* een hybride scenario waarbij zowel on-premises als cloudresources betrokken zijn
-* een scenario waarin de gegevens worden afgehandeld, gewijzigd of gewijzigd door bedrijfslogica in de loop van de migratie
+* een hybride scenario waarbij zowel on-premises als in de cloud resources worden betrokken
+* een scenario waarin de gegevens worden verwerkt, gewijzigd of gewijzigd door bedrijfs logica tijdens het migreren
 
-Zie [Gegevens verplaatsen van een on-premises SQL-server naar SQL Azure met Azure Data Factory](move-sql-azure-adf.md)voor meer informatie.
+Zie [gegevens verplaatsen van een on-premises SQL-Server naar SQL Azure met Azure Data Factory](move-sql-azure-adf.md)voor meer informatie.
 
-### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Hoeveel van de gegevens moeten worden verplaatst naar Azure?
+### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Hoeveel gegevens worden verplaatst naar Azure?
 
-Grote gegevenssets kunnen de opslagcapaciteit van bepaalde omgevingen overschrijden. Zie bijvoorbeeld de discussie over groottelimieten voor Machine Learning Studio (klassiek) in de volgende sectie. In dergelijke gevallen u tijdens de analyse een voorbeeld van de gegevens gebruiken. Zie [Voorbeeldgegevens in het Team Data Science](sample-data.md)Process voor meer informatie over het down-samplen van een gegevensset in verschillende Azure-omgevingen.
+Grote gegevens sets kunnen de opslag capaciteit van bepaalde omgevingen overschrijden. Zie voor een voor beeld de bespreking van grootte limieten voor Machine Learning Studio (klassiek) in de volgende sectie. In dergelijke gevallen kunt u een voor beeld van de gegevens tijdens de analyse gebruiken. Zie [voorbeeld gegevens in het team data Science process](sample-data.md)voor meer informatie over het omlaag bemonsteren van een gegevensset in verschillende Azure-omgevingen.
 
-## <a name="data-characteristics-questions-type-format-and-size"></a>Vragen over gegevenskenmerken: tekst, indeling en grootte
+## <a name="data-characteristics-questions-type-format-and-size"></a>Vragen over gegevens kenmerken: type, notatie en grootte
 
-Deze vragen zijn essentieel voor het plannen van uw opslag- en verwerkingsomgevingen. Ze helpen u bij het kiezen van het juiste scenario voor uw gegevenstype en begrijpen eventuele beperkingen.
+Deze vragen zijn essentieel om uw opslag-en verwerkings omgevingen te plannen. Ze kunnen u helpen bij het kiezen van het juiste scenario voor uw gegevens type en het begrijpen van alle beperkingen.
 
-### <a name="what-are-the-data-types"></a>Wat zijn de gegevenstypen?
+### <a name="what-are-the-data-types"></a>Wat zijn de gegevens typen?
 
-* Numerieke
+* Cijfer
 * Categorische gegevens
 * Tekenreeksen
 * Binair
 
-### <a name="how-is-your-data-formatted"></a>Hoe worden uw gegevens opgemaakt?
+### <a name="how-is-your-data-formatted"></a>Hoe worden uw gegevens ingedeeld?
 
-* Platte bestanden (CSV) of tab-separated (TSV)
+* Door komma's gescheiden (CSV) of door tabs gescheiden (TSV) platte bestanden
 * Gecomprimeerd of niet-gecomprimeerd
 * Azure-blobs
-* Hadoop Hive tafels
-* SQL Server-tabellen
+* Hadoop-Hive-tabellen
+* SQL Server tabellen
 
 ### <a name="how-large-is-your-data"></a>Hoe groot zijn uw gegevens?
 
 * Klein: minder dan 2 GB
 * Gemiddeld: meer dan 2 GB en minder dan 10 GB
-* Groot: meer dan 10 GB
+* Groot: groter dan 10 GB
 
-Neem bijvoorbeeld de Azure Machine Learning Studio (klassieke) omgeving:
+Maak de Azure Machine Learning Studio-omgeving (klassiek) bijvoorbeeld:
 
-* Zie [Sectie Gegevensindelingen en gegevenstypen](../studio/import-data.md#supported-data-formats-and-data-types) voor een lijst met de gegevensindelingen en -typen die worden ondersteund door Azure Machine Learning Studio.
-* Zie [Azure Subscription and Service Limits, Quota en Limitations](../../azure-resource-manager/management/azure-subscription-service-limits.md)voor informatie over de beperkingen van andere Azure-services die in het analyseproces worden gebruikt.
+* Zie de sectie [gegevens indelingen en gegevens typen](../studio/import-data.md#supported-data-formats-and-data-types) die worden ondersteund voor een lijst met de gegevens indelingen en typen die door Azure machine learning Studio worden ondersteund.
+* Zie [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md)voor meer informatie over de beperkingen van andere Azure-Services die worden gebruikt in het analyse proces.
 
-## <a name="data-quality-questions-exploration-and-pre-processing"></a>Vragen over de kwaliteit van gegevens: verkenning en voorbewerking
+## <a name="data-quality-questions-exploration-and-pre-processing"></a>Vragen over gegevens kwaliteit: verkennen en vooraf verwerkingen
 
-### <a name="what-do-you-know-about-your-data"></a>Wat weet u van uw gegevens?
+### <a name="what-do-you-know-about-your-data"></a>Wat weet u over uw gegevens?
 
-Begrijp de basiskenmerken van uw gegevens:
+Meer informatie over de basis kenmerken van uw gegevens:
 
-* Welke patronen of trends het vertoont
-* Welke uitschieters het heeft
+* De patronen of trends die het vertoont
+* De uitschieters
 * Hoeveel waarden ontbreken
 
-Deze stap is belangrijk om u te helpen:
+Deze stap is belang rijk om u te helpen:
 
-* Bepalen hoeveel voorverwerking nodig is
-* Formuleer hypothesen die de meest geschikte kenmerken of het type analyse suggereren
-* Plannen formuleren voor aanvullende gegevensverzameling
+* Bepalen hoeveel vooraf-verwerking nodig is
+* Formuleer hypo Thesen die de meest geschikte functies of type analyse Voorst Ellen
+* Plannen formuleren voor extra gegevens verzameling
 
-Nuttige technieken voor gegevensinspectie zijn beschrijvende statistiekenberekening en visualisatieplots. Zie Gegevens verkennen in het Team Data [Science Process](explore-data.md)voor meer informatie over het verkennen van een gegevensset in verschillende Azure-omgevingen.
+Handige technieken voor gegevens inspectie zijn onder andere het berekenen van de berekenings statistieken en visualisaties. Voor meer informatie over hoe u een gegevensset in verschillende Azure-omgevingen kunt verkennen, raadpleegt u [gegevens in het team data Science proces verkennen](explore-data.md).
 
-### <a name="does-the-data-require-preprocessing-or-cleaning"></a>Moeten de gegevens worden voorbewerking of reiniging nodig?
+### <a name="does-the-data-require-preprocessing-or-cleaning"></a>Is voor de gegevens voor verwerking of reiniging vereist?
 
-Mogelijk moet u uw gegevens vooraf verwerken en schoonmaken voordat u de gegevensset effectief gebruiken voor machine learning. Ruwe gegevens zijn vaak luidruchtig en onbetrouwbaar. Het mist misschien waarden. Het gebruik van dergelijke gegevens voor modellering kan misleidende resultaten opleveren. Zie [Taken om gegevens voor te bereiden op verbeterde machine learning voor](prepare-data.md)een beschrijving.
+Mogelijk moet u uw gegevens voorverwerken en opschonen voordat u de gegevensset effectief kunt gebruiken voor machine learning. Onbewerkte gegevens zijn vaak ruis en onbetrouwbaar. Er ontbreken mogelijk waarden. Het gebruik van dergelijke gegevens voor model lering kan misleidende resultaten opleveren. Zie [taken om gegevens voor te bereiden voor verbeterde machine learning](prepare-data.md)voor een beschrijving.
 
-## <a name="tools-and-languages-questions"></a>Vragen over hulpmiddelen en talen
+## <a name="tools-and-languages-questions"></a>Vragen over hulpprogram ma's en talen
 
-Er zijn veel opties voor talen, ontwikkelomgevingen en tools. Wees je bewust van je behoeften en voorkeuren.
+Er zijn veel opties voor talen, ontwikkel omgevingen en hulpprogram ma's. Houd rekening met uw behoeften en voor keuren.
 
-### <a name="what-languages-do-you-prefer-to-use-for-analysis"></a>Welke talen gebruikt u het liefst voor analyse?
+### <a name="what-languages-do-you-prefer-to-use-for-analysis"></a>Welke talen wilt u liever voor analyse gebruiken?
 
 * R
 * Python
 * SQL
 
-### <a name="what-tools-should-you-use-for-data-analysis"></a>Welke tools moet u gebruiken voor data-analyse?
+### <a name="what-tools-should-you-use-for-data-analysis"></a>Welke hulpprogram ma's moet u voor gegevens analyse gebruiken?
 
-* [Microsoft Azure Powershell](/powershell/azure/overview) - een scripttaal die wordt gebruikt om uw Azure-resources in een scripttaal te beheren
+* [Microsoft Azure Power shell](/powershell/azure/overview) : een script taal die wordt gebruikt voor het beheren van uw Azure-resources in een script taal
 * [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
 * [Revolutie Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
-* [RStudio (RStudio)](https://www.rstudio.com)
+* [RStudio](https://www.rstudio.com)
 * [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)
 * [Anaconda](https://www.continuum.io/why-anaconda)
 * [Jupyter-notebooks](https://jupyter.org/)
 * [Microsoft Power BI](https://powerbi.microsoft.com)
 
-## <a name="identify-your-advanced-analytics-scenario"></a>Uw scenario voor geavanceerde analyses identificeren
+## <a name="identify-your-advanced-analytics-scenario"></a>Uw geavanceerde analyse scenario identificeren
 
-Nadat u de vragen in de vorige sectie hebt beantwoord, bent u klaar om te bepalen welk scenario het beste bij uw aanvraag past. De voorbeeldscenario's worden beschreven in [scenario's voor geavanceerde analyses in Azure Machine Learning.](plan-sample-scenarios.md)
+Nadat u de vragen in de vorige sectie hebt beantwoord, kunt u bepalen welk scenario het meest geschikt is voor uw situatie. De voorbeeld scenario's worden beschreven in [scenario's voor geavanceerde analyses in azure machine learning](plan-sample-scenarios.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
-title: Wijziging van het Smooth Streaming Protocol (MS-SSTR) voor HEVC - Azure
-description: Deze specificatie beschrijft het protocol en de indeling voor gefragmenteerde MP4-gebaseerde live streaming met HEVC in Azure Media Services. Alleen de wijzigingen die nodig zijn om HEVC te leveren zijn in dit artikel opgegeven, behalve als "(Geen wijziging)" aangeeft dat tekst alleen voor verduidelijking wordt gekopieerd.
+title: Wijziging van het Smooth Streaming Protocol (MS-SSTR) voor HEVC-Azure
+description: Deze specificatie beschrijft het protocol en de indeling voor gefragmenteerde op MP4 gebaseerde live streamen met HEVC in Azure Media Services. Alleen de wijzigingen die nodig zijn om HEVC te leveren, worden in dit artikel vermeld, met uitzonde ring van ' (geen wijziging) ' geeft aan dat tekst alleen ter verduidelijking wordt gekopieerd.
 services: media-services
 documentationcenter: ''
 author: johndeu
@@ -15,169 +15,169 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
 ms.openlocfilehash: be4009d418f2f8f3dff755e2e990efee593f070b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76514218"
 ---
-# <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Smooth Streaming Protocol (MS-SSTR) Wijziging voor HEVC 
+# <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Wijziging van het Smooth Streaming Protocol (MS-SSTR) voor HEVC 
 
 ## <a name="1-introduction"></a>1 Inleiding 
 
-Dit artikel bevat gedetailleerde wijzigingen die moeten worden toegepast op de specificatie van het Smooth Streaming Protocol [MS-SSTR] om vloeiende streaming van HEVC-gecodeerde video mogelijk te maken. In deze specificatie geven we alleen een overzicht van de wijzigingen die nodig zijn om de HEVC-videocodec te leveren. Het artikel volgt hetzelfde nummeringsschema als de [MS-SSTR]-specificatie. De lege koppen die in het artikel worden gepresenteerd, worden verstrekt om de lezer te oriënteren op hun positie in de [MS-SSTR] specificatie.  "(Geen wijziging)" geeft aan dat tekst alleen voor verduidelijkingsdoeleinden wordt gekopieerd.
+In dit artikel vindt u gedetailleerde wijzigingen die moeten worden toegepast op de Smooth Streaming Protocol specificatie [MS-SSTR] om Smooth Streaming van met HEVC gecodeerde video in te scha kelen. In deze specificatie worden alleen de wijzigingen beschreven die nodig zijn om de HEVC-videocodec te leveren. Het artikel volgt hetzelfde nummer schema als de specificatie [MS-SSTR]. De lege nieuwskoppen die in het hele artikel worden gepresenteerd, worden verstrekt om de lezer naar hun positie te richten in de specificatie [MS-SSTR].  ' (Niet wijzigen) ' geeft aan dat tekst alleen ter informatie wordt gekopieerd.
 
-Het artikel bevat technische implementatievereisten voor het signaleren van HEVC-videocodec (met behulp van 'hev1' of 'hvc1'-formaattracks) in een Smooth Streaming-manifest en normatieve verwijzingen worden bijgewerkt om te verwijzen naar de huidige MPEG-normen die omvatten HEVC, Common Encryption van HEVC, en vaknamen voor ISO Base Media File Format zijn bijgewerkt om in overeenstemming te zijn met de nieuwste specificaties. 
+Het artikel bevat technische implementatie vereisten voor de Signa lering van de HEVC-videocodec (met behulp van ' hev1 ' of ' hvc1-indelings trajecten ') in een Smooth Streaming-manifest en normatieve verwijzingen worden bijgewerkt om te verwijzen naar de huidige MPEG-standaarden die HEVC, Common Encryption van HEVC en Box-names voor de ISO-basis media bestands indeling zijn bijgewerkt zodat deze consistent zijn met de meest recente 
 
-De specificatie van het Smooth Streaming Protocol [MS-SSTR] wordt beschreven in het draadformaat dat wordt gebruikt om live en on-demand digitale media, zoals audio en video, op de volgende manieren te leveren: van een encoder tot een webserver, van een server naar een andere server en van een server naar een HTTP-client.
-Het gebruik van een MPEG-4 ([[MPEG4-RA])](https://go.microsoft.com/fwlink/?LinkId=327787)-gebaseerde datastructuur levering via HTTP maakt naadloos schakelen in de buurt van real time tussen de verschillende kwaliteitsniveaus van gecomprimeerde media-inhoud. Het resultaat is een constante afspeelervaring voor de UITEINDELIJKe HTTP-clientgebruiker, zelfs als de omstandigheden voor netwerk- en videoweergave voor de clientcomputer of het apparaat veranderen.
+De Smooth Streaming Protocol specificatie [MS-SSTR] waarnaar wordt verwezen, beschrijft de telegram indeling die wordt gebruikt voor het leveren van Live en on-demand digitale media, zoals audio en video, in de volgende omstandigheden: van een encoder naar een webserver, van een server naar een andere server en van een server naar een HTTP-client.
+Door het gebruik van een op MPEG-4 ([[MPEG4-Ra])](https://go.microsoft.com/fwlink/?LinkId=327787)gebaseerde levering van gegevens structuren via http kan naadloze switching bijna in realtime worden uitgevoerd tussen verschillende kwaliteits niveaus van gecomprimeerde media-inhoud. Het resultaat is een constante afspeel ervaring voor de eind gebruiker van de HTTP-client, zelfs als de weer gave van netwerk-en video weergave voor de client computer of het apparaat is gewijzigd.
 
-## <a name="11-glossary"></a>1.1 Woordenlijst 
+## <a name="11-glossary"></a>1,1 woorden lijst 
 
-De volgende termen zijn gedefinieerd in *[MS-GLOS]*:
+De volgende termen worden gedefinieerd in *[MS-Glos]*:
 
->   **guid (globally unique identifier) universeel unieke id (UUID)**
+>   **Globally Unique Identifier (GUID) Universally Unique Identifier (UUID)**
 
-De volgende voorwaarden zijn specifiek voor dit document:
+De volgende termen zijn specifiek voor dit document:
 
->  **samenstellingstijd:** De tijd dat een monster bij de klant wordt gepresenteerd, zoals gedefinieerd in [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695).
+>  **samenstellings tijd:** Het tijdstip waarop een steek proef wordt weer gegeven op de client, zoals gedefinieerd in [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695).
 > 
->   **CENC**: Common Encryption, zoals gedefinieerd in [ISO/IEC 23001-7] Second Edition.
+>   **CENC**: common Encryption, zoals gedefinieerd in [ISO/IEC 23001-7] Tweede editie.
 > 
->   **decodetijd:** De tijd die een monster moet decoderen op de client, zoals gedefinieerd in [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695).
+>   **decoderings tijd:** Het tijdstip waarop een steek proef moet worden gedecodeerd op de client, zoals gedefinieerd in [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695).
 
-**fragment:** Een onafhankelijk downloadbare eenheid **van media** die bestaat uit een of meer **monsters**.
+**fragment:** Een afzonderlijk Download bare **Media** -eenheid met een of meer voor **beelden**.
 
->   **HEVC:** Videocodering met hoge efficiëntie, zoals gedefinieerd in [ISO/IEC 23008-2]
+>   **HEVC:** Video codering met hoge efficiëntie, zoals gedefinieerd in [ISO/IEC 23008-2]
 > 
->   **manifest:** Metagegevens over de **presentatie** waarmee een client verzoeken om media kan **indienen.** **media:** Gecomprimeerde audio-, video- en tekstgegevens die door de client worden gebruikt om een **presentatie**af te spelen. **mediaformaat:** Een goed gedefinieerde indeling voor het weergeven van audio of video als een gecomprimeerd **voorbeeld.**
+>   **manifest:** Meta gegevens over de **presentatie** waarmee een client aanvragen voor **Media**kan uitvoeren. **Media:** Gecomprimeerde audio-, video-en tekst gegevens die door de client worden gebruikt om een **presentatie**af te spelen. **Media-indeling:** Een goed gedefinieerde indeling voor het weer geven van audio of video als een gecomprimeerd voor **beeld**.
 > 
->   **presentatie:** De set van alle **streams** en gerelateerde metadata die nodig zijn om een enkele film af te spelen. **verzoek:** Een HTTP-bericht dat van de client naar de server wordt verzonden, zoals gedefinieerd in [[RFC2616]-antwoord:](https://go.microsoft.com/fwlink/?LinkId=90372) **response:** een HTTP-bericht dat van de server naar de client wordt verzonden, zoals gedefinieerd in [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372)
+>   **presentatie:** De set van alle **streams** en gerelateerde meta gegevens die nodig zijn om één film af te spelen. **aanvraag:** Een HTTP-bericht dat van de client naar de server wordt verzonden, zoals gedefinieerd in [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **Response:** een HTTP-bericht dat van de server naar de client is verzonden, zoals gedefinieerd in [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372)
 > 
->   **monster:** De kleinste fundamentele eenheid (zoals een frame) waarin **media** worden opgeslagen en verwerkt.
+>   voor **Beeld:** De kleinste basis eenheid (zoals een frame) waarin **Media** worden opgeslagen en verwerkt.
 > 
->   **KAN, MOET, MOET, MOET NIET, MAG NIET:** Deze termen (in alle hoofdletters) worden gebruikt zoals beschreven in [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) Alle verklaringen van optioneel gedrag gebruiken MEI, MOET of NIET.
+>   **mag,** moet dit niet, moet: Deze voor waarden (in hoofd letters) worden gebruikt zoals beschreven in [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) alle instructies voor het gebruik van een optioneel gedrag, of dat kan.
 
-## <a name="12-references"></a>1.2 Referenties
+## <a name="12-references"></a>1,2 verwijzingen
 
->   Verwijzingen naar Microsoft Open Specifications documentatie bevatten geen publicatiejaar, omdat links zijn naar de nieuwste versie van de documenten, die regelmatig worden bijgewerkt. Verwijzingen naar andere documenten omvatten een publicatiejaar waarin er een beschikbaar is.
+>   Verwijzingen naar documentatie over micro soft open-specificaties bevatten geen publicatie jaar omdat koppelingen naar de meest recente versie van de documenten zijn die regel matig worden bijgewerkt. Verwijzingen naar andere documenten bevatten een publicatie jaar, wanneer er een beschikbaar is.
 
-### <a name="121-normative-references"></a>1.2.1 Normatieve referenties 
+### <a name="121-normative-references"></a>1.2.1 normatieve verwijzingen 
 
 >  [MS-SSTR] Smooth Streaming Protocol *v20140502*[https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
 > 
->   [ISO/IEC 14496-12] Internationale Organisatie voor Normalisatie, "Informatietechnologie -- Codering van audiovisuele objecten -- Deel 12: ISO Base Media File Format", ISO/IEC 14496-12:2014, Edition 4, Plus Corrigendum 1, Amendementen 1 & 2.
+>   [ISO/IEC 14496-12] International Organization for Standardization, ' informatie technologie--code ring van audiovisuele objecten--deel 12: ISO-basis media bestands indeling ', ISO/IEC 14496-12:2014, Edition 4, plus corrigendum 1, wijzigingen 1 & 2.
 >   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>
 > 
->   [ISO/IEC 14496-15] International Organization for Standardization, "Information technology -- Coding of audio-visual objects -- Part 15: Carriage of NAL unit structured video in the ISO Base Media File Format", ISO 14496-15:2015, Edition 3.
+>   [ISO/IEC 14496-15] International Organization for Standardization, ' informatie technologie: code ring van audiovisuele objecten--deel 15: Trans Port van de NAL-video in de ISO-basis media bestands indeling ', ISO 14496-15:2015, editie 3.
 >   <https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=65216>
 > 
->   [ISO/IEC 23008-2] Informatietechnologie -- High efficiency coding en media delivery in heterogene omgevingen -- Deel 2: High efficiency video coding: 2013 of nieuwste editie<https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
+>   [ISO/IEC 23008-2] Informatie technologie: hoge efficiëntie code ring en media levering in heterogene omgevingen--deel 2: video codering met hoge efficiëntie: 2013 of nieuwste versie<https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
 > 
->   [ISO/IEC 23001-7] Informatietechnologie — MPEG-systeemtechnologieën — Deel 7: Algemene versleuteling in ISO-bestandsbestanden, CENC Edition 2:2015<https://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
+>   [ISO/IEC 23001-7] Informatie technologie — MPEG Systems technologieën — deel 7: algemene versleuteling in ISO base Media File Format-bestanden, CENC Edition 2:2015<https://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
 > 
->   [RFC-6381] IETF RFC-6381, "De 'Codecs' en 'Profiles' Parameters voor "Bucket" Media Types"<https://tools.ietf.org/html/rfc6381>
+>   [RFC-6381] IETF RFC-6381, ' codecs ' en ' Profiles ' para meters voor ' Bucket-media typen '<https://tools.ietf.org/html/rfc6381>
 > 
->   [MPEG4-RA] De MP4-registratieautoriteit, "MP4REG",[http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
+>   [MPEG4-RA] De MP4-registratie-instantie, ' MP4REG ',[http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
 > 
->   [RFC2119] Bradner, S., "Trefwoorden voor gebruik in RFC's om vereisteniveaus aan te geven", BCP 14, RFC 2119, maart 1997,[https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
+>   [RFC2119] Bradner, S., "sleutel woorden voor gebruik in Rfc's voor het aanduiden van vereisten niveaus", BCP 14, RFC 2119, maart 1997,[https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
 
-### <a name="122-informative-references"></a>1.2.2 Informatieve referenties 
+### <a name="122-informative-references"></a>1.2.2 informatieve verwijzingen 
 
->   [MS-GLOS] Microsoft Corporation, "*Windows Protocollen Master Woordenlijst*."
+>   [MS-GLOS] Micro soft Corporation, '*verklarende woorden lijst voor Windows-protocols*'.
 > 
->   [RFC3548] Josefsson, S., Ed., "The Base16, Base32, and Base64 Data Encodings", RFC 3548, juli 2003,[https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
+>   [RFC3548] Josefsson, S., ed., "de Base16-, Base32-en base64-gegevens codering", RFC 3548, juli 2003,[https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
 > 
->   [RFC5234] Crocker, D., Ed., and Overell, P., "Augmented BNF for Syntax Specifications: ABNF", STD 68, RFC 5234, januari 2008,[https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
+>   [RFC5234] Crocker, D., ed. en Overell, P., "uitgebreid BNF voor de syntaxis specificaties: ABNF", STD 68, RFC 5234, januari 2008,[https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
 
 
-## <a name="13-overview"></a>Overzicht 1.3 
+## <a name="13-overview"></a>overzicht van 1,3 
 
->   Hieronder worden alleen wijzigingen in de smooth streaming-specificatie opgegeven die vereist zijn voor de levering van HEVC. Ongewijzigde sectiekoppen worden weergegeven om de locatie te behouden in de standaardspecificatie vloeiend streamen [MS-SSTR].
+>   Hieronder worden alleen wijzigingen in de Smooth Streaming opgegeven die vereist zijn voor het leveren van HEVC. Ongewijzigd sectie headers worden weer gegeven om de locatie in de Smooth Streaming specificatie [MS-SSTR] waarnaar wordt verwezen, te onderhouden.
 
-## <a name="14-relationship-to-other-protocols"></a>1.4 Relatie tot andere protocollen 
+## <a name="14-relationship-to-other-protocols"></a>1,4-relatie met andere protocollen 
 
-## <a name="15-prerequisitespreconditions"></a>1.5 Voorwaarden/Randvoorwaarden 
+## <a name="15-prerequisitespreconditions"></a>1,5 vereisten/voor waarden 
 
-## <a name="16-applicability-statement"></a>1.6 Toepasselijkheidsverklaring 
+## <a name="16-applicability-statement"></a>1,6 toepas baarheid, instructie 
 
-## <a name="17-versioning-and-capability-negotiation"></a>1.7 Onderhandelingen over versies en mogelijkheden 
+## <a name="17-versioning-and-capability-negotiation"></a>1,7-versie beheer en mogelijkheden onderhandeling 
 
-## <a name="18-vendor-extensible-fields"></a>1.8 Velden met leveranciersuitbreidbaar 
+## <a name="18-vendor-extensible-fields"></a>1,8 leverancier-uitbreid bare velden 
 
->   De volgende methode moet worden gebruikt om streams te identificeren met behulp van het HEVC-videoformaat:
+>   De volgende methode wordt gebruikt voor het identificeren van streams met behulp van de HEVC-video-indeling:
 > 
->   * **Aangepaste beschrijvende codes voor media-indelingen:** Deze mogelijkheid wordt geleverd door het veld **FourCC,** zoals gespecificeerd in punt *2.2.2.5*.
->   Uitvoerders kunnen ervoor zorgen dat extensies niet in conflict komen door extensiecodes te registreren met de MPEG4-RA, zoals gespecificeerd in [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695)
+>   * **Aangepaste beschrijvende codes voor media-indelingen:** Deze functie wordt bepaald door het **FourCC** -veld, zoals beschreven in sectie *2.2.2.5*.
+>   Implementeerers kunnen ervoor zorgen dat extensies niet conflicteren door extensie codes te registreren bij de MPEG4-RA, zoals opgegeven in [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695)
 
-## <a name="19-standards-assignments"></a>1.9 Standaardtoewijzingen 
+## <a name="19-standards-assignments"></a>1,9-standaard toewijzingen 
 
-## <a name="2-messages"></a>2 Berichten 
+## <a name="2-messages"></a>2 berichten 
 
-## <a name="21-transport"></a>2.1 Vervoer
+## <a name="21-transport"></a>2,1-Trans Port
 
-## <a name="22-message-syntax"></a>2.2 Berichtsyntaxis 
+## <a name="22-message-syntax"></a>Syntaxis van 2,2-berichten 
 
-### <a name="221-manifest-request"></a>2.2.1 Manifest verzoek 
+### <a name="221-manifest-request"></a>2.2.1 manifest-aanvraag 
 
-### <a name="222-manifest-response"></a>2.2.2 Manifestrespons 
+### <a name="222-manifest-response"></a>2.2.2 manifest reactie 
 
 #### <a name="2221-smoothstreamingmedia"></a>2.2.2.1 SmoothStreamingMedia 
 
->   **MinorVersion (variabele):** De secundaire versie van het manifestreactiebericht. MOET worden ingesteld op 2. (Geen wijziging)
+>   **MinorVersion (variabele):** De secundaire versie van het antwoord bericht van het manifest. MOET worden ingesteld op 2. (Geen wijziging)
 > 
->   **Tijdschaal (variabele):** De tijdschaal van het kenmerk Duur, opgegeven als het aantal stappen in één seconde. De standaardwaarde is 
+>   **Tijd schaal (variabele):** De tijd schaal van het kenmerk duration, opgegeven als het aantal stappen in één seconde. De standaardwaarde is 
 > 1. (Geen wijziging)
 > 
->    De aanbevolen waarde is 90000 voor het weergeven van de exacte duur van videoframes en fragmenten met fractionele framerate video (bijvoorbeeld 30/1.001 Hz).
+>    De aanbevolen waarde is 90000 voor het weer geven van de exacte duur van video frames en fragmenten die de video met breuken per frame bevatten (bijvoorbeeld 30/1.001 Hz).
 
 #### <a name="2222-protectionelement"></a>2.2.2.2 ProtectionElement 
 
-De ProtectionElement moet aanwezig zijn wanneer Common Encryption (CENC) is toegepast op video- of audiostreams. Hevc gecodeerde streams moeten voldoen aan Common Encryption 2nd Edition [ISO/IEC 23001-7]. Alleen segmentgegevens in VCL NAL-eenheden moeten worden versleuteld.
+Het ProtectionElement moet aanwezig zijn als Common Encryption (CENC) is toegepast op video-of audio-streams. HEVC versleutelde streams moeten overeenkomen met Common Encryption 2e editie [ISO/IEC 23001-7]. Alleen segment gegevens in VCL NAL-eenheden moeten worden versleuteld.
 
 #### <a name="2223-streamelement"></a>2.2.2.3 StreamElement 
 
->   **StreamTimeScale (variabele):** De tijdschaal voor duur- en tijdwaarden in deze stream, opgegeven als het aantal stappen in één seconde. Een waarde van 90000 wordt aanbevolen voor HEVC-streams. Een waarde die overeenkomt met de golfvorm sample frequentie (bijvoorbeeld 48000 of 44100) wordt aanbevolen voor audio streams.
+>   **StreamTimeScale (variabele):** De tijd schaal voor de duur-en tijd waarden in deze stroom, opgegeven als het aantal stappen in één seconde. Een waarde van 90000 wordt aanbevolen voor HEVC-streams. Een waarde die overeenkomt met de voor beeld-Golf frequentie (bijvoorbeeld 48000 of 44100) wordt aanbevolen voor audio stromen.
 
 ##### <a name="22231-streamprotectionelement"></a>2.2.2.3.1 StreamProtectionElement
 
-#### <a name="2224-urlpattern"></a>2.2.2.4 UrlPatroon 
+#### <a name="2224-urlpattern"></a>2.2.2.4 UrlPattern 
 
 #### <a name="225-trackelement"></a>2.2.5 TrackElement 
 
->   **FourCC (variabel):** Een code met vier tekens die aangeeft welke media-indeling voor elk voorbeeld wordt gebruikt. Het volgende waardenbereik is gereserveerd met de volgende semantische betekenissen:
+>   **FourCC (variabele):** Een code van vier tekens die aangeeft welke media-indeling voor elk voor beeld wordt gebruikt. Het volgende waarden bereik is gereserveerd met de volgende semantische betekenissen:
 > 
-> * "hev1": Videosamples voor dit spoor gebruiken HEVC-video, met behulp van de 'hev1'-monsterbeschrijvingsindeling die is opgegeven in [ISO/IEC-14496-15].
+> * "hev1": video-voor beelden voor dit traject maken gebruik van HEVC-video, met behulp van de voorbeeld indeling ' hev1 ' die is opgegeven in [ISO/IEC-14496-15].
 >
-> * "hvc1": Videomonsters voor dit spoor gebruiken HEVC-video, met behulp van het 'hvc1'-monsterbeschrijvingsformaat dat is opgegeven in [ISO/IEC-14496-15].
+> * "hvc1": video-voor beelden voor dit traject maken gebruik van HEVC-video, met behulp van de voorbeeld indeling ' hvc1 ' die is opgegeven in [ISO/IEC-14496-15].
 > 
->   **CodecPrivateData (variabele):** Gegevens die parameters specificeert die specifiek zijn voor de media-indeling en gemeenschappelijk zijn voor alle voorbeelden in het spoor, weergegeven als een reeks hex-gecodeerde bytes. De notatie en semantische betekenis van bytesequentie varieert als volgt met de waarde van het veld **FourCC:**
+>   **CodecPrivateData (variabele):** Gegevens die para meters opgeven die specifiek zijn voor de media-indeling en die gemeen schappelijk zijn voor alle voor beelden in de track, weer gegeven als een teken reeks met hexadecimale code bytes. De indeling en semantische betekenis van de byte reeks varieert als volgt met de waarde van het veld **FourCC** :
 > 
->   * Wanneer een TrackElement HEVC-video beschrijft, moet het **FourCC-veld** **"hev1"** of **"hvc1"**
+>   * Wanneer een TrackElement de HEVC-video beschrijft, is het veld **FourCC** gelijk aan **"hev1"** of **"hvc1"**
 > 
->   Het veld **CodecPrivateData** moet een hexgecodeerde tekenreeksweergave bevatten van de volgende bytereeks, gespecificeerd in ABNF [[RFC5234]:](https://go.microsoft.com/fwlink/?LinkId=123096) (geen wijziging ten opzichte van MS-SSTR)
+>   Het veld **CodecPrivateData** bevat een hexadecimale teken reeks representatie van de volgende byte reeks, opgegeven in ABNF [[RFC5234]:](https://go.microsoft.com/fwlink/?LinkId=123096) (geen wijziging van MS-SSTR)
 > 
->   * %x00 %x00 %x00 %x01 SPSField %x00 %x00 %x00 %x00 %x01 PPSField
+>   * %x00 %x00 %x00 %x01 SPSField %x00 %x00 %x00 %x01 PPSField
 > 
->   * SPSField bevat de Sequence Parameter Set (SPS).
+>   * SPSField bevat de Sequence para meter set (SPS).
 > 
->   * PPSField bevat de Slice Parameter Set (PPS).
+>   * PPSField bevat de para meter set van het segment (PPS).
 > 
->   Opmerking: De Video Parameter Set (VPS) is niet opgenomen in CodecPrivateData, maar moet worden opgenomen in de bestandsheader van opgeslagen bestanden in het vak 'hvcC'. Systemen die smooth streaming protocol gebruiken, moeten aanvullende decoderingsparameters (bijvoorbeeld HEVC-laag) signaleren met behulp van het aangepaste kenmerk 'codecs'.
+>   Opmerking: de para meter voor de video parameters (VPS) bevindt zich niet in CodecPrivateData, maar moet in de bestands header van opgeslagen bestanden in het vak ' hvcC ' staan. Systemen die gebruikmaken van Smooth Streaming Protocol moeten aanvullende para meters voor het decoderen (bijvoorbeeld HEVC-laag) Signa leren met het aangepaste kenmerk ' codecs '.
 
 ##### <a name="22251-customattributeselement"></a>2.2.2.5.1 CustomAttributesElement 
 
 #### <a name="226-streamfragmentelement"></a>2.2.6 StreamFragmentElement 
 
->   Het veld **MajorVersion van SmoothStreamingMedia** MOET worden ingesteld op 2 en het veld **MinorVersion** moet worden ingesteld op 2. (Geen wijziging)
+>   Het veld **MajorVersion van de SMOOTHSTREAMINGMEDIA** moet zijn ingesteld op 2 en het veld **MinorVersion** moet zijn ingesteld op 2. (Geen wijziging)
 
 ##### <a name="22261-trackfragmentelement"></a>2.2.2.6.1 TrackFragmentElement 
 
-### <a name="223-fragment-request"></a>2.2.3 Fragmentaanvraag 
+### <a name="223-fragment-request"></a>2.2.3 fragment aanvraag 
 
->   **Opmerking**: De standaard media-indeling die wordt aangevraagd voor **MinorVersion** 2 en 'hev1' of 'hvc1' is 'iso8' merk ISO Base Media File Format opgegeven in [ISO/IEC 14496-12] ISO Base Media File Format Fourth Edition, en [ISO/IEC 23001-7] Common Encryption Second Edition.
+>   **Opmerking**: de standaard media-indeling die is aangevraagd voor **MinorVersion** 2 en ' hev1 ' of ' hvc1 ' is ' Iso8 ' brand ISO base-basis media bestands indeling die is opgegeven in [ISO/IEC 14496-12] ISO base Media File Format vierde editie en [ISO/IEC 23001-7] common Encryption tweede editie.
 
-### <a name="224-fragment-response"></a>2.2.4 Reactie op fragmenten 
+### <a name="224-fragment-response"></a>2.2.4 fragment antwoord 
 
 #### <a name="2241-moofbox"></a>2.2.4.1 MoofBox 
 
@@ -187,67 +187,67 @@ De ProtectionElement moet aanwezig zijn wanneer Common Encryption (CENC) is toeg
 
 #### <a name="2244-tfxdbox"></a>2.2.4.4 TfxdBox 
 
->   De **TfxdBox** is afgeschaft en de functie is vervangen door de Track Fragment Decode Time Box ('tfdt') die is opgegeven in [ISO/IEC 14496-12] sectie 8.8.12.
+>   De **TfxdBox** is afgeschaft en de functie wordt vervangen door het vak gedecodeerd fragment (' tfdt ') dat is opgegeven in de sectie [ISO/IEC 14496-12] 8.8.12.
 > 
->   **Opmerking**: Een client kan de duur van een fragment berekenen door de voorbeeldduur op te tellen die wordt vermeld in het vak Track Run ('trun') of het aantal monsters te vermenigvuldigen dat de standaardmonsterduur wordt weergegeven. De baseMediaDecodeTime in 'tfdt' plus fragmentduur is gelijk aan de URL-tijdparameter voor het volgende fragment.
+>   **Opmerking**: een client kan de duur van een fragment berekenen door de tijds duur van de steek proef die wordt vermeld in het vak uitvoering bijhouden (' Trun ') te totaliseren of door het aantal steek proeven te vermenigvuldigen met de standaard duur van de steek proef. De baseMediaDecodeTime in ' tfdt ' plus fragment duur is gelijk aan de URL-tijd parameter voor het volgende fragment.
 > 
->   Een Producer Reference Time Box ('prft') moet worden ingevoegd voorafgaand aan een Movie Fragment Box ('moof') indien nodig, om de UTC-tijd aan te geven die overeenkomt met de Track Fragment Decode Time van het eerste monster waarnaar wordt verwezen door de Movie Fragment Box, zoals gespecificeerd in [ISO/IEC 14496-12] sectie 8.16.5.
+>   Een referentie tijd voor een producent (' prft ') moet worden ingevoegd vóór een film fragment (' moof '), indien nodig, om de UTC-tijd aan te geven die overeenkomt met de decodeer tijd van het tracerings fragment van de eerste steek proef waarnaar wordt verwezen door het vak film fragment, zoals opgegeven in de sectie [ISO/IEC 14496-12] 8.16.5.
 
 #### <a name="2245-tfrfbox"></a>2.2.4.5 TfrfBox 
 
->   De **TfrfBox** wordt afgeschaft en de functie wordt vervangen door het Track Fragment Decode Time Box ('tfdt') dat is opgegeven in [ISO/IEC 14496-12] punt 8.8.12.
+>   De **TfrfBox** is afgeschaft en de functie wordt vervangen door het vak gedecodeerd fragment (' tfdt ') dat is opgegeven in de sectie [ISO/IEC 14496-12] 8.8.12.
 > 
->   **Opmerking**: Een client kan de duur van een fragment berekenen door de voorbeeldduur op te tellen die wordt vermeld in het vak Track Run ('trun') of het aantal monsters te vermenigvuldigen dat de standaardmonsterduur wordt weergegeven. De baseMediaDecodeTime in 'tfdt' plus fragmentduur is gelijk aan de URL-tijdparameter voor het volgende fragment. Kijk vooruit adressen zijn afgeschaft omdat ze live streaming vertragen.
+>   **Opmerking**: een client kan de duur van een fragment berekenen door de tijds duur van de steek proef die wordt vermeld in het vak uitvoering bijhouden (' Trun ') te totaliseren of door het aantal steek proeven te vermenigvuldigen met de standaard duur van de steek proef. De baseMediaDecodeTime in ' tfdt ' plus fragment duur is gelijk aan de URL-tijd parameter voor het volgende fragment. Doorgifte adressen zijn afgeschaft omdat ze live streamen vertragen.
 
 #### <a name="2246-tfhdbox"></a>2.2.4.6 TfhdBox 
 
->   De **TfhdBox** en de bijbehorende velden bevatten standaardwaarden voor per voorbeeldmetagegevens in het fragment. De syntaxis van het veld **TfhdBox** is een strikte subset van de syntaxis van het vak Track Fragment Header gedefinieerd in [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695) sectie 8.8.7.
+>   In de velden **TfhdBox** en gerelateerde worden standaard waarden voor de meta gegevens van de voor beelden in het fragment ingekapseld. De syntaxis van het veld **TfhdBox** is een strikte subset van de syntaxis van het vak fragment koptekst bijhouden dat is gedefinieerd in de sectie [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695) 8.8.7.
 > 
->   **BaseDataOffset (8 bytes):** De verschuiving in bytes vanaf het begin van het veld **MdatBox** naar het voorbeeldveld in het veld **MdatBox.** Om deze beperking aan te geven, moet de standaard-base-is-moof-vlag (0x020000) worden ingesteld.
+>   **BaseDataOffset (8 bytes):** De offset, in bytes, vanaf het begin van het veld **MdatBox** naar het voorbeeld veld in het veld **MdatBox** . Als u deze beperking wilt aangeven, moet de standaard-Base-moof-vlag (0x020000) worden ingesteld.
 
 #### <a name="2247-trunbox"></a>2.2.4.7 TrunBox 
 
->   De **TrunBox** en de bijbehorende velden bevatten per metagegevens van het voorbeeld voor het gevraagde fragment. De syntaxis van **TrunBox** is een strikte subset van het Version 1 Track Fragment Run Box gedefinieerd in [[ISO/IEC-14496-](https://go.microsoft.com/fwlink/?LinkId=183695)*12]* sectie 8.8.8.
+>   De **TrunBox** en gerelateerde velden bevatten een voor beeld van meta gegevens voor het aangevraagde fragment. De syntaxis van **TrunBox** is een strikte subset van het selectie vakje fragment uitvoering van versie 1 bijhouden dat is gedefinieerd in de sectie [[ISO/IEC-14496-](https://go.microsoft.com/fwlink/?LinkId=183695)*12]* 8.8.8.
 > 
->   **SampleCompositionTimeOffset (4 bytes):** De verschuiving tijdvan de monstersamenstellingstijd van elk monster wordt aangepast zodat de presentatietijd van het eerste gepresenteerde monster in het fragment gelijk is aan de decodetijd van het eerste gedecodeerde monster. Er moeten negatieve compensaties voor de samenstelling van de videomonsters worden gebruikt;
+>   **SampleCompositionTimeOffset (4 bytes):** De verschuiving van het voor beeld van de compositie tijd van elk voor beeld is aangepast, zodat de presentatie tijd van de eerste gepresenteerde steek proef in het fragment gelijk is aan de decoderings tijd van het eerste gedecodeerde voor beeld. Er worden negatieve verschuivingen van de samen stelling van de video monsters gebruikt,
 > 
 >   zoals gedefinieerd in [[ISO/IEC-14496-12].](https://go.microsoft.com/fwlink/?LinkId=183695)
 > 
->   Opmerking: Dit voorkomt een videosynchronisatiefout die wordt veroorzaakt door videoachterblijvende audio die gelijk is aan de grootste vertraging voor het verwijderen van de gedecodeerde beeldbuffer, en behoudt de presentatietiming tussen alternatieve fragmenten die verschillende verwijderingsvertragingen kunnen hebben.
+>   Opmerking: hiermee voor komt u dat er een video synchronisatie fout wordt veroorzaakt door video die geluid vertoont die gelijk is aan de grootste gedecodeerde vertraging bij het verwijderen van de afbeeldings buffer en wordt er een presentatie tijd in rekening gebracht tussen alternatieve fragmenten die verschillende verwijderings vertragingen kunnen hebben.
 > 
->   De syntaxis van de velden die in deze sectie zijn gedefinieerd, gespecificeerd in ABNF [[RFC5234],](https://go.microsoft.com/fwlink/?LinkId=123096) blijft hetzelfde, behalve als volgt:
+>   De syntaxis van de velden die in deze sectie zijn gedefinieerd, opgegeven in ABNF [[RFC5234],](https://go.microsoft.com/fwlink/?LinkId=123096) blijft hetzelfde, met uitzonde ring van de volgende opties:
 > 
 >   SampleCompositionTimeOffset = SIGNED_INT32
 
 #### <a name="2248-mdatbox"></a>2.2.4.8 MdatBox 
 
-#### <a name="2249-fragment-response-common-fields"></a>2.2.4.9 Algemene antwoorden op fragmentrespons 
+#### <a name="2249-fragment-response-common-fields"></a>Algemene velden van 2.2.4.9-fragment reactie 
 
-### <a name="225-sparse-stream-pointer"></a>2.2.5 Schaarse streamaanwijzer 
+### <a name="225-sparse-stream-pointer"></a>2.2.5 sparse stream-aanwijzer 
 
-### <a name="226-fragment-not-yet-available"></a>2.2.6 Fragment nog niet beschikbaar 
+### <a name="226-fragment-not-yet-available"></a>het 2.2.6-fragment is nog niet beschikbaar 
 
-### <a name="227-live-ingest"></a>2.2.7 Live Inest 
+### <a name="227-live-ingest"></a>Live-opname 2.2.7 
 
-#### <a name="2271-filetype"></a>2.2.7.1 Bestandstype 
+#### <a name="2271-filetype"></a>2.2.7.1 bestands type 
 
->   **FileType (variabele):** hiermee geeft u het subtype en het beoogde gebruik van het MPEG-4-bestand[([MPEG4-RA])](https://go.microsoft.com/fwlink/?LinkId=327787) en kenmerken op hoog niveau op.
+>   **Bestands type (variabele):** Hiermee geeft u het subtype en beoogd gebruik op van het MPEG-4 ([[MPEG4-Ra])-](https://go.microsoft.com/fwlink/?LinkId=327787) bestand en de kenmerken op hoog niveau.
 > 
->   **MajorBrand (variabel):** Het belangrijkste merk van het mediabestand. MOET worden ingesteld op "isml."
+>   **MajorBrand (variabele):** Het belangrijkste merk van het Media bestand. MOET worden ingesteld op ' isml '.
 > 
->   **MinorVersion (variabele):** De secundaire versie van het mediabestand. MOET worden ingesteld op 1.
+>   **MinorVersion (variabele):** De secundaire versie van het Media bestand. MOET worden ingesteld op 1.
 > 
->   **CompatibleBrands (variabel):** Hiermee geeft u de ondersteunde merken van MPEG-4 op.
->   Moet "ccff" en "iso8" bevatten.
+>   **CompatibleBrands (variabele):** Hiermee geeft u de ondersteunde merken van MPEG-4 op.
+>   MOET ' ccff ' en ' iso8 ' bevatten.
 > 
->   De syntaxis van de velden die in deze sectie zijn gedefinieerd, gespecificeerd in ABNF [[RFC5234],](https://go.microsoft.com/fwlink/?LinkId=123096) is als volgt:
+>   De syntaxis van de velden die in deze sectie zijn gedefinieerd, opgegeven in ABNF [[RFC5234],](https://go.microsoft.com/fwlink/?LinkId=123096) is als volgt:
 
     FileType = MajorBrand MinorVersion CompatibleBrands
     MajorBrand = STRING_UINT32
     MinorVersion = STRING_UINT32
     CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
 
-**Opmerking**: De compatibiliteitsmerken 'ccff' en 'iso8' geven aan dat fragmenten voldoen aan "Common Container File Format" en Common Encryption [ISO/IEC 23001-7] en ISO Base Media File Format Edition 4 [ISO/IEC 14496-12].
+**Opmerking**: de compatibiliteits Brands ' ccff ' en ' iso8 ' geven aan dat fragmenten overeenkomen met ' common container File Format ' en common Encryption [ISO/IEC 23001-7] en ISO base Media File Format Edition 4 [ISO/IEC 14496-12].
 
 #### <a name="2272-streammanifestbox"></a>2.2.7.2 StreamManifestBox 
 
@@ -259,126 +259,126 @@ De ProtectionElement moet aanwezig zijn wanneer Common Encryption (CENC) is toeg
 
 #### <a name="2274-moovbox"></a>2.2.7.4 MoovBox 
 
-#### <a name="2275-fragment"></a>2.2.7.5 Fragment 
+#### <a name="2275-fragment"></a>2.2.7.5-fragment 
 
-##### <a name="22751-track-fragment-extended-header"></a>2.2.7.5.1 Uitgebreide koptekst voor trackfragment 
+##### <a name="22751-track-fragment-extended-header"></a>2.2.7.5.1 track fragment uitgebreide koptekst 
 
-### <a name="228-server-to-server-ingest"></a>2.2.8 Server-to-Server-ingest 
+### <a name="228-server-to-server-ingest"></a>server-naar-server-opname 2.2.8 
 
-## <a name="3-protocol-details"></a>3 Protocoldetails 
+## <a name="3-protocol-details"></a>3-protocol Details 
 
 
-## <a name="31-client-details"></a>3.1 Klantgegevens 
+## <a name="31-client-details"></a>3,1-client Details 
 
-### <a name="311-abstract-data-model"></a>3.1.1 Abstract gegevensmodel 
+### <a name="311-abstract-data-model"></a>3.1.1 abstract gegevens model 
 
-#### <a name="3111-presentation-description"></a>3.1.1.1 Presentatiebeschrijving 
+#### <a name="3111-presentation-description"></a>Beschrijving van 3.1.1.1-presentatie 
 
->   Het gegevenselement Presentatiebeschrijving bevat alle metagegevens voor de presentatie.
+>   Het gegevens element van de presentatie beschrijving omvat alle meta gegevens voor de presentatie.
 > 
->   Presentatiemetagegevens: een set metagegevens die gebruikelijk is voor alle streams in de presentatie. Presentatiemetagegevens omvatten de volgende gebieden, omschreven in punt *2.2.2.1:*
+>   Meta gegevens van Presentation: een set meta gegevens die gemeen schappelijk is voor alle streams in de presentatie. Meta gegevens van de presentatie omvatten de volgende velden, zoals beschreven in sectie *2.2.2.1*:
 > 
 > * **MajorVersion**
-> * **MinorVersie**
-> * **Tijdschaal**
+> * **MinorVersion**
+> * **Lijnen**
 > * **Duur**
-> * **IsLive (IsLive)**
+> * **IsLive**
 > * **LookaheadCount**
-> * **DVRWindowLengte**
+> * **DVRWindowLength**
 > 
->   De aanbiedingsvormen die HEVC-streams bevatten, moeten worden vastgesteld:
+>   Presentaties met HEVC-stromen moeten worden ingesteld op:
 
     MajorVersion = 2
     MinorVersion = 2
 
->   LookaheadCount = 0 (Let op: Dozen afgeschaft)
+>   LookaheadCount = 0 (Opmerking: vakken afgeschaft)
 > 
->   Presentaties MOETEN ook instellen:
+>   Presentaties moeten ook worden ingesteld:
 
     TimeScale = 90000
 
->   Verzameling van stroom: een verzameling gegevenselementen van streambeschrijving, zoals omschreven in punt *3.1.1.1.2*.
+>   Stream-verzameling: een verzameling gegevens elementen van stream description, zoals beschreven in sectie *3.1.1.1.2*.
 > 
->   Beschrijving van de bescherming: gegevenselementen van de beschrijving van het beveiligingssysteem metagegevens, zoals omschreven in punt *3.1.1.1.1*.
+>   Beschrijving van beveiliging: een verzameling gegevens elementen van meta gegevens van een beveiligings systeem, zoals beschreven in sectie *3.1.1.1.1*.
 
-##### <a name="31111-protection-system-metadata-description"></a>3.1.1.1.1 Beschrijving van metagegevens van beveiligingssysteem 
+##### <a name="31111-protection-system-metadata-description"></a>Beschrijving van meta gegevens van het 3.1.1.1.1 Protection-systeem 
 
->   Het gegevenselement Metagegevensbeschrijving van het beveiligingssysteem bevat metagegevens die specifiek zijn voor één contentbeveiligingssysteem. (Geen wijziging)
+>   Het gegevens element van de meta gegevens beschrijving van het beveiligings systeem encapsulateert meta gegevens die specifiek zijn voor een enkel Content Protection systeem. (Geen wijziging)
 > 
->   Beschrijving van de beveiligingsheader: metagegevens voor inhoudsbescherming die betrekking hebben op één contentbeveiligingssysteem. Beschrijving van de protection header omvat de volgende velden, omschreven in punt *2.2.2.2*:
+>   Beschrijving van de beveiligings header: meta gegevens van inhouds beveiliging die betrekking hebben op een enkel Content Protection systeem. De beschrijving van de beveiligings header bestaat uit de volgende velden, zoals beschreven in sectie *2.2.2.2*:
 > 
 >   * **SystemID**
->   * **ProtectionheaderContent**
+>   * **ProtectionHeaderContent**
 
-##### <a name="31112-stream-description"></a>3.1.1.1.2 Streambeschrijving 
+##### <a name="31112-stream-description"></a>Beschrijving van de 3.1.1.1.2-stroom 
 
-###### <a name="311121-track-description"></a>3.1.1.1.2.1 Spoorbeschrijving 
+###### <a name="311121-track-description"></a>Beschrijving van 3.1.1.1.2.1-track 
 
-###### <a name="3111211-custom-attribute-description"></a>3.1.1.1.2.1.1 Aangepaste kenmerkbeschrijving 
+###### <a name="3111211-custom-attribute-description"></a>Beschrijving van aangepast 3.1.1.1.2.1.1-kenmerk 
 
-##### <a name="3113-fragment-reference-description"></a>3.1.1.3 Beschrijving van fragmentverwijzingen 
+##### <a name="3113-fragment-reference-description"></a>Beschrijving van 3.1.1.3-fragment verwijzing 
 
-###### <a name="31131-track-specific-fragment-reference-description"></a>3.1.1.3.1 Beschrijving van de referentie van fragmenten 
+###### <a name="31131-track-specific-fragment-reference-description"></a>Beschrijving van de 3.1.1.3.1-specifieke fragment verwijzing 
 
-#### <a name="3112-fragment-description"></a>3.1.1.2 Fragmentbeschrijving 
+#### <a name="3112-fragment-description"></a>Beschrijving van 3.1.1.2-fragment 
 
-##### <a name="31121-sample-description"></a>3.1.1.2.1 Steekproefbeschrijving 
+##### <a name="31121-sample-description"></a>Beschrijving van 3.1.1.2.1-voor beeld 
 
-### <a name="312-timers"></a>3.1.2 Timers 
+### <a name="312-timers"></a>3.1.2 timers 
 
-### <a name="313-initialization"></a>3.1.3 Initialisatie 
+### <a name="313-initialization"></a>3.1.3-initialisatie 
 
-### <a name="314-higher-layer-triggered-events"></a>3.1.4 Geactiveerde gebeurtenissen met een hogere laag 
+### <a name="314-higher-layer-triggered-events"></a>Geactiveerde gebeurtenissen met een hogere laag 3.1.4 
 
-#### <a name="3141-open-presentation"></a>3.1.4.1 Open presentatie 
+#### <a name="3141-open-presentation"></a>3.1.4.1 open presentatie 
 
-#### <a name="3142-get-fragment"></a>3.1.4.2 Fragment krijgen 
+#### <a name="3142-get-fragment"></a>Fragment ophalen 3.1.4.2 
 
-#### <a name="3143-close-presentation"></a>3.1.4.3 Presentatie sluiten 
+#### <a name="3143-close-presentation"></a>Presentatie 3.1.4.3 sluiten 
 
-### <a name="315-processing-events-and-sequencing-rules"></a>3.1.5 Verwerkingsgebeurtenissen en sequencingregels 
+### <a name="315-processing-events-and-sequencing-rules"></a>3.1.5 verwerkings gebeurtenissen en Sequentiëren 
 
-#### <a name="3151-manifest-request-and-manifest-response"></a>3.1.5.1 Manifest verzoek en manifestantwoord 
+#### <a name="3151-manifest-request-and-manifest-response"></a>3.1.5.1-manifest aanvraag en reactie op Manifest 
 
-#### <a name="3152-fragment-request-and-fragment-response"></a>3.1.5.2 Fragmentaanvraag en fragmentrespons
+#### <a name="3152-fragment-request-and-fragment-response"></a>3.1.5.2 fragment aanvraag en fragment reactie
 
-## <a name="32-server-details"></a>3.2 Servergegevens
+## <a name="32-server-details"></a>3,2-Server Details
 
-## <a name="33-live-encoder-details"></a>3.3 Live Encoder Details 
+## <a name="33-live-encoder-details"></a>Details van de Live Encoder van 3,3 
 
-## <a name="4-protocol-examples"></a>4 Voorbeelden van protocol 
+## <a name="4-protocol-examples"></a>4 protocol-voor beelden 
 
-## <a name="5-security"></a>5 Beveiliging 
+## <a name="5-security"></a>5 beveiliging 
 
-## <a name="51-security-considerations-for-implementers"></a>5.1 Veiligheidsoverwegingen voor uitvoerders
+## <a name="51-security-considerations-for-implementers"></a>5,1 beveiligings overwegingen voor implementaties
 
->   Als de inhoud die met dit protocol wordt vervoerd een hoge commerciële waarde heeft, moet een Content Protection System worden gebruikt om onbevoegd gebruik van de inhoud te voorkomen. De **ProtectionElement** kan worden gebruikt om metadata met betrekking tot het gebruik van een Content Protection System. Beveiligde audio- en video-inhoud moet worden versleuteld zoals gespecificeerd door MPEG Common Encryption Second Edition: 2015 [ISO/IEC 23001-7].
+>   Als de inhoud die wordt getransporteerd met dit protocol een hoge commerciële waarde heeft, moet een Content Protection systeem worden gebruikt om ongeoorloofd gebruik van de inhoud te voor komen. De **ProtectionElement** kan worden gebruikt voor het gebruiken van meta gegevens met betrekking tot het gebruik van een Content Protection-systeem. Beveiligde audio-en video-inhoud moeten worden versleuteld zoals is opgegeven door MPEG Common Encryption tweede editie: 2015 [ISO/IEC 23001-7].
 > 
->   **Opmerking:** Voor HEVC-video worden alleen slicegegevens in VCL-NALs versleuteld. Slice-headers en andere NALs zijn toegankelijk voor presentatietoepassingen voordat ze worden decryptie. in een beveiligd videopad is versleutelde informatie niet beschikbaar voor presentatietoepassingen.
+>   **Opmerking**: voor HEVC video worden alleen segment gegevens in VCL NALs versleuteld. Segment koppen en andere NALs zijn toegankelijk voor presentatie toepassingen voordat ze worden ontsleuteld. in een beveiligd video pad zijn versleutelde gegevens niet beschikbaar voor presentatie toepassingen.
 
-## <a name="52-index-of-security-parameters"></a>5.2 Index van beveiligingsparameters 
+## <a name="52-index-of-security-parameters"></a>5,2 index van beveiligings parameters 
 
 
-| **Beveiligingsparameter**  | **Section**         |
+| **Beveiligings parameter**  | **Sectie**         |
 |-------------------------|---------------------|
 | ProtectionElement       | *2.2.2.2*           |
-| Algemene versleutelingsvakken | *[ISO/IEC 23001-7]* |
+| Common Encryption vakken | *[ISO/IEC 23001-7]* |
 
-## <a name="53-common-encryption-boxes"></a>5.3 Algemene versleutelingsvakken
+## <a name="53-common-encryption-boxes"></a>5,3 Common Encryption vakken
 
-De volgende vakken kunnen aanwezig zijn in fragmentreacties wanneer gemeenschappelijke versleuteling wordt toegepast en zijn gespecificeerd in [ISO/IEC 23001-7] of [ISO/IEC 14496-12]:
+De volgende vakken kunnen aanwezig zijn in fragment reacties wanneer Common Encryption wordt toegepast en zijn opgegeven in [ISO/IEC 23001-7] of [ISO/IEC 14496-12]:
 
-1.  Beveiligingssysteem specifieke header box ('pssh')
+1.  Vak beveiligings systeem specifiek koptekst (' pssh ')
 
-2.  Voorbeeldversleutelingsvak ('senc')
+2.  Voor beeld van een versleutelings doos (' senc ')
 
-3.  Voorbeeld van hulpinformatieoffsetbox ('saio')
+3.  Voor beeld van een offset-vak met hulp gegevens (' saio ')
 
-4.  Voorbeeld van hulpinformatie ('saiz')
+4.  Voor beeld van het vak voor de grootte van de hulp gegevens (' Saiz ')
 
-5.  Voorbeeldgroepbeschrijvingsvak ('sgpd')
+5.  Vak Beschrijving van de voorbeeld groep (' sgpd ')
 
-6.  Voorbeeld naar groepsvak ('sbgp')
+6.  Voor beeld van groeps vak (' sbgp ')
 
 ---
 

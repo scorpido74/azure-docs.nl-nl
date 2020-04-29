@@ -1,7 +1,7 @@
 ---
-title: Veelvoorkomende problemen met zoekindexeroplossen
+title: Veelvoorkomende problemen met zoek indexen oplossen
 titleSuffix: Azure Cognitive Search
-description: Los fouten en veelvoorkomende problemen op met indexeerders in Azure Cognitive Search, waaronder gegevensbronverbinding, firewall en ontbrekende documenten.
+description: Corrigeer fouten en veelvoorkomende problemen met Indexeer functies in azure Cognitive Search, waaronder gegevens bron verbinding, firewall en ontbrekende documenten.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,39 +9,39 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 1e3692920c35a6965a23c0305aeeebfc80505d85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77190935"
 ---
-# <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Problemen met veelvoorkomende indexeren oplossen in Azure Cognitive Search
+# <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Veelvoorkomende problemen met Indexeer functies in azure Cognitive Search oplossen
 
-Indexers kunnen een aantal problemen ondervinden bij het indexeren van gegevens in Azure Cognitive Search. De belangrijkste categorieën van mislukkingen omvatten:
+Indexeer functies kunnen in een aantal problemen worden uitgevoerd bij het indexeren van gegevens in azure Cognitive Search. De belangrijkste categorieën fouten zijn onder andere:
 
-* [Verbinding maken met een gegevensbron of andere bronnen](#connection-errors)
-* [Documentverwerking](#document-processing-errors)
-* [Inname van documenten in een index](#index-errors)
+* [Verbinding maken met een gegevens bron of andere resources](#connection-errors)
+* [Document verwerking](#document-processing-errors)
+* [Opname van documenten naar een index documenteren](#index-errors)
 
 ## <a name="connection-errors"></a>Verbindingsfouten
 
 > [!NOTE]
-> Indexers hebben beperkte ondersteuning voor toegang tot gegevensbronnen en andere bronnen die zijn beveiligd door Azure-netwerkbeveiligingsmechanismen. Momenteel hebben indexeerders alleen toegang tot gegevensbronnen via overeenkomstige IP-adresbereikbeperkingsmechanismen of NSG-regels indien van toepassing. Details voor de toegang tot elke ondersteunde gegevensbron vindt u hieronder.
+> Indexeer functies hebben beperkte ondersteuning voor toegang tot gegevens bronnen en andere bronnen die worden beveiligd door Azure-netwerk beveiligings mechanismen. Op dit moment kunnen Indexeer functies alleen toegang krijgen tot gegevens bronnen via de bijbehorende beperkings mechanismen voor IP-adres bereik of NSG regels, indien van toepassing. Details voor toegang tot elke ondersteunde gegevens bron vindt u hieronder.
 >
-> U het IP-adres van uw zoekservice achterhalen door de `<your-search-service-name>.search.windows.net`volledig gekwalificeerde domeinnaam te pingen (bijv., ).
+> U kunt het IP-adres van uw zoek service nagaan door de Fully Qualified Domain Name (bijvoorbeeld `<your-search-service-name>.search.windows.net`) te pingen.
 >
-> U `AzureCognitiveSearch` kunt het IP-adresbereik van de [servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) achterhalen door [downloadbare JSON-bestanden](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) te gebruiken of via de Service Tag Discovery [API.](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview) Het IP-adresbereik wordt wekelijks bijgewerkt.
+> U kunt het IP-adres bereik van de `AzureCognitiveSearch` [servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) van de service opvragen door [Download bare json-bestanden](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) te gebruiken of via de [service tag discovery-API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Het IP-adres bereik wordt wekelijks bijgewerkt.
 
 ### <a name="configure-firewall-rules"></a>Firewallregels configureren
 
-Azure Storage, CosmosDB en Azure SQL bieden een configureerbare firewall. Er is geen specifiek foutbericht wanneer de firewall is ingeschakeld. Meestal zijn firewallfouten algemeen en `The remote server returned an error: (403) Forbidden` `Credentials provided in the connection string are invalid or have expired`lijken ze op of .
+Azure Storage, CosmosDB en Azure SQL bieden een Configureer bare firewall. Er is geen specifiek fout bericht wanneer de firewall is ingeschakeld. Normaal gesp roken zijn firewall fouten algemeen en zien `The remote server returned an error: (403) Forbidden` ze `Credentials provided in the connection string are invalid or have expired`eruit als of.
 
-Er zijn 2 opties om indexeerders toegang te geven tot deze bronnen in een dergelijk geval:
+Er zijn twee opties voor het toestaan van Indexeer functies voor toegang tot deze resources:
 
 * Schakel de firewall uit door toegang vanaf **alle netwerken** toe te staan (indien mogelijk).
-* U ook toegang verlenen voor het IP-adres van uw `AzureCognitiveSearch` zoekservice en het IP-adresbereik van [servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) in de firewallregels van uw bron (beperking ip-adresbereik).
+* U kunt ook toegang toestaan voor het IP-adres van uw zoek service en het IP-adres bereik van `AzureCognitiveSearch` de [service label](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) in de firewall regels van uw bron (beperking van het IP-adres bereik).
 
-Details voor het configureren van ip-adresbereikbeperkingen voor elk gegevensbrontype zijn te vinden in de volgende koppelingen:
+Details voor het configureren van IP-adres bereik beperkingen voor elk gegevens bron type vindt u op de volgende koppelingen:
 
 * [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
 
@@ -49,31 +49,31 @@ Details voor het configureren van ip-adresbereikbeperkingen voor elk gegevensbro
 
 * [Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)
 
-**Beperking:** Zoals vermeld in de bovenstaande documentatie voor Azure Storage, werken ip-adresbereikbeperkingen alleen als uw zoekservice en uw opslagaccount zich in verschillende regio's bevinden.
+**Beperking**: zoals vermeld in de bovenstaande documentatie voor Azure Storage, werken IP-adres bereik beperkingen alleen als uw zoek service en uw opslag account zich in verschillende regio's bevinden.
 
-Azure-functies (die kunnen worden gebruikt als [een Custom Web Api-vaardigheid)](cognitive-search-custom-skill-web-api.md)ondersteunen ook [IP-adresbeperkingen.](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions) De lijst met IP-adressen die u wilt configureren, is het `AzureCognitiveSearch` IP-adres van uw zoekservice en het IP-adresbereik van de servicetag.
+Azure functions (die kunnen worden gebruikt als [aangepaste web API-vaardigheid](cognitive-search-custom-skill-web-api.md)) ondersteunen ook [IP-adres beperkingen](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions). De lijst met IP-adressen die moeten worden geconfigureerd, is het IP-adres van de zoek service en het `AzureCognitiveSearch` IP-adres bereik van de service label.
 
-Details voor toegang tot gegevens in SQL-server op een Azure VM worden [hier](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) beschreven
+Details voor het openen van gegevens in SQL Server op een virtuele machine van Azure worden [hier](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) beschreven
 
-### <a name="configure-network-security-group-nsg-rules"></a>NSG-regels (Network Security Group) configureren
+### <a name="configure-network-security-group-nsg-rules"></a>Regels voor netwerk beveiligings groepen (NSG) configureren
 
-Wanneer u toegang krijgt tot gegevens in een SQL-beheerde instantie of wanneer een Azure VM wordt gebruikt als webservice URI voor een [Custom Web Api-vaardigheid,](cognitive-search-custom-skill-web-api.md)hoeven klanten zich geen zorgen te maken over specifieke IP-adressen.
+Bij het openen van gegevens in een SQL Managed instance of wanneer een virtuele machine van Azure wordt gebruikt als de webservice-URI voor een [aangepaste web API-vaardigheid](cognitive-search-custom-skill-web-api.md), hoeven klanten geen gebruik te maken van specifieke IP-adressen.
 
-In dergelijke gevallen kan de Azure VM of de SQL-beheerde instantie worden geconfigureerd om zich in een virtueel netwerk te bevinden. Vervolgens kan een netwerkbeveiligingsgroep worden geconfigureerd om het type netwerkverkeer te filteren dat in en uit de virtuele netwerksubnetten en netwerkinterfaces kan stromen.
+In dergelijke gevallen kan de virtuele machine van Azure of het beheerde exemplaar van SQL worden geconfigureerd zodat deze zich binnen een virtueel netwerk bevindt. Vervolgens kan een netwerk beveiligings groep worden geconfigureerd om het type netwerk verkeer te filteren dat in en uit de subnetten van het virtuele netwerk en netwerk interfaces kan stromen.
 
-De `AzureCognitiveSearch` servicetag kan direct worden gebruikt in de binnenkomende [NSG-regels](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#work-with-security-rules) zonder dat u het IP-adresbereik hoeft op te zoeken.
+De `AzureCognitiveSearch` servicetag kan rechtstreeks worden gebruikt in de regels voor inkomende [NSG](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#work-with-security-rules) zonder dat het IP-adres bereik moet worden opgezocht.
 
-Meer details voor toegang tot gegevens in een SQL-beheerde instantie worden [hier](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md) beschreven
+Meer informatie over het openen van gegevens in een SQL Managed instance wordt [hier](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md) beschreven
 
-### <a name="cosmosdb-indexing-isnt-enabled"></a>CosmosDB "Indexing" is niet ingeschakeld
+### <a name="cosmosdb-indexing-isnt-enabled"></a>CosmosDB ' indexeren ' is niet ingeschakeld
 
-Azure Cognitive Search heeft een impliciete afhankelijkheid van Cosmos DB-indexering. Als u automatische indexering uitschakelt in Cosmos DB, retourneert Azure Cognitive Search een geslaagde status, maar wordt de inhoud van de container niet geïndexeerd. Zie Indexering beheren in Azure Cosmos DB [voor](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal)instructies over het controleren van instellingen en het inschakelen van indexering.
+Azure Cognitive Search heeft een impliciete afhankelijkheid van Cosmos DB indexering. Als u automatische indexering in Cosmos DB uitschakelt, wordt door Azure Cognitive Search een succes volle status geretourneerd, maar kan de inhoud van de container niet worden geïndexeerd. Zie [Manage Indexing in azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal)voor instructies over het controleren van instellingen en het inschakelen van indexeren.
 
-## <a name="document-processing-errors"></a>Fouten in documentverwerking
+## <a name="document-processing-errors"></a>Document verwerkings fouten
 
-### <a name="unprocessable-or-unsupported-documents"></a>Niet-verwerkbare of niet-ondersteunde documenten
+### <a name="unprocessable-or-unsupported-documents"></a>Niet-verwerkte of niet-ondersteunde documenten
 
-De blob-indexerdocumenteert [welke documentindelingen expliciet worden ondersteund.](search-howto-indexing-azure-blob-storage.md#SupportedFormats). Soms bevat een blobopslagcontainer niet-ondersteunde documenten. Andere keren kunnen er problematische documenten zijn. U voorkomen dat uw indexer op deze documenten wordt gestopt door [configuratieopties te wijzigen:](search-howto-indexing-azure-blob-storage.md#DealingWithErrors)
+De BLOB-Indexeer [documenten die worden ondersteund door de document indelingen expliciet](search-howto-indexing-azure-blob-storage.md#SupportedFormats) Soms bevat een BLOB storage-container niet-ondersteunde documenten. Het kan zijn dat er problemen zijn met de documenten. U kunt voor komen dat uw Indexeer functie op deze documenten wordt gestopt door [configuratie opties te wijzigen](search-howto-indexing-azure-blob-storage.md#DealingWithErrors):
 
 ```
 PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
@@ -86,12 +86,12 @@ api-key: [admin key]
 }
 ```
 
-### <a name="missing-document-content"></a>Ontbrekende documentinhoud
+### <a name="missing-document-content"></a>Ontbrekende document inhoud
 
-De blobindexer [vindt en extraheert tekst uit blobs in een container](search-howto-indexing-azure-blob-storage.md#how-azure-search-indexes-blobs). Enkele problemen met het extraheren van tekst zijn:
+De BLOB-indexer [zoekt en extraheert tekst van blobs in een container](search-howto-indexing-azure-blob-storage.md#how-azure-search-indexes-blobs). Enkele problemen met het ophalen van tekst zijn onder andere:
 
-* Het document bevat alleen gescande afbeeldingen. PDF-blobs met niet-tekstinhoud, zoals gescande afbeeldingen (JPGs), leveren geen resultaten op in een standaard blobindexeringspijplijn. Als u afbeeldingsinhoud met tekstelementen hebt, u [cognitief zoeken](cognitive-search-concept-image-scenarios.md) gebruiken om de tekst te zoeken en te extraheren.
-* De blob-indexer is geconfigureerd om alleen metagegevens te indexeren. Als u inhoud wilt extraheren, moet de blob-indexer zijn geconfigureerd om [zowel inhoud als metagegevens](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)te extraheren:
+* Het document bevat alleen gescande afbeeldingen. PDF-blobs met niet-tekst inhoud, zoals gescande afbeeldingen (JPGs), produceren geen resultaten in een standaard-BLOB-indexerings pijplijn. Als u afbeeldings inhoud met tekst elementen hebt, kunt u met [cognitieve zoek opdracht](cognitive-search-concept-image-scenarios.md) de tekst zoeken en extra heren.
+* De BLOB-indexer is zo geconfigureerd dat alleen meta gegevens worden geïndexeerd. Als u inhoud wilt extra heren, moet de BLOB-indexer worden geconfigureerd voor het [extra heren van inhoud en meta gegevens](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed):
 
 ```
 PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
@@ -104,14 +104,14 @@ api-key: [admin key]
 }
 ```
 
-## <a name="index-errors"></a>Indexfouten
+## <a name="index-errors"></a>Index fouten
 
 ### <a name="missing-documents"></a>Ontbrekende documenten
 
-Indexers vinden documenten uit een [gegevensbron](https://docs.microsoft.com/rest/api/searchservice/create-data-source). Soms lijkt een document uit de gegevensbron dat had moeten worden geïndexeerd, te ontbreken in een index. Er zijn een paar veel voorkomende redenen waarom deze fouten kunnen gebeuren:
+Indexeer functies vinden documenten van een [gegevens bron](https://docs.microsoft.com/rest/api/searchservice/create-data-source). Soms lijkt een document uit de gegevens bron dat moest worden geïndexeerd, te ontbreken in een index. Er zijn enkele veelvoorkomende redenen waarom deze fouten zich kunnen voordoen:
 
-* Het document is niet geïndexeerd. Controleer de portal voor een succesvolle indexerrun.
-* Het document is bijgewerkt nadat de indexer is uitgevoerd. Als uw indexer op een [schema staat,](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule)wordt het uiteindelijk opnieuw uitgevoerd en wordt het document opgehaald.
-* De [query](/rest/api/searchservice/create-data-source) die in de gegevensbron is opgegeven, sluit het document uit. Indexers kunnen geen documenten indexeren die geen deel uitmaken van de gegevensbron.
-* [Veldtoewijzingen](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) of [AI-verrijking](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) hebben het document gewijzigd en het ziet er anders uit dan u verwacht.
-* Gebruik de [opzoekdocument-API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) om uw document te vinden.
+* Het document is niet geïndexeerd. Controleer de portal op de uitvoering van een geslaagde indexer.
+* Het document is bijgewerkt nadat de Indexeer functie is uitgevoerd. Als uw Indexeer functie volgens een [schema is gepland](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule), wordt het document uiteindelijk opnieuw uitgevoerd en opgehaald.
+* De [query](/rest/api/searchservice/create-data-source) die is opgegeven in de gegevens bron, sluit het document uit. Indexeer functies kunnen geen documenten indexeren die geen deel uitmaken van de gegevens bron.
+* [Veld Toewijzingen](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) of [AI-verrijking](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) hebben het document gewijzigd en het ziet er anders uit dan verwacht.
+* Gebruik de [opzoek document-API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) om uw document te vinden.

@@ -1,6 +1,6 @@
 ---
-title: Knooppunten voor VMware-oplossing door CloudSimple - Azure
-description: Meer informatie over het toevoegen van knooppunten aan uw VMWare met CloudSimple-implementatie
+title: Knoop punten inrichten voor VMware-oplossing door CloudSimple-Azure
+description: Meer informatie over het toevoegen van knoop punten aan uw VMWare met CloudSimple-implementatie
 author: dikamath
 ms.author: dikamath
 ms.date: 08/14/2019
@@ -9,43 +9,43 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: eb033425d18b472c9da1a2d6a1bb6f166702905e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024803"
 ---
-# <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>Knooppunten voor Azure VMware-oplossing door CloudSimple inrichten
+# <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>Knoop punten inrichten voor Azure VMware-oplossing op CloudSimple
 
-Knooppunten inrichten in de Azure-portal. Vervolgens u de capaciteit voor betalen per gebruik instellen voor uw CloudSimple private cloudomgeving.
+Knoop punten inrichten in de Azure Portal. Vervolgens kunt u betalen naar gebruik-capaciteit instellen voor uw persoonlijke cloud omgeving van CloudSimple.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
+Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>Voeg een knooppunt toe aan uw CloudSimple private cloud
+## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>Een knoop punt toevoegen aan uw CloudSimple-privécloud
 
-1. Selecteer **Alle services**.
-2. Zoeken naar **CloudSimple-knooppunten**.
+1. Selecteer **alle services**.
+2. Zoek naar **CloudSimple-knoop punten**.
 
-   ![Zoeken in CloudSimple-knooppunten](media/create-cloudsimple-node-search.png)
+   ![CloudSimple-knoop punten zoeken](media/create-cloudsimple-node-search.png)
 
-3. Selecteer **CloudSimple-knooppunten**.
-4. Klik **op Toevoegen** om knooppunten te maken.
+3. Selecteer **CloudSimple-knoop punten**.
+4. Klik op **toevoegen** om knoop punten te maken.
 
-    ![CloudSimple-knooppunten toevoegen](media/create-cloudsimple-node-add.png)
+    ![CloudSimple-knoop punten toevoegen](media/create-cloudsimple-node-add.png)
 
-5. Selecteer het abonnement waar u CloudSimple-knooppunten wilt inrichten.
-6. Selecteer de brongroep voor de knooppunten. Als u een nieuwe resourcegroep wilt toevoegen, klikt u op **Nieuw maken**.
-7. Voer het voorvoegsel in om de knooppunten te identificeren.
-8. Selecteer de locatie voor de knooppuntbronnen.
-9. Selecteer de specifieke locatie om de knooppuntbronnen te hosten.
-10. Selecteer het [knooppunttype](cloudsimple-node.md).
-11. Selecteer het aantal knooppunten dat u wilt inrichten.
+5. Selecteer het abonnement waar u de CloudSimple-knoop punten wilt inrichten.
+6. Selecteer de resource groep voor de knoop punten. Klik op **nieuwe maken**om een nieuwe resource groep toe te voegen.
+7. Voer het voor voegsel in om de knoop punten te identificeren.
+8. Selecteer de locatie voor de knooppunt resources.
+9. Selecteer de toegewezen locatie om de knooppunt resources te hosten.
+10. Selecteer het [knooppunt type](cloudsimple-node.md).
+11. Selecteer het aantal knoop punten dat moet worden ingericht.
 12. Selecteer **Controleren + maken**.
-13. Bekijk de instellingen. Als u instellingen wilt wijzigen, klikt u op **Vorige**.
+13. Controleer de instellingen. Als u instellingen wilt wijzigen, klikt u op **vorige**.
 14. Selecteer **Maken**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Private Cloud maken](create-private-cloud.md)
+* [Privécloud maken](create-private-cloud.md)

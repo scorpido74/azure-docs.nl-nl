@@ -1,7 +1,7 @@
 ---
-title: Overzicht van WAF op Azure Application Gateway-botbeveiliging
+title: Overzicht van WAF op Azure-toepassing gateway bot
 titleSuffix: Azure Web Application Firewall
-description: Dit artikel geeft een overzicht van webapplication firewall (WAF) op Application Gateway bot bescherming
+description: Dit artikel bevat een overzicht van Web Application Firewall (WAF) op Application Gateway bot-beveiliging
 services: web-application-firewall
 author: winthrop28
 ms.service: web-application-firewall
@@ -9,31 +9,31 @@ ms.date: 02/04/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 3bc481cfc35ac94699d2795862f1fe8e4decf875
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77027093"
 ---
-# <a name="azure-web-application-firewall-on-azure-application-gateway-bot-protection-overview"></a>Overzicht van Azure Web Application Firewall op Azure Application Gateway-botbeveiliging
+# <a name="azure-web-application-firewall-on-azure-application-gateway-bot-protection-overview"></a>Overzicht van Azure Web Application firewall op Azure-toepassing gateway-bot
 
-Ongeveer 20% van al het internetverkeer komt van slechte bots. Ze doen dingen zoals schrapen, scannen en zoeken naar kwetsbaarheden in uw webapplicatie. Wanneer deze bots worden gestopt bij de Web Application Firewall (WAF), kunnen ze u niet aanvallen. Ze kunnen ook geen gebruik maken van uw resources en services, zoals uw backends en andere onderliggende infrastructuur.
+Ongeveer 20% van het Internet verkeer is van een beschadigd bots. Dit zijn dingen zoals uitval, scannen en zoeken naar beveiligings problemen in uw webtoepassing. Wanneer deze botsingen worden gestopt bij de Web Application firewall (WAF), kunnen ze niet worden aangevallen. Ze kunnen ook geen resources en services gebruiken, zoals uw back-end en andere onderliggende infra structuur.
 
-U een beheerde botbeveiligingsregel inschakelen waarmee uw WAF aanvragen van bekende schadelijke IP-adressen kan blokkeren of registreren. De IP-adressen zijn afkomstig van de Microsoft Threat Intelligence-feed. Intelligent Security Graph is de drijvende kracht achter Microsoft-bedreigingsinformatie en wordt gebruikt door meerdere services, waaronder Azure Security Center.
+U kunt een set beheerde bot-beveiliging inschakelen voor uw WAF om aanvragen van bekende schadelijke IP-adressen te blok keren of te registreren. De IP-adressen worden vanuit de micro soft Threat Intelligence-feed gebrond. Intelligent Security Graph voorziet in micro soft Threat Intelligence en wordt gebruikt door meerdere services, waaronder Azure Security Center.
 
 > [!IMPORTANT]
-> De ingestelde beveiligingsregel voor bot is momenteel in openbare preview en wordt voorzien van een preview-serviceniveauovereenkomst. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Zie [de aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> De set bot Protection-regelset bevindt zich momenteel in een open bare preview en wordt weer gegeven met een preview-service level agreement. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Zie de [aanvullende gebruiks voorwaarden voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) -voor beelden voor meer informatie.
 
-## <a name="use-with-owasp-rulesets"></a>Gebruiken met OWASP-regelsets
+## <a name="use-with-owasp-rulesets"></a>Gebruiken met OWASP-rules
 
-U de regelset Botprotection gebruiken naast een van de OWASP-regelsets (2.2.9, 3.0 en 3.1). Slechts één OWASP-regelset kan op een bepaald moment worden gebruikt. De regelset voor botbeveiliging bevat een extra regel die wordt weergegeven in de eigen regelset. Het is getiteld **Microsoft_BotManagerRuleSet_0.1**, en u het in- of uitschakelen, net als de andere OWASP-regels.
+U kunt de bot Protection-ruleset naast een van de OWASP-Rules (2.2.9, 3,0 en 3,1) gebruiken. Op elk gewenst moment kan slechts één OWASP ruleset worden gebruikt. De bot Protection ruleset bevat een extra regel die wordt weer gegeven in een eigen ruleset. Het object heeft de titel **Microsoft_BotManagerRuleSet_0**1 en u kunt het in-of uitschakelen zoals de andere OWASP-regels.
 
-![Botregelset](../media/bot-protection-overview/bot-ruleset.png)
+![Bot-ruleSet](../media/bot-protection-overview/bot-ruleset.png)
 
-## <a name="ruleset-update"></a>Regelset-update
+## <a name="ruleset-update"></a>RuleSet-update
 
-De lijst met bekende slechte IP-adressen van de botmitigatie wordt meerdere keren per dag bijgewerkt vanuit de Microsoft Threat Intelligence-feed om synchroon te blijven met de bots. Uw webapplicaties worden continu beschermd, zelfs als de botaanvalsvectoren veranderen.
+De lijst met ongeldige IP-adressen voor de bot-beperking is meerdere keren per dag bijgewerkt vanaf de micro soft Threat Intelligence-feed om gesynchroniseerd te blijven met het bots. Uw webtoepassingen worden voortdurend beschermd, zelfs als de bot-aanvals vectoren veranderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Botbeveiliging configureren voor Web Application Firewall op Azure Application Gateway (Preview)](bot-protection.md)
+- [Bot-beveiliging configureren voor Web Application firewall op Azure-toepassing gateway (preview-versie)](bot-protection.md)

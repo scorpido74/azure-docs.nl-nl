@@ -1,6 +1,6 @@
 ---
 title: Onderhoudsmeldingen
-description: Overzicht van onderhoudsmeldingen voor virtuele machines die in Azure worden uitgevoerd.
+description: Overzicht van onderhouds meldingen voor virtuele machines die worden uitgevoerd in Azure.
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -8,118 +8,118 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
 ms.openlocfilehash: 68159577cb31145be5063bb19af6db71ca1727bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77115682"
 ---
-# <a name="handling-planned-maintenance-notifications"></a>Geplande onderhoudsmeldingen afhandelen
+# <a name="handling-planned-maintenance-notifications"></a>Geplande onderhouds meldingen verwerken
 
-Van tijd tot tijd voert Azure updates uit om de betrouwbaarheid, prestaties en veiligheid te verbeteren van de host-infrastructuur voor virtuele machines. Updates zijn wijzigingen zoals het patchen van de hostingomgeving of het upgraden en ontmantelen van hardware. Een meerderheid van deze updates worden voltooid zonder enige impact op de gehoste virtuele machines. Er zijn echter gevallen waarin updates wel een impact hebben:
+Van tijd tot tijd voert Azure updates uit om de betrouwbaarheid, prestaties en veiligheid te verbeteren van de host-infrastructuur voor virtuele machines. Updates zijn wijzigingen zoals het patchen van de hosting omgeving of het upgraden en uit bedrijf nemen van hardware. Een meerderheid van deze updates wordt voltooid zonder enige invloed op de gehoste virtuele machines. Er zijn echter gevallen waarin updates een impact hebben:
 
-- Als het onderhoud geen herstart vereist, gebruikt Azure in-place migratie om de VM te pauzeren terwijl de host wordt bijgewerkt. Deze typen onderhoudsbewerkingen worden toegepast fout domein door fout domein. De voortgang wordt gestopt als er waarschuwingsgezondheidssignalen worden ontvangen.
+- Als voor het onderhoud geen herstart is vereist, gebruikt Azure in-place migratie om de VM te onderbreken terwijl de host wordt bijgewerkt. Dit type onderhouds bewerkingen worden een fout domein toegepast op het fout domein. De voortgang wordt gestopt als er waarschuwings status signalen worden ontvangen.
 
-- Als onderhoud een herstart vereist, krijgt u een melding van wanneer het onderhoud is gepland. U krijgt een tijdsvenster van ongeveer 35 dagen waar u zelf het onderhoud starten, wanneer het voor u werkt.
-
-
-Gepland onderhoud waarvoor een herstart vereist is, is gepland in golven. Elke golf heeft een ander bereik (regio's).
-
-- Een golf begint met een melding aan klanten. Standaard wordt de melding verzonden naar de servicebeheerder en medebeheerders. U meer geadresseerden en berichtenopties toevoegen, zoals e-mail, sms en webhooks, met behulp van [waarschuwingen voor activiteitenlogboeken.](../service-health/alerts-activity-log-service-notifications.md)  
-- Zodra een melding wordt uitgevoerd, wordt een *selfservicevenster* beschikbaar gesteld. Tijdens dit venster u nagaan welke van uw virtuele machines worden beïnvloed en het onderhoud starten op basis van uw eigen planningsbehoeften. Het selfservicevenster is meestal ongeveer 35 dagen.
-- Na het selfservicevenster begint een *gepland onderhoudsvenster.* Op een bepaald moment tijdens dit venster plant en past Azure het vereiste onderhoud toe op uw virtuele machine. 
-
-Het doel van het hebben van twee vensters is om u voldoende tijd te geven om onderhoud te starten en uw virtuele machine opnieuw op te starten terwijl u weet wanneer Azure automatisch het onderhoud start.
+- Als de computer opnieuw moet worden opgestart, wordt een melding weer gegeven wanneer het onderhoud is gepland. U krijgt een tijd venster van ongeveer 35 dagen waarin u de onderhouds werkzaamheden zelf kunt starten.
 
 
-U de Azure-portal, PowerShell, REST API en CLI gebruiken om query's op te vragen voor de onderhoudsvensters voor uw VM's en zelfserviceonderhoud te starten.
+Gepland onderhoud waarvoor opnieuw opstarten is vereist, wordt gepland in golven. Elke golf heeft een ander bereik (regio's).
+
+- Een golf begint met een melding aan klanten. Standaard wordt er een melding verzonden naar de service beheerder en mede beheerders. U kunt meer ontvangers en bericht opties toevoegen, zoals e-mail, SMS en webhooks, met behulp van [waarschuwingen voor activiteiten logboeken](../service-health/alerts-activity-log-service-notifications.md).  
+- Zodra een melding wordt weer gegeven, wordt er een *self-service venster* beschikbaar gemaakt. Tijdens dit venster kunt u een query uitvoeren op de virtuele machines die worden beïnvloed en onderhoud starten op basis van uw eigen plannings behoeften. Het venster voor selfservice Services is doorgaans ongeveer 35 dagen.
+- Na het self-service venster begint een *gepland onderhouds venster* . Op een bepaald moment tijdens dit venster plant Azure en past het vereiste onderhoud toe op uw virtuele machine. 
+
+Het doel van het hebben van twee vensters is dat u voldoende tijd hebt om onderhoud te starten en uw virtuele machine opnieuw op te opstarten, terwijl u zeker weet wanneer Azure automatisch onderhoud start.
+
+
+U kunt de Azure Portal, Power shell, REST API en CLI gebruiken om een query uit te zoeken naar de onderhouds Vensters voor uw virtuele machines en het onderhoud van self-service te starten.
 
  
-## <a name="should-you-start-maintenance-using-during-the-self-service-window"></a>Moet u beginnen met het onderhoud tijdens het selfservicevenster?  
+## <a name="should-you-start-maintenance-using-during-the-self-service-window"></a>Moet u onderhoud starten met tijdens het selfservice venster?  
 
-De volgende richtlijnen moeten u helpen beslissen of u deze mogelijkheid wilt gebruiken en het onderhoud op uw eigen tijd wilt starten. 
+De volgende richt lijnen kunnen u helpen beslissen of u deze mogelijkheid wilt gebruiken en op uw eigen moment onderhoud kunt starten. 
 
 > [!NOTE] 
-> Zelfserviceonderhoud is mogelijk niet beschikbaar voor al uw VM's. Als u wilt bepalen of proactieve redeploy beschikbaar is voor uw vm, zoekt u nu naar het **startscherm** in de onderhoudsstatus. Selfservice-onderhoud is momenteel niet beschikbaar voor Cloud Services (Web/Worker Role) en Service Fabric.
+> Het onderhoud van self-service is mogelijk niet beschikbaar voor al uw virtuele machines. Als u wilt bepalen of proactieve herimplementatie beschikbaar is voor uw virtuele machine, zoekt u naar de **Start nu** in de onderhouds status. Self-service onderhoud is momenteel niet beschikbaar voor Cloud Services (Web/Worker-rol) en Service Fabric.
 
 
-Selfserviceonderhoud wordt niet aanbevolen voor implementaties met behulp van **beschikbaarheidssets.** Beschikbaarheidssets worden al slechts één updatedomein tegelijk bijgewerkt. 
+Self-service onderhoud wordt niet aanbevolen voor implementaties met behulp van **beschikbaarheids sets**. Beschikbaarheids sets worden al slechts één update domein per keer bijgewerkt. 
 
-- Laat Azure het onderhoud activeren. Voor onderhoud dat opnieuw moet worden opgestart, wordt het onderhoudsdomein per updatedomein uitgevoerd. De updatedomeinen ontvangen het onderhoud niet noodzakelijkerwijs opeenvolgend en dat er een pauze van 30 minuten is tussen updatedomeinen. 
-- Als een tijdelijk verlies van een bepaalde capaciteit (1 updatedomein) een probleem is, u instanties toevoegen tijdens de onderhoudsperiode. 
-- Voor onderhoud waarvoor geen reboot nodig is, worden updates toegepast op het niveau van het foutdomein. 
+- Laat Azure het onderhoud activeren. Voor onderhoud waarvoor opnieuw opstarten is vereist, wordt onderhoud uitgevoerd op update domein. De update domeinen ontvangen niet noodzakelijkerwijs het onderhoud opeenvolgend en er is een onderbreking van 30 minuten tussen de update domeinen. 
+- Als een tijdelijk verlies van enige capaciteit (1 update domein) een probleem is, kunt u instanties toevoegen tijdens de onderhouds periode. 
+- Voor onderhoud waarbij niet opnieuw moet worden opgestart, worden updates toegepast op het niveau van het fout domein. 
 
-**Gebruik geen** selfserviceonderhoud in de volgende scenario's: 
-- Als u uw VM's vaak afsluit, handmatig, met Behulp van DevTest Labs, met behulp van automatische afsluiting of volgens een schema, kan dit de onderhoudsstatus terugdraaien en dus extra downtime veroorzaken.
-- Op kortstondige VM's waarvan u weet dat ze voor het einde van de onderhoudsgolf worden verwijderd. 
-- Voor workloads met een grote status die is opgeslagen in de lokale (kortstondige) schijf die gewenst is om te worden onderhouden bij het bijwerken. 
-- Voor gevallen waarin u het formaat van uw vm vaak wijzigt, omdat de onderhoudsstatus kan worden teruggedraaid. 
-- Als u geplande gebeurtenissen hebt aangenomen die een proactieve failover of gracieuze afsluiting van uw werklast mogelijk maken, 15 minuten voor het begin van het afsluiten van het onderhoud
+Gebruik self-service onderhoud **niet** in de volgende scenario's: 
+- Als u uw virtuele machines regel matig afsluit, met behulp van DevTest Labs, met behulp van automatisch afsluiten of volgens een planning, kan dit de onderhouds status herstellen en daardoor extra downtime veroorzaken.
+- Op korte en gelaagde Vm's die u weet, worden vóór het einde van de onderhouds Golf verwijderd. 
+- Voor werk belastingen met een grote status die is opgeslagen in de lokale (tijdelijke) schijf die bij het bijwerken wordt bewaard. 
+- Wanneer u de grootte van uw virtuele machine regel matig wijzigt, kan dit de onderhouds status herstellen. 
+- Als u geplande gebeurtenissen hebt aangenomen die proactieve failover of het correct afsluiten van uw werk belasting hebben uitgevoerd, wordt 15 minuten voor het afsluiten van het onderhoud gestart
 
-**Gebruik** selfserviceonderhoud als u van plan bent om uw VM ononderbroken uit te voeren tijdens de geplande onderhoudsfase en geen van de hierboven genoemde tegenindicaties van toepassing is. 
+**Gebruik** self-service onderhoud als u van plan bent om uw virtuele machine tijdens de geplande onderhouds fase zonder onderbreking uit te voeren en geen van de hierboven vermelde prestatie meters van toepassing zijn. 
 
-Het is het beste om selfservice onderhoud te gebruiken in de volgende gevallen:
-- U moet een exact onderhoudsvenster communiceren naar uw management of eindklant. 
-- U moet het onderhoud op een bepaalde datum voltooien. 
-- U moet de volgorde van het onderhoud te controleren, bijvoorbeeld, multi-tier applicatie om veilig herstel te garanderen.
-- Er is meer dan 30 minuten VM-hersteltijd nodig tussen twee updatedomeinen (UD's). Als u de tijd tussen updatedomeinen wilt beheren, moet u het onderhoud van uw VM's één updatedomein (UD) tegelijk activeren.
+Het is aan te raden selfservice onderhoud in de volgende gevallen te gebruiken:
+- U moet een exact onderhouds venster aan uw beheer of eind klant communiceren. 
+- U moet het onderhoud op een bepaalde datum volt ooien. 
+- U moet de volg orde van onderhoud, bijvoorbeeld een toepassing met meerdere lagen, beheren om veilig herstel te garanderen.
+- Er is meer dan 30 minuten voor de herstel tijd van de VM vereist tussen twee update domeinen (UDs). Als u de tijd tussen update domeinen wilt bepalen, moet u onderhoud activeren op uw virtuele machines met één update domein (UD) tegelijk.
 
 
 ## <a name="faq"></a>Veelgestelde vragen
 
 
-**V: Waarom moet je mijn virtuele machines nu opnieuw opstarten?**
+**V: Waarom moet u nu mijn virtuele machines opnieuw opstarten?**
 
-**A:** Hoewel de meeste updates en upgrades voor het Azure-platform geen invloed hebben op de beschikbaarheid van virtuele machines, zijn er gevallen waarin we niet kunnen voorkomen dat virtuele machines opnieuw opstarten die in Azure worden gehost. We hebben verschillende wijzigingen verzameld die ons verplichten om onze servers opnieuw op te starten, wat zal resulteren in een reboot van virtuele machines.
+**A:** Hoewel het meren deel van updates en upgrades voor het Azure-platform geen invloed hebben op de beschik baarheid van de virtuele machine, zijn er gevallen waarin we niet kunnen voor komen dat virtuele machines die worden gehost in azure niet worden gestart. We hebben verschillende wijzigingen verzameld die ons nodig hebben om de servers opnieuw op te starten. Dit leidt ertoe dat virtuele machines opnieuw worden opgestart.
 
-**V: Als ik uw aanbevelingen voor hoge beschikbaarheid volg met behulp van een beschikbaarheidsset, ben ik dan veilig?**
+**V: als ik de aanbevelingen voor hoge Beschik baarheid volg met een Beschikbaarheidsset, ben ik dan veilig?**
 
-**A:** Virtuele machines die zijn geïmplementeerd in een beschikbaarheidsset of virtuele machineschaalsets hebben het begrip Update-domeinen (UD). Bij het uitvoeren van onderhoud houdt Azure zich aan de UD-beperking en start het virtuele machines van verschillende UD (binnen dezelfde beschikbaarheidsset) niet opnieuw op.  Azure wacht ook minstens 30 minuten voordat u naar de volgende groep virtuele machines gaat. 
+**A:** Virtuele machines die zijn geïmplementeerd in een beschikbaarheidsset of virtuele-machine schaal sets hebben het begrip update domeinen (UD). Bij het uitvoeren van onderhoud voldoet Azure aan de UD-beperking en worden virtuele machines van verschillende UD niet opnieuw opgestart (binnen dezelfde beschikbaarheidsset).  Azure wacht nog ten minste 30 minuten voordat de volgende groep virtuele machines wordt verplaatst. 
 
-Zie [Beschikbaarheid voor virtuele machines in Azure voor](./linux/availability.md)meer informatie over hoge beschikbaarheid.
+Zie [Beschik baarheid voor virtuele machines in azure](./linux/availability.md)voor meer informatie over maximale Beschik baarheid.
 
-**V: Hoe krijg ik een melding over gepland onderhoud?**
+**V: Hoe kan ik ontvang een melding over gepland onderhoud?**
 
-**A:** Een geplande onderhoudsgolf begint met het instellen van een planning voor een of meer Azure-regio's. Kort daarna wordt een e-mailmelding verzonden naar de abonnementsbeheerders (één e-mail per abonnement). Extra kanalen en ontvangers voor deze melding kunnen worden geconfigureerd met behulp van waarschuwingen voor activiteitenlogboeken. Als u een virtuele machine implementeert in een regio waar gepland onderhoud al is gepland, ontvangt u de melding niet, maar moet u de onderhoudsstatus van de VM controleren.
+**A:** Een geplande onderhouds Golf wordt gestart door een planning in te stellen voor een of meer Azure-regio's. Binnenkort daarna wordt er een e-mail melding verzonden naar de abonnements beheerders (één e-mail per abonnement). Aanvullende kanalen en ontvangers voor deze melding kunnen worden geconfigureerd met behulp van waarschuwingen voor activiteiten Logboeken. Als u een virtuele machine implementeert in een regio waar gepland onderhoud al is gepland, wordt de melding niet weer gegeven, maar moet u de onderhouds status van de VM controleren.
 
-**V: Ik zie geen indicatie van gepland onderhoud in het portaal, Powershell of CLI. Wat is er aan de hand?**
+**V: Ik zie geen indicatie van gepland onderhoud in de portal, Power shell of CLI. Wat is er aan de hand?**
 
-**A:** Informatie met betrekking tot gepland onderhoud is tijdens een geplande onderhoudsgolf alleen beschikbaar voor de VM's die hierdoor zullen worden beïnvloed. Met andere woorden, als u geen gegevens ziet, kan het zijn dat de onderhoudsgolf al is voltooid (of niet is gestart) of dat uw virtuele machine al wordt gehost in een bijgewerkte server.
+**A:** Informatie met betrekking tot gepland onderhoud is alleen beschikbaar tijdens een geplande onderhouds Golf voor de virtuele machines waarop deze worden beïnvloed. Met andere woorden, als u geen gegevens ziet, kan het zijn dat de onderhouds Golf al is voltooid (of niet is gestart) of dat uw virtuele machine al wordt gehost op een bijgewerkte server.
 
-**V: Is er een manier om precies te weten wanneer mijn virtuele machine zal worden beïnvloed?**
+**V: is er een manier om precies te weten wanneer mijn virtuele machine wordt beïnvloed?**
 
-**A:** Bij het instellen van de planning definiëren we een tijdvenster van meerdere dagen. Echter, de exacte volgorde van servers (en VM's) binnen dit venster is onbekend. Klanten die de exacte tijd voor hun VM's willen weten, kunnen [geplande gebeurtenissen](./linux/scheduled-events.md) en query's gebruiken vanuit de virtuele machine en een 15 minuten durende melding ontvangen voordat een VM opnieuw opstart.
+**A:** Wanneer u het schema instelt, definiëren we een tijd venster van enkele dagen. De exacte volg orde van servers (en Vm's) in dit venster is echter onbekend. Klanten die de exacte tijd willen weten voor hun virtuele machines, kunnen [geplande gebeurtenissen](./linux/scheduled-events.md) en query's vanaf de virtuele machine gebruiken en een melding van 15 minuten ontvangen voordat een VM opnieuw wordt opgestart.
 
-**V: Hoe lang duurt het voordat u mijn virtuele machine opnieuw opstart?**
+**V: hoe lang duurt het om mijn virtuele machine opnieuw op te starten?**
 
-**A:**  Afhankelijk van de grootte van uw vm kan het opstarten enkele minuten duren tijdens het selfserviceonderhoudsvenster. Tijdens de azure-gestarte reboots in het geplande onderhoudsvenster duurt het opnieuw opstarten doorgaans ongeveer 25 minuten. Houd er rekening mee dat in het geval u Cloud Services (Web/Worker Role), Virtual Machine Scale Sets of beschikbaarheidssets gebruikt, u 30 minuten krijgt tussen elke groep VM's (UD) tijdens het geplande onderhoudsvenster.
+**A:**  Afhankelijk van de grootte van uw virtuele machine kan het enkele minuten duren voordat de computer opnieuw wordt opgestart. Tijdens het opnieuw opstarten van Azure in het venster gepland onderhoud wordt het systeem doorgaans ongeveer 25 minuten uitgevoerd. Houd er rekening mee dat als u Cloud Services (Web/Worker), Virtual Machine Scale Sets of beschikbaarheids sets gebruikt, u 30 minuten krijgt tussen elke groep Vm's (UD) tijdens het geplande onderhouds venster.
 
-**V: Wat is de ervaring in het geval van Virtuele Machine Schaalsets?**
+**V: wat is de ervaring in het geval van Virtual Machine Scale Sets?**
 
-**A:** Gepland onderhoud is nu beschikbaar voor virtuele machineschaalsets. Voor instructies over het initiëren van selfserviceonderhoud raadpleegt u gepland onderhoud voor het document [van virtuele machineschaalsets.](../virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications.md)
+**A:** Gepland onderhoud is nu beschikbaar voor Virtual Machine Scale Sets. Zie [gepland onderhoud voor virtuele-machine schaal sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications.md) document voor instructies over het initiëren van self-service onderhoud.
 
-**V: Wat is de ervaring in het geval van Cloud Services (Web/Worker Role) en Service Fabric?**
+**V: wat is de ervaring in het geval van Cloud Services (Web/Worker) en Service Fabric?**
 
-**A:** Hoewel deze platforms worden beïnvloed door gepland onderhoud, worden klanten die deze platforms gebruiken als veilig beschouwd, aangezien alleen VM's in één Upgrade-domein (UD) op een bepaald moment worden beïnvloed. Selfservice-onderhoud is momenteel niet beschikbaar voor Cloud Services (Web/Worker Role) en Service Fabric.
+**A:** Hoewel deze platformen worden beïnvloed door gepland onderhoud, worden klanten die gebruikmaken van deze platformen als veilig beschouwd, omdat alleen Vm's in één upgrade domein (UD) op een gegeven moment worden beïnvloed. Self-service onderhoud is momenteel niet beschikbaar voor Cloud Services (Web/Worker-rol) en Service Fabric.
 
-**V: Ik zie geen onderhoudsinformatie over mijn VM's. Wat ging er mis?**
+**V: Ik zie geen onderhouds informatie op mijn Vm's. Wat is er verkeerd gegaan?**
 
-**A:** Er zijn verschillende redenen waarom u geen onderhoudsinformatie op uw VM's ziet:
-1.  U gebruikt een abonnement dat is gemarkeerd als intern van Microsoft.
-2.  Uw VM's zijn niet gepland voor onderhoud. Het kan zijn dat de onderhoudsgolf is beëindigd, geannuleerd of gewijzigd, zodat uw VM's er geen invloed meer op hebben.
-3.  De kolom **Onderhoud** wordt niet toegevoegd aan de weergave VM-lijst. Hoewel we deze kolom aan de standaardweergave hebben toegevoegd, moeten klanten die zijn geconfigureerd om niet-standaardkolommen te zien, de kolom **Onderhoud** handmatig toevoegen aan hun vm-lijstweergave.
+**A:** Er zijn verschillende redenen waarom u geen onderhouds informatie ziet over uw Vm's:
+1.  U gebruikt een abonnement dat is gemarkeerd als interne micro soft.
+2.  Uw Vm's zijn niet gepland voor onderhoud. Het kan zijn dat de onderhouds Golf is beëindigd, geannuleerd of gewijzigd, zodat uw Vm's hierdoor niet meer worden beïnvloed.
+3.  U beschikt niet over de kolom **onderhoud** die is toegevoegd aan de lijst weergave van de virtuele machine. Hoewel we deze kolom aan de standaard weergave hebben toegevoegd, moeten klanten die zijn geconfigureerd om niet-standaard kolommen te zien, de kolom **onderhoud** hand matig toevoegen aan hun VM-lijst weergave.
 
-**V: Mijn VM is voor de tweede keer gepland voor onderhoud. Waarom?**
+**V: mijn VM is voor de tweede keer gepland voor onderhoud. Waarom?**
 
-**A:** Er zijn verschillende use cases waarbij u uw VM voor onderhoud ziet staan nadat u uw onderhoudsimplementatie al hebt voltooid:
-1.  We hebben de onderhoudsgolf geannuleerd en opnieuw opgestart met een ander laadvermogen. Het kan zijn dat we defecte lading hebben ontdekt en we moeten gewoon een extra lading inzetten.
-2.  Uw VM is door een hardwarefout naar een ander knooppunt *genas.*
-3.  U hebt ervoor gekozen om de VM te stoppen (detoewijzen) en de VM opnieuw te starten.
-4.  U hebt **automatische afsluiting** ingeschakeld voor de VM.
+**A:** Er zijn verschillende situaties waarin u uw VM kunt zien die is gepland voor onderhoud nadat u de onderhouds-en-implementatie al hebt voltooid:
+1.  De onderhouds Golf is geannuleerd en opnieuw gestart met een andere nettolading. Het kan zijn dat er een beschadigde Payload is gedetecteerd en dat er alleen een extra Payload moet worden geïmplementeerd.
+2.  De virtuele machine is op een ander knoop punt *retoucheerd* vanwege een hardwarefout.
+3.  U hebt ervoor gekozen om te stoppen (toewijzing ongedaan te maken) en de virtuele machine opnieuw op te starten.
+4.  U hebt **automatisch afsluiten** ingeschakeld voor de virtuele machine.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U gepland onderhoud afhandelen met de [Azure CLI,](maintenance-notifications-cli.md) [Azure PowerShell](maintenance-notifications-powershell.md) of [portal.](maintenance-notifications-portal.md)
+U kunt gepland onderhoud verwerken met behulp van de [Azure cli](maintenance-notifications-cli.md), [Azure PowerShell](maintenance-notifications-powershell.md) of [Portal](maintenance-notifications-portal.md).
 

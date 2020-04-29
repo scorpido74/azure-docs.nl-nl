@@ -1,6 +1,6 @@
 ---
-title: Aanbevolen procedures voor het kiezen van een Time Series ID - Azure Time Series Insights | Microsoft Documenten
-description: Meer informatie over aanbevolen procedures bij het kiezen van een Tijdreeks-id in Azure Time Series Insights Preview.
+title: Aanbevolen procedures voor het kiezen van een tijd reeks-ID-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over aanbevolen procedures bij het kiezen van een tijd reeks-ID in Azure Time Series Insights preview.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -11,57 +11,57 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: a62c2460698408f6a2bfa51c6638bdeaf88bb31f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77083524"
 ---
-# <a name="best-practices-for-choosing-a-time-series-id"></a>Aanbevolen procedures voor het kiezen van een Time Series ID
+# <a name="best-practices-for-choosing-a-time-series-id"></a>Aanbevolen procedures voor het kiezen van een time series-ID
 
-In dit artikel wordt het belang van de Time Series ID voor uw Azure Time Series Insights Preview-omgeving en aanbevolen procedures voor het kiezen van een id samengevat.
+Dit artikel bevat een overzicht van het belang van de tijd reeks-ID voor uw Azure Time Series Insights-voorbeeld omgeving en aanbevolen procedures voor het kiezen van een.
 
 ## <a name="choose-a-time-series-id"></a>Een Time Series-id kiezen
 
-Het selecteren van een geschikte Time Series ID is van cruciaal belang. Het kiezen van een Time Series ID is als het kiezen van een partitiesleutel voor een database. Dit is vereist wanneer u een Time Series Insights Preview-omgeving maakt. 
+Het selecteren van de juiste tijd reeks-ID is van cruciaal belang. Het kiezen van een tijd reeks-ID is hetzelfde als het kiezen van een partitie sleutel voor een Data Base. Dit is vereist wanneer u een Time Series Insights voorbeeld omgeving maakt. 
 
 > [!IMPORTANT]
-> Time Series-iD's zijn:
-> * Een *hoofdlettergevoelige* eigenschap: letter- en tekenbehuizingen worden gebruikt in zoekopdrachten, vergelijkingen, updates en bij het partitioneren.
-> * Een *onveranderlijke* eigenschap: eenmaal gemaakt kan deze niet meer worden gewijzigd.
+> De time series-Id's zijn:
+> * Een *hoofdletter gevoelige* eigenschap: letter-en teken-darmen worden gebruikt in Zoek opdrachten, vergelijkingen, updates en het partitioneren van partities.
+> * Een *onveranderbare* eigenschap: zodra deze is gemaakt, kan deze niet meer worden gewijzigd.
 
 > [!TIP]
-> Als uw gebeurtenisbron een IoT-hub is, is uw Time Series ID waarschijnlijk ***iothub-connection-device-id.***
+> Als uw gebeurtenis bron een IoT-hub is, is uw tijd reeks-ID waarschijnlijk ***iothub-Connection-apparaat-id***.
 
-De belangrijkste best practices om te volgen zijn:
+De belangrijkste aanbevolen procedures zijn:
 
-* Kies een partitiesleutel met veel verschillende waarden (bijvoorbeeld honderden of duizenden). In veel gevallen kan dit de apparaat-ID, sensor-ID of tag-ID in uw JSON zijn.
-* De Time Series ID moet uniek zijn op het bladknooppuntniveau van uw [Time Series Model.](./time-series-insights-update-tsm.md)
-* De tekenlimiet voor de eigenschappentekenreeks van de Time Series ID is 128. Voor de eigenschapswaarde van de Time Series ID is de tekenlimiet 1.024.
-* Als een unieke eigenschapswaarde voor de Time Series ID ontbreekt, wordt deze behandeld als een null-waarde en volgt deze dezelfde regel van de uniciteitsbeperking.
-* U ook maximaal *drie* belangrijke eigenschappen selecteren als uw Tijdreeks-ID. Hun combinatie zal een samengestelde sleutel zijn die de Time Series ID vertegenwoordigt.  
+* Kies een partitie sleutel met veel afzonderlijke waarden (bijvoorbeeld honderden of duizenden). In veel gevallen kan dit de apparaat-ID, sensor-ID of label-ID in uw JSON zijn.
+* De time series-ID moet uniek zijn op het leaf-knooppunt niveau van uw [Time Series-model](./time-series-insights-update-tsm.md).
+* De teken limiet voor de eigenschaps naam van de tijd reeks-ID is 128. De teken limiet voor de eigenschaps waarde van de tijd reeks-ID is 1.024.
+* Als een unieke eigenschaps waarde voor de time series-ID ontbreekt, wordt deze behandeld als een null-waarde en volgt dezelfde regel van de uniekheids beperking.
+* U kunt ook Maxi maal *drie* sleutel eigenschappen selecteren als uw tijd reeks-id. De combi natie hiervan is een samengestelde sleutel die de tijd reeks-ID vertegenwoordigt.  
   > [!NOTE]
-  > Uw drie belangrijke eigenschappen moeten tekenreeksen zijn.
-  > U zou moeten vragen tegen deze samengestelde sleutel in plaats van een eigenschap tegelijk.
+  > Uw drie sleutel eigenschappen moeten teken reeksen zijn.
+  > U moet een query uitvoeren op deze samengestelde sleutel in plaats van één eigenschap tegelijk.
 
-## <a name="select-more-than-one-key-property"></a>Meer dan één belangrijke eigenschap selecteren
+## <a name="select-more-than-one-key-property"></a>Meer dan één sleutel eigenschap selecteren
 
-In de volgende scenario's wordt beschreven het selecteren van meer dan één belangrijke eigenschap als uw tijdreeks-id.  
+In de volgende scenario's wordt het selecteren van meer dan één sleutel eigenschap als uw tijd reeks-ID beschreven.  
 
-### <a name="example-1-time-series-id-with-a-unique-key"></a>Voorbeeld 1: Time Series ID met een unieke sleutel
+### <a name="example-1-time-series-id-with-a-unique-key"></a>Voor beeld 1: een time reeks-ID met een unieke sleutel
 
-* Je hebt oude vloten van activa. Elk heeft een unieke sleutel.
-* Een vloot is uniek geïdentificeerd door de eigenschap **deviceId**. Voor een andere vloot is de unieke eigenschap **objectId.** Geen van beide vloot bevat de unieke eigendom van de andere vloot. In dit voorbeeld selecteert u twee toetsen, **deviceId** en **objectId,** als unieke toetsen.
-* We accepteren null-waarden en het ontbreken van de aanwezigheid van een eigenschap in de gebeurtenispayload telt als een null-waarde. Dit is ook de juiste manier om het verzenden van gegevens naar twee gebeurtenisbronnen te verwerken waar de gegevens in elke gebeurtenisbron een unieke Time Series ID hebben.
+* U hebt verouderde vloots van activa. Elk heeft een unieke sleutel.
+* Eén vloot wordt uniek geïdentificeerd door de property **deviceId**. Voor een andere vloot is de unieke eigenschap **objectId**. Geen van beide vloot bevat de unieke eigenschap van de andere vloot. In dit voor beeld selecteert u twee sleutels, **deviceId** en **objectId**als unieke sleutels.
+* We accepteren Null-waarden en het ontbreken van de aanwezigheid van een eigenschap in de nettolading van de gebeurtenis telt als een null-waarde. Dit is ook de juiste manier om het verzenden van gegevens naar twee gebeurtenis bronnen te verwerken, waarbij de gegevens in elke gebeurtenis bron een unieke time series-ID hebben.
 
-### <a name="example-2-time-series-id-with-a-composite-key"></a>Voorbeeld 2: Tijdreeks-ID met een samengestelde sleutel
+### <a name="example-2-time-series-id-with-a-composite-key"></a>Voor beeld 2: een tijd reeks-ID met een samengestelde sleutel
 
-* U vereist dat meerdere eigenschappen uniek zijn binnen dezelfde vloot van activa. 
-* Je bent een fabrikant van slimme gebouwen en zet sensoren in elke kamer in. In elke kamer hebt u meestal dezelfde waarden voor **sensorId.** Voorbeelden zijn **sensor1,** **sensor2**en **sensor3**.
-* Uw gebouw heeft overlappende vloer- en kamernummers op verschillende locaties in de **accommodatie.** Deze getallen hebben waarden zoals **1a**, **2b**en **3a**.
-* Je hebt een woning, **locatie,** die waarden bevat zoals **Redmond,** **Barcelona**en **Tokio.** Om uniciteit te creëren, wijst u de volgende drie eigenschappen aan als uw Time Series ID-toetsen: **sensorId,** **flrRm**en **locatie**.
+* U wilt dat meerdere eigenschappen uniek zijn binnen dezelfde vloot van activa. 
+* U bent een fabrikant van Smart gebouwen en implementeert Sens oren in elke kamer. In elke ruimte hebt u doorgaans dezelfde waarden voor **sensorId**. Voor beelden zijn **sensor1**, **sensor2**en **sensor3**.
+* Uw gebouw heeft overlappende vloer-en kamer nummers tussen sites in de eigenschap **flrRm**. Deze getallen hebben waarden als **1a**, **2b**en **3a**.
+* U hebt een eigenschap, **locatie**, die waarden bevat zoals **Redmond**, **Barcelona**en **Tokyo**. Als u een uniek karakter wilt maken, wijst u de volgende drie eigenschappen toe als uw tijd reeks-ID-sleutels: **sensorId**, **flrRm**en **locatie**.
 
-Voorbeeld van een raw-gebeurtenis:
+Voor beeld van onbewerkte gebeurtenis:
 
 ```JSON
 {
@@ -72,7 +72,7 @@ Voorbeeld van een raw-gebeurtenis:
 }
 ```
 
-In de Azure-portal u vervolgens als volgt de samengestelde sleutel invoeren: 
+In de Azure Portal, kunt u de samengestelde sleutel als volgt invoeren: 
 
 ```JSON
 [{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]
@@ -80,6 +80,6 @@ In de Azure-portal u vervolgens als volgt de samengestelde sleutel invoeren:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Lees meer over [gegevensmodellering](./time-series-insights-update-tsm.md).
+* Meer informatie over [gegevens modellering](./time-series-insights-update-tsm.md).
 
-* Plan uw [Azure Time Series Insights Preview-omgeving](./time-series-insights-update-plan.md).
+* Plan uw [Azure time series Insights preview-omgeving](./time-series-insights-update-plan.md).

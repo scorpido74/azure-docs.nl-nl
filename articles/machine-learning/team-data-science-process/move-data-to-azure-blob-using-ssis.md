@@ -1,6 +1,6 @@
 ---
-title: Blob-opslaggegevens verplaatsen met SSIS-connectors - Team Data Science Process
-description: Meer informatie over het verplaatsen van gegevens naar of vanuit Azure Blob Storage met SQL Server Integration Services Feature Pack voor Azure.
+title: Blob Storage-gegevens verplaatsen met SSIS-connectors-team data Science process
+description: Meer informatie over het verplaatsen van gegevens naar of van Azure Blob Storage met SQL Server Integration Services Feature Pack voor Azure.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,78 +12,78 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 77bfd9d5bcae7bedd673354e32464d5f59bdc9b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76720868"
 ---
-# <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Gegevens verplaatsen naar of vanuit Azure Blob Storage met SSIS-connectors
-Het [SQL Server Integration Services Feature Pack voor Azure](https://msdn.microsoft.com/library/mt146770.aspx) biedt componenten om verbinding te maken met Azure, gegevens over te dragen tussen Azure en on-premises gegevensbronnen en gegevens te verwerken die zijn opgeslagen in Azure.
+# <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Gegevens verplaatsen van of naar Azure Blob Storage met SSIS-connectors
+Het [SQL Server Integration Services Feature Pack voor Azure](https://msdn.microsoft.com/library/mt146770.aspx) biedt onderdelen om verbinding te maken met Azure, gegevens over te dragen tussen Azure-en on-premises gegevens bronnen en gegevens die zijn opgeslagen in azure te verwerken.
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
-Zodra klanten on-premises gegevens naar de cloud hebben verplaatst, hebben ze toegang tot hun gegevens vanuit elke Azure-service om de volledige kracht van de suite van Azure-technologieën te benutten. De gegevens kunnen vervolgens worden gebruikt, bijvoorbeeld in Azure Machine Learning of in een HDInsight-cluster.
+Zodra klanten on-premises gegevens naar de Cloud hebben verplaatst, hebben ze toegang tot hun gegevens vanuit elke Azure-service om gebruik te kunnen maken van de volledige kracht van de Azure-technologieën. De gegevens kunnen vervolgens worden gebruikt, bijvoorbeeld in Azure Machine Learning of op een HDInsight-cluster.
 
-Voorbeelden voor het gebruik van deze Azure-resources bevinden zich in de [SQL-](sql-walkthrough.md) en HDInsight-walkthroughs. [HDInsight](hive-walkthrough.md)
+Voor beelden van het gebruik van deze Azure-resources zijn te vinden in de [SQL](sql-walkthrough.md) -en [HDInsight](hive-walkthrough.md) -scenario's.
 
-Zie Meer doen [met SQL Server Integration Services Feature Pack voor Azure-blog voor](https://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) een bespreking van canonieke scenario's die SSIS gebruiken om zakelijke behoeften te bereiken.
+Zie [meer met SQL Server Integration Services Feature Pack voor Azure](https://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) blog voor een bespreking van canonieke scenario's die gebruikmaken van SSIS om bedrijfs behoeften te bereiken die gemeen schappelijk zijn voor hybride gegevens integratie scenario's.
 
 > [!NOTE]
-> Raadpleeg Azure [Blob Basics](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) en Azure [Blob Service](https://msdn.microsoft.com/library/azure/dd179376.aspx)voor een volledige inleiding tot Azure blob-opslag.
+> Raadpleeg Azure Blob- [basis beginselen](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) en [Azure Blob service](https://msdn.microsoft.com/library/azure/dd179376.aspx)voor een volledige inleiding tot Azure Blob-opslag.
 > 
 > 
 
 ## <a name="prerequisites"></a>Vereisten
-Als u de in dit artikel beschreven taken wilt uitvoeren, moet u een Azure-abonnement en een Azure Storage-account hebben ingesteld. U hebt de naam en de accountsleutel van Azure Storage nodig om gegevens te uploaden of te downloaden.
+Als u de taken wilt uitvoeren die in dit artikel worden beschreven, moet u een Azure-abonnement en een Azure Storage-account instellen. U hebt de Azure Storage-account naam en de account sleutel nodig om gegevens te uploaden of te downloaden.
 
-* Zie Gratis proefperiode van één maand als u een **Azure-abonnement wilt** [instellen.](https://azure.microsoft.com/pricing/free-trial/)
-* Zie [Over Azure Storage-accounts](../../storage/common/storage-create-storage-account.md)voor instructies over het maken van een **opslagaccount** en voor het verkrijgen van account- en sleutelgegevens.
+* Zie [een gratis proef versie van één maand](https://azure.microsoft.com/pricing/free-trial/)voor meer informatie over het instellen van een **Azure-abonnement**.
+* Zie [over Azure Storage-accounts](../../storage/common/storage-create-storage-account.md)voor instructies over het maken van een **opslag account** en voor het ophalen van account-en sleutel gegevens.
 
-Als u de **SSIS-connectors wilt**gebruiken, moet u het:
+Als u de **SSIS-connectors**wilt gebruiken, moet u het volgende downloaden:
 
-* **SQL Server 2014 of 2016 Standard (of hoger):** Installeren omvat SQL Server Integration Services.
-* **Microsoft SQL Server 2014 of 2016 Integration Services Feature Pack voor Azure:** deze connectors kunnen worden gedownload van de [pagina's SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) en [SQL Server 2016 Integration Services.](https://www.microsoft.com/download/details.aspx?id=49492)
+* **SQL Server 2014 of 2016 Standard (of hoger)**: de installatie bevat SQL Server Integration Services.
+* **Microsoft SQL Server 2014 of 2016 Integration Services Feature Pack voor Azure**: deze Connectors kunnen respectievelijk worden gedownload via de pagina's [SQL Server 2014 integration services](https://www.microsoft.com/download/details.aspx?id=47366) en [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) .
 
 > [!NOTE]
-> SSIS is geïnstalleerd met SQL Server, maar is niet opgenomen in de Express-versie. Zie [SQL Server Editions](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/) voor informatie over welke toepassingen zijn opgenomen in verschillende edities van SQL Server
+> SSIS wordt geïnstalleerd met SQL Server, maar is niet opgenomen in de snelle versie. Zie [SQL Server-edities](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/) voor meer informatie over welke toepassingen zijn opgenomen in de verschillende edities van SQL Server.
 > 
 > 
 
-Zie [Hands On Training voor SSIS voor](https://www.microsoft.com/sql-server/training-certification) trainingsmateriaal op SSIS
+Voor trainings materiaal op SSIS, Zie [handen voor training voor SSIS](https://www.microsoft.com/sql-server/training-certification)
 
-Zie [SSIS-zelfstudie: Een eenvoudig ETL-pakket maken](https://msdn.microsoft.com/library/ms169917.aspx)voor informatie over het up-and-running maken van SISS om eenvoudige pakketten voor extractie, transformatie en belasting (ETL) te maken.
+Zie [SSIS-zelf studie: een eenvoudig ETL-pakket maken](https://msdn.microsoft.com/library/ms169917.aspx)voor informatie over het ophalen van en het uitvoeren van SISS voor het bouwen van eenvoudige pakketten voor het uitpakken, transformeren en laden (ETL).
 
-## <a name="download-nyc-taxi-dataset"></a>NYC Taxi-gegevensset downloaden
-Het voorbeeld dat hier wordt beschreven, gebruikt een openbaar beschikbare gegevensset - de NYC Taxi Trips-gegevensset. [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) De dataset bestaat uit ongeveer 173 miljoen taxiritten in NYC in het jaar 2013. Er zijn twee soorten gegevens: gegevens over reisgegevens en tariefgegevens. Aangezien er een bestand voor elke maand, hebben we 24 bestanden, die elk is ongeveer 2 GB ongecomprimeerd.
+## <a name="download-nyc-taxi-dataset"></a>NYC taxi-gegevensset downloaden
+In het voor beeld dat hier wordt beschreven, wordt een openbaar beschik bare gegevensset gebruikt: de NYC van de [taxi trips](https://www.andresmh.com/nyctaxitrips/) . De gegevensset bestaat uit ongeveer 173.000.000 taxi-onderdrukkingen in NYC van het jaar 2013. Er zijn twee soorten gegevens: reis gegevens en gegevens over ritbedrag. Omdat er voor elke maand een bestand is, zijn er 24 bestanden, die elk ongeveer 2 GB ongecomprimeerd zijn.
 
-## <a name="upload-data-to-azure-blob-storage"></a>Gegevens uploaden naar Azure blob-opslag
-Als u gegevens wilt verplaatsen met het SSIS-functiepakket van on-premises naar Azure blob-opslag, gebruiken we een instantie van de [**Azure Blob Upload-taak**](https://msdn.microsoft.com/library/mt146776.aspx), die hier wordt weergegeven:
+## <a name="upload-data-to-azure-blob-storage"></a>Gegevens uploaden naar Azure Blob Storage
+Als u gegevens wilt verplaatsen met behulp van het SSIS-functie pakket van on-premises naar Azure Blob-opslag, wordt een exemplaar van de [**Azure Blob upload-taak**](https://msdn.microsoft.com/library/mt146776.aspx)gebruikt, zoals hier wordt weer gegeven:
 
-![configure-data-science-vm](./media/move-data-to-azure-blob-using-ssis/ssis-azure-blob-upload-task.png)
+![configure-data-Science-VM](./media/move-data-to-azure-blob-using-ssis/ssis-azure-blob-upload-task.png)
 
-De parameters die de taak gebruikt, worden hier beschreven:
+De para meters die de taak gebruikt, worden hier beschreven:
 
 | Veld | Beschrijving |
 | --- | --- |
-| **AzureStorage-verbinding** |Hiermee geeft u een bestaand Azure Storage Connection Manager op of maakt u een nieuw account dat verwijst naar een Azure Storage-account dat verwijst naar waar de blobbestanden worden gehost. |
-| **BlobContainer BlobContainer** |Hiermee geeft u de naam op van de blobcontainer die de geüploade bestanden als blobs bevat. |
-| **BlobDirectory** |Hiermee geeft u de blobmap op waarin het geüploade bestand is opgeslagen als een blokblob. De blobmap is een virtuele hiërarchische structuur. Als de blob al bestaat, is deze vervangen. |
-| **LocalDirectory (LocalDirectory)** |Hiermee geeft u de lokale map op die de bestanden bevat die moeten worden geüpload. |
-| **Bestandsnaam** |Hiermee geeft u een naamfilter op om bestanden met het opgegeven naampatroon te selecteren. MySheet\*.xls\* bevat bijvoorbeeld bestanden zoals MySheet001.xls en MySheetABC.xlsx |
-| **Timerangefrom/timerangeto** |Hiermee geeft u een tijdbereikfilter op. Bestanden die zijn gewijzigd na *TimeRangeFrom* en vóór *TimeRangeTo* zijn opgenomen. |
+| **AzureStorageConnection** |Hiermee geeft u een bestaande Azure Storage verbindings beheer of maakt u een nieuwe die verwijst naar een Azure Storage-account waarnaar wordt verwezen naar de host van de BLOB-bestanden. |
+| **Zijn** |Hiermee geeft u de naam op van de BLOB-container die de geüploade bestanden als blobs bevat. |
+| **BlobDirectory** |Hiermee geeft u de BLOB-map op waarin het geüploade bestand wordt opgeslagen als een blok-blob. De BLOB-map is een virtuele hiërarchische structuur. Als de BLOB al bestaat, wordt de IA vervangen. |
+| **LocalDirectory** |Hiermee geeft u de lokale map met de bestanden die moeten worden geüpload. |
+| **Bestands** |Hiermee geeft u een naam filter op waarmee bestanden met het opgegeven naam patroon worden geselecteerd. MySheet\*. xls\* bevat bijvoorbeeld bestanden als MySheet001. xls en MySheetABC. xlsx |
+| **TimeRangeFrom/TimeRangeTo** |Hiermee geeft u een tijds bereik filter op. Bestanden die zijn gewijzigd na *TimeRangeFrom* en voordat *TimeRangeTo* zijn opgenomen. |
 
 > [!NOTE]
-> De **AzureStorageConnection-referenties** moeten correct zijn en de **BlobContainer** moet bestaan voordat de overdracht wordt geprobeerd.
+> De **AzureStorageConnection** -referenties moeten juist zijn en de **zijn** moeten bestaan voordat de overdracht wordt uitgevoerd.
 > 
 > 
 
-## <a name="download-data-from-azure-blob-storage"></a>Gegevens downloaden uit Azure blob-opslag
-Als u gegevens wilt downloaden van Azure blob-opslag naar on-premises opslag met SSIS, gebruikt u een instantie van de [Azure Blob-downloadtaak](https://msdn.microsoft.com/library/mt146779.aspx).
+## <a name="download-data-from-azure-blob-storage"></a>Gegevens downloaden van Azure Blob-opslag
+Als u gegevens van Azure Blob-opslag naar on-premises opslag met SSIS wilt downloaden, gebruikt u een exemplaar van de [Azure Blob-Download taak](https://msdn.microsoft.com/library/mt146779.aspx).
 
 ## <a name="more-advanced-ssis-azure-scenarios"></a>Meer geavanceerde SSIS-Azure-scenario's
-Het SSIS-functiepakket maakt het mogelijk om complexere stromen samen te verwerken door verpakkingstaken. De blobgegevens kunnen bijvoorbeeld rechtstreeks worden ingevoerd in een HDInsight-cluster, waarvan de uitvoer kan worden gedownload naar een blob en vervolgens naar on-premises opslag. SSIS kan Hive- en Pig-taken uitvoeren op een HDInsight-cluster met behulp van aanvullende SSIS-connectors:
+Met het SSIS Feature Pack kunnen complexere stromen worden verwerkt door taken samen te pakken. De BLOB-gegevens kunnen bijvoorbeeld rechtstreeks in een HDInsight-cluster worden gefeedd waarvan de uitvoer kan worden gedownload naar een BLOB en vervolgens naar de on-premises opslag. SSIS kan Hive-en Pig-taken uitvoeren op een HDInsight-cluster met extra SSIS-connectors:
 
-* Als u een Hive-script wilt uitvoeren op een Azure HDInsight-cluster met SSIS, gebruikt u [Azure HDInsight Hive-taak](https://msdn.microsoft.com/library/mt146771.aspx).
-* Als u een Pig-script wilt uitvoeren op een Azure HDInsight-cluster met SSIS, gebruikt u [Azure HDInsight Pig-taak](https://msdn.microsoft.com/library/mt146781.aspx).
+* Als u een Hive-script op een Azure HDInsight-cluster met SSIS wilt uitvoeren, gebruikt u de [component taak van Azure hdinsight](https://msdn.microsoft.com/library/mt146771.aspx).
+* Als u een Pig-script wilt uitvoeren op een Azure HDInsight-cluster met SSIS, gebruikt u de [Azure Hdinsight Pig-taak](https://msdn.microsoft.com/library/mt146781.aspx).
 

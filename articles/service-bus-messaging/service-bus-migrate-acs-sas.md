@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus - Migreren naar beheerhandtekening met gedeelde toegang
-description: Meer informatie over het migreren van Azure Active Directory Access Control Service naar de autorisatie voor gedeelde toegangshandtekeningen.
+title: Azure Service Bus-migreren naar Shared Access Signature autorisatie
+description: Meer informatie over het migreren van Azure Active Directory-Access Control Service naar Shared Access Signature-autorisatie.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -13,56 +13,56 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 532bbaf0b983b2d4310780686777cbe895afebe4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76774618"
 ---
-# <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Servicebus - Migreren van Azure Active Directory Access Control Service naar beheer met gedeelde toegang
+# <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus-migreren van Azure Active Directory Access Control Service naar Shared Access Signature autorisatie
 
-Service Bus-toepassingen hebben eerder de keuze gehad om twee verschillende autorisatiemodellen te gebruiken: het [SAS-tokenmodel (Shared Access Signature)](service-bus-sas.md) dat rechtstreeks door Service Bus wordt geleverd en een federatief model waarbij het beheer van autorisatieregels binnenwordt beheerd door de [Azure Active Directory](/azure/active-directory/) Access Control Service (ACS) en tokens die van ACS zijn verkregen, worden doorgegeven aan Service Bus voor het toestaan van toegang tot de gewenste functies.
+Service Bus toepassingen hebben eerder een keuze nodig bij het gebruik van twee verschillende autorisatie modellen: het [Shared Access Signature (SAS)](service-bus-sas.md) -token model dat rechtstreeks wordt geleverd door service bus, en een federatief model waarin het beheer van autorisatie regels wordt beheerd door de [Azure Active Directory](/azure/active-directory/) Access Control service (ACS), en tokens die zijn verkregen van ACS worden door gegeven aan service bus om toegang tot de gewenste functies te verlenen.
 
-Het ACS-autorisatiemodel is al lang vervangen door [SAS-autorisatie](service-bus-authentication-and-authorization.md) als voorkeursmodel en alle documentatie, richtlijnen en monsters maken vandaag de dag uitsluitend gebruik van SAS. Bovendien is het niet meer mogelijk om nieuwe servicebusnaamruimten te maken die zijn gekoppeld aan ACS.
+Het ACS-autorisatie model is al vervangen door [SAS-autorisatie](service-bus-authentication-and-authorization.md) als het voorkeurs model, en alle documentatie, richt lijnen en voor beelden bevatten exclusief SAS vandaag. Bovendien is het niet meer mogelijk om nieuwe Service Bus naam ruimten te maken die zijn gekoppeld aan ACS.
 
-SAS heeft het voordeel dat het niet onmiddellijk afhankelijk is van een andere dienst, maar rechtstreeks van een klant kan worden gebruikt zonder tussenpersonen door de klant toegang te geven tot de SAS-regelnaam en regelsleutel. SAS kan ook eenvoudig worden geïntegreerd met een aanpak waarbij een klant eerst een autorisatiecontrole moet doorstaan met een andere service en vervolgens een token krijgt uitgegeven. Deze laatste benadering is vergelijkbaar met het ACS-gebruikspatroon, maar maakt het mogelijk om toegangstokens uit te geven op basis van toepassingsspecifieke voorwaarden die moeilijk uit te drukken zijn in ACS.
+SAS heeft het voor deel dat het niet direct afhankelijk is van een andere service, maar kan rechtstreeks vanuit een client zonder tussen personen worden gebruikt door de client toegang te geven tot de naam en regel sleutel van de SAS-regel. SAS kan ook eenvoudig worden geïntegreerd met een aanpak waarbij een client eerst een verificatie controle bij een andere service moet door geven en vervolgens een token heeft uitgegeven. De laatste benadering is vergelijkbaar met het gebruiks patroon van de ACS, maar maakt het verlenen van toegangs tokens op basis van toepassingsspecifieke voor waarden die lastig zijn om in ACS te zijn.
 
-Voor alle bestaande toepassingen die afhankelijk zijn van ACS, dringen we er bij klanten op aan om hun applicaties te migreren om in plaats daarvan op SAS te vertrouwen.
+Voor alle bestaande toepassingen die afhankelijk zijn van ACS, bevelen wij klanten aan om hun toepassingen te migreren om te vertrouwen op SAS.
 
 ## <a name="migration-scenarios"></a> Migratiescenario's
 
-ACS en Service Bus zijn geïntegreerd door de gedeelde kennis van een *ondertekeningssleutel.* De ondertekeningssleutel wordt gebruikt door een ACS-naamruimte om autorisatietokens te ondertekenen en wordt door Service Bus gebruikt om te controleren of het token is uitgegeven door de gekoppelde ACS-naamruimte. De ACS-naamruimte bevat serviceidentiteiten en autorisatieregels. De autorisatieregels bepalen welke serviceidentiteit of welk token dat wordt uitgegeven door een externe identiteitsprovider welk type toegang tot een deel van de naamruimtegrafiek van servicebus krijgt, in de vorm van een langst-voorvoegselovereenkomst.
+ACS en Service Bus zijn geïntegreerd met de gedeelde kennis van een *handtekening sleutel*. De handtekening sleutel wordt gebruikt door een ACS-naam ruimte voor het ondertekenen van autorisatie tokens en wordt gebruikt door Service Bus om te controleren of het token is uitgegeven door de gekoppelde ACS-naam ruimte. De ACS-naam ruimte bevat service-identiteiten en autorisatie regels. De autorisatie regels definiëren welke service-identiteit of welk token dat is uitgegeven door een externe ID-provider, het type toegang tot een deel van de Service Bus naam ruimte grafiek, in de vorm van een treffer voor het langste voor voegsel.
 
-Een ACS-regel kan bijvoorbeeld de claim **Verzenden** `/` op het padvoorvoegsel voor een service-identiteit verlenen, wat betekent dat een token dat door ACS is uitgegeven op basis van die regel de clientrechten verleent om naar alle entiteiten in de naamruimte te verzenden. Als het padvoorvoegsel is, is `/abc`de identiteit `abc` beperkt tot verzenden naar entiteiten die onder dat voorvoegsel zijn genoemd of georganiseerd. Aangenomen wordt dat lezers van deze migratiebegeleiding al bekend zijn met deze concepten.
+Een ACS-regel kan bijvoorbeeld de **Verzend** claim op het pad `/` naar een service-identiteit verlenen, wat betekent dat een token dat is uitgegeven door ACS op basis van die regel, de client rechten verleent die worden verzonden naar alle entiteiten in de naam ruimte. Als het voor voegsel van `/abc`het pad is, is de identiteit beperkt tot het `abc` verzenden van entiteiten die onder dat voor voegsel worden genoemd. Er wordt van uitgegaan dat lezers van deze migratie richtlijnen al bekend zijn met deze concepten.
 
-De migratiescenario's vallen in drie brede categorieën:
+De migratie scenario's vallen in drie categorieën:
 
-1.  **Ongewijzigde standaardinstellingen**. Sommige klanten gebruiken een [Object SharedSecretTokenProvider,](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) waarbij de automatisch gegenereerde **eigenaarservice-identiteit** en de geheime sleutel voor de ACS-naamruimte worden doorgegeven, gekoppeld aan de naamruimte van de ServiceBus en voegen geen nieuwe regels toe.
+1.  **Standaard instellingen ongewijzigd**. Sommige klanten gebruiken een [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) -object, waarbij de automatisch gegenereerde **eigenaar** -service-identiteit en de geheime sleutel voor de ACS-naam ruimte worden door gegeven, gekoppeld aan de naam ruimte service bus en geen nieuwe regels toevoegen.
 
-2.  **Aangepaste serviceidentiteiten met eenvoudige regels.** Sommige klanten voegen nieuwe serviceidentiteiten toe en verlenen elke nieuwe serviceidentiteit **Verzenden,** **Luisteren**en **Beheren** machtigingen voor één specifieke entiteit.
+2.  **Aangepaste service-identiteiten met eenvoudige regels**. Sommige klanten voegen nieuwe service-identiteiten toe en verlenen elke nieuwe service-id machtigingen voor **verzenden**, **belui Steren**en **beheren** voor één specifieke entiteit.
 
-3.  **Aangepaste serviceidentiteiten met complexe regels.** Zeer weinig klanten hebben complexe regelsets waarin extern uitgegeven tokens worden toegewezen aan rechten op Relay, of waar een enkele service-identiteit gedifferentieerde rechten wordt toegewezen op verschillende naamruimtepaden via meerdere regels.
+3.  **Aangepaste service-identiteiten met complexe regels**. Zeer weinig klanten hebben complexe regel sets waarin extern uitgegeven tokens worden toegewezen aan rechten op relay of waarbij aan één service-identiteit gedifferentieerde rechten voor verschillende naam ruimte paden worden toegewezen via meerdere regels.
 
-Voor hulp bij het migreren van complexe regelsets u contact opnemen met [Azure-ondersteuning.](https://azure.microsoft.com/support/options/) De andere twee scenario's maken eenvoudige migratie mogelijk.
+Voor hulp bij de migratie van complexe regel sets kunt u contact opnemen met de [ondersteuning van Azure](https://azure.microsoft.com/support/options/). De andere twee scenario's maken eenvoudige migratie mogelijk.
 
-### <a name="unchanged-defaults"></a>Ongewijzigde standaardwaarden
+### <a name="unchanged-defaults"></a>Standaard instellingen ongewijzigd
 
-Als uw toepassing ACS-standaardinstellingen niet heeft gewijzigd, u alle [SharedSecretTokenProvider-gebruik](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) vervangen door een [Object SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) en de vooraf geconfigureerde naamruimte **RootManageSharedAccessKey** gebruiken in plaats van het ACS-eigenaaraccount. **owner** Houd er rekening mee dat zelfs met het **ACS-eigenaaraccount** deze configuratie over het algemeen niet is aanbevolen (en nog steeds is), omdat deze account/regel volledige beheerbevoegdheid biedt over de naamruimte, inclusief toestemming om entiteiten te verwijderen.
+Als uw toepassing de ACS-standaard waarden niet heeft gewijzigd, kunt u alle [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) -gebruik vervangen door een [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) -object en de vooraf geconfigureerde naam ruimte gebruiken **in plaats van** het ACS- **eigenaars** account. Houd er rekening mee dat zelfs met het account van de ACS- **eigenaar** deze configuratie (en nog steeds) niet doorgaans wordt aanbevolen, omdat deze account/regel volledige beheer bevoegdheid biedt voor de naam ruimte, inclusief machtiging voor het verwijderen van entiteiten.
 
 ### <a name="simple-rules"></a>Eenvoudige regels
 
-Als de toepassing aangepaste serviceidentiteiten met eenvoudige regels gebruikt, is de migratie eenvoudig in het geval dat een ACS-service-identiteit is gemaakt om toegangsbeheer te bieden in een specifieke wachtrij. Dit scenario is vaak het geval in Oplossingen in SaaS-stijl waarbij elke wachtrij wordt gebruikt als een brug naar een tenantsite of bijkantoor en de service-identiteit wordt gemaakt voor die specifieke site. In dit geval kan de desbetreffende serviceidentiteit direct in de wachtrij worden gemigreerd naar een regel voor gedeelde toegangshandtekening. De naam van de serviceidentiteit kan de naam van de SAS-regel worden en de service-identiteitssleutel kan de SAS-regelsleutel worden. De rechten van de SAS-regel worden vervolgens geconfigureerd gelijk aan de respectievelijk toepasselijke ACS-regel voor de entiteit.
+Als voor de toepassing aangepaste service-identiteiten met eenvoudige regels worden gebruikt, is de migratie eenvoudig in het geval waarin een ACS-service-identiteit is gemaakt om toegangs beheer te bieden voor een specifieke wachtrij. Dit scenario is vaak het geval in SaaS-oplossingen waarbij elke wachtrij wordt gebruikt als een brug naar een Tenant site of filiaal, en de service-identiteit voor die specifieke site wordt gemaakt. In dit geval kan de betreffende service-identiteit rechtstreeks op de wachtrij worden gemigreerd naar een Shared Access Signature regel. De naam van de service-identiteit kan de naam van de SAS-regel worden en de Service-id-sleutel kan de SAS-regel sleutel worden. De rechten van de SAS-regel worden vervolgens geconfigureerd die gelijk zijn aan de respectievelijke ACS-regel voor de entiteit.
 
-U deze nieuwe en aanvullende configuratie van SAS op zijn plaats zetten op bestaande naamruimte die wordt gefedereerd met ACS, en de migratie uit de buurt van ACS wordt vervolgens uitgevoerd met [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) in plaats van [SharedSecretTokenProvider.](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) De naamruimte hoeft niet los te worden gekoppeld van ACS.
+U kunt deze nieuwe en extra configuratie van SAS in-place maken op een bestaande naam ruimte die federatieve is met ACS en de migratie van ACS wordt vervolgens uitgevoerd met behulp van [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) in plaats van [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider). De naam ruimte hoeft niet te worden gekoppeld aan ACS.
 
 ### <a name="complex-rules"></a>Complexe regels
 
-SAS-regels zijn niet bedoeld als accounts, maar worden ondertekend sleutels gekoppeld aan rechten. Als zodanig vereisen scenario's waarin de toepassing veel serviceidentiteiten creëert en hen toegangsrechten verleent voor verschillende entiteiten of de hele naamruimte nog steeds een tussenpersoon die door een token uitgeeft. U begeleiding krijgen voor een dergelijke tussenpersoon door [contact op te nemen met ondersteuning.](https://azure.microsoft.com/support/options/)
+SAS-regels zijn niet bedoeld om accounts te zijn, maar ze hebben de naam aanmeldings sleutels die zijn gekoppeld aan rechten. Als zodanig, scenario's waarin de toepassing veel service-identiteiten maakt en toegangs rechten voor verschillende entiteiten verleent, of de volledige naam ruimte, nog steeds een intermedia voor token afgifte hebben. [Neem contact op met de ondersteuning](https://azure.microsoft.com/support/options/)voor hulp bij het verkrijgen van een dergelijke intermediair.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende onderwerpen voor meer informatie over verificatie van servicebus:
+Zie de volgende onderwerpen voor meer informatie over Service Bus-verificatie:
 
 * [Vereenvoudigde Service Bus-verificatie en -autorisatie](service-bus-authentication-and-authorization.md)
-* [Servicebusverificatie met gedeelde toegangshandtekeningen](service-bus-sas.md)
+* [Verificatie Service Bus met hand tekeningen voor gedeelde toegang](service-bus-sas.md)
 

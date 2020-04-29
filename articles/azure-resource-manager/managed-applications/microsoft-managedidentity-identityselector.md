@@ -1,34 +1,34 @@
 ---
-title: Element IdentitySelector UI
-description: Beschrijft het Microsoft.ManagedIdentity.IdentitySelector-gebruikersinterface-element voor Azure-portal. Beheerde identiteiten toewijzen aan een resource.
+title: IdentitySelector UI-element
+description: Hierin wordt het micro soft. ManagedIdentity. IdentitySelector UI-element voor Azure Portal beschreven. Gebruiken voor het toewijzen van beheerde identiteiten aan een resource.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tomfitz
 ms.openlocfilehash: cb66a2684e0b83f4f0cc01a07cc724f6beab4d68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77087542"
 ---
-# <a name="microsoftmanagedidentityidentityselector-ui-element"></a>Microsoft.ManagedIdentity.IdentitySelector UI-element
+# <a name="microsoftmanagedidentityidentityselector-ui-element"></a>Micro soft. ManagedIdentity. IdentitySelector UI-element
 
-Een besturingselement voor het toewijzen van [beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md) voor een resource in een implementatie.
+Een besturings element voor het toewijzen van [beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md) voor een bron in een implementatie.
 
-## <a name="ui-sample"></a>UI-voorbeeld
+## <a name="ui-sample"></a>UI-voor beeld
 
-Het besturingselement bestaat uit de volgende elementen:
+Het besturings element bestaat uit de volgende elementen:
 
-![Microsoft.ManagedIdentity.IdentitySelector eerste stap](./media/managed-application-elements/microsoft.managedidentity.identityselector1.png)
+![Micro soft. ManagedIdentity. IdentitySelector eerste stap](./media/managed-application-elements/microsoft.managedidentity.identityselector1.png)
 
-Wanneer de gebruiker **Toevoegen**selecteert, wordt het volgende formulier geopend. De gebruiker kan een of meer door de gebruiker toegewezen identiteiten voor de bron selecteren.
+Wanneer de gebruiker **toevoegen**selecteert, wordt het volgende formulier geopend. De gebruiker kan een of meer door de gebruiker toegewezen identiteiten voor de resource selecteren.
 
-![Microsoft.ManagedIdentity.IdentitySelector tweede stap](./media/managed-application-elements/microsoft.managedidentity.identityselector2.png)
+![Micro soft. ManagedIdentity. IdentitySelector tweede stap](./media/managed-application-elements/microsoft.managedidentity.identityselector2.png)
 
-De geselecteerde identiteiten worden weergegeven in de tabel. De gebruiker kan items uit deze tabel toevoegen of verwijderen.
+De geselecteerde identiteiten worden weer gegeven in de tabel. De gebruiker kan items uit deze tabel toevoegen of verwijderen.
 
-![Microsoft.ManagedIdentity.IdentitySelector derde stap](./media/managed-application-elements/microsoft.managedidentity.identityselector3.png)
+![Micro soft. ManagedIdentity. IdentitySelector derde stap](./media/managed-application-elements/microsoft.managedidentity.identityselector3.png)
 
 ## <a name="schema"></a>Schema
 
@@ -69,16 +69,16 @@ De geselecteerde identiteiten worden weergegeven in de tabel. De gebruiker kan i
 
 ## <a name="remarks"></a>Opmerkingen
 
-- Gebruik **defaultValue.systemAssignedIdentity** om een initiële waarde in te stellen voor het besturingselement met systeemtoegewezen identiteitsopties. De standaardwaarde is **Uit**. De volgende waarden zijn toegestaan:
-  - **Aan** : Een door het systeem toegewezen identiteit is toegewezen aan de resource.
+- Gebruik **DefaultValue. systemAssignedIdentity** om een begin waarde in te stellen voor het besturings element identiteits opties die door het systeem zijn toegewezen. De standaard waarde is **uitgeschakeld**. De volgende waarden zijn toegestaan:
+  - **Aan** : een door het systeem toegewezen identiteit wordt toegewezen aan de resource.
   - **Uit** : een door het systeem toegewezen identiteit is niet toegewezen aan de resource.
-  - **OnOnly** – Een door het systeem toegewezen identiteit is toegewezen aan de resource. Gebruikers kunnen deze waarde niet bewerken tijdens de implementatie.
+  - **OnOnly** : een door het systeem toegewezen identiteit wordt toegewezen aan de resource. Gebruikers kunnen deze waarde niet bewerken tijdens de implementatie.
   - **OffOnly** : een door het systeem toegewezen identiteit is niet toegewezen aan de resource. Gebruikers kunnen deze waarde niet bewerken tijdens de implementatie.
 
-- Als **options.hideSystemAssignedIdentity** is ingesteld op **true,** wordt de gebruikersinterface om de toegewezen identiteit van het systeem te configureren, niet weergegeven. De standaardwaarde voor deze optie is **onwaar.**
-- Als **options.hideUserAssignedIdentity** is ingesteld op **true,** wordt de gebruikersinterface om de door de gebruiker toegewezen identiteit te configureren, niet weergegeven. Aan de resource is geen door de gebruiker toegewezen identiteit toegewezen. De standaardwaarde voor deze optie is **onwaar.**
+- Als **Options. hideSystemAssignedIdentity** is ingesteld op **True**, wordt de gebruikers interface voor het configureren van de door het systeem toegewezen identiteit niet weer gegeven. De standaard waarde voor deze optie is **Onwaar**.
+- Als **Options. hideUserAssignedIdentity** is ingesteld op **True**, wordt de gebruikers interface voor het configureren van de door de gebruiker toegewezen identiteit niet weer gegeven. Aan de resource is geen door de gebruiker toegewezen identiteit toegewezen. De standaard waarde voor deze optie is **Onwaar**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie Aan de slag met [CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van ui-definities.
-- Zie [Elementen van CreateUiDefinition](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in ui-elementen .
+- Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
+- Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.

@@ -1,6 +1,6 @@
 ---
-title: Taken voor een individuele bijdrager in het Team Data Science-proces
-description: Een gedetailleerde overzicht van de taken voor een individuele bijdrager aan een data science team project.
+title: Taken voor afzonderlijke mede werkers in het team data Science process
+description: Een gedetailleerd overzicht van de taken voor een individuele mede werker van een Data Science-Team project.
 author: marktab
 manager: marktab
 editor: marktab
@@ -11,70 +11,70 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721248"
 ---
-# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Taken voor een individuele bijdrager in het Team Data Science-proces
+# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Taken voor afzonderlijke mede werkers in het team data Science process
 
-In dit onderwerp worden de taken beschreven die een *individuele bijdrager* heeft uitgevoerd om een project in het [Team Data Science Process](overview.md) (TDSP) in te stellen. Het doel is om te werken in een collaboratieve teamomgeving die standaardiseert op de TDSP. Het TDSP is ontworpen om samenwerking en teamlearning te verbeteren. Zie [Team Data Science Process rollen en taken](roles-tasks.md)voor een overzicht van de personeelsrollen en de bijbehorende taken die worden uitgevoerd door een data science-team dat standaard is op het TDSP.
+In dit onderwerp vindt u een overzicht van de taken die een *individuele mede werker* heeft voltooid voor het instellen van een project in het [team data Science process](overview.md) (TDSP). Het doel is om te werken in een samen werkende team omgeving die wordt gestandaardiseerd op de TDSP. De TDSP is ontworpen om samen werking en team educatie te verbeteren. Voor een overzicht van de personeels rollen en de bijbehorende taken die worden verwerkt door een Data Science-team dat wordt gestandardization op de TDSP, raadpleegt u [rollen en taken voor team data Science process](roles-tasks.md).
 
-In het volgende diagram ziet u de taken die afzonderlijke bijdragers (gegevenswetenschappers) uitvoeren om hun teamomgeving in te stellen. Zie [Uitvoering van data science-projecten](project-execution.md)voor instructies over het uitvoeren van een data science-project onder het TDSP. 
+In het volgende diagram ziet u de taken die door project afzonderlijke mede werkers (gegevens wetenschappers) zijn voltooid om hun team omgeving in te stellen. Zie voor instructies over het uitvoeren van een Data Science-project onder het TDSP de [uitvoering van data Science-projecten](project-execution.md). 
 
-![Taken voor individuele inzender](./media/project-ic-tasks/project-ic-1-tdsp-data-scientist.png)
+![Individuele Inzender taken](./media/project-ic-tasks/project-ic-1-tdsp-data-scientist.png)
 
-- **ProjectRepository** is de opslagplaats die uw projectteam onderhoudt om projectsjablonen en -assets te delen.
-- **TeamUtilities** is de utilities repository die uw team specifiek voor uw team onderhoudt. 
-- **GroupUtilities** is de opslagplaats die uw groep onderhoudt om nuttige hulpprogramma's te delen in de hele groep. 
+- **ProjectRepository** is de opslag plaats die uw project team beheert om Project sjablonen en-assets te delen.
+- **TeamUtilities** is de opslag plaats voor hulpprogram ma's die uw team specifiek voor uw team beheert. 
+- **GroupUtilities** is de opslag plaats die uw groep onderhoudt om nuttige hulpprogram ma's te delen in de hele groep. 
 
 > [!NOTE] 
-> In dit artikel wordt Azure Repos en een Data Science Virtual Machine (DSVM) gebruikt om een TDSP-omgeving in te stellen, omdat u TDSP bij Microsoft implementeren. Als uw team andere codehosting- of ontwikkelingsplatforms gebruikt, zijn de afzonderlijke taken voor bijdragen hetzelfde, maar de manier om deze te voltooien kan anders zijn.
+> In dit artikel wordt gebruikgemaakt van Azure opslag plaatsen en een Data Science Virtual Machine (DSVM) voor het instellen van een TDSP-omgeving, omdat u hiermee TDSP implementeert bij micro soft. Als uw team gebruikmaakt van andere code hosting-of ontwikkelings platformen, zijn de afzonderlijke Inzender taken hetzelfde, maar de manier om ze te volt ooien, kan afwijken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In deze zelfstudie wordt ervan uitgegaan dat de volgende bronnen en machtigingen zijn ingesteld door uw [groepsmanager,](group-manager-tasks.md) [teamleider](team-lead-tasks.md)en [projectlead:](project-lead-tasks.md)
+In deze zelf studie wordt ervan uitgegaan dat de volgende resources en machtigingen zijn ingesteld door uw [groeps Manager](group-manager-tasks.md), [team lead](team-lead-tasks.md)en [Project Lead](project-lead-tasks.md):
 
-- De Azure **DevOps-organisatie** voor uw data science-eenheid
-- Een **projectrepository** die door uw projectlead is ingesteld om projectsjablonen en -assets te delen
-- **GroupUtilities** en **TeamUtilities** repositories opgezet door de groepsmanager en teamleider, indien van toepassing
-- **Azure-bestandsopslag** die is ingesteld voor gedeelde elementen voor uw team of project, indien van toepassing
-- **Machtigingen** voor u om te klonen van en terug te duwen naar uw project repository 
+- De Azure DevOps **-organisatie** voor uw data Science-eenheid
+- Een **project opslagplaats** die is ingesteld door de project leider om Project sjablonen en-assets te delen
+- **GroupUtilities** -en **TeamUtilities** -opslag plaatsen die zijn ingesteld door de groeps Manager en team lead, indien van toepassing
+- Azure **File Storage** is ingesteld voor gedeelde assets voor uw team of project, indien van toepassing
+- **Machtigingen** voor het klonen van en terugsturen naar de project opslagplaats 
 
-Als u opslagplaatsen wilt klonen en inhoud op uw lokale machine of DSVM wilt wijzigen of Azure-bestandsopslag wilt monteren op uw DSVM, moet u deze checklist overwegen:
+Als u opslag plaatsen wilt klonen en inhoud wilt wijzigen op uw lokale machine of DSVM of als u Azure File Storage wilt koppelen aan uw DSVM, moet u rekening houden met deze controle lijst:
 
 - Een Azure-abonnement.
-- Git geïnstalleerd op uw machine. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Anders zie de [bijlage platforms en gereedschappen](platforms-and-tools.md#appendix).
-- Als u een DSVM wilt gebruiken, heeft de Windows- of Linux DSVM in Azure gemaakt en geconfigureerd. Zie de Data Science [Virtual Machine Documentation](/azure/machine-learning/data-science-virtual-machine/)voor meer informatie en instructies.
-- Voor een Windows DSVM is [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) geïnstalleerd op uw machine. Schuif *in* het README.md-bestand omlaag naar de sectie **Downloaden en installeren** en selecteer het nieuwste **installatieprogramma.** Download de *.exe* installer van de installatiepagina en voer deze uit. 
-- Voor een Linux DSVM is een SSH-openbare sleutel ingesteld op uw DSVM en toegevoegd in Azure DevOps. Zie de sectie **SSH public key maken** in de [bijlage platforms en hulpmiddelen](platforms-and-tools.md#appendix)voor meer informatie en instructies. 
-- De Azure-bestandsopslaggegevens voor elke Azure-bestandsopslag die u aan uw DSVM moet monteren. 
+- Git geïnstalleerd op de computer. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Anders raadpleegt u de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix).
+- Als u een DSVM wilt gebruiken, wordt de Windows-of Linux-DSVM gemaakt en geconfigureerd in Azure. Zie de [Data Science virtual machine-documentatie](/azure/machine-learning/data-science-virtual-machine/)voor meer informatie en instructies.
+- Voor een Windows DSVM is [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) op uw computer geïnstalleerd. Schuif in het bestand *README.MD* omlaag naar de sectie **downloaden en installeren** en selecteer het **nieuwste installatie programma**. Down load het installatie programma *. exe* op de pagina installatie programma en voer het uit. 
+- Voor een Linux-DSVM is een open bare SSH-sleutel ingesteld op uw DSVM en toegevoegd aan Azure DevOps. Zie de sectie **open bare SSH-sleutel maken** in de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix)voor meer informatie en instructies. 
+- De Azure File Storage-gegevens voor Azure file storage die u nodig hebt om te koppelen aan uw DSVM. 
 
-## <a name="clone-repositories"></a>Clone repositories
+## <a name="clone-repositories"></a>Opslag plaatsen klonen
 
-Om lokaal met repositories te werken en uw wijzigingen door te schuiven naar het gedeelde team en projectrepositories, kopieert of *kloont* u de repositories eerst naar uw lokale machine. 
+Als u lokaal wilt werken met opslag plaatsen en u uw wijzigingen naar het gedeelde team en project opslagplaatsen wilt pushen, kopieert of *kloont* u de opslag plaatsen eerst naar uw lokale machine. 
 
-1. Ga in Azure DevOps naar de projectoverzichtspagina van uw team op *\//\<https: servernaam>/\<organisatienaam>/\<teamnaam>*, bijvoorbeeld **https:\//dev.azure.com/DataScienceUnit/MyTeam**.
+1. Ga in azure DevOps naar de pagina project overzicht van uw team op *https:\//\<server naam>/\<organisatie naam>/\<team naam>* bijvoorbeeld **https:\//dev.Azure.com/DataScienceUnit/MyTeam**.
    
-1. Selecteer **Repo's** in de linkernavigatie en selecteer boven aan de pagina de opslagplaats die u wilt klonen.
+1. Selecteer **opslag plaatsen** in de linkernavigatiebalk en selecteer boven aan de pagina de opslag plaats die u wilt klonen.
    
-1. Selecteer **kloon** rechtsboven op de repo-pagina.
+1. Selecteer op de pagina opslag plaats rechtsboven **klonen** .
    
-1. Selecteer **in** het dialoogvenster **Kloonopslagplaats** de optie HTTPS voor een HTTP-verbinding of **SSH** voor een SSH-verbinding en kopieer de kloon-URL onder **opdrachtregel** naar het klembord.
+1. In het dialoog venster kloon van de **opslag plaats** selecteert u **https** voor een http-verbinding of **SSH** voor een SSH-verbinding en kopieert u de kloon-URL onder de **opdracht regel** naar het klem bord.
    
-   ![Kloon repo](./media/project-ic-tasks/clone.png)
+   ![Opslag plaats klonen](./media/project-ic-tasks/clone.png)
    
-1. Maak op uw lokale machine of DSVM de volgende mappen:
+1. Maak de volgende directory's op uw lokale computer of DSVM:
    
    - Voor Windows: **C:\GitRepos**
-   - Voor Linux: **$home/GitRepos**
+   - Voor Linux: **$Home/gitrepos**
    
-1. Wijzigen in de map die u hebt gemaakt.
+1. Ga naar de map die u hebt gemaakt.
    
-1. Voer in Git Bash `git clone <clone URL>` de opdracht uit voor elke opslagplaats die u wilt klonen. 
+1. In Git Bash voert u de opdracht `git clone <clone URL>` uit voor elke opslag plaats die u wilt klonen. 
    
-   Met de volgende opdracht wordt bijvoorbeeld de **TeamUtilities-opslagplaats** naar de *MyTeam-map* op uw lokale machine gekerend. 
+   Met de volgende opdracht wordt bijvoorbeeld de **TeamUtilities** -opslag plaats gekloond naar de *MyTeam* -map op uw lokale computer. 
    
    **HTTPS-verbinding:**
    
@@ -88,19 +88,19 @@ Om lokaal met repositories te werken en uw wijzigingen door te schuiven naar het
    git clone git@ssh.dev.azure.com:v3/DataScienceUnit/MyTeam/TeamUtilities
    ```
    
-1. Controleer of u de mappen voor de gekloonde opslagplaatsen zien in uw lokale projectmap.
+1. Controleer of u de mappen kunt zien voor de gekloonde opslag plaatsen in de lokale projectmap.
    
-   ![Drie lokale repository-mappen](./media/project-ic-tasks/project-ic-5-three-repo-cloned-to-ic-linux.png)
+   ![Drie lokale opslagplaats mappen](./media/project-ic-tasks/project-ic-5-three-repo-cloned-to-ic-linux.png)
 
-## <a name="mount-azure-file-storage-to-your-dsvm"></a>Azure-bestandsopslag op uw DSVM monteren
+## <a name="mount-azure-file-storage-to-your-dsvm"></a>Azure File Storage koppelen aan uw DSVM
 
-Als uw team of project gedeelde elementen heeft in Azure-bestandsopslag, monteert u de bestandsopslag op uw lokale machine of DSVM. Volg de instructies bij [Azure-bestandsopslag monteren op uw lokale machine of DSVM.](team-lead-tasks.md#mount-azure-file-storage-on-your-local-machine-or-dsvm)
+Als uw team of project gedeelde assets heeft in azure File Storage, koppelt u de bestands opslag aan uw lokale machine of DSVM. Volg de instructies bij het [koppelen van Azure File Storage op uw lokale machine of DSVM](team-lead-tasks.md#mount-azure-file-storage-on-your-local-machine-or-dsvm).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Hier vindt u links naar gedetailleerde beschrijvingen van de andere rollen en taken die zijn gedefinieerd door het Team Data Science-proces:
+Hier vindt u koppelingen naar gedetailleerde beschrijvingen van de andere rollen en taken die worden gedefinieerd door het team data Science process:
 
-- [Group Manager taken voor een data science team](group-manager-tasks.md)
-- [Team Lead taken voor een data science team](team-lead-tasks.md)
-- [Projectleadtaken voor een data science-team](project-lead-tasks.md)
+- [Groeps Manager-taken voor een Data Science-Team](group-manager-tasks.md)
+- [Team lead taken voor een Data Science-Team](team-lead-tasks.md)
+- [Project Lead taken voor een Data Science-Team](project-lead-tasks.md)
 

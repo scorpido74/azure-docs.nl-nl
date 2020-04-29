@@ -1,6 +1,6 @@
 ---
-title: Knooppunten voor VMware-oplossing verwijderen door CloudSimple - Azure
-description: Meer informatie over het verwijderen van knooppunten uit uw VMWare met CloudSimple-implementatie
+title: Knoop punten voor VMware-oplossing verwijderen door CloudSimple-Azure
+description: Meer informatie over het verwijderen van knoop punten uit uw VMWare met CloudSimple-implementatie
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/05/2019
@@ -9,44 +9,44 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 122e0636f54e066ae86ed2d19cefe5863b026293
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024735"
 ---
-# <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>Knooppunten verwijderen uit Azure VMware-oplossing door CloudSimple
+# <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>Knoop punten uit de Azure VMware-oplossing verwijderen door CloudSimple
 
-CloudSimple-knooppunten worden gemeten zodra ze zijn gemaakt.  Knooppunten moeten worden verwijderd om te stoppen met het meten van de knooppunten.  U verwijdert de knooppunten die niet worden gebruikt uit azure-portal.
+CloudSimple-knoop punten worden gemeten als ze eenmaal zijn gemaakt.  Knoop punten moeten worden verwijderd om het meten van de knoop punten te stoppen.  U verwijdert de knoop punten die niet van Azure Portal worden gebruikt.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Een knooppunt kan alleen worden verwijderd onder de volgende voorwaarden:
+Een knoop punt kan alleen worden verwijderd onder de volgende omstandigheden:
 
-* Een private cloud die met de knooppunten is gemaakt, wordt verwijderd.  Zie [Een Azure VMware-oplossing verwijderen door CloudSimple Private Cloud](delete-private-cloud.md)als u een private cloud wilt verwijderen.
-* Het knooppunt is uit de Private Cloud verwijderd door de Private Cloud te verkleinen.  Zie [Azure VMware-oplossing krimpen door CloudSimple Private Cloud](shrink-private-cloud.md)als u een Private Cloud wilt verkleinen.
+* Een Privécloud die is gemaakt met de knoop punten wordt verwijderd.  Als u een Privécloud wilt verwijderen, raadpleegt u [een Azure VMware-oplossing verwijderen via CloudSimple Private Cloud](delete-private-cloud.md).
+* Het knoop punt is uit de privécloud verwijderd door de Privécloud te verkleinen.  Als u een Privécloud wilt verkleinen, raadpleegt u [Azure VMware-oplossing verkleinen door CloudSimple privécloud](shrink-private-cloud.md).
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
+Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="delete-cloudsimple-node"></a>CloudSimple-knooppunt verwijderen
+## <a name="delete-cloudsimple-node"></a>CloudSimple-knoop punt verwijderen
 
-1. Selecteer **Alle services**.
+1. Selecteer **alle services**.
 
-2. Zoeken naar **CloudSimple-knooppunten**.
+2. Zoek naar **CloudSimple-knoop punten**.
 
-   ![Zoeken in CloudSimple-knooppunten](media/create-cloudsimple-node-search.png)
+   ![CloudSimple-knoop punten zoeken](media/create-cloudsimple-node-search.png)
 
-3. Selecteer **CloudSimple-knooppunten**.
+3. Selecteer **CloudSimple-knoop punten**.
 
-4. Selecteer knooppunten die niet tot een private cloud behoren om te verwijderen.  **De** kolom PRIVATE CLOUD NAME toont de naam Private Cloud waartoe een knooppunt behoort.  Als een knooppunt niet wordt gebruikt door een private cloud, is de waarde leeg. 
+4. Selecteer knoop punten die geen deel uitmaken van een Privécloud om deze te verwijderen.  Kolom **naam privécloud** bevat de naam van de privécloud waarvan een knoop punt deel uitmaakt.  Als een knoop punt niet door een Privécloud wordt gebruikt, is de waarde leeg. 
 
-    ![CloudSimple-knooppunten selecteren](media/select-delete-cloudsimple-node.png)
+    ![CloudSimple-knoop punten selecteren](media/select-delete-cloudsimple-node.png)
 
 > [!NOTE]
-> Alleen knooppunten die geen deel uitmaken van de Private Cloud kunnen worden verwijderd.
+> Alleen knoop punten die geen deel uitmaken van de Privécloud, kunnen worden verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Private Cloud](cloudsimple-private-cloud.md)
+* Meer informatie over [privécloud](cloudsimple-private-cloud.md)

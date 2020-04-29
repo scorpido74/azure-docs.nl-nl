@@ -1,6 +1,6 @@
 ---
-title: Syntaxisverwijzing voor SQLFilter-syntaxis van Azure Service Bus | Microsoft Documenten
-description: In dit artikel vindt u informatie over sqlfiltergrammatica. Een SqlFilter ondersteunt een subset van de SQL-92-standaard.
+title: Naslag informatie over Azure Service Bus SQLFilter | Microsoft Docs
+description: Dit artikel bevat informatie over SQLFilter-grammatica. Een SqlFilter ondersteunt een subset van de SQL-92-standaard.
 services: service-bus-messaging
 documentationcenter: na
 author: spelluru
@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 09/05/2018
 ms.author: spelluru
 ms.openlocfilehash: d5a8e165fcee23c5feecd5935983dd77d3ec6c30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76759660"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter-syntaxis
 
-Een *SqlFilter-object* is een instantie van de [klasse SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)en vertegenwoordigt een SQL-op taal gebaseerde filterexpressie die wordt geëvalueerd op basis van een [BrokeredMessage.](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) Een SqlFilter ondersteunt een subset van de SQL-92-standaard.  
+Een *SqlFilter* -object is een instantie van de [klasse SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)en vertegenwoordigt een op SQL-taal gebaseerde filter expressie die wordt geëvalueerd op basis van een [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). Een SqlFilter ondersteunt een subset van de SQL-92-standaard.  
   
- In dit onderwerp vindt u details over sqlfiltergrammatica.  
+ In dit onderwerp vindt u meer informatie over SqlFilter-grammatica.  
   
 ```  
 <predicate ::=  
@@ -60,11 +60,11 @@ Een *SqlFilter-object* is een instantie van de [klasse SqlFilter](/dotnet/api/mi
   
 ## <a name="arguments"></a>Argumenten  
   
--   `<scope>`is een optionele tekenreeks die `<property_name>`het bereik van de . Geldige waarden `sys` `user`zijn of . De `sys` waarde geeft `<property_name>` het systeembereik aan waar een naam van openbare eigendom van de [klasse BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)is. `user`geeft het `<property_name>` gebruikersbereik aan waar een sleutel van de [klasse BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) is. `user`bereik is het `<scope>` standaardbereik als deze niet is opgegeven.  
+-   `<scope>`is een optionele teken reeks die het bereik van `<property_name>`de aangeeft. Geldige waarden zijn `sys` of `user`. De `sys` waarde geeft de systeem Scope `<property_name>` aan waar de naam van een open bare eigenschap van de [klasse BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)is. `user`Hiermee wordt het gebruikers `<property_name>` bereik aangegeven waarbij een sleutel van de [BrokeredMessage-klassen](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) woordenlijst is. `user`Scope is het standaard bereik als `<scope>` niet is opgegeven.  
   
 ## <a name="remarks"></a>Opmerkingen
 
-Een poging om toegang te krijgen tot een niet-bestaande systeemeigenschap is een fout, terwijl een poging om toegang te krijgen tot een niet-bestaande eigenschap van de gebruiker geen fout is. In plaats daarvan wordt een niet-bestaande gebruikerseigenschap intern geëvalueerd als een onbekende waarde. Een onbekende waarde wordt speciaal behandeld tijdens de evaluatie van de operator.  
+Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaande systeem eigenschap. een poging om toegang te krijgen tot een niet-bestaande gebruikers eigenschap is geen fout. In plaats daarvan wordt een niet-bestaande gebruikers eigenschap intern geëvalueerd als een onbekende waarde. Een onbekende waarde wordt speciaal behandeld tijdens de evaluatie van de operator.  
   
 ## <a name="property_name"></a>property_name  
   
@@ -80,21 +80,21 @@ Een poging om toegang te krijgen tot een niet-bestaande systeemeigenschap is een
   
 ### <a name="arguments"></a>Argumenten  
 
- `<regular_identifier>`is een tekenreeks die wordt weergegeven door de volgende reguliere expressie:  
+ `<regular_identifier>`is een teken reeks die wordt vertegenwoordigd door de volgende reguliere expressie:  
   
 ```  
 [[:IsLetter:]][_[:IsLetter:][:IsDigit:]]*  
 ```  
   
-Deze grammatica betekent elke tekenreeks die begint met een letter en wordt gevolgd door een of meer underscore /letter/digit.  
+Deze grammatica betekent dat een wille keurige teken reeks begint met een letter en wordt gevolgd door een of meer onderstrepings tekens/letter/cijfer.  
   
-`[:IsLetter:]`betekent elk Unicode-teken dat is gecategoriseerd als een Unicode-letter. `System.Char.IsLetter(c)`retourneert `true` als `c` het een Unicode-brief is.  
+`[:IsLetter:]`betekent elk Unicode-teken dat is gecategoriseerd als Unicode-letter. `System.Char.IsLetter(c)``c` retourneert `true` een Unicode-letter.  
   
-`[:IsDigit:]`betekent elk Unicode-teken dat is gecategoriseerd als een cijfer achter de komma. `System.Char.IsDigit(c)`retourneert `true` als `c` een Unicode-cijfer is.  
+`[:IsDigit:]`betekent elk Unicode-teken dat is gecategoriseerd als een decimaal cijfer. `System.Char.IsDigit(c)`retourneert `true` of `c` een Unicode-cijfer is.  
   
-A `<regular_identifier>` kan geen gereserveerd trefwoord zijn.  
+Een `<regular_identifier>` kan geen gereserveerd tref woord zijn.  
   
-`<delimited_identifier>`is een tekenreeks die is omsloten met linker/rechter vierkante haakjes ([]). Een rechter vierkante beugel wordt weergegeven als twee rechter vierkante haakjes. Hieronder volgen voorbeelden `<delimited_identifier>`van :  
+`<delimited_identifier>`is een teken reeks die wordt Inge sloten met vier Kante haken links/rechts ([]). Een rechter rechte haak wordt weer gegeven als twee rechter rechte haken. Hier volgen enkele voor beelden `<delimited_identifier>`van:  
   
 ```  
 [Property With Space]  
@@ -102,13 +102,13 @@ A `<regular_identifier>` kan geen gereserveerd trefwoord zijn.
   
 ```  
   
-`<quoted_identifier>`is een tekenreeks die is ingesloten met dubbele aanhalingstekens. Een dubbel aanhalingsteken in id wordt weergegeven als twee dubbele aanhalingstekens. Het wordt afgeraden om geciteerde id's te gebruiken, omdat deze gemakkelijk kunnen worden verward met een tekenreeksconstante. Gebruik indien mogelijk een afgebakende id. Het volgende is `<quoted_identifier>`een voorbeeld van:  
+`<quoted_identifier>`is een teken reeks die tussen dubbele aanhalings tekens is geplaatst. Een dubbel aanhalings teken in id wordt weer gegeven als twee dubbele aanhalings tekens. Het is niet raadzaam om id's van aanhalings tekens te gebruiken omdat deze eenvoudig kunnen worden verward met een teken reeks constante. Gebruik, indien mogelijk, een gescheiden id. Hier volgt een voor beeld van `<quoted_identifier>`:  
   
 ```  
 "Contoso & Northwind"  
 ```  
   
-## <a name="pattern"></a>Patroon  
+## <a name="pattern"></a>pattern  
   
 ```  
 <pattern> ::=  
@@ -117,11 +117,11 @@ A `<regular_identifier>` kan geen gereserveerd trefwoord zijn.
   
 ### <a name="remarks"></a>Opmerkingen
   
-`<pattern>`moet een expressie zijn die als tekenreeks wordt geëvalueerd. Het wordt gebruikt als een patroon voor de LIKE operator.      Het kan de volgende jokertekens bevatten:  
+`<pattern>`moet een expressie zijn die als een teken reeks wordt geëvalueerd. Deze wordt gebruikt als een patroon voor de LIKE-operator.      De naam kan de volgende joker tekens bevatten:  
   
--   `%`: Elke reeks van nul of meer tekens.  
+-   `%`: Een wille keurige teken reeks van nul of meer tekens.  
   
--   `_`: Elk teken.  
+-   `_`: Eén wille keurig teken.  
   
 ## <a name="escape_char"></a>escape_char  
   
@@ -132,11 +132,11 @@ A `<regular_identifier>` kan geen gereserveerd trefwoord zijn.
   
 ### <a name="remarks"></a>Opmerkingen  
 
-`<escape_char>`moet een expressie zijn die wordt geëvalueerd als een tekenreeks van lengte 1. Het wordt gebruikt als een escape karakter voor de LIKE operator.  
+`<escape_char>`moet een expressie zijn die als een teken reeks met een lengte van 1 wordt geëvalueerd. Deze wordt gebruikt als escape-teken voor de operator LIKE.  
   
- Bijvoorbeeld overeenkomsten `property LIKE 'ABC\%' ESCAPE '\'` `ABC%` in plaats van een `ABC`tekenreeks die begint met .  
+ Bijvoorbeeld, `property LIKE 'ABC\%' ESCAPE '\'` komt overeen `ABC%` met een teken reeks die begint met `ABC`.  
   
-## <a name="constant"></a>Constante  
+## <a name="constant"></a>bedrag  
   
 ```  
 <constant> ::=  
@@ -145,27 +145,27 @@ A `<regular_identifier>` kan geen gereserveerd trefwoord zijn.
   
 ### <a name="arguments"></a>Argumenten  
   
--   `<integer_constant>`is een tekenreeks van getallen die niet zijn ingesloten tussen aanhalingstekens en geen decimalen bevatten. De waarden worden `System.Int64` als intern opgeslagen en volgen hetzelfde bereik.  
+-   `<integer_constant>`is een teken reeks die niet tussen aanhalings tekens staat en geen decimale punten bevat. De waarden worden `System.Int64` intern opgeslagen en volgen hetzelfde bereik.  
   
-     Dit zijn voorbeelden van lange constanten:  
+     Dit zijn voor beelden van lange constanten:  
   
     ```  
     1894  
     2  
     ```  
   
--   `<decimal_constant>`is een tekenreeks van getallen die niet zijn ingesloten tussen aanhalingstekens en een decimaal punt bevatten. De waarden worden `System.Double` opgeslagen als intern en volgen hetzelfde bereik/precisie.  
+-   `<decimal_constant>`is een teken reeks die niet tussen aanhalings tekens staat en een decimaal teken bevat. De waarden worden `System.Double` intern opgeslagen en volgen hetzelfde bereik/dezelfde precisie.  
   
-     In een toekomstige versie kan dit nummer worden opgeslagen in een ander gegevenstype om exacte getalsemantiek `System.Double` te `<decimal_constant>`ondersteunen, dus u moet niet vertrouwen op het feit dat het onderliggende gegevenstype voor .  
+     In een toekomstige versie kan dit nummer worden opgeslagen in een ander gegevens type ter ondersteuning van nauw keurige semantiek, dus moet u niet vertrouwen op het feit dat het onderliggende gegevens type `System.Double` voor `<decimal_constant>`is.  
   
-     Hieronder volgen voorbeelden van decimale constanten:  
+     Hier volgen enkele voor beelden van decimale constanten:  
   
     ```  
     1894.1204  
     2.0  
     ```  
   
--   `<approximate_number_constant>`is een getal geschreven in wetenschappelijke notatie. De waarden worden `System.Double` opgeslagen als intern en volgen hetzelfde bereik/precisie. Hieronder volgen voorbeelden van geschatte aantalconstanten:  
+-   `<approximate_number_constant>`is een getal dat is geschreven in een weten schappelijke notatie. De waarden worden `System.Double` intern opgeslagen en volgen hetzelfde bereik/dezelfde precisie. Hier volgen enkele voor beelden van constanten met een benaderende waarde:  
   
     ```  
     101.5E5  
@@ -181,7 +181,7 @@ A `<regular_identifier>` kan geen gereserveerd trefwoord zijn.
   
 ### <a name="remarks"></a>Opmerkingen  
 
-Booleaanse constanten worden weergegeven door de trefwoorden **WAAR** of **ONWAAR**. De waarden worden `System.Boolean`opgeslagen als .  
+Booleaanse constanten worden vertegenwoordigd door de tref woorden **True** of **False**. De waarden worden opgeslagen als `System.Boolean`.  
   
 ## <a name="string_constant"></a>string_constant  
   
@@ -191,9 +191,9 @@ Booleaanse constanten worden weergegeven door de trefwoorden **WAAR** of **ONWAA
   
 ### <a name="remarks"></a>Opmerkingen  
 
-Tekenreeksconstanten zijn ingesloten in afzonderlijke aanhalingstekens en bevatten geldige Unicode-tekens. Een aanhalingsteken dat is ingesloten in een tekenreeksconstante, wordt weergegeven als twee aanhalingstekens.  
+Teken reeks constanten worden tussen enkele aanhalings tekens geplaatst en bevatten geldige Unicode-tekens. Een enkel aanhalings teken in een teken reeks constante wordt weer gegeven als twee enkele aanhalings tekens.  
   
-## <a name="function"></a>Functie  
+## <a name="function"></a>functieassembly  
   
 ```  
 <function> :=  
@@ -203,49 +203,49 @@ Tekenreeksconstanten zijn ingesloten in afzonderlijke aanhalingstekens en bevatt
   
 ### <a name="remarks"></a>Opmerkingen
   
-De `newid()` functie retourneert een **System.Guid** gegenereerd door de `System.Guid.NewGuid()` methode.  
+De `newid()` functie retourneert een **System. GUID** die is gegenereerd `System.Guid.NewGuid()` door de-methode.  
   
-De `property(name)` functie geeft de waarde van `name`de eigenschap waarnaar wordt verwezen door . De `name` waarde kan elke geldige expressie zijn die een tekenreekswaarde retourneert.  
+De `property(name)` functie retourneert de waarde van de eigenschap waarnaar wordt verwezen `name`door. De `name` waarde kan een geldige expressie zijn die een teken reeks waarde retourneert.  
   
 ## <a name="considerations"></a>Overwegingen
   
-Overweeg de volgende [SqlFilter-semantiek:](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)  
+Houd rekening met de volgende [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) -semantiek:  
   
--   Eigendomsnamen zijn hoofdletter-ongevoelig.  
+-   Eigenschaps namen zijn niet hoofdletter gevoelig.  
   
--   Operators volgen c# impliciete conversie semantiek waar mogelijk.  
+-   Opera tors volgen impliciete semantische conversies van C# als dat mogelijk is.  
   
--   Systeemeigenschappen zijn openbare eigenschappen die worden weergegeven in [brokeredMessage-exemplaren.](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)  
+-   Systeem eigenschappen zijn open bare eigenschappen die worden weer gegeven in [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) -instanties.  
   
-    Denk aan `IS [NOT] NULL` de volgende semantiek:  
+    Houd rekening met `IS [NOT] NULL` de volgende semantiek:  
   
-    -   `property IS NULL`wordt geëvalueerd `true` alsof de eigenschap niet bestaat of de `null`waarde van de eigenschap is.  
+    -   `property IS NULL`wordt geëvalueerd alsof `true` de eigenschap niet bestaat of de waarde van de eigenschap is `null`.  
   
-### <a name="property-evaluation-semantics"></a>Property evaluatie semantiek  
+### <a name="property-evaluation-semantics"></a>Semantische eigenschappen van eigenschaps evaluatie  
   
-- Een poging om een niet-bestaande systeemeigenschap te evalueren, werpt een [uitzondering op Filteruitzondering.](/dotnet/api/microsoft.servicebus.messaging.filterexception)  
+- Een poging om een niet-bestaande systeem eigenschap te evalueren, genereert een [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) -uitzonde ring.  
   
-- Een eigenschap die niet bestaat, wordt intern als **onbekend**beoordeeld.  
+- Een eigenschap die niet bestaat, wordt intern geëvalueerd als **onbekend**.  
   
-  Onbekende evaluatie bij rekenkundige operatoren:  
+  Onbekende evaluatie van reken kundige Opera tors:  
   
-- Voor binaire operatoren, als de linker- en/of rechterkant van operands als **onbekend**wordt beoordeeld , is het resultaat **onbekend**.  
+- Voor binaire Opera tors geldt dat als de linker-en/of rechter zijde van operands wordt geëvalueerd als **onbekend**, het resultaat **onbekend**is.  
   
-- Voor unary operatoren, als een operand wordt geëvalueerd als **onbekend**, dan is het resultaat **onbekend**.  
+- Voor unaire Opera tors geldt dat als een operand als **onbekend**wordt geëvalueerd, het resultaat **onbekend**is.  
   
-  Onbekende evaluatie bij binaire vergelijkingsoperatoren:  
+  Onbekende evaluatie van Opera tors voor binaire vergelijkings operatoren:  
   
-- Als de linker- en/of rechterkant van operands als **onbekend**wordt beoordeeld , dan is het resultaat **onbekend**.  
+- Als de linker-en/of rechter zijde van operands wordt geëvalueerd als **onbekend**, is het resultaat **onbekend**.  
   
-  Onbekende evaluatie `[NOT] LIKE`in :  
+  Onbekende evaluatie in `[NOT] LIKE`:  
   
-- Als een operand wordt geëvalueerd als **onbekend,** dan is het resultaat **onbekend**.  
+- Als een operand als **onbekend**wordt geëvalueerd, is het resultaat **onbekend**.  
   
-  Onbekende evaluatie `[NOT] IN`in :  
+  Onbekende evaluatie in `[NOT] IN`:  
   
-- Als de linker operand wordt geëvalueerd als **onbekend**, dan is het resultaat **onbekend**.  
+- Als de linkeroperand wordt geëvalueerd als **onbekend**, is het resultaat **onbekend**.  
   
-  Onbekende evaluatie in **EN** operator:  
+  Onbekende evaluatie in **en** -operator:  
   
 ```  
 +---+---+---+---+  
@@ -259,7 +259,7 @@ Overweeg de volgende [SqlFilter-semantiek:](/dotnet/api/microsoft.servicebus.mes
 +---+---+---+---+  
 ```  
   
- Onbekende evaluatie in **OR-operator:**  
+ Onbekende evaluatie in **of** -operator:  
   
 ```  
 +---+---+---+---+  
@@ -273,14 +273,14 @@ Overweeg de volgende [SqlFilter-semantiek:](/dotnet/api/microsoft.servicebus.mes
 +---+---+---+---+  
 ```  
   
-### <a name="operator-binding-semantics"></a>Operatorbinding semantiek
+### <a name="operator-binding-semantics"></a>Semantiek van operator binding
   
--   Vergelijkingsoperatoren `>` `>=`zoals `<` `<=`, `!=`, `=` , en volgen dezelfde semantiek als de C#-operator binding in gegevenstypepromoties en impliciete conversies.  
+-   Vergelijkings operatoren `>`zoals `>=`, `<` `<=` `!=`,,, en `=` volgen dezelfde semantiek als de C#-operator die is gebonden aan het type van de aantekening van gegevens typen en impliciete conversies.  
   
--   Rekenkundige operatoren `-` `*`zoals `/` `+`, `%` , , en volgen dezelfde semantiek als de C# operator binding in data type promoties en impliciete conversies.
+-   Reken kundige Opera `+`tors `-`zoals `*`, `/`,, `%` en volgen dezelfde semantiek als de C#-operator die is gebonden aan het gegevens type promoties en impliciete conversies.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [SQLFilter-klasse (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
-- [SQLFilter-klasse (.NET-standaard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
-- [SQLRuleAction, klasse](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SQLFilter-klasse (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
+- [Klasse SQLRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)

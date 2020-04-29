@@ -1,6 +1,6 @@
 ---
-title: Azure blob-gegevens verwerken met geavanceerde analyses - Team Data Science-proces
-description: Verken gegevens en genereer functies uit gegevens die zijn opgeslagen in Azure Blob-opslag met behulp van geavanceerde analyses.
+title: Azure Blob-gegevens verwerken met geavanceerde analyses-team data Science process
+description: Gegevens verkennen en functies genereren op basis van gegevens die zijn opgeslagen in Azure Blob-opslag met behulp van geavanceerde analyses.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,19 +12,19 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4c47dfb8b221b6cb4b6237669ecd17c1637107a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721095"
 ---
 # <a name="process-azure-blob-data-with-advanced-analytics"></a><a name="heading"></a>Azure Blob-gegevens verwerken met geavanceerde analyses
-Dit document omvat het verkennen van gegevens en het genereren van functies uit gegevens die zijn opgeslagen in Azure Blob-opslag. 
+In dit document vindt u informatie over het verkennen van gegevens en het genereren van functies van gegevens die zijn opgeslagen in Azure Blob Storage. 
 
-## <a name="load-the-data-into-a-pandas-data-frame"></a>De gegevens in een Pandas-gegevensframe laden
-Om een gegevensset te verkennen en te manipuleren, moet deze worden gedownload van de blobbron naar een lokaal bestand dat vervolgens in een Pandas-gegevensframe kan worden geladen. Hier volgen de volgende stappen voor deze procedure:
+## <a name="load-the-data-into-a-pandas-data-frame"></a>De gegevens laden in een Pandas-gegevens frame
+Als u een gegevensset wilt verkennen en bewerken, moet deze worden gedownload van de BLOB-bron naar een lokaal bestand dat vervolgens kan worden geladen in een object met een Panda-gegevens frame. Dit zijn de stappen die u moet volgen voor deze procedure:
 
-1. Download de gegevens van Azure blob met de volgende voorbeeld python-code met blobservice. Vervang de variabele in de onderstaande code door uw specifieke waarden: 
+1. Down load de gegevens van Azure Blob met de volgende python-voorbeeld code met behulp van Blob service. Vervang de variabele in de onderstaande code door uw specifieke waarden: 
    
         from azure.storage.blob import BlobService
         import tables
@@ -41,52 +41,52 @@ Om een gegevensset te verkennen en te manipuleren, moet deze worden gedownload v
         blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
         t2=time.time()
         print(("It takes %s seconds to download "+blobname) % (t2 - t1))
-2. Lees de gegevens in een Pandas data-frame uit het gedownloade bestand.
+2. Lees de gegevens in een Panda-gegevens frame van het gedownloade bestand.
    
         #LOCALFILE is the file path    
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-Nu bent u klaar om de gegevens te verkennen en functies op deze gegevensset te genereren.
+U bent nu klaar om de gegevens te verkennen en functies in deze gegevensset te genereren.
 
-## <a name="data-exploration"></a><a name="blob-dataexploration"></a>Gegevensverkenning
-Hier zijn een paar voorbeelden van manieren om gegevens te verkennen met behulp van Panda's:
+## <a name="data-exploration"></a><a name="blob-dataexploration"></a>Gegevens verkennen
+Hier volgen enkele voor beelden van manieren om gegevens te verkennen met behulp van Panda:
 
 1. Het aantal rijen en kolommen controleren 
    
         print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
-2. Controleer de eerste of laatste paar rijen in de onderstaande gegevensset:
+2. Inspecteer de eerste of laatste paar rijen in de gegevensset, zoals hieronder wordt beschreven:
    
         dataframe_blobdata.head(10)
    
         dataframe_blobdata.tail(10)
-3. Controleer het gegevenstype dat elke kolom is geïmporteerd met behulp van de volgende voorbeeldcode
+3. Controleer het gegevens type dat elke kolom heeft geïmporteerd, zoals met behulp van de volgende voorbeeld code
    
         for col in dataframe_blobdata.columns:
             print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
-4. Controleer de basisstatistieken voor de kolommen in de gegevensset als volgt
+4. Controleer als volgt de basis statistieken voor de kolommen in de gegevensset
    
         dataframe_blobdata.describe()
-5. Bekijk het aantal vermeldingen voor elke kolomwaarde als volgt
+5. Ga als volgt te kijken naar het aantal items voor elke kolom waarde
    
         dataframe_blobdata['<column_name>'].value_counts()
-6. Ontbrekende waarden tellen ten opzichte van het werkelijke aantal vermeldingen in elke kolom met behulp van de volgende voorbeeldcode
+6. Aantal ontbrekende waarden ten opzichte van het werkelijke aantal vermeldingen in elke kolom met de volgende voorbeeld code
    
         miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
         print miss_num
-7. Als u ontbrekende waarden hebt voor een specifieke kolom in de gegevens, u deze als volgt neerzetten:
+7. Als u de waarden voor een bepaalde kolom in de gegevens ontbreken, kunt u deze als volgt verwijderen:
    
         dataframe_blobdata_noNA = dataframe_blobdata.dropna()
         dataframe_blobdata_noNA.shape
    
-   Een andere manier om ontbrekende waarden te vervangen is met de modusfunctie:
+   Een andere manier om ontbrekende waarden te vervangen, is met de functie mode:
    
         dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})        
-8. Een histogramplot maken met behulp van een variabel aantal opslaglocaties om de verdeling van een variabele in kaart te brengen    
+8. Een histogram maken met behulp van een variabel aantal opslag locaties om de distributie van een variabele uit te zetten    
    
         dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
    
         np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
-9. Bekijk correlaties tussen variabelen met behulp van een scatterplot of met behulp van de ingebouwde correlatiefunctie
+9. Bekijk correlaties tussen variabelen met behulp van een scatterplot of gebruik de ingebouwde correlatie functie
    
         #relationship between column_a and column_b using scatter plot
         plt.scatter(dataframe_blobdata['<column_a>'], dataframe_blobdata['<column_b>'])
@@ -94,49 +94,49 @@ Hier zijn een paar voorbeelden van manieren om gegevens te verkennen met behulp 
         #correlation between column_a and column_b
         dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
-## <a name="feature-generation"></a><a name="blob-featuregen"></a>Functiegeneratie
-We kunnen functies genereren met Python als volgt:
+## <a name="feature-generation"></a><a name="blob-featuregen"></a>Onderdelen genereren
+We kunnen als volgt functies genereren met behulp van python:
 
-### <a name="indicator-value-based-feature-generation"></a><a name="blob-countfeature"></a>Op indicatorwaarde gebaseerde functiegeneratie
-Categorische functies kunnen als volgt worden gemaakt:
+### <a name="indicator-value-based-feature-generation"></a><a name="blob-countfeature"></a>Indicator waarde gebaseerd op onderdelen genereren
+Categorische-functies kunnen als volgt worden gemaakt:
 
-1. Controleer de verdeling van de categorische kolom:
+1. Inspecteer de verdeling van de kolom categorische:
    
         dataframe_blobdata['<categorical_column>'].value_counts()
-2. Indicatorwaarden genereren voor elk van de kolomwaarden
+2. Indicator waarden genereren voor elk van de kolom waarden
    
         #generate the indicator column
         dataframe_blobdata_identity = pd.get_dummies(dataframe_blobdata['<categorical_column>'], prefix='<categorical_column>_identity')
-3. Deelnemen aan de indicatorkolom met het oorspronkelijke gegevensframe 
+3. De indicator kolom koppelen aan het oorspronkelijke gegevens frame 
    
             #Join the dummy variables back to the original data frame
             dataframe_blobdata_with_identity = dataframe_blobdata.join(dataframe_blobdata_identity)
-4. Verwijder de oorspronkelijke variabele zelf:
+4. De oorspronkelijke variabele zelf verwijderen:
    
         #Remove the original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
-### <a name="binning-feature-generation"></a><a name="blob-binningfeature"></a>Binning Feature Generation
-Voor het genereren van binned-functies gaan we als volgt te werk:
+### <a name="binning-feature-generation"></a><a name="blob-binningfeature"></a>Binning-functie generatie
+Voor het genereren van binning-functies worden de volgende stappen uitgevoerd:
 
-1. Een reeks kolommen toevoegen om een numerieke kolom op te laten vallen
+1. Een reeks kolommen toevoegen aan de bin een numerieke kolom
    
         bins = [0, 1, 2, 4, 10, 40]
         dataframe_blobdata_bin_id = pd.cut(dataframe_blobdata['<numeric_column>'], bins)
-2. Binning converteren naar een reeks booleaanse variabelen
+2. Binning converteren naar een reeks Booleaanse variabelen
    
         dataframe_blobdata_bin_bool = pd.get_dummies(dataframe_blobdata_bin_id, prefix='<numeric_column>')
-3. Ten slotte u de dummyvariabelen weer naar het oorspronkelijke gegevensframe voegen
+3. Voeg tot slot de dummy variabelen weer aan het oorspronkelijke gegevens frame toe
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
-## <a name="writing-data-back-to-azure-blob-and-consuming-in-azure-machine-learning"></a><a name="sql-featuregen"></a>Gegevens terugschrijven naar Azure blob en verbruiken in Azure Machine Learning
-Nadat u de gegevens hebt verkend en de benodigde functies hebt gemaakt, u de gegevens (gesampled of gesampled) uploaden naar een Azure-blob en deze gebruiken in Azure Machine Learning met behulp van de volgende stappen: aanvullende functies kunnen worden gemaakt in de Azure Machine Learning Studio (klassiek) ook. 
+## <a name="writing-data-back-to-azure-blob-and-consuming-in-azure-machine-learning"></a><a name="sql-featuregen"></a>Gegevens schrijven naar een Azure-Blob en gebruiken in Azure Machine Learning
+Nadat u de gegevens hebt bekeken en de benodigde functies hebt gemaakt, kunt u de gegevens (sampled of featurized) uploaden naar een Azure-Blob en deze gebruiken in Azure Machine Learning met behulp van de volgende stappen: u kunt ook aanvullende functies in de Azure Machine Learning Studio (klassiek) maken. 
 
-1. Het gegevensframe naar lokaal bestand schrijven
+1. Het gegevens frame naar een lokaal bestand schrijven
    
         dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
-2. Upload de gegevens als volgt naar Azure blob:
+2. Upload de gegevens naar Azure Blob als volgt:
    
         from azure.storage.blob import BlobService
         import tables
@@ -157,9 +157,9 @@ Nadat u de gegevens hebt verkend en de benodigde functies hebt gemaakt, u de geg
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. Nu kunnen de gegevens worden gelezen van de blob met behulp van de Azure Machine Learning [Import Data-module][import-data] zoals weergegeven in het onderstaande scherm:
+3. De gegevens kunnen nu vanuit de BLOB worden gelezen met behulp van de module Azure Machine Learning [gegevens importeren][import-data] , zoals in het onderstaande scherm wordt weer gegeven:
 
-![lezerblob][1]
+![Lees-BLOB][1]
 
 [1]: ./media/data-blob/reader_blob.png
 

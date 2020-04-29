@@ -1,42 +1,42 @@
 ---
-title: Verifiëren vanuit Kubernetes-cluster
-description: Meer informatie over het bieden van toegang tot afbeeldingen in uw Azure-containerregister door een pull-geheim te maken met behulp van een serviceprincipal
+title: Verifiëren vanuit het Kubernetes-cluster
+description: Meer informatie over het bieden van een Kubernetes-cluster met toegang tot installatie kopieën in uw Azure container Registry door een pull-geheim te maken met behulp van een Service-Principal
 ms.topic: article
 author: karolz-ms
 ms.author: karolz
 ms.reviewer: danlep
 ms.date: 02/10/2020
 ms.openlocfilehash: 0608ca0e0e53acf2f19910a7f1107dacf67d4e61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77154892"
 ---
-# <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Afbeeldingen uit een Azure-containerregister naar een Kubernetes-cluster halen
+# <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Installatie kopieën van een Azure container Registry naar een Kubernetes-cluster halen
 
-U een Azure-containerregister gebruiken als een bron van containerafbeeldingen met elk Kubernetes-cluster, inclusief 'lokale' Kubernetes-clusters zoals [minikube](https://minikube.sigs.k8s.io/) en [vriendelijk.](https://kind.sigs.k8s.io/) In dit artikel ziet u hoe u een Kubernetes-pull-geheim maakt op basis van een Azure Active Directory-serviceprincipal. Gebruik vervolgens het geheim om afbeeldingen uit een Azure-containerregister te halen in een Kubernetes-implementatie.
+U kunt een Azure container Registry gebruiken als bron van container installatie kopieën met elk Kubernetes-cluster, met inbegrip van ' lokale ' Kubernetes-clusters, zoals [minikube](https://minikube.sigs.k8s.io/) en [soort](https://kind.sigs.k8s.io/). In dit artikel wordt beschreven hoe u een Kubernetes pull-geheim maakt op basis van een service-principal van Azure Active Directory. Gebruik vervolgens het geheim om installatie kopieën uit een Azure container Registry te halen in een Kubernetes-implementatie.
 
 > [!TIP]
-> Als u de beheerde [Azure Kubernetes-service](../aks/intro-kubernetes.md)gebruikt, u [uw cluster](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) ook integreren met een doelazure-containerregister voor het trekken van afbeeldingen. 
+> Als u de beheerde [Azure Kubernetes-service](../aks/intro-kubernetes.md)gebruikt, kunt u [uw cluster ook integreren](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) met een Azure container Registry voor installatie kopieën. 
 
-In dit artikel wordt ervan uitgegaan dat u al een privé-Azure-containerregister hebt gemaakt. U moet ook een Kubernetes-cluster hebben `kubectl` dat wordt uitgevoerd en toegankelijk is via de command-line tool.
+In dit artikel wordt ervan uitgegaan dat u al een persoonlijk Azure container Registry hebt gemaakt. U moet ook een Kubernetes-cluster met en toegankelijk zijn via het `kubectl` opdracht regel programma.
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
-Als u het hoofdwachtwoord van de service niet opslaat of onthoudt, u het opnieuw instellen met de opdracht az [ad sp-referenties opnieuw instellen:][az-ad-sp-credential-reset]
+Als u het wacht woord van de Service-Principal niet opslaat of vergeet, kunt u het opnieuw instellen met de opdracht [AZ AD SP Credential reset][az-ad-sp-credential-reset] :
 
 ```azurecli
 az ad sp credential reset  --name http://<service-principal-name> --query password --output tsv
 ```
 
-Met deze opdracht wordt een nieuw, geldig wachtwoord geretourneerd voor uw serviceprincipal.
+Met deze opdracht wordt een nieuw, geldig wacht woord voor uw Service-Principal geretourneerd.
 
-## <a name="create-an-image-pull-secret"></a>Een afbeeldingstrekgeheim maken
+## <a name="create-an-image-pull-secret"></a>Een installatie kopie pull Secret maken
 
-Kubernetes gebruikt een *afbeeldingstrekgeheim* om informatie op te slaan die nodig is om te verifiëren in uw register. Als u het pull-geheim voor een Azure-containerregister wilt maken, geeft u de servicehoofd-id, het wachtwoord en de url van het register op. 
+Kubernetes maakt gebruik van een *installatie kopie pull-geheim* voor het opslaan van gegevens die nodig zijn voor de verificatie van het REGI ster. Als u het pull-geheim voor een Azure container Registry wilt maken, geeft u de Service-Principal-ID, het wacht woord en de register-URL op. 
 
-Maak een afbeeldingstrekgeheim `kubectl` met de volgende opdracht:
+Maak een installatie kopie pull Secret met de `kubectl` volgende opdracht:
 
 ```console
 kubectl create secret docker-registry <secret-name> \
@@ -49,15 +49,15 @@ Hierbij
 
 | Waarde | Beschrijving |
 | :--- | :--- |
-| `secret-name` | Naam van de afbeelding trek geheim, bijvoorbeeld *acr-secret* |
-| `namespace` | Kubernetes naamruimte om het geheim in <br/> Alleen nodig als u het geheim in een andere naamruimte dan de standaardnaamruimte wilt plaatsen |
-| `container-registry-name` | Naam van uw Azure-containerregister |
-| `service-principal-ID` | ID van de serviceprincipal die door Kubernetes wordt gebruikt om toegang te krijgen tot uw register |
-| `service-principal-password` | Servicehoofdwachtwoord |
+| `secret-name` | De naam van de installatie kopie pull Secret, bijvoorbeeld *ACR-Secret* |
+| `namespace` | Naam ruimte Kubernetes om het geheim in te zetten <br/> Alleen nodig als u het geheim wilt plaatsen in een andere naam ruimte dan de standaard naam ruimte |
+| `container-registry-name` | De naam van uw Azure container Registry |
+| `service-principal-ID` | ID van de service-principal die wordt gebruikt door Kubernetes om toegang te krijgen tot uw REGI ster |
+| `service-principal-password` | Service-Principal-wacht woord |
 
-## <a name="use-the-image-pull-secret"></a>Het geheim van de afbeeldingstrek gebruiken
+## <a name="use-the-image-pull-secret"></a>De afbeelding pull Secret gebruiken
 
-Zodra u de afbeelding pull geheim hebt gemaakt, u deze gebruiken om Kubernetes-pods en -implementaties te maken. Geef de naam op `imagePullSecrets` van het geheim onder in het implementatiebestand. Bijvoorbeeld:
+Zodra u de installatie kopie hebt gemaakt, kunt u deze gebruiken voor het maken van Kubernetes en-implementaties. Geef de naam van het geheim op `imagePullSecrets` onder in het implementatie bestand. Bijvoorbeeld:
 
 ```yaml
 apiVersion: v1
@@ -74,13 +74,13 @@ spec:
     - name: acr-secret
 ```
 
-In het voorgaande `your-awesome-app:v1` voorbeeld is de naam van de afbeelding `acr-secret` die u uit het Azure-containerregister moet halen en is dit de naam van het pull-geheim dat u hebt gemaakt om toegang te krijgen tot het register. Wanneer u de pod implementeert, haalt Kubernetes de afbeelding automatisch uit uw register, als deze nog niet aanwezig is op het cluster.
+In het vorige voor beeld `your-awesome-app:v1` is de naam van de afbeelding die moet worden opgehaald uit het Azure container Registry `acr-secret` en is de naam van het pull-geheim dat u hebt gemaakt voor toegang tot het REGI ster. Wanneer u de pod implementeert, haalt Kubernetes automatisch de installatie kopie uit het REGI ster, als deze nog niet aanwezig is in het cluster.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Azure Container Registry-verificatie met serviceprincipals](container-registry-auth-service-principal.md) voor meer informatie over het werken met serviceprincipals en Azure Container Registry-verificatie
-* Meer informatie over geheimen voor het trekken van afbeeldingen in de [Kubernetes-documentatie](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)
+* Zie [Azure container Registry verificatie met Service-principals](container-registry-auth-service-principal.md) voor meer informatie over het werken met Service-principals en Azure container Registry.
+* Meer informatie over afbeeldings pull geheimen in de [Kubernetes-documentatie](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)
 
 
 <!-- IMAGES -->

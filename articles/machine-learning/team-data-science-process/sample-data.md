@@ -1,6 +1,6 @@
 ---
-title: Voorbeeldgegevens op verschillende Azure Storage-locaties - Team Data Science Process
-description: Voorbeeldgegevens in Azure blob-containers, SQL Server- en Hive-tabellen om deze te beperken tot een kleinere, maar representatieveen en beter beheerbare grootte.
+title: 'Voorbeeld gegevens in verschillende Azure Storage locaties: team data Science process'
+description: Voorbeeld gegevens in Azure Blob-containers, SQL Server en Hive-tabellen om deze te beperken tot een kleinere maar representatieve en meer beheersbare grootte.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,23 +12,23 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 22e91d50227fcb44c7b90478d76379c14161ae05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76718600"
 ---
 # <a name="sample-data-in-azure-blob-containers-sql-server-and-hive-tables"></a><a name="heading"></a>Voorbeeldgegevens in Azure Blob-containers, SQL Server en Hive-tabellen
 
-In de volgende artikelen wordt beschreven hoe u gegevens samplen die zijn opgeslagen in een van de drie verschillende Azure-locaties:
+In de volgende artikelen wordt beschreven hoe u voorbeeld gegevens die zijn opgeslagen op een van drie verschillende Azure-locaties:
 
-* [**Azure blob container gegevens**](sample-data-blob.md) wordt bemonsterd door het te downloaden programmatisch en vervolgens bemonstering met monster Python-code.
-* [**SQL Server-gegevens**](sample-data-sql-server.md) worden bemonsterd met zowel SQL als de Python-programmeertaal. 
-* [**Hive-tabelgegevens**](sample-data-hive.md) worden bemonsterd met Hive-query's.
+* De gegevens van de [**Azure Blob-container**](sample-data-blob.md) worden voor bereid door deze programmatisch te downloaden en vervolgens te bemonsteren met een voor beeld van python-code.
+* [**SQL Server gegevens**](sample-data-sql-server.md) worden bemonsterd met behulp van SQL en de python-programmeer taal. 
+* Voor de [**Hive-tabel gegevens**](sample-data-hive.md) wordt gebruikgemaakt van Hive-query's.
 
-Deze bemonsteringstaak is een stap in het [Team Data Science Process (TDSP).](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)
+Deze steekproef taak is een stap in het [team data Science process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
-**Waarom voorbeeldgegevens?**
+**Waarom voorbeeld gegevens?**
 
-Als de gegevensset die u wilt analyseren groot is, is het meestal een goed idee om de gegevens te downsamplen om deze te beperken tot een kleinere, maar representatievere en beter beheerbare grootte. Inkrimping kan het begrijpen, verkennen en functieengineering van gegevens vergemakkelijken. Deze voorbeeldrol in het Cortana Analytics-proces is om snelle prototypen van de gegevensverwerkingsfuncties en machine learning-modellen mogelijk te maken.
+Als de gegevensset die u wilt analyseren groot is, is het doorgaans een goed idee om de gegevens te verlagen om deze te verminderen tot een kleinere, maar representatieve en meer beheersbare grootte. Overweeg kan bijdragen aan het leren, verkennen en functie techniek. Deze steekproef rol in het proces van Cortana Analytics is het snel maken van prototypen van de functies voor gegevens verwerking en het machine learning model.
 

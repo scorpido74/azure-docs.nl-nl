@@ -1,6 +1,6 @@
 ---
-title: Modelleringsfase van de levenscyclus van het Team Data Science Process
-description: De doelen, taken en deliverables voor de modelleringsfase van uw data-science projecten
+title: Model fase van de levens cyclus van het team data Science-proces
+description: De doel stellingen, taken en producten voor de model fase van uw data Science-projecten
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76720466"
 ---
-# <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Modelleringsfase van de levenscyclus van het Team Data Science Process
+# <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Model fase van de levens cyclus van het team data Science-proces
 
-In dit artikel worden de doelen, taken en deliverables beschreven die zijn gekoppeld aan de modelleringsfase van het Team Data Science Process (TDSP). Dit proces biedt een aanbevolen levenscyclus die u gebruiken om uw data-science-projecten te structureren. De levenscyclus schetst de belangrijkste fasen die projecten doorgaans uitvoeren, vaak iteratief:
+In dit artikel vindt u een overzicht van de doelen, taken en producten die zijn gekoppeld aan de modelleer fase van het team data Science process (TDSP). Dit proces biedt een aanbevolen levens cyclus die u kunt gebruiken om uw projecten met een gegevens wetenschap te structureren. De levens cyclus bevat een overzicht van de belangrijkste fasen die door projecten meestal worden uitgevoerd, vaak iteratief:
 
    1. **Inzicht in het bedrijf**
    2. **Gegevens verzamelen en begrijpen**
@@ -28,59 +28,59 @@ In dit artikel worden de doelen, taken en deliverables beschreven die zijn gekop
    4. **Implementatie**
    5. **Aanvaarding van de klant**
 
-Hier is een visuele weergave van de TDSP-levenscyclus:
+Hier volgt een visuele representatie van de levens cyclus van TDSP:
 
-![TDSP-levenscyclus](./media/lifecycle/tdsp-lifecycle2.png) 
+![TDSP levenscyclus](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goals"></a>Doelstellingen
-* Bepaal de optimale gegevensfuncties voor het machine learning-model.
-* Maak een informatief machine learning-model dat het doel het nauwkeurigst voorspelt.
+* Bepaal de optimale gegevens functies voor het machine learning-model.
+* Maak een informatieve machine learning-model waarmee het doel nauw keurig wordt voor speld.
 * Maak een machine learning-model dat geschikt is voor productie.
 
-## <a name="how-to-do-it"></a>Hoe doe je dat?
-In deze fase worden drie hoofdtaken behandeld:
+## <a name="how-to-do-it"></a>Hoe u dit doet
+Er zijn drie hoofd taken die in deze fase worden behandeld:
 
-  * **Feature engineering**: Maak gegevensfuncties uit de ruwe gegevens om modeltraining te vergemakkelijken.
-  * **Modeltraining:** Vind het model dat de vraag het meest nauwkeurig beantwoordt door hun successtatistieken te vergelijken.
-  * Bepaal of uw model geschikt is **voor productie.**
+  * **Functie techniek**: Maak gegevens functies van de onbewerkte gegevens om model trainingen te vergemakkelijken.
+  * **Model training**: Zoek het model dat de vraag het meest nauw keurig beantwoordt door de metrische gegevens over het slagen te vergelijken.
+  * Bepaal of uw model **geschikt is voor productie.**
 
 ### <a name="feature-engineering"></a>Functie-engineering
-Feature engineering omvat de opname, aggregatie en transformatie van ruwe variabelen om de functies te maken die in de analyse worden gebruikt. Als u inzicht wilt in wat een model drijft, moet u begrijpen hoe de functies zich tot elkaar verhouden en hoe de machine learning-algoritmen deze functies moeten gebruiken. 
+Functie techniek omvat het opnemen, samen voegen en transformeren van onbewerkte variabelen voor het maken van de functies die worden gebruikt in de analyse. Als u inzicht wilt krijgen in wat een model aangaat, moet u weten hoe de functies zijn gerelateerd aan elkaar en hoe de algoritmen voor machine learning deze functies moeten gebruiken. 
 
-Deze stap vereist een creatieve combinatie van domeinexpertise en de inzichten verkregen uit de data exploration stap. Feature engineering is een evenwichtsoefening van het vinden en opnemen van informatieve variabelen, maar tegelijkertijd proberen om te veel niet-gerelateerde variabelen te vermijden. Informatieve variabelen verbeteren uw resultaat; niet-gerelateerde variabelen introduceren onnodige ruis in het model. U moet deze functies ook genereren voor nieuwe gegevens die tijdens het scoren zijn verkregen. Als gevolg hiervan kan het genereren van deze functies alleen afhangen van gegevens die beschikbaar zijn op het moment van scoren. 
+Deze stap vereist een creatieve combi natie van domein expertise en de inzichten die zijn verkregen uit de stap voor het verkennen van gegevens. Functie techniek is een taak verdeling van het vinden en opnemen van informatieve variabelen, maar tegelijk probeert te veel niet-gerelateerde variabelen te vermijden. Informatieve variabelen verbeteren uw resultaat; bij niet-gerelateerde variabelen worden onnodige ruis in het model geïntroduceerd. U moet ook deze functies genereren voor alle nieuwe gegevens die tijdens de score worden verkregen. Als gevolg hiervan kan het genereren van deze functies alleen afhankelijk zijn van gegevens die beschikbaar zijn op het moment van de score. 
 
-Zie [Functieengineering in het data science-proces voor](create-features.md)technische richtlijnen voor functieengineering wanneer u gebruik maakt van verschillende Azure-gegevenstechnologieën. 
+Zie [functie Engineering in het data Science proces](create-features.md)voor technische richt lijnen voor functie techniek bij het gebruik van verschillende Azure-gegevens technologieën. 
 
 ### <a name="model-training"></a>Modeltraining
-Afhankelijk van het type vraag dat u probeert te beantwoorden, zijn er veel modelleringsalgoritmen beschikbaar. Zie Hoe u [algoritmen voor Microsoft Azure Machine Learning](../studio/algorithm-choice.md)kiest voor richtlijnen voor het kiezen van de algoritmen. Hoewel dit artikel Azure Machine Learning gebruikt, is de richtlijnen die het biedt nuttig voor alle machine learning-projecten. 
+Afhankelijk van het type vraag dat u probeert te beantwoorden, zijn er veel modelleer algoritmen beschikbaar. Zie [algoritmen voor Microsoft Azure machine learning kiezen](../studio/algorithm-choice.md)voor hulp bij het kiezen van algoritmen. Hoewel in dit artikel Azure Machine Learning wordt gebruikt, is de richt lijn die het biedt, nuttig voor machine learning-projecten. 
 
-Het proces voor modeltraining omvat de volgende stappen: 
+De training voor het model proces bestaat uit de volgende stappen: 
 
-   * **Splits de invoergegevens** willekeurig op voor modellering in een trainingsgegevensset en een testgegevensset.
-   * **Bouw de modellen** met behulp van de trainingsgegevensset.
-   * **Evalueer** de training en de testgegevensset. Gebruik een reeks concurrerende machine learning-algoritmen, samen met de verschillende bijbehorende tuningparameters (bekend als een *parametersweep)* die zijn gericht op het beantwoorden van de vraag van belang met de huidige gegevens.
-   * **Bepaal de "beste" oplossing** om de vraag te beantwoorden door de successtatistieken tussen alternatieve methoden te vergelijken.
+   * **Splits de invoer gegevens** wille keurig splitsen voor model lering in een set met trainings gegevens en een test gegevensverzameling.
+   * **Bouw de modellen** met behulp van de gegevensset voor training.
+   * **Evalueer** de training en de test gegevensset. Gebruik een reeks concurrerende algoritmen voor machine learning samen met de verschillende bijbehorende afstemmings parameters (ook wel een *parameter sweep*genoemd) die zijn gericht op het beantwoorden van de vraag naar belang stelling met de huidige gegevens.
+   * **Bepaal de ' beste ' oplossing** om de vraag te beantwoorden door de metrische gegevens over het succes te vergelijken tussen alternatieve methoden.
 
 > [!NOTE]
-> **Lekkage voorkomen**: U gegevenslekken veroorzaken als u gegevens van buiten de trainingsgegevensset opneemt waarmee een model of machine learning-algoritme onrealistisch goede voorspellingen kan doen. Lekkage is een veel voorkomende reden waarom data wetenschappers nerveus als ze voorspellende resultaten die lijken te mooi om waar te zijn. Deze afhankelijkheden kunnen moeilijk te detecteren zijn. Om lekkage te voorkomen moet vaak worden geëvalueerd tussen het bouwen van een analysegegevensset, het maken van een model en het evalueren van de nauwkeurigheid van de resultaten. 
+> **Lekkage voor komen**: u kunt lekkage van gegevens veroorzaken als u gegevens opneemt van buiten de set met trainingen die een model of machine learning-algoritme mogelijk maakt om onrealistisch goede voor spellingen te maken. Lekkage is een gemeen schappelijke reden voor het verkrijgen van zenuwen bij gegevens wetenschappers wanneer ze voorspellende resultaten ontvangen die te mooi lijken om waar te zijn. Deze afhankelijkheden kunnen moeilijk te detecteren zijn. Om te voor komen dat lekkage vaak een iteratie vereist tussen het bouwen van een analyse gegevensset, het maken van een model en het evalueren van de nauw keurigheid van de resultaten. 
 > 
 > 
 
-We bieden een [geautomatiseerde modellerings- en rapportagetool](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) met TDSP die meerdere algoritmen en parametersweeps kan uitvoeren om een basislijnmodel te produceren. Het produceert ook een basislijn modellering rapport dat de prestaties van elk model en parameter combinatie inclusief variabel belang samenvat. Dit proces is ook iteratief omdat het verdere functie-engineering kan aansturen. 
+We bieden een [geautomatiseerd hulp programma voor model lering en rapportage](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) met TDSP dat kan worden uitgevoerd via meerdere algoritmen en parameter sweeps om een basis lijn model te maken. Er wordt ook een basislijn model rapport gemaakt met een overzicht van de prestaties van elk model en de combi natie van para meters, inclusief de prioriteit van de variabele. Dit proces wordt ook herhaald, aangezien het verdere functie techniek kan hebben. 
 
 ## <a name="artifacts"></a>Artefacten
-De artefacten geproduceerd in deze fase zijn:
+De artefacten die in deze fase worden geproduceerd, zijn onder andere:
 
-   * [Functiesets:](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md)de functies die zijn ontwikkeld voor de modellering worden beschreven in het gedeelte **Functiesets** van het rapport **Gegevensdefinitie.** Het bevat verwijzingen naar de code om de functies te genereren en een beschrijving van hoe de functie is gegenereerd.
-   * [Modelrapport:](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md)Voor elk model dat wordt geprobeerd, wordt een standaardrapport op basis van sjablonen geproduceerd met details over elk experiment.
-   * **Controlepuntbesluit**: Beoordelen of het model voldoende presteert voor productie. Enkele belangrijke vragen om te stellen zijn:
-     * Beantwoordt het model de vraag met voldoende vertrouwen gezien de testgegevens? 
-     * Moet je proberen een alternatieve aanpak? Moet u extra gegevens verzamelen, meer functieengineering doen of experimenteren met andere algoritmen?
+   * [Functie sets](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): de functies die voor het model leren zijn ontwikkeld, worden beschreven in de sectie **functie sets** van het rapport **gegevens definitie** . Het bevat aanwijzers naar de code voor het genereren van de functies en een beschrijving van de manier waarop de functie is gegenereerd.
+   * [Model rapport](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): voor elk model dat wordt geprobeerd, een standaard rapport op basis van een sjabloon dat details bevat over elk experiment, wordt er geproduceerd.
+   * **Beslissing van het controle punt**: evalueren of het model voldoende voor productie wordt uitgevoerd. Hier volgen enkele belang rijke vragen die u kunt stellen:
+     * Beantwoordt het model de vraag met voldoende betrouw baarheid op basis van de test gegevens? 
+     * Moet u andere benaderingen proberen? Kunt u extra gegevens verzamelen, meer functies uitvoeren of experimenteren met andere algoritmen?
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Hier vindt u koppelingen naar elke stap in de levenscyclus van de TDSP:
+Hier vindt u koppelingen naar elke stap in de levens cyclus van de TDSP:
 
    1. [Inzicht in het bedrijf](lifecycle-business-understanding.md)
    2. [Gegevens verzamelen en begrijpen](lifecycle-data.md)
@@ -88,6 +88,6 @@ Hier vindt u koppelingen naar elke stap in de levenscyclus van de TDSP:
    4. [Implementatie](lifecycle-deployment.md)
    5. [Aanvaarding van de klant](lifecycle-acceptance.md)
 
-We bieden volledige end-to-end walkthroughs die alle stappen in het proces voor specifieke scenario's demonstreren. Het artikel [Voorbeeld walkthroughs](walkthroughs.md) bevat een lijst met de scenario's met koppelingen en miniatuurbeschrijvingen. De walkthroughs illustreren hoe u cloud-, on-premises tools en services combineren in een workflow of pijplijn om een intelligente toepassing te maken. 
+We bieden volledige end-to-end-instructies die alle stappen in het proces voor specifieke scenario's demonstreren. Het artikel [voorbeeld](walkthroughs.md) scenario's bevat een lijst met de scenario's met koppelingen en miniaturen. In de scenario's wordt uitgelegd hoe u Cloud, on-premises hulpprogram ma's en services in een werk stroom of pijp lijn kunt combi neren om een intelligente toepassing te maken. 
 
-Zie [De TDSP](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)gebruiken met Azure Machine Learning voor voorbeelden van het uitvoeren van stappen in TDSP's die Azure Machine Learning Studio gebruiken. 
+Zie [de TDSP gebruiken met Azure machine learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)voor voor beelden van het uitvoeren van stappen in TDSPs die gebruikmaken van Azure machine learning Studio. 

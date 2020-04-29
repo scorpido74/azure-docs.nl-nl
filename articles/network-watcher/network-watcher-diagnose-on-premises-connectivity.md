@@ -1,7 +1,7 @@
 ---
-title: Diagnose on-premises connectiviteit via VPN-gateway
+title: Problemen met on-premises connectiviteit via VPN-gateway vaststellen
 titleSuffix: Azure Network Watcher
-description: In dit artikel wordt beschreven hoe u on-premises connectiviteit diagnosticeren via vpn-gateway met problemen met Azure Network Watcher-bronnen.
+description: In dit artikel wordt beschreven hoe u on-premises connectiviteit via een VPN-gateway kunt vaststellen met Azure Network Watcher resource Troubleshooting.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -14,37 +14,37 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 835b3a69e779b536961110b674ae67f4e8c13ce0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76845065"
 ---
-# <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnose on-premises connectiviteit via VPN-gateways
+# <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnose van on-premises connectiviteit via VPN-gateways
 
-Azure VPN Gateway stelt u in staat om hybride oplossingen te maken die de behoefte aan een veilige verbinding tussen uw on-premises netwerk en uw Virtuele Azure-netwerk aanpakken. Omdat uw vereisten uniek zijn, is de keuze van het on-premises VPN-apparaat ook uniek. Azure ondersteunt momenteel [verschillende VPN-apparaten](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) die voortdurend worden gevalideerd in samenwerking met de apparaatleveranciers. Controleer de apparaatspecifieke configuratie-instellingen voordat u uw on-premises VPN-apparaat configureert. Op dezelfde manier is Azure VPN Gateway geconfigureerd met een reeks [ondersteunde IPsec-parameters](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) die worden gebruikt voor het tot stand brengen van verbindingen. Momenteel is er geen manier voor u om een specifieke combinatie van IPsec-parameters op te geven of te selecteren in de Azure VPN Gateway. Om een succesvolle verbinding tot stand te brengen tussen on-premises en Azure, moeten de on-premises VPN-apparaatinstellingen in overeenstemming zijn met de IPsec-parameters die zijn voorgeschreven door Azure VPN Gateway. Als de instellingen onjuist zijn, is er een verlies van connectiviteit en tot nu toe het oplossen van deze problemen was niet triviaal en meestal uren duurde om te identificeren en het probleem op te lossen.
+Met Azure VPN Gateway kunt u hybride oplossingen maken die de nood zaak voor een beveiligde verbinding tussen uw on-premises netwerk en uw virtuele Azure-netwerk. Als uw vereisten uniek zijn, is dit de keuze uit een on-premises VPN-apparaat. Azure ondersteunt momenteel [meerdere VPN-apparaten](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) die voortdurend worden gevalideerd in samen werking met de leveranciers van het apparaat. Controleer de apparaatspecifieke configuratie-instellingen voordat u uw on-premises VPN-apparaat configureert. Op dezelfde manier wordt Azure VPN Gateway geconfigureerd met een set [ondersteunde IPsec-para meters](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) die worden gebruikt voor het tot stand brengen van verbindingen. Het is momenteel niet mogelijk om een specifieke combi natie van IPsec-para meters op te geven of te selecteren in de Azure-VPN Gateway. Voor het tot stand brengen van een verbinding tussen on-premises en Azure, moeten de instellingen voor het on-premises VPN-apparaat in overeenstemming zijn met de IPsec-para meters die zijn voorgeschreven door Azure VPN Gateway. Als de instellingen onjuist zijn, is er sprake van een verlies van de verbinding en tot het oplossen van deze problemen was niet lastig en duurde het meestal uur om het probleem te identificeren en op te lossen.
 
-Met de probleemoplossingsfunctie azure network watcher u eventuele problemen met uw gateway en verbindingen diagnosticeren en beschikt u binnen enkele minuten over voldoende informatie om een weloverwogen beslissing te nemen om het probleem te verhelpen.
+Met de functie voor het oplossen van problemen met Azure Network Watcher kunt u problemen met uw gateway en verbindingen vaststellen en binnen enkele minuten voldoende informatie hebben om een weloverwogen beslissing te nemen om het probleem te verhelpen.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario"></a>Scenario
 
-U wilt een site-to-site-verbinding configureren tussen Azure en on-premises met FortiGate als on-premises VPN-gateway. Om dit scenario te bereiken, hebt u de volgende instelling nodig:
+U wilt een site-naar-site-verbinding tussen Azure en on-premises configureren met behulp van Forti Gate als de on-premises VPN Gateway. Voor dit scenario moet u de volgende instellingen instellen:
 
-1. Virtual Network Gateway - De VPN-gateway op Azure
-1. Local Network Gateway - De [on-premises VPN-gatewayvertegenwoordiging](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) in Azure-cloud
-1. Site-to-site-verbinding (routegebaseerd) - [Verbinding tussen de VPN-gateway en de on-premises router](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#CreateConnection)
-1. [FortiGate configureren](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
+1. Virtual Network gateway: de VPN Gateway op Azure
+1. Lokale netwerk gateway: de [on-premises (Forti Gate) VPN gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) weer gave in de Azure-Cloud
+1. Site-naar-site-verbinding (op route gebaseerd): [de verbinding tussen de VPN gateway en de on-premises router](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#CreateConnection)
+1. [Forti Gate configureren](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
-Gedetailleerde stapsgewijze richtlijnen voor het configureren van een site-to-site-configuratie zijn te vinden op bezoek bij: [Een VNet maken met een Site-to-Site-verbinding met behulp van de Azure-portal.](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+Gedetailleerde stapsgewijze richt lijnen voor het configureren van een site-naar-site-configuratie vindt u op: [een VNet met een site-naar-site-verbinding maken met behulp van de Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-Een van de kritieke configuratiestappen is het configureren van de IPsec-communicatieparameters, elke verkeerde configuratie leidt tot verlies van connectiviteit tussen het on-premises netwerk en Azure. Momenteel zijn Azure VPN Gateways geconfigureerd om de volgende IPsec-parameters voor fase 1 te ondersteunen. Zoals u zien in de onderstaande tabel, de encryptie-algoritmen ondersteund door Azure VPN Gateway zijn AES256, AES128, en 3DES.
+Een van de kritieke configuratie stappen is het configureren van de IPsec-communicatie parameters, elke onjuiste configuratie leidt tot verlies van connectiviteit tussen het on-premises netwerk en Azure. Momenteel zijn Azure VPN-gateways geconfigureerd ter ondersteuning van de volgende IPsec-para meters voor fase 1. Zoals u kunt zien in de volgende tabel, zijn de versleutelings algoritmen die door Azure VPN Gateway worden ondersteund, AES256, AES128 en 3DES.
 
-### <a name="ike-phase-1-setup"></a>IKE fase 1 setup
+### <a name="ike-phase-1-setup"></a>Setup van IKE fase 1
 
-| **Eigenschap** | **PolicyBased** | **RouteBased en Standard of High-Performance VPN-gateway** |
+| **Eigenschap** | **PolicyBased** | **RouteBased en Standard of VPN-gateway met hoge prestaties** |
 | --- | --- | --- |
 | IKE-versie |IKEv1 |IKEv2 |
 | Diffie-Hellman-groep |Groep 2 (1024 bits) |Groep 2 (1024 bits) |
@@ -53,66 +53,66 @@ Een van de kritieke configuratiestappen is het configureren van de IPsec-communi
 | Hash-algoritme |SHA1(SHA128) |SHA1(SHA128), SHA2(SHA256) |
 | Levensduur (tijd) van beveiligingskoppeling (SA) fase 1 |28.800 seconden |28.800 seconden |
 
-Als gebruiker moet u uw FortiGate configureren, een voorbeeldconfiguratie is te vinden op [GitHub.](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt) Onbewust hebt u uw FortiGate geconfigureerd om SHA-512 te gebruiken als het hashing-algoritme. Omdat dit algoritme geen ondersteund algoritme is voor beleidsgebaseerde verbindingen, werkt uw VPN-verbinding wel.
+Als gebruiker bent u verplicht uw Forti Gate te configureren. u kunt een voorbeeld configuratie vinden op [github](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt). U hebt uw Forti Gate niet bewust geconfigureerd voor het gebruik van SHA-512 als hash-algoritme. Omdat dit algoritme geen ondersteund algoritme is voor verbindingen op basis van beleid, werkt uw VPN-verbinding.
 
-Deze problemen zijn moeilijk op te lossen en de onderliggende oorzaken zijn vaak niet-intuïtief. In dit geval u een ondersteuningsticket openen om hulp te krijgen bij het oplossen van het probleem. Maar met Azure Network Watcher problemen API, u deze problemen te identificeren op uw eigen.
+Deze problemen zijn moeilijk op te lossen en hoofd oorzaken zijn vaak niet-intuïtief. In dit geval kunt u een ondersteunings ticket openen om hulp te krijgen bij het oplossen van het probleem. Maar met Azure Network Watcher het oplossen van problemen met de API, kunt u deze problemen zelf identificeren.
 
 ## <a name="troubleshooting-using-azure-network-watcher"></a>Problemen oplossen met Azure Network Watcher
 
-Als u uw verbinding wilt diagnosticeren, maakt u verbinding met Azure PowerShell en start u de `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet. U de details over het gebruik van deze cmdlet vinden bij [Probleemie problemen virtuele netwerkgateway en verbindingen - PowerShell](network-watcher-troubleshoot-manage-powershell.md). Deze cmdlet kan enkele minuten in beslag nemen.
+Maak verbinding met Azure PowerShell en start de `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet om uw verbinding te diagnosticeren. U kunt de details over het gebruik van deze cmdlet vinden bij het [oplossen van problemen Virtual Network gateway en verbindingen-Power shell](network-watcher-troubleshoot-manage-powershell.md). Het kan enkele minuten duren voordat deze cmdlet is voltooid.
 
-Zodra de cmdlet is voltooid, u naar de opslaglocatie navigeren die in de cmdlet is opgegeven om gedetailleerde informatie over het probleem en de logboeken te krijgen. Azure Network Watcher maakt een zip-map met de volgende logboekbestanden:
+Zodra de cmdlet is voltooid, kunt u naar de opslag locatie die in de cmdlet is opgegeven, zoeken naar gedetailleerde informatie over het probleem en de logboeken. Azure Network Watcher maakt een zip-map die de volgende logboek bestanden bevat:
 
 ![1][1]
 
-Open het bestand genaamd IKEErrors.txt en het geeft de volgende fout weer, die een probleem aangeeft met on-premises IKE-instelling verkeerde configuratie.
+Open het bestand IKEErrors. txt en de volgende fout wordt weer gegeven. Dit geeft aan dat er een probleem is met een onjuiste configuratie van de on-premises IKE-instelling.
 
 ```
 Error: On-premises device rejected Quick Mode settings. Check values.
      based on log : Peer sent NO_PROPOSAL_CHOSEN notify
 ```
 
-U gedetailleerde informatie krijgen van de Scrubbed-wfpdiag.txt over de fout, zoals in dit geval vermeldt dat er was `ERROR_IPSEC_IKE_POLICY_MATCH` dat leiden tot verbinding niet goed werkt.
+U kunt gedetailleerde informatie ophalen uit de Scrubbed-wfpdiag. txt over de fout, zoals in dit geval wordt vermeld dat er een probleem `ERROR_IPSEC_IKE_POLICY_MATCH` is waardoor de verbinding niet goed werkt.
 
-Een andere veel voorkomende verkeerde configuratie is het opgeven van onjuiste gedeelde sleutels. Als u in het voorgaande voorbeeld verschillende gedeelde sleutels hebt opgegeven, wordt `Error: Authentication failed. Check shared key`in IKEErrors.txt de volgende fout weergegeven: .
+Een andere algemene onjuiste configuratie is het opgeven van onjuiste gedeelde sleutels. Als u in het voor gaande voor beeld verschillende gedeelde sleutels hebt opgegeven, wordt in IKEErrors. txt de volgende `Error: Authentication failed. Check shared key`fout weer gegeven:.
 
-Azure Network Watcher probleemoplossing functie u diagnosticeren en problemen oplossen van uw VPN Gateway en Verbinding met het gemak van een eenvoudige PowerShell cmdlet. Momenteel ondersteunen we de diagnose van de volgende voorwaarden en werken we aan het toevoegen van meer conditie.
+Met de functie voor het oplossen van problemen met Azure Network Watcher kunt u uw VPN Gateway en verbinding met het gemak van een eenvoudige Power shell-cmdlet opsporen en oplossen. Momenteel ondersteunen we het vaststellen van de volgende voor waarden en werken ze met het toevoegen van meer voor waarden.
 
 ### <a name="gateway"></a>Gateway
 
 | Fouttype | Reden | Logboek|
 |---|---|---|
 | NoFault | Als er geen fout is gedetecteerd. |Ja|
-| GatewayNotFound | Kan gateway of Gateway niet vinden is niet ingericht. |Nee|
+| GatewayNotFound | De gateway of gateway is niet gevonden. |Nee|
 | PlannedMaintenance |  Er worden onderhoudswerkzaamheden uitgevoerd op het gatewayexemplaar.  |Nee|
-| UserDrivenUpdate | Wanneer een gebruikersupdate aan de gang is. Dit kan een bewerking voor het formaat zijn. | Nee |
-| VipUnResponsive | Kan de primaire instantie van de gateway niet bereiken. Dit gebeurt wanneer de gezondheidssonde uitvalt. | Nee |
+| UserDrivenUpdate | Wanneer een gebruikers update wordt uitgevoerd. Dit kan een bewerking voor het wijzigen van de grootte zijn. | Nee |
+| VipUnResponsive | Kan het primaire exemplaar van de gateway niet bereiken. Dit gebeurt wanneer de status test mislukt. | Nee |
 | PlatformInActive | Er is een probleem met het platform. | Nee|
-| ServiceNotRunning | De onderliggende service wordt niet uitgevoerd. | Nee|
-| NoConnectionsFoundForGateway | Er bestaan geen verbindingen op de gateway. Dit is slechts een waarschuwing.| Nee|
-| VerbindingenNiet verbonden | Geen van de verbindingen is verbonden. Dit is slechts een waarschuwing.| Ja|
-| GatewayCPUUsageExceeded | Het huidige GATEWAY-gebruik CPU-gebruik is > 95%. | Ja |
+| ServiceNotRunning | De onderliggende service is niet actief. | Nee|
+| NoConnectionsFoundForGateway | Er zijn geen verbindingen op de gateway. Dit is slechts een waarschuwing.| Nee|
+| ConnectionsNotConnected | Geen van de verbindingen is verbonden. Dit is slechts een waarschuwing.| Ja|
+| GatewayCPUUsageExceeded | Het huidige CPU-gebruik van de gateway is > 95%. | Ja |
 
 ### <a name="connection"></a>Verbinding
 
 | Fouttype | Reden | Logboek|
 |---|---|---|
 | NoFault | Als er geen fout is gedetecteerd. |Ja|
-| GatewayNotFound | Kan gateway of Gateway niet vinden is niet ingericht. |Nee|
+| GatewayNotFound | De gateway of gateway is niet gevonden. |Nee|
 | PlannedMaintenance | Er worden onderhoudswerkzaamheden uitgevoerd op het gatewayexemplaar.  |Nee|
-| UserDrivenUpdate | Wanneer een gebruikersupdate aan de gang is. Dit kan een bewerking voor het formaat zijn.  | Nee |
-| VipUnResponsive | Kan de primaire instantie van de gateway niet bereiken. Het gebeurt wanneer de gezondheidssonde faalt. | Nee |
-| ConnectionEntityNotFound | Verbindingsconfiguratie ontbreekt. | Nee |
-| Verbinding is verbroken losgekoppeld | De verbinding is gemarkeerd als 'losgekoppeld'. |Nee|
-| ConnectionNotConfiguredOnGateway | De onderliggende service heeft de verbinding niet geconfigureerd. | Ja |
-| VerbindingGemarkeerdDoor | De onderliggende service is gemarkeerd als stand-by.| Ja|
-| Authentication | Preshared Key mismatch. | Ja|
+| UserDrivenUpdate | Wanneer een gebruikers update wordt uitgevoerd. Dit kan een bewerking voor het wijzigen van de grootte zijn.  | Nee |
+| VipUnResponsive | Kan het primaire exemplaar van de gateway niet bereiken. Deze fout treedt op wanneer de status test mislukt. | Nee |
+| ConnectionEntityNotFound | De configuratie van de verbinding ontbreekt. | Nee |
+| ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als ' losgekoppeld '. |Nee|
+| ConnectionNotConfiguredOnGateway | De onderliggende service is niet geconfigureerd voor de verbinding. | Ja |
+| ConnectionMarkedStandby | De onderliggende service is gemarkeerd als stand-by.| Ja|
+| Verificatie | De vooraf gedeelde sleutel komt niet overeen. | Ja|
 | PeerReachability | De peer gateway is niet bereikbaar. | Ja|
-| IkePolicyMismatch | De peer gateway heeft IKE-beleid dat niet wordt ondersteund door Azure. | Ja|
-| WfpParse- fout | Er is een fout opgetreden bij het ontzeggen van het WFP-logboek. |Ja|
+| IkePolicyMismatch | De peer gateway heeft een IKE-beleid dat niet wordt ondersteund door Azure. | Ja|
+| WfpParse-fout | Er is een fout opgetreden bij het parseren van het WFP-logboek. |Ja|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Informatie over het controleren van VPN-gatewayconnectiviteit met PowerShell en Azure Automation door [naar Monitor VPN-gateways te](network-watcher-monitor-with-azure-automation.md) gaan met problemen met Azure Network Watcher
+Meer informatie over het controleren van VPN Gateway connectiviteit met Power shell en Azure Automation door te bezoeken [VPN-gateways bewaken met Azure Network Watcher probleem oplossing](network-watcher-monitor-with-azure-automation.md)
 
 [1]: ./media/network-watcher-diagnose-on-premises-connectivity/figure1.png

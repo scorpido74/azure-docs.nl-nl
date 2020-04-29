@@ -1,6 +1,6 @@
 ---
-title: Openbare omgevingen configureren en gebruiken in Azure DevTest Labs | Microsoft Documenten
-description: In dit artikel wordt beschreven hoe u openbare omgevingen (Azure Resource Manager-sjablonen in een Git-repo) configureert en gebruikt in Azure DevTest Labs.
+title: Open bare omgevingen configureren en gebruiken in Azure DevTest Labs | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u open bare omgevingen (Azure Resource Manager sjablonen in een Git-opslag plaats) in Azure DevTest Labs kunt configureren en gebruiken.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,36 +15,36 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 127a6986e04cf90f69b2a8ec70b90b877e534708
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721690"
 ---
-# <a name="configure-and-use-public-environments-in-azure-devtest-labs"></a>Openbare omgevingen configureren en gebruiken in Azure DevTest Labs
-Azure DevTest Labs heeft een [openbare opslagplaats van Azure Resource Manager-sjablonen](https://github.com/Azure/azure-devtestlab/tree/master/Environments) die u gebruiken om omgevingen te maken zonder zelf verbinding te hoeven maken met een externe GitHub-bron. Deze opslagplaats bevat veelgebruikte sjablonen zoals Azure Web Apps, Service Fabric Cluster en de SharePoint Farm-omgeving voor ontwikkeling. Deze functie is vergelijkbaar met de openbare opslagplaats van artefacten die is opgenomen voor elk lab dat u maakt. Met de omgevingsopslagplaats u snel aan de slag met vooraf geschreven omgevingssjablonen met minimale invoerparameters om u een soepele aanstartervaring te bieden voor PaaS-bronnen in laboratoria. 
+# <a name="configure-and-use-public-environments-in-azure-devtest-labs"></a>Open bare omgevingen configureren en gebruiken in Azure DevTest Labs
+Azure DevTest Labs heeft een [open bare opslag plaats van Azure Resource Manager sjablonen](https://github.com/Azure/azure-devtestlab/tree/master/Environments) die u kunt gebruiken om omgevingen te maken zonder dat u zelf verbinding hoeft te maken met een externe github-bron. Deze opslag plaats bevat veelgebruikte sjablonen, zoals Azure Web Apps, Service Fabric cluster en ontwikkel share point-farm omgeving. Deze functie is vergelijkbaar met de open bare opslag plaats van artefacten die zijn opgenomen voor elk lab dat u maakt. Met de opslag plaats omgeving kunt u snel aan de slag met vooraf gemaakte omgevings sjablonen met minimale invoer parameters om u te voorzien van een soepele aan de slag-ervaring voor PaaS-resources binnen Labs. 
 
-## <a name="configuring-public-environments"></a>Openbare omgevingen configureren
-Als eigenaar van een lab u tijdens de creatie van het lab de openbare omgevingrepository voor uw lab inschakelen. Als u openbare omgevingen voor uw lab wilt inschakelen, selecteert u **Op** voor het veld **Openbare omgevingen** terwijl u een lab maakt. 
+## <a name="configuring-public-environments"></a>Open bare omgevingen configureren
+Als eigenaar van het lab kunt u de opslag plaats voor de open bare omgeving voor uw Lab inschakelen tijdens het maken van het lab. Als u open bare omgevingen voor uw Lab wilt inschakelen **, selecteert u** voor het veld **open bare omgevingen** tijdens het maken van een lab. 
 
-![Openbare omgeving inschakelen voor een nieuw lab](media/devtest-lab-configure-use-public-environments/enable-public-environment-new-lab.png)
+![Open bare omgeving inschakelen voor een nieuw Lab](media/devtest-lab-configure-use-public-environments/enable-public-environment-new-lab.png)
 
 
-Voor bestaande labs is de openbare omgevingsrepository niet ingeschakeld. Handmatig inschakelen om sjablonen te gebruiken in de repository. Voor labs die zijn gemaakt met Resource Manager-sjablonen, is de opslagplaats standaard ook uitgeschakeld.
+Voor bestaande Labs is de opslag plaats open bare omgeving niet ingeschakeld. Schakel deze hand matig in om sjablonen in de opslag plaats te gebruiken. Voor Labs die is gemaakt met Resource Manager-sjablonen, is de opslag plaats ook standaard uitgeschakeld.
 
-U openbare omgevingen voor uw lab in- en uitschakelen en ook alleen specifieke omgevingen beschikbaar maken voor labgebruikers met behulp van de volgende stappen: 
+U kunt open bare omgevingen inschakelen/uitschakelen voor uw Lab en alleen specifieke omgevingen beschikbaar maken voor gebruikers met een lab door de volgende stappen uit te voeren: 
 
-1. Selecteer **Configuratie en beleid** voor uw lab. 
-2. Selecteer **openbare omgevingen**in de sectie **VIRTUELE MACHINEBASES** .
-3. Als u openbare omgevingen voor het lab wilt inschakelen, selecteert u **Ja**. Anders selecteert u **Nee**. 
-4. Als u openbare omgevingen hebt ingeschakeld, zijn alle omgevingen in de repository standaard ingeschakeld. U een omgeving deselecteren om deze niet beschikbaar te maken voor uw labgebruikers. 
+1. Selecteer **configuratie en beleid** voor uw Lab. 
+2. Selecteer in het gedeelte **virtuele machine bases** de optie **open bare omgevingen**.
+3. Als u open bare omgevingen voor het Lab wilt inschakelen, selecteert u **Ja**. Anders selecteert u **Nee**. 
+4. Als u open bare omgevingen hebt ingeschakeld, worden alle omgevingen in de opslag plaats standaard ingeschakeld. U kunt de selectie van een omgeving ongedaan maken zodat deze niet beschikbaar is voor uw Lab-gebruikers. 
 
-![Pagina openbare omgevingen](media/devtest-lab-configure-use-public-environments/public-environments-page.png)
+![Pagina open bare omgevingen](media/devtest-lab-configure-use-public-environments/public-environments-page.png)
 
-## <a name="use-environment-templates-as-a-lab-user"></a>Omgevingssjablonen gebruiken als labgebruiker
-Als labgebruiker u een nieuwe omgeving maken vanuit de ingeschakelde lijst met omgevingssjablonen door **simpelweg +Toevoegen te** selecteren op de gereedschapsbalk op de labpagina. De lijst met bases bevat de sjablonen voor openbare omgevingen die door uw labbeheerder bovenaan de lijst zijn ingeschakeld.
+## <a name="use-environment-templates-as-a-lab-user"></a>Omgevings sjablonen gebruiken als test gebruiker
+Als test gebruiker kunt u een nieuwe omgeving maken op basis van de ingeschakelde lijst met omgevings sjablonen door simpelweg op de werk balk op de pagina Lab op **+ toevoegen** te klikken. De lijst met basissen bevat de sjablonen voor open bare omgevingen die zijn ingeschakeld door uw test beheerder boven aan de lijst.
 
-![Sjablonen voor openbare omgeving](media/devtest-lab-configure-use-public-environments/public-environment-templates.png)
+![Sjablonen voor open bare omgevingen](media/devtest-lab-configure-use-public-environments/public-environment-templates.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Deze repository is een open-source repository die u bijdragen aan het toevoegen van veel gebruikte en nuttige Resource Manager sjablonen van uw eigen. Om bij te dragen, gewoon een pull request tegen de repository.  
+Deze opslag plaats is een open-source opslag plaats die u kunt bijdragen om veelgebruikte en handige Resource Manager-sjablonen zelf toe te voegen. Als u een bijdrage wilt leveren, moet u een pull-aanvraag indienen bij de opslag plaats.  

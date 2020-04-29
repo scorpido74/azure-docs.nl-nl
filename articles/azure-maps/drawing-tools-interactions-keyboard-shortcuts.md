@@ -1,6 +1,6 @@
 ---
-title: Interactietypen voor tekengereedschappen en sneltoetsen op de kaart | Microsoft Azure Maps
-description: Vormen tekenen en bewerken met een muis, aanraakscherm of toetsenbord in de Microsoft Azure Maps Web SDK
+title: Teken hulpprogramma's, interactie typen en toetsenbord snel toetsen op kaart | Microsoft Azure kaarten
+description: Vormen tekenen en bewerken met behulp van een muis, een aanraak scherm of een toetsen bord in de Microsoft Azure Maps Web SDK
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/05/2019
@@ -9,144 +9,144 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: fb8a1e1a8c29086553500bdad2e4604d1e1ef471
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77198289"
 ---
-# <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>Interactietypen en sneltoetsen in de module tekengereedschappen
+# <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>Interactie typen en sneltoetsen in de module teken hulpprogramma's
 
-In dit artikel worden alle verschillende manieren beschreven om vormen te tekenen en te bewerken met een muis, aanraakscherm of sneltoetsen.
+In dit artikel vindt u een overzicht van de verschillende manieren om shapes te tekenen en bewerken met behulp van een muis, een aanraak scherm of sneltoetsen.
 
-De tekenmanager ondersteunt drie verschillende manieren van interactie met de kaart om vormen te tekenen.
+De tekening beheerder ondersteunt drie verschillende manieren van interactie met de kaart, om vormen te tekenen.
 
-* `click`- Coördinaten worden toegevoegd wanneer op de muis of aanraking wordt geklikt.
-* `freehand `- Coördinaten worden toegevoegd wanneer de muis of aanraking op de kaart wordt gesleept.
-* `hybrid`- Coördinaten worden toegevoegd wanneer de muis of aanraking wordt geklikt of gesleept.
+* `click`-Coördinaten worden toegevoegd wanneer er met de muis of het aanraken wordt geklikt.
+* `freehand `-Coördinaten worden toegevoegd wanneer de muis of het aanraak scherm op de kaart wordt gesleept.
+* `hybrid`-Coördinaten worden toegevoegd wanneer de muis of het aanraken wordt geklikt of gesleept.
 
 ## <a name="how-to-draw-shapes"></a>Vormen tekenen
 
- Voordat een vorm kan worden `drawingMode` getekend, stelt u de optie van de tekenmanager in op een ondersteunde tekeninstelling. Deze instelling kan worden geprogrammeerd of aangeroepen door op een van de tekenknoppen op de werkbalk te drukken. De tekenmodus blijft ingeschakeld, zelfs nadat een vorm is getekend, waardoor het gemakkelijk is om extra vormen van hetzelfde type te tekenen. Stel de tekenmodus programmatisch in op een niet-actieve status. U ook overschakelen naar een niet-actieve status door op de knop huidige tekenmodi op de werkbalk te klikken.
+ Voordat een shape kan worden getekend, stelt u `drawingMode` de optie van de tekening manager in op een ondersteunde teken instelling. Deze instelling kan worden geprogrammeerd of opgeroepen door op een van de teken knoppen op de werk balk te drukken. De teken modus blijft ingeschakeld, zelfs nadat een vorm is getekend, waardoor het gemakkelijk is om extra vormen van hetzelfde type te tekenen. De teken modus programmatisch instellen op niet-actieve status. Of schakel over naar een niet-actieve status door te klikken op de knop huidige teken modi op de werk balk.
 
-In de volgende secties worden alle verschillende manieren beschreven waarop vormen op de kaart kunnen worden getekend.
+De volgende secties bevatten een overzicht van de verschillende manieren waarop vormen kunnen worden getekend op de kaart.
 
-### <a name="how-to-draw-a-point"></a>Hoe maak je een punt te trekken
+### <a name="how-to-draw-a-point"></a>Een punt tekenen
 
-Wanneer de tekenmanager `draw-point` zich in de tekenmodus bevindt, kunnen de volgende acties worden uitgevoerd om punten op de kaart te tekenen. Deze methoden werken met alle interactiemodi.
+Wanneer het tekening beheer zich in `draw-point` de teken modus bevindt, kunnen de volgende acties worden uitgevoerd om punten op de kaart te tekenen. Deze methoden werken met alle interactie modi.
 
-**Beginnen met tekenen**
- - Klik op de linkermuisknop of raak op de kaart om een punt aan de kaart toe te voegen. 
- - Als de muis zich boven `F` de kaart bevindt, drukt u op de toets en wordt er een punt toegevoegd aan de coördinaat van de muisaanwijzer. Deze methode biedt een hogere nauwkeurigheid voor het toevoegen van een punt aan de kaart. Er zal minder beweging op de muis als gevolg van de druk beweging van de linker muisknop.
- - Blijf klikken, aanraken of `F` drukken om meer punten aan de kaart toe te voegen.
+**Tekenen starten**
+ - Klik op de linkermuisknop of druk op de kaart om een punt aan de kaart toe te voegen. 
+ - Als de muis zich boven de kaart bevindt `F` , drukt u op de toets en wordt er een punt toegevoegd aan de coördinaat van de muis aanwijzer. Deze methode biedt een hogere nauw keurigheid voor het toevoegen van een punt aan de kaart. Er is minder beweging aan de muis als gevolg van het drukken op beweging van de linkermuisknop.
+ - Blijf klikken, raken of ingedrukt `F` om meer punten aan de kaart toe te voegen.
  
-**Tekening voltooien**
- - Klik op een knop op de werkbalk van de tekening. 
- - Stel de tekenmodus programmatisch in. 
- - Druk `C` op de toets.
+**Tekenen volt ooien**
+ - Klik op een knop op de werk balk tekenen. 
+ - De teken modus programmatisch instellen. 
+ - Druk op `C` de toets.
 
-**Tekening annuleren**
- - Druk `Escape` op de toets.
+**Tekenen annuleren**
+ - Druk op `Escape` de toets.
 
-### <a name="how-to-draw-a-line"></a>Hoe een lijn te trekken
+### <a name="how-to-draw-a-line"></a>Een lijn tekenen
 
-Wanneer de tekenmanager `draw-line` in de modus is, kunnen de volgende acties worden uitgevoerd om punten op de kaart te tekenen, afhankelijk van de interactiemodus.
+Wanneer de teken beheer `draw-line` modus actief is, kunnen de volgende acties worden uitgevoerd om punten op de kaart te tekenen, afhankelijk van de interactie modus.
 
-**Beginnen met tekenen**
- - Klikmodus
-   * Klik op de linkermuisknop of raak op de kaart om elk punt van een regel op de kaart toe te voegen. Voor elke klik of aanraking wordt een coördinaat aan de lijn toegevoegd. 
-   * Als de muis zich boven `F` de kaart bevindt, drukt u op de toets en wordt er een punt toegevoegd aan de coördinaat van de muisaanwijzer. Deze methode biedt een hogere nauwkeurigheid voor het toevoegen van een punt aan de kaart. Er zal minder beweging op de muis als gevolg van de druk beweging van de linker muisknop.
+**Tekenen starten**
+ - Klik modus
+   * Klik op de linkermuisknop of druk op de kaart om elk punt van een regel op de kaart toe te voegen. Een coördinaat wordt toegevoegd aan de regel voor elke klik of aanraking. 
+   * Als de muis zich boven de kaart bevindt `F` , drukt u op de toets en wordt er een punt toegevoegd aan de coördinaat van de muis aanwijzer. Deze methode biedt een hogere nauw keurigheid voor het toevoegen van een punt aan de kaart. Er is minder beweging aan de muis als gevolg van het drukken op beweging van de linkermuisknop.
    * Blijf klikken totdat alle gewenste punten aan de lijn zijn toegevoegd.
- - Vrijehand-modus
-   * Druk op de linkermuisknop of raak aan op de kaart en sleep de muis of aanraakpunt rond. Coördinaten worden toegevoegd aan de lijn als de muis of het aanraakpunt beweegt rond de kaart. Zodra de muis- of touch-upgebeurtenis wordt geactiveerd, is de tekening voltooid. De frequentie waarmee coördinaten worden toegevoegd, `freehandInterval` wordt gedefinieerd door de optie tekenbeheerders.
+ - Free hand-modus
+   * Houd de linkermuisknop ingedrukt of vervolg keuzelijst op de kaart en sleep de muis of het aanraak punt rond. Coördinaten worden toegevoegd aan de regel als de muis of het aanraak punt over de kaart wordt verplaatst. Zodra de muis of het aanraak gebeurtenis wordt geactiveerd, wordt de tekening voltooid. De frequentie waarmee coördinaten worden toegevoegd, wordt gedefinieerd door de optie teken `freehandInterval` beheer.
  - Hybride modus
-   * Wissel af tussen klik- en vrijehandmethoden, zoals gewenst, terwijl je een enkele lijn tekent. Klik bijvoorbeeld op een paar punten, houd de muis vast en sleep deze om een aantal punten toe te voegen en klik vervolgens op een paar punten meer. 
+   * Scha kelen tussen de methoden Click en Free hand, indien gewenst, tijdens het tekenen van één regel. Klik bijvoorbeeld op een paar punten, houd de muis knop ingedrukt en sleep om een aantal punten toe te voegen en klik vervolgens op enkele andere. 
 
-**Tekening voltooien**
- - Hybride/klikmodus
-   * Dubbelklik op de kaart op het laatste punt. 
-   * Klik op een knop op de werkbalk van de tekening. 
-   * Stel de tekenmodus programmatisch in. 
- - Vrijehand-modus
-   * Laat de muisknop of het aanraakpunt los.
- - Druk `C` op de toets.
+**Tekenen volt ooien**
+ - Hybride modus/klik
+   * Dubbel klik op de kaart op het laatste punt. 
+   * Klik op een knop op de werk balk tekenen. 
+   * De teken modus programmatisch instellen. 
+ - Free hand-modus
+   * Laat de muis knop of het aanraak punt los.
+ - Druk op `C` de toets.
 
-**Tekening annuleren**
- - Druk `Escape` op de toets.
+**Tekenen annuleren**
+ - Druk op `Escape` de toets.
 
 ### <a name="how-to-draw-a-polygon"></a>Een veelhoek tekenen
 
-Wanneer de tekenmanager `draw-polygon` in de modus is, kunnen de volgende acties worden uitgevoerd om punten op de kaart te tekenen, afhankelijk van de interactiemodus.
+Wanneer de teken beheer `draw-polygon` modus actief is, kunnen de volgende acties worden uitgevoerd om punten op de kaart te tekenen, afhankelijk van de interactie modus.
 
-**Beginnen met tekenen**
- - Klikmodus
-   * Klik op de linkermuisknop of raak op de kaart om elk punt van een veelhoek op de kaart toe te voegen. Voor elke klik of aanraking wordt een coördinaat toegevoegd aan de veelhoek. 
-   * Als de muis zich boven `F` de kaart bevindt, drukt u op de toets en wordt er een punt toegevoegd aan de coördinaat van de muisaanwijzer. Deze methode biedt een hogere nauwkeurigheid voor het toevoegen van een punt aan de kaart. Er zal minder beweging op de muis als gevolg van de druk beweging van de linker muisknop.
-   * Blijf klikken totdat alle gewenste punten zijn toegevoegd aan de veelhoek.
- - Vrijehand-modus
-   * Druk op de linkermuisknop of raak aan op de kaart en sleep de muis of aanraakpunt rond. Coördinaten worden toegevoegd aan de veelhoek terwijl de muis of het aanraakpunt over de kaart beweegt. Zodra de muis- of touch-upgebeurtenis wordt geactiveerd, is de tekening voltooid. De frequentie waarmee coördinaten worden toegevoegd, `freehandInterval` wordt gedefinieerd door de optie tekenbeheerders.
+**Tekenen starten**
+ - Klik modus
+   * Klik op de linkermuisknop of druk op de kaart om elk punt van een veelhoek op de kaart toe te voegen. Er wordt voor elke klik of aanraking een coördinaat toegevoegd aan de veelhoek. 
+   * Als de muis zich boven de kaart bevindt `F` , drukt u op de toets en wordt er een punt toegevoegd aan de coördinaat van de muis aanwijzer. Deze methode biedt een hogere nauw keurigheid voor het toevoegen van een punt aan de kaart. Er is minder beweging aan de muis als gevolg van het drukken op beweging van de linkermuisknop.
+   * Blijf klikken totdat alle gewenste punten aan de veelhoek zijn toegevoegd.
+ - Free hand-modus
+   * Houd de linkermuisknop ingedrukt of vervolg keuzelijst op de kaart en sleep de muis of het aanraak punt rond. Coördinaten worden toegevoegd aan de veelhoek als de muis of het aanraak punt zich verplaatst rond de kaart. Zodra de muis of het aanraak gebeurtenis wordt geactiveerd, wordt de tekening voltooid. De frequentie waarmee coördinaten worden toegevoegd, wordt gedefinieerd door de optie teken `freehandInterval` beheer.
  - Hybride modus
-   * Wissel tussen klik- en vrijehandmethoden, zoals gewenst, terwijl je één veelhoek tekent. Klik bijvoorbeeld op een paar punten, houd de muis vast en sleep deze om een aantal punten toe te voegen en klik vervolgens op een paar punten meer. 
+   * Scha kelen tussen de methoden Click en Free hand, indien gewenst, terwijl u één veelhoek tekent. Klik bijvoorbeeld op een paar punten, houd de muis knop ingedrukt en sleep om een aantal punten toe te voegen en klik vervolgens op enkele andere. 
 
-**Tekening voltooien**
- - Hybride/klikmodus
-   * Dubbelklik op de kaart op het laatste punt. 
+**Tekenen volt ooien**
+ - Hybride modus/klik
+   * Dubbel klik op de kaart op het laatste punt. 
    * Klik op het eerste punt in de veelhoek.
-   * Klik op een knop op de werkbalk van de tekening. 
-   * Stel de tekenmodus programmatisch in. 
- - Vrijehand-modus
-   * Laat de muisknop of het aanraakpunt los.
- - Druk `C` op de toets.
+   * Klik op een knop op de werk balk tekenen. 
+   * De teken modus programmatisch instellen. 
+ - Free hand-modus
+   * Laat de muis knop of het aanraak punt los.
+ - Druk op `C` de toets.
 
-**Tekening annuleren**
- - Druk `Escape` op de toets.
+**Tekenen annuleren**
+ - Druk op `Escape` de toets.
 
 ### <a name="how-to-draw-a-rectangle"></a>Een rechthoek tekenen
 
-Wanneer de tekenmanager `draw-rectangle` in de modus is, kunnen de volgende acties worden uitgevoerd om punten op de kaart te tekenen, afhankelijk van de interactiemodus. De gegenereerde vorm volgt de [uitgebreide GeoJSON-specificatie voor rechthoeken.](extend-geojson.md#rectangle)
+Wanneer de teken beheer `draw-rectangle` modus actief is, kunnen de volgende acties worden uitgevoerd om punten op de kaart te tekenen, afhankelijk van de interactie modus. De gegenereerde vorm volgt de [uitgebreide GEOjson-specificatie voor rechthoeken](extend-geojson.md#rectangle).
 
-**Beginnen met tekenen**
- - Druk op de linkermuisknop of raak omlaag op de kaart om de eerste hoek van de rechthoek toe te voegen en sleep om de rechthoek te maken. 
+**Tekenen starten**
+ - Houd de linkermuisknop ingedrukt, of druk op de kaart om de eerste hoek van de rechthoek toe te voegen en sleep om de rechthoek te maken. 
 
-**Tekening voltooien**
- - Laat de muisknop of het aanraakpunt los.
- - Stel de tekenmodus programmatisch in. 
- - Druk `C` op de toets.
+**Tekenen volt ooien**
+ - Laat de muis knop of het aanraak punt los.
+ - De teken modus programmatisch instellen. 
+ - Druk op `C` de toets.
 
-**Tekening annuleren**
- - Druk `Escape` op de toets.
+**Tekenen annuleren**
+ - Druk op `Escape` de toets.
 
 ### <a name="how-to-draw-a-circle"></a>Een cirkel tekenen
 
-Wanneer de tekenmanager `draw-circle` in de modus is, kunnen de volgende acties worden uitgevoerd om punten op de kaart te tekenen, afhankelijk van de interactiemodus. De gegenereerde vorm volgt de [uitgebreide GeoJSON-specificatie voor cirkels.](extend-geojson.md#circle)
+Wanneer de teken beheer `draw-circle` modus actief is, kunnen de volgende acties worden uitgevoerd om punten op de kaart te tekenen, afhankelijk van de interactie modus. De gegenereerde vorm volgt de [uitgebreide GEOjson-specificatie voor cirkels](extend-geojson.md#circle).
 
-**Beginnen met tekenen**
- - Druk op de linkermuisknop of raak omlaag op de kaart om het midden van de cirkel toe te voegen en sleep geef de cirkels een straal. 
+**Tekenen starten**
+ - Houd de linkermuisknop ingedrukt, of druk op de kaart om het midden van de cirkel toe te voegen en sleep de cirkels een straal geven. 
 
-**Tekening voltooien**
- - Laat de muisknop of het aanraakpunt los.
- - Stel de tekenmodus programmatisch in. 
- - Druk `C` op de toets.
+**Tekenen volt ooien**
+ - Laat de muis knop of het aanraak punt los.
+ - De teken modus programmatisch instellen. 
+ - Druk op `C` de toets.
 
-**Tekening annuleren**
- - Druk `Escape` op de toets.
+**Tekenen annuleren**
+ - Druk op `Escape` de toets.
 
 ## <a name="keyboard-shortcuts"></a>Sneltoetsen
 
-De tekengereedschappen ondersteunen sneltoetsen. Deze sneltoetsen zijn functioneel wanneer de kaart scherp is.
+De teken hulpprogramma's ondersteunen sneltoetsen. Deze sneltoetsen werken als de kaart zich in de focus bevindt.
 
-| Sleutel      | Actie                            |
+| Sleutel      | Bewerking                            |
 |----------|-----------------------------------|
-| `C` | Hiermee voltooit u alle tekenen die aan de gang is en stelt u de tekenmodus in op niet actief. Focus wordt verplaatst naar kaartelement op het hoogste niveau.  |
-| `Escape` | Hiermee annuleert u alle tekenen die aan de gang zijn en stelt u de tekenmodus in op niet actief. Focus wordt verplaatst naar kaartelement op het hoogste niveau.  |
-| `F` | Hiermee voegt u een coördinaat toe aan een punt, lijn of veelhoek als de muis zich boven de kaart bevindt. Gelijkwaardige actie van het klikken op de kaart wanneer in klik of hybride modus. Deze snelkoppeling zorgt voor nauwkeurigere en snellere tekeningen. U de ene hand gebruiken om de muis en de andere te plaatsen om op de knop te drukken zonder de muis van het drukgebaar te bewegen. |
+| `C` | Hiermee wordt de actieve tekening voltooid en wordt de teken modus ingesteld op inactief. De focus wordt verplaatst naar het map-element op het hoogste niveau.  |
+| `Escape` | Hiermee wordt de actieve tekening geannuleerd en wordt de teken modus ingesteld op inactief. De focus wordt verplaatst naar het map-element op het hoogste niveau.  |
+| `F` | Voegt een coördinaat toe aan een punt, lijn of veelhoek als de muis zich boven de kaart bevindt. Equivalente actie van klikken op de kaart wanneer u klikt of op de hybride modus. Met deze snelkoppeling kunnen nauw keurige en snellere tekeningen worden uitgevoerd. U kunt één hand gebruiken om de muis te positioneren en een andere om op de knop te drukken zonder de muis van de penbeweging voor drukken te verplaatsen. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de lessen in de module tekengereedschappen:
+Meer informatie over de klassen in de module teken hulpprogramma's:
 
 > [!div class="nextstepaction"]
-> [Tekenmanager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [Drawing Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
 
 > [!div class="nextstepaction"]
-> [Werkbalk Tekenen](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
+> [Werk balk tekenen](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)

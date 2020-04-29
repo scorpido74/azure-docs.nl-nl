@@ -1,43 +1,43 @@
 ---
-title: Azure Service Fabric CLI- sfctl
-description: Meer informatie over sfctl, de opdrachtregelinterface van Azure Service Fabric. Bevat een lijst met opdrachten en subgroepen.
+title: Azure Service Fabric CLI-sfctl
+description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten en subgroepen.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 56efa15a7de3414f9c535e66bd80c94594cd5038
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76906216"
 ---
 # <a name="sfctl"></a>sfctl
-Opdrachten voor het beheren van clusterclusters en entiteiten voor servicefabric. Deze versie is compatibel met Service Fabric 7.0 runtime.
+Opdrachten voor het beheren van Service Fabric clusters en entiteiten. Deze versie is compatibel met Service Fabric 7,0-runtime.
 
-Commando's volgen het nounwerkwoordpatroon. Zie subgroepen voor meer informatie.
+Opdrachten volgen het patroon van de zelfstandig naam woord. Zie subgroepen voor meer informatie.
 
 ## <a name="subgroups"></a>Subgroepen
-|Deelgroep|Beschrijving|
+|Subgroep|Beschrijving|
 | --- | --- |
-| [toepassing](service-fabric-sfctl-application.md) | Toepassingen en toepassingstypen maken, verwijderen en beheren. |
-| [Chaos](service-fabric-sfctl-chaos.md) | Start, stop en rapporteer over de chaostestservice. |
-| [Cluster](service-fabric-sfctl-cluster.md) | Selecteer, beheer en beheer Service Fabric-clusters. |
-| [Opstellen](service-fabric-sfctl-compose.md) | Docker Compose-toepassingen maken, verwijderen en beheren. |
-| [container](service-fabric-sfctl-container.md) | Containergerelateerde opdrachten uitvoeren op een clusterknooppunt. |
-| [Gebeurtenissen](service-fabric-sfctl-events.md) | Gebeurtenissen ophalen uit de evenementenwinkel (als de EventStore-service al is geïnstalleerd). |
-| [Is](service-fabric-sfctl-is.md) | Opdrachten opvragen en verzenden naar de infrastructuurservice. |
-| [mesh](service-fabric-sfctl-mesh.md) | Service Fabric Mesh-toepassingen verwijderen en beheren. |
-| [Knooppunt](service-fabric-sfctl-node.md) | Beheer de knooppunten die een cluster vormen. |
-| [Partitie](service-fabric-sfctl-partition.md) | Partities voor elke service opvragen en beheren. |
-| [Eigenschap](service-fabric-sfctl-property.md) | Opslag- en queryeigenschappen onder namen van servicefabric. |
-| [Replica](service-fabric-sfctl-replica.md) | Beheer de replica's die behoren tot servicepartities. |
-| [Rpm](service-fabric-sfctl-rpm.md) | Beveel opdrachten op en stuur ze naar de service voor reparatiebeheer. |
-| [sa-cluster](service-fabric-sfctl-sa-cluster.md) | Beheer zelfstandige Service Fabric-clusters. |
-| [Service](service-fabric-sfctl-service.md) | Service-, servicetypen en servicepakketten maken, verwijderen en beheren. |
+| [toepassing](service-fabric-sfctl-application.md) | Toepassingen en toepassings typen maken, verwijderen en beheren. |
+| [chaos](service-fabric-sfctl-chaos.md) | Starten, stoppen en rapporteren op de chaos-test service. |
+| [cluster](service-fabric-sfctl-cluster.md) | Service Fabric clusters selecteren, beheren en uitvoeren. |
+| [Compose](service-fabric-sfctl-compose.md) | Docker opstellen toepassingen maken, verwijderen en beheren. |
+| [container](service-fabric-sfctl-container.md) | Container gerelateerde opdrachten uitvoeren op een cluster knooppunt. |
+| [evenementen](service-fabric-sfctl-events.md) | Gebeurtenissen ophalen uit het gebeurtenissen archief (als de Event Store-service al is geïnstalleerd). |
+| [ontbreekt](service-fabric-sfctl-is.md) | Query's uitvoeren en opdrachten verzenden naar de infrastructuur service. |
+| [mesh](service-fabric-sfctl-mesh.md) | Service Fabric-mesh-toepassingen verwijderen en beheren. |
+| [subknooppuntsleutels](service-fabric-sfctl-node.md) | De knoop punten beheren die een cluster vormen. |
+| [partitie](service-fabric-sfctl-partition.md) | Zoek en beheer partities voor elke service. |
+| [eigenschap](service-fabric-sfctl-property.md) | Eigenschappen voor opslaan en opvragen onder Service Fabric namen. |
+| [exacte](service-fabric-sfctl-replica.md) | De replica's beheren die deel uitmaken van service partities. |
+| [rpm](service-fabric-sfctl-rpm.md) | Query's uitvoeren en opdrachten verzenden naar de service reparatie beheer. |
+| [sa-cluster](service-fabric-sfctl-sa-cluster.md) | Zelfstandige Service Fabric-clusters beheren. |
+| [service](service-fabric-sfctl-service.md) | Services, service typen en service pakketten maken, verwijderen en beheren. |
 | [instellingen](service-fabric-sfctl-settings.md) | Instellingen lokaal configureren voor dit exemplaar van sfctl. |
-| [store](service-fabric-sfctl-store.md) | Voer bewerkingen op basisbestandsniveau uit in het clusterimagearchief. |
+| [store](service-fabric-sfctl-store.md) | Voer elementaire bewerkingen op bestands niveau uit in het cluster installatie kopie archief. |
 
 ## <a name="next-steps"></a>Volgende stappen
-- Stel de SERVICE Fabric CLI [in.](service-fabric-cli.md)
-- Meer informatie over het gebruik van de CLI van de ServiceFabric met behulp van de [voorbeeldscripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Stel](service-fabric-cli.md) de service Fabric cli in.
+- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).

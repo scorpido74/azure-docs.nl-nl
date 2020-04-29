@@ -1,6 +1,6 @@
 ---
-title: JAR-afhankelijkheden beheren - Azure HDInsight
-description: In dit artikel worden best practices besproken voor het beheren van Java Archive (JAR) afhankelijkheden voor HDInsight-toepassingen.
+title: JAR-afhankelijkheden beheren-Azure HDInsight
+description: In dit artikel worden aanbevolen procedures beschreven voor het beheren van afhankelijkheden van Java-archief (JAR) voor HDInsight-toepassingen.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,32 +9,32 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.openlocfilehash: da3387dd9846847f7643ded43c8cbff8ed8b166e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77135731"
 ---
-# <a name="jar-dependency-management-best-practices"></a>Best practices voor jar-afhankelijkheidsbeheer
+# <a name="jar-dependency-management-best-practices"></a>Best practices voor het beheer van JAR-afhankelijkheden
 
-Componenten die zijn geïnstalleerd op HDInsight-clusters hebben afhankelijkheden van bibliotheken van derden. Meestal wordt een specifieke versie van gemeenschappelijke modules zoals Guava verwezen door deze ingebouwde componenten. Wanneer u een toepassing met zijn afhankelijkheden indient, kan deze een conflict veroorzaken tussen verschillende versies van dezelfde module. Als de componentversie waarnaar u eerst verwijst in het klassenpad, kunnen ingebouwde componenten uitzonderingen maken vanwege versie-incompatibiliteit. Als ingebouwde componenten echter eerst hun afhankelijkheden naar het classpath `NoSuchMethod`injecteren, kan uw toepassing fouten zoals .
+Onderdelen die zijn geïnstalleerd op HDInsight-clusters, hebben afhankelijkheden van bibliotheken van derden. Normaal gesp roken wordt in een specifieke versie van algemene modules zoals guava naar deze ingebouwde onderdelen verwezen. Wanneer u een toepassing met de bijbehorende afhankelijkheden verzendt, kan dit een conflict veroorzaken tussen verschillende versies van dezelfde module. Als de versie van het onderdeel waarnaar u in het klassenpad verwijst, het eerste is, kunnen ingebouwde onderdelen uitzonde ringen genereren vanwege incompatibiliteit van de versie. Als ingebouwde onderdelen echter hun afhankelijkheden van het klassenpad injecteren, kan uw toepassing fouten veroorzaken zoals `NoSuchMethod`.
 
-Als u conflict met de versie wilt voorkomen, u overwegen afhankelijkheden van uw toepassing te arceren.
+Als u versie conflicten wilt voor komen, kunt u overwegen om uw toepassings afhankelijkheden te arceren.
 
-## <a name="what-does-package-shading-mean"></a>Wat betekent pakketarcering?
-Arcering biedt een manier om afhankelijkheden op te nemen en de naam te wijzigen. Het verplaatst de klassen en herschrijft beïnvloede bytecode en bronnen om een privékopie van uw afhankelijkheden te maken.
+## <a name="what-does-package-shading-mean"></a>Wat betekent pakket arcering?
+Arcering biedt een manier om afhankelijkheden in te voegen en de naam ervan te wijzigen. De klassen worden opnieuw gelokaliseerd en de byte code en bronnen voor de bewerking worden opnieuw geschreven om een persoonlijke kopie van uw afhankelijkheden te maken.
 
-## <a name="how-to-shade-a-package"></a>Hoe schaduw je een pakket?
+## <a name="how-to-shade-a-package"></a>Hoe kan ik een pakket arceren?
 
 ### <a name="use-uber-jar"></a>Gebruik uber-jar
-Uber-jar is een enkel potje bestand dat zowel de toepassing pot en de afhankelijkheden bevat. De afhankelijkheden in Uber-jar zijn standaard niet in de schaduw. In sommige gevallen kan dit een conflict in de versie introduceren als andere onderdelen of toepassingen verwijzen naar een andere versie van die bibliotheken. Om dit te voorkomen, u een Uber-Jar-bestand bouwen met een aantal (of alle) afhankelijkheden in de schaduw.
+Uber-jar is een enkel jar-bestand dat zowel de toepassing jar als de bijbehorende afhankelijkheden bevat. De afhankelijkheden in uber-jar zijn standaard niet gearceerd. In sommige gevallen kan dit leiden tot een versie conflict als andere onderdelen of toepassingen verwijzen naar een andere versie van die bibliotheken. Om dit te voor komen, kunt u een uber-bestand maken met enkele (of alle) van de gearceerde afhankelijkheden.
 
-### <a name="shade-package-using-maven"></a>Schaduwpakket met Maven
-Maven kan applicaties bouwen die zowel in Java als in Scala zijn geschreven. Maven-shade-plugin kan u helpen om gemakkelijk een schaduwrijke uber-pot te maken.
+### <a name="shade-package-using-maven"></a>Schaduw pakket met behulp van Maven
+Maven kan toepassingen bouwen die zijn geschreven in Java en scala. Met maven-Shade-invoeg toepassing kunt u eenvoudig een gekleurd uber-jar maken.
 
-Het onderstaande voorbeeld `pom.xml` toont een bestand dat is bijgewerkt om een pakket te schaduw met behulp van maven-shade-plugin.  De XML-sectie `<relocation>…</relocation>` verplaatst `com.google.guava` klassen `com.google.shaded.guava` van pakket naar pakket door de bijbehorende JAR-bestandsvermeldingen te verplaatsen en de getroffen bytecode opnieuw te schrijven.
+In het onderstaande voor beeld ziet `pom.xml` u een bestand dat is bijgewerkt met een schaduw van een pakket met behulp van Maven-Shade-invoeg toepassing.  In het gedeelte `<relocation>…</relocation>` XML worden klassen van `com.google.guava` het pakket `com.google.shaded.guava` naar het pakket verplaatst door de overeenkomstige bestands vermeldingen van het jar-bestand te verplaatsen en de betreffende byte code te herschrijven.
 
-Na `pom.xml`het veranderen, `mvn package` u uitvoeren om de schaduwrijke uber-pot te bouwen.
+Nadat u `pom.xml`hebt gewijzigd, kunt `mvn package` u uitvoeren om de gearceerde uber-jar te maken.
 
 ```xml
   <build>
@@ -64,10 +64,10 @@ Na `pom.xml`het veranderen, `mvn package` u uitvoeren om de schaduwrijke uber-po
   </build>
 ```
 
-### <a name="shade-package-using-sbt"></a>Schaduwpakket met SBT
-SBT is ook een build tool voor Scala en Java. SBT heeft geen schaduw plugin zoals maven-shade-plugin. U kunt `build.sbt` het bestand wijzigen in schaduwpakketten. 
+### <a name="shade-package-using-sbt"></a>Schaduw pakket met behulp van SBT
+SBT is ook een hulp programma voor het bouwen van scala en Java. SBT heeft geen Shade-invoeg toepassing zoals Maven-Shad-plugin. U kunt een `build.sbt` bestand wijzigen in schaduw pakketten. 
 
-U bijvoorbeeld `com.google.guava`de opdracht hieronder toevoegen `build.sbt` aan het bestand:
+Als u bijvoorbeeld wilt scha `com.google.guava`duwen, kunt u de onderstaande opdracht toevoegen aan `build.sbt` het bestand:
 
 ```scala
 assemblyShadeRules in assembly := Seq(
@@ -75,10 +75,10 @@ assemblyShadeRules in assembly := Seq(
 )
 ```
 
-Dan `sbt clean` u `sbt assembly` uitvoeren en om de schaduwrijke pot bestand te bouwen. 
+Vervolgens kunt u uitvoeren `sbt clean` en `sbt assembly` het geschakeerde jar-bestand maken. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [HdInsight IntelliJ-hulpprogramma's gebruiken](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox)
+* [HDInsight IntelliJ-Hulpprogram Ma's gebruiken](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox)
 
-* [Maak een Scala Maven-toepassing voor Spark in IntelliJ](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-create-standalone-application)
+* [Een scala maven-toepassing maken voor Spark in IntelliJ](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-create-standalone-application)

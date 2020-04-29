@@ -1,7 +1,7 @@
 ---
-title: Packet capture gebruiken om proactieve netwerkbewaking uit te voeren met waarschuwingen - Azure-functies
+title: Pakket opname gebruiken voor proactieve netwerk bewaking met waarschuwingen-Azure Functions
 titleSuffix: Azure Network Watcher
-description: In dit artikel wordt beschreven hoe u een waarschuwing maakt die wordt geactiveerd bij het vastleggen van pakketten met Azure Network Watcher
+description: In dit artikel wordt beschreven hoe u een door een waarschuwing gegenereerde pakket opname maakt met Azure Network Watcher
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -14,21 +14,21 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: ea506e137d71fc3124a4f93f1e97750a08dd4284
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76842934"
 ---
-# <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Packet capture gebruiken voor proactieve netwerkbewaking met waarschuwingen en Azure-functies
+# <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Pakket opname gebruiken voor proactieve netwerk bewaking met waarschuwingen en Azure Functions
 
-Network Watcher packet capture creëert capture sessies om het verkeer in en uit virtuele machines te volgen. Het vastleggen-bestand kan een filter hebben dat is gedefinieerd om alleen het verkeer te volgen dat u wilt controleren. Deze gegevens worden vervolgens opgeslagen in een opslagblob of lokaal op de gastmachine.
+Network Watcher pakket vastleggen maakt opname sessies voor het bijhouden van verkeer in en van virtuele machines. Het opname bestand kan een filter hebben dat is gedefinieerd voor het bijhouden van alleen het verkeer dat u wilt bewaken. Deze gegevens worden vervolgens opgeslagen in een opslag-BLOB of lokaal op de gast machine.
 
-Deze mogelijkheid kan op afstand worden gestart vanuit andere automatiseringsscenario's, zoals Azure-functies. Packet capture geeft u de mogelijkheid om proactieve opnames uit te voeren op basis van gedefinieerde netwerkanomalieën. Andere toepassingen zijn het verzamelen van netwerkstatistieken, het verkrijgen van informatie over netwerkinbraken, het debuggen van client-servercommunicatie en meer.
+Deze mogelijkheid kan op afstand worden gestart vanuit andere automatiserings scenario's, zoals Azure Functions. Met pakket opname beschikt u over de mogelijkheid om proactieve opnames uit te voeren op basis van gedefinieerde netwerk afwijkingen. Andere gebruiken zijn onder andere het verzamelen van netwerk statistieken, het ophalen van informatie over inbreuken op het netwerk, het opsporen van fouten in client-server communicatie en meer.
 
-Resources die 24/7 in Azure worden geïmplementeerd, worden uitgevoerd. U en uw medewerkers kunnen de status van alle resources niet 24/7 actief controleren. Wat gebeurt er bijvoorbeeld als er om 02.00 uur een probleem optreedt?
+Resources die zijn geïmplementeerd in azure run 24/7. U en uw mede werkers kunnen de status van alle resources 24/7 niet actief controleren. Wat gebeurt er bijvoorbeeld als er een probleem optreedt bij 2 uur?
 
-Door Network Watcher, waarschuwingen en functies vanuit het Azure-ecosysteem te gebruiken, u proactief reageren met de gegevens en hulpprogramma's om problemen in uw netwerk op te lossen.
+Door Network Watcher, waarschuwingen en functies vanuit het Azure-ecosysteem te gebruiken, kunt u proactief reageren op de gegevens en hulpprogram ma's voor het oplossen van problemen in uw netwerk.
 
 ![Scenario][scenario]
 
@@ -38,79 +38,79 @@ Door Network Watcher, waarschuwingen en functies vanuit het Azure-ecosysteem te 
 ## <a name="prerequisites"></a>Vereisten
 
 * De nieuwste versie van [Azure PowerShell](/powershell/azure/install-Az-ps).
-* Een bestaand exemplaar van Network Watcher. Als u er nog geen hebt, [maakt u een exemplaar van Network Watcher](network-watcher-create.md).
-* Een bestaande virtuele machine in dezelfde regio als Network Watcher met de [Windows-extensie](../virtual-machines/windows/extensions-nwa.md) of [Linux virtuele machine extensie](../virtual-machines/linux/extensions-nwa.md).
+* Een bestaand exemplaar van Network Watcher. Als u er nog geen hebt, [maakt u een instantie van Network Watcher](network-watcher-create.md).
+* Een bestaande virtuele machine in dezelfde regio als Network Watcher met de extensie van de [Windows-extensie](../virtual-machines/windows/extensions-nwa.md) of [Linux-virtuele machine](../virtual-machines/linux/extensions-nwa.md).
 
 ## <a name="scenario"></a>Scenario
 
-In dit voorbeeld verzendt uw VM meer TCP-segmenten dan normaal en wilt u worden gewaarschuwd. TCP-segmenten worden hier als voorbeeld gebruikt, maar u elke waarschuwingsvoorwaarde gebruiken.
+In dit voor beeld verzendt uw VM meer TCP-segmenten dan normaal en wilt u waarschuwingen ontvangen. TCP-segmenten worden hier als voor beeld gebruikt, maar u kunt elke wille keurige waarschuwings voorwaarde gebruiken.
 
-Wanneer u wordt gewaarschuwd, wilt u gegevens op pakketniveau ontvangen om te begrijpen waarom de communicatie is toegenomen. Vervolgens u stappen ondernemen om de virtuele machine terug te brengen naar regelmatige communicatie.
+Wanneer u een waarschuwing ontvangt, wilt u gegevens op pakket niveau ontvangen om te begrijpen waarom de communicatie is toegenomen. Vervolgens kunt u stappen ondernemen om de virtuele machine te retour neren naar normale communicatie.
 
-In dit scenario wordt ervan uitgegaan dat u een bestaande instantie van Network Watcher en een resourcegroep met een geldige virtuele machine hebt.
+In dit scenario wordt ervan uitgegaan dat u een bestaand exemplaar van Network Watcher en een resource groep hebt met een geldige virtuele machine.
 
-De volgende lijst is een overzicht van de werkstroom die plaatsvindt:
+In de volgende lijst vindt u een overzicht van de werk stroom die wordt uitgevoerd:
 
-1. Er wordt een waarschuwing geactiveerd op uw vm.
+1. Er wordt een waarschuwing geactiveerd op uw VM.
 1. De waarschuwing roept uw Azure-functie aan via een webhook.
-1. Uw Azure-functie verwerkt de waarschuwing en start een network watcher-pakketopnamesessie.
-1. De pakketopname wordt uitgevoerd op de VM en verzamelt verkeer.
-1. Het pakketopnamebestand wordt geüpload naar een opslagaccount voor beoordeling en diagnose.
+1. Uw Azure-functie verwerkt de waarschuwing en start een sessie voor het vastleggen van Network Watcher-pakketten.
+1. De pakket opname wordt uitgevoerd op de virtuele machine en verzamelt verkeer.
+1. Het pakket opname bestand wordt geüpload naar een opslag account voor controle en diagnose.
 
-Om dit proces te automatiseren, maken en verbinden we een waarschuwing op onze VM om te activeren wanneer het incident zich voordoet. We maken ook een functie om in Te bellen in Network Watcher.
+Om dit proces te automatiseren, maken en koppelen we een waarschuwing op onze VM om te activeren wanneer het incident optreedt. We maken ook een functie om in Network Watcher aan te roepen.
 
 Dit scenario doet het volgende:
 
-* Hiermee maakt u een Azure-functie waarmee een pakketopname wordt gestart.
-* Hiermee maakt u een waarschuwingsregel op een virtuele machine en configureert u de waarschuwingsregel om de Azure-functie aan te roepen.
+* Hiermee maakt u een Azure-functie waarmee een pakket opname wordt gestart.
+* Hiermee maakt u een waarschuwings regel op een virtuele machine en configureert u de waarschuwings regel om de Azure-functie aan te roepen.
 
 ## <a name="create-an-azure-function"></a>Een Azure-functie maken
 
-De eerste stap is het maken van een Azure-functie om de waarschuwing te verwerken en een pakketopname te maken.
+De eerste stap is het maken van een Azure-functie voor het verwerken van de waarschuwing en het maken van een pakket opname.
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com)de optie **Een resource** > **Compute** > **Function App maken**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com) **een bron** > **berekenings** > **functie-app**maken.
 
     ![Een functie-app maken][1-1]
 
-2. Voer in het blade van de **functie-app** de volgende waarden in en selecteer **OK** om de app te maken:
+2. Voer op de Blade **functie-app** de volgende waarden in en selecteer **OK** om de app te maken:
 
-    |**Instelling** | **Waarde** | **Details** |
+    |**Instelling** | **Waarde** | **Nadere** |
     |---|---|---|
-    |**App-naam**|PacketCaptureExample PacketCaptureExample|De naam van de functie-app.|
-    |**Abonnement**|[Uw abonnement] Het abonnement waarvoor de functie-app te maken.||
-    |**Resourcegroep**|PacketCaptureRG PacketCaptureRG PacketCaptureRG|De resourcegroep die de functie-app bevat.|
-    |**Hostingabonnement**|Verbruiksabonnement| Het type abonnement dat uw functie-app gebruikt. Opties zijn Verbruik of Azure App Service-abonnement. |
-    |**Locatie**|VS - centraal| De regio waarin de functie-app kan worden gemaakt.|
-    |**Opslagaccount**|{autogenerated}| Het opslagaccount dat Azure Functions nodig heeft voor opslag voor algemene doeleinden.|
+    |**App-naam**|PacketCaptureExample|De naam van de functie-app.|
+    |**Abonnement**|[Uw abonnement] Het abonnement waarvoor u de functie-app wilt maken.||
+    |**Resource groep**|PacketCaptureRG|De resource groep die de functie-app bevat.|
+    |**Hostingabonnement**|Verbruiksabonnement| Het type van het plan dat door uw functie-app wordt gebruikt. Opties zijn verbruik of Azure App Service plan. |
+    |**Locatie**|VS - centraal| De regio waarin de functie-app moet worden gemaakt.|
+    |**Opslag account**|automatisch gegenereerde| Het opslag account dat Azure Functions vereist voor opslag voor algemeen gebruik.|
 
-3. Selecteer in het blade **Van PacketCaptureExample Function Apps** de optie >**+****Functie Aangepast** **functies** > .
+3. Selecteer op de Blade **PacketCaptureExample functie-apps** de optie **functies** > **aangepaste functie** >**+**.
 
-4. Selecteer **HttpTrigger-Powershell**en voer de resterende gegevens in. Selecteer ten slotte als u de functie wilt maken, **Maken**.
+4. Selecteer **http trigger-Power shell**en voer vervolgens de resterende informatie in. Ten slotte selecteert u **maken**om de functie te maken.
 
-    |**Instelling** | **Waarde** | **Details** |
+    |**Instelling** | **Waarde** | **Nadere** |
     |---|---|---|
     |**Scenario**|Experimenteel|Type scenario|
-    |**Een naam voor de functie opgeven**|AlertPacketCapturePowerShell|Naam van de functie|
-    |**Autorisatieniveau**|Functie|Machtigingsniveau voor de functie|
+    |**Een naam voor de functie opgeven**|AlertPacketCapturePowerShell|De naam van de functie|
+    |**Autorisatieniveau**|Functie|Autorisatie niveau voor de functie|
 
-![Voorbeeld van functies][functions1]
+![Functions-voor beeld][functions1]
 
 > [!NOTE]
-> De PowerShell-sjabloon is experimenteel en heeft geen volledige ondersteuning.
+> De Power shell-sjabloon is experimentele en biedt geen volledige ondersteuning.
 
-Aanpassingen zijn vereist voor dit voorbeeld en worden uitgelegd in de volgende stappen.
+Aanpassingen zijn vereist voor dit voor beeld en worden beschreven in de volgende stappen.
 
 ### <a name="add-modules"></a>Modules toevoegen
 
-Als u Network Watcher PowerShell-cmdlets wilt gebruiken, uploadt u de nieuwste PowerShell-module naar de functie-app.
+Als u Network Watcher Power shell-cmdlets wilt gebruiken, moet u de meest recente Power shell-module uploaden naar de functie-app.
 
-1. Voer de volgende PowerShell-opdracht uit op uw lokale machine met de nieuwste Azure PowerShell-modules:
+1. Voer de volgende Power shell-opdracht uit op de lokale computer waarop de meest recente Azure PowerShell modules zijn geïnstalleerd:
 
     ```powershell
     (Get-Module Az.Network).Path
     ```
 
-    In dit voorbeeld vindt u het lokale pad van uw Azure PowerShell-modules. Deze mappen worden in een latere stap gebruikt. De modules die in dit scenario worden gebruikt zijn:
+    Dit voor beeld geeft u het lokale pad van uw Azure PowerShell-modules. Deze mappen worden in een latere stap gebruikt. De modules die worden gebruikt in dit scenario zijn:
 
    * Az.Network
 
@@ -118,13 +118,13 @@ Als u Network Watcher PowerShell-cmdlets wilt gebruiken, uploadt u de nieuwste P
 
    * Az.Resources
 
-     ![PowerShell-mappen][functions5]
+     ![Power shell-mappen][functions5]
 
-1. Selecteer **Instellingen voor functie-apps** > **Ga naar App Service Editor**.
+1. Selecteer de **functie-app-instellingen** > **Ga naar app service-editor**.
 
     ![Instellingen voor functie-app][functions2]
 
-1. Klik met de rechtermuisknop op de map **AlertPacketCapturePowershell** en maak vervolgens een map met **azuremodules**. 
+1. Klik met de rechter muisknop op de map **AlertPacketCapturePowershell** en maak een map met de naam **azuremodules**. 
 
 4. Maak een submap voor elke module die u nodig hebt.
 
@@ -136,28 +136,28 @@ Als u Network Watcher PowerShell-cmdlets wilt gebruiken, uploadt u de nieuwste P
 
     * Az.Resources
 
-1. Klik met de rechtermuisknop op de submap **Az.Network** en selecteer **Bestanden uploaden**. 
+1. Klik met de rechter muisknop op de submap **AZ. Network** en selecteer vervolgens **bestanden uploaden**. 
 
-6. Ga naar uw Azure-modules. Selecteer in de lokale **map Az.Network** alle bestanden in de map. Selecteer vervolgens **OK**. 
+6. Ga naar uw Azure-modules. Selecteer in de lokale map **AZ. Network** alle bestanden in de map. Selecteer vervolgens **OK**. 
 
-7. Herhaal deze stappen voor **Az.Accounts** en **Az.Resources**.
+7. Herhaal deze stappen voor **AZ. accounts** en **AZ. resources**.
 
     ![Bestanden uploaden][functions6]
 
-1. Nadat u klaar bent, moet elke map de PowerShell-modulebestanden van uw lokale machine hebben.
+1. Wanneer u klaar bent, moet elke map de Power shell-module bestanden van uw lokale computer hebben.
 
-    ![PowerShell-bestanden][functions7]
+    ![Power Shell-bestanden][functions7]
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
-Als u de PowerShell-cmdlets wilt gebruiken, moet u zich verifiëren. U configureert verificatie in de functie-app. Als u verificatie wilt configureren, moet u omgevingsvariabelen configureren en een versleuteld sleutelbestand uploaden naar de functie-app.
+Als u de Power shell-cmdlets wilt gebruiken, moet u zich verifiëren. U kunt verificatie configureren in de functie-app. Als u verificatie wilt configureren, moet u omgevings variabelen configureren en een versleuteld sleutel bestand uploaden naar de functie-app.
 
 > [!NOTE]
-> Dit scenario bevat slechts één voorbeeld van het implementeren van verificatie met Azure-functies. Er zijn andere manieren om dit te doen.
+> Dit scenario bevat slechts één voor beeld van het implementeren van verificatie met Azure Functions. Er zijn nog andere manieren om dit te doen.
 
 #### <a name="encrypted-credentials"></a>Versleutelde referenties
 
-Met het volgende PowerShell-script wordt een sleutelbestand gemaakt met de naam **PassEncryptKey.key.** Het biedt ook een versleutelde versie van het wachtwoord dat wordt geleverd. Dit wachtwoord is hetzelfde wachtwoord dat is gedefinieerd voor de Azure Active Directory-toepassing die wordt gebruikt voor verificatie.
+Met het volgende Power shell-script maakt u een sleutel bestand met de naam **PassEncryptKey. key**. Het bevat ook een versleutelde versie van het wacht woord dat wordt verstrekt. Dit wacht woord is hetzelfde wacht woord dat is gedefinieerd voor de Azure Active Directory toepassing die wordt gebruikt voor verificatie.
 
 ```powershell
 #Variables
@@ -176,13 +176,13 @@ $Encryptedpassword = $secPw | ConvertFrom-SecureString -Key $AESKey
 $Encryptedpassword
 ```
 
-Maak in de App Service Editor van de functie-app een map met de naam **sleutels** onder **AlertPacketCapturePowerShell**. Upload vervolgens het **PassEncryptKey.key-bestand** dat u in het vorige PowerShell-voorbeeld hebt gemaakt.
+Maak een map met de naam **sleutels** onder **AlertPacketCapturePowerShell**in de app service-editor van de functie-app. Upload vervolgens het bestand **PassEncryptKey. key** dat u hebt gemaakt in het vorige Power shell-voor beeld.
 
-![Functietoets][functions8]
+![Functie sleutel][functions8]
 
-### <a name="retrieve-values-for-environment-variables"></a>Waarden ophalen voor omgevingsvariabelen
+### <a name="retrieve-values-for-environment-variables"></a>Waarden voor omgevings variabelen ophalen
 
-De uiteindelijke vereiste is het instellen van de omgevingsvariabelen die nodig zijn om toegang te krijgen tot de waarden voor verificatie. In de volgende lijst worden de omgevingsvariabelen weergegeven die zijn gemaakt:
+De laatste vereiste is om de omgevings variabelen in te stellen die nodig zijn voor toegang tot de waarden voor verificatie. In de volgende lijst ziet u de omgevings variabelen die zijn gemaakt:
 
 * AzureClientID
 
@@ -193,9 +193,9 @@ De uiteindelijke vereiste is het instellen van de omgevingsvariabelen die nodig 
 
 #### <a name="azureclientid"></a>AzureClientID
 
-De client-id is de toepassings-id van een toepassing in Azure Active Directory.
+De client-ID is de toepassings-ID van een toepassing in Azure Active Directory.
 
-1. Als u nog geen toepassing hebt om te gebruiken, voert u het volgende voorbeeld uit om een toepassing te maken.
+1. Als u nog geen toepassing hebt om te gebruiken, voert u het volgende voor beeld uit om een toepassing te maken.
 
     ```powershell
     $app = New-AzADApplication -DisplayName "ExampleAutomationAccount_MF" -HomePage "https://exampleapp.com" -IdentifierUris "https://exampleapp1.com/ExampleFunctionsAccount" -Password "<same password as defined earlier>"
@@ -205,19 +205,19 @@ De client-id is de toepassings-id van een toepassing in Azure Active Directory.
     ```
 
    > [!NOTE]
-   > Het wachtwoord dat u gebruikt bij het maken van de toepassing moet hetzelfde wachtwoord zijn dat u eerder hebt gemaakt bij het opslaan van het sleutelbestand.
+   > Het wacht woord dat u gebruikt bij het maken van de toepassing moet hetzelfde wacht woord zijn dat u eerder hebt gemaakt bij het opslaan van het sleutel bestand.
 
-1. Selecteer **Abonnementen**in de Azure-portal . Selecteer het te gebruiken abonnement en selecteer **vervolgens Toegangsbeheer (IAM)**.
+1. Selecteer in de Azure Portal **abonnementen**. Selecteer het abonnement dat u wilt gebruiken en selecteer vervolgens **toegangs beheer (IAM)**.
 
-    ![Functies IAM][functions9]
+    ![Functie IAM][functions9]
 
-1. Kies het account dat u wilt gebruiken en selecteer **Eigenschappen**. Kopieer de toepassings-id.
+1. Kies het account dat u wilt gebruiken en selecteer vervolgens **Eigenschappen**. Kopieer de toepassings-ID.
 
-    ![Toepassings-id functies][functions10]
+    ![Functions-toepassings-ID][functions10]
 
 #### <a name="azuretenant"></a>AzureTenant
 
-Verkrijg de tenant-id door het volgende PowerShell-voorbeeld uit te voeren:
+Haal de Tenant-ID op door het volgende Power shell-voor beeld uit te voeren:
 
 ```powershell
 (Get-AzSubscription -SubscriptionName "<subscriptionName>").TenantId
@@ -225,7 +225,7 @@ Verkrijg de tenant-id door het volgende PowerShell-voorbeeld uit te voeren:
 
 #### <a name="azurecredpassword"></a>AzureCredPassword
 
-De waarde van de azurecredpassword-omgevingsvariabele is de waarde die u krijgt bij het uitvoeren van het volgende PowerShell-voorbeeld. Dit voorbeeld is hetzelfde voorbeeld dat wordt weergegeven in de vorige sectie **Versleutelde referenties.** De waarde die nodig is, `$Encryptedpassword` is de uitvoer van de variabele.  Dit is het servicehoofdwachtwoord dat u hebt versleuteld met behulp van het PowerShell-script.
+De waarde van de omgevings variabele AzureCredPassword is de waarde die u krijgt om het volgende Power shell-voor beeld uit te voeren. Dit voor beeld is hetzelfde als die wordt weer gegeven in de sectie voor gaande **versleutelde referenties** . De waarde die nodig is, is de uitvoer van `$Encryptedpassword` de variabele.  Dit is het Service-Principal-wacht woord dat u hebt versleuteld met behulp van het Power shell-script.
 
 ```powershell
 #Variables
@@ -244,27 +244,27 @@ $Encryptedpassword = $secPw | ConvertFrom-SecureString -Key $AESKey
 $Encryptedpassword
 ```
 
-### <a name="store-the-environment-variables"></a>De omgevingsvariabelen opslaan
+### <a name="store-the-environment-variables"></a>De omgevings variabelen opslaan
 
-1. Ga naar de functie-app. Selecteer vervolgens **Instellingen voor functie-apps** > **App configureren**.
+1. Ga naar de functie-app. Selecteer vervolgens **functie-app-instellingen** > **app-instellingen configureren**.
 
     ![App-instellingen configureren][functions11]
 
-1. Voeg de omgevingsvariabelen en hun waarden toe aan de app-instellingen en selecteer **Opslaan**.
+1. Voeg de omgevings variabelen en hun waarden toe aan de app-instellingen en selecteer vervolgens **Opslaan**.
 
     ![Instellingen voor apps][functions12]
 
-### <a name="add-powershell-to-the-function"></a>PowerShell toevoegen aan de functie
+### <a name="add-powershell-to-the-function"></a>Power shell toevoegen aan de functie
 
-Het is nu tijd om te bellen naar Network Watcher vanuit de Azure-functie. Afhankelijk van de vereisten kan de implementatie van deze functie variëren. De algemene stroom van de code is echter als volgt:
+Het is nu tijd om vanuit de Azure-functie aanroepen naar Network Watcher te maken. Afhankelijk van de vereisten kan de implementatie van deze functie verschillen. De algemene stroom van de code is echter als volgt:
 
-1. Invoerparameters verwerken.
-2. Bestaande pakketopnamen opvragen om limieten te verifiëren en naamconflicten op te lossen.
-3. Maak een pakketopname met de juiste parameters.
-4. Poll pakket periodiek vast te leggen totdat het is voltooid.
-5. Laat de gebruiker weten dat de pakketopnamesessie is voltooid.
+1. Invoer parameters verwerken.
+2. Query's uitvoeren op bestaande pakket opnames om limieten te controleren en naam conflicten op te lossen.
+3. Maak een pakket opname met de juiste para meters.
+4. Navraag pakket vastleggen regel matig tot het is voltooid.
+5. Informeer de gebruiker dat de pakket opname sessie is voltooid.
 
-Het volgende voorbeeld is PowerShell-code die in de functie kan worden gebruikt. Er zijn waarden die moeten worden vervangen voor **subscriptionId,** **resourceGroupName**en **storageAccountName**.
+Het volgende voor beeld is Power shell-code die in de functie kan worden gebruikt. Er zijn waarden die moeten worden vervangen voor **subscriptionId**, **resourceGroupName**en **storageAccountName**.
 
 ```powershell
             #Import Azure PowerShell modules required to make calls to Network Watcher
@@ -324,7 +324,7 @@ Het volgende voorbeeld is PowerShell-code die in de functie kan worden gebruikt.
             } 
  ``` 
 #### <a name="retrieve-the-function-url"></a>De functie-URL ophalen 
-1. Nadat u de functie hebt gemaakt, configureert u uw waarschuwing om de URL aan te roepen die aan de functie is gekoppeld. Kopieer de functie-URL vanuit uw functie-app om deze waarde te krijgen.
+1. Nadat u de functie hebt gemaakt, configureert u de waarschuwing om de URL aan te roepen die aan de functie is gekoppeld. Als u deze waarde wilt ophalen, kopieert u de functie-URL uit de functie-app.
 
     ![De functie-URL zoeken][functions13]
 
@@ -332,47 +332,47 @@ Het volgende voorbeeld is PowerShell-code die in de functie kan worden gebruikt.
 
     ![De functie-URL kopiëren][2]
 
-Als u aangepaste eigenschappen nodig hebt in de payload van de webhook POST-aanvraag, raadpleegt u [Een webhook configureren op een Azure-metrische waarschuwing](../azure-monitor/platform/alerts-webhooks.md).
+Als u aangepaste eigenschappen nodig hebt in de payload van de POST-aanvraag van de webhook, raadpleegt u [een webhook configureren voor een Azure metric-waarschuwing](../azure-monitor/platform/alerts-webhooks.md).
 
-## <a name="configure-an-alert-on-a-vm"></a>Een waarschuwing configureren op een virtuele machine
+## <a name="configure-an-alert-on-a-vm"></a>Een waarschuwing configureren voor een virtuele machine
 
-Waarschuwingen kunnen worden geconfigureerd om personen op de hoogte te stellen wanneer een specifieke statistiek een drempel waardestreep overschrijdt die eraan is toegewezen. In dit voorbeeld bevindt de waarschuwing zich op de TCP-segmenten die worden verzonden, maar de waarschuwing kan worden geactiveerd voor veel andere statistieken. In dit voorbeeld wordt een waarschuwing geconfigureerd om een webhook aan te roepen om de functie aan te roepen.
+Waarschuwingen kunnen worden geconfigureerd om personen te waarschuwen wanneer een specifieke metriek een drempel overschrijdt die hieraan is toegewezen. In dit voor beeld bevindt de waarschuwing zich op de TCP-segmenten die worden verzonden, maar de waarschuwing kan worden geactiveerd voor veel andere metrische gegevens. In dit voor beeld wordt een waarschuwing geconfigureerd om een webhook aan te roepen om de functie aan te roepen.
 
-### <a name="create-the-alert-rule"></a>De waarschuwingsregel maken
+### <a name="create-the-alert-rule"></a>De waarschuwings regel maken
 
-Ga naar een bestaande virtuele machine en voeg vervolgens een waarschuwingsregel toe. Meer gedetailleerde documentatie over het configureren van waarschuwingen is te vinden bij [Waarschuwingen maken in Azure Monitor for Azure services - Azure portal.](../monitoring-and-diagnostics/insights-alerts-portal.md) Voer de volgende waarden in het regelblad **Waarschuwen** in en selecteer **OK**.
+Ga naar een bestaande virtuele machine en voeg vervolgens een waarschuwings regel toe. Meer gedetailleerde documentatie over het configureren van waarschuwingen vindt u [in azure monitor voor Azure-Services-Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md). Voer de volgende waarden in op de Blade **waarschuwings regel** en selecteer **OK**.
 
-  |**Instelling** | **Waarde** | **Details** |
+  |**Instelling** | **Waarde** | **Nadere** |
   |---|---|---|
-  |**Naam**|TCP_Segments_Sent_Exceeded|Naam van de waarschuwingsregel.|
-  |**Beschrijving**|VERZONDen TCP-segmenten overschreden drempelwaarde|De beschrijving voor de waarschuwingsregel.|
-  |**Gegevens**|VERZONDEN TCP-segmenten| De statistiek die moet worden gebruikt om de waarschuwing te activeren. |
-  |**Voorwaarde**|Groter dan| De voorwaarde om te gebruiken bij de evaluatie van de statistiek.|
-  |**Drempel**|100| De waarde van de statistiek die de waarschuwing activeert. Deze waarde moet worden ingesteld op een geldige waarde voor uw omgeving.|
-  |**Periode**|In de laatste vijf minuten| Hiermee bepaalt u de periode waarin u de drempelwaarde op de statistiek moet zoeken.|
-  |**Webhook**|[webhook URL van functie-app]| De webhook-URL van de functie-app die in de vorige stappen is gemaakt.|
+  |**Naam**|TCP_Segments_Sent_Exceeded|De naam van de waarschuwings regel.|
+  |**Beschrijving**|Drempel waarde verzonden TCP-segmenten overschreden|De beschrijving voor de waarschuwings regel.|
+  |**Gegevens**|Verzonden TCP-segmenten| De metriek die moet worden gebruikt om de waarschuwing te activeren. |
+  |**Voorwaarde**|Groter dan| De voor waarde die moet worden gebruikt bij het evalueren van de metriek.|
+  |**Spreek**|100| De waarde van de metriek waarmee de waarschuwing wordt geactiveerd. Deze waarde moet worden ingesteld op een geldige waarde voor uw omgeving.|
+  |**Periode**|In de afgelopen vijf minuten| Bepaalt de periode waarin de drempel waarde voor de metriek moet worden gezocht.|
+  |**Webhook**|[webhook-URL uit functie-app]| De webhook-URL uit de functie-app die in de vorige stappen is gemaakt.|
 
 > [!NOTE]
-> De statistiek TCP-segmenten is standaard niet ingeschakeld. Meer informatie over het inschakelen van aanvullende statistieken door naar [Monitoring en diagnostische gegevens inschakelen](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md)te gaan.
+> De metrische gegevens voor TCP-segmenten zijn standaard niet ingeschakeld. Meer informatie over het inschakelen van aanvullende metrische gegevens vindt u [controle en diagnostische gegevens inschakelen](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md).
 
 ## <a name="review-the-results"></a>De resultaten bekijken
 
-Na de criteria voor de waarschuwingstriggers wordt een pakketopname gemaakt. Ga naar Network Watcher en selecteer **Packet capture**. Op deze pagina u de koppeling voor het vastleggen van pakketten selecteren om de packet capture te downloaden.
+Nadat de criteria voor de waarschuwing zijn geactiveerd, wordt een pakket opname gemaakt. Ga naar Network Watcher en selecteer **pakket vastleggen**. Op deze pagina kunt u de koppeling naar het pakket opname bestand selecteren om de pakket opname te downloaden.
 
-![Pakketopname weergeven][functions14]
+![Pakket opname weer geven][functions14]
 
-Als het opnamebestand lokaal wordt opgeslagen, u het ophalen door u aan te melden bij de virtuele machine.
+Als het opname bestand lokaal is opgeslagen, kunt u het ophalen door u aan te melden bij de virtuele machine.
 
-Zie Aan de slag met Azure [Blob-opslag met .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)voor instructies over het downloaden van bestanden uit Azure-opslagaccounts. Een ander hulpmiddel dat u gebruiken is [Storage Explorer.](https://storageexplorer.com/)
+Zie [aan de slag met Azure Blob Storage met .net](../storage/blobs/storage-dotnet-how-to-use-blobs.md)voor instructies over het downloaden van bestanden van Azure-opslag accounts. Een ander hulp programma dat u kunt gebruiken, is [Storage Explorer](https://storageexplorer.com/).
 
-Nadat uw opname is gedownload, u deze bekijken met behulp van elk hulpmiddel dat een **.cap-bestand** kan lezen. Hieronder volgen links naar twee van deze tools:
+Nadat uw opname is gedownload, kunt u deze weer geven met behulp van elk hulp programma dat een **. Cap** -bestand kan lezen. Hieronder vindt u koppelingen naar twee van deze hulpprogram ma's:
 
-- [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
-- [Wireshark](https://www.wireshark.org/)
+- [Micro soft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
+- [WireShark](https://www.wireshark.org/)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het bekijken van uw pakketopnames door [packet capture-analyse met Wireshark te](network-watcher-deep-packet-inspection.md)bezoeken.
+Meer informatie over het weer geven van uw pakket opnames kunt u vinden met behulp van [pakket Capture-analyse met wireshark](network-watcher-deep-packet-inspection.md).
 
 
 [1]: ./media/network-watcher-alert-triggered-packet-capture/figure1.png

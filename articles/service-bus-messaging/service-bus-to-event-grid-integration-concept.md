@@ -1,6 +1,6 @@
 ---
 title: Overzicht integratie Azure Service Bus met Azure Event Grid | Microsoft Docs
-description: In dit artikel vindt u een beschrijving van de manier waarop Azure Service Bus-berichten worden geïntegreerd met Azure Event Grid.
+description: Dit artikel bevat een beschrijving van de manier waarop Azure Service Bus berichten integreert met Azure Event Grid.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 1e514e2856afae4ff6f877bb193935da1bc5d623
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76773482"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Overzicht integratie Azure Service Bus met Azure Event Grid
@@ -38,7 +38,7 @@ Als u deze functie wilt inschakelen, hebt u het volgende nodig:
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>Controleren of u toegang op Inzender-niveau hebt
-Ga naar de naamruimte van uw servicebus en selecteer **Vervolgens Toegangsbeheer (IAM)** en selecteer het tabblad **Roltoewijzingen.** Controleer of u de inzender toegang hebt tot de naamruimte. 
+Ga naar uw Service Bus-naam ruimte en selecteer vervolgens **toegangs beheer (IAM)** en selecteer het tabblad **roltoewijzingen** . Controleer of u toegang hebt tot de naam ruimte. 
 
 ### <a name="events-and-event-schemas"></a>Gebeurtenissen en gebeurtenisschema's
 
@@ -138,7 +138,7 @@ Ga als volgt te werk als u een nieuw Event Grid-abonnement wilt maken:
 
 ## <a name="azure-cli-instructions"></a>Instructies voor Azure CLI
 
-Controleer eerst of Azure CLI versie 2.0 of hoger is geïnstalleerd. [Download het installatieprogramma](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Selecteer **Windows + X**en open een nieuwe PowerShell-console met beheerdersmachtigingen. U kunt ook een opdrachtshell in Azure Portal gebruiken.
+Controleer eerst of Azure CLI versie 2.0 of hoger is geïnstalleerd. [Download het installatieprogramma](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Selecteer **Windows + X**en open een nieuwe Power shell-console met beheerders machtigingen. U kunt ook een opdrachtshell in Azure Portal gebruiken.
 
 Voer de volgende code uit:
 

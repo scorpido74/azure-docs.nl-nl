@@ -1,5 +1,5 @@
 ---
-title: Een Azure Network Watcher-exemplaar maken | Microsoft Documenten
+title: Een Azure Network Watcher-exemplaar maken | Microsoft Docs
 description: Meer informatie over het inschakelen van Network Watcher in een Azure-regio.
 services: network-watcher
 documentationcenter: na
@@ -13,27 +13,27 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 77812a3765a027152c957f6dbb7c9b3811a2278f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77191183"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Een Azure Network Watcher-exemplaar maken
 
-Network Watcher is een regionale service waarmee u de omstandigheden op netwerkscenarioniveau in, naar en vanuit Azure controleren en diagnosticeren. Met bewaking op scenarioniveau u problemen diagnosticeren bij een end-to-end netwerkniveauweergave. Netwerkdiagnose- en visualisatietools die beschikbaar zijn met Network Watcher helpen u inzicht te krijgen in uw netwerk in Azure, diagnoses en inzichten te krijgen. Network Watcher is ingeschakeld door het maken van een Network Watcher-bron. Met deze bron u gebruikmaken van network watcher-mogelijkheden.
+Network Watcher is een regionale service waarmee u voor waarden kunt controleren en diagnosticeren op het niveau van een netwerk scenario in, naar en Azure. Met bewaking op scenario niveau kunt u problemen met een end-to-end netwerk niveau weergave vaststellen. Met behulp van de hulpprogram ma's voor netwerk diagnose en visualisatie die beschikbaar zijn bij Network Watcher, kunt u uw netwerk in azure begrijpen, vaststellen en er inzicht in krijgen. Network Watcher wordt ingeschakeld door het maken van een Network Watcher resource. Met deze resource kunt u Network Watcher mogelijkheden gebruiken.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="network-watcher-is-automatically-enabled"></a>Network Watcher is automatisch ingeschakeld
+## <a name="network-watcher-is-automatically-enabled"></a>Network Watcher wordt automatisch ingeschakeld
 Wanneer u een virtueel netwerk in uw abonnement maakt of bijwerkt, wordt Network Watcher automatisch ingeschakeld in de regio van uw virtuele netwerk. Het automatisch inschakelen van Network Watcher heeft geen invloed op uw resources en er worden geen kosten in rekening gebracht.
 
-#### <a name="opt-out-of-network-watcher-automatic-enablement"></a>Opt-out van Network Watcher automatische enablement
-Als u zich wilt afmelden voor automatische enablement van Network Watcher, u dit doen door de volgende opdrachten uit te voeren:
+#### <a name="opt-out-of-network-watcher-automatic-enablement"></a>Opt-out van Network Watcher automatische activering
+Als u zich wilt afmelden Network Watcher automatische activering, kunt u dit doen door de volgende opdrachten uit te voeren:
 
 > [!WARNING]
-> Opt-out van Network Watcher automatische enablement is een permanente verandering. Zodra u zich afmelden, u zich niet aanmelden zonder [contact op te nemen met ondersteuning](https://azure.microsoft.com/support/options/)
+> Het afmelden van Network Watcher automatische activering is een permanente wijziging. Wanneer u opt-out hebt, kunt u zich niet aanmelden zonder [contact op](https://azure.microsoft.com/support/options/) te nemen met de ondersteuning
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -FeatureName DisableNetworkWatcherAutocreation -ProviderNamespace Microsoft.Network
@@ -47,45 +47,45 @@ az provider register -n Microsoft.Network
 
 
 
-## <a name="create-a-network-watcher-in-the-portal"></a>Een netwerkwatcher maken in de portal
+## <a name="create-a-network-watcher-in-the-portal"></a>Een Network Watcher maken in de portal
 
-Navigeer naar **All Services** > **Networking** > **Network Watcher**. U alle abonnementen selecteren waarvoor u Network Watcher wilt inschakelen. Met deze actie wordt een netwerkwatcher gemaakt in elke regio die beschikbaar is.
+Ga naar **alle services** > **netwerk** > **Network Watcher**. U kunt alle abonnementen selecteren waarvoor u Network Watcher wilt inschakelen. Met deze actie maakt u een Network Watcher in elke regio die beschikbaar is.
 
-![een netwerkwatcher maken](./media/network-watcher-create/figure1.png)
+![een netwerk-Watcher maken](./media/network-watcher-create/figure1.png)
 
-Wanneer u Network Watcher inschakelt via de portal, wordt de naam van het exemplaar Network Watcher automatisch ingesteld op *NetworkWatcher_region_name* waar *region_name* overeenkomt met het Azure-gebied waar de instantie is ingeschakeld. Een Netwerkwatcher die is ingeschakeld in de regio West Central US krijgt bijvoorbeeld de naam *NetworkWatcher_westcentralus*.
+Als u Network Watcher inschakelt met behulp van de portal, wordt de naam van de Network Watcher instantie automatisch ingesteld op *NetworkWatcher_region_name* waarbij *region_name* overeenkomt met de Azure-regio waar het exemplaar is ingeschakeld. Een Network Watcher die is ingeschakeld in de regio West-Centraal VS heeft bijvoorbeeld de naam *NetworkWatcher_westcentralus*.
 
-De instantie Network Watcher wordt automatisch gemaakt in een resourcegroep met de naam *NetworkWatcherRG*. De resourcegroep wordt gemaakt als deze nog niet bestaat.
+Het Network Watcher-exemplaar wordt automatisch gemaakt in een resource groep met de naam *NetworkWatcherRG*. De resource groep wordt gemaakt als deze nog niet bestaat.
 
-Als u de naam van een instantie Network Watcher en de brongroep waarin deze is geplaatst, wilt aanpassen, u Powershell, de Azure CLI, de REST API of ARMClient-methoden gebruiken die worden beschreven in de volgende secties. In elke optie moet de brongroep bestaan voordat u er een Netwerkwatcher in maakt.  
+Als u de naam van een Network Watcher exemplaar en de resource groep waarin deze is geplaatst, wilt aanpassen, kunt u Power shell, de Azure CLI, de REST API of ARMClient-methoden gebruiken die worden beschreven in de volgende secties. In elke optie moet de resource groep bestaan voordat u er een Network Watcher maakt.  
 
-## <a name="create-a-network-watcher-with-powershell"></a>Een netwerkwatcher maken met PowerShell
+## <a name="create-a-network-watcher-with-powershell"></a>Een Network Watcher maken met Power shell
 
-Voer het volgende voorbeeld uit om een instantie van Network Watcher te maken:
+Als u een exemplaar van Network Watcher wilt maken, voert u het volgende voor beeld uit:
 
 ```powershell
 New-AzNetworkWatcher -Name "NetworkWatcher_westcentralus" -ResourceGroupName "NetworkWatcherRG" -Location "West Central US"
 ```
 
-## <a name="create-a-network-watcher-with-the-azure-cli"></a>Een netwerkwatcher maken met de Azure CLI
+## <a name="create-a-network-watcher-with-the-azure-cli"></a>Een Network Watcher maken met de Azure CLI
 
-Voer het volgende voorbeeld uit om een instantie van Network Watcher te maken:
+Als u een exemplaar van Network Watcher wilt maken, voert u het volgende voor beeld uit:
 
 ```azurecli
 az network watcher configure --resource-group NetworkWatcherRG --locations westcentralus --enabled
 ```
 
-## <a name="create-a-network-watcher-with-the-rest-api"></a>Een netwerkwatcher maken met de REST-API
+## <a name="create-a-network-watcher-with-the-rest-api"></a>Een Network Watcher met de REST API maken
 
-De ARM-client wordt gebruikt om de REST API aan te roepen met PowerShell. De ARMClient is te vinden op chocolatey bij [ARMClient op Chocolatey](https://chocolatey.org/packages/ARMClient)
+De ARMclient wordt gebruikt om de REST API aan te roepen met behulp van Power shell. De ARMClient is in Choco lade op [ARMClient in Choco](https://chocolatey.org/packages/ARMClient) lade gevonden
 
-### <a name="log-in-with-armclient"></a>Inloggen met ARMClient
+### <a name="log-in-with-armclient"></a>Aanmelden met ARMClient
 
 ```powerShell
 armclient login
 ```
 
-### <a name="create-the-network-watcher"></a>De netwerkwatcher maken
+### <a name="create-the-network-watcher"></a>De netwerk-Watcher maken
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -101,19 +101,19 @@ $requestBody = @"
 armclient put "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}?api-version=${api-version}" $requestBody
 ```
 
-## <a name="delete-a-network-watcher-in-the-portal"></a>Een netwerkwatcher in de portal verwijderen
+## <a name="delete-a-network-watcher-in-the-portal"></a>Een Network Watcher in de Portal verwijderen
 
-Navigeer naar **All Services** > **Networking** > **Network Watcher**.
+Ga naar **alle services** > **netwerk** > **Network Watcher**.
 
-Selecteer het tabblad Overzicht als u er nog niet bent. Gebruik de vervolgkeuzelijst om het abonnement te selecteren waarin u de netwerkwatcher wilt uitschakelen.
-Vouw de lijst met regio's voor het gekozen abonnement uit door op de pijl te klikken. Gebruik voor elk gegeven de 3 puntjes aan de rechterkant om toegang te krijgen tot het contextmenu.
-Klik op 'Netwerkwatcher uitschakelen' om te beginnen met uitschakelen. U wordt gevraagd deze stap te bevestigen. Klik op Ja om door te gaan.
-Op het portaal moet u dit individueel doen voor elke regio in elk abonnement.
+Selecteer het tabblad Overzicht als u dat nog niet hebt gedaan. Gebruik de vervolg keuzelijst om het abonnement te selecteren waarvoor u de Network Watcher wilt uitschakelen.
+Vouw de lijst met regio's voor het gekozen abonnement uit door op de pijl te klikken. Gebruik voor elke gegeven de drie punten aan de rechter kant om het context menu te openen.
+Klik op Network Watcher uitschakelen om het uitschakelen te starten. U wordt gevraagd om deze stap te bevestigen. Klik op Ja om door te gaan.
+Op de portal moet u dit afzonderlijk doen voor elke regio in elk abonnement.
 
 
-## <a name="delete-a-network-watcher-with-powershell"></a>Een netwerkwatcher verwijderen met PowerShell
+## <a name="delete-a-network-watcher-with-powershell"></a>Een Network Watcher verwijderen met Power shell
 
-Voer het volgende voorbeeld uit om een instantie van Network Watcher te verwijderen:
+Als u een exemplaar van Network Watcher wilt verwijderen, voert u het volgende voor beeld uit:
 
 ```powershell
 New-AzResourceGroup -Name NetworkWatcherRG -Location westcentralus
@@ -123,12 +123,12 @@ Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup Networ
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u een exemplaar van Network Watcher hebt, u meer te weten komen over de beschikbare functies:
+Nu u een exemplaar van Network Watcher hebt, hebt u meer informatie over de beschik bare functies:
 
 * [Topologie](network-watcher-topology-overview.md)
 * [Pakketopname](network-watcher-packet-capture-overview.md)
 * [IP-stroomverificatie](network-watcher-ip-flow-verify-overview.md)
 * [Volgende hop](network-watcher-next-hop-overview.md)
 * [Beveiligingsgroepweergave](network-watcher-security-group-view-overview.md)
-* [NSG-stroomlogboekregistratie](network-watcher-nsg-flow-logging-overview.md)
-* [Probleemoplossing voor virtuele netwerkgateway](network-watcher-troubleshoot-overview.md)
+* [Logboek registratie voor NSG-stroom](network-watcher-nsg-flow-logging-overview.md)
+* [Problemen met Virtual Network gateway oplossen](network-watcher-troubleshoot-overview.md)
