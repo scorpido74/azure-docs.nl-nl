@@ -1,60 +1,60 @@
 ---
 title: Resources implementeren met REST API en sjabloon
-description: Gebruik Azure Resource Manager en Resource Manager REST API om resources te implementeren in Azure. De resources zijn gedefinieerd in een Resource Manager-sjabloon.
+description: Gebruik Azure Resource Manager en Resource Manager-REST API om resources te implementeren in Azure. De resources zijn gedefinieerd in een Resource Manager-sjabloon.
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.openlocfilehash: 9cdb7b668e5170917b41ef49639bd9a17e538766
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80153230"
 ---
-# <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>Resources implementeren met ARM-sjablonen en REST API voor Resource Manager
+# <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>Resources implementeren met ARM-sjablonen en Resource Manager-REST API
 
-In dit artikel wordt uitgelegd hoe u de RestAPI voor ResourceBeheer gebruiken met ARM-sjablonen (Azure Resource Manager) om uw resources te implementeren in Azure.
+In dit artikel wordt uitgelegd hoe u de sjablonen van Resource Manager REST API met Azure Resource Manager (ARM) kunt gebruiken om uw resources te implementeren in Azure.
 
-U uw sjabloon opnemen in de aanvraaginstantie of een koppeling maken naar een bestand. Bij het gebruik van een bestand kan het een lokaal bestand zijn of een extern bestand dat beschikbaar is via een URI. Wanneer uw sjabloon zich in een opslagaccount bevindt, u de toegang tot de sjabloon beperken en tijdens de implementatie een SAS-token (Shared Access Signature) geven.
+U kunt uw sjabloon insluiten in de hoofd tekst van de aanvraag of een koppeling naar een bestand. Wanneer u een bestand gebruikt, kan dit een lokaal bestand zijn of een extern bestand dat beschikbaar is via een URI. Als uw sjabloon zich in een opslag account bevindt, kunt u de toegang tot de sjabloon beperken en een SAS-token (Shared Access Signature) opgeven tijdens de implementatie.
 
-## <a name="deployment-scope"></a>Implementatiebereik
+## <a name="deployment-scope"></a>Implementatie bereik
 
-U uw implementatie targeten op een beheergroep, een Azure-abonnement of een brongroep. In de meeste gevallen targetu's implementaties op een resourcegroep. Gebruik beheergroep- of abonnementsimplementaties om beleids- en roltoewijzingen toe te passen in het opgegeven bereik. U gebruikt ook abonnementsimplementaties om een resourcegroep te maken en er resources op te implementeren. Afhankelijk van het bereik van de implementatie gebruikt u verschillende opdrachten.
+U kunt uw implementatie richten op een beheer groep, een Azure-abonnement of een resource groep. In de meeste gevallen streeft u implementaties naar een resource groep. Beheer groep-of abonnements implementaties gebruiken om beleid en roltoewijzingen toe te passen binnen het opgegeven bereik. U kunt ook abonnements implementaties gebruiken voor het maken van een resource groep en het implementeren van resources. Afhankelijk van het bereik van de implementatie, gebruikt u verschillende opdrachten.
 
-Als u wilt implementeren in een **resourcegroep,** gebruikt u [Implementatieen - Maken](/rest/api/resources/deployments/createorupdate). Het verzoek wordt verzonden naar:
+Gebruik [implementaties-maken](/rest/api/resources/deployments/createorupdate)om te implementeren in een **resource groep**. De aanvraag wordt verzonden naar:
 
 ```HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
 ```
 
-Als u wilt implementeren op een **abonnement,** gebruikt u [Implementaties - Maken bij abonnementsbereik](/rest/api/resources/deployments/createorupdateatsubscriptionscope). Het verzoek wordt verzonden naar:
+Als u wilt implementeren in een **abonnement**, gebruikt u [implementaties-maken bij abonnements bereik](/rest/api/resources/deployments/createorupdateatsubscriptionscope). De aanvraag wordt verzonden naar:
 
 ```HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
 ```
 
-Zie [Resourcegroepen en resources maken op abonnementsniveau](deploy-to-subscription.md)voor meer informatie over implementaties op abonnementsniveau.
+Zie [resource groepen en-resources op abonnements niveau maken](deploy-to-subscription.md)voor meer informatie over implementaties op abonnements niveau.
 
-Als u wilt implementeren in een **beheergroep,** gebruikt u [Implementaties - Maken bij het bereik van de beheergroep](/rest/api/resources/deployments/createorupdateatmanagementgroupscope). Het verzoek wordt verzonden naar:
+Als u wilt implementeren in een **beheer groep**, gebruikt u [implementaties-maken voor het bereik van de beheer groep](/rest/api/resources/deployments/createorupdateatmanagementgroupscope). De aanvraag wordt verzonden naar:
 
 ```HTTP
 PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
 ```
 
-Zie [Resources maken op het niveau van de beheergroep voor](deploy-to-management-group.md)meer informatie over implementaties op managementgroepenniveau.
+Zie [resources maken op het niveau van de beheer groep](deploy-to-management-group.md)voor meer informatie over implementaties op het niveau van beheer groepen.
 
-De voorbeelden in dit artikel gebruiken implementaties van resourcegroepen.
+In de voor beelden in dit artikel worden de implementaties van resource groepen gebruikt.
 
 ## <a name="deploy-with-the-rest-api"></a>Implementeren met de REST-API
 
-1. Stel [algemene parameters en kopteksten](/rest/api/azure/)in, inclusief verificatietokens.
+1. [Algemene para meters en kopteksten](/rest/api/azure/)instellen, inclusief verificatie tokens.
 
-1. Als u geen bestaande resourcegroep hebt, maakt u een resourcegroep. Geef uw abonnements-ID, de naam van de nieuwe resourcegroep en de locatie op die u nodig hebt voor uw oplossing. Zie [Een resourcegroep maken](/rest/api/resources/resourcegroups/createorupdate)voor meer informatie .
+1. Als u geen bestaande resource groep hebt, maakt u een resource groep. Geef uw abonnements-ID, de naam van de nieuwe resource groep en de locatie op die u nodig hebt voor uw oplossing. Zie [een resource groep maken](/rest/api/resources/resourcegroups/createorupdate)voor meer informatie.
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2019-05-01
    ```
 
-   Met een aanvraagorgaan als:
+   Met een aanvraag tekst zoals:
 
    ```json
    {
@@ -65,17 +65,17 @@ De voorbeelden in dit artikel gebruiken implementaties van resourcegroepen.
    }
    ```
 
-1. Valideer uw implementatie voordat u deze uitvoert door de bewerking [Een sjabloonimplementatie](/rest/api/resources/deployments/validate) valideren uit te voeren. Geef bij het testen van de implementatie parameters op die precies zo zijn als bij het uitvoeren van de implementatie (weergegeven in de volgende stap).
+1. Valideer uw implementatie voordat u deze uitvoert door de implementatie bewerking voor het [valideren van een sjabloon](/rest/api/resources/deployments/validate) uit te voeren. Wanneer u de implementatie test, geeft u de para meters op exact dezelfde manier op als bij het uitvoeren van de implementatie (Zie de volgende stap).
 
-1. Als u een sjabloon wilt implementeren, geeft u uw abonnements-id op, de naam van de resourcegroep, de naam van de implementatie in de aanvraag URI.
+1. Als u een sjabloon wilt implementeren, geeft u uw abonnements-ID, de naam van de resource groep, de naam van de implementatie op in de aanvraag-URI.
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-05-01
    ```
 
-   Geef in de aanvraaginstantie een koppeling naar uw sjabloon en parameterbestand. Zie [Resourcebeheer-parameterbestand maken](parameter-files.md)voor meer informatie over het parameterbestand .
+   Geef in de hoofd tekst van de aanvraag een koppeling op naar uw sjabloon en parameter bestand. Zie voor meer informatie over het parameter bestand [Resource Manager-parameter bestand maken](parameter-files.md).
 
-   Let op: de **modus** is ingesteld op **Incrementeel**. Als u een volledige implementatie wilt uitvoeren, stelt u **de modus** in op **Voltooien**. Wees voorzichtig bij het gebruik van de volledige modus, omdat u per ongeluk bronnen verwijderen die niet in uw sjabloon staan.
+   U ziet dat de **modus** is ingesteld op **Incrementeel**. Stel de **modus** in op **voltooid**als u een volledige implementatie wilt uitvoeren. Wees voorzichtig met het gebruik van de volledige modus, omdat u per ongeluk resources kunt verwijderen die zich niet in uw sjabloon bevinden.
 
    ```json
    {
@@ -93,7 +93,7 @@ De voorbeelden in dit artikel gebruiken implementaties van resourcegroepen.
    }
    ```
 
-    Als u antwoordinhoud wilt registreren, inhoud wilt aanvragen of beide, **u foutopsporing instellen** in de aanvraag opnemen.
+    Als u de respons inhoud wilt registreren, moet u de inhoud van de aanvraag, of beide, de **debugSetting** toevoegen.
 
    ```json
    {
@@ -114,11 +114,11 @@ De voorbeelden in dit artikel gebruiken implementaties van resourcegroepen.
    }
    ```
 
-    U uw opslagaccount zo instellen dat u een SAS-token (Shared Access Signature) gebruikt. Zie [Toegang delegeren met een gedeelde toegangshandtekening](/rest/api/storageservices/delegating-access-with-a-shared-access-signature)voor meer informatie.
+    U kunt uw opslag account instellen om een SAS-token (Shared Access Signature) te gebruiken. Zie [toegang overdragen met een Shared Access Signature](/rest/api/storageservices/delegating-access-with-a-shared-access-signature)voor meer informatie.
 
-    Als u een gevoelige waarde voor een parameter (zoals een wachtwoord) moet opgeven, voegt u die waarde toe aan een sleutelkluis. Haal het sleutelkluis op tijdens de implementatie, zoals in het vorige voorbeeld wordt weergegeven. Zie [Veilige waarden doorgeven tijdens de implementatie voor](key-vault-parameter.md)meer informatie.
+    Als u een gevoelige waarde voor een para meter (bijvoorbeeld een wacht woord) moet opgeven, voegt u die waarde toe aan een sleutel kluis. Haal de sleutel kluis op tijdens de implementatie, zoals wordt weer gegeven in het vorige voor beeld. Zie [veilige waarden door geven tijdens de implementatie](key-vault-parameter.md)voor meer informatie.
 
-1. In plaats van te koppelen aan bestanden voor de sjabloon en parameters, u deze opnemen in de aanvraaginstantie. In het volgende voorbeeld wordt de aanvraagtekst met de sjabloon en parameterinline weergegeven:
+1. In plaats van te koppelen aan bestanden voor de sjabloon en para meters, kunt u deze in de hoofd tekst van de aanvraag toevoegen. In het volgende voor beeld wordt de hoofd tekst van de aanvraag met de sjabloon en de parameter inline weer gegeven:
 
    ```json
    {
@@ -181,7 +181,7 @@ De voorbeelden in dit artikel gebruiken implementaties van resourcegroepen.
    }
    ```
 
-1. Als u de status van de sjabloonimplementatie wilt krijgen, gebruikt u [Implementatieen - Get](/rest/api/resources/deployments/get).
+1. Gebruik [implementaties-ophalen](/rest/api/resources/deployments/get)om de status van de sjabloon implementatie te verkrijgen.
 
    ```HTTP
    GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
@@ -189,8 +189,8 @@ De voorbeelden in dit artikel gebruiken implementaties van resourcegroepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u wilt terugdraaien naar een geslaagde implementatie wanneer er een fout optreedt, raadpleegt u [Rollback-on error naar succesvolle implementatie](rollback-on-error.md).
-- Zie [Azure Resource Manager-implementatiemodi](deployment-modes.md)als u wilt opgeven hoe u resources in de resourcegroep verwerken, maar niet in de sjabloon bent gedefinieerd.
-- Zie [Asynchrone Azure-bewerkingen bijhouden](../management/async-operations.md)voor meer informatie over het afhandelen van asynchrone REST-bewerkingen.
-- Zie [De structuur en syntaxis van ARM-sjablonen begrijpen](template-syntax.md)voor meer informatie over sjablonen.
+- Als u wilt terugkeren naar een geslaagde implementatie wanneer u een fout krijgt, raadpleegt u [herstellen bij fout naar geslaagde implementatie](rollback-on-error.md).
+- Zie [Azure Resource Manager implementatie modi](deployment-modes.md)om op te geven hoe u resources wilt afhandelen die in de resource groep aanwezig zijn, maar die niet zijn gedefinieerd in de sjabloon.
+- Zie [asynchrone Azure-bewerkingen volgen](../management/async-operations.md)voor meer informatie over het verwerken van asynchrone rest-bewerkingen.
+- Zie [inzicht krijgen in de structuur en syntaxis van arm-sjablonen](template-syntax.md)voor meer informatie over sjablonen.
 

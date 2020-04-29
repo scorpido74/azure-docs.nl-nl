@@ -1,6 +1,6 @@
 ---
-title: Foutfoutmodus gegevensstroom toewijzen
-description: Een interactieve foutopsporingssessie starten bij het bouwen van gegevensstromen
+title: Fout opsporings modus gegevens stroom toewijzen
+description: Een interactieve sessie voor fout opsporing starten bij het bouwen van gegevens stromen
 ms.author: makromer
 author: kromerm
 ms.reviewer: douglasl
@@ -9,85 +9,85 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/06/2019
 ms.openlocfilehash: 4a763a3bb4d46ba03808423d4d1283381c1174a3
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605399"
 ---
-# <a name="mapping-data-flow-debug-mode"></a>Foutfoutmodus gegevensstroom toewijzen
+# <a name="mapping-data-flow-debug-mode"></a>Fout opsporings modus gegevens stroom toewijzen
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 ## <a name="overview"></a>Overzicht
 
-Met de foutopsporingsmodus van Azure Data Factory u de gegevensvorm interactief bekijken terwijl u uw gegevensstromen bouwt en debugt. De foutopsporingssessie kan zowel worden gebruikt in dataflow-ontwerpsessies als tijdens de uitvoering van gegevensstromen voor het debuggen van pijplijnen. Als u de foutopsporingsmodus wilt inschakelen, gebruikt u de knop Foutopsporing gegevensstroom boven aan het ontwerpoppervlak.
+Met de modus fout opsporing van gegevens stroom van Azure Data Factory-toewijzing kunt u de transformatie van de gegevensshape interactief bekijken terwijl u uw gegevens stromen bouwt en oplost. De foutopsporingssessie kan worden gebruikt in combi natie met data flow-ontwerp sessies en tijdens het opsporen van fouten in de pipeline voor het uitvoeren van gegevens stromen. Als u de foutopsporingsmodus wilt inschakelen, gebruikt u de knop ' fout opsporing voor gegevens stromen ' boven aan het ontwerp oppervlak.
 
-![Schuifregelaar Foutopsporing](media/data-flow/debugbutton.png "Schuifregelaar Foutopsporing")
+![Schuif regelaar voor fout opsporing](media/data-flow/debugbutton.png "Schuif regelaar voor fout opsporing")
 
-Zodra u de schuifregelaar inschakelt, wordt u gevraagd te selecteren welke integratieruntime-configuratie u wilt gebruiken. Als AutoResolveIntegrationRuntime wordt gekozen, wordt een cluster met acht kernen van algemene rekenkracht met een 60-minuten tijd om te leven gesponnen. Zie [Prestaties van de gegevensstroom](concepts-data-flow-performance.md#increasing-compute-size-in-azure-integration-runtime)voor meer informatie over de uitvoeringstijden van gegevensstromenintegratie .
+Zodra u de schuif regelaar hebt ingeschakeld, wordt u gevraagd om te selecteren welke configuratie voor de integratie-runtime u wilt gebruiken. Als AutoResolveIntegrationRuntime is gekozen, wordt een cluster met acht kernen van algemene berekeningen met een tijd van 60 minuten voor Live. Zie [prestaties van gegevens stroom](concepts-data-flow-performance.md#increasing-compute-size-in-azure-integration-runtime)voor meer informatie over data flow Integration-Runtimes.
 
-![IR-selectie debuggen](media/data-flow/debugbutton2.png "IR-selectie debuggen")
+![Fout opsporing IR-selectie](media/data-flow/debugbutton2.png "Fout opsporing IR-selectie")
 
-Wanneer de foutopsporingsmodus is ingeschakeld, bouwt u interactief uw gegevensstroom samen met een actief Spark-cluster. De sessie wordt gesloten zodra u foutopsporing uitschakelt in Azure Data Factory. U moet op de hoogte zijn van de uurkosten die Azure Databricks in rekening brengt tijdens de tijd dat u de foutopsporingssessie hebt ingeschakeld.
+Wanneer de foutopsporingsmodus is ingeschakeld, bouwt u interactief uw gegevens stroom met een actief Spark-cluster. De sessie wordt gesloten zodra u debug uitschakelt in Azure Data Factory. U moet rekening houden met de kosten per uur die zijn gemaakt door Azure Databricks gedurende de periode dat de foutopsporingssessie is ingeschakeld.
 
-In de meeste gevallen is het een goede gewoonte om uw gegevensstromen in de foutopsporingsmodus te bouwen, zodat u uw bedrijfslogica valideren en uw gegevenstransformaties bekijken voordat u uw werk publiceert in Azure Data Factory. Gebruik de knop Foutopsporing in het pijplijnpaneel om uw gegevensstroom in een pijplijn te testen.
+In de meeste gevallen is het een goed idee om uw gegevens stromen te bouwen in de foutopsporingsmodus, zodat u uw bedrijfs logica kunt valideren en uw gegevens transformaties weer geven voordat u uw werk in Azure Data Factory publiceert. Gebruik de knop ' fout opsporing ' in het deel venster pijplijn om uw gegevens stroom in een pijp lijn te testen.
 
 ## <a name="cluster-status"></a>De clusterstatus
 
-De clusterstatusindicator boven aan het ontwerpoppervlak wordt groen wanneer het cluster klaar is voor foutopsporing. Als uw cluster al warm is, verschijnt de groene indicator vrijwel direct. Als uw cluster nog niet actief was toen u de foutopsporingsmodus invoert, moet u 5-7 minuten wachten voordat het cluster is opgedraaid. De indicator zal draaien tot zijn klaar.
+De cluster status indicator boven aan het ontwerp oppervlak wordt groen wanneer het cluster gereed is voor fout opsporing. Als uw cluster al warm is, wordt de groene indicator bijna onmiddellijk weer gegeven. Als uw cluster niet al actief is op het moment dat u de foutopsporingsmodus hebt opgegeven, moet u 5-7 minuten wachten totdat het cluster naar boven wordt gebrand. De indicator wordt gedraaid tot aan de voor bereiding.
 
-Wanneer u klaar bent met uw foutopsporing, schakelt u de foutopsporingsoptie uit, zodat uw Azure Databricks-cluster kan worden beëindigd en u niet langer wordt gefactureerd voor foutopsporingsactiviteiten.
+Wanneer u klaar bent met de fout opsporing, schakelt u de schakel optie voor fout opsporing uit zodat uw Azure Databricks-cluster kan worden beëindigd en worden er geen kosten in rekening gebracht voor debug-activiteiten.
 
-## <a name="debug-settings"></a>Foutopsporingsinstellingen
+## <a name="debug-settings"></a>Instellingen voor fout opsporing
 
-Foutopsporingsinstellingen kunnen worden bewerkt door op Foutopsporinginstellingen te klikken op de werkbalk Gegevensstroomcanvas. U hier de rijlimiet of bestandsbron selecteren die u voor elk van uw brontransformaties wilt gebruiken. De rijlimieten in deze instelling zijn alleen voor de huidige foutopsporingssessie. U ook de gekoppelde service met tijdelijke bestanden selecteren die moet worden gebruikt voor een SQL DW-bron. 
+Instellingen voor fout opsporing kunnen worden bewerkt door te klikken op instellingen voor fout opsporing op de werk balk gegevensstroom canvas. U kunt de rijlimiet of de bestands bron selecteren die u voor elk van uw bron transformaties wilt gebruiken. De limieten voor rijen in deze instelling gelden alleen voor de huidige foutopsporingssessie. U kunt ook de gekoppelde staging-service selecteren die moet worden gebruikt voor een SQL DW-bron. 
 
-![Foutopsporingsinstellingen](media/data-flow/debug-settings.png "Foutopsporingsinstellingen")
+![Instellingen voor fout opsporing](media/data-flow/debug-settings.png "Instellingen voor fout opsporing")
 
-Als u parameters in uw gegevensstroom of een van de gegevenssets waarnaar wordt verwezen, u opgeven welke waarden u moet gebruiken tijdens het foutopsporing door het tabblad **Parameters** te selecteren.
+Als u para meters hebt in uw gegevens stroom of een van de data sets waarnaar wordt verwezen, kunt u opgeven welke waarden moeten worden gebruikt tijdens de fout opsporing door het tabblad **para meters** te selecteren.
 
-![Parameters voor foutopsporingsinstellingen](media/data-flow/debug-settings2.png "Parameters voor foutopsporingsinstellingen")
+![Para meters voor fout opsporing](media/data-flow/debug-settings2.png "Para meters voor fout opsporing")
 
 ## <a name="data-preview"></a>Voorbeeld van gegevens
 
-Als foutopsporing is ingeschakeld, wordt het tabblad Gegevensvoorbeeld oplicht op het onderste paneel. Zonder de foutopsporingsmodus wordt u alleen de huidige metagegevens in en uit elk van uw transformaties weergegeven op het tabblad Inspect. In het voorbeeld van gegevens wordt alleen het aantal rijen opgevraagd dat u als limiet hebt ingesteld in de foutopsporingsinstellingen. Klik **op Vernieuwen** om het voorbeeld van gegevens op te halen.
+Met fout opsporing in wordt het tabblad voor beeld van gegevens lichter op het onderste paneel. Zonder de foutopsporingsmodus in, worden in de gegevens stroom alleen de huidige meta gegevens in en uit elk van de trans formaties op het tabblad inspectie weer gegeven. In de preview van de gegevens wordt alleen het aantal rijen weer gegeven dat u hebt ingesteld als uw limiet voor de instellingen voor fout opsporing. Klik op **vernieuwen** om de voorbeeld gegevens op te halen.
 
-![Voorbeeld van gegevens](media/data-flow/datapreview.png "Voorbeeld van gegevens")
+![Voor beeld van gegevens](media/data-flow/datapreview.png "Voorbeeld van gegevens")
 
 > [!NOTE]
-> Bestandsbronnen beperken alleen de rijen die u ziet, niet de rijen die worden gelezen. Voor zeer grote gegevenssets is het raadzaam om een klein deel van dat bestand te nemen en het te gebruiken voor het testen. U een tijdelijk bestand selecteren in Foutopsporingsinstellingen voor elke bron die een bestandsgegevenssettype is.
+> Bestands bronnen beperken alleen de rijen die u ziet, niet de rijen die worden gelezen. Voor zeer grote gegevens sets wordt u aangeraden een klein deel van het bestand te maken en dit te gebruiken voor uw test doeleinden. U kunt een tijdelijk bestand selecteren in instellingen voor fout opsporing voor elke bron die een bestands gegevensset type is.
 
-Wanneer u de foutopsporingsmodus uitvoert in gegevensstroom, worden uw gegevens niet naar de transformatie Van de gootsteen geschreven. Een Foutopsporingssessie is bedoeld om te dienen als testharnas voor uw transformaties. Sinks zijn niet vereist tijdens debuggen en worden genegeerd in uw gegevensstroom. Als u wilt testen of de gegevens in uw gootsteen zijn, voert u de gegevensstroom uit een Azure Data Factory Pipeline uit en gebruikt u de uitvoering van foutopsporing vanuit een pijplijn.
+Wanneer de foutopsporingsmodus in de gegevens stroom wordt uitgevoerd, worden uw gegevens niet naar de Sink-trans formatie geschreven. Een foutopsporingssessie is bedoeld om te fungeren als een test harnas voor uw trans formaties. Sinks zijn niet vereist tijdens fout opsporing en worden genegeerd in uw gegevens stroom. Als u het schrijven van de gegevens in uw Sink wilt testen, voert u de gegevens stroom uit vanuit een Azure Data Factory pijp lijn en gebruikt u de uitvoering van de fout opsporing vanuit een pijp lijn.
 
-### <a name="testing-join-conditions"></a>Testen join voorwaarden
+### <a name="testing-join-conditions"></a>Voor waarden voor samen voegen testen
 
-Wanneer de transformaties joins, Exists of Lookup-transformaties van eenheden worden getest, moet u ervoor zorgen dat u een kleine set bekende gegevens voor uw test gebruikt. U de optie Foutopsporingsinstellingen hierboven gebruiken om een tijdelijk bestand in te stellen dat u wilt gebruiken voor het testen. Dit is nodig omdat u bij het beperken of bemonsteren van rijen uit een grote gegevensset niet voorspellen welke rijen en welke toetsen in de stroom worden gelezen om te testen. Het resultaat is niet-deterministisch, wat betekent dat uw join voorwaarden kunnen mislukken.
+Wanneer eenheids testen samen voegen, bestaan of trans formaties opzoeken, moet u ervoor zorgen dat u een kleine set bekende gegevens gebruikt voor uw test. U kunt de optie instellingen voor fout opsporing hierboven gebruiken om een tijdelijk bestand in te stellen dat moet worden gebruikt voor het testen. Dit is nodig omdat bij het beperken of bemonsteren van rijen uit een grote gegevensset u niet kunt voors pellen welke rijen en welke sleutels in de stroom worden gelezen om te testen. Het resultaat is niet-deterministisch, wat betekent dat uw samenvoegings voorwaarden kunnen mislukken.
 
 ### <a name="quick-actions"></a>Snelle acties
 
-Zodra u het voorbeeld van gegevens ziet, u een snelle transformatie genereren naar tekstcast, verwijderen of een wijziging uitvoeren in een kolom. Klik op de kolomkop en selecteer een van de opties op de werkbalk van de gegevensvoorbeeld.
+Zodra u het voor beeld van de gegevens ziet, kunt u een snelle trans formatie genereren om een kolom te typecast, te verwijderen of te wijzigen. Klik op de kolomkop en selecteer een van de opties op de werk balk data preview.
 
 ![Snelle acties](media/data-flow/quick-actions1.png "Snelle acties")
 
-Zodra u een wijziging selecteert, wordt de gegevensvoorbeeld onmiddellijk vernieuwd. Klik **op Bevestigen** in de rechterbovenhoek om een nieuwe transformatie te genereren.
+Wanneer u een wijziging hebt geselecteerd, wordt de preview van de gegevens direct vernieuwd. Klik op **bevestigen** in de rechter bovenhoek om een nieuwe trans formatie te genereren.
 
 ![Snelle acties](media/data-flow/quick-actions2.png "Snelle acties")
 
-**Typecast** en **Wijzigen** genereren een afgeleide kolomtransformatie en **Verwijderen** genereert een Select-transformatie.
+Met **typecast** en **Modify** wordt een afgeleide kolom transformatie **gegenereerd en wordt** er een selectie transformatie gegenereerd.
 
 ![Snelle acties](media/data-flow/quick-actions3.png "Snelle acties")
 
 > [!NOTE]
-> Als u uw gegevensstroom bewerkt, moet u het voorbeeld van gegevens opnieuw ophalen voordat u een snelle transformatie toevoegt.
+> Als u de gegevens stroom bewerkt, moet u de voor beeld van de gegevens opnieuw ophalen voordat u een snelle trans formatie toevoegt.
 
-### <a name="data-profiling"></a>Gegevensprofilering
+### <a name="data-profiling"></a>Gegevens profilering
 
-Als u een kolom selecteert op het tabblad Gegevensvoorbeeld en op **Statistieken** klikt op de werkbalk gegevensvoorbeeld, verschijnt een grafiek rechts van uw gegevensraster met gedetailleerde statistieken over elk veld. Azure Data Factory zal een bepaling maken op basis van de gegevensbemonstering van welk type grafiek moet worden weergegeven. Hoogdinaliteitsvelden worden standaard weergegeven in NULL/NIET NULL-diagrammen, terwijl categorische en numerieke gegevens met een lage kardinaliteit staafdiagrammen weergeven met de frequentie van de gegevenswaarde. U ziet ook de maximale/lenlengte van tekenreeksvelden, min/max-waarden in numerieke velden, standaarddev, percentiels, tellingen en gemiddelde.
+Als u een kolom selecteert op het tabblad voor beeld van gegevens en op **Statistieken** klikt in de werk balk voor data-preview, wordt in de rechter kant van het gegevens raster een grafiek weer gegeven met gedetailleerde statistieken over elk veld. Azure Data Factory maakt een bepaling op basis van de gegevens bemonstering van welk type grafiek moet worden weer gegeven. Velden met hoge kardinaliteit worden standaard ingesteld op NULL/niet-NULL-grafieken terwijl categorische en numerieke gegevens met lage kardinaliteit balk diagrammen weer geven met een frequentie van gegevens waarden. U ziet ook de Max/len lengte van teken reeks velden, min/max-waarden in numerieke velden, standaard dev, percentielen, tellingen en gemiddelde.
 
-![Kolomstatistieken](media/data-flow/stats.png "Kolomstatistieken")
+![Kolom statistieken](media/data-flow/stats.png "Kolom statistieken")
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zodra u klaar bent met het bouwen en debuggen van uw gegevensstroom, [voert u deze uit vanuit een pijplijn.](control-flow-execute-data-flow-activity.md)
-* Wanneer u uw pijplijn test met een gegevensstroom, gebruikt u de [uitvoeringsoptie Foutopsporingsprogramma pijplijn.](iterative-development-debugging.md)
+* Wanneer u klaar bent met het maken en opsporen van fouten in uw gegevens stroom, [voert u deze uit vanuit een pijp lijn.](control-flow-execute-data-flow-activity.md)
+* Wanneer u uw pijp lijn test met een gegevens stroom, gebruikt u de optie voor het uitvoeren van de pipeline- [fout opsporing.](iterative-development-debugging.md)

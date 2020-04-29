@@ -4,10 +4,10 @@ description: Hierin worden de workloads beschreven die met behulp van herstel na
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 2b901425a0020c0ccc7b834ee36d965910028018
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062843"
 ---
 # <a name="about-disaster-recovery-for-on-premises-apps"></a>Over herstel na noodgevallen voor on-premises apps

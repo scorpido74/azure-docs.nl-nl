@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: Computer Vision-clientbibliotheek voor Java'
-description: Ga in deze quickstart aan de slag met de Computer Vision-clientbibliotheek voor Java.
+title: 'Snelstartgids: Computer Vision-client bibliotheek voor Java'
+description: In deze Snelstartgids gaat u aan de slag met de Computer Vision-client bibliotheek voor Java.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,42 +10,42 @@ ms.topic: include
 ms.date: 12/19/2019
 ms.author: pafarley
 ms.openlocfilehash: dbe986145a223f1958f1945abfa189de90952f4a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80272639"
 ---
 <a name="HOLTop"></a>
 
-[Voorbeeld van referentiedocumentatie](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [Artefact (Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [Samples](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Reference documentation](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | Voor[beelden](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) van referentie documentatie[artefact (Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement - [Maak er gratis een](https://azure.microsoft.com/free/)
+* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 * De huidige versie van de [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* Het [gradle-buildgereedschap](https://gradle.org/install/)of een andere afhankelijkheidsmanager.
+* Het [hulp programma Gradle build](https://gradle.org/install/)of een andere afhankelijkheids Manager.
 
 ## <a name="setting-up"></a>Instellen
 
-### <a name="create-a-computer-vision-azure-resource"></a>Een Azure-bron voor Computer Vision maken
+### <a name="create-a-computer-vision-azure-resource"></a>Een Computer Vision Azure-resource maken
 
-Azure Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een bron voor Computer Vision met de [Azure-portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook het volgende doen:
+Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor Computer Vision met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook het volgende doen:
 
-* Ontvang een [proefsleutel](https://azure.microsoft.com/try/cognitive-services/#decision) die zeven dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website.](https://azure.microsoft.com/try/cognitive-services/my-apis/)  
-* Uw bron weergeven op de [Azure-portal.](https://portal.azure.com/)
+* Ontvang een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/#decision) die zeven dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
+* Bekijk uw resource op het [Azure Portal](https://portal.azure.com/).
 
-Maak vervolgens [omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de tekenreeks sleutel- `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`serviceeindpunt, benoemd en , respectievelijk.
+Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service- `COMPUTER_VISION_SUBSCRIPTION_KEY` eindpunt `COMPUTER_VISION_ENDPOINT`teken reeks, respectievelijk met de naam en.
 
 ### <a name="create-a-new-gradle-project"></a>Een nieuw Gradle-project maken
 
-Maak in een consolevenster (zoals cmd, PowerShell of Bash) een nieuwe map voor uw app en navigeer ernaar. 
+Maak in een console venster (zoals cmd, Power shell of bash) een nieuwe map voor uw app en navigeer ernaar. 
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Voer `gradle init` de opdracht uit in uw werkmap. Met deze opdracht worden essentiële buildbestanden voor Gradle gemaakt, inclusief *build.gradle.kts,* die tijdens runtime wordt gebruikt om uw toepassing te maken en te configureren.
+Voer de `gradle init` opdracht uit vanuit de werkmap. Met deze opdracht worden essentiële build-bestanden gemaakt voor Gradle, waaronder *Build. Gradle. KTS*, dat tijdens runtime wordt gebruikt om uw toepassing te maken en te configureren.
 
 ```console
 gradle init --type basic
@@ -53,7 +53,7 @@ gradle init --type basic
 
 Wanneer u wordt gevraagd om een **DSL** te kiezen, selecteert u **Kotlin**.
 
-Zoek *build.gradle.kts* en open het met uw favoriete IDE of teksteditor. Kopieer vervolgens in de volgende buildconfiguratie. Deze configuratie definieert het project als een Java-toepassing waarvan het ingangspunt de klasse **ComputerVisionQuickstarts**is. Het importeert de Computer Vision bibliotheek.
+Zoek *Build. gradle. KTS* en open het met uw favoriete IDE-of tekst editor. Kopieer vervolgens de volgende Build-configuratie. Deze configuratie definieert het project als een Java-toepassing waarvan het ingangs punt de klasse **ComputerVisionQuickstarts**is. De Computer Vision-bibliotheek wordt geïmporteerd.
 
 ```kotlin
 plugins {
@@ -68,23 +68,23 @@ repositories {
 }
 ```
 
-Voer in uw werkmap de volgende opdracht uit om een projectbronmap te maken:
+Voer vanuit uw werkmap de volgende opdracht uit om een projectmap te maken:
 
 ```console
 mkdir -p src/main/java
 ```
 
-Navigeer naar de nieuwe map en maak een bestand met de naam *ComputerVisionQuickstarts.java*. Open het in uw voorkeurseditor of `import` IDE en voeg de volgende instructies toe:
+Ga naar de nieuwe map en maak een bestand met de naam *ComputerVisionQuickstarts. java*. Open het bestand in uw voorkeurs editor of IDE en voeg de `import` volgende-instructies toe:
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imports)]
 
-Voeg vervolgens een klassendefinitie toe voor **ComputerVisionQuickstarts**.
+Voeg vervolgens een klassen definitie toe voor **ComputerVisionQuickstarts**.
 
-### <a name="install-the-client-library"></a>De clientbibliotheek installeren
+### <a name="install-the-client-library"></a>De client bibliotheek installeren
 
-Deze quickstart maakt gebruik van de gradle afhankelijkheidsmanager. U vindt de clientbibliotheek en informatie voor andere afhankelijkheidsmanagers op de [Maven Central Repository.](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/)
+Deze Snelstartgids maakt gebruik van de Gradle dependency Manager. U vindt de client bibliotheek en informatie voor andere afhankelijkheids managers in de [centrale maven-opslag plaats](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/).
 
-Neem in het *build.gradle.kts-bestand* van uw project de computervision-clientbibliotheek op als afhankelijkheid.
+Neem in het bestand *Build. gradle. KTS* van het project de computer vision-client bibliotheek op als een afhankelijkheid.
 
 ```kotlin
 dependencies {
@@ -92,19 +92,19 @@ dependencies {
 }
 ```
 
-## <a name="object-model"></a>Objectmodel
+## <a name="object-model"></a>Object model
 
-De volgende klassen en interfaces behandelen enkele van de belangrijkste functies van de Computer Vision Java SDK.
+De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Computer Vision Java SDK.
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
-| [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | Deze klasse is nodig voor alle Computer Vision-functionaliteit. U wilt deze met uw abonnementsgegevens en u gebruikt deze om exemplaren van andere klassen te produceren.|
-|[ComputerVisie](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| Deze klasse is afkomstig van het clientobject en verwerkt rechtstreeks alle afbeeldingsbewerkingen, zoals beeldanalyse, tekstdetectie en miniatuurgeneratie.|
-|[VisualFeatureTypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable)| Dit enum definieert de verschillende soorten beeldanalyse die kunnen worden uitgevoerd in een standaard analysebewerking. U geeft een set VisualFeatureTypes-waarden op, afhankelijk van uw behoeften. |
+| [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | Deze klasse is nodig voor alle Computer Vision functionaliteit. U maakt de app met uw abonnements gegevens en gebruikt deze om instanties van andere klassen te maken.|
+|[ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| Deze klasse is afkomstig van het client object en verwerkt rechtstreeks alle afbeeldings bewerkingen, zoals het analyseren van afbeeldingen, tekst detectie en het genereren van miniaturen.|
+|[VisualFeatureTypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable)| Deze opsomming definieert de verschillende typen afbeeldings analyse die kunnen worden uitgevoerd in een standaard analyse bewerking. U geeft een set VisualFeatureTypes-waarden op, afhankelijk van uw behoeften. |
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
-Deze codefragmenten laten zien hoe u de volgende taken uitvoeren met de Computer Vision-clientbibliotheek voor Java:
+Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Computer Vision-client bibliotheek voor Java:
 
 * [De client verifiëren](#authenticate-the-client)
 * [Een afbeelding analyseren](#analyze-an-image)
@@ -113,131 +113,131 @@ Deze codefragmenten laten zien hoe u de volgende taken uitvoeren met de Computer
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
 > [!NOTE]
-> Met deze quickstart wordt ervan uitgegaan dat u een `COMPUTER_VISION_SUBSCRIPTION_KEY` [omgevingsvariabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) hebt gemaakt voor uw Computer Vision-toets met de naam .
+> In deze Quick Start wordt ervan uitgegaan dat u [een omgevings variabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) hebt gemaakt `COMPUTER_VISION_SUBSCRIPTION_KEY`voor uw computer vision sleutel met de naam.
 
-Met de volgende `main` code wordt een methode aan uw klasse toegevoegd en worden variabelen gemaakt voor het Azure-eindpunt en de sleutel van uw bron. U moet uw eigen eindpunttekenreeks invoeren, die u vinden door het gedeelte **Overzicht** van de Azure-portal te controleren. 
+Met de volgende code wordt `main` een methode toegevoegd aan uw klasse en worden er variabelen gemaakt voor het Azure-eind punt en de sleutel van uw resource. U moet uw eigen eindpunt teken reeks invoeren, die u kunt vinden door de **overzichts** sectie van de Azure portal te controleren. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_mainvars)]
 
-Voeg vervolgens de volgende code toe om een [ComputerVisionClient-object](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) te maken en geeft deze door naar andere methoden, die u later zult definiëren.
+Voeg vervolgens de volgende code toe om een [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) -object te maken en door te geven aan een andere methode (n), die u later wilt definiëren.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_client)]
 
 > [!NOTE]
-> Als u de omgevingsvariabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell sluiten en opnieuw openen om toegang te krijgen tot de variabele.
+> Als u de omgevings variabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell waarmee deze wordt uitgevoerd, sluiten en opnieuw openen om toegang te krijgen tot de variabele.
 
 ## <a name="analyze-an-image"></a>Een afbeelding analyseren
 
-De volgende code definieert een methode, `AnalyzeLocalImage`die het clientobject gebruikt om een lokale afbeelding te analyseren en de resultaten af te drukken. De methode retourneert een tekstbeschrijving, categorisering, lijst met tags, gedetecteerde gezichten, vlaggen met inhoud voor volwassenen, hoofdkleuren en afbeeldingstype.
+Met de volgende code wordt een methode `AnalyzeLocalImage`gedefinieerd, die gebruikmaakt van het-client object voor het analyseren van een lokale installatie kopie en het afdrukken van de resultaten. De methode retourneert een beschrijving van de tekst, categorisatie, lijst met tags, gedetecteerde gezichten, inhouds vlaggen voor volwassenen, hoofd kleuren en afbeeldings type.
 
-### <a name="set-up-test-image"></a>Testafbeelding instellen
+### <a name="set-up-test-image"></a>Test installatie kopie instellen
 
-Maak eerst een **resources/map** in de **src/main/map** van uw project en voeg een afbeelding toe die u wilt analyseren. Voeg vervolgens de volgende methodedefinitie toe aan de klasse **ComputerVisionQuickstarts.** Wijzig indien nodig de `pathToLocalImage` waarde van het bestand dat overeenkomt met uw afbeeldingsbestand. 
+Maak eerst een **resources/** map in de map **src/main/** van het project en voeg een installatie kopie toe die u wilt analyseren. Voeg vervolgens de volgende methode definitie toe aan uw **ComputerVisionQuickstarts** -klasse. Wijzig, indien nodig, de waarde van `pathToLocalImage` de zodat deze overeenkomt met uw afbeeldings bestand. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_refs)]
 
 > [!NOTE]
-> U ook een externe afbeelding analyseren met behulp van de URL. Zie de voorbeeldcode op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) voor scenario's met externe afbeeldingen.
+> U kunt ook een externe installatie kopie analyseren met behulp van de URL. Zie de voorbeeld code op [github](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) voor scenario's met betrekking tot externe installatie kopieën.
 
 ### <a name="specify-visual-features"></a>Visuele functies opgeven
 
-Geef vervolgens op welke visuele functies u wilt extraheren in uw analyse. Zie het [VisualFeatureTypes-enum](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable) voor een volledige lijst.
+Geef vervolgens op welke visuele functies u wilt uitpakken in de analyse. Zie de [VisualFeatureTypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable) -inventarisatie voor een volledige lijst.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_features)]
 
 ### <a name="analyze"></a>Analyseren
-Met deze methode worden gedetailleerde resultaten naar de console afgedrukt voor elk bereik van beeldanalyse. We raden je aan om deze methode aan te roepen in een Try/Catch-blok. De **methode analyzeImageInStream** retourneert een **imageanalysis-object** dat alle geëxtraheerde informatie bevat.
+Met deze methode worden gedetailleerde resultaten voor elke omvang van de afbeeldings analyse afgedrukt op de console. U wordt aangeraden deze methode aanroep rond te zetten in een try/catch-blok. De methode **analyzeImageInStream** retourneert een **ImageAnalysis** -object dat alle geëxtraheerde informatie bevat.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_analyze)]
 
-In de volgende secties wordt uitgelegd hoe u deze informatie in detail ontzien.
+In de volgende secties ziet u hoe u deze gegevens in detail kunt parseren.
 
-### <a name="get-image-description"></a>Afbeeldingsbeschrijving downloaden
+### <a name="get-image-description"></a>Beschrijving van afbeelding ophalen
 
-De volgende code krijgt de lijst met gegenereerde bijschriften voor de afbeelding. Zie [Afbeeldingen beschrijven voor](../../concept-describing-images.md)meer informatie .
+Met de volgende code wordt de lijst met gegenereerde bijschriften voor de afbeelding opgehaald. Zie [afbeeldingen beschrijven](../../concept-describing-images.md)voor meer informatie.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_captions)]
 
-### <a name="get-image-category"></a>Afbeeldingscategorie oppakken
+### <a name="get-image-category"></a>Categorie van installatie kopie ophalen
 
-De volgende code krijgt de gedetecteerde categorie van de afbeelding. Zie [Afbeeldingen categoriseren voor](../../concept-categorizing-images.md)meer informatie .
+Met de volgende code wordt de gedetecteerde categorie van de afbeelding opgehaald. Zie [afbeeldingen categoriseren](../../concept-categorizing-images.md)voor meer informatie.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_category)]
 
-### <a name="get-image-tags"></a>Afbeeldingstags opmaken
+### <a name="get-image-tags"></a>Afbeeldings Tags ophalen
 
-De volgende code krijgt de set gedetecteerde tags in de afbeelding. Zie [Inhoudstags voor](../../concept-tagging-images.md)meer informatie .
+Met de volgende code wordt de set gedetecteerde labels in de afbeelding opgehaald. Zie [inhouds Tags](../../concept-tagging-images.md)voor meer informatie.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_tags)]
 
 ### <a name="detect-faces"></a>Gezichten detecteren
 
-De volgende code retourneert de gedetecteerde gezichten in de afbeelding met hun rechthoekcoördinaten en selecteert gezichtskenmerken. Zie [Gezichtsherkenning](../../concept-detecting-faces.md)voor meer informatie.
+De volgende code retourneert de gedetecteerde gezichten in de afbeelding met hun rechthoek coördinaten en selecteert face-kenmerken. Zie [gezichts detectie](../../concept-detecting-faces.md)voor meer informatie.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_faces)]
 
-### <a name="detect-adult-racy-or-gory-content"></a>Detecteer inhoud voor volwassenen, racy of bloederige
+### <a name="detect-adult-racy-or-gory-content"></a>Inhoud voor volwassenen, ongepaste of benchmarks detecteren
 
-Met de volgende code wordt de gedetecteerde aanwezigheid van inhoud voor volwassenen in de afbeelding afgedrukt. Voor meer informatie, zie [Adult, racy, bloederige inhoud](../../concept-detecting-adult-content.md).
+Met de volgende code wordt de gedetecteerde aanwezigheid van inhoud voor volwassenen afgedrukt in de installatie kopie. Zie voor meer informatie [volwassene, ongepaste, benchmarks-inhoud](../../concept-detecting-adult-content.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_adult)]
 
-### <a name="get-image-color-scheme"></a>Afbeeldingskleurenschema krijgen
+### <a name="get-image-color-scheme"></a>Kleuren schema afbeelding ophalen
 
-In de volgende code worden de gedetecteerde kleurkenmerken in de afbeelding afgedrukt, zoals de dominante kleuren en accentkleur. Zie [Kleurenschema's voor](../../concept-detecting-color-schemes.md)meer informatie .
+Met de volgende code worden de gedetecteerde kleur kenmerken in de afbeelding afgedrukt, zoals de dominante kleuren en accent kleur. Zie [kleuren schema's](../../concept-detecting-color-schemes.md)voor meer informatie.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_colors)]
 
-### <a name="get-domain-specific-content"></a>Domeinspecifieke inhoud opmaken
+### <a name="get-domain-specific-content"></a>Domein-specifieke inhoud ophalen
 
-Computer Vision kan gebruik maken van gespecialiseerde model om verdere analyse te doen op beelden. Zie [Domeinspecifieke inhoud](../../concept-detecting-domain-content.md)voor meer informatie. 
+Computer Vision kunt een speciaal model gebruiken om verdere analyse van installatie kopieën uit te voeren. Zie [Domain-specifieke inhoud](../../concept-detecting-domain-content.md)voor meer informatie. 
 
-De volgende code ontleedt gegevens over gedetecteerde beroemdheden in de afbeelding.
+Met de volgende code worden gegevens over gedetecteerde beroemdheden in de installatie kopie geparseerd.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_celebrities)]
 
-De volgende code onteert gegevens over gedetecteerde oriëntatiepunten in de afbeelding.
+Met de volgende code worden gegevens over gedetecteerde bezienswaardigheden in de installatie kopie geparseerd.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_landmarks)]
 
-### <a name="get-the-image-type"></a>Het afbeeldingstype weergeven
+### <a name="get-the-image-type"></a>Het afbeeldings type ophalen
 
-In de volgende code wordt&mdash;informatie over het type afbeelding afgedrukt, ongeacht of het om illustraties of lijntekening gaat.
+Met de volgende code wordt informatie over het type afbeelding&mdash;afgedrukt, ongeacht of het een illustratie of lijn tekening is.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imagetype)]
 
 ## <a name="read-printed-and-handwritten-text"></a>Gedrukte en handgeschreven tekst lezen
 
-Computer Vision kan zichtbare tekst in een afbeelding lezen en converteren naar een tekenstroom.
+Computer Vision kunt zicht bare tekst in een afbeelding lezen en deze converteren naar een teken stroom.
 
 > [!NOTE]
-> U ook tekst in een externe afbeelding lezen met behulp van de URL. Zie de voorbeeldcode op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) voor scenario's met externe afbeeldingen.
+> U kunt ook tekst in een externe afbeelding lezen met behulp van de URL. Zie de voorbeeld code op [github](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) voor scenario's met betrekking tot externe installatie kopieën.
 
-### <a name="call-the-recognize-api"></a>De API herkennen aanroepen
+### <a name="call-the-recognize-api"></a>De recognize API aanroepen
 
-Gebruik eerst de volgende code om de **methode recognizePrintedTextInStream** voor de gegeven afbeelding aan te roepen. Wanneer u deze code aan uw project toevoegt, `localTextImagePath` moet u de waarde van het pad naar uw lokale afbeelding vervangen. 
+Gebruik eerst de volgende code om de **recognizePrintedTextInStream** -methode voor de gegeven afbeelding aan te roepen. Wanneer u deze code aan uw project toevoegt, moet u de waarde van `localTextImagePath` met het pad naar uw lokale installatie kopie vervangen. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_call)]
 
-### <a name="print-recognize-results"></a>Resultaten van afdrukherkennen afdrukken
+### <a name="print-recognize-results"></a>Afdruk herkennings resultaten
 
-Het volgende codeblok verwerkt de geretourneerde tekst en onteinden deze om het eerste woord in elke regel uit te printen. U deze code gebruiken om snel inzicht te krijgen in de structuur van een **OcrResult-exemplaar.**
+Met het volgende code blok wordt de geretourneerde tekst verwerkt en geparseerd om het eerste woord van elke regel af te drukken. U kunt deze code gebruiken om snel inzicht te krijgen in de structuur van een **OcrResult** -exemplaar.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_print)]
 
-Sluit tot slot het try/catch-blok en de methodedefinitie af.
+Ten slotte sluit u het try/catch-blok en de definitie van de methode.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_catch)]
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-U de app bouwen met:
+U kunt de app bouwen met:
 
 ```console
 gradle build
 ```
 
-Voer de toepassing `gradle run` uit met de opdracht:
+Voer de toepassing uit met `gradle run` de opdracht:
 
 ```console
 gradle run
@@ -245,17 +245,17 @@ gradle run
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een abonnement voor Cognitive Services wilt opschonen en verwijderen, u de bron- of brongroep verwijderen. Als u de brongroep verwijdert, worden ook andere bronnen verwijderd die eraan zijn gekoppeld.
+Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart heb je geleerd hoe je de Computer Vision Java-bibliotheek gebruiken om basistaken uit te voeren. Bekijk vervolgens de referentiedocumentatie voor meer informatie over de bibliotheek.
+In deze Quick Start hebt u geleerd hoe u de Computer Vision Java-bibliotheek kunt gebruiken om basis taken uit te voeren. Bekijk vervolgens de referentie documentatie voor meer informatie over de-bibliotheek.
 
 > [!div class="nextstepaction"]
->[Computer Vision referentie (Java)](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)
+>[Computer Vision Referentie (Java)](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)
 
 * [Wat is Computer Vision?](../../Home.md)
-* De broncode voor dit voorbeeld is te vinden op [GitHub.](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java)
+* De bron code voor dit voor beeld is te vinden op [github](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java).

@@ -1,7 +1,7 @@
 ---
 title: Werkruimten beheren
 titleSuffix: ML Studio (classic) - Azure
-description: Beheer de toegang tot Azure Machine Learning Studio (klassieke) werkruimten en implementeer en beheer Machine Learning API-webservices
+description: Toegang tot Azure Machine Learning Studio (klassieke) werk ruimten beheren en Machine Learning API-webservices implementeren en beheren
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,44 +11,44 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
 ms.openlocfilehash: 68c9ca4c7b5f30d6f62d333014f4098fe7826c99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79217953"
 ---
-# <a name="manage-an-azure-machine-learning-studio-classic-workspace"></a>Een Azure Machine Learning Studio -werkruimte (klassieke) werkruimte beheren
+# <a name="manage-an-azure-machine-learning-studio-classic-workspace"></a>Een Azure Machine Learning Studio-werk ruimte (klassieke) beheren
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 > [!NOTE]
-> Zie [Een webservice beheren met de Azure Machine Learning Web Services-portal](manage-new-webservice.md)voor informatie over het beheren van webservices in de Portal Machine Learning Web Services.
+> Voor informatie over het beheren van webservices in de Machine Learning Web Services-portal, Zie [een webservice beheren met de Azure machine learning Web Services-portal](manage-new-webservice.md).
 > 
 > 
 
-U Machine Learning Studio (klassieke) werkruimten beheren in de Azure-portal.
+U kunt Machine Learning Studio (klassieke) werk ruimten in de Azure Portal beheren.
 
 
 
-## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
-Ga als lid van de studio (klassieke) werkruimte in de Azure-portal:
+Een studio-werk ruimte (klassieke) beheren in de Azure Portal:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met een Azure-abonnementsbeheerdersaccount.
-2. Typ in het zoekvak boven aan de pagina 'machine learning Studio (klassieke) werkruimten' en selecteer **vervolgens Machine Learning Studio (klassieke) werkruimten.**
-3. Klik op de werkruimte die u wilt beheren.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met behulp van een Azure-abonnement beheerders account.
+2. In het zoekvak boven aan de pagina voert u ' machine learning Studio (klassieke) werk ruimten ' in en selecteert u vervolgens **machine learning Studio (klassieke) werk ruimten**.
+3. Klik op de werk ruimte die u wilt beheren.
 
-Naast de standaard informatie en opties voor resourcemanagement u:
+Naast de standaard informatie en beschik bare opties voor resource management kunt u het volgende doen:
 
-- **Weergaveeigenschappen** : op deze pagina worden de werkruimte- en brongegevens weergegeven en u de abonnements- en brongroep wijzigen waarmee deze werkruimte is verbonden.
-- **Opslagsleutels opnieuw synchroniseren** - De werkruimte onderhoudt sleutels van het opslagaccount. Als het opslagaccount de sleutels wijzigt, u op **Toetsen opnieuw synchroniseren** klikken om de toetsen met de werkruimte te synchroniseren.
+- **Eigenschappen** weer geven: deze pagina bevat informatie over de werk ruimte en de resource, en u kunt het abonnement en de resource groep wijzigen waarmee deze werk ruimte is verbonden.
+- **Opslag sleutels** voor opnieuw synchroniseren: de werk ruimte behoudt de sleutels voor het opslag account. Als het opslag account sleutels wijzigt, kunt u op **Resync-sleutels** klikken om de sleutels te synchroniseren met de werk ruimte.
 
-Als u de webservices wilt beheren die zijn gekoppeld aan deze Studio-werkruimte (klassieke) werkruimte, gebruikt u de Portal Machine Learning Web Services. Zie [Een webservice beheren met de Azure Machine Learning Web Services-portal](manage-new-webservice.md) voor volledige informatie.
+Gebruik de Machine Learning Web Services-portal om de webservices te beheren die zijn gekoppeld aan deze studio-werk ruimte (klassieke). Zie [Manage a web service using the Azure machine learning Web Services portal](manage-new-webservice.md) (Engelstalig) voor uitgebreide informatie.
 
 > [!NOTE]
-> Als u Nieuwe webservices wilt implementeren of beheren, moet u een bijdrager of beheerder toegewezen krijgen aan het abonnement waarvoor de webservice is geïmplementeerd. Als u een andere gebruiker uitnodigt voor een werkruimte voor machine learning Studio (klassieke) werkruimte, moet u deze toewijzen aan een bijdrager of beheerder rol in het abonnement voordat deze webservices kunnen implementeren of beheren. 
+> Als u nieuwe webservices wilt implementeren of beheren, moet u een rol Inzender of beheerder toewijzen aan het abonnement waarop de webservice is geïmplementeerd. Als u een andere gebruiker uitnodigt voor een machine learning studio-werk ruimte, moet u deze toewijzen aan de rol Inzender of beheerder voor het abonnement voordat ze webservices kunnen implementeren of beheren. 
 > 
->Zie [Toegang beheren met RBAC en de Azure-portal](../../role-based-access-control/role-assignments-portal.md)voor meer informatie over het instellen van toegangsmachtigingen.
+>Zie [toegang beheren met RBAC en de Azure Portal](../../role-based-access-control/role-assignments-portal.md)voor meer informatie over het instellen van toegangs machtigingen.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [het implementeren van Machine Learning met Azure Resource Manager-sjablonen](deploy-with-resource-manager-template.md). 
+* Meer informatie over het [implementeren van machine learning met Azure Resource Manager-sjablonen](deploy-with-resource-manager-template.md). 

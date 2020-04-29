@@ -1,6 +1,6 @@
 ---
-title: Azure Marketplace IoT Edge-modules
-description: De IoT Edge-moduleaanbieding in de Azure Marketplace voor app- en service-uitgevers.
+title: IoT Edge modules voor Azure Marketplace
+description: De IoT Edge-module bieden in de Azure Marketplace voor app-en service-Publishers.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,82 +8,82 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
 ms.openlocfilehash: 762d9947046f159e992f09211bfcd76ff8d6712e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684343"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modules
 
-Het [Azure IoT Edge-platform](https://azure.microsoft.com/services/iot-edge/) wordt ondersteund door Azure Cloud.  Dit platform stelt gebruikers in staat om cloudworkloads te implementeren om direct op IoT-apparaten te worden uitgevoerd.  Een IoT Edge-module kan offline workloads uitvoeren en lokaal gegevensanalyses uitvoeren. Dit aanbiedingstype helpt bandbreedte te besparen, lokale en gevoelige gegevens te beveiligen en biedt een responstijd met een lage latentie.  U hebt nu de opties om te profiteren van deze vooraf gebouwde workloads. Tot nu toe waren slechts een handvol first-party oplossingen van Microsoft beschikbaar.  Je moest de tijd en middelen investeren in het bouwen van je eigen op maat gemaakte IoT-oplossingen.
+Het [Azure IOT Edge](https://azure.microsoft.com/services/iot-edge/) -platform wordt ondersteund door de Azure-Cloud.  Met dit platform kunnen gebruikers Cloud werkbelastingen implementeren die rechtstreeks op IoT-apparaten worden uitgevoerd.  Een IoT Edge module kan offline workloads uitvoeren en gegevens analyse lokaal doen. Met dit type aanbieding kunt u band breedte besparen, lokale en gevoelige gegevens beveiligen en een reactie tijd van lage latentie bieden.  U hebt nu de mogelijkheid om te profiteren van deze vooraf ontwikkelde werk belastingen. Tot nu toe zijn er slechts enkele oplossingen van de eerste partij beschikbaar.  U moest de tijd en resources investeren in het bouwen van uw eigen aangepaste IoT-oplossingen.
 
-Door de Introductie van de [IoT Edge-modules in de Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1)hebben we nu één bestemming voor uitgevers om hun oplossingen bloot te leggen en te verkopen aan het IoT-publiek. IoT-ontwikkelaars kunnen uiteindelijk mogelijkheden vinden en kopen om hun oplossingsontwikkeling te versnellen.  
+Door de [IOT Edge-modules in de Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1)te introduceren, hebben we nu één doel voor uitgevers om hun oplossingen beschikbaar te maken en te verkopen aan de IOT-doel groep. IoT-ontwikkel aars kunnen uiteindelijk mogelijkheden vinden en kopen om de ontwikkeling van oplossingen te versnellen.  
 
-## <a name="key-benefits-of-iot-edge-modules-in-azure-marketplace"></a>Belangrijkste voordelen van IoT Edge-modules in Azure Marketplace:
+## <a name="key-benefits-of-iot-edge-modules-in-azure-marketplace"></a>Belangrijkste voor delen van IoT Edge-modules in azure Marketplace:
 
-| **Voor uitgevers**    | **Voor klanten (IoT-ontwikkelaars)**  |
+| **Voor uitgevers**    | **Voor klanten (IoT-ontwikkel aars)**  |
 | :------------------- | :-------------------|
-| Bereik miljoenen ontwikkelaars die IoT Edge-oplossingen willen bouwen en implementeren.  | Stel een IoT Edge-oplossing samen met het vertrouwen van het gebruik van veilige en geteste componenten. |
-| Publiceer één keer en voer alle IoT Edge-hardware uit die containers ondersteunt. | Verminder de time-to-market door IoT Edge-modules van 1e en 3rd party te vinden en te implementeren voor specifieke behoeften. |
-| Inkomsten genereren met flexibele factureringsopties <ul> <li> Gratis en breng uw eigen licentie (BYOL). </li> </ul> | Doe aankopen met uw keuze van factureringsmodellen. <ul> <li> Gratis en breng uw eigen licentie (BYOL). </li> </ul> |
+| Bereik miljoenen ontwikkel aars die IoT Edge-oplossingen willen bouwen en implementeren.  | Stel een IoT Edge oplossing met het vertrouwen van het gebruik van beveiligde en geteste onderdelen. |
+| Publiceer één keer en voer uit op alle IoT Edge hardware die containers ondersteunt. | Verminder de tijd tot de markt door 1ste en van derden IoT Edge modules te zoeken en te implementeren voor specifieke behoeften. |
+| Geld verdienen met flexibele facturerings opties <ul> <li> Maak en til uw eigen licentie (BYOL). </li> </ul> | Maak aankopen met uw favoriete facturerings modellen. <ul> <li> Maak en til uw eigen licentie (BYOL). </li> </ul> |
 
-## <a name="what-is-an-iot-edge-module"></a>Wat is een IoT Edge-module?
+## <a name="what-is-an-iot-edge-module"></a>Wat is een IoT Edge module?
 
-Met Azure IoT Edge u bedrijfslogica op de rand implementeren en beheren in de vorm van modules. Azure IoT Edge-modules zijn de kleinste rekeneenheden die worden beheerd door IoT Edge en kunnen Microsoft-services bevatten (zoals Azure Stream Analytics), services van derden of uw eigen oplossingsspecifieke code. Zie [Azure IoT Edge-modules begrijpen](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)voor meer informatie over IoT Edge-modules.
+Met Azure IoT Edge kunt u bedrijfs logica op de rand in de vorm van modules implementeren en beheren. Azure IoT Edge-modules zijn de kleinste reken eenheden die worden beheerd door IoT Edge, en kunnen micro soft-Services (zoals Azure Stream Analytics), services van derden of uw eigen oplossing-specifieke code bevatten. Zie [Azure IOT Edge modules begrijpen](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)voor meer informatie over IOT Edge-modules.
 
-**Wat is het verschil tussen een containeraanbiedingstype en een IoT Edge-moduleaanbiedingstype?**
+**Wat is het verschil tussen een type container aanbieding en een IoT Edge module-aanbod type?**
 
-Het type IoT Edge-modulebiedt een specifiek type container dat wordt uitgevoerd op een IoT Edge-apparaat. Het wordt geleverd met standaardconfiguratie-instellingen om uit te voeren in de IoT Edge-context en maakt optioneel gebruik van de IoT Edge-module SDK om te worden geïntegreerd met de IoT Edge-runtime.
+Het IoT Edge-module aanbod type is een specifiek type container dat wordt uitgevoerd op een IoT Edge-apparaat. Het wordt geleverd met de standaard configuratie-instellingen die in de IoT Edge context worden uitgevoerd en maakt optioneel gebruik van de IoT Edge module SDK om te worden geïntegreerd met de IoT Edge runtime.
 
 ## <a name="publishing-your-iot-edge-module"></a>Uw IoT Edge-module publiceren
 
-**De juiste etalage selecteren**
+**De juiste winkel selecteren**
 
-IoT Edge Modules worden alleen gepubliceerd op de Azure Marketplace, AppSource is niet van toepassing.  Zie voor meer informatie over de verschillen en doelgroepen in de etalages de [publicatieoptie voor uw oplossing bepalen.](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
+IoT Edge-modules worden alleen gepubliceerd naar Azure Marketplace. AppSource is niet van toepassing.  Zie [de publicatie optie voor uw oplossing bepalen](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)voor meer informatie over de verschillen en doel publiek op diverse winkels.
  
-**Factureringsopties**
+**Facturerings opties**
 
-De marktplaats ondersteunt momenteel byol-factureringsopties **(Free** and **Bring Your Own License)** voor IoT Edge-modules.
+De Marketplace ondersteunt momenteel **gratis** en **BYOL-facturerings opties (uw eigen licentie)** voor IOT Edge modules.
  
-**Publicatieopties**
+**Publicatie opties**
 
-In alle gevallen moeten IoT Edge-modules de optie **Transact** publishing selecteren.  Zie [een publicatieoptie kiezen](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) voor meer informatie over publicatieopties.  
+In alle gevallen moeten IoT Edge modules de optie voor het publiceren van **Transact** selecteren.  Zie [een publicatie optie kiezen](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) voor meer informatie over publicatie opties.  
 
-## <a name="eligibility-criteria"></a>Subsidiabiliteitscriteria
+## <a name="eligibility-criteria"></a>Geschiktheids criteria
 
-Alle voorwaarden van de Microsoft Azure Marketplace-overeenkomsten en -beleidsregels zijn van toepassing op IoT Edge-moduleaanbiedingen.  Daarnaast zijn er vereisten en technische vereisten voor IoT Edge-modules.  
+Alle voor waarden van de Microsoft Azure Marketplace overeenkomsten en beleids regels zijn van toepassing op IoT Edge module aanbiedingen.  Daarnaast zijn er vereisten en technische vereisten voor IoT Edge modules.  
 
 **Vereisten**
 
-Als u een IoT Edge-module wilt publiceren in de Azure Marketplace, moet u aan de volgende vereisten voldoen:
+Als u een IoT Edge module naar Azure Marketplace wilt publiceren, moet u aan de volgende vereisten voldoen:
 
-- Toegang tot het Partner center. Zie [publicatiegids azure marketplace en appsource voor](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)meer informatie.
+- Toegang tot het partner centrum. Zie de [publicatie handleiding voor Azure Marketplace en AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)voor meer informatie.
 - Host uw IoT Edge-module in een Azure Container Registry. 
-- Maak uw IoT Edge-modulemetagegevens klaar, zoals (niet-uitputtende lijst): 
+- De meta gegevens van uw IoT Edge-module gereed maken, zoals (niet-limitatieve lijst): 
     - Een titel
     - Een beschrijving (in HTML-indeling)
-    - Een logoafbeelding (PNG-indeling en vaste afbeeldingsformaten, waaronder 40x40px, 90x90px, 115x115px, 255x115px)
-    - Een gebruiksduur en privacybeleid
-    - Standaardmoduleconfiguratie (route, dubbele gewenste eigenschappen, createOptions, omgevingsvariabelen)
+    - Een logo afbeelding (PNG-indeling en vaste afbeeldings grootten, waaronder 40x40px, 90x90px, 115x115px, 255x115px)
+    - Een gebruiks voorwaarden en privacybeleid
+    - Standaard module configuratie (route, dubbele gewenste eigenschappen, createOptions, omgevings variabelen)
     - Documentatie
     - Contactpersonen voor ondersteuning
 
-**Technische voorschriften**
+**Technische vereisten**
 
-De primaire technische vereisten voor een IoT Edge-module, zodat deze gecertificeerd en gepubliceerd kan worden in de Azure Marketplace, worden beschreven in de technische elementen van de [IoT Edge-module voorbereiden.](./partner-center-portal/create-iot-edge-module-asset.md)
+De belangrijkste technische vereisten voor een IoT Edge module, zodat IT kan worden gecertificeerd en gepubliceerd op de Azure Marketplace, worden beschreven in de [technische activa van uw IOT Edge module voorbereiden](./partner-center-portal/create-iot-edge-module-asset.md).
 
 ## <a name="documentation-and-resources"></a>Documentatie en bronnen
 
-[Maak een IoT Edge-moduleaanbieding](./partner-center-portal/azure-iot-edge-module-creation.md) - De stappen voor het publiceren van een nieuwe IoT Edge-moduleaanbieding in partnercentrum.
+[Maak een IOT Edge module-aanbod](./partner-center-portal/azure-iot-edge-module-creation.md) : de stappen voor het publiceren van een nieuwe IOT Edge module-aanbieding in het partner centrum.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als je dat nog niet gedaan hebt,
+Als u dit nog niet hebt gedaan,
 
-- [Meer informatie](https://azuremarketplace.microsoft.com/sell) over de marktplaats.
+- [Meer informatie](https://azuremarketplace.microsoft.com/sell) over Marketplace.
 
-Om je in te schrijven in partnercentrum en een nieuwe aanbieding te maken of te werken aan een bestaand aanbod,
+Als u zich wilt registreren in Partner Center en wilt beginnen met het maken van een nieuwe aanbieding of het werken met een bestaand aanbod,
 
-- Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken of te voltooien.
-- Zie [een IoT Edge-moduleaanbieding maken](./partner-center-portal/azure-iot-edge-module-creation.md) voor informatie over het publiceren van een IoT Edge-moduleaanbieding.
+- Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken of te volt ooien.
+- Zie [een IOT Edge module maken](./partner-center-portal/azure-iot-edge-module-creation.md) voor meer informatie over het publiceren van een IOT Edge module-aanbod.

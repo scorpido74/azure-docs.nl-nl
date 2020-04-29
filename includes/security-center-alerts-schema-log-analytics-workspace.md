@@ -9,43 +9,43 @@ ms.date: 03/17/2020
 ms.author: memildin
 ms.custom: include file
 ms.openlocfilehash: 7d81799f7fbdb2b41db421daa1a85ec8cde511eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79538829"
 ---
-### <a name="the-data-model-of-the-schema"></a>Het gegevensmodel van het schema
+### <a name="the-data-model-of-the-schema"></a>Het gegevens model van het schema
 
 |Veld|Beschrijving|
 |----|----|
-|**Waarschuwingsnaam**|Naam van de waarschuwingsweergave|
-|**Waarschuwingstype**|unieke waarschuwings-id|
-|**ConfidenceLevel**|(Optioneel) Het betrouwbaarheidsniveau van deze waarschuwing (Hoog/Laag)|
-|**ConfidenceScore**|(Optioneel) Numerieke betrouwbaarheidsindicator van de beveiligingswaarschuwing|
-|**Beschrijving**|Beschrijvingstekst voor de waarschuwing|
-|**Displayname**|De weergavenaam van de waarschuwing|
-|**Eindtijd**|De eindtijd van de waarschuwing (het tijdstip van de laatste gebeurtenis die bijdraagt aan de waarschuwing)|
-|**Entiteiten**|Een lijst met entiteiten die verband houden met de waarschuwing. Deze lijst kan een mix bevatten van entiteiten van verschillende|
-|**ExtendedLinks**|(Optioneel) Een tas voor alle links met betrekking tot de waarschuwing. Deze zak kan een mix van links bevatten voor verschillende soorten|
-|**ExtendedProperties ExtendedProperties**|Een zak met extra velden die relevant zijn voor de waarschuwing|
-|**IsIncident IsIncident**|Hiermee bepaalt u of de waarschuwing een incident of een regelmatige waarschuwing is. Een incident is een beveiligingswaarschuwing die meerdere waarschuwingen samenvoegt tot één beveiligingsincident|
-|**Verwerkingseindtijd**|UTC-tijdstempel waarin de waarschuwing is gemaakt|
-|**ProductComponentNaam**|(Optioneel) De naam van een component in het product dat de waarschuwing heeft gegenereerd.|
-|**ProductName**|constant ('Azure Security Center')|
-|**ProviderName**|Ongebruikte|
-|**Herstelstappen**|Handmatige actie-items die moeten worden genomen om de beveiligingsdreiging te verwerkeren|
-|**ResourceId**|Volledige identificatie van de betreffende resource|
-|**Ernst**|De alarmernst (Hoog/Gemiddeld/Laag/Informatief)|
-|**SourceComputerId**|een unieke GUID voor de getroffen server (als de waarschuwing wordt gegenereerd op de server)|
-|**SourceSystem**|Ongebruikte|
-|**Starttime**|De begintijd van de waarschuwing (het tijdstip van de eerste gebeurtenis die bijdraagt aan de waarschuwing)|
-|**SystemAlertId**|Unieke id van deze beveiligingswaarschuwinginstantie|
-|**TenantId**|de id van de bovenliggende Azure Active directory tenant van het abonnement waaronder de gescande bron zich bevindt|
-|**TimeGenerated**|UTC-tijdstempel waarop de beoordeling plaatsvond (de scantijd van het Security Center) (identiek aan DiscoveredTimeUTC)|
-|**Type**|constant ('SecurityAlert')|
-|**Naam van leverancier**|De naam van de leverancier die de waarschuwing heeft verstrekt (bijvoorbeeld 'Microsoft')|
-|**VendorOriginalId**|Ongebruikte|
-|**WorkspaceResourceGroup**|in het geval dat de waarschuwing wordt gegenereerd op een VM-, server-, virtuelemachineschaalset of app-service-instantie die rapporteert aan een werkruimte, de naam van die werkruimtebrongroep bevat|
-|**Werkruimteabonnementid**|in het geval dat de waarschuwing wordt gegenereerd op een VM-, server-, virtuele machineschaalset of app-service-instantie die rapporteert aan een werkruimte, dat abonnement op de werkruimte bevat|
+|**AlertName**|Weergave naam van de waarschuwing|
+|**AlertType**|unieke meldings-id|
+|**ConfidenceLevel**|Beschrijving Het betrouwbaarheids niveau van deze waarschuwing (hoog/laag)|
+|**ConfidenceScore**|Beschrijving Indicator voor numerieke betrouw baarheid van de beveiligings waarschuwing|
+|**Beschrijving**|Beschrijvende tekst voor de waarschuwing|
+|**DisplayName**|De weergave naam van de waarschuwing|
+|**Tijd**|De eind tijd van het effect van de waarschuwing (het tijdstip van de laatste gebeurtenis die aan de waarschuwing is bijgedragen)|
+|**Entiteiten**|Een lijst met entiteiten die aan de waarschuwing zijn gerelateerd. Deze lijst kan een combi natie van entiteiten van diverse typen bevatten|
+|**ExtendedLinks**|Beschrijving Een Bag voor alle koppelingen met betrekking tot de waarschuwing. Deze Bag kan een combi natie van koppelingen voor diverse typen bevatten|
+|**ExtendedProperties**|Een verzameling extra velden die relevant zijn voor de waarschuwing|
+|**IsIncident**|Hiermee wordt bepaald of de waarschuwing een incident of een regel matige waarschuwing is. Een incident is een beveiligings waarschuwing waarmee meerdere waarschuwingen worden geaggregeerd in één beveiligings incident|
+|**ProcessingEndTime**|De UTC-tijds tempel waarin de waarschuwing is gemaakt|
+|**ProductComponentName**|Beschrijving De naam van een onderdeel in het product dat de waarschuwing heeft gegenereerd.|
+|**ProductName**|constant (' Azure Security Center ')|
+|**ProviderName**|vrij|
+|**RemediationSteps**|Hand matige actie-items die moeten worden uitgevoerd om de beveiligings bedreiging te herstellen|
+|**ResourceId**|Volledige id van de betrokken resource|
+|**Ernst**|De ernst van de waarschuwing (hoog/gemiddeld/laag/informatief)|
+|**SourceComputerId**|een unieke GUID voor de betrokken server (als de waarschuwing wordt gegenereerd op de server)|
+|**SourceSystem**|vrij|
+|**StartTime**|De begin tijd van de waarschuwing (het tijdstip van de eerste gebeurtenis die bijdragen aan de waarschuwing)|
+|**SystemAlertId**|Unieke id van dit beveiligings waarschuwings exemplaar|
+|**TenantId**|de id van de bovenliggende Azure Active Directory-Tenant van het abonnement waaronder de gescande bron zich bevindt|
+|**TimeGenerated**|UTC-tijds tempel waarop de beoordeling plaatsvond (Security Center de scan tijd) (gelijk aan DiscoveredTimeUTC)|
+|**Type**|constante (' SecurityAlert ')|
+|**Leveranciers naam**|De naam van de leverancier die de waarschuwing heeft gegeven (bijvoorbeeld ' micro soft ')|
+|**VendorOriginalId**|vrij|
+|**WorkspaceResourceGroup**|Als de waarschuwing wordt gegenereerd op een VM, Server, Schaalset voor virtuele machines of App Service instantie die aan een werk ruimte rapporteert, bevat die werkruimte naam van de resource groep|
+|**WorkspaceSubscriptionId**|Als de waarschuwing wordt gegenereerd op een VM, Server, Schaalset voor virtuele machines of App Service instantie die rapporteert aan een werk ruimte, bevat die werk ruimte subscriptionId|
 |||

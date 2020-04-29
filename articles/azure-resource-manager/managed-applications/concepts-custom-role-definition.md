@@ -1,32 +1,32 @@
 ---
-title: Overzicht van aangepaste roldefinities
-description: Beschrijft het concept van het maken van aangepaste roldefinities voor beheerde toepassingen.
+title: Overzicht van definities van aangepaste rollen
+description: Hierin wordt het concept beschreven van het maken van aangepaste roldefinities voor beheerde toepassingen.
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 09/16/2019
 ms.openlocfilehash: 7b7fff913c177703f959bfa103c8e310d01059e2
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81391828"
 ---
-# <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Aangepast artefact voor roldefinitie in Azure Managed Applications
+# <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Definitie artefact voor aangepaste rollen in Azure Managed Applications
 
-Aangepaste roldefinitie is een optioneel artefact in beheerde toepassingen. Het wordt gebruikt om te bepalen welke machtigingen de beheerde toepassing nodig heeft om de functies uit te voeren.
+De definitie van een aangepaste rol is een optioneel artefact in beheerde toepassingen. De methode wordt gebruikt om te bepalen welke machtigingen de beheerde toepassing nodig heeft om de functies uit te voeren.
 
-In dit artikel vindt u een overzicht van het aangepaste artefact voor roldefinitie en de mogelijkheden ervan.
+Dit artikel bevat een overzicht van het definitie artefact van aangepaste rollen en de mogelijkheden ervan.
 
-## <a name="custom-role-definition-artifact"></a>Aangepast artefact voor roldefinitie
+## <a name="custom-role-definition-artifact"></a>Definitie artefact van aangepaste rol
 
-U moet de aangepaste roldefinitieartefact customRoleDefinition.json een naam geven. Plaats het op hetzelfde niveau als createUiDefinition.json en mainTemplate.json in het .zip-pakket dat een beheerde toepassingsdefinitie maakt. Zie [Een beheerde toepassingsdefinitie publiceren](publish-service-catalog-app.md) voor meer informatie over het maken van het .zip-pakket en het publiceren van een beheerde toepassingsdefinitie.
+U moet de aangepaste functie definitie artefact customRoleDefinition. json noemen. Plaats het op hetzelfde niveau als createUiDefinition. json en mainTemplate. json in het zip-pakket dat een definitie van een beheerde toepassing maakt. Zie [een definitie van een beheerde toepassing publiceren](publish-service-catalog-app.md) voor meer informatie over het maken van een zip-pakket en het publiceren van een definitie van een beheerde toepassing.
 
-## <a name="custom-role-definition-schema"></a>Schema voor aangepaste roldefinitie
+## <a name="custom-role-definition-schema"></a>Definitie schema voor aangepaste rol
 
-Het bestand customRoleDefinition.json heeft `roles` een eigenschap op het hoogste niveau die een scala aan rollen is. Deze rollen zijn de machtigingen die de beheerde toepassing moet functioneren. Momenteel zijn alleen ingebouwde rollen toegestaan, maar u meerdere rollen opgeven. Een rol kan worden verwezen door de ID van de roldefinitie of door de rolnaam.
+Het bestand customRoleDefinition. json heeft een eigenschap op het `roles` hoogste niveau die een matrix met rollen is. Deze rollen zijn de machtigingen die door de beheerde toepassing moeten worden gebruikt. Op dit moment zijn alleen ingebouwde rollen toegestaan, maar u kunt meerdere rollen opgeven. Naar een rol kan worden verwezen met de ID van de roldefinitie of met de rolnaam.
 
-Voorbeeld van JSON voor aangepaste roldefinitie:
+Voor beeld-JSON voor aangepaste roldefinitie:
 
 ```json
 {
@@ -49,7 +49,7 @@ Voorbeeld van JSON voor aangepaste roldefinitie:
 
 ## <a name="roles"></a>Rollen
 
-Een rol bestaat uit `$.properties.roleName` a `id`of een :
+Een rol bestaat uit een `$.properties.roleName` of een: `id`
 
 ```json
 {
@@ -61,9 +61,9 @@ Een rol bestaat uit `$.properties.roleName` a `id`of een :
 ```
 
 > [!NOTE]
-> U het `id` `roleName` of veld gebruiken. Er is er maar één nodig. Deze velden worden gebruikt om de roldefinitie op te zoeken die moet worden toegepast. Als beide worden geleverd, zal het `id` veld worden gebruikt.
+> U kunt ofwel het `id` veld or `roleName` gebruiken. Er is slechts één vereist. Deze velden worden gebruikt voor het opzoeken van de roldefinitie die moet worden toegepast. Als beide zijn opgegeven, wordt `id` het veld gebruikt.
 
 |Eigenschap|Vereist?|Beschrijving|
 |---------|---------|---------|
-|id|Ja|De ID van de ingebouwde rol. U de volledige ID of alleen de GUID gebruiken.|
+|id|Ja|De ID van de ingebouwde rol. U kunt de volledige ID of alleen de GUID gebruiken.|
 |roleName|Ja|De naam van de ingebouwde rol.|

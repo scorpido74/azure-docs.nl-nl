@@ -1,6 +1,6 @@
 ---
-title: Gebruikers in-/uitloggen & Microsoft Graph (Android) bellen - Microsoft-identiteitsplatform | Azure
-description: Ontvang een toegangstoken en bel Microsoft Graph of API's waarvoor toegangstokens van Microsoft-identiteitsplatform (Android) nodig zijn
+title: Gebruikers in-en uitloggen &-oproep Microsoft Graph (Android)-micro soft Identity-platform | Azure
+description: Een toegangs Token ophalen en Microsoft Graph of Api's aanroepen waarvoor toegangs tokens zijn vereist van micro soft Identity platform (Android)
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,91 +13,91 @@ ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: b899e1d651f41c9c1e1e54af1b5ec19162dfc28d
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81380061"
 ---
-# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Zelfstudie: Meld u aan voor gebruikers en bel de Microsoft Graph vanuit een Android-toepassing 
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Zelf studie: gebruikers aanmelden en de Microsoft Graph aanroepen vanuit een Android-toepassing 
 
 >[!NOTE]
->Deze zelfstudie toont vereenvoudigde voorbeelden van hoe te werken met MSAL voor Android. Voor de eenvoud maakt deze zelfstudie alleen gebruik van single account-modus. U de repo bekijken en [de vooraf geconfigureerde voorbeeld-app](https://github.com/Azure-Samples/ms-identity-android-java/) klonen om complexere scenario's te verkennen. Bekijk de [Quickstart](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-android) voor meer informatie over de voorbeeld-app, -configuratie en -registratie. 
+>In deze zelf studie worden vereenvoudigde voor beelden van het werken met MSAL voor Android beschreven. Ter vereenvoudiging maakt deze zelf studie alleen gebruik van de modus voor één account. U kunt ook de opslag plaats bekijken en [de vooraf geconfigureerde voor beeld-app](https://github.com/Azure-Samples/ms-identity-android-java/) klonen om complexere scenario's te verkennen. Bekijk de [Quick](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-android) start voor meer informatie over de voor beeld-app, configuratie en registratie. 
 
-In deze zelfstudie leert u hoe u uw Android-app integreren met het Microsoft-identiteitsplatform met behulp van de Microsoft-verificatiebibliotheek voor Android. U leert hoe u zich aanmelden en een gebruiker afmelden, een toegangstoken krijgen om de Microsoft Graph-API aan te roepen en een verzoek indienen bij de Graph API. 
+In deze zelf studie leert u hoe u uw Android-app integreert met het micro soft-identiteits platform met behulp van de micro soft-verificatie bibliotheek voor Android. U leert hoe u zich kunt aanmelden en een gebruiker kunt afmelden, een toegangs token krijgt om de Microsoft Graph-API aan te roepen en een aanvraag naar de Graph API te verzenden. 
 
 > [!div class="checklist"]
-> * Uw Android-app integreren met het Microsoft Identity Platform 
-> * Aanmelden voor een gebruiker 
-> * Een toegangstoken krijgen om de Microsoft Graph API aan te roepen 
+> * Uw Android-app integreren met het micro soft Identity-platform 
+> * Een gebruiker aanmelden 
+> * Een toegangs Token ophalen om de Microsoft Graph-API aan te roepen 
 > * De Microsoft Graph-API aanroepen 
 > * Een gebruiker afmelden 
 
-Wanneer u deze zelfstudie hebt voltooid, accepteert uw toepassing aanmeldingen van persoonlijke Microsoft-accounts (waaronder outlook.com, live.com en anderen) en werk- of schoolaccounts van een bedrijf of organisatie die Azure Active Directory gebruikt.
+Wanneer u deze zelf studie hebt voltooid, accepteert uw toepassing aanmeldingen van persoonlijke micro soft-accounts (waaronder outlook.com, live.com en anderen), evenals werk-of school accounts van een bedrijf of organisatie die gebruikmaakt van Azure Active Directory.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="how-this-tutorial-works"></a>Hoe deze zelfstudie werkt
+## <a name="how-this-tutorial-works"></a>Hoe deze zelf studie werkt
 
-![Laat zien hoe de voorbeeld-app die door deze zelfstudie wordt gegenereerd, werkt](../../../includes/media/active-directory-develop-guidedsetup-android-intro/android-intro.svg)
+![Toont hoe de voor beeld-app die door deze zelf studie wordt gegenereerd, werkt](../../../includes/media/active-directory-develop-guidedsetup-android-intro/android-intro.svg)
 
-De app in deze zelfstudie zal gebruikers aanmelden en namens hen gegevens krijgen. Deze gegevens worden geopend via een beveiligde API (Microsoft Graph API) waarvoor autorisatie vereist is en wordt beschermd door het Microsoft-identiteitsplatform.
+De app in deze zelf studie meldt zich aan bij gebruikers en haalt gegevens op uit hun naam. Deze gegevens worden geopend via een beveiligde API (Microsoft Graph-API) waarvoor autorisatie is vereist en wordt beveiligd door het micro soft Identity-platform.
 
 Met name:
 
-* Uw app meldt zich aan bij de gebruiker via een browser of de Microsoft Authenticator en Intune Company Portal.
-* De eindgebruiker accepteert de machtigingen die uw aanvraag heeft aangevraagd.
-* Uw app krijgt een toegangstoken voor de Microsoft Graph-API.
-* Het toegangstoken wordt opgenomen in het HTTP-verzoek tot de web-API.
-* De Reactie van Microsoft Graph verwerken.
+* Uw app meldt zich aan bij de gebruiker via een browser of de Microsoft Authenticator en Intune-bedrijfsportal.
+* De eind gebruiker accepteert de machtigingen die uw toepassing heeft aangevraagd.
+* Uw app krijgt een toegangs token voor de Microsoft Graph-API.
+* Het toegangs token wordt opgenomen in de HTTP-aanvraag voor de Web-API.
+* Het Microsoft Graph-antwoord verwerken.
 
-In dit voorbeeld wordt de Microsoft Authentication-bibliotheek voor Android (MSAL) gebruikt om Verificatie te implementeren: [com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal).
+In dit voor beeld wordt de micro soft-verificatie bibliotheek voor Android (MSAL) gebruikt voor het implementeren van verificatie: [com. micro soft. Identity. client](https://javadoc.io/doc/com.microsoft.identity.client/msal).
 
- MSAL verlengt automatisch tokens, levert single sign-on (SSO) tussen andere apps op het apparaat en beheert het account(s).
+ MSAL zal tokens automatisch vernieuwen, eenmalige aanmelding (SSO) leveren tussen andere apps op het apparaat en de account (s) beheren.
 
 ### <a name="prerequisites"></a>Vereisten
 
-* Deze tutorial vereist Android Studio versie 3.5+
+* Voor deze zelf studie is Android Studio versie 3.5 + vereist
 
 ## <a name="create-a-project"></a>Een project maken
-Als u nog geen Android-toepassing hebt, volgt u deze stappen om een nieuw project in te stellen. 
+Als u nog geen Android-toepassing hebt, voert u de volgende stappen uit om een nieuw project in te stellen. 
 
-1. Open Android Studio en selecteer **Een nieuw Android Studio-project starten**.
-2. Selecteer **Basisactiviteit** en selecteer **Volgende**.
+1. Open Android Studio en selecteer **een nieuw Android Studio-project starten**.
+2. Selecteer **basis activiteit** en selecteer **volgende**.
 3. Geef uw toepassing een naam.
-4. Sla de naam van het pakket op. U voert het later in in de Azure-portal.
-5. Verander de taal van **Kotlin** naar **Java.**
-6. Stel het **minimumAPI-niveau** in op **API 19** of hoger en klik op **Voltooien**.
-7. Kies in de projectweergave **Project** in de vervolgkeuzelijst om bron- en niet-bronprojectbestanden `28`weer te geven, open **app/build.gradle** en stel in op `targetSdkVersion` .
+4. Sla de naam van het pakket op. U gaat deze later in het Azure Portal invoeren.
+5. Wijzig de taal van **Kotlin** in **Java**.
+6. Stel het **minimale API-niveau** in op **API 19** of hoger en klik op **volt ooien**.
+7. Kies in de Project weergave **project** in de vervolg keuzelijst om bron-en niet-bron project bestanden weer te geven, open **app/build. gradle** en stel `targetSdkVersion` in op `28`.
 
-## <a name="integrate-with-microsoft-authentication-library"></a>Integreren met Microsoft-verificatiebibliotheek 
+## <a name="integrate-with-microsoft-authentication-library"></a>Integreren met micro soft-verificatie bibliotheek 
 
 ### <a name="register-your-application"></a>Uw toepassing registreren
 
-1. Ga naar de [Azure-portal.](https://aka.ms/MobileAppReg)
-2. Open het [mes app-registraties](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) en klik op **+Nieuwe registratie**.
-3. Voer een **naam** in voor uw app en klik **vervolgens, zonder** uri omleiden, op **Registreren**.
-4. Selecteer **verificatie** > **+ Een platform** > **Toevoegen in**het gedeelte **Beheren** van het deelvenster dat wordt weergegeven. (Mogelijk moet u 'Overschakelen naar de nieuwe ervaring' bovenaan het blad selecteren om deze sectie te bekijken)
-5. Voer de pakketnaam van uw project in. Als u de code hebt `com.azuresamples.msalandroidapp`gedownload, is deze waarde .
-6. Klik in de sectie **Hash** van handtekening van de pagina **Uw Android-app configureren** op Een hash voor **ontwikkelingshandtekeningen genereren.** en kopieer de opdracht KeyTool om te gebruiken voor uw platform.
+1. Ga naar de [Azure Portal](https://aka.ms/MobileAppReg).
+2. Open de [blade app-registraties](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) en klik op **+ nieuwe registratie**.
+3. Voer een **naam** in voor uw app en klik vervolgens **zonder** een OMleidings-URI in te stellen op **registreren**.
+4. Selecteer in het gedeelte **beheren** van het deel venster dat wordt weer gegeven, de optie **verificatie** > **+ een platform** > **Android**toevoegen. (Mogelijk moet u ' overschakelen naar de nieuwe ervaring ' boven aan de Blade selecteren om deze sectie weer te geven.
+5. Voer de pakket naam van uw project in. Als u de code hebt gedownload, is `com.azuresamples.msalandroidapp`deze waarde.
+6. Klik in de sectie **hash van hand tekening** van de pagina **uw Android-app configureren** op **een hash voor ontwikkel handtekeningen genereren.** Kopieer de opdracht voor het hulp programma om te gebruiken voor uw platform.
 
    > [!Note]
-   > KeyTool.exe is geïnstalleerd als onderdeel van de Java Development Kit (JDK). U moet ook het openssl-gereedschap installeren om de opdracht KeyTool uit te voeren. Raadpleeg de [Android-documentatie over het genereren van een sleutel](https://developer.android.com/studio/publish/app-signing#generate-key) voor meer informatie. 
+   > Het hulp programma voor het maken van de functie is geïnstalleerd als onderdeel van de JDK (Java Development Kit). U moet ook het hulp programma OpenSSL installeren om de opdracht voor het uitvoeren van het programma uit te voeren. Raadpleeg de [Android-documentatie over het genereren van een sleutel](https://developer.android.com/studio/publish/app-signing#generate-key) voor meer informatie. 
 
-7. Voer de **hash van Signature** in die door KeyTool is gegenereerd.
-8. Klik `Configure` op de **MSAL-configuratie** die op de **Android-configuratiepagina** wordt weergegeven en sla deze op, zodat u deze invoeren wanneer u uw app later configureert.  Klik op **Gereed**.
+7. Voer de **hand tekening-hash** gegenereerd door het hulp programma.
+8. Klik `Configure` en sla de **MSAL-configuratie** op die wordt weer gegeven op de pagina **Android-configuratie** zodat u deze kunt invoeren wanneer u de app later configureert.  Klik op **Gereed**.
 
 ### <a name="configure-your-application"></a>Uw toepassing configureren 
 
-1. Navigeer in het projectvenster van Android Studio naar **app\src\main\res.**
-2. Klik met de rechtermuisknop op **res** en kies **Nieuwe** > **map**. Voer `raw` de nieuwe mapnaam in en klik op **OK**.
-3. Maak in **app** > **src** > **main** > **res** > **raw** `auth_config_single_account.json` een nieuw JSON-bestand genaamd en plak de MSAL-configuratie die u eerder hebt opgeslagen. 
+1. Ga in het deel venster Project van Android Studio naar **app\src\main\res**.
+2. Klik met de rechter muisknop op **Res** en kies **nieuwe** > **Directory**. Voer `raw` de naam van de nieuwe map in en klik op **OK**.
+3. Maak een nieuw JSON-bestand met de**main** > **res** > naam `auth_config_single_account.json` en plak de MSAL-configuratie die u eerder hebt opgeslagen in **app** > **src** > **RAW**. 
 
-    Onder de omleiding URI, plakken: 
+    Plak onder de omleidings-URI: 
     ```json
       "account_mode" : "SINGLE",
     ```
-    Uw config-bestand moet op dit voorbeeld lijken: 
+    Het configuratie bestand moet er als volgt uitzien: 
     ```json   
     {
       "client_id" : "0984a7b6-bc13-4141-8b0d-8f767e136bb7",
@@ -117,9 +117,9 @@ Als u nog geen Android-toepassing hebt, volgt u deze stappen om een nieuw projec
    ```
     
    >[!NOTE]
-   >In deze zelfstudie wordt alleen uitgelegd hoe u een app configureert in de modus Eén account. Bekijk de documentatie voor meer informatie over [één versus meerdere accountmodus](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account) en [het configureren van uw app](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration)
+   >In deze zelf studie wordt alleen gedemonstreerd hoe u een app kunt configureren in de modus voor één account. Raadpleeg de documentatie voor meer informatie over [één versus meerdere account modus](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account) en [het configureren van uw app](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration)
    
-4. In **app** > **src** > **main** > **AndroidManifest.xml**, voeg de `BrowserTabActivity` activiteit hieronder toe aan de toepassingstekst. Met dit item kan Microsoft terugbellen naar uw toepassing nadat de verificatie is voltooid:
+4. Voeg **in app** > **src** > **Main** > **AndroidManifest. XML**de `BrowserTabActivity` onderstaande activiteit toe aan de hoofd tekst van de toepassing. Met deze vermelding kan micro soft terugbellen naar uw toepassing nadat de verificatie is voltooid:
 
     ```xml
     <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
@@ -136,16 +136,16 @@ Als u nog geen Android-toepassing hebt, volgt u deze stappen om een nieuw projec
     </activity>
     ```
 
-    Vervang de pakketnaam die u hebt `android:host=` geregistreerd in de Azure-portal voor de waarde.
-    Vervang de sleutelhash die u hebt `android:path=` geregistreerd in de Azure-portal voor de waarde. De handtekeninghash mag **niet** worden gecodeerd met url's. Zorg ervoor dat `/` er een voorloop is aan het begin van uw handtekeninghash. 
+    Vervang de naam van het pakket dat u in de Azure Portal `android:host=` hebt geregistreerd voor de waarde.
+    Vervang de sleutel-hash die u hebt geregistreerd in de `android:path=` Azure portal voor de waarde. De hash van de hand tekening mag **geen** URL-code ring zijn. Zorg ervoor dat u aan het `/` begin van uw hand tekening-hash een regel hebt. 
     >[!NOTE]
-    >De Package Name waarmee `android:host` u de waarde vervangt, moet er hetzelfde uitzien als: com.azuresamples.msalandroidapp De Signature Hash waarmee u uw `android:path` waarde vervangt, moet er hetzelfde uitzien als: /1wIqXSqBj7w+h11ZifsnqwgyKrY= U deze waarden ook vinden in het authenticatieblad van uw app-registratie. Houd er rekening mee dat uw omleiding URI er hetzelfde uitziet als: "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D". Hoewel de handtekeninghash url is gecodeerd aan het einde **not** van deze waarde, `android:path` mag de handtekeninghash geen URL zijn die is gecodeerd in uw waarde. 
+    >De "pakket naam" u vervangt de `android:host` waarde met moet er ongeveer als volgt uitzien: "com. azuresamples. Msalandroidapp" de "Signature hash" u vervangt `android:path` uw waarde met moet er ongeveer als volgt uitzien: "/1wIqXSqBj7w + h11ZifsnqwgyKrY =" u kunt deze waarden ook vinden in de Blade verificatie van de app-registratie. Houd er rekening mee dat de omleidings-URI er ongeveer als volgt uitziet: "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D". Terwijl de hash van de hand tekening een URL-code ring aan het einde van deze waarde **not** heeft, mag de hand tekening `android:path` -hash geen URL-code ring in uw waarde zijn. 
 
 ## <a name="use-msal"></a>MSAL gebruiken 
 
 ### <a name="add-msal-to-your-project"></a>MSAL toevoegen aan uw project
 
-1. Navigeer in het android studio-projectvenster naar **app** > **src** > **build.gradle** en voeg het volgende toe: 
+1. Navigeer in het venster Android Studio project naar **app** > **src** > **Build. gradle** en voeg het volgende toe: 
 
     ```gradle
     repositories{
@@ -159,11 +159,11 @@ Als u nog geen Android-toepassing hebt, volgt u deze stappen om een nieuw projec
         exclude("META-INF/jersey-module-version") 
     }
     ```
-    [Meer over de Microsoft Graph SDK](https://github.com/microsoftgraph/msgraph-sdk-java/)
+    [Meer informatie over de Microsoft Graph SDK](https://github.com/microsoftgraph/msgraph-sdk-java/)
 
-### <a name="required-imports"></a>Vereiste invoer 
+### <a name="required-imports"></a>Vereiste Imports 
 
-Voeg het volgende toe aan de bovenkant van **app** > **src** > **main**> **java** > **com.example(yourapp)** > **MainActivity.java** 
+Voeg het volgende toe boven aan de **app** > **src** > **Main**> **Java** > **com. voor beeld (yourapp)** > **MainActivity. java** 
 
 ```java
 import android.os.Bundle;
@@ -187,7 +187,7 @@ import com.microsoft.identity.client.*;
 import com.microsoft.identity.client.exception.*;
 ```
 
-## <a name="instantiate-publicclientapplication"></a>Instantiate PublicClientApplication
+## <a name="instantiate-publicclientapplication"></a>PublicClientApplication instantiëren
 #### <a name="initialize-variables"></a>Variabelen initialiseren 
 ```java
 private final static String[] SCOPES = {"Files.Read"};
@@ -206,8 +206,8 @@ TextView logTextView;
 TextView currentUserTextView;
 ```
 
-### <a name="oncreate"></a>opMaken
-Raadpleeg `MainActivity` in de klasse de volgende methode onCreate() om MSAL te instantiëren met behulp van de `SingleAccountPublicClientApplication`.
+### <a name="oncreate"></a>onCreate
+In de `MainActivity` -klasse raadpleegt u de volgende onCreate ()-methode om MSAL te `SingleAccountPublicClientApplication`instantiëren met behulp van de.
 
 ```java
 @Override
@@ -264,8 +264,8 @@ private void loadAccount() {
 }
 ```
 
-### <a name="initializeui"></a>initialiserenUI
-Luister naar knoppen en aanroepmethoden of log fouten dienovereenkomstig. 
+### <a name="initializeui"></a>initializeUI
+Luister naar knoppen en oproep methoden of logboek fouten dienovereenkomstig. 
 ```java
 private void initializeUI(){
         signInButton = findViewById(R.id.signIn);
@@ -331,10 +331,10 @@ private void initializeUI(){
 ```
 
 > [!Important]
-> Als u zich afmeldt bij MSAL, worden alle bekende informatie over een gebruiker uit de toepassing verwijderd, maar de gebruiker heeft nog steeds een actieve sessie op zijn apparaat. Als de gebruiker zich opnieuw probeert aan te melden, ziet hij mogelijk een aanmeldings-gebruikersinterface, maar hoeft hij mogelijk zijn of haar referenties niet opnieuw in te voeren omdat de apparaatsessie nog steeds actief is. 
+> Als u zich afmeldt bij MSAL, worden alle bekende gegevens van een gebruiker uit de toepassing verwijderd, maar de gebruiker heeft nog steeds een actieve sessie op het apparaat. Als de gebruiker zich opnieuw probeert aan te melden, zien ze mogelijk de gebruikers interface voor aanmelden, maar hoeven ze hun referenties mogelijk niet opnieuw op te geven omdat de sessie van het apparaat nog steeds actief is. 
 
 ### <a name="getauthinteractivecallback"></a>getAuthInteractiveCallback
-Callback gebruikt voor interactieve verzoeken.
+Call back die wordt gebruikt voor interactieve aanvragen.
 
 ```java 
 private AuthenticationCallback getAuthInteractiveCallback() {
@@ -365,7 +365,7 @@ private AuthenticationCallback getAuthInteractiveCallback() {
 ```
 
 ### <a name="getauthsilentcallback"></a>getAuthSilentCallback
-Callback gebruikt voor stille verzoeken 
+Call back gebruikt voor Silent-aanvragen 
 ```java 
 private SilentAuthenticationCallback getAuthSilentCallback() {
     return new SilentAuthenticationCallback() {
@@ -385,7 +385,7 @@ private SilentAuthenticationCallback getAuthSilentCallback() {
 
 ## <a name="call-microsoft-graph-api"></a>Microsoft Graph API aanroepen 
 
-De volgende code laat zien hoe u de GraphAPI aanroept met behulp van de Graph SDK. 
+De volgende code laat zien hoe u de GraphAPI aanroept met de Graph SDK. 
 
 ### <a name="callgraphapi"></a>callGraphAPI 
 
@@ -426,10 +426,10 @@ private void callGraphAPI(IAuthenticationResult authenticationResult) {
 
 ## <a name="add-ui"></a>Gebruikersinterface toevoegen
 ### <a name="activity"></a>Activiteit 
-Als u uw gebruikersinterface wilt modelleren buiten deze zelfstudie, bieden de volgende methoden een handleiding voor het bijwerken van tekst en het luisteren naar knoppen.
+Als u uw gebruikers interface wilt model leren van deze zelf studie, bieden de volgende methoden een hand leiding voor het bijwerken van tekst en het Luis teren naar knoppen.
 
 #### <a name="updateui"></a>updateUI
-Knoppen inschakelen/uitschakelen op basis van aanmeldingsstatus en ingestelde tekst.  
+Knoppen in-of uitschakelen op basis van de aanmeldings status en tekst instellen.  
 ```java 
 private void updateUI(@Nullable final IAccount account) {
     if (account != null) {
@@ -448,7 +448,7 @@ private void updateUI(@Nullable final IAccount account) {
     }
 }
 ```
-#### <a name="displayerror"></a>displayError
+#### <a name="displayerror"></a>Display error
 ```java 
 private void displayError(@NonNull final Exception exception) {
        logTextView.setText(exception.toString());
@@ -462,8 +462,8 @@ private void displayGraphResult(@NonNull final JsonObject graphResponse) {
       logTextView.setText(graphResponse.toString());
   }
 ```
-#### <a name="performoperationonsignout"></a>operationonsignout uitvoeren
-Methode om tekst in de gebruikersinterface bij te werken om afmelding weer te geven. 
+#### <a name="performoperationonsignout"></a>performOperationOnSignOut
+Methode voor het bijwerken van de tekst in de gebruikers interface om afmelden weer te geven. 
 
 ```java
 private void performOperationOnSignOut() {
@@ -475,7 +475,7 @@ private void performOperationOnSignOut() {
 ```
 ### <a name="layout"></a>Indeling 
 
-Voorbeeldbestand `activity_main.xml` om knoppen en tekstvakken weer te geven. 
+Voorbeeld `activity_main.xml` bestand voor het weer geven van knoppen en tekst vakken. 
 
 ```xml 
 <?xml version="1.0" encoding="utf-8"?>
@@ -568,18 +568,18 @@ Voorbeeldbestand `activity_main.xml` om knoppen en tekstvakken weer te geven.
 
 ### <a name="run-locally"></a>Lokaal uitvoeren
 
-Bouw en implementeer de app op een testapparaat of emulator. U moet zich kunnen aanmelden en tokens voor Azure AD of persoonlijke Microsoft-accounts kunnen ontvangen.
+Bouw en implementeer de app op een test apparaat of emulator. U moet zich kunnen aanmelden en tokens ontvangen voor Azure AD of persoonlijke micro soft-accounts.
 
-Nadat u zich hebt aangemeld, geeft de app `/me` de gegevens weer die zijn geretourneerd vanuit het eindpunt van Microsoft Graph.
+Nadat u zich hebt aangemeld, worden in de app de gegevens weer gegeven die `/me` door het Microsoft Graph-eind punt zijn geretourneerd.
 
-### <a name="consent"></a>Toestemming
+### <a name="consent"></a>Vergunning
 
-De eerste keer dat een gebruiker zich aanmeldt bij uw app, wordt deze door de Identiteit van Microsoft gevraagd om in te stemmen met de gevraagde machtigingen. Sommige Azure AD-tenants hebben gebruikerstoestemming uitgeschakeld, waardoor beheerders toestemming moeten geven namens alle gebruikers. Om dit scenario te ondersteunen, moet u uw eigen tenant maken of toestemming van de beheerder ontvangen. 
+De eerste keer dat een gebruiker zich bij uw app aanmeldt, wordt de micro soft-identiteit gevraagd om toestemming te geven voor de aangevraagde machtigingen. Sommige Azure AD-tenants hebben de toestemming van de gebruiker uitgeschakeld. hiervoor moeten beheerders toestemming geven namens alle gebruikers. Ter ondersteuning van dit scenario moet u uw eigen Tenant maken of toestemming van de beheerder ontvangen. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Verwijder, wanneer u niet meer nodig bent, het app-object dat u hebt gemaakt in de stap [Uw toepassing registreren.](#register-your-application)
+Wanneer u deze niet meer nodig hebt, verwijdert u het app-object dat u hebt gemaakt in de stap [uw toepassing registreren](#register-your-application) .
 
 ## <a name="get-help"></a>Help opvragen
 
-Ga naar [Help en ondersteuning](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) als u problemen hebt met deze zelfstudie of met het Microsoft-identiteitsplatform.
+Ga naar [Help en ondersteuning](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) als u problemen ondervindt met deze zelf studie of met het micro soft Identity-platform.

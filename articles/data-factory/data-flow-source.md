@@ -1,6 +1,6 @@
 ---
-title: Brontransformatie in kaartgegevensstroom
-description: Meer informatie over het instellen van een brontransformatie in het toewijzen van gegevensstromen.
+title: Bron transformatie in gegevens stroom toewijzen
+description: Meer informatie over het instellen van een bron transformatie in het toewijzen van gegevens stroom.
 author: kromerm
 ms.author: makromer
 manager: anandsub
@@ -9,100 +9,100 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
 ms.openlocfilehash: b2f533e8bd9199025260aaca9cff587b13adce64
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606308"
 ---
-# <a name="source-transformation-in-mapping-data-flow"></a>Brontransformatie in kaartgegevensstroom 
+# <a name="source-transformation-in-mapping-data-flow"></a>Bron transformatie in gegevens stroom toewijzen 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Een brontransformatie configureert uw gegevensbron voor de gegevensstroom. Bij het ontwerpen van gegevensstromen wordt een brontransformatie altijd geconfigureerd bij het ontwerpen van gegevensstromen. Als u een bron wilt toevoegen, klikt u op het vak **Bron toevoegen** in het canvas voor gegevensstromen.
+Met een bron transformatie configureert u de gegevens bron voor de gegevens stroom. Bij het ontwerpen van gegevens stromen wordt de eerste stap altijd een bron transformatie configureren. Als u een bron wilt toevoegen, klikt u op het vak **bron toevoegen** in het canvas voor gegevens stromen.
 
-Elke gegevensstroom vereist ten minste één brontransformatie, maar u zoveel bronnen toevoegen als nodig is om uw gegevenstransformaties te voltooien. U deze bronnen samenvoegen met een join, lookup of een unietransformatie.
+Elke gegevens stroom vereist ten minste één bron transformatie, maar u kunt zoveel bronnen toevoegen als u nodig hebt om uw gegevens transformaties te volt ooien. U kunt deze bronnen samen voegen met een koppelings-, zoek-of een Union-trans formatie.
 
-Elke brontransformatie is gekoppeld aan precies één gegevensset gegevensfabriek van Gegevensfabriek. De gegevensset definieert de vorm en locatie van de gegevens waarnaar u wilt schrijven of waaruit u wilt lezen. Als u een gegevensset op basis van bestanden gebruikt, u jokertekens en bestandslijsten in uw bron gebruiken om met meer dan één bestand tegelijk te werken.
+Elke bron transformatie is gekoppeld aan precies één Data Factory-gegevensset. De gegevensset definieert de vorm en locatie van de gegevens waarnaar u wilt schrijven of waaruit u wilt lezen. Als u een gegevensset op basis van een bestand gebruikt, kunt u Joker tekens en bestands lijsten in uw bron gebruiken om met meer dan één bestand tegelijk te werken.
 
-## <a name="supported-source-connectors-in-mapping-data-flow"></a>Ondersteunde bronconnectors in kaartgegevensstroom
+## <a name="supported-source-connectors-in-mapping-data-flow"></a>Ondersteunde bron connectors in gegevens stroom toewijzen
 
-Mapping Data Flow volgt een extract-, load-, transform(ELT)-benadering en werkt met *faseringsgegevenssets* die allemaal in Azure zijn. Momenteel kunnen de volgende gegevenssets worden gebruikt in een brontransformatie:
+Toewijzing van gegevens stroom volgt een extractie benadering, Load, Transform (ELT) en werkt met *faserings* gegevens sets die allemaal in azure zijn. Momenteel kunnen de volgende gegevens sets worden gebruikt in een bron transformatie:
     
-* [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, Avro, Tekst, Parket)
-* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, Avro, Tekst, Parket)
-* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, Avro, Tekst, Parket)
+* [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, AVRO, Text, Parquet)
+* [Azure data Lake Storage gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, AVRO, Text, Parquet)
+* [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, AVRO, Text, Parquet)
 * [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
 * [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties)
-* [Azure CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
+* [Azure-CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
 
-De specifieke instellingen voor deze connectors bevinden zich op het tabblad **Bronopties.** Informatie over deze instellingen bevindt zich in de connectordocumentatie. 
+De instellingen die specifiek zijn voor deze connectors bevinden zich op het tabblad **bron opties** . informatie over deze instellingen vindt u in de documentatie van de connector. 
 
-Azure Data Factory heeft toegang tot meer dan [90 native connectors.](connector-overview.md) Als u gegevens uit die andere bronnen in uw gegevensstroom wilt opnemen, gebruikt u de activiteit kopiëren om die gegevens in een van de ondersteunde faseringsgebieden te laden.
+Azure Data Factory heeft toegang tot meer dan [90 systeem eigen connectors](connector-overview.md). Als u gegevens uit deze andere bronnen in uw gegevens stroom wilt toevoegen, gebruikt u de Kopieer activiteit om die gegevens te laden in een van de ondersteunde staging-gebieden.
 
 ## <a name="source-settings"></a>Broninstellingen
 
-Zodra u een bron hebt toegevoegd, configureert u dit via het tabblad **Broninstellingen.** Hier u de gegevensset kiezen of maken waarop uw bronpunten zijn gericht. U ook schema- en bemonsteringsopties voor uw gegevens selecteren.
+Nadat u een bron hebt toegevoegd, configureert u via het tabblad **bron instellingen** . Hier kunt u de gegevensset voor uw bron punten kiezen of maken. U kunt ook schema-en bemonsterings opties voor uw gegevens selecteren.
 
-![Tabblad Broninstellingen](media/data-flow/source1.png "Tabblad Broninstellingen")
+![Tabblad Bron instellingen](media/data-flow/source1.png "Tabblad Bron instellingen")
 
-**Testverbinding:** Test of de spark-service van de gegevensstroom al dan niet met succes verbinding kan maken met de gekoppelde service die wordt gebruikt in uw brongegevensset. De foutopsporingsmodus moet ingeschakeld zijn om deze functie in te schakelen.
+**Verbinding testen:** Testen of de Spark-service van de gegevens stroom verbinding kan maken met de gekoppelde service die in de bron-gegevensset wordt gebruikt. De foutopsporingsmodus moet zijn ingeschakeld om deze functie in te scha kelen.
 
-**Schemadrift:** [Schemadrift](concepts-data-flow-schema-drift.md) is de mogelijkheid van de gegevensfabriek om flexibele schema's in uw gegevensstromen native te verwerken zonder kolomwijzigingen expliciet te hoeven definiëren.
+**Schema-drift:** [schema-drift](concepts-data-flow-schema-drift.md) Data Factory is de mogelijkheid van een systeem eigen flexibele schema's in uw gegevens stromen zonder dat er expliciet kolom wijzigingen hoeven te worden gedefinieerd.
 
-* Schakel het **selectievakje Schemadrift toestaan** in als de bronkolommen vaak worden gewijzigd. Met deze instelling kunnen alle binnenkomende bronvelden door de transformaties naar de gootsteen stromen.
+* Schakel het selectie vakje **schema-drift toestaan** in als de bron kolommen vaak worden gewijzigd. Met deze instelling kunnen alle binnenkomende bron velden door de trans formaties worden getransporteerd naar de sink.
 
-* Als u **Infer-kolomtypen kiest,** worden gegevensfabrieken geïnstrueerd om gegevenstypen voor elke nieuwe kolom te detecteren en te definiëren. Als deze functie is uitgeschakeld, zijn alle zwevende kolommen van het type tekenreeks.
+* Bij het kiezen van een **afleidende kolom Type** wordt de instructie Data Factory om gegevens typen te detecteren en te definiëren voor elke nieuwe kolom die wordt gedetecteerd. Als deze functie is uitgeschakeld, zijn alle gedrijfde kolommen van het type teken reeks.
 
-**Schema valideren:** Als het validatieschema is geselecteerd, wordt de gegevensstroom niet uitgevoerd als de binnenkomende brongegevens niet overeenkomen met het gedefinieerde schema van de gegevensset.
+**Schema valideren:** Als validatie schema is geselecteerd, kan de gegevens stroom niet worden uitgevoerd als de binnenkomende bron gegevens niet overeenkomen met het gedefinieerde schema van de gegevensset.
 
-**Aantal regeltellingen overslaan:** Het veld regeltelling overslaan geeft aan hoeveel regels u aan het begin van de gegevensset moet negeren.
+**Aantal regels overs Laan:** In het veld aantal regel items overs Laan wordt aangegeven hoeveel regels aan het begin van de gegevensset moeten worden genegeerd.
 
-**Bemonstering:** Schakel steekproeven in om het aantal rijen van uw bron te beperken. Gebruik deze instelling wanneer u gegevens uit uw bron test of voorbeeldt voor foutopsporingsdoeleinden.
+**Steek proeven:** Schakel steek proeven in om het aantal rijen van de bron te beperken. Gebruik deze instelling wanneer u gegevens uit uw bron test of van uw source gebruikt voor fout opsporing.
 
-**Rijen met meerdere lijnen:** Selecteer rijen met meerdere regels als het brontekstbestand tekenreekswaarden bevat die meerdere rijen omvatten, d.w.z. nieuwe lijnen binnen een waarde. Deze instelling is alleen beschikbaar in de setgegevens van DelimitedText.
+**Meerregelige rijen:** Selecteer meerregelige rijen als uw bron tekst bestand teken reeks waarden bevat die meerdere rijen bevatten, dat wil zeggen een nieuwe regel in een waarde. Deze instelling is alleen beschikbaar in DelimitedText-gegevens sets.
 
-Als u wilt dat uw bron correct is geconfigureerd, schakelt u de foutopsporingsmodus in en haalt u een gegevensvoorbeeld op. Zie [Foutopsporingsmodus](concepts-data-flow-debug-mode.md)voor meer informatie .
+Als u wilt valideren of uw bron juist is geconfigureerd, schakelt u de foutopsporingsmodus in en haalt u een voor beeld van de gegevens op. Zie [debug mode (foutopsporingsmodus](concepts-data-flow-debug-mode.md)) voor meer informatie.
 
 > [!NOTE]
-> Wanneer de foutopsporingsmodus is ingeschakeld, overschrijft de configuratie van de rijlimiet in foutopsporingsinstellingen de bemonsteringsinstelling in de bron tijdens het voorbeeld van gegevens.
+> Wanneer de foutopsporingsmodus is ingeschakeld, wordt de sampling-instelling in de bron tijdens de preview-versie overschreven door de configuratie van het aantal rijen in de instellingen voor fout opsporing.
 
 ## <a name="projection"></a>Projectie
 
-Net als schema's in gegevenssets definieert de projectie in een bron de gegevenskolommen, -typen en -indelingen uit de brongegevens. Voor de meeste gegevenssettypen zoals SQL en Parket wordt de projectie in een bron bevestigd om het schema weer te geven dat in een gegevensset is gedefinieerd. Wanneer uw bronbestanden niet sterk zijn getypt (bijvoorbeeld platte csv-bestanden in plaats van Parketbestanden), u de gegevenstypen voor elk veld in de brontransformatie definiëren.
+Net als schema's in gegevens sets definieert de projectie in een bron de gegevens kolommen, typen en indelingen van de bron gegevens. Voor de meeste typen gegevensset, zoals SQL en Parquet, wordt de projectie van een bron vastgesteld op basis van het schema dat is gedefinieerd in een gegevensset. Als uw bron bestanden niet sterk worden getypt (bijvoorbeeld platte CSV-bestanden in plaats van Parquet-bestanden), kunt u de gegevens typen voor elk veld in de bron transformatie definiëren.
 
-![Instellingen op het tabblad Projectie](media/data-flow/source3.png "Projectie")
+![Instellingen op het tabblad projectie](media/data-flow/source3.png "Projectie")
 
-Als uw tekstbestand geen gedefinieerd schema heeft, selecteert u **Gegevenstype detecteren** zodat Gegevensfabriek de gegevenstypen bemonstert en afstelt. Selecteer **Standaardnotatie definiëren** om de standaardgegevensindelingen automatisch op te sporen.
+Als uw tekst bestand geen gedefinieerd schema heeft, selecteert u **gegevens type detecteren** zodat Data Factory de gegevens typen worden gesampled en afgeleid. Selecteer **standaard indeling instellen** op automatische detectie van de standaard gegevens indelingen.
 
-**Met het resetschema** wordt de projectie opnieuw ingesteld op wat is gedefinieerd in de gegevensset waarnaar wordt verwezen.
+Als u het **schema opnieuw instelt** , wordt de projectie ingesteld op wat is gedefinieerd in de gegevensset waarnaar wordt verwezen.
 
-U de kolomgegevenstypen wijzigen in een down-stream afgeleide kolomtransformatie. Gebruik een selecte transformatie om de kolomnamen te wijzigen.
+U kunt de kolom gegevens typen wijzigen in een trans formatie die is afgeleid van een dalende stroom kolom. Gebruik een SELECT trans formatie om de kolom namen te wijzigen.
 
-### <a name="import-schema"></a>Importschema
+### <a name="import-schema"></a>Schema importeren
 
-Met de knop **Schema importeren** op het tabblad **Projectie** u een actief foutopsporingscluster gebruiken om een schemaprojectie te maken. Als u in elk brontype beschikbaar bent, overschrijft het importeren van het schema hier de projectie die in de gegevensset is gedefinieerd. Het gegevenssetobject wordt niet gewijzigd.
+Met de knop **schema importeren** op het tabblad **projectie** kunt u een actief debug-cluster gebruiken om een schema projectie te maken. Bij het importeren van het schema dat in elk bron type beschikbaar is, wordt de projectie die in de gegevensset is gedefinieerd, overschreven. Het object dataset wordt niet gewijzigd.
 
-Dit is handig in datasets zoals Avro en CosmosDB die complexe gegevensstructuren ondersteunen, vereisen geen schemadefinities die in de gegevensset moeten bestaan.
+Dit is handig in gegevens sets zoals Avro en CosmosDB die ondersteuning bieden voor complexe gegevens structuren waarvoor geen schema definities in de gegevensset bestaan.
 
-## <a name="optimize-the-source-transformation"></a>De brontransformatie optimaliseren
+## <a name="optimize-the-source-transformation"></a>De bron transformatie optimaliseren
 
-Op het tabblad **Optimaliseren** voor de brontransformatie ziet u mogelijk een **bronpartitietype.** Deze optie is alleen beschikbaar wanneer uw bron Azure SQL Database is. Dit komt omdat Data Factory probeert verbindingen parallel te maken om grote query's uit te voeren tegen uw SQL Database-bron.
+Op het tabblad **optimaliseren** voor de bron transformatie ziet u mogelijk een type **bron** partitie. Deze optie is alleen beschikbaar als uw bron Azure SQL Database is. Dit komt omdat Data Factory verbinding probeert te maken met het parallel uitvoeren van grote query's op uw SQL Database bron.
 
-![Instellingen voor bronpartitie](media/data-flow/sourcepart3.png "Partitioneren")
+![Instellingen van de bron partitie](media/data-flow/sourcepart3.png "partitioneren")
 
-U hoeft geen gegevens te partitioneren op uw SQL Database-bron, maar partities zijn handig voor grote query's. U uw partitie baseren op een kolom of een query.
+U hoeft geen gegevens op uw SQL Database bron te partitioneren, maar partities zijn handig voor grote query's. U kunt de partitie baseren op een kolom of een query.
 
 ### <a name="use-a-column-to-partition-data"></a>Een kolom gebruiken om gegevens te partitioneren
 
-Selecteer in de brontabel een kolom om op te partitioneren. Stel ook het aantal partities in.
+Selecteer in de bron tabel een kolom waarop moet worden gepartitioneerd. Stel ook het aantal partities in.
 
 ### <a name="use-a-query-to-partition-data"></a>Een query gebruiken om gegevens te partitioneren
 
-U ervoor kiezen om de verbindingen te partitioneren op basis van een query. Voer de inhoud van een WHERE-predicaat in. Voer bijvoorbeeld het jaar > 1980 in.
+U kunt ervoor kiezen om de verbindingen te partitioneren op basis van een query. Voer de inhoud van een WHERE-predikaat in. Voer bijvoorbeeld jaar > 1980 in.
 
-Zie het [tabblad Optimaliseren](concepts-data-flow-overview.md#optimize)voor meer informatie over optimalisatie binnen de toewijzingsgegevensstroom.
+Zie het [tabblad optimaliseren](concepts-data-flow-overview.md#optimize)voor meer informatie over optimalisatie binnen de toewijzing van gegevens stromen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Begin met het bouwen van een [transformatie met afgeleide kolommen](data-flow-derived-column.md) en een geselecteerde [transformatie](data-flow-select.md).
+Beginnen met het bouwen van een [afgeleide kolom transformatie](data-flow-derived-column.md) en een [geselecteerde trans formatie](data-flow-select.md).

@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: stel zoekopdrachten voor met de Bing Autosuggest REST API en C #'
+title: "Quick Start: Zoek query's Voorst Ellen met de Bing Automatische suggesties REST API en C #"
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over hoe u snel beginnen met het voorstellen van zoektermen in realtime met de Bing Autosuggest API.
+description: Meer informatie over hoe u snel aan de slag kunt met de Automatische suggestie-API voor Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
 ms.openlocfilehash: 6c60516a87dbdc51e19bac5ee9b30f2f1a8b0254
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80239021"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Snelstart: stel zoekopdrachten voor met de Bing Autosuggest REST API en C #
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Quick Start: Zoek query's Voorst Ellen met de Bing Automatische suggesties REST API en C #
 
-Gebruik deze snelstart om te beginnen met het aanbellen naar de Bing Autosuggest API en het krijgen van de JSON-reactie. Deze eenvoudige C#-toepassing stuurt een gedeeltelijke zoekopdracht naar de API en retourneert suggesties voor zoekopdrachten. Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor dit voorbeeld is beschikbaar op [GitHub.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs)
+Gebruik deze Quick Start om te beginnen met het aanroepen van de Automatische suggestie-API voor Bing en het verkrijgen van het JSON-antwoord. Met deze eenvoudige C#-toepassing wordt een gedeeltelijke Zoek query naar de API verzonden en worden suggesties voor Zoek opdrachten geretourneerd. Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Elke editie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
+* Een versie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
 * Als u Linux/MacOS gebruikt, kan deze toepassing worden uitgevoerd met behulp van [Mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
-## <a name="create-a-visual-search-solution"></a>Een visuele zoekoplossing maken
+## <a name="create-a-visual-search-solution"></a>Een Visual Search-oplossing maken
 
 1. Maak een nieuwe console-oplossing in Visual Studio. Voeg de volgende naamruimten in het hoofdcodebestand in.
 
@@ -40,7 +40,7 @@ Gebruik deze snelstart om te beginnen met het aanbellen naar de Bing Autosuggest
     using System.Text;
     ```
 
-2. Maak in een nieuwe klasse variabelen voor uw API-host en -pad, [marktcode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)en een gedeeltelijke zoekopdracht. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
+2. Maak in een nieuwe klasse variabelen voor uw API-host en-pad, de [markt code](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)en een gedeeltelijke Zoek query. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```csharp
     static string host = "https://api.cognitive.microsoft.com";
@@ -54,7 +54,7 @@ Gebruik deze snelstart om te beginnen met het aanbellen naar de Bing Autosuggest
 
 ## <a name="create-and-send-an-api-request"></a>Een API-aanvraag maken en verzenden
 
-1. Maak een `Autosuggest()` functie die is aangeroepen om een aanvraag naar de API te verzenden. Maak een `HttpClient()`nieuwe en voeg uw `Ocp-Apim-Subscription-Key` abonnementssleutel toe aan de koptekst.
+1. Maak een functie met `Autosuggest()` de naam voor het verzenden van een aanvraag naar de API. Maak een nieuwe `HttpClient()`en voeg uw abonnements sleutel toe aan de `Ocp-Apim-Subscription-Key` koptekst.
 
     ```csharp
     async static void Autosuggest()
@@ -65,13 +65,13 @@ Gebruik deze snelstart om te beginnen met het aanbellen naar de Bing Autosuggest
     }
     ```
 
-2. Maak in dezelfde functie hierboven een aanvraag URI door uw API-host en pad te combineren. Sluit uw markt `?mkt=` toe aan de parameter `&query=` en uw query aan de parameter. Zorg ervoor dat u uw query URL-coderen. 
+2. In dezelfde functie hierboven maakt u een aanvraag-URI door uw API-host en-pad te combi neren. Voeg uw markt toe aan `?mkt=` de para meter en uw query naar `&query=` de para meter. Zorg ervoor dat u URL-uw query versleutelt. 
 
     ```csharp
     string uri = host + path + "?mkt=" + market + "&query=" + System.Net.WebUtility.UrlEncode (query);
     ```
 
-3. Stuur het verzoek naar de hierboven geconstrueerde uri en druk het antwoord af.
+3. De aanvraag verzenden naar de URI die hierboven is gemaakt en het antwoord afdrukken.
 
     ```csharp
     HttpResponseMessage response = await client.GetAsync(uri);
@@ -80,7 +80,7 @@ Gebruik deze snelstart om te beginnen met het aanbellen naar de Bing Autosuggest
     Console.WriteLine(contentString);
     ```
 
-4. In de belangrijkste methode van `Autosuggest()`uw programma, bel .
+4. Bel `Autosuggest()`in de hoofd methode van uw programma.
 
     ```csharp
     static void Main(string[] args)

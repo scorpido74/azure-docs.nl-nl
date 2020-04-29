@@ -1,20 +1,20 @@
 ---
-title: Overal Java-toepassingen bewaken - Azure Monitor Application Insights
-description: Codeless application performance monitoring voor Java-toepassingen die in elke omgeving worden uitgevoerd zonder de app in te voeren. Zoek de hoofdoorzaak van de problemen d met behulp van gedistribueerde tracering en toepassingskaart.
+title: Java-toepassingen overal bewaken-Azure Monitor Application Insights
+description: Toepassings prestatie bewaking voor Java-toepassingen die worden uitgevoerd in een wille keurige omgeving zonder de app te instrumenteren. Zoek de hoofd oorzaak van de problemen d met behulp van gedistribueerde tracering en toepassings overzicht.
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.openlocfilehash: 5d930d349a2ab1efbd7a61904874bf6bdb411889
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641886"
 ---
-# <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Configuratieopties - Java standalone agent voor Azure Monitor Application Insights
+# <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Configuratie opties-Java zelfstandige agent voor Azure Monitor Application Insights
 
 
 
-## <a name="connection-string-and-role-name"></a>Verbindingstekenreeks en rolnaam
+## <a name="connection-string-and-role-name"></a>Verbindings reeks en rolnaam
 
 ```json
 {
@@ -27,34 +27,34 @@ ms.locfileid: "81641886"
 }
 ```
 
-De verbindingstekenreeks is vereist en de rolnaam is belangrijk wanneer u gegevens van verschillende toepassingen naar dezelfde Application Insights-bron verzendt.
+De connection string is vereist en de rolnaam is belang rijk telkens wanneer u gegevens van verschillende toepassingen naar dezelfde Application Insights resource verzendt.
 
-Hieronder vindt u meer details en extra configuratieopties voor meer informatie.
+Meer informatie en aanvullende configuratie opties vindt u hieronder voor meer informatie.
 
-## <a name="configuration-file-path"></a>Bestandspad voor configuratie
+## <a name="configuration-file-path"></a>Pad naar configuratie bestand
 
-Standaard verwacht Application Insights Java 3.0 Preview dat `ApplicationInsights.json`het configuratiebestand een naam `applicationinsights-agent-3.0.0-PREVIEW.jar`krijgt en zich in dezelfde map bevindt als .
+Application Insights Java 3,0 Preview verwacht dat het configuratie bestand wordt benoemd `ApplicationInsights.json`en zich in dezelfde map als `applicationinsights-agent-3.0.0-PREVIEW.jar`bevindt.
 
-U uw eigen configuratiebestandspad opgeven met
+U kunt uw eigen pad naar een configuratie bestand opgeven met
 
-* `APPLICATIONINSIGHTS_CONFIGURATION_FILE`omgevingsvariabele, of
-* `applicationinsights.configurationFile`Java-systeemeigenschap
+* `APPLICATIONINSIGHTS_CONFIGURATION_FILE`omgevings variabele of
+* `applicationinsights.configurationFile`Java-systeem eigenschap
 
-Als u een relatief pad opgeeft, wordt dit `applicationinsights-agent-3.0.0-PREVIEW.jar` opgelost ten opzichte van de map waar zich bevindt.
+Als u een relatief pad opgeeft, wordt dit omgezet ten opzichte van de `applicationinsights-agent-3.0.0-PREVIEW.jar` map waar zich bevindt.
 
 ## <a name="connection-string"></a>Verbindingsreeks
 
-Dit is vereist. U uw verbindingstekenreeks vinden in uw bron Application Insights:
+Dit is vereist. U kunt uw connection string vinden in uw Application Insights-resource:
 
-:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Verbindingstekenreeks voor toepassingsinzichten":::
+:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Verbindings reeks Application Insights":::
 
-U de verbindingstekenreeks ook `APPLICATIONINSIGHTS_CONNECTION_STRING`instellen met behulp van de omgevingsvariabele.
+U kunt de connection string ook instellen met behulp van `APPLICATIONINSIGHTS_CONNECTION_STRING`de omgevings variabele.
 
-## <a name="cloud-role-name"></a>Naam van cloudrol
+## <a name="cloud-role-name"></a>Rolnaam van Cloud
 
-De naam van de cloudrol wordt gebruikt om de component op de toepassingskaart te labelen.
+De naam van de Cloud functie wordt gebruikt om het onderdeel op het toepassings overzicht te labelen.
 
-Als u de naam van de cloudrol wilt instellen:
+Als u de naam van de Cloud functie wilt instellen:
 
 ```json
 {
@@ -66,15 +66,15 @@ Als u de naam van de cloudrol wilt instellen:
 }
 ```
 
-Als de naam van de cloudrol niet is ingesteld, wordt de naam van de Application Insights-bron gebruikt om de component op de toepassingskaart te labelen.
+Als de naam van de Cloud functie niet is ingesteld, wordt de naam van de Application Insights resource gebruikt voor het labelen van het onderdeel op de toepassings toewijzing.
 
-U ook de naam van `APPLICATIONINSIGHTS_ROLE_NAME`de cloudrol instellen met behulp van de omgevingsvariabele.
+U kunt ook de naam van de Cloud functie instellen met behulp van de omgevings variabele `APPLICATIONINSIGHTS_ROLE_NAME`.
 
-## <a name="cloud-role-instance"></a>Cloudrolinstantie
+## <a name="cloud-role-instance"></a>Cloud rolinstantie
 
-Cloudrolinstantie standaard voor de naam van de machine.
+De computer naam van de instantie van de Cloud wordt standaard ingesteld.
 
-Als u de instantie van de cloudrol wilt instellen op iets anders in plaats van de naam van de machine:
+Als u de Cloud rolinstantie wilt instellen op iets anders dan de naam van de computer:
 
 ```json
 {
@@ -86,15 +86,15 @@ Als u de instantie van de cloudrol wilt instellen op iets anders in plaats van d
 }
 ```
 
-U de cloudrolinstantie ook `APPLICATIONINSIGHTS_ROLE_INSTANCE`instellen met behulp van de omgevingsvariabele.
+U kunt ook de Cloud rolinstantie instellen met behulp van de `APPLICATIONINSIGHTS_ROLE_INSTANCE`omgevings variabele.
 
-## <a name="application-log-capture"></a>Het vastleggen van toepassingslogboeken
+## <a name="application-log-capture"></a>Toepassings logboeken vastleggen
 
-Application Insights Java 3.0 Preview legt automatisch applicatielogging vast via Log4j, Logback en java.util.logging.
+Application Insights Java 3,0 Preview registreert automatisch toepassings logboeken via Log4j, logback en Java. util. log.
 
-Standaard wordt alle logboekregistratie `WARN` vastgelegd die op niveau of hoger wordt uitgevoerd.
+Standaard worden alle logboek registraties vastgelegd op `WARN` niveau of hoger.
 
-Als u deze drempelwaarde wilt wijzigen:
+Als u deze drempel waarde wilt wijzigen:
 
 ```json
 {
@@ -110,24 +110,24 @@ Als u deze drempelwaarde wilt wijzigen:
 }
 ```
 
-Dit zijn `threshold` de geldige waarden die `ApplicationInsights.json` u in het bestand opgeven en hoe deze overeenkomen met logboekniveaus in verschillende logboekframeworks:
+Dit zijn de geldige `threshold` waarden die u in het `ApplicationInsights.json` bestand kunt opgeven en de manier waarop ze overeenkomen met de registratie niveaus in verschillende registratie raamwerken:
 
-| `threshold`  | Log4j  | Aanmelding | JUL     |
+| `threshold`  | Log4j  | Logback | JUL     |
 |--------------|--------|---------|---------|
 | UIT          | UIT    | UIT     | UIT     |
-| Fatale        | Fatale  | FOUT   | Ernstige  |
-| FOUT/ERNSTIG | FOUT  | FOUT   | Ernstige  |
-| WAARSCHUWING/WAARSCHUWING | Waarschuwen   | Waarschuwen    | WAARSCHUWING |
-| Info         | Info   | Info    | Info    |
-| Config       | FOUTOPSPORING  | FOUTOPSPORING   | Config  |
-| FOUTOPSPORING/BOETE   | FOUTOPSPORING  | FOUTOPSPORING   | Fijn    |
-| Fijnere        | FOUTOPSPORING  | FOUTOPSPORING   | Fijnere   |
-| TRACE/FINEST | Trace  | Trace   | Beste  |
+| FATALE        | FATALE  | FOUT   | ZEER  |
+| FOUT/ERNSTIG | FOUT  | FOUT   | ZEER  |
+| WAARSCHUWEN/WAARSCHUWING | WETEN   | WETEN    | WAARSCHUWING |
+| VALUTA         | VALUTA   | VALUTA    | VALUTA    |
+| CONFIGURATIES       | FOUTOPSPORING  | FOUTOPSPORING   | CONFIGURATIES  |
+| FOUTEN OPSPOREN/VERFIJNEN   | FOUTOPSPORING  | FOUTOPSPORING   | BLIJVEN    |
+| KLEINERE        | FOUTOPSPORING  | FOUTOPSPORING   | KLEINERE   |
+| TRACERING/KLEINSTE | TRACERINGS  | TRACERINGS   | MEEST  |
 | ALLE          | ALLE    | ALLE     | ALLE     |
 
-## <a name="jmx-metrics"></a>JMX-statistieken
+## <a name="jmx-metrics"></a>Metrische gegevens van JMX
 
-Als je een aantal JMX-statistieken hebt die je wilt vastleggen:
+Als u bepaalde JMX-metrische gegevens hebt die u wilt vastleggen:
 
 ```json
 {
@@ -152,7 +152,7 @@ Als je een aantal JMX-statistieken hebt die je wilt vastleggen:
 
 ## <a name="micrometer"></a>Micrometer
 
-Als uw toepassing [Micrometer](https://micrometer.io)gebruikt, voegt Application Insights 3.0 (te beginnen met Preview.2) zichzelf nu toe aan het globale register van micrometer en legt u micrometerstatistieken vast.
+Standaard, als uw toepassing [micrometer](https://micrometer.io)gebruikt, wordt Application Insights 3,0 (beginnend met preview. 2) nu toegevoegd aan het globale REGI ster van micrometer en worden er micrometer-metrische gegevens vastgelegd.
 
 Als u deze functie wilt uitschakelen:
 
@@ -172,7 +172,7 @@ Als u deze functie wilt uitschakelen:
 
 ## <a name="heartbeat"></a>Hartslag
 
-Standaard verzendt Application Insights Java 3.0 Preview eenmaal per 15 minuten een heartbeatstatistiek. Als u de hartslagstatistiek gebruikt om waarschuwingen te activeren, u de frequentie van deze hartslag verhogen:
+Application Insights Java 3,0 Preview verzendt standaard elke 15 minuten een heartbeat-metriek. Als u de heartbeat-metriek gebruikt om waarschuwingen te activeren, kunt u de frequentie van deze heartbeat verhogen:
 
 ```json
 {
@@ -187,16 +187,16 @@ Standaard verzendt Application Insights Java 3.0 Preview eenmaal per 15 minuten 
 ```
 
 > [!NOTE]
-> U de frequentie van deze heartbeat niet verlagen, omdat de heartbeatgegevens ook worden gebruikt om het gebruik van Application Insights bij te houden.
+> U kunt de frequentie van deze heartbeat niet verlagen, omdat de heartbeat-gegevens ook worden gebruikt om Application Insights gebruik bij te houden.
 
 ## <a name="sampling"></a>Steekproeven
 
-Sampling is handig als u de kosten moet verlagen.
-De bemonstering wordt uitgevoerd als functie op de bedrijfs-ID (ook wel trace-ID genoemd), zodat dezelfde bedrijfs-ID altijd tot dezelfde bemonsteringsbeslissing zal leiden. Dit zorgt ervoor dat u geen delen van een gedistribueerde transactie krijgt die worden bemonsterd terwijl andere delen ervan worden bemonsterd.
+Steek proeven zijn handig als u kosten wilt verlagen.
+Steek proeven worden uitgevoerd als een functie van de bewerkings-ID (ook wel traceer-ID genoemd), zodat dezelfde bewerkings-ID altijd resulteert in dezelfde steekproef beslissing. Dit zorgt ervoor dat er geen delen van een gedistribueerde trans actie worden opgehaald, terwijl andere onderdelen hiervan worden bemonsterd.
 
-Als u bijvoorbeeld steekproeven instelt op 10%, ziet u slechts 10% van uw transacties, maar elk van deze 10% heeft volledige end-to-end transactiegegevens.
+Als u bijvoorbeeld steek proeven instelt op 10%, worden er slechts 10% van uw trans acties weer geven, maar elke waarde van 10% heeft volledige end-to-end-transactie gegevens.
 
-Hier is een voorbeeld hoe u de steekproef instelt op **10% van alle transacties** - zorg ervoor dat u de bemonsteringsfrequentie instelt die correct is voor uw use case:
+Hier volgt een voor beeld van het instellen van de steek proef op **10% van alle trans acties** . Controleer of u de sampling frequentie hebt ingesteld die juist is voor uw gebruiks voorbeeld:
 
 ```json
 {
@@ -214,7 +214,7 @@ Hier is een voorbeeld hoe u de steekproef instelt op **10% van alle transacties*
 
 ## <a name="http-proxy"></a>HTTP-proxy
 
-Als uw toepassing zich achter een firewall bevindt en niet rechtstreeks verbinding kan maken met Application Insights (zie [IP-adressen die worden gebruikt door Application Insights),](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)u Application Insights Java 3.0 Preview configureren om een HTTP-proxy te gebruiken:
+Als uw toepassing zich achter een firewall bevindt en niet rechtstreeks verbinding kan maken met Application Insights (Zie [IP-adressen die worden gebruikt door Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)), kunt u Application Insights Java 3,0 Preview configureren voor het gebruik van een http-proxy:
 
 ```json
 {
@@ -229,13 +229,13 @@ Als uw toepassing zich achter een firewall bevindt en niet rechtstreeks verbindi
 }
 ```
 
-## <a name="self-diagnostics"></a>Zelfdiagnostiek
+## <a name="self-diagnostics"></a>Zelf diagnostische gegevens
 
-"Zelfdiagnostiek" verwijst naar interne logging van Application Insights Java 3.0 Preview.
+' Zelf diagnostische gegevens ' verwijst naar interne logboek registratie van Application Insights Java 3,0 Preview.
 
-Dit kan handig zijn voor het opsporen en diagnosticeren van problemen met Application Insights zelf.
+Dit kan handig zijn voor herkennen en het diagnosticeren van problemen met Application Insights zichzelf.
 
-Standaard wordt deze logboeken `warn`logboeken op console met niveau, overeenkomend met deze configuratie:
+Standaard meldt de app aan op de console `warn`met niveau, die overeenkomt met deze configuratie:
 
 ```json
 {
@@ -250,9 +250,9 @@ Standaard wordt deze logboeken `warn`logboeken op console met niveau, overeenkom
 }
 ```
 
-Geldige niveaus `OFF` `ERROR`zijn `WARN` `INFO`, `DEBUG`, `TRACE`, , en .
+Geldige niveaus zijn `OFF`, `ERROR` `WARN` `INFO` `DEBUG`,,, en `TRACE`.
 
-Als u zich wilt aanmelden bij een bestand in plaats van u te registreren bij de console:
+Als u zich wilt aanmelden bij een bestand in plaats van zich aan te melden bij de console:
 
 ```json
 {
@@ -269,4 +269,4 @@ Als u zich wilt aanmelden bij een bestand in plaats van u te registreren bij de 
 }
 ```
 
-Bij het gebruik van bestandsregistratie, zodra het bestand hits `maxSizeMB`, zal het rollover, het bijhouden van alleen de meest recent voltooide log bestand in aanvulling op de huidige log bestand.
+Wanneer u logboek registratie gebruikt en het bestand is `maxSizeMB`gevonden, wordt het overschakelt, waarbij alleen het meest recente voltooide logboek bestand naast het huidige logboek bestand wordt bewaard.

@@ -10,22 +10,22 @@ ms.date: 10/09/2019
 ms.author: dsindona
 ms.custom: include file
 ms.openlocfilehash: f79b25c98ae2e764f607fc5a12bc311ed0edacae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80286180"
 ---
-Maak rechtstreeks contact met klanten door uw aanbieding in de marktplaatsen te vermelden en uw CRM-systeem (Customer Relationship Management) aan te sluiten, zodat u klantcontactgegevens ontvangen onmiddellijk nadat een klant interesse heeft getoond of uw Product.
+Maak rechtstreeks verbinding met klanten door uw aanbieding in de Marketplace te vermelden en uw CRM-systeem (Customer Relationship Management) te koppelen zodat u meteen contact informatie van klanten kunt ontvangen nadat een klant rente heeft ingedrukt of uw product implementeert.
 
-- **Kies een leadbestemming** (vervolgkeuzemenu): Geef verbindingsgegevens op aan het CRM-systeem waar u wilt dat we klantleads verzenden. 
+- **Kies een doel** voor de lead (vervolg keuzelijst): Geef de verbindings gegevens op het CRM-systeem op waar u leads van klanten wilt verzenden. 
 
-Partner Center ondersteunt de volgende CRM-systemen voor leadmanagement. Selecteer de koppeling voor installatie-instructies.
+Het partner Centrum ondersteunt de volgende CRM-systemen voor lead beheer. Selecteer de koppeling voor installatie-instructies.
 
-- [Azure Blob](../commercial-marketplace-lead-management-instructions-azure-blob.md) : geef de tekenreeks contacte-mail, containernaam en opslagaccountverbinding op. 
-- [Azure-tabel](../commercial-marketplace-lead-management-instructions-azure-table.md) : geef de tekenreeks voor e-mail en opslagaccount voor contactpersonen op. 
-- [Dynamics CRM Online](../commercial-marketplace-lead-management-instructions-dynamics.md) - Geef de e-mail, URL en verificatiemodus voor contactpersonen op (Office 365 of Azure Active Directory).
-- [Https-eindpunt](../commercial-marketplace-lead-management-instructions-https.md) - E-mailadres en URL van HTTPS-eindpunt opgeven. 
-- [Marketo](../commercial-marketplace-lead-management-instructions-marketo.md) - Geef contact e-mail, formulier-ID, Munchkin account ID, en server-ID.
-- [Salesforce](../commercial-marketplace-lead-management-instructions-salesforce.md) - Geef e-mail en organisatie-id op. 
+- [Azure-Blob](../commercial-marketplace-lead-management-instructions-azure-blob.md) : Geef contact-e-mail, container naam en opslag account op Connection String. 
+- [Azure-tabel](../commercial-marketplace-lead-management-instructions-azure-table.md) : Geef een e-mail adres en een Connection String voor het opslag account op. 
+- [Dynamics CRM Online](../commercial-marketplace-lead-management-instructions-dynamics.md) : Geef contact op met E-mail, URL en verificatie modus (Office 365 of Azure Active Directory).
+- [Https-eind punt](../commercial-marketplace-lead-management-instructions-https.md) : Geef een e-mail adres en HTTPS-eind punt-URL op. 
+- [Marketo](../commercial-marketplace-lead-management-instructions-marketo.md) : Geef contact-e-mail, de formulier-id, de Munchkin-account-id en de server-id op.
+- [Sales Force](../commercial-marketplace-lead-management-instructions-salesforce.md) : Geef contact-e-mail en organisatie-id op. 
 

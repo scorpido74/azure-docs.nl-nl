@@ -1,6 +1,6 @@
 ---
-title: Deelnemen aan een Ubuntu-vm voor Azure AD Domain Services | Microsoft Documenten
-description: Meer informatie over het configureren en aansluiten van een virtuele Ubuntu Linux-machine bij een beheerd Azure AD Domain Services-domein.
+title: Een Ubuntu-VM toevoegen aan Azure AD Domain Services | Microsoft Docs
+description: Meer informatie over het configureren en toevoegen van een Ubuntu Linux virtuele machine aan een Azure AD Domain Services beheerd domein.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,59 +12,59 @@ ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
 ms.openlocfilehash: 74af841b777494744c72ed219bacd3b3835d41ac
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617554"
 ---
-# <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Word lid van een virtuele ubuntu Linux-machine naar een beheerd Azure AD Domain Services-domein
+# <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Een Ubuntu Linux virtuele machine toevoegen aan een Azure AD Domain Services beheerd domein
 
-Als u gebruikers wilt laten inloggen op virtuele machines (VM's) in Azure met één set referenties, u VM's toevoegen aan een beheerd beheerd domein van Azure Active Directory Domain Services (AD DS). Wanneer u lid wordt van een VM in een door Azure AD DS beheerd domein, kunnen gebruikersaccounts en referenties uit het domein worden gebruikt om u aan te melden en servers te beheren. Groepslidmaatschappen uit het beheerde Azure AD DS-domein worden ook toegepast om u toegang te geven tot bestanden of services op de VM.
+Als u wilt dat gebruikers zich met één set referenties aanmelden bij virtuele machines (Vm's) in azure, kunt u Vm's toevoegen aan een door Azure Active Directory Domain Services (AD DS) beheerd domein. Wanneer u een virtuele machine koppelt aan een door Azure AD DS beheerd domein, kunnen gebruikers accounts en referenties van het domein worden gebruikt voor het aanmelden en beheren van servers. Groepslid maatschappen van het door Azure AD DS beheerde domein worden ook toegepast om u de toegang tot bestanden of services op de virtuele machine te kunnen beheren.
 
-In dit artikel ziet u hoe u een Ubuntu Linux VM deelnemen aan een door Azure AD DS beheerd domein.
+In dit artikel wordt beschreven hoe u een Ubuntu Linux VM kunt koppelen aan een door Azure AD DS beheerd domein.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze zelfstudie wilt voltooien, hebt u de volgende bronnen en bevoegdheden nodig:
+U hebt de volgende resources en bevoegdheden nodig om deze zelf studie te volt ooien:
 
 * Een actief Azure-abonnement.
-    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)aan .
-* Een Azure Active Directory-tenant die is gekoppeld aan uw abonnement, gesynchroniseerd met een on-premises directory of een map met alleen wolken.
-    * Maak indien nodig [een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account.][associate-azure-ad-tenant]
-* Een beheerd azure Directory Domain Services-domein is ingeschakeld en geconfigureerd in uw Azure AD-tenant.
-    * Indien nodig maakt [en configureert][create-azure-ad-ds-instance]de eerste zelfstudie een Azure Active Directory Domain Services-exemplaar .
-* Een gebruikersaccount dat deel uitmaakt van het door Azure AD DS beheerde domein.
+    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
+    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+* Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
+    * Als dat nodig is, [maakt en configureert][create-azure-ad-ds-instance]de eerste zelf studie een Azure Active Directory Domain Services-exemplaar.
+* Een gebruikers account dat deel uitmaakt van het door Azure AD DS beheerde domein.
 
-## <a name="create-and-connect-to-an-ubuntu-linux-vm"></a>Maak en maak verbinding met een Ubuntu Linux VM
+## <a name="create-and-connect-to-an-ubuntu-linux-vm"></a>Een Ubuntu Linux-VM maken en er verbinding mee tot stand brengen
 
-Als u een bestaande Ubuntu Linux VM in Azure hebt, maakt u verbinding met deze met SSH en gaat u verder naar de volgende stap om [te beginnen met het configureren van de VM.](#configure-the-hosts-file)
+Als u een bestaande Ubuntu Linux virtuele machine in azure hebt, kunt u er verbinding mee maken via SSH. Ga vervolgens verder met de volgende stap om [de virtuele machine te configureren](#configure-the-hosts-file).
 
-Als u een Ubuntu Linux VM wilt maken of een test-VM wilt maken voor gebruik met dit artikel, u een van de volgende methoden gebruiken:
+Als u een Ubuntu Linux virtuele machine moet maken of een test-VM wilt maken voor gebruik met dit artikel, kunt u een van de volgende methoden gebruiken:
 
 * [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure-CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
-Wanneer u de VM maakt, moet u opletten dat de virtuele netwerkinstellingen kunnen communiceren met het beheerde Azure AD DS-domein:
+Wanneer u de virtuele machine maakt, moet u aandacht best Eden aan de instellingen voor virtueel netwerk om ervoor te zorgen dat de virtuele machine kan communiceren met het door Azure AD DS beheerde domein:
 
-* Implementeer de VM in hetzelfde of een virtueel netwerk met peered waarin u Azure AD Domain Services hebt ingeschakeld.
-* Implementeer de VM in een ander subnet dan uw exemplaar Azure AD Domain Services.
+* Implementeer de virtuele machine in dezelfde of een peered virtueel netwerk waarin u Azure AD Domain Services hebt ingeschakeld.
+* Implementeer de virtuele machine in een ander subnet dan uw Azure AD Domain Services-exemplaar.
 
-Zodra de VM is geïmplementeerd, volgt u de stappen om verbinding te maken met de VM met Behulp van SSH.
+Wanneer de VM is geïmplementeerd, volgt u de stappen om via SSH verbinding te maken met de VM.
 
 ## <a name="configure-the-hosts-file"></a>Het hosts-bestand configureren
 
-Als u ervoor wilt zorgen dat de VM-hostnaam correct is geconfigureerd voor het beheerde domein, bewerkt u het *bestand /etc/hosts* en stelt u de hostnaam in:
+Om ervoor te zorgen dat de hostnaam van de virtuele machine correct is geconfigureerd voor het beheerde domein, bewerkt u het bestand *bestand/etc/hosts* en stelt u de hostnaam in:
 
 ```console
 sudo vi /etc/hosts
 ```
 
-Werk in het *hosts-bestand* het *localhost-adres* bij. In het volgende voorbeeld:
+Werk in het bestand *hosts* het *localhost* -adres bij. In het volgende voorbeeld:
 
-* *aaddscontoso.com* is de DNS-domeinnaam van uw door Azure AD DS beheerde domein.
-* *ubuntu* is de hostnaam van uw Ubuntu VM die u aansluit bij het beheerde domein.
+* *aaddscontoso.com* is de DNS-domein naam van uw door Azure AD DS beheerde domein.
+* *Ubuntu* is de hostnaam van de Ubuntu-VM die u aan het beheerde domein toevoegt.
 
 Werk deze namen bij met uw eigen waarden:
 
@@ -72,13 +72,13 @@ Werk deze namen bij met uw eigen waarden:
 127.0.0.1 ubuntu.aaddscontoso.com ubuntu
 ```
 
-Sla het *hosts-bestand* op en `:wq` sluit deze af met de opdracht van de editor.
+Als u klaar bent, slaat u het *hosts* -bestand `:wq` op en sluit u het af met de opdracht van de editor.
 
 ## <a name="install-required-packages"></a>De vereiste pakketten installeren
 
-De VM heeft een aantal extra pakketten nodig om de VM toe te voegen aan het beheerde Azure AD DS-domein. Als u deze pakketten wilt installeren en configureren, werkt u de hulpprogramma's voor domeinverbinding bij en installeert u deze`apt-get`
+De VM moet enkele extra pakketten hebben om de virtuele machine toe te voegen aan het door Azure AD DS beheerde domein. Als u deze pakketten wilt installeren en configureren, moet u de hulpprogram ma's voor domein deelname bijwerken en installeren met`apt-get`
 
-Tijdens de Kerberos-installatie vraagt het *krb5-gebruikerspakket* om de naam van het rijk in ALLE HOOFDLETTERS. Als de naam van uw door Azure AD DS beheerde domein bijvoorbeeld *aaddscontoso.com*is, voert u *AADDSCONTOSO.COM* in als realm. De installatie `[realm]` schrijft `[domain_realm]` de en secties in */etc/krb5.conf* configuratiebestand. Zorg ervoor dat u de realm een ALLE HOOFDLETTERs opgeeft:
+Tijdens de installatie van Kerberos vraagt het *krb5-gebruikers* pakket voor de realm-naam in alle hoofd letters. Als de naam van uw Azure AD DS Managed Domain bijvoorbeeld *aaddscontoso.com*is, voert u *AADDSCONTOSO.com* in als de realm. De installatie schrijft de `[realm]` secties `[domain_realm]` en in het configuratie bestand */etc/krb5.conf* . Zorg ervoor dat u de realm een hoofd letter opgeeft:
 
 ```console
 sudo apt-get update
@@ -87,29 +87,29 @@ sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp n
 
 ## <a name="configure-network-time-protocol-ntp"></a>Network Time Protocol (NTP) configureren
 
-Om domeincommunicatie correct te laten werken, moeten de datum en tijd van uw Ubuntu VM worden gesynchroniseerd met het door Azure AD DS beheerde domein. Voeg de NTP-hostnaam van uw Azure AD DS-beheerde domein toe aan het bestand */etc/ntp.conf.*
+Voor een juiste werking van domein communicatie moeten de datum en tijd van uw Ubuntu-VM worden gesynchroniseerd met het door Azure AD DS beheerde domein. Voeg de NTP-hostnaam van uw Azure AD DS beheerde domein toe aan het */etc/ntp.conf* -bestand.
 
-1. Open het *ntp.conf-bestand* met een editor:
+1. Open het bestand *NTP. conf* met een editor:
 
     ```console
     sudo vi /etc/ntp.conf
     ```
 
-1. Maak in het *ntp.conf-bestand* een regel om de DNS-naam van uw Azure AD DS-beheerde domein toe te voegen. In het volgende voorbeeld wordt een vermelding voor *aaddscontoso.com* toegevoegd. Gebruik uw eigen DNS-naam:
+1. Maak in het bestand *NTP. conf* een regel om de DNS-naam van uw Azure AD DS beheerde domein toe te voegen. In het volgende voor beeld wordt een vermelding voor *aaddscontoso.com* toegevoegd. Uw eigen DNS-naam gebruiken:
 
     ```console
     server aaddscontoso.com
     ```
 
-    Sla het *ntp.conf-bestand* op en `:wq` sluit deze af met de opdracht van de editor.
+    Als u klaar bent, slaat u het bestand *NTP. conf* op `:wq` en sluit u het af met de opdracht van de editor.
 
-1. Om ervoor te zorgen dat de VM wordt gesynchroniseerd met het door Azure AD DS beheerde domein, zijn de volgende stappen nodig:
+1. Voer de volgende stappen uit om ervoor te zorgen dat de virtuele machine is gesynchroniseerd met het beheerde Azure AD DS-domein:
 
     * De NTP-server stoppen
     * De datum en tijd van het beheerde domein bijwerken
     * De NTP-service starten
 
-    Voer de volgende opdrachten uit om deze stappen uit te voeren. Gebruik uw eigen DNS-naam met de `ntpdate` opdracht:
+    Voer de volgende opdrachten uit om deze stappen uit te voeren. Gebruik uw eigen DNS-naam met `ntpdate` de opdracht:
 
     ```console
     sudo systemctl stop ntp
@@ -117,45 +117,45 @@ Om domeincommunicatie correct te laten werken, moeten de datum en tijd van uw Ub
     sudo systemctl start ntp
     ```
 
-## <a name="join-vm-to-the-managed-domain"></a>Lid worden van VM naar het beheerde domein
+## <a name="join-vm-to-the-managed-domain"></a>Virtuele machine toevoegen aan het beheerde domein
 
-Nu de vereiste pakketten zijn geïnstalleerd op de VM en NTP is geconfigureerd, u lid worden van de VM naar het beheerde Azure AD DS-domein.
+Nu de vereiste pakketten zijn geïnstalleerd op de VM en NTP is geconfigureerd, voegt u de virtuele machine toe aan het beheerde domein van Azure AD DS.
 
-1. Gebruik `realm discover` de opdracht om het beheerde Azure AD DS-domein te ontdekken. In het volgende voorbeeld wordt het *AADDSCONTOSO.COM*ontdekt. Geef uw eigen Azure AD DS-beheerde domeinnaam op in ALLE HOOFDLETTERS:
+1. Gebruik de `realm discover` opdracht om het beheerde domein van Azure AD DS te detecteren. In het volgende voor beeld wordt de realm- *AADDSCONTOSO.com*gedetecteerd. Geef in alle hoofd letters uw eigen Azure AD DS beheerde domein naam op:
 
     ```console
     sudo realm discover AADDSCONTOSO.COM
     ```
 
-   Als `realm discover` de opdracht uw door Azure AD DS beheerde domein niet kan vinden, controleert u de volgende stappen voor het oplossen van problemen:
+   Als de `realm discover` opdracht uw door Azure AD DS beheerde domein niet kan vinden, raadpleegt u de volgende stappen voor probleem oplossing:
 
-    * Zorg ervoor dat het domein bereikbaar is via de VM. Probeer `ping aaddscontoso.com` te zien of een positief antwoord wordt geretourneerd.
-    * Controleer of de VM is geïmplementeerd op hetzelfde of een virtueel netwerk met peered waarin het beheerde Azure AD DS-beheerde domein beschikbaar is.
-    * Controleer of de DNS-serverinstellingen voor het virtuele netwerk zijn bijgewerkt om te wijzen op de domeincontrollers van het beheerde Azure AD DS-domein.
+    * Zorg ervoor dat het domein bereikbaar is vanaf de VM. Probeer `ping aaddscontoso.com` te zien of er een positief antwoord wordt geretourneerd.
+    * Controleer of de virtuele machine is geïmplementeerd op hetzelfde of een peered virtueel netwerk waarin het beheerde domein van Azure AD DS beschikbaar is.
+    * Controleer of de DNS-server instellingen voor het virtuele netwerk zijn bijgewerkt zodat ze verwijzen naar de domein controllers van het door Azure AD DS beheerde domein.
 
-1. Nu kerberos initialiseren `kinit` met behulp van de opdracht. Geef een gebruiker op die deel uitmaakt van het beheerde Azure AD DS-domein. Voeg indien nodig [een gebruikersaccount toe aan een groep in Azure AD.](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)
+1. Initialiseer nu Kerberos met behulp `kinit` van de opdracht. Geef een gebruiker op die deel uitmaakt van het door Azure AD DS beheerde domein. Voeg, indien nodig, [een gebruikers account toe aan een groep in azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Nogmaals, de door Azure AD DS beheerde domeinnaam moet in ALLE HOOFDLETTERS worden ingevoerd. In het volgende voorbeeld `contosoadmin@aaddscontoso.com` wordt het account met de naam gebruikt om Kerberos te initialiseren. Voer uw eigen gebruikersaccount in dat deel uitmaakt van het beheerde Azure AD DS-domein:
+    De Azure AD DS Managed domain name moet in alle hoofd letters worden ingevoerd. In het volgende voor beeld wordt het account `contosoadmin@aaddscontoso.com` met de naam gebruikt voor het initialiseren van Kerberos. Voer uw eigen gebruikers account in die deel uitmaakt van het door Azure AD DS beheerde domein:
 
     ```console
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. Sluit u ten slotte met de `realm join` opdracht aan bij het door Azure AD DS beheerde domein. Gebruik hetzelfde gebruikersaccount dat deel uitmaakt van het door Azure AD `kinit` DS beheerde domein dat u in de vorige opdracht hebt opgegeven, zoals `contosoadmin@AADDSCONTOSO.COM`:
+1. Voeg ten slotte de computer toe aan het beheerde domein van Azure AD DS `realm join` met behulp van de opdracht. Gebruik hetzelfde gebruikers account dat deel uitmaakt van het Azure AD DS beheerde domein dat u in de vorige `kinit` opdracht hebt opgegeven, zoals: `contosoadmin@AADDSCONTOSO.COM`
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM' --install=/
     ```
 
-Het duurt even voordat u lid wordt van de VM naar het beheerde Azure AD DS-domein. In de volgende voorbeelduitvoerwordt weergegeven dat de VM is verbonden met het beheerde Azure AD DS-domein:
+Het kan even duren voordat de virtuele machine wordt toegevoegd aan het beheerde domein van Azure AD DS. In de volgende voorbeeld uitvoer ziet u dat de virtuele machine is toegevoegd aan het door Azure AD DS beheerde domein:
 
 ```output
 Successfully enrolled machine in realm
 ```
 
-Als uw VM het domeinjoinproces niet kan voltooien, controleert u of de netwerkbeveiligingsgroep van de VM uitgaand Kerberos-verkeer op TCP + UDP-poort 464 toestaat naar het subnet van het virtuele netwerk voor uw door Azure AD DS beheerde domein.
+Als uw virtuele machine het proces voor domein deelname niet kan volt ooien, moet u ervoor zorgen dat door de netwerk beveiligings groep van de virtuele machine uitgaand Kerberos-verkeer op TCP + UDP-poort 464 naar het subnet van het virtuele netwerk voor uw Azure AD DS beheerde domein is toegestaan.
 
-Als u de fout hebt ontvangen *die niet is opgegeven, is gss-fout.  Kleine code kan meer informatie opleveren (Server niet gevonden in Kerberos database),* open het bestand `[libdefaults]` */etc/krb5.conf* en voeg de volgende code toe in sectie en probeer het opnieuw:
+Als u de fout niet-opgegeven GSS-fout hebt ontvangen *.  De secundaire code bevat mogelijk meer informatie (server niet gevonden in Kerberos-data base)*. Open het bestand */etc/krb5.conf* en voeg de `[libdefaults]` volgende code toe aan de sectie en probeer het opnieuw:
 
 ```console
 rdns=false
@@ -163,120 +163,120 @@ rdns=false
 
 ## <a name="update-the-sssd-configuration"></a>De SSSD-configuratie bijwerken
 
-Een van de pakketten geïnstalleerd in een vorige stap was voor System Security Services Daemon (SSSD). Wanneer een gebruiker zich probeert aan te melden bij een vm met domeinreferenties, stuurt SSSD het verzoek door naar een verificatieprovider. In dit scenario gebruikt SSSD Azure AD DS om de aanvraag te verifiëren.
+Een van de pakketten die in een vorige stap zijn geïnstalleerd, was voor System Security Services daemon (SSSD). Wanneer een gebruiker zich probeert aan te melden bij een virtuele machine met behulp van domein referenties, stuurt SSSD de aanvraag door naar een verificatie provider. In dit scenario maakt SSSD gebruik van Azure AD DS om de aanvraag te verifiëren.
 
-1. Open het *bestand ssd.conf* met een editor:
+1. Open het bestand *SSSD. conf* met een editor:
 
     ```console
     sudo vi /etc/sssd/sssd.conf
     ```
 
-1. Reageer uit de lijn voor *use_fully_qualified_names* als volgt:
+1. Voeg als volgt commentaar uit op de regel voor *use_fully_qualified_names* :
 
     ```console
     # use_fully_qualified_names = True
     ```
 
-    Wanneer u klaar bent, slaat u het `:wq` *bestand sssd.conf op* en sluit u deze af met de opdracht van de editor.
+    Als u klaar bent, slaat u het bestand *SSSD. conf* op `:wq` en sluit u het af met de opdracht van de editor.
 
-1. Als u de wijziging wilt toepassen, start u de SSSD-service opnieuw:
+1. Start de SSSD-service opnieuw om de wijziging toe te passen:
 
     ```console
     sudo service sssd restart
     ```
 
-## <a name="configure-user-account-and-group-settings"></a>Gebruikersaccount- en groepsinstellingen configureren
+## <a name="configure-user-account-and-group-settings"></a>Gebruikers accounts en groeps instellingen configureren
 
-Als de VM is gekoppeld aan het beheerde Azure AD DS-domein en geconfigureerd voor verificatie, zijn er een aantal gebruikersconfiguratieopties die moeten worden voltooid. Deze configuratiewijzigingen omvatten het toestaan van verificatie op basis van wachtwoorden en het automatisch maken van thuismappen op de lokale VM wanneer domeingebruikers zich voor het eerst aanmelden.
+Wanneer de virtuele machine is toegevoegd aan het Azure AD DS beheerde domein en geconfigureerd voor verificatie, zijn er een aantal opties voor configuratie van de gebruiker. Deze configuratie wijzigingen zijn onder andere het toestaan van verificatie op basis van wacht woorden en het automatisch maken van basis mappen op de lokale virtuele machine wanneer domein gebruikers zich voor het eerst aanmelden.
 
-### <a name="allow-password-authentication-for-ssh"></a>Wachtwoordverificatie voor SSH toestaan
+### <a name="allow-password-authentication-for-ssh"></a>Wachtwoord verificatie voor SSH toestaan
 
-Standaard kunnen gebruikers zich alleen aanmelden bij een vm met ssh-verificatie op basis van openbare sleutels. Verificatie op basis van wachtwoorden mislukt. Wanneer u lid wordt van de VM naar een door Azure AD DS beheerd domein, moeten deze domeinaccounts verificatie op basis van wachtwoorden gebruiken. Werk de SSH-configuratie bij om verificatie op basis van wachtwoorden als volgt toe te staan.
+Standaard kunnen gebruikers zich alleen aanmelden bij een VM met behulp van open bare SSH-sleutel verificatie. Verificatie op basis van wacht woorden mislukt. Wanneer u de virtuele machine koppelt aan een door Azure AD DS beheerd domein, moeten die domein accounts gebruikmaken van verificatie op basis van wacht woorden. Werk de SSH-configuratie als volgt bij om verificatie op basis van wacht woorden toe te staan.
 
-1. Open het *sshd_conf* bestand met een editor:
+1. Open het *sshd_conf* -bestand met een editor:
 
     ```console
     sudo vi /etc/ssh/sshd_config
     ```
 
-1. Werk de regel voor *PasswordAuthentication* bij naar *ja:*
+1. Werk de regel voor *PasswordAuthentication* bij naar *Ja*:
 
     ```console
     PasswordAuthentication yes
     ```
 
-    Sla het *sshd_conf-bestand* op en `:wq` sluit deze af met de opdracht van de editor.
+    Als u klaar bent, slaat u het *sshd_conf* bestand op `:wq` en sluit u het af met de opdracht van de editor.
 
-1. Als u de wijzigingen wilt toepassen en gebruikers wilt laten inloggen met een wachtwoord, start u de SSH-service opnieuw:
+1. Als u de wijzigingen wilt Toep assen en gebruikers wilt laten aanmelden met een wacht woord, start u de SSH-service opnieuw:
 
     ```console
     sudo systemctl restart ssh
     ```
 
-### <a name="configure-automatic-home-directory-creation"></a>Automatische aanmaaklijst maken configureren
+### <a name="configure-automatic-home-directory-creation"></a>Automatisch maken van basis mappen configureren
 
-Voer de volgende stappen uit om de automatische aanmaaklijst van de thuismap in te schakelen wanneer een gebruiker zich voor het eerst aanmeldt:
+Als u het automatisch maken van de basismap wilt inschakelen wanneer een gebruiker zich voor het eerst aanmeldt, voert u de volgende stappen uit:
 
-1. Open het *bestand /etc/pam.d/common-session* in een editor:
+1. Open het */etc/pam.d/common-Session* -bestand in een editor:
 
     ```console
     sudo vi /etc/pam.d/common-session
     ```
 
-1. Voeg de volgende regel toe `session optional pam_sss.so`in dit bestand onder de regel:
+1. Voeg de volgende regel toe aan dit bestand onder de `session optional pam_sss.so`regel:
 
     ```console
     session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
     ```
 
-    Sla het *bestand met algemene sessies* op `:wq` en sluit deze af met de opdracht van de editor.
+    Als u klaar bent, slaat u het bestand *common-Session* op `:wq` en sluit u het af met de opdracht van de editor.
 
-### <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>De sudo-sudo-rechten voor de groep 'AAD DC Administrators' verlenen
+### <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>De groep ' AAD DC Administrators ' sudo privileges verlenen
 
-Als u leden van de aad *dc-beheerdersgroep* beheerdersrechten op de Ubuntu-VM wilt toekennen, voegt u een vermelding toe aan de */etc/sudoers*. Eenmaal toegevoegd, kunnen leden van de `sudo` groep AAD DC *Administrators* de opdracht op de Ubuntu VM gebruiken.
+Als u leden van de groep *Aad DC-Administrators* wilt toewijzen aan de Ubuntu-VM, voegt u een vermelding toe aan de */etc/sudoers*. Eenmaal toegevoegd, kunnen leden van de groep *Aad DC-Administrators* de `sudo` opdracht gebruiken op de Ubuntu-VM.
 
-1. Open het *bestand sudoers* om te bewerken:
+1. Open het *sudo* -bestand om het te bewerken:
 
     ```console
     sudo visudo
     ```
 
-1. Voeg de volgende vermelding toe aan het bestand einde van */etc/sudoers:*
+1. Voeg de volgende vermelding toe aan het einde van het */etc/sudoers* -bestand:
 
     ```console
     # Add 'AAD DC Administrators' group members as admins.
     %AAD\ DC\ Administrators ALL=(ALL) NOPASSWD:ALL
     ```
 
-    Sla de editor op en `Ctrl-X` sluit deze af met de opdracht.
+    Als u klaar bent, slaat u de editor op `Ctrl-X` en sluit u deze met behulp van de opdracht.
 
-## <a name="sign-in-to-the-vm-using-a-domain-account"></a>Aanmelden bij de VM met een domeinaccount
+## <a name="sign-in-to-the-vm-using-a-domain-account"></a>Aanmelden bij de virtuele machine met behulp van een domein account
 
-Als u wilt controleren of de VM is verbonden met het beheerde Azure AD DS-domein, start u een nieuwe SSH-verbinding met een domeingebruikersaccount. Controleer of er een thuismap is gemaakt en dat groepslidmaatschap van het domein wordt toegepast.
+Start een nieuwe SSH-verbinding met een domein gebruikers account om te controleren of de virtuele machine is toegevoegd aan het beheerde Azure AD DS-domein. Bevestig dat er een basismap is gemaakt en dat groepslid maatschap van het domein wordt toegepast.
 
-1. Maak een nieuwe SSH-verbinding vanaf uw console. Gebruik een domeinaccount dat tot het `ssh -l` beheerde `contosoadmin@aaddscontoso.com` domein behoort met behulp van de opdracht, zoals en voer vervolgens het adres van uw vm in, zoals *ubuntu.aaddscontoso.com.* Als u de Azure Cloud Shell gebruikt, gebruikt u het openbare IP-adres van de vm in plaats van de interne DNS-naam.
+1. Maak een nieuwe SSH-verbinding vanuit uw-console. Gebruik een domein account dat deel uitmaakt van het beheerde domein `ssh -l` met behulp van `contosoadmin@aaddscontoso.com` de opdracht, zoals en voer vervolgens het adres van uw virtuele machine in, bijvoorbeeld *Ubuntu.aaddscontoso.com*. Als u de Azure Cloud Shell gebruikt, gebruikt u het open bare IP-adres van de virtuele machine in plaats van de interne DNS-naam.
 
     ```console
     ssh -l contosoadmin@AADDSCONTOSO.com ubuntu.aaddscontoso.com
     ```
 
-1. Wanneer u verbinding hebt gemaakt met de vm, controleert u of de startmap correct is geïnitialiseerd:
+1. Wanneer u verbinding hebt gemaakt met de virtuele machine, controleert u of de basismap correct is geïnitialiseerd:
 
     ```console
     pwd
     ```
 
-    U moet zich in de */home* directory bevinden met uw eigen directory die overeenkomt met het gebruikersaccount.
+    U moet zich in de */Home* -map met uw eigen map bekomen die overeenkomt met het gebruikers account.
 
-1. Controleer nu of de groepslidmaatschappen correct worden opgelost:
+1. Controleer nu of de groepslid maatschappen correct worden omgezet:
 
     ```console
     id
     ```
 
-    U moet uw groepslidmaatschappen zien vanuit het beheerde Azure AD DS-domein.
+    U moet uw groepslid maatschappen van het door Azure AD DS beheerde domein zien.
 
-1. Als u zich als lid van de groep *AAD DC-beheerders* bij de `sudo` VM hebt aangemeld, controleert u of u de opdracht correct gebruiken:
+1. Als u zich bij de virtuele machine hebt aangemeld als lid van de groep *Aad DC-Administrators* , controleert u of u `sudo` de opdracht kunt gebruiken:
 
     ```console
     sudo apt-get update
@@ -284,7 +284,7 @@ Als u wilt controleren of de VM is verbonden met het beheerde Azure AD DS-domein
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Problemen met het koppelen van [domeinen oplossen](join-windows-vm.md#troubleshoot-domain-join-issues)als u problemen hebt met het koppelen van de vm met het beheerde Azure AD DS-domein of als u zich aanmeldt met een domeinaccount.
+Als u problemen ondervindt met het verbinden van de virtuele machine met de Azure AD DS beheerde domein of als u zich aanmeldt met een domein account, raadpleegt u problemen [met domein deelname oplossen](join-windows-vm.md#troubleshoot-domain-join-issues).
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

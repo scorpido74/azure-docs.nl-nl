@@ -9,12 +9,12 @@ ms.date: 03/27/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e96d205ef1a8f94baa3a0cfe6c5127b6cf570e5a
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420952"
 ---
-In dit artikel wordt uitgelegd hoe u een VHD van uw lokale machine uploadt naar een door Azure beheerde schijf of een beheerde schijf naar een andere regio kopieert met AzCopy. Dit proces, directe upload, stelt u ook in staat om een VHD tot 32 TiB in grootte direct te uploaden naar een beheerde schijf. Momenteel wordt direct uploadondersteund voor standaard HDD, standaard SSD en premium SSD managed disks. Het wordt nog niet ondersteund voor ultra schijven.
+In dit artikel wordt uitgelegd hoe u een VHD van uw lokale machine uploadt naar een door Azure beheerde schijf of een beheerde schijf kopieert naar een andere regio met behulp van AzCopy. Met deze procedure kunt u direct uploaden ook een VHD uploaden naar 32 TiB rechtstreeks naar een beheerde schijf. Op dit moment wordt direct uploaden ondersteund voor standaard schijven, standaard SSD en Premium SSD Managed disks. Deze functie wordt nog niet ondersteund voor Ultra disks.
 
-Als u een back-upoplossing voor IaaS-vm's in Azure aanbiedt, raden we u aan directe uploadte te gebruiken om back-ups van klanten te herstellen naar beheerde schijven. Bij het uploaden van een VHD van een bron buiten Azure, zouden de snelheden afhankelijk zijn van uw lokale bandbreedte. Bij het uploaden of kopiëren van een Azure VM, dan is uw bandbreedte hetzelfde als standaard HDD's.
+Als u een back-upoplossing voor IaaS-Vm's in azure levert, kunt u het beste direct uploaden gebruiken om de back-ups van de klant te herstellen naar Managed disks. Wanneer u een VHD uploadt van een externe bron naar Azure, zijn de snelheden afhankelijk van uw lokale band breedte. Wanneer u een virtuele Azure-machine uploadt of kopieert, is uw band breedte hetzelfde als standaard Hdd's.

@@ -1,6 +1,6 @@
 ---
-title: Gelicentieerde componenten installeren voor runtime van Azure-SSIS-integratie
-description: Meer informatie over hoe een ISV betaalde of gelicentieerde aangepaste componenten kan ontwikkelen en installeren voor de runtime azure-SSIS-integratie
+title: Gelicentieerde onderdelen voor Azure-SSIS Integration runtime installeren
+description: Meer informatie over hoe een ISV betaalde of gelicentieerde aangepaste onderdelen kan ontwikkelen en installeren voor Azure SSIS Integration runtime
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -12,44 +12,44 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: b7079262dc7db4f4a00a9dc79193da1574c7153a
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605858"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Betaalde of gelicentieerde aangepaste onderdelen installeren voor Azure-SSIS Integration Runtime
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel wordt beschreven hoe een ISV betaalde of gelicentieerde aangepaste componenten kan ontwikkelen en installeren voor SQL Server Integration Services (SSIS)-pakketten die in Azure worden uitgevoerd in de runtime van Azure-SSIS-integratie.
+In dit artikel wordt beschreven hoe een ISV, betaalde of gelicentieerde aangepaste onderdelen voor SQL Server Integration Services (SSIS)-pakketten die worden uitgevoerd in azure, kan ontwikkelen en installeren in de Azure SSIS Integration runtime.
 
 ## <a name="the-problem"></a>Het probleem
 
-De aard van de runtime azure-SSIS-integratie brengt verschillende uitdagingen met zich mee, waardoor de typische licentiemethoden die worden gebruikt voor de on-premises installatie van aangepaste componenten ontoereikend zijn. Als gevolg hiervan vereist de Azure-SSIS IR een andere aanpak.
+De aard van de Azure SSIS Integration runtime biedt verschillende uitdagingen, waardoor de gebruikelijke licentie methoden worden gebruikt voor de on-premises installatie van aangepaste onderdelen die niet toereikend zijn. Als gevolg hiervan heeft de Azure-SSIS IR een andere aanpak nodig.
 
--   De knooppunten van de Azure-SSIS IR zijn vluchtig en kunnen op elk gewenst moment worden toegewezen of vrijgegeven. U bijvoorbeeld knooppunten starten of stoppen om de kosten te beheren of op en neer schalen via verschillende knooppuntgroottes. Als gevolg hiervan is het niet langer haalbaar om een componentlicentie van derden aan een bepaald knooppunt te binden met behulp van machinespecifieke informatie zoals MAC-adres of CPU-id.
+-   De knoop punten van de Azure-SSIS IR zijn vluchtig en kunnen op elk gewenst moment worden toegewezen of vrijgegeven. U kunt knoop punten bijvoorbeeld starten of stoppen om de kosten te beheren, of omhoog en omlaag schalen door verschillende groottes van knoop punten. Als gevolg hiervan is het binden van een licentie van een derde partij aan een bepaald knoop punt met behulp van computerspecifieke info, zoals MAC-adres of CPU-ID niet langer beschikbaar.
 
--   U de Azure-SSIS IR ook in- of uitschalen, zodat het aantal knooppunten op elk gewenst moment kan krimpen of uitbreiden.
+-   U kunt ook de Azure-SSIS IR in-of uitschalen, zodat het aantal knoop punten op elk gewenst moment kan worden verkleind of uitgevouwen.
 
 ## <a name="the-solution"></a>De oplossing
 
-Als gevolg van de beperkingen van traditionele licentiemethoden die in de vorige sectie zijn beschreven, biedt azure-SSIS IR een nieuwe oplossing. Deze oplossing maakt gebruik van Windows-omgevingsvariabelen en SSIS-systeemvariabelen voor het verbinden van licenties en validatie van onderdelen van derden. ISV's kunnen deze variabelen gebruiken om unieke en permanente informatie te verkrijgen voor een Azure-SSIS IR, zoals cluster-id en clusterknooppunttelling. Met deze informatie kunnen ISV's de licentie voor hun component vervolgens binden aan een Azure-SSIS IR *als cluster.* Deze binding maakt gebruik van een id die niet verandert wanneer klanten de Azure-SSIS IR op geen enkele manier starten of stoppen, opschalen of schalen, of opnieuw configureren.
+Als gevolg van de beperkingen van traditionele licentie methoden die in de vorige sectie zijn beschreven, biedt de Azure-SSIS IR een nieuwe oplossing. Deze oplossing maakt gebruik van Windows-omgevings variabelen en SSIS-systeem variabelen voor de licentie binding en validatie van onderdelen van derden. Isv's kunnen deze variabelen gebruiken om unieke en permanente informatie te verkrijgen voor een Azure-SSIS IR, zoals de cluster-ID en het aantal cluster knooppunten. Met deze informatie kunnen Isv's de licentie voor hun onderdeel binden aan een Azure-SSIS IR *als een cluster*. Deze binding maakt gebruik van een ID die niet verandert wanneer klanten worden gestart of gestopt, omhoog of omlaag schalen, in-of uitschalen of de Azure-SSIS IR op een wille keurige manier opnieuw configureren.
 
-In het volgende diagram worden de typische installatie-, activerings- en licentiebinding en validatiestromen weergegeven voor onderdelen van derden die deze nieuwe variabelen gebruiken:
+In het volgende diagram ziet u de typische installatie, activering en licentie bindingen en validatie stromen voor onderdelen van derden die gebruikmaken van deze nieuwe variabelen:
 
 ![Installatie van gelicentieerde onderdelen](media/how-to-configure-azure-ssis-ir-licensed-components/licensed-component-installation.png)
 
 ## <a name="instructions"></a>Instructies
-1. ISV's kunnen hun gelicentieerde componenten aanbieden in verschillende SKU's of lagen (bijvoorbeeld één knooppunt, maximaal 5 knooppunten, maximaal 10 knooppunten, enzovoort). De ISV levert de bijbehorende productcode wanneer klanten een product kopen. De ISV kan ook een Azure Storage blob-container bieden die een ISV Setup-script en bijbehorende bestanden bevat. Klanten kunnen deze bestanden kopiëren naar hun eigen opslagcontainer en deze wijzigen `IsvSetup.exe -pid xxxx-xxxx-xxxx`met hun eigen productcode (bijvoorbeeld door uit te voeren). Klanten kunnen de Azure-SSIS IR vervolgens in- of opnieuw configureren met de SAS URI van hun container als parameter. Zie [Aangepaste instelling voor de Azure-SSIS-integratieruntime](how-to-configure-azure-ssis-ir-custom-setup.md) voor meer informatie.
+1. Isv's kunnen hun gelicentieerde onderdelen aanbieden in verschillende Sku's of lagen (bijvoorbeeld één knoop punt, Maxi maal vijf knoop punten, Maxi maal 10 knoop punten, enzovoort). De ISV levert de bijbehorende product code wanneer klanten een product kopen. De ISV kan ook een Azure Storage BLOB-container bieden die een ISV-installatie script en bijbehorende bestanden bevat. Klanten kunnen deze bestanden in hun eigen opslag container kopiëren en deze wijzigen met hun eigen product code (bijvoorbeeld door uit te voeren `IsvSetup.exe -pid xxxx-xxxx-xxxx`). Klanten kunnen vervolgens de Azure-SSIS IR inrichten of opnieuw configureren met de SAS-URI van hun container als para meter. Zie [Aangepaste instelling voor de Azure-SSIS-integratieruntime](how-to-configure-azure-ssis-ir-custom-setup.md) voor meer informatie.
 
-2. Wanneer de Azure-SSIS IR is ingericht of opnieuw geconfigureerd, wordt ISV Setup op `SSIS_CLUSTERID` `SSIS_CLUSTERNODECOUNT`elk knooppunt uitgevoerd om de windows-omgevingsvariabelen op te vragen en . Vervolgens verzendt de Azure-SSIS IR zijn cluster-id en de productcode voor het gelicentieerde product naar de ISV-activeringsserver om een activeringssleutel te genereren.
+2. Wanneer de Azure-SSIS IR is ingericht of opnieuw geconfigureerd, wordt ISV Setup uitgevoerd op elk knoop punt om een query uit te voeren op `SSIS_CLUSTERID` de `SSIS_CLUSTERNODECOUNT`Windows-omgevings variabelen. Vervolgens verzendt de Azure-SSIS IR de cluster-ID en de product code voor het gelicentieerde product naar de ISV-activerings server om een activerings sleutel te genereren.
 
-3. Na ontvangst van de activeringssleutel kan ISV Setup de sleutel lokaal opslaan op elk knooppunt (bijvoorbeeld in het register).
+3. Na ontvangst van de activerings sleutel kan ISV Setup de sleutel lokaal opslaan op elk knoop punt (bijvoorbeeld in het REGI ster).
 
-4. Wanneer klanten een pakket uitvoeren dat de gelicentieerde component van de ISV gebruikt op een knooppunt van de Azure-SSIS IR, leest het pakket de lokaal opgeslagen activeringssleutel en valideert het deze op de cluster-id van het knooppunt. Het pakket kan ook optioneel het clusterknooppunt tellen rapporteren aan de ISV-activeringsserver.
+4. Wanneer klanten een pakket uitvoeren dat gebruikmaakt van het gelicentieerde onderdeel van de ISV op een knoop punt van de Azure-SSIS IR, leest het pakket de lokaal opgeslagen activerings sleutel en valideert deze met de cluster-ID van het knoop punt. Het pakket kan ook optioneel het aantal cluster knooppunten rapporteren aan de ISV-activerings server.
 
-    Hier is een voorbeeld van code die de activeringssleutel valideert en het aantal clusterknooppunten rapporteert:
+    Hier volgt een voor beeld van code die de activerings sleutel valideert en het aantal cluster knooppunten rapporteert:
 
     ```csharp
     public override DTSExecResult Validate(Connections, VariableDispenser, IDTSComponentEvents componentEvents, IDTSLogging log) 
@@ -77,10 +77,10 @@ In het volgende diagram worden de typische installatie-, activerings- en licenti
 
 ## <a name="isv-partners"></a>ISV-partners
 
-U vindt een lijst met ISV-partners die hun componenten en extensies hebben aangepast voor de Azure-SSIS IR aan het einde van deze blogpost - [Enterprise Edition, Custom Setup en 3rd Party Extensibility for SSIS in ADF](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Enterprise-Edition-Custom-Setup-and-3rd-Party-Extensibility-for/ba-p/388360).
+U vindt een lijst met ISV-partners die hun onderdelen en uitbrei Azure-SSIS IR dingen hebben aangepast aan het einde van deze blog post- [Enter prise Edition, aangepaste Setup en uitbreid baarheid van derden voor SSIS in ADF](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Enterprise-Edition-Custom-Setup-and-3rd-Party-Extensibility-for/ba-p/388360).
 
 ## <a name="next-steps"></a>Volgende stappen
 
--   [Aangepaste installatie voor de runtime van Azure-SSIS-integratie](how-to-configure-azure-ssis-ir-custom-setup.md)
+-   [Aangepaste installatie voor Azure-SSIS Integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md)
 
--   [Enterprise Edition van de runtime azure-SSIS-integratie](how-to-configure-azure-ssis-ir-enterprise-edition.md)
+-   [Enter prise-editie van de Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-enterprise-edition.md)
