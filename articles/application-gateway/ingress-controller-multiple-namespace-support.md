@@ -1,6 +1,6 @@
 ---
-title: Meerdere naamruimteondersteuningen inschakelen voor Application Gateway Ingress Controller
-description: In dit artikel vindt u informatie over het inschakelen van meerdere naamruimteondersteuning in een Kubernetes-cluster met een Application Gateway Ingress Controller.
+title: Meerdere naam ruimten inschakelen voor Application Gateway ingangs controller
+description: Dit artikel bevat informatie over het inschakelen van ondersteuning voor meerdere naam ruimten in een Kubernetes-cluster met een Application Gateway ingangs controller.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,43 +8,43 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 83650e7cf46ec1dede5f25e32114d6469bab24be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79279921"
 ---
-# <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Ondersteuning voor meerdere naamruimte inschakelen in een AKS-cluster met Application Gateway Ingress Controller
+# <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Ondersteuning van meerdere naam ruimten in een AKS-cluster met Application Gateway ingangs controller inschakelen
 
 ## <a name="motivation"></a>Motivatie
-Kubernetes [Namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) maken het mogelijk om een Kubernetes-cluster te verdelen en toe te geven aan subgroepen van een groter team. Deze subteams kunnen vervolgens infrastructuur implementeren en beheren met fijnere besturingselementen van resources, beveiliging, configuratie enz. Kubernetes maakt het mogelijk om een of meer binnendringende resources onafhankelijk te definiëren binnen elke naamruimte.
+Kubernetes- [naam ruimten](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) maken het mogelijk dat een Kubernetes-cluster kan worden gepartitioneerd en toegewezen aan subgroepen van een groter team. Deze subteams kunnen vervolgens een infra structuur implementeren en beheren met nauw keurige controles van resources, beveiliging, configuratie, enzovoort. Met Kubernetes kunnen een of meer inkomende bronnen onafhankelijk van elkaar worden gedefinieerd in elke naam ruimte.
 
-Vanaf versie 0.7 Azure Application Gateway kan [Kubernetes IngressController](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/README.md) (AGIC) gebeurtenissen van meerdere naamruimten innemen en observeren. Als de AKS-beheerder besluit [app-gateway](https://azure.microsoft.com/services/application-gateway/) als een binnendringende toepassing te gebruiken, gebruiken alle naamruimten dezelfde instantie van Application Gateway. Een enkele installatie van Ingress Controller controleert toegankelijke naamruimten en configureert de Application Gateway waar deze aan is gekoppeld.
+Vanaf versie 0,7 [Azure-toepassing gateway Kubernetes IngressController](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/README.md) (AGIC) kan gebeurtenissen opnemen van en meerdere naam ruimten observeren. Als de AKS-beheerder heeft besloten [app gateway](https://azure.microsoft.com/services/application-gateway/) als ingang te gebruiken, gebruiken alle naam ruimten hetzelfde exemplaar van Application Gateway. Met één installatie van de ingangs controller worden toegankelijke naam ruimten gecontroleerd en worden de Application Gateway waaraan deze is gekoppeld, geconfigureerd.
 
-Versie 0.7 van AGIC blijft uitsluitend `default` de naamruimte observeren, tenzij deze expliciet wordt gewijzigd in een of meer verschillende naamruimten in de Helm-configuratie (zie sectie hieronder).
+Versie 0,7 van AGIC blijft de `default` naam ruimte gewoon observeren, tenzij dit expliciet wordt gewijzigd in een of meer verschillende naam ruimten in de helm-configuratie (Zie de sectie hieronder).
 
 ## <a name="enable-multiple-namespace-support"></a>Ondersteuning voor meerdere naamruimten inschakelen
-Ga als u meerdere naamruimteondersteuning inschakelen:
-1. het [helm-config.yaml-bestand](#sample-helm-config-file) op een van de volgende manieren wijzigen:
-   - verwijder `watchNamespace` de sleutel volledig van [helm-config.yaml](#sample-helm-config-file) - AGIC zal alle naamruimten observeren
-   - ingesteld `watchNamespace` op een lege tekenreeks - AGIC observeert alle naamruimten
-   - meerdere naamruimten toevoegen die gescheiden`watchNamespace: default,secondNamespace`zijn door een komma ( ) - AGIC zal deze naamruimten uitsluitend observeren
-2. Wijzigingen in helmsjabloon toepassen met:`helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
+Ondersteuning voor meerdere naam ruimten inschakelen:
+1. Wijzig het bestand [helm-config. yaml](#sample-helm-config-file) op een van de volgende manieren:
+   - de `watchNamespace` sleutel volledig verwijderen uit [helm-config. yaml](#sample-helm-config-file) -AGIC worden alle naam ruimten
+   - ingesteld `watchNamespace` op een lege teken reeks-AGIC krijgt alle naam ruimten
+   - meerdere naam ruimten toevoegen, gescheiden door een komma`watchNamespace: default,secondNamespace`()-AGIC worden deze naam ruimten uitsluitend in rekening gebracht
+2. wijzigingen in de helm-sjabloon Toep assen met:`helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
 
-Zodra agic is geïmplementeerd met de mogelijkheid om meerdere naamruimten te observeren, zal:
-  - binnenkomende bronnen uit alle toegankelijke naamruimten weergeven
-  - filter om resources binnen te laten die zijn geannoteerd met`kubernetes.io/ingress.class: azure/application-gateway`
-  - gecombineerde [Application Gateway config](https://github.com/Azure/azure-sdk-for-go/blob/37f3f4162dfce955ef5225ead57216cf8c1b2c70/services/network/mgmt/2016-06-01/network/models.go#L1710-L1744) samenstellen
-  - de config toepassen op de bijbehorende Application Gateway via [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)
+Wanneer de implementatie is geïmplementeerd met de mogelijkheid om meerdere naam ruimten te bekijken, AGIC:
+  - lijst met binnenkomende resources van alle toegankelijke naam ruimten
+  - filteren op ingangs resources die aantekeningen hebben met`kubernetes.io/ingress.class: azure/application-gateway`
+  - gecombineerde [Application Gateway configuratie](https://github.com/Azure/azure-sdk-for-go/blob/37f3f4162dfce955ef5225ead57216cf8c1b2c70/services/network/mgmt/2016-06-01/network/models.go#L1710-L1744) opstellen
+  - de configuratie Toep assen op de gekoppelde Application Gateway via [arm](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)
 
 ## <a name="conflicting-configurations"></a>Conflicterende configuraties
-Meerdere [ingevallen insletiëten kunnen](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource) AGIC instrueren om conflicterende configuraties te maken voor één toepassingsgateway. (Twee ingresses die hetzelfde domein claimen bijvoorbeeld.)
+Meerdere [ingangs bronnen](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource) met naam ruimtes kunnen AGIC de instructie geven om conflicterende configuraties te maken voor een enkele Application Gateway. (Twee ingresses claimt hetzelfde domein voor exemplaar.)
 
-Boven aan de hiërarchie kunnen **luisteraars** (IP-adres, poort en host) en **routeringsregels** (bindinglistener, backendpool en HTTP-instellingen) worden gemaakt en gedeeld door meerdere naamruimten/insers.
+Boven aan de hiërarchie- **listeners** (IP-adres, poort en host) en **routerings regels** (binding-listener, back-end-pool en http-instellingen) kunnen worden gemaakt en gedeeld door meerdere naam ruimten/ingresses.
 
-Aan de andere kant - paden, backendpools, HTTP-instellingen en TLS-certificaten kunnen alleen met één naamruimte worden gemaakt en duplicaten worden verwijderd.
+Op de andere hand paden kunnen back-endservers, HTTP-instellingen en TLS-certificaten door slechts één naam ruimte worden gemaakt en dubbele items worden verwijderd.
 
-Denk bijvoorbeeld aan de volgende dubbele ingress `staging` `production` resources `www.contoso.com`gedefinieerde naamruimten en voor:
+Bekijk bijvoorbeeld de volgende dubbele ingangs resources gedefinieerde naam ruimten `staging` en `production` voor: `www.contoso.com`
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -81,26 +81,26 @@ spec:
               servicePort: 80
 ```
 
-Ondanks de twee invallende `www.contoso.com` resources die verkeer eisen om naar de respectievelijke Kubernetes-naamruimten te worden gerouteerd, kan slechts één backend het verkeer bedienen. AGIC zou een configuratie maken op basis van "wie het eerst komt, het eerst maalt" voor een van de resources. Als er twee insuasmiddelen tegelijkertijd worden gemaakt, heeft de eerder in het alfabet voorrang. Vanuit het bovenstaande voorbeeld kunnen we alleen `production` instellingen maken voor de intrede. Application Gateway wordt geconfigureerd met de volgende bronnen:
+Ondanks de twee bronnen voor `www.contoso.com` binnenkomend verkeer om te worden doorgestuurd naar de respectieve Kubernetes-naam ruimten, kan slechts één back-end het verkeer afleiden. Met AGIC wordt een configuratie gemaakt op basis van de eerste keer dat deze wordt geleverd voor een van de bronnen. Als er tegelijkertijd twee ingresses-resources worden gemaakt, heeft de eerdere versie van het alfabet prioriteit. In het bovenstaande voor beeld kunnen we alleen instellingen voor de `production` ingang maken. Application Gateway wordt geconfigureerd met de volgende resources:
 
-  - Luisteraar:`fl-www.contoso.com-80`
-  - Routeringsregel:`rr-www.contoso.com-80`
-  - Backend Pool:`pool-production-contoso-web-service-80-bp-80`
+  - Listener`fl-www.contoso.com-80`
+  - Routerings regel:`rr-www.contoso.com-80`
+  - Back-end-groep:`pool-production-contoso-web-service-80-bp-80`
   - HTTP-instellingen:`bp-production-contoso-web-service-80-80-websocket-ingress`
-  - Gezondheid Sonde:`pb-production-contoso-web-service-80-websocket-ingress`
+  - Status test:`pb-production-contoso-web-service-80-websocket-ingress`
 
-Houd er rekening mee dat, behalve voor *listener-* en *routeringsregel,* de resources van de toepassingsgateway die zijn gemaakt, de naam bevatten van de naamruimte (`production`) waarvoor ze zijn gemaakt.
+Houd er rekening mee dat de Application Gateway resources die zijn gemaakt, de naam ruimte (`production`) waarvoor ze zijn gemaakt, bevatten, met uitzonde ring van *listener* en *routerings regel*.
 
-Als de twee invallende resources op verschillende tijdspunten in het AKS-cluster worden geïntroduceerd, is het waarschijnlijk dat AGIC `namespace-B` `namespace-A`in een scenario terechtkomt waarin het application gateway opnieuw wordt geconfigureerd en het verkeer opnieuw wordt omgeleid van naar .
+Als de twee ingangs bronnen op verschillende tijdstippen in het AKS-cluster worden geïntroduceerd, is het waarschijnlijk dat AGIC wordt beëindigd in een scenario waarin het Application Gateway opnieuw wordt geconfigureerd en verkeer van `namespace-B` naar `namespace-A`verzendt.
 
-Als u bijvoorbeeld `staging` als eerste hebt toegevoegd, configureert AGIC Application Gateway om verkeer naar de backendpool met fasering te leiden. In een later stadium, de invoering van `production` binnendringen, zal leiden tot AGIC `production` te herprogrammeren Application Gateway, die zal beginnen met het routeren van verkeer naar de backend pool.
+Als u bijvoorbeeld eerst hebt `staging` toegevoegd, configureert AGIC Application Gateway om verkeer te routeren naar de back-end-staging-groep. In een later stadium wordt inkomend geïntroduceerd `production` , waardoor de Application Gateway wordt geAGICd, waardoor het verkeer naar de `production` back-end-groep wordt gestart.
 
-## <a name="restrict-access-to-namespaces"></a>Toegang tot naamruimten beperken
-Standaard configureert AGIC Application Gateway op basis van geannoteerde Ingress binnen een naamruimte. Als u dit gedrag wilt beperken, hebt u de volgende opties:
-  - de naamruimten te beperken door naamruimten die AGIC `watchNamespace` expliciet moet definiëren, moet worden waargenomen via de YAML-toets in [helm-config.yaml](#sample-helm-config-file)
-  - [Rol/Rolbinding](https://docs.microsoft.com/azure/aks/azure-ad-rbac) gebruiken om AGIC te beperken tot specifieke naamruimten
+## <a name="restrict-access-to-namespaces"></a>Toegang tot naam ruimten beperken
+Standaard AGIC configureert Application Gateway op basis van inkomende aantekeningen binnen een naam ruimte. Als u dit gedrag wilt beperken, hebt u de volgende opties:
+  - Beperk de naam ruimten door expliciet de definitie van naam ruimten AGIC te zien `watchNamespace` via de yaml [-sleutel in helm-config. yaml](#sample-helm-config-file)
+  - [Role/RoleBinding](https://docs.microsoft.com/azure/aks/azure-ad-rbac) gebruiken om de AGIC te beperken tot specifieke naam ruimten
 
-## <a name="sample-helm-config-file"></a>Voorbeeld helm config-bestand
+## <a name="sample-helm-config-file"></a>Voor beeld van helm-configuratie bestand
 ```yaml
     # This file contains the essential configs for the ingress controller helm chart
 

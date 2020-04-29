@@ -1,45 +1,45 @@
 ---
-title: Verbindingen beheren in Azure-functies
-description: Meer informatie over het voorkomen van prestatieproblemen in Azure-functies met behulp van statische verbindingsclients.
+title: Verbindingen in Azure Functions beheren
+description: Meer informatie over hoe u prestatie problemen in Azure Functions kunt voor komen met behulp van statische clients voor verbindingen.
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79276450"
 ---
-# <a name="manage-connections-in-azure-functions"></a>Verbindingen beheren in Azure-functies
+# <a name="manage-connections-in-azure-functions"></a>Verbindingen in Azure Functions beheren
 
-Functies in een functie-app delen resources. Onder deze gedeelde bronnen zijn verbindingen: HTTP-verbindingen, databaseverbindingen en verbindingen met services zoals Azure Storage. Wanneer veel functies gelijktijdig worden uitgevoerd, is het mogelijk om geen beschikbare verbindingen meer op te lopen. In dit artikel wordt uitgelegd hoe u uw functies coderen om te voorkomen dat u meer verbindingen gebruikt dan ze nodig hebben.
+Functies in een functie-app delen resources. Onder deze gedeelde bronnen staan verbindingen: HTTP-verbindingen, database verbindingen en verbindingen met Services, zoals Azure Storage. Wanneer er veel functies gelijktijdig worden uitgevoerd, is het mogelijk dat er geen beschik bare verbindingen meer beschikbaar zijn. In dit artikel wordt uitgelegd hoe u uw functies codeert om te voor komen dat u meer verbindingen gebruikt dan ze nodig hebben.
 
-## <a name="connection-limit"></a>Verbindingslimiet
+## <a name="connection-limit"></a>Verbindings limiet
 
-Het aantal beschikbare verbindingen is beperkt, mede omdat een functie-app wordt uitgevoerd in een [sandbox-omgeving.](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) Een van de beperkingen die de sandbox oplegt aan uw code is een limiet voor het aantal uitgaande verbindingen, dat momenteel 600 actieve (1.200 in totaal) verbindingen per exemplaar is. Wanneer u deze limiet bereikt, worden in de functieruntime het volgende bericht naar de logboeken geschreven: `Host thresholds exceeded: Connections`. Zie de [servicelimieten voor functies](functions-scale.md#service-limits)voor meer informatie .
+Het aantal beschik bare verbindingen is deels beperkt omdat een functie-app in een [sandbox-omgeving](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)wordt uitgevoerd. Een van de beperkingen die de sandbox voor uw code oplegt, is een limiet voor het aantal uitgaande verbindingen dat momenteel 600 actief is (1.200 totaal) verbindingen per exemplaar. Wanneer u deze limiet bereikt, schrijft de functions-runtime het volgende bericht naar de `Host thresholds exceeded: Connections`logboeken:. Zie de [functies service limieten](functions-scale.md#service-limits)voor meer informatie.
 
-Deze limiet is per exemplaar. Wanneer de [schaalcontroller functie-app-exemplaren toevoegt](functions-scale.md#how-the-consumption-and-premium-plans-work) om meer aanvragen af te handelen, heeft elke instantie een onafhankelijke verbindingslimiet. Dat betekent dat er geen wereldwijde verbindingslimiet is en dat u veel meer dan 600 actieve verbindingen hebben voor alle actieve instanties.
+Deze limiet is per instantie. Wanneer de [schaal controller functie-app-exemplaren toevoegt](functions-scale.md#how-the-consumption-and-premium-plans-work) om meer aanvragen te verwerken, heeft elk exemplaar een onafhankelijke verbindings limiet. Dit betekent dat er geen algemene verbindings limiet is en dat u veel meer dan 600 actieve verbindingen voor alle actieve instanties kunt hebben.
 
-Controleer bij het oplossen van problemen of u Application Insights voor uw functie-app hebt ingeschakeld. Met Application Insights u statistieken weergeven voor uw functie-apps zoals uitvoeringen. Zie [Telemetrie weergeven in Application Insights voor](functions-monitoring.md#view-telemetry-in-application-insights)meer informatie.  
+Als u problemen wilt oplossen, moet u ervoor zorgen dat u Application Insights hebt ingeschakeld voor uw functie-app. Met Application Insights kunt u metrische gegevens weer geven voor uw functie-apps, zoals uitvoeringen. Zie [telemetrie in Application Insights weer geven](functions-monitoring.md#view-telemetry-in-application-insights)voor meer informatie.  
 
 ## <a name="static-clients"></a>Statische clients
 
-Om te voorkomen dat er meer verbindingen dan nodig is, hergebruiken clientinstanties in plaats van het maken van nieuwe exemplaren met elke functie aanroep. We raden u aan clientverbindingen opnieuw te gebruiken voor elke taal waarin u uw functie zou kunnen schrijven. .NET-clients zoals de [httpclient-,](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) [documentclient-](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-)en Azure Storage-clients kunnen bijvoorbeeld verbindingen beheren als u één statische client gebruikt.
+Om te voor komen dat u meer verbindingen dan nodig hebt, moet u client exemplaren opnieuw gebruiken in plaats van nieuwe te maken met elke functie aanroep. We raden u aan om client verbindingen opnieuw te gebruiken voor elke taal waarin u uw functie kunt schrijven. Zo kunnen bijvoorbeeld .NET-clients zoals de [httpclient maakt](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)-, [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+)-en Azure Storage-clients verbindingen beheren als u één statische client gebruikt.
 
-Hier volgen enkele richtlijnen wanneer u een servicespecifieke client gebruikt in een Azure Functions-toepassing:
+Hieronder vindt u enkele richt lijnen die u moet volgen wanneer u een service-specifieke client in een Azure Functions-toepassing gebruikt:
 
-- *Maak geen* nieuwe client met elke functie aanroep.
-- *Maak* wel één statische client die elke functieaanroep kan gebruiken.
-- *Overweeg* om één statische client te maken in een gedeelde helperklasse als verschillende functies dezelfde service gebruiken.
+- Maak *geen* nieuwe client bij elke functie aanroep.
+- *Maak een* enkele statische client die door elke functie aanroep kan worden gebruikt.
+- *Overweeg* het maken van een enkele statische client in een gedeelde helperklasse als verschillende functies gebruikmaken van dezelfde service.
 
-## <a name="client-code-examples"></a>Voorbeelden van clientcode
+## <a name="client-code-examples"></a>Voor beelden van client code
 
-In deze sectie worden aanbevolen procedures voor het maken en gebruiken van clients vanuit uw functiecode.
+In deze sectie worden de aanbevolen procedures voor het maken en gebruiken van-clients uit uw functie code gedemonstreerd.
 
-### <a name="httpclient-example-c"></a>HttpClient-voorbeeld (C#)
+### <a name="httpclient-example-c"></a>Httpclient maakt-voor beeld (C#)
 
-Hier is een voorbeeld van C#-functiecode waarmee een statisch [httpclient-exemplaar](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) wordt gemaakt:
+Hier volgt een voor beeld van een C#-functie code waarmee een statisch [httpclient maakt](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) -exemplaar wordt gemaakt:
 
 ```cs
 // Create a single, static HttpClient
@@ -52,19 +52,19 @@ public static async Task Run(string input)
 }
 ```
 
-Een veelgestelde vraag over [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) in .NET is "Moet ik mijn klant verwijderen?" In het algemeen beschikt u `IDisposable` over objecten die implementeren wanneer u klaar bent met het gebruik ervan. Maar u beschikt niet over een statische client omdat u nog niet klaar bent met het gebruik ervan wanneer de functie eindigt. U wilt dat de statische client leeft voor de duur van uw aanvraag.
+Een veelgestelde vraag over [httpclient maakt](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) in .net is ' moet ik mijn client verwijderen? ' Over het algemeen kunt u objecten verwijderen die worden `IDisposable` geïmplementeerd wanneer u klaar bent met het gebruik ervan. Maar u kunt een statische client niet verwijderen omdat u deze niet hebt gebruikt wanneer de functie eindigt. U wilt dat de statische client Live voor de duur van uw toepassing.
 
-### <a name="http-agent-examples-javascript"></a>HTTP-agentvoorbeelden (JavaScript)
+### <a name="http-agent-examples-javascript"></a>Voor beelden van HTTP-agents (Java script)
 
-Omdat het betere opties voor verbindingsbeheer [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) biedt, moet u de native klasse `node-fetch` gebruiken in plaats van niet-native methoden, zoals de module. Verbindingsparameters worden geconfigureerd via `http.agent` opties in de klasse. Zie [nieuwe agent(opties)\[\]](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options)voor gedetailleerde opties die beschikbaar zijn met de HTTP-agent.
+Omdat het betere opties voor verbindings beheer biedt, moet u de systeem [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) eigen klasse gebruiken in plaats van niet-systeem eigen methoden `node-fetch` , zoals de module. Verbindings parameters worden geconfigureerd via opties in de `http.agent` -klasse. Zie [nieuwe agent (\[\]opties)](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options)voor gedetailleerde opties die beschikbaar zijn in de http-agent.
 
-De `http.globalAgent` globale klasse `http.request()` die wordt gebruikt door al deze waarden is ingesteld op hun respectievelijke standaardwaarden. De aanbevolen manier om verbindingslimieten in Functies te configureren, is door wereldwijd een maximumaantal in te stellen. In het volgende voorbeeld wordt het maximum aantal sockets voor de functie-app ingesteld:
+Voor de `http.globalAgent` globale klasse die `http.request()` door wordt gebruikt, zijn al deze waarden ingesteld op de respectievelijke standaarden. De aanbevolen manier om verbindings limieten in functies te configureren is door een maximum aantal globaal in te stellen. In het volgende voor beeld wordt het maximum aantal sockets voor de functie-app ingesteld:
 
 ```js
 http.globalAgent.maxSockets = 200;
 ```
 
- In het volgende voorbeeld wordt een nieuwe HTTP-aanvraag gemaakt met alleen een aangepaste HTTP-agent voor dat verzoek:
+ In het volgende voor beeld wordt een nieuwe HTTP-aanvraag met een aangepaste HTTP-agent alleen voor die aanvraag gemaakt:
 
 ```js
 var http = require('http');
@@ -74,10 +74,10 @@ options.agent = httpAgent;
 http.request(options, onResponseCallback);
 ```
 
-### <a name="documentclient-code-example-c"></a>Voorbeeld van documentclientcode (C#)
+### <a name="documentclient-code-example-c"></a>Voor beeld van DocumentClient-code (C#)
 
 [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) maakt verbinding met een Azure Cosmos DB-exemplaar. De Azure Cosmos DB-documentatie raadt u aan [een singleton Azure Cosmos DB-client te gebruiken voor de levensduur van uw toepassing.](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage) In het volgende voorbeeld ziet u één patroon om dat in een functie te doen:
+) maakt verbinding met een Azure Cosmos DB-exemplaar. De Azure Cosmos DB-documentatie raadt u [aan om een singleton Azure Cosmos DB-client te gebruiken voor de levens duur van uw toepassing](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage). In het volgende voor beeld ziet u een patroon om dit te doen in een functie:
 
 ```cs
 #r "Microsoft.Azure.Documents.Client"
@@ -105,8 +105,8 @@ public static async Task Run(string input)
 }
 ```
 
-### <a name="cosmosclient-code-example-javascript"></a>Voorbeeld van CosmosClient-code (JavaScript)
-[CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) maakt verbinding met een Azure Cosmos DB-exemplaar. De Azure Cosmos DB-documentatie raadt u aan [een singleton Azure Cosmos DB-client te gebruiken voor de levensduur van uw toepassing.](../cosmos-db/performance-tips.md#sdk-usage) In het volgende voorbeeld ziet u één patroon om dat in een functie te doen:
+### <a name="cosmosclient-code-example-javascript"></a>Voor beeld van CosmosClient-code (Java script)
+[CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) maakt verbinding met een Azure Cosmos DB-exemplaar. De Azure Cosmos DB-documentatie raadt u [aan om een singleton Azure Cosmos DB-client te gebruiken voor de levens duur van uw toepassing](../cosmos-db/performance-tips.md#sdk-usage). In het volgende voor beeld ziet u een patroon om dit te doen in een functie:
 
 ```javascript
 const cosmos = require('@azure/cosmos');
@@ -126,14 +126,14 @@ module.exports = async function (context) {
 
 ## <a name="sqlclient-connections"></a>SqlClient-verbindingen
 
-Uw functiecode kan de .NET Framework Data Provider voor SQL Server[(SqlClient)](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)gebruiken om verbindingen te maken met een SQL relationele database. Dit is ook de onderliggende leverancier voor gegevensframeworks die afhankelijk zijn van ADO.NET, zoals [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). In tegenstelling tot [httpClient-](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) en [DocumentClient-verbindingen](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) implementeert ADO.NET standaard verbindingspooling. Maar omdat je nog steeds geen verbindingen meer hebt, moet je de verbindingen met de database optimaliseren. Zie [SQL Server Connection Pooling (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)voor meer informatie.
+Uw functie code kan gebruikmaken van de .NET Framework Data Provider voor SQL Server ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) om verbindingen te maken met een relationele SQL-data base. Dit is ook de onderliggende provider voor gegevens raamwerken die afhankelijk zijn van ADO.NET, zoals [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). In tegens telling tot [httpclient maakt](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) -en [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+) -verbindingen implementeert ADO.net standaard verbindings groepen. Maar omdat u nog steeds verbinding kunt maken, moet u de verbindingen met de data base optimaliseren. Zie [SQL Server Connection Pooling (ADO.net) (Engelstalig)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)voor meer informatie.
 
 > [!TIP]
-> Sommige gegevensframeworks, zoals Entity Framework, krijgen doorgaans verbindingstekenreeksen uit de sectie **ConnectionStrings** van een configuratiebestand. In dit geval moet u sql-databaseverbindingstekenreeksen expliciet toevoegen aan de verzameling **Verbindingstekenreeksen** van uw functie-app-instellingen en in het [bestand local.settings.json](functions-run-local.md#local-settings-file) in uw lokale project. Als u een exemplaar van [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) maakt in uw functiecode, moet u de verbindingstekenreekswaarde opslaan in **toepassingsinstellingen** met uw andere verbindingen.
+> Sommige gegevens raamwerken, zoals Entity Framework, krijgen meestal verbindings reeksen uit de sectie **Connections Tring** van een configuratie bestand. In dit geval moet u SQL database verbindings reeksen expliciet toevoegen aan de **verbindingsteken reeks** verzameling van de instellingen van de functie-app en in het [bestand local. settings. json](functions-run-local.md#local-settings-file) in uw lokale project. Als u een instantie van [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) in uw functie code maakt, moet u de Connection String waarde in **Toepassings instellingen** opslaan met uw andere verbindingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Onjuiste instantiatieantipatroon](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)voor meer informatie over waarom we statische clients aanbevelen.
+Zie voor meer informatie over de reden voor het aanbevelen van statische clients, [ongeoorloofde instantiëring Anti patroon](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/).
 
-Zie De prestaties en [betrouwbaarheid van Azure-functies optimaliseren voor](functions-best-practices.md)meer prestatietips voor Azure-functies.
+Zie [de prestaties en betrouw baarheid van Azure functions optimaliseren](functions-best-practices.md)voor meer Azure functions tips voor prestaties.

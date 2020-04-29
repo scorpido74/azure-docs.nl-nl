@@ -1,27 +1,27 @@
 ---
-title: Fouten in duurzame functies verwerken - Azure
-description: Meer informatie over het verwerken van fouten in de extensie Duurzame functies voor Azure-functies.
+title: Fouten afhandelen in Durable Functions-Azure
+description: Meer informatie over het afhandelen van fouten in de Durable Functions extensie voor Azure Functions.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 447b3dcf5040835f5a853beff68bde794ece51f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277854"
 ---
-# <a name="handling-errors-in-durable-functions-azure-functions"></a>Fouten in duurzame functies verwerken (Azure-functies)
+# <a name="handling-errors-in-durable-functions-azure-functions"></a>Het afhandelen van fouten in Durable Functions (Azure Functions)
 
-Orkestraties voor duurzame functies worden in code geïmplementeerd en kunnen de ingebouwde functies voor foutafhandeling van de programmeertaal gebruiken. Er zijn echt geen nieuwe concepten die je moet leren om foutafhandeling en compensatie toe te voegen aan je orkestraties. Er zijn echter een paar gedragingen waar u zich bewust van moet zijn.
+Duurzame functie-indelingen worden in code geïmplementeerd en kunnen de ingebouwde functies voor fout afhandeling van de programmeer taal gebruiken. Er zijn echt geen nieuwe concepten die u nodig hebt om fout afhandeling en compensatie toe te voegen aan uw integraties. Er zijn echter enkele gedragingen waarmee u rekening moet houden.
 
-## <a name="errors-in-activity-functions"></a>Fouten in activiteitsfuncties
+## <a name="errors-in-activity-functions"></a>Fouten in de activiteit functies
 
-Elke uitzondering die wordt gegooid in een activiteit functie wordt teruggemarshald naar de orchestrator functie en gegooid als een `FunctionFailedException`. U foutafhandeling en compensatiecode schrijven die bij uw behoeften past in de orchestrator-functie.
+Uitzonde ringen die worden gegenereerd in een activiteit functie, worden teruggestuurd naar de Orchestrator-functie en gegenereerd als `FunctionFailedException`een. U kunt fout afhandeling en compensatie code schrijven die aan uw behoeften voldoen in de Orchestrator-functie.
 
-Denk bijvoorbeeld aan de volgende orchestrator-functie die geld overmaakt van de ene rekening naar de andere:
+Denk bijvoorbeeld aan de volgende Orchestrator-functie waarmee u fondsen van het ene naar het andere account overbrengt:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TransferFunds")]
@@ -60,7 +60,7 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 ```
 
 > [!NOTE]
-> De vorige C# voorbeelden zijn voor Duurzame Functies 2.x. Voor duurzame functies 1.x `DurableOrchestrationContext` moet `IDurableOrchestrationContext`u in plaats van . Zie het artikel [Duurzame functies voor](durable-functions-versions.md) meer informatie over de verschillen tussen versies.
+> De vorige C#-voor beelden zijn voor Durable Functions 2. x. Voor Durable Functions 1. x moet u in plaats `DurableOrchestrationContext` van `IDurableOrchestrationContext`gebruiken. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
@@ -100,13 +100,13 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Als de eerste **Functieaanroep creditering** mislukt, compenseert de orchestrator-functie door het geld terug te schrijven naar de bronrekening.
+Als de eerste aanroep van de functie **CreditAccount** mislukt, compenseert de Orchestrator-functie door de tegoeden terug te sturen naar het bron account.
 
-## <a name="automatic-retry-on-failure"></a>Automatisch opnieuw proberen bij uitval
+## <a name="automatic-retry-on-failure"></a>Automatische nieuwe poging bij fout
 
-Wanneer u activiteitsfuncties of suborchestration-functies aanroept, u een automatisch beleid voor nieuwe gegevens uitvoeren. In het volgende voorbeeld wordt geprobeerd een functie tot drie keer aan te roepen en wordt 5 seconden tussen elke nieuwe poging gewacht:
+Wanneer u activiteit functies of suborchestration-functies aanroept, kunt u een beleid voor automatische nieuwe pogingen opgeven. In het volgende voor beeld wordt geprobeerd een functie Maxi maal drie keer aan te roepen en wordt vijf seconden gewacht tussen elke nieuwe poging:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TimerOrchestratorWithRetry")]
@@ -123,7 +123,7 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 ```
 
 > [!NOTE]
-> De vorige C# voorbeelden zijn voor Duurzame Functies 2.x. Voor duurzame functies 1.x `DurableOrchestrationContext` moet `IDurableOrchestrationContext`u in plaats van . Zie het artikel [Duurzame functies voor](durable-functions-versions.md) meer informatie over de verschillen tussen versies.
+> De vorige C#-voor beelden zijn voor Durable Functions 2. x. Voor Durable Functions 1. x moet u in plaats `DurableOrchestrationContext` van `IDurableOrchestrationContext`gebruiken. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
@@ -145,20 +145,20 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-De aanroep met de activiteitsfunctie in het vorige voorbeeld neemt een parameter voor het configureren van een automatisch beleid voor opnieuw proberen. Er zijn verschillende opties voor het aanpassen van het beleid voor automatische opnieuw proberen:
+De functie aanroep van de activiteit in het vorige voor beeld neemt een para meter op voor het configureren van een beleid voor automatische nieuwe pogingen. Er zijn verschillende opties voor het aanpassen van het beleid voor automatische opnieuw proberen:
 
-* **Maximum aantal pogingen**: Het maximum aantal pogingen om opnieuw te proberen.
-* **Eerste retry interval:** De hoeveelheid tijd om te wachten voordat de eerste poging opnieuw proberen.
-* **Terug-afschakelcoëfficiënt**: De coëfficiënt die wordt gebruikt om de stijgingsgraad van de back-off te bepalen. Standaard op 1.
-* **Interval voor het opnieuw proberen:** de maximale hoeveelheid tijd om tussen pogingen opnieuw te proberen.
-* **Time-out opnieuw proberen:** de maximale hoeveelheid tijd die u moet besteden aan het doen van nieuwe pogingen. Het standaardgedrag is om het voor onbepaalde tijd opnieuw te proberen.
-* **Greep:** Een door de gebruiker gedefinieerde callback kan worden opgegeven om te bepalen of een functie opnieuw moet worden geprobeerd.
+* **Maximum aantal pogingen**: het maximum aantal nieuwe pogingen.
+* **Interval voor eerste poging**: de hoeveelheid tijd die moet worden gewacht voordat de eerste nieuwe poging wordt gedaan.
+* **Uitstel coëfficiënt**: de coëfficiënt die wordt gebruikt voor het bepalen van de mate van toename van uitstel. De standaard waarde is 1.
+* Maximum **interval voor nieuwe pogingen**: de maximale tijds duur tussen nieuwe pogingen.
+* **Time-out voor opnieuw proberen**: de maximale hoeveelheid tijd die nodig is voor het uitvoeren van nieuwe pogingen. Het standaard gedrag is om voor onbepaalde tijd opnieuw te proberen.
+* **Ingang**: een door de gebruiker gedefinieerde retour aanroep kan worden opgegeven om te bepalen of een functie opnieuw moet worden uitgevoerd.
 
 ## <a name="function-timeouts"></a>Time-outs van functies
 
-U een functieaanroep binnen een orchestrator-functie opgeven als het te lang duurt om deze te voltooien. De juiste manier om dit vandaag te `context.CreateTimer` doen is door `context.df.createTimer` het creëren van `Task.WhenAny` een [duurzame](durable-functions-timers.md) timer `context.df.Task.any` met behulp van (.NET) of (JavaScript) in combinatie met (.NET) of (JavaScript), zoals in het volgende voorbeeld:
+Het kan zijn dat u een functie aanroep binnen een Orchestrator-functie wilt verlaten als het te lang duurt om te volt ooien. De juiste manier om dit te doen is door een [duurzame timer](durable-functions-timers.md) te maken `context.CreateTimer` met (.net) `context.df.createTimer` of (Java script) in `Task.WhenAny` combi natie met ( `context.df.Task.any` .net) of (Java script), zoals in het volgende voor beeld:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TimerOrchestrator")]
@@ -189,7 +189,7 @@ public static async Task<bool> Run([OrchestrationTrigger] IDurableOrchestrationC
 ```
 
 > [!NOTE]
-> De vorige C# voorbeelden zijn voor Duurzame Functies 2.x. Voor duurzame functies 1.x `DurableOrchestrationContext` moet `IDurableOrchestrationContext`u in plaats van . Zie het artikel [Duurzame functies voor](durable-functions-versions.md) meer informatie over de verschillen tussen versies.
+> De vorige C#-voor beelden zijn voor Durable Functions 2. x. Voor Durable Functions 1. x moet u in plaats `DurableOrchestrationContext` van `IDurableOrchestrationContext`gebruiken. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
@@ -218,16 +218,16 @@ module.exports = df.orchestrator(function*(context) {
 ---
 
 > [!NOTE]
-> Dit mechanisme beëindigt niet daadwerkelijk de uitvoering van de activiteitsfunctie in uitvoering. Integendeel, het laat gewoon de orchestrator functie om het resultaat te negeren en verder te gaan. Zie voor meer informatie de documentatie [Timers.](durable-functions-timers.md#usage-for-timeout)
+> Met dit mechanisme wordt de uitvoering van de uitgevoerde activiteiten functie niet daad werkelijk afgesloten. In plaats daarvan kan de Orchestrator-functie het resultaat negeren en verplaatsen. Zie de [time](durable-functions-timers.md#usage-for-timeout) -outdocumentatie voor meer informatie.
 
 ## <a name="unhandled-exceptions"></a>Onverwerkte uitzonderingen
 
-Als een orchestrator-functie mislukt met een niet-behandelde uitzondering, worden de `Failed` details van de uitzondering geregistreerd en wordt de instantie voltooid met een status.
+Als een Orchestrator-functie mislukt met een niet-verwerkte uitzonde ring, worden de details van de uitzonde ring vastgelegd en `Failed` wordt het exemplaar voltooid met een status.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over eeuwige orkestraties](durable-functions-eternal-orchestrations.md)
+> [Meer informatie over eeuwige-Orchestrations](durable-functions-eternal-orchestrations.md)
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het diagnosticeren van problemen](durable-functions-diagnostics.md)
+> [Meer informatie over het vaststellen van problemen](durable-functions-diagnostics.md)

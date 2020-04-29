@@ -1,70 +1,70 @@
 ---
 title: De Azure Log Analytics-agent beheren
-description: In dit artikel worden de verschillende beheertaken beschreven die u doorgaans uitvoert tijdens de levenscyclus van de Windows- of Linux-agent Log Analytics die op een machine wordt geïmplementeerd.
+description: In dit artikel worden de verschillende beheer taken beschreven die u normaal gesp roken uitvoert tijdens de levens cyclus van de Log Analytics Windows-of Linux-agent die op een computer is geïmplementeerd.
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
 ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275098"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>De Log Analytics-agent voor Windows en Linux beheren en onderhouden
 
-Na de eerste implementatie van de Windows- of Linux-agent Log Analytics in Azure Monitor, moet u de agent mogelijk opnieuw configureren, upgraden of van de computer verwijderen als deze de pensioenfase in de levenscyclus heeft bereikt. U deze routineonderhoudstaken eenvoudig handmatig of via automatisering beheren, wat zowel operationele fouten als kosten vermindert.
+Na de eerste implementatie van de Log Analytics Windows-of Linux-agent in Azure Monitor moet u de agent mogelijk opnieuw configureren, bijwerken of verwijderen van de computer als deze de pensionering in de levens cyclus heeft bereikt. U kunt deze routine onderhouds taken eenvoudig hand matig of via Automation beheren, waardoor zowel de operationele fout als de onkosten worden verminderd.
 
-## <a name="upgrading-agent"></a>Upgradeagent
+## <a name="upgrading-agent"></a>Agent bijwerken
 
-De Log Analytics-agent voor Windows en Linux kan handmatig of automatisch worden geüpgraded naar de nieuwste release, afhankelijk van het implementatiescenario en de omgeving waarin de VM wordt uitgevoerd. De volgende methoden kunnen worden gebruikt om de agent te upgraden.
+De Log Analytics-agent voor Windows en Linux kan hand matig worden bijgewerkt naar de meest recente versie of automatisch afhankelijk van het implementatie scenario en de omgeving waarin de virtuele machine wordt uitgevoerd. De volgende methoden kunnen worden gebruikt om de agent bij te werken.
 
-| Omgeving | Installatiemethode | Upgrademethode |
+| Omgeving | Installatie methode | Upgrademethode |
 |--------|----------|-------------|
-| Azure VM | VM-extensie voor Log Analytics-agent voor Windows/Linux | Agent wordt standaard automatisch geüpgraded, tenzij u uw Azure Resource Manager-sjabloon hebt geconfigureerd om zich af te melden door de *eigenschap autoUpgradeMinorVersion* in te stellen op **false**. |
-| Aangepaste Azure VM-afbeeldingen | Handmatiginstalleren van Log Analytics-agent voor Windows/Linux | Het bijwerken van VM's naar de nieuwste versie van de agent moet worden uitgevoerd vanaf de opdrachtregel met het Windows-installatiepakket of linux-zelf-extraherende en installeerbare shellscriptbundel.|
-| Niet-Azure VM's | Handmatiginstalleren van Log Analytics-agent voor Windows/Linux | Het bijwerken van VM's naar de nieuwste versie van de agent moet worden uitgevoerd vanaf de opdrachtregel met het Windows-installatiepakket of linux-zelf-extraherende en installeerbare shellscriptbundel. |
+| Azure VM | VM-extensie Log Analytics agent voor Windows/Linux | De agent wordt standaard automatisch geüpgraded tenzij u uw Azure Resource Manager-sjabloon hebt geconfigureerd om u af te melden door de eigenschap *autoUpgradeMinorVersion* in te stellen op **False**. |
+| Aangepaste installatie kopieën van Azure VM | Hand matige installatie van Log Analytics agent voor Windows/Linux | Het bijwerken van Vm's naar de nieuwste versie van de agent moet worden uitgevoerd vanaf de opdracht regel met het Windows Installer-pakket of Linux self-extracting en installeer bare shell script bundel.|
+| Niet-Azure Vm's | Hand matige installatie van Log Analytics agent voor Windows/Linux | Het bijwerken van Vm's naar de nieuwste versie van de agent moet worden uitgevoerd vanaf de opdracht regel met het Windows Installer-pakket of Linux self-extracting en installeer bare shell script bundel. |
 
 ### <a name="upgrade-windows-agent"></a>Windows-agent bijwerken 
 
-Als u de agent op een Windows-VM wilt bijwerken naar de nieuwste versie die niet is geïnstalleerd met de VM-extensie\<\>Log Analytics, voert u deze uit vanaf de opdrachtprompt, script- of andere automatiseringsoplossing of met de wizard MMASetup-platform .msi Setup.  
+Als u de agent op een virtuele Windows-machine wilt bijwerken naar de nieuwste versie die niet is geïnstalleerd met behulp van de Log Analytics VM-extensie, voert u uit vanaf de opdracht prompt, het script\<of\>andere Automation-oplossing, of met behulp van de installatie wizard MMASetup-platform. msi.  
 
-U de nieuwste versie van de Windows-agent downloaden uit uw Log Analytics-werkruimte door de volgende stappen uit te voeren.
+U kunt de nieuwste versie van de Windows-agent downloaden van uw Log Analytics-werk ruimte door de volgende stappen uit te voeren.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Klik in de Azure-portal op **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Logboekanalysewerkruimten**.
+2. Klik in de Azure Portal op **alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **log Analytics-werk ruimten**.
 
-3. Selecteer de werkruimte in uw lijst met Logboekanalyse-werkruimten.
+3. Selecteer de werk ruimte in de lijst met Log Analytics-werk ruimten.
 
-4. Selecteer in uw werkruimte Log Analytics **geavanceerde instellingen,** selecteer **vervolgens Verbonden bronnen**en ten slotte **Windows-servers**.
+4. Selecteer in de werk ruimte Log Analytics **Geavanceerde instellingen**, selecteer **verbonden bronnen**en tenslotte Windows- **servers**.
 
-5. Selecteer op de pagina **Windows Servers** de juiste **Windows Agent-versie downloaden** die u wilt downloaden, afhankelijk van de processorarchitectuur van het Windows-besturingssysteem.
+5. Selecteer op de pagina **Windows-servers** de juiste versie van de **Windows-agent** die u wilt downloaden, afhankelijk van de processor architectuur van het Windows-besturings systeem.
 
 >[!NOTE]
->Tijdens de upgrade van de Log Analytics-agent voor Windows biedt deze geen ondersteuning voor het configureren of opnieuw configureren van een werkruimte waaraan u wilt rapporteren. Als u de agent wilt configureren, moet u een van de ondersteunde methoden volgen die worden vermeld onder [Een werkruimte toevoegen of verwijderen.](#adding-or-removing-a-workspace)
+>Tijdens de upgrade van de Log Analytics-agent voor Windows biedt het geen ondersteuning voor het configureren of opnieuw configureren van een werk ruimte om aan te melden. Als u de agent wilt configureren, moet u een van de ondersteunde methoden volgen die worden vermeld onder [een werk ruimte toevoegen of verwijderen](#adding-or-removing-a-workspace).
 >
 
-#### <a name="to-upgrade-using-the-setup-wizard"></a>Upgraden met de wizard Setup
+#### <a name="to-upgrade-using-the-setup-wizard"></a>Bijwerken met behulp van de installatie wizard
 
-1. Meld u aan bij de computer met een account met beheerdersrechten.
+1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. Voer **MMASetup-platform\<\>.exe uit** om de wizard Setup te starten.
+2. Voer **MMASetup-\<platform\>. exe** uit om de installatie wizard te starten.
 
-3. Klik op de eerste pagina van de wizard Setup op **Volgende**.
+3. Klik op de eerste pagina van de installatie wizard op **volgende**.
 
-4. Klik in het dialoogvenster **Microsoft Monitoring Agent Setup** op Ik ga akkoord **om** de licentieovereenkomst te accepteren.
+4. Klik in het dialoog venster **Setup van micro soft Monitoring Agent** op **Ik ga akkoord** om de gebruiksrecht overeenkomst te accepteren.
 
 5. Klik in het dialoogvenster **Setup van Microsoft Monitoring Agent** op **Bijwerken**. Op de statuspagina wordt de voortgang van de upgrade weergegeven.
 
-6. Wanneer de configuratie van de **Microsoft Monitoring Agent is voltooid.** pagina wordt weergegeven, klik op **Voltooien**.
+6. Wanneer de **configuratie van micro soft monitoring agent is voltooid.** pagina wordt weer gegeven, klikt u op **volt ooien**.
 
-#### <a name="to-upgrade-from-the-command-line"></a>Upgraden vanaf de opdrachtregel
+#### <a name="to-upgrade-from-the-command-line"></a>Een upgrade uitvoeren vanaf de opdracht regel
 
-1. Meld u aan bij de computer met een account met beheerdersrechten.
+1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. Als u de installatiebestanden van de agent `MMASetup-<platform>.exe /c` wilt extraheren, wordt u vanuit een opdrachtprompt met verhoogde bevoegdheid verwijderd en wordt u gevraagd om het pad om bestanden naar uit te halen. U het pad ook opgeven `MMASetup-<platform>.exe /c /t:<Full Path>`door de argumenten door te geven.
+2. Als u de installatie bestanden van de agent wilt extra heren, vanaf een `MMASetup-<platform>.exe /c` opdracht prompt met verhoogde bevoegdheid, wordt u gevraagd om het pad naar de bestanden uit te pakken. U kunt ook het pad opgeven door de argumenten `MMASetup-<platform>.exe /c /t:<Full Path>`door te geven.
 
 3. Voer de volgende opdracht uit, waarbij D:\ de locatie is van het upgradelogboekbestand.
 
@@ -72,34 +72,34 @@ U de nieuwste versie van de Windows-agent downloaden uit uw Log Analytics-werkru
     setup.exe /qn /l*v D:\logs\AgentUpgrade.log AcceptEndUserLicenseAgreement=1
     ```
 
-### <a name="upgrade-linux-agent"></a>Linux-agent upgraden 
+### <a name="upgrade-linux-agent"></a>Linux-agent bijwerken 
 
-Een upgrade ten opzichte van eerdere versies (>1.0.0-47) wordt ondersteund. Als u de `--upgrade` installatie met de opdracht uitvoert, worden alle onderdelen van de agent geüupgradet naar de nieuwste versie.
+Upgrade van eerdere versies (>1.0.0-47) wordt ondersteund. Wanneer u de installatie uitvoert `--upgrade` met de opdracht, worden alle onderdelen van de agent bijgewerkt naar de meest recente versie.
 
-Voer de volgende opdracht uit om de agent te upgraden.
+Voer de volgende opdracht uit om de agent bij te werken.
 
 `sudo sh ./omsagent-*.universal.x64.sh --upgrade`
 
-## <a name="adding-or-removing-a-workspace"></a>Een werkruimte toevoegen of verwijderen
+## <a name="adding-or-removing-a-workspace"></a>Een werk ruimte toevoegen of verwijderen
 
 ### <a name="windows-agent"></a>Windows-agent
-De stappen in deze sectie zijn nodig wanneer u de Windows-agent niet alleen opnieuw wilt configureren om te rapporteren aan een andere werkruimte of om een werkruimte uit de configuratie te verwijderen, maar ook wanneer u de agent wilt configureren om te rapporteren aan meer dan één werkruimte (vaak multi-homing). Het configureren van de Windows-agent om te rapporteren aan meerdere werkruimten kan alleen worden uitgevoerd na de eerste installatie van de agent en met behulp van de onderstaande methoden.    
+De stappen in deze sectie zijn nood zakelijk als u niet alleen de Windows-agent opnieuw wilt configureren om te rapporteren aan een andere werk ruimte of als u een werk ruimte wilt verwijderen uit de configuratie, maar ook wanneer u de agent wilt configureren om te rapporteren aan meer dan één werk ruimte (ook wel multi-multihoming genoemd). Het configureren van de Windows-agent voor rapportage aan meerdere werk ruimten kan alleen worden uitgevoerd na de initiële installatie van de agent en met de methoden die hieronder worden beschreven.    
 
-#### <a name="update-settings-from-control-panel"></a>Instellingen bijwerken vanuit het Configuratiescherm
+#### <a name="update-settings-from-control-panel"></a>Instellingen bijwerken via configuratie scherm
 
-1. Meld u aan bij de computer met een account met beheerdersrechten.
+1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. Configuratiescherm **openen**.
+2. Open **het configuratie scherm**.
 
-3. Selecteer **Microsoft Monitoring Agent** en klik op het tabblad Azure Log **Analytics.**
+3. Selecteer **micro soft Monitoring Agent** en klik vervolgens op het tabblad **Azure log Analytics** .
 
-4. Als u een werkruimte verwijdert, selecteert u deze en klikt u op **Verwijderen**. Herhaal deze stap voor elke andere werkruimte die de agent niet meer meldt.
+4. Als u een werk ruimte verwijdert, selecteert u deze en klikt u vervolgens op **verwijderen**. Herhaal deze stap voor alle andere werk ruimten waarvan u wilt dat de agent stopt met rapporteren.
 
-5. Als u een werkruimte toevoegt, klikt u op **Toevoegen** en plakt u in het dialoogvenster Werkruimte toevoegen een **logboekanalysewerkruimte,** plakt u de werkruimte-id en werkruimtesleutel (primaire sleutel). Als u de computer wilt laten rapporteren bij een Log Analytics-werkruimte in de Azure Government-cloud, selecteert u Azure US Government in de vervolgkeuzelijst Azure Cloud.
+5. Als u een werk ruimte wilt toevoegen, klikt u op **toevoegen** en plakt u de werk ruimte-id en werkruimte sleutel (primaire sleutel) in het dialoog venster **een log Analytics werkruimte toevoegen** . Als u de computer wilt laten rapporteren bij een Log Analytics-werkruimte in de Azure Government-cloud, selecteert u Azure US Government in de vervolgkeuzelijst Azure Cloud.
 
 6. Klik op **OK** om uw wijzigingen op te slaan.
 
-#### <a name="remove-a-workspace-using-powershell"></a>Een werkruimte verwijderen met PowerShell
+#### <a name="remove-a-workspace-using-powershell"></a>Een werk ruimte verwijderen met Power shell
 
 ```powershell
 $workspaceId = "<Your workspace Id>"
@@ -108,7 +108,7 @@ $mma.RemoveCloudWorkspace($workspaceId)
 $mma.ReloadConfiguration()
 ```
 
-#### <a name="add-a-workspace-in-azure-commercial-using-powershell"></a>Een werkruimte toevoegen in Azure commercial met PowerShell
+#### <a name="add-a-workspace-in-azure-commercial-using-powershell"></a>Een werk ruimte in azure Commercial toevoegen met Power shell
 
 ```powershell
 $workspaceId = "<Your workspace Id>"
@@ -118,7 +118,7 @@ $mma.AddCloudWorkspace($workspaceId, $workspaceKey)
 $mma.ReloadConfiguration()
 ```
 
-#### <a name="add-a-workspace-in-azure-for-us-government-using-powershell"></a>Een werkruimte toevoegen in Azure voor de Amerikaanse overheid met PowerShell
+#### <a name="add-a-workspace-in-azure-for-us-government-using-powershell"></a>Een werk ruimte in azure toevoegen voor de Amerikaanse overheid met Power shell
 
 ```powershell
 $workspaceId = "<Your workspace Id>"
@@ -129,58 +129,58 @@ $mma.ReloadConfiguration()
 ```
 
 >[!NOTE]
->Als u de opdrachtregel of het script eerder hebt `EnableAzureOperationalInsights` gebruikt `AddCloudWorkspace` om `RemoveCloudWorkspace`de agent te installeren of te configureren, is deze vervangen door en .
+>Als u de opdracht regel of het script eerder hebt gebruikt voor het installeren of configureren van `EnableAzureOperationalInsights` de agent, `AddCloudWorkspace` is `RemoveCloudWorkspace`vervangen door en.
 >
 
 ### <a name="linux-agent"></a>Linux-agent
-De volgende stappen laten zien hoe u de Linux-agent opnieuw configureert als u besluit deze bij een andere werkruimte te registreren of een werkruimte uit de configuratie te verwijderen.
+De volgende stappen laten zien hoe u de Linux-agent opnieuw kunt configureren als u besluit deze te registreren bij een andere werk ruimte of om een werk ruimte te verwijderen uit de configuratie.
 
-1. Voer de volgende opdracht uit om te controleren of deze is geregistreerd op een werkruimte:
+1. Als u wilt controleren of het is geregistreerd bij een werk ruimte, voert u de volgende opdracht uit:
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -l`
 
-    Het moet een status retourneren die vergelijkbaar is met het volgende voorbeeld:
+    De status moet er als volgt uitzien:
 
     `Primary Workspace: <workspaceId>   Status: Onboarded(OMSAgent Running)`
 
-    Het is belangrijk dat de status ook laat zien dat de agent wordt uitgevoerd, anders worden de volgende stappen om de agent opnieuw te configureren niet voltooid.
+    Het is belang rijk dat met de status ook de agent wordt uitgevoerd. anders worden de volgende stappen voor het opnieuw configureren van de agent niet voltooid.
 
-2. Als deze al is geregistreerd bij een werkruimte, verwijdert u de geregistreerde werkruimte door de volgende opdracht uit te voeren. Anders als het niet is geregistreerd, ga dan naar de volgende stap.
+2. Als deze al is geregistreerd bij een werk ruimte, verwijdert u de geregistreerde werk ruimte door de volgende opdracht uit te voeren. Anders gaat u verder met de volgende stap als deze niet is geregistreerd.
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -X`
 
-3. Voer de volgende opdracht uit om u bij een andere werkruimte te registreren:
+3. Voer de volgende opdracht uit om u te registreren bij een andere werk ruimte:
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <shared key> [-d <top level domain>]`
     
-4. Voer de volgende opdracht uit om te controleren of de wijzigingen van kracht zijn geworden:
+4. Voer de volgende opdracht uit om te controleren of uw wijzigingen zijn doorgevoerd:
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -l`
 
-    Het moet een status retourneren die vergelijkbaar is met het volgende voorbeeld:
+    De status moet er als volgt uitzien:
 
     `Primary Workspace: <workspaceId>   Status: Onboarded(OMSAgent Running)`
 
-De agentservice hoeft niet opnieuw te worden gestart om de wijzigingen van kracht te laten worden.
+De Agent service hoeft niet opnieuw te worden gestart om de wijzigingen van kracht te laten worden.
 
 ## <a name="update-proxy-settings"></a>Proxy-instellingen bijwerken
-Als u de agent wilt configureren om na implementatie met de service te communiceren via een proxyserver of [Logboekanalysegateway,](gateway.md) gebruikt u een van de volgende methoden om deze taak te voltooien.
+Gebruik een van de volgende methoden om deze taak te volt ooien om de agent te configureren om te communiceren met de service via een proxy server of [log Analytics gateway](gateway.md) na de implementatie.
 
 ### <a name="windows-agent"></a>Windows-agent
 
-#### <a name="update-settings-using-control-panel"></a>Instellingen bijwerken met configuratiescherm
+#### <a name="update-settings-using-control-panel"></a>Instellingen bijwerken via configuratie scherm
 
-1. Meld u aan bij de computer met een account met beheerdersrechten.
+1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. Configuratiescherm **openen**.
+2. Open **het configuratie scherm**.
 
-3. Selecteer **Microsoft Monitoring Agent** en klik op het tabblad **Proxy-instellingen.**
+3. Selecteer **micro soft Monitoring Agent** en klik vervolgens op het tabblad **proxy-instellingen** .
 
 4. Klik op **Een proxyserver gebruiken** en geef de URL en het poortnummer van de proxyserver of gateway op. Als er voor uw proxyserver of Log Analytics-gateway verificatie is vereist, voert u de gebruikersnaam en het wachtwoord in voor verificatie en klikt u op **OK**.
 
-#### <a name="update-settings-using-powershell"></a>Instellingen bijwerken met PowerShell
+#### <a name="update-settings-using-powershell"></a>Instellingen bijwerken met Power shell
 
-Kopieer de volgende powershell-code in het voorbeeld, werk deze bij met informatie die specifiek is voor uw omgeving en sla deze op met een PS1-bestandsnaamextensie. Voer het script uit op elke computer die rechtstreeks verbinding maakt met de werkruimte Log Analytics in Azure Monitor.
+Kopieer de volgende Power shell-voorbeeld code, werk deze bij met informatie die specifiek is voor uw omgeving en sla het bestand op met een PS1-bestands extensie. Voer het script uit op elke computer die rechtstreeks verbinding maakt met de Log Analytics-werk ruimte in Azure Monitor.
 
 ```powershell
 param($ProxyDomainName="https://proxy.contoso.com:30443", $cred=(Get-Credential))
@@ -207,7 +207,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 ```
 
 ### <a name="linux-agent"></a>Linux-agent
-Voer de volgende stappen uit als uw Linux-computers moeten communiceren via een proxyserver of Log Analytics-gateway. De waarde voor de proxyconfiguratie heeft de volgende syntaxis `[protocol://][user:password@]proxyhost[:port]`. De eigenschap *proxyhost* accepteert een volledig gekwalificeerde domeinnaam of het IP-adres van de proxyserver.
+Voer de volgende stappen uit als uw Linux-computers moeten communiceren via een proxy server of Log Analytics gateway. De waarde voor de proxyconfiguratie heeft de volgende syntaxis `[protocol://][user:password@]proxyhost[:port]`. De eigenschap *proxyhost* accepteert een volledig gekwalificeerde domeinnaam of het IP-adres van de proxyserver.
 
 1. Bewerk het bestand `/etc/opt/microsoft/omsagent/proxy.conf` door de volgende opdrachten uit te voeren en de waarden aan te passen aan uw specifieke instellingen.
 
@@ -224,74 +224,74 @@ Voer de volgende stappen uit als uw Linux-computers moeten communiceren via een 
     ```
 
 ## <a name="uninstall-agent"></a>Agent verwijderen
-Gebruik een van de volgende procedures om de Windows- of Linux-agent te verwijderen met behulp van de opdrachtregel of de wizard Setup.
+Gebruik een van de volgende procedures om de Windows-of Linux-agent te verwijderen met behulp van de opdracht regel of de wizard Setup.
 
 ### <a name="windows-agent"></a>Windows-agent
 
-#### <a name="uninstall-from-control-panel"></a>Verwijderen uit Configuratiescherm
-1. Meld u aan bij de computer met een account met beheerdersrechten.
+#### <a name="uninstall-from-control-panel"></a>Verwijderen in het configuratie scherm
+1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. Klik in **het Configuratiescherm**op **Programma's en onderdelen**.
+2. Klik in **het configuratie scherm**op **Program ma's en onderdelen**.
 
-3. Klik in **Programma's en onderdelen**op **Microsoft Monitoring Agent,** klik op **Verwijderen**en klik vervolgens op **Ja**.
+3. Klik in **Program ma's en onderdelen**op **micro soft Monitoring Agent**, klik op **verwijderen**en vervolgens op **Ja**.
 
 >[!NOTE]
->De wizard Agent Setup kan ook worden uitgevoerd door te dubbelklikken op **MMASetup-platform\<\>.exe,** dat beschikbaar is om te downloaden vanuit een werkruimte in de Azure-portal.
+>U kunt de wizard Setup van agent ook uitvoeren door te dubbel klikken op **MMASetup\>-\<platform. exe**, dat kan worden gedownload via een werk ruimte in de Azure Portal.
 
-#### <a name="uninstall-from-the-command-line"></a>Verwijderen van de opdrachtregel
-Het gedownloade bestand voor de agent is een op zichzelf staand installatiepakket dat is gemaakt met IExpress. Het installatieprogramma voor de agent en de ondersteunende bestanden zijn opgenomen in het pakket en moeten worden geëxtraheerd om correct te verwijderen met behulp van de opdrachtregel in het volgende voorbeeld.
+#### <a name="uninstall-from-the-command-line"></a>Verwijderen vanaf de opdracht regel
+Het gedownloade bestand voor de agent is een op zichzelf staand installatie pakket dat is gemaakt met IExpress. Het installatie programma voor de agent en de ondersteunende bestanden bevinden zich in het pakket en moet worden uitgepakt om correct te worden verwijderd met de opdracht regel die in het volgende voor beeld wordt weer gegeven.
 
-1. Meld u aan bij de computer met een account met beheerdersrechten.
+1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. Als u de installatiebestanden van de agent `extract MMASetup-<platform>.exe` wilt extraheren, wordt u vanuit een opdrachtprompt met verhoogde bevoegdheid verwijderd en wordt u gevraagd om het pad om bestanden naar uit te halen. U het pad ook opgeven `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`door de argumenten door te geven. Zie [Command-line switches voor IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) en werk het voorbeeld bij om aan uw behoeften te voldoen voor meer informatie over de command-line switches die door IExpress worden ondersteund.
+2. Als u de installatie bestanden van de agent wilt extra heren, vanaf een `extract MMASetup-<platform>.exe` opdracht prompt met verhoogde bevoegdheid, wordt u gevraagd om het pad naar de bestanden uit te pakken. U kunt ook het pad opgeven door de argumenten `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`door te geven. Zie voor meer informatie over de opdracht regel parameters die worden ondersteund door IExpress, [opdracht regel parameters voor IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) en werk vervolgens het voor beeld bij aan uw behoeften.
 
-3. Typ bij de `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`prompt .
+3. Typ `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`bij de prompt.
 
 ### <a name="linux-agent"></a>Linux-agent
 Voer de volgende opdracht op de Linux-computer uit om de agent te verwijderen. Met het argument *--purge* worden de agent en de configuratie ervan volledig verwijderd.
 
    `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh --purge`
 
-## <a name="configure-agent-to-report-to-an-operations-manager-management-group"></a>Agent configureren om te rapporteren aan een beheergroep Operations Manager
+## <a name="configure-agent-to-report-to-an-operations-manager-management-group"></a>Agent configureren om te rapporteren aan een Operations Manager-beheer groep
 
 ### <a name="windows-agent"></a>Windows-agent
-Voer de volgende stappen uit om de log-analyse-agent voor Windows te configureren om te rapporteren aan een beheergroep van System Center Operations Manager.
+Voer de volgende stappen uit om de Log Analytics-agent voor Windows te configureren om te rapporteren aan een System Center Operations Manager-beheer groep.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-1. Meld u aan bij de computer met een account met beheerdersrechten.
+1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. Configuratiescherm **openen**.
+2. Open **het configuratie scherm**.
 
-3. Klik **op Microsoft-controleagent** en klik vervolgens op het tabblad **Operations Manager.**
+3. Klik op **micro soft Monitoring Agent** en klik vervolgens op het tabblad **Operations Manager** .
 
-4. Als uw Operations Manager-servers zijn integratie met Active Directory, klikt u op **Opdrachten voor beheergroepen van AD DS automatisch bijwerken.**
+4. Als uw Operations Manager-servers integratie met Active Directory hebben, klikt u op **toewijzingen van beheer groepen automatisch bijwerken vanuit AD DS**.
 
-5. Klik **op Toevoegen** om het dialoogvenster Een **beheergroep toevoegen te** openen.
+5. Klik op **toevoegen** om het dialoog venster **een beheer groep toevoegen** te openen.
 
-6. Typ in het veld Naam van de **groep Beheer** de naam van uw beheergroep.
+6. Typ in het veld **naam van beheer groep** de naam van uw beheer groep.
 
-7. Typ in het veld **Primaire beheerserver** de computernaam van de primaire beheerserver.
+7. Typ in het veld **primaire beheer server** de computer naam van de primaire beheer server.
 
-8. Typ in het veld **Beheerserverpoort** het TCP-poortnummer.
+8. Typ in het veld **beheer server poort** het TCP-poort nummer.
 
-9. Kies **onder Agent Action Account**het lokale systeemaccount of een lokaal domeinaccount.
+9. Kies in het **actie-account**van de agent het lokale systeem account of een lokaal domein account.
 
-10. Klik op **OK** om het dialoogvenster **Een beheergroep toevoegen** te sluiten en klik vervolgens op **OK** om het dialoogvenster Eigenschappen **van Microsoft-bewakingsagent te** sluiten.
+10. Klik op **OK** om het dialoog venster **een beheer groep toevoegen** te sluiten en klik vervolgens op **OK** om het dialoog venster **Eigenschappen van micro soft Monitoring Agent** te sluiten.
 
 ### <a name="linux-agent"></a>Linux-agent
-Voer de volgende stappen uit om de log-analyse-agent voor Linux te configureren om te rapporteren aan een beheergroep van System Center Operations Manager.
+Voer de volgende stappen uit om de Log Analytics-agent voor Linux te configureren om te rapporteren aan een System Center Operations Manager-beheer groep.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 1. Het bestand bewerken`/etc/opt/omi/conf/omiserver.conf`
 
-2. Zorg ervoor dat `httpsport=` de lijn die begint met definieert de poort 1270. Zoals:`httpsport=1270`
+2. Zorg ervoor dat de regel die `httpsport=` begint met de poort 1270 definieert. Zoals:`httpsport=1270`
 
-3. Start de OMI-server opnieuw:`sudo /opt/omi/bin/service_control restart`
+3. Start de OMI-server opnieuw op:`sudo /opt/omi/bin/service_control restart`
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Controleer [het oplossen van problemen met de Linux-agent](agent-linux-troubleshoot.md) als u problemen ondervindt tijdens het installeren of beheren van de Linux-agent.
+- Raadpleeg [problemen met de Linux-agent oplossen](agent-linux-troubleshoot.md) als u problemen ondervindt tijdens het installeren of beheren van de Linux-agent.
 
-- Controleer [het oplossen van problemen met de Windows-agent](agent-windows-troubleshoot.md) als u problemen ondervindt tijdens het installeren of beheren van de Windows-agent.
+- Raadpleeg [problemen met de Windows-agent oplossen](agent-windows-troubleshoot.md) als u problemen ondervindt tijdens het installeren of beheren van de Windows-agent.

@@ -1,6 +1,6 @@
 ---
-title: Azure IoT DPS IP-verbindingsfilters | Microsoft Documenten
-description: IP-filtering gebruiken om verbindingen van specifieke IP-adressen naar uw Azure IoT DPS-exemplaar te blokkeren. U verbindingen blokkeren vanaf afzonderlijke of bereiken van IP-adressen.
+title: IP-verbindings filters van Azure IoT DPS | Microsoft Docs
+description: IP-filtering gebruiken om verbindingen van specifieke IP-adressen te blok keren naar uw Azure IoT DPS-exemplaar. U kunt verbindingen van afzonderlijke IP-adressen of bereiken blok keren.
 author: wesmc7777
 ms.author: wesmc
 ms.service: iot-dps
@@ -8,79 +8,79 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.openlocfilehash: 0b13040b39ed491ec4fee4d6922d41f086edeeb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79284913"
 ---
 # <a name="use-ip-filters"></a>IP-filters gebruiken
 
-Beveiliging is een belangrijk aspect van elke IoT-oplossing. Soms moet u expliciet de IP-adressen opgeven van waaruit apparaten verbinding kunnen maken als onderdeel van uw beveiligingsconfiguratie. Met de *IP-filterfunctie* voor een Azure IoT Hub Device Provisioning Service (DPS) u regels configureren voor het weigeren of accepteren van verkeer van specifieke IPv4-adressen.
+Beveiliging is een belang rijk aspect van elke IoT-oplossing. Soms moet u expliciet de IP-adressen opgeven waarvan apparaten verbinding kunnen maken als onderdeel van uw beveiligings configuratie. Met de *IP-filter* functie voor Azure IOT hub Device PROVISIONING service (DPS) kunt u regels configureren voor het afwijzen of accepteren van verkeer van specifieke IPv4-adressen.
 
 ## <a name="when-to-use"></a>Wanneer gebruikt u dit?
 
-Er zijn twee specifieke use-cases waarin het nuttig is om verbindingen met een DPS-eindpunt te blokkeren vanaf bepaalde IP-adressen:
+Er zijn twee specifieke situaties waarin het nuttig is om verbindingen met een DPS-eind punt van bepaalde IP-adressen te blok keren:
 
-* Uw DPS mag alleen verkeer ontvangen van een bepaald bereik van IP-adressen en al het andere afwijzen. U gebruikt bijvoorbeeld uw DPS met [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) om privéverbindingen te maken tussen een DPS en uw apparaten.
+* Uw DPS mag alleen verkeer ontvangen van een opgegeven bereik van IP-adressen en alle andere gegevens weigeren. U gebruikt bijvoorbeeld uw DPS met [Azure Express route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) om particuliere verbindingen te maken tussen een DPS en uw apparaten.
 
-* U moet verkeer van IP-adressen weigeren die door de DPS-beheerder als verdacht zijn aangemerkt.
+* U moet het verkeer afwijzen van IP-adressen die als verdacht zijn geïdentificeerd door de DPS-beheerder.
 
-## <a name="how-filter-rules-are-applied"></a>Hoe filterregels worden toegepast
+## <a name="how-filter-rules-are-applied"></a>Hoe filter regels worden toegepast
 
-De IP-filterregels worden toegepast op DPS-instantieniveau. Daarom zijn de IP-filterregels van toepassing op alle verbindingen van apparaten en back-end apps met behulp van een ondersteund protocol.
+De IP-filter regels worden toegepast op het niveau van het DPS-exemplaar. De IP-filter regels gelden daarom voor alle verbindingen van apparaten en back-end-apps met behulp van elk ondersteund protocol.
 
-Elke verbindingspoging van een IP-adres dat overeenkomt met een weigerende IP-regel in uw DPS-exemplaar, ontvangt een ongeautoriseerde status code en beschrijving van 401. In het antwoordbericht wordt de IP-regel niet vermeld.
+Elke verbindings poging van een IP-adres dat overeenkomt met een afwijzings-IP-regel in uw DPS-exemplaar ontvangt een niet-geautoriseerde 401-status code en een beschrijving. De IP-regel wordt niet vermeld in het antwoord bericht.
 
 ## <a name="default-setting"></a>Standaardinstelling
 
-Standaard is het **IP-filterraster** in de portal voor DPS leeg. Deze standaardinstelling betekent dat uw DPS verbindingen accepteert vanaf elk IP-adres. Deze standaardinstelling is gelijk aan een regel die het IP-adresbereik 0.0.0/0/0 accepteert.
+Het **IP-filter** raster in de portal voor DPS is standaard leeg. Deze standaard instelling betekent dat uw DPS verbindingen van elk IP-adres accepteert. Deze standaard instelling komt overeen met een regel die het IP-adres bereik 0.0.0.0/0 accepteert.
 
-![Standaard IP-filterinstellingen voor IoT DPS](./media/iot-dps-ip-filtering/ip-filter-default.png)
+![Standaard IP-filter instellingen voor IoT DPS](./media/iot-dps-ip-filtering/ip-filter-default.png)
 
-## <a name="add-or-edit-an-ip-filter-rule"></a>Een IP-filterregel toevoegen of bewerken
+## <a name="add-or-edit-an-ip-filter-rule"></a>Een IP-filter regel toevoegen of bewerken
 
-Als u een IP-filterregel wilt toevoegen, selecteert u **+ IP-filterregel toevoegen**.
+Als u een IP-filter regel wilt toevoegen, selecteert u **+ IP-filter regel toevoegen**.
 
-![Een IP-filterregel toevoegen aan een IoT-DPS](./media/iot-dps-ip-filtering/ip-filter-add-rule.png)
+![Een IP-filter regel toevoegen aan een IoT-DPS](./media/iot-dps-ip-filtering/ip-filter-add-rule.png)
 
-Nadat u **IP-filterregel toevoegen hebt**geselecteerd, vult u de velden in.
+Wanneer u **IP-filter regel toevoegen**selecteert, vult u de velden in.
 
-![Na het selecteren van een IP-filterregel toevoegen](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
+![Nadat u een IP-filter regel toevoegen hebt geselecteerd](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
 
-* Geef een **naam** op voor de IP-filterregel. Dit moet een unieke, case-ongevoelige, alfanumerieke string tot 128 tekens lang zijn. Alleen de ASCII 7-bits `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` alfanumerieke tekens plus worden geaccepteerd.
+* Geef een **naam** op voor de IP-filter regel. Dit moet een unieke, hoofdletter gevoelige, alfanumerieke teken reeks van Maxi maal 128 tekens lang zijn. Alleen de ASCII 7-bits alfanumerieke tekens `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` plus worden geaccepteerd.
 
-* Geef één IPv4-adres of een blok IP-adressen op in CIDR-notatie. In CIDR-notatie 192.168.100.0/22 staat bijvoorbeeld de 1024 IPv4-adressen van 192.168.100.0 tot 192.168.103.255.
+* Geef één IPv4-adres of een blok met IP-adressen in CIDR-notatie op. Bijvoorbeeld in CIDR-notatie 192.168.100.0/22 staat voor de IPv4-adressen van 1024 van 192.168.100.0 naar 192.168.103.255.
 
-* Selecteer **Toestaan** of **Blokkeren** als **actie** voor de IP-filterregel.
+* Selecteer **toestaan** of **blok keren** als de **actie** voor de IP-filter regel.
 
-Nadat u de velden hebt ingevuld, selecteert u **Opslaan** om de regel op te slaan. U ziet een waarschuwing waarin wordt gemeld dat de update aan de gang is.
+Nadat u de velden hebt ingevuld, selecteert u **Opslaan** om de regel op te slaan. U ziet een waarschuwing dat de update wordt uitgevoerd.
 
-![Melding over het opslaan van een IP-filterregel](./media/iot-dps-ip-filtering/ip-filter-save-new-rule.png)
+![Melding over het opslaan van een IP-filter regel](./media/iot-dps-ip-filtering/ip-filter-save-new-rule.png)
 
-De optie **Toevoegen** is uitgeschakeld wanneer u het maximum van 10 IP-filterregels bereikt.
+De optie **toevoegen** is uitgeschakeld wanneer u het maximum van 10 IP-filter regels bereikt.
 
-Als u een bestaande regel wilt bewerken, selecteert u de gegevens die u wilt wijzigen, wijzigt u de wijziging en selecteert **u Opslaan** om uw bewerking op te slaan.
+Als u een bestaande regel wilt bewerken, selecteert u de gegevens die u wilt wijzigen, brengt u de wijziging aan en selecteert u **Opslaan** om uw bewerking op te slaan.
 
 > [!NOTE]
-> Als u IP-adressen afwijst, kan voorkomen dat andere Azure Services interactie hebben met het DPS-exemplaar.
+> Het afwijzen van IP-adressen kan verhinderen dat andere Azure-Services communiceren met het DPS-exemplaar.
 
-## <a name="delete-an-ip-filter-rule"></a>Een IP-filterregel verwijderen
+## <a name="delete-an-ip-filter-rule"></a>Een IP-filter regel verwijderen
 
-Als u een IP-filterregel wilt verwijderen, selecteert u het pictogram prullenbak in die rij en selecteert u **Opslaan**. De regel wordt verwijderd en de wijziging wordt opgeslagen.
+Als u een IP-filter regel wilt verwijderen, selecteert u het prullenbak pictogram op die rij en selecteert u vervolgens **Opslaan**. De regel wordt verwijderd en de wijziging wordt opgeslagen.
 
-![Een IP-filterregel van IoT-DPS verwijderen](./media/iot-dps-ip-filtering/ip-filter-delete-rule.png)
+![Een IP-filter regel van een IoT-DPS verwijderen](./media/iot-dps-ip-filtering/ip-filter-delete-rule.png)
 
 
-## <a name="update-ip-filter-rules-in-code"></a>IP-filterregels bijwerken in code
+## <a name="update-ip-filter-rules-in-code"></a>IP-filter regels in code bijwerken
 
-U uw DPS IP-filter ophalen en wijzigen met behulp van het REST-eindpunt van azure resource Provider. Zie `properties.ipFilterRules` in [createorupdate methode](https://docs.microsoft.com/rest/api/iot-dps/iotdpsresource/createorupdate).
+U kunt het IP-filter van DPS ophalen en wijzigen met behulp van het REST-eind punt van de Azure-resource provider. Zie `properties.ipFilterRules` de [methode createorupdate](https://docs.microsoft.com/rest/api/iot-dps/iotdpsresource/createorupdate).
 
-Het bijwerken van DPS IP-filterregels wordt momenteel niet ondersteund met Azure CLI of Azure PowerShell, maar kan worden uitgevoerd met Azure Resource Manager-sjablonen. Zie [Azure Resource Manager-sjablonen](../azure-resource-manager/templates/overview.md) voor richtlijnen voor het gebruik van Resource Manager-sjablonen. In de volgende sjabloonvoorbeelden is te zien hoe u DPS IP-filterregels maakt, bewerkt en verwijdert.
+Het bijwerken van de IP-filter regels van DPS wordt momenteel niet ondersteund met Azure CLI of Azure PowerShell, maar kan worden uitgevoerd met Azure Resource Manager sjablonen. Zie [Azure Resource Manager sjablonen](../azure-resource-manager/templates/overview.md) voor meer informatie over het gebruik van Resource Manager-sjablonen. De volgende sjabloon voorbeelden laten zien hoe u DPS IP-filter regels kunt maken, bewerken en verwijderen.
 
-### <a name="add-an-ip-filter-rule"></a>Een IP-filterregel toevoegen
+### <a name="add-an-ip-filter-rule"></a>Een IP-filter regel toevoegen
 
-In het volgende sjabloonvoorbeeld wordt een nieuwe IP-filterregel gemaakt met de naam 'AllowAll' die al het verkeer accepteert.
+In het volgende sjabloon voorbeeld wordt een nieuwe IP-filter regel gemaakt met de naam ' AllowAll ', waarmee al het verkeer wordt geaccepteerd.
 
 ```json
 {
@@ -131,18 +131,18 @@ In het volgende sjabloonvoorbeeld wordt een nieuwe IP-filterregel gemaakt met de
 }
 ```
 
-Werk de IP-filterregelkenmerken van de sjabloon bij op basis van uw vereisten.
+Werk de IP-filter regel kenmerken van de sjabloon bij op basis van uw vereisten.
 
 | Kenmerk                | Beschrijving |
 | ------------------------ | ----------- |
-| **Filternaam**           | Geef een naam op voor de IP-filterregel. Dit moet een unieke, case-ongevoelige, alfanumerieke string tot 128 tekens lang zijn. Alleen de ASCII 7-bits alfanumerieke tekens plus {'-', ':', '/',\'',, '', '+', '%', '_', '#', '*', '?', '?', '',,,,,,,,', '', '',worden geaccepteerd. |
-| **Actie**               | Geaccepteerde waarden zijn **Accepteren** of **Weigeren** als de actie voor de IP-filterregel. |
-| **ipMask (ipMask)**               | Geef één IPv4-adres of een blok IP-adressen op in CIDR-notatie. In CIDR-notatie 192.168.100.0/22 staat bijvoorbeeld de 1024 IPv4-adressen van 192.168.100.0 tot 192.168.103.255. |
+| **FilterName**           | Geef een naam op voor de IP-filter regel. Dit moet een unieke, hoofdletter gevoelige, alfanumerieke teken reeks van Maxi maal 128 tekens lang zijn. Alleen de ASCII 7-bits alfanumerieke tekens plus {'-', ': ', '/',\'', ' + ', '% ', ' _ ', ' # ', '% ', '? ',!, ' (', ') ', ', ' = ', ' @ ', '; ', '} ', worden geaccepteerd. |
+| **Actie**               | Geaccepteerde waarden **accepteren** of **afwijzen** als de actie voor de IP-filter regel. |
+| **ipMask**               | Geef één IPv4-adres of een blok met IP-adressen in CIDR-notatie op. Bijvoorbeeld in CIDR-notatie 192.168.100.0/22 staat voor de IPv4-adressen van 1024 van 192.168.100.0 naar 192.168.103.255. |
 
 
-### <a name="update-an-ip-filter-rule"></a>Een IP-filterregel bijwerken
+### <a name="update-an-ip-filter-rule"></a>Een IP-filter regel bijwerken
 
-In het volgende sjabloonvoorbeeld wordt de IP-filterregel met de naam 'AllowAll' bijgewerkt om al het verkeer te weigeren.
+In het volgende sjabloon voorbeeld wordt de IP-filter regel met de naam ' AllowAll ', zoals eerder weer gegeven, bijgewerkt om al het verkeer af te wijzen.
 
 ```json
 { 
@@ -193,9 +193,9 @@ In het volgende sjabloonvoorbeeld wordt de IP-filterregel met de naam 'AllowAll'
 }
 ```
 
-### <a name="delete-an-ip-filter-rule"></a>Een IP-filterregel verwijderen
+### <a name="delete-an-ip-filter-rule"></a>Een IP-filter regel verwijderen
 
-In het volgende sjabloonvoorbeeld worden alle IP-filterregels voor het DPS-exemplaar verwijderd.
+In het volgende sjabloon voorbeeld worden alle IP-filter regels voor het DPS-exemplaar verwijderd.
 
 ```json
 { 
@@ -241,22 +241,22 @@ In het volgende sjabloonvoorbeeld worden alle IP-filterregels voor het DPS-exemp
 
 
 
-## <a name="ip-filter-rule-evaluation"></a>Evaluatie van IP-filterregels
+## <a name="ip-filter-rule-evaluation"></a>Evaluatie van IP-filter regel
 
-IP-filterregels worden op volgorde toegepast en de eerste regel die overeenkomt met het IP-adres bepaalt de actie Accepteren of weigeren.
+IP-filter regels worden in volg orde toegepast en de eerste regel die overeenkomt met het IP-adres, bepaalt de accepteren of afwijzen.
 
-Als u bijvoorbeeld adressen in het bereik 192.168.100.0/22 wilt accepteren en al het andere wilt afwijzen, moet de eerste regel in het raster het adresbereik 192.168.100.0/22 accepteren. De volgende regel moet alle adressen afwijzen met het bereik 0.0.0.0/0.
+Als u bijvoorbeeld adressen in het bereik 192.168.100.0/22 wilt accepteren en alle andere gegevens wilt afwijzen, moet de eerste regel in het raster het adres bereik 192.168.100.0/22 accepteren. De volgende regel moet alle adressen afwijzen met behulp van het bereik 0.0.0.0/0.
 
-U de volgorde van uw IP-filterregels in het raster wijzigen door op de drie verticale stippen aan het begin van een rij te klikken en slepen en neerzetten te gebruiken.
+U kunt de volg orde van de IP-filter regels in het raster wijzigen door te klikken op de drie verticale puntjes aan het begin van een rij en met slepen en neerzetten.
 
-Als u de nieuwe IP-filterregelorder wilt opslaan, klikt u op **Opslaan**.
+Klik op **Opslaan**als u de nieuwe IP-filter regel wilt opslaan.
 
-![De volgorde van uw IP-filterregels van DPS wijzigen](./media/iot-dps-ip-filtering/ip-filter-rule-order.png)
+![Wijzig de volg orde van de IP-filter regels van uw DPS](./media/iot-dps-ip-filtering/ip-filter-rule-order.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het volgende om het beheer van DPS verder te verkennen:
+Zie voor meer informatie over het beheren van DPS:
 
-* [IoT DPS-IP-adressen begrijpen](iot-dps-understand-ip-address.md)
+* [Informatie over de IP-adressen van IoT DPS](iot-dps-understand-ip-address.md)
 * [DPS configureren met de Azure CLI](how-to-manage-dps-with-cli.md)
 * [Toegang tot DPS beheren](how-to-control-access.md)

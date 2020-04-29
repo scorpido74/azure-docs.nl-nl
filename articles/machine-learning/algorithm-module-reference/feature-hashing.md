@@ -1,7 +1,7 @@
 ---
-title: Referentie van de Feature Hashing-module
+title: Naslag informatie over functie hashing-module
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de functiehashing-module in de Azure Machine Learning om tekstgegevens te verbeteren.
+description: Meer informatie over het gebruik van de module functie hashing in de Azure Machine Learning voor het parametriseer van tekst gegevens.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,125 +10,125 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 7178417a5c20afe5b1ed02bc526ec174704962df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79456247"
 ---
-# <a name="feature-hashing-module-reference"></a>Referentie van de Feature Hashing-module
+# <a name="feature-hashing-module-reference"></a>Naslag informatie over functie hashing-module
 
-In dit artikel wordt een module beschreven die is opgenomen in Azure Machine Learning designer (preview).
+In dit artikel wordt een module beschreven die is opgenomen in Azure Machine Learning Designer (preview).
 
-Gebruik de module Feature Hashing om een stroom Engelse tekst om te zetten in een reeks geheelgetalfuncties. U deze gehashte functieset vervolgens doorgeven aan een machine learning-algoritme om een tekstanalysemodel te trainen.
+Gebruik de functie hashing-module om een stroom van Engelse tekst te transformeren in een set integer-functies. U kunt deze hash-functie vervolgens door geven die is ingesteld op een machine learning algoritme voor het trainen van een tekst analyse model.
 
-De functie hashing functionaliteit die in deze module is gebaseerd op de nimbusml kader. Zie [de klasse NgramHash voor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest)meer informatie.
+De functie hashing-functionaliteit die in deze module wordt gegeven, is gebaseerd op het nimbusml-Framework. Zie [NgramHash class](https://docs.microsoft.com/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest)voor meer informatie.
 
-## <a name="what-is-feature-hashing"></a>Wat is functie hashing?
+## <a name="what-is-feature-hashing"></a>Wat is functie-hashing?
 
-Feature hashing werkt door het omzetten van unieke tokens in gehele getallen. Het werkt op de exacte tekenreeksen die u als input levert en voert geen taalanalyse of voorbewerking uit. 
+Hashing van functies werkt door unieke tokens te converteren naar gehele getallen. Het werkt op de exacte teken reeksen die u opgeeft als invoer en voert geen taal analyse of voor verwerking uit. 
 
-Neem bijvoorbeeld een reeks eenvoudige zinnen zoals deze, gevolgd door een sentimentscore. Stel dat u deze tekst wilt gebruiken om een model te maken.
+Neem bijvoorbeeld een aantal eenvoudige zinnen zoals deze, gevolgd door een sentiment-Score. Stel dat u deze tekst wilt gebruiken om een model te bouwen.
 
-|Gebruikerstekst|Sentiment|
+|Gebruikers tekst|Sentiment|
 |--------------|---------------|
-|Ik hield van dit boek|3|
-|Ik haatte dit boek.|1|
+|Ik gek dit boek|3|
+|Ik Hated dit boek|1|
 |Dit boek was geweldig|3|
-|Ik hou van boeken|2|
+|Ik hou boeken|2|
 
-Intern maakt de module Feature Hashing een woordenboek van n-grammen. Bijvoorbeeld, de lijst van bigrammen voor deze dataset zou iets als volgt zijn:
+Intern maakt de functie hashing-module een woorden lijst van n-gram. De lijst met bigrams voor deze gegevensset zou er bijvoorbeeld als volgt moeten uitzien:
 
-|Term (bigrammen)|Frequency|
+|Term (bigrams)|Frequency|
 |------------|---------------|
 |Dit boek|3|
-|Ik hield van|1|
-|Ik haatte het.|1|
-|Ik hou van|1|
+|Ik gek|1|
+|Ik Hated|1|
+|Ik hou|1|
 
-U de grootte van de n-grammen met behulp van de **N-gram** eigenschap. Als u kiest voor bigrams, worden unigrammen ook berekend. Het woordenboek zou ook enkele termen als deze:
+U kunt de grootte van het n-gram instellen met behulp van de eigenschap **n-gram** . Als u kiest voor bigrams, worden unigrams ook berekend. De woorden lijst bevat ook enkele voor waarden, zoals de volgende:
 
-|Term (unigrammen)|Frequency|
+|Term (unigrams)|Frequency|
 |------------|---------------|
 |boek|3|
 |I|3|
 |boeken|1|
-|Was|1|
+|aangetroffen|1|
 
-Nadat het woordenboek is gemaakt, zet de module Feature Hashing de woorden van het woordenboek om in hashwaarden. Vervolgens wordt berekend of een functie in elk geval is gebruikt. Voor elke rij tekstgegevens wordt in de module een reeks kolommen uitgevoerd, één kolom voor elke gehashte functie.
+Nadat de woorden lijst is gebouwd, zet de functie hashing module de woordenlijst termen om in hash-waarden. Vervolgens wordt berekend of een functie in elk geval is gebruikt. Voor elke rij met tekst gegevens voert de module een set kolommen uit, één kolom voor elke hash-functie.
 
-Na hashing zien de functiekolommen er bijvoorbeeld ongeveer als volgt uit:
+Zo kunnen de functie kolommen na hashing er ongeveer als volgt uitzien:
 
-|Waardering|Hashing-functie 1|Hashing functie 2|Hashing-functie 3|
+|Waardering|Hash-functie 1|Hash-functie 2|Hash-functie 3|
 |-----|-----|-----|-----|
 |4|1|1|0|
 |5|0|0|0|
 
-* Als de waarde in de kolom 0 is, bevat de rij de gehashte functie niet.
+* Als de waarde in de kolom 0 is, bevat de rij het onderdeel hashed niet.
 * Als de waarde 1 is, bevat de rij de functie.
 
-Met feature hashing u tekstdocumenten van variabele lengte weergeven als numerieke functievectoren van gelijke lengte om de dimensionaliteit te verminderen. Als u de tekstkolom voor training hebt geprobeerd te gebruiken zoals deze is, wordt deze behandeld als een categorische functiekolom met veel verschillende waarden.
+Met hashing van functies kunt u tekst documenten met variabele lengte vertegenwoordigen als numerieke functie vectoren van gelijke lengte om de dimensionaliteit te verminderen. Als u probeert de tekst kolom voor training te gebruiken zoals is, wordt deze behandeld als een categorische-functie kolom met veel verschillende waarden.
 
-Numerieke uitvoer maakt het ook mogelijk om veelgebruikte machine learning-methoden te gebruiken, waaronder classificatie, clustering en het ophalen van informatie. Omdat lookup-bewerkingen integer hashes kunnen gebruiken in plaats van vergelijkingen, is het verkrijgen van de functiegewichten ook veel sneller.
+Met numerieke uitvoer kunt u ook algemene machine learning methoden gebruiken, zoals classificatie, clustering en het ophalen van informatie. Omdat opzoek bewerkingen geheeltallige hashes kunnen gebruiken in plaats van teken reeksen vergelijken, is het ophalen van de functie wegingen veel sneller.
 
-## <a name="configure-the-feature-hashing-module"></a>De Module Feature Hashing configureren
+## <a name="configure-the-feature-hashing-module"></a>De functie hashing-module configureren
 
-1.  Voeg de module Feature Hashing toe aan uw pijplijn in de ontwerper.
+1.  Voeg de functie hashing module toe aan uw pijp lijn in de ontwerp functie.
 
-1. Verbind de gegevensset met de tekst die u wilt analyseren.
+1. Verbind de gegevensset die de tekst bevat die u wilt analyseren.
 
     > [!TIP]
-    > Omdat functiehashing geen lexicale bewerkingen uitvoert, zoals stemming of afgekaptheid, u soms betere resultaten behalen door tekst voor te bewerken voordat u functiehashing toepast. 
+    > Omdat functie-hashing geen lexicale bewerkingen uitvoert, zoals het maken van een stam bewerking of afkap ping, kunt u soms betere resultaten verkrijgen door de tekst voor te verwerken voordat u functie-hashing toepast. 
 
-1. **Doelkolommen** instellen op de tekstkolommen die u wilt converteren naar gehashte functies. Houd er rekening mee dat:
+1. Stel **doel kolommen** in op de tekst kolommen die u wilt converteren naar hash-functies. Denk hierbij aan het volgende:
 
-    * De kolommen moeten het tekenreeksgegevenstype zijn.
+    * De kolommen moeten het teken reeks gegevens type zijn.
     
-    * Het kiezen van meerdere tekstkolommen kan een aanzienlijke invloed hebben op de functiedimensionaliteit. Het aantal kolommen voor een hash van 10 bits gaat bijvoorbeeld van 1024 voor een enkele kolom naar 2048 voor twee kolommen.
+    * Het kiezen van meerdere tekst kolommen kan aanzienlijke gevolgen hebben voor de functie dimensionaliteit. Het aantal kolommen voor een 10-bits hash gaat bijvoorbeeld van 1.024 voor één kolom tot 2.048 voor twee kolommen.
 
-1. Gebruik **Hashing bitsize** om het aantal bits op te geven dat u moet gebruiken wanneer u de hashtabel maakt.
+1. Gebruik **hash-bitsize** om het aantal bits op te geven dat moet worden gebruikt wanneer u de hash-tabel wilt maken.
     
-    De standaardbitgrootte is 10. Voor veel problemen is deze waarde voldoende. U hebt mogelijk meer ruimte nodig om botsingen te voorkomen, afhankelijk van de grootte van de n-gramwoordenschat in de trainingstekst.
+    De standaard-bits grootte is 10. Deze waarde is voor veel problemen voldoende. Mogelijk hebt u meer ruimte nodig om conflicten te voor komen, afhankelijk van de grootte van de lijst met n-grammen in de tekst van de training.
     
-1. Voer **voor N-grammen**een getal in dat de maximale lengte van de n-grammen definieert die aan het trainingswoordenboek moet worden toegevoegd. Een n-gram is een opeenvolging van *n* woorden, behandeld als een unieke eenheid.
+1. Voer voor **N-gram**een getal in dat de maximum lengte van het N-gram definieert dat aan de trainings woordenlijst moet worden toegevoegd. Een n-gram bestaat uit een reeks *n* woorden, behandeld als een unieke eenheid.
 
-    Als u bijvoorbeeld 3 unigrammen, bigrammen en trigrammen invoert, worden er unigrammen en trigrammen gemaakt.
+    Als u bijvoorbeeld 3, unigrams, bigrams en trigrams invoert, worden deze gemaakt.
 
-1. Verzend de pijplijn.
+1. Verzend de pijp lijn.
 
 ## <a name="results"></a>Resultaten
 
-Nadat de verwerking is voltooid, wordt in de module een getransformeerde gegevensset uitgevoerd waarin de oorspronkelijke tekstkolom is geconverteerd naar meerdere kolommen. Elke kolom vertegenwoordigt een functie in de tekst. Afhankelijk van hoe belangrijk het woordenboek is, kan de resulterende gegevensset groot zijn:
+Nadat de verwerking is voltooid, voert de module een getransformeerde gegevensset uit waarin de oorspronkelijke tekst kolom is geconverteerd naar meerdere kolommen. Elke kolom vertegenwoordigt een functie in de tekst. Afhankelijk van hoe groot de woorden lijst is, kan de resulterende gegevensset groot zijn:
 
-|Kolomnaam 1|Kolomtype 2|
+|Kolom naam 1|Kolom Type 2|
 |-------------------|-------------------|
-|GEBRUIKERSTEKST|Kolom Oorspronkelijke gegevens|
-|Sentiment|Kolom Oorspronkelijke gegevens|
-|USERTEXT - Hashing functie 1|Gehashte functiekolom|
-|USERTEXT - Hashing functie 2|Gehashte functiekolom|
-|USERTEXT - Hashing functie n|Gehashte functiekolom|
-|USERTEXT - Hashing functie 1024|Gehashte functiekolom|
+|USERTEXT|Oorspronkelijke gegevens kolom|
+|SENTIMENT|Oorspronkelijke gegevens kolom|
+|USERTEXT-hash-functie 1|Gehashte functie kolom|
+|USERTEXT-hashing-functie 2|Gehashte functie kolom|
+|USERTEXT-hashing-functie n|Gehashte functie kolom|
+|USERTEXT-hashing-functie 1024|Gehashte functie kolom|
 
-Nadat u de getransformeerde gegevensset hebt gemaakt, u deze gebruiken als invoer voor de module Treinmodel.
+Nadat u de getransformeerde gegevensset hebt gemaakt, kunt u deze gebruiken als invoer voor de module Train model.
  
 ## <a name="best-practices"></a>Aanbevolen procedures
 
-De volgende aanbevolen procedures kunnen u helpen het meeste uit de module Feature Hashing te halen:
+Met de volgende aanbevolen procedures kunt u optimaal profiteren van de functie hashing module:
 
-* Voeg een preprocesstekstmodule toe voordat u Feature Hashing gebruikt om de invoertekst vooraf te verwerken. 
+* Voeg een tekst module vóór verwerking toe voordat u functie-hashing gebruikt om de invoer tekst voor te verwerken. 
 
-* Voeg een module Kolommen selecteren toe nadat de module Feature Hashing de tekstkolommen uit de uitvoergegevensset wilt verwijderen. U hebt de tekstkolommen niet nodig nadat de hashing-functies zijn gegenereerd.
+* Voeg een module select columns toe na de functie hashing module om de tekst kolommen uit de uitvoer gegevensset te verwijderen. U hebt de tekst kolommen niet nodig nadat de hash-functies zijn gegenereerd.
     
-* Overweeg deze voorbewerkingsopties voor tekst te gebruiken om de resultaten te vereenvoudigen en de nauwkeurigheid te verbeteren:
+* U kunt deze voor verwerkings opties voor tekst gebruiken om de resultaten te vereenvoudigen en de nauw keurigheid te verbeteren:
 
-    * Woord breken
-    * Woordverwijdering stoppen
-    * Case normalisatie
-    * Verwijdering van interpunctie en speciale tekens
-    * Stemming  
+    * Woord afbreking
+    * Het verwijderen van woorden stoppen
+    * Case-normalisatie
+    * Verwijdering van Lees tekens en speciale tekens
+    * Als gevolg  
 
-De optimale set van voorbewerkingsmethoden toe te passen in elke oplossing is afhankelijk van domein, woordenschat, en zakelijke behoefte. pijplijn met uw gegevens om te zien welke tekstverwerkingsmethoden het meest effectief zijn.
+De optimale set voor verwerkings methoden die in een oplossing moeten worden toegepast, is afhankelijk van domein, vocabulaire en zakelijke behoefte. pijp lijn met uw gegevens om te zien welke tekst verwerkings methoden het meest effectief zijn.
 
 ## <a name="next-steps"></a>Volgende stappen
             
-Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning 
+De [set met modules bekijken die beschikbaar zijn](module-reference.md) voor Azure machine learning 

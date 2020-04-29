@@ -1,7 +1,7 @@
 ---
-title: 'Converteren naar gegevensset: moduleverwijzing'
+title: 'Converteren naar DataSet: module-verwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module Converteren naar gegevensset in Azure Machine Learning om gegevensinvoer om te zetten in de interne gegevenssetindeling die wordt gebruikt door Microsoft Azure Machine Learning.
+description: Meer informatie over het gebruik van de module converteren naar gegevensset in Azure Machine Learning om gegevens invoer om te zetten in de indeling van de interne gegevensset die door Microsoft Azure Machine Learning wordt gebruikt.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,64 +10,64 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: fd45db779b7a828d247f09cae38f90fc20d12c16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79456587"
 ---
 # <a name="convert-to-dataset"></a>Converteren naar gegevensset
 
-In dit artikel wordt beschreven hoe u de module Converteren naar gegevensset gebruiken in azure machine learning-ontwerper (voorbeeld) om gegevens voor een pijplijn om te zetten naar de interne indeling van de ontwerper.
+In dit artikel wordt beschreven hoe u de module converteren naar gegevensset in Azure Machine Learning Designer (preview) gebruikt om gegevens voor een pijp lijn te converteren naar de interne indeling van de ontwerp functie.
   
-Conversie is in de meeste gevallen niet nodig. Azure Machine Learning converteert gegevens impliciet naar de oorspronkelijke gegevenssetindeling wanneer een bewerking op de gegevens wordt uitgevoerd. 
+Conversie is in de meeste gevallen niet vereist. Azure Machine Learning gegevens worden impliciet geconverteerd naar de indeling van de systeem eigen gegevensset wanneer een bewerking wordt uitgevoerd op de gegevens. 
 
-We raden u aan gegevens op te slaan in de gegevenssetindeling als u een soort normalisatie of reiniging op een set gegevens hebt uitgevoerd en u ervoor wilt zorgen dat de wijzigingen in andere pijplijnen worden gebruikt.  
+Het is aan te raden om gegevens op te slaan in de indeling van de gegevensset als u een bepaalde vorm van normalisatie of reiniging hebt uitgevoerd voor een set gegevens en u ervoor wilt zorgen dat de wijzigingen worden gebruikt in andere pijp lijnen.  
   
 > [!NOTE]
-> Als u converteert naar Gegevensset, wordt alleen de indeling van de gegevens gewijzigd. Er wordt geen nieuwe kopie van de gegevens in de werkruimte opgeslagen. Als u de gegevensset wilt opslaan, dubbelklikt u op de uitvoerpoort, selecteert u **Opslaan als gegevensset**en voert u een nieuwe naam in.  
+> Converteren naar dataset wijzigt alleen de indeling van de gegevens. Er wordt geen nieuwe kopie van de gegevens opgeslagen in de werk ruimte. Als u de gegevensset wilt opslaan, dubbelklikt u op de uitvoer poort, selecteert u **Opslaan als gegevensset**en voert u een nieuwe naam in.  
   
-## <a name="how-to-use-convert-to-dataset"></a>Converteren naar gegevensset gebruiken  
+## <a name="how-to-use-convert-to-dataset"></a>Converteren naar dataset gebruiken  
 
-We raden u aan de module [Metagegevens bewerken](edit-metadata.md) te gebruiken om de gegevensset voor te bereiden voordat u Converteren naar gegevensset gebruikt. U kolomnamen toevoegen of wijzigen, gegevenstypen aanpassen en indien nodig andere wijzigingen aanbrengen.
+U wordt aangeraden de module [meta gegevens bewerken](edit-metadata.md) te gebruiken om de gegevensset voor te bereiden voordat u converteren naar gegevensset gebruikt. U kunt kolom namen toevoegen of wijzigen, gegevens typen aanpassen en zo nodig andere wijzigingen aanbrengen.
 
-1.  Voeg de module Converteren naar gegevensset toe aan uw pijplijn. U vindt deze module in de categorie **Gegevenstransformatie** in de ontwerper. 
+1.  Voeg de module converteren naar gegevensset toe aan de pijp lijn. U kunt deze module vinden in de categorie **gegevens transformatie** in de ontwerp functie. 
 
-2. Sluit deze aan op elke module die een gegevensset uitvoert.   
+2. Verbind het met een wille keurige module die een gegevensset uitvoert.   
 
-    Zolang de gegevens [in tabelvorm](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)zijn, u deze converteren naar een gegevensset. Dit omvat gegevens die worden geladen via [Importgegevens](import-data.md), gegevens die zijn gemaakt via [Handmatig gegevens invoeren](enter-data-manually.md)of gegevenssets die zijn getransformeerd via Transformatie [toepassen](apply-transformation.md).
+    Zolang de gegevens [in tabel vorm](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)zijn, kunt u deze converteren naar een gegevensset. Dit geldt ook voor gegevens die zijn geladen via gegevens [importeren](import-data.md), gegevens die zijn gemaakt via [gegevens hand matig invoeren](enter-data-manually.md)of data sets die zijn getransformeerd via [trans formatie Toep assen](apply-transformation.md).
 
-3.  Geef in de vervolgkeuzelijst **Actie** aan of u de gegevens wilt opschonen voordat u de gegevensset opslaat:  
+3.  Geef in de vervolg keuzelijst **actie** aan of u de gegevens wilt opschonen voordat u de gegevensset opslaat:  
   
-    - **None**: Gebruik de gegevens zoals die zijn.  
+    - **Geen**: gebruik de gegevens als.  
   
-    - **SetMissingValue**: Stel een specifieke waarde in op een ontbrekende waarde in de gegevensset. De standaardtijdelijke aanduiding is het vraagtekenteken (?), maar u de optie **Aangepaste ontbrekende waarde** gebruiken om een andere waarde in te voeren. Als u bijvoorbeeld **De** **ontbrekende waarde**van Taxi voor Aangepast invoert, worden alle exemplaren van **Taxi** in de gegevensset gewijzigd in de ontbrekende waarde.
+    - **SetMissingValue**: Stel een specifieke waarde in op een ontbrekende waarde in de gegevensset. De standaard aanduiding is het vraag teken (?), maar u kunt de aangepaste optie voor **ontbrekende waarden** gebruiken om een andere waarde op te geven. Als u bijvoorbeeld een **taxi** voor een **aangepaste ontbrekende waarde**invoert, worden alle exemplaren van de **taxi** in de gegevensset gewijzigd in de ontbrekende waarde.
   
-    - **ReplaceValues**: Gebruik deze optie om één exacte waarde op te geven die moet worden vervangen door een andere exacte waarde. U ontbrekende waarden of aangepaste waarden vervangen door de methode Vervangen in **te** stellen:
+    - **ReplaceValues**: gebruik deze optie om een enkele exacte waarde op te geven die moet worden vervangen door een andere exacte waarde. U kunt ontbrekende waarden of aangepaste waarden vervangen door de **Vervang** methode in te stellen:
 
-      - **Ontbreken:** Kies deze optie om ontbrekende waarden in de invoergegevensset te vervangen. Voer **bij Nieuwe waarde**de waarde in waarmee de ontbrekende waarden moeten worden vervangen.
-      - **Aangepast:** kies deze optie om aangepaste waarden in de invoergegevensset te vervangen. Voer **voor aangepaste waarde**de waarde in die u wilt vinden. Als uw gegevens bijvoorbeeld de `obs` tekenreeks bevatten die wordt gebruikt `obs`als tijdelijke aanduiding voor ontbrekende waarden, voert u . Voer **voor Nieuwe waarde**de nieuwe waarde in om de oorspronkelijke tekenreeks te vervangen door.
+      - **Ontbrekend**: Kies deze optie om ontbrekende waarden in de invoer-gegevensset te vervangen. Voer bij **nieuwe waarde**de waarde in om de ontbrekende waarden te vervangen door.
+      - **Aangepast**: Kies deze optie om aangepaste waarden in de invoer-gegevensset te vervangen. Voer voor **aangepaste waarde**de waarde in die u wilt zoeken. Als uw gegevens bijvoorbeeld de teken reeks `obs` bevatten die wordt gebruikt als tijdelijke aanduiding voor ontbrekende waarden, voert `obs`u in. Voer bij **nieuwe waarde**de nieuwe waarde in om de oorspronkelijke teken reeks te vervangen door.
   
-    Houd er rekening mee dat de bewerking **ReplaceValues** alleen van toepassing is op exacte overeenkomsten. Deze tekenreeksen worden bijvoorbeeld niet `obs.` `obsolete`beïnvloed: , .  
+    Houd er rekening mee dat de bewerking **ReplaceValues** alleen van toepassing is op exacte overeenkomsten. Deze teken reeksen worden bijvoorbeeld niet beïnvloed: `obs.`,. `obsolete`  
  
   
-5.  Verzend de pijplijn.  
+5.  Verzend de pijp lijn.  
 
 ## <a name="results"></a>Resultaten
 
-+  Als u de resulterende gegevensset met een nieuwe naam wilt opslaan, selecteert u in de **gegevensset Pictogram Register** onder het tabblad **Uitvoer** in het rechterdeelvenster van de module.  
++  Als u de resulterende gegevensset met een nieuwe naam wilt opslaan, selecteert u op het pictogram **gegevensset registreren** onder het tabblad **uitvoer** in het rechterdeel venster van de module.  
   
-## <a name="technical-notes"></a>Technische notities  
+## <a name="technical-notes"></a>Technische opmerkingen  
 
--   Elke module die een gegevensset als invoer neemt, kan ook gegevens in het CSV-bestand of het TSV-bestand bevatten. Voordat een modulecode wordt uitgevoerd, worden de ingangen voorbewerkt. Voorbewerking is gelijk aan het uitvoeren van de module Converteren naar gegevensset op de invoer.  
+-   Elke module die een gegevensset als invoer gebruikt, kan ook gegevens in het CSV-bestand of het TSV-bestand opnemen. Voordat een module code wordt uitgevoerd, worden de invoer voorverwerkt. Preverwerking is gelijk aan het uitvoeren van de module Convert to dataset op de invoer.  
   
--   U niet converteren van de SVMLight-indeling naar een gegevensset.  
+-   U kunt niet converteren van de SVMLight-indeling naar een gegevensset.  
   
--   Wanneer u een aangepaste vervangingsbewerking opgeeft, is de zoek- en vervangbewerking van toepassing op volledige waarden. Gedeeltelijke overeenkomsten zijn niet toegestaan. U bijvoorbeeld een 3 vervangen door een -1 of 33, maar u een 3 niet vervangen in een getal van twee cijfers, zoals 35.  
+-   Wanneer u een aangepaste Vervang bewerking opgeeft, is de zoek-en-vervang bewerking van toepassing op de waarden voor volt ooien. Gedeeltelijke overeenkomsten zijn niet toegestaan. U kunt bijvoorbeeld een 3 vervangen door een-1 of met 33, maar u mag een 3 niet vervangen in een getal van twee cijfers zoals 35.  
   
--   Voor aangepaste vervangingsbewerkingen mislukt de vervanging in stilte als u een teken gebruikt dat niet voldoet aan het huidige gegevenstype van de kolom.  
+-   Voor aangepaste Vervang bewerkingen mislukt de vervanging op de achtergrond als u een wille keurig teken gebruikt dat niet overeenkomt met het huidige gegevens type van de kolom.  
 
   
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

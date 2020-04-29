@@ -1,49 +1,49 @@
 ---
-title: Telemetriekanalen in Azure Application Insights | Microsoft Documenten
-description: Telemetriekanalen aanpassen in Azure Application Insights SDKs voor .NET en .NET Core.
+title: Telemetrie-kanalen in Azure-toepassing Insights | Microsoft Docs
+description: Telemetrie-kanalen aanpassen in Azure-toepassing Insights-Sdk's voor .NET en .NET core.
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 9c292246f947e4d3a364f79b31fe7a1deebd33d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275696"
 ---
-# <a name="telemetry-channels-in-application-insights"></a>Telemetriekanalen in Application Insights
+# <a name="telemetry-channels-in-application-insights"></a>Telemetrie-kanalen in Application Insights
 
-Telemetriekanalen zijn een integraal onderdeel van de [Azure Application Insights SDKs.](../../azure-monitor/app/app-insights-overview.md) Zij beheren buffering en overdracht van telemetrie naar de Application Insights-service. De .NET- en .NET Core-versies van de SDK's hebben twee ingebouwde telemetriekanalen: `InMemoryChannel` en `ServerTelemetryChannel`. In dit artikel wordt elk kanaal in detail beschreven, inclusief het aanpassen van kanaalgedrag.
+Telemetrie-kanalen vormen een integraal onderdeel van de [Azure-toepassing Insights-sdk's](../../azure-monitor/app/app-insights-overview.md). Ze beheren het bufferen en verzenden van telemetrie naar de Application Insights-service. De .NET-en .NET Core-versies van de Sdk's hebben twee ingebouwde telemetrie- `InMemoryChannel` kanalen `ServerTelemetryChannel`: en. In dit artikel wordt elk kanaal in detail beschreven, met inbegrip van het gedrag van het kanaal aan te passen.
 
-## <a name="what-are-telemetry-channels"></a>Wat zijn telemetriekanalen?
+## <a name="what-are-telemetry-channels"></a>Wat zijn telemetrie-kanalen?
 
-Telemetriekanalen zijn verantwoordelijk voor het bufferen van telemetrie-items en het verzenden ervan naar de Application Insights-service, waar ze zijn opgeslagen voor query's en analyses. Een telemetriekanaal is een [`Microsoft.ApplicationInsights.ITelemetryChannel`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) klasse die de interface implementeert.
+Telemetrie-kanalen zijn verantwoordelijk voor het bufferen van telemetriegegevens en het verzenden ervan naar de Application Insights-service, waar ze worden opgeslagen voor query's en analyses. Een telemetrie-kanaal is een klasse die de [`Microsoft.ApplicationInsights.ITelemetryChannel`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) interface implementeert.
 
-De `Send(ITelemetry item)` methode van een telemetriekanaal wordt aangeroepen nadat alle telemetrieinitialisators en telemetrieprocessors worden aangeroepen. Dus, alle items die door een telemetrieprocessor zijn gedropt, bereiken het kanaal niet. `Send()`stuurt de items meestal niet direct naar de back-end. Meestal buffert het ze in het geheugen en stuurt ze in batches, voor een efficiënte transmissie.
+De `Send(ITelemetry item)` methode van een telemetrie-kanaal wordt aangeroepen na het aanroepen van alle telemetrie-initialisatie functies en telemetrie-processors. Daarom bereiken items die worden verwijderd door een telemetrie-processor het kanaal niet. `Send()`de items worden meestal niet direct naar de back-end verzonden. Normaal gesp roken worden ze in het geheugen gebufferd en worden ze in batches verzonden voor efficiënte verzen ding.
 
-[Live Metrics Stream](live-stream.md) heeft ook een aangepast kanaal dat de live streaming van telemetrie aandrijft. Dit kanaal is onafhankelijk van het reguliere telemetriekanaal en dit document is er niet op van toepassing.
+[Live Metrics stream](live-stream.md) heeft ook een aangepast kanaal dat de live streamen van telemetrie aanstuurt. Dit kanaal is onafhankelijk van het normale telemetrie-kanaal, en dit document is hier niet van toepassing.
 
-## <a name="built-in-telemetry-channels"></a>Ingebouwde telemetriekanalen
+## <a name="built-in-telemetry-channels"></a>Ingebouwde telemetrie-kanalen
 
-De Application Insights .NET en .NET Core SDKs worden geleverd met twee ingebouwde kanalen:
+De Application Insights .NET en .NET core Sdk's worden geleverd met twee ingebouwde kanalen:
 
-* `InMemoryChannel`: Een lichtgewicht kanaal dat items buffert in het geheugen totdat ze worden verzonden. Items worden gebufferd in het geheugen en gespoeld eens in de 30 seconden, of wanneer 500 items worden gebufferd. Dit kanaal biedt minimale betrouwbaarheidsgaranties omdat het niet opnieuw probeert telemetrie te verzenden na een storing. Dit kanaal houdt ook geen items op schijf, dus alle niet-verzonden items gaan permanent verloren bij het afsluiten van de toepassing (sierlijk of niet). Dit kanaal implementeert een `Flush()` methode die kan worden gebruikt om alle in-memory telemetrie-items synchroon te forceren. Dit kanaal is zeer geschikt voor kortlopende toepassingen waarbij een synchrone flush ideaal is.
+* `InMemoryChannel`: Een Lightweight Channel waarmee items in het geheugen worden gebufferd tot ze worden verzonden. Items worden gebufferd in het geheugen en eenmaal per 30 seconden leeg gemaakt, of wanneer 500 items worden gebufferd. Dit kanaal biedt minimale betrouwbaarheids garanties omdat er niet opnieuw een poging wordt gedaan om een telemetrie te verzenden na een storing. Dit kanaal houdt ook geen items op schijf bij, zodat niet-verzonden items permanent verloren gaan bij het afsluiten van de toepassing (zonder problemen). Dit kanaal implementeert een `Flush()` methode die kan worden gebruikt om in-Memory-telemetriegegevens synchroon af te dwingen. Dit kanaal is goed geschikt voor toepassingen met korte uitvoering, waarbij synchroon leegmaken ideaal is.
 
-    Dit kanaal maakt deel uit van het grotere Microsoft.ApplicationInsights NuGet-pakket en is het standaardkanaal dat de SDK gebruikt wanneer er niets anders is geconfigureerd.
+    Dit kanaal maakt deel uit van het grotere micro soft. ApplicationInsights NuGet-pakket en is het standaard kanaal dat door de SDK wordt gebruikt wanneer niets anders is geconfigureerd.
 
-* `ServerTelemetryChannel`: Een geavanceerder kanaal met een nieuw beleid en de mogelijkheid om gegevens op een lokale schijf op te slaan. Dit kanaal probeert telemetrie te verzenden als er tijdelijke fouten optreden. Dit kanaal maakt ook gebruik van lokale schijfopslag om items op schijf te houden tijdens netwerkuitval of hoge telemetrievolumes. Vanwege deze mechanismen voor het opnieuw proberen en lokale schijfopslag wordt dit kanaal als betrouwbaarder beschouwd en wordt het aanbevolen voor alle productiescenario's. Dit kanaal is de standaardinstelling voor [ASP.NET-](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) en [ASP.NET Core-toepassingen](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) die zijn geconfigureerd volgens de officiële documentatie. Dit kanaal is geoptimaliseerd voor serverscenario's met langlopende processen. De [`Flush()`](#which-channel-should-i-use) methode die door dit kanaal wordt geïmplementeerd, is niet synchroon.
+* `ServerTelemetryChannel`: Een geavanceerdere kanaal met beleid voor opnieuw proberen en de mogelijkheid om gegevens op te slaan op een lokale schijf. Dit kanaal probeert nieuwe telemetrie te verzenden als er tijdelijke fouten optreden. Dit kanaal gebruikt ook lokale schijf opslag om items op schijf te bewaren tijdens netwerk storingen of hoge telemetriegegevens. Als gevolg van deze methoden voor opnieuw proberen en lokale schijf opslag wordt dit kanaal als betrouwbaarder beschouwd en wordt het aanbevolen voor alle productie scenario's. Dit kanaal is de standaard waarde voor [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) -en [ASP.net core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) -toepassingen die zijn geconfigureerd volgens de officiële documentatie. Dit kanaal is geoptimaliseerd voor Server scenario's met langlopende processen. De [`Flush()`](#which-channel-should-i-use) methode die door dit kanaal wordt geïmplementeerd, is niet synchroon.
 
-    Dit kanaal wordt verzonden als het Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel NuGet-pakket en wordt automatisch verkregen wanneer u microsoft.applicationInsights.Web of Microsoft.ApplicationInsights.AspNetCore NuGet gebruikt Pakket.
+    Dit kanaal wordt verzonden als het pakket micro soft. ApplicationInsights. WindowsServer. TelemetryChannel NuGet en wordt automatisch aangeschaft wanneer u het micro soft. ApplicationInsights. Web of het micro soft. ApplicationInsights. AspNetCore NuGet-pakket gebruikt.
 
-## <a name="configure-a-telemetry-channel"></a>Een telemetriekanaal configureren
+## <a name="configure-a-telemetry-channel"></a>Een telemetrie-kanaal configureren
 
-U configureert een telemetriekanaal door het in te stellen op de actieve telemetrieconfiguratie. Voor ASP.NET toepassingen bestaat de configuratie uit `TelemetryConfiguration.Active`het instellen `ApplicationInsights.config`van de telemetriekanaalinstantie op of door het wijzigen van . Voor ASP.NET Core-toepassingen omvat de configuratie het toevoegen van het kanaal aan de afhankelijkheidsinjectiecontainer.
+U configureert een telemetrie-kanaal door het in te stellen op de actieve telemetrie-configuratie. Voor ASP.NET-toepassingen moet de configuratie het telemetrische kanaal exemplaar `TelemetryConfiguration.Active`instellen op of door `ApplicationInsights.config`te wijzigen. Voor ASP.NET Core toepassingen moet de configuratie het kanaal toevoegen aan de container voor injectie van afhankelijkheid.
 
-In de volgende secties worden `StorageFolder` voorbeelden weergegeven van het configureren van de instelling voor het kanaal in verschillende toepassingstypen. `StorageFolder`is slechts een van de configureerbare instellingen. Zie de [sectie Instellingen](telemetry-channels.md#configurable-settings-in-channels) later in dit artikel voor de volledige lijst met configuratie-instellingen.
+In de volgende secties ziet u voor beelden `StorageFolder` van het configureren van de instelling voor het kanaal in verschillende toepassings typen. `StorageFolder`is slechts een van de Configureer bare instellingen. Zie [de sectie instellingen](telemetry-channels.md#configurable-settings-in-channels) verderop in dit artikel voor een volledige lijst met configuratie-instellingen.
 
-### <a name="configuration-by-using-applicationinsightsconfig-for-aspnet-applications"></a>Configuratie met ApplicationInsights.config voor ASP.NET toepassingen
+### <a name="configuration-by-using-applicationinsightsconfig-for-aspnet-applications"></a>Configuratie met behulp van ApplicationInsights. config voor ASP.NET-toepassingen
 
-In de volgende sectie van [ApplicationInsights.config](configuration-with-applicationinsights-config.md) wordt het `ServerTelemetryChannel` kanaal weergegeven dat is geconfigureerd op `StorageFolder` een aangepaste locatie:
+In de volgende sectie van [ApplicationInsights. config](configuration-with-applicationinsights-config.md) ziet `ServerTelemetryChannel` u het kanaal `StorageFolder` dat is geconfigureerd met ingesteld op een aangepaste locatie:
 
 ```xml
     <TelemetrySinks>
@@ -58,9 +58,9 @@ In de volgende sectie van [ApplicationInsights.config](configuration-with-applic
     </TelemetrySinks>
 ```
 
-### <a name="configuration-in-code-for-aspnet-applications"></a>Configuratie in code voor ASP.NET toepassingen
+### <a name="configuration-in-code-for-aspnet-applications"></a>Configuratie in code voor ASP.NET-toepassingen
 
-Met de volgende code wordt een instantie `StorageFolder` 'ServerTelemetryChannel' ingesteld die is ingesteld op een aangepaste locatie. Voeg deze code toe aan het begin `Application_Start()` van de toepassing, meestal in methode in Global.aspx.cs.
+Met de volgende code wordt een ServerTelemetryChannel-exemplaar ingesteld met `StorageFolder` ingesteld op een aangepaste locatie. Voeg deze code toe aan het begin van de toepassing, meestal `Application_Start()` in de methode Global.aspx.cs.
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility;
@@ -76,7 +76,7 @@ protected void Application_Start()
 
 ### <a name="configuration-in-code-for-aspnet-core-applications"></a>Configuratie in code voor ASP.NET Core-toepassingen
 
-Wijzig `ConfigureServices` de methode `Startup.cs` van de klasse zoals hier wordt weergegeven:
+Wijzig de `ConfigureServices` methode van de `Startup.cs` klasse zoals hier wordt weer gegeven:
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -93,11 +93,11 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!IMPORTANT]
-> Het configureren van `TelemetryConfiguration.Active` het kanaal met behulp wordt niet aanbevolen voor ASP.NET Core-toepassingen.
+> Het configureren van het kanaal `TelemetryConfiguration.Active` met behulp van wordt niet aanbevolen voor ASP.net core toepassingen.
 
-### <a name="configuration-in-code-for-netnet-core-console-applications"></a>Configuratie in code voor .NET/.NET Core-consoletoepassingen
+### <a name="configuration-in-code-for-netnet-core-console-applications"></a>Configuratie in code voor .NET/.NET Core-Console toepassingen
 
-Voor console-apps is de code hetzelfde voor zowel .NET als .NET Core:
+Voor console-apps is de code hetzelfde voor .NET en .NET core:
 
 ```csharp
 var serverTelemetryChannel = new ServerTelemetryChannel();
@@ -108,63 +108,63 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 ## <a name="operational-details-of-servertelemetrychannel"></a>Operationele details van ServerTelemetryChannel
 
-`ServerTelemetryChannel`slaat aankomende artikelen op in een geheugenbuffer. De items worden geserialiseerd, gecomprimeerd `Transmission` en opgeslagen in een instantie eenmaal per 30 seconden, of wanneer 500 items zijn gebufferd. Een `Transmission` enkele instantie bevat maximaal 500 items en vertegenwoordigt een batch telemetrie die via één HTTPS-aanroep naar de Application Insights-service wordt verzonden.
+`ServerTelemetryChannel`slaat binnenkomende items op in een geheugen buffer. De items worden eenmaal per 30 seconden geserialiseerd, gecomprimeerd en opgeslagen `Transmission` in een exemplaar, of wanneer 500 items zijn gebufferd. Eén `Transmission` exemplaar bevat maxi maal 500 items en vertegenwoordigt een batch van telemetrie die wordt verzonden via één https-aanroep naar de Application Insights-service.
 
-Standaard kunnen maximaal 10 `Transmission` exemplaren parallel worden verzonden. Als telemetrie sneller verloopt of als het netwerk of de back-end van Application Insights traag is, `Transmission` worden instanties opgeslagen in het geheugen. De standaardcapaciteit van deze `Transmission` in-memory buffer is 5 MB. Wanneer de geheugencapaciteit is overschreden, `Transmission` worden instanties op de lokale schijf opgeslagen tot een limiet van 50 MB. `Transmission`instanties worden ook op de lokale schijf opgeslagen wanneer er netwerkproblemen zijn. Alleen items die op een lokale schijf zijn opgeslagen, overleven een crash van een toepassing. Ze worden verzonden wanneer de aanvraag opnieuw begint.
+Standaard kunnen Maxi maal 10 `Transmission` instanties parallel worden verzonden. Als telemetrie op snellere tarieven aankomt, of als het netwerk of de back-end van de `Transmission` Application Insights langzaam is, worden de exemplaren in het geheugen opgeslagen. De standaard capaciteit van deze in-Memory `Transmission` buffer is 5 MB. Wanneer de capaciteit in het geheugen is overschreden, `Transmission` worden de exemplaren op de lokale schijf opgeslagen tot een limiet van 50 MB. `Transmission`instanties worden op een lokale schijf opgeslagen, ook als er netwerk problemen zijn. Alleen items die zijn opgeslagen op een lokale schijf, kunnen de toepassing vastlopen. Ze worden verzonden wanneer de toepassing opnieuw wordt gestart.
 
-## <a name="configurable-settings-in-channels"></a>Configureerbare instellingen in kanalen
+## <a name="configurable-settings-in-channels"></a>Configureer bare instellingen in kanalen
 
-Zie voor de volledige lijst met configureerbare instellingen voor elk kanaal:
+Zie voor een volledige lijst met Configureer bare instellingen voor elk kanaal:
 
 * [InMemoryChannel](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/BASE/src/Microsoft.ApplicationInsights/Channel/InMemoryChannel.cs)
 
-* [ServerTelemetryChannel ServerTelemetryChannel ServerTelemetryChannel ServerTelemetr](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/BASE/src/ServerTelemetryChannel/ServerTelemetryChannel.cs)
+* [ServerTelemetryChannel](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/BASE/src/ServerTelemetryChannel/ServerTelemetryChannel.cs)
 
-Dit zijn de meest `ServerTelemetryChannel`gebruikte instellingen voor:
+Hier vindt u de meest gebruikte instellingen voor `ServerTelemetryChannel`:
 
-1. `MaxTransmissionBufferCapacity`: De maximale hoeveelheid geheugen, in bytes, die door het kanaal wordt gebruikt om transmissies in het geheugen te bufferen. Wanneer deze capaciteit is bereikt, worden nieuwe items rechtstreeks op de lokale schijf opgeslagen. De standaardwaarde is 5 MB. Het instellen van een hogere waarde leidt tot minder schijfgebruik, maar vergeet niet dat items in het geheugen verloren gaan als de toepassing vastloopt.
+1. `MaxTransmissionBufferCapacity`: De maximale hoeveelheid geheugen (in bytes) die door het kanaal wordt gebruikt voor het bufferen van de verzen ding in het geheugen. Wanneer deze capaciteit is bereikt, worden nieuwe items rechtstreeks op de lokale schijf opgeslagen. De standaard waarde is 5 MB. Het instellen van een hogere waarde leidt tot minder schijf gebruik, maar houd er rekening mee dat items in het geheugen verloren gaan als de toepassing vastloopt.
 
-1. `MaxTransmissionSenderCapacity`: het maximum `Transmission` aantal exemplaren dat tegelijkertijd naar Application Insights wordt verzonden. De standaardwaarde is 10. Deze instelling kan worden geconfigureerd naar een hoger getal, wat wordt aanbevolen wanneer een enorm volume telemetrie wordt gegenereerd. Hoog volume treedt meestal op tijdens het testen van de belasting of wanneer de bemonstering is uitgeschakeld.
+1. `MaxTransmissionSenderCapacity`: Het maximum aantal `Transmission` exemplaren dat tegelijkertijd naar Application Insights wordt verzonden. De standaardwaarde is 10. Deze instelling kan worden geconfigureerd voor een hoger nummer, dat wordt aanbevolen wanneer een enorme hoeveelheid telemetrie wordt gegenereerd. Hoog volume gebeurt meestal tijdens het testen van de belasting of wanneer steek proeven zijn uitgeschakeld.
 
-1. `StorageFolder`: de map die door het kanaal wordt gebruikt om items naar schijf op te slaan als dat nodig is. In Windows wordt %LOCALAPPDATA% of %TEMP% gebruikt als er geen ander pad expliciet wordt opgegeven. In andere omgevingen dan Windows moet u een geldige locatie opgeven of telemetrie wordt niet opgeslagen op de lokale schijf.
+1. `StorageFolder`: De map die wordt gebruikt door het kanaal om items naar behoefte op schijf op te slaan. In Windows wordt% LOCALAPPDATA% of% TEMP% gebruikt als er geen ander pad expliciet is opgegeven. In andere omgevingen dan Windows, moet u een geldige locatie of telemetrie opgeven die niet op de lokale schijf wordt opgeslagen.
 
 ## <a name="which-channel-should-i-use"></a>Welk kanaal moet ik gebruiken?
 
-`ServerTelemetryChannel`wordt aanbevolen voor de meeste productiescenario's met langlopende toepassingen. De `Flush()` methode die `ServerTelemetryChannel` wordt geïmplementeerd is niet synchroon en garandeert ook niet dat alle items in behandeling zijn vanuit het geheugen of de schijf. Als u dit kanaal gebruikt in scenario's waarin de toepassing op het `Flush()`punt staat af te sluiten, raden we u aan enige vertraging in te voeren na het bellen. De exacte hoeveelheid vertraging die u nodig zou kunnen hebben is niet voorspelbaar. Het hangt af van factoren `Transmission` zoals hoeveel items of exemplaren in het geheugen staan, hoeveel er op de schijf staan, hoeveel er naar de back-end worden verzonden en of het kanaal zich in het midden van exponentiële back-offscenario's bevindt.
+`ServerTelemetryChannel`wordt aanbevolen voor de meeste productie scenario's waarbij langlopende toepassingen worden gebruikt. De `Flush()` methode die wordt `ServerTelemetryChannel` geïmplementeerd door is niet synchroon en garandeert ook niet dat alle in behandeling zijnde items uit het geheugen of de schijf worden verzonden. Als u dit kanaal gebruikt in scenario's waarin de toepassing wordt afgesloten, raden we u aan enige vertraging na het aanroepen `Flush()`in te voeren. De exacte hoeveelheid vertraging die u mogelijk nodig hebt, kan niet voorspelbaar zijn. Dit is afhankelijk van factoren zoals hoeveel items of `Transmission` instanties in het geheugen zijn, hoeveel er op schijf staan, hoeveel er worden verzonden naar de back-end en of het kanaal zich in het midden van de exponentiële back-ups bevindt.
 
-Als je een synchrone flush moet doen, raden we je aan `InMemoryChannel`.
+Als u een synchrone leegmaak bewerking moet uitvoeren, raden we u aan om `InMemoryChannel`te gebruiken.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-### <a name="does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost"></a>Garandeert het Application Insights-kanaal telemetrielevering? Zo niet, wat zijn de scenario's waarin telemetrie verloren kan gaan?
+### <a name="does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost"></a>Garandeert het Application Insights kanaal dat telemetrie wordt geleverd? Als dat niet het geval is, wat zijn dan de scenario's waarin telemetrie kan worden verwijderd?
 
-Het korte antwoord is dat geen van de ingebouwde kanalen een transactie-type garantie van telemetrie levering aan de back-end bieden. `ServerTelemetryChannel`is geavanceerder `InMemoryChannel` in vergelijking met voor betrouwbare levering, maar het maakt ook slechts een best-effort poging om telemetrie te verzenden. Telemetrie kan nog steeds verloren gaan in verschillende situaties, waaronder deze veelvoorkomende scenario's:
+Het korte antwoord is dat geen van de ingebouwde kanalen een transactie type garantie bieden voor telemetrie-levering aan de back-end. `ServerTelemetryChannel`is geavanceerder vergeleken met `InMemoryChannel` voor betrouw bare levering, maar het maakt ook alleen een poging om telemetrie te verzenden. Telemetrie kan nog steeds in verschillende situaties verloren gaan, met inbegrip van deze algemene scenario's:
 
 1. Items in het geheugen gaan verloren wanneer de toepassing vastloopt.
 
-1. Telemetrie gaat verloren tijdens langere perioden van netwerkproblemen. Telemetrie wordt opgeslagen op de lokale schijf tijdens netwerkuitval of wanneer zich problemen voordoen met de back-end van Application Insights. Items ouder dan 48 uur worden echter weggegooid.
+1. Telemetrie gaat verloren tijdens een lange periode van netwerk problemen. Telemetrie wordt op de lokale schijf opgeslagen tijdens netwerk storingen of wanneer er problemen optreden met de Application Insights back-end. Items die ouder zijn dan 48 uur, worden echter verwijderd.
 
-1. De standaardschijflocaties voor het opslaan van telemetrie in Windows zijn %LOCALAPPDATA% of %TEMP%. Deze locaties zijn meestal lokaal voor de machine. Als de toepassing fysiek van de ene locatie naar de andere migreert, gaat elke telemetrie die op de oorspronkelijke locatie is opgeslagen, verloren.
+1. De standaard schijf locaties voor het opslaan van telemetrie in Windows zijn% LOCALAPPDATA% of% TEMP%. Deze locaties zijn doorgaans lokaal voor de computer. Als de toepassing fysiek van de ene locatie naar de andere migreert, gaan alle telemetrie die op de oorspronkelijke locatie zijn opgeslagen verloren.
 
-1. In Web Apps op Windows is de standaardschijfopslaglocatie D:\local\LocalAppData. Deze locatie is niet blijven bestaan. Het is weggevaagd in app opnieuw opstarten, scale-outs, en andere dergelijke bewerkingen, wat leidt tot verlies van alle telemetrie daar opgeslagen. U de standaardinstelling overschrijven en opslag opgeven op een locatie die nog lang is gehandhaafd, zoals D:\home. Dergelijke persistente locaties worden echter bediend door externe opslag en kunnen dus traag zijn.
+1. In Web Apps in Windows is de standaard schijf-opslag locatie D:\local\LocalAppData. Deze locatie is niet persistent. Het wordt gewist uit het opnieuw opstarten van de app, schalen en andere dergelijke bewerkingen, waardoor er telemetrie die daar is opgeslagen, verloren gaat. U kunt de standaard waarde onderdrukken en opslag opgeven op een blijvende locatie, zoals D:\home. Dergelijke persistente locaties worden echter geleverd door externe opslag en kunnen daarom traag zijn.
 
 ### <a name="does-servertelemetrychannel-work-on-systems-other-than-windows"></a>Werkt ServerTelemetryChannel op andere systemen dan Windows?
 
-Hoewel de naam van het pakket en de naamruimte "WindowsServer" bevat, wordt dit kanaal ondersteund op andere systemen dan Windows, met de volgende uitzondering. Op andere systemen dan Windows maakt het kanaal standaard geen lokale opslagmap. U moet een lokale opslagmap maken en het kanaal configureren om deze te gebruiken. Nadat de lokale opslag is geconfigureerd, werkt het kanaal op dezelfde manier op alle systemen.
+Hoewel de naam van het pakket en de naam ruimte ' WindowsServer ' bevat, wordt dit kanaal ondersteund op andere systemen dan Windows, met de volgende uitzonde ring. Op systemen met uitzonde ring van Windows maakt het kanaal standaard geen lokale opslagmap. U moet een lokale opslagmap maken en het kanaal configureren om het te gebruiken. Nadat de lokale opslag is geconfigureerd, werkt het kanaal op dezelfde manier op alle systemen.
 
-### <a name="does-the-sdk-create-temporary-local-storage-is-the-data-encrypted-at-storage"></a>Maakt de SDK tijdelijke lokale opslag? Zijn de gegevens versleuteld bij opslag?
+### <a name="does-the-sdk-create-temporary-local-storage-is-the-data-encrypted-at-storage"></a>Maakt de SDK tijdelijke lokale opslag? Worden de gegevens versleuteld op opslag?
 
-De SDK slaat telemetrie-items op in lokale opslag tijdens netwerkproblemen of tijdens beperking. Deze gegevens worden niet lokaal versleuteld.
+De SDK slaat telemetrie-items in lokale opslag op tijdens netwerk problemen of tijdens het beperken. Deze gegevens zijn niet lokaal versleuteld.
 
-Voor Windows-systemen maakt de SDK automatisch een tijdelijke lokale map in de map %TEMP% of %LOCALAPPDATA% en beperkt het de toegang tot beheerders en alleen de huidige gebruiker.
+Voor Windows-systemen maakt de SDK automatisch een tijdelijke lokale map in de map% TEMP% of% LOCALAPPDATA% en beperkt de toegang tot beheerders en alleen de huidige gebruiker.
 
-Voor andere systemen dan Windows wordt er geen lokale opslag automatisch gemaakt door de SDK en worden er dus standaard geen gegevens lokaal opgeslagen. U zelf een opslagmap maken en het kanaal configureren om deze te gebruiken. In dit geval bent u verantwoordelijk voor het waarborgen dat de directory is beveiligd.
-Lees meer over [gegevensbescherming en privacy](data-retention-privacy.md#does-the-sdk-create-temporary-local-storage).
+Voor systemen met uitzonde ring van Windows wordt er geen lokale opslag automatisch gemaakt door de SDK, waardoor er standaard geen gegevens lokaal worden opgeslagen. U kunt zelf een opslag directory maken en het kanaal configureren om het te gebruiken. In dit geval bent u verantwoordelijk voor het beveiligen van de map.
+Lees meer over [gegevens bescherming en privacy](data-retention-privacy.md#does-the-sdk-create-temporary-local-storage).
 
-## <a name="open-source-sdk"></a>Open-source SDK
-Zoals elke SDK voor Application Insights zijn kanalen open source. Lees en draag bij aan de code, of meld problemen, op [de officiële GitHub repo](https://github.com/Microsoft/ApplicationInsights-dotnet).
+## <a name="open-source-sdk"></a>Open-Source-SDK
+Net als elke SDK voor Application Insights zijn kanalen open source. Lees en bijdragen aan de code of rapport problemen op [het officiële github opslag plaats](https://github.com/Microsoft/ApplicationInsights-dotnet).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Steekproeven](../../azure-monitor/app/sampling.md)
-* [Probleemoplossing voor SDK](../../azure-monitor/app/asp-net-troubleshoot-no-data.md)
+* [SDK-probleem oplossing](../../azure-monitor/app/asp-net-troubleshoot-no-data.md)

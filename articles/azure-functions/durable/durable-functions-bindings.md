@@ -1,27 +1,27 @@
 ---
-title: Bindingen voor duurzame functies - Azure
-description: Triggers en bindingen gebruiken voor de extensie Duurzame functies voor Azure-functies.
+title: Bindingen voor Durable Functions-Azure
+description: Triggers en bindingen gebruiken voor de uitbrei ding van de Durable Functions voor Azure Functions.
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79278218"
 ---
-# <a name="bindings-for-durable-functions-azure-functions"></a>Bindingen voor duurzame functies (Azure-functies)
+# <a name="bindings-for-durable-functions-azure-functions"></a>Bindingen voor Durable Functions (Azure Functions)
 
-De extensie [Duurzame functies](durable-functions-overview.md) introduceert twee nieuwe triggerbindingen die de uitvoering van orchestrator- en activiteitsfuncties regelen. Het introduceert ook een uitvoerbinding die fungeert als klant voor de runtime duurzame functies.
+De uitbrei ding [Durable functions](durable-functions-overview.md) introduceert twee nieuwe trigger bindingen die de uitvoering van Orchestrator-en activiteit functies regelen. Er wordt ook een uitvoer binding geïntroduceerd die fungeert als een client voor de Durable Functions runtime.
 
-## <a name="orchestration-trigger"></a>Orchestration trigger
+## <a name="orchestration-trigger"></a>Orchestration-trigger
 
-Met de orchestration trigger u [duurzame orchestrator-functies schrijven.](durable-functions-types-features-overview.md#orchestrator-functions) Deze trigger ondersteunt het starten van nieuwe orchestrator-functieinstanties en het hervatten van bestaande orchestrator-functie-exemplaren die "wachten" op een taak.
+Met de Orchestration-trigger kunt u [duurzame Orchestrator-functies](durable-functions-types-features-overview.md#orchestrator-functions)ontwerpen. Deze trigger ondersteunt het starten van nieuwe Orchestrator-functie instanties en het hervatten van bestaande Orchestrator-functie instanties die ' wachten op ' een taak.
 
-Wanneer u de hulpprogramma's voor Visual Studio voor Azure-functies gebruikt, wordt de orchestration-trigger geconfigureerd met het kenmerk [OrchestrationTriggerAttribute](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.OrchestrationTriggerAttribute?view=azure-dotnet) .NET.
+Wanneer u de Visual Studio-hulpprogram ma's voor Azure Functions gebruikt, wordt de Orchestration-trigger geconfigureerd met het kenmerk [OrchestrationTriggerAttribute](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.OrchestrationTriggerAttribute?view=azure-dotnet) .net.
 
-Wanneer u orchestrator-functies schrijft in scripttalen (bijvoorbeeld JavaScript of C#scripting), wordt de orchestration-trigger gedefinieerd door het volgende JSON-object in de `bindings` array van het *function.json-bestand:*
+Wanneer u Orchestrator-functies schrijft in script talen (bijvoorbeeld Java script of C#-Scripting), wordt de Orchestration-trigger gedefinieerd door het volgende JSON-object in `bindings` de matrix van het bestand *Function. json* :
 
 ```json
 {
@@ -32,35 +32,35 @@ Wanneer u orchestrator-functies schrijft in scripttalen (bijvoorbeeld JavaScript
 }
 ```
 
-* `orchestration`is de naam van de orchestration die clients moeten gebruiken wanneer ze nieuwe exemplaren van deze orchestrator-functie willen starten. Deze eigenschap is optioneel. Als dit niet is opgegeven, wordt de naam van de functie gebruikt.
+* `orchestration`is de naam van de indeling die clients moeten gebruiken wanneer ze nieuwe exemplaren van deze Orchestrator-functie willen starten. Deze eigenschap is optioneel. Als u niets opgeeft, wordt de naam van de functie gebruikt.
 
-Intern leidt dit tot bindende peilingen van een reeks wachtrijen in het standaardopslagaccount voor de functie-app. Deze wachtrijen zijn interne implementatiedetails van de extensie, daarom zijn ze niet expliciet geconfigureerd in de bindingseigenschappen.
+Intern deze trigger roept een reeks wacht rijen aan in het standaard opslag account voor de functie-app. Deze wacht rijen zijn interne implementatie details van de uitbrei ding. Daarom worden ze niet expliciet geconfigureerd in de binding eigenschappen.
 
 ### <a name="trigger-behavior"></a>Triggergedrag
 
-Hier zijn enkele opmerkingen over de orchestration trigger:
+Hier volgen enkele opmerkingen over de Orchestration-trigger:
 
-* **Single-threading** - Een enkele dispatcher thread wordt gebruikt voor alle orchestrator functie uitvoering op een enkele host instantie. Daarom is het belangrijk om ervoor te zorgen dat orchestrator-functiecode efficiënt is en geen I/O uitvoert. Het is ook belangrijk om ervoor te zorgen dat deze thread geen async-werk doet, behalve wanneer u wacht op duurzame functies-specifieke taaktypen.
-* **Poison-message handling** - Er is geen gif bericht ondersteuning in orchestration triggers.
-* **Zichtbaarheid van berichten** - De triggerberichten van orchestration worden in de wachtrij geplaatst en onzichtbaar gehouden voor een configureerbare duur. De zichtbaarheid van deze berichten wordt automatisch vernieuwd zolang de functie-app actief en gezond is.
-* **Retourwaarden** : Retourwaarden worden geserialiseerd naar JSON en blijven bestaan in de tabel orchestration history in Azure Table-opslag. Deze retourwaarden kunnen worden opgevraagd door de orchestration client binding, later beschreven.
-
-> [!WARNING]
-> Orchestrator-functies mogen nooit andere invoer- of uitvoerbindingen gebruiken dan de orchestration trigger binding. Hierdoor kan problemen met de extensie Duurzame taak ontstaan, omdat deze bindingen mogelijk niet voldoen aan de single-threading- en I/O-regels. Als u andere bindingen wilt gebruiken, voegt u deze toe aan een activiteitsfunctie die vanuit de functie Orchestrator wordt aangeroepen.
+* **Eén threading** : er wordt één dispatcher-thread gebruikt voor alle Orchestrator-functies die worden uitgevoerd op één exemplaar van een host. Daarom is het belang rijk om ervoor te zorgen dat de functie code van Orchestrator efficiënt is en geen I/O uitvoert. Het is ook belang rijk om ervoor te zorgen dat deze thread geen async-werk doet, behalve wanneer u op Durable Functions-specifieke taak typen wacht.
+* **Poison-Message Handling** -er is geen ondersteuning voor Poison-berichten in Orchestration-triggers.
+* **Bericht zichtbaarheid** : indelings trigger berichten worden niet in de wachtrij geplaatst en blijven onzichtbaar voor een Configureer bare duur. De zicht baarheid van deze berichten wordt automatisch vernieuwd zolang de functie-app wordt uitgevoerd en in orde is.
+* **Retour waarden** : retour waarden worden GESERIALISEERD in JSON en persistent gemaakt in de Orchestration-geschiedenis tabel in azure Table Storage. Deze retour waarden kunnen worden opgevraagd door de Orchestrator-client binding, die later wordt beschreven.
 
 > [!WARNING]
-> JavaScript orchestrator-functies mogen `async`nooit worden gedeclareerd .
+> Orchestrator-functies mogen nooit alle invoer-of uitvoer bindingen gebruiken, behalve de Orchestration-trigger binding. Als u dit doet, is het mogelijk om problemen met de extensie duurzame taak te veroorzaken, omdat deze bindingen de enkelvoudige threading en I/O-regels niet kunnen navolgen. Als u andere bindingen wilt gebruiken, voegt u deze toe aan een activiteit functie die wordt aangeroepen vanuit uw Orchestrator-functie.
 
-### <a name="trigger-usage-net"></a>Gebruik activeren (.NET)
+> [!WARNING]
+> Java script Orchestrator-functies mogen nooit worden `async`gedeclareerd.
 
-De orchestration trigger binding ondersteunt zowel ingangen als uitgangen. Hier volgen enkele dingen die u moet weten over invoer- en uitvoerafhandeling:
+### <a name="trigger-usage-net"></a>Gebruik van triggers (.NET)
 
-* **ingangen** - .NET-orkestratiefuncties ondersteunen alleen `DurableOrchestrationContext` als parametertype. Deserialisatie van ingangen direct in de functiehandtekening wordt niet ondersteund. Code moet `GetInput<T>` de methode (.NET) of `getInput` (JavaScript) gebruiken om de functie-ingangen van orchestrator op te halen. Deze ingangen moeten JSON-serializable types zijn.
-* **uitgangen** - Orchestration activeert ondersteuningsuitvoerwaarden en ingangen. De retourwaarde van de functie wordt gebruikt om de uitvoerwaarde toe te wijzen en moet JSON-serializable zijn. Als een .NET-functie retourneert `Task` of `void`een `null` waarde wordt opgeslagen als de uitvoer.
+De Orchestration-trigger binding ondersteunt zowel invoer als uitvoer. Hier volgen enkele dingen die u moet weten over de verwerking van de invoer en uitvoer:
 
-### <a name="trigger-sample"></a>Voorbeeld van trigger
+* **invoer** -.net-Orchestration-functies ondersteunen `DurableOrchestrationContext` alleen als een parameter type. Het deserialiseren van invoer rechtstreeks in de functie handtekening wordt niet ondersteund. Code moet de ( `GetInput<T>` .net) of `getInput` (Java script)-methode gebruiken om de functie-invoer van Orchestrator te verkrijgen. Deze invoer moet JSON-Serializable typen zijn.
+* **outputs** : indelings triggers ondersteunen uitvoer waarden en invoer. De geretourneerde waarde van de functie wordt gebruikt om de uitvoer waarde toe te wijzen en moet JSON serialiseerbaar zijn. Als een .NET-functie `Task` retourneert `void`of, `null` wordt een waarde opgeslagen als uitvoer.
 
-De volgende voorbeeldcode laat zien hoe de eenvoudigste orchestrator-functie "Hello World" eruit zou kunnen zien:
+### <a name="trigger-sample"></a>Voor beeld trigger
+
+In de volgende voorbeeld code ziet u wat de eenvoudigste functie ' Hallo wereld ' Orchestrator kan zien:
 
 #### <a name="c"></a>C#
 
@@ -73,9 +73,9 @@ public static string Run([OrchestrationTrigger] IDurableOrchestrationContext con
 }
 ```
 > [!NOTE]
-> De vorige code is voor duurzame functies 2.x. Voor duurzame functies 1.x `DurableOrchestrationContext` moet `IDurableOrchestrationContext`u in plaats van . Zie het artikel [Duurzame functiesversies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> De vorige code is voor Durable Functions 2. x. Voor Durable Functions 1. x moet u in plaats `DurableOrchestrationContext` van `IDurableOrchestrationContext`gebruiken. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (alleen functies 2.0)
+#### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -87,12 +87,12 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!NOTE]
-> Het `context` object in JavaScript vertegenwoordigt niet de SustainableOrchestrationContext, maar de [functiecontext als geheel.](../functions-reference-node.md#context-object) U hebt toegang tot orkestratiemethoden via de `context` eigenschap van `df` het object.
+> Het `context` object in Java script vertegenwoordigt niet de DurableOrchestrationContext, maar de [functie context als geheel](../functions-reference-node.md#context-object). U kunt toegang krijgen tot indelings methoden `context` via de `df` eigenschap van het object.
 
 > [!NOTE]
-> JavaScript-orchestrators `return`moeten . De `durable-functions` bibliotheek zorgt voor `context.done` het aanroepen van de methode.
+> Java script-Orchestrator moet `return`gebruiken. De `durable-functions` tape wisselaar zorgt ervoor dat de `context.done` methode wordt aangeroepen.
 
-De meeste orchestrator-functies roepen activiteitsfuncties op, dus hier is een voorbeeld van "Hello World" dat laat zien hoe je een activiteitsfunctie aanroept:
+De meeste functies van Orchestrator roepen activiteit functies aan, dus hier volgt een voor beeld van een Hallo wereld dat laat zien hoe u een activiteit functie aanroept:
 
 #### <a name="c"></a>C#
 
@@ -108,9 +108,9 @@ public static async Task<string> Run(
 ```
 
 > [!NOTE]
-> De vorige code is voor duurzame functies 2.x. Voor duurzame functies 1.x `DurableOrchestrationContext` moet `IDurableOrchestrationContext`u in plaats van . Zie het artikel [Duurzame functies voor](durable-functions-versions.md) meer informatie over de verschillen tussen versies.
+> De vorige code is voor Durable Functions 2. x. Voor Durable Functions 1. x moet u in plaats `DurableOrchestrationContext` van `IDurableOrchestrationContext`gebruiken. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (alleen functies 2.0)
+#### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -122,13 +122,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-## <a name="activity-trigger"></a>Activiteitstrigger
+## <a name="activity-trigger"></a>Activiteit trigger
 
-Met de activiteitstrigger u functies schrijven die worden aangeroepen door orchestrator-functies, ook wel [activiteitsfuncties genoemd.](durable-functions-types-features-overview.md#activity-functions)
+Met de trigger activiteit kunt u functies schrijven die worden aangeroepen door Orchestrator-functies, ook wel [activiteit functies](durable-functions-types-features-overview.md#activity-functions)genoemd.
 
-Als u Visual Studio gebruikt, wordt de activiteitstrigger geconfigureerd met het `ActivityTriggerAttribute` kenmerk .NET.
+Als u Visual Studio gebruikt, wordt de activiteit trigger geconfigureerd met behulp `ActivityTriggerAttribute` van het .net-kenmerk.
 
-Als u VS-code of de Azure-portal voor ontwikkeling gebruikt, wordt de activiteitstrigger gedefinieerd door het volgende JSON-object in de `bindings` array van *function.json:*
+Als u VS code gebruikt of de Azure Portal voor ontwikkeling, wordt de activiteit trigger gedefinieerd door het volgende JSON-object in de `bindings` matrix van *Function. json*:
 
 ```json
 {
@@ -139,33 +139,33 @@ Als u VS-code of de Azure-portal voor ontwikkeling gebruikt, wordt de activiteit
 }
 ```
 
-* `activity`is de naam van de activiteit. Deze waarde is de naam die orchestrator-functies gebruiken om deze activiteitsfunctie aan te roepen. Deze eigenschap is optioneel. Als dit niet is opgegeven, wordt de naam van de functie gebruikt.
+* `activity`is de naam van de activiteit. Deze waarde is de naam die door Orchestrator-functies wordt gebruikt om deze activiteit functie aan te roepen. Deze eigenschap is optioneel. Als u niets opgeeft, wordt de naam van de functie gebruikt.
 
-Intern leidt deze trigger tot bindende polls voor een wachtrij in het standaardopslagaccount voor de functie-app. Deze wachtrij is een intern implementatiedetail van de extensie, daarom is deze niet expliciet geconfigureerd in de bindingseigenschappen.
+Intern deze trigger roept een wachtrij aan in het standaard opslag account voor de functie-app. Deze wachtrij is een interne implementatie details van de uitbrei ding, wat daarom niet expliciet is geconfigureerd in de binding eigenschappen.
 
 ### <a name="trigger-behavior"></a>Triggergedrag
 
-Hier zijn enkele opmerkingen over de activiteit trigger:
+Hier volgen enkele opmerkingen over de trigger voor activiteiten:
 
-* **Threading** - In tegenstelling tot de orchestration trigger, activiteit triggers hebben geen beperkingen rond threading of I / O. Ze kunnen worden behandeld als gewone functies.
-* **Poison-message handling** - Er is geen gif bericht ondersteuning in de activiteit triggers.
-* **Zichtbaarheid van berichten** - Berichten met activiteitstrigger worden in de wachtrij geplaatst en onzichtbaar gehouden voor een configureerbare duur. De zichtbaarheid van deze berichten wordt automatisch vernieuwd zolang de functie-app actief en gezond is.
-* **Retourwaarden** : Retourwaarden worden geserialiseerd naar JSON en blijven bestaan in de tabel orchestration history in Azure Table-opslag.
+* **Threading** : in tegens telling tot de Orchestration-trigger gelden er geen beperkingen voor threading of I/O. Ze kunnen worden behandeld als normale functies.
+* **Poison-verwerking van berichten** -er is geen Poison-bericht ondersteuning in activiteit triggers.
+* **Bericht zichtbaarheid** : activiteit trigger berichten worden niet in de wachtrij geplaatst en worden gedurende een Configureer bare duur onzichtbaar bewaard. De zicht baarheid van deze berichten wordt automatisch vernieuwd zolang de functie-app wordt uitgevoerd en in orde is.
+* **Retour waarden** : retour waarden worden GESERIALISEERD in JSON en persistent gemaakt in de Orchestration-geschiedenis tabel in azure Table Storage.
 
 > [!WARNING]
-> De backend voor opslag voor activiteitsfuncties is een implementatiedetail en de gebruikerscode mag niet rechtstreeks met deze opslagentiteiten communiceren.
+> De opslag back-end voor activiteit functies is een implementatie detail en gebruikers code mogen niet rechtstreeks met deze opslag entiteiten werken.
 
-### <a name="trigger-usage-net"></a>Gebruik activeren (.NET)
+### <a name="trigger-usage-net"></a>Gebruik van triggers (.NET)
 
-De binding van de activiteitstrigger ondersteunt zowel ingangen als uitgangen, net als de orchestration-trigger. Hier volgen enkele dingen die u moet weten over invoer- en uitvoerafhandeling:
+De activiteit trigger binding ondersteunt zowel invoer als uitvoer, net als de Orchestration-trigger. Hier volgen enkele dingen die u moet weten over de verwerking van de invoer en uitvoer:
 
-* **ingangen** - .NET-activiteitsfuncties die native worden gebruikt `DurableActivityContext` als parametertype. Als alternatief kan een activiteitsfunctie worden gedeclareerd met elk parametertype dat JSON-serializable is. Wanneer u `DurableActivityContext`de invoer `GetInput<T>` van de activiteitsfunctie wilt ophalen en deserialiseren.
-* **uitgangen - Activiteitsfuncties** ondersteunen uitvoerwaarden en ingangen. De retourwaarde van de functie wordt gebruikt om de uitvoerwaarde toe te wijzen en moet JSON-serializable zijn. Als een .NET-functie retourneert `Task` of `void`een `null` waarde wordt opgeslagen als de uitvoer.
-* **metagegevens** - .NET-activiteitsfuncties kunnen aan een `string instanceId` parameter binden om de instantie-id van de bovenliggende orkestratie te krijgen.
+* **invoer** -.net-activiteit functies die systeem `DurableActivityContext` eigen gebruik als parameter type gebruiken. U kunt ook een functie activity declareren met elk parameter type dat kan worden geserialiseerd. Wanneer u gebruikt `DurableActivityContext`, kunt u aanroepen `GetInput<T>` om de invoer van de activiteit functie op te halen en te deserialiseren.
+* **uitvoer** -activiteit functies ondersteunen uitvoer waarden en invoer. De geretourneerde waarde van de functie wordt gebruikt om de uitvoer waarde toe te wijzen en moet JSON serialiseerbaar zijn. Als een .NET-functie `Task` retourneert `void`of, `null` wordt een waarde opgeslagen als uitvoer.
+* **meta gegevens** -.net-activiteit functies kunnen worden `string instanceId` gebonden aan een para meter om de exemplaar-id van de bovenliggende indeling op te halen.
 
-### <a name="trigger-sample"></a>Voorbeeld van trigger
+### <a name="trigger-sample"></a>Voor beeld trigger
 
-In de volgende voorbeeldcode ziet u hoe een eenvoudige activiteitsfunctie "Hello World" eruit zou kunnen zien:
+De volgende voorbeeld code laat zien hoe een eenvoudige activiteit functie ' Hallo wereld ' eruit kan zien als:
 
 #### <a name="c"></a>C#
 
@@ -179,9 +179,9 @@ public static string SayHello([ActivityTrigger] IDurableActivityContext helloCon
 ```
 
 > [!NOTE]
-> De vorige code is voor duurzame functies 2.x. Voor duurzame functies 1.x `DurableActivityContext` moet `IDurableActivityContext`u in plaats van . Zie het artikel [Duurzame functiesversies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> De vorige code is voor Durable Functions 2. x. Voor Durable Functions 1. x moet u in plaats `DurableActivityContext` van `IDurableActivityContext`gebruiken. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-Het standaardparametertype voor `ActivityTriggerAttribute` de `IDurableActivityContext`.NET-binding is . .NET-activiteitstriggers ondersteunen echter ook de binding die rechtstreeks aan JSON-serializeable types (inclusief primitieve typen) is gebonden, zodat dezelfde functie als volgt kan worden vereenvoudigd:
+Het standaard parameter type voor de .NET `ActivityTriggerAttribute` -binding `IDurableActivityContext`is. .NET-activiteit Triggers bieden echter ook ondersteuning voor het rechtstreeks binden aan JSON-serializeable-typen (waaronder primitieve typen), zodat dezelfde functie als volgt kan worden vereenvoudigd:
 
 ```csharp
 [FunctionName("SayHello")]
@@ -191,7 +191,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (alleen functies 2.0)
+#### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
 
 ```javascript
 module.exports = async function(context) {
@@ -199,7 +199,7 @@ module.exports = async function(context) {
 };
 ```
 
-JavaScript-bindingen kunnen ook worden doorgegeven als aanvullende parameters, zodat dezelfde functie als volgt kan worden vereenvoudigd:
+Java script-bindingen kunnen ook worden door gegeven als aanvullende para meters, zodat dezelfde functie als volgt kan worden vereenvoudigd:
 
 ```javascript
 module.exports = async function(context, name) {
@@ -208,9 +208,9 @@ module.exports = async function(context, name) {
 ```
 
 
-### <a name="using-input-and-output-bindings"></a>Invoer- en uitvoerbindingen gebruiken
+### <a name="using-input-and-output-bindings"></a>Invoer-en uitvoer bindingen gebruiken
 
-U naast de binding van de activiteitstrigger ook regelmatige invoer- en uitvoerbindingen gebruiken. U bijvoorbeeld de invoer naar uw activiteitsbinding nemen en een bericht naar een EventHub verzenden met de gebeurtenishub-uitvoerbinding:
+U kunt normale invoer-en uitvoer bindingen gebruiken naast de trigger voor het activeren van de activiteit. U kunt bijvoorbeeld de invoer naar uw activiteit binden en een bericht naar een EventHub verzenden met behulp van de EventHub-uitvoer binding:
 
 ```json
 {
@@ -237,19 +237,19 @@ module.exports = async function (context) {
 };
 ```
 
-## <a name="orchestration-client"></a>Orchestration client
+## <a name="orchestration-client"></a>Orchestration-client
 
-Met de orchestration client binding u functies schrijven die interageren met orchestrator functies. Deze functies worden soms [clientfuncties](durable-functions-types-features-overview.md#client-functions)genoemd. U bijvoorbeeld op de volgende manieren reageren op orchestration-instanties:
+Met de Orchestrator client binding kunt u functies schrijven die communiceren met Orchestrator-functies. Deze functies worden soms [client functies](durable-functions-types-features-overview.md#client-functions)genoemd. U kunt bijvoorbeeld op de volgende manieren handelen op indelings instanties:
 
-* Begin ze.
-* Vraag hun status op.
-* Beëindig ze.
-* Stuur gebeurtenissen naar hen terwijl ze actief zijn.
-* De geschiedenis van de instantie van het zuiveren.
+* Start deze.
+* Hun status opvragen.
+* Deze beëindigen.
+* Verzend gebeurtenissen naar hen terwijl ze worden uitgevoerd.
+* Exemplaar geschiedenis opschonen.
 
-Als u Visual Studio gebruikt, u zich binden `OrchestrationClientAttribute` aan de orchestration-client met behulp van het kenmerk .NET voor duurzame functies 1.0. Vanaf het kenmerk Duurzame functies 2.0 u aan `DurableClientAttribute` de orchestration-client binden met behulp van het kenmerk .NET.
+Als u Visual Studio gebruikt, kunt u verbinding maken met de Orchestration-client met behulp `OrchestrationClientAttribute` van het .net-kenmerk voor Durable functions 1,0. Vanaf de Durable Functions 2,0 kunt u verbinding maken met de Orchestration-client met behulp van `DurableClientAttribute` het .net-kenmerk.
 
-Als u scripttalen (bijvoorbeeld *.csx-* of *.js-bestanden)* gebruikt voor ontwikkeling, wordt de orchestration-trigger `bindings` gedefinieerd door het volgende JSON-object in de array van *function.json:*
+Als u script talen (bijvoorbeeld *. CSX* -of *. js* -bestanden) gebruikt voor ontwikkeling, wordt de Orchestration-trigger gedefinieerd door het volgende JSON-object in de `bindings` matrix van *Function. json*:
 
 ```json
 {
@@ -261,15 +261,15 @@ Als u scripttalen (bijvoorbeeld *.csx-* of *.js-bestanden)* gebruikt voor ontwik
 }
 ```
 
-* `taskHub`- Wordt gebruikt in scenario's waarin meerdere functie-apps hetzelfde opslagaccount delen, maar van elkaar moeten worden geïsoleerd. Als dit niet is `host.json` opgegeven, wordt de standaardwaarde van gebruikt. Deze waarde moet overeenkomen met de waarde die wordt gebruikt door de functies van de doelorchestrator.
-* `connectionName`- De naam van een app-instelling die een tekenreeks voor opslagaccountverbinding bevat. Het opslagaccount dat door deze verbindingstekenreeks wordt weergegeven, moet dezelfde zijn die wordt gebruikt door de functies van de doelorchestrator. Als dit niet is opgegeven, wordt de standaardtekenreeks voor de opslagaccountverbinding voor de functie-app gebruikt.
+* `taskHub`-Wordt gebruikt in scenario's waarbij meerdere functie-apps hetzelfde opslag account delen, maar van elkaar moeten worden geïsoleerd. Als u niets opgeeft, wordt de standaard `host.json` waarde van gebruikt. Deze waarde moet overeenkomen met de waarde die wordt gebruikt door de doel Orchestrator-functies.
+* `connectionName`-De naam van een app-instelling die een opslag account bevat connection string. Het opslag account dat door deze connection string wordt weer gegeven, moet hetzelfde zijn als de naam die wordt gebruikt door de doel Orchestrator-functies. Als dat niet is opgegeven, wordt het standaard-opslag account connection string voor de functie-app gebruikt.
 
 > [!NOTE]
-> In de meeste gevallen raden we u aan deze eigenschappen weg te laten en te vertrouwen op het standaardgedrag.
+> In de meeste gevallen wordt u aangeraden deze eigenschappen over te slaan en te vertrouwen op het standaard gedrag.
 
-### <a name="client-usage"></a>Clientgebruik
+### <a name="client-usage"></a>Client gebruik
 
-In .NET-functies bindt u `IDurableOrchestrationClient`meestal aan , waardoor u volledige toegang hebt tot alle API's van orchestrationclient die worden ondersteund door duurzame functies. In de oudere duurzame functies 2.x releases, u in plaats daarvan binden aan de `DurableOrchestrationClient` klasse. In JavaScript worden dezelfde API's weergegeven `getClient`door het object dat wordt geretourneerd van . API's op het clientobject zijn onder andere:
+In .NET functions maakt u doorgaans een `IDurableOrchestrationClient`binding aan. Dit biedt volledige toegang tot alle api's van de Orchestration-client die door Durable functions worden ondersteund. In de oudere Durable Functions 2. x-releases maakt u in plaats daarvan `DurableOrchestrationClient` een binding met de klasse. In Java script worden dezelfde Api's weer gegeven door het object dat wordt `getClient`geretourneerd door. Api's op het client object zijn onder andere:
 
 * `StartNewAsync`
 * `GetStatusAsync`
@@ -279,13 +279,13 @@ In .NET-functies bindt u `IDurableOrchestrationClient`meestal aan , waardoor u v
 * `CreateCheckStatusResponse`
 * `CreateHttpManagementPayload`
 
-Als alternatief kunnen .NET-functies `T` `StartOrchestrationArgs` binden `JObject`aan `IAsyncCollector<T>` waar is of .
+.NET-functies kunnen ook worden gekoppeld aan `IAsyncCollector<T>` waar `T` `StartOrchestrationArgs` of `JObject`.
 
 Zie de `IDurableOrchestrationClient` API-documentatie voor meer informatie over deze bewerkingen.
 
-### <a name="client-sample-visual-studio-development"></a>Clientvoorbeeld (ontwikkeling van Visual Studio)
+### <a name="client-sample-visual-studio-development"></a>Client-voor beeld (Visual Studio-ontwikkeling)
 
-Hier is een voorbeeld wachtrij geactiveerdfunctie die een "HelloWorld" orchestration start.
+Hier volgt een voor beeld van een door de wachtrij geactiveerde functie waarmee de indeling HelloWorld wordt gestart.
 
 ```csharp
 [FunctionName("QueueStart")]
@@ -299,11 +299,11 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> De vorige C#-code is voor duurzame functies 2.x. Voor duurzame functies 1.x `OrchestrationClient` moet u `DurableClient` attribuut gebruiken in plaats `DurableOrchestrationClient` van het `IDurableOrchestrationClient`kenmerk en moet u het parametertype gebruiken in plaats van . Zie het artikel [Duurzame functiesversies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> De vorige C#-code is voor Durable Functions 2. x. Voor Durable Functions 1. x, moet u kenmerk `OrchestrationClient` gebruiken in plaats van `DurableClient` het kenmerk, en moet u het `DurableOrchestrationClient` parameter type gebruiken in `IDurableOrchestrationClient`plaats van. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-### <a name="client-sample-not-visual-studio"></a>Clientvoorbeeld (niet Visual Studio)
+### <a name="client-sample-not-visual-studio"></a>Client-voor beeld (niet Visual Studio)
 
-Als u Visual Studio niet gebruikt voor ontwikkeling, u het volgende *function.json-bestand* maken. In dit voorbeeld ziet u hoe u een functie die in de wachtrij wordt geactiveerd, configureren met de binding van de duurzame orchestrationclient:
+Als u Visual Studio niet gebruikt voor ontwikkeling, kunt u het volgende *Function. json* -bestand maken. In dit voor beeld ziet u hoe u een functie die door een wachtrij wordt geactiveerd, configureert die gebruikmaakt van de duurzame Orchestration-client binding:
 
 ```json
 {
@@ -324,13 +324,13 @@ Als u Visual Studio niet gebruikt voor ontwikkeling, u het volgende *function.js
 ```
 
 > [!NOTE]
-> De vorige JSON is voor duurzame functies 2.x. Voor duurzame functies 1.x `orchestrationClient` moet u `durableClient` het type activeren als trigger gebruiken. Zie het artikel [Duurzame functiesversies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> De vorige JSON is voor Durable Functions 2. x. Voor Durable Functions 1. x moet u in plaats `orchestrationClient` van het `durableClient` trigger type gebruiken. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-Hieronder volgen taalspecifieke voorbeelden die nieuwe orchestrator-functie-exemplaren starten.
+Hieronder vindt u taalspecifieke voor beelden die nieuwe Orchestrator-functie instanties starten.
 
-#### <a name="c-script-sample"></a>Voorbeeld van C#-script
+#### <a name="c-script-sample"></a>C#-voorbeeld script
 
-In het volgende voorbeeld ziet u hoe u de binding met de duurzame orchestrationclient gebruiken om een nieuwe functie-instantie te starten vanuit een c#-functie die in de wachtrij wordt geactiveerd:
+In het volgende voor beeld ziet u hoe u de duurzame Orchestration-client binding kunt gebruiken om een nieuw functie-exemplaar te starten vanuit een C#-functie die door een wachtrij wordt geactiveerd:
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -344,11 +344,11 @@ public static Task Run(string input, IDurableOrchestrationClient starter)
 ```
 
 > [!NOTE]
-> De vorige code is voor duurzame functies 2.x. Voor duurzame functies 1.x moet `DurableOrchestrationClient` u het `IDurableOrchestrationClient`parametertype gebruiken in plaats van . Zie het artikel [Duurzame functiesversies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> De vorige code is voor Durable Functions 2. x. Voor Durable Functions 1. x, moet u het `DurableOrchestrationClient` parameter type gebruiken in plaats `IDurableOrchestrationClient`van. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-#### <a name="javascript-sample"></a>JavaScript-voorbeeld
+#### <a name="javascript-sample"></a>Java script-voor beeld
 
-In het volgende voorbeeld ziet u hoe u de binding met de duurzame orchestrationclient gebruiken om een nieuwe functie-instantie te starten vanuit een JavaScript-functie:
+In het volgende voor beeld ziet u hoe u de duurzame Orchestration-client binding kunt gebruiken om een nieuw functie-exemplaar te starten vanuit een Java script-functie:
 
 ```javascript
 const df = require("durable-functions");
@@ -359,53 +359,53 @@ module.exports = async function (context) {
 };
 ```
 
-Meer informatie over startinstanties vindt u in [Instantiebeheer](durable-functions-instance-management.md).
+Meer informatie over begin instanties vindt u in [exemplaar beheer](durable-functions-instance-management.md).
 
-## <a name="entity-trigger"></a>Entiteitstrigger
+## <a name="entity-trigger"></a>Entiteits trigger
 
-Met entiteitstriggers u [entiteitsfuncties opmaken.](durable-functions-entities.md) Deze trigger ondersteunt verwerkingsgebeurtenissen voor een specifieke entiteitsinstantie.
+Met entiteit triggers kunt u [entiteits functies](durable-functions-entities.md)ontwerpen. Deze trigger ondersteunt het verwerken van gebeurtenissen voor een specifiek entiteits exemplaar.
 
-Wanneer u de hulpprogramma's voor Visual Studio voor Azure-functies gebruikt, wordt de entiteitstrigger geconfigureerd met het `EntityTriggerAttribute` kenmerk .NET.
+Wanneer u de Visual Studio-hulpprogram ma's voor Azure Functions gebruikt, wordt de entiteits trigger `EntityTriggerAttribute` geconfigureerd met het .net-kenmerk.
 
 > [!NOTE]
-> Entiteittriggers zijn beschikbaar vanaf duurzame functies 2.x.
+> Entiteit triggers zijn beschikbaar vanaf Durable Functions 2. x.
 
-Intern leidt dit tot bindende peilingen van een reeks wachtrijen in het standaardopslagaccount voor de functie-app. Deze wachtrijen zijn interne implementatiedetails van de extensie, daarom zijn ze niet expliciet geconfigureerd in de bindingseigenschappen.
+Intern deze trigger roept een reeks wacht rijen aan in het standaard opslag account voor de functie-app. Deze wacht rijen zijn interne implementatie details van de uitbrei ding. Daarom worden ze niet expliciet geconfigureerd in de binding eigenschappen.
 
 ### <a name="trigger-behavior"></a>Triggergedrag
 
-Hier volgen enkele opmerkingen over de entiteitstrigger:
+Hier volgen enkele opmerkingen over de entiteits trigger:
 
-* **Single-threaded**: Een enkele dispatcher thread wordt gebruikt om bewerkingen voor een bepaalde entiteit te verwerken. Als meerdere berichten tegelijkertijd naar één entiteit worden verzonden, worden de bewerkingen één-op-één verwerkt.
-* **Poison-message handling** - Er is geen gif bericht ondersteuning in entiteit triggers.
-* **Zichtbaarheid van berichten** - Entiteittriggerberichten worden in de wachtrij geplaatst en onzichtbaar gehouden voor een configureerbare duur. De zichtbaarheid van deze berichten wordt automatisch vernieuwd zolang de functie-app actief en gezond is.
-* **Retourwaarden** : entiteitsfuncties ondersteunen geen retourwaarden. Er zijn specifieke API's die kunnen worden gebruikt om status op te slaan of waarden terug te geven aan orkestraties.
+* **Eén thread**: er wordt één dispatcher-thread gebruikt voor het verwerken van bewerkingen voor een bepaalde entiteit. Als meerdere berichten gelijktijdig naar één entiteit worden verzonden, worden de bewerkingen één voor een in de tijd verwerkt.
+* **Poison-Message Handling** -er is geen ondersteuning voor Poison-berichten in entiteit triggers.
+* **Bericht zichtbaarheid** : entiteits trigger berichten worden niet in de wachtrij geplaatst en worden gedurende een Configureer bare duur onzichtbaar bewaard. De zicht baarheid van deze berichten wordt automatisch vernieuwd zolang de functie-app wordt uitgevoerd en in orde is.
+* **Retour waarden** : entiteit functies bieden geen ondersteuning voor retour waarden. Er zijn specifieke Api's die kunnen worden gebruikt om de status op te slaan of waarden terug te geven naar Orchestrations.
 
-Alle statuswijzigingen die tijdens de uitvoering in een entiteit zijn aangebracht, worden automatisch gehandhaafd nadat de uitvoering is voltooid.
+Status wijzigingen die tijdens de uitvoering van een entiteit zijn aangebracht, worden automatisch behouden nadat de uitvoering is voltooid.
 
-### <a name="trigger-usage-net"></a>Gebruik activeren (.NET)
+### <a name="trigger-usage-net"></a>Gebruik van triggers (.NET)
 
-Elke entiteitsfunctie heeft `IDurableEntityContext`een parametertype van , dat de volgende leden heeft:
+Elke entiteit functie heeft het parameter type `IDurableEntityContext`, dat de volgende leden heeft:
 
-* **EntityName:** de naam van de momenteel uitvoerende entiteit.
-* **EntityKey:** de sleutel van de momenteel uitvoerende entiteit.
-* **EntityId:** de ID van de momenteel uitvoerende entiteit.
-* **OperationName:** de naam van de huidige bewerking.
-* **HasState**: of de entiteit bestaat, dat wil zeggen, heeft een staat. 
-* **GetState\<TState>()**: krijgt de huidige status van de entiteit. Als het nog niet bestaat, wordt het `default<TState>`gemaakt en geïnitialiseerd tot . De `TState` parameter moet een primitief of JSON-serialiserend type zijn. 
-* **GetState\<TState>(initfunction)**: krijgt de huidige status van de entiteit. Als deze nog niet bestaat, wordt het `initfunction` gemaakt door de opgegeven parameter aan te roepen. De `TState` parameter moet een primitief of JSON-serialiserend type zijn. 
-* **SetState(arg)**: maakt of werkt de status van de entiteit aan. De `arg` parameter moet een JSON-serializeable object of primitief zijn.
-* **DeleteState()**: verwijdert de status van de entiteit. 
-* **GetInput\<TInput>()**: krijgt de invoer voor de huidige bewerking. De `TInput` parameter type moet een primitief of JSON-serialiserend type zijn.
-* **Return(arg)**: retourneert een waarde naar de orchestration die de bewerking heeft genoemd. De `arg` parameter moet een primitief of JSON-serialiserend object zijn.
-* **SignalEntity(EntityId, scheduledTimeUtc, operation, input)**: stuurt een eenrichtingsbericht naar een entiteit. De `operation` parameter moet een niet-null-tekenreeks zijn, de optionele `scheduledTimeUtc` moet een UTC-datum zijn waarop de bewerking moet worden aanroepen en de `input` parameter moet een primitief of JSON-serialiserend object zijn.
-* **CreateNewOrchestration(orchestratorFunctionName, input)**: start een nieuwe orchestration. De `input` parameter moet een primitief of JSON-serialiserend object zijn.
+* **EntityName**: de naam van de entiteit die momenteel wordt uitgevoerd.
+* **EntityKey**: de sleutel van de entiteit die momenteel wordt uitgevoerd.
+* **EntityId**: de id van de entiteit die momenteel wordt uitgevoerd.
+* **Operationname**: de naam van de huidige bewerking.
+* **HasState**: of de entiteit bestaat, dat wil zeggen een bepaalde status heeft. 
+* **GetState\<TState> ()**: Hiermee wordt de huidige status van de entiteit opgehaald. Als deze nog niet bestaat, wordt deze gemaakt en geïnitialiseerd naar `default<TState>`. De `TState` para meter moet een primitief-of JSON-serializeable-type zijn. 
+* **GetState\<TState> (initfunction)**: Hiermee wordt de huidige status van de entiteit opgehaald. Als deze nog niet bestaat, wordt deze gemaakt door de gegeven `initfunction` para meter aan te roepen. De `TState` para meter moet een primitief-of JSON-serializeable-type zijn. 
+* **SetState (ARG)**: Hiermee wordt de status van de entiteit gemaakt of bijgewerkt. De `arg` para meter moet een JSON-serializeable-object of primitieve zijn.
+* **DeleteState ()**: de status van de entiteit wordt verwijderd. 
+* **GetInput\<TInput> ()**: Hiermee wordt de invoer voor de huidige bewerking opgehaald. De `TInput` type parameter moet een primitief-of JSON-serializeable-type zijn.
+* **Retour (ARG)**: retourneert een waarde voor de indeling die de bewerking wordt genoemd. De `arg` para meter moet een primitief-of JSON-serializeable-object zijn.
+* **SignalEntity (EntityId, scheduledTimeUtc, Operation, invoer)**: er wordt een eenrichtings bericht naar een entiteit verzonden. De `operation` para meter moet een teken reeks zijn die niet gelijk is `scheduledTimeUtc` aan nul, het optionele moet een UTC-datum zijn waarop de bewerking `input` kan worden aangeroepen en de para meter moet een primitief of JSON-serializeable-object zijn.
+* **CreateNewOrchestration (orchestratorFunctionName, invoer)**: start een nieuwe indeling. De `input` para meter moet een primitief-of JSON-serializeable-object zijn.
 
-Het `IDurableEntityContext` object dat is doorgegeven aan `Entity.Current` de entiteitsfunctie, kan worden geopend met behulp van de eigenschap async-local. Deze aanpak is handig bij het gebruik van het op klasse gebaseerde programmeermodel.
+Het `IDurableEntityContext` object dat aan de functie entiteit is door gegeven, is `Entity.Current` toegankelijk via de eigenschap async-local. Deze methode is handig wanneer u het op klassen gebaseerde programmeer model gebruikt.
 
-### <a name="trigger-sample-c-function-based-syntax"></a>Voorbeeld van trigger (syntaxis van de functie C#)
+### <a name="trigger-sample-c-function-based-syntax"></a>Trigger voorbeeld (syntaxis op basis van C#-functie)
 
-De volgende code is een voorbeeld van een eenvoudige *Counter entiteit* geïmplementeerd als een duurzame functie. Deze functie definieert `add` `reset`drie `get`bewerkingen, , en , die elk werken op een gehele staat.
+De volgende code is een voor beeld van een eenvoudige *teller* -entiteit die is geïmplementeerd als een duurzame functie. Deze functie definieert drie bewerkingen, `add`, `reset`, en `get`, die allemaal werken met een gehele status.
 
 ```csharp
 [FunctionName("Counter")]
@@ -426,11 +426,11 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-Zie [Op functie gebaseerde syntaxis](durable-functions-dotnet-entities.md#function-based-syntax)voor meer informatie over de op de functie gebaseerde syntaxis en hoe deze te gebruiken.
+Zie [syntaxis op basis van functies](durable-functions-dotnet-entities.md#function-based-syntax)voor meer informatie over de syntaxis van de functie en hoe u deze kunt gebruiken.
 
-### <a name="trigger-sample-c-class-based-syntax"></a>Voorbeeld van trigger (syntaxis op basis van de klasse C#)
+### <a name="trigger-sample-c-class-based-syntax"></a>Trigger-voor beeld (syntaxis op basis van C#-klasse)
 
-Het volgende voorbeeld is een `Counter` gelijkwaardige implementatie van de entiteit met behulp van klassen en methoden.
+Het volgende voor beeld is een gelijkwaardige implementatie `Counter` van de entiteit met behulp van klassen en methoden.
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -451,20 +451,20 @@ public class Counter
 }
 ```
 
-De status van deze entiteit `Counter`is een object van type , dat een veld bevat dat de huidige waarde van de teller opslaat. Om dit object in opslag te blijven gebruiken, wordt het geserialiseerd en gedeserialiseerd door de [Json.NET](https://www.newtonsoft.com/json) bibliotheek. 
+De status van deze entiteit is een object van het `Counter`type, dat een veld bevat waarin de huidige waarde van de teller wordt opgeslagen. Als u dit object in de opslag ruimte wilt behouden, wordt het geserialiseerd en gedeserialiseerd door de [JSON.net](https://www.newtonsoft.com/json) -bibliotheek. 
 
-Zie [Entiteitklassen definiëren](durable-functions-dotnet-entities.md#defining-entity-classes)voor meer informatie over de syntaxis van de klasse en hoe deze te gebruiken.
+Zie [entity branches definiëren](durable-functions-dotnet-entities.md#defining-entity-classes)voor meer informatie over de op klassen gebaseerde syntaxis en hoe u deze kunt gebruiken.
 
 > [!NOTE]
-> De functie-invoerpuntmethode `[FunctionName]` met het `static` kenmerk *moet* worden gedeclareerd bij het gebruik van entiteitsklassen. Niet-statische invoerpuntmethoden kunnen leiden tot meervoudige objectinitialisatie en mogelijk andere ongedefinieerde gedragingen.
+> De methode van het functie-invoer `[FunctionName]` punt met het kenmerk `static` *moet* worden gedeclareerd bij het gebruik van entity klassen. Niet-statische toegangs punt methoden kunnen leiden tot meervoudige initialisatie van objecten en mogelijk andere niet-gedefinieerde gedragingen.
 
-Entiteitsklassen hebben speciale mechanismen voor interactie met bindingen en .NET-afhankelijkheidsinjectie. Zie [Entiteitsconstructie](durable-functions-dotnet-entities.md#entity-construction)voor meer informatie .
+Entiteits klassen hebben speciale mechanismen voor interactie met bindingen en .NET-afhankelijkheids injectie. Zie [entiteits constructie](durable-functions-dotnet-entities.md#entity-construction)voor meer informatie.
 
-### <a name="trigger-sample-javascript"></a>Voorbeeld van trigger (JavaScript)
+### <a name="trigger-sample-javascript"></a>Voor beeld van trigger (Java script)
 
-De volgende code is een voorbeeld van een eenvoudige *Counter entiteit* geïmplementeerd als een duurzame functie geschreven in JavaScript. Deze functie definieert `add` `reset`drie `get`bewerkingen, , en , die elk werken op een gehele staat.
+De volgende code is een voor beeld van een eenvoudige *teller* -entiteit die is geïmplementeerd als een duurzame functie die is geschreven in Java script. Deze functie definieert drie bewerkingen, `add`, `reset`, en `get`, die allemaal werken met een gehele status.
 
-**function.json**
+**function. json**
 ```json
 {
   "bindings": [
@@ -478,7 +478,7 @@ De volgende code is een voorbeeld van een eenvoudige *Counter entiteit* geïmple
 }
 ```
 
-**index.js**
+**index. js**
 ```javascript
 const df = require("durable-functions");
 
@@ -500,18 +500,18 @@ module.exports = df.entity(function(context) {
 ```
 
 > [!NOTE]
-> Duurzame entiteiten zijn beschikbaar in JavaScript vanaf versie `durable-functions` **1.3.0** van het npm-pakket.
+> Duurzame entiteiten zijn beschikbaar in Java script vanaf versie **1.3.0** van het `durable-functions` NPM-pakket.
 
-## <a name="entity-client"></a>Entiteitclient
+## <a name="entity-client"></a>Entiteit-client
 
-Met de entiteitsclientbinding u [entiteitsfuncties](#entity-trigger)asynchroon activeren. Deze functies worden soms [clientfuncties](durable-functions-types-features-overview.md#client-functions)genoemd.
+Met de client binding van de entiteit kunt u de [entiteits functies](#entity-trigger)asynchroon activeren. Deze functies worden soms [client functies](durable-functions-types-features-overview.md#client-functions)genoemd.
 
-Als u Visual Studio gebruikt, u zich binden `DurableClientAttribute` aan de entiteitsclient met behulp van het kenmerk .NET.
+Als u Visual Studio gebruikt, kunt u verbinding maken met de entiteit client met behulp `DurableClientAttribute` van het .net-kenmerk.
 
 > [!NOTE]
-> Het `[DurableClientAttribute]` kan ook worden gebruikt om te binden aan de [orchestration client](#orchestration-client).
+> De `[DurableClientAttribute]` kan ook worden gebruikt om een binding te maken met de [Orchestration-client](#orchestration-client).
 
-Als u scripttalen (bijvoorbeeld *.csx-* of *.js-bestanden)* gebruikt voor ontwikkeling, wordt de entiteitstrigger `bindings` gedefinieerd door het volgende JSON-object in de array van *function.json:*
+Als u script talen (bijvoorbeeld *. CSX* -of *. js* -bestanden) gebruikt voor ontwikkeling, wordt de entiteit trigger gedefinieerd door het volgende JSON-object in de `bindings` matrix van *Function. json*:
 
 ```json
 {
@@ -523,28 +523,28 @@ Als u scripttalen (bijvoorbeeld *.csx-* of *.js-bestanden)* gebruikt voor ontwik
 }
 ```
 
-* `taskHub`- Wordt gebruikt in scenario's waarin meerdere functie-apps hetzelfde opslagaccount delen, maar van elkaar moeten worden geïsoleerd. Als dit niet is `host.json` opgegeven, wordt de standaardwaarde van gebruikt. Deze waarde moet overeenkomen met de waarde die wordt gebruikt door de functies van de doelentiteit.
-* `connectionName`- De naam van een app-instelling die een tekenreeks voor opslagaccountverbinding bevat. Het opslagaccount dat door deze verbindingstekenreeks wordt weergegeven, moet dezelfde zijn die wordt gebruikt door de functies van de doelentiteit. Als dit niet is opgegeven, wordt de standaardtekenreeks voor de opslagaccountverbinding voor de functie-app gebruikt.
+* `taskHub`-Wordt gebruikt in scenario's waarbij meerdere functie-apps hetzelfde opslag account delen, maar van elkaar moeten worden geïsoleerd. Als u niets opgeeft, wordt de standaard `host.json` waarde van gebruikt. Deze waarde moet overeenkomen met de waarde die wordt gebruikt door de functies van de doel entiteit.
+* `connectionName`-De naam van een app-instelling die een opslag account bevat connection string. Het opslag account dat door deze connection string wordt weer gegeven, moet hetzelfde zijn als de locatie die wordt gebruikt door de functies van de doel entiteit. Als dat niet is opgegeven, wordt het standaard-opslag account connection string voor de functie-app gebruikt.
 
 > [!NOTE]
-> In de meeste gevallen raden we u aan de optionele eigenschappen weg te laten en te vertrouwen op het standaardgedrag.
+> In de meeste gevallen is het raadzaam om de optionele eigenschappen te weglaten en het standaard gedrag te vertrouwen.
 
-### <a name="entity-client-usage"></a>Clientgebruik van entiteiten
+### <a name="entity-client-usage"></a>Client gebruik van entiteit
 
-In .NET-functies bindt u `IDurableEntityClient`doorgaans aan , waardoor u volledige toegang hebt tot alle client-API's die worden ondersteund door duurzame entiteiten. U ook `IDurableOrchestrationClient` binden aan de interface, die toegang biedt tot client-API's voor zowel entiteiten als orkestraties. API's op het clientobject zijn onder andere:
+In .NET functions maakt u doorgaans een `IDurableEntityClient`binding aan. Dit biedt volledige toegang tot alle client-api's die door duurzame entiteiten worden ondersteund. U kunt ook een binding maken `IDurableOrchestrationClient` met de interface, waarmee u toegang hebt tot client-api's voor zowel entiteiten als Orchestration. Api's op het client object zijn onder andere:
 
-* **ReadEntityStateAsync\<T>: **leest de status van een entiteit. Het retourneert een antwoord dat aangeeft of de doelentiteit bestaat, en zo ja, wat de status ervan is.
-* **SignalEntityAsync**: stuurt een eenrichtingsbericht naar een entiteit en wacht tot het in de wachtrij staat.
-* **ListEntitiesAsync**: query's voor de status van meerdere entiteiten. Entiteiten kunnen worden opgevraagd op *naam* en *laatste bewerkingstijd*.
+* **ReadEntityStateAsync\<T>**: de status van een entiteit wordt gelezen. Het retourneert een antwoord dat aangeeft of de doel entiteit bestaat en zo ja, wat de status is.
+* **SignalEntityAsync**: Hiermee verzendt u een bericht in één richting naar een entiteit, waarna wordt gewacht tot deze in de wachtrij is geplaatst.
+* **ListEntitiesAsync**: query's voor de status van meerdere entiteiten. Entiteiten kunnen worden opgevraagd met behulp van de *naam* en de tijd van de *laatste bewerking*.
 
-Het is niet nodig om de doelentiteit te maken voordat u een signaal verzendt - de entiteitsstatus kan worden gemaakt vanuit de entiteitsfunctie die het signaal verwerkt.
+Het is niet nodig om de doel entiteit te maken voordat u een signaal verzendt: de status van de entiteit kan worden gemaakt vanuit de entiteit functie die het signaal verwerkt.
 
 > [!NOTE]
-> Het is belangrijk om te begrijpen dat de "signalen" verzonden van de client zijn gewoon in de wachtrij, om asynchroon worden verwerkt op een later tijdstip. In het `SignalEntityAsync` bijzonder, de meestal rendementen voordat de entiteit zelfs begint met de operatie, en het is niet mogelijk om terug te krijgen van de terugkeer waarde of uitzonderingen observeren. Als er sterkere garanties nodig zijn (bijvoorbeeld voor werkstromen), moeten *orchestrator-functies* worden gebruikt, die kunnen wachten tot entiteitsbewerkingen zijn voltooid, en retourwaarden kunnen verwerken en uitzonderingen kunnen observeren.
+> Het is belang rijk om te begrijpen dat de ' signalen ' die van de client zijn verzonden, eenvoudigweg in de wachtrij worden geplaatst, zodat ze op een later tijdstip asynchroon kunnen worden verwerkt. In het bijzonder retourneert `SignalEntityAsync` de waarde meestal voordat de entiteit de bewerking start en is het niet mogelijk om de retour waarde terug te halen of uitzonde ringen te observeren. Als sterkere garanties vereist zijn (bijvoorbeeld voor werk stromen), moeten *Orchestrator-functies* worden gebruikt, die kunnen wachten tot de bewerking van de entiteit is voltooid, en kunnen retour waarden verwerken en uitzonde ringen observeren.
 
-### <a name="example-client-signals-entity-directly---c"></a>Voorbeeld: entiteit voor clientsignalen rechtstreeks - C #
+### <a name="example-client-signals-entity-directly---c"></a>Voor beeld: client geeft entiteit rechtstreeks-C #
 
-Hier is een voorbeeld functie die in de wachtrij wordt geactiveerd en die een entiteit 'Teller' aanroept.
+Hier volgt een voor beeld van een door de wachtrij geactiveerde functie die een counter-entiteit aanroept.
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -559,9 +559,9 @@ public static Task Run(
 }
 ```
 
-### <a name="example-client-signals-entity-via-interface---c"></a>Voorbeeld: clientsignalen entiteit via interface - C #
+### <a name="example-client-signals-entity-via-interface---c"></a>Voor beeld: client signaleert entiteit via interface-C #
 
-Waar mogelijk raden we aan [om toegang te krijgen tot entiteiten via interfaces,](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) omdat het meer typecontrole biedt. Stel dat de `Counter` eerder genoemde entiteit `ICounter` een interface heeft geïmplementeerd, gedefinieerd als volgt:
+Waar mogelijk wordt u aangeraden om [toegang te krijgen tot entiteiten via interfaces](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) , omdat het meer type controle biedt. Stel bijvoorbeeld dat de `Counter` entiteit die eerder een `ICounter` interface heeft genoemd, als volgt heeft geïmplementeerd:
 
 ```csharp
 public interface ICounter
@@ -577,7 +577,7 @@ public class Counter : ICounter
 }
 ```
 
-Clientcode kan `SignalEntityAsync<ICounter>` vervolgens worden gebruikt om een typeveilige proxy te genereren:
+Client code kan vervolgens worden `SignalEntityAsync<ICounter>` gebruikt om een type veilige proxy te genereren:
 
 ```csharp
 [FunctionName("UserDeleteAvailable")]
@@ -591,18 +591,18 @@ public static async Task AddValueClient(
 }
 ```
 
-De `proxy` parameter is een dynamisch `ICounter`gegenereerde instantie van , `Add` die de aanroep intern `SignalEntityAsync`vertaalt naar de gelijkwaardige (niet-getypte) aanroep naar .
+De `proxy` para meter is een dynamisch gegenereerd exemplaar `ICounter`van, waarmee de aanroep naar `Add` de equivalente (niet-getypte) aanroep wordt omgezet `SignalEntityAsync`in.
 
 > [!NOTE]
-> De `SignalEntityAsync` API's vertegenwoordigen eenrichtingsoperaties. Als een entiteit `Task<T>`interfaces retourneert, is de waarde van de `T` parameter altijd null of `default`.
+> De `SignalEntityAsync` api's vertegenwoordigen eenrichtings bewerkingen. Als een entiteit interfaces retourneert `Task<T>`, is de waarde van `T` de para meter altijd Null of `default`.
 
-In het bijzonder heeft het geen `Get` zin om de bewerking te signaleren, omdat er geen waarde wordt geretourneerd. In plaats daarvan `ReadStateAsync` kunnen clients rechtstreeks toegang krijgen tot de tellerstatus of `Get` een orchestrator-functie starten die de bewerking aanroept.
+Het is met name niet zinvol om de `Get` bewerking te Signa leren, omdat er geen waarde wordt geretourneerd. In plaats daarvan kunnen clients gebruiken `ReadStateAsync` om rechtstreeks toegang te krijgen tot de status van het item, of kan een Orchestrator- `Get` functie worden gestart die de bewerking aanroept.
 
-### <a name="example-client-signals-entity---javascript"></a>Voorbeeld: entiteit clientsignalen - JavaScript
+### <a name="example-client-signals-entity---javascript"></a>Voor beeld: client signaleert entiteit-java script
 
-Hier is een voorbeeld wachtrij geactiveerde functie die een "Counter" entiteit in JavaScript signalen.
+Hier volgt een voor beeld van een door de wachtrij geactiveerde functie waarmee de entiteit Counter in Java script wordt gesignaleerd.
 
-**function.json**
+**function. json**
 ```json
 {
     "bindings": [
@@ -622,7 +622,7 @@ Hier is een voorbeeld wachtrij geactiveerde functie die een "Counter" entiteit i
   }
 ```
 
-**index.js**
+**index. js**
 ```javascript
 const df = require("durable-functions");
 
@@ -634,14 +634,14 @@ module.exports = async function (context) {
 ```
 
 > [!NOTE]
-> Duurzame entiteiten zijn beschikbaar in JavaScript vanaf versie `durable-functions` **1.3.0** van het npm-pakket.
+> Duurzame entiteiten zijn beschikbaar in Java script vanaf versie **1.3.0** van het `durable-functions` NPM-pakket.
 
 <a name="host-json"></a>
-## <a name="hostjson-settings"></a>host.json-instellingen
+## <a name="hostjson-settings"></a>instellingen voor de host. json
 
 [!INCLUDE [durabletask](../../../includes/functions-host-json-durabletask.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Ingebouwde HTTP API-referentie voor bijvoorbeeld beheer](durable-functions-http-api.md)
+> [Ingebouwde HTTP API-referentie voor exemplaar beheer](durable-functions-http-api.md)

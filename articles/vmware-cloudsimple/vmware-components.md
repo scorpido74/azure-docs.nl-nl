@@ -1,7 +1,7 @@
 ---
-title: Private cloud VMware-componenten
+title: VMware-onderdelen van de privécloud
 titleSuffix: Azure VMware Solution by CloudSimple
-description: Beschrijft hoe VMware-componenten worden geïnstalleerd in private cloud
+description: Hierin wordt beschreven hoe VMware-onderdelen worden geïnstalleerd in de privécloud
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/15/2019
@@ -10,113 +10,113 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79279505"
 ---
-# <a name="private-cloud-vmware-components"></a>Private Cloud VMware-componenten
+# <a name="private-cloud-vmware-components"></a>VMware-onderdelen van de privécloud
 
-Een Private Cloud is een geïsoleerde VMware-stack (ESXi hosts, vCenter, vSAN en NSX) die wordt beheerd door een vCenter-server in een beheerdomein.  Met de CloudSimple-service u VMware native implementeren op Azure bare metal-infrastructuur op Azure-locaties.  Private Clouds zijn geïntegreerd met de rest van de Azure Cloud.  Een private cloud wordt geïmplementeerd met de volgende VMware-stackcomponenten:
+Een Privécloud is een geïsoleerde VMware-stack (ESXi hosts, vCenter, vSAN en NSX) die worden beheerd door een vCenter-Server in een beheer domein.  Met de CloudSimple-service kunt u VMware systeem eigen implementeren op een Azure bare-metal infra structuur in azure-locaties.  Persoonlijke Clouds zijn geïntegreerd met de rest van de Azure-Cloud.  Een privécloud wordt geïmplementeerd met de volgende VMware stack-onderdelen:
 
-* **VMware ESXi -** Hypervisor op azure-dedicated knooppunten
-* **VMware vCenter -** Toestel voor gecentraliseerd beheer van private cloud vSphere-omgeving
-* **VMware vSAN -** Hyper-geconvergeerde infrastructuuroplossing
-* **VMware NSX Datacenter -** Netwerkvirtualisatie en beveiligingssoftware  
+* **VMware ESXi-** Hyper Visor op aan Azure toegewezen knoop punten
+* **VMware vCenter-** Apparaat voor gecentraliseerd beheer van de vSphere-omgeving in de privécloud
+* **VMware-vSAN-** Oplossing voor Hyper-geconvergeerde infra structuur
+* **VMware NSX Data Center-** Netwerkvirtualisatie en beveiligings software  
 
-## <a name="vmware-component-versions"></a>VMware-componentversies
+## <a name="vmware-component-versions"></a>Versies van VMware-onderdelen
 
-Een Private Cloud VMware stack wordt geïmplementeerd met de volgende softwareversie.
+Een VMware-stack in de Privécloud wordt geïmplementeerd met de volgende software versie.
 
-| Onderdeel | Versie | Gelicentieerde versie |
+| Onderdeel | Versie | Versie met licentie |
 |-----------|---------|------------------|
-| Esxi | 6.7U2 | Enterprise Plus |
-| vCenter | 6.7U2 | vCenter-standaard |
+| ESXi | 6,7 U2 | Enter prise plus |
+| vCenter | 6,7 U2 | vCenter-standaard |
 | vSAN | 6.7 | Enterprise |
-| NSX-datacenter | 2.4.1 | Geavanceerd |
+| NSX Data Center | 2.4.1 | Geavanceerd |
 
-## <a name="esxi"></a>Esxi
+## <a name="esxi"></a>ESXi
 
-VMware ESXi is geïnstalleerd op ingerichte CloudSimple-knooppunten wanneer u een private cloud maakt.  ESXi biedt de hypervisor voor het implementeren van workload virtuele machines (VM's).  Knooppunten bieden hypergeconvergeerde infrastructuur (compute en storage) op uw private cloud.  De knooppunten maken deel uit van het vSphere-cluster op de private cloud.  Elk knooppunt heeft vier fysieke netwerkinterfaces die zijn aangesloten op het underlay-netwerk.  Twee fysieke netwerkinterfaces worden gebruikt om een **vSphere Distributed Switch (VDS)** op vCenter te maken en twee worden gebruikt om een **DOOR NSX beheerde virtuele gedistribueerde switch (N-VDS)** te maken.  Netwerkinterfaces zijn geconfigureerd in actieve modus voor hoge beschikbaarheid.
+VMware ESXi wordt geïnstalleerd op de ingerichte CloudSimple-knoop punten wanneer u een privécloud maakt.  ESXi biedt de Hyper Visor voor het implementeren van virtuele machines van werk belastingen (Vm's).  Knoop punten bieden een Hyper-geconvergeerde infra structuur (reken-en opslag) in uw privécloud.  De knoop punten maken deel uit van het vSphere-cluster op de privécloud.  Elk knoop punt heeft vier fysieke netwerk interfaces die zijn verbonden met het aan-netwerk.  Twee fysieke netwerk interfaces worden gebruikt voor het maken van een **vSphere-gedistribueerde switch (VDS)** in vCenter en twee worden gebruikt voor het maken van een door **NSX beheerde virtuele gedistribueerde switch (N-VDS)**.  Netwerk interfaces worden geconfigureerd in de modus actief-actief voor hoge Beschik baarheid.
 
 Meer informatie over VMware ESXi
 
-## <a name="vcenter-server-appliance"></a>vCenter-servertoestel
+## <a name="vcenter-server-appliance"></a>vCenter Server-apparaat
 
-vCenter server appliance (VCSA) biedt de verificatie-, beheer- en orkestratiefuncties voor VMware Solution by CloudSimple. VCSA met embedded Platform Services Controller (PSC) wordt geïmplementeerd wanneer u uw private cloud maakt.  VCSA wordt geïmplementeerd op het vSphere-cluster dat wordt gemaakt wanneer u uw private cloud implementeert.  Elke private cloud heeft zijn eigen VCSA.  Uitbreiding van een private cloud voegt de knooppunten toe aan de VCSA op de private cloud.
+vCenter Server-apparaat (VCSA) biedt de functies voor verificatie, beheer en Orchestration voor VMware-oplossing door CloudSimple. VCSA met de embedded platform Services controller (PSC) wordt geïmplementeerd wanneer u uw privécloud maakt.  VCSA wordt geïmplementeerd op het vSphere-cluster dat wordt gemaakt wanneer u uw privécloud implementeert.  Elke privécloud heeft zijn eigen VCSA.  Uitbrei ding van een privécloud voegt de knoop punten toe aan de VCSA op de privécloud.
 
-### <a name="vcenter-single-sign-on"></a>vCenter-aanmelding
+### <a name="vcenter-single-sign-on"></a>eenmalige aanmelding via vCenter
 
-Embedded Platform Services Controller op VCSA is gekoppeld aan een **vCenter Single Sign-On domein**.  De domeinnaam is **cloudsimple.local**.  Er wordt **CloudOwner@cloudsimple.com** een standaardgebruiker gemaakt om toegang te krijgen tot vCenter.  U uw on-premises/Azure active directory [identity sources voor vCenter](set-vcenter-identity.md)toevoegen.
+De controller van de embedded platform Services op VCSA is gekoppeld aan een **vCenter-domein met eenmalige aanmelding**.  De domein naam is **cloudsimple. local**.  Er wordt een **CloudOwner@cloudsimple.com** standaard gebruiker voor toegang tot vCenter gemaakt.  U kunt uw on-premises/Azure Active Directory- [identiteits bronnen voor vCenter](set-vcenter-identity.md)toevoegen.
 
 ## <a name="vsan-storage"></a>vSAN-opslag
 
-Private clouds worden gemaakt met volledig geconfigureerde all-flash vSAN-opslag, lokaal in het cluster.  Minimaal drie knooppunten van dezelfde SKU zijn vereist om een vSphere-cluster met vSAN-gegevensarchief te maken.  Deduplicatie en compressie zijn standaard ingeschakeld in het vSAN-gegevensarchief.  Op elk knooppunt van het vSphere-cluster worden twee schijfgroepen gemaakt. Elke schijfgroep bevat één cacheschijf en drie capaciteitsschijven.
+Persoonlijke Clouds worden gemaakt met volledig geconfigureerde alle Flash vSAN-opslag, lokaal naar het cluster.  Er zijn mini maal drie knoop punten van dezelfde SKU vereist voor het maken van een vSphere-cluster met vSAN-gegevens opslag.  De-duplicatie en compressie zijn standaard ingeschakeld op de vSAN-gegevens opslag.  Op elk knoop punt van het vSphere-cluster worden twee schijf groepen gemaakt. Elke schijf groep bevat één cache schijf en drie capaciteits schijven.
 
-Er wordt een standaard vSAN-opslagbeleid gemaakt op het vSphere-cluster en toegepast op het vSAN-gegevensarchief.  Dit beleid bepaalt hoe de VM-opslagobjecten worden ingericht en toegewezen in het gegevensarchief om het vereiste serviceniveau te garanderen.  In het opslagbeleid wordt de **foutiefouten gedefinieerd (FTT)** en de **tolerantiemethode Fout .**  U nieuwe opslagbeleidsregels maken en deze toepassen op de VM's. Om SLA te behouden, moet 25% reservecapaciteit behouden blijven op het vSAN datastore.  
+Er wordt een standaard vSAN-opslag beleid gemaakt op het vSphere-cluster en toegepast op het vSAN-gegevens archief.  Dit beleid bepaalt hoe de VM-opslag objecten worden ingericht en toegewezen in de gegevens opslag om het vereiste service niveau te garanderen.  Het opslag beleid definieert de **fouten die moeten worden toegestaan (FTT)** en de **fout tolerantie methode**.  U kunt nieuwe opslag beleidsregels maken en deze Toep assen op de Vm's. Als u SLA wilt onderhouden, moet er een capaciteit van 25% worden behouden op de vSAN-gegevens opslag.  
 
-### <a name="default-vsan-storage-policy"></a>Standaard vSAN-opslagbeleid
+### <a name="default-vsan-storage-policy"></a>Standaard vSAN-opslag beleid
 
-Onderstaande tabel toont de standaardparameters voor vSAN-opslagbeleid.
+De volgende tabel bevat de standaard para meters voor vSAN-opslag beleid.
 
-| Aantal knooppunten in vSphere-cluster | FTT (FTT) | Faaltolerantiemethode |
+| Aantal knoop punten in het vSphere-cluster | FTT | Fout tolerantie methode |
 |------------------------------------|-----|--------------------------|
-| 3 en 4 knooppunten | 1 | RAID 1 (spiegelen) - maakt 2 kopieën |
-| 5 tot 16 knooppunten | 2 | RAID 1 (spiegelen) - maakt 3 kopieën |
+| 3 en 4 knoop punten | 1 | RAID 1 (spie gelen): maakt 2 kopieën |
+| 5 tot 16 knoop punten | 2 | RAID 1 (spie gelen): drie kopieën maken |
 
-## <a name="nsx-data-center"></a>NSX-datacenter
+## <a name="nsx-data-center"></a>NSX Data Center
 
-NSX Data Center biedt netwerkvirtualisatie, microsegmentatie en netwerkbeveiligingsmogelijkheden in uw private cloud.  U alle services die worden ondersteund door NSX Data Center configureren op uw private cloud via NSX.  Wanneer u een private cloud maakt, worden de volgende NSX-componenten geïnstalleerd en geconfigureerd.
+NSX Data Center biedt Netwerkvirtualisatie, micro segmentatie en netwerk beveiligings mogelijkheden in uw privécloud.  U kunt alle services die worden ondersteund door NSX Data Center in uw privécloud configureren via NSX.  Wanneer u een privécloud maakt, worden de volgende NSX-onderdelen geïnstalleerd en geconfigureerd.
 
-* NSXT-manager
-* Transportzones
-* Host- en Edge Uplink-profiel
-* Logische switch voor Edge Transport, Ext1 en Ext2
-* IP-pool voor ESXi Transport Node
-* IP-pool voor edge-transportknooppunt
-* Randknooppunten
-* DRS-antiaffiniteitregel voor controller- en Edge VM's
-* Tier 0-router
-* BGP inschakelen op Tier0-router
+* NSXT Manager
+* Transport zones
+* Uplinkpoortprofiel voor host en Edge
+* Logische switch voor Edge Trans Port, Ext1 en ext2
+* IP-adres groep voor ESXi-transport knooppunt
+* IP-adres groep voor het knoop punt Edge-Trans Port
+* Edge-knoop punten
+* DRS-affiniteits regel voor controller-en Edge-Vm's
+* Router op laag 0
+* BGP inschakelen op de Tier0-router
 
 ## <a name="vsphere-cluster"></a>vSphere-cluster
 
-ESXi-hosts zijn geconfigureerd als een cluster om een hoge beschikbaarheid van de private cloud te garanderen.  Wanneer u een private cloud maakt, worden beheercomponenten van vSphere geïmplementeerd op het eerste cluster.  Er wordt een resourcegroep gemaakt voor beheeronderdelen en alle beheer-VM's worden geïmplementeerd in deze resourcegroep. Het eerste cluster kan niet worden verwijderd om de private cloud te verkleinen.  vSphere-cluster biedt een hoge beschikbaarheid voor VM's met **vSphere HA**.  Fouten die worden getolereerd, zijn gebaseerd op het aantal beschikbare knooppunten in het cluster.  U de ```Number of nodes = 2N+1``` ```N``` formule gebruiken waarbij het aantal fouten is dat moet worden getolereerd.
+ESXi-hosts worden geconfigureerd als een cluster om te zorgen voor een hoge Beschik baarheid van de privécloud.  Wanneer u een privécloud maakt, worden de beheer onderdelen van vSphere geïmplementeerd op het eerste cluster.  Er wordt een resource groep gemaakt voor beheer onderdelen en alle management-Vm's worden geïmplementeerd in deze resource groep. Het eerste cluster kan niet worden verwijderd om de privécloud te verkleinen.  vSphere-cluster biedt hoge Beschik baarheid voor Vm's met **VSPHERE ha**.  Te verdragen fouten zijn gebaseerd op het aantal beschik bare knoop punten in het cluster.  U kunt de formule ```Number of nodes = 2N+1``` ```N``` gebruiken om het aantal fouten te verdragen.
 
-### <a name="vsphere-cluster-limits"></a>vSphere-clusterlimieten
+### <a name="vsphere-cluster-limits"></a>limieten voor vSphere-clusters
 
 | Resource | Limiet |
 |----------|-------|
-| Minimumaantal knooppunten om een private cloud te maken (eerste vSphere-cluster) | 3 |
-| Maximaal aantal knooppunten in een vSphere-cluster op een private cloud | 16 |
-| Maximaal aantal knooppunten in een private cloud | 64 |
-| Maximaal aantal vSphere-clusters in een private cloud | 21 |
-| Minimumaantal knooppunten op een nieuw vSphere-cluster | 3 |
+| Minimum aantal knoop punten voor het maken van een privécloud (eerste vSphere-cluster) | 3 |
+| Maximum aantal knoop punten in een vSphere-cluster in een privécloud | 16 |
+| Maximum aantal knoop punten in een privécloud | 64 |
+| Maximum aantal vSphere-clusters in een privécloud | 21 |
+| Minimum aantal knoop punten op een nieuw vSphere-cluster | 3 |
 
-## <a name="vmware-infrastructure-maintenance"></a>Onderhoud van VMware-infrastructuur
+## <a name="vmware-infrastructure-maintenance"></a>VMware-infrastructuur onderhoud
 
-Af en toe is het noodzakelijk om wijzigingen aan te brengen in de configuratie van de VMware-infrastructuur. Momenteel kunnen deze intervallen elke 1-2 maanden optreden, maar de frequentie zal naar verwachting in de loop van de tijd afnemen. Dit type onderhoud kan meestal worden uitgevoerd zonder het normale verbruik van de CloudSimple-services te onderbreken. Tijdens een VMware-onderhoudsinterval blijven de volgende services zonder enige impact functioneren:
+Het is nu af en toe nood zakelijk om wijzigingen aan te brengen in de configuratie van de VMware-infra structuur. Op dit moment kunnen deze intervallen elke 1-2 maanden optreden, maar wordt de frequentie naar verwachting in de loop van de tijd geweigerd. Dit type onderhoud kan meestal worden uitgevoerd zonder het normale gebruik van de CloudSimple-services te onderbreken. Tijdens een VMware-onderhouds interval blijven de volgende services functioneren zonder enige impact:
 
-* VMware management plane en applicaties
-* vCenter-toegang
+* VMware-beheer vlak en-toepassingen
+* toegang tot vCenter
 * Alle netwerken en opslag
 * Al het Azure-verkeer
 
 ## <a name="updates-and-upgrades"></a>Updates en upgrades
 
-CloudSimple is verantwoordelijk voor lifecycle management van VMware software (ESXi, vCenter, PSC en NSX) in de private cloud.
+CloudSimple is verantwoordelijk voor het levenscyclus beheer van VMware-software (ESXi, vCenter, PSC en NSX) in de privécloud.
 
 Software-updates zijn onder andere:
 
-* **Patches**. Beveiligingspatches of bugfixes die door VMware zijn uitgebracht.
-* **Updates**. Kleine versiewijziging van een VMware-stackcomponent.
-* **Upgrades**. Belangrijke versiewijziging van een VMware-stackcomponent.
+* **Patches**. Beveiligings patches of oplossingen voor oplossingen die worden vrijgegeven door VMware.
+* **Updates**. Wijziging van de secundaire versie van een VMware-stack onderdeel.
+* **Upgrades**. Wijziging van de hoofd versie van een VMware-stack onderdeel.
 
-CloudSimple test een kritieke beveiligingspatch zodra deze beschikbaar is bij VMware. Per SLA rolt CloudSimple de beveiligingspatch binnen een week uit naar private cloudomgevingen.
+CloudSimple test een kritieke beveiligings patch zodra deze beschikbaar is in VMware. Per SLA implementeert CloudSimple de beveiligings patch naar privécloud binnen een week.
 
-CloudSimple biedt driemaandelijkse onderhoudsupdates voor VMware-softwarecomponenten. Wanneer er een nieuwe grote versie van VMware-software beschikbaar is, werkt CloudSimple samen met klanten om een geschikt onderhoudsvenster voor een upgrade te coördineren.  
+CloudSimple biedt updates voor het driemaandelijkse onderhoud aan VMware-software onderdelen. Wanneer er een nieuwe belang rijke versie van VMware-software beschikbaar is, werkt CloudSimple samen met klanten om een geschikt onderhouds venster voor de upgrade te coördineren.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [CloudSimple onderhoud en updates](cloudsimple-maintenance-updates.md)
+* [Onderhoud en updates voor CloudSimple](cloudsimple-maintenance-updates.md)

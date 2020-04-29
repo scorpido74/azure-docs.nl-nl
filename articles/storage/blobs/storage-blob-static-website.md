@@ -1,6 +1,6 @@
 ---
 title: Een statische website hosten in Azure Storage
-description: Azure Storage statische websitehosting, die een kosteneffectieve, schaalbare oplossing biedt voor het hosten van moderne webtoepassingen.
+description: Azure Storage statische website-hosting, die een rendabele en schaal bare oplossing biedt voor het hosten van moderne webtoepassingen.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,112 +9,112 @@ ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
 ms.openlocfilehash: 848fd89444281d82d6d0d1bfc4df15d499c09ee0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79370488"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Een statische website hosten in Azure Storage
 
-U statische inhoud (HTML, CSS, JavaScript en afbeeldingsbestanden) rechtstreeks vanuit een opslagcontainer met de naam *$web*. Als u uw inhoud host in Azure Storage, u serverloze architecturen gebruiken die [Azure-functies](/azure/azure-functions/functions-overview) en andere PaaS-services (Platform as a Service) bevatten.
+U kunt statische inhoud (HTML-, CSS-, java script-en afbeeldings bestanden) rechtstreeks vanuit een opslag container met de naam *$Web*verwerken. Door uw inhoud in Azure Storage te hosten, kunt u serverloze architecturen gebruiken die [Azure functions](/azure/azure-functions/functions-overview) en andere PaaS-Services (platform as a Service) bevatten.
 
 [!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE]
-> Als uw site afhankelijk is van servercode, gebruikt u in plaats daarvan [Azure App Service.](/azure/app-service/overview)
+> Als uw site afhankelijk is van code aan de server zijde, gebruikt u [Azure app service](/azure/app-service/overview) in plaats daarvan.
 
-## <a name="setting-up-a-static-website"></a>Een statische website instellen
+## <a name="setting-up-a-static-website"></a>Instellen van een statische website
 
-Statische websitehosting is een functie die u moet inschakelen op het opslagaccount.
+Het hosten van statische websites is een functie die u moet inschakelen op het opslag account.
 
-Als u statische websitehosting wilt inschakelen, selecteert u de naam van uw standaardbestand en geeft u optioneel een pad naar een aangepaste 404-pagina. Als er een blobopslagcontainer met de naam **$web** nog niet bestaat in het account, wordt er een voor u gemaakt. Voeg de bestanden van uw site toe aan deze container.
+Als u statische website-hosting wilt inschakelen, selecteert u de naam van het standaard bestand en geeft u desgewenst een pad op naar een aangepaste 404-pagina. Als er geen blob storage-container met de naam **$Web** al in het account bestaat, wordt er een voor u gemaakt. Voeg de bestanden van uw site toe aan deze container.
 
-Zie [Een statische website hosten in Azure Storage](storage-blob-static-website-how-to.md)voor stapsgewijze richtlijnen.
+Zie [een statische website hosten in azure Storage](storage-blob-static-website-how-to.md)voor stapsgewijze instructies.
 
-![Metrische gegevens metriek voor statische websites azure storage](./media/storage-blob-static-website/storage-blob-static-website-blob-container.png)
+![Metrische gegevens voor metrische gegevens van statische websites Azure Storage](./media/storage-blob-static-website/storage-blob-static-website-blob-container.png)
 
-Bestanden in de **$web** container zijn hoofdlettergevoelig, worden via anonieme toegangsverzoeken bediend en zijn alleen beschikbaar via leesbewerkingen.
+Bestanden in de **$Web** -container zijn hoofdletter gevoelig, worden aangeboden via anonieme toegangs aanvragen en zijn alleen beschikbaar via Lees bewerkingen.
 
 ## <a name="uploading-content"></a>Inhoud uploaden
 
-U een van deze tools gebruiken om inhoud te uploaden naar de **container $web:**
+U kunt elk van deze hulpprogram ma's gebruiken om inhoud te uploaden naar de container **$Web** :
 
 > [!div class="checklist"]
 > * [Azure-CLI](storage-blob-static-website-how-to.md#cli)
 > * [Azure PowerShell-module](storage-blob-static-website-how-to.md#powershell)
-> * [AzCopy (AzCopy)](../common/storage-use-azcopy-v10.md)
-> * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
+> * [AzCopy](../common/storage-use-azcopy-v10.md)
+> * [Azure Opslagverkenner](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure-pijplijnen](https://azure.microsoft.com/services/devops/pipelines/)
 > * [Visual Studio Code-extensie](/azure/javascript/tutorial-vscode-static-website-node-01)
 
-## <a name="viewing-content"></a>Inhoud weergeven
+## <a name="viewing-content"></a>Inhoud weer geven
 
-Gebruikers kunnen site-inhoud vanuit een browser bekijken met behulp van de openbare URL van de website. U de URL vinden met behulp van de Azure-portal, Azure CLI of PowerShell. Gebruik deze tabel als leidraad.
+Gebruikers kunnen site-inhoud vanuit een browser weer geven met behulp van de open bare URL van de website. U kunt de URL vinden met behulp van de Azure Portal, Azure CLI of Power shell. Gebruik deze tabel als richt lijn.
 
 |Hulpprogramma| Richtlijnen |
 |----|----|
-|**Azure-portal** | [De URL van de website zoeken met behulp van de Azure-portal](storage-blob-static-website-how-to.md#portal-find-url) |
-|**Azure-CLI** | [De URL van de website zoeken met de Azure CLI](storage-blob-static-website-how-to.md#cli-find-url) |
-|**Azure PowerShell-module** | [De URL van de website zoeken met PowerShell](storage-blob-static-website-how-to.md#powershell-find-url) |
+|**Azure Portal** | [De URL van de website zoeken met behulp van de Azure Portal](storage-blob-static-website-how-to.md#portal-find-url) |
+|**Azure-CLI** | [De URL van de website zoeken met behulp van de Azure CLI](storage-blob-static-website-how-to.md#cli-find-url) |
+|**Azure PowerShell-module** | [De URL van de website zoeken met behulp van Power shell](storage-blob-static-website-how-to.md#powershell-find-url) |
 
-De URL van uw site bevat een regionale code. De URL `https://contosoblobaccount.z22.web.core.windows.net/` bevat bijvoorbeeld `z22`regionale code .
+De URL van uw site bevat een regionale code. De URL `https://contosoblobaccount.z22.web.core.windows.net/` bevat bijvoorbeeld regionale code `z22`.
 
-Hoewel die code in de URL moet blijven, is deze alleen voor intern gebruik en hoeft u die code niet op een andere manier te gebruiken.
+Hoewel die code in de URL moet blijven, is deze alleen voor intern gebruik en hoeft u deze code niet op een andere manier te gebruiken.
 
-Het indexdocument dat u opgeeft wanneer u statische websitehosting inschakelt, wordt weergegeven wanneer `https://contosoblobaccount.z22.web.core.windows.net`gebruikers de site openen en geen specifiek bestand opgeven (bijvoorbeeld: ).  
+Het index document dat u opgeeft wanneer u de functie voor het hosten van statische websites inschakelt, wordt weer gegeven wanneer gebruikers de site openen `https://contosoblobaccount.z22.web.core.windows.net`en geen specifiek bestand opgeven (bijvoorbeeld:).  
 
-Als de server een fout van 404 retourneert en u geen foutdocument hebt opgegeven toen u de website hebt ingeschakeld, wordt een standaardpagina van 404 naar de gebruiker geretourneerd.
+Als de server een 404-fout retourneert en u geen fout document hebt opgegeven toen u de website inschakelde, wordt een standaard-404-pagina naar de gebruiker geretourneerd.
 
 > [!NOTE]
-> [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) wordt niet ondersteund met statische website.
+> [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) wordt niet ondersteund met een statische website.
 
-## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Impact van de instelling van het openbare toegangsniveau van de webcontainer
+## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Gevolgen van het instellen van het open bare toegangs niveau van de webcontainer
 
-U het openbare toegangsniveau van de **$web** container wijzigen, maar dit heeft geen invloed op het primaire statische websiteeindpunt omdat deze bestanden worden weergegeven via anonieme toegangsverzoeken. Dat betekent openbare (alleen-lezen) toegang tot alle bestanden.
+U kunt het open bare toegangs niveau van de **$Web** -container wijzigen, maar dit heeft geen invloed op het primaire statische website-eind punt omdat deze bestanden via anonieme toegangs aanvragen worden bediend. Dit betekent dat open bare (alleen-lezen) toegang tot alle bestanden.
 
-In de volgende schermafbeelding wordt de instelling voor het openbare toegangsniveau in de Azure-portal weergegeven:
+De volgende scherm afbeelding toont de instelling voor het niveau van open bare toegang in de Azure Portal:
 
-![Schermafbeelding van het instellen van openbaar toegangsniveau in de portal](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
+![Scherm afbeelding die laat zien hoe u het niveau van open bare toegang instelt in de portal](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
 
-Hoewel het primaire statische eindpunt van de website niet wordt beïnvloed, heeft een wijziging in het openbare toegangsniveau gevolgen voor het primaire eindpunt van de blobservice.
+Terwijl het eind punt van de primaire statische website niet wordt beïnvloed, heeft een wijziging van het open bare toegangs niveau invloed op het eind punt van de primaire BLOB-service.
 
-Als u bijvoorbeeld het openbare toegangsniveau van de **$web** container wijzigt van **Privé (geen anonieme toegang)** naar **Blob (alleen anonieme leestoegang voor blobs)**, verandert het niveau van openbare toegang tot het primaire statische websiteeindpunt `https://contosoblobaccount.z22.web.core.windows.net/index.html` niet.
+Als u bijvoorbeeld het open bare toegangs niveau van de container **$Web** van **privé (geen anonieme toegang)** wijzigt in **BLOB (anonieme lees toegang voor blobs)**, wordt het niveau van de open bare toegang tot het eind punt `https://contosoblobaccount.z22.web.core.windows.net/index.html` van de primaire statische website niet gewijzigd.
 
-De openbare toegang tot het primaire `https://contosoblobaccount.blob.core.windows.net/$web/index.html` eindpunt van de blobservice verandert echter van privé naar openbaar. Nu kunnen gebruikers dat bestand openen met behulp van een van deze twee eindpunten.
+De open bare toegang tot het eind punt `https://contosoblobaccount.blob.core.windows.net/$web/index.html` van de primaire BLOB-service wordt echter gewijzigd van persoonlijk in openbaar. Gebruikers kunnen dit bestand nu openen met behulp van een van deze twee eind punten.
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Een aangepast domein toewijzen aan een statische website-URL
 
-U uw statische website beschikbaar stellen via een aangepast domein. 
+U kunt uw statische website beschikbaar maken via een aangepast domein. 
 
-Het is eenvoudiger om HTTP-toegang in te schakelen voor uw aangepaste domein, omdat Azure Storage dit afzonderlijk ondersteunt. Als u HTTPS wilt inschakelen, moet u Azure CDN gebruiken omdat Azure Storage nog geen eigen ondersteuning biedt voor HTTPS met aangepaste domeinen. zie [Een aangepast domein toewijzen aan een Azure Blob Storage-eindpunt](storage-custom-domain-name.md) voor stapsgewijze richtlijnen.
+Het is eenvoudiger om HTTP-toegang in te scha kelen voor uw aangepaste domein, omdat deze door Azure Storage systeem eigen ondersteuning biedt. Als u HTTPS wilt inschakelen, moet u Azure CDN gebruiken, omdat Azure Storage nog geen systeem eigen ondersteuning biedt voor HTTPS met aangepaste domeinen. Zie [een aangepast domein toewijzen aan een Azure Blob Storage-eind punt](storage-custom-domain-name.md) voor stapsgewijze instructies.
 
-Als het opslagaccount is geconfigureerd om een veilige overdracht via HTTPS [te vereisen,](../common/storage-require-secure-transfer.md) moeten gebruikers het HTTPS-eindpunt gebruiken. 
+Als het opslag account is geconfigureerd voor het [vereisen van beveiligde overdracht](../common/storage-require-secure-transfer.md) via https, moeten gebruikers het HTTPS-eind punt gebruiken. 
 
 > [!TIP]
-> Overweeg uw domein te hosten op Azure. Zie [Uw domein hosten in Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)voor meer informatie.
+> U kunt uw domein hosten in Azure. Zie [uw domein hosten in azure DNS](../../dns/dns-delegate-domain-azure-dns.md)voor meer informatie.
 
-## <a name="adding-http-headers"></a>HTTP-koppen toevoegen
+## <a name="adding-http-headers"></a>HTTP-headers toevoegen
 
-Er is geen manier om kopteksten te configureren als onderdeel van de statische websitefunctie. U Azure CDN echter gebruiken om kopteksten toe te voegen en kopwaarden toe te voegen (of te overschrijven). Zie [Standaardregels engine reference voor Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference).
+Het is niet mogelijk om headers als onderdeel van de functie statische website te configureren. U kunt Azure CDN echter gebruiken om koptekst waarden toe te voegen en te toevoegen (of te overschrijven). Zie de [Naslag informatie voor de standaard regels-engine voor Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference).
 
-Zie [Azure CDN-cachinggedrag beheren met cachingregels](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)als u kopteksten wilt gebruiken om caching te beheren.
+Als u headers wilt gebruiken voor het beheren van de cache, raadpleegt u [beheer Azure CDN caching met cache regels](https://docs.microsoft.com/azure/cdn/cdn-caching-rules).
 
 ## <a name="pricing"></a>Prijzen
 
-U statische websitehosting gratis inschakelen. U wordt alleen gefactureerd voor de blob-opslag die uw site gebruikt en bedrijfskosten. Bekijk de [pagina Azure Blob Storage voor](https://azure.microsoft.com/pricing/details/storage/blobs/)meer informatie over de prijzen voor Azure Blob Storage.
+U kunt statische website-hosting gratis inschakelen. U wordt alleen gefactureerd voor de Blob-opslag die uw site gebruikt en de operationele kosten. Bekijk de [pagina met prijzen voor azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/)voor meer informatie over de prijzen voor Azure Blob Storage.
 
 ## <a name="metrics"></a>Metrische gegevens
 
-U statistieken inschakelen op statische websitepagina's. Zodra u statistieken hebt ingeschakeld, worden verkeersstatistieken over bestanden in de **$web** container gerapporteerd in het dashboard met statistieken.
+U kunt metrische gegevens inschakelen op de vaste website pagina's. Wanneer u metrische gegevens hebt ingeschakeld, worden verkeers statistieken voor bestanden in de **$Web** container gerapporteerd in het dash board metrische gegevens.
 
-Zie Statistieken inschakelen op statische [websitepagina's](storage-blob-static-website-how-to.md#metrics)als u statistieken op uw statische websitepagina's wilt inschakelen.
+Zie [metrische gegevens inschakelen op de pagina's van een statische website](storage-blob-static-website-how-to.md#metrics)voor informatie over het inschakelen van metrische gegevens op uw statische website pagina's.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een statische website hosten in Azure Storage](storage-blob-static-website-how-to.md)
-* [Een aangepast domein toewijzen aan een Azure Blob Storage-eindpunt](storage-custom-domain-name.md)
+* [Een aangepast domein toewijzen aan een Azure Blob Storage-eind punt](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
 * [Azure App Service](/azure/app-service/overview)
-* [Bouw je eerste serverloze web-app](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
+* [Uw eerste serverloze web-app bouwen](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
 * [Zelfstudie: uw domein hosten in Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)

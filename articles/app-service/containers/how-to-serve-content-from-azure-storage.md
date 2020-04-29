@@ -1,76 +1,76 @@
 ---
-title: Inhoud van Azure Storage naar Linux-containers weergeven
-description: Meer informatie over het koppelen van aangepaste netwerkdelen aan uw Linux-container in Azure App Service. Deel bestanden tussen apps, beheer statische inhoud op afstand en krijg lokaal toegang, enz.
+title: Inhoud van Azure Storage naar Linux-containers verzenden
+description: Meer informatie over het koppelen van een aangepaste netwerk share aan uw Linux-container in Azure App Service. Bestanden delen tussen apps, statische inhoud extern beheren en lokaal toegang krijgen, enzovoort.
 author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
 ms.openlocfilehash: 79a4e423f7a2b6570234c958ac833cdf5c6a75e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79297914"
 ---
-# <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Inhoud van Azure Storage weergeven in App-service op Linux
+# <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Inhoud van Azure Storage in App Service in Linux verzenden
 
 > [!NOTE]
-> Dit artikel is van toepassing op Linux containers. Zie [Azure-bestanden configureren in een Windows Container on App Service](../configure-connect-to-azure-storage.md)als u wilt implementeren in aangepaste Windows-containers. Azure Storage in App Service op Linux is een **preview-functie.** Deze functie **wordt niet ondersteund voor productiescenario's**.
+> Dit artikel is van toepassing op Linux-containers. Zie [Azure files configureren in een Windows-container op app service](../configure-connect-to-azure-storage.md)voor meer informatie over het implementeren van aangepaste Windows-containers. Azure Storage in App Service op Linux is een **Preview** -functie. Deze functie wordt **niet ondersteund voor productie scenario's**.
 >
 
-In deze handleiding ziet u hoe u Azure Storage koppelt aan App Service op Linux. Voordelen zijn beveiligde inhoud, beheerbaarheid van inhoud, permanente opslag, toegang tot meerdere apps en meerdere overdrachtsmethoden.
+In deze hand leiding wordt uitgelegd hoe u Azure Storage kunt koppelen aan App Service op Linux. Voor delen zijn onder andere beveiligde inhoud, draag baarheid van inhoud, permanente opslag, toegang tot meerdere apps en meerdere overdrachts methoden.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Azure CLI](/cli/azure/install-azure-cli) (2.0.46 of hoger).
-- Een bestaande [App Service op Linux app](https://docs.microsoft.com/azure/app-service/containers/).
+- [Azure cli](/cli/azure/install-azure-cli) (2.0.46 of hoger).
+- Een bestaande [app service in de Linux-app](https://docs.microsoft.com/azure/app-service/containers/).
 - Een [Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-cli)
-- Een [Azure-bestandsshare en -map](../../storage/files/storage-how-to-use-files-cli.md).
+- Een [Azure-bestands share en-map](../../storage/files/storage-how-to-use-files-cli.md).
 
 
-## <a name="limitations-of-azure-storage-with-app-service"></a>Beperkingen van Azure Storage met App-service
+## <a name="limitations-of-azure-storage-with-app-service"></a>Beperkingen van Azure Storage met App Service
 
-- Azure Storage with App Service is **in preview** voor App Service op Linux en Web App for Containers. Het wordt **niet ondersteund** voor **productiescenario's.**
-- Azure Storage with App Service ondersteunt het monteren van **Azure Files-containers** (Lezen / Schrijven) en **Azure Blob-containers** (Alleen lezen)
-- Azure Storage with App Service **biedt geen ondersteuning voor** het gebruik van de configuratie Van de Storage **Firewall** vanwege infrastructuurbeperkingen.
-- Met Azure Storage with App Service u **maximaal vijf** bevestigingspunten per app opgeven.
-- Azure Storage die is gemonteerd op een app, is niet toegankelijk via FTP/FtPs-eindpunten van App Service. Azure [Storage Explorer gebruiken](https://azure.microsoft.com/features/storage-explorer/).
-- Azure Storage is **niet inbegrepen** bij uw web-app en wordt afzonderlijk gefactureerd. Meer informatie over [azure storage-prijzen](https://azure.microsoft.com/pricing/details/storage).
+- Azure Storage met App Service is **in Preview** voor app service in Linux en Web App for containers. Het wordt **niet ondersteund** voor **productie scenario's**.
+- Azure Storage met App Service ondersteunt koppelen **Azure files containers** (lezen/schrijven) en **Azure Blob-containers** (alleen-lezen)
+- Azure Storage met App Service biedt **geen ondersteuning** voor het gebruik van de **opslag firewall** -configuratie vanwege beperkingen van de infra structuur.
+- Met Azure Storage met App Service kunt u **Maxi maal vijf** koppel punten per app opgeven.
+- Azure Storage die aan een app zijn gekoppeld, is niet toegankelijk via App Service FTP-en FTPs-eind punten. Gebruik [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
+- Azure Storage maakt **geen deel uit** van uw web-app en wordt afzonderlijk gefactureerd. Meer informatie over [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage).
 
 > [!WARNING]
-> App Service-configuraties met Azure Blob Storage worden pas in februari 2020 gelezen. [Meer informatie](https://github.com/Azure/app-service-linux-docs/blob/master/BringYourOwnStorage/mounting_azure_blob.md)
+> App Service configuraties met Azure Blob Storage worden alleen in februari 2020 gelezen. [Meer informatie](https://github.com/Azure/app-service-linux-docs/blob/master/BringYourOwnStorage/mounting_azure_blob.md)
 >
 
 ## <a name="configure-your-app-with-azure-storage"></a>Uw app configureren met Azure Storage
 
-Zodra u uw [Azure Storage-account, bestandsshare en map](#prerequisites)hebt gemaakt, u uw app nu configureren met Azure Storage.
+Nadat u uw [Azure Storage-account, de bestands share en de map](#prerequisites)hebt gemaakt, kunt u uw app nu configureren met Azure Storage.
 
-Als u een opslagaccount wilt monteren op een [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) map in uw App Service-app, gebruikt u de opdracht. Opslagtype kan AzureBlob of AzureFiles zijn. AzureFiles wordt in dit voorbeeld gebruikt.
+Als u een opslag account wilt koppelen aan een map in uw App Service-app, [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) gebruikt u de opdracht. Het opslag type kan AzureBlob of Azure files zijn. Azure files wordt in dit voor beeld gebruikt.
 
 
 > [!CAUTION]
-> De map die is opgegeven als het bevestigingspad in uw web-app moet leeg zijn. Alle inhoud die in deze map is opgeslagen, wordt verwijderd wanneer een externe houder wordt toegevoegd. Als u bestanden migreert voor een bestaande app, maakt u een back-up van uw app en de inhoud ervan voordat u begint.
+> De map die is opgegeven als koppel pad in uw web-app moet leeg zijn. Alle inhoud die in deze map is opgeslagen, wordt verwijderd wanneer een externe koppeling wordt toegevoegd. Als u bestanden migreert voor een bestaande app, maakt u een back-up van uw app en de bijbehorende inhoud voordat u begint.
 >
 
 ```azurecli
 az webapp config storage-account add --resource-group <group_name> --name <app_name> --custom-id <custom_id> --storage-type AzureFiles --share-name <share_name> --account-name <storage_account_name> --access-key "<access_key>" --mount-path <mount_path_directory>
 ```
 
-U moet dit doen voor alle andere mappen die u wilt worden gekoppeld aan een opslagaccount.
+U moet dit doen voor alle andere directory's die u aan een opslag account wilt koppelen.
 
-## <a name="verify-azure-storage-link-to-the-web-app"></a>Koppeling naar Azure Storage naar de web-app verifiëren
+## <a name="verify-azure-storage-link-to-the-web-app"></a>Azure Storage koppeling naar de web-app controleren
 
-Zodra een opslagcontainer is gekoppeld aan een web-app, u dit verifiëren door de volgende opdracht uit te voeren:
+Zodra een opslag container is gekoppeld aan een web-app, kunt u dit controleren door de volgende opdracht uit te voeren:
 
 ```azurecli
 az webapp config storage-account list --resource-group <resource_group> --name <app_name>
 ```
 
-## <a name="use-azure-storage-in-docker-compose"></a>Azure Storage gebruiken in Docker Compose
+## <a name="use-azure-storage-in-docker-compose"></a>Azure Storage gebruiken in docker-samen stellen
 
-Azure Storage kan worden gemonteerd met apps met meerdere containers met behulp van de aangepaste id. Voer de naam van de [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)aangepaste id uit om de aangepaste naam weer te geven.
+Azure Storage kunnen worden gekoppeld met apps met meerdere containers met behulp van de aangepaste ID. Voer uit [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)om de naam van de aangepaste ID weer te geven.
 
-Breng in uw *docker-compose.yml-bestand* de `volumes` optie in kaart aan `custom-id`. Bijvoorbeeld:
+Wijs in uw *docker-Compose. yml* -bestand de `volumes` optie toe `custom-id`aan. Bijvoorbeeld:
 
 ```yaml
 wordpress:
@@ -81,5 +81,5 @@ wordpress:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Web-apps configureren in Azure App Service](../configure-common.md).
+- [Web-apps configureren in azure app service](../configure-common.md).
 

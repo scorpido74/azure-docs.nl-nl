@@ -1,6 +1,6 @@
 ---
-title: Niet-interactieve verificatie .NET-toepassing - Azure HDInsight
-description: Meer informatie over het maken van niet-interactieve verificatie Microsoft .NET-toepassingen in Azure HDInsight.
+title: .NET-toepassing voor niet-interactieve verificatie-Azure HDInsight
+description: Meer informatie over het maken van niet-interactieve verificatie Microsoft .NET toepassingen in azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,43 +9,43 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
 ms.openlocfilehash: 5e6a0586bc750f8972586920c15dbb297295aa20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79371270"
 ---
-# <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Een niet-interactieve verificatie .NET HDInsight-toepassing maken
+# <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Een niet-interactieve verificatie-app voor .NET HDInsight maken
 
-Voer uw Microsoft .NET Azure HDInsight-toepassing uit onder de eigen identiteit van de toepassing (niet-interactief) of onder de identiteit van de aangemelde gebruiker van de toepassing (interactief). In dit artikel ziet u hoe u een niet-interactieve verificatie .NET-toepassing maakt om verbinding te maken met Azure en HDInsight te beheren. Zie [Verbinding maken met Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)voor een voorbeeld van een interactieve toepassing.
+Voer uw Microsoft .NET Azure HDInsight-toepassing uit op basis van de eigen identiteit van de toepassing (niet-interactief) of onder de identiteit van de aangemelde gebruiker van de toepassing (interactief). In dit artikel wordt beschreven hoe u een niet-interactieve verificatie-.NET-toepassing maakt om verbinding te maken met Azure en HDInsight te beheren. Zie [verbinding maken met Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)voor een voor beeld van een interactieve toepassing.
 
-Vanuit uw niet-interactieve .NET-toepassing hebt u het:
+Vanuit uw niet-interactieve .NET-toepassing hebt u het volgende nodig:
 
-* Uw Azure-abonnementstenant-id (ook wel *directory-id*genoemd). Zie [Tenant-id opvragen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
-* De Azure AD-toepassingsclient-id (Azure Active Directory). Zie [Een Azure Active Directory-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) en een [toepassings-id opdoen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
-* De geheime sleutel voor azure AD-toepassingen. Zie [Verificatiesleutel voor toepassingen ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+* De Tenant-ID van uw Azure-abonnement (ook wel een *Directory-id*genoemd). Zie [Tenant-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+* De client-ID van de Azure Active Directory-toepassing (Azure AD). Zie [een Azure Active Directory-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) en [een toepassings-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+* De geheime sleutel van de Azure AD-toepassing. Zie [toepassings verificatie sleutel ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Een HDInsight-cluster. Zie de [aan de slag tutorial](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+An HDInsight cluster. Zie de [zelf studie aan de slag](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Een rol toewijzen aan de Azure AD-toepassing
 
-Wijs uw Azure AD-toepassing een [rol](../role-based-access-control/built-in-roles.md)toe om deze machtigingen toe te kennen om acties uit te voeren. U het bereik instellen op het niveau van het abonnement, de resourcegroep of de resource. De machtigingen worden overgenomen naar lagere niveaus van bereik. Als u bijvoorbeeld een toepassing toevoegt aan de leesrol voor een resourcegroep, betekent dit dat de toepassing de brongroep en alle bronnen in de groep kan lezen. In dit artikel stelt u het bereik in op het niveau van de resourcegroep. Zie [Roltoewijzingen gebruiken om toegang tot uw Azure-abonnementsbronnen te beheren](../role-based-access-control/role-assignments-portal.md)voor meer informatie.
+Wijs uw Azure AD-toepassing een [rol](../role-based-access-control/built-in-roles.md)toe om deze machtigingen te verlenen voor het uitvoeren van acties. U kunt het bereik instellen op het niveau van het abonnement, de resource groep of de resource. De machtigingen worden overgenomen door lagere bereik niveaus. Als u bijvoorbeeld een toepassing toevoegt aan de rol van lezer voor een resource groep, betekent dit dat de toepassing de resource groep en alle resources erin kan lezen. In dit artikel stelt u het bereik in op het niveau van de resource groep. Zie [roltoewijzingen gebruiken voor het beheren van toegang tot uw Azure-abonnements resources](../role-based-access-control/role-assignments-portal.md)voor meer informatie.
 
-**De rol Eigenaar toevoegen aan de Azure AD-toepassing**
+**De rol van eigenaar toevoegen aan de Azure AD-toepassing**
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Navigeer naar de brongroep met het HDInsight-cluster waarop u uw Hive-query later in dit artikel uitvoert. Als u een groot aantal resourcegroepen hebt, u het filter gebruiken om de gewenste groep te vinden.
-1. Selecteer **Access control (IAM) in**het menu Resourcegroep .
-1. Selecteer het tabblad **Roltoewijzingen** om de huidige roltoewijzingen te bekijken.
-1. Selecteer boven aan de pagina **+ Toevoegen**.
-1. Volg de instructies om de rol Eigenaar toe te voegen aan uw Azure AD-toepassing. Nadat u de rol hebt toegevoegd, wordt de toepassing weergegeven onder de rol Eigenaar.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Ga naar de resource groep met het HDInsight-cluster waarop u de Hive-query wilt uitvoeren, verderop in dit artikel. Als u een groot aantal resource groepen hebt, kunt u het filter gebruiken om het gewenste item te vinden.
+1. Selecteer **toegangs beheer (IAM)** in het menu resource groep.
+1. Selecteer het **tabblad roltoewijzingen om de huidige** roltoewijzingen weer te geven.
+1. Selecteer boven aan de pagina **+ toevoegen**.
+1. Volg de instructies om de rol van eigenaar toe te voegen aan uw Azure AD-toepassing. Nadat u de rol hebt toegevoegd, wordt de toepassing vermeld onder de rol eigenaar.
 
-## <a name="develop-an-hdinsight-client-application"></a>Een HDInsight-clienttoepassing ontwikkelen
+## <a name="develop-an-hdinsight-client-application"></a>Een HDInsight-client toepassing ontwikkelen
 
 1. Maak een C#-consoletoepassing.
-2. Voeg de volgende [NuGet-pakketten toe:](https://www.nuget.org/)
+2. Voeg de volgende [NuGet](https://www.nuget.org/) -pakketten toe:
 
         Install-Package Microsoft.Azure.Common.Authentication -Pre
         Install-Package Microsoft.Azure.Management.HDInsight -Pre
@@ -121,6 +121,6 @@ Wijs uw Azure AD-toepassing een [rol](../role-based-access-control/built-in-role
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Maak een Azure Active Directory-toepassing en serviceprincipal in de Azure-portal.](../active-directory/develop/howto-create-service-principal-portal.md)
-* Meer informatie over het [verifiëren van een serviceprincipal met Azure Resource Manager](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
-* Meer informatie over [Azure Role-Based Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md).
+* [Maak een Azure Active Directory toepassing en Service-Principal in de Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
+* Meer informatie over het [verifiëren van een service-principal met Azure Resource Manager](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
+* Meer informatie over [op Azure Role gebaseerde Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md).

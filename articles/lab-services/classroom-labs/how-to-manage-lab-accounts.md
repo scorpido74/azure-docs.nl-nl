@@ -1,6 +1,6 @@
 ---
-title: Labaccounts beheren in Azure Lab Services | Microsoft Documenten
-description: Meer informatie over het maken van een labaccount, het weergeven van alle labaccounts of het verwijderen van een labaccount in een Azure-abonnement.
+title: Lab-accounts beheren in Azure Lab Services | Microsoft Docs
+description: Meer informatie over het maken van een Lab-account, het weer geven van alle Lab-accounts of het verwijderen van een Lab-account in een Azure-abonnement.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,50 +14,50 @@ ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
 ms.openlocfilehash: c82b5d02ab3928eb0472f2a047cdca2238bf0b63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79284289"
 ---
-# <a name="manage-lab-accounts-in-azure-lab-services"></a>Labaccounts beheren in Azure Lab Services 
-In Azure Lab Services is een labaccount een container voor beheerde labtypen, zoals klaslabs. Een beheerder stelt een labaccount in met Azure Lab Services en biedt toegang tot labeigenaren die labs in het account kunnen maken. In dit artikel wordt beschreven hoe u een labaccount maakt, alle labaccounts bekijkt of een labaccount verwijdert.
+# <a name="manage-lab-accounts-in-azure-lab-services"></a>Lab-accounts beheren in Azure Lab Services 
+In Azure Lab Services is een Lab-account een container voor beheerde Lab-typen zoals klassikale Labs. Een beheerder stelt een Lab-account in met Azure Lab Services en biedt toegang tot Lab-eigen aars die in het account Labs kunnen maken. In dit artikel wordt beschreven hoe u een Lab-account maakt, alle Lab-accounts weergeeft of een Lab-account verwijdert.
 
 ## <a name="create-a-lab-account"></a>Een lab-account maken
 In de volgende stappen ziet u hoe u Azure Portal kunt gebruiken om een lab te maken met Azure Lab Services. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer in het menu links **Alle services**. Selecteer **Lab-accounts** in de sectie **DevOps.** Selecteer de ster (`*`) naast de **Lab-accounts** om er een toe te voegen aan de sectie **FAVORIETEN** in het menu links. Vanaf de volgende keer selecteert u **Lab-accounts** onder **Favorieten**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+2. Selecteer in het menu links **Alle services**. Selecteer **Lab-accounts** in de sectie **DevOps** . Selecteer de ster (`*`) naast de **Lab-accounts** om er een toe te voegen aan de sectie **FAVORIETEN** in het menu links. Vanaf de volgende keer selecteert u **Lab-accounts** onder **Favorieten**.
 
     ![Alle Services -> Lab-accounts](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
-3. Selecteer op de pagina **Lab-accounts** de optie **Toevoegen** op de werkbalk of **Lab-account maken** op de pagina. 
+3. Selecteer op de pagina **Lab-accounts** de optie **toevoegen** op de werk balk of maak een **Lab-account** op de pagina. 
 
     ![Selecteer de Toevoegen op de pagina Lab-accounts](../media/tutorial-setup-lab-account/add-lab-account-button.png)
-4. Ga op het tabblad **Basisbeginselen** van de pagina **Een labaccount maken** de volgende acties uit: 
+4. Voer op het tabblad **basis** van de pagina **een Lab-account maken** de volgende acties uit: 
     1. Voer een naam in bij **lab-accountnaam**. 
     2. Selecteer het **Azure-abonnement** waarin u het lab-account wilt maken.
     3. Selecteer voor **Resourcegroep** de optie **Nieuwe maken** en voer een naam in voor de resourcegroep.
     4. Selecteer voor **Locatie** een locatie/regio waarin het lab-account moet worden gemaakt.
-    5. Voor het veld **Labmaker toestaan om lablocatie te kiezen** geeft u op of u wilt dat labmakers een locatie voor het lab kunnen selecteren. De optie is standaard uitgeschakeld. Wanneer deze is uitgeschakeld, kunnen labmakers geen locatie opgeven voor het lab dat ze maken. De labs worden gemaakt in de dichtstbijzijnde geografische locatie in het labaccount. Wanneer deze is ingeschakeld, kan de labmaker een locatie selecteren wanneer hij een lab maakt. Zie [De maker van het lab toestaan om locatie voor het lab te kiezen voor](allow-lab-creator-pick-lab-location.md)meer informatie. 
+    5. Voor het veld **Labmaker toestaan om lablocatie te kiezen** geeft u op of u wilt dat labmakers een locatie voor het lab kunnen selecteren. De optie is standaard uitgeschakeld. Wanneer deze is uitgeschakeld, kunnen labmakers geen locatie opgeven voor het lab dat ze maken. De labs worden gemaakt in de dichtstbijzijnde geografische locatie in het labaccount. Wanneer deze is ingeschakeld, kan de labmaker een locatie selecteren wanneer hij een lab maakt. Zie voor meer informatie [toestaan dat Lab Creator de locatie voor het lab selecteert](allow-lab-creator-pick-lab-location.md). 
 
-        ![Lab-account maken -> Basics](../media/how-to-manage-lab-accounts/create-lab-account-basics.png)
-5. Selecteer **Volgende: Geavanceerd** onder aan de pagina om naar het tabblad **Geavanceerd** te navigeren en voer de volgende stappen uit: 
-    1. Selecteer een bestaande **gedeelde afbeeldingsgalerie** of maak er een. U de sjabloon-vm opslaan in de gedeelde afbeeldingsgalerie om deze door anderen opnieuw te kunnen gebruiken. Zie [Een gedeelde afbeeldingsgalerie gebruiken in Azure Lab Services](how-to-use-shared-image-gallery.md)voor gedetailleerde informatie over gedeelde afbeeldingsgalerieën.
-    2. Geef op of u **virtuele Windows-machines automatisch** wilt afsluiten wanneer gebruikers de verbinding met deze apparaten verbreken. Geef op hoe lang de virtuele machines moeten wachten tot de gebruiker opnieuw verbinding maakt voordat deze automatisch wordt afgesloten. 
-    3. Selecteer voor **virtuele peer-netwerk**een virtueel peer-netwerk (VNet) voor het labnetwerk. Labs die in dit account zijn gemaakt, zijn verbonden met het geselecteerde VNet en hebben toegang tot de bronnen in het geselecteerde VNet. Zie Het [virtuele netwerk van uw lab verbinden met een virtueel netwerk van een peer](how-to-connect-peer-virtual-network.md)voor meer informatie.    
-    8. Geef een **adresbereik** op voor VM's in het lab. Het adresbereik moet zich bevinden in de cidr-notatie (classless inter-domain routing) (voorbeeld: 10.20.0.0/23). Virtuele machines in het lab worden gemaakt in dit adresbereik. Zie [Een adresbereik voor VM's in het lab opgeven voor](how-to-configure-lab-accounts.md#specify-an-address-range-for-vms-in-the-lab) meer informatie  
+        ![Een Lab-account maken-basis beginselen >](../media/how-to-manage-lab-accounts/create-lab-account-basics.png)
+5. Selecteer **volgende: Geavanceerd** onder aan de pagina om naar het tabblad **Geavanceerd** te gaan en voer de volgende stappen uit: 
+    1. Selecteer een bestaande **Galerie met gedeelde afbeeldingen** of maak er een. U kunt de sjabloon-VM in de galerie met gedeelde afbeeldingen opslaan, zodat deze door anderen opnieuw kan worden gebruikt. Zie [een galerie met gedeelde afbeeldingen gebruiken in Azure Lab Services](how-to-use-shared-image-gallery.md)voor meer informatie over de galerieën met gedeelde afbeeldingen.
+    2. Opgeven of **virtuele Windows-machines automatisch** moeten worden afgesloten wanneer gebruikers de verbinding Hiermee verbreken. Geef op hoe lang de virtuele machines moeten wachten totdat de gebruiker opnieuw verbinding maakt voordat deze automatisch wordt afgesloten. 
+    3. Selecteer voor het **virtuele netwerk**van de peer een virtueel netwerk (VNet) voor het lab-netwerk. Labs die in dit account is gemaakt, zijn verbonden met het geselecteerde VNet en hebben toegang tot de resources in het geselecteerde VNet. Zie [verbinding maken met het virtuele netwerk van uw Lab met een virtueel netwerk op hetzelfde niveau](how-to-connect-peer-virtual-network.md)voor meer informatie.    
+    8. Geef een **adres bereik** voor vm's op in het lab. Het adres bereik moet in de CIDR-notatie (Classless Inter-Domain Routing) staan (voor beeld: 10.20.0.0/23). Virtuele machines in het lab worden gemaakt in dit adres bereik. Zie [een adres bereik voor vm's in het lab opgeven](how-to-configure-lab-accounts.md#specify-an-address-range-for-vms-in-the-lab) voor meer informatie.  
 
-        ![Lab-account maken -> Geavanceerd](../media/how-to-manage-lab-accounts/create-lab-account-advanced.png)  
-6. Selecteer **Volgende: tags** onder aan de pagina om over te schakelen naar het tabblad **Labels.** Voeg tags toe die u aan het labaccount wilt koppelen. Tags zijn naam-/waardeparen waarmee u resources categoriseren en geconsolideerde facturering weergeven door dezelfde tag toe te passen op meerdere bronnen en resourcegroepen. Zie [Tags gebruiken om uw Azure-bronnen te ordenen](../../azure-resource-manager/management/tag-resources.md)voor meer informatie.
+        ![Een Lab-account maken-> Geavanceerd](../media/how-to-manage-lab-accounts/create-lab-account-advanced.png)  
+6. Selecteer **volgende: Labels** onder aan de pagina om over te scha kelen naar het tabblad **labels** . Voeg labels toe die u wilt koppelen aan het lab-account. Tags zijn naam/waarde-paren waarmee u resources kunt categoriseren en een geconsolideerde factuur kunt weer geven door hetzelfde label op meerdere resources en resource groepen toe te passen. Zie [Tags gebruiken om uw Azure-resources te organiseren](../../azure-resource-manager/management/tag-resources.md)voor meer informatie.
 
-    ![Lab-account maken -> Tags](../media/how-to-manage-lab-accounts/create-lab-account-tags.png)
-7. Selecteer **Controleren + maken** onder aan deze pagina om over te schakelen naar het tabblad Controleren + **maken.** 
-4. Bekijk de overzichtsinformatie op deze pagina en selecteer **Maken**. 
+    ![Een Lab-account maken-> Tags](../media/how-to-manage-lab-accounts/create-lab-account-tags.png)
+7. Selecteer onder aan deze pagina de optie **controleren + maken** om over te scha kelen naar het tabblad **controleren + maken** . 
+4. Bekijk de samenvattings informatie op deze pagina en selecteer **maken**. 
 
-    ![Lab-account maken -> Tags](../media/how-to-manage-lab-accounts/create-lab-account-review-create.png)
-5. Wacht tot de implementatie is voltooid, vouw **Volgende stappen**uit en selecteer Ga **naar resource** zoals weergegeven in de volgende afbeelding: 
+    ![Een Lab-account maken-> Tags](../media/how-to-manage-lab-accounts/create-lab-account-review-create.png)
+5. Wacht tot de implementatie is voltooid, vouw **volgende stappen**uit en selecteer **Ga naar resource** zoals wordt weer gegeven in de volgende afbeelding: 
 
-    U ook het **belpictogram** op de werkbalk **(Meldingen)** selecteren, bevestigen dat de implementatie is geslaagd en vervolgens **Ga naar resource selecteren.** 
+    U kunt ook het **klok pictogram** op de werk balk (**meldingen**) selecteren, controleren of de implementatie is gelukt en vervolgens **Ga naar resource**selecteren. 
 
     U kunt ook **Vernieuwen** selecteren op de **Lab-accounts**-pagina en het lab-account selecteren dat u hebt gemaakt. 
 
@@ -66,58 +66,58 @@ In de volgende stappen ziet u hoe u Azure Portal kunt gebruiken om een lab te ma
 
     ![Pagina lab-account](../media/tutorial-setup-lab-account/lab-account-page.png)
 
-## <a name="view-lab-accounts"></a>Lab-accounts bekijken
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer **Alle bronnen** in het menu. 
-3. Selecteer **Lab-accounts** voor het **type**. 
-    U ook filteren op abonnement, resourcegroep, locaties en tags. 
+## <a name="view-lab-accounts"></a>Lab-accounts weer geven
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+2. Selecteer **alle resources** in het menu. 
+3. Selecteer een **Lab-account** voor het **type**. 
+    U kunt ook filteren op abonnement, resource groep, locaties en tags. 
 
-    ![Alle bronnen > Lab-accounts](../media/how-to-manage-lab-accounts/all-resources-lab-accounts.png)
+    ![Alle resources-> Lab-accounts](../media/how-to-manage-lab-accounts/all-resources-lab-accounts.png)
 
-## <a name="view-and-manage-labs-in-the-lab-account"></a>Labs in het labaccount weergeven en beheren
+## <a name="view-and-manage-labs-in-the-lab-account"></a>Labs in het lab-account weer geven en beheren
 
-1. Selecteer op de pagina **Lab-account** **alle labs** in het linkermenu.
+1. Selecteer op de pagina **Lab** -account **alle Labs** in het menu links.
 
-    ![Labs in de account](../media/how-to-manage-lab-accounts/labs-in-account.png)
-1. U ziet een **lijst met labs** in het account met de volgende informatie: 
-    1. Naam van het lab.
+    ![Labs in het account](../media/how-to-manage-lab-accounts/labs-in-account.png)
+1. U ziet een **lijst met Labs** in het account met de volgende informatie: 
+    1. De naam van het lab.
     2. De datum waarop het lab is gemaakt. 
-    3. E-mailadres van de gebruiker die het lab heeft gemaakt. 
-    4. Maximaal aantal gebruikers toegestaan in het lab. 
-    5. Status van het lab. 
+    3. Het e-mail adres van de gebruiker die het lab heeft gemaakt. 
+    4. Maxi maal aantal gebruikers dat is toegestaan voor het lab. 
+    5. De status van het lab. 
     6. Roltoewijzingen. 
 
-## <a name="delete-a-lab-in-the-lab-account"></a>Een lab in het labaccount verwijderen
-Volg instructies in de vorige sectie om een lijst van de labs in het lab account te zien.
+## <a name="delete-a-lab-in-the-lab-account"></a>Een Lab verwijderen in het lab-account
+Volg de instructies in de vorige sectie om een lijst met de Labs in het lab-account weer te geven.
 
-1. Selecteer **... (ellips)** en selecteer **Verwijderen**. 
+1. Selecteren **... (weglatings tekens)** en selecteer **verwijderen**. 
 
-    ![Een lab verwijderen - knop](../media/how-to-manage-lab-accounts/delete-lab-button.png)
-2. Selecteer **Ja** in het waarschuwingsbericht. 
+    ![Een Lab-knop verwijderen](../media/how-to-manage-lab-accounts/delete-lab-button.png)
+2. Selecteer **Ja** in het waarschuwings bericht. 
 
-    ![Verwijdering van het lab bevestigen](../media/how-to-manage-lab-accounts/confirm-lab-delete.png)
+    ![Verwijderen van Lab bevestigen](../media/how-to-manage-lab-accounts/confirm-lab-delete.png)
 
-## <a name="delete-a-lab-account"></a>Een labaccount verwijderen
-Volg instructies uit de vorige sectie waarin labaccounts in een lijst worden weergegeven. Gebruik de volgende instructies om een labaccount te verwijderen: 
+## <a name="delete-a-lab-account"></a>Een Lab-account verwijderen
+Volg de instructies in de vorige sectie waarin Lab-accounts in een lijst worden weer gegeven. Gebruik de volgende instructies om een Lab-account te verwijderen: 
 
-1. Selecteer het **labaccount** dat u wilt verwijderen. 
-2. Selecteer **Verwijderen op** de werkbalk. 
+1. Selecteer het **Lab-account** dat u wilt verwijderen. 
+2. Selecteer **verwijderen** in de werk balk. 
 
-    ![Knop Lab-accounts -> verwijderen](../media/how-to-manage-lab-accounts/delete-button.png)
-1. Typ **Ja** voor bevestiging.
-1. Selecteer **Verwijderen**. 
+    ![Lab-accounts-> knop verwijderen](../media/how-to-manage-lab-accounts/delete-button.png)
+1. Typ **Ja** ter bevestiging.
+1. Selecteer **verwijderen**. 
 
-    ![Lab-account verwijderen - bevestiging](../media/how-to-manage-lab-accounts/delete-lab-account-confirmation.png)
+    ![Lab-account verwijderen-bevestiging](../media/how-to-manage-lab-accounts/delete-lab-account-confirmation.png)
 
 > [!NOTE]
-> U ook de Az.LabServices PowerShell-module (preview) gebruiken om labaccounts te beheren. Zie voor meer informatie de [startpagina van Az.LabServices op GitHub.](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library)
+> U kunt ook de Power shell-module AZ. LabServices (preview) gebruiken voor het beheren van Lab-accounts. Zie de [Introductie pagina AZ. LabServices op github](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:
 
 - [Toestaan dat de labmaker de lablocatie kiest](allow-lab-creator-pick-lab-location.md)
-- [Verbind het netwerk van uw lab met een virtueel netwerk van collega's](how-to-connect-peer-virtual-network.md)
-- [Een gedeelde afbeeldingsgalerie aan een lab koppelen](how-to-attach-detach-shared-image-gallery.md)
-- [Een gebruiker toevoegen als eigenaar van een lab](how-to-add-user-lab-owner.md)
-- [Firewall-instellingen voor een lab weergeven](how-to-configure-firewall-settings.md)
+- [Uw Lab-netwerk verbinden met een virtueel peer netwerk](how-to-connect-peer-virtual-network.md)
+- [Een galerie met gedeelde afbeeldingen koppelen aan een Lab](how-to-attach-detach-shared-image-gallery.md)
+- [Een gebruiker toevoegen als een Lab-eigenaar](how-to-add-user-lab-owner.md)
+- [Firewall instellingen voor een Lab weer geven](how-to-configure-firewall-settings.md)
 - [Andere instellingen voor een lab configureren](how-to-configure-lab-accounts.md)

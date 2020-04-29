@@ -1,6 +1,6 @@
 ---
-title: Een WebSocket-server blootstellen aan application gateway
-description: In dit artikel vindt u informatie over het blootstellen van een WebSocket-server aan Application Gateway met een ingress-controller voor AKS-clusters.
+title: Een WebSocket-server beschikbaar maken voor Application Gateway
+description: Dit artikel bevat informatie over het beschikbaar maken van een WebSocket-server voor het Application Gateway van de ingangs controller voor AKS-clusters.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 1f068c9d98a827afd16da01bdc40cbb6ca5dc465
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79297829"
 ---
-# <a name="expose-a-websocket-server-to-application-gateway"></a>Een WebSocket-server blootstellen aan application gateway
+# <a name="expose-a-websocket-server-to-application-gateway"></a>Een WebSocket-server beschikbaar maken voor Application Gateway
 
-Zoals beschreven in de Application Gateway v2-documentatie - biedt het [native ondersteuning voor de WebSocket- en HTTP/2-protocollen.](features.md#websocket-and-http2-traffic) Houd er rekening mee dat er voor zowel Application Gateway als de Kubernetes Ingress geen door de gebruiker configureerbare instelling is om websocket-ondersteuning selectief in te schakelen of uit te schakelen.
+Zoals beschreven in de documentatie over Application Gateway v2, biedt het [systeem eigen ondersteuning voor de WebSocket-en http/2-protocollen](features.md#websocket-and-http2-traffic). Houd er rekening mee dat voor zowel Application Gateway als de Kubernetes-inkomend is, er geen door de gebruiker geconfigureerde instelling is om WebSocket-ondersteuning selectief in of uit te scha kelen.
 
-De Kubernetes-implementatie YAML hieronder toont de minimale configuratie die wordt gebruikt om een WebSocket-server te implementeren, wat hetzelfde is als het implementeren van een gewone webserver:
+De Kubernetes-implementatie YAML hieronder toont de minimale configuratie die wordt gebruikt voor het implementeren van een WebSocket-server. Dit is hetzelfde als het implementeren van een reguliere webserver:
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -75,9 +75,9 @@ spec:
               servicePort: 80
 ```
 
-Aangezien aan alle vereisten is voldaan en u een Application Gateway hebt die wordt beheerd door een Kubernetes-ingress in uw AKS, zou de bovenstaande `ws.contoso.com` implementatie resulteren in een WebSockets-server die wordt blootgesteld op poort 80 van het openbare IP-adres van uw Toepassingsgateway en het domein.
+Als aan alle vereisten wordt voldaan en u een Application Gateway hebt beheerd door een inkomend Kubernetes in uw AKS, resulteert de bovenstaande implementatie in een websockets-server op poort 80 van het open bare IP-adres van uw Application Gateway en het `ws.contoso.com` domein.
 
-Met de volgende cURL-opdracht wordt de implementatie van de WebSocket-server getest:
+Met de volgende krul opdracht wordt de WebSocket-Server implementatie getest:
 ```sh
 curl -i -N -H "Connection: Upgrade" \
         -H "Upgrade: websocket" \
@@ -88,10 +88,10 @@ curl -i -N -H "Connection: Upgrade" \
         http://1.2.3.4:80/ws
 ```
 
-## <a name="websocket-health-probes"></a>WebSocket-statussondes
+## <a name="websocket-health-probes"></a>WebSocket-status tests
 
-Als uw implementatie niet expliciet statussondes definieert, probeert Application Gateway een HTTP GET op het eindpunt van uw WebSocket-server.
-Afhankelijk van de server implementatie[(hier is er een waar we van houden)](https://github.com/gorilla/websocket/blob/master/examples/chat/main.go)WebSocket specifieke headers kunnen nodig zijn (bijvoorbeeld).`Sec-Websocket-Version`
-Aangezien Application Gateway geen WebSocket-headers toevoegt, is de statussonderespons van `400 Bad Request`de Statussonde van de Application Gateway van uw WebSocket-server waarschijnlijk .
-Als gevolg application gateway zal markeren uw pods als ongezond, wat uiteindelijk zal resulteren in een `502 Bad Gateway` voor de consumenten van de WebSocket server.
-Om dit te voorkomen moet u mogelijk een HTTP GET-handler toevoegen voor een statuscontrole aan uw server (bijvoorbeeld`/health` die retourneert). `200 OK`
+Als uw implementatie niet expliciet status controles definieert, probeert Application Gateway een HTTP-GET uit te voeren op het WebSocket-server eindpunt.
+Afhankelijk van de server implementatie ([Dit is een](https://github.com/gorilla/websocket/blob/master/examples/chat/main.go)van de meest leuke) WebSocket-specifieke headers zijn mogelijk`Sec-Websocket-Version` vereist (bijvoorbeeld).
+Omdat Application Gateway geen WebSocket-headers toevoegt, is de status test reactie van de Application Gateway van de WebSocket-server waarschijnlijk `400 Bad Request`.
+Als gevolg hiervan Application Gateway uw peul als slecht markeren, wat uiteindelijk resulteert in een `502 Bad Gateway` voor de consumenten van de WebSocket-server.
+Als u dit wilt voor komen, moet u mogelijk een HTTP GET-handler toevoegen voor een status controle`/health` aan uw server (bijvoorbeeld `200 OK`, die retourneert).

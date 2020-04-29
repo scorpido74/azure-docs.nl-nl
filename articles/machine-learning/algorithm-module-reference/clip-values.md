@@ -1,7 +1,7 @@
 ---
 title: Waarden inperken
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module Clipwaarden in Azure Machine Learning om uitschieters te detecteren en hun waarden te knippen of te vervangen.
+description: Meer informatie over het gebruik van de module clip values in Azure Machine Learning voor het detecteren van uitbijters en het knippen of vervangen van hun waarden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,114 +10,114 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 6466cea9fe04bb308a670cb03fd3de5314758142
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79456604"
 ---
 # <a name="clip-values"></a>Waarden inperken
 
-In dit artikel wordt een module van Azure Machine Learning designer (preview) beschreven.
+In dit artikel wordt een module van Azure Machine Learning Designer (preview-versie) beschreven.
 
-Gebruik de module Clipwaarden om gegevenswaarden die zich boven of onder een opgegeven drempelwaarde bevinden, te identificeren en optioneel te vervangen door een gemiddelde, een constante of andere vervangingswaarde.  
+Gebruik de module voor clip waarden voor het identificeren en vervangen van gegevens waarden die boven of onder een bepaalde drempel waarde vallen, met een gemiddelde, constante of andere vervanger.  
 
-U verbindt de module met een gegevensset met de getallen die u wilt knippen, kiest de kolommen waarmee u wilt werken en stelt vervolgens een drempel- of bereik van waarden en een vervangingsmethode in. De module kan alleen de resultaten uitvoeren of de gewijzigde waarden die aan de oorspronkelijke gegevensset zijn toegevoegd.
+U koppelt de module aan een gegevensset met de getallen die u wilt knippen. Kies de kolommen waarmee u wilt werken en stel vervolgens een drempel waarde of waardebereik in en een vervangings methode. De module kan alleen de resultaten uitvoeren, of de gewijzigde waarden die zijn toegevoegd aan de oorspronkelijke gegevensset.
 
-## <a name="how-to-configure-clip-values"></a>Clipwaarden configureren
+## <a name="how-to-configure-clip-values"></a>Clip waarden configureren
 
-Identificeer voordat u begint de kolommen die u wilt knippen en de methode die u wilt gebruiken. We raden u aan eerst een uitknipmethode te testen op een kleine subset van gegevens.
+Voordat u begint, identificeert u de kolommen die u wilt knippen en de methode die u wilt gebruiken. Het is raadzaam om eerst alle knip methoden te testen op een kleine subset van gegevens.
 
-De module past dezelfde criteria en vervangingsmethode toe op **alle** kolommen die u in de selectie opneemt. Sluit daarom kolommen uit die u niet wilt wijzigen.
+De module past dezelfde criteria en vervangende methode toe op **alle** kolommen die u in de selectie opneemt. Zorg er daarom voor dat u kolommen uitsluit die u niet wilt wijzigen.
 
-Als u uitknipmethoden of andere criteria op bepaalde kolommen moet toepassen, moet u voor elke set vergelijkbare kolommen een nieuw exemplaar **van clipwaarden** gebruiken.
+Als u knip methoden of andere criteria op sommige kolommen wilt Toep assen, moet u een nieuw exemplaar van de **clip waarden** voor elke set vergelijk bare kolommen gebruiken.
 
-1.  Voeg de module **Clipwaarden** toe aan uw pijplijn en sluit deze aan op de gegevensset die u wilt wijzigen. U deze module vinden onder **Gegevenstransformatie**, in de categorie **Schalen en Verkleinen.** 
+1.  Voeg de module **clip values** toe aan de pijp lijn en verbind deze met de gegevensset die u wilt wijzigen. U kunt deze module vinden onder **gegevens transformatie**, in de categorie **schalen en verminderen** . 
   
-1.  Gebruik in **Lijst met kolommen**de kolomkiezer om de kolommen te kiezen waarop **clipwaarden** worden toegepast.  
+1.  Gebruik in de **lijst met kolommen**de kolom kiezer om de kolommen te kiezen waarop **clip waarden** worden toegepast.  
   
-1.  Kies **voor Set van drempelwaarden**een van de volgende opties in de vervolgkeuzelijst. Deze opties bepalen hoe u de boven- en ondergrenzen instelt voor acceptabele waarden versus waarden die moeten worden geknipt.  
+1.  Kies een van de volgende opties in de vervolg keuzelijst om **drempel waarden**in te stellen. Deze opties bepalen hoe u de boven-en ondergrens instelt voor acceptabele waarden versus waarden die moeten worden afgekapt.  
   
-    - **ClipPeaks:** Wanneer u waarden vastmaakt aan pieken, geeft u alleen een bovengrens op. Waarden die groter zijn dan die grenswaarde worden vervangen.
+    - **ClipPeaks**: wanneer u waarden bijsnijden op pieken, geeft u alleen een bovenste grens op. Waarden die groter zijn dan die grens waarde worden vervangen.
   
-    -  **ClipSubpeaks**: Wanneer u waarden op subpieken knipt, geeft u alleen een ondergrens op. Waarden die lager zijn dan die grenswaarde worden vervangen.  
+    -  **ClipSubpeaks**: wanneer u waarden bijsnijden op subpieken, geeft u slechts een ondergrens op. Waarden die kleiner zijn dan die grens waarde, worden vervangen.  
   
-    - **ClipPeaksAndSubpeaks**: Wanneer u waarden vastmaakt aan pieken en subpieken, u zowel de boven- als ondergrenzen opgeven. Waarden die zich buiten dat bereik bevinden, worden vervangen. Waarden die overeenkomen met de grenswaarden worden niet gewijzigd.
+    - **ClipPeaksAndSubpeaks**: wanneer u waarden bijsnijden met pieken en subpieken, kunt u zowel de boven-als de onderste grenzen opgeven. Waarden die buiten het bereik vallen, worden vervangen. Waarden die overeenkomen met de grens waarden worden niet gewijzigd.
   
-1.  Afhankelijk van uw selectie in de vorige stap u de volgende drempelwaarden instellen: 
+1.  Afhankelijk van uw selectie in de vorige stap, kunt u de volgende drempel waarden instellen: 
 
-    + **Lagere drempelwaarde**: alleen weergegeven als u **ClipSubPeaks** kiest
-    + **Bovendrempel**: alleen weergegeven als u **ClipPeaks** kiest
-    + **Drempel:** alleen weergegeven als u **ClipPeaksAndSubPeaks** kiest
+    + **Onderste drempel waarde**: alleen weer gegeven als u **ClipSubPeaks** hebt gekozen
+    + **Hoogste drempel waarde**: alleen weer gegeven als u **ClipPeaks** hebt gekozen
+    + **Drempel waarde**: alleen weer gegeven als u **ClipPeaksAndSubPeaks** hebt gekozen
 
-    Kies voor elk drempeltype **Constant** of **Percentiel**.
+    Kies voor elk type drempel een **constante** of een **percentiel**.
 
-1. Als u **Constant**selecteert, typt u de maximum- of minimumwaarde in het tekstvak. Stel dat u weet dat de waarde 999 is gebruikt als tijdelijke waarde. U **Constant** kiezen voor de bovengrens en 999 typen in **Constante waarde voor bovengrenswaarde**.
+1. Als u **constant**selecteert, typt u de maximum-of minimum waarde in het tekstvak. Stel dat u weet dat de waarde 999 is gebruikt als een tijdelijke aanduiding. U kunt een **constante** kiezen voor de bovenste drempel waarde, en 999 invoeren in **constantewaarde voor bovengrens**.
   
-1. Als u **Percentiel kiest,** beperkt u de kolomwaarden tot een percentiel bereik. 
+1. Als u **percentiel**kiest, beperkt u de kolom waarden tot een percentiel bereik. 
 
-    Stel dat u alleen de waarden in het bereik van 10-80 percentiel wilt behouden en alle andere waarden wilt vervangen. U kiest **Percentiel**en typt vervolgens 10 voor **Percentielwaarde voor lagere drempelwaarde**en typt 80 voor **Percentielwaarde voor bovengrenswaarde**. 
+    Stel bijvoorbeeld dat u alleen de waarden in het bereik van 10-80 percentiel wilt blijven gebruiken en alle andere wilt vervangen. Kies **percentiel**en typ vervolgens 10 voor **percentiel waarde voor onderste drempel**en typ 80 voor **percentiel waarde voor hoogste drempel**. 
 
-    Zie de sectie op [percentielen](#examples-for-clipping-using-percentiles) voor enkele voorbeelden van het gebruik van percentielbereiken.  
+    Zie de sectie over [percentielen](#examples-for-clipping-using-percentiles) voor een aantal voor beelden van het gebruik van percentiel bereiken.  
   
 1.  Definieer een vervangende waarde.
 
-    Getallen die precies overeenkomen met de grenzen die u hebt opgegeven, worden beschouwd als binnen het toegestane bereik van waarden en worden dus niet vervangen. Alle getallen die buiten het opgegeven bereik vallen, worden vervangen door de vervangingswaarde. 
+    Getallen die exact overeenkomen met de grenzen die u hebt opgegeven, worden beschouwd als binnen het toegestane bereik van waarden en worden dus niet vervangen. Alle getallen die buiten het opgegeven bereik vallen, worden vervangen door de vervangende waarde. 
   
-    + **Vervangingswaarde voor pieken**: hiermee definieert u de waarde die moet worden vervangen door alle kolomwaarden die groter zijn dan de opgegeven drempelwaarde.  
-    + **Vervangingswaarde voor subpieken**: definieert de waarde die moet worden gebruikt als vervanging voor alle kolomwaarden die lager zijn dan de opgegeven drempelwaarde.  
-    + Als u de optie **ClipPeaksAndSubpeaks** gebruikt, u afzonderlijke vervangingswaarden opgeven voor de bovenste en onderste geknipte waarden.  
+    + **Vervang waarde voor pieken**: definieert de waarde die moet worden vervangen voor alle kolom waarden die groter zijn dan de opgegeven drempel.  
+    + **Vervang waarde voor subpieken**: definieert de waarde die moet worden gebruikt als vervanging voor alle kolom waarden die kleiner zijn dan de opgegeven drempel.  
+    + Als u de optie **ClipPeaksAndSubpeaks** gebruikt, kunt u afzonderlijke vervangings waarden opgeven voor de waarden voor boven en onder afgekapt.  
 
-    De volgende vervangingswaarden worden ondersteund:  
+    De volgende vervangings waarden worden ondersteund:  
   
-    -   **Drempelwaarde**: vervangt geknipte waarden door de opgegeven drempelwaarde.  
+    -   **Drempelwaarde**: Hiermee worden afgekapte waarden vervangen door de opgegeven drempel waarde.  
   
-    -   **Gemiddelde:** Hiermee worden geknipte waarden vervangen door het gemiddelde van de kolomwaarden. Het gemiddelde wordt berekend voordat waarden worden geknipt.  
+    -   **Gemiddelde**: Hiermee worden afgekapte waarden vervangen door het gemiddelde van de kolom waarden. Het gemiddelde wordt berekend voordat waarden worden afgekapt.  
   
-    -   **Mediaan**: hiermee worden geknipte waarden vervangen door de mediaan van de kolomwaarden. De mediaan wordt berekend voordat waarden worden geknipt.   
+    -   **Mediaan**: Hiermee worden afgekapte waarden vervangen door de mediaan van de kolom waarden. De mediaan wordt berekend voordat waarden worden afgekapt.   
   
-    -   **Vermist**. Hiermee worden geknipte waarden vervangen door de ontbrekende (lege) waarde.  
+    -   **Ontbrekend**. Hiermee worden afgekapte waarden vervangen door de ontbrekende (lege) waarde.  
   
-1.  **Indicatorkolommen toevoegen:** Selecteer deze optie als u een nieuwe kolom wilt genereren die u vertelt of de opgegeven uitknipbewerking al dan niet is toegepast op de gegevens in die rij. Deze optie is handig wanneer u een nieuwe set knip- en substitutiewaarden test.  
+1.  **Indicator kolommen toevoegen**: Selecteer deze optie als u een nieuwe kolom wilt genereren die aangeeft of de opgegeven knip bewerking moet worden toegepast op de gegevens in die rij. Deze optie is handig wanneer u een nieuwe set knip-en vervangings waarden test.  
   
-1. **Vlag overschrijven:** geef aan hoe u de nieuwe waarden wilt genereren. **Clipwaarden** maken standaard een nieuwe kolom met de piekwaarden die zijn geknipt tot de gewenste drempelwaarde. Nieuwe waarden overschrijven de oorspronkelijke kolom.  
+1. **Vlag voor overschrijven**: Geef aan hoe u de nieuwe waarden wilt genereren. Standaard maken **clip waarden** een nieuwe kolom met de piek waarden die zijn afgekapt tot de gewenste drempel waarde. Nieuwe waarden overschrijven de oorspronkelijke kolom.  
   
-    Als u de oorspronkelijke kolom wilt behouden en een nieuwe kolom met de geknipte waarden wilt toevoegen, schakelt u de selectie van deze optie uit.  
+    Als u de oorspronkelijke kolom wilt hand haven en een nieuwe kolom met de afgekapte waarden wilt toevoegen, schakelt u deze optie uit.  
   
-1.  Verzend de pijplijn.  
+1.  Verzend de pijp lijn.  
   
-    Klik met de rechtermuisknop op de module **Clipwaarden** en selecteer **Visualiseren** of selecteer de module en schakel naar het tabblad **Uitvoer** in het rechterdeelvenster, klik op het histogrampictogram in de **poortuitvoer,** om de waarden te controleren en ervoor te zorgen dat de knipbewerking aan uw verwachtingen voldoet.  
+    Klik met de rechter muisknop op de module **clip waarden** , selecteer **visualiseren** of selecteer de module en schakel over naar het tabblad **uitvoer** in het rechterdeel venster, klik op het histogram pictogram in de **poort uitvoer**om de waarden te controleren en ervoor te zorgen dat de knip bewerking aan uw verwachtingen voldoet.  
  
-### <a name="examples-for-clipping-using-percentiles"></a>Voorbeelden voor knippen met percentiels
+### <a name="examples-for-clipping-using-percentiles"></a>Voor beelden voor knippen met behulp van percentielen
 
-Als u wilt begrijpen hoe knippen door percentiels werkt, u een gegevensset met 10 rijen overwegen, die elk van de waarden 1-10 hebben.  
+Als u wilt weten hoe knippen door percentielen werkt, kunt u een gegevensset met 10 rijen gebruiken die één exemplaar hebben elk van de waarden 1-10.  
   
-- Als u percentiel als bovengrens gebruikt, moet 90 procent van alle waarden in de gegevensset bij de waarde voor het 90e percentiel lager zijn dan die waarde.  
+- Als u percentiel als de bovenste drempel waarde gebruikt, wordt voor het negen tigste percentiel 90 procent van alle waarden in de gegevensset kleiner dan die waarde.  
   
-- Als u percentiel als onderste drempelwaarde gebruikt, moet bij de waarde voor het 10e percentiel 10 procent van alle waarden in de gegevensset lager zijn dan die waarde.  
+- Als u percentiel als de laagste drempel waarde gebruikt, op het tiende percentiel, moet 10 procent van alle waarden in de gegevensset kleiner zijn dan die waarde.  
   
-1.  Kies **ClipPeaksAndSubPeaks**voor **set drempelwaarden**.  
+1.  Kies **ClipPeaksAndSubPeaks**voor **set met drempel waarden**.  
   
-1.  Kies **Percentiel**en voor **Percentielgetal**voor **Bovendrempel**90.  
+1.  Voor **bovenste drempel waarde**kiest u **percentiel**en voor **percentiel nummer**, typt u 90.  
   
-1.  Kies **Ontbrekende waarde**voor **Bovenvervangende waarde**.  
+1.  Kies **ontbrekende waarde**voor **bovenste vervangende waarde**.  
   
-1.  Kies **Percentiel**en voor **Percentielgetal**voor **Onderdrempel**10.  
+1.  Voor een **lagere drempel waarde**kiest u **percentiel**en voor **percentiel nummer**, type 10.  
   
-1.  Kies **Ontbrekende waarde**voor **Lagere vervangingswaarde**.  
+1.  Kies **ontbrekende waarde**voor **lagere vervangende waarde**.  
   
-1.  Schakel de optie **Overschrijfvlag uit**en selecteer de optie **Indicatorkolom toevoegen**.  
+1.  Schakel de optie **overschrijvings vlag**uit en selecteer de optie de **kolom indicator toevoegen**.  
   
-Probeer nu dezelfde pijplijn met 60 als de bovenste percentieldrempel en 30 als de onderste percentieldrempel en gebruik de drempelwaarde als vervangingswaarde. In de volgende tabel worden deze twee resultaten vergeleken:  
+Probeer nu dezelfde pijp lijn te 60 gebruiken als de bovenste percentiel drempel en 30 als de laagste percentiel drempel en gebruik de drempel waarde als de vervangings waarde. De volgende tabel vergelijkt deze twee resultaten:  
   
-1.  Vervangen door ontbrekende; Bovendrempel = 90; Onderdrempel = 20  
+1.  Vervangen door ontbreekt; Bovenste drempel waarde = 90; Laagste drempel waarde = 20  
   
-1.  Vervangen door drempel; Bovenste percentiel = 60; Lager percentiel = 40  
+1.  Vervangen door drempel waarde; Bovenste percentiel = 60; Lager percentiel = 40  
   
-|Oorspronkelijke gegevens|Vervangen door ontbrekende|Vervangen door drempelwaarde|  
+|Oorspronkelijke gegevens|Vervangen door ontbrekende|Vervangen door drempel waarde|  
 |-------------------|--------------------------|----------------------------|  
-|1<br /><br /> 2<br /><br /> 3<br /><br /> 4<br /><br /> 5<br /><br /> 6<br /><br /> 7<br /><br /> 8<br /><br /> 9<br /><br /> 10|TRUE<br /><br /> TRUE<br /><br /> 3, ONWAAR<br /><br /> 4.<br /><br /> 5, VALSE<br /><br /> 6, VALS<br /><br /> 7, VALSE<br /><br /> 8.<br /><br /> 9.<br /><br /> TRUE|4, WAAR<br /><br /> 4, WAAR<br /><br /> 4, WAAR<br /><br /> 4, WAAR<br /><br /> 5, VALSE<br /><br /> 6, VALS<br /><br /> 7, WAAR<br /><br /> 7, WAAR<br /><br /> 7, WAAR<br /><br /> 7, WAAR| 
+|1<br /><br /> 2<br /><br /> 3<br /><br /> 4<br /><br /> 5<br /><br /> 6<br /><br /> 7<br /><br /> 8<br /><br /> 9<br /><br /> 10|TRUE<br /><br /> TRUE<br /><br /> 3, ONWAAR<br /><br /> 4, ONWAAR<br /><br /> 5, ONWAAR<br /><br /> 6, ONWAAR<br /><br /> 7, ONWAAR<br /><br /> 8, ONWAAR<br /><br /> 9, ONWAAR<br /><br /> TRUE|4, WAAR<br /><br /> 4, WAAR<br /><br /> 4, WAAR<br /><br /> 4, WAAR<br /><br /> 5, ONWAAR<br /><br /> 6, ONWAAR<br /><br /> 7, WAAR<br /><br /> 7, WAAR<br /><br /> 7, WAAR<br /><br /> 7, WAAR| 
  
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

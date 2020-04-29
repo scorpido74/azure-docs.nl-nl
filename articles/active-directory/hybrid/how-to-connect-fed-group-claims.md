@@ -1,6 +1,6 @@
 ---
-title: Groepsclaims configureren voor toepassingen met Azure Active Directory | Microsoft Documenten
-description: Informatie over het configureren van groepsclaims voor gebruik met Azure AD.
+title: Groeps claims configureren voor toepassingen met Azure Active Directory | Microsoft Docs
+description: Informatie over het configureren van groepclaims voor gebruik met Azure AD.
 services: active-directory
 documentationcenter: ''
 ms.reviewer: paulgarn
@@ -13,139 +13,139 @@ ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
 ms.openlocfilehash: b8708aec1137836516852135412c4c7cec2feba4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79408399"
 ---
-# <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Groepsclaims configureren voor toepassingen met Azure Active Directory (Public Preview)
+# <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Groeps claims configureren voor toepassingen met Azure Active Directory (open bare preview)
 
-Azure Active Directory kan een gebruikersgroeplidmaatschapsinformatie in tokens verstrekken voor gebruik binnen toepassingen.  Twee hoofdpatronen worden ondersteund:
+Azure Active Directory kunt een groepslid maatschap voor gebruikers gegevens opgeven in tokens voor gebruik in toepassingen.  Er worden twee hoofd patronen ondersteund:
 
-- Groepen die zijn geïdentificeerd met het kenmerk Azure Active Directory-object-id (OID) (Algemeen beschikbaar)
-- Groepen die zijn geïdentificeerd met sAMAccountName- of GroupSID-kenmerken voor gesynchroniseerde groepen en gebruikers van Active Directory (AD) (Public Preview)
+- Groepen die zijn geïdentificeerd met behulp van het OID-kenmerk (Azure Active Directory object-id) (algemeen beschikbaar)
+- Groepen die zijn geïdentificeerd door sAMAccountName of GroupSID Attributes voor Active Directory (AD) gesynchroniseerde groepen en gebruikers (open bare preview)
 
 > [!IMPORTANT]
-> Er zijn een aantal kanttekeningen te noteren voor deze preview-functionaliteit:
+> Er zijn een aantal opmerkingen voor deze preview-functie:
 >
->- Ondersteuning voor het gebruik van SID-kenmerken (sAMAccountName en beveiligings-id) die zijn gesynchroniseerd vanaf on-premises, is ontworpen om het verplaatsen van bestaande toepassingen van AD FS en andere identiteitsproviders mogelijk te maken. Groepen die worden beheerd in Azure AD bevatten niet de kenmerken die nodig zijn om deze claims uit te zenden.
->- In grotere organisaties kan het aantal groepen waarvan een gebruiker lid is, de limiet overschrijden die Azure Active Directory aan een token toevoegt. 150 groepen voor een SAML-token en 200 voor een JWT. Dit kan leiden tot onvoorspelbare resultaten. Als uw gebruikers grote aantallen groepslidmaatschappen hebben, raden we u aan de optie te gebruiken om de groepen die worden uitgezonden in claims te beperken tot de relevante groepen voor de toepassing.  
->- Voor nieuwe toepassingsontwikkeling of in gevallen waarin de toepassing hiervoor kan worden geconfigureerd en waar geen ondersteuning voor geneste groepen vereist is, raden we u aan dat in-app-autorisatie is gebaseerd op toepassingsrollen in plaats van groepen.  Dit beperkt de hoeveelheid informatie die in het token moet worden opgenomen, is veiliger en scheidt gebruikerstoewijzing van de app-configuratie.
+>- Ondersteuning voor het gebruik van sAMAccountName-en SID-kenmerken (Security Identifier) die vanaf on-premises worden gesynchroniseerd, is ontworpen om bestaande toepassingen van AD FS en andere id-providers te verplaatsen. Groepen die worden beheerd in azure AD bevatten niet de kenmerken die nodig zijn om deze claims te verzenden.
+>- In grotere organisaties mag het aantal groepen waarvan een gebruiker lid is, de limiet overschrijden die Azure Active Directory zal toevoegen aan een token. 150 groepen voor een SAML-token en 200 voor een JWT. Dit kan leiden tot onvoorspelbare resultaten. Als uw gebruikers grote aantallen groepslid maatschappen hebben, raden we u aan de optie te gebruiken om de groepen die worden verzonden in claims te beperken tot de relevante groepen voor de toepassing.  
+>- Voor het ontwikkelen van nieuwe toepassingen, of in gevallen waarin de toepassing kan worden geconfigureerd en de ondersteuning voor geneste groepen is niet vereist, wordt aangeraden in-app-autorisatie gebaseerd op toepassings rollen in plaats van groepen.  Hiermee beperkt u de hoeveelheid gegevens die in het token moeten worden gezet, veiliger en scheidt u de gebruikers toewijzing van de app-configuratie.
 
-## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>Aanvragen groeperen voor aanvragen die migreren van AD FS en andere identiteitsproviders
+## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>Claims groeperen voor toepassingen die worden gemigreerd van AD FS en andere id-providers
 
-Veel toepassingen die zijn geconfigureerd om te verifiëren met AD FS, zijn afhankelijk van groepslidmaatschapsgegevens in de vorm van Windows AD-groepskenmerken.   Deze kenmerken zijn de groep sAMAccountName, die mogelijk is gekwalificeerd door-domeinnaam, of de Windows Group Security Identifier (GroupSID).  Wanneer de toepassing wordt gefedereerd met AD FS, gebruikt AD FS de functie TokenGroepen om de groepslidmaatschappen voor de gebruiker op te halen.
+Veel toepassingen die zijn geconfigureerd voor verificatie met AD FS zijn afhankelijk van de gegevens van groepslid maatschappen in de vorm van Windows AD-groeps kenmerken.   Deze kenmerken zijn de groep sAMAccountName, die kunnen worden gekwalificeerd door-Domain name of de Windows-groep beveiligings-id (GroupSID).  Wanneer de toepassing is federatieve met AD FS, gebruikt AD FS de functie TokenGroups om de groepslid maatschappen voor de gebruiker op te halen.
 
-Een app die is verplaatst van AD FS heeft claims in dezelfde indeling nodig. Groeps- en rolclaims kunnen worden uitgestoten vanuit Azure Active Directory met de domeingekwalificeerde sAMAccountName of de GroupSID die is gesynchroniseerd vanuit Active Directory in plaats van de Azure Active Directory-objectID van de groep.
+Een app die is verplaatst van AD FS heeft claims in dezelfde indeling nodig. Groeps-en rol claims kunnen worden verzonden vanuit Azure Active Directory met het domein gekwalificeerde sAMAccountName of het GroupSID dat is gesynchroniseerd vanuit Active Directory in plaats van de Azure Active Directory objectID van de groep.
 
-De ondersteunde indelingen voor groepsclaims zijn:
+De ondersteunde indelingen voor groepclaims zijn:
 
-- **Objectid azure Active Directory Group** (beschikbaar voor alle groepen)
+- **ObjectId voor Azure Active Directory groep** (beschikbaar voor alle groepen)
 - **sAMAccountName** (beschikbaar voor groepen die zijn gesynchroniseerd vanuit Active Directory)
 - **NetbiosDomain\sAMAccountName** (beschikbaar voor groepen die zijn gesynchroniseerd vanuit Active Directory)
 - **DNSDomainName\sAMAccountName** (beschikbaar voor groepen die zijn gesynchroniseerd vanuit Active Directory)
-- **Beveiligings-id voor on-premises groepen** (beschikbaar voor groepen die zijn gesynchroniseerd vanuit Active Directory)
+- **Beveiligings-id van on-premises groep** (beschikbaar voor groepen die zijn gesynchroniseerd vanuit Active Directory)
 
 > [!NOTE]
-> SID-kenmerken van sAMAccountName en On Premises Group zijn alleen beschikbaar op groepsobjecten die zijn gesynchroniseerd vanuit Active Directory.   Ze zijn niet beschikbaar in groepen die zijn gemaakt in Azure Active Directory of Office365.   Toepassingen die zijn geconfigureerd in Azure Active Directory om gesynchroniseerde on-premises groepskenmerken te krijgen, krijgen ze alleen voor gesynchroniseerde groepen.
+> sAMAccountName-en on-premises groep SID-kenmerken zijn alleen beschikbaar voor groeps objecten die zijn gesynchroniseerd vanuit Active Directory.   Ze zijn niet beschikbaar voor groepen die zijn gemaakt in Azure Active Directory of Office365.   Toepassingen die in Azure Active Directory zijn geconfigureerd om gesynchroniseerde on-premises groeps kenmerken te krijgen, krijgen ze alleen voor gesynchroniseerde groepen.
 
-## <a name="options-for-applications-to-consume-group-information"></a>Opties voor toepassingen om groepsgegevens te gebruiken
+## <a name="options-for-applications-to-consume-group-information"></a>Opties voor het verbruik van groeps gegevens in toepassingen
 
-Toepassingen kunnen het eindpunt van de MS-grafiekgroepen aanroepen om groepsinformatie voor de geverifieerde gebruiker te verkrijgen. Deze oproep zorgt ervoor dat alle groepen waarvan een gebruiker lid is, beschikbaar zijn, zelfs als er een groot aantal groepen bij betrokken zijn.  Groepsopsomming is dan onafhankelijk van tokengroottebeperkingen.
+Toepassingen kunnen het eind punt van de MS-grafiek groepen aanroepen om groeps informatie te verkrijgen voor de geverifieerde gebruiker. Deze aanroep zorgt ervoor dat alle groepen waarvan een gebruiker lid is, beschikbaar zijn, zelfs wanneer er sprake is van een groot aantal groepen.  Groeps inventarisatie wordt vervolgens onafhankelijk van beperkingen voor de token grootte.
 
-Als een bestaande toepassing echter groepsinformatie verwacht te verbruiken via claims, kan Azure Active Directory worden geconfigureerd met een aantal verschillende claimindelingen.  Overweeg de volgende opties:
+Als een bestaande toepassing echter groeps gegevens per claim verwacht te verbruiken, kan Azure Active Directory worden geconfigureerd met een aantal verschillende indelingen voor claims.  Houd rekening met de volgende opties:
 
-- Bij het gebruik van groepslidmaatschap voor autorisatiedoeleinden in de toepassing verdient het de voorkeur om de GroepsobjectID te gebruiken. De groepsobjectid is onveranderlijk en uniek in Azure Active Directory en beschikbaar voor alle groepen.
-- Als u de on-premises groep sAMAccountName gebruikt voor autorisatie, gebruikt u domeingekwalificeerde namen.  Er is minder kans dat namen botsen. sAMAccountName kan uniek zijn binnen een Active Directory-domein, maar als meer dan één Active Directory-domein is gesynchroniseerd met een Azure Active Directory-tenant, is er de mogelijkheid dat meerdere groepen dezelfde naam hebben.
-- Overweeg [toepassingsrollen](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) te gebruiken om een laag van indirection te bieden tussen het groepslidmaatschap en de toepassing.   De toepassing maakt vervolgens interne autorisatiebeslissingen op basis van rolclams in het token.
-- Als de toepassing is geconfigureerd om groepskenmerken op te halen die zijn gesynchroniseerd vanuit Active Directory en een groep deze kenmerken niet bevat, wordt deze niet opgenomen in de claims.
-- Groepsclaims in tokens bevatten geneste groepen, behalve wanneer ze de optie gebruiken om de groepsclaims te beperken tot groepen die aan de toepassing zijn toegewezen.  Als een gebruiker lid is van GroupB en GroupB lid is van GroupA, dan zullen de groepsclaims voor de gebruiker zowel GroupA als GroupB bevatten. Wanneer de gebruikers van een organisatie een groot aantal groepslidmaatschappen hebben, kan het aantal groepen dat in het token wordt vermeld, de tokengrootte vergroten.  Azure Active Directory beperkt het aantal groepen dat het in een token uitstraalt tot 150 voor SAML-beweringen en 200 voor JWT.  Als een gebruiker lid is van een groter aantal groepen, worden de groepen weggelaten en wordt in plaats daarvan een koppeling naar het eindpunt van de grafiek om groepsinformatie te verkrijgen opgenomen.
+- Wanneer u groepslid maatschap gebruikt voor autorisatie doeleinden in de toepassing, is het raadzaam om de groeps-ObjectID te gebruiken. De ObjectID van de groep is onveranderbaar en uniek in Azure Active Directory en is beschikbaar voor alle groepen.
+- Als de on-premises groep sAMAccountName voor autorisatie gebruikt, gebruikt u domein gekwalificeerde namen.  Er is minder kans op conflicterende namen. sAMAccountName kan uniek zijn in een Active Directory domein, maar als meer dan één Active Directory domein is gesynchroniseerd met een Azure Active Directory-Tenant, kan er meer dan één groep dezelfde naam hebben.
+- U kunt [toepassings rollen](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) gebruiken om een laag van omleiding te bieden tussen het groepslid maatschap en de toepassing.   De toepassing brengt vervolgens interne autorisatie beslissingen op basis van de functie-en schelpen in het token.
+- Als de toepassing is geconfigureerd voor het ophalen van groeps kenmerken die zijn gesynchroniseerd vanuit Active Directory en een groep deze kenmerken niet bevat, wordt deze niet opgenomen in de claims.
+- Groepeer claims in tokens bevatten geneste groepen, behalve wanneer u de optie gebruikt om de groeps claims te beperken tot groepen die zijn toegewezen aan de toepassing.  Als een gebruiker lid is van GroupB en GroupB lid is van GroepA, bevatten de groeps claims voor de gebruiker zowel GroepA als GroupB. Wanneer de gebruikers van een organisatie grote aantallen groepslid maatschappen hebben, kan het aantal groepen dat in het token wordt vermeld, de token grootte verg Roten.  Azure Active Directory beperkt het aantal groepen dat in een token wordt meezenden naar 150 voor SAML-bevestigingen en 200 voor JWT.  Als een gebruiker lid is van een groter aantal groepen, worden de groepen wegge laten en vindt u in plaats daarvan een koppeling naar het eind punt van de grafiek om groeps gegevens op te halen.
 
-## <a name="prerequisites-for-using-group-attributes-synchronized-from-active-directory"></a>Vereisten voor het gebruik van groepskenmerken die zijn gesynchroniseerd vanuit Active Directory
+## <a name="prerequisites-for-using-group-attributes-synchronized-from-active-directory"></a>Vereisten voor het gebruik van groeps kenmerken gesynchroniseerd vanuit Active Directory
 
-Groepslidmaatschapclaims kunnen worden uitgezonden in tokens voor elke groep als u de ObjectId-indeling gebruikt. Als u groepsclaims wilt gebruiken in andere indelingen dan de groepsobjectid, moeten de groepen worden gesynchroniseerd vanuit Active Directory met Azure AD Connect.
+Claims voor groepslid maatschappen kunnen worden verzonden in tokens voor elke groep als u de ObjectId-indeling gebruikt. Als u groepclaims wilt gebruiken in andere indelingen dan de groeps-ObjectId, moeten de groepen worden gesynchroniseerd vanuit Active Directory met behulp van Azure AD Connect.
 
-Er zijn twee stappen om Azure Active Directory te configureren om groepsnamen voor Active Directory-groepen uit te zenden.
+Er zijn twee stappen voor het configureren van Azure Active Directory voor het verzenden van groeps namen voor Active Directory groepen.
 
-1. **Groepsnamen uit Active Directory synchroniseren** Voordat Azure Active Directory de groepsnamen of on-premises groep SID in groeps- of rolclaims kan uitzenden, moeten de vereiste kenmerken worden gesynchroniseerd vanuit Active Directory.  U moet Azure AD Connect-versie 1.2.70 of hoger uitvoeren.   Eerdere versies van Azure AD Connect dan 1.2.70 synchroniseren de groepsobjecten uit Active Directory, maar bevatten niet de vereiste groepsnaamkenmerken.  Upgrade naar de huidige versie.
+1. **Groeps namen synchroniseren vanuit Active Directory** Voordat Azure Active Directory de groeps namen of on-premises groeps-SID in groeps-of Rolgroepen kunt verzenden, moeten de vereiste kenmerken worden gesynchroniseerd vanuit Active Directory.  U moet Azure AD Connect versie 1.2.70 of hoger uitvoeren.   Eerdere versies van Azure AD Connect dan 1.2.70 zullen de groeps objecten vanaf Active Directory synchroniseren, maar bevat niet de vereiste kenmerken van de groeps naam.  Voer een upgrade uit naar de huidige versie.
 
-2. **De toepassingsregistratie in Azure Active Directory configureren om groepsclaims op te nemen in tokens** Groepsclaims kunnen worden geconfigureerd in de sectie Ondernemingstoepassingen van de portal of met behulp van het toepassingsmanifest in de sectie Toepassingsregistraties.  Zie 'De Azure Active Directory-toepassingsregistratie configureren voor groepskenmerken' hieronder om groepsclaims te configureren in het toepassingsmanifest.
+2. **De registratie van de toepassing in azure Active Directory zo configureren dat groeps claims worden toegevoegd aan tokens** Groepclaims kunnen worden geconfigureerd in de sectie bedrijfs toepassingen van de portal of met behulp van het manifest van de toepassing in de sectie toepassings registraties.  Zie voor het configureren van groeps claims in het manifest van de toepassing ' de Azure Active Directory toepassings registratie voor groeps kenmerken configureren ' hieronder.
 
-## <a name="add-group-claims-to-tokens-for-saml-applications-using-sso-configuration"></a>Groepsclaims toevoegen aan tokens voor SAML-toepassingen met behulp van SSO-configuratie
+## <a name="add-group-claims-to-tokens-for-saml-applications-using-sso-configuration"></a>Groeps claims toevoegen aan tokens voor SAML-toepassingen met SSO-configuratie
 
-Als u groepsclaims voor een SAML-toepassing voor galerijen of niet-galeries wilt configureren, opent u **Enterprise-toepassingen,** klikt u op de toepassing in de lijst, selecteert u **Configuratie voor één aanmelding**en selecteert u **vervolgens Gebruikerskenmerken & Claims**.
+Als u groeps claims wilt configureren voor een SAML-toepassing in een galerie of niet-galerie, opent u **zakelijke toepassingen**, klikt u op de toepassing in de lijst, selecteert u **configuratie van eenmalige aanmelding**en selecteert u vervolgens **gebruikers kenmerken & claims**.
 
-Klik op **Een groepsclaim toevoegen**  
+Klik op **een groepclaim toevoegen**  
 
-![claims UI](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
+![claim GEBRUIKERSINTERFACE](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
 
-De keuzerondjes gebruiken om te selecteren welke groepen in het token moeten worden opgenomen
+Gebruik de keuze rondjes om te selecteren welke groepen in het token moeten worden opgenomen
 
-![claims UI](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
+![claim GEBRUIKERSINTERFACE](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
 
 | Selectie | Beschrijving |
 |----------|-------------|
-| **Alle groepen** | Zendt beveiligingsgroepen en distributielijsten en rollen uit.  |
-| **Beveiligingsgroepen** | Zendt beveiligingsgroepen uit waarvan de gebruiker lid is in de groepsclaim |
-| **Directory-rollen** | Als de gebruiker directoryrollen toegewezen krijgt, worden ze uitgezonden als een 'wids'-claim (groepenclaim worden niet uitgezonden) |
-| **Groepen die aan de toepassing zijn toegewezen** | Zendt alleen de groepen uit die expliciet aan de toepassing zijn toegewezen en de gebruiker is lid van |
+| **Alle groepen** | Beveiligings groepen en distributie lijsten en-rollen meedeelt.  |
+| **Beveiligingsgroepen** | Verzendt beveiligings groepen waarvan de gebruiker lid is in de groeps claim |
+| **Directory-rollen** | Als er adreslijst rollen aan de gebruiker zijn toegewezen, worden ze verzonden als een ' WIDS-claim (groeps claim wordt niet verzonden) |
+| **Groepen die zijn toegewezen aan de toepassing** | Verzendt alleen de groepen die expliciet zijn toegewezen aan de toepassing en waarvan de gebruiker lid is |
 
-Als u bijvoorbeeld alle beveiligingsgroepen wilt uitzenden waarvan de gebruiker lid is, selecteert u Beveiligingsgroepen
+Als u bijvoorbeeld alle beveiligings groepen wilt genereren waarvan de gebruiker lid is, selecteert u beveiligings groepen
 
-![claims UI](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
+![claim GEBRUIKERSINTERFACE](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
 
-Als u groepen wilt uitzenden met Active Directory-kenmerken die zijn gesynchroniseerd vanuit Active Directory in plaats van Azure AD-objectID's, selecteert u de vereiste indeling in de vervolgkeuzelijst. Alleen groepen die zijn gesynchroniseerd met Active Directory worden opgenomen in de claims.
+Als u groepen wilt verzenden met Active Directory kenmerken die zijn gesynchroniseerd vanuit Active Directory in plaats van met Azure AD Objectid's, selecteert u de gewenste indeling in de vervolg keuzelijst. Alleen groepen die zijn gesynchroniseerd vanuit Active Directory worden opgenomen in de claims.
 
-![claims UI](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
+![claim GEBRUIKERSINTERFACE](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
 
-Als u alleen groepen wilt uitzenden die aan de toepassing zijn toegewezen, selecteert u **Groepen die aan de toepassing zijn toegewezen**
+Als u alleen groepen wilt verzenden die aan de toepassing zijn toegewezen, selecteert u **groepen die zijn toegewezen aan de toepassing**
 
-![claims UI](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
+![claim GEBRUIKERSINTERFACE](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
 
-Groepen die aan de toepassing zijn toegewezen, worden opgenomen in het token.  Andere groepen waarvan de gebruiker lid is, worden weggelaten.  Met deze optie worden geneste groepen niet opgenomen en moet de gebruiker een direct lid zijn van de groep die aan de toepassing is toegewezen.
+Groepen die zijn toegewezen aan de toepassing, worden opgenomen in het token.  Andere groepen waarvan de gebruiker lid is, worden wegge laten.  Met deze optie geneste groepen worden niet opgenomen en de gebruiker moet een direct lid zijn van de groep die is toegewezen aan de toepassing.
 
-Als u de groepen wilt wijzigen die aan de toepassing zijn toegewezen, selecteert u de toepassing in de lijst **Ondernemingstoepassingen** en klikt u vervolgens op **Gebruikers en groepen** in het linkernavigatiemenu van de toepassing.
+Als u de groepen wilt wijzigen die aan de toepassing zijn toegewezen, selecteert u de toepassing in de lijst **ondernemings toepassingen** en klikt u vervolgens op **gebruikers en groepen** in het navigatie menu aan de linkerkant van de toepassing.
 
-Zie het document [Een gebruiker of groep toewijzen aan een bedrijfsapp](../../active-directory/manage-apps/assign-user-or-group-access-portal.md) voor meer informatie over het beheren van groepstoewijzing aan toepassingen.
+Zie het document [een gebruiker of groep toewijzen aan een bedrijfs-app](../../active-directory/manage-apps/assign-user-or-group-access-portal.md) voor meer informatie over het beheren van groeps toewijzing aan toepassingen.
 
 ### <a name="advanced-options"></a>Geavanceerde opties
 
-De manier waarop groepsclaims worden uitgezonden, kan worden gewijzigd door de instellingen onder Geavanceerde opties
+De manier waarop groeps claims worden verzonden, kunnen worden gewijzigd door de instellingen onder Geavanceerde opties
 
-De naam van de groepsclaim aanpassen: Als deze optie is geselecteerd, kan een ander claimtype worden opgegeven voor groepsclaims.   Voer het claimtype in het veld Naam en de optionele naamruimte voor de claim in het veld naamruimte in.
+De naam van de groepclaim aanpassen: als deze is geselecteerd, kan een ander claim type worden opgegeven voor groepclaims.   Geef het claim type op in het veld naam en de optionele naam ruimte voor de claim in het veld naam ruimte.
 
-![claims UI](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
+![claim GEBRUIKERSINTERFACE](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 
-Voor sommige toepassingen moeten de groepslidmaatschapsgegevens worden weergegeven in de claim 'rol'. U de groepen van de gebruiker optioneel als rollen uitzenden door het vak 'Groepen een rolclaims uitzenden' in te schakelen.
+Voor sommige toepassingen moet de gegevens van het groepslid maatschap worden weer gegeven in de claim van de rol. U kunt desgewenst de gebruikers groepen als rollen verzenden door het selectie vakje groepen een rol claimen verzenden in te scha kelen.
 
-![claims UI](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
+![claim GEBRUIKERSINTERFACE](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
 
 > [!NOTE]
-> Als de optie om groepsgegevens uit te zenden als rollen wordt gebruikt, worden alleen groepen weergegeven in de rolclaim.  Toepassingsrollen die de gebruiker is toegewezen, worden niet weergegeven in de rolclaim.
+> Als de optie voor het verzenden van groeps gegevens als rollen wordt gebruikt, worden alleen groepen weer gegeven in de rol claim.  Alle toepassings rollen waaraan de gebruiker is toegewezen, worden niet weer gegeven in de claim.
 
-### <a name="edit-the-group-claims-configuration"></a>De configuratie van groepsclaims bewerken
+### <a name="edit-the-group-claims-configuration"></a>De configuratie van de groeps claims bewerken
 
-Zodra een groepsclaimconfiguratie is toegevoegd aan de configuratie van gebruikerskenmerken & claims, wordt de optie om een groepsclaim toe te voegen grijs weergegeven.  Als u de configuratie van groepsclaim wilt wijzigen, klikt u op de groepsclaim in de lijst **Aanvullende claims.**
+Wanneer een groeps claim configuratie is toegevoegd aan de gebruikers kenmerken & claim configuratie, wordt de optie voor het toevoegen van een groeps claim grijs weer gegeven.  Als u de configuratie van de groeps claim wilt wijzigen, klikt u op de groepclaim in de lijst **aanvullende claims** .
 
-![claims UI](media/how-to-connect-fed-group-claims/group-claims-ui-7.png)
+![claim GEBRUIKERSINTERFACE](media/how-to-connect-fed-group-claims/group-claims-ui-7.png)
 
-## <a name="configure-the-azure-ad-application-registration-for-group-attributes"></a>De Azure AD-toepassingsregistratie configureren voor groepskenmerken
+## <a name="configure-the-azure-ad-application-registration-for-group-attributes"></a>De registratie van de Azure AD-toepassing voor groeps kenmerken configureren
 
-Groepsclaims kunnen ook worden geconfigureerd in de sectie [Optionele claims](../../active-directory/develop/active-directory-optional-claims.md) van het [toepassingsmanifest](../../active-directory/develop/reference-app-manifest.md).
+Groepclaims kunnen ook worden geconfigureerd in de sectie [optionele claims](../../active-directory/develop/active-directory-optional-claims.md) van het [toepassings manifest](../../active-directory/develop/reference-app-manifest.md).
 
-1. Selecteer->Manifest in de portal ->Azure Active Directory -> Application Registrations->Selecteren
+1. In de portal->Azure Active Directory-> toepassings registraties->Selecteer toepassing->manifest
 
-2. Groepslidmaatschapsclaims inschakelen door de groupMembershipClaim te wijzigen
+2. Claims voor groepslid maatschap inschakelen door de groupMembershipClaim te wijzigen
 
 Geldige waarden zijn:
 
 | Selectie | Beschrijving |
 |----------|-------------|
-| **"Alle"** | Beveiligingsgroepen, distributielijsten en rollen uitzendt |
-| **"SecurityGroup"** | Zendt beveiligingsgroepen uit waarvan de gebruiker lid is in de groepsclaim |
-| **"DirectoryRole** | Als de gebruiker directoryrollen toegewezen krijgt, worden ze uitgezonden als een 'wids'-claim (groepenclaim worden niet uitgezonden) |
-| **"ApplicationGroup** | Zendt alleen de groepen uit die expliciet aan de toepassing zijn toegewezen en de gebruiker is lid van |
+| **Hele** | Beveiligings groepen, distributie lijsten en rollen meedeelt |
+| **Beveiligings groep** | Verzendt beveiligings groepen waarvan de gebruiker lid is in de groeps claim |
+| **"DirectoryRole** | Als er adreslijst rollen aan de gebruiker zijn toegewezen, worden ze verzonden als een ' WIDS-claim (groeps claim wordt niet verzonden) |
+| **' Variabele applicationgroup** | Verzendt alleen de groepen die expliciet zijn toegewezen aan de toepassing en waarvan de gebruiker lid is |
 
    Bijvoorbeeld:
 
@@ -153,20 +153,20 @@ Geldige waarden zijn:
    "groupMembershipClaims": "SecurityGroup"
    ```
 
-   Standaard worden groepsobjectinstellingen uitgestoten in de groepsclaimwaarde.  Als u de claimwaarde wilt wijzigen om kenmerken van de lokalengroep te bevatten of om het claimtype in rol te wijzigen, gebruikt u de configuratie OptionalClaims als volgt:
+   Standaard wordt groeps Objectid's verzonden in de claim waarde van de groep.  Als u de claim waarde wilt wijzigen zodat deze lokale groeps kenmerken bevat, of als u het claim type wilt wijzigen in rol, gebruikt u de OptionalClaims-configuratie als volgt:
 
-3. Stel optionele claims voor groepsnaamconfiguratie in.
+3. Stel groeps naam configuratie optionele claims in.
 
-   Als u wilt dat de groepen in het token de ad-groepskenmerken op locatie bevatten, geeft u op op welk tokentype optionele claim moet worden toegepast in de optionele sectie claims.  Er kunnen meerdere tokentypen worden weergegeven:
+   Als u wilt dat de groepen in het token de on-premises AD-groeps kenmerken bevatten, geeft u op welk token type optionele claim moet worden toegepast in de sectie optionele claims.  Meerdere token typen kunnen worden weer gegeven:
 
-   - idToken voor het OIDC ID-token
-   - accessToken voor het OAuth/OIDC-toegangstoken
+   - idToken voor het OIDC-ID-token
+   - accessToken voor het OAuth/OIDC-toegangs token
    - Saml2Token voor SAML-tokens.
 
    > [!NOTE]
-   > Het Saml2Token-type is van toepassing op zowel SAML1.1- als SAML2.0-formaattokens
+   > Het type Saml2Token is van toepassing op zowel SAML 1.1-als SAML 2.0-indelings tokens
 
-   Wijzig voor elk relevant tokentype de claim groepen om de sectie OptionalClaims in het manifest te gebruiken. Het schema OptionalClaims is als volgt:
+   Wijzig voor elk relevant token type de OptionalClaims-sectie in het manifest. Het OptionalClaims-schema is als volgt:
 
    ```json
    {
@@ -177,23 +177,23 @@ Geldige waarden zijn:
    }
    ```
 
-   | Optioneel claimschema | Waarde |
+   | Optioneel claim schema | Waarde |
    |----------|-------------|
-   | **Naam:** | Moet "groepen" |
-   | **Bron:** | Niet gebruikt. Null weglaten of opgeven |
-   | **Essentiële:** | Niet gebruikt. Onwaar weglaten of opgeven |
-   | **additionalProperties:** | Lijst met extra eigenschappen.  Geldige opties zijn "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
+   | **naam** | Moet ' groups ' zijn |
+   | **Bron** | Niet gebruikt. Null-waarde weglaten of opgeven |
+   | **downloaden** | Niet gebruikt. Weglaten of onwaar opgeven |
+   | **additionalProperties:** | Lijst met aanvullende eigenschappen.  Geldige opties zijn ' sam_account_name ', ' dns_domain_and_sam_account_name ', ' netbios_domain_and_sam_account_name ', ' emit_as_roles ' |
 
-   In additionalProperties zijn slechts één van "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name" vereist.  Als er meer dan één aanwezig is, wordt de eerste gebruikt en alle anderen genegeerd.
+   In additionalProperties is slechts een van de sam_account_name, dns_domain_and_sam_account_name, netbios_domain_and_sam_account_name vereist.  Als er meer dan een aanwezig is, wordt de eerste gebruikt en worden alle andere genegeerd.
 
-   Voor sommige toepassingen is groepsinformatie over de gebruiker vereist in de rolclaim.  Als u het claimtype wilt wijzigen in een groepsclaim in een rolclaim, voegt u 'emit_as_roles' toe aan extra eigenschappen.  De groepswaarden worden weergegeven in de rolclaim.
+   Voor sommige toepassingen is groeps informatie over de gebruiker in de rol claim vereist.  Als u het claim type wilt wijzigen van een groepclaim in een groepclaim, voegt u ' emit_as_roles ' toe aan extra eigenschappen.  De groeps waarden worden verzonden in de rol claim.
 
    > [!NOTE]
-   > Als 'emit_as_roles' wordt gebruikt, worden toepassingsrollen die zijn geconfigureerd en die de gebruiker toegewezen heeft, niet weergegeven in de rolclaim
+   > Als ' emit_as_roles ' wordt gebruikt, worden de toepassings rollen die zijn geconfigureerd dat de gebruiker is toegewezen, niet weer gegeven in de rol claim
 
 ### <a name="examples"></a>Voorbeelden
 
-Groepen uitzenden als groepsnamen in OAuth-toegangstokens in dnsDomainName\SAMAccountName-indeling
+Groepen verzenden als groeps namen in OAuth-toegangs tokens in de dnsDomainName\SAMAccountName-indeling
 
 ```json
 "optionalClaims": {
@@ -204,7 +204,7 @@ Groepen uitzenden als groepsnamen in OAuth-toegangstokens in dnsDomainName\SAMAc
 }
  ```
 
-Groepsnamen uitzenden die moeten worden geretourneerd in de netbiosDomain\samAccountName-indeling als de rolclaim in SAML- en OIDC ID-tokens:
+Groeps namen verzenden die moeten worden geretourneerd in netbiosDomain\samAccountName-indeling als de rol claim in SAML-en OIDC-ID-tokens:
 
 ```json
 "optionalClaims": {
@@ -222,6 +222,6 @@ Groepsnamen uitzenden die moeten worden geretourneerd in de netbiosDomain\samAcc
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Een gebruiker of groep toewijzen aan een bedrijfsapp](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)
+[Een gebruiker of groep toewijzen aan een bedrijfs-app](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)
 
 [Rolclaims configureren](../../active-directory/develop/active-directory-enterprise-app-role-management.md)

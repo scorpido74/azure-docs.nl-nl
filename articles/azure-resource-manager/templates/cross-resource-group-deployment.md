@@ -1,29 +1,29 @@
 ---
-title: Resources cross-subscription & resourcegroep implementeren
-description: Hier ziet u hoe u tijdens de implementatie meer dan één Azure-abonnement en resourcegroep targeten.
+title: '& resource groep voor het implementeren van resources voor meerdere abonnementen'
+description: Laat zien hoe u tijdens de implementatie meer dan één Azure-abonnement en-resource groep kunt bereiken.
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.openlocfilehash: 70868f5a3598c26ffff81f0ad3536a6c5c0a7e53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79460344"
 ---
-# <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Azure-resources implementeren in meer dan één abonnementsgroep of brongroep
+# <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Azure-resources implementeren voor meer dan één abonnement of resource groep
 
-Doorgaans implementeert u alle resources in uw sjabloon in één [resourcegroep.](../management/overview.md) Er zijn echter scenario's waarin u een set resources samen wilt implementeren, maar deze in verschillende resourcegroepen of -abonnementen wilt plaatsen. U bijvoorbeeld de virtuele back-upmachine voor Azure Site Recovery implementeren in een afzonderlijke brongroep en -locatie. Met Resource Manager u geneste sjablonen gebruiken om meer dan één abonnements- en resourcegroep te targeten.
+Doorgaans implementeert u alle resources in uw sjabloon tot één [resource groep](../management/overview.md). Er zijn echter scenario's waarin u een set resources samen wilt implementeren, maar deze wilt plaatsen in verschillende resource groepen of-abonnementen. U kunt bijvoorbeeld de virtuele machine van de back-up voor Azure Site Recovery implementeren in een afzonderlijke resource groep en locatie. Met Resource Manager kunt u geneste sjablonen gebruiken om meer dan één abonnement en resource groep te bereiken.
 
 > [!NOTE]
-> U slechts vijf resourcegroepen in één implementatie implementeren. Deze beperking betekent doorgaans dat u implementeren in één resourcegroep die is opgegeven voor de bovenliggende sjabloon en maximaal vier resourcegroepen in geneste of gekoppelde implementaties. Als uw bovenliggende sjabloon echter alleen geneste of gekoppelde sjablonen bevat en zelf geen resources implementeert, u maximaal vijf resourcegroepen opnemen in geneste of gekoppelde implementaties.
+> U kunt implementeren in slechts vijf resource groepen in één implementatie. Deze beperking betekent meestal dat u kunt implementeren in één resource groep die is opgegeven voor de bovenliggende sjabloon en Maxi maal vier resource groepen in geneste of gekoppelde implementaties. Als uw bovenliggende sjabloon alleen geneste of gekoppelde sjablonen bevat en zelf geen resources implementeert, kunt u Maxi maal vijf resource groepen toevoegen in geneste of gekoppelde implementaties.
 
-## <a name="specify-subscription-and-resource-group"></a>Abonnements- en resourcegroep opgeven
+## <a name="specify-subscription-and-resource-group"></a>Abonnement en resource groep opgeven
 
-Als u een andere resourcegroep of -abonnement wilt targeten, gebruikt u een [geneste of gekoppelde sjabloon](linked-templates.md). Het `Microsoft.Resources/deployments` resourcetype bevat `subscriptionId` `resourceGroup`parameters voor en, waarmee u de abonnements- en resourcegroep voor de geneste implementatie opgeven. Als u de abonnements-id of resourcegroep niet opgeeft, wordt de abonnements- en brongroep van de bovenliggende sjabloon gebruikt. Alle resourcegroepen moeten bestaan voordat de implementatie wordt uitgevoerd.
+Als u een andere resource groep of een ander abonnement wilt instellen, gebruikt u een [geneste of gekoppelde sjabloon](linked-templates.md). Het `Microsoft.Resources/deployments` resource type bevat para `subscriptionId` meters `resourceGroup`voor en, waarmee u het abonnement en de resource groep voor de geneste implementatie kunt opgeven. Als u de abonnements-ID of de resource groep niet opgeeft, wordt het abonnement en de resource groep van de bovenliggende sjabloon gebruikt. Alle resource groepen moeten bestaan voordat u de implementatie uitvoert.
 
-Het account dat u gebruikt om de sjabloon te implementeren, moet machtigingen hebben om te implementeren op de opgegeven abonnements-id. Als het opgegeven abonnement bestaat in een andere Azure Active Directory-tenant, moet u [gastgebruikers toevoegen uit een andere map.](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)
+Het account dat u gebruikt om de sjabloon te implementeren, moet machtigingen hebben om te implementeren naar de opgegeven abonnements-ID. Als het opgegeven abonnement bestaat in een andere Azure Active Directory Tenant, moet u [gast gebruikers toevoegen vanuit een andere map](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
 
-Gebruik het volgende om een andere brongroep en -abonnement op te geven:
+Als u een andere resource groep en een ander abonnement wilt opgeven, gebruikt u:
 
 ```json
 "resources": [
@@ -38,9 +38,9 @@ Gebruik het volgende om een andere brongroep en -abonnement op te geven:
 ]
 ```
 
-Als uw brongroepen in hetzelfde abonnement zitten, u de waarde van de **abonnementid** verwijderen.
+Als uw resource groepen zich in hetzelfde abonnement bevinden, kunt u de **abonnements** waarde verwijderen.
 
-In het volgende voorbeeld worden twee opslagaccounts geïmplementeerd. Het eerste opslagaccount wordt geïmplementeerd in de resourcegroep die tijdens de implementatie is opgegeven. Het tweede opslagaccount wordt geïmplementeerd in de `secondResourceGroup` `secondSubscriptionID` resourcegroep die is opgegeven in de parameters en parameters:
+In het volgende voor beeld worden twee opslag accounts geïmplementeerd. Het eerste opslag account wordt geïmplementeerd naar de resource groep die tijdens de implementatie is opgegeven. Het tweede opslag account wordt geïmplementeerd naar de resource groep die is opgegeven `secondResourceGroup` in `secondSubscriptionID` de para meters en:
 
 ```json
 {
@@ -115,13 +115,13 @@ In het volgende voorbeeld worden twee opslagaccounts geïmplementeerd. Het eerst
 }
 ```
 
-Als u `resourceGroup` de naam instelt van een resourcegroep die niet bestaat, mislukt de implementatie.
+Als u de `resourceGroup` naam instelt van een resource groep die niet bestaat, mislukt de implementatie.
 
-Als u de voorgaande sjabloon wilt testen en de resultaten wilt bekijken, gebruikt u PowerShell of Azure CLI.
+Als u de voor gaande sjabloon wilt testen en de resultaten wilt weer geven, gebruikt u Power shell of Azure CLI.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Als u twee opslagaccounts wilt implementeren in twee resourcegroepen in **hetzelfde abonnement,** gebruikt u:
+Als u twee opslag accounts wilt implementeren voor twee resource groepen in **hetzelfde abonnement**, gebruikt u:
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -138,7 +138,7 @@ New-AzResourceGroupDeployment `
   -secondStorageLocation eastus
 ```
 
-Als u twee opslagaccounts wilt implementeren voor **twee abonnementen,** gebruikt u:
+Als u twee opslag accounts wilt implementeren op **twee abonnementen**, gebruikt u:
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -164,7 +164,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Als u twee opslagaccounts wilt implementeren in twee resourcegroepen in **hetzelfde abonnement,** gebruikt u:
+Als u twee opslag accounts wilt implementeren voor twee resource groepen in **hetzelfde abonnement**, gebruikt u:
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -179,7 +179,7 @@ az deployment group create \
   --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
 ```
 
-Als u twee opslagaccounts wilt implementeren voor **twee abonnementen,** gebruikt u:
+Als u twee opslag accounts wilt implementeren op **twee abonnementen**, gebruikt u:
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -205,20 +205,20 @@ az deployment group create \
 
 ## <a name="use-functions"></a>Functies gebruiken
 
-De functies [resourceGroup()](template-functions-resource.md#resourcegroup) en [subscription()](template-functions-resource.md#subscription) worden anders opgelost op basis van hoe u de sjabloon opgeeft. Wanneer u een koppeling maakt naar een externe sjabloon, worden de functies altijd opgelost in het bereik van die sjabloon. Wanneer u een sjabloon in een `expressionEvaluationOptions` bovenliggende sjabloon plaatst, gebruikt u de eigenschap om op te geven of de functies zijn opgelost voor de brongroep en het abonnement voor de bovenliggende sjabloon of de geneste sjabloon. Stel de `inner` eigenschap in om op te lossen op het bereik voor de geneste sjabloon. Stel de `outer` eigenschap in op het bereik van de bovenliggende sjabloon.
+De functies [resourceGroup ()](template-functions-resource.md#resourcegroup) en [Subscription ()](template-functions-resource.md#subscription) worden op verschillende manieren opgelost, afhankelijk van hoe u de sjabloon opgeeft. Wanneer u een koppeling naar een externe sjabloon maakt, worden de functies altijd omgezet in het bereik voor die sjabloon. Wanneer u een sjabloon in een bovenliggende sjabloon nest, gebruikt u `expressionEvaluationOptions` de eigenschap om op te geven of de functies worden omgezet in de resource groep en het abonnement voor de bovenliggende sjabloon of de geneste sjabloon. Stel de eigenschap in `inner` op om om te zetten in het bereik voor de geneste sjabloon. Stel de eigenschap in `outer` op om om te zetten naar het bereik van de bovenliggende sjabloon.
 
-In de volgende tabel wordt weergegeven of de functies worden opgelost voor de bovenliggende of ingesloten brongroep en het abonnement.
+In de volgende tabel wordt aangegeven of de functies worden omgezet naar de bovenliggende of Inge sloten resource groep en het-abonnement.
 
-| Sjabloontype | Bereik | Oplossing |
+| Sjabloon type | Bereik | Oplossing |
 | ------------- | ----- | ---------- |
-| Geneste        | buitenste (standaard) | Bovenliggende resourcegroep |
-| Geneste        | Innerlijke | Subresourcegroep |
-| Gekoppelde        | N.v.t.   | Subresourcegroep |
+| nest        | Outer (standaard) | Bovenliggende resource groep |
+| nest        | wend | Subresourcegroep |
+| Btrieve        | N.v.t.   | Subresourcegroep |
 
-In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) wordt het volgende voorbeeld weergegeven:
+In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) ziet u:
 
-* geneste sjabloon met standaardbereik (buitenste) scope
-* geneste sjabloon met binnenbereik
+* geneste sjabloon met het standaard bereik (buitenste)
+* geneste sjabloon met binnenste bereik
 * gekoppelde sjabloon
 
 ```json
@@ -315,9 +315,9 @@ In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samp
 }
 ```
 
-Als u de voorgaande sjabloon wilt testen en de resultaten wilt bekijken, gebruikt u PowerShell of Azure CLI.
+Als u de voor gaande sjabloon wilt testen en de resultaten wilt weer geven, gebruikt u Power shell of Azure CLI.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name parentGroup -Location southcentralus
@@ -329,7 +329,7 @@ New-AzResourceGroupDeployment `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
 ```
 
-De uitvoer uit het voorgaande voorbeeld is:
+De uitvoer van het vorige voor beeld is:
 
 ```output
  Name             Type                       Value
@@ -353,7 +353,7 @@ az deployment group create \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
 ```
 
-De uitvoer uit het voorgaande voorbeeld is:
+De uitvoer van het vorige voor beeld is:
 
 ```output
 "outputs": {
@@ -380,6 +380,6 @@ De uitvoer uit het voorgaande voorbeeld is:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [De structuur en de syntaxis van Azure Resource Manager-sjablonen begrijpen](template-syntax.md)als u wilt begrijpen hoe u parameters in uw sjabloon definiëren.
-* Zie [Veelvoorkomende Azure-implementatiefouten oplossen met Azure Resource Manager](common-deployment-errors.md)voor tips over het oplossen van veelvoorkomende implementatiefouten in Azure.
-* Zie [Privésjabloon implementeren met SAS-token voor](secure-template-with-sas-token.md)informatie over het implementeren van een sjabloon waarvoor een SAS-token vereist is.
+* Zie [inzicht in de structuur en syntaxis van Azure Resource Manager sjablonen](template-syntax.md)voor meer informatie over het definiëren van para meters in uw sjabloon.
+* Zie [problemen met algemene Azure-implementatie fouten oplossen met Azure Resource Manager](common-deployment-errors.md)voor tips over het oplossen van veelvoorkomende implementatie fouten.
+* Zie voor meer informatie over het implementeren van een sjabloon waarvoor een SAS-token is vereist een [persoonlijke sjabloon implementeren met SAS-token](secure-template-with-sas-token.md).

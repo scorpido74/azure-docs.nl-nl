@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door - URL Herschrijven | Microsoft Documenten
-description: In dit artikel u begrijpen hoe Azure Front Door URL herschrijven voor uw routes, indien geconfigureerd.
+title: Voor deur van Azure voor het herschrijven van URL'S | Microsoft Docs
+description: Dit artikel helpt u inzicht te krijgen in de manier waarop de URL voor uw routes wordt herschreven door Azure front-deur, indien geconfigureerd.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -12,48 +12,48 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 1e5bd565be7a1cabf08ddf33c65eb12b5294249f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471469"
 ---
-# <a name="url-rewrite-custom-forwarding-path"></a>URL herschrijven (aangepast doorstuurpad)
-Azure Front Door ondersteunt URL-herschrijven door dat u een optioneel **aangepast doorstuurpad** configureren dat u gebruiken bij het maken van het verzoek om door te sturen naar de backend. Als er geen aangepast doorstuurpad wordt opgegeven, kopieert Front Door het pad van de binnenkomende URL naar de URL die in de doorgestuurde aanvraag wordt gebruikt. De hostkoptekst in de doorgestuurde aanvraag is de hostkoptekst zoals deze is geconfigureerd voor de geselecteerde back-end. Lees [Backend Host Header](front-door-backend-pool.md#hostheader) om te leren wat het doet en hoe u deze configureren.
+# <a name="url-rewrite-custom-forwarding-path"></a>URL herschrijven (aangepast pad voor door sturen)
+Azure front-deur ondersteunt het herschrijven van URL'S door een optioneel **aangepast doorstuur traject** te configureren dat moet worden gebruikt bij het maken van de aanvraag om door te sturen naar de back-end. Als er geen aangepast doorstuurpad wordt opgegeven, kopieert Front Door het pad van de binnenkomende URL naar de URL die in de doorgestuurde aanvraag wordt gebruikt. De hostkoptekst in de doorgestuurde aanvraag is de hostkoptekst zoals deze is geconfigureerd voor de geselecteerde back-end. Lees de [back-end-host-header](front-door-backend-pool.md#hostheader) om te ontdekken wat deze doet en hoe u deze kunt configureren.
 
-Het krachtige deel van url-herschrijven met behulp van aangepast doorstuurpad is dat het een deel van het binnenkomende pad kopieert dat overeenkomt met een wildcardpad naar het doorgestuurde pad (deze padsegmenten zijn de **groene** segmenten in het onderstaande voorbeeld):
+Het krachtige deel van het herschrijven van URL'S met behulp van aangepast doorstuur traject is dat er een deel van het binnenkomende pad wordt gekopieerd dat overeenkomt met een pad naar een Joker teken naar het doorgestuurde pad (deze padsegmenten zijn de **groene** segmenten in het onderstaande voor beeld):
 </br>
-![Azure-URL voor de voordeur herschrijven][1]
+![URL voor de Azure front-deur herschrijven][1]
 
-## <a name="url-rewrite-example"></a>Voorbeeld van URL herschrijven
-Overweeg een routeringsregel met de volgende frontendhosts en -paden geconfigureerd:
+## <a name="url-rewrite-example"></a>Voor beeld van URL rewrite
+Overweeg een regel voor door sturen met de volgende frontend-hosts en-paden die zijn geconfigureerd:
 
 | Hosts      | Paden       |
 |------------|-------------|
-| www\.contoso.com | /\*         |
-|            | /foo /foo        |
-|            | /foo/\*     |
+| www\.-contoso.com | /\*         |
+|            | /foo        |
+|            | Foo\*     |
 |            | /foo/bar/\* |
 
-In de eerste kolom van de onderstaande tabel ziet u voorbeelden van binnenkomende aanvragen en in de tweede kolom wordt weergegeven wat de 'meest specifieke' overeenkomende route 'Pad' zou zijn.  De derde en volgende kolommen van de eerste rij van de tabel zijn voorbeelden van geconfigureerde **aangepaste doorstuurpaden,** waarbij de rest van de rijen in die kolommen voorbeelden weergeven van wat het doorgestuurde aanvraagpad zou zijn als het overeenkomt met de aanvraag in die rij.
+In de eerste kolom van de volgende tabel ziet u voor beelden van binnenkomende aanvragen en de tweede kolom laat zien wat de ' meest specifieke ' overeenkomende route ' Path ' zou zijn.  De derde en volgende kolommen van de eerste rij van de tabel zijn voor beelden van geconfigureerde **aangepaste doorstuur paden**, met de rest van de rijen in die kolommen die voor beelden vertegenwoordigen van het pad naar de doorgestuurde aanvraag als deze overeenkomt met de aanvraag in die rij.
 
-Als we bijvoorbeeld over de tweede rij lezen, staat er `www.contoso.com/sub`dat voor binnenkomende `/`aanvraag , als het `/sub`aangepaste doorstuurpad was, het doorgestuurde pad . Als het aangepaste `/fwd/`doorstuurpad was, dan `/fwd/sub`zou het doorgestuurde pad . Enzovoort, voor de resterende kolommen. De benadrukte delen van de **onderstaande** paden geven de gedeelten weer die deel uitmaken van de wildcard-overeenkomst.
+Als we bijvoorbeeld over de tweede rij lezen, wordt de melding gegeven dat voor een inkomende aanvraag `www.contoso.com/sub`, als het aangepaste forwarding- `/`pad was, het doorgestuurde `/sub`pad. Als het aangepaste forwarding- `/fwd/`pad was, zou het doorgestuurde pad zijn `/fwd/sub`. Voor de resterende kolommen. De **gemarkeerde** delen van de paden vertegenwoordigen de delen die deel uitmaken van het Joker teken.
 
 
-| Binnenkomend verzoek       | Meest specifieke matchpad | /          | /fwd/          | /foo/          | /foo/bar/          |
+| Binnenkomende aanvraag       | Pad naar de meest specifieke overeenkomst | /          | /fwd/          | Foo          | /foo/bar/          |
 |------------------------|--------------------------|------------|----------------|----------------|--------------------|
-| www\.contoso.com/            | /\*                      | /          | /fwd/          | /foo/          | /foo/bar/          |
-| www\.contoso.com/**sub**     | /\*                      | /**Sub**   | /fwd/**sub**   | /foo/**sub**   | /foo/bar/**sub**   |
-| www\.contoso.com/**a/b/c**   | /\*                      | /**a/b/c** | /fwd/**a/b/c** | /foo/**a/b/c** | /foo/bar/**a/b/c** |
-| www\.contoso.com/foo         | /foo /foo                     | /          | /fwd/          | /foo/          | /foo/bar/          |
-| www\.contoso.com/foo/        | /foo/\*                  | /          | /fwd/          | /foo/          | /foo/bar/          |
-| www\.contoso.com/foo/**bar** | /foo/\*                  | /**Bar**   | /fwd/**bar**   | /foo/**bar**   | /foo/bar/**bar**   |
+| www\.-contoso.com/            | /\*                      | /          | /fwd/          | Foo          | /foo/bar/          |
+| www\.contoso.com/-**Sub**     | /\*                      | /**chronische**   | /FWD/**Sub**   | /Foo/**Sub**   | /foo/bar/**Sub**   |
+| www\.**-contoso.com/a/b/c**   | /\*                      | /**a/b/c** | /FWD/**a/b/c** | /Foo/**a/b/c** | /foo/bar/**a/b/c** |
+| www\.-contoso.com/Foo         | /foo                     | /          | /fwd/          | Foo          | /foo/bar/          |
+| www\.-contoso.com/Foo/        | Foo\*                  | /          | /fwd/          | Foo          | /foo/bar/          |
+| www\.-contoso.com/Foo/**balk** | Foo\*                  | /**streepje**   | /FWD/-**balk**   | /Foo/-**balk**   | /foo/bar/-**balk**   |
 
 
 ## <a name="optional-settings"></a>Optionele instellingen
-Er zijn aanvullende optionele instellingen die u ook opgeven voor een bepaalde routeringsregelinstellingen:
+Er zijn aanvullende optionele instellingen die u ook kunt opgeven voor de instellingen van een bepaalde routerings regel:
 
-* **Cacheconfiguratie** - Als deze is uitgeschakeld of niet is opgegeven, worden aanvragen die overeenkomen met deze routeringsregel niet geprobeerd inhoud in de cache te gebruiken en wordt deze in plaats daarvan altijd opgehaald vanaf de backend. Lees meer over [Caching met Voordeur](front-door-caching.md).
+* **Cache configuratie** : als deze functie is uitgeschakeld of niet is opgegeven, probeert aanvragen die overeenkomen met deze routerings regel niet in de cache opgeslagen inhoud te gebruiken en wordt in plaats daarvan altijd opgehaald van de back-end. Meer informatie over [caching met de voor deur](front-door-caching.md).
 
 
 

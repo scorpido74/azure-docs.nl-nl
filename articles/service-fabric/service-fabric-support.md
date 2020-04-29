@@ -1,70 +1,70 @@
 ---
-title: Meer informatie over azure servicefabric-ondersteuningsopties
-description: Ondersteunde Azure Service Fabric-clusterversies en koppelingen naar bestanden
+title: Meer informatie over de ondersteunings opties voor Azure Service Fabric
+description: Ondersteunde cluster versies van Azure Service Fabric en koppelingen naar bestands ondersteunings tickets
 author: pkcsf
 ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
 ms.openlocfilehash: 7494f0072f27f2c9b00db7070f19dfc05627eacf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282092"
 ---
-# <a name="azure-service-fabric-support-options"></a>Ondersteuningsopties voor Azure Service Fabric
+# <a name="azure-service-fabric-support-options"></a>Ondersteunings opties voor Azure Service Fabric
 
-Om de juiste ondersteuning te bieden voor uw Service Fabric-clusters waarop u uw toepassingstaken uitvoert, hebben we verschillende opties voor u ingesteld. Afhankelijk van het niveau van de ondersteuning die nodig is en de ernst van het probleem, u de juiste opties kiezen. 
+Voor het leveren van de juiste ondersteuning voor uw Service Fabric clusters waarmee u uw toepassings werk uitvoert, worden er verschillende opties voor u ingesteld. Afhankelijk van het benodigde ondersteunings niveau en de ernst van het probleem, kunt u de juiste opties kiezen. 
 
-## <a name="report-production-issues-or-request-paid-support-for-azure"></a>Productieproblemen rapporteren of betaalde ondersteuning aanvragen voor Azure
+## <a name="report-production-issues-or-request-paid-support-for-azure"></a>Productie problemen melden of betaalde ondersteuning aanvragen voor Azure
 
-Open een ticket voor ondersteuning [op Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) voor het melden van problemen op uw Service Fabric-cluster [die](https://support.microsoft.com/oas/default.aspx?prid=16146)op Azure zijn geïmplementeerd.
+Voor het melden van problemen op uw Service Fabric cluster dat in Azure is geïmplementeerd, opent u een ticket voor ondersteuning [op Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) of [micro soft-ondersteunings portal](https://support.microsoft.com/oas/default.aspx?prid=16146).
 
 Meer informatie over:
  
-- [Ondersteuning van Microsoft voor Azure](https://azure.microsoft.com/support/plans/?b=16.44).
-- [Microsoft premier support](https://support.microsoft.com/en-us/premier).
+- [Ondersteuning van micro soft voor Azure](https://azure.microsoft.com/support/plans/?b=16.44).
+- [Micro soft Premier Support](https://support.microsoft.com/en-us/premier).
 
 > [!Note]
-> Met clusters die op een bronzen betrouwbaarheidslaag of single nodecluster worden uitgevoerd, u alleen testworkloads uitvoeren. Als u problemen ondervindt met een cluster dat draait op de betrouwbaarheid van brons of cluster met één knooppunt, helpt het Ondersteuningsteam van Microsoft u bij het oplossen van het probleem, maar voert het geen rootcauseanalyse uit. Raadpleeg [de betrouwbaarheidskenmerken van het cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) voor meer informatie.
+> Met clusters die worden uitgevoerd op een Bronze-betrouwbaarheids-of een cluster met één knoop punt, kunt u alleen test werkbelastingen uitvoeren. Als u problemen ondervindt met een cluster dat wordt uitgevoerd op Bronze betrouw baarheid of cluster met één knoop punt, helpt het micro soft-ondersteunings team u bij het beperken van het probleem, maar wordt er geen analyse van de hoofd oorzaak uitgevoerd. Raadpleeg [de betrouw bare kenmerken van het cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) voor meer informatie.
 >
-> Voor meer informatie over wat er nodig is voor een productie-klaar cluster, verwijzen wij u naar de [productie gereedheid checklist](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist).
+> Raadpleeg de [controle lijst voor productie voorbereiding](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)voor meer informatie over wat er is vereist voor een cluster dat gereed is voor productie.
 
 <a id="getlivesitesupportonprem"></a>
 
-## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>Productieproblemen melden of betaalde ondersteuning aanvragen voor zelfstandige Service Fabric-clusters
+## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>Productie problemen melden of betaalde ondersteuning aanvragen voor zelfstandige Service Fabric clusters
 
-Voor het melden van problemen op uw Service Fabric-cluster die on-premises of op andere clouds zijn geïmplementeerd, opent u een ticket voor professionele ondersteuning op [de Microsoft-ondersteuningsportal.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+Voor het melden van problemen op uw Service Fabric-cluster die on-premises of in andere Clouds zijn geïmplementeerd, opent u een ticket voor professionele ondersteuning op de [micro soft-ondersteunings portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 Meer informatie over:
 
-- [Professionele ondersteuning van Microsoft voor on-premises.](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)
-- [Microsoft premier support](https://support.microsoft.com/en-us/premier).
+- [Professionele ondersteuning van micro soft voor on-premises](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
+- [Micro soft Premier Support](https://support.microsoft.com/en-us/premier).
 
-## <a name="report-azure-service-fabric-issues"></a>Azure Service Fabric-problemen melden
+## <a name="report-azure-service-fabric-issues"></a>Problemen met Azure-Service Fabric melden
 
-We hebben een GitHub repo opgezet voor het melden van Service Fabric-problemen.  We houden ook actief toezicht op de volgende fora.
+We hebben een GitHub-opslag plaats ingesteld voor het melden van Service Fabric problemen.  De volgende forums worden ook actief bewaakt.
 
-### <a name="github-repo"></a>GitHub repo 
+### <a name="github-repo"></a>GitHub opslag plaats 
 
-Azure Service Fabric-problemen rapporteren over [servicefabric-problemen git repo](https://github.com/Azure/service-fabric-issues). Deze repo is bedoeld voor het melden en bijhouden van problemen met Azure Service Fabric en voor het indienen van kleine functieaanvragen. **Gebruik dit niet om problemen met live-site te melden.**
+Meld problemen met Azure Service Fabric op [service-Fabric-problemen Git opslag plaats](https://github.com/Azure/service-fabric-issues). Deze opslag plaats is bedoeld voor rapportage-en tracerings problemen met Azure Service Fabric en voor het maken van kleine functie aanvragen. **Gebruik deze niet om problemen met Live-sites te melden**.
 
-### <a name="stackoverflow-and-msdn-forums"></a>StackOverflow- en MSDN-forums
+### <a name="stackoverflow-and-msdn-forums"></a>Stack overflow en MSDN-Forums
 
-De [Service Fabric-tag op StackOverflow][stackoverflow] en het [Service Fabric-forum op MSDN][msdn-forum] worden het beste gebruikt voor het stellen van vragen over hoe het platform werkt en hoe u bepaalde taken ermee uitvoeren.
+De [service Fabric-tag op stack overflow][stackoverflow] en het [service Fabric-forum op MSDN][msdn-forum] worden het beste gebruikt voor het stellen van vragen over hoe het platform werkt en hoe u deze taken kunt uitvoeren.
 
-### <a name="azure-feedback-forum"></a>Azure-feedbackforum
+### <a name="azure-feedback-forum"></a>Azure-feedback forum
 
-Het [Azure Feedback Forum for Service Fabric][uservoice-forum] is de beste plek voor het indienen van grote functie-ideeën die u voor het product hebt, omdat we de meest populaire verzoeken bekijken, maken deel uit van onze planning op middellange tot lange termijn. We raden je aan om steun te verzamelen voor je suggesties binnen de community.
+Het [Azure-feedback forum voor service Fabric][uservoice-forum] is de beste plaats voor het verzenden van belang rijke ideeën die u voor het product hebt, zoals we controleren of de populairste aanvragen deel uitmaken van onze middel grote tot lange termijn planning. We raden u aan rally ondersteuning te bieden voor uw suggesties in de community.
 
-## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Preview-versies van Service Fabric - niet ondersteund voor productiegebruik
+## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Preview-versies van Service Fabric-niet ondersteund voor productie gebruik
 
-Van tijd tot tijd brengen we versies uit met belangrijke functies waarop we feedback willen, die worden uitgebracht als previews. Deze preview-versies mogen alleen worden gebruikt voor testdoeleinden. Uw productiecluster moet altijd een ondersteunde, stabiele Service Fabric-versie uitvoeren. Een preview-versie begint altijd met een groot en klein versienummer van 255. Als u bijvoorbeeld een Service Fabric-versie 255.255.5703.949 ziet, mag die versie alleen worden gebruikt in testclusters en is deze in preview. Deze preview releases worden ook aangekondigd op de [Service Fabric team blog](https://blogs.msdn.microsoft.com/azureservicefabric) en zal details over de functies opgenomen.
-Er is geen betaalde ondersteuningsoptie voor deze preview-releases. Gebruik een van de opties die worden vermeld onder [Problemen met Azure Service Fabric melden](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-azure-service-fabric-issues) om vragen te stellen of feedback te geven.
+Van tijd tot tijd brengen we versies uit met belang rijke functies waarop we feedback willen hebben. deze worden uitgebracht als previews. Deze Preview-versies mogen alleen worden gebruikt voor test doeleinden. In uw productie cluster moet altijd een ondersteunde, stabiele, Service Fabric versie worden uitgevoerd. Een preview-versie begint altijd met een primair en secundair versie nummer van 255. Als u bijvoorbeeld een Service Fabric versie 255.255.5703.949 ziet, wordt die release versie alleen gebruikt in test clusters en is deze beschikbaar als preview. Deze Preview-versies worden ook aangekondigd op het [service Fabric team blog](https://blogs.msdn.microsoft.com/azureservicefabric) en bevatten details over de functies die zijn opgenomen.
+Er is geen betaalde ondersteunings optie voor deze Preview-versies. Gebruik een van de opties die worden vermeld onder [rapport over Azure-service Fabric-problemen](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-azure-service-fabric-issues) om vragen te stellen of feedback te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Ondersteunde Service Fabric-versies](service-fabric-versions.md)
+[Ondersteunde Service Fabric versies](service-fabric-versions.md)
 
 <!--references-->
 [msdn-forum]: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureServiceFabric
