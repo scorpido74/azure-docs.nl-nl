@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie - Apache Kafka & Enterprise Security - Azure HDInsight
-description: Zelfstudie - Lees hoe u Apache Ranger-beleidsregels voor Kafka configureert in Azure HDInsight met enterprise security package.
+title: Zelf studie-Apache Kafka & Enter prise Security-Azure HDInsight
+description: 'Zelf studie: informatie over het configureren van Apache zwerver-beleids regels voor Kafka in azure HDInsight met Enterprise Security Package.'
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 58c5b3bdd6d50f2e512cccffe78bd4e70805d729
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78204732"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Zelfstudie: Apache Kafka-beleidsregels configureren in HDInsight met Enterprise Security Package (preview)
@@ -36,7 +36,7 @@ Een [HDInsight Kafka-cluster met Enterprise Security Package](./apache-domain-jo
 
 2. Meld u aan met uw beheerdersreferenties voor Azure Active Directory (AD). Deze referenties zijn niet hetzelfde als de referenties voor het HDInsight-cluster of de SSH-referenties voor het Linux HDInsight knooppunt.
 
-   ![HDInsight Apache Ranger Admin UI](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
+   ![Gebruikers interface van HDInsight Apache zwerver-beheerder](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
 
 ## <a name="create-domain-users"></a>Domeingebruikers maken
 
@@ -48,7 +48,7 @@ Maak een Ranger-beleid voor **sales_user** en **marketing_user**.
 
 1. Open de **beheerinterface van Ranger**.
 
-2. Selecteer ** \<ClusterNaam->_kafka** onder **Kafka**. Er kan één vooraf geconfigureerd beleid worden weergegeven.
+2. Selecteer ** \<clustername>_kafka** onder **Kafka**. Er kan één vooraf geconfigureerd beleid worden weergegeven.
 
 3. Selecteer **Nieuw beleid toevoegen** en voer de volgende waarden in:
 
@@ -64,11 +64,11 @@ Maak een Ranger-beleid voor **sales_user** en **marketing_user**.
    * Gebruik '*' om nul of meer exemplaren van tekens aan te geven.
    * Gebruik '?' om één teken aan te geven.
 
-   ![Apache Ranger Admin UI Beleid maken1](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
+   ![Gebruikers interface voor Apache zwerver-beheerder Policy1 maken](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
 
    Als er niet automatisch een domeingebruiker wordt ingevuld bij **Select User**, wacht u even totdat Ranger is gesynchroniseerd met AAD.
 
-4. Selecteer **Toevoegen** om het beleid op te slaan.
+4. Selecteer **toevoegen** om het beleid op te slaan.
 
 5. Selecteer **Nieuw beleid toevoegen** en voer de volgende waarden in:
 
@@ -79,9 +79,9 @@ Maak een Ranger-beleid voor **sales_user** en **marketing_user**.
    |Select User  |  marketing_user1 |
    |Machtigingen  | Publish, Consume, Create |
 
-   ![Apache Ranger Admin UI Beleid maken2](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
+   ![Gebruikers interface voor Apache zwerver-beheerder Policy2 maken](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
 
-6. Selecteer **Toevoegen** om het beleid op te slaan.
+6. Selecteer **toevoegen** om het beleid op te slaan.
 
 ## <a name="create-topics-in-a-kafka-cluster-with-esp"></a>Onderwerpen maken in een Kafka-cluster met ESP
 
@@ -108,7 +108,7 @@ Twee onderwerpen, `salesevents` en `marketingspend`, maken:
    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
    ```
 
-   Voordat u verder gaat, moet u mogelijk uw ontwikkelomgeving instellen als u dit nog niet hebt gedaan. Je hebt componenten nodig zoals de Java JDK, Apache Maven en een SSH-client met scp. Zie [installatie-instructies](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)voor meer informatie .
+   Voordat u doorgaat, moet u mogelijk uw ontwikkel omgeving instellen als u dat nog niet hebt gedaan. U hebt onderdelen nodig zoals Java JDK, Apache Maven en een SSH-client met SCP. Zie [Setup-instructies](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)voor meer informatie.
 
 1. Download de [voorbeelden voor aan een domein gekoppelde Apache Kafka voor producer/consumer](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 
@@ -145,9 +145,9 @@ Op basis van de geconfigureerde Ranger-beleidsregels kan **sales_user** het onde
 
    Voorbeeld: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
-4. Volg stap 3 onder **Bouwen en implementeer het voorbeeld** in [Zelfstudie: Gebruik de Apache Kafka-producenten en consumenten-API's](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) om ervoor te zorgen dat deze `kafka-producer-consumer.jar` ook beschikbaar zijn voor **sales_user**.
+4. Volg stap 3 onder **Build en implementeer het voor beeld** in [zelf studie: gebruik de Apache Kafka producer-en Consumer](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) - `kafka-producer-consumer.jar` api's om ervoor te zorgen dat het ook beschikbaar is voor **sales_user**.
 
-**Opmerking: Gebruik voor deze zelfstudie de kafka-producer-consumer.jar onder het project "DomainJoined-Producer-Consumer" (niet het project 'DomainJoined-Producer-Consumer', dat is voor niet-domeingebonden scenario's).**
+**Opmerking: voor deze zelf studie gebruikt u het project Kafka-producer-Consumer. jar onder ' DomainJoined-producer-consumer ' (niet de naam onder het project van de producent-consument, dat wil zeggen voor scenario's die niet aan een domein zijn gekoppeld).**
 
 5. Controleer of **sales_user1** het onderwerp `salesevents` kan produceren. Voer hiervoor de volgende opdracht uit:
 
@@ -185,20 +185,20 @@ Op basis van de geconfigureerde Ranger-beleidsregels kan **sales_user** het onde
 
 9. Bekijk de controlegebeurtenissen voor toegang vanuit de gebruikersinterface van Ranger.
 
-   ![Toegangsgebeurtenissen voor de controle van ranger-gebruikersinterface-beleid ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
+   ![Access-gebeurtenissen voor het controleren van gebruikers beleidsregels voor Zwerver ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze toepassing niet meer wilt gebruiken, verwijdert u het Kafka-cluster dat u met de volgende stappen hebt gemaakt:
+Als u deze toepassing niet wilt blijven gebruiken, verwijdert u het Kafka-cluster dat u hebt gemaakt met de volgende stappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Typ **HDInsight** in het **Zoekvak** bovenaan.
 1. Selecteer onder **Services** de optie **HDInsight-clusters**.
 1. Klik in de lijst met HDInsight-clusters die wordt weergegeven, op de **...** naast het cluster dat u voor deze zelfstudie hebt gemaakt. 
-1. Klik **op Verwijderen**. Klik **op Ja**.
+1. Klik op **verwijderen**. Klik op **Ja**.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
-Als kafka-producer-consumer.jar niet werkt in een domein samengevoegd cluster, zorg er dan voor dat u de kafka-producer-consumer.jar gebruikt onder "DomainJoined-Producer-Consumer" project (niet het project onder Producer-Consumer, dat is voor niet-domein geword-scenario's).
+Als Kafka-producer-Consumer. jar niet werkt in een cluster dat lid is van een domein, moet u ervoor zorgen dat u het Kafka-producer-Consumer. jar gebruikt onder het project "DomainJoined-producer-consumer" (niet de versie onder het project van de producent-consument, dat wil zeggen voor scenario's die niet aan een domein zijn toegevoegd).
 
 ## <a name="next-steps"></a>Volgende stappen
 

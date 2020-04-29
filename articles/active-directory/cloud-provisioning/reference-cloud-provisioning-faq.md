@@ -1,6 +1,6 @@
 ---
 title: Veelgestelde vragen over Azure AD Connect-cloudinrichting
-description: In dit document worden veelgestelde vragen voor cloudprovisioning beschreven.
+description: In dit document worden veelgestelde vragen over het inrichten van Clouds beschreven.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,73 +12,73 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fbc1baa86bb81c8975587e84427a72ccc044805e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77916571"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Veelgestelde vragen over Azure Active Directory Connect
 
-Lees meer over veelgestelde vragen voor Azure Active Directory (Azure AD) Connect cloud provisioning.
+Meer informatie over veelgestelde vragen over Azure Active Directory (Azure AD) Connect Cloud provisioning.
 
 ## <a name="general-installation"></a>Algemene installatie
 
-**V: Hoe vaak wordt cloudprovisioning uitgevoerd?**
+**V: hoe vaak wordt de Cloud inrichting uitgevoerd?**
 
-Cloud provisioning is gepland om elke 2 minuten uit te voeren. Elke 2 minuten worden alle wijzigingen van de gebruikers-, groeps- en wachtwoordhash in Azure AD aangebracht.
+De inrichting van de Cloud is gepland om elke 2 minuten te worden uitgevoerd. Elke 2 minuten, alle gebruikers-, groep-en wachtwoord hash-wijzigingen worden ingericht in azure AD.
 
-**V: Het zien van wachtwoordhashsynchronisatiefouten bij de eerste run. Waarom?**
+**V: bekijken van mislukte wachtwoord-hash-synchronisaties bij de eerste uitvoering. Waarom?**
 
-Dit is normaal gedrag. De fouten zijn te wijten aan het gebruikersobject dat niet aanwezig is in Azure AD. Zodra de gebruiker is ingericht voor Azure AD, moeten wachtwoordhashes in de volgende uitvoering worden ingericht. Wacht op een paar runs en bevestig dat wachtwoordhashsynchronisatie de fouten niet meer heeft.
+Dit is normaal gedrag. De fouten worden veroorzaakt doordat het gebruikers object niet aanwezig is in azure AD. Zodra de gebruiker is ingericht voor Azure AD, moeten wacht woord-hashes in de volgende uitvoering worden ingericht. Wacht op een aantal uitvoeringen en controleer of de wachtwoord-hash-synchronisatie geen fouten meer bevat.
 
-**V: Wat gebeurt er als de Active Directory-instantie kenmerken heeft die niet worden ondersteund door cloudprovisoning (bijvoorbeeld directory-extensies)?**
+**V: wat gebeurt er als het Active Directory-exemplaar kenmerken heeft die niet worden ondersteund door Cloud provisoning (bijvoorbeeld Directory-extensies)?**
 
-Cloudprovisioning wordt uitgevoerd en de ondersteunde kenmerken ingericht. De niet-ondersteunde kenmerken worden niet in- en opgenomen in Azure AD. Controleer de directory-extensies in Active Directory en zorg ervoor dat dit kenmerk niet naar Azure AD hoeft te worden doorgegeven. Als een of meer kenmerken vereist zijn, u azure AD Connect-synchronisatie gebruiken of de vereiste informatie verplaatsen naar een van de ondersteunde kenmerken (bijvoorbeeld extensiekenmerken 1-15).
+De inrichting van de Cloud wordt uitgevoerd en de ondersteunde kenmerken worden ingericht. De niet-ondersteunde kenmerken worden niet ingericht in azure AD. Controleer de Directory-extensies in Active Directory en zorg ervoor dat u dit kenmerk niet nodig hebt om naar Azure AD te stromen. Als er een of meer kenmerken zijn vereist, kunt u overwegen Azure AD Connect synchronisatie te gebruiken of de vereiste gegevens te verplaatsen naar een van de ondersteunde kenmerken (bijvoorbeeld extensie kenmerken 1-15).
 
-**V: Wat is het verschil tussen Azure AD Connect-synchronisatie en cloudprovisioning?**
+**V: wat is het verschil tussen Azure AD Connect synchronisatie en Cloud inrichting?**
 
-Met Azure AD Connect-synchronisatie wordt de inrichting uitgevoerd op de on-premises synchronisatieserver. De configuratie wordt opgeslagen op de on-premises synchronisatieserver. Met Azure AD Connect-cloudinrichting wordt de inrichtingsconfiguratie opgeslagen in de cloud en wordt deze in de cloud uitgevoerd als onderdeel van de Azure AD-inrichtingsservice. 
+Met Azure AD Connect Sync wordt het inrichten uitgevoerd op de on-premises synchronisatie server. De configuratie wordt opgeslagen op de on-premises synchronisatie server. Bij Azure AD Connect Cloud inrichting wordt de inrichtings configuratie opgeslagen in de Cloud en uitgevoerd in de Cloud als onderdeel van de Azure AD-inrichtings service. 
 
-**V: Kan ik cloudprovisioning gebruiken om te synchroniseren vanuit meerdere Active Directory-forests?**
+**V: kan ik het inrichten van Clouds voor het synchroniseren vanuit meerdere Active Directory forests gebruiken?**
 
-Ja. Cloudprovisioning kan worden gebruikt om te synchroniseren vanuit meerdere Active Directory-forests. In de omgeving met meerdere bossen moeten alle verwijzingen (bijvoorbeeld beheerder) zich binnen het domein bevinden.  
+Ja. Cloud inrichting kan worden gebruikt om te synchroniseren vanuit meerdere Active Directory forests. In de omgeving met meerdere forests moeten alle verwijzingen (voor beeld, Manager) binnen het domein zijn.  
 
-**V: Hoe wordt de agent bijgewerkt?**
+**V: hoe wordt de agent bijgewerkt?**
 
-De agents worden automatisch geüpgraded door Microsoft. Voor het IT-team vermindert dit de last van het moeten testen en valideren van nieuwe agentversies. 
+De agents worden automatisch bijgewerkt door micro soft. Voor het IT-team vermindert dit de belasting van het testen en valideren van nieuwe agent versies. 
 
-**V: Kan ik de automatische upgrade uitschakelen?**
+**V: kan ik de automatische upgrade uitschakelen?**
 
-Er is geen ondersteunde manier om automatische upgrade uit te schakelen.
+Er wordt geen ondersteunde manier geboden om automatische upgrades uit te scha kelen.
 
-**V: Kan ik het bronanker voor cloudprovisioning wijzigen?**
+**V: kan ik het bron anker voor Cloud inrichting wijzigen?**
 
-Standaard gebruikt cloudprovisioning ms-ds-consistency-GUID met een terugval naar ObjectGUID als bronanker. Er is geen ondersteunde manier om het bronanker te wijzigen.
+Cloud inrichting maakt standaard gebruik van MS-DS-consistentie-GUID met een terugval op ObjectGUID als bron anker. Er is geen ondersteunde manier om het bron anker te wijzigen.
 
-**V: Ik zie nieuwe serviceprincipals met de AD-domeinnaam(en) bij het gebruik van cloudprovisioning. Is het verwacht?**
+**V: Ik zie nieuwe service-principals met de AD-domein naam (en) bij het gebruik van Cloud inrichting. Wordt deze verwacht?**
 
-Ja, cloudprovisioning maakt een serviceprincipal voor de inrichtingsconfiguratie met de domeinnaam als hoofdnaam van de service. Breng geen wijzigingen aan in de hoofdconfiguratie van de service.
+Ja, het inrichten van Clouds maakt een service-principal voor de inrichtings configuratie met de domein naam als Service Principal Name. Breng geen wijzigingen aan in de configuratie van de Service-Principal.
 
-**V: Wat gebeurt er als een gesynchroniseerde gebruiker bij de volgende aanmelding het wachtwoord moet wijzigen?**
+**V: wat gebeurt er wanneer een gesynchroniseerde gebruiker het wacht woord moet wijzigen bij de volgende aanmelding?**
 
-Als wachtwoordhashsynchronisatie is ingeschakeld in cloudprovisioning en de gesynchroniseerde gebruiker is verplicht om wachtwoord te wijzigen bij de volgende aanmelding in on-premises AD, biedt cloudprovisioning geen ingerichte wachtwoordhash in Azure AD. Zodra de gebruiker het wachtwoord wijzigt, wordt de hash van het gebruikerswachtwoord ingericht van AD naar Azure AD.
+Als wacht woord-hash-synchronisatie is ingeschakeld in de Cloud inrichting en de gesynchroniseerde gebruiker moet het wacht woord wijzigen bij de volgende aanmelding bij een on-premises AD, wordt in de Cloud inrichting niet de wachtwoord-hash voor Azure AD ingesteld op gewijzigd. Zodra de gebruiker het wacht woord heeft gewijzigd, wordt de hash van het gebruikers wachtwoord van AD naar Azure AD ingericht.
 
-**V: Ondersteunt cloudprovisioning writeback van ms-ds-consistencyGUID voor elk object?**
+**V: Cloud inrichting ondersteunt het terugschrijven van MS-DS-consistencyGUID voor elk object?**
 
-Nee, cloudprovisioning biedt geen ondersteuning voor writeback van ms-ds-consistencyGUID voor elk object (inclusief gebruikersobjecten). 
+Nee, Cloud inrichting biedt geen ondersteuning voor het terugschrijven van MS-DS-consistencyGUID voor een object (inclusief gebruikers objecten). 
 
-**V: Ik voorstel gebruikers met behulp van cloudprovisioning. Ik heb de configuratie verwijderd. Waarom zie ik nog steeds de oude gesynchroniseerde objecten in Azure AD?** 
+**V: ik richt gebruikers in met het inrichten van de Cloud. Ik heb de configuratie verwijderd. Waarom zie ik nog steeds de oude gesynchroniseerde objecten in azure AD?** 
 
-Wanneer u de configuratie verwijdert, worden de gesynchroniseerde objecten in Azure AD niet opgeschoond in de cloudprovisioning. Als u ervoor wilt zorgen dat u de oude objecten niet hebt, wijzigt u het bereik van de configuratie in een lege groep of organisatie-eenheden. Zodra de inrichting wordt uitgevoerd en de objecten opschonen, schakelt u de configuratie uit en verwijdert u deze. 
+Wanneer u de configuratie verwijdert, worden de gesynchroniseerde objecten in azure AD niet opgeschoond met Cloud inrichting. Om ervoor te zorgen dat u niet over de oude objecten beschikt, wijzigt u het bereik van de configuratie in een lege groep of organisatie-eenheden. Wanneer de inrichting wordt uitgevoerd en de objecten worden opgeschoond, kunt u de configuratie uitschakelen en verwijderen. 
 
-**V: Wat betekent het dat Exchange hybrid niet wordt ondersteund?**
+**V: wat betekent het dat Exchange hybride niet wordt ondersteund?**
 
-Met de functie Hybride implementatie voor Exchange kunnen on-premises en in Office 365 meerdere Exchange-postbussen naast elkaar bestaan. Azure AD Connect synchroniseert een specifieke set kenmerken vanuit Azure AD naar uw on-premises directory.  De cloudprovisioning-agent synchroniseert deze kenmerken momenteel niet terug in uw on-premises directory en wordt dus niet ondersteund als vervanging voor Azure AD Connect.
+Met de functie Hybride implementatie voor Exchange kunnen on-premises en in Office 365 meerdere Exchange-postbussen naast elkaar bestaan. Azure AD Connect synchroniseert een specifieke set kenmerken vanuit Azure AD naar uw on-premises directory.  De Cloud Provisioning agent synchroniseert deze kenmerken momenteel niet terug in uw on-premises Directory en wordt daarom niet ondersteund als vervanging voor Azure AD Connect.
 
-**V: Kan ik de cloudinrichtingsagent installeren op Windows Server Core?**
+**V: kan ik de inrichtings agent voor de Cloud installeren op Windows Server Core?**
 
-Nee, het installeren van de agent op de serverkern wordt niet ondersteund.
+Nee, het installeren van de agent op Server Core wordt niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen 
 

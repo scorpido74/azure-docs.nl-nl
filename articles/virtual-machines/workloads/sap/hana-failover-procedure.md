@@ -1,6 +1,6 @@
 ---
-title: HANA-failoverprocedure naar een rampsite voor SAP HANA op Azure (grote exemplaren) | Microsoft Documenten
-description: Failover uitvoeren naar een noodherstelsite voor SAP HANA op Azure (Grote exemplaren)
+title: HANA-failover-procedure voor een nood site voor SAP HANA op Azure (grote exemplaren) | Microsoft Docs
+description: Failover uitvoeren naar een nood herstel site voor SAP HANA op Azure (grote exemplaren)
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
@@ -14,111 +14,111 @@ ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3fe3ee79318ab9fdc9f2c0e9585051439b76b5cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77617143"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Procedure bij failover van het noodherstel
 
 
 >[!IMPORTANT]
->Dit artikel is geen vervanging voor de SAP HANA-beheerdocumentatie of SAP Notes. Wij verwachten dat u een goed begrip en expertise hebt in SAP HANA administratie en operaties, met name voor back-up, herstel, hoge beschikbaarheid en disaster recovery (DR). In dit artikel worden screenshots van SAP HANA Studio getoond. Inhoud, structuur en de aard van de schermen van SAP-beheertools en de tools zelf kunnen veranderen van SAP HANA-release naar release.
+>Dit artikel is geen vervanging voor de documentatie over SAP HANA beheer of SAP-opmerkingen. Het is belang rijk dat u beschikt over een solide kennis van en ervaring op het SAP HANA beheer en bewerkingen, met name voor back-up, herstel, hoge Beschik baarheid en herstel na nood gevallen (DR). In dit artikel worden scherm afbeeldingen van SAP HANA Studio weer gegeven. De inhoud, de structuur en de aard van de schermen van SAP-beheer Programma's en de hulpprogram ma's zelf kunnen veranderen van SAP HANA release naar release.
 
-Er zijn twee gevallen om rekening mee te houden wanneer u niet naar een DR-site gaat:
+Er zijn twee gevallen waarin u rekening moet houden bij een failover naar een DR-site:
 
-- U hebt de SAP HANA-database nodig om terug te gaan naar de nieuwste status van gegevens. In dit geval is er een selfservicescript waarmee u de failover uitvoeren zonder dat u contact hoeft op te nemen met Microsoft. Voor de failback moet u met Microsoft werken.
-- U wilt deze herstellen naar een opslagmomentopname die niet de nieuwste gerepliceerde momentopname is. In dit geval moet u met Microsoft werken. 
+- U hebt de SAP HANA-data base nodig om terug te gaan naar de meest recente status van de gegevens. In dit geval is er een self-service script waarmee u de failover kunt uitvoeren zonder dat u contact hoeft op te nemen met micro soft. Voor de failback moet u samen werken met micro soft.
+- U wilt herstellen naar een opslag momentopname die niet de meest recente gerepliceerde moment opname is. In dit geval moet u samen werken met micro soft. 
 
 >[!NOTE]
->De volgende stappen moeten worden uitgevoerd op de HANA Large Instance-eenheid, die de DR-eenheid vertegenwoordigt. 
+>De volgende stappen moeten worden uitgevoerd in de HANA-eenheid voor grote instanties, waarmee de DR-eenheid wordt aangeduid. 
  
-Volg de stappen in 'Volledige DR-failover - azure_hana_dr_failover' uitvoeren in [Microsoft-snapshottools voor SAP HANA op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)om te herstellen naar de nieuwste momentopnamen voor gerepliceerde opslag. 
+Als u de meest recente back-upmomentopnamen wilt herstellen, volgt u de stappen in ' Full DR failover-azure_hana_dr_failover uitvoeren ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf). 
 
-Als u meerdere SAP HANA-exemplaren wilt hebben die zijn mislukt, voert u de opdracht azure_hana_dr_failover meerdere keren uit. Voer desgevraagd de SAP HANA SID in die u wilt mislukken en herstelt. 
+Als u meerdere exemplaren van SAP HANA failover wilt uitvoeren, voert u de azure_hana_dr_failover opdracht verschillende keren uit. Geef desgevraagd de SAP HANA SID op waarvoor u een failover wilt uitvoeren en die u wilt herstellen. 
 
 
-U de DR-failover ook testen zonder dat dit gevolgen heeft voor de werkelijke replicatierelatie. Als u een testfailover wilt uitvoeren, voert u de stappen uit in 'Een test DR-failover uitvoeren - azure_hana_test_dr_failover' in [Microsoft-momentopnamehulpprogramma's voor SAP HANA op Azure.](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf) 
+U kunt de DR failover ook testen zonder dat dit van invloed is op de daad werkelijke replicatie relatie. Als u een testfailover wilt uitvoeren, volgt u de stappen in ' test DR failover-azure_hana_test_dr_failover uitvoeren ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf). 
 
 >[!IMPORTANT]
->Voer *geen* productietransacties uit op de instantie die u in de DR-site hebt gemaakt tijdens het testen van **een failover.** De opdracht azure_hana_test_dr_failover maakt een reeks volumes die geen relatie hebben met de primaire site. Hierdoor is synchronisatie terug naar de primaire site *niet* mogelijk. 
+>Voer *geen* productie transacties uit op het exemplaar dat u hebt gemaakt in de Dr-site via het proces van het **testen van een failover**. De opdracht azure_hana_test_dr_failover een set volumes maakt die geen relatie hebben met de primaire site. Als gevolg hiervan is de synchronisatie van de primaire site *niet* mogelijk. 
 
-Als u meerdere SAP HANA-exemplaren wilt testen, voert u het script meerdere keren uit. Voer desgevraagd de SAP HANA SID in van de instantie die u wilt testen op failover. 
+Als u meerdere exemplaren van SAP HANA wilt testen, voert u het script meerdere keren uit. Voer desgevraagd de SAP HANA SID in van het exemplaar dat u wilt testen voor failover. 
 
 >[!NOTE]
->Als u niet naar de DR-site moet gaan om bepaalde gegevens te redden die uren geleden zijn verwijderd en de DR-volumes moeten worden ingesteld op een eerdere momentopname, is deze procedure van toepassing. 
+>Als u een failover naar de DR-site moet uitvoeren om een aantal gegevens te redden die zijn verwijderd en de nood herstel volumes moeten worden ingesteld op een eerdere moment opname, is deze procedure van toepassing. 
 
-1. Schakel het niet-productieexemplaar van HANA uit op de noodhersteleenheid van HANA Large Instances die u uitvoert. Een slapende HANA-productie-instantie is vooraf geïnstalleerd.
-1. Zorg ervoor dat er geen SAP HANA-processen worden uitgevoerd. Gebruik de volgende opdracht voor deze controle:
+1. Sluit het niet-productie-exemplaar van HANA af op de nood herstel eenheid van HANA grote instanties die u uitvoert. Een niet-actieve HANA-productie instantie is vooraf geïnstalleerd.
+1. Zorg ervoor dat er geen SAP HANA processen worden uitgevoerd. Gebruik de volgende opdracht voor deze controle:
 
       `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`.
 
-      De uitvoer moet u het **hdbdaemon-proces** in een gestopte toestand laten zien en geen andere HANA-processen in een lopende of gestarte status.
-1. Bepaal welke momentopnamenaam of SAP HANA-back-up-id u wilt hebben om de noodherstelsite te herstellen. In echte gevallen van noodherstel is deze momentopname meestal de nieuwste momentopname. Als u verloren gegevens wilt herstellen, kiest u een eerdere momentopname.
-1. Neem contact op met Azure Support via een ondersteuningsaanvraag met hoge prioriteit. Vraag om het herstellen van die momentopname met de naam en datum van de momentopname of de HANA-back-up-id op de DR-site. De standaardinstelling is dat de bewerkingszijde alleen het /hana/gegevensvolume herstelt. Als u wilt dat de / hana / logbackups volumes ook hebben, moet u specifiek staat dat. *Herstel het /hana/gedeelde volume niet.* Kies in plaats daarvan specifieke bestanden zoals global.ini uit de **.snapshot-map** en de submappen ervan nadat u het /hana/gedeelde volume opnieuw hebt gemonteerd voor PRD. 
+      In de uitvoer moet het **hdbdaemon** -proces worden weer gegeven met de status gestopt en zijn er geen andere Hana-processen in de actieve of gestarte toestand.
+1. Bepaal op welke naam van de moment opname of SAP HANA back-upserver de nood herstel site moet worden hersteld. In het geval van echt nood herstel cases is deze moment opname doorgaans de laatste moment opname. Als u verloren gegevens wilt herstellen, kiest u een eerdere moment opname.
+1. Neem contact op met de ondersteuning van Azure via een ondersteunings aanvraag met hoge prioriteit. Vraag naar het herstellen van die moment opname met de naam en datum van de moment opname of de HANA-back-upid op de DR-site. De standaard instelling is dat de bewerkingen kant alleen het/Hana/data-volume herstelt. Als u de/Hana/logbackups-volumes ook wilt hebben, moet u deze specifiek aangeven. *Herstel het/Hana/Shared-volume niet.* Kies in plaats daarvan specifieke bestanden als Global. ini uit de map **. snap shot** en de bijbehorende submappen nadat u het/Hana/Shared-volume voor PRD opnieuw hebt gekoppeld. 
 
-   Aan de bewerkingenzijde vinden de volgende stappen plaats:
+   Aan de kant van de bewerkingen worden de volgende stappen uitgevoerd:
 
-   a. De replicatie van momentopnamen van het productievolume naar de noodherstelvolumes wordt gestopt. Deze storing kan al zijn gebeurd als een storing op de productielocatie de reden is dat u de noodherstelprocedure moet uitvoeren.
+   a. De replicatie van moment opnamen van het productie volume naar de herstel volumes voor nood gevallen is gestopt. Deze onderbreking is mogelijk al gebeurd als een storing op de productie site de reden is dat u de nood herstel procedure moet uitvoeren.
    
-   b. De naam van de opslagmomentopname of momentopname met de door u gekozen back-up-id wordt hersteld op de noodherstelvolumes.
+   b. De naam van de opslag momentopname of de moment opname met de back-upid die u hebt gekozen, wordt hersteld op de volumes voor herstel na nood gevallen.
    
-   c. Na het herstel zijn de noodherstelvolumes beschikbaar om te worden gemonteerd op de HANA Large Instance-eenheden in het gebied van noodherstel.
+   c. Na het herstellen zijn de volumes voor herstel na nood gevallen beschikbaar om te worden gekoppeld aan de HANA-eenheden voor grote instanties in het gebied voor herstel na nood gevallen.
       
-1. Monteer de noodherstelvolumes naar de HANA Large Instance-eenheid op de rampherstellocatie. 
-1. Start de slapende SAP HANA-productieinstantie.
-1. Als u ervoor kiest om back-uplogboeken voor transactielogboeken te kopiëren om de RPO-tijd te verkorten, voegt u de back-ups van het transactielogboek samen in de nieuw gemonteerde DR/hana/logback-ups. Overschrijf bestaande back-ups niet. Kopieer nieuwere back-ups die niet zijn gerepliceerd met de nieuwste replicatie van een opslagmomentopname.
-1. U ook afzonderlijke bestanden herstellen uit de momentopnamen die niet zijn gerepliceerd naar het /hana/shared/PRD-volume in de DR Azure-regio.
+1. Koppel de herstel volumes voor nood gevallen aan de HANA-eenheid voor grote instanties in de nood herstel site. 
+1. Start de niet-actieve SAP HANA productie-instantie.
+1. Als u ervoor hebt gekozen om back-uplogboeken van transactie logboeken te kopiëren om de RPO-tijd te verminderen, voegt u de back-ups van het transactie logboek samen in de zojuist gekoppelde DR/Hana/logbackups-Directory Bestaande back-ups worden niet overschreven. Nieuwere back-ups kopiëren die niet zijn gerepliceerd met de laatste replicatie van een opslag momentopname.
+1. U kunt ook afzonderlijke bestanden herstellen uit de moment opnamen die niet zijn gerepliceerd naar het/hana/shared/PRD-volume in de Azure-regio.
 
-In de volgende stappen wordt uitgelegd hoe u de SAP HANA-productie-instantie herstellen op basis van de momentopname van de herstelde opslag en de beschikbare back-ups van het transactielogboek.
+De volgende stappen laten zien hoe u het SAP HANA productie-exemplaar kunt herstellen op basis van de herstelde back-up van de opslag en de beschik bare transactie Logboeken.
 
-1. Wijzig de back-uplocatie in **/hana/logbackups** met SAP HANA Studio.
+1. Wijzig de back-uplocatie in **/Hana/logbackups** met behulp van SAP Hana Studio.
 
-   ![De back-uplocatie voor DR-herstel wijzigen](./media/hana-overview-high-availability-disaster-recovery/change_backup_location_dr1.png)
+   ![De back-uplocatie voor herstel na nood gevallen wijzigen](./media/hana-overview-high-availability-disaster-recovery/change_backup_location_dr1.png)
 
-1. SAP HANA scant de back-upbestandslocaties en stelt de meest recente back-up van het transactielogboek voor om te herstellen. De scan kan enkele minuten duren voordat een scherm als het volgende wordt weergegeven:
+1. SAP HANA doorzoekt de locaties van het back-upbestand en suggereert de meest recente transactie logboek back-up om te herstellen naar. Het kan een paar minuten duren voordat een scherm wordt weer gegeven, zoals in de volgende afbeelding:
 
-   ![Lijst met back-ups van transactielogboeken voor DR-herstel](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG)
+   ![Lijst met back-ups van transactie logboeken voor herstel na nood gevallen](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG)
 
-1. Enkele standaardinstellingen aanpassen:
+1. Pas een aantal van de standaard instellingen aan:
 
-      - **Deltaback-ups wissen.**
-      - Selecteer **Loggebied initialiseren**.
+      - Verwijder **Delta back-ups**.
+      - Selecteer **logboek gebied initialiseren**.
 
-   ![Het loggebied initialiseren instellen](./media/hana-overview-high-availability-disaster-recovery/initialize_log_dr3.PNG)
+   ![Het gebied voor het initialiseren van het logboek instellen](./media/hana-overview-high-availability-disaster-recovery/initialize_log_dr3.PNG)
 
 1. Selecteer **Finish**.
 
-   ![Het DR-herstel voltooien](./media/hana-overview-high-availability-disaster-recovery/finish_dr4.PNG)
+   ![De herstel bewerking voor nood gevallen volt ooien](./media/hana-overview-high-availability-disaster-recovery/finish_dr4.PNG)
 
-Er moet een voortgangsvenster verschijnen, zoals hier wordt weergegeven. Houd er rekening mee dat het voorbeeld is van een herstel herstel na noodgevallen van een sap HANA-configuratie met drie nodes.
+Er moet een voortgangs venster worden weer gegeven, zoals het. Denk eraan dat het voor beeld een herstel na nood geval is van een scale-out-SAP HANA configuratie met drie knoop punten.
 
-![Voortgang herstellen](./media/hana-overview-high-availability-disaster-recovery/restore_progress_dr5.PNG)
+![Voortgang van herstellen](./media/hana-overview-high-availability-disaster-recovery/restore_progress_dr5.PNG)
 
-Als het herstel niet meer reageert op het scherm **Voltooien** en het voortgangsscherm niet wordt weergegeven, bevestigt u of alle SAP HANA-exemplaren op de werknemersknooppunten worden uitgevoerd. Start indien nodig de SAP HANA-exemplaren handmatig.
+Als de herstel bewerking niet meer reageert op het **eind** scherm en het scherm wordt niet weer gegeven, controleert u of alle SAP Hana exemplaren op de worker-knoop punten worden uitgevoerd. Als dat nodig is, start u de SAP HANA exemplaren hand matig.
 
 
-## <a name="failback-from-a-dr-to-a-production-site"></a>Failback van een DR naar een productielocatie
-U niet terug van een DR naar een productiesite. Laten we eens kijken naar een scenario waarin de failover naar de rampherstelsite werd veroorzaakt door problemen in de productie-Azure-regio en niet door uw behoefte om verloren gegevens te herstellen. 
+## <a name="failback-from-a-dr-to-a-production-site"></a>Failback van een DR-naar-productie site
+U kunt een failover uitvoeren van een DR naar een productie site. Laten we eens kijken naar een scenario waarin de failover naar de site voor herstel na nood gevallen is veroorzaakt door problemen in de Azure-regio voor productie en niet door de nood zaak om verloren gegevens te herstellen. 
 
-U voert uw SAP-productieworkload al een tijdje uit op de noodherstelsite. Als de problemen in de productiesite zijn opgelost, wilt u niet terug naar uw productiesite. Omdat u geen gegevens verliezen, omvat de stap terug naar de productiesite verschillende stappen en nauwe samenwerking met het SAP HANA-team voor Azure-operationsteam. Het is aan u om het operationele team te activeren om te beginnen met het synchroniseren terug naar de productiesite nadat de problemen zijn opgelost.
+U hebt uw SAP-productie werk belasting voor een tijdje uitgevoerd op de site voor nood herstel. Wanneer de problemen in de productie site zijn opgelost, wilt u een failback uitvoeren naar uw productie site. Omdat er geen gegevens verloren kunnen gaan, moet de stap in de productie site een aantal stappen uitvoeren en de samen werking met de SAP HANA op het Azure Operations-team sluiten. Het is aan u om het operations-team te activeren om te beginnen met het synchroniseren van de productie site nadat de problemen zijn opgelost.
 
 Volg deze stappen:
 
-1. Het SAP HANA-operationele team voor Azure-bewerkingen krijgt de trigger om de productieopslagvolumes te synchroniseren vanaf de opslagvolumes voor noodherstel, die nu de productiestatus vertegenwoordigen. In deze toestand wordt de HANA Large Instance-eenheid in de productielocatie afgesloten.
-1. Het SAP HANA op Azure operations-team controleert de replicatie en zorgt ervoor dat deze wordt ingehaald voordat ze u hiervan op de hoogte stellen.
-1. U sluit de toepassingen af die de productie HANA Instance gebruiken in de ramprecoverysite. U voert vervolgens een BACK-up van het HANA-transactielogboek uit. Vervolgens stopt u het HANA-exemplaar dat wordt uitgevoerd op de HANA Large Instance-eenheden in de rampherstelsite.
-1. Nadat het HANA-exemplaar dat wordt uitgevoerd in de HANA Large Instance-eenheid op de rampherstelsite is uitgeschakeld, synchroniseert het operationele team de schijfvolumes handmatig opnieuw.
-1. Het SAP HANA-team voor Azure-bewerkingen start de HANA Large Instance-eenheid opnieuw in de productiesite. Ze geven het aan jou. U zorgt ervoor dat de SAP HANA-instantie zich in een afsluitstatus bevindt op het opstartmoment van de EENHEID HANA Large Instance.
-1. U voert dezelfde stappen voor het herstellen van de database uit als toen u eerder niet naar de herstelsite voor noodgevallen ging.
+1. De SAP HANA op het Azure Operations-Team haalt de trigger op voor het synchroniseren van de productie opslag volumes van de opslag volumes voor herstel na nood gevallen, die nu de productie status vertegenwoordigen. In deze status wordt de HANA-eenheid voor grote instanties in de productie site afgesloten.
+1. Het SAP HANA van het Azure-team controleert de replicatie en zorgt ervoor dat deze wordt gedetecteerd voordat ze u op de hoogte stellen.
+1. U sluit de toepassingen af die gebruikmaken van het productie HANA-exemplaar in de nood herstel site. Vervolgens voert u een HANA-back-up van het transactie logboek uit. Vervolgens stopt u de HANA-instantie die wordt uitgevoerd op de HANA grote instantie-eenheden op de site voor nood herstel.
+1. Nadat het HANA-exemplaar dat wordt uitgevoerd in de HANA-eenheid voor grote instanties in de nood herstel site wordt afgesloten, synchroniseert het operations-team de schijf volumes hand matig opnieuw.
+1. De SAP HANA op het Azure Operations-team start de HANA-eenheid voor grote instanties in de productie site opnieuw. Ze leveren het naar u. U moet ervoor zorgen dat het SAP HANA-exemplaar zich in de opstart modus bevindt tijdens het opstarten van de HANA-eenheid voor grote exemplaren.
+1. U voert dezelfde stappen voor het herstellen van de data base uit die u eerder hebt uitgevoerd tijdens een eerdere failover naar de nood herstel site.
 
-## <a name="monitor-disaster-recovery-replication"></a>Herstelreplicatie na noodgevallen controleren
+## <a name="monitor-disaster-recovery-replication"></a>Replicatie voor herstel na nood gevallen controleren
 
-Voer het script `azure_hana_replication_status`uit om de status van de voortgang van de opslagreplicatie te controleren. Deze opdracht moet worden uitgevoerd vanaf een eenheid die wordt uitgevoerd in de locatie voor noodherstel om te functioneren zoals verwacht. De opdracht werkt, ongeacht of replicatie actief is. De opdracht kan worden uitgevoerd voor elke HANA Large Instance-eenheid van uw tenant op de locatie voor noodherstel. Het kan niet worden gebruikt om details over het opstartvolume te verkrijgen. 
+Voer het script `azure_hana_replication_status`uit om de status van de voortgang van de opslag replicatie te controleren. Deze opdracht moet worden uitgevoerd vanuit een eenheid die wordt uitgevoerd op de locatie voor nood herstel, zodat deze werkt zoals verwacht. De opdracht werkt niet ongeacht of de replicatie actief is. De opdracht kan worden uitgevoerd voor elke HANA grote instantie-eenheid van uw Tenant op de locatie voor nood herstel. Het kan niet worden gebruikt om details over het opstart volume op te halen. 
 
-Zie 'Dr-replicatiestatus - azure_hana_replication_status' in [Microsoft-snapshottools voor SAP HANA op Azure voor](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)meer informatie over de opdracht en de uitvoer.
+Zie ' Get DR Replication status-azure_hana_replication_status ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)voor meer informatie over de opdracht en de uitvoer.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie [Monitor en problemen van HANA-kant](hana-monitor-troubleshoot.md).
+- Zie [monitor en probleem oplossing van Hana-zijde](hana-monitor-troubleshoot.md).

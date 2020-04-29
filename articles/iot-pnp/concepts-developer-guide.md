@@ -1,6 +1,6 @@
 ---
-title: Ontwikkelaarshandleiding - IoT Plug and Play Preview | Microsoft Documenten
-description: Beschrijving van apparaatmodellering voor IoT-ontwikkelaars plug- en play-ontwikkelaars
+title: Ontwikkelaars handleiding-IoT Plug en Play preview | Microsoft Docs
+description: Beschrijving van Device Modeling voor IoT Plug en Play-ontwikkel aars
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/26/2019
@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77605219"
 ---
-# <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT Plug and Play Preview-modelleringshandleiding
+# <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>Ontwikkelaars handleiding voor IoT Plug en Play preview-modellen
 
-Met IoT Plug and Play Preview u apparaten bouwen die reclame maken voor hun mogelijkheden voor Azure IoT-toepassingen. IoT Plug and Play-apparaten vereisen geen handmatige configuratie wanneer een klant ze verbindt met IoT Plug en Play-toepassingen. IoT Central is een voorbeeld van een IoT Plug and Play-applicatie.
+Met IoT Plug en Play preview kunt u apparaten bouwen die hun mogelijkheden adverteren voor Azure IoT-toepassingen. IoT Plug en Play-apparaten hoeven niet hand matig te worden geconfigureerd wanneer een klant deze verbindt met IoT-Plug en Play toepassingen. IoT Central is een voor beeld van een IoT-Plug en Play toepassing.
 
-Als u een IoT Plug and Play-apparaat wilt bouwen, moet u een apparaatbeschrijving maken. De beschrijving wordt gedaan met een eenvoudige definitie taal genaamd Digital Twins Definition Language (DTDL).
+Als u een IoT Plug en Play-apparaat wilt bouwen, moet u een apparaatbeschrijving maken. De beschrijving wordt uitgevoerd met een eenvoudige definitie taal met de naam Digital Apparaatdubbels Definition Language (DTDL).
 
-## <a name="device-capability-model"></a>Apparaatcapaciteitsmodel
+## <a name="device-capability-model"></a>Mogelijkheidsprofiel
 
-Met DTDL maakt u een _apparaatcapaciteitsmodel_ om de onderdelen van uw apparaat te beschrijven. Een typisch IoT-apparaat bestaat uit:
+Met DTDL maakt u een _hulp middel_ voor het maken van een apparaat om de onderdelen van uw apparaat te beschrijven. Een typisch IoT-apparaat bestaat uit:
 
-- Aangepaste onderdelen, dat zijn de dingen die uw apparaat uniek maken.
-- Standaardonderdelen, dingen die voor alle apparaten gebruikelijk zijn.
+- Aangepaste onderdelen, die de dingen zijn die uw apparaat uniek maken.
+- Standaard onderdelen, die voor alle apparaten gebruikelijk zijn.
 
-Deze onderdelen worden _interfaces_ genoemd in een apparaatcapaciteitsmodel. Interfaces definiëren de details van elk onderdeel dat uw apparaat implementeert.
+Deze onderdelen worden _interfaces_ genoemd in een model voor het maken van een apparaat. Interfaces definiëren de details van elk onderdeel dat door uw apparaat wordt geïmplementeerd.
 
-In het volgende voorbeeld wordt het apparaatcapaciteitsmodel voor een thermostaatapparaat weergegeven:
+In het volgende voor beeld wordt het mogelijkheidsprofiel voor een thermo staat weer gegeven:
 
 ```json
 {
@@ -49,29 +49,29 @@ In het volgende voorbeeld wordt het apparaatcapaciteitsmodel voor een thermostaa
 }
 ```
 
-Een capaciteitsmodel heeft een aantal vereiste velden:
+Een mogelijkheidsprofiel heeft enkele vereiste velden:
 
-- `@id`: een unieke ID in de vorm van een eenvoudige uniform resourcenaam.
-- `@type`: verklaart dat dit object een capaciteitsmodel is.
-- `@context`: geeft de DTDL-versie op die voor het capaciteitsmodel wordt gebruikt.
-- `implements`: geeft een overzicht van de interfaces die uw apparaat implementeert.
+- `@id`: een unieke ID in de vorm van een eenvoudige, uniforme resource naam.
+- `@type`: declareert dat dit object een mogelijkheidsprofiel is.
+- `@context`: Hiermee geeft u de DTDL-versie op die wordt gebruikt voor het functionaliteits model.
+- `implements`: hier worden de interfaces weer gegeven die uw apparaat implementeert.
 
-Elke vermelding in de lijst met interfaces in de sectie Werktuigen heeft een:
+Elk item in de lijst met interfaces in de sectie implements heeft een:
 
-- `name`: de programmeernaam van de interface.
-- `schema`: de interface die het capaciteitsmodel implementeert.
+- `name`: de programmeer naam van de interface.
+- `schema`: de interface die het functionaliteits model implementeert.
 
-Er zijn extra optionele velden die u gebruiken om meer details toe te voegen aan het capaciteitsmodel, zoals weergavenaam en beschrijving. Interfaces die binnen een capaciteitsmodel worden gedeclareerd, kunnen worden beschouwd als onderdelen van het apparaat. Voor openbare preview kan de interfacelijst slechts één vermelding per schema bevatten.
+Er zijn aanvullende optionele velden die u kunt gebruiken om meer informatie toe te voegen aan het mogelijkheidsprofiel, zoals weergave naam en beschrijving. Interfaces die zijn gedeclareerd in een mogelijkheidsprofiel, kunnen worden beschouwd als onderdelen van het apparaat. Voor de open bare preview mag de interface lijst slechts één item per schema bevatten.
 
 ## <a name="interface"></a>Interface
 
-Met DTDL beschrijft u de mogelijkheden van uw apparaat met behulp van interfaces. Interfaces beschrijven de _eigenschappen_, _telemetrie_en _opdrachten_ een deel van uw apparaat implementeert:
+Met DTDL beschrijft u de mogelijkheden van uw apparaat met behulp van interfaces. Interfaces beschrijven de _Eigenschappen_, _telemetrie_en _opdrachten_ die een deel van uw apparaat implementeert:
 
-- `Properties`. Eigenschappen zijn gegevensvelden die de status van uw apparaat vertegenwoordigen. Gebruik eigenschappen om de duurzame toestand van het apparaat weer te geven, zoals de aan-uit-staat van een koelvloeistofpomp. Eigenschappen kunnen ook basiseigenschappen van het apparaat weergeven, zoals de firmwareversie van het apparaat. U eigenschappen declareren als alleen-lezen of beschrijfbaar.
-- `Telemetry`. Telemetrievelden vertegenwoordigen metingen van sensoren. Wanneer uw apparaat een sensormeting uitvoert, moet het een telemetriegebeurtenis met de sensorgegevens verzenden.
-- `Commands`. Opdrachten vertegenwoordigen methoden die gebruikers van uw apparaat op het apparaat kunnen uitvoeren. Bijvoorbeeld een resetopdracht of een opdracht om een ventilator in- of uit te schakelen.
+- `Properties`. Eigenschappen zijn gegevens velden die de status van uw apparaat vertegenwoordigen. Gebruik eigenschappen om de duurzame status van het apparaat aan te geven, zoals de status aan van een pomp van een koel vloeistof. Eigenschappen kunnen ook basis eigenschappen van apparaten vertegenwoordigen, zoals de firmware versie van het apparaat. U kunt eigenschappen declareren als alleen-lezen of beschrijfbaar.
+- `Telemetry`. Telemetrie-velden vertegenwoordigen metingen van Sens oren. Wanneer uw apparaat een sensor meting afneemt, moet er een telemetrie-gebeurtenis worden verzonden die de sensor gegevens bevat.
+- `Commands`. Opdrachten vertegenwoordigen methoden die gebruikers van uw apparaat op het apparaat kunnen uitvoeren. Bijvoorbeeld een reset opdracht of een opdracht om een ventilator in of uit te scha kelen.
 
-In het volgende voorbeeld wordt de interface voor een thermostaatapparaat weergegeven:
+In het volgende voor beeld wordt de interface voor een thermo staat weer gegeven:
 
 ```json
 {
@@ -88,60 +88,60 @@ In het volgende voorbeeld wordt de interface voor een thermostaatapparaat weerge
 }
 ```
 
-Een interface heeft een aantal vereiste velden:
+Een interface bevat enkele vereiste velden:
 
-- `@id`: een unieke ID in de vorm van een eenvoudige uniform resourcenaam.
-- `@type`: verklaart dat dit object een interface is.
-- `@context`: geeft de DTDL-versie op die voor de interface wordt gebruikt.
-- `contents`: geeft een overzicht van de eigenschappen, telemetrie en opdrachten die deel uitmaken van uw apparaat.
+- `@id`: een unieke ID in de vorm van een eenvoudige, uniforme resource naam.
+- `@type`: declareert dat dit object een interface is.
+- `@context`: Hiermee geeft u de DTDL-versie op die voor de interface wordt gebruikt.
+- `contents`: hier worden de eigenschappen, telemetrie en opdrachten vermeld die het apparaat vormen.
 
-In dit eenvoudige voorbeeld is er slechts één telemetrieveld. Een minimale veldbeschrijving heeft een:
+In dit eenvoudige voor beeld is er slechts één telemetrie-veld. Een minimale veld Beschrijving heeft een:
 
-- `@type`: geeft het type `Telemetry`vermogen `Property`aan: , , of `Command`.
-- `name`: geeft de naam van de telemetriewaarde.
-- `schema`: geeft het gegevenstype voor de telemetrie op. Deze waarde kan een primitief type zijn, zoals dubbel, geheel getal, booleaan of tekenreeks. Complexe objecttypen, arrays en kaarten worden ook ondersteund.
+- `@type`: Hiermee geeft u het type mogelijkheid `Telemetry`: `Property`, of `Command`.
+- `name`: Hiermee geeft u de naam van de telemetrie-waarde op.
+- `schema`: Hiermee geeft u het gegevens type voor de telemetrie op. Deze waarde kan een primitief type zijn, zoals double, integer, Boolean of string. Complexe object typen, matrices en Maps worden ook ondersteund.
 
-In andere optionele velden, zoals weergavenaam en beschrijving, u meer details toevoegen aan de interface en mogelijkheden.
+Met andere optionele velden, zoals weergave naam en-beschrijving, kunt u meer details toevoegen aan de interface en de mogelijkheden.
 
 ### <a name="properties"></a>Eigenschappen
 
-Standaard zijn eigenschappen alleen-lezen. Alleen-lezen eigenschappen betekenen dat het apparaat waarde-updates voor de eigenschap rapporteert aan uw IoT-hub. Uw IoT-hub kan de waarde van een alleen-lezen eigenschap niet instellen.
+Eigenschappen zijn standaard alleen-lezen. Alleen-lezen eigenschappen betekenen dat het apparaat de waarde-instellingen van de eigenschapwaarde rapporteert aan uw IoT-hub. Uw IoT-hub kan de waarde van een alleen-lezen eigenschap niet instellen.
 
-U een eigenschap ook markeren als schrijfbaar op een interface. Een apparaat kan een update ontvangen naar een schrijfbare eigenschap van uw IoT-hub en waarde-updates van de eigenschap rapporteren aan uw hub.
+U kunt een eigenschap ook markeren als beschrijfbaar op een interface. Een apparaat kan een update ontvangen van een Beschrijf bare eigenschap van uw IoT-hub en het rapporteren van eigenschaps waarden voor uw hub.
 
-Apparaten hoeven niet te worden verbonden met het instellen van eigenschapswaarden. De bijgewerkte waarden worden overgedragen wanneer het apparaat vervolgens verbinding maakt met de hub. Dit gedrag is van toepassing op zowel alleen-lezen als schrijfbare eigenschappen.
+Apparaten hoeven geen verbinding te zijn om eigenschaps waarden in te stellen. De bijgewerkte waarden worden overgebracht wanneer het apparaat de volgende keer verbinding maakt met de hub. Dit gedrag is van toepassing op zowel alleen-lezen als schrijf bare eigenschappen.
 
-Gebruik geen eigenschappen om telemetrie vanaf uw apparaat te verzenden. Bijvoorbeeld, een alleen-lezen `temperatureSetting=80` eigenschap, zoals moet betekenen dat het apparaat temperatuur is ingesteld op 80, en het apparaat probeert te krijgen of verblijf op, deze temperatuur.
+Gebruik eigenschappen niet voor het verzenden van telemetrie van uw apparaat. Een ReadOnly-eigenschap zoals bijvoorbeeld `temperatureSetting=80` moet betekenen dat de temperatuur van het apparaat is ingesteld op 80 en dat het apparaat probeert te krijgen, of op deze Tempe ratuur blijft.
 
-Voor beschrijfbare eigenschappen retourneert de apparaattoepassing een gewenste statusstatuscode, -versie en -beschrijving om aan te geven of de eigenschapswaarde is ontvangen en toegepast.
+Voor Beschrijf bare eigenschappen retourneert de apparaatnaam een gewenste status code, versie en beschrijving om aan te geven of de toepassing de eigenschaps waarde heeft ontvangen en toegepast.
 
 ### <a name="telemetry"></a>Telemetrie
 
-Standaard leidt IoT Hub alle telemetrieberichten van apparaten naar het [ingebouwde servicegerichte eindpunt **(berichten/gebeurtenissen)**](../iot-hub/iot-hub-devguide-messages-read-builtin.md) dat compatibel is met [gebeurtenishubs.](https://azure.microsoft.com/documentation/services/event-hubs/)
+IoT Hub routert standaard alle telemetrie-berichten van apparaten naar het [ingebouwde eind punt**messages/events**](../iot-hub/iot-hub-devguide-messages-read-builtin.md) dat compatibel is met [Event hubs](https://azure.microsoft.com/documentation/services/event-hubs/).
 
-U de [aangepaste eindpunten en routeringsregels van IoT Hub](../iot-hub/iot-hub-devguide-messages-d2c.md) gebruiken om telemetrie naar andere bestemmingen te verzenden, zoals blob-opslag of andere gebeurtenishubs. Routeringsregels gebruiken berichteigenschappen om berichten te selecteren.
+U kunt [de aangepaste eind punten en routerings regels van IOT hub](../iot-hub/iot-hub-devguide-messages-d2c.md) gebruiken om telemetrie te verzenden naar andere bestemmingen, zoals Blob Storage of andere Event hubs. Routerings regels gebruiken bericht eigenschappen om berichten te selecteren.
 
 ### <a name="commands"></a>Opdrachten
 
-Opdrachten zijn synchroon of asynchroon. Een synchrone opdracht moet standaard binnen 30 seconden worden uitgevoerd en het apparaat moet zijn aangesloten wanneer de opdracht arriveert. Als het apparaat op tijd reageert of als het apparaat niet is aangesloten, mislukt de opdracht.
+Opdrachten zijn ofwel synchroon of asynchroon. Een synchrone opdracht moet standaard binnen 30 seconden worden uitgevoerd en het apparaat moet zijn verbonden als de opdracht binnenkomt. Als het apparaat op tijd reageert of als het apparaat niet is verbonden, mislukt de opdracht.
 
-Gebruik asynchrone opdrachten voor langlopende bewerkingen. Het apparaat verzendt voortgangsgegevens via telemetrieberichten. Deze voortgangsberichten hebben de volgende kopteksteigenschappen:
+Gebruik asynchrone opdrachten voor langlopende bewerkingen. Het apparaat verzendt voortgangs informatie met behulp van telemetrie-berichten. Deze voortgangs berichten hebben de volgende header-eigenschappen:
 
-- `iothub-command-name`: de opdrachtnaam, `UpdateFirmware`bijvoorbeeld .
-- `iothub-command-request-id`: de aanvraag-id die aan de serverzijde wordt gegenereerd en in het eerste gesprek naar het apparaat wordt verzonden.
-- `iothub-interface-id`: De id van de interface waarop deze `urn:example:AssetTracker:1`opdracht is gedefinieerd, bijvoorbeeld .
- `iothub-interface-name`: de instantienaam van deze `myAssetTracker`interface, bijvoorbeeld .
-- `iothub-command-statuscode`: de statuscode die van `202`het apparaat wordt geretourneerd, bijvoorbeeld .
+- `iothub-command-name`: de naam van de opdracht, `UpdateFirmware`bijvoorbeeld.
+- `iothub-command-request-id`: de aanvraag-ID die is gegenereerd aan de server zijde en die tijdens de eerste aanroep naar het apparaat wordt verzonden.
+- `iothub-interface-id`: De ID van de interface waarop deze opdracht is gedefinieerd, bijvoorbeeld `urn:example:AssetTracker:1`.
+ `iothub-interface-name`: de naam van de instantie van deze interface, `myAssetTracker`bijvoorbeeld.
+- `iothub-command-statuscode`: de status code die is geretourneerd van het apparaat, `202`bijvoorbeeld.
 
 ## <a name="register-a-device"></a>Een apparaat registreren
 
-IoT Plug and Play maakt het eenvoudig om reclame te maken voor de mogelijkheden van uw apparaat. Met IoT Plug and Play moet u, nadat uw apparaat verbinding maakt met IoT Hub, uw apparaatcapaciteitsmodel registreren. Registratie stelt klanten in staat om de IoT Plug and Play-mogelijkheden van uw apparaat te gebruiken.
+IoT Plug en Play maakt het eenvoudig om de mogelijkheden van uw apparaat te adverteren. Met IoT Plug en Play, nadat uw apparaat verbinding heeft gemaakt met IoT Hub, moet u het mogelijkheidsprofiel registreren. Met registratie kunnen klanten gebruikmaken van de IoT Plug en Play mogelijkheden van uw apparaat.
 
-In deze handleiding ziet u hoe u een apparaat registreert met de Azure IoT Device SDK voor C.
+In deze hand leiding wordt beschreven hoe u een apparaat registreert met behulp van de Azure IoT Device SDK voor C.
 
-Voor elke interface die uw apparaat implementeert, moet u een interface maken en deze verbinden met de implementatie ervan.
+Voor elke interface die uw apparaat implementeert, moet u een interface maken en deze verbinden met de implementatie.
 
-Voor de eerder getoonde thermostaatinterface, met behulp van de C SDK, maakt en verbindt u de thermostaatinterface met de implementatie ervan:
+Voor de weer gegeven Thermo staat-interface gebruikt u de C SDK om de Thermo staat-interface te maken en te verbinden met de implementatie:
 
 ```c
 DIGITALTWIN_INTERFACE_HANDLE thermostatInterfaceHandle;
@@ -164,7 +164,7 @@ result = DigitalTwin_Interface_SetPropertiesUpdatedCallbacks(
 
 Herhaal deze code voor elke interface die uw apparaat implementeert.
 
-Nadat u een interface hebt gemaakt, registreert u het model en de interfaces van uw apparaatmogelijkheid met uw IoT-hub:
+Nadat u een interface hebt gemaakt, registreert u het mogelijkheidsprofiel en de interfaces van uw IoT-hub:
 
 ```c
 DIGITALTWIN_INTERFACE_CLIENT_HANDLE interfaces[2];
@@ -180,46 +180,46 @@ result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
 
 ## <a name="use-a-device"></a>Een apparaat gebruiken
 
-Met IoT Plug and Play u apparaten gebruiken die hun mogelijkheden hebben geregistreerd met uw IoT-hub. U hebt bijvoorbeeld rechtstreeks toegang tot de eigenschappen en opdrachten van een apparaat.
+Met IoT Plug en Play kunt u apparaten gebruiken die hun mogelijkheden hebben geregistreerd bij uw IoT-hub. U kunt bijvoorbeeld rechtstreeks toegang krijgen tot de eigenschappen en opdrachten van een apparaat.
 
-Als u een IoT Plug and Play-apparaat wilt gebruiken dat is verbonden met uw IoT-hub, gebruikt u de IoT Hub REST API of een van de SDK's in de IoT-taal. In de volgende voorbeelden wordt de IoT Hub REST API gebruikt. De huidige versie van `2019-07-01-preview`de API is . Toevoegen `?api-version=2019-07-01-preview` aan uw REST PI-oproepen.
+Als u een IoT-Plug en Play apparaat wilt gebruiken dat is verbonden met uw IoT-hub, gebruikt u de IoT Hub REST API of een van de IoT-taal-Sdk's. De volgende voor beelden gebruiken de IoT Hub REST API. De huidige versie van de API is `2019-07-01-preview`. Voeg `?api-version=2019-07-01-preview` toe aan uw rest Pi-aanroepen.
 
-Om de waarde van een apparaateigenschap te`fwVersion`krijgen, `DeviceInformation` zoals de firmwareversie ( ) in de interface in de thermostaat, gebruikt u de digitale tweelingEN REST API.
+Als u de waarde van een eigenschap apparaat wilt ophalen, zoals de firmware versie`fwVersion`() in `DeviceInformation` de interface van de Thermo staat, gebruikt u de digitale apparaatdubbels rest API.
 
-Als uw thermostaatapparaat `t-123`wordt aangeroepen, krijgt u alle eigenschappen op alle interfaces die door uw apparaat zijn geïmplementeerd met een REST API GET-aanroep:
+Als uw Thermo staat-apparaat `t-123`wordt aangeroepen, krijgt u de alle eigenschappen van alle interfaces die door uw apparaat worden geïmplementeerd met een rest API Get-aanroep:
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-Meer in het algemeen worden alle eigenschappen van alle `{device-id}` interfaces geopend met deze REST API-sjabloon waar de id voor het apparaat is:
+Meer in het algemeen zijn alle eigenschappen op alle interfaces toegankelijk met deze REST API sjabloon `{device-id}` , waarbij de id is van het apparaat:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
 ```
 
-Als u de naam van de `deviceInformation`interface kent, zoals , en eigenschappen voor die specifieke interface wilt opvragen, moet u het verzoek op naam naar een specifieke interface scopen:
+Als u de naam van de interface kent, zoals `deviceInformation`en u eigenschappen voor die specifieke interface wilt ophalen, moet u de aanvraag op naam bereiken voor een specifieke interface:
 
 ```REST
 GET /digitalTwins/t-123/interfaces/deviceInformation
 ```
 
-Meer in het algemeen kunnen eigenschappen voor een specifieke interface `device-id` worden geopend via `{interface-name}` deze REST API-sjabloon waar de id voor het apparaat is en de naam van de interface is:
+Meer in het algemeen zijn eigenschappen van een specifieke interface toegankelijk via deze REST API sjabloon, `device-id` waarbij de id voor het apparaat is `{interface-name}` en de naam van de interface is:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces/{interface-name}
 ```
 
-U iot-plug- en play-apparaatopdrachten rechtstreeks bellen. Als `Thermostat` de interface `t-123` in `restart` het apparaat een opdracht heeft, u deze aanroepen met een REST API POST-aanroep:
+U kunt IoT Plug en Play-opdrachten rechtstreeks aanroepen. Als de `Thermostat` interface in het `t-123` apparaat een `restart` opdracht heeft, kunt u deze aanroepen met een rest API post-aanroep:
 
 ```REST
 POST /digitalTwins/t-123/interfaces/thermostat/commands/restart
 ```
 
-Meer in het algemeen kunnen opdrachten worden aangeroepen via deze REST API-sjabloon:
+Meer in het algemeen kunnen opdrachten worden aangeroepen via deze REST API sjabloon:
 
 - `device-id`: de id voor het apparaat.
-- `interface-name`: de naam van de interface van de sectie implementaties in het apparaatcapaciteitsmodel.
+- `interface-name`: de naam van de interface in de sectie implements in het model van het apparaat.
 - `command-name`: de naam van de opdracht.
 
 ```REST
@@ -228,8 +228,8 @@ Meer in het algemeen kunnen opdrachten worden aangeroepen via deze REST API-sjab
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u meer hebt geleerd over apparaatmodellering, volgen hier enkele extra bronnen:
+Nu u over Apparaatbeheer hebt geleerd, zijn hier enkele aanvullende bronnen:
 
-- [Digital Twin Definition Language (DTDL)](https://aka.ms/DTDL)
+- [Digital-dubbele-definitie taal (DTDL)](https://aka.ms/DTDL)
 - [Apparaat-SDK voor C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-- [IoT REST-API](https://docs.microsoft.com/rest/api/iothub/device)
+- [IoT-REST API](https://docs.microsoft.com/rest/api/iothub/device)

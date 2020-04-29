@@ -1,5 +1,5 @@
 ---
-title: Barracuda-gegevens verbinden met Azure Sentinel| Microsoft Documenten
+title: Barracuda-gegevens verbinden met Azure Sentinel | Microsoft Docs
 description: Meer informatie over het verbinden van Barracuda-gegevens met Azure Sentinel.
 services: sentinel
 documentationcenter: na
@@ -16,40 +16,40 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 4e87bb57e6bdfea6307a166383da9dea187eea4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588481"
 ---
-# <a name="connect-your-barracuda-appliance"></a>Sluit uw Barracuda-toestel aan 
+# <a name="connect-your-barracuda-appliance"></a>Verbinding maken met uw Barracuda-apparaat 
 
 
 
-Met de WAF-connector (Barracuda Web Application Firewall) u eenvoudig uw Barracuda-logboeken verbinden met uw Azure Sentinel, dashboards bekijken, aangepaste waarschuwingen maken en onderzoek verbeteren. Dit geeft u meer inzicht in het netwerk van uw organisatie en verbetert uw beveiligingsmogelijkheden. Azure Sentinel maakt gebruik van de native integratie tussen **Barracuda** en Log Analytics-agent om naadloze integratie te bieden. 
+Met de Barracuda Web Application firewall (WAF) kunt u eenvoudig uw Barracuda-logboeken verbinden met uw Azure-Sentinel, om Dash boards weer te geven, aangepaste waarschuwingen te maken en het onderzoek te verbeteren. Dit geeft u meer inzicht in het netwerk van uw organisatie en verbetert de mogelijkheden van beveiligings bewerkingen. Azure Sentinel maakt gebruik van de systeem eigen integratie tussen **Barracuda** en log Analytics agent om naadloze integratie mogelijk te maken. 
 
 
 > [!NOTE]
-> Gegevens worden opgeslagen in de geografische locatie van de werkruimte waarop u Azure Sentinel uitvoert.
+> Gegevens worden opgeslagen in de geografische locatie van de werk ruimte waarop u Azure Sentinel uitvoert.
 
 ## <a name="configure-and-connect-barracuda-waf"></a>Barracuda WAF configureren en verbinden
-Barracuda Web Application Firewall kan logboeken rechtstreeks integreren en exporteren naar Azure Sentinel via de Log Analytics-agent.
-1. Ga naar [Barracuda WAF-configuratiestroom](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)en volg de instructies voor het instellen van de verbinding met behulp van de volgende parameters:
-    - **Werkruimte-id:** kopieer de waarde van uw werkruimte-id vanaf de azure Sentinel Barracuda-connectorpagina.
-    - **Primaire sleutel:** kopieer de waarde van uw primaire sleutel vanaf de Azure Sentinel Barracuda-connectorpagina.
-1. Als u het relevante schema wilt gebruiken in Log Analytics voor de Barracuda-gebeurtenissen, zoekt u naar **CommonSecurityLog** en **barracuda_CL**.
+Barracuda Web Application firewall kan Logboeken rechtstreeks integreren en exporteren naar Azure Sentinel via Log Analytics-agent.
+1. Ga naar de [configuratie stroom BARRACUDA WAF](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)en volg de instructies voor het instellen van de verbinding, met behulp van de volgende para meters:
+    - **Werk ruimte-id**: Kopieer de waarde van uw werk ruimte-id van de Azure Sentinel Barracuda-connector pagina.
+    - **Primaire sleutel**: Kopieer de waarde van uw primaire sleutel op de pagina Azure Sentinel Barracuda-connector.
+1. Als u het relevante schema in Log Analytics voor de Barracuda-gebeurtenissen wilt gebruiken, zoekt u naar **CommonSecurityLog** en **barracuda_CL**.
 
 
 ## <a name="validate-connectivity"></a>Connectiviteit valideren
 
-Het kan meer dan 20 minuten duren voordat uw logboeken worden weergegeven in Log Analytics. 
+Het kan 20 minuten duren voordat uw logboeken in Log Analytics worden weer gegeven. 
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u Barracuda-apparaten verbinden met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en potentiële bedreigingen.](quickstart-get-visibility.md)
-- Aan de slag met [het detecteren van bedreigingen met Azure Sentinel.](tutorial-detect-threats-built-in.md)
-- [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te controleren.
+In dit document hebt u geleerd hoe u Barracuda-apparaten verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+- [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
 
 

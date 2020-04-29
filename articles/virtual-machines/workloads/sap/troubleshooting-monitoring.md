@@ -1,6 +1,6 @@
 ---
-title: Monitoring van SAP HANA op Azure (grote exemplaren) | Microsoft Documenten
-description: Monitor SAP HANA op een Azure (Large Instances).
+title: Bewaking van SAP HANA op Azure (grote exemplaren) | Microsoft Docs
+description: Bewaak SAP HANA op een Azure (grote exemplaren).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,40 +14,40 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 50a6b4f15a7de02533e3bb51e5659f7b4c078b40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77617297"
 ---
-# <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>SAP HANA (grote exemplaren) op Azure controleren
+# <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>SAP HANA (grote exemplaren) in azure controleren
 
-SAP HANA op Azure (Large Instances) verschilt niet van andere IaaS-implementatie - u moet controleren wat het besturingssysteem en de toepassing doen en hoe de toepassingen de volgende resources verbruiken:
+SAP HANA op Azure (grote exemplaren) is niet anders dan andere IaaS-implementaties. u moet bewaken wat het besturings systeem en de toepassing doen en hoe de toepassingen de volgende resources verbruiken:
 
 - CPU
 - Geheugen
 - Netwerkbandbreedte
 - Schijfruimte
 
-Met Azure Virtual Machines moet u uitzoeken of de hierboven genoemde resourceklassen voldoende zijn of dat ze uitgeput raken. Hier is meer details over elk van de verschillende klassen:
+Met Azure Virtual Machines moet u nagaan of de resource klassen die hierboven worden genoemd, voldoende zijn of uitgeput raken. Hier vindt u meer informatie over elk van de verschillende klassen:
 
-**CPU-bronverbruik:** De verhouding die SAP heeft gedefinieerd voor bepaalde werkbelasting ten opzichte van HANA wordt afgedwongen om ervoor te zorgen dat er voldoende CPU-bronnen beschikbaar zijn om de gegevens die in het geheugen zijn opgeslagen, te verwerken. Niettemin kunnen er gevallen zijn waarin HANA veel CPU's verbruikt die query's uitvoeren als gevolg van ontbrekende indexen of soortgelijke problemen. Dit betekent dat u het cpu-bronverbruik van de HANA-eenheid voor grote instanties en CPU-bronnen die worden verbruikt door de specifieke HANA-services moet controleren.
+**CPU-resource verbruik:** De verhouding die door SAP voor een bepaalde werk belasting met HANA is gedefinieerd, wordt afgedwongen om ervoor te zorgen dat er voldoende CPU-resources beschikbaar zijn voor de gegevens die in het geheugen zijn opgeslagen. Het kan echter voor komen dat HANA veel Cpu's gebruikt die query's uitvoeren als gevolg van ontbrekende indexen of vergelijk bare problemen. Dit betekent dat u het CPU-resource verbruik van de HANA-eenheid voor grote instanties moet bewaken, evenals CPU-resources die worden verbruikt door de specifieke HANA-Services.
 
-**Geheugenverbruik:** Is belangrijk om te controleren vanuit HANA, evenals buiten HANA op het apparaat. Controleer binnen HANA hoe de gegevens HANA toegewezen geheugen verbruiken om binnen de vereiste richtlijnen van SAP te blijven. U wilt ook het geheugenverbruik op het niveau van de Grote Instantie controleren om ervoor te zorgen dat extra geïnstalleerde niet-HANA-software niet te veel geheugen verbruikt en dus concurreert met HANA voor geheugen.
+**Geheugen gebruik:** Is belang rijk om te bewaken vanuit HANA, evenals buiten HANA op de eenheid. In HANA bewaakt u hoe de gegevens worden gebruikt voor het gebruik van HANA toegewezen geheugen om binnen de vereiste aanpassings richtlijnen van SAP te blijven. U wilt ook geheugen gebruik bewaken op het niveau van de grote instantie om ervoor te zorgen dat extra geïnstalleerde niet-HANA-software niet te veel geheugen verbruikt en daarom concurreren met HANA voor geheugen.
 
-**Netwerkbandbreedte:** De Azure VNet-gateway is beperkt in bandbreedte van gegevens die naar het Azure VNet worden verplaatst, dus het is handig om de gegevens te controleren die zijn ontvangen door alle Azure VM's binnen een VNet om erachter te komen hoe dicht u bij de grenzen van de Azure-gateway SKU bent die u hebt geselecteerd. Op de HANA Large Instance-eenheid is het zinvol om ook inkomend en uitgaand netwerkverkeer te monitoren en de volumes bij te houden die in de loop van de tijd worden verwerkt.
+**Netwerk bandbreedte:** De Azure VNet-gateway is beperkt in de band breedte van de gegevens die naar het Azure VNet worden verplaatst. het is dus handig om de gegevens die door alle Azure-Vm's in een VNet worden ontvangen, te bewaken om erachter te komen hoe dicht u de limieten van de Azure-gateway-SKU die u hebt geselecteerd. Op de HANA grote instantie-eenheid is het zinvol om het binnenkomende en uitgaande netwerk verkeer ook te controleren en om de volumes bij te houden die na verloop van tijd worden verwerkt.
 
-**Schijfruimte:** Het verbruik van schijfruimte neemt meestal toe na verloop van tijd. De meest voorkomende oorzaken zijn: het gegevensvolume neemt toe, voert back-ups van transactielogboeken uit, slaat traceerbestanden op en voert opslagmomentopnamen uit. Daarom is het belangrijk om het gebruik van schijfruimte te controleren en de schijfruimte te beheren die is gekoppeld aan de HANA Large Instance-eenheid.
+**Schijf ruimte:** Het gebruik van schijf ruimte neemt doorgaans gedurende een periode toe. De meest voorkomende oorzaken zijn: gegevens volume verg root de uitvoering van back-ups van transactie logboeken, traceer bestanden opslaan en opslag momentopnamen uitvoeren. Daarom is het belang rijk om het schijfruimte gebruik te bewaken en de schijf ruimte die is gekoppeld aan de HANA-eenheid voor grote instanties te beheren.
 
-Voor de **Type II SKU's** van de HANA Large Instances wordt de server geleverd met de vooraf geladen systeemdiagnosetools. U deze diagnostische hulpmiddelen gebruiken om de systeemstatuscontrole uit te voeren. Voer de volgende opdracht uit om het logboekbestand voor statuscontrole te genereren bij /var/log/health_check.
+Voor de **type II sku's** van de Hana grote instanties wordt de-server geleverd met de vooraf geladen hulpprogram ma's voor systeem diagnose. U kunt deze diagnostische hulpprogram ma's gebruiken om de systeem status controle uit te voeren. Voer de volgende opdracht uit om het status controle logboek bestand te genereren op/var/log/health_check.
 ```
 /opt/sgi/health_check/microsoft_tdi.sh
 ```
-Wanneer u samenwerkt met het Microsoft Support-team om een probleem op te lossen, wordt u mogelijk ook gevraagd om de logboekbestanden op te geven met behulp van deze diagnostische hulpprogramma's. U het bestand zippen met de volgende opdracht.
+Wanneer u met het Microsoft Ondersteuning-team werkt om een probleem op te lossen, wordt u mogelijk ook gevraagd om de logboek bestanden op te geven met behulp van deze diagnostische hulpprogram ma's. U kunt het bestand zip met de volgende opdracht.
 ```
 tar  -czvf health_check_logs.tar.gz /var/log/health_check
 ```
 
 **Volgende stappen**
 
-- Raadpleeg [Hoe sap HANA (grote exemplaren) op Azure te controleren.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-monitor-troubleshoot)
+- Zie [SAP Hana (grote exemplaren) in azure controleren](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-monitor-troubleshoot).

@@ -1,6 +1,6 @@
 ---
-title: Kan extern bureaublad niet naar Azure Virtual Machines vanwege statisch IP| Microsoft Documenten
-description: Meer informatie over het oplossen van RDP-problemen die worden veroorzaakt door statisch IP in Microsoft Azure.| Microsoft Documenten
+title: Kan geen extern bureau blad naar Azure Virtual Machines vanwege een vast IP-adres | Microsoft Docs
+description: Meer informatie over het oplossen van problemen met RDP-problemen dat wordt veroorzaakt door een statisch IP-adres in Microsoft Azure. | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,62 +13,62 @@ ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
 ms.openlocfilehash: 92ad33fbc759605ae901c3bcf09283c8e0b1c4b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77918186"
 ---
-#  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>Kan extern bureaublad niet naar Azure Virtual Machines vanwege statisch IP-adres
+#  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>Kan geen extern bureau blad naar Azure Virtual Machines vanwege een vast IP-adres
 
-In dit artikel wordt een probleem beschreven waarbij u geen extern bureaublad naar Azure Windows Virtual Machines (VM's) gebruiken nadat een statisch IP-adres is geconfigureerd in de VM.
+In dit artikel wordt een probleem beschreven waarbij u geen extern bureau blad naar Azure kunt Windows Virtual Machines (Vm's) nadat een statisch IP-adres is geconfigureerd in de VM.
 
 
 ## <a name="symptoms"></a>Symptomen
 
-Wanneer u een RDP-verbinding maakt met een VM in Azure, ontvangt u het volgende foutbericht:
+Wanneer u een RDP-verbinding maakt met een virtuele machine in azure, wordt het volgende fout bericht weer gegeven:
 
-**Extern bureaublad kan om een van de volgende redenen geen verbinding maken met de externe computer:**
+**Extern bureaublad kunt geen verbinding met de externe computer maken om een van de volgende redenen:**
 
 1. **Externe toegang tot de server is niet ingeschakeld**
 
 2. **De externe computer is uitgeschakeld**
 
-3. **De externe computer is niet beschikbaar in het netwerk**
+3. **De externe computer is niet beschikbaar op het netwerk**
 
-**Controleer of de externe computer is ingeschakeld en verbonden is met het netwerk en dat externe toegang is ingeschakeld.**
+**Zorg ervoor dat de externe computer is ingeschakeld en is verbonden met het netwerk en dat externe toegang is ingeschakeld.**
 
-Wanneer u de schermafbeelding in de [opstartdiagnose](../troubleshooting/boot-diagnostics.md) in de Azure-portal controleert, ziet u de VM-laarzen normaal en wacht u op referenties in het aanmeldingsscherm.
+Wanneer u de scherm opname van de [Diagnostische gegevens over opstarten](../troubleshooting/boot-diagnostics.md) in de Azure Portal controleert, ziet u dat de VM normaal wordt opgestart en wacht op referenties in het aanmeldings scherm.
 
 ## <a name="cause"></a>Oorzaak
 
-De VM heeft een statisch IP-adres dat is gedefinieerd op de netwerkinterface binnen Windows. Dit IP-adres verschilt van het adres dat is gedefinieerd in de Azure-portal.
+De virtuele machine heeft een statisch IP-adres dat is gedefinieerd voor de netwerk interface in Windows. Dit IP-adres wijkt af van het adres dat is gedefinieerd in de Azure Portal.
 
 ## <a name="solution"></a>Oplossing
 
-Voordat u deze stappen volgt, maakt u een momentopname van de OS-schijf van de betreffende VM als back-up. Zie [Momentopname een schijf voor](../windows/snapshot-copy-managed-disk.md)meer informatie .
+Voordat u deze stappen volgt, moet u een moment opname maken van de besturingssysteem schijf van de betrokken VM als back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie.
 
-Als u dit probleem wilt oplossen, gebruikt u Seriële besturingselementen om DHCP in te schakelen of [de netwerkinterface](reset-network-interface.md) voor de vm opnieuw in te schakelen.
+U kunt dit probleem oplossen door met behulp van seriële controle DHCP in te scha kelen of de [netwerk interface](reset-network-interface.md) voor de virtuele machine opnieuw in te stellen.
 
-### <a name="use-serial-control"></a>Seriële besturingselement gebruiken
+### <a name="use-serial-control"></a>Serieel besturings element gebruiken
 
-1. Maak verbinding [met seriële console en open CMD-instantie](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Zie [Netwerkinterface opnieuw instellen](reset-network-interface.md)als de seriële console niet is ingeschakeld op uw vm.
-2. Controleer of de DHCP is uitgeschakeld op de netwerkinterface:
+1. Verbinding maken met de [seriële console en het Open cmd-exemplaar](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+). Als de seriële console niet op uw virtuele machine is ingeschakeld, raadpleegt u de [netwerk interface opnieuw instellen](reset-network-interface.md).
+2. Controleer of DHCP is uitgeschakeld op de netwerk interface:
 
         netsh interface ip show config
-3. Als de DHCP is uitgeschakeld, moet u de configuratie van uw netwerkinterface omschakelen om DHCP te gebruiken:
+3. Als de DHCP is uitgeschakeld, keert u de configuratie van de netwerk interface terug voor gebruik van DHCP:
 
         netsh interface ip set address name="<NIC Name>" source=dhc
 
-    Als de interwork-interface bijvoorbeeld 'Ethernet 2' noemt, voert u de volgende opdracht uit:
+    Als de interwerk-interface bijvoorbeeld ' Ethernet 2 ' is, voert u de volgende opdracht uit:
 
         netsh interface ip set address name="Ethernet 2" source=dhc
 
-4. Vraag de IP-configuratie opnieuw op om ervoor te zorgen dat de netwerkinterface nu correct is ingesteld. Het nieuwe IP-adres moet overeenkomen met het adres dat wordt geleverd door de Azure.
+4. Voer een query uit op de IP-configuratie om ervoor te zorgen dat de netwerk interface nu correct is ingesteld. Het nieuwe IP-adres moet overeenkomen met de naam die wordt opgegeven door Azure.
 
         netsh interface ip show config
 
-    U hoeft de VM op dit moment niet opnieuw op te starten. De VM is weer bereikbaar.
+    U hoeft de virtuele machine op dit moment niet opnieuw op te starten. De virtuele machine is terug bereikbaar.
 
-Zie [Statische IP-adressen configureren voor een vm](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)als u het statische IP voor de vm wilt configureren.
+Als u hierna het statische IP-adres voor de virtuele machine wilt configureren, raadpleegt u [statische IP-adressen configureren voor een virtuele machine](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md).

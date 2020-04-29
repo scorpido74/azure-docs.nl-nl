@@ -1,27 +1,27 @@
 ---
 title: Ondersteunde Kubernetes-versies in Azure Kubernetes Service
-description: Inzicht in het beleid voor ondersteuning van kubernetes-versie en levenscyclus van clusters in Azure Kubernetes Service (AKS)
+description: Meer informatie over het ondersteunings beleid voor Kubernetes-versies en de levens cyclus van clusters in azure Kubernetes service (AKS)
 services: container-service
 author: sauryadas
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
 ms.openlocfilehash: 77d64391888957a1697a5823a1485413686682d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77593441"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Ondersteunde Kubernetes-versies in AKS (Azure Kubernetes Service)
 
-De Kubernetes-community brengt ongeveer om de drie maanden kleine versies uit. Deze releases bevatten nieuwe functies en verbeteringen. Patch releases komen vaker voor (soms wekelijks) en zijn alleen bedoeld voor kritieke bug fixes in een secundaire versie. Deze patchreleases bevatten oplossingen voor beveiligingsproblemen of grote bugs die van invloed zijn op een groot aantal klanten en producten die in productie worden uitgevoerd op basis van Kubernetes.
+De Kubernetes-Community brengt ongeveer elke drie maanden secundaire versies uit. Deze releases bevatten nieuwe functies en verbeteringen. Patch releases zijn vaker (soms wekelijks) en zijn alleen bedoeld voor essentiële probleem oplossingen in een secundaire versie. Deze patches bevatten oplossingen voor beveiligings problemen of grote fouten die van invloed zijn op een groot aantal klanten en producten die worden uitgevoerd op productie op basis van Kubernetes.
 
-AKS streeft ernaar om nieuwe Kubernetes-versies te certificeren en uit te brengen binnen 30 dagen na een upstream-release, afhankelijk van de stabiliteit van de release.
+AKS streeft ernaar nieuwe Kubernetes-versies te certificeren en vrij te geven binnen 30 dagen na een upstream-release, afhankelijk van de stabiliteit van de release.
 
 ## <a name="kubernetes-versions"></a>Kubernetes-versies
 
-Kubernetes maakt gebruik van het standaard [semantische versieschema.](https://semver.org/) Dit betekent dat elke versie van Kubernetes dit nummeringsschema volgt:
+Kubernetes maakt gebruik van het standaard versie beheer schema van [semantische versie](https://semver.org/) . Dit betekent dat elke versie van Kubernetes dit Nummerings schema volgt:
 
 ```
 [major].[minor].[patch]
@@ -33,32 +33,32 @@ Example:
 
 Elk nummer in de versie geeft algemene compatibiliteit met de vorige versie aan:
 
-* Belangrijke versies veranderen wanneer incompatibele API-wijzigingen of backwards compatibility kunnen worden verbroken.
-* Kleine versies veranderen wanneer functionaliteitswijzigingen worden aangebracht die achterwaarts compatibel zijn met de andere kleine versies.
-* Patchversies veranderen wanneer achterwaarts compatibele bugfixes worden gemaakt.
+* Primaire versies worden gewijzigd wanneer incompatibele API-wijzigingen of achterwaartse compatibiliteit mogelijk wordt verbroken.
+* Secundaire versies worden gewijzigd wanneer er wijzigingen in de functionaliteit worden aangebracht die achterwaarts compatibel zijn met de andere secundaire releases.
+* Patch versies worden gewijzigd wanneer er achterwaarts compatibele fout oplossingen worden uitgevoerd.
 
-Gebruikers moeten streven naar de nieuwste patch release van de secundaire versie die ze draaien, bijvoorbeeld als uw productie cluster is op *1.12.14* en *1.12.15* is de nieuwste beschikbare patch versie beschikbaar voor de *1.12* serie, moet u upgraden naar *1.12.15* zodra u in staat zijn om ervoor te zorgen uw cluster is volledig gepatcht en ondersteund.
+Gebruikers moeten zich richten op het uitvoeren van de nieuwste patch release van de secundaire versie die ze uitvoeren, bijvoorbeeld als uw productie cluster op *1.12.14* is en *1.12.15* de meest recente beschik bare patch versie is die beschikbaar is voor de *1,12* -serie, moet u een upgrade uitvoeren naar *1.12.15* zodra u zeker weet dat uw cluster volledig wordt gerepareerd en ondersteund.
 
-## <a name="kubernetes-version-support-policy"></a>Ondersteuningsbeleid voor Kubernetes-versie
+## <a name="kubernetes-version-support-policy"></a>Ondersteunings beleid voor Kubernetes-versie
 
-AKS ondersteunt drie kleine versies van Kubernetes:
+AKS ondersteunt drie secundaire versies van Kubernetes:
 
 * De huidige secundaire versie die wordt uitgebracht in AKS (N)
-* Twee eerdere secundaire versies. Elke ondersteunde secundaire versie ondersteunt ook twee stabiele patches.
+* Twee vorige secundaire versies. Elke ondersteunde secundaire versie biedt ook ondersteuning voor twee stabiele patches.
 
-Dit staat bekend als "N-2": (N (Laatste release) - 2 (kleine versies)).
+Dit staat bekend als ' N-2 ': (N (meest recente versie)-2 (secundaire versies)).
 
-Als AKS vandaag *bijvoorbeeld 1.15.a* introduceert, wordt ondersteuning geboden voor de volgende versies:
+Als bijvoorbeeld AKS introduceert *1.15. a* vandaag, wordt ondersteuning geboden voor de volgende versies:
 
 Nieuwe secundaire versie    |    Lijst met ondersteunde versies
 -----------------    |    ----------------------
-1.15.a.               |    1.15.a, 1.15.b, 1.14.c, 1.14.d, 1.13.e, 1.13.f.
+1.15. a               |    1.15. a, 1.15. b, 1.14. c, 1.14. d, 1.13. e, 1.13. f
 
-Waar ".letter" representatief is voor patchversies.
+Waarbij '. letter ' representatief is voor patch versies.
 
-Zie 'Communicatie' hieronder voor meer informatie over communicatie over wijzigingen en verwachtingen in de versie.
+Zie ' communicatie ' hieronder voor meer informatie over de communicatie met versie wijzigingen en verwachtingen.
 
-Wanneer een nieuwe secundaire versie wordt geïntroduceerd, worden de oudste secundaire versie en patchreleases die worden ondersteund, afgeschaft en verwijderd. Als de huidige lijst met ondersteunde versies bijvoorbeeld:
+Wanneer een nieuwe secundaire versie wordt geïntroduceerd, worden de oudste secundaire versie-en patch releases die worden ondersteund, afgeschaft en verwijderd. Als de huidige lijst met ondersteunde versies bijvoorbeeld:
 
 ```
 1.15.a
@@ -69,12 +69,12 @@ Wanneer een nieuwe secundaire versie wordt geïntroduceerd, worden de oudste sec
 1.13.f
 ```
 
-En AKS releases 1.16. *, betekent dit dat de 1.13.* versies (alle 1.13 versies) worden verwijderd en zijn buiten de ondersteuning.
+En AKS Releases 1,16. *Dit betekent dat de 1,13.* versies (alle 1,13 versies) worden verwijderd en worden niet meer ondersteund.
 
 > [!NOTE]
-> Houd er rekening mee dat als klanten een niet-ondersteunde Kubernetes-versie draaien, ze worden gevraagd om te upgraden wanneer ze ondersteuning voor het cluster aanvragen. Clusters met niet-ondersteunde Kubernetes-releases vallen niet onder het [AKS-ondersteuningsbeleid.](https://docs.microsoft.com/azure/aks/support-policies)
+> Houd er rekening mee dat als klanten een niet-ondersteunde Kubernetes-versie uitvoeren, wordt gevraagd om een upgrade uit te voeren bij het aanvragen van ondersteuning voor het cluster. Clusters met niet-ondersteunde Kubernetes-releases vallen niet onder het [beleid voor AKS-ondersteuning](https://docs.microsoft.com/azure/aks/support-policies).
 
-Naast het bovenstaande op kleine versies, ondersteunt AKS de twee nieuwste **patchreleases** van een bepaalde secundaire versie. Bijvoorbeeld, gezien de volgende ondersteunde versies:
+Naast het bovenstaande in secundaire versies ondersteunt AKS ook de twee nieuwste **patch** releases van een bepaalde secundaire versie. Bijvoorbeeld, met de volgende ondersteunde versies:
 
 ```
 Current Supported Version List
@@ -82,7 +82,7 @@ Current Supported Version List
 1.15.2, 1.15.1, 1.14.5, 1.14.4
 ```
 
-Als upstream Kubernetes 1.15.3 en 1.14.6 heeft uitgebracht en AKS deze patchversies uitbrengt, worden de oudste patchversies afgeschaft en verwijderd en wordt de lijst met ondersteunde versies:
+Als de Kubernetes van 1.15.3 en 1.14.6 en AKS van de upstream-versie van deze patch versies worden vrijgegeven, worden de oudste patch versies afgeschaft en verwijderd, en wordt de lijst met ondersteunde versies:
 
 ```
 New Supported Version List
@@ -92,43 +92,43 @@ New Supported Version List
 
 ### <a name="communications"></a>Communicatie
 
-* Voor nieuwe **kleine** versies van Kubernetes
-  * Alle gebruikers worden publiekelijk op de hoogte gebracht van de nieuwe versie en welke versie wordt verwijderd.
-  * Wanneer een nieuwe patchversie wordt uitgebracht, wordt de oudste patchrelease tegelijkertijd verwijderd.
-  * Klanten hebben **30 dagen** vanaf de openbare meldingsdatum om te upgraden naar een ondersteunde secundaire versie.
-* Voor nieuwe **patchversies** van Kubernetes
-  * Alle gebruikers worden op de hoogte gesteld van de nieuwe patchversie die wordt uitgebracht en om te upgraden naar de nieuwste patchrelease.
-  * Gebruikers hebben **30 dagen** om te upgraden naar een nieuwere, ondersteunde patchrelease voordat de oudste wordt verwijderd.
+* Voor nieuwe **secundaire** versies van Kubernetes
+  * Alle gebruikers worden op de hoogte gesteld van de nieuwe versie en de versie die wordt verwijderd.
+  * Wanneer een nieuwe patch versie wordt uitgebracht, wordt de oudste patch release op hetzelfde moment verwijderd.
+  * Klanten hebben **30 dagen** na de datum van de open bare melding voor een upgrade naar een ondersteunde versie van de secundaire release.
+* Voor nieuwe **patch** versies van Kubernetes
+  * Alle gebruikers ontvangen een melding dat de nieuwe patch versie wordt vrijgegeven en een upgrade naar de nieuwste patch release.
+  * Gebruikers hebben **30 dagen** een upgrade naar een nieuwere, ondersteunde patch release voordat de oudste wordt verwijderd.
 
-AKS definieert een "vrijgegeven versie" als de algemeen beschikbare versies, ingeschakeld in alle SLO / Quality of Service metingen en beschikbaar in alle regio's. AKS kan ook preview-versies ondersteunen die expliciet zijn gelabeld en onderworpen zijn aan de algemene voorwaarden van Preview.
+AKS definieert een ' vrijgegeven versie ' als de algemeen beschik bare versies, ingeschakeld in alle ondergeschikten voor SLO/Quality of Service en beschikbaar in alle regio's. AKS kan ook ondersteuning bieden voor Preview-versies die expliciet zijn voorzien van een voor beeld van voor waarden en bepalingen.
 
-#### <a name="notification-channels-for-aks-changes"></a>Meldingskanalen voor AKS-wijzigingen
+#### <a name="notification-channels-for-aks-changes"></a>Meldings kanalen voor AKS-wijzigingen
 
-AKS publiceert regelmatige service-updates die nieuwe Kubernetes-versies, servicewijzigingen en componentupdates samenvatten die zijn uitgebracht op de service op [GitHub.](https://github.com/Azure/AKS/releases)
+AKS publiceert reguliere service-updates die een overzicht van nieuwe Kubernetes-versies, service wijzigingen en onderdeel updates die zijn uitgebracht voor de service op [github](https://github.com/Azure/AKS/releases).
 
-Deze wijzigingen worden naar alle klanten gerold als onderdeel van regulier onderhoud dat wordt aangeboden als onderdeel van de beheerde service, sommige vereisen expliciete upgrades, terwijl andere geen actie vereisen.
+Deze wijzigingen worden naar alle klanten gedistribueerd als onderdeel van het regel matig onderhoud dat wordt aangeboden als onderdeel van de beheerde service, wat expliciete upgrades vereisen, terwijl anderen geen actie nodig hebben.
 
 Meldingen worden ook verzonden via:
 
-* [AKS Release notes](https://aka.ms/aks/releasenotes)
+* [Release opmerkingen bij AKS](https://aka.ms/aks/releasenotes)
 * Meldingen in Azure-portal
-* [Azure-updatekanaal][azure-update-channel]
+* [Azure update-kanaal][azure-update-channel]
 
-### <a name="supported-versions-policy-exceptions"></a>Uitzonderingen op beleid voor ondersteunde versies
+### <a name="supported-versions-policy-exceptions"></a>Ondersteunde versies beleids uitzonderingen
 
-AKS behoudt zich het recht voor om nieuwe/bestaande versies toe te voegen of te verwijderen waarvan is vastgesteld dat deze zonder voorafgaande kennisgeving een of meer kritieke productieproblemen hebben die van invloed zijn op bugs of beveiligingsproblemen.
+AKS behoudt zich het recht voor om nieuwe/bestaande versies toe te voegen of te verwijderen die zijn geïdentificeerd om een of meer kritieke productie problemen op te lossen, zonder voorafgaande kennisgeving.
 
-Specifieke patchreleases kunnen worden overgeslagen of de implementatie worden versneld, afhankelijk van de ernst van de bug of het beveiligingsprobleem.
+Specifieke patch releases kunnen worden overgeslagen of de implementatie wordt versneld, afhankelijk van de ernst van de fout of het beveiligings probleem.
 
-### <a name="azure-portal-and-cli-default-versions"></a>Standaardversies Azure-portal en CLI
+### <a name="azure-portal-and-cli-default-versions"></a>Standaard versies van Azure Portal en CLI
 
-Wanneer u een AKS-cluster implementeert in de portal of met de Azure CLI, wordt het cluster standaard ingesteld op de N-1-secundaire versie en de nieuwste patch. Als AKS bijvoorbeeld *1.15.a*, *1.15.b*, *1.14.c*, *1.14.d*, *1.13.e*, en *1.13.f*ondersteunt , is de geselecteerde standaardversie *1.14.c*.
+Wanneer u een AKS-cluster implementeert in de portal of met de Azure CLI, wordt het cluster standaard gedistribueerd naar de N-1-secundaire versie en de meest recente patch. Als AKS bijvoorbeeld *1.15. a*, *1.15. b*, *1.14. c*, *1.14. d*, *1.13. e*en *1.13. f*ondersteunt, is de geselecteerde standaard versie *1.14. c*.
 
-AKS kiest standaard n-1 om klanten standaard een bekende, stabiele en gepatchte versie te bieden.
+AKS kiest de standaard waarde van N-1 om klanten standaard een bekende, stabiele en patched versie te bieden.
 
-## <a name="list-currently-supported-versions"></a>Lijst met momenteel ondersteunde versies
+## <a name="list-currently-supported-versions"></a>Momenteel ondersteunde versies weer geven
 
-Als u wilt weten welke versies momenteel beschikbaar zijn voor uw abonnement en regio, gebruikt u de opdracht [az aks-versieversies.][az-aks-get-versions] In het volgende voorbeeld worden de beschikbare Kubernetes-versies voor de *EastUS-regio* weergegeven:
+Gebruik de opdracht [AZ AKS Get-verse][az-aks-get-versions] voor meer informatie over welke versies momenteel beschikbaar zijn voor uw abonnement en regio. In het volgende voor beeld ziet u een lijst met de beschik bare Kubernetes-versies voor de regio *oostus* :
 
 ```azurecli-interactive
 az aks get-versions --location eastus --output table
@@ -136,34 +136,34 @@ az aks get-versions --location eastus --output table
 
 ## <a name="faq"></a>Veelgestelde vragen
 
-**Wat gebeurt er als een klant een Kubernetes-cluster upgradet met een secundaire versie die niet wordt ondersteund?**
+**Wat gebeurt er wanneer een klant een Kubernetes-cluster upgradet met een secundaire versie die niet wordt ondersteund?**
 
-Als u op de *n-3* versie, bent u buiten de ondersteuning en zal worden gevraagd om te upgraden. Als uw upgrade van versie n-3 naar n-2 slaagt, bent u nu binnen ons ondersteuningsbeleid. Bijvoorbeeld:
+Als u een *n-3-* versie hebt, hebt u geen ondersteuning meer en wordt u gevraagd om te upgraden. Als uw upgrade van versie n-3 naar n-2 slaagt, bent u nu in ons ondersteunings beleid. Bijvoorbeeld:
 
-- Als de oudste ondersteunde AKS-versie *1.13.a* is en u op *1.12.b* of ouder bent, bent u buiten de ondersteuning.
-- Als de upgrade van *1.12.b* naar *1.13.a* of hoger slaagt, bent u terug binnen ons ondersteuningsbeleid.
+- Als de oudste ondersteunde AKS-versie *1.13 is. a* en u zich op *1.12. b* of ouder bevindt, hebt u geen ondersteuning meer.
+- Als de upgrade van *1.12. b* naar *1.13. a* of hoger is geslaagd, bent u terug in het ondersteunings beleid.
 
-Upgrades naar versies die ouder zijn dan het ondersteunde venster van *N-2* worden niet ondersteund. In dergelijke gevallen raden we klanten aan nieuwe AKS-clusters te maken en hun workloads opnieuw te implementeren met versies in het ondersteunde venster.
+Upgrades naar oudere versies dan het ondersteunde venster van *N-2* worden niet ondersteund. In dergelijke gevallen raden klanten aan om nieuwe AKS-clusters te maken en hun workloads opnieuw te implementeren met versies in het ondersteunde venster.
 
-**Wat betekent 'Buiten ondersteuning'**
+**Wat betekent ' buiten het ondersteunings team '**
 
-'Buiten ondersteuning' betekent dat de versie die u uitvoert buiten de lijst met ondersteunde versies valt en dat u wordt gevraagd om het cluster te upgraden naar een ondersteunde versie wanneer u ondersteuning aanvraagt. Bovendien maakt AKS geen runtime of andere garanties voor clusters buiten de lijst met ondersteunde versies.
+' Buiten het ondersteunings team ' betekent dat de versie die u uitvoert, zich buiten de lijst met ondersteunde versies bevindt en u wordt gevraagd het cluster bij te werken naar een ondersteunde versie bij het aanvragen van ondersteuning. Daarnaast maakt AKS geen runtime of andere garanties voor clusters buiten de lijst met ondersteunde versies.
 
-**Wat gebeurt er als een klant een Kubernetes-cluster opschaalt met een secundaire versie die niet wordt ondersteund?**
+**Wat gebeurt er wanneer een klant een Kubernetes-cluster schaalt met een secundaire versie die niet wordt ondersteund?**
 
-Voor secundaire versies die niet door AKS worden ondersteund, moet het in- of uitchecken blijven werken, maar het wordt ten zeerste aanbevolen om te upgraden om uw cluster weer in ondersteuning te brengen.
+Voor secundaire versies die niet worden ondersteund door AKS, moet u de schaal in-of uitschalen, maar het wordt ten zeerste aanbevolen om een upgrade uit te voeren om uw cluster weer in de ondersteuning te brengen.
 
-**Kan een klant voor altijd op een Kubernetes-versie blijven?**
+**Kan een klant permanent blijven beschikken over een Kubernetes-versie?**
 
-Ja. Als het cluster zich echter niet op een van de door AKS ondersteunde versies bevindt, is het cluster buiten het AKS-ondersteuningsbeleid. Azure upgradet uw cluster niet automatisch of verwijdert het niet automatisch.
+Ja. Als het cluster echter niet is opgenomen in een van de versies die worden ondersteund door AKS, heeft het cluster geen ondersteuning meer voor het AKS-ondersteunings beleid. Uw cluster wordt niet automatisch bijgewerkt of verwijderd door Azure.
 
-**Welke versie ondersteunt het besturingsvlak als de knooppuntgroep zich niet in een van de ondersteunde AKS-versies bevindt?**
+**Welke versie van het besturings element wordt ondersteund als de knooppunt groep zich niet in een van de ondersteunde AKS-versies bevindt?**
 
-Het besturingsvlak moet zich binnen een venster van versies van alle knooppuntpools bevindt. Voor meer informatie over het upgraden van het controlevlak of knooppuntzwembaden, raadpleegt u documentatie over [het upgraden van knooppuntzwembaden.](use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools)
+Het besturings vlak moet zich in een venster met versies van alle knooppunt groepen bevinden. Ga voor meer informatie over het bijwerken van het besturings vlak of de knooppunt groepen naar documentatie over het [upgraden van knooppunt groepen](use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Een AKS-cluster (Azure Kubernetes Service) upgraden][aks-upgrade]voor informatie over het upgraden van uw cluster.
+Zie [een Azure Kubernetes service-cluster (AKS) bijwerken][aks-upgrade]voor meer informatie over het upgraden van uw cluster.
 
 <!-- LINKS - External -->
 [aks-engine]: https://github.com/Azure/aks-engine

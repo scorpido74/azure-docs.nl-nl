@@ -1,6 +1,6 @@
 ---
-title: Extern bureaublad verbreekt vaak de verbinding in Azure VM| Microsoft Documenten
-description: Meer informatie over het oplossen van frequente onderbrekingen van Extern bureaublad in Azure VM.
+title: Extern bureaublad verbreekt regel matig de verbinding met de Azure-VM | Microsoft Docs
+description: Meer informatie over het oplossen van problemen met een regel matige verbinding van Extern bureaublad in azure VM.
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,103 +13,103 @@ ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
 ms.openlocfilehash: c22a401a6b25f7bb2c27a10e52214fa42ac6089b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77918220"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>De verbinding met Extern bureaublad wordt regelmatig verbroken in de Azure-VM
 
-In dit artikel wordt uitgelegd hoe u frequente onderbrekingen van een virtuele Azure-machine (VM) oplossen via Extern bureaublad-protocol RDP).
+In dit artikel wordt uitgelegd hoe u veelvuldige verbindingen met een virtuele Azure-machine (VM) kunt oplossen via Remote Desktop Protocol RDP).
 
 
 ## <a name="symptom"></a>Symptoom
 
-U krijgt tijdens uw sessies te maken met intermitterende RDP-connectiviteitsproblemen. U in eerste instantie verbinding maken met de VM, maar dan wordt de verbinding verbroken.
+Tijdens uw sessies worden er onregelmatige RDP-verbindings problemen gegezicht. U kunt eerst verbinding maken met de virtuele machine, maar vervolgens wordt de verbinding verbroken.
 
 ## <a name="cause"></a>Oorzaak
 
-Dit probleem kan optreden als de RDP-listener verkeerd is geconfigureerd. Dit probleem treedt meestal op bij een vm die een aangepaste afbeelding gebruikt.
+Dit probleem kan optreden als de RDP-listener onjuist is geconfigureerd. Dit probleem treedt meestal op bij een virtuele machine die gebruikmaakt van een aangepaste installatie kopie.
 
 ## <a name="solution"></a>Oplossing
 
-Voordat u deze stappen volgt, [maakt u een momentopname van de OS-schijf](../windows/snapshot-copy-managed-disk.md) van de betreffende VM als back-up. 
+Voordat u deze stappen volgt, moet u [een moment opname maken van de besturingssysteem schijf](../windows/snapshot-copy-managed-disk.md) van de betrokken VM als back-up. 
 
-Als u dit probleem wilt oplossen, gebruikt u Seriële besturingselement of [bevestigt u de VM offline](#repair-the-vm-offline) door de OS-schijf van de VM aan een herstelvm te koppelen.
+U kunt dit probleem oplossen met behulp van serieel beheer of [de virtuele machine offline herstellen](#repair-the-vm-offline) door de besturingssysteem schijf van de virtuele machine aan een herstel-VM te koppelen.
 
 ### <a name="serial-control"></a>Seriële controle
 
-1. Maak verbinding [met seriële console en open CMD-instantie](./serial-console-windows.md). Voer vervolgens de volgende opdrachten uit om de RDP-configuraties opnieuw in te stellen. Als de seriële console niet is ingeschakeld op uw vm, gaat u naar de volgende stap.
-2. Verlaag de RDP-beveiligingslaag op 0. Bij deze instelling maakt communicatie tussen server en client gebruik van de native RDP-versleuteling.
+1. Verbinding maken met de [seriële console en het Open cmd-exemplaar](./serial-console-windows.md). Voer vervolgens de volgende opdrachten uit om de RDP-configuraties opnieuw in te stellen. Als de seriële console niet is ingeschakeld op uw virtuele machine, gaat u naar de volgende stap.
+2. Verminder de RDP-beveiligingslaag in 0. Bij deze instelling wordt de communicatie tussen de server en de client gebruikt voor de systeem eigen RDP-versleuteling.
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'SecurityLayer' /t REG_DWORD /d 0 /f
-3. Verlaag het versleutelingsniveau tot de minimale instelling om oudere RDP-clients verbinding te laten maken.
+3. Verlaag het versleutelings niveau tot de minimale instelling zodat verouderde RDP-clients verbinding kunnen maken.
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MinEncryptionLevel' /t REG_DWORD /d 1 /f
-4. Rdp instellen om de gebruikersconfiguratie van de clientcomputer te laden.
+4. Stel RDP in om de gebruikers configuratie van de client computer te laden.
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fQueryUserConfigFromLocalMachine' /t REG_DWORD /d 1 /f
-5. Schakel de RDP Keep-Alive-besturingselement in:
+5. Schakel het besturings element RDP Keep-Alive in:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'KeepAliveTimeout' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'KeepAliveEnable' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'KeepAliveInterval' /t REG_DWORD /d 1 /f
-6. Stel het besturingselement RDP Reconnect in:
+6. Beheer van RDP-reconnect instellen:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritReconnectSame' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fReconnectSame' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'fDisableAutoReconnect' /t REG_DWORD /d 0 /f
-7. Stel het besturingselement RDP-sessietijd in:
+7. Het besturings element RDP-sessie tijd instellen:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxSessionTime' /t REG_DWORD /d 1 /f
-8. Stel het besturingselement Rdp-ontkoppelingstijd in: 
+8. Het besturings element RDP-verbindings tijd instellen: 
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxDisconnectionTime' /t REG_DWORD /d 1 /f
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxDisconnectionTime' /t REG_DWORD /d 0 /f
-9. Stel het besturingselement RDP-verbindingstijd in:
+9. Het besturings element RDP-verbindings tijd instellen:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
-10. Stel het besturingselement Inactieve RDP-sessie in:
+10. Het besturings element voor niet-actieve tijd van de RDP-sessie instellen:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxIdleTime' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxIdleTime' /t REG_DWORD /d 0 /f
-11. Stel het besturingselement 'De maximale gelijktijdige verbindingen beperken' in:
+11. Stel het besturings element maximum aantal gelijktijdige verbindingen beperken in:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxInstanceCount' /t REG_DWORD /d 4294967295 /f
 
-12. Start de VM opnieuw en probeer er opnieuw verbinding mee te maken met RDP.
+12. Start de virtuele machine opnieuw op en probeer opnieuw verbinding te maken met behulp van RDP.
 
-### <a name="repair-the-vm-offline"></a>De VM offline herstellen
+### <a name="repair-the-vm-offline"></a>De virtuele machine offline herstellen
 
-1. [Koppel de OS-schijf aan een herstelvm](../windows/troubleshoot-recovery-disks-portal.md).
-2. Nadat de osschijf is gekoppeld aan de herstel-vm, moet u ervoor zorgen dat de schijf is gemarkeerd als **Online** in de schijfbeheerconsole. Let op de stationsletter die is toegewezen aan de gekoppelde osschijf.
-3. Navigeer op de besturingssysteemschijf die u hebt gekoppeld naar de map **\windows\system32\config.** Kopieer alle bestanden in deze map als back-up, voor het geval een terugdraaiing vereist is.
+1. [Koppel de besturingssysteem schijf aan een herstel-VM](../windows/troubleshoot-recovery-disks-portal.md).
+2. Nadat de besturingssysteem schijf is gekoppeld aan de herstel-VM, controleert u of de schijf is gemarkeerd als **online** in de schijf beheer-console. Noteer de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf.
+3. Ga naar de map **\Windows\System32\Config** op de besturingssysteem schijf die u hebt gekoppeld. Kopieer alle bestanden in deze map als back-up als een terugdraai actie vereist is.
 4. Start de Register-Editor (regedit.exe).
-5. Selecteer de **HKEY_LOCAL_MACHINE** toets. Selecteer In het menu **File** > **Load Hive:**
-6. Blader naar de map **\windows\system32\config\SYSTEM** op de besturingssysteemschijf die u hebt gekoppeld. Voer **BROKENSYSTEM**in voor de naam van de korf. De nieuwe registerkorf wordt weergegeven onder de **HKEY_LOCAL_MACHINE** sleutel. Laad vervolgens de software hive **\windows\system32\config\SOFTWARE** onder de **HKEY_LOCAL_MACHINE** toets. Voer BROKENSOFTWARE in voor de naam van de **hive-software.** 
-7. Open een verhoogd opdrachtpromptvenster **(Uitvoeren als beheerder)** en voer opdrachten uit in de resterende stappen om de RDP-configuraties opnieuw in te stellen. 
-8. Verlaag de RDP-beveiligingslaag op 0, zodat de communicatie tussen de server en de client de native RDP-versleuteling gebruikt:
+5. Selecteer de **HKEY_LOCAL_MACHINE** sleutel. Selecteer in het menu **bestand** > **laden component**:
+6. Blader naar de map **\windows\system32\config\SYSTEM** op de besturingssysteem schijf die u hebt toegevoegd. Voer **BROKENSYSTEM**in voor de naam van de component. De nieuwe register component wordt weer gegeven onder de sleutel **HKEY_LOCAL_MACHINE** . Laad vervolgens de software component **\windows\system32\config\SOFTWARE** onder de sleutel **HKEY_LOCAL_MACHINE** . Voer **BROKENSOFTWARE**in als de naam van de Hive-software. 
+7. Open een opdracht prompt venster met verhoogde bevoegdheid (**als administrator uitvoeren**) en voer opdrachten uit in de resterende stappen om de RDP-configuraties opnieuw in te stellen. 
+8. Verlaag de RDP-beveiligingslaag tot 0 zodat de communicatie tussen de server en de client de systeem eigen RDP-versleuteling gebruikt:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'SecurityLayer' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'SecurityLayer' /t REG_DWORD /d 0 /f
-9. Verlaag het versleutelingsniveau tot de minimale instelling om oudere RDP-clients verbinding te laten maken:
+9. Verlaag het versleutelings niveau tot de minimale instelling zodat verouderde RDP-clients verbinding kunnen maken:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'MinEncryptionLevel' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MinEncryptionLevel' /t REG_DWORD /d 1 /f
-10. Stel RDP in om de gebruikersconfiguratie van de clientmachine te laden.
+10. Stel RDP in om de gebruikers configuratie van de client computer te laden.
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fQueryUserConfigFromLocalMachine' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'fQueryUserConfigFromLocalMachine' /t REG_DWORD /d 1 /f
-11. Schakel de RDP Keep-Alive-besturingselement in:
+11. Schakel het besturings element RDP Keep-Alive in:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'KeepAliveTimeout' /t REG_DWORD /d 1 /f 
         
@@ -118,7 +118,7 @@ Als u dit probleem wilt oplossen, gebruikt u Seriële besturingselement of [beve
         REG ADD "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'KeepAliveEnable' /t REG_DWORD /d 1 /f 
 
         REG ADD "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'KeepAliveInterval' /t REG_DWORD /d 1 /f
-12. Stel het besturingselement RDP Reconnect in:
+12. Beheer van RDP-reconnect instellen:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritReconnectSame' /t REG_DWORD /d 0 /f 
         
@@ -130,12 +130,12 @@ Als u dit probleem wilt oplossen, gebruikt u Seriële besturingselement of [beve
 
         REG ADD "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'fDisableAutoReconnect' /t REG_DWORD /d 0 /f
 
-13. Stel het besturingselement RDP-sessietijd in:
+13. Het besturings element RDP-sessie tijd instellen:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxSessionTime' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxSessionTime' /t REG_DWORD /d 1 /f
-14. Stel het besturingselement Rdp-ontkoppelingstijd in:
+14. Het besturings element RDP-verbindings tijd instellen:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxDisconnectionTime' /t REG_DWORD /d 1 /f 
 
@@ -144,24 +144,24 @@ Als u dit probleem wilt oplossen, gebruikt u Seriële besturingselement of [beve
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxDisconnectionTime' /t REG_DWORD /d 1 /f 
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxDisconnectionTime' /t REG_DWORD /d 0 /f
-15. Stel het besturingselement RDP-verbindingstijd in:
+15. Het besturings element RDP-verbindings tijd instellen:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
-16. Het besturingselement Idle Time van de RDP-sessie instellen: REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxIdleTime' /t REG_DWORD /d 1 /f 
+16. Het besturings element niet-actieve tijd van de RDP-sessie instellen: REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp"/v ' fInheritMaxIdleTime '/t REG_DWORD/d 1/f 
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v ' MaxIdleTime' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxIdleTime' /t REG_DWORD /d 1 /f 
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v ' MaxIdleTime' /t REG_DWORD /d 0 /f
-17. Stel het besturingselement 'De maximale gelijktijdige verbindingen beperken' in:
+17. Stel het besturings element maximum aantal gelijktijdige verbindingen beperken in:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxInstanceCount' /t REG_DWORD /d ffffffff /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxInstanceCount' /t REG_DWORD /d ffffffff /f
-18. Start de VM opnieuw en probeer er opnieuw verbinding mee te maken met RDP.
+18. Start de virtuele machine opnieuw op en probeer opnieuw verbinding te maken met behulp van RDP.
 
 ## <a name="need-help"></a>Hebt u hulp nodig? 
 Neem contact op met ondersteuning. Als u nog steeds hulp nodig hebt, neemt u [contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.

@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: ee6d437915f6c87ce9ef5f9c711d90793a96048c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77920124"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Gedetailleerde stappen om SSH-problemen op te lossen bij verbindingsproblemen van een Linux-VM in Azure
@@ -132,5 +132,5 @@ Probeer opnieuw verbinding te maken vanaf uw computer. Als de service nog steeds
 * De lokale firewall op de virtuele doel machine bevat regels die inkomend of uitgaand SSH-verkeer verhinderen.
 * De indringings detectie of de netwerk bewakings software die wordt uitgevoerd op de virtuele machine van Azure, verhindert SSH-verbindingen.
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 Zie [problemen oplossen met toegang tot een toepassing die wordt uitgevoerd op een virtuele machine van Azure](../linux/troubleshoot-app-connection.md) voor meer informatie over het oplossen van toepassings toegang

@@ -1,50 +1,50 @@
 ---
-title: Meerdere onafhankelijke Azure Functions-triggers maken voor Cosmos DB
-description: Meer informatie over het configureren van meerdere onafhankelijke Azure Functions-triggers voor Cosmos DB om door gebeurtenissen gestuurde architecturen te maken.
+title: Meerdere onafhankelijke Azure Functions triggers maken voor Cosmos DB
+description: Meer informatie over het configureren van meerdere onafhankelijke Azure Functions triggers voor Cosmos DB voor het maken van op gebeurtenissen gebaseerde architecturen.
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.openlocfilehash: 32b680acdee29bf97a0e132fee93d5fee3377245
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77604941"
 ---
-# <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Meerdere Azure Functions-triggers maken voor Cosmos DB
+# <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Meerdere Azure Functions triggers maken voor Cosmos DB
 
 In dit artikel wordt beschreven hoe u meerdere Azure Functions-triggers zo kunt configureren dat Cosmos DB parallel werkt en onafhankelijk reageert op wijzigingen.
 
-![Serverless event-based Functions working with the Azure Functions trigger for Cosmos DB and sharing a leases container Serverless event-based Functions working with the Azure Functions trigger for Cosmos DB and sharing a leases container Serverless event-based Functions working with the Azure Functions trigger for Cosmos DB and sharing a leases container Serverless](./media/change-feed-functions/multi-trigger.png)
+![Functies die zijn gebaseerd op gebeurtenissen op basis van een server werken met de Azure Functions trigger voor het Cosmos DB en delen van een lease-container](./media/change-feed-functions/multi-trigger.png)
 
-## <a name="event-based-architecture-requirements"></a>Vereisten voor architectuur op basis van evenementen
+## <a name="event-based-architecture-requirements"></a>Architectuur vereisten op basis van gebeurtenissen
 
-Bij het bouwen van serverloze architecturen met [Azure-functies](../azure-functions/functions-overview.md)is het [raadzaam](../azure-functions/functions-best-practices.md#avoid-long-running-functions) om kleine functiesets te maken die samenwerken in plaats van grote langlopende functies.
+Bij het bouwen van serverloze architecturen met [Azure functions](../azure-functions/functions-overview.md), is het [raadzaam](../azure-functions/functions-best-practices.md#avoid-long-running-functions) om kleine functie sets te maken die samen werken in plaats van grote langlopende functies.
 
-Terwijl u op gebeurtenissen gebaseerde serverloze stromen bouwt met behulp van de [Trigger azure-functies voor Cosmos DB,](./change-feed-functions.md)loopt u het scenario tegen het scenario aan waarin u meerdere dingen wilt doen wanneer er een nieuwe gebeurtenis in een bepaalde [Azure Cosmos-container is.](./databases-containers-items.md#azure-cosmos-containers) Als acties die u wilt activeren, onafhankelijk van elkaar zijn, is de ideale oplossing om **één Azure-functietriggers voor Cosmos DB per actie** te maken die u wilt uitvoeren, en alle wijzigingen op dezelfde Azure Cosmos-container.
+Wanneer u op gebeurtenissen gebaseerde serverloze stromen bouwt met behulp [van de Azure functions trigger voor Cosmos DB](./change-feed-functions.md), voert u in het scenario uit waar u meerdere dingen wilt doen wanneer er een nieuwe gebeurtenis is in een bepaalde [Azure Cosmos-container](./databases-containers-items.md#azure-cosmos-containers). Als de acties die u wilt activeren, onafhankelijk van elkaar zijn, is de ideale oplossing om **een Azure functions triggers te maken voor Cosmos DB per actie** die u wilt uitvoeren. alle luistert naar wijzigingen in dezelfde Azure Cosmos-container.
 
-## <a name="optimizing-containers-for-multiple-triggers"></a>Containers optimaliseren voor meerdere Triggers
+## <a name="optimizing-containers-for-multiple-triggers"></a>Containers voor meerdere triggers optimaliseren
 
-Gezien de *vereisten* van de Azure Functions trigger voor Cosmos DB, hebben we een tweede container nodig om de status op te slaan, ook wel de *leasecontainer*genoemd. Betekent dit dat u een aparte leasecontainer nodig hebt voor elke Azure-functie?
+Gezien de *vereisten* van de Azure functions trigger voor Cosmos DB hebben we een tweede container nodig om de status op te slaan, ook wel de *container leases*. Betekent dit dat u een afzonderlijke leases-container nodig hebt voor elke Azure-functie?
 
-Hier heb je twee opties:
+Hier hebt u twee opties:
 
-* Eén **leasecontainer per functie maken:** deze aanpak kan zich vertalen in extra kosten, tenzij u een [gedeelde doorvoerdatabase gebruikt.](./set-throughput.md#set-throughput-on-a-database) Houd er rekening mee dat de minimale doorvoer op containerniveau 400 [aanvraageenheden](./request-units.md)is en in het geval van de leasecontainer alleen wordt gebruikt om de voortgang te controleren en de status te handhaven.
-* Eén **leasecontainer hebben en deze delen** voor al uw functies: deze tweede optie maakt beter gebruik van de ingerichte aanvraageenheden op de container, omdat het meerdere Azure-functies in staat stelt om dezelfde ingerichte doorvoer te delen en te gebruiken.
+* **Eén leases-container maken per functie**: deze aanpak kan worden omgezet in aanvullende kosten, tenzij u een [Data Base met gedeelde door Voer](./set-throughput.md#set-throughput-on-a-database)gebruikt. Houd er rekening mee dat de minimale door Voer op het container niveau 400 [aanvraag eenheden](./request-units.md)is, en in het geval van de container leases, wordt dit alleen gebruikt om de voortgang te controleren en de status te onderhouden.
+* Beschikken over **één lease container en delen deze** voor al uw functies: met deze tweede optie wordt het gebruik van de ingerichte aanvraag eenheden in de container verbeterd, omdat het meerdere Azure functions mogelijk maakt om dezelfde ingerichte door voer te delen en te gebruiken.
 
-Het doel van dit artikel is om u te begeleiden om de tweede optie te bereiken.
+Het doel van dit artikel is om u te helpen bij het uitvoeren van de tweede optie.
 
-## <a name="configuring-a-shared-leases-container"></a>Een container met gedeelde leasen configureren
+## <a name="configuring-a-shared-leases-container"></a>Een gedeelde lease-container configureren
 
-Als u de container met gedeelde leasen wilt configureren, hoeft u `LeaseCollectionPrefix` alleen op uw triggers `leaseCollectionPrefix` een extra configuratie te maken door het [kenmerk](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) toe te voegen als u C# of [kenmerk](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) gebruikt als u JavaScript gebruikt. De waarde van het kenmerk moet een logische beschrijving zijn van wat die specifieke trigger.
+Als u de container gedeelde leases wilt configureren, is de enige extra configuratie die u nodig hebt om uw triggers te `LeaseCollectionPrefix` maken, het [kenmerk](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) toe te voegen als u C# of `leaseCollectionPrefix` [kenmerk](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) gebruikt als u Java script gebruikt. De waarde van het kenmerk moet een logische descriptor zijn van wat de betreffende trigger is.
 
-Als u bijvoorbeeld drie Triggers hebt: een die e-mails verzendt, een die een aggregatie doet om een gematerialiseerde `LeaseCollectionPrefix` weergave te maken, en een die de wijzigingen naar een andere opslag verzendt, voor latere analyse, u de van e-mails toewijzen aan de eerste, gematerialiseerd aan de tweede en analytics aan de derde.
+Als u bijvoorbeeld drie triggers hebt: een die e-mail berichten verzendt, een die een aggregatie maakt om een gerealiseerde weer gave te maken, en een die de wijzigingen naar een andere opslag verzendt, kunt u voor latere `LeaseCollectionPrefix` analyses de e-mail berichten toewijzen aan de eerste, ' materialed ', en ' Analytics ' aan de derde.
 
-Het belangrijkste is dat alle drie de Triggers **dezelfde leases containerconfiguratie** (account, database en containernaam) kunnen gebruiken.
+Het belang rijk deel is dat alle drie **de triggers dezelfde container configuratie voor leases** (account, data base en container naam) kunnen gebruiken.
 
-Een zeer eenvoudige code `LeaseCollectionPrefix` monsters met behulp van het attribuut in C #, zou er als volgt uitzien:
+Een eenvoudige code voorbeelden die gebruikmaken van `LeaseCollectionPrefix` het kenmerk in C#, ziet er als volgt uit:
 
 ```cs
 using Microsoft.Azure.Documents;
@@ -78,7 +78,7 @@ public static void MaterializedViews([CosmosDBTrigger(
 }
 ```
 
-En voor JavaScript u de `function.json` configuratie op `leaseCollectionPrefix` het bestand toepassen met het kenmerk:
+En voor Java script kunt u de configuratie Toep assen op `function.json` het bestand, met `leaseCollectionPrefix` het kenmerk:
 
 ```json
 {
@@ -104,10 +104,10 @@ En voor JavaScript u de `function.json` configuratie op `leaseCollectionPrefix` 
 ```
 
 > [!NOTE]
-> Controleer altijd op de aanvraageenheden die zijn ingericht op uw gedeelde leasecontainer. Elke trigger die deze deelt, verhoogt het gemiddelde doorvoergemiddelde verbruik, dus het kan nodig zijn om de ingerichte doorvoer te verhogen terwijl u het aantal Azure-functies dat het gebruikt verhoogt.
+> Altijd controleren op de aanvraag eenheden die zijn ingericht in uw gedeelde leases-container. Elke trigger waarmee deze wordt gedeeld, verhoogt het verbruik van gemiddelde door Voer, dus u moet mogelijk de ingerichte door Voer verhogen als u het aantal Azure Functions dat het gebruikt, verhoogt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijk de volledige configuratie voor de trigger van [Azure Functions voor Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)
-* Controleer de uitgebreide [lijst met voorbeelden](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) voor alle talen.
-* Ga naar de Serverless-recepten met Azure Cosmos DB en Azure Functions [GitHub-repository](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios) voor meer voorbeelden.
+* Bekijk de volledige configuratie voor de [Azure functions trigger voor Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)
+* Controleer de uitgebreide [lijst met voor beelden](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) voor alle talen.
+* Ga naar de Serverloze recepten met Azure Cosmos DB en Azure Functions [github-opslag plaats](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios) voor meer voor beelden.

@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 11/15/2019
 ms.author: pabouwer
 ms.openlocfilehash: b310de560f9791e1fc49d54dfbf0789c38d37f57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77593945"
 ---
-## <a name="download-and-install-the-istio-istioctl-client-binary"></a>De Istio istioctl client binary downloaden en installeren
+## <a name="download-and-install-the-istio-istioctl-client-binary"></a>Down load en installeer het binaire bestand voor de Istio istioctl-client
 
-In een bash-gebaseerde shell op Linux of [Windows Subsystem voor Linux,][install-wsl]gebruiken `curl` om de Istio release te downloaden en vervolgens te extraheren met `tar` als volgt:
+In een bash shell op Linux of Windows- [subsysteem voor Linux][install-wsl]gebruikt `curl` u om de Istio-release te downloaden en vervolgens `tar` als volgt op te halen:
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
@@ -21,7 +21,7 @@ ISTIO_VERSION=1.4.0
 curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-linux.tar.gz" | tar xz
 ```
 
-De `istioctl` client binaire draait op uw client machine en stelt u in staat om te communiceren met de Istio service mesh. Gebruik de volgende opdrachten om `istioctl` de Istio-client binair te installeren in een op bash gebaseerde shell op Linux of [Windows Subsystem voor Linux.][install-wsl] Deze opdrachten kopiëren `istioctl` de client binair naar `PATH`de standaard locatie van het gebruikersprogramma in uw .
+De `istioctl` binaire client wordt uitgevoerd op uw client computer en maakt het mogelijk om te communiceren met het Istio-service-net. Gebruik de volgende opdrachten om de Istio `istioctl` -client binaire bestanden te installeren in een op bash gebaseerde shell op Linux of Windows- [subsysteem voor Linux][install-wsl]. Met deze opdrachten wordt `istioctl` de binaire client gekopieerd naar de standaard gebruikers programma locatie `PATH`in uw.
 
 ```bash
 cd istio-$ISTIO_VERSION
@@ -29,7 +29,7 @@ sudo cp ./bin/istioctl /usr/local/bin/istioctl
 sudo chmod +x /usr/local/bin/istioctl
 ```
 
-Als u opdrachtregelvoltooiing wilt voor de `istioctl` istio-client-binaire, stelt u deze als volgt in:
+Als u de opdracht regel voor het binaire bestand van de `istioctl` Istio-client wilt laten volt ooien, moet u deze als volgt instellen:
 
 ```bash
 # Generate the bash completion file and source it in your current shell

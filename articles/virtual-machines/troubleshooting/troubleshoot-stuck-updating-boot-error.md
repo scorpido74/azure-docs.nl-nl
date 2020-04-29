@@ -1,6 +1,6 @@
 ---
-title: Azure VM opstarten zit vast bij Windows Update| Microsoft Documenten
-description: Meer informatie over het oplossen van het probleem wanneer een Azure VM-opstart vastzit bij Windows-update.
+title: Het opstarten van de Azure-VM is vastgelopen op Windows Update | Microsoft Docs
+description: Informatie over het oplossen van het probleem wanneer een Azure-VM wordt gestart op Windows Update.
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,47 +13,47 @@ ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
 ms.openlocfilehash: 8a47131cb4f19cce1664eafa50c67ab1a1171e67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77919427"
 ---
-# <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM opstarten zit vast bij Windows-update
+# <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Opstarten van Azure VM is vastgelopen op Windows Update
 
-In dit artikel u het probleem oplossen wanneer uw virtuele machine (VM) tijdens het opstarten vastzit in de windows-updatefase. 
+Dit artikel helpt u bij het oplossen van het probleem wanneer uw virtuele machine (VM) tijdens het opstarten vastloopt in de Windows Update fase. 
 
 
 ## <a name="symptom"></a>Symptoom
 
- Een Windows-vm wordt niet gestart. Wanneer u de schermafbeeldingen in het venster [Diagnostische gegevens opstart](../troubleshooting/boot-diagnostics.md) controleert, ziet u dat het opstarten vastzit in het updateproces. Hieronder volgen voorbeelden van berichten die u mogelijk ontvangt:
+ Een Windows-VM start niet. Wanneer u de scherm opnamen in het venster [Diagnostische gegevens over opstarten](../troubleshooting/boot-diagnostics.md) inschakelt, ziet u dat het opstarten is vastgelopen in het update proces. Hier volgen enkele voor beelden van berichten die kunnen worden weer gegeven:
 
-- Windows ##% installeren Schakel uw pc niet uit. Dit zal een tijdje duren uw pc zal meerdere keren opnieuw opstarten
-- Houd uw pc aan tot dit is gebeurd. Update # van #... installeren 
-- We kunnen de updates niet voltooien Wijzigingen ongedaan maken Schakel uw computer niet uit
-- Windows-updates terugdraaien niet uitschakelen Uw computer niet uitschakelen
-- Fout< foutcode > het toepassen van updatebewerkingen ##### van ##### (\Regist...)
-- Fatale fout < foutcode > het toepassen van updatebewerkingen ##### van #####($$...)
+- Windows # #% wordt niet meer op uw PC geïnstalleerd. Dit duurt even voordat de PC meerdere keren opnieuw wordt opgestart
+- Blijf op de hoogte van uw PC totdat dit is voltooid. Update # van #... installeren... 
+- De wijzigingen die worden aangebracht, kunnen niet worden voltooid de computer niet uitschakelen
+- Fout bij het configureren van wijzigingen in Windows-updates de computer niet uitschakelen
+- Fout < fout code > het Toep assen van update bewerkingen # # # # van # # # # # (\Regist...)
+- Onherstelbare fout < fout code > het Toep assen van update bewerkingen # # # # # # # # # # ($ $...)
 
 
 ## <a name="solution"></a>Oplossing
 
-Afhankelijk van het aantal updates dat wordt geïnstalleerd of opgerold, kan het updateproces een tijdje duren. Laat de VM in deze toestand gedurende 8 uur. Als de VM na die periode nog steeds in deze status staat, start u de VM opnieuw op de Azure-portal en kijkt u of deze normaal kan beginnen. Als deze stap niet werkt, probeert u de volgende oplossing.
+Het update proces kan enige tijd in beslag nemen, afhankelijk van het aantal updates dat wordt geïnstalleerd of teruggedraaid. De VM in deze status gedurende 8 uur verlaten. Als de VM na die periode nog steeds in deze status is, start u de VM opnieuw op via de Azure Portal en controleert u of deze normaal kan worden gestart. Als deze stap niet werkt, voert u de volgende oplossing uit.
 
-### <a name="remove-the-update-that-causes-the-problem"></a>De update verwijderen die het probleem veroorzaakt
+### <a name="remove-the-update-that-causes-the-problem"></a>De update die het probleem veroorzaakt, verwijderen
 
-1. Maak een momentopname van de OS-schijf van de getroffen VM als back-up. Zie [Momentopname een schijf voor](../windows/snapshot-copy-managed-disk.md)meer informatie . 
-2. [Koppel de OS-schijf aan een herstelvm](troubleshoot-recovery-disks-portal-windows.md).
-3. Zodra de schijf van het besturingssysteem is aangesloten op de herstel-VM, voert u **diskmgmt.msc** uit om Schijfbeheer te openen en ervoor te zorgen dat de aangesloten schijf **online**is. Let op de stationsletter die is toegewezen aan de bijgevoegde OS-schijf met de map \windows. Als de schijf is versleuteld, decodeert u de schijf voordat u verdergaat met de volgende stappen in dit document.
+1. Maak een moment opname van de besturingssysteem schijf van de betrokken VM als back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie. 
+2. [Koppel de besturingssysteem schijf aan een herstel-VM](troubleshoot-recovery-disks-portal-windows.md).
+3. Zodra de besturingssysteem schijf is gekoppeld op de herstel-VM, voert u **diskmgmt. msc** uit om schijf beheer te openen en ervoor te zorgen dat de gekoppelde schijf **online**is. Noteer de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf die de map \Windows heeft. Als de schijf is versleuteld, ontsleutelt u de schijf voordat u verdergaat met de volgende stappen in dit document.
 
-4. Open een instantie met een opdrachtmeteen voor verhoogde opdracht (Uitvoeren als beheerder). Voer de volgende opdracht uit om de lijst met de updatepakketten op de aangesloten osschijf te krijgen:
+4. Open een opdracht prompt exemplaar met verhoogde bevoegdheid (als administrator uitvoeren). Voer de volgende opdracht uit om de lijst op te halen van de update pakketten die zich op de gekoppelde besturingssysteem schijf bevinden:
 
         dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
 
-    Als de gekoppelde osschijf bijvoorbeeld station F is, voert u de volgende opdracht uit:
+    Als de gekoppelde besturingssysteem schijf bijvoorbeeld station F is, voert u de volgende opdracht uit:
 
         dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
-5. Open het C:\temp\Patch_level.txt-bestand en lees het van ondernaar boven. Zoek de update die zich in de status **Installeren in behandeling** of verwijderen in afwachting van de status **bevindt.**  Het volgende is een voorbeeld van de updatestatus:
+5. Open het C:\temp\-bestand Patch_level. txt en lees het venster vanuit de onderkant. Zoek de update die in **behandeling** is of verwijder de status in **behandeling** .  Hier volgt een voor beeld van de update status:
 
      ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
@@ -73,6 +73,6 @@ Afhankelijk van het aantal updates dat wordt geïnstalleerd of opgerold, kan het
     ```
 
     > [!NOTE] 
-    > Afhankelijk van de grootte van het pakket, zal de DISM tool een tijdje duren om de un-installatie te verwerken. Normaal gesproken is het proces binnen 16 minuten voltooid.
+    > Afhankelijk van de grootte van het pakket, neemt het hulp programma DISM even de tijd om de verwijdering te verwerken. Normaal gesp roken wordt het proces binnen 16 minuten voltooid.
 
-7. [Maak de OS-schijf los en maak de VM opnieuw](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Controleer vervolgens of het probleem is opgelost.
+7. [Ontkoppel de besturingssysteem schijf en maak de virtuele machine opnieuw](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Controleer vervolgens of het probleem is opgelost.

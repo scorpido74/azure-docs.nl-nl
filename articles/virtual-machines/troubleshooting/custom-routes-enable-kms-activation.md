@@ -1,6 +1,6 @@
 ---
-title: Gebruik aangepaste Azure-routes om KMS-activering in te schakelen met geforceerde tunneling | Microsoft Documenten
-description: Hier ziet u hoe u aangepaste Azure-routes gebruikt om KMS-activering in te schakelen bij het gebruik van gedwongen tunneling in Azure.
+title: Aangepaste Azure-routes gebruiken om de KMS-activering met geforceerde Tunneling in te scha kelen | Microsoft Docs
+description: Laat zien hoe u aangepaste Azure-routes kunt gebruiken om KMS-activering in te scha kelen bij gebruik van geforceerde Tunneling in Azure.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
@@ -14,31 +14,31 @@ ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
 ms.openlocfilehash: 90034a56fcf5211059d37270e12391249f7a16b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77920158"
 ---
-# <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Windows-activering mislukt in geforceerd tunnelscenario
+# <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Windows-activering mislukt in scenario met geforceerde tunneling
 
-In dit artikel wordt beschreven hoe u het KMS-activeringsprobleem oplossen dat u ondervinden wanneer u gedwongen tunneling inschakelt in vpn-verbindings- of ExpressRoute-scenario's van site-to-site.
+In dit artikel wordt beschreven hoe u het KMS-activerings probleem oplost dat zich kan voordoen wanneer u geforceerde tunneling inschakelt in de site-naar-site VPN-verbinding of ExpressRoute-scenario's.
 
 ## <a name="symptom"></a>Symptoom
 
-U maakt [gedwongen tunneling](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) op virtuele netwerksubnetten van Azure mogelijk om al het internetgebonden verkeer terug te leiden naar uw on-premises netwerk. In dit scenario kunnen de Virtuele Azure-machines (VM's) waarop Windows wordt uitgevoerd, Windows niet activeren.
+U schakelt [geforceerde tunneling](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) in subnetten van het virtuele netwerk van Azure in om alle Internet verkeer terug te sturen naar uw on-premises netwerk. In dit scenario wordt Windows niet geactiveerd door de Azure virtual machines (Vm's) die Windows uitvoeren.
 
 ## <a name="cause"></a>Oorzaak
 
-De Azure Windows VM's moeten verbinding maken met de Azure KMS-server voor Windows-activering. De activering vereist dat de activeringsaanvraag afkomstig is van een openbaar IP-adres van Azure. In het scenario voor gedwongen tunneling mislukt de activering omdat de activeringsaanvraag afkomstig is van uw on-premises netwerk in plaats van van een openbaar IP-adres in Azure.
+De Azure Windows-Vm's moeten verbinding maken met de Azure KMS-server voor Windows-activering. De activering vereist dat de activerings aanvraag afkomstig is van een openbaar IP-adres van Azure. In het scenario met geforceerde tunneling mislukt de activering omdat de activerings aanvraag afkomstig is van uw on-premises netwerk in plaats van vanuit een openbaar IP-adres van Azure.
 
 ## <a name="solution"></a>Oplossing
 
-Als u dit probleem wilt oplossen, gebruikt u de aangepaste Azure-route om activeringsverkeer naar de Azure KMS-server te leiden.
+Om dit probleem op te lossen, gebruikt u de aangepaste Azure-route om activerings verkeer naar de Azure KMS-server te routeren.
 
-Het IP-adres van de KMS-server voor de Azure Global-cloud is 23.102.135.246. De DNS-naam is kms.core.windows.net. Als u andere Azure-platforms gebruikt, zoals Azure Germany, moet u het IP-adres van de bijbehorende KMS-server gebruiken. Zie de volgende tabel voor meer informatie:
+Het IP-adres van de KMS-server voor de globale cloud van Azure is 23.102.135.246. De DNS-naam is kms.core.windows.net. Als u andere Azure-platforms gebruikt, zoals Azure Duitsland, moet u het IP-adres van de bijbehorende KMS-server gebruiken. Zie de volgende tabel voor meer informatie:
 
-|Platform| DNS-KMS|KMS-IP|
+|Platform| KMS DNS|KMS-IP|
 |------|-------|-------|
 |Azure Global|kms.core.windows.net|23.102.135.246|
 |Azure Duitsland|kms.core.cloudapi.de|51.4.143.248|
@@ -48,14 +48,14 @@ Het IP-adres van de KMS-server voor de Azure Global-cloud is 23.102.135.246. De 
 
 Voer de volgende stappen uit om de aangepaste route toe te voegen:
 
-### <a name="for-resource-manager-vms"></a>Vm's voor resourcebeheer
+### <a name="for-resource-manager-vms"></a>Voor Resource Manager-Vm's
 
  
 
 > [!NOTE] 
-> Activering maakt gebruik van openbare IP-adressen en wordt beïnvloed door een standaard Configuratie van sku-load balancer. Controleer [uitgaande verbindingen in Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) zorgvuldig om meer te weten te komen over de vereisten.
+> Activering maakt gebruik van open bare IP-adressen en wordt beïnvloed door een standaard-SKU Load Balancer configuratie. Lees zorgvuldig de [uitgaande verbindingen in azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) om meer te weten te komen over de vereisten.
 
-1. Open Azure PowerShell en [meld u aan bij uw Azure-abonnement.](https://docs.microsoft.com/powershell/azure/authenticate-azureps)
+1. Open Azure PowerShell en [Meld u vervolgens aan bij uw Azure-abonnement](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Voer de volgende opdrachten uit:
 
     ```powershell
@@ -77,17 +77,17 @@ Voer de volgende stappen uit om de aangepaste route toe te voegen:
 
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
-3. Ga naar de VM met activeringsproblemen. Gebruik [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) om te testen of deze de KMS-server kan bereiken:
+3. Ga naar de virtuele machine met activerings problemen. Gebruik [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) om te testen of de KMS-server kan worden bereikt:
 
         psping kms.core.windows.net:1688
 
-4. Probeer Windows te activeren en kijk of het probleem is opgelost.
+4. Probeer Windows te activeren en te controleren of het probleem is opgelost.
 
-### <a name="for-classic-vms"></a>Voor klassieke VM's
+### <a name="for-classic-vms"></a>Voor klassieke Vm's
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-1. Open Azure PowerShell en [meld u aan bij uw Azure-abonnement.](https://docs.microsoft.com/powershell/azure/authenticate-azureps)
+1. Open Azure PowerShell en [Meld u vervolgens aan bij uw Azure-abonnement](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Voer de volgende opdrachten uit:
 
     ```powershell
@@ -105,15 +105,15 @@ Voer de volgende stappen uit om de aangepaste route toe te voegen:
     -RouteTableName "VNet-DM-KmsRouteTable"
     ```
 
-3. Ga naar de VM met activeringsproblemen. Gebruik [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) om te testen of deze de KMS-server kan bereiken:
+3. Ga naar de virtuele machine met activerings problemen. Gebruik [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) om te testen of de KMS-server kan worden bereikt:
 
         psping kms.core.windows.net:1688
 
-4. Probeer Windows te activeren en kijk of het probleem is opgelost.
+4. Probeer Windows te activeren en te controleren of het probleem is opgelost.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Installatiecodes voor KMS-client](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys
 )
-- [Activeringsmethoden controleren en selecteren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11)
+- [Activerings methoden bekijken en selecteren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11)
 )

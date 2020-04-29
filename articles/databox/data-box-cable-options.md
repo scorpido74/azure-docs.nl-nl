@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
 ms.openlocfilehash: ffabd917eff1c545bba734ab1621b947ee8d9ae9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77920634"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Bekabelingsopties voor uw Azure Data Box
@@ -74,7 +74,7 @@ Voer de volgende stappen uit om uw apparaat te bekabelen.
 
 Voer de volgende stappen uit om uw apparaat te bekabelen.
 
-1. Gebruik een RJ45 Ethernet-kabel van de afzonderlijke computer rechtstreeks naar de MGMT-poort voor configuratie.
+1. Gebruik een RJ45 Ethernet-kabel van de afzonderlijke computer rechtstreeks naar de beheer poort voor configuratie.
 2. Gebruik een RJ45-kabel voor DATA 3 of SFP+-kabels om DATA 1 of DATA 2 te verbinden met de server. U wordt aangeraden om 10 GbE voor DATA 1- of DATA 2-poorten te gebruiken voor goede prestaties. De gegevenspoorten zijn verbonden via een 10 GbE-switch op de server met gegevens.
 3. Configureer de Ethernet-adapter op de laptop waarmee u verbinding maakt met het apparaat:
 

@@ -1,100 +1,100 @@
 ---
 title: Overzicht van Istio
-description: Een overzicht van Istio
+description: Een overzicht van Istio verkrijgen
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 8518e30a54c2486abf84cd9ac026cc4dccb3fa84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77593897"
 ---
-# <a name="istio"></a>Istio Istio
+# <a name="istio"></a>Istio
 
 ## <a name="overview"></a>Overzicht
 
-[Istio][istio] is een volledig uitgerust, aanpasbaar en uitbreidbaar servicemesh.
+[Istio][istio] is een volledig uitgeruste, aanpasbaar en uitbreidbaar service-net.
 
 ## <a name="architecture"></a>Architectuur
 
-Istio biedt een dataplane dat [Envoy][envoy-proxy]bestaat uit envoy-gebaseerde zijspannen. Deze intelligente proxy's regelen al het netwerkverkeer in en uit uw meshed apps en workloads.
+Istio biedt een gegevensvlak dat bestaat uit op [Envoy][envoy-proxy]gebaseerde zijspanken. Deze intelligente proxy's bepalen al het netwerk verkeer in en uit uw gestuurde apps en workloads.
 
-Het besturingsvlak beheert de configuratie, het beleid en de telemetrie via de volgende [componenten:][what-is-istio]
+Het besturings vlak beheert de configuratie, het beleid en de telemetrie via de volgende [onderdelen][what-is-istio]:
 
-- **Mixer** - Dwingt toegangsbeheer- en gebruiksbeleid af. Verzamelt telemetrie van de volmachten die in [Prometheus][prometheus]worden geduwd.
+- **Mixer** : dwingt toegangs beheer en gebruiks beleid af. Verzamelt telemetrie van de proxy's die in [Prometheus][prometheus]worden gepusht.
 
-- **Pilot** - Biedt servicedetectie en verkeersbeheerbeleid/-configuratie voor de proxy's.
+- **Pilot** : biedt service detectie en Traffic Management-beleid/-configuratie voor de proxy's.
 
-- **Citadel** - Biedt identiteits- en beveiligingsmogelijkheden die mTLS tussen services mogelijk maken.
+- **Citadel** : biedt identiteits-en beveiligings mogelijkheden waarmee mTLS tussen services worden toegestaan.
 
-- **Kombuis** - Abstracts en biedt configuratie aan componenten.
+- **Druk proef** -abstracten en biedt configuratie voor onderdelen.
 
-Het volgende architectuurdiagram laat zien hoe de verschillende componenten in het gegevensvlak en het controlevlak met elkaar in wisselwerking staan.
-
-
-![Overzicht van Istio componenten en architectuur.](media/servicemesh/istio/about-architecture.png)
+In het volgende architectuur diagram ziet u hoe de verschillende onderdelen binnen het vlak van de gegevens en het besturings element werken.
 
 
-## <a name="selection-criteria"></a>Selectiecriteria
+![Overzicht van Istio-onderdelen en-architectuur.](media/servicemesh/istio/about-architecture.png)
 
-Het is belangrijk om de volgende gebieden te begrijpen en te overwegen bij het evalueren van Istio voor uw workloads:
 
-- [Ontwerpdoelen](#design-goals)
+## <a name="selection-criteria"></a>Selectie criteria
+
+Het is belang rijk dat u de volgende gebieden begrijpt en overweegt om Istio te evalueren voor uw workloads:
+
+- [Ontwerp doelen](#design-goals)
 - [Functionaliteit](#capabilities)
-- [Scenario 's](#scenarios)
+- [Scenario's](#scenarios)
 
 
 ### <a name="design-goals"></a>Ontwerpdoelen
 
-De volgende ontwerpdoelen [begeleiden][design-goals] het Istio-project:
+De volgende ontwerp doelstellingen [begeleiden][design-goals] het Istio-project:
 
-- **Maximaliseer transparantie** - Laat adoptie met de minimale hoeveelheid werk toe om echte waarde uit het systeem te halen.
+- **Maximale transparantie maximaliseren** : acceptatie met de minimale hoeveelheid werk toestaan om echte waarde van het systeem te verkrijgen.
 
-- **Uitbreidbaarheid** - Moet kunnen groeien en zich aanpassen aan veranderende behoeften.
+- **Uitbreid baarheid** : moet kunnen groeien en aanpassen met veranderende behoeften.
 
-- **Draagbaarheid** - Eenvoudig draaien in verschillende soorten omgevingen - cloud, on-premises.
+- **Portabiliteit** : Voer in verschillende omgevingen-Cloud, on-premises, eenvoudig uit.
 
-- **Beleidsuniformiteit** - Consistentie in beleidsdefinitie tussen verschillende bronnen.
+- **Uniformiteit van beleid** : consistentie in de beleids definitie over diverse bronnen.
 
 
 ### <a name="capabilities"></a>Functionaliteit
 
 Istio biedt de volgende mogelijkheden:
 
-- **Mesh** – gateways (multi-cluster), virtuele machines (mesh-uitbreiding)
+- **Net** -gateways (meerdere clusters), virtuele machines (net-expansie)
 
-- **Traffic Management** – routing, splitting, time-outs, stroomonderbrekers, retries, ingress, uitgang
+- **Verkeers beheer** : route ring, splitsing, time-outs, circuit onderbrekers, nieuwe pogingen, binnenkomend verkeer, uitgang
 
-- **Beleid** – toegangscontrole, tarieflimiet, quotum, aangepaste beleidsadapters
+- **Beleid** : toegangs beheer, frequentie limiet, quota, aangepaste beleids adapters
 
-- **Beveiliging** – authenticatie (jwt), autorisatie, encryptie (mTLS), externe CA (HashiCorp Vault)
+- **Beveiliging** – verificatie (JWT), autorisatie, versleuteling (mTLS), externe CA (HashiCorp-kluis)
 
-- **Waarneembaarheid** - gouden metrische gegevens, spiegel, tracering, aangepaste adapters, prometheus, grafana
+- **Waarneem** bare gegevens: Golden, Mirror, tracering, aangepaste adapters, Prometheus, grafana
 
 ### <a name="scenarios"></a>Scenario's
 
-Istio is zeer geschikt voor en voorgesteld voor de volgende scenario's:
+Istio is goed geschikt voor de volgende scenario's:
 
-- Vereisen uitbreidbaarheid en uitgebreide set van mogelijkheden
+- Uitbreid baarheid en uitgebreide set mogelijkheden vereisen
 
-- Mesh-uitbreiding met vm-gebaseerde workloads
+- Netexpansie om op virtuele machines gebaseerde workloads op te zetten
 
-- Multiclusterservicemesh
+- Multi-Cluster service net
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In de volgende documentatie wordt beschreven hoe u Istio installeren op Azure Kubernetes Service (AKS):
+In de volgende documentatie wordt beschreven hoe u Istio kunt installeren in azure Kubernetes service (AKS):
 
 > [!div class="nextstepaction"]
-> [Istio installeren in Azure Kubernetes Service (AKS)][istio-install]
+> [Istio installeren in azure Kubernetes service (AKS)][istio-install]
 
-U ook istio-concepten en aanvullende implementatiemodellen verder verkennen:
+U kunt ook nog verder Istio-concepten en aanvullende implementatie modellen verkennen:
 
-- [Istio Concepten][what-is-istio]
-- [Istio-implementatiemodellen][deployment-models]
+- [Istio-concepten][what-is-istio]
+- [Istio-implementatie modellen][deployment-models]
 
 <!-- LINKS - external -->
 [istio]: https://istio.io

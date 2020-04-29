@@ -1,6 +1,6 @@
 ---
-title: Overzicht van azure servicebusbeperking | Microsoft Documenten
-description: Overzicht van Service Bus throttling - Standaard- en Premium-lagen.
+title: Overzicht van Azure Service Bus beperking | Microsoft Docs
+description: Overzicht van Service Bus beperking van de lagen standaard en Premium.
 services: service-bus-messaging
 author: axisc
 editor: spelluru
@@ -9,124 +9,124 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: aschhab
 ms.openlocfilehash: f852ad70b2eb97e2b8b3e40d086e98b3836c3592
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77598286"
 ---
-# <a name="throttling-operations-on-azure-service-bus"></a>Beperkingsbewerkingen op Azure Service Bus
+# <a name="throttling-operations-on-azure-service-bus"></a>Beperkings bewerkingen op Azure Service Bus
 
-Cloud native oplossingen geven een notie van onbeperkte resources die kunnen schalen met uw workload. Hoewel dit begrip meer waar is in de cloud dan bij on-premises systemen, zijn er nog steeds beperkingen die in de cloud bestaan.
+De systeem eigen oplossingen van de Cloud bieden een begrip van onbeperkte resources die kunnen worden geschaald met uw werk belasting. Hoewel dit principe meer waar is in de Cloud dan bij on-premises systemen, zijn er nog steeds beperkingen in de Cloud.
 
-Deze beperkingen kunnen leiden tot beperking van aanvragen voor clienttoepassingen in zowel standaard- als Premium-lagen, zoals besproken in dit artikel. 
+Deze beperkingen kunnen ertoe leiden dat aanvragen voor client toepassingen in de lagen Standard en Premium worden beperkt, zoals wordt beschreven in dit artikel. 
 
-## <a name="throttling-in-azure-service-bus-standard-tier"></a>Beperking in de standaardlaag Azure Service Bus
+## <a name="throttling-in-azure-service-bus-standard-tier"></a>Beperking in Azure Service Bus Standard-laag
 
-De Azure Service Bus Standard-laag werkt als een multi-tenant-instelling met een prijsmodel voor betalen per gebruik. Hier delen meerdere naamruimten in hetzelfde cluster de toegewezen resources. Standaardlaag is de aanbevolen keuze voor ontwikkelaars-, test- en QA-omgevingen, samen met productiesystemen met een lage doorvoer.
+De laag Azure Service Bus Standard werkt als een multi tenant-installatie met een prijs model voor betalen per gebruik. Hier zijn meerdere naam ruimten in hetzelfde cluster die de toegewezen resources delen. De Standard-laag is de aanbevolen keuze voor ontwikkel-, test-en QA-omgevingen en productie systemen met een lage door voer.
 
-In het verleden had Azure Service Bus grove beperkingslimieten die strikt afhankelijk waren van het gebruik van resources. Er is echter een mogelijkheid om de beperkingslogica te verfijnen en voorspelbaar beperkend gedrag te bieden aan alle naamruimten die deze bronnen delen.
+In het verleden had Azure Service Bus zeer beperkende limieten die strikt afhankelijk zijn van het resource gebruik. Er is echter een kans om de beperkings logica te verfijnen en voorspel bare beperkings gedrag te bieden aan alle naam ruimten die deze resources delen.
 
-In een poging om een eerlijk gebruik en verdeling van resources over alle Azure Service Bus Standard-naamruimten die dezelfde resources gebruiken, te garanderen, is de beperkingslogica gewijzigd om op krediet te zijn gebaseerd.
+In een poging om te zorgen voor eerlijk gebruik en distributie van resources voor alle Azure Service Bus standaard naam ruimten die dezelfde resources gebruiken, is de beperkings logica gewijzigd in op Credit gebaseerd.
 
 > [!NOTE]
-> Het is belangrijk op te merken dat beperking ***niet nieuw*** is voor Azure Service Bus of een cloud native service.
+> Het is belang rijk te weten dat de beperking ***niet nieuw*** is voor Azure service bus of een native Cloud service.
 >
-> Credit based throttling is gewoon het verfijnen van de manier waarop verschillende naamruimten resources delen in een multi-tenant standaardniveauomgeving en dus redelijk gebruik mogelijk maken door alle naamruimten die de resources delen.
+> Op basis van krediet beperking is het verfijnen van de manier waarop verschillende naam ruimten resources delen in een multi tenant-omgeving met een standaard laag en zodoende redelijk gebruik kunnen maken door alle naam ruimten die de resources delen.
 
-### <a name="what-is-credit-based-throttling"></a>Wat is credit-based throttling?
+### <a name="what-is-credit-based-throttling"></a>Wat is op krediet gebaseerd beperkende beperkingen?
 
-Credit-based throttling beperkt het aantal bewerkingen dat in een bepaalde periode op een bepaalde naamruimte kan worden uitgevoerd. 
+Op Credit gebaseerde beperking beperkt het aantal bewerkingen dat kan worden uitgevoerd op een bepaalde naam ruimte in een specifieke tijds periode. 
 
-Hieronder vindt u de workflow voor op krediet gebaseerde beperking - 
+Hieronder ziet u de werk stroom voor op krediet gebaseerde beperking- 
 
-  * Aan het begin van elke periode geven we een bepaald aantal credits aan elke naamruimte.
-  * Alle bewerkingen die door de verzender of ontvangerclienttoepassingen worden uitgevoerd, worden meegeteld bij deze credits (en afgetrokken van de beschikbare credits).
-  * Als de credits zijn uitgeput, zullen de volgende bewerkingen worden beperkt tot het begin van de volgende periode.
-  * Credits worden aangevuld aan het begin van de volgende periode.
+  * Aan het begin van elke periode geven we een bepaald aantal tegoeden aan elke naam ruimte.
+  * Bewerkingen die worden uitgevoerd door de client toepassingen van de afzender of ontvanger worden meegeteld bij deze tegoeden (en afgetrokken van de beschik bare tegoeden).
+  * Als de tegoeden zijn uitgeput, worden volgende bewerkingen beperkt tot het begin van de volgende tijds periode.
+  * Tegoed wordt aan het begin van de volgende tijds periode aangevuld.
 
-### <a name="what-are-the-credit-limits"></a>Wat zijn de kredietlimieten?
+### <a name="what-are-the-credit-limits"></a>Wat zijn de krediet limieten?
 
-De kredietlimieten zijn momenteel ingesteld op '1000' credits per seconde (per naamruimte).
+De krediet limieten zijn momenteel per seconde ingesteld op ' 1000 '.
 
-Niet alle bewerkingen zijn gelijk gemaakt. Hier zijn de kredietkosten van elk van de operaties - 
+Niet alle bewerkingen zijn gelijk gemaakt. Dit zijn de kosten voor de tegoeden van elk van de bewerkingen- 
 
-| Bewerking | Kredietkosten|
+| Bewerking | Tegoed kosten|
 |-----------|-----------|
-| Gegevensbewerkingen (verzenden, verzendenAsync, Ontvangen, OntvangenAsync, Peek) |1 tegoed per bericht |
-| Beheerbewerkingen (maken, lezen, bijwerken, verwijderen op wachtrijen, onderwerpen, abonnementen, filters) | 10 credits |
+| Gegevens bewerkingen (Send, SendAsync, receive, ReceiveAsync, Peek) |1 tegoed per bericht |
+| Beheer bewerkingen (maken, lezen, bijwerken, verwijderen voor wacht rijen, onderwerpen, abonnementen, filters) | 10 tegoed |
 
 > [!NOTE]
-> Houd er rekening mee dat bij het verzenden naar een onderwerp elk bericht wordt geëvalueerd op basis van filter(s) voordat het beschikbaar wordt gesteld op het abonnement.
-> Elke filterevaluatie telt ook mee voor de kredietlimiet (d.w.z. 1 krediet per filterevaluatie).
+> Houd er rekening mee dat wanneer u naar een onderwerp verzendt, elk bericht wordt geëvalueerd op basis van filter (s) voordat het op het abonnement beschikbaar wordt gesteld.
+> Elke filter evaluatie telt ook op basis van de krediet limiet (d.w.z. 1 tegoed per filter evaluatie).
 >
 
-### <a name="how-will-i-know-that-im-being-throttled"></a>Hoe weet ik dat ik word gewurgd?
+### <a name="how-will-i-know-that-im-being-throttled"></a>Hoe weet ik dat ik een beperking heb?
 
-Wanneer de aanvragen voor clienttoepassingen worden beperkt, wordt het onderstaande serverantwoord ontvangen door uw toepassing en geregistreerd.
+Wanneer de client toepassings aanvragen worden beperkt, wordt de onderstaande server reactie ontvangen door uw toepassing en geregistreerd.
 
 ```
 The request was terminated because the entity is being throttled. Error code: 50009. Please wait 2 seconds and try again.
 ```
 
-### <a name="how-can-i-avoid-being-throttled"></a>Hoe kan ik voorkomen dat ik wordt gewurgd?
+### <a name="how-can-i-avoid-being-throttled"></a>Hoe kan ik voor komen dat ze worden beperkt?
 
-Met gedeelde resources is het belangrijk om een soort van redelijk gebruik af te dwingen in verschillende naamruimten van servicebus die deze bronnen delen. Beperking zorgt ervoor dat elke piek in één werkbelasting er niet toe leidt dat andere workloads op dezelfde resources worden beperkt.
+Met gedeelde resources is het belang rijk dat u een billijk gebruik afdwingt voor verschillende Service Bus naam ruimten die deze resources delen. Bandbreedte beperking zorgt ervoor dat elke piek in een enkele workload geen andere werk belastingen op dezelfde resources heeft om te worden beperkt.
 
-Zoals later in het artikel vermeld, is er geen risico in wordt beperkt omdat de client SDKs (en andere Azure PaaS-aanbiedingen) hebben de standaard retry beleid ingebouwd in hen. Eventuele throttled verzoeken zullen opnieuw worden geprobeerd met exponentiële backoff en zal uiteindelijk gaan door wanneer de credits worden aangevuld.
+Zoals verderop in het artikel wordt vermeld, is er geen risico om te worden beperkt omdat de client-Sdk's (en andere Azure PaaS-aanbiedingen) het standaard beleid voor opnieuw proberen ingebouwd. Alle vertraagde aanvragen worden opnieuw uitgevoerd met exponentiële uitstel en gaan uiteindelijk door wanneer de tegoeden worden aangevuld.
 
-Het is begrijpelijk dat sommige toepassingen gevoelig zijn voor het beperken. In dat geval is het raadzaam om [uw huidige servicebusstandaard-naamruimte te migreren naar Premium.](service-bus-migrate-standard-premium.md) 
+Het begrijpen van sommige toepassingen kan gevoelig zijn om te worden beperkt. In dat geval kunt u het beste [uw huidige service bus Standard-naam ruimte migreren naar Premium](service-bus-migrate-standard-premium.md). 
 
-Bij migratie u speciale resources toewijzen aan de naamruimte van uw servicebus en de resources op de juiste manier opschalen als er een piek in uw werkbelasting is en de kans op een beperking verminderen. Bovendien u, wanneer uw werklast wordt verminderd tot normale niveaus, de resources die aan uw naamruimte zijn toegewezen, verkleinen.
+Bij de migratie kunt u toegewezen resources toewijzen aan uw Service Bus-naam ruimte en de resources op de juiste wijze schalen als er een piek in uw werk belasting is en de kans dat deze wordt beperkt, wordt verminderd. Daarnaast kunt u de resources die zijn toegewezen aan uw naam ruimte omlaag schalen als uw werk belasting wordt beperkt tot normale niveaus.
 
 ## <a name="throttling-in-azure-service-bus-premium-tier"></a>Beperking in Azure Service Bus Premium-laag
 
-De [Azure Service Bus Premium-laag](service-bus-premium-messaging.md) kent specifieke resources, in termen van berichteneenheden, toe aan elke naamruimtedie door de klant is ingesteld. Deze speciale resources bieden voorspelbare doorvoer en latentie en worden aanbevolen voor systemen met een hoge doorvoer of gevoelige productiekwaliteit.
+De [Azure service bus Premium](service-bus-premium-messaging.md) -laag wijst toegewezen resources, in termen van Messa ging-eenheden, toe aan elke naam ruimte-instelling door de klant. Deze speciale resources bieden voorspel bare door Voer en latentie en worden aanbevolen voor hoge door Voer of gevoelige systemen voor productie kwaliteit.
 
-Bovendien stelt de Premium-laag klanten ook in staat om hun doorvoercapaciteit op te schalen wanneer ze pieken in de werkbelasting ervaren.
+Daarnaast kunnen klanten met de Premium-laag ook hun doorvoer capaciteit opschalen wanneer deze pieken in de werk belasting ervaren.
 
-### <a name="how-does-throttling-work-in-service-bus-premium"></a>Hoe werkt beperking in Service Bus Premium?
+### <a name="how-does-throttling-work-in-service-bus-premium"></a>Hoe werkt beperking voor Service Bus Premium?
 
-Met exclusieve toewijzing van resources voor Service Bus Premium wordt beperking puur gedreven door de beperkingen van de resources die aan de naamruimte zijn toegewezen.
+Met exclusieve resource toewijzing voor Service Bus Premium wordt beperking uitsluitend bepaald door de beperkingen van de resources die aan de naam ruimte zijn toegewezen.
 
-Als het aantal aanvragen groter is dan de huidige resources kunnen service, dan zullen de aanvragen worden beperkt.
+Als het aantal aanvragen meer is dan de huidige resources kunnen service, worden de aanvragen beperkt.
 
-### <a name="how-will-i-know-that-im-being-throttled"></a>Hoe weet ik dat ik word gewurgd?
+### <a name="how-will-i-know-that-im-being-throttled"></a>Hoe weet ik dat ik een beperking heb?
 
-Er zijn verschillende manieren om beperking te identificeren in Azure Service Bus Premium - 
-  * **Throttled Requests** worden weergegeven in de [Azure Monitor Request-statistieken](service-bus-metrics-azure-monitor.md#request-metrics) om te bepalen hoeveel aanvragen zijn beperkt.
-  * Hoog **CPU-gebruik** geeft aan dat de huidige toewijzing van resources hoog is en dat aanvragen mogelijk worden beperkt als de huidige werkbelasting niet vermindert.
-  * Hoog **geheugengebruik** geeft aan dat de huidige toewijzing van resources hoog is en dat aanvragen mogelijk worden beperkt als de huidige werkbelasting niet vermindert.
+Er zijn verschillende manieren om de beperking van Azure Service Bus Premium te identificeren. 
+  * **Vertraagde aanvragen** worden weer gegeven op de [Azure monitor aanvraag gegevens](service-bus-metrics-azure-monitor.md#request-metrics) om te bepalen hoeveel aanvragen zijn beperkt.
+  * Hoog **CPU-gebruik** geeft aan dat de huidige resource toewijzing hoog is en dat aanvragen mogelijk worden beperkt als de huidige werk belasting niet vermindert.
+  * Hoog **geheugen gebruik** geeft aan dat de huidige resource toewijzing hoog is en dat aanvragen mogelijk worden beperkt als de huidige werk belasting niet vermindert.
 
-### <a name="how-can-i-avoid-being-throttled"></a>Hoe kan ik voorkomen dat ik wordt gewurgd?
+### <a name="how-can-i-avoid-being-throttled"></a>Hoe kan ik voor komen dat ze worden beperkt?
 
-Aangezien de naamruimte van Service Bus Premium al speciale resources heeft, u de mogelijkheid verkleinen om te worden beperkt door het aantal Berichteneenheden dat aan uw naamruimte is toegewezen in de gebeurtenis (of anticipatie) van een piek in de werkbelasting op te schalen.
+Aangezien de Service Bus Premium-naam ruimte al toegewezen resources heeft, kunt u de kans verkleinen door het aantal Messa ging-eenheden dat aan uw naam ruimte is toegewezen, te verg Roten in de gebeurtenis (of anticiperen) van een piek in de werk belasting.
 
-Het opschalen/omlaag kan worden bereikt door [runbooks te](../automation/automation-create-alert-triggered-runbook.md) maken die kunnen worden geactiveerd door wijzigingen in de bovenstaande statistieken.
+U kunt omhoog/omlaag schalen door [runbooks](../automation/automation-create-alert-triggered-runbook.md) te maken die kunnen worden geactiveerd door wijzigingen in de bovenstaande metrische gegevens.
 
 ## <a name="faqs"></a>Veelgestelde vragen
 
-### <a name="how-does-throttling-affect-my-application"></a>Welke invloed heeft beperking op mijn toepassing?
+### <a name="how-does-throttling-affect-my-application"></a>Hoe beïnvloedt de beperking mijn toepassing?
 
-Wanneer een aanvraag wordt beperkt, houdt dit in dat de service bezet is omdat deze meer aanvragen onder vindt dan de resources toestaan. Als dezelfde bewerking na enkele ogenblikken opnieuw wordt geprobeerd, zodra de service de huidige werkbelasting heeft doorlopen, kan de aanvraag worden gehonoreerd.
+Wanneer een aanvraag wordt beperkt, houdt dit in dat de service bezet is omdat er meer aanvragen worden uitgevoerd dan voor de resources zijn toegestaan. Als dezelfde bewerking na enkele ogen blikken opnieuw wordt uitgevoerd, kan de aanvraag worden gehonoreerd zodra de service de huidige werk belasting heeft door lopen.
 
-Aangezien beperking het verwachte gedrag is van elke cloud native service, hebben we de logica voor het opnieuw proberen ingebouwd in de Azure Service Bus SDK zelf. De standaardinstelling is ingesteld op automatisch opnieuw proberen met een exponentiële back-off om ervoor te zorgen dat we niet hetzelfde verzoek hebben dat elke keer wordt beperkt.
+Omdat beperking het verwachte gedrag van een native Cloud service is, hebben we de logica voor opnieuw proberen in de Azure Service Bus SDK zelf gemaakt. De standaard instelling is ingesteld op automatisch opnieuw proberen met een exponentiële uitschakeling om ervoor te zorgen dat de aanvraag niet telkens wordt beperkt.
 
-De standaardlogica voor opnieuw proberen is van toepassing op elke bewerking.
+De standaard logica voor opnieuw proberen wordt toegepast op elke bewerking.
 
-### <a name="does-throttling-result-in-data-loss"></a>Leidt beperking tot gegevensverlies?
+### <a name="does-throttling-result-in-data-loss"></a>Is er sprake van een beperking van gegevens verlies?
 
-Azure Service Bus is geoptimaliseerd voor persistentie, we zorgen ervoor dat alle gegevens die naar Service Bus worden verzonden, zijn vastgelegd in opslag voordat de service het succes van de aanvraag erkent.
+Azure Service Bus is geoptimaliseerd voor persistentie, zorgen we ervoor dat alle gegevens die naar Service Bus worden verzonden, worden opgeslagen in de opslag voordat de service het succes van de aanvraag bevestigt.
 
-Zodra de aanvraag met succes 'ACK' (erkend) door Service Bus is, impliceert dit dat Service Bus de aanvraag met succes heeft verwerkt. Als Service Bus een 'NACK' (fout) retourneert, betekent dit dat Service Bus de aanvraag niet heeft kunnen verwerken en dat de clienttoepassing de aanvraag opnieuw moet proberen.
+Als de aanvraag is voltooid (bevestigd) door Service Bus, betekent dit dat de aanvraag door Service Bus is verwerkt. Als Service Bus een ' NACK ' retourneert (fout), betekent dit dat Service Bus de aanvraag niet heeft kunnen verwerken en de client toepassing de aanvraag opnieuw moet uitvoeren.
 
-Wanneer een aanvraag echter wordt beperkt, impliceert de service dat deze de aanvraag op dit moment niet kan accepteren en verwerken vanwege resourcebeperkingen. Dit **impliceert geen** enkele vorm van gegevensverlies omdat Service Bus gewoon niet naar het verzoek heeft gekeken. In dit geval zorgt een beroep op het standaardbeleid voor opnieuw proberen van de Service Bus SDK ervoor dat de aanvraag uiteindelijk wordt verwerkt.
+Wanneer een aanvraag echter wordt beperkt, betekent dit dat de service de aanvraag nu niet kan accepteren en verwerken vanwege beperkingen van de resource. Dit betekent niet dat er gegevens verloren zijn gegaan **,** omdat Service Bus eenvoudigweg de aanvraag niet heeft bekeken. In dit geval moet u, afhankelijk van het standaard beleid voor opnieuw proberen van de Service Bus SDK, ervoor zorgen dat de aanvraag uiteindelijk wordt verwerkt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende geavanceerde onderwerpen voor meer informatie en voorbeelden van het gebruik van servicebusberichten:
+Zie de volgende geavanceerde onderwerpen voor meer informatie en voor beelden van het gebruik van Service Bus Messa ging:
 
-* [Overzicht van servicebusberichten](service-bus-messaging-overview.md)
+* [Overzicht van Service Bus berichten](service-bus-messaging-overview.md)
 * [Snelstart: Berichten verzenden en ontvangen met behulp van Azure Portal en .NET](service-bus-quickstart-portal.md)
 * [Zelfstudie: voorraad bijwerken met Azure Portal en onderwerpen/abonnementen](service-bus-tutorial-topics-subscriptions-portal.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Aangepaste Azure-rollen maken of bijwerken met de Azure-portal (Preview) - Azure RBAC
-description: Meer informatie over het maken van aangepaste Azure-rollen voor Azure-rolebased access control (Azure RBAC) met behulp van de Azure-portal. Dit omvat het aanbieden, maken, bijwerken en verwijderen van aangepaste rollen.
+title: Aangepaste Azure-rollen maken of bijwerken met behulp van de Azure Portal (preview)-Azure RBAC
+description: Meer informatie over het maken van aangepaste Azure-rollen voor op rollen gebaseerd toegangs beheer (Azure RBAC) in azure met behulp van de Azure Portal. Hieronder vindt u informatie over het weer geven, maken, bijwerken en verwijderen van aangepaste rollen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,81 +13,81 @@ ms.workload: identity
 ms.date: 02/26/2020
 ms.author: rolyon
 ms.openlocfilehash: 3204cdf51f3f37588f684f801a811f569b337d13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77674868"
 ---
-# <a name="create-or-update-azure-custom-roles-using-the-azure-portal-preview"></a>Aangepaste Azure-rollen maken of bijwerken met de Azure-portal (Voorbeeld)
+# <a name="create-or-update-azure-custom-roles-using-the-azure-portal-preview"></a>Aangepaste Azure-rollen maken of bijwerken met behulp van de Azure Portal (preview)
 
 > [!IMPORTANT]
-> Aangepaste Azure-rollen met de Azure-portal staan momenteel in een openbare preview.
+> Aangepaste Azure-rollen die gebruikmaken van de Azure Portal, zijn momenteel beschikbaar als open bare preview.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
+> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Als de [ingebouwde Azure-rollen](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, u uw eigen aangepaste Azure-rollen maken. Net als ingebouwde rollen u aangepaste rollen toewijzen aan gebruikers, groepen en serviceprincipals bij abonnements- en resourcegroepscopes. Aangepaste rollen worden opgeslagen in een Azure Active Directory (Azure AD)-map en kunnen worden gedeeld tussen abonnementen. Elke map kan maximaal 5000 aangepaste rollen hebben. Aangepaste rollen kunnen worden gemaakt met behulp van de Azure-portal, Azure PowerShell, Azure CLI of de REST-API. In dit artikel wordt beschreven hoe u aangepaste rollen maakt met de Azure-portal (momenteel in preview).
+Als de [ingebouwde rollen van Azure](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste Azure-rollen maken. Net als bij ingebouwde rollen kunt u aangepaste rollen toewijzen aan gebruikers, groepen en service-principals bij een abonnement en een resource groep. Aangepaste rollen worden opgeslagen in een Azure Active Directory-Directory (Azure AD) en kunnen worden gedeeld via abonnementen. Elke directory kan Maxi maal 5000 aangepaste rollen hebben. Aangepaste rollen kunnen worden gemaakt met behulp van de Azure Portal, Azure PowerShell, Azure CLI of de REST API. In dit artikel wordt beschreven hoe u aangepaste rollen maakt met behulp van de Azure Portal (momenteel als preview-versie).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u aangepaste rollen wilt maken, hebt u het belangrijkste nodig:
+Als u aangepaste rollen wilt maken, hebt u het volgende nodig:
 
 - Machtigingen voor het maken van aangepaste rollen, zoals [Eigenaar](built-in-roles.md#owner) of [Administrator voor gebruikerstoegang](built-in-roles.md#user-access-administrator)
 
-## <a name="step-1-determine-the-permissions-you-need"></a>Stap 1: Bepaal de machtigingen die u nodig hebt
+## <a name="step-1-determine-the-permissions-you-need"></a>Stap 1: de machtigingen bepalen die u nodig hebt
 
-Azure heeft duizenden machtigingen die u mogelijk opnemen in uw aangepaste rol. Hier volgen vier manieren waarop u de machtigingen bepalen die u aan uw aangepaste rol wilt toevoegen:
+Azure heeft duizenden machtigingen die u mogelijk in uw aangepaste rol kunt gebruiken. Hier volgen vier manieren waarop u de machtigingen kunt bepalen die u wilt toevoegen aan uw aangepaste rol:
 
 | Methode | Beschrijving |
 | --- | --- |
-| Bekijk bestaande rollen | U bestaande rollen bekijken om te zien welke machtigingen worden gebruikt. Zie [Azure ingebouwde rollen](built-in-roles.md)voor meer informatie. |
-| Zoeken naar machtigingen op trefwoord | Wanneer u een aangepaste rol maakt met de Azure-portal, u zoeken naar machtigingen op trefwoord. U bijvoorbeeld zoeken naar *virtuele machine-* of *factureringsmachtigingen.* Deze zoekfunctionaliteit wordt later meer beschreven in [stap 4: Machtigingen](#step-4-permissions). |
-| Alle machtigingen downloaden | Wanneer u een aangepaste rol maakt met de Azure-portal, u alle machtigingen downloaden als CSV-bestand en vervolgens in dit bestand zoeken. Klik **in** het deelvenster Machtigingen toevoegen op de knop **Alle machtigingen downloaden** om alle machtigingen te downloaden. Zie [Stap 4: Machtigingen](#step-4-permissions)voor meer informatie over het deelvenster Machtigingen toevoegen. |
-| De machtigingen in de documenten weergeven | U de beschikbare machtigingen weergeven in de [hulpprogramma's van Azure Resource Manager-resources](resource-provider-operations.md). |
+| De bestaande rollen bekijken | U kunt de bestaande rollen bekijken om te zien welke machtigingen er worden gebruikt. Zie [ingebouwde rollen van Azure](built-in-roles.md)voor meer informatie. |
+| Zoeken naar machtigingen op tref woord | Wanneer u een aangepaste rol maakt met behulp van de Azure Portal, kunt u zoeken naar machtigingen op sleutel woord. U kunt bijvoorbeeld zoeken naar machtigingen voor de *virtuele machine* of *facturering* . Deze zoek functie wordt verderop beschreven in [stap 4: machtigingen](#step-4-permissions). |
+| Alle machtigingen downloaden | Wanneer u een aangepaste rol maakt met behulp van de Azure Portal, kunt u alle machtigingen als een CSV-bestand downloaden en dit bestand vervolgens doorzoeken. Klik in het deel venster **machtigingen toevoegen** op de knop **alle machtigingen downloaden** om alle machtigingen te downloaden. Zie voor meer informatie over het deel venster machtigingen toevoegen [stap 4: machtigingen](#step-4-permissions). |
+| De machtigingen in de docs weer geven | U kunt de beschik bare machtigingen weer geven in [Azure Resource Manager bewerkingen van de resource provider](resource-provider-operations.md). |
 
-## <a name="step-2-choose-how-to-start"></a>Stap 2: Kiezen hoe te beginnen
+## <a name="step-2-choose-how-to-start"></a>Stap 2: kiezen hoe u begint
 
-Er zijn drie manieren waarop u beginnen met het maken van een aangepaste rol. U een bestaande rol klonen, helemaal opnieuw beginnen of beginnen met een JSON-bestand. De eenvoudigste manier is om een bestaande rol te vinden die de meeste machtigingen heeft die u nodig hebt en vervolgens te klonen en te wijzigen voor uw scenario. 
+Er zijn drie manieren waarop u kunt beginnen met het maken van een aangepaste rol. U kunt een bestaande functie klonen, helemaal beginnen of beginnen met een JSON-bestand. De eenvoudigste manier is om een bestaande rol te vinden die de meeste machtigingen heeft die u nodig hebt en deze vervolgens te klonen en te wijzigen voor uw scenario. 
 
 ### <a name="clone-a-role"></a>Een rol klonen
 
-Als een bestaande rol niet helemaal over de machtigingen beschikt die u nodig hebt, u deze klonen en vervolgens de machtigingen wijzigen. Volg deze stappen om een rol te klonen.
+Als een bestaande rol niet beschikt over de machtigingen die u nodig hebt, kunt u deze klonen en vervolgens de machtigingen wijzigen. Volg deze stappen om te beginnen met het klonen van een rol.
 
-1. Open in de Azure-portal een abonnement of brongroep waar u de aangepaste rol wilt toewijzen en open vervolgens **Toegangsbeheer (IAM).**
+1. Open in de Azure Portal een abonnement of resource groep waaraan u de aangepaste rol wilt toewijzen en open vervolgens **toegangs beheer (IAM)**.
 
-    In de volgende schermafbeelding wordt de iam-pagina (Access control) weergegeven die is geopend voor een abonnement.
+    Op de volgende scherm afbeelding ziet u de IAM-pagina (Access Control) die voor een abonnement is geopend.
 
-    ![Pagina Toegangsbeheer (IAM) voor een abonnement](./media/custom-roles-portal/access-control-subscription.png)
+    ![De pagina toegangs beheer (IAM) voor een abonnement](./media/custom-roles-portal/access-control-subscription.png)
 
-1. Klik op het tabblad **Rollen** om een lijst met alle ingebouwde en aangepaste rollen weer te geven.
+1. Klik op het tabblad **rollen** om een lijst met alle ingebouwde en aangepaste rollen weer te geven.
 
-1. Zoek naar een rol die u wilt klonen, zoals de rol Factureringslezer.
+1. Zoek naar een rol die u wilt klonen, zoals de rol facturerings lezer.
 
-1. Klik aan het einde van de rij op de ellips (**...**) en klik vervolgens op **Kloon**.
+1. Klik aan het einde van de rij op het weglatings teken (**...**) en klik vervolgens op **klonen**.
 
-    ![Contextmenu klonen](./media/custom-roles-portal/clone-menu.png)
+    ![Context menu klonen](./media/custom-roles-portal/clone-menu.png)
 
-    Hiermee wordt de aangepaste roleditor geopend met de optie **Kloon een roloptie** geselecteerd.
+    Hiermee opent u de editor voor aangepaste rollen met de optie **een rol klonen** geselecteerd.
 
-1. Ga naar [stap 3: Basics](#step-3-basics).
+1. Ga verder met [stap 3: basis principes](#step-3-basics).
 
 ### <a name="start-from-scratch"></a>De procedure vanaf het begin uitvoeren
 
-Als u dat liever hebt, u deze stappen volgen om een aangepaste rol helemaal opnieuw te starten.
+Als u wilt, kunt u deze stappen volgen om een nieuwe aangepaste rol te starten.
 
-1. Open in de Azure-portal een abonnement of brongroep waar u de aangepaste rol wilt toewijzen en open vervolgens **Toegangsbeheer (IAM).**
+1. Open in de Azure Portal een abonnement of resource groep waaraan u de aangepaste rol wilt toewijzen en open vervolgens **toegangs beheer (IAM)**.
 
-1. Klik **op Toevoegen** en klik vervolgens op Aangepaste rol toevoegen **(voorbeeld)**.
+1. Klik op **toevoegen** en klik vervolgens op **aangepaste rol toevoegen (preview)**.
 
-    ![Aangepast rollenmenu toevoegen](./media/custom-roles-portal/add-custom-role-menu.png)
+    ![Menu aangepaste rol toevoegen](./media/custom-roles-portal/add-custom-role-menu.png)
 
-    Hiermee wordt de aangepaste roleditor geopend met de optie **Start from scratch** geselecteerd.
+    Hiermee opent u de editor voor aangepaste rollen met de optie **starten vanuit het begin** .
 
-1. Ga naar [stap 3: Basics](#step-3-basics).
+1. Ga verder met [stap 3: basis principes](#step-3-basics).
 
-### <a name="start-from-json"></a>Begin vanaf JSON
+### <a name="start-from-json"></a>Starten vanuit JSON
 
-Als u dat liever hebt, u de meeste aangepaste rolwaarden opgeven in een JSON-bestand. U het bestand openen in de aangepaste roleditor, aanvullende wijzigingen aanbrengen en vervolgens de aangepaste rol maken. Volg deze stappen om te beginnen met een JSON-bestand.
+Als u wilt, kunt u het meren deel van uw aangepaste Rolinstellingen opgeven in een JSON-bestand. U kunt het bestand openen in de editor voor aangepaste rollen, extra wijzigingen aanbrengen en vervolgens de aangepaste rol maken. Volg deze stappen om te beginnen met een JSON-bestand.
 
 1. Maak een JSON-bestand met de volgende indeling:
 
@@ -109,7 +109,7 @@ Als u dat liever hebt, u de meeste aangepaste rolwaarden opgeven in een JSON-bes
     }
     ```
 
-1. Geef in het JSON-bestand waarden op voor de verschillende eigenschappen. Hier is een voorbeeld met een aantal waarden toegevoegd. Zie [Roldefinities begrijpen voor](role-definitions.md)informatie over de verschillende eigenschappen .
+1. Geef in het JSON-bestand waarden op voor de verschillende eigenschappen. Hier volgt een voor beeld met een aantal toegevoegde waarden. Zie voor meer informatie over de verschillende eigenschappen [begrijpen functie definities](role-definitions.md).
 
     ```json
     {
@@ -139,77 +139,77 @@ Als u dat liever hebt, u de meeste aangepaste rolwaarden opgeven in een JSON-bes
     }
     ```
     
-1. Open de pagina **Toegangsbeheer (IAM)** in de Azure-portal.
+1. Open de pagina **toegangs beheer (IAM)** In het Azure Portal.
 
-1. Klik **op Toevoegen** en klik vervolgens op Aangepaste rol toevoegen **(voorbeeld)**.
+1. Klik op **toevoegen** en klik vervolgens op **aangepaste rol toevoegen (preview)**.
 
-    ![Aangepast rollenmenu toevoegen](./media/custom-roles-portal/add-custom-role-menu.png)
+    ![Menu aangepaste rol toevoegen](./media/custom-roles-portal/add-custom-role-menu.png)
 
-    Hiermee wordt de aangepaste roleditor geopend.
+    Hiermee opent u de editor voor aangepaste rollen.
 
-1. Selecteer Op het tabblad Basisbeginselen in **basislijnmachtigingen**de optie **Start van JSON**.
+1. Selecteer op het tabblad basis beginselen in **basislijn machtigingen**de optie **starten vanuit JSON**.
 
-1. Klik naast het vak Een bestand selecteren op de mapknop om het dialoogvenster Openen te openen.
+1. Klik naast het vak een bestand selecteren op de knop map om het dialoog venster openen te openen.
 
-1. Selecteer uw JSON-bestand en klik op **Openen**.
+1. Selecteer het JSON-bestand en klik vervolgens op **openen**.
 
-1. Ga naar [stap 3: Basics](#step-3-basics).
+1. Ga verder met [stap 3: basis principes](#step-3-basics).
 
-## <a name="step-3-basics"></a>Stap 3: Basisbeginselen
+## <a name="step-3-basics"></a>Stap 3: basis beginselen
 
-Op het tabblad **Basisbeginselen** geeft u de naam, beschrijving en basislijnmachtigingen op voor uw aangepaste rol.
+Op het tabblad **basis beginselen** geeft u de naam, de beschrijving en de basislijn machtigingen voor uw aangepaste rol op.
 
-1. Geef in het vak **Aangepaste rolnaam** een naam op voor de aangepaste rol. De naam moet uniek zijn voor de Azure AD-map. De naam kan letters, cijfers, spaties en speciale tekens bevatten.
+1. Geef in het vak **naam van aangepaste rol** een naam op voor de aangepaste rol. De naam moet uniek zijn voor de Azure AD-adres lijst. De naam kan letters, cijfers, spaties en speciale tekens bevatten.
 
-1. Geef **in het** vak Beschrijving een optionele beschrijving op voor de aangepaste rol. Dit wordt de tooltip voor de aangepaste rol.
+1. Geef in het vak **Beschrijving** een optionele beschrijving op voor de aangepaste rol. Dit wordt de knop Info voor de aangepaste rol.
 
-    De optie **Machtigingen basislijn** moet al zijn ingesteld op basis van de vorige stap, maar u wijzigen.
+    De optie **machtigingen voor basis lijn** moet al zijn ingesteld op basis van de vorige stap, maar u kunt wijzigen.
 
-    ![Tabblad Basisbeginselen met opgegeven waarden](./media/custom-roles-portal/basics-values.png)
+    ![Tabblad basis gegevens met opgegeven waarden](./media/custom-roles-portal/basics-values.png)
 
-## <a name="step-4-permissions"></a>Stap 4: Machtigingen
+## <a name="step-4-permissions"></a>Stap 4: machtigingen
 
-Op het tabblad **Machtigingen** geeft u de machtigingen op voor uw aangepaste rol. Afhankelijk van of u een rol hebt gekloond of dat u met JSON bent begonnen, kan op het tabblad Machtigingen al enkele machtigingen worden vermeld.
+Op het tabblad **machtigingen** geeft u de machtigingen voor uw aangepaste rol op. Afhankelijk van of u een rol hebt gekloond of als u bent begonnen met JSON, worden er mogelijk al een aantal machtigingen weer geven op het tabblad Machtigingen.
 
 ![Tabblad Machtigingen van aangepaste rol maken](./media/custom-roles-portal/permissions.png)
 
 ### <a name="add-or-remove-permissions"></a>Machtigingen toevoegen of verwijderen
 
-Volg deze stappen om machtigingen voor uw aangepaste rol toe te voegen of te verwijderen.
+Volg deze stappen om machtigingen toe te voegen aan of te verwijderen voor uw aangepaste rol.
 
-1. Als u machtigingen wilt toevoegen, klikt u op **Machtigingen toevoegen** om het deelvenster Machtigingen toevoegen te openen.
+1. Om machtigingen toe te voegen, klikt u op **machtigingen toevoegen** om het deel venster machtigingen toevoegen te openen.
 
-    In dit deelvenster worden alle beschikbare machtigingen weergegeven die zijn gegroepeerd in verschillende categorieën in een kaartindeling. Elke categorie vertegenwoordigt een *resourceprovider*, een service die Azure-resources levert.
+    In dit deel venster worden alle beschik bare machtigingen weer gegeven die zijn gegroepeerd in verschillende categorieën in een kaart indeling. Elke categorie vertegenwoordigt een *resource provider*, een service die Azure-resources levert.
 
-1. Typ in het vak **Zoeken naar een machtiging** een tekenreeks om naar machtigingen te zoeken. Zoek bijvoorbeeld naar *factuur* om machtigingen met betrekking tot factuur te zoeken.
+1. Typ in het vak **zoeken naar een machtiging** een teken reeks om te zoeken naar machtigingen. Zoek bijvoorbeeld naar de *factuur* om machtigingen te vinden die betrekking hebben op de factuur.
 
-    Er wordt een lijst met kaartkaarten voor resourceprovider weergegeven op basis van uw zoektekenreeks. Zie [Resourceproviders voor Azure-services voor](../azure-resource-manager/management/azure-services-resource-providers.md)een lijst met hoe resourceproviders worden toegewezen aan Azure-services.
+    Er wordt een lijst van resource provider kaarten weer gegeven op basis van uw zoek reeks. Zie [resource providers voor Azure-Services](../azure-resource-manager/management/azure-services-resource-providers.md)voor een lijst met de manier waarop resource providers aan Azure-Services worden toegewezen.
 
-    ![Venster machtigingen toevoegen aan resourceprovider](./media/custom-roles-portal/add-permissions-provider.png)
+    ![Deel venster machtigingen toevoegen met resource provider](./media/custom-roles-portal/add-permissions-provider.png)
 
-1. Klik op een bronproviderkaart met mogelijk de machtigingen die u wilt toevoegen aan uw aangepaste rol, zoals **Microsoft Billing**.
+1. Klik op een resource provider kaart die mogelijk de machtigingen heeft die u wilt toevoegen aan uw aangepaste rol, zoals **micro soft-facturering**.
 
-    Een lijst met de beheermachtigingen voor die resourceprovider wordt weergegeven op basis van uw zoektekenreeks.
+    Er wordt een lijst met beheer machtigingen voor de resource provider weer gegeven op basis van uw zoek reeks.
 
     ![Lijst met machtigingen toevoegen](./media/custom-roles-portal/add-permissions-list.png)
 
-1. Als u op zoek bent naar machtigingen die van toepassing zijn op het gegevensvlak, klikt u op **Gegevensacties**. Anders laat u de ingeschakelde acties inschakelen op **Acties** om machtigingen weer te geven die van toepassing zijn op het beheervlak. Zie [Beheer en gegevensbewerkingen](role-definitions.md#management-and-data-operations)voor meer informatie over de verschillen tussen het beheervlak en het gegevensvlak.
+1. Als u op zoek bent naar machtigingen die van toepassing zijn op het gegevens vlak, klikt u op **gegevens acties**. Als dat niet het geval is **, moet u** de acties in-en uitschakelen in de lijst met machtigingen die van toepassing zijn op het beheer vlak. Zie [beheer-en gegevens bewerkingen](role-definitions.md#management-and-data-operations)voor meer informatie over de verschillen tussen het beheer vlak en het gegevens vlak.
 
-1. Werk indien nodig de zoektekenreeks bij om uw zoekopdracht verder te verfijnen.
+1. Als dat nodig is, werkt u de zoek teken reeks bij om uw zoek opdracht verder te verfijnen.
 
-1. Zodra u een of meer machtigingen hebt gevonden die u aan uw aangepaste rol wilt toevoegen, voegt u een vinkje toe naast de machtigingen. Voeg bijvoorbeeld een vinkje toe naast **Other: Download Factuur** om de toestemming toe te voegen om facturen te downloaden.
+1. Als u een of meer machtigingen hebt gevonden die u wilt toevoegen aan uw aangepaste rol, moet u een vinkje naast de machtigingen toevoegen. Voeg bijvoorbeeld een vinkje naast **andere toe: factuur downloaden** om de machtiging voor het downloaden van facturen toe te voegen.
 
-1. Klik **op Toevoegen** om de machtigingslijst toe te voegen.
+1. Klik op **toevoegen** om de machtiging toe te voegen aan uw lijst met machtigingen.
 
-    De toestemming wordt `Actions` toegevoegd `DataActions`als een of een .
+    De machtiging wordt toegevoegd als een `Actions` of een `DataActions`.
 
-    ![Machtiging toegevoegd](./media/custom-roles-portal/permissions-list-add.png)
+    ![Machtigingen toegevoegd](./media/custom-roles-portal/permissions-list-add.png)
 
-1. Als u machtigingen wilt verwijderen, klikt u op het pictogram verwijderen aan het einde van de rij. In dit voorbeeld, omdat een gebruiker niet de mogelijkheid `Microsoft.Support/*` nodig heeft om ondersteuningstickets te maken, kan de toestemming worden verwijderd.
+1. Als u machtigingen wilt verwijderen, klikt u op het pictogram verwijderen aan het einde van de rij. In dit voor beeld, omdat een gebruiker geen ondersteunings tickets hoeft te maken, kan `Microsoft.Support/*` de machtiging worden verwijderd.
 
-### <a name="add-wildcard-permissions"></a>Wildcardmachtigingen toevoegen
+### <a name="add-wildcard-permissions"></a>Machtigingen voor joker tekens toevoegen
 
-Afhankelijk van hoe u ervoor hebt gekozen om te\*beginnen, hebt u mogelijk machtigingen met wildcards ( ) in uw lijst met machtigingen. Een wildcard\*( ) breidt een machtiging uit naar alles wat overeenkomt met de tekenreeks die u opgeeft. Stel dat u alle machtigingen met betrekking tot Azure Cost Management en export wilt toevoegen. U al deze machtigingen toevoegen:
+Afhankelijk van hoe u ervoor hebt gekozen om te beginnen, hebt u mogelijk machtigingen met Joker\*tekens () in de lijst met machtigingen. Een Joker teken\*() breidt een machtiging uit voor alles die overeenkomt met de teken reeks die u opgeeft. Stel bijvoorbeeld dat u alle machtigingen wilt toevoegen met betrekking tot Azure Cost Management en exports. U kunt al deze machtigingen toevoegen:
 
 ```
 Microsoft.CostManagement/exports/action
@@ -219,139 +219,139 @@ Microsoft.CostManagement/exports/delete
 Microsoft.CostManagement/exports/run/action
 ```
 
-In plaats van al deze machtigingen toe te voegen, u gewoon een wildcard-machtiging toevoegen. De volgende wildcard-machtiging is bijvoorbeeld gelijk aan de vorige vijf machtigingen. Dit omvat ook eventuele toekomstige exportmachtigingen die kunnen worden toegevoegd.
+In plaats van al deze machtigingen toe te voegen, kunt u gewoon een machtiging voor joker tekens toevoegen. De volgende Joker teken machtiging is bijvoorbeeld gelijk aan de vorige vijf machtigingen. Dit omvat ook toekomstige export machtigingen die kunnen worden toegevoegd.
 
 ```
 Microsoft.CostManagement/exports/*
 ```
 
-Als u een nieuwe wildcard-machtiging wilt toevoegen, u deze niet toevoegen met het deelvenster **Machtigingen toevoegen.** Als u een wildcard-machtiging wilt toevoegen, moet u deze handmatig toevoegen via het tabblad **JSON.** Zie [stap 6: JSON voor](#step-6-json)meer informatie.
+Als u een nieuwe machtiging voor joker tekens wilt toevoegen, kunt u deze niet toevoegen met behulp van het deel venster **machtigingen toevoegen** . Als u een Joker machtiging wilt toevoegen, moet u deze hand matig toevoegen via het tabblad **JSON** . Zie [stap 6: JSON](#step-6-json)voor meer informatie.
 
 ### <a name="exclude-permissions"></a>Machtigingen uitsluiten
 
-Als uw rol een\*wildcard ( ) toestemming heeft en u specifieke machtigingen wilt uitsluiten of aftrekken van die wildcard-machtiging, u deze uitsluiten. Stel dat u de volgende machtiging voor jokertekens hebt:
+Als uw rol een machtiging voor Joker\*tekens () heeft en u specifieke machtigingen uit die Joker machtiging wilt uitsluiten of verwijderen, kunt u deze uitsluiten. Stel bijvoorbeeld dat u de volgende Joker machtiging hebt:
 
 ```
 Microsoft.CostManagement/exports/*
 ```
 
-Als u niet wilt dat een export wordt verwijderd, u de volgende verwijderingsmachtiging uitsluiten:
+Als u niet wilt toestaan dat een export wordt verwijderd, kunt u de volgende machtiging voor verwijderen uitsluiten:
 
 ```
 Microsoft.CostManagement/exports/delete
 ```
 
-Wanneer u een machtiging uitsluit, `NotActions` `NotDataActions`wordt deze toegevoegd als een of . De effectieve beheermachtigingen worden berekend door `Actions` alle machtigingen op te `NotActions`tellen en vervolgens alle . De effectieve gegevensmachtigingen worden berekend door `DataActions` alle gegevens toe te `NotDataActions`voegen en vervolgens alle .
+Wanneer u een machtiging uitsluit, wordt deze toegevoegd als `NotActions` een `NotDataActions`of. De juiste beheer machtigingen worden berekend door alle toe `Actions` te voegen en vervolgens alle te verwijderen. `NotActions` De juiste gegevens machtigingen worden berekend door alle toe `DataActions` te voegen en vervolgens alle te verwijderen. `NotDataActions`
 
 > [!NOTE]
-> Het uitsluiten van een toestemming is niet hetzelfde als een weigering. Het uitsluiten van machtigingen is gewoon een handige manier om machtigingen af te trekken van een wildcard-toestemming.
+> Het uitsluiten van een machtiging is niet hetzelfde als een weigering. Het uitsluiten van machtigingen is een handige manier om machtigingen van een Joker machtiging af te trekken.
 
-1. Als u een machtiging wilt uitsluiten of aftrekken van een toegestane wildcard-machtiging, klikt u op **Machtigingen uitsluiten** om het deelvenster Machtigingen uitsluiten te openen.
+1. Als u een machtiging wilt uitsluiten of aftrekken van een toegestane Joker machtiging, klikt u op **machtigingen uitsluiten** om het deel venster uitsluitings machtigingen te openen.
 
-    In dit deelvenster geeft u de beheer- of gegevensmachtigingen op die zijn uitgesloten of afgetrokken.
+    In dit deel venster geeft u de beheer-of gegevens machtigingen op die worden uitgesloten of afgetrokken.
 
-1. Zodra u een of meer machtigingen hebt gevonden die u wilt uitsluiten, voegt u een vinkje toe naast de machtigingen en klikt u op de knop **Toevoegen.**
+1. Als u een of meer machtigingen hebt gevonden die u wilt uitsluiten, voegt u een vinkje naast de machtigingen toe en klikt u op de knop **toevoegen** .
 
-    ![Venster Machtigingen uitsluiten - machtiging geselecteerd](./media/custom-roles-portal/exclude-permissions-select.png)
+    ![Deel venster machtigingen uitsluiten: machtiging geselecteerd](./media/custom-roles-portal/exclude-permissions-select.png)
 
-    De toestemming wordt `NotActions` toegevoegd `NotDataActions`als een of .
+    De machtiging wordt toegevoegd als een `NotActions` of `NotDataActions`.
 
-    ![Machtiging uitgesloten](./media/custom-roles-portal/exclude-permissions-list-add.png)
+    ![Uitgesloten machtiging](./media/custom-roles-portal/exclude-permissions-list-add.png)
 
-## <a name="step-5-assignable-scopes"></a>Stap 5: Toewijsbare scopes
+## <a name="step-5-assignable-scopes"></a>Stap 5: toewijs bare bereiken
 
-Op het tabblad **Toewijsbare scopes** geeft u op waar uw aangepaste rol beschikbaar is voor toewijzing, zoals een abonnement of resourcegroep. Afhankelijk van hoe u ervoor hebt gekozen om te beginnen, kan dit tabblad het bereik weergeven waar u de pagina Toegangsbeheer (IAM) hebt geopend. Het instellen van toewijsbare scope op hoofdbereik ("/") wordt niet ondersteund. Voor dit voorbeeld u een beheergroep niet toevoegen als een toewijsbaar bereik.
+Op het tabblad **toewijs bare bereiken** geeft u op waar uw aangepaste rol beschikbaar is voor toewijzing, zoals abonnement of resource groep. Afhankelijk van hoe u ervoor hebt gekozen om te starten, kan op dit tabblad het bereik worden weer gegeven waar u de IAM-pagina (Access Control) hebt geopend. Het instellen van een toegewezen bereik aan het hoofd bereik (/) wordt niet ondersteund. Voor deze preview kunt u geen beheer groep toevoegen als een toewijsbaar bereik.
 
-1. Klik **op Toewijsbare scopes toevoegen** om het deelvenster Toewijsbare scopes toevoegen te openen.
+1. Klik op **toewijs bare bereiken toevoegen** om het deel venster toewijs bare scopes toevoegen te openen.
 
-    ![Tabblad Toewijsbare scopes](./media/custom-roles-portal/assignable-scopes.png)
+    ![Tabblad toewijs bare bereiken](./media/custom-roles-portal/assignable-scopes.png)
 
-1. Klik op een of meer scopes die u wilt gebruiken, meestal op uw abonnement.
+1. Klik op een of meer bereiken die u wilt gebruiken, meestal uw abonnement.
 
-    ![Toewijsbare scopes toevoegen](./media/custom-roles-portal/add-assignable-scopes.png)
+    ![Toewijs bare bereiken toevoegen](./media/custom-roles-portal/add-assignable-scopes.png)
 
-1. Klik **op** de knop Toevoegen om het toewijsbare bereik toe te voegen.
+1. Klik op de knop **toevoegen** om uw toewijs bare bereik toe te voegen.
 
 ## <a name="step-6-json"></a>Stap 6: JSON
 
-Op het tabblad **JSON** ziet u uw aangepaste rol opgemaakt in JSON. Als u wilt, u de JSON direct bewerken. Als u een wildcard\*( ) toestemming wilt toevoegen, moet u dit tabblad gebruiken.
+Op het tabblad **JSON** ziet u de aangepaste rol die is ingedeeld in JSON. Als u wilt, kunt u de JSON rechtstreeks bewerken. Als u een Joker teken (\*)-machtiging wilt toevoegen, moet u dit tabblad gebruiken.
 
-1. Als u de JSON wilt bewerken, klikt u op **Bewerken**.
+1. Klik op **bewerken**om de JSON te bewerken.
 
     ![Tabblad JSON met aangepaste rol](./media/custom-roles-portal/json.png)
 
 1. Breng wijzigingen aan in de JSON.
 
-    Als de JSON niet correct is opgemaakt, ziet u een rode gekartelde lijn en een indicator in de verticale goot.
+    Als de JSON niet op de juiste wijze is geformatteerd, ziet u een rode gekartelde lijn en een indicator in de verticale rugmarge.
 
-1. Klik op **Opslaan**als u klaar bent met bewerken .
+1. Wanneer u klaar bent met bewerken, klikt u op **Opslaan**.
 
-## <a name="step-7-review--create"></a>Stap 7: Bekijken + maken
+## <a name="step-7-review--create"></a>Stap 7: controleren en maken
 
-Op het tabblad **Controleren + maken** u uw aangepaste rolinstellingen bekijken.
+Op het tabblad **controleren en maken** kunt u de instellingen van uw aangepaste rol controleren.
 
-1. Controleer uw aangepaste rolinstellingen.
+1. Controleer de instellingen van uw aangepaste rol.
 
-    ![Tabblad Controleren + maken](./media/custom-roles-portal/review-create.png)
+    ![Tabblad controleren en maken](./media/custom-roles-portal/review-create.png)
 
-1. Klik **op Maken** om uw aangepaste rol te maken.
+1. Klik op **maken** om uw aangepaste rol te maken.
 
-    Na enkele ogenblikken verschijnt er een berichtvak waarin wordt aangegeven dat uw aangepaste rol is gemaakt.
+    Na enkele ogen blikken wordt een bericht weer gegeven waarin staat dat de aangepaste rol is gemaakt.
 
-    ![Aangepast rollenbericht maken](./media/custom-roles-portal/custom-role-success.png)
+    ![Aangepast bericht van rol maken](./media/custom-roles-portal/custom-role-success.png)
 
-    Als er fouten worden gedetecteerd, wordt een bericht weergegeven.
+    Als er fouten worden gedetecteerd, wordt er een bericht weer gegeven.
 
-    ![Controleren + fout maken](./media/custom-roles-portal/review-create-error.png)
+    ![Beoordeling + fout maken](./media/custom-roles-portal/review-create-error.png)
 
-1. Uw nieuwe aangepaste rol weergeven in de lijst **Rollen.** Als u uw aangepaste rol niet ziet, klikt u op **Vernieuwen**.
+1. Bekijk de nieuwe aangepaste rol in de lijst **rollen** . Als u uw aangepaste rol niet ziet, klikt u op **vernieuwen**.
 
-     Het kan een paar minuten duren voordat uw aangepaste rol overal wordt weergegeven.
+     Het kan een paar minuten duren voordat uw aangepaste rol overal wordt weer gegeven.
 
 ## <a name="list-custom-roles"></a>Aangepaste rollen opvragen
 
-Volg deze stappen om uw aangepaste rollen te bekijken.
+Volg deze stappen om uw aangepaste rollen weer te geven.
 
-1. Open een abonnements- of resourcegroep en open **vervolgens Access-besturingselement (IAM)**.
+1. Open een abonnement of resource groep en open vervolgens **toegangs beheer (IAM)**.
 
-1. Klik op het tabblad **Rollen** om een lijst met alle ingebouwde en aangepaste rollen weer te geven.
+1. Klik op het tabblad **rollen** om een lijst met alle ingebouwde en aangepaste rollen weer te geven.
 
-1. Selecteer **In** de lijst Type de optie **CustomRole** om alleen uw aangepaste rollen te bekijken.
+1. Selecteer **CustomRole** in de lijst **type** om uw aangepaste rollen te bekijken.
 
-    Als u zojuist uw aangepaste rol hebt gemaakt en deze niet in de lijst ziet, klikt u op **Vernieuwen**.
+    Als u zojuist uw aangepaste rol hebt gemaakt en u deze niet in de lijst ziet, klikt u op **vernieuwen**.
 
-    ![Aangepaste rollijst](./media/custom-roles-portal/custom-role-list.png)
+    ![Aangepaste rollen lijst](./media/custom-roles-portal/custom-role-list.png)
 
 ## <a name="update-a-custom-role"></a>Een aangepaste rol bijwerken
 
-1. Zoals eerder in dit artikel is beschreven, opent u uw lijst met aangepaste rollen.
+1. Zoals eerder in dit artikel is beschreven, opent u de lijst met aangepaste rollen.
 
-1. Klik op de ellips (**...**) voor de aangepaste rol die u wilt bijwerken en klik vervolgens op **Bewerken**. Houd er rekening mee dat u ingebouwde rollen niet bijwerken.
+1. Klik op het weglatings teken (**...**) voor de aangepaste rol die u wilt bijwerken en klik vervolgens op **bewerken**. Houd er rekening mee dat u ingebouwde rollen niet kunt bijwerken.
 
     De aangepaste rol wordt geopend in de editor.
 
-    ![Aangepast rollenmenu](./media/custom-roles-portal/edit-menu.png)
+    ![Menu aangepaste rol](./media/custom-roles-portal/edit-menu.png)
 
 1. Gebruik de verschillende tabbladen om de aangepaste rol bij te werken.
 
-1. Zodra u klaar bent met uw wijzigingen, klikt u op Het tabblad **Controleren + maken** om uw wijzigingen te bekijken.
+1. Wanneer u klaar bent met uw wijzigingen, klikt u op het tabblad **controleren + maken** om uw wijzigingen te controleren.
 
-1. Klik **op** de knop Bijwerken om uw aangepaste rol bij te werken.
+1. Klik op de knop **bijwerken** om uw aangepaste rol bij te werken.
 
 ## <a name="delete-a-custom-role"></a>Een aangepaste rol verwijderen
 
-1. Zoals eerder in dit artikel is beschreven, opent u uw lijst met aangepaste rollen.
+1. Zoals eerder in dit artikel is beschreven, opent u de lijst met aangepaste rollen.
 
-1. Verwijder roltoewijzingen die met de aangepaste rol worden gebruikt.
+1. Verwijder eventuele roltoewijzingen die gebruikmaken van de aangepaste rol.
 
-1. Klik op de ellips (**...**) voor de aangepaste rol die u wilt verwijderen en klik vervolgens op **Verwijderen**.
+1. Klik op het weglatings teken (**...**) voor de aangepaste rol die u wilt verwijderen en klik vervolgens op **verwijderen**.
 
-    ![Aangepast rollenmenu](./media/custom-roles-portal/delete-menu.png)
+    ![Menu aangepaste rol](./media/custom-roles-portal/delete-menu.png)
 
-    Het kan enkele minuten duren voordat uw aangepaste rol volledig is verwijderd.
+    Het kan een paar minuten duren voordat de aangepaste rol volledig is verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Zelfstudie: Een aangepaste rol maken met Azure PowerShell](tutorial-custom-role-powershell.md)
 - [Aangepaste rollen in Azure](custom-roles.md)
-- [Azure Resource Manager-resourceproviderbewerkingen](resource-provider-operations.md)
+- [Bewerkingen voor de resource provider Azure Resource Manager](resource-provider-operations.md)

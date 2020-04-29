@@ -1,6 +1,6 @@
 ---
-title: Aan boord van uw azure stack-virtuele machines naar Azure Sentinel | Microsoft Documenten
-description: In dit artikel ziet u hoe u de azure-extensie voor beeldschermen, updates en configuratiebeheer indient op virtuele Azure Stack-machines en deze controleren met Sentinel.
+title: Onboarding van uw Azure Stack virtuele machines naar Azure-Sentinel | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u de extensie van de virtuele machine voor Azure Monitor, update en configuratie beheer op virtuele machines van Azure Stack kunt inrichten en hoe u deze kunt controleren met Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -13,61 +13,61 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: a8213bd57936f95870324950204dbd6c1473739a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588515"
 ---
-# <a name="connect-azure-stack-virtual-machines-to-azure-sentinel"></a>Azure Stack-virtuele machines verbinden met Azure Sentinel
+# <a name="connect-azure-stack-virtual-machines-to-azure-sentinel"></a>Azure Stack virtuele machines verbinden met Azure Sentinel
 
 
 
 
-Met Azure Sentinel u uw VM's die op Azure en Azure Stack worden uitgevoerd, op één plaats controleren. Als u uw Azure Stack-machines wilt aanboord voor Azure Sentinel, moet u eerst de extensie voor virtuele machines toevoegen aan uw bestaande azure stack-virtuele machines. 
+Met Azure Sentinel kunt u uw virtuele machines die worden uitgevoerd op Azure en Azure Stack op één plek bewaken. Als u uw Azure Stack-machines aan Azure Sentinel wilt toevoegen, moet u eerst de extensie van de virtuele machine aan uw bestaande virtuele machines met Azure Stack. 
 
-Nadat u Azure Stack-machines hebt aangesloten, u kiezen uit een galerij met dashboards die inzichten weergeven op basis van uw gegevens. Deze dashboards kunnen eenvoudig worden aangepast aan uw behoeften.
+Nadat u Azure Stack machines hebt verbonden, kiest u uit een galerie met Dash boards die op basis van uw gegevens Blade inzichten hebben. Deze Dash boards kunnen eenvoudig worden aangepast aan uw behoeften.
 
 
 
 ## <a name="add-the-virtual-machine-extension"></a>De extensie van de virtuele machine toevoegen 
 
-Voeg de azure **monitor-, update- en configuratiebeheer-extensie** toe aan de virtuele machines die op uw Azure Stack worden uitgevoerd. 
+Voeg de extensie van de virtuele machine **Azure monitor, update en configuratie beheer** toe aan de virtuele machines die worden uitgevoerd op uw Azure stack. 
 
-1. Log in een nieuw browsertabblad in bij uw [Azure Stack-portal.](https://docs.microsoft.com/azure-stack/user/azure-stack-use-portal#access-the-portal)
-2. Ga naar de pagina **Virtuele machines** en selecteer de virtuele machine die u wilt beveiligen met Azure Sentinel. Zie [Een Windows-serverVM maken met de Azure Stack-portal](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal) of Een [VM voor een Linux-server maken met behulp van de Azure Stack-portal](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal)voor informatie over het maken van een virtuele machine op Azure Stack.
-3. Selecteer **Extensies**. De lijst van virtuele machine-extensies geïnstalleerd op deze virtuele machine wordt weergegeven.
-4. Klik op het tabblad **Toevoegen.** Het **menublad New Resource** wordt geopend en toont de lijst met beschikbare virtuele machine-extensies. 
-5. Selecteer de **azure-extensie voor monitor-, update- en configuratiebeheer** en klik op **Maken**. Het configuratievenster **voor de installatieextensie** wordt geopend.
+1. Meld u in een nieuw browser tabblad aan bij uw [Azure stack-Portal](https://docs.microsoft.com/azure-stack/user/azure-stack-use-portal#access-the-portal).
+2. Ga naar de pagina **virtuele machines** en selecteer de virtuele machine die u met Azure Sentinel wilt beveiligen. Zie [een Windows Server-VM maken met de Azure stack Portal](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal) of [een Linux-Server-VM maken met behulp van de Azure stack Portal](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal)voor meer informatie over het maken van een virtuele machine op Azure stack.
+3. Selecteer **uitbrei dingen**. De lijst met virtuele-machine uitbreidingen die op deze virtuele machine is geïnstalleerd, wordt weer gegeven.
+4. Klik op het tabblad **toevoegen** . De Blade **Nieuw resource** menu wordt geopend en toont de lijst met beschik bare extensies van virtuele machines. 
+5. Selecteer de uitbrei ding **Azure monitor, update en configuratie beheer** en klik op **maken**. Het venster **extensie configuratie installeren** wordt geopend.
 
-   ![Instellingen voor Azure-monitor-, update- en configuratiebeheer](./media/connect-azure-stack/azure-monitor-extension-fix.png)  
+   ![Instellingen voor Azure Monitor-, update-en configuratie beheer](./media/connect-azure-stack/azure-monitor-extension-fix.png)  
 
    >[!NOTE]
-   > Als u de azure **monitor-, update- en configuratiebeheerextensie** niet in uw marktplaats ziet, neem dan contact op met uw Azure Stack-operator om deze beschikbaar te maken.
+   > Als u de **Azure monitor-, update-en configuratie beheer** uitbreiding die wordt vermeld in uw Marketplace niet ziet, neemt u contact op met uw Azure stack-operator om deze beschikbaar te maken.
 
-6. Selecteer in het azure sentinel-menu **werkruimte-instellingen** gevolgd door **Geavanceerd**en kopieer de **werkruimte-id** en **werkruimtesleutel (primaire sleutel).** 
-1. Plak ze in het **extensievenster** Azure Stack Install in de aangegeven velden en klik op **OK**.
-1. Nadat de uitbreidingsinstallatie is voltooid, wordt de status weergegeven als **Provisioning Succeeded**. Het kan tot een uur duren voordat de virtuele machine wordt weergegeven in de Azure Sentinel-portal.
+6. In het menu Sentinel van Azure selecteert u **werkruimte instellingen** gevolgd door **Geavanceerd**en kopieert u de **werk ruimte-id** en de **werkruimte sleutel (primaire sleutel)**. 
+1. Plak in het venster **extensie Azure stack installatie** de waarden in de aangegeven velden en klik op **OK**.
+1. Nadat de installatie van de extensie is voltooid, wordt de status ervan weer gegeven als **inrichting geslaagd**. Het kan een uur duren voordat de virtuele machine wordt weer gegeven in de Azure-Sentinel-Portal.
 
-Zie [Windows-computers](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)verbinden voor meer informatie over het installeren en configureren van de agent voor Windows.
+Zie [Windows-computers verbinden](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)voor meer informatie over het installeren en configureren van de agent voor Windows.
 
-Zie Azure Log Analytics [Linux Agent oplossen](../azure-monitor/platform/agent-linux-troubleshoot.md)voor Linux-probleemproblemen.
+Zie [problemen met Azure log Analytics Linux-agent oplossen](../azure-monitor/platform/agent-linux-troubleshoot.md)voor Linux problemen oplossen met agents.
 
-In de Azure Sentinel-portal op Azure, onder **Virtuele machines,** hebt u een overzicht van alle VM's en computers, samen met hun status. 
+In de Azure-Sentinel-Portal op Azure, onder **virtual machines**, hebt u een overzicht van alle vm's en computers, samen met hun status. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Wanneer dit niet meer nodig is, u de extensie uit de virtuele machine verwijderen via de Azure Stack-portal.
+Wanneer u deze niet meer nodig hebt, kunt u de extensie uit de virtuele machine verwijderen via de Azure Stack Portal.
 
-Ga als u de extensie verwijderen:
+De uitbrei ding verwijderen:
 
-1. Open de **Azure Stack Portal**.
-2. Ga naar de pagina **Virtuele machines** en selecteer de virtuele machine waaruit u de extensie wilt verwijderen.
-3. Selecteer **Extensies**, selecteer de extensie **Microsoft.EnterpriseCloud.Monitoring**.
-4. Klik op **Verwijderen**en bevestig uw selectie.
+1. Open de **Azure stack Portal**.
+2. Ga naar de pagina **virtuele machines** en selecteer de virtuele machine waarvan u de extensie wilt verwijderen.
+3. Selecteer **uitbrei dingen**, selecteer de extensie **micro soft. EnterpriseCloud. monitoring**.
+4. Klik op **installatie ongedaan maken**en bevestig uw selectie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en potentiële bedreigingen.](quickstart-get-visibility.md)
-- Aan de slag met [het detecteren van bedreigingen met Azure Sentinel.](tutorial-detect-threats-built-in.md)
-- Gegevens van [apparaten met algemene foutindeling naar](connect-common-event-format.md) Azure Sentinel streamen.
+Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+- Gegevens streamen van [algemene fout indelings toestellen](connect-common-event-format.md) in azure Sentinel.

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: alkohli
 ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77911724"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box-beveiliging en -gegevensbescherming
@@ -34,7 +34,7 @@ Het volgende diagram toont de stroom van gegevens via de Azure Data Box-oplossin
 
 ![Data Box-beveiliging](media/data-box-security/data-box-security-2.png)
 
-Als de gegevens door deze oplossing stromen, worden gebeurtenissen geregistreerd en worden logboeken gegenereerd. Ga voor meer informatie naar [Tracking en eventlogging voor uw Azure Data Box.](data-box-logs.md)
+Wanneer de gegevens via deze oplossing stromen, worden gebeurtenissen vastgelegd en worden logboeken gegenereerd. Ga naar [Tracking en logboek registratie voor uw Azure data Box](data-box-logs.md)voor meer informatie.
 
 ## <a name="security-features"></a>Beveiligingsfuncties
 
@@ -50,7 +50,7 @@ Het Data Box-apparaat wordt door de volgende functies beschermd:
 - Kan alleen worden uitgevoerd met Data Box-specifieke software.
 - Wordt in vergrendelde toestand opgestart.
 - Apparaattoegang via wachtwoordontgrendeling.
-- Toegangsreferenties om gegevens van en naar het apparaat te kopiëren. Alle toegang tot de pagina **Apparaatreferenties** in azure-portal wordt geregistreerd in de [activiteitslogboeken.](data-box-logs.md#query-activity-logs-during-setup)
+- Toegangsreferenties om gegevens van en naar het apparaat te kopiëren. Alle toegang tot de pagina met de referenties van het **apparaat** in azure Portal worden vastgelegd in de [activiteiten logboeken](data-box-logs.md#query-activity-logs-during-setup).
 
 ### <a name="data-box-data-protection"></a>Data Box-gegevensbescherming
 
@@ -58,7 +58,7 @@ De gegevens die in en uit de Data Box stromen, worden door de volgende functies 
 
 - AES 256-bits versleuteling voor data-at-rest.
 - Versleutelde protocollen kunnen worden gebruikt voor data-in-flight.
-- Veilige verwijdering van gegevens van apparaat zodra ze naar Azure zijn geüpload. Het wissen van gegevens is in overeenstemming met de richtlijnen in [aanhangsel A voor ATA-harde schijven in NIST 800-88r1-normen.](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) De gebeurtenis gegevenswissen wordt geregistreerd in de [ordergeschiedenis](data-box-logs.md#download-order-history).
+- Veilige verwijdering van gegevens van apparaat zodra ze naar Azure zijn geüpload. Gegevens verwijdering is conform richt lijnen in [bijlage A voor ATA harde schijven in de 88r1-standaarden van NIST](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf). De gebeurtenis voor gegevens verwijdering wordt vastgelegd in de [order geschiedenis](data-box-logs.md#download-order-history).
 
 ### <a name="data-box-service-protection"></a>Data Box-servicebescherming
 
@@ -66,7 +66,7 @@ De Data Box-service wordt door de volgende functies beschermd:
 
 - Voor toegang tot de Data Box-service moet uw organisatie een Azure-abonnement hebben dat Data Box omvat. Uw abonnement bepaalt tot welke functies u toegang hebt in de Azure-portal.
 - Omdat de Data Box-service in Azure wordt gehost, wordt deze beschermd door de Azure-beveiligingsfuncties. Ga naar het [Vertrouwenscentrum van Microsoft Azure](https://www.microsoft.com/TrustCenter/Security/default.aspx) voor meer informatie over de beveiligingsfuncties die worden geleverd door Microsoft Azure.
-- Toegang tot de Data Box-order kan worden geregeld via het gebruik van RBAC-rollen (Role-based Access Control). Zie [Toegangsbeheer instellen voor gegevensvakvolgorde voor](data-box-logs.md#set-up-access-control-on-the-order) meer informatie
+- Toegang tot de Data Box order kan worden bepaald via het gebruik van RBAC-rollen (Role-based Access Control). Zie [toegangs beheer voor data Box order instellen](data-box-logs.md#set-up-access-control-on-the-order) voor meer informatie
 - In de Data Box-service is Wachtwoord ontgrendelen opgeslagen, dat wordt gebruikt om het apparaat in de service te ontgrendelen.
 - In de Data Box-service worden de ordergegevens en -status opgeslagen. Deze informatie wordt verwijderd wanneer de order wordt verwijderd.
 
@@ -80,7 +80,7 @@ Azure Data Box verzamelt en toont persoonlijke informatie in de volgende belangr
 
   - Naam van contactpersoon
   - Telefoonnummer
-  - Email
+  - E-mail
   - Adres
   - Plaats
   - Postcode
@@ -106,7 +106,7 @@ De volgende beveiligingsrichtlijnen zijn geïmplementeerd in Data Box:
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Voor het weerstaan van nadelige vervoersomstandigheden          |
 |[NIST SP 800-147](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-147.pdf)      | Voor het veilig bijwerken van firmware         |
 |[FIPS 140-2 Level 2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | Voor gegevensbescherming         |
-|Aanhangsel A, voor ATA harde schijven in [NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | Voor het opschonen van gegevens         |
+|Bijlage A, voor ATA harde schijven in [NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | Voor het opschonen van gegevens         |
 
 ## <a name="next-steps"></a>Volgende stappen
 

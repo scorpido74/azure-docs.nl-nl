@@ -1,6 +1,6 @@
 ---
-title: Ontvang onderhoudsmeldingen via de CLI
-description: Bekijk onderhoudsmeldingen voor virtuele machines die in Azure worden uitgevoerd en start selfserviceonderhoud met de Azure CLI.
+title: Onderhouds meldingen ophalen met de CLI
+description: Bekijk onderhouds meldingen voor virtuele machines die in Azure worden uitgevoerd en start self-service onderhoud met behulp van de Azure CLI.
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
 ms.openlocfilehash: 4ad57c1c71a51f948bd405a5487a1e27e36bfff7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77920889"
 ---
-# <a name="handling-planned-maintenance-notifications-using-the-azure-cli"></a>Geplande onderhoudsmeldingen verwerken met de Azure CLI
+# <a name="handling-planned-maintenance-notifications-using-the-azure-cli"></a>Geplande onderhouds meldingen verwerken met Azure CLI
 
-**Dit artikel is van toepassing op virtuele machines met zowel Linux als Windows.**
+**Dit artikel is van toepassing op virtuele machines met Linux en Windows.**
 
-U de CLI gebruiken om te zien wanneer VM's zijn gepland voor [onderhoud.](maintenance-notifications.md) Geplande onderhoudsinformatie is beschikbaar via [de AZ VM get-instance-view.](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-get-instance-view)
+U kunt de CLI gebruiken om te zien wanneer Vm's zijn gepland voor [onderhoud](maintenance-notifications.md). Informatie over gepland onderhoud is beschikbaar via [AZ VM Get-instance-View](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-get-instance-view).
  
-Onderhoudsinformatie wordt alleen geretourneerd als er onderhoud is gepland. 
+Onderhouds informatie wordt alleen geretourneerd als er onderhoud wordt gepland. 
 
 ```azurecli-interactive
 az vm get-instance-view -n myVM -g myResourceGroup --query instanceView.maintenanceRedeployStatus
@@ -28,7 +28,7 @@ az vm get-instance-view -n myVM -g myResourceGroup --query instanceView.maintena
 
 ## <a name="start-maintenance"></a>Onderhoud starten
 
-De volgende aanroep start het `IsCustomerInitiatedMaintenanceAllowed` onderhoud van een vm als deze is ingesteld op true.
+Met de volgende aanroep wordt het onderhoud op een VM `IsCustomerInitiatedMaintenanceAllowed` gestart als deze is ingesteld op waar.
 
 ```azurecli-interactive
 az vm perform-maintenance -g myResourceGroup -n myVM 
@@ -38,21 +38,21 @@ az vm perform-maintenance -g myResourceGroup -n myVM
 
 [!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
 
-Als u nog steeds verouderde VM's hebt die zijn geïmplementeerd met behulp van het klassieke implementatiemodel, u de klassieke AZURE-CLI gebruiken om vm's op te vragen en onderhoud te starten.
+Als u nog steeds oudere Vm's hebt die zijn geïmplementeerd met behulp van het klassieke implementatie model, kunt u de klassieke Azure-CLI gebruiken om te zoeken naar Vm's en het onderhoud te initiëren.
 
-Zorg ervoor dat u in de juiste modus bent om met klassieke VM te werken door te typen:
+Zorg ervoor dat u zich in de juiste modus bevindt voor gebruik met een klassieke virtuele machine door het volgende te typen:
 
 ```
 azure config mode asm
 ```
 
-Typ het type als u de onderhoudsstatus van een VM met de naam *myVM*wilt krijgen:
+Als u de onderhouds status van een virtuele machine met de naam *myVM*wilt ophalen, typt u:
 
 ```
 azure vm show myVM 
 ``` 
 
-Typ: *myVM* *myService* *myDeployment*
+Als u onderhoud wilt starten op uw klassieke virtuele machine met de naam *myVM* in de *myService* -service en *myDeployment* -implementatie, typt u:
 
 ```
 azure compute virtual-machine initiate-maintenance --service-name myService --name myDeployment --virtual-machine-name myVM
@@ -60,4 +60,4 @@ azure compute virtual-machine initiate-maintenance --service-name myService --na
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U ook gepland onderhoud afhandelen via de [Azure PowerShell](maintenance-notifications-powershell.md) of [portal.](maintenance-notifications-portal.md)
+U kunt gepland onderhoud ook afhandelen met behulp van de [Azure PowerShell](maintenance-notifications-powershell.md) of [Portal](maintenance-notifications-portal.md).

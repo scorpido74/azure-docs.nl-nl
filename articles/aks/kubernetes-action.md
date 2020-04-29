@@ -1,43 +1,43 @@
 ---
-title: Containers bouwen, testen en implementeren voor Azure Kubernetes Service met GitHub Actions
-description: Meer informatie over het gebruik van GitHub Actions om uw container te implementeren in Kubernetes
+title: Containers bouwen, testen en implementeren in azure Kubernetes service met GitHub-acties
+description: Meer informatie over het gebruik van GitHub-acties voor het implementeren van uw container in Kubernetes
 services: container-service
 author: azooinmyluggage
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
 ms.openlocfilehash: 5ee8ee4d2c9e225d82e58daffeef9e5f09e43e6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77595362"
 ---
-# <a name="github-actions-for-deploying-to-kubernetes-service"></a>GitHub-acties voor implementatie naar Kubernetes-service
+# <a name="github-actions-for-deploying-to-kubernetes-service"></a>GitHub acties voor het implementeren van de Kubernetes-service
 
-[GitHub Actions](https://help.github.com/en/articles/about-github-actions) biedt u de flexibiliteit om een workflow voor geautomatiseerde softwareontwikkeling te bouwen. De Kubernetes-actie [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) vergemakkelijkt implementaties naar Azure Kubernetes Service-clusters. De actie stelt de doel-AKS-clustercontext in, die kan worden gebruikt door andere acties zoals [azure/k8s-deploy,](https://github.com/Azure/k8s-deploy/tree/master) [azure/k8s-create-secret](https://github.com/Azure/k8s-create-secret/tree/master) etc. of voer kubectl-opdrachten uit.
+[Github-acties](https://help.github.com/en/articles/about-github-actions) bieden u de flexibiliteit om een geautomatiseerde werk stroom voor de levens cyclus van software ontwikkeling te bouwen. De Kubernetes- [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) actie vereenvoudigt implementaties naar Azure Kubernetes-Service clusters. Met deze actie wordt de doel context van de AKS-cluster ingesteld, die kan worden gebruikt door andere acties zoals [Azure/K8S-Deploy](https://github.com/Azure/k8s-deploy/tree/master), [Azure/K8S-Create-Secret](https://github.com/Azure/k8s-create-secret/tree/master) , enzovoort. u kunt ook kubectl-opdrachten uitvoeren.
 
-Een werkstroom wordt gedefinieerd door een YAML-bestand `/.github/workflows/` (.yml) in het pad in uw opslagplaats. Deze definitie bevat de verschillende stappen en parameters die deel uitmaken van de werkstroom.
+Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) `/.github/workflows/` in het pad in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom.
 
-Voor een werkstroom die is gericht op AKS, bevat het bestand drie secties:
+Voor een werk stroom gericht AKS heeft het bestand drie secties:
 
 |Sectie  |Taken  |
 |---------|---------|
-|**Verificatie** | Inloggen bij een privécontainerregister (ACR) |
-|**Ontwikkelen** | Build & push de containerafbeelding  |
-|**Implementeren** | 1. Het beoogde AKS-cluster instellen |
-| |2. Maak een generiek/docker-registergeheim in Kubernetes-cluster  |
-||3. Implementeren in het Kubernetes-cluster|
+|**Verificatie** | Aanmelden bij een persoonlijk container register (ACR) |
+|**Ontwikkelen** | De container installatie kopie bouwen & pushen  |
+|**Implementeren** | 1. Stel het doel-AKS-cluster in |
+| |2. Maak een algemeen/docker-register geheim in het Kubernetes-cluster  |
+||3. implementeren naar het Kubernetes-cluster|
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken
 
-U een [serviceprincipal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) maken met de opdracht [AZ Ad SP create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) in de [Azure CLI.](https://docs.microsoft.com/cli/azure/) U deze opdracht uitvoeren met [Azure Cloud Shell](https://shell.azure.com/) in de Azure-portal of door de knop Uitproberen **te** selecteren.
+U kunt een [Service-Principal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) maken met behulp van de opdracht [AZ AD SP create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) in de [Azure cli](https://docs.microsoft.com/cli/azure/). U kunt deze opdracht uitvoeren met behulp van [Azure Cloud shell](https://shell.azure.com/) in het Azure portal of door de knop **try it** te selecteren.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
 ```
 
-Vervang in de bovenstaande opdracht de tijdelijke aanduidingen door uw abonnements-ID en resourcegroep. De uitvoer is de bevoegdheid voor roltoewijzing die toegang biedt tot uw resource. De opdracht moet een JSON-object uitvoeren dat vergelijkbaar is met deze.
+Vervang in de bovenstaande opdracht de tijdelijke aanduidingen door de abonnements-ID en de resource groep. De uitvoer is de roltoewijzings referenties die toegang bieden tot uw resource. De opdracht moet een JSON-object uitvoeren dat er ongeveer als volgt uitziet.
 
 ```json
   {
@@ -48,42 +48,42 @@ Vervang in de bovenstaande opdracht de tijdelijke aanduidingen door uw abonnemen
     (...)
   }
 ```
-Kopieer dit JSON-object, dat u gebruiken om te verifiëren vanaf GitHub.
+Kopieer dit JSON-object, dat u kunt gebruiken om te verifiëren vanuit GitHub.
 
 ## <a name="configure-the-github-secrets"></a>De GitHub-geheimen configureren
 
-Volg de stappen om de geheimen te configureren:
+Volg de stappen voor het configureren van de geheimen:
 
-1. Blader in [GitHub](https://github.com/)naar uw opslagplaats en selecteer **Instellingen > Geheimen > Voeg een nieuw geheim toe.**
+1. Blader in [github](https://github.com/)naar uw opslag plaats, selecteer **instellingen > geheimen > een nieuw geheim toe te voegen**.
 
     ![geheimen](media/kubernetes-action/secrets.png)
 
-2. Plak de inhoud `az cli` van de bovenstaande opdracht als de waarde van de geheime variabele. Bijvoorbeeld `AZURE_CREDENTIALS`.
+2. Plak de inhoud van de bovenstaande `az cli` opdracht als de waarde van de geheime variabele. Bijvoorbeeld `AZURE_CREDENTIALS`.
 
-3. Definieer ook de volgende aanvullende geheimen voor de referenties van het containerregister en stel deze in docker-inlogactie in. 
+3. U kunt ook de volgende extra geheimen voor de container register referenties definiëren en instellen in de aanmeldings actie voor docker. 
 
     - REGISTRY_USERNAME
     - REGISTRY_PASSWORD
 
-4. U ziet de geheimen zoals hieronder getoond eenmaal gedefinieerd.
+4. De geheimen worden weer gegeven, zoals hieronder is gedefinieerd.
 
     ![kubernetes-geheimen](media/kubernetes-action/kubernetes-secrets.png)
 
-##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>Een containerafbeelding maken en implementeren in Azure Kubernetes Service-cluster
+##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>Een container installatie kopie bouwen en implementeren in azure Kubernetes service-cluster
 
-Het bouwen en duwen van de `Azure/docker-login@v1` containerbeelden gebeurt met actie. Als u een containerafbeelding wilt implementeren op `Azure/k8s-deploy@v1` AKS, moet u de actie gebruiken. Deze actie heeft vijf parameters:
+Het bouwen en pushen van de container installatie kopieën wordt `Azure/docker-login@v1` uitgevoerd met behulp van actie. Als u een container installatie kopie wilt implementeren in AKS, moet u de `Azure/k8s-deploy@v1` actie gebruiken. Deze actie heeft vijf para meters:
 
-| **Parameter**  | **Uitleg**  |
+| **Bepaalde**  | **Uitleg**  |
 |---------|---------|
-| **Namespace** | (Optioneel) Kies de doelnaamruimte van Kubernetes. Als de naamruimte niet is opgegeven, worden de opdrachten uitgevoerd in de standaardnaamruimte | 
-| **Manifesteert** |  (Vereist) Pad naar de manifestbestanden, die worden gebruikt voor implementatie |
-| **Afbeeldingen** | (Optioneel) Volledig gekwalificeerde resource-URL van de afbeelding(en) die moet worden gebruikt voor vervangingen op de manifestbestanden |
-| **imagepullsecrets** | (Optioneel) Naam van een docker-register geheim dat al is ingesteld binnen het cluster. Elk van deze geheime namen wordt toegevoegd onder het veld PullSecrets van imagevoor de workloads in de invoermanifestbestanden |
-| **kubectl-versie** | (Optioneel) Installeert een specifieke versie van kubectl binaire |
+| **naam ruimte** | Beschrijving Kies de doel-Kubernetes naam ruimte. Als de naam ruimte niet wordt gegeven, worden de opdrachten uitgevoerd in de standaard naam ruimte | 
+| **manifesten** |  Lang Pad naar de manifest bestanden die worden gebruikt voor implementatie |
+| **installatie kopieën** | Beschrijving Volledig gekwalificeerde resource-URL van de afbeelding (en) die moet worden gebruikt voor vervangingen in de manifest bestanden |
+| **imagepullsecrets** | Beschrijving Naam van een docker-REGI ster dat al in het cluster is ingesteld. Elk van deze geheime namen wordt toegevoegd onder het veld imagePullSecrets voor de werk belastingen die zijn gevonden in de invoer manifest bestanden |
+| **kubectl-versie** | Beschrijving Hiermee wordt een specifieke versie van kubectl binary geïnstalleerd |
 
-### <a name="deploy-to-azure-kubernetes-service-cluster"></a>Implementeren in Azure Kubernetes Service-cluster
+### <a name="deploy-to-azure-kubernetes-service-cluster"></a>Implementeren naar Azure Kubernetes service-cluster
 
-End-to-end workflow voor het bouwen van containerafbeeldingen en implementeren in een Azure Kubernetes Service-cluster.
+End-to-end werk stroom voor het bouwen van container installatie kopieën en het implementeren van een Azure Kubernetes service-cluster.
 
 ```yaml
 on: [push]
@@ -131,18 +131,18 @@ jobs:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U onze set acties vinden in verschillende opslagplaatsen op GitHub, elk met documentatie en voorbeelden om u te helpen GitHub voor CI/CD te gebruiken en uw apps te implementeren in Azure.
+U vindt onze set acties in verschillende opslag plaatsen op GitHub, elk met documentatie en voor beelden die u kunnen helpen bij het gebruik van GitHub voor CI/CD en uw apps te implementeren in Azure.
 
-- [setup-kubectl](https://github.com/Azure/setup-kubectl)
+- [Setup-kubectl](https://github.com/Azure/setup-kubectl)
 
-- [k8s-set-context](https://github.com/Azure/k8s-set-context)
+- [K8S-set-context](https://github.com/Azure/k8s-set-context)
 
-- [aks-set-context](https://github.com/Azure/aks-set-context)
+- [AKS-set-context](https://github.com/Azure/aks-set-context)
 
-- [k8s-create-secret](https://github.com/Azure/k8s-create-secret)
+- [K8S-maken-geheim](https://github.com/Azure/k8s-create-secret)
 
-- [k8s-deploy](https://github.com/Azure/k8s-deploy)
+- [K8S-implementeren](https://github.com/Azure/k8s-deploy)
 
-- [webapps-container-deploy](https://github.com/Azure/webapps-container-deploy)
+- [webapps-container-implementeren](https://github.com/Azure/webapps-container-deploy)
 
-- [acties-werkstroom-voorbeelden](https://github.com/Azure/actions-workflow-samples)
+- [acties-werk stroom-voor beelden](https://github.com/Azure/actions-workflow-samples)

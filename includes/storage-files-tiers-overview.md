@@ -9,13 +9,13 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: f4e5c59a5ce7c0d743a574309bb1b9276ce80bea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77597790"
 ---
-Azure Files biedt twee verschillende niveaus van opslag, premium en standaard, zodat u uw aandelen afstemmen op de prestatie- en prijsvereisten van uw scenario:
+Azure Files biedt twee verschillende opslag lagen, Premium en Standard, zodat u uw aandelen kunt aanpassen aan de prestatie-en prijs vereisten van uw scenario:
 
-- **Premium bestandsaandelen**: Premium-bestandsaandelen worden ondersteund door solid-state drives (SSD's) en worden geïmplementeerd in het type **FileStorage-opslagaccount.** Premium bestandsshares bieden consistente hoge prestaties en lage latentie, binnen milliseconden met één cijfer voor de meeste IO-bewerkingen, voor IO-intensieve workloads. Dit maakt ze geschikt voor een breed scala aan workloads zoals databases, website hosting en ontwikkelomgevingen. Premium bestandsaandelen zijn alleen beschikbaar in een ingericht factureringsmodel. Zie [Inzicht in provisioning for premium file shares](../articles/storage/files/storage-files-planning.md#understanding-provisioning-for-premium-file-shares)voor meer informatie over het ingerichte factureringsmodel voor premium bestandsaandelen .
-- **Standaardbestandsshares**: Standaardbestandsshares worden ondersteund door harde schijven (HDD's) en worden geïmplementeerd in het **type opslagaccounttype voor algemene toepassing versie 2 (GPv2).** Standaardbestandsshares bieden betrouwbare prestaties voor IO-workloads die minder gevoelig zijn voor prestatievariabiliteit, zoals bestandsshares voor algemene doeleinden en dev/testomgevingen. Standaardbestandsshares zijn alleen beschikbaar in een factureringsmodel voor betalen per gebruik.
+- **Premium-bestands shares**: Premium-bestands shares worden ondersteund door ssd's (Solid-state drives) en worden geïmplementeerd in het type **opslag account van FileStorage** . Premium-bestands shares bieden consistente hoge prestaties en lage latentie in milliseconden voor de meeste i/o-bewerkingen, voor i/o-intensieve workloads. Dit maakt ze geschikt voor een groot aantal werk belastingen, zoals data bases, hosting van websites en ontwikkel omgevingen. Premium-bestands shares zijn alleen beschikbaar in een ingericht facturerings model. Zie [Wat is inrichten voor Premium-bestands shares](../articles/storage/files/storage-files-planning.md#understanding-provisioning-for-premium-file-shares)? voor meer informatie over het ingerichte facturerings model voor Premium-bestands shares.
+- **Standaard bestands shares**: standaard bestands shares worden ondersteund door harde schijven (hdd's) en worden geïmplementeerd in het type **opslag account voor algemeen gebruik (versie 2) (GPv2)** . Standaard bestands shares bieden betrouw bare prestaties voor i/o-workloads die minder gevoelig zijn voor prestatie verschillen, zoals bestands shares voor algemene doel einden en ontwikkel-en test omgevingen. Standaard bestands shares zijn alleen beschikbaar in een facturerings model met betalen per gebruik.

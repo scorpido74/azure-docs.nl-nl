@@ -4,13 +4,13 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 8931ba97cf72891c78e20389be10178dd2c0317a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77594243"
 ---
-In een PowerShell-gebaseerde shell `Invoke-WebRequest` op Windows, gebruiken om de `Expand-Archive` Consul Helm grafiek release downloaden en vervolgens extraheren met als volgt:
+Gebruik `Invoke-WebRequest` in een Power shell-shell in Windows om de consul helm-grafiek release te downloaden en vervolgens `Expand-Archive` als volgt op te halen:
 
 ```powershell
 # Specify the Consul Helm chart version that will be leveraged throughout these instructions
