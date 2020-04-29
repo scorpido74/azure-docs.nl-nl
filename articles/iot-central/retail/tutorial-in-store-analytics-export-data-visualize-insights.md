@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie - Gegevens exporteren en inzichten visualiseren in Azure IoT Central
-description: Leer in deze zelfstudie hoe u gegevens exporteert vanuit IoT Central en visualiseert inzichten in een Power BI-dashboard.
+title: 'Zelf studie: gegevens exporteren en inzichten visualiseren in azure IoT Central'
+description: In deze zelf studie leert u hoe u gegevens exporteert uit IoT Central en inzichten kunt visualiseren in een Power BI dash board.
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
@@ -12,101 +12,101 @@ ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
 ms.openlocfilehash: 6062e8a74af4bb0a19d02ccf9a4c50da0cc4a7c5
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81000103"
 ---
-# <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Zelfstudie: Gegevens exporteren vanuit Azure IoT Central en inzichten visualiseren in Power BI
+# <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Zelf studie: gegevens exporteren uit Azure IoT Central en inzichten in Power BI visualiseren
 
 
 
-In de twee vorige zelfstudies hebt u een IoT Central-toepassing gemaakt en aangepast met behulp van de **in-store-analyse - sjabloon voor de kassatoepassing.** In deze zelfstudie configureert u uw IoT Central-toepassing om telemetrie te exporteren die is verzameld vanaf de apparaten. Vervolgens gebruikt u Power BI om een aangepast dashboard voor de winkelmanager te maken om de inzichten uit de telemetrie te visualiseren.
+In de twee voor gaande zelf studies hebt u een IoT Central-toepassing gemaakt en aangepast met behulp van de toepassings sjabloon **in de Store Analytics-Checker** . In deze zelf studie configureert u uw IoT Central-toepassing voor het exporteren van telemetriegegevens die van de apparaten zijn verzameld. Vervolgens gebruikt u Power BI voor het maken van een aangepast dash board voor de Store Manager voor het visualiseren van de inzichten die zijn afgeleid van de telemetrie.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
-> * Configureer een IoT Central-toepassing om telemetrie naar een gebeurtenishub te exporteren.
-> * Gebruik Logische apps om gegevens van een gebeurtenishub naar een Power BI-streaminggegevensset te verzenden.
-> * Maak een Power BI-dashboard om gegevens in de streaminggegevensset te visualiseren.
+> * Configureer een IoT Central-toepassing om telemetrie te exporteren naar een Event Hub.
+> * Gebruik Logic Apps om gegevens te verzenden van een Event Hub naar een dataset van Power BI stream.
+> * Maak een Power BI-dash board om gegevens in de streaming-gegevensset te visualiseren.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor deze zelfstudie hebt u het volgende nodig:
 
-* Als u de vorige twee zelfstudies wilt voltooien, [maakt u een analysetoepassing in de winkel in Azure IoT Central](./tutorial-in-store-analytics-create-app.md) en past u het [operatordashboard aan en beheert u apparaten in Azure IoT Central.](./tutorial-in-store-analytics-customize-dashboard.md)
-* Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
-* Een Power BI-account. Als je geen Power BI-account hebt, meld je je aan voor een [gratis Power BI Pro-proefversie](https://app.powerbi.com/signupredirect?pbi_source=web) voordat je begint.
+* Voor het volt ooien van de vorige twee zelf studies [maakt u een in-Store Analytics-toepassing in azure IOT Central](./tutorial-in-store-analytics-create-app.md) en [past u het operator dashboard aan en beheert u apparaten in azure IOT Central](./tutorial-in-store-analytics-customize-dashboard.md).
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+* Een Power BI-account. Als u geen Power BI account hebt, meldt u zich aan voor een [gratis proef versie van Power bi Pro](https://app.powerbi.com/signupredirect?pbi_source=web) voordat u begint.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Voordat u uw gebeurtenishub en logische app maakt, moet u een resourcegroep maken om ze te beheren. De resourcegroep moet zich op dezelfde locatie bevinden als uw **In-store analytics - checkout** IoT Central-toepassing. Een resourcegroep maken:
+Voordat u uw Event Hub en logische app maakt, moet u een resource groep maken om deze te beheren. De resource groep moet zich op dezelfde locatie bezien als uw **in-Store Analytics-kassa IOT Central-** toepassing. Een resourcegroep maken:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer **resourcegroepen**in de linkernavigatie . Selecteer vervolgens **Toevoegen**.
-1. Selecteer **voor Abonnement**de naam van het Azure-abonnement dat u hebt gebruikt om uw IoT Central-toepassing te maken.
-1. Voer voor de naam van de **resourcegroep** _winkelanalyse_*.
-1. Selecteer voor de **regio**dezelfde regio die u hebt gekozen voor de IoT Central-toepassing.
+1. Selecteer in het navigatie venster links **resource groepen**. Selecteer vervolgens **toevoegen**.
+1. Voor het **abonnement**selecteert u de naam van het Azure-abonnement dat u hebt gebruikt om uw IOT Central-toepassing te maken.
+1. Voer _Retail-Store-Analysis_* in voor de naam van de **resource groep** .
+1. Voor de **regio**selecteert u de regio die u voor de IOT Central toepassing hebt gekozen.
 1. Selecteer **Controleren + maken**.
 1. Selecteer op de pagina **Controleren + maken** de optie **Maken**.
 
-U hebt nu een resourcegroep genaamd **retail-store-analyse** in uw abonnement.
+U hebt nu een resource groep met de naam **Retail-Store-Analysis** in uw abonnement.
 
 ## <a name="create-an-event-hub"></a>Een Event Hub maken
 
-Voordat u de retailmonitoringtoepassing configureren om telemetrie te exporteren, moet u een gebeurtenishub maken om de geëxporteerde gegevens te ontvangen. In de volgende stappen ziet u hoe u uw gebeurtenishub maakt:
+Voordat u de app voor het controleren van de detail handel kunt configureren voor het exporteren van telemetrie, moet u een Event Hub maken om de geëxporteerde gegevens te ontvangen. De volgende stappen laten zien hoe u uw Event Hub maakt:
 
-1. Selecteer in de Azure-portal **een resource** maken linksboven in het scherm.
-1. Voer in **Search the Marketplace** _gebeurtenishubs_in en druk op **Enter**.
-1. Selecteer op de pagina **Gebeurtenishubs** de optie **Maken**.
-1. Ga op de pagina **Naamruimte maken** de volgende stappen uit:
-    * Voer een unieke naam in voor de naamruimte, zoals _yourname-retail-store-analyse._ Het systeem controleert of deze naam beschikbaar is.
-    * Kies de prijscategorie **Basis.**
-    * Selecteer hetzelfde **abonnement dat** u hebt gebruikt om uw IoT Central-toepassing te maken.
-    * Selecteer de brongroep **voor winkelanalyse.**
-    * Selecteer dezelfde locatie die u hebt gebruikt voor uw IoT Central-toepassing.
-    * Selecteer **Maken**. Het kan zijn dat u een paar minuten moet wachten tot het systeem de resources indient.
-1. Navigeer in de portal naar de brongroep **voor winkelanalyse.** Wacht totdat de installatie is voltooid. Mogelijk moet u **Vernieuwen** selecteren om de implementatiestatus bij te werken. U ook de status controleren van de naamruimte creatie van de gebeurtenishub in de **meldingen**.
-1. Selecteer in de brongroep **voor winkelanalyse** de **naamruimte gebeurtenishubs**. U ziet de startpagina voor de **naamruimte van** uw gebeurtenishubs in de portal.
+1. Selecteer in de Azure Portal **een resource maken** in de linkerbovenhoek van het scherm.
+1. Voer _Event hubs_in **de Marketplace zoeken**in en druk op **Enter**.
+1. Selecteer op de pagina **Event hubs** **maken**.
+1. Voer op de pagina **naam ruimte maken** de volgende stappen uit:
+    * Voer een unieke naam in voor de naam ruimte, zoals _yournaam-Retail-Store-Analysis_. Het systeem controleert of deze naam beschikbaar is.
+    * Kies de prijs categorie **Basic** .
+    * Selecteer hetzelfde **abonnement** dat u hebt gebruikt om uw IOT Central-toepassing te maken.
+    * Selecteer de resource groep **Retail-Store-Analysis** .
+    * Selecteer de locatie die u hebt gebruikt voor uw IoT Central-toepassing.
+    * Selecteer **Maken**. Mogelijk moet u enkele minuten wachten totdat het systeem de resources heeft ingericht.
+1. Navigeer in de portal naar de resource groep **Retail-Store-Analysis** . Wacht totdat de installatie is voltooid. Mogelijk moet u **vernieuwen** selecteren om de implementatie status bij te werken. U kunt ook de status van het maken van de Event Hub naam ruimte in de **meldingen**controleren.
+1. Selecteer in de resource groep **Retail-Store-analyse** de **Event hubs naam ruimte**. U ziet de start pagina voor uw **Event hubs naam ruimte** in de portal.
 
-Nu u een **Naamruimte voor gebeurtenishubs**hebt, u een **gebeurtenishub** maken die u gebruiken met uw IoT Central-toepassing:
+Nu u een **Event hubs naam ruimte**hebt, kunt u een **Event hub** maken voor gebruik met uw IOT Central-toepassing:
 
-1. Selecteer **+ Event Hub**op de startpagina voor de naamruimte van uw **gebeurtenishubs** in de portal.
-1. Voer op de pagina **Gebeurtenishub maken** _de naam store-telemetrie_ in en selecteer **Vervolgens Maken**.
+1. Selecteer op de start pagina voor uw **Event hubs-naam ruimte** in de portal **+ Event hub**.
+1. Voer op de pagina **Event hub maken** de optie _Store-telemetrie_ in als de naam en selecteer vervolgens **maken**.
 
-U hebt nu een gebeurtenishub die u gebruiken wanneer u gegevensexport configureert vanuit uw IoT Central-toepassing:
+U hebt nu een Event Hub u kunt gebruiken bij het configureren van gegevens export vanuit uw IoT Central-toepassing:
 
 ![Event Hub](./media/tutorial-in-store-analytics-visualize-insights/event-hub.png)
 
-## <a name="configure-data-export"></a>Gegevensexporteren configureren
+## <a name="configure-data-export"></a>Gegevens export configureren
 
-Nu u een gebeurtenishub hebt, u uw **in-store-analyses** configureren - kassatoepassing om telemetrie van de verbonden apparaten te exporteren. In de volgende stappen ziet u hoe u de export configureert:
+Nu u een Event Hub hebt, kunt u uw **in-Store-toepassing voor uitchecken** configureren voor het exporteren van telemetrie van de verbonden apparaten. De volgende stappen laten zien hoe u de export configureert:
 
-1. Meld u aan bij uw **In-store analytics - checkout** IoT Central-toepassing.
-1. Selecteer **Gegevens exporteren** in het linkerdeelvenster.
-1. Selecteer **Nieuwe > Azure-gebeurtenishubs**.
-1. Voer _Telemetrie-export in_ als **weergavenaam**.
-1. Selecteer de **naamruimte van uw gebeurtenishubs**.
-1. Selecteer de **gebeurtenishub store-telemetrie.**
-1. Schakel **apparaten** en **apparaatsjablonen** uit in de sectie **Gegevens om te exporteren.**
+1. Meld u aan bij uw **in-Store Analytics-kassa IOT Central-** toepassing.
+1. Selecteer **gegevens export** in het linkerdeel venster.
+1. Selecteer **nieuw > Azure Event hubs**.
+1. Voer een _telemetrie-export_ in als **weergave naam**.
+1. Selecteer uw **Event hubs naam ruimte**.
+1. Selecteer de Event Hub **Store-telemetrie** .
+1. Schakel **apparaten** en **Apparaatinstellingen** uit in de sectie **gegevens die moeten worden geëxporteerd** .
 1. Selecteer **Opslaan**.
 
-Het kan enkele minuten duren voordat de gegevens worden geëxporteerd voordat telemetrie naar uw gebeurtenishub wordt verzonden. U de status van de export bekijken op de pagina **Gegevensexport:**
+Het kan enkele minuten duren voordat het exporteren van een telemetrie naar uw Event Hub wordt verzonden. U kunt de status van de export zien op de pagina **gegevens export** :
 
-![Configuratie van continue gegevensexport](./media/tutorial-in-store-analytics-visualize-insights/export-configuration.png)
+![Configuratie continue gegevens export](./media/tutorial-in-store-analytics-visualize-insights/export-configuration.png)
 
-## <a name="create-the-power-bi-datasets"></a>De Power BI-gegevenssets maken
+## <a name="create-the-power-bi-datasets"></a>De Power BI gegevens sets maken
 
-Op uw Power BI-dashboard worden gegevens van uw retailmonitoringtoepassing weergegeven. In deze oplossing gebruikt u Power BI-streaminggegevenssets als gegevensbron voor het Power BI-dashboard. In deze sectie definieert u het schema van de streaminggegevenssets, zodat de logische app gegevens kan doorsturen vanuit de gebeurtenishub. In de volgende stappen ziet u hoe u twee streamingdatasets maakt voor de omgevingssensoren en één streaminggegevensset voor de bezettingssensor:
+Uw Power BI-dash board geeft gegevens weer uit uw toepassing voor retail bewaking. In deze oplossing gebruikt u Power BI streaming-gegevens sets voor het Power BI dash board. In deze sectie definieert u het schema van de streaming-gegevens sets, zodat de logische app gegevens van de Event Hub kan door sturen. De volgende stappen laten zien hoe u twee streaming-gegevens sets voor de omgevings sensoren en één streaming-gegevensset voor de bezetting sensor maakt:
 
 1. Meld u aan bij uw **Power BI**-account.
-1. Selecteer **Werkruimten**en selecteer **Vervolgens Een werkruimte maken**.
-1. Voer op de pagina **Een werkruimte maken** in _In-store analytics in - afrekenen_ als de **naam Werkruimte**.
-1. Schuif naar de onderkant van de **pagina Welkom naar de pagina In-store analytics - werkruimte voor afrekenen** en selecteer **Overslaan**.
-1. Selecteer op de werkruimtepagina **de optie > streaming-gegevensset maken**.
-1. Kies **API**op de pagina **Nieuwe streaminggegevensset** en selecteer **Volgende**.
-1. Voer _zone 1-sensor_ in als de **naam gegevensset**.
-1. Voer de drie **waarden uit stream** in de volgende tabel in:
+1. Selecteer **werk ruimten**en selecteer vervolgens **een werk ruimte maken**.
+1. Voer op de pagina **een werk ruimte maken** de _in-Store Analytics in_ als de **naam van de werk ruimte**.
+1. Ga naar de onderkant van de **Welkom bij de pagina in-Store analyse werk ruimte** en selecteer **overs Laan**.
+1. Selecteer op de pagina werk ruimte **> streaming-gegevensset maken**.
+1. Kies op de pagina **nieuwe streaming-gegevensset** de optie **API**en selecteer vervolgens **volgende**.
+1. Voer _zone 1 sensor_ in als de naam van de **gegevensset**.
+1. Voer in de volgende tabel de drie **waarden van de stream** in:
 
     | Waardenaam  | Waardetype |
     | ----------- | ---------- |
@@ -114,76 +114,76 @@ Op uw Power BI-dashboard worden gegevens van uw retailmonitoringtoepassing weerg
     | Vochtigheid    | Aantal     |
     | Temperatuur | Aantal     |
 
-1. Historische **gegevensanalyse** inschakelen.
-1. Selecteer **Maken** en vervolgens **Gereed**.
-1. Maak een andere streaming dataset genaamd **Zone 2 sensor** met hetzelfde schema en instellingen als de Zone 1 **sensor** streaming dataset.
+1. Schakel over op de **analyse van historische gegevens** .
+1. Selecteer **maken** en vervolgens **klaar**.
+1. Maak een andere streaming-gegevensset met de naam **zone 2 sensor** met dezelfde schema's en instellingen als de **zone 1 sensor** streaming-gegevensset.
 
-Je hebt nu twee streaming datasets. De logische app stuurt telemetrie van de twee omgevingssensoren die zijn aangesloten op uw **in-store analytics - checkout-toepassing** naar deze twee gegevenssets:
+U hebt nu twee streaming-gegevens sets. De logische app stuurt telemetrie van de twee omgevings Sens oren die zijn verbonden met uw **in-Store-toepassing voor uitchecken** van deze twee gegevens sets:
 
-![Zonegegevenssets](./media/tutorial-in-store-analytics-visualize-insights/dataset-1.png)
+![Zone gegevens sets](./media/tutorial-in-store-analytics-visualize-insights/dataset-1.png)
 
-Deze oplossing maakt gebruik van één streamingdataset voor elke sensor omdat het niet mogelijk is om filters toe te passen op streaminggegevens in Power BI.
+Deze oplossing gebruikt één streaming-gegevensset voor elke sensor, omdat het niet mogelijk is om filters toe te passen op streaminggegevens in Power BI.
 
-Je hebt ook een streaming dataset nodig voor de bezetting telemetrie:
+U hebt ook een streaming-gegevensset nodig voor de telemetrie van de bezetting:
 
-1. Selecteer op de werkruimtepagina **de optie > streaming-gegevensset maken**.
-1. Kies **API**op de pagina **Nieuwe streaminggegevensset** en selecteer **Volgende**.
-1. Voer _de bezettingssensor_ in als de **naam Gegevensset**.
-1. Voer de vijf **waarden uit stream** in de volgende tabel in:
+1. Selecteer op de pagina werk ruimte **> streaming-gegevensset maken**.
+1. Kies op de pagina **nieuwe streaming-gegevensset** de optie **API**en selecteer vervolgens **volgende**.
+1. Voer een _bezettings sensor_ in als de naam van de **gegevensset**.
+1. Voer in de volgende tabel de vijf **waarden in van de stroom** :
 
     | Waardenaam     | Waardetype |
     | -------------- | ---------- |
     | Tijdstempel      | DateTime   |
-    | Wachtrijlengte 1 | Aantal     |
-    | Wachtrijlengte 2 | Aantal     |
-    | Stilstaan tijd 1   | Aantal     |
-    | Stilstaan Tijd 2   | Aantal     |
+    | Wachtrij lengte 1 | Aantal     |
+    | Wachtrij lengte 2 | Aantal     |
+    | Woning tijd 1   | Aantal     |
+    | Woning tijd 2   | Aantal     |
 
-1. Historische **gegevensanalyse** inschakelen.
-1. Selecteer **Maken** en vervolgens **Gereed**.
+1. Schakel over op de **analyse van historische gegevens** .
+1. Selecteer **maken** en vervolgens **klaar**.
 
-Je hebt nu een derde streaming dataset die waarden van de gesimuleerde bezettingssensor opslaat. Deze sensor rapporteert de wachtrijlengte bij de twee kassa's in de winkel en hoe lang klanten in deze wachtrijen wachten:
+U hebt nu een derde streaming-gegevensset die waarden van de gesimuleerde bezetting sensor opslaat. Deze sensor rapporteert de lengte van de wachtrij bij de twee uitchecks in de Store en hoe lang klanten in deze wacht rijen wachten:
 
-![Gegevensset van bezetting](./media/tutorial-in-store-analytics-visualize-insights/dataset-2.png)
+![Bezetting-gegevensset](./media/tutorial-in-store-analytics-visualize-insights/dataset-2.png)
 
 ## <a name="create-a-logic-app"></a>Een logische app maken
 
-In deze oplossing leest de logische app telemetrie van de gebeurtenishub, ontleedt de gegevens en stuurt deze vervolgens naar de Power BI-streaminggegevenssets die u hebt gemaakt.
+In deze oplossing leest de logische app telemetrie van de Event Hub, parseert de gegevens en verzendt deze vervolgens naar de Power BI streaming-gegevens sets die u hebt gemaakt.
 
-Voordat u de logische app maakt, hebt u de apparaat-iD's nodig van de twee RuuviTag-sensoren die u hebt aangesloten op uw IoT Central-toepassing in de analysetoepassing Maken in de winkel in de zelfstudie [van Azure IoT Central:](./tutorial-in-store-analytics-create-app.md)
+Voordat u de logische app maakt, moet u de apparaat-Id's van de twee RuuviTag-Sens oren die u hebt verbonden met uw IoT Central-toepassing hebben in de zelf studie [een in-Store Analytics-toepassing maken in Azure IOT Central](./tutorial-in-store-analytics-create-app.md) :
 
-1. Meld u aan bij uw **In-store analytics - checkout** IoT Central-toepassing.
-1. Selecteer **Apparaten** in het linkerdeelvenster. Selecteer vervolgens **RuuviTag**.
-1. Noteer de **apparaat-id's**. In de volgende screenshot, de iDs zijn **f5dcf4ac32e8** en **e29ffc8d5326:**
+1. Meld u aan bij uw **in-Store Analytics-kassa IOT Central-** toepassing.
+1. Selecteer **apparaten** in het linkerdeel venster. Selecteer vervolgens **RuuviTag**.
+1. Noteer de **apparaat-id's**. In de volgende scherm afbeelding zijn de Id's **f5dcf4ac32e8** en **e29ffc8d5326**:
 
-    ![Apparaat-iD's](./media/tutorial-in-store-analytics-visualize-insights/device-ids.png)
+    ![Apparaat-Id's](./media/tutorial-in-store-analytics-visualize-insights/device-ids.png)
 
-In de volgende stappen ziet u hoe u de logische app maakt in de Azure-portal:
+De volgende stappen laten zien hoe u de logische app maakt in de Azure Portal:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en selecteer **Een resource** maken linksboven in het scherm.
-1. Voer in **De Marktplaats zoeken**de _logica-app_in en druk op **Enter**.
-1. Selecteer **op** de pagina Logic App de optie **Maken**.
-1. Maak op de pagina **Logic App:**
-    * Voer een unieke naam in voor uw logische app, zoals _yourname-retail-store-analyse._
-    * Selecteer hetzelfde **abonnement dat** u hebt gebruikt om uw IoT Central-toepassing te maken.
-    * Selecteer de brongroep **voor winkelanalyse.**
-    * Selecteer dezelfde locatie die u hebt gebruikt voor uw IoT Central-toepassing.
-    * Selecteer **Maken**. Het kan zijn dat u een paar minuten moet wachten tot het systeem de resources indient.
-1. Navigeer in de Azure-portal naar uw nieuwe logica-app.
-1. Schuif op de pagina **Logic Apps Designer** omlaag en selecteer Blank Logic **App**.
-1. Voer in **Zoekconnectors en -triggers** _gebeurtenishubs_in .
-1. Selecteer in **Triggers**wanneer **gebeurtenissen beschikbaar zijn in gebeurtenishub**.
-1. Voer _Telemetrie opslaan_ in als **de naam Verbinding**en selecteer de **naamruimte van gebeurtenishubs**.
-1. Selecteer het beleid **rootbeheerSharedAccess** en selecteer **Maken**.
-1. In de actie Wanneer zijn gebeurtenissen beschikbaar in de actie **Gebeurtenishub:**
-    * Selecteer in **de naam van gebeurtenishub** **winkeltelemetrie**.
-    * Selecteer **toepassing/json**in **Inhoudstype**.
-    * Het **interval instellen** op drie en de **frequentie** op seconden
-1. Selecteer **Opslaan** om uw logica-app op te slaan.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en selecteer **een resource maken** in de linkerbovenhoek van het scherm.
+1. Voer in **de Marketplace zoeken de** _logische app_in en druk vervolgens op **Enter**.
+1. Selecteer op de pagina **Logic app** **maken**.
+1. Op de pagina **logische app** maken:
+    * Voer een unieke naam in voor uw logische app, zoals naam _-Retail-Store-Analysis_.
+    * Selecteer hetzelfde **abonnement** dat u hebt gebruikt om uw IOT Central-toepassing te maken.
+    * Selecteer de resource groep **Retail-Store-Analysis** .
+    * Selecteer de locatie die u hebt gebruikt voor uw IoT Central-toepassing.
+    * Selecteer **Maken**. Mogelijk moet u enkele minuten wachten totdat het systeem de resources heeft ingericht.
+1. Ga in het Azure Portal naar de nieuwe logische app.
+1. Schuif op de pagina **Logic apps Designer** omlaag en selecteer **lege logische app**.
+1. In **Zoek verbindingslijnen en triggers**voert u _Event hubs_in.
+1. Selecteer in **Triggers** **wanneer gebeurtenissen beschikbaar zijn in Event hub**.
+1. Voer een _Store-telemetrie_ in als de naam van de **verbinding**en selecteer uw **Event hubs naam ruimte**.
+1. Selecteer het **RootManageSharedAccess** -beleid en selecteer **maken**.
+1. In de actie **wanneer gebeurtenissen beschikbaar zijn in Event hub** :
+    * Selecteer **Store-telemetrie**in de naam van de **Event hub**.
+    * Selecteer in **inhouds type**de optie **Application/JSON**.
+    * Stel het **interval** in op drie en de **frequentie** in seconden
+1. Selecteer **Opslaan** om uw logische app op te slaan.
 
-Als u de logica wilt toevoegen aan het ontwerp van uw logische app, selecteert u **De codeweergave:**
+Selecteer de **code weergave**om de logica toe te voegen aan het ontwerp van de logische app:
 
-1. Vervang `"actions": {},` door de volgende JSON. Vervang de twee `[YOUR RUUVITAG DEVICE ID 1]` `[YOUR RUUVITAG DEVICE ID 2]` tijdelijke aanduidingen en door de iD's die u hebt opgemerkt van uw twee RuuviTag-apparaten:
+1. Vervang `"actions": {},` door de volgende JSON. Vervang de twee tijdelijke `[YOUR RUUVITAG DEVICE ID 1]` aanduidingen `[YOUR RUUVITAG DEVICE ID 2]` en met de id's die u hebt genoteerd op uw twee RuuviTag-apparaten:
 
     ```json
     "actions": {
@@ -368,141 +368,141 @@ Als u de logica wilt toevoegen aan het ontwerp van uw logische app, selecteert u
     },
     ```
 
-1. Selecteer **Opslaan** en selecteer **Vervolgens Ontwerper** om de visuele versie van de logica die u hebt toegevoegd, te bekijken:
+1. Selecteer **Opslaan** en selecteer vervolgens **Designer** om de visuele versie van de logica te zien die u hebt toegevoegd:
 
-    ![Ontwerp van logische apps](./media/tutorial-in-store-analytics-visualize-insights/logic-app.png)
+    ![Ontwerp van logische app](./media/tutorial-in-store-analytics-visualize-insights/logic-app.png)
 
-1. Selecteer **Switch by DeviceID** om de actie uit te vouwen. Selecteer vervolgens **zone 1-omgeving**en selecteer **Een actie toevoegen**.
-1. Voer in **Zoekconnectors en -acties** **Power BI**in en druk op **Enter**.
-1. Selecteer de actie **Rijen toevoegen aan een gegevensset (voorbeeld).**
-1. Selecteer **Aanmelden** en volg de aanwijzingen om u aan te melden bij uw Power BI-account.
-1. Nadat het aanmeldingsproces is voltooid, in de actie **Rijen toevoegen aan een gegevensset:**
-    * Selecteer **In-store analytics - afreken en kassa** als werkruimte.
-    * Selecteer **Zone 1-sensor** als gegevensset.
-    * Selecteer **RealTimeData** als tabel.
-    * Selecteer **Nieuwe parameter toevoegen** en selecteer vervolgens de velden **Tijdstempel,** **Vochtigheid**en **Temperatuur.**
-    * Selecteer het veld **Tijdstempel** en selecteer **vervolgens x-opt-enqueuedtime** in de lijst **Dynamische inhoud.**
-    * Selecteer het **veld Vochtigheid** en selecteer **Meer weergeven** naast **Parse Telemetrie**. Selecteer vervolgens **vochtigheid**.
-    * Selecteer het veld **Temperatuur** en selecteer **Meer weergeven** naast **Parse Telemetrie**. Selecteer vervolgens **temperatuur**.
-    * Selecteer **Opslaan** om uw wijzigingen op te slaan. De **zone 1-omgevingsactie** ziet ![eruit als de volgende schermafbeelding: Zone 1-omgeving](./media/tutorial-in-store-analytics-visualize-insights/zone-1-action.png)
-1. Selecteer de **omgevingsactie Zone 2** en selecteer **Een actie toevoegen**.
-1. Voer in **Zoekconnectors en -acties** **Power BI**in en druk op **Enter**.
-1. Selecteer de actie **Rijen toevoegen aan een gegevensset (voorbeeld).**
-1. Ga in de actie **Rijen toevoegen aan een gegevensset 2:**
-    * Selecteer **In-store analytics - afreken en kassa** als werkruimte.
-    * Selecteer **Zone 2-sensor** als gegevensset.
-    * Selecteer **RealTimeData** als tabel.
-    * Selecteer **Nieuwe parameter toevoegen** en selecteer vervolgens de velden **Tijdstempel,** **Vochtigheid**en **Temperatuur.**
-    * Selecteer het veld **Tijdstempel** en selecteer **vervolgens x-opt-enqueuedtime** in de lijst **Dynamische inhoud.**
-    * Selecteer het **veld Vochtigheid** en selecteer **Meer weergeven** naast **Parse Telemetrie**. Selecteer vervolgens **vochtigheid**.
-    * Selecteer het veld **Temperatuur** en selecteer **Meer weergeven** naast **Parse Telemetrie**. Selecteer vervolgens **temperatuur**.
-    Selecteer **Opslaan** om uw wijzigingen op te slaan.  De **zone 2-omgevingsactie** ziet ![eruit als de volgende schermafbeelding: Zone 2-omgeving](./media/tutorial-in-store-analytics-visualize-insights/zone-2-action.png)
-1. Selecteer de actie **Bezetting** en selecteer vervolgens de actie **Switch by Interface ID.**
-1. Selecteer de **interfaceactie Stilstaantijd** en selecteer **Een actie toevoegen**.
-1. Voer in **Zoekconnectors en -acties** **Power BI**in en druk op **Enter**.
-1. Selecteer de actie **Rijen toevoegen aan een gegevensset (voorbeeld).**
-1. Ga in de actie **Rijen toevoegen aan een gegevensset:**
-    * Selecteer **In-store analytics - afreken en kassa** als werkruimte.
-    * Selecteer **Bezettingssensor** als gegevensset.
-    * Selecteer **RealTimeData** als tabel.
-    * Selecteer **Nieuwe parameter toevoegen** en selecteer vervolgens de velden **Tijdstempel,** **Stilstaantijd 1**en **Stilstaantijd 2.**
-    * Selecteer het veld **Tijdstempel** en selecteer **vervolgens x-opt-enqueuedtime** in de lijst **Dynamische inhoud.**
-    * Selecteer het veld **Afbeeldingstijd 1** en selecteer **Meer weergeven** naast **Parse Telemetrie**. Selecteer vervolgens **DwellTime1**.
-    * Selecteer het veld **Afbeeldingstijd 2** en selecteer **Meer weergeven** naast **Parse Telemetrie**. Selecteer vervolgens **DwellTime2**.
-    * Selecteer **Opslaan** om uw wijzigingen op te slaan. De interfaceactie **Van De Tijd van de dwell** kijkt als de volgende screenshot: ![De actie van de bezettingsgraad](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
-1. Selecteer de **interfaceactie Tellen personen** en selecteer **Een actie toevoegen**.
-1. Voer in **Zoekconnectors en -acties** **Power BI**in en druk op **Enter**.
-1. Selecteer de actie **Rijen toevoegen aan een gegevensset (voorbeeld).**
-1. Ga in de actie **Rijen toevoegen aan een gegevensset:**
-    * Selecteer **In-store analytics - afreken en kassa** als werkruimte.
-    * Selecteer **Bezettingssensor** als gegevensset.
-    * Selecteer **RealTimeData** als tabel.
-    * Selecteer **Nieuwe parameter toevoegen** en selecteer vervolgens de velden **Tijdstempel,** **Wachtrijlengte 1**en **Wachtrijlengte 2.**
-    * Selecteer het veld **Tijdstempel** en selecteer **vervolgens x-opt-enqueuedtime** in de lijst **Dynamische inhoud.**
-    * Selecteer het veld **Wachtrijlengte 1** en selecteer **Meer weergeven** naast **Parse Telemetrie**. Selecteer vervolgens **count1**.
-    * Selecteer het veld **Wachtrijlengte 2** en selecteer **Meer weergeven** naast **Parse Telemetrie**. Selecteer vervolgens **count2**.
-    * Selecteer **Opslaan** om uw wijzigingen op te slaan. De **interfaceactie People Count** ziet ![eruit als de volgende schermafbeelding: Bezettingsactie](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-2.png)
+1. Selecteer **Switch by DeviceID** om de actie uit te vouwen. Selecteer vervolgens **zone 1 omgeving**en selecteer **een actie toevoegen**.
+1. Voer in **Zoek verbindingslijnen en**-acties **Power bi**in en druk vervolgens op **Enter**.
+1. Selecteer de actie **rijen aan een gegevensset toevoegen (preview)** .
+1. Selecteer **Aanmelden** en volg de aanwijzingen om u aan te melden bij uw Power bi-account.
+1. Nadat het aanmeldings proces is voltooid, in de actie **rijen toevoegen aan een gegevensset** :
+    * Selecteer **in-Store Analytics-Checkout** als de werk ruimte.
+    * Selecteer **zone 1 sensor** als de gegevensset.
+    * Selecteer **RTG** als de tabel.
+    * Selecteer **nieuwe para meter toevoegen** en selecteer vervolgens de velden **tijds tempel**, **vochtigheids graad**en **temperatuur** .
+    * Selecteer het **tijds tempel** veld en selecteer vervolgens **x-opt-enqueuedtime** in de lijst met **dynamische inhoud** .
+    * Selecteer het veld **vochtigheid** en selecteer vervolgens **meer weer geven** naast **telemetrie parseren**. Selecteer vervolgens **vochtigheids graad**.
+    * Selecteer het veld **Tempe ratuur** en selecteer vervolgens **meer weer geven** naast **telemetrie parseren**. Selecteer vervolgens **Tempe ratuur**.
+    * Selecteer **Opslaan** om uw wijzigingen op te slaan. De actie voor de **zone 1 omgeving** ziet eruit als in ![de volgende scherm afbeelding: zone 1 omgeving](./media/tutorial-in-store-analytics-visualize-insights/zone-1-action.png)
+1. Selecteer de actie voor de **zone 2 omgeving** en selecteer **een actie toevoegen**.
+1. Voer in **Zoek verbindingslijnen en**-acties **Power bi**in en druk vervolgens op **Enter**.
+1. Selecteer de actie **rijen aan een gegevensset toevoegen (preview)** .
+1. In de actie **rijen toevoegen aan een gegevensset 2** :
+    * Selecteer **in-Store Analytics-Checkout** als de werk ruimte.
+    * Selecteer **zone 2 sensor** als de gegevensset.
+    * Selecteer **RTG** als de tabel.
+    * Selecteer **nieuwe para meter toevoegen** en selecteer vervolgens de velden **tijds tempel**, **vochtigheids graad**en **temperatuur** .
+    * Selecteer het **tijds tempel** veld en selecteer vervolgens **x-opt-enqueuedtime** in de lijst met **dynamische inhoud** .
+    * Selecteer het veld **vochtigheid** en selecteer vervolgens **meer weer geven** naast **telemetrie parseren**. Selecteer vervolgens **vochtigheids graad**.
+    * Selecteer het veld **Tempe ratuur** en selecteer vervolgens **meer weer geven** naast **telemetrie parseren**. Selecteer vervolgens **Tempe ratuur**.
+    Selecteer **Opslaan** om uw wijzigingen op te slaan.  De actie voor de **zone 2 omgeving** ziet eruit als in ![de volgende scherm afbeelding: zone 2 omgeving](./media/tutorial-in-store-analytics-visualize-insights/zone-2-action.png)
+1. Selecteer de actie **bezetting** en selecteer vervolgens de actie **overschakelen op interface-id** .
+1. Selecteer de actie voor de **woning tijd interface** en selecteer **een actie toevoegen**.
+1. Voer in **Zoek verbindingslijnen en**-acties **Power bi**in en druk vervolgens op **Enter**.
+1. Selecteer de actie **rijen aan een gegevensset toevoegen (preview)** .
+1. In de actie **rijen toevoegen aan een gegevensset** :
+    * Selecteer **in-Store Analytics-Checkout** als de werk ruimte.
+    * Selecteer **bezettings sensor** als gegevensset.
+    * Selecteer **RTG** als de tabel.
+    * Selecteer **nieuwe para meter toevoegen** en selecteer vervolgens de velden **tijds tempel**, **woning tijd 1**en **woning 2** .
+    * Selecteer het **tijds tempel** veld en selecteer vervolgens **x-opt-enqueuedtime** in de lijst met **dynamische inhoud** .
+    * Selecteer het veld **woning tijd 1** en selecteer vervolgens **meer weer geven** naast **telemetrie parseren**. Selecteer vervolgens **DwellTime1**.
+    * Selecteer het veld **woning tijd 2** en selecteer vervolgens **meer weer geven** naast **telemetrie parseren**. Selecteer vervolgens **DwellTime2**.
+    * Selecteer **Opslaan** om uw wijzigingen op te slaan. De actie voor de **woning tijd interface** ziet eruit als in ![de volgende scherm afbeelding: bezettings actie](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
+1. Selecteer de actie voor het **aantal personen** in de interface en selecteer **een actie toevoegen**.
+1. Voer in **Zoek verbindingslijnen en**-acties **Power bi**in en druk vervolgens op **Enter**.
+1. Selecteer de actie **rijen aan een gegevensset toevoegen (preview)** .
+1. In de actie **rijen toevoegen aan een gegevensset** :
+    * Selecteer **in-Store Analytics-Checkout** als de werk ruimte.
+    * Selecteer **bezettings sensor** als gegevensset.
+    * Selecteer **RTG** als de tabel.
+    * Selecteer **nieuwe para meter toevoegen** en selecteer vervolgens de velden **tijds tempel**, **wachtrij lengte 1**en **wachtrij lengte 2** .
+    * Selecteer het **tijds tempel** veld en selecteer vervolgens **x-opt-enqueuedtime** in de lijst met **dynamische inhoud** .
+    * Selecteer het veld **wachtrij lengte 1** en selecteer vervolgens **meer weer geven** naast **telemetrie parseren**. Selecteer vervolgens **count1**.
+    * Selecteer het veld **wachtrij lengte 2** en selecteer vervolgens **meer weer geven** naast **telemetrie parseren**. Selecteer vervolgens **count2**.
+    * Selecteer **Opslaan** om uw wijzigingen op te slaan. De actie voor het **aantal personen** in de interface ziet eruit ![als in de volgende scherm afbeelding: bezettings actie](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-2.png)
 
-De logische app wordt automatisch uitgevoerd. Als u de status van elke run wilt zien, navigeert u naar de pagina **Overzicht** voor de logische app in de Azure-portal:
+De logische app wordt automatisch uitgevoerd. Als u de status van elke uitvoering wilt zien, gaat u naar de **overzichts** pagina voor de logische app in de Azure portal:
 
-## <a name="create-a-power-bi-dashboard"></a>Een Power BI-dashboard maken
+## <a name="create-a-power-bi-dashboard"></a>Een Power BI-dash board maken
 
-Nu heb je telemetrie die vanuit je IoT Central-toepassing via je eventhub stroomt. Vervolgens ontleden uw logische app de berichten van de gebeurtenishub en voegt deze toe aan een Power BI-streaminggegevensset. U nu een Power BI-dashboard maken om de telemetrie te visualiseren:
+Nu hebt u telemetrie vanuit uw IoT Central-toepassing via uw Event Hub. Vervolgens parseert uw logische app de Event Hub berichten en voegt deze toe aan een Power BI streaming-gegevensset. U kunt nu een Power BI-dash board maken om de telemetrie te visualiseren:
 
 1. Meld u aan bij uw **Power BI**-account.
-1. Selecteer **werkruimten > in-store analytics - checkout**.
-1. Selecteer **> Dashboard maken**.
-1. Voer **Winkelanalyses** in als de naam van het dashboard en selecteer **Maken**.
+1. Selecteer **werk ruimten > in-Store Analytics-Checker**.
+1. Selecteer **> dash board maken**.
+1. Voer **winkel analyse** in als de naam van het dash board en selecteer **maken**.
 
-### <a name="add-line-charts"></a>Lijndiagrammen toevoegen
+### <a name="add-line-charts"></a>Lijn diagrammen toevoegen
 
-Voeg vier lijndiagramtegels toe om de temperatuur en vochtigheid van de twee omgevingssensoren weer te geven. Gebruik de informatie in de volgende tabel om de tegels te maken. Als u elke tegel wilt toevoegen, selecteert u **... (Meer opties) > Tegel toevoegen**. Selecteer **Aangepaste streaminggegevens**en selecteer **Volgende:**
+Voeg vier lijn diagram tegels toe om de Tempe ratuur en vochtigheid van de twee omgevings sensors weer te geven. Gebruik de informatie in de volgende tabel om de tegels te maken. Als u elke tegel wilt toevoegen, begint u met selecteren **... (Meer opties) > tegel toevoegen**. Selecteer **aangepaste streaminggegevens**en selecteer vervolgens **volgende**:
 
-| Instelling | Grafiek #1 | Grafiek #2 | Grafiek#3 | Grafiek #4 |
+| Instelling | Grafiek #1 | Grafiek #2 | Grafiek #3 | Grafiek #4 |
 | ------- | -------- | -------- | -------- | -------- |
-| Gegevensset | Zone 1-sensor | Zone 1-sensor | Zone 2-sensor | Zone 2-sensor |
-| Visualisatietype | Lijndiagram | Lijndiagram | Lijndiagram | Lijndiagram |
+| Gegevensset | Zone 1 sensor | Zone 1 sensor | Zone 2 sensor | Zone 2 sensor |
+| Visualisatie type | Lijndiagram | Lijndiagram | Lijndiagram | Lijndiagram |
 | As | Tijdstempel | Tijdstempel | Tijdstempel | Tijdstempel |
 | Waarden | Temperatuur | Vochtigheid | Temperatuur | Vochtigheid |
-| Tijdvenster | 60 minuten | 60 minuten | 60 minuten | 60 minuten |
-| Titel | Temperatuur (1 uur) | Vochtigheid (1 uur) | Temperatuur (1 uur) | Vochtigheid (1 uur) |
+| Tijd venster | 60 minuten | 60 minuten | 60 minuten | 60 minuten |
+| Titel | Tempe ratuur (1 uur) | Vochtigheid (1 uur) | Tempe ratuur (1 uur) | Vochtigheid (1 uur) |
 | Subtitel | Zone 1 | Zone 1 | Zone 2 | Zone 2 |
 
-De volgende schermafbeelding toont de instellingen voor de eerste grafiek:
+Op de volgende scherm afbeelding ziet u de instellingen voor de eerste grafiek:
 
 ![Lijndiagraminstellingen](./media/tutorial-in-store-analytics-visualize-insights/line-chart.png)
 
-### <a name="add-cards-to-show-environmental-data"></a>Kaarten toevoegen om omgevingsgegevens weer te geven
+### <a name="add-cards-to-show-environmental-data"></a>Kaarten toevoegen om omgevings gegevens weer te geven
 
-Voeg vier kaarttegels toe om de meest recente temperatuur- en vochtigheidswaarden van de twee omgevingssensoren weer te geven. Gebruik de informatie in de volgende tabel om de tegels te maken. Als u elke tegel wilt toevoegen, selecteert u **... (Meer opties) > Tegel toevoegen**. Selecteer **Aangepaste streaminggegevens**en selecteer **Volgende:**
+Voeg vier kaart tegels toe om de meest recente Tempe ratuur-en vochtigheids waarden van de twee omgevings sensors weer te geven. Gebruik de informatie in de volgende tabel om de tegels te maken. Als u elke tegel wilt toevoegen, begint u met selecteren **... (Meer opties) > tegel toevoegen**. Selecteer **aangepaste streaminggegevens**en selecteer vervolgens **volgende**:
 
-| Instelling | Kaart #1 | Kaart #2 | Kaart#3 | Kaart#4 |
+| Instelling | Kaart #1 | Kaart #2 | Kaart #3 | Kaart #4 |
 | ------- | ------- | ------- | ------- | ------- |
-| Gegevensset | Zone 1-sensor | Zone 1-sensor | Zone 2-sensor | Zone 2-sensor |
-| Visualisatietype | Kaart | Kaart | Kaart | Kaart |
+| Gegevensset | Zone 1 sensor | Zone 1 sensor | Zone 2 sensor | Zone 2 sensor |
+| Visualisatie type | Kaart | Kaart | Kaart | Kaart |
 | Velden | Temperatuur | Vochtigheid | Temperatuur | Vochtigheid |
-| Titel | Temperatuur (F) | Vochtigheid (%) | Temperatuur (F) | Vochtigheid (%) |
+| Titel | Tempe ratuur (F) | Vochtigheid (%) | Tempe ratuur (F) | Vochtigheid (%) |
 | Subtitel | Zone 1 | Zone 1 | Zone 2 | Zone 2 |
 
-De volgende schermafbeelding toont de instellingen voor de eerste kaart:
+De volgende scherm afbeelding toont de instellingen voor de eerste kaart:
 
-![Kaartinstellingen](./media/tutorial-in-store-analytics-visualize-insights/card-settings.png)
+![Kaart instellingen](./media/tutorial-in-store-analytics-visualize-insights/card-settings.png)
 
-### <a name="add-tiles-to-show-checkout-occupancy-data"></a>Tegels toevoegen om de gegevens over de afhandelingsbezetting weer te geven
+### <a name="add-tiles-to-show-checkout-occupancy-data"></a>Tegels toevoegen voor het weer geven van uitchecken van gegevens
 
-Voeg vier kaarttegels toe om de wachtrijlengte en de tijd voor de twee kassa's in de winkel weer te geven. Gebruik de informatie in de volgende tabel om de tegels te maken. Als u elke tegel wilt toevoegen, selecteert u **... (Meer opties) > Tegel toevoegen**. Selecteer **Aangepaste streaminggegevens**en selecteer **Volgende:**
+Voeg vier kaart tegels toe om de lengte en de duur van de wachtrij voor de twee uitchecks in de Store weer te geven. Gebruik de informatie in de volgende tabel om de tegels te maken. Als u elke tegel wilt toevoegen, begint u met selecteren **... (Meer opties) > tegel toevoegen**. Selecteer **aangepaste streaminggegevens**en selecteer vervolgens **volgende**:
 
-| Instelling | Kaart #1 | Kaart #2 | Kaart#3 | Kaart#4 |
+| Instelling | Kaart #1 | Kaart #2 | Kaart #3 | Kaart #4 |
 | ------- | ------- | ------- | ------- | ------- |
-| Gegevensset | Bezettingssensor | Bezettingssensor | Bezettingssensor | Bezettingssensor |
-| Visualisatietype | Gegroepeerd kolomdiagram | Gegroepeerd kolomdiagram | Meter | Meter |
+| Gegevensset | Bezetting sensor | Bezetting sensor | Bezetting sensor | Bezetting sensor |
+| Visualisatie type | Gegroepeerd kolomdiagram | Gegroepeerd kolomdiagram | Meter | Meter |
 | As    | Tijdstempel | Tijdstempel | N.v.t. | N.v.t. |
-| Waarde | Stilstaan tijd 1 | Stilstaan Tijd 2 | Wachtrijlengte 1 | Wachtrijlengte 2 |
-| Tijdvenster | 60 minuten | 60 minuten |  N.v.t. | N.v.t. |
-| Titel | Stilstaan tijd | Stilstaan tijd | Wachtrijlengte | Wachtrijlengte |
-| Subtitel | Afrekenen 1 | Afrekenen 2 | Afrekenen 1 | Afrekenen 2 |
+| Waarde | Woning tijd 1 | Woning tijd 2 | Wachtrij lengte 1 | Wachtrij lengte 2 |
+| Tijd venster | 60 minuten | 60 minuten |  N.v.t. | N.v.t. |
+| Titel | Woning tijd | Woning tijd | Wachtrijlengte | Wachtrijlengte |
+| Subtitel | Uitchecken 1 | Uitchecken 2 | Uitchecken 1 | Uitchecken 2 |
 
-Het formaat wijzigen en de tegels op uw dashboard opnieuw rangschikken om er zo uit te zien als de volgende schermafbeelding:
+Wijzig de grootte van de tegels op het dash board en rang Schik deze opnieuw op de volgende scherm afbeelding:
 
 ![Power BI-dashboard](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
 
-U nog wat extra grafische bronnen toevoegen om het dashboard verder aan te passen:
+U kunt een aantal extra grafische resources toevoegen om het dash board verder aan te passen:
 
 ![Power BI-dashboard](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard-graphics.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u klaar bent met uw IoT Central-toepassing, u deze verwijderen door u aan te melden bij de toepassing en te navigeren naar de pagina **Toepassingsinstellingen** in de sectie **Beheer.**
+Als u klaar bent met uw IoT Central-toepassing, kunt u deze verwijderen door u aan te melden bij de toepassing en te navigeren naar de pagina **Toepassings instellingen** in de sectie **beheer** .
 
-Als u de toepassing wilt behouden, maar de kosten die eraan verbonden zijn wilt verlagen, schakelt u de gegevensexport uit die telemetrie naar uw gebeurtenishub verzendt.
+Als u de toepassing wilt blijven gebruiken, maar de bijbehorende kosten wilt verlagen, schakelt u de gegevens export uit die de telemetrie naar uw Event Hub verzendt.
 
-U de gebeurtenishub en logische app in de Azure-portal verwijderen door de brongroep genaamd **retail-store-analyse**te verwijderen.
+U kunt de Event Hub en logische app verwijderen in de Azure Portal door de resource groep **Retail-Store-Analysis**te verwijderen.
 
-U uw Power BI-gegevenssets en -dashboard verwijderen door de werkruimte te verwijderen van de power bi-instellingenpagina voor de werkruimte.
+U kunt de Power BI gegevens sets en het dash board verwijderen door de werk ruimte te verwijderen via de pagina Power BI-instellingen voor de werk ruimte.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Deze drie tutorials hebben je een end-to-end oplossing laten zien die gebruik maakt van de **In-store analytics - checkout** IoT Central applicatie sjabloon. U hebt apparaten aangesloten op de toepassing, IoT Central gebruikt om de apparaten te controleren en Power BI gebruikt om een dashboard te bouwen om inzichten van de telemetrie van het apparaat weer te geven. Een aanbevolen volgende stap is het verkennen van een van de andere IoT Central-toepassingssjablonen:
+In deze drie zelf studies is een end-to-end oplossing weer gegeven die gebruikmaakt van de IoT Central toepassings sjabloon **in de Store Analytics-kassa** . U hebt apparaten verbonden met de toepassing, gebruikt IoT Central om de apparaten te bewaken en gebruikt Power BI om een dash board te maken om inzichten van de telemetrie van het apparaat weer te geven. Een aanbevolen volgende stap is om een van de andere IoT Central-toepassings sjablonen te verkennen:
 
 > [!div class="nextstepaction"]
 > * [Oplossingen voor de energiesector bouwen met IoT Central](../energy/overview-iot-central-energy.md)

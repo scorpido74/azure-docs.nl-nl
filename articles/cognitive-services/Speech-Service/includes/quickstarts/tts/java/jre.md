@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Synthetiseren spraak, Java (Windows, Linux, macOS) - Spraakservice'
+title: 'Quick Start: een synthese van spraak, java (Windows, Linux, macOS)-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart leert u een eenvoudige Java-toepassing te maken die spraak uit tekst vastlegt en synthetiseert en afspeelt met de standaardluidspreker.
+description: In deze Quick Start leert u hoe u een eenvoudige Java-toepassing maakt waarmee spraak van tekst worden vastgelegd en gesynthesizerd en afgespeeld met de standaard spreker.
 services: cognitive-services
 author: yulin-li
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: yulili
 ms.openlocfilehash: 31bfe77c85723d6c24872f1e52ede60936f7804e
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81275153"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u:
+Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Een Azure-spraakbron maken](../../../../get-started.md)
-> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
+> * [Een Azure-spraak resource maken](../../../../get-started.md)
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. Als u een nieuwe lege klasse wilt toevoegen aan uw Java-project, selecteert u **Bestand** > **Nieuwe** > **klasse**.
+1. Als u een nieuwe lege klasse wilt toevoegen aan uw Java-project, selecteert u **bestand** > **nieuwe** > **klasse**.
 
 1. Voer in het venster **Nieuwe Java-klasse**, in het veld **Pakket**, **speechsdk.quickstart** in en voer in het veld **Naam****Main** in.
 
@@ -45,8 +45,8 @@ Voordat u aan de slag gaat, moet u:
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 
-Druk op F11 of selecteer **Foutopsporing** > **uitvoeren**.
-Voer een tekst in wanneer u daarom wordt gevraagd en u hoort de gesynthetiseerde audio die wordt afgespeeld vanaf de standaardluidspreker.
+Druk op F11 of selecteer **Run** > **debug**uitvoeren.
+Voer een tekst in wanneer u hierom wordt gevraagd en hoor de gesynthesizerde audio die wordt afgespeeld vanuit de standaard spreker.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -55,4 +55,4 @@ Voer een tekst in wanneer u daarom wordt gevraagd en u hoort de gesynthetiseerde
 ## <a name="see-also"></a>Zie ook
 
 - [Een aangepaste stem maken](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Aangepaste spraakvoorbeelden opnemen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Aangepaste spraak voorbeelden vastleggen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

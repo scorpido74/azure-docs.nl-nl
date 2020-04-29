@@ -1,34 +1,34 @@
 ---
-title: Een cluster bijwerken om de algemene naam van het certificaat te gebruiken
-description: Meer informatie over het overschakelen van een cluster van Servicefabric van het gebruik van certificaatduimafdrukken naar het gebruik van de algemene naam van het certificaat.
+title: Een cluster bijwerken voor het gebruik van de algemene naam van het certificaat
+description: Meer informatie over het overschakelen van een Service Fabric cluster met behulp van certificaat vingerafdrukten naar het gebruik van de algemene naam van het certificaat.
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 1926b0501766eb0a5fe086ceada0c9bf45e3dcf6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81272624"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Cluster van vingerafdruk van certificaat wijzigen in algemene naam
-Geen twee certificaten kunnen dezelfde duimafdruk hebben, wat clustercertificaatrollover of beheer moeilijk maakt. Meerdere certificaten kunnen echter dezelfde algemene naam of onderwerp hebben.  Schakelen tussen een geïmplementeerd cluster vanuit vingerafdrukken voor certificaten naar het gebruik van gewone namen voor certificaten maakt het beheer van certificaten veel eenvoudiger. In dit artikel wordt beschreven hoe u een uitgevoerd servicestructuurcluster bijwerkt om de algemene naam van het certificaat te gebruiken in plaats van de duimafdruk van het certificaat.
+Er kunnen niet twee certificaten dezelfde vinger afdruk hebben, waardoor de rollover van het cluster certificaat of het beheer lastig wordt. Meerdere certificaten kunnen echter dezelfde algemene naam of hetzelfde onderwerp hebben.  Schakelen tussen een geïmplementeerd cluster vanuit vingerafdrukken voor certificaten naar het gebruik van gewone namen voor certificaten maakt het beheer van certificaten veel eenvoudiger. In dit artikel wordt beschreven hoe u een actief Service Fabric cluster bijwerkt om de algemene naam van het certificaat te gebruiken in plaats van de vinger afdruk van het certificaat.
 
 >[!NOTE]
-> Als u twee duimafdrukafdrukken in uw sjabloon hebt aangegeven, moet u twee implementaties uitvoeren.  De eerste implementatie wordt uitgevoerd voordat u de stappen in dit artikel volgt.  Bij de eerste implementatie wordt de eigenschap **thumbprint** in de sjabloon ingesteld op het certificaat dat wordt gebruikt en wordt de eigenschap **thumbprintSecondary** verwijderd.  Volg voor de tweede implementatie de stappen in dit artikel.
+> Als u twee vinger afdruk hebt gedefinieerd in uw sjabloon, moet u twee implementaties uitvoeren.  De eerste implementatie wordt uitgevoerd voordat u de stappen in dit artikel volgt.  Met de eerste implementatie wordt uw **vingerafdruk** eigenschap in de sjabloon ingesteld op het certificaat dat wordt gebruikt en wordt de eigenschap **thumbprintSecondary** verwijderd.  Volg de stappen in dit artikel voor de tweede implementatie.
  
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="get-a-certificate"></a>Een certificaat aanvragen
-Ontvang eerst een certificaat van een [certificeringsinstantie (CA).](https://wikipedia.org/wiki/Certificate_authority)  De algemene naam van het certificaat moet zijn voor het aangepaste domein dat u bezit en gekocht bij een domeinregistrar. Bijvoorbeeld "azureservicefabricbestpractices.com"; degenen die geen Microsoft-werknemers zijn, kunnen geen certs voor MS-domeinen inrichten, dus u de DNS-namen van uw LB of Traffic Manager niet gebruiken als algemene namen voor uw certificaat, en u moet een [Azure DNS-zone inrichten](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) als uw aangepaste domein in Azure oplosbaar moet zijn. U wilt ook uw aangepaste domein dat u bezit als het 'managementEndpoint' van uw cluster declareren als u wilt dat portal de aangepaste domeinalias voor uw cluster weergeeft.
+## <a name="get-a-certificate"></a>Een certificaat ophalen
+Haal eerst een certificaat op bij een certificerings [instantie (CA)](https://wikipedia.org/wiki/Certificate_authority).  De algemene naam van het certificaat moet gelden voor het aangepaste domein dat u bezit en dat u hebt gekocht van een domein registratie service. Bijvoorbeeld ' azureservicefabricbestpractices.com '; personen die geen mede werkers van micro soft zijn, kunnen geen certificaten voor MS-domeinen inrichten, dus u kunt de DNS-namen van uw LB of Traffic Manager niet gebruiken als algemene namen voor uw certificaat, en u moet een [Azure DNS zone](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) inrichten als uw aangepaste domein kan worden omgezet in Azure. U moet ook uw aangepaste domein met de naam ' managementEndpoint ' declareren als u wilt dat de Portal de aangepaste domein alias voor uw cluster weergeeft.
 
-Voor testdoeleinden u een CA-ondertekend certificaat krijgen van een gratis of open certificaatautoriteit.
+Voor test doeleinden kunt u een door een CA ondertekend certificaat ontvangen van een gratis of open certificerings instantie.
 
 > [!NOTE]
-> Zelfondertekende certificaten, inclusief certificaten die worden gegenereerd bij het implementeren van een Service Fabric-cluster in de Azure-portal, worden niet ondersteund. 
+> Zelfondertekende certificaten, inclusief verbindingen die zijn gegenereerd bij het implementeren van een Service Fabric cluster in de Azure Portal, worden niet ondersteund. 
 
-## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>Het certificaat uploaden en installeren in de schaalset
-In Azure wordt een cluster van Servicefabric geïmplementeerd op een virtuele machineschaalset.  Upload het certificaat naar een sleutelkluis en installeer het vervolgens op de virtuele machineschaalset waarop het cluster wordt uitgevoerd.
+## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>Upload het certificaat en installeer het in de schaalset
+In azure wordt een Service Fabric cluster geïmplementeerd op een schaalset met virtuele machines.  Upload het certificaat naar een sleutel kluis en installeer het op de virtuele-machine schaalset waarop het cluster wordt uitgevoerd.
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
@@ -88,25 +88,25 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
 ```
 
 >[!NOTE]
-> Scale set secrets ondersteunen niet dezelfde resource-ID voor twee afzonderlijke geheimen, omdat elk geheim een versieversie is, unieke bron. 
+> Het aantal geheimen van een schaalset biedt geen ondersteuning voor dezelfde resource-ID voor twee afzonderlijke geheimen, omdat elk geheim een unieke, specifieke bron is. 
 
-## <a name="download-and-update-the-template-from-the-portal"></a>De sjabloon downloaden en bijwerken van de portal
-Het certificaat is geïnstalleerd op de onderliggende schaalset, maar u moet ook het cluster Servicefabric bijwerken om dat certificaat en de algemene naam ervan te gebruiken.  Download nu de sjabloon voor uw clusterimplementatie.  Meld u aan bij de [Azure-portal](https://portal.azure.com) en navigeer naar de brongroep die het cluster host.  Selecteer **Implementaties**in **Instellingen**.  Selecteer de meest recente implementatie en klik op **Sjabloon weergeven**.
+## <a name="download-and-update-the-template-from-the-portal"></a>De sjabloon downloaden en bijwerken vanuit de portal
+Het certificaat is geïnstalleerd op de onderliggende schaalset, maar u moet ook het Service Fabric cluster bijwerken om dat certificaat en de algemene naam te gebruiken.  Down load nu de sjabloon voor de cluster implementatie.  Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar de resource groep die als host fungeert voor het cluster.  Selecteer in **instellingen**de optie **implementaties**.  Selecteer de meest recente implementatie en klik op **sjabloon weer geven**.
 
-![Sjablonen weergeven][image1]
+![Sjablonen weer geven][image1]
 
-Download de JSON-bestanden met sjabloon en parameters naar uw lokale computer.
+De JSON-bestanden van de sjabloon en de para meters downloaden naar uw lokale computer.
 
-Open eerst het parametersbestand in een teksteditor en voeg de volgende parameterwaarde toe:
+Open eerst het parameter bestand in een tekst editor en voeg de volgende parameter waarde toe:
 ```json
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
 },
 ```
 
-Open vervolgens het sjabloonbestand in een teksteditor en breng drie updates uit om de algemene naam van het certificaat te ondersteunen.
+Open vervolgens het sjabloon bestand in een tekst editor en maak drie updates ter ondersteuning van de algemene naam van het certificaat.
 
-1. Voeg in de sectie **parameters** een parameter *certificateCommonName* toe:
+1. Voeg in de sectie **para meters** een *certificateCommonName* -para meter toe:
     ```json
     "certificateCommonName": {
         "type": "string",
@@ -116,9 +116,9 @@ Open vervolgens het sjabloonbestand in een teksteditor en breng drie updates uit
     },
     ```
 
-    Overweeg ook om de *certificaatafdruk te*verwijderen, er wordt mogelijk niet meer naar verwezen in de sjabloon Resourcebeheer.
+    U kunt ook overwegen om de *certificateThumbprint*te verwijderen. er wordt mogelijk niet meer naar verwezen in de Resource Manager-sjabloon.
 
-2. Werk in de bron **Microsoft.Compute/virtualMachineScaleSets** de extensie voor virtuele machines bij om de algemene naam in certificaatinstellingen te gebruiken in plaats van de duimafdruk.  In **virtualMachineProfile**->**extensieProfiel**->**extensies**->**instellingen**->**instellingen**->**certificaat**, toevoegen `"commonNames": ["[parameters('certificateCommonName')]"],` en verwijderen `"thumbprint": "[parameters('certificateThumbprint')]",`.
+2. In de resource **micro soft. Compute/virtualMachineScaleSets** werkt u de extensie van de virtuele machine bij voor het gebruik van de algemene naam in certificaat instellingen in plaats van de vinger afdruk.  In **virtualMachineProfile**->**extensionProfile**->**Extensions**->**settings****properties** `"thumbprint": "[parameters('certificateThumbprint')]",`**certificate**eigenschappen certificaat, toevoegen `"commonNames": ["[parameters('certificateCommonName')]"],` en verwijderen.->->
     ```json
         "virtualMachineProfile": {
         "extensionProfile": {
@@ -152,7 +152,7 @@ Open vervolgens het sjabloonbestand in een teksteditor en breng drie updates uit
                 },
     ```
 
-3.  Werk in de **bron Microsoft.ServiceFabric/clusters** de API-versie bij naar '2018-02-01'.  Voeg ook een **instelling voor certificateCommonNames** toe met een eigenschap **commonNames** en verwijder de **certificaatinstelling** (met de eigenschap thumbprint) zoals in het volgende voorbeeld:
+3.  Werk in de resource **micro soft. ServiceFabric/clusters** de API-versie bij naar ' 2018-02-01 '.  Voeg ook een **certificateCommonNames** -instelling toe met een **commonNames** -eigenschap en verwijder de **certificaat** instelling (met de eigenschap vinger afdruk), zoals in het volgende voor beeld:
     ```json
     {
         "apiVersion": "2018-02-01",
@@ -179,7 +179,7 @@ Open vervolgens het sjabloonbestand in een teksteditor en breng drie updates uit
         ...
     ```
 
-Zie Een [cluster van servicestructuur implementeren dat gebruikmaakt van de algemene naam van het certificaat in plaats van duimafdruk.](https://docs.microsoft.com/azure/service-fabric/service-fabric-create-cluster-using-cert-cn)
+Zie [Deploy a Service Fabric cluster die de algemene naam van een certificaat gebruikt in plaats van een vinger afdruk](https://docs.microsoft.com/azure/service-fabric/service-fabric-create-cluster-using-cert-cn) voor meer informatie.
 
 ## <a name="deploy-the-updated-template"></a>De bijgewerkte sjabloon implementeren
 Implementeer de bijgewerkte sjabloon opnieuw nadat u de wijzigingen hebt aangebracht.
@@ -192,8 +192,8 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [clusterbeveiliging](service-fabric-cluster-security.md).
-* Meer informatie over het [overrollen van een clustercertificaat](service-fabric-cluster-rollover-cert-cn.md)
-* [Clustercertificaten bijwerken en beheren](service-fabric-cluster-security-update-certs-azure.md)
+* Meer informatie over [cluster beveiliging](service-fabric-cluster-security.md).
+* Meer informatie over het [overkantelen van een cluster certificaat](service-fabric-cluster-rollover-cert-cn.md)
+* [Cluster certificaten bijwerken en beheren](service-fabric-cluster-security-update-certs-azure.md)
 
 [image1]: ./media/service-fabric-cluster-change-cert-thumbprint-to-cn/PortalViewTemplates.png

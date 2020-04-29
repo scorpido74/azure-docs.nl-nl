@@ -1,5 +1,5 @@
 ---
-title: Eindpunt van tekst-naar-spraakcontainer
+title: Een query uitvoeren op het container eindpunt van tekst naar spraak
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: b2a621a23a81e4fb4f47e7c99d780211973e30a0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81275520"
 ---
-De container biedt [REST-gebaseerde eindpuntAPI's](../rest-text-to-speech.md). Er zijn veel [voorbeeldbroncodeprojecten](https://github.com/Azure-Samples/Cognitive-Speech-TTS) beschikbaar voor platform-, framework- en taalvariaties.
+De container bevat [op rest gebaseerde eind punt-api's](../rest-text-to-speech.md). Er zijn veel [voorbeeld broncode projecten](https://github.com/Azure-Samples/Cognitive-Speech-TTS) voor platform-, Framework-en taal variaties beschikbaar.
 
-Met de *standaardtekst-naar-spraak-container* moet u vertrouwen op de land- en stem van de afbeeldingstag die u hebt gedownload. Als u bijvoorbeeld de `latest` tag hebt gedownload, `en-US` is `JessaRUS` de standaardlandinstelling en de stem. Het `{VOICE_NAME}` argument zou [`en-US-JessaRUS`](../language-support.md#standard-voices)dan zijn . Zie hieronder het voorbeeld SSML:
+Met de *standaard-tekst-naar-spraak* -container moet u vertrouwen op de land instelling en de stem van de afbeeldings code die u hebt gedownload. Als u bijvoorbeeld de `latest` tag hebt gedownload, is `en-US` de standaard land instelling en `JessaRUS` de stem. Het `{VOICE_NAME}` argument zou dan zijn [`en-US-JessaRUS`](../language-support.md#standard-voices). Zie het onderstaande voor beeld SSML:
 
 ```xml
 <speak version="1.0" xml:lang="en-US">
@@ -27,11 +27,11 @@ Met de *standaardtekst-naar-spraak-container* moet u vertrouwen op de land- en s
 </speak>
 ```
 
-Voor *aangepaste tekst-naar-spraak* moet u echter de **spraak /het model** verkrijgen van de aangepaste [spraakportal.](https://aka.ms/custom-voice-portal) De aangepaste modelnaam is synoniem met de naam van de stem. Navigeer naar de **pagina Training** en kopieer het `{VOICE_NAME}` **spraak/model** om als argument te gebruiken.
+Voor *aangepaste tekst-naar-spraak* moet u echter de **spraak of het model** ophalen van de [aangepaste Voice Portal](https://aka.ms/custom-voice-portal). De naam van het aangepaste model is synoniem met de naam van de stem. Ga naar de pagina **training** en kopieer de **spraak/model** die u als `{VOICE_NAME}` argument wilt gebruiken.
 <br><br>
-:::image type="content" source="../media/custom-voice/custom-voice-model-voice-name.png" alt-text="Aangepast spraakmodel - spraaknaam":::
+:::image type="content" source="../media/custom-voice/custom-voice-model-voice-name.png" alt-text="Aangepast spraak model-spraak naam":::
 
-Zie hieronder het voorbeeld SSML:
+Zie het onderstaande voor beeld SSML:
 
 ```xml
 <speak version="1.0" xml:lang="en-US">
@@ -41,7 +41,7 @@ Zie hieronder het voorbeeld SSML:
 </speak>
 ```
 
-Laten we een HTTP POST-aanvraag samenstellen, met een paar headers en een gegevenspayload. Vervang `{VOICE_NAME}` de tijdelijke aanduiding door uw eigen waarde.
+Laten we een HTTP POST-aanvraag maken, waardoor er een paar koppen en een gegevens lading worden opgegeven. Vervang de `{VOICE_NAME}` tijdelijke aanduiding door uw eigen waarde.
 
 ```curl
 curl -s -v -X POST http://localhost:5000/speech/synthesize/cognitiveservices/v1 \
@@ -53,8 +53,8 @@ curl -s -v -X POST http://localhost:5000/speech/synthesize/cognitiveservices/v1 
 
 Met deze opdracht gebeurt het volgende:
 
-* Construeert een HTTP POST-aanvraag voor het `speech/synthesize/cognitiveservices/v1` eindpunt.
-* Hiermee `Accept` geeft u een koptekst op van`audio/*`
-* Hiermee `Content-Type` geeft `application/ssml+xml`u een koptekst op van , voor meer informatie, zie [aanvraaghoofd](../rest-text-to-speech.md#request-body).
-* Hiermee `X-Microsoft-OutputFormat` geeft `riff-16khz-16bit-mono-pcm`u een koptekst op van , voor meer opties zie [audio-uitvoer](../rest-text-to-speech.md#audio-outputs).
-* Hiermee wordt de [SSML-aanvraag (Speech Synthesis Markup Language)](../speech-synthesis-markup.md) naar `{VOICE_NAME}` het eindpunt geleid.
+* Construct een HTTP POST-aanvraag voor het `speech/synthesize/cognitiveservices/v1` eind punt.
+* Hiermee geeft `Accept` u een kop van`audio/*`
+* Hiermee geeft `Content-Type` u een `application/ssml+xml`kop van op. Zie [aanvraag tekst](../rest-text-to-speech.md#request-body)voor meer informatie.
+* Hiermee geeft `X-Microsoft-OutputFormat` u een `riff-16khz-16bit-mono-pcm`kop van op. Zie [audio-uitvoer](../rest-text-to-speech.md#audio-outputs)voor meer opties.
+* Verzendt de [SSML-aanvraag (Speech synthese Markup Language)](../speech-synthesis-markup.md) `{VOICE_NAME}` die is gegeven aan het eind punt.

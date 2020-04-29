@@ -1,6 +1,6 @@
 ---
-title: Interconnect met China met Azure Virtual WAN en secure Hub
-description: Meer informatie over virtuele WAN-geautomatiseerde schaalbare branch-to-branch-connectiviteit, beschikbare regio's en partners.
+title: Interconnect met China met behulp van Azure Virtual WAN en Secure hub
+description: Meer informatie over de geautomatiseerde schaal bare vertakking-to-Branch connectiviteit van Virtual WAN, beschik bare regio's en partners.
 services: virtual-wan
 author: skishen525
 ms.service: virtual-wan
@@ -8,147 +8,147 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: sukishen
 ms.openlocfilehash: d086484ece6faf95dccffb1e29da8a0e906b1da4
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985623"
 ---
-# <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Interconnect met China met Azure Virtual WAN en Secure Hub
+# <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Interconnect met China met behulp van Azure Virtual WAN en Secure hub
 
-Wanneer we kijken naar gemeenschappelijke auto's, productie, logistieke industrieën of andere instituten zoals ambassades, is er vaak de vraag over hoe de interconnectie met China te verbeteren. Deze verbeteringen zijn meestal relevant voor het gebruik van Cloud Services zoals Office 365, Azure Global Services of interconnect-branches in China met een klantbackbone.
+Bij het bekijken van veelvoorkomende auto's, productie, logistiek industrieën of andere instituten, zoals embassies, is er vaak de vraag over het verbeteren van de onderlinge verbinding met China. Deze verbeteringen zijn vooral van toepassing op het gebruik van Cloud Services zoals Office 365, Azure Global Services of Interconnect branches in China met een klant-backbone.
 
-In de meeste gevallen worstelen klanten met hoge latencies, lage bandbreedte, instabiele verbinding en hoge kosten die verbinding maken met buiten China (bijvoorbeeld Europa of de Verenigde Staten).
+In de meeste gevallen zijn klanten lastig met hoge latentie, lage band breedte, Insta Biel verbinding en hoge kosten die verbinding maken met buiten China (bijvoorbeeld Europe of de Verenigde Staten).
 
-Een reden voor deze strijd is de "Grote Firewall van China", die het Chinese deel van Internet beschermt en verkeer aan China filtert. Bijna al verkeer dat van Het Vasteland van China aan buiten China loopt, behalve de speciale beleidsstreken zoals Hong Kong en Macau, gaat de Grote Firewall over. Het verkeer dat door Hong Kong en Macau loopt raakt niet de Grote Firewall in volle kracht, het wordt behandeld door een subset van de Great Firewall.
+Een reden hiervoor is de ' fantastische firewall van China ', waarmee het Chinese deel van het Internet wordt beschermd en verkeer wordt gefilterd op China. Bijna al het verkeer dat wordt uitgevoerd vanuit China dat is vasteland naar buiten China, met uitzonde ring van de speciale beheer zones zoals Hongkong en Macao, geeft de fantastische Firewall door. Het verkeer dat wordt uitgevoerd via Hong Kong en Macao heeft niet de volledige firewall, en wordt afgehandeld door een subset van de fantastische firewall.
 
-![Provider interconnect](./media/interconnect-china/provider.png)
+![Provider Interconnect](./media/interconnect-china/provider.png)
 
-Met Behulp van Virtual WAN kan een klant een performanterte en stabielere verbinding met Microsoft Cloud Services en een verbinding met hun bedrijfsnetwerk tot stand brengen zonder de Chinese cyberbeveiligingswet te overtreden.
+Met behulp van Virtual WAN kan een klant een meer presteertde en stabiele verbinding tot stand brengen met Microsoft Cloud Services en een verbinding met het bedrijfs netwerk zonder de Chinese cyber beveiliging wet te verbreken.
 
-## <a name="requirements-and-workflow"></a><a name="requirements"></a>Vereisten en werkstroom
+## <a name="requirements-and-workflow"></a><a name="requirements"></a>Vereisten en werk stroom
 
-Als u wilt blijven voldoen aan de Chinese cybersecurity wet, moet u voldoen aan een reeks van bepaalde voorwaarden.
+Als u wilt blijven voldoen aan het Chinees-Cyber beveiliging recht, moet u aan een aantal bepaalde voor waarden voldoet.
 
-Eerst moet u samenwerken met een netwerk en ISP die eigenaar is van een ICP (Internet Content Provider) licentie voor China. In de meeste gevallen kom je uit bij een van de volgende providers:
+Eerst moet u samen werken met een netwerk en ISP die eigenaar is van een ICP-licentie (Internet-inhouds provider) voor China. In de meeste gevallen kunt u een van de volgende providers beëindigen:
 
-* China Telecom Global Ltd.
+* China Telecom wereld Ltd.
 * China Mobile Ltd.
 * China Unicom Ltd.
 * PCCW Global Ltd.
 * Hong Kong Telecom Ltd.
 
-Afhankelijk van de provider en uw behoeften, moet u nu een van de volgende netwerkconnectiviteitsservices aanschaffen om uw vestigingen binnen China met elkaar te verbinden.
+Afhankelijk van de provider en uw behoeften moet u nu een van de volgende services voor netwerk connectiviteit aanschaffen om uw branches in China te verbinden.
 
 * Een MPLS/IPVPN-netwerk 
-* Een software defined WAN (SDWAN)
-* Speciale internettoegang
+* Een software-gedefinieerde WAN (SDWAN)
+* Speciale internet toegang
 
-Vervolgens moet u het eens worden met die provider om een uitbraak te geven aan het Microsoft Global Network en zijn Edge Network in Hong Kong, niet in Beijing of Shanghai. In dit geval is Hongkong erg belangrijk vanwege de fysieke verbinding en locatie met China.
+Vervolgens moet u akkoord gaan met die provider om een groepen te geven aan het wereld wijde netwerk van micro soft en de rand Netwerk-inkomend Hongkong, niet in Beijing of Shanghai. In dit geval is Hong Kong zeer belang rijk vanwege de fysieke verbinding en de locatie naar China.
 
-Terwijl de meeste klanten denken dat het gebruik van Singapore voor interconnect is het beste geval, omdat het lijkt dichter bij China bij het kijken op de kaart, dit is niet waar. Wanneer u netwerkvezelkaarten volgt, gaan bijna alle netwerkverbindingen door Peking, Shanghai, en Hong Kong. Dit maakt Hong Kong een betere locatie keuze om verbinding te maken met China.
+De meeste klanten denken dat het gebruik van Singapore voor Interconnect het beste is omdat het bij het zoeken in de kaart lijkt op China, dit is niet waar. Wanneer u netwerk glasvezel kaarten volgt, gaan bijna alle netwerk verbindingen via Beijing, Shanghai en Hong Kong. Dit maakt Hong Kong een betere locatie keuze om verbinding te maken met China.
 
-Afhankelijk van de provider u verschillende serviceaanbiedingen krijgen. De onderstaande tabel toont een voorbeeld van aanbieders en de service die zij aanbieden, op basis van informatie op het moment dat dit artikel werd geschreven.
+Afhankelijk van de provider, kunt u verschillende service aanbiedingen ontvangen. In de volgende tabel ziet u een voor beeld van providers en de service die ze aanbieden, op basis van informatie op het moment dat dit artikel is geschreven.
 
-| Service | Voorbeelden van leveranciers |
+| Service | Voor beelden van providers |
 | --- | --- |
 | MPLS/IPVPN-netwerk |PCCW, China Telecom Global |
-|SDWAN (SDWAN)| PCCW, China Telecom Global|
-| Speciale internettoegang | PCCW, Hong Kong Telecom, China Mobil|
+|SDWAN| PCCW, China Telecom Global|
+| Speciale internet toegang | PCCW, Hong Kong Telecom, China beschikbaar|
 
-Met uw provider u overeenkomen welke van de volgende twee oplossingen u moet gebruiken om de wereldwijde backbone van Microsoft te bereiken:
+Met uw provider kunt u akkoord gaan met de volgende twee oplossingen die moeten worden gebruikt om de globale backbone van micro soft te bereiken:
 
-* Een Microsoft Azure ExpressRoute laten beëindigen in Hong Kong. Dat zou het geval zijn voor het gebruik van MPLS/IPVPN. Momenteel is alleen de enige ICP-licentieprovider met ExpressRoute naar Hong Kong China Telecom Global. Ze kunnen echter ook met de andere providers praten als ze gebruikmaken van Cloud Exchange Providers zoals Megaport of InterCloud. Zie [ExpressRoute-connectiviteitsproviders](../expressroute/expressroute-locations-providers.md#partners)voor meer informatie.
+* Het ophalen van een Microsoft Azure ExpressRoute die is beëindigd in Hong Kong. Dit is het geval voor het gebruik van MPLS/IPVPN. Op dit moment is alleen de enige ICP-licentie provider met ExpressRoute aan Hong Kong het globale China Telecom. Ze kunnen echter ook communiceren met de andere providers als ze gebruikmaken van Cloud Exchange-providers zoals Mega Port of intercloud. Zie [ExpressRoute Connectivity providers](../expressroute/expressroute-locations-providers.md#partners)(Engelstalig) voor meer informatie.
 
-* Een dedicated internettoegang rechtstreeks gebruiken op een van de volgende Internet Exchange-punten of via een verbinding met een privénetwerk.
+* Het gebruik van een speciale internet toegang rechtstreeks op een van de volgende Internet-Exchange punten of met een VPN-verbinding met een particulier netwerk.
 
-De volgende lijst toont Internet Exchanges mogelijk in Hong Kong:
+De volgende lijst bevat de Internet-uitwisselingen die mogelijk zijn in Hongkong:
 
 * AMS-IX Hong Kong
 * BBIX Hong Kong
-* Equinix Hongkong
-* HKIX HKIX
+* Equinix Hong Kong
+* HKIX
 
-Wanneer u deze verbinding gebruikt, moet uw volgende BGP-hop voor Microsoft Services Microsoft Autonomous System Number (AS#) 8075 zijn. Als u één locatie of SDWAN-oplossing gebruikt, is dat de keuze van de verbinding.
+Wanneer u deze verbinding maakt, moet uw volgende BGP-hop voor micro soft-Services micro soft autonoom systeem nummer zijn (als #) 8075. Als u één locatie of SDWAN-oplossing gebruikt, is dat de keuze van de verbinding.
 
-Hoe dan ook, we raden je nog steeds aan om een tweede en regelmatige Internet Breakout naar het Chinese vasteland te brengen. Dit is om het verkeer te verdelen tussen bedrijfsverkeer naar cloudservices zoals Microsoft 365 en Azure, en door de wet geregeld internetverkeer.
+In beide gevallen is het raadzaam dat u een tweede en een regel matige Internet-groepen in de Chinese vasteland hebt. Dit is het verdelen van het verkeer tussen ondernemings verkeer naar Cloud Services zoals Microsoft 365 en Azure, en door de wet gereguleerd Internet verkeer.
 
-Een compatibele netwerkarchitectuur binnen China kan er als volgt uitzien:
+Een compatibele netwerk architectuur in China kan er als volgt uitzien:
 
 ![Meerdere branches](./media/interconnect-china/multi-branch.png)
 
-In dit voorbeeld, met een interconnect met het Microsoft Global Network in Hong Kong, u nu beginnen met het gebruik van de [Azure Virtual WAN Global Transit Architecture](virtual-wan-global-transit-network-architecture.md) en aanvullende services, zoals Azure secure Virtual WAN hub, om services te gebruiken en verbinding te maken met uw vestigingen en datacenter buiten China.
+In dit voor beeld hebt u een verbinding met de micro soft Global Netwerk-inkomend Hongkong, u kunt nu gebruikmaken van de [Azure Virtual WAN Global Transit-architectuur](virtual-wan-global-transit-network-architecture.md) en extra services, zoals Azure Secure Virtual WAN hub, om services en connecties te kunnen gebruiken voor uw filialen en Data Center buiten China.
 
-## <a name="hub-to-hub-communication"></a><a name="hub-to-hub"></a>Hub-to-hub communicatie
+## <a name="hub-to-hub-communication"></a><a name="hub-to-hub"></a>Hub-naar-hub-communicatie
 
-In deze sectie gebruiken we virtual WAN hub-to-hub-communicatie om met elkaar te verbinden. In dit scenario maakt u een nieuwe Virtual WAN-hubbron om verbinding te maken met een virtuele WAN-hub in Hongkong, andere regio's die u verkiest, een regio waar u al Azure-bronnen hebt of waar u verbinding wilt maken.
+In deze sectie gebruiken we Virtual WAN hub-to-hub-communicatie met Interconnect. In dit scenario maakt u een nieuwe virtuele WAN-hub-resource om verbinding te maken met een virtuele WAN-hub in Hongkong, andere regio's die u wilt, een regio waar u al Azure-resources hebt of waar u verbinding mee wilt maken.
 
-Een voorbeeldarchitectuur kan er uitzien als het volgende voorbeeld:
+Een voor beeld van een architectuur kan er als volgt uitzien:
 
-![Voorbeeld VAN WAN](./media/interconnect-china/sample.png)
+![Voor beeld van WAN](./media/interconnect-china/sample.png)
 
-In dit voorbeeld maken de Chinese branches verbinding met Azure Cloud China en met elkaar via VPN- of MPLS-verbindingen. Branches die verbonden moeten zijn met Global Services maken gebruik van MPLS of internetservices die rechtstreeks met Hongkong zijn verbonden. Als u ExpressRoute in Hong Kong en in de andere regio wilt gebruiken, moet u [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) configureren om beide ExpressRoute-circuits met elkaar te verbinden.
+In dit voor beeld maken de branches in China verbinding met Azure Cloud China en elkaar met behulp van VPN-of MPLS-verbindingen. Vertakkingen die moeten worden verbonden met globale Services, maken gebruik van MPLS of op internet gebaseerde services die rechtstreeks zijn verbonden met Hong Kong. Als u ExpressRoute wilt gebruiken in Hong Kong en in de andere regio, moet u [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) configureren om beide ExpressRoute-circuits te verbinden.
 
-ExpressRoute Global Reach is in sommige regio's niet beschikbaar. Als u bijvoorbeeld verbinding moet maken met Brazilië of India, moet u [cloudexchangeproviders](../expressroute/expressroute-locations.md#connectivity-through-exchange-providers) gebruiken om de routeringsservices aan te bieden.
+ExpressRoute Global Reach is in sommige regio's niet beschikbaar. Als u met Brazilië of India wilt verbinden, moet u bijvoorbeeld gebruikmaken van [Cloud Exchange-providers](../expressroute/expressroute-locations.md#connectivity-through-exchange-providers) om de routerings services te bieden.
 
-De onderstaande afbeelding toont beide voorbeelden voor dit scenario.
+In de afbeelding hieronder ziet u voor beelden van dit scenario.
 
-![Globaal bereik](./media/interconnect-china/global.png)
+![Global Reach](./media/interconnect-china/global.png)
 
-## <a name="secure-internet-breakout-for-office-365"></a><a name="secure"></a>Secure Internet breakout for Office 365 Secure Internet breakout for Office 365 Secure Internet breakout for Office 365 Secure Internet
+## <a name="secure-internet-breakout-for-office-365"></a><a name="secure"></a>Beveiligde Internet-groepen voor Office 365
 
-Een andere overweging is netwerkbeveiliging en logging voor het ingangspunt tussen China en de virtuele WAN gevestigde backbone component, en de klant backbone. In de meeste gevallen is er een noodzaak om breakout naar het internet in Hong Kong om direct te bereiken van de Microsoft Edge Network en, met dat, de Azure Front Door Servers gebruikt voor Microsoft 365 Services.
+Een andere overweging is netwerk beveiliging en logboek registratie voor het toegangs punt tussen China en het backbone-onderdeel virtuele WAN-verbinding, en de klant-backbone. In de meeste gevallen is het groepen van het internet in Hong Kong nodig om het micro soft Edge-netwerk rechtstreeks te bereiken en, met de Azure front-deur servers die worden gebruikt voor Microsoft 365 Services.
 
-Voor beide scenario's met Virtual WAN maakt u gebruik van de [Azure Virtual WAN secured hub.](../firewall-manager/secured-virtual-hub.md) Met Azure Firewall Manager u een gewone Virtuele WAN-hub wijzigen in een beveiligde hub en vervolgens een Azure Firewall implementeren en beheren binnen die hub.
+Voor beide scenario's met virtuele WAN maakt u gebruik van de [Azure Virtual WAN beveiligde hub](../firewall-manager/secured-virtual-hub.md). Met Azure Firewall Manager kunt u een normale virtuele WAN-hub wijzigen in een beveiligde hub en vervolgens een Azure Firewall binnen die hub implementeren en beheren.
 
-De volgende figuur geeft een voorbeeld van dit scenario weer:
+In de volgende afbeelding ziet u een voor beeld van dit scenario:
 
-![Internetbreakout voor web- en Microsoft-servicesverkeer](./media/interconnect-china/internet.png)
+![Internet-groepen voor het verkeer van de web-en micro soft-Services](./media/interconnect-china/internet.png)
 
-## <a name="architecture-and-traffic-flows"></a><a name="traffic"></a>Architectuur en verkeersstromen
+## <a name="architecture-and-traffic-flows"></a><a name="traffic"></a>Architectuur en verkeers stromen
 
-Afhankelijk van uw keuze met betrekking tot de verbinding met Hong Kong, kan de algehele architectuur enigszins veranderen. Deze sectie toont drie beschikbare architecturen in verschillende combinatie met VPN of SDWAN en/of ExpressRoute.
+Afhankelijk van uw keuze met betrekking tot de verbinding met Hong Kong, kan de algehele architectuur enigszins veranderen. In deze sectie worden drie beschik bare architecturen weer gegeven in een andere combi natie met VPN of SDWAN en/of ExpressRoute.
 
-Al deze opties maken gebruik van Azure Virtual WAN secured hub voor directe M365-connectiviteit in Hong Kong. Deze architecturen ondersteunen ook de nalevingsvereisten voor [Office 365 Multi-Geo](https://docs.microsoft.com/office365/enterprise/office-365-multi-geo) en houden dat verkeer in de buurt van de volgende Office 365-frontdoorlocatie. Als gevolg daarvan is het ook een verbetering voor het gebruik van Microsoft 365 uit China.
+Al deze opties maken gebruik van Azure Virtual WAN beveiligde hub voor rechtstreekse M365-connectiviteit in Hong Kong. Deze architecturen bieden ook ondersteuning voor de nalevings vereisten voor [Office 365 multi-geo](https://docs.microsoft.com/office365/enterprise/office-365-multi-geo) en houden dat verkeer in de buurt van de volgende locatie van de Office 365-deur. Als gevolg hiervan is het ook een verbetering van het gebruik van Microsoft 365 uit China.
 
-Wanneer u Azure Virtual WAN samen met internetverbindingen gebruikt, kan elke verbinding profiteren van aanvullende services zoals [Microsoft Azure Peering Services (MAPS).](https://docs.microsoft.com/azure/peering-service/about) MAPS is gebouwd om het verkeer dat naar het Microsoft Global Network komt van internetserviceproviders van derden te optimaliseren.
+Wanneer u Azure Virtual WAN gebruikt in combi natie met Internet verbindingen, kan elke verbinding profiteren van extra services zoals [Microsoft Azure peering-Services (Maps)](https://docs.microsoft.com/azure/peering-service/about). KAARTEN is gebouwd voor het optimaliseren van verkeer dat afkomstig is van het wereld wijde netwerk van derden van Internet serviceproviders.
 
 ### <a name="option-1-sdwan-or-vpn"></a><a name="option-1"></a>Optie 1: SDWAN of VPN
 
-In deze sectie wordt een ontwerp besproken dat SDWAN of VPN gebruikt voor Hong Kong en naar andere branches. Deze optie toont het gebruik en de verkeersstroom bij het gebruik van een zuivere internetverbinding op beide sites van de Virtuele WAN-backbone. In dit geval wordt de verbinding naar Hong Kong gebracht met behulp van speciale internettoegang of een ICP-provider SDWAN-oplossing. Andere branches maken ook gebruik van puur internet of SDWAN Solutions.
+In deze sectie wordt een ontwerp besproken dat gebruikmaakt van SDWAN of VPN naar Hong Kong en andere branches. Met deze optie worden het gebruik en de verkeers stroom weer gegeven wanneer u een zuivere Internet verbinding gebruikt op beide sites van de virtuele WAN-backbone. In dit geval wordt de verbinding met Hong Kong tot stand gebracht met behulp van speciale internet toegang of een SDWAN-oplossing van ICP-provider. Andere branches gebruiken ook zuivere Internet-of SDWAN-oplossingen.
 
-![China naar Hongkong verkeer](./media/interconnect-china/china-traffic.png)
+![China naar Hong Kong-verkeer](./media/interconnect-china/china-traffic.png)
 
-In deze architectuur is elke site verbonden met het Microsoft Global Network met behulp van VPN en Azure Virtual WAN. Het verkeer tussen de sites en Hong Kong wordt verzonden via het Microsoft Network en maakt alleen gebruik van regelmatige internetverbinding op de laatste mijl.
+In deze architectuur wordt elke site verbonden met het wereld wijde micro soft-netwerk met behulp van VPN en Azure Virtual WAN. Het verkeer tussen de sites en Hong Kong wordt verzonden via het micro soft-netwerk en maakt in de afgelopen mijl alleen gebruik van normale Internet verbinding.
 
 ### <a name="option-2-expressroute-and-sdwan-or-vpn"></a><a name="option-2"></a>Optie 2: ExpressRoute en SDWAN of VPN
 
-In deze sectie wordt een ontwerp besproken dat ExpressRoute in Hong Kong en andere branches gebruikt met VPN/SDWAN-vestigingen. Deze optie toont het gebruik van en ExpressRoute beëindigd in Hong Kong en andere takken verbonden via SDWAN of VPN. ExpressRoute in Hong Kong is momenteel beperkt tot een korte lijst van providers, die u vinden in de lijst van [Express Route Partners.](../expressroute/expressroute-locations-providers.md#global-commercial-azure)
+In deze sectie wordt een ontwerp besproken dat gebruikmaakt van ExpressRoute in Hong Kong en andere branches met VPN/SDWAN-filialen. Met deze optie wordt het gebruik van en ExpressRoute beëindigd in Hong Kong en andere vertakkingen die zijn verbonden via SDWAN of VPN. ExpressRoute in Hongkong is momenteel beperkt tot een korte lijst met providers, die u kunt vinden in de lijst met [Express route-partners](../expressroute/expressroute-locations-providers.md#global-commercial-azure).
 
-![China naar Hong Kong verkeer ExpressRoute](./media/interconnect-china/expressroute.png)
+![China naar Hong-Kong verkeer ExpressRoute](./media/interconnect-china/expressroute.png)
 
-Er zijn ook opties om ExpressRoute uit China te beëindigen, bijvoorbeeld in Zuid-Korea of Japan. Maar gezien de naleving, regelgeving en latentie is Hongkong momenteel de beste keuze.
+Er zijn ook opties om ExpressRoute te beëindigen vanuit China, bijvoorbeeld in Zuid-Korea of Japan. Maar gezien de naleving, de regelgeving en de latentie is Hong Kong de beste keuze.
 
-### <a name="option-3-expressroute-only"></a><a name="option-3"></a>Optie 3: Alleen ExpressRoute
+### <a name="option-3-expressroute-only"></a><a name="option-3"></a>Optie 3: alleen ExpressRoute
 
-Deze sectie bespreekt een ontwerp dat waar ExpressRoute wordt gebruikt voor Hong Kong en andere takken. Deze optie toont de interconnect met ExpressRoute aan beide uiteinden. Hier heb je een andere verkeersstroom dan de andere. Het Microsoft 365-verkeer stroomt naar de virtuele WAN beveiligde hub van Azure en van daaruit naar het Microsoft Edge Network en het internet.
+In deze sectie wordt een ontwerp beschreven waarin ExpressRoute wordt gebruikt voor Hong Kong en andere branches. Met deze optie wordt de interconnect met ExpressRoute aan beide kanten weer gegeven. Hier hebt u een andere verkeers stroom dan de andere. Het Microsoft 365 verkeer loopt over naar de Azure Virtual WAN beveiligde hub en van daaruit naar het micro soft Edge-netwerk en het internet.
 
-Het verkeer dat naar de onderling verbonden vestigingen gaat of van hen naar de locaties in China zal een andere aanpak volgen binnen die architectuur. Momenteel ondersteunt virtueel WAN geen ExpressRoute naar ExpressRoute-transit. Het verkeer maakt gebruik van ExpressRoute Global Reach of de 3rd Party interconnect zonder de virtuele WAN Hub te passeren. Het zal rechtstreeks van de ene Microsoft Enterprise Edge (MSEE) naar de andere stromen.
+Het verkeer dat naar de onderling verbonden branches of van deze naar de locaties in China gaat, volgt een andere benadering binnen die architectuur. Momenteel biedt Virtual WAN geen ondersteuning voor ExpressRoute naar ExpressRoute transit. Het verkeer maakt gebruik van ExpressRoute Global Reach of de Interconnect van derden zonder dat de virtuele WAN-hub wordt door gegeven. Het gaat rechtstreeks van de ene micro soft Enter prise Edge (MSEE) naar de andere.
 
 ![ExpressRoute Global Reach](./media/interconnect-china/expressroute-virtual.png)
 
-Momenteel is ExpressRoute Global Reach niet in elk land beschikbaar, maar u een oplossing configureren met Azure Virtual WAN.
+ExpressRoute Global Reach is momenteel niet beschikbaar in elk land, maar u kunt een oplossing configureren met behulp van Azure Virtual WAN.
 
-U bijvoorbeeld een ExpressRoute configureren met Microsoft Peering en een VPN-tunnel verbinden via die peering met Azure Virtual WAN. Nu hebt u opnieuw de doorvoer tussen VPN en ExpressRoute zonder Global Reach en 3rd party provider en service, zoals Megaport Cloud, ingeschakeld.
+U kunt bijvoorbeeld een ExpressRoute configureren met micro soft-peering en een VPN-tunnel verbinden via die peering met Azure Virtual WAN. U hebt nu opnieuw de door Voer tussen VPN-en ExpressRoute ingeschakeld, zonder Global Reach en provider en service van derden, zoals Mega Port Cloud.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen voor meer informatie:
+Raadpleeg de volgende artikelen voor meer informatie:
 
-* [Global Transit-netwerkarchitectuur met Azure Virtual WAN](virtual-wan-global-transit-network-architecture.md)
+* [Wereld wijde doorvoer netwerk architectuur met Azure Virtual WAN](virtual-wan-global-transit-network-architecture.md)
 
 * [Een virtuele WAN-hub maken](virtual-wan-site-to-site-portal.md)
 
-* [Een virtuele WAN beveiligde hub configureren](../firewall-manager/secure-cloud-network.md)
+* [Een virtuele WAN-beveiligde hub configureren](../firewall-manager/secure-cloud-network.md)
 
-* [Overzicht van Azure Peering Service Preview](https://docs.microsoft.com/azure/peering-service/about)
+* [Overzicht van de preview-versie van Azure peering service](https://docs.microsoft.com/azure/peering-service/about)

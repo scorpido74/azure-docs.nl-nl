@@ -1,6 +1,6 @@
 ---
-title: Problemen met automatisch schalen oplossen met virtuele machineschaalsets
-description: Problemen met automatisch schalen oplossen met virtuele machineschaalsets. Begrijp typische problemen die zich voordoen en hoe u deze oplossen.
+title: Problemen met automatisch schalen oplossen met Virtual Machine Scale Sets
+description: Problemen met automatisch schalen oplossen met Virtual Machine Scale Sets. Krijg inzicht in veelvoorkomende problemen en hoe u deze kunt oplossen.
 author: mimckitt
 tags: azure-resource-manager
 ms.assetid: c7d87b72-ee24-4e52-9377-a42f337f76fa
@@ -10,71 +10,71 @@ ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: mimckitt
 ms.openlocfilehash: 4bc5e66f5b0759bdb5fe34276369161200bd5442
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273372"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Problemen met automatisch schalen met schaalsets voor virtuele machines oplossen
-**Probleem** : u hebt een infrastructuur voor automatisch schalen gemaakt in Azure Resource Manager met behulp https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale van virtuele machineschaalsets , bijvoorbeeld door een sjabloon als deze te implementeren: - u hebt uw schaalregels gedefinieerd en het werkt geweldig, behalve hoeveel belasting u op de VM's plaatst, het wordt niet automatisch geschaald.
+**Probleem** : u hebt een infra structuur voor automatisch schalen gemaakt in azure Resource Manager met schaal sets voor virtuele machines, bijvoorbeeld door het implementeren van een sjabloon zoals deze https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale :: u hebt uw schaal regels gedefinieerd en werkt goed, behalve de hoeveelheid belasting die u op de virtuele machines plaatst, wordt niet automatisch geschaald.
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
-Enkele dingen om te overwegen zijn:
+Hieronder vindt u enkele dingen die u moet overwegen:
 
-* Hoeveel vCPU's heeft elke VM en laad je elke vCPU?
-  De voorgaande sjabloon Azure Quickstart heeft een do_work.php-script, waarmee één vCPU wordt geladen. Als u een VM gebruikt die groter is dan een VM-grootte van één vCPU, zoals Standard_A1 of D1, moet u deze belasting meerdere keren uitvoeren. Controleren hoeveel vCPU's voor uw VM's door [grootte voor virtuele Windows-machines in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) te bekijken
-* Hoeveel VM's in de virtuele machine schaal set, bent u bezig met het werk op elk een?
+* Hoeveel Vcpu's heeft elke VM en wordt u elke vCPU geladen?
+  Het voor gaande voor beeld van Azure Quick Start-sjabloon bevat een do_work. php-script, waarmee één vCPU wordt geladen. Als u een virtuele machine gebruikt die groter is dan een VM-grootte van één vCPU, zoals Standard_A1 of D1, moet u deze belasting meerdere keren uitvoeren. Het aantal Vcpu's voor uw Vm's controleren door grootten te controleren op [virtuele Windows-machines in azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* Hoeveel Vm's in de schaalset voor virtuele machines voert u uit op elk gewenst werk schema?
   
-    Een scale-outgebeurtenis vindt alleen plaats wanneer de gemiddelde CPU in **alle** VM's in een schaalset de drempelwaarde overschrijdt, gedurende de interne tijd die is gedefinieerd in de regels voor autoscalen.
-* Heb je schaalevenementen gemist?
+    Een uitzonderings gebeurtenis treedt alleen op wanneer de gemiddelde CPU voor **alle** virtuele machines in een schaalset de drempel waarde overschrijdt, in de tijd die is gedefinieerd in de regels voor automatisch schalen.
+* Hebt u een schaal gebeurtenis gemist?
   
-    Controleer de controlelogboeken in de Azure-portal op schaalgebeurtenissen. Misschien was er een schaal vergroting en een schaal naar beneden die werd gemist. U filteren op Schalen.
+    Controleer de controle Logboeken in de Azure Portal op Scale-gebeurtenissen. Misschien is er een omhoog geschaald en wordt er een geschaald die is gemist. U kunt filteren op schaal.
   
     ![Auditlogboeken][audit]
-* Zijn uw schaal- en schaaldrempels voldoende verschillend?
+* Zijn de drempel waarden voor inzoomen en uitschalen voldoende voor u?
   
-    Stel dat u een regel instelt om uit te schalen wanneer de gemiddelde CPU groter is dan 50% over vijf minuten, en om te schalen wanneer de gemiddelde CPU minder dan 50% is. Deze instelling zou leiden tot een "flapping" probleem wanneer CPU-gebruik is dicht bij de drempel, met schaal acties voortdurend toenemende en het verminderen van de grootte van de set. Vanwege deze instelling probeert de autoscale-service te voorkomen dat "flapperen" wordt gebruikt, wat zich kan manifesteren als niet-schalen. Zorg er daarom voor dat uw scale-out- en scale-indrempels voldoende verschillend zijn om wat ruimte tussen schalen mogelijk te maken.
-* Heb je je eigen JSON template geschreven?
+    Stel dat u een regel hebt ingesteld die moet worden uitgeschaald wanneer de gemiddelde CPU groter is dan 50% gedurende vijf minuten, en moet worden geschaald wanneer de gemiddelde CPU kleiner is dan 50%. Met deze instelling wordt het probleem ' gaat en neer ' veroorzaakt wanneer het CPU-gebruik zich in de buurt van de drempel bevindt, waarbij schaal acties voortdurend toenemen en de grootte van de set verlagen. Als gevolg van deze instelling probeert de service voor automatisch schalen ' gaat en neer ' te voor komen, wat kan worden manifesteert als niet geschaald. Zorg er daarom voor dat uw drempel waarden voor uitschalen en schalen voldoende verschillen om ruimte te maken tussen schalen.
+* Hebt u uw eigen JSON-sjabloon geschreven?
   
-    Het is gemakkelijk om fouten te maken, dus begin met een sjabloon zoals hierboven waarvan is bewezen dat het werkt, en breng kleine incrementele wijzigingen aan. 
-* Kun je handmatig in- of uitschalen?
+    Het is eenvoudig om fouten te maken, dus begin met een sjabloon zoals de hierboven beschreven die u kunt gebruiken, en breng kleine incrementele wijzigingen aan. 
+* Kunt u hand matig in-of uitschalen?
   
-    Probeer de bron met een andere 'capaciteitsinstelling' opnieuw in te zetten om het aantal VM's handmatig te wijzigen. Een voorbeeldsjabloon is https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing hier: – u moet de sjabloon mogelijk bewerken om te kunnen weten of deze dezelfde machinegrootte heeft als uw schaalset. Als u het aantal VM's handmatig wijzigen, weet u dat het probleem is geïsoleerd om automatisch te schalen.
-* Controleer uw Microsoft.Compute/virtualMachineScaleSet- en Microsoft.Insights-bronnen in de [Azure Resource Explorer](https://resources.azure.com/)
+    Probeer de resource van de virtuele-machine schaalset opnieuw te implementeren met een andere capaciteits instelling om het aantal Vm's hand matig te wijzigen. Hier volgt een voorbeeld sjabloon: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing – u moet mogelijk de sjabloon bewerken om er zeker van te zijn dat deze dezelfde computer grootte heeft als uw schaalset gebruikt. Als u het aantal Vm's hand matig kunt wijzigen, weet u dan dat het probleem is geïsoleerd voor automatisch schalen.
+* Controleer uw micro soft. Compute/virtualMachineScaleSet-en micro soft. Insights-resources in de [Azure resource Explorer](https://resources.azure.com/)
   
-    De Azure Resource Explorer is een onmisbaar hulpprogramma voor probleemoplossing dat u de status van uw Azure Resource Manager-resources weergeeft. Klik op uw abonnement en bekijk de resourcegroep die u probleemoplossing biedt. Bekijk onder de compute resource provider de virtuele machineschaalset die u hebt gemaakt en controleer de instantieweergave, waarin de status van een implementatie wordt weergegeven. Controleer ook de instantieweergave van VM's in de virtuele machineschaalset. Ga vervolgens naar de Microsoft.Insights-bronprovider en controleer of de regels voor automatische schaal er goed uitzien.
-* Werkt de diagnostische extensie en worden prestatiegegevens uitgestoten?
+    De Azure Resource Explorer is een onmisbaar hulp programma voor probleem oplossing waarmee u de status van uw Azure Resource Manager resources kunt zien. Klik op uw abonnement en Bekijk de resource groep die u wilt oplossen. Bekijk de virtuele-machine schaalset die u hebt gemaakt in de compute-resource provider en controleer de weer gave van de instantie. hier ziet u de status van een implementatie. Controleer ook de weer gave van de instantie van Vm's in de schaalset voor virtuele machines. Ga vervolgens naar de resource provider micro soft. Insights en controleer of de regels voor automatisch schalen naar rechts zoeken.
+* Werkt de diagnostische uitbrei ding en worden prestatie gegevens verzonden?
   
-    **Update:** Azure autoscale is verbeterd om een host-gebaseerde metrische pijplijn te gebruiken, waarvoor niet langer een diagnostische extensie hoeft te worden geïnstalleerd. De volgende alinea's zijn niet meer van toepassing als u een toepassing voor automatisch schalen maakt met de nieuwe pijplijn. Een voorbeeld van Azure-sjablonen die zijn geconverteerd https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscaleom de hostpijplijn te gebruiken, is hier beschikbaar: . 
+    **Update:** Automatisch schalen van Azure is verbeterd voor het gebruik van een op een host gebaseerde metrische pijp lijn, waarvoor geen diagnostische uitbrei dingen meer nodig zijn om te worden geïnstalleerd. De volgende alinea's zijn niet meer van toepassing als u een toepassing voor automatisch schalen maakt met behulp van de nieuwe pijp lijn. Hier vindt u een voor beeld van Azure-sjablonen die zijn geconverteerd om de host-pijp lijn https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscalete gebruiken:. 
   
-    Het gebruik van host-gebaseerde statistieken voor autoscale is beter om de volgende redenen:
+    Het gebruik van metrische gegevens op basis van een host voor automatisch schalen is beter om de volgende redenen:
   
-  * Minder bewegende onderdelen omdat er geen diagnostische extensies hoeven te worden geïnstalleerd.
-  * Eenvoudigere sjablonen. Voeg alleen regels voor automatisch schalen toe aan een bestaande sjabloon voor schaalsets.
-  * Betrouwbaardere rapportage en snellere lancering van nieuwe VM's.
+  * U hoeft minder onderdelen te verplaatsen omdat er geen diagnostische uitbrei dingen moeten worden geïnstalleerd.
+  * Eenvoudigere sjablonen. Voeg regels voor het automatisch schalen van inzichten toe aan een bestaande sjabloon voor schaal sets.
+  * Betrouwbaardere rapportage en snellere Lance ring van nieuwe Vm's.
     
-    De enige redenen waarom u een diagnostische extensie wilt blijven gebruiken, is als u rapportage/schaling voor geheugendiagnostiek nodig hebt. Statistieken op basis van host rapporteren geen geheugen.
+    Het is raadzaam om alleen een diagnostische uitbrei ding te gebruiken als u wilt rapporteren over geheugen diagnoses of schalen. Bij metrische gegevens van een host wordt geen geheugen gerapporteerd.
     
-    Met dat in gedachten, volg alleen de rest van dit artikel als u diagnostische extensies gebruikt voor uw automatisch schalen.
+    In dat geval volgt u alleen de rest van dit artikel als u diagnostische uitbrei dingen gebruikt voor automatisch schalen.
     
-    Autoscale in Azure Resource Manager kan werken (maar hoeft niet meer) door middel van een VM-extensie genaamd de Diagnostics Extension. Het zendt prestatiegegevens uit aan een opslagaccount dat u definieert in de sjabloon. Deze gegevens worden vervolgens samengevoegd door de Azure Monitor-service.
+    Automatisch schalen in Azure Resource Manager kan werken (maar niet meer nodig) met behulp van een VM-extensie die de uitbrei ding voor diagnostische gegevens wordt genoemd. Het verzendt prestatie gegevens naar een opslag account dat u in de sjabloon definieert. Deze gegevens worden vervolgens geaggregeerd door de Azure Monitor-service.
     
-    Als de Insights-service geen gegevens van de VM's kan lezen, moet deze u een e-mail sturen. U krijgt bijvoorbeeld een e-mail als de VM's zijn uitgeschakeld. Controleer uw e-mail op het e-mailadres dat u hebt opgegeven toen u uw Azure-account hebt gemaakt.
+    Als de Insights-service geen gegevens kan lezen van de virtuele machines, moet u een e-mail verzenden. U ontvangt bijvoorbeeld een e-mail bericht als de virtuele machines niet beschikbaar zijn. Controleer het e-mail adres dat u hebt opgegeven bij het maken van uw Azure-account.
     
-    U ook zelf naar de gegevens kijken. Bekijk het Azure-opslagaccount met behulp van een cloudexplorer. Meld u bijvoorbeeld aan met de [Visual Studio Cloud Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2)en kies het Azure-abonnement dat u gebruikt. Kijk vervolgens naar de naam van het opslagaccount Diagnostics waarnaar wordt verwezen in de definitie van de extensie Diagnostische gegevens in uw implementatiesjabloon.
+    U kunt de gegevens ook zelf bekijken. Bekijk het Azure-opslag account met behulp van een Cloud Explorer. Meld u bijvoorbeeld met behulp van de [Visual Studio Cloud Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2)aan en kies het Azure-abonnement dat u gebruikt. Bekijk vervolgens de naam van het opslag account voor diagnostische gegevens waarnaar wordt verwezen in de definitie van de diagnostische gegevens in uw implementatie sjabloon.
     
     ![Cloud Explorer][explorer]
     
-    U ziet een aantal tabellen waarin de gegevens van elke virtuele machine worden opgeslagen. Als u Linux en de CPU-statistiek als voorbeeld neemt, kijkt u naar de meest recente rijen. De Visual Studio cloud explorer ondersteunt een querytaal, zodat u een query uitvoeren. U bijvoorbeeld een query uitvoeren voor 'Timestamp gt datetime'2016-02-02T21:20:00Z' om ervoor te zorgen dat u de meest recente gebeurtenissen krijgt. De tijdzone komt overeen met UTC. Komen de gegevens die u daar ziet overeen met de schaalregels die u hebt ingesteld? In het volgende voorbeeld, de CPU voor machine 20 begon te stijgen tot 100% in de afgelopen vijf minuten.
+    U ziet een aantal tabellen waarin de gegevens van elke virtuele machine worden opgeslagen. Als u Linux en de CPU-metric als voor beeld neemt, bekijkt u de meest recente rijen. De Visual Studio Cloud Explorer ondersteunt een query taal, zodat u een query kunt uitvoeren. U kunt bijvoorbeeld een query uitvoeren voor ' time stamp gt datetime ' 2016-02-02T21:20:00Z ' ' om er zeker van te zijn dat u de meest recente gebeurtenissen krijgt. De tijd zone komt overeen met UTC. Worden de gegevens die u ziet in de weer gegeven, overeenkomen met de schaal regels die u instelt? In het volgende voor beeld is de CPU voor machine 20 in de afgelopen vijf minuten verhoogd naar 100%.
     
-    ![Opslagtabellen][tables]
+    ![Opslag tabellen][tables]
     
-    Als de gegevens er niet zijn, impliceert dit dat het probleem is dat de diagnostische extensie in de VM's wordt uitgevoerd. Als de gegevens er zijn, houdt dit in dat er een probleem is met uw schaalregels of met de Insights-service. [Azure-status inteformeer](https://azure.microsoft.com/status/).
+    Als er geen gegevens zijn, wordt het probleem veroorzaakt door de diagnostische uitbrei ding die in de Vm's wordt uitgevoerd. Als de gegevens daar zich bevinden, is er een probleem met uw schaal regels of met de Insights-service. Controleer de [status van Azure](https://azure.microsoft.com/status/).
     
-    Als u deze stappen hebt doorlopen en u nog steeds problemen hebt met automatisch schalen, u de volgende bronnen proberen: 
-    * Lees de forums op [MSDN,](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows)of [Stack overflow](https://stackoverflow.com/questions/tagged/azure) 
-    * Log een ondersteuningsgesprek in. Wees bereid om de sjabloon en een weergave van uw prestatiegegevens te delen.
+    Als u deze stappen hebt uitgevoerd, kunt u, als u nog steeds problemen hebt met automatisch schalen, de volgende resources proberen: 
+    * Lees de forums op [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows)of [stack overflow](https://stackoverflow.com/questions/tagged/azure) 
+    * Een ondersteunings oproep registreren. Bereid u voor op het delen van de sjabloon en een weer gave van uw prestatie gegevens.
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png
 [explorer]: ./media/virtual-machine-scale-sets-troubleshoot/image1.png

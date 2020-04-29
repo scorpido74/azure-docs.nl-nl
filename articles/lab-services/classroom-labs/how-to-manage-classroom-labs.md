@@ -1,6 +1,6 @@
 ---
-title: Klaslabs beheren in Azure Lab Services | Microsoft Documenten
-description: Leer hoe u een klaslokaallab maakt en configureert, alle klaslokalen bekijkt, de registratiekoppeling deelt met een labgebruiker of een lab verwijdert.
+title: Klassikale Labs beheren in Azure Lab Services | Microsoft Docs
+description: Meer informatie over het maken en configureren van een leslokaal Lab, het weer geven van alle klassikale Labs, het delen van de registratie koppeling met een test gebruiker of het verwijderen van een lab.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,14 +14,14 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: spelluru
 ms.openlocfilehash: 46c53c99c12ade986ab913bf013b652a931a4d22
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81257739"
 ---
-# <a name="manage-classroom-labs-in-azure-lab-services"></a>Klaslabs beheren in Azure Lab Services 
-In dit artikel wordt beschreven hoe u een klaslokaallab maakt en verwijdert. Het laat je ook zien hoe je alle klaslokalen in een labaccount bekijken. 
+# <a name="manage-classroom-labs-in-azure-lab-services"></a>Klassikale Labs in Azure Lab Services beheren 
+In dit artikel wordt beschreven hoe u een leslokaal Lab maakt en verwijdert. U ziet ook hoe u alle klassikale Labs in een Lab-account kunt weer geven. 
 
 ## <a name="prerequisites"></a>Vereisten
 Als u een leslokaallab in een labaccount instelt, moet u lid zijn van de rol **Labmaker** in het labaccount. Het account dat u hebt gebruikt voor het maken van een labaccount wordt automatisch toegevoegd aan deze rol. Een labeigenaar kan andere gebruikers toevoegen aan de rol Labmaker met behulp van de stappen in het volgende artikel: [Een gebruiker toevoegen aan de rol Labmaker](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
@@ -29,119 +29,119 @@ Als u een leslokaallab in een labaccount instelt, moet u lid zijn van de rol **L
 ## <a name="create-a-classroom-lab"></a>Een leslokaallab maken
 
 1. Navigeer naar de [Azure Lab Services-website](https://labs.azure.com). Internet Explorer 11 wordt nog niet ondersteund. 
-2. Selecteer **Aanmelden** en voer uw referenties in. Selecteer of voer een **gebruikersnaam** in die lid is van de **labcreatorrol** in het labaccount en voer een wachtwoord in. Azure Lab Services ondersteunt organisatieaccounts en Microsoft-accounts. 
-3. Selecteer **Nieuw lab**. 
+2. Selecteer **Aanmelden** en voer uw referenties in. Selecteer of typ een **gebruikers-id** die lid is van de rol **Lab Creator** in het lab-account en voer het wacht woord in. Azure Lab Services ondersteunt organisatieaccounts en Microsoft-accounts. 
+3. Selecteer **Nieuw Lab**. 
     
     ![Een leslokaallab maken](../media/tutorial-setup-classroom-lab/new-lab-button.png)
 3. Voer in het venster **Nieuw lab** de volgende acties uit: 
     1. Geef een **naam** voor uw lab op. 
-    2. Selecteer de **grootte van de virtuele machines die** u nodig hebt voor de klasse. Zie de sectie [VM-formaten voor](#vm-sizes) de beschikbare lijst met formaten. 
-    3. Selecteer de **virtuele machineafbeelding** die u wilt gebruiken voor het klaslokaallab. Als u een Linux-afbeelding selecteert, ziet u een optie om verbinding met extern bureaublad hiervoor in te schakelen. Zie Externe [bureaubladverbinding inschakelen voor Linux voor](how-to-enable-remote-desktop-linux.md)meer informatie.
+    2. Selecteer de **grootte van de virtuele machines** die u nodig hebt voor de-klasse. Zie de sectie [VM-grootten](#vm-sizes) voor een lijst met beschik bare grootten. 
+    3. Selecteer de **installatie kopie van de virtuele machine** die u wilt gebruiken voor het leslokaal Lab. Als u een Linux-installatie kopie selecteert, ziet u een optie om verbinding met extern bureau blad in te scha kelen. Zie [verbinding met extern bureau blad inschakelen voor Linux](how-to-enable-remote-desktop-linux.md)voor meer informatie.
 
-        Als u zich hebt aangemeld met referenties van de eigenaar van het labaccount, ziet u een optie om meer afbeeldingen voor het lab in te schakelen. Zie [Afbeeldingen inschakelen op het moment van het maken van het lab](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation)voor meer informatie.
-    4. Bekijk de **totale prijs per uur** die op de pagina wordt weergegeven. 
+        Als u zich hebt aangemeld met de referenties van de Lab-account eigenaar, ziet u een optie om meer installatie kopieën voor het lab in te scha kelen. Zie [installatie kopieën inschakelen op het moment dat het lab wordt gemaakt](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation)voor meer informatie.
+    4. Bekijk de **totale prijs per uur** die op de pagina wordt weer gegeven. 
     6. Selecteer **Opslaan**.
 
-        ![Nieuw laboratoriumvenster](../media/tutorial-setup-classroom-lab/new-lab-window.png)
+        ![Nieuw Lab-venster](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 
         > [!NOTE]
-        > U ziet een optie om een locatie voor uw lab te selecteren als het lab-account is geconfigureerd zodat de maker van het lab de optie [lablocatie kan kiezen.](allow-lab-creator-pick-lab-location.md) 
-4. Geef op de pagina **Standaardreferenties** voor virtuele machine op voor alle VM's in het lab.
+        > U ziet een optie voor het selecteren van een locatie voor uw Lab als het lab-account zodanig is geconfigureerd dat [Lab Creator de optie Lab-locatie kan kiezen](allow-lab-creator-pick-lab-location.md) . 
+4. Geef op de pagina **referenties voor virtuele machine** standaard referenties op voor alle virtuele machines in het lab.
     1. Geef de **naam van de gebruiker** op voor alle virtuele machines in het lab.
     2. Geef het **wachtwoord** voor de gebruiker op. 
 
         > [!IMPORTANT]
         > Noteer de gebruikersnaam en het wachtwoord. Deze worden niet opnieuw weergegeven.
-    3. **Schakel hetzelfde wachtwoord voor alle virtuele machines** optie als u wilt dat studenten hun eigen wachtwoorden in te stellen. Deze stap is **optioneel**. 
+    3. Schakel **hetzelfde wacht woord voor alle virtuele machines gebruiken** uit als u wilt dat studenten hun eigen wacht woord instellen. Deze stap is **optioneel**. 
 
-        Een docent kan ervoor kiezen om hetzelfde wachtwoord te gebruiken voor alle VM's in het lab, of studenten toestaan om wachtwoorden in te stellen voor hun VM's. Standaard is deze instelling ingeschakeld voor alle Windows- en Linux-afbeeldingen, behalve voor Ubuntu. Wanneer u **Ubuntu** VM selecteert, is deze instelling uitgeschakeld, zodat de studenten wordt gevraagd een wachtwoord in te stellen wanneer ze zich voor de eerste keer aanmelden.  
+        Een docent kan ervoor kiezen om hetzelfde wacht woord te gebruiken voor alle virtuele machines in de test omgeving of studenten toestaan wacht woorden in te stellen voor hun virtuele machines. Deze instelling is standaard ingeschakeld voor alle Windows-en Linux-installatie kopieën, met uitzonde ring van Ubuntu. Wanneer u **Ubuntu** VM selecteert, wordt deze instelling uitgeschakeld, zodat de studenten wordt gevraagd een wacht woord in te stellen wanneer ze zich voor de eerste keer aanmelden.  
 
-        ![Nieuw laboratoriumvenster](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
-    4. Selecteer **vervolgens Volgende** op de pagina **Virtuele machinereferenties.** 
-5. Ga op de pagina **Lab-beleid** de volgende stappen uit:
-    1. Voer het aantal toegewezen uren voor elke gebruiker **(quotum voor elke gebruiker)** in buiten de geplande tijd voor het lab. 
-    2. Geef voor de optie **Automatisch afsluiten van virtuele machines** op of u wilt dat de vm automatisch wordt afgesloten wanneer de verbinding tussen de gebruiker en de gebruiker wordt verbroken. U ook opgeven hoe lang de VM moet wachten tot de gebruiker opnieuw verbinding maakt voordat deze automatisch wordt afgesloten.. Zie [Automatisch afsluiten van VM's inschakelen bij het verbreken van de verbinding](how-to-enable-shutdown-disconnect.md)voor meer informatie .
-    3. Selecteer vervolgens **Voltooien**. 
+        ![Nieuw Lab-venster](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
+    4. Selecteer vervolgens **volgende** op de pagina **referenties voor de virtuele machine** . 
+5. Voer de volgende stappen uit op de pagina **Lab-beleid** :
+    1. Voer het aantal uren in dat is toegewezen aan elke gebruiker (**quotum voor elke gebruiker**) buiten de geplande tijd voor het lab. 
+    2. Voor de optie voor het **automatisch afsluiten van virtuele machines** geeft u op of u wilt dat de virtuele machine automatisch wordt afgesloten wanneer de gebruiker de verbinding verbreekt. U kunt ook opgeven hoe lang de virtuele machine moet wachten totdat de gebruiker opnieuw verbinding maakt voordat deze automatisch wordt afgesloten. Zie voor meer informatie [automatisch afsluiten van Vm's inschakelen bij het verbreken](how-to-enable-shutdown-disconnect.md)van de verbinding.
+    3. Selecteer vervolgens **volt ooien**. 
 
         ![Quotum voor elke gebruiker](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
     
-5. U ziet het volgende scherm met de status van het maken van de sjabloon-vm. Het maken van de sjabloon in het lab duurt maximaal 20 minuten. 
+5. Het volgende scherm wordt weer gegeven met de status van het maken van een VM-sjabloon. Het maken van de sjabloon in het lab duurt maximaal 20 minuten. 
 
-    ![Status van het maken van de sjabloon-vm](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
-8. Voer op de pagina **Sjabloon** de volgende stappen uit: de volgende stappen zijn **optioneel** voor de zelfstudie.
+    ![Status van het maken van de sjabloon-VM](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
+8. Voer de volgende stappen uit op de pagina **sjabloon** : deze stappen zijn **optioneel** voor de zelf studie.
 
-    2. De sjabloon-VM verbinden door **Verbinding maken** te selecteren. Als het een VM voor Linux-sjablonen is, kiest u of u verbinding wilt maken met SSH of RDP (als RDP is ingeschakeld).
-    1. Selecteer **Wachtwoord opnieuw instellen** om het wachtwoord voor de vm opnieuw in te stellen. 
+    2. De sjabloon-VM verbinden door **Verbinding maken** te selecteren. Als het een Linux-sjabloon-VM is, kiest u of u verbinding wilt maken via SSH of RDP (als RDP is ingeschakeld).
+    1. Selecteer **wacht woord opnieuw instellen** om het wacht woord voor de virtuele machine opnieuw in te stellen. 
     1. Software installeren en configureren op uw sjabloon-VM. 
     1. **Stop** de virtuele machine.  
     1. Een **Beschrijving** voor de sjabloon invoeren
-10. Selecteer op de pagina **Sjabloon** de optie **Publiceren** op de werkbalk. 
+10. Selecteer op de pagina **sjabloon** de optie **publiceren** op de werk balk. 
 
-    ![Knop Sjabloon publiceren](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
+    ![De knop sjabloon publiceren](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
     > [!WARNING]
     > Zodra u de sjabloon hebt gepubliceerd, kan dit niet ongedaan worden gemaakt. 
-8. Voer **op** de pagina Sjabloon publiceren het aantal virtuele machines in dat u in het lab wilt maken en selecteer **Vervolgens Publiceren**. 
+8. Op de pagina **publicatie sjabloon** voert u het aantal virtuele machines in dat u wilt maken in het lab en selecteert u vervolgens **publiceren**. 
 
-    ![Sjabloon publiceren - aantal VM's](../media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
+    ![Publicatie sjabloon-aantal Vm's](../media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
 11. U ziet de **status van het publiceren van** de sjabloon op de pagina. Dit proces duurt maximaal een uur. 
 
     ![Sjabloon publiceren - voortgang](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
-4. Ga naar de **poolpagina virtuele machines** door virtuele machines te selecteren in het linkermenu of door de tegel Virtuele machines te selecteren. Controleer of u virtuele machines ziet met de status **Niet-toegewezen**. Deze virtuele machines zijn nog niet toegewezen aan studenten. Deze horen de status **Gestopt** te hebben. Op deze pagina kunt u een student-VM starten, verbinding maken met de virtuele machine, de virtuele machine stoppen en de virtuele machine verwijderen. U kunt de virtuele machines zelf starten vanaf deze pagina of ze laten starten door de studenten. 
+4. Ga naar de pagina **pool van virtuele machines** door virtuele machines te selecteren in het linkermenu of door de tegel virtuele machines te selecteren. Controleer of u virtuele machines ziet met de status **Niet-toegewezen**. Deze virtuele machines zijn nog niet toegewezen aan studenten. Deze horen de status **Gestopt** te hebben. Op deze pagina kunt u een student-VM starten, verbinding maken met de virtuele machine, de virtuele machine stoppen en de virtuele machine verwijderen. U kunt de virtuele machines zelf starten vanaf deze pagina of ze laten starten door de studenten. 
 
     ![Virtuele machines met de status Gestopt](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
-    U doet de volgende taken op deze pagina (doe deze stappen niet voor de zelfstudie. Deze stappen zijn alleen voor uw informatie.): 
+    U voert de volgende taken uit op deze pagina (Voer deze stappen niet uit voor de zelf studie. Deze stappen zijn alleen ter informatie.): 
     
-    1. Als u de labcapaciteit (aantal VM's in het lab) wilt wijzigen, selecteert u **Labcapaciteit** op de werkbalk.
-    2. Als u alle VM's tegelijk wilt starten, selecteert u **Alles starten** op de werkbalk. 
-    3. Als u een specifieke virtuele machine wilt starten, selecteert u de pijl-omlaag in de **status**en selecteert u **Start**. U een vm ook starten door een vm in de eerste kolom te selecteren en vervolgens **Start** op de werkbalk te selecteren.                
+    1. Als u de lab-capaciteit (aantal Vm's in het lab) wilt wijzigen, selecteert u **lab-capaciteit** op de werk balk.
+    2. Als u alle Vm's tegelijk wilt starten, selecteert u **Alles starten** op de werk balk. 
+    3. Als u een specifieke virtuele machine wilt starten, selecteert u de pijl-omlaag in de **status**en selecteert u vervolgens **starten**. U kunt ook een virtuele machine starten door een virtuele machine in de eerste kolom te selecteren en vervolgens te klikken op **Start** op de werk balk.                
 
 ### <a name="vm-sizes"></a>Formaten van virtuele machines  
 
 | Grootte | Kernen | RAM | Beschrijving | 
 | ---- | ----- | --- | ----------- | 
-| Klein | 2 | 3,5 GB | Deze grootte is het meest geschikt voor opdrachtregel, het openen van webbrowser, low traffic webservers, kleine tot middelgrote databases. |
-| Middelgroot | 4 | 7 GB | Deze grootte is het meest geschikt voor relationele databases, in-memory caching en analytics | 
-| Medium (Geneste virtualisatie) | 4 | 16 GB | Deze grootte is het meest geschikt voor relationele databases, in-memory caching en analytics. Deze grootte ondersteunt ook geneste virtualisatie. <p>Deze grootte kan worden gebruikt in scenario's waarin elke student meerdere VM's nodig heeft. Docenten kunnen geneste virtualisatie gebruiken om een paar kleine geneste virtuele machines in de virtuele machine in te stellen. </p> |
-| Groot | 8 | 32 GB | Dit formaat is het meest geschikt voor toepassingen die snellere CPU's nodig hebben, betere lokale schijfprestaties, grote databases, grote geheugencaches. Deze grootte ondersteunt ook geneste virtualisatie |  
-| Kleine GPU (visualisatie) | 6 | 56 GB | Dit formaat is het meest geschikt voor externe visualisatie, streaming, gaming, codering met behulp van frameworks zoals OpenGL en DirectX. | 
-| Kleine GPU (Berekenen) | 6 | 56 GB | Deze grootte is het meest geschikt voor rekenintensieve en netwerkintensieve toepassingen zoals kunstmatige intelligentie en deep learning-toepassingen. | 
-| Middelgrote GPU (visualisatie) | 12 | 112 GB | Dit formaat is het meest geschikt voor externe visualisatie, streaming, gaming, codering met behulp van frameworks zoals OpenGL en DirectX. | 
+| Klein | 2 | 3,5 GB | Deze grootte is het meest geschikt voor de opdracht regel, de webbrowser openen, webservers met weinig verkeer, kleine tot middel grote data bases. |
+| Middelgroot | 4 | 7 GB | Deze grootte is het meest geschikt voor relationele data bases, caching in het geheugen en analyse | 
+| Gemiddeld (geneste virtualisatie) | 4 | 16 GB | Deze grootte is het meest geschikt voor relationele data bases, caching in het geheugen en analyse. Deze grootte biedt ook ondersteuning voor geneste virtualisatie. <p>Deze omvang kan worden gebruikt in scenario's waarbij elke student meerdere Vm's nodig heeft. Docenten kunnen geneste virtualisatie gebruiken om een klein aantal geneste virtuele machines in de virtuele machine in te stellen. </p> |
+| Groot | 8 | 32 GB | Deze grootte is het meest geschikt voor toepassingen die snellere Cpu's nodig hebben, betere prestaties van de lokale schijf, grote data bases, grote geheugen caches. Deze grootte biedt ook ondersteuning voor geneste virtualisatie |  
+| Kleine GPU (visualisatie) | 6 | 56 GB | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games, code ring met behulp van frameworks zoals OpenGL en DirectX. | 
+| Kleine GPU (Compute) | 6 | 56 GB | Deze grootte is het meest geschikt voor computerintensieve en netwerkintensieve toepassingen, zoals kunst matige intelligentie en toepassingen voor diepe trainingen. | 
+| Gemiddelde GPU (visualisatie) | 12 | 112 GB | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games, code ring met behulp van frameworks zoals OpenGL en DirectX. | 
 
 > [!NOTE]
-> Azure Lab Services installeert en configureert automatisch de benodigde GPU-stuurprogramma's voor u wanneer u een lab maakt met GPU-afbeeldingen.  
+> Azure Lab Services installeert en configureert de benodigde GPU-Stuur Programma's automatisch wanneer u een Lab met GPU-installatie kopieën maakt.  
 
-## <a name="view-all-classroom-labs"></a>Alle klaslokalen bekijken
-1. Navigeer naar [azure lab services-portal](https://labs.azure.com).
-2. Selecteer **Aanmelden**. Selecteer of voer een **gebruikersnaam** in die lid is van de **labcreatorrol** in het labaccount en voer een wachtwoord in. Azure Lab Services ondersteunt organisatieaccounts en Microsoft-accounts. 
-3. Controleer of u alle labs in het geselecteerde labaccount ziet. Op de tegel van het lab ziet u het aantal virtuele machines in het lab en het quotum voor elke gebruiker (buiten de geplande tijd).
+## <a name="view-all-classroom-labs"></a>Alle klassikale Labs weer geven
+1. Navigeer naar [Azure Lab Services portal](https://labs.azure.com).
+2. Selecteer **Aanmelden**. Selecteer of typ een **gebruikers-id** die lid is van de rol **Lab Creator** in het lab-account en voer het wacht woord in. Azure Lab Services ondersteunt organisatieaccounts en Microsoft-accounts. 
+3. Controleer of alle Labs in het geselecteerde Lab-account worden weer geven. Op de tegel van het lab ziet u het aantal virtuele machines in het lab en het quotum voor elke gebruiker (buiten de geplande tijd).
 
-    ![Alle laboratoria](../media/how-to-manage-classroom-labs/all-labs.png)
-3. Gebruik de vervolgkeuzelijst bovenaan om een ander labaccount te selecteren. U ziet labs in het geselecteerde labaccount. 
+    ![Alle Labs](../media/how-to-manage-classroom-labs/all-labs.png)
+3. Gebruik de vervolg keuzelijst aan de bovenkant om een ander lab-account te selecteren. U ziet Labs in het geselecteerde Lab-account. 
 
-## <a name="delete-a-classroom-lab"></a>Een klaslokaallab verwijderen
-1. Selecteer op de tegel voor het lab drie puntjes (...) in de hoek en selecteer **Verwijderen**. 
+## <a name="delete-a-classroom-lab"></a>Een leslokaal Lab verwijderen
+1. Selecteer op de tegel voor het lab drie puntjes (...) in de hoek en selecteer vervolgens **verwijderen**. 
 
     ![De knop Verwijderen](../media/how-to-manage-classroom-labs/delete-button.png)
-3. Selecteer **Verwijderen** om door te gaan met verwijderen in het dialoogvenster **Lab verwijderen.** 
+3. Selecteer **verwijderen** in het dialoog venster **Lab verwijderen** om door te gaan met het verwijderen. 
 
-## <a name="switch-to-another-classroom-lab"></a>Overschakelen naar een ander klaslokaallab
-Als u vanaf de huidige basis wilt overschakelen naar een ander laboratorium in de klas, selecteert u de vervolgkeuzelijst met labs in het labaccount bovenaan.
+## <a name="switch-to-another-classroom-lab"></a>Overschakelen naar een ander leslokaal Lab
+Als u wilt overschakelen naar een ander leslokaal Lab vanuit de huidige, selecteert u de vervolg keuzelijst met Labs in het lab-account bovenaan.
 
-![Selecteer het lab in de vervolgkeuzelijst bovenaan](../media/how-to-manage-classroom-labs/switch-lab.png)
+![Selecteer de vervolg keuzelijst Lab uit bovenaan](../media/how-to-manage-classroom-labs/switch-lab.png)
 
-U ook een nieuw lab maken met behulp van het **nieuwe lab** in deze vervolgkeuzelijst. 
+U kunt ook een nieuw lab maken met behulp van het **nieuwe lab** in deze vervolg keuzelijst. 
 
 > [!NOTE]
-> U ook de Az.LabServices PowerShell-module (preview) gebruiken om labs te beheren. Zie voor meer informatie de [startpagina van Az.LabServices op GitHub.](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library)
+> U kunt ook de Power shell-module AZ. LabServices (preview) gebruiken voor het beheren van Labs. Zie de [Introductie pagina AZ. LabServices op github](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library)voor meer informatie.
 
-Als u wilt overschakelen naar een ander labaccount, selecteert u de vervolgkeuzelijst naast het labaccount en selecteert u het andere labaccount. 
+Als u wilt overschakelen naar een ander lab-account, selecteert u de vervolg keuzelijst naast het lab-account en selecteert u het andere Lab-account. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:
 
 - [Sjablonen instellen en publiceren als labeigenaar](how-to-create-manage-template.md)
 - [Het gebruik van een lab configureren en beheren als labeigenaar](how-to-configure-student-usage.md)
-- [Als labgebruiker toegang tot klaslokalen](how-to-use-classroom-lab.md)
+- [Als test gebruiker toegang krijgen tot klassikale Labs](how-to-use-classroom-lab.md)
 

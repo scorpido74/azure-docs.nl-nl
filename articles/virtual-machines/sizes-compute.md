@@ -1,6 +1,6 @@
 ---
-title: Azure VM-formaten - Compute geoptimaliseerd | Microsoft Documenten
-description: Geeft een overzicht van de verschillende voor berekende rekengroottes die beschikbaar zijn voor virtuele machines in Azure. Bevat informatie over het aantal vCPU's, gegevensschijven en NIC's, evenals opslagdoorvoer en netwerkbandbreedte voor formaten in deze serie.
+title: Azure VM-grootten-berekenings optimalisatie | Microsoft Docs
+description: Geeft een lijst van de verschillende geoptimaliseerde berekenings groottes die beschikbaar zijn voor virtuele machines in Azure. Hiermee wordt informatie weer gegeven over het aantal Vcpu's, gegevens schijven en Nic's, evenals opslag doorvoer en netwerk bandbreedte voor grootten in deze serie.
 services: virtual-machines
 documentationcenter: ''
 author: mimckitt
@@ -15,21 +15,21 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
 ms.openlocfilehash: e08d593f641c42f9ad605fda013206e70a34e52f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81269632"
 ---
-# <a name="compute-optimized-virtual-machine-sizes"></a>Geoptimaliseerde virtuele machineformaten berekenen
+# <a name="compute-optimized-virtual-machine-sizes"></a>Grootte van geoptimaliseerde virtuele machines berekenen
 
-Compute geoptimaliseerde VM-formaten hebben een hoge CPU-geheugenverhouding. Deze formaten zijn goed voor webservers met een gemiddeld verkeer, netwerkapparaten, batchprocessen en toepassingsservers. In dit artikel vindt u informatie over het aantal vCPU's, gegevensschijven en NIC's. Het bevat ook informatie over opslagdoorvoer en netwerkbandbreedte voor elke grootte in deze groepering.
+De grootte van de virtuele machines met reken capaciteit is hoog voor CPU-geheugen. Deze grootten zijn geschikt voor webservers, netwerk apparaten, batch processen en toepassings servers met een gemiddeld verkeer. Dit artikel bevat informatie over het aantal Vcpu's, gegevens schijven en Nic's. Het bevat ook informatie over opslag doorvoer en netwerk bandbreedte voor elke grootte in deze groep.
 
-De [Fsv2-serie](fsv2-series.md) is gebaseerd op de Intel® Xeon® Platinum 8168 processor. Het beschikt over een duurzame all core Turbo kloksnelheid van 3,4 GHz en een maximale single-core turbo frequentie van 3,7 GHz. Intel® AVX-512 instructies zijn nieuw op Intel Scalable Processors. Deze instructies bieden tot een 2x prestatieverbetering voor vectorverwerkingsworkloads op zowel enkele als dubbele precisie floating point-bewerkingen. Met andere woorden, ze zijn echt snel voor elke computationele werkbelasting.
+De [Fsv2-serie](fsv2-series.md) is gebaseerd op de Intel® Xeon® Platinum 8168-processor. De IT-service heeft een zeer hoge Turbo klok snelheid van 3,4 GHz en een maximale Turbo frequentie van 3,7 GHz met één kern. Intel® AVX-512-instructies zijn nieuw op schaal bare Intel-processors. Deze instructies bieden een 2X hoge prestatie verbetering van de werk belasting voor vector verwerking op bewerkingen met een drijvende komma van zowel één als dubbele precisie. Met andere woorden, ze zijn heel snel voor elke reken werk belasting.
 
-Met een lagere catalogusprijs per uur is de Fsv2-serie de beste prijs-prestatieverhouding in het Azure-portfolio op basis van de Azure Compute Unit (ACU) per vCPU.
+Voor een lagere prijs per uur is de Fsv2-serie de beste prijs-prestatie verhouding in de Azure-Port Folio op basis van de ACU (Azure Compute Unit) per vCPU.
 
-## <a name="other-sizes"></a>Andere maten
+## <a name="other-sizes"></a>Andere grootten
 
 - [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
@@ -40,4 +40,4 @@ Met een lagere catalogusprijs per uur is de Fsv2-serie de beste prijs-prestatiev
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe [Azure compute units (ACU)](acu.md) u kunnen helpen bij het vergelijken van rekenprestaties in Azure SKU's.
+Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.

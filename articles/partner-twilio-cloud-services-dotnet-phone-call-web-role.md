@@ -1,6 +1,6 @@
 ---
-title: Bellen met Twilio (.NET) | Microsoft Documenten
-description: Meer informatie over het voeren van een telefoongesprek en het verzenden van een sms-bericht met de Twilio API-service op Azure. Codevoorbeelden geschreven in .NET.
+title: Een telefoon gesprek doen vanuit Twilio (.NET) | Microsoft Docs
+description: Meer informatie over het maken van een telefoon gesprek en het verzenden van een SMS-bericht met de Twilio API-service in Azure. Code voorbeelden geschreven in .NET.
 services: ''
 documentationcenter: .net
 author: mimckitt
@@ -14,36 +14,36 @@ ms.topic: article
 ms.date: 05/04/2016
 ms.author: mimckitt
 ms.openlocfilehash: df1f5e1c21c28fa8c1fcdef6b2278fb92014a3b1
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81272556"
 ---
-# <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Bellen met Twilio in een webrol op Azure
-In deze handleiding wordt uitgelegd hoe u Twilio gebruiken om te bellen vanaf een webpagina die wordt gehost in Azure. De resulterende toepassing vraagt de gebruiker om een gesprek te voeren met het opgegeven nummer en bericht, zoals weergegeven in de volgende screenshot.
+# <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Een telefoon gesprek doen met behulp van Twilio in een webrol in azure
+In deze hand leiding wordt gedemonstreerd hoe u Twilio kunt gebruiken om een aanroep uit te voeren vanaf een webpagina die wordt gehost in Azure. De resulterende toepassing vraagt de gebruiker om een gesprek te voeren met het opgegeven aantal en bericht, zoals wordt weer gegeven in de volgende scherm afbeelding.
 
-![Azure-oproepformulier met Twilio en ASP.NET][twilio_dotnet_basic_form]
+![Azure-oproep formulier met Twilio en ASP.NET][twilio_dotnet_basic_form]
 
 ## <a name="prerequisites"></a><a name="twilio-prereqs"></a>Vereisten
-U moet het volgende doen om de code in dit onderwerp te gebruiken:
+U moet het volgende doen om de code in dit onderwerp te kunnen gebruiken:
 
-1. Een Twilio-account en verificatietoken verkrijgen van de [Twilio-console.][twilio_console] Om aan de slag te gaan [https://www.twilio.com/try-twilio][try_twilio]met Twilio, meld je aan bij . U de [https://www.twilio.com/pricing][twilio_pricing]prijzen evalueren op. Zie voor [https://www.twilio.com/voice/api][twilio_api]informatie over de API van Twilio .
-2. Voeg de *Twilio .NET-bibliotheek* toe aan uw webrol. Zie **De Twilio-bibliotheken toevoegen aan uw webrolproject**, later in dit onderwerp.
+1. Haal een Twilio-account en verificatie token op uit de [Twilio-console][twilio_console]. Meld u aan om aan de slag te gaan [https://www.twilio.com/try-twilio][try_twilio]met Twilio. U kunt prijzen evalueren op [https://www.twilio.com/pricing][twilio_pricing]. Zie [https://www.twilio.com/voice/api][twilio_api]voor informatie over de API van Twilio.
+2. Voeg de *Twilio .net-bibliotheek* toe aan uw web-rol. Zie **de Twilio-bibliotheken toevoegen aan het project van uw webrol**, verderop in dit onderwerp.
 
-U moet bekend zijn met het maken van een [basiswebrol op Azure.][azure_webroles_get_started]
+U moet bekend zijn met het maken van een eenvoudige [ondernemingsrol op Azure][azure_webroles_get_started].
 
-## <a name="how-to-create-a-web-form-for-making-a-call"></a><a name="howtocreateform"></a>How to: Een webformulier maken voor het voeren van een gesprek
-<a id="use_nuget"></a>Ga als u de Twilio-bibliotheken toevoegen aan uw webrolproject:
+## <a name="how-to-create-a-web-form-for-making-a-call"></a><a name="howtocreateform"></a>Procedure: een webformulier maken om een gesprek te voeren
+<a id="use_nuget"></a>De Twilio-bibliotheken toevoegen aan het project van uw webrol:
 
 1. Open uw oplossing in Visual Studio.
-2. Klik met de rechtermuisknop **op Verwijzingen**.
-3. Klik **op NuGet-pakketten beheren**.
-4. Klik **op Online**.
-5. Typ *twilio*in het online zoekvak .
-6. Klik **op Installeren** op het Twilio-pakket.
+2. Klik met de rechter muisknop op **verwijzingen**.
+3. Klik op **NuGet-pakketten beheren**.
+4. Klik op **online**.
+5. Typ *twilio*in het vak online zoeken.
+6. Klik op **installeren** in het Twilio-pakket.
 
-In de volgende code ziet u hoe u een webformulier maakt om gebruikersgegevens op te halen voor het voeren van een gesprek. In dit voorbeeld wordt een ASP.NET webrol met de naam **TwilioCloud** gemaakt.
+De volgende code laat zien hoe u een webformulier maakt om gebruikers gegevens op te halen voor het maken van een aanroep. In dit voor beeld wordt een ASP.NET-webrol met de naam **TwilioCloud** gemaakt.
 
 ```aspx
 <%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.master"
@@ -69,8 +69,8 @@ In de volgende code ziet u hoe u een webformulier maakt om gebruikersgegevens op
 </asp:Content>
 ```
 
-## <a name="how-to-create-the-code-to-make-the-call"></a><a id="howtocreatecode"></a>Hoe: De code maken om te bellen
-De volgende code, die wordt aangeroepen wanneer de gebruiker het formulier voltooit, maakt het oproepbericht en genereert de oproep. In dit voorbeeld wordt de code uitgevoerd in de gebeurtenishandler onclick van de knop op het formulier. (Gebruik uw Twilio-account en verificatietoken in `accountSID` plaats `authToken` van de tijdelijke aanduidingswaarden die zijn toegewezen aan en in de onderstaande code.)
+## <a name="how-to-create-the-code-to-make-the-call"></a><a id="howtocreatecode"></a>Procedure: de code maken om de aanroep uit te voeren
+De volgende code, die wordt aangeroepen wanneer de gebruiker het formulier voltooit, maakt het aanroep bericht en genereert de aanroep. In dit voor beeld wordt de code uitgevoerd in de gebeurtenis-handler OnClick van de knop op het formulier. (Gebruik uw Twilio-account en verificatie token in plaats van de waarden van `accountSID` de `authToken` tijdelijke aanduiding die zijn toegewezen aan en in de onderstaande code.)
 
 ```csharp
 using System;
@@ -143,22 +143,22 @@ namespace WebRole1
 }
 ```
 
-De aanroep wordt uitgevoerd en het Twilio-eindpunt, de API-versie en de aanroepstatus worden weergegeven. De volgende schermafbeelding toont de uitvoer van een voorbeeldrun.
+De aanroep wordt uitgevoerd en het Twilio-eind punt, de API-versie en de status van de oproep worden weer gegeven. De volgende scherm afbeelding toont uitvoer van een voorbeeld uitvoering.
 
-![Azure-oproeprespons met Twilio en ASP.NET][twilio_dotnet_basic_form_output]
+![Azure-aanroep antwoord met Twilio en ASP.NET][twilio_dotnet_basic_form_output]
 
-Meer informatie over TwiML [https://www.twilio.com/docs/api/twiml][twiml]is te vinden op . Meer informatie &lt;&gt; over Say en andere Twilio [https://www.twilio.com/docs/api/twiml/say][twilio_say]werkwoorden is te vinden op .
+Meer informatie over TwiML vindt u op [https://www.twilio.com/docs/api/twiml][twiml]. Meer informatie over &lt;dict&gt; en andere Twilio-werk woorden vindt u op [https://www.twilio.com/docs/api/twiml/say][twilio_say].
 
 ## <a name="next-steps"></a><a id="nextsteps"></a>Volgende stappen
-Deze code is beschikbaar om u basisfunctionaliteit te laten zien met Twilio in een ASP.NET webrol op Azure. Voordat u in productie naar Azure gaat, u meer foutafhandeling of andere functies toevoegen. Bijvoorbeeld:
+Deze code werd verschaft om u de basis functionaliteit te laten zien met behulp van Twilio in een ASP.NET-Web-rol in Azure. Voordat u naar Azure implementeert in productie, wilt u mogelijk meer fout afhandeling of andere functies toevoegen. Bijvoorbeeld:
 
-* In plaats van een webformulier te gebruiken, u Azure Blob-opslag of een Azure SQL Database-instantie gebruiken om telefoonnummers en oproeptekst op te slaan. Zie [De Azure Blob-opslagservice gebruiken in .NET][howto_blob_storage_dotnet]voor informatie over het gebruik van Blobs in Azure. Zie Azure SQL Database [gebruiken in .NET-toepassingen][howto_sql_azure_dotnet]voor informatie over het gebruik van SQL Database.
-* U kunt `RoleEnvironment.getConfigurationSettings` de Twilio-account-id en het verificatietoken ophalen uit de configuratie-instellingen van uw implementatie, in plaats van de waarden in uw formulier hard te coderen. Zie `RoleEnvironment` [Microsoft.WindowsAzure.ServiceRuntime Namespace][azure_runtime_ref_dotnet]voor informatie over de klasse .
-* Lees de Twilio-beveiligingsrichtlijnen op [https://www.twilio.com/docs/security][twilio_docs_security].
+* In plaats van een webformulier te gebruiken, kunt u Azure Blob-opslag of een Azure SQL Database-exemplaar gebruiken om telefoon nummers op te slaan en tekst aan te roepen. Zie [de Azure Blob Storage-service in .net gebruiken][howto_blob_storage_dotnet]voor meer informatie over het gebruik van blobs in Azure. Zie [Azure SQL database gebruiken in .NET-toepassingen][howto_sql_azure_dotnet]voor meer informatie over het gebruik van SQL database.
+* U kunt gebruiken `RoleEnvironment.getConfigurationSettings` om de Twilio-account-id en het verificatie token op te halen uit de configuratie-instellingen van uw implementatie, in plaats van de waarden in uw formulier vast te schrijven. Zie de `RoleEnvironment` [naam ruimte micro soft. WindowsAzure. ServiceRuntime][azure_runtime_ref_dotnet]voor meer informatie over de-klasse.
+* Lees de Twilio Security-richt [https://www.twilio.com/docs/security][twilio_docs_security]lijnen op.
 * Meer informatie over Twilio op [https://www.twilio.com/docs][twilio_docs].
 
 ## <a name="see-also"></a><a name="seealso"></a>Zie ook
-* [Twilio gebruiken voor spraak- en sms-mogelijkheden vanuit Azure](twilio-dotnet-how-to-use-for-voice-sms.md)
+* [Twilio gebruiken voor spraak-en SMS-mogelijkheden van Azure](twilio-dotnet-how-to-use-for-voice-sms.md)
 
 [twilio_console]: https://www.twilio.com/console
 [twilio_pricing]: https://www.twilio.com/pricing

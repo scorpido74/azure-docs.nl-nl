@@ -1,6 +1,6 @@
 ---
 title: API-vereisten | Azure Marketplace
-description: Vereisten met behulp van de API's van cloudpartnerportalen.
+description: Vereisten die van de Cloud Partner-portal Api's zijn.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,67 +8,67 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: df94cba1f77ae3ea8cf595e7c651af7a69108bb6
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255971"
 ---
 <a name="api-prerequisites"></a>API-vereisten
 ================
 
 > [!NOTE]
-> De API's van cloudpartnerportalen zijn geïntegreerd met het Partner Center en blijven werken nadat uw aanbiedingen zijn gemigreerd naar partnercentrum. De integratie brengt kleine veranderingen met zich mee. Bekijk de wijzigingen in [Cloud Partner Portal API Reference](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) om ervoor te zorgen dat uw code blijft werken na de migratie naar partnercentrum.
+> De Cloud Partner-portal-Api's zijn geïntegreerd met partner centrum en blijven werken nadat uw aanbiedingen zijn gemigreerd naar het partner centrum. De integratie introduceert kleine wijzigingen. Bekijk de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) om ervoor te zorgen dat uw code blijft werken na de migratie naar het partner centrum.
 
-Er zijn twee vereiste programmatische elementen die u nodig hebt om de API's van cloudpartnerportalen te gebruiken: een serviceprincipal en een Azure AD-toegangstoken (Azure Active Directory).
+Er zijn twee vereiste programmeer middelen die u nodig hebt voor het gebruik van de Cloud Partner-portal-Api's: een Service-Principal en een Azure Active Directory Azure AD-toegangs token.
 
 
-<a name="create-a-service-principal-in-your-azure-active-directory-tenant"></a>Een serviceprincipal maken in uw Azure Active Directory-tenant
+<a name="create-a-service-principal-in-your-azure-active-directory-tenant"></a>Een service-principal maken in uw Azure Active Directory-Tenant
 ----------------------------------------------------------------
 
-Eerst moet u een serviceprincipal maken in uw Azure AD-tenant. Deze tenant krijgt een eigen set machtigingen toegewezen in de Cloud Partner Portal. Uw code roept API's op met behulp van deze tenant in plaats van uw persoonlijke referenties te gebruiken.  Zie [Portal gebruiken om een Azure Active Directory-toepassing en serviceprincipal te maken die toegang heeft tot bronnen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)voor een volledige uitleg van het maken van een serviceprincipal.
+Eerst moet u een service-principal maken in uw Azure AD-Tenant. Aan deze Tenant wordt een eigen set machtigingen toegewezen in de Cloud Partner-portal. De code roept Api's aan die als deze Tenant worden gebruikt in plaats van uw persoonlijke referenties te gebruiken.  Zie [Portal gebruiken om een Azure Active Directory toepassing en Service-Principal te maken voor toegang tot resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)voor een volledige uitleg bij het maken van een service-principal.
 
 
-<a name="add-the-service-principal-to-your-account"></a>De serviceprincipal toevoegen aan uw account
+<a name="add-the-service-principal-to-your-account"></a>De Service-Principal toevoegen aan uw account
 -----------------------------------------
 
-Nu u de serviceprincipal in uw tenant hebt gemaakt, u deze als gebruiker toevoegen aan uw Cloud Partner Portal-account. Net als een gebruiker kan de serviceprincipal eigenaar of bijdrager zijn aan het portaal.
+Nu u de Service-Principal in uw Tenant hebt gemaakt, kunt u deze als een gebruiker aan uw Cloud Partner-portal-account toevoegen. Net als bij een gebruiker kan de service-principal een eigenaar of een bijdrager aan de portal zijn.
 
-Gebruik de volgende stappen om de serviceprincipal toe te voegen:
+Gebruik de volgende stappen om de Service-Principal toe te voegen:
 
-1. Meld u aan bij de Cloud Partner Portal. 
-2. Klik op **Gebruikers** op de linkermenubalk en kies **Gebruiker toevoegen**.
+1. Meld u aan bij de Cloud Partner-portal. 
+2. Klik op **gebruikers** op de linker menu balk en kies **gebruiker toevoegen**.
 
    ![Een gebruiker toevoegen aan de portal](./media/cloud-partner-portal-api-prerequisites/add-user.jpg)
 
-3. Selecteer **serviceprincipal** in de vervolgkeuzelijst **Type** en voeg de volgende details toe:
+3. Selecteer in de vervolg keuzelijst **type** de optie **Service-Principal** en voeg de volgende gegevens toe:
 
--   Een **vriendelijke naam** voor de `spAccount`service principal, bijvoorbeeld .
--   De **toepassings-id**. Als u deze id wilt vinden, gaat u naar de [Azure-portal,](https://portal.azure.com)klikt u op **Azure Active Directory,** kiest **u App-registraties**en klikt u op uw app.
--   De **tenant-id**, ook wel **directory-id**genoemd, voor uw Azure AD-tenant. U deze id vinden in de Azure Active Directory-pagina in de [Azure-portal](https://portal.azure.com)onder **Eigenschappen**.
--   De **object-id** voor uw servicehoofdobject. U deze id ophalen via de Azure-portal. Ga naar **Azure Active Directory,** kies **App-registraties,** klik op uw app en klik op de app-naam onder **Beheerde toepassing in de lokale map**. Ga vervolgens naar de pagina **Eigenschappen** om de object-id te zoeken. Zorg ervoor dat u niet de eerste object-id in uw app pakt, maar in plaats daarvan de object-id in de beheerde toepassing.
--   De **rol** die aan het account is gekoppeld, die wordt gebruikt voor RBAC.
+-   Een **beschrijvende naam** voor de Service-Principal, bijvoorbeeld `spAccount`.
+-   De **toepassings-id**. Als u deze id wilt vinden, gaat u naar de [Azure Portal](https://portal.azure.com), klikt u op **Azure Active Directory**, kiest u **app-registraties**en klikt u op uw app.
+-   De **Tenant-id**, ook wel de **Directory-id**genoemd, voor uw Azure AD-Tenant. U kunt deze id vinden op de pagina Azure Active Directory in het [Azure Portal](https://portal.azure.com)onder **Eigenschappen**.
+-   De **object-id** voor uw Service-Principal-object. U kunt deze id ophalen van de Azure Portal. Ga naar **Azure Active Directory**, kies **app-registraties**, klik op uw app en klik op de naam van de app onder **beheerde toepassing in de lokale map**. Ga vervolgens naar de pagina **Eigenschappen** om de object-id te vinden. Zorg ervoor dat u de eerste object-ID die in uw app is, niet vastmaakt, maar in plaats daarvan de object-ID in de beheerde toepassing.
+-   De **rol** die is gekoppeld aan het account, dat wordt gebruikt voor RBAC.
 
      ![Een beheerde app toevoegen aan de portal](./media/cloud-partner-portal-api-prerequisites/managedapp.png)
 
-1. Klik **op Toevoegen** om de serviceprincipal aan uw account toe te voegen.
+1. Klik op **toevoegen** om de Service-Principal toe te voegen aan uw account.
 
-   ![Een serviceprincipal toevoegen](./media/cloud-partner-portal-api-prerequisites/add-service-principal.jpg)
+   ![Een Service-Principal toevoegen](./media/cloud-partner-portal-api-prerequisites/add-service-principal.jpg)
 
 
 <a name="get-an-azure-ad-access-token"></a>Een Azure AD-toegangstoken ophalen
 ----------------------------
 
-De API's van cloudpartnerportalen gebruiken de volgende elementen en protocollen tijdens de verificatie:
+De Cloud Partner-portal-Api's gebruiken de volgende assets en protocollen tijdens de verificatie:
 
-- Een JSON-token (JWT) toon om toegang tot bronnen aan te vragen
-- Het [OpenID Connect](https://openid.net/connect/) -protocol (OIDC) om de identiteit te verifiëren
-- [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) als identiteitsautoriteit
+- Een JSON Web Token (JWT) Bearer-token om toegang tot resources aan te vragen
+- Het [OpenID Connect Connect](https://openid.net/connect/) (OIDC)-protocol om identiteit te verifiëren
+- [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) als de identiteits instantie
 
-Er zijn twee principiële benaderingen voor het programmatisch verwerven van een JWT-token:
+Er zijn twee principe benaderingen voor het programmatisch ophalen van een JWT-token:
 
-- Gebruik de Microsoft-verificatiebibliotheek voor .NET ([MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)).  Deze aanpak op een hoger niveau wordt aanbevolen voor .NET-ontwikkelaars. 
-- Een **HTTP POST-aanvraag** indienen bij het eindpunt van azure **AD-token,** dat het formulier aanneemt:
+- Gebruik de micro soft Authentication Library voor .NET ([MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)).  Deze methode op hoger niveau wordt aanbevolen voor .NET-ontwikkel aars. 
+- Een **http post-** aanvraag indienen bij het Azure AD OAuth- **token** eind punt, waarbij de volgende indeling wordt gebruikt:
 
 ``` HTTP
 POST https://login.microsoftonline.com/<tenant-id>/oauth2/token
@@ -78,7 +78,7 @@ POST https://login.microsoftonline.com/<tenant-id>/oauth2/token
     resource: https://cloudpartner.azure.com
 ```
 
-U dit token nu doorgeven als onderdeel van de autorisatiekop voor API-aanvragen.
+U kunt dit token nu door geven als onderdeel van de autorisatie-header voor API-aanvragen.
 
 ``` HTTP
 GET https://cloudpartner.azure.com/api/offerTypes?api-version=2016-08-01-preview 
@@ -86,6 +86,6 @@ GET https://cloudpartner.azure.com/api/offerTypes?api-version=2016-08-01-preview
     Authorization: Bearer <access-token>
 ```
 > [!NOTE]
-> Voor alle API's in deze verwijzing wordt altijd aangenomen dat de autorisatiekop is geslaagd, zodat deze niet expliciet wordt vermeld.
+> Voor alle Api's in deze Naslag informatie wordt de autorisatie-header altijd verondersteld door gegeven, zodat deze niet expliciet wordt vermeld.
 
-Zie [Verificatiefouten oplossen](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)als u in uw aanvraag verificatiefouten tegenkomt.
+Zie [problemen oplossen met verificatie fouten](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)als u verificatie fouten in uw aanvraag uitvoert.

@@ -1,7 +1,7 @@
 ---
 title: AutoML gebruiken om modellen te maken & implementeren
 titleSuffix: Azure Machine Learning
-description: Geautomatiseerde machine learning-modellen maken, controleren en implementeren met Azure Machine Learning.
+description: Automatische machine learning modellen maken, controleren en implementeren met Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,254 +12,254 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
 ms.openlocfilehash: 0d6fa02578814c4c5d034be05cbc63093d70603b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81257229"
 ---
-# <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Geautomatiseerde machine learning-modellen maken, controleren en implementeren met Azure Machine Learning
+# <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatische machine learning modellen maken, controleren en implementeren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-In dit artikel leert u hoe u geautomatiseerde machine learning-modellen maken, verkennen en implementeren zonder één regel code in de studio-interface van Azure Machine Learning. Geautomatiseerde machine learning is een proces waarbij het beste machine learning-algoritme voor uw specifieke gegevens voor u wordt geselecteerd. Dit proces stelt u in staat om snel machine learning-modellen te genereren. [Meer informatie over geautomatiseerde machine learning](concept-automated-ml.md).
+In dit artikel leert u hoe u geautomatiseerde machine learning modellen kunt maken, verkennen en implementeren zonder één regel code in de Studio-interface van Azure Machine Learning. Automatische machine learning is een proces waarbij het beste machine learning algoritme voor uw specifieke gegevens wordt geselecteerd. Met dit proces kunt u snel machine learning modellen genereren. Meer [informatie over automatische machine learning](concept-automated-ml.md).
  
-Probeer bijvoorbeeld de [zelfstudie voor het maken van een classificatiemodel met de geautomatiseerde ML-interface van Azure Machine Learning.](tutorial-first-experiment-automated-ml.md) 
+Voor een end-to-end-voor beeld probeert [u de zelf studie voor het maken van een classificatie model met de automatische ml-interface van Azure machine learning](tutorial-first-experiment-automated-ml.md). 
 
-Voor een op Python-code gebaseerde ervaring [configureert u uw geautomatiseerde machine learning-experimenten](how-to-configure-auto-train.md) met de Azure Machine Learning SDK.
+[Configureer uw geautomatiseerde machine learning experimenten](how-to-configure-auto-train.md) met de Azure machine learning SDK voor een op een python-code gebaseerde ervaring.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning.](https://aka.ms/AMLFree)
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
-* Een Azure Machine Learning-werkruimte met een type **Enterprise-editie**. Zie [Een Azure Machine Learning-werkruimte maken](how-to-manage-workspace.md).  Zie Upgraden naar [Enterprise-editie als](how-to-manage-workspace.md#upgrade)u een bestaande werkruimte wilt upgraden naar Enterprise-editie.
+* Een Azure Machine Learning-werk ruimte met een type **Enter prise-editie**. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md).  Als u een bestaande werk ruimte wilt bijwerken naar Enter prise Edition, raadpleegt [u upgrade to Enter prise Edition](how-to-manage-workspace.md#upgrade)(Engelstalig).
 
 ## <a name="get-started"></a>Aan de slag
 
-1. Meld u aan bij https://ml.azure.comAzure Machine Learning op . 
+1. Meld u aan bij Azure Machine Learning https://ml.azure.comop. 
 
-1. Selecteer uw abonnement en werkruimte. 
+1. Selecteer uw abonnement en werk ruimte. 
 
-1. Navigeer naar het linkerdeelvenster. Selecteer **Geautomatiseerde ML** onder de sectie **Auteur.**
+1. Ga naar het linkerdeel venster. Selecteer **automatische ml** onder het gedeelte **Auteur** .
 
-[![Navigatiedeelvenster azure Machine Learning-studio](media/how-to-use-automated-ml-for-ml-models/nav-pane.png)](media/how-to-use-automated-ml-for-ml-models/nav-pane-expanded.png)
+[![Navigatie deel venster van Azure Machine Learning Studio](media/how-to-use-automated-ml-for-ml-models/nav-pane.png)](media/how-to-use-automated-ml-for-ml-models/nav-pane-expanded.png)
 
- Als dit de eerste keer is dat u experimenten doet, ziet u een lege lijst en koppelingen naar documentatie. 
+ Als dit de eerste keer is dat er experimenten worden uitgevoerd, ziet u een lege lijst en koppelingen naar documentatie. 
 
-Anders ziet u een lijst met uw recente geautomatiseerde machine learning-experimenten, inclusief experimenten die zijn gemaakt met de SDK. 
+Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde machine learning experimenten, met inbegrip van die zijn gemaakt met de SDK. 
 
 ## <a name="create-and-run-experiment"></a>Experiment maken en uitvoeren
 
-1. Selecteer **+ Nieuwe geautomatiseerde ML-run** en vul het formulier in.
+1. Selecteer **+ nieuwe automatische ml run** en vul het formulier in.
 
-1. Selecteer een gegevensset uit uw opslagcontainer of maak een nieuwe gegevensset. Gegevenssets kunnen worden gemaakt op lokale bestanden, weburls, datastores of Azure open datasets. 
+1. Selecteer een gegevensset uit uw opslag container of maak een nieuwe gegevensset. Gegevens sets kunnen worden gemaakt op basis van lokale bestanden, Web-url's, gegevens opslag of Azure open gegevens sets. 
 
     >[!Important]
-    > Vereisten voor opleidingsgegevens:
-    >* De gegevens moeten in tabelvorm zijn.
-    >* De waarde die u wilt voorspellen (doelkolom) moet aanwezig zijn in de gegevens.
+    > Vereisten voor trainings gegevens:
+    >* Gegevens moeten in tabel vorm zijn.
+    >* De waarde die u wilt voors pellen (doel kolom), moet aanwezig zijn in de gegevens.
 
-    1. Als u een nieuwe gegevensset wilt maken vanuit een bestand op uw lokale computer, selecteert u **Bladeren** en selecteert u het bestand. 
+    1. Als u een nieuwe gegevensset wilt maken op basis van een bestand op uw lokale computer, selecteert u **Bladeren** en selecteert u vervolgens het bestand. 
 
-    1. Geef uw gegevensset een unieke naam en geef een optionele beschrijving. 
+    1. Geef uw gegevensset een unieke naam en geef een optionele beschrijving op. 
 
-    1. Selecteer **Volgende** om het **gegevensarchief en het formulier voor bestandsselectie te openen**. Op dit formulier selecteert u waar u uw gegevensset wilt uploaden; de standaardopslagcontainer die automatisch met uw werkruimte wordt gemaakt of kies een opslagcontainer die u voor het experiment wilt gebruiken. 
+    1. Selecteer **volgende** om het **formulier gegevens opslag en bestand selecteren**te openen. Op dit formulier selecteert u waar u uw gegevensset wilt uploaden. de standaard opslag container die automatisch wordt gemaakt met uw werk ruimte, of kies een opslag container die u wilt gebruiken voor het experiment. 
 
-    1. Controleer het **formulier Instellingen en voorbeeld** op nauwkeurigheid. Het formulier wordt intelligent ingevuld op basis van het bestandstype. 
+    1. Controleer de **instellingen en het voorbeeld** formulier op nauw keurigheid. Het formulier wordt op intelligente wijze ingevuld op basis van het bestands type. 
 
         Veld| Beschrijving
         ----|----
-        Bestandsindeling| Hiermee definieert u de indeling en het type gegevens dat in een bestand is opgeslagen.
-        Scheidingsteken| Een of meer tekens voor het opgeven van de grens tussen afzonderlijke, onafhankelijke regio's in platte tekst of andere gegevensstromen.
-        Encoding| Hiermee wordt aangegeven welke schematabel moet worden gebruikt om uw gegevensset te lezen.
-        Kolomkoppen| Geeft aan hoe de eventuele kopteksten van de gegevensset worden behandeld.
-        Rijen overslaan | Geeft aan hoeveel, indien van toepassing, rijen worden overgeslagen in de gegevensset.
+        Bestands indeling| Hiermee definieert u de indeling en het type van de gegevens die zijn opgeslagen in een bestand.
+        Scheidingsteken| Een of meer tekens voor het opgeven van de grens tussen afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevens stromen.
+        Encoding| Hiermee wordt aangegeven welke bits-schema tabel moet worden gebruikt om de gegevensset te lezen.
+        Kolomkoppen| Hiermee wordt aangegeven hoe de headers van de gegevensset, indien aanwezig, worden behandeld.
+        Rijen overs Laan | Hiermee wordt aangegeven hoeveel, indien van toepassing, rijen in de gegevensset worden overgeslagen.
     
-        Selecteer **Volgende**.
+        Selecteer **Next**.
 
-    1. Het **schemaformulier** wordt op intelligente wijze ingevuld op basis van de selecties in het **formulier Instellingen en voorbeeld.** Configureer hier het gegevenstype voor elke kolom, controleer de kolomnamen en selecteer welke kolommen **niet moeten worden opgenomen** voor uw experiment. 
+    1. Het **schema** formulier wordt op de slimme wijze ingevuld op basis van de selecties in het formulier **instellingen en preview** . Hier configureert u het gegevens type voor elke kolom, bekijkt u de kolom namen en selecteert u welke kolommen niet voor uw experiment moeten worden **toegevoegd** . 
             
         Selecteer **Volgende.**
 
-    1. Het formulier **Details bevestigen** is een overzicht van de informatie die eerder is ingevuld in de **basisgegevens** en **instellingen en voorbeeldformulieren.** U hebt ook de mogelijkheid om een gegevensprofiel voor uw gegevensset te maken met behulp van een profileringingeschakelde compute. Meer informatie over [gegevensprofilering](#profile).
+    1. Het formulier **Details bevestigen** is een samen vatting van de gegevens die eerder zijn ingevuld in de **basis gegevens** en- **instellingen en preview** -formulieren. U kunt ook een gegevens profiel maken voor uw gegevensset met behulp van een profilerings functie ingeschakeld. Meer informatie over [gegevens profilering](#profile).
 
-        Selecteer **Volgende**.
-1. Selecteer uw nieuw gemaakte gegevensset zodra deze wordt weergegeven. U ook een voorbeeld van de gegevensset- en voorbeeldstatistieken bekijken. 
+        Selecteer **Next**.
+1. Selecteer de zojuist gemaakte gegevensset zodra deze wordt weer gegeven. U kunt ook een preview van de gegevensset en voorbeeld statistieken bekijken. 
 
-1. Voer op **het runformulier configureren** een unieke experimentnaam in.
+1. Voer een unieke naam voor het experiment in op het formulier voor het configureren van een **uitvoering** .
 
-1. Selecteer een doelkolom; dit is de kolom waarop u voorspellingen wilt doen.
+1. Selecteer een doel kolom. Dit is de kolom waarop u de voor spellingen wilt uitvoeren.
 
-1. Selecteer een rekenkracht voor de taak voor gegevensprofilering en -training. Een lijst met uw bestaande gegevensberekent is beschikbaar in de vervolgkeuzelijst. Als u een nieuwe rekenkracht wilt maken, volgt u de instructies in stap 7.
+1. Selecteer een compute voor de taak voor gegevens profilering en training. In de vervolg keuzelijst vindt u een lijst met uw bestaande berekeningen. Volg de instructies in stap 7 om een nieuwe Compute te maken.
 
-1. Selecteer **Een nieuwe compute maken** om uw rekencontext voor dit experiment te configureren.
+1. Selecteer **een nieuwe Compute maken** om uw berekenings context voor dit experiment te configureren.
 
     Veld|Beschrijving
     ---|---
-    Rekennaam| Voer een unieke naam in die uw rekencontext identificeert.
-    Grootte van de virtuele machine| Selecteer de grootte van de virtuele machine voor uw computerberekening.
-    Min / Max-knooppunten (in geavanceerde instellingen)| Als u gegevens wilt profileren, moet u 1 of meer knooppunten opgeven. Voer het maximum aantal knooppunten in voor uw berekening. De standaardinstelling is 6 knooppunten voor een AML Compute.
+    Compute name| Voer een unieke naam in die uw berekenings context identificeert.
+    Grootte van de virtuele machine| Selecteer de grootte van de virtuele machine voor de reken kracht.
+    Min-maximum aantal knoop punten (in geavanceerde instellingen)| Als u wilt profiel gegevens, moet u één of meer knoop punten opgeven. Voer het maximum aantal knoop punten in voor de reken kracht. De standaard waarde is 6 knoop punten voor een AML-berekening.
     
-    Selecteer **Maken**. Het maken van een nieuwe rekenkracht kan enkele minuten duren.
+    Selecteer **Maken**. Het maken van een nieuwe berekening kan enkele minuten duren.
 
     >[!NOTE]
-    > Uw rekennaam geeft aan of de compute die u selecteert/maakt profilering is *ingeschakeld.* (Zie de sectie [gegevensprofilering](#profile) voor meer details).
+    > De naam van de berekening geeft aan of de compute die u selecteert/maakt, *profile ring is ingeschakeld*. (Zie de sectie [gegevens profilering](#profile) voor meer informatie).
 
-    Selecteer **Volgende**.
+    Selecteer **Next**.
 
-1. Selecteer in het **taaktype en het instellingenformulier** het taaktype: classificatie, regressie of prognoses. Zie [hoe u taaktypen definieert](how-to-define-task-type.md) voor meer informatie.
+1. Selecteer op het **taak type en het instellingen** formulier het taak type: classificatie, regressie of prognose. Zie [taak typen definiëren](how-to-define-task-type.md) voor meer informatie.
 
-    1. Voor classificatie u ook deep learning inschakelen die wordt gebruikt voor tekstprestaties.
+    1. Voor classificatie kunt u ook diep gaande informatie inschakelen die wordt gebruikt voor tekst featurizations.
 
     1. Voor prognoses:
-        1. Tijdkolom selecteren: deze kolom bevat de tijdsgegevens die moeten worden gebruikt.
+        1. Selecteer een tijd kolom: deze kolom bevat de tijd gegevens die moeten worden gebruikt.
 
-        1. Prognosehorizon selecteren: Geef aan hoeveel tijdeenheden (minuten/uren/dagen/weken/maanden/jaren) het model in staat zal zijn om de toekomst te voorspellen. Hoe verder het model nodig is om te voorspellen in de toekomst, hoe minder nauwkeurig het zal worden. [Meer informatie over de prognose- en prognosehorizon](how-to-auto-train-forecast.md).
+        1. Prognose horizon selecteren: Geef aan hoeveel tijds eenheden (minuten/uren/dagen/weken/maanden/jaar) het model op de toekomst kan voors pellen. Verder is het model vereist om in de toekomst te voors pellen, hoe minder nauw keurig wordt. Meer [informatie over prognoses en prognoses horizon](how-to-auto-train-forecast.md).
 
-1. (Optioneel) Configuratie-instellingen voor toevoegingweer: extra instellingen die u gebruiken om de trainingstaak beter te beheren. Anders worden standaardinstellingen toegepast op basis van experimentselectie en gegevens. 
+1. Beschrijving Aanvullende configuratie-instellingen weer geven: extra instellingen die u kunt gebruiken om de trainings taak beter te beheren. Anders worden de standaard waarden toegepast op basis van het experiment en de gegevens. 
 
     Aanvullende configuraties|Beschrijving
     ------|------
-    Primaire statistiek| Hoofdstatistiek die wordt gebruikt voor het scoren van uw model. [Meer informatie over modelstatistieken](how-to-configure-auto-train.md#explore-model-metrics).
-    Automatische featurisatie| Selecteer om de voorbewerking in of uit te schakelen die wordt uitgevoerd door geautomatiseerde machine learning. Voorverwerking omvat automatische gegevensreiniging, voorbereiding en transformatie om synthetische functies te genereren. Wordt niet ondersteund voor het taaktype tijdreeksen voor het voorspellen van de tijdreeksen. [Meer informatie over voorbewerking](#featurization). 
-    Leg het beste model uit | Selecteren om de uitleg van het aanbevolen beste model in- of uit te schakelen om de uitleg te geven
-    Geblokkeerd algoritme| Selecteer algoritmen die u wilt uitsluiten van de trainingstaak.
-    Exitcriterium| Wanneer aan een van deze criteria is voldaan, wordt de trainingstaak gestopt. <br> *Opleidingstaaktijd (uren)*: Hoe lang duurt het om de trainingstaak te laten lopen. <br> *Metrische scoredrempel:* Minimale metrische score voor alle pijplijnen. Dit zorgt ervoor dat als u een gedefinieerde doelstatistiek hebt die u wilt bereiken, u niet meer tijd besteedt aan de trainingstaak dan nodig is.
-    Validatie| Selecteer een van de opties voor crossvalidatie die u wilt gebruiken in de trainingstaak. [Meer informatie over crossvalidatie](how-to-configure-auto-train.md).
-    Gelijktijdigheid| *Maximale gelijktijdige iteraties*: Maximaal aantal pijplijnen (iteraties) om te testen in de trainingstaak. De taak wordt niet meer uitgevoerd dan het opgegeven aantal iteraties.
+    Primaire metriek| De belangrijkste waarde die wordt gebruikt voor het scoren van uw model. Meer [informatie over de metrische gegevens van modellen](how-to-configure-auto-train.md#explore-model-metrics).
+    Automatische parametrisatie| Selecteer deze optie om de voor verwerking van automatische machine learning in of uit te scha kelen. Preverwerking omvat het automatisch opschonen van gegevens, voorbereiden en transformeren voor het genereren van synthetische functies. Niet ondersteund voor het taak type time series-prognose. [Meer informatie over voor verwerking](#featurization). 
+    Aanbevolen model uitleggen | Schakel deze optie in of uit om de uitleg mogelijkheid van het aanbevolen model weer te geven
+    Geblokkeerd algoritme| Selecteer de algoritmen die u wilt uitsluiten van de trainings taak.
+    Criterium afsluiten| Wanneer aan een van deze criteria wordt voldaan, wordt de trainings taak gestopt. <br> *Tijd van trainings taak (uren)*: hoe lang het mogelijk is om de trainings taak uit te voeren. <br> *Drempel waarde voor metrische Score*: minimale metrische score voor alle pijp lijnen. Dit zorgt ervoor dat als u een gedefinieerde doel metriek hebt die u wilt bereiken, u niet meer tijd op de trainings taak brengt dan nodig is.
+    Validatie| Selecteer een van de opties voor kruis validatie die u wilt gebruiken in de trainings taak. Meer [informatie over Kruis validatie](how-to-configure-auto-train.md).
+    Gelijktijdigheid| Maximum aantal *gelijktijdige herhalingen*: Maxi maal toegestane pijp lijnen (iteraties) om in de trainings taak te testen. De taak wordt niet meer uitgevoerd dan het opgegeven aantal iteraties.
 
-1. (Optioneel) Featurization-instellingen weergeven: als u ervoor kiest **om automatische prestatie-inschatting** in te schakelen in het formulier **Extra configuratie-instellingen,** geeft u in dit formulier op welke kolommen u deze prestatieverbeteringen wilt uitvoeren en selecteert u welke statistische waarde u moet gebruiken voor ontbrekende waarde-toerekening.
+1. Beschrijving Parametrisatie-instellingen weer geven: als u ervoor kiest om **automatische parametrisatie** in te scha kelen in het formulier **aanvullende configuratie-instellingen** , is dit formulier waar u kunt opgeven welke kolommen u wilt uitvoeren voor deze featurizations en selecteert u welke statistische waarde moet worden gebruikt voor ontbrekende waarde-toerekeningen.
 
 <a name="profile"></a>
 
-## <a name="data-profiling--summary-stats"></a>Gegevensprofilering & overzichtsstatistieken
+## <a name="data-profiling--summary-stats"></a>Overzichts statistieken voor gegevens profilering &
 
-U een groot aantal overzichtsstatistieken in uw gegevensset krijgen om te controleren of uw gegevensset klaar is voor ML. Voor niet-numerieke kolommen bevatten ze alleen basisstatistieken zoals min, max en fouttelling. Voor numerieke kolommen u ook hun statistische momenten en geschatte quantiles bekijken. Concreet omvat ons dataprofiel:
+U kunt een groot aantal samenvattings statistieken in uw gegevensset ontvangen om te controleren of uw gegevensset van ML is. Voor niet-numerieke kolommen bevatten ze alleen basis statistieken zoals min, Max en aantal fouten. Voor numerieke kolommen kunt u ook hun statistische momenten en geschatte quantiles bekijken. Het gegevens profiel bevat met name:
 
 >[!NOTE]
-> Lege vermeldingen worden weergegeven voor functies met irrelevante typen.
+> Lege vermeldingen worden weer gegeven voor functies met irrelevante typen.
 
 Statistiek|Beschrijving
 ------|------
-Functie| Naam van de kolom die wordt samengevat.
-Profiel| In-line visualisatie op basis van het type afgeleid. Tekenreeksen, booleaanse en datums hebben bijvoorbeeld waardetellingen, terwijl decimalen (numerieke waarden) bij benadering histogrammen hebben. Hierdoor krijgt u snel inzicht in de verdeling van de gegevens.
-Typeverdeling| Aantal inlijnwaarden van typen in een kolom. Nulls zijn hun eigen type, dus deze visualisatie is handig voor het detecteren van oneven of ontbrekende waarden.
-Type|Afgeleid type van de kolom. Mogelijke waarden zijn: tekenreeksen, booleaans, datums en decimalen.
-Min.| Minimumwaarde van de kolom. Er worden lege vermeldingen weergegeven voor functies waarvan het type geen inherente volgorde heeft (bijvoorbeeld booleaans).
-Max.| Maximale waarde van de kolom. 
+Functie| De naam van de kolom die wordt samenvatten.
+Profiel| In-line visualisatie op basis van het type dat is afgeleid. Teken reeksen, Booleaanse waarden en datums hebben bijvoorbeeld een aantal aantallen, terwijl decimalen (cijfers) geschatte histogrammen hebben. Zo kunt u een goed inzicht krijgen in de distributie van de gegevens.
+Type distributie| In-line waarde van het aantal typen in een kolom. Nullen zijn hun eigen type, waardoor deze visualisatie nuttig is voor het detecteren van oneven of ontbrekende waarden.
+Type|Het type van de kolom is afgeleid. Mogelijke waarden zijn: teken reeksen, booleans, datums en decimalen.
+Min.| Minimum waarde van de kolom. Er worden geen lege items weer gegeven voor functies waarvan het type geen inherente ordening (bijvoorbeeld Boole-waarden) heeft.
+Max.| De maximum waarde van de kolom. 
 Count| Totaal aantal ontbrekende en niet-ontbrekende vermeldingen in de kolom.
-Niet-ontbrekend aantal| Aantal vermeldingen in de kolom die niet ontbreken. Lege tekenreeksen en fouten worden behandeld als waarden, zodat ze niet bijdragen aan de "niet ontbrekende telling."
-Quantiles (Quantiles)| Geschatte waarden bij elke quantile om een gevoel van de verdeling van de gegevens te bieden.
-Gemiddelde| Rekenkundig gemiddelde of gemiddelde van de kolom.
-Standaardafwijking| Meten van de hoeveelheid dispersie of variatie van de gegevens van deze kolom.
-Variantie| Meten hoe ver de gegevens van deze kolom zijn verspreid, is van de gemiddelde waarde. 
-Asymmetrie| Meten hoe verschillend de gegevens van deze kolom zijn van een normale verdeling.
-Kurtosis| Meten hoe zwaar de gegevens van deze kolom worden gevolgd, vergeleken met een normale verdeling.
+Niet-ontbrekend aantal| Het aantal vermeldingen in de kolom die niet ontbreken. Lege teken reeksen en fouten worden beschouwd als waarden, zodat ze niet bijdragen aan het aantal niet-ontbrekende items.
+Quantiles| Geschatte waarden bij elke quantile om een idee te geven van de distributie van de gegevens.
+Gemiddelde| Reken kundige gemiddelde of gemiddelde van de kolom.
+Standaardafwijking| Meting van de hoeveelheid sprei ding of variatie van de gegevens van deze kolom.
+Variantie| De mate waarin de gegevens van deze kolom worden verdeeld uit de gemiddelde waarde. 
+Asymmetrie| Meting van de manier waarop de gegevens van de andere kolom van een normale distributie zijn.
+Kurtosis| Meting van hoe sterk de gegevens van deze kolom worden vergeleken met een normale distributie.
 
 <a name="featurization"></a>
 
-## <a name="advanced-featurization-options"></a>Geavanceerde featurisatie-opties
+## <a name="advanced-featurization-options"></a>Geavanceerde opties voor parametrisatie
 
-Geautomatiseerde machine learning biedt voorbewerking en gegevensvangrails automatisch, om u te helpen potentiële problemen met uw gegevens te identificeren en te beheren. 
+Automatische machine learning biedt automatisch voor verwerkings-en gegevens Guardrails, om u te helpen bij het identificeren en beheren van potentiële problemen met uw gegevens. 
 
-### <a name="preprocessing"></a>Preprocessing
+### <a name="preprocessing"></a>Verwerking
 
 > [!NOTE]
-> Als u van plan bent om uw door AUTOMATISCHE ML gemaakte modellen te exporteren naar een [ONNX-model,](concept-onnx.md)worden alleen de featurisatieopties die met een * zijn aangegeven, ondersteund in de ONNX-indeling. Meer informatie over [het converteren van modellen naar ONNX](concept-automated-ml.md#use-with-onnx). 
+> Als u van plan bent om uw automatisch gegenereerde modellen te exporteren naar een [ONNX-model](concept-onnx.md), worden alleen de parametrisatie-opties aangeduid met een * ondersteund in de ONNX-indeling. Meer informatie over [het converteren van modellen naar ONNX](concept-automated-ml.md#use-with-onnx). 
 
-|Voorbewerkingsstappen&nbsp;| Beschrijving |
+|&nbsp;Stappen voor voor verwerking| Beschrijving |
 | ------------- | ------------- |
-|Hoge kardinaliteit of geen variantiefuncties laten vallen* |Laat deze vallen uit trainings- en validatiesets, inclusief functies met alle ontbrekende waarden, dezelfde waarde in alle rijen of met extreem hoge kardinaliteit (bijvoorbeeld hashes,-iD's of GUIDs).|
-|Ontbrekende waarden aanklagen* |Voor numerieke kenmerken, aanteschrijven met het gemiddelde van de waarden in de kolom.<br/><br/>Voor categorische functies, impute met de meest voorkomende waarde.|
-|Extra functies genereren* |Voor DateTime-functies: jaar, maand, dag, dag van de week, dag van het jaar, kwartaal, week van het jaar, uur, minuut, seconde.<br/><br/>Voor tekstfuncties: Term frequentie op basis van unigrammen, bi-grams en tri-character-grams.|
-|Transformeren en coderen *|Numerieke functies met weinig unieke waarden worden omgezet in categorische functies.<br/><br/>One-hot codering wordt uitgevoerd voor lage kardinaliteit categorisch; voor hoge kardinaliteit, one-hot-hash codering.|
-|Ingesloten voor Word|Text featurizer die vectoren van teksttokens omzet in zinsvectoren met behulp van een vooraf opgeleid model. De insluitingsvector van elk woord in een document wordt samengevoegd om een vector voor documentfunctie te produceren.|
-|Doelcoderingen|Voor categorische functies brengt u elke categorie met een gemiddelde doelwaarde in kaart voor regressieproblemen en aan de klassewaarschijnlijkheid voor elke klasse voor classificatieproblemen. Frequentiegebaseerde weging en k-fold cross validatie wordt toegepast om de montage van de mapping en ruis veroorzaakt door schaarse gegevenscategorieën te verminderen.|
-|Codering van tekstdoel|Voor tekstinvoer wordt een gestapeld lineair model met zak van woorden gebruikt om de waarschijnlijkheid van elke klasse te genereren.|
-|Gewicht van bewijs (WoE)|Berekent WoE als een maat voor de correlatie van categorische kolommen met de doelkolom. Het wordt berekend als het logboek van de verhouding van in-klasse versus out-of-class waarschijnlijkheden. Met deze stap wordt één numerieke functiekolom per klasse uitgevoerd en wordt de noodzaak verwijderd om ontbrekende waarden en uitschieters expliciet toe te wijzen.|
-|Clusterafstand|Traint een k-means clustering model op alle numerieke kolommen.  Uitgangen k nieuwe functies, een nieuwe numerieke functie per cluster, met de afstand van elk monster tot de centroid van elk cluster.|
+|Hoge kardinaliteit of geen variantie-functies verwijderen * |Verwijder deze uit de trainings-en validatie sets, inclusief functies waarbij alle waarden ontbreken, dezelfde waarde over alle rijen of met extreem hoge kardinaliteit (bijvoorbeeld hashes, Id's of GUID'S).|
+|Ontbrekende waarden toegerekend * |Voor numerieke functies toegerekend met het gemiddelde van de waarden in de kolom.<br/><br/>Voor categorische-functies toegerekend met de meest frequente waarde.|
+|Extra functies genereren * |Voor DateTime-functies: jaar, maand, dag, dag van de week, dag van jaar, kwar taal, week van het jaar, uur, minuut, seconde.<br/><br/>Voor tekst functies: term frequentie op basis van unigrams, bi-gram en Tri-Character-gram.|
+|Transformeren en coderen *|Numerieke functies met weinig unieke waarden worden omgezet in categorische-functies.<br/><br/>Er wordt één Hot encoding uitgevoerd voor lage kardinaliteit categorische; voor hoge kardinaliteit, een-hot-hash-code ring.|
+|Woord insluitingen|Tekst featurizer waarmee vectoren van tekst tokens worden geconverteerd naar sentence vectoren met behulp van een vooraf getraind model. De insluitings vector van elk woord in een document wordt samen geaggregeerd om een document functie Vector te maken.|
+|Doel codering|Voor categorische-functies wijst elke categorie toe met de gemiddelde doel waarde voor regressie problemen en op basis van de klasse-kans voor elke klasse voor classificatie problemen. De Kruis validatie op basis van frequentie en k-vouwen wordt toegepast om de toewijzing en het lawaai dat door sparse gegevens categorieën wordt veroorzaakt, te verminderen.|
+|Coderen van tekst doel|Voor tekst invoer wordt een gestapeld lineair model met Bag-of-woorden gebruikt om de kans van elke klasse te genereren.|
+|Gewicht van bewijs (WoE)|Hiermee wordt WoE berekend als een maat eenheid van de correlatie tussen categorische-kolommen en de doel kolom. Het wordt berekend als het logboek van de verhouding van de in-class versus van de cursus kansen. Met deze stap wordt één numerieke functie kolom per klasse uitgevoerd en wordt de nood zaak om ontbrekende waarden en uitschieter-behandeling expliciet te toegerekend.|
+|Cluster afstand|Treinen a k: cluster model op alle numerieke kolommen.  Hiermee worden k nieuwe functies, een nieuwe numerieke functie per cluster, met de afstand van elk voor beeld naar de massa middelpunt van elk cluster uitgevoerd.|
 
-### <a name="data-guardrails"></a>Gegevensvangrails
+### <a name="data-guardrails"></a>Gegevens Guardrails
 
-Gegevensvangrails worden toegepast wanneer automatische prestatie-in-om-uurs validatie is ingeschakeld of validatie is ingesteld op automatisch. Gegevensvangrails helpen u potentiële problemen met uw gegevens te identificeren (bijvoorbeeld ontbrekende waarden, onbalans in de klasse) en helpen corrigerende maatregelen te nemen voor betere resultaten. 
+Data Guardrails worden toegepast wanneer automatische parametrisatie is ingeschakeld of validatie is ingesteld op auto. Data Guardrails helpt u bij het identificeren van mogelijke problemen met uw gegevens (bijvoorbeeld ontbrekende waarden, klasse onevenwicht) en het nemen van corrigerende maat regelen voor betere resultaten. 
 
-Gebruikers kunnen gegevensvangrails in de studio bekijken op het tabblad **Gegevensvangrails** van een geautomatiseerde ML-run of door in te stellen ```show_output=True``` bij het indienen van een experiment met de Python SDK. 
+Gebruikers kunnen gegevens Guardrails bekijken in de studio op het tabblad **gegevens Guardrails** van een automatische ml-uitvoering of door ```show_output=True``` in te stellen bij het verzenden van een experiment met behulp van de python-SDK. 
 
-#### <a name="data-guardrail-states"></a>Gegevens vangrail staten
+#### <a name="data-guardrail-states"></a>Status gegevens Guardrail
 
-Gegevensvangrails worden een van de drie statussen weergegeven: **Geslaagd**, **Gereed**of **Gewaarschuwd**.
+In data Guardrails worden een van de volgende drie statussen weer gegeven: **door gegeven**, **voltooid**of **gewaarschuwd**.
 
 Status| Beschrijving
 ----|----
-Doorgegeven| Er zijn geen gegevensproblemen gedetecteerd en er is geen actie van de gebruiker vereist. 
-Gereed| Er zijn wijzigingen toegepast in uw gegevens. We raden gebruikers aan om de corrigerende maatregelen te bekijken die Automated ML heeft genomen om ervoor te zorgen dat de wijzigingen overeenkomen met de verwachte resultaten. 
-Gewaarschuwd| Er is een gegevensprobleem gedetecteerd dat niet kon worden verholpen. We raden gebruikers aan om het probleem te herzien en op te lossen. 
+Buffer| Er zijn geen gegevens problemen gedetecteerd en er is geen gebruikers actie vereist. 
+Gereed| Er zijn wijzigingen toegepast op uw gegevens. We moedigen gebruikers aan om de corrigerende maat regelen te controleren om ervoor te zorgen dat de wijzigingen worden uitgelijnd met de verwachte resultaten. 
+Gewaarschuwd| Er is een gegevens probleem gedetecteerd dat niet kan worden opgelost. We raden gebruikers aan om het probleem te herzien en op te lossen. 
 
 >[!NOTE]
-> Eerdere versies van geautomatiseerde ML-experimenten vertoonden een vierde status: **Fixed**. Nieuwere experimenten zullen deze status niet weergeven en alle vangrails die de **vaste** status weergeven, worden nu **Gereed**weergegeven.   
+> In vorige versies van automatische ML experimenten wordt een vierde staat weer gegeven: **opgelost**. Deze status wordt niet weer gegeven in nieuwere experimenten en alle Guardrails die de status **Fixed** hebben **weer gegeven,** worden nu weer gegeven.   
 
-In de volgende tabel worden de gegevensvangrails beschreven die momenteel worden ondersteund en de bijbehorende statussen die gebruikers kunnen tegenkomen bij het indienen van hun experiment.
+In de volgende tabel worden de gegevens Guardrails beschreven die momenteel worden ondersteund, en de bijbehorende statussen die gebruikers kunnen krijgen bij het verzenden van hun experiment.
 
-Vangrail|Status|Voorwaarde&nbsp;&nbsp;voor trigger
+Guardrail|Status|Voor&nbsp;waarde&nbsp;voor trigger
 ---|---|---
-Toerekening ontbrekende functiewaarden |**Doorgegeven** <br><br><br> **Gereed**| Er zijn geen ontbrekende functiewaarden gedetecteerd in uw trainingsgegevens. Meer informatie over [ontbrekende waardetoerekening.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Ontbrekende functiewaarden zijn gedetecteerd in uw trainingsgegevens en toegerekend.
-Hoge kardinaliteit feature handling |**Doorgegeven** <br><br><br> **Gereed**| Uw ingangen werden geanalyseerd, en geen hoge kardinaliteit functies werden gedetecteerd. Meer informatie over detectie van functies met [hoge kardinaliteit.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Hoge kardinaliteit functies werden gedetecteerd in uw ingangen en werden behandeld.
-Verwerking van gesplitste validatie |**Gereed**| *De validatieconfiguratie is ingesteld op 'automatisch' en de trainingsgegevens bevatten **minder** dan 20.000 rijen.* <br> Elke iteratie van het getrainde model werd gevalideerd door middel van cross-validatie. Meer informatie over [validatiegegevens.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> *De validatieconfiguratie is ingesteld op 'automatisch' en de trainingsgegevens bevatten **meer** dan 20.000 rijen.* <br> De invoergegevens zijn opgesplitst in een trainingsgegevensset en een validatiegegevensset voor validatie van het model.
-Detectie van klassebalancering |**Doorgegeven** <br><br><br><br> **Gewaarschuwd** | Uw ingangen zijn geanalyseerd en alle klassen zijn in evenwicht in uw trainingsgegevens. Een gegevensset wordt als evenwichtig beschouwd als elke klasse een goede weergave heeft in de gegevensset, gemeten naar aantal en verhouding van de monsters. <br><br><br> Onevenwichtige klassen werden gedetecteerd in uw ingangen. Om modelbias op te lossen, u het evenwichtsprobleem oplossen. Meer informatie over [onevenwichtige gegevens.](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)
-Detectie van geheugenproblemen |**Doorgegeven** <br><br><br><br> **Gereed** |<br> De geselecteerde waarde {horizon, lag, rolling window} is geanalyseerd en er zijn geen potentiële problemen met het geheugen gedetecteerd. Meer informatie over [tijdreeksprognoseconfiguraties.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) <br><br><br>De geselecteerde waarden {horizon, lag, rolling window} zijn geanalyseerd en kunnen ervoor zorgen dat uw experiment zonder geheugen komt te zitten. De configuratie van het vertragings- of rolvenster is uitgeschakeld.
-Frequentiedetectie |**Doorgegeven** <br><br><br><br> **Gereed** |<br> De tijdreeksen zijn geanalyseerd en alle gegevenspunten zijn afgestemd op de gedetecteerde frequentie. <br> <br> De tijdreekswerd geanalyseerd en gegevenspunten die niet overeenkomen met de gedetecteerde frequentie werden gedetecteerd. Deze gegevenspunten zijn uit de gegevensset verwijderd. Meer informatie over [gegevensvoorbereiding voor tijdreeksprognoses.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
+Ontbrekende functie waarden toerekening |**Buffer** <br><br><br> **Gereed**| Er zijn geen ontbrekende onderdeel waarden gedetecteerd in uw trainings gegevens. Meer informatie over [ontbrekende waarden toegerekend.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Er zijn ontbrekende onderdeel waarden gedetecteerd in uw trainings gegevens en toegerekend.
+Functie verwerking met hoge kardinaliteit |**Buffer** <br><br><br> **Gereed**| Uw invoer is geanalyseerd en er zijn geen functies met een hoge kardinaliteit gedetecteerd. Meer informatie over de [detectie van hoge functies voor kardinaliteit.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Er zijn functies met een hoge kardinaliteit gedetecteerd in uw invoer en zijn afgehandeld.
+Verwerking van splitsing van validatie |**Gereed**| *De validatie configuratie is ingesteld op auto en de trainings gegevens bevatten **minder** dan 20.000 rijen.* <br> Elke iteratie van het getrainde model is door Kruis validatie gevalideerd. Meer informatie over [validatie gegevens.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> *De validatie configuratie is ingesteld op ' auto ' en de trainings gegevens bevatten **meer** dan 20.000 rijen.* <br> De invoer gegevens zijn gesplitst in een trainings gegevensset en een validatie gegevensset voor validatie van het model.
+Detectie van klasse-verdeling |**Buffer** <br><br><br><br> **Gewaarschuwd** | Uw invoer is geanalyseerd en alle klassen zijn evenwichtig in uw trainings gegevens. Een gegevensset wordt als evenwichtig beschouwd als elke klasse een goede representatie in de gegevensset heeft, gemeten op basis van het aantal en de verhouding van steek proeven. <br><br><br> Er zijn niet-sluitende klassen gedetecteerd in uw invoer. Als u model bias wilt herstellen, lost u het probleem op. Meer informatie over [gegevens](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data) die niet in balans zijn.
+Detectie van geheugen problemen |**Buffer** <br><br><br><br> **Gereed** |<br> De geselecteerde {horizon, vertraging, rollend venster} waarde (n) zijn geanalyseerd en er zijn geen mogelijke problemen met de geheugen detectie gedetecteerd. Meer informatie over [prognose configuraties](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) voor time series. <br><br><br>De geselecteerde waarden voor {Horizon, lag, Rolling venster} zijn geanalyseerd en kunnen ertoe leiden dat uw experiment te weinig geheugen beschikbaar heeft. De configuratie van de vertraging of het uitrollen venster is uitgeschakeld.
+Frequentie detectie |**Buffer** <br><br><br><br> **Gereed** |<br> De tijd reeks is geanalyseerd en alle gegevens punten zijn afgestemd op de gedetecteerde frequentie. <br> <br> De tijd reeks is geanalyseerd en gegevens punten die niet zijn uitgelijnd met de gedetecteerde frequentie, zijn gedetecteerd. Deze gegevens punten zijn verwijderd uit de gegevensset. Meer informatie over het [voorbereiden van gegevens voor time series-prognoses.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
 
-## <a name="run-experiment-and-view-results"></a>Experiment uitvoeren en resultaten weergeven
+## <a name="run-experiment-and-view-results"></a>Experiment uitvoeren en resultaten weer geven
 
-Selecteer **Voltooien** om uw experiment uit te voeren. Het voorbereiden van het experiment kan tot 10 minuten duren. Trainingstaken kunnen nog 2-3 minuten meer kosten voordat het uitvoeren van elke pijplijn is voltooid.
+Selecteer **volt ooien** om uw experiment uit te voeren. Het voorbereiden van het experiment kan tot 10 minuten duren. Trainingstaken kunnen nog 2-3 minuten meer kosten voordat het uitvoeren van elke pijplijn is voltooid.
 
 ### <a name="view-experiment-details"></a>Experimentgegevens bekijken
 
-Het scherm **Detail uitvoeren** wordt geopend naar het tabblad **Details.** In dit scherm ziet u een overzicht van de experimentrun, inclusief een statusbalk bovenaan naast het run-nummer. 
+Het scherm **detail uitvoeren** wordt geopend op het tabblad **Details** . In dit scherm ziet u een overzicht van de uitvoering van het experiment, met inbegrip van een status balk bovenaan naast het uitvoerings nummer. 
 
 Het tabblad **Modellen** bevat een lijst met de gemaakte modellen, op volgorde van de metrische score. Standaardstaat het model dat het hoogst scoort op basis van het gekozen metrische gegeven bovenaan de lijst. Terwijl de trainingstaak meer modellen uitprobeert, worden deze toegevoegd aan de lijst. Gebruik dit om een snelle vergelijking te krijgen van de metrische gegevens voor de tot dusver geproduceerde modellen.
 
-[![Dashboard Details uitvoeren](media/how-to-use-automated-ml-for-ml-models/run-details.png)](media/how-to-use-automated-ml-for-ml-models/run-details-expanded.png#lightbox)
+[![Dash board Details uitvoeren](media/how-to-use-automated-ml-for-ml-models/run-details.png)](media/how-to-use-automated-ml-for-ml-models/run-details-expanded.png#lightbox)
 
-### <a name="view-training-run-details"></a>Details van de trainingsrun weergeven
+### <a name="view-training-run-details"></a>Details van de cursus uitvoering weer geven
 
-Inzoomen op een van de voltooide modellen om trainingsuitvoeringsgegevens te bekijken, zoals het uitvoeren van statistieken op het tabblad **Modeldetails** of prestatiegrafieken op het tabblad **Visualisaties.** [Meer informatie over grafieken](how-to-understand-automated-ml.md).
+Inzoomen op een van de voltooide modellen om details van de trainings uitvoering te bekijken, zoals metrische gegevens uitvoeren op het tabblad **model Details** of prestatie grafieken op het tabblad **Visualisaties** . meer [informatie over grafieken](how-to-understand-automated-ml.md).
 
-[![Iteratiedetails](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
+[![Details van herhaling](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
 ## <a name="deploy-your-model"></a>Uw model implementeren
 
-Zodra u het beste model bij de hand hebt, is het tijd om het te implementeren als een webservice om te voorspellen op nieuwe gegevens.
+Zodra u het beste model bij de hand hebt, is het tijd om het te implementeren als een webservice om nieuwe gegevens te voors pellen.
 
-Geautomatiseerde ML helpt u bij het implementeren van het model zonder code te schrijven:
+Automatische ML helpt u bij het implementeren van het model zonder code te schrijven:
 
-1. Je hebt een paar opties voor implementatie. 
+1. U hebt een aantal opties voor implementatie. 
 
-    + Optie 1: Als u het beste model wilt implementeren (op basis van de metrische criteria die u hebt gedefinieerd), selecteert u de knop **Beste model implementeren** op het tabblad **Details.**
+    + Optie 1: als u het beste model wilt implementeren (volgens de criteria die u hebt gedefinieerd), selecteert u de knop **beste model implementeren** op het tabblad **Details** .
 
-    + Optie 2: Als u een specifieke modeliteratie uit dit experiment wilt implementeren, zoomt u in op het model om het tabblad **Modeldetails** te openen en het **model implementeren te**selecteren.
+    + Optie 2: als u een specifieke model herhaling van dit experiment wilt implementeren, zoomt u in op het model om het tabblad **model Details** te openen en selecteert u **model implementeren**.
 
-1. Vul het **deelvenster Model implementeren** in.
+1. Vul het deel venster **model implementeren** in.
 
     Veld| Waarde
     ----|----
-    Name| Voer een unieke naam in voor uw implementatie.
-    Beschrijving| Voer een beschrijving in om beter te kunnen identificeren waar deze implementatie voor is.
-    Rekentype| Selecteer het type eindpunt dat u wilt implementeren: *Azure Kubernetes Service (AKS)* of *Azure Container Instance (ACI).*
-    Rekennaam| *Geldt alleen voor AKS:* Selecteer de naam van het AKS-cluster dat u wilt implementeren.
-    Verificatie inschakelen | Selecteer om tokengebaseerde of op sleutels gebaseerde verificatie toe te staan.
-    Aangepaste implementatiemiddelen gebruiken| Schakel deze functie in als u uw eigen scorescript en omgevingsbestand wilt uploaden. [Meer informatie over het scoren van scripts](how-to-deploy-and-where.md#script).
+    Naam| Voer een unieke naam in voor uw implementatie.
+    Beschrijving| Voer een beschrijving in om beter te kunnen identificeren waarvoor deze implementatie is.
+    Reken type| Selecteer het type eind punt dat u wilt implementeren: *Azure Kubernetes service (AKS)* of *Azure container instance (ACI)*.
+    Compute name| *Is alleen van toepassing op AKS:* Selecteer de naam van het AKS-cluster waarnaar u wilt implementeren.
+    Verificatie inschakelen | Selecteer deze optie om verificatie op basis van tokens of sleutel toe te staan.
+    Aangepaste implementatie-assets gebruiken| Schakel deze functie in als u uw eigen score script en omgevings bestand wilt uploaden. Meer [informatie over Score scripts](how-to-deploy-and-where.md#script).
 
     >[!Important]
-    > Bestandsnamen moeten onder 32 tekens staan en moeten beginnen en eindigen met alfanumerieke waarden. Kan streepjes, underscores, stippen en alfanumerieke waarden tussen. Spaties zijn niet toegestaan.
+    > Bestands namen moeten minder dan 32 tekens lang zijn en moeten beginnen en eindigen met een alfanumerieke teken reeks. Kan streepjes, onderstrepings tekens, punten en alfanumerieken bevatten. Spaties zijn niet toegestaan.
 
-    Het *geavanceerde* menu biedt standaardimplementatiefuncties, zoals [instellingen voor gegevensverzameling](how-to-enable-app-insights.md) en resourcegebruik. Als u deze standaardinstellingen wilt overschrijven, doet u dit in dit menu.
+    Het menu *Geavanceerd* biedt standaard implementatie functies, zoals het [verzamelen van gegevens](how-to-enable-app-insights.md) en het gebruik van bron instellingen. Als u deze standaard waarden wilt overschrijven, doet u dit in dit menu.
 
-1. Selecteer **Implementeren**. Implementatie kan ongeveer 20 minuten in beslag nemen.
+1. Selecteer **Implementeren**. Het volt ooien van de implementatie kan ongeveer 20 minuten duren.
 
-Nu heb je een operationele webservice om voorspellingen te genereren! U de voorspellingen testen door de service op te vragen via de [ingebouwde Azure Machine Learning-ondersteuning](how-to-consume-web-service.md#consume-the-service-from-power-bi)van Power BI.
+U hebt nu een Operational web service voor het genereren van voor spellingen. U kunt de voor spellingen testen door de service te doorzoeken van de [ingebouwde Azure machine learning ondersteuning van Power bi](how-to-consume-web-service.md#consume-the-service-from-power-bi).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Meer informatie over het gebruik van een webservice](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service).
-* [Begrijp geautomatiseerde machine learning-resultaten](how-to-understand-automated-ml.md).
-* [Meer informatie over geautomatiseerde machine learning](concept-automated-ml.md) en Azure Machine Learning.
+* Krijg [inzicht in geautomatiseerde machine learning resultaten](how-to-understand-automated-ml.md).
+* Meer [informatie over automatische machine learning](concept-automated-ml.md) en Azure machine learning.

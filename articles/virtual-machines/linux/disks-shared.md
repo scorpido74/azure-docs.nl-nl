@@ -1,6 +1,6 @@
 ---
-title: Een door Azure beheerde schijf delen in VM's (voorbeeld)
-description: Meer informatie over het delen van door Azure beheerde schijven in meerdere VM's.
+title: Een Azure Managed Disk delen op virtuele machines (preview)
+description: Meer informatie over het delen van Azure Managed disks op meerdere Vm's.
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 04/09/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 3792a98c4ddcab36496f7e83482f2a1382c93d0d
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81008515"
 ---
 # <a name="azure-shared-disks"></a>Gedeelde Azure-schijven
@@ -20,4 +20,4 @@ ms.locfileid: "81008515"
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u gedeelde schijven wilt inschakelen en gebruiken voor uw beheerde schijven, gaat u verder met ons artikel [Gedeelde schijf inschakelen](disks-shared-enable.md)
+Als u graag gedeelde schijven voor uw Managed disks wilt inschakelen en gebruiken, gaat u naar ons artikel [gedeelde schijf inschakelen](disks-shared-enable.md)

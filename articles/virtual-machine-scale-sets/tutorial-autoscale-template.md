@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Een schaalset automatisch schalen met Azure-sjablonen
+title: Zelf studie-een schaalset automatisch schalen met Azure-sjablonen
 description: Leer hoe u met sjablonen van Azure Resource Manager automatisch een schaalset met virtuele machines schaalt wanneer de vraag naar CPU toeneemt en afneemt.
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 02fe74a2dad7da655969c5c9523c696657425e49
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81011307"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Zelfstudie: Een schaalset met virtuele machines automatisch schalen met een Azure-sjabloon
@@ -24,7 +24,7 @@ Wanneer u een schaalset maakt, definieert u het aantal VM-exemplaren dat u wilt 
 > * Stresstest uitvoeren voor VM-exemplaren en regels voor automatisch schalen activeren
 > * Automatisch terugschalen bij afname van de vraag
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -72,8 +72,8 @@ De volgende parameters worden gebruikt voor deze regel:
 | *operator*        | De operator die wordt gebruikt voor het vergelijken van de meetwaarden met de drempelwaarde.                                                     | Greater Than    |
 | *threshold*       | De waarde die ervoor zorgt dat de regel voor automatisch schalen een actie activeert.                                                      | 70%             |
 | *direction*       | Hiermee definieert u of de schaalset moet worden in- of uitgeschaald als de regel van toepassing is.                                              | Increase        |
-| *Type*            | Hiermee geeft u het aantal VM-exemplaren aan dat moet worden gewijzigd door een specifieke waarde.                                    | Change Count    |
-| *value*           | Het aantal VM-exemplaren dat moet worden in- of uitgeschaald wanneer de regel van toepassing is.                                             | 3               |
+| *voert*            | Hiermee geeft u het aantal VM-exemplaren aan dat moet worden gewijzigd door een specifieke waarde.                                    | Change Count    |
+| *Value*           | Het aantal VM-exemplaren dat moet worden in- of uitgeschaald wanneer de regel van toepassing is.                                             | 3               |
 | *cooldown*        | De tijd die moet worden gewacht voordat de regel opnieuw wordt toegepast, zodat de acties voor automatisch schalen voldoende tijd hebben om effectief te zijn. | 5 minuten       |
 
 De volgende regel kan worden toegevoegd aan de profielsectie van de resourceprovider *Microsoft.insights/autoscalesettings* uit het vorige gedeelte:
@@ -136,7 +136,7 @@ In het volgende voorbeeld wordt een regel gedefinieerd waarmee het aantal VM-exe
 ## <a name="create-an-autoscaling-scale-set"></a>Een schaalset voor automatisch schalen maken
 We gebruiken een voorbeeldsjabloon om een schaalset te maken en regels voor automatisch schalen toe te passen. U kunt [de volledige sjabloon bekijken](https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json) of [de sectie *Microsoft.insights/autoscalesettings* met de resourceprovider](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/autoscale.json#L220) van de sjabloon.
 
-Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* op de *locatie Eastus geaald:*
+Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

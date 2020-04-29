@@ -1,30 +1,30 @@
 ---
-title: Private Link - Azure CLI - Azure Database voor PostgreSQL - Enkele server
-description: 'Meer informatie over het configureren van privékoppeling voor Azure Database voor PostgreSQL: Single server van Azure CLI'
+title: Persoonlijke koppeling-Azure CLI-Azure Database for PostgreSQL-één server
+description: Meer informatie over het configureren van een persoonlijke koppeling voor Azure Database for PostgreSQL-één server van Azure CLI
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: a6baf8b4609382be4a5a31d12cac581da2c17de6
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81011664"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>Private Link voor Azure Database voor PostgreSQL maken en beheren - Eén server met CLI
+# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>Een persoonlijke koppeling voor Azure Database for PostgreSQL-één server maken en beheren met CLI
 
-Een privéeindpunt is de fundamentele bouwsteen voor privékoppelingen in Azure. Hiermee kunnen Azure-resources, zoals Virtuele Machines (VM's), privé communiceren met privékoppelingsbronnen. In dit artikel leert u hoe u de Azure CLI gebruiken om een VM te maken in een Azure Virtual Network en een Azure Database voor PostgreSQL Single-server met een Azure-privéeindpunt.
+Een persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hiermee kunnen Azure-resources, zoals Virtual Machines (Vm's), privé communiceren met persoonlijke koppelings bronnen. In dit artikel leert u hoe u de Azure CLI gebruikt om een virtuele machine te maken in een Azure-Virtual Network en een Azure Database for PostgreSQL enkele server met een persoonlijk Azure-eind punt.
 
 > [!NOTE]
-> Deze functie is beschikbaar in alle Azure-regio's waar Azure Database voor PostgreSQL - Single server general purpose- en geheugengeoptimaliseerde prijsniveaus ondersteunt.
+> Deze functie is beschikbaar in alle Azure-regio's waar Azure Database for PostgreSQL-één server ondersteunt de prijs categorieën voor Algemeen en geoptimaliseerd voor geheugen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om deze handleiding door te nemen, hebt u het volgende nodig:
+Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 
-- Een [Azure-database voor PostgreSQL-server en -database](quickstart-create-server-database-azure-cli.md).
+- Een [Azure database for postgresql-server en-data base](quickstart-create-server-database-azure-cli.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -32,14 +32,14 @@ Als u ervoor kiest om Azure CLI lokaal te installeren en te gebruiken, moet u vo
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Voordat u een resource maken, moet u een resourcegroep maken om het virtuele netwerk te hosten. Maak een resourcegroep maken met [az group create](/cli/azure/group). In dit voorbeeld wordt een resourcegroep met de naam *myResourceGroup* op de locatie *West-Europa* ge:
+Voordat u een resource kunt maken, moet u een resource groep maken om de Virtual Network te hosten. Maak een resourcegroep maken met [az group create](/cli/azure/group). In dit voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *Europa West* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
 
 ## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
-Maak een virtueel netwerk met [az-netwerk vnet maken](/cli/azure/network/vnet). In dit voorbeeld wordt een standaard virtueel netwerk met de naam *myVirtualNetwork* gemaakt met één subnet met de naam *mySubnet:*
+Maak een Virtual Network met [AZ Network vnet Create](/cli/azure/network/vnet). In dit voor beeld wordt een standaard Virtual Network gemaakt met de naam *myVirtualNetwork* met één subnet met de naam *mySubnet*:
 
 ```azurecli-interactive
 az network vnet create \
@@ -48,8 +48,8 @@ az network vnet create \
  --subnet-name mySubnet
 ```
 
-## <a name="disable-subnet-private-endpoint-policies"></a>Subnet privéeindpuntbeleid uitschakelen 
-Azure implementeert resources naar een subnet binnen een virtueel netwerk, dus u moet het subnet maken of bijwerken om privéeindpuntnetwerkbeleid uit te schakelen. Update een subnetconfiguratie genaamd *mySubnet* met [az-netwerk vnet subnet update:](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)
+## <a name="disable-subnet-private-endpoint-policies"></a>Beleid voor privé-eind punten van subnet uitschakelen 
+Azure implementeert resources in een subnet binnen een virtueel netwerk, dus u moet het subnet maken of bijwerken om beleid voor privé-eindpunt netwerk uit te scha kelen. Een subnet-configuratie met de naam *mySubnet* bijwerken met [AZ Network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -59,17 +59,17 @@ az network vnet subnet update \
  --disable-private-endpoint-network-policies true
 ```
 ## <a name="create-the-vm"></a>De virtuele machine maken 
-Maak een VM met az vm maken. Geef desgevraagd een wachtwoord op dat moet worden gebruikt als aanmeldingsreferenties voor de virtuele machine. In dit voorbeeld wordt een VM met de naam *myVm gemaakt:* 
+Maak een virtuele machine met AZ VM Create. Wanneer u hierom wordt gevraagd, geeft u een wacht woord op dat moet worden gebruikt als aanmeldings referenties voor de virtuele machine. In dit voor beeld wordt een VM gemaakt met de naam *myVm*: 
 ```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVm \
   --image Win2019Datacenter
 ```
- Let op het openbare IP-adres van de VM. U gebruikt dit adres om in de volgende stap verbinding te maken met de virtuele machine via internet.
+ Noteer het open bare IP-adres van de virtuele machine. U gebruikt dit adres om in de volgende stap verbinding te maken met de virtuele machine via internet.
 
-## <a name="create-an-azure-database-for-postgresql---single-server"></a>Een Azure-database maken voor PostgreSQL - Enkele server 
-Maak een Azure Database voor PostgreSQL met de opdracht AZ Postgres Server create. Houd er rekening mee dat de naam van uw PostgreSQL Server uniek moet zijn in Azure, dus vervang de tijdelijke aanduidingswaarde tussen haakjes door uw eigen unieke waarde: 
+## <a name="create-an-azure-database-for-postgresql---single-server"></a>Een Azure Database for PostgreSQL-één-server maken 
+Maak een Azure Database for PostgreSQL met de opdracht AZ post gres server Create. Houd er rekening mee dat de naam van uw PostgreSQL-server uniek moet zijn in azure, dus Vervang de waarde van de tijdelijke aanduiding tussen vier Kante haken door uw eigen unieke waarde: 
 
 ```azurecli-interactive
 # Create a logical server in the resource group 
@@ -82,10 +82,10 @@ az postgres server create \
 --sku-name GP_Gen5_2
 ```
 
-Let op: de PostgreSQL ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/servername.``` Server ID is vergelijkbaar met U gebruikt de PostgreSQL Server ID in de volgende stap. 
+Houd er rekening mee dat ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/servername.``` de postgresql-server-id vergelijkbaar is met de postgresql-server-id in de volgende stap. 
 
-## <a name="create-the-private-endpoint"></a>Het privéeindpunt maken 
-Maak een privéeindpunt voor de PostgreSQL-server in uw virtuele netwerk: 
+## <a name="create-the-private-endpoint"></a>Het persoonlijke eind punt maken 
+Maak een persoonlijk eind punt voor de PostgreSQL-server in uw Virtual Network: 
 ```azurecli-interactive
 az network private-endpoint create \  
     --name myPrivateEndpoint \  
@@ -97,8 +97,8 @@ az network private-endpoint create \
     --connection-name myConnection  
  ```
 
-## <a name="configure-the-private-dns-zone"></a>De private DNS-zone configureren 
-Maak een Private DNS-zone voor PostgreSQL-serverdomein en maak een koppeling met het virtuele netwerk. 
+## <a name="configure-the-private-dns-zone"></a>De Privé-DNS zone configureren 
+Maak een Privé-DNS zone voor het PostgreSQL-Server domein en maak een koppelings koppeling met de Virtual Network. 
 ```azurecli-interactive
 az network private-dns zone create --resource-group myResourceGroup \ 
    --name  "privatelink.postgres.database.azure.com" 
@@ -122,26 +122,26 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 ```
 
 > [!NOTE] 
-> De FQDN in de DNS-instelling voor klanten wordt niet opgelost in het geconfigureerde privé-IP-adres. U moet een DNS-zone instellen voor de geconfigureerde FQDN zoals [hier](../dns/dns-operations-recordsets-portal.md)wordt weergegeven.
+> De FQDN in de DNS-instelling van de klant wordt niet omgezet naar het geconfigureerde particuliere IP-adres. U moet een DNS-zone voor de geconfigureerde FQDN instellen, zoals [hier](../dns/dns-operations-recordsets-portal.md)wordt weer gegeven.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Verbinding maken met een virtuele machine via internet
 
-Maak als volgt verbinding met de VM *myVm* via internet:
+Maak als volgt verbinding met de VM- *myVm* van het Internet:
 
-1. Voer *myVm*in in de zoekbalk van het portaal.
+1. Voer in de zoek balk van de portal *myVm*in.
 
 1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
 1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
 
-1. Open het *bestand downloaded.rdp.*
+1. Open het *gedownloade RDP* -bestand.
 
     1. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
 
-    1. Voer de gebruikersnaam en het wachtwoord in dat u hebt opgegeven bij het maken van de vm.
+    1. Voer de gebruikers naam en het wacht woord in die u hebt opgegeven bij het maken van de virtuele machine.
 
         > [!NOTE]
-        > Mogelijk moet u **Meer opties** > selecteren**Gebruik een ander account**om de referenties op te geven die u hebt ingevoerd toen u de vm hebt gemaakt.
+        > Mogelijk moet u **meer opties** > selecteren**een ander account gebruiken**om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine.
 
 1. Selecteer **OK**.
 
@@ -149,13 +149,13 @@ Maak als volgt verbinding met de VM *myVm* via internet:
 
 1. Wanneer het VM-bureaublad wordt weergegeven, minimaliseert u het om terug te gaan naar het lokale bureaublad.  
 
-## <a name="access-the-postgresql-server-privately-from-the-vm"></a>Toegang tot de PostgreSQL-server privé vanaf de VM
+## <a name="access-the-postgresql-server-privately-from-the-vm"></a>De PostgreSQL-server privé openen vanuit de VM
 
-1. Open PowerShell in het extern bureaublad van *myVM.*
+1. Open Power shell in de Extern bureaublad van *myVM*.
 
 2. Voer  `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com` in. 
 
-    Je ontvangt een bericht dat vergelijkbaar is met dit:
+    U ontvangt een bericht dat er ongeveer als volgt uitziet:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -164,33 +164,33 @@ Maak als volgt verbinding met de VM *myVm* via internet:
     Address:  10.1.3.4
     ```
 
-3. Test de private link-verbinding voor de PostgreSQL-server met elke beschikbare client. In het onderstaande voorbeeld heb ik [Azure Data studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) gebruikt om de bewerking uit te voeren.
+3. Test de verbinding van de persoonlijke verbinding voor de PostgreSQL-server met behulp van elke beschik bare client. In het onderstaande voor beeld heb ik [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) gebruikt om de bewerking uit te voeren.
 
-4. Voer in **Nieuwe verbinding**deze gegevens in of selecteer deze:
+4. In **nieuwe verbinding**voert u de volgende gegevens in of selecteert u deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Servertype| Selecteer **PostgreSQL**.|
-    | Servernaam| Selecteer *mydemopostgresserver.privatelink.postgres.database.azure.com* |
-    | Gebruikersnaam | Voer de username@servername gebruikersnaam in die wordt opgegeven tijdens het maken van de PostgreSQL-server. |
-    |Wachtwoord |Voer een wachtwoord in dat is opgegeven tijdens het maken van de PostgreSQL-server. |
-    |SSL|Selecteer **Vereist**.|
+    | Servertype| Selecteer **postgresql**.|
+    | Servernaam| *Mydemopostgresserver.privatelink.postgres.database.Azure.com* selecteren |
+    | Gebruikersnaam | Voer de gebruikers username@servername naam in die wordt opgegeven tijdens het maken van de postgresql-server. |
+    |Wachtwoord |Voer een wacht woord in dat u hebt opgegeven tijdens het maken van de PostgreSQL-server. |
+    |SSL|Selecteer **vereist**.|
     ||
 
 5. Selecteer Verbinden.
 
-6. Blader door databases vanuit het linkermenu.
+6. Bladeren door data bases vanuit het menu links.
 
-7. (Optioneel) Informatie maken of query's maken vanaf de postgreSQL-server.
+7. Eventueel Gegevens van de postgreSQL-server maken of er een query op uitvoeren.
 
-8. Sluit de verbinding met extern bureaublad met myVm.
+8. Sluit de verbinding met extern bureau blad met myVm.
 
 ## <a name="clean-up-resources"></a>Resources opschonen 
-Wanneer dit niet meer nodig is, u de az-groep verwijderen gebruiken om de brongroep en alle resources die deze heeft te verwijderen: 
+U kunt AZ Group Delete gebruiken om de resource groep en alle resources die het heeft, te verwijderen wanneer u deze niet meer nodig hebt: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [wat is azure privéeindpunt](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
+- Meer informatie over [Wat is Azure persoonlijk eind punt](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) ?

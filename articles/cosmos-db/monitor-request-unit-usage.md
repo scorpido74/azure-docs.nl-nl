@@ -1,66 +1,66 @@
 ---
-title: Het doorvoergebruik van een bewerking in Azure Cosmos DB bewaken
-description: Meer informatie over het bewaken van de doorvoer of het aanvragen van eenheidsgebruik van een bewerking in Azure Cosmos DB. Eigenaren van een Azure Cosmos DB-account kunnen begrijpen welke bewerkingen meer aanvraageenheden gebruiken.
+title: Het gebruik van de door Voer van een bewerking in Azure Cosmos DB controleren
+description: Meer informatie over het bewaken van de door Voer of het aanvragen van het gebruik van een bewerking in Azure Cosmos DB. Eigen aren van een Azure Cosmos DB-account kunnen begrijpen welke bewerkingen meer aanvraag eenheden nemen.
 ms.service: cosmos-db
 ms.topic: conceptual
 author: kanshiG
 ms.author: govindk
 ms.date: 04/09/2020
 ms.openlocfilehash: bc39ef199a5d40d3eaa75023277d3e00b93e131a
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81115428"
 ---
-# <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>Overslag controle of het gebruik van een bewerking in Azure Cosmos DB aanvragen of het gebruik van een bewerking aanvragen
+# <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>De door Voer of het verbruik van aanvraag eenheden van een bewerking in Azure Cosmos DB controleren
 
-Azure Monitor voor Azure Cosmos DB biedt een weergave met statistieken om uw account te controleren en dashboards te maken. De Azure Cosmos DB-statistieken worden standaard verzameld, deze functie vereist niet dat u iets expliciet in- of configureert. De statistiek **Total Request Units** wordt gebruikt om het gebruik van aanvraageenheden voor verschillende typen bewerkingen te krijgen. Later u analyseren welke bewerkingen het grootste deel van de doorvoer hebben gebruikt. Standaard worden de doorvoergegevens samengevoegd met een interval van één minuut. U de aggregatie-eenheid echter wijzigen door de optie tijdgedetailleerdheid te wijzigen.
+Azure Monitor voor Azure Cosmos DB biedt een weer gave van metrische gegevens voor het bewaken van uw account en het maken van Dash boards. De Azure Cosmos DB metrische gegevens worden standaard verzameld. voor deze functie hoeft u niets expliciet in te scha kelen of te configureren. De metrische gegevens voor de **totale aanvraag eenheden** worden gebruikt om het gebruik van de aanvraag eenheden voor verschillende typen bewerkingen op te halen. U kunt later analyseren welke bewerkingen het meest worden gebruikt voor de door voer. Standaard worden de doorvoer gegevens geaggregeerd met een interval van één minuut. U kunt de aggregatie-eenheid echter wijzigen door de optie tijd granulatie te wijzigen.
 
-Er zijn twee manieren om de gebruiksgegevens van de aanvraageenheid te analyseren:
+Er zijn twee manieren om de gebruiks gegevens van de aanvraag eenheid te analyseren:
 
-* Binnen het bepaalde tijdsinterval welke bewerkingen meer aanvraageenheden uitvoeren.
-* Welke bewerkingen in het algemeen uw werklast domineren door meer aanvraageenheden te verbruiken.
-Met deze analyse u zich richten op bewerkingen zoals insert, upsert en kijken naar hun indexering. U nagaan of u over/onder het indexeren van specifieke velden bent en het [indexeringsbeleid](index-policy.md#include-exclude-paths) wijzigen om de paden op te nemen of uit te sluiten.
+* Binnen het opgegeven tijds interval, waarmee bewerkingen meer aanvraag eenheden nemen.
+* Welke bewerkingen in het algemeen domineren uw werk belasting door gebruik te nemen van meer aanvraag eenheden.
+Met deze analyse kunt u zich richten op bewerkingen zoals insert, upsert en het indexeren. U kunt nagaan of u over/onder het indexeren van specifieke velden beschikt en het [indexerings beleid](index-policy.md#include-exclude-paths) aanpassen om de paden op te nemen of uit te sluiten.
 
-Als u merkt dat bepaalde query's meer aanvraageenheden uitvoeren, u acties ondernemen zoals:
+Als u ziet dat bepaalde query's meer aanvraag eenheden nemen, kunt u acties uitvoeren zoals:
 
-* Heroverweeg of u de juiste hoeveelheid gegevens opvraagt.
-* Wijzig de query om index te gebruiken met filterclausule.
-* Voer minder dure UDF-functieaanroepen uit.
-* Definieer partitiesleutels om de ventilator uit query's in verschillende partities te minimaliseren.
-* U ook de querystatistieken gebruiken die zijn geretourneerd in het gespreksantwoord, de diagnostische logboekdetails en verwijzen naar het artikel voor [het afstemmen van queryprestaties](sql-api-query-metrics.md) voor meer informatie over de queryuitvoering.
-* U vanaf de som beginnen en vervolgens kijken naar avg-gebruik met behulp van de juiste dimensie.
+* Denk aan als u de juiste hoeveelheid gegevens aanvraagt.
+* Wijzig de query om de component index with filter te gebruiken.
+* Voer minder dure UDF-functie aanroepen uit.
+* Definieer partitie sleutels om de ventilator uit de query te beperken tot verschillende partities.
+* U kunt ook de metrische query gegevens die zijn geretourneerd in het antwoord van de aanroep, de details van het diagnostische logboek en verwijzen naar [query performance tuning](sql-api-query-metrics.md) -artikel voor meer informatie over de uitvoering van de query.
+* U kunt beginnen met de som en vervolgens het Gem-gebruik van de juiste dimensie bekijken.
 
-## <a name="view-the-total-request-unit-usage-metric"></a>De statistiek voor het gebruik van de totale aanvraageenheid weergeven
+## <a name="view-the-total-request-unit-usage-metric"></a>De metrische gegevens over het totale gebruik van de aanvraag eenheid weer geven
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-1. Selecteer **Monitor op** de navigatiebalk aan de linkerkant en selecteer **Statistieken**.
+1. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **metrische gegevens**.
 
-   ![Deelvenster Metrische gegevens in Azure Monitor](./media/monitor-request-unit-usage/monitor-metrics-blade.png)
+   ![Deel venster metrische gegevens in Azure Monitor](./media/monitor-request-unit-usage/monitor-metrics-blade.png)
 
-1. Selecteer in het deelvenster **Statistieken** > **Selecteer een resource** > kies het vereiste **abonnement**en **de resourcegroep**. Selecteer **voor**het type Resource **Azure Cosmos DB-accounts**een van uw bestaande Azure Cosmos-accounts en selecteer **Toepassen**.
+1. Selecteer in het deel venster **metrieken** > **een resource selecteren** > Kies het vereiste **abonnement**en de **resource groep**. Voor het **bron type**selecteert u **Azure Cosmos DB accounts**, kiest u een van uw bestaande Azure Cosmos-accounts en selecteert u **Toep assen**.
 
-   ![Kies het Azure Cosmos DB-account om statistieken weer te geven](./media/monitor-request-unit-usage/select-cosmos-db-account.png)
+   ![Kies het Azure Cosmos DB-account om de metrische gegevens weer te geven](./media/monitor-request-unit-usage/select-cosmos-db-account.png)
 
-1. Selecteer vervolgens de statistiek **Total Request Units** in de lijst met beschikbare statistieken. Zie het artikel [Statistieken per rubriek](monitor-cosmos-db-reference.md) voor meer informatie over alle beschikbare statistieken in deze lijst. In dit voorbeeld selecteren we **Total Request Units** en **Avg** als aggregatiewaarde. Naast deze details u ook de **granulariteit** **tijdenen en** tijd van de statistieken selecteren. Bij max u statistieken van de afgelopen 30 dagen bekijken.  Nadat u het filter hebt toegepast, wordt een grafiek weergegeven op basis van uw filter. U het gemiddelde aantal verbruikte aanvraageenheden per minuut voor de geselecteerde periode bekijken.  
+1. Selecteer vervolgens de metrische gegevens voor de **totale aanvraag eenheden** in de lijst met beschik bare metrische gegevens. Zie het artikel [metrische gegevens per categorie](monitor-cosmos-db-reference.md) voor meer informatie over alle beschik bare metrische gegevens in deze lijst. In dit voor beeld selecteren we het **Totaal aantal aanvraag eenheden** en **Gem** als de aggregatie waarde. Naast deze details kunt u ook het **tijds bereik** en de **tijd granulatie** van de metrische gegevens selecteren. U kunt Maxi maal de metrische gegevens weer geven voor de afgelopen 30 dagen.  Nadat u het filter hebt toegepast, wordt een grafiek weer gegeven op basis van het filter. U kunt het gemiddelde aantal verbruikte aanvraag eenheden per minuut voor de geselecteerde periode bekijken.  
 
-   ![Een statistiek kiezen uit de Azure-portal](./media/monitor-request-unit-usage/request-unit-usage-metric.png)
+   ![Kies een waarde in het Azure Portal](./media/monitor-request-unit-usage/request-unit-usage-metric.png)
 
-## <a name="filters-for-request-unit-usage"></a>Filters voor het gebruik van aanvraageenheden
+## <a name="filters-for-request-unit-usage"></a>Filters voor het gebruik van de aanvraag eenheid
 
-U ook statistieken filteren en de grafieken weergeven door een specifieke **CollectionName**, **DatabaseName,** **OperationType**, **Regio**, **Status**en **StatusCode**. Met de **opties** Filter **toevoegen** en Splitsen toepassen u het gebruik van de aanvraageenheid filteren en de statistieken groeperen.
+U kunt de metrische gegevens ook filteren en de grafieken ophalen die worden weer gegeven met een specifieke naam van de **verzameling**, **database**naam, **OperationType**, **regio**, **status** **, enzovoort.** Met de opties **filter toevoegen** en **splitsing Toep assen** kunt u het gebruik van de aanvraag eenheid filteren en de metrische gegevens groeperen.
 
-Als u het gebruik van elke bewerking van elke bewerking op totaal(som) of gemiddeld wilt krijgen, selecteert u **Splitsen toepassen** en kiest **u Operationeel type** en de filterwaarde zoals weergegeven in de volgende afbeelding:
+Als u het gebruik van de aanvraag eenheid van elke bewerking wilt ophalen op basis van totaal (som) of gemiddeld, selecteert u **splitsing Toep assen** en kiest u **bewerkings type** en de filter waarde, zoals weer gegeven in de volgende afbeelding:
 
-   ![Cosmos DB Request-eenheden voor bewerkingen in Azure-monitor](./media/monitor-request-unit-usage/request-unit-usage-operations.png)
+   ![Cosmos DB aanvraag eenheden voor bewerkingen in azure monitor](./media/monitor-request-unit-usage/request-unit-usage-operations.png)
 
-Als u het gebruik van aanvraageenheden per verzameling wilt zien, selecteert u **Splitsen toepassen** en kiest u de verzamelnaam als filter. U ziet een chat als volgt met een keuze van collecties in het dashboard. U vervolgens een specifieke verzamelingsnaam selecteren om meer details weer te geven:
+Als u het gebruik van de aanvraag eenheid per verzameling wilt zien, selecteert u **splitsen Toep assen** en kiest u de naam van de verzameling als een filter. U ziet een chat sessie, zoals het volgende, met een keuze aan verzamelingen in het dash board. U kunt vervolgens een specifieke verzamelings naam selecteren om meer details weer te geven:
 
-   ![Cosmos DB Request-eenheden voor alle bewerkingen door de verzameling in Azure-monitor](./media/monitor-request-unit-usage/request-unit-usage-collection.png)
+   ![Cosmos DB aanvraag eenheden voor alle bewerkingen door de verzameling in azure monitor](./media/monitor-request-unit-usage/request-unit-usage-collection.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Controleer Azure Cosmos DB-gegevens met [diagnostische instellingen](cosmosdb-monitor-resource-logs.md) in Azure.
-* [Azure Cosmos DB-besturingsvlakbewerkingen controleren](audit-control-plane-logs.md)
+* Bewaak Azure Cosmos DB gegevens met behulp van [Diagnostische instellingen](cosmosdb-monitor-resource-logs.md) in Azure.
+* [Bewerkingen voor Azure Cosmos DB Control-vlak controleren](audit-control-plane-logs.md)

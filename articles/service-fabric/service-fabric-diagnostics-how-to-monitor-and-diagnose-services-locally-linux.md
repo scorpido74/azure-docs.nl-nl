@@ -1,16 +1,16 @@
 ---
-title: Azure Service Fabric-apps debuggen in Linux
-description: Meer informatie over het monitoren en diagnosticeren van uw Service Fabric-services op een lokale Linux-ontwikkelingsmachine.
+title: Fouten opsporen in azure Service Fabric-apps in Linux
+description: Meer informatie over het bewaken en diagnosticeren van uw Service Fabric Services op een lokale Linux-ontwikkel machine.
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80991327"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Services controleren en diagnosticeren in een lokale Linux-machine-installatie
+# <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Services controleren en diagnoses uitvoeren in een lokale installatie van Linux machine Development
 
 
 > [!div class="op_single_selector"]
@@ -19,16 +19,16 @@ ms.locfileid: "80991327"
 >
 >
 
-Met monitoring, detectie, diagnose en probleemoplossing kunnen services doorgaan met een minimale verstoring van de gebruikerservaring. Monitoring en diagnostiek zijn cruciaal in een daadwerkelijk geïmplementeerde productieomgeving. Het aannemen van een vergelijkbaar model tijdens de ontwikkeling van services zorgt ervoor dat de diagnostische pijplijn werkt wanneer u naar een productieomgeving gaat. Service Fabric maakt het voor serviceontwikkelaars eenvoudig om diagnoses te implementeren die naadloos kunnen werken in zowel bedrijfsinstellingen voor één machine als opstellingen voor echte productieclusters.
+Voor het bewaken, detecteren, diagnosticeren en oplossen van problemen kunnen services worden voortgezet met een minimale onderbreking van de gebruikers ervaring. Bewaking en diagnose zijn essentieel in een werkelijke geïmplementeerde productie omgeving. Wanneer u een soortgelijk model tijdens de ontwikkeling van services aanneemt, zorgt u ervoor dat de diagnostische pijp lijn werkt wanneer u overstapt naar een productie omgeving. Service Fabric maakt het eenvoudig voor service ontwikkelaars om diagnostische gegevens te implementeren die naadloos kunnen worden gebruikt voor de installatie van lokale en productie clusters met één computer.
 
 
-## <a name="debugging-service-fabric-java-applications"></a>Debugging Service Fabric Java-toepassingen
+## <a name="debugging-service-fabric-java-applications"></a>Fout opsporing Service Fabric Java-toepassingen
 
-Voor Java-toepassingen zijn [meerdere logging frameworks](https://en.wikipedia.org/wiki/Java_logging_framework) beschikbaar. Aangezien `java.util.logging` is de standaard optie met de JRE, het wordt ook gebruikt voor de [code voorbeelden in GitHub](https://github.com/Azure-Samples/service-fabric-java-getting-started). In de volgende discussie `java.util.logging` wordt uitgelegd hoe u het framework configureert.
+Voor Java-toepassingen zijn [meerdere logboek registratie raamwerken](https://en.wikipedia.org/wiki/Java_logging_framework) beschikbaar. Omdat `java.util.logging` de standaard optie is met de jre, wordt deze ook gebruikt voor de [code voorbeelden in github](https://github.com/Azure-Samples/service-fabric-java-getting-started). In de volgende bespreking wordt uitgelegd hoe u `java.util.logging` het Framework kunt configureren.
 
-Met behulp van java.util.logging u uw toepassingslogboeken omleiden naar geheugen, uitvoerstromen, consolebestanden of sockets. Voor elk van deze opties zijn er standaardhandlers die al in het framework zijn opgenomen. U `app.properties` een bestand maken om de bestandshandler voor uw toepassing te configureren om alle logboeken om te leiden naar een lokaal bestand.
+Met Java. util. logging kunt u uw toepassings logboeken omleiden naar geheugen, uitvoer stromen, console bestanden of sockets. Voor elk van deze opties zijn er standaard-handlers die al in het Framework zijn opgenomen. U kunt een `app.properties` bestand maken om de bestandshandler voor uw toepassing te configureren om alle logboeken door te sturen naar een lokaal bestand.
 
-Het volgende codefragment bevat een voorbeeldconfiguratie:
+Het volgende code fragment bevat een voorbeeld configuratie:
 
 ```java
 handlers = java.util.logging.FileHandler
@@ -40,34 +40,34 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-De map waarnaar `app.properties` door het bestand wordt aangegeven, moet bestaan. Nadat `app.properties` het bestand is gemaakt, moet u ook `entrypoint.sh` uw `<applicationfolder>/<servicePkg>/Code/` toegangspuntscript wijzigen `java.util.logging.config.file` `app.properties` in de map om de eigenschap in te stellen op bestand. De vermelding moet er als volgt uitzien:
+De map waarnaar het `app.properties` bestand verwijst, moet bestaan. Nadat het `app.properties` `entrypoint.sh` bestand is gemaakt, moet u ook het toegangs punt script wijzigen in de `<applicationfolder>/<servicePkg>/Code/` map om de eigenschap `java.util.logging.config.file` in te stellen op `app.properties` bestand. De vermelding moet er ongeveer uitzien als in het volgende code fragment:
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
 
 
-Deze configuratie resulteert in logs worden verzameld `/tmp/servicefabric/logs/`in een roterende manier op . Het logbestand in dit geval wordt mysfapp%u.%g.log genoemd waar:
-* **%u** is een uniek nummer om conflicten tussen gelijktijdige Java-processen op te lossen.
-* **%g** is het generatienummer dat onderscheid maakt tussen roterende logboeken.
+Deze configuratie resulteert in het verzamelen van Logboeken op een manier `/tmp/servicefabric/logs/`om te draaien. Het logboek bestand in dit geval heet mysfapp% u .% g. log, waarbij:
+* **% u** is een uniek nummer voor het oplossen van conflicten tussen gelijktijdige Java-processen.
+* **% g** is het generatie nummer om onderscheid te maken tussen het draaiende Logboeken.
 
-Als er geen handler expliciet is geconfigureerd, wordt de consolehandler standaard geregistreerd. Men kan de logs in syslog bekijken onder /var/log/syslog.
+Als er geen handler expliciet is geconfigureerd, wordt de-console-handler standaard geregistreerd. U kunt de logboeken weer geven in syslog onder/var/log/syslog.
 
-Zie voor meer informatie de [codevoorbeelden in GitHub](https://github.com/Azure-Samples/service-fabric-java-getting-started).
-
-
-## <a name="debugging-service-fabric-c-applications"></a>Foutopsporingsservicefabric C#-toepassingen
+Zie de [code voorbeelden in github](https://github.com/Azure-Samples/service-fabric-java-getting-started)voor meer informatie.
 
 
-Er zijn meerdere frameworks beschikbaar voor het traceren van CoreCLR-toepassingen op Linux. Zie [.NET-extensies voor logboekregistratie voor](https://github.com/dotnet/extensions/tree/master/src/Logging)meer informatie.  Aangezien EventSource bekend is bij C# ontwikkelaars,'gebruikt dit artikel EventSource voor tracering in CoreCLR-samples op Linux.
+## <a name="debugging-service-fabric-c-applications"></a>Fout opsporing van Service Fabric C#-toepassingen
 
-De eerste stap is om System.Diagnostics.Tracing op te nemen, zodat u uw logboeken schrijven naar geheugen-, uitvoerstromen of consolebestanden.  Als u logboekregistratie met EventSource wilt gebruiken, voegt u het volgende project toe aan uw project.json:
+
+Er zijn meerdere frameworks beschikbaar voor het traceren van CoreCLR-toepassingen in Linux. Zie [.net-extensies voor logboek registratie](https://github.com/dotnet/extensions/tree/master/src/Logging)voor meer informatie.  Omdat Event source bekend is bij C#-ontwikkel aars, wordt in dit artikel Event Source gebruikt voor het traceren van CoreCLR-voor beelden in Linux.
+
+De eerste stap is het toevoegen van System. Diagnostics. tracering, zodat u uw logboeken kunt schrijven naar geheugen, uitvoer stromen of console bestanden.  Voor logboek registratie met Event source voegt u het volgende project toe aan uw project. json:
 
 ```json
     "System.Diagnostics.StackTrace": "4.0.1"
 ```
 
-U een aangepaste EventListener gebruiken om naar de servicegebeurtenis te luisteren en deze vervolgens op de juiste manier om te leiden om bestanden te traceren. In het volgende codefragment ziet u een voorbeeld van logboekregistratie met EventSource en een aangepaste Gebeurtenislistener:
+U kunt een aangepaste EventListener gebruiken om te Luis teren naar de service gebeurtenis en ze vervolgens op de juiste wijze omleiden naar traceer bestanden. Het volgende code fragment toont een voor beeld van de implementatie van logboek registratie met behulp van Event source en een aangepaste EventListener:
 
 
 ```csharp
@@ -120,16 +120,16 @@ internal class ServiceEventListener : EventListener
 ```
 
 
-In het voorgaande fragment worden de `/tmp/MyServiceLog.txt`logboeken naar een bestand uitgevoerd in . Deze bestandsnaam moet op de juiste manier worden bijgewerkt. Als u de logboeken wilt omleiden naar de console, gebruikt u het volgende fragment in de klasse EventListener:
+Het voor gaande fragment voert de logboeken naar een bestand `/tmp/MyServiceLog.txt`in. Deze bestands naam moet op de juiste manier worden bijgewerkt. Als u de logboeken wilt omleiden naar de console, gebruikt u het volgende code fragment in uw aangepaste EventListener-klasse:
 
 ```csharp
 public static TextWriter Out = Console.Out;
 ```
 
-De voorbeelden bij [C# Samples](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) gebruiken EventSource en een aangepaste EventListener om gebeurtenissen bij te loggen op een bestand.
+In de voor beelden van C#-voor [beelden](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) worden event source en een aangepaste EventListener gebruikt voor het vastleggen van gebeurtenissen in een bestand.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Dezelfde traceringscode die aan uw toepassing is toegevoegd, werkt ook met de diagnose van uw toepassing op een Azure-cluster. Bekijk deze artikelen die de verschillende opties voor de tools bespreken en beschrijven hoe ze in te stellen.
+Dezelfde tracerings code die aan uw toepassing wordt toegevoegd, werkt ook met de diagnostische gegevens van uw toepassing op een Azure-cluster. Bekijk deze artikelen over de verschillende opties voor de hulpprogram ma's en beschrijf hoe u deze kunt instellen.
 * [Logboeken verzamelen met Azure Diagnostics](service-fabric-diagnostics-how-to-setup-lad.md)

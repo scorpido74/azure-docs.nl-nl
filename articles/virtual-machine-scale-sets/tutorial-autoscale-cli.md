@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Een schaalset automatisch schalen met de Azure CLI
+title: Zelf studie-een schaalset automatisch schalen met Azure CLI
 description: Leer hoe u met Azure CLI automatisch een schaalset met virtuele machines schaalt wanneer de vraag naar CPU toeneemt en afneemt
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 05/18/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 711553fd0a71103f340137755ef51264e3883c25
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81010373"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Zelfstudie: Een schaalset met virtuele machines automatisch schalen met Azure CLI
@@ -25,7 +25,7 @@ Wanneer u een schaalset maakt, definieert u het aantal VM-exemplaren dat u wilt 
 > * Stresstest uitvoeren voor VM-exemplaren en regels voor automatisch schalen activeren
 > * Automatisch terugschalen bij afname van de vraag
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -200,7 +200,7 @@ Sluit *watch* af met `Ctrl-c`. De capaciteit van de schaalset wordt nog steeds o
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u uw schaalset en extra resources wilt verwijderen, verwijdert u de brongroep en al de bronnen met [de AZ-groep verwijderen](/cli/azure/group). De parameter `--no-wait` retourneert het besturingselement naar de prompt zonder te wachten totdat de bewerking is voltooid. De parameter `--yes` bevestigt dat u de resources wilt verwijderen, zonder een extra prompt om dit te doen.
+Als u de schaalset en aanvullende resources wilt verwijderen, verwijdert u de resource groep en alle bijbehorende resources met [AZ Group delete](/cli/azure/group). De parameter `--no-wait` retourneert het besturingselement naar de prompt zonder te wachten totdat de bewerking is voltooid. De parameter `--yes` bevestigt dat u de resources wilt verwijderen, zonder een extra prompt om dit te doen.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

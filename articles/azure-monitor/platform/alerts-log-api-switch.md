@@ -1,64 +1,64 @@
 ---
-title: Overschakelen naar de nieuwe Azure Alerts API
-description: Overzicht van legacy savedSearch based Log Analytics Alert API en proces om waarschuwingsregels over te schakelen naar de nieuwe ScheduledQueryRules API, met details voor het aanpakken van veelvoorkomende klantproblemen.
+title: Overschakelen naar de nieuwe Azure Alerts-API
+description: Overzicht van verouderde Log Analytics savedSearch-API en proces om waarschuwings regels te scha kelen naar een nieuwe ScheduledQueryRules-API, met details over veelvoorkomende klant problemen.
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.subservice: alerts
 ms.openlocfilehash: 7950b3f584c36b68a4eff66b05e83ba94c1ec1dd
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114353"
 ---
-# <a name="switch-api-preference-for-log-alerts"></a>Api-voorkeursvoorkeur voor logboekwaarschuwingen
+# <a name="switch-api-preference-for-log-alerts"></a>Switch-API-voor keur voor logboek waarschuwingen
 
 > [!NOTE]
-> Inhoud vermeld die alleen van toepassing is op gebruikers Azure public cloud en **niet** voor Azure Government of Azure China cloud.  
+> Inhoud die alleen van toepassing is op gebruikers van Azure Public Cloud en **niet** voor Azure Government of Azure China-Cloud.  
 
 > [!NOTE]
-> Zodra een gebruiker ervoor kiest om de voorkeur over te schakelen naar de nieuwe [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) is het niet mogelijk om terug te keren naar het gebruik van de oudere [verouderde Log Analytics Alert API.](api-alerts.md)
+> Zodra een gebruiker heeft gekozen om de voor keur te wijzigen naar de nieuwe [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , is het niet mogelijk om terug te gaan naar het gebruik van de oudere [verouderde waarschuwing](api-alerts.md)voor de API van log Analytics.
 
-Tot voor kort beheerde u waarschuwingsregels in de Microsoft Operations Management Suite-portal. De nieuwe waarschuwingservaring is geïntegreerd met verschillende services in Microsoft Azure, waaronder Log Analytics, en we hebben gevraagd om uw waarschuwingsregels uit te [breiden van OMS-portal naar Azure.](alerts-extend.md) Maar om een minimale onderbreking voor klanten te garanderen, heeft het proces de programmatische interface voor het verbruik niet gewijzigd - [Log Analytics Alert API](api-alerts.md) op basis van SavedSearch.
+Tot onlangs hebt u de waarschuwings regels in de Microsoft Operations Management Suite Portal beheerd. De nieuwe waarschuwings ervaring is geïntegreerd met verschillende services in Microsoft Azure, waaronder Log Analytics en wij hebben gevraagd om [uw waarschuwings regels uit de OMS-Portal naar Azure uit te breiden](alerts-extend.md). Om ervoor te zorgen dat klanten zo weinig mogelijk worden onderbroken, heeft het proces de programmatische interface niet gewijzigd voor de API voor het gebruik van [log Analytics-waarschuwingen](api-alerts.md) op basis van SavedSearch.
 
-Maar nu kondigt u voor Log Analytics gebruikers een echt Azure-programmatisch alternatief aan, [Azure Monitor - ScheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules), die ook een afspiegeling is van uw [Azure-facturering - voor logboekwaarschuwingen](alerts-unified-log.md#pricing-and-billing-of-log-alerts). Zie [Logboekwaarschuwingen beheren met Azure Resource Template](alerts-log.md#managing-log-alerts-using-azure-resource-template) en [Logboekwaarschuwingen beheren met PowerShell](alerts-log.md#managing-log-alerts-using-powershell)voor meer informatie over het beheren van uw logboekwaarschuwingen met de API.
+Maar nu meldt u zich aan Log Analytics waarschuwt gebruikers een echte Azure-programmatische, [Azure monitor-SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules), die ook overeenkomt met uw [Azure-facturering-voor logboek waarschuwingen](alerts-unified-log.md#pricing-and-billing-of-log-alerts). Zie [logboek waarschuwingen beheren met Azure-resource sjabloon](alerts-log.md#managing-log-alerts-using-azure-resource-template) en [logboek waarschuwingen beheren met Power shell](alerts-log.md#managing-log-alerts-using-powershell)voor meer informatie over het beheren van uw logboek waarschuwingen met behulp van de API.
 
-## <a name="benefits-of-switching-to-new-azure-api"></a>Voordelen van overschakelen naar nieuwe Azure API
+## <a name="benefits-of-switching-to-new-azure-api"></a>Voor delen van het overschakelen naar nieuwe Azure API
 
-Er zijn verschillende voordelen van het maken en beheren van waarschuwingen met behulp van [de geplande QueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) via de verouderde Log Analytics Alert [API;](api-alerts.md) we hebben hieronder enkele van de belangrijkste opgesomd:
+Er zijn verschillende voor delen van het maken en beheren van waarschuwingen met behulp van de [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) via de [verouderde API voor log Analytics waarschuwingen](api-alerts.md) Hieronder ziet u enkele van de belangrijkste items:
 
-- Mogelijkheid om [logboekzoeken](../log-query/cross-workspace-query.md) in waarschuwingsregels te vergelijken en externe bronnen zoals Log Analytics-werkruimten of zelfs Application Insights-apps te beheren
-- Wanneer meerdere velden worden gebruikt om query groep te worden, kan de [API-gebruiker van scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) opgeven welk veld moet worden samengevoegd in Azure-portal
-- Logboekwaarschuwingen die zijn gemaakt met [de GEPLANDEQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) kunnen tot 48 uur zijn gedefinieerd en gegevens voor langere tijd ophalen dan voorheen
-- Maak waarschuwingsregels in één opname als één resource zonder dat u drie niveaus van resources hoeft te maken zoals bij [de verouderde Api voor Logboekanalysewaarschuwing](api-alerts.md)
-- Eén programmatische interface voor alle varianten van op query's gebaseerde logboekwaarschuwingen in Azure - nieuwe [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) kan worden gebruikt om regels voor Log Analytics en Application Insights te beheren
-- Uw logboekwaarschuwingen beheren met [Powershell-cmdlets](alerts-log.md#managing-log-alerts-using-powershell)
-- Alle nieuwe log alert functionaliteit en toekomstige ontwikkeling zal alleen beschikbaar zijn via de nieuwe [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)
+- De mogelijkheid om [logboek registratie in meerdere werk ruimten](../log-query/cross-workspace-query.md) in waarschuwings regels te doorzoeken en externe resources, zoals log Analytics werk ruimten of zelfs Application Insights apps, te beslaan
+- Wanneer meerdere velden worden gebruikt om in de query te groeperen, kan met behulp van de [SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) -gebruiker opgeven in welk veld moet worden geaggregeerd: in azure Portal
+- Logboek waarschuwingen die zijn gemaakt met behulp van de [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) kunnen een periode hebben die maxi maal 48 uur is gedefinieerd en het ophalen van gegevens voor langere tijd dan vóór
+- Waarschuwings regels in één afbeelding maken als één resource zonder dat u drie niveaus van resources hoeft te maken, net als bij een [verouderde log Analytics-waarschuwings-API](api-alerts.md)
+- Eén programmatische interface voor alle varianten van op query's gebaseerde logboek waarschuwingen in Azure: de nieuwe [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) kan worden gebruikt voor het beheren van regels voor Log Analytics en Application Insights
+- Uw logboek waarschuwingen beheren met [Power shell-cmdlets](alerts-log.md#managing-log-alerts-using-powershell)
+- Alle nieuwe functionaliteit voor logboek waarschuwingen en toekomstige ontwikkeling is alleen beschikbaar via de nieuwe [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)
 
-## <a name="process-of-switching-from-legacy-log-alerts-api"></a>Proces van overschakelen van verouderde API logboekwaarschuwingen
+## <a name="process-of-switching-from-legacy-log-alerts-api"></a>Proces van overschakelen van verouderde API voor logboek waarschuwingen
 
-Gebruikers kunnen gratis [de verouderde Log Analytics Alert API](api-alerts.md) of de nieuwe [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)gebruiken. Waarschuwingsregels die door een api zijn gemaakt, *kunnen alleen door dezelfde API worden beheerd,* evenals vanuit azure-portal. Azure Monitor blijft standaard [de verouderde Log Analytics Alert API](api-alerts.md) gebruiken voor het maken van een nieuwe waarschuwingsregel van Azure-portal voor bestaande werkruimten van Log Analytics. Zoals [aangekondigd nieuwe Log-werkruimte die op of na 1 juni 2019](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/) is gemaakt, gebruikt u automatisch standaard de nieuwe geplande Api Voor [QueryRules,](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) inclusief in azure-portal.
+Gebruikers kunnen gebruikmaken van een [verouderde API voor log Analytics waarschuwingen](api-alerts.md) of de nieuwe [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Waarschuwings regels die door ofwel API zijn gemaakt, kunnen *worden beheerd met dezelfde API* , evenals uit Azure Portal. Azure Monitor wordt standaard [verouderde log Analytics waarschuwings-API](api-alerts.md) blijven gebruiken voor het maken van een nieuwe waarschuwings regel van Azure portal voor bestaande werk ruimten van log Analytics. Als [aangekondigde nieuwe logboek werkruimte die is gemaakt op of na 1 juni 2019,](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/) wordt automatisch nieuwe [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) gebruikt, met inbegrip van Azure Portal.
 
-De effecten van de overgang van voorkeur naar scheduledQueryRules API worden hieronder gecompileerd:
+De gevolgen van de switch van de voor keur voor de scheduledQueryRules-API worden hieronder opgesteld:
 
-- Alle interacties voor het beheren van logboekwaarschuwingen via programmatische interfaces moeten nu worden uitgevoerd met behulp van [scheduledQueryRules.](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) Zie [voorbeeldgebruik via Azure Resource Template](alerts-log.md#managing-log-alerts-using-azure-resource-template) en [voorbeeldgebruik via PowerShell](alerts-log.md#managing-log-alerts-using-powershell) voor meer informatie.
-- Elke nieuwe logalertregel die is gemaakt in Azure-portal, wordt alleen gemaakt met behulp van [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) en gebruikers in staat stellen om de [extra functionaliteit van nieuwe API](#benefits-of-switching-to-new-azure-api) via Azure-portal te gebruiken
-- De ernst voor logboekwaarschuwingsregels wordt verschoven van: *Kritiek, Waarschuwing & Informatie ,* naar *Ernstwaarden van 0, 1 & 2*. Samen met de optie om waarschuwingsregels te maken/bijwerken met ernst 3 en 4 ook.
+- Alle interacties die worden uitgevoerd voor het beheer van logboek waarschuwingen via programmatische interfaces, moeten nu worden uitgevoerd met behulp van [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) . Zie voor meer informatie, voor [beeld van gebruik via een Azure-resource sjabloon](alerts-log.md#managing-log-alerts-using-azure-resource-template) en voor [beeld gebruik via Power shell](alerts-log.md#managing-log-alerts-using-powershell)
+- Nieuwe waarschuwings regels voor logboeken die zijn gemaakt in Azure Portal, worden alleen gemaakt met [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) en toestaan dat gebruikers de [extra functionaliteit van nieuwe API](#benefits-of-switching-to-new-azure-api) via Azure Portal gebruiken
+- De ernst van de regels voor logboek waarschuwingen verschuift van: *kritiek, waarschuwing & informatie*, naar *Ernst waarden van 0, 1 & 2*. En de optie voor het maken/bijwerken van waarschuwings regels met Ernst 3 en 4.
 
-Het proces van het verplaatsen van waarschuwingsregels van [de verouderde Log Analytics Alert API](api-alerts.md) houdt op geen enkele manier het wijzigen van uw waarschuwingsdefinitie, query of configuratie in. Uw waarschuwingsregels en controle worden niet beïnvloed en de waarschuwingen worden niet gestopt of worden geblokkeerd, tijdens of na de switch. De enige veranderingen zijn:
+Door het proces van het verplaatsen van waarschuwings regels van de [verouderde log Analytics-waarschuwings-API](api-alerts.md) hoeft u de waarschuwingen definitie,-query of-configuratie op geen enkele manier te wijzigen. Uw waarschuwings regels en controle worden niet beïnvloed en de waarschuwingen worden niet gestopt of niet meer tijdens of na de switch. De enige wijzigingen zijn:
 
-- Een wijziging in api-voorkeur en toegang tot uw regels via een nieuwe API.
-- Een gewijzigde waarschuwingsregelbron URI met de id's die worden gebruikt in de verouderde `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`Log Analytics Alert [API](api-alerts.md) in plaats van de naam van de waarschuwingsregel in deze structuur . De weergavenaam van de waarschuwingsregel blijft ongewijzigd.
+- Een wijziging in de API-voor keur en toegang tot uw regels via een nieuwe API.
+- Een gewijzigde resource-URI voor een waarschuwings regel met de Id's die worden gebruikt in de [verouderde API voor log Analytics waarschuwingen](api-alerts.md) in `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`plaats van de naam van de waarschuwings regel in deze structuur. De weergave naam van de waarschuwings regel blijft ongewijzigd.
 
-Elke klant die vrijwillig wil overschakelen naar de nieuwe [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) en het gebruik van de [verouderde Log Analytics Alert API](api-alerts.md)wil blokkeren; kan dit doen door een PUT-aanroep uit te voeren op de onderstaande API om alle waarschuwingsregels te schakelen die zijn gekoppeld aan de specifieke Log Analytics-werkruimte.
+Elke klant die vrijwillig wil overschakelen naar de nieuwe [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) en het gebruik van de [verouderde log Analytics alert-API](api-alerts.md)wilt blok keren. kan dit doen door een PUT-aanroep uit te voeren op de onderstaande API om alle waarschuwings regels te wijzigen die zijn gekoppeld aan de specifieke Log Analytics-werk ruimte.
 
 ```
 PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
-Met aanvraaglichaam met de onderstaande JSON.
+Met de aanvraag tekst die de onderstaande JSON bevat.
 
 ```json
 {
@@ -66,14 +66,14 @@ Met aanvraaglichaam met de onderstaande JSON.
 }
 ```
 
-De API is ook toegankelijk via een PowerShell-opdrachtregel met [ARMClient,](https://github.com/projectkudu/ARMClient)een open-source opdrachtregelhulpprogramma dat het inroepen van de Azure Resource Manager API vereenvoudigt. Zoals hieronder wordt geïllustreerd, u in voorbeeld PUT-oproep met behulp van ARMclient-tool alle waarschuwingsregels schakelen die zijn gekoppeld aan de specifieke Log Analytics-werkruimte.
+De API kan ook worden geopend vanuit een Power shell-opdracht regel met behulp van [ARMClient](https://github.com/projectkudu/ARMClient), een open-source opdracht regel programma dat het aanroepen van de Azure Resource Manager-API vereenvoudigt. Zoals hieronder wordt beschreven, kunt u met behulp van de ARMclient-functie aanroepen gebruiken om alle waarschuwings regels te wijzigen die zijn gekoppeld aan de specifieke Log Analytics-werk ruimte.
 
 ```powershell
 $switchJSON = '{"scheduledQueryRulesEnabled": "true"}'
 armclient PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview $switchJSON
 ```
 
-Als de overstap van alle waarschuwingsregels in de werkruimte Log Analytics om nieuwe [geplandeQueryregels](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) te gebruiken is geslaagd, wordt het volgende antwoord weergegeven.
+Als overschakelen van alle waarschuwings regels in de Log Analytics werk ruimte om nieuwe [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) te gebruiken is geslaagd, wordt de volgende reactie gegeven.
 
 ```json
 {
@@ -82,19 +82,19 @@ Als de overstap van alle waarschuwingsregels in de werkruimte Log Analytics om n
 }
 ```
 
-Gebruikers kunnen ook de huidige status van uw Log Analytics-werkruimte controleren en zien of deze is ingeschakeld om [alleen scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) te gebruiken. Om te controleren, kunnen gebruikers een GET-oproep uitvoeren op de onderstaande API.
+Gebruikers kunnen ook de huidige status van uw Log Analytics-werk ruimte controleren en zien of deze al dan niet is overgeschakeld om alleen [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) te gebruiken. Om te controleren kunnen gebruikers een GET-aanroep uitvoeren op de onderstaande API.
 
 ```
 GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
-Zie het onderstaande voorbeeld om het bovenstaande uit te voeren in de opdrachtregel PowerShell met behulp van het gereedschap [ARMClient.](https://github.com/projectkudu/ARMClient)
+Zie het onderstaande voor beeld als u het bovenstaande wilt uitvoeren met behulp van de Power shell-opdracht regel met het hulp programma [ARMClient](https://github.com/projectkudu/ARMClient) .
 
 ```powershell
 armclient GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
-Als de opgegeven Werkruimte Log Analytics is overgeschakeld naar [alleen scheduledQueryRules.](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) dan is het antwoord JSON zal worden zoals hieronder vermeld.
+Als de opgegeven Log Analytics werk ruimte is overgeschakeld om alleen [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) te gebruiken; vervolgens wordt de JSON van de reactie zoals hieronder weer gegeven.
 
 ```json
 {
@@ -102,7 +102,7 @@ Als de opgegeven Werkruimte Log Analytics is overgeschakeld naar [alleen schedul
     "scheduledQueryRulesEnabled" : true
 }
 ```
-Als de opgegeven werkruimte Log-analytische nog niet is ingeschakeld om [alleen scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) te gebruiken. dan is het antwoord JSON zal worden zoals hieronder vermeld.
+Als de opgegeven log analytic-werk ruimte nog niet is overgeschakeld om alleen [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) te gebruiken; vervolgens wordt de JSON van de reactie zoals hieronder weer gegeven.
 
 ```json
 {
@@ -113,6 +113,6 @@ Als de opgegeven werkruimte Log-analytische nog niet is ingeschakeld om [alleen 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [Azure Monitor - Logboekwaarschuwingen](alerts-unified-log.md).
-- Meer informatie over het maken van [logboekwaarschuwingen in Azure Alerts](alerts-log.md).
+- Meer informatie over de [waarschuwingen voor Azure monitor logboeken](alerts-unified-log.md).
+- Meer informatie over het maken [van logboek waarschuwingen in azure-waarschuwingen](alerts-log.md).
 - Meer informatie over de [Azure Alerts-ervaring](../../azure-monitor/platform/alerts-overview.md).

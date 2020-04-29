@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Toepassingen installeren in een schaalset met Azure PowerShell
+title: 'Zelf studie: toepassingen installeren in een schaalset met Azure PowerShell'
 description: Informatie over het gebruik van Azure PowerShell om toepassingen te installeren in een virtuele-machineschaalsets met de aangepaste scriptextensie
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 11/08/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 789b3ca6cf49bbecf7393c5c70b19cbb43dfd164
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81011258"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>Zelfstudie - Toepassingen installeren in een schaalset met Azure PowerShell
@@ -24,7 +24,7 @@ Als u toepassingen wilt uitvoeren op de exemplaren van een virtuele machine (VM)
 > * De aangepaste scriptextensie van Azure gebruiken
 > * Een actieve toepassing in een schaalset bijwerken
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 

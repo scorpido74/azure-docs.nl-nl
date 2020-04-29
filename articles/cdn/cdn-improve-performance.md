@@ -1,6 +1,6 @@
 ---
-title: Prestaties verbeteren door bestanden in Azure CDN te comprimeren | Microsoft Documenten
-description: Meer informatie over het verbeteren van de snelheid van bestandsoverdracht en het verbeteren van de prestaties van pagina's door uw bestanden in Azure CDN te comprimeren.
+title: Prestaties verbeteren door bestanden te comprimeren in Azure CDN | Microsoft Docs
+description: Meer informatie over het verbeteren van de snelheid van bestands overdracht en het verg Roten van de prestaties van de pagina laden door uw bestanden in Azure CDN te comprimeren.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,155 +15,155 @@ ms.topic: article
 ms.date: 02/28/2018
 ms.author: allensu
 ms.openlocfilehash: 7124dd40d4510674014afe012a8f40dcb5bb6153
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253761"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>De prestaties verbeteren door bestanden in Azure CDN te comprimeren
-Bestandscompressie is een eenvoudige en effectieve methode om de bestandsoverdrachtsnelheid te verbeteren en de prestaties van de paginabelasting te verhogen door de grootte van een bestand te verkleinen voordat het vanaf de server wordt verzonden. Bestandscompressie kan de bandbreedtekosten verlagen en uw gebruikers een responsievere ervaring bieden.
+Bestands compressie is een eenvoudige en efficiënte methode om de snelheid van de bestands overdracht te verbeteren en de prestaties van de pagina belasting te verhogen door de grootte van een bestand te verkleinen voordat het wordt verzonden vanaf de-server. Bestands compressie kan de bandbreedte kosten verlagen en biedt uw gebruikers een meer reactie tijd.
 
-Er zijn twee manieren om bestandscompressie in te schakelen:
+Er zijn twee manieren om bestands compressie in te scha kelen:
 
-- Compressie inschakelen op uw origin-server. In dit geval passeert Azure CDN de gecomprimeerde bestanden en levert deze aan clients die daarom vragen.
-- Compressie direct inschakelen op de CDN POP-servers *(compressie on the fly).* In dit geval comprimeert het CDN de bestanden en dient ze aan de eindgebruikers, zelfs als ze niet zijn gecomprimeerd door de origin-server.
+- Schakel compressie in op uw oorspronkelijke server. In dit geval worden de gecomprimeerde bestanden door Azure CDN door gegeven en worden deze geleverd aan clients die deze aanvragen.
+- Schakel compressie direct in op de CDN POP-servers (*compressie aan het vliegen*). In dit geval comprimeert het CDN de bestanden en worden ze naar de eind gebruikers gehandeld, zelfs als ze niet zijn gecomprimeerd door de oorspronkelijke server.
 
 > [!IMPORTANT]
-> Azure CDN-configuratiewijzigingen kunnen enige tijd duren voordat het netwerk wordt doorgegeven: 
+> Wijzigingen in de configuratie van Azure CDN kan enige tijd duren voordat het netwerk kan worden door gegeven: 
 > - Voor profielen van **Azure CDN Standard van Microsoft** is het doorgeven gewoonlijk binnen 10 minuten voltooid. 
 > - Profielen van **Azure CDN Standard van Akamai** worden doorgaans binnen één minuut doorgegeven. 
 > - Profielen van **Azure CDN Standard van Verizon** en **Azure CDN Premium van Verizon** worden normaal gesproken binnen 10 minuten doorgegeven. 
 > 
-> Als u compressie voor de eerste keer instelt voor uw CDN-eindpunt, u overwegen om 1 tot 2 uur te wachten voordat u problemen oplost om ervoor te zorgen dat de compressie-instellingen zijn doorgegeven aan de POP's.
+> Als u voor de eerste keer compressie voor uw CDN-eind punt instelt, moet u 1-2 uur wachten voordat u het probleem oplost om te controleren of de compressie-instellingen zijn door gegeven aan de Pop's.
 
 ## <a name="enabling-compression"></a>Compressie inschakelen
-De standaard- en premium CDN-lagen bieden dezelfde compressiefunctionaliteit, maar de gebruikersinterface verschilt. Zie [Azure CDN-overzicht](cdn-overview.md)voor meer informatie over de verschillen tussen standaard- en premium CDN-lagen.
+De standaard-en Premium-CDN-laag bieden dezelfde compressie functionaliteit, maar de gebruikers interface verschilt. Zie [Azure CDN Overview](cdn-overview.md)voor meer informatie over de verschillen tussen de standaard-en Premium-CDN-lagen.
 
 ### <a name="standard-cdn-profiles"></a>Standaard CDN-profielen 
 > [!NOTE]
-> Deze sectie is van toepassing op **Azure CDN Standard van Microsoft,** **Azure CDN Standard van Verizon**en Azure **CDN Standard van Akamai-profielen.**
+> Deze sectie is van toepassing op **Azure CDN Standard van micro soft**, **Azure CDN Standard van Verizon**en **Azure CDN Standard van Akamai** Profiles.
 > 
 > 
 
-1. Selecteer op de profielpagina van CDN het CDN-eindpunt dat u wilt beheren.
+1. Selecteer op de pagina CDN-profiel het CDN-eind punt dat u wilt beheren.
 
-    ![CDN-profieleindpunten](./media/cdn-file-compression/cdn-endpoints.png)
+    ![Eind punten van CDN-profiel](./media/cdn-file-compression/cdn-endpoints.png)
 
-    De cdn-eindpuntpagina wordt geopend.
-2. Selecteer **Compressie**.
+    De pagina van het CDN-eind punt wordt geopend.
+2. Selecteer **compressie**.
 
-    ![CDN-compressieselectie](./media/cdn-file-compression/cdn-compress-select-std.png)
+    ![CDN-compressie selectie](./media/cdn-file-compression/cdn-compress-select-std.png)
 
-    De compressiepagina wordt geopend.
-3. Selecteer **Aan** om compressie in te schakelen.
+    De compressie pagina wordt geopend.
+3. Selecteer **aan om compressie in te** scha kelen.
 
-    ![Opties voor cdn-bestandscompressie](./media/cdn-file-compression/cdn-compress-standard.png)
+    ![Opties voor compressie van CDN-bestand](./media/cdn-file-compression/cdn-compress-standard.png)
 4. Gebruik de standaard MIME-typen of wijzig de lijst door MIME-typen toe te voegen of te verwijderen.
 
    > [!TIP]
-   > Hoewel het mogelijk is, wordt het niet aanbevolen om compressie toe te passen op gecomprimeerde formaten. Bijvoorbeeld ZIP, MP3, MP4 of JPG.
+   > Hoewel het mogelijk is, wordt het niet aanbevolen compressie toe te passen op gecomprimeerde indelingen. Bijvoorbeeld: ZIP, MP3, MP4 of JPG.
    > 
 
    > [!NOTE]
-   > Het wijzigen van de standaardlijst met MIME-typen wordt momenteel niet ondersteund in Azure CDN Standard van Microsoft.
+   > Het wijzigen van de standaard lijst met MIME-typen wordt momenteel niet ondersteund in Azure CDN standaard van micro soft.
    > 
 
 5. Nadat u de wijzigingen hebt aangebracht, selecteert u **Opslaan**.
 
 ### <a name="premium-cdn-profiles"></a>Premium CDN-profielen
 > [!NOTE]
-> Deze sectie is alleen van toepassing op **Azure CDN Premium van Verizon-profielen.**
+> Deze sectie is alleen van toepassing op **Azure CDN Premium van Verizon** -profielen.
 > 
 
-1. Selecteer beheren op de profielpagina **van**CDN .
+1. Selecteer op de pagina CDN-profiel de optie **beheren**.
 
-    ![CDN Beheren selecteren](./media/cdn-file-compression/cdn-manage-btn.png)
+    ![CDN beheren selecteren](./media/cdn-file-compression/cdn-manage-btn.png)
 
-    Het CDN-beheerportaal wordt geopend.
-2. Plaats de plaats op het tabblad **HTTP Large** en plaats de plaats vervolgens boven de flyout **Cache-instellingen.** Selecteer **Compressie**.
+    De CDN-beheer portal wordt geopend.
+2. Beweeg de muis aanwijzer over het tabblad **http large** en Beweeg vervolgens de muis aanwijzer over de flyout met de **cache-instellingen** . Selecteer **compressie**.
 
-    ![CDN-compressieselectie](./media/cdn-file-compression/cdn-compress-select.png)
+    ![CDN-compressie selectie](./media/cdn-file-compression/cdn-compress-select.png)
 
-    De compressieopties worden weergegeven.
+    De compressie opties worden weer gegeven.
 
-    ![Opties voor cdn-bestandscompressie](./media/cdn-file-compression/cdn-compress-files.png)
-3. Compressie inschakelen door **Compressie ingeschakeld te**selecteren . Voer de MIME-typen in die u wilt comprimeren als een lijst met komma's (geen spaties) in het vak **Bestandstypen.**
+    ![Opties voor compressie van CDN-bestand](./media/cdn-file-compression/cdn-compress-files.png)
+3. Schakel compressie in door **compressie ingeschakeld**te selecteren. Voer in het vak **Bestands typen** de MIME-typen in die u wilt comprimeren als een door komma's gescheiden lijst (geen spaties).
 
    > [!TIP]
-   > Hoewel het mogelijk is, wordt het niet aanbevolen om compressie toe te passen op gecomprimeerde formaten. Bijvoorbeeld ZIP, MP3, MP4 of JPG.
+   > Hoewel het mogelijk is, wordt het niet aanbevolen compressie toe te passen op gecomprimeerde indelingen. Bijvoorbeeld: ZIP, MP3, MP4 of JPG.
    > 
 
-4. Nadat u de wijzigingen hebt aangebracht, selecteert u **Bijwerken**.
+4. Nadat u de wijzigingen hebt aangebracht, selecteert u **bijwerken**.
 
-## <a name="compression-rules"></a>Compressieregels
+## <a name="compression-rules"></a>Compressie regels
 
-### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Azure CDN-standaard uit Microsoft-profielen
+### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Azure CDN standaard van micro soft-profielen
 
-Voor **Azure CDN Standard van Microsoft-profielen** worden alleen in aanmerking komende bestanden gecomprimeerd. Om in aanmerking te komen voor compressie, moet een bestand:
-- Be van een MIME-type dat is [geconfigureerd voor compressie.](#enabling-compression)
+Voor **Azure CDN standaard van micro soft** -profielen worden alleen in aanmerking komende bestanden gecomprimeerd. Om in aanmerking te komen voor compressie, moet een bestand:
+- Een MIME-type zijn dat is [geconfigureerd voor compressie](#enabling-compression).
 - Groter zijn dan 1 KB
 - Kleiner zijn dan 8 MB
 
-Deze profielen ondersteunen de volgende compressiecoderingen:
-- gzip (GNU zip)
+Deze profielen ondersteunen de volgende compressie coderingen:
+- gzip (GNU-zip)
 - brotli 
 
-Als de aanvraag meer dan één compressietype ondersteunt, heeft brotlicompressie voorrang.
+Als de aanvraag meer dan één compressie type ondersteunt, heeft brotli-compressie prioriteit.
 
-Wanneer een aanvraag voor een asset gzip-compressie opgeeft en de aanvraag resulteert in een cachemiss, voert Azure CDN gzip-compressie van het item rechtstreeks uit op de POP-server. Daarna wordt het gecomprimeerde bestand vanuit de cache weergegeven.
+Wanneer een aanvraag voor een activum gzip-compressie specificeert en de aanvraag resulteert in een Missing in een cache, voert Azure CDN gzip-compressie van het element rechtstreeks op de POP-server uit. Daarna wordt het gecomprimeerde bestand vanuit de cache verwerkt.
 
 ### <a name="azure-cdn-from-verizon-profiles"></a>Azure CDN van Verizon-profielen
 
-Voor **Azure CDN Standard van Verizon** en Azure **CDN Premium uit Verizon-profielen** worden alleen in aanmerking komende bestanden gecomprimeerd. Om in aanmerking te komen voor compressie, moet een bestand:
+Voor **Azure CDN standaard van Verizon** en **Azure CDN Premium van Verizon** -profielen, worden alleen de bestanden gecomprimeerd die in aanmerking komen. Om in aanmerking te komen voor compressie, moet een bestand:
 - Groter zijn dan 128 bytes
 - Kleiner zijn dan 3 MB
 
-Deze profielen ondersteunen de volgende compressiecoderingen:
-- gzip (GNU zip)
-- Deflate
-- bzip2 bzip2
+Deze profielen ondersteunen de volgende compressie coderingen:
+- gzip (GNU-zip)
+- DEFLATE
+- bzip2
 - brotli 
 
-Als de aanvraag meer dan één compressietype ondersteunt, hebben deze compressietypen voorrang op brotlicompressie.
+Als de aanvraag meer dan één compressie type ondersteunt, hebben die compressie typen voor rang op brotli-compressie.
 
-Wanneer een aanvraag voor een asset brotlicompressie opgeeft (HTTP-header is) `Accept-Encoding: br`en de aanvraag resulteert in een cachemiss, voert Azure CDN brotli-compressie van het item rechtstreeks uit op de POP-server. Daarna wordt het gecomprimeerde bestand vanuit de cache weergegeven.
+Wanneer een aanvraag voor een Asset brotli compressie specificeert (HTTP- `Accept-Encoding: br`header is) en de aanvraag resulteert in een Missing in de cache, voert Azure CDN brotli-compressie van de Asset rechtstreeks op de pop-server uit. Daarna wordt het gecomprimeerde bestand vanuit de cache verwerkt.
 
-### <a name="azure-cdn-standard-from-akamai-profiles"></a>Azure CDN-standaard van Akamai-profielen
+### <a name="azure-cdn-standard-from-akamai-profiles"></a>Azure CDN standaard van Akamai-profielen
 
-Voor **Azure CDN Standard van Akamai-profielen** komen alle bestanden in aanmerking voor compressie. Een bestand moet echter een MIME-type zijn dat is [geconfigureerd voor compressie.](#enabling-compression)
+Voor **Azure CDN standaard van Akamai** -profielen, komen alle bestanden in aanmerking voor compressie. Een bestand moet echter een MIME-type zijn dat is [geconfigureerd voor compressie](#enabling-compression).
 
-Deze profielen ondersteunen alleen gzip-compressiecodering. Wanneer een profieleindpunt een gzip-gecodeerd bestand aanvraagt, wordt het altijd gevraagd bij de oorsprong, ongeacht het clientverzoek. 
+Deze profielen ondersteunen alleen gzip-compressie codering. Wanneer een profiel eindpunt een bestand met gzip-code ring aanvraagt, wordt het altijd aangevraagd vanuit de oorsprong, ongeacht de client aanvraag. 
 
-## <a name="compression-behavior-tables"></a>Compressiegedragstabellen
-In de volgende tabellen wordt het compressiegedrag van Azure CDN voor elk scenario beschreven:
+## <a name="compression-behavior-tables"></a>Tabellen voor compressie gedrag
+In de volgende tabellen wordt Azure CDN compressie gedrag voor elk scenario beschreven:
 
-### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>Compressie is uitgeschakeld of bestand komt niet in aanmerking voor compressie
-| Door de client aangevraagde indeling (via header Accepteren encoderen) | Bestandsindeling in cache | De CDN-reactie op de client | &nbsp; &nbsp; Opmerkingen&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>Compressie is uitgeschakeld of het bestand komt niet in aanmerking voor compressie
+| Door de client aangevraagde indeling (via Accept-Encoding-header) | Cache-bestands indeling | Het CDN-antwoord naar de client | &nbsp; &nbsp; Opmerkingen&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
 | Gecomprimeerd |Gecomprimeerd |Gecomprimeerd | |
-| Gecomprimeerd |Ongecomprimeerde |Ongecomprimeerde | |
-| Gecomprimeerd |Niet in de cache |Gecomprimeerd of niet-gecomprimeerd |De oorsprongsrespons bepaalt of CDN een compressie uitvoert. |
-| Ongecomprimeerde |Gecomprimeerd |Ongecomprimeerde | |
-| Ongecomprimeerde |Ongecomprimeerde |Ongecomprimeerde | |
-| Ongecomprimeerde |Niet in de cache |Ongecomprimeerde | |
+| Gecomprimeerd |Gecomprimeerde |Gecomprimeerde | |
+| Gecomprimeerd |Niet in cache |Gecomprimeerd of niet-gecomprimeerd |Het antwoord van de oorsprong bepaalt of CDN een compressie uitvoert. |
+| Gecomprimeerde |Gecomprimeerd |Gecomprimeerde | |
+| Gecomprimeerde |Gecomprimeerde |Gecomprimeerde | |
+| Gecomprimeerde |Niet in cache |Gecomprimeerde | |
 
-### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>Compressie is ingeschakeld en bestand komt in aanmerking voor compressie
-| Door de client aangevraagde indeling (via header Accepteren encoderen) | Bestandsindeling in cache | CDN-antwoord op de client | Opmerkingen |
+### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>Compressie is ingeschakeld en het bestand komt in aanmerking voor compressie
+| Door de client aangevraagde indeling (via Accept-Encoding-header) | Cache-bestands indeling | CDN-antwoord naar de client | Opmerkingen |
 | --- | --- | --- | --- |
-| Gecomprimeerd |Gecomprimeerd |Gecomprimeerd |CDN-transcodes tussen ondersteunde indelingen. |
-| Gecomprimeerd |Ongecomprimeerde |Gecomprimeerd |CDN voert een compressie uit. |
-| Gecomprimeerd |Niet in de cache |Gecomprimeerd |CDN voert een compressie uit als de oorsprong een niet-gecomprimeerd bestand retourneert. <br/>**Azure CDN van Verizon** passeert het niet-gecomprimeerde bestand op het eerste verzoek en comprimeert en caches het bestand voor volgende aanvragen. <br/>Bestanden met `Cache-Control: no-cache` de koptekst worden nooit gecomprimeerd. |
-| Ongecomprimeerde |Gecomprimeerd |Ongecomprimeerde |CDN voert een decompressie uit. |
-| Ongecomprimeerde |Ongecomprimeerde |Ongecomprimeerde | |
-| Ongecomprimeerde |Niet in de cache |Ongecomprimeerde | |
+| Gecomprimeerd |Gecomprimeerd |Gecomprimeerd |CDN transcodeert tussen ondersteunde indelingen. |
+| Gecomprimeerd |Gecomprimeerde |Gecomprimeerd |CDN voert een compressie uit. |
+| Gecomprimeerd |Niet in cache |Gecomprimeerd |CDN voert een compressie uit als de oorsprong een niet-gecomprimeerd bestand retourneert. <br/>**Azure CDN van Verizon** geeft het ongecomprimeerde bestand in de eerste aanvraag door en comprimeert het bestand voor volgende aanvragen en slaat het op in het cache geheugen. <br/>Bestanden met de `Cache-Control: no-cache` header worden nooit gecomprimeerd. |
+| Gecomprimeerde |Gecomprimeerd |Gecomprimeerde |CDN voert een decompressie uit. |
+| Gecomprimeerde |Gecomprimeerde |Gecomprimeerde | |
+| Gecomprimeerde |Niet in cache |Gecomprimeerde | |
 
 ## <a name="media-services-cdn-compression"></a>Media Services CDN-compressie
-Voor eindpunten die zijn ingeschakeld voor CDN-streaming van Media Services, is compressie standaard ingeschakeld voor de volgende MIME-typen: 
-- toepassing/vnd.ms-sstr+xml 
-- toepassing/streepje+xml
-- toepassing/vnd.apple.mpegurl
-- toepassing/f4m+xml 
+Voor eind punten die zijn ingeschakeld voor Media Services CDN-streaming, wordt compressie standaard ingeschakeld voor de volgende MIME-typen: 
+- application/vnd. MS-sstr + XML 
+- toepassing/streepje + XML
+- application/vnd. Apple. mpegurl
+- Application/F4M + XML 
 
 ## <a name="see-also"></a>Zie ook
 * [Problemen met CDN-bestandscompressie oplossen](cdn-troubleshoot-compression.md)    

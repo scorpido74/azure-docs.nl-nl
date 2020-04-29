@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning-werkruimten maken in de portal
+title: Azure Machine Learning-werk ruimten maken in de portal
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het maken, weergeven en verwijderen van Azure Machine Learning-werkruimten in de Azure-portal.
+description: Meer informatie over het maken, weer geven en verwijderen van Azure Machine Learning-werk ruimten in de Azure Portal.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,102 +11,102 @@ author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
 ms.openlocfilehash: 4b4b64bcca57e1dc98cdba10626597532ae1461c
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81269722"
 ---
-# <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning-werkruimten maken en beheren in de Azure-portal
+# <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning-werk ruimten in de Azure Portal maken en beheren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel maakt, bekijkt en verwijdert u [**Azure Machine Learning-werkruimten**](concept-workspace.md) in de Azure-portal voor [Azure Machine Learning.](overview-what-is-azure-ml.md)  De portal is de eenvoudigste manier om aan de slag te gaan met werkruimten, maar als uw behoeften veranderen of de vereisten voor automatisering te verhogen u ook maken en verwijderen van werkruimten [met behulp van de CLI,](reference-azure-machine-learning-cli.md)met [Python-code](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) of [via de VS Code extensie](tutorial-setup-vscode-extension.md).
+In dit artikel maakt, bekijkt en verwijdert u [**Azure machine learning-werk ruimten**](concept-workspace.md) in de Azure Portal voor [Azure machine learning](overview-what-is-azure-ml.md).  De portal is de eenvoudigste manier om aan de slag te gaan met werk ruimten, maar als uw behoeften wijzigen of vereisten voor automatisering verhogen, kunt u ook werk ruimten maken en verwijderen [met behulp van de CLI](reference-azure-machine-learning-cli.md), [met Python-code](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) of [via de VS code-extensie](tutorial-setup-vscode-extension.md).
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
-Als u een werkruimte wilt maken, hebt u een Azure-abonnement nodig. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning.](https://aka.ms/AMLFree)
+Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met behulp van de referenties voor uw Azure-abonnement. 
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met behulp van de referenties voor uw Azure-abonnement. 
 
-1. Selecteer in de linkerbovenhoek van de Azure-portal de optie **+ Een resource maken**.
+1. Selecteer in de linkerbovenhoek van Azure Portal **+ een resource maken**.
 
       ![Een nieuwe resource maken](./media/how-to-manage-workspace/create-workspace.gif)
 
-1. Gebruik de zoekbalk om **Machine Learning**te vinden.
+1. Gebruik de zoek balk om **machine learning**te vinden.
 
-1. Selecteer **Machine learning**.
+1. Selecteer **machine learning**.
 
-1. Selecteer Maken om te beginnen **in** het deelvenster **Machine learning.**
+1. Selecteer in het deel venster **machine learning** de optie **maken** om te beginnen.
 
-1. Geef de volgende informatie op om uw nieuwe werkruimte te configureren:
+1. Geef de volgende informatie op om uw nieuwe werk ruimte te configureren:
 
    Veld|Beschrijving 
    ---|---
-   Naam van de werkruimte |Voer een unieke naam in die uw werkruimte identificeert. In dit voorbeeld gebruiken we **docs-ws**. Namen moeten uniek zijn in de resourcegroep. Gebruik een naam die gemakkelijk te herinneren is en om te onderscheiden van werkruimten die door anderen zijn gemaakt. De naam van de werkruimte is hoofdletters ongevoelig.
+   Naam van de werkruimte |Voer een unieke naam in die uw werk ruimte identificeert. In dit voor beeld gebruiken we **docs-WS**. De namen moeten uniek zijn in de resource groep. Gebruik een naam die gemakkelijk kan worden ingetrokken en om onderscheid te maken tussen werk ruimten die door anderen zijn gemaakt. De naam van de werk ruimte is niet hoofdletter gevoelig.
    Abonnement |Selecteer het Azure-abonnement dat u wilt gebruiken.
-   Resourcegroep | Gebruik een bestaande resourcegroep in uw abonnement of voer een naam in om een nieuwe resourcegroep te maken. Een resourcegroep bevat gerelateerde resources voor een Azure-oplossing. In dit voorbeeld gebruiken we **docs-aml**. 
-   Locatie | Selecteer de locatie die het dichtst bij uw gebruikers staat en de gegevensbronnen om uw werkruimte te maken.
-   Werkruimte-editie | Selecteer **Basic** of **Enterprise**.  Deze werkruimteeditie bepaalt de functies waartoe u toegang en prijzen hebt. Meer informatie over [het aanbod van Basic- en Enterprise-edities](overview-what-is-azure-ml.md#sku). 
+   Resourcegroep | Gebruik een bestaande resourcegroep in uw abonnement of voer een naam in om een nieuwe resourcegroep te maken. Een resource groep bevat gerelateerde resources voor een Azure-oplossing. In dit voor beeld gebruiken we **docs-AML**. 
+   Locatie | Selecteer de locatie die het dichtst bij uw gebruikers ligt en de gegevens bronnen om uw werk ruimte te maken.
+   Werkruimte editie | Selecteer **Basic** of **Enter prise**.  Deze werk ruimte-editie bepaalt de functies waartoe u toegang hebt en de prijzen. Meer informatie over de [Basic-en Enter prise Edition-aanbiedingen](overview-what-is-azure-ml.md#sku). 
 
-    ![Uw werkruimte configureren](./media/how-to-manage-workspace/select-edition.png)
+    ![Uw werk ruimte configureren](./media/how-to-manage-workspace/select-edition.png)
 
-1. Wanneer u klaar bent met het configureren van de werkruimte, selecteert u **Controleren + Maken**.
-2. Bekijk de instellingen en breng eventuele aanvullende wijzigingen of correcties aan. Als u tevreden bent met de instellingen, selecteert u **Maken**.
+1. Wanneer u klaar bent met het configureren van de werk ruimte, selecteert u **controleren + maken**.
+2. Controleer de instellingen en breng eventuele aanvullende wijzigingen of correcties aan. Wanneer u tevreden bent met de instellingen, selecteert u **maken**.
 
    > [!Warning] 
-   > Het kan enkele minuten duren voordat uw werkruimte in de cloud is gemaakt.
+   > Het kan enkele minuten duren om uw werk ruimte in de cloud te maken.
 
-   Wanneer het proces is voltooid, wordt een bericht met een implementatiesucces weergegeven. 
+   Wanneer het proces is voltooid, wordt een bericht over een geslaagde implementatie weer gegeven. 
  
- 1. Als u de nieuwe werkruimte wilt weergeven, selecteert u **Ga naar resource**.
+ 1. Als u de nieuwe werk ruimte wilt weer geven, selecteert u **Ga naar resource**.
 
-### <a name="download-a-configuration-file"></a>Een configuratiebestand downloaden
+### <a name="download-a-configuration-file"></a>Een configuratie bestand downloaden
 
-1. Als u een [rekeninstantie](tutorial-1st-experiment-sdk-setup.md#azure)maakt, slaat u deze stap over.
+1. Als u een [reken instantie](tutorial-1st-experiment-sdk-setup.md#azure)wilt maken, slaat u deze stap over.
 
-1. Als u van plan bent code te gebruiken in uw lokale omgeving die verwijst naar deze werkruimte, selecteert u **Config.json downloaden** in de sectie **Overzicht** van de werkruimte.  
+1. Als u van plan bent code te gebruiken in uw lokale omgeving die verwijst naar deze werk ruimte, selecteert u **config. json downloaden** in het gedeelte **overzicht** van de werk ruimte.  
 
-   ![Download config.json](./media/how-to-manage-workspace/configure.png)
+   ![Config. json downloaden](./media/how-to-manage-workspace/configure.png)
    
-   Plaats het bestand in de directorystructuur met uw Python-scripts of Jupyter-notitieblokken. Het kan zich in dezelfde map bevinden, een submap met de naam *.azureml,* of in een bovenliggende map. Wanneer u een rekeninstantie maakt, wordt dit bestand voor u toegevoegd aan de juiste map op de vm.
+   Plaats het bestand in de mapstructuur met uw python-scripts of Jupyter-notebooks. Deze kan zich in dezelfde map bevindt, in een submap met de naam *. azureml*of in een bovenliggende map. Wanneer u een reken instantie maakt, wordt dit bestand voor u toegevoegd aan de juiste map op de virtuele machine.
 
-## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>Upgraden naar Enterprise-editie
+## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>Bijwerken naar Enter prise Edition
 
-U uw werkruimte upgraden van Basic edition naar Enterprise-editie om te profiteren van de verbeterde functies, zoals low-code-ervaringen en verbeterde beveiligingsfuncties.
+U kunt uw werk ruimte upgraden van de Basic Edition naar Enter prise Edition om gebruik te maken van de uitgebreide functies, zoals ervaringen met weinig code en verbeterde beveiligings functies.
 
-1. Meld u aan bij [Azure Machine Learning studio](https://ml.azure.com).
+1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com).
 
-1. Selecteer de werkruimte die u wilt upgraden.
+1. Selecteer de werk ruimte die u wilt bijwerken.
 
-1. Selecteer **Meer informatie** rechtsboven op de pagina.
+1. Selecteer in de rechter bovenhoek van de pagina **meer informatie** .
 
-   [![Een werkruimte](./media/how-to-manage-workspace/upgrade.png) bijwerken](./media/how-to-manage-workspace/upgrade.png#lightbox)
+   [![Een werk ruimte](./media/how-to-manage-workspace/upgrade.png) bijwerken](./media/how-to-manage-workspace/upgrade.png#lightbox)
 
-1. Selecteer **Upgrade** in het venster dat wordt weergegeven.
+1. Selecteer **upgrade** in het venster dat wordt weer gegeven.
 
 
 > [!IMPORTANT]
-> U een werkruimte voor een Enterprise-editie niet downgraden naar een werkruimte voor een Basiseditie. 
+> U kunt een Enter prise Edition-werk ruimte niet naar een Basic editie-werk ruimte downgradeen. 
 
-## <a name="find-a-workspace"></a><a name="view"></a>Een werkruimte zoeken
+## <a name="find-a-workspace"></a><a name="view"></a>Een werk ruimte zoeken
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-1. Typ **Machine learning**in het bovenste zoekveld .  
+1. Typ **machine learning**in het bovenste zoek veld.  
 
-1. Selecteer **Machine learning**.
+1. Selecteer **machine learning**.
 
-   ![Zoeken naar Azure Machine Learning-werkruimte](./media/how-to-manage-workspace/find-workspaces.png)
+   ![Zoeken naar Azure Machine Learning-werk ruimte](./media/how-to-manage-workspace/find-workspaces.png)
 
-1. Bekijk de lijst met gevonden werkruimten. U filteren op basis van abonnement, brongroepen en locaties.  
+1. Bekijk de lijst met werk ruimten die zijn gevonden. U kunt filteren op basis van abonnement, resource groepen en locaties.  
 
-1. Selecteer een werkruimte om de eigenschappen weer te geven.
+1. Selecteer een werk ruimte om de eigenschappen ervan weer te geven.
 
 ## <a name="delete-a-workspace"></a>Een werkruimte verwijderen
 
-Selecteer **Verwijderen** boven aan de werkruimte die u wilt verwijderen in de [Azure-portal.](https://portal.azure.com/)
+Selecteer in de [Azure Portal](https://portal.azure.com/) **verwijderen** boven aan de werk ruimte die u wilt verwijderen.
 
-:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Werkruimte verwijderen":::
+:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Werk ruimte verwijderen":::
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -114,24 +114,24 @@ Selecteer **Verwijderen** boven aan de werkruimte die u wilt verwijderen in de [
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-### <a name="resource-provider-errors"></a>Fouten in resourceprovider
+### <a name="resource-provider-errors"></a>Fouten van de resource provider
 
 [!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
 
-### <a name="moving-the-workspace"></a>De werkruimte verplaatsen
+### <a name="moving-the-workspace"></a>De werk ruimte verplaatsen
 
 > [!WARNING]
-> Het verplaatsen van uw Azure Machine Learning-werkruimte naar een ander abonnement of het verplaatsen van het eigen abonnement naar een nieuwe tenant wordt niet ondersteund. Dit kan fouten veroorzaken.
+> Het verplaatsen van uw Azure Machine Learning-werk ruimte naar een ander abonnement of het verplaatsen van het abonnement dat eigenaar is naar een nieuwe Tenant, wordt niet ondersteund. Dit kan fouten veroorzaken.
 
-### <a name="deleting-the-azure-container-registry"></a>Het Azure-containerregister verwijderen
+### <a name="deleting-the-azure-container-registry"></a>De Azure Container Registry verwijderen
 
-De Azure Machine Learning-werkruimte gebruikt Azure Container Registry (ACR) voor sommige bewerkingen. Het zal automatisch een ACR-exemplaar maken wanneer het er voor het eerst een nodig heeft.
+In de Azure Machine Learning-werk ruimte wordt Azure Container Registry (ACR) gebruikt voor bepaalde bewerkingen. Er wordt automatisch een ACR-exemplaar gemaakt wanneer dit voor het eerst nodig is.
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volg de volledige zelfstudie voor meer informatie over het gebruik van een werkruimte om modellen te bouwen, te trainen en te implementeren met Azure Machine Learning.
+Volg de zelf studie met volledige lengte voor meer informatie over het gebruik van een werk ruimte om modellen te bouwen, te trainen en te implementeren met Azure Machine Learning.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Modellen trainen](tutorial-train-models-with-aml.md)
+> [Zelf studie: modellen trainen](tutorial-train-models-with-aml.md)

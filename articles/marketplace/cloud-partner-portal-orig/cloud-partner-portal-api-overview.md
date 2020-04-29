@@ -1,6 +1,6 @@
 ---
-title: Referentie voor API-api's voor cloudpartners | Azure Marketplace
-description: Beschrijving van, voorwaarden om te gebruiken en lijst van marketplace API-bewerkingen.
+title: Cloud Partner-portal API-verwijzing | Azure Marketplace
+description: Beschrijving van, vereiste te gebruiken en lijst met Marketplace API-bewerkingen.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,39 +8,39 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: b9f698ea81830aaa8761c05012cf6843d07ad5a4
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81256413"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Naslaginformatie over Cloud Partner-portal-API
 
 > [!NOTE]
-> De API's van cloudpartnerportalen zijn geïntegreerd met het Partner Center en blijven werken nadat uw aanbiedingen zijn gemigreerd naar partnercentrum. De integratie brengt kleine veranderingen met zich mee. Bekijk de [wijzigingen in CPP-API's](#changes-to-cpp-apis-after-the-migration-to-partner-center) die in dit document worden weergegeven om ervoor te zorgen dat uw code blijft werken na de migratie naar partnercentrum.
+> De Cloud Partner-portal-Api's zijn geïntegreerd met partner centrum en blijven werken nadat uw aanbiedingen zijn gemigreerd naar het partner centrum. De integratie introduceert kleine wijzigingen. Bekijk de [wijzigingen in CCP-api's](#changes-to-cpp-apis-after-the-migration-to-partner-center) die in dit document worden vermeld om te controleren of uw code blijft werken na de migratie naar het partner centrum.
 
-De API's van Cloud Partner Portal REST maken het programmatisch ophalen en manipuleren van workloads, aanbiedingen en uitgeversprofielen mogelijk. De API's gebruiken op rollen gebaseerd toegangscontrole (RBAC) om de juiste machtigingen af te dwingen tijdens het verwerken.
+Met de Cloud Partner-portal REST Api's kan werk belastingen, aanbiedingen en Publisher-profielen programmatisch worden opgehaald en gemanipuleerd. De Api's gebruiken op rollen gebaseerd toegangs beheer (RBAC) om de juiste machtigingen af te dwingen tijdens de verwerkings tijd.
 
-Deze referentie bevat de technische details voor de API's van cloudpartnerportal REST. De payload monsters in dit document zijn alleen ter referentie en zijn onderhevig aan verandering als nieuwe functionaliteit wordt toegevoegd.
+Deze Naslag informatie bevat technische Details voor de Cloud Partner-portal REST-Api's. De payload-voor beelden in dit document zijn alleen ter referentie en zijn onderhevig aan wijzigingen wanneer er nieuwe functionaliteit wordt toegevoegd.
 
-## <a name="prerequisites-and-considerations"></a>Voorwaarden en overwegingen
+## <a name="prerequisites-and-considerations"></a>Vereisten en overwegingen
 
-Voordat u de API's gebruikt, moet u het:
+Voordat u de Api's kunt gebruiken, moet u het volgende controleren:
 
-- Het artikel [Voorwaarden](./cloud-partner-portal-api-prerequisites.md) voor meer informatie over het toevoegen van een serviceprincipal aan uw account en het krijgen van een Azure Active Directory-toegangstoken (Azure AD) voor verificatie.
-- De twee [strategieën voor gelijktijdigheidscontrole](./cloud-partner-portal-api-concurrency-control.md) die beschikbaar zijn om deze API's aan te roepen.
-- Aanvullende [API-overwegingen,](./cloud-partner-portal-api-considerations.md)zoals versiebeheer en foutafhandeling.
+- Het artikel [vereisten](./cloud-partner-portal-api-prerequisites.md) vindt u informatie over het toevoegen van een service-principal aan uw account en het verkrijgen van een toegangs token voor Azure Active Directory (Azure AD) voor verificatie.
+- De twee [gelijktijdigheids beheer](./cloud-partner-portal-api-concurrency-control.md) strategieën die beschikbaar zijn voor het aanroepen van deze api's.
+- Aanvullende API- [overwegingen](./cloud-partner-portal-api-considerations.md), zoals versie beheer en fout afhandeling.
 
-## <a name="changes-to-cpp-apis-after-the-migration-to-partner-center"></a>Wijzigingen in CPP API's na de migratie naar partnercentrum
+## <a name="changes-to-cpp-apis-after-the-migration-to-partner-center"></a>Wijzigingen in CCP-Api's na de migratie naar partner Center
 
-| **Api** | **Beschrijving wijzigen** | **Impact** |
+| **API** | **Beschrijving wijzigen** | **Impact** |
 | ------- | ---------------------- | ---------- |
-| POST publiceren, GoLive, Annuleren | Voor gemigreerde aanbiedingen heeft de antwoordkop een andere indeling, maar blijft deze op dezelfde manier werken, waarbij een relatief pad wordt aangenomen om de bewerkingsstatus op te halen. | Wanneer u een van de bijbehorende POST-aanvragen voor een aanbieding verzendt, heeft de koptekst Locatie een van de twee indelingen, afhankelijk van de migratiestatus van de aanbieding:<ul><li>Niet-gemigreerde aanbiedingen<br>`/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Gemigreerde aanbiedingen<br>`/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li> |
-| GET-bewerking | Voor aanbiedingstypen die eerder het veld 'melding-e-mail' in het antwoord ondersteunden, wordt dit veld afgeschaft en niet meer geretourneerd voor gemigreerde aanbiedingen. | Voor gemigreerde aanbiedingen sturen we geen meldingen meer naar de lijst met e-mails die in de aanvragen zijn opgegeven. In plaats daarvan wordt de API-service afgestemd op het e-mailproces van meldingen in Partnercentrum om e-mails te verzenden. In het bijzonder worden meldingen verzonden naar het e-mailadres dat is ingesteld in de sectie Contactgegevens van de verkoper van uw accountinstellingen in het Partnercentrum, om u op de hoogte te stellen van de voortgang van de werking.<br><br>Controleer het e-mailadres dat is ingesteld in de sectie Contactgegevens van de verkoper van je [accountinstellingen](https://partner.microsoft.com/dashboard/account/management) in het Partnercentrum om te controleren of de juiste e-mail wordt verstrekt voor meldingen.  |
+| POST publiceren, GoLive, annuleren | Voor gemigreerde aanbiedingen heeft de reactie header een andere indeling, maar blijft op dezelfde manier werken, waarbij een relatief pad wordt opgegeven om de bewerkings status op te halen. | Bij het verzenden van een van de bijbehorende POST-aanvragen voor een aanbieding heeft de locatie header een van de twee notaties, afhankelijk van de migratie status van de aanbieding:<ul><li>Niet-gemigreerde aanbiedingen<br>`/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Gemigreerde aanbiedingen<br>`/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li> |
+| GET-bewerking | Voor aanbiedings typen waarvoor eerder het veld meldings-e in het antwoord wordt ondersteund, wordt dit veld afgeschaft en wordt het niet langer geretourneerd voor gemigreerde aanbiedingen. | Voor gemigreerde aanbiedingen worden er geen meldingen meer verzonden naar de lijst met e-mail berichten die in de aanvragen zijn opgegeven. In plaats daarvan wordt de API-service uitgelijnd met het e-mail proces voor meldingen in het partner centrum om e-mail berichten te verzenden. In het bijzonder worden meldingen verzonden naar het e-mail adres dat is ingesteld in het gedeelte contact gegevens van de verkoper van uw account instellingen in partner centrum om u te informeren over de voortgang van de bewerking.<br><br>Controleer het e-mail adres dat is ingesteld in het gedeelte contact gegevens van de verkoper van uw [account instellingen](https://partner.microsoft.com/dashboard/account/management) in partner centrum om te controleren of het juiste e-mail bericht is ontvangen voor meldingen.  |
 
 ## <a name="common-tasks"></a>Algemene taken
 
-Deze verwijzing bevat API's om de volgende algemene taken uit te voeren.
+Deze referentie Details Api's om de volgende algemene taken uit te voeren.
 
 ### <a name="offers"></a>Aanbiedingen
 
@@ -61,7 +61,7 @@ Deze verwijzing bevat API's om de volgende algemene taken uit te voeren.
 
 ### <a name="other-tasks"></a>Overige taken
 
-- [Prijsinstellen voor aanbiedingen voor virtuele machines](./cloud-partner-portal-api-setting-price.md)
+- [Prijzen voor aanbiedingen van virtuele machines instellen](./cloud-partner-portal-api-setting-price.md)
 
 ### <a name="troubleshooting"></a>Problemen oplossen
 

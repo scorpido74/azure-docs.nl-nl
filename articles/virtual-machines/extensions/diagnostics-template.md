@@ -1,6 +1,6 @@
 ---
-title: Monitoring & diagnose toevoegen aan een virtuele Azure-machine
-description: Gebruik een Azure Resource Manager-sjabloon om een nieuwe virtuele Windows-machine te maken met Azure-diagnostische extensie.
+title: Bewakings & diagnostische gegevens toevoegen aan een virtuele machine van Azure
+description: Een Azure Resource Manager sjabloon gebruiken om een nieuwe virtuele Windows-machine te maken met de Azure Diagnostics-extensie.
 services: virtual-machines-windows
 documentationcenter: ''
 author: mimckitt
@@ -16,19 +16,19 @@ ms.date: 05/31/2017
 ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d100f054da5f82bc4dea51e054a28cca07f5de7b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81258827"
 ---
-# <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Controle en diagnose gebruiken met een Windows VM- en Azure Resource Manager-sjablonen
-De Azure Diagnostics Extension biedt de bewakings- en diagnostische mogelijkheden op een windows-gebaseerde Virtuele Machine op Azure. U deze mogelijkheden op de virtuele machine inschakelen door de extensie op te nemen als onderdeel van de sjabloon Azure Resource Manager. Zie [Azure Resource Manager-sjablonen ontwerpen met VM-extensies](../windows/template-description.md#extensions) voor meer informatie over het opnemen van een extensie als onderdeel van een sjabloon voor virtuele machines. In dit artikel wordt beschreven hoe u de Azure Diagnostics-extensie toevoegen aan een sjabloon voor virtuele windows-machines.  
+# <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Bewaking en diagnose gebruiken met een Windows-VM en Azure Resource Manager sjablonen
+De uitbrei ding van de Azure Diagnostics biedt de bewakings-en diagnostische mogelijkheden van een Azure virtual machine op basis van Windows. U kunt deze mogelijkheden inschakelen op de virtuele machine door de uitbrei ding op te nemen als onderdeel van de Azure Resource Manager sjabloon. Zie [Azure Resource Manager sjablonen ontwerpen met VM-extensies](../windows/template-description.md#extensions) voor meer informatie over het opnemen van uitbrei dingen als onderdeel van een sjabloon voor een virtuele machine. In dit artikel wordt beschreven hoe u de Azure Diagnostics extensie kunt toevoegen aan een virtuele-machine sjabloon van Windows.  
 
-## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>De Azure Diagnostics-extensie toevoegen aan de VM-brondefinitie
-Als u de diagnostische extensie op een Virtuele Windows-machine wilt inschakelen, moet u de extensie toevoegen als VM-bron in de sjabloon Resourcebeheer.
+## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>De extensie Azure Diagnostics toevoegen aan de resource definitie van de virtuele machine
+Als u de uitbrei ding voor diagnostische gegevens op een virtuele Windows-machine wilt inschakelen, moet u de uitbrei ding toevoegen als een VM-resource in de Resource Manager-sjabloon.
 
-Voeg voor een eenvoudige Virtuele Machine op basis van Resource Manager de extensieconfiguratie toe aan de *array resources* voor de virtuele machine: 
+Voor een virtuele machine op basis van Resource Manager voegt u de extensie configuratie toe aan de *resource* matrix voor de virtuele machine: 
 
 ```json
 "resources": [
@@ -62,29 +62,29 @@ Voeg voor een eenvoudige Virtuele Machine op basis van Resource Manager de exten
 ]
 ```
 
-Een andere veelvoorkomende conventie is het toevoegen van de extensieconfiguratie aan het knooppunt rootresources van de sjabloon in plaats van deze te definiëren onder het resources-knooppunt van de virtuele machine. Met deze benadering moet u expliciet een hiërarchische relatie opgeven tussen de extensie en de virtuele machine met de *naam-* en *typewaarden.* Bijvoorbeeld: 
+Een andere gang bare Conventie is het toevoegen van de extensie configuratie op het knoop punt hoofd resources van de sjabloon in plaats van deze te definiëren onder het knoop punt resources van de virtuele machine. Met deze methode moet u expliciet een hiërarchische relatie opgeven tussen de extensie en de virtuele machine met de *naam* en *type* waarden. Bijvoorbeeld: 
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
 "type": "Microsoft.Compute/virtualMachines/extensions",
 ```
 
-De extensie is altijd gekoppeld aan de virtuele machine, u deze direct definiëren onder het resourceknooppunt van de virtuele machine of deze op het basisniveau definiëren en de hiërarchische naamgevingsconventie gebruiken om deze te koppelen aan de virtuele machine.
+De uitbrei ding is altijd gekoppeld aan de virtuele machine, u kunt deze rechtstreeks definiëren onder het resource knooppunt van de virtuele machine of deze definiëren op basis niveau en de hiërarchische naamgevings Conventie gebruiken om deze te koppelen aan de virtuele machine.
 
-Voor virtuele machineschaalsets wordt de configuratie van extensies opgegeven in de eigenschap *extensionProfile* van de *VirtualMachineProfile*.
+Voor Virtual Machine Scale Sets is de extensie configuratie opgegeven in de eigenschap *extensionProfile* van de *VirtualMachineProfile*.
 
-De *eigenschap publisher* met de waarde van **Microsoft.Azure.Diagnostics** en de *eigenschap type* met de waarde van **IaaSDiagnostics** identificeren op unieke wijze de Azure Diagnostics-extensie.
+De eigenschap *Uitgever* met de waarde van **micro soft. Azure. Diagnostics** en de eigenschap *type* met de waarde **IaaSDiagnostics** identificeert de uitbrei ding van de Azure Diagnostics uniek.
 
-De waarde van de *eigenschap naam* kan worden gebruikt om te verwijzen naar de extensie in de resourcegroep. Als u deze specifiek instelt op **Microsoft.Insights.VMDiagnosticsSettings,** kan deze eenvoudig worden geïdentificeerd door de Azure-portal, zodat de bewakingsdiagrammen correct worden weergegeven in de Azure-portal.
+De waarde van de eigenschap *name* kan worden gebruikt om te verwijzen naar de uitbrei ding in de resource groep. Door dit specifiek in te stellen op **micro soft. Insights. VMDiagnosticsSettings** kan het eenvoudig worden geïdentificeerd door de Azure Portal ervoor te zorgen dat de bewakings grafieken correct worden weer gegeven in de Azure Portal.
 
-De *typeHandlerVersion* geeft de versie aan van de extensie die u wilt gebruiken. Het instellen van de secundaire versie van *autoUpgradeMinorVersion* **op true** zorgt ervoor dat u de nieuwste Secundaire versie van de beschikbare extensie krijgt. Het is sterk aanbevolen dat u altijd *autoUpgradeMinorVersion* instelt om altijd **waar** te zijn, zodat u altijd de nieuwste beschikbare diagnostische extensie gebruiken met alle nieuwe functies en bugfixes. 
+De *typeHandlerVersion* geeft de versie van de extensie aan die u wilt gebruiken. Als u *autoUpgradeMinorVersion* secundaire versie instelt op **True** , zorgt u ervoor dat u de meest recente secundaire versie van de uitbrei ding krijgt die beschikbaar is. Het wordt nadrukkelijk aanbevolen om *autoUpgradeMinorVersion* altijd in te stellen op **True** , zodat u altijd de meest recente beschik bare diagnostische uitbrei ding kunt gebruiken met alle nieuwe functies en oplossingen voor fouten. 
 
-Het *instellingen-element* bevat configuratieseigenschappen voor de extensie die kunnen worden ingesteld en teruggelezen van de extensie (soms aangeduid als openbare configuratie). De eigenschap *xmlcfg* bevat xml-configuratie voor de diagnostische logboeken, prestatiemeteritems enz. Zie [Configuratieschema voor diagnostische gegevens](https://msdn.microsoft.com/library/azure/dn782207.aspx) voor meer informatie over het xml-schema zelf. Een gangbare praktijk is om de werkelijke xml-configuratie op te slaan als een variabele in de Azure Resource Manager-sjabloon en vervolgens te koppelen en te coderen64 om de waarde voor *xmlcfg*in te stellen. Zie de sectie over [configuratievariabelen](#diagnostics-configuration-variables) voor diagnostiek om meer te weten te komen over het opslaan van de xml in variabelen. De eigenschap *storageAccount* geeft de naam op van het opslagaccount waarnaar diagnostische gegevens worden overgedragen. 
+Het element *Settings* bevat configuratie-eigenschappen voor de uitbrei ding die kan worden ingesteld en gelezen via de extensie (ook wel open bare configuratie genoemd). De eigenschap *xmlcfg* bevat op XML gebaseerde configuratie voor de diagnostische logboeken, prestatie meter items etc. deze worden verzameld door de Diagnostics-agent. Zie [Diagnostische configuratie schema](https://msdn.microsoft.com/library/azure/dn782207.aspx) voor meer informatie over het XML-schema zelf. Een veelvoorkomende procedure is om de feitelijke XML-configuratie op te slaan als een variabele in de Azure Resource Manager sjabloon en deze vervolgens samen te voegen en met base64 te coderen om de waarde voor *xmlcfg*in te stellen. Zie de sectie over [Diagnostische configuratie variabelen](#diagnostics-configuration-variables) voor meer informatie over het opslaan van XML in variabelen. De eigenschap *Storage account* geeft de naam van het opslag account aan waarnaar diagnostische gegevens worden overgebracht. 
 
-De eigenschappen in *protectedSettings* (ook wel privéconfiguratie genoemd) kunnen worden ingesteld, maar kunnen niet worden teruggelezen nadat ze zijn ingesteld. Het alleen-schrijven-karakter van *protectedSettings* maakt het handig voor het opslaan van geheimen, zoals de opslagaccountsleutel waar de diagnostische gegevens worden geschreven.    
+De eigenschappen in *protectedSettings* (ook wel particuliere configuratie genoemd) kunnen worden ingesteld, maar kunnen niet worden gelezen nadat ze zijn ingesteld. Het alleen-schrijven van *protectedSettings* maakt het handig voor het opslaan van geheimen zoals de sleutel van het opslag account waar de diagnostische gegevens worden geschreven.    
 
-## <a name="specifying-diagnostics-storage-account-as-parameters"></a>Het opslagaccount voor diagnostische gegevens opgeven als parameters
-De diagnostische extensie json fragment hierboven gaat uit van twee parameters *bestaandediagnosticsStorageAccountName* en *bestaandediagnosticsStorageResourceGroup* om de diagnostische opslag account waar diagnostische gegevens worden opgeslagen op te geven. Als u het diagnostischopslagaccount als parameter opgeeft, u het opslagaccount voor diagnostiek eenvoudig wijzigen in verschillende omgevingen, bijvoorbeeld voor het gebruik van een ander diagnostisch opslagaccount voor tests en een ander account voor uw productie-implementatie.  
+## <a name="specifying-diagnostics-storage-account-as-parameters"></a>Het opslag account voor diagnostische gegevens opgeven als para meters
+In het bovenstaande JSON-fragment van de Diagnostics-extensie worden twee para meters *existingdiagnosticsStorageAccountName* en *existingdiagnosticsStorageResourceGroup* opgegeven om het diagnostische opslag account op te geven waar de diagnostische gegevens worden opgeslagen. Het opgeven van het diagnostische opslag account als een para meter maakt het eenvoudig om het opslag account voor diagnostische gegevens te wijzigen in verschillende omgevingen. u kunt bijvoorbeeld een ander opslag account voor diagnostische gegevens gebruiken voor testen en een andere voor uw productie-implementatie.  
 
 ```json
 "existingdiagnosticsStorageAccountName": {
@@ -101,23 +101,23 @@ De diagnostische extensie json fragment hierboven gaat uit van twee parameters *
 }
 ```
 
-Het is de beste gewoonte om een diagnostisch opslagaccount op te geven in een andere resourcegroep dan de resourcegroep voor de virtuele machine. Een resourcegroep kan worden beschouwd als een implementatie-eenheid met een eigen levensduur, een virtuele machine kan worden geïmplementeerd en opnieuw worden geïmplementeerd als nieuwe configuraties worden uitgevoerd, maar u wilt misschien doorgaan met het opslaan van de diagnostische gegevens in dezelfde opslagaccount voor die virtuele machine-implementaties. Als het opslagaccount in een andere resource is, kan het opslagaccount gegevens van verschillende implementaties van virtuele machines accepteren, zodat problemen in de verschillende versies eenvoudig kunnen worden opgelost.
+Het is best practice om een diagnostische opslag account op te geven in een andere resource groep dan de resource groep voor de virtuele machine. Een resource groep kan worden beschouwd als een implementatie-eenheid met een eigen levens duur, een virtuele machine kan worden geïmplementeerd en opnieuw worden geïmplementeerd als nieuwe configuratie-updates worden uitgevoerd, maar u wilt mogelijk de diagnostische gegevens opslaan in hetzelfde opslag account voor de implementaties van deze virtuele machines. Als u het opslag account in een andere resource hebt, kan het opslag account gegevens accepteren van verschillende implementaties van virtuele machines, waardoor het eenvoudig is om problemen op te lossen in de verschillende versies.
 
 > [!NOTE]
-> Als u een sjabloon voor de virtuele machine van Windows maakt vanuit Visual Studio, wordt het standaardopslagaccount mogelijk ingesteld op hetzelfde opslagaccount waarop de virtuele machine VHD wordt geüpload. Dit is om de initiële installatie van de VM te vereenvoudigen. Houd de sjabloon opnieuw in om een ander opslagaccount te gebruiken dat als parameter kan worden doorgegeven. 
+> Als u een virtuele Windows-machine sjabloon maakt op basis van Visual Studio, kan het standaard opslag account worden ingesteld op hetzelfde opslag account gebruiken als de VHD van de virtuele machine. Dit is om de initiële installatie van de virtuele machine te vereenvoudigen. Verbind de sjabloon opnieuw voor het gebruik van een ander opslag account dat kan worden door gegeven als para meter. 
 > 
 > 
 
-## <a name="diagnostics-configuration-variables"></a>Configuratievariabelen voor diagnostiek
-Het vorige json-fragment voor diagnostische gegevens definieert een *accountid-variabele* om het verkrijgen van de opslagaccountsleutel voor de diagnostische opslag te vereenvoudigen:   
+## <a name="diagnostics-configuration-variables"></a>Configuratie variabelen voor diagnostische gegevens
+De voor gaande JSON-code van de Diagnostics-extensie definieert een *accountid* -variabele voor het vereenvoudigen van het ophalen van de sleutel van het opslag account voor de diagnostische opslag:   
 
 ```json
 "accountid": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/',parameters('existingdiagnosticsStorageResourceGroup'), '/providers/','Microsoft.Storage/storageAccounts/', parameters('existingdiagnosticsStorageAccountName'))]"
 ```
 
-De eigenschap *xmlcfg* voor de diagnostische extensie wordt gedefinieerd met behulp van meerdere variabelen die samen zijn samengevoegd. De waarden van deze variabelen zijn in xml, zodat ze correct moeten worden ontsnapt bij het instellen van de json variabelen.
+De eigenschap *xmlcfg* voor de diagnostische uitbrei ding wordt gedefinieerd met behulp van meerdere variabelen die samen worden samengevoegd. De waarden van deze variabelen bevinden zich in XML, zodat ze op de juiste wijze moeten worden geescaped bij het instellen van de JSON-variabelen.
 
-In het volgende voorbeeld worden de xml voor diagnostische configuratie beschreven die prestatiemeteritems op standaardsysteemniveau verzamelt, samen met enkele logboeken voor windows-gebeurtenislogboeken en logboeken van diagnostische infrastructuur. Het is ontsnapt en correct geformatteerd, zodat de configuratie direct kan worden geplakt in de variabelen sectie van uw sjabloon. Zie het [configuratieschema](https://msdn.microsoft.com/library/azure/dn782207.aspx) voor diagnostiek voor een menselijker leesbaar voorbeeld van de configuratie-xml.
+In het volgende voor beeld wordt de diagnostische configuratie-XML beschreven waarmee standaard prestatie meter items op systeem niveau worden verzameld samen met een aantal Windows-gebeurtenis logboeken en logboeken met diagnostische gegevens. De functie is op de juiste wijze doorgevoerd en geformatteerd zodat de configuratie rechtstreeks kan worden geplakt in het gedeelte variabelen van uw sjabloon. Zie het [Configuratie schema voor diagnostische gegevens](https://msdn.microsoft.com/library/azure/dn782207.aspx) voor een meer menselijk leesbaar voor beeld van de configuratie-XML.
 
 ```json
 "wadlogs": "<WadCfg> <DiagnosticMonitorConfiguration overallQuotaInMB=\"4096\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration\"> <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter=\"Error\"/> <WindowsEventLog scheduledTransferPeriod=\"PT1M\" > <DataSource name=\"Application!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"Security!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"System!*[System[(Level = 1 or Level = 2)]]\" /></WindowsEventLog>",
@@ -128,14 +128,14 @@ In het volgende voorbeeld worden de xml voor diagnostische configuratie beschrev
 "wadcfgxend": "\"><MetricAggregation scheduledTransferPeriod=\"PT1H\"/><MetricAggregation scheduledTransferPeriod=\"PT1M\"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>"
 ```
 
-Het xml-knooppunt met metrische definitie in de bovenstaande configuratie is een belangrijk configuratie-element, omdat het definieert hoe de prestatiemeteritems die eerder in het xml-knooppunt in het knooppunt *PerformanceCounter* zijn gedefinieerd, worden samengevoegd en opgeslagen. 
+Het knoop punt definitie van metrische gegevens in de bovenstaande configuratie is een belang rijk configuratie-element dat definieert hoe de prestatie meter items die eerder zijn gedefinieerd in het XML-knoop punt *Performance Counter* , worden geaggregeerd en opgeslagen. 
 
 > [!IMPORTANT]
-> Deze statistieken zijn de aansturen van de controlegrafieken en waarschuwingen in de Azure-portal.  Het knooppunt **Metrische gegevens** met de *resource-ID* en **metricAggregation** moet worden opgenomen in de diagnostische configuratie voor uw vm als u de VM-bewakingsgegevens in de Azure-portal wilt zien. 
+> Met deze metrische gegevens worden de bewakings grafieken en waarschuwingen in de Azure Portal gestationeerd.  Het knoop punt **metrische** gegevens met de *resourceID* en **MetricAggregation** moet zijn opgenomen in de diagnostische configuratie voor uw virtuele machine als u de VM-bewaking in de Azure Portal wilt zien. 
 > 
 > 
 
-In het volgende voorbeeld worden de xml voor metrische gegevensdefinities weergegeven: 
+In het volgende voor beeld ziet u de XML-definities voor metrische gegevens: 
 
 ```xml
 <Metrics resourceId="/subscriptions/subscription().subscriptionId/resourceGroups/resourceGroup().name/providers/Microsoft.Compute/virtualMachines/vmName">
@@ -144,39 +144,39 @@ In het volgende voorbeeld worden de xml voor metrische gegevensdefinities weerge
 </Metrics>
 ```
 
-Het *kenmerk resourceID* identificeert op unieke wijze de virtuele machine in uw abonnement. Zorg ervoor dat u de functies subscription() en resourceGroup() gebruikt, zodat de sjabloon deze waarden automatisch bijwerkt op basis van het abonnement en de resourcegroep waarnaar u implementeert.
+Het kenmerk *resourceID* identificeert de virtuele machine in uw abonnement uniek. Zorg ervoor dat u de functies Subscription () en resourceGroup () gebruikt, zodat de sjabloon deze waarden automatisch bijwerkt op basis van het abonnement en de resource groep waarop u implementeert.
 
-Als u meerdere virtuele machines in een lus maakt, moet u de *resource-ID-waarde* vullen met een functie copyIndex() om elke afzonderlijke VM correct te onderscheiden. De *xmlCfg-waarde* kan als volgt worden bijgewerkt om dit als volgt te ondersteunen:  
+Als u meerdere Virtual Machines in een lus maakt, moet u de *resourceID* -waarde vullen met de functie functie copyindex () om elke afzonderlijke virtuele machine goed te onderscheiden. De *xmlCfg* -waarde kan worden bijgewerkt om dit als volgt te ondersteunen:  
 
 ```json
 "xmlCfg": "[base64(concat(variables('wadcfgxstart'), variables('wadmetricsresourceid'), concat(parameters('vmNamePrefix'), copyindex()), variables('wadcfgxend')))]", 
 ```
 
-De metricaggregation-waarde van *PT1M* en *PT1H* betekent een aggregatie over respectievelijk een minuut en een aggregatie over een uur.
+De MetricAggregation-waarde van *PT1M* en *PT1H* duidt een aggregatie over een minuut en een aggregatie van respectievelijk een uur aan.
 
 ## <a name="wadmetrics-tables-in-storage"></a>WADMetrics-tabellen in opslag
-De bovenstaande configuratie met statistieken genereert tabellen in uw diagnostische opslagaccount met de volgende naamgevingsconventies:
+De configuratie voor metrische gegevens hierboven genereert tabellen in uw diagnostische opslag account met de volgende naamgevings regels:
 
-* **WADMetrics**: Standaard voorvoegsel voor alle WADMetrics-tabellen
-* **PT1H** of **PT1M:** betekent dat de tabel geaggregeerde gegevens over 1 uur of 1 minuut bevat
-* **P10D**: Betekent dat de tabel gegevens bevat gedurende 10 dagen vanaf het moment dat de tabel gegevens begon te verzamelen
-* **V2S**: Snaarconstante
-* **yyyymmdd**: De datum waarop de tabel begon met het verzamelen van gegevens
+* **WADMetrics**: standaard voorvoegsel voor alle WADMetrics-tabellen
+* **PT1H** of **PT1M**: geeft aan dat de tabel verzamelde gegevens over 1 uur of 1 minuut bevat
+* **P10D**: geeft aan dat de tabel gegevens bevat van 10 dagen vanaf het moment waarop de tabel is begonnen met het verzamelen van gegevens
+* **V2S**: teken reeks constante
+* **jjjmmdd**: de datum waarop de tabel is begonnen met het verzamelen van gegevens
 
-Voorbeeld: *WADMetricsPT1HP10DV2S20151108* bevat metrische gegevens die gedurende 10 dagen gedurende 10 dagen zijn samengevoegd vanaf 11 november-2015    
+Voor beeld: *WADMetricsPT1HP10DV2S20151108* bevat metrische gegevens die gedurende tien dagen worden geaggregeerd, te beginnen op 11-Nov-2015    
 
-Elke tabel WADMetrics bevat de volgende kolommen:
+Elke WADMetrics-tabel bevat de volgende kolommen:
 
-* **PartitionKey:** De partitiesleutel is opgebouwd op basis van de *resourceID-waarde* om de VM-bron op unieke wijze te identificeren. Bijvoorbeeld: `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
-* **RowKey:** volgt `<Descending time tick>:<Performance Counter Name>`de notatie. De berekening van de dalende tijdteek is max tijdteken minus de tijd van het begin van de aggregatieperiode. Als de voorbeeldperiode bijvoorbeeld is gestart op 10-nov-2015 en 00:00 Hrs UTC, dan is de berekening: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. Voor de prestatiesvan de beschikbare prestaties van de beschikbare bytes ziet de rijtoets eruit als:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
-* **CounterName:** Is de naam van het prestatiemeterrecht. Dit komt overeen met de *tellerSpecifier* gedefinieerd in de xml config.
-* **Maximum**: De maximale waarde van het prestatiemeterrecht gedurende de aggregatieperiode.
-* **Minimum**: De minimumwaarde van het prestatiemeterrecht gedurende de aggregatieperiode.
-* **Totaal**: De som van alle waarden van het prestatiemeteritem gerapporteerd over de aggregatieperiode.
-* **Aantal:** het totale aantal gerapporteerde waarden voor het prestatiemeteritem.
-* **Gemiddelde**: De gemiddelde (totaal/telling) waarde van het prestatieteller over de aggregatieperiode.
+* **PartitionKey**: de partitie sleutel wordt opgebouwd op basis van de *resourceID* -waarde om de VM-resource uniek te identificeren. Bijvoorbeeld: `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
+* **RowKey**: volgt de indeling `<Descending time tick>:<Performance Counter Name>`. De berekening van de aflopende tijd is de maximale tijd maat streepjes min de tijd van het begin van de aggregatie periode. Als bijvoorbeeld de voorbeeld periode is gestart op 10-nov-2015 en 00:00Hrs UTC, zou de berekening er als `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`volgt uitziet:. Voor het prestatie meter item geheugen beschik bare bytes ziet de rij er als volgt uit:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
+* **CounterName**: is de naam van het prestatie meter item. Dit komt overeen met de *counterSpecifier* die is gedefinieerd in de XML-configuratie.
+* **Maximum**: de maximum waarde van het prestatie meter item gedurende de aggregatie periode.
+* **Minimum**: de minimum waarde van het prestatie meter item gedurende de aggregatie periode.
+* **Totaal**: de som van alle waarden van het prestatie meter item dat gedurende de aggregatie periode is gerapporteerd.
+* **Aantal**: het totale aantal gerapporteerde waarden voor het prestatie meter item.
+* **Gemiddelde**: de waarde voor gemiddelde (totaal/aantal) van het prestatie meter item gedurende de aggregatie periode.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie [201-vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension) voor een volledige voorbeeldsjabloon van een virtuele Windows-machine met diagnose-extensie   
-* De sjabloon Azure Resource Manager implementeren met [Azure PowerShell](../windows/ps-template.md) of [Azure Command Line](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* Meer informatie over [het maken van Azure Resource Manager-sjablonen](../../resource-group-authoring-templates.md)
+* Voor een volledige voorbeeld sjabloon van een virtuele Windows-machine met diagnostische uitbrei ding raadpleegt u [201-VM-bewaking-Diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
+* De Azure Resource Manager-sjabloon implementeren met behulp van [Azure PowerShell](../windows/ps-template.md) of de [Azure-opdracht regel](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* Meer informatie over het [ontwerpen van Azure Resource Manager sjablonen](../../resource-group-authoring-templates.md)

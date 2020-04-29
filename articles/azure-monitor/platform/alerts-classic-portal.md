@@ -1,72 +1,72 @@
 ---
-title: Klassieke metrische waarschuwingen maken en beheren met Azure Monitor
-description: Meer informatie over het gebruik van Azure portal, CLI of Powershell om klassieke metrische waarschuwingsregels te maken, weer te geven en te beheren.
+title: Klassieke waarschuwingen voor metrische gegevens maken en beheren met behulp van Azure Monitor
+description: Meer informatie over het gebruik van Azure Portal, CLI of Power shell voor het maken, weer geven en beheren van regels voor klassieke metrische gegevens.
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.openlocfilehash: e635c243a887690fb1f7a5dcd017c1130d74a747
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114588"
 ---
-# <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Klassieke metrische waarschuwingen maken, weergeven en beheren met Azure Monitor
+# <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Klassieke metrische waarschuwingen maken, weer geven en beheren met behulp van Azure Monitor
 
-Klassieke metrische waarschuwingen in Azure Monitor bieden een manier om een melding te krijgen wanneer een van uw statistieken een drempel overschrijdt. Klassieke metrische waarschuwingen is een oudere functionaliteit die het mogelijk maakt om alleen te waarschuwen voor niet-dimensionale statistieken. Er is een bestaande nieuwere functionaliteit genaamd Metrische waarschuwingen die de functionaliteit ten opzichte van klassieke metrische waarschuwingen heeft verbeterd. Meer informatie over de nieuwe functionaliteit voor metrische waarschuwingen vindt u in [het overzicht van metrische waarschuwingen.](../../azure-monitor/platform/alerts-metric-overview.md) In dit artikel beschrijven we hoe u klassieke metrische waarschuwingsregels maken, bekijken en beheren via Azure portal, Azure CLI en Powershell.
+Klassieke metrische waarschuwingen in Azure Monitor bieden een manier om een melding te ontvangen wanneer een van uw metrische gegevens een drempel waarde overschrijdt. Klassieke waarschuwingen voor metrische gegevens is een oudere functie die alleen waarschuwingen voor niet-dimensionale metrische gegevens toestaat. Er is een bestaande nieuwere functie met de naam metrische waarschuwingen, waarmee de functionaliteit van klassieke metrische waarschuwingen wordt verbeterd. Meer informatie over de nieuwe functies voor metrische waarschuwingen vindt u in [overzicht van metrische waarschuwingen](../../azure-monitor/platform/alerts-metric-overview.md). In dit artikel wordt beschreven hoe u klassieke metrische waarschuwings regels maakt, weergeeft en beheert via Azure Portal, Azure CLI en Power shell.
 
-## <a name="with-azure-portal"></a>Met Azure-portal
+## <a name="with-azure-portal"></a>Met Azure Portal
 
-1. Zoek in de [portal](https://portal.azure.com/)de resource die u wilt controleren en selecteer deze.
+1. Ga in de [Portal](https://portal.azure.com/)naar de resource die u wilt bewaken en selecteer deze.
 
-2. Selecteer **in** de sectie TOEZICHT de optie **Waarschuwingen (Klassiek).** De tekst en het pictogram kunnen enigszins variëren voor verschillende bronnen. Als u hier geen **waarschuwingen (Klassiek)** vindt, u deze vinden in **Waarschuwingen** of **Waarschuwingsregels**.
+2. Selecteer in de sectie **controle** de optie **waarschuwingen (klassiek)**. De tekst en het pictogram kunnen enigszins verschillen voor verschillende resources. Als u hier geen **waarschuwingen (klassiek)** vindt, kunt u deze vinden in **waarschuwingen** of **waarschuwings regels**.
 
     ![Bewaking](media/alerts-classic-portal/AlertRulesButton.png)
 
-3. Selecteer de opdracht **Metrische waarschuwing (klassiek) toevoegen** en vul de velden in.
+3. Selecteer de opdracht **metrische waarschuwing toevoegen (klassiek)** en vul de velden in.
 
     ![Waarschuwing toevoegen](media/alerts-classic-portal/AddAlertOnlyParamsPage.png)
 
-4. Geef uw waarschuwingsregel een **naam.** Kies vervolgens een **beschrijving,** die ook wordt weergegeven in e-mails met meldingen.
+4. **Geef** uw waarschuwings regel een naam. Kies vervolgens een **Beschrijving**die ook wordt weer gegeven in e-mail meldingen.
 
-5. Selecteer de **statistiek** die u wilt controleren. Kies vervolgens een **waarde voorwaarde** en **drempelwaarde** voor de statistiek. Kies ook de **periode** waarin aan de metrische regel moet worden voldaan voordat de waarschuwing wordt geactiveerd. Als u bijvoorbeeld de periode "Over de laatste 5 minuten" gebruikt en uw waarschuwing zoekt naar een CPU boven de 80%, wordt de waarschuwing geactiveerd wanneer de CPU gedurende 5 minuten consistent boven de 80% is geweest. Nadat de eerste trigger optreedt, wordt deze opnieuw geactiveerd wanneer de CPU gedurende 5 minuten onder de 80% blijft. De CPU metrische meting gebeurt elke minuut.
+5. Selecteer de **metrische gegevens** die u wilt bewaken. Kies vervolgens een voor **waarde** en **drempel** waarde voor de metriek. Kies ook de tijds **periode** waaraan de metrische regel moet voldoen voordat de waarschuwing wordt geactiveerd. Als u bijvoorbeeld de periode in de afgelopen vijf minuten gebruikt en uw waarschuwing zoekt naar een CPU die hoger is dan 80%, wordt de waarschuwing geactiveerd wanneer de CPU gedurende vijf minuten 80 consistent is. Nadat de eerste trigger is uitgevoerd, wordt deze opnieuw geactiveerd wanneer de CPU gedurende 5 minuten onder 80% blijft. De meting van de CPU-metriek gebeurt elke minuut.
 
-6. Selecteer **E-maileigenaren...** als u wilt dat beheerders en medebeheerders e-mailmeldingen ontvangen wanneer de waarschuwing wordt geactiveerd.
+6. **E-mail eigenaren selecteren...** als u wilt dat beheerders en mede beheerders e-mail meldingen ontvangen wanneer de waarschuwing wordt geactiveerd.
 
-7. Als u meldingen naar extra e-mailadressen wilt verzenden wanneer de waarschuwing wordt geactiveerd, voegt u deze toe in het veld **E-mail(s) extra beheerders.** Scheid meerdere e-mails met puntkomma's, in de volgende indeling: *e-mail\@contoso.com;email2\@contoso.com*
+7. Als u meldingen wilt verzenden naar extra e-mail adressen wanneer de waarschuwing wordt geactiveerd, voegt u deze toe in het veld **extra beheerder e-mail (s)** . Scheid meerdere e-mail berichten met een punt komma, in de volgende indeling: *e-mail\@contoso\@. com; email2 contoso.com*
 
-8. Plaats een geldige URI in het **veld Webhook** als u wilt dat deze wordt aangeroepen wanneer de waarschuwing wordt geactiveerd.
+8. Plaats een geldige URI in het veld **webhook** als u wilt dat deze wordt aangeroepen wanneer de waarschuwing wordt geactiveerd.
 
-9. Als u Azure Automation gebruikt, u een runbook selecteren dat moet worden uitgevoerd wanneer de waarschuwing wordt geactiveerd.
+9. Als u Azure Automation gebruikt, kunt u een runbook selecteren dat moet worden uitgevoerd wanneer de waarschuwing wordt geactiveerd.
 
 10. Selecteer **OK** om de waarschuwing te maken.
 
-Binnen een paar minuten is de waarschuwing actief en wordt geactiveerd zoals eerder beschreven.
+Binnen een paar minuten is de waarschuwing actief en worden triggers zoals eerder beschreven.
 
-Nadat u een waarschuwing hebt gemaakt, u deze selecteren en een van de volgende taken uitvoeren:
+Nadat u een waarschuwing hebt gemaakt, kunt u deze selecteren en een van de volgende taken uitvoeren:
 
-* Een grafiek weergeven met de metrische drempel waarde en de werkelijke waarden van de vorige dag.
-* Bewerken of verwijderen.
-* **Schakel deze in** of schakel deze **in** als u meldingen voor die waarschuwing tijdelijk wilt stoppen of hervatten.
+* Een grafiek weer geven met de metrische drempel waarde en de werkelijke waarden van de vorige dag.
+* Bewerk of verwijder deze.
+* **Schakel deze optie** **in** of uit als u het ontvangen van meldingen voor die waarschuwing tijdelijk wilt stoppen of hervatten.
 
 ## <a name="with-azure-cli"></a>Met Azure CLI
 
-In de vorige secties beschreven hoe u metrische waarschuwingsregels maken, weergeven en beheren met Azure-portal. In deze sectie wordt beschreven hoe u hetzelfde doen met behulp van azure [CLI met](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)cross-platform. De snelste manier om Azure CLI te gebruiken is via [Azure Cloud Shell.](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)
+In de vorige secties wordt beschreven hoe u metrische waarschuwings regels kunt maken, weer geven en beheren met behulp van Azure Portal. In deze sectie wordt beschreven hoe u hetzelfde kunt doen met meerdere platformen van [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). De snelste manier om te beginnen met het gebruik van Azure CLI is via [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest).
 
-### <a name="get-all-classic-metric-alert-rules-in-a-resource-group"></a>Alle klassieke metrische waarschuwingsregels in een resourcegroep weergeven
+### <a name="get-all-classic-metric-alert-rules-in-a-resource-group"></a>Alle klassieke metrische waarschuwings regels ophalen in een resource groep
 
 ```azurecli
 az monitor alert list --resource-group <group name>
 ```
 
-### <a name="see-details-of-a-particular-classic-metric-alert-rule"></a>Details van een bepaalde klassieke metrische waarschuwingsregel bekijken
+### <a name="see-details-of-a-particular-classic-metric-alert-rule"></a>Details van een bepaalde regel voor een klassieke metrische waarschuwing weer geven
 
 ```azurecli
 az monitor alert show --resource-group <group name> --name <alert name>
 ```
 
-### <a name="create-a-classic-metric-alert-rule"></a>Een klassieke metrische waarschuwingsregel maken
+### <a name="create-a-classic-metric-alert-rule"></a>Een regel voor een klassieke metrische waarschuwing maken
 
 ```azurecli
 az monitor alert create --name <alert name> --resource-group <group name> \
@@ -76,7 +76,7 @@ az monitor alert create --name <alert name> --resource-group <group name> \
     --condition "<METRIC> {>,>=,<,<=} <THRESHOLD> {avg,min,max,total,last} ##h##m##s"
 ```
 
-### <a name="delete-a-classic-metric-alert-rule"></a>Een klassieke metrische waarschuwingsregel verwijderen
+### <a name="delete-a-classic-metric-alert-rule"></a>Een regel voor een klassieke metrische waarschuwing verwijderen
 
 ```azurecli
 az monitor alert delete --name <alert name> --resource-group <group name>
@@ -86,49 +86,49 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-In deze secties ziet u hoe u PowerShell-opdrachten gebruiken bij het maken, weergeven en beheren van klassieke metrische waarschuwingen. De voorbeelden in het artikel illustreren hoe u Azure Monitor-cmdlets gebruiken voor klassieke metrische waarschuwingen.
+In deze secties ziet u hoe u met Power shell-opdrachten klassieke metrische waarschuwingen kunt maken, weer geven en beheren. In de voor beelden in dit artikel wordt uitgelegd hoe u Azure Monitor-cmdlets kunt gebruiken voor klassieke metrische waarschuwingen.
 
-1. Als u dit nog niet hebt gedaan, stelt u PowerShell in om op uw computer te worden uitgevoerd. Zie [PowerShell installeren en configureren](/powershell/azure/overview)voor meer informatie. U ook de volledige lijst met Azure Monitor PowerShell-cmdlets bekijken op [Azure Monitor (Insights) Cmdlets.](https://docs.microsoft.com/powershell/module/az.applicationinsights)
+1. Als u dat nog niet hebt gedaan, stelt u in dat Power shell op uw computer moet worden uitgevoerd. Zie [Power Shell installeren en configureren](/powershell/azure/overview)voor meer informatie. U kunt ook de volledige lijst met Azure Monitor Power shell-cmdlets bekijken bij [Azure monitor-cmdlets (inzichten)](https://docs.microsoft.com/powershell/module/az.applicationinsights).
 
-2. Log eerst in bij uw Azure-abonnement.
+2. Meld u eerst aan bij uw Azure-abonnement.
 
     ```powershell
     Connect-AzAccount
     ```
 
-3. U ziet een inlogscherm. Zodra u zich aanmeldt voor uw account, worden TenantID en standaard abonnements-id weergegeven. Alle Azure-cmdlets werken in de context van uw standaardabonnement. Als u de lijst met abonnementen wilt bekijken waartoe u toegang hebt, gebruikt u de volgende opdracht:
+3. Er wordt een aanmeldings scherm weer gegeven. Zodra u zich hebt aangemeld met uw account, TenantID en standaard abonnements-ID worden weer gegeven. Alle Azure-cmdlets werken in de context van uw standaard abonnement. Als u de lijst met abonnementen waartoe u toegang hebt, wilt weer geven, gebruikt u de volgende opdracht:
 
     ```powershell
     Get-AzSubscription
     ```
 
-4. Als u uw werkcontext wilt wijzigen in een ander abonnement, gebruikt u de volgende opdracht:
+4. Als u uw werk context wilt wijzigen in een ander abonnement, gebruikt u de volgende opdracht:
 
     ```powershell
     Set-AzContext -SubscriptionId <subscriptionid>
     ```
 
-5. U alle klassieke metrische waarschuwingsregels voor een resourcegroep ophalen:
+5. U kunt alle klassieke metrische waarschuwings regels ophalen voor een resource groep:
 
     ```powershell
     Get-AzAlertRule -ResourceGroup montest
     ```
 
-6. U details van een klassieke metrische waarschuwingsregel weergeven
+6. U kunt details van een regel voor een klassieke metrische waarschuwing weer geven
 
     ```powershell
     Get-AzAlertRule -Name simpletestCPU -ResourceGroup montest -DetailedOutput
     ```
 
-7. U alle waarschuwingsregels ophalen die zijn ingesteld voor een doelbron. Alle waarschuwingsregels die op een vm zijn ingesteld, zijn bijvoorbeeld ingesteld.
+7. U kunt alle waarschuwings regels ophalen die zijn ingesteld voor een doel resource. Bijvoorbeeld alle waarschuwings regels die zijn ingesteld op een virtuele machine.
 
     ```powershell
     Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
     ```
 
-8. Klassieke waarschuwingsregels kunnen niet langer worden gemaakt via PowerShell. Als u een waarschuwingsregel wilt maken, moet u de nieuwe opdracht ['Add-AzMetricAlertRule'](/powershell/module/az.monitor/add-azmetricalertrule) gebruiken.
+8. Er kunnen geen klassieke waarschuwings regels meer worden gemaakt via Power shell. Als u een waarschuwings regel wilt maken, moet u de nieuwe opdracht [' add-AzMetricAlertRule '](/powershell/module/az.monitor/add-azmetricalertrule) gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Maak een klassieke metrische waarschuwing met een resourcemanagersjabloon](../../azure-monitor/platform/alerts-enable-template.md).
-- [Laat een klassieke metrische waarschuwing een niet-Azure-systeem melden met behulp van een webhook.](../../azure-monitor/platform/alerts-webhooks.md)
+- [Een klassieke waarschuwing voor metrische gegevens maken met een resource manager-sjabloon](../../azure-monitor/platform/alerts-enable-template.md).
+- Een [klassieke metrische waarschuwing laten weten dat een niet-Azure-systeem gebruikmaakt van een webhook](../../azure-monitor/platform/alerts-webhooks.md).

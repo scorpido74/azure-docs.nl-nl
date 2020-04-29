@@ -1,6 +1,6 @@
 ---
-title: Verloop van webinhoud beheren in Azure CDN | Microsoft Documenten
-description: Meer informatie over het beheren van de vervaldatum van Azure Web Apps/Cloud Services, ASP.NET of IIS-inhoud in Azure CDN.
+title: Verlopen van webinhoud in Azure CDN beheren | Microsoft Docs
+description: Meer informatie over het beheren van de verval datum van Azure Web Apps/Cloud Services, ASP.NET of IIS-inhoud in Azure CDN.
 services: cdn
 documentationcenter: .NET
 author: asudbring
@@ -15,86 +15,86 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: allensu
 ms.openlocfilehash: 4598e6cee6ffbaaeb2a99727842fcd17fe0046c7
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260561"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Verlooptijd van webinhoud in Azure CDN beheren
 > [!div class="op_single_selector"]
 > * [Azure-webinhoud](cdn-manage-expiration-of-cloud-service-content.md)
-> * [Azure Blob-opslag](cdn-manage-expiration-of-blob-content.md)
+> * [Azure Blob Storage](cdn-manage-expiration-of-blob-content.md)
 > 
 
-Bestanden van openbaar toegankelijke origin-webservers kunnen in de cache worden opgeslagen in het Azure Content Delivery Network (CDN) totdat hun time-to-live (TTL) is verstreken. De TTL wordt `Cache-Control` bepaald door de header in het HTTP-antwoord van de origin-server. In dit artikel wordt `Cache-Control` beschreven hoe u kopteksten instelt voor de webapps-functie van Microsoft Azure App Service, Azure Cloud Services, ASP.NET-toepassingen en IIS-sites (Internet Information Services), die allemaal op dezelfde manier zijn geconfigureerd. U `Cache-Control` de koptekst instellen met configuratiebestanden of programmatisch. 
+Bestanden van openbaar toegankelijke webservers kunnen worden opgeslagen in de cache van Azure Content Delivery Network (CDN) totdat de TTL (time-to-Live) is verstreken. De TTL wordt bepaald door de `Cache-Control` header in het HTTP-antwoord van de oorspronkelijke server. In dit artikel wordt beschreven hoe `Cache-Control` u koppen kunt instellen voor de web apps-functie van Microsoft Azure app service-, Azure Cloud Services-, ASP.NET-toepassingen en Internet Information Services (IIS)-sites, die allemaal op dezelfde manier zijn geconfigureerd. U kunt de `Cache-Control` header instellen met behulp van configuratie bestanden of via een programma. 
 
-U ook cache-instellingen vanuit de Azure-portal beheren door [cdn-cachingregels in te](cdn-caching-rules.md)stellen. Als u een of meer cachingregels maakt en hun cachinggedrag instelt op **Cache overschrijven** of **omzeilen,** worden de in dit artikel besproken cache van de oorsprong genegeerd. Zie [Hoe caching werkt](cdn-how-caching-works.md)voor informatie over algemene cachingconcepten.
+U kunt ook de cache-instellingen van de Azure Portal beheren door de [regels voor CDN-caching](cdn-caching-rules.md)in te stellen. Als u een of meer cache regels maakt en het cache gedrag instelt op het **overschrijven** of **overs Laan**van de cache, worden de door de bron opgegeven cache-instellingen die in dit artikel worden besproken, genegeerd. Zie [How caching Works](cdn-how-caching-works.md)(Engelstalig) voor meer informatie over algemene cache concepten.
 
 > [!TIP]
-> U ervoor kiezen om geen TTL in te stellen op een bestand. In dit geval past Azure CDN automatisch een standaard TTL van zeven dagen toe, tenzij u cachingregels hebt ingesteld in de Azure-portal. Deze standaard TTL is alleen van toepassing op algemene webdelivery-optimalisaties. Voor grote bestandsoptimalisaties is de standaard TTL één dag en voor mediastreamingoptimalisaties is de standaardTTL één jaar.
+> U kunt ervoor kiezen om geen TTL in te stellen voor een bestand. In dit geval past Azure CDN automatisch een standaard-TTL van zeven dagen toe, tenzij u in de Azure Portal cache regels hebt ingesteld. Deze standaard-TTL geldt alleen voor algemene optimalisaties van webleveringen. Voor grote bestands optimalisaties is de standaard-TTL één dag en voor optimalisaties van mediastreaming, is de standaard-TTL één jaar.
 > 
-> Zie [Overzicht van het Azure Content Delivery Network](cdn-overview.md)voor meer informatie over hoe Azure CDN werkt om de toegang tot bestanden en andere bronnen te versnellen.
+> Zie [overzicht van de Azure-Content Delivery Network](cdn-overview.md)voor meer informatie over de werking van Azure CDN om de toegang tot bestanden en andere bronnen te versnellen.
 > 
 
-## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>Cache-Control-headers instellen met cdn-cachingregels
-De voorkeursmethode voor het instellen `Cache-Control` van de koptekst van een webserver is het gebruik van cachingregels in de Azure-portal. Zie Azure [CDN-cachinggedrag beheren met cachingregels](cdn-caching-rules.md)voor meer informatie over cdn-cachingregels.
+## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>Cache-control-headers instellen met behulp van CDN-cache regels
+De voorkeurs methode voor het instellen van de koptekst `Cache-Control` van een webserver is het gebruik van cache regels in de Azure Portal. Zie [beheer van Azure CDN caching met cache regels](cdn-caching-rules.md)voor meer informatie over de regels voor CDN-caching.
 
 > [!NOTE] 
-> Caching-regels zijn alleen beschikbaar voor **Azure CDN Standard van Verizon** en Azure **CDN Standard van Akamai-profielen.** Voor **Azure CDN Premium van Verizon-profielen** moet u de [Azure CDN-regelsengine](cdn-rules-engine.md) in de **portal Beheren** gebruiken voor vergelijkbare functionaliteit.
+> Cache regels zijn alleen beschikbaar voor **Azure CDN Standard van Verizon** en **Azure CDN Standard van Akamai** -profielen. Voor **Azure CDN Premium van Verizon** -profielen moet u de [engine Azure CDN Rules](cdn-rules-engine.md) in de portal **beheren** gebruiken voor vergelijk bare functionaliteit.
 
-**Ga als volgt te werk om naar de pagina REGELS voor cdn-caching te navigeren:**
+**Ga naar de pagina regels voor CDN-caching**:
 
-1. Selecteer in de Azure-portal een CDN-profiel en selecteer vervolgens het eindpunt voor de webserver.
+1. Selecteer in de Azure Portal een CDN-profiel en selecteer vervolgens het eind punt voor de webserver.
 
 1. Selecteer in het linkerdeelvenster onder Instellingen de optie **Regels voor opslaan in cache**.
 
-   ![Knop REGELS voor cdn-caching](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-rules-btn.png)
+   ![Knop regels voor CDN-caching](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-rules-btn.png)
 
    De pagina **Regels voor opslaan in cache** wordt weergegeven.
 
-   ![CDN-cachepagina](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-page.png)
+   ![Pagina voor CDN-caching](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-page.png)
 
 
-**Ga als volgt te werk om de cachebeheerkoppen van een webserver in te stellen met behulp van algemene cachingregels:**
+**De cache-control-headers van een webserver instellen met behulp van algemene regels voor opslaan in cache:**
 
-1. Stel **onder Regels voor cache globaal**query het **cachinggedrag** in **op Querytekenreeksen negeren** en Stel **Caching-gedrag** in **op Overschrijven**.
+1. Stel onder **algemene regels voor caching**het **in cache geheugen opslaan van de query reeks** in op het negeren van **query reeksen** en instellen dat **cache gedrag** wordt **overschreven**.
       
-1. Voer 3600 in voor de vervaldatum van de **cache**in het vak **Seconden** of 1 in het vak **Uren.** 
+1. Voer 3600 in het vak **seconden** of 1 in het vak **uren** in voor de **verloop tijd**van de cache. 
 
-   ![Voorbeeld van cdn-regels voor caching](./media/cdn-manage-expiration-of-cloud-service-content/cdn-global-caching-rules-example.png)
+   ![Voor beeld van globale CDN-cache regels](./media/cdn-manage-expiration-of-cloud-service-content/cdn-global-caching-rules-example.png)
 
-   Deze algemene cachingregel stelt een cacheduur van één uur in en is van invloed op alle aanvragen voor het eindpunt. Het overschrijft `Cache-Control` `Expires` alle of HTTP-headers die worden verzonden door de oorsprongsserver die is opgegeven door het eindpunt.   
-
-1. Selecteer **Opslaan**.
-
-**Ga als volgt te werk om de cachebeheerkoppen van een webserverbestand in te stellen met aangepaste cachingregels:**
-
-1. Maak **onder Aangepaste cachingregels**twee overeenkomende voorwaarden:
-
-     a. Stel de **voorwaarde Overeenkomen** in voor de eerste wedstrijdvoorwaarde op **Pad** en voer de waarde Overeenkomen `/webfolder1/*` **in.** **Stel Caching-gedrag** in **op Overschrijven** en voer 4 in het vak **Uren** in.
-
-     b. Stel voor de tweede wedstrijdvoorwaarde de `/webfolder1/file1.txt` voorwaarde **Overeenkomen** in op **Pad** en voer de waarde Overeenkomen **in.** **Stel Caching-gedrag** in **op Overschrijven** en voer 2 in het vak **Uren** in.
-
-    ![Voorbeeld van aangepaste cachingregels van CDN](./media/cdn-manage-expiration-of-cloud-service-content/cdn-custom-caching-rules-example.png)
-
-    De eerste aangepaste cachingregel stelt een cacheduur van `/webfolder1` vier uur in voor bestanden in de map op de oorsprongsserver die door uw eindpunt is opgegeven. De tweede regel overschrijft alleen `file1.txt` de eerste regel voor het bestand en stelt hiervoor een cacheduur van twee uur in.
+   Met deze algemene regel voor opslaan in cache wordt een cache duur van één uur ingesteld en is dit van invloed op alle aanvragen voor het eind punt. Het onderdrukt de `Cache-Control` of `Expires` http-headers die worden verzonden door de oorspronkelijke server die door het eind punt is opgegeven.   
 
 1. Selecteer **Opslaan**.
 
+**De cache-control-headers van een webserver bestand instellen met behulp van aangepaste regels voor opslaan in cache:**
 
-## <a name="setting-cache-control-headers-by-using-configuration-files"></a>Cache-control-headers instellen met configuratiebestanden
-Voor statische inhoud, zoals afbeeldingen en stijlbladen, u de updatefrequentie beheren door de **configuratiebestanden van applicationHost.config** of **Web.config** voor uw webtoepassing te wijzigen. Als u `Cache-Control` de koptekst voor `<system.webServer>/<staticContent>/<clientCache>` uw inhoud wilt instellen, gebruikt u het element in beide bestanden.
+1. Maak onder **regels voor aangepaste caching**twee match-voor waarden:
 
-### <a name="using-applicationhostconfig-files"></a>ApplicationHost.config-bestanden gebruiken
-Het **bestand ApplicationHost.config** is het hoofdbestand van het IIS-configuratiesysteem. De configuratie-instellingen in een **Bestand ApplicationHost.config** zijn van invloed op alle toepassingen op de site, maar worden overschreven door de instellingen van **web.config-bestanden** die voor een webtoepassing bestaan.
+     a. Voor de eerste match-voor waarde stelt u de voor **waarde match** in op **Path** en voert `/webfolder1/*` u in voor de **waarde match**. Stel **caching-gedrag** in op **overschrijven** en voer 4 in het vak **uren** in.
 
-### <a name="using-webconfig-files"></a>Web.config-bestanden gebruiken
-Met een **Web.config-bestand** u de manier aanpassen waarop uw volledige webtoepassing of een specifieke map op uw webtoepassing zich gedraagt. U hebt doorgaans ten minste één **Web.config-bestand** in de hoofdmap van uw webtoepassing. Voor elk **Web.config-bestand** in een specifieke map zijn de configuratie-instellingen van invloed op alles in die map en de submappen, tenzij ze op submapniveau worden overschreven door een ander **Web.config-bestand.** 
+     b. Voor de tweede voor waarde match stelt u de voor waarde **match** in `/webfolder1/file1.txt` op **Path** en voert u in voor de **waarde match**. Stel **caching-gedrag** in op **overschrijven** en voer 2 in het vak **uren** in.
 
-U bijvoorbeeld een `<clientCache>` element in een **Web.config-bestand** instellen in de hoofdmap van uw webtoepassing om alle statische inhoud in uw webtoepassing gedurende drie dagen in de cache te plaatsen. U ook een **Web.config-bestand** toevoegen in een submap met meer variabele inhoud (bijvoorbeeld `\frequent`) en het element instellen `<clientCache>` om de inhoud van de submap zes uur in de cache op te zetten. Het nettoresultaat is dat inhoud op de hele website drie dagen in `\frequent` de cache wordt opgeslagen, met uitzondering van alle inhoud in de map, die slechts zes uur in de cache wordt opgeslagen.  
+    ![Voor beeld van regels voor aangepaste CDN-caching](./media/cdn-manage-expiration-of-cloud-service-content/cdn-custom-caching-rules-example.png)
 
-In het volgende voorbeeld van XML-configuratiebestanden ziet u hoe u het `<clientCache>` element instelt op een maximale leeftijd van drie dagen:  
+    Met de eerste aangepaste regel voor opslaan in cache wordt een cache duur van vier uur ingesteld `/webfolder1` voor bestanden in de map op de oorspronkelijke server die is opgegeven door het eind punt. Met de tweede regel wordt alleen de eerste regel voor het `file1.txt` bestand overschreven en wordt er een cache duur van twee uur voor ingesteld.
+
+1. Selecteer **Opslaan**.
+
+
+## <a name="setting-cache-control-headers-by-using-configuration-files"></a>Cache-control-headers instellen met behulp van configuratie bestanden
+Voor statische inhoud, zoals afbeeldingen en stijl pagina's, kunt u de update frequentie beheren door de configuratie bestanden **ApplicationHost. config** of **Web. config** voor uw webtoepassing te wijzigen. Als u de `Cache-Control` koptekst voor uw inhoud wilt instellen, `<system.webServer>/<staticContent>/<clientCache>` gebruikt u het element in een van beide bestanden.
+
+### <a name="using-applicationhostconfig-files"></a>Met behulp van ApplicationHost. config-bestanden
+Het bestand **ApplicationHost. config** is het hoofd bestand van het IIS-configuratie systeem. De configuratie-instellingen in het bestand **ApplicationHost. config** zijn van invloed op alle toepassingen op de site, maar worden overschreven door de instellingen van de **Web. config** -bestanden die voor een webtoepassing bestaan.
+
+### <a name="using-webconfig-files"></a>Web. config-bestanden gebruiken
+Met een **Web. config** -bestand kunt u de manier aanpassen waarop uw hele webtoepassing of een specifieke map in uw webtoepassing zich gedraagt. Normaal gesp roken hebt u ten minste één **Web. config** -bestand in de hoofdmap van uw webtoepassing. Voor elk **Web. config** -bestand in een specifieke map, zijn de configuratie-instellingen van invloed op alles in die map en de bijbehorende submappen, tenzij ze worden overschreven op het niveau van de submap door een ander **Web. config** -bestand. 
+
+U kunt bijvoorbeeld een `<clientCache>` element instellen in een **Web. config** -bestand in de hoofdmap van uw webtoepassing, zodat alle statische inhoud van uw webtoepassing drie dagen in de cache wordt opgeslagen. U kunt ook een **Web. config** -bestand in een submap toevoegen met meer variabele inhoud (bijvoorbeeld `\frequent`) en het bijbehorende `<clientCache>` element zo instellen dat de inhoud van de submap zes uur in de cache wordt opgeslagen. Het resultaat is dat inhoud op de hele website drie dagen wordt opgeslagen in de cache, met uitzonde ring van inhoud in `\frequent` de map, die slechts zes uur in de cache wordt opgeslagen.  
+
+In het volgende voor beeld van een XML-configuratie bestand `<clientCache>` ziet u hoe u het element instelt om een maximum leeftijd van drie dagen op te geven:  
 
 ```xml
 <configuration>
@@ -106,19 +106,19 @@ In het volgende voorbeeld van XML-configuratiebestanden ziet u hoe u het `<clien
 </configuration>
 ```
 
-Als u het kenmerk **cacheControlMaxAge** wilt gebruiken, moet u `UseMaxAge`de waarde van het kenmerk **cacheControlMode** instellen op . Met deze instelling is de `Cache-Control: max-age=<nnn>`HTTP-koptekst en -richtlijn toegevoegd aan het antwoord. De indeling van de tijdspannewaarde voor `<days>.<hours>:<min>:<sec>`het kenmerk **cacheControlMaxAge** is . De waarde ervan wordt omgezet in seconden `Cache-Control` `max-age` en wordt gebruikt als de waarde van de richtlijn. Zie `<clientCache>` [ClientCache->\<clientcache clientCache voor ](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)meer informatie over het element.  
+Als u het kenmerk **cacheControlMaxAge** wilt gebruiken, moet u de waarde van het kenmerk **cacheControlMode** instellen op `UseMaxAge`. Deze instelling heeft tot gevolg dat de HTTP- `Cache-Control: max-age=<nnn>`header en de instructie worden toegevoegd aan het antwoord. De notatie van de time span-waarde **cacheControlMaxAge** voor het kenmerk `<days>.<hours>:<min>:<sec>`cacheControlMaxAge is. De waarde wordt geconverteerd naar seconden en wordt gebruikt als de waarde van de `Cache-Control` `max-age` instructie. Zie [client cache \<clientCache>](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)voor meer informatie over het `<clientCache>` -element.  
 
-## <a name="setting-cache-control-headers-programmatically"></a>Kopteksten cachebeheer programmatisch instellen
-Voor ASP.NET toepassingen bedien u het cdn-cachinggedrag programmatisch door de eigenschap **HttpResponse.Cache** van de .NET-API in te stellen. Zie [HttpResponse.Cache Property](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) en [HttpCachePolicy Class](/dotnet/api/system.web.httpcachepolicy)voor informatie over de eigenschap **HttpResponse.Cache.**  
+## <a name="setting-cache-control-headers-programmatically"></a>Cache-control headers programmatisch instellen
+Voor ASP.NET-toepassingen beheert u het gedrag van de CDN-caching via een programma door de eigenschap **HttpResponse. cache** van de .net API in te stellen. Voor informatie over de eigenschap **HttpResponse. cache** , Zie [HttpResponse. cache-eigenschap](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) en [HttpCachePolicy-klasse](/dotnet/api/system.web.httpcachepolicy).  
 
-Voer de volgende stappen uit om toepassingsinhoud in ASP.NET programmatisch cacheop te cachen:
-   1. Controleer of de inhoud is gemarkeerd `HttpCacheability` `Public`als cachebaar door in te stellen op . 
-   1. Stel een cachevalidator in door `HttpCachePolicy` een van de volgende methoden aan te roepen:
-      - Oproep `SetLastModified` om een tijdstempelwaarde `Last-Modified` voor de koptekst in te stellen.
-      - Bel `SetETag` om een waarde `ETag` voor de koptekst in te stellen.
-   1. Geef eventueel een vervaldatum van `SetExpires` de cache op `Expires` door te bellen om een waarde voor de koptekst in te stellen. Anders zijn de standaardcacheheuristiekdie eerder in dit document is beschreven, van toepassing.
+Voer de volgende stappen uit om de toepassings inhoud in ASP.NET op te slaan in de cache:
+   1. Controleer of de inhoud is gemarkeerd als cachebaar door in `HttpCacheability` te `Public`stellen op. 
+   1. Stel een cache validatie in door een van de volgende `HttpCachePolicy` methoden aan te roepen:
+      - Aanroep `SetLastModified` voor het instellen van een time stamp `Last-Modified` -waarde voor de koptekst.
+      - Aanroep `SetETag` voor het instellen van een waarde `ETag` voor de koptekst.
+   1. Geef eventueel een verval tijd voor de cache op door `SetExpires` aan te roepen om een waarde `Expires` voor de header in te stellen. Anders is de standaard cache heuristiek die eerder in dit document is beschreven, van toepassing.
 
-Als u bijvoorbeeld een uur inhoud in de cache wilt plaatsen, voegt u de volgende C#-code toe:  
+Als u bijvoorbeeld inhoud gedurende één uur in de cache wilt opslaan, voegt u de volgende C#-code toe:  
 
 ```csharp
 // Set the caching parameters.
@@ -127,11 +127,11 @@ Response.Cache.SetCacheability(HttpCacheability.Public);
 Response.Cache.SetLastModified(DateTime.Now);
 ```
 
-## <a name="testing-the-cache-control-header"></a>De header Cache-Control testen
-U eenvoudig de TTL-instellingen van uw webinhoud verifiëren. Test met de [hulpprogramma's voor ontwikkelaars](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)van `Cache-Control` uw browser of uw webinhoud de antwoordkop bevat. U ook een tool zoals **wget,** [Postman](https://www.getpostman.com/)of [Fiddler](https://www.telerik.com/fiddler) gebruiken om de antwoordkoppen te onderzoeken.
+## <a name="testing-the-cache-control-header"></a>De cache-Control-header testen
+U kunt de TTL-instellingen van uw webinhoud eenvoudig controleren. Controleer in de [ontwikkel hulpprogramma's](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)van uw browser of uw webinhoud de `Cache-Control` reactie header bevat. U kunt ook een hulp programma zoals **wget**, [postman](https://www.getpostman.com/)of [Fiddler](https://www.telerik.com/fiddler) gebruiken om de antwoord headers te onderzoeken.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Lees meer over het **clientCache-element**](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
-* [Lees de documentatie voor de eigenschap **HttpResponse.Cache**](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) 
-* [Lees de documentatie voor de **klasse HttpCachePolicy**](/dotnet/api/system.web.httpcachepolicy)  
-* [Meer informatie over cachingconcepten](cdn-how-caching-works.md)
+* [Meer informatie over het **clientCache** -element](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
+* [Raadpleeg de documentatie voor de eigenschap **HttpResponse. cache**](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) 
+* [Raadpleeg de documentatie voor de **klasse HttpCachePolicy**](/dotnet/api/system.web.httpcachepolicy)  
+* [Meer informatie over de cache concepten](cdn-how-caching-works.md)

@@ -16,10 +16,10 @@ ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 18054e47a987a7e79e9083b6f7a2f20b059c7f28
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81254609"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Zelfstudie: Azure CDN toevoegen aan een Azure App Service-web-app
@@ -75,8 +75,8 @@ Geef op de pagina **Azure Content Delivery Network** de instellingen voor **Nieu
 | Instelling | Voorgestelde waarde | Beschrijving |
 | ------- | --------------- | ----------- |
 | **CDN-profiel** | myCDNProfile | Een CDN-profiel is een verzameling van CDN-eindpunten van dezelfde prijscategorie. |
-| **Prijslaag** | Standard Akamai | De [prijscategorie](cdn-features.md) geeft de provider en de beschikbare functies aan. In deze zelfstudie wordt gebruikgemaakt van *Standard Akamai*. |
-| **Naam van CDN-eindpunt** | Een unieke naam in het domein azureedge.net | U hebt toegang tot uw resources in de cache op de * &lt;domeineindpuntnaam&gt;*.azureedge.net.
+| **Prijs categorie** | Standard Akamai | De [prijscategorie](cdn-features.md) geeft de provider en de beschikbare functies aan. In deze zelfstudie wordt gebruikgemaakt van *Standard Akamai*. |
+| **Naam van CDN-eindpunt** | Een unieke naam in het domein azureedge.net | U hebt toegang tot uw resources in de cache op het domein * &lt;endpointnaam&gt;*. azureedge.net.
 
 Selecteer **Maken** om een CDN-profiel te maken.
 

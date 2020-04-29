@@ -1,29 +1,29 @@
 ---
 title: Indexeren in Azure Cosmos DB
-description: Begrijpen hoe indexering werkt in Azure Cosmos DB, verschillende soorten indexen zoals Bereik, Ruimtelijke, samengestelde indexen ondersteund.
+description: Begrijpen hoe indexering werkt in Azure Cosmos DB, verschillende soorten indexen, zoals bereik, ruimtelijke, samengestelde indexen worden ondersteund.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: thweiss
 ms.openlocfilehash: 684799ee12715c789910accf80aa5b4afec763d4
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273236"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexeren in Azure Cosmos DB: een overzicht
 
-Azure Cosmos DB is een schema-agnostische database waarmee u uw toepassing herhalen zonder dat u te maken hoeft te krijgen met schema- of indexbeheer. Azure Cosmos DB indexeert standaard automatisch elke eigenschap voor alle items in uw [container](databases-containers-items.md#azure-cosmos-containers) zonder dat u een schema hoeft te definiëren of secundaire indexen hoeft te configureren.
+Azure Cosmos DB is een schema-neutraal-data base waarmee u de toepassing kunt herhalen zonder schema-of index beheer. Standaard indexeert Azure Cosmos DB automatisch elke eigenschap voor alle items in uw [container](databases-containers-items.md#azure-cosmos-containers) zonder schema te hoeven definiëren of secundaire indexen te configureren.
 
-Het doel van dit artikel is om uit te leggen hoe gegevens worden geïndexeerd met Azure Cosmos DB en hoe indexen worden gebruikt om de queryprestaties te verbeteren. Het wordt aanbevolen om door deze sectie te gaan voordat u gaat onderzoeken hoe [indexeringsbeleid](index-policy.md)kan worden aangepast.
+Het doel van dit artikel is om uit te leggen hoe gegevens worden geïndexeerd met Azure Cosmos DB en hoe indexen worden gebruikt om de queryprestaties te verbeteren. U wordt aangeraden deze sectie door te lopen voordat u het [indexerings beleid](index-policy.md)aanpast.
 
-## <a name="from-items-to-trees"></a>Van voorwerpen tot bomen
+## <a name="from-items-to-trees"></a>Van items naar bomen
 
-Elke keer dat een item in een container wordt opgeslagen, wordt de inhoud ervan geprojecteerd als een JSON-document en vervolgens omgezet in een structuurweergave. Wat dat betekent is dat elke eigenschap van dat item wordt weergegeven als een knooppunt in een boom. Een pseudo-hoofdknooppunt wordt gemaakt als bovenliggendvoor alle eigenschappen op het eerste niveau van het item. De bladknooppunten bevatten de werkelijke scalaire waarden die door een item worden gedragen.
+Telkens wanneer een item wordt opgeslagen in een container, wordt de inhoud ervan geprojecteerd als een JSON-document en vervolgens omgezet in een structuur weergave. Dat betekent dat elke eigenschap van dat item wordt weer gegeven als een knoop punt in een boom structuur. Er wordt een pseudo-hoofd knooppunt gemaakt als bovenliggend knoop punt voor alle eigenschappen van het eerste niveau van het item. De blad knooppunten bevatten de werkelijke scalaire waarden die door een item worden uitgevoerd.
 
-Overweeg bijvoorbeeld dit object:
+Bekijk bijvoorbeeld dit item:
 
 ```json
     {
@@ -39,17 +39,17 @@ Overweeg bijvoorbeeld dit object:
     }
 ```
 
-Het zou worden vertegenwoordigd door de volgende boom:
+Deze wordt weer gegeven in de volgende structuur:
 
-![Het vorige item dat als een boom wordt weergegeven](./media/index-overview/item-as-tree.png)
+![Het vorige item wordt weer gegeven als een boom structuur](./media/index-overview/item-as-tree.png)
 
-Merk op hoe arrays worden gecodeerd in de structuur: elke vermelding in een array krijgt een tussenliggend knooppunt gelabeld met de index van die vermelding binnen de array (0, 1 enz.).
+U ziet hoe matrices worden gecodeerd in de boom structuur: elke vermelding in een matrix haalt een tussenliggend knoop punt op dat is gelabeld met de index van die vermelding in de matrix (0, 1 enz.).
 
-## <a name="from-trees-to-property-paths"></a>Van bomen tot eigendomspaden
+## <a name="from-trees-to-property-paths"></a>Van structuren naar eigenschaps paden
 
-De reden waarom Azure Cosmos DB items omzet in bomen is omdat hiermee eigenschappen kunnen worden verwezen door hun paden binnen die bomen. Om het pad voor een eigenschap te krijgen, kunnen we de boom doorkruisen vanaf het wortelknooppunt naar die eigenschap en de labels van elk doorreisknooppunt herhalen.
+De reden waarom Azure Cosmos DB het transformeren van items naar bomen, is omdat hiermee kan worden verwezen naar de paden binnen deze trees. Om het pad voor een eigenschap op te halen, kunnen we de structuur van het hoofd knooppunt naar die eigenschap door lopen en de labels van elk gepasseerd knoop punt samen voegen.
 
-Hier volgen de paden voor elke eigenschap uit het hierboven beschreven voorbeelditem:
+Dit zijn de paden voor elke eigenschap van het hierboven beschreven voor beeld-item:
 
     /locations/0/country: "Germany"
     /locations/0/city: "Berlin"
@@ -60,17 +60,17 @@ Hier volgen de paden voor elke eigenschap uit het hierboven beschreven voorbeeld
     /exports/0/city: "Moscow"
     /exports/1/city: "Athens"
 
-Wanneer een item is geschreven, indexeert Azure Cosmos DB effectief het pad van elke eigenschap en de bijbehorende waarde.
+Wanneer een item wordt geschreven, indexeert Azure Cosmos DB in feite elke eigenschap van het pad en de bijbehorende waarde.
 
-## <a name="index-kinds"></a>De soorten van de index
+## <a name="index-kinds"></a>Index typen
 
 Azure Cosmos DB ondersteunt momenteel drie soorten indexen.
 
-### <a name="range-index"></a>Bereikindex
+### <a name="range-index"></a>Bereik index
 
-**De bereikindex** is gebaseerd op een geordende boomachtige structuur. De soort range index wordt gebruikt voor:
+De **bereik** index is gebaseerd op een geordende boom structuur. Het bereik index type wordt gebruikt voor:
 
-- Gelijkheidsquery's:
+- Gelijkheids query's:
 
     ```sql
    SELECT * FROM container c WHERE c.property = 'value'
@@ -80,49 +80,49 @@ Azure Cosmos DB ondersteunt momenteel drie soorten indexen.
    SELECT * FROM c WHERE c.property IN ("value1", "value2", "value3")
    ```
 
-   Gelijkheidsovereenkomst op een arrayelement
+   Gelijkheids overeenkomst voor een matrix element
    ```sql
     SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1")
     ```
 
-- Bereikquery's:
+- Bereik query's:
 
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
    ```
-  (werken `>`voor `<` `>=`, `<=` `!=`, , , )
+  (werkt voor `>`, `<`, `>=`, `<=`, `!=`,)
 
-- Controleren op de aanwezigheid van een woning:
+- Controleren op de aanwezigheid van een eigenschap:
 
    ```sql
    SELECT * FROM c WHERE IS_DEFINED(c.property)
    ```
 
-- Tekenreeksvoorvoegingen (trefwoord CONTAINS maakt geen gebruik van de bereikindex):
+- Komt overeen met het voor voegsel van de teken reeks (bevat de bereik index):
 
    ```sql
    SELECT * FROM c WHERE STARTSWITH(c.property, "value")
    ```
 
-- `ORDER BY`Query 's:
+- `ORDER BY`aanvragen
 
    ```sql
    SELECT * FROM container c ORDER BY c.property
    ```
 
-- `JOIN`Query 's:
+- `JOIN`aanvragen
 
    ```sql
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
    ```
 
-Bereikindexen kunnen worden gebruikt op scalaire waarden (tekenreeks of getal).
+Bereik indexen kunnen worden gebruikt voor scalaire waarden (teken reeks of getal).
 
 ### <a name="spatial-index"></a>Ruimtelijke index
 
-**Ruimtelijke** indexen maken efficiënte query's mogelijk op georuimtelijke objecten zoals - punten, lijnen, veelhoeken en multipolygoon. Deze query's gebruiken ST_DISTANCE, ST_WITHIN, ST_INTERSECTS trefwoorden. Hieronder volgen enkele voorbeelden die gebruik maken van ruimtelijke indexsoort:
+Met **ruimtelijke** indexen kunnen efficiënte query's worden uitgevoerd op georuimtelijke objecten zoals-Points, lijnen, veelhoeken en multiveelhoeken. Deze query's gebruiken ST_DISTANCE, ST_WITHIN ST_INTERSECTS tref woorden. Hieronder vindt u enkele voor beelden van ruimtelijke-index type:
 
-- Query's voor georuimtelijke afstand:
+- Georuimtelijke afstand query's:
 
    ```sql
    SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40
@@ -134,17 +134,17 @@ Bereikindexen kunnen worden gebruikt op scalaire waarden (tekenreeks of getal).
    SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
    ```
 
-- Georuimtelijke kruisquery's:
+- Georuimtelijke Intersect-query's:
 
    ```sql
    SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
    ```
 
-Ruimtelijke indexen kunnen worden gebruikt op correct opgemaakte [GeoJSON-objecten.](geospatial.md) Punten, LineStrings, Polygonen en MultiPolygons worden momenteel ondersteund.
+Ruimtelijke indexen kunnen worden gebruikt op correct opgemaakte [GEOjson](geospatial.md) -objecten. Punten, line strings toe, veelhoeken en multiveelhoeken worden momenteel ondersteund.
 
 ### <a name="composite-indexes"></a>Samengestelde indexen
 
-**Samengestelde** indexcijfers verhogen de efficiëntie wanneer u bewerkingen uitvoert op meerdere velden. De samengestelde indexsoort wordt gebruikt voor:
+**Samengestelde** indexen verhogen de efficiëntie wanneer u bewerkingen uitvoert op meerdere velden. De samengestelde index soort wordt gebruikt voor:
 
 - `ORDER BY`query's op meerdere eigenschappen:
 
@@ -152,39 +152,39 @@ Ruimtelijke indexen kunnen worden gebruikt op correct opgemaakte [GeoJSON-object
  SELECT * FROM container c ORDER BY c.property1, c.property2
 ```
 
-- Query's met `ORDER BY`een filter en . Deze query's kunnen een samengestelde index gebruiken `ORDER BY` als de eigenschap filter aan de component wordt toegevoegd.
+- Query's met een filter en `ORDER BY`. Deze query's kunnen gebruikmaken van een samengestelde index als de eigenschap filter wordt toegevoegd aan de `ORDER BY` component.
 
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
 ```
 
-- Query's met een filter op twee of meer eigenschappen waarbij ten minste één eigenschap een gelijkheidsfilter is
+- Query's met een filter voor twee of meer eigenschappen waarbij ten minste één eigenschap een gelijkheids filter is
 
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
-Zolang één filterpredicaat een van de indexsoort gebruikt, evalueert de queryengine dat eerst voordat u de rest scant. Als u bijvoorbeeld een SQL-query hebt, zoals`SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+Zolang één filter predicaat een van de index typen gebruikt, evalueert de query-engine dat eerst voordat de rest wordt gescand. Als u bijvoorbeeld een SQL-query hebt zoals`SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
 
-* De bovenstaande query filtert eerst op inzendingen waarbij firstName = "Andrew" wordt gebruikt met behulp van de index. Vervolgens passeren alle firstName = "Andrew" items via een volgende pijplijn om de CONTAINS filter predicaat te evalueren.
+* Met de bovenstaande query wordt eerst gefilterd op vermeldingen waarbij voor naam "Andrew" met behulp van de index. Vervolgens worden alle voor naam = "Andrew" vermeldingen door gegeven aan een volgende pijp lijn om het CONTAINs-filter predicaat te evalueren.
 
-* U query's versnellen en volledige containerscans vermijden bij het gebruik van functies die de index niet gebruiken (bijvoorbeeld BEVAT) door extra filterpredicaten toe te voegen die de index wel gebruiken. De volgorde van filterclausules is niet belangrijk. De query engine is zal uitzoeken welke predicaten zijn selectiever en voer de query dienovereenkomstig.
+* U kunt query's versnellen en volledige container scans voor komen met behulp van functies die de index niet gebruiken (bijvoorbeeld CONTAINs) door extra filter predikaten toe te voegen die de index gebruiken. De volg orde van de filter componenten is niet belang rijk. De query-engine geeft aan welke predikaten meer selectief zijn en voeren de query dienovereenkomstig uit.
 
 
-## <a name="querying-with-indexes"></a>Query's met indexen
+## <a name="querying-with-indexes"></a>Query's uitvoeren met indexen
 
-De paden die worden geëxtraheerd bij het indexeren van gegevens maken het gemakkelijk om de index op te zoeken bij het verwerken van een query. Door de `WHERE` component van een query te koppelen aan de lijst met geïndexeerde paden, is het mogelijk om de items te identificeren die het querypredicaat zeer snel overeenkomen.
+De paden die worden geëxtraheerd bij het indexeren van gegevens, maken het gemakkelijker om de index bij het verwerken van een query te zoeken. Door de `WHERE` component van een query te vergelijken met de lijst met geïndexeerde paden, is het mogelijk om de items te identificeren die overeenkomen met het query predicaat zeer snel.
 
-Denk bijvoorbeeld aan de `SELECT location FROM location IN company.locations WHERE location.country = 'France'`volgende query: . Het querypredicaat (filteren op items, waarbij elke locatie 'Frankrijk' als land heeft) komt overeen met het rode pad:
+Bekijk bijvoorbeeld de volgende query: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Het query predicaat (filteren op items, waarbij een wille keurige locatie ' Frank rijk ' heeft als land) overeenkomt met het pad dat in rood is gemarkeerd:
 
-![Een specifiek pad binnen een boom afstemmen](./media/index-overview/matching-path.png)
+![Een specifiek pad binnen een structuur zoeken](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> Een `ORDER BY` clausule die orders door een enkele eigenschap *altijd* een bereikindex nodig heeft en mislukt als het pad waarnaar wordt verwezen er geen heeft. Op dezelfde `ORDER BY` manier heeft een query die op meerdere eigenschappen bestelt *altijd* een samengestelde index nodig.
+> Een `ORDER BY` component waarbij orders met één eigenschap *altijd* een bereik index nodig heeft en mislukt als het pad waarnaar wordt verwezen, niet is opgenomen. Op dezelfde manier `ORDER BY` heeft een query die door meerdere eigenschappen orders *altijd* een samengestelde index nodig.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees meer over indexering in de volgende artikelen:
+Meer informatie over indexeren vindt u in de volgende artikelen:
 
 - [Indexeringsbeleid](index-policy.md)
-- [Indexeringsbeleid beheren](how-to-manage-indexing-policy.md)
+- [Indexerings beleid beheren](how-to-manage-indexing-policy.md)

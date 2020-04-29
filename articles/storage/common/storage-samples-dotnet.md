@@ -1,6 +1,6 @@
 ---
-title: Azure Storage-voorbeelden met .NET | Microsoft Documenten
-description: Voorbeeldcode en -toepassingen voor Azure Storage weergeven, downloaden en uitvoeren. Ontdek aan de slag met voorbeelden voor blobs, wachtrijen, tabellen en bestanden met behulp van de .NET-opslagclientbibliotheken.
+title: Voor beelden Azure Storage met .NET | Microsoft Docs
+description: Voorbeeld code en toepassingen voor Azure Storage weer geven, downloaden en uitvoeren. Ontdek aan de slag met voor beelden voor blobs, wacht rijen, tabellen en bestanden, met behulp van de .NET Storage-client bibliotheken.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/13/2020
@@ -8,34 +8,34 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: f02c08e752575dd1f57ce91dfc3145b69e3a2fd2
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81010491"
 ---
-# <a name="azure-storage-samples-using-v12-net-client-libraries"></a>Azure Storage-voorbeelden met v12 .NET-clientbibliotheken
+# <a name="azure-storage-samples-using-v12-net-client-libraries"></a>Azure Storage voor beelden met behulp van V12 .NET-client bibliotheken
 
-De volgende tabel geeft een overzicht van onze monsters repository en de scenario's die in elk monster. Klik op de koppelingen om de bijbehorende voorbeeldcode in GitHub weer te geven.
+De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen en de scenario's die in elk voor beeld worden behandeld. Klik op de koppelingen om de bijbehorende voorbeeld code in GitHub weer te geven.
 
 > [!NOTE]
-> Deze voorbeelden maken gebruik van de nieuwste Azure Storage .NET v12-bibliotheek. Zie Azure Blob Storage [Samples voor .NET voor](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started) oudere v11-code in de GitHub-opslagplaats.
+> In deze voor beelden wordt de nieuwste Azure Storage .NET V12-bibliotheek gebruikt. Zie [Azure Blob Storage-voor beelden voor .net](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started) in de GitHub-opslag plaats voor een verouderde V11-code.
 
-## <a name="blob-samples"></a>Blob-voorbeelden
+## <a name="blob-samples"></a>BLOB-voor beelden
 
 ### <a name="authentication"></a>Verificatie
 
 :::row:::
    :::column span="":::
-      [Verifiëren met een verbindingstekenreeks](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L27)
+      [Verifiëren met behulp van een connection string](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L27)
    :::column-end:::
    :::column span="":::
-      [Verifiëren met behulp van een gedeelde sleutelreferentie](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L91)
+      [Verifiëren met een gedeelde sleutel referentie](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L91)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Verifiëren met Azure Identity](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01a_HelloWorld.cs#L210)
+      [Verifiëren met Azure-identiteit](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01a_HelloWorld.cs#L210)
    :::column-end:::
    :::column span="":::
       [Verifiëren met een Active Directory-token](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L177)
@@ -43,7 +43,7 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Anoniem toegang tot een openbare blob](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L55)
+      [Anoniem toegang krijgen tot een open bare BLOB](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L55)
    :::column-end:::
 :::row-end:::
 
@@ -54,15 +54,15 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
       [Meerdere blobs in één aanvraag verwijderen](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L22)
    :::column-end:::
    :::column span="":::
-      [Meerdere blobtoegangslagen in één aanvraag instellen](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L56)
+      [Meerdere BLOB-toegangs lagen instellen in één aanvraag](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L56)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Fijnkorrelige controle in een batchaanvraag](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L90)
+      [Nauw keurig beheer van een batch-aanvraag](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L90)
    :::column-end:::
    :::column span="":::
-      [Fouten vangen van een mislukte subbewerking](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L136)
+      [Fouten van een mislukte subbewerking ondervangen](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L136)
    :::column-end:::
 :::row-end:::
 
@@ -70,43 +70,43 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
 
 :::row:::
    :::column span="":::
-      [Een bestand uploaden naar een blob](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L21)
+      [Een bestand uploaden naar een BLOB](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L21)
    :::column-end:::
    :::column span="":::
-      [Een blob downloaden naar een bestand](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L66)
+      [Een BLOB downloaden naar een bestand](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L66)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Een afbeelding downloaden](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L109)
+      [Een installatie kopie downloaden](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L109)
    :::column-end:::
    :::column span="":::
-      [Alle blobs in een container weergeven](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L128)
+      [Alle blobs in een container weer geven](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L128)
    :::column-end:::
 :::row-end:::
 
 ### <a name="troubleshooting"></a>Problemen oplossen
 :::row:::
    :::column span="2":::
-      [Een herstelbare fout activeren met een containerclient](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L166)
+      [Een herstel bare fout activeren met behulp van een container-client](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L166)
    :::column-end:::
 :::row-end:::
 
-## <a name="data-lake-storage-gen2-samples"></a>Gegevens Lake Storage Gen2-monsters
+## <a name="data-lake-storage-gen2-samples"></a>Data Lake Storage Gen2-voor beelden
 
 ### <a name="authentication"></a>Verificatie
 
 :::row:::
    :::column span="":::
-      [Anoniem toegang tot een openbaar bestand](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L28)
+      [Anoniem toegang krijgen tot een openbaar bestand](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L28)
    :::column-end:::
    :::column span="":::
-      [Verifiëren met behulp van een gedeelde sleutelreferentie](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L79)
+      [Verifiëren met een gedeelde sleutel referentie](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L79)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Verifiëren met een gedeelde toegangshandtekening (SAS)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L114)
+      [Verifiëren met behulp van een Shared Access Signature (SAS)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L114)
    :::column-end:::
    :::column span="":::
       [Verifiëren met een Active Directory-token](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L164)
@@ -116,10 +116,10 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
 ### <a name="file-system"></a>Bestandssysteem
 :::row:::
    :::column span="":::
-      [Een bestand maken met een bestandssysteemclient](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L22)
+      [Een bestand maken met een File System-client](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L22)
    :::column-end:::
    :::column span="":::
-      [Eigenschappen op een bestand en een map downloaden](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L560)
+      [Eigenschappen voor een bestand en een map ophalen](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L560)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -135,15 +135,15 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
       [Een map maken](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L93)
    :::column-end:::
    :::column span="":::
-      [Een bestand maken met een mapclient](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L55)
+      [Een bestand maken met een Directory-client](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L55)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Lijst mappen](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L275)
+      [Mappen weer geven](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L275)
    :::column-end:::
    :::column span="":::
-      [Bestanden en mappen doorkruisen](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L318)
+      [Door bestanden en mappen bladeren](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L318)
    :::column-end:::
 :::row-end:::
 
@@ -153,7 +153,7 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
       [Bestand uploaden](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L126)
    :::column-end:::
    :::column span="":::
-      [Uploaden door een bestand toe te voegen](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L169)
+      [Uploaden door toe te voegen aan een bestand](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L169)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -163,10 +163,10 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Een lijst met bestandstoegangsbeheer instellen en downloaden](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L468)
+      [Een toegangs beheer lijst voor een bestand instellen en ophalen](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L468)
    :::column-end:::
    :::column span="":::
-      [Machtigingen van een bestand instellen en opvragen](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L426)
+      [Machtigingen voor een bestand instellen en ophalen](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L426)
    :::column-end:::
 :::row-end:::
 
@@ -174,25 +174,25 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
 
 :::row:::
    :::column span="2":::
-      [Een herstelbare fout activeren](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L389)
+      [Een herstel bare fout activeren](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L389)
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-files-samples"></a>Voorbeelden van Azure-bestanden
+## <a name="azure-files-samples"></a>Azure Files-voor beelden
 
 ### <a name="authentication"></a>Verificatie
 
 :::row:::
    :::column span="":::
-      [Verifiëren met een verbindingstekenreeks](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L24)
+      [Verifiëren met behulp van een connection string](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L24)
    :::column-end:::
    :::column span="":::
-      [Verifiëren met behulp van een gedeelde sleutelreferentie](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L52)
+      [Verifiëren met een gedeelde sleutel referentie](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L52)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Verifiëren met behulp van een gedeelde toegangshandtekening (SAS))](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L86)
+      [Verifiëren met behulp van een Shared Access Signature (SAS))](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L86)
    :::column-end:::
 :::row-end:::
 
@@ -208,7 +208,7 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Bestanden en mappen doorkruisen](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample01b_HelloWorldAsync.cs#L107)
+      [Door bestanden en mappen bladeren](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample01b_HelloWorldAsync.cs#L107)
    :::column-end:::
 :::row-end:::
 
@@ -216,11 +216,11 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
 
 :::row:::
    :::column span="2":::
-      [Een herstelbare fout activeren met een shareclient](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample01b_HelloWorldAsync.cs#L141)
+      [Een herstel bare fout activeren met behulp van een share-client](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample01b_HelloWorldAsync.cs#L141)
    :::column-end:::
 :::row-end:::
 
-## <a name="queue-samples"></a>Wachtrijvoorbeelden
+## <a name="queue-samples"></a>Wachtrij voorbeelden
 
 ### <a name="authentication"></a>Verificatie
 
@@ -229,15 +229,15 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
       [Verifiëren met Azure Active Directory](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L167)
    :::column-end:::
    :::column span="":::
-      [Verifiëren met een verbindingstekenreeks](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L24)
+      [Verifiëren met behulp van een connection string](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L24)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Verifiëren met behulp van een gedeelde sleutelreferentie](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L52)
+      [Verifiëren met een gedeelde sleutel referentie](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L52)
    :::column-end:::
    :::column span="":::
-      [Verifiëren met behulp van een gedeelde toegangshandtekening (SAS))](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L86)
+      [Verifiëren met behulp van een Shared Access Signature (SAS))](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L86)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -261,23 +261,23 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
       [Berichten ontvangen en verwerken](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L61)
    :::column-end:::
    :::column span="":::
-      [Gluren bij berichten](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L90)
+      [Berichten bekijken](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L90)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Berichten ontvangen en een time-out voor zichtbaarheid bijwerken](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L115)
+      [Berichten ontvangen en time-out voor bijwerken van zicht baarheid](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L115)
    :::column-end:::
 :::row-end:::
 
 ### <a name="troubleshooting"></a>Problemen oplossen 
 :::row:::
    :::column span="2":::
-      [Een herstelbare fout activeren met een wachtrijclient](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L188)
+      [Een herstel bare fout activeren met behulp van een wachtrij-client](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L188)
    :::column-end:::
 :::row-end:::
 
-## <a name="table-samples-v11"></a>Tabelvoorbeelden (v11)
+## <a name="table-samples-v11"></a>Tabel voorbeelden (V11)
 
 :::row:::
    :::column span="":::
@@ -289,10 +289,10 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Entiteit invoegen/samenvoegen/vervangen](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/SamplesUtils.cs#L41)
+      [Entiteit invoegen/samen voegen/vervangen](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/SamplesUtils.cs#L41)
    :::column-end:::
    :::column span="":::
-      [Queryentiteiten](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs#L672)
+      [Entiteiten opvragen](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs#L672)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -300,7 +300,7 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
       [Querytabellen](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs)
    :::column-end:::
    :::column span="":::
-      [Tabel ACL/eigenschappen](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs#L224)
+      [Tabel-ACL/eigenschappen](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs#L224)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -309,31 +309,31 @@ De volgende tabel geeft een overzicht van onze monsters repository en de scenari
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-code-sample-libraries"></a>Voorbeeldbibliotheken voor Azure-code
+## <a name="azure-code-sample-libraries"></a>Voorbeeld bibliotheken van Azure-code
 
-Ga naar:
+Als u de volledige .NET-voorbeeld bibliotheken wilt weer geven, gaat u naar:
 
-* [Azure blobcodevoorbeelden](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
-* [Codevoorbeelden azure Data Lake](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples)
-* [Voorbeelden van Azure Files-code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples)
-* [Voorbeelden van Azure-wachtrijcode](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)
+* [Voor beelden van Azure Blob-code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
+* [Voor beelden van Azure Data Lake code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples)
+* [Voor beelden van Azure Files code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples)
+* [Voor beelden van Azure-wachtrij code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)
 
-U de GitHub-opslagplaats voor elke bibliotheek bladeren en klonen.
+U kunt de GitHub-opslag plaats voor elke tape wisselaar door bladeren en klonen.
 
-## <a name="getting-started-guides"></a>Aan de slag met hulplijnen
+## <a name="getting-started-guides"></a>Aan de slag-hand leidingen
 
-Bekijk de volgende handleidingen als u op zoek bent naar instructies over het installeren en aan de slag gaan met de Azure Storage Client Libraries.
+Bekijk de volgende hand leidingen als u op zoek bent naar instructies voor het installeren en aan de slag met de Azure Storage-client bibliotheken.
 
-* [Aan de slag met Azure Blob Service in .NET](../blobs/storage-quickstart-blobs-dotnet.md)
-* [Aan de slag met Azure Queue Service in .NET](../queues/storage-quickstart-queues-dotnet.md)
-* [Aan de slag met Azure Table Service in .NET](../../cosmos-db/tutorial-develop-table-dotnet.md)
+* [Aan de slag met Azure Blob service in .NET](../blobs/storage-quickstart-blobs-dotnet.md)
+* [Aan de slag met Azure Queue service in .NET](../queues/storage-quickstart-queues-dotnet.md)
+* [Aan de slag met Azure Table service in .NET](../../cosmos-db/tutorial-develop-table-dotnet.md)
 * [Aan de slag met Azure File Service in .NET](../files/storage-dotnet-how-to-use-files.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor informatie over monsters voor andere talen:
+Voor informatie over voor beelden voor andere talen:
 
-* Java: [Azure Storage-voorbeelden met Java](storage-samples-java.md)
-* Python: [Azure Storage-voorbeelden met Python](storage-samples-python.md)
-* JavaScript/Node.js: [Azure Storage-voorbeelden met JavaScript](storage-samples-javascript.md)
-* Alle andere talen: [azure storage-voorbeelden](storage-samples.md)
+* Java: [Azure Storage voor beelden met behulp van Java](storage-samples-java.md)
+* Python: [Azure Storage voor beelden met behulp van python](storage-samples-python.md)
+* Java script/node. js: [Azure Storage voor beelden met behulp van Java script](storage-samples-javascript.md)
+* Alle andere talen: [Azure Storage](storage-samples.md) -voor beelden

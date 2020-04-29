@@ -1,6 +1,6 @@
 ---
 title: Voorbeelden van Azure PowerShell
-description: Een tabel met koppelingen naar voorbeeldbashscripts die zijn gemaakt met Azure PowerShell, zoals het maken en beheren van een schaalset.
+description: Een tabel met koppelingen naar voor beelden van bash-scripts die zijn gebouwd met behulp van Azure PowerShell, zoals het maken en beheren van een schaalset.
 author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: b0c5f7fb3841df1cc5649d48348d985311a97062
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81011341"
 ---
 # <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>Voorbeelden van Microsoft Azure PowerShell voor virtuele-machineschaalsets.

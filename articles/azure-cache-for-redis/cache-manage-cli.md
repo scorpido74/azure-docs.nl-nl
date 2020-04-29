@@ -1,61 +1,61 @@
 ---
-title: Azure-cache voor Redis beheren met Azure-klassieke CLI
-description: Lees hoe u de klassieke CLI van Azure op elk platform installeert, hoe u deze gebruiken om verbinding te maken met uw Azure-account en hoe u een Azure-cache voor Redis maken en beheren vanuit het klassieke CLI.
+title: Azure cache beheren voor redis met behulp van klassieke Azure CLI
+description: Meer informatie over het installeren van de klassieke Azure CLI op elk platform, hoe u deze kunt gebruiken om verbinding te maken met uw Azure-account en hoe u een Azure-cache maakt en beheert voor redis vanuit de klassieke CLI.
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
 ms.openlocfilehash: f71476d7d41ae45d2f1014ed1b257870622487e6
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81010831"
 ---
-# <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure-cache voor Redis maken en beheren met de klassieke CLI van Azure
+# <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure-cache voor redis maken en beheren met behulp van de klassieke Azure-CLI
 > [!div class="op_single_selector"]
-> * [PowerShell](cache-how-to-manage-redis-cache-powershell.md)
+> * [Zo](cache-how-to-manage-redis-cache-powershell.md)
 > * [Klassieke versie van Azure CLI](cache-manage-cli.md)
 >
 
-De Azure-klassieke CLI is een geweldige manier om uw Azure-infrastructuur vanaf elk platform te beheren. In dit artikel ziet u hoe u uw Azure-cache voor Redis-exemplaren maakt en beheert met behulp van de klassieke AZURE-CLI.
+De klassieke Azure-CLI is een uitstekende manier om uw Azure-infra structuur vanaf elk platform te beheren. Dit artikel laat u zien hoe u uw Azure-cache voor redis-instanties maakt en beheert met behulp van de klassieke Azure-CLI.
 
 [!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
 > [!NOTE]
-> Zie [Azure CLI Azure Cache for Redis-voorbeelden voor](cli-samples.md)de nieuwste Azure CLI-voorbeeldscripts .
+> Voor de nieuwste Azure CLI-voorbeeld scripts raadpleegt u [Azure cli Azure cache voor redis-voor beelden](cli-samples.md).
 
 ## <a name="prerequisites"></a>Vereisten
-Als u Azure Cache voor Redis-exemplaren wilt maken en beheren met Azure classic CLI, moet u de volgende stappen uitvoeren.
+Voor het maken en beheren van Azure-cache voor redis-exemplaren met behulp van klassieke Azure-CLI, moet u de volgende stappen uitvoeren.
 
-* U moet een Azure-account hebben. Als je nog geen account hebt, kun je in een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) aanmaken.
-* [Installeer de Azure-klassieke CLI](../cli-install-nodejs.md).
-* Verbind uw Azure CLI-installatie met een persoonlijk Azure-account of met een Azure-account `azure login` voor werk of school en meld u met de opdracht aan vanuit de klassieke CLI.
-* Voordat u een van de volgende opdrachten uitvoert, schakelt u `azure config mode arm` de klassieke CLI in resourcebeheermodus door de opdracht uit te voeren. Zie [De klassieke CLI van Azure gebruiken om Azure-bronnen en resourcegroepen te beheren](../xplat-cli-azure-resource-manager.md)voor meer informatie.
+* U moet een Azure-account hebben. Als u er nog geen hebt, kunt u in slechts enkele ogen blikken een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.
+* [Installeer de klassieke Azure-cli](../cli-install-nodejs.md).
+* Verbind uw Azure CLI-installatie met een persoonlijk Azure-account of met een werk-of school-Azure-account en meld u aan bij `azure login` de klassieke CLI met behulp van de opdracht.
+* Voordat u een van de volgende opdrachten uitvoert, moet u de klassieke CLI overschakelen naar de Resource Manager `azure config mode arm` -modus door de opdracht uit te voeren. Zie [de klassieke Azure-CLI gebruiken voor het beheren van Azure-resources en-resource groepen](../xplat-cli-azure-resource-manager.md)voor meer informatie.
 
 ## <a name="azure-cache-for-redis-properties"></a>Eigenschappen van Azure Cache voor Redis
-De volgende eigenschappen worden gebruikt bij het maken en bijwerken van Azure Cache voor Redis-exemplaren.
+De volgende eigenschappen worden gebruikt bij het maken en bijwerken van Azure-cache voor redis-exemplaren.
 
 | Eigenschap | Switch | Beschrijving |
 | --- | --- | --- |
-| name |-n, --naam |Naam van de Azure-cache voor Redis. |
-| resourcegroep |-g, --resource-groep |Naam van de resourcegroep. |
-| location |-l, --locatie |Locatie om cache te maken. |
-| grootte |-z, --size |Grootte van de Azure-cache voor Redis. Geldige waarden: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
-| sku |-x, --sku |Redis-SKU. Moet een van : [Basic, Standaard, Premium] |
-| EnableNonSslPort |-e, --enable-non-ssl-port |De eigenschap NonSslPort van de Azure-cache voor Redis inschakelen. Voeg deze vlag toe als u de niet-TLS/SSL-poort voor uw cache wilt inschakelen |
-| Redis-configuratie |-c, --redis-configuratie |Redis-configuratie. Voer hier een json-opgemaakte reeks configuratiesleutels en -waarden in. Opmaak:"{":""""":":"""}" |
-| Redis-configuratie |-f, --redis-configuratie-bestand |Redis-configuratie. Voer hier het pad in van een bestand met configuratiesleutels en -waarden. Opmaak voor de bestandsinvoer: {"":""""":""""} |
-| Shard telling |-r, --shard-telling |Aantal shards dat moet worden gemaakt op een Premium-clustercache met clustering. |
-| Virtual Network |-v, --virtueel-netwerk |Wanneer u uw cache host in een VNET, geeft u de exacte ARM-bron-id van het virtuele netwerk op om de Azure-cache voor Redis te implementeren. Voorbeeldnotatie: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
-| toetstype |-t, --key-type |Type sleutel om te vernieuwen. Geldige waarden: [Primair, Secundair] |
-| StaticIP (StaticIP) |-p, --static-ip \<static-ip\> |Wanneer u uw cache host in een VNET, geeft u een uniek IP-adres op in het subnet voor de cache. Indien niet voorzien, wordt er een voor u gekozen uit het subnet. |
-| Subnet |t, --subnet \<subnet subnet\> |Wanneer u uw cache host in een VNET, geeft u de naam op van het subnet waarin de cache moet worden geïmplementeerd. |
-| VirtualNetwork |-v, --virtueel-netwerk \<virtueel-netwerk\> |Wanneer u uw cache host in een VNET, geeft u de exacte ARM-bron-id van het virtuele netwerk op om de Azure-cache voor Redis te implementeren. Voorbeeldnotatie: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
-| Abonnement |-s, --abonnement |De abonnements-id. |
+| name |-n,--naam |De naam van de Azure-cache voor redis. |
+| resourcegroep |-g,--resource-Group |De naam van de resource groep. |
+| location |-l,--locatie |Locatie voor het maken van de cache. |
+| grootte |-z,--grootte |Grootte van de Azure-cache voor redis. Geldige waarden: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
+| sku |-x,--SKU |Redis-SKU. Moet een van de volgende zijn: [Basic, Standard, Premium] |
+| EnableNonSslPort |-e,--inschakelen-niet-SSL-poort |De eigenschap EnableNonSslPort van de Azure-cache voor redis. Voeg deze markering toe als u de niet-TLS/SSL-poort voor uw cache wilt inschakelen |
+| Redis-configuratie |-c,--redis-configuratie |Redis-configuratie. Voer hier een JSON-teken reeks met configuratie sleutels en waarden in. Indeling: "{" ":" "," ":" "}" |
+| Redis-configuratie |-f,--redis-configuratie bestand |Redis-configuratie. Geef hier het pad op van een bestand met configuratie sleutels en-waarden. Indeling voor de bestands vermelding: {"": "", "": ""} |
+| Aantal Shard |-r,--Shard-Count |Het aantal Shards dat moet worden gemaakt in een Premium-cluster cache met clustering. |
+| Virtual Network |-v,--virtueel-netwerk |Wanneer u uw cache host in een VNET, geeft u de exacte ARM-Resource-ID van het virtuele netwerk op voor het implementeren van de Azure-cache voor redis in. Voorbeeld notatie:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| sleutel type |-t,--sleutel-type |Type sleutel dat moet worden verlengd. Geldige waarden: [Primary, Secondary] |
+| StaticIP |-p,--statisch-IP \<-statisch-IP\> |Bij het hosten van uw cache in een VNET, geeft u een uniek IP-adres op in het subnet voor de cache. Indien niet opgegeven, wordt er een gekozen uit het subnet. |
+| Subnet |t,-subnet \<subnet\> |Wanneer u uw cache host in een VNET, geeft u de naam op van het subnet waarin de cache moet worden geïmplementeerd. |
+| VirtualNetwork |-v,--virtueel-netwerk \<virtueel-netwerk\> |Wanneer u uw cache host in een VNET, geeft u de exacte ARM-Resource-ID van het virtuele netwerk op voor het implementeren van de Azure-cache voor redis in. Voorbeeld notatie:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| Abonnement |-s,--abonnement |De abonnements-id. |
 
-## <a name="see-all-azure-cache-for-redis-commands"></a>Alle Opdrachten voor Azure-cache voor Redis weergeven
-Als u alle Opdrachten voor Azure Cache voor `azure rediscache -h` Redis en hun parameters wilt bekijken, gebruikt u de opdracht.
+## <a name="see-all-azure-cache-for-redis-commands"></a>Alle Azure-cache voor redis-opdrachten weer geven
+Als u alle Azure-cache voor redis-opdrachten en de bijbehorende para `azure rediscache -h` meters wilt weer geven, gebruikt u de opdracht.
 
     C:\>azure rediscache -h
     help:    Commands to manage your Azure Cache for Redis(s)
@@ -87,7 +87,7 @@ Als u alle Opdrachten voor Azure Cache voor `azure rediscache -h` Redis en hun p
     help:    Current Mode: arm (Azure Resource Management)
 
 ## <a name="create-an-azure-cache-for-redis"></a>Een Azure Cache voor Redis-instantie maken
-Als u een Azure-cache voor Redis wilt maken, gebruikt u de volgende opdracht:
+Als u een Azure-cache wilt maken voor redis, gebruikt u de volgende opdracht:
 
     azure rediscache create [--name <name> --resource-group <resource-group> --location <location> [options]]
 
@@ -119,8 +119,8 @@ Voer de `azure rediscache create -h` opdracht uit voor meer informatie over deze
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="delete-an-existing-azure-cache-for-redis"></a>Een bestaande Azure-cache voor Redis verwijderen
-Als u een Azure-cache voor Redis wilt verwijderen, gebruikt u de volgende opdracht:
+## <a name="delete-an-existing-azure-cache-for-redis"></a>Een bestaande Azure-cache voor redis verwijderen
+Als u een Azure-cache voor redis wilt verwijderen, gebruikt u de volgende opdracht:
 
     azure rediscache delete [--name <name> --resource-group <resource-group> ]
 
@@ -142,8 +142,8 @@ Voer de `azure rediscache delete -h` opdracht uit voor meer informatie over deze
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="list-all-azure-cache-for-redis-within-your-subscription-or-resource-group"></a>Alle Azure-cache voor Redis weergeven in uw abonnements- of brongroep
-Als u alle Azure-cache voor Redis wilt weergeven in uw abonnement of brongroep, gebruikt u de volgende opdracht:
+## <a name="list-all-azure-cache-for-redis-within-your-subscription-or-resource-group"></a>Alle Azure-cache voor redis in uw abonnement of resource groep weer geven
+Als u alle Azure-cache voor redis binnen uw abonnement of resource groep wilt weer geven, gebruikt u de volgende opdracht:
 
     azure rediscache list [options]
 
@@ -164,8 +164,8 @@ Voer de `azure rediscache list -h` opdracht uit voor meer informatie over deze o
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="show-properties-of-an-existing-azure-cache-for-redis"></a>Eigenschappen van een bestaande Azure-cache voor Redis weergeven
-Als u eigenschappen van een bestaande Azure-cache voor Redis wilt weergeven, gebruikt u de volgende opdracht:
+## <a name="show-properties-of-an-existing-azure-cache-for-redis"></a>Eigenschappen van een bestaand Azure-cache geheugen weer geven voor redis
+Als u de eigenschappen van een bestaand Azure-cache geheugen voor redis wilt weer geven, gebruikt u de volgende opdracht:
 
     azure rediscache show [--name <name> --resource-group <resource-group>]
 
@@ -189,8 +189,8 @@ Voer de `azure rediscache show -h` opdracht uit voor meer informatie over deze o
 
 <a name="scale"></a>
 
-## <a name="change-settings-of-an-existing-azure-cache-for-redis"></a>Instellingen van een bestaande Azure-cache voor Redis wijzigen
-Als u de instellingen van een bestaande Azure-cache voor Redis wilt wijzigen, gebruikt u de volgende opdracht:
+## <a name="change-settings-of-an-existing-azure-cache-for-redis"></a>Instellingen van een bestaande Azure-cache wijzigen voor redis
+Als u de instellingen van een bestaande Azure-cache voor redis wilt wijzigen, gebruikt u de volgende opdracht:
 
     azure rediscache set [--name <name> --resource-group <resource-group> --redis-configuration <redis-configuration>/--redis-configuration-file <redisConfigurationFile>]
 
@@ -214,12 +214,12 @@ Voer de `azure rediscache set -h` opdracht uit voor meer informatie over deze op
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="renew-the-authentication-key-for-an-existing-azure-cache-for-redis"></a>De verificatiesleutel voor een bestaande Azure-cache voor Redis verlengen
-Als u de verificatiesleutel voor een bestaande Azure-cache voor Redis wilt verlengen, gebruikt u de volgende opdracht:
+## <a name="renew-the-authentication-key-for-an-existing-azure-cache-for-redis"></a>De verificatie sleutel voor een bestaande Azure-cache vernieuwen voor redis
+Voor het vernieuwen van de verificatie sleutel voor een bestaande Azure-cache voor redis, gebruikt u de volgende opdracht:
 
     azure rediscache renew-key [--name <name> --resource-group <resource-group> --key-type <key-type>]
 
-Opgeven `Primary` `Secondary` of `key-type`voor .
+Opgeven `Primary` of `Secondary` voor `key-type`.
 
 Voer de `azure rediscache renew-key -h` opdracht uit voor meer informatie over deze opdracht.
 
@@ -240,8 +240,8 @@ Voer de `azure rediscache renew-key -h` opdracht uit voor meer informatie over d
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="list-primary-and-secondary-keys-of-an-existing-azure-cache-for-redis"></a>Primaire en secundaire sleutels van een bestaande Azure-cache voor Redis weergeven
-Als u primaire en secundaire sleutels van een bestaande Azure-cache voor Redis wilt weergeven, gebruikt u de volgende opdracht:
+## <a name="list-primary-and-secondary-keys-of-an-existing-azure-cache-for-redis"></a>De primaire en secundaire sleutels van een bestaande Azure-cache voor redis weer geven
+Als u de primaire en secundaire sleutels van een bestaande Azure-cache voor redis wilt weer geven, gebruikt u de volgende opdracht:
 
     azure rediscache list-keys [--name <name> --resource-group <resource-group>]
 

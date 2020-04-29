@@ -1,6 +1,6 @@
 ---
-title: De URL's van de Azure-portal op uw firewall of proxyserver safelist
-description: Deze URL's toevoegen aan de bypass van proxyservers om te communiceren met de Azure-portal en de bijbehorende services
+title: Safelist de Azure Portal Url's op uw firewall of proxy server
+description: Deze Url's toevoegen aan de proxy server bypass om te communiceren met de Azure Portal en de bijbehorende services
 services: azure-portal
 keywords: ''
 author: mgblythe
@@ -10,23 +10,23 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 399c64c88e78079432fcf7c09dafd199da83358b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255044"
 ---
-# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>De URL's van de Azure-portal op uw firewall of proxyserver safelist
+# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Safelist de Azure Portal Url's op uw firewall of proxy server
 
-U on-premises beveiligingsapparaten configureren om beveiligingsbeperkingen voor de URL's van de Azure-portal te omzeilen. Deze configuratie kan de prestaties en connectiviteit tussen uw lokale of brede netwerk en de Azure-cloud verbeteren.
+U kunt on-premises beveiligings apparaten configureren om beveiligings beperkingen voor de Azure Portal Url's over te slaan. Deze configuratie kan de prestaties en connectiviteit tussen uw lokale of Wide Area netwerk en de Azure-Cloud verbeteren.
 
-Netwerkbeheerders implementeren vaak proxyservers, firewalls of andere apparaten. Deze apparaten helpen bij het beveiligen en geven controle over hoe gebruikers toegang hebben tot het internet. Regels die zijn ontworpen om gebruikers te beschermen, kunnen soms legitiem zakelijk internetverkeer blokkeren of vertragen. Dit verkeer omvat communicatie tussen u en Azure. Om de connectiviteit tussen uw netwerk en de Azure-portal en de bijbehorende services te optimaliseren, raden we u aan Azure-portal-URL's toe te voegen aan uw safelist.
+Netwerk beheerders implementeren vaak proxy servers, firewalls of andere apparaten. Deze apparaten helpen beveiligen en bepalen hoe gebruikers toegang krijgen tot internet. Regels die zijn ontworpen om gebruikers te beschermen, kunnen het legitieme bedrijfsgerelateerde Internet verkeer soms blok keren of vertragen. Dit verkeer bevat communicatie tussen u en Azure. Voor het optimaliseren van de connectiviteit tussen uw netwerk en de Azure Portal en de bijbehorende services, raden we u aan Azure Portal-Url's toe te voegen aan uw Safelist.
 
-## <a name="azure-portal-urls-for-proxy-bypass"></a>URL's van Azure-portal en proxy-bypass
+## <a name="azure-portal-urls-for-proxy-bypass"></a>Azure Portal Url's voor het overs laan van een proxy
 
-De URL-eindpunten voor safelist voor de Azure-portal zijn specifiek voor de Azure-cloud waar uw organisatie is geïmplementeerd. Als u het netwerkverkeer naar deze eindpunten wilt toestaan beperkingen te omzeilen, selecteert u uw cloud. Voeg vervolgens de lijst met URL's toe aan uw proxyserver of firewall.
+De URL-eind punten naar Safelist voor de Azure Portal zijn specifiek voor de Azure-Cloud waar uw organisatie is geïmplementeerd. Selecteer uw Cloud om netwerk verkeer naar deze eind punten toe te staan om beperkingen over te slaan. Voeg vervolgens de lijst met Url's toe aan uw proxy server of firewall.
 
-#### <a name="public-cloud"></a>[Openbare cloud](#tab/public-cloud)
+#### <a name="public-cloud"></a>[Open bare Cloud](#tab/public-cloud)
 
 ```
 *.aadcdn.microsoftonline-p.com
@@ -63,7 +63,7 @@ De URL-eindpunten voor safelist voor de Azure-portal zijn specifiek voor de Azur
 *.windowsazure.us
 ```
 
-#### <a name="china-government-cloud"></a>[China Government Cloud](#tab/china-government-cloud)
+#### <a name="china-government-cloud"></a>[Overheids Cloud voor China](#tab/china-government-cloud)
 
 ```
 *.azure.cn
@@ -77,6 +77,6 @@ De URL-eindpunten voor safelist voor de Azure-portal zijn specifiek voor de Azur
 ---
 
 > [!NOTE]
-> Verkeer naar deze eindpunten maakt gebruik van standaard TCP-poorten voor HTTP (80) en HTTPS (443).
+> Verkeer naar deze eind punten maakt gebruik van standaard TCP-poorten voor HTTP (80) en HTTPS (443).
 >
 >

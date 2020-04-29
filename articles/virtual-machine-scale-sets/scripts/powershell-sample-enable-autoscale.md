@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-voorbeelden - Automatische schaal op basis van host inschakelen
+title: Azure PowerShell-voor beelden-automatisch schalen op basis van een host inschakelen
 description: Met dit script maakt u een virtuele-machineschaalset met Windows Server 2016 en gebruikt u metrische gegevens op basis van een host voor automatisch schalen wanneer de CPU-belasting verandert.
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 7e44bfd60be6c579bf25618989e0c42ea396e217
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81011489"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-powershell"></a>Een virtuele-machineschaalset automatisch schalen met Azure PowerShell

@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Schijven maken en gebruiken voor schaalsets met Azure PowerShell
+title: Zelf studie-schijven voor schaal sets maken en gebruiken met Azure PowerShell
 description: Leer hoe u met Azure PowerShell beheerde schijven kunt maken en gebruiken met schaalsets met virtuele machines, waaronder het toevoegen, voorbereiden, opvragen en loskoppelen van schijven.
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 6cdd1ee3c18d63e1a8c7734a9efc2573f6b04b33
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81011188"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Zelfstudie - Schijven maken en gebruiken met schaalset met virtuele machines met Azure PowerShell
@@ -26,7 +26,7 @@ Schaalsets voor virtuele machines maken gebruik van schijven voor het opslaan va
 > * Schijfprestaties
 > * Gegevensschijven koppelen en voorbereiden
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -90,7 +90,7 @@ U kunt schijven maken en koppelen wanneer u een schaalset maakt, maar ook voor e
 ### <a name="attach-disks-at-scale-set-creation"></a>Schijven koppelen bij het maken van een schaalset
 Maak een virtuele-machineschaalset met behulp van [New-AzVmss](/powershell/module/az.compute/new-azvmss). Geef desgevraagd een gebruikersnaam en wachtwoord op voor de VM-exemplaren. Om het verkeer te distribueren naar de verschillende VM-exemplaren, wordt er ook een load balancer gemaakt. De load balancer bevat regels voor het distribueren van verkeer op TCP-poort 80, en voor het toestaan van verkeer van Extern bureaublad op TCP-poort 3389 en externe toegang via PowerShell op TCP-poort 5985.
 
-Er worden twee schijven gemaakt met de parameter `-DataDiskSizeGb`. De eerste schijf is *64* GB groot en de tweede schijf *128* GB. Geef desgevraagd uw eigen beheerdersreferenties op voor de VM-exemplaren in de schaalset:
+Er worden twee schijven gemaakt met de parameter `-DataDiskSizeGb`. De eerste schijf is *64* GB groot en de tweede schijf is *128* GB. Geef desgevraagd uw eigen beheerdersreferenties op voor de VM-exemplaren in de schaalset:
 
 ```azurepowershell-interactive
 New-AzVmss `

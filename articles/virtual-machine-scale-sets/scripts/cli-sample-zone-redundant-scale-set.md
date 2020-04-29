@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-monsters - Zoneredundante schaalset
-description: Met dit script wordt een Azure-set voor virtuele machineschaal gemaakt waarop Ubuntu wordt uitgevoerd in meerdere beschikbaarheidszones.
+title: Azure CLI-voor beelden-zone-redundante schaalset
+description: Met dit script maakt u een virtuele-machine schaalset van Azure met Ubuntu op meerdere Beschikbaarheidszones.
 author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 80b173daf2101180e5d78de625b914bd8396b7af
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81010355"
 ---
 # <a name="create-a-zone-redundant-virtual-machine-scale-set-with-azure-cli"></a>Een zone-redundante virtuele-machineschaalset maken met Azure CLI

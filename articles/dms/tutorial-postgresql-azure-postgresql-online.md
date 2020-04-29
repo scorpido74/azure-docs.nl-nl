@@ -1,7 +1,7 @@
 ---
-title: 'Zelfstudie: Migreren Naar Azure Database voor PostgreSQL online via de Azure CLI'
+title: 'Zelf studie: PostgreSQL migreren naar Azure Database for PostgreSQL online via de Azure CLI'
 titleSuffix: Azure Database Migration Service
-description: Leer een online migratie uitvoeren van PostgreSQL on-premises naar Azure Database voor PostgreSQL met behulp van Azure Database Migration Service via de CLI.
+description: Meer informatie over het uitvoeren van een online migratie van PostgreSQL on-premises naar Azure Database for PostgreSQL met behulp van Azure Database Migration Service via de CLI.
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -13,30 +13,30 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 04/11/2020
 ms.openlocfilehash: e8f79512e132ff4632c067b23ad6e80a76b8d4cf
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81113891"
 ---
-# <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>Zelfstudie: Migreren Naar Azure DB naar Azure DB voor PostgreSQL online met DMS via de Azure CLI
+# <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>Zelf studie: PostgreSQL migreren naar Azure DB voor PostgreSQL online met behulp van DMS via de Azure CLI
 
-U Azure Database Migration Service gebruiken om de databases te migreren van een on-premises PostgreSQL-instantie naar [Azure Database voor PostgreSQL](https://docs.microsoft.com/azure/postgresql/) met minimale downtime. Met andere woorden, migratie kan worden bereikt met minimale downtime naar de toepassing. In deze zelfstudie migreert u de **voorbeelddatabase voor dvd-verhuur** van een on-premises instantie van PostgreSQL 9.6 naar Azure Database voor PostgreSQL met behulp van de onlinemigratieactiviteit in Azure Database Migration Service.
+U kunt Azure Database Migration Service gebruiken om de data bases van een on-premises PostgreSQL-exemplaar te migreren naar [Azure database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) met minimale downtime. Met andere woorden, migratie kan worden gerealiseerd met minimale downtime voor de toepassing. In deze zelf studie migreert u de **gehuurde** voorbeeld database van de DVD van een on-premises exemplaar van postgresql 9,6 naar Azure database for PostgreSQL met behulp van de online migratie activiteit in azure database Migration service.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 >
-> * Migreer het voorbeeldschema met pg_dump hulpprogramma.
+> * Migreer het voorbeeld schema met behulp van pg_dump-hulp programma.
 > * De Azure-portal gebruiken om een Azure Database Migration Service-exemplaar te maken.
 > * Een migratieproject maken met behulp van de Azure Database Migration Service.
 > * De migratie uitvoeren.
 > * De migratie controleren.
 
 > [!NOTE]
-> Als u Azure Database Migration Service gebruikt om een onlinemigratie uit te voeren, moet u een instantie maken op basis van de prijscategorie Premium. We versleutelen schijf om diefstal van gegevens te voorkomen tijdens het migratieproces.
+> Als u Azure Database Migration Service voor het uitvoeren van een online migratie wilt gebruiken, moet u een instantie maken op basis van de prijs categorie Premium. De schijf wordt versleuteld om dief stal van gegevens tijdens het migratie proces te voor komen.
 
 > [!IMPORTANT]
-> Voor een optimale migratie-ervaring raadt Microsoft aan een exemplaar van Azure Database Migration Service te maken in dezelfde Azure-regio als de doeldatabase. Het verplaatsen van gegevens naar regio's of geografieën kan het migratieproces vertragen en fouten veroorzaken.
+> Voor een optimale migratie-ervaring raadt micro soft aan om een instantie van Azure Database Migration Service te maken in dezelfde Azure-regio als de doel database. Het verplaatsen van gegevens naar regio's of geografieën kan het migratieproces vertragen en fouten veroorzaken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -44,28 +44,28 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 * Download en installeer [PostgreSQL Community Edition](https://www.postgresql.org/download/) 9.5, 9.6 of 10. De bronversie van PostgreSQL Server moet versie 9.5.11, 9.6.7, 10 of hoger zijn. Zie voor meer informatie het artikel [Supported PostgreSQL Database Versions](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions) (Ondersteunde versies van de PostgreSQL-database).
 
-    Houd er ook rekening mee dat de doel-Azure Database voor PostgreSQL-versie gelijk moet zijn aan of later dan de on-premises PostgreSQL-versie. PostgreSQL 9.6 kan bijvoorbeeld alleen migreren naar Azure Database voor PostgreSQL 9.6, 10 of 11, maar niet naar Azure Database voor PostgreSQL 9.5.
+    Houd er ook rekening mee dat de versie van het doel Azure Database for PostgreSQL moet gelijk zijn aan of hoger zijn dan de on-premises PostgreSQL-versie. Zo kan PostgreSQL 9,6 alleen worden gemigreerd naar Azure Database for PostgreSQL 9,6, 10 of 11, maar niet naar Azure Database for PostgreSQL 9,5.
 
-* [Een instantie maken in Azure Database voor PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) of [Een Azure Database maken voor PostgreSQL - Hyperscale (Citus) server](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal).
-* Maak een Microsoft Azure Virtual Network for Azure Database Migration Service met behulp van het Azure Resource Manager-implementatiemodel, dat site-to-site-connectiviteit biedt met uw on-premises bronservers met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Zie de [virtual network documentation](https://docs.microsoft.com/azure/virtual-network/)en vooral de quickstart-artikelen met stapsgewijze details voor meer informatie over het maken van een virtueel netwerk.
+* [Maak een instantie in azure database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) of [Maak een Citus-server (Azure database for PostgreSQL-grootschalige)](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal).
+* Maak een Microsoft Azure Virtual Network voor Azure Database Migration Service met behulp van het Azure Resource Manager implementatie model, dat site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Raadpleeg de [documentatie van Virtual Network](https://docs.microsoft.com/azure/virtual-network/)voor meer informatie over het maken van een virtueel netwerk, met name de Quick Start-artikelen met stapsgewijze Details.
 
     > [!NOTE]
-    > Als u ExpressRoute gebruikt met netwerkpeering naar Microsoft, voegt u tijdens de installatie van het virtuele netwerk ExpressRoute met netwerkpeering aan Microsoft de volgende [serviceeindpunten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) toe aan het subnet waarin de service wordt ingericht:
+    > Als u tijdens de installatie van het virtuele netwerk ExpressRoute gebruikt met Network-peering voor micro soft, voegt u de volgende service- [eind punten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) toe aan het subnet waarin de service wordt ingericht:
     >
-    > * Eindpunt van doeldatabase (bijvoorbeeld SQL-eindpunt, Cosmos DB-eindpunt, enzovoort)
-    > * Eindpunt voor opslag
-    > * Eindpunt van servicebus
+    > * Eind punt van de doel database (bijvoorbeeld SQL-eind punt, Cosmos DB-eind punt, enzovoort)
+    > * Opslag eindpunt
+    > * Service Bus-eind punt
     >
-    > Deze configuratie is nodig omdat azure database migratieservice geen internetverbinding heeft.
+    > Deze configuratie is nood zakelijk omdat Azure Database Migration Service geen verbinding met internet heeft.
 
-* Zorg ervoor dat de regels van uw NSG-regels (Virtual Network Network Security Group) de volgende binnenkomende communicatiepoorten naar Azure Database Migration Service niet blokkeren: 443, 53, 9354, 445, 12000. Zie het artikel [Netwerkverkeer filteren met netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)voor meer informatie over het filteren van het virtuele netwerk.
+* Zorg ervoor dat de regels voor de netwerk beveiligings groep (NSG) van uw virtuele netwerk niet de volgende binnenkomende communicatie poorten blok keren tot Azure Database Migration Service: 443, 53, 9354, 445, 12000. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)voor meer informatie over het filteren van NSG verkeer van virtuele netwerken.
 * Configureer uw [Windows Firewall voor toegang tot de database-engine](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-* Open uw Windows-firewall zodat Azure Database Migration Service toegang heeft tot de bron PostgreSQL Server, die standaard TCP-poort 5432 is.
+* Open uw Windows Firewall om Azure Database Migration Service toegang te geven tot de bron PostgreSQL-server, die standaard TCP-poort 5432 is.
 * Wanneer u een firewallapparaat gebruikt voor de brondatabase(s), moet u mogelijk firewallregels toevoegen om voor de Azure Database Migration Service toegang tot de brondatabase(s) voor de migratie toe te staan.
-* Maak een firewallregel op [serverniveau](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) voor Azure Database voor PostgreSQL om Azure Database Migration Service toegang te geven tot de doeldatabases. Geef het subnetbereik op van het virtuele netwerk dat wordt gebruikt voor Azure Database Migration Service.
+* Maak een [firewall regel](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) op server niveau voor Azure Database for PostgreSQL om Azure database Migration service toegang te geven tot de doel databases. Geef het subnet-bereik van het virtuele netwerk op dat wordt gebruikt voor Azure Database Migration Service.
 * Er zijn twee methoden voor het aanroepen van de CLI:
 
-  * Selecteer in de rechterbovenhoek van de Azure-portal de knop Cloud Shell:
+  * Selecteer de knop Cloud Shell in de rechter bovenhoek van de Azure Portal:
 
        ![Knop Cloud Shell in de Azure Portal](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
 
@@ -78,7 +78,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 * Schakel logische replicatie in het bestand postgresql.config in en stel de volgende parameters in:
 
   * wal_level = **logical**
-  * max_replication_slots = [aantal slots], raden u aan om **op vijf slots** in te stellen
+  * max_replication_slots = [aantal sleuven], raadt u aan **vijf sleuven** in te stellen
   * max_wal_senders = [aantal gelijktijdige taken]: met de parameter max_wal_senders stelt u het aantal taken in dat gelijktijdig kan worden uitgevoerd. De aanbevolen instelling is **10 taken**
 
 ## <a name="migrate-the-sample-schema"></a>Het voorbeeldschema migreren
@@ -100,7 +100,7 @@ Om alle databaseobjecten zoals tabelschema’s, indexen en opgeslagen procedures
 
 2. Maak een lege database maken in uw doelomgeving, dit is Azure Database for PostgreSQL.
 
-    Zie het artikel Een Azure Database voor [PostgreSQL-server maken in de Azure-portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) of [Een Azure Database voor PostgreSQL - Hyperscale (Citus) maken in de Azure-portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)voor meer informatie over het maken van een database.
+    Voor meer informatie over het maken van verbinding en maken van een Data Base raadpleegt u het artikel [een Azure database for postgresql-server maken in de Azure Portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) of [een Citus-server (Azure database for PostgreSQL-grootschalige) maken in de Azure Portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal).
 
 3. Importeer het schema in de doeldatabase die u hebt gemaakt, door het dumpbestand van het schema te herstellen.
 
@@ -144,7 +144,7 @@ Om alle databaseobjecten zoals tabelschema’s, indexen en opgeslagen procedures
 
     Voer het 'drop foreign key'-script (de tweede kolom) uit in het queryresultaat.
 
-5. Triggers in de gegevens (invoeg- of bijwerktriggers) dwingen de gegevensintegriteit in de doeldatabase af vóór de gerepliceerde gegevens uit de brondatabase. Het wordt aanbevolen dat u triggers uitschakelt in alle tabellen **op het doel** tijdens de migratie en de triggers opnieuw inschakelt nadat de migratie is voltooid.
+5. Triggers in de gegevens (invoeg- of bijwerktriggers) dwingen de gegevensintegriteit in de doeldatabase af vóór de gerepliceerde gegevens uit de brondatabase. Het is raadzaam om tijdens de migratie triggers in alle tabellen **op het doel** uit te scha kelen en de triggers opnieuw in te scha kelen nadat de migratie is voltooid.
 
     Gebruik de volgende opdracht om triggers in de doeldatabase uit te schakelen:
 
@@ -153,7 +153,7 @@ Om alle databaseobjecten zoals tabelschema’s, indexen en opgeslagen procedures
     from information_schema.triggers;
     ```
 
-6. Als er ENUM-gegevenstype in tabellen zijn, wordt aanbevolen deze tijdelijk bij te werken naar een 'tekenwisselend' gegevenstype in de doeltabel. Wanneer de gegevensreplicatie is voltooid, wijzigt u het gegevenstype weer in ENUM.
+6. Als er in tabellen een ENUM-gegevens type is, is het raadzaam dat u dit tijdelijk bijwerkt naar het gegevens type ' character varieerde ' in de doel tabel. Wanneer de gegevensreplicatie is voltooid, wijzigt u het gegevenstype weer in ENUM.
 
 ## <a name="provisioning-an-instance-of-dms-using-the-cli"></a>Een exemplaar van DMS inrichten met behulp van de CLI
 
@@ -191,7 +191,7 @@ Om alle databaseobjecten zoals tabelschema’s, indexen en opgeslagen procedures
        ```
 
       > [!IMPORTANT]
-      > Zorg ervoor dat uw extensieversie hoger is dan 0.11.0.
+      > Zorg ervoor dat uw extensie versie hoger is dan 0.11.0.
 
    * U kunt op elk gewenst moment alle opdrachten bekijken die in DMS worden ondersteund door de volgende opdracht uit te voeren:
 
@@ -299,7 +299,7 @@ Om alle databaseobjecten zoals tabelschema’s, indexen en opgeslagen procedures
                }
        ```
 
-   * Er is ook een database-optie json-bestand dat de json-objecten weergeeft. Hieronder ziet u de indeling van het JSON-object van de database-optie voor PostgreSQL:
+   * Er is ook een JSON-bestand van de data base-optie met een lijst met JSON-objecten. Hieronder ziet u de indeling van het JSON-object van de database-optie voor PostgreSQL:
 
        ```json
        [
@@ -528,4 +528,4 @@ Als u een DMS-taak, -project of -service wilt annuleren of verwijderen, voert u 
 
 * Raadpleeg het artikel [Bekende problemen/beperkingen met online migraties naar Azure Database for PostgreSQL](known-issues-azure-postgresql-online.md) voor informatie over bekende problemen en beperkingen bij het uitvoeren van online migraties naar Azure Database for PostgreSQL.
 * Raadpleeg het artikel [Wat is de Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview) voor informatie over de Azure Database Migration Service.
-* Zie het artikel [Wat is Azure Database voor PostgreSQL?](https://docs.microsoft.com/azure/postgresql/overview).
+* Zie het artikel [Wat is er Azure database for PostgreSQL?](https://docs.microsoft.com/azure/postgresql/overview)voor informatie over Azure database for PostgreSQL.

@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-monsters - schaalset met één zone
-description: Met dit script wordt een Azure-set voor virtuele machineschaal gemaakt waarop Ubuntu in één beschikbaarheidszone wordt uitgevoerd.
+title: Azure CLI-voor beelden-schaalset met één zone
+description: Met dit script maakt u een virtuele-machine schaalset van Azure waarop Ubuntu wordt uitgevoerd in één beschikbaarheids zone.
 author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: cd41f21c5390ca0d2c62c1989d46f3d4c0ec36f8
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81011001"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-the-azure-cli"></a>Een virtuele-machineschaalset met één zone maken met Azure CLI

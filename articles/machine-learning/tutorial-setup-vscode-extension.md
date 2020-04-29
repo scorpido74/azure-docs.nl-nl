@@ -1,7 +1,7 @@
 ---
-title: 'Zelfstudie: De visual studiocode-extensie instellen'
+title: 'Zelf studie: de Visual Studio code extension instellen'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het instellen van de Azure Machine Learning-extensie van Visual Studio Code.
+description: Meer informatie over het instellen van de Visual Studio code Azure Machine Learning-extensie.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,71 +10,71 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 04/13/2020
 ms.openlocfilehash: 731ab18346ac9f100862174312c2c9950026f1eb
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81272905"
 ---
-# <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>Azure Machine Learning Visual Studio Code-extensie instellen
+# <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>Azure Machine Learning Visual Studio code extension instellen
 
-Meer informatie over het installeren en uitvoeren van scripts met de Azure Machine Learning Visual Studio Code-extensie.
+Meer informatie over het installeren en uitvoeren van scripts met de Azure Machine Learning Visual Studio code extension.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * De Azure Machine Learning Visual Studio Code-extensie installeren
-> * Aanmelden bij uw Azure-account vanuit Visual Studio Code
-> * De Azure Machine Learning-extensie gebruiken om een voorbeeldscript uit te voeren
+> * De Azure Machine Learning Visual Studio code-extensie installeren
+> * Meld u aan bij uw Azure-account vanuit Visual Studio code
+> * De extensie Azure Machine Learning gebruiken om een voorbeeld script uit te voeren
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement. Als u er geen hebt, meldt u zich aan om de gratis of betaalde versie van Azure Machine Learning uit te [proberen.](https://aka.ms/AMLFree)
-- Visual Studio Code. Als je het niet hebt, [installeer het](https://code.visualstudio.com/docs/setup/setup-overview)dan.
+- Azure-abonnement. Als u er nog geen hebt, kunt u zich aanmelden om de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree)te proberen.
+- Visual Studio Code. Als u dit niet hebt, [installeert u het](https://code.visualstudio.com/docs/setup/setup-overview).
 - [Python 3](https://www.python.org/downloads/)
 
 ## <a name="install-the-extension"></a>De extensie installeren
 
 1. Open Visual Studio Code.
-1. Selecteer het pictogram **Extensies** in de **activiteitsbalk** om de weergave Extensies te openen.
-1. Zoek in de weergave Extensies naar 'Azure Machine Learning'.
+1. Selecteer **uitbreidings** pictogram op de **activiteiten balk** om de weer gave extensies te openen.
+1. Zoek in de weer gave extensies naar ' Azure Machine Learning '.
 1. Selecteer **Installeren**.
 
     > [!div class="mx-imgBorder"]
-    > ![Azure Machine Learning VS-codeextensie installeren](./media/tutorial-setup-vscode-extension/install-aml-vscode-extension.PNG)
+    > ![Azure Machine Learning VS-code-extensie installeren](./media/tutorial-setup-vscode-extension/install-aml-vscode-extension.PNG)
 
 > [!NOTE]
-> U de Azure Machine Learning-extensie ook installeren via de Visual Studio Marketplace door [het installatieprogramma rechtstreeks te downloaden.](https://aka.ms/vscodetoolsforai) 
+> U kunt de Azure Machine Learning-extensie ook installeren via de Visual Studio Marketplace door [het installatie programma rechtstreeks te downloaden](https://aka.ms/vscodetoolsforai). 
 
-De rest van de stappen in deze tutorial zijn getest met **versie 0.6.8** van de extensie.
+De overige stappen in deze zelf studie zijn getest met **versie 0.6.8** van de uitbrei ding.
 
-## <a name="sign-in-to-your-azure-account"></a>Aanmelden bij uw Azure-account
+## <a name="sign-in-to-your-azure-account"></a>Meld u aan bij uw Azure-account
 
-Als u resources wilt inrichten en workloads op Azure wilt uitvoeren, moet u zich aanmelden met uw Azure-accountreferenties. Azure Machine Learning installeert automatisch de Azure-accountextensie om u te helpen bij accountbeheer. Ga naar de volgende site voor [meer informatie over de Azure-accountextensie](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account).
+Als u resources wilt inrichten en werk belastingen op Azure wilt uitvoeren, moet u zich aanmelden met de referenties van uw Azure-account. Azure Machine Learning installeert automatisch de Azure-account extensie om het account beheer te helpen. Ga naar de volgende site voor [meer informatie over de Azure-account extensie](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account).
 
-1. Open het opdrachtpalet door **Weergave > opdrachtpalet** te selecteren op de menubalk. 
-1. Voer de opdracht 'Azure: Aanmelden' in het opdrachtpalet in om het aanmeldingsproces te starten.
+1. Open het opdracht palet door **> opdracht venster weer geven** te selecteren in de menu balk. 
+1. Voer de opdracht ' Azure: Sign in ' in het opdracht palet in om het aanmeldings proces te starten.
 
-## <a name="run-a-machine-learning-model-training-script-in-azure"></a>Een machine learning-modeltrainingsscript uitvoeren in Azure
+## <a name="run-a-machine-learning-model-training-script-in-azure"></a>Een trainings script voor machine learning model uitvoeren in azure
 
-Nu u zich met uw accountgegevens bij Azure hebt aangemeld, gebruikt u de stappen in deze sectie om te leren hoe u de extensie gebruiken om een machine learning-model te trainen.
+Nu u bent aangemeld bij Azure met uw account referenties, gebruikt u de stappen in deze sectie om te leren hoe u de extensie gebruikt om een machine learning model te trainen.
 
-1. Download en rits de [VS Code Tools for AI repository](https://github.com/microsoft/vscode-tools-for-ai/archive/master.zip) overal op uw computer.
-1. Open `mnist-vscode-docs-sample` de map in Visual Studio Code.
-1. Selecteer het **Azure-pictogram** in de activiteitsbalk.
-1. Selecteer het pictogram **Experiment uitvoeren** boven aan de Azure Machine Learning-weergave.
+1. Down load en pak de [VS code-Hulpprogram ma's voor AI-opslag](https://github.com/microsoft/vscode-tools-for-ai/archive/master.zip) plaatsen overal op uw computer uit.
+1. Open de `mnist-vscode-docs-sample` map in Visual Studio code.
+1. Selecteer het pictogram van **Azure** in de activiteiten balk.
+1. Selecteer het pictogram **experiment uitvoeren** boven aan de weer gave Azure machine learning.
 
     > [!div class="mx-imgBorder"]
     > ![Experiment uitvoeren](./media/tutorial-setup-vscode-extension/run-experiment.PNG)
 
-1. Wanneer het opdrachtpalet wordt uitgebreid, volgt u de aanwijzingen.
+1. Wanneer het opdracht palet wordt uitgevouwen, volgt u de aanwijzingen.
 
     1. Selecteer uw Azure-abonnement.
-    1. Selecteer in de lijst met omgevingen **het bestand met afhankelijkheids van Conda**.
-    1. Druk op **Enter** om door het Conda-afhankelijkheidsbestand te bladeren. Dit bestand bevat de afhankelijkheden die nodig zijn om uw script uit te voeren. In dit geval is het `env.yml` afhankelijkheidsbestand `mnist-vscode-docs-sample` het bestand in de map.
-    1. Druk op **Enter** om door het trainingsscriptbestand te bladeren. Dit is het bestand dat code bevat voor een machine learning-model dat afbeeldingen van handgeschreven cijfers categoriseert. In dit geval is het script `train.py` om het `mnist-vscode-docs-sample` model te trainen het bestand in de map.
+    1. Selecteer **Conda-afhankelijkheids bestand**in de lijst met omgevingen.
+    1. Druk op **Enter** om door het Conda-afhankelijkheids bestand te bladeren. Dit bestand bevat de afhankelijkheden die nodig zijn om het script uit te voeren. In dit geval is het afhankelijkheden bestand het `env.yml` bestand in de `mnist-vscode-docs-sample` map.
+    1. Druk op **Enter** om door het trainings script bestand te bladeren. Dit is het bestand dat code bevat voor een machine learning model waarmee afbeeldingen van handgeschreven cijfers worden gecategoriseerd. In dit geval is het script voor het trainen van het model `train.py` het bestand in `mnist-vscode-docs-sample` de map.
 
-1. Op dit punt verschijnt een configuratiebestand dat vergelijkbaar is met het onderstaande bestand in de teksteditor. De configuratie bevat de informatie die nodig is om de trainingstaak uit te voeren, zoals het bestand dat de code bevat om het model te trainen en eventuele Python-afhankelijkheden die in de vorige stap zijn opgegeven.
+1. Op dit moment wordt een configuratie bestand dat lijkt op het onderstaande, weer gegeven in de tekst editor. De configuratie bevat de informatie die nodig is om de trainings taak uit te voeren, zoals het bestand dat de code bevat voor het trainen van het model en eventuele python-afhankelijkheden die zijn opgegeven in de vorige stap.
 
     ```json
     {
@@ -104,39 +104,39 @@ Nu u zich met uw accountgegevens bij Azure hebt aangemeld, gebruikt u de stappen
     }
     ```
 
-1. Zodra u tevreden bent met uw configuratie, dient u uw experiment in door het opdrachtpalet te openen en de volgende opdracht in te voeren:
+1. Wanneer u tevreden bent met uw configuratie, verzendt u uw experiment door het opdracht palet te openen en de volgende opdracht in te voeren:
 
     ```text
     Azure ML: Submit Experiment
     ```
 
-    Hiermee wordt `train.py` het configuratiebestand en het configuratiebestand naar uw Azure Machine Learning-werkruimte verzonden. De trainingstaak wordt vervolgens gestart op een compute resource in Azure.
+    Hiermee verzendt u `train.py` het en configuratie bestand naar uw Azure machine learning-werk ruimte. Vervolgens wordt de trainings taak gestart op een reken resource in Azure.
 
-### <a name="track-the-progress-of-the-training-script"></a>De voortgang van het trainingsscript bijhouden
+### <a name="track-the-progress-of-the-training-script"></a>De voortgang van het trainings script volgen
 
-Het uitvoeren van uw script kan enkele minuten duren. Ga als volgt te werk om de voortgang ervan bij te houden:
+Het uitvoeren van uw script kan enkele minuten duren. De voortgang volgen:
 
-1. Selecteer het **Azure-pictogram** op de activiteitenbalk.
-1. Vouw uw abonnementsknooppunt uit.
-1. Het knooppunt van het momenteel draaiende experiment uitbreiden. Dit bevindt `{workspace}/Experiments/{experiment}` zich in het knooppunt waar de waarden voor uw werkruimte en experiment dezelfde zijn als de eigenschappen die in het configuratiebestand zijn gedefinieerd.
-1. Alle runs voor het experiment worden vermeld, evenals hun status. Als u de meest recente status wilt krijgen, klikt u op het vernieuwingspictogram boven aan de Azure Machine Learning-weergave.
+1. Selecteer het pictogram van **Azure** in de activiteiten balk.
+1. Vouw het knoop punt van uw abonnement uit.
+1. Vouw het knoop punt van uw lopende experiment uit. Dit bevindt zich `{workspace}/Experiments/{experiment}` in het knoop punt waar de waarden voor uw werk ruimte en experiment hetzelfde zijn als de eigenschappen die zijn gedefinieerd in het configuratie bestand.
+1. Alle uitvoeringen voor het experiment worden vermeld, evenals hun status. Als u de meest recente status wilt weten, klikt u op het pictogram vernieuwen boven aan de weer gave Azure Machine Learning.
 
     > [!div class="mx-imgBorder"]
-    > ![Voortgang van het experiment bijhouden](./media/tutorial-setup-vscode-extension/track-experiment-progress.PNG)
+    > ![Voortgang van experiment volgen](./media/tutorial-setup-vscode-extension/track-experiment-progress.PNG)
 
-### <a name="download-the-trained-model"></a>Download het getrainde model
+### <a name="download-the-trained-model"></a>Het getrainde model downloaden
 
-Wanneer de experimentrun is voltooid, is de uitvoer een getraind model. Ga als een abonnement op de lokale downloadresultaten:
+Wanneer de uitvoering van het experiment is voltooid, is de uitvoer een getraind model. De uitvoer lokaal downloaden:
 
-1. Klik met de rechtermuisknop op de meest recente run en selecteer **Uitvoer downloaden**.
+1. Klik met de rechter muisknop op de meest recente uitvoering en selecteer **Download uitvoer**.
 
     > [!div class="mx-imgBorder"]
     > ![Getraind model downloaden](./media/tutorial-setup-vscode-extension/download-trained-model.PNG)
 
-1. Selecteer een locatie waar u de uitvoer wilt opslaan.
+1. Selecteer een locatie waar de uitvoer moet worden opgeslagen.
 1. Een map met de naam van uw run wordt lokaal gedownload. Navigeer naar die pagina.
-1. De modelbestanden bevinden `outputs/outputs/model` zich in de map.
+1. De model bestanden bevinden zich `outputs/outputs/model` in de map.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Zelfstudie: Train en implementeer een TensorFlow-model voor afbeeldingsclassificatie met behulp van de Azure Machine Learning Visual Studio Code Extension](tutorial-train-deploy-image-classification-model-vscode.md).
+* [Zelf studie: een tensor flow model voor de classificatie van een installatie kopie trainen en implementeren met behulp van de Visual Studio code extension van Azure machine learning](tutorial-train-deploy-image-classification-model-vscode.md).

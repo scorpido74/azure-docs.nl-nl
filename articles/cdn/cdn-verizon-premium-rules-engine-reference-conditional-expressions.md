@@ -1,6 +1,6 @@
 ---
-title: Voorwaardelijke expressies voor Azure CDN - Verizon Premium-regelsengine
-description: Referentiedocumentatie voor Azure CDN van Verizon Premium-regels engine komen overeen met voorwaarden en functies.
+title: Voorwaardelijke expressies voor de engine voor Azure CDN-Verizon Premium-regels
+description: Referentie documentatie voor Azure CDN van de overeenkomst met voor waarden en functies van de Verizon Premium-regels-engine.
 services: cdn
 author: asudbring
 ms.service: azure-cdn
@@ -8,34 +8,34 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: 25b3c1a011e39adea651a6daa1d4ab9aa3a9d186
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253506"
 ---
-# <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>Azure CDN van Verizon Premium regels engine voorwaardelijke expressies
+# <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>Azure CDN van de voorlopige expressies van de Verizon Premium-regel engine
 
-In dit artikel worden gedetailleerde beschrijvingen weergegeven van de CDN-rules engine (Conditional Expressions for Azure Content Delivery [Network).](cdn-verizon-premium-rules-engine.md)
+In dit artikel vindt u gedetailleerde beschrijvingen van de engine voor het [opstellen](cdn-verizon-premium-rules-engine.md)van voorwaardelijke expressies voor Azure Content Delivery Network (CDN).
 
 Het eerste deel van een regel is de voorwaardelijke expressie.
 
 Voorwaardelijke expressie | Beschrijving
 -----------------------|-------------
-IF | Een ALS-expressie is altijd een onderdeel van de eerste instructie in een regel. Net als alle andere voorwaardelijke expressies moet deze IF-instructie aan een overeenkomst worden gekoppeld. Als er geen aanvullende voorwaardelijke expressies worden gedefinieerd, bepaalt deze overeenkomst het criterium waaraan moet worden voldaan voordat een reeks functies op een aanvraag kan worden toegepast.
-EN ALS | Een EN ALS-expressie mag alleen worden toegevoegd na de volgende typen voorwaardelijke expressies:ALS EN ALS. Het geeft aan dat er een andere voorwaarde die moet worden voldaan voor de eerste ALS-instructie.
-ANDERS ALS| Een else if-expressie geeft een alternatieve voorwaarde op waaraan moet worden voldaan voordat een reeks functies die specifiek zijn voor deze instructie ELSE IF plaatsvindt. De aanwezigheid van een INSTRUCTIE ELSE IF geeft het einde van de vorige instructie aan. De enige voorwaardelijke expressie die na een else IF-instructie kan worden geplaatst, is een andere ANDERS ALS-instructie. Dit betekent dat een anders ALS-instructie alleen mag worden gebruikt om één aanvullende voorwaarde op te geven waaraan moet worden voldaan.
+IF | Een IF-expressie is altijd een onderdeel van de eerste instructie in een regel. Net als bij alle andere voorwaardelijke expressies moet deze IF-instructie worden gekoppeld aan een overeenkomst. Als er geen aanvullende voorwaardelijke expressies worden gedefinieerd, wordt met deze overeenkomst het criterium bepaald waaraan moet worden voldaan voordat een set functies op een aanvraag kan worden toegepast.
+EN ALS | Een en als-expressie kan alleen worden toegevoegd na de volgende typen voorwaardelijke expressies: als en als. Dit geeft aan dat er een andere voor waarde is waaraan moet worden voldaan voor de eerste IF-instructie.
+ELSE IF| Een ELSE IF-expressie geeft een alternatieve voor waarde aan waaraan moet worden voldaan voor een set functies die specifiek zijn voor deze ELSE als-instructie plaatsvindt. De aanwezigheid van een ELSE IF-instructie geeft het einde van de voor gaande instructie aan. De enige voorwaardelijke expressie die mag worden geplaatst na een ELSE IF-instructie, is een andere ELSE IF-instructie. Dit betekent dat een ELSE IF-instructie alleen kan worden gebruikt om een enkele aanvullende voor waarde op te geven waaraan moet worden voldaan.
 
-**Voorbeeld** ![: CDN-overeenkomstvoorwaarde](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
+**Voor beeld**: ![CDN match-voor waarde](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
 
  > [!TIP]
    > Een volgende regel kan de acties overschrijven die door een vorige regel zijn opgegeven.
-   > Voorbeeld: Een catch-all-regel beveiligt alle aanvragen via tokenverificatie. Er kan direct een andere regel onder worden gemaakt om een uitzondering te maken voor bepaalde soorten aanvragen.
+   > Voor beeld: met een catch-all-regel worden alle aanvragen beveiligd via verificatie op basis van tokens. U kunt een andere regel direct hieronder maken om een uitzonde ring te maken voor bepaalde typen aanvragen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Overzicht van Azure CDN](cdn-overview.md)
-- [Verwijzingen naar de motor](cdn-verizon-premium-rules-engine-reference.md)
-- [Regels motor overeenkomen met voorwaarden](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
-- [Regels motorfuncties](cdn-verizon-premium-rules-engine-reference-features.md)
-- [StandaardHTTP-gedrag overschrijven met de rules-engine](cdn-verizon-premium-rules-engine.md)
+- [Referentie voor regels-engine](cdn-verizon-premium-rules-engine-reference.md)
+- [Overeenkomende voor waarden voor regel engine](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
+- [Functies van de engine voor regels](cdn-verizon-premium-rules-engine-reference-features.md)
+- [Standaard HTTP-gedrag negeren met de regel engine](cdn-verizon-premium-rules-engine.md)

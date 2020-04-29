@@ -1,27 +1,27 @@
 ---
-title: ASP.NET Output Cache Provider voor Azure Cache voor Redis
-description: Meer informatie over het cacheASP.NET Pagina-uitvoer met Azure Cache voor Redis. De Redis Output Cache Provider is een out-of-process opslagmechanisme voor output cache gegevens.
+title: ASP.NET-uitvoer cache provider voor Azure cache voor redis
+description: Meer informatie over het opslaan van ASP.NET pagina-uitvoer met behulp van Azure cache voor redis. De redis-uitvoer cache provider is een out-of-process-opslag mechanisme voor uitvoer cache gegevens.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/22/2018
 ms.openlocfilehash: f1d8189068278b46e3ec3ea66875d79bb91e5e16
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81010202"
 ---
-# <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET Output Cache Provider voor Azure Cache voor Redis
+# <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET-uitvoer cache provider voor Azure cache voor redis
 
-De Redis Output Cache Provider is een out-of-process opslagmechanisme voor output cache gegevens. Deze gegevens zijn specifiek bedoeld voor volledige HTTP-antwoorden (pagina-uitvoercaching). De provider sluit zich aan op het nieuwe uitvoercachepunt dat in ASP.NET 4 is geïntroduceerd.
+De redis-uitvoer cache provider is een out-of-process-opslag mechanisme voor uitvoer cache gegevens. Deze gegevens zijn specifiek voor volledige HTTP-antwoorden (caching voor pagina-uitvoer). De provider wordt toegevoegd aan het nieuwe uitbreidings punt van de uitvoer cache provider die is geïntroduceerd in ASP.NET 4.
 
-Als u de Redis Output Cache Provider wilt gebruiken, configureert u eerst uw cache en configureert u vervolgens uw ASP.NET-toepassing met het NuGet-pakket van de Redis Output Cache Provider. In dit onderwerp vindt u richtlijnen voor het configureren van uw toepassing om de Redis Output Cache Provider te gebruiken. Zie [Een cache maken](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)voor meer informatie over het maken en configureren van een Azure-cache voor bijvoorbeeld Redis.
+Als u de redis-uitvoer cache provider wilt gebruiken, moet u eerst uw cache configureren en vervolgens uw ASP.NET-toepassing configureren met het redis output cache provider NuGet-pakket. Dit onderwerp bevat richt lijnen voor het configureren van uw toepassing voor het gebruik van de redis-uitvoer cache provider. Zie [een cache maken](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)voor meer informatie over het maken en configureren van een Azure-cache voor redis-instantie.
 
-## <a name="store-aspnet-page-output-in-the-cache"></a>ASP.NET pagina-uitvoer opslaan in de cache
+## <a name="store-aspnet-page-output-in-the-cache"></a>ASP.NET-pagina-uitvoer opslaan in de cache
 
-Als u een clienttoepassing in Visual Studio wilt configureren met het NuGet-pakket Azure Cache for Redis Session State, klikt u op **NuGet Package Manager**, **Package Manager Console** in het menu **Extra.**
+Als u in Visual Studio een client toepassing wilt configureren met behulp van het Azure-cache geheugen voor de redis-sessie status NuGet-pakket, klikt u op **NuGet package manager**, **Package Manager console** in het menu **extra** .
 
 Voer de volgende opdracht uit vanuit het venster `Package Manager Console`.
 
@@ -29,12 +29,12 @@ Voer de volgende opdracht uit vanuit het venster `Package Manager Console`.
 Install-Package Microsoft.Web.RedisOutputCacheProvider
 ```
 
-Het NuGet-pakket van de Redis Output Cache Provider is afhankelijk van het StackExchange.Redis.StrongName-pakket. Als het StackExchange.Redis.StrongName-pakket niet aanwezig is in uw project, wordt het geïnstalleerd. Zie de pagina RedisOutputCacheProvider NuGet voor meer informatie over het NuGet-pakket van de [RedisOutputCacheProvider.](https://www.nuget.org/packages/Microsoft.Web.RedisOutputCacheProvider/)
+Het NuGet-pakket van de redis-uitvoer cache provider heeft een afhankelijkheid van het pakket stack Exchange. redis. Strongname. Als het pakket stack Exchange. redis. Strongname niet aanwezig is in uw project, wordt het geïnstalleerd. Zie de pagina [RedisOutputCacheProvider](https://www.nuget.org/packages/Microsoft.Web.RedisOutputCacheProvider/) NuGet voor meer informatie over het redis-pakket voor de NuGet.
 
 >[!NOTE]
->Naast het sterk genaamde StackExchange.Redis.StrongName-pakket is er ook de StackExchange.Redis-versie met niet-sterke naam. Als uw project de stackexchange.Redis-versie met niet-sterke naam gebruikt, moet u deze verwijderen. anders zult u problemen met het benoemen van conflicten in uw project ervaren. Zie Clients met de [.NET-cache configureren](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)voor meer informatie over deze pakketten.
+>Naast het pakket met de sterke naam stack Exchange. redis. Strongname is er ook de versie stack Exchange. redis zonder sterke naam. Als uw project de niet-sterke naam stack Exchange. redis-versie gebruikt, moet u het verwijderen. anders treden er naam conflicten op in uw project. Zie [.NET-cache-clients configureren](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)voor meer informatie over deze pakketten.
 
-Het NuGet-pakket downloadt en voegt de vereiste assemblagereferenties toe en voegt de volgende sectie toe aan uw web.config-bestand. Deze sectie bevat de vereiste configuratie voor uw ASP.NET toepassing om de Redis Output Cache Provider te gebruiken.
+Het NuGet-pakket downloadt en voegt de vereiste assembly-verwijzingen toe en voegt de volgende sectie toe aan het bestand Web. config. Deze sectie bevat de vereiste configuratie voor uw ASP.NET-toepassing voor het gebruik van de redis-uitvoer cache provider.
 
 ```xml
 <caching>
@@ -49,32 +49,32 @@ Het NuGet-pakket downloadt en voegt de vereiste assemblagereferenties toe en voe
 </caching>
 ```
 
-Configureer de kenmerken met de waarden uit uw cacheblad in de Microsoft Azure-portal en configureer de andere waarden naar wens. Zie Azure Cache configureren voor [Redis-instellingen voor](cache-configure.md#configure-azure-cache-for-redis-settings)instructies voor instructies voor toegang tot uw cache.
+Configureer de kenmerken met de waarden van uw cache-Blade in de Microsoft Azure-portal en configureer de andere waarden naar wens. Zie voor instructies over het verkrijgen van toegang tot uw cache-eigenschappen [Azure cache configureren voor redis-instellingen](cache-configure.md#configure-azure-cache-for-redis-settings).
 
 | Kenmerk | Type | Standaard | Beschrijving |
 | --------- | ---- | ------- | ----------- |
-| *Host* | tekenreeks | "localhost" | Het IP-adres of de hostnaam van de Redis-server |
-| *Poort* | positief geheel getal | 6379 (niet-TLS/SSL)<br/>6380 (TLS/SSL) | Redis-serverpoort |
-| *Accesskey* | tekenreeks | "" | Redis-serverwachtwoord wanneer de Autorisatie van Redis is ingeschakeld. De waarde is standaard leegtekenreeks, wat betekent dat de sessiestatusprovider geen wachtwoord gebruikt wanneer deze verbinding maakt met de Redis-server. **Als uw Redis-server zich in een openbaar toegankelijk netwerk zoals Azure Redis Cache bevindt, moet u de autorisatie van Redis inschakelen om de beveiliging te verbeteren en een veilig wachtwoord opgeven.** |
-| *Ssl* | booleaans | **Valse** | Of u verbinding wilt maken met de Redis-server via TLS. Deze waarde is standaard **onjuist** omdat Redis TLS niet out of the box ondersteunt. **Als u Azure Redis-cache gebruikt die SSL out-of-the-box ondersteunt, moet u dit instellen op true om de beveiliging te verbeteren.**<br/><br/>De niet-TLS-poort is standaard uitgeschakeld voor nieuwe caches. Geef **op dat** deze instelling de TLS-poort wilt gebruiken. Zie de sectie [Access-poorten](cache-configure.md#access-ports) in het onderwerp Een [cache](cache-configure.md) configureren voor meer informatie over het inschakelen van de niet-TLS-poort. |
-| *databaseIdNumber* | positief geheel getal | 0 | *Dit kenmerk kan alleen worden opgegeven via web.config of AppSettings.*<br/><br/>Geef op welke Redis-database u wilt gebruiken. |
-| *connectionTimeoutInMilliseconds* | positief geheel getal | Geleverd door StackExchange.Redis | Wordt gebruikt om *ConnectTimeout* in te stellen bij het maken van StackExchange.Redis.ConnectionMultiplexer. |
-| *operationTimeoutInMilliseconds* | positief geheel getal | Geleverd door StackExchange.Redis | Wordt gebruikt om *SyncTimeout* in te stellen bij het maken van StackExchange.Redis.ConnectionMultiplexer. |
-| *connectionString* (Valid StackExchange.Redis-verbindingstekenreeks) | tekenreeks | *N/a* | Ofwel een parameterverwijzing naar AppSettings of web.config, of anders een geldige StackExchange.Redis-verbindingstekenreeks. Dit kenmerk kan waarden opgeven voor *host,* *poort,* *accessKey,* *ssl*en andere StackExchange.Redis-kenmerken. Zie Verbinding verbinden instellen [String instellen](#setting-connectionstring) in de sectie [Kenmerknotities](#attribute-notes) voor een nadere blik op *de verbinding.* |
-| *instellingenClassName*<br/>*instellingenMethodName* | tekenreeks<br/>tekenreeks | *N/a* | *Deze kenmerken kunnen alleen worden opgegeven via web.config of AppSettings.*<br/><br/>Gebruik deze kenmerken om een verbindingstekenreeks op te geven. *settingsClassName* moet een klassenaam voor een verzameling zijn die de methode bevat die is opgegeven door *instellingenMethodName*.<br/><br/>De methode die is opgegeven door *settingsMethodName* moet openbaar, statisch en ongeldig zijn (neem geen parameters), met een retourtype **tekenreeks**. Met deze methode wordt de werkelijke verbindingstekenreeks geretourneerd. |
-| *loggingClassName*<br/>*loggingMethodName* | tekenreeks<br/>tekenreeks | *N/a* | *Deze kenmerken kunnen alleen worden opgegeven via web.config of AppSettings.*<br/><br/>Gebruik deze kenmerken om uw toepassing te debuggen door logboeken uit sessiestatus/uitvoercache en logboeken van StackExchange.Redis op te geven. *loggingClassName* moet een klassenaam voor een verzameling zijn die de methode bevat die is opgegeven door *loggingMethodName*.<br/><br/>De methode die is opgegeven door *loggingMethodName* moet openbaar, statisch en ongeldig zijn (neem geen parameters), met een retourtype **System.IO.TextWriter**. |
-| *applicationName* | tekenreeks | De modulenaam van het huidige proces of "/" | *Alleen SessionStateProvider*<br/>*Dit kenmerk kan alleen worden opgegeven via web.config of AppSettings.*<br/><br/>Het app-naamvoorvoegsel dat u wilt gebruiken in de Redis-cache. De klant kan dezelfde Redis-cache voor verschillende doeleinden gebruiken. Om ervoor te zorgen dat de sessietoetsen niet botsen, kan deze vooraf worden bevestigd met de toepassingsnaam. |
-| *throwOnError* | booleaans | waar | *Alleen SessionStateProvider*<br/>*Dit kenmerk kan alleen worden opgegeven via web.config of AppSettings.*<br/><br/>Of u een uitzondering wilt maken wanneer er een fout optreedt.<br/><br/>Zie [Notities over *throwOnError* ](#notes-on-throwonerror) voor meer informatie over *throwOnError*in de sectie [Notities van kenmerk.](#attribute-notes) |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*. |
-| *retryTimeoutInMilliseconds* | positief geheel getal | 5000 | *Alleen SessionStateProvider*<br/>*Dit kenmerk kan alleen worden opgegeven via web.config of AppSettings.*<br/><br/>Hoe lang duurt het opnieuw te proberen wanneer een bewerking mislukt. Als deze waarde lager is dan *operationTimeoutInMilliseconds,* zal de provider het niet opnieuw proberen.<br/><br/>Zie [Notities over *retryTimeoutInMilliseconds* voor](#notes-on-retrytimeoutinmilliseconds) meer informatie over *tryTimeoutInMilliseconds*in de sectie [Notities voor kenmerken.](#attribute-notes) |
-| *redisSerializerType* | tekenreeks | *N/a* | Hiermee geeft u de bevoegde typenaam van een klasse op die Microsoft.Web.Redis implementeert. ISerializer en dat bevat de aangepaste logica om de waarden te serialiseren en te deserialiseren. Zie [Over *redisSerializerType* ](#about-redisserializertype) in de sectie [Kenmerkennotities](#attribute-notes) voor meer informatie. |
+| *hostsite* | tekenreeks | lokalehost | Het IP-adres of de hostnaam van de redis-server |
+| *Importeer* | positief geheel getal | 6379 (niet-TLS/SSL)<br/>6380 (TLS/SSL) | Redis-server poort |
+| *accessKey* | tekenreeks | "" | Redis-server wachtwoord wanneer redis-autorisatie is ingeschakeld. De waarde is een lege teken reeks, wat betekent dat de sessie status provider geen wacht woord gebruikt bij het verbinden met de redis-server. **Als uw redis-server zich in een openbaar toegankelijk netwerk zoals Azure Redis Cache bevindt, zorg er dan voor dat u redis-autorisatie inschakelt om de beveiliging te verbeteren en een veilig wacht woord op te geven.** |
+| *-* | booleaans | **terecht** | Hiermee wordt aangegeven of verbinding moet worden gemaakt met een redis-server via TLS. Deze waarde is standaard **False** omdat redis geen ondersteuning biedt voor TLS van het vak. **Als u Azure Redis Cache gebruikt dat SSL van het vak ondersteunt, moet u dit instellen op waar om de beveiliging te verbeteren.**<br/><br/>De niet-TLS-poort is standaard uitgeschakeld voor nieuwe caches. Geef **waar** op als u wilt dat deze instelling de TLS-poort gebruikt. Zie de sectie [toegangs poorten](cache-configure.md#access-ports) in het onderwerp [een cache configureren](cache-configure.md) voor meer informatie over het inschakelen van de niet-TLS-poort. |
+| *databaseIdNumber* | positief geheel getal | 0 | *Dit kenmerk kan alleen worden opgegeven via web. config of AppSettings.*<br/><br/>Geef op welke redis-data base moet worden gebruikt. |
+| *connectionTimeoutInMilliseconds* | positief geheel getal | Verschaft door stack Exchange. redis | Wordt gebruikt om *ConnectTimeout* in te stellen bij het maken van stack Exchange. redis. ConnectionMultiplexer. |
+| *operationTimeoutInMilliseconds* | positief geheel getal | Verschaft door stack Exchange. redis | Wordt gebruikt om *SyncTimeout* in te stellen bij het maken van stack Exchange. redis. ConnectionMultiplexer. |
+| *Connections Tring* (geldige stack Exchange. redis Connection String) | tekenreeks | *n.v.t.* | Ofwel een parameter verwijzing naar AppSettings of web. config, of een geldige stack Exchange. redis-connection string. Dit kenmerk kan waarden bieden voor de kenmerken *host*, *poort*, *accessKey*, *SSL*en andere stack Exchange. redis. Zie voor meer informatie over *Connections*Tring [instellen](#setting-connectionstring) in het gedeelte [kenmerk opmerkingen](#attribute-notes) . |
+| *settingsClassName*<br/>*settingsMethodName* | tekenreeks<br/>tekenreeks | *n.v.t.* | *Deze kenmerken kunnen alleen worden opgegeven via web. config of AppSettings.*<br/><br/>Gebruik deze kenmerken om een connection string op te geven. *settingsClassName* moet een assembly-gekwalificeerde klassen naam zijn die de methode bevat die is opgegeven door *settingsMethodName*.<br/><br/>De methode die wordt opgegeven door *settingsMethodName* moet openbaar, statisch zijn en void (geen para meters hebben) met het retour type **teken reeks**. Deze methode retourneert de werkelijke connection string. |
+| *loggingClassName*<br/>*loggingMethodName* | tekenreeks<br/>tekenreeks | *n.v.t.* | *Deze kenmerken kunnen alleen worden opgegeven via web. config of AppSettings.*<br/><br/>Gebruik deze kenmerken voor het opsporen van fouten in uw toepassing door Logboeken te verstrekken uit de sessie status/uitvoer cache en logboeken van stack Exchange. redis. *loggingClassName* moet een assembly-gekwalificeerde klassen naam zijn die de methode bevat die is opgegeven door *loggingMethodName*.<br/><br/>De methode die wordt opgegeven door *loggingMethodName* moet openbaar, statisch zijn en void (geen para meters hebben) met het retour type **System. io. TextWriter**. |
+| *applicationName* | tekenreeks | De module naam van het huidige proces of/ | *Alleen SessionStateProvider*<br/>*Dit kenmerk kan alleen worden opgegeven via web. config of AppSettings.*<br/><br/>Het voor voegsel van de app-naam dat moet worden gebruikt in de redis-cache. De klant kan dezelfde redis-cache gebruiken voor verschillende doel einden. Om ervoor te zorgen dat de sessie sleutels niet conflicteren, kan deze worden voorafgegaan door de naam van de toepassing. |
+| *throwOnError* | booleaans | waar | *Alleen SessionStateProvider*<br/>*Dit kenmerk kan alleen worden opgegeven via web. config of AppSettings.*<br/><br/>Hiermee wordt aangegeven of er een uitzonde ring moet worden gegenereerd wanneer er een fout optreedt.<br/><br/>Voor meer informatie over *throwOnError*raadpleegt u [opmerkingen bij *ThrowOnError* ](#notes-on-throwonerror) in het gedeelte [kenmerk opmerkingen](#attribute-notes) . |>*Microsoft. Web. redis. RedisSessionStateProvider. LastException*. |
+| *retryTimeoutInMilliseconds* | positief geheel getal | 5000 | *Alleen SessionStateProvider*<br/>*Dit kenmerk kan alleen worden opgegeven via web. config of AppSettings.*<br/><br/>Hoe lang het opnieuw moet duren wanneer een bewerking mislukt. Als deze waarde lager is dan *operationTimeoutInMilliseconds*, wordt de provider niet opnieuw geprobeerd.<br/><br/>Voor meer informatie over *retryTimeoutInMilliseconds*raadpleegt u [opmerkingen bij *RetryTimeoutInMilliseconds* ](#notes-on-retrytimeoutinmilliseconds) in het gedeelte [kenmerk opmerkingen](#attribute-notes) . |
+| *redisSerializerType* | tekenreeks | *n.v.t.* | Hiermee geeft u de assembly-gekwalificeerde type naam op van een klasse die micro soft. Web. redis implementeert. ISerializer en die de aangepaste logica bevat voor het serialiseren en deserialiseren van de waarden. Zie [about *redisSerializerType* ](#about-redisserializertype) in het gedeelte [kenmerk opmerkingen](#attribute-notes) voor meer informatie. |
 
-## <a name="attribute-notes"></a>Kenmerkennotities
+## <a name="attribute-notes"></a>Opmerkingen bij kenmerk
 
-### <a name="setting-connectionstring"></a>*Verbindingstekenreeks* instellen
+### <a name="setting-connectionstring"></a>*Connections Tring* instellen
 
-De waarde van *verbindingString* wordt gebruikt als sleutel om de werkelijke verbindingstekenreeks uit AppSettings te halen, als een dergelijke tekenreeks bestaat in AppSettings. Als deze niet wordt gevonden in AppSettings, wordt de waarde van *connectionString* gebruikt als sleutel om de werkelijke verbindingstekenreeks op te halen uit de sectie web.config **ConnectionString,** als die sectie bestaat. Als de verbindingstekenreeks niet bestaat in AppSettings of de sectie web.config **ConnectionString,** wordt de letterlijke waarde van *connectionString* gebruikt als verbindingstekenreeks bij het maken van StackExchange.Redis.ConnectionMultiplexer.
+De waarde van *Connections Tring* wordt gebruikt als sleutel voor het ophalen van de werkelijke Connection String van appSettings, als een dergelijke teken reeks bestaat in appSettings. Als dit niet wordt gevonden in AppSettings, wordt de waarde van *Connections Tring* gebruikt als sleutel om de werkelijke Connection String op te halen uit de sectie Web. config **Connections Tring** , als deze sectie bestaat. Als de connection string niet in de sectie AppSettings of web. config **Connections Tring** voor komt, wordt de letterlijke waarde van *Connections Tring* gebruikt als de Connection String bij het maken van stack Exchange. redis. ConnectionMultiplexer.
 
-In de volgende voorbeelden wordt uitgelegd hoe *connectionString* wordt gebruikt.
+De volgende voor beelden laten zien hoe *Connections Tring* wordt gebruikt.
 
 #### <a name="example-1"></a>Voorbeeld 1
 
@@ -84,7 +84,7 @@ In de volgende voorbeelden wordt uitgelegd hoe *connectionString* wordt gebruikt
 </connectionStrings>
 ```
 
-Gebruik `web.config`bovendetoets als parameterwaarde in plaats van werkelijke waarde.
+In `web.config`gebruikt u de sleutel als parameter waarde in plaats van de werkelijke waarde.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -104,7 +104,7 @@ Gebruik `web.config`bovendetoets als parameterwaarde in plaats van werkelijke wa
 </appSettings>
 ```
 
-Gebruik `web.config`bovendetoets als parameterwaarde in plaats van werkelijke waarde.
+In `web.config`gebruikt u de sleutel als parameter waarde in plaats van de werkelijke waarde.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -130,23 +130,23 @@ Gebruik `web.config`bovendetoets als parameterwaarde in plaats van werkelijke wa
 
 ### <a name="notes-on-throwonerror"></a>Opmerkingen over *throwOnError*
 
-Als er momenteel een fout optreedt tijdens een sessiebewerking, gooit de sessiestatusprovider een uitzondering. Hiermee wordt de toepassing afgesloten.
+Als er op dit moment een fout optreedt tijdens een sessie bewerking, genereert de sessie status provider een uitzonde ring. Hiermee wordt de toepassing afgesloten.
 
-Dit gedrag is gewijzigd op een manier die de verwachtingen van bestaande gebruikers van de ASP.NET sessiestateprovider ondersteunt, terwijl het ook de mogelijkheid biedt om te reageren op uitzonderingen, indien gewenst. Het standaardgedrag geeft nog steeds een uitzondering wanneer er een fout optreedt, in overeenstemming met andere ASP.NET sessiestatusproviders; bestaande code moet hetzelfde werken als voorheen.
+Dit gedrag is gewijzigd op een manier die de verwachtingen van bestaande gebruikers van de ASP.NET-sessie status provider ondersteunt en ook de mogelijkheid biedt om op uitzonde ringen te reageren, indien gewenst. Het standaard gedrag genereert nog steeds een uitzonde ring wanneer er een fout optreedt, consistent met andere ASP.NET-sessie status providers. bestaande code moet op dezelfde wijze werken als voorheen.
 
-Als u *throwOnError* op **false**instelt, dan zal het in plaats van een uitzondering te maken wanneer er een fout optreedt, in stilte mislukken. Als u wilt zien of er een fout is opgetreden en zo ja, wilt ontdekken wat de uitzondering was, raadpleegt u de statische eigenschap *Microsoft.Web.Redis.RedisSessionStateProvider.LastException*.
+Als u *throwOnError* instelt op **False**, wordt er in plaats van een uitzonde ring gegenereerd wanneer er een fout optreedt, mislukt deze op de achtergrond. Controleer de statische eigenschap *Microsoft. Web. redis. RedisSessionStateProvider. LastException*om na te gaan of er een fout is opgetreden en of, als dit het geval is, wordt gedetecteerd wat de uitzonde ring was.
 
-### <a name="notes-on-retrytimeoutinmilliseconds"></a>Opmerkingen over *opnieuw proberenTimeoutInMilliseconds*
+### <a name="notes-on-retrytimeoutinmilliseconds"></a>Opmerkingen over *retryTimeoutInMilliseconds*
 
-Dit biedt een aantal logica opnieuw proberen om het geval te vereenvoudigen waarbij sommige sessiebewerking opnieuw moet worden geprobeerd vanwege problemen met het netwerk, terwijl u ook de opnieuw proberen time-out beheren of u volledig afmelden voor een nieuwe poging.
+Dit biedt enige pogings logica voor het vereenvoudigen van de situatie waarbij een bepaalde sessie bewerking opnieuw moet worden uitgevoerd wegens een fout vanwege dingen zoals netwerk storingen, terwijl u ook de time-out voor opnieuw proberen kunt bepalen of de nieuwe poging volledig opnieuw wilt proberen.
 
-Als u *retryTimeoutInMilliseconds* instelt op een getal, bijvoorbeeld 2000, wordt het opnieuw geprobeerd voor 2000 milliseconden voordat u het als een fout behandelt. Dus om de sessiestatusprovider te hebben om deze logica voor opnieuw proberen toe te passen, configureert u alleen de time-out. De eerste poging zal gebeuren na 20 milliseconden, wat in de meeste gevallen voldoende is wanneer een netwerkglitch optreedt. Daarna zal het elke seconde opnieuw proberen totdat het een tijd uitzit. Direct na de time-out, zal het opnieuw proberen nog een keer om ervoor te zorgen dat het niet zal afgesneden van de time-out door (hooguit) een seconde.
+Als u *retryTimeoutInMilliseconds* instelt op een aantal, bijvoorbeeld 2000, wanneer een sessie bewerking mislukt, zal er een nieuwe poging worden gedaan voor 2000 milliseconden voordat deze wordt behandeld als een fout. Als u de sessie status provider wilt gebruiken om deze pogings logica toe te passen, moet u de time-out gewoon configureren. De eerste nieuwe poging vindt plaats na 20 milliseconden, wat in de meeste gevallen voldoende is wanneer er een netwerk fout optreedt. Daarna wordt elke seconde opnieuw geprobeerd, totdat er een time-out optreedt. Direct nadat de time-out is opgetreden, wordt er nog een keer opnieuw geprobeerd om ervoor te zorgen dat de time-out door (Maxi maal) één seconde niet wordt afgekapt.
 
-Als u denkt dat u het niet opnieuw moet proberen (bijvoorbeeld wanneer u de Redis-server op dezelfde machine als uw toepassing uitvoert) of als u de logica voor nieuwe apparaten zelf wilt afhandelen, stelt u *opnieuw TimeoutInMilliseconds* in op 0.
+Als u niet denkt dat u opnieuw moet proberen (bijvoorbeeld wanneer u de redis-server op dezelfde computer uitvoert als uw toepassing) of als u zelf de logica voor opnieuw proberen wilt afhandelen, stelt u *retryTimeoutInMilliseconds* in op 0.
 
 ### <a name="about-redisserializertype"></a>Over *redisSerializerType*
 
-Standaard wordt de serialisatie om de waarden op Redis op te slaan uitgevoerd in een binaire indeling die wordt geleverd door de klasse **BinaryFormatter.** Gebruik *redisSerializerType* om de gekwalificeerde typenaam van een klasse op te geven die **Microsoft.Web.Redis.ISerializer** implementeert en de aangepaste logica heeft om de waarden te serialiseren en te deserialiseren. Hier is bijvoorbeeld een Json serializer-klasse met JSON.NET:
+De serialisatie voor het opslaan van de waarden op redis wordt standaard uitgevoerd in een binaire indeling die wordt verschaft door de **BinaryFormatter** -klasse. Gebruik *redisSerializerType* om de assembly-gekwalificeerde type naam op te geven van een klasse die **micro soft. Web. redis. ISerializer** implementeert en de aangepaste logica heeft voor het serialiseren en deserialiseren van de waarden. Dit is bijvoorbeeld een JSON serializer-klasse met behulp van JSON.NET:
 
 ```cs
 namespace MyCompany.Redis
@@ -172,7 +172,7 @@ namespace MyCompany.Redis
 }
 ```
 
-Ervan uitgaande dat deze klasse is gedefinieerd in een assemblage met de naam **MyCompanyDll,** u de parameter *redisSerializerType* instellen om het te gebruiken:
+Ervan uitgaande dat deze klasse is gedefinieerd in een assembly met de naam **MyCompanyDll**, kunt u de para meter *redisSerializerType* instellen om deze te gebruiken:
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -185,24 +185,24 @@ Ervan uitgaande dat deze klasse is gedefinieerd in een assemblage met de naam **
 </sessionState>
 ```
 
-## <a name="output-cache-directive"></a>Uitvoercacherichtlijn
+## <a name="output-cache-directive"></a>Instructie voor de uitvoer cache
 
-Voeg een OutputCache-richtlijn toe aan elke pagina waarvoor u de uitvoer in de cache wilt plaatsen.
+Voeg een OutputCache-instructie toe aan elke pagina waarvoor u de uitvoer wilt opslaan in de cache.
 
 ```xml
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 ```
 
-In het vorige voorbeeld blijven de paginagegevens in de cache 60 seconden in de cache en wordt een andere versie van de pagina in de cache opgeslagen voor elke parametercombinatie. Zie [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837)voor meer informatie over de outputcache-richtlijn .
+In het vorige voor beeld blijven de pagina gegevens in de cache gedurende 60 seconden in de cache en wordt er een andere versie van de pagina in de cache opgeslagen voor elke parameter combinatie. Zie [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837)voor meer informatie over de OutputCache-instructie.
 
-Zodra deze stappen zijn uitgevoerd, is uw toepassing geconfigureerd om de Redis Output Cache Provider te gebruiken.
+Zodra deze stappen zijn uitgevoerd, wordt uw toepassing geconfigureerd om de redis-uitvoer cache provider te gebruiken.
 
-## <a name="third-party-output-cache-providers"></a>Leveranciers van uitvoercaches van derden
+## <a name="third-party-output-cache-providers"></a>Uitvoer cache providers van derden
 
 * [NCache](https://www.alachisoft.com/blogs/how-to-use-a-distributed-cache-for-asp-net-output-cache/)
-* [Apache Ontsteken](https://apacheignite-net.readme.io/docs/aspnet-output-caching)
+* [Apache Ignite](https://apacheignite-net.readme.io/docs/aspnet-output-caching)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [ASP.NET Session State Provider voor Azure Cache voor Redis.](cache-aspnet-session-state-provider.md)
+Bekijk de [ASP.net-sessie status provider voor Azure cache voor redis](cache-aspnet-session-state-provider.md).

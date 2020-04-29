@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 9a9c6897937b73786367accc33e985a268907226
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81258742"
 ---
 # <a name="transform-and-protect-your-api"></a>Uw API transformeren en beveiligen
@@ -73,14 +73,14 @@ Het oorspronkelijke antwoord moet er als volgt uitzien:
 
 1. Selecteer **Demo Conference API**.
 2. Selecteer boven in het scherm het tabblad **Ontwerp**.
-3. Selecteer **Alle bewerkingen**.
+3. Selecteer **alle bewerkingen**.
 4. Klik in de sectie **Uitgaande verwerking** op het pictogram **</>**.
-5. Plaats de cursor ** &lt;&gt; ** in het uitgaande element.
+5. Plaats de cursor in het ** &lt;uitgaande&gt; ** element.
 6. Klik in het rechtervenster onder **Transformatiebeleid** twee keer op **+ HTTP-header instellen** (om twee beleidsfragmenten in te voegen).
 
    ![Beleidsregels](./media/transform-api/transform-api.png)
 
-7. Wijzig ** \<** uw uitgaande>code om er als volgt uit te zien:
+7. Wijzig uw ** \<uitgaande>** code zodat deze er als volgt uitziet:
 
        <set-header name="X-Powered-By" exists-action="delete" />
        <set-header name="X-AspNet-Version" exists-action="delete" />
@@ -109,10 +109,10 @@ Het oorspronkelijke antwoord zien:
 ### <a name="set-the-transformation-policy"></a>Transformatiebeleid instellen
 
 1.  Selecteer **Demo Conference API**.
-2.  Selecteer **Alle bewerkingen**.
+2.  Selecteer **alle bewerkingen**.
 3.  Selecteer boven in het scherm het tabblad **Ontwerp**.
 4.  Klik in de sectie **Uitgaande verwerking** op het pictogram **</>**.
-5.  Plaats de cursor ** &lt;&gt; ** in het uitgaande element en klik op **De beleidsknop Invoegen** in de rechterbovenhoek.
+5.  Plaats de cursor in het ** &lt;uitgaande&gt; ** element en klik op de knop **beleid invoegen** in de rechter bovenhoek.
 6.  Klik in het rechtervenster onder **Transformatiebeleid** twee keer op **+ Tekenreeks in hoofdtekst zoeken en vervangen**.
 7.  Wijzig de **find-and-replace**-code (in het **\<uitgaande element\>**) om de URL te vervangen zodat deze overeenkomt met de APIM-gateway. Bijvoorbeeld:
 
@@ -120,15 +120,15 @@ Het oorspronkelijke antwoord zien:
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>Een API beveiligen door beleid voor frequentielimieten toe te voegen
 
-In deze sectie wordt beschreven hoe u beveiliging voor uw back-end-API kunt toevoegen door frequentielimieten te configureren. U kunt bijvoorbeeld het aantal aanroepen voor de API beperken, zodat deze niet wordt overbelast door ontwikkelaars. In dit voorbeeld wordt de limiet ingesteld op 3 aanroepen per 15 seconden voor elk abonnement-id. Na 15 seconden kan een ontwikkelaar opnieuw proberen de API aan te roepen.
+In deze sectie wordt beschreven hoe u beveiliging voor uw back-end-API kunt toevoegen door frequentielimieten te configureren. U kunt bijvoorbeeld het aantal aanroepen voor de API beperken, zodat deze niet wordt overbelast door ontwikkelaars. In dit voor beeld is de limiet ingesteld op 3 aanroepen per 15 seconden voor elke abonnements-id. Na 15 seconden kan een ontwikkelaar de API opnieuw proberen aan te roepen.
 
 ![Beleid voor binnenkomende verwerking instellen](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png)
 
 1.  Selecteer **Demo Conference API**.
-2.  Selecteer **Alle bewerkingen**.
+2.  Selecteer **alle bewerkingen**.
 3.  Selecteer boven in het scherm het tabblad **Ontwerp**.
 4.  Klik in de sectie **Binnenkomende verwerking** op het pictogram **</>**.
-5.  Plaats de cursor in het ** &lt;binnenkomende&gt; ** element.
+5.  Plaats de cursor in het ** &lt;inkomende&gt; ** element.
 6.  Klik in het rechtervenster onder **Toegang tot beperkingsbeleid** op **+ Aantal oproepen per sleutel beperken**.
 7.  Wijzig uw **rate-limit-by-key**-code (in het **\<inkomende\>** element) in de volgende code:
 
@@ -201,7 +201,7 @@ In de rest van deze sectie worden de beleidstransformaties getest die u in dit a
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 >

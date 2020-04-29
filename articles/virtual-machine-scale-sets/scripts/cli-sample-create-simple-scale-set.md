@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-voorbeelden - Een virtuele machineschaalset maken
+title: Voor beelden van Azure CLI-een schaalset voor virtuele machines maken
 description: Met dit script maakt u in Azure een virtuele-machineschaalset met het besturingssysteem Ubuntu en bijbehorende netwerkresources, inclusief een load balancer.
 author: ju-shim
 tags: azure-resource-manager
@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: c7f03d0f6dd31d85de8c3f917895e965585eb6ed
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81010384"
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Een virtuele-machineschaalset maken met Azure CLI

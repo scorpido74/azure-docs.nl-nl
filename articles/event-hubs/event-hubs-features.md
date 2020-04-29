@@ -1,6 +1,6 @@
 ---
-title: Overzicht van functies - Azure Event Hubs | Microsoft Documenten
-description: In dit artikel vindt u informatie over functies en terminologie van Azure Event Hubs.
+title: Overzicht van functies-Azure Event Hubs | Microsoft Docs
+description: In dit artikel vindt u informatie over de functies en terminologie van Azure Event Hubs.
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -14,38 +14,38 @@ ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: ea4bfadd55935712a292355dc25fb778b1523c75
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261870"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Functies en terminologie in Azure Event Hubs
 
-Azure Event Hubs is een schaalbare gebeurtenisverwerkingsservice die grote hoeveelheden gebeurtenissen en gegevens inneemt en verwerkt, met een lage latentie en hoge betrouwbaarheid. Zie [Wat is Event Hubs?](event-hubs-what-is-event-hubs.md) voor een overzicht op hoog niveau.
+Azure Event Hubs is een schaal bare service voor gebeurtenis verwerking waarmee grote hoeveel heden gebeurtenissen en gegevens worden opgenomen en verwerkt, met lage latentie en hoge betrouw baarheid. Zie [Wat is Event hubs?](event-hubs-what-is-event-hubs.md) voor een overzicht op hoog niveau.
 
-Dit artikel bouwt voort op de informatie in het [overzichtsartikel](event-hubs-what-is-event-hubs.md)en bevat technische en implementatiedetails over onderdelen en functies van Event Hubs.
+Dit artikel is gebaseerd op de informatie in het [overzichts artikel](event-hubs-what-is-event-hubs.md)en biedt technische en implementatie details over Event hubs onderdelen en functies.
 
 ## <a name="namespace"></a>Naamruimte
-Een naamruimte voor gebeurtenishubs biedt een unieke scopingcontainer, waarnaar wordt verwezen door de [volledig gekwalificeerde domeinnaam,](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)waarin u een of meer gebeurtenishubs of Kafka-onderwerpen maakt. 
+Een Event Hubs naam ruimte biedt een unieke bereik container, waarnaar wordt verwezen door de [Fully Qualified Domain name](https://en.wikipedia.org/wiki/Fully_qualified_domain_name), waarin u een of meer Event hubs of Kafka-onderwerpen maakt. 
 
 ## <a name="event-hubs-for-apache-kafka"></a>Event Hubs voor Apache Kafka
 
-[Deze functie](event-hubs-for-kafka-ecosystem-overview.md) biedt een eindpunt waarmee klanten met Gebeurtenishubs kunnen praten met het Kafka-protocol. Deze integratie biedt klanten een Kafka-eindpunt. Dit stelt klanten in staat om hun bestaande Kafka-toepassingen te configureren om met Event Hubs te praten, wat een alternatief biedt voor het runnen van hun eigen Kafka-clusters. Event Hubs voor Apache Kafka ondersteunt Kafka protocol 1.0 en hoger. 
+[Deze functie](event-hubs-for-kafka-ecosystem-overview.md) biedt een eind punt waarmee klanten kunnen praten met Event hubs met behulp van het Kafka-protocol. Deze integratie biedt klanten een Kafka-eind punt. Zo kunnen klanten hun bestaande Kafka-toepassingen configureren om te praten met Event Hubs, waardoor ze ook hun eigen Kafka-clusters kunnen uitvoeren. Event Hubs voor Apache Kafka ondersteunt Kafka-Protocol 1,0 en hoger. 
 
-Met deze integratie hoeft u geen Kafka-clusters uit te voeren of ze te beheren met Zookeeper. Hiermee u ook werken met enkele van de meest veeleisende functies van Event Hubs zoals Capture, Auto-inflate en Geo-disaster Recovery.
+Met deze integratie hoeft u geen Kafka-clusters uit te voeren of ze te beheren met Zookeeper. Op deze manier kunt u ook werken met een aantal van de meest veeleisende functies van Event Hubs zoals vastleggen, automatisch verg Roten en geo-nood herstel.
 
-Met deze integratie kunnen toepassingen zoals Mirror Maker of framework zoals Kafka Connect clusterloos werken met alleen configuratiewijzigingen. 
+Met deze integratie kunnen toepassingen zoals spiegel aars of Framework, zoals Kafka, verbinding maken met clusters zonder configuratie wijzigingen. 
 
 ## <a name="event-publishers"></a>Gebeurtenisuitgevers
 
-Elke entiteit die gegevens naar een gebeurtenishub verzendt, is een gebeurtenisproducent of *gebeurtenisuitgever.* Uitgevers van gebeurtenissen kunnen gebeurtenissen publiceren via HTTPS of AMQP 1.0 of Kafka 1.0 en hoger. Gebeurtenisuitgevers gebruiken een Shared Access Signature-token (SAS) om zichzelf te identificeren bij een Event Hub en kunnen een unieke identiteit hebben of een algemene SAS-token gebruiken.
+Elke entiteit die gegevens naar een Event Hub verzendt, is een gebeurtenis producent of een *Uitgever van gebeurtenissen*. Gebeurtenis uitgevers kunnen gebeurtenissen publiceren met HTTPS of AMQP 1,0 of Kafka 1,0 of hoger. Gebeurtenisuitgevers gebruiken een Shared Access Signature-token (SAS) om zichzelf te identificeren bij een Event Hub en kunnen een unieke identiteit hebben of een algemene SAS-token gebruiken.
 
 ### <a name="publishing-an-event"></a>Een gebeurtenis publiceren
 
-U een evenement publiceren via AMQP 1.0, Kafka 1.0 (en hoger) of HTTPS. Event Hubs biedt [clientbibliotheken en -klassen](event-hubs-dotnet-framework-api-overview.md) voor het publiceren van gebeurtenissen naar een gebeurtenishub van .NET-clients. Voor andere runtimes en platforms kunt u een AMQP 1.0-client gebruiken, zoals [Apache Qpid](https://qpid.apache.org/). U kunt gebeurtenissen afzonderlijk of batchgewijs publiceren. Eén publicatie (instantie gebeurtenisgegevens) heeft een limiet van 1 MB, ongeacht of het een enkele gebeurtenis of een batch is. Het publiceren van gebeurtenissen die groter zijn dan deze drempelwaarde, resulteert in een fout. Het is een aanbevolen praktijk voor uitgevers om zich niet bewust te zijn van partities binnen de gebeurtenishub en alleen een *partitiesleutel* op te geven (geïntroduceerd in de volgende sectie), of hun identiteit via hun SAS-token.
+U kunt een gebeurtenis publiceren via AMQP 1,0, Kafka 1,0 (en later) of HTTPS. Event Hubs biedt [client bibliotheken en-klassen](event-hubs-dotnet-framework-api-overview.md) voor het publiceren van gebeurtenissen naar een event hub van .net-clients. Voor andere runtimes en platforms kunt u een AMQP 1.0-client gebruiken, zoals [Apache Qpid](https://qpid.apache.org/). U kunt gebeurtenissen afzonderlijk of batchgewijs publiceren. Eén publicatie (gebeurtenis gegevens exemplaar) heeft een limiet van 1 MB, ongeacht of het om één gebeurtenis of een batch gaat. Het publiceren van gebeurtenissen die groter zijn dan deze drempel resulteert in een fout. Het is een best practice dat uitgevers geen rekening hoeven te houden met partities binnen de Event Hub en om alleen een *partitie sleutel* op te geven (geïntroduceerd in de volgende sectie) of hun identiteit via hun SAS-token.
 
-De keuze om AMQP of HTTPS te gebruiken, geldt specifiek voor het gebruiksscenario. AMQP vereist de inrichting van een permanente bidirectionele socket naast Transport Layer Security (TLS) of SSL/TLS. AMQP heeft hogere netwerkkosten bij het initialiseren van de sessie, maar HTTPS vereist extra TLS-overhead voor elke aanvraag. AMQP biedt betere prestaties voor regelmatige uitgevers.
+De keuze om AMQP of HTTPS te gebruiken, geldt specifiek voor het gebruiksscenario. AMQP vereist de inrichting van een permanente bidirectionele socket naast Transport Layer Security (TLS) of SSL/TLS. AMQP heeft hogere netwerk kosten bij het initialiseren van de sessie, maar HTTPS vereist extra TLS-overhead voor elke aanvraag. AMQP biedt betere prestaties voor regelmatige uitgevers.
 
 ![Event Hubs](./media/event-hubs-features/partition_keys.png)
 
@@ -63,7 +63,7 @@ Het is niet nodig om van tevoren uitgeversnamen te maken. De namen moeten echter
 
 ## <a name="capture"></a>Capture
 
-[Met Event Hubs Capture](event-hubs-capture-overview.md) u de streaminggegevens automatisch vastleggen in gebeurtenishubs en deze opslaan in uw keuze van een Blob-opslagaccount of een Azure Data Lake Service-account. U Vastleggen inschakelen vanuit de Azure-portal en een minimumgrootte en tijdvenster opgeven om de opname uit te voeren. Met Event Hubs Capture geeft u uw eigen Azure Blob Storage-account en container op, of Azure Data Lake Service-account, waarvan er één wordt gebruikt om de vastgelegde gegevens op te slaan. Vastgelegde gegevens zijn geschreven in het Apache Avro-formaat.
+Met [Event hubs Capture](event-hubs-capture-overview.md) kunt u automatisch de streaminggegevens in Event hubs vastleggen en opslaan in een Blob Storage-account of een Azure data Lake-service account. U kunt vastleggen inschakelen vanuit het Azure Portal en een minimale grootte en tijd venster opgeven om de vastleg ging uit te voeren. Met Event Hubs Capture geeft u uw eigen Azure Blob Storage-account en-container of een Azure Data Lake service account op. deze wordt gebruikt om de vastgelegde gegevens op te slaan. Vastgelegde gegevens worden geschreven in de Apache Avro-indeling.
 
 ## <a name="partitions"></a>Partities
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
@@ -71,19 +71,19 @@ Het is niet nodig om van tevoren uitgeversnamen te maken. De namen moeten echter
 
 ## <a name="sas-tokens"></a>SAS-tokens
 
-Event Hubs maakt gebruik van *Gedeelde toegangshandtekeningen,* die beschikbaar zijn op het niveau van de naamruimte en gebeurtenishub. Een SAS-token wordt gegenereerd uit een SAS-sleutel en is een SHA-hash of URL. gecodeerd in een specifieke indeling. Event Hubs kan de hash opnieuw genereren met de naam van de sleutel (het beleid) en de token, en op deze manier de afzender verifiëren. Normaal gesproken worden SAS-tokens voor gebeurtenis-uitgevers gemaakt met alleen **verzendrechten** op een specifieke gebeurtenishub. Dit URL-mechanisme met SAS-token vormt de basis voor de uitgeversidentificatie die in het uitgeversbeleid wordt geïntroduceerd. Zie [Shared Access Signature-verificatie met Service Bus](../service-bus-messaging/service-bus-sas.md) voor meer informatie over werken met SAS.
+Event Hubs maakt gebruik van *hand tekeningen voor gedeelde toegang*, die beschikbaar zijn op het niveau van de naam ruimte en het event hub. Een SAS-token wordt gegenereerd uit een SAS-sleutel en is een SHA-hash of URL. gecodeerd in een specifieke indeling. Event Hubs kan de hash opnieuw genereren met de naam van de sleutel (het beleid) en de token, en op deze manier de afzender verifiëren. Normaal gesp roken worden SAS-tokens voor gebeurtenis uitgevers alleen gemaakt met de machtiging **verzenden** voor een specifieke Event hub. Dit URL-mechanisme met SAS-token vormt de basis voor de uitgeversidentificatie die in het uitgeversbeleid wordt geïntroduceerd. Zie [Shared Access Signature-verificatie met Service Bus](../service-bus-messaging/service-bus-sas.md) voor meer informatie over werken met SAS.
 
 ## <a name="event-consumers"></a>Gebeurtenisconsumers
 
-Elke entiteit die gebeurtenisgegevens van een gebeurtenishub leest, is een *gebeurtenisconsument.* Alle Event Hubs-consumers maken verbinding via de AMQP 1.0-sessie, waarin gebeurtenissen worden geleverd zodra deze beschikbaar komen. De client hoeft de beschikbaarheid van de gegevens niet te peilen.
+Elke entiteit die gebeurtenis gegevens van een Event Hub leest, is een *event consumer*. Alle Event Hubs-consumers maken verbinding via de AMQP 1.0-sessie, waarin gebeurtenissen worden geleverd zodra deze beschikbaar komen. De client hoeft de beschikbaarheid van de gegevens niet te peilen.
 
 ### <a name="consumer-groups"></a>Consumergroepen
 
-Het publicatie-/abonneermechanisme van Event Hubs is ingeschakeld via *consumentengroepen.* Een consumergroep is een weergave (status, positie of offset) van een volledige Event Hub. Consumergroepen maken het mogelijk dat meerdere consumerende toepassingen beschikken over een afzonderlijke weergave van de gebeurtenisstroom. De toepassingen kunnen de stroom onafhankelijk, in hun eigen tempo en met hun eigen offsets lezen.
+Het mechanisme voor publiceren/abonneren van Event Hubs wordt ingeschakeld via *consumenten groepen*. Een consumergroep is een weergave (status, positie of offset) van een volledige Event Hub. Consumergroepen maken het mogelijk dat meerdere consumerende toepassingen beschikken over een afzonderlijke weergave van de gebeurtenisstroom. De toepassingen kunnen de stroom onafhankelijk, in hun eigen tempo en met hun eigen offsets lezen.
 
 In een architectuur waarin de stroom wordt verwerkt, is elke downstream-toepassing gelijk aan een consumergroep. Als u gebeurtenisgegevens naar de langetermijnopslag wilt schrijven, is de schrijftoepassing die hiervoor wordt gebruikt, een consumergroep. De complexe verwerking van gebeurtenissen kan vervolgens worden uitgevoerd door een andere, afzonderlijke consumergroep. U hebt alleen toegang tot partities via een consumergroep. Een Event Hub bevat altijd een standaardconsumergroep. Voor een Event Hub van het type Standaard kunt u maximaal 20 consumergroepen maken.
 
-Er kunnen maximaal 5 gelijktijdige lezers op een partitie per consumentengroep; het wordt echter **aanbevolen dat er slechts één actieve ontvanger op een partitie per consumentengroep is.** Binnen één partitie ontvangt elke lezer alle berichten. Als u meerdere lezers op dezelfde partitie hebt, verwerkt u dubbele berichten. Je moet dit te behandelen in uw code, die misschien niet triviaal. Echter, het is een geldige aanpak in sommige scenario's.
+Er kunnen Maxi maal vijf gelijktijdige lezers op een partitie per consumenten groep zijn. **het is echter raadzaam dat er slechts één actieve ontvanger is op een partitie per Consumer groep**. Binnen één partitie ontvangt elke lezer alle berichten. Als u meerdere lezers op dezelfde partitie hebt, verwerkt u dubbele berichten. U moet dit in uw code afhandelen. Dit is mogelijk niet gelastig. Het is echter een geldige benadering in sommige scenario's.
 
 
 Dit zijn voorbeelden van de URI-conventie voor consumergroepen:
@@ -99,7 +99,7 @@ In de volgende afbeelding ziet u de architectuur voor de verwerking van stromen 
 
 ### <a name="stream-offsets"></a>Stroom-offsets
 
-Een *verschuiving* is de positie van een gebeurtenis binnen een partitie. U kunt een offset beschouwen als een clientcursor. De offset is een bytenummering van de gebeurtenis. Met deze offset kan een gebeurtenisconsumer (lezer) een punt in de gebeurtenisstroom opgeven vanwaaruit begonnen moet worden met het lezen van gebeurtenissen. U kunt de offset opgeven als een tijdstempel of als een offsetwaarde. Consumers zijn zelf verantwoordelijk voor het opslaan van hun eigen offsetwaarden buiten de Event Hubs-service. Binnen een partitie bevat elke gebeurtenis een offset.
+Een *Offset* is de positie van een gebeurtenis binnen een partitie. U kunt een offset beschouwen als een clientcursor. De offset is een bytenummering van de gebeurtenis. Met deze offset kan een gebeurtenisconsumer (lezer) een punt in de gebeurtenisstroom opgeven vanwaaruit begonnen moet worden met het lezen van gebeurtenissen. U kunt de offset opgeven als een tijdstempel of als een offsetwaarde. Consumers zijn zelf verantwoordelijk voor het opslaan van hun eigen offsetwaarden buiten de Event Hubs-service. Binnen een partitie bevat elke gebeurtenis een offset.
 
 ![Event Hubs](./media/event-hubs-features/partition_offset.png)
 
@@ -107,18 +107,18 @@ Een *verschuiving* is de positie van een gebeurtenis binnen een partitie. U kunt
 
 *Het plaatsen van controlepunten* is een proces waarbij lezers hun positie binnen de gebeurtenisvolgorde van een partitie markeren of vastleggen. Het plaatsen van controlepunten is de verantwoordelijkheid van de consumer en vindt plaats per partitie binnen een consumergroep. Deze verantwoordelijkheid houdt in dat elke partitielezer voor elke consumergroep de huidige positie in de gebeurtenisstroom moet bijhouden en de service kan informeren wanneer de gegevensstroom is voltooid.
 
-Als een lezer van een partitie is losgekoppeld en er vervolgens weer verbinding wordt gemaakt, begint het lezen bij het controlepunt dat eerder is verzonden door de laatste lezer van de betreffende partitie in de consumergroep. Wanneer de lezer verbinding maakt, passeert deze de verschuiving naar de gebeurtenishub om de locatie op te geven waar u moet beginnen met lezen. Op deze manier kunt u het plaatsen van controlepunten gebruiken om gebeurtenissen te markeren als 'voltooid' door downstream-toepassingen. Bovendien beschikt u met controlepunten over tolerantie bij een failover tussen lezers die op verschillende apparaten worden uitgevoerd. Het is mogelijk om terug te keren naar de oudere gegevens door een lagere offset van dit controlepuntproces op te geven. Via dit mechanisme zorgt het plaatsen van controlepunten voor failover-tolerantie en voor herhaling van gebeurtenisstromen.
+Als een lezer van een partitie is losgekoppeld en er vervolgens weer verbinding wordt gemaakt, begint het lezen bij het controlepunt dat eerder is verzonden door de laatste lezer van de betreffende partitie in de consumergroep. Wanneer de lezer verbinding maakt, wordt de offset aan de Event Hub door gegeven om de locatie op te geven waar u wilt beginnen met lezen. Op deze manier kunt u het plaatsen van controlepunten gebruiken om gebeurtenissen te markeren als 'voltooid' door downstream-toepassingen. Bovendien beschikt u met controlepunten over tolerantie bij een failover tussen lezers die op verschillende apparaten worden uitgevoerd. Het is mogelijk om terug te keren naar de oudere gegevens door een lagere offset van dit controlepuntproces op te geven. Via dit mechanisme zorgt het plaatsen van controlepunten voor failover-tolerantie en voor herhaling van gebeurtenisstromen.
 
 > [!NOTE]
-> Als u Azure Blob Storage gebruikt als controlepuntopslag in een omgeving die een andere versie van Storage Blob SDK ondersteunt dan die welke doorgaans beschikbaar is op Azure, moet u code gebruiken om de API-versie van de opslagservice te wijzigen in de specifieke versie die wordt ondersteund door die omgeving. Als u bijvoorbeeld Gebeurtenishubs uitvoert [op een Azure Stack Hub-versie 2002,](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)is versie 2017-11-09 de hoogst beschikbare versie voor de opslagservice. In dit geval moet u code gebruiken om de API-versie van de opslagservice te targeten op 2017-11-09. Zie deze voorbeelden op GitHub voor een voorbeeld over het targeten van een specifieke Storage API-versie: 
-> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
+> Als u Azure Blob Storage gebruikt als controlepunt opslag in een omgeving die ondersteuning biedt voor een andere versie van de Storage BLOB SDK dan die welke meestal beschikbaar zijn op Azure, moet u code gebruiken om de API-versie van de opslag service te wijzigen in de specifieke versie die wordt ondersteund door die omgeving. Als u bijvoorbeeld [Event hubs uitvoert op een Azure stack hub versie 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), is de hoogste beschik bare versie van de opslag service versie 2017-11-09. In dit geval moet u code gebruiken om de API-versie van de Storage-service te richten op 2017-11-09. Zie voor een voor beeld van het richten op een specifieke opslag-API-versie de volgende voor beelden op GitHub: 
+> - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithOlderStorageVersion.java)
-> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js) of [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
+> - [Java script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js) of [type script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/event_processor_blob_storage_example_with_storage_api_version.py)
 
 ### <a name="common-consumer-tasks"></a>Algemene taken voor consumers
 
-Alle Event Hubs-consumenten maken verbinding via een AMQP 1.0-sessie, een staatsbewust bidirectioneel communicatiekanaal. Elke partitie heeft een AMQP 1.0-sessie die het mogelijk maakt partitiespecifieke gebeurtenissen te transporteren.
+Alle Event Hubs consumenten maken verbinding via een AMQP 1,0-sessie, een status bewust bidirectionele communicatie kanaal. Elke partitie heeft een AMQP 1.0-sessie die het mogelijk maakt partitiespecifieke gebeurtenissen te transporteren.
 
 #### <a name="connect-to-a-partition"></a>Verbinding maken met een partitie
 
@@ -146,9 +146,9 @@ Voor meer informatie over Event Hubs gaat u naar de volgende koppelingen:
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
     - [Javascript](get-started-java-send-v2.md)
-* [Programmeerhandleiding voor gebeurtenishubs](event-hubs-programming-guide.md)
+* [Programmeer handleiding voor Event Hubs](event-hubs-programming-guide.md)
 * [Beschikbaarheid en consistentie in Event Hubs](event-hubs-availability-and-consistency.md)
 * [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)
-* [Voorbeelden van gebeurtenishubs][]
+* [Event Hubs-voor beelden][]
 
-[Voorbeelden van gebeurtenishubs]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+[Event Hubs-voor beelden]: https://github.com/Azure/azure-event-hubs/tree/master/samples

@@ -1,6 +1,6 @@
 ---
-title: Azure-multifactorverificatie instellen voor Windows Virtual Desktop - Azure
-description: Azure-multifactorverificatie instellen voor meer beveiliging in Windows Virtual Desktop.
+title: Azure multi-factor Authentication instellen voor het virtuele bureau blad van Windows-Azure
+description: Azure multi-factor Authentication instellen voor verbeterde beveiliging in Windows virtueel bureau blad.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,89 +9,89 @@ ms.date: 04/01/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: b470f9278bdca94d1fe98c64b11b070fb36cb075
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80998478"
 ---
 # <a name="set-up-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication instellen
 
-De Windows-client voor Windows Virtual Desktop is een uitstekende optie voor het integreren van Windows Virtual Desktop met uw lokale machine. Wanneer u uw Windows Virtual Desktop-account echter configureert in de Windows-client, zijn er bepaalde maatregelen die u moet nemen om uzelf en uw gebruikers veilig te houden.
+De Windows-client voor Windows Virtual Desktop is een uitstekende optie voor het integreren van virtuele Windows-Bureau bladen met uw lokale computer. Wanneer u echter uw Windows virtueel-bureaublad account in de Windows-client configureert, zijn er bepaalde metingen die u moet uitvoeren om uzelf en uw gebruikers veilig te houden.
 
-Wanneer u zich voor het eerst aanmeldt, vraagt de client om uw gebruikersnaam, wachtwoord en Azure MFA. Daarna onthoudt de client uw token de volgende keer dat u zich aanmeldt vanuit uw Azure Active Directory (AD) Enterprise-toepassing. Wanneer u **Remember Me**selecteert, kunnen uw gebruikers zich aanmelden nadat ze de client opnieuw hebben opgestart zonder dat ze hun referenties opnieuw hoeven in te voeren.
+Wanneer u zich voor het eerst aanmeldt, vraagt de client om uw gebruikers naam, wacht woord en Azure MFA. Daarna herinnert de client de volgende keer dat u zich aanmeldt uw token van uw Azure Active Directory (AD) Enter prise-toepassing. Wanneer u **mij onthouden**selecteert, kunnen uw gebruikers zich aanmelden nadat de client opnieuw is opgestart zonder dat ze hun referenties opnieuw moeten invoeren.
 
-Hoewel het onthouden van referenties handig is, kan het ook implementaties op Enterprise-scenario's of persoonlijke apparaten minder veilig maken. Om uw gebruikers te beschermen, moet u ervoor zorgen dat de client blijft vragen om MFA-referenties (Azure Multi-Factor Authentication). In dit artikel ziet u hoe u het beleid voor voorwaardelijke toegang voor Windows Virtual Desktop configureert om deze instelling in te schakelen.
+Bij het onthouden van referenties is het handig om ook implementaties op bedrijfs scenario's of persoonlijke apparaten minder veilig te maken. Om uw gebruikers te beschermen, moet u ervoor zorgen dat de client vraagt om de referenties voor Azure Multi-Factor Authentication (MFA). In dit artikel wordt uitgelegd hoe u het beleid voor voorwaardelijke toegang configureert voor virtuele Windows-Bureau bladen om deze instelling in te scha kelen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit is wat je nodig hebt om aan de slag te gaan:
+U hebt de volgende informatie nodig om aan de slag te gaan:
 
 - Wijs al uw gebruikers een van de volgende licenties toe:
   - Microsoft 365 E3 of E5
   - Azure Active Directory Premium P1 of P2
-  - Enterprise Mobility + Beveiliging E3 of E5
-- Een Azure Active Directory-groep met uw gebruikers toegewezen als groepsleden.
-- Azure MFA inschakelen voor al uw gebruikers. Zie Hoe u verificatie in [twee stappen voor een gebruiker nodig hebt,](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user)voor meer informatie over hoe u dat doen.
+  - Enterprise Mobility + Security E3 of E5
+- Een Azure Active Directory groep waaraan uw gebruikers zijn toegewezen als groeps leden.
+- Schakel Azure MFA in voor al uw gebruikers. Zie [verificatie in twee stappen vereisen voor een gebruiker](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user)voor meer informatie over hoe u dit doet.
 
 >[!NOTE]
->De volgende instelling is ook van toepassing op de [Windows Virtual Desktop-webclient.](https://rdweb.wvd.microsoft.com/webclient/index.html)
+>De volgende instelling is ook van toepassing op de [Windows virtueel bureau blad-webclient](https://rdweb.wvd.microsoft.com/webclient/index.html).
 
-## <a name="opt-in-to-the-conditional-access-policy"></a>Aanmelden voor het beleid voor voorwaardelijke toegang
+## <a name="opt-in-to-the-conditional-access-policy"></a>Aanmelden bij het beleid voor voorwaardelijke toegang
 
-1. **Open Azure Active Directory**.
+1. Open **Azure Active Directory**.
 
-2. Ga naar het tabblad **Alle toepassingen.** Selecteer in de vervolgkeuzelijst 'Toepassingstype' de optie **Enterprise-toepassingen**en zoek vervolgens naar **Windows Virtual Desktop Client**.
+2. Ga naar het tabblad **alle toepassingen** . Selecteer in de vervolg keuzelijst Type toepassing de optie **bedrijfs toepassingen**en zoek naar **Windows Virtual Desktop Client**.
 
-    ![Een screenshot van het tabblad Alle toepassingen. De gebruiker heeft 'windows virtual desktop client' ingevoerd in de zoekbalk en de app is weergegeven in de zoekresultaten.](media/all-applications-search.png)
+    ![Een scherm afbeelding van het tabblad alle toepassingen. De gebruiker heeft ' Windows Virtual Desktop Client ' ingevoerd in de zoek balk en de app is weer gegeven in de zoek resultaten.](media/all-applications-search.png)
 
-3. Selecteer **Voorwaardelijke toegang**.
+3. Selecteer **voorwaardelijke toegang**.
 
-    ![Een schermafbeelding waarop de gebruiker de muiscursor boven het tabblad Voorwaardelijke toegang beweegt.](media/conditional-access-location.png)
+    ![Een scherm afbeelding waarin de gebruiker de muis aanwijzer op het tabblad voorwaardelijke toegang plaatst.](media/conditional-access-location.png)
 
 4. Selecteer **+ Nieuw beleid**.
 
-   ![Een schermafbeelding van de pagina Voorwaardelijke toegang. De gebruiker zweeft met de muiscursor over de nieuwe beleidsknop.](media/new-policy-button.png)
+   ![Een scherm afbeelding van de pagina voor voorwaardelijke toegang. De gebruiker beweegt de muis aanwijzer over de knop Nieuw beleid.](media/new-policy-button.png)
 
-5. Voer een **naam** in voor de **regel**en **selecteer** vervolgens de *naam van de **groep** die u in de vereisten hebt gemaakt.
+5. Voer een **naam** in voor de **regel**en **Selecteer** vervolgens de * naam van de **groep** die u hebt gemaakt in de vereisten.
 
-6. Selecteer **Selecteren**en selecteer **Vervolgens Gereed**.
+6. Selecteer **selecteren**en selecteer vervolgens **gereed**.
 
-7. Open vervolgens **Cloud Apps of acties**.
+7. Open vervolgens **Cloud-apps of-acties**.
 
-8. Selecteer **in** het deelvenster Selecteren de **Windows Virtual Desktop** Enterprise-app.
+8. Selecteer in het deel venster **selecteren** de Windows-app voor **virtueel bureau blad** .
 
-    ![Een schermafbeelding van de pagina Cloud-apps of -acties. De gebruiker heeft de Windows Virtual Desktop-app geselecteerd door het vinkje ernaast te selecteren. De geselecteerde app wordt rood gemarkeerd.](media/cloud-apps-select.png)
+    ![Een scherm opname van de pagina Cloud-apps of-acties. De gebruiker heeft de Windows virtueel bureau blad-app geselecteerd door het selectie vakje ernaast in te scha kelen. De geselecteerde app is rood gemarkeerd.](media/cloud-apps-select.png)
     
     >[!NOTE]
-    >U moet ook de Windows Virtual Desktop Client-app aan de linkerkant van het scherm zien, zoals in de volgende afbeelding wordt weergegeven. U hebt zowel de Windows Virtual Desktop- als de Windows Virtual Desktop Client Enterprise-apps nodig om het beleid te laten werken.
+    >U moet ook de Windows-client-app voor virtueel bureau blad weer geven die aan de linkerkant van het scherm is geselecteerd, zoals wordt weer gegeven in de volgende afbeelding. U hebt zowel het virtuele bureau blad van Windows als de Enter prise-client van Windows virtueel bureau blad nodig om het beleid te kunnen gebruiken.
     >
-    > ![Een schermafbeelding van de pagina Cloud-apps of -acties. De apps Windows Virtual Desktop en Windows Virtual Desktop Client zijn rood gemarkeerd.](media/cloud-apps-enterprise-selected.png)
+    > ![Een scherm opname van de pagina Cloud-apps of-acties. De Windows Virtual Desktop-en Windows Virtual Desktop Client-apps worden rood gemarkeerd.](media/cloud-apps-enterprise-selected.png)
 
-9. Selecteer **Selecteren**
+9. Selecteer **selecteren**
 
-10. Vervolgens opent u **Grant** 
+10. Open vervolgens **Grant** 
 
-11. Selecteer **Meervoudige verificatie vereisen**en selecteer Vervolgens Een van de geselecteerde **besturingselementen vereisen**.
+11. Selecteer **multi-factor Authentication vereisen**en selecteer vervolgens **een van de geselecteerde besturings elementen vereisen**.
    
-    ![Een screenshot van de Grant-pagina. Er is gekozen voor "Multi-factor authentication".](media/grant-page.png)
+    ![Een scherm opname van de pagina Grant. "Multi-factor Authentication vereisen" is geselecteerd.](media/grant-page.png)
 
     >[!NOTE]
-    >Als u mdm-ingeschreven apparaten in uw organisatie hebt en niet wilt dat ze de MFA-prompt weergeven, u ook apparaat vereisen selecteren **dat is gemarkeerd als compatibel**.
+    >Als u apparaten met MDM-inschrijving in uw organisatie hebt en u niet wilt dat ze de MFA-prompt weer geven, kunt u ook **vereisen dat apparaat is gemarkeerd als compatibel**.
 
-12. Selecteer **Sessie**.
+12. Selecteer **sessie**.
 
-13. Stel de **aanmeldingsfrequentie in op** **Actief**en wijzig de waarde vervolgens in **1 uur**.
+13. Stel de **aanmeldings frequentie** in op **actief**en wijzig de waarde in **1 uur**.
 
-    ![Een screenshot van de sessiepagina. Het sessiemenu toont dat de vervolgkeuzemenu's voor aanmeldingsfrequentie zijn gewijzigd in '1' en 'Uren'.](media/sign-in-frequency.png)
+    ![Een scherm afbeelding van de sessie pagina. In het menu sessie worden de vervolg keuzelijsten voor de aanmeldings frequentie gewijzigd in ' 1 ' en ' uur '.](media/sign-in-frequency.png)
    
     >[!NOTE]
-    >Actieve sessies in uw Windows Virtual Desktop-omgeving blijven werken terwijl u het beleid wijzigt. Als u echter de verbinding verbreekt of aftekent, moet u uw referenties na 60 minuten opnieuw verstrekken. Als u de instellingen wijzigt, u de time-outperiode zoveel verlengen als u wilt (zolang deze in lijn is met het beveiligingsbeleid van uw organisatie).
+    >Actieve sessies in uw Windows Virtual Desktop-omgeving blijven werken wanneer u het beleid wijzigt. Als u echter de verbinding verbreekt of afmeldt, moet u na 60 minuten uw referenties opnieuw opgeven. Wanneer u de instellingen wijzigt, kunt u de time-outperiode zo veel mogelijk verlengen (op voor waarde dat deze wordt uitgelijnd met het beveiligings beleid van uw organisatie).
     >
-    >De standaardinstelling is een rollend venster van 90 dagen, wat betekent dat de client gebruikers zal vragen om zich opnieuw aan te melden wanneer ze proberen om toegang te krijgen tot een resource nadat ze gedurende 90 dagen of langer inactief zijn op hun machine.
+    >De standaard instelling is een doorlopende Window van 90 dagen, wat betekent dat de client gebruikers vraagt om zich opnieuw aan te melden wanneer ze proberen toegang te krijgen tot een bron nadat ze 90 dagen of langer op hun machine inactief zijn.
 
 14. Schakel het beleid in.
 
-15. Selecteer **Maken** om het beleid te bevestigen.
+15. Selecteer **maken** om het beleid te bevestigen.
 
-U bent helemaal klaar! Voel je vrij om het beleid te testen om ervoor te zorgen dat uw lijst toestaan werkt zoals bedoeld.
+U bent helemaal klaar! U kunt het beleid testen om er zeker van te zijn dat de lijst met toegestane onderdelen goed werkt.

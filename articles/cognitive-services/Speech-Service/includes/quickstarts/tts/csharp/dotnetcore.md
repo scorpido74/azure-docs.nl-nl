@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: Spraak synthetiseren, C# (.NET Core) - Spraakservice'
+title: 'Snelstartgids: een synthese van de spraak, C# (.NET core)-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het synthetiseren van spraak in C# onder .NET Core op Windows met behulp van de SpraakSDK
+description: Lees hoe u spraak kunt gebruiken in C# onder .NET core in Windows met behulp van de Speech SDK
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: yinhew
 ms.openlocfilehash: 91e06805b687e66c147b0904175ae20d01387acf
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81275596"
 ---
 > [!NOTE]
@@ -22,11 +22,11 @@ ms.locfileid: "81275596"
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u:
+Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Een Azure-spraakbron maken](../../../../get-started.md)
-> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=dotnetcore&pivots=programming-language-csharp)
+> * [Een Azure-spraak resource maken](../../../../get-started.md)
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=dotnetcore&pivots=programming-language-csharp)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
@@ -42,17 +42,17 @@ Voordat u aan de slag gaat, moet u:
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 
-1. Compileer de toepassing. Kies > **Build-oplossing** **Build**in de menubalk. De code moet zonder fouten worden gecompileerd.
+1. Compileer de toepassing. Kies **Build** > **Build Solution**in de menu balk. De code moet zonder fouten worden gecompileerd.
 
-    ![Schermafbeelding van Visual Studio-toepassing met de optie Build Solution gemarkeerd](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-05-build.png "Succesvol bouwen")
+    ![Schermafbeelding van Visual Studio-toepassing met de optie Build Solution gemarkeerd](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-05-build.png "Geslaagde build")
 
-1. Start de toepassing. Kies foutopsporing >  **debuggen debuggen**of druk op **F5**in de menubalk.**Start Debugging**
+1. Start de toepassing. Kies in de menu balk de optie **fout** > **opsporing starten**of druk op **F5**.
 
-    ![Schermafbeelding van Visual Studio-toepassing met de optie Start Debugging gemarkeerd](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "De app starten met foutopsporing")
+    ![Schermafbeelding van Visual Studio-toepassing met de optie Start Debugging gemarkeerd](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "De app starten in fout opsporing")
 
-1. Er verschijnt een consolevenster waarin u wordt gevraagd tekst te typen. Typ een paar woorden of een zin. De tekst die u hebt getypt, wordt naar de spraakservice verzonden en gesynthetiseerd naar spraak, die op uw luidspreker wordt afgespeeld.
+1. Er wordt een console venster weer gegeven waarin u wordt gevraagd om tekst te typen. Typ enkele woorden of een zin. De tekst die u hebt getypt, wordt verzonden naar de speech-service en gesynthesizerd naar spraak, die op uw spreker wordt afgespeeld.
 
-    ![Schermafbeelding van console-uitvoer na succesvolle synthese](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "Console-uitvoer na succesvolle synthese")
+    ![Scherm opname van de console-uitvoer na een geslaagde synthese](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "Console-uitvoer na geslaagde synthese")
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -61,4 +61,4 @@ Voordat u aan de slag gaat, moet u:
 ## <a name="see-also"></a>Zie ook
 
 - [Een aangepaste stem maken](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Aangepaste spraakvoorbeelden opnemen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Aangepaste spraak voorbeelden vastleggen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

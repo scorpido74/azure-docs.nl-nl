@@ -1,6 +1,6 @@
 ---
-title: Platforms en tools voor data science projecten - Team Data Science Process
-description: Itemizes en bespreekt de gegevens en analysebronnen die beschikbaar zijn voor ondernemingen die standaardiseren in het Team Data Science-proces.
+title: Platformen en hulpprogram ma's voor data Science-projecten-team data Science process
+description: Specificatie en bespreekt de gegevens-en analyse bronnen die beschikbaar zijn voor ondernemingen die worden gestandardization op het team data Science process.
 author: marktab
 manager: marktab
 editor: marktab
@@ -11,144 +11,144 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 3f3f06bd5a9b6a78b45a63de0684b580e662075b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81256515"
 ---
-# <a name="platforms-and-tools-for-data-science-projects"></a>Platforms en tools voor data science projecten
+# <a name="platforms-and-tools-for-data-science-projects"></a>Platformen en hulpprogram ma's voor data Science-projecten
 
-Microsoft biedt een volledig spectrum van analysebronnen voor zowel cloud- als on-premises platforms. Ze kunnen worden ingezet om de uitvoering van uw data science-projecten efficiënt en schaalbaar te maken. Richtlijnen voor teams die data science-projecten op een traceerbare, versiebeheerde en collaboratieve manier implementeren, worden geleverd door het [Team Data Science Process](overview.md) (TDSP).  Zie [Team Data Science Process rollen en taken](roles-tasks.md)voor een overzicht van de personeelsrollen en de bijbehorende taken die worden uitgevoerd door een data science-team dat dit proces standaardiseert.
+Micro soft biedt een volledig spectrum van analyse bronnen voor zowel Cloud-als on-premises platforms. Ze kunnen worden geïmplementeerd om de uitvoering van uw data Science-projecten efficiënt en schaalbaar te maken. Richt lijnen voor teams die data Science-projecten implementeren in een bijgehouden, gecontroleerde versie en samenwerkings wijze worden verstrekt door het [team data Science process](overview.md) (TDSP).  Zie [rollen en taken voor team data Science process](roles-tasks.md)voor een overzicht van de personeels rollen en de bijbehorende taken die worden verwerkt door een Data Science-team dat wordt gestandardization voor dit proces.
 
-De analysebronnen die beschikbaar zijn voor data science-teams die gebruikmaken van de TDSP zijn:
+De analyse bronnen die beschikbaar zijn voor data Science teams die gebruikmaken van de TDSP zijn:
 
-- Virtuele machines voor Data Science (zowel Windows als Linux CentOS)
+- Data Science Virtual Machines (zowel Windows-als Linux-CentOS)
 - HDInsight Spark-clusters
 - Synapse Analytics
 - Azure Data Lake
-- HDInsight Hive Clusters
+- HDInsight-Hive-clusters
 - Azure File Storage
-- SQL Server 2019 R en Python Services
+- SQL Server 2019 R-en python-Services
 - Azure Databricks
 
-In dit document beschrijven we kort de bronnen en bieden we links naar de tutorials en walkthroughs die de TDSP-teams hebben gepubliceerd. Ze kunnen u helpen te leren hoe ze stap voor stap te gebruiken en beginnen ze te gebruiken om uw intelligente toepassingen te bouwen. Meer informatie over deze bronnen is beschikbaar op hun productpagina's. 
+In dit document beschrijven we de resources kort en bieden koppelingen naar de zelf studies en instructies die de TDSP teams hebben gepubliceerd. Hierin leert u hoe u deze stap voor stap kunt gebruiken om uw intelligente toepassingen te bouwen. Meer informatie over deze bronnen is beschikbaar op de bijbehorende product pagina's. 
 
-## <a name="data-science-virtual-machine-dsvm"></a>Virtuele machine data science (DSVM)
+## <a name="data-science-virtual-machine-dsvm"></a>Data Science Virtual Machine (DSVM)
 
-De data science virtuele machine aangeboden op zowel Windows en Linux door Microsoft, bevat populaire tools voor data science modellering en ontwikkeling activiteiten. Het bevat tools zoals:
+De virtuele machine voor data technologie die door micro soft wordt aangeboden in Windows en Linux, bevat populaire hulpprogram ma's voor het model leren van gegevens wetenschappen en ontwikkelings activiteiten. Het bevat hulpprogram ma's zoals:
 
 - Microsoft R Server Developer Edition 
 - Anaconda Python-distributie
-- Jupyter-notitieblokken voor Python en R 
-- Visual Studio Community Edition met Python en R Tools op Windows / Eclipse op Linux
-- Power BI-bureaublad voor Windows
-- SQL Server 2016 Developer Edition op Windows / Postgres op Linux
+- Jupyter-notebooks voor python en R 
+- Visual Studio Community Edition met python-en R-Hulpprogram Ma's in Windows/intereclips op Linux
+- Power BI bureau blad voor Windows
+- SQL Server 2016 Developer Edition op Windows/post gres in Linux
 
-Het bevat ook **ML- en AI-tools** zoals xgboost, mxnet en Vowpal Wabbit.
+Het bevat ook **ml-en AI-hulpprogram ma's** zoals xgboost, Mxnet en Vowpal Wabbit.
 
-Momenteel is DSVM beschikbaar in **Windows-** en **Linux CentOS-besturingssystemen.** Kies de grootte van uw DSVM (aantal CPU-cores en de hoeveelheid geheugen) op basis van de behoeften van de data science-projecten die u ervan van plan bent uit te voeren. 
+Momenteel is DSVM beschikbaar in **Windows** -en **Linux CentOS** -besturings systemen. Kies de grootte van uw DSVM (aantal CPU-kernen en de hoeveelheid geheugen) op basis van de behoeften van de data Science-projecten die u wilt uitvoeren. 
 
-Zie [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) op de Azure Marketplace voor meer informatie over de Windows-editie van DSVM. Voor de Linux-editie van de DSVM, zie [Linux Data Science Virtual Machine](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804).
+Zie [micro soft data Science virtual machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) op de Azure Marketplace voor meer informatie over Windows-edities van DSVM. Zie [linux data Science virtual machine](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)voor de Linux-editie van de DSVM.
 
-Zie 10 dingen die u doen op de Virtuele Machine voor gegevenswetenschap op de DSVM voor meer informatie over het efficiënt uitvoeren van enkele van de algemene taken op het gebied van [gegevenswetenschap op de](../data-science-virtual-machine/vm-do-ten-things.md) DSVM
+Zie [tien dingen die u kunt doen op de data Science-virtuele machine](../data-science-virtual-machine/vm-do-ten-things.md) voor meer informatie over het efficiënt uitvoeren van een aantal algemene data Science-taken op de DSVM
 
 
-## <a name="azure-hdinsight-spark-clusters"></a>Azure HDInsight Spark-clusters
+## <a name="azure-hdinsight-spark-clusters"></a>Azure HDInsight Spark clusters
 
-Apache Spark is een open-source framework voor parallelle verwerking dat ondersteuning biedt voor in-memory verwerking om de prestaties van toepassingen voor de analyse van big data te verbeteren. De Spark processing engine is gebouwd voor snelheid, gebruiksgemak en geavanceerde analyses. Spark's in-memory rekenmogelijkheden maken het een goede keuze voor iteratieve algoritmen in machine learning en voor grafiekberekeningen. Spark is ook compatibel met Azure Blob storage (WASB), zodat uw bestaande gegevens die in Azure zijn opgeslagen eenvoudig kunnen worden verwerkt met Spark.
+Apache Spark is een open-source framework voor parallelle verwerking dat ondersteuning biedt voor in-memory verwerking om de prestaties van toepassingen voor de analyse van big data te verbeteren. De Spark-verwerkings engine is gebouwd voor snelheid, gebruiks gemak en geavanceerde analyses. De berekenings mogelijkheden van Spark bieden een goede keuze voor iteratieve algoritmen in machine learning en voor het berekenen van grafieken. Spark is ook compatibel met Azure Blob Storage (WASB), zodat uw bestaande gegevens die zijn opgeslagen in azure eenvoudig kunnen worden verwerkt met behulp van Spark.
 
-Wanneer u in HDInsight een Spark-cluster maakt, maakt u rekenresources in Azure, waarbij Spark is geïnstalleerd en geconfigureerd. Het duurt ongeveer 10 minuten om een Spark-cluster in HDInsight te maken. Sla de gegevens op die moeten worden verwerkt in Azure Blob-opslag. Zie [Azure Blob-opslag met HDFS-compatibele Azure Blob-opslag gebruiken met Hadoop in HDInsight](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)voor informatie over het gebruik van Azure Blob Storage met een cluster.
+Wanneer u in HDInsight een Spark-cluster maakt, maakt u rekenresources in Azure, waarbij Spark is geïnstalleerd en geconfigureerd. Het duurt ongeveer 10 minuten om een Spark-cluster in HDInsight te maken. Sla de gegevens op die moeten worden verwerkt in Azure Blob-opslag. Zie voor meer informatie over het gebruik van Azure Blob Storage met een cluster, [HDFS-compatibele Azure Blob Storage gebruiken met Hadoop in HDInsight](../../hdinsight/hdinsight-hadoop-use-blob-storage.md).
 
-Het TDSP-team van Microsoft heeft twee end-to-end walkthroughs gepubliceerd over het gebruik van Azure HDInsight Spark Clusters om data science-oplossingen te bouwen, een met Python en de andere Scala. Voor meer informatie over Azure HDInsight **Spark Clusters,** zie [Overzicht: Apache Spark op HDInsight Linux](../../hdinsight/spark/apache-spark-overview.md). Zie [Overzicht van Gegevenswetenschap met Spark op Azure HDInsight](spark-overview.md)voor meer informatie over het bouwen van een data science-oplossing met **Python** op een Azure HDInsight Spark-cluster. Zie [Data Science met Scala en Spark op Azure](scala-walkthrough.md)voor meer informatie over het bouwen van een data science-oplossing met **Scala** op een Azure HDInsight Spark-cluster. 
+Het TDSP-team van micro soft heeft twee end-to-end-procedures gepubliceerd over het gebruik van Azure HDInsight Spark-clusters om oplossingen voor data technologie te bouwen, één met python en de andere scala. Zie [overzicht: Apache Spark in HDInsight Linux](../../hdinsight/spark/apache-spark-overview.md)voor meer informatie over Azure hdinsight **Spark-clusters**. Zie [overzicht van data Science met behulp van Spark in azure HDInsight](spark-overview.md)voor meer informatie over het bouwen van een Data Science-oplossing met behulp van **Python** in een Azure HDInsight Spark cluster. Voor meer informatie over het bouwen van een Data Science-oplossing met behulp van **scala** op een Azure HDInsight Spark-cluster, Zie [Data Wetenschappen met scala en Spark op Azure](scala-walkthrough.md). 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 
-Met Azure SQL Data Warehouse u compute resources eenvoudig en in enkele seconden schalen, zonder overprovisioning of over-paying. Het biedt ook de unieke optie om het gebruik van compute resources te pauzeren, zodat u de vrijheid hebt om uw cloudkosten beter te beheren. De mogelijkheid om schaalbare compute resources te implementeren maakt het mogelijk om al uw gegevens in Azure SQL Data Warehouse te brengen. De opslagkosten zijn minimaal en u alleen berekenen uitvoeren op de delen van gegevenssets die u wilt analyseren. 
+Met Azure SQL Data Warehouse kunt u reken bronnen eenvoudig en in enkele seconden schalen, zonder dat u hoeft te overstellen of overs betaling hoeft te doen. Het biedt ook de unieke optie om het gebruik van reken resources te onderbreken, waardoor u de vrijheid hebt om uw Cloud kosten beter te beheren. De mogelijkheid om schaal bare reken resources te implementeren, maakt het mogelijk om al uw gegevens naar Azure SQL Data Warehouse te brengen. De opslag kosten zijn mini maal en u kunt Compute alleen uitvoeren op de onderdelen van gegevens sets die u wilt analyseren. 
 
-Zie de SQL [Data Warehouse-website](https://azure.microsoft.com/services/sql-data-warehouse) voor meer informatie over Azure SQL Data Warehouse. Zie [The Team Data Science Process in actie voor](sqldw-walkthrough.md)meer informatie over het bouwen van end-to-end geavanceerde analyseoplossingen met SQL Data Warehouse.
+Zie de [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse) -website voor meer informatie over Azure SQL Data Warehouse. Voor meer informatie over het bouwen van end-to-end geavanceerde analyse oplossingen met SQL Data Warehouse raadpleegt u [het team data Science process in actie: using SQL Data Warehouse](sqldw-walkthrough.md).
 
 
 ## <a name="azure-data-lake"></a>Azure Data Lake
 
-Azure Data Lake is als een bedrijfsbrede opslagplaats van elk type gegevens dat op één locatie wordt verzameld, voordat formele vereisten of schema's worden opgelegd. Deze flexibiliteit maakt het mogelijk om elk type gegevens in een gegevensmeer te bewaren, ongeacht de grootte of structuur of hoe snel het wordt ingenomen. Organisaties kunnen dan Hadoop of geavanceerde analyses gebruiken om patronen in deze gegevensmeren te vinden. Gegevensmeren kunnen ook dienen als opslagplaats voor het opstellen van goedkopere gegevens voordat u de gegevens curating en verplaatst naar een gegevensmagazijn.
+Azure Data Lake is een opslag plaats in de hele onderneming van elk type gegevens dat op één locatie wordt verzameld, vóór eventuele formele vereisten of het schema dat wordt opgelegd. Met deze flexibiliteit kan elk type gegevens in een Data Lake worden bewaard, ongeacht de grootte of structuur of hoe snel het wordt opgenomen. Organisaties kunnen vervolgens Hadoop of Advanced Analytics gebruiken om patronen te vinden in deze gegevens-meren. Gegevensmeren kan ook worden gebruikt als opslag plaats voor de voor bereiding van goedkope gegevens voordat de gegevens worden verstuurd en verplaatst naar een Data Warehouse.
 
-Zie Azure Data Lake introduceren voor meer informatie over Azure Data [Lake.](https://azure.microsoft.com/blog/introducing-azure-data-lake/) Zie [Scalable Data Science in Azure Data Lake: een end-to-end walkthrough](data-lake-walkthrough.md) voor meer informatie over het bouwen van een schaalbare end-to-end data science-oplossing met Azure Data Lake
+Zie [Inleiding tot Azure data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/)voor meer informatie over Azure data Lake. Voor meer informatie over het bouwen van een schaal bare end-to-end oplossing voor gegevens wetenschap met Azure Data Lake raadpleegt u [Scalable data Science in azure data Lake: een end-to-end-procedure](data-lake-walkthrough.md)
 
 
-## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Azure HDInsight Hive (Hadoop) clusters
+## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Azure HDInsight Hive-clusters (Hadoop)
 
-Apache Hive is een data warehouse systeem voor Hadoop, waarmee gegevens optellen, query's en de analyse van gegevens met behulp van HiveQL, een query taal vergelijkbaar met SQL. Hive kan worden gebruikt om uw gegevens interactief te verkennen of om herbruikbare batchverwerkingstaken te maken.
+Apache Hive is een Data Warehouse systeem voor Hadoop, waarmee gegevens overzichten, query's en de analyse van gegevens worden ingeschakeld met HiveQL, een query taal die vergelijkbaar is met SQL. Hive kan worden gebruikt om uw gegevens interactief te verkennen of om herbruikbare batch verwerkings taken te maken.
 
-Met Hive u structuur projecteren op grotendeels ongestructureerde gegevens. Nadat u de structuur hebt gedefinieerd, u Hive gebruiken om die gegevens op te vragen in een Hadoop-cluster zonder Java of MapReduce te hoeven gebruiken of zelfs te weten. Met HiveQL (de Hive-querytaal) u query's schrijven met instructies die vergelijkbaar zijn met T-SQL.
+Met hive kunt u de structuur projecteren op grotendeels ongestructureerde gegevens. Nadat u de structuur hebt gedefinieerd, kunt u Hive gebruiken om de gegevens in een Hadoop-cluster op te vragen zonder dat u dit hoeft te doen, of zelfs met een Java-of MapReduce. Met HiveQL (de Hive-query taal) kunt u query's schrijven met instructies die vergelijkbaar zijn met T-SQL.
 
-Voor gegevenswetenschappers kan Hive Python-gebruikersgedefinieerde functies (UDF's) uitvoeren in Hive-query's om records te verwerken. Deze mogelijkheid breidt de mogelijkheden van Hive-query's in gegevensanalyse aanzienlijk uit. Concreet kunnen gegevenswetenschappers schaalbare functie-engineering uitvoeren in talen die ze meestal kennen: de SQL-achtige HiveQL en Python. 
+Voor gegevens wetenschappers kan Hive python door de gebruiker gedefinieerde functies (Udf's) uitvoeren in Hive-query's om records te verwerken. Deze mogelijkheid breidt de mogelijkheden van Hive-query's in gegevens analyse aanzienlijk uit. Met name de IT-afdeling maakt het mogelijk dat gegevens wetenschappers schaal bare functies gebruiken in talen die ze voornamelijk kennen: de SQL-achtige HiveQL en python. 
 
-Zie [Hive en HiveQL gebruiken met Hadoop in HDInsight](../../hdinsight/hadoop/hdinsight-use-hive.md)voor meer informatie over Azure HDInsight Hive-clusters. Zie [The Team Data Science Process in actie voor](hive-walkthrough.md)meer informatie over het bouwen van een schaalbare end-to-end data science-oplossing met Azure HDInsight Hive Clusters.
+Zie [Hive en HiveQL gebruiken met Hadoop in HDInsight](../../hdinsight/hadoop/hdinsight-use-hive.md)voor meer informatie over Azure HDInsight-Hive-clusters. Zie voor meer informatie over het bouwen van een schaal bare end-to-end data Science-oplossing met Azure HDInsight Hive-clusters [het team data Science process in actie: HDInsight Hadoop-clusters gebruiken](hive-walkthrough.md).
 
 
 ## <a name="azure-file-storage"></a>Azure File Storage 
 
-Azure File Storage is een service die bestandsshares in de cloud aanbiedt met behulp van het standaard SMB-protocol (Server Message Block). Zowel SMB 2.1 als SMB 3.0 wordt ondersteund. Met Azure File Storage kunt u oudere toepassingen die afhankelijk zijn van bestandsshares, snel en zonder kostbare regeneraties naar Azure migreren. Toepassingen die worden uitgevoerd op virtuele machines of in cloudservices van Azure, of op on-premises clients, kunnen een bestandsshare in de cloud koppelen, op dezelfde manier zoals een bureaubladtoepassing een gewone SMB-share koppelt. Daarna kan een willekeurig aantal toepassingsonderdelen de File Storage-share tegelijkertijd koppelen en gebruiken.
+Azure File Storage is een service die bestands shares in de Cloud aanbiedt met behulp van het standaard SMB-protocol (Server Message Block). Zowel SMB 2.1 als SMB 3.0 wordt ondersteund. Met Azure File Storage kunt u oudere toepassingen die afhankelijk zijn van bestandsshares, snel en zonder kostbare regeneraties naar Azure migreren. Toepassingen die worden uitgevoerd op virtuele machines of in cloudservices van Azure, of op on-premises clients, kunnen een bestandsshare in de cloud koppelen, op dezelfde manier zoals een bureaubladtoepassing een gewone SMB-share koppelt. Daarna kan een willekeurig aantal toepassingsonderdelen de File Storage-share tegelijkertijd koppelen en gebruiken.
 
-Vooral handig voor data science-projecten is de mogelijkheid om een Azure-bestandsarchief te maken als de plek om projectgegevens te delen met uw projectteamleden. Elk van hen heeft dan toegang tot dezelfde kopie van de gegevens in de Azure-bestandsopslag. Ze kunnen deze bestandsopslag ook gebruiken om functiesets te delen die tijdens de uitvoering van het project zijn gegenereerd. Als het project een klantbetrokkenheid is, kunnen uw klanten een Azure-bestandsopslag maken onder hun eigen Azure-abonnement om de projectgegevens en -functies met u te delen. Op deze manier heeft de klant volledige controle over de activa van de projectgegevens. Zie [Aan de slag met Azure File storage in Windows](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) en Azure File Storage with [Linux](../../storage/files/storage-how-to-use-files-linux.md)voor meer informatie over Azure File Storage.
-
-
-## <a name="sql-server-2019-r-and-python-services"></a>SQL Server 2019 R en Python Services
-
-R Services (In-database) biedt een platform voor het ontwikkelen en implementeren van intelligente applicaties die nieuwe inzichten kunnen ontdekken. U de rijke en krachtige R-taal, inclusief de vele pakketten die door de R-community worden geleverd, gebruiken om modellen te maken en voorspellingen te genereren uit uw SQL Server-gegevens. Omdat R Services (In-database) de R-taal integreert met SQL Server, worden analyses dicht bij de gegevens gehouden, waardoor de kosten en beveiligingsrisico's die verbonden zijn aan het verplaatsen van gegevens worden geëlimineerd.
-
-R Services (In-database) ondersteunt de open source R-taal met een uitgebreide set SQL Server-tools en -technologieën. Ze bieden superieure prestaties, beveiliging, betrouwbaarheid en beheerbaarheid. U R-oplossingen implementeren met handige en vertrouwde tools. Uw productietoepassingen kunnen de R-runtime aanroepen en voorspellingen en visuals ophalen met Transact-SQL. U gebruikt ook de ScaleR-bibliotheken om de schaal en prestaties van uw R-oplossingen te verbeteren. Zie [SQL Server R-services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services)voor meer informatie.
-
-Het TDSP-team van Microsoft heeft twee end-to-end walkthroughs gepubliceerd die laten zien hoe je data science-oplossingen bouwen in SQL Server 2016 R Services: een voor R-programmeurs en een voor SQL-ontwikkelaars. Voor **R-programmeurs,** zie [Data Science End-to-End Walkthrough](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough). Zie [In-Database Advanced Analytics voor SQL-ontwikkelaars (Zelfstudie) voor](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers) **SQL-ontwikkelaars.**
+Vooral handig voor data Science-projecten is de mogelijkheid om een Azure-bestands archief te maken als de plaats om project gegevens te delen met uw projectteam leden. Elk daarvan heeft toegang tot dezelfde kopie van de gegevens in de Azure file storage. Ze kunnen ook deze bestands opslag gebruiken om functie sets te delen die zijn gegenereerd tijdens de uitvoering van het project. Als het project een client afspraak is, kunnen uw clients een Azure-bestands opslag maken onder hun eigen Azure-abonnement om de project gegevens en-functies met u te delen. Op deze manier heeft de client volledig beheer over de gegevensassets van het project. Zie aan de [slag met Azure file storage in Windows](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) en [Azure File Storage gebruiken met Linux](../../storage/files/storage-how-to-use-files-linux.md)voor meer informatie over Azure file storage.
 
 
-## <a name="appendix-tools-to-set-up-data-science-projects"></a><a name="appendix"></a>Bijlage: Hulpmiddelen voor het opzetten van data science-projecten
+## <a name="sql-server-2019-r-and-python-services"></a>SQL Server 2019 R-en python-Services
+
+R Services (in-data base) biedt een platform voor het ontwikkelen en implementeren van intelligente toepassingen die nieuwe inzichten kunnen opsporen. U kunt de uitgebreide en krachtige taal van het R-pakket gebruiken, inclusief de vele pakketten van de R-Community, om modellen te maken en voor spellingen te genereren op basis van uw SQL Server gegevens. Omdat R Services (in-data base) de R-taal integreert met SQL Server, behouden de analyses zich dicht bij de gegevens, waardoor de kosten en beveiligings Risico's voor het verplaatsen van gegevens worden geëlimineerd.
+
+R Services (in-data base) biedt ondersteuning voor de open source R-taal met een uitgebreide set SQL Server-hulpprogram ma's en-technologieën. Ze bieden superieure prestaties, beveiliging, betrouw baarheid en beheersbaarheid. U kunt R-oplossingen implementeren met behulp van handige en vertrouwde hulpprogram ma's. Uw productie toepassingen kunnen de R runtime aanroepen en de voor spellingen en visuele elementen ophalen met behulp van Transact-SQL. U kunt ook de Schalende bibliotheken gebruiken om de schaal en prestaties van uw R-oplossingen te verbeteren. Zie [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services)voor meer informatie.
+
+Het TDSP-team van micro soft heeft twee end-to-end-procedures gepubliceerd die laten zien hoe u oplossingen voor data technologie bouwt in SQL Server 2016 R Services: één voor R-programmeurs en één voor SQL-ontwikkel aars. Voor **R-programmeurs**raadpleegt [u end-to-end-scenario voor data](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)technologie. Zie [in-data base Advanced Analytics voor SQL-ontwikkel aars (zelf studie)](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)voor **SQL-ontwikkel aars**.
+
+
+## <a name="appendix-tools-to-set-up-data-science-projects"></a><a name="appendix"></a>Bijlage: Hulpprogram Ma's voor het instellen van data Science-projecten
 
 ### <a name="install-git-credential-manager-on-windows"></a>Git Credential Manager installeren in Windows
 
-Als u de TDSP op **Windows**volgt, moet u de **Git Credential Manager (GCM)** installeren om te communiceren met de Git-repositories. Om GCM te installeren, moet u **eerst Chocolaty**installeren. Als u Chocolaty en de GCM wilt installeren, voert u de volgende opdrachten uit in Windows PowerShell als **beheerder:**  
+Als u de TDSP in **Windows**volgt, moet u de **Git CREDENTIAL Manager (GCM)** installeren om te communiceren met de Git-opslag plaatsen. Als u GCM wilt installeren, moet u eerst **chocolaty**installeren. Als u chocolaty en GCM wilt installeren, voert u de volgende opdrachten uit in Windows Power shell als **beheerder**:  
 
     iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
     choco install git-credential-manager-for-windows -y
     
 
-### <a name="install-git-on-linux-centos-machines"></a>Git installeren op Linux (CentOS) machines
+### <a name="install-git-on-linux-centos-machines"></a>Git installeren op Linux-machines (CentOS)
 
-Voer de volgende bash-opdracht uit om Git te installeren op Linux -machines (CentOS):
+Voer de volgende bash-opdracht uit om Git op Linux-machines (CentOS) te installeren:
 
     sudo yum install git
 
 
-### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>Openbare SSH-toets genereren op Linux -machines (CentOS)
+### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>Open bare SSH-sleutel op Linux-machines (CentOS) genereren
 
-Als u Linux-machines (CentOS) gebruikt om de git-opdrachten uit te voeren, moet u de openbare SSH-sleutel van uw machine toevoegen aan uw Azure DevOps-services, zodat deze machine wordt herkend door de Azure DevOps-services. Eerst moet u een openbare SSH-sleutel genereren en de sleutel toevoegen aan openbare SSH-sleutels op uw beveiligingspagina voor Azure DevOps Services. 
+Als u Linux-machines (CentOS) gebruikt om de Git-opdrachten uit te voeren, moet u de open bare SSH-sleutel van uw computer toevoegen aan de Azure DevOps-Services, zodat deze computer wordt herkend door de Azure DevOps-Services. Eerst moet u een open bare SSH-sleutel genereren en de sleutel toevoegen aan open bare SSH-sleutels op de pagina beveiligings instellingen van Azure DevOps Services. 
 
-1. Voer de volgende twee opdrachten uit om de SSH-toets te genereren: 
+1. Voer de volgende twee opdrachten uit om de SSH-sleutel te genereren: 
 
    ```
    ssh-keygen
    cat .ssh/id_rsa.pub
    ```
    
-   ![Opdrachten voor het genereren van de SSH-toets](./media/platforms-and-tools/resources-1-generate_ssh.png)
+   ![Opdrachten voor het genereren van de SSH-sleutel](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
-1. Kopieer de hele ssh-toets inclusief *ssh-rsa.* 
-1. Meld u aan bij uw Azure DevOps Services. 
-1. Klik **<\> uw naam** in de rechterbovenhoek van de pagina en klik op **beveiliging**. 
+1. Kopieer de volledige SSH-sleutel *, inclusief ssh-rsa*. 
+1. Meld u aan bij uw Azure DevOps-Services. 
+1. Klik op **<uw\> naam** in de rechter bovenhoek van de pagina en klik op **beveiliging**. 
     
    ![Klik op uw naam en klik vervolgens op beveiliging](./media/platforms-and-tools/resources-2-user-setting.png)
 
-1. Klik op **openbare ssh-toetsen**en klik op **+Toevoegen**. 
+1. Klik op **open bare SSH-sleutels**en klik op **+ toevoegen**. 
 
-   ![Klik op openbare ssh-toetsen en klik vervolgens op +Toevoegen](./media/platforms-and-tools/resources-3-add-ssh.png)
+   ![Klik op open bare SSH-sleutels en klik vervolgens op + toevoegen](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-1. Plak de ssh-toets die in het tekstvak is gekopieerd en sla op.
+1. Plak de SSH-sleutel die is gekopieerd naar het tekstvak en sla het op.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volledige end-to-end walkthroughs die alle stappen in het proces voor **specifieke scenario's** demonstreren, worden ook verstrekt. Ze worden weergegeven en gekoppeld aan miniatuurbeschrijvingen in het onderwerp [Voorbeeld van walkthroughs.](walkthroughs.md) Ze illustreren hoe cloud- en on-premises tools en services kunnen worden gecombineerd in een workflow of pijplijn om een intelligente toepassing te maken. 
+Volledige end-to-end-scenario's waarin alle stappen in het proces voor **specifieke scenario's** worden getoond, worden ook gegeven. Ze worden weer gegeven en gekoppeld aan miniatuur beschrijvingen in het onderwerp [voorbeeld scenario's](walkthroughs.md) . Ze illustreren het combi neren van Cloud, on-premises hulpprogram ma's en services in een werk stroom of pijp lijn om een intelligente toepassing te maken. 
 
-Zie het leerpad [Met Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) voor voorbeelden die laten zien hoe u stappen in het Team Data Science-proces uitvoert met Azure Machine Learning Studio (klassiek).
+Voor voor beelden die laten zien hoe u de stappen in het team data Science process uitvoert met behulp van Azure Machine Learning Studio (klassiek), raadpleegt u het leer traject [van Azure ml](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) .

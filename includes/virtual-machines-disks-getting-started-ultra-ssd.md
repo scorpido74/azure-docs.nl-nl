@@ -9,23 +9,23 @@ ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: dfb094bc9f84e7129a3e1c733a054c5f6cd96372
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81008625"
 ---
-Azure ultra disks bieden een hoge doorvoer, hoge IOPS en consistente schijfopslag met lage latentie voor Azure IaaS virtuele machines (VM's). Dit nieuwe aanbod biedt top prestaties op dezelfde beschikbaarheid sommals als onze bestaande schijven aanbod. Een groot voordeel van ultra schijven is de mogelijkheid om de prestaties van de SSD dynamisch te veranderen, samen met uw workloads zonder de noodzaak om uw VM's opnieuw op te starten. Ultraschijven zijn geschikt voor gegevensintensieve workloads, zoals SAP HANA, databases in de bovenste laag en workloads met veel transacties.
+Azure Ultra disks biedt hoge door Voer, hoge IOPS en een consistente schijf opslag met lage latentie voor Azure IaaS virtual machines (Vm's). Deze nieuwe aanbieding biedt de hoogste prestaties van de lijn op dezelfde beschikbaarheids niveaus als onze bestaande schijven. Een belang rijk voor deel van ultra schijven is de mogelijkheid om de prestaties van de SSD in combi natie met uw workloads dynamisch te wijzigen zonder dat u uw Vm's opnieuw hoeft op te starten. Ultraschijven zijn geschikt voor gegevensintensieve workloads, zoals SAP HANA, databases in de bovenste laag en workloads met veel transacties.
 
-## <a name="ga-scope-and-limitations"></a>GA-bereik en beperkingen
+## <a name="ga-scope-and-limitations"></a>GA bereik en beperkingen
 
 [!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](managed-disks-ultra-disks-GA-scope-and-limitations.md)]
 
-## <a name="determine-vm-size-and-region-availability"></a>Vm-grootte en regiobeschikbaarheid bepalen
+## <a name="determine-vm-size-and-region-availability"></a>De beschik baarheid van de VM-grootte en-regio bepalen
 
-### <a name="vms-using-availability-zones"></a>VM's met beschikbaarheidszones
+### <a name="vms-using-availability-zones"></a>Vm's met beschikbaarheids zones
 
-Als u gebruik wilt maken van ultraschijven, moet u bepalen in welke beschikbaarheidszone u zich bevindt. Niet elke regio ondersteunt elke VM-grootte met ultraschijven. Als u wilt bepalen of uw regio, zone en VM-grootte ultraschijven ondersteunen, moet u een van de volgende opdrachten uitvoeren, moet u eerst de **regio,** **vmSize**en **abonnementswaarden** vervangen:
+Als u ultra disks wilt gebruiken, moet u bepalen in welke beschikbaarheids zone u zich bevindt. Niet elke regio ondersteunt elke VM-grootte met ultra schijven. Als u wilt bepalen of uw regio, zone en VM-grootte Ultra Disk ondersteunen, voert u een van de volgende opdrachten uit. Zorg ervoor dat u de **regio**-, **vmSize**-en **abonnements** waarden eerst vervangt:
 
 #### <a name="cli"></a>CLI
 
@@ -47,22 +47,22 @@ $vmSize = "Standard_E64s_v3"
 (Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) -and $_.LocationInfo[0].ZoneDetails.Count -gt 0})[0].LocationInfo[0].ZoneDetails
 ```
 
-Het antwoord is vergelijkbaar met het onderstaande formulier, waarbij X de zone is die moet worden gebruikt voor implementatie in de door u gekozen regio. X kan 1, 2 of 3 zijn.
+Het antwoord komt overeen met het onderstaande formulier, waarbij X de zone is die moet worden gebruikt voor de implementatie in de gekozen regio. X kan 1, 2 of 3 zijn.
 
-Behouden van de **waarde zones,** het vertegenwoordigt uw beschikbaarheid zone en je hebt het nodig om een Ultra schijf te implementeren.
+De waarde **van de zone behouden** , het vertegenwoordigt uw beschikbaarheids zone en u hebt deze nodig om een ultra schijf te kunnen implementeren.
 
-|ResourceType  |Name  |Locatie  |Zones  |Beperking  |Mogelijkheid  |Waarde  |
+|ResourceType  |Naam  |Locatie  |Zones  |Beperking  |Mogelijkheid  |Waarde  |
 |---------|---------|---------|---------|---------|---------|---------|
-|Schijven     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
+|cd's     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
 > [!NOTE]
-> Als er geen antwoord van de opdracht is ontvangen, wordt de geselecteerde VM-grootte niet ondersteund met ultraschijven in het geselecteerde gebied.
+> Als er geen antwoord is ontvangen van de opdracht, wordt de geselecteerde VM-grootte niet ondersteund met ultra disks in de geselecteerde regio.
 
-Nu u weet naar welke zone u moet worden geïmplementeerd, volgt u de implementatiestappen in dit artikel om een VM met een ultraschijf te implementeren of een ultraschijf aan een bestaande VM te koppelen.
+Nu u weet in welke zone u wilt implementeren, volgt u de implementatie stappen in dit artikel om een virtuele machine te implementeren met een ultra schijf die is gekoppeld of een ultra schijf aan een bestaande virtuele machine toe te voegen.
 
-### <a name="vms-with-no-redundancy-options"></a>VM's zonder redundantieopties
+### <a name="vms-with-no-redundancy-options"></a>Vm's zonder opties voor redundantie
 
-Ultra schijven geïmplementeerd in West US moet worden ingezet zonder redundantie opties, voor nu. Echter, niet elke schijfgrootte die ultra schijven ondersteunt, mag zich in deze regio bevinden. Om te bepalen welke in West US ultraschijven ondersteunen, u een van de volgende codefragmenten gebruiken. Zorg ervoor dat `vmSize` `subscription` u de waarden en waarden eerst vervangt:
+Ultra-schijven die zijn geïmplementeerd in het VS-West, moeten nu zonder enige redundantie opties worden geïmplementeerd. Niet elke schijf grootte die ondersteuning biedt voor Ultra schijven, kan echter wel deel uitmaken van deze regio. U kunt een van de volgende code fragmenten gebruiken om te bepalen welke van de VS-West-rom's ondersteunen. Zorg ervoor dat u de `vmSize` waarden `subscription` en het eerst vervangt:
 
 ```azurecli
 $subscription = "<yourSubID>"
@@ -79,7 +79,7 @@ $vmSize = "Standard_E64s_v3"
 (Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) })[0].Capabilities
 ```
 
-Het antwoord is vergelijkbaar met `UltraSSDAvailable   True` het volgende formulier en geeft aan of de VM-grootte ultraschijven in deze regio ondersteunt.
+Het antwoord ziet er ongeveer uit als in het volgende `UltraSSDAvailable   True` formulier, geeft aan of de VM-grootte Ultra schijven in deze regio ondersteunt.
 
 ```
 Name                                         Value
@@ -109,104 +109,104 @@ MaxNetworkInterfaces                         8
 UltraSSDAvailable                            True
 ```
 
-## <a name="deploy-an-ultra-disk-using-azure-resource-manager"></a>Een ultraschijf implementeren met Azure Resource Manager
+## <a name="deploy-an-ultra-disk-using-azure-resource-manager"></a>Een ultra schijf implementeren met behulp van Azure Resource Manager
 
-Bepaal eerst de VM-grootte die moet worden geïmplementeerd. Zie de sectie [GA-scope en beperkingen](#ga-scope-and-limitations) voor een lijst met ondersteunde VM-formaten.
+Bepaal eerst welke VM-grootte moet worden geïmplementeerd. Zie de sectie [Ga naar bereik en beperkingen](#ga-scope-and-limitations) voor een lijst met ondersteunde VM-grootten.
 
-Als u een VM met meerdere ultraschijven wilt maken, raadpleegt u het voorbeeld [Een vm maken met meerdere ultraschijven.](https://aka.ms/ultradiskArmTemplate)
+Als u een virtuele machine met meerdere Ultra schijven wilt maken, raadpleegt u het voor beeld [een VM met meerdere Ultra schijven maken](https://aka.ms/ultradiskArmTemplate).
 
-Als u van plan bent om uw eigen `Microsoft.Compute/virtualMachines` `Microsoft.Compute/Disks` sjabloon te gebruiken, zorg ervoor dat **apiVersion** voor en is ingesteld als `2018-06-01` (of later).
+Als u uw eigen sjabloon wilt gebruiken, moet u ervoor zorgen **apiVersion** dat apiVersion `Microsoft.Compute/virtualMachines` voor `Microsoft.Compute/Disks` en is ingesteld `2018-06-01` als (of hoger).
 
-Stel de schijfsku in op **UltraSSD_LRS**en stel vervolgens de schijfcapaciteit, IOPS, beschikbaarheidszone en doorvoer in MBps in om een ultraschijf te maken.
+Stel de schijf-SKU in op **UltraSSD_LRS**en stel vervolgens de schijf capaciteit, IOPS, beschikbaarheids zone en door Voer in Mbps in om een ultra schijf te maken.
 
-Zodra de vm is ingericht, u de gegevensschijven partitioneren en opmaken en configureren voor uw workloads.
+Zodra de VM is ingericht, kunt u de gegevens schijven partitioneren en Format teren, en configureren voor uw workloads.
 
 
-## <a name="deploy-an-ultra-disk-using-the-azure-portal"></a>Een ultraschijf implementeren met de Azure-portal
+## <a name="deploy-an-ultra-disk-using-the-azure-portal"></a>Een ultra schijf implementeren met behulp van de Azure Portal
 
-Deze sectie omvat de implementatie van een virtuele machine uitgerust met een ultra schijf als een dataschijf. Het gaat ervan uit dat u vertrouwd bent met het implementeren van een virtuele machine, als u dat niet doet, zie onze [Quickstart: Maak een Virtuele Windows-machine in de Azure-portal.](../articles/virtual-machines/windows/quick-create-portal.md)
+In deze sectie wordt beschreven hoe u een virtuele machine implementeert met een ultra schijf als een gegevens schijf. Hierbij wordt ervan uitgegaan dat u bekend bent met het implementeren van een virtuele machine. als dat niet het geval is, raadpleegt u onze [Snelstartgids: een virtuele Windows-machine maken in de Azure Portal](../articles/virtual-machines/windows/quick-create-portal.md).
 
-- Meld u aan bij de [Azure-portal](https://portal.azure.com/) en navigeer om een virtuele machine (VM) te implementeren.
-- Zorg ervoor dat u een [ondersteunde VM-grootte en -regio kiest.](#ga-scope-and-limitations)
-- Selecteer **Beschikbaarheidszone** in **beschikbaarheidsopties**.
-- Vul de overige items in met selecties naar keuze.
+- Meld u aan bij de [Azure Portal](https://portal.azure.com/) en navigeer om een virtuele machine (VM) te implementeren.
+- Zorg ervoor dat u een [ondersteunde VM-grootte en-regio](#ga-scope-and-limitations)kiest.
+- Selecteer **beschikbaarheids zone** in **beschik bare opties**.
+- Vul de resterende items in met de selecties van uw keuze.
 - Selecteer **Schijven**.
 
-![create-ultra-disk-enabled-vm.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
+![Create-Ultra-Disk-enabled-VM. png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
 
-- Selecteer op het blade Schijven de optie **Ja** voor Compatibiliteit **met ultraschijf inschakelen**.
-- Selecteer **Een nieuwe schijf maken en koppelen** om nu een ultraschijf te bevestigen.
+- Selecteer op de Blade schijven de optie **Ja** voor het **inschakelen van ultra Disk-compatibiliteit**.
+- Selecteer **maken en koppel een nieuwe schijf** om nu een ultra schijf te koppelen.
 
-![enable-and-attach-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/enable-and-attach-ultra-disk.png)
+![Enable-and-attach-Ultra-disk. png](media/virtual-machines-disks-getting-started-ultra-ssd/enable-and-attach-ultra-disk.png)
 
-- Voer **in het nieuwe schijfblad een** naam maken in en selecteer **Grootte wijzigen**.
-- Wijzig het **accounttype** in **Ultra Disk**.
-- Wijzig de waarden **van aangepaste schijfgrootte (GiB),** **SchijfIOPS**en **Schijfdoorvoer** in de waarden van uw keuze.
-- Selecteer **OK** in beide bladen.
-- Ga door met de VM-implementatie, het zal hetzelfde zijn als wanneer u elke andere VM zou implementeren.
+- Voer op de Blade **een nieuwe schijf maken** een naam in en selecteer vervolgens **grootte wijzigen**.
+- Wijzig het **account type** in **Ultra Disk**.
+- Wijzig de waarden van **aangepaste schijf grootte (GIB)**, **schijf-IOPS**en **schijf doorvoer** naar keuze.
+- Selecteer **OK** in beide Blades.
+- Ga verder met de implementatie van de virtuele machine. Dit is dezelfde manier als bij het implementeren van een andere VM.
 
-![create-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk.png)
+![Create-Ultra-disk. png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk.png)
 
-## <a name="attach-an-ultra-disk-using-the-azure-portal"></a>Een ultraschijf koppelen met de Azure-portal
+## <a name="attach-an-ultra-disk-using-the-azure-portal"></a>Een ultra schijf koppelen met behulp van de Azure Portal
 
-Als uw bestaande VM zich in een regio/beschikbaarheidszone bevindt die ultraschijven kan gebruiken, u ook gebruik maken van ultraschijven zonder dat u een nieuwe vm hoeft te maken. Door ultraschijven in te schakelen op uw bestaande VM en deze vervolgens als gegevensschijven te koppelen.
+Als uw bestaande virtuele machine zich in een regio/beschikbaarheids zone bevindt die geschikt is voor het gebruik van ultra schijven, kunt u ook gebruikmaken van ultra schijven zonder dat u een nieuwe virtuele machine hoeft te maken. Door Ultra schijven op uw bestaande virtuele machine in te scha kelen en vervolgens als gegevens schijven te koppelen.
 
-- Navigeer naar uw virtuele machine en selecteer **Schijven**.
-- Selecteer **Bewerken**.
+- Navigeer naar uw VM en selecteer **schijven**.
+- Selecteer **bewerken**.
 
-![options-selector-ultra-disks.png](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
+![Options-selector-Ultra-disks. png](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
 
-- Selecteer **Ja** voor **Compatibiliteit met ultraschijf inschakelen**.
+- Selecteer **Ja** als u **Ultra Disk-compatibiliteit wilt inschakelen**.
 
-![ultra-options-yes-enable.png](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
+![Ultra-Options-Yes-Enable. png](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
 
 - Selecteer **Opslaan**.
-- Selecteer **Gegevensschijf toevoegen** en selecteer vervolgens in de vervolgkeuzelijst voor **Naam** selecteer **Schijf maken**.
+- Selecteer **gegevens schijf toevoegen** en selecteer in de vervolg keuzelijst voor **naam** de optie **schijf maken**.
 
-![create-and-attach-new-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
+![Create-and-attach-New-Ultra-disk. png](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
 
-- Vul een naam in voor uw nieuwe schijf en selecteer **Grootte wijzigen**.
-- Wijzig het **accounttype** in **Ultra Disk**.
-- Wijzig de waarden **van aangepaste schijfgrootte (GiB),** **SchijfIOPS**en **Schijfdoorvoer** in de waarden van uw keuze.
-- Selecteer **OK** en selecteer **Maken**.
+- Vul een naam in voor de nieuwe schijf en selecteer vervolgens **grootte wijzigen**.
+- Wijzig het **account type** in **Ultra Disk**.
+- Wijzig de waarden van **aangepaste schijf grootte (GIB)**, **schijf-IOPS**en **schijf doorvoer** naar keuze.
+- Selecteer **OK** en selecteer vervolgens **maken**.
 
-![making-a-new-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/making-a-new-ultra-disk.png)
+![Making-a-New-Ultra-disk. png](media/virtual-machines-disks-getting-started-ultra-ssd/making-a-new-ultra-disk.png)
 
-- Nadat u bent teruggestuurd naar het blad van uw schijf, selecteert u **Opslaan**.
+- Wanneer u terugkeert naar de Blade van uw schijf, selecteert u **Opslaan**.
 
-![saving-and-attaching-new-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
+![Saving-and-Attaching-New-Ultra-disk. png](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
 
-### <a name="adjust-the-performance-of-an-ultra-disk-using-the-azure-portal"></a>De prestaties van een ultraschijf aanpassen met behulp van de Azure-portal
+### <a name="adjust-the-performance-of-an-ultra-disk-using-the-azure-portal"></a>De prestaties van een ultra schijf aanpassen met behulp van de Azure Portal
 
-Ultra schijven bieden een unieke mogelijkheid waarmee u hun prestaties aanpassen. U deze aanpassingen uitvoeren vanuit de Azure-portal, op de schijven zelf.
+Ultra disks bieden een unieke mogelijkheid waarmee u de prestaties ervan kunt aanpassen. U kunt deze aanpassingen aanbrengen vanaf de Azure Portal, op de schijven zelf.
 
-- Navigeer naar uw virtuele machine en selecteer **Schijven**.
-- Selecteer de ultraschijf waarvan u de prestaties wilt wijzigen.
+- Navigeer naar uw VM en selecteer **schijven**.
+- Selecteer de ultra schijf waarvan u de prestaties wilt wijzigen.
 
-![selecteren-ultra-disk-to-modify.png](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
+![selecting-Ultra-disk-to-Modify. png](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
 
-- Selecteer **Configuratie** en breng vervolgens uw wijzigingen aan.
+- Selecteer **configuratie** en breng vervolgens de gewenste wijzigingen aan.
 - Selecteer **Opslaan**.
 
-![configureren-ultra-disk-performance-and-size.png](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
+![Configuring-Ultra-Disk-Performance-and-size. png](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
 
-## <a name="deploy-an-ultra-disk-using-cli"></a>Een ultraschijf implementeren met CLI
+## <a name="deploy-an-ultra-disk-using-cli"></a>Een ultra schijf implementeren met behulp van CLI
 
-Bepaal eerst de VM-grootte die moet worden geïmplementeerd. Zie de sectie [GA-bereik en beperkingen](#ga-scope-and-limitations) voor een lijst met ondersteunde VM-formaten.
+Bepaal eerst welke VM-grootte moet worden geïmplementeerd. Zie de sectie [Ga bereik en beperkingen](#ga-scope-and-limitations) voor een lijst met ondersteunde VM-grootten.
 
-U moet een VM maken die ultraschijven kan gebruiken om een ultraschijf te bevestigen.
+U moet een virtuele machine maken die geschikt is voor het gebruik van ultra disks om een ultra schijf te koppelen.
 
-Vervang of stel de **$vmname**, **$rgname,** **$diskname,** **$location,** **$password**$user variabelen **in** met uw eigen waarden. Stel **$zone** in op de waarde van uw beschikbaarheidszone die u vanaf het [begin van dit artikel](#determine-vm-size-and-region-availability)hebt gekregen. Voer vervolgens de volgende OPDRACHT CLI uit om een vm met ultra-ingeschakelde ring te maken:
+Vervang of stel de **$vmname**, **$rgname**, **$diskname**, **$Location**, **$Password** **$User** variabelen met uw eigen waarden. Stel **$zone** in op de waarde van uw beschikbaarheids zone die u aan het [begin van dit artikel](#determine-vm-size-and-region-availability)hebt gekregen. Voer vervolgens de volgende CLI-opdracht uit om een virtuele-VM te maken:
 
 ```azurecli-interactive
 az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location
 ```
 
-### <a name="enable-ultra-disk-compatibility-on-an-existing-vm"></a>Ultradiskcompatibiliteit inschakelen op een bestaande virtuele machine
+### <a name="enable-ultra-disk-compatibility-on-an-existing-vm"></a>Compatibiliteit met hoge schijven inschakelen op een bestaande virtuele machine
 
-Als uw vm voldoet aan de vereisten die zijn beschreven in [GA-scope en -beperkingen](#ga-scope-and-limitations) en zich in de [juiste zone voor uw account bevindt,](#determine-vm-size-and-region-availability)u ultradiskcompatibiliteit op uw vm inschakelen.
+Als uw virtuele machine voldoet aan de vereisten die worden beschreven in de stappen [en beperkingen](#ga-scope-and-limitations) van het oog en die zich in de [juiste zone voor uw account](#determine-vm-size-and-region-availability)bevinden, kunt u compatibiliteit met hoge schijven inschakelen op uw virtuele machine.
 
-Als u ultraschijfcompatibiliteit wilt inschakelen, moet u de vm stoppen. Nadat u de VM hebt gestopt, u compatibiliteit inschakelen, een ultraschijf koppelen en de VM opnieuw starten:
+Als u ultra Disk-compatibiliteit wilt inschakelen, moet u de virtuele machine stoppen. Nadat u de virtuele machine hebt gestopt, kunt u de compatibiliteit inschakelen, een ultra schijf koppelen en vervolgens de virtuele machine opnieuw opstarten:
 
 ```azurecli
 az vm deallocate -n $vmName -g $rgName
@@ -214,9 +214,9 @@ az vm update -n $vmName -g $rgName --ultra-ssd-enabled true
 az vm start -n $vmName -g $rgName
 ```
 
-### <a name="create-an-ultra-disk-using-cli"></a>Een ultraschijf maken met CLI
+### <a name="create-an-ultra-disk-using-cli"></a>Een ultra schijf maken met CLI
 
-Nu u een VM hebt die ultraschijven kan bevestigen, u er een ultraschijf aan maken en eraan koppelen.
+Nu u een virtuele machine hebt die geschikt is voor het koppelen van ultra schijven, kunt u een ultra schijf maken en koppelen.
 
 ```azurecli-interactive
 $location="eastus2"
@@ -239,9 +239,9 @@ az disk create `
 --disk-mbps-read-write 50
 ```
 
-## <a name="attach-an-ultra-disk-to-a-vm-using-cli"></a>Een ultraschijf aan een vm koppelen met CLI
+## <a name="attach-an-ultra-disk-to-a-vm-using-cli"></a>Een ultra schijf koppelen aan een virtuele machine met behulp van CLI
 
-Als uw bestaande VM zich in een regio/beschikbaarheidszone bevindt die ultraschijven kan gebruiken, u ook gebruik maken van ultraschijven zonder dat u een nieuwe vm hoeft te maken.
+Als uw bestaande virtuele machine zich in een regio/beschikbaarheids zone bevindt die geschikt is voor het gebruik van ultra schijven, kunt u ook gebruikmaken van ultra schijven zonder dat u een nieuwe virtuele machine hoeft te maken.
 
 ```azurecli
 $rgName = "<yourResourceGroupName>"
@@ -252,9 +252,9 @@ $subscriptionId = "<yourSubscriptionID>"
 az vm disk attach -g $rgName --vm-name $vmName --disk $diskName --subscription $subscriptionId
 ```
 
-### <a name="adjust-the-performance-of-an-ultra-disk-using-cli"></a>De prestaties van een ultraschijf aanpassen met CLI
+### <a name="adjust-the-performance-of-an-ultra-disk-using-cli"></a>De prestaties van een ultra schijf aanpassen met behulp van CLI
 
-Ultra schijven bieden een unieke mogelijkheid waarmee u hun prestaties aan te passen, de volgende opdracht toont hoe deze functie te gebruiken:
+Ultra disks bieden een unieke mogelijkheid waarmee u de prestaties kunt aanpassen. de volgende opdracht ziet u hoe u deze functie kunt gebruiken:
 
 ```azurecli-interactive
 az disk update `
@@ -265,11 +265,11 @@ az disk update `
 --set diskMbpsReadWrite=800
 ```
 
-## <a name="deploy-an-ultra-disk-using-powershell"></a>Een ultraschijf implementeren met PowerShell
+## <a name="deploy-an-ultra-disk-using-powershell"></a>Een ultra schijf implementeren met behulp van Power shell
 
-Bepaal eerst de VM-grootte die moet worden geïmplementeerd. Zie de sectie [GA-bereik en beperkingen](#ga-scope-and-limitations) voor een lijst met ondersteunde VM-formaten.
+Bepaal eerst welke VM-grootte moet worden geïmplementeerd. Zie de sectie [Ga bereik en beperkingen](#ga-scope-and-limitations) voor een lijst met ondersteunde VM-grootten.
 
-Als u ultraschijven wilt gebruiken, moet u een VM maken die ultraschijven kan gebruiken. Vervang of stel de **$resourcegroup-** en **$vmName** variabelen in op uw eigen waarden. Stel **$zone** in op de waarde van uw beschikbaarheidszone die u vanaf het [begin van dit artikel](#determine-vm-size-and-region-availability)hebt gekregen. Voer vervolgens de volgende opdracht [Nieuw-AzVm](/powershell/module/az.compute/new-azvm) uit om een vm met ultra-ingeschakelde ring te maken:
+Als u ultra disks wilt gebruiken, moet u een virtuele machine maken die geschikt is voor het gebruik van ultra Disk-schijven. Vervang of stel de **$ResourceGroup** en **$vmName** variabelen met uw eigen waarden. Stel **$zone** in op de waarde van uw beschikbaarheids zone die u aan het [begin van dit artikel](#determine-vm-size-and-region-availability)hebt gekregen. Voer vervolgens de volgende opdracht uit voor het maken van een virtuele machine met een [nieuwe AzVm](/powershell/module/az.compute/new-azvm) :
 
 ```powershell
 New-AzVm `
@@ -282,11 +282,11 @@ New-AzVm `
     -zone $zone
 ```
 
-### <a name="enable-ultra-disk-compatibility-on-an-existing-vm"></a>Ultradiskcompatibiliteit inschakelen op een bestaande virtuele machine
+### <a name="enable-ultra-disk-compatibility-on-an-existing-vm"></a>Compatibiliteit met hoge schijven inschakelen op een bestaande virtuele machine
 
-Als uw vm voldoet aan de vereisten die zijn beschreven in [GA-scope en -beperkingen](#ga-scope-and-limitations) en zich in de [juiste zone voor uw account bevindt,](#determine-vm-size-and-region-availability)u ultradiskcompatibiliteit op uw vm inschakelen.
+Als uw virtuele machine voldoet aan de vereisten die worden beschreven in de stappen [en beperkingen](#ga-scope-and-limitations) van het oog en die zich in de [juiste zone voor uw account](#determine-vm-size-and-region-availability)bevinden, kunt u compatibiliteit met hoge schijven inschakelen op uw virtuele machine.
 
-Als u ultraschijfcompatibiliteit wilt inschakelen, moet u de vm stoppen. Nadat u de VM hebt gestopt, u compatibiliteit inschakelen, een ultraschijf koppelen en de VM opnieuw starten:
+Als u ultra Disk-compatibiliteit wilt inschakelen, moet u de virtuele machine stoppen. Nadat u de virtuele machine hebt gestopt, kunt u de compatibiliteit inschakelen, een ultra schijf koppelen en vervolgens de virtuele machine opnieuw opstarten:
 
 ```azurepowershell
 #stop the VM
@@ -295,9 +295,9 @@ Update-AzureRmVM -ResourceGroupName $rgName -VM $vm1 -UltraSSDEnabled 1
 #start the VM
 ```
 
-### <a name="create-an-ultra-disk-using-powershell"></a>Een ultraschijf maken met PowerShell
+### <a name="create-an-ultra-disk-using-powershell"></a>Een ultra schijf maken met Power shell
 
-Nu u een VM hebt die ultraschijven kan gebruiken, u er een ultraschijf aan maken en eraan koppelen:
+Nu u een virtuele machine hebt die geschikt is voor het gebruik van ultra schijven, kunt u een ultra schijf maken en koppelen:
 
 ```powershell
 $diskconfig = New-AzDiskConfig `
@@ -315,9 +315,9 @@ New-AzDisk `
 -Disk $diskconfig;
 ```
 
-## <a name="attach-an-ultra-disk-to-a-vm-using-powershell"></a>Een ultraschijf aan een virtuele machine koppelen met PowerShell
+## <a name="attach-an-ultra-disk-to-a-vm-using-powershell"></a>Een ultra schijf koppelen aan een virtuele machine met behulp van Power shell
 
-Als uw bestaande VM zich in een regio/beschikbaarheidszone bevindt die ultraschijven kan gebruiken, u ook gebruik maken van ultraschijven zonder dat u een nieuwe vm hoeft te maken.
+Als uw bestaande virtuele machine zich in een regio/beschikbaarheids zone bevindt die geschikt is voor het gebruik van ultra schijven, kunt u ook gebruikmaken van ultra schijven zonder dat u een nieuwe virtuele machine hoeft te maken.
 
 ```powershell
 # add disk to VM
@@ -333,9 +333,9 @@ $vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDisk
 Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 ```
 
-### <a name="adjust-the-performance-of-an-ultra-disk-using-powershell"></a>De prestaties van een ultraschijf aanpassen met PowerShell
+### <a name="adjust-the-performance-of-an-ultra-disk-using-powershell"></a>De prestaties van een ultra schijf aanpassen met behulp van Power shell
 
-Ultra schijven hebben een unieke mogelijkheid waarmee u hun prestaties aan te passen, de volgende opdracht is een voorbeeld dat de prestaties aanpast zonder dat de schijf los:
+Ultra disks hebben een unieke functie waarmee u de prestaties kunt aanpassen, de volgende opdracht is een voor beeld waarmee de prestaties worden aangepast zonder dat de schijf moet worden losgekoppeld:
 
 ```powershell
 $diskupdateconfig = New-AzDiskUpdateConfig -DiskMBpsReadWrite 2000

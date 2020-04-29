@@ -1,6 +1,6 @@
 ---
 title: Optimalisatie van mediastreaming met Azure CDN
-description: Streaming mediabestanden optimaliseren voor vloeiende bezorging
+description: Streaming-media bestanden optimaliseren voor een soepele levering
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,97 +15,97 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: 2931dffaaab2d06b2c06f03770a66d78d6466787
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260473"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Optimalisatie van mediastreaming met Azure CDN 
  
-Het gebruik van high-definition video neemt toe op het internet, wat problemen oplevert voor een efficiënte levering van grote bestanden. Klanten verwachten een vlotte weergave van video-on-demand of live video-assets op verschillende netwerken en klanten over de hele wereld. Een snel en efficiënt leveringsmechanisme voor mediastreamingbestanden is essentieel om een soepele en plezierige consumentenervaring te garanderen.  
+Het gebruik van high-definition video neemt toe op internet, waardoor er problemen ontstaan voor een efficiënte levering van grote bestanden. Klanten verwachten een glad afspelen van video op aanvraag of live video-assets op diverse netwerken en clients over de hele wereld. Een snelle en efficiënte leverings methode voor mediastreaming van media is essentieel om te zorgen voor een soepele en plezierigere consumenten ervaring.  
 
-Live streaming media is vooral moeilijk te leveren vanwege de grote maten en het aantal gelijktijdige kijkers. Lange vertragingen zorgen ervoor dat gebruikers vertrekken. Omdat live streams niet van tevoren in de cache kunnen worden opgeslagen en grote latencies niet acceptabel zijn voor kijkers, moeten videofragmenten tijdig worden geleverd. 
+Live streaming-media is vooral moeilijk te leveren vanwege de grote grootten en het aantal gelijktijdige viewers. Als er lange vertragingen zijn, worden gebruikers verlaten. Omdat live streams niet tijdig in de cache kunnen worden opgeslagen en grote latenties niet acceptabel zijn voor viewers, moeten video fragmenten tijdig worden geleverd. 
 
-De aanvraagpatronen van streaming bieden ook een aantal nieuwe uitdagingen. Wanneer een populaire live stream of een nieuwe serie wordt uitgebracht voor video on demand, kunnen duizenden tot miljoenen kijkers tegelijkertijd de stream aanvragen. In dit geval is smart request consolidation essentieel om de oorsprongsservers niet te overweldigen wanneer de assets nog niet in de cache zijn opgeslagen.
+De aanvraag patronen van streaming bieden ook enkele nieuwe uitdagingen. Wanneer een populaire live stream of een nieuwe reeks wordt uitgebracht voor video op aanvraag, kunnen duizenden aan miljoenen viewers tegelijkertijd de stream aanvragen. In dit geval is slimme aanvraag consolidatie essentieel om de oorspronkelijke servers niet te overbelasten wanneer de activa nog niet in de cache zijn opgeslagen.
  
 
-## <a name="media-streaming-optimizations-for-azure-cdn-from-microsoft"></a>Optimalisaties voor mediastreaming voor Azure CDN van Microsoft
+## <a name="media-streaming-optimizations-for-azure-cdn-from-microsoft"></a>Optimalisatie van media-streaming voor Azure CDN van micro soft
 
-**Azure CDN Standard van** Microsoft-eindpunten leveren streaming media-assets rechtstreeks met behulp van het algemene optimalisatietype voor weblevering. 
+**Azure CDN standaard van micro soft** -eind punten leveren streaming-media-assets rechtstreeks op met behulp van het optimalisatie type algemene weblevering. 
 
-Mediastreamingoptimalisatie voor **Azure CDN Standard van Microsoft** is effectief voor live of video-on-demand streamingmedia die afzonderlijke mediafragmenten gebruiken voor levering. Dit proces verschilt van een enkele grote asset overgedragen via progressieve download of met behulp van byte-range verzoeken. Zie Optimalisatie van het downloaden van [bestanden met Azure CDN voor](cdn-large-file-optimization.md)informatie over die stijl van medialevering.
+Optimalisatie van mediastreaming voor **Azure CDN standaard van micro soft** is van kracht voor Live-of video-on-demand streaming-media die afzonderlijke media fragmenten gebruiken voor levering. Dit proces wijkt af van één groot activum dat wordt overgedragen via progressief downloaden of door gebruik te maken van byte bereik aanvragen. Zie voor meer informatie over die manier van media levering [grote bestanden downloaden optimalisatie met Azure CDN](cdn-large-file-optimization.md).
 
-De algemene medialevering of video-on-demand medialeveringsoptimalisatietypen maken gebruik van Azure Content Delivery Network (CDN) met back-endoptimalisaties om mediaassets sneller te leveren. Ze gebruiken ook configuraties voor media-assets op basis van aanbevolen procedures die in de loop van de tijd zijn geleerd.
+De geavanceerde optimalisatie typen voor media levering of video-on-demand media gebruiken Azure Content Delivery Network (CDN) met back-end-optimalisaties om media-assets sneller te leveren. Ze gebruiken ook configuraties voor media-assets op basis van best practices die gedurende een bepaalde periode zijn geleerd.
 
-### <a name="partial-cache-sharing"></a>Delen van gedeeltelijke cache
-Met het delen van gedeeltelijke caches kan het CDN gedeeltelijk in de cache opgeslagen inhoud weergeven aan nieuwe aanvragen. Als het eerste verzoek aan het CDN bijvoorbeeld resulteert in een cachemiss, wordt de aanvraag naar de oorsprong verzonden. Hoewel deze onvolledige inhoud in de CDN-cache wordt geladen, kunnen andere aanvragen voor het CDN beginnen met het verkrijgen van deze gegevens. 
+### <a name="partial-cache-sharing"></a>Delen van cache gedeeltelijk
+Met delen in cache kan het CDN gedeeltelijk in cache opgeslagen inhoud verzenden naar nieuwe aanvragen. Als de eerste aanvraag voor de CDN bijvoorbeeld resulteert in een cache-Missing, wordt de aanvraag verzonden naar de oorsprong. Hoewel deze onvolledige inhoud in de CDN-cache wordt geladen, kunnen andere aanvragen naar het CDN deze gegevens gaan ophalen. 
 
 
-## <a name="media-streaming-optimizations-for-azure-cdn-from-verizon"></a>Optimalisaties voor mediastreaming voor Azure CDN van Verizon
+## <a name="media-streaming-optimizations-for-azure-cdn-from-verizon"></a>Optimalisatie van media-streaming voor Azure CDN van Verizon
 
-**Azure CDN Standard van Verizon** en **Azure CDN Premium van** Verizon-eindpunten leveren streaming media-assets rechtstreeks met behulp van het algemene optimalisatietype voor weblevering. Een paar functies op het CDN helpen direct bij het standaard leveren van mediaassets.
+**Azure CDN standaard van Verizon** en **Azure CDN Premium van Verizon** -eind punten leveren media-assets rechtstreeks op met behulp van het optimalisatie type algemene weblevering. Een aantal functies van de CDN bieden rechtstreeks ondersteuning voor het leveren van media-assets.
 
-### <a name="partial-cache-sharing"></a>Delen van gedeeltelijke cache
+### <a name="partial-cache-sharing"></a>Delen van cache gedeeltelijk
 
-Met het delen van gedeeltelijke caches kan het CDN gedeeltelijk in de cache opgeslagen inhoud weergeven aan nieuwe aanvragen. Als het eerste verzoek aan het CDN bijvoorbeeld resulteert in een cachemiss, wordt de aanvraag naar de oorsprong verzonden. Hoewel deze onvolledige inhoud in de CDN-cache wordt geladen, kunnen andere aanvragen voor het CDN beginnen met het verkrijgen van deze gegevens. 
+Met delen in cache kan het CDN gedeeltelijk in cache opgeslagen inhoud verzenden naar nieuwe aanvragen. Als de eerste aanvraag voor de CDN bijvoorbeeld resulteert in een cache-Missing, wordt de aanvraag verzonden naar de oorsprong. Hoewel deze onvolledige inhoud in de CDN-cache wordt geladen, kunnen andere aanvragen naar het CDN deze gegevens gaan ophalen. 
 
-### <a name="cache-fill-wait-time"></a>Wachttijd cachevullen
+### <a name="cache-fill-wait-time"></a>Wacht tijd van cache vulling
 
- De wachttijd voor het invullen van de cache dwingt de edge-server om volgende aanvragen voor dezelfde bron vast te houden totdat HTTP-antwoordkoppen van de oorsprongsserver aankomen. Als HTTP-antwoordkoppen van de oorsprong binnenkomen voordat de timer verloopt, worden alle aanvragen die in de wacht zijn gezet uit de groeiende cache weergegeven. Tegelijkertijd wordt de cache gevuld door gegevens van de oorsprong. Standaard is de wachttijd voor het invullen van de cache ingesteld op 3000 milliseconden. 
+ Met de functie wacht tijd voor cache opvullen wordt de rand server gedwongen om volgende aanvragen voor dezelfde resource op te slaan totdat HTTP-reactie headers van de oorspronkelijke server arriveren. Als de HTTP-antwoord headers van de oorsprong arriveren voordat de timer verloopt, worden alle aanvragen die in de wacht stand zijn geplaatst, vanuit de groeiende cache verzonden. Op hetzelfde moment wordt de cache gevuld met gegevens van de oorsprong. De wacht tijd voor de cache vulling wordt standaard ingesteld op 3.000 milliseconden. 
 
  
-## <a name="media-streaming-optimizations-for-azure-cdn-from-akamai"></a>Optimalisaties voor mediastreaming voor Azure CDN van Akamai
+## <a name="media-streaming-optimizations-for-azure-cdn-from-akamai"></a>Optimalisatie van media-streaming voor Azure CDN van Akamai
  
-**Azure CDN Standard van Akamai** biedt een functie die streaming media-assets efficiënt levert aan gebruikers over de hele wereld op schaal. De functie vermindert latencies omdat het de belasting op de origin-servers vermindert. Deze functie is beschikbaar met de standaard Akamai-prijscategorie. 
+**Azure CDN Standard van Akamai** biedt een functie waarmee streaming-media-assets efficiënt kunnen worden verstrekt aan gebruikers in de hele wereld op schaal. De functie reduceert latentie omdat hiermee de belasting van de oorspronkelijke servers wordt gereduceerd. Deze functie is beschikbaar in de Standard Akamai prijs categorie. 
 
-Mediastreamingoptimalisatie voor **Azure CDN Standard van Akamai** is effectief voor live of video-on-demand streamingmedia die afzonderlijke mediafragmenten gebruiken voor levering. Dit proces verschilt van een enkele grote asset overgedragen via progressieve download of met behulp van byte-range verzoeken. Zie [Grote bestandsoptimalisatie](cdn-large-file-optimization.md)voor informatie over die stijl van medialevering.
+Optimalisatie van media streaming voor **Azure CDN standaard van Akamai is van** kracht voor Live-of video-on-demand streaming-media die afzonderlijke media fragmenten gebruiken voor levering. Dit proces wijkt af van één groot activum dat wordt overgedragen via progressief downloaden of door gebruik te maken van byte bereik aanvragen. Zie [grote bestands optimalisatie](cdn-large-file-optimization.md)voor informatie over die manier van media levering.
 
-De algemene medialevering of video-on-demand mediaweergaveoptimalisatietypen gebruiken een CDN met back-endoptimalisaties om mediaassets sneller te leveren. Ze gebruiken ook configuraties voor media-assets op basis van aanbevolen procedures die in de loop van de tijd zijn geleerd.
+De geavanceerde optimalisatie typen voor media levering of video-on-demand media gebruiken een CDN met back-end-optimalisaties om media-assets sneller te leveren. Ze gebruiken ook configuraties voor media-assets op basis van best practices die gedurende een bepaalde periode zijn geleerd.
 
-### <a name="configure-an-akamai-cdn-endpoint-to-optimize-media-streaming"></a>Een Akamai CDN-eindpunt configureren om mediastreaming te optimaliseren
+### <a name="configure-an-akamai-cdn-endpoint-to-optimize-media-streaming"></a>Een Akamai CDN-eind punt configureren om mediastreaming te optimaliseren
  
-U het eindpunt van uw cdn-eindpunt (Content Delivery Network) configureren om de levering voor grote bestanden via de Azure-portal te optimaliseren. U hiervoor ook de REST API's of een van de Client SDK's gebruiken. In de volgende stappen wordt het proces weergegeven via de Azure-portal voor een **Azure CDN-standaard vanuit Akamai-profiel:**
+U kunt het CDN-eind punt (Content Delivery Network) configureren om de levering van grote bestanden via de Azure Portal te optimaliseren. U kunt ook de REST-Api's of een van de client-Sdk's gebruiken om dit te doen. In de volgende stappen wordt het proces weer gegeven via de Azure Portal voor een **Azure CDN-standaard van** het profiel Akamai:
 
-1. Als u een nieuw eindpunt wilt toevoegen, selecteert u Op een Akamai **CDN-profielpagina** **Eindpunt**.
+1. Als u een nieuw eind punt wilt toevoegen, selecteert u op de pagina Akamai **CDN-profiel** **eind punt**.
   
-    ![Nieuw eindpunt](./media/cdn-media-streaming-optimization/cdn-new-akamai-endpoint.png)
+    ![Nieuw eind punt](./media/cdn-media-streaming-optimization/cdn-new-akamai-endpoint.png)
 
-2. Selecteer **in** de vervolgkeuzelijst Geoptimaliseerd voor **mediastreaming voor** video-on-demand-elementen. Als u een combinatie van live en video-on-demand streaming doet, selecteert u **Algemene mediastreaming**.
+2. Selecteer in de vervolg keuzelijst **geoptimaliseerd voor** de optie **video op aanvraag** mediastreaming voor video-on-demand-assets. Als u een combi natie van Live en video-on-demand streaming hebt, selecteert u **algemene**mediastreaming.
 
     ![Streaming geselecteerd](./media/cdn-media-streaming-optimization/02_Creating.png) 
  
-Nadat u het eindpunt hebt gemaakt, wordt de optimalisatie voor alle bestanden die aan bepaalde criteria voldoen, van toepassing. In de volgende sectie wordt dit proces beschreven. 
+Nadat u het eind punt hebt gemaakt, wordt de optimalisatie toegepast voor alle bestanden die aan bepaalde criteria voldoen. Dit proces wordt beschreven in de volgende sectie. 
 
 ### <a name="caching"></a>Caching
 
-Als **Azure CDN Standard van Akamai** detecteert dat het element een streamingmanifest of -fragment is, worden verschillende cache-vervaldatums gebruikt dan algemene webbezorging. (Zie de volledige lijst in de volgende tabel.) Zoals altijd worden cache-control of Expires headers verzonden vanaf de oorsprong worden geëerd. Als het actief geen media-element is, worden de vervaldatums opgeslagen voor algemene weblevering.
+Als **Azure CDN standaard van Akamai** detecteert dat het activum een streaming-manifest of-fragment is, gebruikt het een andere verloop tijd voor caching vanaf de algemene Internet levering. (Zie de volledige lijst in de volgende tabel.) Zoals altijd, worden de headers van het cache-control-of expires-bericht van de oorsprong gehonoreerd. Als de Asset geen Media-Asset is, wordt deze in de cache opgeslagen met de verloop tijden voor de algemene Internet levering.
 
-De korte negatieve cachetijd is handig voor origin offload wanneer veel gebruikers een fragment aanvragen dat nog niet bestaat. Een voorbeeld is een livestream waarbij de pakketten niet beschikbaar zijn vanaf de oorsprong van die tweede. Het langere caching-interval helpt ook aanvragen van de oorsprong te verwijderen omdat video-inhoud doorgaans niet wordt gewijzigd.
+De korte, negatieve cache tijd is handig voor offload van de oorsprong wanneer veel gebruikers een fragment aanvragen dat nog niet bestaat. Een voor beeld is een live stream waarbij de pakketten niet beschikbaar zijn vanaf de oorspronkelijke oorsprong. Met het interval voor langere caching kunt u ook aanvragen van de oorsprong offloaden, omdat de inhoud van de video doorgaans niet wordt gewijzigd.
  
 
-|   | Algemene weblevering | Algemene mediastreaming | Video-on-demand mediastreaming  
+|   | Algemene Internet levering | Algemene mediastreaming | Video-on-demand mediastreaming  
 --- | --- | --- | ---
-Caching: Positief <br> HTTP 200, 203, 300, <br> 301, 302 en 410 | 7 dagen |365 dagen | 365 dagen   
-Caching: Negatief <br> HTTP 204, 305, 404, <br> en 405 | Geen | 1 seconde | 1 seconde
+Caching: positief <br> HTTP 200, 203, 300, <br> 301, 302 en 410 | 7 dagen |365 dagen | 365 dagen   
+Caching: negatief <br> HTTP 204, 305, 404, <br> en 405 | Geen | 1 seconde | 1 seconde
  
-### <a name="deal-with-origin-failure"></a>Omgaan met oorsprong smislukking  
+### <a name="deal-with-origin-failure"></a>Omgaan met fout van oorsprong  
 
-Algemene medialevering en video-on-demand medialevering hebben ook een time-out voor de oorsprong en een logboek opnieuw proberen op basis van aanbevolen procedures voor typische aanvraagpatronen. Omdat algemene medialevering bijvoorbeeld voor live en video-on-demand medialevering is, wordt een kortere time-out van de verbinding gebruikt vanwege het tijdsgevoelige karakter van live streaming.
+De levering van algemene media en video-on-demand media hebben ook bron-time-outs en een nieuwe poging op basis van aanbevolen procedures voor typische aanvraag patronen. Omdat de levering van algemene media bijvoorbeeld is voor Live en video-on-demand media levering, wordt een kortere verbindingstime-out gebruikt vanwege de tijd gevoelige aard van live streamen.
 
-Wanneer een verbinding een time-out heeft, probeert het CDN een aantal keren opnieuw voordat het een fout met een time-out van 504 - gateway naar de client verzendt. 
+Wanneer er een time-out optreedt voor een verbinding, probeert het CDN een aantal keren opnieuw geprobeerd voordat de fout ' 504-Gateway-timeout ' naar de client wordt verzonden. 
 
-Wanneer een bestand overeenkomt met de lijst met bestandstypen en groottevoorwaarden, gebruikt het CDN het gedrag voor mediastreaming. Anders maakt het gebruik van algemene weblevering.
+Wanneer een bestand overeenkomt met de lijst met bestands typen en de grootte van de voor waarden, gebruikt het CDN het gedrag voor mediastreaming. Anders wordt gebruikgemaakt van algemene Internet-levering.
    
-### <a name="conditions-for-media-streaming-optimization"></a>Voorwaarden voor media streaming optimalisatie 
+### <a name="conditions-for-media-streaming-optimization"></a>Voor waarden voor optimalisatie van mediastreaming 
 
-In de volgende tabel worden de criteria weergegeven waaraan moet worden voldaan voor optimalisatie van mediastreaming: 
+De volgende tabel bevat de set criteria waaraan moet worden voldaan voor optimalisatie van mediastreaming: 
  
-Ondersteunde streamingtypen | Bestandsextensies  
+Ondersteunde streaming-typen | Bestandsextensies  
 --- | ---  
-Apple HLS | m3u8, m3u, m3ub, toets, ts, aac
-Adobe HDS | f4m, f4x, drmmeta, bootstrap, f4f,<br>Seg-Frag URL-structuur <br> (overeenkomende regex: ^(/.*)Seq(\d+)-Frag(\d+)
-Dash | mpd, dash, divx, ismv, m4s, m4v, mp4, mp4, <br> sidx, webm, mp4a, m4a, isma
-Vloeiende streaming | /manifest/, /QualityLevels/Fragments/
+Apple HLS | M3U8, M3U, m3ub, Key, TS, AAC
+Adobe HDS | F4M, f4x, drmmeta, Boots trap, F4F,<br>Seg-URL-structuur <br> (overeenkomende regex: ^ (/. *) SEQ (\d +)-FRAG (\d +)
+LIGGENDE | mpd, streepje, DivX, ismv, M4S, M4V, MP4, mp4v, <br> sidx, webm, mp4a, m4a, isma
+Vloeiend streamen | /manifest/, /QualityLevels/Fragments/
   
  

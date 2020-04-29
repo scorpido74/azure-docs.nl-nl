@@ -1,90 +1,90 @@
 ---
-title: Databasebeveiliging - Azure Cosmos DB
-description: Ontdek hoe Azure Cosmos DB databasebeveiliging en gegevensbeveiliging biedt voor uw gegevens.
+title: Database beveiliging-Azure Cosmos DB
+description: Lees hoe Azure Cosmos DB database beveiliging en gegevens beveiliging biedt voor uw gegevens.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
 ms.openlocfilehash: 8a0ef4c5abcd4c4137a878adf6a7fff9e80c2764
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273508"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Beveiliging in Azure Cosmos DB - overzicht
 
 In dit artikel worden de aanbevolen procedures voor databasebeveiliging en de belangrijkste functies van Azure Cosmos DB beschreven, om u te helpen bij het voorkomen, detecteren en reageren op databaseschendingen.
 
-## <a name="whats-new-in-azure-cosmos-db-security"></a>Nieuwe informatie in Azure Cosmos DB-beveiliging
+## <a name="whats-new-in-azure-cosmos-db-security"></a>Wat is er nieuw in Azure Cosmos DB beveiliging
 
-Versleuteling in rust is nu beschikbaar voor documenten en back-ups die zijn opgeslagen in Azure Cosmos DB in alle Azure-regio's. Versleuteling in rust wordt automatisch toegepast voor zowel nieuwe als bestaande klanten in deze regio's. Het is niet nodig om iets te configureren; en u krijgt dezelfde grote latentie, doorvoer, beschikbaarheid en functionaliteit als voorheen met het voordeel dat uw gegevens veilig en veilig zijn met versleuteling in rust.
+Versleuteling op rest is nu beschikbaar voor documenten en back-ups die zijn opgeslagen in Azure Cosmos DB in alle Azure-regio's. Versleuteling op rest wordt automatisch toegepast voor zowel nieuwe als bestaande klanten in deze regio's. U hoeft niets te configureren. en u krijgt dezelfde geweldige latentie, door Voer, Beschik baarheid en functionaliteit, net als voorheen, met het voor deel dat u weet dat uw gegevens veilig en beveiligd zijn met versleuteling in rust.
 
-## <a name="how-do-i-secure-my-database"></a>Hoe beveilig ik mijn database
+## <a name="how-do-i-secure-my-database"></a>Mijn data base Hoe kan ik beveiligen
 
-Gegevensbeveiliging is een gedeelde verantwoordelijkheid tussen u, de klant en uw databaseprovider. Afhankelijk van de databaseprovider die u kiest, kan de mate van verantwoordelijkheid die u draagt variëren. Als u kiest voor een on-premises oplossing, moet u alles bieden, van end-point bescherming tot fysieke beveiliging van uw hardware - wat geen gemakkelijke taak is. Als u kiest voor een PaaS-clouddatabaseprovider zoals Azure Cosmos DB, krimpt uw zorggebied aanzienlijk. De volgende afbeelding, ontleend aan de [gedeelde verantwoordelijkheden](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91) van Microsoft voor cloud computing-whitepaper, laat zien hoe uw verantwoordelijkheid afneemt bij een PaaS-provider zoals Azure Cosmos DB.
+Gegevens beveiliging is een gedeelde verantwoordelijkheid tussen u, de klant en uw database provider. Afhankelijk van de database provider die u kiest, kan de hoeveelheid verantwoordelijkheid die u hebt, verschillen. Als u een on-premises oplossing kiest, moet u alles van de beveiliging van het eind punt op de fysieke beveiliging van uw hardware bieden. Dit is geen eenvoudige taak. Als u een PaaS hebt gekozen, zoals Azure Cosmos DB, is uw gebied van bezorgdheid aanzienlijk kleiner. De volgende afbeelding, uitgeleend van de gedeelde verantwoordelijkheden van micro soft voor het technisch document van [Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91) , laat zien hoe uw verantwoordelijkheid afneemt met een Paas-provider zoals Azure Cosmos db.
 
-![Verantwoordelijkheden voor klant- en databaseaanbieders](./media/database-security/nosql-database-security-responsibilities.png)
+![Verantwoordelijkheden van klanten en database providers](./media/database-security/nosql-database-security-responsibilities.png)
 
-Het vorige diagram toont cloudbeveiligingscomponenten op hoog niveau, maar over welke items moet u zich specifiek zorgen maken voor uw databaseoplossing? En hoe kun je oplossingen met elkaar vergelijken?
+In het voor gaande diagram worden Cloud beveiligings onderdelen van hoog niveau weer gegeven, maar welke items hebt u nodig om specifiek voor uw database oplossing te zorgen? En hoe kunt u oplossingen met elkaar vergelijken?
 
-Wij raden de volgende checklist van eisen aan waarop databasesystemen te vergelijken:
+We raden u aan de volgende controle lijst te volgen met vereisten voor het vergelijken van database systemen:
 
-- Netwerkbeveiliging en firewall-instellingen
-- Gebruikersverificatie en fijnkorrelige gebruikersbesturingselementen
-- Mogelijkheid om gegevens wereldwijd te repliceren voor regionale storingen
-- Mogelijkheid om van het ene datacenter naar het andere te mislukken
-- Lokale gegevensreplicatie binnen een datacenter
-- Automatische back-ups van gegevens
-- Herstel van verwijderde gegevens uit back-ups
-- Gevoelige gegevens beschermen en isoleren
-- Controle op aanvallen
+- Instellingen voor netwerk beveiliging en firewall
+- Gebruikers verificatie en verfijnde gebruikers besturings elementen
+- De mogelijkheid om gegevens wereld wijd te repliceren voor regionale storingen
+- Mogelijkheid tot failover van het ene Data Center naar het andere
+- Lokale gegevens replicatie binnen een Data Center
+- Automatische gegevens back-ups
+- Herstellen van verwijderde gegevens uit back-ups
+- Gevoelige gegevens beveiligen en isoleren
+- Bewaking voor aanvallen
 - Reageren op aanvallen
-- Mogelijkheid om gegevens te geo-fenceen om te voldoen aan beperkingen voor gegevensbeheer
-- Fysieke bescherming van servers in beveiligde datacenters
+- De mogelijkheid om geo-Fence-gegevens te voldoen aan de beperkingen voor gegevens beheer
+- Fysieke beveiliging van servers in beveiligde data centers
 - Certificeringen
 
-En hoewel het misschien voor de hand liggend lijkt, herinneren recente [grootschalige databaselekken](https://thehackernews.com/2017/01/mongodb-database-security.html) ons aan het eenvoudige maar kritieke belang van de volgende vereisten:
+Het lijkt erop dat de recente [grootschalige data base ongevoelig](https://thehackernews.com/2017/01/mongodb-database-security.html) is, maar dat het een eenvoudige, maar essentiële belang rijk is voor de volgende vereisten:
 
-- Gepatchte servers die up-to-date worden gehouden
-- HTTPS by default/TLS-versleuteling
-- Beheerdersaccounts met sterke wachtwoorden
+- Patched servers die up-to-date blijven
+- HTTPS standaard/TLS-versleuteling
+- Beheerders accounts met sterke wacht woorden
 
-## <a name="how-does-azure-cosmos-db-secure-my-database"></a>Hoe beveiligt Azure Cosmos DB mijn database
+## <a name="how-does-azure-cosmos-db-secure-my-database"></a>Hoe Azure Cosmos DB mijn data base beveiligen?
 
-Laten we eens terugkijken naar de voorgaande lijst - hoeveel van die beveiligingsvereisten biedt Azure Cosmos DB? Allemaal.
+Laten we eens kijken naar de voor gaande lijst: hoeveel van deze beveiligings vereisten Azure Cosmos DB bieden? Elk één.
 
-Laten we in detail ingaan op elk.
+Laten we een voor een gedetailleerde beschrijving zien.
 
-|Veiligheidseis|De beveiligingsaanpak van Azure Cosmos DB|
+|Beveiligings vereiste|Beveiligings aanpak van Azure Cosmos DB|
 |---|---|
-|Netwerkbeveiliging|Het gebruik van een IP-firewall is de eerste beveiligingslaag om uw database te beveiligen. Azure Cosmos DB ondersteunt beleidsgestuurde IP-gebaseerde toegangscontroles voor inkomende firewallondersteuning. De IP-gebaseerde toegangscontroles zijn vergelijkbaar met de firewallregels die worden gebruikt door traditionele databasesystemen, maar ze worden uitgebreid zodat een Azure Cosmos-databaseaccount alleen toegankelijk is vanaf een goedgekeurde set machines of cloudservices. Meer informatie in het ondersteuningsartikel [azure cosmos DB-firewall.](firewall-support.md)<br><br>Azure Cosmos DB stelt u in staat om een specifiek IP-adres (168.61.48.0), een IP-bereik (168.61.48.0/8) en combinaties van IP-waarden in te schakelen. <br><br>Alle aanvragen afkomstig van machines buiten deze toegestane lijst worden geblokkeerd door Azure Cosmos DB. Aanvragen van goedgekeurde machines en cloudservices moeten vervolgens het verificatieproces voltooien om toegangsbeheer tot de resources te krijgen.<br><br> U [virtuele netwerkservicetags](../virtual-network/service-tags-overview.md) gebruiken om netwerkisolatie te bereiken en uw Azure Cosmos DB-bronnen te beschermen tegen het algemene internet. Gebruik servicetags in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de servicetag (bijvoorbeeld AzureCosmosDB) op te geven in het juiste bron- of doelveld van een regel, u het verkeer voor de bijbehorende service toestaan of weigeren.|
-|Autorisatie|Azure Cosmos DB gebruikt hmac (hash-based message authentication code) voor autorisatie. <br><br>Elk verzoek wordt gehasht met behulp van de geheime accountsleutel en de daaropvolgende basis-64 gecodeerde hash wordt verzonden met elke oproep naar Azure Cosmos DB. Om de aanvraag te valideren, gebruikt de Azure Cosmos DB-service de juiste geheime sleutel en eigenschappen om een hash te genereren en vergelijkt deze de waarde met de toepassing in de aanvraag. Als de twee waarden overeenkomen, is de bewerking geautoriseerd en wordt de aanvraag verwerkt, anders is er een autorisatiefout en wordt de aanvraag afgewezen.<br><br>U een [hoofdsleutel](secure-access-to-data.md#master-keys)of een [resourcetoken](secure-access-to-data.md#resource-tokens) gebruiken waarmee fijnmazige toegang tot een bron zoals een document kan worden gebruikt.<br><br>Meer informatie over [Het beveiligen van toegang tot Azure Cosmos DB-bronnen](secure-access-to-data.md).|
-|Gebruikers en machtigingen|Met behulp van de hoofdsleutel voor het account u gebruikersbronnen en machtigingsbronnen per database maken. Een resourcetoken is gekoppeld aan een machtiging in een database en bepaalt of de gebruiker toegang heeft (lezen-schrijven, alleen-lezen of geen toegang) tot een toepassingsbron in de database. Toepassingsbronnen omvatten container, documenten, bijlagen, opgeslagen procedures, triggers en UDF's. Het resourcetoken wordt vervolgens gebruikt tijdens verificatie om toegang tot de bron te bieden of te weigeren.<br><br>Meer informatie over [Het beveiligen van toegang tot Azure Cosmos DB-bronnen](secure-access-to-data.md).|
-|RBAC (Active Directory-integratie)| U ook toegang tot het Cosmos-account, de database, de container en de aanbiedingen (doorvoer) bieden of beperken met behulp van Toegangsbeheer (IAM) in de Azure-portal. IAM biedt op rollen gebaseerd toegangscontrole en integreert met Active Directory. U ingebouwde rollen of aangepaste rollen voor personen en groepen gebruiken. Zie [artikel over Active Directory-integratie](role-based-access-control.md) voor meer informatie.|
-|Globale replicatie|Azure Cosmos DB biedt kant-en-klare wereldwijde distributie, waarmee u uw gegevens met één klik op de knop repliceren naar een van de wereldwijde datacenters van Azure. Met globale replicatie u wereldwijd schalen en toegang tot uw gegevens met een lage latentie over de hele wereld bieden.<br><br>In het kader van beveiliging zorgt wereldwijde replicatie voor gegevensbescherming tegen regionale storingen.<br><br>Zie [Gegevens wereldwijd distribueren](distribute-data-globally.md) voor meer informatie.|
-|Regionale failovers|Als u uw gegevens in meer dan één datacenter hebt gerepliceerd, rolt Azure Cosmos DB automatisch over uw bewerkingen als een regionaal datacenter offline gaat. U een geprioriteerd overzicht maken van failoverregio's met behulp van de regio's waarin uw gegevens worden gerepliceerd. <br><br>Meer informatie in [Regionale failovers in Azure Cosmos DB](high-availability.md).|
-|Lokale replicatie|Zelfs binnen één datacenter repliceert Azure Cosmos DB automatisch gegevens voor hoge beschikbaarheid, zodat u de keuze hebt uit [consistentieniveaus.](consistency-levels.md) Deze replicatie garandeert een SLA [van](https://azure.microsoft.com/support/legal/sla/cosmos-db) 99,99% beschikbaarheid voor alle accounts met één regio en alle accounts met meerdere regio's met ontspannen consistentie en 99,999% leesbeschikbaarheid op alle databaseaccounts met meerdere regio's.|
-|Geautomatiseerde online back-ups|Azure Cosmos-databases worden regelmatig geback-upt en opgeslagen in een georedundante winkel. <br><br>Meer informatie over [automatische online back-up en herstel met Azure Cosmos DB](online-backup-and-restore.md).|
-|Verwijderde gegevens herstellen|De geautomatiseerde online back-ups kunnen worden gebruikt om gegevens te herstellen die u mogelijk per ongeluk tot ~ 30 dagen na de gebeurtenis hebt verwijderd. <br><br>Meer informatie over [automatische online back-up en herstel met Azure Cosmos DB](online-backup-and-restore.md)|
-|Gevoelige gegevens beschermen en isoleren|Alle gegevens in de regio's die worden vermeld in Wat is nieuw? is nu versleuteld in rust.<br><br>Persoonlijke gegevens en andere vertrouwelijke gegevens kunnen worden geïsoleerd tot specifieke containers en read-write, of alleen-lezen toegang kan worden beperkt tot specifieke gebruikers.|
-|Monitor voor aanvallen|Door het gebruik van [audit logging en activiteit logs](logging.md), u uw account te controleren op normale en abnormale activiteit. U bekijken welke bewerkingen zijn uitgevoerd op uw resources, wie de bewerking heeft geïnitieerd, wanneer de bewerking heeft plaatsgevonden, de status van de bewerking en nog veel meer, zoals weergegeven in de schermafbeelding na deze tabel.|
-|Reageren op aanvallen|Zodra u contact hebt opgenomen met Azure-ondersteuning om een potentiële aanval te melden, wordt een 5-stappenincidentresponsproces gestart. Het doel van het 5-stappenproces is om de normale servicebeveiliging en -bewerkingen zo snel mogelijk te herstellen nadat een probleem is gedetecteerd en een onderzoek wordt gestart.<br><br>Meer informatie in [Microsoft Azure Security Response in de cloud](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).|
-|Geo-fencing|Azure Cosmos DB zorgt voor data governance voor soevereine regio's (bijvoorbeeld Duitsland, China, US Gov).|
-|Beschermde voorzieningen|Gegevens in Azure Cosmos DB worden opgeslagen op SSD's in de beveiligde datacenters van Azure.<br><br>Meer informatie in [microsoft-datacenters](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
-|HTTPS/SSL/TLS-versleuteling|Alle verbindingen met Azure Cosmos DB ondersteunen HTTPS. Azure Cosmos DB ondersteunt ook TLS 1.2.<br>Het is mogelijk om een minimale TLS-versie server-kant af te dwingen. Neem hiervoor contact [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)op met .|
-|Versleuteling 'at rest'|Alle gegevens die zijn opgeslagen in Azure Cosmos DB worden in rust versleuteld. Meer informatie over [Azure Cosmos DB-versleuteling in rust](./database-encryption-at-rest.md)|
-|Gepatchte servers|Als beheerde database elimineert Azure Cosmos DB de noodzaak om servers, die voor u worden gedaan, automatisch te beheren en te patchen.|
-|Beheerdersaccounts met sterke wachtwoorden|Het is moeilijk te geloven dat we deze vereiste zelfs moeten vermelden, maar in tegenstelling tot sommige van onze concurrenten is het onmogelijk om een administratief account te hebben zonder wachtwoord in Azure Cosmos DB.<br><br> Beveiliging via TLS en HMAC secret based authentication wordt standaard ingebakken.|
-|Certificeringen voor beveiliging en gegevensbescherming| Voor de meest recente lijst met certificeringen ziet u de algemene [Azure Compliance-site](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) en het nieuwste [Azure Compliance Document](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) met alle certificeringen (zoeken naar Cosmos). Voor een meer gerichte lees check out de 25 april 2018 post [Azure #CosmosDB: Secure, private, compliant that includes SOCS 1/2 Type 2, HITRUST, PCI DSS Level 1, ISO 27001, HIPAA, FedRAMP High, and vele anderen.
+|Netwerkbeveiliging|Het gebruik van een IP-firewall is de eerste beveiligingslaag om uw data base te beveiligen. Azure Cosmos DB ondersteunt op beleid gestuurde op IP gebaseerde toegangs controles voor binnenkomende firewall ondersteuning. De op IP gebaseerde toegangs elementen zijn vergelijkbaar met de firewall regels die worden gebruikt door traditionele database systemen, maar ze worden uitgebreid zodat een Azure Cosmos-database account alleen toegankelijk is vanaf een goedgekeurde set machines of Cloud Services. Meer informatie vindt u in Azure Cosmos DB artikel over [firewall ondersteuning](firewall-support.md) .<br><br>Azure Cosmos DB biedt u de mogelijkheid om een specifiek IP-adres (168.61.48.0), een IP-bereik (168.61.48.0/8) en combi Naties van Ip's en bereiken in te scha kelen. <br><br>Alle aanvragen die afkomstig zijn van computers die zich buiten deze toegestane lijst bevinden, worden geblokkeerd door Azure Cosmos DB. Aanvragen van goedgekeurde computers en Cloud Services moeten vervolgens het verificatie proces volt ooien om toegang te krijgen tot de resources.<br><br> U kunt [service tags van het virtuele netwerk](../virtual-network/service-tags-overview.md) gebruiken om netwerk isolatie te bezorgen en uw Azure Cosmos DB-bronnen te beveiligen via het internet. Gebruik service tags in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door de naam van de service label (bijvoorbeeld AzureCosmosDB) op te geven in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren.|
+|Autorisatie|Azure Cosmos DB gebruikt HMAC (Hash-based Message Authentication Code) voor autorisatie. <br><br>Elke aanvraag wordt gehasht met behulp van de sleutel van het geheime account en de volgende met base 64 gecodeerde hash wordt verzonden met elke aanroep van Azure Cosmos DB. Voor het valideren van de aanvraag gebruikt de Azure Cosmos DB-service de juiste geheime sleutel en eigenschappen om een hash te genereren. vervolgens wordt de waarde vergeleken met de naam in de aanvraag. Als de twee waarden overeenkomen, wordt de bewerking geautoriseerd en de aanvraag wordt verwerkt, anders is er een autorisatie fout en wordt de aanvraag geweigerd.<br><br>U kunt een [hoofd sleutel](secure-access-to-data.md#master-keys)of een [bron token](secure-access-to-data.md#resource-tokens) gebruiken om nauw keurige toegang tot een bron, zoals een document, toe te staan.<br><br>Meer informatie over [het beveiligen van de toegang tot Azure Cosmos DB-resources](secure-access-to-data.md).|
+|Gebruikers en machtigingen|U kunt met behulp van de hoofd sleutel voor het account gebruikers resources en machtigings bronnen maken per data base. Een bron token is gekoppeld aan een machtiging in een Data Base en bepaalt of de gebruiker toegang heeft (lezen/schrijven, alleen-lezen of geen toegang) tot een toepassings bron in de data base. Toepassings bronnen zijn onder andere container, documenten, bijlagen, opgeslagen procedures, triggers en Udf's. Het bron token wordt vervolgens gebruikt tijdens de verificatie om toegang tot de bron te verlenen of te weigeren.<br><br>Meer informatie over [het beveiligen van de toegang tot Azure Cosmos DB-resources](secure-access-to-data.md).|
+|Active Directory-integratie (RBAC)| U kunt de toegang tot het Cosmos-account, de data base, de container en de aanbiedingen (door Voer) ook opgeven of beperken met behulp van toegangs beheer (IAM) in de Azure Portal. IAM biedt op rollen gebaseerd toegangs beheer en integreert met Active Directory. U kunt ingebouwde rollen of aangepaste rollen gebruiken voor individuen en groepen. Zie [Active Directory Integration](role-based-access-control.md) -artikel voor meer informatie.|
+|Globale replicatie|Azure Cosmos DB biedt kant-en-klare wereld wijde distributie, waarmee u uw gegevens kunt repliceren naar een van de wereld wijde data centers van Azure met één klik op een knop. Wereld wijde replicatie biedt u de mogelijkheid om wereld wijd te schalen en toegang te bieden tot uw gegevens over de hele wereld.<br><br>In de context van beveiliging zorgt globale replicatie voor gegevens bescherming tegen regionale storingen.<br><br>Zie [Gegevens wereldwijd distribueren](distribute-data-globally.md) voor meer informatie.|
+|Regionale failovers|Als u uw gegevens in meer dan één Data Center hebt gerepliceerd, moet Azure Cosmos DB automatisch worden uitgevoerd voor uw bewerkingen. het regionale Data Center is nu offline. U kunt een overzicht van de failover-regio's maken op basis van de regio's waarin uw gegevens worden gerepliceerd. <br><br>Meer informatie vindt u in [regionale failovers in azure Cosmos DB](high-availability.md).|
+|Lokale replicatie|Zelfs binnen één Data Center, Azure Cosmos DB automatisch gegevens repliceren voor hoge Beschik baarheid, zodat u de gewenste [consistentie niveaus](consistency-levels.md)krijgt. Deze replicatie garandeert een [Sla](https://azure.microsoft.com/support/legal/sla/cosmos-db) van 99,99% voor alle accounts voor één regio en alle accounts voor meerdere regio's met beperkte consistentie en 99,999% Lees Beschik baarheid voor alle database accounts voor meerdere regio's.|
+|Automatische online back-ups|Voor Azure Cosmos-data bases wordt regel matig een back-up gemaakt en opgeslagen in een geografisch redundante opslag. <br><br>Meer informatie vindt u in [Automatische online back-ups en herstellen met Azure Cosmos DB](online-backup-and-restore.md).|
+|Verwijderde gegevens herstellen|De geautomatiseerde online back-ups kunnen worden gebruikt om gegevens te herstellen die u per ongeluk hebt verwijderd tot meer dan 30 dagen na de gebeurtenis. <br><br>Meer informatie vindt u in [Automatische online back-ups en herstellen met Azure Cosmos DB](online-backup-and-restore.md)|
+|Gevoelige gegevens beveiligen en isoleren|Alle gegevens in de regio's die worden vermeld in wat is er nieuw? is nu op rest versleuteld.<br><br>Persoons gegevens en andere vertrouwelijke gegevens kunnen worden geïsoleerd voor specifieke containers en alleen-lezen toegang, of alleen lees bewerkingen kunnen worden beperkt tot specifieke gebruikers.|
+|Controleren op aanvallen|Met [controle logboek registratie en activiteiten logboeken](logging.md)kunt u uw account controleren op normale en abnormale activiteiten. U kunt weer geven welke bewerkingen zijn uitgevoerd op uw resources, wie de bewerking heeft gestart, wanneer de bewerking plaatsvond, de status van de bewerking en nog veel meer, zoals wordt weer gegeven in de scherm opname die volgt op deze tabel.|
+|Reageren op aanvallen|Wanneer u contact hebt opgenomen met de ondersteuning van Azure om een mogelijke aanval te melden, wordt een respons proces van 5 stappen gestart. Het doel van het proces van vijf stappen is om zo snel mogelijk de normale service beveiliging en-bewerkingen te herstellen nadat een probleem is gedetecteerd en een onderzoek wordt gestart.<br><br>Meer informatie vindt u in [Microsoft Azure Security Response in de Cloud](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).|
+|Geoomheining|Azure Cosmos DB garandeert dat data governance voor soevereine regio's (bijvoorbeeld Duitsland, China, US Gov).|
+|Beveiligde faciliteiten|Gegevens in Azure Cosmos DB worden opgeslagen op Ssd's in de beveiligde data centers van Azure.<br><br>Meer informatie in [micro soft Global Data Centers](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
+|HTTPS/SSL/TLS-versleuteling|Alle verbindingen met Azure Cosmos DB ondersteuning voor HTTPS. Azure Cosmos DB ondersteunt ook TLS 1,2.<br>Het is mogelijk om een minimale TLS-versie aan de server zijde af te dwingen. Als u dit wilt doen, [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)neemt u contact op met.|
+|Versleuteling 'at rest'|Alle gegevens die zijn opgeslagen in Azure Cosmos DB, worden op rest versleuteld. Meer informatie over [Azure Cosmos DB versleuteling in rust](./database-encryption-at-rest.md)|
+|Patched servers|Als beheerde data base, Azure Cosmos DB u geen servers meer hoeft te beheren en te patchen, die automatisch voor u worden uitgevoerd.|
+|Beheerders accounts met sterke wacht woorden|Het is moeilijk om te geloven dat deze vereiste wordt vermeld, maar in tegens telling tot enkele van onze concurrenten is het niet mogelijk om een beheerders account zonder wacht woord te hebben in Azure Cosmos DB.<br><br> Beveiliging via TLS en op HMAC-geheim gebaseerde verificatie is standaard geïntegreerde.|
+|Certificeringen voor beveiliging en gegevens bescherming| Voor de meest recente lijst met certificeringen raadpleegt u de algemene Azure- [nalevings site](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) , evenals het meest recente [Azure-nalevings document](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) met alle certificeringen (zoek naar Cosmos). Lees voor meer informatie lezen van de 25 april 2018 post [Azure #CosmosDB: Secure, private, conform SOCS 1/2 type 2, HITRUST, PCI DSS Level 1, ISO 27001, HIPAA, FedRAMP High en veel andere.
 
-In de volgende schermafbeelding ziet u hoe u controlelogboekregistratie en activiteitslogboeken gebruiken om uw account te controleren: ![Activiteitslogboeken voor Azure Cosmos DB](./media/database-security/nosql-database-security-application-logging.png)
+De volgende scherm afbeelding laat zien hoe u controle logboeken en activiteiten Logboeken kunt gebruiken om ![uw account te bewaken: activiteiten logboeken voor Azure Cosmos db](./media/database-security/nosql-database-security-application-logging.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Toegang tot Azure Cosmos DB-gegevens beveiligen](secure-access-to-data.md)voor meer informatie over hoofdsleutels en brontokens.
+Zie [toegang tot Azure Cosmos DB gegevens beveiligen](secure-access-to-data.md)voor meer informatie over hoofd sleutels en bron tokens.
 
-Zie [Diagnostische logboekregistratie](logging.md)van Azure Cosmos DB voor meer informatie over controlelogboekregistratie.
+Zie [Azure Cosmos DB Diagnostic logging](logging.md)(Engelstalig) voor meer informatie over controle logboek registratie.
 
-Zie [Azure Trust Center](https://azure.microsoft.com/support/trust-center/)voor meer informatie over Microsoft-certificeringen.
+Zie [Vertrouwenscentrum van Azure](https://azure.microsoft.com/support/trust-center/)voor meer informatie over micro soft-certificeringen.

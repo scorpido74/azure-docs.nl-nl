@@ -1,7 +1,7 @@
 ---
 title: Fuzzy zoekopdracht
 titleSuffix: Azure Cognitive Search
-description: Implementeer een zoekervaring 'bedoelde' om een verkeerd gespelde term of typfout automatisch te corrigeren.
+description: Implementeer een ' bedoelde ' Zoek ervaring om automatisch een verkeerd gespelde term of type fout te corrigeren.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,108 +9,108 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262431"
 ---
-# <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Fuzzy zoeken om spelfouten en typefouten te corrigeren
+# <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Fuzzy zoeken om spel fouten en typfouten te corrigeren
 
-Azure Cognitive Search ondersteunt fuzzy search, een type query dat type query's compenseert die typefouten en verkeerd gespelde termen in de invoertekenreeks compenseert. Het doet dit door te scannen op termen met een vergelijkbare samenstelling. Het uitbreiden van zoeken naar near-matches heeft het effect van het automatisch corrigeren van een typfout wanneer de discrepantie slechts een paar misplaatste tekens is. 
+Azure Cognitive Search ondersteunt fuzzy Search, een type query waarmee type fouten en verkeerd gespelde termen in de invoer teken reeks worden gecompenseerd. Dit wordt gedaan door te scannen op termen met een vergelijk bare samen stelling. Een uitgebreidere zoek opdracht om bijna-overeenkomsten te best rijken is het effect van het automatisch corrigeren van een type fout wanneer het verschil slechts enkele verkeerd geplaatste tekens is. 
 
-## <a name="what-is-fuzzy-search"></a>Wat is fuzzy search?
+## <a name="what-is-fuzzy-search"></a>Wat is fuzzy zoeken?
 
-Het is een expansie-oefening die een match produceert op termen met een vergelijkbare samenstelling. Wanneer een fuzzy search is opgegeven, bouwt de engine een grafiek (gebaseerd op [deterministische eindige automatontheorie)](https://en.wikipedia.org/wiki/Deterministic_finite_automaton)van vergelijkbaar samengestelde termen, voor alle hele termen in de query. Als uw query bijvoorbeeld drie termen 'universiteit van Washington' bevat, wordt `search=university~ of~ washington~` voor elke term in de query een grafiek gemaakt (er is geen stopwoordverwijdering in fuzzy search, dus 'van' krijgt een grafiek).
+Het is een uitbrei ding die een overeenkomst produceert met termen die een vergelijk bare samen stelling hebben. Wanneer u een fuzzy zoek opdracht opgeeft, bouwt de engine een grafiek (op basis van een [deterministische, beperkte Automation theorie](https://en.wikipedia.org/wiki/Deterministic_finite_automaton)) van vergelijk bare voor waarden voor alle volledige termen in de query. Als uw query bijvoorbeeld drie termen ' University of Washington ' bevat, wordt er een grafiek gemaakt voor elke term in de query `search=university~ of~ washington~` (er is geen stop-Word-verwijdering in fuzzy Search, dus wordt een grafiek opgehaald).
 
-De grafiek bestaat uit maximaal 50 uitbreidingen, of permutaties, van elke term, het vastleggen van zowel de juiste als onjuiste varianten in het proces. De engine retourneert vervolgens de meest relevante wedstrijden in het antwoord. 
+De grafiek bestaat uit Maxi maal 50 uitbrei dingen of permutaties, van elke term, waarbij zowel juiste als onjuiste varianten in het proces worden vastgelegd. De engine retourneert vervolgens de bovenste relevante overeenkomsten in het antwoord. 
 
-Voor een term als "universiteit", de grafiek zou kunnen hebben "unversty, universty, universiteit, universum, omgekeerd". Alle documenten die overeenkomen met die in de grafiek zijn opgenomen in de resultaten. In tegenstelling tot andere query's die de tekst analyseren om verschillende vormen van hetzelfde woord te verwerken ("muizen" en "muis"), worden de vergelijkingen in een vage query tegen nominale waarde genomen zonder enige taalkundige analyse van de tekst. "Universe" en "inverse", die semantisch verschillend zijn, zullen overeenkomen omdat de syntactische discrepanties klein zijn.
+Voor een term als "Universiteit" kan de grafiek "unversty, universty, University, universum, inverse" hebben. Alle documenten die overeenkomen met die in de grafiek, worden opgenomen in de resultaten. In tegens telling tot andere query's voor het analyseren van de tekst voor het afhandelen van verschillende formulieren van hetzelfde woord ("muizen" en "muis"), worden de vergelijkingen in een fuzzy-query gemaakt op basis van de nominale waarde zonder enige taal analyse voor de tekst. "Universum" en "inverse", die semantisch verschillen, zullen overeenkomen omdat de syntaxis van de verschillen klein is.
 
-Een overeenkomst slaagt als de verschillen beperkt zijn tot twee of minder bewerkingen, waarbij een bewerking een ingevoegd, verwijderd, vervangen of getransponeerd teken is. Het tekenreekscorrectiealgoritme dat het differentieel aangeeft, is de [afstandsstatistiek Damerau-Levenshtein,](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance) beschreven als het "minimumaantal bewerkingen (invoegingen, verwijderingen, vervangingen of omzettingen van twee aangrenzende tekens) die nodig zijn om het ene woord in het andere te veranderen". 
+Een match slaagt als de verschillen beperkt zijn tot twee of minder bewerkingen, waarbij een bewerking een ingevoegd, verwijderd, vervangen of gegetransponeerd teken is. Het teken reeks correctie algoritme waarmee wordt aangegeven dat het verschil is [tussen de Damerau Levenshtein-afstand](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance) , aangeduid als het minimale aantal bewerkingen (invoegingen, verwijderingen, vervangingen of trans acties van twee aangrenzende tekens) dat is vereist voor het wijzigen van één woord in de andere. 
 
-In Azure Cognitive Search:
+In azure Cognitive Search:
 
-+ Fuzzy query is van toepassing op hele termen, maar u zinnen ondersteunen via EN constructies. Bijvoorbeeld, "Unviersty ~ van ~ "Wshington~" zou overeenkomen op "Universiteit van Washington".
++ Fuzzy query is van toepassing op hele voor waarden, maar u kunt wel zinnen door lopen en bouwen. Zo komt ' Unviersty ~ van ~ ' Wshington ~ ' overeen met ' University of Washington '.
 
-+ De standaardafstand van een bewerking is 2. Een waarde `~0` van betekent geen uitbreiding (alleen de exacte term `~1` wordt beschouwd als een overeenkomst), maar u opgeven voor een mate van verschil, of een bewerking. 
++ De standaard afstand van een bewerking is 2. Een waarde van `~0` geeft aan dat er geen uitbrei ding is (alleen de exacte term wordt beschouwd als een overeenkomst `~1` ), maar u kunt wel een mate van verschil of één bewerking opgeven. 
 
-+ Een vage query kan een term tot 50 extra permutaties uitbreiden. Deze limiet is niet configureerbaar, maar u het aantal uitbreidingen effectief verminderen door de bewerkingsafstand te verkleinen tot 1.
++ Met een fuzzy query kan een term worden uitgebreid tot 50 extra permutaties. Deze limiet kan niet worden geconfigureerd, maar u kunt het aantal uitbrei dingen effectief verminderen door de bewerkings afstand te verlagen tot 1.
 
-+ De antwoorden bestaan uit documenten met een relevante overeenkomst (tot 50).
++ Antwoorden bestaan uit documenten met een relevante overeenkomst (Maxi maal 50).
 
-Gezamenlijk worden de grafieken ingediend als wedstrijdcriteria ten opzichte van tokens in de index. Zoals u zich voorstellen, fuzzy zoeken is inherent langzamer dan andere query formulieren. De grootte en complexiteit van uw index kan bepalen of de voordelen voldoende zijn om de latentie van de respons te compenseren.
+De grafieken worden gezamenlijk verzonden als match criteria op basis van tokens in de index. Zo kunt u zich Voorst Ellen dat er minder Zoek resultaten zijn dan andere query formulieren. De grootte en complexiteit van uw index kunnen bepalen of de voor delen voldoende zijn om de latentie van de reactie te verschuiven.
 
 > [!NOTE]
-> Omdat fuzzy search meestal traag is, is het misschien de moeite waard om alternatieven zoals n-gram indexering te onderzoeken, met de progressie van korte tekensequenties (twee en drie tekensequenties voor bigram- en trigramtokens). Afhankelijk van uw taal- en queryoppervlak kan n-gram u betere prestaties bieden. De afweging is dat n-gram indexering is zeer opslag-intensief en genereert veel grotere indexen.
+> Omdat fuzzy Search doorgaans langzaam is, is het wellicht de moeite waard om alternatieven zoals n-gram indexering te onderzoeken, met de voortgang van korte teken reeksen (twee en drie teken reeksen voor bigram-en Trigram-tokens). Afhankelijk van uw taal en query-Opper vlak kan n-gram u betere prestaties bieden. De afweging is dat n-gram-indexering zeer veel opslag intensief is en veel grotere indexen genereert.
 >
-> Een ander alternatief, dat je zou kunnen overwegen als je wilt alleen de meest flagrante gevallen te behandelen, zou een [synoniem kaart](search-synonyms.md). Bijvoorbeeld het toewijzen van "zoeken" naar "serach, serch, sarch" of "retrieve" naar "retreive".
+> Een ander alternatief, waarmee u rekening moet houden als u alleen de meest egregiouse cases wilt verwerken, zou een [synoniemen kaart](search-synonyms.md)zijn. Stel bijvoorbeeld ' Search ' in op ' zoeken, serch, sarch ' of ' retrieve ' naar ' ophalen '.
 
-## <a name="indexing-for-fuzzy-search"></a>Indexeren voor vaag zoeken
+## <a name="indexing-for-fuzzy-search"></a>Indexeren voor fuzzy zoeken
 
-Analysers worden niet gebruikt tijdens queryverwerking om een uitbreidingsgrafiek te maken, maar dat betekent niet dat analysators moeten worden genegeerd in vage zoekscenario's. Immers, analysers worden gebruikt tijdens het indexeren om tokens te maken waartegen matching wordt gedaan, of de query nu een vrije vorm, gefilterd zoeken of een vage zoekopdracht is met een grafiek als invoer. 
+Analyse functies worden niet gebruikt tijdens het verwerken van query's om een uitbreidings grafiek te maken, maar dat betekent dat er geen analysereners moeten worden genegeerd in fuzzy Zoek scenario's. Na alle kunnen analysen worden gebruikt tijdens het indexeren om tokens te maken die overeenkomen met de zoek opdracht, of de query een gratis formulier, een gefilterde zoekpad of een fuzzy zoek opdracht met een grafiek als invoer is. 
 
-Over het algemeen is bij het toewijzen van analysers per veld de beslissing om de analyseketen te verfijnen gebaseerd op de primaire use case (een filter of full text search) in plaats van gespecialiseerde queryformulieren zoals fuzzy search. Om deze reden is er geen specifieke analyzer aanbeveling voor fuzzy zoeken. 
+Over het algemeen, wanneer u analyse functies per veld toewijst, is de beslissing om de analyse keten af te stemmen, gebaseerd op de primaire use-case (een filter of een zoek opdracht in volledige tekst) in plaats van gespecialiseerde query formulieren zoals fuzzy zoeken. Daarom is er geen specifieke analyse aanbeveling voor fuzzy zoeken. 
 
-Als testquery's echter niet de overeenkomsten produceren die u verwacht, u proberen de indexeringsanalyzer te variëren en deze in te stellen op een [taalanalyzer](index-add-language-analyzers.md)om te zien of u betere resultaten krijgt. Sommige talen, met name talen met klinkermutaties, kunnen profiteren van de verbuiging en onregelmatige woordvormen die worden gegenereerd door de natuurlijke taalverwerkers van Microsoft. In sommige gevallen kan het gebruik van de juiste taalanalyzer een verschil maken in de vraag of een term wordt tokenized op een manier die compatibel is met de waarde die door de gebruiker wordt geleverd.
+Als test query's echter niet de overeenkomen die u verwacht, kunt u de Indexing Analyzer variëren en instellen op een [taal analyse](index-add-language-analyzers.md)om te zien of u betere resultaten krijgt. Sommige talen, met name voor wat betreft de klinker mutaties, kunnen profiteren van de verbuiging en onregelmatige woord formulieren die worden gegenereerd door de micro soft Natural Language-processors. In sommige gevallen kan het gebruik van de juiste taal analyse een verschil maken in de vraag of een term wordt getokend op een manier die compatibel is met de waarde van de gebruiker.
 
 ## <a name="how-to-use-fuzzy-search"></a>Fuzzy Search gebruiken
 
-Vage query's worden geconstrueerd met behulp van de volledige syntaxis van Lucene query, waarbij een beroep wordt gedaan op de [Lucene queryparser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html).
+Fuzzy query's worden gemaakt met behulp van de volledige lucene-query syntaxis, waarbij de [lucene-query-parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)wordt aangeroepen.
 
-1. Stel de volledige Lucene parser`queryType=full`in op de query ( ).
+1. Stel de volledige lucene-parser in voor de`queryType=full`query ().
 
-1. Eventueel u de aanvraag naar specifieke`searchFields=<field1,field2>`velden toepassingsgebieden met behulp van deze parameter ( ). 
+1. U kunt eventueel de aanvraag beperken tot specifieke velden, met behulp van`searchFields=<field1,field2>`deze para meter (). 
 
-1. De betegelde`~`operator aan het einde van`search=<string>~`de gehele termijn toevoegen ( ).
+1. Voeg de tilde`~`()-operator aan het einde van de volledige`search=<string>~`term () toe.
 
-   Neem een optionele parameter op, een getal tussen 0 en 2 (standaard), als u de bewerkingsafstand wilt opgeven (`~1`). Bijvoorbeeld, "blue~" of "blue~1" zou terugkeren "blauw", "blues", en "lijm".
+   Neem een optionele para meter, een getal tussen 0 en 2 (standaard) op als u de bewerkings afstand (`~1`) wilt opgeven. Bijvoorbeeld: ' Blue ~ ' of ' Blue ~ 1 ' retourneert ' Blue ', ' blauw ' en ' lijm '.
 
-In Azure Cognitive Search zijn er naast de term en afstand (maximaal 2) geen extra parameters in te stellen voor de query.
+In azure Cognitive Search, naast de term en afstand (Maxi maal 2), zijn er geen aanvullende para meters ingesteld voor de query.
 
 > [!NOTE]
-> Tijdens queryverwerking ondergaan vage query's geen [lexicale analyse.](search-lucene-query-architecture.md#stage-2-lexical-analysis) De queryinvoer wordt rechtstreeks aan de querystructuur toegevoegd en uitgevouwen om een grafiek met termen te maken. De enige transformatie uitgevoerd is lagere behuizing.
+> Tijdens de query verwerking worden fuzzy query's geen [lexicale analyse](search-lucene-query-architecture.md#stage-2-lexical-analysis). De query-invoer wordt rechtstreeks aan de query structuur toegevoegd en uitgevouwen om een grafiek met termen te maken. De enige trans formatie die wordt uitgevoerd, is een lagere behuizing.
 
-## <a name="testing-fuzzy-search"></a>Fuzzy zoeken testen
+## <a name="testing-fuzzy-search"></a>Zoek actie op fuzzy testen
 
-Voor eenvoudige tests raden we [Zoekverkenner](search-explorer.md) of [Postman](search-get-started-postman.md) aan om een queryexpressie te herhalen. Beide tools zijn interactief, wat betekent dat u snel meerdere varianten van een term doorlopen en de reacties evalueren die terugkomen.
+Voor eenvoudige tests raden wij u aan [Zoek Verkenner](search-explorer.md) of [postman te plaatsen](search-get-started-postman.md) voor het herhalen van een query-expressie. Beide hulpprogram ma's zijn interactief. Dit betekent dat u snel meerdere varianten van een periode kunt door lopen en de reacties die terugkomen te evalueren.
 
-Wanneer de resultaten dubbelzinnig zijn, kan [hithighlighting](search-pagination-page-layout.md#hit-highlighting) u helpen de overeenkomst in het antwoord te identificeren. 
+Als de resultaten dubbel zinnig zijn, kunt u met [treffers markeren](search-pagination-page-layout.md#hit-highlighting) de overeenkomst in het antwoord identificeren. 
 
 > [!Note]
-> Het gebruik van hit highlighting om fuzzy matches te identificeren heeft beperkingen en werkt alleen voor basic fuzzy search. Als uw index scoreprofielen heeft of als u de query met extra syntaxis laageert, kan het zijn dat hitmarkeringen de overeenkomst niet identificeren. 
+> Het gebruik van treffer markeringen om fuzzy overeenkomsten te identificeren, heeft beperkingen en werkt alleen voor eenvoudige Zoek opdrachten met fuzzy. Als uw index Score profielen heeft, of als u de query laagt met extra syntaxis, kan het zijn dat de overeenkomst niet kan worden gevonden met de functie voor het markeren van treffers. 
 
-### <a name="example-1-fuzzy-search-with-the-exact-term"></a>Voorbeeld 1: vaag zoeken met de exacte term
+### <a name="example-1-fuzzy-search-with-the-exact-term"></a>Voor beeld 1: fuzzy Search met de exacte term
 
-Ga ervan uit dat `"Description"` de volgende tekenreeks in een veld in een zoekdocument bestaat:`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
+Stel dat de volgende teken reeks bestaat `"Description"` in een veld in een zoek document:`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
 
-Begin met een vage zoekopdracht op 'speciaal' en voeg hithighlighting toe aan het veld Beschrijving:
+Begin met een zoek actie op ' Special ' en voeg treffers markeren toe aan het veld Beschrijving:
 
     search=special~&highlight=Description
 
-In het antwoord, omdat u hithighlighting hebt toegevoegd, wordt opmaak toegepast op 'speciaal' als overeenkomende term.
+In het antwoord, omdat u treffer markeringen hebt toegevoegd, wordt de opmaak toegepast op ' Special ' als overeenkomende term.
 
     "@search.highlights": {
         "Description": [
             "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
         ]
 
-Probeer het verzoek opnieuw, spelfouten "speciaal" door het nemen van verschillende letters ("pe"):
+Probeer de aanvraag opnieuw uit te voeren. u kunt het probleem ' Special ' door meerdere letters te maken (' PE '):
 
     search=scial~&highlight=Description
 
-Tot nu toe, geen verandering in het antwoord. Met behulp van de standaard van 2 graden afstand, het verwijderen van twee tekens "pe" van "speciale" nog steeds zorgt voor een succesvolle wedstrijd op die term.
+Tot nu toe is geen wijziging in de reactie. Als u de standaard waarde van 2 graden gebruikt, wordt bij het verwijderen van twee tekens ' PE ' van ' Special ' nog steeds een succes volle overeenkomst voor die periode gemaakt.
 
     "@search.highlights": {
         "Description": [
             "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
         ]
 
-Probeer nog een verzoek, verder wijzigen van de zoekterm door het nemen van een laatste teken voor een totaal van drie schrappingen (van "speciale" naar "scal"):
+Probeer een extra aanvraag, wijzig de zoek term verder door een laatste teken te nemen voor een totaal van drie verwijderingen (van ' Special ' tot ' schaal '):
 
     search=scal~&highlight=Description
 
-Merk op dat dezelfde reactie wordt geretourneerd, maar nu in plaats van matching op "special", de fuzzy match is op "SQL".
+U ziet dat hetzelfde antwoord wordt geretourneerd, maar nu in plaats van te voldoen aan ' speciaal ', is de benadering gelijk aan ' SQL '.
 
             "@search.score": 0.4232868,
             "@search.highlights": {
@@ -118,11 +118,11 @@ Merk op dat dezelfde reactie wordt geretourneerd, maar nu in plaats van matching
                     "Mix of special characters, plus strings for MSFT, <em>SQL</em>, 2019, Linux, Java."
                 ]
 
-Het punt van dit uitgebreide voorbeeld is om de helderheid te illustreren die het markeren van de treffers tot dubbelzinnige resultaten kan brengen. In alle gevallen wordt hetzelfde document geretourneerd. Als u had vertrouwd op document-id's om een overeenkomst te verifiëren, had u misschien de verschuiving gemist van "speciaal" naar "SQL".
+Het punt van dit uitgevouwen voor beeld is om de duidelijkheid te illustreren dat treffers markeren tot onduidelijke resultaten kan leiden. In alle gevallen wordt hetzelfde document geretourneerd. U hebt zich op document-Id's bevonden om een overeenkomst te controleren. u hebt de Shift-toets mogelijk niet van ' speciaal ' naar ' SQL ' gemist.
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Hoe zoeken in volledige tekst werkt in Azure Cognitive Search (queryparsing-architectuur)](search-lucene-query-architecture.md)
-+ [Zoekverkenner](search-explorer.md)
-+ [Hoe query's in .NET](search-query-dotnet.md)
-+ [Vragen in REST](search-create-index-rest-api.md)
++ [De manier waarop zoeken in volledige tekst werkt in azure Cognitive Search (architectuur voor het parseren van query's)](search-lucene-query-architecture.md)
++ [Zoek Verkenner](search-explorer.md)
++ [Query's uitvoeren in .NET](search-query-dotnet.md)
++ [Query's uitvoeren in REST](search-create-index-rest-api.md)

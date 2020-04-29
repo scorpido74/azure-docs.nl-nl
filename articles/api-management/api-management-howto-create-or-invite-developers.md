@@ -1,6 +1,6 @@
 ---
-title: Gebruikersaccounts beheren in Azure API Management | Microsoft Documenten
-description: Meer informatie over het maken of uitnodigen van gebruikers in Azure API Management
+title: Hoe gebruikers accounts beheren in azure API Management | Microsoft Docs
+description: Meer informatie over het maken of uitnodigen van gebruikers in azure API Management
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,65 +13,65 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 672f145b638fa6b85f7139f2edb4fc41bb2855d9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260969"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Gebruikersaccounts in Azure API Management beheren
 
-In API Management zijn ontwikkelaars de gebruikers van de API's die u blootstelt met API Management. In deze handleiding ziet u hoe u ontwikkelaars maken en uitnodigen om de API's en producten die u voor hen beschikbaar stelt met uw API-beheerexemplaar te gebruiken. Zie de documentatie van de [gebruikersentiteit](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user) in de API [Management REST-verwijzing](/rest/api/apimanagement/) voor informatie over het programmatisch beheren van gebruikersaccounts.
+In API Management zijn ontwikkel aars de gebruikers van de Api's die u beschikbaar maakt met behulp van API Management. Deze hand leiding bevat informatie over het maken en uitnodigen van ontwikkel aars voor het gebruik van de Api's en producten die u voor hen beschikbaar stelt met uw API Management-exemplaar. Zie de documentatie van de [gebruikers entiteit](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user) in de referentie [API Management rest](/rest/api/apimanagement/) voor meer informatie over het programmatisch beheren van gebruikers accounts.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-Taken voltooien in dit artikel: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
+Voltooi de taken in dit artikel: [een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="create-a-new-developer"></a><a name="create-developer"> </a>Een nieuwe ontwikkelaar maken
 
-Als u een nieuwe gebruiker wilt toevoegen, voert u de stappen in deze sectie uit:
+Volg de stappen in deze sectie om een nieuwe gebruiker toe te voegen:
 
-1. Selecteer het tabblad **Gebruikers** links van het scherm.
-2. Druk op **+Toevoegen**.
-3. Voer de juiste informatie in voor de gebruiker.
+1. Selecteer het tabblad **gebruikers** aan de linkerkant van het scherm.
+2. Druk op **+ toevoegen**.
+3. Voer de juiste gegevens voor de gebruiker in.
 4. Klik op **Toevoegen**.
 
     ![Een nieuwe gebruiker toevoegen](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
 
-Nieuw gemaakte ontwikkelaarsaccounts zijn standaard **Actief**en zijn gekoppeld aan de groep **Ontwikkelaars.** Ontwikkelaarsaccounts die zich in een **actieve** status bevinden, kunnen worden gebruikt om toegang te krijgen tot alle API's waarvoor ze abonnementen hebben. Zie [Groepen koppelen aan ontwikkelaars][How to associate groups with developers]als u de nieuw gemaakte ontwikkelaar wilt koppelen aan extra groepen.
+Nieuw gemaakte ontwikkelaars accounts zijn standaard **actief**en zijn gekoppeld aan de groep **ontwikkel aars** . Ontwikkelaars accounts die zich in een **actieve** status bevinden, kunnen worden gebruikt voor toegang tot alle api's waarvoor ze abonnementen hebben. Zie [groepen koppelen aan ontwikkel aars][How to associate groups with developers]om de zojuist gemaakte ontwikkelaar te koppelen aan extra groepen.
 
 ## <a name="invite-a-developer"></a><a name="invite-developer"> </a>Een ontwikkelaar uitnodigen
-Als u een ontwikkelaar wilt uitnodigen, voert u de stappen in deze sectie uit:
+Volg de stappen in deze sectie om een ontwikkelaar uit te nodigen:
 
-1. Selecteer het tabblad **Gebruikers** links van het scherm.
-2. Druk op **+Uitnodigen**.
+1. Selecteer het tabblad **gebruikers** aan de linkerkant van het scherm.
+2. Druk op **+ uitnodiging**.
 
-Er wordt een bevestigingsbericht weergegeven, maar de nieuw uitgenodigde ontwikkelaar wordt pas in de lijst weergegeven nadat hij de uitnodiging heeft geaccepteerd. 
+Er wordt een bevestigings bericht weer gegeven, maar de zojuist uitgenodigde ontwikkelaar wordt pas weer gegeven in de lijst nadat de uitnodiging is geaccepteerd. 
 
-Wanneer een ontwikkelaar wordt uitgenodigd, wordt een e-mail naar de ontwikkelaar verzonden. Deze e-mail wordt gegenereerd met behulp van een sjabloon en is aanpasbaar. Zie [E-mailsjablonen configureren voor][Configure email templates]meer informatie.
+Wanneer een ontwikkelaar wordt uitgenodigd, wordt een e-mail bericht naar de ontwikkelaar verzonden. Deze e-mail wordt gegenereerd met een sjabloon en kan worden aangepast. Zie [e-mail sjablonen configureren][Configure email templates]voor meer informatie.
 
 Zodra de uitnodiging is geaccepteerd, wordt het account actief.
 
-## <a name="deactivate-or-reactivate-a-developer-account"></a><a name="block-developer"> </a> Een ontwikkelaarsaccount deactiveren of opnieuw activeren
+## <a name="deactivate-or-reactivate-a-developer-account"></a><a name="block-developer"> </a> Een ontwikkelaars account deactiveren of opnieuw activeren
 
-Standaard zijn nieuw gemaakte of uitgenodigde ontwikkelaarsaccounts **Actief**. Als u een ontwikkelaarsaccount wilt deactiveren, klikt u op **Blokkeren**. Als u een geblokkeerd ontwikkelaarsaccount opnieuw wilt activeren, klikt u op **Activeren**. Een geblokkeerd ontwikkelaarsaccount heeft geen toegang tot de ontwikkelaarsportal of kan geen API's aanroepen. Als u een gebruikersaccount wilt verwijderen, klikt u op **Verwijderen**.
+Nieuw gemaakte of uitgenodigde ontwikkelaars accounts zijn standaard **actief**. Als u een ontwikkelaars account wilt deactiveren, klikt u op **blok keren**. Als u een geblokkeerd ontwikkelaars account opnieuw wilt activeren, klikt u op **activeren**. Een geblokkeerd ontwikkelaars account heeft geen toegang tot de ontwikkelaars portal of kan geen Api's aanroepen. Als u een gebruikers account wilt verwijderen, klikt u op **verwijderen**.
 
-Als u een gebruiker wilt blokkeren, voert u de volgende stappen uit.
+Voer de volgende stappen uit om een gebruiker te blok keren.
 
-1. Selecteer het tabblad **Gebruikers** links van het scherm.
-2. Klik op de gebruiker die u wilt blokkeren.
-3. Druk op **Blok**.
+1. Selecteer het tabblad **gebruikers** aan de linkerkant van het scherm.
+2. Klik op de gebruiker die u wilt blok keren.
+3. Druk op **blok**.
 
 ## <a name="reset-a-user-password"></a>Een gebruikerswachtwoord opnieuw instellen
 
-Zie de documentatie van de gebruikersentiteit in de [API-verwijzing API-api voor API-beheer](/rest/api/apimanagement/) om programmatisch met gebruikersaccounts te werken. Als u een wachtwoord voor een gebruikersaccount wilt resetten naar een specifieke waarde, u de [bewerking Een gebruiker](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) bijwerken gebruiken en het gewenste wachtwoord opgeven.
+Zie de documentatie van de gebruikers entiteit in de naslag informatie over [API Management rest API](/rest/api/apimanagement/) als u programmatisch wilt werken met gebruikers accounts. Als u een wacht woord voor een gebruikers account opnieuw wilt instellen op een specifieke waarde, kunt u de bewerking [een gebruiker bijwerken](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) gebruiken en het gewenste wacht woord opgeven.
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>Volgende stappen
-Zodra een ontwikkelaarsaccount is gemaakt, u het koppelen aan rollen en het abonneren op producten en API's. Zie [Groepen maken en gebruiken][How to create and use groups]voor meer informatie.
+Zodra een ontwikkelaars account is gemaakt, kunt u deze koppelen aan rollen en zich abonneren op producten en Api's. Zie [groepen maken en gebruiken][How to create and use groups]voor meer informatie.
 
 [api-management-management-console]: ./media/api-management-howto-create-or-invite-developers/api-management-management-console.png
 [api-management-add-new-user]: ./media/api-management-howto-create-or-invite-developers/api-management-add-new-user.png

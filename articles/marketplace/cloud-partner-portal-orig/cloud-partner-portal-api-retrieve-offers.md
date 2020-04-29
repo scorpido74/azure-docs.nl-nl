@@ -1,6 +1,6 @@
 ---
-title: API ophalen aanbiedingen | Azure Marketplace
-description: API haalt een samengevatte lijst met aanbiedingen op onder een naamruimte van een uitgever.
+title: API voor aanbiedingen ophalen | Azure Marketplace
+description: API haalt een overzicht van de aanbiedingen onder een Publisher-naam ruimte op.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,28 +8,28 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 0413bc71c113bf1eef9f761dbeed4c0d0afe735c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255954"
 ---
 <a name="retrieve-offers"></a>Aanbiedingen ophalen
 ===============
 
 > [!NOTE]
-> De API's van cloudpartnerportalen zijn geïntegreerd met het Partner Center en blijven werken nadat uw aanbiedingen zijn gemigreerd naar partnercentrum. De integratie brengt kleine veranderingen met zich mee. Bekijk de wijzigingen in [Cloud Partner Portal API Reference](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) om ervoor te zorgen dat uw code blijft werken na de migratie naar partnercentrum.
+> De Cloud Partner-portal-Api's zijn geïntegreerd met partner centrum en blijven werken nadat uw aanbiedingen zijn gemigreerd naar het partner centrum. De integratie introduceert kleine wijzigingen. Bekijk de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) om ervoor te zorgen dat uw code blijft werken na de migratie naar het partner centrum.
 
-Hiermee haalt u een samengevatte lijst met aanbiedingen op onder een naamruimte van een uitgever.
+Hiermee wordt een overzicht van aanbiedingen onder een Publisher-naam ruimte opgehaald.
 
  `GET https://cloudpartner.azure.com/api/publishers/<publisherId>/offers?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI-parameters
+<a name="uri-parameters"></a>URI-para meters
 --------------
 
-| **Naam**         |  **Beschrijving**                         |  **Gegevenstype** |
+| **Naam**         |  **Beschrijving**                         |  **Gegevens type** |
 | -------------    |  ------------------------------------    |  -----------   |
-|  uitgeverId     | Publisher-id, bijvoorbeeld`contoso` |   Tekenreeks    |
+|  publisherId     | Uitgevers-id, bijvoorbeeld`contoso` |   Tekenreeks    |
 |  api-versie     | Nieuwste versie van API                    |    Date        |
 |  |  |
 
@@ -44,7 +44,7 @@ Hiermee haalt u een samengevatte lijst met aanbiedingen op onder een naamruimte 
 |  |  |
 
 
-<a name="body-example"></a>Voorbeeld van het lichaam
+<a name="body-example"></a>Voor beeld van tekst
 ------------
 
 ### <a name="response"></a>Antwoord
@@ -66,40 +66,40 @@ Hiermee haalt u een samengevatte lijst met aanbiedingen op onder een naamruimte 
   ]
 ```
 
-### <a name="response-body-properties"></a>Eigenschappen van antwoordlichaam
+### <a name="response-body-properties"></a>Eigenschappen van antwoord tekst
 
 |  **Naam**       |       **Beschrijving**                                                                                                  |
 |  -------------  |      --------------------------------------------------------------------------------------------------------------    |
-|  offerTypeId    | Identificeert het type aanbieding                                                                                           |
-|  uitgeverId    | Id die de uitgever op unieke wijze identificeert                                                                      |
-|  status         | Status van het aanbod. Zie [Aanbiedingsstatus](#offer-status) hieronder voor de lijst met mogelijke waarden.                         |
-|  id             | GUID die het aanbod op unieke wijze identificeert in de naamruimte van de uitgever.                                                    |
-|  versie        | Huidige versie van het aanbod. De eigenschap versie kan niet door de client worden gewijzigd. Het wordt verhoogd na elke publicatie. |
-|  definitie     | Bevat een samengevatte weergave van de werkelijke definitie van de werkbelasting. Als u een gedetailleerde definitie wilt krijgen, gebruikt u de API [voor specifieke aanbieding ophalen.](./cloud-partner-portal-api-retrieve-specific-offer.md) |
-|  changedTime    | UTC-tijd wanneer de aanbieding voor het laatst is gewijzigd                                                                              |
+|  offerTypeId    | Hiermee wordt het type aanbieding aangegeven                                                                                           |
+|  publisherId    | Id waarmee de uitgever uniek wordt geïdentificeerd                                                                      |
+|  status         | De status van de aanbieding. Voor een lijst met mogelijke waarden, zie de status van de [aanbieding](#offer-status) hieronder.                         |
+|  id             | GUID die de aanbieding uniek identificeert in de naam ruimte van de uitgever.                                                    |
+|  versie        | Huidige versie van de aanbieding. De versie-eigenschap kan niet worden gewijzigd door de client. Deze wordt na elke publicatie verhoogd. |
+|  definitie     | Bevat een overzicht van de werkelijke definitie van de werk belasting. Gebruik de [specifieke aanbiedings](./cloud-partner-portal-api-retrieve-specific-offer.md) -API ophalen voor een gedetailleerde definitie. |
+|  changedTime    | UTC-tijd waarop de aanbieding voor het laatst is gewijzigd                                                                              |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Statuscodes voor antwoord
+### <a name="response-status-codes"></a>Antwoord status codes
 
-| **Code**  |  **Beschrijving**                                                                                                   |
+| **Gecodeerd**  |  **Beschrijving**                                                                                                   |
 | -------   |  ----------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK`- Het verzoek is verwerkt en alle aanbiedingen onder de uitgever zijn teruggegeven aan de klant.  |
-|  400      | `Bad/Malformed request`- De foutreactieinstantie kan meer informatie bevatten.                                    |
-|  403      | `Forbidden`- De client heeft geen toegang tot de opgegeven naamruimte.                                          |
-|  404      | `Not found`- De opgegeven entiteit bestaat niet.                                                                 |
+|  200      | `OK`-De aanvraag is verwerkt en alle aanbiedingen onder de uitgever zijn geretourneerd naar de client.  |
+|  400      | `Bad/Malformed request`-De hoofd tekst van het fout bericht bevat mogelijk meer informatie.                                    |
+|  403      | `Forbidden`-De client heeft geen toegang tot de opgegeven naam ruimte.                                          |
+|  404      | `Not found`-De opgegeven entiteit bestaat niet.                                                                 |
 |  |  |
 
 
-### <a name="offer-status"></a>Aanbiedingsstatus
+### <a name="offer-status"></a>Status van aanbieding
 
 |  **Naam**                    | **Beschrijving**                                  |
 |  ------------------------    | -----------------------------------------------  |
-|  Nooit gepubliceerd              | Aanbieding is nooit gepubliceerd.                  |
-|  Niet gestart                  | Aanbieding is nieuw, maar is niet gestart.                 |
-|  WaitingForPublisherReview   | Aanbieding wacht op goedkeuring van de uitgever.         |
-|  In uitvoering                     | Indiening van de aanbieding wordt verwerkt.             |
-|  Geslaagd                   | Indiening van de aanbieding heeft de verwerking voltooid.       |
-|  Geannuleerd                    | Indiening van de aanbieding is geannuleerd.                   |
-|  Mislukt                      | Indiening van aanbiedingen is mislukt.                         |
+|  NeverPublished              | De aanbieding is nooit gepubliceerd.                  |
+|  NotStarted                  | De aanbieding is nieuw, maar is niet gestart.                 |
+|  WaitingForPublisherReview   | Aanbieding wacht op goed keuring van de uitgever.         |
+|  In uitvoering                     | Verzen ding van aanbieding wordt verwerkt.             |
+|  Geslaagd                   | Het verzenden van aanbiedingen is voltooid.       |
+|  Geannuleerd                    | Het verzenden van het aanbod is geannuleerd.                   |
+|  Mislukt                      | Kan de aanbieding niet verzenden.                         |
 |  |  |

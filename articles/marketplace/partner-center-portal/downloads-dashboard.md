@@ -1,6 +1,6 @@
 ---
-title: Downloadt dashboard in commerciële marktplaatsanalyses in partnercentrum
-description: Meer informatie over het openen van downloadaanvragen voor uw marktplaatsaanbiedingen.
+title: Dash board downloaden in commerciële Marketplace Analytics op partner centrum
+description: Meer informatie over het verkrijgen van toegang tot download aanvragen voor uw Marketplace-aanbiedingen.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,33 +8,33 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: f81b8ae927df6c95bbc34be7ad9916c88aeba03b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81251670"
 ---
-# <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>Dashboard downloaden in commerciële marktplaatsanalyses
+# <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>Dash board downloaden in commerciële Marketplace-analyse
 
-In dit artikel vindt u informatie over het dashboard Downloads in het Partnercentrum. Dit dashboard toont een lijst met uw downloadverzoeken van de afgelopen 30 dagen.
+Dit artikel bevat informatie over het dash board down loads in Partner Center. In dit dash board wordt een lijst weer gegeven met uw download aanvragen in de afgelopen 30 dagen.
 
-Als u toegang wilt krijgen tot het dashboard Downloads, opent u het dashboard **[Analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** onder Commerciële marktplaats.
+Als u toegang wilt krijgen tot het dash board down loads, opent u het dash board **[analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** onder commerciële Marketplace.
 
 >[!NOTE]
-> Zie [Veelgestelde vragen en terminologie voor commerciële marktplaatsanalyses voor](./faq-terminology.md)gedetailleerde definities van analytics-terminologie.
+> Zie [Veelgestelde vragen en terminologie voor de analyse van commerciële Marketplace](./faq-terminology.md)voor gedetailleerde definities van analyse terminologie.
 
 ## <a name="downloads-dashboard"></a>Dashboard voor downloads
 
-In het dashboard **Downloads** van het menu **Analyseren** worden aanvragen weergegeven voor downloads die meer dan 1000 rijen klant- of bestelgegevens bevatten.
+In het dash board **down loads** van het menu **analyseren** worden aanvragen weer gegeven voor alle down loads die meer dan 1000 rijen met klant-of order gegevens bevatten.
 
-U ontvangt een pop-upmelding en e-mail met een link naar het dashboard **Downloads** wanneer u een download aanvraagt met meer dan 1000 rijen gegevens. Deze gegevens downloads zullen beschikbaar zijn voor een periode van 30 dagen en vervolgens verwijderd.
+U ontvangt een pop-upmelding en een e-mail bericht met een koppeling naar het dash board **down loads** wanneer u een down load opvraagt met meer dan 1000 rijen met gegevens. Deze gegevens worden gedownload gedurende een periode van 30 dagen en vervolgens verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Analytics voor de commerciële marktplaats voor](./analytics.md)de commerciële marktplaats voor een overzicht van analyserapporten die beschikbaar zijn in de commerciële marktplaats voor het Partnercentrum.
-- Zie [Overzichtsdashboard in commerciële marktplaatsanalyses](./summary-dashboard.md)voor grafieken, trends en waarden van geaggregeerde gegevens die de activiteit op de markt voor uw aanbieding samenvatten.
-- Zie [Orders Dashboard in commerciële marktplaatsanalyses](./orders-dashboard.md)voor informatie over uw bestellingen in een grafische en downloadbare indeling.
-- Zie [Gebruiksdashboard in commerciële marktplaatsanalyses](./usage-dashboard.md)voor virtuele machine (VM) voor gebruiks- en factureringsstatistieken met een datameter.
-- Zie [Customer Dashboard in commerciële marktplaatsanalyses](./customer-dashboard.md)voor gedetailleerde informatie over uw klanten, inclusief groeitrends.
-- Zie [Dashboard Beoordelingen en beoordelingen in commerciële marktplaatsanalyses](./ratings-reviews.md)voor ziet een geconsolideerde weergave van feedback van klanten voor aanbiedingen op Azure Marketplace en AppSource.
-- Voor veelgestelde vragen over commerciële marktplaatsanalyse en voor een uitgebreid woordenboek van gegevenstermen, zie [veelgestelde vragen en terminologie voor commerciële marktplaatsanalyses.](./faq-terminology.md)
+- Voor een overzicht van analyse rapporten die beschikbaar zijn in de commerciële Marketplace van partner Center raadpleegt u [Analytics voor de commerciële Marketplace in Partner Center](./analytics.md).
+- Zie [Summary dash board in Commercial Marketplace Analytics](./summary-dashboard.md)voor grafieken, trends en waarden van statistische gegevens die de Marketplace-activiteiten voor uw aanbieding samenvatten.
+- Voor informatie over uw orders in een grafische en download bare indeling raadpleegt u het [dash board orders in Commercial Marketplace Analytics](./orders-dashboard.md).
+- Voor virtuele machine (VM) zijn metrische gegevens over gebruik en gefactureerde facturering, Zie [gebruiks dashboard in commerciële Marketplace-analyses](./usage-dashboard.md).
+- Zie [klanten dashboard in Commercial Marketplace Analytics](./customer-dashboard.md)voor gedetailleerde informatie over uw klanten, waaronder groei trends.
+- Voor een geconsolideerde weer gave van feedback van klanten voor aanbiedingen op Azure Marketplace en AppSource raadpleegt u het [dash board beoordelingen en beoordelingen in Commercial Marketplace Analytics](./ratings-reviews.md).
+- Zie [Veelgestelde vragen en terminologie voor de analyse van commerciële Marketplace](./faq-terminology.md)voor veelgestelde vragen over commerciële Marketplace-analyses en voor een uitgebreid woorden boek met gegevens termen.

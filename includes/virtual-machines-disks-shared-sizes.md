@@ -9,31 +9,31 @@ ms.date: 04/06/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 0b185d545e129c941d5df2e8ce86ee684174b666
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81008327"
 ---
-Voorlopig kunnen alleen ultraschijven en premium SSD's gedeelde schijven inschakelen. Verschillende schijfformaten kunnen `maxShares` een andere limiet hebben, `maxShares` die u niet overschrijden bij het instellen van de waarde. Voor premium SSD's zijn de schijfformaten die het delen van hun schijven ondersteunen P15 en groter.
+Momenteel kunnen alleen Ultra disks en Premium Ssd's gedeelde schijven inschakelen. Verschillende schijf grootten kunnen een andere `maxShares` limiet hebben, die u niet overschrijdt bij `maxShares` het instellen van de waarde. Voor Premium Ssd's zijn de schijf grootten die ondersteuning bieden voor het delen van hun schijven P15 en hoger.
 
-Voor elke schijf `maxShares` u een waarde definiëren die het maximum aantal knooppunten vertegenwoordigt dat tegelijkertijd de schijf kan delen. Als u bijvoorbeeld van plan bent een failovercluster met twee `maxShares=2`nodes in te stellen, stelt u . De maximale waarde is een bovengrens. Knooppunten kunnen het cluster aansluiten of verlaten (de schijf monteren of ontkoppelen) `maxShares` zolang het aantal knooppunten lager is dan de opgegeven waarde.
+Voor elke schijf kunt u een `maxShares` waarde definiëren die het maximum aantal knoop punten vertegenwoordigt die de schijf gelijktijdig kunnen delen. Als u bijvoorbeeld van plan bent om een failover-cluster met twee knoop punten in te stellen, `maxShares=2`stelt u in. De maximum waarde is een bovengrens. Knoop punten kunnen worden toegevoegd aan of het cluster verlaten (koppelen of ontkoppelen van de schijf) zolang het aantal knoop punten lager is dan `maxShares` de opgegeven waarde.
 
 > [!NOTE]
-> De `maxShares` waarde kan alleen worden ingesteld of bewerkt wanneer de schijf is losgekoppeld van alle knooppunten.
+> De `maxShares` waarde kan alleen worden ingesteld of bewerkt wanneer de schijf wordt losgekoppeld van alle knoop punten.
 
-### <a name="premium-ssd-ranges"></a>Premium SSD-bereiken
+### <a name="premium-ssd-ranges"></a>Premium-SSD bereiken
 
-In de volgende tabel worden de `maxShares` toegestane maximumwaarden per premium schijfgrootte geïllustreerd:
+In de volgende tabel ziet u de toegestane maximum waarden `maxShares` voor Premium-schijf grootten:
 
-|Schijfformaten  |maxShares-limiet  |
+|Schijf grootten  |limiet voor maxShares  |
 |---------|---------|
 |P15, P20     |2         |
 |P30, P40, P50     |5         |
 |P60, P70, P80     |10         |
 
-De IOPS- en bandbreedtelimieten voor een `maxShares` schijf worden niet beïnvloed door de waarde. De maximale IOPS van een P15-schijf is bijvoorbeeld 1100, of het nu gaat om maxShares = 1 of maxShares > 1.
+De limiet voor IOPS en band breedte voor een schijf wordt niet beïnvloed `maxShares` door de waarde. De maximale IOPS van een P15-schijf is bijvoorbeeld 1100 of maxShares = 1 of maxShares > 1.
 
-### <a name="ultra-disk-ranges"></a>Ultra-schijfbereiken
+### <a name="ultra-disk-ranges"></a>Ultra schijf bereiken
 
-De `maxShares` minimumwaarde is 1, `maxShares` terwijl de maximale waarde 5 is. Er zijn geen grootte beperkingen op ultra schijven, elke `maxShares`grootte ultra schijf kan elke waarde gebruiken voor, tot en met de maximale waarde.
+De minimum `maxShares` waarde is 1 en de maximum `maxShares` waarde is 5. Er zijn geen beperkingen voor de grootte van ultra schijven, ongeacht de grootte van een ultra schijf `maxShares`kan elke waarde voor bevatten, tot en met de maximum waarde.

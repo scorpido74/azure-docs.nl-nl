@@ -1,5 +1,5 @@
 ---
-title: Azure CDN-profiel migreren van Verizon Standard naar Verizon Premium
+title: Azure CDN Profiel van Verizon Standard migreren naar Verizon Premium
 description: Meer informatie over de details van het migreren van een profiel van Verizon Standard naar Verizon Premium.
 services: cdn
 documentationcenter: ''
@@ -16,39 +16,39 @@ ms.date: 06/21/2018
 ms.author: allensu
 ms.custom: ''
 ms.openlocfilehash: 61c472281c64fba451bb9b05f69ebee09bc763fd
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260435"
 ---
-# <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Een Azure CDN-profiel migreren van Standard Verizon naar Premium Verizon
+# <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Een Azure CDN profiel migreren van Standard Verizon naar Premium Verizon
 
-Wanneer u een CDN-profiel (Azure Content Delivery Network) maakt om uw eindpunten te beheren, biedt Azure CDN vier verschillende producten waaruit u kiezen. Zie [Azure CDN-productfuncties vergelijken](cdn-features.md)voor informatie over de verschillende producten en de beschikbare functies daarvan.
+Wanneer u een profiel van Azure Content Delivery Network (CDN) maakt om uw eind punten te beheren, biedt Azure CDN vier verschillende producten waaruit u kunt kiezen. Zie voor informatie over de verschillende producten en de beschik bare functies [vergelijken Azure CDN product functies](cdn-features.md).
 
-Als u een **Azure CDN-standaard** hebt gemaakt vanuit het Verizon-profiel en deze gebruikt om uw CDN-eindpunten te beheren, hebt u de optie om deze te upgraden naar een **Azure CDN Premium vanuit het Verizon-profiel.** Wanneer u een upgrade uitvoert, worden uw CDN-eindpunten en al uw gegevens bewaard. 
+Als u een **Azure CDN standaard Profiel van Verizon** hebt gemaakt en deze gebruikt voor het beheren van uw CDN-eind punten, hebt u de optie om het te upgraden naar een **Azure CDN Premium-Profiel van Verizon** . Wanneer u een upgrade uitvoert, blijven uw CDN-eind punten en al uw gegevens behouden. 
 
 > [!IMPORTANT]
-> Zodra u een upgrade hebt uitgevoerd naar een **Azure CDN Premium vanuit** Verizon-profiel, u deze niet later converteren naar een **Azure CDN-standaard vanuit het Verizon-profiel.**
+> Zodra u een upgrade hebt uitgevoerd naar een **Azure CDN Premium-Profiel van Verizon** , kunt u het niet later weer converteren naar een **Azure CDN standaard Profiel van Verizon** .
 > 
 
-Neem contact op met [Microsoft Support](https://azure.microsoft.com/support/options/)om een **Azure CDN-standaard te** upgraden vanuit het Verizon-profiel.
+Neem contact op met [Microsoft ondersteuning](https://azure.microsoft.com/support/options/)als u een upgrade wilt uitvoeren **van een Azure CDN standaard Profiel van Verizon** .
 
-## <a name="profile-comparison"></a>Profielvergelijking
-**Azure CDN Premium van Verizon-profielen** hebben de volgende belangrijke verschillen met **Azure CDN-standaard van Verizon-profielen:**
-- Voor bepaalde Azure CDN-functies, zoals [compressie,](cdn-improve-performance.md) [cachingregels](cdn-caching-rules.md)en [geofiltering,](cdn-restrict-access-by-country.md)u de Azure CDN-interface niet gebruiken, u moet de Verizon-portal gebruiken via de knop **Beheren.**
-- API: In tegenstelling tot Standard Verizon u de API niet gebruiken om de functies te beheren die toegankelijk zijn via de Premium Verizon-portal. U de API echter gebruiken om andere veelvoorkomende functies te beheren, zoals het maken/verwijderen van een eindpunt, het zuiveren/laden van cache-elementen en het in- en uitschakelen van een aangepast domein.
-- Prijzen: Premium Verizon heeft een andere prijsstructuur voor gegevensoverdrachten dan Standard Verizon. Zie [Content Delivery Network-prijzen voor](https://azure.microsoft.com/pricing/details/cdn/)meer informatie .
+## <a name="profile-comparison"></a>Profiel vergelijking
+**Azure CDN Premium van Verizon** -profielen hebben de volgende belang rijke verschillen ten opzichte van **Azure CDN Standard van Verizon** -profielen:
+- Voor bepaalde Azure CDN functies zoals [compressie](cdn-improve-performance.md), [cache regels](cdn-caching-rules.md)en geo- [filtering](cdn-restrict-access-by-country.md)kunt u de Azure CDN-interface niet gebruiken. u moet de Verizon-Portal gebruiken via de knop **beheren** .
+- API: in tegens telling tot standaard Verizon kunt u de API niet gebruiken om de functies te beheren die toegankelijk zijn vanuit de Premium Verizon-Portal. U kunt echter de API gebruiken om andere algemene functies te beheren, zoals het maken/verwijderen van een eind punt, het opschonen/laden van assets in de cache en het inschakelen/uitschakelen van een aangepast domein.
+- Prijzen: Premium Verizon heeft een andere prijs structuur voor gegevens overdracht dan Standard Verizon. Zie [Content Delivery Network prijzen](https://azure.microsoft.com/pricing/details/cdn/)voor meer informatie.
 
-**Azure CDN Premium van Verizon-profielen** hebben de volgende extra functies:
-- [Tokenverificatie:](cdn-token-auth.md)hiermee kunnen gebruikers een token verkrijgen en gebruiken om beveiligde bronnen op te halen.
-- [Rules engine:](cdn-rules-engine.md)Hiermee u aanpassen hoe HTTP-aanvragen worden behandeld.
-- Geavanceerde analysetools:
-   - [Gedetailleerde HTTP-analyses](cdn-advanced-http-reports.md)
-   - [Geavanceerde prestatieanalyses](cdn-edge-performance.md)
-   - [Realtime analyses](cdn-real-time-alerts.md)
+**Azure CDN Premium van Verizon** -profielen hebben de volgende extra functies:
+- [Token verificatie](cdn-token-auth.md): Hiermee kunnen gebruikers een token verkrijgen en gebruiken voor het ophalen van beveiligde bronnen.
+- [Regel engine](cdn-rules-engine.md): Hiermee kunt u aanpassen hoe HTTP-aanvragen worden verwerkt.
+- Geavanceerde analyse Programma's:
+   - [Gedetailleerde HTTP-analyse](cdn-advanced-http-reports.md)
+   - [Edge Performance Analytics](cdn-edge-performance.md)
+   - [Real-time analyse](cdn-real-time-alerts.md)
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Azure CDN-regels engine reference](cdn-rules-engine-reference.md)voor meer informatie over de engine voor regels .
+Zie voor meer informatie over de regel engine de [referentie voor Azure CDN regels-engine](cdn-rules-engine-reference.md).
 

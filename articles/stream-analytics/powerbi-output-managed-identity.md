@@ -1,54 +1,54 @@
 ---
-title: Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren naar Power BI-uitvoer
-description: In dit artikel wordt beschreven hoe u beheerde identiteiten gebruikt om uw Azure Stream Analytics-taak te verifiëren voor Power BI-uitvoer.
+title: Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren voor Power BI-uitvoer
+description: In dit artikel wordt beschreven hoe u beheerde identiteiten gebruikt om uw Azure Stream Analytics-taak te verifiëren voor Power BI uitvoer.
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/10/2020
 ms.openlocfilehash: 31a5195038ef25acadc08e2acbedf8471b25833c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261411"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren naar Power BI
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren voor Power BI
 
-[Managed Identity-verificatie](../active-directory/managed-identities-azure-resources/overview.md) voor uitvoer naar Power BI geeft Stream Analytics-taken directe toegang tot een werkruimte binnen uw Power BI-account. Met deze functie kunnen implementaties van Stream Analytics-taken volledig worden geautomatiseerd, omdat een gebruiker zich niet langer interactief hoeft aan te melden bij Power BI via de Azure-portal. Bovendien worden langlopende taken die naar Power BI schrijven nu beter ondersteund, omdat u de taak niet periodiek opnieuw hoeft te autoriseren.
+Met [beheerde identiteits verificatie](../active-directory/managed-identities-azure-resources/overview.md) voor uitvoer naar Power BI hebt stream Analytics-taken direct toegang tot een werk ruimte binnen uw Power bi-account. Met deze functie kunnen implementaties van Stream Analytics taken volledig worden geautomatiseerd, omdat het niet langer nodig is dat een gebruiker zich interactief aanmeldt bij Power BI via de Azure Portal. Daarnaast zijn langlopende taken die naar Power BI schrijven, nu beter worden ondersteund, omdat u de taak niet regel matig opnieuw moet autoriseren.
 
-In dit artikel ziet u hoe u Managed Identity inschakelt voor de Power BI-uitvoer(s) van een Stream Analytics-taak via de Azure-portal en via een Azure Resource Manager-implementatie.
+In dit artikel wordt beschreven hoe u beheerde identiteit kunt inschakelen voor de Power BI uitvoer (en) van een Stream Analytics-taak via de Azure Portal en via een Azure Resource Manager-implementatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het gebruik van deze functie geldt het volgende:
+Het volgende is vereist voor het gebruik van deze functie:
 
 - Een Power BI-account met een [Pro-licentie](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro).
 
-- Een verbeterde werkruimte binnen uw Power BI-account. Zie de aankondiging van Deze functie door [Power BI](https://powerbi.microsoft.com/blog/announcing-new-workspace-experience-general-availability-ga/) voor meer details.
+- Een bijgewerkte werk ruimte in uw Power BI-account. Raadpleeg [de aankondiging van Power bi](https://powerbi.microsoft.com/blog/announcing-new-workspace-experience-general-availability-ga/) van deze functie voor meer informatie.
 
-## <a name="create-a-stream-analytics-job-using-the-azure-portal"></a>Een Stream Analytics-taak maken met de Azure-portal
+## <a name="create-a-stream-analytics-job-using-the-azure-portal"></a>Een Stream Analytics taak maken met behulp van de Azure Portal
 
-1. Maak een nieuwe Stream Analytics-taak of open een bestaande taak in de Azure-portal. Selecteer **Beheerde identiteit** onder **Configureren**in de menubalk aan de linkerkant van het scherm. Controleer of 'Beheerde identiteit met systeemtoegewezen identiteit' is geselecteerd en selecteer de knop **Opslaan** onder in het scherm.
+1. Maak een nieuwe Stream Analytics-taak of open een bestaande taak in de Azure Portal. Selecteer in de menu balk aan de linkerkant van het scherm **beheerde identiteit** onder **configureren**. Zorg ervoor dat de door het systeem toegewezen beheerde identiteit gebruiken is geselecteerd en selecteer vervolgens de knop **Opslaan** aan de onderkant van het scherm.
 
-   ![Beheerde identiteit van Stream Analytics configureren](./media/common/stream-analytics-enable-managed-identity.png)
+   ![Stream Analytics beheerde identiteit configureren](./media/common/stream-analytics-enable-managed-identity.png)
 
-2. Voordat u de uitvoer configureert, geeft u de taak Stream Analytics toegang tot uw Power BI-werkruimte door de aanwijzingen in de [taak Stream Analytics toegang te geven tot uw Power BI-werkruimtegedeelte](#give-the-stream-analytics-job-access-to-your-power-bi-workspace) van dit artikel.
+2. Voordat u de uitvoer configureert, geeft u de Stream Analytics-taak toegang tot uw Power BI-werk ruimte door de instructies in de sectie [de stream Analytics-taak toegang geven tot uw Power bi werkruimte](#give-the-stream-analytics-job-access-to-your-power-bi-workspace) in dit artikel te volgen.
 
-3. Navigeer naar het gedeelte **Uitvoer** van de taak van uw streamanalyse, selecteer **+ Toevoegen**en kies **Power BI**. Selecteer vervolgens de knop **Autoriseren** en meld u aan met uw Power BI-account.
+3. Navigeer naar het gedeelte **uitvoer** van de taak van de stream-analyse, selecteer **+ toevoegen**en kies vervolgens **Power bi**. Selecteer vervolgens de knop **autoriseren** en meld u aan met uw Power bi-account.
 
    ![Autoriseren met Power BI-account](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-authorize-powerbi.png)
 
-4. Zodra u dit heeft geautoriseerd, wordt een vervolgkeuzelijst gevuld met alle werkruimten waartoe u toegang hebt. Selecteer de werkruimte die u in de vorige stap hebt geautoriseerd. Selecteer **vervolgens Beheerde identiteit** als de 'verificatiemodus'. Selecteer ten slotte de knop **Opslaan.**
+4. Na de autorisatie wordt een vervolg keuzelijst gevuld met alle werk ruimten waartoe u toegang hebt. Selecteer de werk ruimte die u in de vorige stap hebt geautoriseerd. Selecteer vervolgens **beheerde identiteit** als de ' verificatie modus '. Klik ten slotte op de knop **Opslaan** .
 
-   ![Power BI-uitvoer configureren met Beheerde identiteit](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-configure-powerbi-with-managed-id.png)
+   ![Power BI uitvoer configureren met beheerde identiteit](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-configure-powerbi-with-managed-id.png)
 
 ## <a name="azure-resource-manager-deployment"></a>Implementatie van Azure Resource Manager
 
-Met Azure Resource Manager u de implementatie van uw Stream Analytics-taak volledig automatiseren. U Resource Manager-sjablonen implementeren met Azure PowerShell of Azure [CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). In de onderstaande voorbeelden wordt gebruik gemaakt van de Azure CLI.
+Met Azure Resource Manager kunt u de implementatie van uw Stream Analytics taak volledig automatiseren. U kunt Resource Manager-sjablonen implementeren met behulp van Azure PowerShell of de [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). In de onderstaande voor beelden wordt de Azure CLI gebruikt.
 
 
-1. U een **Microsoft.StreamAnalytics/streamingjobs-bron** met een beheerde identiteit maken door de volgende eigenschap op te nemen in het resourcegedeelte van uw resourcemanagersjabloon:
+1. U kunt een **micro soft. StreamAnalytics/streamingjobs-** resource maken met een beheerde identiteit door de volgende eigenschap op te nemen in de resource sectie van uw Resource Manager-sjabloon:
 
     ```json
     "identity": {
@@ -56,7 +56,7 @@ Met Azure Resource Manager u de implementatie van uw Stream Analytics-taak volle
     }
     ```
 
-   Met deze eigenschap moet Azure Resource Manager de identiteit voor uw Stream Analytics-taak maken en beheren. Hieronder vindt u een voorbeeldsjabloon Resource Manager waarmee een streamanalytics-taak met Managed Identity is ingeschakeld en een Power BI-uitvoersink die beheerde identiteit gebruikt:
+   Met deze eigenschap geeft u Azure Resource Manager om de identiteit voor uw Stream Analytics taak te maken en te beheren. Hieronder ziet u een voor beeld van een resource manager-sjabloon waarmee een Stream Analytics taak wordt geïmplementeerd met beheerde identiteiten ingeschakeld en een Power BI uitvoer sink die gebruikmaakt van beheerde identiteit:
 
     ```json
     {
@@ -97,7 +97,7 @@ Met Azure Resource Manager u de implementatie van uw Stream Analytics-taak volle
     }
     ```
 
-    Implementeer de taak hierboven in de **voorbeeldgroep Voorbeeldgroep** resource met de onderaanstaande opdracht Azure CLI:
+    Implementeer de bovenstaande taak in de **ExampleGroup** van de resource groep met behulp van de onderstaande Azure cli-opdracht:
 
     ```azurecli
     az group deployment create --resource-group ExampleGroup -template-file StreamingJob.json
@@ -109,7 +109,7 @@ Met Azure Resource Manager u de implementatie van uw Stream Analytics-taak volle
     az resource show --ids /subscriptions/<subsription-id>/resourceGroups/<resource-group>/providers/Microsoft.StreamAnalytics/StreamingJobs/<resource-name>
     ```
 
-    De bovenstaande opdracht retourneert een antwoord zoals het onderstaande:
+    De bovenstaande opdracht retourneert een antwoord zoals hieronder wordt weer gegeven:
 
     ```json
     {
@@ -148,54 +148,54 @@ Met Azure Resource Manager u de implementatie van uw Stream Analytics-taak volle
     }
     ```
 
-    Als u van plan bent de REST API van Power BI te gebruiken om de taak Stream Analytics toe te voegen aan uw Power BI-werkruimte, noteert u de geretourneerde 'principalId'.
+    Als u van plan bent Power BI REST API te gebruiken om de Stream Analytics taak toe te voegen aan uw Power BI-werk ruimte, noteert u de geretourneerde ' principalId '.
 
-3. Nu de taak is gemaakt, gaat u door met de taak Stream Analytics toegang geven tot het gedeelte [Power BI-werkruimte](#give-the-stream-analytics-job-access-to-your-power-bi-workspace) in dit artikel.
+3. Nu de taak is gemaakt, gaat u verder met de sectie [de stream Analytics-taak toegang geven tot uw Power bi werk ruimte](#give-the-stream-analytics-job-access-to-your-power-bi-workspace) in dit artikel.
 
 
-## <a name="give-the-stream-analytics-job-access-to-your-power-bi-workspace"></a>Geef de Stream Analytics-taak toegang tot uw Power BI-werkruimte
+## <a name="give-the-stream-analytics-job-access-to-your-power-bi-workspace"></a>De Stream Analytics-taak toegang geven tot uw Power BI-werk ruimte
 
-Nu de functie Stream Analytics is gemaakt, kan deze toegang krijgen tot een Power BI-werkruimte.
+Nu de Stream Analytics-taak is gemaakt, kan deze toegang krijgen tot een Power BI-werk ruimte.
 
-### <a name="use-the-power-bi-ui"></a>De Power BI-gebruikersinterface gebruiken
+### <a name="use-the-power-bi-ui"></a>De Power BI-gebruikers interface gebruiken
 
    > [!Note]
-   > Als u de taak Stream Analytics wilt toevoegen aan uw Power BI-werkruimte met behulp van de gebruikersinterface, moet u ook serviceprincipal-toegang inschakelen in de **ontwikkelaarsinstellingen** in de Power BI-beheerportal. Zie [Aan de slag met een serviceprincipal](https://docs.microsoft.com/power-bi/developer/embed-service-principal) voor meer informatie.
+   > Als u de Stream Analytics-taak wilt toevoegen aan uw Power BI-werk ruimte met behulp van de gebruikers interface, moet u ook toegang tot de Service-Principal inschakelen in de **instellingen voor ontwikkel aars** in de beheer portal van Power bi. Zie [aan de slag met een Service-Principal](https://docs.microsoft.com/power-bi/developer/embed-service-principal) voor meer informatie.
 
-1. Navigeer naar de toegangsinstellingen van de werkruimte. Zie dit artikel voor meer informatie: [Geef toegang tot uw werkruimte.](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces#give-access-to-your-workspace)
+1. Navigeer naar de toegangs instellingen van de werk ruimte. Raadpleeg dit artikel voor meer informatie: [toegang verlenen tot uw werk ruimte](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces#give-access-to-your-workspace).
 
-2. Typ de naam van uw streamanalytics-taak in het tekstvak en selecteer **Inzender** als toegangsniveau.
+2. Typ de naam van uw Stream Analytics-taak in het tekstvak en selecteer **Inzender** als toegangs niveau.
 
-3. Selecteer Het deelvenster **toevoegen** en sluiten.
+3. Selecteer **toevoegen** en sluiten van het deel venster.
 
-   ![Stream Analytics-taak toevoegen aan Power BI-werkruimte](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-add-job-to-powerbi-workspace.png)
+   ![Stream Analytics taak toevoegen aan Power BI werk ruimte](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-add-job-to-powerbi-workspace.png)
 
-### <a name="use-the-power-bi-powershell-cmdlets"></a>De Power BI PowerShell-cmdlets gebruiken
+### <a name="use-the-power-bi-powershell-cmdlets"></a>De Power BI Power shell-cmdlets gebruiken
 
-1. Installeer de `MicrosoftPowerBIMgmt` Power BI PowerShell-cmdlets.
+1. Installeer de Power BI `MicrosoftPowerBIMgmt` Power shell-cmdlets.
 
    > [!Important]
-   > Zorg ervoor dat u versie 1.0.821 of hoger van de cmdlets gebruikt.
+   > Controleer of u versie 1.0.821 of hoger van de cmdlets gebruikt.
 
 ```powershell
 Install-Module -Name MicrosoftPowerBIMgmt
 ```
 
-2. Log in op Power BI.
+2. Meld u aan bij Power BI.
 
 ```powershell
 Login-PowerBI
 ```
 
-3. Voeg uw Stream Analytics-taak toe als bijdrager aan de werkruimte.
+3. Uw Stream Analytics-taak als Inzender toevoegen aan de werk ruimte.
 
 ```powershell
 Add-PowerBIWorkspaceUser -WorkspaceId <group-id> -PrincipalId <principal-id> -PrincipalType App -AccessRight Contributor
 ```
 
-### <a name="use-the-power-bi-rest-api"></a>De Power BI REST API gebruiken
+### <a name="use-the-power-bi-rest-api"></a>De Power BI gebruiken REST API
 
-De functie Stream Analytics kan ook worden toegevoegd als bijdrager aan de werkruimte door de REST-API 'Groepsgebruiker toevoegen' rechtstreeks te gebruiken. Volledige documentatie voor deze API is hier te vinden: [Groepen - Groepsgebruiker toevoegen](https://docs.microsoft.com/rest/api/power-bi/groups/addgroupuser).
+De Stream Analytics-taak kan ook worden toegevoegd als een bijdrager aan de werk ruimte met behulp van de REST API groeps gebruiker rechtstreeks toevoegen. Volledige documentatie voor deze API vindt u hier: [groepen: groeps gebruiker toevoegen](https://docs.microsoft.com/rest/api/power-bi/groups/addgroupuser).
 
 **Voorbeeldaanvraag**
 ```http
@@ -211,17 +211,17 @@ Aanvraagtekst
 ```
 
 ## <a name="limitations"></a>Beperkingen
-Hieronder staan de beperkingen van deze functie:
+Hieronder vindt u de beperkingen van deze functie:
 
-- Klassieke Power BI-werkruimten worden niet ondersteund.
+- Klassieke Power BI-werk ruimten worden niet ondersteund.
 
 - Azure-accounts zonder Azure Active Directory.
 
-- Toegang met meerdere tenant's wordt niet ondersteund. De serviceprincipal die is gemaakt voor een bepaalde Functie Van Stream Analytics moet zich bevinden in dezelfde Azure Active Directory-tenant waarin de taak is gemaakt en kan niet worden gebruikt met een bron die zich in een andere Azure Active Directory-tenant bevindt.
+- Toegang met meerdere tenants wordt niet ondersteund. De service-principal die is gemaakt voor een bepaalde Stream Analytics taak moet zich in dezelfde Azure Active Directory Tenant bevinden waarin de taak is gemaakt, en kan niet worden gebruikt met een resource die zich in een andere Azure Active Directory Tenant bevindt.
 
-- [Gebruikerstoegewezen identiteit](../active-directory/managed-identities-azure-resources/overview.md) wordt niet ondersteund. Dit betekent dat u uw eigen serviceprincipal niet invoeren om te worden gebruikt door hun Stream Analytics-taak. De serviceprincipal moet worden gegenereerd door Azure Stream Analytics.
+- De door de [gebruiker toegewezen identiteit](../active-directory/managed-identities-azure-resources/overview.md) wordt niet ondersteund. Dit betekent dat u uw eigen Service-Principal niet kunt invoeren om te worden gebruikt door hun Stream Analytics-taak. De Service-Principal moet worden gegenereerd door Azure Stream Analytics.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Integratie van Power BI-dashboards met Azure Stream Analytics](./stream-analytics-power-bi-dashboard.md)
-* [Inzicht krijgen in uitvoer vanuit Azure Stream Analytics](./stream-analytics-define-outputs.md)
+* [Integratie van dash board Power BI met Azure Stream Analytics](./stream-analytics-power-bi-dashboard.md)
+* [Meer informatie over de uitvoer van Azure Stream Analytics](./stream-analytics-define-outputs.md)

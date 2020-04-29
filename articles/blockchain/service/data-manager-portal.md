@@ -1,174 +1,174 @@
 ---
-title: Blockchain-gegevensbeheer configureren met Azure-portal - Azure Blockchain-service
-description: Maak en beheer Blockchain Data Manager voor Azure Blockchain Service met behulp van de Azure-portal.
+title: Block Chain configureren Data Manager met behulp van Azure Portal-Azure Block Chain-Service
+description: Block Chain Data Manager voor de Azure Block Chain-service maken en beheren met behulp van de Azure Portal.
 ms.date: 03/30/2020
 ms.topic: article
 ms.reviewer: ravastra
 ms.openlocfilehash: 08f5a4a807087afce13dd4a6e96c0e9dd0a36103
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260595"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Blockchain Data Manager configureren met behulp van Azure Portal
 
-Configureer Blockchain Data Manager voor Azure Blockchain Service om blockchain-gegevens vast te leggen en deze naar een Azure Event Grid Topic te verzenden.
+Configureer Block Chain Data Manager voor de Azure Block Chain-service om Block Chain-gegevens vast te leggen en deze naar een Azure Event Grid onderwerp te verzenden.
 
-Als u een blockchain-gegevensbeheerexemplaar wilt configureren, gaat u als:
+Als u een Block Chain Data Manager-exemplaar wilt configureren, doet u het volgende:
 
-* Een Blockchain Data Manager-exemplaar maken voor een Azure Blockchain Service-transactieknooppunt
-* Voeg uw blockchain-toepassingen toe
+* Een Block Chain Data Manager-exemplaar maken voor een Azure Block Chain Service-transactie knooppunt
+* Uw Block Chain-toepassingen toevoegen
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Snelstart [voltooien: maak een blockchain-lid met behulp van de Azure-portal](create-member.md) of [Quickstart: maak een Azure Blockchain Service-blockchain-lid met Azure CLI](create-member-cli.md). Azure Blockchain Service *Standard-laag* wordt aanbevolen bij het gebruik van Blockchain Data Manager.
-* Een [gebeurtenisrasteronderwerp maken](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
-* Meer informatie over [gebeurtenishandlers in Azure Event Grid](../../event-grid/event-handlers.md)
+* Volledige [Snelstartgids: Maak een Block Chain-lid met behulp van de Azure Portal](create-member.md) of [Quick Start: een Azure Block Chain Service Block Chain-lid maken met behulp van Azure cli](create-member-cli.md). De *Standard* -laag van de Azure Block Chain-service wordt aanbevolen bij het gebruik van Block Chain Data Manager.
+* Een [Event grid onderwerp](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) maken
+* Meer informatie over [gebeurtenis-handlers in azure Event grid](../../event-grid/event-handlers.md)
 
-## <a name="create-instance"></a>Instantie maken
+## <a name="create-instance"></a>Exemplaar maken
 
-Een instantie voor Blockchain Data Manager verbindt en bewaakt een Azure Blockchain Service-transactieknooppunt. Alleen gebruikers met toegang tot het transactieknooppunt kunnen een verbinding maken. Een instantie legt alle ruwe blok- en ruwe transactiegegevens uit het transactieknooppunt vast. Blockchain Data Manager publiceert een **RawBlockAndTransactionMsg-bericht** dat een superset van informatie is die is geretourneerd van web3.eth [getBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock) en getTransaction-query's. [getTransaction](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction)
+Een Block Chain Data Manager-exemplaar maakt verbinding met een Azure Block Chain Service-transactie knooppunt en bewaakt deze. Alleen gebruikers met toegang tot het transactie knooppunt kunnen een verbinding maken. Een exemplaar legt alle onbewerkte blok keringen en ruwe transactie gegevens vast van het trans actie-knoop punt. Block Chain Data Manager een **RawBlockAndTransactionMsg** -bericht publiceert dat een hoofd verzameling informatie is die wordt geretourneerd door web3. ETH [GetBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock) -en [getTransaction](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction) -query's.
 
-Een uitgaande verbinding verzendt blockchain-gegevens naar Azure Event Grid. U configureert één uitgaande verbinding wanneer u de instantie maakt. Blockchain Data Manager ondersteunt meerdere uitgaande netwerkverbindingen voor een evenementraster voor een bepaald Blockchain Data Manager-exemplaar. U blockchain-gegevens naar één bestemming verzenden of blockchain-gegevens naar meerdere bestemmingen verzenden. Als u een andere bestemming wilt toevoegen, voegt u alleen extra uitgaande verbindingen toe aan de instantie.
+Een uitgaande verbinding verzendt Block Chain-gegevens naar Azure Event Grid. Wanneer u het exemplaar maakt, configureert u één uitgaande verbinding. Block Chain Data Manager ondersteunt meerdere uitgaande verbindingen van Event Grid onderwerp voor een gegeven block Chain Data Manager exemplaar. U kunt Block Chain-gegevens naar één bestemming verzenden of block Chain-gegevens verzenden naar meerdere bestemmingen. Als u een andere bestemming wilt toevoegen, voegt u extra uitgaande verbindingen toe aan het exemplaar.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Ga naar het Azure Blockchain Service-lid dat u wilt verbinden met Blockchain Data Manager. Selecteer **Blockchain Data Manager**.
+1. Ga naar het lid van de Azure Block Chain-service waarmee u verbinding wilt maken met block Chain Data Manager. Selecteer **block chain data manager**.
 1. Selecteer **Toevoegen**.
 
-    ![Blockchain-gegevensbeheer toevoegen](./media/data-manager-portal/add-instance.png)
+    ![Block Chain Data Manager toevoegen](./media/data-manager-portal/add-instance.png)
 
     Voer de volgende details in:
 
     Instelling | Beschrijving
     --------|------------
-    Name | Voer een unieke naam in voor een verbonden Blockchain Data Manager. De naam Blockchain Data Manager kan kleine letters en cijfers bevatten en heeft een maximale lengte van 20 tekens.
-    Transactieknooppunt | Kies een transactieknooppunt. Alleen transactieknooppunten die u hebt gelezen, worden weergegeven.
-    Verbindingsnaam | Voer een unieke naam in van de uitgaande verbinding waar blockchain-transactiegegevens worden verzonden.
-    Eindpunt van gebeurtenisraster | Kies een gebeurtenisrasteronderwerp in hetzelfde abonnement als het exemplaar Blockchain Data Manager.
+    Naam | Voer een unieke naam in voor een verbonden Block Chain Data Manager. De naam van de Block Chain-Data Manager mag kleine letters en cijfers bevatten en mag Maxi maal 20 tekens lang zijn.
+    Transactie knooppunt | Kies een transactie knooppunt. Alleen transactie knooppunten waarvoor u lees toegang hebt, worden weer gegeven.
+    Verbindingsnaam | Voer een unieke naam in voor de uitgaande verbinding waar Block Chain-transactie gegevens worden verzonden.
+    Event grid-eind punt | Kies een event grid-onderwerp in hetzelfde abonnement als de Block Chain-Data Manager instantie.
 
 1. Selecteer **OK**.
 
-    Het duurt minder dan een minuut om een Blockchain Data Manager-exemplaar te maken. Nadat de instantie is geïmplementeerd, wordt deze automatisch gestart. Een actief blockchain-gegevensbeheerexemplaar legt blockchain-gebeurtenissen vast vanaf het transactieknooppunt en verzendt gegevens naar de uitgaande verbindingen.
+    Het duurt minder dan een minuut om een Block Chain Data Manager-exemplaar te maken. Nadat het exemplaar is geïmplementeerd, wordt het automatisch gestart. Een actief Block Chain Data Manager-exemplaar legt Block Chain-gebeurtenissen vast van het trans actie-knoop punt en verzendt gegevens naar de uitgaande verbindingen.
 
-    De nieuwe instantie wordt weergegeven in de lijst met Blockchain Data Manager-exemplaren voor het Azure Blockchain Service-lid.
+    De nieuwe instantie wordt weer gegeven in de lijst met block Chain-Data Manager instanties voor het lid van de Azure Block Chain-service.
 
-    ![Lijst met blockchain-gegevenslidinstanties](./media/data-manager-portal/instance-list.png)
+    ![Lijst met instanties van Block Chain-gegevens leden](./media/data-manager-portal/instance-list.png)
 
-## <a name="add-blockchain-application"></a>Blockchain-toepassing toevoegen
+## <a name="add-blockchain-application"></a>Block Chain-toepassing toevoegen
 
-Als u een blockchain-toepassing toevoegt, decodeert Blockchain Data Manager de gebeurtenis- en eigenschappenstatus voor de toepassing. Anders worden alleen ruwe blok- en ruwe transactiegegevens verzonden. Blockchain Data Manager detecteert ook contractadressen wanneer het contract wordt geïmplementeerd. U meerdere blockchain-toepassingen toevoegen aan een Blockchain Data Manager-exemplaar.
+Als u een Block Chain-toepassing toevoegt, Block Chain Data Manager de status van de gebeurtenis en eigenschap decoderen voor de toepassing. Anders worden alleen onbewerkte en onbewerkte transactie gegevens verzonden. Block Chain Data Manager detecteert ook contract adressen wanneer het contract wordt geïmplementeerd. U kunt meerdere Block Chain-toepassingen toevoegen aan een Block Chain Data Manager-exemplaar.
 
 > [!IMPORTANT]
-> Momenteel worden blockchain-toepassingen die [Solidity-arraytypen](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) of [toewijzingstypen](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) declareren, niet volledig ondersteund. Eigenschappen die zijn gedeclareerd als array- of toewijzingstypen, worden niet gedecodeerd in *ContractPropertiesMsg-* of *DecodedContractEventsMsg-berichten.*
+> Momenteel worden Block Chain-toepassingen die een type vaste- [matrix](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) of [toewijzings typen](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) declareren, niet volledig ondersteund. Eigenschappen die zijn gedeclareerd als matrix-of toewijzings typen, worden niet gedecodeerd in *ContractPropertiesMsg* -of *DecodedContractEventsMsg* -berichten.
 
-Blockchain Data Manager vereist een slim contract ABI en geïmplementeerd bytecode bestand om de toepassing toe te voegen.
+Voor Block Chain Data Manager is een ABI en een geïmplementeerd byte code-bestand vereist om de toepassing toe te voegen.
 
-### <a name="get-contract-abi-and-bytecode"></a>Ontvang Contract ABI en bytecode
+### <a name="get-contract-abi-and-bytecode"></a>ABI en byte code van het contract ophalen
 
-Het contract ABI definieert de slimme contractinterfaces. Het beschrijft hoe om te gaan met de slimme contract. U de [Azure Blockchain Development Kit voor Ethereum-extensie](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) gebruiken om het contract ABI naar het klembord te kopiëren.
+In het contract ABI worden de slimme contract interfaces gedefinieerd. Hierin wordt beschreven hoe u met het slimme contract communiceert. U kunt de [Azure Block Chain Development Kit voor Ethereum-extensie](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) gebruiken om de contract Abi naar het klem bord te kopiëren.
 
-1. Vouw in het deelvenster Visual Studio Code explorer de map **build/contracts** van uw Solidity-project uit.
-1. Klik met de rechtermuisknop op het JSON-bestand met contractmetagegevens. De bestandsnaam is de slimme contractnaam gevolgd door de **.json** extensie.
-1. Selecteer **Abi van contract kopiëren**.
+1. Vouw in het deel venster Visual Studio code Explorer de map **Build/contract** van het volheid-project uit.
+1. Klik met de rechter muisknop op het JSON-bestand met meta gegevens van het contract. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
+1. Selecteer **contract Abi kopiëren**.
 
-    ![Deelvenster Visual Studio Code met de ABI-selectie van het contract kopiëren](./media/data-manager-portal/abi-devkit.png)
+    ![Visual Studio code-deel venster met de selectie van het Kopieer contract ABI](./media/data-manager-portal/abi-devkit.png)
 
-    Het contract ABI wordt gekopieerd naar het klembord.
+    Het contract ABI wordt gekopieerd naar het klem bord.
 
-1. Sla de **abi-array** op als een JSON-bestand. Bijvoorbeeld, *abi.json*. U gebruikt het bestand in een latere stap.
+1. Sla de **Abi** -matrix op als een JSON-bestand. Bijvoorbeeld *Abi. json*. U gebruikt het bestand in een latere stap.
 
-Blockchain Data Manager vereist de geïmplementeerde bytecode voor het slimme contract. De geïmplementeerde bytecode is anders dan de doordecode voor slimme contracten. U gebruikt de Azure blockchain-ontwikkelingskitextensie om de bytecode naar het klembord te kopiëren.
+Voor Block Chain Data Manager is de geïmplementeerde byte code voor het slimme contract vereist. De geïmplementeerde byte code wijkt af van de byte code van het Smart-contract. U gebruikt de Azure Block Chain Development Kit-extensie om de byte code naar het klem bord te kopiëren.
 
-1. Vouw in het deelvenster Visual Studio Code explorer de map **build/contracts** van uw Solidity-project uit.
-1. Klik met de rechtermuisknop op het JSON-bestand met contractmetagegevens. De bestandsnaam is de slimme contractnaam gevolgd door de **.json** extensie.
-1. Selecteer **Pertecode voor transacties kopiëren**.
+1. Vouw in het deel venster Visual Studio code Explorer de map **Build/contract** van het volheid-project uit.
+1. Klik met de rechter muisknop op het JSON-bestand met meta gegevens van het contract. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
+1. Selecteer de **byte code van de kopieer actie**.
 
-    ![Deelvenster Visual Studio-code met de selectie Transactiebytecode kopiëren](./media/data-manager-portal/bytecode-devkit.png)
+    ![Deel venster Visual Studio met de optie byte code ring kopiëren](./media/data-manager-portal/bytecode-devkit.png)
 
-    De bytecode wordt gekopieerd naar het klembord.
+    De byte code wordt gekopieerd naar het klem bord.
 
-1. Sla de **bytecode-waarde** op als een JSON-bestand. *Bytecode.json*bijvoorbeeld . U gebruikt het bestand in een latere stap.
+1. Sla de **byte code** -waarde op als een JSON-bestand. Bijvoorbeeld: *byte code. json*. U gebruikt het bestand in een latere stap.
 
-In het volgende voorbeeld worden *abi.json-* en *bytecode.json-bestanden* weergegeven die zijn geopend in de VS-codeeditor. Uw bestanden moeten er hetzelfde uitzien.
+In het volgende voor beeld ziet u de bestanden *Abi. json* en *byte code. json* die zijn geopend in de VS code-editor. Uw bestanden moeten er ongeveer als volgt uitzien.
 
-![Voorbeeld van abi.json- en bytecode.json-bestanden](./media/data-manager-portal/contract-files.png)
+![Voor beeld van Abi. json en byte code. json-bestanden](./media/data-manager-portal/contract-files.png)
 
-### <a name="create-contract-abi-and-bytecode-url"></a>URL van contractABI en bytecode maken
+### <a name="create-contract-abi-and-bytecode-url"></a>Een contract-ABI en byte code-URL maken
 
-Blockchain Data Manager vereist dat het contract ABI- en bytecodebestanden toegankelijk zijn via een URL bij het toevoegen van een toepassing. U een Azure Storage-account gebruiken om een privétoegankelijke URL op te geven.
+Block Chain Data Manager vereist dat de ABI-en byte code-bestanden van het contract toegankelijk zijn voor een URL wanneer u een toepassing toevoegt. U kunt een Azure Storage-account gebruiken om een privé toegankelijke URL op te geven.
 
 #### <a name="create-storage-account"></a>Een opslagaccount maken
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
-#### <a name="upload-contract-files"></a>Contractbestanden uploaden
+#### <a name="upload-contract-files"></a>Contract bestanden uploaden
 
-1. Maak een nieuwe container voor het opslagaccount. Selecteer **Containers > Container**.
+1. Maak een nieuwe container voor het opslag account. Selecteer **Containers > container**.
 
-    ![Een opslagaccountcontainer maken](./media/data-manager-portal/create-container.png)
+    ![Een opslag account container maken](./media/data-manager-portal/create-container.png)
 
     | Veld | Beschrijving |
     |-------|-------------|
-    | Name  | Geef de container een naam. Smartcontract *smartcontract* bijvoorbeeld |
-    | Openbaar toegangsniveau | Privé *kiezen (geen anonieme toegang)* |
+    | Naam  | Geef de container een naam. Bijvoorbeeld *smartcontract* |
+    | Openbaar toegangsniveau | Kies *privé (geen anonieme toegang)* |
 
 1. Selecteer **OK** om de container te maken.
-1. Selecteer de container en selecteer **Uploaden**.
-1. Kies beide JSON-bestanden die u hebt gemaakt in de sectie [Contract ABI en bytecode downloaden.](#get-contract-abi-and-bytecode)
+1. Selecteer de container en selecteer vervolgens **uploaden**.
+1. Kies beide JSON-bestanden die u hebt gemaakt in de sectie [contract Abi en byte code ophalen](#get-contract-abi-and-bytecode) .
 
-    ![Blob uploaden](./media/data-manager-portal/upload-blobs.png)
+    ![BLOB uploaden](./media/data-manager-portal/upload-blobs.png)
 
     Selecteer **Uploaden**.
 
 #### <a name="generate-url"></a>URL genereren
 
-Genereer voor elke blob een handtekening voor gedeelde toegang.
+Genereer een gedeelde toegangs handtekening voor elke blob.
 
-1. Selecteer de ABI JSON-blob.
+1. Selecteer de JSON-BLOB ABI.
 1. Selecteer **SAS genereren**
-1. Stel de gewenste vervaldatum van de toegangshandtekening in en selecteer **Blob SAS-token en URL genereren**.
+1. Stel de gewenste verval datum voor toegangs handtekeningen in en selecteer vervolgens **BLOB-SAS-token en URL genereren**.
 
     ![SAS-token genereren](./media/data-manager-portal/generate-sas.png)
 
-1. Kopieer de **Url van Blob SAS** en sla deze op voor de volgende sectie.
-1. Herhaal de [stappen URL genereren](#generate-url) voor de JSON-blob van bytecode.
+1. Kopieer de **BLOB SAS-URL** en sla deze op in de volgende sectie.
+1. Herhaal de stappen voor het genereren van de [URL](#generate-url) voor de byte code-JSON-blob.
 
-### <a name="add-application-to-instance"></a>Toepassing toevoegen aan instantie
+### <a name="add-application-to-instance"></a>Toepassing toevoegen aan exemplaar
 
-1. Selecteer uw Blockchain Data Manager-exemplaar in de instantielijst.
-1. Selecteer **Blockchain-toepassingen**.
+1. Selecteer uw Block Chain-Data Manager-exemplaar in de lijst met exemplaren.
+1. Selecteer **Block Chain-toepassingen**.
 1. Selecteer **Toevoegen**.
 
-    ![Een blockchain-toepassing toevoegen](./media/data-manager-portal/add-application.png)
+    ![Een Block Chain-toepassing toevoegen](./media/data-manager-portal/add-application.png)
 
-    Voer de naam van de blockchain-toepassing en het slimme contract ABI en bytecode URL's in.
+    Voer de naam van de Block Chain-toepassing en de ABI-en byte code-Url's van het slimme contract in.
 
     Instelling | Beschrijving
     --------|------------
-    Name | Voer een unieke naam in voor de blockchain-toepassing om bij te houden.
-    Contract ABI | URL-pad naar het BESTAND ABI van het contract. Zie [OBJECT ABI en URL van bytecode maken voor](#create-contract-abi-and-bytecode-url)meer informatie .
-    Contractbytecode | URL-pad naar bytecodebestand. Zie [OBJECT ABI en URL van bytecode maken voor](#create-contract-abi-and-bytecode-url)meer informatie .
+    Naam | Voer een unieke naam in voor de Block Chain-toepassing die u wilt bijhouden.
+    ABI contract | URL-pad naar het ABI-bestand van het contract. Zie [Create contract Abi en byte code URL](#create-contract-abi-and-bytecode-url)(Engelstalig) voor meer informatie.
+    Byte code van contract | URL-pad naar het byte code-bestand. Zie [Create contract Abi en byte code URL](#create-contract-abi-and-bytecode-url)(Engelstalig) voor meer informatie.
 
 1. Selecteer **OK**.
 
-    Zodra de toepassing is gemaakt, wordt de toepassing weergegeven in de lijst met blockchain-toepassingen.
+    Zodra de toepassing is gemaakt, wordt de toepassing weer gegeven in de lijst met block Chain-toepassingen.
 
-    ![Blockchain-toepassingslijst](./media/data-manager-portal/artifact-list.png)
+    ![Block Chain-toepassings lijst](./media/data-manager-portal/artifact-list.png)
 
-U het Azure Storage-account verwijderen of gebruiken om meer blockchain-toepassingen te configureren. Als u het Azure Storage-account wilt verwijderen, u de brongroep verwijderen. Als u de resourcegroep verwijdert, worden ook het bijbehorende opslagaccount en eventuele andere resources die zijn gekoppeld aan de resourcegroep, verwijderd.
+U kunt het Azure Storage-account verwijderen of gebruiken om meer Block Chain-toepassingen te configureren. Als u het Azure Storage account wilt verwijderen, kunt u de resource groep verwijderen. Als u de resourcegroep verwijdert, worden ook het bijbehorende opslagaccount en eventuele andere resources die zijn gekoppeld aan de resourcegroep, verwijderd.
 
-## <a name="stop-instance"></a>Instantie stoppen
+## <a name="stop-instance"></a>Exemplaar stoppen
 
-Stop het blockchain-exemplaar wanneer u wilt stoppen met het vastleggen van blockchain-gebeurtenissen en het verzenden van gegevens naar de uitgaande verbindingen. Wanneer de instantie wordt gestopt, worden er geen kosten in rekening gebracht voor Blockchain Data Manager. Ga voor meer informatie naar het overzicht van [prijzen](https://azure.microsoft.com/pricing/details/blockchain-service).
+Stop het block chain manager-exemplaar wanneer u wilt stoppen met het vastleggen van Block Chain-gebeurtenissen en het verzenden van gegevens naar de uitgaande verbindingen. Wanneer het exemplaar wordt gestopt, worden er geen kosten in rekening gebracht voor Block Chain Data Manager. Ga voor meer informatie naar het overzicht van [prijzen](https://azure.microsoft.com/pricing/details/blockchain-service).
 
-1. Ga naar **Overzicht** en selecteer **Stoppen**.
+1. Ga naar **overzicht** en selecteer **stoppen**.
 
-    ![Instantie stoppen](./media/data-manager-portal/stop-instance.png)
+    ![Exemplaar stoppen](./media/data-manager-portal/stop-instance.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Probeer de volgende zelfstudie met het maken van een blockchain-transactieberichtverkenner met Blockchain Data Manager en Azure Cosmos DB.
+Probeer de volgende zelf studie om een Block Chain-transactie bericht Verkenner te maken met behulp van Block Chain Data Manager en Azure Cosmos DB.
 
 > [!div class="nextstepaction"]
 > [Blockchain Data Manager gebruiken om gegevens te verzenden naar Azure Cosmos DB](data-manager-cosmosdb.md)

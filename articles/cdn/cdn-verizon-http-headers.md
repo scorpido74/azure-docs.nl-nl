@@ -1,6 +1,6 @@
 ---
-title: Verizon-specifieke HTTP-headers voor Azure CDN-regels engine | Microsoft Documenten
-description: In dit artikel wordt beschreven hoe u Verizon-specifieke HTTP-headers gebruikt met Azure CDN-regelsengine.
+title: Verizon-specifieke HTTP-headers voor de engine van Azure CDN-regels | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u Verizon-specifieke HTTP-headers gebruikt met Azure CDN regels-engine.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,69 +15,69 @@ ms.topic: article
 ms.date: 04/16/2018
 ms.author: allensu
 ms.openlocfilehash: d2208f6769c8051b38bdafb92d62ec03cb2d668c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253557"
 ---
-# <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Verizon-specifieke HTTP-headers voor Azure CDN-regelsengine
+# <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Verizon-specifieke HTTP-headers voor de engine van Azure CDN-regels
 
-Voor **Azure CDN Premium van Verizon-producten** kan de POP-server een of meer gereserveerde kopteksten (of speciale proxykoppen) toevoegen aan het clientverzoek aan de POP wanneer een HTTP-aanvraag naar de origin-server wordt verzonden. Deze headers zijn een aanvulling op de standaard doorsturen headers ontvangen. Zie [Velden aanvragen voor](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields)informatie over standaardaanvraagkoppen.
+Wanneer een HTTP-aanvraag wordt verzonden naar de bron server, kan de POP-server (Point-of-Presence) een of meer gereserveerde headers (of proxy Special headers) toevoegen aan de POP voor **Azure CDN Premium van Verizon** -producten. Deze headers zijn naast de standaard-doorstuur headers ontvangen. Zie [aanvraag velden](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields)voor informatie over standaard aanvraag headers.
 
-Als u wilt voorkomen dat een van deze gereserveerde kopteksten wordt toegevoegd in het POP-aanvraag azure CDN (Content Delivery Network) aan de oorspronkelijke server, moet u een regel maken met de [functie Speciale proxykoppen](cdn-verizon-premium-rules-engine-reference-features.md#proxy-special-headers) in de regelengine. Sluit in deze regel de koptekst uit die u wilt verwijderen uit de standaardlijst met kopteksten in het veld Kopteksten. Als u de [functie Antwoordkoppen foutopsporing](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers)hebt ingeschakeld, moet `X-EC-Debug` u de benodigde kopteksten toevoegen. 
+Als u wilt voor komen dat een van deze gereserveerde headers wordt toegevoegd aan de POP-aanvraag Azure CDN (Content Delivery Network) op de bron server, moet u een regel maken met de [functie speciale headers proxy](cdn-verizon-premium-rules-engine-reference-features.md#proxy-special-headers) in de regel engine. In deze regel sluit u de koptekst die u wilt verwijderen uit in de standaard lijst met kopteksten in het veld headers. Als u de [functie debug cache response headers](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers)hebt ingeschakeld, moet u de vereiste `X-EC-Debug` headers toevoegen. 
 
-Als u bijvoorbeeld `Via` de koptekst wilt verwijderen, moet het veld kopteksten van de regel de volgende lijst met kopteksten bevatten: *X-Forwarded-For, X-Forwarded-Proto, X-Host, X-Midgress, X-Gateway-List, X-EC-Name, Host*. 
+Als u bijvoorbeeld de `Via` header wilt verwijderen, moet het veld headers van de regel de volgende lijst met headers bevatten: *x-doorgestuurd-voor, x-doorgestuurde proto, x-host, x-Midgress, x-gateway-lijst, x-EG-naam, host*. 
 
-![Regel speciale proxykopteksten](./media/cdn-http-headers/cdn-proxy-special-header-rule.png)
+![Proxy-regel voor speciale headers](./media/cdn-http-headers/cdn-proxy-special-header-rule.png)
 
-In de volgende tabel worden de kopteksten beschreven die door de Verizon CDN POP in het verzoek kunnen worden toegevoegd:
+In de volgende tabel worden de headers beschreven die kunnen worden toegevoegd door de Verizon CDN POP in de aanvraag:
 
 Aanvraagheader | Beschrijving | Voorbeeld
 ---------------|-------------|--------
-[Via](#via-request-header) | Hiermee identificeert u de POP-server die het verzoek heeft geproxied naar een oorsprongsserver. | HTTP/1.1 ECS (dca/1A2B)
-X-Doorgestuurd-Voor | Geeft het IP-adres van de aanvrager aan.| 10.10.10.10
-X-Forwarded-Proto | Geeft het protocol van het verzoek aan. | http
-X-Host | Geeft de hostnaam van het verzoek aan. | cdn.mydomain.com
-X-Midgress | Geeft aan of de aanvraag is geproxied via een extra CDN-server. Bijvoorbeeld een POP-server-to-origin shield-server of een POP-server-naar-ADN-gatewayserver. <br />Deze koptekst wordt alleen aan de aanvraag toegevoegd wanneer het midgress-verkeer plaatsvindt. In dit geval is de koptekst ingesteld op 1 om aan te geven dat de aanvraag is geproxied via een extra CDN-server.| 1
-[Host](#host-request-header) | Hiermee identificeert u de host en de poort waar de gevraagde inhoud kan worden gevonden. | marketing.mydomain.com:80
-[X-Gateway-lijst](#x-gateway-list-request-header) | ADN: identificeert de failoverlijst van ADN Gateway-servers die zijn toegewezen aan een klantoorsprong. <br />Oorsprongsschild: geeft de set van origin shield-servers aan die zijn toegewezen aan de oorsprong van een klant. | `icn1,hhp1,hnd1`
-X-EC-_&lt;naam&gt;_ | Aanvragen headers die beginnen met *X-EC* (bijvoorbeeld X-EC-Tag, [X-EC-Debug)](cdn-http-debug-headers.md)zijn gereserveerd voor gebruik door het CDN.| waf-productie
+[Kopen](#via-request-header) | Hiermee wordt de POP-server geïdentificeerd die de aanvraag via een proxy naar een originele server heeft doorgestuurd. | HTTP/1.1 ECS (DCA/1A2B)
+X-doorgestuurd-voor | Hiermee wordt het IP-adres van de aanvrager aangegeven.| 10.10.10.10
+X-doorgestuurd-proto | Geeft het Protocol van de aanvraag aan. | http
+X-host | Geeft de hostnaam van de aanvraag aan. | cdn.mydomain.com
+X-Midgress | Geeft aan of de aanvraag via een extra CDN-server via een proxy is verzonden. Een voor beeld: een POP server-to-Origin Shield-Server of een POP-server-naar-ADN-Gateway server. <br />Deze header wordt alleen toegevoegd aan de aanvraag wanneer midgress verkeer plaatsvindt. In dit geval wordt de header ingesteld op 1 om aan te geven dat de aanvraag via een extra CDN-server via een proxy is verzonden.| 1
+[Host](#host-request-header) | Identificeert de host en de poort waarop de aangevraagde inhoud kan worden gevonden. | marketing.mydomain.com:80
+[X-gateway-lijst](#x-gateway-list-request-header) | ADN: identificeert de failoverlijst van ADN Gateway servers die zijn toegewezen aan de oorsprong van een klant. <br />Schild van oorsprong: geeft de set van originele afschermings servers aan die zijn toegewezen aan de oorsprong van een klant. | `icn1,hhp1,hnd1`
+X-EG-_&lt;naam&gt;_ | Aanvraag headers die beginnen met *x-EG* (bijvoorbeeld x-EG-tag, [x-EG-debug](cdn-http-debug-headers.md)) zijn gereserveerd voor gebruik door het CDN.| WAF-productie
 
-## <a name="via-request-header"></a>Via aanvraagheader
-De indeling waarmee `Via` de aanvraagkop een POP-server identificeert, wordt opgegeven met de volgende syntaxis:
+## <a name="via-request-header"></a>Via aanvraag header
+De indeling waarmee de `Via` aanvraag header een pop-server identificeert, wordt opgegeven met de volgende syntaxis:
 
 `Via: Protocol from Platform (POP/ID)` 
 
-De termen die in de syntaxis worden gebruikt, worden als volgt gedefinieerd:
-- Protocol: geeft de versie van het protocol aan (bijvoorbeeld HTTP/1.1) die wordt gebruikt om de aanvraag te proxyn. 
+De termen die in de syntaxis worden gebruikt, zijn als volgt gedefinieerd:
+- Protocol: geeft de versie van het protocol aan (bijvoorbeeld HTTP/1.1) dat is gebruikt om de aanvraag te proxy. 
 
-- Platform: Geeft het platform aan waarop de inhoud is aangevraagd. Voor dit veld gelden de volgende codes: 
+- Platform: geeft het platform aan waarop de inhoud is aangevraagd. De volgende codes zijn geldig voor dit veld: 
 
     Code | Platform
     -----|---------
-    ECAcc | HTTP Groot
-    Ecs   | HTTP Klein
-    Ecd   | Netwerk voor toepassingsbezorging (ADN)
+    ECAcc | HTTP-groot
+    ECS   | HTTP-klein
+    ECD   | Application Delivery Network (ADN)
 
-- POP: Geeft de [POP](cdn-pop-abbreviations.md) aan die de aanvraag heeft afgehandeld. 
+- POP: Hiermee wordt de [pop](cdn-pop-abbreviations.md) aangegeven waarmee de aanvraag is verwerkt. 
 
-- ID: Alleen voor intern gebruik.
+- ID: alleen voor intern gebruik.
 
-### <a name="example-via-request-header"></a>Voorbeeld via aanvraagheader
+### <a name="example-via-request-header"></a>Voor beeld via aanvraag header
 
 `Via: HTTP/1.1 ECD (dca/1A2B)`
 
-## <a name="host-request-header"></a>Koptekst hostaanvraag
-De POP-servers overschrijven de `Host` koptekst wanneer beide voorwaarden waar zijn:
-- De bron voor de gevraagde inhoud is een server van de oorsprong van de klant.
-- De http-hostheader optie van de desbetreffende klantoorsprong is niet leeg.
+## <a name="host-request-header"></a>Header van host-aanvraag
+De POP-servers overschrijven de `Host` header wanneer aan de volgende voor waarden wordt voldaan:
+- De bron voor de aangevraagde inhoud is een server van de oorsprong van de klant.
+- De optie voor de HTTP-host-header van de bijbehorende klant is niet leeg.
 
-De `Host` aanvraagkopwordt overschreven om de waarde weer te geven die is gedefinieerd in de optie HTTP-hostheader.
-Als de http-hostheaderoptie van de klant is `Host` ingesteld op leeg, wordt de door de aanvrager verzonden header die door de aanvrager wordt ingediend, doorgestuurd naar de oorspronkelijke server van de klant.
+De `Host` aanvraag header wordt overschreven om de waarde weer te geven die is gedefinieerd in de optie http-Host-header.
+Als de optie voor de HTTP-host-header van de klant is ingesteld op `Host` leeg, wordt de aanvraag header die wordt verzonden door de aanvrager doorgestuurd naar de oorspronkelijke server van de klant.
 
-## <a name="x-gateway-list-request-header"></a>Koptekst x-gateway-lijst-aanvraag
-Een POP-server voegt de aanknopingskop 'X-Gateway-List-aanvraag toe wanneer aan een van de volgende voorwaarden is voldaan:
-- De aanvraag verwijst naar het ADN-platform.
-- De aanvraag wordt doorgestuurd naar een server van de oorsprong van de klant die wordt beschermd door de Origin Shield-functie.
+## <a name="x-gateway-list-request-header"></a>X-gateway-aanvraag header
+Een POP-server voegt de aanvraag ' X-gateway-List ' toe of overschreven wanneer aan een van de volgende voor waarden wordt voldaan:
+- De aanvraag wijst naar het ADN-platform.
+- De aanvraag wordt doorgestuurd naar een bron server van de klant die wordt beveiligd door de functie voor het afschermen van de oorsprong.
 

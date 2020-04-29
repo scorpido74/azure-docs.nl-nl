@@ -1,6 +1,6 @@
 ---
-title: API ophalen | Azure Marketplace
-description: Hiermee haalt u alle bewerkingen op de aanbieding op of om een bepaalde bewerking voor de opgegeven operationId te krijgen.
+title: De operations-API ophalen | Azure Marketplace
+description: Hiermee haalt u alle bewerkingen op de aanbieding op of krijgt u een bepaalde bewerking voor de opgegeven operationId.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,18 +8,18 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 93b2ca700a987b86aedfdae55d58540c8ffe84ed
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255869"
 ---
 # <a name="retrieve-operations"></a>Bewerkingen ophalen
 
 > [!NOTE]
-> De API's van cloudpartnerportalen zijn geïntegreerd met het Partner Center en blijven werken nadat uw aanbiedingen zijn gemigreerd naar partnercentrum. De integratie brengt kleine veranderingen met zich mee. Bekijk de wijzigingen in [Cloud Partner Portal API Reference](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) om ervoor te zorgen dat uw code blijft werken na de migratie naar partnercentrum.
+> De Cloud Partner-portal-Api's zijn geïntegreerd met partner centrum en blijven werken nadat uw aanbiedingen zijn gemigreerd naar het partner centrum. De integratie introduceert kleine wijzigingen. Bekijk de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) om ervoor te zorgen dat uw code blijft werken na de migratie naar het partner centrum.
 
-Hiermee haalt u alle bewerkingen op de aanbieding op of om een bepaalde bewerking voor de opgegeven operationId te krijgen. De client kan queryparameters gebruiken om te filteren op bewerkingen.
+Hiermee haalt u alle bewerkingen op de aanbieding op of krijgt u een bepaalde bewerking voor de opgegeven operationId. De client kan query parameters gebruiken om te filteren op actieve bewerkingen.
 
 ``` https
 
@@ -30,13 +30,13 @@ Hiermee haalt u alle bewerkingen op de aanbieding op of om een bepaalde bewerkin
 ```
 
 
-## <a name="uri-parameters"></a>URI-parameters
+## <a name="uri-parameters"></a>URI-para meters
 
-|  **Naam**          |      **Beschrijving**                                                                                           | **Gegevenstype** |
+|  **Naam**          |      **Beschrijving**                                                                                           | **Gegevens type** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  uitgeverId       |  Publisher-id, bijvoorbeeld`Contoso`                                                                   |  Tekenreeks       |
-|  aanbiedingId           |  Aanbiedings-id                                                                                              |  Tekenreeks       |
-|  operationId       |  GUID die de bewerking op het aanbod op een unieke basis identificeert. De operationId kan worden opgehaald met behulp van deze API en wordt ook geretourneerd in de HTTP-header van het antwoord voor een langdurige bewerking, zoals de [API voor publicatieaanbieding.](./cloud-partner-portal-api-publish-offer.md)  |   GUID   |
+|  publisherId       |  Uitgevers-id, bijvoorbeeld`Contoso`                                                                   |  Tekenreeks       |
+|  offerId           |  Aanbiedings-id                                                                                              |  Tekenreeks       |
+|  operationId       |  GUID waarmee de bewerking op de aanbieding uniek wordt geïdentificeerd. De operationId kan worden opgehaald met behulp van deze API en wordt ook geretourneerd in de HTTP-header van het antwoord op een langlopende bewerking, zoals de API voor het [publiceren van aanbiedingen](./cloud-partner-portal-api-publish-offer.md) .  |   GUID   |
 |  api-versie       | Nieuwste versie van API |    Date      |
 |  |  |  |
 
@@ -50,7 +50,7 @@ Hiermee haalt u alle bewerkingen op de aanbieding op of om een bepaalde bewerkin
 |  |  |
 
 
-## <a name="body-example"></a>Voorbeeld van het lichaam
+## <a name="body-example"></a>Voor beeld van tekst
 
 ### <a name="response"></a>Antwoord
 
@@ -170,37 +170,37 @@ Hiermee haalt u alle bewerkingen op de aanbieding op of om een bepaalde bewerkin
     ]
 ```
 
-### <a name="response-body-properties"></a>Eigenschappen van antwoordlichaam
+### <a name="response-body-properties"></a>Eigenschappen van antwoord tekst
 
 |  **Naam**                    |  **Beschrijving**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
-|  id                          | GUID die de bewerking op unieke wijze identificeert                                                       |
-|  submissionType              | Hiermee wordt aangegeven welk type bewerking wordt gerapporteerd voor de aanbieding, bijvoorbeeld`Publish/GoLive`      |
-|  createdDateTime             | UTC-datum tijd toen de bewerking werd gemaakt                                                       |
-|  laatsteActionDateTime          | UTC-datum waarop de laatste update op de bewerking is uitgevoerd                                       |
-|  status                      | Status van de `not started` \| `running` \| `failed` \| `completed`bewerking, ofwel . Slechts één bewerking `running` kan status tegelijk hebben. |
-|  error                       | Foutbericht voor mislukte bewerkingen                                                               |
+|  id                          | GUID die de bewerking uniek identificeert                                                       |
+|  submissionType              | Hiermee wordt het type bewerking aangegeven dat wordt gerapporteerd voor de aanbieding, bijvoorbeeld`Publish/GoLive`      |
+|  createdDateTime             | UTC-datum/tijd waarop de bewerking is gemaakt                                                       |
+|  lastActionDateTime          | UTC-datum/tijd waarop de laatste update is uitgevoerd voor de bewerking                                       |
+|  status                      | `not started` \| `running` \| `failed` \| De status van de bewerking `completed`. Er kan slechts één bewerking tegelijk `running` een status hebben. |
+|  error                       | Fout bericht voor mislukte bewerkingen                                                               |
 |  |  |
 
-### <a name="response-step-properties"></a>Eigenschappen van reactiestap
+### <a name="response-step-properties"></a>Eigenschappen van antwoord stap
 
 |  **Naam**                    |  **Beschrijving**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
-| geschatTijdsbestek | De geschatte duur van deze operatie |
-| id | De unieke id voor het stapproces |
+| estimatedTimeFrame | De geschatte duur van deze bewerking |
+| id | De unieke id voor het stap proces |
 | description | Beschrijving van de stap |
-| stepName | De vriendelijke naam voor de stap |
-| status | De status van de `notStarted` \| `running` \| `failed` \| stap, ofwel`completed` |
-| berichten | Meldingen of waarschuwingen die tijdens de stap zijn aangetroffen. Matrix van tekenreeksen |
-| voortgangPercentage | Een geheel getal van 0 tot 100 dat de progressie van de stap aangeeft |
+| Stapnaam | De beschrijvende naam voor de stap |
+| status | De status van de stap, ofwel `notStarted` \| `running` \| `failed` \|`completed` |
+| berichten | Alle meldingen of waarschuwingen die tijdens de stap zijn aangetroffen. Matrix van tekenreeksen |
+| progressPercentage | Een geheel getal tussen 0 en 100 dat de voortgang van de stap aangeeft |
 | | |
 
-### <a name="response-status-codes"></a>Statuscodes voor antwoord
+### <a name="response-status-codes"></a>Antwoord status codes
 
-| **Code**  |   **Beschrijving**                                                                                  |
+| **Gecodeerd**  |   **Beschrijving**                                                                                  |
 |  -------- |   -------------------------------------------------------------------------------------------------|
-|  200      | `OK`- De aanvraag is verwerkt en de gevraagde bewerking(en) is teruggestuurd.        |
-|  400      | `Bad/Malformed request`- De foutreactieinstantie kan meer informatie bevatten.                    |
-|  403      | `Forbidden`- De client heeft geen toegang tot de opgegeven naamruimte.                          |
-|  404      | `Not found`- De opgegeven entiteit bestaat niet.                                                 |
+|  200      | `OK`-De aanvraag is verwerkt en de aangevraagde bewerking (en) is geretourneerd.        |
+|  400      | `Bad/Malformed request`-De hoofd tekst van het fout bericht bevat mogelijk meer informatie.                    |
+|  403      | `Forbidden`-De client heeft geen toegang tot de opgegeven naam ruimte.                          |
+|  404      | `Not found`-De opgegeven entiteit bestaat niet.                                                 |
 |  |  |

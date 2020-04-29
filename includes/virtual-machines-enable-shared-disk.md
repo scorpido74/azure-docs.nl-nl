@@ -9,30 +9,30 @@ ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 0df74b82c847c9738d97d2001573666714c17672
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81008328"
 ---
 ## <a name="limitations"></a>Beperkingen
 
 [!INCLUDE [virtual-machines-disks-shared-limitations](virtual-machines-disks-shared-limitations.md)]
 
-## <a name="disk-sizes"></a>Schijfformaten
+## <a name="disk-sizes"></a>Schijf grootten
 
 [!INCLUDE [virtual-machines-disks-shared-sizes](virtual-machines-disks-shared-sizes.md)]
 
 ## <a name="deploy-shared-disks"></a>Gedeelde schijven implementeren
 
-### <a name="deploy-a-premium-ssd-as-a-shared-disk"></a>Een premium SSD implementeren als gedeelde schijf
+### <a name="deploy-a-premium-ssd-as-a-shared-disk"></a>Een Premium SSD implementeren als een gedeelde schijf
 
-Als u een beheerde schijf wilt implementeren waarbij `maxShares` de functie gedeelde schijf is ingeschakeld, gebruikt u de nieuwe eigenschap en definieert u een waarde groter dan 1. Dit maakt de schijf deelbaar over meerdere VM's.
+Voor het implementeren van een beheerde schijf waarop de functie gedeelde schijf is ingeschakeld, gebruikt `maxShares` u de nieuwe eigenschap en definieert u een waarde die groter is dan 1. Dit maakt de schijf deelbaar op meerdere Vm's.
 
 > [!IMPORTANT]
-> De waarde `maxShares` van kan alleen worden ingesteld of gewijzigd wanneer een schijf is losgekoppeld van alle VM's. Zie de [schijfgroottes](#disk-sizes) voor `maxShares`de toegestane waarden voor .
+> De waarde van `maxShares` kan alleen worden ingesteld of gewijzigd wanneer een schijf van alle virtuele machines wordt ontkoppeld. Zie de [schijf grootten](#disk-sizes) voor de toegestane waarden `maxShares`voor.
 
-Voordat u de volgende `[parameters('dataDiskName')]` `[resourceGroup().location]`sjabloon `[parameters('dataDiskSizeGB')]`gebruikt, vervangt u , en `[parameters('maxShares')]` met uw eigen waarden.
+Vervang `[parameters('dataDiskName')]`, `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]`, en `[parameters('maxShares')]` door uw eigen waarden voordat u de volgende sjabloon gebruikt.
 
 ```json
 { 
@@ -73,14 +73,14 @@ Voordat u de volgende `[parameters('dataDiskName')]` `[resourceGroup().location]
 }
 ```
 
-### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>Een ultraschijf implementeren als gedeelde schijf
+### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>Een ultra schijf implementeren als een gedeelde schijf
 
 #### <a name="cli"></a>CLI
 
-Als u een beheerde schijf wilt implementeren `maxShares` waarbij de gedeelde schijffunctie is ingeschakeld, wijzigt u de parameter in een waarde groter dan 1. Dit maakt de schijf deelbaar over meerdere VM's.
+Als u een beheerde schijf met de functie gedeelde schijf wilt implementeren, wijzigt `maxShares` u de para meter in een waarde die groter is dan 1. Dit maakt de schijf deelbaar op meerdere Vm's.
 
 > [!IMPORTANT]
-> De waarde `maxShares` van kan alleen worden ingesteld of gewijzigd wanneer een schijf is losgekoppeld van alle VM's. Zie de [schijfgroottes](#disk-sizes) voor `maxShares`de toegestane waarden voor .
+> De waarde van `maxShares` kan alleen worden ingesteld of gewijzigd wanneer een schijf van alle virtuele machines wordt ontkoppeld. Zie de [schijf grootten](#disk-sizes) voor de toegestane waarden `maxShares`voor.
 
 ```azurecli
 #Creating an Ultra shared Disk 
@@ -95,12 +95,12 @@ az disk show -g rg1 -n clidisk
 
 #### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Als u een beheerde schijf wilt implementeren waarbij `maxShares` de gedeelde schijffunctie is ingeschakeld, gebruikt u de eigenschap en definieert u een waarde groter dan 1. Dit maakt de schijf deelbaar over meerdere VM's.
+Voor het implementeren van een beheerde schijf waarop de functie gedeelde schijf is ingeschakeld, `maxShares` gebruikt u de eigenschap en definieert u een waarde die groter is dan 1. Dit maakt de schijf deelbaar op meerdere Vm's.
 
 > [!IMPORTANT]
-> De waarde `maxShares` van kan alleen worden ingesteld of gewijzigd wanneer een schijf is losgekoppeld van alle VM's. Zie de [schijfgroottes](#disk-sizes) voor `maxShares`de toegestane waarden voor .
+> De waarde van `maxShares` kan alleen worden ingesteld of gewijzigd wanneer een schijf van alle virtuele machines wordt ontkoppeld. Zie de [schijf grootten](#disk-sizes) voor de toegestane waarden `maxShares`voor.
 
-Voor het gebruik van `[parameters('dataDiskName')]` `[resourceGroup().location]`de `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]`volgende `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]`sjabloon, vervang , , , , , `[parameters('diskIOPSReadOnly')]`en `[parameters('diskMBpsReadOnly')]` met uw eigen waarden.
+`[parameters('dataDiskName')]`Vervang, `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]` `[parameters('diskMBpsReadOnly')]` ,,,,, en door uw eigen waarden voordat u de volgende sjabloon gebruikt. `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]`
 
 ```json
 {
@@ -168,12 +168,12 @@ Voor het gebruik van `[parameters('dataDiskName')]` `[resourceGroup().location]`
 }
 ```
 
-### <a name="using-azure-shared-disks-with-your-vms"></a>Gedeelde Azure-schijven gebruiken met uw VM's
+### <a name="using-azure-shared-disks-with-your-vms"></a>Gedeelde Azure-schijven gebruiken met uw Vm's
 
-Zodra u een gedeelde schijf `maxShares>1`hebt geïmplementeerd met, u de schijf op een of meer van uw VM's monteren.
+Wanneer u een gedeelde schijf met `maxShares>1`hebt geïmplementeerd, kunt u de schijf koppelen aan een of meer van uw virtuele machines.
 
 > [!IMPORTANT]
-> Alle VM's die een schijf delen, moeten worden geïmplementeerd in dezelfde [plaatsingsgroep voor nabijheid](../articles/virtual-machines/windows/proximity-placement-groups.md).
+> Alle Vm's die een schijf delen, moeten worden geïmplementeerd in dezelfde [plaatsings groep](../articles/virtual-machines/windows/proximity-placement-groups.md).
 
 ```azurepowershell-interactive
 
@@ -197,9 +197,9 @@ update-AzVm -VM $vm -ResourceGroupName $resourceGroup
 
 ## <a name="supported-scsi-pr-commands"></a>Ondersteunde SCSI PR-opdrachten
 
-Zodra u de gedeelde schijf op uw VM's in uw cluster hebt gemonteerd, u quorum en lezen/schrijven naar de schijf instellen met Behulp van SCSI PR. De volgende PR-opdrachten zijn beschikbaar bij het gebruik van gedeelde Azure-schijven:
+Zodra u de gedeelde schijf hebt gekoppeld aan uw virtuele machines in uw cluster, kunt u quorum en lees-/schrijftoegang tot stand brengen met behulp van SCSI-PR. De volgende PR-opdrachten zijn beschikbaar wanneer u gedeelde Azure-schijven gebruikt:
 
-Als u met de schijf wilt communiceren, begint u met de lijst met actie voor permanente reserveringen:
+Als u wilt communiceren met de schijf, begint u met de lijst met permanente reserve ringen:
 
 ```
 PR_REGISTER_KEY 
@@ -217,7 +217,7 @@ PR_CLEAR_RESERVATION
 PR_RELEASE_RESERVATION 
 ```
 
-Wanneer u PR_RESERVE, PR_PREEMPT_RESERVATION of PR_RELEASE_RESERVATION gebruikt, een van de volgende persistent-reservation-type:
+Wanneer u PR_RESERVE, PR_PREEMPT_RESERVATION of PR_RELEASE_RESERVATION gebruikt, geeft u een van de volgende permanente reserve ring-type op:
 
 ```
 PR_NONE 
@@ -235,9 +235,9 @@ PR_WRITE_EXCLUSIVE_ALL_REGISTRANTS
 PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS 
 ```
 
-U moet ook een permanente reserveringssleutel verstrekken bij het gebruik van PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_CLEAR_RESERVATION of PR_RELEASE-RESERVERING.
+U moet ook een permanente reserve ring-sleutel opgeven wanneer u PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_CLEAR_RESERVATION of PR_RELEASE-reserve ring gebruikt.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als je geïnteresseerd bent in gedeelde schijven, [meld je dan aan voor onze preview.](https://aka.ms/AzureSharedDiskPreviewSignUp)
+Als u geïnteresseerd bent in het proberen van gedeelde schijven, [meldt u zich aan voor de preview-versie](https://aka.ms/AzureSharedDiskPreviewSignUp).

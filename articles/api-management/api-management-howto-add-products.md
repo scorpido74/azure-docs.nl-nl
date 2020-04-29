@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
 ms.openlocfilehash: 686d6e2ff01fd4d8283350ab8097e1f73c914af0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81260993"
 ---
 # <a name="create-and-publish-a-product"></a>Een product maken en publiceren  
@@ -47,17 +47,17 @@ In deze zelfstudie leert u het volgende:
 
     Wanneer u een product toevoegt, moet u de volgende informatie opgeven: 
 
-    | Name                     | Beschrijving                                                                                                                                                                                                                                                                                                             |
+    | Naam                     | Beschrijving                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Weergavenaam             | De naam zoals u wilt dat deze wordt weergegeven in de **ontwikkelaarsportal**.                                                                                                                                                                                                                                                        |
-    | Name                     | Een beschrijvende naam van het product.                                                                                                                                                                                                                                                                                      |
+    | Naam                     | Een beschrijvende naam van het product.                                                                                                                                                                                                                                                                                      |
     | Beschrijving              | In het veld **Beschrijving** kunt u gedetailleerde informatie over het product opgeven, zoals het doel, de API's waartoe het product toegang biedt, en andere nuttige informatie.                                                                                                                                               |
     | Status                    | Druk op **Gepubliceerd** als u het product wilt publiceren. Voordat de API's in een product kunnen worden aangeroepen, moet het product worden gepubliceerd. Nieuwe producten zijn standaard niet-gepubliceerd, en alleen zichtbaar voor gebruikers in de groep **Beheerders**.                                                                                      |
     | Abonnement is vereist    | Schakel **Abonnement vereisen**in als een gebruiker een abonnement moet hebben om het product te kunnen gebruiken.                                                                                                                                                                                                                                   |
     | Goedkeuring vereist        | Schakel **Goedkeuring vereisen** in als u wilt dat een beheerder abonnementspogingen voor dit product beoordeelt en accepteert of weigert. Als het selectievakje uitgeschakeld is, worden abonnementspogingen automatisch goedgekeurd.                                                                                                                         |
     | Limiet voor het aantal abonnementen | Als u het aantal gelijktijdige abonnementen wilt beperken, voert u de limiet voor het aantal abonnementen in.                                                                                                                                                                                                                                |
     | Juridische voorwaarden              | U kunt ook de gebruiksvoorwaarden voor het product opnemen, die abonnees moeten accepteren om het product te kunnen gebruiken.                                                                                                                                                                                                             |
-    | API's                     | Producten zijn koppelingen van een of meer API's. U kunt een aantal API's opnemen en deze beschikbaar stellen voor ontwikkelaars via de ontwikkelaarsportal. <br/> U kunt een bestaande API toevoegen tijdens het maken van het product. U later een API aan het product toevoegen, vanaf de pagina **Productinstellingen** of tijdens het maken van een API. |
+    | API's                     | Producten zijn koppelingen van een of meer API's. U kunt een aantal API's opnemen en deze beschikbaar stellen voor ontwikkelaars via de ontwikkelaarsportal. <br/> U kunt een bestaande API toevoegen tijdens het maken van het product. U kunt later een API toevoegen aan het product, hetzij via de pagina **instellingen** van het product, hetzij tijdens het maken van een API. |
 
 3. Klik op **Maken** om een nieuw product te maken.
 
@@ -67,7 +67,7 @@ U kunt doorgaan met het configureren van het product nadat het is opgeslagen doo
 
 Op het tabblad **Abonnementen** kunt u de abonnees van het product bekijken of abonnees aan het product toevoegen.
 
-Stel de zichtbaarheid van een product in voor ontwikkelaars of gasten via het tabblad **Toegangsbeheer.**
+Stel de zicht baarheid van een product voor ontwikkel aars of gasten in op het tabblad **toegangs beheer** .
 
 ## <a name="add-apis-to-a-product"></a><a name="add-apis"> </a>API's toevoegen aan een product
 
@@ -89,7 +89,7 @@ Ontwikkelaars moeten zich eerst abonneren op een product om toegang tot de API t
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een product maken en publiceren

@@ -1,25 +1,25 @@
 ---
-title: GROEP BY-component in Azure Cosmos DB
-description: Meer informatie over de GROEP BY-component voor Azure Cosmos DB.
+title: GROUP BY-component in Azure Cosmos DB
+description: Meer informatie over de GROUP BY-component voor Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: tisande
 ms.openlocfilehash: 8a3cbbafc066747b62f79934f2cd12301aa1ba17
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261598"
 ---
-# <a name="group-by-clause-in-azure-cosmos-db"></a>GROEP BY-component in Azure Cosmos DB
+# <a name="group-by-clause-in-azure-cosmos-db"></a>GROUP BY-component in Azure Cosmos DB
 
-De component GROEPEREN door verdeelt de resultaten van de query op basis van de waarden van een of meer opgegeven eigenschappen.
+De GROUP BY-component deelt de resultaten van de query op basis van de waarden van een of meer opgegeven eigenschappen.
 
 > [!NOTE]
-> Azure Cosmos DB ondersteunt momenteel GROUP BY in .NET SDK 3.3 en hoger, evenals JavaScript SDK 3.4 en hoger.
-> Ondersteuning voor andere talen SDK's is momenteel niet beschikbaar, maar is gepland.
+> Azure Cosmos DB biedt momenteel ondersteuning voor GROUP BY in .NET SDK 3,3 en hoger, evenals java script SDK 3,4 en hoger.
+> Ondersteuning voor andere taal-SDK is momenteel niet beschikbaar, maar is gepland.
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -35,25 +35,25 @@ De component GROEPEREN door verdeelt de resultaten van de query op basis van de 
 
 - `<scalar_expression_list>`
 
-   Hiermee geeft u de expressies op die worden gebruikt om queryresultaten te verdelen.
+   Hiermee geeft u de expressies op die worden gebruikt voor het delen van query resultaten.
 
 - `<scalar_expression>`
   
-   Elke scalaire expressie is toegestaan, behalve voor scalaire subquery's en scalaire aggregaten. Elke scalaire expressie moet ten minste één eigenschapsverwijzing bevatten. Er is geen limiet aan het aantal afzonderlijke expressies of de kardinaliteit van elke expressie.
+   Elke scalaire expressie is toegestaan, met uitzonde ring van scalaire subquery's en scalaire aggregaties. Elke scalaire expressie moet ten minste één eigenschaps verwijzing bevatten. Er is geen limiet voor het aantal afzonderlijke expressies of de kardinaliteit van elke expressie.
 
 ## <a name="remarks"></a>Opmerkingen
   
-  Wanneer een query een GROEP BY-component gebruikt, kan de SELECT-component alleen de subset van eigenschappen en systeemfuncties bevatten die zijn opgenomen in de GROEP BY-component. Een uitzondering is [geaggregeerde systeemfuncties](sql-query-aggregates.md), die in de SELECT-clausule kunnen worden opgenomen zonder in de GROUP BY-clausule te zijn opgenomen. U ook altijd letterlijke waarden opnemen in de SELECT-component.
+  Wanneer een query gebruikmaakt van een GROUP BY-component, kan de SELECT-component alleen de subset van eigenschappen en systeem functies bevatten die zijn opgenomen in de component GROUP BY. Een uitzonde ring bestaat uit [statistische systeem functies](sql-query-aggregates.md)die kunnen worden weer gegeven in de component SELECT zonder te zijn opgenomen in de component Group by. U kunt ook letterlijke waarden in de component SELECT altijd insluiten.
 
-  De GROUP BY-clausule moet na de SELECT-, FROM- en WHERE-clausule en vóór de COMPENSATIE-LIMIETclausule zijn. U GROUP BY momenteel niet gebruiken met een ORDER BY-clausule, maar dit is gepland.
+  De component GROUP BY moet na de component SELECT, FROM en WHERE en vóór de component OFFSET LIMIT staan. U kunt GROUP BY momenteel niet gebruiken met een ORDER BY-component, maar dit is gepland.
 
-  De GROUP BY-clausule staat geen van de volgende gegevens toe:
+  De GROUP BY-component staat niet toe dat een van de volgende:
   
-- Eigenschappen van aliasing of aliasingsysteemfuncties (aliasing is nog steeds toegestaan binnen de SELECT-component)
+- Alias eigenschappen of aliasing systeem functies (aliasing is nog steeds toegestaan in de component SELECT)
 - Subquery's
-- Geaggregeerde systeemfuncties (deze zijn alleen toegestaan in de SELECT-component)
+- Statistische systeem functies (deze zijn alleen toegestaan in de component SELECT)
 
-Query's met een geaggregeerde systeemfunctie en een subquery met `GROUP BY` worden niet ondersteund. De volgende query wordt bijvoorbeeld niet ondersteund:
+Query's met een statistische systeem functie en een subquery met `GROUP BY` worden niet ondersteund. De volgende query wordt bijvoorbeeld niet ondersteund:
 
 ```sql
 SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName) AS UniqueLastNames
@@ -61,9 +61,9 @@ SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName
 
 ## <a name="examples"></a>Voorbeelden
 
-In deze voorbeelden wordt gebruik gemaakt van de voedingsgegevensset die beschikbaar is via de [Azure Cosmos DB Query Playground.](https://www.documentdb.com/sql/demo)
+Deze voor beelden gebruiken de voedings gegevens die beschikbaar zijn via de [Azure Cosmos DB query Playground](https://www.documentdb.com/sql/demo).
 
-Hier vindt u bijvoorbeeld een query die het totale aantal artikelen in elke foodGroup retourneert:
+Dit is bijvoorbeeld een query die het totale aantal items in elke foodGroup retourneert:
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, f.foodGroup
@@ -71,7 +71,7 @@ FROM Food f
 GROUP BY f.foodGroup
 ```
 
-Sommige resultaten zijn (TOP trefwoord wordt gebruikt om de resultaten te beperken):
+Sommige resultaten zijn (bovenste sleutel woord wordt gebruikt om de resultaten te beperken):
 
 ```json
 [{
@@ -92,7 +92,7 @@ Sommige resultaten zijn (TOP trefwoord wordt gebruikt om de resultaten te beperk
 }]
 ```
 
-Deze query heeft twee expressies die worden gebruikt om resultaten te verdelen:
+Deze query heeft twee expressies die worden gebruikt om de resultaten te delen:
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, f.foodGroup, f.version
@@ -125,7 +125,7 @@ Enkele resultaten zijn:
 }]
 ```
 
-Deze query heeft een systeemfunctie in de GROEP BY-component:
+Deze query heeft een systeem functie in de GROUP BY-component:
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, UPPER(f.foodGroup) AS upperFoodGroup
@@ -154,7 +154,7 @@ Enkele resultaten zijn:
 }]
 ```
 
-Deze query gebruikt zowel trefwoorden als systeemfuncties in de eigenschapitemexpressie:
+Deze query gebruikt zowel tref woorden als systeem functies in de expressie van de item eigenschap:
 
 ```sql
 SELECT COUNT(1) AS foodGroupCount, ARRAY_CONTAINS(f.tags, {name: 'orange'}) AS containsOrangeTag,  f.version BETWEEN 0 AND 2 AS correctVersion
@@ -181,4 +181,4 @@ U ziet deze uitvoer:
 
 - [Aan de slag](sql-query-getting-started.md)
 - [SELECT-component](sql-query-select.md)
-- [Samengevoegde functies](sql-query-aggregates.md)
+- [Statistische functies](sql-query-aggregates.md)

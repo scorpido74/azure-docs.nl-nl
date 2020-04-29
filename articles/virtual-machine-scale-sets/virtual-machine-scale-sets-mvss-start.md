@@ -1,6 +1,6 @@
 ---
-title: Meer informatie over sjablonen voor het schalen van virtuele machines
-description: Meer informatie over het maken van een sjabloon voor basisschaalsets voor virtuele machines in Azure via verschillende eenvoudige stappen.
+title: Meer informatie over sjablonen voor virtuele-machine schaal sets
+description: Meer informatie over hoe u een basisschaalset-sjabloon maakt voor schaal sets van virtuele Azure-machines via een aantal eenvoudige stappen.
 author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mimckitt
 ms.openlocfilehash: 9c6a30a5f08b33adfa515973962236516f34fbf3
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273389"
 ---
-# <a name="learn-about-virtual-machine-scale-set-templates"></a>Meer informatie over sjablonen voor het schalen van virtuele machines
-[Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) zijn bijzonder handig om groepen gerelateerde resources te implementeren. In deze zelfstudiereeks ziet u hoe u een sjabloon voor basisschaalsets maakt en hoe u deze sjabloon aanpassen aan verschillende scenario's. Alle voorbeelden komen uit deze [GitHub repository.](https://github.com/gatneil/mvss)
+# <a name="learn-about-virtual-machine-scale-set-templates"></a>Meer informatie over sjablonen voor virtuele-machine schaal sets
+[Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) zijn bijzonder handig om groepen gerelateerde resources te implementeren. In deze reeks zelf studies ziet u hoe u een basis sjabloon voor een schaalset maakt en hoe u deze sjabloon wijzigt in verschillende scenario's. Alle voor beelden zijn afkomstig uit deze [github-opslag plaats](https://github.com/gatneil/mvss).
 
-Deze sjabloon is bedoeld om eenvoudig te zijn. Zie de [GitHub-opslagplaats Azure Quickstart Templates](https://github.com/Azure/azure-quickstart-templates) en zoek naar mappen die de tekenreeks `vmss`bevatten voor meer volledige voorbeelden van sjablonen voor schaalsets.
+Deze sjabloon is zo ontworpen dat deze eenvoudig is. Zie de [github-opslag plaats voor Azure Quick](https://github.com/Azure/azure-quickstart-templates) start-sjablonen en zoek naar mappen die de teken reeks `vmss`bevatten voor meer gedetailleerde voor beelden van schaal sets sjablonen.
 
-Als u al bekend bent met het maken van sjablonen, u naar de sectie Volgende stappen gaan om te zien hoe u deze sjabloon wijzigen.
+Als u al bekend bent met het maken van sjablonen, kunt u door gaan naar de sectie volgende stappen om te zien hoe u deze sjabloon wijzigt.
 
-## <a name="define-schema-and-contentversion"></a>$schema en contentVersie definiëren
-Definieer en `$schema` `contentVersion` in de sjabloon. Het `$schema` element definieert de versie van de sjabloontaal en wordt gebruikt voor visual studio-syntaxismarkering en vergelijkbare validatiefuncties. Het `contentVersion` element wordt niet gebruikt door Azure. In plaats daarvan u de sjabloonversie bijhouden.
+## <a name="define-schema-and-contentversion"></a>$schema en contentVersion definiëren
+Eerst definieert `$schema` u en `contentVersion` in de sjabloon. Het `$schema` element definieert de versie van de sjabloon taal en wordt gebruikt voor het markeren van de syntaxis van Visual Studio en vergelijk bare validatie functies. Het `contentVersion` element wordt niet gebruikt door Azure. In plaats daarvan kunt u de sjabloon versie volgen.
 
 ```json
 {
@@ -32,7 +32,7 @@ Definieer en `$schema` `contentVersion` in de sjabloon. Het `$schema` element de
 ```
 
 ## <a name="define-parameters"></a>Parameters definiëren
-Definieer vervolgens twee `adminUsername` parameters `adminPassword`en . Parameters zijn waarden die u opgeeft op het moment van implementatie. De `adminUsername` parameter is `string` gewoon een `adminPassword` type, maar omdat `securestring`is een geheim, geef het type . Later worden deze parameters doorgegeven in de configuratie van de schaalset.
+Vervolgens definieert u twee para `adminUsername` meters `adminPassword`en. Para meters zijn waarden die u opgeeft op het moment van de implementatie. De `adminUsername` para meter is gewoon `string` een type, maar `adminPassword` omdat het een geheim is, geeft `securestring`u het type op. Later worden deze para meters door gegeven aan de configuratie van de schaalset.
 
 ```json
   "parameters": {
@@ -45,20 +45,20 @@ Definieer vervolgens twee `adminUsername` parameters `adminPassword`en . Paramet
   },
 ```
 ## <a name="define-variables"></a>Variabelen definiëren
-Met resourcebeheersjablonen u ook variabelen definiëren die later in de sjabloon moeten worden gebruikt. In het voorbeeld worden geen variabelen gebruikt, dus het JSON-object is leeg.
+Met Resource Manager-sjablonen kunt u ook variabelen definiëren die later in de sjabloon moeten worden gebruikt. In het voor beeld worden geen variabelen gebruikt, waardoor het JSON-object leeg is.
 
 ```json
   "variables": {},
 ```
 
 ## <a name="define-resources"></a>Resources definiëren
-Vervolgens is het gedeelte resources van de sjabloon. Hier bepaalt u wat u daadwerkelijk wilt implementeren. In `parameters` `variables` tegenstelling tot en (die JSON objecten), `resources` is een JSON lijst van JSON objecten.
+Vervolgens vindt u de sectie resources van de sjabloon. Hier kunt u opgeven wat u daad werkelijk wilt implementeren. In tegens telling tot `parameters` en `variables` (wat JSON- `resources` objecten zijn), is een JSON-lijst met JSON-objecten.
 
 ```json
    "resources": [
 ```
 
-Alle resources `type` `name`vereisen `apiVersion`, `location` , en eigenschappen. De eerste bron van dit voorbeeld heeft het `myVnet`type [Microsoft.Network/virtualNetwork,](/azure/templates/microsoft.network/virtualnetworks)name en apiVersion `2018-11-01`. (Zie de [sjabloonverwijzing Azure Resource Manager](/azure/templates/)als u de nieuwste API-versie voor een resourcetype wilt vinden .)
+Alle resources vereisen `type`, `name`, `apiVersion`en `location` eigenschappen. De eerste resource van dit voor beeld is van het type [micro soft. Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks), name `myVnet`en apiVersion `2018-11-01`. (Als u de nieuwste API-versie voor een resource type wilt vinden, raadpleegt u de [Azure Resource Manager-sjabloon verwijzing](/azure/templates/).)
 
 ```json
      {
@@ -68,14 +68,14 @@ Alle resources `type` `name`vereisen `apiVersion`, `location` , en eigenschappen
 ```
 
 ## <a name="specify-location"></a>Locatie opgeven
-Als u de locatie voor het virtuele netwerk wilt opgeven, gebruikt u een [sjabloonfunctie Resourcebeheer](../azure-resource-manager/templates/template-functions.md). Deze functie moet worden ingesloten tussen aanhalingstekens en vierkante haakjes als deze: `"[<template-function>]"`. Gebruik in dit `resourceGroup` geval de functie. Er zijn geen argumenten nodig en retourneert een JSON-object met metagegevens over de brongroep waarin deze implementatie wordt geïmplementeerd. De resourcegroep wordt ingesteld door de gebruiker op het moment van implementatie. Deze waarde wordt vervolgens geïndexeerd in `.location` dit JSON-object om de locatie van het JSON-object te halen.
+Als u de locatie voor het virtuele netwerk wilt opgeven, gebruikt u een [Resource Manager-sjabloon functie](../azure-resource-manager/templates/template-functions.md). Deze functie moet tussen aanhalings tekens en vier Kante haakjes worden geplaatst `"[<template-function>]"`, bijvoorbeeld:. In dit geval gebruikt u de `resourceGroup` functie. Er worden geen argumenten gebruikt en er wordt een JSON-object geretourneerd met meta gegevens over de resource groep waarop deze implementatie wordt geïmplementeerd. De resource groep wordt ingesteld door de gebruiker op het moment van de implementatie. Deze waarde wordt vervolgens in dit JSON-object geïndexeerd `.location` met om de locatie van het JSON-object op te halen.
 
 ```json
        "location": "[resourceGroup().location]",
 ```
 
-## <a name="specify-virtual-network-properties"></a>Virtuele netwerkeigenschappen opgeven
-Elke Resource Manager-bron `properties` heeft een eigen sectie voor configuraties die specifiek zijn voor de resource. Geef in dit geval op dat het virtuele netwerk één `10.0.0.0/16`subnet moet hebben met behulp van het privé-IP-adresbereik . Een schaalset is altijd opgenomen in één subnet. Het kan geen subnetten omvatten.
+## <a name="specify-virtual-network-properties"></a>Eigenschappen van virtueel netwerk opgeven
+Elke resource manager-resource heeft een `properties` eigen sectie voor configuraties die specifiek zijn voor de resource. In dit geval geeft u op dat het virtuele netwerk één subnet moet hebben met het privé-IP `10.0.0.0/16`-adres bereik. Een schaalset bevindt zich altijd in één subnet. Er kunnen geen subnetten worden gespannen.
 
 ```json
        "properties": {
@@ -96,10 +96,10 @@ Elke Resource Manager-bron `properties` heeft een eigen sectie voor configuratie
      },
 ```
 
-## <a name="add-dependson-list"></a>Afhankelijk toevoegenOp de lijst
-Naast de vereiste `type` `name`, `apiVersion`, `location` , en eigenschappen, `dependsOn` kan elke resource een optionele lijst met tekenreeksen hebben. In deze lijst wordt aangegeven welke andere resources uit deze implementatie moeten worden voltooid voordat deze bron wordt geïmplementeerd.
+## <a name="add-dependson-list"></a>Lijst met dependsOn toevoegen
+Naast de `type`vereiste eigenschappen, `name` `apiVersion`, en `location` , kan elke resource een optionele `dependsOn` lijst met teken reeksen bevatten. In deze lijst wordt aangegeven welke andere resources van deze implementatie moeten worden voltooid voordat deze resource wordt geïmplementeerd.
 
-In dit geval is er slechts één element in de lijst, het virtuele netwerk uit het vorige voorbeeld. U geeft deze afhankelijkheid op omdat de schaalset het netwerk nodig heeft voordat u VM's maakt. Op deze manier kan de schaalset deze VM's privé-IP-adressen geven uit het IP-adresbereik dat eerder in de netwerkeigenschappen is opgegeven. De indeling van elke tekenreeks in `<type>/<name>`de lijst dependsOn is . Gebruik `type` hetzelfde `name` en eerder gebruikt in de definitie van virtuele netwerkbronnen.
+In dit geval is er slechts één element in de lijst, het virtuele netwerk van het vorige voor beeld. U geeft deze afhankelijkheid op omdat voor de schaalset het netwerk moet bestaan voordat er virtuele machines worden gemaakt. Op deze manier kan de schaalset deze privé-IP-adressen van Vm's geven van het IP-adres bereik dat eerder is opgegeven in de netwerk eigenschappen. De indeling van elke teken reeks in de dependsOn- `<type>/<name>`lijst is. Gebruik hetzelfde `type` en `name` eerder in de resource definitie voor het virtuele netwerk.
 
 ```json
      {
@@ -111,10 +111,10 @@ In dit geval is er slechts één element in de lijst, het virtuele netwerk uit h
          "Microsoft.Network/virtualNetworks/myVnet"
        ],
 ```
-## <a name="specify-scale-set-properties"></a>Eigenschappen voor schaalset opgeven
-Schaalsets hebben veel eigenschappen voor het aanpassen van de VM's in de schaalset. Zie de [sjabloonverwijzing](/azure/templates/microsoft.compute/virtualmachinescalesets)voor een volledige lijst met deze eigenschappen . Voor deze zelfstudie worden slechts een paar veelgebruikte eigenschappen ingesteld.
-### <a name="supply-vm-size-and-capacity"></a>VM-grootte en -capaciteit leveren
-De schaalset moet weten hoe groot VM moet zijn om te maken ('sku-naam') en hoeveel dergelijke VM's er moeten worden gemaakt ('sku-capaciteit'). Zie de [documentatie VM-formaten](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes)om te zien welke VM-formaten beschikbaar zijn.
+## <a name="specify-scale-set-properties"></a>Eigenschappen van schaal sets opgeven
+Schaal sets hebben veel eigenschappen voor het aanpassen van de virtuele machines in de schaalset. Zie de [sjabloon verwijzing](/azure/templates/microsoft.compute/virtualmachinescalesets)voor een volledige lijst met deze eigenschappen. Voor deze zelf studie zijn slechts enkele veelgebruikte eigenschappen ingesteld.
+### <a name="supply-vm-size-and-capacity"></a>Grootte en capaciteit van de VM opgeven
+De schaalset moet weten welke grootte van de virtuele machine moet worden gemaakt ("SKU-naam") en hoeveel virtuele machines er moeten worden gemaakt ("SKU-capaciteit"). Zie de [documentatie over VM-grootten](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes)om te zien welke VM-grootten er beschikbaar zijn.
 
 ```json
        "sku": {
@@ -124,7 +124,7 @@ De schaalset moet weten hoe groot VM moet zijn om te maken ('sku-naam') en hoeve
 ```
 
 ### <a name="choose-type-of-updates"></a>Type updates kiezen
-De schaalset moet ook weten hoe u updates op de schaalset moet verwerken. Momenteel zijn er drie `Manual` `Rolling` opties, en `Automatic`. Zie de documentatie over het upgraden van [een schaalset](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)voor meer informatie over de verschillen tussen de twee.
+De schaalset moet ook weten hoe updates moeten worden verwerkt in de schaalset. Er zijn momenteel drie opties, `Manual` `Rolling` en. `Automatic` Zie de documentatie over het [upgraden van een schaalset](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)voor meer informatie over de verschillen tussen de twee.
 
 ```json
        "properties": {
@@ -133,8 +133,8 @@ De schaalset moet ook weten hoe u updates op de schaalset moet verwerken. Moment
          },
 ```
 
-### <a name="choose-vm-operating-system"></a>VM-besturingssysteem kiezen
-De schaalset moet weten welk besturingssysteem u op de VM's moet zetten. Maak hier de VM's met een volledig gepatchte Ubuntu 16.04-LTS-afbeelding.
+### <a name="choose-vm-operating-system"></a>VM-besturings systeem kiezen
+De schaalset moet weten welk besturings systeem op de Vm's moet worden geplaatst. Maak hier de Vm's met een volledig patched Ubuntu 16,04-LTS-installatie kopie.
 
 ```json
          "virtualMachineProfile": {
@@ -149,9 +149,9 @@ De schaalset moet weten welk besturingssysteem u op de VM's moet zetten. Maak hi
 ```
 
 ### <a name="specify-computernameprefix"></a>ComputerNamePrefix opgeven
-De schaalset implementeert meerdere VM's. Geef in plaats van elke `computerNamePrefix`VM-naam op te geven . De schaalset voegt een index toe aan het voorvoegsel `<computerNamePrefix>_<auto-generated-index>`voor elke virtuele machine, zodat VM-namen het formulier hebben.
+De schaalset implementeert meerdere Vm's. Geef `computerNamePrefix`in plaats van elke VM-naam op te geven. De schaalset voegt een index toe aan het voor voegsel voor elke virtuele machine, zodat VM-namen `<computerNamePrefix>_<auto-generated-index>`het formulier hebben.
 
-Gebruik in het volgende fragment de parameters van vroeger om de gebruikersnaam en het wachtwoord van de beheerder in te stellen voor alle VM's in de schaalset. Dit proces `parameters` maakt gebruik van de sjabloonfunctie. Deze functie neemt een tekenreeks op die aangeeft naar welke parameter u moet verwijzen en de waarde voor die parameter moet worden uitgevoerd.
+In het volgende code fragment gebruikt u de para meters van voordat u de gebruikers naam en het wacht woord voor de beheerder instelt voor alle virtuele machines in de schaalset. Dit proces maakt gebruik `parameters` van de sjabloon functie. Deze functie gebruikt een teken reeks die opgeeft naar welke para meter moet worden verwezen en die de waarde voor die para meter uitvoert.
 
 ```json
            "osProfile": {
@@ -161,12 +161,12 @@ Gebruik in het volgende fragment de parameters van vroeger om de gebruikersnaam 
            },
 ```
 
-### <a name="specify-vm-network-configuration"></a>Vm-netwerkconfiguratie opgeven
-Geef ten slotte de netwerkconfiguratie voor de VM's op in de schaalset. In dit geval hoeft u alleen de id van het eerder gemaakte subnet op te geven. Dit vertelt de schaal ingesteld op de netwerkinterfaces in dit subnet te zetten.
+### <a name="specify-vm-network-configuration"></a>VM-netwerk configuratie opgeven
+Specificeer ten slotte de netwerk configuratie voor de virtuele machines in de schaalset. In dit geval hoeft u alleen de ID op te geven van het subnet dat u eerder hebt gemaakt. Hiermee wordt de schaal ingesteld waarmee de netwerk interfaces in dit subnet worden geplaatst.
 
-U de id van het virtuele netwerk met `resourceId` het subnet krijgen met behulp van de sjabloonfunctie. Deze functie neemt het type en de naam van een resource in beslag en retourneert de volledig gekwalificeerde id van die resource. Deze id heeft het formulier:`/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
+U kunt de ID van het virtuele netwerk met het subnet ophalen met behulp `resourceId` van de sjabloon functie. Deze functie neemt het type en de naam van een resource en retourneert de volledig gekwalificeerde id van die resource. Deze ID heeft de volgende notatie:`/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
 
-De id van het virtuele netwerk is echter niet voldoende. Geef het specifieke subnet op waarin de vm's van de schaalset moeten zijn. Om dit te doen, `/subnets/mySubnet` te concatenate aan de ID van het virtuele netwerk. Het resultaat is de volledig gekwalificeerde ID van het subnet. Doe dit samenvoeging `concat` met de functie, die neemt in een reeks van snaren en keert hun samenvoeging.
+De id van het virtuele netwerk is echter niet voldoende. Geef het specifieke subnet op waar de virtuele machines voor de schaalset zich bevinden. U kunt dit doen door samen `/subnets/mySubnet` te voegen met de id van het virtuele netwerk. Het resultaat is de volledig gekwalificeerde ID van het subnet. Doe dit samen met de `concat` functie, die in een reeks teken reeksen neemt en die de samen voeging retourneert.
 
 ```json
            "networkProfile": {

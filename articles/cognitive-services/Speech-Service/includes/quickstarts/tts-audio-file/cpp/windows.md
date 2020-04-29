@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: spraak synthetiseren tot audiobestand, C++ (Windows) - Spraakservice'
+title: 'Quick Start: spraak samen te brengen in audio bestand, C++ (Windows)-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: wolfma
 ms.openlocfilehash: 2703756a748d8e57321e54b3a9cb961916d337b6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81275256"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u:
+Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Een Azure-spraakbron maken](../../../../get-started.md)
-> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
+> * [Een Azure-spraak resource maken](../../../../get-started.md)
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
@@ -72,17 +72,17 @@ Voordat u aan de slag gaat, moet u:
 
 1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
-1. Vervang de `helloworld.wav` tekenreeks door uw eigen bestandsnaam.
+1. Vervang de teken `helloworld.wav` reeks door uw eigen bestands naam.
 
-1. Kies Alles**opslaan** **op** > de menubalk .
+1. Kies in de menu balk de optie **bestand** > **Opslaan**.
 
 ## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 
-1. Selecteer op de menubalk **Build** > **Build Solution** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
+1. **Selecteer** > in de menu balk build**Build Solution** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
 
-1. Kies **Foutopsporing debuggen** > **(of** druk op **F5)** om de **helloworld-toepassing** te starten.
+1. Kies **debug** > **Start Debugging** (of druk op **F5**) om de toepassing **HelloWorld** te starten.
 
-1. Uw tekst wordt omgezet in spraak en opgeslagen in de opgegeven audiogegevens.
+1. Uw tekst wordt geconverteerd naar spraak en opgeslagen in de opgegeven audio gegevens.
 
    ```text
    Speech synthesized to [helloworld.wav] for text [Hello world!]
@@ -95,4 +95,4 @@ Voordat u aan de slag gaat, moet u:
 ## <a name="see-also"></a>Zie ook
 
 - [Een aangepaste stem maken](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Aangepaste spraakvoorbeelden opnemen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Aangepaste spraak voorbeelden vastleggen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

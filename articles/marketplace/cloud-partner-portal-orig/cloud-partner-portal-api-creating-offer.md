@@ -1,6 +1,6 @@
 ---
 title: Een aanbieding maken of wijzigen | Azure Marketplace
-description: API om een nieuwe of update en bestaande aanbieding te maken.
+description: API voor het maken van een nieuwe of bijgewerkte en bestaande aanbieding.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,30 +8,30 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 66e640ab199a884ebfab69cbe7db7f562d848720
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81256345"
 ---
 <a name="create-or-modify-an-offer"></a>Een aanbieding toevoegen of veranderen
 =========================
 
 > [!NOTE]
-> De API's van cloudpartnerportalen zijn geïntegreerd met het Partner Center en blijven werken nadat uw aanbiedingen zijn gemigreerd naar partnercentrum. De integratie brengt kleine veranderingen met zich mee. Bekijk de wijzigingen in [Cloud Partner Portal API Reference](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) om ervoor te zorgen dat uw code blijft werken na de migratie naar partnercentrum.
+> De Cloud Partner-portal-Api's zijn geïntegreerd met partner centrum en blijven werken nadat uw aanbiedingen zijn gemigreerd naar het partner centrum. De integratie introduceert kleine wijzigingen. Bekijk de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) om ervoor te zorgen dat uw code blijft werken na de migratie naar het partner centrum.
 
-Met deze oproep wordt een specifieke aanbieding binnen de naamruimte van de uitgever bijgewerkt of wordt een nieuwe aanbieding gemaakt.
+Met deze oproep wordt een specifieke aanbieding binnen de naam ruimte van de uitgever bijgewerkt of wordt een nieuwe aanbieding gemaakt.
 
   `PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31`
 
 
-<a name="uri-parameters"></a>URI-parameters
+<a name="uri-parameters"></a>URI-para meters
 --------------
 
-|  **Naam**         |  **Beschrijving**                      |  **Gegevenstype**  |
+|  **Naam**         |  **Beschrijving**                      |  **Gegevens type**  |
 |  --------         |  ----------------                     |  -------------  |
-| uitgeverId       |  Publisher-id, bijvoorbeeld`contoso` |   Tekenreeks |
-| aanbiedingId           |  Aanbiedings-id                     |   Tekenreeks        |
+| publisherId       |  Uitgevers-id, bijvoorbeeld`contoso` |   Tekenreeks |
+| offerId           |  Aanbiedings-id                     |   Tekenreeks        |
 | api-versie       |  Nieuwste versie van de API            |   Date           |
 |  |  |  |
 
@@ -45,10 +45,10 @@ Met deze oproep wordt een specifieke aanbieding binnen de naamruimte van de uitg
 |  |  |
 
 
-<a name="body-example"></a>Voorbeeld van het lichaam
+<a name="body-example"></a>Voor beeld van tekst
 ------------
 
-In het volgende voorbeeld wordt `contosovirtualmachine`een aanbieding met offerID van .
+In het volgende voor beeld wordt een aanbieding met `contosovirtualmachine`offerID van gemaakt.
 
 ### <a name="request"></a>Aanvraag
 
@@ -242,23 +242,23 @@ In het volgende voorbeeld wordt `contosovirtualmachine`een aanbieding met offerI
 ```
 
 > [!NOTE]
-> Als u deze aanbieding wilt wijzigen, voegt u een **Als-Match-koptekst** toe op * aan de bovenstaande aanvraag. Gebruik dezelfde aanvraaginstantie als hierboven, maar wijzig de waarden naar wens. 
+> Als u deze aanbieding wilt wijzigen, voegt u een **if-match-** header toe aan * op de bovenstaande aanvraag. Gebruik dezelfde hoofd tekst als hierboven, maar wijzig de waarden naar wens. 
 
 
-### <a name="response-status-codes"></a>Statuscodes voor antwoord
+### <a name="response-status-codes"></a>Antwoord status codes
 
-| **Code**  |  **Beschrijving**                                                                            |
+| **Gecodeerd**  |  **Beschrijving**                                                                            |
 | --------  |  ---------------                                                                            |
 |  200      | `OK`. De aanvraag is verwerkt en de aanbieding is gewijzigd.           |
 |  201      | `Created`. De aanvraag is verwerkt en de aanbieding is gemaakt.   |
-|  400      | `Bad/Malformed request`. De instantie voor foutrespons kan meer informatie geven.            |
-|  403      | `Forbidden`. De client heeft geen toegang tot de gevraagde naamruimte.                     |
-|  404      | `Not found`. De entiteit waarnaar de client verwijst, bestaat niet.                           |
-|  412      | De server voldoet niet aan een van de voorwaarden die de aanvrager in de aanvraag heeft opgegeven. De client moet controleren of de ETAG verzonden met het verzoek. |
+|  400      | `Bad/Malformed request`. De hoofd tekst van het fout bericht kan meer informatie geven.            |
+|  403      | `Forbidden`. De client heeft geen toegang tot de aangevraagde naam ruimte.                     |
+|  404      | `Not found`. De entiteit waarnaar wordt verwezen door de client, bestaat niet.                           |
+|  412      | De server voldoet niet aan een van de voor waarden die de aanvrager in de aanvraag heeft opgegeven. De client moet controleren of de ETAG met de aanvraag is verzonden. |
 |  |  |
 
 
 <a name="uploading-artifacts"></a>Artefacten uploaden
 -------------------
 
-Artefacten, zoals afbeeldingen en logo's, moeten worden gedeeld door ze te uploaden naar een toegankelijke locatie op het web, en vervolgens elk als URI op te nemen in het PUT-verzoek, zoals in het bovenstaande voorbeeld. Het systeem detecteert dat deze bestanden niet aanwezig zijn in de Azure Marketplace-opslag en downloadt deze bestanden in opslag.  Als gevolg hiervan zult u merken dat toekomstige GET-aanvragen een URL van de Azure Marketplace-service voor deze bestanden retourneren.
+Artefacten, zoals afbeeldingen en logo's, moeten worden gedeeld door ze te uploaden naar een toegankelijke locatie op het web en vervolgens als een URI in de PUT-aanvraag, zoals in het bovenstaande voor beeld. Het systeem detecteert dat deze bestanden niet aanwezig zijn in de Azure Marketplace-opslag en downloaden deze bestanden niet naar opslag.  Als gevolg hiervan zult u merken dat toekomstige GET-aanvragen een URL voor de Azure Marketplace-service retour neren voor deze bestanden.

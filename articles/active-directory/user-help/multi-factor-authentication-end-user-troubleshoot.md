@@ -1,6 +1,6 @@
 ---
-title: Veelvoorkomende problemen met accounttweefactorverificatie - Azure AD
-description: Oplossingen voor enkele van de meest voorkomende twee-factor verificatie problemen en uw werk of school account.
+title: Veelvoorkomende problemen met account twee ledige verificatie-Azure AD
+description: Oplossingen voor een aantal veelvoorkomende problemen met twee ledige verificaties en uw werk-of school account.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,103 +13,103 @@ ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
 ms.openlocfilehash: 3df79fb1e103ddfaafeb348641e675cd250f5858
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81271689"
 ---
-# <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Veelvoorkomende problemen met tweefactorverificatie en uw werk- of schoolaccount
+# <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Veelvoorkomende problemen met twee ledige verificatie en uw werk-of school account
 
-Wanneer uw Azure Active Directory-organisatie (Azure AD) tweestapsverificatie inschakelt, vereist uw aanmelding voor werk- of schoolaccounts een combinatie van uw gebruikersnaam, uw wachtwoord en een mobiel apparaat of telefoon. Het is veiliger dan alleen een wachtwoord, vertrouwend op twee vormen van authenticatie: iets wat je weet, en iets wat je bij je hebt. Twee-factor verificatie kan helpen om te voorkomen dat kwaadwillende hackers zich voordoen als u, want zelfs als ze uw wachtwoord hebben, de kans groot dat ze niet uw apparaat hebben, ook.
+Wanneer uw Azure Active Directory-organisatie (Azure AD) de twee ledige verificatie inschakelt, moet uw werk-of school account een combi natie hebben van uw gebruikers naam, uw wacht woord en een mobiel apparaat of telefoon nummer. Het is veiliger dan alleen een wacht woord, afhankelijk van twee vormen van verificatie: iets wat u kent en wat u met u hebt. Verificatie op basis van twee factoren kan helpen voor komen dat kwaadwillende hackers zich voordoen, want zelfs als ze uw wacht woord hebben, zijn de conflicteert dat ze niet uw apparaat hebben.
 
 <center>
 
-![Afbeelding van conceptverificatiemethoden](../authentication/media/concept-mfa-howitworks/methods.png)</center>
+![Afbeelding van de conceptuele verificatie methoden](../authentication/media/concept-mfa-howitworks/methods.png)</center>
 
-Er zijn een aantal gemeenschappelijke twee-factor verificatie problemen die lijken te gebeuren vaker dan ieder van ons zou willen. We hebben dit artikel samengesteld om de meest voorkomende problemen en een aantal mogelijke oplossingen aan te pakken.
+Er zijn enkele veelvoorkomende problemen met twee ledige verificatie die vaak vaker voor komen dan wat ons zou willen. We hebben dit artikel gecombineerd om de meest voorkomende problemen op te lossen en enkele mogelijke oplossingen.
 
 >[!Important]
->Als u een beheerder bent, vindt u meer informatie over het instellen en beheren van uw Azure AD-omgeving in de [Azure AD-documentatie.](https://docs.microsoft.com/azure/active-directory)
+>Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw Azure AD-omgeving in de [Azure AD-documentatie](https://docs.microsoft.com/azure/active-directory).
 >
->Deze inhoud is ook alleen bedoeld voor gebruik met uw werk- of schoolaccount, het alain@contoso.comaccount dat uw organisatie (bijvoorbeeld) aan u verstrekt. Als u problemen ondervindt met tweestapsverificatie en uw persoonlijke Microsoft-account, een account danielle@outlook.comdat u voor uzelf hebt ingesteld (bijvoorbeeld), raadpleegt u [Tweestapsverificatie in- of uitschakelen voor uw Microsoft-account.](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)
+>Deze inhoud is ook alleen bedoeld voor gebruik met uw werk-of school account. Dit is het account dat u hebt ontvangen van uw organisatie (bijvoorbeeld alain@contoso.com). Als u problemen ondervindt met twee ledige verificatie en uw persoonlijke Microsoft-account, wat een account is dat u zelf hebt ingesteld (bijvoorbeeld danielle@outlook.com), raadpleegt u [twee ledige verificatie inschakelen of uitschakelen voor uw Microsoft-account](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
-## <a name="i-dont-have-my-mobile-device-with-me"></a>Ik heb mijn mobiele apparaat niet bij me
+## <a name="i-dont-have-my-mobile-device-with-me"></a>Ik heb mijn mobiele apparaat niet met mij
 
-Het gebeurt. Je hebt je mobiele apparaat thuis gelaten en nu kun je je telefoon niet gebruiken om te verifiëren wie je bent. Als u eerder een andere methode hebt toegevoegd om u aan te melden bij uw account, zoals uw kantoortelefoon, moet u die methode nu kunnen gebruiken. Als u nooit een extra verificatiemethode hebt toegevoegd, moet u contact opnemen met de helpdesk van uw organisatie en deze laten helpen om weer in uw account te komen.
+Dit gebeurt. U hebt uw mobiele apparaat thuis verlaten en nu kunt u uw telefoon niet gebruiken om te controleren wie u bent. Als u eerder een andere methode hebt toegevoegd om u aan te melden bij uw account, zoals uw zakelijke telefoon, kunt u deze methode nu gebruiken. Als u nog nooit een extra verificatie methode hebt toegevoegd, moet u contact opnemen met de Help Desk van uw organisatie en deze gebruiken om terug te gaan naar uw account.
 
-### <a name="to-sign-in-to-your-work-or-school-account-using-another-verification-method"></a>U zich aanmelden bij uw werk- of schoolaccount met een andere verificatiemethode
+### <a name="to-sign-in-to-your-work-or-school-account-using-another-verification-method"></a>Aanmelden bij uw werk-of school account met een andere verificatie methode
 
-1. Meld u aan bij uw account, maar selecteer de koppeling Aanmelden op **een andere manier** op de pagina **Tweestapsverificatie.**
+1. Meld u aan bij uw account, maar selecteer de koppeling **aanmelden op een andere manier** op de pagina **twee ledige verificatie** .
 
-    ![De verificatiemethode voor aanmelding wijzigen](./media/multi-factor-authentication-end-user-troubleshoot/two-factor-auth-signin-another-way.png)
+    ![Verificatie methode voor aanmelding wijzigen](./media/multi-factor-authentication-end-user-troubleshoot/two-factor-auth-signin-another-way.png)
 
-    Als u de koppeling Aanmelden op **een andere manier** niet ziet, betekent dit dat u geen andere verificatiemethoden hebt ingesteld. Je moet contact opnemen met je beheerder voor hulp bij het aanmelden bij je account.
+    Als u de koppeling **aanmelden op een andere manier** niet ziet, betekent dit dat u geen andere verificatie methoden hebt ingesteld. Neem contact op met uw beheerder voor hulp bij het aanmelden bij uw account.
 
-2. Kies uw alternatieve verificatiemethode en ga verder met het verificatieproces met twee factoren.
+2. Kies uw alternatieve verificatie methode en ga door met het verificatie proces met twee factoren.
 
-## <a name="i-lost-my-mobile-device-or-it-was-stolen"></a>Ik verloor mijn mobiele apparaat of het werd gestolen
+## <a name="i-lost-my-mobile-device-or-it-was-stolen"></a>Ik ben mijn mobiele apparaat kwijt geraakt of het is gestolen
 
-Als u uw mobiele apparaat hebt verloren of laten stelen, u zich met een andere methode aanmelden of de helpdesk van uw organisatie vragen om uw instellingen te wissen. We raden je ten zeerste aan om de helpdesk van je organisatie te laten weten of je telefoon is verloren of gestolen, zodat de juiste updates kunnen worden uitgevoerd in je account. Nadat uw instellingen zijn gewist, wordt u gevraagd zich te [registreren voor tweestapsverificatie](multi-factor-authentication-end-user-first-time.md) wanneer u zich de volgende keer aanmeldt.
+Als u het mobiele apparaat kwijtraakt of als u het hebt gestolen, kunt u zich aanmelden met een andere methode of u kunt de Help Desk van uw organisatie vragen uw instellingen te wissen. We raden u ten zeerste aan de Help Desk van uw organisatie te laten weten of uw telefoon is kwijt geraakt of gestolen. Daarom kunnen de juiste updates worden aangebracht in uw account. Nadat uw instellingen zijn gewist, wordt u gevraagd om u te [registreren voor twee ledige verificatie](multi-factor-authentication-end-user-first-time.md) bij de volgende keer dat u zich aanmeldt.
 
-## <a name="im-not-getting-the-verification-code-sent-to-my-mobile-device"></a>Ik krijg de verificatiecode niet naar mijn mobiele apparaat gestuurd
+## <a name="im-not-getting-the-verification-code-sent-to-my-mobile-device"></a>Ik krijg de verificatie code niet die naar mijn mobiele apparaat wordt verzonden
 
-Het niet verkrijgen van uw verificatiecode is een veel voorkomend probleem en het is meestal gerelateerd aan uw mobiele apparaat en de instellingen ervan. Enkele mogelijke dingen om te proberen:
+Het niet ophalen van uw verificatie code is een veelvoorkomend probleem en is doorgaans gerelateerd aan uw mobiele apparaat en de bijbehorende instellingen. Enkele mogelijke manieren om te proberen:
 
-Probeer dit eens | Richtlijnen
+Probeer dit | Informatie over begeleiding
 --------- | ------------
-Uw mobiele apparaat opnieuw opstarten | Soms moet uw apparaat gewoon worden vernieuwd. Als u uw apparaat opnieuw start, wordt een einde gemaakt aan achtergrondprocessen of services die momenteel worden uitgevoerd en die problemen kunnen veroorzaken, samen met het vernieuwen van de kerncomponenten van uw apparaat, het opnieuw opstarten van uw apparaat in het geval ze op een bepaald moment zijn gecrasht.
-Controleren of uw beveiligingsgegevens correct zijn | Zorg ervoor dat de gegevens van uw beveiligingsverificatiemethode juist zijn, vooral uw telefoonnummers. Als u het verkeerde telefoonnummer invoert, gaan al uw waarschuwingen naar dat onjuiste nummer. Gelukkig kan die gebruiker niets met de waarschuwingen doen, maar het helpt je ook niet om je aan te melden bij je account. Zie de instructies in het artikel Instellingen [voor verificatiemethode](multi-factor-authentication-end-user-manage-settings.md) voor twee stappen beheren om ervoor te zorgen dat uw gegevens correct zijn.
-Controleer of uw meldingen zijn ingeschakeld | Zorg ervoor dat op uw mobiele apparaat meldingen zijn ingeschakeld en of u een meldingsmethode hebt geselecteerd waarmee telefoongesprekken, uw verificatie-app en uw berichten-app (voor sms-berichten) zichtbare waarschuwingsmeldingen naar uw mobiele apparaat kunnen verzenden.
-Zorg ervoor dat u een apparaatsignaal en internetverbinding hebt | Zorg ervoor dat uw telefoongesprekken en sms-berichten worden doorgedrongen tot uw mobiele apparaat. Laat een vriend je bellen en stuur je een sms om er zeker van te zijn dat je beide ontvangt. Als u dit niet doet, controleert u eerst of uw mobiele apparaat is ingeschakeld. Als uw apparaat is ingeschakeld, maar u nog steeds niet wordt gebeld of gebeld, is dit waarschijnlijk een probleem met uw netwerk en moet u met uw provider praten. Als u vaak problemen hebt met signalen, raden we u aan de [Microsoft Authenticator-app](user-help-auth-app-download-install.md) op uw mobiele apparaat te installeren en te gebruiken. De authenticator-app kan willekeurige beveiligingscodes genereren voor aanmelding, zonder dat er een mobiele signaal of internetverbinding nodig is.
-Niet storen uitschakelen | Zorg ervoor dat u de functie **Niet storen voor** uw mobiele apparaat niet hebt ingeschakeld. Wanneer deze functie is ingeschakeld, mogen meldingen u niet waarschuwen op uw mobiele apparaat. Raadpleeg de handleiding van uw mobiele apparaat voor instructies over het uitschakelen van deze functie.
-Telefoonnummers deblokkeren | In de Verenigde Staten komen spraakoproepen van Microsoft uit de volgende nummers: +1 (866) 539 4191, +1 (855) 330 8653 en +1 (877) 668 6536.
-Uw instellingen voor de batterij controleren | Deze lijkt een beetje vreemd op het oppervlak, maar als je hebt ingesteld uw batterij optimalisatie om minder gebruikte apps te stoppen van actief blijven op de achtergrond, uw melding systeem is waarschijnlijk getroffen. Als u wilt proberen dit probleem op te lossen, schakelt u batterijoptimalisatie voor uw verificatie-app en uw berichten-app uit en probeert u zich opnieuw aan te melden bij uw account.
-Beveiligingsapps van derden uitschakelen | Als u een app hebt die sms-berichten of telefoongesprekken beschermt om onbekende bellers tot een minimum te beperken, kan deze voorkomen dat de verificatiecode wordt ontvangen. Probeer beveiligingsapps van derden op uw telefoon uit te schakelen en vraag vervolgens om een andere verificatiecode te sturen.
+Uw mobiele apparaat opnieuw opstarten | Soms moet uw apparaat gewoon worden vernieuwd. Als uw apparaat opnieuw wordt opgestart, worden alle achtergrond processen of services die momenteel worden uitgevoerd, beëindigd en kunnen er problemen ontstaan, samen met het vernieuwen van de kern onderdelen van uw apparaat, het opnieuw opstarten als ze op een bepaald moment zijn vastgelopen.
+Controleer of uw beveiligings gegevens juist zijn | Zorg ervoor dat de gegevens van de beveiligings verificatie methode nauw keurig zijn, met name uw telefoon nummers. Als u het verkeerde telefoon nummer plaatst, wordt al uw waarschuwingen naar een onjuist nummer gegaan. Gelukkig kan deze gebruiker niets doen met de waarschuwingen, maar ook niet om u aan te melden bij uw account. Zie de instructies in het artikel [uw twee ledige verificatie methode-instellingen beheren](multi-factor-authentication-end-user-manage-settings.md) om ervoor te zorgen dat uw gegevens correct zijn.
+Controleren of uw meldingen zijn ingeschakeld | Zorg ervoor dat op uw mobiele apparaat meldingen zijn ingeschakeld en dat u een meldings methode hebt geselecteerd waarmee telefoon gesprekken, uw verificatie-app en uw Messa ging-app (voor SMS-berichten) zicht bare waarschuwings meldingen naar uw mobiele apparaat kunnen verzenden.
+Zorg ervoor dat u een signaal voor een apparaat en een Internet verbinding hebt | Zorg ervoor dat uw telefoon gesprekken en SMS-berichten op uw mobiele apparaat terechtkomen. Laat een vriend u bellen en u een SMS-bericht sturen om er zeker van te zijn dat u beide ontvangt. Als u dit niet doet, controleert u eerst of het mobiele apparaat is ingeschakeld. Als uw apparaat is ingeschakeld, maar u nog steeds geen gesprek of tekst krijgt, is het waarschijnlijk een probleem met uw netwerk en moet u contact opnemen met uw provider. Als u vaak signaal problemen ondervindt, raden we u aan om de [Microsoft Authenticator-app](user-help-auth-app-download-install.md) op uw mobiele apparaat te installeren en te gebruiken. De verificator-app kan wille keurige beveiligings codes genereren voor aanmelden, zonder dat er een celpictogram of Internet verbinding vereist is.
+Niet storen uitschakelen | Zorg ervoor dat u de functie **niet Stores** voor uw mobiele apparaat niet hebt ingeschakeld. Als deze functie is ingeschakeld, kunnen meldingen niet worden gewaarschuwd op uw mobiele apparaat. Raadpleeg de hand leiding van uw mobiele apparaat voor instructies over het uitschakelen van deze functie.
+Telefoon nummers blok keren | In de Verenigde Staten zijn telefoon aanroepen van micro soft afkomstig van de volgende nummers: + 1 (866) 539 4191, + 1 (855) 330 8653 en + 1 (877) 668 6536.
+Controleer de accu-gerelateerde instellingen | Dit lijkt een beetje oneven op het Opper vlak, maar als u uw batterij optimalisatie hebt ingesteld om te voor komen dat toepassingen die minder worden gebruikt, op de achtergrond actief blijven, heeft het meest waarschijnlijk invloed op uw meldings systeem. Als u wilt proberen dit probleem op te lossen, schakelt u de batterij optimalisatie voor uw verificatie-app en uw Messa ging-app uit en probeert u zich opnieuw aan te melden bij uw account.
+Beveiligings-apps van derden uitschakelen | Als u een app hebt die tekst berichten of telefoon gesprekken beveiligt om onbekende bellers te minimaliseren, kan de verificatie code niet worden ontvangen. Probeer alle beveiligings-apps van derden uit te scha kelen op uw telefoon en vraag vervolgens een andere verificatie code te verzenden.
 
-## <a name="im-not-getting-prompted-for-my-second-verification-information"></a>Ik word niet gevraagd om mijn tweede verificatiegegevens
+## <a name="im-not-getting-prompted-for-my-second-verification-information"></a>Ik krijg geen melding meer over mijn tweede verificatie gegevens
 
-Als u zich hebt aangemeld bij uw werk- of schoolaccount met uw gebruikersnaam en wachtwoord, maar u niet bent gevraagd naar uw aanvullende beveiligingsverificatiegegevens, hebt u uw apparaat misschien nog niet ingesteld. Uw mobiele apparaat moet zijn ingesteld om te werken met uw specifieke aanvullende beveiligingsverificatiemethode. Zie het artikel Instellingen [voor verificatiemethode beheren](multi-factor-authentication-end-user-manage-settings.md) om ervoor te zorgen dat u uw mobiele apparaat hebt ingeschakeld en dat het beschikbaar is om te gebruiken met uw verificatiemethode. Als u weet dat u uw apparaat of uw account niet hebt ingesteld, u dit nu doen door de stappen in het artikel [Mijn account instellen voor verificatie in twee stappen](multi-factor-authentication-end-user-first-time.md) te volgen.
+Als u zich hebt aangemeld bij uw werk-of school account met behulp van uw gebruikers naam en wacht woord, maar u nog geen informatie over uw aanvullende beveiligings verificatie hebt opgegeven, kunt u uw apparaat mogelijk nog niet instellen. Uw mobiele apparaat moet worden ingesteld om te werken met uw specifieke aanvullende beveiligings verificatie methode. Om ervoor te zorgen dat u uw mobiele apparaat hebt ingeschakeld en dat het beschikbaar is voor gebruik met uw verificatie methode, raadpleegt u het artikel [uw instellingen voor twee ledige verificatie methode beheren](multi-factor-authentication-end-user-manage-settings.md) . Als u weet dat u uw apparaat of uw account nog niet hebt ingesteld, kunt u dit nu doen door de stappen in het artikel [Mijn account instellen voor verificatie in twee stappen](multi-factor-authentication-end-user-first-time.md) te volgen.
 
-## <a name="i-got-a-new-phone-number-and-i-want-to-add-it"></a>Ik heb een nieuw telefoonnummer en ik wil het toevoegen
+## <a name="i-got-a-new-phone-number-and-i-want-to-add-it"></a>Ik heb een nieuw telefoon nummer en ik wil het toevoegen
 
-Als u een nieuw telefoonnummer hebt ontvangen, moet u de gegevens van uw beveiligingsverificatiemethode bijwerken, zodat uw verificatieprompts naar de juiste locatie gaan. Als u uw verificatiemethode wilt bijwerken, voert u de stappen in het gedeelte **Uw telefoonnummer toevoegen of wijzigen** van het artikel Instellingen voor verificatie methode voor twee stappen [beheren.](multi-factor-authentication-end-user-manage-settings.md#add-or-change-your-phone-number)
+Als u een nieuw telefoon nummer hebt, moet u de details van de beveiligings verificatie methode bijwerken zodat de verificatie vraagt om naar de juiste locatie. Volg de stappen in het gedeelte **uw telefoon nummer toevoegen of wijzigen** in het artikel uw [instellingen voor twee ledige verificatie methode beheren](multi-factor-authentication-end-user-manage-settings.md#add-or-change-your-phone-number) om uw verificatie methode bij te werken.
 
-## <a name="i-got-a-new-mobile-device-and-i-want-to-add-it"></a>Ik heb een nieuw mobiel apparaat en ik wil het toevoegen
+## <a name="i-got-a-new-mobile-device-and-i-want-to-add-it"></a>Ik heb een nieuw mobiel apparaat gekregen dat ik wil toevoegen
 
-Als u een nieuw mobiel apparaat hebt gekregen, moet u het instellen om te werken met tweestapsverificatie. Dit is een oplossing in meerdere stappen:
+Als u een nieuw mobiel apparaat hebt, moet u dit instellen op het gebruik van twee ledige verificatie. Dit is een oplossing met meerdere stappen:
 
-1. Stel uw apparaat in om met uw werk- of schoolaccount te werken door de stappen in het artikel [Mijn account instellen voor verificatie in twee stappen](multi-factor-authentication-end-user-first-time.md) te volgen.
+1. Stel uw apparaat in op samen werking met uw werk-of school account door de stappen in het artikel [Mijn account instellen voor verificatie in twee stappen](multi-factor-authentication-end-user-first-time.md) te volgen.
 
-1. Werk uw account- en apparaatgegevens bij op de pagina **Extra beveiligingsverificatie,** waarbij uw oude apparaat wordt verwijderd en uw nieuwe apparaat wordt toegevoegd. Zie het artikel [Instellingen voor verificatiemethode voor twee stappen beheren](multi-factor-authentication-end-user-manage-settings.md) voor meer informatie.
+1. Werk uw account en apparaatgegevens bij op de **aanvullende beveiligings verificatie** pagina en verwijder het oude apparaat en voeg uw nieuwe toe. Zie het artikel [uw instellingen voor de verificatie methode van twee factoren beheren](multi-factor-authentication-end-user-manage-settings.md) voor meer informatie.
 
 Optionele stappen:
 
-- Download, installeer en stel de Microsoft Authenticator-app in op uw mobiele apparaat door de stappen in het artikel [Microsoft Authenticator-app downloaden en installeren.](user-help-auth-app-download-install.md)
+- U kunt de app Microsoft Authenticator downloaden, installeren en instellen op uw mobiele apparaat door de stappen te volgen in het artikel [Microsoft Authenticator app downloaden en installeren](user-help-auth-app-download-install.md) .
 
-- Schakel tweestapsverificatie in voor uw vertrouwde apparaten door de stappen te volgen in de **tweestapverificatieprompts inschakelen op een vertrouwd apparaatgedeelte** van het artikel Instellingen [voor tweefactorverificatiemethode beheren.](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)
+- Schakel twee ledige verificatie in voor uw vertrouwde apparaten door de stappen in de sectie met **twee ledige verificatie vragen op een vertrouwd apparaat** in te scha kelen in het artikel [uw instellingen voor twee ledige verificatie methode beheren](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) .
 
-## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>Ik heb problemen met aanmelden op mijn mobiele apparaat tijdens het reizen
+## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>Ik ondervind problemen bij het aanmelden op mijn mobiele apparaat tijdens het reizen
 
-Het is mogelijk dat u een verificatiemethode voor mobiele apparaten, zoals een sms-bericht, gebruikt terwijl u zich op een internationale locatie bevindt. Het is ook mogelijk dat uw mobiele apparaat ervoor kan zorgen dat u roamingkosten maakt. Voor deze situatie raden we u aan de Microsoft Authenticator-app te gebruiken, met de optie om verbinding te maken met een Wi-Fi-hotspot. Zie het artikel over het downloaden, installeren en instellen van de Microsoft Authenticator-app op uw mobiele apparaat voor meer informatie over het downloaden, installeren en instellen van de Microsoft [Authenticator-app.](user-help-auth-app-download-install.md)
+Mogelijk vindt u het moeilijker om een verificatie methode met een mobiel apparaat te gebruiken, zoals een SMS-bericht, terwijl u zich op een internationale locatie bevindt. Het is ook mogelijk dat uw mobiele apparaat u de kosten voor roaming kan veroorzaken. Voor deze situatie raden we u aan om de Microsoft Authenticator-app te gebruiken, met de optie om verbinding te maken met een Wi-Fi-hotspot. Zie het artikel [Microsoft Authenticator app downloaden en installeren](user-help-auth-app-download-install.md) voor meer informatie over het downloaden, installeren en instellen van de Microsoft Authenticator-app op uw mobiele apparaat.
 
-## <a name="i-cant-get-my-app-passwords-to-work"></a>Ik kan mijn app-wachtwoorden niet laten werken
+## <a name="i-cant-get-my-app-passwords-to-work"></a>Ik kan mijn app-wacht woorden niet gebruiken
 
-App-wachtwoorden vervangen uw normale wachtwoord voor oudere bureaubladtoepassingen die geen tweestapsverificatie ondersteunen. Zorg er eerst voor dat u het wachtwoord correct hebt getypt. Als dit niet wordt opgelost, probeert u een nieuw app-wachtwoord voor de app te maken door de stappen te volgen in het **gedeelte App-wachtwoorden maken en verwijderen met behulp van de sectie Mijn apps-portal** van het artikel [App-wachtwoorden beheren voor verificatiein twee stappen.](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page)
+App-wacht woorden vervangen uw normale wacht woord voor oudere desktop toepassingen die geen ondersteuning bieden voor twee ledige verificatie. Controleer eerst of u het wacht woord juist hebt getypt. Als dat niet het geval is, maakt u een nieuw app-wacht woord voor de app door de stappen in de sectie **app-wacht woorden maken en verwijderen te volgen met behulp van de portal mijn apps** in het artikel [app-wacht woorden beheren voor verificatie in twee stappen](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page) .
 
-## <a name="i-cant-turn-two-factor-verification-off"></a>Ik kan tweefactorverificatie niet uitschakelen
+## <a name="i-cant-turn-two-factor-verification-off"></a>Ik kan niet twee ledige verificatie uitschakelen
 
-Als u tweestapsverificatie gebruikt met uw werk- of alain@contoso.comschoolaccount (bijvoorbeeld), betekent dit waarschijnlijk dat uw organisatie heeft besloten dat u deze toegevoegde beveiligingsfunctie moet gebruiken. Omdat uw organisatie heeft besloten dat u deze functie moet gebruiken, is er geen manier voor u om deze afzonderlijk uit te schakelen. Als u echter tweestapsverificatie gebruikt met een persoonlijk alain@outlook.comaccount, zoals, hebt u de mogelijkheid om de functie in- en uit te schakelen. Zie [Tweestapsverificatie in- of uitschakelen voor uw Microsoft-account voor](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)instructies over het beheren van tweestapsverificatie voor uw persoonlijke accounts.
+Als u twee ledige verificatie met uw werk-of school account gebruikt (bijvoorbeeld alain@contoso.com), betekent dit waarschijnlijk dat uw organisatie heeft besloten deze extra beveiligings functie te gebruiken. Omdat uw organisatie u heeft besloten om deze functie te gebruiken, is het niet mogelijk om deze afzonderlijk in te scha kelen. Als u echter twee ledige verificatie met een persoonlijk account gebruikt, alain@outlook.comhebt u de mogelijkheid om de functie in of uit te scha kelen. Zie voor meer informatie over het beheren van twee ledige verificatie voor uw persoonlijke accounts, [het inschakelen van twee ledige verificatie in-of uitschakelen voor uw Microsoft-account](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
-Als u tweestapsverificatie niet uitschakelen, kan dit ook komen door de beveiligingsstandaards die op organisatieniveau zijn toegepast. Zie [Wat zijn beveiligingsdefulta](../fundamentals/concept-fundamentals-security-defaults.md) voor meer informatie over beveiligingsstandaards?
+Als u twee ledige verificatie niet kunt uitschakelen, kan dit ook worden veroorzaakt door de standaard beveiligings instellingen die zijn toegepast op het niveau van de organisatie. Zie [Wat zijn beveiligings defulta?](../fundamentals/concept-fundamentals-security-defaults.md) voor meer informatie over de standaard instellingen van de beveiliging.
 
-## <a name="i-didnt-find-an-answer-to-my-problem"></a>Ik heb geen antwoord gevonden op mijn probleem
+## <a name="i-didnt-find-an-answer-to-my-problem"></a>Ik heb geen antwoord op mijn probleem gevonden
 
-Als u deze stappen hebt geprobeerd, maar nog steeds problemen ondervindt, neemt u contact op met de helpdesk van uw organisatie voor hulp.
+Als u deze stappen hebt uitgevoerd, maar nog steeds problemen ondervindt, neemt u contact op met de Help Desk van uw organisatie voor hulp.
 
 ## <a name="related-articles"></a>Verwante artikelen:
 
-- [Uw tweestapsverificatiemethode-instellingen beheren](multi-factor-authentication-end-user-manage-settings.md)
+- [De instellingen voor de verificatie methode met twee factoren beheren](multi-factor-authentication-end-user-manage-settings.md)
 
 - [Mijn account instellen voor verificatie in twee stappen](multi-factor-authentication-end-user-first-time.md)
 

@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: erhopf
 ms.openlocfilehash: 096e0ec8af3d3802d662a9f7d43dbfbc04a130ad
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81275159"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 > [!div class="checklist"]
-> * [Een Azure-spraakbron maken](../../../../get-started.md)
-> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
+> * [Een Azure-spraak resource maken](../../../../get-started.md)
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. Als u een nieuwe lege klasse wilt toevoegen aan uw Java-project, selecteert u **Bestand** > **Nieuwe** > **klasse**.
+1. Als u een nieuwe lege klasse wilt toevoegen aan uw Java-project, selecteert u **bestand** > **nieuwe** > **klasse**.
 
 1. Voer in het venster **Nieuwe Java-klasse**, in het veld **Pakket**, **speechsdk.quickstart** in en voer in het veld **Naam****Main** in.
 
@@ -104,16 +104,16 @@ ms.locfileid: "81275159"
 
 1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
-1. Vervang de `helloworld.wav` tekenreeks door uw eigen bestandsnaam.
+1. Vervang de teken `helloworld.wav` reeks door uw eigen bestands naam.
 
-1. Vervang de `Hello world!` tekenreeks door uw eigen tekst.
+1. Vervang de teken `Hello world!` reeks door uw eigen tekst.
 
 1. Sla de wijzigingen in het project op.
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 
-Druk op F11 of selecteer **Foutopsporing** > **uitvoeren**.
-Uw tekst wordt omgezet in spraak en opgeslagen in de opgegeven audiogegevens.
+Druk op F11 of selecteer **Run** > **debug**uitvoeren.
+Uw tekst wordt geconverteerd naar spraak en opgeslagen in de opgegeven audio gegevens.
 
    ```text
    Speech synthesized to [helloworld.wav] for text [Hello world!]
@@ -126,4 +126,4 @@ Uw tekst wordt omgezet in spraak en opgeslagen in de opgegeven audiogegevens.
 ## <a name="see-also"></a>Zie ook
 
 - [Een aangepaste stem maken](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Aangepaste spraakvoorbeelden opnemen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Aangepaste spraak voorbeelden vastleggen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

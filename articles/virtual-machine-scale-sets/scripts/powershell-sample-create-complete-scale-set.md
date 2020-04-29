@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-voorbeelden - Maak een complete virtuele machineschaalset
-description: Met dit script wordt een virtuele machineschaalset gemaakt met Windows Server 2016, waarbij afzonderlijke resources zijn geconfigureerd en gemaakt.
+title: 'Azure PowerShell-voor beelden: een volledige schaalset voor virtuele machines maken'
+description: Met dit script maakt u een schaalset voor virtuele machines met Windows Server 2016, waar afzonderlijke resources worden geconfigureerd en gemaakt.
 author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -9,15 +9,15 @@ ms.date: 05/29/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 2459aee8c93df3b039922ee53c0fe86d302505cf
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81011511"
 ---
 # <a name="create-a-complete-virtual-machine-scale-set-with-powershell"></a>Een volledige virtuele-machineschaalset maken met PowerShell
 
-Met dit script maakt u een virtuele-machineschaalset waarop Windows Server 2016 wordt uitgevoerd. Afzonderlijke resources worden geconfigureerd en gemaakt, in plaats van de [ingebouwde opties voor het maken van resources die hier beschikbaar zijn in Nieuw-AzVmss.](powershell-sample-create-simple-scale-set.md) Nadat het script is uitgevoerd, hebt u via RDP toegang tot de virtuele machine.
+Met dit script maakt u een virtuele-machineschaalset waarop Windows Server 2016 wordt uitgevoerd. Afzonderlijke resources worden geconfigureerd en gemaakt, in plaats van de [ingebouwde opties voor het maken van resources die u hier kunt vinden in New-AzVmss](powershell-sample-create-simple-scale-set.md). Nadat het script is uitgevoerd, hebt u via RDP toegang tot de virtuele machine.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

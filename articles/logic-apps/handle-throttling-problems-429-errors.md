@@ -1,173 +1,173 @@
 ---
-title: Problemen met throttling afhandelen, of fouten '429 - Te veel aanvragen'
-description: Problemen met beperking oplossen of fouten met 'HTTP 429 Te veel aanvragen' in Azure Logic Apps
+title: Beperkings problemen of ' 429-te veel aanvragen ' oplossen
+description: Het tijdelijk beperken van problemen of HTTP 429 te veel aanvragen fouten in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.openlocfilehash: fbfd52065bc0522668488492de2181f252f86a4e
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81272675"
 ---
-# <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Beperkingsproblemen verwerken (429 - fouten met te veel aanvragen) in Azure Logic Apps
+# <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Omgaan met beperkings problemen (429-"te veel aanvragen") in Azure Logic Apps
 
-In [Azure Logic Apps](../logic-apps/logic-apps-overview.md)retourneert uw logische app een fout ['HTTP 429 Te veel aanvragen'](https://developer.mozilla.org/docs/Web/HTTP/Status/429) bij het ervaren van beperking, wat gebeurt wanneer het aantal aanvragen hoger is dan de snelheid waarmee de bestemming gedurende een bepaalde tijd kan worden verwerkt. Beperking kan problemen veroorzaken, zoals vertraagde gegevensverwerking, lagere prestatiesnelheid en fouten zoals het overschrijden van het opgegeven beleid voor nieuwe inspanningen.
+In [Azure Logic apps](../logic-apps/logic-apps-overview.md)retourneert uw logische app de [fout ' http 429 te veel aanvragen '](https://developer.mozilla.org/docs/Web/HTTP/Status/429) wanneer er sprake is van beperking. dit gebeurt wanneer het aantal aanvragen de snelheid overschrijdt waarmee het doel gedurende een bepaalde tijd kan worden verwerkt. Beperking kan problemen veroorzaken, zoals vertraagde gegevens verwerking, verminderde prestatie snelheid en fouten, zoals het overschrijden van het opgegeven beleid voor opnieuw proberen.
 
 ![Beperking in SQL Server-connector](./media/handle-throttling-problems-429-errors/example-429-too-many-requests-error.png)
 
-Hier volgen enkele veelvoorkomende typen beperking die uw logica-app kan ervaren:
+Hier volgen enkele veelvoorkomende typen beperking die uw logische app kan ervaren:
 
 * [Logische app](#logic-app-throttling)
 * [Connector](#connector-throttling)
-* [Bestemmingsservice of -systeem](#destination-throttling)
+* [Doel service of systeem](#destination-throttling)
 
 <a name="logic-app-throttling"></a>
 
-## <a name="logic-app-throttling"></a>Logische app-beperking
+## <a name="logic-app-throttling"></a>Beperking van logische apps
 
-De Azure Logic Apps-service heeft zijn eigen [doorvoerlimieten.](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) Als uw logica-app deze limieten overschrijdt, wordt uw logische app-bron dus beperkt, niet alleen een specifieke instantie of wordt uitgevoerd.
+De Azure Logic Apps-service heeft zijn eigen [doorvoer limieten](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Als uw logische app deze limieten overschrijdt, wordt uw logische app-resource dus beperkt, niet alleen een specifiek exemplaar of worden uitgevoerd.
 
-Als u beperkingsgebeurtenissen op dit niveau wilt vinden, controleert u het deelvenster **Metrische gegevens van** uw logische app in de Azure-portal.
+Als u de beperkings gebeurtenissen op dit niveau wilt vinden, controleert u het deel venster **metrische gegevens** van de logische app in de Azure Portal.
 
-1. Open uw logische app in de Logische App Designer in de [Azure-portal.](https://portal.azure.com)
+1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-1. Selecteer in het menu logica-app onder **Controleren**de optie **Metrische gegevens**.
+1. Selecteer **metrische gegevens**onder **bewaking**in het menu van de logische app.
 
-1. Selecteer **onder Grafiektitel**De optie **Metrische toevoegen** zodat u een andere statistiek aan het bestaande toevoegt.
+1. Onder **grafiek titel**selecteert u **metrische gegevens toevoegen** zodat u een andere metriek toevoegt aan de bestaande.
 
-1. Selecteer op de eerste metrische balk in de **lijst MET METRISCHE** gegevens **actiebeperkende gebeurtenissen**. Selecteer in de tweede metrische balk in de **lijst MET METRISCHE** gegevens de optie Gebeurtenissen met **terugzetten**.
+1. Selecteer in de eerste meet balk, in de lijst **metrische gegevens** , de **actie vertraagde gebeurtenissen**. Selecteer in de tweede meet balk de optie **trigger vertraagde gebeurtenissen**in de lijst **metriek** .
 
-Als u beperking op dit niveau wilt verwerken, hebt u de volgende opties:
+U hebt de volgende opties om bandbreedte beperking op dit niveau te verwerken:
 
 * Beperk het aantal logische app-exemplaren dat tegelijkertijd kan worden uitgevoerd.
 
-  Als de triggervoorwaarde van uw logische app standaard meer dan één keer tegelijk is vervuld, worden meerdere triggerexemplaren voor uw logische app gelijktijdig of *parallel*uitgevoerd. Dit gedrag betekent dat elke triggerinstantie wordt geactiveerd voordat de vorige werkstroominstantie is uitgevoerd.
+  Als de trigger voorwaarde van uw logische app meer dan één keer wordt voldaan, worden meerdere trigger exemplaren voor uw logische app gelijktijdig of *parallel*uitgevoerd. Dit gedrag houdt in dat elke trigger instantie wordt gestart voordat het vorige werk stroom exemplaar wordt uitgevoerd.
 
-  Hoewel het standaardaantal triggerexemplaren dat gelijktijdig kan worden uitgevoerd [onbeperkt](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits)is, u dit aantal beperken door [de gelijktijdigheidsinstelling](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)van de trigger in te schakelen en, indien nodig, een andere limiet dan de standaardwaarde selecteren.
+  Hoewel het standaard aantal trigger instanties dat gelijktijdig kan worden uitgevoerd, [onbeperkt](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits)is, kunt u dit aantal beperken door [de gelijktijdigheids instelling voor de trigger in te scha kelen](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)en, indien nodig, een andere limiet te selecteren dan de standaard waarde.
 
-* Schakel de modus Met hoge doorvoer in.
+* Modus voor hoge door Voer inschakelen.
 
-  Een logische app heeft een [standaardlimiet voor het aantal acties dat kan worden uitgevoerd over een rolinterval van 5 minuten.](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) Als u deze limiet wilt verhogen tot het maximum aantal acties, schakelt u [de modus Hoge doorvoer](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode) in in uw logische app.
+  Een logische app heeft een [standaard limiet voor het aantal acties dat kan worden uitgevoerd gedurende een interval van 5 minuten](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Als u deze limiet wilt verhogen voor het maximum aantal acties, schakelt u de [modus voor hoge door Voer](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode) in voor uw logische app.
 
-* Het gedrag van arraydebatching ('opgesplitst in') uitschakelen in triggers.
+* Schakel het gedrag voor het debatcheren van matrices (' splitsen op ') in triggers uit.
 
-  Als een trigger een array retourneert voor de resterende werkstroomacties die moeten worden verwerkt, splitst de instelling [ **van de** ](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) trigger de arrayitems op en start een werkstroomexemplaar voor elk arrayitem, waardoor in feite meerdere gelijktijdige uitvoeringen worden geactiveerd tot de [ **limiet splitsen** ](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits). Als u beperking wilt beheren, schakelt u het gedrag **Splitsen op** uit en laat u uw logische app de hele array verwerken met één gesprek, in plaats van één item per gesprek af te handelen.
+  Als met een trigger een matrix wordt geretourneerd voor de resterende werk stroom acties die moeten worden verwerkt, splitst de trigger de instelling voor het [ **Split On** instellen](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) van de matrix items en wordt er een werk stroom exemplaar voor elk matrix item gestart, waardoor meerdere gelijktijdige uitvoeringen effectief worden geactiveerd tot de [ **splitsing van** de limiet](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits). Als u beperking wilt beheren, schakelt u de functie **splitsen bij** gedrag uit en laat u de gehele matrix met één aanroep verwerken in plaats van één item per oproep te verwerken.
 
-* Refactor acties in kleinere logica apps.
+* Verdeel acties in kleinere logische apps.
 
-  Zoals eerder vermeld, is een logische app beperkt tot een [standaard aantal acties die over een periode van 5 minuten kunnen worden uitgevoerd.](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) Hoewel u deze limiet verhogen door [een hoge doorvoermodus](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)in te schakelen, u ook overwegen of u de acties van uw logische app wilt opsplitsen in kleinere logische apps, zodat het aantal acties dat in elke logische app wordt uitgevoerd, onder de limiet blijft. Op die manier vermindert u de belasting van één logische app-bron en verdeelt u de belasting over meerdere logische apps. Deze oplossing werkt beter voor acties die grote gegevenssets verwerken of zoveel gelijktijdig lopende acties, loopiteraties of acties binnen elke lusiteratie uitvoeren dat ze de limiet voor actieuitvoering overschrijden.
+  Zoals eerder vermeld, is een logische app beperkt tot een [standaard aantal acties dat gedurende een periode van vijf minuten kan worden uitgevoerd](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Hoewel u deze limiet kunt verhogen door de [modus voor hoge door Voer](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)in te scha kelen, kunt u ook overwegen of u de acties van uw logische app wilt opsplitsen in kleinere logische apps zodat het aantal acties dat in elke logische app wordt uitgevoerd, onder de limiet blijft. Op die manier vermindert u de belasting van één logische app-resource en distribueert u de belasting over meerdere logische apps. Deze oplossing werkt beter voor acties waarmee grote gegevens sets worden verwerkt of waarmee zo veel gelijktijdig uitgevoerde acties, herhalingen of acties binnen elke lus worden herhaald die ze overschrijden.
 
-  Deze logische app doet bijvoorbeeld al het werk om tabellen uit een SQL Server-database te halen en krijgt de rijen uit elke tabel. De actie **Voor elke** lus wordt gelijktijdig door elke tabel herhaald, zodat de rijen voor elke tabel met de actie **Rijen weergeven** wordt geretourneerd. Op basis van de hoeveelheden gegevens in die tabellen kunnen deze acties de limiet voor actieuitvoeringen overschrijden.
+  Met deze logische app kunnen bijvoorbeeld alle tabellen uit een SQL Server Data Base worden opgehaald en worden de rijen uit elke tabel opgehaald. Met de **voor elke** lus wordt elke tabel gelijktijdig herhaald, zodat de actie **rijen ophalen** de rijen voor elke tabel retourneert. Op basis van de hoeveel heden gegevens in deze tabellen, kunnen deze acties de limiet voor het uitvoeren van acties overschrijden.
 
-  ![Logica app "voor" refactoring](./media/handle-throttling-problems-429-errors/refactor-logic-app-before-version.png)
+  ![Logische app voor het herstructureren](./media/handle-throttling-problems-429-errors/refactor-logic-app-before-version.png)
 
-  Na refactoring is de logische app nu een app voor bovenliggende en onderliggende logica. De ouder haalt de tabellen uit SQL Server en roept vervolgens een onderliggende logica-app aan voor elke tabel om de rijen te krijgen:
+  Na het herstructureren is de logische app nu een bovenliggende en onderliggende logische app. Het bovenliggende knoop punt haalt de tabellen op uit SQL Server en roept vervolgens een onderliggende logische app aan voor elke tabel om de rijen op te halen:
 
-  ![Logische app maken voor één actie](./media/handle-throttling-problems-429-errors/refactor-logic-app-single-connection-1.png)
+  ![Een logische app maken voor één actie](./media/handle-throttling-problems-429-errors/refactor-logic-app-single-connection-1.png)
 
-  Hier is de app onderliggende logica die wordt aangeroepen door de bovenliggende logica-app om de rijen voor elke tabel op te halen:
+  Dit is de onderliggende logische app die wordt aangeroepen door de bovenliggende logische app om de rijen voor elke tabel op te halen:
 
   ![Een andere logische app maken voor een tweede actie](./media/handle-throttling-problems-429-errors/refactor-logic-app-single-connection-2.png)
 
 <a name="connector-throttling"></a>
 
-## <a name="connector-throttling"></a>Beperking van connectoren
+## <a name="connector-throttling"></a>Beperking van de connector
 
-Elke connector heeft zijn eigen beperkingslimieten, die u vinden op de technische referentiepagina van de connector. De Azure [Service Bus-connector](https://docs.microsoft.com/connectors/servicebus/) heeft bijvoorbeeld een beperkingslimiet die maximaal 6.000 aanroepen per minuut toestaat, terwijl de SQL Server-connector [beperkingslimieten heeft die variëren op basis van het bewerkingstype.](https://docs.microsoft.com/connectors/sql/)
+Elke connector heeft zijn eigen beperkings limieten, die u kunt vinden op de pagina met technische Naslag informatie over de connector. De [Azure service bus-connector](https://docs.microsoft.com/connectors/servicebus/) heeft bijvoorbeeld een beperkings limiet die maxi maal 6.000 aanroepen per minuut toestaat, terwijl de SQL Server-connector [beperkingen heeft die variëren op basis van het bewerkings type](https://docs.microsoft.com/connectors/sql/).
 
-Sommige triggers en acties, zoals HTTP, hebben een ['beleid voor opnieuw proberen'](../logic-apps/logic-apps-exception-handling.md#retry-policies) dat u aanpassen op basis van de [beleidslimieten voor het opnieuw proberen](../logic-apps/logic-apps-limits-and-config.md#retry-policy-limits) om de verwerking van uitzonderingen te implementeren. Dit beleid geeft aan of en hoe vaak een trigger of actie een aanvraag opnieuw indient wanneer de oorspronkelijke aanvraag mislukt of een keer uitvalt en resulteert in een respons van 408, 429 of 5xx. Dus, wanneer beperking begint en een 429-fout retourneert, volgt Logic Apps het beleid voor opnieuw proberen waar dit wordt ondersteund.
+Sommige triggers en acties, zoals HTTP, hebben een [beleid voor opnieuw proberen](../logic-apps/logic-apps-exception-handling.md#retry-policies) die u kunt aanpassen op basis van de [limieten voor het beleid voor opnieuw proberen](../logic-apps/logic-apps-limits-and-config.md#retry-policy-limits) voor het implementeren van uitzonderings verwerking. Dit beleid bepaalt of en hoe vaak een trigger of actie een aanvraag opnieuw probeert wanneer de oorspronkelijke aanvraag is mislukt of een time-out optreedt, en resulteert in een 408, 429 of 5xx respons. Als de beperking wordt gestart en er wordt een 429-fout geretourneerd, Logic Apps het beleid voor opnieuw proberen op te starten wanneer dit wordt ondersteund.
 
-Als u wilt weten of een trigger of actie het beleid voor nieuwe try's ondersteunt, controleert u de instellingen van de trigger of actie. Als u de pogingen van een trigger of actie opnieuw wilt bekijken, gaat u naar de uitvoeringsgeschiedenis van uw logische app, selecteert u de uitvoering die u wilt bekijken en vouwt u die trigger of actie uit om details over invoer, uitvoer en eventuele nieuwe pogingen weer te geven, bijvoorbeeld:
+Als u wilt weten of een trigger of actie beleid voor opnieuw proberen ondersteunt, controleert u de instellingen van de trigger of actie. Als u de nieuwe pogingen van een trigger of actie wilt weer geven, gaat u naar de uitvoerings geschiedenis van de logische app, selecteert u de uitvoering die u wilt controleren en vouwt u deze trigger of actie uit om details over invoer, uitvoer en nieuwe pogingen weer te geven, bijvoorbeeld:
 
-![De runsgeschiedenis, nieuwe pogingen, invoer en uitvoer van de actieweergeven](./media/handle-throttling-problems-429-errors/example-429-too-many-requests-retries.png)
+![Uitvoerings geschiedenis, nieuwe pogingen, invoer en uitvoer van de actie weer geven](./media/handle-throttling-problems-429-errors/example-429-too-many-requests-retries.png)
 
-Hoewel de geschiedenis opnieuw proberen foutinformatie biedt, u problemen hebben met het onderscheiden tussen beperking van de connector en [doelbeperking.](#destination-throttling) In dit geval moet u mogelijk de gegevens van het antwoord bekijken of bepaalde intervalberekeningen uitvoeren om de bron te identificeren.
+Hoewel de geschiedenis van nieuwe pogingen fout gegevens bevat, is het mogelijk dat er geen onderscheid kan worden tussen de beperking van de connector en de [doel beperking](#destination-throttling). In dit geval moet u mogelijk de details van het antwoord controleren of enkele beperkingen voor interval berekening uitvoeren om de bron te identificeren.
 
-Voor logische apps in de wereldwijde Azure Logic Apps-service met meerdere tenant's vindt beperking plaats op *verbindingsniveau.* Dus, bijvoorbeeld, voor logische apps die worden uitgevoerd in een [integratie service omgeving (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), throttling nog steeds gebeurt voor niet-ISE-verbindingen, omdat ze worden uitgevoerd in de wereldwijde, multi-tenant Logic Apps service. ISE-verbindingen, die zijn gemaakt door ISE-connectors, worden echter niet beperkt omdat ze in uw ISE worden uitgevoerd.
+Voor logische apps in de wereld wijde multi tenant-Azure Logic Apps service, wordt er een beperking toegepast op het *verbindings* niveau. Voor logische apps die worden uitgevoerd in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), is er nog steeds een beperking voor niet-ISE, omdat deze worden uitgevoerd in de globale, multi tenant-Logic apps service. ISE-verbindingen, die worden gemaakt door ISE-connectors, worden echter niet beperkt omdat ze worden uitgevoerd in uw ISE.
 
-Als u beperking op dit niveau wilt verwerken, hebt u de volgende opties:
+U hebt de volgende opties om bandbreedte beperking op dit niveau te verwerken:
 
-* Stel meerdere verbindingen in voor één actie, zodat de logische app de gegevens voor verwerking partities.
+* Stel meerdere verbindingen voor één actie in, zodat de logische app de gegevens partitioneert voor verwerking.
 
-  Overweeg voor deze optie of u de werkbelasting distribueren door de aanvragen van een actie te delen over meerdere verbindingen met dezelfde bestemming met dezelfde referenties.
+  Voor deze optie kunt u overwegen of u de werk belasting wilt distribueren door de aanvragen van een actie te delen tussen meerdere verbindingen met dezelfde bestemming met dezelfde referenties.
 
-  Stel dat uw logica-app tabellen uit een SQL Server-database krijgt en vervolgens de rijen uit elke tabel krijgt. Op basis van het aantal rijen dat u moet verwerken, u meerdere verbindingen en meerdere **voor elke** lussen gebruiken om het totale aantal rijen in kleinere sets te verdelen voor verwerking. In dit scenario worden **twee voor elke** lussen gebruikt om het totale aantal rijen in tweeën te splitsen. De eerste **voor elke** lus maakt gebruik van een expressie die de eerste helft krijgt. De andere **Voor elke** lus wordt een andere expressie gebruikt die de tweede helft krijgt, bijvoorbeeld:<p>
+  Stel bijvoorbeeld dat uw logische app tabellen uit een SQL Server Data Base haalt en vervolgens de rijen uit elke tabel ophaalt. Op basis van het aantal rijen dat u moet verwerken, kunt u meerdere verbindingen en meerdere **voor elke** lussen gebruiken om het totale aantal rijen te verdelen in kleinere sets voor verwerking. In dit scenario worden twee **voor elke** lussen gebruikt om het totale aantal rijen in de helft te splitsen. De eerste **voor elke** lus gebruikt een expressie die de eerste helft ophaalt. De andere **voor elke** lus gebruikt een andere expressie die de tweede helft ophaalt, bijvoorbeeld:<p>
 
-    * Expressie 1: `take()` De functie krijgt de voorkant van een verzameling. Zie voor meer [ **`take()`** ](workflow-definition-language-functions-reference.md#take)informatie de functie .
+    * Expressie 1: de `take()` functie haalt de front van een verzameling op. Zie de [ **`take()`** functie](workflow-definition-language-functions-reference.md#take)voor meer informatie.
 
       `@take(collection-or-array-name, div(length(collection-or-array-name), 2))`
 
-    * Expressie 2: `skip()` De functie verwijdert de voorkant van een verzameling en retourneert alle andere items. Zie voor meer [ **`skip()`** ](workflow-definition-language-functions-reference.md#skip)informatie de functie .
+    * Expressie 2: met `skip()` de functie wordt de front van een verzameling verwijderd en worden alle andere items geretourneerd. Zie de [ **`skip()`** functie](workflow-definition-language-functions-reference.md#skip)voor meer informatie.
 
       `@skip(collection-or-array-name, div(length(collection-or-array-name), 2))`
 
-    Hier is een visueel voorbeeld dat laat zien hoe u deze expressies gebruiken:
+    Hier volgt een visueel voor beeld dat laat zien hoe u deze expressies kunt gebruiken:
 
-    ![Meerdere verbindingen maken en gebruiken voor één actie](./media/handle-throttling-problems-429-errors/create-multiple-connections-per-action.png)
+    ![Meerdere verbindingen voor één actie maken en gebruiken](./media/handle-throttling-problems-429-errors/create-multiple-connections-per-action.png)
 
-* Voor elke actie een andere verbinding instellen.
+* Stel een andere verbinding in voor elke actie.
 
-  Overweeg voor deze optie of u de werkbelasting distribueren door de aanvragen van elke actie over hun eigen verbinding te spreiden, zelfs wanneer acties verbinding maken met dezelfde service of hetzelfde systeem en dezelfde referenties gebruiken.
+  Voor deze optie kunt u overwegen of u de werk belasting wilt distribueren door de aanvragen van elke actie te spreiden over hun eigen verbinding, zelfs wanneer acties verbinding maken met dezelfde service of hetzelfde systeem en dezelfde referenties gebruiken.
 
-  Stel dat uw logica-app de tabellen uit een SQL Server-database haalt en elke rij in elke tabel krijgt. U afzonderlijke verbindingen gebruiken, zodat de tabellen één verbinding gebruiken, terwijl het verkrijgen van elke rij een andere verbinding gebruikt.
+  Stel bijvoorbeeld dat uw logische app de tabellen uit een SQL Server Data Base haalt en elke rij in elke tabel ophaalt. U kunt afzonderlijke verbindingen gebruiken zodat de tabellen die gebruikmaken van één verbinding worden gebruikt, terwijl elke rij wordt gebruikt voor het ophalen van een andere verbinding.
 
-  ![Voor elke actie een andere verbindingen maken en gebruiken](./media/handle-throttling-problems-429-errors/create-connection-per-action.png)
+  ![Voor elke actie een andere verbinding maken en gebruiken](./media/handle-throttling-problems-429-errors/create-connection-per-action.png)
 
-* Wijzig de gelijktijdigheid of parallellisme op een [lus "Voor elke" lus](../logic-apps/logic-apps-control-flow-loops.md#foreach-loop).
+* Wijzig de gelijktijdigheid of parallellisme op een [lus voor elke](../logic-apps/logic-apps-control-flow-loops.md#foreach-loop).
 
-  Standaard worden 'Voor elke' lusiteraties tegelijkertijd uitgevoerd tot de [gelijktijdigheidslimiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u een connector hebt die wordt beperkt in een lus Voor elke lus, u het aantal lusiteraties verminderen dat parallel wordt uitgevoerd. Zie deze onderwerpen voor meer informatie:
+  Standaard worden voor elke herhalings herhalingen uitgevoerd op hetzelfde tijdstip tot aan de [gelijktijdigheids limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u een connector hebt die wordt beperkt binnen een lus voor elke, kunt u het aantal herhalings iteraties verminderen die parallel worden uitgevoerd. Zie deze onderwerpen voor meer informatie:
   
-  * ["Voor elke" lussen - wissel gelijktijdigheid of voer achtereenvolgens uit](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop)
+  * [' Voor elke ' lussen: gelijktijdige uitvoering wijzigen of opeenvolgend uitvoeren](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop)
 
-  * [Taalschema voor werkstroomdefinitie - Voor elke lussen](../logic-apps/logic-apps-workflow-actions-triggers.md#foreach-action)
+  * [Schema voor werk stroom definitie taal-voor elke lussen](../logic-apps/logic-apps-workflow-actions-triggers.md#foreach-action)
 
-  * [Taalschema voor werkstroomdefinitie - Wijziging van de lusgelijktijdigvaluta voor elke lus](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)
+  * [Schema voor werk stroom definitie taal-wijzigen voor elke lus-gelijktijdigheid](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)
 
-  * [Taalschema voor werkstroomdefinitie - Looplussen voor elke lus en -programma uitvoeren](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)
+  * [Schema voor werk stroom definitie taal-elke wordt sequentieel uitgevoerd](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)
 
 <a name="destination-throttling"></a>
 
-## <a name="destination-service-or-system-throttling"></a>Bestemmingsservice of systeembeperking
+## <a name="destination-service-or-system-throttling"></a>Doel service of systeem beperking
 
-Hoewel een connector zijn eigen beperkingslimieten heeft, kan de doelservice of het systeem dat door de connector wordt aangeroepen, ook beperkingslimieten hebben. Sommige API's in Microsoft Exchange Server hebben bijvoorbeeld strengere beperkingslimieten dan de Office 365 Outlook-connector.
+Hoewel een connector zijn eigen beperkings limieten heeft, hebben de doel service of het systeem dat wordt aangeroepen door de connector mogelijk ook beperkings limieten. Sommige Api's in micro soft Exchange server hebben bijvoorbeeld strikte beperkings limieten dan de Office 365 Outlook-Connector.
 
-Standaard worden de exemplaren van een logische app en eventuele lussen of vertakkingen in die instanties *parallel uitgevoerd.* Dit gedrag betekent dat meerdere instanties tegelijkertijd hetzelfde eindpunt kunnen aanroepen. Elke instantie weet niet over het bestaan van de ander, dus pogingen om mislukte acties opnieuw te proberen kunnen [racevoorwaarden](https://en.wikipedia.org/wiki/Race_condition) creëren waarbij meerdere oproepen tegelijkertijd proberen uit te voeren, maar om te slagen, moeten die oproepen aankomen op de bestemmingsservice of -systeem voordat throttling begint te gebeuren.
+Standaard worden de instanties van een logische app en alle lussen of vertakkingen binnen die instanties *parallel*uitgevoerd. Dit gedrag houdt in dat meerdere exemplaren tegelijkertijd hetzelfde eind punt kunnen aanroepen. Elk exemplaar weet niet over het andere bestaan, dus pogingen om mislukte acties opnieuw uit te voeren, kunnen [race omstandigheden](https://en.wikipedia.org/wiki/Race_condition) maken waarbij meerdere aanroepen gelijktijdig proberen te worden uitgevoerd, maar dat de aanroepen bij de doel service of het systeem moeten arriveren voordat de beperking wordt gestart.
 
-Stel dat u een array hebt met 100 items. U gebruikt een lus voor elke lus om door de array te herhalen en het gelijktijdigheidsbesturingselement van de lus in te schakelen, zodat u het aantal parallelle iteraties beperken tot 20 of de [huidige standaardlimiet.](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits) In die lus voegt een actie een item uit de array in een SQL Server-database in, waardoor slechts 15 aanroepen per seconde mogelijk is. Dit scenario resulteert in een beperkingsprobleem omdat een achterstand van nieuwe pogingen zich opbouwt en nooit kan worden uitgevoerd.
+Stel bijvoorbeeld dat u een matrix hebt met 100 items. U gebruikt een lus ' voor elke ' om de matrix door te lopen en het gelijktijdigheids beheer van de lus in te scha kelen, zodat u het aantal parallelle iteraties kunt beperken tot 20 of de [huidige standaard limiet](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits). Binnen die lus voegt een actie een item uit de matrix toe aan een SQL Server-Data Base, waardoor slechts 15 aanroepen per seconde worden toegestaan. Dit scenario resulteert in een beperkings probleem, omdat er een nieuwe poging wordt gedaan om het programma te bouwen en nooit uit te voeren.
 
-In deze tabel wordt de tijdlijn beschreven voor wat er in de lus gebeurt wanneer het interval voor nieuwe try van de actie 1 seconde is:
+In deze tabel wordt de tijd lijn beschreven voor wat er gebeurt in de lus wanneer het interval voor nieuwe pogingen voor de actie 1 seconde is:
 
-| Punt in de tijd | Aantal acties dat wordt uitgevoerd | Aantal acties dat mislukt | Aantal wachtende pogingen |
+| Tijdstip | Aantal acties dat wordt uitgevoerd | Aantal mislukte acties | Aantal nieuwe pogingen dat wacht |
 |---------------|----------------------------|-----------------------------|---------------------------|
-| T + 0 seconden | 20 wisselplaten | 5 mislukken, als gevolg van SQL-limiet | 5 nieuwe pogingen |
-| T + 0,5 seconden | 15 wisselplaten, als gevolg van eerdere 5 pogingen te wachten | Alle 15 mislukken, als gevolg van eerdere SQL-limiet nog steeds van kracht voor nog eens 0,5 seconden | 20 nieuwe pogingen <br>(vorige 5 + 15 nieuw) |
-| T + 1 seconde | 20 wisselplaten | 5 mislukken plus eerdere 20 nieuwe pogingen, als gevolg van SQL-limiet | 25 nieuwe pogingen (vorige 20 + 5 nieuwe)
+| T + 0 seconden | 20 invoeg bladen | 5 mislukt vanwege SQL-limiet | 5 nieuwe pogingen |
+| T + 0,5 seconden | 15 invoeg bladen vanwege vorige 5 nieuwe pogingen in de wacht stand | De 15 mislukt, omdat de vorige SQL-limiet nog gedurende een andere 0,5 seconden van kracht is | 20 nieuwe pogingen <br>(vorige 5 + 15 nieuwe) |
+| T + 1 seconde | 20 invoeg bladen | 5 fouten plus vorige 20 nieuwe pogingen vanwege SQL-limiet | 25 nieuwe pogingen (vorige 20 + 5 nieuw)
 |||||
 
-Als u beperking op dit niveau wilt verwerken, hebt u de volgende opties:
+U hebt de volgende opties om bandbreedte beperking op dit niveau te verwerken:
 
-* Maak logische apps zodat elk één bewerking afhandelt.
+* Maak Logic apps zodat elk één bewerking wordt uitgevoerd.
 
-  * Als u doorgaan met het voorbeeld SQL Server-scenario in deze sectie, u een logische app maken die arrayitems in een wachtrij plaatst, zoals een [Azure Service Bus-wachtrij.](../connectors/connectors-create-api-servicebus.md) Vervolgens maakt u een andere logische app die alleen de invoegbewerking uitvoert voor elk item in die wachtrij. Op die manier wordt slechts één logische app-instantie op een bepaald tijdstip uitgevoerd, waardoor de invoegbewerking wordt voltooid en naar het volgende item in de wachtrij wordt verplaatst, of dat de instantie 429 fouten krijgt, maar geen pogingen doet om onproductieve pogingen te doen.
+  * Als u doorgaat met het voor beeld SQL Server scenario in deze sectie, kunt u een logische app maken die matrix items in een wachtrij plaatst, zoals een [Azure service bus wachtrij](../connectors/connectors-create-api-servicebus.md). Vervolgens maakt u een nieuwe logische app die alleen de invoeg bewerking voor elk item in die wachtrij uitvoert. Op die manier wordt slechts één exemplaar van een logische app op een wille keurige tijd uitgevoerd, waardoor de invoeg bewerking wordt voltooid en wordt verplaatst naar het volgende item in de wachtrij, of als het exemplaar 429 fouten ontvangt, maar geen productspecifieke pogingen doet.
 
-  * Maak een bovenliggende logica-app die een onderliggende of geneste logische app aanroept voor elke actie. Als de ouder verschillende onderliggende apps moet aanroepen op basis van de uitkomst van de ouder, u een conditieactie gebruiken of actie schakelen die bepaalt welke onderliggende app u wilt aanroepen. Dit patroon kan u helpen het aantal oproepen of bewerkingen te verminderen.
+  * Maak een bovenliggende logische app die een onderliggende of geneste logische app aanroept voor elke actie. Als de bovenliggende apps moet worden aangeroepen op basis van het resultaat van de bovenliggende toepassing, kunt u een voorwaarde actie of een switch-actie gebruiken die bepaalt welke onderliggende app moet worden aangeroepen. Dit patroon kan u helpen het aantal aanroepen of bewerkingen te verminderen.
 
-    Stel dat u twee logische apps hebt, elk met een pollingtrigger die uw e-mailaccount elke minuut controleert op een specifiek onderwerp, zoals 'Succes' of 'Falen'. Deze instelling resulteert in 120 gesprekken per uur. In plaats daarvan, als u een eenouderlogica-app maakt die elke minuut wordt gepeild, maar een app voor onderliggende logica aanroept die wordt uitgevoerd op basis van of het onderwerp 'Succes' of 'Mislukt' is, snijdt u het aantal pollingcontroles tot de helft, of 60 in dit geval.
+    Stel dat u twee Logic apps hebt, elk met een polling trigger waarmee uw e-mail account elke minuut wordt gecontroleerd op een specifiek onderwerp, zoals "geslaagd" of "mislukt". Deze installatie resulteert in 120 aanroepen per uur. Als u in plaats daarvan een enkele bovenliggende logische app maakt die elke minuut pollt, maar een onderliggende logische app aanroept die wordt uitgevoerd op basis van het feit of het onderwerp ' geslaagd ' of ' fout ' is, knipt u het aantal polling controles in een halve of 60 in dit geval.
 
-* Batchverwerking instellen.
+* Batch verwerking instellen.
 
-  Als de doelservice batchbewerkingen ondersteunt, u beperking aanpakken door artikelen in groepen of batches te verwerken, in plaats van afzonderlijk. Als u de oplossing voor batchverwerking wilt implementeren, maakt u een logische app voor batch-ontvanger en een logische app voor batchafzender. De afzender van de batch verzamelt berichten of items totdat aan de opgegeven criteria is voldaan en verzendt deze berichten of items vervolgens in één groep. De batch-ontvanger accepteert die groep en verwerkt deze berichten of items. Zie [Batchprocesberichten in groepen](../logic-apps/logic-apps-batch-process-send-receive-messages.md)voor meer informatie.
+  Als de doel service batch bewerkingen ondersteunt, kunt u de verwerkings snelheid verpakken door items in groepen of batches te verwerken in plaats van afzonderlijk. Als u de oplossing voor batch verwerking wilt implementeren, maakt u een logische app-ontvanger en een logische app voor het verzenden van batches. De batch-afzender verzamelt berichten of items totdat aan de opgegeven criteria wordt voldaan en verzendt vervolgens de berichten of items in één groep. De batch-ontvanger accepteert die groep en verwerkt die berichten of items. Zie [Batch Process-berichten in groepen](../logic-apps/logic-apps-batch-process-send-receive-messages.md)voor meer informatie.
 
-* Gebruik de webhook-versies voor triggers en acties, in plaats van de stemversies.
+* Gebruik de webhook-versies voor triggers en acties in plaats van de polling versies.
 
-  Hoe komt dat? Een polling trigger blijft de doelservice of het doelsysteem met specifieke intervallen controleren. Een zeer frequent interval, zoals elke seconde, kan throttling problemen veroorzaken. Een webhook-trigger of actie, zoals [HTTP Webhook,](../connectors/connectors-native-webhook.md)maakt echter slechts één oproep naar de doelservice of -systeem, wat gebeurt op abonnementstijd en verzoekt de bestemming de trigger of actie alleen te melden wanneer een gebeurtenis plaatsvindt. Op die manier hoeft de trigger of actie niet voortdurend de bestemming te controleren.
+  Hoe komt dat? Een polling trigger blijft de doel service of het systeem op specifieke intervallen controleren. Een regel matig interval, zoals elke seconde, kan beperkings problemen veroorzaken. Een webhook-trigger of-actie, zoals [http-webhook](../connectors/connectors-native-webhook.md), maakt echter slechts één aanroep van de doel service of het systeem, dat gebeurt op het tijdstip van het abonnement en de aanvragen die het doel krijgt de trigger of actie, alleen wanneer er een gebeurtenis optreedt. Op die manier hoeft de trigger of actie de bestemming niet continu te controleren.
   
-  Dus, als de doelservice of het doelsysteem webhooks ondersteunt of een connector biedt met een webhook-versie, is deze optie beter dan het gebruik van de polling-versie. Als u webhook-triggers en acties `ApiConnectionWebhook` wilt identificeren, bevestigt u dat ze het type hebben of dat ze niet vereisen dat u een herhaling opgeeft. Zie [APIConnectionWebhook trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) en [APIConnectionWebhook actie](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-action)voor meer informatie.
+  Als de doel service of het systeem webhooks ondersteunt of een connector biedt met een webhook-versie, is deze optie beter dan het gebruik van de polling-versie. Als u de triggers en acties van webhooks wilt identificeren, `ApiConnectionWebhook` moet u controleren of ze het type hebben of dat u geen terugkeer patroon opgeeft. Zie [APIConnectionWebhook trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) and [APIConnectionWebhook Action](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-action)(Engelstalig) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [limieten en configuratie van Logic Apps](../logic-apps/logic-apps-limits-and-config.md)
+* Meer informatie over [Logic apps limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md)

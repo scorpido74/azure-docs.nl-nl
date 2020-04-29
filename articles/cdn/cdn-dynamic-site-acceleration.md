@@ -1,6 +1,6 @@
 ---
-title: Dynamische siteversnelling via Azure CDN
-description: Azure CDN ondersteunt dsa-optimalisatie (dynamic site acceleration) voor bestanden met dynamische inhoud.
+title: Dynamische site versnelling via Azure CDN
+description: Azure CDN ondersteunt de optimalisatie van dynamische site versnelling (DSA) voor bestanden met dynamische inhoud.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,175 +15,175 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: allensu
 ms.openlocfilehash: 26559adf183a5e008d77b87654a1bd4dabebbca0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253829"
 ---
-# <a name="dynamic-site-acceleration-via-azure-cdn"></a>Dynamische siteversnelling via Azure CDN
+# <a name="dynamic-site-acceleration-via-azure-cdn"></a>Dynamische site versnelling via Azure CDN
 
-Met de explosie van sociale media, elektronische handel, en de hyper-gepersonaliseerde web, een snel toenemende percentage van de inhoud geserveerd aan eindgebruikers wordt gegenereerd in real time. Gebruikers verwachten een snelle, betrouwbare en gepersonaliseerde webervaring, onafhankelijk van hun browser, locatie, apparaat of netwerk. Echter, de innovaties die deze ervaringen zo boeiend ook trage pagina downloads en zet de kwaliteit van de ervaring van de consument in gevaar. 
+Met de explosie van sociale media, elektronische handel en het Hyper-gepersonaliseerde web wordt een snel stijgend percentage van de inhoud die aan eind gebruikers wordt aangeboden in realtime gegenereerd. Gebruikers verwachten een snelle, betrouw bare en gepersonaliseerde webervaring, onafhankelijk van hun browser, locatie, apparaat of netwerk. De meeste innovaties die deze ervaringen maken, zorgen er echter ook voor dat het downloaden van pagina's traag wordt en de kwaliteit van de consumenten ervaring op risico wordt gebracht. 
 
-De mogelijkheid voor het standaard-inhoudsleveringsnetwerk (CDN) omvat de mogelijkheid om bestanden dichter bij eindgebruikers in de cache te plaatsen om de levering van statische bestanden te versnellen. Met dynamische webtoepassingen is het echter niet mogelijk om inhoud op randlocaties te plaatsen omdat de server de inhoud genereert als reactie op gebruikersgedrag. Het versnellen van de levering van dergelijke inhoud is complexer dan traditionele randcaches en vereist een end-to-end oplossing die elk element fijn afstemt op het hele gegevenspad vanaf het begin tot de levering. Met Azure CDN dynamic site acceleration (DSA) optimalisatie worden de prestaties van webpagina's met dynamische inhoud meetbaar verbeterd.
+De standaard functionaliteit voor Content Delivery Network (CDN) omvat de mogelijkheid om bestanden dichter bij eind gebruikers op te slaan om het leveren van statische bestanden te versnellen. Met dynamische webtoepassingen is het in de cache plaatsen van inhoud in Edge-locaties echter niet mogelijk omdat de server de inhoud genereert als reactie op het gedrag van de gebruiker. Het versnellen van de levering van dergelijke inhoud is complexer dan de traditionele breedte van de rand, en vereist een end-to-end oplossing die elk element van het hele gegevenspad afstemt van het begin tot de levering. Met Azure CDN optimalisatie van dynamische site versnelling (DSA) kunnen de prestaties van webpagina's met dynamische inhoud meetbaar worden verbeterd.
 
-**Azure CDN van Akamai** en **Azure CDN van Verizon** bieden beide DSA-optimalisatie via het menu Geoptimaliseerd **voor** eindpunt tijdens het maken van eindpunten. Dynamische siteversnelling van Microsoft wordt aangeboden via [Azure Front Door Service.](https://docs.microsoft.com/azure/frontdoor/front-door-overview)
+**Azure CDN van Akamai** en **Azure CDN van Verizon** bieden DSA Optimization via het menu **Optimized for** tijdens het maken van een eind punt. Dynamische site versnelling van micro soft wordt aangeboden via de [Azure front-deur service](https://docs.microsoft.com/azure/frontdoor/front-door-overview).
 
 > [!Important]
-> Voor **Azure CDN-profielen van Akamai-profielen** u de optimalisatie van een CDN-eindpunt wijzigen nadat het is gemaakt.
+> Voor **Azure CDN van Akamai** -profielen, mag u de optimalisatie van een CDN-eind punt wijzigen nadat deze is gemaakt.
 >   
 > Voor profielen van **Azure CDN van Verizon** geldt dat u de optimalisatie van een CDN-eindpunt niet kunt wijzigen nadat deze is gemaakt.
 
-## <a name="cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files"></a>CDN-eindpuntconfiguratie om de levering van dynamische bestanden te versnellen
+## <a name="cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files"></a>Configuratie van het CDN-eind punt om de levering van dynamische bestanden te versnellen
 
-Als u een CDN-eindpunt wilt configureren om de levering van dynamische bestanden te optimaliseren, u de Azure-portal, de REST-API's of een van de client-SDK's gebruiken om hetzelfde programmatisch te doen. 
+Als u een CDN-eind punt wilt configureren om de levering van dynamische bestanden te optimaliseren, kunt u de Azure Portal, de REST-Api's of een van de client-Sdk's gebruiken om op een programmatische manier hetzelfde te doen. 
 
-**Ga als lid van het CDN-eindpunt voor DSA-optimalisatie met behulp van de Azure-portal:**
+**Een CDN-eind punt voor DSA-optimalisatie configureren met behulp van de Azure Portal:**
 
-1. Selecteer **Eindpunt**op de **profielpagina van CDN** .
+1. Selecteer op de pagina **CDN-profiel** de optie **eind punt**.
 
-   ![Een nieuw CDN-eindpunt toevoegen](./media/cdn-dynamic-site-acceleration/cdn-endpoint-profile.png) 
+   ![Een nieuw CDN-eind punt toevoegen](./media/cdn-dynamic-site-acceleration/cdn-endpoint-profile.png) 
 
    Het deelvenster **Een eindpunt toevoegen** wordt weergegeven.
 
-2. Selecteer **onder Geoptimaliseerd voor**, Selecteer Dynamische **siteversnelling**.
+2. Selecteer onder **geoptimaliseerd voor** **dynamische site versnelling**.
 
-    ![Een nieuw CDN-eindpunt maken met DSA](./media/cdn-dynamic-site-acceleration/cdn-endpoint-dsa.png)
+    ![Een nieuw CDN-eind punt maken met DSA](./media/cdn-dynamic-site-acceleration/cdn-endpoint-dsa.png)
 
-3. Voer **voor probepad**een geldig pad naar een bestand in.
+3. Voer voor **probe Path**een geldig pad naar een bestand in.
 
-    Probe pad is een functie die specifiek is voor DSA, en een geldig pad is vereist voor het maken. DSA gebruikt een klein *sondepadbestand* dat op de oorsprongsserver is geplaatst om netwerkrouteringsconfiguraties voor het CDN te optimaliseren. Voor het sondepadbestand u het voorbeeldbestand downloaden en uploaden naar uw site of een bestaand element op uw oorsprong gebruiken dat ongeveer 10 KB groot is.
+    Probe is een functie die specifiek is voor DSA en een geldig pad is vereist voor het maken van. DSA gebruikt een klein *probe Path* -bestand dat op de oorspronkelijke server is geplaatst om de configuratie van netwerk routering voor het CDN te optimaliseren. Voor het pad naar het probe-bestand kunt u het voorbeeld bestand downloaden en uploaden naar uw site, of een bestaand activum op uw oorsprong gebruiken dat ongeveer 10 KB groot is.
 
-4. Voer de andere vereiste eindpuntopties in (zie Voor meer informatie [een nieuw CDN-eindpunt maken)](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)en selecteer **Vervolgens Toevoegen**.
+4. Voer de andere vereiste eindpunt opties in (Zie [een nieuw CDN-eind punt maken](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)voor meer informatie) en selecteer vervolgens **toevoegen**.
 
-   Nadat het CDN-eindpunt is gemaakt, worden de DSA-optimalisaties voor alle bestanden die aan bepaalde criteria voldoen, van toepassing. 
+   Nadat het CDN-eind punt is gemaakt, worden de DSA-optimalisaties toegepast voor alle bestanden die aan bepaalde criteria voldoen. 
 
 
-**Een bestaand eindpunt voor DSA (alleen Azure CDN van Akamai-profielen) configureren:**
+**Een bestaand eind punt voor DSA configureren (alleen Azure CDN van Akamai-profielen):**
 
-1. Selecteer op de **profielpagina van CDN** het eindpunt dat u wilt wijzigen.
+1. Selecteer op de pagina **CDN-profiel** het eind punt dat u wilt wijzigen.
 
-2. Selecteer **Optimalisatie**in het linkerdeelvenster . 
+2. Selecteer **optimalisatie**in het linkerdeel venster. 
 
-   De pagina **Optimalisatie** wordt weergegeven.
+   De pagina **optimalisatie** wordt weer gegeven.
 
-3. Selecteer **onder Geoptimaliseerd voor**, Selecteer Dynamische **siteversnelling**en selecteer **Opslaan**.
+3. Selecteer onder **geoptimaliseerd voor** **dynamische site versnelling**en selecteer vervolgens **Opslaan**.
 
 > [!Note]
-> DSA brengt extra kosten met zich mee. Zie [Content Delivery Network-prijzen voor](https://azure.microsoft.com/pricing/details/cdn/)meer informatie .
+> DSA brengt extra kosten met zich mee. Zie [Content Delivery Network prijzen](https://azure.microsoft.com/pricing/details/cdn/)voor meer informatie.
 
 ## <a name="dsa-optimization-using-azure-cdn"></a>DSA-optimalisatie met Azure CDN
 
-Dynamische siteversnelling op Azure CDN versnelt de levering van dynamische assets met behulp van de volgende technieken:
+Dynamische site versnelling op Azure CDN versnelt de levering van dynamische activa door gebruik te maken van de volgende technieken:
 
--   [Routeoptimalisatie](#route-optimization)
+-   [Route optimalisatie](#route-optimization)
 -   [TCP-optimalisaties](#tcp-optimizations)
--   [Objectprefetch (alleen Azure CDN van Akamai)](#object-prefetch-azure-cdn-from-akamai-only)
--   [Adaptieve beeldcompressie (alleen Azure CDN van Akamai)](#adaptive-image-compression-azure-cdn-from-akamai-only)
+-   [Prefetch van object (alleen Azure CDN van Akamai)](#object-prefetch-azure-cdn-from-akamai-only)
+-   [Compressie van adaptieve afbeeldingen (alleen Azure CDN van Akamai)](#adaptive-image-compression-azure-cdn-from-akamai-only)
 
-### <a name="route-optimization"></a>Routeoptimalisatie
+### <a name="route-optimization"></a>Route optimalisatie
 
-Routeoptimalisatie is belangrijk omdat het internet een dynamische plek is, waar verkeer en tijdelijke uitval voortdurend de netwerktopologie veranderen. Het Border Gateway Protocol (BGP) is het routeringsprotocol van het internet, maar er kunnen snellere routes zijn via intermediaire Point of Presence (PoP)-servers. 
+Route optimalisatie is belang rijk omdat Internet een dynamische locatie is, waarbij verkeer en tijdelijke storingen de netwerk topologie voortdurend wijzigen. De Border Gateway Protocol (BGP) is het routerings Protocol van het Internet, maar er zijn mogelijk snellere routes via de beschik bare PoP-servers (Point of Presence). 
 
-Routeoptimalisatie kiest het meest optimale pad naar de oorsprong, zodat een site continu toegankelijk is en dynamische content wordt geleverd aan eindgebruikers via de snelste en meest betrouwbare route mogelijk. 
+Met route optimalisatie wordt het meest optimale pad naar de oorsprong gekozen, zodat een site voortdurend toegankelijk is en dynamische inhoud aan eind gebruikers wordt geleverd via de snelste en meest betrouw bare route die mogelijk is. 
 
-Het Akamai-netwerk maakt gebruik van technieken om realtime gegevens te verzamelen en verschillende paden door verschillende knooppunten in de Akamai-server te vergelijken, evenals de standaard BGP-route over het open internet om de snelste route tussen de oorsprong en de CDN-rand te bepalen. Deze technieken vermijden internet congestie punten en lange routes. 
+Het Akamai-netwerk gebruikt technieken voor het verzamelen van realtimegegevens en het vergelijken van verschillende paden via verschillende knoop punten in de Akamai-server, evenals de standaard BGP-route over het open Internet om de snelste route tussen de oorsprong en de CDN-rand te bepalen. Deze technieken vermijden internet congestie punten en lange routes. 
 
-Op dezelfde manier gebruikt het Verizon-netwerk een combinatie van Anycast DNS, pop-pop's met hoge capaciteit en statuscontroles om de beste gateways voor de beste routegegevens van de client naar de oorsprong te bepalen.
+Op dezelfde manier gebruikt het Verizon-netwerk een combi natie van geauthenticeerde DNS-ondersteuning met hoge capaciteit en status controles om de beste gateways te bepalen om gegevens van de client naar de oorsprong te routeren.
  
-Hierdoor wordt volledig dynamische en transactionele inhoud sneller en betrouwbaarder aan eindgebruikers geleverd, zelfs als deze niet in cache kan worden opgeslagen. 
+Als gevolg hiervan worden volledige dynamische en transactionele inhoud sneller en betrouwbaarder geleverd aan eind gebruikers, zelfs als deze niet in de cache zijn opgeslagen. 
 
 ### <a name="tcp-optimizations"></a>TCP-optimalisaties
 
-Transmission Control Protocol (TCP) is de standaard van de internetprotocolsuite die wordt gebruikt om informatie te leveren tussen toepassingen op een IP-netwerk.  Standaard zijn er verschillende heen-en-weeraanvragen nodig om een TCP-verbinding in te stellen, evenals limieten om netwerkcongestie te voorkomen, wat resulteert in inefficiënties op schaal. **Azure CDN van Akamai** pakt dit probleem op door te optimaliseren in drie gebieden: 
+Transmission Control Protocol (TCP) is de standaard van de Internet protocol suite die wordt gebruikt voor het leveren van informatie tussen toepassingen op een IP-netwerk.  Standaard zijn diverse back-en-out-aanvragen vereist voor het instellen van een TCP-verbinding, evenals beperkingen om netwerk congestie te voor komen. Dit leidt tot inefficiëntie op schaal. **Azure CDN van Akamai** dit probleem te verhelpen door de optimalisatie op drie gebieden: 
 
- - [Tcp langzame start elimineren](#eliminating-tcp-slow-start)
- - [Gebruik maken van permanente verbindingen](#leveraging-persistent-connections)
- - [TCP-pakketparameters afstemmen](#tuning-tcp-packet-parameters)
+ - [TCP langzaam starten elimineren](#eliminating-tcp-slow-start)
+ - [Permanente verbindingen gebruiken](#leveraging-persistent-connections)
+ - [TCP-pakket parameters afstemmen](#tuning-tcp-packet-parameters)
 
-#### <a name="eliminating-tcp-slow-start"></a>Tcp langzame start elimineren
+#### <a name="eliminating-tcp-slow-start"></a>TCP langzaam starten elimineren
 
-TCP *slow start* is een algoritme van het TCP-protocol dat netwerkcongestie voorkomt door de hoeveelheid gegevens die via het netwerk worden verzonden te beperken. Het begint met kleine congestie venster maten tussen afzender en ontvanger totdat het maximum is bereikt of pakket verlies wordt gedetecteerd.
+*Langzaam starten* van TCP is een algoritme van het TCP-protocol dat overbelasting van het netwerk voor komt door de hoeveelheid gegevens die via het netwerk worden verzonden, te beperken. De functie wordt gestart met kleine congestie venster grootten tussen de afzender en de ontvanger totdat het maximum wordt bereikt of er pakket verlies wordt gedetecteerd.
 
- Zowel **Azure CDN van Akamai** als **Azure CDN van Verizon-profielen** elimineren TCP trage start met de volgende drie stappen:
+ Beide **Azure CDN van Akamai** en **Azure CDN van Verizon** -profielen elimineren TCP langzaam starten met de volgende drie stappen:
 
-1. Status- en bandbreedtebewaking wordt gebruikt om de bandbreedte van verbindingen tussen edge PoP-servers te meten.
+1. Status-en bandbreedte bewaking wordt gebruikt om de band breedte van verbindingen tussen PoP-servers met Edge te meten.
     
-2. Statistieken worden gedeeld tussen edge PoP-servers, zodat elke server op de hoogte is van de netwerkomstandigheden en de serverstatus van de andere Pop's om hen heen.  
+2. Metrische PoP-servers worden gedeeld, zodat elke server op de hoogte is van de netwerk omstandigheden en de server status van de andere Pop's rond ze.  
     
-3. De CDN edge servers maken veronderstellingen over sommige transmissieparameters, zoals wat de optimale venstergrootte moet zijn bij het communiceren met andere CDN edge servers in de nabijheid. Deze stap betekent dat de initiële grootte van het congestievenster kan worden vergroot als de status van de verbinding tussen de CDN-randservers in staat is om hogere pakketgegevens over te dragen.  
+3. De CDN-rand servers maken veronderstellingen over bepaalde overdrachts parameters, zoals wat de optimale venster grootte moet zijn wanneer u communiceert met andere CDN edge-servers in de buurt. Deze stap betekent dat de initiële insluitings venster grootte kan worden verhoogd als de status van de verbinding tussen de CDN-rand servers geschikt is voor hogere pakket gegevens overdracht.  
 
-#### <a name="leveraging-persistent-connections"></a>Gebruik maken van permanente verbindingen
+#### <a name="leveraging-persistent-connections"></a>Permanente verbindingen gebruiken
 
-Met behulp van een CDN maken minder unieke machines rechtstreeks verbinding met uw origine server in vergelijking met gebruikers die rechtstreeks verbinding maken met uw oorsprong. Azure CDN bundelt ook gebruikersverzoeken om minder verbindingen met de oorsprong tot stand te brengen.
+Met behulp van een CDN hoeven minder unieke computers rechtstreeks verbinding te maken met uw bron server, vergeleken met gebruikers die rechtstreeks verbinding maken met uw oorsprong. Azure CDN ook gebruikers aanvragen groeperen om minder verbindingen met de oorsprong tot stand te brengen.
 
-Zoals eerder vermeld, zijn verschillende handshakeaanvragen vereist om een TCP-verbinding tot stand te brengen. Permanente verbindingen, die worden `Keep-Alive` geïmplementeerd door de HTTP-header, hergebruiken bestaande TCP-verbindingen voor meerdere HTTP-aanvragen om retourtijden te besparen en de levering te versnellen. 
+Zoals eerder vermeld, zijn er verschillende Handshake-aanvragen vereist om een TCP-verbinding tot stand te brengen. Permanente verbindingen, die worden geïmplementeerd door de `Keep-Alive` http-header, waarbij bestaande TCP-verbindingen voor meerdere HTTP-aanvragen opnieuw worden gebruikt voor het opslaan van retour tijden en het versnellen van de levering. 
 
-**Azure CDN van Verizon** verzendt ook periodieke keep-alive pakketten via de TCP-verbinding om te voorkomen dat een open verbinding wordt gesloten.
+**Azure CDN van Verizon** verzendt ook periodieke Keep-Alive-pakketten via de TCP-verbinding om te voor komen dat een open verbinding wordt gesloten.
 
-#### <a name="tuning-tcp-packet-parameters"></a>TCP-pakketparameters afstemmen
+#### <a name="tuning-tcp-packet-parameters"></a>TCP-pakket parameters afstemmen
 
-**Azure CDN van Akamai** stemt de parameters af die server-naar-serververbindingen regelen en vermindert de hoeveelheid lange-afstandsretouren die nodig zijn om inhoud op te halen die in de site is ingesloten met behulp van de volgende technieken:
+**Azure CDN van Akamai** stemt de para meters voor server-naar-server-verbindingen af en vermindert de hoeveelheid van de lange termijn rondingen die nodig zijn om inhoud op de site op te halen met behulp van de volgende technieken:
 
-- Het verhogen van de initiële congestie venster, zodat meer pakketten kunnen worden verzonden zonder te wachten op een bevestiging.
-- Het verminderen van de eerste time-out voor het opnieuw verzenden, zodat een verlies wordt gedetecteerd en de doorgifte sneller plaatsvindt.
-- Het verlagen van de minimale en maximale time-out voor het opnieuw verzenden om de wachttijd te verkorten voordat wordt aangenomen dat pakketten verloren zijn gegaan bij verzending.
+- Het eerste congestie venster verhogen zodat er meer pakketten kunnen worden verzonden zonder dat er wordt gewacht op een bevestiging.
+- Het verminderen van de eerste time-out voor opnieuw verzenden, zodat er een verlies wordt gedetecteerd en de hertransmissie wordt sneller uitgevoerd.
+- De minimale en maximale time-out voor opnieuw verzenden verlagen om de wacht tijd te verminderen voordat er wordt aangenomen dat de pakketten verloren zijn gegaan.
 
-### <a name="object-prefetch-azure-cdn-from-akamai-only"></a>Objectprefetch (alleen Azure CDN van Akamai)
+### <a name="object-prefetch-azure-cdn-from-akamai-only"></a>Prefetch van object (alleen Azure CDN van Akamai)
 
-De meeste websites bestaan uit een HTML-pagina, die verwijst naar verschillende andere bronnen, zoals afbeeldingen en scripts. Wanneer een client een webpagina aanvraagt, downloadt en ontleden de browser het HTML-object meestal en doet het vervolgens aanvullende aanvragen voor gekoppelde elementen die nodig zijn om de pagina volledig te laden. 
+De meeste websites bestaan uit een HTML-pagina, die verwijst naar verschillende andere resources, zoals afbeeldingen en scripts. Normaal gesp roken, wanneer een client een webpagina aanvraagt, downloadt en parseert de browser eerst het HTML-object en worden er vervolgens extra aanvragen voor gekoppelde assets gemaakt die nodig zijn om de pagina volledig te laden. 
 
-*Prefetch* is een techniek om afbeeldingen en scripts op te halen die zijn ingesloten in de HTML-pagina terwijl de HTML aan de browser wordt weergegeven en voordat de browser deze objectaanvragen doet. 
+*Prefetch* is een techniek voor het ophalen van afbeeldingen en scripts die zijn Inge sloten in de HTML-pagina terwijl de HTML-code naar de browser wordt verzonden, en voordat de browser deze object aanvragen maakt. 
 
-Als de optie prefetch is ingeschakeld op het moment dat het CDN de HTML-basispagina naar de browser van de client bedient, ontleden de CDN het HTML-bestand en doet het extra aanvragen voor gekoppelde bronnen en slaat deze op in de cache. Wanneer de client de aanvragen voor de gekoppelde assets doet, beschikt de CDN-edgeserver al over de gevraagde objecten en kan deze onmiddellijk worden aangeboden zonder een retourvlucht naar de oorsprong. Deze optimalisatie komt zowel ten cachebare als niet-cachebare inhoud ten goede.
+Als de optie prefetch is ingeschakeld op het moment dat de CDN de HTML-basis pagina naar de browser van de client verzendt, parseert het CDN het HTML-bestand en worden er aanvullende aanvragen voor gekoppelde resources gemaakt en opgeslagen in de cache. Wanneer de client de aanvragen voor de gekoppelde assets maakt, heeft de CDN Edge-Server al de aangevraagde objecten en kan deze direct worden gebruikt zonder een retour verzending naar de oorsprong. Deze optimalisatie voordelen zowel cachebaar als niet-cachebaar inhoud.
 
-### <a name="adaptive-image-compression-azure-cdn-from-akamai-only"></a>Adaptieve beeldcompressie (alleen Azure CDN van Akamai)
+### <a name="adaptive-image-compression-azure-cdn-from-akamai-only"></a>Compressie van adaptieve afbeeldingen (alleen Azure CDN van Akamai)
 
-Sommige apparaten, vooral mobiele apparaten, ervaren van tijd tot tijd lagere netwerksnelheden. In deze scenario's is het voordeliger voor de gebruiker om kleinere afbeeldingen op zijn webpagina sneller te ontvangen in plaats van lang te wachten op afbeeldingen met volledige resolutie.
+Sommige apparaten, met name mobiel, hebben een tragere netwerk snelheid van tijd tot tijd. In deze scenario's is het gunstiger voor de gebruiker om sneller kleinere afbeeldingen op hun webpagina te ontvangen in plaats van een lange tijd te wachten op installatie kopieën met volledige resolutie.
 
-Deze functie controleert automatisch de netwerkkwaliteit en maakt gebruik van standaard JPEG-compressiemethoden wanneer de netwerksnelheden trager zijn om de levertijd te verbeteren.
+Met deze functie wordt automatisch de netwerk kwaliteit gecontroleerd en worden standaard JPEG-compressie methoden gebruikt wanneer de netwerk snelheden langzamer zijn om de leverings tijd te verbeteren.
 
-Adaptieve afbeeldingscompressie | Bestandsextensies  
+Adaptieve afbeeldings compressie | Bestands extensies  
 --- | ---  
-JPEG-compressie | .jpg, .jpeg, .jpe, .jig, .jgig, .jgi
+JPEG-compressie | . jpg,. JPEG,. JPE,. jig,. jgig,. JGI
 
 ## <a name="caching"></a>Caching
 
-Bij DSA wordt caching standaard uitgeschakeld op het CDN, `Cache-Control` `Expires` zelfs wanneer de oorsprong of kopteksten in het antwoord bevat. DSA wordt meestal gebruikt voor dynamische assets die niet in de cache mogen worden opgeslagen omdat ze uniek zijn voor elke client. Caching kan dit gedrag doorbreken.
+Met DSA is caching standaard uitgeschakeld in het CDN, zelfs wanneer de oorsprong of `Cache-Control` `Expires` headers in de reactie worden opgenomen. DSA wordt doorgaans gebruikt voor dynamische activa die niet in de cache moeten worden opgeslagen omdat deze uniek zijn voor elke client. Dit gedrag kan worden verbroken met caching.
 
-Als u een website met een mix van statische en dynamische activa hebt, is het het beste om een hybride benadering te kiezen om de beste prestaties te krijgen. 
+Als u een website hebt met een combi natie van statische en dynamische assets, kunt u het beste een hybride benadering maken om de beste prestaties te verkrijgen. 
 
-Voor **Azure CDN Standard van Verizon** en Azure **CDN Standard van Akamai-profielen** u caching inschakelen voor specifieke DSA-eindpunten met [cachingregels.](cdn-caching-rules.md)
+Voor **Azure CDN Standard van Verizon** en **Azure CDN Standard van Akamai** -profielen, kunt u caching inschakelen voor specifieke DSA-eind punten met behulp van de [cache regels](cdn-caching-rules.md).
 
-Ga als volgt te werk om toegang te krijgen tot regels voor caching:
+Voor toegang tot de regels voor opslaan in cache:
 
-1. Selecteer op de **profielpagina van CDN** onder instellingen de optie **Caching-regels**.  
+1. Selecteer op de pagina **CDN-profiel** onder instellingen de optie **cache regels**.  
     
     ![Knop Regels voor CDN-caching](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
-    De pagina **Regels voor caching** wordt geopend.
+    De pagina **regels voor opslaan in cache** wordt geopend.
 
-2. Maak een algemene of aangepaste cachingregel om caching voor uw DSA-eindpunt in te schakelen. 
+2. Maak een algemene of aangepaste regel voor opslaan in cache om caching in te scha kelen voor uw DSA-eind punt. 
 
-Alleen voor **Azure CDN Premium van Verizon-profielen** schakelt u caching in voor specifieke DSA-eindpunten met behulp van de [rules engine](cdn-rules-engine.md). Alle regels die worden gemaakt, hebben alleen invloed op de eindpunten van je profiel die zijn geoptimaliseerd voor DSA. 
+Voor **Azure CDN Premium van Verizon** -profielen, kunt u caching voor specifieke DSA-eind punten inschakelen met behulp van de [regel engine](cdn-rules-engine.md). Alle regels die worden gemaakt, zijn alleen van invloed op de eind punten van uw profiel die zijn geoptimaliseerd voor DSA. 
 
-Om toegang te krijgen tot de regels motor:
+Voor toegang tot de regel Engine:
     
-1. Selecteer beheren op de profielpagina **van** **CDN** .  
+1. Selecteer op de pagina **CDN-profiel** de optie **beheren**.  
     
-    ![Knop CDN-profielbeheer](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
+    ![Beheer knop voor CDN-profiel](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
-    Het CDN-beheerportaal wordt geopend.
+    De CDN-beheer portal wordt geopend.
 
-2. Selecteer **ADN**in de CDN-beheerportal en selecteer **Vervolgens Rules Engine**. 
+2. Selecteer **ADN**in de CDN-beheer Portal en selecteer vervolgens **regel engine**. 
 
-    ![Regels motor voor DSA](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
+    ![Regel engine voor DSA](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
 
 
 
-U ook twee CDN-eindpunten gebruiken: één eindpunt dat is geoptimaliseerd met DSA om dynamische assets te leveren en een ander eindpunt dat is geoptimaliseerd met een statisch optimalisatietype, zoals algemene weblevering, aan de cachebare assets van de levering. Wijzig de URL's van uw webpagina om rechtstreeks te koppelen aan het item op het CDN-eindpunt dat u wilt gebruiken. 
+U kunt ook twee CDN-eind punten gebruiken: één eind punt dat is geoptimaliseerd met DSA voor het leveren van dynamische assets en een ander eind punt dat is geoptimaliseerd voor een statisch optimalisatie type, zoals algemene weblevering, voor leverings cachebare assets. Wijzig de Url's van uw webpagina's zodat u deze rechtstreeks kunt koppelen aan de Asset op het CDN-eind punt dat u wilt gebruiken. 
 
-Bijvoorbeeld: `mydynamic.azureedge.net/index.html` is een dynamische pagina en wordt geladen vanaf het DSA-eindpunt.De html-pagina verwijst naar meerdere statische elementen, zoals JavaScript-bibliotheken of afbeeldingen die `mystatic.azureedge.net/banner.jpg` zijn `mystatic.azureedge.net/scripts.js`geladen vanaf het statische CDN-eindpunt, zoals en . 
+Bijvoorbeeld: `mydynamic.azureedge.net/index.html` is een dynamische pagina en wordt geladen vanuit het DSA-eind punt.De HTML-pagina verwijst naar meerdere statische assets, zoals Java script-bibliotheken of installatie kopieën die worden geladen vanuit het statische `mystatic.azureedge.net/banner.jpg` CDN `mystatic.azureedge.net/scripts.js`-eind punt, zoals en. 
 
 
 

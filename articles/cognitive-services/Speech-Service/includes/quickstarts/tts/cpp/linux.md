@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Synthetiseren spraak, C++ (Linux) - Spraakservice'
+title: 'Quick Start: een synthese van spraak, C++ (Linux)-spraak service'
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het synthetiseren van spraak in C++ op Linux met behulp van de Speech SDK
+description: Meer informatie over het maken van spraak in C++ op Linux met behulp van de Speech SDK
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: yinhew
 ms.openlocfilehash: 458dc6899b0d89fcda2ff989ae95523e12de13c5
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81275215"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u:
+Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Een Azure-spraakbron maken](../../../../get-started.md)
-> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programming-language-cpp)
+> * [Een Azure-spraak resource maken](../../../../get-started.md)
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programming-language-cpp)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
@@ -52,7 +52,7 @@ Voordat u aan de slag gaat, moet u:
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
-* Voer op een **ARM64-systeem** (64-bits) de volgende opdracht uit om de toepassing te bouwen.
+* Voer op een **ARM64** -systeem (64-bits) de volgende opdracht uit om de toepassing te bouwen.
 
   ```sh
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
@@ -74,7 +74,7 @@ Voordat u aan de slag gaat, moet u:
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
      ```
 
-   * Voer op een **ARM64-systeem** (64-bits) de volgende opdracht in.
+   * Voer de volgende opdracht in op een **ARM64** -systeem (64-bits).
 
      ```sh
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/arm64"
@@ -86,7 +86,7 @@ Voordat u aan de slag gaat, moet u:
    ./helloworld
    ```
 
-1. In het consolevenster verschijnt een prompt waarin u wordt gevraagd tekst te typen. Typ een paar woorden of een zin. De tekst die u hebt getypt, wordt naar de spraakservice verzonden en gesynthetiseerd naar spraak, die op uw luidspreker wordt afgespeeld.
+1. In het console venster wordt een prompt weer gegeven waarin u wordt gevraagd om tekst te typen. Typ enkele woorden of een zin. De tekst die u hebt getypt, wordt verzonden naar de speech-service en gesynthesizerd naar spraak, die op uw spreker wordt afgespeeld.
 
    ```text
    Type some text that you want to speak...
@@ -102,4 +102,4 @@ Voordat u aan de slag gaat, moet u:
 ## <a name="see-also"></a>Zie ook
 
 - [Een aangepaste stem maken](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Aangepaste spraakvoorbeelden opnemen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Aangepaste spraak voorbeelden vastleggen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

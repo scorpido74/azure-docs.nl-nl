@@ -1,6 +1,6 @@
 ---
-title: FSLogix-profielcontainers NetApp Windows Virtual Desktop - Azure
-description: Een FSLogix-profielcontainer maken met Azure NetApp-bestanden in Windows Virtual Desktop.
+title: FSLogix-profiel containers NetApp Windows virtueel bureau blad-Azure
+description: Een FSLogix-profiel container maken met behulp van Azure NetApp Files in Windows virtueel bureau blad.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,53 +9,53 @@ ms.date: 04/13/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 149fb5818ee360c7333997655ea9eb8d7ded346c
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81270890"
 ---
-# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Een FSLogix-profielcontainer maken voor een hostgroep met Azure NetApp-bestanden
+# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Een FSLogix-profiel container maken voor een hostgroep met Azure NetApp Files
 
-We raden u aan fslogix-profielcontainers te gebruiken als gebruikersprofieloplossing voor de [Windows Virtual Desktop-service.](overview.md) FSLogix-profielcontainers slaan een volledig gebruikersprofiel op in één container en zijn ontworpen om profielen te roamen in niet-permanente externe computeromgevingen zoals Windows Virtual Desktop. Wanneer u zich aanmeldt, wordt de container dynamisch gekoppeld aan de computeromgeving met behulp van een lokaal ondersteunde virtuele harde schijf (VHD) en Hyper-V virtuele harde schijf (VHDX). Deze geavanceerde filter-driver technologieën zorgen ervoor dat het gebruikersprofiel onmiddellijk beschikbaar is en in het systeem wordt weergegeven, precies zoals een lokaal gebruikersprofiel. Zie [FSLogix-profielcontainers en Azure-bestanden](fslogix-containers-azure-files.md)voor meer informatie over FSLogix-profielcontainers.
+We raden u aan om FSLogix-profiel containers als een gebruikers profiel oplossing te gebruiken voor de [virtueel-bureaublad service van Windows](overview.md). FSLogix-profiel containers slaan een volledig gebruikers profiel op in één container en zijn ontworpen om profielen te zwerven in niet-permanente, externe computer omgevingen zoals Windows virtueel bureau blad. Wanneer u zich aanmeldt, wordt de container dynamisch aan de computer omgeving gekoppeld met behulp van een lokaal ondersteunde virtuele harde schijf (VHD) en Hyper-V virtuele harde schijf (VHDX). Met deze geavanceerde filter technologieën kan het gebruikers profiel onmiddellijk beschikbaar zijn en in het systeem worden weer gegeven op dezelfde manier als een lokaal gebruikers profiel. Zie [FSLogix-profiel containers en Azure files](fslogix-containers-azure-files.md)voor meer informatie over FSLogix-profiel containers.
 
-U FSLogix-profielcontainers maken met [Azure NetApp Files](https://azure.microsoft.com/services/netapp/), een gebruiksvriendelijke Azure-native platformservice waarmee klanten snel en betrouwbaar mkb-volumes van bedrijfsniveau kunnen inrichten voor hun Windows Virtual Desktop-omgevingen. Zie [Wat is Azure NetApp-bestanden voor](../azure-netapp-files/azure-netapp-files-introduction.md) meer informatie over Azure NetApp-bestanden?
+U kunt FSLogix-profiel containers maken met behulp van [Azure NetApp files](https://azure.microsoft.com/services/netapp/), een eenvoudig te gebruiken Azure systeem eigen platform service waarmee klanten snel en betrouwbaar SMB-volumes op bedrijfs niveau kunnen inrichten voor hun virtuele Windows-desktop omgevingen. Zie [Wat is Azure NetApp files?](../azure-netapp-files/azure-netapp-files-introduction.md) voor meer informatie over Azure NetApp files.
 
-In deze handleiding ziet u hoe u een Azure NetApp Files-account instelt en FSLogix-profielcontainers maakt in Windows Virtual Desktop.
+In deze hand leiding wordt uitgelegd hoe u een Azure NetApp Files account instelt en FSLogix profiel containers maakt in Windows virtueel bureau blad.
 
-In dit artikel wordt ervan uitgegaan dat u al [hostpools](create-host-pools-azure-marketplace.md) hebt ingesteld en gegroepeerd in een of meer tenants in uw Windows Virtual Desktop-omgeving. Zie [Een tenant maken in Windows Virtual Desktop](tenant-setup-azure-active-directory.md) en onze blogpost van de Tech [Community](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054)voor meer informatie over het instellen van tenants.
+In dit artikel wordt ervan uitgegaan dat u al [hostgroepen](create-host-pools-azure-marketplace.md) hebt ingesteld en gegroepeerd in een of meer tenants in uw Windows Virtual Desktop-omgeving. Zie voor meer informatie over het instellen van tenants [een Tenant maken in het virtuele bureau blad van Windows](tenant-setup-azure-active-directory.md) en [onze technische community-blog post](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
 
-De instructies in deze handleiding zijn specifiek voor Windows Virtual Desktop-gebruikers. Als u op zoek bent naar meer algemene richtlijnen voor het instellen van Azure NetApp-bestanden en het maken van FSLogix-profielcontainers buiten Windows Virtual Desktop, raadpleegt u de [Azure NetApp-bestanden instellen en maakt u snel een NFS-volume.](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)
-
->[!NOTE]
->Dit artikel heeft geen betrekking op aanbevolen procedures voor het beveiligen van toegang tot het delen van Azure NetApp-bestanden.
+De instructies in deze hand leiding zijn specifiek voor Windows-gebruikers met een virtueel bureau blad. Als u meer algemene richt lijnen wilt voor het instellen van Azure NetApp Files en het maken van FSLogix-profiel containers buiten Windows virtueel bureau blad, raadpleegt u de Snelstartgids voor het [instellen van Azure NetApp files en het maken van een NFS-volume](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md).
 
 >[!NOTE]
->Zie Opslagopties voor [FSLogix-profielcontainers](store-fslogix-profile.md)als u op zoek bent naar vergelijkingsmateriaal over de verschillende opslagopties voor FSLogix-profiel .
+>In dit artikel worden geen aanbevolen procedures beschreven voor het beveiligen van de toegang tot de Azure NetApp Files share.
+
+>[!NOTE]
+>Zie [opslag opties voor FSLogix-profiel containers](store-fslogix-profile.md)als u op zoek bent naar het vergelijkings materiaal over de verschillende FSLogix-profiel container opslag opties in Azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u een FSLogix-profielcontainer voor een hostgroep maken, moet u het:
+Voordat u een FSLogix-profiel container voor een hostgroep kunt maken, moet u het volgende doen:
 
-- Windows Virtual Desktop instellen en configureren
-- Een Windows Virtual Desktop-hostgroep inrichten
+- Virtuele Windows-bureau blad instellen en configureren
+- Een Windows-hostgroep voor virtueel bureau blad inrichten
 - [Uw Azure NetApp Files-abonnement inschakelen](../azure-netapp-files/azure-netapp-files-register.md)
 
 ## <a name="set-up-your-azure-netapp-files-account"></a>Uw Azure NetApp Files-account instellen
 
-Om aan de slag te gaan, moet u een Azure NetApp Files-account instellen.
+Als u aan de slag wilt gaan, moet u een Azure NetApp Files-account instellen.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Controleer of uw account machtigingen voor inzender of beheerders heeft.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Zorg ervoor dat uw account Inzender-of beheerders machtigingen heeft.
 
-2. Selecteer het **Azure Cloud Shell-pictogram** rechts van de zoekbalk om Azure Cloud Shell te openen.
+2. Selecteer het **Azure Cloud shell pictogram** rechts van de zoek balk om Azure Cloud shell te openen.
 
-3. Zodra Azure Cloud Shell is geopend, selecteert u **PowerShell**.
+3. Als Azure Cloud Shell is geopend, selecteert u **Power shell**.
 
-4. Als dit de eerste keer is dat u Azure Cloud Shell gebruikt, maakt u een opslagaccount in hetzelfde abonnement dat u uw Azure NetApp Files en Windows Virtual Desktop bewaart.
+4. Als dit de eerste keer is dat u Azure Cloud Shell gebruikt, maakt u een opslag account in hetzelfde abonnement dat u de Azure NetApp Files en het virtuele bureau blad van Windows bewaart.
 
-   ![Het opslagaccountvenster met de knop Opslag maken onder aan het venster gemarkeerd in het rood.](media/create-storage-button.png)
+   ![Het venster opslag account met de knop opslag maken onder aan het venster is rood gemarkeerd.](media/create-storage-button.png)
 
-5. Zodra Azure Cloud Shell is geladen, voert u de volgende twee cmdlets uit.
+5. Als Azure Cloud Shell is geladen, voert u de volgende twee cmdlets uit.
 
    ```azurecli
    az account set --subscription <subscriptionID>
@@ -65,127 +65,127 @@ Om aan de slag te gaan, moet u een Azure NetApp Files-account instellen.
    az provider register --namespace Microsoft.NetApp --wait
    ```
 
-6. Selecteer alle **services**aan de linkerkant van het venster . Voer **Azure NetApp-bestanden** in het zoekvak dat boven aan het menu wordt weergegeven.
+6. Selecteer in de linkerkant van het venster **alle services**. Voer **Azure NetApp files** in het zoekvak dat boven aan het menu wordt weer gegeven.
 
-   ![Een schermafbeelding van een gebruiker die 'Azure NetApp-bestanden' invoert in het zoekvak Alle services. De zoekresultaten tonen de Azure NetApp Files-bron.](media/azure-netapp-files-search-box.png)
+   ![Een scherm opname van een gebruiker die Azure NetApp Files invoert in het zoekvak alle services. In de zoek resultaten wordt de Azure NetApp Files resource weer gegeven.](media/azure-netapp-files-search-box.png)
 
 
-7. Selecteer **Azure NetApp-bestanden** in de zoekresultaten en selecteer **Vervolgens Maken**.
+7. Selecteer **Azure NetApp files** in de zoek resultaten en selecteer vervolgens **maken**.
 
 8. Selecteer de knop **Add**.
-9. Wanneer het tabblad **Nieuwe NetApp-account** wordt geopend, voert u de volgende waarden in:
+9. Wanneer het tabblad **Nieuw NetApp-account** wordt geopend, voert u de volgende waarden in:
 
-    - Voer **voor Naam**de naam van uw NetApp-account in.
-    - Selecteer **bij Abonnement**het abonnement voor het opslagaccount dat u in stap 4 hebt ingesteld in het vervolgkeuzemenu.
-    - Selecteer **voor resourcegroep**een bestaande resourcegroep in het vervolgkeuzemenu of maak een nieuwe groep door **Nieuw maken te**selecteren .
-    - Selecteer **bij Locatie**de regio voor uw NetApp-account in het vervolgkeuzemenu. Deze regio moet dezelfde regio zijn als de VM's van uw sessiehost.
+    - Voer bij **naam**de naam van uw NetApp-account in.
+    - Selecteer bij **abonnement**het abonnement voor het opslag account dat u in stap 4 hebt ingesteld in de vervolg keuzelijst.
+    - Voor **resource groep**selecteert u een bestaande resource groep in de vervolg keuzelijst of maakt u een nieuwe, door **Nieuw maken**te selecteren.
+    - Selecteer bij **locatie**de regio voor uw NetApp-account in de vervolg keuzelijst. Deze regio moet dezelfde regio zijn als de Vm's van de host van uw sessie.
 
    >[!NOTE]
-   >Azure NetApp Files biedt momenteel geen ondersteuning voor het verhogen van een volume in verschillende regio's.
+   >Azure NetApp Files biedt momenteel geen ondersteuning voor het koppelen van een volume in verschillende regio's.
 
-10. Wanneer u klaar bent, selecteert u **Maken** om uw NetApp-account te maken.
+10. Wanneer u klaar bent, selecteert u **maken** om uw NetApp-account te maken.
 
-## <a name="create-a-capacity-pool"></a>Een capaciteitspool maken
+## <a name="create-a-capacity-pool"></a>Een capaciteits pool maken
 
-Maak vervolgens een nieuwe capaciteitsgroep: 
+Maak vervolgens een nieuwe capaciteits groep: 
 
 1. Ga naar het menu Azure NetApp Files en selecteer uw nieuwe account.
-2. Selecteer in het accountmenu **Capaciteitsgroepen** onder Opslagservice.
-3. Selecteer **Groep toevoegen**.
-4. Wanneer het tabblad **Nieuwe capaciteitsgroep** wordt geopend, voert u de volgende waarden in:
+2. Selecteer in uw account menu de optie **capaciteits Pools** onder Storage service.
+3. Selecteer **groep toevoegen**.
+4. Wanneer het tabblad **nieuwe capaciteits groep** wordt geopend, voert u de volgende waarden in:
 
-    - Voer voor **Naam**een naam in voor de nieuwe capaciteitsgroep.
-    - Selecteer **voor Serviceniveau**de gewenste waarde in het vervolgkeuzemenu. We raden **Premium** aan voor de meeste omgevingen.
+    - Voer bij **naam**een naam in voor de nieuwe capaciteits groep.
+    - Selecteer voor **service niveau**de gewenste waarde in de vervolg keuzelijst. We raden **Premium** aan voor de meeste omgevingen.
        >[!NOTE]
-       >De Premium-instelling biedt de minimale doorvoer die beschikbaar is voor een Premium Service-niveau, namelijk 256 MBps. Mogelijk moet u deze doorvoer aanpassen voor een productieomgeving. De uiteindelijke doorvoer is gebaseerd op de relatie die wordt beschreven in [doorvoerlimieten](../azure-netapp-files/azure-netapp-files-service-levels.md).
-    - Voer voor **Grootte (TiB)** de capaciteitspoolgrootte in die het beste bij uw behoeften past. De minimale grootte is 4 TiB.
+       >De Premium-instelling biedt de minimale door Voer die beschikbaar is voor een Premium-service niveau, 256 MBps. Mogelijk moet u deze door Voer aanpassen voor een productie omgeving. De laatste door Voer is gebaseerd op de relatie die wordt beschreven in de [doorvoer limieten](../azure-netapp-files/azure-netapp-files-service-levels.md).
+    - Voer voor **grootte (Tib)** de capaciteits pool grootte in die het beste bij uw behoeften past. De minimale grootte is 4 TiB.
 
 5. Klik op **OK** wanneer u klaar bent.
 
-## <a name="join-an-active-directory-connection"></a>Lid worden van een Active Directory-verbinding
+## <a name="join-an-active-directory-connection"></a>Een Active Directory verbinding maken
 
-Daarna moet u lid worden van een Active Directory-verbinding.
+Daarna moet u lid worden van een Active Directory verbinding.
 
-1. Selecteer **Active Directory-verbindingen** in het menu aan de linkerkant van de pagina en selecteer vervolgens de knop **Deelnemen** om de pagina Deelnemen aan Active **Directory te** openen.
+1. Selecteer **Active Directory verbindingen** in het menu aan de linkerkant van de pagina en selecteer vervolgens de knop **samen voegen** om de pagina **lid worden** van de Active Directory te openen.
 
-   ![Een schermafbeelding van het menu Active Directory-verbindingen deelnemen.](media/active-directory-connections-menu.png)
+   ![Een scherm opname van het menu verbinding maken Active Directory.](media/active-directory-connections-menu.png)
 
-2. Voer de volgende waarden in op de pagina **Deelnemen aan Active Directory** om lid te worden van een verbinding:
+2. Voer de volgende waarden in op de pagina **lid worden Active Directory** om lid te worden van een verbinding:
 
-    - Voer **voor Primaire DNS**het IP-adres van de DNS-server in uw omgeving in die de domeinnaam kan oplossen.
-    - Voer voor **Domein**uw volledig gekwalificeerde domeinnaam (FQDN) in.
-    - Voer voor **voorvoegsel SMB Server (Computer Account)** de tekenreeks in die u aan de naam van het computeraccount wilt toevoegen.
-    - Voer **voor Gebruikersnaam**de naam van het account in met machtigingen om lid te worden van het domein.
-    - Voer **voor wachtwoord**het wachtwoord van het account in.
+    - Voor **primaire DNS**voert u het IP-adres van de DNS-server in uw omgeving in die de domein naam kan omzetten.
+    - Voer uw Fully Qualified Domain Name (FQDN) in voor het **domein**.
+    - Voer voor het voor voegsel van de **SMB-server (computer-account)** de teken reeks in die u wilt toevoegen aan de naam van het computer account.
+    - Voer bij **gebruikers naam**de naam in van het account met machtigingen voor het uitvoeren van een domein deelname.
+    - Voer bij **wacht woord**het wacht woord van het account in.
 
 ## <a name="create-a-new-volume"></a>Een nieuw volume maken
 
 Vervolgens moet u een nieuw volume maken.
 
-1. Selecteer **Volumes**en selecteer **Volume toevoegen**.
+1. Selecteer **volumes**en selecteer vervolgens **volume toevoegen**.
 
-2. Wanneer het tabblad **Een volume maken** wordt geopend, voert u de volgende waarden in:
+2. Wanneer het tabblad **een volume maken** wordt geopend, voert u de volgende waarden in:
 
-    - Voer **voor de naam Volume**een naam in voor het nieuwe volume.
-    - Selecteer **voor capaciteitspool**de capaciteitspool die u zojuist hebt gemaakt in het vervolgkeuzemenu.
-    - Voer **voor Quota (GiB)** de volumegrootte in die geschikt is voor uw omgeving.
-    - Selecteer **voor virtueel netwerk**een bestaand virtueel netwerk met verbinding met de domeincontroller in het vervolgkeuzemenu.
-    - Selecteer **onder Subnet**De optie **Nieuw maken**. Houd er rekening mee dat dit subnet wordt gedelegeerd aan Azure NetApp-bestanden.
+    - Voer voor **volume naam**een naam in voor het nieuwe volume.
+    - Voor de **capaciteits pool**selecteert u de capaciteits groep die u zojuist hebt gemaakt in de vervolg keuzelijst.
+    - Voer bij **quotum (GIB)** de grootte van het benodigde volume in voor uw omgeving.
+    - Voor **virtueel netwerk**selecteert u een bestaand virtueel netwerk dat is verbonden met de domein controller in de vervolg keuzelijst.
+    - Selecteer onder **subnet**de optie **nieuwe maken**. Houd er rekening mee dat dit subnet wordt gedelegeerd aan Azure NetApp Files.
 
-3.  Selecteer **Volgende: \> Protocol** om het tabblad Protocol te openen en uw parameters voor volumetoegang te configureren.
+3.  Selecteer **volgende: protocol \> ** om het tabblad Protocol te openen en uw volume toegangs parameters in te stellen.
 
-## <a name="configure-volume-access-parameters"></a>Parameters voor volumetoegang configureren
+## <a name="configure-volume-access-parameters"></a>Volume toegangs parameters configureren
 
-Nadat u het volume hebt gemaakt, configureert u de parameters voor volumetoegang.
+Nadat u het volume hebt gemaakt, configureert u de volume toegangs parameters.
 
-1.  Selecteer **SMB** als protocoltype.
-2.  Selecteer onder Configuratie in het vervolgkeuzemenu **Active Directory** dezelfde map die u oorspronkelijk hebt verbonden in Lid worden bij Een [Active Directory-verbinding](create-fslogix-profile-container.md#join-an-active-directory-connection). Houd er rekening mee dat er een limiet is van één Active Directory per abonnement.
-3.  Voer in het tekstvak **Naam delen** de naam in van het aandeel dat wordt gebruikt door de groep sessiehost en de gebruikers ervan.
+1.  Selecteer **SMB** als protocol type.
+2.  Selecteer onder configuratie in de vervolg keuzelijst **Active Directory** de map waarin u oorspronkelijk verbinding hebt gemaakt in [lid worden van een Active Directory-verbinding](create-fslogix-profile-container.md#join-an-active-directory-connection). Houd er wel voor dat er een limiet van één Active Directory per abonnement is.
+3.  Voer in het tekstvak **share naam** de naam in van de share die wordt gebruikt door de sessiehost en de gebruikers.
 
-4.  Selecteer **Controleren + maken** onder aan de pagina. Hiermee wordt de validatiepagina geopend. Nadat uw volume is gevalideerd, selecteert u **Maken**.
+4.  Selecteer onder aan de pagina **bekijken + maken** . Hiermee opent u de pagina validatie. Nadat het volume is gevalideerd, selecteert u **maken**.
 
-5.  Op dit moment zal het nieuwe volume beginnen te implementeren. Zodra de implementatie is voltooid, u het aandeel Azure NetApp-bestanden gebruiken.
+5.  Op dit moment zal het nieuwe volume worden geïmplementeerd. Zodra de implementatie is voltooid, kunt u de Azure NetApp Files share gebruiken.
 
-6.  Als u het bergpad wilt zien, selecteert u **Ga naar resource** en zoekt u deze op het tabblad Overzicht.
+6.  Als u het koppelingspad wilt zien, selecteert u **naar resource gaan** en zoekt u deze op het tabblad Overzicht.
 
-    ![Een screenshot van het scherm Overzicht met een rode pijl die naar het bergpad wijst.](media/overview-mount-path.png)
+    ![Een scherm afbeelding van het overzichts scherm met een rode pijl die verwijst naar het koppelingspad.](media/overview-mount-path.png)
 
-## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>FSLogix configureren op virtuele vm's voor sessiehost
+## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>FSLogix configureren op virtuele machines in de sessiehost (Vm's)
 
-Deze sectie is gebaseerd op [Een profielcontainer maken voor een hostgroep met behulp van een bestandsshare.](create-host-pools-user-profile.md)
+Deze sectie is gebaseerd op het [maken van een profiel container voor een hostgroep met een bestands share](create-host-pools-user-profile.md).
 
-1. [Download het FSLogix-zip-bestand .zip](https://go.microsoft.com/fwlink/?linkid=2084562&clcid=0x409) terwijl u nog op afstand bent in de vm van sessiehost.
+1. [Down load het bestand FSLogix agent. zip](https://go.microsoft.com/fwlink/?linkid=2084562&clcid=0x409) terwijl u nog steeds extern bent in de host-VM van de sessie.
 
-2. Rits het gedownloade bestand uit.
+2. Pak het gedownloade bestand uit.
 
-3. Ga in het bestand naar **x64** > **Releases** en voer **FSLogixAppsSetup.exe uit.** Het installatiemenu wordt geopend.
+3. Ga in het bestand naar **x64** > -**releases** en voer **FSLogixAppsSetup. exe**uit. Het installatie menu wordt geopend.
 
-4.  Als u een productcode hebt, voert u deze in het tekstvak Productcode in.
+4.  Als u een product code hebt, voert u deze in het tekstvak product code in.
 
-5. Schakel het selectievakje naast **Ik ga akkoord met de licentievoorwaarden**.
+5. Schakel het selectie vakje in bij **Ik ga akkoord met de licentie voorwaarden**.
 
 6. Selecteer **Installeren**.
 
-7. Navigeer naar **\\C:\\Programmabestanden\\FSLogix Apps** om de installatie van de agent te bevestigen.
+7. Navigeer naar **C:\\Program Files\\FSLogix\\apps** om te bevestigen dat de agent is geïnstalleerd.
 
-8. Voer **RegEdit** in het menu Start uit als beheerder.
+8. Voer in het menu Start **regedit** als Administrator uit.
 
-9. Navigeer naar **computerHKEY_LOCAL_MACHINE\\\\software\\FSLogix**.
+9. Navigeer naar **Computer\\HKEY_LOCAL_MACHINE\\software\\FSLogix**.
 
-10. Een sleutel met de naam **Profielen maken**.
+10. Maak een sleutel met de naam **profielen**.
 
-11.  Maak een waarde met de naam **Ingeschakeld** met een **REG_DWORD** typen ingesteld op een gegevenswaarde van **1**.
+11.  Maak een waarde met de naam **ingeschakeld** met een **REG_DWORD** type ingesteld op een gegevens waarde van **1**.
 
-12. Maak een waarde met de naam **VHDLocations** met een **multi-string-type** en stel de gegevenswaarde in op de URI voor het aandeel Azure NetApp-bestanden.
+12. Maak een waarde met de naam **VHDLocations** met een type met **meerdere teken reeksen** en stel de gegevens waarde in op de URI voor de Azure NetApp Files share.
 
-13. Maak een waarde met de naam **DeleteLocalProfileWhenVHDShouldApply** met een DWORD-waarde van 1 om problemen met bestaande lokale profielen te voorkomen voordat u zich aanmeldt.
+13. Maak een waarde met de naam **DeleteLocalProfileWhenVHDShouldApply** met de DWORD-waarde 1 om problemen met bestaande lokale profielen te voor komen voordat u zich aanmeldt.
 
      >[!WARNING]
-     >Wees voorzichtig bij het maken van de waarde DeleteLocalProfileWhenVHDShouldApply. Wanneer het FSLogix-profielensysteem bepaalt dat een gebruiker een FSLogix-profiel moet hebben, maar er al een lokaal profiel bestaat, verwijdert Profile Container het lokale profiel permanent. De gebruiker wordt dan aangemeld met het nieuwe FSLogix profiel.
+     >Wees voorzichtig bij het maken van de waarde DeleteLocalProfileWhenVHDShouldApply. Wanneer het FSLogix profielen systeem bepaalt dat een gebruiker een FSLogix-profiel moet hebben, maar er al een lokaal profiel bestaat, zal de profiel container het lokale profiel permanent verwijderen. De gebruiker wordt vervolgens aangemeld met het nieuwe FSLogix-profiel.
 
-## <a name="assign-users-to-session-host"></a>Gebruikers toewijzen aan sessiehost
+## <a name="assign-users-to-session-host"></a>Gebruikers toewijzen aan de sessiehost
 
-1. Open **PowerShell ISE** als beheerder en meld u aan bij Windows Virtual Desktop.
+1. Open **Power shell ISE** als beheerder en meld u aan bij Windows virtueel bureau blad.
 
 2. Voer de volgende cmdlets uit:
 
@@ -196,9 +196,9 @@ Deze sectie is gebaseerd op [Een profielcontainer maken voor een hostgroep met b
    Add-RdsAccount -DeploymentUrl $brokerurl
    ```
 
-3. Wanneer u om referenties wordt gevraagd, voert u de referenties voor de gebruiker in met de rollen tenantmaker of RDS-bijdrager in- of rds-bijdrager op de Windows Virtual Desktop-tenant.
+3. Wanneer u om referenties wordt gevraagd, voert u de referenties in voor de gebruiker met de rol Tenant maker of RDS-eigenaar/RDS-Inzender op de Windows Virtual Desktop-Tenant.
 
-4. Voer de volgende cmdlets uit om een gebruiker toe te wijzen aan een groep Extern bureaublad:
+4. Voer de volgende cmdlets uit om een gebruiker toe te wijzen aan een Extern bureaublad groep:
 
    ```powershell
    $wvdTenant = "<your-wvd-tenant>"
@@ -208,26 +208,26 @@ Deze sectie is gebaseerd op [Een profielcontainer maken voor een hostgroep met b
    Add-RdsAppGroupUser $wvdTenant $hostPool $appGroup $user
    ```
 
-## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Zorg ervoor dat gebruikers toegang hebben tot het Azure NetApp-bestandsaandeel
+## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Zorg ervoor dat gebruikers toegang hebben tot de bestands share van Azure NetApp
 
-1. Open uw internetbrowser <https://rdweb.wvd.microsoft.com/webclient/index.html>en ga naar .
+1. Open uw Internet browser en ga naar <https://rdweb.wvd.microsoft.com/webclient/index.html>.
 
-2. Meld u aan met de referenties van een gebruiker die is toegewezen aan de groep Extern bureaublad.
+2. Meld u aan met de referenties van een gebruiker die is toegewezen aan de Extern bureaublad groep.
 
-3. Zodra u de gebruikerssessie hebt ingesteld, meldt u zich aan bij de Azure-portal met een beheerdersaccount.
+3. Nadat u de gebruikers sessie tot stand hebt gebracht, meldt u zich aan bij de Azure Portal met een Administrator-account.
 
-4. Open **Azure NetApp-bestanden,** selecteer uw Azure NetApp-bestandenaccount en selecteer **Vervolgens Volumes**. Zodra het menu Volumes wordt geopend, selecteert u het bijbehorende volume.
+4. Open **Azure NetApp files**, selecteer uw Azure NetApp files account en selecteer vervolgens **volumes**. Zodra het menu volumes wordt geopend, selecteert u het bijbehorende volume.
 
-   ![Een schermafbeelding van het NetApp-account dat u eerder in de Azure-portal hebt ingesteld met de knop Volumes geselecteerd.](media/netapp-account.png)
+   ![Een scherm opname van het NetApp-account dat u eerder hebt ingesteld in de Azure Portal met de knop volumes geselecteerd.](media/netapp-account.png)
 
-5. Ga naar het tabblad **Overzicht** en controleer of de FSLogix-profielcontainer ruimte gebruikt.
+5. Ga naar het tabblad **overzicht** en controleer of in de FSLogix-profiel container ruimte wordt gebruikt.
 
-6. Maak rechtstreeks verbinding met een VM-onderdeel van de hostgroep met Extern bureaublad en open de **Verkenner.** Navigeer vervolgens naar het **bergpad** (in het \\ \\volgende\\voorbeeld wordt het bergpad anf-SMB-3863.gt1107.onmicrosoft.com anf-VOL).
+6. Maak rechtstreeks verbinding met een VM-onderdeel van de hostgroep met Extern bureaublad en open de **bestanden Verkenner.** Ga vervolgens naar het **koppelingspad** (in het volgende voor beeld is \\ \\het koppelingspad ANF-SMB-3863.gt1107.onmicrosoft.com\\ANF vol).
 
-   Binnen deze map moet er een profiel VHD (of VHDX) zoals in het volgende voorbeeld.
+   In deze map moet er een VHD (of VHDX) van het profiel staan, zoals in het volgende voor beeld.
 
-   ![Een screenshot van de inhoud van de map in het bergpad. Binnen is een enkel VHD-bestand met de naam "Profile_ssbb."](media/mount-path-folder.png)
+   ![Een scherm afbeelding van de inhoud van de map in het koppelingspad. In is één VHD-bestand met de naam ' Profile_ssbb '.](media/mount-path-folder.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U FSLogix-profielcontainers gebruiken om een gebruikersprofielaandeel in te stellen. Zie [Een profielcontainer maken voor een hostgroep met een bestandsshare](create-host-pools-user-profile.md)voor meer informatie over het maken van gebruikersprofielshares met uw nieuwe containers.
+U kunt FSLogix-profiel containers gebruiken om een gebruikers profiel share in te stellen. Zie [een profiel container maken voor een hostgroep met een bestands share voor](create-host-pools-user-profile.md)meer informatie over het maken van gebruikers profiel shares met uw nieuwe containers.
