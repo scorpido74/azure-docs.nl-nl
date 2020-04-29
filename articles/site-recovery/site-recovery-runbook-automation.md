@@ -1,6 +1,6 @@
 ---
-title: Azure Automation-runbooks toevoegen aan herstelplannen voor siteherstel
-description: Meer informatie over het uitbreiden van herstelplannen met Azure Automation voor herstel na noodgevallen met Azure Site Recovery.
+title: Azure Automation runbooks toevoegen aan Site Recovery-herstel plannen
+description: Meer informatie over het uitbreiden van herstel plannen met Azure Automation voor herstel na nood geval met behulp van Azure Site Recovery.
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
@@ -8,56 +8,56 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257483"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation-runbooks aan herstelplannen toevoegen
 
-In dit artikel wordt beschreven hoe u Azure Automation-runbooks integreren om [herstelplannen](site-recovery-overview.md) voor Azure Site Recovery uit te breiden. We laten u zien hoe u basistaken automatiseren die anders handmatigmoeten worden ingegrepen en hoe u een herstel met meerdere stappen omzetten in een actie met één klik.
+In dit artikel wordt beschreven hoe u Azure Automation runbooks integreert om [Azure site Recovery](site-recovery-overview.md) herstel plannen uit te breiden. We laten u zien hoe u basis taken automatiseert die anders hand matig moeten worden uitgevoerd en hoe u een herstel met meerdere stappen kunt omzetten in een actie met één klik.
 
 ## <a name="recovery-plans"></a>Herstelplannen 
 
-U herstelplannen gebruiken wanneer u niet over on-premises machines of Azure VM's heen gaat. Herstelplannen helpen u bij het definiëren van een systematisch herstelproces dat bepaalt hoe machines mislukken en hoe ze starten en herstellen na een failover. 
+U kunt herstel plannen gebruiken bij het uitvoeren van een failover van on-premises machines of Azure-Vm's. Met herstel plannen kunt u een systematisch herstel proces definiëren dat definieert hoe machines failover uitvoeren en hoe ze worden gestart en hersteld na een failover. 
 
-Herstel grote apps kunnen complex zijn. Herstelplannen helpen bij het opleggen van orde, zodat herstel consistent nauwkeurig, herhaalbaar en geautomatiseerd is. U taken binnen een herstelplan automatiseren met scripts en Azure Automation-runbooks. Typische voorbeelden zijn het configureren van instellingen op een Azure VM na failover of het opnieuw configureren van een app die op de VM wordt uitgevoerd.
+Herstel van grote apps kan ingewikkeld zijn. Herstel plannen zorgen ervoor dat herstel consistent, herhaalbaar en geautomatiseerd is. U kunt taken in een herstel plan automatiseren met behulp van scripts en Azure Automation runbooks. Voor beelden hiervan zijn het configureren van instellingen op een virtuele Azure-machine na een failover, of het opnieuw configureren van een app die wordt uitgevoerd op de VM.
 
-- [Meer informatie](recovery-plan-overview.md) over herstelplannen.
-- [Meer informatie](../automation/automation-runbook-types.md) over Azure Automation-runbooks.
+- [Meer informatie](recovery-plan-overview.md) over herstel plannen.
+- [Meer informatie](../automation/automation-runbook-types.md) over Azure Automation runbooks.
 
 
 
-## <a name="runbooks-in-recovery-plans"></a>Boeken uitvoeren in herstelplannen
+## <a name="runbooks-in-recovery-plans"></a>Runbooks in herstel plannen
 
-U voegt een Azure Automation-account en runbooks toe aan een herstelplan. Het runbook wordt aangeroepen wanneer het herstelplan wordt uitgevoerd.
+U voegt een Azure Automation-account en runbooks toe aan een herstel plan. Het runbook wordt aangeroepen wanneer het herstel plan wordt uitgevoerd.
 
-- Het automatiseringsaccount bevindt zich in elke Azure-regio en moet zich in hetzelfde abonnement bevinden als de kluis Siteherstel. 
-- Een runbook kan worden uitgevoerd in een herstelplan tijdens failover van een primaire locatie naar secundaire of tijdens failback van de secundaire locatie naar de primaire.
-- Runbooks in een herstelplan worden serieel uitgevoerd, de ene na de andere, in de ingestelde volgorde.
-- Als runbooks in een herstelplan VM's configureren om in verschillende groepen te starten, wordt het herstelplan alleen voortgezet wanneer Azure alle VM's als uitgevoerd rapporteert.
-- Herstelplannen blijven worden uitgevoerd, zelfs als een script mislukt.
+- Het Automation-account kan zich in een Azure-regio bevinden en moet zich in hetzelfde abonnement bevinden als de Site Recovery kluis. 
+- Een runbook kan worden uitgevoerd in een herstel plan tijdens een failover van een primaire locatie naar een secundair of tijdens het failback van de secundaire locatie naar het primaire.
+- Runbooks in een herstel plan worden serieel op één na elkaar uitgevoerd in de set-volg orde.
+- Als runbooks in een herstel plan Vm's configureren om in verschillende groepen te starten, wordt het herstel plan alleen voortgezet wanneer Azure alle Vm's rapporteert als actief.
+- Herstel plannen blijven actief, zelfs als een script mislukt.
 
-### <a name="recovery-plan-context"></a>Context van herstelplan
+### <a name="recovery-plan-context"></a>Context van herstel plan
 
-Wanneer een script wordt uitgevoerd, injecteert het een herstelplancontext in het runbook. De context bevat de variabelen die in de tabel zijn samengevat.
+Wanneer een script wordt uitgevoerd, wordt een context voor het herstel plan ingevoegd in het runbook. De context bevat de variabelen die in de tabel worden samenvatten.
 
 | **Naam van de variabele** | **Beschrijving** |
 | --- | --- |
-| RecoveryPlanName |Naam van het herstelplan. Wordt gebruikt in acties op basis van de naam. |
-| FailoverType |Hiermee geeft u op of het een test- of productiefailover is. 
-| FailoverRichting | Hiermee geeft u op of herstel zich op een primaire of secundaire locatie bevindt. |
-| Groeps-ID |Hiermee wordt het groepsnummer in het herstelplan aangegeven wanneer het plan wordt uitgevoerd. |
-| VmMap |Een array van alle VM's in de groep. |
-| VMMap-toets |Een unieke sleutel (GUID) voor elke VM. |
-| SubscriptionId |De Azure-abonnements-ID waarin de VM is gemaakt. |
-| ResourceGroupName | Naam van de resourcegroep waarin de VM zich bevindt.
-| CloudServiceName |De azure-naam van de cloudservice waaronder de VM is gemaakt. |
-| RoleName |De naam van de Azure VM. |
-| RecoveryPointId|De tijdstempel voor het VM-herstel. |
+| RecoveryPlanName |Naam van het herstel plan. Wordt gebruikt in acties op basis van de naam. |
+| FailoverType |Hiermee geeft u op of het een test-of productie-failover is. 
+| FailoverDirection | Hiermee geeft u op of herstel op een primaire of secundaire locatie is. |
+| Groep |Hiermee wordt het groeps nummer in het herstel plan geïdentificeerd wanneer het plan wordt uitgevoerd. |
+| VmMap |Een matrix van alle virtuele machines in de groep. |
+| VMMap-sleutel |Een unieke sleutel (GUID) voor elke virtuele machine. |
+| SubscriptionId |De ID van het Azure-abonnement waarin de virtuele machine is gemaakt. |
+| ResourceGroupName | De naam van de resource groep waarin de virtuele machine zich bevindt.
+| CloudServiceName |De naam van de Azure-Cloud service waaronder de virtuele machine is gemaakt. |
+| RoleName |De naam van de Azure-VM. |
+| RecoveryPointId|De tijds tempel voor het herstel van de virtuele machine. |
 
-In het volgende voorbeeld wordt een contextvariabele weergegeven:
+In het volgende voor beeld ziet u een context variabele:
 
 ```
 {"RecoveryPlanName":"hrweb-recovery",
@@ -74,7 +74,7 @@ In het volgende voorbeeld wordt een contextvariabele weergegeven:
 }
 ```
 
-Als u alle VM's in VMMap in een lus wilt openen, u de volgende code gebruiken:
+Als u in een lus toegang wilt krijgen tot alle Vm's in VMMap, kunt u de volgende code gebruiken:
 
 ```
 $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
@@ -91,50 +91,50 @@ $vmMap = $RecoveryPlanContext.VmMap
 ```
 
 
-Aman Sharma's blog over bij [Harvesting Clouds](http://harvestingclouds.com) heeft een nuttig voorbeeld van een [herstelplan context script](http://harvestingclouds.com/post/script-sample-azure-automation-runbook-for-asr-recovery-plan/).
+De Aman-blog van Sharma in de [oogst van Clouds](http://harvestingclouds.com) is een nuttig voor beeld van een [context script van een herstel plan](http://harvestingclouds.com/post/script-sample-azure-automation-runbook-for-asr-recovery-plan/).
 
 
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-- Als azure automation nieuw is, u voorbeeldscripts [aanmelden](https://azure.microsoft.com/services/automation/) en [downloaden.](https://azure.microsoft.com/documentation/scripts/)
-- Controleer of het automatiseringsaccount de volgende modules heeft:
-    - AzureRM.profile
+- Als u nog geen ervaring hebt met Azure Automation, kunt u [zich registreren](https://azure.microsoft.com/services/automation/) en [voorbeeld scripts downloaden](https://azure.microsoft.com/documentation/scripts/).
+- Zorg ervoor dat het Automation-account de volgende modules bevat:
+    - AzureRM. profile
     - AzureRM.Resources
     - AzureRM.Automation
     - AzureRM.Network
     - AzureRM.Compute
 
-    Alle modules moeten compatibel zijn. De eenvoudigste manier is om altijd gebruik te maken van de nieuwste versies van alle modules.
+    Alle modules moeten compatibele versies hebben. De eenvoudigste manier is om altijd de nieuwste versies van alle modules te gebruiken.
 
 
 
-## <a name="customize-the-recovery-plan"></a>Het herstelplan aanpassen
+## <a name="customize-the-recovery-plan"></a>Het herstel plan aanpassen
 
-1. Selecteer **herstelplannen (siteherstel)** in de kluis
-2. Als u een herstelplan wilt maken, klikt u op **+Herstelplan**. [Meer informatie](site-recovery-create-recovery-plans.md). Als u al een herstelplan hebt, selecteert u deze om het te openen.
-3. Klik op de pagina herstelplan op **Aanpassen**.
+1. Selecteer in de kluis **herstel plannen (site Recovery)**
+2. Klik op **+ herstel plan**om een herstel plan te maken. [Meer informatie](site-recovery-create-recovery-plans.md). Als u al een herstel plan hebt, selecteert u om het te openen.
+3. Klik op de pagina herstel plan op **aanpassen**.
 
-    ![Klik op de knop Aanpassen](media/site-recovery-runbook-automation-new/custom-rp.png)
+    ![Klik op de knop aanpassen](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. Klik op de ellips (...) naast **Groep 1: Actie** > **Post toevoegen starten**.
-3. Controleer in **Actie Invoegen**of **Script** is geselecteerd en geef een naam op voor het script (**Hello World**).
-4. Geef een automatiseringsaccount op en selecteer een runbook. Als u het script wilt opslaan, klikt u op **OK**. Het script wordt toegevoegd aan **groep 1: Post-stappen**.
+2. Klik op de weglatings tekens (...) naast **groep 1:** > de**actie post toevoegen**starten.
+3. Controleer in **actie invoegen**of **script** is geselecteerd en geef een naam op voor het script (**Hallo wereld**).
+4. Geef een Automation-account op en selecteer een runbook. Klik op **OK**om het script op te slaan. Het script wordt toegevoegd aan **groep 1: post-stappen**.
 
 
 ## <a name="reuse-a-runbook-script"></a>Een runbook-script opnieuw gebruiken
 
-U één runbookscript gebruiken in meerdere herstelplannen met behulp van externe variabelen. 
+U kunt één runbook-script in meerdere herstel plannen gebruiken met behulp van externe variabelen. 
 
-- U gebruikt [Azure Automation-variabelen](../automation/automation-variables.md) om parameters op te slaan voor het uitvoeren van een herstelplan.
-- Door de naam van het herstelplan toe te voegen als voorvoegsel aan de variabele, u afzonderlijke variabelen voor elk herstelplan maken. Gebruik vervolgens de variabelen als parameters.
-- U een parameter wijzigen zonder het script te wijzigen, maar toch de manier waarop het script werkt wijzigen.
+- U gebruikt [Azure Automation variabelen](../automation/automation-variables.md) om para meters op te slaan voor het uitvoeren van een herstel plan.
+- Door de naam van het herstel plan als een voor voegsel aan de variabele toe te voegen, kunt u afzonderlijke variabelen voor elk herstel plan maken. Gebruik vervolgens de variabelen als para meters.
+- U kunt een para meter wijzigen zonder het script te wijzigen, maar toch de manier wijzigen waarop het script werkt.
 
-### <a name="use-a-simple-string-variable-in-a-runbook-script"></a>Een eenvoudige tekenreeksvariabele gebruiken in een runbook-script
+### <a name="use-a-simple-string-variable-in-a-runbook-script"></a>Een eenvoudige teken reeks variabele gebruiken in een runbook-script
 
-In dit voorbeeld neemt een script de invoer van een Network Security Group (NSG) en past het toe op de VM's in een herstelplan. 
+In dit voor beeld neemt een script de invoer van een netwerk beveiligings groep (NSG) en past deze toe op de virtuele machines in een herstel plan. 
 
-1. Gebruik deze context van het herstelplan zodat het script kan detecteren welk herstelplan wordt uitgevoerd:
+1. Als het script kan detecteren welk herstel plan wordt uitgevoerd, gebruikt u de context van het herstel plan:
 
     ```
     workflow AddPublicIPAndNSG {
@@ -146,17 +146,17 @@ In dit voorbeeld neemt een script de invoer van een Network Security Group (NSG)
         $RPName = $RecoveryPlanContext.RecoveryPlanName
     ```
 
-2. Let op de NSG-naam en resourcegroep. U gebruikt deze variabelen als invoer voor scripts voor herstelplannen. 
-1. In de activa van de Automatiseringsrekening. een variabele maken om de NSG-naam op te slaan. Voeg een voorvoegsel toe aan de variabele naam met de naam van het herstelplan.
+2. Noteer de naam van de NSG en de resource groep. U gebruikt deze variabelen als invoer voor scripts voor herstel plannen. 
+1. In de assets van het Automation-account. Maak een variabele om de NSG-naam op te slaan. Voeg een voor voegsel toe aan de naam van de variabele met de naam van het herstel plan.
 
-    ![Een NSG-naamvariabele maken](media/site-recovery-runbook-automation-new/var1.png)
+    ![Een variabele met de naam NSG maken](media/site-recovery-runbook-automation-new/var1.png)
 
-2. Maak een variabele om de naam van de resourcegroep op te slaan voor de NSG-bron. Voeg een voorvoegsel toe aan de variabele naam met de naam van het herstelplan.
+2. Maak een variabele om de naam van de resource groep op te slaan voor de NSG-resource. Voeg een voor voegsel toe aan de naam van de variabele met de naam van het herstel plan.
 
-    ![Een nsg-brongroepnaam maken](media/site-recovery-runbook-automation-new/var2.png)
+    ![Een naam voor de NSG-resource groep maken](media/site-recovery-runbook-automation-new/var2.png)
 
 
-3.  Gebruik deze referentiecode in het script om de variabele waarden op te halen:
+3.  Gebruik in het script deze referentie code om de variabele waarden op te halen:
 
     ```
     $NSGValue = $RecoveryPlanContext.RecoveryPlanName + "-NSG"
@@ -166,7 +166,7 @@ In dit voorbeeld neemt een script de invoer van een Network Security Group (NSG)
     $RGnameVar = Get-AutomationVariable -Name $NSGRGValue
     ```
 
-4.  Gebruik de variabelen in het runbook om de NSG toe te passen op de netwerkinterface van de mislukte VM:
+4.  Gebruik de variabelen in het runbook om de NSG toe te passen op de netwerk interface van de failover-VM:
 
     ```
     InlineScript {
@@ -182,25 +182,25 @@ In dit voorbeeld neemt een script de invoer van een Network Security Group (NSG)
     ```
 
 
-Maak voor elk herstelplan onafhankelijke variabelen, zodat u het script opnieuw gebruiken. Voeg een voorvoegsel toe met de naam van het herstelplan. 
+Maak voor elk herstel plan onafhankelijke variabelen, zodat u het script opnieuw kunt gebruiken. Voeg een voor voegsel toe met behulp van de naam van het herstel plan. 
 
-Voor een volledig end-to-end script voor dit scenario, bekijk [dit script](https://gallery.technet.microsoft.com/Add-Public-IP-and-NSG-to-a6bb8fee).
+Bekijk [Dit script](https://gallery.technet.microsoft.com/Add-Public-IP-and-NSG-to-a6bb8fee)voor een volledig, end-to-end script voor dit scenario.
 
 
 ### <a name="use-a-complex-variable-to-store-more-information"></a>Een complexe variabele gebruiken om meer informatie op te slaan
 
-In sommige scenario's u mogelijk geen afzonderlijke variabelen maken voor elk herstelplan. Overweeg een scenario waarin u één script wilt toewijzen aan een openbaar IP-adres op specifieke VM's. In een ander scenario wilt u misschien verschillende NSG's toepassen op verschillende VM's (niet op alle VM's). Opmerking:
+In sommige scenario's kunt u mogelijk geen afzonderlijke variabelen maken voor elk herstel plan. Overweeg een scenario waarin u met één script een openbaar IP-adres aan specifieke Vm's wilt toewijzen. In een ander scenario wilt u mogelijk verschillende Nsg's Toep assen op verschillende Vm's (niet op alle virtuele machines). Opmerking:
 
-- U een script maken dat herbruikbaar is voor elk herstelplan.
-- Elk herstelplan kan een variabel aantal VM's hebben.
-- Een SharePoint-herstel heeft bijvoorbeeld twee front-ends. Een lob-toepassing (basic line-of-business) heeft slechts één front-end.
-- In dit scenario u geen afzonderlijke variabelen maken voor elk herstelplan.
+- U kunt een script maken dat voor elk herstel plan opnieuw kan worden gebruikt.
+- Elk herstel plan kan een variabel aantal Vm's hebben.
+- Een share point-herstel heeft bijvoorbeeld twee front-ends. Een Basic Line-of-Business-toepassing (LOB) heeft slechts één front-end.
+- In dit scenario kunt u geen afzonderlijke variabelen maken voor elk herstel plan.
 
-In het volgende voorbeeld maken we een [complexe variabele](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureautomationvariable) in het Azure Automation-account.
+In het volgende voor beeld maken we een [complexe variabele](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureautomationvariable) in het Azure Automation-account.
 
-Dit doen we door meerdere waarden op te geven met Azure PowerShell.
+We doen dit door meerdere waarden op te geven met behulp van Azure PowerShell.
 
-1. Meld u in PowerShell aan bij uw Azure-abonnement:
+1. Meld u in Power shell aan bij uw Azure-abonnement:
 
     ```
     Connect-AzureRmAccount
@@ -208,24 +208,24 @@ Dit doen we door meerdere waarden op te geven met Azure PowerShell.
     $sub | Select-AzureRmSubscription
     ```
 
-2. Als u de parameters wilt opslaan, maakt u de complexe variabele met de naam van het herstelplan:
+2. Als u de para meters wilt opslaan, maakt u de complexe variabele met de naam van het herstel plan:
 
     ```
     $VMDetails = @{"VMGUID"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"};"VMGUID2"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"}}
         New-AzureRmAutomationVariable -ResourceGroupName <RG of Automation Account> -AutomationAccountName <AA Name> -Name <RecoveryPlanName> -Value $VMDetails -Encrypted $false
     ```
 
-3. In deze complexe variabele is **VMDetails** de VM-id voor de beveiligde vm. Als u de VM-id wilt krijgen, u in de Azure-portal de VM-eigenschappen weergeven. De volgende schermafbeelding toont een variabele die de details van twee VM's opslaat:
+3. In deze complexe variabele is **VMDetails** de VM-id voor de beveiligde virtuele machine. Als u de VM-ID wilt ophalen, bekijkt u in het Azure Portal de eigenschappen van de virtuele machine. De volgende scherm afbeelding toont een variabele waarin de details van twee Vm's worden opgeslagen:
 
-    ![De VM-id als GUID gebruiken](media/site-recovery-runbook-automation-new/vmguid.png)
+    ![De VM-ID als GUID gebruiken](media/site-recovery-runbook-automation-new/vmguid.png)
 
-4. Gebruik deze variabele in je runbook. Als de aangegeven VM GUID wordt gevonden in de context van het herstelplan, past u de NSG toe op de VM:
+4. Gebruik deze variabele in uw runbook. Als de aangegeven VM-GUID wordt gevonden in de context van het herstel plan, past u de NSG op de virtuele machine toe:
 
     ```
     $VMDetailsObj = (Get-AutomationVariable -Name $RecoveryPlanContext.RecoveryPlanName).ToObject([hashtable])
     ```
 
-4. Loop in uw runbook door de VM's van de context van het herstelplan. Controleer of de vm in **$VMDetailsObj**bestaat. Als deze bestaat, krijgt u toegang tot de eigenschappen van de variabele om de NSG toe te passen:
+4. Door loop de Vm's van de context van het herstel plan in uw runbook. Controleer of de virtuele machine bestaat in **$VMDetailsObj**. Als deze bestaat, opent u de eigenschappen van de variabele om de NSG toe te passen:
 
     ```
         $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
@@ -245,15 +245,15 @@ Dit doen we door meerdere waarden op te geven met Azure PowerShell.
         }
     ```
 
-U hetzelfde script gebruiken voor verschillende herstelplannen. Voer verschillende parameters in door de waarde die overeenkomt met een herstelplan op te slaan in verschillende variabelen.
+U kunt hetzelfde script gebruiken voor verschillende herstel plannen. Voer verschillende para meters in door de waarde op te slaan die overeenkomt met een herstel plan in verschillende variabelen.
 
 ## <a name="sample-scripts"></a>Voorbeeldscripts
 
-Als u voorbeeldscripts wilt implementeren voor uw automatiseringsaccount, klikt u op de knop **Implementeren naar Azure.**
+Als u voorbeeld scripts wilt implementeren in uw Automation-account, klikt u op de knop **implementeren in azure** .
 
-[![Implementeren naar Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![Implementeren in Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
-Deze video geeft een ander voorbeeld. Het laat zien hoe je een WordPress-toepassing met twee lagen herstellen naar Azure:
+Deze video bevat een ander voor beeld. In dit voor beeld ziet u hoe u een WordPress-toepassing met twee lagen naar Azure herstelt:
 
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
@@ -261,8 +261,8 @@ Deze video geeft een ander voorbeeld. Het laat zien hoe je een WordPress-toepass
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over een [Azure Automation Run As-account](../automation/automation-create-runas-account.md)
-- Voorbeeldscripts [voor Azure Automation controleren](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=User&f%5B0%5D.Value=SC%20Automation%20Product%20Team&f%5B0%5D.Text=SC%20Automation%20Product%20Team).
+- Meer informatie over een [Azure Automation uitvoeren als-account](../automation/automation-create-runas-account.md)
+- Bekijk [Azure Automation voorbeeld scripts](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=User&f%5B0%5D.Value=SC%20Automation%20Product%20Team&f%5B0%5D.Text=SC%20Automation%20Product%20Team).
 - [Meer informatie](site-recovery-failover.md) over het uitvoeren van failovers.
 
 

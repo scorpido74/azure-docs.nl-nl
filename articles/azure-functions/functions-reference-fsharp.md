@@ -1,35 +1,35 @@
 ---
-title: Naslaginformatie over Azure Functions F#-ontwikkelaars
-description: Meer informatie over het ontwikkelen van Azure-functies met f#-script.
+title: 'Azure Functions F # referentie voor ontwikkel aars'
+description: 'Meer informatie over het ontwikkelen van Azure Functions met behulp van F # script.'
 author: sylvanc
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79276762"
 ---
-# <a name="azure-functions-f-developer-reference"></a>Naslaginformatie over Azure Functions F# Developer
+# <a name="azure-functions-f-developer-reference"></a>Azure Functions F # referentie voor ontwikkel aars
 
-F# voor Azure Functions is een oplossing voor het eenvoudig uitvoeren van kleine stukjes code of 'functies' in de cloud. Gegevens stromen via functieargumenten in uw F#-functie binnen. Argumentnamen zijn `function.json`opgegeven in , en er zijn vooraf gedefinieerde namen voor toegang tot zaken als de functielogger en annuleringstokens. 
+F # voor Azure Functions is een oplossing voor het eenvoudig uitvoeren van kleine stukjes code of ' functions ' in de Cloud. Gegevens stromen naar uw F #-functie via functie argumenten. Argument namen worden opgegeven in `function.json`en er zijn vooraf gedefinieerde namen voor het verkrijgen van toegang tot zaken als de functie Logboeken en annulerings tokens. 
 
 >[!IMPORTANT]
->F# script (.fsx) wordt alleen ondersteund door [versie 1.x](functions-versions.md#creating-1x-apps) van de runtime van Azure Functions. Als u F# wilt gebruiken met versie 2.x en latere versies van de runtime, moet u een vooraf gecompileerd F# klassebibliotheekproject (.fs) gebruiken. U maakt, beheert en publiceert een F#-klassebibliotheekproject met Visual Studio zoals u een [c#-klassebibliotheekproject](functions-dotnet-class-library.md)zou doen. Zie overzicht van Azure [Functions runtime-versies](functions-versions.md)voor meer informatie over versies van functies.
+>F #-script (. FSX) wordt alleen ondersteund door [versie 1. x](functions-versions.md#creating-1x-apps) van de Azure functions runtime. Als u F # met versie 2. x en latere versies van de runtime wilt gebruiken, moet u een vooraf gecompileerde F # Class Library-project (. FS) gebruiken. U maakt, beheert en publiceert een F # Class Library-project met behulp van Visual Studio, net zoals u een [C# Class Library-project](functions-dotnet-class-library.md)zou doen. Zie [Azure functions runtime versies Overview](functions-versions.md)(Engelstalig) voor meer informatie over functies.
 
-In dit artikel wordt ervan uitgegaan dat u de verwijzing naar de [ontwikkelaar van Azure-functies](functions-reference.md)al hebt gelezen.
+In dit artikel wordt ervan uitgegaan dat u de [Azure functions Naslag informatie voor ontwikkel aars](functions-reference.md)al hebt gelezen.
 
-## <a name="how-fsx-works"></a>Hoe .fsx werkt
-Een `.fsx` bestand is een F#-script. Het kan worden gezien als een F# project dat is opgenomen in een enkel bestand. Het bestand bevat zowel de code voor uw programma (in dit geval uw Azure-functie) als richtlijnen voor het beheren van afhankelijkheden.
+## <a name="how-fsx-works"></a>Hoe. FSX werkt
+Een `.fsx` bestand is een F #-script. Het kan worden beschouwd als een F #-project dat zich in één bestand bevindt. Het bestand bevat de code voor uw programma (in dit geval uw Azure-functie) en de instructies voor het beheren van afhankelijkheden.
 
-Wanneer u `.fsx` een Azure-functie voor een Azure-functie gebruikt, worden vaak vereiste verzamelingen automatisch voor u opgenomen, zodat u zich concentreren op de functie in plaats van op de code voor boilerplate.
+Wanneer u een `.fsx` functie voor Azure gebruikt, worden meestal vereiste assembly's automatisch voor u opgenomen, zodat u zich kunt concentreren op de functie in plaats van ' standaard code '.
 
 ## <a name="folder-structure"></a>Mapstructuur
 
-De mapstructuur voor een F#-scriptproject ziet er als volgt uit:
+De mapstructuur voor een F #-script project ziet er als volgt uit:
 
 ```
 FunctionsProject
@@ -46,12 +46,12 @@ FunctionsProject
  | - bin
 ```
 
-Er is een gedeeld [host.json-bestand](functions-host-json.md) dat kan worden gebruikt om de functie-app te configureren. Elke functie heeft zijn eigen codebestand (.fsx) en bindend configuratiebestand (function.json).
+Er is een gedeeld [host. json](functions-host-json.md) -bestand dat kan worden gebruikt voor het configureren van de functie-app. Elke functie heeft een eigen code bestand (. FSX) en een bindings configuratie bestand (function. json).
 
-De bindende extensies die nodig zijn in [versie 2.x en latere versies](functions-versions.md) van de runtime functies worden gedefinieerd in het `extensions.csproj` bestand, met de werkelijke bibliotheekbestanden in de `bin` map. Wanneer u lokaal ontwikkelt, moet u [bindende extensies registreren.](./functions-bindings-register.md#extension-bundles) Bij het ontwikkelen van functies in de Azure-portal wordt deze registratie voor u uitgevoerd.
+De bindings uitbreidingen die zijn vereist in [versie 2. x en latere versies](functions-versions.md) van de functions runtime `extensions.csproj` worden gedefinieerd in het bestand, met de daad `bin` werkelijke bibliotheek bestanden in de map. Wanneer u lokaal ontwikkelt, moet u [bindings uitbreidingen registreren](./functions-bindings-register.md#extension-bundles). Bij het ontwikkelen van functies in de Azure Portal, wordt deze registratie voor u uitgevoerd.
 
-## <a name="binding-to-arguments"></a>Binding aan argumenten
-Elke binding ondersteunt een aantal reeks argumenten, zoals beschreven in de [verwijzing naar azure-functies voor ontwikkelaars.](functions-triggers-bindings.md) Een van de argumentbindingen die een blobtrigger ondersteunt, is bijvoorbeeld een POCO, die kan worden uitgedrukt met behulp van een F#-record. Bijvoorbeeld:
+## <a name="binding-to-arguments"></a>Binding met argumenten
+Elke binding ondersteunt een aantal argumenten, zoals beschreven in de [Naslag informatie over Azure functions triggers en bindingen](functions-triggers-bindings.md). Een van de argument bindingen die een BLOB-trigger ondersteunt, is bijvoorbeeld een POCO die kan worden weer gegeven met een F #-record. Bijvoorbeeld:
 
 ```fsharp
 type Item = { Id: string }
@@ -61,11 +61,11 @@ let Run(blob: string, output: byref<Item>) =
     output <- item
 ```
 
-Uw F# Azure-functie heeft een of meer argumenten nodig. Wanneer we het hebben over argumenten voor Azure-functies, verwijzen we naar *invoerargumenten* en *uitvoerargumenten.* Een invoerargument is precies hoe het klinkt: invoer naar uw F# Azure-functie. Een *uitvoerargument* is veranderlijke `byref<>` gegevens of een argument dat dient als een manier om gegevens terug te geven *uit* uw functie.
+Uw F # Azure-functie voert een of meer argumenten in. Wanneer we over Azure Functions argumenten praten, verwijzen we naar *invoer* argumenten en *uitvoer* argumenten. Een invoer argument is precies wat het klinkt als: invoer naar uw F # Azure-functie. Een *uitvoer* argument is onveranderlijke gegevens `byref<>` of een argument dat fungeert als een manier om gegevens *uit* de functie terug te geven.
 
-In het bovenstaande `blob` voorbeeld is een `output` invoerargument en een uitvoerargument. Merk op `byref<>` dat `output` we gebruikt voor (er `[<Out>]` is geen noodzaak om de annotatie toe te voegen). Met `byref<>` een type kan uw functie wijzigen naar welk record of object het argument verwijst.
+In het bovenstaande voor beeld `blob` is een invoer argument en `output` is dit een uitvoer argument. U ziet dat we `byref<>` hebben `output` gebruikt voor (u hoeft de `[<Out>]` aantekening niet toe te voegen). Als u `byref<>` een type gebruikt, kan de functie de naam wijzigen van de record of het object waarnaar het argument verwijst.
 
-Wanneer een F#-record wordt gebruikt als invoertype, `[<CLIMutable>]` moet de recorddefinitie worden gemarkeerd met om het Azure-functieframework in staat te stellen de velden op de juiste manier in te stellen voordat de record wordt doorgespeeld op uw functie. Onder de `[<CLIMutable>]` motorkap, genereert setters voor de record eigenschappen. Bijvoorbeeld:
+Wanneer een F #-record wordt gebruikt als een invoer type, moet de definitie van de record `[<CLIMutable>]` worden gemarkeerd met om ervoor te zorgen dat het Azure functions Framework de velden op de juiste wijze kan instellen voordat de record aan uw functie wordt door gegeven. Onder de schermen worden `[<CLIMutable>]` setters voor de record eigenschappen gegenereerd. Bijvoorbeeld:
 
 ```fsharp
 [<CLIMutable>]
@@ -77,7 +77,7 @@ let Run(req: TestObject, log: ILogger) =
     { req with Greeting = sprintf "Hello, %s" req.SenderName }
 ```
 
-Een F#-klasse kan ook worden gebruikt voor zowel in- als uitargumenten. Voor een klasse hebben eigenschappen meestal getters en setters nodig. Bijvoorbeeld:
+Een F #-klasse kan ook worden gebruikt voor de argumenten in en uit. Voor een klasse heeft eigenschappen meestal getters en setters nodig. Bijvoorbeeld:
 
 ```fsharp
 type Item() =
@@ -90,7 +90,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>Logboekregistratie
-Als u de uitvoer wilt registreren bij uw [streaminglogs](../app-service/troubleshoot-diagnostic-logs.md) in F#, moet uw functie een argument van het type [ILogger nemen.](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) Voor consistentie raden we aan `log`dat dit argument de naam is . Bijvoorbeeld:
+Voor het vastleggen van de uitvoer naar uw [streaming-logboeken](../app-service/troubleshoot-diagnostic-logs.md) in F # moet uw functie een argument van het type [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Voor consistentie wordt aangeraden dit argument een `log`naam te krijgen. Bijvoorbeeld:
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: ILogger) =
@@ -98,8 +98,8 @@ let Run(blob: string, output: byref<string>, log: ILogger) =
     output <- input
 ```
 
-## <a name="async"></a>Async
-De `async` werkstroom kan worden gebruikt, maar `Task`het resultaat moet een . Dit kan bijvoorbeeld `Async.StartAsTask`met:
+## <a name="async"></a>Asynchroon
+De `async` werk stroom kan worden gebruikt, maar het resultaat moet een `Task`worden geretourneerd. Dit kan worden gedaan met `Async.StartAsTask`, bijvoorbeeld:
 
 ```fsharp
 let Run(req: HttpRequestMessage) =
@@ -108,8 +108,8 @@ let Run(req: HttpRequestMessage) =
     } |> Async.StartAsTask
 ```
 
-## <a name="cancellation-token"></a>Token voor annulering
-Als uw functie moet afsluiten sierlijk te behandelen, u het een [`CancellationToken`](/dotnet/api/system.threading.cancellationtoken) argument. Dit kan worden `async`gecombineerd met , bijvoorbeeld:
+## <a name="cancellation-token"></a>Annulerings token
+Als uw functie afsluiten zonder problemen moet afhandelen, kunt u een [`CancellationToken`](/dotnet/api/system.threading.cancellationtoken) argument opgeven. Dit kan worden gecombineerd met `async`, bijvoorbeeld:
 
 ```fsharp
 let Run(req: HttpRequestMessage, token: CancellationToken)
@@ -120,8 +120,8 @@ let Run(req: HttpRequestMessage, token: CancellationToken)
     Async.StartAsTask(f, token)
 ```
 
-## <a name="importing-namespaces"></a>Naamruimten importeren
-Naamruimten kunnen op de gebruikelijke manier worden geopend:
+## <a name="importing-namespaces"></a>Naam ruimten importeren
+Naam ruimten kunnen op de gebruikelijke manier worden geopend:
 
 ```fsharp
 open System.Net
@@ -132,7 +132,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
     ...
 ```
 
-De volgende naamruimten worden automatisch geopend:
+De volgende naam ruimten worden automatisch geopend:
 
 * `System`
 * `System.Collections.Generic`
@@ -143,8 +143,8 @@ De volgende naamruimten worden automatisch geopend:
 * `Microsoft.Azure.WebJobs`
 * `Microsoft.Azure.WebJobs.Host`.
 
-## <a name="referencing-external-assemblies"></a>Verwijzen naar externe samenstellingen
-Evenzo kunnen verwijzingen naar de kaderassemblage aan de `#r "AssemblyName"` richtlijn worden toegevoegd.
+## <a name="referencing-external-assemblies"></a>Verwijzen naar externe Assembly's
+Ook kunnen Framework-assembly-verwijzingen worden toegevoegd `#r "AssemblyName"` met de instructie.
 
 ```fsharp
 #r "System.Web.Http"
@@ -158,7 +158,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
     ...
 ```
 
-De volgende samenstellingen worden automatisch toegevoegd door de hostingomgeving azure functions:
+De volgende assembly's worden automatisch toegevoegd door de Azure Functions hosting omgeving:
 
 * `mscorlib`,
 * `System`
@@ -171,7 +171,7 @@ De volgende samenstellingen worden automatisch toegevoegd door de hostingomgevin
 * `System.Web.Http`
 * `System.Net.Http.Formatting`.
 
-Bovendien zijn de volgende samenstellingen speciaal voor de hand en kunnen zij `#r "AssemblyName"`worden aangeduid met een eenvoudige naam (bijv. ):
+Daarnaast zijn de volgende assembly's speciaal hoofdletter gevoelig en kunnen ze worden verwezen door simplenaam (bijvoorbeeld `#r "AssemblyName"`):
 
 * `Newtonsoft.Json`
 * `Microsoft.WindowsAzure.Storage`
@@ -179,10 +179,10 @@ Bovendien zijn de volgende samenstellingen speciaal voor de hand en kunnen zij `
 * `Microsoft.AspNet.WebHooks.Receivers`
 * `Microsoft.AspNEt.WebHooks.Common`.
 
-Als u naar een privévergadering moet verwijzen, kunt `bin` u het assemblagebestand uploaden naar een map ten opzichte van uw functie en ernaar verwijzen met behulp van de bestandsnaam (bijv.  `#r "MyAssembly.dll"`). Zie het volgende gedeelte over pakketbeheer voor informatie over het uploaden van bestanden naar uw functiemap.
+Als u wilt verwijzen naar een persoonlijke assembly, kunt u het assembly bestand uploaden `bin` naar een map die relatief is ten opzichte van de functie en ernaar verwijzen met behulp van de bestands naam (bijvoorbeeld  `#r "MyAssembly.dll"`). Zie de volgende sectie over pakket beheer voor informatie over het uploaden van bestanden naar uw functie map.
 
-## <a name="editor-prelude"></a>Redacteur Prelude
-Een editor die F# Compiler Services ondersteunt, is niet op de hoogte van de naamruimten en samenstellingen die Azure Functions automatisch bevat. Als zodanig kan het handig zijn om een prelude op te nemen die de editor helpt bij het vinden van de samenstellingen die u gebruikt, en om naamruimten expliciet te openen. Bijvoorbeeld:
+## <a name="editor-prelude"></a>Editor prelude
+Een editor die F # compiler Services ondersteunt, is niet op de hoogte van de naam ruimten en de assembly's die Azure Functions automatisch bevat. Daarom kan het nuttig zijn om een prelude op te stellen waarmee de editor de assembly's kan vinden die u gebruikt, en om expliciet naam ruimten te openen. Bijvoorbeeld:
 
 ```fsharp
 #if !COMPILED
@@ -198,12 +198,12 @@ let Run(blob: string, output: byref<string>, log: ILogger) =
     ...
 ```
 
-Wanneer Azure Functions uw code uitvoert, `COMPILED` verwerkt deze de bron met gedefinieerd, zodat de editorprelude wordt genegeerd.
+Wanneer Azure Functions uw code uitvoert, wordt de bron verwerkt met `COMPILED` gedefinieerd, zodat de editor prelude wordt genegeerd.
 
 <a name="package"></a>
 
 ## <a name="package-management"></a>Pakketbeheer
-Als u NuGet-pakketten wilt gebruiken `project.json` in een F#-functie, voegt u een bestand toe aan de map van de functie in het bestandssysteem van de functie-app. Hier is `project.json` een voorbeeldbestand dat een `Microsoft.ProjectOxford.Face` NuGet-pakketverwijzing naar versie 1.1.0 toevoegt:
+Als u NuGet-pakketten wilt gebruiken in een F #- `project.json` functie, voegt u een bestand toe aan de map van de functie in het bestands systeem van de functie-app. Hier volgt een voorbeeld `project.json` bestand waarmee een NuGet-pakket verwijzing wordt `Microsoft.ProjectOxford.Face` toegevoegd aan versie 1.1.0:
 
 ```json
 {
@@ -217,16 +217,16 @@ Als u NuGet-pakketten wilt gebruiken `project.json` in een F#-functie, voegt u e
 }
 ```
 
-Alleen het .NET Framework 4.6 wordt ondersteund, `project.json` dus `net46` zorg ervoor dat uw bestand aangeeft zoals hier wordt weergegeven.
+Alleen de .NET Framework 4,6 wordt ondersteund, dus zorg ervoor dat het `project.json` bestand is `net46` opgegeven, zoals hier wordt weer gegeven.
 
-Wanneer u `project.json` een bestand uploadt, krijgt de runtime de pakketten en voegt automatisch verwijzingen toe naar de pakketsamenstellingen. U hoeft geen richtlijnen `#r "AssemblyName"` toe te voegen. Voeg gewoon `open` de vereiste `.fsx` instructies toe aan uw bestand.
+Wanneer u een `project.json` bestand uploadt, worden de pakketten door de runtime opgehaald en worden automatisch verwijzingen naar de pakket-assembly's toegevoegd. U hoeft geen instructies toe `#r "AssemblyName"` te voegen. Voeg de vereiste `open` instructies toe aan het `.fsx` bestand.
 
-U automatisch referenties in uw editor prelude, om uw editor interactie met F # Compile Services te verbeteren.
+U kunt automatisch verwijzen naar assembly's in uw editor Prelude, om de interactie van uw editor met F # compile-services te verbeteren.
 
 ### <a name="how-to-add-a-projectjson-file-to-your-azure-function"></a>Een `project.json` bestand toevoegen aan uw Azure-functie
-1. Begin met ervoor te zorgen dat uw functie-app wordt uitgevoerd, wat u doen door uw functie te openen in de Azure-portal. Dit geeft ook toegang tot de streaming logs waar pakket installatie output zal worden weergegeven.
-2. Als u `project.json` een bestand wilt uploaden, gebruikt u een van de methoden die zijn beschreven in [het bijwerken van functie-app-bestanden.](functions-reference.md#fileupdate) Als u [Continue implementatie voor Azure-functies](functions-continuous-deployment.md) `project.json` gebruikt, u een bestand toevoegen aan uw faseringsbranch om ermee te experimenteren voordat u het toevoegt aan uw implementatiebranch.
-3. Nadat `project.json` het bestand is toegevoegd, ziet u uitvoer die vergelijkbaar is met het volgende voorbeeld in het streaminglogboek van uw functie:
+1. Begin door te controleren of uw functie-app actief is. u kunt dit doen door de functie te openen in de Azure Portal. Dit biedt ook toegang tot de streaming-logboeken waar de uitvoer van de pakket installatie wordt weer gegeven.
+2. Als u een `project.json` bestand wilt uploaden, gebruikt u een van de methoden die worden beschreven in de [functie-app-bestanden bijwerken](functions-reference.md#fileupdate). Als u [doorlopende implementatie voor Azure functions](functions-continuous-deployment.md)gebruikt, kunt u een `project.json` bestand aan uw staging-vertakking toevoegen om het eerst te experimenteren voordat u het toevoegt aan uw implementatie vertakking.
+3. Nadat het `project.json` bestand is toegevoegd, ziet u uitvoer die lijkt op het volgende voor beeld in het streaming-logboek van uw functie:
 
 ```
 2016-04-04T19:02:48.745 Restoring packages.
@@ -246,7 +246,7 @@ U automatisch referenties in uw editor prelude, om uw editor interactie met F # 
 ```
 
 ## <a name="environment-variables"></a>Omgevingsvariabelen
-`System.Environment.GetEnvironmentVariable`Gebruik bijvoorbeeld:
+Als u een omgevings variabele of een waarde voor een app `System.Environment.GetEnvironmentVariable`-instelling wilt ophalen, gebruikt u bijvoorbeeld:
 
 ```fsharp
 open System.Environment
@@ -257,8 +257,8 @@ let Run(timer: TimerInfo, log: ILogger) =
     log.LogInformation("Site = " + GetEnvironmentVariable("WEBSITE_SITE_NAME"))
 ```
 
-## <a name="reusing-fsx-code"></a>.fsx-code opnieuw gebruiken
-U code `.fsx` uit andere `#load` bestanden gebruiken met behulp van een richtlijn. Bijvoorbeeld:
+## <a name="reusing-fsx-code"></a>FSX code opnieuw gebruiken
+U kunt code uit andere `.fsx` bestanden gebruiken met behulp `#load` van een instructie. Bijvoorbeeld:
 
 `run.fsx`
 
@@ -276,21 +276,21 @@ let mylog(log: ILogger, text: string) =
     log.LogInformation(text);
 ```
 
-Paden die `#load` aan de richtlijn voldoen, `.fsx` zijn relatief ten opzichte van de locatie van uw bestand.
+Paden naar de `#load` instructie zijn relatief ten opzichte van de `.fsx` locatie van het bestand.
 
-* `#load "logger.fsx"`laadt een bestand in de functiemap.
-* `#load "package\logger.fsx"`hiermee wordt een `package` bestand in de map in de functiemap geladen.
-* `#load "..\shared\mylogger.fsx"`laadt een bestand `shared` in de map op hetzelfde niveau als `wwwroot`de functiemap, dat wil zeggen direct onder .
+* `#load "logger.fsx"`Hiermee wordt een bestand geladen dat zich in de map function bevindt.
+* `#load "package\logger.fsx"`Hiermee wordt een bestand geladen dat `package` zich in de map in de map function bevindt.
+* `#load "..\shared\mylogger.fsx"`Hiermee wordt een bestand geladen dat `shared` zich in de map op hetzelfde niveau bevindt als de functie map, `wwwroot`direct onder.
 
-De `#load` richtlijn werkt `.fsx` alleen met (F# script) bestanden, en niet met `.fs` bestanden.
+De `#load` instructie werkt alleen met `.fsx` (F # script) bestanden en niet met `.fs` bestanden.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende bronnen voor meer informatie:
 
-* [F# Gids](/dotnet/articles/fsharp/index)
-* [Aanbevolen procedures voor Azure-functies](functions-best-practices.md)
+* [F #-hand leiding](/dotnet/articles/fsharp/index)
+* [Aanbevolen procedures voor Azure Functions](functions-best-practices.md)
 * [Naslaginformatie over Azure Functions voor ontwikkelaars](functions-reference.md)
 * [Azure Functions triggers en bindingen](functions-triggers-bindings.md)
-* [Azure-functies testen](functions-test-a-function.md)
-* [Azure-functies schalen](functions-scale.md)
+* [Azure Functions testen](functions-test-a-function.md)
+* [Azure Functions schalen](functions-scale.md)
 

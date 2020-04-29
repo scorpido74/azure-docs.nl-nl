@@ -1,7 +1,7 @@
 ---
 title: Trainingsgegevens importeren
 titleSuffix: ML Studio (classic) - Azure
-description: Uw gegevens importeren in Azure Machine Learning Studio (klassiek) uit verschillende gegevensbronnen. Ontdek welke gegevenstypen en gegevensindelingen worden ondersteund.
+description: Informatie over het importeren van uw gegevens in Azure Machine Learning Studio (klassiek) van verschillende gegevens bronnen. Meer informatie over welke gegevens typen en gegevens indelingen worden ondersteund.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,60 +11,60 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
 ms.openlocfilehash: cee49124a7547399889e425008a8580b9b25945a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79217982"
 ---
-# <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Uw trainingsgegevens importeren in Azure Machine Learning Studio (klassiek) uit verschillende gegevensbronnen
+# <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Importeer uw trainings gegevens in Azure Machine Learning Studio (klassiek) van verschillende gegevens bronnen
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Om uw eigen gegevens in Machine Learning Studio (klassiek) te gebruiken om een predictive analytics-oplossing te ontwikkelen en te trainen, u gegevens gebruiken van: 
+Als u uw eigen gegevens in Machine Learning Studio (klassiek) wilt gebruiken voor het ontwikkelen en trainen van een predictive analytics oplossing, kunt u gegevens gebruiken van: 
 
-* **Lokaal bestand** - Lokale gegevens van tevoren laden vanaf uw harde schijf om een gegevenssetmodule in uw werkruimte te maken
-* **Online gegevensbronnen** : gebruik de module [Gegevens importeren][import-data] om toegang te krijgen tot gegevens uit een van de verschillende onlinebronnen terwijl uw experiment wordt uitgevoerd
-* **Machine Learning Studio (klassiek) experiment** - Gebruik gegevens die zijn opgeslagen als gegevensset in Machine Learning Studio (klassiek)
-* [**On-premises SQL Server-database**](use-data-from-an-on-premises-sql-server.md) - Gegevens uit een on-premises SQL Server-database gebruiken zonder gegevens handmatig te hoeven kopiëren
+* **Lokaal bestand** : lokale gegevens vooraf laden van de vaste schijf voor het maken van een gegevensset module in uw werk ruimte
+* **Online gegevens bronnen** : gebruik de module [gegevens importeren][import-data] om toegang te krijgen tot gegevens van een van de verschillende online bronnen terwijl uw experiment wordt uitgevoerd
+* **Machine learning Studio (klassiek) experiment** : gegevens gebruiken die zijn opgeslagen als een gegevensset in machine learning Studio (klassiek)
+* [**On-premises SQL Server Data Base**](use-data-from-an-on-premises-sql-server.md) : gegevens van een on-premises SQL Server Data Base gebruiken zonder gegevens hand matig te hoeven kopiëren
 
 > [!NOTE]
-> Er zijn een aantal voorbeeldgegevenssets beschikbaar in Machine Learning Studio (klassiek) die u gebruiken voor trainingsgegevens. Zie [De voorbeeldgegevenssets gebruiken in Azure Machine Learning Studio (klassiek)](use-sample-datasets.md)voor meer informatie hierover.
+> Er zijn een aantal voorbeeld gegevens sets beschikbaar in Machine Learning Studio (klassiek) die u voor trainings gegevens kunt gebruiken. Zie [de voorbeeld gegevens sets gebruiken in azure machine learning Studio (klassiek)](use-sample-datasets.md)voor meer informatie.
 
 ## <a name="prepare-data"></a>Gegevens voorbereiden
 
-Machine Learning Studio (klassiek) is ontworpen om te werken met rechthoekige of tabelgegevens, zoals tekstgegevens die zijn gescheiden of gestructureerde gegevens uit een database, hoewel in sommige omstandigheden niet-rechthoekige gegevens kunnen worden gebruikt.
+Machine Learning Studio (klassiek) is ontworpen om te werken met rechthoekige of tabellaire gegevens, zoals tekst gegevens die worden gescheiden of gestructureerd van gegevens uit een Data Base, maar in sommige gevallen kunnen niet-rechthoekige gegevens worden gebruikt.
 
-Het is het beste als uw gegevens relatief schoon zijn voordat u deze importeert in Studio (klassiek). U wilt bijvoorbeeld problemen oplossen, zoals niet-geciteerde tekenreeksen.
+Het is het beste als uw gegevens relatief schoon zijn voordat u deze in Studio (klassiek) importeert. Stel dat u problemen ondervindt zoals teken reeksen die geen aanhalings tekens zijn.
 
-Er zijn echter modules beschikbaar in Studio (klassiek) die enige manipulatie van gegevens binnen uw experiment mogelijk maken nadat u uw gegevens hebt geïmporteerd. Afhankelijk van de machine learning-algoritmen die u zult gebruiken, moet u mogelijk beslissen hoe u omgaat met structurele problemen met gegevens, zoals ontbrekende waarden en schaarse gegevens, en er zijn modules die daarbij kunnen helpen. Kijk in de sectie **Gegevenstransformatie** van het modulepalet naar modules die deze functies uitvoeren.
+Er zijn echter modules beschikbaar in Studio (klassiek) waarmee u gegevens in uw experiment kunt bewerken nadat u uw gegevens hebt geïmporteerd. Afhankelijk van de machine learning algoritmen die u gebruikt, moet u mogelijk bepalen hoe u gegevens structurele kwesties, zoals ontbrekende waarden en sparse gegevens, kunt afhandelen. er zijn modules die u kunnen helpen. Zoek in de sectie **gegevens transformatie** van het module palet naar modules die deze functies uitvoeren.
 
-Op elk moment in uw experiment u de gegevens die door een module worden geproduceerd bekijken of downloaden door op de uitvoerpoort te klikken. Afhankelijk van de module zijn er mogelijk verschillende downloadopties beschikbaar, of u de gegevens in uw webbrowser in Studio (klassiek) visualiseren.
+U kunt op elk gewenst moment in uw experiment de gegevens weer geven of downloaden die door een module worden geproduceerd door te klikken op de uitvoer poort. Afhankelijk van de module zijn er mogelijk verschillende download opties beschikbaar of kunt u de gegevens in de webbrowser in Studio (klassiek) visualiseren.
 
-## <a name="supported-data-formats-and-data-types"></a>Ondersteunde gegevensindelingen en gegevenstypen
+## <a name="supported-data-formats-and-data-types"></a>Ondersteunde gegevens indelingen en gegevens typen
 
-U een aantal gegevenstypen importeren in uw experiment, afhankelijk van het mechanisme dat u gebruikt om gegevens te importeren en waar deze vandaan komen:
+U kunt een aantal gegevens typen importeren in uw experiment, afhankelijk van het mechanisme dat u gebruikt voor het importeren van gegevens en de herkomst van:
 
-* Platte tekst (.txt)
-* Door komma's gescheiden waarden (CSV) met een koptekst (.csv) of zonder (.nh.csv)
-* Tab-gescheiden waarden (TSV) met een koptekst (.tsv) of zonder (.nh.tsv)
+* Tekst zonder opmaak (. txt)
+* Door komma's gescheiden waarden (CSV) met een header (. CSV) of zonder (. NH. CSV)
+* Door tabs gescheiden waarden (TSV) met een header (. tsv) of zonder (. NH. tsv)
 * Excel-bestand
 * Azure Table
-* De lijst van de bijenkorf
-* SQL-databasetabel
+* Hive-tabel
+* SQL database tabel
 * OData-waarden
-* SVMLight-gegevens (.svmlight) (zie de [SVMLight-definitie](http://svmlight.joachims.org/) voor opmaakgegevens)
-* Arff-gegevens (Attribute Relation File Format) (.arff) (zie de [ARFF-definitie](https://weka.wikispaces.com/ARFF) voor opmaakgegevens)
-* Zip-bestand (.zip)
-* R-object of werkruimtebestand (. RData)
+* SVMLight-gegevens (. SVMLight) (Zie de [SVMLight-definitie](http://svmlight.joachims.org/) voor indelings informatie)
+* Kenmerk relatie bestands indeling (ARFF) gegevens (. ARFF) (Zie de [ARFF-definitie](https://weka.wikispaces.com/ARFF) voor indelings informatie)
+* Zip-bestand (. zip)
+* R-object of werkruimte bestand (. RData
 
-Als u gegevens importeert in een indeling zoals ARFF die metagegevens bevat, gebruikt Studio (klassiek) deze metagegevens om de kop en het gegevenstype van elke kolom te definiëren.
+Als u gegevens importeert in een indeling zoals ARFF die meta gegevens bevat, gebruikt Studio (klassiek) deze meta gegevens om de kop en het gegevens type van elke kolom te definiëren.
 
-Als u gegevens importeert, zoals de TSV- of CSV-indeling die deze metagegevens niet bevat, leidt Studio (klassiek) het gegevenstype voor elke kolom af door de gegevens te samplen. Als de gegevens ook geen kolomkoppen bevatten, biedt Studio (klassiek) standaardnamen.
+Als u gegevens importeert zoals een TSV-of CSV-indeling zonder deze meta gegevens, wordt door Studio (klassiek) het gegevens type voor elke kolom afgenomen door de gegevens te bemonsteren. Als de gegevens ook geen kolom koppen bevatten, biedt studio (klassiek) standaard namen.
 
-U de koppen en gegevenstypen voor kolommen expliciet opgeven of wijzigen met de module [Metagegevens bewerken.][edit-metadata]
+U kunt de koppen en gegevens typen voor kolommen expliciet opgeven of wijzigen met behulp van de module [meta gegevens bewerken][edit-metadata] .
 
-De volgende gegevenstypen worden herkend door Studio (klassiek):
+De volgende gegevens typen worden herkend door Studio (klassiek):
 
 * Tekenreeks
 * Geheel getal
@@ -73,16 +73,16 @@ De volgende gegevenstypen worden herkend door Studio (klassiek):
 * DateTime
 * TimeSpan
 
-Studio gebruikt een intern gegevenstype genaamd ***gegevenstabel*** om gegevens tussen modules door te geven. U uw gegevens expliciet omzetten in gegevenstabelindeling met de module [Converteren naar gegevensset.][convert-to-dataset]
+Studio gebruikt een intern gegevens type met de naam ***Data Table*** voor het door geven van gegevens tussen modules. U kunt uw gegevens in de indeling van de gegevens tabel expliciet converteren met behulp van de module [converteren naar dataset][convert-to-dataset] .
 
-Elke module die andere indelingen dan de gegevenstabel accepteert, converteert de gegevens in stilte naar gegevenstabel voordat deze wordt doorgestoofd naar de volgende module.
+Alle modules die andere indelingen dan gegevens tabel accepteren, converteren de gegevens naar de gegevens tabel op de achtergrond voordat deze aan de volgende module worden door gegeven.
 
-Indien nodig u de indeling van gegevenstabelen weer omzetten in CSV-, TSV-, ARFF- of SVMLight-indeling met behulp van andere conversiemodules.
-Kijk in het gedeelte **Gegevensformaatconversies** van het modulepalet naar modules die deze functies uitvoeren.
+Indien nodig kunt u de indeling van de gegevens tabel weer omzetten in de CSV-, TSV-, ARFF-of SVMLight-indeling met behulp van andere conversie modules.
+Zoek in de sectie **gegevens indeling conversies** van het palet module voor modules die deze functies uitvoeren.
 
-## <a name="data-capacities"></a>Gegevenscapaciteiten
+## <a name="data-capacities"></a>Gegevens capaciteit
 
-Modules in Machine Learning Studio (klassieke) ondersteunen gegevenssets tot 10 GB dichte numerieke gegevens voor veelvoorkomende use cases. Als een module meer dan één invoer heeft, is de waarde 10 GB de totale invoergrootte. U grotere gegevenssets bemonsteren met query's uit Hive of Azure SQL Database, of u Learning by Counts preprocessing gebruiken voordat u de gegevens importeert.  
+Modules in Machine Learning Studio (klassiek) ondersteunen gegevens sets van Maxi maal 10 GB voor veelvoorkomende, gebruiks voorbeelden. Als een module meer dan één invoer heeft, is de waarde 10 GB de totale invoergrootte. U kunt een voor beeld van grotere gegevens sets maken met behulp van query's in Hive of Azure SQL Database, of u kunt de voor bereiding voor Learning by Count gebruiken voordat u de gegevens importeert.  
 
 U kunt de volgende typen gegevens in grotere gegevenssets opnemen tijdens het normaliseren van kenmerken, tot maximaal 10 GB:
 
@@ -99,89 +99,89 @@ De volgende modules zijn beperkt tot gegevenssets die kleiner zijn dan 10 GB:
 * Modules waarbij de grootte van de uitvoer groter is dan invoergegevens, zoals Join- of hash-functies
 * Kruisvalidatie, Tune Model Hyperparameters, ordinale regressie en One-vs-All-multiklasse, wanneer het aantal herhalingen groot is
 
-Upload de gegevens naar Azure Storage of Azure SQL Database naar Azure Storage of Azure SQL Database of gebruikt Azure HDInsight in plaats van rechtstreeks vanuit een lokaal bestand te uploaden.
+Voor gegevens sets die groter zijn dan een paar GB, moet u de gegevens uploaden naar Azure Storage of Azure SQL Database of gebruikmaken van Azure HDInsight, in plaats van rechtstreeks vanuit een lokaal bestand te uploaden.
 
-U vindt informatie over afbeeldingsgegevens in de referentie van de module [Afbeeldingen importeren.](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/import-images#bkmk_Notes)
+Meer informatie over afbeeldings gegevens vindt u in de module [afbeeldingen importeren](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/import-images#bkmk_Notes) .
 
 ## <a name="import-from-a-local-file"></a>Importeren uit een lokaal bestand
 
-U een gegevensbestand uploaden vanaf uw harde schijf om te gebruiken als trainingsgegevens in Studio (klassiek). Wanneer u een gegevensbestand importeert, maakt u een gegevenssetmodule die klaar is voor gebruik in experimenten in uw werkruimte.
+U kunt een gegevens bestand van uw harde schijf uploaden om te gebruiken als trainings gegevens in Studio (klassiek). Wanneer u een gegevens bestand importeert, maakt u een gegevensset-module die gereed is voor gebruik in experimenten in uw werk ruimte.
 
-Ga als volgt te werk om gegevens van een lokale harde schijf te importeren:
+Ga als volgt te werk om gegevens te importeren vanaf een lokale harde schijf:
 
-1. Klik **op +NIEUW** onder aan het venster Studio (klassiek).
-2. Selecteer **Gegevensset** en **UIT LOKAAL BESTAND**.
-3. Blader in het dialoogvenster **Een nieuwe gegevensset uploaden** naar het bestand dat u wilt uploaden.
-4. Voer een naam in, identificeer het gegevenstype en voer optioneel een beschrijving in. Een beschrijving wordt aanbevolen - hiermee u alle kenmerken van de gegevens vastleggen die u wilt onthouden wanneer u de gegevens in de toekomst gebruikt.
-5. Het selectievakje **Met dit is de nieuwe versie van een bestaande gegevensset** u een bestaande gegevensset bijwerken met nieuwe gegevens. Klik hiervoor op dit selectievakje en voer de naam van een bestaande gegevensset in.
+1. Klik op **+ Nieuw** onder aan het venster Studio (klassiek).
+2. Selecteer **gegevensset** en **van het lokale bestand**.
+3. Blader in het dialoog venster **een nieuwe gegevensset uploaden** naar het bestand dat u wilt uploaden.
+4. Voer een naam in, Identificeer het gegevens type en voer eventueel een beschrijving in. Een beschrijving wordt aanbevolen-Hiermee kunt u de kenmerken vastleggen van de gegevens die u wilt onthouden wanneer u de gegevens in de toekomst gebruikt.
+5. Met het selectie vakje **Dit is de nieuwe versie van een bestaande gegevensset,** waarmee u een bestaande gegevensset kunt bijwerken met nieuwe gegevens. Als u dit wilt doen, klikt u op dit selectie vakje en voert u de naam van een bestaande gegevensset in.
 
 ![Een nieuwe gegevensset uploaden](./media/import-data/upload-dataset-from-local-file.png)
 
-De uploadtijd is afhankelijk van de grootte van uw gegevens en de snelheid van uw verbinding met de service. Als u weet dat het bestand lang zal duren, u andere dingen doen in Studio (klassiek) terwijl u wacht. Als u de browser echter sluit voordat de gegevensupload is voltooid, mislukt het uploaden.
+De upload tijd is afhankelijk van de grootte van uw gegevens en de snelheid van de verbinding met de service. Als u weet dat het bestand lang duurt, kunt u andere dingen doen binnen Studio (klassiek) terwijl u wacht. Als de browser wordt gesloten voordat het uploaden van gegevens is voltooid, mislukt de upload echter.
 
-Zodra uw gegevens zijn geüpload, worden deze opgeslagen in een gegevenssetmodule en beschikbaar voor elk experiment in uw werkruimte.
+Zodra de gegevens zijn geüpload, wordt deze opgeslagen in een gegevensset-module en is deze beschikbaar voor elk experiment in uw werk ruimte.
 
-Wanneer u een experiment bewerkt, u de gegevenssets vinden die u hebt geüpload in de lijst **Mijn gegevenssets** onder de lijst **Opgeslagen gegevenssets** in het modulepalet. U de gegevensset naar het experimentcanvas slepen en neerzetten wanneer u de gegevensset wilt gebruiken voor verdere analyses en machine learning.
+Wanneer u een experiment bewerkt, kunt u de gegevens sets die u hebt geüpload, vinden in de lijst **mijn gegevens sets** onder de lijst **opgeslagen gegevens sets** in het module palet. U kunt de gegevensset slepen en neerzetten op het canvas als u de gegevensset voor verdere analyse en machine learning wilt gebruiken.
 
-## <a name="import-from-online-data-sources"></a>Importeren uit online gegevensbronnen
+## <a name="import-from-online-data-sources"></a>Importeren uit online gegevens bronnen
 
-Met de module [Gegevens importeren][import-data] kan uw experiment gegevens importeren uit verschillende online gegevensbronnen terwijl het experiment wordt uitgevoerd.
+Met de module [gegevens importeren][import-data] kan uw experiment gegevens importeren uit verschillende online gegevens bronnen terwijl het experiment wordt uitgevoerd.
 
 > [!NOTE]
-> In dit artikel vindt u algemene informatie over de module [Gegevens importeren.][import-data] Zie het referentieonderwerp module voor de module [Gegevens importeren][import-data] voor meer gedetailleerde informatie over de typen gegevens die u openen, indelingen, parameters en antwoorden op veelgestelde vragen.
+> Dit artikel bevat algemene informatie over de module [gegevens importeren][import-data] . Zie het onderwerp module verwijzing voor de module [gegevens importeren][import-data] voor meer informatie over de typen gegevens die u kunt openen, opmaken, para meters en antwoorden op veelgestelde vragen.
 
-Met de module [Gegevens importeren][import-data] hebt u toegang tot gegevens uit een van de verschillende online gegevensbronnen terwijl uw experiment wordt uitgevoerd:
+U kunt met behulp van de module [gegevens importeren][import-data] toegang krijgen tot gegevens van een van de verschillende online gegevens bronnen terwijl uw experiment wordt uitgevoerd:
 
 * Een web-URL met HTTP
-* Hadoop met HiveQL
+* Hadoop met behulp van HiveQL
 * Azure Blob Storage
 * Azure Table
-* Azure SQL-database of SQL Server op Azure VM
-* On-premises SQL Server-database
-* Een datafeedprovider, OData momenteel
+* Azure-SQL database of-SQL Server op Azure VM
+* On-premises SQL Server Data Base
+* Er is momenteel een gegevensfeeds provider, OData
 * Azure Cosmos DB
 
-Omdat deze trainingsgegevens worden geopend terwijl uw experiment wordt uitgevoerd, zijn deze alleen beschikbaar in dat experiment. Ter vergelijking: gegevens die zijn opgeslagen in een gegevenssetmodule zijn beschikbaar voor elk experiment in uw werkruimte.
+Omdat deze trainings gegevens worden geopend terwijl uw experiment actief is, is het alleen beschikbaar in dat experiment. In vergelijking worden gegevens die zijn opgeslagen in een gegevensset-module, beschikbaar voor elk experiment in uw werk ruimte.
 
-Als u toegang wilt krijgen tot online gegevensbronnen in uw Studio-experiment (klassiek) experiment, voegt u de module [Gegevens importeren][import-data] toe aan uw experiment. Selecteer vervolgens **Wizard Gegevens importeren starten** onder **Eigenschappen** voor stapsgewijze instructies voor begeleide instructies om de gegevensbron te selecteren en te configureren. U ook handmatig **Gegevensbron** selecteren onder **Eigenschappen** en de parameters opgeven die nodig zijn om toegang te krijgen tot de gegevens.
+Als u toegang wilt krijgen tot online gegevens bronnen in uw studio-experiment (klassiek), voegt u de module [gegevens importeren][import-data] toe aan uw experiment. Selecteer vervolgens **wizard Import gegevens starten** onder **Eigenschappen** voor stapsgewijze instructies om de gegevens bron te selecteren en configureren. U kunt ook hand matig **gegevens bron** selecteren onder **Eigenschappen** en de para meters opgeven die nodig zijn om toegang te krijgen tot de gegevens.
 
-De online gegevensbronnen die worden ondersteund, worden gespecificeerd in de onderstaande tabel. In deze tabel worden ook de bestandsindelingen samengevat die worden ondersteund en parameters die worden gebruikt om toegang te krijgen tot de gegevens.
+De online gegevens bronnen die worden ondersteund, worden in de onderstaande tabel gespecificeerd. In deze tabel vindt u ook een overzicht van de bestands indelingen die worden ondersteund en de para meters die worden gebruikt voor toegang tot de gegevens.
 
 > [!IMPORTANT]
-> Momenteel kunnen de modules [Gegevens importeren][import-data] en [gegevens exporteren][export-data] alleen gegevens lezen en schrijven vanuit Azure-opslag die is gemaakt met behulp van het klassieke implementatiemodel. Met andere woorden, het nieuwe Azure Blob Storage-accounttype dat een hot storage-toegangslaag of koele opslagtoegangslaag biedt, wordt nog niet ondersteund.
+> Op dit moment kunnen de modules [gegevens importeren][import-data] en [exporteren][export-data] gegevens alleen lezen en schrijven vanuit Azure Storage die is gemaakt met het klassieke implementatie model. Met andere woorden, het nieuwe Azure Blob Storage-account type dat een hot Storage-toegangs laag of een cool Storage-toegangs laag biedt, wordt nog niet ondersteund.
 >
-> Over het algemeen mogen azure-opslagaccounts die u hebt gemaakt voordat deze serviceoptie beschikbaar kwam, niet worden beïnvloed.
-> Als u een nieuw account wilt maken, selecteert u **Klassiek** voor het implementatiemodel of gebruikt u Resourcebeheer en selecteert **u Algemeen doel** in plaats van **Blob-opslag** voor **accountsoort**.
+> Over het algemeen zijn alle Azure Storage-accounts die u mogelijk hebt gemaakt voordat deze service optie beschikbaar werd, niet van invloed.
+> Als u een nieuw account wilt maken, selecteert u **klassiek** voor het implementatie model of gebruikt u Resource Manager en selecteert u **Algemeen** gebruik in plaats van **Blob Storage** voor het **soort account**.
 >
-> Zie [Azure Blob Storage: Hot and Cool Storage Tiers](../../storage/blobs/storage-blob-storage-tiers.md)voor meer informatie.
+> Zie [Azure Blob Storage: warme en cool Storage-lagen](../../storage/blobs/storage-blob-storage-tiers.md)voor meer informatie.
 
-### <a name="supported-online-data-sources"></a>Ondersteunde online gegevensbronnen
-De module Azure Machine Learning Studio (klassieke) **importgegevens** ondersteunt de volgende gegevensbronnen:
+### <a name="supported-online-data-sources"></a>Ondersteunde online gegevens bronnen
+De module **import data** van Azure machine learning Studio (Classic) ondersteunt de volgende gegevens bronnen:
 
 | Gegevensbron | Beschrijving | Parameters |
 | --- | --- | --- |
-| Web-URL via HTTP |Hiermee worden gegevens gelezen in door komma's gescheiden waarden (CSV), door tabbladen gescheiden waarden (TSV), arff (attribute-relation file format) en Support Vector Machines (SVM-light) op elke web-URL die HTTP gebruikt |<b>URL</b>: Hiermee geeft u de volledige naam van het bestand op, inclusief de url van de site en de bestandsnaam, met elke extensie. <br/><br/><b>Gegevensindeling</b>: hiermee geeft u een van de ondersteunde gegevensindelingen op: CSV, TSV, ARFF of SVM-light. Als de gegevens een koptekstrij hebben, wordt deze gebruikt om kolomnamen toe te wijzen. |
-| Hadoop/HDFS |Leest gegevens uit gedistribueerde opslag in Hadoop. U geeft de gewenste gegevens op met HiveQL, een SQL-achtige querytaal. HiveQL kan ook worden gebruikt om gegevens samen te voegen en gegevenste filteren uit te voeren voordat u de gegevens toevoegt aan Studio (klassiek). |<b>Hive-databasequery:</b>hiermee geeft u de hivequery op die wordt gebruikt om de gegevens te genereren.<br/><br/><b>HCatalog-server URI</b> : De naam van uw cluster opgegeven met de indeling * &lt;van uw clusternaam&gt;.azurehdinsight.net.*<br/><br/><b>Hadoop-gebruikersnaamnaam</b>: hiermee geeft u de naam van het Hadoop-gebruikersaccount op dat wordt gebruikt om het cluster in te richten.<br/><br/><b>Hadoop-gebruikersaccountwachtwoord</b> : geeft de referenties op die worden gebruikt bij het inrichten van het cluster. Zie [Hadoopclusters maken in HDInsight](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)voor meer informatie.<br/><br/><b>Locatie van uitvoergegevens</b>: geeft aan of de gegevens zijn opgeslagen in een Hadoop distributed file system (HDFS) of in Azure. <br/><ul>Als u uitvoergegevens opslaat in HDFS, geeft u de Uri van de HDFS-server op. (Zorg ervoor dat u de clusternaam HDInsight gebruikt zonder het HTTPS://-voorvoegsel). <br/><br/>Als u uw uitvoergegevens opslaat in Azure, moet u de naam van het Azure-opslagaccount, de opslagtoegangssleutel en de naam van de opslagcontainer opgeven.</ul> |
-| SQL-database |Hiermee worden gegevens gelezen die zijn opgeslagen in een Azure SQL-database of in een SQL Server-database die wordt uitgevoerd op een virtuele Azure-machine. |<b>Naam van de databaseserver:</b>hiermee geeft u de naam op van de server waarop de database wordt uitgevoerd.<br/><ul>Voer in het geval van Azure SQL Database de servernaam in die wordt gegenereerd. Meestal heeft het de vorm * &lt;generated_identifier&gt;.database.windows.net.* <br/><br/>In het geval van een SQL-server die wordt gehost op een Azure Virtual-machine, voert u *&lt;tcp: Virtual Machine DNS-naam&gt;in, 1433*</ul><br/><b>Databasenaam: </b>hiermee geeft u de naam van de database op de server op. <br/><br/><b>Servergebruikersnaamnaam:</b>hiermee geeft u een gebruikersnaam op voor een account met toegangsmachtigingen voor de database. <br/><br/><b>Servergebruikersaccountwachtwoord</b>: hiermee geeft u het wachtwoord voor het gebruikersaccount op.<br/><br/><b>Databasequery</b>:Voer een SQL-instructie in waarin de gegevens worden beschreven die u wilt lezen. |
-| On-premises SQL-database |Hiermee leest u gegevens die zijn opgeslagen in een on-premises SQL-database. |<b>Gegevensgateway:</b>hiermee geeft u de naam op van de Data Management Gateway die is geïnstalleerd op een computer waar deze toegang heeft tot uw SQL Server-database. Zie [Geavanceerde analyses uitvoeren met Azure Machine Learning Studio (klassiek) uitvoeren met behulp van gegevens van een on-premises SQL-server](use-data-from-an-on-premises-sql-server.md)voor informatie over het instellen van de gateway.<br/><br/><b>Naam van de databaseserver:</b>hiermee geeft u de naam op van de server waarop de database wordt uitgevoerd.<br/><br/><b>Databasenaam: </b>hiermee geeft u de naam van de database op de server op. <br/><br/><b>Servergebruikersnaamnaam:</b>hiermee geeft u een gebruikersnaam op voor een account met toegangsmachtigingen voor de database. <br/><br/><b>Gebruikersnaam en wachtwoord:</b>klik op <b>Waarden invoeren</b> om uw databasereferenties in te voeren. U Windows Integrated Authentication of SQL Server Authentication gebruiken, afhankelijk van hoe uw on-premises SQL Server is geconfigureerd.<br/><br/><b>Databasequery</b>:Voer een SQL-instructie in waarin de gegevens worden beschreven die u wilt lezen. |
-| Azure Table |Hiermee leest u gegevens uit de tabelservice in Azure Storage.<br/><br/>Als u zelden grote hoeveelheden gegevens leest, gebruikt u de Azure Table Service. Het biedt een flexibele, niet-relationele (NoSQL), enorm schaalbare, goedkope en zeer beschikbare opslagoplossing. |De opties in de **importgegevens** wijzigen afhankelijk van of u toegang hebt tot openbare informatie of een privé-opslagaccount waarvoor inloggegevens vereist zijn. Dit wordt bepaald door het <b>verificatietype</b> dat waarde kan hebben van "PublicOrSAS" of "Account", die elk zijn eigen set parameters hebben. <br/><br/><b>Openbare of Gedeelde Toegangshandtekening (SAS) URI:</b>De parameters zijn:<br/><br/><ul><b>TabelURI:</b>hiermee geeft u de URL Openbaar of SAS voor de tabel op.<br/><br/><b>Hiermee geeft u de rijen op die moeten worden scannen voor eigenschapsnamen:</b>de waarden zijn <i>TopN</i> om het opgegeven aantal rijen te scannen of <i>ScanAll</i> om alle rijen in de tabel te krijgen. <br/><br/>Als de gegevens homogeen en voorspelbaar zijn, wordt aanbevolen *TopN te* selecteren en een getal voor N in te voeren. Voor grote tabellen kan dit resulteren in snellere leestijden.<br/><br/>Als de gegevens zijn gestructureerd met sets eigenschappen die variëren op basis van de diepte en positie van de tabel, kiest u de optie *Scannen allen* om alle rijen te scannen. Dit garandeert de integriteit van uw resulterende eigenschap en metadata conversie.<br/><br/></ul><b>Account privéopslag:</b>De parameters zijn: <br/><br/><ul><b>Accountnaam:</b>hiermee geeft u de naam op van het account dat de te lezen tabel bevat.<br/><br/><b>Accountsleutel:</b>hiermee geeft u de opslagsleutel op die aan het account is gekoppeld.<br/><br/><b>Tabelnaam:</b> hiermee geeft u de naam op van de tabel die de te lezen gegevens bevat.<br/><br/><b>Rijen die moeten worden scannen op eigenschapnamen:</b>de waarden zijn <i>TopN</i> om het opgegeven aantal rijen te scannen of <i>ScanAll</i> om alle rijen in de tabel te krijgen.<br/><br/>Als de gegevens homogeen en voorspelbaar zijn, raden we u aan *TopN* te selecteren en een getal voor N in te voeren. Voor grote tabellen kan dit resulteren in snellere leestijden.<br/><br/>Als de gegevens zijn gestructureerd met sets eigenschappen die variëren op basis van de diepte en positie van de tabel, kiest u de optie *Scannen allen* om alle rijen te scannen. Dit garandeert de integriteit van uw resulterende eigenschap en metadata conversie.<br/><br/> |
-| Azure Blob Storage |Hiermee leest u gegevens die zijn opgeslagen in de Blob-service in Azure Storage, inclusief afbeeldingen, ongestructureerde tekst of binaire gegevens.<br/><br/>U de Blob-service gebruiken om gegevens openbaar te maken of om toepassingsgegevens privé op te slaan. U uw gegevens overal openen via HTTP- of HTTPS-verbindingen. |De opties in de module **Gegevens importeren** wijzigen afhankelijk van of u toegang hebt tot openbare informatie of een privé-opslagaccount waarvoor inloggegevens vereist zijn. Dit wordt bepaald door het <b>verificatietype</b> dat een waarde kan hebben van "PublicOrSAS" of van "Account".<br/><br/><b>Openbare of Gedeelde Toegangshandtekening (SAS) URI:</b>De parameters zijn:<br/><br/><ul><b>URI:</b>hiermee geeft u de URL Openbaar of SAS voor de opslagblob op.<br/><br/><b>Bestandsindeling:</b>hiermee geeft u de indeling van de gegevens in de Blob-service op. De ondersteunde indelingen zijn CSV, TSV en ARFF.<br/><br/></ul><b>Account privéopslag:</b>De parameters zijn: <br/><br/><ul><b>Accountnaam:</b>hiermee geeft u de naam op van het account dat de blob bevat die u wilt lezen.<br/><br/><b>Accountsleutel:</b>hiermee geeft u de opslagsleutel op die aan het account is gekoppeld.<br/><br/><b>Pad naar container, map of blob:</b> hiermee geeft u de naam op van de blob die de te lezen gegevens bevat.<br/><br/><b>Blob-bestandsindeling:</b>hiermee geeft u de indeling van de gegevens in de blobservice op. De ondersteunde gegevensindelingen zijn CSV, TSV, ARFF, CSV met een opgegeven codering en Excel. <br/><br/><ul>Als de indeling CSV of TSV is, moet u aangeven of het bestand een koptekstrij bevat.<br/><br/>U de optie Excel gebruiken om gegevens uit Excel-werkmappen te lezen. Geef in de optie <i>Excel-gegevensindeling</i> aan of de gegevens zich in een Excel-werkbladbereik bevinden of in een Excel-tabel. Geef in het <i>Excel-blad of de ingesloten tabeloptie </i>de naam op van het blad of de tabel waaruit u wilt lezen.</ul><br/> |
-| Leverancier van gegevensfeed |Hiermee leest u gegevens van een ondersteunde feedprovider. Momenteel wordt alleen de OData-indeling (Open Data Protocol) ondersteund. |<b>Gegevensinhoudstype</b>: Hiermee geeft u de OData-indeling op.<br/><br/><b>Bron-URL</b>: Hiermee geeft u de volledige URL voor de gegevensfeed op. <br/>De volgende URL wordt bijvoorbeeld gelezen uit de voorbeelddatabase van Northwind:https://services.odata.org/northwind/northwind.svc/ |
+| Web-URL via HTTP |Hiermee worden gegevens gelezen in CSV-indeling (door komma's gescheiden waarden), door tabs gescheiden waarden (TSV), kenmerk-relation File Format (ARFF) en support vector machines (SVM-licht), van een web-URL die gebruikmaakt van HTTP |<b>URL</b>: Hiermee geeft u de volledige naam van het bestand, met inbegrip van de site-URL en de bestands naam, op met een wille keurige extensie. <br/><br/><b>Gegevens indeling</b>: Hiermee geeft u een van de ondersteunde gegevens indelingen op: CSV, tsv, ARFF of SVM-Light. Als de gegevens een veldnamenrij hebben, wordt deze gebruikt om kolom namen toe te wijzen. |
+| Hadoop/HDFS |Hiermee worden gegevens uit de gedistribueerde opslag in Hadoop gelezen. U geeft de gewenste gegevens op met behulp van HiveQL, een SQL-achtige query taal. HiveQL kan ook worden gebruikt om gegevens samen te voegen en gegevens te filteren voordat u de gegevens toevoegt aan Studio (klassiek). |<b>Hive-database query</b>: Hiermee geeft u de Hive-query op die wordt gebruikt voor het genereren van de gegevens.<br/><br/><b>URI</b> van de HCatalog-server: Geef de naam van uw cluster op met de notatie * &lt;uw cluster naam&gt;. azurehdinsight.net.*<br/><br/><b>Hadoop-gebruikers accountnaam</b>: Hiermee geeft u de naam van het Hadoop-gebruikers account op dat is gebruikt om het cluster in te richten.<br/><br/><b>Hadoop-wacht woord voor gebruikers account</b> : Hiermee geeft u de referenties op die worden gebruikt bij het inrichten van het cluster. Zie [Hadoop-clusters maken in HDInsight](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)voor meer informatie.<br/><br/><b>Locatie van uitvoer gegevens</b>: Hiermee geeft u op of de gegevens worden opgeslagen in een Hadoop Distributed File System (HDFS) of in Azure. <br/><ul>Als u uitvoer gegevens opslaat in HDFS, geeft u de URI van de HDFS-server op. (Vergeet niet om de naam van het HDInsight-cluster te gebruiken zonder het HTTPS://-voor voegsel). <br/><br/>Als u de uitvoer gegevens in azure opslaat, moet u de naam van het Azure Storage-account, de toegangs sleutel voor de opslag en de opslag container naam opgeven.</ul> |
+| SQL-database |Hiermee worden gegevens gelezen die zijn opgeslagen in een Azure-SQL database of in een SQL Server-Data Base die wordt uitgevoerd op een virtuele Azure-machine. |<b>Database server naam</b>: Hiermee geeft u de naam op van de server waarop de data base wordt uitgevoerd.<br/><ul>In het geval van Azure SQL Database voert u de server naam in die wordt gegenereerd. Normaal gesp roken heeft het de notatie * &lt;generated_identifier&gt;. database.Windows.net.* <br/><br/>In het geval van een SQL-Server die op een virtuele Azure-machine wordt gehost, voert u *TCP:&lt;DNS-naam&gt;van de virtuele machine in, 1433*</ul><br/><b>Database naam </b>: Hiermee geeft u de naam op van de Data Base op de server. <br/><br/><b>Naam van Server gebruikers account</b>: Hiermee geeft u een gebruikers naam op voor een account met toegangs machtigingen voor de data base. <br/><br/><b>Wacht woord Server gebruikers account</b>: Hiermee geeft u het wacht woord voor het gebruikers account op.<br/><br/><b>Database query</b>: Voer een SQL-instructie in met een beschrijving van de gegevens die u wilt lezen. |
+| On-premises SQL database |Hiermee worden gegevens gelezen die zijn opgeslagen in een on-premises SQL database. |<b>Gegevens gateway</b>: Hiermee geeft u de naam op van de Data Management gateway die is geïnstalleerd op een computer waarop de SQL Server-Data Base kan worden geopend. Zie voor meer informatie over het instellen van de gateway [geavanceerde analyses uitvoeren met Azure machine learning Studio (klassiek) met behulp van gegevens van een on-premises SQL Server](use-data-from-an-on-premises-sql-server.md).<br/><br/><b>Database server naam</b>: Hiermee geeft u de naam op van de server waarop de data base wordt uitgevoerd.<br/><br/><b>Database naam </b>: Hiermee geeft u de naam op van de Data Base op de server. <br/><br/><b>Naam van Server gebruikers account</b>: Hiermee geeft u een gebruikers naam op voor een account met toegangs machtigingen voor de data base. <br/><br/><b>Gebruikers naam en wacht woord</b>: Klik op <b>waarden opgeven</b> om uw database referenties in te voeren. U kunt geïntegreerde Windows-verificatie of SQL Server verificatie gebruiken, afhankelijk van hoe uw on-premises SQL Server zijn geconfigureerd.<br/><br/><b>Database query</b>: Voer een SQL-instructie in met een beschrijving van de gegevens die u wilt lezen. |
+| Azure Table |Hiermee worden gegevens uit de Table service in Azure Storage gelezen.<br/><br/>Als u grote hoeveel heden gegevens zelden leest, moet u de Azure Table-service gebruiken. Het biedt een flexibele, niet-relationele (NoSQL), uiterst schaal bare, goedkope en Maxi maal beschik bare opslag oplossing. |De opties in de **import gegevens** veranderen, afhankelijk van of u toegang hebt tot open bare gegevens of een privé-opslag account waarvoor aanmeldings referenties zijn vereist. Dit wordt bepaald door het <b>verificatie type</b> dat de waarde ' PublicOrSAS ' of ' account ' kan hebben, waarvan elk een eigen set para meters heeft. <br/><br/><b>Open bare of Shared Access Signature SAS-URI</b>: de para meters zijn:<br/><br/><ul><b>Tabel-URI</b>: Hiermee geeft u de open bare of SAS-URL voor de tabel op.<br/><br/><b>Hiermee geeft u de rijen op die moeten worden gescand op eigenschapnamen</b>: de waarden zijn <i>TopN</i> om het opgegeven aantal rijen te scannen of <i>ScanAll</i> om alle rijen in de tabel op te halen. <br/><br/>Als de gegevens homo geen zijn en voorspelbaar zijn, is het raadzaam om *TopN* te selecteren en een getal in te voeren voor N. Voor grote tabellen kan dit leiden tot snellere lees tijden.<br/><br/>Als de gegevens zijn gestructureerd met sets eigenschappen die variëren op basis van de diepte en positie van de tabel, kiest u de optie *ScanAll* om alle rijen te scannen. Zo zorgt u ervoor dat de integriteit van de resulterende eigenschappen en meta gegevens worden geconverteerd.<br/><br/></ul><b>Privé-opslag account</b>: de para meters zijn: <br/><br/><ul><b>Account naam</b>: Hiermee geeft u de naam op van het account dat de te lezen tabel bevat.<br/><br/><b>Account sleutel</b>: Hiermee geeft u de opslag sleutel op die aan het account is gekoppeld.<br/><br/><b>Tabel naam</b> : Hiermee geeft u de naam op van de tabel die de gegevens bevat die moeten worden gelezen.<br/><br/><b>Rijen om te scannen op eigenschapnamen</b>: de waarden zijn <i>TopN</i> om het opgegeven aantal rijen te scannen of <i>ScanAll</i> om alle rijen in de tabel op te halen.<br/><br/>Als de gegevens homo geen zijn en voorspelbaar zijn, raden we u aan *TopN* te selecteren en een getal in te voeren voor N. Voor grote tabellen kan dit leiden tot snellere lees tijden.<br/><br/>Als de gegevens zijn gestructureerd met sets eigenschappen die variëren op basis van de diepte en positie van de tabel, kiest u de optie *ScanAll* om alle rijen te scannen. Zo zorgt u ervoor dat de integriteit van de resulterende eigenschappen en meta gegevens worden geconverteerd.<br/><br/> |
+| Azure Blob Storage |Hiermee worden gegevens gelezen die zijn opgeslagen in de Blob service in Azure Storage, inclusief afbeeldingen, ongestructureerde tekst of binaire gegevens.<br/><br/>U kunt de Blob service gebruiken om gegevens openbaar weer te geven of om toepassings gegevens privé op te slaan. U hebt vanaf elke locatie toegang tot uw gegevens door HTTP-of HTTPS-verbindingen te gebruiken. |De opties in de module **gegevens importeren** wijzigen, afhankelijk van of u toegang hebt tot open bare gegevens of een privé-opslag account waarvoor aanmeldings referenties zijn vereist. Dit wordt bepaald door het <b>verificatie type</b> dat de waarde ' PublicOrSAS ' of ' account ' kan hebben.<br/><br/><b>Open bare of Shared Access Signature SAS-URI</b>: de para meters zijn:<br/><br/><ul><b>URI</b>: Hiermee geeft u de open bare of SAS-URL op voor de opslag-blob.<br/><br/><b>Bestands indeling</b>: Hiermee geeft u de indeling van de gegevens in de BLOB service. De ondersteunde indelingen zijn CSV, TSV en ARFF.<br/><br/></ul><b>Privé-opslag account</b>: de para meters zijn: <br/><br/><ul><b>Account naam</b>: Hiermee geeft u de naam op van het account dat de BLOB bevat die u wilt lezen.<br/><br/><b>Account sleutel</b>: Hiermee geeft u de opslag sleutel op die aan het account is gekoppeld.<br/><br/><b>Pad naar container, map of BLOB</b> : Hiermee geeft u de naam van de BLOB op die de te lezen gegevens bevat.<br/><br/><b>Indeling van BLOB-bestand</b>: Hiermee geeft u de indeling van de gegevens in de BLOB-service op. De ondersteunde gegevens indelingen zijn CSV, TSV, ARFF, CSV met een opgegeven code ring en Excel. <br/><br/><ul>Als de notatie CSV of TSV is, moet u aangeven of het bestand een veldnamenrij bevat.<br/><br/>U kunt de Excel-optie gebruiken om gegevens uit Excel-werkmappen te lezen. Geef in de optie <i>Excel-gegevens indeling</i> aan of de gegevens zich in een Excel-werkblad bereik of in een Excel-tabel bevinden. Geef in het <i>Excel-werk blad of de Inge sloten tabel </i>optie de naam op van het blad of de tabel waarvan u wilt lezen.</ul><br/> |
+| Data feed-provider |Hiermee worden gegevens van een ondersteunde feed-provider gelezen. Momenteel wordt alleen de OData-indeling (Open Data Protocol) ondersteund. |<b>Type gegevens inhoud</b>: Hiermee geeft u de OData-indeling op.<br/><br/><b>Bron-URL</b>: Hiermee geeft u de volledige URL voor de gegevensfeed op. <br/>Bijvoorbeeld, de volgende URL-Lees bewerkingen van de voorbeeld database noorden wind:https://services.odata.org/northwind/northwind.svc/ |
 
 ## <a name="import-from-another-experiment"></a>Importeren uit een ander experiment
 
-Er zullen momenten zijn waarop u een tussenresultaat van het ene experiment wilt nemen en het wilt gebruiken als onderdeel van een ander experiment. Om dit te doen, slaat u de module op als een gegevensset:
+Wanneer u een tussentijds resultaat van een experiment wilt maken en dit als onderdeel van een ander experiment wilt gebruiken. Als u dit wilt doen, slaat u de module op als een gegevensset:
 
-1. Klik op de uitvoer van de module die u als gegevensset wilt opslaan.
-2. Klik **op Opslaan als gegevensset**.
-3. Wanneer u daarom wordt gevraagd, voert u een naam en een beschrijving in waarmee u de gegevensset eenvoudig identificeren.
-4. Klik op het **ok-vinkje.**
+1. Klik op de uitvoer van de module die u wilt opslaan als een gegevensset.
+2. Klik op **Opslaan als gegevensset**.
+3. Wanneer u hierom wordt gevraagd, voert u een naam en een beschrijving in waarmee u de gegevensset eenvoudig kunt identificeren.
+4. Klik op het selectie vakje **OK** .
 
-Wanneer de opslag is voltooid, is de gegevensset beschikbaar voor gebruik binnen elk experiment in uw werkruimte. U vindt het in de lijst **Opgeslagen gegevenssets** in het modulepalet.
+Wanneer het opslaan is voltooid, is de gegevensset beschikbaar voor gebruik binnen een experiment in uw werk ruimte. U vindt deze in de lijst **opgeslagen gegevens sets** in het module palet.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Azure Machine Learning Studio-webservices implementeren die gebruikmaken van modules voor gegevensimporteren en gegevensexporteren](web-services-that-use-import-export-modules.md)
+[Azure Machine Learning Studio-webservices implementeren die gebruikmaken van modules voor het importeren en exporteren van gegevens](web-services-that-use-import-export-modules.md)
 
 
 <!-- Module References -->

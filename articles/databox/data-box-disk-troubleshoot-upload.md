@@ -1,7 +1,7 @@
 ---
-title: Problemen met het uploaden van gegevens oplossen met behulp van logboeken
+title: Problemen met het uploaden van gegevens oplossen met behulp van Logboeken
 titleSuffix: Azure Data Box Disk
-description: Beschrijft hoe u de logboeken gebruiken en problemen oplossen bij het uploaden van gegevens naar Azure Data Box Disk.
+description: Hierin wordt beschreven hoe u de logboeken gebruikt en problemen oplost die worden weer gegeven bij het uploaden van gegevens naar Azure Data Box Disk.
 services: databox
 author: alkohli
 ms.service: databox
@@ -10,43 +10,43 @@ ms.topic: article
 ms.date: 06/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 7c14988706ef193ef5da868c55f6c4f55e7d98f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260135"
 ---
-# <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Logboeken begrijpen om problemen met het uploaden van gegevens op te lossen in Azure Data Box Disk
+# <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Logboeken voor het oplossen van problemen bij het uploaden van gegevens in Azure Data Box Disk
 
-Dit artikel is van toepassing op Microsoft Azure Data Box Disk en beschrijft de problemen die u ziet wanneer u gegevens uploadt naar Azure.
+Dit artikel is van toepassing op Microsoft Azure Data Box Disk en beschrijft de problemen die worden weer gegeven wanneer u gegevens uploadt naar Azure.
 
-## <a name="about-upload-logs"></a>Logboeken uploaden
+## <a name="about-upload-logs"></a>Over het uploaden van Logboeken
 
-Wanneer de gegevens worden geüpload `_error.xml` naar `_verbose.xml` Azure in het datacenter en bestanden worden gegenereerd voor elk opslagaccount. Deze logboeken worden geüpload naar hetzelfde opslagaccount dat is gebruikt om gegevens te uploaden. 
+Wanneer de gegevens worden geüpload naar Azure in het Data Center `_error.xml` en `_verbose.xml` er bestanden worden gegenereerd voor elk opslag account. Deze logboeken worden geüpload naar hetzelfde opslag account dat is gebruikt voor het uploaden van gegevens. 
 
-Beide logboeken bevinden zich in dezelfde indeling en bevatten XML-beschrijvingen van de gebeurtenissen die zijn opgetreden tijdens het kopiëren van de gegevens van de schijf naar het Azure Storage-account.
+Beide logboeken hebben dezelfde indeling en bevatten XML-beschrijvingen van de gebeurtenissen die hebben plaatsgevonden tijdens het kopiëren van de gegevens van de schijf naar het Azure Storage-account.
 
-Het verboselogboek bevat volledige informatie over de status van de kopieerbewerking voor elke blob of bestand, terwijl het foutlogboek alleen de informatie bevat voor blobs of bestanden die fouten hebben ondervonden tijdens het uploaden.
+Het uitgebreide logboek bevat volledige informatie over de status van de Kopieer bewerking voor elke BLOB of elk bestand, terwijl het fouten logboek alleen de informatie bevat voor blobs of bestanden die fouten tijdens het uploaden hebben aangetroffen.
 
-Het foutlogboek heeft dezelfde structuur als de breedboselog, maar filtert succesvolle bewerkingen uit.
+Het fouten logboek heeft dezelfde structuur als het uitgebreide logboek, maar Hiermee worden geslaagde bewerkingen gefilterd.
 
 ## <a name="download-logs"></a>Logboeken downloaden
 
-Volg de volgende stappen om de uploadlogboeken te vinden.
+Voer de volgende stappen uit om de upload logboeken te vinden.
 
-1. Als er fouten zijn bij het uploaden van de gegevens naar Azure, geeft de portal een pad weer naar de map waar de diagnostische logboeken zich bevinden.
+1. Als er fouten zijn bij het uploaden van de gegevens naar Azure, wordt in de portal een pad naar de map weer gegeven waarin de diagnostische logboeken zich bevinden.
 
-    ![Koppeling naar logboeken in de portal](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs.png)
+    ![Koppeling naar Logboeken in de portal](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs.png)
 
-2. Ga naar **waies.**
+2. Ga naar **waies**.
 
-    ![fout- en verboselogboeken](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs-1.png)
+    ![fout en uitgebreide logboeken](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs-1.png)
 
-In elk geval ziet u de foutlogboeken en de verboselogboeken. Selecteer elk logboek en download een lokaal exemplaar.
+In elk geval ziet u de fout logboeken en de uitgebreide Logboeken. Selecteer elk logboek en down load een lokale kopie.
 
-## <a name="sample-upload-logs"></a>Voorbeeld van uploadlogboeken
+## <a name="sample-upload-logs"></a>Voor beeld van upload logboeken
 
-Een voorbeeld `_verbose.xml` van de hieronder wordt weergegeven. In dit geval is de bestelling zonder fouten voltooid.
+Hieronder ziet u een `_verbose.xml` voor beeld van de. In dit geval is de volg orde zonder fouten voltooid.
 
 ```xml
 
@@ -91,7 +91,7 @@ Een voorbeeld `_verbose.xml` van de hieronder wordt weergegeven. In dit geval is
 </DriveLog>
 ```
 
-Voor dezelfde volgorde wordt hieronder `_error.xml` een voorbeeld van de volgorde weergegeven.
+Voor dezelfde bestelling wordt een voor beeld van de `_error.xml` hieronder weer gegeven.
 
 ```xml
 
@@ -110,13 +110,13 @@ Voor dezelfde volgorde wordt hieronder `_error.xml` een voorbeeld van de volgord
 </DriveLog>
 ```
 
-Een voorbeeld `_error.xml` van de wordt hieronder weergegeven waar de volgorde met fouten is voltooid. 
+Hieronder ziet u een `_error.xml` voor beeld van de volg orde waarin fouten zijn voltooid. 
 
-Het foutbestand in dit `Summary` geval heeft een sectie en een andere sectie die alle fouten op bestandsniveau bevat. 
+Het fout bestand in dit geval bevat een `Summary` sectie en een andere sectie die alle fouten op bestands niveau bevat. 
 
-Het `Summary` bevat `ValidationErrors` de `CopyErrors`en de . In dit geval zijn er 8 bestanden of mappen geüpload naar Azure en waren er geen validatiefouten. Toen de gegevens naar het Azure Storage-account zijn gekopieerd, zijn 5 bestanden of mappen geüpload. De overige 3 bestanden of mappen zijn hernoemd volgens de Azure-containernaamgevingsconventies en vervolgens geüpload naar Azure.
+De `Summary` bevat de `ValidationErrors` en `CopyErrors`. In dit geval zijn er 8 bestanden of mappen geüpload naar Azure en zijn er geen validatie fouten. Wanneer de gegevens zijn gekopieerd naar Azure Storage account, zijn vijf bestanden of mappen geüpload. De naam van de resterende drie bestanden of mappen is gewijzigd volgens de naamgevings conventies van Azure container en vervolgens met succes geüpload naar Azure.
 
-De status van `BlobStatus` het bestandsniveau beschrijft alle acties die zijn ondernomen om de blobs te uploaden. In dit geval worden drie containers hernoemd omdat de mappen waarnaar de gegevens zijn gekopieerd, niet in overeenstemming zijn met de Azure-naamgevingsconventies voor containers. Voor de blobs die in die containers zijn geüpload, zijn de nieuwe containernaam, het pad van de blob in Azure, het oorspronkelijke ongeldige bestandspad en de blobgrootte opgenomen.
+De bestands niveau status bevat een `BlobStatus` beschrijving van alle acties die zijn uitgevoerd voor het uploaden van de blobs. In dit geval worden drie containers gewijzigd, omdat de mappen waarnaar de gegevens zijn gekopieerd niet voldoen aan de Azure-naamgevings conventies voor containers. Voor de blobs die in deze containers worden geüpload, zijn de nieuwe container naam, het pad van de BLOB in azure, het oorspronkelijke ongeldige bestandspad en de grootte van de BLOB opgenomen.
     
 ```xml
  <?xml version="1.0" encoding="utf-8"?>
@@ -152,35 +152,35 @@ De status van `BlobStatus` het bestandsniveau beschrijft alle acties die zijn on
     </DriveLog>
 ```
 
-## <a name="data-upload-errors"></a>Fouten bij het uploaden van gegevens
+## <a name="data-upload-errors"></a>Fouten bij uploaden van gegevens
 
-De fouten die zijn gegenereerd bij het uploaden van de gegevens naar Azure worden samengevat in de volgende tabel.
+De fouten die worden gegenereerd bij het uploaden van de gegevens naar Azure, worden in de volgende tabel samenvatten.
 
 | Foutcode | Beschrijving                   |
 |-------------|------------------------------|
-|`None` |  Voltooid.           |
-|`Renamed` | De blob is opnieuw benoemd.   |
-|`CompletedWithErrors` | Upload voltooid met fouten. De details van de bestanden in fout zijn opgenomen in het logbestand.  |
-|`Corrupted`|CRC berekend tijdens de opname van gegevens komt niet overeen met de CRC berekend tijdens het uploaden.  |  
-|`StorageRequestFailed` | Azure-opslagaanvraag is mislukt.   |     
-|`LeasePresent` | Dit object wordt geleased en wordt gebruikt door een andere gebruiker. |
-|`StorageRequestForbidden` |Kon niet uploaden vanwege verificatieproblemen. |
-|`ManagedDiskCreationTerminalFailure` | Kon niet uploaden als beheerde schijven. De bestanden zijn beschikbaar in het opslagaccount met tijdelijke bestanden als paginablobs. U paginablobs handmatig converteren naar beheerde schijven.  |
-|`DiskConversionNotStartedTierInfoMissing` | Aangezien het VHD-bestand buiten de vooraf gemaakte laagmappen is gekopieerd, is er geen beheerde schijf gemaakt. Het bestand wordt geüpload als paginablob naar het opslagaccount voor tijdelijke bestanden zoals opgegeven tijdens het maken van de bestelling. U deze handmatig converteren naar een beheerde schijf.|
-|`InvalidWorkitem` | Kan de gegevens niet uploaden omdat deze niet voldoen aan de naamgeving van Azure en conventies worden beperkt.|
-|`InvalidPageBlobUploadAsBlockBlob` | Geüpload als blokblobs in `databoxdisk-invalid-pb-`een container met voorvoegsel .|
-|`InvalidAzureFileUploadAsBlockBlob` | Geüpload als blokblobs in `databoxdisk-invalid-af`een container met voorvoegsel -.|
-|`InvalidManagedDiskUploadAsBlockBlob` | Geüpload als blokblobs in `databoxdisk-invalid-md`een container met voorvoegsel -.|
-|`InvalidManagedDiskUploadAsPageBlob` |Geüpload als paginablobs in `databoxdisk-invalid-md-`een container met voorvoegsel . |
-|`MovedToOverflowShare` |Geüploade bestanden naar een nieuw aandeel omdat de oorspronkelijke grootte van het aandeel de maximale azure-groottelimiet heeft overschreden. De naam van het nieuwe bestandsaandeel `-2`heeft de oorspronkelijke naam achtergeschreven met .   |
-|`MovedToDefaultAzureShare` |Geüploade bestanden die geen deel uitmaakten van een map naar een standaardshare. De naam van `databox-`het aandeel begint met . |
-|`ContainerRenamed` |De container voor deze bestanden voldoet niet aan Azure-naamgevingsconventies en wordt hernoemd. De nieuwe naam `databox-` begint met en is achtervoegsel met de SHA1 hash van de oorspronkelijke naam |
-|`ShareRenamed` |Het aandeel voor deze bestanden voldoet niet aan azure-naamgevingsconventies en wordt hernoemd. De nieuwe naam `databox-` begint met en is achtervoegsel met de SHA1 hash van de oorspronkelijke naam. |
-|`BlobRenamed` |Deze bestanden voldoen niet aan azure-naamgevingsconventies en werden hernoemd. Controleer `BlobPath` het veld voor de nieuwe naam. |
-|`FileRenamed` |Deze bestanden voldoen niet aan azure-naamgevingsconventies en werden hernoemd. Controleer `FileStoragePath` het veld voor de nieuwe naam. |
-|`DiskRenamed` |Deze bestanden voldoen niet aan azure-naamgevingsconventies en werden hernoemd. Controleer `BlobPath` het veld voor de nieuwe naam. |
+|`None` |  Is voltooid.           |
+|`Renamed` | De naam van de blob is gewijzigd.   |
+|`CompletedWithErrors` | Het uploaden is voltooid met fouten. De details van de bestanden die fouten bevatten, zijn opgenomen in het logboek bestand.  |
+|`Corrupted`|CRC berekend tijdens de opname van gegevens komt niet overeen met de CRC die tijdens het uploaden is berekend.  |  
+|`StorageRequestFailed` | De Azure Storage-aanvraag is mislukt.   |     
+|`LeasePresent` | Dit item wordt geleasd en wordt gebruikt door een andere gebruiker. |
+|`StorageRequestForbidden` |Kan niet uploaden vanwege verificatie problemen. |
+|`ManagedDiskCreationTerminalFailure` | Kan niet uploaden als managed disks. De bestanden zijn beschikbaar in het opslag account voor staging als pagina-blobs. U kunt pagina-blobs hand matig converteren naar Managed disks.  |
+|`DiskConversionNotStartedTierInfoMissing` | Omdat het VHD-bestand buiten de mappen van de voorgemaakte laag is gekopieerd, is er geen beheerde schijf gemaakt. Het bestand wordt geüpload als pagina-BLOB naar het staging Storage-account zoals opgegeven tijdens het maken van de order. U kunt deze hand matig converteren naar een beheerde schijf.|
+|`InvalidWorkitem` | Kan de gegevens niet uploaden omdat deze niet voldoet aan de conventies voor Azure-naamgeving en-limieten.|
+|`InvalidPageBlobUploadAsBlockBlob` | Geüpload als blok-blobs in een container met `databoxdisk-invalid-pb-`voor voegsel.|
+|`InvalidAzureFileUploadAsBlockBlob` | Geüpload als blok-blobs in een container met `databoxdisk-invalid-af`prefix-.|
+|`InvalidManagedDiskUploadAsBlockBlob` | Geüpload als blok-blobs in een container met `databoxdisk-invalid-md`prefix-.|
+|`InvalidManagedDiskUploadAsPageBlob` |Geüpload als pagina-blobs in een container met `databoxdisk-invalid-md-`voor voegsel. |
+|`MovedToOverflowShare` |Geüploade bestanden naar een nieuwe share omdat de oorspronkelijke share grootte de maximale grootte voor Azure-limiet overschrijdt. De naam van `-2`de nieuwe bestands share bevat de oorspronkelijke naam.   |
+|`MovedToDefaultAzureShare` |Geüploade bestanden die geen deel uitmaken van een map naar een standaard share. De share naam begint met `databox-`. |
+|`ContainerRenamed` |De container voor deze bestanden voldoet niet aan Azure-naamgevings conventies en de naam ervan wordt gewijzigd. De nieuwe naam begint met `databox-` en is een achtervoegsel met de SHA1-hash van de oorspronkelijke naam |
+|`ShareRenamed` |De share voor deze bestanden voldoet niet aan de naamgevings conventies van Azure en de naam ervan wordt gewijzigd. De nieuwe naam begint met `databox-` en wordt voorafgegaan door de SHA1-hash van de oorspronkelijke naam. |
+|`BlobRenamed` |Deze bestanden voldoen niet aan Azure-naamgevings regels en hebben een andere naam gekregen. Controleer het `BlobPath` veld voor de nieuwe naam. |
+|`FileRenamed` |Deze bestanden voldoen niet aan Azure-naamgevings regels en hebben een andere naam gekregen. Controleer het `FileStoragePath` veld voor de nieuwe naam. |
+|`DiskRenamed` |Deze bestanden voldoen niet aan Azure-naamgevings regels en hebben een andere naam gekregen. Controleer het `BlobPath` veld voor de nieuwe naam. |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Open een ondersteuningsticket voor problemen met gegevensboxschijven](data-box-disk-contact-microsoft-support.md).
+- [Open een ondersteunings ticket voor data Box Disk problemen](data-box-disk-contact-microsoft-support.md).

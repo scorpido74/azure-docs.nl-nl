@@ -1,6 +1,6 @@
 ---
-title: Uw werkapparaat aansluiten bij het netwerk van uw organisatie - AD
-description: Meer informatie over het aansluiten van uw werkapparaat op het netwerk van uw organisatie.
+title: Uw werk apparaat toevoegen aan het netwerk-AD van uw organisatie
+description: Meer informatie over het toevoegen van uw werk apparaat aan het netwerk van uw organisatie.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,106 +13,106 @@ ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.openlocfilehash: 0ff8b85a15d94ded2d702e0df247f9ebc4d3f923
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79266310"
 ---
-# <a name="join-your-work-device-to-your-organizations-network"></a>Sluit uw werkapparaat aan bij het netwerk van uw organisatie
-Sluit uw Windows 10-apparaat in handen van uw bedrijf aan het netwerk van uw organisatie, zodat u toegang hebt tot mogelijk beperkte bronnen.
+# <a name="join-your-work-device-to-your-organizations-network"></a>Uw werk apparaat toevoegen aan het netwerk van uw organisatie
+Voeg uw werkend Windows 10-apparaat toe aan het netwerk van uw organisatie, zodat u mogelijk beperkte bronnen kunt openen.
 
-## <a name="what-happens-when-you-join-your-device"></a>Wat gebeurt er wanneer u lid wordt van uw apparaat
-Terwijl u uw Windows 10-apparaat aansluit bij het netwerk van uw organisatie, worden de volgende acties uitgevoerd:
+## <a name="what-happens-when-you-join-your-device"></a>Wat gebeurt er wanneer u uw apparaat toevoegt
+Terwijl u uw Windows 10-apparaat aan het netwerk van uw organisatie koppelt, zullen de volgende acties optreden:
 
-- Windows registreert uw apparaat bij het netwerk van uw organisatie, zodat u toegang krijgt tot uw bronnen met uw persoonlijke account. Nadat uw apparaat is geregistreerd, voegt Windows uw apparaat toe aan het netwerk, zodat u de gebruikersnaam en het wachtwoord van uw organisatie gebruiken om u aan te melden en toegang te krijgen tot beperkte bronnen.
+- Windows registreert uw apparaat in het netwerk van uw organisatie, zodat u toegang hebt tot uw resources met uw persoonlijke account. Nadat het apparaat is geregistreerd, voegt Windows uw apparaat vervolgens toe aan het netwerk, zodat u de gebruikers naam en het wacht woord van uw organisatie kunt gebruiken om u aan te melden en toegang te krijgen tot beperkte bronnen.
 
-- Optioneel wordt u op basis van de keuzes van uw organisatie gevraagd om verificatie in twee stappen in te stellen via [multi-factorverificatie](multi-factor-authentication-end-user-first-time.md) of [beveiligingsgegevens.](user-help-security-info-overview.md)
+- Afhankelijk van de keuzes van uw organisatie wordt u mogelijk gevraagd om verificatie in twee stappen in te stellen met behulp van [multi-factor Authentication](multi-factor-authentication-end-user-first-time.md) of [beveiligings gegevens](user-help-security-info-overview.md).
 
-- Optioneel wordt u op basis van de keuzes van uw organisatie automatisch ingeschreven voor het beheer van mobiele apparaten, zoals Microsoft Intune. Zie Uw apparaat inschrijven in Intune voor meer informatie over het inschrijven in Microsoft [Intune.](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all)
+- U kunt eventueel, op basis van de keuzes van uw organisatie, automatisch worden inge schreven bij Mobile Device Management, zoals Microsoft Intune. Zie [uw apparaat inschrijven bij intune](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all)voor meer informatie over het inschrijven van Microsoft intune.
 
-- Je gaat door het aanmeldingsproces en gebruikt automatisch aanmelden met je organisatieaccount.
+- U gaat de aanmeldings procedure door lopen met behulp van automatische aanmelding met uw organisatie account.
 
-## <a name="to-join-a-brand-new-windows-10-device"></a>Deelnemen aan een gloednieuw Windows 10-apparaat
-Als uw apparaat gloednieuw is en nog niet is ingesteld, u het Oobe-proces (Windows Out of Box Experience) doorlopen om uw apparaat bij het netwerk aan te sluiten.
+## <a name="to-join-a-brand-new-windows-10-device"></a>Een gloed nieuw Windows 10-apparaat toevoegen
+Als uw apparaat een merk nieuw is dat nog niet is ingesteld, kunt u het OOBE-proces (out-of-Box Experience) van Windows door lopen om uw apparaat toe te voegen aan het netwerk.
 
-1. Start uw nieuwe apparaat op en start het OOBE-proces.
+1. Start uw nieuwe apparaat op en begin met het OOBE-proces.
 
-2. Typ **in** het scherm Aanmelden met Microsoft uw werk- of schoole-mailadres.
+2. Typ op het scherm **Aanmelden met Microsoft** het e-mail adres van uw werk of school.
 
-    ![Inlogscherm met e-mailadres](./media/user-help-join-device-on-network/join-device-oobe-signin.png)
+    ![Aanmeld scherm met e-mail adres](./media/user-help-join-device-on-network/join-device-oobe-signin.png)
 
-3. Typ uw wachtwoord in het scherm **Uw wachtwoord invoeren.**
+3. Typ uw wacht woord op het scherm **Voer uw wacht woord** in.
 
-    ![Voer het wachtwoordscherm in](./media/user-help-join-device-on-network/join-device-oobe-password.png)
+    ![Het scherm wacht woord invoeren](./media/user-help-join-device-on-network/join-device-oobe-password.png)
 
-4. Keur uw apparaat goed op uw mobiele apparaat, zodat het toegang heeft tot uw account. 
+4. Goed keuren uw apparaat op uw mobiele apparaat om toegang tot uw account te krijgen. 
 
-    ![Mobiel meldingsscherm](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
+    ![Scherm voor mobiele meldingen](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
 
-5. Voltooi het OOBE-proces, inclusief het instellen van uw privacy-instellingen en het instellen van Windows Hello (indien nodig).
+5. Voltooi het OOBE-proces, inclusief het instellen van uw privacy-instellingen en het instellen van Windows hello (indien nodig).
 
-    Uw apparaat is nu verbonden met het netwerk van uw organisatie.
+    Uw apparaat is nu lid van het netwerk van uw organisatie.
 
-## <a name="to-make-sure-youre-joined"></a>Om er zeker van te zijn dat je lid bent
-Je ervoor zorgen dat je lid wordt door naar je instellingen te kijken.
+## <a name="to-make-sure-youre-joined"></a>Zorg ervoor dat u lid bent van
+U kunt er zeker van zijn dat u lid bent van uw instellingen.
 
-1. Open **Instellingen**en selecteer **Accounts**.
+1. Open **instellingen**en selecteer vervolgens **accounts**.
 
-    ![Accounts op het scherm Instellingen](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
+    ![Accounts op het scherm instellingen](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Selecteer **Werk of school openen**en zorg ervoor dat u tekst ziet die iets zegt **als, Verbonden * \<* met your_organization>Azure AD**.
+2. Selecteer **toegang tot werk of school**en zorg ervoor dat er tekst wordt weer geven die er ongeveer als volgt uitziet: **verbonden met * \<your_organization>* Azure AD**.
 
-    ![Toegang tot werk- of schoolscherm met verbonden contoso-account](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
+    ![Het scherm werk of school openen met verbonden contoso-account](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
 
-## <a name="to-join-an-already-configured-windows-10-device"></a>Deelnemen aan een al geconfigureerd Windows 10-apparaat
-Als u uw apparaat al een tijdje hebt en het apparaat al is ingesteld, u deze stappen volgen om uw apparaat bij het netwerk aan te sluiten.
+## <a name="to-join-an-already-configured-windows-10-device"></a>Lid worden van een al geconfigureerd Windows 10-apparaat
+Als u uw apparaat al een tijdje hebt en het reeds is ingesteld, kunt u deze stappen volgen om uw apparaat toe te voegen aan het netwerk.
 
-1. Open **Instellingen**en selecteer **Accounts**.
+1. Open **instellingen**en selecteer vervolgens **accounts**.
 
-2. Selecteer **Werk of school openen**en selecteer Verbinding **maken**.
+2. Selecteer **toegang tot werk of school**en selecteer vervolgens **verbinding maken**.
 
-    ![Toegang tot koppelingen naar werk of school en Verbinding](./media/user-help-join-device-on-network/join-device-access-work-school-connect.png)
+    ![Toegang tot werk of school en koppelingen maken](./media/user-help-join-device-on-network/join-device-access-work-school-connect.png)
 
-3. Selecteer Op het scherm **Een werk- of schoolaccount instellen** de optie **Dit apparaat aansluiten bij Azure Active Directory**.
+3. Selecteer op het scherm **een werk-of school account instellen** de optie **Dit apparaat toevoegen aan Azure Active Directory**.
 
-    ![Een werk- of schoolaccountscherm instellen](./media/user-help-join-device-on-network/join-device-setup-join-aad.png)
+    ![Het scherm voor een werk-of school account instellen](./media/user-help-join-device-on-network/join-device-setup-join-aad.png)
 
-4. Typ in het scherm **Laten we u aanmelden,** typ alain@contoso.comuw e-mailadres (bijvoorbeeld) en selecteer **Volgende**.
+4. Typ uw **Let's get you signed in** e-mail adres (bijvoorbeeld alain@contoso.com) op het scherm de optie nu aanmelden. Klik vervolgens op **volgende**.
 
-    ![Je hebt je aangemeld in het scherm](./media/user-help-join-device-on-network/join-device-setup-get-signed-in.png)
+    ![U kunt u aanmelden op het scherm](./media/user-help-join-device-on-network/join-device-setup-get-signed-in.png)
 
-5. Typ uw wachtwoord in het **scherm Wachtwoord invoeren** en selecteer **Aanmelden**.
+5. Typ uw wacht woord in het scherm **wacht woord invoeren** en selecteer **Aanmelden**.
 
     ![Wachtwoord invoeren](./media/user-help-join-device-on-network/join-device-setup-password.png)
 
-6. Keur uw apparaat goed op uw mobiele apparaat, zodat het toegang heeft tot uw account. 
+6. Goed keuren uw apparaat op uw mobiele apparaat om toegang tot uw account te krijgen. 
 
-    ![Mobiel meldingsscherm](./media/user-help-join-device-on-network/join-device-setup-mobile.png)
+    ![Scherm voor mobiele meldingen](./media/user-help-join-device-on-network/join-device-setup-mobile.png)
 
-7. Bekijk de informatie om te controleren of deze juist is en selecteer **Join**in het scherm Zorg ervoor dat dit het scherm **van uw organisatie is.**
+7. Bekijk op het scherm **Zorg ervoor dat dit uw organisatie is** en controleer de informatie om er zeker van te zijn dat het goed is, en selecteer vervolgens **toevoegen**.
 
-    ![Zorg ervoor dat dit het verificatiescherm van uw organisatie is](./media/user-help-join-device-on-network/join-device-setup-confirm.png)
+    ![Controleer of dit het scherm voor de verificatie van uw organisatie is](./media/user-help-join-device-on-network/join-device-setup-confirm.png)
 
-8. Klik op het scherm **U bent helemaal ingesteld** op **Gereed**.
+8. Klik op **gereed**in het scherm **u bent alle set** .
 
-    ![U bent helemaal klaar scherm](./media/user-help-join-device-on-network/join-device-setup-finish.png)
+    ![U bent klaar met het instellen van het scherm](./media/user-help-join-device-on-network/join-device-setup-finish.png)
 
-## <a name="to-make-sure-youre-joined"></a>Om er zeker van te zijn dat je lid bent
-Je ervoor zorgen dat je lid wordt door naar je instellingen te kijken.
+## <a name="to-make-sure-youre-joined"></a>Zorg ervoor dat u lid bent van
+U kunt er zeker van zijn dat u lid bent van uw instellingen.
 
-1. Open **Instellingen**en selecteer **Accounts**.
+1. Open **instellingen**en selecteer vervolgens **accounts**.
 
-    ![Accounts op het scherm Instellingen](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
+    ![Accounts op het scherm instellingen](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Selecteer **Werk of school openen**en zorg ervoor dat u tekst ziet die iets zegt **als, Verbonden * \<* met your_organization>Azure AD**.
+2. Selecteer **toegang tot werk of school**en zorg ervoor dat er tekst wordt weer geven die er ongeveer als volgt uitziet: **verbonden met * \<your_organization>* Azure AD**.
 
-    ![Toegang tot werk- of schoolscherm met verbonden contoso-account](./media/user-help-join-device-on-network/join-device-setup-verify.png)
+    ![Het scherm werk of school openen met verbonden contoso-account](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Nadat u lid bent geworden van uw apparaat in het netwerk van uw organisatie, moet u toegang hebben tot al uw bronnen met behulp van uw werk- of schoolaccountgegevens.
+Nadat u uw apparaat aan het netwerk van uw organisatie hebt toegevoegd, kunt u toegang krijgen tot al uw resources met behulp van de gegevens van uw werk-of school account.
 
-- Zie [Uw persoonlijke apparaat registreren op het netwerk van uw organisatie](user-help-register-device-on-network.md)als u uw persoonlijke apparaat wilt registreren, zoals uw telefoon.
+- Als uw organisatie uw persoonlijke apparaat wil registreren, zoals uw telefoon, raadpleegt u [uw persoonlijke apparaat registreren op het netwerk van uw organisatie](user-help-register-device-on-network.md).
 
-- Zie de Help-inhoud van Intune van [Intune](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done)als uw organisatie wordt beheerd met Microsoft Intune en u vragen hebt over inschrijving, aanmelding of een ander Intune-gerelateerd probleem.
+- Als uw organisatie wordt beheerd met Microsoft Intune en u vragen hebt over inschrijving, aanmelden of een ander probleem met betrekking tot intune, raadpleegt u de [Help-inhoud van intune-gebruikers](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done).

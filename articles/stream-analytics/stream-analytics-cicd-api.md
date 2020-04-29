@@ -1,6 +1,6 @@
 ---
-title: REST API's gebruiken om CI/CD voor Azure Stream Analytics op IoT Edge uit te brengen
-description: Meer informatie over het implementeren van een pijplijn voor continue integratie en implementatie voor Azure Stream Analytics met REST API's.
+title: REST-Api's gebruiken om CI/CD voor Azure Stream Analytics op IoT Edge uit te voeren
+description: Meer informatie over het implementeren van een continue integratie-en implementatie pijplijn voor Azure Stream Analytics met behulp van REST Api's.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -8,23 +8,23 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.openlocfilehash: 328ca7cd2c6f76095c8334ae6fdb4aa75fbb867d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80292006"
 ---
-# <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>CI/CD implementeren voor Stream Analytics op IoT Edge met API's
+# <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>CI/CD voor Stream Analytics implementeren op IoT Edge met behulp van Api's
 
-U continue integratie en implementatie inschakelen voor Azure Stream Analytics-taken met BEHULP van REST-API's. In dit artikel vindt u voorbeelden van welke API's u moet gebruiken en hoe u deze gebruiken. REST API's worden niet ondersteund op Azure Cloud Shell.
+U kunt continue integratie en implementatie voor Azure Stream Analytics-taken inschakelen met behulp van REST-Api's. In dit artikel vindt u voor beelden van de Api's die moeten worden gebruikt en hoe u deze kunt gebruiken. REST-Api's worden niet ondersteund op Azure Cloud Shell.
 
-## <a name="call-apis-from-different-environments"></a>Apis bellen vanuit verschillende omgevingen
+## <a name="call-apis-from-different-environments"></a>Api's van verschillende omgevingen aanroepen
 
-REST API's kunnen worden aangeroepen vanuit zowel Linux als Windows. In de volgende opdrachten wordt de juiste syntaxis voor de API-aanroep weergegeven. Specifiek API-gebruik wordt in latere secties van dit artikel beschreven.
+REST-Api's kunnen worden aangeroepen vanuit Linux en Windows. De volgende opdrachten tonen de juiste syntaxis voor de API-aanroep. Het specifieke API-gebruik wordt beschreven in latere secties van dit artikel.
 
 ### <a name="linux"></a>Linux
 
-Voor Linux `Curl` u `Wget` of opdrachten gebruiken:
+Voor Linux kunt u of `Curl` `Wget` -opdrachten gebruiken:
 
 ```bash
 curl -u { <username:password> }  -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" { <url> }   
@@ -36,7 +36,7 @@ wget -q -O- --{ <method> } -data="<request body>" --header=Content-Type:applicat
  
 ### <a name="windows"></a>Windows
 
-Gebruik Powershell voor Windows: 
+Gebruik voor Windows Power shell: 
 
 ```powershell 
 $user = "<username>" 
@@ -51,21 +51,21 @@ $response = Invoke-RestMethod <url> -Method <method> -Body $content -Headers $He
 echo $response 
 ```
  
-## <a name="create-an-asa-job-on-edge"></a>Een ASA-taak maken op Edge 
+## <a name="create-an-asa-job-on-edge"></a>Een ASA-taak maken aan de rand 
  
-Als u de taak Stream Analytics wilt maken, roept u de PUT-methode aan met behulp van de Stream Analytics API.
+Als u Stream Analytics taak wilt maken, roept u de PUT-methode aan met behulp van de Stream Analytics-API.
 
 |Methode|Aanvraag-URL|
 |------|-----------|
 |PUT|`https://management.azure.com/subscriptions/{\**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview`|
  
-Voorbeeld van opdracht met behulp van **krul:**
+Voor beeld van een opdracht met **krul**:
 
 ```curl
 curl -u { <username:password> } -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}?api-version=2017-04-01-preview  
 ``` 
  
-Voorbeeld van aanvraaginstantie in JSON:
+Voor beeld van een aanvraag tekst in JSON:
 
 ```json
 { 
@@ -140,38 +140,38 @@ Zie de [API-documentatie](/rest/api/streamanalytics/stream-analytics-job)voor me
  
 ## <a name="publish-edge-package"></a>Edge-pakket publiceren 
  
-Als u een functie Stream Analytics op IoT Edge wilt publiceren, roept u de METHODE POST aan met de Edge Package Publish API.
+Als u een Stream Analytics-taak op IoT Edge wilt publiceren, roept u de POST-methode aan met de Edge package Publish API.
 
 |Methode|Aanvraag-URL|
 |------|-----------|
 |POST|`https://management.azure.com/subscriptions/{\**subscriptionid**}/resourceGroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**jobname**}/publishedgepackage?api-version=2017-04-01-preview`|
 
-Deze asynchrone bewerking retourneert een status van 202 totdat de taak is gepubliceerd. De koptekst voor locatierespons bevat de URI die wordt gebruikt om de status van het proces te krijgen. Terwijl het proces wordt uitgevoerd, geeft een aanroep naar de URI in de locatiekopeen status van 202. Wanneer het proces is voltooid, geeft de URI in de locatiekop een status van 200 terug. 
+Deze asynchrone bewerking retourneert de status 202 totdat de taak is gepubliceerd. De header van de locatie reactie bevat de URI die wordt gebruikt om de status van het proces op te halen. Terwijl het proces wordt uitgevoerd, retourneert een aanroep naar de URI in de locatie header de status 202. Wanneer het proces is voltooid, retourneert de URI in de locatie header de status 200. 
 
-Voorbeeld van een Edge-pakket publiceren oproep met behulp van **krul:** 
+Voor beeld van een Edge-pakket publicatie gesprek met behulp van **krul**: 
 
 ```bash
 curl -d -X POST https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}/publishedgepackage?api-version=2017-04-01-preview
 ```
  
-Na het maken van de POST oproep, moet u verwachten dat een reactie met een leeg lichaam. Zoek naar de URL in het hoofd van het antwoord en neem deze op voor verder gebruik.
+Na het aanroepen van de POST moet u een antwoord verwachten met een lege hoofd tekst. Zoek naar de URL die zich in het hoofd van het antwoord bevindt en noteer deze voor verder gebruik.
  
-Voorbeeld van de URL van het hoofd van de respons:
+Voor beeld van de URL van het hoofd van de reactie:
 
 ```
 https://management.azure.com/subscriptions/{**subscriptionid**}/resourcegroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/StreamingJobs/{**resourcename**}/OperationResults/023a4d68-ffaf-4e16-8414-cb6f2e14fe23?api-version=2017-04-01-preview 
 ```
-Een wachttijd voor één tot twee minuten voordat u de volgende opdracht uitvoert om een API-aanroep te maken met de URL die u in het hoofd van het antwoord hebt gevonden. Probeer de opdracht opnieuw als u geen 200-antwoord krijgt.
+Wacht één tot twee minuten voordat u de volgende opdracht uitvoert om een API-aanroep te maken met de URL die u hebt gevonden in het hoofd van het antwoord. Voer de opdracht opnieuw uit als u geen 200-antwoord ontvangt.
  
-Voorbeeld van het maken van API-aanroep met geretourneerde URL met **krul:**
+Voor beeld van het maken van een API-aanroep met de geretourneerde URL met **krul**:
 
 ```bash
 curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{resourcename}/publishedgepackage?api-version=2017-04-01-preview 
 ```
 
-Het antwoord bevat de informatie die u moet toevoegen aan het Edge-implementatiescript. De onderstaande voorbeelden laten zien welke informatie u moet verzamelen en waar u deze toevoegen in het implementatiemanifest.
+Het antwoord bevat de informatie die u nodig hebt om toe te voegen aan het Edge-implementatie script. In de onderstaande voor beelden ziet u welke gegevens u moet verzamelen en waar u deze kunt toevoegen in het implementatie manifest.
  
-Voorbeeldreactiebody na publicatie:
+De hoofd tekst van het voor beeld is nadat deze is gepubliceerd:
 
 ```json
 { 
@@ -182,7 +182,7 @@ Voorbeeldreactiebody na publicatie:
 } 
 ```
 
-Voorbeeld van implementatiemanifest: 
+Voor beeld van implementatie manifest: 
 
 ```json
 { 
@@ -252,11 +252,11 @@ Voorbeeld van implementatiemanifest:
 } 
 ```
 
-Na de configuratie van het implementatiemanifest verwijzen we je naar [Azure IoT Edge-modules implementeren met Azure CLI](../iot-edge/how-to-deploy-modules-cli.md) voor implementatie.
+Na de configuratie van het implementatie manifest raadpleegt u [Azure IOT Edge-modules implementeren met Azure cli](../iot-edge/how-to-deploy-modules-cli.md) voor implementatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen 
  
 * [Azure Stream Analytics op IoT Edge](stream-analytics-edge.md)
-* [ASA op IoT Edge-zelfstudie](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
-* [Stream Analytics Edge-taken ontwikkelen met behulp van Visual Studio-hulpprogramma's](stream-analytics-tools-for-visual-studio-edge-jobs.md)
+* [Zelf studie voor IoT Edge van ASA](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
+* [Stream Analytics Edge-taken ontwikkelen met behulp van Visual Studio Tools](stream-analytics-tools-for-visual-studio-edge-jobs.md)

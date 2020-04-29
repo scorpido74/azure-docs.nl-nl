@@ -1,6 +1,6 @@
 ---
-title: Serverstatistieken van Azure Analysis Services-server controleren | Microsoft Documenten
-description: Lees hoe Analysis Services Azure Metrics Explorer, een gratis tool in de portal, gebruikt om de prestaties en status van uw servers te controleren.
+title: Metrische gegevens van Azure Analysis Services server bewaken | Microsoft Docs
+description: Meer informatie over hoe Analysis Services Azure Metrics Explorer gebruikt, een gratis hulp programma in de portal, waarmee u de prestaties en de status van uw servers kunt bewaken.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,86 +8,86 @@ ms.date: 03/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: aaa3a6d128fe7dd466f6f60ab515f05fa38ba63b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79252803"
 ---
 # <a name="monitor-server-metrics"></a>Metrische servergegevens bewaken
 
-Analysis Services biedt statistieken in Azure Metrics Explorer, een gratis hulpprogramma in de portal, om u te helpen de prestaties en status van uw servers te controleren. Controleer bijvoorbeeld het geheugen en cpu-gebruik, het aantal clientverbindingen en het verbruik van querybronnen. Analysis Services gebruikt hetzelfde bewakingsframework als de meeste andere Azure-services. Zie [Aan de slag met Azure Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md)voor meer informatie.
+Analysis Services biedt metrische gegevens in azure Metrics Explorer, een gratis hulp programma in de portal, waarmee u de prestaties en de status van uw servers kunt bewaken. Bewaak bijvoorbeeld het geheugen-en CPU-gebruik, het aantal client verbindingen en het Resource verbruik van de query. Analysis Services gebruikt hetzelfde bewakings raamwerk als de meeste andere Azure-Services. Zie aan de slag [met Azure Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md)voor meer informatie.
 
-Als u meer diepgaande diagnostiek wilt uitvoeren, prestaties wilt bijhouden en trends wilt identificeren in meerdere serviceresources in een resourcegroep of -abonnement, gebruikt u [Azure Monitor](../azure-monitor/overview.md). Azure Monitor (service) kan resulteren in een factureerbare service.
+Als u meer uitgebreide diagnostische gegevens wilt uitvoeren, de prestaties wilt bijhouden en trends wilt identificeren voor meerdere service resources in een resource groep of abonnement, gebruikt u [Azure monitor](../azure-monitor/overview.md). Azure Monitor (Service) kan resulteren in een factureer bare service.
 
 
-## <a name="to-monitor-metrics-for-an-analysis-services-server"></a>Statistieken voor een Analysis Services-server controleren
+## <a name="to-monitor-metrics-for-an-analysis-services-server"></a>Meet gegevens voor een Analysis Services server bewaken
 
-1. Selecteer in Azure-portal de optie **Metrische gegevens**.
+1. Selecteer in Azure Portal **metrische gegevens**.
 
     ![Bewaken in Azure Portal](./media/analysis-services-monitor/aas-monitor-portal.png)
 
-2. Selecteer **in Metric**de statistieken die u in uw grafiek wilt opnemen. 
+2. Selecteer bij **metrische gegevens**de metrische gegevens die u in uw grafiek wilt gebruiken. 
 
-    ![Monitordiagram](./media/analysis-services-monitor/aas-monitor-chart.png)
+    ![Bewaak diagram](./media/analysis-services-monitor/aas-monitor-chart.png)
 
 <a id="#server-metrics"></a>
 
-## <a name="server-metrics"></a>Serverstatistieken
+## <a name="server-metrics"></a>Metrische Server gegevens
 
-Gebruik deze tabel om te bepalen welke statistieken het beste zijn voor uw bewakingsscenario. Alleen statistieken van dezelfde eenheid kunnen op dezelfde grafiek worden weergegeven.
+Gebruik deze tabel om te bepalen welke metrische gegevens het meest geschikt zijn voor uw bewakings scenario. In hetzelfde diagram kunnen alleen metrische gegevens van dezelfde eenheid worden weer gegeven.
 
-|Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|
 |---|---|---|---|---|
-|CommandPoolJobQueueLengte|Wachtrijlengte van taakgroep|Count|Average|Aantal taken in de wachtrij van de command thread pool.|
-|Huidige verbindingen|Verbinding: huidige verbindingen|Count|Average|Huidig aantal clientverbindingen tot stand gebracht.|
-|CurrentUserSessions|Huidige gebruikerssessies|Count|Average|Huidig aantal gebruikerssessies ingesteld.|
-|mashup_engine_memory_metric|M-enginegeheugen|Bytes|Average|Geheugengebruik door mashup-engineprocessen|
-|mashup_engine_qpu_metric|M Engine QPU|Count|Average|QPU-gebruik door mashup-motorprocessen|
+|CommandPoolJobQueueLength|Wachtrij lengte van de opdracht pool taak|Count|Average|Aantal taken in de wachtrij van de opdracht thread pool.|
+|CurrentConnections|Verbinding: huidige verbindingen|Count|Average|Het huidige aantal client verbindingen dat tot stand is gebracht.|
+|CurrentUserSessions|Huidige gebruikers sessies|Count|Average|Het huidige aantal gebruikers sessies dat tot stand is gebracht.|
+|mashup_engine_memory_metric|M-engine geheugen|Bytes|Average|Geheugen gebruik door mashup-engine processen|
+|mashup_engine_qpu_metric|M-engine QPU|Count|Average|QPU-gebruik door mashup-engine processen|
 |memory_metric|Geheugen|Bytes|Average|Geheugen. Bereik 0-25 GB voor S1, 0-50 GB voor S2 en 0-100 GB voor S4|
-|memory_thrashing_metric|Geheugenthrashing|Percentage|Average|Gemiddelde geheugen geseling.|
-|Schonerestroomprijs|Geheugen: Schonere huidige prijs|Count|Average|Huidige prijs van het geheugen, $/byte/time, genormaliseerd tot 1000.|
-|CleanerMemoryNonshrinkable CleanerMemory|Geheugen: Schoner geheugen niet krimpend|Bytes|Average|Hoeveelheid geheugen, in bytes, niet onderhevig aan zuivering door de achtergrond reiniger.|
-|CleanerMemoryKrimpbaar|Geheugen: Schoner geheugen krimpbaar|Bytes|Average|Hoeveelheid geheugen, in bytes, onder voorbehoud van zuivering door de achtergrond reiniger.|
-|MemoryLimitHard|Geheugen: Geheugenlimiet hard|Bytes|Average|Limiet voor hard geheugen, uit configuratiebestand.|
-|MemoryLimitHigh|Geheugen: geheugenlimiet hoog|Bytes|Average|Hoge geheugenlimiet, van configuratiebestand.|
-|MemoryLimitLow|Geheugen: geheugenlimiet laag|Bytes|Average|Lage geheugenlimiet, van configuratiebestand.|
-|MemoryLimitVertiPaq|Geheugen: Geheugenlimiet VertiPaq|Bytes|Average|In-memory limit, van configuratiebestand.|
-|Geheugengebruik|Geheugen: geheugengebruik|Bytes|Average|Geheugengebruik van het serverproces zoals gebruikt bij het berekenen van een schonere geheugenprijs. Gelijk aan tegenproces\PrivateBytes plus de grootte van geheugentoegewezen gegevens, waarbij elk geheugen wordt genegeerd, dat in kaart is gebracht of toegewezen is toegewezen door de in-memory analytics-engine (VertiPaq) die hoger is dan de geheugenlimiet van de engine.|
-|private_bytes_metric|Privébytes |Bytes|Average|De totale hoeveelheid geheugen die het analysis services-engineproces en mashup-containerprocessen hebben toegewezen, zonder geheugen dat wordt gedeeld met andere processen.|
-|virtual_bytes_metric|Virtuele bytes |Bytes|Average|De huidige grootte van de virtuele adresruimte die analysis services-engineproces en Mashup-containerprocessen gebruiken.|
-|mashup_engine_private_bytes_metric|M Engine Private Bytes |Bytes|Average|De totale hoeveelheid geheugen Mashup container processen hebben toegewezen, met inbegrip van geheugen gedeeld met andere processen.|
-|mashup_engine_virtual_bytes_metric|Virtuele bytes van M Engine |Bytes|Average|De huidige grootte van de virtuele adresruimte die Mashup-containerprocessen gebruikt.|
-|Quota|Geheugen: Quotum|Bytes|Average|Huidig geheugenquotum, in bytes. Geheugenquotum wordt ook wel geheugensubsidie of geheugenreservering genoemd.|
-|Quotageblokkeerd|Geheugen: Quotum geblokkeerd|Count|Average|Huidig aantal quotaaanvragen dat wordt geblokkeerd totdat andere geheugenquota zijn vrijgemaakt.|
-|VertiPaqNonpaged|Geheugen: VertiPaq Nonpaged|Bytes|Average|Bytes geheugen die zijn vergrendeld in de werkset voor gebruik door de geheugenengine.|
-|VertiPaqPaged|Geheugen: VertiPaq Paged|Bytes|Average|Bytes van het opgepiepte geheugen dat wordt gebruikt voor gegevens in het geheugen.|
-|ProcessingpoolJobQueueLength|Wachtrijlengte van de groeptaak verwerken|Count|Average|Aantal niet-I/O-taken in de wachtrij van de verwerkingsthreadgroep.|
-|Rijenomgebouwde persec|Verwerking: rijen die per seconde worden geconverteerd|CountPerSeconde|Average|Snelheid van rijen die tijdens de verwerking worden omgezet.|
-|RowsReadPersec|Verwerking: Rijen per seconde gelezen|CountPerSeconde|Average|Snelheid van rijen die worden gelezen uit alle relationele databases.|
-|RijengeschrevenPersec|Verwerking: rijen geschreven per seconde|CountPerSeconde|Average|Snelheid van rijen geschreven tijdens de verwerking.|
-|qpu_metric|QPU (QPU)|Count|Average|QPU. Bereik 0-100 voor S1, 0-200 voor S2 en 0-400 voor S4|
-|QuerypoolBusyThreads|Drukke threads voor querygroep|Count|Average|Aantal drukke threads in de querythreadgroep.|
-|Succesvolle verbindingenPerSec|Succesvolle verbindingen per seconde|CountPerSeconde|Average|Snelheid van succesvolle verbindingsvoltooiingen.|
-|CommandPoolBusyThreads|Threads: Drukke threads voor het uitvoeren van opdrachten|Count|Average|Aantal drukke threads in de command thread pool.|
-|CommandPoolIdleThreads|Threads: Niet-actieve threads van de opdrachtgroep|Count|Average|Aantal niet-actieve threads in de command thread pool.|
-|LongParsingBusyThreads|Threads: Lange ontwering drukke threads|Count|Average|Aantal drukke threads in de lange parsing thread pool.|
-|LongParsingIdleThreads|Threads: Lange ontwering idle threads|Count|Average|Aantal niet-actieve threads in de lange parsing thread pool.|
-|LongParsingJobQueueLength|Threads: Lange ontwering taakwachtrijlengte|Count|Average|Aantal taken in de wachtrij van de lange parsingthreadpool.|
-|ProcessingpoolIOJobQueueLength|Threads: De wachtrijlengte van de groep I/O verwerken|Count|Average|Aantal I/O-taken in de wachtrij van de verwerkingsthreadgroep.|
-|ProcessingpoolBusyIOJobThreads|Threads: Verwerking van de gedrukke I/O-taakthreads|Count|Average|Aantal threads met I/O-taken in de verwerkingsthreadgroep.|
-|ProcessingpoolBusyNonIOThreads|Threads: Verwerking van druk niet-I/O-threads|Count|Average|Aantal threads waarop niet-I/O-taken worden uitgevoerd in de verwerkingsthreadgroep.|
-|VerwerkingPoolIdleIOJobThreads|Threads: I/O-taakthreads verwerken|Count|Average|Aantal niet-actieve threads voor I/O-taken in de verwerkingsthreadgroep.|
-|VerwerkingPoolIdleNonIOThreads|Threads: Niet-I/O-threads verwerken|Count|Average|Aantal niet-actieve threads in de verwerkingsthreadpool die is gewijd aan niet-I/O-taken.|
-|QueryPoolIdleThreads|Threads: Niet-actieve threads van de querygroep|Count|Average|Aantal niet-actieve threads voor I/O-taken in de verwerkingsthreadgroep.|
-|QuerypoolJobQueueLengte|Threads: wachtrijlengte van de querygroeptaak|Count|Average|Aantal taken in de wachtrij van de querythreadgroep.|
-|ShortParsingBusyThreads|Threads: Korte parsing drukke threads|Count|Average|Aantal drukke threads in de korte parsing thread pool.|
-|ShortParsingIdleThreads|Threads: Korte ontwering idle threads|Count|Average|Aantal niet-actieve threads in de korte parsing thread pool.|
-|ShortParsingJobQueueLength ShortParsingJobQueueLength ShortParsingJobQueueLength ShortPar|Threads: Korte afstand van de taakwachtrijlengte|Count|Average|Aantal taken in de wachtrij van de korte parsing thread pool.|
-|TotalConnection-fouten|Totale verbindingsfouten|Count|Average|Totaal mislukte verbindingspogingen.|
-|TotalConnectionRequests|Totaal aantal verbindingsaanvragen|Count|Average|Totaal aantal verbindingsaanvragen. |
+|memory_thrashing_metric|Geheugenthrashing|Percentage|Average|Gemiddeld geheugen overbelasting.|
+|CleanerCurrentPrice|Geheugen: huidige prijs opschonen|Count|Average|Huidige prijs van geheugen, $/byte/tijd), genormaliseerd naar 1000.|
+|CleanerMemoryNonshrinkable|Geheugen: Removal-geheugen kan niet worden verkleind|Bytes|Average|Hoeveelheid geheugen (in bytes) die niet wordt verwijderd door de achtergrond opschoning.|
+|CleanerMemoryShrinkable|Geheugen: verkleinbaar geheugen|Bytes|Average|De hoeveelheid geheugen (in bytes) die wordt verwijderd door de achtergrond opschoning.|
+|MemoryLimitHard|Geheugen: vaste geheugen limiet|Bytes|Average|Vaste geheugen limiet, van configuratie bestand.|
+|MemoryLimitHigh|Geheugen: hoge geheugen limiet|Bytes|Average|Hoge geheugen limiet, van configuratie bestand.|
+|MemoryLimitLow|Geheugen: lage geheugen limiet|Bytes|Average|Limiet voor weinig geheugen, van configuratie bestand.|
+|MemoryLimitVertiPaq|Geheugen: VertiPaq-geheugen limiet|Bytes|Average|In-Memory limiet, van configuratie bestand.|
+|MemoryUsage|Geheugen: geheugen gebruik|Bytes|Average|Geheugen gebruik van het Server proces zoals gebruikt bij het berekenen van de prijs voor het schonen van geheugen. Gelijk aan Counter Process\PrivateBytes plus de grootte van gegevens die zijn toegewezen door het geheugen, waarbij elk geheugen wordt genegeerd dat is toegewezen aan of toegewezen door de in-Memory Analytics Engine (VertiPaq) die de geheugen limiet van het engine overschrijdt.|
+|private_bytes_metric|Privé-bytes |Bytes|Average|De totale hoeveelheid geheugen die het Analysis Services engine proces en de mashup-container processen hebben toegewezen, exclusief geheugen gedeeld met andere processen.|
+|virtual_bytes_metric|Virtuele bytes |Bytes|Average|De huidige grootte van de virtuele adres ruimte die Analysis Services engine proces en mashup-container processen gebruiken.|
+|mashup_engine_private_bytes_metric|M-engine-eigen bytes |Bytes|Average|De totale hoeveelheid geheugen-mashup-container processen zijn toegewezen, exclusief geheugen gedeeld met andere processen.|
+|mashup_engine_virtual_bytes_metric|M-engine virtuele bytes |Bytes|Average|De huidige grootte van de mashup-container processen van de virtuele adres ruimte wordt gebruikt.|
+|Quota|Geheugen: quotum|Bytes|Average|Huidig geheugen quotum, in bytes. Geheugen quota wordt ook wel een geheugen toekenning of geheugen reservering genoemd.|
+|QuotaBlocked|Geheugen: quotum geblokkeerd|Count|Average|Het huidige aantal quotum aanvragen dat is geblokkeerd totdat andere geheugen quota zijn vrijgemaakt.|
+|VertiPaqNonpaged|Geheugen: VertiPaq niet-wisselbaar|Bytes|Average|Geheugen bytes vergrendeld in de werkset voor gebruik door de in-Memory engine.|
+|VertiPaqPaged|Geheugen: VertiPaq-pagina|Bytes|Average|Bytes van wisselbaar geheugen die in gebruik zijn voor in-Memory gegevens.|
+|ProcessingPoolJobQueueLength|Wachtrij lengte van de pool taak wordt verwerkt|Count|Average|Het aantal niet-I/O-taken in de wachtrij van de verwer kende thread pool.|
+|RowsConvertedPerSec|Verwerken: geconverteerde rijen per seconde|CountPerSecond|Average|Het aantal rijen dat tijdens de verwerking is geconverteerd.|
+|RowsReadPerSec|Verwerken: gelezen rijen per seconde|CountPerSecond|Average|Het aantal rijen dat van alle relationele data bases is gelezen.|
+|RowsWrittenPerSec|Verwerken: geschreven rijen per seconde|CountPerSecond|Average|Het aantal rijen dat tijdens de verwerking is geschreven.|
+|qpu_metric|QPU|Count|Average|QPU. Bereik 0-100 voor S1, 0-200 voor S2 en 0-400 voor S4|
+|QueryPoolBusyThreads|Query's pool bezette threads|Count|Average|Het aantal actieve threads in de query thread pool.|
+|SuccessfullConnectionsPerSec|Geslaagde verbindingen per seconde|CountPerSecond|Average|Snelheid van geslaagde verbindings voltooiingen.|
+|CommandPoolBusyThreads|Threads: actieve threads van opdracht pool|Count|Average|Het aantal actieve threads in de opdracht thread pool.|
+|CommandPoolIdleThreads|Threads: niet-actieve threads van opdracht pool|Count|Average|Het aantal niet-actieve threads in de opdracht thread pool.|
+|LongParsingBusyThreads|Threads: bezette threads voor lang parseren|Count|Average|Het aantal actieve threads in de thread pool voor lang parseren.|
+|LongParsingIdleThreads|Threads: niet-actieve threads voor lang parseren|Count|Average|Het aantal niet-actieve threads in de thread pool voor lang parseren.|
+|LongParsingJobQueueLength|Threads: lengte van taak wachtrij voor lang parseren|Count|Average|Aantal taken in de wachtrij van de thread pool voor lang parseren.|
+|ProcessingPoolIOJobQueueLength|Threads: lengte van I/O-taak wachtrij voor verwerking van groep|Count|Average|Het aantal I/O-taken in de wachtrij van de verwer kende thread pool.|
+|ProcessingPoolBusyIOJobThreads|Threads: bezig met verwerken van I/O-taak threads van pool|Count|Average|Het aantal threads waarmee I/O-taken worden uitgevoerd in de verwer kende thread pool.|
+|ProcessingPoolBusyNonIOThreads|Threads: bezig met het verwerken van niet-I/O-threads van de groep|Count|Average|Het aantal threads met niet-I/O-taken in de verwer kende thread pool.|
+|ProcessingPoolIdleIOJobThreads|Threads: niet-actieve I/O-taak threads van de groep verwerken|Count|Average|Het aantal niet-actieve threads voor I/O-taken in de verwer kende thread pool.|
+|ProcessingPoolIdleNonIOThreads|Threads: niet-I/O-threads van de groep worden verwerkt|Count|Average|Het aantal niet-actieve threads in de verwer kende thread pool dat is gereserveerd voor niet-I/O-taken.|
+|QueryPoolIdleThreads|Threads: niet-actieve threads van query pool|Count|Average|Het aantal niet-actieve threads voor I/O-taken in de verwer kende thread pool.|
+|QueryPoolJobQueueLength|Threads: lengte van taak wachtrij voor query pool|Count|Average|Aantal taken in de wachtrij van de query thread pool.|
+|ShortParsingBusyThreads|Threads: bezette threads voor kort parseren|Count|Average|Het aantal actieve threads in de thread pool voor kort parseren.|
+|ShortParsingIdleThreads|Threads: niet-actieve threads voor kort parseren|Count|Average|Het aantal niet-actieve threads in de thread pool voor kort parseren.|
+|ShortParsingJobQueueLength|Threads: lengte van taak wachtrij voor kort parseren|Count|Average|Aantal taken in de wachtrij van de thread pool voor kort parseren.|
+|TotalConnectionFailures|Totaal aantal verbindings fouten|Count|Average|Totaal aantal mislukte Verbindings pogingen.|
+|TotalConnectionRequests|Totaal aantal verbindings aanvragen|Count|Average|Totaal aantal verbindings aanvragen. |
 
 ## <a name="next-steps"></a>Volgende stappen
 [Overzicht van Azure Monitor](../azure-monitor/overview.md)      
 [Aan de slag met Azure Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md)      
-[Statistieken in Azure Monitor REST API](/rest/api/monitor/metrics)
+[Metrische gegevens in Azure Monitor REST API](/rest/api/monitor/metrics)

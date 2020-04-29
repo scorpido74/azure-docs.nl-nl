@@ -1,56 +1,56 @@
 ---
-title: Azure-toepassingsinzichten automatiseren met PowerShell | Microsoft Documenten
-description: Automatiseer het maken en beheren van resources, waarschuwingen en beschikbaarheidstests in PowerShell met behulp van een Azure Resource Manager-sjabloon.
+title: Azure-toepassing Insights automatiseren met Power shell | Microsoft Docs
+description: Het maken en beheren van resources, waarschuwingen en beschikbaarheids tests in Power shell automatiseren met behulp van een Azure Resource Manager sjabloon.
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: 9494b659b5b4357f3190c45d8cc72c4e130f0ecc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275878"
 ---
-#  <a name="manage-application-insights-resources-using-powershell"></a>Resources voor toepassingsinzichten beheren met PowerShell
+#  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-resources beheren met Power shell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-In dit artikel ziet u hoe u de creatie en update van [application insights-resources](../../azure-monitor/app/app-insights-overview.md) automatisch automatiseren met Azure Resource Management. U dit bijvoorbeeld doen als onderdeel van een bouwproces. Samen met de basisbron Application Insights u [webtests voor beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md)maken, [waarschuwingen](../../azure-monitor/app/alerts.md)instellen, het [prijsschema](pricing.md)instellen en andere Azure-bronnen maken.
+Dit artikel laat u zien hoe u het maken en bijwerken van [Application Insights](../../azure-monitor/app/app-insights-overview.md) resources automatisch kunt automatiseren met behulp van Azure resource management. Als onderdeel van een bouw proces kunt u bijvoorbeeld het volgende doen. Naast de basis Application Insights resource kunt u [Beschik baarheid-webtesten](../../azure-monitor/app/monitor-web-app-availability.md)maken, [waarschuwingen](../../azure-monitor/app/alerts.md)instellen, het [prijs schema](pricing.md)instellen en andere Azure-resources maken.
 
-De sleutel tot het maken van deze resources zijn JSON-sjablonen voor [Azure Resource Manager.](../../azure-resource-manager/management/manage-resources-powershell.md) De basisprocedure is: download de JSON definities van bestaande bronnen; bepaalde waarden zoals namen te parameteriseren; en voer de sjabloon uit wanneer u een nieuwe bron wilt maken. U meerdere resources samenverpakken om ze allemaal in één keer te maken, bijvoorbeeld een app-monitor met beschikbaarheidstests, waarschuwingen en opslag voor continue export. Er zijn enkele subtiliteiten aan sommige van de parameterisaties, die we hier zullen uitleggen.
+De sleutel voor het maken van deze resources is JSON-sjablonen voor [Azure Resource Manager](../../azure-resource-manager/management/manage-resources-powershell.md). De basis procedure is: de JSON-definities van bestaande resources downloaden; para meters bepaalde waarden, zoals namen, en voer vervolgens de sjabloon uit wanneer u een nieuwe resource wilt maken. U kunt meerdere resources samenbundelen om ze allemaal in één keer te maken, bijvoorbeeld een app-monitor met beschikbaarheids tests, waarschuwingen en opslag voor continue export. Er zijn enkele finesses naar een aantal van de parameterizations, die hier wordt uitgelegd.
 
 ## <a name="one-time-setup"></a>Eenmalige installatie
-Als u PowerShell nog niet eerder met uw Azure-abonnement hebt gebruikt:
+Als u Power shell nog niet eerder hebt gebruikt met uw Azure-abonnement:
 
-Installeer de Azure Powershell-module op de machine waar u de scripts wilt uitvoeren:
+Installeer de Azure Power shell-module op de computer waarop u de scripts wilt uitvoeren:
 
-1. [Microsoft Web Platform Installer (v5 of hoger) installeren.](https://www.microsoft.com/web/downloads/platform.aspx)
-2. Gebruik het om Microsoft Azure Powershell te installeren.
+1. Installeer het [installatie programma voor het micro soft-webplatform (V5 of hoger)](https://www.microsoft.com/web/downloads/platform.aspx).
+2. Gebruik het om Microsoft Azure Power shell te installeren.
 
-Naast het gebruik van Resource Manager-sjablonen, is er een uitgebreide set [Application Insights PowerShell-cmdlets](https://docs.microsoft.com/powershell/module/az.applicationinsights), waardoor het eenvoudig is om toepassingsinzichten-bronnen programmatisch te configureren. De mogelijkheden die door de cmdlets worden ingeschakeld, zijn:
+Naast het gebruik van Resource Manager-sjablonen beschikt u over een uitgebreide set [Application Insights Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.applicationinsights), waarmee u eenvoudig Application Insights resources kunt configureren. De mogelijkheden die zijn ingeschakeld door de cmdlets zijn onder andere:
 
-* Bronnen voor Application Insights maken en verwijderen
-* Lijsten met resources voor Application Insights en hun eigenschappen opmaken
+* Application Insights-resources maken en verwijderen
+* Een lijst met Application Insights resources en de bijbehorende eigenschappen ophalen
 * Continue export maken en beheren
-* Toepassingssleutels maken en beheren
-* Stel de dagelijkse limiet in
-* Het prijsplan instellen
+* Toepassings sleutels maken en beheren
+* Het dagelijks kapje instellen
+* Het prijs plan instellen
 
-## <a name="create-application-insights-resources-using-a-powershell-cmdlet"></a>Application Insights-bronnen maken met een PowerShell-cmdlet
+## <a name="create-application-insights-resources-using-a-powershell-cmdlet"></a>Application Insights-resources maken met een Power shell-cmdlet
 
-U als u als volgende een nieuwe Application Insights-bron maken in het Azure East US-datacenter met de cmdlet [Nieuw-AzApplicationInsights:](https://docs.microsoft.com/powershell/module/az.applicationinsights/New-AzApplicationInsights)
+U kunt als volgt een nieuwe Application Insights-resource maken in het Azure-Oost-Data Center met behulp van de cmdlet [New-AzApplicationInsights](https://docs.microsoft.com/powershell/module/az.applicationinsights/New-AzApplicationInsights) :
 
 ```PS
 New-AzApplicationInsights -ResourceGroupName <resource group> -Name <resource name> -location eastus
 ```
 
 
-## <a name="create-application-insights-resources-using-a-resource-manager-template"></a>Resources voor toepassingsinzichten maken met een sjabloon Resourcemanager
+## <a name="create-application-insights-resources-using-a-resource-manager-template"></a>Application Insights resources maken met een resource manager-sjabloon
 
-U als u als voorbeeld een nieuwe Application Insights-bron maken met behulp van een resourcemanagersjabloon.
+U kunt als volgt een nieuwe Application Insights resource maken met behulp van een resource manager-sjabloon.
 
-### <a name="create-the-azure-resource-manager-template"></a>De sjabloon Azure Resource Manager maken
+### <a name="create-the-azure-resource-manager-template"></a>De Azure Resource Manager sjabloon maken
 
-Maak een nieuw .json-bestand - `template1.json` laten we het in dit voorbeeld noemen. Kopieer deze inhoud erin:
+Maak een nieuw. JSON-bestand, zodat het in `template1.json` dit voor beeld kan worden aangeroepen. Kopieer deze inhoud hierin:
 
 ```JSON
     {
@@ -186,11 +186,11 @@ Maak een nieuw .json-bestand - `template1.json` laten we het in dit voorbeeld no
     }
 ```
 
-### <a name="use-the-resource-manager-template-to-create-a-new-application-insights-resource"></a>De sjabloon Resourcemanager gebruiken om een nieuwe application insights-bron te maken
+### <a name="use-the-resource-manager-template-to-create-a-new-application-insights-resource"></a>De Resource Manager-sjabloon gebruiken om een nieuwe Application Insights resource te maken
 
-1. Log in PowerShell in bij Azure met`$Connect-AzAccount`
-2. Uw context instellen op een abonnement met`Set-AzContext "<subscription ID>"`
-2. Voer een nieuwe implementatie uit om een nieuwe Application Insights-bron te maken:
+1. Meld u in Power shell aan bij Azure met`$Connect-AzAccount`
+2. Stel uw context in op een abonnement met`Set-AzContext "<subscription ID>"`
+2. Voer een nieuwe implementatie uit om een nieuwe Application Insights-resource te maken:
    
     ```PS
         New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
@@ -200,14 +200,14 @@ Maak een nieuw .json-bestand - `template1.json` laten we het in dit voorbeeld no
     ``` 
    
    * `-ResourceGroupName`is de groep waar u de nieuwe resources wilt maken.
-   * `-TemplateFile`moeten plaatsvinden vóór de aangepaste parameters.
-   * `-appName`De naam van de te maken bron.
+   * `-TemplateFile`moet vóór de aangepaste para meters plaatsvinden.
+   * `-appName`De naam van de resource die moet worden gemaakt.
 
-U andere parameters toevoegen - u vindt hun beschrijvingen in het gedeelte parameters van de sjabloon.
+U kunt andere para meters toevoegen: Hier vindt u de beschrijvingen in het gedeelte para meters van de sjabloon.
 
-## <a name="get-the-instrumentation-key"></a>Haal de instrumentatiesleutel op
+## <a name="get-the-instrumentation-key"></a>De instrumentatie sleutel ophalen
 
-Nadat u een toepassingsbron hebt hebt gemaakt, wilt u de instrumentatietoets: 
+Nadat u een toepassings resource hebt gemaakt, wilt u de instrumentatie sleutel: 
 
 1. `$Connect-AzAccount`
 2. `Set-AzContext "<subscription ID>"`
@@ -215,35 +215,35 @@ Nadat u een toepassingsbron hebt hebt gemaakt, wilt u de instrumentatietoets:
 4. `$details = Get-AzResource -ResourceId $resource.ResourceId`
 5. `$details.Properties.InstrumentationKey`
 
-Gebruik het als u een lijst met vele andere eigenschappen van uw toepassingsstatistiekenbron wilt weergeven:
+Als u een lijst met veel andere eigenschappen van uw Application Insights resource wilt weer geven, gebruikt u:
 
 ```PS
 Get-AzApplicationInsights -ResourceGroupName Fabrikam -Name FabrikamProd | Format-List
 ```
 
-Extra eigenschappen zijn beschikbaar via de cmdlets:
+Aanvullende eigenschappen zijn beschikbaar via de-cmdlets:
 * `Set-AzApplicationInsightsDailyCap`
 * `Set-AzApplicationInsightsPricingPlan`
 * `Get-AzApplicationInsightsApiKey`
 * `Get-AzApplicationInsightsContinuousExport`
 
-Raadpleeg de [gedetailleerde documentatie](https://docs.microsoft.com/powershell/module/az.applicationinsights) voor de parameters voor deze cmdlets.  
+Raadpleeg de [gedetailleerde documentatie](https://docs.microsoft.com/powershell/module/az.applicationinsights) voor de para meters voor deze cmdlets.  
 
-## <a name="set-the-data-retention"></a>De gegevensbewaring instellen 
+## <a name="set-the-data-retention"></a>De Bewaar periode voor gegevens instellen 
 
-Als u de huidige gegevensbewaring voor uw Application Insights-bron wilt verkrijgen, u de OSS-tool [ARMClient gebruiken.](https://github.com/projectkudu/ARMClient)  (Meer informatie over ARMClient uit artikelen van [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) en [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).)  Hier is een `ARMClient`voorbeeld met behulp van , om de huidige retentie te krijgen:
+Als u de huidige gegevens retentie voor uw Application Insights resource wilt ophalen, kunt u het OSS-hulp programma [ARMClient](https://github.com/projectkudu/ARMClient)gebruiken.  (Meer informatie over ARMClient van artikelen op [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) en de [Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).)  Hier volgt een voor beeld `ARMClient`van om de huidige retentie te verkrijgen:
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview
 ```
 
-Als u de bewaarfunctie wilt instellen, is de opdracht een vergelijkbare PUT:
+Als u de retentie wilt instellen, is de opdracht een soort gelijke PUT:
 
 ```PS
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview "{location: 'eastus', properties: {'retentionInDays': 365}}"
 ```
 
-Voer het opslaan van gegevens in op 365 dagen met de bovenstaande sjabloon:
+Voer de volgende handelingen uit om de gegevens retentie tot 365 dagen in te stellen met behulp van de bovenstaande sjabloon:
 
 ```PS
 New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
@@ -252,7 +252,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
        -appName myApp
 ```
 
-Het volgende script kan ook worden gebruikt om retentie te wijzigen. Kopieer dit script `Set-ApplicationInsightsRetention.ps1`om op te slaan als .
+Het volgende script kan ook worden gebruikt voor het wijzigen van de Bewaar periode. Kopieer dit script om op te `Set-ApplicationInsightsRetention.ps1`slaan.
 
 ```PS
 Param(
@@ -312,50 +312,50 @@ Set-ApplicationInsightsRetention `
         [-RetentionInDays <Int>]
 ```
 
-## <a name="set-the-daily-cap"></a>Stel de dagelijkse dop in
+## <a name="set-the-daily-cap"></a>Het dagelijks kapje instellen
 
-Gebruik de cmdlet [Set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) om de dagelijkse dopeigenschappen te krijgen: 
+Als u de eigenschappen van het dagelijks kapje wilt ophalen, gebruikt u de cmdlet [set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) : 
 
 ```PS
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> | Format-List
 ```
 
-Als u de dagelijkse dopeigenschappen wilt instellen, gebruikt u dezelfde cmdlet. Bijvoorbeeld om de limiet in te stellen op 300 GB/dag,
+Gebruik dezelfde cmdlet om de eigenschappen van het dagelijks kapje in te stellen. Om bijvoorbeeld de Cap in te stellen op 300 GB/dag,
 
 ```PS
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> -DailyCapGB 300
 ```
 
-U [ARMClient](https://github.com/projectkudu/ARMClient) ook gebruiken om dagelijkse limietparameters te krijgen en in te stellen.  Gebruik het als u de huidige waarden wilt krijgen:
+U kunt [ARMClient](https://github.com/projectkudu/ARMClient) ook gebruiken om dagelijkse Cap-para meters op te halen en in te stellen.  Als u de huidige waarden wilt ophalen, gebruikt u:
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
 ```
 
-## <a name="set-the-daily-cap-reset-time"></a>De tijd voor het opnieuw instellen van de dagelijkse dop instellen
+## <a name="set-the-daily-cap-reset-time"></a>De tijd voor het instellen van de dagelijkse limiet instellen
 
-Als u de tijd voor het instellen van de dagelijkse dop instellen, u [ARMClient](https://github.com/projectkudu/ARMClient)gebruiken. Hier volgt een `ARMClient`voorbeeld met , om de resettijd in te stellen op een nieuw uur (in dit voorbeeld 12:00 GMT):
+Als u de tijd voor het opnieuw instellen van dagelijks Cap wilt instellen, kunt u [ARMClient](https://github.com/projectkudu/ARMClient)gebruiken. Hier volgt een voor beeld `ARMClient`van het gebruik van om de tijd voor opnieuw instellen in te stellen op een nieuw uur (in dit voor beeld 12:00 UTC):
 
 ```PS
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview "{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'ResetTime':12}}"
 ```
 
 <a id="price"></a>
-## <a name="set-the-pricing-plan"></a>Het prijsplan instellen 
+## <a name="set-the-pricing-plan"></a>Het prijs plan instellen 
 
-Gebruik de cmdlet [Set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) om het huidige prijsplan op te halen:
+Gebruik de cmdlet [set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) om het huidige prijs plan op te halen:
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
 ```
 
-Als u het prijsplan wilt instellen, `-PricingPlan` gebruikt u dezelfde cmdlet met de opgegeven:  
+Als u het prijs plan wilt instellen, gebruikt u dezelfde `-PricingPlan` cmdlet met de opgegeven waarde:  
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> -PricingPlan Basic
 ```
 
-U ook het prijsplan instellen voor een bestaande Application Insights-bron met de bovenstaande sjabloon Resourcebeheer, door de bron 'microsoft.insights/components' en het knooppunt van de `dependsOn` factureringsbron weg te laten. Als u het bijvoorbeeld wilt instellen op het plan Per GB (voorheen het Basisplan), voert u het volgende uit:
+U kunt ook het prijs plan op een bestaande Application Insights resource instellen met behulp van de Resource Manager-sjabloon hierboven, waarbij de resource micro soft. Insights/onderdelen `dependsOn` en het knoop punt van de facturerings bron worden wegge laten. Als u dit bijvoorbeeld wilt instellen op het abonnement per GB (voorheen het basis abonnement genoemd), voert u de volgende handelingen uit:
 
 ```PS
         New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
@@ -366,66 +366,66 @@ U ook het prijsplan instellen voor een bestaande Application Insights-bron met d
 
 De `priceCode` wordt gedefinieerd als:
 
-|prijsCode|plannen|
+|priceCode|plannen|
 |---|---|
-|1|Per GB (voorheen het Basisplan genoemd)|
-|2|Per knooppunt (voorheen het Enterprise-plan genoemd)|
+|1|Per GB (voorheen de naam van het Basic-abonnement)|
+|2|Per knoop punt (voorheen de naam van het bedrijfs plan)|
 
-Ten slotte u [ARMClient](https://github.com/projectkudu/ARMClient) gebruiken om prijsplannen en dagelijkse limietparameters te krijgen en in te stellen.  Gebruik het als u de huidige waarden wilt krijgen:
+Ten slotte kunt u [ARMClient](https://github.com/projectkudu/ARMClient) gebruiken om prijs plannen en dagelijkse Cap-para meters op te halen en in te stellen.  Als u de huidige waarden wilt ophalen, gebruikt u:
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
 ```
 
-En u al deze parameters instellen met behulp van:
+En u kunt al deze para meters instellen met:
 
 ```PS
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
 "{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'Cap':200,'ResetTime':12,'StopSendNotificationWhenHitCap':true,'WarningThreshold':90,'StopSendNotificationWhenHitThreshold':true}}"
 ```
 
-Hiermee wordt de dagelijkse limiet ingesteld op 200 GB/dag, configureert u de dagelijkse cap resettijd op 12:00 UTC, stuurt u e-mails wanneer de dop wordt geraakt en wordt het waarschuwingsniveau gehaald en stelt u de waarschuwingsdrempel in op 90% van de dop.  
+Hiermee stelt u de dagelijkse limiet in op 200 GB per dag, configureert u de dagelijkse limiet voor het opnieuw instellen van 12:00 UTC, verzendt u e-mail berichten beide wanneer de limiet is bereikt, wordt het waarschuwings niveau bereikt en wordt de waarschuwings drempel ingesteld op 90% van de Cap.  
 
-## <a name="add-a-metric-alert"></a>Een metrische waarschuwing toevoegen
+## <a name="add-a-metric-alert"></a>Een waarschuwing voor metrische gegevens toevoegen
 
-Als u het maken van metrische waarschuwingen wilt automatiseren, raadpleegt u het [sjabloonartikel met metrische waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert)
+Als u het maken van metrische waarschuwingen wilt automatiseren, raadpleegt u het artikel over de [sjabloon metrische waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert)
 
 
-## <a name="add-an-availability-test"></a>Een beschikbaarheidstest toevoegen
+## <a name="add-an-availability-test"></a>Een beschikbaarheids test toevoegen
 
-Raadpleeg het [sjabloonartikel met metrische waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-an-availability-test-along-with-a-metric-alert)om beschikbaarheidstests te automatiseren.
+Als u beschikbaarheids testen wilt automatiseren, raadpleegt u het artikel over de [sjabloon metrische waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-an-availability-test-along-with-a-metric-alert).
 
 ## <a name="add-more-resources"></a>Meer resources toevoegen
 
-Als u het maken van een andere resource van welke aard dan ook wilt automatiseren, maakt u handmatig een voorbeeld en kopieert en parameteriseert u de code van [Azure Resource Manager.](https://resources.azure.com/) 
+Voor het automatiseren van het maken van een andere bron, maakt u hand matig een voor beeld en kopieert en para meters de code vervolgens uit [Azure Resource Manager](https://resources.azure.com/). 
 
-1. [Azure Resource Manager openen](https://resources.azure.com/). Navigeer omlaag `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`door, naar uw toepassingsbron. 
+1. Open [Azure Resource Manager](https://resources.azure.com/). Navigeer omlaag `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`naar de resource van uw toepassing. 
    
     ![Navigatie in Azure Resource Explorer](./media/powershell/01.png)
    
-    *Componenten* zijn de basisbronnen voor Application Insights voor het weergeven van toepassingen. Er zijn afzonderlijke bronnen voor de bijbehorende waarschuwingsregels en beschikbaarheidswebtests.
-2. Kopieer de JSON van de component `template1.json`naar de juiste plaats in .
+    *Onderdelen* zijn de basis bronnen van Application Insights voor het weer geven van toepassingen. Er zijn afzonderlijke resources voor de bijbehorende waarschuwings regels en beschikbaarheids webtests.
+2. Kopieer de JSON van het onderdeel naar de juiste plaats in `template1.json`.
 3. Verwijder deze eigenschappen:
    
    * `id`
    * `InstrumentationKey`
    * `CreationDate`
    * `TenantId`
-4. Open `webtests` de `alertrules` secties en kopieer de JSON voor afzonderlijke items naar uw sjabloon. (Kopieer niet vanuit `webtests` de `alertrules` of knooppunten: ga naar de items eronder.)
+4. Open de `webtests` secties `alertrules` en en kopieer de JSON voor afzonderlijke items naar uw sjabloon. (Kopieer niet van de `webtests` knoop `alertrules` punten of: Ga naar de items daaronder.)
    
-    Elke webtest heeft een bijbehorende waarschuwingsregel, dus u moet ze allebei kopiëren.
+    Elke webtest heeft een bijbehorende waarschuwings regel, zodat u beide kunt kopiëren.
    
-    U ook waarschuwingen opnemen over statistieken. [Metrische namen](powershell-alerts.md#metric-names).
+    U kunt ook waarschuwingen over metrische gegevens toevoegen. [Metrische namen](powershell-alerts.md#metric-names).
 5. Voeg deze regel in elke resource in:
    
     `"apiVersion": "2015-05-01",`
 
-### <a name="parameterize-the-template"></a>De sjabloon parameteriseren
-Nu moet je de specifieke namen vervangen door parameters. Als [u een sjabloon wilt parameteriseren,](../../azure-resource-manager/templates/template-syntax.md)schrijft u expressies met behulp van een set [helperfuncties](../../azure-resource-manager/templates/template-functions.md). 
+### <a name="parameterize-the-template"></a>De sjabloon para meters
+Nu moet u de specifieke namen vervangen door para meters. Als u [een sjabloon wilt para meters](../../azure-resource-manager/templates/template-syntax.md), schrijft u expressies met behulp [van een set hulp functies](../../azure-resource-manager/templates/template-functions.md). 
 
-U niet alleen een deel van een `concat()` tekenreeks parameteriseren, dus gebruik om tekenreeksen te bouwen.
+U kunt niet slechts een deel van een teken reeks para meters `concat()` , zodat u teken reeksen kunt bouwen.
 
-Hier volgen voorbeelden van de vervangingen die u wilt maken. Er zijn verschillende gevallen van elke substitutie. Mogelijk hebt u anderen in uw sjabloon nodig. Deze voorbeelden maken gebruik van de parameters en variabelen die we boven aan de sjabloon hebben gedefinieerd.
+Hier volgen enkele voor beelden van de vervangingen die u wilt maken. Er zijn verschillende exemplaren van elke vervanging. Mogelijk hebt u anderen nodig in uw sjabloon. In deze voor beelden worden de para meters en variabelen gebruikt die aan het begin van de sjabloon zijn gedefinieerd.
 
 | find | vervangen door |
 | --- | --- |
@@ -435,27 +435,27 @@ Hier volgen voorbeelden van de vervangingen die u wilt maken. Er zijn verschille
 | `"myWebTest-myAppName"` |`"[variables(testName)]"'` |
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
-| `"myappname"`(kleine letters) |`"[toLower(parameters('appName'))]"` |
+| `"myappname"`(kleine letter) |`"[toLower(parameters('appName'))]"` |
 | `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`|
 
-### <a name="set-dependencies-between-the-resources"></a>Afhankelijkheden tussen de resources instellen
-Azure moet de resources in strikte volgorde instellen. Voeg afhankelijkheidslijnen toe om ervoor te zorgen dat de ene installatie is voltooid voordat de volgende begint:
+### <a name="set-dependencies-between-the-resources"></a>Afhankelijkheden instellen tussen de resources
+Azure moet de resources in strikte volg orde instellen. Als u er zeker van wilt zijn dat de installatie is voltooid voordat de volgende begint, voegt u afhankelijkheids lijnen toe:
 
-* In de bron voor beschikbaarheidstests:
+* In de resource beschikbaarheids test:
   
     `"dependsOn": ["[resourceId('Microsoft.Insights/components', parameters('appName'))]"],`
-* In de waarschuwingsbron voor een beschikbaarheidstest:
+* In de waarschuwings resource voor een beschikbaarheids test:
   
     `"dependsOn": ["[resourceId('Microsoft.Insights/webtests', variables('testName'))]"],`
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Andere automatiseringsartikelen:
+Andere automatiserings artikelen:
 
-* [Maak een Application Insights-bron](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) - snelle methode zonder een sjabloon te gebruiken.
+* [Maak een Application Insights resource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) snelle methode zonder een sjabloon te gebruiken.
 * [Waarschuwingen instellen](powershell-alerts.md)
 * [Webtests maken](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Diagnostische Azure-gegevens verzenden naar Application Insights](powershell-azure-diagnostics.md)
-* [Implementeren naar Azure vanuit GitHub](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
-* [Release-annotaties maken](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
+* [Implementeren in azure vanuit GitHub](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
+* [Release aantekeningen maken](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)

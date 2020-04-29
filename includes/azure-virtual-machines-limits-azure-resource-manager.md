@@ -5,27 +5,27 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: cynthn
 ms.openlocfilehash: 90dc5a067c05cadb3d5e102435b2e3d3de803e28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335028"
 ---
 | Resource | Limiet |
 | --- | --- |
 | Virtuele machines [per abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |25.000<sup>1</sup> per regio. |
-| Totaal aantal VM-cores per [abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> per regio. Neem contact op met ondersteuning om de limiet te verhogen. |
-| Azure Spot VM-totaalkernen per [abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> per regio. Neem contact op met ondersteuning om de limiet te verhogen. |
-| VM per serie, zoals Dv2 en F, cores per [abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> per regio. Neem contact op met ondersteuning om de limiet te verhogen. |
-| [Beschikbaarheidssets](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) per abonnement |2.000 per regio. |
+| Totaal aantal VM-cores per [abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> per regio. Neem contact op met de ondersteuning om de limiet te verhogen. |
+| Azure spot VM totale aantal kernen per [abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> per regio. Neem contact op met de ondersteuning om de limiet te verhogen. |
+| VM per serie, zoals dv2 en F, kernen per [abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> per regio. Neem contact op met de ondersteuning om de limiet te verhogen. |
+| [Beschikbaarheids sets](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) per abonnement |2.000 per regio. |
 | Virtuele machines per beschikbaarheidsset | 200 |
 | Certificaten per abonnement |Onbeperkt<sup>2</sup> |
 
-<sup>1.</sup> Standaardlimieten variëren per type aanbiedingscategorie, zoals Gratis proefversie en Betalen per gebruik, en per serie, zoals Dv2, F en G. De standaardinstelling voor Enterprise Agreement-abonnementen is bijvoorbeeld 350.
+<sup>1</sup> De standaard limieten variëren per aanbiedings categorie type, zoals gratis proef versie en betalen per gebruik en op serie, zoals dv2, F en G. De standaard instelling voor Enterprise Agreement abonnementen is 350.
 
-<sup>2.</sup> Met Azure Resource Manager worden certificaten opgeslagen in de Azure Key Vault. Het aantal certificaten is onbeperkt voor een abonnement. Er is een limiet van 1 MB aan certificaten per implementatie, die bestaat uit één VM of een beschikbaarheidsset.
+<sup>2</sup> Met Azure Resource Manager worden certificaten opgeslagen in de Azure Key Vault. Het aantal certificaten is onbeperkt voor een abonnement. Er is een limiet van 1 MB voor certificaten per implementatie, die bestaat uit één virtuele machine of een beschikbaarheidsset.
 
 > [!NOTE]
-> Virtuele machinekernen hebben een regionale totale limiet. Ze hebben ook een limiet voor regionale per-size series, zoals Dv2 en F. Deze limieten worden afzonderlijk gehandhaafd. Neem bijvoorbeeld een abonnement met een limiet van 30 VM-cores voor US - oost, een limiet van 30 cores voor de A-serie en een limiet van 30 cores voor de D-serie. Dit abonnement kan 30 A1 VM's of 30 D1 VM's implementeren, of een combinatie van beide die in totaal 30 cores niet overschrijdt. Een voorbeeld van een combinatie is 10 A1 VM's en 20 D1 VM's.  
+> De kern geheugens van de virtuele machine hebben een regionale limiet. Ze hebben ook een limiet voor regionale reeksen per grootte, zoals dv2 en F. Deze limieten worden afzonderlijk afgedwongen. Neem bijvoorbeeld een abonnement met een limiet van 30 VM-cores voor US - oost, een limiet van 30 cores voor de A-serie en een limiet van 30 cores voor de D-serie. Dit abonnement kan 30 a1-vm's of 30 D1 Vm's implementeren, of een combi natie van de twee niet meer dan een totaal van 30 kernen overschrijdt. Een voor beeld van een combi natie is 10 a1-Vm's en 20 D1 Vm's.  
 > <!-- -->
 > 

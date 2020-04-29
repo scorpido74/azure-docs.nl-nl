@@ -1,6 +1,6 @@
 ---
-title: Volumecontainers beheren voor apparaten uit de StorSimple 8000-serie
-description: Hier wordt uitgelegd hoe u de pagina Containers voor het volume van de StorSimple Device Manager-service gebruiken om een volumecontainer toe te voegen, te wijzigen of te verwijderen.
+title: Volume containers voor StorSimple 8000 Series-apparaten beheren
+description: In dit artikel wordt uitgelegd hoe u de pagina StorSimple Apparaatbeheer service volume containers kunt gebruiken om een volume container toe te voegen, te wijzigen of te verwijderen.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,48 +15,48 @@ ms.workload: TBD
 ms.date: 07/19/2017
 ms.author: alkohli
 ms.openlocfilehash: cbdad3c68848ce552811ee658bb29df74a6fad19
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267675"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-volume-containers"></a>Gebruik de StorSimple-apparaatbeheerfunctie om StorSimple-volumecontainers te beheren
 
 ## <a name="overview"></a>Overzicht
-In deze zelfstudie wordt uitgelegd hoe u de StorSimple Device Manager-service gebruiken voor het maken en beheren van StorSimple-volumecontainers.
+In deze zelf studie wordt uitgelegd hoe u de StorSimple Apparaatbeheer-service kunt gebruiken om StorSimple-volume containers te maken en te beheren.
 
-Een volumecontainer in een Microsoft Azure StorSimple-apparaat bevat een of meer volumes die opslagaccount-, versleutelings- en bandbreedteverbruiksinstellingen delen. Een apparaat kan meerdere volumecontainers hebben voor al zijn volumes. 
+Een volume container in een Microsoft Azure StorSimple-apparaat bevat een of meer volumes die de instellingen van het opslag account, versleuteling en band breedte delen. Een apparaat kan meerdere volume containers voor alle volumes hebben. 
 
-Een volumecontainer heeft de volgende kenmerken:
+Een volume container heeft de volgende kenmerken:
 
-* **Volumes** : de gelaagde of lokaal vastgemaakte StorSimple-volumes die zich in de volumecontainer bevinden. 
-* **Versleuteling** : een versleutelingssleutel die voor elke volumecontainer kan worden gedefinieerd. Deze sleutel wordt gebruikt voor het versleutelen van de gegevens die van uw StorSimple-apparaat naar de cloud worden verzonden. Een militaire-grade AES-256 bit sleutel wordt gebruikt met de gebruiker ingevoerde sleutel. Om uw gegevens te beveiligen, raden we u aan altijd cloudopslagversleuteling in te schakelen.
-* **Opslagaccount** : het Azure-opslagaccount dat wordt gebruikt om de gegevens op te slaan. Alle volumes die zich in een volumecontainer bevinden, delen deze opslagrekening. U een opslagaccount kiezen uit een bestaande lijst of een nieuw account maken wanneer u de volumecontainer maakt en vervolgens de toegangsreferenties voor dat account opgeven.
-* **Cloudbandbreedte** : de bandbreedte die door het apparaat wordt verbruikt wanneer de gegevens van het apparaat naar de cloud worden verzonden. U een bandbreedtebeheer afdwingen door een waarde tussen 1 Mbps en 1000 Mbps op te geven wanneer u deze container maakt. Als u wilt dat het apparaat alle beschikbare bandbreedte verbruikt, stelt u dit veld in op **Onbeperkt.** U ook een bandbreedtesjabloon maken en toepassen om bandbreedte toe te wijzen op basis van planning.
+* **Volumes** : de gelaagde of lokaal vastgemaakte StorSimple-volumes die deel uitmaken van de volume container. 
+* **Versleuteling** : een versleutelings sleutel die voor elke volume container kan worden gedefinieerd. Deze sleutel wordt gebruikt voor het versleutelen van de gegevens die van uw StorSimple-apparaat naar de cloud worden verzonden. Er wordt een militaire AES-256-bits sleutel gebruikt met de door de gebruiker ingevoerde sleutel. Als u uw gegevens wilt beveiligen, raden we u aan om de versleuteling van Cloud opslag altijd in te scha kelen.
+* **Opslag account** : het Azure-opslag account dat wordt gebruikt voor het opslaan van de gegevens. Alle volumes in een volume container delen dit opslag account. U kunt een opslag account kiezen uit een bestaande lijst of een nieuw account maken wanneer u de volume container maakt en vervolgens de toegangs referenties voor dat account opgeeft.
+* **Cloud bandbreedte** : de band breedte die wordt gebruikt door het apparaat wanneer de gegevens van het apparaat naar de cloud worden verzonden. U kunt een besturings element voor de band breedte afdwingen door een waarde tussen 1 Mbps en 1.000 Mbps op te geven wanneer u deze container maakt. Als u wilt dat het apparaat alle beschik bare band breedte verbruikt, stelt u dit veld in op **onbeperkt**. U kunt ook een bandbreedte sjabloon maken en Toep assen om band breedte op basis van schema toe te wijzen.
 
-In de volgende procedures wordt uitgelegd hoe u het **storSimple volume-containerblad** gebruiken om de volgende algemene bewerkingen te voltooien:
+In de volgende procedures wordt uitgelegd hoe u de Blade StorSimple- **volume containers** kunt gebruiken om de volgende algemene bewerkingen uit te voeren:
 
-* Een volumecontainer toevoegen
-* Een volumecontainer wijzigen
-* Een volumecontainer verwijderen
+* Een volume container toevoegen
+* Een volume container wijzigen
+* Een volume container verwijderen
 
-## <a name="add-a-volume-container"></a>Een volumecontainer toevoegen
-Voer de volgende stappen uit om een volumecontainer toe te voegen.
+## <a name="add-a-volume-container"></a>Een volume container toevoegen
+Voer de volgende stappen uit om een volume container toe te voegen.
 
 [!INCLUDE [storsimple-8000-add-volume-container](../../includes/storsimple-8000-create-volume-container.md)]
 
-## <a name="modify-a-volume-container"></a>Een volumecontainer wijzigen
-Voer de volgende stappen uit om een volumecontainer te wijzigen.
+## <a name="modify-a-volume-container"></a>Een volume container wijzigen
+Voer de volgende stappen uit om een volume container te wijzigen.
 
 [!INCLUDE [storsimple-8000-modify-volume-container](../../includes/storsimple-8000-modify-volume-container.md)]
 
-## <a name="delete-a-volume-container"></a>Een volumecontainer verwijderen
-Een volumecontainer heeft volumes erin. Het kan alleen worden verwijderd als alle volumes die erin staan eerst worden verwijderd. Voer de volgende stappen uit om een volumecontainer te verwijderen.
+## <a name="delete-a-volume-container"></a>Een volume container verwijderen
+Er zijn volumes in een volume container. Deze kan alleen worden verwijderd als alle volumes in het bestand eerst worden verwijderd. Voer de volgende stappen uit om een volume container te verwijderen.
 
 [!INCLUDE [storsimple-8000-delete-volume-container](../../includes/storsimple-8000-delete-volume-container.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [het beheren van StorSimple-volumes.](storsimple-8000-manage-volumes-u2.md) 
-* Meer informatie over [het gebruik van de StorSimple Device Manager-service om uw StorSimple-apparaat te beheren.](storsimple-8000-manager-service-administration.md)
+* Meer informatie over het [beheren van StorSimple-volumes](storsimple-8000-manage-volumes-u2.md). 
+* Meer informatie over [het gebruik van de StorSimple Apparaatbeheer-service voor het beheren van uw StorSimple-apparaat](storsimple-8000-manager-service-administration.md).
 

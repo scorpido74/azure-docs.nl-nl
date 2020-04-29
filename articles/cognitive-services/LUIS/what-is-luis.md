@@ -4,10 +4,10 @@ description: Language Understanding (LUIS) is een API-cloudservice die aangepast
 ms.topic: overview
 ms.date: 02/23/2020
 ms.openlocfilehash: 98fb936422f8e23e728efea19fa2cd75d90fac57
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80053358"
 ---
 # <a name="what-is-language-understanding-luis"></a>Wat is Language Understanding (LUIS)?
@@ -18,7 +18,7 @@ Language Understanding (LUIS) is een API-cloudservice die aangepaste machine-lea
 
 Een clienttoepassing voor LUIS is een gesprekstoepassing waarin een gebruiker in natuurlijke taal communiceert om een taak te voltooien. Voorbeelden van clienttoepassingen zijn socialemedia-apps, chatbots en met spraak bestuurde bureaubladtoepassingen.
 
-![Conceptueel beeld van 3 clienttoepassingen die werken met Cognitive Services Language Understanding (LUIS)](./media/luis-overview/luis-entry-point.png "Conceptueel beeld van 3 clienttoepassingen die werken met Cognitive Services Language Understanding (LUIS)")
+![Conceptuele afbeelding van 3 client toepassingen die werken met Cognitive Services Language Understanding (LUIS)](./media/luis-overview/luis-entry-point.png "Conceptuele afbeelding van 3 client toepassingen die werken met Cognitive Services Language Understanding (LUIS)")
 
 ## <a name="use-luis-in-a-chat-bot"></a>LUIS gebruiken in een chatbot
 
@@ -27,13 +27,13 @@ Een clienttoepassing voor LUIS is een gesprekstoepassing waarin een gebruiker in
 Als de LUIS-app is gepubliceerd, worden uitingen (tekst) door een clienttoepassing verzonden naar de [API][endpoint-apis] van het eindpunt voor verwerking van natuurlijke taal in LUIS en worden de resultaten ontvangen als JSON-antwoorden. Een algemene clienttoepassing voor LUIS is een chatbot.
 
 
-![Conceptuele beelden van LUIS die met Chatbot werkt om gebruikerstekst te voorspellen met natuurlijke taalbegrip (NLP)](./media/luis-overview/LUIS-chat-bot-request-response.svg "Conceptuele beelden van LUIS die met Bot chat werkt om gebruikerstekst met natuurlijk taalbegrip te voorspellen (NLP")
+![Conceptuele installatie kopie van LUIS met behulp van de chat-bot om gebruikers tekst te voors pellen met natuurlijk language Standing (NLP)](./media/luis-overview/LUIS-chat-bot-request-response.svg "Conceptuele afbeelding van LUIS werken met de chat-bot om gebruikers tekst te voors pellen met natuurlijk taal begrip (NLP")
 
-|Stap|Actie|
+|Stap|Bewerking|
 |:--|:--|
 |1|De clienttoepassing verzendt een _uiting_ van de gebruiker (tekst in eigen woorden), zoals "Ik wil mijn contactpersoon van de afdeling HR bellen", naar het eindpunt van LUIS als een HTTP-aanvraag.|
-|2|LUIS stelt u in staat om uw aangepaste taalmodellen te maken om intelligentie toe te voegen aan uw toepassing. Machine-aangeleerde taalmodellen nemen de ongestructureerde invoertekst van de gebruiker en retourneert een JSON-opgemaakte reactie, met een topintentie, `HRContact`. Het minimale JSON-antwoord van het eindpunt bevat de query-uiting en de belangrijkste score-intentie. Het kan ook gegevens extraheren, zoals de entiteit _Contacttype._|
-|3|De clienttoepassing maakt gebruik van het JSON-antwoord om beslissingen te nemen voor het afhandelen van de aanvragen van de gebruiker. Deze beslissingen kunnen beslissingsstructuur in de bot-frameworkcode en oproepen naar andere services omvatten. |
+|2|Met LUIS kunt u uw aangepaste taal modellen maken om intelligentie toe te voegen aan uw toepassing. Door de computer geleerde taal modellen nemen de niet-gestructureerde invoer tekst van de gebruiker en retourneert een JSON-indelings antwoord met `HRContact`een hoofd intentie. Het minimale JSON-antwoord van het eindpunt bevat de query-uiting en de belangrijkste score-intentie. Het kan ook gegevens extra heren, zoals de entiteit _type contact_ .|
+|3|De clienttoepassing maakt gebruik van het JSON-antwoord om beslissingen te nemen voor het afhandelen van de aanvragen van de gebruiker. Deze beslissingen kunnen beslissings structuur bevatten in de bot-Framework code en aanroepen naar andere services. |
 
 De LUIS-app levert intelligence zodat er slimme keuzen kunnen worden gemaakt in de clienttoepassing. Die keuzen worden niet gemaakt in LUIS.
 
@@ -42,16 +42,16 @@ De LUIS-app levert intelligence zodat er slimme keuzen kunnen worden gemaakt in 
 
 ## <a name="natural-language-processing"></a>Natuurlijke taalverwerking
 
-Uw LUIS-app bevat een domeinspecifiek natuurlijk taalmodel. U kunt de LUIS-app starten met een vooraf gedefinieerd domeinmodel, uw eigen model bouwen of onderdelen van een vooraf gedefinieerd domein combineren met uw eigen aangepaste gegevens.
+Uw LUIS-app bevat een domein-specifiek natuurlijke taal model. U kunt de LUIS-app starten met een vooraf gedefinieerd domeinmodel, uw eigen model bouwen of onderdelen van een vooraf gedefinieerd domein combineren met uw eigen aangepaste gegevens.
 
 * **Vooraf gedefinieerd model** LUIS bevat veel vooraf gedefinieerde domeinmodellen, inclusief intenties, uitingen en vooraf gedefinieerde entiteiten. U kunt de vooraf gedefinieerde entiteiten ook gebruiken zonder de intenties en uitingen van het vooraf gedefinieerde model. [Vooraf gedefinieerde domeinmodellen](luis-how-to-use-prebuilt-domains.md) bevatten alles wat u nodig hebt om LUIS snel te kunnen gaan gebruiken.
 
-* **Aangepast model** LUIS biedt u verschillende manieren om uw eigen aangepaste modellen te identificeren, waaronder intents en entiteiten. Entiteiten omvatten door machines geleerde entiteiten, specifieke of letterlijke entiteiten en een combinatie van machine-geleerd en letterlijk.
+* **Aangepast model** LUIS biedt verschillende manieren om uw eigen aangepaste modellen te identificeren, inclusief intenties en entiteiten. Entiteiten zijn onder andere door machines geleerde entiteiten, specifieke of letterlijke entiteiten en een combi natie van door de machine geleerd en letterlijke waarde.
 
 ## <a name="build-the-luis-model"></a>Het LUIS-model opbouwen
-Bouw het model [authoring](https://go.microsoft.com/fwlink/?linkid=2092087) met de ontwerp-API's of met de [LUIS-portal](https://www.luis.ai).
+Bouw het model met behulp van de [ontwerp](https://go.microsoft.com/fwlink/?linkid=2092087) -api's of met de [Luis-Portal](https://www.luis.ai).
 
-Om te beginnen definieert u categorieën gebruikersintenties, ook wel kortweg **[intenties](luis-concept-intent.md)** genoemd. Voor elke intentie zijn voorbeelden van **[uitingen](luis-concept-utterance.md)** van gebruikers vereist. Elke utterance kan gegevens bevatten die moeten worden geëxtraheerd.
+Om te beginnen definieert u categorieën gebruikersintenties, ook wel kortweg **[intenties](luis-concept-intent.md)** genoemd. Voor elke intentie zijn voorbeelden van **[uitingen](luis-concept-utterance.md)** van gebruikers vereist. Elk utterance kan gegevens leveren die moeten worden geëxtraheerd.
 
 |Voorbeeld van een uiting van een gebruiker|Intentie|Geëxtraheerde gegevens|
 |-----------|-----------|-----------|
@@ -61,9 +61,9 @@ Om te beginnen definieert u categorieën gebruikersintenties, ook wel kortweg **
 
 ## <a name="query-prediction-endpoint"></a>Eindpunt queryvoorspelling
 
-Nadat uw app is getraind en gepubliceerd naar het eindpunt, [endpoint](https://go.microsoft.com/fwlink/?linkid=2092356) stuurt de clienttoepassing uitingen naar de voorspellingseindpunt-API. De API past de app toe op de utterance voor analyse en reageert met de voorspellingsresultaten in een JSON-indeling.
+Nadat uw app is getraind en gepubliceerd naar het eind punt, verzendt de client toepassing uitingen naar de API voor prediction- [eind punten](https://go.microsoft.com/fwlink/?linkid=2092356) . De API past de app toe op de utterance voor analyse en reageert met de Voorspellings resultaten in een JSON-indeling.
 
-Het minimale JSON-antwoord van het eindpunt bevat de query-uiting en de belangrijkste score-intentie. Het kan ook gegevens extraheren, zoals de volgende entiteit **Contacttype** en het algehele sentiment.
+Het minimale JSON-antwoord van het eindpunt bevat de query-uiting en de belangrijkste score-intentie. Het kan ook gegevens extra heren, zoals de volgende entiteit van het **type contact** en de algemene sentiment.
 
 ```JSON
 {
@@ -91,25 +91,25 @@ Het minimale JSON-antwoord van het eindpunt bevat de query-uiting en de belangri
 
 ## <a name="improve-model-prediction"></a>Voorspellingen van het model verbeteren
 
-Nadat uw LUIS-app is gepubliceerd en echte uitingen van gebruikers heeft ontvangen, biedt LUIS [actief leren](luis-concept-review-endpoint-utterances.md) van eindpuntuitingen om de nauwkeurigheid van de voorspelling te verbeteren.
+Nadat de LUIS-app is gepubliceerd en echte gebruikers uitingen ontvangt, biedt LUIS [actief leren](luis-concept-review-endpoint-utterances.md) van eind punt uitingen om de nauw keurigheid van de voor spelling te verbeteren.
 
 <a name="using-luis"></a>
 
 ## <a name="development-lifecycle"></a>Levenscyclus van ontwikkeling
-LUIS biedt tools, versiebeheer en samenwerking met andere LUIS-auteurs om te integreren in de volledige [ontwikkelingslevenscyclus.](luis-concept-app-iteration.md)
+LUIS biedt hulpprogram ma's, versie beheer en samen werking met andere LUIS-auteurs die kunnen worden geïntegreerd in de [levens cyclus](luis-concept-app-iteration.md)van de volledige ontwikkeling.
 
 ## <a name="implementing-luis"></a>LUIS implementeren
-Language Understanding (LUIS), als REST API, kan worden gebruikt met elk product, service of framework met een HTTP-aanvraag. De volgende lijst bevat de belangrijkste Microsoft-producten en services die gebruikmaken van LUIS.
+Language Understanding (LUIS REST API) kan worden gebruikt in combi natie met elk product, elke service of elk Framework met een HTTP-aanvraag. De volgende lijst bevat de belangrijkste Microsoft-producten en services die gebruikmaken van LUIS.
 
 De populairste clienttoepassing voor LUIS is:
-* [Web-app-bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) - hiermee maakt u snel een met LUIS compatibele chatbot voor communicatie met een gebruiker via tekstinvoer. Gebruikt [Bot Framework][bot-framework] versie [4.x](https://github.com/Microsoft/botbuilder-dotnet) voor een complete botervaring.
+* [Web-app-bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) - hiermee maakt u snel een met LUIS compatibele chatbot voor communicatie met een gebruiker via tekstinvoer. Maakt gebruik van [bot Framework][bot-framework] versie [4. x](https://github.com/Microsoft/botbuilder-dotnet) voor een complete bot-ervaring.
 
 Hulpprogramma's om LUIS snel en eenvoudig met een bot te gebruiken:
-* [LUIS CLI LUIS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) Het NPM-pakket biedt authoring en voorspelling met als een stand-alone command-line tool of als import.
+* [Luis cli](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) Het NPM-pakket biedt ontwerpen en voor spellingen met als een zelfstandig opdracht regel programma of als import.
 * [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen) LUISGen is een hulpprogramma voor het genereren van sterk getypeerde broncode voor C# en TypeScript op basis van een geëxporteerd LUIS-model.
 * [Dispatcher](https://aka.ms/dispatch-tool) - met behulp van het verdeelprogrammamodel kunnen verschillende LUIS- en QnA Maker-apps worden gebruikt vanuit een bovenliggende app.
-* [LUDown LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) LUDown is een command-line tool die helpt bij het beheren van taalmodellen voor uw bot.
-* [Bot framework - Composer](https://github.com/microsoft/BotFramework-Composer) - een geïntegreerde ontwikkeltool voor ontwikkelaars en multidisciplinaire teams om bots en conversationele ervaringen te bouwen met het Microsoft Bot Framework
+* [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) LUDown is een opdracht regel programma waarmee u taal modellen voor uw bot kunt beheren.
+* [Bot Framework-Composer](https://github.com/microsoft/BotFramework-Composer) : een geïntegreerd hulp programma voor ontwikkel aars en meerdere disciplinaire teams om bots en gespreks ervaringen te bouwen met het micro soft bot Framework
 
 Andere cognitieve services die kunnen worden gebruikt in combinatie met LUIS:
 * [QnA Maker][qnamaker] - hiermee kunnen verschillende soorten tekst worden gecombineerd in een kennisdatabase met vragen en antwoorden.
@@ -118,14 +118,14 @@ Andere cognitieve services die kunnen worden gebruikt in combinatie met LUIS:
 
 Voorbeelden die gebruikmaken van LUIS:
 * GitHub-opslagplaats voor [AI met gespreksfuncties](https://github.com/Microsoft/AI).
-* [Bot framework - Bot monsters](https://github.com/microsoft/BotBuilder-Samples)
+* [Bot-Framework-bot-voor beelden](https://github.com/microsoft/BotBuilder-Samples)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Wat is er nieuw](whats-new.md)
 * Een nieuwe LUIS-app met een [vooraf gedefinieerd](luis-get-started-create-app.md) of [aangepast](luis-quickstart-intents-only.md) domein maken.
 * [Een query uitvoeren voor het voorspellingseindpunt](luis-get-started-get-intent-from-browser.md) van een openbare IoT-app.
-* [Bronnen voor ontwikkelaars](developer-reference-resource.md) voor LUIS.
+* [Bronnen voor ontwikkel aars](developer-reference-resource.md) voor Luis.
 
 [bot-framework]: https://docs.microsoft.com/bot-framework/
 [flow]: https://docs.microsoft.com/connectors/luis/

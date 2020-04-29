@@ -1,72 +1,72 @@
 ---
-title: Overzicht van Azure Monitor voor containers | Microsoft Documenten
-description: In dit artikel wordt beschreven Azure Monitor voor containers die de AKS Container Insights-oplossing en de waarde die deze levert, bewaakt door de status van uw AKS-clusters en containerinstances in Azure te bewaken.
+title: Overzicht van Azure Monitor voor containers | Microsoft Docs
+description: In dit artikel worden Azure Monitor beschreven voor containers die de AKS-container Insights-oplossing bewaakt en de waarde die wordt geleverd door de status van uw AKS-clusters en Container Instances in azure te controleren.
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 3ff2c35ae9f5838447ce90e2a020649427920a43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275228"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Overzicht van Azure Monitor voor containers
 
-Azure Monitor voor containers is een functie die is ontworpen om de prestaties van containerworkloads te controleren die zijn geïmplementeerd op:
+Azure Monitor voor containers is een functie die is ontworpen voor het bewaken van de prestaties van container werkbelastingen die zijn geïmplementeerd op:
 
-- Beheerde Kubernetes-clusters gehost op [Azure Kubernetes Service (AKS)](../../aks/intro-kubernetes.md)
-- Zelfbeheerde Kubernetes-clusters gehost op Azure met [AKS Engine](https://github.com/Azure/aks-engine)
+- Managed Kubernetes-clusters die worden gehost op de [Azure Kubernetes-service (AKS)](../../aks/intro-kubernetes.md)
+- Zelf beheerde Kubernetes-clusters die worden gehost op Azure met behulp van de [AKS-engine](https://github.com/Azure/aks-engine)
 - [Azure Container Instances](../../container-instances/container-instances-overview.md)
-- Zelfbeheerde Kubernetes-clusters gehost op [Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) of on-premises
+- Zelf beheerde Kubernetes-clusters die worden gehost op [Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) of on-premises
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 
-Azure Monitor voor containers ondersteunt clusters met het Linux- en Windows Server 2019-besturingssysteem. 
+Azure Monitor voor containers ondersteunt clusters met het besturings systeem Linux en Windows Server 2019. 
 
-Het bewaken van uw containers is van cruciaal belang, vooral wanneer u een productiecluster uitvoert, op schaal, met meerdere toepassingen.
+Het bewaken van uw containers is van cruciaal belang, vooral wanneer u een productie cluster op schaal uitvoert met meerdere toepassingen.
 
-Azure Monitor voor containers geeft u inzicht in de prestaties door geheugen- en processorstatistieken te verzamelen van controllers, knooppunten en containers die beschikbaar zijn in Kubernetes via de Metrics API. Er worden ook containerlogboeken verzameld.  Nadat u monitoring van Kubernetes-clusters hebt ingeschakeld, worden statistieken en logboeken automatisch voor u verzameld via een containerversie van de Log Analytics-agent voor Linux. Statistieken worden geschreven naar het statistiekenarchief en logboekgegevens worden geschreven naar de logboekarchief die is gekoppeld aan uw [Logboekanalysewerkruimte.](../log-query/log-query-overview.md) 
+Azure Monitor voor containers biedt u inzicht in de prestaties door het verzamelen van geheugen-en processor metrieken van controllers, knoop punten en containers die beschikbaar zijn in Kubernetes via de API voor metrische gegevens. Er worden ook containerlogboeken verzameld.  Nadat u bewaking vanuit Kubernetes-clusters hebt ingeschakeld, worden metrische gegevens en logboeken automatisch voor u verzameld via een container versie van de Log Analytics-agent voor Linux. Metrische gegevens worden naar de metrische opslag opgeslagen en logboeken worden geschreven naar de logboeken archief die aan uw [log Analytics](../log-query/log-query-overview.md) -werk ruimte is gekoppeld. 
 
-![Azure Monitor voor containersarchitectuur](./media/container-insights-overview/azmon-containers-architecture-01.png)
+![Azure Monitor voor de architectuur van containers](./media/container-insights-overview/azmon-containers-architecture-01.png)
  
 ## <a name="what-does-azure-monitor-for-containers-provide"></a>Wat biedt Azure Monitor voor containers?
 
-Azure Monitor voor containers biedt een uitgebreide monitoringervaring met behulp van verschillende functies van Azure Monitor. Met deze functies u inzicht krijgen in de prestaties en status van uw Kubernetes-cluster met het Linux- en Windows Server 2019-besturingssysteem en de containerworkloads. Met Azure Monitor voor containers u:
+Azure Monitor voor containers biedt een uitgebreide bewakings ervaring met behulp van verschillende functies van Azure Monitor. Met deze functies kunt u inzicht krijgen in de prestaties en status van uw Kubernetes-cluster met Linux-en Windows Server 2019-besturings systeem en de container werkbelastingen. Met Azure Monitor voor containers kunt u het volgende doen:
 
-* Identificeer AKS-containers die op het knooppunt worden uitgevoerd en het gemiddelde processor- en geheugengebruik. Deze kennis kan u helpen knelpunten in resources te identificeren.
-* Identificeer het processor- en geheugengebruik van containergroepen en hun containers die worden gehost in Azure Container Instances.  
-* Bepaal waar de container zich in een controller of een pod bevindt. Met deze kennis u de algehele prestaties van de controller of pod bekijken. 
-* Controleer het resourcegebruik van workloads die op de host worden uitgevoerd en die geen verband houden met de standaardprocessen die de pod ondersteunen.
-* Begrijp het gedrag van het cluster onder gemiddelde en zwaarste belastingen. Deze kennis kan u helpen bij het identificeren van capaciteitsbehoeften en het bepalen van de maximale belasting die het cluster kan dragen. 
-* Configureer waarschuwingen om u proactief op de hoogte te stellen of op te nemen wanneer het cpu- en geheugengebruik op knooppunten of containers uw drempelwaarden overschrijdt of wanneer er een statuswijziging optreedt in het cluster op de rollup van de status infrastructuur of knooppunten.
-* Integreer met [Prometheus](https://prometheus.io/docs/introduction/overview/) om toepassings- en workloadstatistieken te bekijken die het verzamelt van knooppunten en Kubernetes met behulp van query's om aangepaste [waarschuwingen,](container-insights-log-search.md) dashboards en gedetailleerde gedetailleerde analyses uit te voeren.
-* Monitor containerworkloads die zijn geïmplementeerd op [AKS Engine](https://github.com/Azure/aks-engine) on-premises en [AKS Engine op Azure Stack.](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)
-* Monitor containerworkloads [die zijn geïmplementeerd in Azure Red Hat OpenShift](../../openshift/intro-openshift.md).
+* Identificeer AKS-containers die worden uitgevoerd op het knoop punt en hun gemiddelde processor-en geheugen gebruik. Deze kennis kan u helpen bij het identificeren van knel punten in de resource.
+* Identificeer het processor-en geheugen gebruik van container groepen en de containers die worden gehost in Azure Container Instances.  
+* Bepaal waar de container zich bevindt in een controller of een pod. Deze kennis kan u helpen de algehele prestaties van de controller of het Pod te bekijken. 
+* Bekijk het resource gebruik van werk belastingen die op de host worden uitgevoerd en die geen verband houden met de standaard processen die ondersteuning bieden voor de pod.
+* Meer informatie over het gedrag van het cluster in gemiddelde en zwaarste belasting. Deze kennis kan u helpen de capaciteits behoeften te identificeren en de maximale belasting te bepalen die het cluster kan vastlopen. 
+* Configureer waarschuwingen om u proactief te informeren of op te nemen wanneer het CPU-en geheugen gebruik op knoop punten of containers de drempel waarden overschrijdt, of wanneer er een status wijziging in het cluster optreedt bij het samen vouwen van de infra structuur of de knooppunt status.
+* Integreer met [Prometheus](https://prometheus.io/docs/introduction/overview/) om de metrische gegevens van de toepassing en werk belasting weer te geven die worden verzameld van knoop punten en Kubernetes met behulp van [query's](container-insights-log-search.md) om aangepaste waarschuwingen, Dash boards en gedetailleerde gedetailleerde analyses te maken.
+* Bewaak de werkbelastingen van containers [die zijn geïmplementeerd](https://github.com/Azure/aks-engine) op de AKS-engine on-premises en AKS- [engine op Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
+* Bewaak de werk belasting van containers [die zijn geïmplementeerd in azure Red Hat open Shift](../../openshift/intro-openshift.md).
 
     >[!NOTE]
-    >Ondersteuning voor Azure Red Hat OpenShift is een functie in openbare preview op dit moment.
+    >De ondersteuning voor Azure Red Hat open Shift is op dit moment een functie in Public Preview.
     >
 
-De belangrijkste verschillen in het bewaken van een Windows Server-cluster ten opzichte van een Linux-cluster zijn de volgende:
+De belangrijkste verschillen in het bewaken van een Windows Server-cluster in vergelijking met een Linux-cluster zijn als volgt:
 
-- Geheugen RSS-statistiek is niet beschikbaar voor Windows-knooppunt en containers.
-- Informatie over de opslagcapaciteit van de schijf is niet beschikbaar voor Windows-knooppunten.
-- Containerlogboeken zijn niet beschikbaar voor containers die worden uitgevoerd in Windows-knooppunten.
-- Ondersteuning voor live gegevens (preview) is beschikbaar, met uitzondering van Windows-containerlogboeken.
-- Alleen podomgevingen worden bewaakt, niet Docker-omgevingen.
-- Met de preview-release worden maximaal 30 Windows Server-containers ondersteund. Deze beperking geldt niet voor Linux containers. 
+- De metrische gegevens van het geheugen zijn niet beschikbaar voor Windows-knoop punten en-containers.
+- Informatie over capaciteit van schijf opslag is niet beschikbaar voor Windows-knoop punten.
+- Container logboeken zijn niet beschikbaar voor containers die worden uitgevoerd in Windows-knoop punten.
+- Ondersteuning voor de functie Live data (preview) is beschikbaar in de uitzonde ring van Windows-container Logboeken.
+- Alleen pod omgevingen worden bewaakt, niet-docker-omgevingen.
+- Met de preview-versie worden Maxi maal 30 Windows Server-containers ondersteund. Deze beperking is niet van toepassing op Linux-containers. 
 
-Bekijk de volgende video met een diepe duik op tussenniveau om meer te weten te komen over het bewaken van uw AKS-cluster met Azure Monitor voor containers.
+Bekijk de volgende video over een dieper niveau waarmee u meer informatie kunt over het bewaken van uw AKS-cluster met Azure Monitor voor containers.
 
 > [!VIDEO https://www.youtube.com/embed/RjsNmapggPU]
 
-## <a name="how-do-i-access-this-feature"></a>Hoe krijg ik toegang tot deze functie?
+## <a name="how-do-i-access-this-feature"></a>Hebt u toegang tot deze functie Hoe kan ik?
 
-U hebt op twee manieren toegang tot Azure Monitor voor containers, vanuit Azure Monitor of rechtstreeks vanuit het geselecteerde AKS-cluster. Vanuit Azure Monitor hebt u een globaal perspectief van alle geïmplementeerde containers, die worden gecontroleerd en die niet zijn, zodat u zoeken en filteren op uw abonnementen en brongroepen en vervolgens inzoomen op Azure Monitor voor containers uit de geselecteerde container.  Anders hebt u rechtstreeks toegang tot de functie vanuit een geselecteerde AKS-container vanaf de AKS-pagina.  
+U kunt op twee manieren toegang krijgen tot Azure Monitor voor containers, vanuit Azure Monitor of rechtstreeks vanuit het geselecteerde AKS-cluster. Vanuit Azure Monitor hebt u een wereld wijd perspectief van alle geïmplementeerde containers, die worden bewaakt en die niet, zodat u kunt zoeken en filteren in uw abonnementen en resource groepen en vervolgens kunt inzoomen op Azure Monitor voor containers uit de geselecteerde container.  Als dat niet het geval is, kunt u de functie rechtstreeks vanuit een geselecteerde AKS-container openen via de pagina AKS.  
 
-![Overzicht van methoden om toegang te krijgen tot Azure Monitor voor containers](./media/container-insights-overview/azmon-containers-experience.png)
+![Overzicht van methoden voor toegang tot Azure Monitor voor containers](./media/container-insights-overview/azmon-containers-experience.png)
 
-Als u geïnteresseerd bent in het bewaken en beheren van uw Docker- en Windows-containerhosts die buiten AKS worden uitgevoerd om configuratie, audit en resourcegebruik weer te geven, raadpleegt u de [oplossing Containermonitoring.](../../azure-monitor/insights/containers.md)
+Als u geïnteresseerd bent in het bewaken en beheren van uw docker-en Windows-container hosts die buiten AKS worden uitgevoerd om de configuratie, controle en het gebruik van bronnen weer te geven, raadpleegt u de [container bewakings oplossing](../../azure-monitor/insights/containers.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u wilt beginnen met het bewaken van uw Kubernetes-cluster, controleert u [Hoe u de Azure-monitor voor containers inschakelt](container-insights-onboard.md) om inzicht te krijgen in de vereisten en beschikbare methoden om bewaking in te schakelen. 
+Als u wilt beginnen met het bewaken van uw Kubernetes-cluster, raadpleegt u [How to Enable the Azure monitor for containers](container-insights-onboard.md) voor meer informatie over de vereisten en beschik bare methoden voor het inschakelen van 

@@ -11,25 +11,25 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
 ms.openlocfilehash: 3b18e185480cc5275b97bba474f1c054c7bd1276
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80286707"
 ---
 Om een voorspelling van LUIS te ontvangen in een chatbot of een andere clienttoepassing, moet u de app publiceren naar het eindpunt.
 
-1. Selecteer **Publiceren** in de navigatie rechtsboven.
+1. Selecteer in de navigatie rechtsboven op **publiceren** .
 
     ![Knop om vanuit LUIS te publiceren naar eindpunt in menu rechtsboven](../media/howto-publish/publish-button.png)
 
-2. Selecteer de **productiesleuf** en selecteer **Gereed**.
+2. Selecteer de **productie** sleuf en selecteer vervolgens **gereed**.
 
     > [!div class="mx-imgBorder"]
     > ![Publiceren naar eindpunt vanuit LUIS](../media/howto-publish/publish-app-popup.png)
 
-3. Publiceren is voltooid wanneer u de melding ziet die het succes bevestigt.
+3. Het publiceren is voltooid wanneer u de melding bevestigend geslaagd ziet.
 
     ![Publiceren naar eindpunt vanuit LUIS](../media/howto-publish/publish-endpoint-success.png)
 
-4. Selecteer de koppeling **Url's voor access uw eindpunt** in de melding om naar de pagina Azure **Resources** te gaan. De URL's van eindpunten worden weergegeven als de **voorbeeldquery**.
+4. Selecteer de koppeling **uw eind punt-Url's openen** in de melding om naar de pagina **Azure-resources** te gaan. De eind punt-Url's worden weer gegeven als de **voorbeeld query**.

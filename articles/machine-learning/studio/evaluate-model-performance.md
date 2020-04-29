@@ -1,7 +1,7 @@
 ---
-title: Modelprestaties evalueren
+title: Model prestaties evalueren
 titleSuffix: ML Studio (classic) - Azure
-description: Meer informatie over het evalueren van de modelprestaties in Azure Machine Learning Studio (klassiek) en over de statistieken die beschikbaar zijn voor deze taak.
+description: Meer informatie over het evalueren van de prestaties van modellen in Azure Machine Learning Studio (klassiek) en over de metrische gegevens die beschikbaar zijn voor deze taak.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,171 +11,171 @@ ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
 ms.openlocfilehash: 3c041834b9ad191817cdf1380b0a75efc7639bd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79218146"
 ---
-# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Modelprestaties evalueren in Azure Machine Learning Studio (klassiek)
+# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Model prestaties in Azure Machine Learning Studio evalueren (klassiek)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-In dit artikel wordt uitgelegd hoe u de prestaties van een model evalueren in Azure Machine Learning Studio (klassiek) en wordt een korte uitleg gegeven over de statistieken die voor deze taak beschikbaar zijn. Drie veelvoorkomende leerscenario's onder toezicht worden gepresenteerd: 
+In dit artikel wordt gedemonstreerd hoe u de prestaties van een model in Azure Machine Learning Studio kunt evalueren (klassiek) en geeft u een korte uitleg van de metrische gegevens die voor deze taak beschikbaar zijn. Er worden drie veelvoorkomende leer scenario's weer gegeven: 
 
-* Regressie
+* regressie
 * binaire classificatie 
-* classificatie van meerdere klassen
+* classificatie met meer klassen
 
 
 
-Het evalueren van de prestaties van een model is een van de kernfasen in het data science-proces. Het geeft aan hoe succesvol de score (voorspellingen) van een gegevensset is geweest door een getraind model. 
+Het evalueren van de prestaties van een model is een van de belangrijkste fasen in het data Science-proces. Hiermee wordt aangegeven hoe de Score (voor spellingen) van een gegevensset is geslaagd door een getraind model. 
 
-Azure Machine Learning Studio (klassiek) ondersteunt modelevaluatie via twee van de belangrijkste machine learning-modules: Model en [Cross-Validate Model][cross-validate-model] [evalueren.][evaluate-model] Met deze modules u zien hoe uw model presteert in termen van een aantal statistieken die vaak worden gebruikt in machine learning en statistieken.
+Azure Machine Learning Studio (klassiek) ondersteunt model evaluatie via twee van de belangrijkste machine learning modules: [Evalueer model][evaluate-model] en [model voor meerdere validaties][cross-validate-model]. Met deze modules kunt u zien hoe uw model presteert volgens een aantal metrische gegevens die vaak worden gebruikt in machine learning en statistieken.
 
-## <a name="evaluation-vs-cross-validation"></a>Evaluatie vs. Cross Validatie
-Evaluatie en cross validatie zijn standaardmanieren om de prestaties van uw model te meten. Ze genereren beide evaluatiestatistieken die u inspecteren of vergelijken met die van andere modellen.
+## <a name="evaluation-vs-cross-validation"></a>Evaluatie versus Kruis validatie
+Evaluatie en kruis validatie zijn standaard manieren om de prestaties van uw model te meten. Ze genereren zowel evaluatie gegevens die u kunt controleren of vergelijken met die van andere modellen.
 
-[Evalueren Model][evaluate-model] verwacht een gescoorde dataset als input (of twee in het geval u de prestaties van twee verschillende modellen wilt vergelijken). Daarom moet u uw model trainen met behulp van de [treinmodelmodule][train-model] en voorspellingen doen over een of andere gegevensset met behulp van de module [Scoremodel][score-model] voordat u de resultaten evalueren. De evaluatie is gebaseerd op de gescoorde labels/waarschijnlijkheden, samen met de echte labels, die allemaal worden uitgevoerd door de [module Scoremodel.][score-model]
+Bij het evalueren van het [model][evaluate-model] wordt een gescoorde gegevensset verwacht als invoer (of twee voor het geval u de prestaties van twee verschillende modellen wilt vergelijken). Daarom moet u uw model trainen met behulp van de [Train model][train-model] module en voor spellingen maken voor een aantal gegevensset met behulp van de module [score model][score-model] voordat u de resultaten kunt evalueren. De evaluatie is gebaseerd op de gescoorde labels/waarschijnlijkheid samen met de werkelijke labels, die allemaal worden uitgevoerd door de module [score model][score-model] .
 
-U ook cross validatie gebruiken om een aantal treinscore-evaluatiebewerkingen (10 vouwen) automatisch uit te voeren op verschillende subsets van de invoergegevens. De invoergegevens zijn opgesplitst in 10 delen, waar de ene is gereserveerd voor het testen, en de andere 9 voor training. Dit proces wordt 10 keer herhaald en de evaluatiestatistieken worden gemiddeld weergegeven. Dit helpt bij het bepalen hoe goed een model zou generaliseren naar nieuwe gegevenssets. De [module Cross-Validate Model][cross-validate-model] neemt een ongetraind model op en een aantal gelabelde gegevenssets en voert de evaluatieresultaten van elk van de 10 vouwen uit, naast de gemiddelde resultaten.
+U kunt ook Kruis validatie gebruiken om een aantal verwerkings bewerkingen (10 vouwen) automatisch uit te voeren op verschillende subsets van de invoer gegevens. De invoer gegevens worden opgesplitst in tien delen, waarbij één is gereserveerd voor testen en de andere 9 voor training. Dit proces wordt 10 keer herhaald en de metrische gegevens van de evaluatie worden gemiddeld. Zo kunt u bepalen hoe goed een model generaliseert voor nieuwe gegevens sets. De module voor het [valideren van meerdere validaties][cross-validate-model] maakt deel uit van een niet-traind model en een gelabelde gegevensset en voert de resultaten van de evaluatie van elk van de 10 vouwen, naast de gemiddelde resultaten.
 
-In de volgende secties bouwen we eenvoudige regressie- en classificatiemodellen en evalueren we hun prestaties, met behulp van zowel het [evaluatiemodel][evaluate-model] als de [modules van het cross-valideringsmodel.][cross-validate-model]
+In de volgende secties bouwen we eenvoudige regressie-en classificatie modellen en evalueren ze hun prestaties met behulp van zowel het [beoordelings model][evaluate-model] als de [Kruis validatie model][cross-validate-model] modules.
 
-## <a name="evaluating-a-regression-model"></a>Een regressiemodel evalueren
-Stel dat we de prijs van een auto willen voorspellen met behulp van functies zoals afmetingen, pk's, motorspecificaties, enzovoort. Dit is een typisch regressieprobleem, waarbij de doelvariabele *(prijs)* een continue numerieke waarde is. We kunnen een lineair regressiemodel plaatsen dat, gezien de functiewaarden van een bepaalde auto, de prijs van die auto kan voorspellen. Dit regressiemodel kan worden gebruikt om dezelfde gegevensset te scoren waarop we hebben getraind. Zodra we de voorspelde autoprijzen hebben, kunnen we de modelprestaties evalueren door te kijken hoeveel de voorspellingen gemiddeld afwijken van de werkelijke prijzen. Om dit te illustreren, gebruiken we de *Auto's-prijsgegevens (Raw) dataset* beschikbaar in de sectie **Opgeslagen datasets** in Machine Learning Studio (klassiek).
+## <a name="evaluating-a-regression-model"></a>Een regressie model evalueren
+Stel dat we de prijs van een auto willen voors pellen met behulp van functies zoals afmetingen, paarden kracht, Engine specificaties, enzovoort. Dit is een typisch regressie probleem, waarbij de doel variabele (*prijs*) een doorlopende numerieke waarde is. We kunnen een lineair regressie model passend maken dat, op basis van de functie waarden van een bepaalde auto, de prijs van die auto kan voors pellen. Dit regressie model kan worden gebruikt om te scoren op dezelfde gegevensset die we hebben opgeleid. Zodra we de gedicteerde auto prijzen hebben, kunnen we de prestaties van het model evalueren door te kijken hoeveel de voor spellingen afwijken van de werkelijke prijzen op gemiddeld. Om dit te illustreren, gebruiken we de beschik bare *gegevens over auto Mobile price data (RAW)* in het gedeelte **opgeslagen gegevens sets** in machine learning Studio (klassiek).
 
 ### <a name="creating-the-experiment"></a>Het experiment maken
-Voeg de volgende modules toe aan uw werkruimte in Azure Machine Learning Studio (klassiek):
+Voeg de volgende modules toe aan uw werk ruimte in Azure Machine Learning Studio (klassiek):
 
-* Auto prijsgegevens (Raw)
+* Prijs gegevens auto Mobile (onbewerkt)
 * [Lineaire regressie][linear-regression]
-* [Trainingsmodel][train-model]
+* [Model trainen][train-model]
 * [Score Model][score-model]
 * [Model evalueren][evaluate-model]
 
-Sluit de poorten zoals hieronder in figuur 1 aan en stel de kolom Label van de module [Treinmodel][train-model] op *prijs*.
+Verbind de poorten zoals hieronder wordt weer gegeven in afbeelding 1 en stel de kolom Label van de module [Train model][train-model] in op *prijs*.
 
-![Een regressiemodel evalueren](./media/evaluate-model-performance/1.png)
+![Een regressie model evalueren](./media/evaluate-model-performance/1.png)
 
-Afbeelding 1. Een regressiemodel evalueren.
+Afbeelding 1. Een regressie model evalueren.
 
-### <a name="inspecting-the-evaluation-results"></a>De evaluatieresultaten inspecteren
-Nadat u het experiment hebt uitgevoerd, u op de uitvoerpoort van de module [Model evalueren][evaluate-model] klikken en *Visualiseren* selecteren om de evaluatieresultaten te bekijken. De evaluatiestatistieken die beschikbaar zijn voor regressiemodellen zijn: *Mean Absolute Error*, Root Mean Absolute *Error*, Relative *Absolute Error*, *Relative Squared Error*, en de *Bepalingscoëfficiënt*.
+### <a name="inspecting-the-evaluation-results"></a>De evaluatie resultaten controleren
+Nadat u het experiment hebt uitgevoerd, kunt u op de uitvoer poort van de module [Evaluate model][evaluate-model] klikken en *visualiseren* selecteren om de resultaten van de evaluatie te bekijken. De metrische gegevens voor de evaluatie die beschikbaar zijn voor regressie modellen zijn: de *absolute fout*, het *hoofd knooppunt absolute fout*, de *relatieve absolute fout*, de *relatieve kwadratische fout*en de *coëfficiënt van de bepaling*.
 
-De term "fout" hier vertegenwoordigt het verschil tussen de voorspelde waarde en de werkelijke waarde. De absolute waarde of het kwadraat van dit verschil wordt meestal berekend om de totale omvang van de fout in alle gevallen vast te leggen, omdat het verschil tussen de voorspelde en werkelijke waarde in sommige gevallen negatief kan zijn. De foutstatistieken meten de voorspellende prestaties van een regressiemodel in termen van de gemiddelde afwijking van de voorspellingen van de werkelijke waarden. Lagere foutwaarden betekenen dat het model nauwkeuriger is in het maken van voorspellingen. Een algemene foutstatistiek van nul betekent dat het model perfect bij de gegevens past.
+De term ' error ' vertegenwoordigt het verschil tussen de voorspelde waarde en de waarde True. De absolute waarde of het kwadraat van dit verschil wordt doorgaans berekend om de totale omvang van de fout voor alle instanties vast te leggen, omdat het verschil tussen de voorspelde en de werkelijke waarde in sommige gevallen negatief kan zijn. De metrische fout gegevens meten de voorspellende prestaties van een regressie model in termen van de gemiddelde afwijking van de voor spellingen van de werkelijke waarden. Lagere fout waarden betekent dat het model nauw keuriger is bij het maken van voor spellingen. De totale fout waarde nul betekent dat het model perfect past bij de gegevens.
 
-De bepalingscoëfficiënt, die ook bekend staat als R-kwadraat, is ook een standaardmanier om te meten hoe goed het model bij de gegevens past. Het kan worden geïnterpreteerd als de verhouding van de variatie uitgelegd door het model. Een hoger aandeel is beter in dit geval, waar 1 geeft een perfecte pasvorm.
+De determinatie coëfficiënt, ook wel R-kwadraat genoemd, is een standaard manier om te meten hoe goed het model past bij de gegevens. Het kan worden geïnterpreteerd als het deel van de variatie dat door het model wordt uitgelegd. In dit geval is een hogere verhouding beter, waarbij 1 wijst op een perfecte plaats.
 
-![Evaluatiestatistieken voor lineaire regressie](./media/evaluate-model-performance/2.png)
+![Metrische regressie-evaluatie gegevens](./media/evaluate-model-performance/2.png)
 
-Afbeelding 2. Statistieken voor lineaire regressieevaluatie.
+Afbeelding 2. Metrische regressie grootheden.
 
-### <a name="using-cross-validation"></a>Kruisvalidatie gebruiken
-Zoals eerder vermeld, u automatisch herhaalde training, scores en evaluaties uitvoeren met behulp van de module [Model voor crossvalideren.][cross-validate-model] Alles wat je in dit geval nodig hebt is een dataset, een ongetraind model en een [module Cross-Validate Model][cross-validate-model] (zie figuur hieronder). U moet de labelkolom inde- *of prijs* instellen in de eigenschappen van de module Model [voor crossvalideren.][cross-validate-model]
+### <a name="using-cross-validation"></a>Kruis validatie gebruiken
+Zoals eerder vermeld, kunt u automatisch herhaalde training, waardering en evaluaties uitvoeren met behulp van de [model module kruislings valideren][cross-validate-model] . Alles wat u nodig hebt in dit geval is een gegevensset, een niet-traind model en een [model module met kruis validatie][cross-validate-model] (zie afbeelding hieronder). U moet de kolom Label instellen op *prijs* in de eigenschappen van de [model module kruislings valideren][cross-validate-model] .
 
-![Een regressiemodel kruisgeldig maken](./media/evaluate-model-performance/3.png)
+![Een regressie model Kruis valideren](./media/evaluate-model-performance/3.png)
 
-Afbeelding 3. Een regressiemodel kruisgeldigmaken.
+Afbeelding 3. Een regressie model kruislings valideren.
 
-Na het uitvoeren van het experiment u de evaluatieresultaten inspecteren door op de juiste uitvoerpoort van de module [Model voor kruisvalidatie te][cross-validate-model] klikken. Dit geeft een gedetailleerd overzicht van de statistieken voor elke iteratie (fold) en de gemiddelde resultaten van elk van de statistieken (figuur 4).
+Nadat u het experiment hebt uitgevoerd, kunt u de resultaten van de evaluatie controleren door te klikken op de juiste uitvoer poort van de module voor het [kruislings valideren][cross-validate-model] van het model. Hiermee krijgt u een gedetailleerd overzicht van de metrische gegevens voor elke iteratie (vouw) en de gemiddelde resultaten van elk van de metrische gegevens (afbeelding 4).
 
-![Resultaten van een regressiemodel voor crossvalidatie](./media/evaluate-model-performance/4.png)
+![Kruis validatie resultaten van een regressie model](./media/evaluate-model-performance/4.png)
 
-Afbeelding 4: Resultaten van een regressiemodel voor crossvalidatie.
+Afbeelding 4: Kruis validatie resultaten van een regressie model.
 
-## <a name="evaluating-a-binary-classification-model"></a>Een binair classificatiemodel evalueren
-In een binair classificatiescenario heeft de doelvariabele slechts twee mogelijke uitkomsten, bijvoorbeeld: {0, 1} of {false, true}, {negative, positive}. Stel dat u een gegevensset krijgt van volwassen werknemers met een aantal demografische en werkgelegenheidsvariabelen, en dat u wordt gevraagd om het inkomensniveau te voorspellen, een binaire variabele met de waarden {"<=50 K", ">50 K"}. Met andere woorden, de negatieve klasse vertegenwoordigt de werknemers die minder dan of gelijk aan 50 K per jaar, en de positieve klasse vertegenwoordigt alle andere werknemers. Net als in het regressiescenario zouden we een model trainen, bepaalde gegevens scoren en de resultaten evalueren. Het belangrijkste verschil hier is de keuze van metrics Azure Machine Learning Studio (klassieke) computes en outputs. Om het voorspellingsscenario voor inkomensniveau te illustreren, gebruiken we de gegevensset [Voor volwassenen](https://archive.ics.uci.edu/ml/datasets/Adult) om een Studio-experiment (klassiek) te maken en de prestaties van een logistiek regressiemodel met twee klassen te evalueren, een veelgebruikte binaire classificatie.
+## <a name="evaluating-a-binary-classification-model"></a>Een binair classificatie model evalueren
+In een scenario met een binaire indeling heeft de doel variabele slechts twee mogelijke resultaten, bijvoorbeeld: {0, 1} of {False, True}, {Negative, positief}. Stel dat u een gegevensset hebt gekregen van volwassen mede werkers met enkele demografische en werkgelegenheids variabelen en dat u wordt gevraagd om het inkomens niveau te voors pellen, een binaire variabele met de waarden {"<= 50 K", ">50 K"}. Met andere woorden, de klasse Negative vertegenwoordigt de werk nemers die kleiner zijn dan of gelijk zijn aan 50 K per jaar, en de positieve klasse vertegenwoordigt alle andere werk nemers. Net als bij het regressie scenario zullen we een model trainen, bepaalde gegevens beoordelen en de resultaten evalueren. Het belangrijkste verschil is hier de keuze van metrische gegevens Azure Machine Learning Studio (klassiek) berekeningen en uitvoer. Om het scenario voor Voorspellings niveau te illustreren, gebruiken we de [volwassene](https://archive.ics.uci.edu/ml/datasets/Adult) gegevensset voor het maken van een studio-experiment (klassiek) en evalueren we de prestaties van een logistiek regressie model met twee klassen, een veelgebruikte binaire classificatie.
 
 ### <a name="creating-the-experiment"></a>Het experiment maken
-Voeg de volgende modules toe aan uw werkruimte in Azure Machine Learning Studio (klassiek):
+Voeg de volgende modules toe aan uw werk ruimte in Azure Machine Learning Studio (klassiek):
 
-* Gegevensgegevensgegevens van binaire classificatie van inkomsten voor volwassenen
+* Gegevensset opbrengst binaire classificatie volwassene
 * [Logistieke regressie met twee klassen][two-class-logistic-regression]
-* [Trainingsmodel][train-model]
+* [Model trainen][train-model]
 * [Score Model][score-model]
 * [Model evalueren][evaluate-model]
 
-Sluit de poorten zoals hieronder in figuur 5 aan en stel de kolom Label van de module [Treinmodel][train-model] in op *inkomsten*.
+Verbind de poorten zoals hieronder wordt weer gegeven in afbeelding 5 en stel de kolom Label van de module [Train model][train-model] in op *inkomen*.
 
-![Een binair classificatiemodel evalueren](./media/evaluate-model-performance/5.png)
+![Een binair classificatie model evalueren](./media/evaluate-model-performance/5.png)
 
-Afbeelding 5. Een binair classificatiemodel evalueren.
+Afbeelding 5. Een binair classificatie model evalueren.
 
-### <a name="inspecting-the-evaluation-results"></a>De evaluatieresultaten inspecteren
-Na het uitvoeren van het experiment u op de uitvoerpoort van de module [Model evalueren][evaluate-model] klikken en *Visualiseren* selecteren om de evaluatieresultaten te bekijken (figuur 7). De evaluatiestatistieken die beschikbaar zijn voor binaire classificatiemodellen zijn: *Nauwkeurigheid*, *Precisie*, *Recall*, *F1-score*en *AUC*. Bovendien, de module uitgangen een verwarring matrix met het aantal echte positieven, valse negatieven, false positives, en echte negatieven, evenals *ROC*, *Precision / Recall*, en *Lift* curven.
+### <a name="inspecting-the-evaluation-results"></a>De evaluatie resultaten controleren
+Nadat u het experiment hebt uitgevoerd, kunt u op de uitvoer poort van de module [Evaluate model][evaluate-model] klikken en *visualiseren* selecteren om de resultaten van de evaluatie te bekijken (afbeelding 7). De metrische gegevens van de evaluatie versie die beschikbaar zijn voor binaire classificatie modellen zijn: *nauw keurigheid*, *precisie*, *intrekken*, *F1 Score*en *AUC*. Daarnaast wordt in de module een Verwar ring-matrix uitgevoerd met het aantal True-positieven, fout-negatieven, fout-positieven en echte negatieven, maar ook voor *Roc*, *precisie/terughalen*en *Lift* curven.
 
-Nauwkeurigheid is gewoon het aandeel van correct geclassificeerde exemplaren. Het is meestal de eerste statistiek die u bekijkt bij de evaluatie van een classificatie. Echter, wanneer de testgegevens uit balans zijn (waar de meeste exemplaren behoren tot een van de klassen), of u meer geïnteresseerd bent in de prestaties op een van de klassen, nauwkeurigheid niet echt vangen de effectiviteit van een classificatie. In het classificatiescenario voor inkomensniveau, gaat u ervan uit dat u test op bepaalde gegevens waarbij 99% van de exemplaren mensen vertegenwoordigt die minder dan of gelijk aan 50.000 per jaar verdienen. Het is mogelijk om een nauwkeurigheid van 0,99 te bereiken door de klasse "<=50K" voor alle instanties te voorspellen. De classificatie in dit geval lijkt te doen een goede baan in het algemeen, maar in werkelijkheid, het niet aan een van de hoge inkomens individuen (de 1%) classificeren Correct.
+Nauw keurigheid is gewoon het aandeel van de juiste geclassificeerde instanties. Doorgaans is dit de eerste metriek die u bekijkt bij het evalueren van een classificatie. Wanneer de test gegevens echter niet in balans zijn (waarbij de meeste instanties tot een van de klassen behoren), of als u geïnteresseerd bent in de prestaties van een van de klassen, legt de nauw keurigheid niet echt de effectiviteit van een classificatie vast. In het scenario voor de classificatie van het inkomens niveau wordt ervan uitgegaan dat u op sommige gegevens test, waarbij 99% van de instanties de mensen vertegenwoordigen die minder dan of gelijk zijn aan 50.000 per jaar. Het is mogelijk om een 0,99 nauw keurigheid te krijgen door de klasse ' <= 50.000 ' voor alle exemplaren te voors pellen. De classificatie in dit geval lijkt een goede taak te zijn, maar in werkelijkheid is het niet mogelijk om een van de hoge inkomsten van personen (de 1%) te classificeren. correct.
 
-Om die reden is het handig om aanvullende statistieken te berekenen die meer specifieke aspecten van de evaluatie vastleggen. Alvorens in te gaan op de details van dergelijke statistieken, is het belangrijk om de verwarring matrix van een binaire classificatie evaluatie te begrijpen. De klassenlabels in de trainingsset kunnen slechts twee mogelijke waarden aannemen, die we meestal positief of negatief noemen. De positieve en negatieve exemplaren die een classificatie correct voorspelt, worden respectievelijk true positives (TP) en true negatives (TN) genoemd. Evenzo worden de onjuist geclassificeerde exemplaren valse positieven (FP) en false negatives (FN) genoemd. De verwarringsmatrix is gewoon een tabel met het aantal exemplaren dat onder elk van deze vier categorieën valt. Azure Machine Learning Studio (klassiek) bepaalt automatisch welke van de twee klassen in de gegevensset de positieve klasse is. Als de klassenlabels Booleaanse of gehele getallen zijn, krijgen de labelinstanties 'waar' of '1' de positieve klasse toegewezen. Als de labels tekenreeksen zijn, zoals bij de gegevensset inkomen, worden de labels alfabetisch gesorteerd en wordt het eerste niveau gekozen als de negatieve klasse, terwijl het tweede niveau de positieve klasse is.
+Daarom is het handig om extra metrische gegevens te berekenen waarmee meer specifieke aspecten van de evaluatie worden vastgelegd. Voordat u de details van deze metrische gegevens overgaat, is het belang rijk dat u de Verwar ring-matrix van een binaire classificatie-evaluatie begrijpt. De klassen labels in de Trainingsset kunnen alleen worden uitgevoerd op twee mogelijke waarden, die meestal positief of negatief zijn. De positieve en negatieve instanties die een classificatie voorspeld op de juiste wijze worden gedicteerd, worden respectievelijk True-positieven (TP) en True Negative (TN) genoemd. Op dezelfde manier worden de onjuist geclassificeerde instanties ' fout-positieven (FP) en ' onwaar ' negatieven (FN) genoemd. De Verwar ring matrix is een tabel waarin het aantal exemplaren wordt weer gegeven dat onder elk van deze vier categorieën valt. Azure Machine Learning Studio (klassiek) beslist automatisch welke van de twee klassen in de gegevensset de positieve klasse zijn. Als de klassen labels Booleaans of geheel getal zijn, krijgen de labels ' True ' en ' 1 ' instanties de positieve klasse toegewezen. Als de labels teken reeksen zijn, zoals met de gegevensset baten, worden de labels alfabetisch gesorteerd en wordt het eerste niveau als een negatieve klasse gekozen, terwijl het tweede niveau de positieve klasse is.
 
-![Binaire classificatie verwarring Matrix](./media/evaluate-model-performance/6a.png)
+![Verwar ring matrix voor binaire classificatie](./media/evaluate-model-performance/6a.png)
 
-Afbeelding 6. Binaire classificatie verwarring matrix.
+Afbeelding 6. Verwar ring matrix voor binaire classificatie.
 
-Terug te gaan naar de inkomensclassificatie probleem, zouden we willen een aantal evaluatie vragen die ons helpen begrijpen van de prestaties van de classificatie gebruikt. Een natuurlijke vraag is: 'Van de personen die het model voorspelde te verdienen >50 K (TP + FP), hoeveel werden correct ingedeeld (TP)?' Deze vraag kan worden beantwoord door te kijken naar de **precisie** van het model, dat is het aandeel van de positieven die correct zijn ingedeeld: TP / (TP + FP). Een andere veel voorkomende vraag is "Van alle hoogverdienende werknemers met een inkomen >50k (TP +FN), hoeveel heeft de classifier correct classificeren (TP)". Dit is eigenlijk de **Recall**, of de ware positieve tarief: TP / (TP + FN) van de classificatie. Je zou kunnen merken dat er een duidelijke afweging tussen precisie en terugroepen. Bijvoorbeeld, gezien een relatief evenwichtige dataset, een classificatie die meestal positieve gevallen voorspelt, zou een hoge recall hebben, maar een vrij lage precisie als veel van de negatieve gevallen zou worden verkeerd ingedeeld wat resulteert in een groot aantal valse positieven. Als u een plot wilt zien van de manier waarop deze twee statistieken variëren, u op de **curve PRECISION/RECALL** klikken op de uitvoerpagina voor evaluatieresultaten (linksboven deel van figuur 7).
+Als u terugkeert naar het probleem met de winst classificatie, willen we verschillende evaluatie vragen stellen die ons helpen de prestaties van de gebruikte classificatie te begrijpen. Een natuurlijke vraag is: ' buiten de personen voor wie het model is voorspeld voor het verdienen van >50 K (TP + FP), hoeveel goed zijn geclassificeerd (TP)? ' Deze vraag kan worden beantwoord door de **nauw keurigheid** van het model te bekijken. Dit is het aandeel van de positieve waarde die juist is geclassificeerd: TP/(TP + FP). Een andere veelgestelde vraag is ' van alle hoge voor delen van werk nemers met inkomsten >50.000 (TP + FN), hoeveel had de classificatie correct geclassificeerd (TP) '. Dit is in feite het **intrekken**, of de werkelijke positieve factor: TP/(TP + FN) van de classificatie. U zult merken dat er sprake is van een duidelijke afweging tussen Precision en intrekken. Als er bijvoorbeeld sprake is van een relatief gebalanceerde gegevensset, zou een classificatie die voornamelijk positieve instanties voorspeld, een hoge terugroep zou hebben, maar een lage nauw keurigheid als veel van de negatieve instanties verkeerd worden geclassificeerd, wat resulteert in een groot aantal fout-positieven. Als u een overzicht wilt zien van de verschillen tussen deze twee gegevens, klikt u op **de curve voor** de resultaten van de evaluatie pagina (linksboven in afbeelding 7).
 
-![Resultaten van binaire classificatie-evaluatie](./media/evaluate-model-performance/7.png)
+![Resultaten van evaluatie van binaire classificatie](./media/evaluate-model-performance/7.png)
 
-Afbeelding 7. Resultaten van binaire classificatie-evaluatie.
+Afbeelding 7. Evaluatie resultaten van binaire classificatie.
 
-Een andere gerelateerde statistiek die vaak wordt gebruikt is de **F1 Score**, die zowel precisie en terugroepen in aanmerking neemt. Het is het harmonische gemiddelde van deze twee metrics en wordt als zodanig berekend: F1 = 2 (precision x recall) / (precisie + recall). De F1-score is een goede manier om de evaluatie samen te vatten in een enkel nummer, maar het is altijd een goede gewoonte om te kijken naar zowel precisie en samen herinneren om beter te begrijpen hoe een classificatie zich gedraagt.
+Een andere gerelateerde metrische waarde die vaak wordt gebruikt, is de **F1-Score**, die zowel nauw keurig als in aanmerking komt. Het harmonische gemiddelde van deze twee metrische gegevens en wordt als volgt berekend: F1 = 2 (Precision x intrekken)/(Precision + intrekken). De F1-Score is een goede manier om de evaluatie in één getal samen te vatten, maar het is altijd een goed idee om nauw keurig te kijken en samen te halen om beter inzicht te krijgen in hoe een classificatie zich gedraagt.
 
-Daarnaast kan men de werkelijke positieve snelheid versus de false positive rate in de **Receiver Operating Characteristic (ROC)** curve en de overeenkomstige **Area Under the Curve (AUC)** waarde te inspecteren. Hoe dichter deze curve is naar de linkerbovenhoek, hoe beter de classifier de prestaties is (dat is het maximaliseren van de echte positieve tarief, terwijl het minimaliseren van de vals-positieve tarief). Curven die dicht bij de diagonaal van het perceel liggen, zijn het resultaat van classificaties die de neiging hebben voorspellingen te doen die dicht bij willekeurig gissen zijn.
+Daarnaast kan een de werkelijke positieve verhouding controleren, vergeleken met het onjuiste positieve rente nummer in de curve van de **ontvanger** en het bijbehorende **gebied onder de waarde curve (AUC)** . Hoe dichter deze curve zich bevindt in de linkerbovenhoek, des te beter is de prestaties van de classificatie (waardoor de werkelijke positieve snelheid wordt gemaximaliseerd terwijl het onjuiste positieve tempo wordt geminimaliseerd). Curves die zich dicht bij de diagonaal van het waarnemings punt bevinden, zijn het resultaat van classificaties die doorgaans voor spellingen doen die dicht bij wille keurig raden zijn.
 
-### <a name="using-cross-validation"></a>Kruisvalidatie gebruiken
-Net als in het regressievoorbeeld kunnen we crossvalidatie uitvoeren om verschillende subsets van de gegevens automatisch te trainen, te scoren en te evalueren. Op dezelfde manier kunnen we de [cross-validate model][cross-validate-model] module, een ongetraind logistiek regressiemodel en een dataset gebruiken. De labelkolom moet worden ingesteld op *inkomsten* in de eigenschappen van de module [Model voor crossvalideren.][cross-validate-model] Na het uitvoeren van het experiment en het klikken op de juiste uitvoerpoort van de module [Cross-Validate Model,][cross-validate-model] kunnen we de binaire classificatiemetrische waarden voor elke vouw zien, naast de gemiddelde en standaarddeviatie van elk. 
+### <a name="using-cross-validation"></a>Kruis validatie gebruiken
+Net als in het regressie voorbeeld kunnen we Kruis validatie uitvoeren om herhaaldelijk verschillende subsets van de gegevens automatisch te trainen, te beoordelen en te evalueren. Op dezelfde manier kunnen we de [model module kruislings valideren][cross-validate-model] , een niet-uitgetraind logistiek regressie model en een gegevensset gebruiken. De label kolom moet worden ingesteld op *inkomsten* in de eigenschappen van de [model module kruislings valideren][cross-validate-model] . Na het uitvoeren van het experiment en het klikken op de juiste uitvoer poort van de module voor het [kruislings valideren][cross-validate-model] van het model, kunnen we naast het gemiddelde en de standaard afwijking van elke vouw de metrische waarden voor de binaire classificatie zien. 
 
-![Een binair classificatiemodel kruisgeldig maken](./media/evaluate-model-performance/8.png)
+![Een binair classificatie model Kruis valideren](./media/evaluate-model-performance/8.png)
 
-Afbeelding 8. Een binair classificatiemodel kruisgeldig maken.
+Afbeelding 8. Een binair classificatie model valideren.
 
-![Resultaten van een binaire classificatie voor crossvalidatie](./media/evaluate-model-performance/9.png)
+![Kruis validatie resultaten van een binaire classificatie](./media/evaluate-model-performance/9.png)
 
-Figuur 9. Resultaten van een binaire classificatie voor crossvalidatie.
+Afbeelding 9. Kruis validatie resultaten van een binaire classificatie.
 
-## <a name="evaluating-a-multiclass-classification-model"></a>Een classificatiemodel voor meerdere klassen evalueren
-In dit experiment gebruiken we [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") de populaire Iris-gegevensset, die exemplaren van drie verschillende typen (klassen) van de irisplant bevat. Er zijn vier functiewaarden (sepallengte/breedte en bloemblaadjeslengte/breedte) voor elke instantie. In de vorige experimenten hebben we de modellen getraind en getest met dezelfde datasets. Hier gebruiken we de [module Gesplitste gegevens][split] om twee subsets van de gegevens te maken, op de eerste te trainen en te scoren en te evalueren op de tweede. De Iris-gegevensset is openbaar beschikbaar op de [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.html)en kan worden gedownload met behulp van een [importgegevensmodule.][import-data]
+## <a name="evaluating-a-multiclass-classification-model"></a>Een classificatie model voor multi klassen evalueren
+In dit experiment gebruiken we de populaire [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") -gegevensset, die exemplaren van drie verschillende typen (klassen) van de Iris plant bevat. Er zijn vier onderdeel waarden (SEPA-lengte/breedte en grootte/breedte van het bloem) voor elk exemplaar. In de vorige experimenten hebben we de modellen getraind en getest met dezelfde gegevens sets. Hier gebruiken we de module voor het [splitsen van gegevens][split] om twee subsets van de gegevens te maken, te trainen op het eerste en de score en evalueren voor de tweede. De Iris-gegevensset is openbaar beschikbaar op de [icb machine learning-opslag plaats](https://archive.ics.uci.edu/ml/index.html)en kan worden gedownload met behulp van een module voor [gegevens import][import-data] .
 
 ### <a name="creating-the-experiment"></a>Het experiment maken
-Voeg de volgende modules toe aan uw werkruimte in Azure Machine Learning Studio (klassiek):
+Voeg de volgende modules toe aan uw werk ruimte in Azure Machine Learning Studio (klassiek):
 
 * [Gegevens importeren][import-data]
 * [Beslissingsforest met meerdere klassen][multiclass-decision-forest]
-* [Gesplitste gegevens][split]
-* [Trainingsmodel][train-model]
+* [Gegevens splitsen][split]
+* [Model trainen][train-model]
 * [Score Model][score-model]
 * [Model evalueren][evaluate-model]
 
-Sluit de poorten aan zoals hieronder in figuur 10.
+Verbind de poorten zoals hieronder wordt weer gegeven in afbeelding 10.
 
-Stel de kolomindex Label van de module [Treinmodel][train-model] in op 5. De gegevensset heeft geen koptekstrij, maar we weten dat de klassenlabels zich in de vijfde kolom bevinden.
+Stel de index van de label kolom van de module [Train model][train-model] in op 5. De gegevensset heeft geen koprij, maar we weten dat de klassen labels zich in de vijfde kolom bevinden.
 
-Klik op de module [Gegevens importeren][import-data] en stel de eigenschap *Gegevensbron* in *op web-URL via HTTP*en de *URL* in op http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data.
+Klik op de [module gegevens importeren][import-data] en stel de eigenschap *gegevens bron* in op *Web-URL via http*en de *URL* naar. http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data
 
-Stel de fractie in van de instanties die moet worden gebruikt voor training in de module [Gesplitste gegevens][split] (0,7 bijvoorbeeld).
+Stel het gedeelte van de instanties in dat moet worden gebruikt voor de training in de module voor het [splitsen van gegevens][split] (bijvoorbeeld 0,7).
 
-![Een klasseclassificatie van meerdere klassen evalueren](./media/evaluate-model-performance/10.png)
+![Een classificatie met meer klassen evalueren](./media/evaluate-model-performance/10.png)
 
-Figuur 10. Een klasseclassificatie van meerdere klassen evalueren
+Afbeelding 10. Een classificatie met meer klassen evalueren
 
-### <a name="inspecting-the-evaluation-results"></a>De evaluatieresultaten inspecteren
-Voer het experiment uit en klik op de uitvoerpoort van [Model evalueren][evaluate-model]. De evaluatieresultaten worden gepresenteerd in de vorm van een verwarringsmatrix, in dit geval. De matrix toont de werkelijke vs. voorspelde exemplaren voor alle drie de klassen.
+### <a name="inspecting-the-evaluation-results"></a>De evaluatie resultaten controleren
+Voer het experiment uit en klik op de uitvoer poort van het [Evalueer model][evaluate-model]. De resultaten van de evaluatie worden in dit geval weer gegeven in de vorm van een Verwar ring matrix. In de matrix worden de werkelijke versus voorspelde instanties voor alle drie de klassen weer gegeven.
 
-![Evaluatieresultaten van classificaties van meerdere klassen](./media/evaluate-model-performance/11.png)
+![Resultaten van evaluatie van classificatie van multi klassen](./media/evaluate-model-performance/11.png)
 
-Figuur 11. Evaluatieresultaten van classificaties met meerdere klassen.
+Afbeelding 11. Resultaten van classificatie van multi klasse-evaluatie.
 
-### <a name="using-cross-validation"></a>Kruisvalidatie gebruiken
-Zoals eerder vermeld, u automatisch herhaalde training, scores en evaluaties uitvoeren met behulp van de module [Model voor crossvalideren.][cross-validate-model] U hebt een gegevensset, een ongetraind model en een [module Voor kruisvalidatie nodig][cross-validate-model] (zie figuur hieronder). Opnieuw moet u de labelkolom van de module [Model voor crossvalideren][cross-validate-model] instellen (kolomindex 5 in dit geval). Nadat u het experiment hebt uitgevoerd en op de juiste uitvoerpoort van het [model voor crossvalideren][cross-validate-model]hebt geklikt, u de metrische waarden voor elke vouw en de gemiddelde en standaarddeviatie inspecteren. De statistieken die hier worden weergegeven zijn vergelijkbaar met die besproken in de binaire classificatie geval. Echter, in multiclass classificatie, het berekenen van de echte positieven / negatieven en false positives / negatieven wordt gedaan door te rekenen op een basis per klasse, want er is geen algemene positieve of negatieve klasse. Bijvoorbeeld, bij het berekenen van de precisie of recall van de klasse 'Iris-setosa', wordt aangenomen dat dit de positieve klasse en alle anderen als negatief.
+### <a name="using-cross-validation"></a>Kruis validatie gebruiken
+Zoals eerder vermeld, kunt u automatisch herhaalde training, waardering en evaluaties uitvoeren met behulp van de [model module kruislings valideren][cross-validate-model] . U hebt een gegevensset, een niet-traind model en een [model module met kruis validatie][cross-validate-model] nodig (zie afbeelding hieronder). Opnieuw moet u de kolom Label van de module [model voor kruis validatie][cross-validate-model] (kolom index 5 in dit geval) instellen. Nadat u het experiment hebt uitgevoerd en op de juiste uitvoer poort van het [Kruis validatie model][cross-validate-model]hebt geklikt, kunt u de metrische waarden voor elke vouwen en de gemiddelde en standaard afwijking controleren. De metrische gegevens die hier worden weer gegeven, zijn vergelijkbaar met de waarden die in de binaire classificatie case worden besproken. Bij een classificatie met meervoudige klassen worden de werkelijke positieven/negatieven en de fout-positieven/negatieven echter uitgevoerd door te tellen op basis van per klasse, omdat er geen algemene positieve of negatieve klasse is. Bij het berekenen van de precisie of het terughalen van de klasse Iris-setosa wordt ervan uitgegaan dat dit de positieve klasse en alle andere als negatief is.
 
-![Het valideren van een classificatiemodel voor meerdere klassen](./media/evaluate-model-performance/12.png)
+![Een classificatie model met meerdere klassen valideren](./media/evaluate-model-performance/12.png)
 
-Figuur 12. Het valideren van een meerklassenclassificatiemodel.
+Afbeelding 12. Een classificatie model met meerdere klassen valideren.
 
-![Resultaten van meerdere validatie smaken van een classificatiemodel voor meerdere klassen](./media/evaluate-model-performance/13.png)
+![Kruis validatie resultaten van een classificatie model met meerdere klassen](./media/evaluate-model-performance/13.png)
 
-Figuur 13. Resultaten van meerdere validatie smaken van een classificatiemodel voor meerdere klassen.
+Afbeelding 13. Kruis validatie resultaten van een classificatie model met meerdere klassen.
 
 <!-- Module References -->
 [cross-validate-model]: https://msdn.microsoft.com/library/azure/75fb875d-6b86-4d46-8bcc-74261ade5826/
