@@ -1,6 +1,6 @@
 ---
-title: Blobs weergeven met .NET - Azure Storage
-description: Meer informatie over het weergeven van blobs in een container in uw Azure Storage-account met behulp van de .NET-clientbibliotheek. In codevoorbeelden wordt uitgelegd hoe blobs in een platte vermelding worden weergegeven of hoe blobs hiërarchisch worden weergegeven, alsof ze zijn ingedeeld in mappen of mappen.
+title: Blobs weer geven met .NET-Azure Storage
+description: Meer informatie over het weer geven van blobs in een container in uw Azure Storage-account met behulp van de .NET-client bibliotheek. Code voorbeelden laten zien hoe blobs in een platte lijst worden weer gegeven of hoe blobs hiërarchisch moeten worden vermeld, alsof ze in mappen of mappen zijn ingedeeld.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,63 +9,63 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: eb62883859a3efeb1c05deb38d8a40fba76e9cdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79137917"
 ---
-# <a name="list-blobs-with-net"></a>Blobs weergeven met .NET
+# <a name="list-blobs-with-net"></a>Blobs weer geven met .NET
 
-Wanneer u blobs uit uw code opgeeft, u een aantal opties opgeven om te beheren hoe resultaten worden geretourneerd vanuit Azure Storage. U het aantal resultaten opgeven dat in elke reeks resultaten moet worden retournerd en vervolgens de volgende sets ophalen. U een voorvoegsel opgeven om blobs terug te geven waarvan de namen beginnen met dat teken of tekenreeks. En u blobs in een platte lijststructuur of hiërarchisch weergeven. Een hiërarchische vermelding retourneert blobs alsof ze zijn ingedeeld in mappen. 
+Wanneer u blobs uit uw code opneemt, kunt u een aantal opties opgeven om te beheren hoe de resultaten van Azure Storage worden geretourneerd. U kunt het aantal resultaten opgeven dat moet worden geretourneerd in elke set resultaten en vervolgens de volgende sets ophalen. U kunt een voor voegsel opgeven voor het retour neren van blobs waarvan de naam met dat teken of teken reeks begint. En u kunt blobs in een platte lijst structuur of hiërarchisch vermelden. Een hiërarchische vermelding retourneert blobs alsof ze zijn ingedeeld in mappen. 
 
-In dit artikel ziet u hoe u blobs weergeven met behulp van de [Azure Storage-clientbibliotheek voor .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).  
+In dit artikel wordt beschreven hoe u blobs kunt weer geven met behulp [van de Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage?view=azure-dotnet).  
 
-## <a name="understand-blob-listing-options"></a>Opties voor blob-aanbiedingen begrijpen
+## <a name="understand-blob-listing-options"></a>Informatie over de opties voor BLOB-vermeldingen
 
-Als u de blobs in een opslagaccount wilt weergeven, roept u een van de volgende methoden aan:
+Als u de blobs in een opslag account wilt weer geven, roept u een van deze methoden aan:
 
-- [CloudBlobClient.ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobs)
-- [CloudBlobClient.ListBlobsGesegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmented)
-- [CloudBlobClient.ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmentedasync)
+- [CloudBlobClient. ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobs)
+- [CloudBlobClient. ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmented)
+- [CloudBlobClient. ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmentedasync)
 
-Als u de blobs in een container wilt weergeven, roept u een van de volgende methoden aan:
+Als u de blobs in een container wilt weer geven, roept u een van deze methoden aan:
 
-- [CloudBlobContainer.ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs)
-- [CloudBlobContainer.ListBlobsGesegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented)
-- [CloudBlobContainer.ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync)
+- [CloudBlobContainer. ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs)
+- [CloudBlobContainer. ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented)
+- [CloudBlobContainer. ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync)
 
-De overbelasting voor deze methoden biedt extra opties voor het beheren van hoe blobs worden geretourneerd door de aanbiedingsbewerking. Deze opties worden beschreven in de volgende secties.
+De Overloads voor deze methoden bieden extra opties voor het beheren van de manier waarop blobs door de vermelding worden geretourneerd. Deze opties worden in de volgende secties beschreven.
 
-### <a name="manage-how-many-results-are-returned"></a>Beheren hoeveel resultaten worden geretourneerd
+### <a name="manage-how-many-results-are-returned"></a>Bepalen hoeveel resultaten er worden geretourneerd
 
-Standaard levert een aanbiedingsbewerking maximaal 5000 resultaten tegelijk op. Als u een kleinere set resultaten wilt retourneren, geeft u een niet-nulwaarde voor de `maxresults` parameter op wanneer u een van de methoden **ListBlobs** aanroept.
+Standaard retourneert een lijst bewerking Maxi maal 5000 resultaten per keer. Als u een kleinere set resultaten wilt retour neren, geeft u een andere waarde `maxresults` dan nul op voor de para meter bij het aanroepen van een van de **ListBlobs** -methoden.
 
-Als een lijstbewerking meer dan 5000 blobs retourneert `maxresults` of als u een waarde hebt opgegeven voor een zodanige waarde dat de lijstbewerking een subset van containers in het opslagaccount retourneert, retourneert Azure Storage een *vervolgtoken* met de lijst met blobs. Een vervolgtoken is een ondoorzichtige waarde die u gebruiken om de volgende set resultaten uit Azure Storage op te halen.
+Als een lijst bewerking meer dan 5000 blobs retourneert, of als u een waarde `maxresults` hebt opgegeven zodat de lijst bewerking een subset van containers in het opslag account retourneert, retourneert Azure Storage een *vervolg token* met de lijst met blobs. Een vervolg token is een ondoorzichtige waarde die u kunt gebruiken om de volgende set resultaten op te halen uit Azure Storage.
 
-Controleer in uw code de waarde van het vervolgtoken om te bepalen of het null is. Wanneer het vervolgtoken null is, is de set resultaten voltooid. Als het vervolgtoken niet null is, roept u opnieuw de bewerking van de lijst aan en geeft u het vervolgtoken door om de volgende set resultaten op te halen, totdat het vervolgtoken null is.
+Controleer in uw code de waarde van het vervolg token om te bepalen of deze null is. Wanneer het vervolg token null is, is de set met resultaten voltooid. Als het vervolg token niet null is, roept u de vermelding opnieuw aan, waarbij u in het vervolg token de volgende set resultaten ophaalt, totdat het vervolg token null is.
 
-### <a name="filter-results-with-a-prefix"></a>Resultaten filteren met een voorvoegsel
+### <a name="filter-results-with-a-prefix"></a>Resultaten filteren met een voor voegsel
 
-Als u de lijst met containers `prefix` wilt filteren, geeft u een tekenreeks op voor de parameter. De tekenreeks voor het voorvoegsel kan een of meer tekens bevatten. Azure Storage retourneert vervolgens alleen de blobs waarvan de namen beginnen met dat voorvoegsel.
+Als u de lijst met containers wilt filteren, geeft u een `prefix` teken reeks op voor de para meter. De voorvoegsel teken reeks kan een of meer tekens bevatten. Azure Storage retourneert vervolgens alleen de blobs waarvan de namen met het voor voegsel beginnen.
 
-### <a name="return-metadata"></a>Metagegevens retourneren
+### <a name="return-metadata"></a>Meta gegevens retour neren
 
-Als u blobmetagegevens wilt retourneren met de resultaten, geeft u de **waarde met aforatie met contactpersonen** op voor de opsomming [bloblistingdetails.](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) Azure Storage bevat metagegevens waarbij elke blob wordt geretourneerd, zodat u in deze context geen van de methoden **FetchAttributes** hoeft aan te roepen om de blob-metagegevens op te halen.
+Als u BLOB-meta gegevens wilt retour neren met de resultaten, geeft u de **meta gegevens** waarde op voor de [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) -inventarisatie. Azure Storage bevat meta gegevens voor elke geretourneerde blob, dus u hoeft niet een van de **FetchAttributes** -methoden in deze context aan te roepen om de BLOB-meta gegevens op te halen.
 
-### <a name="flat-listing-versus-hierarchical-listing"></a>Platte aanbieding versus hiërarchische aanbieding
+### <a name="flat-listing-versus-hierarchical-listing"></a>Platte aanbieding versus hiërarchische lijst
 
-Blobs in Azure Storage zijn georganiseerd in een vlak paradigma, in plaats van een hiërarchisch paradigma (zoals een klassiek bestandssysteem). U echter blobs ordenen in *virtuele mappen* om een mapstructuur na te bootsen. Een virtuele map maakt deel uit van de naam van de blob en wordt aangegeven door het tekensteken van de scheidingsteken.
+Blobs in Azure Storage zijn ingedeeld in een plat paradigma, in plaats van een hiërarchisch paradigma (zoals een klassiek bestands systeem). U kunt blobs echter indelen in *virtuele mappen* om een mapstructuur te simuleren. Een virtuele map vormt een deel van de naam van de BLOB en wordt aangeduid met het scheidings teken.
 
-Als u blobs wilt ordenen in virtuele mappen, gebruikt u een scheidingstekenteken in de naam van de blob. Het standaardscheidingstekenteken is een voorwaartse slash (/), maar u elk teken opgeven als de scheidingsteken.
+Als u blobs wilt indelen in virtuele mappen, gebruikt u een scheidings teken in de naam van de blob. Het standaard scheidings teken is een slash (/), maar u kunt een wille keurig teken als scheidings tekens opgeven.
 
-Als u uw blobs een naam geeft met een scheidingsteken, u ervoor kiezen blobs hiërarchisch te vermelden. Voor een hiërarchische lijstbewerking retourneert Azure Storage alle virtuele mappen en blobs onder het bovenliggende object. U de bewerking van de vermelding recursief aanroepen om de hiërarchie te doorlopen, vergelijkbaar met hoe u een klassiek bestandssysteem programmatisch zou doorkruisen.
+Als u uw Blobs een naam geven met behulp van een scheidings teken, kunt u ervoor kiezen om blobs hiërarchisch te vermelden. Voor een hiërarchische lijst bewerking retourneert Azure Storage virtuele mappen en blobs onder het bovenliggende object. U kunt de vermelding recursief aanroepen om door de hiërarchie te bladeren, vergelijkbaar met het programmatisch door lopen van een klassiek bestands systeem.
 
-## <a name="use-a-flat-listing"></a>Een platte aanbieding gebruiken
+## <a name="use-a-flat-listing"></a>Een platte vermelding gebruiken
 
-Standaard retourneert een aanbiedingsbewerking blobs in een platte aanbieding. In een platte lijst worden blobs niet geordend op virtuele map.
+Standaard retourneert een lijst bewerking blobs in een platte vermelding. In een platte lijst worden blobs niet ingedeeld op virtuele map.
 
-In het volgende voorbeeld worden de blobs in de opgegeven container weergegeven met een platte vermelding, waarbij een optionele segmentgrootte is opgegeven en wordt de blobnaam naar een consolevenster geschreven.
+In het volgende voor beeld worden de blobs in de opgegeven container weer gegeven met een platte vermelding, met een optionele segment grootte die is opgegeven, en wordt de naam van de BLOB naar een console venster geschreven.
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)
@@ -108,7 +108,7 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 }
 ```
 
-De monsteruitvoer is vergelijkbaar met:
+De voorbeeld uitvoer is vergelijkbaar met:
 
 ```
 Blob name: FolderA/blob1.txt
@@ -122,13 +122,13 @@ Blob name: FolderA/FolderB/FolderC/blob2.txt
 Blob name: FolderA/FolderB/FolderC/blob3.txt
 ```
 
-## <a name="use-a-hierarchical-listing"></a>Een hiërarchische vermelding gebruiken
+## <a name="use-a-hierarchical-listing"></a>Een hiërarchische lijst gebruiken
 
-Wanneer u een lijstbewerking hiërarchisch aanroept, retourneert Azure Storage de virtuele mappen en blobs op het eerste niveau van de hiërarchie. De eigenschap [Prefix](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) van elke virtuele map is zo ingesteld dat u het voorvoegsel doorgeven in een recursieve aanroep om de volgende map op te halen.
+Wanneer u een vermelding hiërarchisch aanroept, retourneert Azure Storage de virtuele mappen en blobs op het eerste niveau van de hiërarchie. De eigenschap [prefix](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) van elke virtuele map wordt zo ingesteld dat u het voor voegsel in een recursieve aanroep kunt door geven om de volgende map op te halen.
 
-Als u blobs hiërarchisch `useFlatBlobListing` wilt weergeven, stelt u de parameter van de aanbiedingsmethode in op **false**.
+Als u blobs hiërarchisch wilt weer geven, `useFlatBlobListing` stelt u de para meter van de vermeldings methode in op **Onwaar**.
 
-In het volgende voorbeeld worden de blobs in de opgegeven container weergegeven met een platte vermelding, waarbij een optionele segmentgrootte is opgegeven en wordt de blobnaam naar het consolevenster geschreven.
+In het volgende voor beeld worden de blobs in de opgegeven container weer gegeven met een platte vermelding, met een optionele segment grootte die is opgegeven, en wordt de naam van de BLOB naar het console venster geschreven.
 
 ```csharp
 private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer container, string prefix)
@@ -183,7 +183,7 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
 }
 ```
 
-De monsteruitvoer is vergelijkbaar met:
+De voorbeeld uitvoer is vergelijkbaar met:
 
 ```
 Virtual directory prefix: FolderA/
@@ -203,11 +203,11 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 ```
 
 > [!NOTE]
-> Blob-momentopnamen kunnen niet worden weergegeven in een hiërarchische lijstbewerking.
+> BLOB-moment opnamen kunnen niet worden weer gegeven in een hiërarchische lijst bewerking.
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Blobs weergeven](/rest/api/storageservices/list-blobs)
-- [Blobbronnen opsommen](/rest/api/storageservices/enumerating-blob-resources)
+- [Blobs weer geven](/rest/api/storageservices/list-blobs)
+- [BLOB-resources opsommen](/rest/api/storageservices/enumerating-blob-resources)

@@ -1,6 +1,6 @@
 ---
-title: StringToNumber in Azure Cosmos DB-querytaal
-description: Meer informatie over SQL-systeemfunctie StringToNumber in Azure Cosmos DB.
+title: StringToNumber in Azure Cosmos DB-query taal
+description: Meer informatie over de SQL-functie StringToNumber in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 5ca8d0c4a6d244823dda6f0f79a3cf5c743a12a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78296419"
 ---
 # <a name="stringtonumber-azure-cosmos-db"></a>StringToNumber (Azure Cosmos DB)
- Retourneert expressie die is vertaald naar een getal. Als expressie niet kan worden vertaald, wordt niet gedefinieerd geretourneerd.  
+ Retourneert een expressie die is vertaald naar een getal. Als expressie niet kan worden vertaald, retourneert ongedefinieerd.  
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -26,17 +26,17 @@ StringToNumber(<str_expr>)
 ## <a name="arguments"></a>Argumenten
   
 *str_expr*  
-   Is een tekenreeksexpressie die moet worden ontleed als een JSON-getalexpressie. Getallen in JSON moeten een geheel getal of een zwevend punt zijn. Zie [json.org](https://json.org/)  
+   Is een teken reeks expressie die moet worden geparseerd als een JSON-nummer expressie. Getallen in JSON moeten een geheel getal of een drijvende komma zijn. Zie [JSON.org](https://json.org/) voor meer informatie over de JSON-indeling.  
   
-## <a name="return-types"></a>Retourtypen
+## <a name="return-types"></a>Retour typen
   
-  Geeft als resultaat een getalexpressie of niet gedefinieerd.  
+  Retourneert een numerieke expressie of een niet-gedefinieerde waarde.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende `StringToNumber` voorbeeld ziet u hoe zich zich gedraagt voor verschillende typen. 
+  In het volgende voor beeld `StringToNumber` ziet u hoe de verschillende typen zich gedraagt. 
 
-Witruimte is alleen toegestaan voor of na het nummer.
+Witruimte is alleen toegestaan vóór of na het getal.
 
 ```sql
 SELECT 
@@ -46,26 +46,26 @@ SELECT
     StringToNumber("-1.79769e+308") AS num4
 ```  
   
- Hier is het resultaat ingesteld.  
+ Dit is de resultatenset.  
   
 ```json
 {{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
 ```  
 
-In JSON moet een geldig getal een geheel getal of een zwevend puntgetal zijn.
+In JSON moet een geldig getal ofwel een geheel getal zijn of een getal met een drijvende komma.
 
 ```sql
 SELECT   
     StringToNumber("0xF")
 ```  
   
- Hier is het resultaat ingesteld.  
+ Dit is de resultatenset.  
   
 ```json
 {{}}
 ```  
 
-De doorgegeven expressie wordt ontleed als een getalexpressie; deze ingangen evalueren niet om getal te typen en keren dus ongedefinieerd terug. 
+De door gegeven expressie wordt geparseerd als een numerieke expressie. deze invoer kan niet worden geëvalueerd om een getal te typen en daarom ongedefinieerd te retour neren. 
 
 ```sql
 SELECT 
@@ -77,7 +77,7 @@ SELECT
     StringToNumber(NaN)
 ```  
   
- Hier is het resultaat ingesteld.  
+ Dit is de resultatenset.  
   
 ```json
 {{}}
@@ -85,10 +85,10 @@ SELECT
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeemfunctie maakt geen gebruik van de index.
+Deze systeem functie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Tekenreeksfuncties Azure Cosmos DB](sql-query-string-functions.md)
-- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
+- [Teken reeks functies Azure Cosmos DB](sql-query-string-functions.md)
+- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

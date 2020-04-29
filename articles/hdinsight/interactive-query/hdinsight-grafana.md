@@ -1,6 +1,6 @@
 ---
-title: Grafana gebruiken op Azure HDInsight
-description: Meer informatie over hoe u toegang krijgt tot het Grafana-dashboard met Apache Hadoop-clusters in Azure HDInsight
+title: Grafana gebruiken in azure HDInsight
+description: Meer informatie over het openen van het Grafana-dash board met Apache Hadoop clusters in azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,47 +8,47 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.openlocfilehash: cd515bfd1dc57e78a041ed96686e1ba692bf6d3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79082860"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Toegang tot Grafana in Azure HDInsight
 
-[Grafana](https://grafana.com/) is een populaire, open-source grafiek en dashboardbouwer. Grafana is rijk aan functies; niet alleen laat het gebruikers aanpasbare en deelbare dashboards maken, het biedt ook sjabloon/ gescripte dashboards, LDAP-integratie, meerdere gegevensbronnen en meer.
+[Grafana](https://grafana.com/) is een populaire, open-source grafiek en dash board Builder. Grafana is een uitgebreide functie; het is niet alleen mogelijk dat gebruikers aanpas bare en delende Dash boards kunnen maken, maar biedt ook sjablonen/script Dash boards, LDAP-integratie, meerdere gegevens bronnen en nog veel meer.
 
-Momenteel wordt Grafana in Azure HDInsight ondersteund met de clustertypen Spark, HBase, Kafka en Interactive Query. Het wordt niet ondersteund voor clusters met Enterprise Security Pack ingeschakeld.
+Op dit moment wordt in azure HDInsight Grafana ondersteund met de cluster typen Spark, HBase, Kafka en Interactive query. Het wordt niet ondersteund voor clusters waarvoor Enter prise Security Pack is ingeschakeld.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="create-an-apache-hadoop-cluster"></a>Een Apache Hadoop-cluster maken
 
-Zie [Apache Hadoop-clusters maken met behulp van de Azure-portal](../hdinsight-hadoop-create-linux-clusters-portal.md). Selecteer **Voor clustertype** **Spark**, **Kafka**, **HBase**of **Interactieve query**.
+Zie [Apache Hadoop clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md). Selecteer voor **cluster type** **Spark**, **Kafka**, **HBase**of **interactieve query**.
 
-## <a name="access-the-grafana-dashboard"></a>Toegang tot het Grafana-dashboard
+## <a name="access-the-grafana-dashboard"></a>Het Grafana-dash board openen
 
-1. Navigeer vanuit een webbrowser `https://CLUSTERNAME.azurehdinsight.net/grafana/` naar de plaats waar CLUSTERNAME de naam van uw cluster is.
+1. Navigeer vanuit een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net/grafana/` de naam van het cluster.
 
-1. Voer de gebruikersreferenties van het Hadoop-cluster in.
+1. Voer de gebruikers referenties voor het Hadoop-cluster in.
 
-1. Het Grafana-dashboard wordt weergegeven en ziet er als volgt uit:
+1. Het dash board Grafana wordt weer gegeven en ziet eruit als in dit voor beeld:
 
-    ![HDInsight Grafana-webdashboard](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana-dashboard")
+    ![HDInsight Grafana Web-dash board](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana-dash board")
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze toepassing niet meer wilt gebruiken, verwijdert u het cluster dat u met de volgende stappen hebt gemaakt:
+Als u deze toepassing niet wilt blijven gebruiken, verwijdert u het cluster dat u hebt gemaakt met de volgende stappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Typ **HDInsight** in het **Zoekvak** bovenaan.
 
 1. Selecteer onder **Services** de optie **HDInsight-clusters**.
 
-1. Selecteer in de lijst met HDInsight-clusters die worden weergegeven de **...** naast het cluster dat u hebt gemaakt.
+1. Selecteer in de lijst met HDInsight-clusters die wordt weer gegeven, de **...** naast het cluster dat u hebt gemaakt.
 
-1. Selecteer **Verwijderen**. Selecteer **Ja**.
+1. Selecteer **verwijderen**. Selecteer **Ja**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -56,6 +56,6 @@ Zie de volgende artikelen voor meer informatie over het analyseren van gegevens 
 
 * [Gebruik Apache Hive met HDInsight](../hadoop/hdinsight-use-hive.md).
 
-* [Mapreduce gebruiken met HDInsight](../hadoop/hdinsight-use-mapreduce.md).
+* [Gebruik MapReduce met HDInsight](../hadoop/hdinsight-use-mapreduce.md).
 
-* [Aan de slag met Visual Studio Hadoop-tools voor HDInsight.](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
+* [Aan de slag met Visual Studio Hadoop-hulpprogram ma's voor HDInsight](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).

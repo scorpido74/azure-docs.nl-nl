@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning-gebeurtenissen gebruiken
+title: Azure Machine Learning gebeurtenissen gebruiken
 titleSuffix: Azure Machine Learning
-description: Lees in dit artikel hoe u Azure Event Grid gebruiken om u te abonneren, te reageren en u af te melden voor gebeurtenissen die zijn gegenereerd door Azure Machine Learning.
+description: In dit artikel leest u hoe u Azure Event Grid kunt gebruiken om gebeurtenissen die door Azure Machine Learning zijn gegenereerd, te abonneren, te reageren en af te melden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,53 +10,53 @@ ms.author: andyxu
 author: gogowings
 ms.date: 11/04/2019
 ms.openlocfilehash: d8a975487c68a21b2c8b6fa2f07d86c312243f12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79139042"
 ---
-# <a name="consume-azure-machine-learning-events-preview"></a>Azure Machine Learning-gebeurtenissen gebruiken (voorbeeld)
+# <a name="consume-azure-machine-learning-events-preview"></a>Azure Machine Learning gebeurtenissen gebruiken (preview-versie)
 
-Azure Machine Learning beheert de volledige levenscyclus van het machine learning-proces, inclusief modeltraining, modelimplementatie en bewaking. Azure Machine Learning-gebeurtenissen stellen toepassingen in staat om te reageren op gebeurtenissen tijdens de levenscyclus van machine learning, zoals het voltooien van trainingsruns, de registratie en implementatie van modellen en de detectie van gegevensdrift, door moderne serverloze Platforms. 
+Azure Machine Learning beheert de volledige levens cyclus van machine learning proces, waaronder model training, model implementatie en bewaking. Met Azure Machine Learning gebeurtenissen kunnen toepassingen reageren op gebeurtenissen tijdens de machine learning levenscyclus, zoals het volt ooien van de uitvoering van de training, de registratie en implementatie van modellen en de detectie van gegevens drift, met behulp van moderne serverloze architecturen. 
 
-Deze gebeurtenissen worden gepubliceerd via [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Met Azure portal, Powershell of Azure CLI kunnen klanten eenvoudig een abonnement nemen door [een of meer gebeurtenistypen op te geven en de voorwaarden te filteren.](/azure/event-grid/event-filtering) Klanten hebben ook de keuze om een breed scala aan gebeurtenishandlers te bouwen, zoals Azure-functies, Azure Logic Apps of generieke webhooks. Azure Machine Learning biedt samen met Azure Event Grid een hoog beschikbaar, betrouwbaar en fouttolerant gebeurtenisleveringsplatform voor u om gebeurtenisgestuurde toepassingen te bouwen.
+Deze gebeurtenissen worden gepubliceerd via [Azure Event grid](https://azure.microsoft.com/services/event-grid/). Met Azure Portal, Power shell of Azure CLI kunnen klanten eenvoudig gebeurtenissen abonneren door [een of meer gebeurtenis typen op te geven en filter voorwaarden](/azure/event-grid/event-filtering). Klanten hebben ook de keuze om een breed scala aan gebeurtenis-handlers te bouwen, zoals Azure Functions, Azure Logic Apps of algemene webhooks. Azure Machine Learning, samen met Azure Event Grid, biedt een Maxi maal beschikbaar, betrouwbaar en fout tolerant gebeurtenis bezorgings platform waarmee u op gebeurtenissen gebaseerde toepassingen kunt bouwen.
 
-Zie [Gebeurtenisgestuurde machine learning-werkstromen (voorbeeld) maken](how-to-use-event-grid.md)voor informatie over het gebruik van Azure Machine Learning met gebeurtenisraster.
+Zie [gebeurtenis gerichte machine learning werk stromen maken (preview)](how-to-use-event-grid.md)voor meer informatie over het gebruik van Azure Machine Learning met Event grid.
 
-## <a name="the-event-model"></a>Het gebeurtenismodel 
+## <a name="the-event-model"></a>Het gebeurtenis model 
 
-Azure Event Grid leest gebeurtenissen uit bronnen, zoals Azure Machine Learning en andere Azure-services. Deze gebeurtenissen worden vervolgens verzonden naar gebeurtenishandlers zoals Azure Event Hubs, Azure Functions, Logic Apps en anderen. In het volgende diagram ziet u hoe Gebeurtenisraster bronnen en handlers met elkaar verbindt, maar geen uitgebreide lijst met ondersteunde integraties is.
+Azure Event Grid leest gebeurtenissen van bronnen, zoals Azure Machine Learning en andere Azure-Services. Deze gebeurtenissen worden vervolgens verzonden naar gebeurtenis-handlers zoals Azure Event Hubs, Azure Functions, Logic Apps en anderen. In het volgende diagram ziet u hoe Event Grid bronnen en handlers verbindt, maar dit is geen uitgebreide lijst met ondersteunde integraties.
 
-![Multifunctioneel model Azure Event Grid](./media/concept-event-grid-integration/azure-event-grid-functional-model.png)
+![Azure Event Grid functionele model](./media/concept-event-grid-integration/azure-event-grid-functional-model.png)
 
-Zie [Wat is gebeurtenisraster?](/azure/event-grid/overview).
+Zie [Wat is Event grid?](/azure/event-grid/overview)voor meer informatie over gebeurtenis bronnen en gebeurtenis-handlers.
 
-## <a name="azure-machine-learning-event-types"></a>Azure Machine Learning-gebeurtenistypen
+## <a name="azure-machine-learning-event-types"></a>Azure Machine Learning gebeurtenis typen
 
-Azure Machine Learning biedt gebeurtenissen op de verschillende punten van de machine learning-levenscyclus: 
+Azure Machine Learning biedt gebeurtenissen in de verschillende punten van machine learning levenscyclus: 
 
 | Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
-| `Microsoft.MachineLearningServices.RunCompleted` | Verhoogd wanneer een machine learning-experiment is voltooid |
-| `Microsoft.MachineLearningServices.ModelRegistered` | Verhoogd wanneer een machine learning-model is geregistreerd in de werkruimte |
-| `Microsoft.MachineLearningServices.ModelDeployed` | Verhoogd wanneer een implementatie van gevolgtrekkingsservice met een of meer modellen is voltooid |
-| `Microsoft.MachineLearningServices.DatasetDriftDetected` | Verhoogd wanneer een detectietaak voor gegevensdrift voor twee gegevenssets is voltooid |
-| `Microsoft.MachineLearningServices.RunStatusChanged` | Verhoogd wanneer een run status veranderd, momenteel alleen verhoogd wanneer een run status is 'mislukt' |
+| `Microsoft.MachineLearningServices.RunCompleted` | Deze gebeurtenis treedt op wanneer de uitvoering van een machine learning experiment is voltooid |
+| `Microsoft.MachineLearningServices.ModelRegistered` | Deze gebeurtenis treedt op wanneer een machine learning model in de werk ruimte wordt geregistreerd |
+| `Microsoft.MachineLearningServices.ModelDeployed` | Deze gebeurtenis treedt op wanneer een implementatie van een Afleidings service met een of meer modellen is voltooid |
+| `Microsoft.MachineLearningServices.DatasetDriftDetected` | Deze gebeurtenis treedt op wanneer een taak voor de detectie van gegevens drift voor twee gegevens sets is voltooid |
+| `Microsoft.MachineLearningServices.RunStatusChanged` | Deze gebeurtenis treedt op wanneer een uitvoerings status wordt gewijzigd. dit wordt momenteel alleen geactiveerd wanneer de uitvoerings status is ingesteld op mislukt |
 
-## <a name="subscribe-to-machine-learning-events"></a>Abonneer u op Machine Learning-evenementen
+## <a name="subscribe-to-machine-learning-events"></a>Abonneren op Machine Learning gebeurtenissen
 
-Abonnementen voor Azure Machine Learning-gebeurtenissen worden beschermd door rbac (role-based access control). Alleen [inzender of eigenaar](how-to-assign-roles.md#default-roles) van een werkruimte kan gebeurtenisabonnementen maken, bijwerken en verwijderen.
+Abonnementen voor Azure Machine Learning gebeurtenissen worden beveiligd door middel van op rollen gebaseerd toegangs beheer (RBAC). Alleen [Inzender of eigenaar](how-to-assign-roles.md#default-roles) van een werk ruimte kan gebeurtenis abonnementen maken, bijwerken en verwijderen.
 
-Gebeurtenisabonnementen kunnen worden gefilterd op basis van verschillende voorwaarden. Filters kunnen worden toegepast op gebeurtenisabonnementen tijdens het [maken](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) van het gebeurtenisabonnement of [op een later tijdstip.](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) 
+Gebeurtenis abonnementen kunnen worden gefilterd op basis van verschillende voor waarden. Filters kunnen worden toegepast op gebeurtenis abonnementen tijdens het [maken](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) van het gebeurtenis abonnement of [op een later tijdstip](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest). 
 
-### <a name="filter-by-event-type"></a>Filteren op gebeurtenistype
-Een gebeurtenisabonnement kan een of meer Azure Machine Learning-gebeurtenistypen opgeven.
+### <a name="filter-by-event-type"></a>Filteren op gebeurtenis type
+Met een gebeurtenis abonnement kunt u een of meer Azure Machine Learning gebeurtenis typen opgeven.
 
-### <a name="filter-by-event-subject"></a>Filteren op gebeurtenisonderwerp
-Azure Event Grid ondersteunt onderwerpfilters op basis __van begin__ en __eindigt met__ overeenkomsten, zodat gebeurtenissen met een overeenkomend onderwerp aan de abonnee worden geleverd. Verschillende machine learning-evenementen hebben een ander onderwerpformaat.
+### <a name="filter-by-event-subject"></a>Filteren op gebeurtenis onderwerp
+Azure Event Grid ondersteunt onderwerps __filters op basis van__ en __eindigt met__ overeenkomsten, zodat gebeurtenissen met een overeenkomend onderwerp aan de abonnee worden geleverd. Verschillende machine learning gebeurtenissen hebben een andere onderwerps indeling.
 
-| Gebeurtenistype | Onderwerpindeling | Voorbeeldonderwerp |
+| Gebeurtenistype | Onderwerps indeling | Voorbeeld onderwerp |
 | ---------- | ----------- | ----------- |
 | `Microsoft.MachineLearningServices.RunCompleted` | `experiments/{ExperimentId}/runs/{RunId}` | `experiments/b1d7966c-f73a-4c68-b846-992ace89551f/runs/my_exp1_1554835758_38dbaa94` |
 | `Microsoft.MachineLearningServices.ModelRegistered` | `models/{modelName}:{modelVersion}` | `models/sklearn_regression_model:3` |
@@ -66,40 +66,40 @@ Azure Event Grid ondersteunt onderwerpfilters op basis __van begin__ en __eindig
 
 ### <a name="advanced-filtering"></a>Geavanceerd filteren
 
-Azure Event Grid ondersteunt ook geavanceerde filtering op basis van het gepubliceerde gebeurtenisschema. Details van het Azure Machine Learning-gebeurtenisschema zijn te vinden in [het gebeurtenisschema van Azure Event Grid voor Azure Machine Learning](../event-grid/event-schema-machine-learning.md).
+Azure Event Grid biedt ook ondersteuning voor geavanceerde filtering op basis van een gepubliceerd gebeurtenis schema. Details van Azure Machine Learning gebeurtenis schema vindt u in [Azure Event grid-gebeurtenis schema voor Azure machine learning](../event-grid/event-schema-machine-learning.md).
 
-Enkele geavanceerde filteringen die u uitvoeren, zijn:
+Voor beelden van geavanceerde filters die u kunt uitvoeren zijn:
 
-* Als `Microsoft.MachineLearningServices.ModelRegistered` u de tagwaarde van het model wilt filteren:
+* Voor `Microsoft.MachineLearningServices.ModelRegistered` gebeurtenis: als u de label waarde van het model wilt filteren.
 
     ```
     --advanced-filter data.ModelTags.key1 StringIn ('value1')
     ```
 
-Zie [Gebeurtenissen filteren voor gebeurtenisraster](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)voor meer informatie over het toepassen van filters.
+Zie [gebeurtenissen filteren voor Event grid voor](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)meer informatie over het Toep assen van filters.
 
-## <a name="consume-machine-learning-events"></a>Machine Learning-gebeurtenissen gebruiken
+## <a name="consume-machine-learning-events"></a>Machine Learning gebeurtenissen gebruiken
 
-Toepassingen die Machine Learning-gebeurtenissen verwerken, moeten een aantal aanbevolen procedures volgen:
+Toepassingen die Machine Learning gebeurtenissen verwerken, moeten een aantal aanbevolen procedures volgen:
 
 > [!div class="checklist"]
-> * Aangezien meerdere abonnementen kunnen worden geconfigureerd om gebeurtenissen naar dezelfde gebeurtenishandler te leiden, is het belangrijk om niet aan te nemen dat gebeurtenissen van een bepaalde bron zijn, maar om het onderwerp van het bericht te controleren om ervoor te zorgen dat het afkomstig is van de machine learning-werkruimte die u verwacht.
-> * Controleer ook of het eventType een gebeurtenis is die u bereid bent te verwerken en ga er niet van uit dat alle gebeurtenissen die u ontvangt, de typen zijn die u verwacht.
-> * Aangezien berichten niet in orde kunnen komen en na enige vertraging, gebruikt u de etag-velden om te begrijpen of uw informatie over objecten nog steeds up-to-date is.  Gebruik ook de sequencervelden om de volgorde van gebeurtenissen op een bepaald object te begrijpen.
-> * Velden negeren die u niet begrijpt. Deze praktijk zal u helpen om u bestand te houden tegen nieuwe functies die in de toekomst kunnen worden toegevoegd.
-> * Mislukte of geannuleerde Azure Machine Learning-bewerkingen leiden niet tot een gebeurtenis. Als een modelimplementatie bijvoorbeeld mislukt, wordt Microsoft.MachineLearningServices.ModelDeployed niet geactiveerd. Overweeg een dergelijke foutmodus bij het ontwerpen van uw toepassingen. U Azure Machine Learning SDK, CLI of portal altijd gebruiken om de status van een bewerking te controleren en de gedetailleerde foutredenen te begrijpen.
+> * Omdat meerdere abonnementen kunnen worden geconfigureerd voor het routeren van gebeurtenissen naar dezelfde gebeurtenis-handler, is het belang rijk om te voor komen dat gebeurtenissen afkomstig zijn uit een bepaalde bron, maar om het onderwerp van het bericht te controleren om ervoor te zorgen dat het afkomstig is van de machine learning werk ruimte die u verwacht.
+> * Controleer ook of de Event type is ingesteld als een voor bereiding op het proces en ga er niet van uit dat alle gebeurtenissen die u ontvangt, de verwachte typen zijn.
+> * Wanneer berichten in aflopende volg orde en na enige vertraging kunnen aankomen, gebruikt u de ETAG-velden om te begrijpen of uw informatie over objecten nog steeds actueel is.  Gebruik ook de sequencer-velden om de volg orde van gebeurtenissen op een bepaald object te begrijpen.
+> * Velden negeren die u niet begrijpt. Met deze procedure kunt u de nieuwe functies die in de toekomst kunnen worden toegevoegd, flexibeler maken.
+> * Mislukte of geannuleerde Azure Machine Learning bewerkingen activeren geen gebeurtenis. Als bijvoorbeeld een model implementatie mislukt, wordt micro soft. MachineLearningServices. ModelDeployed niet geactiveerd. Overweeg deze fout modus bij het ontwerpen van uw toepassingen. U kunt altijd Azure Machine Learning SDK, CLI of portal gebruiken om de status van een bewerking te controleren en inzicht te krijgen in de oorzaken van de fout.
 
-Azure Event Grid stelt klanten in staat om gekoppelde berichthandlers te bouwen, die kunnen worden geactiveerd door Azure Machine Learning-gebeurtenissen. Enkele opmerkelijke voorbeelden van berichthandlers zijn:
+Met Azure Event Grid kunnen klanten ongekoppelde bericht-handlers bouwen, die kunnen worden geactiveerd door Azure Machine Learning-gebeurtenissen. Enkele voor beelden van bericht-handlers zijn:
 * Azure Functions
 * Azure Logic Apps
 * Azure Event Hubs
-* Azure-pijplijn voor gegevensfabrieken
+* Azure Data Factory pijp lijn
 * Generieke webhooks, die kunnen worden gehost op het Azure-platform of elders
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over gebeurtenisraster en Azure Machine Learning-gebeurtenissen proberen:
+Meer informatie over Event Grid en het geven van Azure Machine Learning gebeurtenissen een try:
 
 - [Over Event Grid](../event-grid/overview.md)
-- [Azure Event Grid-gebeurtenisschema voor Azure Machine Learning](../event-grid/event-schema-machine-learning.md)
-- [Gebeurtenisgestuurde werkstromen maken met Azure Machine Learning](how-to-use-event-grid.md)
+- [Azure Event Grid-gebeurtenis schema voor Azure Machine Learning](../event-grid/event-schema-machine-learning.md)
+- [Door gebeurtenis gestuurde werk stromen maken met Azure Machine Learning](how-to-use-event-grid.md)

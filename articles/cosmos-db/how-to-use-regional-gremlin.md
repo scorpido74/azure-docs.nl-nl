@@ -1,6 +1,6 @@
 ---
-title: Regionale eindpunten voor Azure Cosmos DB Graph-database
-description: Meer informatie over hoe u verbinding maken met het dichtstbijzijnde graph-databaseeindpunt voor uw toepassing
+title: Regionale eind punten voor de Azure Cosmos DB Graph-data base
+description: Meer informatie over hoe u verbinding maakt met het dichtstbijzijnde Graph-database eindpunt voor uw toepassing
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
@@ -8,44 +8,44 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.openlocfilehash: 7aa1e0aa6bbbee9d40eb0d48318a8e2908a75f9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78897867"
 ---
-# <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Regionale eindpunten voor Azure Cosmos DB Graph-account
-Azure Cosmos DB Graph-database is [wereldwijd gedistribueerd,](distribute-data-globally.md) zodat toepassingen meerdere leeseindpunten kunnen gebruiken. Toepassingen die schrijftoegang op meerdere locaties nodig hebben, moeten [multi-mastermogelijkheden](how-to-multi-master.md) inschakelen.
+# <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Regionale eind punten voor Azure Cosmos DB Graph-account
+Azure Cosmos DB Graph-data base is [wereld wijd gedistribueerd](distribute-data-globally.md) zodat toepassingen meerdere Lees eindpunten kunnen gebruiken. Toepassingen waarvoor schrijf toegang op meerdere locaties nodig is, moeten mogelijkheden voor [meerdere masters](how-to-multi-master.md) inschakelen.
 
-Redenen om voor meer dan één regio te kiezen:
-1. **Horizontale leesschaalbaarheid** - naarmate de belasting van toepassingen toeneemt, kan het verstandig zijn om leesverkeer naar verschillende Azure-regio's te routeren.
-2. **Lagere latentie** - u de overhead van de netwerklatentie van elke traversal verminderen door lees- en schrijfverkeer naar de dichtstbijzijnde Azure-regio te routeren.
+Redenen voor het kiezen van meer dan één regio:
+1. **Horizontale Lees schaal baarheid** : als de toepassings belasting wordt verhoogd, kan het verstandig zijn om Lees verkeer te routeren naar verschillende Azure-regio's.
+2. **Lagere latentie** : u kunt de netwerk latentie overhead van elk door sturen beperken door het lezen en schrijven van verkeer naar de dichtstbijzijnde Azure-regio.
 
-**Vereisten voor gegevensresidentie** wordt bereikt door azure resource manager-beleid in te stellen op het Cosmos DB-account. Klant kan regio's beperken waarin Cosmos DB gegevens repliceert.
+De vereiste voor **gegevens locatie** wordt bereikt door Azure Resource Manager beleid in te stellen op Cosmos DB-account. De klant kan regio's beperken waarin Cosmos DB gegevens repliceert.
 
-## <a name="traffic-routing"></a>Verkeersroutering
+## <a name="traffic-routing"></a>Verkeers routering
 
-Cosmos DB Graph database engine draait in meerdere regio's, die elk meerdere clusters bevatten. Elk cluster heeft honderden machines. Cosmos DB Graph-account DNS CNAME *accountname.gremlin.cosmos.azure.com* wordt opgelost in DNS Een record van een cluster. Eén IP-adres van een load-balancer verbergt interne clustertopologie.
+Cosmos DB Graph-data base-engine wordt uitgevoerd in meerdere regio's, die elk meerdere clusters bevatten. Elk cluster heeft honderden computers. Cosmos DB Graph-account DNS CNAME *AccountName.Gremlin.Cosmos.Azure.com* wordt omgezet in DNS a-record van een cluster. Eén IP-adres van een Load Balancer verbergt de interne cluster topologie.
 
-Er wordt een regionale DNS CNAME-record gemaakt voor elke regio van het Cosmos DB Graph-account. De indeling van het regionale eindpunt is *accountname-region.gremlin.cosmos.azure.com*. Regiosegment van regionaal eindpunt wordt verkregen door alle spaties uit de naam van [azure-regio's te](https://azure.microsoft.com/global-infrastructure/regions) verwijderen. Regio `"East US 2"` voor `"contoso"` een globaal databaseaccount heeft bijvoorbeeld een DNS CNAME-contoso-eastus2.gremlin.cosmos.azure.com *contoso-eastus2.gremlin.cosmos.azure.com*
+Er wordt een regionale DNS CNAME-record gemaakt voor elke regio van Cosmos DB Graph-account. De indeling van het regionale eind punt is *AccountName-Region.Gremlin.Cosmos.Azure.com*. Regio segment van regionaal eind punt wordt verkregen door alle spaties uit de [Azure-regio](https://azure.microsoft.com/global-infrastructure/regions) naam te verwijderen. De `"East US 2"` regio voor `"contoso"` het globale database account zou bijvoorbeeld een DNS CNAME- *Contoso-eastus2.Gremlin.Cosmos.Azure.com* hebben
 
-TinkerPop Gremlin client is ontworpen om te werken met een enkele server. Toepassing kan gebruik maken van global beschrijfbare DNS CNAME voor lees- en schrijfverkeer. Regiobewuste toepassingen moeten regionaal eindpunt gebruiken voor leesverkeer. Gebruik regionaal eindpunt alleen voor schrijfverkeer als een specifiek gebied is geconfigureerd om schrijfbewerkingen te accepteren. 
-
-> [!NOTE]
-> Cosmos DB Graph-engine kan schrijfbewerking in leesgebied accepteren door verkeer te proxy's om regio te schrijven. Het wordt afgeraden om schrijfbewerkingen te verzenden naar alleen-lezen regio als het verhoogt traversal latentie en is onderworpen aan beperkingen in de toekomst.
-
-Global database account CNAME verwijst altijd naar een geldig schrijfgebied. Tijdens server-side failover van het schrijfgebied werkt Cosmos DB het wereldwijde databaseaccount CNAME bij om naar een nieuwe regio te wijzen. Als de toepassing de omleiding van het verkeer na een failover niet kan verwerken, moet deze gebruikmaken van dns-cname van het wereldwijde databaseaccount.
+TinkerPop Gremlin-client is ontworpen voor gebruik met één server. De toepassing kan globale Beschrijf bare DNS CNAME gebruiken voor lees-en schrijf verkeer. Regio-bewuste toepassingen moeten regionaal eind punt gebruiken voor het lezen van verkeer. Gebruik regionaal eind punt voor het schrijven van verkeer alleen als specifieke regio is geconfigureerd voor het accepteren van schrijf bewerkingen. 
 
 > [!NOTE]
-> Cosmos DB leidt geen verkeer op basis van geografische nabijheid van de beller. Het is aan elke toepassing om de juiste regio te selecteren op basis van unieke toepassingsbehoeften.
+> Cosmos DB Graph-engine kan een schrijf bewerking in een lees regio accepteren door verkeer van de proxy naar de regio schrijven. Het is niet raadzaam om schrijf bewerkingen naar de regio alleen-lezen te verzenden als deze de doorvoer latentie verhogen en onderhevig is aan beperkingen in de toekomst.
 
-## <a name="portal-endpoint-discovery"></a>Portal-eindpuntdetectie
+Het globale database account CNAME wijst altijd naar een geldige schrijf regio. Tijdens de failover van de schrijf regio aan de server zijde Cosmos DB het globale database account van de CNAME bijgewerkt om naar de nieuwe regio te verwijzen. Als de toepassing het omleiden van verkeer na een failover niet kan verwerken, moet deze gebruikmaken van het globale database account DNS CNAME.
 
-De eenvoudigste manier om de lijst met regio's voor Azure Cosmos DB Graph-account te krijgen, is het overzichtsblad in Azure-portal. Het werkt voor toepassingen die niet vaak van regio veranderen of een manier hebben om de lijst bij te werken via toepassingsconfiguratie.
+> [!NOTE]
+> Cosmos DB stuurt geen verkeer op basis van de geografische nabijheid van de oproepende functie. Het is aan elke toepassing de juiste regio te selecteren op basis van unieke toepassings behoeften.
 
-![Regio's van Cosmos DB Graph-account ophalen van de portal](./media/how-to-use-regional-gremlin/get-end-point-portal.png )
+## <a name="portal-endpoint-discovery"></a>Portal-eindpunt detectie
 
-Onderstaand voorbeeld toont algemene beginselen voor de toegang tot het regionale Gremlin-eindpunt. Toepassing moet rekening houden met het aantal regio's om het verkeer te sturen naar en het aantal overeenkomstige Gremlin clients te instantiate.
+De eenvoudigste manier om de lijst met regio's te verkrijgen voor Azure Cosmos DB Graph-account is overzicht Blade in Azure Portal. Het werkt voor toepassingen die regio's niet vaak wijzigen of een manier hebben om de lijst bij te werken via toepassings configuratie.
+
+![Regio's van Cosmos DB Graph-account ophalen uit de portal](./media/how-to-use-regional-gremlin/get-end-point-portal.png )
+
+Hieronder ziet u een voor beeld van algemene principes van toegang tot het regionale Gremlin-eind punt. De toepassing moet het aantal regio's overwegen om het verkeer naar en het aantal overeenkomende Gremlin-clients te kunnen worden gezonden.
 
 ```csharp
 // Example value: Central US, West US and UK West. This can be found in the overview blade of you Azure Cosmos DB Gremlin Account. 
@@ -76,11 +76,11 @@ foreach (string gremlinAccountRegion in gremlinAccountRegions)
 }
 ```
 
-## <a name="sdk-endpoint-discovery"></a>SDK-eindpuntdetectie
+## <a name="sdk-endpoint-discovery"></a>SDK-eindpunt detectie
 
-Toepassing kan [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) gebruiken om lees- en schrijflocaties voor Graph-account te ontdekken. Deze locaties kunnen op elk gewenst moment veranderen door handmatige herconfiguratie aan de serverzijde of automatische failover.
+De toepassing kan [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) gebruiken om Lees-en schrijf locaties voor een grafiek account te detecteren. Deze locaties kunnen op elk gewenst moment worden gewijzigd via hand matig opnieuw configureren aan de server zijde of automatische failover.
 
-TinkerPop Gremlin SDK heeft geen API om Cosmos DB Graph database account regio's te ontdekken. Toepassingen die runtime-eindpuntdetectie nodig hebben, moeten twee afzonderlijke SDK's in de procesruimte hosten.
+TinkerPop Gremlin SDK heeft geen API voor het detecteren van Cosmos DB Graph-database account regio's. Toepassingen waarvoor runtime-eind punten moeten worden gedetecteerd, moeten twee afzonderlijke Sdk's in de proces ruimte hosten.
 
 ```csharp
 // Depending on the version and the language of the SDK (.NET vs Java vs Python)
@@ -109,7 +109,7 @@ foreach (string location in readLocations)
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Databaseaccountsbeheren](how-to-manage-database-account.md) in Azure Cosmos DB
-* [Hoge beschikbaarheid](high-availability.md) in Azure Cosmos DB
-* [Wereldwijde distributie met Azure Cosmos DB - onder de motorkap](global-dist-under-the-hood.md)
-* [Azure CLI-voorbeelden](cli-samples.md) voor Azure Cosmos DB
+* [Beheer van database accounts](how-to-manage-database-account.md) in azure Cosmos db
+* [Hoge Beschik baarheid](high-availability.md) in azure Cosmos db
+* [Wereld wijde distributie met Azure Cosmos DB-onder de motorkap](global-dist-under-the-hood.md)
+* Voor [beelden van Azure cli](cli-samples.md) voor Azure Cosmos db

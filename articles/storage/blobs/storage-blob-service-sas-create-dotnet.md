@@ -1,7 +1,7 @@
 ---
-title: Een service-SAS maken voor een container of blob met .NET
+title: Een service-SAS maken voor een container of BLOB met .NET
 titleSuffix: Azure Storage
-description: Meer informatie over het maken van een service shared access signature (SAS) voor een container of blob met behulp van de .NET-clientbibliotheek.
+description: Meer informatie over hoe u een SAS (Shared Access Signature) voor een service kunt maken voor een container of BLOB met behulp van de .NET-client bibliotheek.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,23 +11,23 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
 ms.openlocfilehash: 10045a760d7e0fcb02a754bc9bb52a5ebca970f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79137208"
 ---
-# <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>Een service-SAS maken voor een container of blob met .NET
+# <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>Een service-SAS maken voor een container of BLOB met .NET
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-In dit artikel ziet u hoe u de opslagaccountsleutel gebruiken om een serviceSAS voor een container of blob te maken met de [Azure Storage-clientbibliotheek voor .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
+In dit artikel wordt beschreven hoe u de sleutel van het opslag account gebruikt om een service-SAS te maken voor een container of BLOB met de [Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
-## <a name="create-a-service-sas-for-a-blob-container"></a>Een service-SAS maken voor een blobcontainer
+## <a name="create-a-service-sas-for-a-blob-container"></a>Een service-SAS voor een BLOB-container maken
 
-Als u een serviceSAS voor een container wilt maken, roept u de methode [CloudBlobContainer.GetSharedAccessSignature aan.](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature)
+Als u een service-SAS voor een container wilt maken, roept u de methode [CloudBlobContainer. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature) aan.
 
-In het volgende codevoorbeeld wordt een SAS op een container gesmaakt. Als de naam van een bestaand beleid voor opgeslagen toegang wordt opgegeven, is dat beleid gekoppeld aan de SAS. Als er geen opgeslagen toegangsbeleid wordt opgegeven, wordt er door de code een ad hoc SAS op de container gesmaakt.
+In het volgende code voorbeeld wordt een SAS voor een container gemaakt. Als de naam van een bestaand opgeslagen toegangs beleid wordt gegeven, wordt dat beleid gekoppeld aan de SAS. Als er geen opgeslagen toegangs beleid wordt gegeven, maakt de code een ad-hoc-SAS in de container.
 
 ```csharp
 private static string GetContainerSasUri(CloudBlobContainer container, string storedPolicyName = null)
@@ -69,11 +69,11 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
 }
 ```
 
-## <a name="create-a-service-sas-for-a-blob"></a>Een service-SAS voor een blob maken
+## <a name="create-a-service-sas-for-a-blob"></a>Een service-SAS maken voor een BLOB
 
-Als u een serviceSAS voor een blob wilt maken, roept u de methode [CloudBlob.GetSharedAccessSignature aan.](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature)
+Als u een service-SAS voor een BLOB wilt maken, roept u de methode [CloudBlob. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) aan.
 
-In het volgende codevoorbeeld wordt een SAS op een blob gemaakt. Als de naam van een bestaand beleid voor opgeslagen toegang wordt opgegeven, is dat beleid gekoppeld aan de SAS. Als er geen opgeslagen toegangsbeleid is opgegeven, wordt er door de code een ad hoc SAS op de blob gesmaakt.
+In het volgende code voorbeeld wordt een SAS gemaakt op een blob. Als de naam van een bestaand opgeslagen toegangs beleid wordt gegeven, wordt dat beleid gekoppeld aan de SAS. Als er geen opgeslagen toegangs beleid wordt gegeven, maakt de code een ad-hoc-SA'S op de blob.
 
 ```csharp
 private static string GetBlobSasUri(CloudBlobContainer container, string blobName, string policyName = null)
@@ -122,5 +122,5 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Beperkte toegang verlenen tot Azure Storage-bronnen met behulp van gedeelde toegangshandtekeningen (SAS)](../common/storage-sas-overview.md)
+- [Beperkte toegang verlenen tot Azure Storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md)
 - [Een service-SAS maken](/rest/api/storageservices/create-service-sas)

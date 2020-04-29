@@ -1,7 +1,7 @@
 ---
-title: .NET gebruiken om eigenschappen en metagegevens voor een blobcontainer te beheren
+title: .NET gebruiken voor het beheren van eigenschappen en meta gegevens voor een BLOB-container
 titleSuffix: Azure Storage
-description: Meer informatie over het instellen en ophalen van systeemeigenschappen en het opslaan van aangepaste metagegevens op blobcontainers in uw Azure Storage-account met behulp van de .NET-clientbibliotheek.
+description: Meer informatie over het instellen en ophalen van systeem eigenschappen en het opslaan van aangepaste meta gegevens op BLOB-containers in uw Azure Storage-account met behulp van de .NET-client bibliotheek.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,37 +9,37 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.openlocfilehash: c66b521b5cd75825fcafe07b24d5d527c45f5153
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79135918"
 ---
-# <a name="manage-container-properties-and-metadata-with-net"></a>Containereigenschappen en metagegevens beheren met .NET
+# <a name="manage-container-properties-and-metadata-with-net"></a>Container eigenschappen en meta gegevens beheren met .NET
 
-Blob-containers ondersteunen systeemeigenschappen en door de gebruiker gedefinieerde metagegevens, naast de gegevens die ze bevatten. In dit artikel ziet u hoe u systeemeigenschappen en door de gebruiker gedefinieerde metagegevens beheert met de [Azure Storage-clientbibliotheek voor .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
+BLOB-containers ondersteunen systeem eigenschappen en door de gebruiker gedefinieerde meta gegevens, naast de gegevens die ze bevatten. In dit artikel wordt beschreven hoe u systeem eigenschappen en door de gebruiker gedefinieerde meta gegevens beheert met de [Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
-## <a name="about-properties-and-metadata"></a>Informatie over eigenschappen en metagegevens
+## <a name="about-properties-and-metadata"></a>Over eigenschappen en meta gegevens
 
-- **Systeemeigenschappen:** er bestaan systeemeigenschappen op elke Blob-opslagbron. Sommige kunnen worden gelezen of ingesteld, terwijl anderen alleen-lezen zijn. Onder de hoezen komen sommige systeemeigenschappen overeen met bepaalde standaard HTTP-headers. De Azure Storage-clientbibliotheek voor .NET behoudt deze eigenschappen voor u.
+- **Systeem eigenschappen**: systeem eigenschappen bestaan op elke Blob Storage-Resource. Sommige van deze kunnen worden gelezen of ingesteld, terwijl anderen alleen-lezen zijn. Onder de kaften sommige systeem eigenschappen overeenkomen met bepaalde standaard-HTTP-headers. De Azure Storage-client bibliotheek voor .NET houdt deze eigenschappen voor u bij.
 
-- **Door de gebruiker gedefinieerde metagegevens:** door de gebruiker gedefinieerde metagegevens bestaan uit een of meer naamwaardeparen die u opgeeft voor een Blob-opslagbron. U metagegevens gebruiken om extra waarden op te slaan met de bron. Metagegevenswaarden zijn alleen voor uw eigen doeleinden en hebben geen invloed op de manier waarop de resource zich gedraagt.
+- Door de **gebruiker gedefinieerde META**gegevens: door de gebruiker gedefinieerde meta gegevens bestaan uit een of meer naam/waarde-paren die u opgeeft voor een Blob Storage-Resource. U kunt meta gegevens gebruiken om aanvullende waarden met de resource op te slaan. Meta gegevens waarden zijn alleen bedoeld voor eigen doel einden en zijn niet van invloed op de werking van de resource.
 
-Het ophalen van eigenschap- en metagegevenswaarden voor een Blob-opslagbron is een proces in twee stappen. Voordat u deze waarden lezen, moet u ze expliciet ophalen door de methode **FetchAttributes** of **FetchAttributesAsync aan te** roepen. De uitzondering op deze regel is dat de methoden **Bestaan** en **BestaanAsync** de juiste methode **FetchAttributes** onder de covers aanroepen. Wanneer u een van deze methoden aanroept, hoeft u **fetchattributes**niet ook aan te roepen.
+Het ophalen van eigenschaps-en meta gegevens waarden voor een Blob Storage-Resource is een proces dat uit twee stappen bestaat. Voordat u deze waarden kunt lezen, moet u deze expliciet ophalen door de **FetchAttributes** -of **FetchAttributesAsync** -methode aan te roepen. De uitzonde ring op deze regel is dat de methoden **Exists** en **ExistsAsync** de juiste **FetchAttributes** -methode aanroepen onder de kaften. Wanneer u een van deze methoden aanroept, hoeft u **FetchAttributes**ook niet aan te roepen.
 
 > [!IMPORTANT]
-> Als u merkt dat eigenschap- of metagegevenswaarden voor een opslagbron niet zijn ingevuld, controleert u of uw code de methode **FetchAttributes** of **FetchAttributesAsync** aanroept.
+> Als u merkt dat de eigenschaps-of meta gegevens waarden voor een opslag bron niet zijn ingevuld, controleert u of de code de methode **FetchAttributes** of **FetchAttributesAsync** aanroept.
 
-Metagegevensnaam/waardeparen zijn geldige HTTP-headers en moeten zich dus houden aan alle beperkingen voor HTTP-headers. Metagegevensnamen moeten geldige HTTP-kopnamen en geldige C#-id's zijn, mogen alleen ASCII-tekens bevatten en moeten worden behandeld als hoofdletter-ongevoelig. Metagegevenswaarden die niet-ASCII-tekens bevatten, moeten Base64-gecodeerd of DOOR URL-gecodeerd zijn.
+Naam/waarde-paren van meta gegevens zijn geldige HTTP-headers en moeten dus voldoen aan alle beperkingen voor HTTP-headers. Namen van meta gegevens moeten geldige namen voor HTTP-headers en geldige C#-id's zijn, mogen alleen ASCII-tekens bevatten en moeten worden behandeld als niet hoofdletter gevoelig. Meta gegevens waarden met niet-ASCII-tekens moeten base64-gecodeerd of met URL-code ring zijn.
 
-## <a name="retrieve-container-properties"></a>Containereigenschappen ophalen
+## <a name="retrieve-container-properties"></a>Container eigenschappen ophalen
 
-Als u containereigenschappen wilt ophalen, roept u een van de volgende methoden aan:
+Roep een van de volgende methoden aan om container eigenschappen op te halen:
 
-- [Kenmerken ophalen](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.fetchattributes)
+- [FetchAttributes](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.fetchattributes)
 - [FetchAttributesAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.fetchattributesasync)
 
-In het volgende codevoorbeeld worden de systeemeigenschappen van een container opgehaald en worden bepaalde eigenschapswaarden naar een consolevenster geschreven:
+In het volgende code voorbeeld worden de systeem eigenschappen van een container opgehaald en worden enkele eigenschaps waarden naar een console venster geschreven:
 
 ```csharp
 private static async Task ReadContainerPropertiesAsync(CloudBlobContainer container)
@@ -63,16 +63,16 @@ private static async Task ReadContainerPropertiesAsync(CloudBlobContainer contai
 }
 ```
 
-## <a name="set-and-retrieve-metadata"></a>Metagegevens instellen en ophalen
+## <a name="set-and-retrieve-metadata"></a>Meta gegevens instellen en ophalen
 
-U metagegevens opgeven als een of meer naamwaardeparen op een blob- of containerbron. Als u metagegevens wilt instellen, voegt u naamwaardeparen toe aan de **verzameling metagegevens** op de bron en roept u een van de volgende methoden aan om de waarden te schrijven:
+U kunt meta gegevens opgeven als een of meer naam/waarde-paren voor een BLOB of container resource. Als u meta gegevens wilt instellen, voegt u naam/waarde-paren toe aan de verzameling **meta gegevens** voor de resource en roept u vervolgens een van de volgende methoden aan om de waarden te schrijven:
 
 - [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadataasync)
 
-De naam van uw metagegevens moet voldoen aan de naamgevingsconventies voor C#-id's. Metagegevensnamen behouden de case waarmee ze zijn gemaakt, maar zijn case-ongevoelig wanneer ze worden ingesteld of gelezen. Als twee of meer metagegevenskoppen met dezelfde naam worden ingediend voor een resource, retourneert Blob-opslag HTTP-foutcode 400 (Bad Request).
+De naam van uw meta gegevens moet voldoen aan de naamgevings conventies voor C#-id's. Namen van meta gegevens behouden het hoofdletter gebruik dat is gemaakt, maar zijn niet hoofdletter gevoelig bij het instellen of lezen. Als twee of meer meta gegevens headers met dezelfde naam worden verzonden voor een resource, retourneert Blob Storage de HTTP-fout code 400 (ongeldige aanvraag).
 
-In het volgende codevoorbeeld worden metagegevens ingesteld op een container. Eén waarde wordt ingesteld met de methode **Toevoegen van** de verzameling. De andere waarde wordt ingesteld met behulp van de syntaxis van impliciete sleutel/waarde. Beide zijn geldig.
+In het volgende code voorbeeld worden meta gegevens voor een container ingesteld. Er wordt één waarde ingesteld met behulp van de methode **add** van de verzameling. De andere waarde wordt ingesteld met behulp van de syntaxis van de impliciete sleutel/waarde. Beide zijn geldig.
 
 ```csharp
 public static async Task AddContainerMetadataAsync(CloudBlobContainer container)
@@ -97,7 +97,7 @@ public static async Task AddContainerMetadataAsync(CloudBlobContainer container)
 }
 ```
 
-Als u metagegevens wilt ophalen, roept u de methode **FetchAttributes** **async** op uw blob of container aan om de **verzameling metagegevens** in te vullen en vervolgens de waarden te lezen, zoals in het onderstaande voorbeeld wordt weergegeven.
+Als u meta gegevens wilt ophalen, roept u de methode **FetchAttributes** of **FetchAttributesAsync** aan op uw BLOB of container om de **META** gegevensverzameling te vullen. Lees vervolgens de waarden, zoals wordt weer gegeven in het onderstaande voor beeld.
 
 ```csharp
 public static async Task ReadContainerMetadataAsync(CloudBlobContainer container)
@@ -130,6 +130,6 @@ public static async Task ReadContainerMetadataAsync(CloudBlobContainer container
 
 ## <a name="see-also"></a>Zie ook
 
-- [Containereigenschappen uitvoeren](/rest/api/storageservices/get-container-properties)
-- [Containermetagegevens instellen](/rest/api/storageservices/set-container-metadata)
-- [Containermetagegevens uitvoeren](/rest/api/storageservices/set-container-metadata)
+- [Bewerking container eigenschappen ophalen](/rest/api/storageservices/get-container-properties)
+- [Meta gegevens van de container instellen](/rest/api/storageservices/set-container-metadata)
+- [Meta gegevens van container ophalen](/rest/api/storageservices/set-container-metadata)

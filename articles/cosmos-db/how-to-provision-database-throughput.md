@@ -1,54 +1,54 @@
 ---
 title: Databasedoorvoer inrichten in Azure Cosmos DB
-description: Meer informatie over het inrichten van doorvoer op databaseniveau in Azure Cosmos DB met Azure portal, CLI, PowerShell en diverse andere SDK's.
+description: Meer informatie over het inrichten van de door Voer op database niveau in Azure Cosmos DB met behulp van Azure Portal, CLI, Power shell en diverse andere Sdk's.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
 ms.openlocfilehash: ef7d06dfb074a3453f5589284cbdaf079c48d111
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78933766"
 ---
-# <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Doorvoer voorziening voor een database in Azure Cosmos DB
+# <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Door Voer in te richten op een data base in Azure Cosmos DB
 
-In dit artikel wordt uitgelegd hoe u doorvoer indient op een database in Azure Cosmos DB. U kunt de doorvoer inrichten voor één [container](how-to-provision-container-throughput.md) of inrichten voor een database en de doorvoer delen met de containers in de database. Zie De doorvoer [van gebruiksaanvragen voor het inrichten van doorvoer op containers en databases](set-throughput.md) voor meer informatie over het gebruik van containerniveau en doorvoer op databaseniveau. U kunt doorvoer op databaseniveau inrichten met behulp van de Azure-portal of Azure Cosmos DB-SDK's.
+In dit artikel wordt uitgelegd hoe u de door Voer inricht voor een data base in Azure Cosmos DB. U kunt de doorvoer inrichten voor één [container](how-to-provision-container-throughput.md) of inrichten voor een database en de doorvoer delen met de containers in de database. Zie het artikel [aanvragen voor het inrichten van de doorvoer snelheid voor containers en data bases](set-throughput.md) voor meer informatie over het gebruik van container niveau en door Voer op database niveau. U kunt doorvoer op databaseniveau inrichten met behulp van de Azure-portal of Azure Cosmos DB-SDK's.
 
 ## <a name="provision-throughput-using-azure-portal"></a>Doorvoer inrichten met behulp van de Azure-portal
 
 ### <a name="sql-core-api"></a><a id="portal-sql"></a>SQL (Core) API
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand Azure Cosmos-account.
 
-1. Open het deelvenster **Gegevensverkenner** en selecteer **Nieuwe database**. Geef de volgende gegevens op:
+1. Open het deel venster **Data Explorer** en selecteer **nieuwe data base**. Geef de volgende gegevens op:
 
    * Voer een database-id in.
-   * Selecteer **Inleveringsdoorvoer**.
+   * Selecteer **door Voer inrichten**.
    * Voer een doorvoer in, bijvoorbeeld 1000 RU's.
    * Selecteer **OK**.
 
     ![Schermafbeelding van het dialoogvenster Nieuwe database](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
 
-## <a name="provision-throughput-using-azure-cli-or-powershell"></a>Doorvoer voorzien van Azure CLI of PowerShell
+## <a name="provision-throughput-using-azure-cli-or-powershell"></a>Door Voer in te richten met behulp van Azure CLI of Power shell
 
-Als u een database met gedeelde doorvoer wilt maken, ziet u
+Als u een Data Base met gedeelde door voer wilt maken, raadpleegt u
 
-* [Een database maken met Azure CLI](manage-with-cli.md#create-a-database-with-shared-throughput)
-* [Een database maken met Powershell](manage-with-powershell.md#create-db-ru)
+* [Een Data Base maken met behulp van Azure CLI](manage-with-cli.md#create-a-database-with-shared-throughput)
+* [Een Data Base maken met behulp van Power shell](manage-with-powershell.md#create-db-ru)
 
 ## <a name="provision-throughput-using-net-sdk"></a>Doorvoer inrichten met behulp van .NET SDK
 
 > [!Note]
-> U Cosmos SDK's voor SQL API gebruiken om doorvoer voor alle API's in te richten. U kunt ook het volgende voorbeeld voor Cassandra-API gebruiken.
+> U kunt Cosmos Sdk's voor SQL API gebruiken om de door Voer voor alle Api's in te richten. U kunt ook het volgende voorbeeld voor Cassandra-API gebruiken.
 
 ### <a name="all-apis"></a><a id="dotnet-all"></a>Alle API's
 
-### <a name="net-v2-sdk"></a>.Net V2 SDK
+### <a name="net-v2-sdk"></a>.NET v2 SDK
 
 ```csharp
 //set the throughput for the database
@@ -63,12 +63,12 @@ await client.CreateDatabaseIfNotExistsAsync(
     options);
 ```
 
-### <a name="net-v3-sdk"></a>.Net V3 SDK
+### <a name="net-v3-sdk"></a>.Net v3-SDK
 
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
 
 ### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra-API
-Vergelijkbare opdracht kan worden uitgevoerd via elk CQL-compatibel stuurprogramma. 
+Een vergelijk bare opdracht kan worden uitgevoerd via elk CQL-compatibel stuur programma. 
 ```csharp
 // Create a Cassandra keyspace and provision throughput of 400 RU/s
 session.Execute("CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisioned_throughput=400");
@@ -76,7 +76,7 @@ session.Execute("CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisio
  
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen voor meer informatie over de ingerichte doorvoer in Azure Cosmos DB:
+Raadpleeg de volgende artikelen voor meer informatie over ingerichte door Voer in Azure Cosmos DB:
 
 * [Wereldwijd schalen van ingerichte doorvoer](scaling-throughput.md)
 * [Doorvoer voor containers en databases inrichten](set-throughput.md)

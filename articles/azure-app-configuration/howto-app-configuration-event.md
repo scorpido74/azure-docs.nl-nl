@@ -1,6 +1,6 @@
 ---
-title: Gebeurtenissen naar een webeindpunt verzenden met Azure App-configuratie
-description: Informatie over het gebruik van azure app-gebeurtenisabonnementen voor het verzenden van wijzigingen in de sleutelwaarde naar een webeindpunt
+title: Gebeurtenissen naar een webeindpunt verzenden met behulp van Azure-app configuratie
+description: Meer informatie over het gebruik van Azure-app configuratie gebeurtenis abonnementen om de gebeurtenissen voor het wijzigen van de sleutel waarde naar een webeindpunt te verzenden
 services: azure-app-configuration
 author: lisaguthrie
 ms.assetid: ''
@@ -10,23 +10,23 @@ ms.topic: how-to
 ms.date: 02/25/2020
 ms.author: lcozzens
 ms.openlocfilehash: da64f22981cc33772783093cfe75daa3eac5cef1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78672145"
 ---
-# <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Azure App-configuratiegebeurtenissen routeren naar een webeindpunt met Azure CLI
+# <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Azure-app configuratie gebeurtenissen naar een webeindpunt routeren met Azure CLI
 
-In dit artikel vindt u informatie over het instellen van azure app-gebeurtenisabonnementen voor configuratie om wijzigingen in de sleutelwaarde naar een webeindpunt te verzenden. Gebruikers van Azure App-configuratie kunnen zich abonneren op gebeurtenissen die worden uitgezonden wanneer de sleutelwaarden worden gewijzigd. Deze gebeurtenissen kunnen leiden tot webhaken, Azure-functies, Azure Storage Queues of een andere gebeurtenishandler die wordt ondersteund door Azure Event Grid. Normaal gesproken verzendt u gebeurtenissen naar een eindpunt dat de gebeurtenisgegevens verwerkt en vervolgens in actie komt. Ter vereenvoudiging van dit artikel stuurt u hier de gebeurtenissen echter naar een web-app die de berichten verzamelt en weergeeft.
+In dit artikel leert u hoe u Azure-app configuratie gebeurtenis abonnementen kunt instellen om gebeurtenissen voor het wijzigen van de sleutel waarde naar een webeindpunt te verzenden. Azure-app configuratie gebruikers kunnen zich abonneren op gebeurtenissen die worden verzonden wanneer de sleutel waarden worden gewijzigd. Deze gebeurtenissen kunnen webhooks, Azure Functions, Azure Storage wacht rijen of andere gebeurtenis-handlers activeren die door Azure Event Grid worden ondersteund. Normaal gesproken verzendt u gebeurtenissen naar een eindpunt dat de gebeurtenisgegevens verwerkt en vervolgens in actie komt. Ter vereenvoudiging van dit artikel stuurt u hier de gebeurtenissen echter naar een web-app die de berichten verzamelt en weergeeft.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement - [maak er gratis een](https://azure.microsoft.com/free/). U optioneel de Azure Cloud Shell gebruiken.
+- Azure-abonnement: [Maak een gratis versie](https://azure.microsoft.com/free/). U kunt eventueel de Azure Cloud Shell gebruiken.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest de CLI lokaal te installeren en te gebruiken, vereist dit artikel dat u de nieuwste versie van Azure CLI (2.0.70 of hoger) uitvoert. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de nieuwste versie van Azure CLI (2.0.70 of hoger) uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
 
 Als u Cloud Shell niet gebruikt, moet u zich eerst aanmelden met `az login`.
 
@@ -36,15 +36,15 @@ Event Grid-onderwerpen zijn Azure-resources en moeten in een Azure-resourcegroep
 
 Een resourcegroep maken met de opdracht [az group create](/cli/azure/group). 
 
-In het volgende voorbeeld `<resource_group_name>` wordt een resourcegroep met de naam *westus-locatie.*  Vervang `<resource_group_name>` door een unieke naam voor uw resourcegroep.
+In het volgende voor beeld wordt een resource `<resource_group_name>` groep met de naam op de locatie *westus* gemaakt.  Vervang `<resource_group_name>` door een unieke naam voor uw resourcegroep.
 
 ```azurecli-interactive
 az group create --name <resource_group_name> --location westus
 ```
 
-## <a name="create-an-app-configuration-store"></a>Een app-configuratiearchief maken
+## <a name="create-an-app-configuration-store"></a>Een app-configuratie archief maken
 
-Vervang `<appconfig_name>` door een unieke naam voor `<resource_group_name>` uw configuratiearchief en door de resourcegroep die u eerder hebt gemaakt. De naam moet uniek zijn omdat deze wordt gebruikt als DNS-naam.
+Vervang `<appconfig_name>` door een unieke naam voor uw configuratie archief en `<resource_group_name>` met de resource groep die u eerder hebt gemaakt. De naam moet uniek zijn omdat deze wordt gebruikt als een DNS-naam.
 
 ```azurecli-interactive
 az appconfig create \
@@ -75,9 +75,9 @@ Op de site zouden momenteel geen berichten moeten wijn weergeven.
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-your-app-configuration-store"></a>Abonneer u op uw App Configuration Store
+## <a name="subscribe-to-your-app-configuration-store"></a>Abonneren op uw app-configuratie archief
 
-U abonneert u op een onderwerp om Event Grid te laten weten welke gebeurtenissen u wilt traceren en waar deze gebeurtenissen naartoe moeten worden gestuurd. In het volgende voorbeeld wordt u geabonneerd op de app-configuratie die u hebt gemaakt en wordt de URL van uw web-app doorgegeven als eindpunt voor gebeurtenismeldingen. Vervang `<event_subscription_name>` door een naam voor het gebeurtenisabonnement. Gebruik voor `<resource_group_name>` en `<appconfig_name>` de waarden die u eerder hebt gemaakt.
+U abonneert u op een onderwerp om Event Grid te laten weten welke gebeurtenissen u wilt traceren en waar deze gebeurtenissen naartoe moeten worden gestuurd. In het volgende voor beeld wordt een abonnement genomen op de app-configuratie die u hebt gemaakt, en wordt de URL van uw web-app door gegeven als het eind punt voor gebeurtenis meldingen. Vervang `<event_subscription_name>` door een naam voor het gebeurtenisabonnement. Gebruik voor `<resource_group_name>` en `<appconfig_name>` de waarden die u eerder hebt gemaakt.
 
 Het eindpunt voor uw web-app moet het achtervoegsel `/api/updates/` bevatten.
 
@@ -95,9 +95,9 @@ Bekijk opnieuw uw web-app en u zult zien dat er een validatiegebeurtenis voor ee
 
 ![Een abonnementgebeurtenis weergeven](./media/quickstarts/event-grid/view-subscription-event.png)
 
-## <a name="trigger-an-app-configuration-event"></a>Een gebeurtenis App-configuratie activeren
+## <a name="trigger-an-app-configuration-event"></a>Een configuratie gebeurtenis voor een app activeren
 
-Nu gaan we een gebeurtenis activeren om te zien hoe het bericht via Event Grid naar het eindpunt wordt gedistribueerd. Maak een sleutelwaarde `<appconfig_name>` met de van vroeger.
+Nu gaan we een gebeurtenis activeren om te zien hoe het bericht via Event Grid naar het eindpunt wordt gedistribueerd. Maak een sleutel waarde met behulp `<appconfig_name>` van de vorige.
 
 ```azurecli-interactive
 az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes
@@ -122,7 +122,7 @@ U hebt de gebeurtenis geactiveerd en Event Grid heeft het bericht verzonden naar
 ```
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Als u van plan bent door te werken met dit app-configuratie- en gebeurtenisabonnement, moet u de bronnen die in dit artikel zijn gemaakt, niet opschonen. Als u niet verder wilt werken, gebruikt u de volgende opdracht om de resources te verwijderen die u in dit artikel hebt gemaakt.
+Als u van plan bent om verder te gaan met deze app-configuratie en het gebeurtenis abonnement, moet u de resources die in dit artikel zijn gemaakt, niet opschonen. Als u niet verder wilt werken, gebruikt u de volgende opdracht om de resources te verwijderen die u in dit artikel hebt gemaakt.
 
 Vervang `<resource_group_name>` door de resourcegroep die u eerder hebt gemaakt.
 
@@ -132,8 +132,8 @@ az group delete --name <resource_group_name>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u weet hoe u onderwerpen en gebeurtenisabonnementen maken, vindt u meer informatie over belangrijke gebeurtenissen en wat Event Grid u kan helpen:
+Nu u weet hoe u onderwerpen en gebeurtenis abonnementen maakt, leest u meer over belang rijke gebeurtenissen en wat Event Grid u kan helpen:
 
-- [Reageren op gebeurtenissen met de sleutelwaarde](concept-app-configuration-event.md)
+- [Reageren op gebeurtenissen met sleutel waarden](concept-app-configuration-event.md)
 - [Over Event Grid](../event-grid/overview.md)
 - [Azure Event Grid-handlers](../event-grid/event-handlers.md)

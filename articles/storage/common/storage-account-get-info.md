@@ -1,7 +1,7 @@
 ---
-title: Opslagaccounttype en SKU-naam met .NET
+title: Het type opslag account en de SKU-naam ophalen met .NET
 titleSuffix: Azure Storage
-description: Meer informatie over het wijzigen van het type Azure Storage-account type en De naam van sKU's met behulp van de .NET-clientbibliotheek.
+description: Meer informatie over het verkrijgen van Azure Storage account type en SKU-naam met behulp van de .NET-client bibliotheek.
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -10,29 +10,29 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.openlocfilehash: 1495ed55c24a0f94b911d60d1db0f32940ea134a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79137055"
 ---
-# <a name="get-storage-account-type-and-sku-name-with-net"></a>Opslagaccounttype en SKU-naam met .NET
+# <a name="get-storage-account-type-and-sku-name-with-net"></a>Het type opslag account en de SKU-naam ophalen met .NET
 
-In dit artikel ziet u hoe u het azure storage-accounttype en de SKU-naam voor een blob krijgen met behulp van de [Azure Storage-clientbibliotheek voor .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
+In dit artikel wordt beschreven hoe u het Azure Storage account type en de SKU-naam voor een BLOB kunt ophalen met behulp van de [Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
-Accountgegevens zijn beschikbaar op serviceversies vanaf versie 2018-03-28.
+Account gegevens zijn beschikbaar in service versies vanaf versie 2018-03-28.
 
-## <a name="about-account-type-and-sku-name"></a>Informatie over accounttype en SKU-naam
+## <a name="about-account-type-and-sku-name"></a>Over het account type en de SKU-naam
 
-**Accounttype**: Geldige `BlobStorage`accounttypen `FileStorage` `Storage`omvatten `StorageV2`, `BlockBlobStorage`, , en . [Het overzicht van azure-opslagaccounts](storage-account-overview.md) bevat meer informatie, waaronder beschrijvingen van de verschillende opslagaccounts.
+**Account type**: geldige account typen zijn `BlobStorage`, `BlockBlobStorage`, `FileStorage` `Storage`, en `StorageV2`. [Overzicht van Azure Storage-account](storage-account-overview.md) bevat meer informatie, inclusief beschrijvingen van de verschillende opslag accounts.
 
-**SKU-naam**: Geldige `Premium_LRS`SKU-namen `Standard_RAGRS`omvatten `Standard_RAGZRS`, `Standard_ZRS` `Premium_ZRS`, `Standard_GRS`, `Standard_GZRS` `Standard_LRS`, , en . SKU-namen zijn hoofdlettergevoelig en zijn tekenreeksvelden in de [klasse SkuName](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet).
+**SKU-naam**: geldige SKU- `Premium_LRS`namen `Premium_ZRS`zijn `Standard_GRS`onder `Standard_GZRS`andere `Standard_LRS`, `Standard_RAGRS`, `Standard_RAGZRS`,, `Standard_ZRS`,, en. SKU-namen zijn hoofdletter gevoelig en zijn teken reeks velden in de [SkuName-klasse](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet).
 
-## <a name="retrieve-account-information"></a>Accountgegevens ophalen
+## <a name="retrieve-account-information"></a>Account gegevens ophalen
 
-Als u het type opslagaccount en de SKU-naam wilt krijgen die aan een blob zijn gekoppeld, belt u de methode [GetAccountProperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties?view=azure-dotnet) of [GetAccountPropertiesAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync?view=azure-dotnet) aan.
+Roep de methode [GetAccountProperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties?view=azure-dotnet) of [GetAccountPropertiesAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync?view=azure-dotnet) aan om het type opslag account en de SKU-naam op te halen die aan een BLOB zijn gekoppeld.
 
-In het volgende codevoorbeeld worden de alleen-lezen accounteigenschappen opgehaald en weergegeven.
+In het volgende code voorbeeld worden de alleen-lezen-account eigenschappen opgehaald en weer gegeven.
 
 ```csharp
 private static async Task GetAccountInfoAsync(CloudBlob blob)
@@ -62,6 +62,6 @@ private static async Task GetAccountInfoAsync(CloudBlob blob)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over andere bewerkingen die u uitvoeren op een opslagaccount via de [Azure-portal](https://portal.azure.com) en de Azure REST API.
+Meer informatie over andere bewerkingen die u kunt uitvoeren op een opslag account via de [Azure Portal](https://portal.azure.com) en de Azure rest API.
 
-- [Accountgegevensuitvoeren (REST)](/rest/api/storageservices/get-account-information)
+- [Bewerking account gegevens ophalen (REST)](/rest/api/storageservices/get-account-information)

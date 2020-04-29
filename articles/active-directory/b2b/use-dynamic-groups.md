@@ -1,6 +1,6 @@
 ---
-title: Dynamische groepen en B2B-samenwerking - Azure Active Directory | Microsoft Documenten
-description: Toont hoe u Azure AD-dynamische groepen gebruikt met Azure Active Directory B2B-samenwerking
+title: Dynamische groepen en B2B-samen werking-Azure Active Directory | Microsoft Docs
+description: Laat zien hoe u dynamische Azure AD-groepen kunt gebruiken met Azure Active Directory B2B-samen werking
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,68 +12,68 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 41e8b81bc3594c6a378757636f70058510a38cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78226874"
 ---
-# <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Dynamische groepen en Azure Active Directory B2B-samenwerking
+# <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Dynamische groepen en Azure Active Directory B2B-samen werking
 
 ## <a name="what-are-dynamic-groups"></a>Wat zijn dynamische groepen?
-Dynamische configuratie van beveiligingsgroepslidmaatschap voor Azure Active Directory (Azure AD) is beschikbaar in [de Azure-portal.](https://portal.azure.com) Beheerders kunnen regels instellen voor het vullen van groepen die zijn gemaakt in Azure AD op basis van gebruikerskenmerken (zoals userType, afdeling of land/regio). Leden kunnen automatisch worden toegevoegd aan of verwijderd uit een beveiligingsgroep op basis van hun kenmerken. Deze groepen kunnen toegang bieden tot toepassingen of cloudbronnen (SharePoint-sites, documenten) en licenties toewijzen aan leden. Lees meer over dynamische groepen in [Specifieke groepen in Azure Active Directory](../active-directory-accessmanagement-dedicated-groups.md).
+Dynamische configuratie van het lidmaatschap van de beveiligings groep voor Azure Active Directory (Azure AD) is beschikbaar in [de Azure Portal](https://portal.azure.com). Beheerders kunnen regels instellen voor het invullen van groepen die zijn gemaakt in azure AD op basis van gebruikers kenmerken (zoals User type, afdeling of land/regio). Leden kunnen automatisch worden toegevoegd aan of verwijderd uit een beveiligings groep op basis van hun kenmerken. Deze groepen kunnen toegang bieden tot toepassingen of cloud resources (share point-sites, documenten) en licenties toewijzen aan leden. Lees meer over dynamische groepen in [toegewezen groepen in azure Active Directory](../active-directory-accessmanagement-dedicated-groups.md).
 
-De juiste [Azure AD Premium P1- of P2-licenties](https://azure.microsoft.com/pricing/details/active-directory/) zijn vereist om dynamische groepen te maken en te gebruiken. Meer informatie in het artikel [Regels maken op basis van kenmerken voor dynamisch groepslidmaatschap in Azure Active Directory](../users-groups-roles/groups-dynamic-membership.md).
+De juiste [Azure AD Premium P1 of P2-licentie](https://azure.microsoft.com/pricing/details/active-directory/) is vereist voor het maken en gebruiken van dynamische groepen. Meer informatie vindt u in het artikel op [kenmerken gebaseerde regels maken voor dynamisch groepslid maatschap in azure Active Directory](../users-groups-roles/groups-dynamic-membership.md).
 
-## <a name="creating-an-all-users-dynamic-group"></a>Een dynamische groep 'alle gebruikers' maken
-U een groep maken met alle gebruikers binnen een tenant met behulp van een lidmaatschapsregel. Wanneer gebruikers in de toekomst worden toegevoegd of uit de tenant worden verwijderd, wordt het lidmaatschap van de groep automatisch aangepast.
+## <a name="creating-an-all-users-dynamic-group"></a>Een dynamische groep ' alle gebruikers ' maken
+U kunt een groep met alle gebruikers binnen een Tenant maken met behulp van een lidmaatschaps regel. Wanneer gebruikers in de toekomst worden toegevoegd of verwijderd uit de Tenant, wordt het lidmaatschap van de groep automatisch aangepast.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een account waaraan de rol Globale beheerder of gebruikersbeheerder in de tenant is toegewezen.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met een account dat is toegewezen aan de rol van globale beheerder of gebruiker beheerder in de Tenant.
 1. Selecteer **Azure Active Directory**.
-2. Selecteer **onder Beheren**de optie **Groepen**en selecteer Vervolgens **Nieuwe groep**.
-1. Selecteer op de pagina **Nieuwe groep** onder **Groepstype**de optie **Beveiliging**. Voer een **naam** en **beschrijving** in voor de nieuwe groep. 
-2. Selecteer **onder Lidmaatschapstype** **Dynamische gebruiker**en selecteer Dynamische query **toevoegen**. 
-4. **Selecteer**Bewerken boven het tekstvak **Regelsyntaxis** . Typ op de pagina **Syntaxis van de regel bewerken** de volgende expressie in het tekstvak:
+2. Selecteer onder **beheren**de optie **groepen**en selecteer vervolgens **nieuwe groep**.
+1. Selecteer op de pagina **nieuwe groep** onder **groeps type**de optie **beveiliging**. Voer een **naam** en **beschrijving** in voor de nieuwe groep. 
+2. Selecteer onder **lidmaatschaps type**de optie **dynamische gebruiker**en selecteer vervolgens **dynamische query toevoegen**. 
+4. Selecteer boven het tekstvak **syntaxis van regel** de optie **bewerken**. Typ op de pagina **syntaxis van regel bewerken** de volgende expressie in het tekstvak:
 
    ```
    user.objectId -ne null
    ```
-1. Selecteer **OK**. De regel wordt weergegeven in het vak Syntaxis van regel:
+1. Selecteer **OK**. De regel wordt weer gegeven in het vak syntaxis van regel:
 
-   ![Regelsyntaxis voor alle dynamische groep gebruikers](media/use-dynamic-groups/all-user-rule-syntax.png)
+   ![Syntaxis van de regel voor alle gebruikers dynamische groep](media/use-dynamic-groups/all-user-rule-syntax.png)
 
-1.  Selecteer **Opslaan**. De nieuwe dynamische groep zal nu b2b-gastgebruikers en ledengebruikers omvatten.
+1.  Selecteer **Opslaan**. De nieuwe dynamische groep bevat nu B2B-gast gebruikers en gebruikers van leden.
 
 
-1. Selecteer **Maken** op de **pagina Nieuw om** de groep te maken.
+1. Selecteer **maken** op de pagina **nieuwe groep** om de groep te maken.
 
 ## <a name="creating-a-group-of-members-only"></a>Alleen een groep leden maken
 
-Als u wilt dat uw groep gastgebruikers uitsluit en alleen leden van uw tenant opneemt, maakt u een dynamische groep zoals hierboven beschreven, maar voert u in het vak **Syntaxis van regel** de volgende expressie in:
+Als u wilt dat de groep gast gebruikers uitsluit en alleen leden van uw Tenant bevat, maakt u een dynamische groep zoals hierboven wordt beschreven, maar voert u in het vak **regel syntaxis** de volgende expressie in:
 
 ```
 (user.objectId -ne null) and (user.userType -eq "Member")
 ```
 
-In de volgende afbeelding wordt de syntaxis van de regel weergegeven voor een dynamische groep die is gewijzigd om alleen leden op te nemen en gasten uit te sluiten.
+In de volgende afbeelding ziet u de syntaxis van de regel voor een dynamische groep die is gewijzigd om alleen leden op te nemen en gasten uit te sluiten.
 
-![Toont regel waarin het gebruikerstype gelijk is aan lid](media/use-dynamic-groups/all-member-user-rule-syntax.png)
+![Geeft de regel weer waarbij het gebruikers type is ingesteld op lid](media/use-dynamic-groups/all-member-user-rule-syntax.png)
 
 ## <a name="creating-a-group-of-guests-only"></a>Alleen een groep gasten maken
 
-Mogelijk vindt u het ook handig om een nieuwe dynamische groep te maken die alleen gastgebruikers bevat, zodat u beleid (zoals Azure AD Conditional Access-beleidsregels) op hen toepassen. Maak een dynamische groep zoals hierboven beschreven, maar voer in het vak **Regelsyntaxis** de volgende expressie in:
+Het kan ook handig zijn om een nieuwe dynamische groep te maken die alleen gast gebruikers bevat, zodat u beleid (zoals beleid voor voorwaardelijke toegang voor Azure AD) kunt Toep assen. Maak een dynamische groep zoals hierboven wordt beschreven, maar Voer in het vak **regel syntaxis** de volgende expressie in:
 
 ```
 (user.objectId -ne null) and (user.userType -eq "Guest")
 ```
 
-In de volgende afbeelding wordt de syntaxis van de regel weergegeven voor een dynamische groep die is gewijzigd om alleen gasten op te nemen en ledengebruikers uit te sluiten.
+In de volgende afbeelding ziet u de syntaxis van de regel voor een dynamische groep die is gewijzigd om gasten alleen op te nemen en gebruikers van leden uit te sluiten.
 
-![Toont regel waarin het gebruikerstype gelijk is aan gast](media/use-dynamic-groups/all-guest-user-rule-syntax.png)
+![Geeft de regel aan waar het gebruikers type gelijk is aan gast](media/use-dynamic-groups/all-guest-user-rule-syntax.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Eigenschappen van gebruikers van B2B-samenwerking](user-properties.md)
-- [Een B2B-samenwerkingsgebruiker toevoegen aan een rol](add-guest-to-role.md)
-- [Voorwaardelijke toegang voor Gebruikers van B2B-samenwerkingsverbanden](conditional-access.md)
+- [Een B2B-samenwerkings gebruiker toevoegen aan een rol](add-guest-to-role.md)
+- [Voorwaardelijke toegang voor B2B-samenwerkings gebruikers](conditional-access.md)
 

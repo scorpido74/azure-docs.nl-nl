@@ -1,6 +1,6 @@
 ---
-title: Verwijzing naar azure API Management-sjabloongegevensmodel | Microsoft Documenten
-description: Meer informatie over de entiteit en typerepresentaties voor algemene items die worden gebruikt in de gegevensmodellen voor de ontwikkelaarsportalsjablonen in Azure API-beheer.
+title: Naslag informatie over Azure API Management-sjabloon gegevens model | Microsoft Docs
+description: Meer informatie over de entiteits-en type representaties voor algemene items die worden gebruikt in de gegevens modellen voor de sjablonen voor de ontwikkelaars Portal in azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79243937"
 ---
-# <a name="azure-api-management-template-data-model-reference"></a>Verwijzing naar sjabloongegevensmodel azure API-beheer
-In dit onderwerp worden de entiteit en het typerepresentaties beschreven voor algemene items die worden gebruikt in de gegevensmodellen voor de ontwikkelaarsportalsjablonen in Azure API Management.  
+# <a name="azure-api-management-template-data-model-reference"></a>Naslag informatie over Azure API Management-sjabloon gegevens model
+In dit onderwerp worden de entiteits-en type representaties beschreven voor algemene items die worden gebruikt in de gegevens modellen voor de sjablonen voor de ontwikkelaars Portal in azure API Management.  
   
- Zie [De API Management-ontwikkelaarsportal aanpassen met sjablonen](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)voor meer informatie over het werken met sjablonen.  
+ Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)voor meer informatie over het werken met sjablonen.  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -31,73 +31,73 @@ In dit onderwerp worden de entiteit en het typerepresentaties beschreven voor al
 
 ## <a name="reference"></a>Naslaginformatie
 
--   [Api](#API)  
--   [API-overzicht](#APISummary)  
+-   [API](#API)  
+-   [API-samen vatting](#APISummary)  
 -   [Toepassing](#Application)  
 -   [Bijlage](#Attachment)  
 -   [Codevoorbeeld](#Sample)  
 -   [Opmerking](#Comment)  
 -   [Filteren](#Filtering)  
--   [Header](#Header)  
+-   [Journaalkop](#Header)  
 -   [HTTP-aanvraag](#HTTPRequest)  
 -   [HTTP-antwoord](#HTTPResponse)  
 -   [Probleem](#Issue)  
 -   [Bewerking](#Operation)  
--   [Menu Bewerking](#Menu)  
--   [Menu-item Bewerking](#MenuItem)  
+-   [Menu bewerking](#Menu)  
+-   [Menu opdracht bewerking](#MenuItem)  
 -   [Zoekresultaten oproepen](#Paging)  
--   [Parameter](#Parameter)  
--   [Product](#Product)  
+-   [Bepaalde](#Parameter)  
+-   [Voortplant](#Product)  
 -   [Provider](#Provider)  
--   [Vertegenwoordiging](#Representation)  
+-   [Wijze](#Representation)  
 -   [Abonnement](#Subscription)  
--   [Overzicht van abonnementen](#SubscriptionSummary)  
--   [Gebruikersaccountgegevens](#UserAccountInfo)  
--   [Aanmelding door gebruiker](#UseSignIn)  
--   [Aanmelden door gebruiker](#UserSignUp)  
+-   [Samen vatting van abonnement](#SubscriptionSummary)  
+-   [Gegevens van gebruikers account](#UserAccountInfo)  
+-   [Gebruikers aanmelding](#UseSignIn)  
+-   [Gebruikers registratie](#UserSignUp)  
   
-##  <a name="api"></a><a name="API"></a>Api  
+##  <a name="api"></a><a name="API"></a>INSCHAKELEN  
  De `API` entiteit heeft de volgende eigenschappen:  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`id`|tekenreeks|Resource-id. Identificeert de API op unieke wijze binnen het huidige API Management-serviceexemplaar. De waarde is een geldige relatieve `apis/{id}` `{id}` URL in de indeling van waar een API-id is. Deze eigenschap is alleen-lezen.|  
-|`name`|tekenreeks|Naam van de API. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
-|`description`|tekenreeks|Beschrijving van de API. Mag niet leeg zijn. Kan HTML-opmaaktags bevatten. De maximale lengte is 1000 tekens.|  
-|`serviceUrl`|tekenreeks|Absolute URL van de backend-service die deze API implementeert.|  
-|`path`|tekenreeks|Relatieve URL die deze API en alle resourcepaden binnen de API-serviceinstantie uniek identificeert. Het wordt toegevoegd aan de URL van api-eindpuntbasis die is opgegeven tijdens het maken van de service-instantie om een openbare URL voor deze API te vormen.|  
-|`protocols`|array van het aantal|Beschrijft op welke protocollen de bewerkingen in deze API kunnen worden aangeroepen. Toegestane waarden `1 - http` zijn `2 - https`en , of beide.|  
-|`authenticationSettings`|[Verificatie-instellingen voor autorisatieserver](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Verzameling van verificatie-instellingen die in deze API zijn opgenomen.|  
-|`subscriptionKeyParameterNames`|object|Optionele eigenschap die kan worden gebruikt om aangepaste namen op te geven voor query- en/of koptekstparameters die de abonnementssleutel bevatten. Wanneer deze eigenschap aanwezig is, moet deze ten minste één van de twee volgende eigenschappen bevatten.<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
+|`id`|tekenreeks|Resource-id. Identificeert de API binnen het huidige API Management service-exemplaar. De waarde is een geldige relatieve URL in de notatie van `apis/{id}` waar `{id}` is een API-id. Deze eigenschap is alleen-lezen.|  
+|`name`|tekenreeks|De naam van de API. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
+|`description`|tekenreeks|Beschrijving van de API. Mag niet leeg zijn. HTML-opmaak tags kunnen bevatten. De maximale lengte is 1000 tekens.|  
+|`serviceUrl`|tekenreeks|Absolute URL van de back-end-service die deze API implementeert.|  
+|`path`|tekenreeks|Relatieve URL is een unieke identificatie van deze API en alle bijbehorende bron paden binnen het API Management service-exemplaar. Het wordt toegevoegd aan de URL van het API-eind punt dat is opgegeven tijdens het maken van het service-exemplaar om een open bare URL voor deze API te vormen.|  
+|`protocols`|matrix van getal|Hierin wordt beschreven op welke protocollen de bewerkingen in deze API kunnen worden aangeroepen. Toegestane waarden zijn `1 - http` en `2 - https`, of beide.|  
+|`authenticationSettings`|[Verificatie server authenticatie-instellingen](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Verzameling van verificatie-instellingen die zijn opgenomen in deze API.|  
+|`subscriptionKeyParameterNames`|object|Een optionele eigenschap die kan worden gebruikt om aangepaste namen op te geven voor query-en/of header-para meters die de abonnements sleutel bevatten. Wanneer deze eigenschap aanwezig is, moet deze ten minste een van de volgende twee eigenschappen bevatten.<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
-##  <a name="api-summary"></a><a name="APISummary"></a>API-overzicht  
+##  <a name="api-summary"></a><a name="APISummary"></a>API-samen vatting  
  De `API summary` entiteit heeft de volgende eigenschappen:  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`id`|tekenreeks|Resource-id. Identificeert de API op unieke wijze binnen het huidige API Management-serviceexemplaar. De waarde is een geldige relatieve `apis/{id}` `{id}` URL in de indeling van waar een API-id is. Deze eigenschap is alleen-lezen.|  
-|`name`|tekenreeks|Naam van de API. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
-|`description`|tekenreeks|Beschrijving van de API. Mag niet leeg zijn. Kan HTML-opmaaktags bevatten. De maximale lengte is 1000 tekens.|  
+|`id`|tekenreeks|Resource-id. Identificeert de API binnen het huidige API Management service-exemplaar. De waarde is een geldige relatieve URL in de notatie van `apis/{id}` waar `{id}` is een API-id. Deze eigenschap is alleen-lezen.|  
+|`name`|tekenreeks|De naam van de API. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
+|`description`|tekenreeks|Beschrijving van de API. Mag niet leeg zijn. HTML-opmaak tags kunnen bevatten. De maximale lengte is 1000 tekens.|  
   
-##  <a name="application"></a><a name="Application"></a>Toepassing  
+##  <a name="application"></a><a name="Application"></a>Modules  
  De `application` entiteit heeft de volgende eigenschappen:  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
 |`Id`|tekenreeks|De unieke id van de toepassing.|  
-|`Title`|tekenreeks|De titel van de aanvraag.|  
-|`Description`|tekenreeks|De beschrijving van de aanvraag.|  
+|`Title`|tekenreeks|De titel van de toepassing.|  
+|`Description`|tekenreeks|De beschrijving van de toepassing.|  
 |`Url`|URI|De URI voor de toepassing.|  
 |`Version`|tekenreeks|Versie-informatie voor de toepassing.|  
-|`Requirements`|tekenreeks|Een beschrijving van de vereisten voor de aanvraag.|  
-|`State`|getal|De huidige status van de toepassing.<br /><br /> - 0 - Geregistreerd<br /><br /> - 1 - Ingezonden<br /><br /> - 2 - Gepubliceerd<br /><br /> - 3 - Afgewezen<br /><br /> - 4 - Niet gepubliceerd|  
-|`RegistrationDate`|DateTime|De datum en het tijdstip waarop de aanvraag is geregistreerd.|  
-|`CategoryId`|getal|De categorie van de applicatie (Financiën, entertainment, enz.)|  
-|`DeveloperId`|tekenreeks|De unieke id van de ontwikkelaar die de aanvraag heeft ingediend.|  
-|`Attachments`|Verzameling van [entiteiten voor bijlagen.](#Attachment)|Eventuele bijlagen voor de toepassing, zoals screenshots of pictogrammen.|  
+|`Requirements`|tekenreeks|Een beschrijving van de vereisten voor de toepassing.|  
+|`State`|getal|De huidige status van de toepassing.<br /><br /> -0-geregistreerd<br /><br /> -1-verzonden<br /><br /> -2-gepubliceerd<br /><br /> -3-afgewezen<br /><br /> -4-niet-gepubliceerd|  
+|`RegistrationDate`|DateTime|De datum en tijd waarop de toepassing is geregistreerd.|  
+|`CategoryId`|getal|De categorie van de toepassing (Finance, entertainment, enz.)|  
+|`DeveloperId`|tekenreeks|De unieke id van de ontwikkelaar die de toepassing heeft ingediend.|  
+|`Attachments`|Verzameling van [bijlage](#Attachment) -entiteiten.|Bijlagen voor de toepassing, zoals scherm afbeeldingen of pictogrammen.|  
 |`Icon`|[Bijlage](#Attachment)|Het pictogram voor de toepassing.|  
   
-##  <a name="attachment"></a><a name="Attachment"></a>Bijlage  
+##  <a name="attachment"></a><a name="Attachment"></a>Envelop  
  De `attachment` entiteit heeft de volgende eigenschappen:  
   
 |Eigenschap|Type|Beschrijving|  
@@ -105,261 +105,261 @@ In dit onderwerp worden de entiteit en het typerepresentaties beschreven voor al
 |`UniqueId`|tekenreeks|De unieke id voor de bijlage.|  
 |`Url`|tekenreeks|De URL van de resource.|  
 |`Type`|tekenreeks|Het type bijlage.|  
-|`ContentType`|tekenreeks|Het mediatype van de bijlage.|  
+|`ContentType`|tekenreeks|Het media type van de bijlage.|  
   
-##  <a name="code-sample"></a><a name="Sample"></a>Codevoorbeeld  
+##  <a name="code-sample"></a><a name="Sample"></a>Code voorbeeld  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
 |`title`|tekenreeks|De naam van de bewerking.|  
 |`snippet`|tekenreeks|Deze eigenschap is afgeschaft en mag niet worden gebruikt.|  
-|`brush`|tekenreeks|Welke codesyntaxiskleursjabloon moet worden gebruikt bij het weergeven van het codevoorbeeld. De toegestane `plain`waarden `php` `java`zijn `xml` `objc`, `python` `ruby`, `csharp`, , , en .|  
-|`template`|tekenreeks|De naam van deze voorbeeldsjabloon voor code.|  
-|`body`|tekenreeks|Een tijdelijke aanduiding voor het codevoorbeeldgedeelte van het fragment.|  
+|`brush`|tekenreeks|Welke code-syntax kleur sjabloon moet worden gebruikt bij het weer geven van het code voorbeeld. Toegestane waarden zijn `plain`, `php`, `java`, `xml`, `objc`, `python`, `ruby`en `csharp`.|  
+|`template`|tekenreeks|De naam van deze voorbeeld sjabloon voor code.|  
+|`body`|tekenreeks|Een tijdelijke aanduiding voor het code voorbeeld gedeelte van het fragment.|  
 |`method`|tekenreeks|De HTTP-methode van de bewerking.|  
-|`scheme`|tekenreeks|Het protocol dat moet worden gebruikt voor de bewerkingsaanvraag.|  
-|`path`|tekenreeks|Het pad van de operatie.|  
-|`query`|tekenreeks|Querytekenreeksvoorbeeld met gedefinieerde parameters.|  
-|`host`|tekenreeks|De URL van de API Management-servicegateway voor de API die deze bewerking bevat.|  
-|`headers`|Verzameling van [entiteiten met kopteksten.](#Header)|Kopteksten voor deze bewerking.|  
-|`parameters`|Verzameling [Parameter](#Parameter) van parameterentiteiten.|Parameters die voor deze bewerking zijn gedefinieerd.|  
+|`scheme`|tekenreeks|Het protocol dat moet worden gebruikt voor de bewerkings aanvraag.|  
+|`path`|tekenreeks|Het pad van de bewerking.|  
+|`query`|tekenreeks|Voor beeld van een query reeks met gedefinieerde para meters.|  
+|`host`|tekenreeks|De URL van de API Management service gateway voor de API die deze bewerking bevat.|  
+|`headers`|Verzameling van [header](#Header) -entiteiten.|Kopteksten voor deze bewerking.|  
+|`parameters`|Verzameling [parameter](#Parameter) entiteiten.|Para meters die zijn gedefinieerd voor deze bewerking.|  
   
-##  <a name="comment"></a><a name="Comment"></a>Commentaar  
+##  <a name="comment"></a><a name="Comment"></a>Heffen  
  De `API` entiteit heeft de volgende eigenschappen:  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
 |`Id`|getal|De ID van de opmerking.|  
-|`CommentText`|tekenreeks|Het lichaam van de opmerking. Kan HTML bevatten.|  
-|`DeveloperCompany`|tekenreeks|De bedrijfsnaam van de ontwikkelaar.|  
+|`CommentText`|tekenreeks|De hoofd tekst van de opmerking. Kan HTML bevatten.|  
+|`DeveloperCompany`|tekenreeks|De bedrijfs naam van de ontwikkelaar.|  
 |`PostedOn`|DateTime|De datum en tijd waarop de opmerking is geplaatst.|  
   
-##  <a name="issue"></a><a name="Issue"></a>Probleem  
+##  <a name="issue"></a><a name="Issue"></a>Name  
  De `issue` entiteit heeft de volgende eigenschappen.  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
 |`Id`|tekenreeks|De unieke id voor het probleem.|  
-|`ApiID`|tekenreeks|De ID voor de API waarvoor dit probleem is gemeld.|  
-|`Title`|tekenreeks|Titel van de kwestie.|  
-|`Description`|tekenreeks|Beschrijving van het probleem.|  
-|`SubscriptionDeveloperName`|tekenreeks|Voornaam van de ontwikkelaar die het probleem heeft gemeld.|  
-|`IssueState`|tekenreeks|De huidige stand van zaken. Mogelijke waarden worden voorgesteld, geopend, gesloten.|  
-|`ReportedOn`|DateTime|De datum en tijd waarop het probleem is gemeld.|  
-|`Comments`|Verzameling van [entiteiten voor opmerkingen.](#Comment)|Opmerkingen over deze kwestie.|  
-|`Attachments`|Verzameling van [entiteiten voor bijlagen.](api-management-template-data-model-reference.md#Attachment)|Eventuele bijlagen bij het probleem.|  
-|`Services`|Verzameling van [API-entiteiten.](#API)|De API's waarop de gebruiker het probleem heeft ingediend.|  
+|`ApiID`|tekenreeks|De ID voor de API waarvoor dit probleem is gerapporteerd.|  
+|`Title`|tekenreeks|De titel van het probleem.|  
+|`Description`|tekenreeks|De beschrijving van het probleem.|  
+|`SubscriptionDeveloperName`|tekenreeks|De voor naam van de ontwikkelaar die het probleem heeft gemeld.|  
+|`IssueState`|tekenreeks|De huidige status van het probleem. Mogelijke waarden worden voorgesteld, geopend, gesloten.|  
+|`ReportedOn`|DateTime|De datum en tijd waarop het probleem is gerapporteerd.|  
+|`Comments`|Verzameling van [opmerkings](#Comment) entiteiten.|Opmerkingen bij dit probleem.|  
+|`Attachments`|Verzameling van [bijlage](api-management-template-data-model-reference.md#Attachment) -entiteiten.|Eventuele bijlagen bij het probleem.|  
+|`Services`|Verzameling van [API](#API) -entiteiten.|De Api's die zijn geabonneerd op door de gebruiker die het probleem heeft ingediend.|  
   
-##  <a name="filtering"></a><a name="Filtering"></a>Filteren  
+##  <a name="filtering"></a><a name="Filtering"></a>Filtrati  
  De `filtering` entiteit heeft de volgende eigenschappen:  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`Pattern`|tekenreeks|De huidige zoekterm; of `null` als er geen zoekterm is.|  
-|`Placeholder`|tekenreeks|De tekst die in het zoekvak moet worden weergegeven wanneer er geen zoekterm is opgegeven.|  
+|`Pattern`|tekenreeks|De huidige zoek term; of `null` als er geen zoek term is.|  
+|`Placeholder`|tekenreeks|De tekst die moet worden weer gegeven in het zoekvak wanneer er geen zoek term is opgegeven.|  
   
-##  <a name="header"></a><a name="Header"></a>Header  
- In deze sectie `parameter` wordt de weergave beschreven.  
+##  <a name="header"></a><a name="Header"></a>Journaalkop  
+ In deze sectie wordt `parameter` de representatie beschreven.  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|-----------------|----------|  
 |`name`|tekenreeks|Parameternaam.|  
-|`description`|tekenreeks|Parameterbeschrijving.|  
-|`value`|tekenreeks|Koptekstwaarde.|  
-|`typeName`|tekenreeks|Gegevenstype koptekstwaarde.|  
+|`description`|tekenreeks|Parameter beschrijving.|  
+|`value`|tekenreeks|Waarde van header.|  
+|`typeName`|tekenreeks|Het gegevens type van de waarde voor de header.|  
 |`options`|tekenreeks|Opties.|  
-|`required`|booleaans|Of de koptekst vereist is.|  
-|`readOnly`|booleaans|Of de koptekst alleen-lezen is.|  
+|`required`|booleaans|Hiermee wordt aangegeven of de koptekst vereist is.|  
+|`readOnly`|booleaans|Hiermee wordt aangegeven of de header alleen-lezen is.|  
   
 ##  <a name="http-request"></a><a name="HTTPRequest"></a>HTTP-aanvraag  
- In deze sectie `request` wordt de weergave beschreven.  
+ In deze sectie wordt `request` de representatie beschreven.  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`description`|tekenreeks|Beschrijving van de aanvraag voor de bewerking.|  
-|`headers`|array [van](#Header) header-entiteiten.|Kopteksten aanvragen.|  
-|`parameters`|matrix van [parameter](#Parameter)|Verzameling van parameters voor bewerkingsaanvragen.|  
-|`representations`|array van [vertegenwoordiging](#Representation)|Verzameling van voorstellingen van bewerkingsaanvragen.|  
+|`description`|tekenreeks|Beschrijving van bewerkings aanvraag.|  
+|`headers`|matrix van [header](#Header) -entiteiten.|Aanvraag headers.|  
+|`parameters`|matrix van [para meter](#Parameter)|Verzameling para meters van bewerkings aanvraag.|  
+|`representations`|matrix van [representatie](#Representation)|Verzameling van representaties van bewerkings aanvragen.|  
   
 ##  <a name="http-response"></a><a name="HTTPResponse"></a>HTTP-antwoord  
- In deze sectie `response` wordt de weergave beschreven.  
+ In deze sectie wordt `response` de representatie beschreven.  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`statusCode`|positief geheel getal|Statuscode voor bewerkingsrespons.|  
-|`description`|tekenreeks|Beschrijving van de reactie van de bewerking.|  
-|`representations`|array van [vertegenwoordiging](#Representation)|Verzameling van voorstellingen van de operatierespons.|  
+|`statusCode`|positief geheel getal|Status code van bewerkings antwoord.|  
+|`description`|tekenreeks|Beschrijving van bewerkings antwoord.|  
+|`representations`|matrix van [representatie](#Representation)|Verzameling van representaties van bewerkings reacties.|  
   
-##  <a name="operation"></a><a name="Operation"></a>Bewerking  
+##  <a name="operation"></a><a name="Operation"></a>Schijf  
  De `operation` entiteit heeft de volgende eigenschappen:  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`id`|tekenreeks|Resource-id. Identificeert de bewerking op unieke wijze binnen de huidige API Management-serviceinstantie. De waarde is een geldige relatieve `apis/{aid}/operations/{id}` `{aid}` URL in de `{id}` indeling van waar een API-id is en een bewerkings-id is. Deze eigenschap is alleen-lezen.|  
-|`name`|tekenreeks|Naam van de bewerking. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
-|`description`|tekenreeks|Beschrijving van de bewerking. Mag niet leeg zijn. Kan HTML-opmaaktags bevatten. De maximale lengte is 1000 tekens.|  
-|`scheme`|tekenreeks|Beschrijft op welke protocollen de bewerkingen in deze API kunnen worden aangeroepen. Toegestane waarden `http`zijn `https`, `http` , `https`of beide en .|  
-|`uriTemplate`|tekenreeks|Relatieve URL-sjabloon die de doelbron voor deze bewerking identificeert. Kan parameters bevatten. Voorbeeld: `customers/{cid}/orders/{oid}/?date={date}`|  
-|`host`|tekenreeks|De URL van de API-beheergateway die de API host.|  
-|`httpMethod`|tekenreeks|Operatie HTTP-methode.|  
-|`request`|[HTTP-aanvraag](#HTTPRequest)|Een entiteit met aanvraaggegevens.|  
-|`responses`|array van [HTTP-respons](#HTTPResponse)|Array met [HTTP-antwoordentiteiten.](#HTTPResponse)|  
+|`id`|tekenreeks|Resource-id. Identificeert de bewerking binnen het huidige API Management service-exemplaar uniek. De waarde is een geldige relatieve URL in de notatie van `apis/{aid}/operations/{id}` waar `{aid}` is een API-id `{id}` en is een bewerkings-id. Deze eigenschap is alleen-lezen.|  
+|`name`|tekenreeks|De naam van de bewerking. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
+|`description`|tekenreeks|Beschrijving van de bewerking. Mag niet leeg zijn. HTML-opmaak tags kunnen bevatten. De maximale lengte is 1000 tekens.|  
+|`scheme`|tekenreeks|Hierin wordt beschreven op welke protocollen de bewerkingen in deze API kunnen worden aangeroepen. Toegestane waarden zijn `http`, `https`, of beide `http` en `https`.|  
+|`uriTemplate`|tekenreeks|Relatieve URL-sjabloon voor het identificeren van de doel resource voor deze bewerking. Kan para meters bevatten. Voorbeeld: `customers/{cid}/orders/{oid}/?date={date}`|  
+|`host`|tekenreeks|De URL van de API Management gateway die als host fungeert voor de API.|  
+|`httpMethod`|tekenreeks|Bewerkings-HTTP-methode.|  
+|`request`|[HTTP-aanvraag](#HTTPRequest)|Een entiteit met aanvraag Details.|  
+|`responses`|matrix van [http-antwoord](#HTTPResponse)|Matrix van [http-antwoord-](#HTTPResponse) entiteiten van de bewerking.|  
   
-##  <a name="operation-menu"></a><a name="Menu"></a>Menu Bewerking  
+##  <a name="operation-menu"></a><a name="Menu"></a>Menu bewerking  
  De `operation menu` entiteit heeft de volgende eigenschappen:  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
 |`ApiId`|tekenreeks|De ID van de huidige API.|  
 |`CurrentOperationId`|tekenreeks|De ID van de huidige bewerking.|  
-|`Action`|tekenreeks|Het menutype.|  
-|`MenuItems`|Verzameling van itementiteiten van [het menu Bewerking.](#MenuItem)|De bewerkingen voor de huidige API.|  
+|`Action`|tekenreeks|Het menu Type.|  
+|`MenuItems`|Verzameling van [items](#MenuItem) in de menu opdracht van een bewerking.|De bewerkingen voor de huidige API.|  
   
-##  <a name="operation-menu-item"></a><a name="MenuItem"></a>Menu-item Bewerking  
+##  <a name="operation-menu-item"></a><a name="MenuItem"></a>Menu opdracht bewerking  
  De `operation menu item` entiteit heeft de volgende eigenschappen:  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`Id`|tekenreeks|De ID van de operatie.|  
-|`Title`|tekenreeks|De beschrijving van de operatie.|  
-|`HttpMethod`|tekenreeks|De Http-methode van de bewerking.|  
+|`Id`|tekenreeks|De ID van de bewerking.|  
+|`Title`|tekenreeks|De beschrijving van de bewerking.|  
+|`HttpMethod`|tekenreeks|De HTTP-methode van de bewerking.|  
   
-##  <a name="paging"></a><a name="Paging"></a>Paging  
+##  <a name="paging"></a><a name="Paging"></a>Haalt  
  De `paging` entiteit heeft de volgende eigenschappen:  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`Page`|getal|Het huidige paginanummer.|  
-|`PageSize`|getal|De maximale resultaten die op één pagina moeten worden weergegeven.|  
-|`TotalItemCount`|getal|Het aantal objecten dat moet worden weergegeven.|  
-|`ShowAll`|booleaans|Of alle resultaten op één pagina moeten worden gesho.|  
+|`Page`|getal|Het huidige pagina nummer.|  
+|`PageSize`|getal|De maximum resultaten die op één pagina worden weer gegeven.|  
+|`TotalItemCount`|getal|Het aantal items dat wordt weer gegeven.|  
+|`ShowAll`|booleaans|Hiermee wordt aangegeven of alle resultaten op één pagina moeten worden uitgewisseld.|  
 |`PageCount`|getal|Het aantal pagina's met resultaten.|  
   
-##  <a name="parameter"></a><a name="Parameter"></a>Parameter  
- In deze sectie `parameter` wordt de weergave beschreven.  
+##  <a name="parameter"></a><a name="Parameter"></a>Bepaalde  
+ In deze sectie wordt `parameter` de representatie beschreven.  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|-----------------|----------|  
 |`name`|tekenreeks|Parameternaam.|  
-|`description`|tekenreeks|Parameterbeschrijving.|  
-|`value`|tekenreeks|Parameterwaarde.|  
-|`options`|tekenreeksmatrix|Waarden gedefinieerd voor queryparameterwaarden.|  
-|`required`|booleaans|Hiermee geeft u op of parameter vereist is of niet.|  
-|`kind`|getal|Of deze parameter een padparameter (1) of een querytekenreeksparameter (2) is.|  
-|`typeName`|tekenreeks|Parametertype.|  
+|`description`|tekenreeks|Parameter beschrijving.|  
+|`value`|tekenreeks|Parameter waarde.|  
+|`options`|tekenreeksmatrix|Waarden die zijn gedefinieerd voor query parameter waarden.|  
+|`required`|booleaans|Hiermee wordt aangegeven of para meter vereist is of niet.|  
+|`kind`|getal|Hiermee wordt aangegeven of deze para meter een pad-para meter (1) of een query reeks parameter (2) is.|  
+|`typeName`|tekenreeks|Parameter type.|  
   
-##  <a name="product"></a><a name="Product"></a>Product  
+##  <a name="product"></a><a name="Product"></a>Voortplant  
  De `product` entiteit heeft de volgende eigenschappen:  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`Id`|tekenreeks|Resource-id. Identificeert het product op unieke wijze binnen de huidige API Management-serviceinstantie. De waarde is een geldige relatieve `products/{pid}` `{pid}` URL in de notatie van waar een product-id is. Deze eigenschap is alleen-lezen.|  
+|`Id`|tekenreeks|Resource-id. Hiermee wordt het product uniek geïdentificeerd binnen het huidige API Management service-exemplaar. De waarde is een geldige relatieve URL in de notatie van `products/{pid}` waar `{pid}` is een product-id. Deze eigenschap is alleen-lezen.|  
 |`Title`|tekenreeks|De naam van het product. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
-|`Description`|tekenreeks|Beschrijving van het product. Mag niet leeg zijn. Kan HTML-opmaaktags bevatten. De maximale lengte is 1000 tekens.|  
-|`Terms`|tekenreeks|Productgebruiksvoorwaarden. Ontwikkelaars die zich op het product proberen te abonneren, worden gepresenteerd en moeten deze voorwaarden accepteren voordat ze het abonnementsproces kunnen voltooien.|  
-|`ProductState`|getal|Hiermee geeft u op of het product wordt gepubliceerd of niet. Gepubliceerde producten zijn vindbaar door ontwikkelaars op de ontwikkelaarsportal. Niet-gepubliceerde producten zijn alleen zichtbaar voor beheerders.<br /><br /> De toegestane waarden voor de productstatus zijn:<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
-|`AllowMultipleSubscriptions`|booleaans|Hiermee geeft u op of een gebruiker meerdere abonnementen tegelijk op dit product kan hebben.|  
-|`MultipleSubscriptionsCount`|getal|Maximaal aantal abonnementen op dit product dat een gebruiker tegelijkertijd mag hebben.|  
+|`Description`|tekenreeks|Beschrijving van het product. Mag niet leeg zijn. HTML-opmaak tags kunnen bevatten. De maximale lengte is 1000 tekens.|  
+|`Terms`|tekenreeks|Gebruiks voorwaarden van het product. Ontwikkel aars die zich willen abonneren op het product, worden weer gegeven en moeten deze voor waarden accepteren voordat ze het abonnements proces kunnen volt ooien.|  
+|`ProductState`|getal|Hiermee wordt aangegeven of het product is gepubliceerd of niet. Gepubliceerde producten kunnen worden gedetecteerd door ontwikkel aars op de ontwikkelaars Portal. Niet-gepubliceerde producten zijn alleen zichtbaar voor beheerders.<br /><br /> De toegestane waarden voor de product status zijn:<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
+|`AllowMultipleSubscriptions`|booleaans|Hiermee geeft u op of een gebruiker meerdere abonnementen op dit product tegelijk kan hebben.|  
+|`MultipleSubscriptionsCount`|getal|Maximum aantal abonnementen op dit product dat een gebruiker tegelijk mag hebben.|  
   
-##  <a name="provider"></a><a name="Provider"></a>Provider  
+##  <a name="provider"></a><a name="Provider"></a>Providers  
  De `provider` entiteit heeft de volgende eigenschappen:  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`Properties`|tekenreekswoordenboek|Eigenschappen voor deze verificatieprovider.|  
-|`AuthenticationType`|tekenreeks|Het type provider. (Azure Active Directory, Facebook login, Google Account, Microsoft Account, Twitter).|  
-|`Caption`|tekenreeks|De naam van de provider weergeven.|  
+|`Properties`|teken reeks woordenlijst|Eigenschappen voor deze verificatie provider.|  
+|`AuthenticationType`|tekenreeks|Het provider type. (Azure Active Directory, Facebook-aanmelding, Google-account, micro soft-account, Twitter).|  
+|`Caption`|tekenreeks|De weergave naam van de provider.|  
   
-##  <a name="representation"></a><a name="Representation"></a>Vertegenwoordiging  
- In deze sectie `representation`wordt een .  
+##  <a name="representation"></a><a name="Representation"></a>Wijze  
+ In deze sectie wordt `representation`een beschreven.  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`contentType`|tekenreeks|Hiermee geeft u bijvoorbeeld een geregistreerd of `application/xml`aangepast inhoudstype op voor deze weergave .|  
-|`sample`|tekenreeks|Een voorbeeld van de vertegenwoordiging.|  
+|`contentType`|tekenreeks|Hiermee geeft u een geregistreerd of aangepast inhouds type op voor deze representatie, `application/xml`bijvoorbeeld.|  
+|`sample`|tekenreeks|Een voor beeld van de weer gave.|  
   
-##  <a name="subscription"></a><a name="Subscription"></a>Abonnement  
+##  <a name="subscription"></a><a name="Subscription"></a>Abonnees  
  De `subscription` entiteit heeft de volgende eigenschappen:  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`Id`|tekenreeks|Resource-id. Identificeert het abonnement op unieke wijze binnen het huidige API Management-serviceexemplaar. De waarde is een geldige relatieve `subscriptions/{sid}` `{sid}` URL in de indeling van waar een abonnements-id is. Deze eigenschap is alleen-lezen.|  
-|`ProductId`|tekenreeks|De productbron-id van het geabonneerde product. De waarde is een geldige relatieve `products/{pid}` `{pid}` URL in de notatie van waar een product-id is.|  
+|`Id`|tekenreeks|Resource-id. Hiermee wordt het abonnement uniek geïdentificeerd binnen het huidige API Management service-exemplaar. De waarde is een geldige relatieve URL in de notatie van `subscriptions/{sid}` waar `{sid}` is een abonnements-id. Deze eigenschap is alleen-lezen.|  
+|`ProductId`|tekenreeks|De product resource-id van het geabonneerde product. De waarde is een geldige relatieve URL in de notatie van `products/{pid}` waar `{pid}` is een product-id.|  
 |`ProductTitle`|tekenreeks|De naam van het product. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
-|`ProductDescription`|tekenreeks|Beschrijving van het product. Mag niet leeg zijn. Kan HTML-opmaaktags bevatten. De maximale lengte is 1000 tekens.|  
-|`ProductDetailsUrl`|tekenreeks|Relatieve URL naar de productdetails.|  
-|`state`|tekenreeks|De staat van het abonnement. Mogelijke staten zijn:<br /><br /> - `0 - suspended`– het abonnement is geblokkeerd en de abonnee kan geen API's van het product bellen.<br /><br /> - `1 - active`– het abonnement actief is.<br /><br /> - `2 - expired`– het abonnement de vervaldatum heeft bereikt en is gedeactiveerd.<br /><br /> - `3 - submitted`– de abonnementsaanvraag is gedaan door de ontwikkelaar, maar is nog niet goedgekeurd of afgewezen.<br /><br /> - `4 - rejected`– het abonnementsverzoek is geweigerd door een beheerder.<br /><br /> - `5 - cancelled`– het abonnement is opgezegd door de ontwikkelaar of beheerder.|  
-|`DisplayName`|tekenreeks|De naam van het abonnement weergeven.|  
-|`CreatedDate`|Datetime|De datum waarop het abonnement is gemaakt, in `2014-06-24T16:25:00Z`ISO 8601-indeling: .|  
-|`CanBeCancelled`|booleaans|Of het abonnement kan worden opgezegd door de huidige gebruiker.|  
-|`IsAwaitingApproval`|booleaans|Of het abonnement in afwachting is van goedkeuring.|  
-|`StartDate`|Datetime|De begindatum voor het abonnement, in ISO `2014-06-24T16:25:00Z`8601-indeling: .|  
-|`ExpirationDate`|Datetime|De vervaldatum voor het abonnement, in ISO `2014-06-24T16:25:00Z`8601-indeling: .|  
-|`NotificationDate`|Datetime|De aanmeldingsdatum voor het abonnement, in `2014-06-24T16:25:00Z`ISO 8601-indeling: .|  
-|`primaryKey`|tekenreeks|De primaire abonnementssleutel. De maximale lengte is 256 tekens.|  
-|`secondaryKey`|tekenreeks|De secundaire abonnementssleutel. De maximale lengte is 256 tekens.|  
-|`CanBeRenewed`|booleaans|Of het abonnement kan worden verlengd door de huidige gebruiker.|  
-|`HasExpired`|booleaans|Of het abonnement is verlopen.|  
-|`IsRejected`|booleaans|Of het abonnementsverzoek is afgewezen.|  
-|`CancelUrl`|tekenreeks|De relatieve url om het abonnement op te zeggen.|  
-|`RenewUrl`|tekenreeks|De relatieve url om het abonnement te verlengen.|  
+|`ProductDescription`|tekenreeks|Beschrijving van het product. Mag niet leeg zijn. HTML-opmaak tags kunnen bevatten. De maximale lengte is 1000 tekens.|  
+|`ProductDetailsUrl`|tekenreeks|Relatieve URL naar de product gegevens.|  
+|`state`|tekenreeks|De status van het abonnement. Mogelijke statussen zijn:<br /><br /> - `0 - suspended`: het abonnement is geblokkeerd en de abonnee kan geen Api's van het product aanroepen.<br /><br /> - `1 - active`: het abonnement is actief.<br /><br /> - `2 - expired`-het abonnement heeft de verval datum bereikt en is gedeactiveerd.<br /><br /> - `3 - submitted`: de abonnements aanvraag is ingediend door de ontwikkelaar, maar is nog niet goedgekeurd of afgekeurd.<br /><br /> - `4 - rejected`-de abonnements aanvraag is geweigerd door een beheerder.<br /><br /> - `5 - cancelled`: het abonnement is geannuleerd door de ontwikkelaar of beheerder.|  
+|`DisplayName`|tekenreeks|De weergave naam van het abonnement.|  
+|`CreatedDate`|dateTime|De datum waarop het abonnement is gemaakt, in ISO 8601- `2014-06-24T16:25:00Z`indeling:.|  
+|`CanBeCancelled`|booleaans|Hiermee wordt aangegeven of het abonnement door de huidige gebruiker kan worden geannuleerd.|  
+|`IsAwaitingApproval`|booleaans|Hiermee wordt aangegeven of het abonnement wacht op goed keuring.|  
+|`StartDate`|dateTime|De begin datum voor het abonnement, in ISO 8601-indeling `2014-06-24T16:25:00Z`:.|  
+|`ExpirationDate`|dateTime|De verval datum voor het abonnement, in ISO 8601-indeling `2014-06-24T16:25:00Z`:.|  
+|`NotificationDate`|dateTime|De meldings datum voor het abonnement, in ISO 8601- `2014-06-24T16:25:00Z`indeling:.|  
+|`primaryKey`|tekenreeks|De sleutel van het primaire abonnement. De maximale lengte is 256 tekens.|  
+|`secondaryKey`|tekenreeks|De sleutel voor het secundaire abonnement. De maximale lengte is 256 tekens.|  
+|`CanBeRenewed`|booleaans|Hiermee wordt aangegeven of het abonnement kan worden vernieuwd door de huidige gebruiker.|  
+|`HasExpired`|booleaans|Hiermee wordt aangegeven of het abonnement is verlopen.|  
+|`IsRejected`|booleaans|Hiermee wordt aangegeven of de abonnements aanvraag is geweigerd.|  
+|`CancelUrl`|tekenreeks|De relatieve URL om het abonnement te annuleren.|  
+|`RenewUrl`|tekenreeks|De relatieve URL voor het vernieuwen van het abonnement.|  
   
-##  <a name="subscription-summary"></a><a name="SubscriptionSummary"></a>Overzicht van abonnementen  
+##  <a name="subscription-summary"></a><a name="SubscriptionSummary"></a>Samen vatting van abonnement  
  De `subscription summary` entiteit heeft de volgende eigenschappen:  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`Id`|tekenreeks|Resource-id. Identificeert het abonnement op unieke wijze binnen het huidige API Management-serviceexemplaar. De waarde is een geldige relatieve `subscriptions/{sid}` `{sid}` URL in de indeling van waar een abonnements-id is. Deze eigenschap is alleen-lezen.|  
-|`DisplayName`|tekenreeks|De weergavenaam van het abonnement|  
+|`Id`|tekenreeks|Resource-id. Hiermee wordt het abonnement uniek geïdentificeerd binnen het huidige API Management service-exemplaar. De waarde is een geldige relatieve URL in de notatie van `subscriptions/{sid}` waar `{sid}` is een abonnements-id. Deze eigenschap is alleen-lezen.|  
+|`DisplayName`|tekenreeks|De weergave naam van het abonnement|  
   
-##  <a name="user-account-info"></a><a name="UserAccountInfo"></a>Gebruikersaccountgegevens  
+##  <a name="user-account-info"></a><a name="UserAccountInfo"></a>Gegevens van gebruikers account  
  De `user account info` entiteit heeft de volgende eigenschappen:  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`FirstName`|tekenreeks|Voornaam. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
+|`FirstName`|tekenreeks|Voor naam. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
 |`LastName`|tekenreeks|Achternaam. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
-|`Email`|tekenreeks|E-mailadres. Mag niet leeg zijn en moet uniek zijn binnen de service-instantie. De maximale lengte is 254 tekens.|  
-|`Password`|tekenreeks|Wachtwoord van het gebruikersaccount.|  
-|`NameIdentifier`|tekenreeks|Account-id, hetzelfde als de e-mail van de gebruiker.|  
-|`ProviderName`|tekenreeks|Naam van de verificatieprovider.|  
-|`IsBasicAccount`|booleaans|True als dit account is geregistreerd met e-mail en wachtwoord; false als het account is geregistreerd via een provider.|  
+|`Email`|tekenreeks|E-mailadres. Mag niet leeg zijn en moet uniek zijn binnen het service-exemplaar. De maximale lengte is 254 tekens.|  
+|`Password`|tekenreeks|Wacht woord voor gebruikers account.|  
+|`NameIdentifier`|tekenreeks|Account-id, hetzelfde als het e-mail adres van de gebruiker.|  
+|`ProviderName`|tekenreeks|Naam van verificatie provider.|  
+|`IsBasicAccount`|booleaans|Waar als dit account is geregistreerd met behulp van e-mail en wacht woord. ONWAAR als het account is geregistreerd met een provider.|  
   
-##  <a name="user-sign-in"></a><a name="UseSignIn"></a>Aanmelden door gebruiker  
+##  <a name="user-sign-in"></a><a name="UseSignIn"></a>Gebruiker aanmelden  
  De `user sign in` entiteit heeft de volgende eigenschappen:  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`Email`|tekenreeks|E-mailadres. Mag niet leeg zijn en moet uniek zijn binnen de service-instantie. De maximale lengte is 254 tekens.|  
-|`Password`|tekenreeks|Wachtwoord van het gebruikersaccount.|  
-|`ReturnUrl`|tekenreeks|De URL van de pagina waarop de gebruiker op zich heeft aangemeld.|  
-|`RememberMe`|booleaans|Of u de gegevens van de huidige gebruiker wilt opslaan.|  
-|`RegistrationEnabled`|booleaans|Of registratie is ingeschakeld.|  
-|`DelegationEnabled`|booleaans|Of gedelegeerd aanmelden is ingeschakeld.|  
-|`DelegationUrl`|tekenreeks|De gedelegeerde aanmeldingsurl, indien ingeschakeld.|  
-|`SsoSignUpUrl`|tekenreeks|Het enige teken op URL voor de gebruiker, indien aanwezig.|  
-|`AuxServiceUrl`|tekenreeks|Als de huidige gebruiker een beheerder is, is dit een koppeling naar de service-instantie in de Azure-portal.|  
-|`Providers`|Verzameling van entiteiten van [aanbieders](#Provider)|De verificatieproviders voor deze gebruiker.|  
-|`UserRegistrationTerms`|tekenreeks|Voorwaarden waarmee een gebruiker moet instemmen voordat hij zich aanmeldt.|  
-|`UserRegistrationTermsEnabled`|booleaans|Of termen zijn ingeschakeld.|  
+|`Email`|tekenreeks|E-mailadres. Mag niet leeg zijn en moet uniek zijn binnen het service-exemplaar. De maximale lengte is 254 tekens.|  
+|`Password`|tekenreeks|Wacht woord voor gebruikers account.|  
+|`ReturnUrl`|tekenreeks|De URL van de pagina waarop de gebruiker op aanmelden heeft geklikt.|  
+|`RememberMe`|booleaans|Hiermee wordt aangegeven of de huidige gebruikers gegevens moeten worden opgeslagen.|  
+|`RegistrationEnabled`|booleaans|Hiermee wordt aangegeven of registratie is ingeschakeld.|  
+|`DelegationEnabled`|booleaans|Hiermee wordt aangegeven of gedelegeerde aanmelding is ingeschakeld.|  
+|`DelegationUrl`|tekenreeks|De gedelegeerde aanmeldings-URL als deze is ingeschakeld.|  
+|`SsoSignUpUrl`|tekenreeks|De URL voor eenmalige aanmelding voor de gebruiker, indien aanwezig.|  
+|`AuxServiceUrl`|tekenreeks|Als de huidige gebruiker een beheerder is, is dit een koppeling naar het service-exemplaar in het Azure Portal.|  
+|`Providers`|Verzameling van [provider](#Provider) entiteiten|De verificatie providers voor deze gebruiker.|  
+|`UserRegistrationTerms`|tekenreeks|De voor waarden waaraan een gebruiker moet instemmen voordat ze zich kunnen aanmelden.|  
+|`UserRegistrationTermsEnabled`|booleaans|Of de voor waarden zijn ingeschakeld.|  
   
-##  <a name="user-sign-up"></a><a name="UserSignUp"></a>Aanmelden door gebruiker  
+##  <a name="user-sign-up"></a><a name="UserSignUp"></a>Gebruiker registreren  
  De `user sign up` entiteit heeft de volgende eigenschappen:  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`PasswordConfirm`|booleaans|Waarde die [sign-up](api-management-page-controls.md#sign-up)wordt gebruikt door het aanmeldingsbesturingselement.|  
-|`Password`|tekenreeks|Wachtwoord van het gebruikersaccount.|  
-|`PasswordVerdictLevel`|getal|Waarde die [sign-up](api-management-page-controls.md#sign-up)wordt gebruikt door het aanmeldingsbesturingselement.|  
-|`UserRegistrationTerms`|tekenreeks|Voorwaarden waarmee een gebruiker moet instemmen voordat hij zich aanmeldt.|  
-|`UserRegistrationTermsOptions`|getal|Waarde die [sign-up](api-management-page-controls.md#sign-up)wordt gebruikt door het aanmeldingsbesturingselement.|  
-|`ConsentAccepted`|booleaans|Waarde die [sign-up](api-management-page-controls.md#sign-up)wordt gebruikt door het aanmeldingsbesturingselement.|  
-|`Email`|tekenreeks|E-mailadres. Mag niet leeg zijn en moet uniek zijn binnen de service-instantie. De maximale lengte is 254 tekens.|  
-|`FirstName`|tekenreeks|Voornaam. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
+|`PasswordConfirm`|booleaans|Waarde die wordt gebruikt door het besturings element voor [registratie](api-management-page-controls.md#sign-up)registratie.|  
+|`Password`|tekenreeks|Wacht woord voor gebruikers account.|  
+|`PasswordVerdictLevel`|getal|Waarde die wordt gebruikt door het besturings element voor [registratie](api-management-page-controls.md#sign-up)registratie.|  
+|`UserRegistrationTerms`|tekenreeks|De voor waarden waaraan een gebruiker moet instemmen voordat ze zich kunnen aanmelden.|  
+|`UserRegistrationTermsOptions`|getal|Waarde die wordt gebruikt door het besturings element voor [registratie](api-management-page-controls.md#sign-up)registratie.|  
+|`ConsentAccepted`|booleaans|Waarde die wordt gebruikt door het besturings element voor [registratie](api-management-page-controls.md#sign-up)registratie.|  
+|`Email`|tekenreeks|E-mailadres. Mag niet leeg zijn en moet uniek zijn binnen het service-exemplaar. De maximale lengte is 254 tekens.|  
+|`FirstName`|tekenreeks|Voor naam. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
 |`LastName`|tekenreeks|Achternaam. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
-|`UserData`|tekenreeks|Waarde die wordt gebruikt door [het besturingselement voor aanmelding.](api-management-page-controls.md#sign-up)|  
-|`NameIdentifier`|tekenreeks|Waarde die [sign-up](api-management-page-controls.md#sign-up)wordt gebruikt door het aanmeldingsbesturingselement.|  
-|`ProviderName`|tekenreeks|Naam van de verificatieprovider.|
+|`UserData`|tekenreeks|Waarde die wordt gebruikt door het [registratie](api-management-page-controls.md#sign-up) besturings element.|  
+|`NameIdentifier`|tekenreeks|Waarde die wordt gebruikt door het besturings element voor [registratie](api-management-page-controls.md#sign-up)registratie.|  
+|`ProviderName`|tekenreeks|Naam van verificatie provider.|
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [De API Management-ontwikkelaarsportal aanpassen met sjablonen](api-management-developer-portal-templates.md)voor meer informatie over het werken met sjablonen.
+Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](api-management-developer-portal-templates.md)voor meer informatie over het werken met sjablonen.

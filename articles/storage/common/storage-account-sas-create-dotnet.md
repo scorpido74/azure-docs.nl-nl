@@ -1,7 +1,7 @@
 ---
-title: Een account SAS maken met .NET
+title: Een account-SAS maken met .NET
 titleSuffix: Azure Storage
-description: Meer informatie over het maken van een account shared access signature (SAS) met behulp van de .NET-clientbibliotheek.
+description: Meer informatie over het maken van een account voor Shared Access Signature (SAS) met behulp van de .NET-client bibliotheek.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,23 +11,23 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 9da27cef7bafa94715a42db86fc5a5675a049eb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79137866"
 ---
-# <a name="create-an-account-sas-with-net"></a>Een account SAS maken met .NET
+# <a name="create-an-account-sas-with-net"></a>Een account-SAS maken met .NET
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-In dit artikel ziet u hoe u de opslagaccountsleutel gebruiken om een accountSAS te maken met de [Azure Storage-clientbibliotheek voor .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
+In dit artikel wordt beschreven hoe u de sleutel van het opslag account gebruikt om een account-SAS te maken met de [Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
 ## <a name="create-an-account-sas"></a>Een account-SAS maken
 
-Als u een account SAS voor een container wilt maken, belt u de methode [CloudStorageAccount.GetSharedAccessSignature.](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature)
+Als u een account-SAS voor een container wilt maken, roept u de methode [Cloud Storage account. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature) aan.
 
-In het volgende codevoorbeeld wordt een account SAS gemaakt dat geldig is voor de Blob- en Bestandsservices en geeft de clientmachtigingen machtigingen voor het lezen, schrijven en weergeven van machtigingen voor toegang tot API's op serviceniveau. Het account SAS beperkt het protocol tot HTTPS, dus het verzoek moet worden gedaan met HTTPS. Vergeet niet om plaatsaanduidingswaarden in hoekhaakjes te vervangen door uw eigen waarden:
+In het volgende code voorbeeld worden een account-SA'S gemaakt die geldig zijn voor de BLOB-en bestands Services, en worden de machtigingen lezen, schrijven en weer geven voor de client machtigingen voor toegang tot Api's op service niveau. De account-SAS beperkt het Protocol tot HTTPS, zodat de aanvraag moet worden gemaakt met HTTPS. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
 
 ```csharp
 static string GetAccountSASToken()
@@ -51,9 +51,9 @@ static string GetAccountSASToken()
 }
 ```
 
-## <a name="use-an-account-sas-from-a-client"></a>Een account SAS van een client gebruiken
+## <a name="use-an-account-sas-from-a-client"></a>Een account-SAS van een client gebruiken
 
-Als u de sas van het account wilt gebruiken om toegang te krijgen tot API's op serviceniveau voor de Blob-service, maakt u een Blob-serviceobject met behulp van het SAS- en Blob-opslageindpunt voor uw opslagaccount. Vergeet niet om plaatsaanduidingswaarden in hoekhaakjes te vervangen door uw eigen waarden:
+Als u de account-SA'S wilt gebruiken om toegang te krijgen tot serviceniveau-Api's voor de Blob service, moet u een Blob service-client object maken met behulp van de SAS en het Blob Storage-eind punt voor uw opslag account. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
 
 ```csharp
 static void UseAccountSAS(string sasToken)
@@ -97,5 +97,5 @@ static void UseAccountSAS(string sasToken)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Beperkte toegang verlenen tot Azure Storage-bronnen met behulp van gedeelde toegangshandtekeningen (SAS)](storage-sas-overview.md)
+- [Beperkte toegang verlenen tot Azure Storage-resources met behulp van Shared Access signatures (SAS)](storage-sas-overview.md)
 - [Een account-SAS maken](/rest/api/storageservices/create-account-sas)

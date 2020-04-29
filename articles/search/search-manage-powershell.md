@@ -1,7 +1,7 @@
 ---
-title: PowerShell-scripts met de Az.Search-module
+title: Power shell-scripts met de module AZ. Search
 titleSuffix: Azure Cognitive Search
-description: Maak en configureer een Azure Cognitive Search-service met PowerShell. U een service omhoog of omlaag schalen, api-sleutels voor beheerders en query's beheren en systeemgegevens opvragen.
+description: Een Azure Cognitive Search-service maken en configureren met Power shell. U kunt een service omhoog of omlaag schalen, beheer-en query-API-sleutels beheren en query's uitvoeren op systeem gegevens.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -10,43 +10,43 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 711071e08a52a0075512bc8b3ffe14707238cdfe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77209293"
 ---
-# <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Uw Azure Cognitive Search-service beheren met PowerShell
+# <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Uw Azure Cognitive Search-service beheren met Power shell
 > [!div class="op_single_selector"]
 > * [Portal](search-manage.md)
-> * [Powershell](search-manage-powershell.md)
-> * [REST-API](https://docs.microsoft.com/rest/api/searchmanagement/)
+> * [Zo](search-manage-powershell.md)
+> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-U PowerShell-cmdlets en -scripts uitvoeren op Windows, Linux of in [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) om Azure Cognitive Search te maken en te configureren. De **az.search-module** breidt [Azure PowerShell](https://docs.microsoft.com/powershell/) met volledige pariteit uit tot de [API's voor zoekbeheer](https://docs.microsoft.com/rest/api/searchmanagement) en de mogelijkheid om de volgende taken uit te voeren:
+U kunt Power shell-cmdlets en-scripts uitvoeren op Windows, Linux of in [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) om Azure Cognitive Search te maken en te configureren. De module **AZ. Search** breidt [Azure PowerShell](https://docs.microsoft.com/powershell/) uit met volledige pariteit van de [rest api's voor zoek beheer](https://docs.microsoft.com/rest/api/searchmanagement) en de mogelijkheid om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
-> * [Zoekservices in een abonnement weergeven](#list-search-services)
-> * [Servicegegevens retourneren](#get-search-service-information)
+> * [Zoek Services in een abonnement weer geven](#list-search-services)
+> * [Service-informatie retour neren](#get-search-service-information)
 > * [Een service maken of verwijderen](#create-or-delete-a-service)
-> * [API-sleutels voor beheerders regenereren](#regenerate-admin-keys)
-> * [Queryapi-toetsen maken of verwijderen](#create-or-delete-query-keys)
+> * [Beheer-API opnieuw genereren-sleutels](#regenerate-admin-keys)
+> * [Query-API-sleutels maken of verwijderen](#create-or-delete-query-keys)
 > * [Omhoog of omlaag schalen met replica's en partities](#scale-replicas-and-partitions)
 
-Af en toe worden er vragen gesteld over taken *die niet* op de bovenstaande lijst staan. Momenteel u de **az.search-module** of de API voor beheerREST niet gebruiken om een servernaam, regio of laag te wijzigen. Speciale resources worden toegewezen wanneer een service wordt gemaakt. Als zodanig vereist het wijzigen van de onderliggende hardware (locatie of knooppunttype) een nieuwe service. Op dezelfde manier zijn er geen tools of API's voor het overbrengen van inhoud, zoals een index, van de ene service naar de andere.
+Af en toe worden vragen gesteld over taken die *niet* voor komen in de bovenstaande lijst. Op dit moment kunt u niet de module **AZ. Search** of het beheer rest API gebruiken om een server naam,-regio of-laag te wijzigen. Toegewezen resources worden toegewezen wanneer een service wordt gemaakt. Voor het wijzigen van de onderliggende hardware (locatie of type knoop punt) is een nieuwe service vereist. Op dezelfde manier zijn er geen hulpprogram ma's of Api's voor het overdragen van inhoud, zoals een index, van de ene service naar de andere.
 
-Binnen een service is het maken en beheren van inhoud via [Search Service REST API](https://docs.microsoft.com/rest/api/searchservice/) of [.NET SDK.](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) Hoewel er geen speciale PowerShell-opdrachten voor inhoud zijn, u PowerShell-script schrijven dat REST- of .NET-API's aanroept om indexen te maken en te laden.
+Binnen een service is het maken en beheren van inhoud via [Search Service rest API](https://docs.microsoft.com/rest/api/searchservice/) of [.NET SDK](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search). Hoewel er geen speciale Power shell-opdrachten zijn voor inhoud, kunt u Power shell-script schrijven dat REST-of .NET-Api's aanroept om indexen te maken en te laden.
 
 <a name="check-versions-and-load"></a>
 
 ## <a name="check-versions-and-load-modules"></a>Versies controleren en modules laden
 
-De voorbeelden in dit artikel zijn interactief en vereisen verhoogde machtigingen. Azure PowerShell (de **Az-module)** moet worden geïnstalleerd. Zie [Azure PowerShell installeren](/powershell/azure/overview)voor meer informatie .
+De voor beelden in dit artikel zijn interactief en vereisen verhoogde machtigingen. Azure PowerShell (de **AZ** -module) moet zijn geïnstalleerd. Zie [Install Azure PowerShell](/powershell/azure/overview)(Engelstalig) voor meer informatie.
 
-### <a name="powershell-version-check-51-or-later"></a>PowerShell-versiecontrole (5.1 of hoger)
+### <a name="powershell-version-check-51-or-later"></a>Controle van Power shell-versie (5,1 of hoger)
 
-Lokale PowerShell moet 5.1 of hoger zijn, op elk ondersteund besturingssysteem.
+Lokale Power shell moet 5,1 of hoger zijn, op elk ondersteund besturings systeem.
 
 ```azurepowershell-interactive
 $PSVersionTable.PSVersion
@@ -54,33 +54,33 @@ $PSVersionTable.PSVersion
 
 ### <a name="load-azure-powershell"></a>Azure PowerShell laden
 
-Als u niet zeker weet of **Az** is geïnstalleerd, voert u de volgende opdracht uit als verificatiestap. 
+Als u niet zeker weet of **AZ** is geïnstalleerd, voert u de volgende opdracht uit als een verificatie stap. 
 
 ```azurepowershell-interactive
 Get-InstalledModule -Name Az
 ```
 
-Sommige systemen laden geen modules automatisch. Als er een fout optreedt bij de vorige opdracht, probeert u de module te laden en als dat niet lukt, gaat u terug naar de installatie-instructies om te zien of u een stap hebt gemist.
+Sommige systemen laden modules niet automatisch. Als er een fout optreedt bij de vorige opdracht, laadt u de module en als dat niet het geval is, gaat u terug naar de installatie-instructies om te zien of u een stap hebt gemist.
 
 ```azurepowershell-interactive
 Import-Module -Name Az
 ```
 
-### <a name="connect-to-azure-with-a-browser-sign-in-token"></a>Verbinding maken met Azure met een aanmeldingstoken voor de browser
+### <a name="connect-to-azure-with-a-browser-sign-in-token"></a>Verbinding maken met Azure met een browser aanmeldings token
 
-U uw aanmeldingsreferenties voor portals gebruiken om verbinding te maken met een abonnement in PowerShell. U ook [niet-interactief verifiëren met een serviceprincipal.](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+U kunt uw aanmeldings referenties voor uw portal gebruiken om verbinding te maken met een abonnement in Power shell. U kunt ook [niet-interactief verifiëren met een Service-Principal](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
 ```azurepowershell-interactive
 Connect-AzAccount
 ```
 
-Als u meerdere Azure-abonnementen hebt, stelt u uw Azure-abonnement in. Voer deze opdracht uit om een lijst met huidige abonnementen te bekijken.
+Als u meerdere Azure-abonnementen hebt, stelt u uw Azure-abonnement in. Voer deze opdracht uit om een lijst met uw huidige abonnementen weer te geven.
 
 ```azurepowershell-interactive
 Get-AzSubscription | sort SubscriptionName | Select SubscriptionName
 ```
 
-Voer de volgende opdracht uit om het abonnement op te geven. In het volgende voorbeeld is `ContosoSubscription`de naam van het abonnement .
+Voer de volgende opdracht uit om het abonnement op te geven. In het volgende voor beeld is `ContosoSubscription`de naam van het abonnement.
 
 ```azurepowershell-interactive
 Select-AzSubscription -SubscriptionName ContosoSubscription
@@ -88,23 +88,23 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 <a name="list-search-services"></a>
 
-## <a name="list-services-in-a-subscription"></a>Services in een abonnement aanbieden
+## <a name="list-services-in-a-subscription"></a>Services in een abonnement weer geven
 
-De volgende opdrachten zijn afkomstig van [**Az.Resources,**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources)waarbij informatie wordt teruggegeven over bestaande bronnen en services die al in uw abonnement zijn ingericht. Als u niet weet hoeveel zoekservices al zijn gemaakt, geven deze opdrachten die informatie terug, zodat u een reis naar de portal opslaan.
+De volgende opdrachten zijn afkomstig van [**AZ. resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources), die informatie over bestaande resources en services retour neren die al zijn ingericht in uw abonnement. Als u niet weet hoeveel Zoek Services al zijn gemaakt, retour neren deze opdrachten die informatie en bespaart u een reis naar de portal.
 
-De eerste opdracht retourneert alle zoekservices.
+Met de eerste opdracht worden alle zoek services geretourneerd.
 
 ```azurepowershell-interactive
 Get-AzResource -ResourceType Microsoft.Search/searchServices | ft
 ```
 
-Geef in de lijst met services informatie over een specifieke bron terug.
+Ga in de lijst met Services naar informatie over een specifieke resource.
 
 ```azurepowershell-interactive
 Get-AzResource -ResourceName <service-name>
 ```
 
-Resultaten moeten er vergelijkbaar uitzien met de volgende uitvoer.
+De resultaten moeten er ongeveer uitzien als in de volgende uitvoer.
 
 ```
 Name              : my-demo-searchapp
@@ -114,23 +114,23 @@ Location          : westus
 ResourceId        : /subscriptions/<alpha-numeric-subscription-ID>/resourceGroups/demo-westus/providers/Microsoft.Search/searchServices/my-demo-searchapp
 ```
 
-## <a name="import-azsearch"></a>Az.Search importeren
+## <a name="import-azsearch"></a>Importeren AZ. Search
 
-Opdrachten van [**Az.Search**](https://docs.microsoft.com/powershell/module/az.search/?view=azps-1.4.0#search) zijn pas beschikbaar nadat u de module hebt geladen.
+Opdrachten van [**AZ. Search**](https://docs.microsoft.com/powershell/module/az.search/?view=azps-1.4.0#search) zijn pas beschikbaar als u de module laadt.
 
 ```azurepowershell-interactive
 Install-Module -Name Az.Search
 ```
 
-### <a name="list-all-azsearch-commands"></a>Alle opdrachten voor Az.Search weergeven
+### <a name="list-all-azsearch-commands"></a>Alle opdrachten van AZ. Search weer geven
 
-Als verificatiestap retourneert u een lijst met opdrachten in de module.
+Als een verificatie stap retourneert een lijst met opdrachten die in de module zijn opgenomen.
 
 ```azurepowershell-interactive
 Get-Command -Module Az.Search
 ```
 
-Resultaten moeten er vergelijkbaar uitzien met de volgende uitvoer.
+De resultaten moeten er ongeveer uitzien als in de volgende uitvoer.
 
 ```
 CommandType     Name                                Version    Source
@@ -146,15 +146,15 @@ Cmdlet          Remove-AzSearchService              0.7.1      Az.Search
 Cmdlet          Set-AzSearchService                 0.7.1      Az.Search
 ```
 
-## <a name="get-search-service-information"></a>Informatie over de zoekservice
+## <a name="get-search-service-information"></a>Informatie over de zoek service ophalen
 
-Nadat **Az.Search** is geïmporteerd en u de resourcegroep kent die uw zoekservice bevat, voert u [Get-AzSearchService](https://docs.microsoft.com/powershell/module/az.search/get-azsearchservice?view=azps-1.4.0) uit om de servicedefinitie terug te sturen, inclusief naam, regio, laag en replica- en partitietellingen.
+Nadat **AZ. Search** is geïmporteerd en u de resource groep met uw zoek service kent, voert u [Get-AzSearchService](https://docs.microsoft.com/powershell/module/az.search/get-azsearchservice?view=azps-1.4.0) uit om de service definitie te retour neren, inclusief naam, regio, laag en aantal partities.
 
 ```azurepowershell-interactive
 Get-AzSearchService -ResourceGroupName <resource-group-name>
 ```
 
-Resultaten moeten er vergelijkbaar uitzien met de volgende uitvoer.
+De resultaten moeten er ongeveer uitzien als in de volgende uitvoer.
 
 ```
 Name              : my-demo-searchapp
@@ -170,12 +170,12 @@ ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups
 
 ## <a name="create-or-delete-a-service"></a>Een service maken of verwijderen
 
-[**New-AzSearchService**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) wordt gebruikt om [een nieuwe zoekservice](search-create-service-portal.md)te maken.
+[**New-AzSearchService**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) wordt gebruikt om [een nieuwe zoek service te maken](search-create-service-portal.md).
 
 ```azurepowershell-interactive
 New-AzSearchService -ResourceGroupName "demo-westus" -Name "my-demo-searchapp" -Sku "Standard" -Location "West US" -PartitionCount 3 -ReplicaCount 3
 ``` 
-Resultaten moeten er vergelijkbaar uitzien met de volgende uitvoer.
+De resultaten moeten er ongeveer uitzien als in de volgende uitvoer.
 
 ```
 ResourceGroupName : demo-westus
@@ -189,21 +189,21 @@ HostingMode       : Default
 Tags
 ```     
 
-## <a name="regenerate-admin-keys"></a>Beheerderssleutels regenereren
+## <a name="regenerate-admin-keys"></a>Beheer sleutels opnieuw genereren
 
-[**New-AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) wordt gebruikt om over admin [API-sleutels](search-security-api-keys.md)te rollen. Bij elke service worden twee beheerderssleutels gemaakt voor geverifieerde toegang. Sleutels zijn vereist op elk verzoek. Beide beheerderssleutels zijn functioneel gelijkwaardig en verlenen volledige schrijftoegang tot een zoekservice met de mogelijkheid om alle informatie op te halen of om een object te maken en te verwijderen. Er bestaan twee toetsen, zodat u de ene gebruiken terwijl u de andere vervangt. 
+[**New-AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) wordt gebruikt om de beheer- [API-sleutels](search-security-api-keys.md)te herstellen. Voor geverifieerde toegang worden twee beheer sleutels gemaakt met elke service. Sleutels zijn vereist voor elke aanvraag. Beide beheerders sleutels zijn functioneel gelijkwaardig, waarbij volledige schrijf toegang wordt verleend aan een zoek service met de mogelijkheid om gegevens op te halen of om een wille keurig object te maken en te verwijderen. Er bestaan twee sleutels, zodat u deze kunt gebruiken terwijl u de andere vervangt. 
 
-U slechts één voor één regenereren, opgegeven als de `primary` toets of `secondary` sleutel. Voor een ononderbroken service moet u alle clientcode bijwerken om een secundaire sleutel te gebruiken terwijl u de primaire sleutel overrolt. Vermijd het veranderen van de sleutels tijdens de vlucht.
+U kunt slechts één keer opnieuw genereren, opgegeven als de `primary` of `secondary` -sleutel. Voor een ononderbroken service moet u alle client code bijwerken om een secundaire sleutel te gebruiken terwijl u de primaire sleutel rolt. Vermijd het wijzigen van de sleutels tijdens de vlucht.
 
-Zoals u zou verwachten, zullen aanvragen met behulp van de oude sleutel mislukken als u sleutels regenereert zonder clientcode bij te werken. Het regenereren van alle nieuwe sleutels sluit u niet permanent uit uw service en u hebt nog steeds toegang tot de service via de portal. Nadat u primaire en secundaire sleutels hebt geregenereren, u de clientcode bijwerken om de nieuwe sleutels te gebruiken en worden de bewerkingen dienovereenkomstig hervat.
+Zoals u zou verwachten, zullen aanvragen die gebruikmaken van de oude sleutel, mislukken als u sleutels opnieuw genereert zonder de client code bij te werken. Door alle nieuwe sleutels te genereren, wordt uw service niet permanent vergrendeld en hebt u nog steeds toegang tot de service via de portal. Nadat u de primaire en secundaire sleutels opnieuw hebt gegenereerd, kunt u de client code bijwerken voor het gebruik van de nieuwe sleutels en bewerkingen worden hervat.
 
-Waarden voor de API-sleutels worden gegenereerd door de service. U geen aangepaste sleutel voor Azure Cognitive Search leveren om te gebruiken. Op dezelfde manier is er geen door de gebruiker gedefinieerde naam voor api-sleutels voor beheerders. Verwijzingen naar de sleutel zijn `primary` vaste `secondary`tekenreeksen, of . 
+De waarden voor de API-sleutels worden gegenereerd door de service. U kunt geen aangepaste sleutel opgeven voor Azure Cognitive Search te gebruiken. Op dezelfde manier is er geen door de gebruiker gedefinieerde naam voor beheer-API-sleutels. Verwijzingen naar de sleutel zijn vaste teken reeksen, `primary` ofwel `secondary`of. 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary
 ```
 
-Resultaten moeten er vergelijkbaar uitzien met de volgende uitvoer. Beide sleutels worden geretourneerd, ook al wijzigt u er slechts één tegelijk.
+De resultaten moeten er ongeveer uitzien als in de volgende uitvoer. Beide sleutels worden geretourneerd, zelfs als u slechts één per keer wijzigt.
 
 ```
 Primary                    Secondary
@@ -211,11 +211,11 @@ Primary                    Secondary
 <alphanumeric-guid>        <alphanumeric-guid>  
 ```
 
-## <a name="create-or-delete-query-keys"></a>Querytoetsen maken of verwijderen
+## <a name="create-or-delete-query-keys"></a>Query sleutels maken of verwijderen
 
-[**Nieuw-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) wordt gebruikt om [query-API-sleutels](search-security-api-keys.md) te maken voor alleen-lezen toegang van client-apps tot een Azure Cognitive Search-index. Querysleutels worden gebruikt om te verifiëren aan een specifieke index met het oog op het ophalen van zoekresultaten. Querysleutels verlenen alleen-lezen geen toegang tot andere items in de service, zoals een index, gegevensbron of indexer.
+[**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) wordt gebruikt voor het maken van query- [API-sleutels](search-security-api-keys.md) voor alleen-lezen toegang vanuit client-apps naar een Azure Cognitive search-index. Query sleutels worden gebruikt om te verifiëren bij een specifieke index om Zoek resultaten op te halen. Query sleutels geven geen alleen-lezen toegang tot andere items in de service, zoals een index, gegevens bron of Indexeer functie.
 
-U geen sleutel verstrekken voor Azure Cognitive Search om te gebruiken. API-sleutels worden gegenereerd door de service.
+U kunt geen sleutel opgeven voor Azure Cognitive Search te gebruiken. De API-sleutels worden gegenereerd door de service.
 
 ```azurepowershell-interactive
 New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <query-key-name> 
@@ -223,19 +223,19 @@ New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <sear
 
 ## <a name="scale-replicas-and-partitions"></a>Replica's en partities schalen
 
-[**Set-AzSearchService**](https://docs.microsoft.com/powershell/module/az.search/set-azsearchservice?view=azps-1.4.0) wordt gebruikt om [replica's en partities](search-capacity-planning.md) te verhogen of te verkleinen om de gefactureerde bronnen binnen uw service aan te passen. Het verhogen van replica's of partities draagt bij aan uw factuur, die zowel vaste als variabele kosten heeft. Als u tijdelijk extra verwerkingskracht nodig hebt, u replica's en partities verhogen om de werkbelasting te verwerken. Het controlegebied op de portalpagina Overzicht bevat tegels op querylatentie, query's per seconde en beperking, die aangeven of de huidige capaciteit toereikend is.
+[**Set-AzSearchService**](https://docs.microsoft.com/powershell/module/az.search/set-azsearchservice?view=azps-1.4.0) wordt gebruikt om [replica's en partities te verg Roten of verkleinen](search-capacity-planning.md) om factureer bare resources binnen uw service opnieuw aan te passen. Het verg Roten van replica's of partities wordt toegevoegd aan uw factuur, met zowel vaste als variabele kosten. Als u een tijdelijke behoefte hebt aan extra verwerkings kracht, kunt u replica's en partities verg Roten om de werk belasting te verwerken. Het bewakings gebied op de overzichts portal pagina bevat tegels op query latentie, query's per seconde en beperking, om aan te geven of de huidige capaciteit voldoende is.
 
-Het kan even duren voordat resourcing is toegevoegd of verwijderd. Op de achtergrond vinden aanpassingen van de capaciteit plaats, waardoor bestaande workloads kunnen worden voortgezet. Extra capaciteit wordt gebruikt voor binnenkomende aanvragen zodra deze klaar is, zonder dat extra configuratie vereist is. 
+Het kan even duren om een item toe te voegen of te verwijderen. Aanpassingen van de capaciteit worden op de achtergrond uitgevoerd, waardoor bestaande workloads kunnen worden voortgezet. Er wordt extra capaciteit gebruikt voor inkomende aanvragen zodra deze klaar zijn, zonder dat er aanvullende configuratie is vereist. 
 
-Het verwijderen van capaciteit kan storend zijn. Het stoppen van alle indexerings- en indexertaken voorafgaand aan het verminderen van de capaciteit wordt aanbevolen om gevallen aanvragen te voorkomen. Als dat niet haalbaar is, u overwegen de capaciteit stapsgewijs te verminderen, één replica en partitie tegelijk, totdat uw nieuwe doelniveaus zijn bereikt.
+Het verwijderen van capaciteit kan storend zijn. Het wordt aanbevolen om te voor komen dat alle indexerings-en indexerings taken worden gestopt voordat de capaciteit wordt verminderd. Als dat niet mogelijk is, kunt u overwegen om de capaciteit incrementeel, één replica en partitie tegelijk te verlagen, totdat de nieuwe doel niveaus zijn bereikt.
 
-Zodra u de opdracht indient, is er geen manier om het halverwege te beëindigen. U moet wachten tot de opdracht is voltooid voordat u de tellingen herziet.
+Wanneer u de opdracht hebt verzonden, is het niet mogelijk om deze halverwege te beëindigen. U moet wachten tot de opdracht is voltooid voordat u de aantallen wijzigt.
 
 ```azurepowershell-interactive
 Set-AzSearchService -ResourceGroupName <resource-group-name> -Name <search-service-name> -PartitionCount 6 -ReplicaCount 6
 ```
 
-Resultaten moeten er vergelijkbaar uitzien met de volgende uitvoer.
+De resultaten moeten er ongeveer uitzien als in de volgende uitvoer.
 
 ```
 ResourceGroupName : demo-westus
@@ -250,9 +250,9 @@ Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resource
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Een [index](search-what-is-an-index.md)maken, [een index opvragen](search-query-overview.md) met behulp van de portal, REST API's of de .NET SDK.
+Bouw een [index](search-what-is-an-index.md), [Zoek een query op een index](search-query-overview.md) met behulp van de portal, rest-API'S of de .NET SDK.
 
-* [Een Azure Cognitive Search-index maken in de Azure-portal](search-create-index-portal.md)
-* [Een indexer instellen om gegevens van andere services te laden](search-indexer-overview.md)
-* [Een Azure Cognitive Search-index opvragen met Zoekverkenner in de Azure-portal](search-explorer.md)
+* [Een Azure Cognitive Search-index maken in de Azure Portal](search-create-index-portal.md)
+* [Een Indexeer functie instellen voor het laden van gegevens uit andere services](search-indexer-overview.md)
+* [Query's uitvoeren op een Azure Cognitive Search-index met behulp van Search Explorer in de Azure Portal](search-explorer.md)
 * [Azure Cognitive Search gebruiken in .NET](search-howto-dotnet-sdk.md)

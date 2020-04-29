@@ -1,21 +1,21 @@
 ---
-title: WAAR clausule in Azure Cosmos DB
-description: Meer informatie over SQL WHERE-clausule voor Azure Cosmos DB
+title: WHERE-component in Azure Cosmos DB
+description: Meer informatie over SQL WHERE-component voor Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
 ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78898787"
 ---
-# <a name="where-clause-in-azure-cosmos-db"></a>WAAR clausule in Azure Cosmos DB
+# <a name="where-clause-in-azure-cosmos-db"></a>WHERE-component in Azure Cosmos DB
 
-De optionele WHERE-component (`WHERE <filter_condition>`) geeft voorwaarde(en) op waaraan de BRON JSON-items moeten voldoen om de query in de resultaten op te nemen. Een JSON-artikel moet de `true` gespecificeerde voorwaarden evalueren die voor het resultaat in aanmerking moeten worden genomen. De indexlaag gebruikt de WHERE-component om de kleinste subset van bronitems te bepalen die deel kunnen uitmaken van het resultaat.
+De optionele WHERE-component`WHERE <filter_condition>`() geeft voor waarde (n) aan waaraan de bron-JSON-items moeten voldoen om ze in de resultaten op te vragen. Een JSON-item moet de opgegeven voor waarden `true` evalueren om in aanmerking te komen voor het resultaat. De index laag maakt gebruik van de WHERE-component om de kleinste subset van bron items te bepalen die deel kunnen uitmaken van het resultaat.
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -29,21 +29,21 @@ WHERE <filter_condition>
 
 - `<filter_condition>`  
   
-   Hiermee geeft u de voorwaarde op waaraan moet worden voldaan voor de documenten die moeten worden geretourneerd.  
+   Hiermee geeft u de voor waarde op waaraan moet worden voldaan om de documenten te retour neren.  
   
 - `<scalar_expression>`  
   
-   Expressie die de te berekenen waarde vertegenwoordigt. Zie [Scalar-expressies](sql-query-scalar-expressions.md) voor meer informatie.  
+   Expressie die de waarde vertegenwoordigt die moet worden berekend. Zie [scalaire expressies](sql-query-scalar-expressions.md) voor meer informatie.  
   
 ## <a name="remarks"></a>Opmerkingen
   
-  Als het document kan worden geretourneerd, moet een expressie die is opgegeven als filtervoorwaarde worden geëvalueerd naar true. Alleen Booleaanse waarde `true` voldoet aan de voorwaarde, elke andere waarde: ongedefinieerd, null, false, Number, Array of Object zal niet voldoen aan de voorwaarde.
+  Om het document als resultaat te retour neren moet een expressie worden geretourneerd die is opgegeven als filter voorwaarde, waarna resulteert in waar. Alleen Booleaanse waarden `true` voldoen aan de voor waarde, een andere waarde: niet gedefinieerd, null, onwaar, getal, matrix of object voldoet niet aan de voor waarde.
 
-  Als u uw partitiesleutel `WHERE` in de component opneemt als onderdeel van een gelijkheidsfilter, wordt uw query automatisch gefilterd op alleen de relevante partities.
+  Als u de partitie sleutel in de `WHERE` -component opneemt als onderdeel van een gelijkheids filter, wordt de query automatisch gefilterd op de relevante partities.
 
 ## <a name="examples"></a>Voorbeelden
 
-In de volgende query `id` worden items `AndersenFamily`aangevraagd die een eigenschap bevatten waarvan de waarde is . Het sluit elk item uit `id` dat geen eigenschap heeft `AndersenFamily`of waarvan de waarde niet overeenkomt.
+Met de volgende query worden items opgevraagd die `id` een eigenschap bevatten waarvan `AndersenFamily`de waarde is. Hiermee wordt een item uitgesloten dat geen `id` eigenschap heeft of waarvan de waarde niet overeenkomt `AndersenFamily`.
 
 ```sql
     SELECT f.address
@@ -63,11 +63,11 @@ U ziet deze uitvoer:
     }]
 ```
 
-### <a name="scalar-expressions-in-the-where-clause"></a>Scalar uitdrukkingen in de WHERE-clausule
+### <a name="scalar-expressions-in-the-where-clause"></a>Scalaire expressies in de component WHERE
 
-Het vorige voorbeeld bevatte een eenvoudige gelijkheidsquery. De SQL API ondersteunt ook verschillende [scalaire expressies.](sql-query-scalar-expressions.md) Binaire en unaire expressies worden het meest gebruikt. Eigenschapsverwijzingen vanaf het JSON-bronobject zijn ook geldige expressies.
+Het vorige voorbeeld bevatte een eenvoudige gelijkheidsquery. De SQL-API ondersteunt ook verschillende [scalaire expressies](sql-query-scalar-expressions.md). Binaire en unaire expressies worden het meest gebruikt. Eigenschapsverwijzingen vanaf het JSON-bronobject zijn ook geldige expressies.
 
-U de volgende ondersteunde binaire operatoren gebruiken:  
+U kunt de volgende ondersteunde binaire Opera tors gebruiken:  
 
 |**Operatortype**  | **Waarden** |
 |---------|---------|
@@ -77,7 +77,7 @@ U de volgende ondersteunde binaire operatoren gebruiken:
 |Vergelijking | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
 |Tekenreeks     |  \|\| (samenvoegen) |
 
-In de volgende query's worden binaire operatoren gebruikt:
+De volgende query's gebruiken binaire Opera tors:
 
 ```sql
     SELECT *
@@ -93,7 +93,7 @@ In de volgende query's worden binaire operatoren gebruikt:
     WHERE c.grade >= 5    -- matching grades == 5
 ```
 
-U ook de unary operators +,-, ~en NOT in query's gebruiken, zoals in de volgende voorbeelden wordt weergegeven:
+U kunt ook de unaire Opera Tors +,-, ~ en niet in query's gebruiken, zoals wordt weer gegeven in de volgende voor beelden:
 
 ```sql
     SELECT *
@@ -105,10 +105,10 @@ U ook de unary operators +,-, ~en NOT in query's gebruiken, zoals in de volgende
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-U ook eigenschapsverwijzingen gebruiken in query's. Als `SELECT * FROM Families f WHERE f.isRegistered` u bijvoorbeeld het JSON-item `isRegistered` retourneert `true`dat de eigenschap bevat met een waarde die gelijk is aan . Elke andere waarde, `false` `null`zoals `Undefined` `<number>`, `<string>` `<object>`, `<array>`, , of , sluit het artikel uit van het resultaat.
+U kunt ook eigenschaps verwijzingen gebruiken in query's. `SELECT * FROM Families f WHERE f.isRegistered` Retourneert bijvoorbeeld het JSON-item met de eigenschap `isRegistered` met de waarde gelijk aan `true`. Elke andere waarde, zoals `false`, `null` `Undefined` `<number>` `<string>` `<object>`,,,,, of `<array>`, sluit het item uit van het resultaat.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Slag](sql-query-getting-started.md)
+- [Aan de slag](sql-query-getting-started.md)
 - [Sleutelwoord IN](sql-query-keywords.md#in)
-- [VAN clausule](sql-query-from.md)
+- [FROM-component](sql-query-from.md)

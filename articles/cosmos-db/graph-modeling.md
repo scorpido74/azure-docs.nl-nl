@@ -1,6 +1,6 @@
 ---
-title: Grafiekgegevensmodellering voor Azure Cosmos DB Gremlin API
-description: Meer informatie over het modelleren van een grafiekdatabase met Azure Cosmos DB Gremlin API. In dit artikel wordt beschreven wanneer u een grafiekdatabase en aanbevolen procedures moet gebruiken om entiteiten en relaties te modelleren.
+title: Graph data modellering voor Azure Cosmos DB Gremlin-API
+description: Meer informatie over het model leren van een grafiek database met behulp van Azure Cosmos DB Gremlin API. In dit artikel wordt beschreven hoe u een grafiek database en aanbevolen procedures gebruikt voor het model leren van entiteiten en relaties.
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
@@ -8,109 +8,109 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: lbosq
 ms.openlocfilehash: dc9a5616aa2bb1f7e09045b9cfe4f4d7e9c69be2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78898315"
 ---
-# <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Grafiekgegevensmodellering voor Azure Cosmos DB Gremlin API
+# <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Graph data modellering voor Azure Cosmos DB Gremlin-API
 
-Het volgende document is ontworpen om aanbevelingen voor het modelleren van grafiekgegevens te geven. Deze stap is van vitaal belang om de schaalbaarheid en prestaties van een grafiekdatabasesysteem te garanderen naarmate de gegevens evolueren. Een efficiënt datamodel is vooral belangrijk bij grootschalige grafieken.
+Het volgende document is ontworpen om aanbevelingen voor grafiek gegevens modellering te bieden. Deze stap is essentieel om ervoor te zorgen dat de schaal baarheid en prestaties van een grafiek database systeem naarmate de gegevens zich ontwikkelen. Een efficiënt gegevens model is vooral belang rijk voor grootschalige grafieken.
 
 ## <a name="requirements"></a>Vereisten
 
-Het proces dat in deze handleiding wordt beschreven, is gebaseerd op de volgende veronderstellingen:
- * De **entiteiten** in de probleemruimte worden geïdentificeerd. Deze entiteiten zijn bedoeld om voor elke aanvraag _atomair_ te worden geconsumeerd. Met andere woorden, het databasesysteem is niet ontworpen om de gegevens van één entiteit op te halen in meerdere queryaanvragen.
- * Er is inzicht in **lees- en schrijfvereisten** voor het databasesysteem. Deze vereisten zullen de optimalisaties sturen die nodig zijn voor het grafiekgegevensmodel.
- * De principes van de [Apache Tinkerpop eigenschappengrafieknorm](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) zijn goed begrepen.
+Het proces dat in deze hand leiding wordt beschreven, is gebaseerd op de volgende veronderstellingen:
+ * De **entiteiten** in de probleem ruimte worden geïdentificeerd. Deze entiteiten zijn bedoeld om voor elke aanvraag _atomisch_ te worden verbruikt. Met andere woorden, het database systeem is niet ontworpen voor het ophalen van gegevens van één entiteit in meerdere query aanvragen.
+ * Er is een uitleg over de **Lees-en schrijf vereisten** voor het database systeem. Deze vereisten leiden tot de optimalisaties die nodig zijn voor het gegevens model van de grafiek.
+ * De principes van de [Apache Tinkerpop eigenschap Graph Standard](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) zijn duidelijk.
 
-## <a name="when-do-i-need-a-graph-database"></a>Wanneer heb ik een grafiekdatabase nodig?
+## <a name="when-do-i-need-a-graph-database"></a>Wanneer heb ik een grafiek database nodig?
 
-Een grafiekdatabaseoplossing kan optimaal worden toegepast als de entiteiten en relaties in een gegevensdomein een van de volgende kenmerken hebben: 
+Een grafiek database oplossing kan optimaal worden toegepast als de entiteiten en relaties in een gegevens domein een van de volgende kenmerken hebben: 
 
-* De entiteiten zijn **sterk verbonden** door beschrijvende relaties. Het voordeel in dit scenario is het feit dat de relaties blijven bestaan in opslag.
-* Er zijn **cyclische relaties** of **zelf-verwezen entiteiten**. Dit patroon is vaak een uitdaging bij het gebruik van relationele of documentdatabases.
-* Er zijn **dynamisch evoluerende relaties** tussen entiteiten. Dit patroon is vooral van toepassing op hiërarchische of structuurgestructureerde gegevens met veel niveaus.
-* Er zijn **veel-op-veel relaties** tussen entiteiten.
-* Er zijn **schrijf- en leesvereisten voor zowel entiteiten als relaties.** 
+* De entiteiten zijn **zeer verbonden** via beschrijvende relaties. Het voor deel in dit scenario is het feit dat de relaties in de opslag worden bewaard.
+* Er zijn **cyclische relaties** of **entiteiten die naar zichzelf verwijzen**. Dit patroon is vaak een uitdaging bij het gebruik van relationele of document databases.
+* Er zijn **dynamisch veranderende relaties** tussen entiteiten. Dit patroon is vooral van toepassing op hiërarchische of gestructureerde gegevens op basis van een groot aantal niveaus.
+* Er zijn **veel-op-veel-relaties** tussen entiteiten.
+* Er zijn **Schrijf-en lees vereisten voor zowel entiteiten als relaties**. 
 
-Als aan de bovenstaande criteria is voldaan, is het waarschijnlijk dat een grafiekdatabasebenadering voordelen biedt voor **de complexiteit van query's**, schaalbaarheid **van gegevensmodellen**en **queryprestaties**.
+Als aan de bovenstaande criteria is voldaan, is het waarschijnlijk dat een grafiek database benadering voor delen biedt voor de **complexiteit van query's**, **schaal baarheid van gegevens modellen**en de **prestaties van query's**.
 
-De volgende stap is om te bepalen of de grafiek zal worden gebruikt voor analytische of transactionele doeleinden. Als de grafiek bedoeld is om te worden gebruikt voor zware berekeningen en gegevensverwerking workloads, zou het de moeite waard om de [Cosmos DB Spark connector](https://docs.microsoft.com/azure/cosmos-db/spark-connector) en het gebruik van de [GraphX bibliotheek](https://spark.apache.org/graphx/)te verkennen. 
+De volgende stap is om te bepalen of de grafiek wordt gebruikt voor analyse-of transactionele doel einden. Als de grafiek moet worden gebruikt voor zware werk belastingen voor reken kracht en gegevens verwerking, is het waard om de [Cosmos DB Spark-connector](https://docs.microsoft.com/azure/cosmos-db/spark-connector) en het gebruik van de [graphx-bibliotheek](https://spark.apache.org/graphx/)te verkennen. 
 
-## <a name="how-to-use-graph-objects"></a>Grafiekobjecten gebruiken
+## <a name="how-to-use-graph-objects"></a>Grafiek objecten gebruiken
 
-De [eigenschapsgrafiek van Apache Tinkerpop](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) definieert twee typen objecten **Vertices** en **Edges**. 
+De [Apache Tinkerpop-eigenschap Graph Standard](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) definieert twee typen objecten van **hoek punten** en **randen**. 
 
-De volgende procedures voor de eigenschappen in de grafiekobjecten zijn de volgende opties:
+Hieronder volgen de aanbevolen procedures voor de eigenschappen in de grafiek objecten:
 
 | Object | Eigenschap | Type | Opmerkingen |
 | --- | --- | --- |  --- |
-| Hoekpunt | Id | Tekenreeks | Uniek afgedwongen per partitie. Als een waarde niet wordt geleverd bij het invoegen, wordt een automatisch gegenereerde GUID opgeslagen. |
-| Hoekpunt | label | Tekenreeks | Deze eigenschap wordt gebruikt om het type entiteit te definiëren dat het hoekpunt vertegenwoordigt. Als een waarde niet wordt geleverd, wordt een standaardwaarde "hoekpunt" gebruikt. |
-| Hoekpunt | properties | Tekenreeks, Boolean, Numeriek | Een lijst met afzonderlijke eigenschappen die zijn opgeslagen als sleutelwaardeparen in elk hoekpunt. |
-| Hoekpunt | partitiesleutel | Tekenreeks, Boolean, Numeriek | Deze eigenschap bepaalt waar het hoekpunt en de uitgaande randen worden opgeslagen. Lees meer over [grafiekpartitionering](graph-partitioning.md). |
-| Edge | Id | Tekenreeks | Uniek afgedwongen per partitie. Automatisch gegenereerd standaard. Randen hebben meestal niet de noodzaak om uniek te worden opgehaald door een ID. |
-| Edge | label | Tekenreeks | Deze eigenschap wordt gebruikt om het type relatie te definiëren dat twee vertices hebben. |
-| Edge | properties | Tekenreeks, Boolean, Numeriek | Een lijst met afzonderlijke eigenschappen die zijn opgeslagen als sleutelwaardeparen in elke rand. |
+| Shad | Id | Tekenreeks | Uniek afgedwongen per partitie. Als er bij het invoegen geen waarde wordt opgegeven, wordt een automatisch gegenereerde GUID opgeslagen. |
+| Shad | label | Tekenreeks | Deze eigenschap wordt gebruikt om het type entiteit te definiëren dat door het hoek punt wordt vertegenwoordigd. Als er geen waarde wordt opgegeven, wordt er een standaard waarde ' vertex ' gebruikt. |
+| Shad | properties | Teken reeks, Booleaanse waarde, getal | Een lijst met afzonderlijke eigenschappen die zijn opgeslagen als sleutel-waardeparen in elk hoek punt. |
+| Shad | partitie sleutel | Teken reeks, Booleaanse waarde, getal | Deze eigenschap bepaalt waar het hoek punt en de uitgaande randen ervan worden opgeslagen. Meer informatie over het [partitioneren van grafieken](graph-partitioning.md). |
+| Edge | Id | Tekenreeks | Uniek afgedwongen per partitie. Standaard automatisch gegenereerd. Randen hebben doorgaans niet de nood zaak om uniek te worden opgehaald met een ID. |
+| Edge | label | Tekenreeks | Deze eigenschap wordt gebruikt om het type relatie te definiëren dat twee hoek punten hebben. |
+| Edge | properties | Teken reeks, Booleaanse waarde, getal | Een lijst met afzonderlijke eigenschappen die in elke rand worden opgeslagen als sleutel-waardeparen. |
 
 > [!NOTE]
-> Randen vereisen geen partitiesleutelwaarde, omdat de waarde ervan automatisch wordt toegewezen op basis van hun bronhoekpunt. Meer informatie in [het artikel voor het verdelen van grafieken.](graph-partitioning.md)
+> Randen hebben geen partitie sleutel waarde nodig omdat de bijbehorende waarde automatisch wordt toegewezen op basis van het bron hoekpunt. Meer informatie vindt u in het artikel over het [partitioneren van grafieken](graph-partitioning.md) .
 
-## <a name="entity-and-relationship-modeling-guidelines"></a>Richtlijnen voor entiteits- en relatiemodellering
+## <a name="entity-and-relationship-modeling-guidelines"></a>Richt lijnen voor het model leren van entiteiten en relaties
 
-Hieronder volgt een reeks richtlijnen voor de aanpak van gegevensmodellering voor een Azure Cosmos DB Gremlin API-grafiekdatabase. Deze richtlijnen gaan ervan uit dat er een bestaande definitie van een gegevensdomein en query's voor.
-
-> [!NOTE]
-> De onderstaande stappen worden gepresenteerd als aanbevelingen. Het uiteindelijke model moet worden geëvalueerd en getest voordat het wordt overwogen als productieklaar. Bovendien zijn de onderstaande aanbevelingen specifiek voor de Gremlin API-implementatie van Azure Cosmos DB. 
-
-### <a name="modeling-vertices-and-properties"></a>Modellering van vertices en eigenschappen 
-
-De eerste stap voor een grafiekgegevensmodel is om elke geïdentificeerde entiteit in kaart te brengen in een **hoekpuntobject.** Een één-op-één toewijzing van alle entiteiten om vertices moet een eerste stap en onderhevig aan verandering.
-
-Een veel voorkomende valkuil is om eigenschappen van een enkele entiteit in kaart te brengen als afzonderlijke vertices. Bekijk het onderstaande voorbeeld, waarin dezelfde entiteit op twee verschillende manieren wordt vertegenwoordigd:
-
-* **Eigenschappen op basis van Vertex**: In deze benadering gebruikt de entiteit drie afzonderlijke hoekpunten en twee randen om de eigenschappen ervan te beschrijven. Hoewel deze aanpak redundantie kan verminderen, verhoogt het de complexiteit van het model. Een toename van de complexiteit van het model kan resulteren in extra latentie, querycomplexiteit en berekeningskosten. Dit model kan ook uitdagingen opleveren bij het partitioneren.
-
-![Entiteitsmodel met vertices voor eigenschappen.](./media/graph-modeling/graph-modeling-1.png)
-
-* **Ingesloten hoekjes met eigendom:** deze benadering maakt gebruik van de lijst met sleutelwaardenom alle eigenschappen van de entiteit in een hoekpunt weer te geven. Deze aanpak zorgt voor minder modelcomplexiteit, wat zal leiden tot eenvoudigere query's en meer kostenefficiënte traversals.
-
-![Entiteitsmodel met vertices voor eigenschappen.](./media/graph-modeling/graph-modeling-2.png)
+Hier volgen een aantal richt lijnen om gegevens modellering te benaderen voor een Azure Cosmos DB Gremlin API Graph-data base. In deze richt lijnen wordt ervan uitgegaan dat er een bestaande definitie van een gegevens domein is en er query's voor worden uitgevoerd.
 
 > [!NOTE]
-> De bovenstaande voorbeelden tonen een vereenvoudigd grafiekmodel om alleen de vergelijking tussen de twee manieren weer te geven om entiteitseigenschappen te verdelen.
+> De stappen die hieronder worden beschreven, worden weer gegeven als aanbevelingen. Het uiteindelijke model moet worden geëvalueerd en getest vóór de overweging als gereed voor productie. Daarnaast zijn de onderstaande aanbevelingen specifiek voor de Gremlin-API-implementatie van Azure Cosmos DB. 
 
-Het **in gebouwde verticespatroon** voor eigendomzorgt over het algemeen voor een performante en schaalbare aanpak. De standaardbenadering van een nieuw grafiekgegevensmodel moet naar dit patroon worden aangetrokken.
+### <a name="modeling-vertices-and-properties"></a>Hoek punten en eigenschappen van modellen 
 
-Er zijn echter scenario's waarin verwijzingen naar een eigenschap voordelen kunnen bieden. Bijvoorbeeld: als de eigenschap waarnaar wordt verwezen regelmatig wordt bijgewerkt. Als u een afzonderlijk hoekpunt gebruikt om een eigenschap weer te geven die voortdurend wordt gewijzigd, wordt de hoeveelheid schrijfbewerkingen geminimaliseerd die de update nodig zou hebben.
+De eerste stap voor een grafiek gegevens model is het toewijzen van elke geïdentificeerde entiteit aan een **object Vertex**. Een een-op-een-toewijzing van alle entiteiten aan vertices moet een eerste stap zijn en kan worden gewijzigd.
 
-### <a name="relationship-modeling-with-edge-directions"></a>Relatiemodellering met randrichtingen
+Een algemene Pitfall is het toewijzen van eigenschappen van één entiteit als afzonderlijke hoek punten. Bekijk het voor beeld hieronder, waarbij dezelfde entiteit op twee verschillende manieren wordt weer gegeven:
 
-Nadat de vertices zijn gemodelleerd, kunnen de randen worden toegevoegd om de relaties tussen hen aan te duiden. Het eerste aspect dat moet worden geëvalueerd is de **richting van de relatie**. 
+* **Eigenschappen op basis van vertex**: in deze benadering gebruikt de entiteit drie afzonderlijke hoek punten en twee randen om de eigenschappen ervan te beschrijven. Hoewel deze aanpak de redundantie kan verminderen, wordt de model complexiteit verbeterd. Een toename van de model complexiteit kan leiden tot extra latentie, query complexiteit en reken kosten. Dit model kan ook uitdagingen opleveren voor partitioneren.
 
-Randobjecten hebben een standaardrichting die wordt gevolgd `out()` door `outE()` een traversal wanneer u de functie of gebruikt. Het gebruik van deze natuurlijke richting resulteert in een efficiënte werking, omdat alle vertices worden opgeslagen met hun uitgaande randen. 
+![Entiteits model met hoek punten voor eigenschappen.](./media/graph-modeling/graph-modeling-1.png)
 
-Het oversteken in de tegenovergestelde richting van `in()` een rand, met behulp van de functie, zal echter altijd resulteren in een cross-partitie query. Meer informatie over [grafiekpartitionering](graph-partitioning.md). Als er een noodzaak is om `in()` voortdurend te doorkruisen met behulp van de functie, is het raadzaam om randen toe te voegen in beide richtingen.
+* Met **Eigenschappen Inge sloten hoek punten**: deze benadering maakt gebruik van de lijst met sleutel waarden om alle eigenschappen van de entiteit binnen een hoek punt weer te geven. Deze benadering biedt een gereduceerde model complexiteit, die leidt tot eenvoudigere query's en rendabelere trans acties.
 
-U de randrichting `.to()` bepalen `.from()` door de `.addE()` of predicaten aan de Gremlin-stap te gebruiken. Of met behulp van de [bulk executor bibliotheek voor Gremlin API](bulk-executor-graph-dotnet.md).
+![Entiteits model met hoek punten voor eigenschappen.](./media/graph-modeling/graph-modeling-2.png)
 
 > [!NOTE]
-> Randobjecten hebben standaard een richting.
+> In de bovenstaande voor beelden ziet u een vereenvoudigd grafiek model waarmee alleen de vergelijking tussen de twee manieren van het delen van entiteits eigenschappen wordt weer gegeven.
 
-### <a name="relationship-labeling"></a>Relatielabeling
+Het patroon voor het **insluiten van hoek punten** biedt in het algemeen een betere en schaal bare benadering. De standaard benadering van een nieuw grafiek gegevens model moet gravitate naar dit patroon.
 
-Het gebruik van beschrijvende relatielabels kan de efficiëntie van randomzettingsbewerkingen verbeteren. Dit patroon kan op de volgende manieren worden toegepast:
-* Gebruik niet-generieke termen om een relatie te labelen.
-* Koppel het label van het bronhoekpunt aan het label van het doelpunt met de relatienaam.
+Er zijn echter scenario's waarin het verwijzen naar een eigenschap mogelijk voor delen biedt. Bijvoorbeeld: als de eigenschap waarnaar wordt verwezen regel matig wordt bijgewerkt. Het gebruik van een afzonderlijk hoek punt om een eigenschap weer te geven die voortdurend wordt gewijzigd, zou het aantal schrijf bewerkingen dat door de update zou moeten worden beperkt.
 
-![Voorbeelden van relatielabeling.](./media/graph-modeling/graph-modeling-3.png)
+### <a name="relationship-modeling-with-edge-directions"></a>Relatie modellen met Edge-instructies
 
-Hoe specifieker het etiket dat de traverser zal gebruiken om de randen te filteren, hoe beter. Deze beslissing kan ook een aanzienlijke invloed hebben op de querykosten. U de querykosten op elk gewenst moment evalueren [met de stap executionProfile](graph-execution-profile.md).
+Nadat de hoek punten zijn gemodelleerd, kunnen de randen worden toegevoegd om de relaties tussen de hoeken aan te duiden. Het eerste aspect dat moet worden geëvalueerd, is de **richting van de relatie**. 
+
+Rand objecten hebben een standaard richting, gevolgd door een passage bij het gebruik van de `out()` or `outE()` -functie. Het gebruik van deze natuurlijke richting resulteert in een efficiënte bewerking, omdat alle hoek punten worden opgeslagen met hun uitgaande randen. 
+
+Door over te gaan in de tegenovergestelde richting van een rand, met behulp van de functie, resulteert dit `in()` altijd in een query tussen partities. Meer informatie over [Graph-partitionering](graph-partitioning.md). Als de `in()` functie voortdurend moet worden door lopen, is het raadzaam om in beide richtingen randen toe te voegen.
+
+U kunt de richting van de rand bepalen door `.to()` de `.from()` -of-predikaten `.addE()` te gebruiken voor de Gremlin-stap. Of gebruik de bulk-uitvoerder [bibliotheek voor de Gremlin-API](bulk-executor-graph-dotnet.md).
+
+> [!NOTE]
+> Rand objecten hebben standaard een richting.
+
+### <a name="relationship-labeling"></a>Relatie labelen
+
+Het gebruik van beschrijvende relatielabels kan de efficiëntie van Edge-resolutie bewerkingen verbeteren. Dit patroon kan op de volgende manieren worden toegepast:
+* Gebruik niet-algemene voor waarden om een relatie te labelen.
+* Koppel het label van het bron hoekpunt aan het label van het doel hoekpunt met de naam van de relatie.
+
+![Voor beelden van relatie labelen.](./media/graph-modeling/graph-modeling-3.png)
+
+Hoe meer specifiek het label wordt gebruikt voor het filteren van de randen, hoe beter. Deze beslissing kan ook een grote invloed hebben op de query kosten. U kunt de query kosten op elk gewenst moment evalueren [met behulp van de executionProfile-stap](graph-execution-profile.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen: 
-* Bekijk de lijst met ondersteunde [Gremlin-stappen.](gremlin-support.md)
-* Meer informatie over [het partitioneren van grafiekgegevens](graph-partitioning.md) om met grootschalige grafieken om te gaan.
-* Evalueer uw Gremlin-query's met de [stap Uitvoeringsprofiel.](graph-execution-profile.md)
+* Bekijk de lijst met ondersteunde [Gremlin-stappen](gremlin-support.md).
+* Meer informatie over het [partitioneren van Graph-data bases](graph-partitioning.md) om te omgaan met grootschalige grafieken.
+* Evalueer uw Gremlin-query's met behulp [van de stap uitvoerings profiel](graph-execution-profile.md).
