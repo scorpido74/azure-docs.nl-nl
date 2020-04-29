@@ -8,16 +8,16 @@ ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b8821f3bb3d48786697cbc4137baf530856774fd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78274009"
 ---
 # <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(AFGESCHAFT) Een Kubernetes-cluster implementeren in Azure Container Service
 
 > [!TIP]
-> Zie [Zelfstudie: Een AKS-cluster (Azure Kubernetes Service) implementeren](../../aks/tutorial-kubernetes-deploy-cluster.md)voor de bijgewerkte versie die deze zelfstudie gebruikt voor Azure Kubernetes Service.
+> Voor de bijgewerkte versie van deze zelf studie die gebruikmaakt van de Azure Kubernetes-service, raadpleegt u [zelf studie: een Azure Kubernetes service (AKS)-cluster implementeren](../../aks/tutorial-kubernetes-deploy-cluster.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -38,7 +38,7 @@ In de vorige zelfstudies is een containerinstallatiekopie gemaakt en geüpload n
 
 Maak een Kubernetes-cluster in Azure Container Service met de opdracht [az acs create](/cli/azure/acs#az-acs-create). 
 
-In het volgende voorbeeld wordt een cluster genaamd `myK8sCluster` gemaakt in de resourcegroep genaamd `myResourceGroup`. Deze resourcegroep is gemaakt in de [vorige zelfstudie](./container-service-tutorial-kubernetes-prepare-acr.md).
+In het volgende voorbeeld wordt een cluster genaamd `myK8sCluster` gemaakt in de resourcegroep genaamd `myResourceGroup`. Deze resource groep is gemaakt in de [vorige zelf studie](./container-service-tutorial-kubernetes-prepare-acr.md).
 
 ```azurecli-interactive
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 

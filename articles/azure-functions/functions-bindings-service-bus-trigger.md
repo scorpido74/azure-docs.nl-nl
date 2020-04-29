@@ -1,29 +1,29 @@
 ---
-title: Azure Service Bus-bindingen voor Azure-functies
-description: Leer een Azure-functie uit te voeren wanneer Azure Service Bus-berichten worden gemaakt.
+title: Azure Service Bus bindingen voor Azure Functions
+description: Meer informatie over het uitvoeren van een Azure-functie wanneer Azure Service Bus berichten worden gemaakt.
 author: craigshoemaker
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.openlocfilehash: 1ead7fcd9d474369e3a62e372a971d88d26f4e9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78273570"
 ---
-# <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Service Bus-trigger voor Azure-functies
+# <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Service Bus trigger voor Azure Functions
 
-Gebruik de trigger servicebus om te reageren op berichten vanuit een wachtrij of onderwerp van servicebus.
+Gebruik de Service Bus-trigger om te reageren op berichten van een Service Bus wachtrij of onderwerp.
 
-Zie het [overzicht](functions-bindings-service-bus-output.md)voor informatie over de installatie en configuratiedetails.
+Zie het [overzicht](functions-bindings-service-bus-output.md)voor meer informatie over de installatie-en configuratie details.
 
 ## <a name="example"></a>Voorbeeld
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-In het volgende voorbeeld wordt een [C#-functie](functions-dotnet-class-library.md) weergegeven die [metagegevens van berichten](#message-metadata) leest en een wachtrijbericht van servicebus registreert:
+In het volgende voor beeld ziet u een [C#-functie](functions-dotnet-class-library.md) die [meta gegevens](#message-metadata) van een bericht leest en een service bus wachtrij bericht registreert:
 
 ```cs
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -42,11 +42,11 @@ public static void Run(
 }
 ```
 
-# <a name="c-script"></a>[C# Script](#tab/csharp-script)
+# <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-In het volgende voorbeeld ziet u een triggerbinding servicebus in een *function.json-bestand* en een [C#-scriptfunctie](functions-reference-csharp.md) die de binding gebruikt. De functie leest [metagegevens van berichten](#message-metadata) en registreert een wachtrijbericht servicebus.
+In het volgende voor beeld ziet u een binding van Service Bus trigger in een *Function. json* -bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. Met de functie worden [meta gegevens van berichten](#message-metadata) gelezen en wordt een service bus wachtrij bericht geregistreerd.
 
-Hier zijn de bindende gegevens in het *function.json-bestand:*
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json
 {
@@ -63,7 +63,7 @@ Hier zijn de bindende gegevens in het *function.json-bestand:*
 }
 ```
 
-Hier is de C# scriptcode:
+Dit is de C#-script code:
 
 ```cs
 using System;
@@ -84,9 +84,9 @@ public static void Run(string myQueueItem,
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
-In het volgende voorbeeld ziet u een triggerbinding van ServiceBus in een *function.json-bestand* en een [JavaScript-functie](functions-reference-node.md) die de binding gebruikt. De functie leest [metagegevens van berichten](#message-metadata) en registreert een wachtrijbericht servicebus. 
+In het volgende voor beeld ziet u een Service Bus trigger binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. Met de functie worden [meta gegevens van berichten](#message-metadata) gelezen en wordt een service bus wachtrij bericht geregistreerd. 
 
-Hier zijn de bindende gegevens in het *function.json-bestand:*
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json
 {
@@ -103,7 +103,7 @@ Hier zijn de bindende gegevens in het *function.json-bestand:*
 }
 ```
 
-Hier is de JavaScript-scriptcode:
+Hier volgt de Java script-script code:
 
 ```javascript
 module.exports = function(context, myQueueItem) {
@@ -117,9 +117,9 @@ module.exports = function(context, myQueueItem) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-In het volgende voorbeeld wordt uitgelegd hoe u een wachtrijbericht voor servicebus lezen via een trigger.
+In het volgende voor beeld ziet u hoe u een Service Bus wachtrij bericht kunt lezen via een trigger.
 
-Een servicebusbinding wordt gedefinieerd in *function.json* `serviceBusTrigger`waar *type* is ingesteld op .
+Een Service Bus binding is gedefinieerd in *Function. json* waarbij *type* is ingesteld op `serviceBusTrigger`.
 
 ```json
 {
@@ -136,7 +136,7 @@ Een servicebusbinding wordt gedefinieerd in *function.json* `serviceBusTrigger`w
 }
 ```
 
-De code * _ \_in init_\_.py* declareert een parameter als `func.ServiceBusMessage`, waarmee u het wachtrijbericht in uw functie lezen.
+De code in * _ \_init_\_. py* declareert een para meter `func.ServiceBusMessage`zoals, waarmee u het wachtrij bericht in uw functie kunt lezen.
 
 ```python
 import azure.functions as func
@@ -168,7 +168,7 @@ def main(msg: func.ServiceBusMessage):
 
 # <a name="java"></a>[Java](#tab/java)
 
-De volgende Java-functie gebruikt de `@ServiceBusQueueTrigger` annotatie van de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime) om de configuratie voor een wachtrijtrigger voor servicebus te beschrijven. De functie grijpt het bericht dat in de wachtrij wordt geplaatst en voegt het toe aan de logboeken.
+De volgende Java-functie maakt `@ServiceBusQueueTrigger` gebruik van de aantekening van de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime) om de configuratie voor een service bus wachtrij trigger te beschrijven. De functie trekt het bericht dat in de wachtrij is geplaatst en voegt het toe aan de logboeken.
 
 ```java
 @FunctionName("sbprocessor")
@@ -182,7 +182,7 @@ De volgende Java-functie gebruikt de `@ServiceBusQueueTrigger` annotatie van de 
  }
 ```
 
-Java-functies kunnen ook worden geactiveerd wanneer een bericht wordt toegevoegd aan een servicebusonderwerp. In het volgende `@ServiceBusTopicTrigger` voorbeeld wordt de annotatie gebruikt om de triggerconfiguratie te beschrijven.
+Java-functies kunnen ook worden geactiveerd wanneer een bericht wordt toegevoegd aan een Service Bus onderwerp. In het volgende voor beeld `@ServiceBusTopicTrigger` wordt de aantekening gebruikt om de trigger configuratie te beschrijven.
 
 ```java
 @FunctionName("sbtopicprocessor")
@@ -201,17 +201,17 @@ Java-functies kunnen ook worden geactiveerd wanneer een bericht wordt toegevoegd
 
 ---
 
-## <a name="attributes-and-annotations"></a>Kenmerken en annotaties
+## <a name="attributes-and-annotations"></a>Kenmerken en aantekeningen
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-Gebruik in [klassebibliotheken van C#](functions-dotnet-class-library.md)de volgende kenmerken om een ServiceBus-trigger te configureren:
+Gebruik in [C# class libraries](functions-dotnet-class-library.md)de volgende kenmerken om een service bus trigger te configureren:
 
-* [ServiceBusTriggerAttribuut](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusTriggerAttribute.cs)
+* [ServiceBusTriggerAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusTriggerAttribute.cs)
 
-  De constructor van het kenmerk neemt de naam van de wachtrij of het onderwerp en abonnement. In Versie 1.x van Azure Functions u ook de toegangsrechten van de verbinding opgeven. Als u geen toegangsrechten opgeeft, `Manage`is de standaardinstelling . Zie de sectie [Trigger - configuratie](#configuration) voor meer informatie.
+  De constructor van het kenmerk neemt de naam van de wachtrij of het onderwerp en het abonnement. In Azure Functions versie 1. x kunt u ook de toegangs rechten voor de verbinding opgeven. Als u geen toegangs rechten opgeeft, is `Manage`de standaard waarde. Zie de sectie [trigger-configuratie](#configuration) voor meer informatie.
 
-  Hier is een voorbeeld dat het kenmerk toont dat wordt gebruikt met een tekenreeksparameter:
+  Hier volgt een voor beeld waarin het kenmerk wordt weer gegeven met een teken reeks parameter:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -222,7 +222,7 @@ Gebruik in [klassebibliotheken van C#](functions-dotnet-class-library.md)de volg
   }
   ```
 
-  U `Connection` instellen dat de eigenschap de naam opgeeft van een app-instelling die de verbindingstekenreeks ServiceBus bevat, zoals in het volgende voorbeeld wordt weergegeven:
+  U kunt de `Connection` eigenschap instellen om de naam op te geven van een app-instelling die het service bus connection string bevat dat moet worden gebruikt, zoals wordt weer gegeven in het volgende voor beeld:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -234,11 +234,11 @@ Gebruik in [klassebibliotheken van C#](functions-dotnet-class-library.md)de volg
   }
   ```
 
-  Zie Trigger - [voorbeeld](#example)voor een volledig voorbeeld .
+  Zie voor een volledig voor beeld [trigger-voor beeld](#example).
 
-* [ServicebusAccountAttribuut](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAccountAttribute.cs)
+* [ServiceBusAccountAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAccountAttribute.cs)
 
-  Biedt een andere manier om het te gebruiken Service Bus-account op te geven. De constructeur neemt de naam aan van een app-instelling die een servicebusverbindingstekenreeks bevat. Het kenmerk kan worden toegepast op parameter-, methode- of klassenniveau. In het volgende voorbeeld ziet u het niveau van de klasse en het methodeniveau:
+  Biedt een andere manier om het Service Bus-account op te geven dat moet worden gebruikt. De constructor krijgt de naam van een app-instelling die een Service Bus connection string bevat. Het kenmerk kan worden toegepast op de para meter, methode of class-niveau. In het volgende voor beeld wordt het niveau klasse en de methode weer gegeven:
 
   ```csharp
   [ServiceBusAccount("ClassLevelServiceBusAppSetting")]
@@ -254,124 +254,124 @@ Gebruik in [klassebibliotheken van C#](functions-dotnet-class-library.md)de volg
   }
   ```
 
-Het te gebruiken Service Bus-account wordt in de volgende volgorde bepaald:
+Het Service Bus account dat moet worden gebruikt, wordt in de volgende volg orde bepaald:
 
-* De `ServiceBusTrigger` eigenschap `Connection` van het attribuut.
-* Het `ServiceBusAccount` kenmerk dat is toegepast `ServiceBusTrigger` op dezelfde parameter als het kenmerk.
-* Het `ServiceBusAccount` kenmerk dat op de functie wordt toegepast.
-* Het `ServiceBusAccount` kenmerk dat op de klasse is toegepast.
-* De app-instelling AzureWebJobsServiceBus.
+* De `ServiceBusTrigger` eigenschap van `Connection` het kenmerk.
+* Het `ServiceBusAccount` kenmerk dat wordt toegepast op dezelfde para meter `ServiceBusTrigger` als het kenmerk.
+* Het `ServiceBusAccount` kenmerk dat wordt toegepast op de functie.
+* Het `ServiceBusAccount` kenmerk dat wordt toegepast op de klasse.
+* De instelling van de app ' AzureWebJobsServiceBus '.
 
-# <a name="c-script"></a>[C# Script](#tab/csharp-script)
+# <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-Kenmerken worden niet ondersteund door C# Script.
+Kenmerken worden niet ondersteund door een C#-script.
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Kenmerken worden niet ondersteund door JavaScript.
+Kenmerken worden niet ondersteund door Java script.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Kenmerken worden niet ondersteund door Python.
+Kenmerken worden niet ondersteund door python.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Met `ServiceBusQueueTrigger` de annotatie u een functie maken die wordt uitgevoerd wanneer een wachtrijbericht voor servicebus wordt gemaakt. Beschikbare configuratieopties zijn de naam van de wachtrij en de naam van de verbindingstekenreeks.
+Met `ServiceBusQueueTrigger` de aantekening kunt u een functie maken die wordt uitgevoerd wanneer een service bus wachtrij bericht wordt gemaakt. Beschik bare configuratie opties zijn wachtrij naam en connection string naam.
 
-Met `ServiceBusTopicTrigger` de annotatie u een onderwerp en abonnement aanwijzen om te targeten welke gegevens de functie activeert.
+Met `ServiceBusTopicTrigger` de aantekening kunt u een onderwerp en een abonnement aanwijzen om te bepalen welke gegevens de functie activeren.
 
-Zie het [triggervoorbeeld](#example) voor meer details.
+Zie het [voor beeld](#example) van de trigger voor meer details.
 
 ---
 
 ## <a name="configuration"></a>Configuratie
 
-In de volgende tabel worden de bindende configuratie-eigenschappen uitgelegd `ServiceBusTrigger` die u instelt in het *function.json-bestand* en het kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het `ServiceBusTrigger` -kenmerk.
 
-|functie.json, eigenschap | Eigenschap Kenmerkeigenschap |Beschrijving|
+|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**Type** | N.v.t. | Moet worden ingesteld op "serviceBusTrigger". Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure-portal.|
-|**direction** | N.v.t. | Moet worden ingesteld op "in". Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure-portal. |
-|**Naam** | N.v.t. | De naam van de variabele die het wachtrij- of onderwerpbericht in functiecode vertegenwoordigt. |
-|**queueName**|**QueueName**|Naam van de wachtrij om te controleren.  Stel alleen in als u een wachtrij controleert, niet voor een onderwerp.
-|**topicNaam**|**TopicName**|Naam van het onderwerp te controleren. Stel alleen in als u een onderwerp controleert, niet als wachtrij.|
-|**abonnementNaam**|**SubscriptionName**|Naam van het te controleren abonnement. Stel alleen in als u een onderwerp controleert, niet als wachtrij.|
-|**verbinding**|**Verbinding**|De naam van een app-instelling die de verbindingstekenreeks ServiceBus bevat om te gebruiken voor deze binding. Als de naam van de app-instelling begint met 'AzureWebJobs', u alleen de rest van de naam opgeven. Als u bijvoorbeeld `connection` instelt op 'MyServiceBus', wordt in de runtime Functies gezocht naar een app-instelling met de naam 'AzureWebJobsMyServiceBus'. Als u `connection` leeg blijft, gebruikt de runtime Van Functies de standaardverbindingstekenreeks servicebus in de app-instelling met de naam 'AzureWebJobsServiceBus'.<br><br>Als u een verbindingstekenreeks wilt verkrijgen, voert u de stappen uit die worden weergegeven bij [De beheerreferenties opvragen opvragen.](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string) De verbindingstekenreeks moet zijn voor een naamruimte van servicebus, niet beperkt tot een specifieke wachtrij of onderwerp. |
-|**accessRights accessRights accessRights accessRights**|**Toegang**|Toegangsrechten voor de verbindingstekenreeks. Beschikbare waarden `manage` `listen`zijn en . De standaardinstelling is `manage`, `connection` wat aangeeft dat de machtiging **Beheren** is. Als u een verbindingstekenreeks gebruikt **Manage** die geen `accessRights` machtiging beheren heeft, stelt u in op 'luisteren'. Anders kan de runtime van functies niet worden uitgevoerd om bewerkingen uit te voeren waarvoor beheerrechten vereist zijn. In Azure Functions versie 2.x en hoger is deze eigenschap niet beschikbaar omdat de nieuwste versie van de Service Bus SDK geen beheerbewerkingen ondersteunt.|
-|**isSessionsEnabled**|**IsSessionsEnabled**|`true`als u verbinding maakt met een [sessiebewuste](../service-bus-messaging/message-sessions.md) wachtrij of abonnement. `false`anders, dat is de standaardwaarde.|
+|**voert** | N.v.t. | Moet worden ingesteld op ' serviceBusTrigger '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
+|**direction** | N.v.t. | Moet worden ingesteld op in. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
+|**naam** | N.v.t. | De naam van de variabele die de wachtrij of het onderwerp van het bericht in de functie code vertegenwoordigt. |
+|**queueName**|**QueueName**|De naam van de wachtrij die moet worden bewaakt.  Stel deze waarde alleen in als u een wachtrij bewaken, niet voor een onderwerp.
+|**onderwerpnaam**|**Onderwerpnaam**|De naam van het te bewaken onderwerp. Stel deze waarde alleen in als u een onderwerp bewaken, niet voor een wachtrij.|
+|**subscriptionName**|**SubscriptionName**|De naam van het abonnement dat moet worden bewaakt. Stel deze waarde alleen in als u een onderwerp bewaken, niet voor een wachtrij.|
+|**verbinding**|**Combi**|De naam van een app-instelling die de Service Bus connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met "AzureWebJobs", kunt u alleen de rest van de naam opgeven. Als u bijvoorbeeld instelt `connection` op ' MyServiceBus ', zoekt de functie runtime naar een app-instelling met de naam ' AzureWebJobsMyServiceBus '. Als u leeg `connection` laat, gebruikt de functions runtime de standaard service bus connection string in de app-instelling met de naam ' AzureWebJobsServiceBus '.<br><br>Volg de stappen die worden weer gegeven in [de beheer referenties ophalen](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)om een Connection String te verkrijgen. De connection string moet voor een Service Bus naam ruimte zijn, niet beperkt tot een specifieke wachtrij of een specifiek onderwerp. |
+|**accessRights**|**Toegang**|Toegangs rechten voor de connection string. Beschik bare `manage` waarden `listen`zijn en. De standaard waarde `manage`is, waarmee wordt aangegeven `connection` dat de de machtiging **beheren** heeft. Als u een connection string gebruikt dat niet de machtiging **beheren** heeft, stelt `accessRights` u in op ' Luis teren '. Anders kan het uitvoeren van de functions-runtime geen bewerkingen uitvoeren waarvoor het beheer van rechten nodig is. In Azure Functions versie 2. x en hoger is deze eigenschap niet beschikbaar omdat de meest recente versie van de Service Bus SDK geen ondersteuning biedt voor het beheren van bewerkingen.|
+|**isSessionsEnabled**|**IsSessionsEnabled**|`true`Als u verbinding maakt met een [sessie bewuste](../service-bus-messaging/message-sessions.md) wachtrij of een abonnement. `false`anders is dit de standaard waarde.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Gebruik
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-De volgende parametertypen zijn beschikbaar voor de wachtrij of het onderwerpbericht:
+De volgende parameter typen zijn beschikbaar voor het bericht in de wachtrij of het onderwerp:
 
-* `string`- Als het bericht tekst is.
-* `byte[]`- Handig voor binaire gegevens.
-* Een aangepast type - Als het bericht JSON bevat, probeert Azure Functions de JSON-gegevens te deserialiseren.
-* `BrokeredMessage`- Geeft u het gedeserialiseerde bericht met de methode [BrokeredMessage.GetBody\<T>().](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)
+* `string`-Als het bericht tekst is.
+* `byte[]`-Nuttig voor binaire gegevens.
+* Een aangepast type: als het bericht JSON bevat, probeert Azure Functions de JSON-gegevens te deserialiseren.
+* `BrokeredMessage`-Geeft u het gegedeserialiseerde bericht met de methode [BrokeredMessage.\<GetBody T> ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
 
-Deze parametertypen zijn voor Azure Functions versie 1.x; voor 2.x en [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) hoger, `BrokeredMessage`gebruik in plaats van .
+Deze parameter typen zijn voor Azure Functions versie 1. x; voor 2. x en hoger gebruikt u [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) in plaats `BrokeredMessage`van.
 
-# <a name="c-script"></a>[C# Script](#tab/csharp-script)
+# <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-De volgende parametertypen zijn beschikbaar voor de wachtrij of het onderwerpbericht:
+De volgende parameter typen zijn beschikbaar voor het bericht in de wachtrij of het onderwerp:
 
-* `string`- Als het bericht tekst is.
-* `byte[]`- Handig voor binaire gegevens.
-* Een aangepast type - Als het bericht JSON bevat, probeert Azure Functions de JSON-gegevens te deserialiseren.
-* `BrokeredMessage`- Geeft u het gedeserialiseerde bericht met de methode [BrokeredMessage.GetBody\<T>().](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)
+* `string`-Als het bericht tekst is.
+* `byte[]`-Nuttig voor binaire gegevens.
+* Een aangepast type: als het bericht JSON bevat, probeert Azure Functions de JSON-gegevens te deserialiseren.
+* `BrokeredMessage`-Geeft u het gegedeserialiseerde bericht met de methode [BrokeredMessage.\<GetBody T> ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
 
-Deze parameters zijn voor Azure Functions versie 1.x; voor 2.x en [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) hoger, `BrokeredMessage`gebruik in plaats van .
+Deze para meters zijn voor Azure Functions versie 1. x; voor 2. x en hoger gebruikt u [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) in plaats `BrokeredMessage`van.
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Toegang tot de wachtrij `context.bindings.<name from function.json>`of onderwerp bericht met behulp van . Het servicebusbericht wordt doorgegeven aan de functie als een tekenreeks of JSON-object.
+Toegang tot de wachtrij of het onderwerp van `context.bindings.<name from function.json>`het bericht met behulp van. Het Service Bus bericht wordt door gegeven aan de functie als een teken reeks of een JSON-object.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Het wachtrijbericht is beschikbaar voor de functie `func.ServiceBusMessage`via een parameter die is getypt als . Het servicebusbericht wordt doorgegeven aan de functie als een tekenreeks of JSON-object.
+Het wachtrij bericht is beschikbaar voor de functie via een para meter getypeerd `func.ServiceBusMessage`als. Het Service Bus bericht wordt door gegeven aan de functie als een teken reeks of een JSON-object.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Het binnenkomende Service Bus-bericht `ServiceBusQueueMessage` `ServiceBusTopicMessage` is beschikbaar via een of parameter.
+Het binnenkomende Service Bus-bericht is beschikbaar via `ServiceBusQueueMessage` een `ServiceBusTopicMessage` of-para meter.
 
-[Zie het voorbeeld voor meer informatie](#example).
+[Zie het voor beeld voor meer informatie](#example).
 
 ---
 
-## <a name="poison-messages"></a>Gifberichten
+## <a name="poison-messages"></a>Verontreinigde berichten
 
-De verwerking van gifberichten kan niet worden beheerd of geconfigureerd in Azure-functies. Service Bus behandelt giftige berichten zelf.
+De verwerking van verontreinigde berichten kan niet worden beheerd of geconfigureerd in Azure Functions. Service Bus verwerkt verontreinigde berichten zelf.
 
 ## <a name="peeklock-behavior"></a>PeekLock-gedrag
 
-De runtime functies ontvangt een bericht in [de PeekLock-modus](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). Het `Complete` roept het bericht aan als de `Abandon` functie succesvol is voltooid of aanroept als de functie mislukt. Als de functie langer `PeekLock` duurt dan de time-out, wordt het slot automatisch verlengd zolang de functie wordt uitgevoerd. 
+De functions-runtime ontvangt een bericht in de [modus PeekLock](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). Het bericht `Complete` wordt aangeroepen als de functie is voltooid, of aanroepen `Abandon` als de functie mislukt. Als de functie langer dan de `PeekLock` time-out wordt uitgevoerd, wordt de vergren deling automatisch vernieuwd zolang de functie wordt uitgevoerd. 
 
-Het `maxAutoRenewDuration` is configureerbaar in *host.json*, die kaarten aan [OnMessageOptions.MaxAutoRenewDuration](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet). Het maximaal toegestane aantal voor deze instelling is 5 minuten volgens de documentatie van de ServiceBus, terwijl u de tijdslimiet voor functies verhogen van de standaardinstelling van 5 minuten naar 10 minuten. Voor servicebusfuncties zou u dat dan niet willen doen, omdat u de verlengingslimiet voor servicebus overschrijdt.
+De `maxAutoRenewDuration` kan worden geconfigureerd in *host. json*, dat wordt toegewezen aan [OnMessageOptions. MaxAutoRenewDuration](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet). Het maximum aantal dat is toegestaan voor deze instelling is 5 minuten volgens de Service Bus-documentatie, terwijl u de tijds limiet van functies kunt verhogen van de standaard waarde van 5 minuten tot 10 minuten. Voor Service Bus functies wilt u dat niet doen, omdat u de Service Bus vernieuwings limiet overschrijdt.
 
-## <a name="message-metadata"></a>Metagegevens van berichten
+## <a name="message-metadata"></a>Meta gegevens van bericht
 
-De trigger servicebus biedt verschillende [metagegevenseigenschappen.](./functions-bindings-expressions-patterns.md#trigger-metadata) Deze eigenschappen kunnen worden gebruikt als onderdeel van bindende expressies in andere bindingen of als parameters in uw code. Deze eigenschappen zijn lid van de klasse [BrokeredMessage.](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)
+De trigger Service Bus biedt verschillende [Eigenschappen van meta gegevens](./functions-bindings-expressions-patterns.md#trigger-metadata). Deze eigenschappen kunnen worden gebruikt als onderdeel van binding expressies in andere bindingen of als para meters in uw code. Deze eigenschappen zijn leden van de klasse [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) .
 
 |Eigenschap|Type|Beschrijving|
 |--------|----|-----------|
 |`DeliveryCount`|`Int32`|Het aantal leveringen.|
-|`DeadLetterSource`|`string`|De dode letter bron.|
-|`ExpiresAtUtc`|`DateTime`|De vervaldatum in UTC.|
-|`EnqueuedTimeUtc`|`DateTime`|De in de wachtrij tijd in UTC.|
+|`DeadLetterSource`|`string`|De bron voor de onbestelbare letter.|
+|`ExpiresAtUtc`|`DateTime`|De verloop tijd in UTC.|
+|`EnqueuedTimeUtc`|`DateTime`|De in wachtrij geplaatste tijd in UTC.|
 |`MessageId`|`string`|Een door de gebruiker gedefinieerde waarde die Service Bus kan gebruiken om dubbele berichten te identificeren, indien ingeschakeld.|
-|`ContentType`|`string`|Een inhoudstype-id die door de afzender en ontvanger wordt gebruikt voor toepassingsspecifieke logica.|
-|`ReplyTo`|`string`|Het antwoord op het wachtrijadres.|
-|`SequenceNumber`|`Int64`|Het unieke nummer dat is toegewezen aan een bericht van de ServiceBus.|
-|`To`|`string`|Het verzenden naar adres.|
-|`Label`|`string`|Het toepassingsspecifieke label.|
+|`ContentType`|`string`|Een inhouds type-id die wordt gebruikt door de afzender en ontvanger voor toepassingsspecifieke logica.|
+|`ReplyTo`|`string`|Het adres van de wachtrij voor beantwoorden.|
+|`SequenceNumber`|`Int64`|Het unieke nummer dat is toegewezen aan een bericht door de Service Bus.|
+|`To`|`string`|Het adres voor verzenden naar.|
+|`Label`|`string`|Het toepassingsspecifiek label.|
 |`CorrelationId`|`string`|De correlatie-ID.|
 
-Zie [codevoorbeelden](#example) die deze eigenschappen eerder in dit artikel gebruiken.
+Zie [code voorbeelden](#example) die gebruikmaken van deze eigenschappen eerder in dit artikel.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Service Bus-berichten verzenden vanuit Azure-functies (uitvoerbinding)](./functions-bindings-service-bus-output.md)
+- [Azure Service Bus berichten verzenden vanuit Azure Functions (uitvoer binding)](./functions-bindings-service-bus-output.md)

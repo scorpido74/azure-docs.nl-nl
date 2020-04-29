@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: e65ca30e4f15b6f69f39160c67813047c40ce8ee
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78274133"
 ---
 # <a name="deprecated-update-an-application-in-kubernetes"></a>(VEROUDERD) Een toepassing bijwerken in Kubernetes
 
 > [!TIP]
-> Zie [Zelfstudie: Een toepassing bijwerken in Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-app-update.md)voor de bijgewerkte versie die deze zelfstudie gebruikt voor Azure Kubernetes Service.
+> Voor de bijgewerkte versie van deze zelf studie die gebruikmaakt van de Azure Kubernetes-service, raadpleegt u [zelf studie: een toepassing bijwerken in azure Kubernetes service (AKS)](../../aks/tutorial-kubernetes-app-update.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -81,7 +81,7 @@ Blader naar `http://localhost:8080` om de bijgewerkte app weer te geven.
 
 Tag de `azure-vote-front`-installatiekopie met de aanmeldingserver van het containerregister. 
 
-Download de naam van de loginserver met de opdracht [az acr list.](/cli/azure/acr#az-acr-list)
+Haal de naam van de aanmeldings server op met de opdracht [AZ ACR List](/cli/azure/acr#az-acr-list) .
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table

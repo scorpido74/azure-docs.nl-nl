@@ -1,6 +1,6 @@
 ---
-title: ARRAY_CONCAT in Azure Cosmos DB-querytaal
-description: Meer informatie over hoe de array concat SQL-systeemfunctie in Azure Cosmos DB een array retourneert die het resultaat is van het gelijktijdigstellen van twee of meer matrixwaarden
+title: ARRAY_CONCAT in Azure Cosmos DB query taal
+description: Meer informatie over hoe de SQL-systeem functie van de matrix in Azure Cosmos DB een matrix retourneert die het resultaat is van het samen voegen van twee of meer matrix waarden
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 8f2b37181e5d743809bb1f60be4056cb4442a8d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78295875"
 ---
 # <a name="array_concat-azure-cosmos-db"></a>ARRAY_CONCAT (Azure Cosmos DB)
@@ -26,21 +26,21 @@ ARRAY_CONCAT (<arr_expr1>, <arr_expr2> [, <arr_exprN>])
 ## <a name="arguments"></a>Argumenten
   
 *arr_expr*  
-   Is een arrayexpressie die moet worden samengevoegd met de andere waarden. De `ARRAY_CONCAT` functie vereist ten minste twee *arr_expr* argumenten.  
+   Is een matrix expressie die moet worden samengevoegd met de andere waarden. Voor `ARRAY_CONCAT` de functie zijn ten minste twee *arr_expr* argumenten vereist.  
   
-## <a name="return-types"></a>Retourtypen
+## <a name="return-types"></a>Retour typen
   
-  Retourneert een matrixexpressie.  
+  Retourneert een matrix expressie.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voorbeeld hoe u twee arrays concaten.  
+  In het volgende voor beeld wordt uitgelegd hoe u twee matrices kunt samen voegen.  
   
 ```sql
 SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"]) AS arrayConcat 
 ```  
   
- Hier is het resultaat ingesteld.  
+ Dit is de resultatenset.  
   
 ```json
 [{"arrayConcat": ["apples", "strawberries", "bananas"]}]  
@@ -48,10 +48,10 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"]) AS arrayConcat
   
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeemfunctie maakt geen gebruik van de index.
+Deze systeem functie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Arrayfuncties Azure Cosmos DB](sql-query-array-functions.md)
-- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
+- [Matrix functies Azure Cosmos DB](sql-query-array-functions.md)
+- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

@@ -1,6 +1,6 @@
 ---
-title: Momentopnamen beheren met Azure NetApp-bestanden | Microsoft Documenten
-description: Beschrijft hoe u momentopnamen maakt voor een volume of herstelt van een momentopname naar een nieuw volume met Azure NetApp-bestanden.
+title: Moment opnamen beheren met behulp van Azure NetApp Files | Microsoft Docs
+description: Hierin wordt beschreven hoe u met behulp van Azure NetApp Files moment opnamen voor een volume maakt of herstelt vanuit een moment opname naar een nieuw volume.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,44 +15,44 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: b-juche
 ms.openlocfilehash: 48055a774808aea86452e8410b7e717f5019d172
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78267908"
 ---
-# <a name="manage-snapshots-by-using-azure-netapp-files"></a>Momentopnamen beheren met Azure NetApp-bestanden
+# <a name="manage-snapshots-by-using-azure-netapp-files"></a>Moment opnamen beheren met behulp van Azure NetApp Files
 
-U Azure NetApp-bestanden gebruiken om handmatig een on-demand momentopname voor een volume te maken of te herstellen van een momentopname naar een nieuw volume. De Azure NetApp Files-service maakt niet automatisch volumemomentopnamen.  
+U kunt Azure NetApp Files hand matig een moment opname op aanvraag maken voor een volume of herstellen van een moment opname naar een nieuw volume. Met de Azure NetApp Files service worden niet automatisch moment opnamen van volumes gemaakt.  
 
-## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Een momentopname op aanvraag maken voor een volume
+## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Een moment opname op aanvraag maken voor een volume
 
-U alleen op aanvraag momentopnamen maken. Momentopnamebeleid wordt momenteel niet ondersteund.
+U kunt moment opnamen alleen op aanvraag maken. Het momentopname beleid wordt momenteel niet ondersteund.
 
-1.  Klik in het blad Volume op **Momentopnamen**.
+1.  Klik op de Blade volume op **moment opnamen**.
 
-    ![Navigeren naar momentopnamen](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
+    ![Navigeren naar moment opnamen](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
 
-2.  Klik **op + Momentopname toevoegen** om een momentopname op aanvraag voor een volume te maken.
+2.  Klik op **+ moment opname toevoegen** om een moment opname op aanvraag voor een volume te maken.
 
-    ![Momentopname toevoegen](../media/azure-netapp-files/azure-netapp-files-add-snapshot.png)
+    ![Moment opname toevoegen](../media/azure-netapp-files/azure-netapp-files-add-snapshot.png)
 
-3.  Geef in het venster Nieuwe momentopname een naam op voor de nieuwe momentopname die u maakt.   
+3.  Geef in het venster nieuwe moment opname een naam op voor de nieuwe moment opname die u maakt.   
 
-    ![Nieuwe momentopname](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
+    ![Nieuwe moment opname](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
 4. Klik op **OK**. 
 
-## <a name="restore-a-snapshot-to-a-new-volume"></a>Een momentopname herstellen naar een nieuw volume
+## <a name="restore-a-snapshot-to-a-new-volume"></a>Een moment opname herstellen naar een nieuw volume
 
-Momenteel u een momentopname alleen herstellen naar een nieuw volume. 
-1. Ga naar het blad **Momentopnamen beheren** vanuit het volumeblad om de momentopnamelijst weer te geven. 
-2. Selecteer een momentopname die u wilt herstellen.  
-3. Klik met de rechtermuisknop op de momentopnamenaam en selecteer **Herstellen naar nieuw volume** in de menuoptie.  
+Op dit moment kunt u een moment opname alleen herstellen naar een nieuw volume. 
+1. Ga naar de Blade **moment opnamen beheren** van de Blade volume om de lijst met moment opnamen weer te geven. 
+2. Selecteer een moment opname die u wilt herstellen.  
+3. Klik met de rechter muisknop op de naam van de moment opname en selecteer **herstellen naar nieuw volume** in de menu optie.  
 
-    ![Momentopname herstellen naar nieuw volume](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
+    ![Moment opname terugzetten naar nieuw volume](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
-4. Geef in het venster Nieuw volume informatie voor het nieuwe volume:  
+4. Geef in het venster Nieuw volume informatie op voor het nieuwe volume:  
     * **Naam**   
         Geef de naam op voor het volume dat u wilt maken.  
         
@@ -72,17 +72,17 @@ Momenteel u een momentopname alleen herstellen naar een nieuw volume.
 
     *   **Virtueel netwerk**  
         Geef het virtuele Azure-netwerk (Vnet) op dat u wilt gebruiken om het volume te benaderen.  
-        Het opgegeven VNet moet een subnet bevatten dat is gedelegeerd aan Azure NetApp Files. U hebt alleen toegang tot Azure NetApp-bestanden vanaf hetzelfde Vnet of vanuit een Vnet dat zich in dezelfde regio bevindt als het volume via Vnet-peering. U heeft toegang tot het volume vanuit uw on-premises netwerk via Express Route. 
+        Het opgegeven VNet moet een subnet bevatten dat is gedelegeerd aan Azure NetApp Files. U hebt alleen toegang tot Azure NetApp Files van hetzelfde Vnet of van een Vnet dat zich in dezelfde regio bevindt als het volume via Vnet-peering. U kunt het volume vanaf uw on-premises netwerk openen via een snelle route. 
 
-    * **Subnet**  
+    * **Subnetrouter**  
         Geef het subnet op dat u wilt gebruiken voor het volume.  
-        Het subnet dat u opgeeft, moet worden gedelegeerd aan de Azure NetApp Files-service. U een nieuw subnet maken door **Nieuw maken** te selecteren onder het veld Subnet.  
+        Het subnet dat u opgeeft, moet aan de Azure NetApp Files-service worden gedelegeerd. U kunt een nieuw subnet maken door **Nieuw maken** te selecteren onder het veld subnet.  
    <!--
     ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
    -->
 
 5. Klik op **OK**.   
-    Het nieuwe volume waarop de momentopname wordt hersteld, wordt weergegeven in het blad Volumes.
+    Het nieuwe volume waarnaar de moment opname wordt teruggezet, wordt weer gegeven op de Blade volumes.
 
 ## <a name="next-steps"></a>Volgende stappen
 

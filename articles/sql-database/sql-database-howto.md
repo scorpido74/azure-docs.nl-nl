@@ -12,19 +12,19 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 11/14/2019
 ms.openlocfilehash: c3f7b33e4b42b08334cfb687024985c878dc3713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79209422"
 ---
-# <a name="how-to-use-azure-sql-database"></a>Azure SQL-database gebruiken
+# <a name="how-to-use-azure-sql-database"></a>Azure SQL Database gebruiken
 
-In deze sectie vindt u verschillende hulplijnen, scripts en uitleg waarmee u uw Azure SQL Database beheren en configureren. U ook specifieke handleidingen voor [afzonderlijke database](sql-database-howto-single-database.md) en [beheerde instantie](sql-database-howto-managed-instance.md)vinden.
+In deze sectie vindt u verschillende hand leidingen, scripts en uitleg die u kunnen helpen bij het beheren en configureren van uw Azure SQL Database. U kunt ook specifieke hand leidingen vinden voor [één data base](sql-database-howto-single-database.md) en een [beheerd exemplaar](sql-database-howto-managed-instance.md).
 
 ## <a name="load-data"></a>Gegevens laden
 
-- [Eén database of samengevoegde database binnen Azure kopiëren](sql-database-copy.md)
+- [Eén data base of gegroepeerde Data base in azure kopiëren](sql-database-copy.md)
 - [Een DB uit een BACPAC importeren](sql-database-import.md)
 - [Een DB naar een BACPAC exporteren](sql-database-export.md)
 - [Gegevens laden met BCP](sql-database-load-from-csv-with-bcp.md)
@@ -51,8 +51,8 @@ In deze sectie vindt u verschillende hulplijnen, scripts en uitleg waarmee u uw 
 ### <a name="extended-events"></a>Uitgebreide gebeurtenissen
 
 - [Uitgebreide gebeurtenissen](sql-database-xevent-db-diff-from-svr.md)
-- [Uitgebreide gebeurtenissen opslaan in gebeurtenisbestand](sql-database-xevent-code-event-file.md)
-- [Uitgebreide gebeurtenissen opslaan in ringbuffer](sql-database-xevent-code-ring-buffer.md)
+- [Uitgebreide gebeurtenissen opslaan in gebeurtenis bestand](sql-database-xevent-code-event-file.md)
+- [Uitgebreide gebeurtenissen opslaan in de ring buffer](sql-database-xevent-code-ring-buffer.md)
 
 ## <a name="configure-features"></a>Functies configureren
 
@@ -65,17 +65,17 @@ In deze sectie vindt u verschillende hulplijnen, scripts en uitleg waarmee u uw 
 - [TDE BYOK-sleutels roteren](transparent-data-encryption-byok-azure-sql-key-rotation.md)
 - [TDE-beveiliging verwijderen](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)
 - [OLTP in het geheugen configureren](sql-database-in-memory-oltp-migration.md)
-- [Azure-automatisering configureren](sql-database-manage-automation.md)
+- [Azure Automation configureren](sql-database-manage-automation.md)
 
 ## <a name="develop-applications"></a>Toepassingen ontwikkelen
 
 - [Connectiviteit](sql-database-libraries.md)
 - [Spark-connector gebruiken](sql-database-spark-connector.md)
 - [App verifiëren](sql-database-client-id-keys.md)
-- [Batching gebruiken voor betere prestaties](sql-database-use-batching-to-improve-performance.md)
+- [Batch verwerking gebruiken voor betere prestaties](sql-database-use-batching-to-improve-performance.md)
 - [Connectiviteitsrichtlijnen](sql-database-connectivity-issues.md)
 - [DNS-aliassen](dns-alias-overview.md)
-- [DNS-alias PowerShell instellen](dns-alias-powershell.md)
+- [DNS-alias instellen Power shell](dns-alias-powershell.md)
 - [Poorten - ADO.NET](sql-database-develop-direct-route-ports-adonet-v12.md)
 - [C en C ++](sql-database-develop-cplusplus-simple.md)
 - [Excel](sql-database-connect-excel.md)
@@ -86,7 +86,7 @@ In deze sectie vindt u verschillende hulplijnen, scripts en uitleg waarmee u uw 
 - [Ontwerpen voor elastische pools](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 - [Ontwerpen voor app-upgrades](sql-database-manage-application-rolling-upgrade.md)
 
-### <a name="design-multi-tenant-saas-applications"></a>Ontwerp Multi-tenant SaaS-toepassingen
+### <a name="design-multi-tenant-saas-applications"></a>Multi tenant SaaS-toepassingen ontwerpen
 
 - [SaaS-ontwerppatronen](saas-tenancy-app-design-patterns.md)
 - [Indexeerfunctie voor SaaS-video](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
@@ -94,5 +94,5 @@ In deze sectie vindt u verschillende hulplijnen, scripts en uitleg waarmee u uw 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [handleidingen voor beheerde instanties](sql-database-howto-managed-instance.md).
-- Meer informatie over [handleidingen voor afzonderlijke databases](sql-database-howto-single-database.md).
+- Meer informatie over [hand leidingen voor beheerde exemplaren](sql-database-howto-managed-instance.md).
+- Meer informatie over [hand leidingen voor afzonderlijke data bases](sql-database-howto-single-database.md).

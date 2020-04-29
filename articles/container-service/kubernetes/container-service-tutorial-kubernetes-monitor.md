@@ -8,10 +8,10 @@ ms.date: 04/05/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 84c2438a8c25b1b64f46e12923212812beac687d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78273326"
 ---
 # <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>(AFGESCHAFT) Een Kubernetes-cluster bewaken met Log Analytics
@@ -169,4 +169,4 @@ In deze zelfstudie hebt u uw Kubernetes-cluster bewaakt met Log Analytics. Behan
 Volg deze koppeling om voorbeeldscripts te zien voor Containerservice.
 
 > [!div class="nextstepaction"]
-> [Scriptvoorbeelden van Azure Container Service](cli-samples.md)
+> [Azure Container Service script voorbeelden](cli-samples.md)

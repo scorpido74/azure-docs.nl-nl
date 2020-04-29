@@ -1,6 +1,6 @@
 ---
-title: ST_WITHIN in Azure Cosmos DB-querytaal
-description: Meer informatie over sql-systeemfunctie ST_WITHIN in Azure Cosmos DB.
+title: ST_WITHIN in Azure Cosmos DB query taal
+description: Meer informatie over de functie ST_WITHIN van SQL-systeem in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 07a339d82f5e4bea1ea0412a5d5b19522611b54a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78296113"
 ---
 # <a name="st_within-azure-cosmos-db"></a>ST_WITHIN (Azure Cosmos DB)
- Geeft als resultaat een Booleaanse expressie die aangeeft of het object GeoJSON (Punt, Veelhoek of Lijntekenreeks) dat in het eerste argument is opgegeven, in het tweede argument binnen het argument GeoJSON (Punt, Veelhoek of Lijntekenreeks) valt.  
+ Retourneert een booleaanse expressie die aangeeft of het geojson-object (punt, veelhoek of lines Tring) dat is opgegeven in het eerste argument binnen de geojson (punt, veelhoek of lines Tring) in het tweede argument valt.  
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -26,15 +26,15 @@ ST_WITHIN (<spatial_expr>, <spatial_expr>)
 ## <a name="arguments"></a>Argumenten
   
 *spatial_expr*  
-   Is een objectexpressie geoJSON-punt, veelhoek of linestring.  
+   Is een geojson Point-, veelhoek-of lines Tring-object expressie.  
   
-## <a name="return-types"></a>Retourtypen
+## <a name="return-types"></a>Retour typen
   
-  Geeft als resultaat een Booleaanse waarde.  
+  Retourneert een Booleaanse waarde.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voorbeeld ziet u hoe `ST_WITHIN`u alle gezinsdocumenten in een veelhoek vinden met behulp van.  
+  In het volgende voor beeld ziet u hoe u alle familie documenten in een `ST_WITHIN`veelhoek kunt vinden met.  
   
 ```sql
 SELECT f.id
@@ -45,7 +45,7 @@ WHERE ST_WITHIN(f.location, {
 })  
 ```  
   
- Hier is het resultaat ingesteld.  
+ Dit is de resultatenset.  
   
 ```json
 [{ "id": "WakefieldFamily" }]  
@@ -53,10 +53,10 @@ WHERE ST_WITHIN(f.location, {
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeemfunctie zal profiteren van een [georuimtelijke index](index-policy.md#spatial-indexes).
+Deze systeem functie maakt deel uit van een [georuimtelijke index](index-policy.md#spatial-indexes).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Ruimtelijke functies Azure Cosmos DB](sql-query-spatial-functions.md)
-- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
+- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)
