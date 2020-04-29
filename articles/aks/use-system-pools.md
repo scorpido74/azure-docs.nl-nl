@@ -1,86 +1,86 @@
 ---
-title: Systeemknooppuntgroepen gebruiken in Azure Kubernetes Service (AKS)
-description: Meer informatie over het maken en beheren van systeemknooppuntgroepen in Azure Kubernetes Service (AKS)
+title: Systeem knooppunt groepen gebruiken in azure Kubernetes service (AKS)
+description: Meer informatie over het maken en beheren van groepen met systeem knooppunten in azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 04/06/2020
 ms.openlocfilehash: b567d9e618877463e1e659f368d35fbb787a4ef2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81259065"
 ---
-# <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Systeemknooppuntgroepen beheren in Azure Kubernetes Service (AKS)
+# <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Systeem knooppunt groepen beheren in azure Kubernetes service (AKS)
 
-In Azure Kubernetes Service (AKS) worden knooppunten van dezelfde configuratie gegroepeerd in *knooppuntgroepen.* Knooppuntgroepen bevatten de onderliggende VM's waarop uw toepassingen worden uitgevoerd. Systeemknooppuntgroepen en gebruikersknooppuntgroepen zijn twee verschillende knooppuntgroepen voor uw AKS-clusters. Systeemknooppuntpools dienen het primaire doel van het hosten van kritieke systeempods zoals CoreDNS en tunnelfront. Groepen gebruikersknooppunts dienen het primaire doel van het hosten van uw toepassingspods. Toepassingspods kunnen echter worden gepland op groepen met systeemknooppunts als u slechts één groep in uw AKS-cluster wilt hebben. Elk AKS-cluster moet ten minste één systeemknooppuntpool bevatten met ten minste één knooppunt. 
+In azure Kubernetes service (AKS) worden knoop punten van dezelfde configuratie samen in *knooppunt groepen*gegroepeerd. Knooppunt groepen bevatten de onderliggende virtuele machines waarop uw toepassingen worden uitgevoerd. Systeem knooppunt groepen en gebruikers knooppunt groepen zijn twee verschillende modi voor de knooppunt groep voor uw AKS-clusters. Systeem knooppunt groepen fungeren het primaire doel van het hosten van essentieel systeem peulen, zoals CoreDNS en tunnelfront. Gebruikers knooppunt groepen gebruiken het primaire doel om uw toepassing te hosten. Toepassing peul kan echter worden gepland op systeem knooppunt groepen als u slechts één groep in uw AKS-cluster wilt hebben. Elk AKS-cluster moet ten minste één systeem knooppunt groep bevatten met ten minste één knoop punt. 
 
 > [!Important]
-> Als u één systeemknooppuntgroep voor uw AKS-cluster uitvoert in een productieomgeving, raden we u aan ten minste drie knooppunten te gebruiken voor de knooppuntgroep.
+> Als u één systeem knooppunt groep voor uw AKS-cluster in een productie omgeving uitvoert, raden we u aan om ten minste drie knoop punten voor de knooppunt groep te gebruiken.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-* U moet de Azure CLI-versie 2.3.1 of hoger installeren en configureren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][install-azure-cli].
+* U moet de Azure CLI-versie 2.3.1 of later installeren en configureren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][install-azure-cli].
 
 ## <a name="limitations"></a>Beperkingen
 
-De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en beheert die groepen voor systeemknooppunts ondersteunen.
+De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en beheert die ondersteuning bieden voor systeem knooppunt groepen.
 
-* Zie [Quota, beperkingen voor de grootte van virtuele machines en regiobeschikbaarheid in Azure Kubernetes Service (AKS)][quotas-skus-regions].
-* Het AKS-cluster moet worden gebouwd met virtuele machineschaalsets als vm-type.
-* De naam van een knooppuntgroep mag alleen alfanumerieke tekens voor kleine letters bevatten en moet beginnen met een kleine letter. Voor Linux-knooppuntpools moet de lengte tussen 1 en 12 tekens liggen. Voor windows-knooppuntgroepen moet de lengte tussen 1 en 6 tekens liggen.
+* Zie [quota's, beperkingen voor de grootte van virtuele machines en beschik baarheid van regio's in azure Kubernetes service (AKS)][quotas-skus-regions].
+* Het AKS-cluster moet worden gebouwd met virtuele-machine schaal sets als VM-type.
+* De naam van een knooppunt groep mag alleen kleine letters bevatten en moet beginnen met een kleine letter. Voor Linux-knooppunt Pools moet de lengte tussen de 1 en 12 tekens liggen. Voor Windows-knooppunt groepen moet de lengte tussen de 1 en 6 tekens zijn.
 
-## <a name="system-and-user-node-pools"></a>Groepen systeem- en gebruikersknooppunt
+## <a name="system-and-user-node-pools"></a>Systeem-en gebruikers knooppunt groepen
 
-Systeemknooppuntknooppunten hebben elk het label **kubernetes.azure.com/mode: systeem**. Elk AKS-cluster bevat ten minste één systeemknooppuntgroep. Groepen systeemknooppunts hebben de volgende beperkingen:
+De knoop punten van de groep systeem knooppunten hebben elk het label **kubernetes.Azure.com/mode: System**. Elk AKS-cluster bevat ten minste één groep met systeem knooppunten. Systeem knooppunt groepen hebben de volgende beperkingen:
 
-* Systeempools osType moet Linux zijn.
-* User node pools osType kan Linux of Windows zijn.
-* Systeemgroepen moeten ten minste één knooppunt bevatten en gebruikersknooppuntgroepen kunnen nul of meer knooppunten bevatten.
-* Systeemknooppuntpools vereisen een VM SKU van ten minste 2 vCPU's en 4 GB geheugen.
-* De groepen van het systeemknooppunt moeten ten minste 30 pods ondersteunen, zoals beschreven in de [formule met minimale en maximale waarde voor pods][maximum-pods].
-* Voor pools van het knooppunt voor spotgroepen moeten gebruikersknooppuntgroepen worden vereist.
+* Systeem groepen osType moet Linux zijn.
+* OsType van gebruikers knooppunten kunnen Linux of Windows zijn.
+* Systeem groepen moeten ten minste één knoop punt bevatten en gebruikers knooppunt groepen kunnen nul of meer knoop punten bevatten.
+* Systeem knooppunt groepen vereisen een VM-SKU van ten minste 2 Vcpu's en 4 GB geheugen.
+* Systeem knooppunt groepen moeten ten minste 30 peul ondersteunen, zoals wordt beschreven door de [formule minimale en maximale waarde voor peulen][maximum-pods].
+* Voor spot knooppunt Pools zijn gebruikers knooppunt Pools vereist.
 
-U de volgende bewerkingen uitvoeren met knooppuntgroepen:
+U kunt de volgende bewerkingen uitvoeren met knooppunt groepen:
 
-* Wijzig een systeemknooppuntgroep om een gebruikersknooppuntgroep te zijn, op voorwaarde dat u een andere systeemknooppuntpool hebt om zijn plaats in het AKS-cluster in te nemen.
-* Een gebruikersknooppuntgroep wijzigen om een systeemknooppunttepool te zijn.
-* Gebruikersknooppuntgroepen verwijderen.
-* U systeemknooppuntgroepen verwijderen, mits u een andere systeemknooppuntgroep hebt om zijn plaats in het AKS-cluster in te nemen.
-* Een AKS-cluster kan meerdere systeemknooppuntgroepen hebben en vereist ten minste één systeemknooppuntpool.
+* Wijzig een groep van het systeem knooppunt in een groep met gebruikers knooppunten, tenzij u een andere groep van het systeem knooppunt hebt die u in het AKS-cluster kunt opnemen.
+* Wijzig de groep van een gebruikers knooppunt in een groep met systeem knooppunten.
+* Gebruikers knooppunt groepen verwijderen.
+* U kunt systeem knooppunt groepen verwijderen. u hebt een andere groep van het systeem knooppunt nodig om in het AKS-cluster te plaatsen.
+* Een AKS-cluster kan meerdere systeem knooppunt groepen bevatten en moet ten minste één groep systeem knooppunten hebben.
 
-## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>Een nieuw AKS-cluster maken met een systeemknooppuntgroep
+## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>Een nieuw AKS-cluster maken met een systeem knooppunt groep
 
-Wanneer u een nieuw AKS-cluster maakt, maakt u automatisch een systeemknooppuntmet één knooppunt. De eerste knooppuntgroep wordt standaard ingesteld op een typesysteem. Wanneer u nieuwe knooppuntpools maakt met az aks-knooppunttoevoeging, zijn deze knooppuntgroepen groepen met gebruikersknooppunt, tenzij u de modusparameter expliciet opgeeft.
+Wanneer u een nieuw AKS-cluster maakt, maakt u automatisch een systeem knooppunt groep met één knoop punt. De eerste knooppunt groep wordt standaard ingesteld op een modus van het type systeem. Wanneer u nieuwe knooppunt Pools maakt met AZ AKS nodepool add, zijn deze knooppunt groepen gebruikers knooppunt groepen, tenzij u expliciet de modus para meter opgeeft.
 
-In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* in het *eastus-gebied* geopperd.
+In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt in de regio *eastus* .
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Gebruik de opdracht [az aks create][az-aks-create] om een AKS-cluster te maken. In het volgende voorbeeld wordt een cluster met de naam *myAKSCluster* met één systeemgroep met één knooppunt. Voor uw productieworkloads moet u ervoor zorgen dat u systeemknooppuntenpools gebruikt met ten minste drie knooppunten. Deze bewerking kan enkele minuten in beslag nemen.
+Gebruik de opdracht [az aks create][az-aks-create] om een AKS-cluster te maken. In het volgende voor beeld wordt een cluster met de naam *myAKSCluster* gemaakt met één systeem groep met één knoop punt. Zorg ervoor dat u voor de werk belasting van uw productie gebruikmaakt van systeem knooppunt groepen met ten minste drie knoop punten. Het volt ooien van deze bewerking kan enkele minuten duren.
 
 ```azurecli-interactive
 az aks create -g myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
 ```
 
-## <a name="add-a-system-node-pool-to-an-existing-aks-cluster"></a>Een systeemknooppuntgroep toevoegen aan een bestaand AKS-cluster
+## <a name="add-a-system-node-pool-to-an-existing-aks-cluster"></a>Een systeem knooppunt groep toevoegen aan een bestaand AKS-cluster
 
-U een of meer systeemknooppuntgroepen toevoegen aan bestaande AKS-clusters. Met de volgende opdracht wordt een knooppuntgroep van het typesysteem met een standaardaantal van drie knooppunten toegevoegd.
+U kunt een of meer systeem knooppunt groepen toevoegen aan bestaande AKS-clusters. Met de volgende opdracht wordt een knooppunt groep van het type modus systeem toegevoegd met een standaard aantal van drie knoop punten.
 
 ```azurecli-interactive
 az aks nodepool add -g myResourceGroup --cluster-name myAKSCluster -n mynodepool --mode system
 ```
-## <a name="show-details-for-your-node-pool"></a>Details weergeven voor uw knooppuntpool
+## <a name="show-details-for-your-node-pool"></a>Details voor de knooppunt groep weer geven
 
-U de details van uw knooppuntpool controleren met de volgende opdracht.  
+U kunt de details van de knooppunt groep controleren met de volgende opdracht.  
 
 ```azurecli-interactive
 az aks nodepool show -g myResourceGroup --cluster-name myAKSCluster -n mynodepool
 ```
 
-Een modus van het type **Systeem** is gedefinieerd voor systeemknooppuntgroepen en een modus van het type **Gebruiker** wordt gedefinieerd voor gebruikersknooppuntgroepen.
+Er is een modus van het type **systeem** gedefinieerd voor systeem knooppunt groepen en een modus van het type **gebruiker** is gedefinieerd voor gebruikers knooppunt groepen.
 
 ```output
 {
@@ -112,28 +112,28 @@ Een modus van het type **Systeem** is gedefinieerd voor systeemknooppuntgroepen 
 }
 ```
 
-## <a name="update-system-and-user-node-pools"></a>Systeem- en gebruikersknooppuntgroepen bijwerken
+## <a name="update-system-and-user-node-pools"></a>Systeem-en gebruikers knooppunt groepen bijwerken
 
-U modi wijzigen voor zowel systeem- als gebruikersknooppuntgroepen. U een systeemknooppuntgroep alleen wijzigen in een gebruikersgroep als er al een andere systeemknooppuntgroep op het AKS-cluster bestaat.
+U kunt de modus voor zowel systeem-als gebruikers knooppunt groepen wijzigen. U kunt een systeem knooppunt groep alleen wijzigen in een gebruikers groep als er al een andere systeem knooppunt groep bestaat op het AKS-cluster.
 
-Met deze opdracht wordt een systeemknooppuntgroep gewijzigd in een gebruikersknooppuntgroep.
+Met deze opdracht wordt een systeem knooppunt groep gewijzigd in een groep met gebruikers knooppunten.
 
 ```azurecli-interactive
 az aks nodepool update -g myResourceGroup --cluster-name myAKSCluster -n mynodepool --mode user
 ```
 
-Met deze opdracht wordt een gebruikersknooppuntgroep gewijzigd in een systeemknooppuntgroep.
+Met deze opdracht wordt een groep van een gebruikers knooppunt gewijzigd in een systeem knooppunt groep.
 
 ```azurecli-interactive
 az aks nodepool update -g myResourceGroup --cluster-name myAKSCluster -n mynodepool --mode system
 ```
 
-## <a name="delete-a-system-node-pool"></a>Een systeemknooppuntgroep verwijderen
+## <a name="delete-a-system-node-pool"></a>Een systeem knooppunt groep verwijderen
 
 > [!Note]
-> Als u systeemknooppuntgroepen wilt gebruiken op AKS-clusters vóór API-versie 2020-03-02, voegt u een nieuwe groep systeemknooppunttoe en verwijdert u vervolgens de oorspronkelijke standaardknooppuntgroep.
+> Als u systeem knooppunt groepen op AKS-clusters vóór API-versie 2020-03-02 wilt gebruiken, voegt u een nieuwe groep systeem knooppunten toe en verwijdert u de oorspronkelijke standaard knooppunt groep.
 
-Voorheen kon u de systeemknooppuntgroep, de eerste standaardknooppuntgroep in een AKS-cluster, niet verwijderen. U hebt nu de flexibiliteit om een knooppuntgroep uit uw clusters te verwijderen. Aangezien aks-clusters ten minste één systeemknooppuntgroep vereisen, moet u ten minste twee systeemknooppuntgroepen op uw AKS-cluster hebben voordat u een van deze groepen verwijderen.
+U kunt de groep van het systeem knooppunt niet verwijderen. Dit is de eerste standaard knooppunten groep in een AKS-cluster. U hebt nu de flexibiliteit om alle knooppunt groepen uit uw clusters te verwijderen. Aangezien voor AKS-clusters ten minste één groep van systeem knooppunten is vereist, moet u ten minste twee systeem knooppunt groepen hebben op uw AKS-cluster voordat u er een kunt verwijderen.
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodepool
@@ -141,7 +141,7 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u systeemknooppuntgroepen in een AKS-cluster maken en beheren. Zie meerdere knooppuntpools gebruiken voor meer informatie over het gebruik van meerdere [knooppuntpools.][use-multiple-node-pools]
+In dit artikel hebt u geleerd hoe u systeem knooppunt groepen kunt maken en beheren in een AKS-cluster. Zie [meerdere knooppunt groepen gebruiken][use-multiple-node-pools]voor meer informatie over het gebruik van meerdere knooppunt groepen.
 
 <!-- EXTERNAL LINKS -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
