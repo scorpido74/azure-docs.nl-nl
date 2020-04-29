@@ -1,6 +1,6 @@
 ---
-title: MapReduce en Curl gebruiken met Apache Hadoop in HDInsight - Azure
-description: Meer informatie over het op afstand uitvoeren van MapReduce-taken met Apache Hadoop op HDInsight met Curl.
+title: Gebruik MapReduce en krul met Apache Hadoop in HDInsight-Azure
+description: Meer informatie over het extern uitvoeren van MapReduce-taken met Apache Hadoop op HDInsight met behulp van krul.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,37 +9,37 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: abc3cc8c526e37e18f1e67b109a9a8e15ff8c989
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302709"
 ---
-# <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Kaart uitvoerenWerk verminderen met Apache Hadoop op HDInsight met BEHULP van REST
+# <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>MapReduce-taken uitvoeren met Apache Hadoop op HDInsight met behulp van REST
 
-Meer informatie over het gebruik van de Apache Hive WebHCat REST API om MapReduce-taken uit te voeren op een Apache Hadoop op hdinsight-cluster. Curl wordt gebruikt om aan te tonen hoe u communiceren met HDInsight door ruwe HTTP-aanvragen te gebruiken om MapReduce-taken uit te voeren.
+Meer informatie over het gebruik van de Apache Hive WebHCat REST API om MapReduce-taken uit te voeren op een Apache Hadoop in HDInsight-cluster. Krul wordt gebruikt om te laten zien hoe u kunt communiceren met HDInsight met behulp van onbewerkte HTTP-aanvragen om MapReduce-taken uit te voeren.
 
 > [!NOTE]  
-> Als u al bekend bent met het gebruik van Linux-gebaseerde Hadoop servers, maar je bent nieuw bij HDInsight, zie de [Wat je moet weten over Linux-gebaseerde Apache Hadoop op HDInsight](../hdinsight-hadoop-linux-information.md) document.
+> Als u al bekend bent met het gebruik van op Linux gebaseerde Hadoop-servers, maar u geen ervaring hebt met HDInsight, raadpleegt u de [informatie die u nodig hebt om te weten te komen over op Linux gebaseerde Apache Hadoop in hdinsight-](../hdinsight-hadoop-linux-information.md) document.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Apache Hadoop cluster op HDInsight. Zie [Apache Hadoop-clusters maken met behulp van de Azure-portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
+* Een Apache Hadoop cluster in HDInsight. Zie [Apache Hadoop clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
 Er zijn verschillende opties:
-  * Windows PowerShell of,
-  * [Krul](https://curl.haxx.se/) met [jq](https://stedolan.github.io/jq/)
+  * Windows Power shell of,
+  * [Krul](https://curl.haxx.se/) met [JQ](https://stedolan.github.io/jq/)
 
-## <a name="run-a-mapreduce-job"></a>Een taak Kaart verminderen uitvoeren
+## <a name="run-a-mapreduce-job"></a>Een MapReduce-taak uitvoeren
 
 > [!NOTE]  
-> Wanneer u Curl of een andere REST-communicatie met WebHCat gebruikt, moet u de aanvragen verifiëren door de gebruikersnaam en het wachtwoord van de HDInsight-clusterbeheerder op te geven. U moet de clusternaam gebruiken als onderdeel van de URI die wordt gebruikt om de aanvragen naar de server te verzenden.
+> Wanneer u een krul of andere REST-communicatie met WebHCat gebruikt, moet u de aanvragen verifiëren door de gebruikers naam en het wacht woord van de HDInsight-cluster beheerder op te geven. U moet de cluster naam gebruiken als onderdeel van de URI die wordt gebruikt om de aanvragen naar de server te verzenden.
 >
-> De REST API wordt beveiligd met behulp van [basistoegangsverificatie.](https://en.wikipedia.org/wiki/Basic_access_authentication) U moet altijd verzoeken indienen door HTTPS te gebruiken om ervoor te zorgen dat uw referenties veilig naar de server worden verzonden.
+> De REST API wordt beveiligd met behulp van [basis verificatie voor toegang](https://en.wikipedia.org/wiki/Basic_access_authentication). U moet altijd aanvragen indienen via HTTPS om ervoor te zorgen dat uw referenties veilig worden verzonden naar de server.
 
 ### <a name="curl"></a>Curl
 
-1. Voor gebruiksgemak stelt u de onderstaande variabelen in. Dit voorbeeld is gebaseerd op een Windows-omgeving, herzien als dat nodig is voor uw omgeving.
+1. Stel de variabelen hieronder in om gebruiks gemak te gebruiken. Dit voor beeld is gebaseerd op een Windows-omgeving en wordt zo nodig herzien voor uw omgeving.
 
     ```cmd
     set CLUSTERNAME=
@@ -54,10 +54,10 @@ Er zijn verschillende opties:
 
     In deze opdracht worden de volgende parameters gebruikt:
 
-   * **-u**: Geeft de gebruikersnaam en het wachtwoord aan die worden gebruikt om de aanvraag te verifiëren
-   * **-G**: Geeft aan dat deze bewerking een GET-aanvraag is
+   * **-u**: geeft de gebruikers naam en het wacht woord aan die worden gebruikt om de aanvraag te verifiëren
+   * **-G**: geeft aan dat deze bewerking een GET-aanvraag is
 
-   Het begin van `https://CLUSTERNAME.azurehdinsight.net/templeton/v1`de URI, , is hetzelfde voor alle aanvragen.
+   Het begin van de URI, `https://CLUSTERNAME.azurehdinsight.net/templeton/v1`, is hetzelfde voor alle aanvragen.
 
     U ontvangt een antwoord dat vergelijkbaar is met de volgende JSON:
 
@@ -65,7 +65,7 @@ Er zijn verschillende opties:
     {"version":"v1","status":"ok"}
     ```
 
-1. Als u een taak MapReduce wilt verzenden, gebruikt u de volgende opdracht. Wijzig indien nodig het pad naar **jq.**
+1. Als u een MapReduce-taak wilt verzenden, gebruikt u de volgende opdracht. Wijzig zo nodig het pad naar **JQ** .
 
     ```cmd
     curl -u admin:%PASSWORD% -d user.name=admin ^
@@ -75,19 +75,19 @@ Er zijn verschillende opties:
     C:\HDI\jq-win64.exe .id
     ```
 
-    Het einde van de URI (/mapreduce/jar) vertelt WebHCat dat deze aanvraag een MapReduce-taak van een klasse in een potbestand start. In deze opdracht worden de volgende parameters gebruikt:
+    Het einde van de URI (/MapReduce/jar) vertelt WebHCat dat deze aanvraag een MapReduce-taak start vanuit een klasse in een jar-bestand. In deze opdracht worden de volgende parameters gebruikt:
 
-   * **-d** `-G` : wordt niet gebruikt, dus de aanvraag wordt standaard gebruikt voor de post-methode. `-d`hiermee worden de gegevenswaarden opgegeven die met de aanvraag worden verzonden.
-     * **user.name:** de gebruiker die de opdracht uitvoert
-     * **pot**: De locatie van het potbestand met klasse dat moet worden uitgevoerd
-     * **klasse**: De klasse die de logica MapReduce bevat
-     * **arg:** de argumenten die moeten worden doorgegeven aan de taak MapReduce. In dit geval het invoertekstbestand en de map die worden gebruikt voor de uitvoer
+   * **-d**: `-G` wordt niet gebruikt, dus de aanvraag wordt standaard ingesteld op de methode post. `-d`Hiermee geeft u de gegevens waarden op die met de aanvraag worden verzonden.
+     * **User.name**: de gebruiker die de opdracht uitvoert
+     * **jar**: de locatie van het jar-bestand met de klasse die moet worden uitgevoerd
+     * **klasse**: de klasse die de MapReduce Logic bevat
+     * **ARG**: de argumenten die moeten worden door gegeven aan de MapReduce-taak. In dit geval het invoer tekst bestand en de map die worden gebruikt voor de uitvoer
 
-    Met deze opdracht moet een taak-id worden retourneren die kan worden gebruikt om de status van de taak te controleren:
+    Met deze opdracht moet een taak-ID worden geretourneerd die kan worden gebruikt om de status van de taak te controleren:
 
        job_1415651640909_0026
 
-1. Als u de status van de taak wilt controleren, gebruikt u de volgende opdracht. Vervang de `JOBID` waarde voor de **werkelijke** waarde die in de vorige stap is geretourneerd. Herzien locatie van **jq** als dat nodig is.
+1. Gebruik de volgende opdracht om de status van de taak te controleren. Vervang de waarde voor `JOBID` door de **werkelijke** waarde die in de vorige stap is geretourneerd. Wijzig de locatie van **JQ** naar behoefte.
 
     ```cmd
     set JOBID=job_1415651640909_0026
@@ -98,14 +98,14 @@ Er zijn verschillende opties:
 
 ### <a name="powershell"></a>PowerShell
 
-1. Voor gebruiksgemak stelt u de onderstaande variabelen in. Vervang `CLUSTERNAME` door de werkelijke clusternaam. Voer de opdracht uit en voer het wachtwoord voor het inloggen van het cluster in wanneer u daarom wordt gevraagd.
+1. Stel de variabelen hieronder in om gebruiks gemak te gebruiken. Vervang `CLUSTERNAME` door de werkelijke cluster naam. Voer de opdracht uit en geef het wacht woord voor de cluster aanmelding op wanneer u hierom wordt gevraagd.
 
     ```powershell
     $clusterName="CLUSTERNAME"
     $creds = Get-Credential -UserName admin -Message "Enter the cluster login password"
     ```
 
-1. gebruik de volgende opdracht om te controleren of u verbinding maken met uw HDInsight-cluster:
+1. Gebruik de volgende opdracht om te controleren of u verbinding kunt maken met uw HDInsight-cluster:
 
     ```powershell
     $resp = Invoke-WebRequest -Uri "https://$clustername.azurehdinsight.net/templeton/v1/status" `
@@ -120,7 +120,7 @@ Er zijn verschillende opties:
     {"version":"v1","status":"ok"}
     ```
 
-1. Als u een taak MapReduce wilt verzenden, gebruikt u de volgende opdracht:
+1. Als u een MapReduce-taak wilt verzenden, gebruikt u de volgende opdracht:
 
     ```powershell
     $reqParams = @{}
@@ -139,14 +139,14 @@ Er zijn verschillende opties:
     $jobID
     ```
 
-    Het einde van de URI (/mapreduce/jar) vertelt WebHCat dat deze aanvraag een MapReduce-taak van een klasse in een potbestand start. In deze opdracht worden de volgende parameters gebruikt:
+    Het einde van de URI (/MapReduce/jar) vertelt WebHCat dat deze aanvraag een MapReduce-taak start vanuit een klasse in een jar-bestand. In deze opdracht worden de volgende parameters gebruikt:
 
-    * **user.name:** de gebruiker die de opdracht uitvoert
-    * **pot**: De locatie van het potbestand met klasse dat moet worden uitgevoerd
-    * **klasse**: De klasse die de logica MapReduce bevat
-    * **arg:** de argumenten die moeten worden doorgegeven aan de taak MapReduce. In dit geval het invoertekstbestand en de map die worden gebruikt voor de uitvoer
+    * **User.name**: de gebruiker die de opdracht uitvoert
+    * **jar**: de locatie van het jar-bestand met de klasse die moet worden uitgevoerd
+    * **klasse**: de klasse die de MapReduce Logic bevat
+    * **ARG**: de argumenten die moeten worden door gegeven aan de MapReduce-taak. In dit geval het invoer tekst bestand en de map die worden gebruikt voor de uitvoer
 
-   Met deze opdracht moet een taak-id worden retourneren die kan worden gebruikt om de status van de taak te controleren:
+   Met deze opdracht moet een taak-ID worden geretourneerd die kan worden gebruikt om de status van de taak te controleren:
 
        job_1415651640909_0026
 
@@ -167,17 +167,17 @@ Er zijn verschillende opties:
 
 ### <a name="both-methods"></a>Beide methoden
 
-1. Als de taak is voltooid, `SUCCEEDED`is de geretourneerde status .
+1. Als de taak is voltooid, is `SUCCEEDED`de geretourneerde status.
 
-1. Wanneer de status van de `SUCCEEDED`taak is gewijzigd in, u de resultaten van de taak ophalen uit Azure Blob-opslag. De `statusdir` parameter die met de query wordt doorgegeven, bevat de locatie van het uitvoerbestand. In dit voorbeeld is `/example/curl`de locatie . Dit adres slaat de uitvoer van de `/example/curl`taak op in de standaardopslag van clusters op .
+1. Wanneer de status van de taak is gewijzigd in `SUCCEEDED`, kunt u de resultaten van de taak ophalen uit Azure Blob-opslag. De `statusdir` para meter die wordt door gegeven met de query, bevat de locatie van het uitvoer bestand. In dit voor beeld is `/example/curl`de locatie. Dit adres slaat de uitvoer van de taak op in de standaard opslag voor `/example/curl`clusters op.
 
-U deze bestanden aanbieden en downloaden met behulp van de [Azure CLI](/cli/azure/install-azure-cli). Zie [Quickstart: Blobs maken, downloaden en aanbieden met Azure CLI](../../storage/blobs/storage-quickstart-blobs-cli.md)voor meer informatie over het gebruik van de Azure CLI om met Azure Blob-opslag te werken.
+U kunt deze bestanden weer geven en downloaden met behulp van de [Azure cli](/cli/azure/install-azure-cli). Zie [Quick Start: Create, down loads en List blobs with Azure cli](../../storage/blobs/storage-quickstart-blobs-cli.md)(Engelstalig) voor meer informatie over het gebruik van Azure CLI om te werken met Azure Blob-opslag.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor informatie over andere manieren waarop u met Hadoop werken aan HDInsight:
+Voor informatie over andere manieren om met Hadoop in HDInsight te werken:
 
-* [MapGebruikenReduce met Apache Hadoop op HDInsight](hdinsight-use-mapreduce.md)
-* [Gebruik Apache Hive met Apache Hadoop op HDInsight](hdinsight-use-hive.md)
+* [MapReduce gebruiken met Apache Hadoop op HDInsight](hdinsight-use-mapreduce.md)
+* [Apache Hive gebruiken met Apache Hadoop op HDInsight](hdinsight-use-hive.md)
 
-Zie de [WebHCat-referentie](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference)voor meer informatie over de REST-interface die in dit artikel wordt gebruikt.
+Zie de [WebHCat-verwijzing](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference)voor meer informatie over de rest-interface die in dit artikel wordt gebruikt.

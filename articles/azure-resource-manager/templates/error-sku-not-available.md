@@ -1,24 +1,24 @@
 ---
-title: SKU niet beschikbare fouten
-description: Beschrijft hoe u de fout van de SKU oplost die niet beschikbaar is bij het implementeren van resources met Azure Resource Manager.
+title: Niet-beschik bare SKU-fouten
+description: Hierin wordt beschreven hoe u problemen met de SKU niet beschik bare fout bij het implementeren van resources met Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 02/18/2020
 ms.openlocfilehash: 3dcc26f2d74799a6d282ee4bd733d36bec7b05e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78942717"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Fouten voor een niet-beschikbare SKU oplossen
 
-In dit artikel wordt beschreven hoe u de fout **SkuNotAvailable kunt** oplossen. Als u geen geschikte SKU vinden in die regio/zone of een alternatieve regio/zone die aan uw bedrijfsbehoeften voldoet, dient u een [SKU-aanvraag](https://aka.ms/skurestriction) in bij Azure Support.
+In dit artikel wordt beschreven hoe u de **SkuNotAvailable** -fout kunt oplossen. Als u geen geschikte SKU in die regio/zone of een alternatieve regio/zone kunt vinden die voldoet aan uw bedrijfs behoeften, moet u een [SKU-aanvraag](https://aka.ms/skurestriction) indienen bij Azure-ondersteuning.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u een resource implementeert (meestal een virtuele machine), ontvangt u de volgende foutcode en foutbericht:
+Wanneer u een resource implementeert (meestal een virtuele machine), wordt de volgende fout code en fout bericht weer gegeven:
 
 ```
 Code: SkuNotAvailable
@@ -28,19 +28,19 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 ## <a name="cause"></a>Oorzaak
 
-U ontvangt deze fout wanneer de door u geselecteerde resource SKU (zoals vm-grootte) niet beschikbaar is voor de locatie die u hebt geselecteerd.
+Deze fout wordt weer gegeven wanneer de resource-SKU die u hebt geselecteerd (zoals VM-grootte) niet beschikbaar is voor de locatie die u hebt geselecteerd.
 
-Als u een exemplaar azure spot VM of Spot-schaalset implementeert, is er geen capaciteit voor Azure Spot op deze locatie. Zie [Foutberichten herkennen voor](../../virtual-machines/error-codes-spot.md)meer informatie .
+Als u een Azure spot VM of een instantie van een steun schaalset implementeert, is er geen capaciteit voor Azure-steun op deze locatie. Zie [Spot fout berichten](../../virtual-machines/error-codes-spot.md)voor meer informatie.
 
-## <a name="solution-1---powershell"></a>Oplossing 1 - PowerShell
+## <a name="solution-1---powershell"></a>Oplossing 1-Power shell
 
-Als u wilt bepalen welke SKU's beschikbaar zijn in een regio/zone, gebruikt u de opdracht [Get-AzComputeResourceSku.](/powershell/module/az.compute/get-azcomputeresourcesku) Filter de resultaten op locatie. U moet de nieuwste versie van PowerShell voor deze opdracht hebben.
+Gebruik de opdracht [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) om te bepalen welke sku's beschikbaar zijn in een regio/zone. De resultaten filteren op locatie. U moet de meest recente versie van Power shell voor deze opdracht hebben.
 
 ```azurepowershell-interactive
 Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
 ```
 
-De resultaten omvatten een lijst van SKU's voor de locatie en eventuele beperkingen voor die SKU. Een SKU kan worden vermeld `NotAvailableForSubscription`als .
+De resultaten omvatten een lijst met Sku's voor de locatie en eventuele beperkingen voor die SKU. U ziet dat een SKU kan worden weer `NotAvailableForSubscription`gegeven als.
 
 ```output
 ResourceType          Name           Locations   Zone      Restriction                      Capability           Value
@@ -51,18 +51,18 @@ virtualMachines       Standard_A2    centralus             NotAvailableForSubscr
 virtualMachines       Standard_D1_v2 centralus   {2, 1, 3}                                  MaxResourceVolumeMB
 ```
 
-Enkele aanvullende voorbeelden:
+Enkele aanvullende voor beelden:
 
 ```azurepowershell-interactive
 Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_DS14_v2")}
 Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("v3")} | fc
 ```
 
-Het toevoegen van "fc" aan het eind geeft meer details.
+Als u ' FC ' aan het einde toevoegt, worden er meer details geretourneerd.
 
-## <a name="solution-2---azure-cli"></a>Oplossing 2 - Azure CLI
+## <a name="solution-2---azure-cli"></a>Oplossing 2-Azure CLI
 
-Als u wilt bepalen welke SKU's beschikbaar zijn in een regio, gebruikt u de `az vm list-skus` opdracht. Gebruik `--location` de parameter om de uitvoer te filteren op de locatie die u gebruikt. Gebruik `--size` de parameter om te zoeken met een gedeeltelijke groottenaam.
+Gebruik de `az vm list-skus` opdracht om te bepalen welke sku's beschikbaar zijn in een regio. Gebruik de `--location` para meter voor het filteren van uitvoer naar de locatie die u gebruikt. Gebruik de `--size` para meter om te zoeken op een gedeeltelijke grootte naam.
 
 ```azurecli-interactive
 az vm list-skus --location southcentralus --size Standard_F --output table
@@ -80,23 +80,23 @@ virtualMachines  southcentralus  Standard_F4                ...             None
 ```
 
 
-## <a name="solution-3---azure-portal"></a>Oplossing 3 - Azure-portal
+## <a name="solution-3---azure-portal"></a>Oplossing 3-Azure Portal
 
-Als u wilt bepalen welke SKU's beschikbaar zijn in een regio, gebruikt u de [portal](https://portal.azure.com). Meld u aan bij de portal en voeg een bron toe via de interface. Terwijl u de waarden instelt, ziet u de beschikbare SKU's voor die resource. U hoeft de implementatie niet te voltooien.
+Gebruik de [Portal](https://portal.azure.com)om te bepalen welke sku's beschikbaar zijn in een regio. Meld u aan bij de portal en voeg een resource toe via de-interface. Wanneer u de waarden instelt, ziet u de beschik bare Sku's voor die bron. U hoeft de implementatie niet te volt ooien.
 
-Begin bijvoorbeeld met het maken van een virtuele machine. Als u een andere beschikbare grootte wilt bekijken, selecteert u **Grootte wijzigen**.
+U kunt bijvoorbeeld het proces voor het maken van een virtuele machine starten. Als u andere beschik bare grootte wilt zien, selecteert u **grootte wijzigen**.
 
 ![VM maken](./media/error-sku-not-available/create-vm.png)
 
-U filteren en bladeren door de beschikbare maten.
+U kunt filteren en door de beschik bare grootten bladeren.
 
 ![Beschikbare SKU's](./media/error-sku-not-available/available-sizes.png)
 
-## <a name="solution-4---rest"></a>Oplossing 4 - RUST
+## <a name="solution-4---rest"></a>Oplossing 4-REST
 
-Als u wilt bepalen welke SKU's beschikbaar zijn in een regio, gebruikt u de bewerking [ResourceSkus - List.](/rest/api/compute/resourceskus/list)
+Als u wilt bepalen welke Sku's beschikbaar zijn in een regio, gebruikt u de bewerking [resource-sku's-List](/rest/api/compute/resourceskus/list) .
 
-Het retourneert beschikbare SKU's en regio's in de volgende indeling:
+Het retourneert beschik bare Sku's en regio's in de volgende indeling:
 
 ```json
 {

@@ -1,6 +1,6 @@
 ---
-title: ST_INTERSECTS in Azure Cosmos DB-querytaal
-description: Meer informatie over sql-systeemfunctie ST_INTERSECTS in Azure Cosmos DB.
+title: ST_INTERSECTS in Azure Cosmos DB query taal
+description: Meer informatie over de functie ST_INTERSECTS van SQL-systeem in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: f3c3878956b90ffb45556ed819046af9eb7618f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303134"
 ---
 # <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS (Azure Cosmos DB)
- Geeft als resultaat een Booleaanse expressie die aangeeft of het object GeoJSON (Punt, Veelhoek of Lijntekenreeks) dat in het eerste argument is opgegeven, de GeoJSON (Punt, Veelhoek of Lijntekenreeks) in het tweede argument kruist.  
+ Retourneert een booleaanse expressie die aangeeft of het geojson-object (punt, veelhoek of lines Tring) dat is opgegeven in het eerste argument, de geojson (punt, veelhoek of lines Tring) in het tweede argument INTERSECT.  
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -26,15 +26,15 @@ ST_INTERSECTS (<spatial_expr>, <spatial_expr>)
 ## <a name="arguments"></a>Argumenten
   
 *spatial_expr*  
-   Is een objectexpressie geoJSON-punt, veelhoek of linestring.  
+   Is een geojson Point-, veelhoek-of lines Tring-object expressie.  
   
-## <a name="return-types"></a>Retourtypen
+## <a name="return-types"></a>Retour typen
   
-  Geeft als resultaat een Booleaanse waarde.  
+  Retourneert een Booleaanse waarde.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voorbeeld ziet u hoe u alle gebieden vinden die met de opgegeven veelhoek kruisen.  
+  In het volgende voor beeld ziet u hoe u alle gebieden met de opgegeven veelhoek kunt vinden.  
   
 ```sql
 SELECT a.id
@@ -45,7 +45,7 @@ WHERE ST_INTERSECTS(a.location, {
 })  
 ```  
   
- Hier is het resultaat ingesteld.  
+ Dit is de resultatenset.  
   
 ```json
 [{ "id": "IntersectingPolygon" }]  
@@ -53,10 +53,10 @@ WHERE ST_INTERSECTS(a.location, {
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeemfunctie zal profiteren van een [georuimtelijke index](index-policy.md#spatial-indexes).
+Deze systeem functie maakt deel uit van een [georuimtelijke index](index-policy.md#spatial-indexes).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Ruimtelijke functies Azure Cosmos DB](sql-query-spatial-functions.md)
-- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
+- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

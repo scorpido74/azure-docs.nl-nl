@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie: Web-app met één pagina maken met Bing Entiteiten zoeken'
 titleSuffix: Azure Cognitive Services
-description: In deze zelfstudie ziet u hoe u de Bing Entity Search API gebruiken in een webtoepassing met één pagina.
+description: In deze zelf studie ziet u hoe u de Bing Entiteiten zoeken-API gebruikt in een webtoepassing met één pagina.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943138"
 ---
 # <a name="tutorial-single-page-web-app"></a>Zelfstudie: Web-app van één pagina
@@ -58,7 +58,7 @@ In deze zelfstudie bespreken we alleen bepaalde gedeelten van de broncode. De vo
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de zelfstudie wilt volgen, hebt u abonnementssleutels nodig voor de Bing Search API en de Bing Maps API. Als u ze niet hebt, u een [proefsleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) en een [eenvoudige Bing Maps-toets gebruiken.](https://www.microsoft.com/maps/create-a-bing-maps-key)
+Als u de zelf studie wilt volgen, moet u abonnements sleutels voor de Bing Search-API en de Bing Maps-API hebben. Als u deze niet hebt, kunt u een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) en een [eenvoudige Bing Maps-sleutel](https://www.microsoft.com/maps/create-a-bing-maps-key)gebruiken.
 
 ## <a name="app-components"></a>App-onderdelen
 
@@ -90,7 +90,7 @@ De HTML bevat ook de delen (HTML-`<div>`-tags) waar de zoekresultaten worden wee
 
 Om te voorkomen dat de abonnementssleutels van de Bing Zoeken- en Bing Kaarten-API's moeten worden opgenomen in de code, gebruiken we de permanente opslag van de browser om de sleutels op te slaan. Als een van beide sleutels niet is opgeslagen, wordt de sleutel opgevraagd en opgeslagen voor later gebruik. Als de sleutel later wordt geweigerd door de API, wordt de opgeslagen sleutel ongeldig gemaakt zodat de gebruiker bij de volgende zoekopdracht om een sleutel wordt gevraagd.
 
-We definiëren de functies `storeValue` en `retrieveValue` voor gebruik met het `localStorage`-object (als de browser dit ondersteunt) of een cookie. Onze functie `getSubscriptionKey()` gebruikt deze functies voor het opslaan en ophalen van de sleutel van de gebruiker. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
+We definiëren de functies `storeValue` en `retrieveValue` voor gebruik met het `localStorage`-object (als de browser dit ondersteunt) of een cookie. Onze functie `getSubscriptionKey()` gebruikt deze functies voor het opslaan en ophalen van de sleutel van de gebruiker. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
 ```javascript
 // cookie names for data we store
@@ -167,7 +167,7 @@ Het veld `mapquery` wordt niet verwerkt in `bingSearchOptions()` omdat dit wordt
 
 ## <a name="obtaining-a-location"></a>Een locatie ophalen
 
-De Bing Maps API biedt een [ `locationQuery` methode,](//msdn.microsoft.com/library/ff701711.aspx)die we gebruiken om de breedte- en lengtegraad van de locatie die de gebruiker invoert te vinden. Deze coördinaten worden vervolgens met de aanvraag van de gebruiker doorgegeven aan de Bing Entiteiten zoeken-API. In de lijst met zoekresultaten hebben entiteiten en plaatsen die zich dicht bij de opgegeven locatie bevinden prioriteit.
+De Bing Maps-API biedt een [ `locationQuery` methode](//msdn.microsoft.com/library/ff701711.aspx), die we gebruiken om de breedte graad en de lengte graad te bepalen van de locatie die de gebruiker invoert. Deze coördinaten worden vervolgens met de aanvraag van de gebruiker doorgegeven aan de Bing Entiteiten zoeken-API. In de lijst met zoekresultaten hebben entiteiten en plaatsen die zich dicht bij de opgegeven locatie bevinden prioriteit.
 
 De Bing Kaarten-API is niet toegankelijk met een gewone `XMLHttpRequest`-query in een web-app omdat de service geen ondersteuning biedt voor cross-origin-query's. Gelukkig ondersteunt de service wel JSONP (de 'P' staat voor 'padded' of opgevuld). Een JSONP-antwoord is een gewoon JSON-antwoord dat is verpakt in een functieaanroep. De aanvraag wordt gedaan door een tag `<script>` in te voegen in het document. (Het laden van scripts is niet onderhevig aan het beveiligingsbeleid van browsers.)
 
@@ -550,7 +550,7 @@ Laat het opdrachtvenster geopend terwijl u de zelfstudie-app gebruikt. Als u het
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Verwijzing naar de zoek-API van Bing-entiteit](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+> [Bing Entiteiten zoeken-API referentie](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
 
 > [!div class="nextstepaction"]
 > [Documentatie Bing Kaarten-API](//msdn.microsoft.com/library/dd877180.aspx)

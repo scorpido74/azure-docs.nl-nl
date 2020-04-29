@@ -1,6 +1,6 @@
 ---
-title: Uitgaande regels - Azure Load Balancer
-description: Ga met dit leerpad aan de slag met uitgaande regels om uitgaande netwerkadresvertalingen te definiëren.
+title: Uitgaande regels-Azure Load Balancer
+description: Met dit leer traject kunt u beginnen met het gebruik van uitgaande regels voor het definiëren van uitgaande netwerk adres vertalingen.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,40 +13,40 @@ ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
 ms.openlocfilehash: d419c213b3bcfef3631d68eb9d4cb485291bed31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78304188"
 ---
-# <a name="load-balancer-outbound-rules"></a>Uitgaande regels load Balancer
+# <a name="load-balancer-outbound-rules"></a>Load Balancer uitgaande regels
 
-Azure Load Balancer biedt uitgaande connectiviteit van een virtueel netwerk naast binnenkomend.  Uitgaande regels maken het eenvoudig om de uitgaande netwerkadresvertaling van de [standaardloadbalancer](load-balancer-standard-overview.md)te configureren.  U hebt volledige declaratieve controle over uitgaande connectiviteit om deze mogelijkheid te schalen en af te stemmen op uw specifieke behoeften.
+Azure Load Balancer biedt een uitgaande verbinding van een virtueel netwerk naast binnenkomend.  Met uitgaande regels kunt u de uitgaande Network Address Translation van open bare [Standard Load Balancer](load-balancer-standard-overview.md)eenvoudig configureren.  U hebt volledige declaratieve controle over uitgaande connectiviteit om deze mogelijkheid te schalen en af te stemmen op uw specifieke behoeften.
 
-![Uitgaande regels load Balancer](media/load-balancer-outbound-rules-overview/load-balancer-outbound-rules.png)
+![Load Balancer uitgaande regels](media/load-balancer-outbound-rules-overview/load-balancer-outbound-rules.png)
 
-Met uitgaande regels u Load Balancer gebruiken om: 
-- definiëren uitgaande NAT vanaf nul.
-- schalen en afstemmen van het gedrag van bestaande uitgaande NAT. 
+Met uitgaande regels kunt u Load Balancer gebruiken voor het volgende: 
+- Geef de uitgaande NAT van een geheel nieuwe definitie op.
+- het gedrag van bestaande uitgaande NAT schalen en afstemmen. 
 
-Met uitgaande regels u het controle hebben over:
-- welke virtuele machines moeten worden vertaald naar welke openbare IP-adressen. 
+Met uitgaande regels kunt u het volgende beheren:
+- welke virtuele machines moeten worden vertaald naar de open bare IP-adressen. 
 - hoe [uitgaande SNAT-poorten](load-balancer-outbound-connections.md#snat) moeten worden toegewezen.
-- voor welke protocollen u uitgaande vertalingen moet leveren.
-- welke duur te gebruiken voor uitgaande verbinding idle time-out (4-120 minuten).
-- of u een TCP Reset wilt verzenden bij een niet-actieve time-out
+- de protocollen waarvoor een uitgaande vertaling moet worden geboden.
+- welke duur moet worden gebruikt voor de time-out voor uitgaande verbindingen (4-120 minuten).
+- of een TCP-Reset moet worden verzonden bij een time-out voor inactiviteit
 
-Uitgaande regels breiden [scenario 2](load-balancer-outbound-connections.md#lb) uit in beschreven in het artikel voor [uitgaande verbindingen](load-balancer-outbound-connections.md) en de scenariovoorrang blijft zoals is.
+Uitgaande regels worden [scenario 2](load-balancer-outbound-connections.md#lb) uitvouwen in de beschrijving in het artikel [uitgaande verbindingen](load-balancer-outbound-connections.md) en de prioriteit van het scenario blijft ongewijzigd.
 
 ## <a name="outbound-rule"></a>Uitgaande regel
 
-Net als alle regels voor load balancer volgen uitgaande regels dezelfde bekende syntaxis als load balancing en inbound NAT-regels:
+Net als alle Load Balancer regels volgen uitgaande regels dezelfde vertrouwde syntaxis als taak verdeling en binnenkomende NAT-regels:
 
-**frontend** + **parameters** + **backend pool**
+**frontend** + -**para meters** + **back-end-pool**
 
-Een uitgaande regel configureert uitgaande NAT voor _alle virtuele machines die zijn geïdentificeerd door de backendpool_ die moet worden vertaald naar de _frontend._  En _parameters_ bieden extra fijnkorrelige controle over het uitgaande NAT-algoritme.
+Met een uitgaande regel wordt uitgaande NAT geconfigureerd voor _alle virtuele machines die door de back-endadresgroep worden geïdentificeerd_ om te worden vertaald naar de front- _End_.  En _para meters_ bieden extra nauw keurige controle over de uitgaande NAT-algoritme.
 
-API-versie "2018-07-01" maakt een uitgaande regeldefinitie als volgt gestructureerd mogelijk:
+API-versie 2018-07-01 geeft de volgende structuur van een uitgaande regel:
 
 ```json
       "outboundRules": [
@@ -62,70 +62,70 @@ API-versie "2018-07-01" maakt een uitgaande regeldefinitie als volgt gestructure
 ```
 
 >[!NOTE]
->De effectieve uitgaande NAT-configuratie is een samenstelling van alle uitgaande regels en regels voor het balanceren van de lasten. Uitgaande regels zijn incrementeel naar regels voor het balanceren van de belasting. Controleer [het uitschakelen van uitgaande NAT voor een regel voor het balanceren van de last](#disablesnat) om de effectieve uitgaande NAT-vertaling te beheren wanneer er meerdere regels van toepassing zijn op een vm. U moet [uitgaande SNAT uitschakelen](#disablesnat) bij het definiëren van een uitgaande regel die hetzelfde openbare IP-adres gebruikt als regel voor het balanceren van de last.
+>De effectief uitgaande NAT-configuratie bestaat uit een combi natie van alle regels voor uitgaande verbindingen en taak verdeling. Uitgaande regels zijn incrementeel voor taakverdelings regels. Bekijk het [uitschakelen van de uitgaande NAT voor een taakverdelings regel](#disablesnat) voor het beheren van de effectief uitgaande NAT-omzetting wanneer meerdere regels van toepassing zijn op een virtuele machine. U moet [uitgaande SNAT uitschakelen](#disablesnat) bij het definiëren van een uitgaande regel die hetzelfde open bare IP-adres gebruikt als een taakverdelings regel.
 
-### <a name="scale-outbound-nat-with-multiple-ip-addresses"></a><a name="scale"></a>Outbound NAT schalen met meerdere IP-adressen
+### <a name="scale-outbound-nat-with-multiple-ip-addresses"></a><a name="scale"></a>Uitgaand NAT schalen met meerdere IP-adressen
 
-Hoewel een uitgaande regel kan worden gebruikt met slechts één openbaar IP-adres, verlichten uitgaande regels de configuratielast voor het schalen van uitgaande NAT. U meerdere IP-adressen gebruiken om grootschalige scenario's te plannen en u uitgaande regels gebruiken om [snat-uitputtingsgevoelige](load-balancer-outbound-connections.md#snatexhaust) patronen te beperken.  
+Terwijl een regel voor uitgaande verbindingen met slechts één openbaar IP-adres kan worden gebruikt, wordt door uitgaande regels de configuratie belasting voor het schalen van uitgaande NAT vereenvoudigd. U kunt meerdere IP-adressen gebruiken om te plannen voor grootschalige scenario's en u kunt uitgaande regels gebruiken om te voor komen dat er gevoelige patronen voor de [uitputting van SNAT](load-balancer-outbound-connections.md#snatexhaust) zijn.  
 
-Elk extra IP-adres dat door een frontend wordt verstrekt, biedt 64.000 tijdelijke poorten voor Load Balancer om te gebruiken als SNAT-poorten. Terwijl load balancing of inbound NAT-regels één frontend hebben, breidt de uitgaande regel de frontend-notie uit en maakt meerdere frontends per regel mogelijk.  Met meerdere frontends per regel wordt het aantal beschikbare SNAT-poorten vermenigvuldigd met elk openbaar IP-adres en kunnen grote scenario's worden ondersteund.
+Elk extra IP-adres dat wordt geleverd door een front-end biedt 64.000 tijdelijke poorten voor Load Balancer die als SNAT-poorten kunnen worden gebruikt. Terwijl taak verdeling of binnenkomende NAT-regels één frontend hebben, breidt de uitgaande regel het front-end-principe uit en staat meerdere frontends per regel toe.  Met meerdere frontends per regel wordt het aantal beschik bare SNAT-poorten vermenigvuldigd met elk openbaar IP-adres en kunnen grote scenario's worden ondersteund.
 
-Bovendien u een [openbaar IP-voorvoegsel](https://aka.ms/lbpublicipprefix) rechtstreeks gebruiken met een uitgaande regel.  Het gebruik van openbaar IP-voorvoegsel biedt eenvoudigere schaling en vereenvoudigde white-listing van stromen die afkomstig zijn van uw Azure-implementatie. U een frontend IP-configuratie configureren binnen de Load Balancer-bron om rechtstreeks naar een openbaar IP-adresvoorvoegsel te verwijzen.  Hierdoor kan Load Balancer exclusieve controle hebben over het openbare IP-voorvoegsel en gebruikt de uitgaande regel automatisch alle openbare IP-adressen in het openbare IP-voorvoegsel voor uitgaande verbindingen.  Elk IP-adres binnen het bereik van het openbare IP-voorvoegsel biedt 64.000 tijdelijke poorten per IP-adres voor Load Balancer om te gebruiken als SNAT-poorten.   
+Daarnaast kunt u een [openbaar IP-voor voegsel](https://aka.ms/lbpublicipprefix) rechtstreeks met een uitgaande regel gebruiken.  Met behulp van het voor voegsel openbaar IP-adres kunt u eenvoudig schalen en vereenvoudigd wit-overzicht van stromen die afkomstig zijn van uw Azure-implementatie. U kunt een front-end-IP-configuratie binnen de Load Balancer resource configureren om rechtstreeks naar een open bare IP-adres voorvoegsel te verwijzen.  Hierdoor is Load Balancer exclusieve controle over het open bare IP-voor voegsel en worden alle open bare IP-adressen die zich in het open bare IP-voor voegsel voor uitgaande verbindingen bevinden, automatisch door de uitgaande regel gebruikt.  Elk van de IP-adressen binnen het bereik van het open bare IP-voor voegsel bieden 64.000 tijdelijke poorten per IP-adres om Load Balancer te gebruiken als SNAT-poorten.   
 
-U geen afzonderlijke openbare IP-adresbronnen hebben die zijn gemaakt met het openbare IP-voorvoegsel wanneer u deze optie gebruikt, omdat de regel voor uitgaande volledige controle moet hebben over het openbare IP-voorvoegsel.  Als u meer fijnkorrelige besturingselementen nodig hebt, u afzonderlijke openbare IP-adresbron maken vanuit het openbare IP-voorvoegsel en meerdere openbare IP-adressen afzonderlijk toewijzen aan de voorkant van een uitgaande regel.
+U kunt geen afzonderlijke open bare IP-adres bronnen maken op basis van het open bare IP-voor voegsel wanneer u deze optie gebruikt, omdat de uitgaande regel volledige controle over het open bare IP-voor voegsel moet hebben.  Als u meer nauw keurigere controle nodig hebt, kunt u een afzonderlijke open bare IP-adres bron maken op basis van het open bare IP-voor voegsel en meerdere open bare IP-adressen afzonderlijk aan de frontend van een uitgaande regel toewijzen.
 
-### <a name="tune-snat-port-allocation"></a><a name="snatports"></a>SNAT-poorttoewijzing afstemmen
+### <a name="tune-snat-port-allocation"></a><a name="snatports"></a>Toewijzing van SNAT-poort afstemmen
 
-U uitgaande regels gebruiken om de [automatische SNAT-poorttoewijzing af](load-balancer-outbound-connections.md#preallocatedports) te stemmen op basis van de grootte van de backendpool en meer of minder toe te wijzen dan de automatische SNAT-poorttoewijzing biedt.
+U kunt uitgaande regels gebruiken voor het afstemmen [van de automatische toewijzing van de SNAT-poort op basis van de back-endadresgroep](load-balancer-outbound-connections.md#preallocatedports) en toewijzen van meer of minder dan de automatische toewijzing van de SNAT-poort.
 
-Gebruik de volgende parameter om 10.000 SNAT-poorten per VM (NIC IP-configuratie) toe te wijzen.
+Gebruik de volgende para meter om 10.000 SNAT-poorten per virtuele machine toe te wijzen (NIC IP-configuratie).
  
 
           "allocatedOutboundPorts": 10000
 
-Elk openbaar IP-adres van alle frontends van een uitgaande regel draagt tot 64.000 tijdelijke poorten bij voor gebruik als SNAT-poorten.  Load Balancer wijst SNAT-poorten toe in veelvouden van 8. Als u een waarde opgeeft die niet deelbaar is door 8, wordt de configuratiebewerking geweigerd.  Als u probeert meer SNAT-poorten toe te wijzen dan beschikbaar is op basis van het aantal openbare IP-adressen, wordt de configuratiebewerking geweigerd.  Als u bijvoorbeeld 10.000 poorten per VM toewijst en 7 VM's in een backendpool één openbaar IP-adres zou delen, wordt de configuratie geweigerd (7 x 10.000 SNAT-poorten > 64.000 SNAT-poorten).  U meer openbare IP-adressen toevoegen aan de voorkant van de uitgaande regel om het scenario in te schakelen.
+Elk openbaar IP-adres van alle frontends van een uitgaande regel draagt bij aan Maxi maal 64.000 tijdelijke poorten voor gebruik als SNAT-poorten.  Load Balancer wijst SNAT-poorten toe in veelvouden van 8. Als u een waarde opgeeft die niet deelbaar is door 8, wordt de configuratie bewerking geweigerd.  Als u meer SNAT-poorten probeert toe te wijzen dan beschikbaar zijn op basis van het aantal open bare IP-adressen, wordt de configuratie bewerking geweigerd.  Als u bijvoorbeeld 10.000 poorten per VM toewijst en 7 virtuele machines in een back-end-pool een enkel openbaar IP-adres delen, wordt de configuratie geweigerd (7 x 10.000 SNAT-poorten > 64.000 SNAT-poorten).  U kunt meer open bare IP-adressen toevoegen aan de front-end van de regel voor uitgaande verbindingen om het scenario in te scha kelen.
 
-U terugkeren naar [de automatische SNAT-poorttoewijzing op basis](load-balancer-outbound-connections.md#preallocatedports) van de grootte van de backendpool door 0 op te geven voor het aantal poorten. In dat geval krijgen de eerste 50 VM-exemplaren 1024 poorten, 51-100 VM-exemplaren krijgen 512 enzovoort volgens de tabel.
+U kunt teruggaan naar de [automatische toewijzing van de SNAT-poort op basis van de grootte](load-balancer-outbound-connections.md#preallocatedports) van de back-endadresgroep door 0 op te geven voor het aantal poorten. In dat geval krijgen de eerste 50 VM-exemplaren 1024 poorten, worden 51-100 VM-exemplaren 512 en dus weer op basis van de tabel.
 
-### <a name="control-outbound-flow-idle-timeout"></a><a name="idletimeout"></a>Outbound Flow idle time-out beheren
+### <a name="control-outbound-flow-idle-timeout"></a><a name="idletimeout"></a>Uitgaande time-out voor niet-actieve stroom controleren
 
-Uitgaande regels bieden een configuratieparameter om de niet-actieve time-out van uitgaande stroom te beheren en deze af te koppelen aan de behoeften van uw toepassing.  Uitgaande idle time-outs standaard tot 4 minuten.  De parameter accepteert een waarde van 4 tot 120 tot specifieke het aantal minuten voor de niet-actieve time-out voor stromen die overeenkomen met deze specifieke regel.
+Uitgaande regels bieden een configuratie parameter voor het beheren van de uitgaande time-out voor niet-actieve stroom en om deze te vergelijken met de behoeften van uw toepassing.  Uitgaande time-outs voor inactiviteit zijn standaard ingesteld op 4 minuten.  De para meter accepteert een waarde van 4 tot 120 tot en met een specifiek aantal minuten voor de time-out voor inactiviteit voor stromen die overeenkomen met deze specifieke regel.
 
-Gebruik de volgende parameter om de uitgaande idle time-out in te stellen op 1 uur:
+Gebruik de volgende para meter om de uitgaande time-out voor inactiviteit in te stellen op 1 uur:
 
           "idleTimeoutInMinutes": 60
 
-### <a name="enable-tcp-reset-on-idle-timeout"></a><a name="tcprst"></a><a name="tcpreset"></a> TCP-reset inschakelen bij inactieve time-out
+### <a name="enable-tcp-reset-on-idle-timeout"></a><a name="tcprst"></a><a name="tcpreset"></a> TCP Reset inschakelen bij time-out inactiviteit
 
-Het standaardgedrag van Load Balancer is om de stroom stil te laten vallen wanneer de uitgaande idle time-out is bereikt.  Met de parameter enableTCPReset u een voorspelbaarder toepassingsgedrag inschakelen en bepalen of u bidirectionele TCP Reset (TCP RESET) wilt verzenden op de tijd van uitgaande idle time-out. 
+Het standaard gedrag van Load Balancer is om de stroom op de achtergrond neer te zetten wanneer de uitgaande time-out voor inactiviteit is bereikt.  Met de para meter enableTCPReset kunt u een meer voorspel bare toepassings gedrag inschakelen en bepalen of u een bidirectionele TCP Reset (TCP RST) wilt verzenden wanneer de uitgaande time-out voor inactiviteit is verlopen. 
 
-Gebruik de volgende parameter om TCP Reset in te schakelen op een uitgaande regel:
+Gebruik de volgende para meter om TCP reset in te scha kelen voor een uitgaande regel:
 
            "enableTcpReset": true
 
-Controleer [TCP Reset op idle time-out](https://aka.ms/lbtcpreset) voor details, inclusief beschikbaarheid van de regio.
+[TCP Reset controleren bij time-out voor inactiviteit](https://aka.ms/lbtcpreset) voor meer informatie over de beschik baarheid van regio's.
 
-### <a name="support-both-tcp-and-udp-transport-protocols-with-a-single-rule"></a><a name="proto"></a>Ondersteuning voor zowel TCP- als UDP-transportprotocollen met één regel
+### <a name="support-both-tcp-and-udp-transport-protocols-with-a-single-rule"></a><a name="proto"></a>Ondersteuning voor TCP-en UDP-transport protocollen met één regel
 
-U zult waarschijnlijk All willen gebruiken voor het transportprotocol van de uitgaande regel, maar u de uitgaande regel ook toepassen op een specifiek transportprotocol als dit nodig is.
+Waarschijnlijk wilt u ' all ' gebruiken voor het transport protocol van de uitgaande regel, maar u kunt ook de uitgaande regel Toep assen op een specifiek Transport Protocol, ook als dat nodig is.
 
-Gebruik de volgende parameter om het protocol in te stellen op TCP en UDP:
+Gebruik de volgende para meter om het protocol in te stellen op TCP en UDP:
 
           "protocol": "All"
 
-### <a name="disable-outbound-nat-for-a-load-balancing-rule"></a><a name="disablesnat"></a>Uitgaande NAT uitschakelen voor een regel voor het balanceren van de last
+### <a name="disable-outbound-nat-for-a-load-balancing-rule"></a><a name="disablesnat"></a>Uitgaande NAT uitschakelen voor een taakverdelings regel
 
-Zoals eerder vermeld, bieden regels voor taakverdeling automatische programmering van uitgaande NAT. Sommige scenario's profiteren er echter van of vereisen dat u de automatische programmering van uitgaande NAT uitschakelt door de regel voor taakverdeling, zodat u het gedrag beheren of verfijnen.  Uitgaande regels hebben scenario's waarin het belangrijk is om de automatische uitgaande NAT-programmering te stoppen.
+Zoals eerder vermeld, bieden de taakverdelings regels automatische programmering van uitgaande NAT. Sommige scenario's profiteren echter of vereisen dat u de automatische programmering van uitgaande NAT door de taakverdelings regel uitschakelt, zodat u het gedrag kunt beheren of verfijnen.  Uitgaande regels hebben scenario's waarbij het belang rijk is om de automatische uitgaande NAT-programmering te stoppen.
 
-U deze parameter op twee manieren gebruiken:
-- Optionele onderdrukking van het gebruik van het binnenkomende IP-adres voor uitgaande NAT.  Uitgaande regels zijn incrementeel voor regelverdelingsregels en met deze parameterset heeft de regel voor uitgaande regels de controle.
+U kunt deze para meter op twee manieren gebruiken:
+- Optionele onderdrukking van het gebruik van het inkomende IP-adres voor uitgaande NAT.  Uitgaande regels zijn incrementeel voor taakverdelings regels en met deze parameterset, wordt de regel voor uitgaande verbindingen in beheer.
   
-- Stem de uitgaande NAT-parameters af van een IP-adres dat tegelijkertijd wordt gebruikt voor binnenkomend en uitgaand.  De automatische uitgaande NAT-programmering moet worden uitgeschakeld om een uitgaande regel de controle te laten overnemen.  Om bijvoorbeeld de SNAT-poorttoewijzing te wijzigen van een adres dat ook voor binnenkomenwordt gebruikt, moet deze parameter worden ingesteld op true.  Als u een uitgaande regel probeert te gebruiken om de parameters van een IP-adres te herdefiniëren dat ook wordt gebruikt voor binnenkomende en geen uitgaande NAT-programmering van de regel voor taakverdeling hebt vrijgegeven, mislukt de bewerking om een uitgaande regel te configureren.
+- Stem de uitgaande NAT-para meters af van een IP-adres dat tegelijkertijd wordt gebruikt voor inkomend en uitgaand.  De automatische uitgaand NAT-programmering moet worden uitgeschakeld zodat een regel voor uitgaand verkeer kan worden beheerd.  Als u bijvoorbeeld de toewijzing van de SNAT-poort van een adres wilt wijzigen, moet deze para meter worden ingesteld op True.  Als u probeert een regel voor uitgaande verbindingen te gebruiken om de para meters van een IP-adres dat ook wordt gebruikt voor inkomend verkeer opnieuw te definiëren en geen uitgaande NAT-programmering van de taakverdelings regel heeft vrijgegeven, mislukt de bewerking voor het configureren van een uitgaande regel.
 
 >[!IMPORTANT]
-> Uw virtuele machine heeft geen uitgaande connectiviteit als u deze parameter op true instelt en geen uitgaande regel hebt (of [openbaar IP-scenario op instantieniveau](load-balancer-outbound-connections.md#ilpip) om uitgaande connectiviteit te definiëren.  Sommige bewerkingen van uw vm of uw toepassing zijn mogelijk afhankelijk van het beschikbaar hebben van uitgaande connectiviteit. Zorg ervoor dat u de afhankelijkheden van uw scenario begrijpt en de impact van het aanbrengen van deze wijziging hebt overwogen.
+> De virtuele machine heeft geen uitgaande verbinding als u deze para meter instelt op True en geen uitgaande regel (of [openbaar IP-scenario op exemplaar niveau](load-balancer-outbound-connections.md#ilpip) hebt om uitgaande connectiviteit te definiëren.  Sommige bewerkingen van uw virtuele machine of uw toepassing kunnen afhankelijk zijn van een uitgaande verbinding. Zorg ervoor dat u bekend bent met de afhankelijkheden van uw scenario en dat dit gevolgen heeft voor het maken van deze wijziging.
 
-Met deze configuratieparameter u uitgaande SNAT uitschakelen op de regel voor taakverdeling:
+U kunt uitgaande SNAT uitschakelen op de taakverdelings regel met deze configuratie parameter:
 
 ```json
       "loadBalancingRules": [
@@ -135,82 +135,82 @@ Met deze configuratieparameter u uitgaande SNAT uitschakelen op de regel voor ta
       ]
 ```
 
-De parameter disableOutboundSNAT defaults to false, wat betekent dat de **regel** voor taakverdeling automatische uitgaande NAT biedt als spiegelbeeld van de configuratie van de regelvan de taakverdeling.  
+De para meter Disableoutboundsnat toegevoegd **wordt** standaard ingesteld op False, wat betekent dat de taakverdelings regel automatische uitgaande NAT biedt als spiegel beeld van de configuratie van de taakverdelings regel.  
 
-Als u OutboundSnat op true instelt op de regel voor taakverdeling, geeft de regel voor taakverdeling de controle vrij over de anders automatische uitgaande NAT-programmering.  Uitgaande SNAT als gevolg van de regel voor taakverdeling is uitgeschakeld.
+Als u Disableoutboundsnat toegevoegd instelt op True voor de taakverdelings regel, geeft de taakverdelings regel de controle over de andere automatische uitgaande NAT-programmering.  Uitgaande SNAT als gevolg van de taakverdelings regel is uitgeschakeld.
 
-### <a name="reuse-existing-or-define-new-backend-pools"></a>Bestaande bestaande backendpools opnieuw gebruiken of nieuwe backendpools definiëren
+### <a name="reuse-existing-or-define-new-backend-pools"></a>Bestaande back-end-Pools opnieuw gebruiken of definiëren
 
-Uitgaande regels introduceren geen nieuw concept voor het definiëren van de groep VM's waarop de regel van toepassing zou moeten zijn.  In plaats daarvan hergebruiken ze het concept van een backendpool, die ook wordt gebruikt voor regels voor het balanceren van de lasten. U dit gebruiken om de configuratie te vereenvoudigen door een bestaande backendpooldefinitie opnieuw te gebruiken of er een te maken die specifiek voor een uitgaande regel is.
+Uitgaande regels introduceren geen nieuw concept voor het definiëren van de groep Vm's waarop de regel van toepassing moet zijn.  In plaats daarvan wordt het concept van een back-end-pool hergebruikt, dat ook wordt gebruikt voor taakverdelings regels. U kunt dit gebruiken om de configuratie te vereenvoudigen door een bestaande back-end-groeps definitie opnieuw te gebruiken of een specifiek voor een uitgaande regel te maken.
 
 ## <a name="scenarios"></a>Scenario's
 
-### <a name="groom-outbound-connections-to-a-specific-set-of-public-ip-addresses"></a><a name="groom"></a>Uitgaande verbindingen verzorgen met een specifieke set openbare IP-adressen
+### <a name="groom-outbound-connections-to-a-specific-set-of-public-ip-addresses"></a><a name="groom"></a>Uitgaande verbindingen met een specifieke set open bare IP-adressen opschonen
 
-U een uitgaande regel gebruiken om uitgaande verbindingen te verzorgen die lijken te zijn afkomstig van een specifieke set openbare IP-adressen om whitelisting-scenario's te vergemakkelijken.  Dit openbare IP-adres van de bron kan hetzelfde zijn als gebruikt door een regel voor taakverdeling of een andere set openbare IP-adressen dan die wordt gebruikt door een regel voor taakverdeling.  
+U kunt een uitgaande regel voor het opschonen van uitgaande verbindingen gebruiken om aan te geven dat ze afkomstig zijn uit een specifieke set open bare IP-adressen om white list-scenario's te vereenvoudigen.  Het open bare IP-adres van de bron kan hetzelfde zijn als het gebruik van een taakverdelings regel of een andere set open bare IP-adressen dan wordt gebruikt door een taakverdelings regel.  
 
-1. Openbaar [IP-voorvoegsel](https://aka.ms/lbpublicipprefix) (of openbare IP-adressen maken vanaf openbaar IP-voorvoegsel)
+1. [Openbaar IP-voor voegsel](https://aka.ms/lbpublicipprefix) (of open bare IP-adressen van open bare IP-voor voegsel) maken
 2. Een openbare Standard Load Balancer maken
-3. Frontends maken die verwijzen naar het openbare IP-voorvoegsel (of openbare IP-adressen) dat u wilt gebruiken
-4. Een backendpool opnieuw gebruiken of een backendpool maken en de VM's in een backendpool van de openbare Load Balancer plaatsen
-5. Een uitgaande regel configureren op de openbare Load Balancer om uitgaande NAT voor deze VM's te programmeren met behulp van de frontends
+3. Front-end maken die verwijst naar het open bare IP-voor voegsel (of open bare IP-adressen) die u wilt gebruiken
+4. Hergebruik een back-end-pool of maak een back-end-pool en plaats de virtuele machines in een back-end-groep van de open bare Load Balancer
+5. Een uitgaande regel voor de open bare Load Balancer configureren voor het Program meren van uitgaande NAT voor deze Vm's met de frontends
    
-Als u niet wilt dat de regel voor het balanceren van de last en de regel voor uitgaande regels wordt gebruikt, moet u [uitgaande SNAT uitschakelen](#disablesnat) op de regel voor het balanceren van de last.
+Als u niet wilt dat de taakverdelings regel voor uitgaand verkeer wordt gebruikt, moet u [uitgaand SNAT uitschakelen](#disablesnat) op de taakverdelings regel.
 
-### <a name="modify-snat-port-allocation"></a><a name="modifysnat"></a>SNAT-poorttoewijzing wijzigen
+### <a name="modify-snat-port-allocation"></a><a name="modifysnat"></a>Toewijzing van SNAT-poort wijzigen
 
-U uitgaande regels gebruiken om de [automatische SNAT-poorttoewijzing](load-balancer-outbound-connections.md#preallocatedports)af te stemmen op basis van de grootte van de backendpool.
+U kunt uitgaande regels gebruiken voor het afstemmen van de [automatische toewijzing van de SNAT-poort op basis van de back-endadresgroep](load-balancer-outbound-connections.md#preallocatedports).
 
-Als u bijvoorbeeld twee virtuele machines hebt die één openbaar IP-adres delen voor uitgaande NAT, u het aantal SNAT-poorten dat is toegewezen vanaf de standaard 1024-poorten verhogen als u SNAT-uitputting ondervindt. Elk openbaar IP-adres kan tot 64.000 tijdelijke poorten bijdragen.  Als u een uitgaande regel configureert met één openbare IP-adresfrontend, u in totaal 64.000 SNAT-poorten distribueren naar VM's in de backendpool.  Voor twee VM's kunnen maximaal 32.000 SNAT-poorten worden toegewezen met een uitgaande regel (2x 32.000 = 64.000).
+Als u bijvoorbeeld twee virtuele machines hebt die één openbaar IP-adres voor uitgaande NAT delen, kunt u het aantal toegewezen SNAT-poorten van de standaard 1024-poorten verhogen als u de SNAT-uitputting ondervindt. Elk openbaar IP-adres kan bijdragen aan Maxi maal 64.000 tijdelijke poorten.  Als u een uitgaande regel configureert met één openbaar IP-adres front-end, kunt u een totaal van 64.000 SNAT-poorten distribueren naar Vm's in de back-end-pool.  Voor twee virtuele machines kunnen Maxi maal 32.000 SNAT-poorten worden toegewezen met een uitgaande regel (2x 32.000 = 64.000).
 
-Bekijk [uitgaande verbindingen](load-balancer-outbound-connections.md) en de details over hoe [SNAT-poorten](load-balancer-outbound-connections.md#snat) worden toegewezen en gebruikt.
+Controleer de [uitgaande verbindingen](load-balancer-outbound-connections.md) en de details over de manier waarop de [SNAT](load-balancer-outbound-connections.md#snat) -poorten worden toegewezen en gebruikt.
 
-### <a name="enable-outbound-only"></a><a name="outboundonly"></a>Alleen uitgaand inschakelen
+### <a name="enable-outbound-only"></a><a name="outboundonly"></a>Alleen uitgaand verkeer inschakelen
 
-U een openbare Standaardload Balancer gebruiken om uitgaande NAT te bieden voor een groep VM's. In dit scenario u zelf een uitgaande regel gebruiken, zonder dat er aanvullende regels nodig zijn.
+U kunt een open bare Standard Load Balancer gebruiken om uitgaande NAT te bieden voor een groep Vm's. In dit scenario kunt u zelf een regel voor uitgaande verbindingen gebruiken, zonder dat u extra regels nodig hebt.
 
-#### <a name="outbound-nat-for-vms-only-no-inbound"></a>Uitgaande NAT alleen voor VM's (geen binnenkomende)
+#### <a name="outbound-nat-for-vms-only-no-inbound"></a>Alleen uitgaand NAT voor Vm's (geen inkomend)
 
-Definieer een openbare StandaardLoad Balancer, plaats de VM's in de backendpool en configureer een uitgaande regel om uitgaande NAT te programmeren en de uitgaande verbindingen te verzorgen om afkomstig te zijn van een specifiek openbaar IP-adres. U ook een openbaar IP-voorvoegsel gebruiken om de bron van uitgaande verbindingen te vereenvoudigen.
+Definieer een open bare Standard Load Balancer, plaats de virtuele machines in de back-end-pool en configureer een uitgaande regel voor het Program meren van uitgaande NAT en schoon de uitgaande verbindingen op die afkomstig zijn van een specifiek openbaar IP-adres. U kunt ook een openbaar IP-voor voegsel gebruiken dat is vereenvoudigd wit: de bron van uitgaande verbindingen weer geven.
 
-1. Maak een openbare Standaard Load Balancer.
-2. Maak een backend pool en plaats de VM's in een backend pool van de openbare Load Balancer.
-3. Configureer een uitgaande regel op de openbare Load Balancer om uitgaande NAT voor deze VM's te programmeren.
+1. Maak een open bare Standard Load Balancer.
+2. Maak een back-end-pool en plaats de virtuele machines in een back-end-groep van de open bare Load Balancer.
+3. Een uitgaande regel configureren op de open bare Load Balancer om uitgaande NAT voor deze Vm's te Program meren.
 
-#### <a name="outbound-nat-for-internal-standard-load-balancer-scenarios"></a>Uitgaande NAT voor interne standaardloadbalancerscenario's
+#### <a name="outbound-nat-for-internal-standard-load-balancer-scenarios"></a>Uitgaande NAT voor interne Standard Load Balancer scenario's
 
-Bij het gebruik van een interne Standaard Load Balancer is uitgaande NAT pas beschikbaar als uitgaande connectiviteit expliciet is gedeclareerd. Met de volgende stappen u uitgaande connectiviteit definiëren met behulp van een uitgaande regel om uitgaande connectiviteit voor VM's te maken achter een interne standaardloadbalancer:
+Wanneer u een interne Standard Load Balancer gebruikt, is uitgaand NAT niet beschikbaar totdat de uitgaande connectiviteit expliciet is gedeclareerd. Met de volgende stappen kunt u uitgaande connectiviteit definiëren met behulp van een uitgaande regel voor het maken van uitgaande connectiviteit voor Vm's achter een interne Standard Load Balancer:
 
-1. Maak een openbare Standaard Load Balancer.
-2. Maak een backend pool en plaats de VM's in een backend pool van de openbare Load Balancer naast de interne Load Balancer.
-3. Configureer een uitgaande regel op de openbare Load Balancer om uitgaande NAT voor deze VM's te programmeren.
+1. Maak een open bare Standard Load Balancer.
+2. Maak een back-end-pool en plaats de virtuele machines in een back-end-groep van de open bare Load Balancer naast de interne Load Balancer.
+3. Een uitgaande regel configureren op de open bare Load Balancer om uitgaande NAT voor deze Vm's te Program meren.
 
-#### <a name="enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a>Beide TCP-& UDP-protocollen inschakelen voor uitgaande NAT met een openbare standaardloadbalansr
+#### <a name="enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a>TCP & UDP-protocollen inschakelen voor uitgaande NAT met een openbaar Standard Load Balancer
 
-- Bij het gebruik van een openbare Standaard Load Balancer komt de automatische uitgaande NAT-programmering overeen met het transportprotocol van de regel voor het balanceren van de lasten.  
+- Wanneer u een open bare Standard Load Balancer gebruikt, komt de automatische uitgaande NAT-programmering die overeenkomt met het transport protocol van de taakverdelings regel.  
 
-   1. Schakel uitgaande SNAT uit op de regel voor taakverdeling.
-   2. Configureer een uitgaande regel op dezelfde load balancer.
-   3. Gebruik de backendpool die al door uw VM's wordt gebruikt.
-   4. Geef 'protocol': 'Alles' op als onderdeel van de regel uitgaan.
+   1. Schakel uitgaande SNAT uit op de taakverdelings regel.
+   2. Een uitgaande regel configureren op hetzelfde Load Balancer.
+   3. Gebruik de back-end-groep die al door uw virtuele machines wordt gebruikt.
+   4. Geef ' Protocol ': ' all ' op als onderdeel van de uitgaande regel.
 
-- Wanneer alleen inkomende NAT-regels worden gebruikt, wordt er geen uitgaande NAT verstrekt.
+- Wanneer alleen binnenkomende NAT-regels worden gebruikt, wordt er geen uitgaand NAT-verkeer gegeven.
 
-   1. Plaats VM's in een backend pool.
-   2. Definieer een of meer frontend IP-configuraties met openbare IP-adres(en) of openbaar IP-voorvoegsel.
-   3. Configureer een uitgaande regel op dezelfde load balancer.
-   4. "protocol" opgeven: "Alles" als onderdeel van de regel outbound
+   1. Virtuele machines in een back-end-groep plaatsen.
+   2. Definieer een of meer frontend-IP-configuraties met een openbaar IP-adres (sen) of een openbaar IP-voor voegsel.
+   3. Een uitgaande regel configureren op hetzelfde Load Balancer.
+   4. Geef ' Protocol ': ' all ' op als onderdeel van de uitgaande regel
 
 ## <a name="limitations"></a>Beperkingen
 
-- Het maximum aantal bruikbare efemere poorten per frontend IP-adres is 64.000.
-- Het bereik van de configureerbare uitgaande idle time-out is 4 tot 120 minuten (240 tot 7200 seconden).
-- Load Balancer ondersteunt geen ICMP voor uitgaande NAT.
-- Uitgaande regels kunnen alleen worden toegepast op de primaire IP-configuratie van een NIC.  Meerdere NIC's worden ondersteund.
+- Het maximale aantal bruikbare tijdelijke poorten per frontend-IP-adres is 64.000.
+- Het bereik van de Configureer bare uitgaande time-out voor inactiviteit is 4 tot 120 minuten (240 tot 7200 seconden).
+- Load Balancer biedt geen ondersteuning voor ICMP voor uitgaande NAT.
+- Uitgaande regels kunnen alleen worden toegepast op de primaire IP-configuratie van een NIC.  Er worden meerdere Nic's ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over het gebruik [van Load Balancer voor uitgaande verbindingen](load-balancer-outbound-connections.md).
 - Meer informatie over [Standard Load Balancer](load-balancer-standard-overview.md).
-- Meer informatie over [bidirectionele TCP Reset bij inactieve time-out](load-balancer-tcp-reset.md).
-- [Uitgaande regels configureren met Azure CLI 2.0](configure-load-balancer-outbound-cli.md).
+- Meer informatie over [BIDIRECTIONELE TCP Reset bij time-out voor inactiviteit](load-balancer-tcp-reset.md).
+- [Configureer regels voor uitgaande verbindingen met Azure CLI 2,0](configure-load-balancer-outbound-cli.md).

@@ -1,5 +1,5 @@
 ---
-title: Bing Entity Search Java client library quickstart
+title: Snelstartgids voor Bing Entity Search java-client bibliotheek
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,21 +9,21 @@ ms.topic: include
 ms.date: 03/06/2020
 ms.author: aahi
 ms.openlocfilehash: 8c987aa14e922573d01aa35fab609edf01e109b4
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79136772"
 ---
-Gebruik deze snelstart om te beginnen met zoeken naar entiteiten met de Bing Entity Search-clientbibliotheek voor Java. Hoewel Bing Entity Search een REST API heeft die compatibel is met de meeste programmeertalen, biedt de clientbibliotheek een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub.](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch)
+Gebruik deze Quick Start om te beginnen met zoeken naar entiteiten met de Bing Entity Search-client bibliotheek voor Java. Hoewel Bing Entity Search een REST API compatibel met de meeste programmeer talen heeft, biedt de client bibliotheek een eenvoudige manier om de service te integreren in uw toepassingen. De bron code voor dit voor beeld is te vinden op [github](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch).
 
 ## <a name="prerequisites"></a>Vereisten
 
 * De [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
 
-* De bing-entiteitzoekende clientbibliotheek voor Java
+* De Bing Entity Search-client bibliotheek voor Java
 
-Installeer de afhankelijkheden van de Bing Entity Search-clientbibliotheek met Maven, Gradle of een ander afhankelijkheidsbeheersysteem. Het Maven-POM-bestand vereist de declaratie:
+Installeer de Bing Entity Search-client bibliotheek afhankelijkheden met behulp van Maven, Gradle of een ander afhankelijk beheer systeem. Het Maven-POM-bestand vereist de declaratie:
 
 ```xml
 <dependency>
@@ -63,7 +63,7 @@ Installeer de afhankelijkheden van de Bing Entity Search-clientbibliotheek met M
 
 ## <a name="create-a-search-client"></a>Een zoekclient maken
 
-1. Implementeer de client `dominantEntityLookup`, die uw API-eindpunt en een exemplaar van de klasse `ServiceClientCredentials` vereist. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
+1. Implementeer de client `dominantEntityLookup`, die uw API-eindpunt en een exemplaar van de klasse `ServiceClientCredentials` vereist. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
@@ -146,6 +146,6 @@ Installeer de afhankelijkheden van de Bing Entity Search-clientbibliotheek met M
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app van één pagina maken](../../tutorial-bing-entities-search-single-page-app.md).
+> [Een web-app van één pagina maken](../../tutorial-bing-entities-search-single-page-app.md)
 
 * [Wat is de Bing Entiteiten zoeken-API?](../../overview.md)

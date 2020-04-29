@@ -1,6 +1,6 @@
 ---
-title: IS_DEFINED in Azure Cosmos DB-querytaal
-description: Meer informatie over sql-systeemfunctie IS_DEFINED in Azure Cosmos DB.
+title: IS_DEFINED in Azure Cosmos DB query taal
+description: Meer informatie over de functie IS_DEFINED van SQL-systeem in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a5fcaf52d8e9e6b942a95f0b0c43f3f654c5d5d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303848"
 ---
 # <a name="is_defined-azure-cosmos-db"></a>IS_DEFINED (Azure Cosmos DB)
@@ -25,22 +25,22 @@ IS_DEFINED(<expr>)
   
 ## <a name="arguments"></a>Argumenten
   
-*Expr*  
-   Is elke uitdrukking.  
+*expressie*  
+   Is een expressie.  
   
-## <a name="return-types"></a>Retourtypen
+## <a name="return-types"></a>Retour typen
   
-  Geeft als resultaat een Booleaanse expressie.  
+  Retourneert een Boole-expressie.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voorbeeld wordt gecontroleerd op de aanwezigheid van een eigenschap in het opgegeven JSON-document. De eerste keert waar omdat "a" aanwezig is, maar de tweede retourneert vals omdat "b" afwezig is.  
+  In het volgende voor beeld wordt gecontroleerd op de aanwezigheid van een eigenschap binnen het opgegeven JSON-document. De eerste retourneert waar, omdat "a" aanwezig is, maar de tweede retourneert onwaar omdat "b" ontbreekt.  
   
 ```sql
 SELECT IS_DEFINED({ "a" : 5 }.a) AS isDefined1, IS_DEFINED({ "a" : 5 }.b) AS isDefined2 
 ```  
   
- Hier is het resultaat ingesteld.  
+ Dit is de resultatenset.  
   
 ```json
 [{"isDefined1":true,"isDefined2":false}]  
@@ -48,10 +48,10 @@ SELECT IS_DEFINED({ "a" : 5 }.a) AS isDefined1, IS_DEFINED({ "a" : 5 }.b) AS isD
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeemfunctie zal profiteren van een [bereikindex](index-policy.md#includeexclude-strategy).
+Deze systeem functie maakt deel uit van een [bereik index](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Typecontrolefuncties Azure Cosmos DB](sql-query-type-checking-functions.md)
-- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
+- [Type controleren van functies Azure Cosmos DB](sql-query-type-checking-functions.md)
+- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

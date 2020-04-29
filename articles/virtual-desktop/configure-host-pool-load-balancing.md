@@ -1,6 +1,6 @@
 ---
-title: Taakverdeling voor Windows Virtual Desktop configureren - Azure
-description: De taakverdelingsmethode configureren voor een Windows Virtual Desktop-omgeving.
+title: Virtuele Windows-bureau blad-taak verdeling configureren-Azure
+description: De taakverdelings methode configureren voor een virtuele Windows-desktop omgeving.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,46 +9,46 @@ ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 5d8670994791e360f5e3b30b90b4bea5d55464b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79128305"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>De taakverdelingsmethode voor Windows Virtual Desktop configureren
 
-Als u de taakverdelingsmethode voor een hostgroep configureert, u de Windows Virtual Desktop-omgeving aanpassen aan uw behoeften.
+Als u de taakverdelings methode voor een hostgroep configureert, kunt u de virtuele Windows-bureaublad omgeving aanpassen aan uw behoeften.
 
 >[!NOTE]
-> Dit geldt niet voor een permanente groep hostop je bureaublad, omdat gebruikers altijd een 1:1-toewijzing hebben voor een sessiehost in de hostgroep.
+> Dit is niet van toepassing op een permanente bureau blad-hostgroep, omdat gebruikers altijd een 1:1-koppeling hebben met een sessie-host binnen de hostgroep.
 
-## <a name="configure-breadth-first-load-balancing"></a>Breedte-eerste taakverdeling configureren
+## <a name="configure-breadth-first-load-balancing"></a>Gelijkmatige taak verdeling configureren
 
-Breedte-first load balancing is de standaardconfiguratie voor nieuwe niet-permanente hostpools. Breedte-first load balancing verdeelt nieuwe gebruikerssessies over alle beschikbare sessiehosts in de hostpool. Wanneer u de taakverdeling breedte-eerste configureert, u een maximale sessielimiet per sessiehost instellen in de hostgroep.
+Breedte-eerste taak verdeling is de standaard configuratie voor nieuwe niet-permanente hostgroepen. Breed-First Load Balancing distribueert nieuwe gebruikers sessies over alle beschik bare sessie-hosts in de hostgroep. Bij het configureren van gelijkmatige taak verdeling kunt u een maximum aantal sessies per sessiehost instellen in de hostgroep.
 
-Download en importeer eerst [de Windows Virtual Desktop PowerShell-module](/powershell/windows-virtual-desktop/overview/) om te gebruiken in uw PowerShell-sessie als u dat nog niet hebt gedaan. Voer daarna de volgende cmdlet uit om u aan te melden bij uw account:
+[Down load en Importeer eerst de Windows Virtual Desktop Power shell-module](/powershell/windows-virtual-desktop/overview/) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan. Daarna voert u de volgende cmdlet uit om u aan te melden bij uw account:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
-Voer de volgende PowerShell-cmdlet uit om een hostgroep te configureren om de taakverdeling voor de breedte-eerste te uitvoeren zonder de maximale sessielimiet aan te passen:
+Voer de volgende Power shell-cmdlet uit om een hostgroep zodanig te configureren dat de taak verdeling breed is zonder de maximale sessie limiet aan te passen:
 
 ```powershell
 Set-RdsHostPool <tenantname> <hostpoolname> -BreadthFirstLoadBalancer
 ```
 
-Voer de volgende PowerShell-cmdlet uit om een hostgroep te configureren om de taakverdeling voor breedte-eerste te implementeren en een nieuwe maximale sessielimiet te gebruiken:
+Voer de volgende Power shell-cmdlet uit om een hostgroep zodanig te configureren dat de taak verdeling breed is en een nieuwe maximale sessie limiet te gebruiken:
 
 ```powershell
 Set-RdsHostPool <tenantname> <hostpoolname> -BreadthFirstLoadBalancer -MaxSessionLimit ###
 ```
 
-## <a name="configure-depth-first-load-balancing"></a>Diepte-first load balancing configureren
+## <a name="configure-depth-first-load-balancing"></a>Diepte configureren-eerste taak verdeling
 
-Diepte-first load balancing distribueert nieuwe gebruikerssessies naar een beschikbare sessiehost met het hoogste aantal verbindingen, maar heeft de maximale sessielimietdrempel niet bereikt. Wanneer u diepte-first load balancing configureert, **moet** u een maximale sessielimiet per sessiehost instellen in de hostgroep.
+Diepte: voor de taak verdeling worden nieuwe gebruikers sessies gedistribueerd naar een beschik bare sessiehost met het hoogste aantal verbindingen, maar de drempel waarde voor de maximale sessie limiet is niet bereikt. Bij het configureren van diepte-eerste taak verdeling **moet** u een maximum aantal sessies per sessiehost instellen in de hostgroep.
 
-Voer de volgende PowerShell-cmdlet uit om een hostpool te configureren om eerst een diepte-eerste loadbalancing uit te voeren:
+Voer de volgende Power shell-cmdlet uit om een hostgroep te configureren voor het uitvoeren van diepte-eerste taak verdeling:
 
 ```powershell
 Set-RdsHostPool <tenantname> <hostpoolname> -DepthFirstLoadBalancer -MaxSessionLimit ###

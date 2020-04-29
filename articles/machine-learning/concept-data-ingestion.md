@@ -1,7 +1,7 @@
 ---
-title: Opties voor gegevensopname
+title: Opties voor gegevens opname
 titleSuffix: Azure Machine Learning
-description: Meer informatie over opties voor het innemen van gegevens voor het trainen van uw machine learning-modellen.
+description: Meer informatie over opties voor gegevens opname voor het trainen van uw machine learning-modellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,67 +11,67 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79086889"
 ---
-# <a name="data-ingestion-in-azure-machine-learning"></a>Gegevensopname in Azure Machine Learning
+# <a name="data-ingestion-in-azure-machine-learning"></a>Gegevens opname in Azure Machine Learning
 
-In dit artikel leert u de voor- en nadelen van de volgende opties voor gegevensopname die beschikbaar zijn met Azure Machine Learning. 
+In dit artikel vindt u informatie over de voor-en nadelen van de volgende opties voor gegevens opname die beschikbaar zijn met Azure Machine Learning. 
 
-1. [Azure Data Factory-pijplijnen](#use-azure-data-factory)
-2. [Azure Machine Learning Python SDK](#use-the-python-sdk)
+1. [Azure Data Factory](#use-azure-data-factory) pijp lijnen
+2. [Azure Machine Learning python-SDK](#use-the-python-sdk)
 
-Gegevensopname is het proces waarbij ongestructureerde gegevens uit één of meerdere bronnen worden geëxtraheerd en vervolgens worden voorbereid op het trainen van machine learning-modellen. Het is ook tijdintensief, vooral als het handmatig gebeurt, en als u grote hoeveelheden gegevens uit meerdere bronnen hebt. Het automatiseren van deze inspanning maakt resources vrij en zorgt ervoor dat uw modellen de meest recente en toepasselijke gegevens gebruiken.
+Gegevens opname is het proces waarin ongestructureerde gegevens worden geëxtraheerd uit een of meer bronnen en vervolgens worden voor bereid voor de trainings machine learning modellen. Het is ook tijdrovend, vooral als hand matig wordt gedaan, en als u grote hoeveel heden gegevens uit meerdere bronnen hebt. Als u deze inspanning automatiseert, worden bronnen vrijgemaakt en kunnen uw modellen de meest recente en toepasselijke gegevens gebruiken.
 
-Azure Data Factory (ADF) is speciaal gebouwd om gegevens te extraheren, te laden en te transformeren, maar met de Python SDK u een aangepaste codeoplossing ontwikkelen voor basistaken voor het innemen van gegevens. Als geen van beide helemaal is wat u nodig hebt, u ADF en de Python SDK ook samen gebruiken om een algehele workflow voor gegevensopname te maken die aan uw behoeften voldoet. 
+Azure Data Factory (ADF) is speciaal ontworpen voor het uitpakken, laden en transformeren van gegevens, maar met de python-SDK kunt u een aangepaste code oplossing ontwikkelen voor basis taken voor gegevens opname. Als dat niet het geval is, kunt u ook ADF en de python-SDK gebruiken om een algemene werk stroom voor gegevens opname te maken die aan uw behoeften voldoet. 
 
 ## <a name="use-azure-data-factory"></a>Azure Data Factory gebruiken
 
-[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) biedt native ondersteuning voor gegevensbronbewaking en triggers voor gegevensopnamepijplijnen.  
+[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) biedt systeem eigen ondersteuning voor de bewaking van gegevens bronnen en triggers voor gegevens opname pijplijnen.  
 
-In de volgende tabel worden de voor- en nadelen voor het gebruik van Azure Data Factory voor uw gegevensopnameworkflows samengevat.
+De volgende tabel bevat een overzicht van de voor-en nadelen voor het gebruik van Azure Data Factory voor uw werk stromen voor gegevens opname.
 
 |Voordelen|Nadelen
 ---|---
-Speciaal gebouwd om gegevens te extraheren, te laden en te transformeren.|Biedt momenteel een beperkte set azure data factory-pijplijntaken 
-Hiermee u gegevensgestuurde workflows maken voor het orkestreren van gegevensverplaatsingen en transformaties op schaal.|Duur te bouwen en te onderhouden. Zie [de prijspagina](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) van Azure Data Factory voor meer informatie.
-Geïntegreerd met verschillende Azure-hulpprogramma's zoals [Azure Databricks](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook) en [Azure-functies](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity) | Draait scripts niet native, maar is afhankelijk van afzonderlijke compute voor scriptruns 
-Native ondersteunt gegevensbron geactiveerde gegevens opname| 
-Gegevensvoorbereiding en modeltrainingsprocessen staan los van elkaar.|
-Ingesloten gegevensregelmogelijkheid voor Azure Data Factory-gegevensstromen|
-Biedt een low-code [ervaring gebruikersinterface](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal) voor niet-scripting benaderingen |
+Speciaal gebouwd om gegevens te extra heren, te laden en te transformeren.|Biedt momenteel een beperkte set Azure Data Factory pijplijn taken 
+Hiermee kunt u gegevensgestuurde werk stromen maken voor het organiseren van gegevens verplaatsing en-trans formaties op schaal.|Duur om te bouwen en te onderhouden. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) van Azure Data Factory voor meer informatie.
+Geïntegreerd met verschillende Azure-hulpprogram ma's zoals [Azure Databricks](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook) en [Azure functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity) | Voert geen systeem eigen scripts uit, in plaats daarvan afhankelijk van afzonderlijke Compute voor script uitvoeringen 
+Systeem eigen ondersteuning voor door gegevens bron geactiveerde gegevens opname| 
+Gegevens voorbereiding en model trainings processen zijn gescheiden.|
+Afkomst mogelijkheid voor Inge sloten gegevens voor Azure Data Factory gegevens stromen|
+Biedt een [gebruikers interface](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal) met lage code ervaring voor niet-script benaderingen |
 
-Deze stappen en het volgende diagram illustreren de gegevensopnameworkflow van Azure Data Factory.
+Deze stappen en het volgende diagram illustreren de werk stroom voor gegevens opname van Azure Data Factory.
 
-1. Haal de gegevens uit de bronnen
-1. De gegevens transformeren en opslaan in een uitvoerblobcontainer, die fungeert als gegevensopslag voor Azure Machine Learning
-1. Met voorbereide gegevens die zijn opgeslagen, wordt in de Azure Data Factory-pijplijn een computer learning-pijplijn voor training aanroepen die de voorbereide gegevens ontvangt voor modeltraining
+1. Gegevens uit de bronnen ophalen
+1. Transformeer de gegevens en sla deze op in een uitvoer BLOB-container, die fungeert als gegevens opslag voor Azure Machine Learning
+1. Met de voor bereide gegevens die worden opgeslagen, roept de Azure Data Factory-pijp lijn een training Machine Learning pijp lijn aan die de voor bereide gegevens voor model training ontvangt
 
 
-    ![ADF-gegevensinname](media/concept-data-ingestion/data-ingest-option-one.svg)
+    ![Opname van ADF-gegevens](media/concept-data-ingestion/data-ingest-option-one.svg)
     
-Meer informatie over het maken van een pijplijn voor gegevensopname voor Machine Learning met [Azure Data Factory](how-to-data-ingest-adf.md).
+Meer informatie over het bouwen van een pijp lijn voor gegevens opname voor Machine Learning met [Azure Data Factory](how-to-data-ingest-adf.md).
 
-## <a name="use-the-python-sdk"></a>De Python SDK gebruiken 
+## <a name="use-the-python-sdk"></a>De Python-SDK gebruiken 
 
-Met de [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml)u taken voor het innemen van gegevens opnemen in een azure [machine learning-pijplijnstap.](how-to-create-your-first-pipeline.md)
+Met de [python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml)kunt u gegevens opname taken opnemen in een [Azure machine learning pijplijn](how-to-create-your-first-pipeline.md) stap.
 
-In de volgende tabel worden de voor- en nadelen samengevat voor het gebruik van de SDK en een ML-pijplijnstap voor taken voor gegevensopname.
+In de volgende tabel vindt u een overzicht van de voor-en hand leidingen voor het gebruik van de SDK en een stap van ML-pijp lijnen voor gegevens opname taken.
 
 Voordelen| Nadelen
 ---|---
-Uw eigen Python-scripts configureren | Ondersteunt geen native ondersteuning voor het activeren van gegevensbronwijzigingen. Hiervoor zijn logic-app- of Azure-functie-implementaties vereist
-Gegevensvoorbereiding als onderdeel van elke modeltraininguitvoering|Vereist ontwikkelingsvaardigheden om een gegevensopnamescript te maken
-Ondersteunt scripts voor gegevensvoorbereiding op verschillende compute-doelen, waaronder [Azure Machine Learning compute](concept-compute-target.md#azure-machine-learning-compute-managed) |Biedt geen gebruikersinterface voor het maken van het innamemechanisme
+Uw eigen python-scripts configureren | Ondersteunt geen systeem eigen ondersteuning voor het activeren van gegevens bronnen. Vereist logische app-of Azure-functie-implementaties
+Gegevens voorbereiding als onderdeel van elke model training-uitvoering|Ontwikkel vaardigheden vereist voor het maken van een script voor gegevens opname
+Ondersteunt gegevens voorbereidings scripts op verschillende reken doelen, waaronder [Azure machine learning Compute](concept-compute-target.md#azure-machine-learning-compute-managed) |Biedt geen gebruikers interface voor het maken van het opname mechanisme
 
-In het volgende diagram bestaat de Azure Machine Learning-pijplijn uit twee stappen: gegevensopname en modeltraining. De stap voor het innemen van gegevens omvat taken die kunnen worden uitgevoerd met Python-bibliotheken en de Python SDK, zoals het extraheren van gegevens uit lokale/webbronnen en basisgegevenstransformaties, zoals ontbrekende waardetoerekening. De trainingsstap gebruikt vervolgens de voorbereide gegevens als input voor uw trainingsscript om uw machine learning-model te trainen. 
+In het volgende diagram bestaat de Azure Machine Learning-pijp lijn uit twee stappen: gegevens opname en model training. De stap gegevens opname omvat taken die kunnen worden uitgevoerd met behulp van python-bibliotheken en de python-SDK, zoals het extra heren van gegevens uit lokale/webbronnen en basis gegevens transformaties, zoals ontbrekende waarde-overlopende waarden. De trainings stap gebruikt vervolgens de voor bereide gegevens als invoer voor uw trainings script om uw machine learning model te trainen. 
 
-![Azure-pijplijn + opname van SDK-gegevens](media/concept-data-ingestion/data-ingest-option-two.png)
+![Azure-pijp lijn en SDK-gegevens opname](media/concept-data-ingestion/data-ingest-option-two.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het maken van een pijplijn voor gegevensopname voor Machine Learning met [Azure Data Factory](how-to-data-ingest-adf.md)
-* Meer informatie over het automatiseren en beheren van de ontwikkelingslevenscyclus van uw gegevensopnamepijplijnen met [Azure Pipelines.](how-to-cicd-data-ingestion.md)
+* Meer informatie over het bouwen van een pijp lijn voor gegevens opname voor Machine Learning met [Azure Data Factory](how-to-data-ingest-adf.md)
+* Leer hoe u de ontwikkelings levenscyclus van uw gegevens opname pijplijnen kunt automatiseren en beheren met [Azure-pijp lijnen](how-to-cicd-data-ingestion.md).

@@ -1,6 +1,6 @@
 ---
-title: ARRAY_SLICE in Azure Cosmos DB-querytaal
-description: Meer informatie over hoe de SQL-systeemarrayfunctie array in Azure Cosmos DB een deel van een arrayexpressie retourneert
+title: ARRAY_SLICE in Azure Cosmos DB query taal
+description: Meer informatie over hoe de SQL-functie van het matrix segment in Azure Cosmos DB een deel van een matrix expressie retourneert
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a98cb17d22f41776ff788d12ced6aa988ad0b10e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303321"
 ---
 # <a name="array_slice-azure-cosmos-db"></a>ARRAY_SLICE (Azure Cosmos DB)
@@ -26,20 +26,20 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
 ## <a name="arguments"></a>Argumenten
   
 *arr_expr*  
-   Is een array expressie.  
+   Is een matrix expressie.  
   
 *num_expr*  
-   Nulgebaseerde numerieke index waarmee de array moet worden gestart. Negatieve waarden kunnen worden gebruikt om de beginindex op te geven ten opzichte van het laatste element van de array, d.w.z. -1 verwijst naar het laatste element in de array.  
+   Op nul gebaseerde numerieke index waarop de matrix moet worden gestart. Negatieve waarden kunnen worden gebruikt om de begin index op te geven ten opzichte van het laatste element van de matrix, dat wil zeggen-1 verwijst naar het laatste element in de matrix.  
 
-*num_expr* Optionele numerieke expressie die het maximumaantal elementen in de resulterende array instelt.    
+*num_expr* Een optionele numerieke expressie waarmee het maximum aantal elementen in de resulterende matrix wordt ingesteld.    
 
-## <a name="return-types"></a>Retourtypen
+## <a name="return-types"></a>Retour typen
   
-  Retourneert een matrixexpressie.  
+  Retourneert een matrix expressie.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voorbeeld ziet u hoe `ARRAY_SLICE`u verschillende segmenten van een array krijgen met behulp van.  
+  In het volgende voor beeld ziet u hoe u verschillende segmenten van een `ARRAY_SLICE`matrix kunt ophalen met.  
   
 ```sql
 SELECT
@@ -53,7 +53,7 @@ SELECT
   
 ```  
   
- Hier is het resultaat ingesteld.  
+ Dit is de resultatenset.  
   
 ```json
 [{  
@@ -69,10 +69,10 @@ SELECT
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeemfunctie maakt geen gebruik van de index.
+Deze systeem functie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Arrayfuncties Azure Cosmos DB](sql-query-array-functions.md)
-- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
+- [Matrix functies Azure Cosmos DB](sql-query-array-functions.md)
+- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

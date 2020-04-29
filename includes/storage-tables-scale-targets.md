@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: tamram
 ms.openlocfilehash: 27617da97ced9ac775beae71e4c25202944b2aba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78940965"
 ---
-In de volgende tabel worden de capaciteits-, schaalbaarheids- en prestatiedoelen voor tabelopslag beschreven.
+In de volgende tabel worden de capaciteit, schaal baarheid en prestatie doelen voor tabel opslag beschreven.
 
 | Resource | Doel |
 |----------|---------------|
-| Aantal tabellen in een Azure-opslagaccount | Alleen beperkt door de capaciteit van het opslagaccount |
-| Aantal partities in een tabel | Alleen beperkt door de capaciteit van het opslagaccount |
-| Aantal entiteiten in een partitie | Alleen beperkt door de capaciteit van het opslagaccount |
+| Aantal tabellen in een Azure-opslag account | Alleen beperkt door de capaciteit van het opslag account |
+| Aantal partities in een tabel | Alleen beperkt door de capaciteit van het opslag account |
+| Aantal entiteiten in een partitie | Alleen beperkt door de capaciteit van het opslag account |
 | Maximale grootte van één tabel | 500 TiB |
-| Maximale grootte van één entiteit, inclusief alle eigenschapswaarden | 1 MiB |
-| Maximum aantal eigenschappen in een tabelentiteit | 255 (inclusief de drie systeemeigenschappen, **PartitionKey,** **RowKey**en **Timestamp)** |
-| Maximale totale grootte van een afzonderlijke eigenschap in een entiteit | Verschilt per eigenschapstype. Zie **Eigenschaptypen** in [Het gegevensmodel van de tabelservice voor](/rest/api/storageservices/understanding-the-table-service-data-model)meer informatie . |
-| Grootte van de **partitionkey** | Een tekenreeks tot 1 KiB in grootte |
-| Grootte van de **RowKey** | Een tekenreeks tot 1 KiB in grootte |
-| Grootte van een entiteitsgroepstransactie | Een transactie kan maximaal 100 entiteiten omvatten en het laadvermogen moet minder dan 4 MiB groot zijn. Een entiteitsgroeptransactie kan slechts één keer een update naar een entiteit bevatten. |
-| Maximaal aantal opgeslagen toegangsbeleid per tabel | 5 |
-| Maximumaanvraagtarief per opslagaccount | 20.000 transacties per seconde, die een 1-KiB entiteit grootte veronderstelt |
-| Doeldoorvoer voor één tabelpartitie (1 KiB-entiteiten) | Maximaal 2.000 entiteiten per seconde |
+| Maximale grootte van één entiteit, inclusief alle eigenschaps waarden | 1 MiB |
+| Maximum aantal eigenschappen in een tabel entiteit | 255 (inclusief de drie systeem eigenschappen, **PartitionKey**, **RowKey**en **tijds tempel**) |
+| Maximale totale grootte van een afzonderlijke eigenschap in een entiteit | Is afhankelijk van het eigenschaps type. Zie **eigenschaps typen** voor meer informatie over [het tabel service gegevens model](/rest/api/storageservices/understanding-the-table-service-data-model). |
+| Grootte van de **PartitionKey** | Een teken reeks met een grootte van Maxi maal 1 KiB |
+| Grootte van de **RowKey** | Een teken reeks met een grootte van Maxi maal 1 KiB |
+| Grootte van de trans actie van een entiteits groep | Een trans actie kan Maxi maal 100 entiteiten bevatten en de payload moet kleiner zijn dan 4 MiB-grootte. Een trans actie van een entiteits groep kan slechts eenmaal een update aan een entiteit bevatten. |
+| Maximum aantal opgeslagen toegangs beleid per tabel | 5 |
+| Maximum aantal aanvragen per opslag account | 20.000 trans acties per seconde, waarbij een 1-KiB entiteits grootte wordt aangenomen |
+| Doel doorvoer voor één tabel partitie (1 KiB-entiteiten) | Maxi maal 2.000 entiteiten per seconde |

@@ -1,27 +1,27 @@
 ---
-title: Azure Spring Cloud verifiëren met Key Vault in GitHub-acties
-description: Sleutelkluis gebruiken met CI/CD-werkstroom voor Azure Spring Cloud met GitHub-acties
+title: Azure lente-Cloud verifiëren met Key Vault in GitHub-acties
+description: Sleutel kluis met CI/CD-werk stroom gebruiken voor Azure lente-Cloud met GitHub-acties
 author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
 ms.openlocfilehash: 78cd5945e394219be0551bbe97afef07f18b61f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78945471"
 ---
-# <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Azure Spring Cloud verifiëren met Key Vault in GitHub-acties
-Key vault is een veilige plek om sleutels op te slaan. Enterprise-gebruikers moeten referenties opslaan voor CI/CD-omgevingen in het bereik dat ze beheren. De sleutel om referenties in de sleutelkluis te krijgen, moet worden beperkt tot het bereik van resources.  Het heeft alleen toegang tot de key vault scope, niet tot het hele Azure-bereik. Het is als een sleutel die alleen een sterke doos kan openen, niet een master key die alle deuren in een gebouw kan openen. Het is een manier om een sleutel te krijgen met een andere sleutel, die nuttig is in een CICD-workflow. 
+# <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Azure lente-Cloud verifiëren met Key Vault in GitHub-acties
+Sleutel kluis is een veilige plaats voor het opslaan van sleutels. Zakelijke gebruikers moeten referenties opslaan voor CI/CD-omgevingen binnen het bereik dat ze beheren. De sleutel voor het ophalen van referenties in de sleutel kluis moet beperkt zijn tot het bron bereik.  Het heeft alleen toegang tot het sleutel kluis bereik, niet voor het hele Azure-bereik. Het lijkt erop dat een sleutel die alleen een sterk vak kan openen, geen hoofd sleutel is die alle deuren in een gebouw kan openen. Het is een manier om een sleutel te verkrijgen met een andere sleutel. Dit is handig in een CICD-werk stroom. 
 
-## <a name="generate-credential"></a>Referenties genereren
-Voer de opdracht hieronder uit op uw lokale machine om een sleutel te genereren om toegang te krijgen tot de sleutelkluis:
+## <a name="generate-credential"></a>Referentie genereren
+Voor het genereren van een sleutel voor toegang tot de sleutel kluis voert u de volgende opdracht uit op de lokale computer:
 ```
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.KeyVault/vaults/<KEY_VAULT> --sdk-auth
 ```
-Het bereik dat `--scopes` door de parameter is opgegeven, beperkt de toegang tot de sleutel tot de resource.  Het kan alleen toegang tot de sterke doos.
+Met het bereik dat is `--scopes` opgegeven door de para meter wordt de sleutel toegang tot de bron beperkt.  Het kan alleen toegang krijgen tot het sterke vak.
 
 Met resultaten:
 ```
@@ -37,29 +37,29 @@ Met resultaten:
     "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-Sla de resultaten vervolgens op in **GitHub-geheimen** zoals beschreven in [Het instellen van uw GitHub-repository en verifieer met Azure.](./spring-cloud-howto-github-actions.md#set-up-github-repository-and-authenticate)
+Sla de resultaten vervolgens op in GitHub **geheimen** zoals beschreven in [uw github-opslag plaats instellen en verifiëren met Azure](./spring-cloud-howto-github-actions.md#set-up-github-repository-and-authenticate).
 
-## <a name="add-access-policies-for-the-credential"></a>Toegangsbeleid voor de referentie toevoegen
-De bovenstaande referenties kunnen alleen algemene informatie over de Key Vault krijgen, niet de inhoud die deze opslaat.  Als u geheimen wilt opslaan in de Key Vault, moet u toegangsbeleid instellen voor de referentie.
+## <a name="add-access-policies-for-the-credential"></a>Toegangs beleid voor de referentie toevoegen
+Met de referentie die u hierboven hebt gemaakt, krijgt u alleen algemene informatie over de Key Vault, niet de inhoud die wordt opgeslagen.  Als u geheimen wilt ophalen die zijn opgeslagen in de Key Vault, moet u toegangs beleid instellen voor de referentie.
 
-Ga naar het **Key Vault-dashboard** in Azure-portal, klik op het menu **Toegangsbeheer** en open het tabblad **Roltoewijzingen.** Selecteer **Apps** voor **Tekst** en `This resource` voor **bereik**.  U ziet de referentie die u in de vorige stap hebt gemaakt:
+Ga naar het **Key Vault** dash board in azure Portal, klik op het **toegangs beheer** menu en open vervolgens het tabblad **roltoewijzingen** . Selecteer **apps** voor **type** en `This resource` **bereik**.  De referenties die u in de vorige stap hebt gemaakt, worden weer geven:
 
- ![Toegangsbeleid instellen](./media/github-actions/key-vault1.png)
+ ![Toegangs beleid instellen](./media/github-actions/key-vault1.png)
 
-Kopieer bijvoorbeeld de `azure-cli-2020-01-19-04-39-02`referentienaam. Open het menu **Toegangsbeleid** en klik op de koppeling **Toegangsbeleid toevoegen.**  Selecteer `Secret Management` voor **Sjabloon**en selecteer **Principal**. Plak de naam van de referenties in het invoervak **Principal**/**Select:**
+Kopieer de referentie naam, bijvoorbeeld `azure-cli-2020-01-19-04-39-02`. Open het menu **toegangs beleid** en klik op koppeling naar **toegangs beleid toevoegen** .  Selecteer `Secret Management` voor **sjabloon**en selecteer vervolgens **Principal**. Plak de referentie naam in **Principal**/invoervak**selecteren** :
 
  ![Selecteer](./media/github-actions/key-vault2.png)
 
- Klik **op** de knop Toevoegen in het dialoogvenster **Toegangsbeleid toevoegen** en klik vervolgens op **Opslaan**.
+ Klik op de knop **toevoegen** in het dialoog venster **toegangs beleid toevoegen** en klik vervolgens op **Opslaan**.
 
-## <a name="generate-full-scope-azure-credential"></a>Azure-referentie met volledige scope genereren
-Dit is de sleutel om alle deuren in het gebouw te openen. De procedure is vergelijkbaar met de vorige stap, maar hier wijzigen we het bereik om de hoofdsleutel te genereren:
+## <a name="generate-full-scope-azure-credential"></a>Azure-referentie met een volledige bereik genereren
+Dit is de hoofd sleutel voor het openen van alle deuren in het gebouw. De procedure is vergelijkbaar met de vorige stap, maar hier wijzigen we het bereik voor het genereren van de hoofd sleutel:
 
 ```
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth
 ```
 
-Nogmaals, resultaten:
+Opnieuw, resultaten:
 ```
 {
     "clientId": "<GUID>",
@@ -73,12 +73,12 @@ Nogmaals, resultaten:
     "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-Kopieer de hele JSON-tekenreeks.  Bo terug naar **Key Vault** dashboard. Open het menu **Geheimen** en klik op de knop **Genereren/importeren.** Voer de geheime naam `AZURE-CRENDENTIALS-FOR-SPRING`in, zoals . Plak de JSON-referentietekenreeks in het vak **Waarde.** Mogelijk merkt u dat het invoervak met waarde een tekstveld met één regel is, in plaats van een tekstgebied met meerdere regels.  U daar de volledige JSON-tekenreeks plakken.
+Kopieer de volledige JSON-teken reeks.  Bo terug naar **Key Vault** dash board. Open het menu **geheimen** en klik vervolgens op de knop **genereren/importeren** . Voer de geheime naam in `AZURE-CRENDENTIALS-FOR-SPRING`, bijvoorbeeld. Plak de JSON-referentie teken reeks in het invoervak **waarde** . U ziet het invoervak waarde is een tekst veld met één regel in plaats van een tekst gebied met meerdere regels.  U kunt de volledige JSON-teken reeks plakken.
 
- ![Volledige scopereferentie](./media/github-actions/key-vault3.png)
+ ![Volledige bereik referentie](./media/github-actions/key-vault3.png)
 
-## <a name="combine-credentials-in-github-actions"></a>Referenties combineren in GitHub-acties
-Stel de referenties in die worden gebruikt wanneer de CICD-pijplijn wordt uitgevoerd:
+## <a name="combine-credentials-in-github-actions"></a>Referenties combi neren in GitHub acties
+Stel de referenties in die worden gebruikt wanneer de CICD-pijp lijn wordt uitgevoerd:
 
 ```
 on: [push]
@@ -109,4 +109,4 @@ jobs:
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Spring Cloud GitHub-acties](./spring-cloud-howto-github-actions.md)
+* [GitHub acties voor de lente in de Cloud](./spring-cloud-howto-github-actions.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Machine Learning controleren | Microsoft Documenten
-description: Meer informatie over het gebruik van Azure Monitor om waarschuwingen over metrische gegevens van Azure Machine Learning weer te geven, te analyseren en te maken.
+title: Bewakings Azure Machine Learning | Microsoft Docs
+description: Meer informatie over het gebruik van Azure Monitor voor het weer geven, analyseren en maken van waarschuwingen over metrische gegevens van Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,112 +10,112 @@ ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78399112"
 ---
-# <a name="monitoring-azure-machine-learning"></a>Azure Machine Learning bewaken
+# <a name="monitoring-azure-machine-learning"></a>Bewakings Azure Machine Learning
 
-In dit artikel worden de bewakingsgegevens beschreven die zijn gegenereerd door Azure Machine Learning. Het beschrijft ook hoe u de Azure Monitor gebruiken om uw gegevens te analyseren en waarschuwingen te definiëren.
+In dit artikel worden de bewakings gegevens beschreven die worden gegenereerd door Azure Machine Learning. Ook wordt beschreven hoe u de Azure Monitor kunt gebruiken om uw gegevens te analyseren en waarschuwingen te definiëren.
 
 > [!TIP]
-> De informatie in dit document is voornamelijk bedoeld voor beheerders, zoals het de bewaking voor azure machine learning beschrijft. Als u een gegevenswetenschapper of ontwikkelaar bent en informatie wilt controleren die specifiek is voor uw modeltrainingsuitvoeringen, raadpleegt u de volgende documenten:
+> De informatie in dit document is hoofd zakelijk bedoeld voor beheerders, zoals het de bewaking voor de Azure Machine Learning beschrijft. Als u een Data-wetenschapper of-ontwikkelaar bent en informatie wilt bewaken die specifiek is voor uw model training-uitvoeringen, raadpleegt u de volgende documenten:
 >
-> * [Trainingsruns starten, controleren en annuleren](how-to-manage-runs.md)
+> * [Trainings uitvoeringen starten, controleren en annuleren](how-to-manage-runs.md)
 > * [Metrische gegevens registreren voor trainingsuitvoeringen](how-to-track-experiments.md)
 > * [Experimenten bijhouden met MLflow](how-to-use-mlflow.md)
 > * [Uitvoeringen visualiseren met TensorBoard](how-to-monitor-tensorboard.md)
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-Azure Machine Learning registreert bewakingsgegevens met Azure Monitor, een volledige stackmonitoringservice in Azure. Azure Monitor biedt een complete set functies om uw Azure-bronnen te bewaken. Het kan ook resources in andere clouds en on-premises controleren.
+Azure Machine Learning registreert de bewakings gegevens met behulp van Azure Monitor. Dit is een volledige stack monitoring-service in Azure. Azure Monitor biedt een volledige set functies voor het bewaken van uw Azure-resources. Het kan ook resources in andere Clouds en on-premises bewaken.
 
-Begin met het artikel [Azure Monitor-overzicht](/azure/azure-monitor/overview), dat een overzicht geeft van de bewakingsmogelijkheden. De volgende secties bouwen voort op deze informatie door details van het gebruik van Azure Monitor met Azure Machine Learning.
+Begin met het artikel [Azure Monitor overzicht](/azure/azure-monitor/overview). Dit biedt een overzicht van de mogelijkheden van bewaking. In de volgende secties vindt u informatie over het gebruik van Azure Monitor met Azure Machine Learning.
 
-Zie [Gebruiks- en geschatte kosten](/azure/azure-monitor/platform/usage-estimated-costs)voor meer informatie over de kosten die zijn gekoppeld aan Azure Monitor. Zie Tijd voor het [innemen](/azure/azure-monitor/platform/data-ingestion-time)van gegevens registreren om inzicht te krijgen in de tijd die nodig is om inzicht te krijgen in de tijd die nodig is om inzicht te krijgen in de tijd van het opnemen van gegevens in Azure Monitor.
+Zie [verbruik en geschatte kosten](/azure/azure-monitor/platform/usage-estimated-costs)voor meer informatie over de kosten die zijn gekoppeld aan Azure monitor. Zie [gegevens opname tijd vastleggen](/azure/azure-monitor/platform/data-ingestion-time)voor meer informatie over de tijd die nodig is om uw gegevens weer te geven in azure monitor.
 
 ## <a name="monitoring-data-from-azure-machine-learning"></a>Gegevens van Azure Machine Learning bewaken
 
-Azure Machine Learning verzamelt dezelfde soorten bewakingsgegevens als andere Azure-resources, die worden beschreven in [Monitoringgegevens van Azure-bronnen.](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data) Zie [de gegevensverwijzing voor azure machine learning-bewakingsgegevens](monitor-resource-reference.md) voor een gedetailleerde referentie van de logboeken en statistieken die zijn gemaakt door Azure Machine Learning.
+Azure Machine Learning worden dezelfde soorten bewakings gegevens verzameld als andere Azure-resources, die worden beschreven in [gegevens van Azure-resources bewaken](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data). Zie [Azure machine learning monitoring data Naslag informatie](monitor-resource-reference.md) voor een gedetailleerde Naslag informatie over de logboeken en metrische gegevens die door Azure machine learning zijn gemaakt.
 
 ## <a name="analyzing-metric-data"></a>Metrische gegevens analyseren
 
-U statistieken voor Azure Machine Learning analyseren door **Statistieken** te openen in het menu **Azure Monitor.** Zie [Aan de slag met Azure Metrics Explorer](/azure/azure-monitor/platform/metrics-getting-started) voor meer informatie over het gebruik van deze tool.
+U kunt metrische gegevens voor Azure Machine Learning analyseren door **metrische gegevens** te openen in het menu **Azure monitor** . Zie [aan de slag met Azure Metrics Explorer](/azure/azure-monitor/platform/metrics-getting-started) voor meer informatie over het gebruik van dit hulp programma.
 
-Alle statistieken voor Azure Machine Learning staan in de naamruimte **Machine Learning Service Workspace**.
+Alle metrische gegevens voor Azure Machine Learning bevinden zich in de naam ruimte **machine learning service werkruimte**.
 
-![Metrics Explorer met Machine Learning Service Workspace geselecteerd](./media/monitor-azure-machine-learning/metrics.png)
+![Metrics Explorer met Machine Learning service werkruimte geselecteerd](./media/monitor-azure-machine-learning/metrics.png)
 
 ### <a name="filtering-and-splitting"></a>Filteren en splitsen
 
-Voor statistieken die dimensies ondersteunen, u filters toepassen met een dimensiewaarde. Bijvoorbeeld het filteren van **actieve kernen** voor een **clusternaam** van `cpu-cluster`. 
+Voor metrische gegevens die dimensies ondersteunen, kunt u filters toep assen met behulp van een dimensie waarde. U kunt bijvoorbeeld **actieve kernen** filteren op een **cluster naam** van `cpu-cluster`. 
 
-U ook een statistiek splitsen op dimensie om te visualiseren hoe verschillende segmenten van de statistiek zich met elkaar verhouden. Als u bijvoorbeeld het **type pijplijnstap** uitsplitst om een aantal typen stappen te zien die in de pijplijn worden gebruikt.
+U kunt ook een metriek op dimensie splitsen om te visualiseren hoe verschillende segmenten van de metrische gegevens met elkaar worden vergeleken. U kunt bijvoorbeeld het **stap type voor de pijp lijn** opsplitsen om een telling te zien van de typen stappen die worden gebruikt in de pijp lijn.
 
-Zie Geavanceerde functies van Azure [Monitor](/azure/azure-monitor/platform/metrics-charts)voor meer informatie over filteren en splitsen.
+Zie [geavanceerde functies van Azure monitor](/azure/azure-monitor/platform/metrics-charts)voor meer informatie over filteren en splitsen.
 
 ## <a name="alerts"></a>Waarschuwingen
 
-U waarschuwingen voor Azure Machine Learning openen door **Waarschuwingen** te openen in het menu **Azure Monitor.** Zie [Metrische waarschuwingen maken, weergeven en beheren met Azure Monitor](/azure/azure-monitor/platform/alerts-metric) voor meer informatie over het maken van waarschuwingen.
+U krijgt toegang tot waarschuwingen voor Azure Machine Learning door **waarschuwingen** te openen in het menu **Azure monitor** . Zie [metrische waarschuwingen maken, weer geven en beheren met behulp van Azure monitor](/azure/azure-monitor/platform/alerts-metric) voor meer informatie over het maken van waarschuwingen.
 
-In de volgende tabel worden veelvoorkomende en aanbevolen metrische waarschuwingsregels voor Azure Machine Learning weergegeven:
+De volgende tabel bevat algemene en aanbevolen waarschuwings regels voor metrische gegevens voor Azure Machine Learning:
 
 | Waarschuwingstype | Voorwaarde | Beschrijving |
 |:---|:---|:---|
-| Modeldeploy mislukt | Aggregatietype: Totaal, Operator: groter dan, Drempelwaarde: 0 | Wanneer een of meer modelimplementaties zijn mislukt |
-| Percentage quotumgebruik | Aggregatietype: Gemiddelde, operator: groter dan drempelwaarde: 90| Wanneer het percentage quotumgebruik groter is dan 90% |
-| Onbruikbare knooppunten | Aggregatietype: Totaal, Operator: groter dan, Drempelwaarde: 0 | Wanneer er een of meer onbruikbare knooppunten zijn |
+| Modelimplementatie is mislukt | Aggregatie type: Total, operator: groter dan, drempel waarde: 0 | Wanneer een of meer model implementaties zijn mislukt |
+| Percentage quotum gebruik | Aggregatie type: Average, operator: groter dan, drempel waarde: 90| Wanneer het percentage van het quota gebruik groter is dan 90% |
+| Niet-bruikbare knoop punten | Aggregatie type: Total, operator: groter dan, drempel waarde: 0 | Wanneer er een of meer niet-bruikbare knoop punten zijn |
 
 ## <a name="configuration"></a>Configuratie
 
 > [!IMPORTANT]
-> __Statistieken voor Azure Machine Learning hoeven niet te worden geconfigureerd,__ ze worden automatisch verzameld en zijn beschikbaar in de Metrics Explorer voor monitoring en waarschuwingen.
+> __Metrische gegevens voor Azure machine learning hoeven niet te worden geconfigureerd__, ze worden automatisch verzameld en zijn beschikbaar in de metrics Explorer voor bewaking en waarschuwingen.
 
-U een diagnostische instelling toevoegen om de volgende functionaliteit te configureren:
+U kunt een diagnostische instelling toevoegen om de volgende functionaliteit te configureren:
 
-* Archiefgegevens en metrische gegevens naar een Azure-opslagaccount.
-* Log- en metrische gegevens streamen naar een Azure Event Hub.
-* Log- en metrische gegevens verzenden naar Azure Monitor Log Analytics.
+* Logboek-en metrische gegevens archiveren naar een Azure-opslag account.
+* Informatie over het streamen van Logboeken en metrische gegevens naar een Azure Event hub.
+* Informatie over logboek-en metrische gegevens verzenden naar Azure Monitor Log Analytics.
 
-Voor het inschakelen van deze instellingen is extra Azure-services (opslagaccount, gebeurtenishub of Log Analytics) vereist, waardoor uw kosten kunnen stijgen. Ga naar de [Azure-prijscalculator](https://azure.microsoft.com/pricing/calculator)om een geschatte kosten te berekenen.
+Het inschakelen van deze instellingen vereist extra Azure-Services (opslag account, Event Hub of Log Analytics), waardoor uw kosten kunnen worden verhoogd. Ga naar de [Azure-prijs calculator](https://azure.microsoft.com/pricing/calculator)om een geschatte kosten te berekenen.
 
-Zie Diagnostische instelling maken om [platformlogboeken en statistieken in Azure te verzamelen voor](/azure/azure-monitor/platform/diagnostic-settings)meer informatie over het maken van een diagnostische instelling.
+Zie voor meer informatie over het maken van een diagnostische instelling [Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure](/azure/azure-monitor/platform/diagnostic-settings).
 
-U de volgende logboeken configureren voor Azure Machine Learning:
+U kunt de volgende logboeken configureren voor Azure Machine Learning:
 
 | Categorie | Beschrijving |
 |:---|:---|
-| AmlComputeClusterEvent | Gebeurtenissen uit Azure Machine Learning-computeclusters. |
-| AmlComputeClusterNodeEvent | Gebeurtenissen van knooppunten binnen een Azure Machine Learning-computecluster. |
+| AmlComputeClusterEvent | Gebeurtenissen van Azure Machine Learning Reken clusters. |
+| AmlComputeClusterNodeEvent | Gebeurtenissen van knoop punten binnen een Azure Machine Learning Compute-Cluster. |
 | AmlComputeJobEvent | Gebeurtenissen van taken die worden uitgevoerd op Azure Machine Learning compute. |
 
 > [!NOTE]
-> Wanneer u statistieken inschakelt in een diagnostische instelling, wordt dimensiegegevens momenteel niet opgenomen als onderdeel van de informatie die naar een opslagaccount, gebeurtenishub of logboekanalyse wordt verzonden.
+> Wanneer u metrische gegevens in een diagnostische instelling inschakelt, wordt er momenteel geen dimensie-informatie opgenomen als onderdeel van de gegevens die worden verzonden naar een opslag account, Event Hub of log Analytics.
 
-## <a name="analyzing-log-data"></a>Loggegevens analyseren
+## <a name="analyzing-log-data"></a>Logboek gegevens analyseren
 
-Voor het gebruik van Azure Monitor Log Analytics moet u een diagnostische configuratie maken en __gegevens verzenden naar Logboekanalyse__inschakelen. Zie de sectie [Configuratie](#configuration) voor meer informatie.
+Als u Azure Monitor Log Analytics wilt gebruiken, moet u een diagnostische configuratie maken en __gegevens verzenden naar log Analytics__inschakelen. Zie de sectie [configuratie](#configuration) voor meer informatie.
 
-Gegevens in Azure Monitor-logboeken worden opgeslagen in tabellen, waarbij elke tabel zijn eigen set unieke eigenschappen heeft. Azure Machine Learning slaat gegevens op in de volgende tabellen:
+Gegevens in Azure Monitor logboeken worden opgeslagen in tabellen, waarbij elke tabel een eigen set unieke eigenschappen heeft. Azure Machine Learning slaat gegevens op in de volgende tabellen:
 
 | Tabel | Beschrijving |
 |:---|:---|
-| AmlComputeClusterEvent | Gebeurtenissen uit Azure Machine Learning-computeclusters. |
-| AmlComputeClusterNodeEvent | Gebeurtenissen van knooppunten binnen een Azure Machine Learning-computecluster. |
+| AmlComputeClusterEvent | Gebeurtenissen van Azure Machine Learning Reken clusters. |
+| AmlComputeClusterNodeEvent | Gebeurtenissen van knoop punten binnen een Azure Machine Learning Compute-Cluster. |
 | AmlComputeJobEvent | Gebeurtenissen van taken die worden uitgevoerd op Azure Machine Learning compute. |
 
 > [!IMPORTANT]
-> Wanneer u **Logboeken** selecteert in het azure machine learning-menu, wordt Log Analytics geopend met de queryscope die is ingesteld op de huidige werkruimte. Dit betekent dat logboekquery's alleen gegevens uit die bron bevatten. Als u een query wilt uitvoeren die gegevens uit andere databases of gegevens uit andere Azure-services bevat, selecteert u **Logboeken** in het menu **Azure Monitor.** Zie [Querybereik en -tijdsbereik logboeken in Azure Monitor Log Analytics](/azure/azure-monitor/log-query/scope/) voor meer informatie.
+> Wanneer u **Logboeken** in het menu Azure machine learning selecteert, wordt log Analytics geopend met het query bereik dat is ingesteld op de huidige werk ruimte. Dit betekent dat logboek query's alleen gegevens van die bron bevatten. Als u een query wilt uitvoeren die gegevens uit andere data bases of gegevens uit andere Azure-Services bevat, selecteert u **Logboeken** in het **Azure monitor** menu. Zie de [logboek query bereik en het tijds bereik in Azure Monitor Log Analytics](/azure/azure-monitor/log-query/scope/) voor meer informatie.
 
-Zie [Azure Machine Learning](monitor-resource-reference.md)monitoring data reference voor een gedetailleerde referentie van de logboeken en statistieken.
+Zie [Azure machine learning monitoring data Reference](monitor-resource-reference.md)(Engelstalig) voor een gedetailleerde Naslag informatie over de logboeken en metrische gegevens.
 
 ### <a name="sample-queries"></a>Voorbeeldquery's
 
-Hieronder volgen query's die u gebruiken om uw Azure Machine Learning-resources te controleren: 
+Hieronder vindt u query's die u kunt gebruiken om uw Azure Machine Learning-resources te bewaken: 
 
-+ Mislukte taken in de afgelopen vijf dagen:
++ Mislukte taken in de afgelopen vijf dagen ophalen:
 
     ```Kusto
     AmlComputeJobEvent
@@ -123,7 +123,7 @@ Hieronder volgen query's die u gebruiken om uw Azure Machine Learning-resources 
     | project  TimeGenerated , ClusterId , EventType , ExecutionState , ToolType
     ```
 
-+ Records opvragen voor een specifieke taaknaam:
++ Records ophalen voor een specifieke taak naam:
 
     ```Kusto
     AmlComputeJobEvent
@@ -131,7 +131,7 @@ Hieronder volgen query's die u gebruiken om uw Azure Machine Learning-resources 
     | project  TimeGenerated , ClusterId , EventType , ExecutionState , ToolType
     ```
 
-+ Clustergebeurtenissen in de afgelopen vijf dagen weergeven voor clusters waarbij de VM-grootte wordt Standard_D1_V2:
++ In de afgelopen vijf dagen cluster gebeurtenissen ophalen voor clusters waarin de VM-grootte is Standard_D1_V2:
 
     ```Kusto
     AmlComputeClusterEvent
@@ -139,7 +139,7 @@ Hieronder volgen query's die u gebruiken om uw Azure Machine Learning-resources 
     | project  ClusterName , InitialNodeCount , MaximumNodeCount , QuotaAllocated , QuotaUtilized
     ```
 
-+ Ontvang knooppunten toegewezen in de afgelopen acht dagen:
++ Knoop punten ophalen die zijn toegewezen in de afgelopen acht dagen:
 
     ```Kusto
     AmlComputeClusterNodeEvent
@@ -149,6 +149,6 @@ Hieronder volgen query's die u gebruiken om uw Azure Machine Learning-resources 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie Azure Machine Learning monitoring [data reference](monitor-resource-reference.md)voor een overzicht van de logboeken en statistieken.
-- Zie [Quota beheren en aanvragen voor Azure-resources voor](how-to-manage-quotas.md)informatie over het werken met quota met betrekking tot Azure Machine Learning.
-- Zie [Azure-resources bewaken met Azure Monitor](/azure/azure-monitor/insights/monitor-azure-resource)voor meer informatie over het bewaken van Azure-resources.
+- Zie [Azure machine learning monitoring data Reference](monitor-resource-reference.md)voor een verwijzing naar de logboeken en metrische gegevens.
+- Zie voor meer informatie over het werken met quota's die betrekking hebben op Azure Machine Learning, [Quota's beheren en aanvragen voor Azure-resources](how-to-manage-quotas.md).
+- Zie [Azure-resources bewaken met Azure monitor](/azure/azure-monitor/insights/monitor-azure-resource)voor meer informatie over het bewaken van Azure-resources.

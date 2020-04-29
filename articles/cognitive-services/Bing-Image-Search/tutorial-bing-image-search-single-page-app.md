@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 9227417d28eb09a322dd4757033ee62fee97d91c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943893"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Zelfstudie: Een app van één pagina maken met de Bing Afbeeldingen zoeken-API
@@ -40,7 +40,7 @@ De volledig broncode voor deze zelfstudie is beschikbaar op [GitHub](https://git
 
 ## <a name="manage-and-store-user-subscription-keys"></a>Abonnementssleutels van gebruikers beheren en opslaan
 
-In deze toepassing wordt gebruikgemaakt van de permanente opslag van webbrowsers om API-abonnementssleutels op te slaan. Als er geen sleutel is opgeslagen, wordt de gebruiker op de webpagina om de sleutel gevraagd. De sleutel wordt vervolgens voor later gebruik opgeslagen. Als de sleutel later door de API wordt geweigerd, verwijdert de app de sleutel uit de opslag. In dit voorbeeld wordt het algemene eindpunt gebruikt. U ook het [aangepaste subdomeineindpunt](../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat wordt weergegeven in de Azure-portal voor uw bron.
+In deze toepassing wordt gebruikgemaakt van de permanente opslag van webbrowsers om API-abonnementssleutels op te slaan. Als er geen sleutel is opgeslagen, wordt de gebruiker op de webpagina om de sleutel gevraagd. De sleutel wordt vervolgens voor later gebruik opgeslagen. Als de sleutel later door de API wordt geweigerd, verwijdert de app de sleutel uit de opslag. In dit voor beeld wordt het globale eind punt gebruikt. U kunt ook het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
 
 
 Definieer de functies `storeValue` en `retrieveValue` voor gebruik van het `localStorage`-object (als de browser dit ondersteunt) of een cookie.
@@ -386,7 +386,7 @@ Beveiligingsbeleid voor browsers (CORS) kan ervoor zorgen dat de `X-MSEdge-Clien
 > [!NOTE]
 > In een webtoepassing die bedoeld is voor productie, moet u de aanvraag toch aan de serverzijde uitvoeren. Anders moet de sleutel voor de Bing Search-API worden opgenomen op de webpagina, waar deze beschikbaar is voor iedereen die de bron weergeeft. Al uw gebruik van de API-abonnementssleutel wordt in rekening gebracht, zelfs aanvragen die zijn gedaan door partijen die niet zijn gemachtigd. Het is daarom van groot belang dat u uw sleutel niet algemeen beschikbaar maakt.
 
-Voor ontwikkelingsdoeleinden kunt u de aanvraag van de Bing Web Search-API via een CORS-proxy doen. Het antwoord van een `Access-Control-Expose-Headers` dergelijke proxy heeft een header die antwoordkoppen mogelijk maakt en beschikbaar maakt voor JavaScript.
+Voor ontwikkelingsdoeleinden kunt u de aanvraag van de Bing Web Search-API via een CORS-proxy doen. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers` koptekst die antwoord headers toestaat en deze beschikbaar maakt voor Java script.
 
 U kunt eenvoudig een CORS-proxy installeren zodat de zelfstudie-app toegang krijgt tot de client-id-header. Als u [Node.js](https://nodejs.org/en/download/) nog niet hebt, moet u dit eerst installeren. Voer vervolgens de volgende opdracht uit in een opdrachtvenster:
 

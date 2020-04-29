@@ -1,5 +1,5 @@
 ---
-title: Bing Entity Search Python-clientbibliotheek snel aan de slag
+title: Quick start voor python-client bibliotheek Bing Entity Search
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 03/06/2020
 ms.author: aahi
 ms.openlocfilehash: 0c0a124773eab8166806312dc47ded24e1cd841f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79136758"
 ---
-Gebruik deze snelstart om te beginnen met zoeken naar entiteiten met de Bing Entity Search-clientbibliotheek voor Python. Hoewel Bing Entity Search een REST API heeft die compatibel is met de meeste programmeertalen, biedt de clientbibliotheek een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub.](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py)
+Gebruik deze Quick Start om te beginnen met zoeken naar entiteiten met de Bing Entity Search-client bibliotheek voor python. Hoewel Bing Entity Search een REST API compatibel met de meeste programmeer talen heeft, biedt de client bibliotheek een eenvoudige manier om de service te integreren in uw toepassingen. De bron code voor dit voor beeld is te vinden op [github](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -23,13 +23,13 @@ Gebruik deze snelstart om te beginnen met zoeken naar entiteiten met de Bing Ent
 
 * De [Bing Entiteiten zoeken-SDK voor Python](https://pypi.org/project/azure-cognitiveservices-search-entitysearch/)
 
-U kunt het best een virtuele Python-omgeving gebruiken. U kunt een virtuele omgeving installeren en initialiseren met de venv-module. U virtualenv installeren met:
+U kunt het best een virtuele Python-omgeving gebruiken. U kunt een virtuele omgeving installeren en initialiseren met de venv-module. U kunt virtualenv installeren met:
 
 ```Console
 python -m venv mytestenv
 ```
 
-Installeer de clientbibliotheek Zoeken van Bing-entiteit met:
+Installeer de Bing Entity Search-client bibliotheek met:
 
 ```Console
 cd mytestenv
@@ -48,7 +48,7 @@ python -m pip install azure-cognitiveservices-search-entitysearch
     from msrest.authentication import CognitiveServicesCredentials
     ```
 
-2. Maak een variabele voor uw abonnementssleutel en eindpunt. Instantiate de client door `CognitiveServicesCredentials` het creëren van een nieuw object met uw sleutel.
+2. Maak een variabele voor de abonnements sleutel en het eind punt. Maak een exemplaar van de client door `CognitiveServicesCredentials` een nieuw object te maken met uw sleutel.
     
     ```python
     subscription_key = "YOUR-SUBSCRIPTION-KEY"
@@ -78,6 +78,6 @@ python -m pip install azure-cognitiveservices-search-entitysearch
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app voor één pagina maken](../../tutorial-bing-entities-search-single-page-app.md)
+> [Een web-app met één pagina maken](../../tutorial-bing-entities-search-single-page-app.md)
 
 * [Wat is de Bing Entiteiten zoeken-API?](../../overview.md )

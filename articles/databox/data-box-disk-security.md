@@ -1,6 +1,6 @@
 ---
-title: Beveiligingsfuncties van Microsoft Azure Data Box Disk | Microsoft Documenten in gegevens
-description: Beschrijft beveiligingsfuncties die zijn geïmplementeerd voor Azure Data Box Disk, een cloudoplossing waarmee u grote hoeveelheden gegevens naar Azure overbrengen
+title: Beveiligings functies van Microsoft Azure Data Box Disk | Microsoft Docs in gegevens
+description: Hierin worden de beveiligings functies beschreven die zijn geïmplementeerd voor Azure Data Box Disk, een Cloud oplossing waarmee u grote hoeveel heden gegevens kunt overdragen naar Azure
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79117267"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk-beveiliging en -gegevensbescherming
@@ -72,7 +72,7 @@ Azure Data Box Disk verzamelt en toont persoonlijke informatie in de volgende be
 
   - Naam van contactpersoon
   - Telefoonnummer
-  - Email
+  - E-mail
   - Adres
   - Plaats
   - Postcode

@@ -9,15 +9,15 @@ ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 4c5c0197ab6cecbba4bac4c0bff5ef76de24b6de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78300996"
 ---
 ## <a name="prepare-your-web-app"></a>Uw web-app voorbereiden
 
-Als u aangepaste beveiligingsbindingen wilt maken of clientcertificaten voor uw App Service-app wilt inschakelen, moet uw [App Service-abonnement](https://azure.microsoft.com/pricing/details/app-service/) zich in de laag **Basis,** **Standaard,** **Premium**of **Geïsoleerd hebben.** In deze stap zorgt u ervoor dat de web-app zich in de ondersteunde prijscategorie bevindt.
+Als u aangepaste beveiligings bindingen wilt maken of client certificaten wilt inschakelen voor uw app service-app, moet uw [app service plan](https://azure.microsoft.com/pricing/details/app-service/) zich in de laag **Basic**, **Standard**, **Premium**of **geïsoleerd** bevallen. In deze stap zorgt u ervoor dat de web-app zich in de ondersteunde prijscategorie bevindt.
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -25,15 +25,15 @@ Open de [Azure Portal](https://portal.azure.com).
 
 ### <a name="navigate-to-your-web-app"></a>Navigeer naar uw web-app
 
-**App-services**zoeken en selecteren .
+Zoek en selecteer **app Services**.
 
-![App-services selecteren](./media/app-service-ssl-prepare-app/app-services.png)
+![App Services selecteren](./media/app-service-ssl-prepare-app/app-services.png)
 
-Selecteer op de pagina **App Services** de naam van uw web-app.
+Selecteer op de pagina **app Services** de naam van uw web-app.
 
 ![Navigatie naar Azure-app in de portal](./media/app-service-ssl-prepare-app/select-app.png)
 
-U bent geland op de beheerpagina van uw web-app.  
+U hebt gelandd op de beheer pagina van uw web-app.  
 
 ### <a name="check-the-pricing-tier"></a>Controleer de prijscategorie
 

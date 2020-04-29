@@ -1,6 +1,6 @@
 ---
-title: Logboekanalyse van Windows Virtual Desktop-diagnostische gegevenslogboeken - Azure
-description: Logboekanalyse gebruiken met de functie Diagnostische gegevens van Windows Virtual Desktop.
+title: Logboek analyse van diagnostische gegevens van Windows Virtual Desktop-Azure
+description: Log Analytics gebruiken met de Windows-functie diagnostische gegevens over virtueel bureau blad.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,67 +9,67 @@ ms.date: 12/18/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 355acb081afef8c78cdf971c7a82acdb91ab5593
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79127972"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics gebruiken voor de diagnostische functie
+# <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics gebruiken voor de functie voor diagnostische gegevens
 
-Windows Virtual Desktop biedt een diagnostische functie waarmee de beheerder problemen kan identificeren via één interface. Deze functie registreert diagnostische gegevens wanneer iemand de functie Windows Virtual Desktop heeft toegewezen. Elk logboek bevat informatie over welke Windows Virtual Desktop-rol betrokken was bij de activiteit, foutberichten die tijdens de sessie worden weergegeven, tenantgegevens en gebruikersinformatie. Met de diagnostische functie worden activiteitslogboeken voor zowel gebruikers- als administratieve acties aangenomen. Elk activiteitenlogboek valt onder drie hoofdcategorieën: 
+Virtueel bureau blad van Windows biedt een functie voor diagnostische gegevens waarmee de beheerder problemen kan identificeren via één interface. Met deze functie worden diagnostische gegevens vastgelegd wanneer de service wordt gebruikt door iemand die is toegewezen aan de Windows-functie virtueel bureau blad. Elk logboek bevat informatie over welke Windows-functie voor virtueel bureau blad is betrokken bij de activiteit, eventuele fout berichten die tijdens de sessie worden weer gegeven, informatie over de Tenant en gebruikers gegevens. De functie diagnostische gegevens maakt activiteiten logboeken voor gebruikers-en beheer acties. Elk activiteiten logboek valt onder drie hoofd categorieën: 
 
-- Feed-abonnementsactiviteiten: wanneer een gebruiker verbinding probeert te maken met zijn feed via Microsoft Remote Desktop-toepassingen.
-- Verbindingsactiviteiten: wanneer een gebruiker verbinding probeert te maken met een bureaublad of RemoteApp via Microsoft Remote Desktop-toepassingen.
-- Beheeractiviteiten: wanneer een beheerder beheerbewerkingen uitvoert op het systeem, zoals het maken van hostpools, het toewijzen van gebruikers aan app-groepen en het maken van roltoewijzingen.
+- Activiteiten voor feed-abonnementen: wanneer een gebruiker verbinding probeert te maken met hun feed via Microsoft Extern bureaublad toepassingen.
+- Verbindings activiteiten: wanneer een gebruiker verbinding probeert te maken met een bureau blad of RemoteApp via Microsoft Extern bureaublad toepassingen.
+- Beheer activiteiten: wanneer een beheerder beheer bewerkingen op het systeem uitvoert, zoals het maken van hostgroepen, het toewijzen van gebruikers aan app-groepen en het maken van roltoewijzingen.
 
-Verbindingen die Windows Virtual Desktop niet bereiken, worden niet weergegeven in diagnostische resultaten omdat de diagnostische rolservice zelf deel uitmaakt van Windows Virtual Desktop. Er kunnen problemen optreden met de verbindingsproblemen van Windows Virtual Desktop wanneer de gebruiker problemen ondervindt met de netwerkverbinding.
+Verbindingen die zich niet in het virtuele bureau blad van Windows bevinden, worden niet weer gegeven in de resultaten van diagnostische gegevens omdat de functie Service diagnostiek zelf deel uitmaakt van Windows virtueel bureau blad. Er kunnen problemen met de Windows-verbinding met virtueel bureau blad optreden wanneer de gebruiker problemen met de netwerk verbinding ondervindt.
 
 ## <a name="why-you-should-use-log-analytics"></a>Waarom u Log Analytics moet gebruiken
 
-We raden u aan Log Analytics te gebruiken om diagnostische gegevens in de Azure-client te analyseren die verder gaan dan het oplossen van problemen met één gebruiker. Zoals u vm-prestatiemeteritems inzamelen voor Log Analytics, beschikt u over één tool om informatie te verzamelen voor uw implementatie.
+U kunt het beste Log Analytics gebruiken voor het analyseren van diagnostische gegevens in de Azure-client die meer dan één gebruiker problemen oplossen. Als u prestatie meter items voor virtuele machines in Log Analytics hebt, hebt u één hulp programma om informatie te verzamelen voor uw implementatie.
 
 ## <a name="before-you-get-started"></a>Voordat u aan de slag gaat
 
-Voordat u Log Analytics gebruiken met de diagnostische functie, moet u [een werkruimte maken.](../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace)
+Voordat u Log Analytics kunt gebruiken met de functie diagnostische gegevens, moet u [een werk ruimte maken](../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace).
 
-Nadat u uw werkruimte hebt gemaakt, volgt u de instructies in [Windows-computers verbinden met Azure Monitor](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key) om de volgende informatie op te vragen: 
+Nadat u uw werk ruimte hebt gemaakt, volgt u de instructies in [Windows-computers verbinden met Azure monitor](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key) om de volgende informatie te verkrijgen: 
 
-- De werkruimte-id
-- De primaire sleutel van uw werkruimte
+- De werk ruimte-ID
+- De primaire sleutel van uw werk ruimte
 
-U hebt deze informatie later in het installatieproces nodig.
+U hebt deze gegevens later nodig in het installatie proces.
 
-## <a name="push-diagnostics-data-to-your-workspace"></a>Diagnostische gegevens naar uw werkruimte pushen 
+## <a name="push-diagnostics-data-to-your-workspace"></a>Diagnostische gegevens naar uw werk ruimte pushen 
 
-U diagnostische gegevens van uw Windows Virtual Desktop-tenant naar de Logboekanalyse voor uw werkruimte pushen. U deze functie meteen instellen wanneer u uw tenant voor het eerst maakt door uw werkruimte aan uw tenant te koppelen, of u deze later instellen met een bestaande tenant.
+U kunt Diagnostische gegevens van uw Windows Virtual Desktop-Tenant pushen naar de Log Analytics voor uw werk ruimte. U kunt deze functie meteen instellen wanneer u uw Tenant voor het eerst maakt door uw werk ruimte te koppelen aan uw Tenant of u kunt deze later instellen met een bestaande Tenant.
 
-Als u uw tenant wilt koppelen aan uw Logboekanalysewerkruimte terwijl u uw nieuwe tenant instelt, voert u de volgende cmdlet uit om u aan te melden bij Windows Virtual Desktop met uw TenantCreator-gebruikersaccount: 
+Als u uw Tenant wilt koppelen aan uw Log Analytics-werk ruimte terwijl u uw nieuwe Tenant instelt, voert u de volgende cmdlet uit om u aan te melden bij Windows Virtual Desktop met uw TenantCreator-gebruikers account: 
 
 ```powershell
 Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com 
 ```
 
-Als u een bestaande tenant wilt koppelen in plaats van een nieuwe tenant, voert u deze cmdlet in plaats daarvan uit: 
+Als u een bestaande Tenant wilt koppelen in plaats van een nieuwe Tenant, voert u de volgende cmdlet uit: 
 
 ```powershell
 Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String> 
 ```
 
-U moet deze cmdlets uitvoeren voor elke tenant die u wilt koppelen aan Log Analytics. 
+U moet deze cmdlets uitvoeren voor elke Tenant die u wilt koppelen aan Log Analytics. 
 
 >[!NOTE]
->Als u de werkruimte Log Analytics niet wilt koppelen wanneer `New-RdsTenant` u een tenant maakt, voert u de cmdlet in plaats daarvan uit. 
+>Als u de Log Analytics-werk ruimte niet wilt koppelen wanneer u een Tenant maakt, voert `New-RdsTenant` u in plaats daarvan de cmdlet uit. 
 
-## <a name="cadence-for-sending-diagnostic-events"></a>Cadans voor het verzenden van diagnostische gebeurtenissen
+## <a name="cadence-for-sending-diagnostic-events"></a>Uitgebracht voor het verzenden van diagnostische gebeurtenissen
 
 Diagnostische gebeurtenissen worden verzonden naar Log Analytics wanneer deze zijn voltooid.  
 
 ## <a name="example-queries"></a>Voorbeelden van query's
 
-In de volgende voorbeeldquery's ziet u hoe de diagnostische functie een rapport genereert voor de meest voorkomende activiteiten in uw systeem:
+De volgende voorbeeld query's laten zien hoe de diagnostische functie een rapport genereert voor de meest voorkomende activiteiten in uw systeem:
 
-In dit eerste voorbeeld worden verbindingsactiviteiten weergegeven die zijn geïnitieerd door gebruikers met ondersteunde extern bureaublad-clients:
+In dit eerste voor beeld ziet u verbindings activiteiten die worden geïnitieerd door gebruikers met ondersteunde extern bureau blad-clients:
 
 ```powershell
 WVDActivityV1_CL 
@@ -95,7 +95,7 @@ WVDActivityV1_CL
 |project-away ActivityId_g, ActivityId_g1 
 ```
 
-In dit volgende voorbeeldwordt de beheeractiviteiten van beheerders op tenants weergegeven:
+In dit volgende voor beeld worden beheer activiteiten door beheerders op tenants weer gegeven:
 
 ```powershell
 WVDActivityV1_CL 
@@ -121,16 +121,16 @@ WVDActivityV1_CL
 |project-away ActivityId_g, ActivityId_g1 
 ```
  
-## <a name="stop-sending-data-to-log-analytics"></a>Stoppen met het verzenden van gegevens naar Log Analytics 
+## <a name="stop-sending-data-to-log-analytics"></a>Verzenden van gegevens naar Log Analytics stoppen 
 
-Als u wilt stoppen met het verzenden van gegevens van een bestaande tenant naar Log Analytics, voert u de volgende cmdlet uit en stelt u lege tekenreeksen in:
+Als u wilt stoppen met het verzenden van gegevens van een bestaande Tenant naar Log Analytics, voert u de volgende cmdlet uit en stelt u lege teken reeksen in:
 
 ```powershell
 Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String> 
 ```
 
-U moet deze cmdlet uitvoeren voor elke tenant van wie u wilt stoppen met het verzenden van gegevens. 
+U moet deze cmdlet uitvoeren voor elke Tenant waarvan u wilt stoppen met het verzenden van gegevens. 
 
 ## <a name="next-steps"></a>Volgende stappen 
 
-Zie [Problemen identificeren en diagnosticeren](diagnostics-role-service.md#common-error-scenarios)als u veelvoorkomende foutscenario's wilt controleren die de diagnostische functie voor u kan identificeren.
+Zie [problemen identificeren en diagnosticeren](diagnostics-role-service.md#common-error-scenarios)als u veelvoorkomende fout scenario's wilt bekijken die door de diagnostische functie kunnen worden geïdentificeerd.

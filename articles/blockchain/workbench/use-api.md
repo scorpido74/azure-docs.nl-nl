@@ -1,54 +1,54 @@
 ---
-title: Azure Blockchain Workbench REST API's gebruiken
-description: Scenario's voor het gebruik van de REST API voor Azure Blockchain Workbench Preview
+title: REST-Api's van Azure Block Chain Workbench gebruiken
+description: Scenario's voor het gebruik van de preview-versie van Azure Block Chain Workbench REST API
 ms.date: 03/05/2020
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 3084fcf343bc42fe01bf352b6791916d62f63540
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78672738"
 ---
-# <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>De API voor de proefversie van Azure Blockchain Workbench Preview gebruiken
+# <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>De preview-versie van Azure Block Chain Workbench gebruiken REST API
 
-Azure Blockchain Workbench Preview REST API biedt ontwikkelaars en informatiewerkers een manier om rijke integraties te bouwen in blockchain-toepassingen. In dit artikel worden verschillende scenario's belicht voor het gebruik van de Workbench REST API. Stel dat u een aangepaste blockchain-client wilt maken waarmee aangemelde gebruikers hun toegewezen blockchain-toepassingen kunnen bekijken en ermee kunnen communiceren. De client kan de Blockchain Workbench API gebruiken om contractinstanties te bekijken en acties te ondernemen op basis van slimme contracten.
+De preview-versie van Azure Block Chain Workbench REST API biedt ontwikkel aars en informatie werkers een manier om uitgebreide integraties te bouwen met block Chain-toepassingen. In dit artikel worden verschillende scenario's beschreven voor het gebruik van de workbench REST API. Stel dat u een aangepaste Block Chain-client wilt maken waarmee aangemelde gebruikers hun toegewezen Block Chain-toepassingen kunnen weer geven en gebruiken. De-client kan de Block Chain Workbench API gebruiken om contract instanties weer te geven en acties uit te voeren op slimme contracten.
 
-## <a name="blockchain-workbench-api-endpoint"></a>Blockchain Workbench API-eindpunt
+## <a name="blockchain-workbench-api-endpoint"></a>Block Chain Workbench API-eind punt
 
-Blockchain Workbench API's zijn toegankelijk via een eindpunt voor uw implementatie. Ga als eerste over de URL van api-eindpunt voor uw implementatie:
+Block Chain Workbench-Api's worden geopend via een eind punt voor uw implementatie. De URL van het API-eind punt ophalen voor uw implementatie:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Selecteer **Resourcegroepen**in het navigatiedeelvenster aan de linkerkant .
-1. Kies de naam van de resourcegroep van uw geïmplementeerde Blockchain Workbench.
-1. Selecteer de kolomkop **TYPE** om de lijst alfabetisch te sorteren op type.
-1. Er zijn twee bronnen met type **App Service**. Selecteer de bron van het type **App-service** *met* het achtervoegsel 'api'.
-1. Kopieer in het **Overzicht**van de App-service de **URL-waarde,** die de URL van het API-eindpunt vertegenwoordigt naar uw geïmplementeerde Blockchain Workbench.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer **resource groepen**in het navigatie deel venster aan de linkerkant.
+1. Kies de resource groep met de naam van uw geïmplementeerde Block Chain Workbench.
+1. Selecteer de kolomkop **type** om de lijst alfabetisch te sorteren op type.
+1. Er zijn twee resources met het type **app service**. Selecteer de resource van het type **app service** *met* het achtervoegsel-API.
+1. Kopieer in het **overzicht**van app service de **URL** -waarde, die de URL van het API-eind punt vertegenwoordigt naar uw geïmplementeerde Block Chain Workbench.
 
-    ![URL van het eindpunt van app-service-API](media/use-api/app-service-api.png)
+    ![URL van app Service API-eind punt](media/use-api/app-service-api.png)
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
-Aanvragen voor de Blockchain Workbench REST API worden beveiligd met Azure Active Directory (Azure AD).
+Aanvragen voor de Block Chain Workbench REST API worden beveiligd met Azure Active Directory (Azure AD).
 
-Als u een geverifieerd verzoek wilt indienen bij de REST-API's, vereist clientcode verificatie met geldige referenties voordat u de API aanroepen. Verificatie wordt gecoördineerd tussen de verschillende actoren door Azure AD en biedt uw client een [toegangstoken](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#access-token) als bewijs van de verificatie. Het token wordt vervolgens verzonden in de HTTP Authorization-header van REST API-aanvragen. Zie [Azure Active Directory voor ontwikkelaars voor](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)meer informatie over Azure AD-verificatie.
+Voor het maken van een geverifieerde aanvraag voor de REST-Api's, vereist de client code verificatie met geldige referenties voordat u de API kunt aanroepen. Verificatie wordt gecoördineerd tussen de verschillende actoren van Azure AD en biedt uw client een [toegangs token](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#access-token) als bewijs van de verificatie. Het token wordt vervolgens verzonden in de HTTP-autorisatie-header van REST API-aanvragen. Zie [Azure Active Directory voor ontwikkel aars voor](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)meer informatie over Azure AD-verificatie.
 
-Zie [REST API-voorbeelden](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples) voor voorbeelden van hoe u deze verifiëren.
+Raadpleeg [rest API](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples) voor beelden voor voor beelden van verificatie.
 
 ## <a name="using-postman"></a>Met Postman
 
-Als u Workbench API's wilt testen of experimenteren, u [Postman](https://www.postman.com) gebruiken om API-aanroepen naar uw implementatie uit te voeren. [Download een voorbeeld Postman verzameling van Workbench API aanvragen](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples/postman) van GitHub. Zie het README-bestand voor meer informatie over het verifiëren en gebruiken van de voorbeeld-API-aanvragen.
+Als u met Workbench Api's wilt testen of experimenteren, kunt u [postman](https://www.postman.com) gebruiken om API-aanroepen naar uw implementatie te maken. [Down load een voor beeld van een postman-verzameling van WORKBENCH API-aanvragen](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples/postman) van github. Raadpleeg het Leesmij-bestand voor meer informatie over het verifiëren en gebruiken van de voor beeld-API-aanvragen.
 
 ## <a name="create-an-application"></a>Een app maken
 
-U gebruikt twee API-aanroepen om een Blockchain Workbench-toepassing te maken. Deze methode kan alleen worden uitgevoerd door gebruikers die Workbench-beheerders zijn.
+U gebruikt twee API-aanroepen om een Block Chain Workbench-toepassing te maken. Deze methode kan alleen worden uitgevoerd door gebruikers die Workbench beheerders zijn.
 
-Gebruik de [API Toepassingen POST](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationspost) om het JSON-bestand van de toepassing te uploaden en een toepassings-id te krijgen.
+Gebruik de [API-berichten](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationspost) om het JSON-bestand van de toepassing te uploaden en een toepassings-id op te halen.
 
-### <a name="applications-post-request"></a>Aanvragen POST-aanvraag
+### <a name="applications-post-request"></a>Sollicitatie POST-aanvraag
 
-Gebruik de parameter **appFile** om het configuratiebestand te verzenden als onderdeel van de aanvraaginstantie.
+Gebruik de para meter **appFile** om het configuratie bestand te verzenden als onderdeel van de hoofd tekst van de aanvraag.
 
 ``` http
 POST /api/v1/applications
@@ -58,9 +58,9 @@ Content-Disposition: form-data; name="appFile"; filename="/C:/smart-contract-sam
 Content-Type: application/json
 ```
 
-### <a name="applications-post-response"></a>Reactie van toepassingen POST
+### <a name="applications-post-response"></a>Toepassingen die het antwoord verzenden
 
-De gemaakte toepassings-ID wordt geretourneerd in het antwoord. U hebt de toepassings-id nodig om het configuratiebestand te koppelen aan het codebestand wanneer u de volgende API aanroept.
+De gemaakte toepassings-ID wordt in het antwoord geretourneerd. U hebt de toepassings-ID nodig om het configuratie bestand te koppelen aan het code bestand wanneer u de volgende API aanroept.
 
 ``` http
 HTTP/1.1 200 OK
@@ -68,16 +68,16 @@ Content-Type: "application/json"
 1
 ```
 
-### <a name="contract-code-post-request"></a>Aanvraag van postcode
+### <a name="contract-code-post-request"></a>POST-aanvraag contract code
 
-Gebruik de [POST-API voor toepassingen-contractcode](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/contractcodepost) door de toepassings-id door te geven om het soliditeitscodebestand van de toepassing te uploaden. De payload kan een enkel Solidity-bestand zijn of een bestand met rits met Solidity-bestanden.
+Gebruik de [contract code](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/contractcodepost) van de toepassing post-API door de toepassings-id door te geven voor het uploaden van het bestand met de code ring van de toepassing. De payload kan één bestand met een volheid zijn of een zip-bestand met volheid-bestanden.
 
 Vervang de volgende waarden:
 
 | Parameter | Waarde |
 |-----------|-------|
-| {applicationId} | Retourwaarde uit de API voor toepassingen POST. |
-| {ledgerId} | Index van het grootboek. De waarde is meestal 1. U ook de [tabel Grootboek](data-sql-management-studio.md) controleren op de waarde. |
+| ApplicationId | Retour waarde van de API-berichten na de toepassing. |
+| {ledgerId} | Index van het groot boek. De waarde is doorgaans 1. U kunt ook de [grootboek tabel](data-sql-management-studio.md) voor de waarde controleren. |
 
 ``` http
 POST /api/v1/applications/{applicationId}/contractCode?ledgerId={ledgerId}
@@ -86,9 +86,9 @@ Authorization : Bearer {access token}
 Content-Disposition: form-data; name="contractFile"; filename="/C:/smart-contract-samples/HelloWorld.sol"
 ```
 
-### <a name="contract-code-post-response"></a>Antwoord van postcode
+### <a name="contract-code-post-response"></a>Contract code POST-antwoord
 
-Als dit is gelukt, bevat het antwoord de gemaakte contractcode-id uit de [tabel ContractCode.](data-sql-management-studio.md)
+Als dit is gelukt, bevat het antwoord de gemaakte contract code-ID uit de [tabel ContractCode](data-sql-management-studio.md).
 
 ``` http
 HTTP/1.1 200 OK
@@ -98,17 +98,17 @@ Content-Type: "application/json"
 
 ## <a name="assign-roles-to-users"></a>Rollen toewijzen aan gebruikers
 
-Gebruik de [post-api voor toepassingen-toewijzingen](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/roleassignmentspost) door de toepassings-id, gebruikers-id en toepassingsrol-id door te geven om een user-to-role-toewijzing te maken in de opgegeven blockchain-toepassing. Deze methode kan alleen worden uitgevoerd door gebruikers die Workbench-beheerders zijn.
+Gebruik de [functie toewijzingen van toepassingen post-API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/roleassignmentspost) door de toepassings-id, gebruikers-id en toepassingsrol-id door te geven om een gebruiker-to-Role-toewijzing in de opgegeven Block Chain-toepassing te maken. Deze methode kan alleen worden uitgevoerd door gebruikers die Workbench beheerders zijn.
 
-### <a name="role-assignments-post-request"></a>Functietoewijzingen POST-aanvraag
+### <a name="role-assignments-post-request"></a>Roltoewijzingen POST-aanvraag
 
 Vervang de volgende waarden:
 
 | Parameter | Waarde |
 |-----------|-------|
-| {applicationId} | Retourwaarde uit de API Voor toepassingen post. |
-| {userId} | De waarde van de gebruikersnaam van [de gebruikerstabel](data-sql-management-studio.md). |
-| {applicationRoleId} | De waarde van toepassingsrol-id's die is gekoppeld aan de toepassings-id in de [tabel ApplicationRole](data-sql-management-studio.md). |
+| ApplicationId | Retour waarde van de API-berichten na de toepassing. |
+| Naam | De waarde van de gebruikers-ID uit de [gebruikers tabel](data-sql-management-studio.md). |
+| {applicationRoleId} | De waarde van de toepassingsrol-ID die is gekoppeld aan de toepassings-ID uit de [tabel ApplicationRole](data-sql-management-studio.md). |
 
 ``` http
 POST /api/v1/applications/{applicationId}/roleAssignments
@@ -121,9 +121,9 @@ Authorization : Bearer {access token}
 }
 ```
 
-### <a name="role-assignments-post-response"></a>Functietoewijzingen POST-respons
+### <a name="role-assignments-post-response"></a>Roltoewijzingen POST-antwoord
 
-Als dit is gelukt, bevat het antwoord de gemaakte functietoewijzings-id in de [tabel RoleAssignment](data-sql-management-studio.md).
+Als dit is gelukt, bevat het antwoord de gemaakte roltoewijzings-ID uit de [tabel RoleAssignment](data-sql-management-studio.md).
 
 ``` http
 HTTP/1.1 200
@@ -132,21 +132,21 @@ HTTP/1.1 200
 
 ## <a name="list-applications"></a>Lijst met toepassingen weergeven
 
-Gebruik de [API Voor toepassingen GET](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget) om alle Blockchain Workbench-toepassingen voor de gebruiker op te halen. In dit voorbeeld heeft de aangemelde gebruiker toegang tot twee toepassingen:
+Gebruik de [apps Get API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget) om alle Block Chain Workbench-toepassingen voor de gebruiker op te halen. In dit voor beeld heeft de aangemelde gebruiker toegang tot twee toepassingen:
 
-- [Overdracht van activa](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
-- [Gekoeld transport](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
+- [Asset overboeking](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
+- [Koel transport](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
 
-### <a name="applications-get-request"></a>Aanvragen GET-aanvraag
+### <a name="applications-get-request"></a>Aanvraag ophalen aanvragen
 
 ``` http
 GET /api/v1/applications
 Authorization : Bearer {access token}
 ```
 
-### <a name="applications-get-response"></a>Toepassingen GET-respons
+### <a name="applications-get-response"></a>Reactie van toepassingen ophalen
 
-De respons bevat alle blockchain-toepassingen waartoe een gebruiker toegang heeft in Blockchain Workbench. Blockchain Workbench-beheerders krijgen elke blockchain-toepassing. Niet-Workbench-beheerders krijgen alle blockchain-toepassingen waarvoor ze ten minste één bijbehorende toepassingsrol of een bijbehorende rol van slimme contractinstantie hebben.
+In het antwoord wordt een lijst weer gegeven met alle Block Chain-toepassingen waartoe een gebruiker toegang heeft in Block Chain Workbench. Block Chain Workbench-beheerders krijgen elke Block Chain-toepassing. Beheerders van niet-Workbench krijgen alle Block Chain-toepassingen waarvoor ze ten minste één gekoppelde toepassingsrol of een gekoppelde rol van een slimme-contract instantie hebben.
 
 ``` http
 HTTP/1.1 200 OK
@@ -180,18 +180,18 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>Lijst met werkstromen voor een toepassing weergeven
 
-Gebruik [Applications Workflows GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget) om alle workflows van een bepaalde blockchain-toepassing te vermelden waartoe een gebruiker toegang heeft in Blockchain Workbench. Elke blockchain-toepassing heeft een of meer werkstromen en elke werkstroom heeft nul of meer exemplaren van slimme contracten. Voor een blockchain-clienttoepassing met slechts één workflow raden we aan de gebruikerservaringsstroom over te slaan waarmee gebruikers de juiste workflow kunnen selecteren.
+Gebruik [toepassingen werk stromen API ophalen](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget) om een lijst weer te geven met alle werk stromen van een opgegeven Block Chain-toepassing waartoe een gebruiker toegang heeft in Block Chain Workbench. Elke blockchain-toepassing heeft een of meer werkstromen en elke werkstroom heeft nul of meer exemplaren van slimme contracten. Voor een Block Chain-client toepassing die slechts één werk stroom heeft, wordt u aangeraden de stroom voor gebruikers ervaring over te slaan waarmee gebruikers de juiste werk stroom kunnen selecteren.
 
-### <a name="application-workflows-request"></a>Aanvraag voor toepassingswerkstromen
+### <a name="application-workflows-request"></a>Aanvraag voor toepassings werk stromen
 
 ``` http
 GET /api/v1/applications/{applicationId}/workflows
 Authorization: Bearer {access token}
 ```
 
-### <a name="application-workflows-response"></a>Antwoord op toepassingswerkstromen
+### <a name="application-workflows-response"></a>Reactie op toepassings werk stromen
 
-Blockchain Workbench-beheerders krijgen elke blockchain-workflow. Niet-Workbench-beheerders krijgen alle werkstromen waarvoor ze ten minste één bijbehorende toepassingsrol hebben of die zijn gekoppeld aan een functie voor slimme contractinstanties.
+Block Chain Workbench-beheerders krijgen elke Block Chain-werk stroom. Beheerders van niet-Workbench krijgen alle werk stromen waarvoor ze ten minste één gekoppelde toepassingsrol hebben of die is gekoppeld aan een rol van een intelligent contract exemplaar.
 
 ``` http
 HTTP/1.1 200 OK
@@ -212,29 +212,29 @@ Content-type: application/json
 }
 ```
 
-## <a name="create-a-contract-instance"></a>Een contractinstantie maken
+## <a name="create-a-contract-instance"></a>Een contract exemplaar maken
 
-Gebruik [Contracts V2 POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contractsv2/contractpost) om een nieuwe slimme contractinstantie voor een workflow te maken. Gebruikers kunnen alleen een nieuwe smart contract-instantie maken als de gebruiker is gekoppeld aan een toepassingsrol, waarmee een slim contractexemplaar voor de werkstroom kan worden gestart.
+Gebruik [contracten v2 post-API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contractsv2/contractpost) om een nieuw exemplaar van het slimme contract te maken voor een werk stroom. Gebruikers kunnen alleen een nieuw intelligent contract exemplaar maken als de gebruiker is gekoppeld aan een toepassingsrol, waarmee een info contract exemplaar voor de werk stroom kan worden gestart.
 
 > [!NOTE]
-> In dit voorbeeld wordt versie 2 van de API gebruikt. Versie 2 contract API's bieden meer granulariteit voor de bijbehorende provisioningstatus velden.
+> In dit voor beeld wordt versie 2 van de API gebruikt. Versie 2-contract-Api's bieden meer granulatie voor de gekoppelde ProvisioningStatus velden.
 
-### <a name="contracts-post-request"></a>Contracten POST aanvraag
+### <a name="contracts-post-request"></a>Contracten POST-aanvraag
 
 Vervang de volgende waarden:
 
 | Parameter | Waarde |
 |-----------|-------|
-| {workflowId} | De waarde van de werkstroom-id is de constructorid van het contract in de [tabel Werkstroom.](data-sql-management-studio.md) |
-| {contractCodeId} | Waarde van de contractcode-id in de [tabel ContractCode](data-sql-management-studio.md). Correleer de toepassings-id en grootboek-id voor de contractinstantie die u wilt maken. |
-| {connectionId} | Verbindings-ID-waarde in de [tabel Verbinding](data-sql-management-studio.md). |
+| WorkflowId | De waarde van de werk stroom-ID is de ConstructorID van het contract uit de [werk stroom tabel](data-sql-management-studio.md). |
+| {contractCodeId} | De waarde van de contract code-ID in de [ContractCode-tabel](data-sql-management-studio.md). Correleer de toepassings-ID en de grootboek-ID voor het contract exemplaar dat u wilt maken. |
+| ConnectionId | De waarde van de verbindings-ID uit de [verbindings tabel](data-sql-management-studio.md). |
 
-Stel voor de aanvraaginstantie waarden in met de volgende gegevens:
+Stel in de hoofd tekst van de aanvraag waarden in met behulp van de volgende gegevens:
 
 | Parameter | Waarde |
 |-----------|-------|
-| werkstroomFunctie-ID | ID van de [tabel Werkstroomfunctie](data-sql-management-studio.md). |
-| werkstroomActionParameters | Naamwaardeparen van parameters die aan de constructor worden doorgegeven. Gebruik voor elke parameter de waarde van de werkstroomFunctieParameterID in de tabel [WorkflowFunctionParameter.](data-sql-management-studio.md) |
+| workflowFunctionID | ID uit de [tabel WorkflowFunction](data-sql-management-studio.md). |
+| workflowActionParameters | Naam waarde-paren van para meters die zijn door gegeven aan de constructor. Gebruik voor elke para meter de waarde workflowFunctionParameterID uit de tabel [WorkflowFunctionParameter](data-sql-management-studio.md) . |
 
 ``` http
 POST /api/v2/contracts?workflowId={workflowId}&contractCodeId={contractCodeId}&connectionId={connectionId}
@@ -253,9 +253,9 @@ Authorization : Bearer {access token}
 }
 ```
 
-### <a name="contracts-post-response"></a>Contracten POST reactie
+### <a name="contracts-post-response"></a>Contracten POST-antwoord
 
-Als deze is geslaagd, retourneert de API contractactionid van de [tabel ContractActionParameter](data-sql-management-studio.md).
+Als deze is geslaagd, retourneert functie toewijzings-API de ContractActionID uit de [tabel ContractActionParameter](data-sql-management-studio.md).
 
 ``` http
 HTTP/1.1 200 OK
@@ -264,9 +264,9 @@ HTTP/1.1 200 OK
 
 ## <a name="list-smart-contract-instances-for-a-workflow"></a>Lijst met exemplaren van slimme contracten voor een werkstroom weergeven
 
-Gebruik [Contracts GET API](/rest/api/azure-blockchain-workbench/contractsv2/contractsget) om alle slimme contractinstanties voor een werkstroom weer te geven. Of u gebruikers toestaan om diep te duiken in een van de getoonde slimme contract exemplaren.
+Gebruik [contracten Get API](/rest/api/azure-blockchain-workbench/contractsv2/contractsget) om alle slimme contract instanties voor een werk stroom weer te geven. U kunt gebruikers ook in staat stellen om een van de weer gegeven slimme contract instanties te bekijken.
 
-### <a name="contracts-request"></a>Contractaanvraag
+### <a name="contracts-request"></a>Aanvraag voor contracten
 
 Stel dat een gebruiker in dit voorbeeld interactie wil hebben met een van de exemplaren van een slim contract om er vervolgens een bepaalde actie op uit te voeren.
 
@@ -277,7 +277,7 @@ Authorization: Bearer {access token}
 
 ### <a name="contracts-response"></a>Antwoord op contracten
 
-Het antwoord bevat alle slimme contractexemplaren van de opgegeven werkstroom. Workbench-beheerders krijgen alle slimme contractexemplaren. Niet-Workbench-beheerders krijgen elk slim contractexemplaar waarvoor ze ten minste één bijbehorende toepassingsrol hebben of is gekoppeld aan een functie voor slimme contractinstanties.
+In het antwoord wordt een lijst weer gegeven met alle slimme contract instanties van de opgegeven werk stroom. Workbench beheerders krijgen alle slimme contract instanties. Beheerders van niet-Workbench krijgen elke slimme contract instantie waarvoor ze ten minste één gekoppelde toepassingsrol hebben of die is gekoppeld aan een rol van een slimme-contract instantie.
 
 ``` http
 HTTP/1.1 200 OK
@@ -367,23 +367,23 @@ Content-type: application/json
 
 ## <a name="list-available-actions-for-a-contract"></a>Lijst met beschikbare acties voor een contract weergeven
 
-Gebruik [de API voor contractactie get](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget) om de beschikbare gebruikersacties weer te geven, gezien de status van het contract. 
+Gebruik [contract actie Get API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget) om de beschik bare gebruikers acties weer te geven op basis van de status van het contract. 
 
-### <a name="contract-action-request"></a>Contractactieaanvraag
+### <a name="contract-action-request"></a>Actie aanvraag contract
 
-In dit voorbeeld bekijkt de gebruiker alle beschikbare acties voor een nieuw slim contract dat ze hebben gemaakt.
+In dit voor beeld bekijkt de gebruiker alle beschik bare acties voor een nieuw, door hen gemaakt slim contract.
 
 ``` http
 GET /api/v1/contracts/{contractId}/actions
 Authorization: Bearer {access token}
 ```
 
-### <a name="contract-action-response"></a>Reactie van contractactie
+### <a name="contract-action-response"></a>Antwoord op contract actie
 
 Het antwoord bestaat uit een lijst met alle acties die een gebruiker kan uitvoeren op basis van de huidige status van het opgegeven exemplaar van het slimme contract.
 
 * Modify: hiermee kan de gebruiker de beschrijving en prijs van een asset aanpassen.
-* Einde: hiermee kan de gebruiker het contract van het actief beëindigen.
+* Beëindigen: Hiermee kan de gebruiker het contract van de Asset beëindigen.
 
 Gebruikers zien alle toepasselijke acties als de gebruiker een bijbehorende toepassingsrol heeft of een rol voor het exemplaar van het slimme contract voor de huidige status van het opgegeven exemplaar van het slimme contract.
 
@@ -440,11 +440,11 @@ Content-type: application/json
 
 ## <a name="execute-an-action-for-a-contract"></a>Een actie voor een contract uitvoeren
 
-Gebruik [de API voor contractactie post](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost) om actie te ondernemen voor de opgegeven slimme contractinstantie.
+Gebruik de [contract actie post-API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost) om actie te ondernemen voor het opgegeven exemplaar van de Smart-contract.
 
-### <a name="contract-action-post-request"></a>Contractactie POST-aanvraag
+### <a name="contract-action-post-request"></a>Contract actie POST-aanvraag
 
-Houd in dit geval rekening met het scenario waarin een gebruiker de beschrijving en prijs van een actief wil wijzigen.
+In dit geval moet u rekening houden met het scenario waarin een gebruiker de beschrijving en prijs van een activum wil wijzigen.
 
 ``` http
 POST /api/v1/contracts/{contractId}/actions
@@ -466,7 +466,7 @@ actionInformation: {
 
 Gebruikers kunnen alleen de actie uitvoeren die mogelijk is op basis van de huidige status van het opgegeven exemplaar van het slimme contract en de bijbehorende toepassingsrol van de gebruiker of de rol van het exemplaar van het slimme contract.
 
-### <a name="contract-action-post-response"></a>Reactie van contractactie POST
+### <a name="contract-action-post-response"></a>Actie POST-antwoord contract
 
 Als het posten is gelukt, wordt dit aangegeven met een HTTP 200 OK-antwoord zonder verdere toelichting.
 
@@ -477,4 +477,4 @@ Content-type: application/json
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [Azure Blockchain Workbench REST API-referentie](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)voor referentieinformatie over Blockchain Workbench API's.
+Zie voor naslag informatie over Block Chain Workbench-Api's de [Naslag Gids voor Azure Block Chain Workbench rest API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench).

@@ -1,6 +1,6 @@
 ---
-title: GetCurrentDateTime in Azure Cosmos DB-querytaal
-description: Meer informatie over SQL-systeemfunctie GetCurrentDateTime in Azure Cosmos DB.
+title: GetCurrentDateTime in Azure Cosmos DB-query taal
+description: Meer informatie over de SQL-functie GetCurrentDateTime in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: d50b08ab85c7e299c465c3eb6f34e867d6634006
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303899"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
- Geeft als resultaat de huidige UTC -datum en -tijd als een ISO 8601-tekenreeks.
+ Retourneert de huidige UTC-datum en-tijd (Coordinated Universal Time) als een ISO 8601-teken reeks.
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -23,41 +23,41 @@ ms.locfileid: "78303899"
 GetCurrentDateTime ()
 ```
   
-## <a name="return-types"></a>Retourtypen
+## <a name="return-types"></a>Retour typen
   
-  Geeft als resultaat de huidige UTC-datum en -tijd `YYYY-MM-DDThh:mm:ss.fffffffZ` als ISO 8601-tekenreekswaarde in de notatie waarin:
+  Retourneert de huidige UTC-datum en-8601 tijd in de notatie `YYYY-MM-DDThh:mm:ss.fffffffZ` waar:
   
   |||
   |-|-|
-  |Jjjj|viercijferig jaar|
-  |MM|tweecijferige maand (01 = januari, enz.)|
-  |Dd|tweecijferige dag van de maand (01 t/m 31)|
-  |T|signifier voor begin tijdselementen|
-  |hh|tweecijferig uur (00 tot en met 23)|
-  |mm|tweecijferige minuten (00 tot en met 59)|
-  |ss|tweecijferige seconden (00 tot en met 59)|
-  |.fffffff|zevencijferige fractionele seconden|
-  |Z|UTC (Coordinated Universal Time) ondertekenaar||
+  |DD|jaar met vier cijfers|
+  |MM|maand van twee cijfers (01 = januari, etc.)|
+  |AFSCHRIJVING|2-cijferige dag van de maand (01 tot en met 31)|
+  |T|de aanzienlijke voor het begin van de tijd elementen|
+  |hh|twee cijfers per uur (00 tot en met 23)|
+  |mm|twee cijfers minuten (00 tot en met 59)|
+  |ss|seconden van twee cijfers (00 tot en met 59)|
+  |.fffffff|aantal seconden van zeven cijfers|
+  |Z|UTC (Coordinated Universal Time)||
   
-  Zie [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601) voor meer informatie over het ISO 8601-formaat
+  Zie [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601) voor meer informatie over de ISO 8601-indeling.
 
 ## <a name="remarks"></a>Opmerkingen
 
-  GetCurrentDateTime() is een niet-deterministische functie. 
+  GetCurrentDateTime () is een niet-deterministische functie. 
   
   Het geretourneerde resultaat is UTC.
 
-  Precisie is 7 cijfers, met een nauwkeurigheid van 100 nanoseconden.
+  Nauw keurigheid is 7 cijfers, met een nauw keurigheid van 100 nano seconden.
 
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voorbeeld ziet u hoe u de huidige UTC-datumtijd krijgen met de ingebouwde functie GetCurrentDateTime().
+  In het volgende voor beeld ziet u hoe u de huidige UTC-datum tijd kunt ophalen met behulp van de ingebouwde functie GetCurrentDateTime ().
   
 ```sql
 SELECT GetCurrentDateTime() AS currentUtcDateTime
 ```  
   
- Hier is een voorbeeldresultaatset.
+ Hier volgt een voor beeld van een resultatenset.
   
 ```json
 [{
@@ -67,6 +67,6 @@ SELECT GetCurrentDateTime() AS currentUtcDateTime
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Datum- en tijdfuncties Azure Cosmos DB](sql-query-date-time-functions.md)
-- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
+- [Datum-en tijd functies Azure Cosmos DB](sql-query-date-time-functions.md)
+- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

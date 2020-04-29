@@ -1,6 +1,6 @@
 ---
-title: Latentie voor windows Virtual Desktop-gebruikersverbinding - Azure
-description: Verbindingslatentie voor Windows Virtual Desktop-gebruikers.
+title: Windows-wacht tijd voor gebruikers verbinding met virtueel bureau blad-Azure
+description: Verbindings latentie voor Windows-virtuele bureau blad-gebruikers.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,24 +9,24 @@ ms.date: 10/30/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a4210947d771768943775a3e62c2558fa2883bd5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79128193"
 ---
-# <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>Latentie van gebruikersverbinding bepalen in Windows Virtual Desktop
+# <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>De latentie van gebruikers verbindingen bepalen in het virtuele bureau blad van Windows
 
-Windows Virtual Desktop is wereldwijd beschikbaar. Beheerders kunnen virtuele machines (VM's) maken in elke Azure-regio die ze willen. De kliklatentie zijn afhankelijk van de locatie van de gebruikers en de virtuele machines. Windows Virtual Desktop-services worden voortdurend uitgerold naar nieuwe regio's om de latentie te verbeteren. 
+Virtueel bureau blad van Windows is wereld wijd beschikbaar. Beheerders kunnen virtuele machines (Vm's) in elke gewenste Azure-regio maken. De latentie van de verbinding is afhankelijk van de locatie van de gebruikers en de virtuele machines. Virtuele bureau blad-services van Windows worden voortdurend geïmplementeerd naar nieuwe geografische gebieden om latentie te verbeteren. 
  
-Met het [hulpprogramma voor het schatten van virtuele bureaubladervaring](https://azure.microsoft.com/services/virtual-desktop/assessment/) van Windows u bepalen wat de beste locatie is om de latentie van uw VM's te optimaliseren. We raden u aan de tool elke twee tot drie maanden te gebruiken om ervoor te zorgen dat de optimale locatie niet is gewijzigd naarmate Windows Virtual Desktop naar nieuwe gebieden uitrolt. 
+Met het [Windows-hulp programma virtuele bureau blad-ervaring Estimator](https://azure.microsoft.com/services/virtual-desktop/assessment/) kunt u de beste locatie bepalen om de latentie van uw vm's te optimaliseren. We raden u aan om het hulp programma om de twee tot drie maanden te gebruiken om ervoor te zorgen dat de optimale locatie niet is gewijzigd, omdat Windows virtueel bureau blad naar nieuwe gebieden rolt. 
 
 ## <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
-Windows Virtual Desktop gebruikt Azure Traffic Manager, waarmee de locatie van de DNS-server van de gebruiker wordt gecontroleerd om het dichtstbijzijnde Windows Virtual Desktop-serviceexemplaar te vinden. We raden beheerders aan de locatie van de DNS-server van de gebruiker te controleren voordat ze de locatie voor de VM's kiezen.
+Het virtuele bureau blad van Windows maakt gebruik van de Azure-Traffic Manager, waarmee de locatie van de DNS-server van de gebruiker wordt gecontroleerd om het dichtstbijzijnde exemplaar van het Windows Virtual Desktop-service te vinden. Beheerders wordt aangeraden de locatie van de DNS-server van de gebruiker te controleren voordat u de locatie voor de virtuele machines selecteert.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie het [hulpprogramma voor virtuele desktopervaring van Windows](https://azure.microsoft.com/services/virtual-desktop/assessment/)om de beste locatie te controleren op optimale latentie.
-- Zie [Windows Virtual Desktop-prijzen](https://azure.microsoft.com/pricing/details/virtual-desktop/)voor prijsplannen voor prijsplannen.
-- Bekijk [onze zelfstudie](tenant-setup-azure-active-directory.md)om aan de slag te gaan met uw Windows Virtual Desktop-implementatie.
+- Als u de beste locatie voor optimale latentie wilt controleren, raadpleegt u het [Windows-hulp programma Virtual Desktop Experience Estimator](https://azure.microsoft.com/services/virtual-desktop/assessment/).
+- Zie [prijzen voor Windows virtueel bureau blad](https://azure.microsoft.com/pricing/details/virtual-desktop/)voor prijs plannen.
+- Bekijk [onze zelf studie](tenant-setup-azure-active-directory.md)om aan de slag te gaan met de implementatie van uw virtuele Windows-bureau blad.

@@ -1,6 +1,6 @@
 ---
-title: RECHTS in Azure Cosmos DB-querytaal
-description: Meer informatie over SQL-systeemfunctie RIGHT in Azure Cosmos DB.
+title: RECHTS in Azure Cosmos DB query taal
+description: Meer informatie over de functie voor SQL-systeem functies in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 247616d2ac4f2a5799a5896d679f6e6d5917d5a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302148"
 ---
-# <a name="right-azure-cosmos-db"></a>RECHTS (Azure Cosmos DB)
+# <a name="right-azure-cosmos-db"></a>RIGHT (Azure Cosmos DB)
  Retourneert het rechterdeel van een tekenreeks met het opgegeven aantal tekens.  
   
 ## <a name="syntax"></a>Syntaxis
@@ -26,24 +26,24 @@ RIGHT(<str_expr>, <num_expr>)
 ## <a name="arguments"></a>Argumenten
   
 *str_expr*  
-   Is de tekenreeksexpressie om tekens uit te extraheren.  
+   Is de teken reeks expressie waaruit tekens moeten worden geëxtraheerd.  
   
 *num_expr*  
-   Is een numerieke expressie die het aantal tekens opgeeft.  
+   Is een numerieke expressie waarmee het aantal tekens wordt opgegeven.  
   
-## <a name="return-types"></a>Retourtypen
+## <a name="return-types"></a>Retour typen
   
-  Retourneert een tekenreeksexpressie.  
+  Retourneert een teken reeks expressie.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voorbeeld wordt het rechterdeel van "abc" voor verschillende lengtewaarden geretourneerd.  
+  In het volgende voor beeld wordt het rechter deel van ' ABC ' geretourneerd voor verschillende lengte waarden.  
   
 ```sql
 SELECT RIGHT("abc", 1) AS r1, RIGHT("abc", 2) AS r2 
 ```  
   
- Hier is het resultaat ingesteld.  
+ Dit is de resultatenset.  
   
 ```json
 [{"r1": "c", "r2": "bc"}]  
@@ -51,10 +51,10 @@ SELECT RIGHT("abc", 1) AS r1, RIGHT("abc", 2) AS r2
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeemfunctie maakt geen gebruik van de index.
+Deze systeem functie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Tekenreeksfuncties Azure Cosmos DB](sql-query-string-functions.md)
-- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
+- [Teken reeks functies Azure Cosmos DB](sql-query-string-functions.md)
+- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

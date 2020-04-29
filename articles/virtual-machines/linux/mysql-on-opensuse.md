@@ -1,6 +1,6 @@
 ---
-title: MySQL installeren op een OpenSUSE VM in Azure
-description: Leer MySQL installeren op een Virtuele OpenSUSE Linux-machine in Azure.
+title: MySQL installeren op een OpenSUSE-VM in azure
+description: Meer informatie over het installeren van MySQL op een virtuele OpenSUSE Linux-machine in Azure.
 services: virtual-machines-linux
 author: cynthn
 ms.service: virtual-machines-linux
@@ -11,28 +11,28 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
 ms.openlocfilehash: 0d3f0a61da3654c31c99cfac43c86b081876f700
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78944580"
 ---
-# <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>MySQL installeren op een virtuele machine met OpenSUSE Linux in Azure
+# <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>MySQL installeren op een virtuele machine met OpenSUSE Linux in azure
 
-[MySQL](https://www.mysql.com) is een populaire, open-source SQL-database. In deze zelfstudie ziet u hoe u een virtuele machine maakt waarop OpenSUSE Linux wordt uitgevoerd en installeert u MySQL.
+[MySQL](https://www.mysql.com) is een populaire open-source SQL database. In deze zelf studie wordt uitgelegd hoe u een virtuele machine met OpenSUSE Linux maakt en vervolgens MySQL installeert.
 
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u Azure CLI versie 2.0 of hoger nodig. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-virtual-machine-running-opensuse-linux"></a>Een virtuele machine maken met OpenSUSE Linux
+## <a name="create-a-virtual-machine-running-opensuse-linux"></a>Een virtuele machine maken waarop OpenSUSE Linux wordt uitgevoerd
 
-Maak eerst een resourcegroep. In dit voorbeeld wordt de resourcegroep *mySQSUSEResourceGroup* genoemd en wordt deze gemaakt in de regio *Oost-VS.*
+Maak eerst een resource groep. In dit voor beeld heeft de resource groep de naam *mySQSUSEResourceGroup* en wordt deze gemaakt in de regio *VS-Oost* .
 
 ```azurecli-interactive
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-Maak de VM. In dit voorbeeld wordt de VM *myVM* genoemd en wordt de VM-grootte *Standard_D2s_v3,* maar u moet de [VM-grootte](sizes.md) kiezen die volgens u het meest geschikt is voor uw werkbelasting.
+Maak de virtuele machine. In dit voor beeld heeft de virtuele machine de naam *myVM* en is de VM-grootte *Standard_D2s_v3*, maar u moet de [VM-grootte](sizes.md) kiezen die het meest geschikt is voor uw werk belasting.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -42,7 +42,7 @@ az vm create --resource-group mySQLSUSEResourceGroup \
    --generate-ssh-keys
 ```
 
-U moet ook een regel toevoegen aan de netwerkbeveiligingsgroep om verkeer via poort 3306 voor MySQL toe te staan.
+U moet ook een regel toevoegen aan de netwerk beveiligings groep om verkeer toe te staan via poort 3306 voor MySQL.
 
 ```azurecli-interactive
 az vm open-port --port 3306 --resource-group mySQLSUSEResourceGroup --name myVM
@@ -50,27 +50,27 @@ az vm open-port --port 3306 --resource-group mySQLSUSEResourceGroup --name myVM
 
 ## <a name="connect-to-the-vm"></a>Verbinding maken met de virtuele machine
 
-U gebruikt SSH om verbinding te maken met de VM. In dit voorbeeld is het openbare IP-adres van de VM *10.111.112.113*. U het IP-adres in de uitvoer zien wanneer u de vm hebt gemaakt.
+U gebruikt SSH om verbinding te maken met de virtuele machine. In dit voor beeld is het open bare IP-adres van de virtuele machine *10.111.112.113*. U kunt het IP-adres in de uitvoer zien wanneer u de virtuele machine hebt gemaakt.
 
 ```azurecli-interactive  
 ssh 10.111.112.113
 ```
 
  
-## <a name="update-the-vm"></a>De VM bijwerken
+## <a name="update-the-vm"></a>De virtuele machine bijwerken
  
-Nadat u bent verbonden met de VM, installeert u systeemupdates en patches. 
+Nadat u verbinding hebt gemaakt met de virtuele machine, installeert u systeem updates en-patches. 
    
 ```bash
 sudo zypper update
 ```
 
-Volg de aanwijzingen om uw vm bij te werken.
+Volg de aanwijzingen om uw virtuele machine bij te werken.
 
 ## <a name="install-mysql"></a>MySQL installeren 
 
 
-Installeer de MySQL in de VM over SSH. Beantwoord de vragen waar nodig.
+Installeer de MySQL in de virtuele machine via SSH. Beantwoord de vragen indien van toepassing.
 
 ```bash
 sudo zypper install mysql
@@ -87,7 +87,7 @@ Controleer of MySQL is ingeschakeld.
 systemctl is-enabled mysql
 ```
 
-Dit moet terugkeren: ingeschakeld.
+Dit moet als resultaat worden geretourneerd: ingeschakeld.
 
 Start de server opnieuw op.
 
@@ -96,11 +96,11 @@ sudo reboot
 ```
 
 
-## <a name="mysql-password"></a>MySQL-wachtwoord
+## <a name="mysql-password"></a>MySQL-wacht woord
 
-Na de installatie is het MySQL-hoofdwachtwoord standaard leeg. Voer het **mysql\_secure installation\_** script uit om MySQL te beveiligen. Het script vraagt u om het MySQL-hoofdwachtwoord te wijzigen, anonieme gebruikersaccounts te verwijderen, externe hoofdaanmelding uit te schakelen, testdatabases te verwijderen en de lijst met bevoegdheden opnieuw te laden. 
+Na de installatie is het MySQL-hoofd wachtwoord standaard leeg. Voer het **script\_voor\_beveiligde installatie van MySQL** uit om MySQL te beveiligen. Het script vraagt u om het MySQL-hoofd wachtwoord te wijzigen, anonieme gebruikers accounts te verwijderen, aanmelden bij externe hoofdmap uit te scha kelen, test databases te verwijderen en de tabel met bevoegdheden opnieuw te laden. 
 
-Zodra de server opnieuw wordt opgestart, ssh naar de VM weer.
+Nadat de server opnieuw is opgestart, moet u opnieuw SSH naar de VM.
 
 ```azurecli-interactive  
 ssh 10.111.112.113
@@ -114,12 +114,12 @@ mysql_secure_installation
 
 ## <a name="sign-in-to-mysql"></a>Aanmelden bij MySQL
 
-U zich nu aanmelden en de MySQL-prompt invoeren.
+U kunt zich nu aanmelden en de MySQL-prompt invoeren.
 
 ```bash  
 mysql -u root -p
 ```
-Hiermee wordt u overgezet naar de MySQL-prompt, waar u SQL-instructies uitgeven om met de database te communiceren.
+Hiermee schakelt u over naar de MySQL-prompt waarin u SQL-instructies kunt verzenden om te communiceren met de data base.
 
 Maak nu een nieuwe MySQL-gebruiker.
 
@@ -127,28 +127,28 @@ Maak nu een nieuwe MySQL-gebruiker.
 CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ```
    
-De puntkomma (;) aan het einde van de lijn is cruciaal voor het beëindigen van het commando.
+De punt komma (;) aan het einde van de regel is van cruciaal belang voor het beëindigen van de opdracht.
 
 
-## <a name="create-a-database"></a>Database maken
+## <a name="create-a-database"></a>Een database maken
 
 
-Maak een database `mysqluser` en geef de gebruiker machtigingen.
+Maak een Data Base en verleen de `mysqluser` gebruikers machtigingen.
 
 ```sql
 CREATE DATABASE testdatabase;
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ```
    
-Namen en wachtwoorden van databasegebruikers worden alleen gebruikt door scripts die verbinding maken met de database.  Database gebruikersaccountnamen vertegenwoordigen niet noodzakelijkerwijs werkelijke gebruikersaccounts op het systeem.
+Database gebruikers namen en wacht woorden worden alleen gebruikt door scripts die verbinding maken met de data base.  Namen van database gebruikers accounts vertegenwoordigen niet noodzakelijkerwijs werkelijke gebruikers accounts op het systeem.
 
-Aanmelden vanaf een andere computer inschakelen. In dit voorbeeld is het IP-adres van de computer om u aan te melden vanaf *10.112.113.114*.
+Aanmelden vanaf een andere computer inschakelen. In dit voor beeld is het IP-adres van de computer waarvoor aanmelden is toegestaan *10.112.113.114*.
 
 ```sql
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'10.112.113.114' IDENTIFIED BY 'password';
 ```
    
-Als u het hulpprogramma voor mysql-databasebeheer wilt afsluiten, typt u:
+Als u het hulp programma voor MySQL-database beheer wilt afsluiten, typt u:
 
 ```    
 quit

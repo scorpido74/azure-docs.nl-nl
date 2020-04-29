@@ -1,5 +1,5 @@
 ---
-title: Bing Web Search JavaScript-clientbibliotheek snel aan de slag
+title: Snelstartgids voor Bing Web Search java script-client bibliotheek
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,20 +9,20 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 0380dc8d2ff34cf9eecaad063a305491a357ca29
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78925650"
 ---
-De Bing Web Search-clientbibliotheek maakt het eenvoudig om Bing Web Search te integreren in uw Node.js-toepassing. In deze snelstartgids leert u hoe u een instantie maakt voor een client, een aanvraag verzendt en het antwoord weergeeft.
+De Bing Web Search-client bibliotheek maakt het eenvoudig om Bing Web Search te integreren in uw node. js-toepassing. In deze snelstartgids leert u hoe u een instantie maakt voor een client, een aanvraag verzendt en het antwoord weergeeft.
 
-Wilt u de code nu zien? Voorbeelden voor de [Bing Search-clientbibliotheken voor JavaScript](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples) zijn beschikbaar op GitHub.
+Wilt u de code nu zien? Voor beelden voor de [Bing Search-client bibliotheken voor Java script](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples) zijn beschikbaar op github.
 
 ## <a name="prerequisites"></a>Vereisten
 Voordat u verdergaat met deze snelstart moet u beschikken over:
 
-* [Node.js 6](https://nodejs.org/en/download/) of hoger
+* [Node. js 6](https://nodejs.org/en/download/) of hoger
 * Een abonnementssleutel  
 
 [!INCLUDE [bing-web-search-quickstart-signup](~/includes/bing-web-search-quickstart-signup.md)]

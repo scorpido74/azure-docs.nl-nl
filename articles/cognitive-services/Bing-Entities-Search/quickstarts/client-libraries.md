@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: de clientbibliotheek Zoeken in Bing-entiteit gebruiken'
+title: 'Snelstartgids: de Bing Entity Search-client bibliotheek gebruiken'
 titleSuffix: Azure Cognitive Services
-description: De Entity Search API biedt clientbibliotheken waarmee u eenvoudig zoekmogelijkheden in uw toepassingen integreren. Gebruik deze snelstart om zoekverzoeken te verzenden en resultaten terug te krijgen.
+description: De Entiteiten zoeken-API biedt client bibliotheken waarmee u eenvoudig zoek functies in uw toepassingen kunt integreren. Gebruik deze Snelstartgids om Zoek opdrachten te verzenden en de resultaten terug te halen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 03/06/2020
 ms.author: aahi
 ms.openlocfilehash: 206d3514e231fdedc6c13592da0c51d2f93bbe84
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79136751"
 ---
-# <a name="quickstart-use-the-bing-entity-search-client-library"></a>Snelstart: de clientbibliotheek Zoeken in Bing-entiteit gebruiken
+# <a name="quickstart-use-the-bing-entity-search-client-library"></a>Snelstartgids: de Bing Entity Search-client bibliotheek gebruiken
 
 ::: zone pivot="programming-language-csharp"
 

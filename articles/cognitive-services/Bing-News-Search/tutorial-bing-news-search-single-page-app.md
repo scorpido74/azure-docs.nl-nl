@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een web-app met één pagina maken met de Bing News Search API'
+title: 'Zelf studie: een web-app met één pagina maken met behulp van de Bing Nieuws zoeken-API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze zelfstudie om een webtoepassing van één pagina te bouwen waarmee zoekquery's naar de API voor Bing News kunnen worden verzonden. De resultaten worden dan op de webpagina weergegeven.
 services: cognitive-services
@@ -12,15 +12,15 @@ ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 801bfcf02174c5dd98d4c7231c674299ef411aff
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943120"
 ---
-# <a name="tutorial-create-a-single-page-web-app"></a>Zelfstudie: een web-app met één pagina maken
+# <a name="tutorial-create-a-single-page-web-app"></a>Zelf studie: een web-app met één pagina maken
 
-Met de Bing Nieuws zoeken-API kunt u op internet zoeken en resultaten ophalen van het type nieuws dat relevant is voor een zoekquery. In deze zelfstudie bouwen we een webtoepassing met één pagina die gebruikmaakt van de Bing Nieuws zoeken-API om zoekresultaten op de pagina weer te geven. De toepassing omvat HTML-, CSS- en JavaScript-onderdelen. De broncode voor dit voorbeeld is beschikbaar op [GitHub.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html)
+Met de Bing Nieuws zoeken-API kunt u op internet zoeken en resultaten ophalen van het type nieuws dat relevant is voor een zoekquery. In deze zelfstudie bouwen we een webtoepassing met één pagina die gebruikmaakt van de Bing Nieuws zoeken-API om zoekresultaten op de pagina weer te geven. De toepassing omvat HTML-, CSS- en JavaScript-onderdelen. De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html).
 
 <!-- Remove until we can replace it with sanitized copy
 ![Single-page Bing News Search app](media/news-search-singlepage.png)
@@ -43,7 +43,7 @@ De zelfstudiepagina staat volledig op zichzelf. Er worden geen externe framework
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om mee te gaan met de zelfstudie hebt u abonnementssleutels nodig voor de Bing Search API. Als u ze niet hebt, u een [proefsleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) en een [eenvoudige Bing Maps-toets gebruiken.](https://www.microsoft.com/maps/create-a-bing-maps-key)
+Als u de zelf studie wilt volgen, moet u abonnements sleutels voor de Bing Search-API hebben. Als u deze niet hebt, kunt u een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) en een [eenvoudige Bing Maps-sleutel](https://www.microsoft.com/maps/create-a-bing-maps-key)gebruiken.
 
 
 ## <a name="app-components"></a>App-onderdelen
@@ -67,7 +67,7 @@ De HTML bevat ook de delen (HTML-`<div>`-tags) waar de zoekresultaten worden wee
 
 De abonnementssleutel voor de Bing Search-API wordt opgeslagen in de permanente opslag van de browser om te voorkomen dat deze moet worden opgenomen in de code. Voordat de sleutel wordt opgeslagen, vragen we om de sleutel van de gebruiker. Als de sleutel later wordt geweigerd in de API, wordt de opgeslagen sleutel ongeldig en wordt de gebruiker opnieuw om een sleutel gevraagd.
 
-De functies `storeValue` en `retrieveValue` worden gedefinieerd. Deze maken gebruik van het `localStorage`-object (dat niet in alle browsers wordt ondersteund) of van een cookie. De functie `getSubscriptionKey()` gebruikt deze functies om de sleutel van de gebruiker op te slaan en op te halen. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
+De functies `storeValue` en `retrieveValue` worden gedefinieerd. Deze maken gebruik van het `localStorage`-object (dat niet in alle browsers wordt ondersteund) of van een cookie. De functie `getSubscriptionKey()` gebruikt deze functies om de sleutel van de gebruiker op te slaan en op te halen. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
 ``` javascript
 // Cookie names for data we store
@@ -403,7 +403,7 @@ Beveiligingsbeleid voor browsers (CORS) kan ervoor zorgen dat de `X-MSEdge-Clien
 > [!NOTE]
 > In een webtoepassing die bedoeld is voor productie, moet u de aanvraag aan de serverzijde uitvoeren. Anders moet de sleutel voor de Bing Search-API worden opgenomen op de webpagina, waar deze beschikbaar is voor iedereen die de bron weergeeft. Al uw gebruik van de API-abonnementssleutel wordt in rekening gebracht, zelfs aanvragen die zijn gedaan door partijen die niet zijn gemachtigd. Het is daarom van groot belang dat u uw sleutel niet algemeen beschikbaar maakt.
 
-Voor ontwikkelingsdoeleinden kunt u de aanvraag van de Bing Web Search-API via een CORS-proxy doen. Het antwoord van een `Access-Control-Expose-Headers` dergelijke proxy heeft een header die antwoordkoppen mogelijk maakt en beschikbaar maakt voor JavaScript.
+Voor ontwikkelingsdoeleinden kunt u de aanvraag van de Bing Web Search-API via een CORS-proxy doen. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers` koptekst die antwoord headers toestaat en deze beschikbaar maakt voor Java script.
 
 U kunt eenvoudig een CORS-proxy installeren zodat de zelfstudie-app toegang krijgt tot de client-id-header. Als u [Node.js](https://nodejs.org/en/download/) nog niet hebt, moet u dit eerst installeren. Voer vervolgens de volgende opdracht uit in een opdrachtvenster:
 

@@ -1,6 +1,6 @@
 ---
-title: Beheerbeheerhulpprogramma implementeren met een Azure Resource Manager-sjabloon - Azure
-description: Een hulpprogramma voor de gebruikersinterface installeren met een Azure Resource Manager-sjabloon om Windows Virtual Desktop-bronnen te beheren.
+title: Beheer hulpprogramma implementeren met een Azure Resource Manager sjabloon-Azure
+description: Een gebruikers interface-hulp programma installeren met een Azure Resource Manager sjabloon voor het beheren van virtuele bureau blad-resources van Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,103 +9,103 @@ ms.date: 01/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: dac17da4aa3d3d73ccbbc101cba4326a17fec9b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79127781"
 ---
-# <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Een beheerhulpprogramma implementeren met een Azure Resource Manager-sjabloon
+# <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Een beheer programma met een Azure Resource Manager-sjabloon implementeren
 
-In de instructies in dit artikel vindt u hoe u de gebruikersinterface implementeert met behulp van een Azure Resource Manager-sjabloon.
+In de instructies in dit artikel wordt uitgelegd hoe u de gebruikers interface implementeert met behulp van een Azure Resource Manager sjabloon.
 
 ## <a name="important-considerations"></a>Belangrijke overwegingen
 
-Aangezien de app toestemming nodig heeft om te communiceren met Windows Virtual Desktop, biedt deze tool geen ondersteuning voor B2B-scenario's (Business-to-Business). Het abonnement van elke Azure Active Directory -tenant (AAD) heeft een eigen afzonderlijke implementatie van het beheerprogramma nodig.
+Omdat de app toestemming nodig heeft om te communiceren met het virtuele bureau blad van Windows, ondersteunt dit hulp programma geen Business-to-Business (B2B)-scenario's. Elk Azure Active Directory (AAD)-abonnement van de Tenant heeft een eigen afzonderlijke implementatie van het beheer programma nodig.
 
-Deze beheertool is een voorbeeld. Microsoft zal belangrijke beveiligings- en kwaliteitsupdates bieden. De [broncode is beschikbaar in GitHub.](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy) Klanten en partners worden aangemoedigd om de tool aan te passen aan hun zakelijke behoeften.
+Dit beheer programma is een voor beeld. Micro soft zal belang rijke updates voor de beveiliging en kwaliteit bieden. De [bron code is beschikbaar in github](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Klanten en partners worden aangemoedigd het hulp programma aan te passen aan de behoeften van hun bedrijf.
 
-Naar volgende browsers zijn compatibel met het beheertool:
+De volgende browsers zijn compatibel met het beheer programma:
 - Google Chrome 68 of hoger
-- Microsoft Edge 40.15063 of hoger
-- Mozilla Firefox 52.0 of hoger
+- Micro soft Edge 40,15063 of hoger
+- Mozilla Firefox 52,0 of hoger
 - Safari 10 of hoger (alleen macOS)
 
-## <a name="what-you-need-to-deploy-the-management-tool"></a>Wat u nodig hebt om de beheertool te implementeren
+## <a name="what-you-need-to-deploy-the-management-tool"></a>Wat u nodig hebt om het beheer programma te implementeren
 
-Voordat u het beheerprogramma implementeert, hebt u een Azure AD-gebruiker (Azure Directory) nodig om een app-registratie te maken en de beheer-gebruikersinterface te implementeren. Deze gebruiker moet:
+Voordat u het beheer programma implementeert, hebt u een Azure Active Directory-gebruiker (Azure AD) nodig voor het maken van een app-registratie en het implementeren van de beheer GEBRUIKERSINTERFACE. Deze gebruiker moet:
 
-- Azure Multi-Factor Authentication (MFA) uitgeschakeld
-- Hebt toestemming om resources te maken in uw Azure-abonnement
-- Heb toestemming om een Azure AD-toepassing te maken. Volg deze stappen om te controleren of uw gebruiker over de vereiste machtigingen beschikt door de instructies in [Vereiste machtigingen te](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)volgen.
+- Azure Multi-Factor Authentication (MFA) is uitgeschakeld
+- Machtiging voor het maken van resources in uw Azure-abonnement
+- Toestemming voor het maken van een Azure AD-toepassing. Volg deze stappen om te controleren of uw gebruiker over de vereiste machtigingen beschikt door de instructies in de [vereiste machtigingen](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)te volgen.
 
-Nadat u de beheertool hebt geïmplementeerd en geconfigureerd, raden we u aan een gebruiker te vragen de beheer-gebruikersinterface te starten om ervoor te zorgen dat alles werkt. De gebruiker die de beheer-gebruikersinterface start, moet een roltoewijzing hebben waarmee hij of zij de Windows Virtual Desktop-tenant kan bekijken of bewerken.
+Nadat u het beheer programma hebt geïmplementeerd en geconfigureerd, raden we u aan een gebruiker te vragen de beheer GEBRUIKERSINTERFACE te starten om ervoor te zorgen dat alles werkt. De gebruiker die de beheer GEBRUIKERSINTERFACE start, moet beschikken over een roltoewijzing waarmee ze de Windows Virtual Desktop-Tenant kunnen weer geven of bewerken.
 
 ## <a name="deploy-the-management-tool"></a>Hulpprogramma voor beheer implementeren
 
-Controleer voordat u begint of de server- en client-apps toestemming hebben door naar de [windows-toestemmingspagina voor virtuele bureaubladen](https://rdweb.wvd.microsoft.com) te gaan voor de vertegenwoordigde Azure Active Directory (AAD).
+Voordat u begint, moet u ervoor zorgen dat de server-en client-apps toestemming hebben op de [Windows-pagina toestemming voor virtueel bureau blad](https://rdweb.wvd.microsoft.com) voor de Azure Active Directory (Aad) die wordt weer gegeven.
 
-Volg deze instructies om de azure resource beheersjabloon te implementeren:
+Volg deze instructies voor het implementeren van de Azure resource management-sjabloon:
 
-1. Ga naar de [pagina GitHub Azure RDS-Templates](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy).
-2. Implementeer de sjabloon naar Azure.
-    - Als u een Enterprise-abonnement implementeert, schuift u omlaag en selecteert u **Implementeren naar Azure.** 
-    - Als u een abonnement in een Cloud Solution Provider-abonnement implementeert, volgt u de volgende instructies om te implementeren in Azure:
-        1. Schuif omlaag en klik met de rechtermuisknop op **Implementeren naar Azure**en selecteer Vervolgens **Koppelingslocatie kopiëren**.
-        2. Open een teksteditor zoals Kladblok en plak de koppeling daar.
-        3. Direct <https://portal.azure.com/> na en vóór de hashtag (#) voer u een bijteken (@) in, gevolgd door de tenantdomeinnaam. Hier is een voorbeeld van <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>het formaat: .
-        4. Meld u aan bij de Azure-portal als gebruiker met machtigingen voor beheerders/inzenderen bij het abonnement van de Cloud Solution Provider.
-        5. Plak de koppeling die u naar de teksteditor hebt gekopieerd in de adresbalk.
-3. Ga bij het invoeren van de parameters als volgt te werk:
-    - Selecteer **false**voor de parameter **isServicePrincipal** .
-    - Voer voor de referenties uw Azure AD-referenties in waarbij meervoudige verificatie is uitgeschakeld. Deze referenties worden gebruikt om de Azure AD-toepassing en Azure-bronnen te maken. Zie Voor meer informatie de [actie Wat u nodig hebt om de beheertool te implementeren.](#what-you-need-to-deploy-the-management-tool)
-    - Gebruik voor **de applicationName**een unieke naam voor uw app die wordt geregistreerd in uw Azure Active Directory. Deze naam wordt ook gebruikt voor de URL van de web-app. U bijvoorbeeld een naam als 'Apr3UX' gebruiken.
-4. Zodra u de parameters opgeeft, accepteert u de algemene voorwaarden en selecteert u **Aankoop**.
+1. Ga naar de [pagina github Azure RDS-sjablonen](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy).
+2. Implementeer de sjabloon in Azure.
+    - Als u in een bedrijfs abonnement implementeert, schuift u omlaag en selecteert u **implementeren naar Azure**. 
+    - Als u in een Cloud Solution Provider-abonnement implementeert, volgt u deze instructies om te implementeren in Azure:
+        1. Schuif omlaag en klik met de rechter muisknop op **implementeren naar Azure**, en selecteer vervolgens **koppelings locatie kopiëren**.
+        2. Open een tekst editor zoals Klad blok en plak de koppeling daar.
+        3. Voer direct <https://portal.azure.com/> na en vóór de hashtag (#) een apen staartje (@) in, gevolgd door de domein naam van de Tenant. Hier volgt een voor beeld van de notatie <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>:.
+        4. Meld u aan bij de Azure Portal als gebruiker met beheerders-en Inzender machtigingen voor het Cloud Solution Provider-abonnement.
+        5. Plak de koppeling die u naar de tekst editor hebt gekopieerd naar de adres balk.
+3. Ga als volgt te werk bij het invoeren van de para meters:
+    - Selecteer **Onwaar**voor de para meter **isServicePrincipal** .
+    - Voer voor de referenties uw Azure AD-referenties in als multi-factor Authentication is uitgeschakeld. Deze referenties worden gebruikt om de Azure AD-toepassing en Azure-resources te maken. Zie [wat u nodig hebt om het beheer programma te implementeren](#what-you-need-to-deploy-the-management-tool)voor meer informatie.
+    - Voor de **ApplicationName**gebruikt u een unieke naam voor uw app die in uw Azure Active Directory wordt geregistreerd. Deze naam wordt ook gebruikt voor de web-app-URL. U kunt bijvoorbeeld een naam gebruiken zoals ' Apr3UX '.
+4. Wanneer u de para meters hebt opgegeven, accepteert u de voor waarden en selecteert u **kopen**.
 
-## <a name="provide-consent-for-the-management-tool"></a>Toestemming geven voor de beheertool
+## <a name="provide-consent-for-the-management-tool"></a>Toestemming geven voor het beheer programma
 
-Nadat de sjabloon GitHub Azure Resource Manager is voltooid, vindt u een brongroep met twee app-services, samen met één app-serviceplan in de Azure-portal.
+Nadat de GitHub-Azure Resource Manager sjabloon is voltooid, vindt u een resource groep met twee app-Services samen met één app service-plan in de Azure Portal.
 
-Voordat u zich aanmeldt en het beheerprogramma gebruikt, moet u toestemming geven voor de nieuwe Azure AD-toepassing die is gekoppeld aan het beheerprogramma. Als u toestemming geeft, kan de beheertool windows Virtual Desktop-beheeroproepen doen namens de gebruiker die momenteel is aangemeld bij de tool.
+Voordat u zich aanmeldt en het beheer programma gebruikt, moet u toestemming geven voor de nieuwe Azure AD-toepassing die aan het beheer programma is gekoppeld. Door toestemming te geven, kunt u met het beheer programma Windows virtueel-bureaublad beheer aanroepen namens de gebruiker die momenteel is aangemeld bij het hulp programma.
 
-![Een schermafbeelding met de machtigingen die worden verstrekt wanneer u instemt met de ui-beheertool.](media/management-ui-delegated-permissions.png)
+![Een scherm opname met de machtigingen die worden gegeven wanneer u akkoord gaat met het beheer programma voor de gebruikers interface.](media/management-ui-delegated-permissions.png)
 
-Als u wilt bepalen welke gebruiker u gebruiken om u bij het hulpprogramma aan te melden, gaat u naar de [pagina gebruikersinstellingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) van Azure Active Directory en neemt u nota van de waarde voor **gebruikers die kunnen instemmen met apps die namens hen toegang krijgen tot bedrijfsgegevens.**
+Als u wilt bepalen welke gebruiker u kunt gebruiken om u aan te melden bij het hulp programma, gaat u naar de [pagina met gebruikers instellingen van Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) en noteert u de waarde voor **gebruikers kan toestemming geven om toegang te krijgen tot Bedrijfs gegevens**namens hen.
 
-![Een screenshot die laat zien of gebruikers alleen toestemming kunnen verlenen voor toepassingen voor hun gebruiker.](media/management-ui-user-consent-allowed.png)
+![Een scherm opname waarin wordt getoond of gebruikers toestemming kunnen geven voor toepassingen alleen voor hun gebruiker.](media/management-ui-user-consent-allowed.png)
 
-- Als de waarde is ingesteld op **Ja,** u zich aanmelden met een gebruikersaccount in de Azure Active Directory en alleen toestemming geven voor die gebruiker. Als u zich echter later bij het beheerprogramma aanmeldt bij een andere gebruiker, moet u dezelfde toestemming opnieuw uitvoeren.
-- Als de waarde is ingesteld op **Nee,** moet u zich aanmelden als globale beheerder in de Azure Active Directory en beheerderstoestemming geven voor alle gebruikers in de map. Geen andere gebruikers zullen worden geconfronteerd met een toestemming prompt.
+- Als de waarde is ingesteld op **Ja**, kunt u zich aanmelden met een gebruikers account in de Azure Active Directory en alleen toestemming geven voor die gebruiker. Als u zich echter op een later tijdstip bij het beheer programma aanmeldt met een andere gebruiker, moet u dezelfde toestemming opnieuw uitvoeren.
+- Als de waarde is ingesteld op **Nee**, moet u zich aanmelden als globale beheerder in de Azure Active Directory en toestemming geven voor de beheerder voor alle gebruikers in de Directory. Geen van de andere gebruikers wordt gevraagd om toestemming te vragen.
 
 
-Zodra u beslist welke gebruiker u gebruikt om toestemming te geven, volgt u deze instructies om toestemming te geven voor de tool:
+Nadat u hebt bepaald welke gebruiker u gaat gebruiken om toestemming te geven, volgt u deze instructies om toestemming te geven voor het hulp programma:
 
-1. Ga naar uw Azure-resources, selecteer de Azure App Services-bron met de naam die u in de sjabloon hebt opgegeven (bijvoorbeeld Apr3UX) en navigeer naar de URL die eraan is gekoppeld; bijvoorbeeld . <https://rdmimgmtweb-210520190304.azurewebsites.net>
-2. Meld u aan met het juiste Azure Active Directory-gebruikersaccount.
-3. Als u bent geverifieerd met een globale beheerder, u nu het selectievakje voor **toestemming namens uw organisatie**inschakelen. Selecteer **Accepteren** om toestemming te geven.
+1. Ga naar uw Azure-resources, selecteer de Azure-app Services-resource met de naam die u in de sjabloon hebt gegeven (bijvoorbeeld Apr3UX) en navigeer naar de URL die eraan is gekoppeld. bijvoorbeeld <https://rdmimgmtweb-210520190304.azurewebsites.net>.
+2. Meld u aan met het juiste Azure Active Directory gebruikers account.
+3. Als u een globale beheerder hebt geverifieerd, kunt u nu het selectie vakje inschakelen om toestemming te geven namens **uw organisatie**. Selecteer **accepteren** om toestemming te geven.
    
-   ![Een schermafbeelding met de volledige toestemmingspagina die de gebruiker of beheerder zal zien.](media/management-ui-consent-page.png)
+   ![Een scherm opname waarin de volledige toestemming pagina wordt weer gegeven die de gebruiker of beheerder ziet.](media/management-ui-consent-page.png)
 
-Dit brengt u nu naar de managementtool.
+Hiermee gaat u nu naar het beheer programma.
 
-## <a name="use-the-management-tool"></a>Het beheergereedschap gebruiken
+## <a name="use-the-management-tool"></a>Het beheer programma gebruiken
 
-Nadat u toestemming hebt gegeven voor de organisatie of voor een bepaalde gebruiker, heeft u op elk gewenst moment toegang tot de beheertool.
+Nadat u toestemming hebt gegeven voor de organisatie of voor een opgegeven gebruiker, kunt u op elk gewenst moment toegang krijgen tot het beheer programma.
 
-Volg deze instructies om de tool te starten:
+Volg deze instructies om het hulp programma te starten:
 
-1. Selecteer de Azure App Services-bron met de naam die u in de sjabloon hebt opgegeven (bijvoorbeeld Apr3UX) en navigeer naar de URL die eraan is gekoppeld; bijvoorbeeld . <https://rdmimgmtweb-210520190304.azurewebsites.net>
-2. Meld u aan met uw Windows Virtual Desktop-referenties.
-3. Wanneer u wordt gevraagd een tenantgroep te kiezen, selecteert u **Standaardtenantgroep** in de vervolgkeuzelijst.
-4. Wanneer u **Standaardtenantgroep**selecteert, moet er een menu aan de linkerkant van het venster worden weergegeven. Zoek in dit menu de naam van uw tenantgroep en selecteer deze.
+1. Selecteer de Azure-app Services-resource met de naam die u in de sjabloon hebt gegeven (bijvoorbeeld Apr3UX) en navigeer naar de URL die eraan is gekoppeld. bijvoorbeeld <https://rdmimgmtweb-210520190304.azurewebsites.net>.
+2. Meld u aan met de referenties van uw Windows-virtueel bureau blad.
+3. Wanneer u wordt gevraagd om een Tenant groep te kiezen, selecteert u **standaard Tenant groep** in de vervolg keuzelijst.
+4. Wanneer u **standaard Tenant groep**selecteert, wordt er een menu aan de linkerkant van het venster weer gegeven. Zoek in dit menu de naam van uw Tenant groep en selecteer deze.
   
   > [!NOTE]
-  > Als u een aangepaste tenantgroep hebt, voert u de naam handmatig in in plaats van te kiezen uit de vervolgkeuzelijst.
+  > Als u een aangepaste Tenant groep hebt, voert u de naam hand matig in in plaats van te kiezen in de vervolg keuzelijst.
 
 ## <a name="report-issues"></a>Problemen melden
 
-Als u problemen tegenkomt met het beheerprogramma of andere Windows Virtual Desktop-hulpprogramma's, volgt u de aanwijzingen in [Azure Resource Manager-sjablonen voor Extern bureaublad-services](https://github.com/Azure/RDS-Templates/blob/master/README.md) om deze op GitHub te rapporteren.
+Als u problemen ondervindt met het beheer programma of andere virtuele bureau blad-hulpprogram ma's van Windows, volgt u de instructies in [Azure Resource Manager sjablonen voor extern bureaublad-services](https://github.com/Azure/RDS-Templates/blob/master/README.md) om ze te rapporteren op github.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u de beheertool implementeren en verbinden, u leren hoe u azure servicehelp gebruiken om serviceproblemen en gezondheidsadviezen te controleren. Zie de [zelfstudie Servicewaarschuwingen instellen](./set-up-service-alerts.md)voor meer informatie.
+Nu u hebt geleerd hoe u het beheer programma implementeert en er verbinding mee maakt, kunt u leren hoe u de Help van Azure-service gebruikt om service problemen en status adviezen te bewaken. Zie onze [zelf studie Service waarschuwingen instellen](./set-up-service-alerts.md)voor meer informatie.

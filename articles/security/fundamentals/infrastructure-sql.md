@@ -1,6 +1,6 @@
 ---
-title: Beveiligingsfuncties van Azure SQL Database
-description: In dit artikel vindt u een algemene beschrijving van hoe Azure SQL Database klantgegevens in Azure beschermt.
+title: Azure SQL Database beveiligings functies
+description: Dit artikel bevat een algemene beschrijving van hoe Azure SQL Database klant gegevens in azure beveiligt.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,91 +16,91 @@ ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
 ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78942960"
 ---
-# <a name="azure-sql-database-security-features"></a>Beveiligingsfuncties van Azure SQL Database    
-Azure SQL Database biedt een relationele databaseservice in Azure. Om klantgegevens te beschermen en sterke beveiligingsfuncties te bieden die klanten verwachten van een relationele databaseservice, beschikt SQL Database over zijn eigen beveiligingsmogelijkheden. Deze mogelijkheden bouwen voort op de besturingselementen die zijn overgenomen van Azure.
+# <a name="azure-sql-database-security-features"></a>Azure SQL Database beveiligings functies    
+Azure SQL Database biedt een relationele database service in Azure. SQL Database heeft een eigen set beveiligings mogelijkheden om klant gegevens te beschermen en krachtige beveiligings functies te bieden die klanten verwachten van een relationele database service. Deze mogelijkheden zijn gebaseerd op de besturings elementen die worden overgenomen van Azure.
 
 ## <a name="security-capabilities"></a>Beveiligingsmogelijkheden
 
 ### <a name="usage-of-the-tds-protocol"></a>Gebruik van het TDS-protocol
-Azure SQL Database ondersteunt alleen het TDS-protocol (Tabular Data Stream), waarvoor de database alleen toegankelijk moet zijn via de standaardpoort van TCP/1433.
+Azure SQL Database ondersteunt alleen het tabular data stream (TDS)-protocol, waarmee de data base alleen toegankelijk is via de standaard poort van TCP-1433.
 
-### <a name="azure-sql-database-firewall"></a>Azure SQL Database-firewall
-Om klantgegevens te beschermen, bevat Azure SQL Database een firewallfunctionaliteit, die standaard alle toegang tot de SQL Database-server verhindert, zoals hieronder wordt weergegeven.
+### <a name="azure-sql-database-firewall"></a>Azure SQL Database firewall
+Azure SQL Database een firewall functionaliteit biedt om klant gegevens te helpen beveiligen, die standaard niet alle toegang tot de SQL Database Server voor komt, zoals hieronder wordt weer gegeven.
 
-![Azure SQL Database-firewall](./media/infrastructure-sql/sql-database-firewall.png)
+![Azure SQL Database firewall](./media/infrastructure-sql/sql-database-firewall.png)
 
-De gatewayfirewall kan adressen beperken, waardoor klanten gedetailleerde controle kunnen beheren om bereiken van aanvaardbare IP-adressen op te geven. De firewall verleent toegang op basis van het ip-adres van elke aanvraag.
+De firewall van de gateway kan adressen beperken, waardoor klanten nauw keurig kunnen bepalen hoeveel IP-adressen moeten worden opgegeven. De firewall verleent toegang op basis van het oorspronkelijke IP-adres van elke aanvraag.
 
-Klanten kunnen firewallconfiguratie bereiken door een beheerportal te gebruiken of programmatisch gebruik te maken van de Azure SQL Database Management REST API. De Azure SQL Database-gatewayfirewall voorkomt standaard dat alle TDS-apparaten van de klant toegang krijgen tot Azure SQL-database-exemplaren. Klanten moeten toegang configureren met behulp van toegangscontrolelijsten (ACL's) om Azure SQL Database-verbindingen toe te staan via bron- en doelinternetadressen, protocollen en poortnummers.
+Klanten kunnen de firewall configureren met behulp van een beheer portal of programmatisch met behulp van de Azure SQL Database beheer REST API. De Azure SQL Database gateway firewall voor komt standaard dat alle TDS-toegang van klanten tot Azure SQL database-exemplaren. Klanten moeten toegang configureren met behulp van toegangs beheer lijsten (Acl's) voor het toestaan van Azure SQL Database verbindingen op basis van bron-en doel-Internet adressen,-protocollen en-poort nummers.
 
-### <a name="dosguard"></a>DoSGuard DoSGuard
-DoS-aanvallen (Denial of service) worden verminderd door een SQL Database-gatewayservice genaamd DoSGuard. DoSGuard volgt actief mislukte aanmeldingen van IP-adressen. Als er binnen een bepaalde periode meerdere mislukte aanmeldingen van een specifiek IP-adres zijn, is het IP-adres geblokkeerd om gedurende een vooraf bepaalde periode toegang te krijgen tot bronnen in de service.
+### <a name="dosguard"></a>DoSGuard
+DoS-aanvallen (Denial of service) worden gereduceerd door een SQL Database Gateway Service met de naam DoSGuard. DoSGuard traceert actief mislukte aanmeldingen van IP-adressen. Als er binnen een bepaalde periode meerdere mislukte aanmeldingen vanaf een specifiek IP-adres zijn, heeft het IP-adres geen toegang tot resources in de service voor een vooraf gedefinieerde tijds periode.
 
-Bovendien voert de Azure SQL Database-gateway het als:
+Daarnaast voert de Azure SQL Database-gateway de volgende handelingen uit:
 
-- Onderhandelingen over veilige kanaalmogelijkheden om gevalideerde versleutelde verbindingen van TDS FIPS 140-2 te implementeren wanneer deze verbinding maken met de databaseservers.
-- Stateful TDS pakket inspectie terwijl het verbindingen van clients accepteert. De gateway valideert de verbindingsgegevens en geeft de TDS-pakketten door aan de juiste fysieke server op basis van de databasenaam die is opgegeven in de verbindingstekenreeks.
+- Mogelijkheden voor het beveiligen van kanalen voor het implementeren van met TDS FIPS 140-2 gevalideerde versleutelde verbindingen wanneer verbinding wordt gemaakt met de database servers.
+- Stateful TDS-pakket inspectie terwijl het verbindingen van clients accepteert. De gateway valideert de verbindings gegevens en geeft de TDS-pakketten door aan de juiste fysieke server op basis van de database naam die is opgegeven in de connection string.
 
-Het overkoepelende principe voor netwerkbeveiliging van het Azure SQL Database-aanbod is om alleen de verbinding en communicatie toe te staan die nodig is om de service te laten werken. Alle andere poorten, protocollen en verbindingen zijn standaard geblokkeerd. Virtuele lokale netwerken (VLAN's) en ACL's worden gebruikt om netwerkcommunicatie te beperken via bron- en doelnetwerken, protocollen en poortnummers.
+Het overkoepelend-principe voor netwerk beveiliging van de Azure SQL Database-aanbieding is het toestaan van alleen de verbinding en communicatie die nodig is om de service te laten uitvoeren. Alle andere poorten, protocollen en verbindingen worden standaard geblokkeerd. Virtual Local Area Networks (VLAN'S) en Acl's worden gebruikt om netwerk communicatie te beperken op basis van de bron-en doel netwerken, protocollen en poort nummers.
 
-Mechanismen die zijn goedgekeurd voor het implementeren van netwerkgebaseerde ACL's, zijn acl.l.' Deze mechanismen worden beheerd door Azure-netwerken, host-firewall en Azure SQL Database-gatewayfirewallregels, die door de klant zijn geconfigureerd.
+Mechanismen die zijn goedgekeurd voor het implementeren van op het netwerk gebaseerde Acl's, bevatten Acl's op routers en load balancers. Deze mechanismen worden beheerd door Azure-netwerken, firewalls voor gast-VM'S en Azure SQL Database gateway-firewall regels, die door de klant worden geconfigureerd.
 
-## <a name="data-segregation-and-customer-isolation"></a>Datasegregatie en klantisolatie
-Het Azure-productienetwerk is zodanig gestructureerd dat openbaar toegankelijke systeemonderdelen worden gescheiden van interne resources. Er bestaan fysieke en logische grenzen tussen webservers die toegang bieden tot de openbare Azure-portal en de onderliggende Azure-virtuele infrastructuur, waar de exemplaren van klantgegevens en klantgegevens zich bevinden.
+## <a name="data-segregation-and-customer-isolation"></a>Schei ding van gegevens en gebruikers isolatie
+Het productie netwerk van Azure is zodanig gestructureerd dat openbaar toegankelijke systeem onderdelen worden gescheiden van interne bronnen. Er bestaan fysieke en logische grenzen tussen webservers die toegang bieden tot de open bare Azure Portal en de onderliggende Azure-infra structuur, waarbij exemplaren van klant toepassingen en klant gegevens zich bevinden.
 
-Alle openbaar toegankelijke informatie wordt beheerd binnen het Azure-productienetwerk. Het productienetwerk is onderworpen aan tweefactorauthenticatie- en grensbeveiligingsmechanismen, maakt gebruik van de firewall- en beveiligingsfunctieset die in de vorige sectie wordt beschreven en gebruikt functies voor gegevensisolatie zoals aangegeven in de volgende secties.
+Alle openbaar toegankelijke informatie wordt beheerd in het productie netwerk van Azure. Het productie netwerk is onderhevig aan twee ledige verificatie-en grens beveiligings mechanismen, maakt gebruik van de functieset firewall en beveiliging die wordt beschreven in de vorige sectie, en maakt gebruik van gegevens isolatie functies zoals vermeld in de volgende secties.
 
-### <a name="unauthorized-systems-and-isolation-of-the-fc"></a>Ongeautoriseerde systemen en isolatie van de FC
-Omdat de fabriccontroller (FC) de centrale orchestrator van de Azure-stof is, zijn er aanzienlijke besturingselementen aanwezig om bedreigingen voor deze fabric te beperken, vooral van mogelijk gecompromitteerde FA's binnen klanttoepassingen. De FC herkent geen hardware waarvan de apparaatgegevens (bijvoorbeeld MAC-adres) niet vooraf binnen de FC zijn geladen. De DHCP-servers op de FC hebben lijsten geconfigureerd met MAC-adressen van de knooppunten die ze bereid zijn op te starten. Zelfs als ongeautoriseerde systemen zijn aangesloten, zijn ze niet opgenomen in de inventaris van de stof, en dus niet aangesloten of bevoegd om te communiceren met een systeem binnen de inventaris van de stof. Dit vermindert het risico dat ongeautoriseerde systemen communiceren met de FC en toegang krijgen tot de VLAN en Azure.
+### <a name="unauthorized-systems-and-isolation-of-the-fc"></a>Niet-geautoriseerde systemen en isolatie van de FC
+Omdat de infrastructuur controller (FC) de centrale orchestrator van de Azure-infra structuur is, zijn er belang rijke controles aanwezig om bedreigingen te beperken, met name van mogelijk geknoeide FAs binnen de klant toepassingen. De FC herkent geen hardware waarvan de apparaatgegevens (bijvoorbeeld MAC-adres) niet vooraf zijn geladen in de FC. De DHCP-servers op de FC hebben lijsten geconfigureerd van MAC-adressen van de knoop punten die ze bereid zijn om op te starten. Zelfs als niet-geautoriseerde systemen zijn verbonden, zijn ze niet opgenomen in de inventaris van de infra structuur en zijn ze dus niet verbonden of geautoriseerd om te communiceren met een systeem binnen de inventaris van de infra structuur. Dit vermindert het risico van communicatie van niet-geautoriseerde systemen met de FC en krijgt toegang tot het VLAN en Azure.
 
 ### <a name="vlan-isolation"></a>VLAN-isolatie
-Het Azure-productienetwerk is logischerwijs gescheiden in drie primaire VLAN's:
+Het productie netwerk van Azure wordt logisch gescheiden in drie primaire VLAN'S:
 
-- De belangrijkste VLAN: verbindt niet-vertrouwde klantknooppunten.
-- De FC VLAN: Bevat vertrouwde FCs en ondersteunende systemen.
-- Het apparaat VLAN: Bevat vertrouwd netwerk en andere infrastructuurapparaten.
+- Het hoofd-VLAN: verbindt niet-vertrouwde klant knooppunten.
+- Het FC-VLAN: bevat vertrouwde FCs en ondersteunende systemen.
+- Het VLAN van het apparaat: bevat vertrouwde netwerk-en andere infrastructuur apparaten.
 
-### <a name="packet-filtering"></a>Pakketfiltering
-Het IPFilter en de softwarefirewalls die zijn geïmplementeerd op het hoofdbesturingssysteem en het gastbesturingssysteem van de knooppunten, dwingen verbindingsbeperkingen af en voorkomen ongeautoriseerd verkeer tussen VM's.
+### <a name="packet-filtering"></a>Pakket filtering
+De IPFilter en de software firewalls die zijn geïmplementeerd in het basis besturingssysteem en gast besturingssysteem van de knoop punten, leggen connectiviteits beperkingen af en voor komen niet-geautoriseerd verkeer tussen Vm's.
 
-### <a name="hypervisor-root-os-and-guest-vms"></a>Hypervisor, root OS en gast VM's
-De isolatie van het root-besturingssysteem van de gast-VM's en de gast-VM's van elkaar wordt beheerd door de hypervisor en het root-besturingssysteem.
+### <a name="hypervisor-root-os-and-guest-vms"></a>Hyper Visor, basis besturingssysteem en gast-Vm's
+De isolatie van het basis besturingssysteem van de virtuele gast-Vm's en de gast-Vm's van elkaar worden beheerd door de Hyper Visor en het basis besturingssysteem.
 
-### <a name="types-of-rules-on-firewalls"></a>Typen regels voor firewalls
+### <a name="types-of-rules-on-firewalls"></a>Typen regels op firewalls
 Een regel wordt gedefinieerd als:
 
-{Src IP, Src Port, Destination IP, Destination Port, Destination Protocol, In/Out, Stateful/Stateless, Stateful Flow Timeout}.
+{Src IP, src-poort, doel-IP, doel poort, doel protocol, in/uit, stateful/stateless, stateful flow time-out}.
 
-Syn-pakketten (Synchrone idle character) mogen alleen in of uit als een van de regels dit toestaat. Voor TCP gebruikt Azure staatloze regels waarbij het principe is dat het alleen alle niet-SYN-pakketten in of uit de VM toestaat. Het beveiligingsuitgangspunt is dat elke hoststack bestand is tegen het negeren van een niet-SYN als deze nog niet eerder een SYN-pakket heeft gezien. Het TCP-protocol zelf is stateful en in combinatie met de stateloze SYN-gebaseerde regel bereikt een algemeen gedrag van een stateful implementatie.
+Synchrone SYN-pakketten (inactief teken) zijn alleen toegestaan in of uit als een van de regels dit toestaat. Voor TCP maakt Azure gebruik van stateless regels waarbij het principe alleen alle niet-SYN-pakketten naar of van de virtuele machine toestaat. De Security-locatie is dat elke host-stack kan leiden tot het negeren van een niet-SYN als er eerder geen SYN-pakket is gedetecteerd. Het TCP-protocol zelf is stateful en in combi natie met de op stateless SYN gebaseerde regel wordt een algemeen gedrag van een stateful implementatie gerealiseerd.
 
-Voor UDP (User Datagram Protocol) gebruikt Azure een stateful rule. Elke keer dat een UDP-pakket overeenkomt met een regel, wordt een omgekeerde stroom in de andere richting gemaakt. Deze stroom heeft een ingebouwde time-out.
+Voor UDP (User Data gram Protocol) maakt Azure gebruik van een stateful regel. Telkens wanneer een UDP-pakket overeenkomt met een regel, wordt een omgekeerde stroom in de andere richting gemaakt. Deze stroom heeft een ingebouwde time-out.
 
-Klanten zijn verantwoordelijk voor het opzetten van hun eigen firewalls bovenop wat Azure biedt. Hier kunnen klanten de regels voor binnenkomend en uitgaand verkeer definiëren.
+Klanten zijn verantwoordelijk voor het instellen van hun eigen firewalls boven op wat Azure biedt. Hier kunnen klanten de regels voor binnenkomend en uitgaand verkeer definiëren.
 
-### <a name="production-configuration-management"></a>Beheer van productieconfiguratie
-Standaardbeveiligde configuraties worden onderhouden door de respectievelijke bedrijfsteams in Azure en Azure SQL Database. Alle configuratiewijzigingen in productiesystemen worden gedocumenteerd en bijgehouden via een centraal volgsysteem. Software- en hardwarewijzigingen worden bijgehouden via het centrale volgsysteem. Netwerkwijzigingen die betrekking hebben op ACL worden bijgehouden met behulp van een ACL-beheerservice.
+### <a name="production-configuration-management"></a>Productie configuratie beheer
+Standaard beveiligde configuraties worden onderhouden door de respectieve Operations-teams in Azure en Azure SQL Database. Alle configuratie wijzigingen in productie systemen worden gedocumenteerd en bijgehouden door middel van een centraal traceer systeem. Wijzigingen in de software en hardware worden bijgehouden via het centrale traceer systeem. Netwerk wijzigingen die betrekking hebben op de toegangs beheer lijst worden bijgehouden met behulp van een ACL Management-service.
 
-Alle configuratiewijzigingen in Azure worden ontwikkeld en getest in de faseringsomgeving en worden vervolgens geïmplementeerd in de productieomgeving. Software builds worden beoordeeld als onderdeel van het testen. Beveiligings- en privacycontroles worden beoordeeld als onderdeel van de criteria voor de invoerchecklist. Wijzigingen worden op geplande intervallen geïmplementeerd door het desbetreffende implementatieteam. Releases worden beoordeeld en ondertekend door het desbetreffende personeel van het implementatieteam voordat ze in productie worden genomen.
+Alle configuratie wijzigingen in Azure worden ontwikkeld en getest in de faserings omgeving en ze worden vervolgens geïmplementeerd in de productie omgeving. Software builds worden gecontroleerd als onderdeel van de tests. Beveiligings-en privacy-controles worden gecontroleerd als onderdeel van de criteria voor de invoer controlelijst. Wijzigingen worden op geplande intervallen geïmplementeerd door het respectieve implementatie team. Releases worden beoordeeld en afgemeld door het respectieve personeel van het implementatie team voordat ze worden geïmplementeerd in de productie omgeving.
 
-Veranderingen worden gecontroleerd op succes. Bij een foutscenario wordt de wijziging teruggezet naar de vorige status of wordt een hotfix geïmplementeerd om de fout met goedkeuring van het aangewezen personeel op te lossen. Source Depot, Git, TFS, Master Data Services (MDS), runners, Azure security monitoring, de FC en het WinFabric-platform worden gebruikt om de configuratie-instellingen in de virtuele Azure-omgeving centraal te beheren, toe te passen en te verifiëren.
+Wijzigingen worden gecontroleerd op geslaagde pogingen. Als er een fout optreedt, wordt de wijziging teruggedraaid naar de vorige staat of wordt er een hotfix geïmplementeerd om het probleem met de goed keuring van de aangewezen mede werkers te verhelpen. Source depot, Git, TFS, Master Data Services (MDS), lopers, Azure-beveiligings bewaking, de FC en het WinFabric-platform worden gebruikt om de configuratie-instellingen in de virtuele Azure-omgeving centraal te beheren, toe te passen en te controleren.
 
-Op dezelfde manier hebben hardware- en netwerkwijzigingen validatiestappen ingesteld om te beoordelen of ze voldoen aan de vereisten voor build. De releases worden beoordeeld en geautoriseerd via een gecoördineerde change advisory board (CAB) van de betreffende groepen in de stack.
+Op dezelfde manier hebben de wijzigingen in de hardware en het netwerk tot stand gebracht om de naleving van de build-vereisten te evalueren. De releases worden beoordeeld en geautoriseerd via een gecoördineerde wijzigings advies bord (CAB) van de respectieve groepen in de stack.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over wat Microsoft doet om de Azure-infrastructuur te beveiligen:
+Zie voor meer informatie over de mogelijkheden van micro soft voor het beveiligen van de Azure-infra structuur:
 
-- [Azure-faciliteiten, lokalen en fysieke beveiliging](physical-security.md)
-- [Beschikbaarheid azure-infrastructuur](infrastructure-availability.md)
-- [Onderdelen en grenzen van azure-informatiesysteem](infrastructure-components.md)
-- [Azure-netwerkarchitectuur](infrastructure-network.md)
-- [Azure-productienetwerk](production-network.md)
-- [Azure-productiebewerkingen en -beheer](infrastructure-operations.md)
-- [Azure-infrastructuurbewaking](infrastructure-monitoring.md)
-- [Integriteit van Azure-infrastructuur](infrastructure-integrity.md)
-- [Azure-klantgegevensbeveiliging](protection-customer-data.md)
+- [Azure-faciliteiten,-locaties en fysieke beveiliging](physical-security.md)
+- [Beschik baarheid van Azure-infra structuur](infrastructure-availability.md)
+- [Azure Information System-onderdelen en-grenzen](infrastructure-components.md)
+- [Azure-netwerk architectuur](infrastructure-network.md)
+- [Productie netwerk van Azure](production-network.md)
+- [Azure-productie bewerkingen en-beheer](infrastructure-operations.md)
+- [Bewaking van Azure-infra structuur](infrastructure-monitoring.md)
+- [Integriteit van Azure-infra structuur](infrastructure-integrity.md)
+- [Azure-klant gegevens beveiliging](protection-customer-data.md)

@@ -1,7 +1,7 @@
 ---
-title: Een machine learning-algoritme selecteren
+title: Een machine learning algoritme selecteren
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning-algoritmen selecteren voor onder toezicht en onbewaakt leren in clustering-, classificatie- of regressieexperimenten.
+description: Azure Machine Learning-algoritmen selecteren voor onder Super visie en zonder super visie geleerde lessen in Clustering, classificatie of regressie experimenten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,116 +11,116 @@ ms.author: lazzeri
 ms.reviewer: cgronlun
 ms.date: 03/05/2020
 ms.openlocfilehash: e0482bac9569a834adf3e1cdef2b3f702980eac0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78328660"
 ---
-# <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Algoritmen selecteren voor Azure Machine Learning
+# <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Algoritmen voor Azure Machine Learning selecteren
 
-Een veel voorkomende vraag is "Welk machine learning-algoritme moet ik gebruiken?" Het algoritme dat u selecteert, is voornamelijk afhankelijk van twee verschillende aspecten van uw scenario voor gegevenswetenschap:
+Een veelvoorkomende vraag is ' welk machine learning-algoritme moet ik gebruiken? ' Het algoritme dat u selecteert, is afhankelijk van twee verschillende aspecten van het data Science-scenario:
 
- - **Wat wilt u met uw gegevens doen?** In het bijzonder, wat is de zakelijke vraag die u wilt beantwoorden door te leren van uw gegevens uit het verleden?
+ - **Wat wilt u met uw gegevens doen?** Wat is met name de zakelijke vraag die u wilt beantwoorden door meer te weten te komen over uw vroegere gegevens?
 
- - **Wat zijn de vereisten van uw data science scenario?** Wat is met name de nauwkeurigheid, trainingstijd, lineariteit, aantal parameters en het aantal functies dat uw oplossing ondersteunt?
+ - **Wat zijn de vereisten van uw data Science-scenario?** Wat is met name de nauw keurigheid, de trainings tijd, de lineariteit, het aantal para meters en het aantal functies dat door uw oplossing wordt ondersteund?
 
- ![Overwegingen voor het kiezen van algoritmen: Wat wilt u weten? Wat zijn de scenariovereisten?](./media/how-to-select-algorithms/how-to-select-algorithms.png)
+ ![Overwegingen voor het kiezen van algoritmen: wat wilt u weten? Wat zijn de scenario vereisten?](./media/how-to-select-algorithms/how-to-select-algorithms.png)
 
-## <a name="business-scenarios-and-the-machine-learning-algorithm-cheat-sheet"></a>Bedrijfsscenario's en het opspeelblad voor machine learning-algoritmen
+## <a name="business-scenarios-and-the-machine-learning-algorithm-cheat-sheet"></a>Bedrijfs scenario's en het Cheat-werk blad van Machine Learning algoritme
 
-De [Azure Machine Learning Algorithm Cheat Sheet](https://docs.microsoft.com/azure/machine-learning/algorithm-cheat-sheet?WT.mc_id=docs-article-lazzeri) helpt u met de eerste overweging: Wat wilt u doen met uw **gegevens?** Zoek op het opspeelblad voor machine learning-algoritmen naar taken die u wilt uitvoeren en zoek vervolgens een [Azure Machine Learning-ontwerpalgoritme](https://docs.microsoft.com/azure/machine-learning/concept-designer?WT.mc_id=docs-article-lazzeri) voor de oplossing voor voorspellende analyses. 
+Het [Cheat-venster van Azure machine learning Algorithm](https://docs.microsoft.com/azure/machine-learning/algorithm-cheat-sheet?WT.mc_id=docs-article-lazzeri) helpt u bij de eerste overweging: **wat u met uw gegevens wilt doen**? Zoek op het blad Machine Learning Algorithm Cheat naar een taak die u wilt uitvoeren en zoek vervolgens een [Azure machine learning design](https://docs.microsoft.com/azure/machine-learning/concept-designer?WT.mc_id=docs-article-lazzeri) -algoritme voor de Predictive Analytics oplossing. 
 
-Machine Learning ontwerper biedt een uitgebreid portfolio van algoritmen, zoals [Multiclass Decision Forest](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri), [Aanbeveling systemen,](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/evaluate-recommender?WT.mc_id=docs-article-lazzeri) [Neural Network Regression](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri), [Multiclass Neural Network](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri), en [K-Means Clustering](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri). Elk algoritme is ontworpen om een ander type machine learning-probleem aan te pakken. Zie het [Machine Learning-ontwerpalgoritme en moduleverwijzing](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference?WT.mc_id=docs-article-lazzeri) voor een volledige lijst, samen met documentatie over hoe elk algoritme werkt en hoe parameters kunnen worden afgestemd om het algoritme te optimaliseren.
+Machine Learning Designer voorziet in een uitgebreide Port Folio met algoritmen, zoals het forest voor het [nemen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri)van een omgeving, [aanbevelings systemen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/evaluate-recommender?WT.mc_id=docs-article-lazzeri), [Neural netwerk regressie](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri), [Multiklasse Neural netwerk](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri)en [K-betekent clustering](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri). Elk algoritme is ontworpen om een ander type machine learning probleem op te lossen. Zie de [Naslag informatie over machine learning Designer-algoritme en de module](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference?WT.mc_id=docs-article-lazzeri) voor een volledige lijst samen met documentatie over de werking van elk algoritme en het afstemmen van de para meters om de algoritme te optimaliseren.
 
 > [!NOTE]
-> Als u het spiekbriefje van het machine learning-algoritme wilt downloaden, gaat u naar [het spiekblad voor Azure Machine learning-algoritmen](https://docs.microsoft.com/azure/machine-learning/algorithm-cheat-sheet?WT.mc_id=docs-article-lazzeri).
+> Als u het Cheat-venster van machine learning Algorithm wilt downloaden, gaat u naar het Cheat-blad van het [Azure machine learning-algoritme](https://docs.microsoft.com/azure/machine-learning/algorithm-cheat-sheet?WT.mc_id=docs-article-lazzeri).
 > 
 > 
 
-Houd, samen met richtlijnen in het Azure Machine Learning Algorithm Cheat Sheet, rekening met andere vereisten bij het kiezen van een machine learning-algoritme voor uw oplossing. Hieronder volgen aanvullende factoren om rekening mee te houden, zoals de nauwkeurigheid, trainingstijd, lineariteit, aantal parameters en het aantal functies.
+Naast de richt lijnen in het Cheat-venster van de Azure Machine Learning-algoritme moet u andere vereisten overwegen wanneer u een machine learning algoritme voor uw oplossing kiest. Hieronder vindt u aanvullende factoren om rekening mee te houden, zoals de nauw keurigheid, de trainings tijd, de lineariteit, het aantal para meters en het aantal functies.
 
-## <a name="additional-requirements-for-a-data-science-scenario"></a>Aanvullende vereisten voor een data science-scenario
+## <a name="additional-requirements-for-a-data-science-scenario"></a>Aanvullende vereisten voor een Data Science-scenario
 
-Zodra u weet wat u met uw gegevens wilt doen, moet u aanvullende vereisten voor uw oplossing bepalen. 
+Wanneer u weet wat u met uw gegevens wilt doen, moet u aanvullende vereisten voor uw oplossing bepalen. 
 
-Maak keuzes en eventueel trade-offs voor de volgende vereisten:
+Maak keuzen en mogelijke trans acties voor de volgende vereisten:
 
-- Nauwkeurigheid
+- Nauw keurigheid
 - Trainingstijd
 - Lineariteit
-- Aantal parameters
+- Aantal para meters
 - Aantal functies
 
-## <a name="accuracy"></a>Nauwkeurigheid
+## <a name="accuracy"></a>Nauw keurigheid
 
-Nauwkeurigheid in machine learning meet de effectiviteit van een model als het aandeel van de werkelijke resultaten tot de totale gevallen. In Machine Learning-ontwerper berekent de [module Model evalueren](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/evaluate-model?WT.mc_id=docs-article-lazzeri) een reeks industriestandaardevaluatiestatistieken. U deze module gebruiken om de nauwkeurigheid van een getraind model te meten.
+Nauw keurigheid van machine learning meet de effectiviteit van een model als het aandeel van de werkelijke resultaten tot het totale aantal cases. In Machine Learning Designer berekent de [module evaluate model](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/evaluate-model?WT.mc_id=docs-article-lazzeri) een set metrische standaard waarden voor de evaluatie van de industrie. U kunt deze module gebruiken om de nauw keurigheid van een getraind model te meten.
 
-Het verkrijgen van het meest nauwkeurige antwoord mogelijk is niet altijd nodig. Soms is een benadering voldoende, afhankelijk van waar u het voor wilt gebruiken. Als dat het geval is, u in staat zijn om uw verwerkingstijd drastisch te snijden door vast te houden met meer benaderende methoden. Geschatte methoden hebben ook natuurlijk de neiging om overfitting te voorkomen.
+Het is niet altijd nodig om het meest nauw keurige antwoord optimaal te benutten. Soms is een benadering voldoende, afhankelijk van wat u wilt gebruiken voor. Als dat het geval is, kunt u uw verwerkings tijd aanzienlijk verkorten door de methoden te benaderen. Methoden die bij benadering zijn, zijn ook vanzelfsprekend om overmontage te voor komen.
 
-Er zijn drie manieren om de module Model evalueren te gebruiken:
+Er zijn drie manieren om de module evaluate model te gebruiken:
 
-- Scores genereren over uw trainingsgegevens om het model te evalueren
-- Scores genereren op het model, maar vergelijk deze scores met scores op een gereserveerde testset
-- Vergelijk scores voor twee verschillende, maar verwante modellen met dezelfde set gegevens
+- Scores genereren voor uw trainings gegevens om het model te evalueren
+- Scores op het model genereren, maar deze scores vergelijken met scores op een gereserveerde testset
+- Vergelijk de scores voor twee verschillende, gerelateerde modellen, met dezelfde set gegevens
 
-Zie [Modelmodule evalueren](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/evaluate-model?WT.mc_id=docs-article-lazzeri)voor een volledige lijst met statistieken en benaderingen die u gebruiken om de nauwkeurigheid van machine learning-modellen te evalueren.
+Zie [Evaluate model module](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/evaluate-model?WT.mc_id=docs-article-lazzeri)voor een volledige lijst met metrische gegevens en benaderingen die u kunt gebruiken om de nauw keurigheid van machine learning modellen te evalueren.
 
 ## <a name="training-time"></a>Trainingstijd
 
-Bij begeleid leren betekent training het gebruik van historische gegevens om een machine learning-model te bouwen dat fouten minimaliseert. Het aantal minuten of uren dat nodig is om een model te trainen varieert sterk tussen algoritmen. De trainingstijd is vaak nauw verbonden met nauwkeurigheid; de ene begeleidt meestal de andere. 
+Bij het leren van een super visie betekent de training dat historische gegevens worden gebruikt voor het bouwen van een machine learning model dat fouten minimaliseert. Het aantal minuten of uren dat nodig is voor het trainen van een model, is afhankelijk van de verschillende algoritmen. De trainings tijd is vaak nauw verbonden met nauw keurigheid. een voor de andere. 
 
-Bovendien zijn sommige algoritmen gevoeliger voor het aantal gegevenspunten dan andere. U een specifiek algoritme kiezen omdat u een tijdsbeperking hebt, vooral wanneer de gegevensset groot is.
+Bovendien zijn sommige algoritmen gevoeliger voor het aantal gegevens punten dan andere. U kunt een specifiek algoritme kiezen, omdat u een tijds beperking hebt, vooral wanneer de gegevensset groot is.
 
-In Machine Learning-ontwerper is het maken en gebruiken van een machine learning-model meestal een proces in drie stappen:
+In Machine Learning Designer is het maken en gebruiken van een machine learning model doorgaans een proces met drie stappen:
 
-1.  Configureer een model door een bepaald type algoritme te kiezen en vervolgens de parameters of hyperparameters te definiëren. 
+1.  Configureer een model door een bepaald type algoritme te kiezen en vervolgens de para meters of Hyper parameters te definiëren. 
 
-2.  Geef een gegevensset op die is gelabeld en gegevens heeft die compatibel zijn met het algoritme. Sluit zowel de gegevens als het model aan op de [module Model trainen.](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/train-model?WT.mc_id=docs-article-lazzeri)
+2.  Geef een gegevensset op die is gelabeld en die gegevens bevat die compatibel zijn met het algoritme. Verbind zowel de gegevens als het model om de [model module te trainen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/train-model?WT.mc_id=docs-article-lazzeri).
 
-3.  Nadat de training is voltooid, gebruikt u het getrainde model met een van de [scoremodules](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/score-model?WT.mc_id=docs-article-lazzeri) om voorspellingen te doen over nieuwe gegevens.
+3.  Nadat de training is voltooid, kunt u het getrainde model met een van de [Score modules](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/score-model?WT.mc_id=docs-article-lazzeri) gebruiken om voor spellingen te doen op nieuwe gegevens.
 
 ## <a name="linearity"></a>Lineariteit
 
-Lineariteit in statistieken en machine learning betekent dat er een lineaire relatie is tussen een variabele en een constante in uw gegevensset. Lineaire classificatiealgoritmen gaan er bijvoorbeeld van uit dat klassen kunnen worden gescheiden door een rechte lijn (of de hoger-dimensionale analoog).
+Lineariteit in statistieken en machine learning betekent dat er een lineaire relatie is tussen een variabele en een constante in uw gegevensset. Voor beelden van lineaire classificatie-algoritmen gaan ervan uit dat klassen kunnen worden gescheiden door een rechte lijn (of het hogere analoge).
 
-Veel machine learning-algoritmen maken gebruik van lineariteit. In Azure Machine Learning designer bevatten ze: 
+Veel machine learning-algoritmen maken gebruik van lineariteit. In Azure Machine Learning Designer omvatten ze: 
 
-- [Multiclass logistieke regressie](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri)
-- [Twee-klasse logistieke regressie](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri)
-- [Vectormachines ondersteunen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri)  
+- [Multiklasse-logistieke regressie](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri)
+- [Logistiek regressie met twee klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri)
+- [Vector machines ondersteunen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri)  
 
-Lineaire regressiealgoritmen gaan ervan uit dat gegevenstrends een rechte lijn volgen. Deze veronderstelling is niet slecht voor sommige problemen, maar voor anderen vermindert het nauwkeurigheid. Ondanks hun nadelen zijn lineaire algoritmen populair als eerste strategie. Ze hebben de neiging om algoritmisch eenvoudig en snel te trainen.
+Bij lineaire regressie algoritmen wordt ervan uitgegaan dat gegevens trends een rechte lijn volgen. Deze veronderstelling is niet slecht voor bepaalde problemen, maar voor anderen vermindert de nauw keurigheid. Ondanks hun nadelen zijn lineaire algoritmen populair als de eerste strategie. Ze zijn vaak algorithmically eenvoudig en snel te trainen.
 
-![Niet-lineaire klassegrens](./media/how-to-select-algorithms/nonlinear-class-boundary.png)
+![Grens van niet-lineaire klasse](./media/how-to-select-algorithms/nonlinear-class-boundary.png)
 
-***Niet-lineaire klassegrens***: *Vertrouwen op een lineair classificatiealgoritme zou resulteren in een lage nauwkeurigheid.*
+Grens van niet- ***lineaire klasse***: *afhankelijk van een lineaire classificatie algoritme zou een lage nauw keurigheid opleveren.*
 
 ![Gegevens met een niet-lineaire trend](./media/how-to-select-algorithms/nonlinear-trend.png)
 
-***Gegevens met een niet-lineaire trend***: *Het gebruik van een lineaire regressiemethode zou veel grotere fouten genereren dan nodig is.*
+***Gegevens met een niet-lineaire trend***: als *u een lineaire regressie methode gebruikt, worden er veel grotere fouten gegenereerd dan nodig zijn.*
 
-## <a name="number-of-parameters"></a>Aantal parameters
+## <a name="number-of-parameters"></a>Aantal para meters
 
-Parameters zijn de knoppen die een gegevenswetenschapper mag draaien bij het instellen van een algoritme. Het zijn getallen die het gedrag van het algoritme beïnvloeden, zoals fouttolerantie of aantal iteraties, of opties tussen varianten van hoe het algoritme zich gedraagt. De trainingstijd en nauwkeurigheid van het algoritme kunnen soms gevoelig zijn voor het verkrijgen van precies de juiste instellingen. Algoritmen met grote aantallen parameters vereisen meestal de meeste trial and error om een goede combinatie te vinden.
+Para meters zijn de knopen die een gegevens wetenschapper krijgt om in te scha kelen bij het instellen van een algoritme. Ze zijn getallen die van invloed zijn op het gedrag van de algoritme, zoals fout tolerantie of het aantal iteraties of opties tussen varianten van de werking van het algoritme. De trainings tijd en nauw keurigheid van het algoritme kunnen soms gevoelig zijn om alleen de juiste instellingen te verkrijgen. Normaal gesp roken vereisen algoritmen met een groot aantal para meters de meeste proef versie en fout om een goede combi natie te vinden.
 
-Als alternatief is er de [Tune Model Hyperparameters module](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/tune-model-hyperparameters?WT.mc_id=docs-article-lazzeri) in Machine Learning ontwerper: Het doel van deze module is het bepalen van de optimale hyperparameters voor een machine learning model. De module bouwt en test meerdere modellen met behulp van verschillende combinaties van instellingen. Het vergelijkt metrische gegevens over alle modellen om de combinaties van instellingen te krijgen. 
+U kunt ook de [module model Hyper parameters afstemmen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/tune-model-hyperparameters?WT.mc_id=docs-article-lazzeri) in machine learning Designer: het doel van deze module is het bepalen van de optimale Hyper parameters voor een machine learning model. De module bouwt en test meerdere modellen met behulp van verschillende combi Naties van instellingen. Hiermee worden metrische gegevens van alle modellen vergeleken om de combi Naties van instellingen te verkrijgen. 
 
-Hoewel dit een geweldige manier is om ervoor te zorgen dat u de parameterruimte hebt overspannen, neemt de tijd die nodig is om een model te trainen exponentieel toe met het aantal parameters. Het voordeel is dat het hebben van veel parameters meestal aangeeft dat een algoritme meer flexibiliteit heeft. Het kan vaak een zeer goede nauwkeurigheid bereiken, mits u de juiste combinatie van parameterinstellingen vinden.
+Dit is een goede manier om ervoor te zorgen dat u de parameter ruimte hebt gemaakt. de tijd die nodig is om een model te trainen, neemt exponentieel toe met het aantal para meters. Aan de kant van een groot aantal para meters wordt doorgaans aangegeven dat een algoritme meer flexibiliteit heeft. Het kan vaak zeer goed nauw keurig zijn, op voor waarde dat u de juiste combi natie van parameter instellingen kunt vinden.
 
 ## <a name="number-of-features"></a>Aantal functies
 
-In machine learning is een functie een kwantificeerbare variabele van het fenomeen dat u probeert te analyseren. Voor bepaalde typen gegevens kan het aantal functies zeer groot zijn in vergelijking met het aantal gegevenspunten. Dit is vaak het geval met genetica of tekstuele gegevens. 
+In machine learning is een functie een meet bare variabele van het verschijnsel dat u probeert te analyseren. Voor bepaalde typen gegevens kan het aantal functies erg groot zijn vergeleken met het aantal gegevens punten. Dit is vaak het geval met genetischer of tekstuele gegevens. 
 
-Een groot aantal functies kan veen naar beneden sommige leren algoritmen, waardoor de opleiding tijd onhaalbaar lang. [Ondersteuningsvectormachines](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) zijn bijzonder geschikt voor scenario's met een groot aantal functies. Om deze reden zijn ze gebruikt in veel toepassingen van het ophalen van informatie tot tekst- en afbeeldingsclassificatie. Ondersteuningsvectormachines kunnen worden gebruikt voor zowel classificatie- als regressietaken.
+Een groot aantal functies kan enkele leer algoritmen verwarrenden, waardoor de trainings tijd unfeasibly lang wordt. [Support Vector machines](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) zijn bijzonder goed geschikt voor scenario's met een groot aantal functies. Daarom zijn ze in veel toepassingen gebruikt om gegevens op te halen uit de tekst-en afbeeldings classificatie. Ondersteuning voor vector machines kan worden gebruikt voor zowel classificatie-als regressie taken.
 
-Functieselectie verwijst naar het proces waarbij statistische tests worden toegepast op ingangen, met een opgegeven uitvoer. Het doel is om te bepalen welke kolommen meer voorspellend zijn voor de uitvoer. De [module Filtergebaseerde functieselectie](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/filter-based-feature-selection?WT.mc_id=docs-article-lazzeri) in Machine Learning-ontwerper biedt meerdere algoritmes voor het selecteren van functies om uit te kiezen. De module bevat correlatiemethoden zoals Pearson-correlatie en chi-kwadraatwaarden.
+De functie selectie verwijst naar het proces van het Toep assen van statistische tests op invoer, op basis van een opgegeven uitvoer. Het doel is om te bepalen welke kolommen meer voor spelling van de uitvoer zijn. De [module](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/filter-based-feature-selection?WT.mc_id=docs-article-lazzeri) voor het selecteren van functies op basis van filters in machine learning Designer bevat meerdere algoritmen voor het selecteren van onderdelen. De module bevat correlatie methoden, zoals Pearson-correlatie en Chi-kwadraat waarden.
 
-U ook de [module Permutatiefunctiebelang](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/permutation-feature-importance?WT.mc_id=docs-article-lazzeri) gebruiken om een set functiebelangscores voor uw gegevensset te berekenen. U deze scores vervolgens gebruiken om u te helpen bij het bepalen van de beste functies die u in een model gebruiken.
+U kunt ook de [permutatie functie urgentie module](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/permutation-feature-importance?WT.mc_id=docs-article-lazzeri) gebruiken om een aantal scores voor de functie prioriteit voor uw gegevensset te berekenen. Vervolgens kunt u deze scores gebruiken om te bepalen welke functies het beste in een model moeten worden gebruikt.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
- - [Meer informatie over Azure Machine Learning designer](https://docs.microsoft.com/azure/machine-learning/service/concept-designer?WT.mc_id=docs-article-lazzeri)
- - Zie Machine Learning designer algoritme en module referentie voor beschrijvingen van alle machine learning-algoritmen die beschikbaar zijn in Azure Machine [Learning-ontwerper](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference?WT.mc_id=docs-article-lazzeri)
- - Zie [Deep Learning vs. Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/concept-deep-learning-vs-machine-learning?WT.mc_id=docs-article-lazzeri) om de relatie tussen deep learning, machine learning en AI te verkennen
+ - [Meer informatie over Azure Machine Learning Designer](https://docs.microsoft.com/azure/machine-learning/service/concept-designer?WT.mc_id=docs-article-lazzeri)
+ - Zie [machine learning design-algoritme en module referentie](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference?WT.mc_id=docs-article-lazzeri) voor beschrijvingen van alle machine learning-algoritmen die beschikbaar zijn in azure machine learning Designer.
+ - Als u de relatie tussen diep leren, machine learning en AI wilt verkennen, raadpleegt u [uitgebreide informatie versus machine learning](https://docs.microsoft.com/azure/machine-learning/service/concept-deep-learning-vs-machine-learning?WT.mc_id=docs-article-lazzeri)

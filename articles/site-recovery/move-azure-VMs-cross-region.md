@@ -1,5 +1,5 @@
 ---
-title: Azure VM's verplaatsen naar een andere regio met Azure Site Recovery
+title: Virtuele Azure-machines verplaatsen naar een andere regio met Azure Site Recovery
 description: Azure Site Recovery gebruiken om Azure IaaS-VM’s te verplaatsen van de ene Azure-regio naar een andere.
 services: site-recovery
 author: rajani-janaki-ram
@@ -9,15 +9,15 @@ ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
 ms.openlocfilehash: dc37cb6fa05a2be56de7bf5536d7274190257d85
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78303916"
 ---
-# <a name="move-azure-vms-to-another-azure-region"></a>Azure VM's verplaatsen naar een andere Azure-regio
+# <a name="move-azure-vms-to-another-azure-region"></a>Virtuele Azure-machines verplaatsen naar een andere Azure-regio
 
-U virtuele azure-infrastructuur als serviceservice (IaaS) verplaatsen van de ene regio naar de andere om de betrouwbaarheid, beschikbaarheid, beheer of governance te verbeteren. In deze zelfstudie ziet u hoe u VM's naar een andere regio verplaatst met Azure Site Recovery. U leert het volgende:
+Mogelijk wilt u Azure Infrastructure as a Service (IaaS) virtuele machines verplaatsen van de ene regio naar een andere om de betrouw baarheid, Beschik baarheid, beheer of governance te verbeteren. Deze zelf studie laat zien hoe u Vm's naar een andere regio kunt verplaatsen met behulp van Azure Site Recovery. U leert het volgende:
 
 > [!div class="checklist"]
 > * Vereisten verifiëren
@@ -26,79 +26,79 @@ U virtuele azure-infrastructuur als serviceservice (IaaS) verplaatsen van de ene
 > * Gegevens kopiëren naar de doelregio
 > * De configuratie testen
 > * De verplaatsing uitvoeren
-> * De bronnen uit het brongebied verwijderen
+> * De resources uit de bron regio verwijderen
 
 
 > [!IMPORTANT]
-> In dit artikel wordt beschreven hoe u Azure VM's van de ene regio naar de andere verplaatst *als*. Zie [Azure VM's verplaatsen naar beschikbaarheidszones](move-azure-vms-avset-azone.md)als u de beschikbaarheid van uw infrastructuur wilt verbeteren door VM's naar beschikbaarheidszones te verplaatsen.
+> In dit *artikel wordt beschreven*hoe u virtuele Azure-machines naar een andere regio kunt verplaatsen. Als u de beschik baarheid van uw infra structuur wilt verbeteren door Vm's te verplaatsen naar beschikbaarheids zones, raadpleegt [u Azure-Vm's verplaatsen naar Beschikbaarheidszones](move-azure-vms-avset-azone.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Zorg ervoor dat u Azure VM's hebt in het azure-brongebied waarvan u wilt *overstappen.*
-- Controleer of uw keuze van [de combinatie bronregio-doelregio wordt ondersteund](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)en kies zorgvuldig het doelgebied.
+- Zorg ervoor dat u virtuele Azure-machines hebt in de Azure-regio die u wilt *verplaatsen.*
+- Controleer of uw keuze van de [bron regio-doel regio combi natie wordt ondersteund](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)en kies zorgvuldig de doel regio.
 - Zorg ervoor dat u inzicht hebt in de [architectuur en onderdelen voor dit scenario](azure-to-azure-architecture.md).
 - Controleer de [beperkingen en vereisten voor ondersteuning](azure-to-azure-support-matrix.md).
-- Accountmachtigingen verifiëren. Als u zojuist uw gratis Azure-account hebt gemaakt, bent *u* de beheerder van uw abonnement. Als u niet de beheerder bent, werkt u samen met de beheerder om de machtigingen te krijgen die u nodig hebt:
-  -  Als u replicatie voor een virtuele machine wilt inschakelen en gegevens naar het doel wilt kopiëren met Siteherstel, moet u machtigingen hebben om een VM in uw Azure-bronnen te maken. De ingebouwde rol Inzender voor virtuele machines beschikt over deze machtigingen. Met de machtigingen u het:
+- Controleer de account machtigingen. Als u zojuist een gratis Azure-account hebt gemaakt, bent *u* de beheerder van uw abonnement. Als u niet de beheerder bent, kunt u met de beheerder de benodigde machtigingen verkrijgen:
+  -  Als u replicatie voor een virtuele machine wilt inschakelen en gegevens naar het doel wilt kopiëren met behulp van Site Recovery, moet u gemachtigd zijn om een virtuele machine te maken in uw Azure-resources. De ingebouwde rol Inzender voor virtuele machines beschikt over deze machtigingen. Met de machtigingen kunt u het volgende doen:
         - Het maken van een VM in de geselecteerde resourcegroep.
         - Het maken van een VM in het geselecteerde virtuele netwerk.
         - Schrijven naar het geselecteerde opslagaccount.
 
-  - U hebt ook machtigingen nodig om siteherstelbewerkingen te beheren. De rol Siteherstelbijdrager heeft alle machtigingen die nodig zijn om siteherstelbewerkingen te beheren in een azure recovery services-kluis.
+  - U hebt ook machtigingen nodig voor het beheren van Site Recovery bewerkingen. De rol Site Recovery Inzender heeft alle machtigingen die nodig zijn voor het beheren van Site Recovery bewerkingen in een Azure Recovery Services-kluis.
 
 ## <a name="prepare-the-source-vms"></a>De bron-VM’s voorbereiden
 
-1. Controleer of de Azure VM's die u wilt verplaatsen, over de nieuwste basiscertificaten beschikken. Als dit niet het zo is, u gegevenskopiëren naar het doelgebied niet inschakelen vanwege beveiligingsbeperkingen.
+1. Controleer of de Azure-Vm's die u wilt verplaatsen over de meest recente basis certificaten beschikken. Als dat niet het geval is, kunt u het kopiëren van gegevens naar de doel regio niet inschakelen vanwege beveiligings beperkingen.
 
-    - Installeer voor Windows VM's de nieuwste Windows-updates zodat alle vertrouwde rootcertificaten op de machine staan. Volg in een niet-verbonden omgeving de standaard windows-update- en certificaatupdateprocessen voor uw organisatie.
-    - Volg voor Linux VM's de richtlijnen van uw Linux-distributeur om de nieuwste vertrouwde rootcertificaten en certificaatintrekkingslijst te krijgen.
-2. Zorg ervoor dat u geen verificatieproxy gebruikt om de netwerkconnectiviteit te beheren voor VM's die u wilt verplaatsen.
-3. Als een VM die u wilt verplaatsen geen toegang heeft tot internet en een firewallproxy gebruikt om uitgaande toegang te beheren, controleert u de [vereisten](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms).
-4. Documenteer de indeling van de bronnetwerken en alle resources die u momenteel gebruikt, inclusief (maar niet beperkt tot) load balancers, netwerkbeveiligingsgroepen en openbare IP-adressen voor verificatie.
+    - Voor Windows-Vm's installeert u de meest recente Windows-updates zodat alle vertrouwde basis certificaten zich op de computer bevinden. In een niet-verbonden omgeving volgt u de standaard Windows Update en processen voor het bijwerken van certificaten voor uw organisatie.
+    - Volg voor Linux-Vm's de richt lijnen van uw Linux-distributeur om de meest recente vertrouwde basis certificaten en certificaatintrekkingslijst te verkrijgen.
+2. Zorg ervoor dat u geen verificatie proxy gebruikt voor het beheren van de netwerk verbinding voor Vm's die u wilt verplaatsen.
+3. Als een virtuele machine die u wilt verplaatsen, geen toegang heeft tot internet en een firewall proxy gebruikt om uitgaande toegang te beheren, controleert u de [vereisten](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms).
+4. Documenteer de bron netwerk indeling en alle resources die u momenteel gebruikt, inclusief (maar niet beperkt tot) load balancers, netwerk beveiligings groepen en open bare IP-adressen voor verificatie.
 
 ## <a name="prepare-the-target-region"></a>De doelregio voorbereiden
 
-1. Controleer in uw Azure-abonnement of u VM's maken in het doelgebied dat wordt gebruikt voor noodherstel. Neem contact op met Ondersteuning om indien nodig het vereiste quotum in te schakelen.
+1. Controleer in uw Azure-abonnement of u virtuele machines kunt maken in de doel regio die wordt gebruikt voor herstel na nood gevallen. Neem contact op met de ondersteuning om het vereiste quotum zo nodig in te scha kelen.
 
-2. Zorg ervoor dat uw abonnement voldoende middelen heeft om uw bron-VM's te ondersteunen. Als u Siteherstel gebruikt om gegevens naar het doel te kopiëren, wordt dezelfde grootte of dichtstbijzijnde beschikbare grootte voor de doel-VM's gebruikt.
+2. Zorg ervoor dat uw abonnement voldoende bronnen heeft voor de ondersteuning van uw bron-Vm's. Als u Site Recovery gebruikt voor het kopiëren van gegevens naar het doel, wordt de grootte of de dichtstbijzijnde beschik bare grootte voor de doel-Vm's gekozen.
 
-3. Zorg ervoor dat u een doelbron maakt voor elke component die u hebt geïdentificeerd in de indeling van het bronnetwerk. Dit zorgt ervoor dat uw VM's alle functionaliteit en functies in het doelgebied hebben dat ze in het brongebied hadden.
+3. Zorg ervoor dat u een doel bron maakt voor elk onderdeel dat u in de bron netwerk indeling hebt geïdentificeerd. Zo zorgt u ervoor dat uw Vm's alle functionaliteit en functies hebben in de doel regio die ze in de bron regio hadden.
 
-   Azure Site Recovery detecteert en maakt automatisch een virtueel netwerk- en opslagaccount wanneer u replicatie inschakelt voor de bron-vm. U deze resources ook vooraf maken en deze toewijzen aan de VM als onderdeel van de stap enable-replicatie. Maar u moet handmatig andere bronnen in het doelgebied maken. Raadpleeg de volgende documenten om de meest gebruikte netwerkbronnen te maken op basis van de configuratie van uw bron-VM:
+   Azure Site Recovery detecteert en maakt automatisch een virtueel netwerk en een opslag account wanneer u replicatie inschakelt voor de bron-VM. U kunt deze resources ook vooraf maken en deze toewijzen aan de VM als onderdeel van de stap voor het inschakelen van de replicatie. Maar u moet hand matig andere resources in de doel regio maken. Raadpleeg de volgende documenten voor het maken van de meest gebruikte netwerk bronnen op basis van de configuratie van uw bron-VM:
 
    - [Netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
    - [Load balancers](https://docs.microsoft.com/azure/load-balancer)
-   - [Openbaar IP](../virtual-network/virtual-network-public-ip-address.md)
+   - [Openbaar IP-adres](../virtual-network/virtual-network-public-ip-address.md)
     
-   Zie de [Azure-netwerkdocumentatie](https://docs.microsoft.com/azure/?pivot=products&panel=network)voor andere netwerkonderdelen. 
+   Raadpleeg de [documentatie voor Azure-netwerken](https://docs.microsoft.com/azure/?pivot=products&panel=network)voor andere netwerk onderdelen. 
 
-4. Als u de configuratie wilt testen voordat u de verplaatsing uitvoert, maakt u handmatig [een niet-productienetwerk](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) in het doelgebied. Het testen van de installatie zorgt voor minimale interferentie met de productieomgeving en we raden het aan.
+4. Als u de configuratie wilt testen voordat u de verplaatsing uitvoert, maakt u hand matig [een niet-productie netwerk](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) in de doel regio. Door de installatie te testen, maakt u minimale interferentie met de productie omgeving en wordt het aanbevolen.
     
 ## <a name="copy-data-to-the-target-region"></a>Gegevens kopiëren naar de doelregio
-De volgende stappen gebruiken Azure Site Recovery om gegevens naar het doelgebied te kopiëren.
+In de volgende stappen worden Azure Site Recovery gebruikt voor het kopiëren van gegevens naar de doel regio.
 
-### <a name="create-the-vault-in-any-region-except-the-source"></a>De kluis in een regio maken, behalve de bron
+### <a name="create-the-vault-in-any-region-except-the-source"></a>De kluis in een wille keurige regio maken, behalve de bron
 
-1. Meld u aan bij de [Azure portal](https://portal.azure.com) > **Recovery Services**.
-2. Selecteer > **Back-up- en siteherstel****van hulpprogramma's** > voor **bronnenbeheer maken**.
-3. Geef voor **Naam**de vriendelijke naam **ContosoVMVault**op. Als u meer dan één abonnement hebt, selecteert u het gewenste abonnement.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) > -**Recovery Services**.
+2. Selecteer **een resource** > **beheer hulpprogramma's** > maken**back-up en site Recovery**.
+3. Geef bij **naam**de beschrijvende naam **ContosoVMVault**op. Als u meer dan één abonnement hebt, selecteert u het gewenste abonnement.
 4. Maak een resourcegroep met de naam **ContosoRG**.
-5. Geef een Azure-regio op. Zie [Prijsdetails azure site recovery .](https://azure.microsoft.com/pricing/details/site-recovery/)
-6. Selecteer **Overzicht** > **ConsotoVMVault** > **+Repliceren voor**kluizen van Recovery Services.
-7. Selecteer **Azure**voor **Bron**.
-8. Selecteer **voor Bronlocatie**het bronAzure-gebied waar uw VM's momenteel worden uitgevoerd.
-9. Selecteer het implementatiemodel azure resource manager. Selecteer vervolgens het **bronabonnement** en **bronbrongroep**.
+5. Geef een Azure-regio op. Zie [Azure site Recovery prijs informatie](https://azure.microsoft.com/pricing/details/site-recovery/)als u de ondersteunde regio's wilt controleren.
+6. Voor Recovery Services kluizen selecteert u **overzicht** > **ConsotoVMVault** > **+ repliceren**.
+7. Selecteer voor **bron**de optie **Azure**.
+8. Voor **bron locatie**selecteert u de Azure-bron regio waar uw vm's momenteel worden uitgevoerd.
+9. Selecteer het Azure Resource Manager-implementatie model. Selecteer vervolgens het **bron abonnement** en de **resource groep bron**.
 10. Selecteer **OK** om de instellingen op te slaan.
 
-### <a name="enable-replication-for-azure-vms-and-start-copying-the-data"></a>Replicatie voor Azure VM's inschakelen en beginnen met het kopiëren van de gegevens
+### <a name="enable-replication-for-azure-vms-and-start-copying-the-data"></a>Replicatie inschakelen voor Azure-Vm's en beginnen met het kopiëren van de gegevens
 
-Siteherstel haalt een lijst op met de VM's die zijn gekoppeld aan de abonnements- en resourcegroep.
+Site Recovery haalt een lijst op met de virtuele machines die zijn gekoppeld aan het abonnement en de resource groep.
 
-1. Selecteer de VM die u wilt verplaatsen en selecteer **OK**.
-2. Selecteer Herstel **na noodgevallen**voor **Instellingen**.
-3. Selecteer **voor Doelregio Voor noodherstel** > **Target region**doel gebied configureren het doelgebied dat u herenigt.
-4. Kies ervoor om de standaarddoelbronnen of de resources te gebruiken die u vooraf hebt gemaakt.
-5. Selecteer **Replicatie inschakelen** om de taak te starten.
+1. Selecteer de virtuele machine die u wilt verplaatsen en selecteer **OK**.
+2. Voor **instellingen**selecteert u **herstel na nood gevallen**.
+3. Selecteer bij > **doel regio**voor **nood herstel configureren**de doel regio waarnaar u wilt repliceren.
+4. Kies voor het gebruik van de standaard doel resources of die u vooraf hebt gemaakt.
+5. Selecteer **replicatie inschakelen** om de taak te starten.
 
    ![Replicatie inschakelen](media/tutorial-migrate-azure-to-azure/settings.png)
 
@@ -107,45 +107,45 @@ Siteherstel haalt een lijst op met de VM's die zijn gekoppeld aan de abonnements
 ## <a name="test-the-configuration"></a>De configuratie testen
 
 
-1. Ga naar de kluis. Selecteer **in gerepliceerde items instellingen** > **Replicated items**de virtuele machine die u naar het doelgebied wilt verplaatsen. Selecteer vervolgens **Failover testen**.
-2. Selecteer **in Test Failover**een herstelpunt dat u wilt gebruiken voor de failover:
+1. Ga naar de kluis. Selecteer in **instellingen** > **gerepliceerde items**de virtuele machine die u wilt verplaatsen naar de doel regio. Selecteer vervolgens **failover testen**.
+2. Selecteer in **failover testen**het herstel punt dat u voor de failover wilt gebruiken:
 
-   - **Laatst verwerkte**: voert een failover van de VM uit naar het laatste herstelpunt dat is verwerkt door de Site Recovery-service. Het tijdstempel wordt weergegeven. Er wordt geen tijd besteed aan het verwerken van gegevens, dus deze optie biedt een doelstelling voor een lage hersteltijd (RTO).
-   - **Nieuwste app-consistent:** Mislukt over alle VM's naar het nieuwste app-consistente herstelpunt. Het tijdstempel wordt weergegeven.
+   - **Laatst verwerkte**: voert een failover van de VM uit naar het laatste herstelpunt dat is verwerkt door de Site Recovery-service. Het tijdstempel wordt weergegeven. Er wordt geen tijd besteed aan het verwerken van gegevens. deze optie biedt daarom een lage herstel tijd (RTO).
+   - **Nieuwste app-consistent**: failover van alle virtuele machines naar het meest recente toepassings consistente herstel punt. Het tijdstempel wordt weergegeven.
    - **Aangepast**: selecteer een herstelpunt.
 
 3. Selecteer het Azure-doelnetwerk waar u de Azure VM's naartoe wilt verplaatsen, om de configuratie te testen.
 
    > [!IMPORTANT]
-   > We raden u aan een apart Azure VM-netwerk te gebruiken voor de testfailover, niet voor het productienetwerk in het doelgebied.
+   > We raden u aan om een afzonderlijk Azure VM-netwerk te gebruiken voor de testfailover, niet het productie netwerk in de doel regio.
 
-4. Als u de verplaatsing wilt testen, selecteert u **OK**. Als u de voortgang wilt bijhouden, selecteert u de VM om de **eigenschappen te openen.** Of selecteer de taak **Failover testen** in de kluis. Selecteer vervolgens **Vacatures** > **sitehersteltaken****Jobs** > instellen .
+4. Selecteer **OK**om te beginnen met het testen van de verplaatsing. Als u de voortgang wilt bijhouden, selecteert u de virtuele machine om de eigenschappen ervan te openen **.** Of selecteer de taak **testfailover** in de kluis. Selecteer vervolgens **instellingen** > **taken** > **site Recovery taken**.
 5. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in Azure Portal > **Virtuele machines**. Controleer of de VM draait, de juiste grootte heeft en aangesloten is op het juiste netwerk.
-6. Als u de VM wilt verwijderen die u hebt gemaakt voor het testen, selecteert u Failover ophet gerepliceerde item **opschonen.** Uit **Notities,** registreren en opslaan van eventuele opmerkingen met betrekking tot de test.
+6. Als u de virtuele machine die u hebt gemaakt voor testen wilt verwijderen, selecteert u testfailover **opschonen** voor het gerepliceerde item. Noteer alle opmerkingen met betrekking tot de test en sla ze op van **notities**.
 
-## <a name="perform-the-move-and-confirm"></a>De verplaatsing uitvoeren en bevestigen
+## <a name="perform-the-move-and-confirm"></a>Het verplaatsen en bevestigen uitvoeren
 
-1. Ga naar de kluis in**Gerepliceerde items** **instellingen,** > selecteer de virtuele machine en selecteer **Failover**.
-1. Selecteer **Laatste**optie voor **Failover**. 
-2. Selecteer **Sluit de computer af voordat de failover wordt gestart**. Siteherstel probeert de bron-VM af te sluiten voordat de failover wordt geactiveerd. Maar failover blijft, zelfs als shutdown mislukt. U de failovervoortgang volgen op de pagina **Vacatures.**
-3. Controleer bij het einde van de taak of de VM wordt weergegeven in het doelazure-gebied zoals verwacht.
-4. Klik in **gerepliceerde items**met de rechtermuisknop op de virtuele machine en selecteer **Vastleggen**. Dit maakt de verhuizing af. Wacht tot de commit taak is afgelopen.
+1. Ga naar de kluis in **instellingen** > **gerepliceerde items**, selecteer de virtuele machine en selecteer vervolgens **failover**.
+1. Voor **failover**selecteert u **meest recent**. 
+2. Selecteer **Sluit de computer af voordat de failover wordt gestart**. Site Recovery probeert de bron-VM af te sluiten voordat de failover wordt geactiveerd. Failover wordt echter voortgezet, zelfs als het afsluiten mislukt. U kunt de voortgang van de failover op de pagina **taken** volgen.
+3. Wanneer de taak is voltooid, controleert u of de virtuele machine wordt weer gegeven in de Azure-doel regio zoals verwacht.
+4. Klik in **gerepliceerde items**met de rechter muisknop op de virtuele machine en selecteer **door voeren**. De verplaatsing is voltooid. Wacht tot de doorvoer taak is voltooid.
 
-## <a name="discard-the-resources-from-the-source-region"></a>De bronnen uit het brongebied verwijderen
+## <a name="discard-the-resources-from-the-source-region"></a>De resources uit de bron regio verwijderen
 
-- Ga naar de vm en selecteer **Replicatie uitschakelen**. Hiermee wordt het proces van het kopiëren van de gegevens voor de VM beëindigd.
+- Ga naar de virtuele machine en selecteer **replicatie uitschakelen**. Hiermee wordt het proces van het kopiëren van de gegevens voor de VM beëindigd.
 
   > [!IMPORTANT]
-  > Voer deze stap uit om te voorkomen dat er na de verhuizing kosten in rekening worden gebracht voor replicatie van siteherstel.
+  > Voer deze stap uit om te voor komen dat Site Recovery replicatie na de verplaatsing in rekening wordt gebracht.
 
-Als u niet van plan bent een van de bronbronnen opnieuw te gebruiken, voert u de volgende stappen uit:
+Als u geen van de bron resources opnieuw wilt gebruiken, voert u de volgende stappen uit:
 
-1. Verwijder alle relevante netwerkbronnen in het brongebied die u hebt vermeld in stap 4 van [De bron-VM's voorbereiden.](#prepare-the-source-vms)
+1. Verwijder alle relevante netwerk bronnen in de bron regio die u hebt vermeld in stap 4 van [de bron-Vm's voorbereiden](#prepare-the-source-vms).
 2. Verwijder het bijbehorende opslagaccount in de bronregio.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u Azure VM's naar een andere Azure-regio verplaatsen. Nu u noodherstel configureren voor die VM's.
+In deze zelf studie hebt u geleerd hoe u virtuele Azure-machines naar een andere Azure-regio kunt verplaatsen. U kunt nu herstel na nood gevallen configureren voor deze Vm's.
 
 > [!div class="nextstepaction"]
 > [Herstel na noodgeval instellen na een migratie](azure-to-azure-quickstart.md)

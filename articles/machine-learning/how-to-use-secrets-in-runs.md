@@ -1,7 +1,7 @@
 ---
-title: Gebruik geheimen in trainingsruns
+title: Geheimen gebruiken in trainings uitvoeringen
 titleSuffix: Azure Machine Learning
-description: Geef geheimen door aan trainingsruns op veilige manier met Workspace Key Vault
+description: Geheimen op beveiligde wijze door geven aan trainings uitvoeringen met behulp van werkruimte Key Vault
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,28 +11,28 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: d877794abf12b8b412cd1ecf4efd72fd1179d768
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78942258"
 ---
-# <a name="use-secrets-in-training-runs"></a>Gebruik geheimen in trainingsruns
+# <a name="use-secrets-in-training-runs"></a>Geheimen gebruiken in trainings uitvoeringen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u geheimen veilig gebruiken in trainingsruns. Verificatiegegevens zoals uw gebruikersnaam en wachtwoord zijn geheimen. Als u bijvoorbeeld verbinding maakt met een externe database om trainingsgegevens op te vragen, moet u uw gebruikersnaam en wachtwoord doorgeven aan de context van externe run. Het coderen van dergelijke waarden in trainingsscripts in cleartext is onzeker omdat het het geheim zou blootleggen. 
+In dit artikel leert u hoe u geheimen kunt gebruiken in de training die veilig worden uitgevoerd. Verificatie-informatie, zoals uw gebruikers naam en wacht woord, zijn geheimen. Als u bijvoorbeeld verbinding maakt met een externe data base om trainings gegevens op te vragen, moet u uw gebruikers naam en wacht woord door geven aan de context voor externe uitvoering. Het coderen van dergelijke waarden in trainings scripts is onveilig, omdat het geheim zou worden weer gegeven. 
 
-In plaats daarvan heeft uw Azure Machine Learning-werkruimte een bijbehorende bron, een [Azure Key Vault.](https://docs.microsoft.com/azure/key-vault/key-vault-overview) Gebruik deze Key Vault om geheimen door te geven aan externe activiteiten die veilig worden uitgevoerd via een set API's in de Azure Machine Learning Python SDK.
+In plaats daarvan bevat uw Azure Machine Learning-werk ruimte een gekoppelde resource met de naam [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview). Gebruik deze Key Vault om geheimen door te geven aan externe uitvoering van een set Api's in de Azure Machine Learning python SDK.
 
-De basisstroom voor het gebruik van geheimen is:
- 1. Meld u op de lokale computer aan bij Azure en maakt verbinding met uw werkruimte.
- 2. Stel op de lokale computer een geheim in in Workspace Key Vault.
- 3. Dien een externe run in.
- 4. Binnen de remote run, haal het geheim van Key Vault en gebruik het.
+De basis stroom voor het gebruik van geheimen is:
+ 1. Meld u op de lokale computer aan bij Azure en maak verbinding met uw werk ruimte.
+ 2. Stel op lokale computer een geheim in de werk ruimte Key Vault in.
+ 3. Een externe uitvoering verzenden.
+ 4. Haal het geheim op in de externe uitvoering van Key Vault en gebruik het.
 
 ## <a name="set-secrets"></a>Geheimen instellen
 
-In de klasse Azure Machine Learning bevat de klasse [Keyvault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py) methoden voor het instellen van geheimen. In uw lokale Python-sessie krijgt u eerst een verwijzing [`set_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secret-name--value-) naar uw werkruimte Key Vault en gebruikt u de methode om een geheim in te stellen op naam en waarde. De __set_secret__ methode werkt de geheime waarde bij als de naam al bestaat.
+In de Azure Machine Learning bevat de klasse sleutel [kluis](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py) methoden voor het instellen van geheimen. In uw lokale python-sessie moet u eerst een verwijzing naar uw werk ruimte verkrijgen Key Vault en vervolgens [`set_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secret-name--value-) de methode gebruiken om een geheim op naam en waarde in te stellen. De __set_secret__ methode werkt de geheime waarde bij als de naam al bestaat.
 
 ```python
 from azureml.core import Workspace
@@ -46,15 +46,15 @@ keyvault = ws.get_default_keyvault()
 keyvault.set_secret(name="mysecret", value = my_secret)
 ```
 
-Zet de geheime waarde niet in uw Python-code omdat deze onveilig is om deze als cleartext in het bestand op te slaan. Verkrijg in plaats daarvan de geheime waarde uit een omgevingsvariabele, bijvoorbeeld Azure DevOps, of uit interactieve gebruikersinvoer.
+Plaats de geheime waarde niet in uw Python-code omdat deze onveilig is om deze in het bestand op te slaan als een lees bare tekst. Haal in plaats daarvan de geheime waarde op uit een omgevings variabele, bijvoorbeeld Azure DevOps build Secret of van interactieve gebruikers invoer.
 
-U geheime namen [`list_secrets()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#list-secrets--) vermelden met behulp van de methode en er is ook een batchversie,[set_secrets()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secrets-secrets-batch-) waarmee u meerdere geheimen tegelijk instellen.
+U kunt geheime namen vermelden met behulp van de [`list_secrets()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#list-secrets--) -methode en er is ook een batch versie,[set_secrets ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secrets-secrets-batch-) waarmee u meerdere geheimen tegelijk kunt instellen.
 
-## <a name="get-secrets"></a>Krijg geheimen
+## <a name="get-secrets"></a>Geheimen ophalen
 
-In uw lokale code kunt[`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#get-secret-name-) u de methode gebruiken om de geheime waarde op naam te krijgen.
+In uw lokale code kunt u de[`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#get-secret-name-) -methode gebruiken om de geheime waarde op naam op te halen.
 
-Voor ingezonden [`Experiment.submit`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py#submit-config--tags-none----kwargs-) uitvoeringen [`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secret-name-) de [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) , gebruik de methode met de klasse. Omdat een ingediende run op de hoogte is van de werkruimte, wordt met deze methode de instantiatie van de werkruimte geleid en wordt de geheime waarde rechtstreeks geretourneerd.
+Voor uitvoeringen verzonden [`Experiment.submit`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py#submit-config--tags-none----kwargs-) , gebruikt u [`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secret-name-) de-methode [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) met de-klasse. Omdat een ingediende uitvoering op de hoogte is van de werk ruimte, wordt met deze methode de activering van de werk ruimte versneld en wordt de geheime waarde direct geretourneerd.
 
 ```python
 # Code in submitted run
@@ -64,11 +64,11 @@ run = Run.get_context()
 secret_value = run.get_secret(name="mysecret")
 ```
 
-Wees voorzichtig niet om de geheime waarde bloot door het schrijven of afdrukken van het uit.
+Zorg ervoor dat u de geheime waarde niet beschikbaar maakt door deze te schrijven of af te drukken.
 
-Er is ook een batch-versie, [get_secrets()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secrets-secrets-) voor toegang tot meerdere geheimen tegelijk.
+Er is ook een batch versie, [get_secrets ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secrets-secrets-) voor het openen van meerdere geheimen tegelijk.
 
 ## <a name="next-steps"></a>Volgende stappen
 
- * [Voorbeeldnotitieblok weergeven](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/manage-azureml-service/authentication-in-azureml/authentication-in-azureml.ipynb)
- * [Meer informatie over bedrijfsbeveiliging met Azure Machine Learning](concept-enterprise-security.md)
+ * [Voorbeeld notitieblok weer geven](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/manage-azureml-service/authentication-in-azureml/authentication-in-azureml.ipynb)
+ * [Meer informatie over Enter prise Security met Azure Machine Learning](concept-enterprise-security.md)

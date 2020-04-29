@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie: Een webpagina voor aangepaste zoekopdrachten maken - Bing Aangepaste zoekopdrachten'
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het configureren van een aangepaste Bing-zoekinstantie en het integreren in een webpagina met deze zelfstudie.
+description: Meer informatie over het configureren van een aangepast Bing Search-exemplaar en het integreren hiervan in een webpagina met deze zelf studie.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
 ms.openlocfilehash: c7b41f77f8eb57c39489f1e5a69b0ac1c3c9c7d4
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943914"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Zelfstudie: Een webpagina voor aangepaste zoekopdrachten maken
@@ -34,8 +34,8 @@ De behandelde taken zijn:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u deze zelfstudie wilt volgen, hebt u een abonnementssleutel nodig voor de Bing Aangepaste zoekopdrachten-API.  Als u een sleutel wilt krijgen, [maakt u een Bing Custom Search-bron](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) in de Azure-portal. u ook een [proefsleutel](https://azure.microsoft.com/try/cognitive-services)gebruiken.
-- Als u Visual Studio 2017 of hoger nog niet hebt geïnstalleerd, u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken.
+- Als u deze zelfstudie wilt volgen, hebt u een abonnementssleutel nodig voor de Bing Aangepaste zoekopdrachten-API.  Als u een sleutel wilt ophalen, [maakt u een Bing aangepaste zoekopdrachten resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) in de Azure Portal. u kunt ook een [proef sleutel](https://azure.microsoft.com/try/cognitive-services)gebruiken.
+- Als u Visual Studio 2017 of hoger nog niet hebt geïnstalleerd, kunt u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken.
 
 ## <a name="create-a-custom-search-instance"></a>Een exemplaar voor aangepaste zoekopdrachten maken
 
@@ -45,9 +45,9 @@ Een exemplaar voor aangepaste zoekopdrachten met Bing maken:
   
 2. Ga naar de [portal](https://customsearch.ai) voor aangepaste zoekopdrachten.  
   
-3. Meld u aan bij de portal met een Microsoft-account (MSA). Als u geen MSA hebt, klikt u op **Een Microsoft-account maken**. Als het de eerste keer is dat u de portal gebruikt, vraagt het om machtigingen voor toegang tot uw gegevens. Klik **op Ja**.  
+3. Meld u aan bij de portal met een Microsoft-account (MSA). Als u geen MSA hebt, klikt u op **een Microsoft-account maken**. Als dit de eerste keer is dat u de portal gebruikt, wordt u gevraagd om toegang te krijgen tot uw gegevens. Klik op **Ja**.  
   
-4. Als u bent aangemeld, klikt u op **Create new instance**. Voer in het venster **Een nieuwe aangepaste zoekinstantie** een naam in die zinvol is en het type inhoud beschrijft dat de zoekopdracht retourneert. U kunt de naam overigens altijd wijzigen.  
+4. Als u bent aangemeld, klikt u op **Create new instance**. Voer in het venster **een nieuwe aangepaste zoek instantie maken** een naam in die betekenisvol is en beschrijft het type inhoud dat door de zoek opdracht wordt geretourneerd. U kunt de naam overigens altijd wijzigen.  
   
    ![Schermafbeelding van het vak voor het invoeren van een naam voor het nieuwe exemplaar voor aangepaste zoekopdrachten](../media/newCustomSrch.png)  
   
@@ -79,7 +79,7 @@ Als u resultaten van bepaalde websites of URL's wilt uitsluiten, voegt u deze to
 
 ## <a name="add-pinned-entries"></a>Vastgemaakte vermeldingen toevoegen
 
-Als u een specifieke webpagina boven aan de zoekresultaten wilt vastmaken, voegt u de webpagina en de queryterm toe aan het tabblad **Vastgemaakt.** Het tabblad **Vastgemaakt** bevat een lijst met webpagina' s en querytermparen die de webpagina opgeven die wordt weergegeven als het hoogste resultaat voor een specifieke query. De webpagina wordt alleen vastgemaakt als de querytekenreeks van de gebruiker overeenkomt met de querytekenreeks van de pin op basis van de overeenkomende pinconditie. In zoekopdrachten worden alleen geïndexeerde webpagina's weergegeven. Zie [Uw aangepaste weergave definiëren](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results) voor meer informatie.
+Als u een specifieke webpagina wilt vastmaken aan de bovenkant van de zoek resultaten, voegt u de webpagina en de query term toe aan het tabblad **vastgemaakt** . Het tabblad **vastgemaakte** bevat een lijst met de webpagina-en query term paren waarmee de webpagina wordt opgegeven die als het beste resultaat voor een specifieke query wordt weer gegeven. De webpagina wordt alleen vastgemaakt als de query reeks van de gebruiker overeenkomt met de query reeks van de pincode op basis van de voor waarde van de pincode. In zoekopdrachten worden alleen geïndexeerde webpagina's weergegeven. Zie [Uw aangepaste weergave definiëren](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results) voor meer informatie.
 
 1. Klik op de pagina **Configuration** op het tabblad **Pinned** en voer de webpagina en zoekterm in van de webpagina die u als het bovenste resultaat in de lijst wilt weergeven.  
   

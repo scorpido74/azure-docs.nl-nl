@@ -13,10 +13,10 @@ ms.date: 12/18/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 6bd8c472aa659bec31440292e20328865b1cb531
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79134524"
 ---
 # <a name="what-is-the-bing-image-search-api"></a>Wat is de Bing Afbeeldingen zoeken-API?
@@ -37,10 +37,10 @@ Hoewel de Bing afbeeldingen zoeken-API alleen zoekresultaten met afbeeldingen ge
 
 ## <a name="workflow"></a>Werkstroom
 
-De Bing Afbeeldingen zoeken-API is een RESTful-webservice die eenvoudig kan worden aangeroepen vanuit elke programmeertaal waarmee HTTP-aanvragen kunnen worden gedaan en JSON kan worden geparseerd. U de service gebruiken met behulp van de [REST API](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/quickstarts/csharp?)of de [SDK.](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)
+De Bing Afbeeldingen zoeken-API is een RESTful-webservice die eenvoudig kan worden aangeroepen vanuit elke programmeertaal waarmee HTTP-aanvragen kunnen worden gedaan en JSON kan worden geparseerd. U kunt de service gebruiken met behulp van de [rest API](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/quickstarts/csharp?)of de [SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart).
 
-1. Maak een [API-account voor Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met toegang tot de Bing Search API's. Als u geen Azure-abonnement hebt, u gratis [een account aanmaken.](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
-2. Stuur een aanvraag naar de API, met een geldige [zoekopdracht.](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)
+1. Maak een [Cognitive Services-API-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met toegang tot de Bing zoeken-API's. Als u geen Azure-abonnement hebt, kunt u gratis [een account maken](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) .
+2. Een aanvraag verzenden naar de API met een geldige [Zoek query](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries).
 3. Verwerk de API-reactie door het geretourneerde JSON-bericht te parseren.
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -48,7 +48,7 @@ De Bing Afbeeldingen zoeken-API is een RESTful-webservice die eenvoudig kan word
 Probeer eerst de [interactieve demo](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) van de Bing Afbeeldingen zoeken-API uit.
 In deze demo ziet u hoe u snel een zoekquery kunt aanpassen en internet kunt doorzoeken op afbeeldingen.
 
-Wanneer u klaar bent om de API aan te roepen, maakt u een [account voor Cognitive Services-API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Als u geen Azure-abonnement hebt, u gratis [een account aanmaken.](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
+Wanneer u klaar bent om de API aan te roepen, maakt u een [account voor Cognitive Services-API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Als u geen Azure-abonnement hebt, kunt u gratis [een account maken](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) .
 
 Als u snel aan de slag wilt met uw eerste API-aanvraag, kunt u het volgende leren:
 
@@ -67,4 +67,4 @@ Als u snel aan de slag wilt met uw eerste API-aanvraag, kunt u het volgende lere
 
 * In het artikel [Zoekquery's verzenden en ermee werken](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries) wordt beschreven hoe u zoekquery's kunt maken, aanpassen en draaien.
 
-* Ga naar de [hubpagina van bing Search API](../bing-web-search/search-the-web.md) om de andere beschikbare API's te verkennen.
+* Ga naar de [pagina met Bing Search API-hubs](../bing-web-search/search-the-web.md) om de andere beschik bare api's te verkennen.

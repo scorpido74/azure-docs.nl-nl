@@ -1,154 +1,154 @@
 ---
-title: Compatibiliteitsniveaus van Azure Stream Analytics
-description: Meer informatie over het instellen van een compatibiliteitsniveau voor een Azure Stream Analytics-taak en belangrijke wijzigingen in het nieuwste compatibiliteitsniveau
+title: Compatibiliteits niveaus Azure Stream Analytics
+description: Meer informatie over het instellen van een compatibiliteits niveau voor een Azure Stream Analytics-taak en belang rijke wijzigingen in het meest recente compatibiliteits niveau
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79087852"
 ---
-# <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Compatibiliteitsniveau voor Azure Stream Analytics-taken
+# <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Compatibiliteits niveau voor Azure Stream Analytics taken
 
-In dit artikel wordt de optie compatibiliteitsniveau in Azure Stream Analytics beschreven. Stream Analytics is een beheerde service, met regelmatige functie-updates en prestatieverbeteringen. De meeste runtimes-updates van de service worden automatisch beschikbaar gesteld aan eindgebruikers. 
+In dit artikel wordt de optie compatibiliteits niveau in Azure Stream Analytics beschreven. Stream Analytics is een beheerde service, met normale onderdelen updates en prestatie verbeteringen. De meeste runtime-updates van de service worden automatisch beschikbaar gesteld aan eind gebruikers. 
 
-Sommige nieuwe functionaliteit in de service kan echter een belangrijke wijziging in de service introduceren, zoals een wijziging in het gedrag van een bestaande taak of een wijziging in de manier waarop gegevens worden verbruikt in lopende taken. U uw bestaande Stream Analytics-taken draaienzonder grote wijzigingen door de instelling voor compatibiliteitsniveau verlaagd te laten. Wanneer u klaar bent voor het nieuwste runtime-gedrag, u zich aanmelden door het compatibiliteitsniveau te verhogen. 
+Een aantal nieuwe functies in de service kan echter een grote wijziging veroorzaken, zoals een wijziging in het gedrag van een bestaande taak of een wijziging in de manier waarop gegevens worden gebruikt bij het uitvoeren van taken. U kunt ervoor zorgen dat uw bestaande Stream Analytics-taken worden uitgevoerd zonder grote wijzigingen door de instelling voor het compatibiliteits niveau te verlagen. Wanneer u klaar bent voor het laatste runtime-gedrag, kunt u zich aanmelden door het compatibiliteits niveau te verhogen. 
 
-## <a name="choose-a-compatibility-level"></a>Een compatibiliteitsniveau kiezen
+## <a name="choose-a-compatibility-level"></a>Een compatibiliteits niveau kiezen
 
-Compatibiliteitsniveau bepaalt het runtimegedrag van een streamanalysetaak. 
+Compatibiliteits niveau bepaalt het runtime gedrag van een stream Analytics-taak. 
 
-Azure Stream Analytics ondersteunt momenteel drie compatibiliteitsniveaus:
+Azure Stream Analytics ondersteunt momenteel drie compatibiliteits niveaus:
 
-* 1.0 - Origineel compatibiliteitsniveau, enkele jaren geleden geïntroduceerd tijdens de algemene beschikbaarheid van Azure Stream Analytics.
-* 1.1 - Vorig gedrag
-* 1.2 - Nieuwste gedrag met meest recente verbeteringen
+* 1,0-oorspronkelijk compatibiliteits niveau, geïntroduceerd tijdens de algemene Beschik baarheid van Azure Stream Analytics enkele jaren geleden.
+* 1,1-vorig gedrag
+* 1,2-nieuwste gedrag met de meest recente verbeteringen
 
-Wanneer u een nieuwe Stream Analytics-taak maakt, is het een goede manier om deze te maken met behulp van het nieuwste compatibiliteitsniveau. Start uw taakontwerp op basis van het nieuwste gedrag, om later extra verandering en complexiteit te voorkomen.
+Wanneer u een nieuwe Stream Analytics taak maakt, is dit een best practice om deze te maken met behulp van het meest recente compatibiliteits niveau. Start uw taak ontwerp dat afhankelijk is van het nieuwste gedrag, zodat u later extra wijzigingen en complexiteit kunt voor komen.
 
-## <a name="set-the-compatibility-level"></a>Het compatibiliteitsniveau instellen
+## <a name="set-the-compatibility-level"></a>Het compatibiliteits niveau instellen
 
-U het compatibiliteitsniveau instellen voor een Stream Analytics-taak in de Azure-portal of met behulp van de [API-aanroep voor taakREST maken.](/rest/api/streamanalytics/stream-analytics-job)
+U kunt het compatibiliteits niveau instellen voor een Stream Analytics taak in het Azure Portal of met behulp van de [aanroep taak maken rest API](/rest/api/streamanalytics/stream-analytics-job).
 
-Ga als bedoeld als u het compatibiliteitsniveau van de taak in de Azure-portal bijwerkt:
+Het compatibiliteits niveau van de taak in het Azure Portal bijwerken:
 
-1. Gebruik de [Azure-portal](https://portal.azure.com) om uw Stream Analytics-taak te zoeken.
-2. **Stop** de taak voordat u het compatibiliteitsniveau bijwerkt. U het compatibiliteitsniveau niet bijwerken als uw taak in een status is.
-3. Selecteer onder de kop **Configureren** de optie **Compatibiliteitsniveau**.
-4. Kies de gewenste waarde op compatibiliteitsniveau.
-5. Selecteer **Opslaan** onder aan de pagina.
+1. Gebruik de [Azure Portal](https://portal.azure.com) om naar uw stream Analytics-taak te zoeken.
+2. **Stop** de taak voordat u het compatibiliteits niveau bijwerkt. Als uw taak wordt uitgevoerd, kunt u het compatibiliteits niveau niet bijwerken.
+3. Onder de kop **configureren** selecteert u **compatibiliteits niveau**.
+4. Kies de gewenste waarde voor het compatibiliteits niveau.
+5. Selecteer onder aan de pagina **Opslaan** .
 
-![Compatibiliteitsniveau voor Stream Analytics in Azure-portal](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
+![Compatibiliteits niveau Stream Analytics in Azure Portal](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
-Wanneer u het compatibiliteitsniveau bijwerkt, valideert de T-compiler de taak met de syntaxis die overeenkomt met het geselecteerde compatibiliteitsniveau.
+Wanneer u het compatibiliteits niveau bijwerkt, valideert de T-compiler de taak met de syntaxis die overeenkomt met het geselecteerde compatibiliteits niveau.
 
-## <a name="compatibility-level-12"></a>Compatibiliteitsniveau 1.2
+## <a name="compatibility-level-12"></a>Compatibiliteits niveau 1,2
 
-De volgende belangrijke wijzigingen worden doorgevoerd in compatibiliteitsniveau 1.2:
+De volgende belang rijke wijzigingen worden geïntroduceerd in compatibiliteits niveau 1,2:
 
-###  <a name="amqp-messaging-protocol"></a>AMQP-berichtenprotocol
+###  <a name="amqp-messaging-protocol"></a>AMQP Messa ging Protocol
 
-**1.2-niveau**: Azure Stream Analytics gebruikt [het ADQP-berichtenprotocol (Advanced Message Queueing Protocol)](../service-bus-messaging/service-bus-amqp-overview.md) om naar wachtrijen en onderwerpen van servicebussen te schrijven. AMQP stelt u in staat om cross-platform, hybride applicaties te bouwen met behulp van een open standaard protocol.
+**1,2-niveau**: Azure stream Analytics gebruikt [AMQP-berichten Protocol (Advanced Message queueing Protocol)](../service-bus-messaging/service-bus-amqp-overview.md) om te schrijven naar service bus-wacht rijen en-onderwerpen. Met AMQP kunt u platform onafhankelijke, hybride toepassingen bouwen met behulp van een open standaard protocol.
 
 ### <a name="geospatial-functions"></a>Georuimtelijke functies
 
-**Eerdere niveaus:** Azure Stream Analytics heeft aardrijkskundeberekeningen gebruikt.
+**Eerdere niveaus:** Geografie berekeningen Azure Stream Analytics gebruikt.
 
-**1.2 niveau:** Met Azure Stream Analytics u geometrische geprojecteerde geocoördinaten berekenen. Er is geen verandering in de handtekening van de georuimtelijke functies. Hun semantiek is echter iets anders, waardoor een preciezere berekening mogelijk is dan voorheen.
+**niveau van 1,2:** Met Azure Stream Analytics kunt u geometrische geprojecteerde geo-coördinaten berekenen. Er is geen wijziging in de hand tekening van de georuimtelijke functies. De semantiek is echter iets anders, waardoor nauw keuriger kan worden gerekend dan voorheen.
 
-Azure Stream Analytics ondersteunt georuimtelijke referentiegegevensindexering. Referentiegegevens die georuimtelijke elementen bevatten, kunnen worden geïndexeerd voor een snellere joinberekening.
+Azure Stream Analytics ondersteunt het indexeren van georuimtelijke referentie gegevens. Referentie gegevens die georuimtelijke elementen bevatten, kunnen worden geïndexeerd voor een snellere samenvoegings berekening.
 
-De bijgewerkte georuimtelijke functies brengen de volledige expressiviteit van welbekende tekst (WKT) geospatiale formaat. U andere georuimtelijke componenten opgeven die voorheen niet met GeoJson zijn ondersteund.
+Met de bijgewerkte georuimtelijke functies wordt de WKT-indeling (volledig herkende tekst) met een georuimtelijke notatie. U kunt andere georuimtelijke onderdelen opgeven die niet eerder met geojson worden ondersteund.
 
-Zie [Updates voor georuimtelijke functies in Azure Stream Analytics – Cloud en IoT Edge](https://azure.microsoft.com/blog/updates-to-geospatial-functions-in-azure-stream-analytics-cloud-and-iot-edge/)voor meer informatie.
+Zie [updates voor georuimtelijke functies in azure stream Analytics-Cloud en IOT Edge](https://azure.microsoft.com/blog/updates-to-geospatial-functions-in-azure-stream-analytics-cloud-and-iot-edge/)voor meer informatie.
 
-### <a name="parallel-query-execution-for-input-sources-with-multiple-partitions"></a>Parallelle query-uitvoering voor invoerbronnen met meerdere partities
+### <a name="parallel-query-execution-for-input-sources-with-multiple-partitions"></a>Parallelle query uitvoering voor invoer bronnen met meerdere partities
 
-**Eerdere niveaus:** Azure Stream Analytics-query's vereisten het gebruik van partitie per clausule om queryverwerking te paralleleren tussen invoerbronpartities.
+**Eerdere niveaus:** Voor Azure Stream Analytics query's is het gebruik van de component PARTITION BY vereist voor het verwerken van parallelliseren-query's tussen de verschillende invoer bron partities.
 
-**1.2 niveau:** Als querylogica kan worden parallellopen tussen invoerbronpartities, maakt Azure Stream Analytics afzonderlijke query-exemplaren en voert berekeningen parallel uit.
+**niveau van 1,2:** Als query logica kan worden geparallelleerd tussen de verschillende invoer bron partities, maakt Azure Stream Analytics afzonderlijke query-instanties en worden berekeningen parallel uitgevoerd.
 
-### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>Native Bulk API-integratie met CosmosDB-uitvoer
+### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>Systeem eigen bulk-API-integratie met CosmosDB-uitvoer
 
-**Eerdere niveaus:** Het upsert-gedrag is *ingevoegd of samengevoegd*.
+**Eerdere niveaus:** Het upsert-gedrag is *invoegen of samen voegen*.
 
-**1.2 niveau:** Native Bulk API-integratie met CosmosDB-uitvoer maximaliseert de doorvoer en verwerkt op efficiënte wijze throttling-aanvragen. Zie [de Azure Stream Analytics-uitvoer naar azure cosmos DB-pagina](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12)voor meer informatie.
+**niveau van 1,2:** Systeem eigen bulk-API-integratie met CosmosDB-uitvoer maximaliseert de door Voer en efficiënt afhandelen van bandbreedte aanvragen. Zie [de pagina Azure stream Analytics uitvoer naar Azure Cosmos DB](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12)voor meer informatie.
 
-Het upsert-gedrag is *invoegen of vervangen.*
+Het gedrag van de upsert wordt *ingevoegd of vervangen*.
 
-### <a name="datetimeoffset-when-writing-to-sql-output"></a>DateTimeOffset bij het schrijven naar SQL-uitvoer
+### <a name="datetimeoffset-when-writing-to-sql-output"></a>Date time offset bij het schrijven naar SQL-uitvoer
 
-**Eerdere niveaus:** [DateTimeOffset-typen](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) werden aangepast aan UTC.
+**Eerdere niveaus:** [Date Time offset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) types zijn aangepast aan UTC.
 
-**1.2 niveau:** DateTimeOffset wordt niet meer aangepast.
+**niveau van 1,2:** Date time offset wordt niet meer aangepast.
 
 ### <a name="long-when-writing-to-sql-output"></a>Lang bij het schrijven naar SQL-uitvoer
 
-**Eerdere niveaus:** Waarden zijn afgekapt op basis van het doeltype.
+**Eerdere niveaus:** De waarden zijn afgekapt op basis van het doel type.
 
-**1.2 niveau:** Waarden die niet in het doeltype passen, worden verwerkt volgens het uitvoerfoutbeleid.
+**niveau van 1,2:** Waarden die niet in het doel type passen, worden afgehandeld op basis van het uitvoer fout beleid.
 
-### <a name="record-and-array-serialization-when-writing-to-sql-output"></a>Serialisatie opnemen en arrayen bij het schrijven naar SQL-uitvoer
+### <a name="record-and-array-serialization-when-writing-to-sql-output"></a>Serialisatie van records en matrices bij het schrijven naar SQL-uitvoer
 
-**Eerdere niveaus:** Records werden geschreven als "Record" en arrays werden geschreven als "Array".
+**Eerdere niveaus:** Records zijn geschreven als ' record ' en matrices zijn geschreven als ' matrix '.
 
-**1.2 niveau:** Records en arrays worden geserialiseerd in JSON-indeling.
+**niveau van 1,2:** Records en matrices worden geserialiseerd in JSON-indeling.
 
-### <a name="strict-validation-of-prefix-of-functions"></a>Strikte validatie van voorvoegsel van functies
+### <a name="strict-validation-of-prefix-of-functions"></a>Strikte validatie van het voor voegsel van functies
 
-**Eerdere niveaus:** Er was geen strikte validatie van functievoorvoegsels.
+**Eerdere niveaus:** Er is geen strikte validatie van functie voorvoegsels.
 
-**1.2 niveau:** Azure Stream Analytics heeft een strikte validatie van functievoorvoegsels. Het toevoegen van een voorvoegsel aan een ingebouwde functie veroorzaakt een fout. Wordt bijvoorbeeld`myprefix.ABS(…)` niet ondersteund.
+**niveau van 1,2:** Azure Stream Analytics heeft een strikte validatie van functie voorvoegsels. Als u een voor voegsel toevoegt aan een ingebouwde functie, treedt er een fout op. Wordt bijvoorbeeld`myprefix.ABS(…)` niet ondersteund.
 
-Het toevoegen van een voorvoegsel aan ingebouwde aggregaten resulteert ook in fouten. Wordt bijvoorbeeld `myprefix.SUM(…)` niet ondersteund.
+Het toevoegen van een voor voegsel aan ingebouwde aggregaties resulteert ook in een fout. Wordt bijvoorbeeld `myprefix.SUM(…)` niet ondersteund.
 
-Het gebruik van het voorvoegsel "systeem" voor elke door de gebruiker gedefinieerde functies resulteert in fouten.
+Als u het voor voegsel ' System ' gebruikt voor door de gebruiker gedefinieerde functies, treedt er een fout op.
 
-### <a name="disallow-array-and-object-as-key-properties-in-cosmos-db-output-adapter"></a>Array en object niet toestaan als sleuteleigenschappen in Cosmos DB-uitvoeradapter
+### <a name="disallow-array-and-object-as-key-properties-in-cosmos-db-output-adapter"></a>Matrix en object niet toestaan als sleutel eigenschappen in Cosmos DB uitvoer adapter
 
-**Eerdere niveaus:** Array- en objecttypen werden ondersteund als een belangrijke eigenschap.
+**Eerdere niveaus:** Matrix-en object typen worden ondersteund als een sleutel eigenschap.
 
-**1.2 niveau:** Array- en objecttypen worden niet langer ondersteund als een belangrijke eigenschap.
+**niveau van 1,2:** Matrix-en object typen worden niet meer ondersteund als een sleutel eigenschap.
 
-## <a name="compatibility-level-11"></a>Compatibiliteitsniveau 1.1
+## <a name="compatibility-level-11"></a>Compatibiliteits niveau 1,1
 
-De volgende belangrijke wijzigingen worden doorgevoerd in compatibiliteitsniveau 1.1:
+De volgende belang rijke wijzigingen worden geïntroduceerd in compatibiliteits niveau 1,1:
 
-### <a name="service-bus-xml-format"></a>XML-indeling servicebus
+### <a name="service-bus-xml-format"></a>Service Bus XML-indeling
 
-**1.0 niveau:** Azure Stream Analytics gebruikte DataContractSerializer, dus de berichtinhoud bevatte XML-tags. Bijvoorbeeld:
+**niveau van 1,0:** Azure Stream Analytics gebruikgemaakt van DataContractSerializer, waardoor de inhoud van het bericht XML-tags bevat. Bijvoorbeeld:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 
-**1.1 niveau:** De inhoud van het bericht bevat de stream direct zonder extra tags. Bijvoorbeeld: `{ "SensorId":"1", "Temperature":64}`
+**niveau van 1,1:** De inhoud van het bericht bevat de stream direct zonder extra tags. Bijvoorbeeld: `{ "SensorId":"1", "Temperature":64}`
 
-### <a name="persisting-case-sensitivity-for-field-names"></a>Aanhoudende hoofdlettergevoeligheid voor veldnamen
+### <a name="persisting-case-sensitivity-for-field-names"></a>Hoofdletter gevoeligheid voor veld namen persistent maken
 
-**1.0 niveau:** Veldnamen zijn gewijzigd in kleine letters wanneer deze zijn verwerkt door de Azure Stream Analytics-engine.
+**niveau van 1,0:** Veld namen zijn in kleine letters gewijzigd wanneer ze worden verwerkt door de Azure Stream Analytics-engine.
 
-**1.1 niveau:** case-sensitivity blijft bestaan voor veldnamen wanneer deze worden verwerkt door de Azure Stream Analytics-engine.
+**niveau 1,1:** hoofdletter gevoeligheid is persistent voor veld namen wanneer deze worden verwerkt door de Azure stream Analytics-engine.
 
 > [!NOTE]
-> Aanhoudende hoofdlettergevoeligheid is nog niet beschikbaar voor Stream Analytic-taken die worden gehost met behulp van de Edge-omgeving. Als gevolg hiervan worden alle veldnamen geconverteerd naar kleine letters als uw taak wordt gehost op Edge.
+> Het persistent maken van cases is nog niet beschikbaar voor stream Analytics-taken die worden gehost door de Edge-omgeving. Als gevolg hiervan worden alle veld namen omgezet in kleine letters als uw taak wordt gehost aan de rand.
 
 ### <a name="floatnandeserializationdisabled"></a>FloatNaNDeserializationDisabled
 
-**1.0 niveau:** De opdracht TABEL MAKEN filterde geen gebeurtenissen met NaN (Geen getal. Bijvoorbeeld Infinity, -Infinity) in een FLOAT-kolomtype omdat ze buiten het gedocumenteerde bereik voor deze getallen vallen.
+**niveau van 1,0:** CREATE TABLE opdracht heeft geen gebeurtenissen gefilterd met NaN (geen-a-number). Bijvoorbeeld oneindig,-oneindig) in een FLOAT-kolom Type omdat deze buiten het gedocumenteerde bereik voor deze getallen vallen.
 
-**1.1 niveau:** Met CREATE TABLE u een sterk schema opgeven. De Stream Analytics-engine valideert dat de gegevens aan dit schema voldoen. Met dit model kan de opdracht gebeurtenissen filteren met NaN-waarden.
+**niveau van 1,1:** Met CREATE TABLE kunt u een sterk schema opgeven. De Stream Analytics-engine valideert dat de gegevens voldoen aan dit schema. Met dit model kan de opdracht gebeurtenissen filteren met NaN-waarden.
 
-### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>Automatische upcast uitschakelen voor datumtekenreeksen in JSON
+### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>Automatische conversie voor datetime-teken reeksen uitschakelen in JSON
 
-**1.0 niveau:** De JSON-parser zou tekenreekswaarden met datum-/tijd-/zone-informatie automatisch upcasten naar DateTime-type en deze vervolgens converteren naar UTC. Dit gedrag resulteerde in het verliezen van de tijdzone informatie.
+**niveau van 1,0:** Met de JSON-parser worden teken reeks waarden met datum/tijd/zone-informatie automatisch geconverteerd naar DateTime-type en vervolgens geconverteerd naar UTC. Dit gedrag heeft geleid tot verlies van informatie over de tijd zone.
 
-**1.1 niveau:** Er is niet meer automatisch upcast van tekenreekswaarden met datum/tijd/streekinformatie aan type DateTime. Als gevolg hiervan wordt tijdzone-informatie bewaard.
+**niveau van 1,1:** Er zijn niet meer automatisch conversie van teken reeks waarden met datum/tijd/zone-informatie naar het type DateTime. Als gevolg hiervan wordt informatie over de tijd zone bewaard.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure Stream Analytics-invoer oplossen](stream-analytics-troubleshoot-input.md)
-* [Stream Analytics-bronstatus](stream-analytics-resource-health.md)
+* [Problemen met Azure Stream Analytics invoer oplossen](stream-analytics-troubleshoot-input.md)
+* [Resource status Stream Analytics](stream-analytics-resource-health.md)

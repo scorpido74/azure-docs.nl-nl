@@ -1,6 +1,6 @@
 ---
-title: ARRAY_LENGTH in Azure Cosmos DB-querytaal
-description: Meer informatie over hoe de SQL-systeemfunctie arraylengte in Azure Cosmos DB het aantal elementen van de opgegeven arrayexpressie retourneert
+title: ARRAY_LENGTH in Azure Cosmos DB query taal
+description: Meer informatie over hoe de lengte van de SQL-systeem functie van de matrix in Azure Cosmos DB het aantal elementen van de opgegeven matrix expressie retourneert
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 3596ce4bc702d5e54225d8c90db2f9563feab670
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303984"
 ---
 # <a name="array_length-azure-cosmos-db"></a>ARRAY_LENGTH (Azure Cosmos DB)
@@ -26,21 +26,21 @@ ARRAY_LENGTH(<arr_expr>)
 ## <a name="arguments"></a>Argumenten
   
 *arr_expr*  
-   Is een arrayexpressie.  
+   Is een matrix expressie.  
   
-## <a name="return-types"></a>Retourtypen
+## <a name="return-types"></a>Retour typen
   
-  Geeft als resultaat een numerieke expressie.  
+  Retourneert een numerieke expressie.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voorbeeld hoe u `ARRAY_LENGTH`de lengte van een array krijgt met behulp van .  
+  In het volgende voor beeld wordt aangegeven hoe u de lengte van `ARRAY_LENGTH`een matrix kunt ophalen met.  
   
 ```sql
 SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"]) AS len  
 ```  
   
- Hier is het resultaat ingesteld.  
+ Dit is de resultatenset.  
   
 ```json
 [{"len": 3}]  
@@ -48,10 +48,10 @@ SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"]) AS len
   
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeemfunctie maakt geen gebruik van de index.
+Deze systeem functie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Arrayfuncties Azure Cosmos DB](sql-query-array-functions.md)
-- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
+- [Matrix functies Azure Cosmos DB](sql-query-array-functions.md)
+- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

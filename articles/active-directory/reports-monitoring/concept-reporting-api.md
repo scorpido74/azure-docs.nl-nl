@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met de Azure AD-rapportage-API | Microsoft Documenten
-description: Aan de slag met de Azure Active Directory reporting API
+title: Aan de slag met de rapportage-API voor Azure AD | Microsoft Docs
+description: Aan de slag met de API voor Azure Active Directory rapportage
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,57 +18,57 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 56f240a5191dd483f89889f3ffe13b1819ca1e53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78399326"
 ---
-# <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Aan de slag met de Azure Active Directory reporting API
+# <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Aan de slag met de API voor Azure Active Directory rapportage
 
-Azure Active Directory biedt u verschillende [rapporten](overview-reports.md)met nuttige informatie voor toepassingen zoals SIEM-systemen, audit- en business intelligence-hulpprogramma's. 
+Azure Active Directory biedt u diverse [rapporten](overview-reports.md), met nuttige informatie voor toepassingen, zoals Siem-systemen, controle en Business Intelligence-hulpprogram ma's. 
 
-Door de Microsoft Graph API voor Azure AD-rapporten te gebruiken, u programmatische toegang tot de gegevens krijgen via een set OP RUST gebaseerde API's. U kunt deze API's vanuit een groot aantal computertalen en hulpprogramma's aanroepen.
+Met de Microsoft Graph-API voor Azure AD-rapporten kunt u programmatisch toegang krijgen tot de gegevens via een set op REST gebaseerde Api's. U kunt deze API's vanuit een groot aantal computertalen en hulpprogramma's aanroepen.
 
-In dit artikel vindt u een overzicht van de rapportage-API, inclusief manieren om er toegang toe te krijgen.
+Dit artikel bevat een overzicht van de rapportage-API, inclusief manieren om toegang te krijgen tot het rapport.
 
-Als u problemen ondervindt, raadpleegt u [hoe u ondersteuning krijgt voor Azure Active Directory.](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+Zie [ondersteuning voor Azure Active Directory krijgen](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)als u problemen ondervindt.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u toegang wilt krijgen tot de rapportage-API, met of zonder tussenkomst van de gebruiker, moet u:
+Voor toegang tot de rapportage-API, met of zonder tussen komst van de gebruiker, moet u het volgende doen:
 
-1. Rollen toewijzen (beveiligingslezer, beveiligingsbeheerder, globale beheerder)
+1. Rollen toewijzen (beveiligings lezer, beveiligings beheerder, globale beheerder)
 2. Een toepassing registreren
 3. Machtigingen verlenen
 4. Configuratie-instellingen verzamelen
 
-Zie de vereisten [voor toegang tot de Azure Active Directory-rapportage-API](howto-configure-prerequisites-for-reporting-api.md)voor gedetailleerde instructies. 
+Zie voor gedetailleerde instructies de [vereisten voor toegang tot de Azure Active Directory rapportage-API](howto-configure-prerequisites-for-reporting-api.md). 
 
-## <a name="api-endpoints"></a>API-eindpunten 
+## <a name="api-endpoints"></a>API-eind punten 
 
-Het eindpunt van de Microsoft `https://graph.microsoft.com/beta/auditLogs/directoryAudits` Graph API voor controlelogboeken is en `https://graph.microsoft.com/beta/auditLogs/signIns`het eindpunt van de Microsoft Graph API voor aanmeldingen is . Zie de referentie [van](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) de API voor controle en [api-verwijzing voor aanmelding](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn)voor meer informatie .
+Het Microsoft Graph API-eind punt voor audit `https://graph.microsoft.com/beta/auditLogs/directoryAudits` Logboeken is en het Microsoft Graph API-eind punt `https://graph.microsoft.com/beta/auditLogs/signIns`voor aanmeldingen is. Zie de naslag informatie over de [controle-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) en [aanmeldings-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn)voor meer gegevens.
 
-Daarnaast u de [API voor risicodetecties van identiteitsbescherming](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) gebruiken om programmatische toegang te krijgen tot beveiligingsdetecties met Microsoft Graph. Zie [Aan de slag met Azure Active Directory Identity Protection en Microsoft Graph](../identity-protection/graph-get-started.md)voor meer informatie. 
+Daarnaast kunt u de [API voor risico detectie van identiteits beveiliging](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) gebruiken om programmatisch toegang te krijgen tot beveiligings detecties met behulp van Microsoft Graph. Zie [aan de slag met Azure Active Directory Identity Protection en Microsoft Graph](../identity-protection/graph-get-started.md)voor meer informatie. 
   
-## <a name="apis-with-microsoft-graph-explorer"></a>API's met Microsoft Graph Explorer
+## <a name="apis-with-microsoft-graph-explorer"></a>Api's met Microsoft Graph Explorer
 
-U de [Microsoft Graph-verkenner](https://developer.microsoft.com/graph/graph-explorer) gebruiken om uw aanmeldings- en audit-API-gegevens te verifiëren. Meld u aan bij uw account met de knoppen voor aanmelding in de gebruikersinterface van Graph Explorer en stel **AuditLog.Read.All** en **Directory.Read.Alle** machtigingen voor uw tenant in zoals weergegeven.   
+U kunt de [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) gebruiken om uw aanmeld-en controle-API-gegevens te verifiëren. Meld u aan bij uw account met behulp van beide aanmeld knoppen in de gebruikers interface van Graph Explorer en stel **AuditLog. Read. all** en **Directory. Read. all** in voor uw Tenant, zoals wordt weer gegeven.   
 
 ![Graph Explorer](./media/concept-reporting-api/graph-explorer.png)
 
-![Gebruikersinterface voor machtigingen wijzigen](./media/concept-reporting-api/modify-permissions.png)
+![Machtigingen voor gebruikers interface wijzigen](./media/concept-reporting-api/modify-permissions.png)
 
-## <a name="use-certificates-to-access-the-azure-ad-reporting-api"></a>Certificaten gebruiken om toegang te krijgen tot de Azure AD-rapportage-API 
+## <a name="use-certificates-to-access-the-azure-ad-reporting-api"></a>Certificaten gebruiken voor toegang tot de Azure AD-rapportage-API 
 
-Gebruik de Azure AD Reporting API met certificaten als u van plan bent rapportagegegevens op te halen zonder tussenkomst van de gebruiker.
+Gebruik de rapportage-API van Azure AD met certificaten als u rapportage gegevens wilt ophalen zonder tussen komst van de gebruiker.
 
-Zie [Gegevens opvragen met de Azure AD-rapportage-API met certificaten](tutorial-access-api-with-certificates.md)voor gedetailleerde instructies.
+Zie [gegevens ophalen met de rapportage-API van Azure AD met certificaten](tutorial-access-api-with-certificates.md)voor gedetailleerde instructies.
 
 ## <a name="next-steps"></a>Volgende stappen
 
- * [Vereisten voor toegang tot rapportage-API](howto-configure-prerequisites-for-reporting-api.md) 
+ * [Vereisten voor toegang tot de rapportage-API](howto-configure-prerequisites-for-reporting-api.md) 
  * [Gegevens ophalen met de rapportage-API van Azure AD met certificaten](tutorial-access-api-with-certificates.md)
- * [Fouten in azure AD-rapportage-API oplossen](troubleshoot-graph-api.md)
+ * [Fouten in de rapportage-API van Azure AD oplossen](troubleshoot-graph-api.md)
 
 

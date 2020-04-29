@@ -1,6 +1,6 @@
 ---
-title: ATN2 in Azure Cosmos DB-querytaal
-description: Meer informatie over hoe de ATN2 SQL-systeemfunctie in Azure Cosmos DB de hoofdwaarde van de boograaklijn van y/x retourneert, uitgedrukt in radialen
+title: ATN2 in Azure Cosmos DB-query taal
+description: Meer informatie over hoe de ATN2-functie van SQL System in Azure Cosmos DB de principal-waarde van de boog tangens van y/x retourneert, uitgedrukt in radialen
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 696e14e75998ead04c99fab2b84fc4c742d5f54a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302658"
 ---
 # <a name="atn2-azure-cosmos-db"></a>ATN2 (Azure Cosmos DB)
- Geeft als resultaat de hoofdwaarde van de boograaklijn van y/x, uitgedrukt in radialen.  
+ Retourneert de principal-waarde van de boog tangens van y/x, uitgedrukt in radialen.  
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -28,19 +28,19 @@ ATN2(<numeric_expr>, <numeric_expr>)
 *numeric_expr*  
    Is een numerieke expressie.  
   
-## <a name="return-types"></a>Retourtypen
+## <a name="return-types"></a>Retour typen
   
-  Geeft als resultaat een numerieke expressie.  
+  Retourneert een numerieke expressie.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voorbeeld wordt de ATN2 berekend voor de opgegeven x- en y-componenten.  
+  In het volgende voor beeld wordt de ATN2 voor de opgegeven x-en y-onderdelen berekend.  
   
 ```sql
 SELECT ATN2(35.175643, 129.44) AS atn2  
 ```  
   
- Hier is het resultaat ingesteld.  
+ Dit is de resultatenset.  
   
 ```json
 [{"atn2": 1.3054517947300646}]  
@@ -48,10 +48,10 @@ SELECT ATN2(35.175643, 129.44) AS atn2
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeemfunctie maakt geen gebruik van de index.
+Deze systeem functie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Wiskundige functies Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
+- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

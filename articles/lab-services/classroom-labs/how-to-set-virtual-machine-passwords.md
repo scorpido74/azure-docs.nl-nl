@@ -1,6 +1,6 @@
 ---
-title: Wachtwoorden instellen voor VM's in Azure Lab Services | Microsoft Documenten
-description: Meer informatie over het instellen en opnieuw instellen van wachtwoorden voor virtuele machines (VM's) in klaslabs van Azure Lab Services.
+title: Wacht woorden instellen voor virtuele machines in Azure Lab Services | Microsoft Docs
+description: Meer informatie over het instellen en opnieuw instellen van wacht woorden voor virtuele machines (Vm's) in klassikale Labs van Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,103 +14,103 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
 ms.openlocfilehash: 0ff464936025a20cb6925adc7ef6eb44c2fe1f0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78933805"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>VM-pool instellen en beheren 
-In dit artikel ziet u hoe u de volgende taken uitvoert:
+In dit artikel leest u hoe u de volgende taken kunt uitvoeren:
 
-- Verhoog het aantal virtuele machines (VM's) in het lab
-- Alle VM's of geselecteerde VM's starten 
-- VM's opnieuw instellen
+- Het aantal virtuele machines (Vm's) in het lab verhogen
+- Alle Vm's of geselecteerde Vm's starten 
+- Vm's opnieuw instellen
 
-## <a name="update-the-lab-capacity"></a>De labcapaciteit bijwerken
-Als u de labcapaciteit (aantal virtuele machines in een lab) wilt vergroten of verkleinen, gaat u de volgende stappen uitvoeren:
+## <a name="update-the-lab-capacity"></a>De lab-capaciteit bijwerken
+Voer de volgende stappen uit om de lab-capaciteit (het aantal virtuele machines in een Lab) te verhogen of te verlagen:
 
-1. Selecteer op de pagina **Virtuele machinegroep** de optie ** &lt;Labcapaciteit: getalmachines&gt; **.
-2. Voer het nieuwe **aantal VM's** in dat u in het lab wilt invoeren. Dit aantal moet groter zijn dan of gelijk zijn aan het aantal gebruikers dat in het lab is geregistreerd. 
+1. Selecteer op de pagina **groep van virtuele machines** de optie **Lab &lt;-&gt; capaciteit: aantal machines**.
+2. Voer het nieuwe **aantal vm's** in dat u wilt in het lab. Dit getal moet groter zijn dan of gelijk zijn aan het aantal gebruikers dat is geregistreerd in het lab. 
 3. Selecteer vervolgens **Opslaan**. 
 
-    ![Knop Alles starten](../media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
-4. Als u de capaciteit hebt vergroot, u zien dat de VM's of VM's worden gemaakt. Als u de nieuwe virtuele machine niet in de lijst ziet, vernieuwt u de pagina. 
+    ![Knop Start alles](../media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
+4. Als u de capaciteit hebt verhoogd, kunt u zien welke virtuele machine of Vm's er worden gemaakt. Als u de nieuwe virtuele machine in de lijst niet ziet, vernieuwt u de pagina. 
 
-    ![VM wordt gemaakt](../media/how-to-set-virtual-machine-passwords/vm-being-created.png)
+    ![Virtuele machine die wordt gemaakt](../media/how-to-set-virtual-machine-passwords/vm-being-created.png)
 
-## <a name="start-vms"></a>VM's starten
+## <a name="start-vms"></a>Vm's starten
 
-### <a name="start-ot-stop-all-vms"></a>Start ot stop alle VM's
-1. Overschakelen naar de pagina **Virtuele machinepool.** 
-2. Selecteer **Alles starten** op de werkbalk. 
+### <a name="start-ot-stop-all-vms"></a>Alle Vm's stoppen
+1. Schakel over naar de pagina met de **virtuele-machine groep** . 
+2. Selecteer **start alles** op de werk balk. 
 
-    ![Knop Alles starten](../media/how-to-set-virtual-machine-passwords/start-all-vms-button.png)
-3. Nadat alle VM's zijn gestart, u alle VM's stoppen door de knop **Alles stoppen** op de werkbalk te selecteren. 
+    ![Knop Start alles](../media/how-to-set-virtual-machine-passwords/start-all-vms-button.png)
+3. Nadat alle Vm's zijn gestart, kunt u alle Vm's stoppen door de knop **Alles stoppen** te selecteren op de werk balk. 
 
-    ![Knop Alles stoppen](../media/how-to-set-virtual-machine-passwords/stop-all-vms-button.png)
+    ![Knop stoppen](../media/how-to-set-virtual-machine-passwords/stop-all-vms-button.png)
 
-### <a name="start-selected-vms"></a>Geselecteerde VM's starten
-Er zijn twee manieren om geselecteerde VM's (een of meer) te starten. De eerste manier is om de VM of VM's in de lijst te selecteren en vervolgens **Start** op de werkbalk te selecteren. 
+### <a name="start-selected-vms"></a>Geselecteerde Vm's starten
+Er zijn twee manieren om geselecteerde Vm's te starten (een of meer). De eerste manier is om de virtuele machine of Vm's te selecteren in de lijst en vervolgens **Start** te selecteren op de werk balk. 
 
-De tweede manier is om een of meer VM's in de lijst te selecteren en de knop in de **kolom Status** in te schakelen. 
+De tweede manier is om een of meer virtuele machines te selecteren in de lijst en te scha kelen tussen de knop in de kolom **status** . 
 
-![Geselecteerde VM's starten](../media/how-to-set-virtual-machine-passwords/start-selected-vms.png)
+![Geselecteerde Vm's starten](../media/how-to-set-virtual-machine-passwords/start-selected-vms.png)
 
-U ook een of meer VM's stoppen door de knop in de **kolom Status** te schakelen of **Stoppen** op de werkbalk te selecteren. 
+Op dezelfde manier kunt u een of meer Vm's stoppen door te klikken op de knop in de kolom **status** of **Stop** te selecteren op de werk balk. 
 
 > [!NOTE]
-> Wanneer een docent een student-vm inschakelt, wordt het quotum voor de student niet beïnvloed. Quota voor een gebruiker geeft het aantal laburen op dat beschikbaar is voor de gebruiker buiten de geplande lestijd. Zie [Quota voor gebruikers instellen voor](how-to-configure-student-usage.md?#set-quotas-for-users)meer informatie over quota.
+> Wanneer een docent een student-VM inschakelt, wordt het quotum voor de student niet beïnvloed. Quota voor een gebruiker Hiermee geeft u het aantal Lab-uren op dat voor de gebruiker buiten de geplande tijd beschikbaar moet zijn. Zie [quota's voor gebruikers instellen](how-to-configure-student-usage.md?#set-quotas-for-users)voor meer informatie over quota's.
 
-## <a name="reset-vms"></a>VM's opnieuw instellen
-Als u een of meer VM's opnieuw wilt instellen, selecteert u deze in de lijst en selecteert u **Opnieuw instellen** op de werkbalk. 
+## <a name="reset-vms"></a>Vm's opnieuw instellen
+Als u een of meer Vm's opnieuw wilt instellen, selecteert u deze in de lijst en selecteert u vervolgens **opnieuw instellen** op de werk balk. 
 
-![Geselecteerde VM's opnieuw instellen](../media/how-to-set-virtual-machine-passwords/reset-vm-button.png)
+![Geselecteerde Vm's opnieuw instellen](../media/how-to-set-virtual-machine-passwords/reset-vm-button.png)
 
-Selecteer Opnieuw instellen in het dialoogvenster **Virtuele machine(s)** **opnieuw instellen**. 
+Selecteer **opnieuw instellen**in het dialoog venster **virtuele machine (s) opnieuw instellen** . 
 
-![Dialoogvenster VM opnieuw instellen](../media/how-to-set-virtual-machine-passwords/reset-vms-dialog.png)
+![Het dialoog venster VM opnieuw instellen](../media/how-to-set-virtual-machine-passwords/reset-vms-dialog.png)
 
 
 
-## <a name="set-password-for-vms"></a>Wachtwoord instellen voor VM's
-Een labeigenaar (docent) kan het wachtwoord voor VM's instellen/opnieuw instellen op het moment dat het lab wordt gemaakt (wizard voor het maken van het lab) of nadat het lab op de **sjabloonpagina is** gemaakt. 
+## <a name="set-password-for-vms"></a>Wacht woord instellen voor Vm's
+Een Lab-eigenaar (docent) kan het wacht woord voor Vm's instellen of opnieuw instellen op het moment van het maken van de Lab (wizard Lab maken) of nadat u het Lab hebt gemaakt op de **sjabloon** pagina. 
 
-### <a name="set-password-at-the-time-of-lab-creation"></a>Wachtwoord instellen op het moment van het maken van het lab
-Een labeigenaar (docent) kan een wachtwoord instellen voor VM's in het lab op de pagina **Virtuele machinereferenties** van de wizard Voor het maken van het lab.
+### <a name="set-password-at-the-time-of-lab-creation"></a>Wacht woord instellen op het moment dat het lab wordt gemaakt
+Een Lab-eigenaar (docent) kan een wacht woord voor virtuele machines in het lab instellen op de pagina referenties van de **virtuele machine** van de wizard voor het maken van het lab.
 
-![Nieuw laboratoriumvenster](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
+![Nieuw Lab-venster](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
 
-Door het zelfde **wachtwoord gebruiken voor alle virtuele machines** op deze pagina in te schakelen/uit te schakelen, kan een docent ervoor kiezen om hetzelfde wachtwoord te gebruiken voor alle VM's in het lab of studenten in staat te stellen wachtwoorden in te stellen voor hun VM's. Standaard is deze instelling ingeschakeld voor alle windows- en Linux-besturingssysteemafbeeldingen, behalve Ubuntu. Wanneer deze instelling is uitgeschakeld, wordt studenten gevraagd een wachtwoord in te stellen wanneer ze voor de eerste keer verbinding proberen te maken met de vm. 
+Door het **gebruik van hetzelfde wacht woord voor alle virtuele machines** op deze pagina in-of uit te scha kelen, kan een docent ervoor kiezen hetzelfde wacht woord te gebruiken voor alle vm's in het lab of dat studenten wacht woorden kunnen instellen voor hun vm's. Deze instelling is standaard ingeschakeld voor alle installatie kopieën van het Windows-en Linux-besturings systeem, met uitzonde ring van Ubuntu. Als deze instelling is uitgeschakeld, worden studenten gevraagd om een wacht woord in te stellen wanneer ze voor de eerste keer verbinding proberen te maken met de virtuele machine. 
 
-### <a name="reset-password-later"></a>Wachtwoord later opnieuw instellen
+### <a name="reset-password-later"></a>Wacht woord later opnieuw instellen
 
-1. Selecteer op de **sjabloonpagina** van het lab het **wachtwoord opnieuw instellen** op de werkbalk. 
-1. Voer in het dialoogvenster **Wachtwoord opnieuw instellen** een wachtwoord in en selecteer Wachtwoord opnieuw **instellen**.
+1. Selecteer op de pagina **sjabloon** van het lab de optie **wacht woord opnieuw instellen** op de werk balk. 
+1. Voer in het dialoog venster **wacht woord opnieuw instellen** een wacht woord in en selecteer **wacht woord opnieuw instellen**.
     
-    ![Dialoogvenster Wachtwoord instellen](../media/how-to-set-virtual-machine-passwords/set-password.png)
+    ![Het dialoog venster wacht woord instellen](../media/how-to-set-virtual-machine-passwords/set-password.png)
 
-## <a name="connect-to-student-vms"></a>Verbinding maken met vm's van studenten
-De maker van het lab (instructeur/professor) kan verbinding maken met een student-VM als aan de volgende voorwaarden is voldaan: 
+## <a name="connect-to-student-vms"></a>Verbinding maken met Vm's van studenten
+De Lab Creator (docent/docent) kan verbinding maken met een student-VM als aan de volgende voor waarden wordt voldaan: 
 
-- De optie **Hetzelfde wachtwoord gebruiken voor alle virtuele machines** is geselecteerd bij het maken van het lab
-- De VM wordt uitgevoerd 
+- De optie **hetzelfde wacht woord voor alle virtuele machines gebruiken** is geselecteerd tijdens het maken van het lab
+- De virtuele machine wordt uitgevoerd 
 
- Als u verbinding wilt maken met de student-VM, houdt u de muis op de VM in de lijst en selecteert u de computerknop.  
+ Als u verbinding wilt maken met de student-VM, houdt u de muis aanwijzer op de virtuele machine in de lijst en selecteert u de knop computer.  
 
-![Knop Verbinding maken met de VM-student](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
+![Knop verbinding maken met de VM van student](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
 
 > [!NOTE]
-> Wanneer de professor de VM start en ermee verbinding maakt, blijft het studentenquotum onaangetast. 
+> Wanneer de docent de virtuele machine start en er verbinding mee maakt, heeft dit geen invloed op het quotum van de student. 
 
 ## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>Lijst met virtuele machines exporteren naar een CSV-bestand
 
-1. Overschakelen naar het tabblad **Virtuele machinepool.**
-2. Selecteer **...** (ellips) op de werkbalk en selecteer **CSV exporteren**. 
+1. Schakel over naar het tabblad van de **virtuele-machine groep** .
+2. Selecteer **...** (ellips weglatings tekens) op de werk balk en selecteer vervolgens **CSV exporteren**. 
 
-    ![Lijst van virtuele machines exporteren](../media/how-to-export-users-virtual-machines-csv/virtual-machines-export-csv.png)
+    ![Lijst met virtuele machines exporteren](../media/how-to-export-users-virtual-machines-csv/virtual-machines-export-csv.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het volgende artikel: [Studentengebruik configureren](how-to-configure-student-usage.md)voor meer informatie over andere opties voor het gebruik van studenten die u (als eigenaar van een lab) configureren.
+Zie het volgende artikel: het [gebruik van studenten configureren](how-to-configure-student-usage.md)voor meer informatie over andere gebruiks opties voor studenten die u (als een Lab-eigenaar) kunt configureren.
 
-Zie Wachtwoord instellen of opnieuw instellen voor [virtuele machines in klaslabs (studenten)](how-to-set-virtual-machine-passwords-student.md)voor meer informatie over hoe studenten wachtwoorden voor hun VM's kunnen resetten.
+Zie [wacht woord instellen of opnieuw instellen voor virtuele machines in klassikale Labs (studenten)](how-to-set-virtual-machine-passwords-student.md)voor meer informatie over hoe studenten wacht woorden opnieuw kunnen instellen voor hun vm's.

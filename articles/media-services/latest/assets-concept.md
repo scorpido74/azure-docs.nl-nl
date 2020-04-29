@@ -1,7 +1,7 @@
 ---
-title: Assets
+title: Activa
 titleSuffix: Azure Media Services
-description: Meer informatie over wat assets zijn en hoe ze worden gebruikt door Azure Media Services.
+description: Meer informatie over wat assets zijn en hoe deze worden gebruikt door Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,35 +14,35 @@ ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 9b04941a5799955097fbd54ad9bdf50eccb87541
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79087909"
 ---
-# <a name="assets-in-azure-media-services-v3"></a>Assets in Azure Media Services v3
+# <a name="assets-in-azure-media-services-v3"></a>Activa in Azure Media Services v3
 
-In Azure Media Services is een [asset](https://docs.microsoft.com/rest/api/media/assets) een kernconcept. Het is waar je media invoert (bijvoorbeeld via upload of live inname), outputmedia (vanuit een joboutput) en media publiceert van (voor streaming). 
+In Azure Media Services is een [activum](https://docs.microsoft.com/rest/api/media/assets) een kern concept. U voert media in (bijvoorbeeld via upload-of live-opname), uitvoer media (van een taak uitvoer) en het publiceren van media van (voor streaming). 
 
-Een asset wordt toegewezen aan een blobcontainer in het [Azure Storage-account](storage-account-concept.md) en de bestanden in het actief worden opgeslagen als blokblobs in die container. Elementen bevatten informatie over digitale bestanden die zijn opgeslagen in Azure Storage (waaronder video, audio, afbeeldingen, miniatuurverzamelingen, teksttracks en bestanden met ondertiteling).
+Een Asset wordt toegewezen aan een BLOB-container in het [Azure Storage-account](storage-account-concept.md) en de bestanden in de Asset worden opgeslagen als blok-blobs in die container. Assets bevatten informatie over digitale bestanden die zijn opgeslagen in Azure Storage (inclusief video, audio, afbeeldingen, miniatuur verzamelingen, tekst sporen en ondertitelings bestanden).
 
-Media Services ondersteunt Blob-lagen wanneer het account GPv2-opslag (GPv2) gebruikt voor Algemene doeleinden. Met GPv2 u bestanden verplaatsen naar [Cool- of Archive-opslag.](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) **Archiefopslag** is geschikt voor het archiveren van bronbestanden wanneer deze niet meer nodig zijn (bijvoorbeeld nadat ze zijn gecodeerd).
+Media Services ondersteunt BLOB-lagen wanneer het account gebruik maakt van de GPv2-opslag (General-Purpose v2). Met GPv2 kunt u bestanden verplaatsen naar [koele of archief opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers). **Archief** opslag is geschikt voor het archiveren van bron bestanden wanneer deze niet meer nodig zijn (bijvoorbeeld nadat deze zijn gecodeerd).
 
-De **Archive** archiefopslaglaag wordt alleen aanbevolen voor zeer grote bronbestanden die al zijn gecodeerd en de taakuitvoer voor codering is in een uitvoerblobcontainer geplaatst. De blobs in de uitvoercontainer die u aan een actief wilt koppelen en gebruiken om uw inhoud te streamen of te analyseren, moeten in een **opslaglaag hot** of **cool** bestaan.
+De opslaglaag van het **Archief** wordt alleen aanbevolen voor zeer grote bron bestanden die al zijn gecodeerd en de uitvoer van de coderings taak in een uitvoer BLOB-container is geplaatst. De blobs in de uitvoer container die u wilt koppelen aan een activum en gebruiken om uw inhoud te streamen of te analyseren, moeten zich in een **warme** of **koud** opslaglaag bevinden.
 
 ## <a name="naming"></a>Naamgeving 
 
-### <a name="assets"></a>Assets
+### <a name="assets"></a>Activa
 
-De namen van activa moeten uniek zijn. Media Services v3-resourcenamen (bijvoorbeeld Assets, Jobs, Transforms) zijn onderhevig aan naamgevingsbeperkingen voor Azure Resource Manager. Zie [Naamgevingsconventies voor](media-services-apis-overview.md#naming-conventions)meer informatie.
+De namen van het activum moeten uniek zijn. Media Services v3-resource namen (bijvoorbeeld assets, taken, trans formaties) zijn onderhevig aan Azure Resource Manager naamgevings beperkingen. Zie [naamgevings conventies](media-services-apis-overview.md#naming-conventions)voor meer informatie.
 
 ### <a name="blobs"></a>Blobs
 
-De namen van bestanden/blobs binnen een asset moeten zowel de [vereisten voor blobnamen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) als de [NTFS-naamvereisten](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)volgen. De reden voor deze vereisten is dat de bestanden kunnen worden gekopieerd van blob-opslag naar een lokale NTFS-schijf voor verwerking.
+De namen van bestanden/blobs in een Asset moeten de [vereisten voor de BLOB-naam](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) en de [NTFS-naam](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)volgen. De reden voor deze vereisten is dat de bestanden kunnen worden gekopieerd van Blob Storage naar een lokale NTFS-schijf voor verwerking.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Activa beheren in Media Services](manage-asset-concept.md)
+[Assets in Media Services beheren](manage-asset-concept.md)
 
 ## <a name="see-also"></a>Zie ook
 

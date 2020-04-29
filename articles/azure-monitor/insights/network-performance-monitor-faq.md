@@ -1,116 +1,116 @@
 ---
-title: Veelgestelde vragen - Oplossing voor netwerkprestatiemonitor in Azure | Microsoft Documenten
-description: In dit artikel worden de veelgestelde vragen over netwerkprestatiemeter in Azure vastgelegd. Network Performance Monitor (NPM) helpt u de prestaties van uw netwerken in bijna realtime te monitoren en knelpunten in netwerkprestaties op te sporen en te lokaliseren.
+title: Veelgestelde vragen-Netwerkprestatiemeter oplossing in azure | Microsoft Docs
+description: In dit artikel worden de veelgestelde vragen over Netwerkprestatiemeter in azure vastgelegd. Met Netwerkprestatiemeter (NPM) kunt u de prestaties van uw netwerken nagenoeg in realtime bewaken en netwerk prestatie knelpunten detecteren en vinden.
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
 ms.openlocfilehash: 443e4b44633e949dd9bd55df1ec7d18ca93d6e04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79096222"
 ---
-# <a name="network-performance-monitor-solution-faq"></a>Veelgestelde vragen over netwerkprestatiemonitoroplossing
+# <a name="network-performance-monitor-solution-faq"></a>Veelgestelde vragen over Netwerkprestatiemeter oplossingen
 
-![Symbool netwerkprestatiemonitor](media/network-performance-monitor-faq/npm-symbol.png)
+![Netwerkprestatiemeter-symbool](media/network-performance-monitor-faq/npm-symbol.png)
 
-In dit artikel worden de veelgestelde vragen (veelgestelde vragen) over Network Performance Monitor (NPM) in Azure
+In dit artikel worden de veelgestelde vragen over Netwerkprestatiemeter (NPM) in azure vastgelegd
 
-[Network Performance Monitor](/azure/networking/network-monitoring-overview) is een cloudgebaseerde [hybride netwerkbewakingsoplossing](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) waarmee u de netwerkprestaties tussen verschillende punten in uw netwerkinfrastructuur bewaken. Het helpt u ook de netwerkconnectiviteit met [service- en toepassingseindpunten](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) te controleren en [de prestaties van Azure ExpressRoute te controleren.](../../azure-monitor/insights/network-performance-monitor-expressroute.md) 
+[Netwerkprestatiemeter](/azure/networking/network-monitoring-overview) is een op de cloud gebaseerde oplossing voor [hybride netwerk bewaking](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) waarmee u de netwerk prestaties tussen verschillende punten in uw netwerk infrastructuur kunt bewaken. Daarnaast kunt u hiermee de netwerk connectiviteit van [service-en toepassings eindpunten](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) bewaken en [de prestaties van Azure ExpressRoute bewaken](../../azure-monitor/insights/network-performance-monitor-expressroute.md). 
 
-Netwerkprestatiemonitor detecteert netwerkproblemen zoals traffic blackholing, routeringsfouten en problemen die conventionele netwerkbewakingsmethoden niet kunnen detecteren. De oplossing genereert waarschuwingen en waarschuwt u als een drempelwaarde voor een netwerkverbinding wordt overschreden. Bovendien worden problemen met de netwerkprestaties tijdig gedetecteerd en wordt de oorzaak van het probleem op een bepaald netwerksegment of apparaat opgespoord. 
+Netwerkprestatiemeter detecteert netwerk problemen zoals verkeer blackholing, routerings fouten en problemen die niet kunnen worden gedetecteerd door conventionele methoden voor netwerk bewaking. De oplossing genereert waarschuwingen en waarschuwt u als een drempelwaarde voor een netwerkverbinding wordt overschreden. Bovendien worden problemen met de netwerkprestaties tijdig gedetecteerd en wordt de oorzaak van het probleem op een bepaald netwerksegment of apparaat opgespoord. 
 
-Meer informatie over de verschillende mogelijkheden ondersteund door [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) is online beschikbaar.
+Meer informatie over de verschillende mogelijkheden die door [Netwerkprestatiemeter](https://docs.microsoft.com/azure/networking/network-monitoring-overview) worden ondersteund, is online beschikbaar.
 
 ## <a name="set-up-and-configure-agents"></a>Agents instellen en configureren
 
-### <a name="what-are-the-platform-requirements-for-the-nodes-to-be-used-for-monitoring-by-npm"></a>Wat zijn de platformvereisten voor de knooppunten die moeten worden gebruikt voor monitoring door NPM?
-Hieronder staan de platformvereisten voor de verschillende mogelijkheden van NPM:
+### <a name="what-are-the-platform-requirements-for-the-nodes-to-be-used-for-monitoring-by-npm"></a>Wat zijn de platform vereisten voor de knoop punten die door NPM worden gebruikt voor bewaking?
+Hieronder vindt u de platform vereisten voor de verschillende mogelijkheden van NPM:
 
-- De mogelijkheden voor prestatiemonitor en serviceconnectiviteitsmonitor van NPM ondersteunen zowel Windows-server als Windows-desktops/client-besturingssystemen. Ondersteunde Windows server OS-versies zijn 2008 SP1 of hoger. Ondersteunde Windows-desktops/clientversies windows 10, Windows 8.1, Windows 8 en Windows 7. 
-- De ExpressRoute Monitor-mogelijkheid van NPM ondersteunt alleen het Windows-serverbesturingssysteem (2008 SP1 of hoger).
+- De prestatie meter van de NPM en de functies van de service connectiviteits monitor ondersteunen zowel Windows Server-als Windows-Desk tops/-client besturingssystemen. Ondersteunde versies van Windows Server-besturings systemen zijn 2008 SP1 of hoger. Ondersteunde versies van Windows-Desk tops/-clients zijn Windows 10, Windows 8,1, Windows 8 en Windows 7. 
+- De ExpressRoute-monitor functie van NPM ondersteunt alleen het besturings systeem Windows Server (2008 SP1 of hoger).
 
-### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Kan ik Linux-machines gebruiken als monitoringnodes in NPM?
-De mogelijkheid om netwerken te monitoren met behulp van Linux-gebaseerde knooppunten is momenteel in preview. Neem contact op met je Accountmanager om meer te weten te komen. Linux-agents bieden alleen bewakingsmogelijkheden voor de prestatiesmonitorvan NPM en zijn niet beschikbaar voor de mogelijkheden serviceconnectiviteitsmonitor en ExpressRoute-monitor
+### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Kan ik Linux-machines gebruiken als bewakings knooppunten in NPM?
+De mogelijkheid om netwerken te bewaken met behulp van Linux-knoop punten is momenteel beschikbaar als preview-versie. Neem contact op met uw account manager voor meer informatie. Linux-agents bieden alleen bewakings mogelijkheden voor de prestaties van de prestatie meter van de NPM en zijn niet beschikbaar voor de monitor mogelijkheden voor service connectiviteit en ExpressRoute
 
-### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Wat zijn de groottevereisten van de knooppunten die moeten worden gebruikt voor monitoring door NPM?
-Voor het uitvoeren van de NPM-oplossing op knooppuntVM's om netwerken te controleren, moeten de knooppunten ten minste 500 MB geheugen en één kern hebben. U hoeft geen afzonderlijke knooppunten te gebruiken voor het uitvoeren van NPM. De oplossing kan worden uitgevoerd op knooppunten waarop andere workloads worden uitgevoerd. De oplossing heeft de mogelijkheid om het bewakingsproces te stoppen als het meer dan 5% CPU gebruikt.
+### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Wat zijn de grootte vereisten van de knoop punten die moeten worden gebruikt voor bewaking door NPM?
+Voor het uitvoeren van de NPM-oplossing op knoop punt-Vm's voor het bewaken van netwerken, moeten de knoop punten ten minste 500 MB geheugen en één kern hebben. U hoeft geen afzonderlijke knoop punten te gebruiken voor het uitvoeren van NPM. De oplossing kan worden uitgevoerd op knoop punten waarop andere workloads worden uitgevoerd. De oplossing biedt de mogelijkheid om het bewakings proces te stoppen als er meer dan 5% CPU wordt gebruikt.
 
-### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Moet ik mijn knooppunten verbinden als Direct-agent of via System Center Operations Manager om NPM te gebruiken?
-Zowel de prestatiemonitor als de serviceconnectiviteitsmonitor ondersteunen knooppunten [die zijn verbonden als Direct Agents](../../azure-monitor/platform/agent-windows.md) en zijn verbonden via Operations [Manager.](../../azure-monitor/platform/om-agents.md)
+### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Als u NPM wilt gebruiken, moet ik mijn knoop punten verbinden als een directe agent of via System Center Operations Manager?
+Zowel de prestatie meter als de service connectiviteits monitor biedt ondersteuning voor knoop punten [die zijn verbonden als directe agents](../../azure-monitor/platform/agent-windows.md) en [verbonden via Operations Manager](../../azure-monitor/platform/om-agents.md).
 
-Voor de mogelijkheid van ExpressRoute Monitor moeten de Azure-knooppunten alleen als direct agents worden verbonden. Azure-knooppunten die zijn verbonden via Operations Manager worden niet ondersteund. Voor on-premises knooppunten worden de knooppunten die zijn verbonden als Direct Agents en via Operations Manager ondersteund voor het bewaken van een ExpressRoute-circuit.
+Voor de functionaliteit van de ExpressRoute-monitor moeten de Azure-knoop punten alleen als directe agents zijn verbonden. Azure-knoop punten, die zijn verbonden via Operations Manager worden niet ondersteund. Voor on-premises knoop punten worden de knoop punten die zijn verbonden als directe agents en via Operations Manager ondersteund voor het bewaken van een ExpressRoute-circuit.
 
-### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Welk protocol tussen TCP en ICMP moet worden gekozen voor monitoring?
-Als u uw netwerk controleert met windows-serverknooppunten, raden we u aan TCP als bewakingsprotocol te gebruiken, omdat dit een betere nauwkeurigheid biedt. 
+### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Welk protocol onder TCP en ICMP moet worden gekozen voor bewaking?
+Als u uw netwerk bewaakt met behulp van knoop punten op basis van Windows Server, raden we u aan TCP als controle protocol te gebruiken, omdat dit een betere nauw keurigheid biedt. 
 
-ICMP wordt aanbevolen voor windows-desktops/client-gebaseerde knooppunten voor besturingssystemen. Dit platform staat niet toe dat TCP-gegevens worden verzonden via raw-sockets, die NPM gebruikt om netwerktopologie te ontdekken.
+ICMP wordt aanbevolen voor Windows-Desk tops/client besturingssystemen op basis van het besturings systeem. Dit platform staat niet toe dat TCP-gegevens worden verzonden via onbewerkte sockets, die door NPM worden gebruikt om de netwerk topologie te detecteren.
 
-U meer details over de relatieve voordelen van elk protocol [hier](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol).
+U kunt [hier](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol)meer informatie vinden over de relatieve voor delen van elk protocol.
 
-### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Hoe kan ik een knooppunt configureren om monitoring te ondersteunen met behulp van tcp-protocol?
-Ga als volgt te werk om de bewaking te ondersteunen met behulp van het TCP-protocol: 
-* Controleer of het knooppuntplatform Windows Server is (2008 SP1 of hoger).
-* Voer [EnableRules.ps1](https://aka.ms/npmpowershellscript) Powershell-script uit op het knooppunt. Zie [instructies](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) voor meer informatie.
+### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Hoe kan ik een knoop punt configureren voor de ondersteuning van bewaking met behulp van het TCP-protocol?
+Voor het knoop punt voor de ondersteuning van bewaking met het TCP-protocol: 
+* Zorg ervoor dat het knoop punt platform Windows Server is (2008 SP1 of hoger).
+* Voer het Power shell-script [EnableRules. ps1](https://aka.ms/npmpowershellscript) uit op het knoop punt. Zie de [instructies](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) voor meer informatie.
 
 
-### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Hoe kan ik de TCP-poort wijzigen die door NPM wordt gebruikt voor monitoring?
-U de TCP-poort die door NPM wordt gebruikt voor controle wijzigen door het [script EnableRules.ps1](https://aka.ms/npmpowershellscript) uit te voeren. U moet het poortnummer invoeren dat u als parameter wilt gebruiken. Als u bijvoorbeeld TCP op poort 8060 wilt inschakelen, voert u . `EnableRules.ps1 8060` Zorg ervoor dat u dezelfde TCP-poort gebruikt op alle knooppunten die worden gebruikt voor bewaking.
+### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Hoe kan ik de TCP-poort die wordt gebruikt door NPM wijzigen voor bewaking?
+U kunt de TCP-poort die door NPM wordt gebruikt voor bewaking wijzigen door het script [EnableRules. ps1](https://aka.ms/npmpowershellscript) uit te voeren. U moet het poort nummer invoeren dat u wilt gebruiken als para meter. Als u bijvoorbeeld TCP wilt inschakelen op poort 8060, voert `EnableRules.ps1 8060`u uit. Zorg ervoor dat u dezelfde TCP-poort gebruikt op alle knoop punten die worden gebruikt voor de bewaking.
 
-Het script configureert alleen Windows Firewall lokaal. Als u nsg-regels (Network Security Group) hebt, moet u ervoor zorgen dat het verkeer dat is bestemd voor de TCP-poort die door NPM wordt gebruikt, wordt toegestaan.
+Het script configureert alleen Windows Firewall lokaal. Als u een netwerk firewall of NSG-regels (netwerk beveiligings groep) hebt, moet u ervoor zorgen dat het verkeer dat bestemd is voor de TCP-poort die wordt gebruikt door NPM wordt toegestaan.
 
-### <a name="how-many-agents-should-i-use"></a>Hoeveel agenten moet ik gebruiken?
-U moet ten minste één agent gebruiken voor elk subnet dat u wilt controleren.
+### <a name="how-many-agents-should-i-use"></a>Hoeveel agents moet ik gebruiken?
+U moet ten minste één agent gebruiken voor elk subnet dat u wilt bewaken.
 
-### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Wat is het maximum aantal agenten die ik kan gebruiken of ik zie fout ".... u uw configuratielimiet hebt bereikt"?
-NPM beperkt het aantal IP's tot 5000 IP's per werkruimte. Als een knooppunt zowel IPv4- als IPv6-adressen heeft, telt dit als 2 IP's voor dat knooppunt. Vandaar dat deze limiet van 5000 IP's de bovengrens voor het aantal agenten zou bepalen. U de inactieve agents verwijderen uit het tabblad Knooppunten in NPM >> Configureren. NPM onderhoudt ook de geschiedenis van alle IP's die ooit zijn toegewezen aan de VM hosting van de agent en elk wordt geteld als aparte IP bij te dragen aan die bovengrens van 5000 IP's. Als u IP's voor uw werkruimte wilt vrijmaken, u de pagina Knooppunten gebruiken om de IP's te verwijderen die niet in gebruik zijn.
+### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Wat is het maximum aantal agents dat ik kan gebruiken of zie fout '... ' u hebt de configuratie limiet bereikt "?
+NPM beperkt het aantal Ip's tot 5000 Ip's per werk ruimte. Als een knoop punt zowel IPv4-als IPv6-adressen heeft, worden de twee Ip's voor dat knoop punt geteld. Deze limiet van 5000 Ip's zou daarom de bovengrens bepalen van het aantal agents. U kunt het tabblad inactieve agents verwijderen van knoop punten in NPM >> configureren. NPM houdt ook geschiedenis bij van alle IP-adressen die ooit zijn toegewezen aan de virtuele machine die als host fungeert voor de agent en die elke worden beschouwd als een afzonderlijk IP-adres dat bijdragen aan de maximum limiet van 5000 Ip's. Om IP-adressen voor uw werk ruimte vrij te maken, kunt u de pagina knoop punten gebruiken om de IP-adressen te verwijderen die niet in gebruik zijn.
 
 ## <a name="monitoring"></a>Bewaking
 
-### <a name="how-are-loss-and-latency-calculated"></a>Hoe worden verlies en latentie berekend
-Bronagents verzenden tcp syn-aanvragen (als TCP wordt gekozen als het protocol voor monitoring) of ICMP ECHO-aanvragen (als ICMP wordt gekozen als het protocol voor monitoring) op regelmatige tijdstippen naar het ip-adres van de bestemming om ervoor te zorgen dat alle paden tussen het IP-adres van de bronbestemming combinatie worden gedekt. Het percentage ontvangen pakketten en de retourtijd van pakketten wordt gemeten om het verlies en de latentie van elk pad te berekenen. Deze gegevens worden samengevoegd over het polling-interval en over alle paden om de geaggregeerde waarden van verlies en latentie voor de IP-combinatie voor het specifieke polling-interval te krijgen.
+### <a name="how-are-loss-and-latency-calculated"></a>Hoe worden verlies en latentie berekend?
+Bron agenten verzenden TCP-SYN-aanvragen (als TCP is gekozen als protocol voor bewaking) of ICMP-ECHO aanvragen (als ICMP is gekozen als het protocol voor bewaking) tot doel-IP met regel matige tussen pozen om ervoor te zorgen dat alle paden tussen de IP-combi natie van de bron doel worden gedekt. Het percentage ontvangen pakketten en de round-trip tijd van het pakket wordt gemeten om het verlies en de latentie van elk pad te berekenen. Deze gegevens worden geaggregeerd over het polling-interval en over alle paden om de geaggregeerde waarden van verlies en latentie voor de IP-combi natie voor het betreffende polling-interval op te halen.
 
-### <a name="with-what-frequency-does-the-source-agent-send-packets-to-the-destination-for-monitoring"></a>Met welke frequentie stuurt de bronagent pakketten naar de bestemming voor controle?
-Voor de mogelijkheden Prestatiesmonitor en ExpressRoute Monitor verzendt de bron pakketten om de 5 seconden en registreert de netwerkmetingen. Deze gegevens worden samengevoegd over een polling-interval van 3 minuten om de gemiddelde en piekwaarden van verlies en latentie te berekenen. Voor de mogelijkheid van serviceconnectiviteitsmonitor wordt de frequentie van het verzenden van de pakketten voor netwerkmeting bepaald door de frequentie die door de gebruiker is ingevoerd voor de specifieke test tijdens het configureren van de test.
+### <a name="with-what-frequency-does-the-source-agent-send-packets-to-the-destination-for-monitoring"></a>Met welke frequentie verzendt de bron agent pakketten naar de bestemming voor bewaking?
+Voor de monitor mogelijkheden prestatie meter en ExpressRoute wordt de bron pakketten elke vijf seconden verzonden en worden de netwerk metingen vastgelegd. Deze gegevens worden samengevoegd over een polling-interval van drie minuten om de gemiddelde en piek waarden van verlies en latentie te berekenen. Voor de functionaliteit van de service connectiviteits monitor wordt de frequentie van het verzenden van de pakketten voor netwerk meting bepaald door de frequentie die de gebruiker voor de specifieke test heeft opgegeven tijdens het configureren van de test.
 
-### <a name="how-many-packets-are-sent-for-monitoring"></a>Hoeveel pakketten worden verzonden voor controle?
-Het aantal pakketten dat door de bronagent naar bestemming in een polling wordt verzonden, is adaptief en wordt bepaald door ons eigen algoritme, dat voor verschillende netwerktopologieën anders kan zijn. Meer het aantal netwerkpaden tussen de IP-combinatie bronbestemming, meer is het aantal pakketten dat wordt verzonden. Het systeem zorgt ervoor dat alle paden tussen de IP-combinatie bron-bestemming worden bestreken.
+### <a name="how-many-packets-are-sent-for-monitoring"></a>Hoeveel pakketten worden er voor bewaking verzonden?
+Het aantal pakketten dat door de bron agent naar het doel in een polling is verzonden, is adaptief en wordt bepaald door ons eigen algoritme, dat kan verschillen voor verschillende netwerk topologieën. Meer het aantal netwerk paden tussen de combi natie van de bron doel-IP, meer is het aantal pakketten dat wordt verzonden. Het systeem zorgt ervoor dat alle paden tussen de combi natie van de bron-IP-doel combinatie worden gedekt.
 
-### <a name="how-does-npm-discover-network-topology-between-source-and-destination"></a>Hoe ontdekt NPM netwerktopologie tussen bron en bestemming?
-NPM maakt gebruik van een eigen algoritme op basis van Traceroute om alle paden en hop tussen bron en bestemming te ontdekken.
+### <a name="how-does-npm-discover-network-topology-between-source-and-destination"></a>Hoe detecteert NPM de netwerk topologie tussen de bron en de bestemming?
+NPM maakt gebruik van een eigen algoritme op basis van traceroute om alle paden en hops tussen de bron en de bestemming te detecteren.
 
-### <a name="does-npm-provide-routing-and-switching-level-info"></a>Biedt NPM route- en schakelniveaugegevens 
-Hoewel NPM alle mogelijke routes tussen de bronagent en de bestemming kan detecteren, biedt het geen inzicht in welke route is genomen door de pakketten die door uw specifieke workloads zijn verzonden. De oplossing kan u helpen bij het identificeren van de paden en onderliggende netwerkhops, die meer latentie toevoegen dan u had verwacht.
+### <a name="does-npm-provide-routing-and-switching-level-info"></a>Biedt NPM informatie over route ring en scha kelen 
+Hoewel NPM alle mogelijke routes tussen de bron agent en de bestemming detecteert, biedt deze geen inzicht in welke route werd gebruikt door de pakketten die worden verzonden door uw specifieke workloads. De oplossing kan u helpen de paden en onderliggende netwerk-hops te identificeren, waardoor er meer latentie wordt toegevoegd dan u verwacht.
 
-### <a name="why-are-some-of-the-paths-unhealthy"></a>Waarom zijn sommige paden ongezond?
-Er kunnen verschillende netwerkpaden bestaan tussen de bron- en doel-IP's en elk pad kan een andere waarde van verlies en latentie hebben. NPM markeert deze paden als ongezond (aangeduid met rode kleur) waarvoor de waarden van verlies en/of latentie groter zijn dan de respectievelijke drempelwaarde die in de bewakingsconfiguratie is ingesteld.
+### <a name="why-are-some-of-the-paths-unhealthy"></a>Waarom zijn sommige paden beschadigd?
+Verschillende netwerk paden kunnen bestaan tussen de bron-en doel-IP-adressen en elk pad kan een andere waarde voor verlies en latentie hebben. NPM markeert deze paden als slecht (aangeduid met een rode kleur) waarvoor de waarden van verlies en/of latentie groter zijn dan de respectieve drempel waarde die is ingesteld in de controle configuratie.
 
-### <a name="what-does-a-hop-in-red-color-signify-in-the-network-topology-map"></a>Wat betekent een hop in rode kleur in de netwerktopologiekaart?
-Als een hop rood is, betekent dit dat deze deel uitmaakt van ten minste één ongezond pad. NPM markeert alleen de paden als ongezond, het scheidt de status van elk pad niet. Om de lastige hop te identificeren, u de hop-by-hop latency bekijken en degenen die meer toevoegen dan verwachte latentie scheiden.
+### <a name="what-does-a-hop-in-red-color-signify-in-the-network-topology-map"></a>Wat geeft een sprong in kleur rood aan in de netwerk topologie kaart?
+Als een hop rood is, betekent dit dat deze deel uitmaakt van ten minste één beschadigd pad. NPM markeert alleen de paden als beschadigd, de status van elk pad wordt niet gescheiden. Als u de lastige-hops wilt identificeren, kunt u de latentie van hop-per-hop bekijken en de waarden die meer dan de verwachte latentie toevoegen door elkaar scheiden.
 
-### <a name="how-does-fault-localization-in-performance-monitor-work"></a>Hoe werkt foutlokalisatie in Performance Monitor?
-NPM gebruikt een probabilistisch mechanisme om foutwaarschijnlijkheden toe te wijzen aan elk netwerkpad, netwerksegment en de samenstellende netwerkhop op basis van het aantal ongezonde paden waar ze deel van uitmaken. Naarmate de netwerksegmenten en hops deel gaan uitmaken van meer ongezonde paden, neemt de foutwaarschijnlijkheid die ermee gepaard gaat toe. Dit algoritme werkt het beste wanneer u veel knooppunten met NPM-agent met elkaar hebt verbonden, omdat dit de gegevenspunten voor het berekenen van de foutwaarschijnlijkheid verhoogt.
+### <a name="how-does-fault-localization-in-performance-monitor-work"></a>Hoe werkt fout lokalisatie in prestatie meter?
+NPM maakt gebruik van een Probabilistic-mechanisme om fout kansen toe te wijzen aan elk netwerkpad, netwerk segment en de samenstellende netwerk hops op basis van het aantal beschadigde paden waarvan ze deel uitmaken. Naarmate de netwerk segmenten en-hops deel uitmaken van meer aantal beschadigde paden, nemen de fout waarschijnlijke fouten toe. Dit algoritme werkt het beste wanneer u een groot aantal knoop punten met NPM-agent hebt verbonden, omdat hierdoor de gegevens punten voor het berekenen van de fout kansen worden verhoogd.
 
-### <a name="how-can-i-create-alerts-in-npm"></a>Hoe kan ik waarschuwingen maken in NPM?
+### <a name="how-can-i-create-alerts-in-npm"></a>Hoe kan ik waarschuwingen in NPM maken?
 Raadpleeg [de sectie waarschuwingen in de documentatie](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts) voor stapsgewijze instructies.
 
-### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Wat zijn de standaard query's van Log Analytics voor waarschuwingen
-Query prestatiemeter
+### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Wat zijn de standaard Log Analytics query's voor waarschuwingen
+Query prestatie meter
 
     NetworkMonitoring 
      | where (SubType == "SubNetwork" or SubType == "NetworkPath") 
      | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and RuleName == "<<your rule name>>"
     
-Query voor serviceconnectiviteitsmonitor
+Query voor service connectiviteits controle
 
     NetworkMonitoring                 
      | where (SubType == "EndpointHealth" or SubType == "EndpointPath")
      | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or ServiceResponseHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and TestName == "<<your test name>>"
     
-ExpressRoute monitorquery's: vraag naar circuits
+ExpressRoute-controle query's: circuits query
 
     NetworkMonitoring
     | where (SubType == "ERCircuitTotalUtilization") and (UtilizationHealthState == "Unhealthy") and CircuitResourceId == "<<your circuit resource ID>>"
@@ -127,150 +127,150 @@ Microsoft-peering
      | where (SubType == "ExpressRoutePeering" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == ""<<your circuit name>>" and PeeringType == "MicrosoftPeering"
 
-Veelvoorkomende query   
+Algemene query   
 
     NetworkMonitoring
     | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") 
 
-### <a name="can-npm-monitor-routers-and-servers-as-individual-devices"></a>Kan NPM routers en servers als afzonderlijke apparaten controleren?
-NPM identificeert alleen de IP- en hostnaam van onderliggende netwerkhops (switches, routers, servers, enz.) tussen de bron- en doel-IP's. Het identificeert ook de latentie tussen deze geïdentificeerde hop. Het controleert deze onderliggende hop niet individueel.
+### <a name="can-npm-monitor-routers-and-servers-as-individual-devices"></a>Kunnen NPM-routers en-servers als afzonderlijke apparaten worden bewaakt?
+NPM identificeert alleen de IP-en hostnaam van de onderliggende netwerk-hops (switches, routers, servers, enzovoort) tussen de bron-en doel-IP-adressen. Ook wordt de latentie tussen deze geïdentificeerde hops geïdentificeerd. Deze onderliggende hops worden niet afzonderlijk bewaakt.
 
-### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>Kan NPM worden gebruikt om de netwerkconnectiviteit tussen Azure en AWS te monitoren?
-Ja. Raadpleeg het artikel [Azure, AWS en on-premises netwerken met NPM](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/) voor meer informatie.
+### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>Kan NPM worden gebruikt voor het bewaken van de netwerk verbinding tussen Azure en AWS?
+Ja. Raadpleeg het artikel [Azure, AWS en on-premises netwerken bewaken met behulp van NPM](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/) voor meer informatie.
 
-### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>Is de ExpressRoute bandbreedte gebruik inkomende of uitgaande?
-Bandbreedtegebruik is het totaal van inkomende en uitgaande bandbreedte. Het wordt uitgedrukt in Bits/sec.
+### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>Is het ExpressRoute-bandbreedte gebruik binnenkomend of uitgaand?
+Bandbreedte gebruik is het totale aantal binnenkomende en uitgaande band breedte. De waarde wordt uitgedrukt in bits per seconde.
 
-### <a name="can-we-get-incoming-and-outgoing-bandwidth-information-for-the-expressroute"></a>Kunnen we inkomende en uitgaande bandbreedte informatie krijgen voor de ExpressRoute?
-Inkomende en uitgaande waarden voor zowel primaire als secundaire bandbreedte kunnen worden vastgelegd.
+### <a name="can-we-get-incoming-and-outgoing-bandwidth-information-for-the-expressroute"></a>Kan er informatie over binnenkomende en uitgaande band breedte worden ontvangen voor de ExpressRoute?
+Binnenkomende en uitgaande waarden voor zowel de primaire als de secundaire band breedte kunnen worden vastgelegd.
 
-Gebruik de onderstaande query in Log Search voor informatie over ms-peeringniveau
+Voor informatie over het niveau van MS-peering gebruikt u de onderstaande query in zoeken in Logboeken
 
     NetworkMonitoring 
      | where SubType == "ERMSPeeringUtilization"
      | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
     
-Gebruik de onderstaande query in Log Search voor informatie over privé-peeringniveau
+Voor informatie over privé-peering kunt u de onderstaande query gebruiken in zoeken in Logboeken
 
     NetworkMonitoring 
      | where SubType == "ERVNetConnectionUtilization"
      | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
   
-Gebruik de onderstaande query voor informatie op circuitniveau in Log Search
+Voor informatie over het circuit niveau gebruikt u de onderstaande query in zoeken in Logboeken
 
     NetworkMonitoring 
         | where SubType == "ERCircuitTotalUtilization"
         | project CircuitName, PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
 
-### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Welke regio's worden ondersteund voor de Prestatiemonitor van NPM?
-NPM kan de connectiviteit tussen netwerken in elk deel van de wereld monitoren vanuit een werkruimte die wordt gehost in een van de [ondersteunde regio's](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)
+### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Welke regio's worden ondersteund voor de prestatie meter van de NPM?
+NPM kan de connectiviteit van netwerken in een deel van de wereld bewaken, van een werk ruimte die wordt gehost in een van de [ondersteunde regio's](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)
 
-### <a name="which-regions-are-supported-for-npms-service-connectivity-monitor"></a>Welke regio's worden ondersteund voor de Service Connectivity Monitor van NPM?
-NPM kan de connectiviteit met services in elk deel van de wereld monitoren, vanuit een werkruimte die wordt gehost in een van de [ondersteunde regio's](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)
+### <a name="which-regions-are-supported-for-npms-service-connectivity-monitor"></a>Welke regio's worden ondersteund voor de service connectiviteits monitor van NPM?
+NPM kan de connectiviteit van services in elk deel van de wereld bewaken, van een werk ruimte die wordt gehost in een van de [ondersteunde regio's](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)
 
-### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Welke regio's worden ondersteund voor de ExpressRoute Monitor van NPM?
-NPM kan uw ExpressRoute-circuits in elke Azure-regio controleren. Als u aan boord wilt gaan van NPM, hebt u een Log Analytics-werkruimte nodig die moet worden gehost in een van de [ondersteunde regio's](/azure/expressroute/how-to-npm)
+### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Welke regio's worden ondersteund voor de ExpressRoute-monitor van NPM?
+Met NPM kunt u uw ExpressRoute-circuits bewaken die zich in een Azure-regio bevinden. Voor een onboarding naar NPM hebt u een Log Analytics-werk ruimte nodig die moet worden gehost in een van de [ondersteunde regio's](/azure/expressroute/how-to-npm)
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 
-### <a name="why-are-some-of-the-hops-marked-as-unidentified-in-the-network-topology-view"></a>Waarom zijn sommige hops gemarkeerd als niet-geïdentificeerd in de netwerktopologieweergave?
-NPM gebruikt een aangepaste versie van traceroute om de topologie te ontdekken van de bronagent naar de bestemming. Een niet-geïdentificeerde hop geeft aan dat de netwerkhop niet heeft gereageerd op het verzoek om traceroute van de bronagent. Als drie opeenvolgende netwerkhops niet reageren op de traceroute van de agent, markeert de oplossing de niet-reagerende hop als niet-geïdentificeerd en probeert niet meer hop te ontdekken.
+### <a name="why-are-some-of-the-hops-marked-as-unidentified-in-the-network-topology-view"></a>Waarom zijn sommige hops gemarkeerd als niet-geïdentificeerd in de weer gave netwerk topologie?
+NPM maakt gebruik van een gewijzigde versie van traceroute om de topologie van de bron agent naar de bestemming te ontdekken. Een niet-geïdentificeerde hop geeft aan dat de netwerk-hop niet heeft gereageerd op de traceroute-aanvraag van de bron agent. Als drie opeenvolgende netwerk hops niet reageren op de traceroute van de agent, markeert de oplossing de niet-reagerende hops als niet-geïdentificeerd en wordt er niet meer hops gedetecteerd.
 
-Een hop mag niet reageren op een traceroute in een of meer van de onderstaande scenario's:
+Een hop reageert mogelijk niet op een traceroute in een of meer van de onderstaande scenario's:
 
-* De routers zijn geconfigureerd om hun identiteit niet te onthullen.
-* De netwerkapparaten staan geen ICMP_TTL_EXCEEDED verkeer toe.
-* Een firewall blokkeert de ICMP_TTL_EXCEEDED reactie van het netwerkapparaat.
+* De routers zijn zodanig geconfigureerd dat hun identiteit niet wordt onthuld.
+* De netwerk apparaten mogen geen ICMP_TTL_EXCEEDED verkeer toestaan.
+* De ICMP_TTL_EXCEEDED reactie van het netwerk apparaat wordt geblokkeerd door een firewall.
 
-Wanneer een van de eindpunten in Azure ligt, wordt ongeïdentificeerde hop weergegeven omdat Azure Infrastructure geen identiteit aan traceroute onthult. 
+Wanneer een van de eind punten zich in azure bevindt, geeft traceroute niet-geïdentificeerde hops weer als Azure-infra structuur de identiteit niet onthult naar traceroute. 
 
-### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Ik krijg waarschuwingen voor ongezonde tests, maar ik zie niet de hoge waarden in het verlies npm's en latentie grafiek. Hoe controleer ik wat ongezond is?
-NPM geeft een waarschuwing als de latentie tussen bron en bestemming van einde tot einde de drempelwaarde voor een pad tussen deze waarden overschrijdt. Sommige netwerken hebben meerdere paden die dezelfde bron en bestemming met elkaar verbinden. NPM verhoogt een waarschuwing is een pad is ongezond. Het verlies en de latentie in de grafieken is de gemiddelde waarde voor alle paden, dus het kan niet de exacte waarde van een enkel pad weer te geven. Als u wilt weten waar de drempelwaarde is overschreden, zoekt u de kolom Subtype in de waarschuwing. Als het probleem wordt veroorzaakt door een pad, is de subtypewaarde NetworkPath (voor prestatiemonitortests), EndpointPath (voor serviceconnectiviteitsmonitortests) en ExpressRoutePath (voor ExpressRotue Monitor-tests). 
+### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Er worden waarschuwingen weer geven voor slechte testen, maar de hoge waarden in de grafiek met verlies en latentie van NPM zijn niet zichtbaar. Hoe kan ik controleren wat is beschadigd?
+NPM treedt een waarschuwing als de eind-en eind latentie tussen de bron en het doel de drempel waarde voor een wille keurig pad ertussen overschrijdt. Sommige netwerken hebben meerdere paden waarmee dezelfde bron en bestemming worden verbonden. NPM genereert een waarschuwing dat een pad een onjuiste status heeft. Het verlies en de latentie die in de grafieken worden weer gegeven, is de gemiddelde waarde voor alle paden. Daarom kan de waarde van één pad niet exact worden weer gegeven. Zoek naar de kolom subtype in de waarschuwing om te begrijpen waar de drempel is geschonden. Als het probleem wordt veroorzaakt door een pad, wordt de waarde van subtype NetworkPath (voor test tests van prestaties), EndpointPath (voor de tests van de verbindings monitor van de service) en ExpressRoutePath (voor ExpressRotue-monitor tests). 
 
-Voorbeeldquery om te zoeken is pad is niet in orde:
+De voorbeeld query die u wilt zoeken, is beschadigd:
 
     NetworkMonitoring 
     | where ( SubType == "ExpressRoutePath")
     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and          CircuitResourceID =="<your ER circuit ID>" and ConnectionResourceId == "<your ER connection resource id>"
     | project SubType, LossHealthState, LatencyHealthState, MedianLatency 
 
-### <a name="why-does-my-test-show-unhealthy-but-the-topology-does-not"></a>Waarom toont mijn test ongezond, maar de topologie niet 
-NPM bewaakt end-to-end verlies, latentie en topologie met verschillende intervallen. Verlies en latentie worden eens in de 5 seconden gemeten en elke drie minuten samengevoegd (voor Prestatiemonitor en Express Route Monitor), terwijl de topologie eenmaal per 10 minuten wordt berekend met traceroute. Tussen 3:44 en 4:04 kan de topologie bijvoorbeeld drie keer worden bijgewerkt (3:44, 3:54, 4:04), maar verlies en latentie worden ongeveer zeven keer bijgewerkt (3:44, 3:47, 3:50, 3:53, 3:56, 3:59, 4:02). De topologie gegenereerd op 3:54 zal worden weergegeven voor het verlies en latentie die wordt berekend op 3:56, 3:59 en 4:02. Stel dat u een waarschuwing krijgt dat uw ER-circuit ongezond was om 3:59. U logt in op NPM en probeert de topologietijd in te stellen op 3:59. NPM geeft de topologie weer die wordt gegenereerd om 3:54. Als u de laatst bekende topologie van uw netwerk wilt begrijpen, vergelijkt u de velden TimeProcessed (tijd waarop verlies en latentie is berekend) en TracerouteCompletedTime (tijd waarop topologie is berekend). 
+### <a name="why-does-my-test-show-unhealthy-but-the-topology-does-not"></a>Waarom laat mijn test beschadigd, maar de topologie niet 
+NPM bewaakt end-to-end-verlies, latentie en topologie met verschillende intervallen. Verlies en latentie worden elke vijf seconden gemeten en om de drie minuten geaggregeerd (voor prestatie meter en Express route monitor) terwijl de topologie elke 10 minuten wordt berekend met traceroute. Bijvoorbeeld tussen 3:44 en 4:04 kan de topologie drie keer worden bijgewerkt (3:44, 3:54, 4:04), maar verlies en latentie worden bijgewerkt ongeveer zeven keer (3:44, 3:47, 3:50, 3:53, 3:56, 3:59, 4:02). De topologie die wordt gegenereerd bij 3:54 wordt weer gegeven voor het verlies en de latentie die worden berekend op 3:56, 3:59 en 4:02. Stel dat u een waarschuwing krijgt dat het circuit van de nood herstel is beschadigd op 3:59. U meldt zich aan bij NPM en probeert de topologie tijd in te stellen op 3:59. NPM geeft de topologie weer die is gegenereerd op 3:54. Als u inzicht wilt krijgen in de laatste bekende topologie van uw netwerk, vergelijkt u de velden TimeProcessed (tijd waarop verlies en latentie is berekend) en TracerouteCompletedTime (tijd waarop de topologie is berekend). 
 
 ### <a name="what-is-the-difference-between-the-fields-e2emedianlatency-and-avghoplatencylist-in-the-networkmonitoring-table"></a>Wat is het verschil tussen de velden E2EMedianLatency en AvgHopLatencyList in de tabel NetworkMonitoring
-E2EMedianLatency is de latentie die elke drie minuten wordt bijgewerkt na het aggregeren van de resultaten van tcp ping-tests, terwijl AvgHopLatencyList elke 10 minuten wordt bijgewerkt op basis van traceroute. Als u wilt begrijpen op welk tijdstip E2EMedianLatency is berekend, gebruikt u het veld TimeProcessed. Als u wilt inzicht krijgen in het exacte tijdstip waarop traceroute is voltooid en bijgewerkt AvgHopLatencyList, gebruikt u het veld TracerouteCompletedTime
+E2EMedianLatency is de latentie dat elke drie minuten na het samen voegen van de resultaten van TCP-ping-tests is bijgewerkt, terwijl AvgHopLatencyList elke 10 minuten wordt bijgewerkt op basis van traceroute. Gebruik het veld TimeProcessed om inzicht te krijgen in de exacte tijd waarop E2EMedianLatency is berekend. Gebruik het veld TracerouteCompletedTime om inzicht te krijgen in de exacte tijd waarop traceroute is voltooid en bijgewerkt AvgHopLatencyList.
 
-### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>Waarom verschilt hop-by-hop latentie nummers van HopLatencyValues 
-HopLatencyValues zijn bron tot eindpunt.
-Bijvoorbeeld: Hop - A,B,C. AvgHopLatency - 10,15,20. Dit betekent bron naar Een latentie = 10, bron naar B latentie = 15 en bron naar C latentie is 20. UI berekent A-B-hoplatentie als 5 in de topologie
+### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>Waarom verschilt de latentie van hop-by-hop van HopLatencyValues 
+HopLatencyValues zijn bron naar eind punt.
+Bijvoorbeeld: hops-A, B, C. AvgHopLatency-10, 15, 20. Dit betekent bron tot een latentie = 10, bron naar B latentie = 15 en de bron-naar C-latentie is 20. In de gebruikers interface wordt een hop-z-latentie berekend als 5 in de topologie
 
-### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>De oplossing toont 100% verlies, maar er is connectiviteit tussen de bron en de bestemming
-Dit kan gebeuren als de hostfirewall of de tussentijdse firewall (netwerkfirewall of Azure NSG) de communicatie tussen de bronagent en de bestemming over de poort die wordt gebruikt voor bewaking door NPM blokkeert (standaard is de poort 8084, tenzij de klant heeft dit veranderd).
+### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>De oplossing toont 100% verlies, maar er is een verbinding tussen de bron en het doel
+Dit kan gebeuren als de host-firewall of de tussenliggende firewall (netwerk firewall of Azure NSG) de communicatie tussen de bron agent en de bestemming blokkeert via de poort die wordt gebruikt voor bewaking door NPM (de poort is standaard 8084, tenzij deze door de klant is gewijzigd).
 
-* Als u wilt controleren of de hostfirewall de communicatie op de vereiste poort niet blokkeert, bekijkt u de status status van de bron- en doelknooppunten vanuit de volgende weergave: Network Performance Monitor -> Configuration -> Nodes. 
-  Als ze ongezond zijn, bekijk dan de instructies en onderneem corrigerende maatregelen. Als de knooppunten gezond zijn, gaat u naar stap b. hieronder.
-* Als u wilt controleren of een tussentijdse netwerkfirewall of Azure NSG de communicatie op de vereiste poort niet blokkeert, gebruikt u het psping-hulpprogramma van derden met behulp van de onderstaande instructies:
-  * psping utility is [hier](https://technet.microsoft.com/sysinternals/psping.aspx) te downloaden 
-  * Voer de volgende opdracht uit vanaf het bronknooppunt.
-    * psping -n \<15 destination\>node IPAddress :portNumber Standaard maakt NPM gebruik van 8084-poort. Als u dit expliciet hebt gewijzigd met het script EnableRules.ps1, voert u het aangepaste poortnummer in dat u gebruikt). Dit is een ping van Azure-machine naar on-premises
-* Controleer of de pings succesvol zijn. Als dit niet het zo is, geeft dit aan dat een tussentijdse netwerkfirewall of Azure NSG het verkeer op deze poort blokkeert.
-* Voer de opdracht nu uit vanaf het doelknooppunt naar het IP-adres van het bronknooppunt.
+* Als u wilt controleren of de host-firewall de communicatie op de vereiste poort niet blokkeert, bekijkt u de status van de bron-en doel knooppunten in de volgende weer gave: Netwerkprestatiemeter-> configuratie-> knoop punten. 
+  Als ze niet in orde zijn, raadpleegt u de instructies en neemt u corrigerende maat regelen. Als de knoop punten in orde zijn, gaat u naar stap b. hieronder.
+* Als u wilt controleren of een tussenliggende netwerk firewall of Azure NSG de communicatie op de vereiste poort niet blokkeert, gebruikt u het PsPing-hulp programma van derden met behulp van de onderstaande instructies:
+  * het hulp programma psping kan [hier](https://technet.microsoft.com/sysinternals/psping.aspx) worden gedownload 
+  * Voer de volgende opdracht uit vanaf het bron knooppunt.
+    * psping-n 15 \<doel knooppunt IP\>-adres:p ortnumber standaard gebruikt 8084-poort. Als u dit expliciet hebt gewijzigd met behulp van het script EnableRules. ps1, voert u het aangepaste poort nummer in dat u gebruikt. Dit is een ping van Azure machine naar on-premises
+* Controleer of de pings zijn geslaagd. Als dat niet het geval is, duidt dit erop dat een tussenliggende netwerk firewall of Azure NSG het verkeer op deze poort blokkeert.
+* Voer nu de opdracht uit vanaf het doel knooppunt naar het IP-adres van het bron knooppunt.
 
 
-### <a name="there-is-loss-from-node-a-to-b-but-not-from-node-b-to-a-why"></a>Er is verlies van knooppunt A naar B, maar niet van knooppunt B naar A. Waarom?
-Aangezien de netwerkpaden tussen A en B kunnen verschillen van de netwerkpaden tussen B en A, kunnen verschillende waarden voor verlies en latentie worden waargenomen.
+### <a name="there-is-loss-from-node-a-to-b-but-not-from-node-b-to-a-why"></a>Er is geen verlies van knoop punt A naar B, maar niet van knoop punt B naar A. Waarom?
+Aangezien de netwerk paden tussen A en B kunnen verschillen van de netwerk paden tussen B en A, kunnen verschillende waarden voor verlies en latentie worden waargenomen.
 
-### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Waarom worden al mijn ExpressRoute-circuits en peering-verbindingen niet ontdekt?
-NPM ontdekt nu ExpressRoute-circuits en peering-verbindingen in alle abonnementen waartoe de gebruiker toegang heeft. Kies alle abonnementen waarbij uw Express Route-bronnen zijn gekoppeld en schakel bewaking in voor elke gedetecteerde bron. NPM zoekt naar verbindingsobjecten bij het ontdekken van een privépeering, dus controleer of een VNET is gekoppeld aan uw peering.
+### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Waarom worden al mijn ExpressRoute-circuits en peering-verbindingen niet gedetecteerd?
+NPM detecteert nu ExpressRoute-circuits en peering verbindingen in alle abonnementen waartoe de gebruiker toegang heeft. Kies alle abonnementen waar uw Express-route resources zijn gekoppeld en schakel bewaking in voor elke gedetecteerde resource. NPM zoekt naar verbindings objecten bij het detecteren van een persoonlijke peering, dus controleer of er een VNET is gekoppeld aan uw peering.
 
-### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>De ER Monitor mogelijkheid heeft een diagnostisch bericht "Verkeer is niet via een circuit". Wat houdt dat in?
+### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>De functie voor het controleren van de monitor heeft een diagnostisch bericht ' verkeer wordt niet door gegeven via een circuit '. Wat houdt dat in?
 
-Er kan een scenario zijn waarin er een gezonde verbinding is tussen de on-premises en Azure-knooppunten, maar het verkeer gaat niet over het ExpressRoute-circuit dat is geconfigureerd om te worden gecontroleerd door NPM. 
+Er kan een scenario zijn met een goede verbinding tussen de on-premises en Azure-knoop punten, maar het verkeer gaat niet over het ExpressRoute-circuit dat is geconfigureerd om te worden bewaakt door NPM. 
 
 Dit kan gebeuren als:
 
-* Het ER-circuit is uitgevallen.
-* De routefilters zijn zo geconfigureerd dat ze voorrang geven aan andere routes (zoals een VPN-verbinding of een ander ExpressRoute-circuit) over het beoogde ExpressRoute-circuit. 
-* De on-premises en Azure-knooppunten die zijn gekozen voor het bewaken van het ExpressRoute-circuit in de bewakingsconfiguratie, hebben geen verbinding met elkaar over het beoogde ExpressRoute-circuit. Zorg ervoor dat u de juiste knooppunten hebt gekozen die verbinding met elkaar hebben over het ExpressRoute-circuit dat u wilt controleren.
+* Het circuit is niet beschikbaar.
+* De route filters worden zo geconfigureerd dat ze prioriteit geven aan andere routes (zoals een VPN-verbinding of een ander ExpressRoute-circuit) over het beoogde ExpressRoute-circuit. 
+* De on-premises en Azure-knoop punten die zijn gekozen voor het bewaken van het ExpressRoute-circuit in de bewakings configuratie, hebben geen verbinding met elkaar via het beoogde ExpressRoute-circuit. Zorg ervoor dat u de juiste knoop punten hebt gekozen die met elkaar zijn verbonden via het ExpressRoute-circuit dat u wilt bewaken.
 
-### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>Tijdens het configureren van de bewaking van mijn ExpressRoute-circuit worden de Azure-knooppunten niet gedetecteerd.
-Dit kan gebeuren als de Azure-knooppunten zijn verbonden via Operations Manager. De ExpressRoute Monitor-mogelijkheid ondersteunt alleen azure-knooppunten die zijn verbonden als Direct Agents.
+### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>Tijdens het configureren van de bewaking van mijn ExpressRoute-circuit worden de Azure-knoop punten niet gedetecteerd.
+Dit kan gebeuren als de Azure-knoop punten zijn verbonden via Operations Manager. De ExpressRoute-monitor mogelijkheid biedt alleen ondersteuning voor Azure-knoop punten die zijn verbonden als rechtstreekse agents.
 
-### <a name="i-cannot-discover-by-expressroute-circuits-in-the-oms-portal"></a>Ik kan niet ontdekken via ExpressRoute circuits in het OMS portaal
-Hoewel NPM zowel vanuit de Azure-portal als de OMS-portal kan worden gebruikt, werkt de circuitdetectie in de ExpressRoute Monitor-mogelijkheid alleen via de Azure-portal. Zodra de circuits zijn ontdekt via de Azure-portal, u de mogelijkheid vervolgens gebruiken in een van de twee portalen. 
+### <a name="i-cannot-discover-by-expressroute-circuits-in-the-oms-portal"></a>Ik kan geen ExpressRoute-circuits detecteren in de OMS-Portal
+Hoewel NPM zowel vanuit de Azure Portal als met de OMS-Portal kan worden gebruikt, werkt de circuit detectie in de ExpressRoute-monitor mogelijk alleen via de Azure Portal. Zodra de circuits zijn gedetecteerd via de Azure Portal, kunt u de mogelijkheid gebruiken in een van de twee portals. 
 
-### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-network-loss-as-well-as-latency-are-shown-as-na"></a>In de serviceconnectivity monitor-mogelijkheid worden de serviceresponstijd, netwerkverlies en latentie weergegeven als NA
-Dit kan gebeuren als een of meer waar is:
+### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-network-loss-as-well-as-latency-are-shown-as-na"></a>In de functie voor het controleren van de service connectiviteit worden de reactie tijd van de service, het netwerk verlies en de latentie weer gegeven als N.V.T.
+Dit kan gebeuren als er sprake is van een of meer waar is:
 
-* De service is uitgevallen.
-* Het knooppunt dat wordt gebruikt voor het controleren van de netwerkverbinding met de service is uitgeschakeld.
-* Het doel dat in de testconfiguratie is ingevoerd, is onjuist.
-* Het knooppunt heeft geen netwerkconnectiviteit.
+* De service is niet beschikbaar.
+* Het knoop punt dat wordt gebruikt voor het controleren van de netwerk verbinding met de service is niet beschikbaar.
+* Het doel dat is ingevoerd in de test configuratie is onjuist.
+* Het knoop punt heeft geen netwerk verbinding.
 
-### <a name="in-the-service-connectivity-monitor-capability-a-valid-service-response-time-is-shown-but-network-loss-as-well-as-latency-are-shown-as-na"></a>In de serviceconnectivity monitor-mogelijkheid wordt een geldige serviceresponstijd weergegeven, maar netwerkverlies en latentie worden weergegeven als NA
- Dit kan gebeuren als een of meer waar is:
+### <a name="in-the-service-connectivity-monitor-capability-a-valid-service-response-time-is-shown-but-network-loss-as-well-as-latency-are-shown-as-na"></a>In de monitor van de service connectiviteit wordt een geldige reactie tijd van de service weer gegeven, maar netwerk verlies en latentie worden weer gegeven als N.V.T.
+ Dit kan gebeuren als er sprake is van een of meer waar is:
 
-* Als het knooppunt dat wordt gebruikt voor het controleren van de netwerkverbinding met de service een Windows-clientmachine is, blokkeert de doelservice ICMP-aanvragen of blokkeert een netwerkfirewall ICMP-verzoeken die afkomstig zijn van het knooppunt.
-* Het selectievakje Netwerkmetingen uitvoeren is leeg in de testconfiguratie.
+* Als het knoop punt dat wordt gebruikt om de netwerk verbinding met de service te controleren, een Windows-client computer is, blokkeert de doel service ICMP-aanvragen of een netwerk firewall blokkeert ICMP-aanvragen die afkomstig zijn van het knoop punt.
+* Het selectie vakje netwerk metingen uitvoeren is leeg in de test configuratie.
 
-### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>In de serviceconnectivity monitor-mogelijkheid is de serviceresponstijd NA, maar netwerkverlies en latentie zijn geldig
-Dit kan gebeuren als de doelservice geen webtoepassing is, maar de test is geconfigureerd als een webtest. Bewerk de testconfiguratie en kies het testtype als netwerk in plaats van web.
+### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>In de monitor van de service connectiviteit is de reactie tijd van de service NA, maar netwerk verlies en latentie geldig
+Dit kan gebeuren als de doel service geen webtoepassing is, maar de test is geconfigureerd als een Webtest. Bewerk de configuratie van de test en kies het test type netwerk in plaats van het web.
 
 ## <a name="miscellaneous"></a>Diversen
 
-### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>Is er een prestatie-impact op het knooppunt dat wordt gebruikt voor monitoring?
-Het NPM-proces is geconfigureerd om te stoppen als het meer dan 5% van de cpu-bronnen van de host gebruikt. Dit is om ervoor te zorgen dat u de knooppunten blijven gebruiken voor hun gebruikelijke workloads zonder dat dit gevolgen heeft voor de prestaties.
+### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>Is er sprake van invloed op de prestaties van het knoop punt dat wordt gebruikt voor bewaking?
+Het NPM-proces is zo geconfigureerd dat er wordt gestopt als er meer dan 5% van de CPU-bronnen van de host worden gebruikt. Dit is om ervoor te zorgen dat u de knoop punten voor hun gebruikelijke werk belastingen kunt blijven gebruiken zonder dat dit invloed heeft op de prestaties.
 
-### <a name="does-npm-edit-firewall-rules-for-monitoring"></a>Bewerkt NPM firewallregels voor bewaking?
-NPM maakt alleen een lokale Windows Firewall-regel op de knooppunten waarop het EnableRules.ps1 Powershell-script wordt uitgevoerd, zodat de agents TCP-verbindingen met elkaar kunnen maken op de opgegeven poort. De oplossing wijzigt geen netwerkfirewall- of NSG-regels (Network Security Group).
+### <a name="does-npm-edit-firewall-rules-for-monitoring"></a>NPM de firewall regels voor bewaking bewerken?
+NPM maakt alleen een lokale Windows Firewall regel voor de knoop punten waarop het Power shell-script EnableRules. ps1 wordt uitgevoerd, zodat de agents TCP-verbindingen met elkaar kunnen maken op de opgegeven poort. De oplossing wijzigt geen NSG-regels (netwerk firewall of netwerk beveiligings groep).
 
-### <a name="how-can-i-check-the-health-of-the-nodes-being-used-for-monitoring"></a>Hoe kan ik de status controleren van de knooppunten die worden gebruikt voor monitoring?
-U de status van de knooppunten die worden gebruikt voor bewaking bekijken vanuit de volgende weergave: Network Performance Monitor -> Configuration -> Nodes. Als een knooppunt niet in orde is, u de foutgegevens bekijken en de voorgestelde actie uitvoeren.
+### <a name="how-can-i-check-the-health-of-the-nodes-being-used-for-monitoring"></a>Hoe kan ik de status van de knoop punten controleren die worden gebruikt voor bewaking?
+U kunt de status van de knoop punten die worden gebruikt voor bewaking, bekijken in de volgende weer gave: Netwerkprestatiemeter-> configuratie-> knoop punten. Als een knoop punt een slechte status heeft, kunt u de fout Details bekijken en de voorgestelde actie uitvoeren.
 
-### <a name="can-npm-report-latency-numbers-in-microseconds"></a>Kan NPM latentienummers in microseconden rapporteren?
-NPM rondt de latentienummers af in de gebruikersinterface en in milliseconden. Dezelfde gegevens worden opgeslagen bij een hogere granulariteit (soms tot vier decimalen).
+### <a name="can-npm-report-latency-numbers-in-microseconds"></a>Kunnen latentie nummers in micro seconden NPMen?
+NPM rondt de latentie nummers af in de gebruikers interface en in milliseconden. Dezelfde gegevens worden op een grotere granulariteit opgeslagen (soms Maxi maal vier decimalen).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over netwerkprestatiemeter door te verwijzen naar [de oplossing netwerkprestatiemeter in Azure](../../azure-monitor/insights/network-performance-monitor.md).
+- Raadpleeg [Netwerkprestatiemeter-oplossing in azure](../../azure-monitor/insights/network-performance-monitor.md)voor meer informatie over Netwerkprestatiemeter.

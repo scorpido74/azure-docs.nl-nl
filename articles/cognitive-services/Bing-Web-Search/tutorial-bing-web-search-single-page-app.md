@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943880"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Zelfstudie: Een app van één pagina maken met de Bing Webzoekopdrachten-API
@@ -37,7 +37,7 @@ Voor het gebruik van deze app is een [Azure Cognitive Services-account](https://
 Hier zijn een aantal zaken die u nodig hebt om de app uit te voeren:
 
 * Node.js 8 of later
-* Een abonnementssleutel voor de Bing Search API. Als u er geen hebt, [maakt u een V7-bron van Bing Search](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). U ook een [proefsleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)gebruiken.
+* Een abonnements sleutel voor de Bing Search-API. Als u er nog geen hebt, [maakt u een Bing Search V7-resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). U kunt ook een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)gebruiken.
 ## <a name="get-the-source-code-and-install-dependencies"></a>De broncode ophalen en afhankelijkheden installeren
 
 De eerste stap bestaat uit het klonen van de opslagplaats met de broncode van de voorbeeld-app.
@@ -127,7 +127,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-`SafeSearch` kan worden ingesteld op `strict`, `moderate` of `off`, waarbij `moderate` de standaardinstelling voor Bing Web Search is. In dit formulier wordt een selectievakje `strict` gebruikt, dat twee statussen heeft: of `moderate`.
+`SafeSearch` kan worden ingesteld op `strict`, `moderate` of `off`, waarbij `moderate` de standaardinstelling voor Bing Web Search is. Dit formulier gebruikt een selectie vakje met twee statussen: `strict` of `moderate`.
 
 Als een van de **Promoten**-selectievakjes is geselecteerd, wordt de `answerCount`-parameter toegevoegd aan de query. `answerCount` is vereist wanneer u de `promote`-parameter gebruikt. In dit fragment is de waarde ingesteld op `9` zodat alle beschikbare resultaattypen worden geretourneerd.
 > [!NOTE]

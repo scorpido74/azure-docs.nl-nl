@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: Probeer Content Moderator op het web - Content Moderator'
+title: 'Snelstartgids: Probeer Content Moderator op het Web-Content Moderator'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart gebruik je de online Content Moderator Review tool om de basisfunctionaliteit van Content Moderator uit te testen zonder code te hoeven schrijven.
+description: In deze Quick Start gebruikt u het hulp programma online Content Moderator beoordeling om de basis functionaliteit van Content Moderator te testen zonder dat u code hoeft te schrijven.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,77 +11,77 @@ ms.topic: quickstart
 ms.date: 03/13/2020
 ms.author: pafarley
 ms.openlocfilehash: 666b70ba8b632cb2cadf20de384e3e615acb2b3d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79203551"
 ---
-# <a name="quickstart-try-content-moderator-on-the-web"></a>Snelstart: Inhoudsmoderator op het web uitproberen
+# <a name="quickstart-try-content-moderator-on-the-web"></a>Snelstartgids: Probeer Content Moderator op Internet
 
-In deze quickstart gebruik je de online Content Moderator Review tool om de basisfunctionaliteit van Content Moderator uit te testen zonder code te hoeven schrijven. Als u deze service sneller in uw app wilt integreren, raadpleegt u de andere snelstarts in de sectie [Volgende stappen.](#next-steps)
+In deze Quick Start gebruikt u het hulp programma online Content Moderator beoordeling om de basis functionaliteit van Content Moderator te testen zonder dat u code hoeft te schrijven. Als u deze service sneller wilt integreren in uw app, raadpleegt u de andere Quick starts in het gedeelte [volgende stappen](#next-steps) .
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een webbrowser
 
-## <a name="set-up-the-review-tool"></a>Het controleprogramma instellen
-De Content Moderator Review tool is een web-based tool waarmee menselijke reviewers om de cognitieve dienst te helpen bij het nemen van beslissingen. In deze handleiding ondergaat u het korte proces van het opzetten van de beoordelingstool, zodat u zien hoe de Content Moderator-service werkt. Ga naar de site van het [hulpprogramma Inhoudsmoderator](https://contentmoderator.cognitive.microsoft.com/) en meld u aan.
+## <a name="set-up-the-review-tool"></a>Het beoordelings programma instellen
+Het hulp programma Content Moderator beoordeling is een webgebaseerd hulp programma waarmee mensen van Human reviewers de cognitieve service kunnen helpen bij het nemen van beslissingen. In deze hand leiding gaat u door de korte procedure voor het instellen van het controle programma, zodat u kunt zien hoe de Content Moderator-service werkt. Ga naar de site van het [Content moderator controle programma](https://contentmoderator.cognitive.microsoft.com/) en meld u aan.
 
-![Startpagina van inhoudsmoderator](images/homepage.PNG)
+![Start pagina van Content Moderator](images/homepage.PNG)
 
 ## <a name="create-a-review-team"></a>Een beoordelingsteam maken
 
-Maak vervolgens een beoordelingsteam. In een werkscenario is dit de groep mensen die handmatig de moderatiebeslissingen van de service zal controleren. Als u een team wilt maken, moet u een **regio**selecteren en een **teamnaam** en een **team-id**opgeven. Als u collega's wilt uitnodigen voor het team, u dit doen door hier hun e-mailadressen in te voeren.
+Maak vervolgens een beoordelings team. In een werkend scenario is dit de groep personen die hand matig de toezicht beslissingen van de service controleren. Als u een team wilt maken, moet u een **regio**selecteren en een team **naam** en **Team-ID**opgeven. Als u collega's wilt uitnodigen voor het team, kunt u dit doen door hier hun e-mail adressen in te voeren.
 
 > [!NOTE]
-> **Teamname** is een vriendelijke naam voor je beoordelingsteam. Dit is de naam die wordt weergegeven in de Azure-portal. De **team-id** is wat wordt gebruikt om uw beoordelingsteam programmatisch te identificeren.
+> **Team naam** is een beschrijvende naam voor uw beoordelings team. Dit is de naam die wordt weer gegeven in de Azure Portal. De **Team-ID** is de naam die wordt gebruikt om het beoordelings team te identificeren.
 
 > [!div class="mx-imgBorder"]
 > ![Teamlid uitnodigen](images/create-team.png)
 
-Als u ervoor kiest om gegevens te versleutelen met een door de klant beheerde sleutel (CMK), wordt u gevraagd om de **Resource-ID** voor uw contentmoderatorbron in de prijscategorie E0. De bron die u verstrekt, moet nieuw zijn. 
+Als u ervoor kiest om gegevens te versleutelen met behulp van een door de klant beheerde sleutel (CMK), wordt u gevraagd om de **resource-id** voor uw content moderator-resource in de prijs categorie E0. De resource die u opgeeft, moet nieuw zijn. 
 
 > [!div class="mx-imgBorder"]
 > ![Teamlid uitnodigen met CMK](images/create-team-cmk.png)
 
-Als u een bron voor inhoudsmoderator opnieuw probeert te gebruiken, ziet u de waarschuwing: 
+Als u probeert een Content Moderator resource opnieuw te gebruiken, wordt deze waarschuwing weer gegeven: 
 
 > [!div class="mx-imgBorder"]
-> ![CMK-storing](images/create-team-cmk-fail.png)
+> ![CMK-fout](images/create-team-cmk-fail.png)
 
-## <a name="upload-sample-content"></a>Voorbeeldinhoud uploaden
+## <a name="upload-sample-content"></a>Voorbeeld inhoud uploaden
 
-Nu ben je klaar om voorbeeldinhoud te uploaden. Selecteer **Probeer > afbeelding,** **probeer > tekst**of probeer **> video**.
+U bent nu klaar om voorbeeld inhoud te uploaden. Selecteer **> afbeelding uitproberen**, **Probeer > tekst**uit of **Probeer de video >**.
 
-![Afbeelding of tekstbeheer uitproberen](images/tryimagesortext.png)
+![Afbeelding of tekst toezicht uitproberen](images/tryimagesortext.png)
 
-Dien uw inhoud in voor moderatie. Intern zal de beoordelingstool de moderatie-API's aanroepen om uw inhoud te scannen. Zodra het scannen is voltooid, ziet u een bericht waarin u wordt geïnformeerd dat er resultaten wachten op uw beoordeling.
+Verzend uw inhoud voor toezicht. Intern roept het beoordelings programma de toezicht-Api's aan om uw inhoud te scannen. Zodra het scannen is voltooid, ziet u een bericht waarin wordt gemeld dat er resultaten zijn die wachten op uw beoordeling.
 
-![Bestanden beheren](images/submitted.png)
+![Gemiddeld bestanden](images/submitted.png)
 
-## <a name="review-moderation-tags"></a>Moderatietags controleren
+## <a name="review-moderation-tags"></a>Moderator Tags controleren
 
-Bekijk de toegepaste moderatietags. U zien welke tags zijn toegepast op uw inhoud en wat de score was in elke categorie. Zie de onderwerpen [Afbeelding,](image-moderation-api.md) [tekst](text-moderation-api.md)en [videomoderatie](video-moderation-api.md) voor meer informatie over wat de verschillende inhoudstags aangeven.
+Controleer de toegepaste toezicht Tags. U kunt zien welke tags zijn toegepast op uw inhoud en wat de score in elke categorie heeft. Zie de onderwerpen over [afbeelding](image-moderation-api.md), [tekst](text-moderation-api.md)en [video](video-moderation-api.md) toezicht voor meer informatie over wat de verschillende inhouds Tags aangeven.
 
 ![Resultaat controleren](images/reviewresults_text.png)
 
-In een project u of uw beoordelingsteam deze tags wijzigen of indien nodig meer tags toevoegen. U verzendt deze wijzigingen met de knop **Volgende.** Terwijl uw bedrijfstoepassing de Moderator-API's aanroept, staat de gelabelde inhoud hier in de wachtrij, klaar om te worden beoordeeld door de menselijke beoordelingsteams. U snel grote hoeveelheden inhoud bekijken met behulp van deze aanpak.
+In een project kunnen u of uw beoordelings team deze tags wijzigen of meer Tags toevoegen als dat nodig is. U verzendt deze wijzigingen met de knop **volgende** . Als uw zakelijke toepassing de moderator-Api's aanroept, wordt de gelabelde inhoud hier in de wachtrij geplaatst, zodat deze kan worden gecontroleerd door de teams van de menselijke beoordeling. Met deze aanpak kunt u snel grote volumes met inhoud bekijken.
 
-Op dit moment hebt u de tool Inhoudsmoderator-beoordeling gebruikt om voorbeelden te zien van wat de service Content Moderator kan doen. Vervolgens u meer te weten komen over de beoordelingstool en hoe u deze integreren in een softwareproject met behulp van de Beoordelings-API's, of u naar de sectie [Volgende stappen](#next-steps) gaan om te leren hoe u de moderatie-API's zelf in uw app gebruiken.
+Op dit moment hebt u het hulp programma Content Moderator beoordeling gebruikt om voor beelden te bekijken van wat de Content Moderator-service kan doen. Daarna kunt u meer te weten komen over het hulp programma voor beoordeling en hoe u dit integreert in een software project met behulp van de controle-Api's, of u kunt door gaan naar de sectie [volgende stappen](#next-steps) voor meer informatie over het gebruik van de toezicht api's zelf in uw app.
 
-## <a name="learn-more-about-the-review-tool"></a>Meer informatie over de beoordelingstool
+## <a name="learn-more-about-the-review-tool"></a>Meer informatie over het hulp programma beoordeling
 
-Voor meer informatie over het gebruik van de tool Inhoudsmoderator, bekijk de tool [guide review](Review-Tool-User-Guide/human-in-the-loop.md) en raadpleeg de API's van de beoordelingstool om te leren hoe u de ervaring voor menselijke beoordeling verfijnen:
-- De [Job API](try-review-api-job.md) scant uw inhoud met behulp van de moderatie API's en genereert beoordelingen in de beoordelingstool. 
-- Met [de Review API](try-review-api-review.md) worden direct beeld-, tekst- of videobeoordelingen gemaakt voor menselijke moderators zonder eerst de inhoud te scannen. 
-- De [Workflow-API](try-review-api-workflow.md) maakt, werkt bij en krijgt details over de aangepaste werkstromen die uw team maakt.
+Als u meer wilt weten over het gebruik van het hulp programma voor het evalueren van Content Moderator, raadpleegt u de hand leiding voor het [beoordelings programma](Review-Tool-User-Guide/human-in-the-loop.md) en bekijkt u de api's van het controle programma voor meer informatie over het afstemmen van de ervaring voor menselijke beoordeling:
+- Met de [taak-API](try-review-api-job.md) wordt uw inhoud gescand met behulp van de moderator-api's en worden er beoordelingen gegenereerd in het beoordelings programma. 
+- De [beoordelings-API](try-review-api-review.md) maakt rechtstreeks afbeeldings-, tekst-of video Beoordelingen voor menselijke moderators zonder eerst de inhoud te scannen. 
+- De [werk stroom-API](try-review-api-workflow.md) maakt, vernieuwt en haalt Details over de aangepaste werk stromen die uw team maakt.
 
-Of ga verder met de volgende stappen om aan de slag te gaan met de moderatie-API's in uw code.
+Of ga door met de volgende stappen om aan de slag te gaan met behulp van de toezicht-Api's in uw code.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het gebruik van de moderatie-API's zelf in uw app.
-- Beeldmoderatie implementeren. Gebruik de [API-console](try-image-api.md) of volg de [.NET SDK quickstart](dotnet-sdk-quickstart.md) om afbeeldingen te scannen en potentiële inhoud voor volwassenen en racy te detecteren met behulp van tags, betrouwbaarheidsscores en andere geëxtraheerde informatie.
-- Tekstmoderatie implementeren. Gebruik de [API-console](try-text-api.md) of gebruik de [.NET SDK quickstart](dotnet-sdk-quickstart.md) om tekstinhoud te scannen op mogelijke godslastering, door machines ondersteunde ongewenste tekstclassificatie (preview) en persoonlijke gegevens.
-- Implementeer videomoderatie. Volg de [handleiding videomoderatie voor C#](video-moderation-api.md) om video's te scannen en potentiële inhoud voor volwassenen en racy te detecteren. 
+Meer informatie over het gebruik van de toezicht-Api's zelf in uw app.
+- De afbeeldings toezicht wordt geïmplementeerd. Gebruik de [API-console](try-image-api.md) of volg de [Snelstartgids van de .NET SDK](dotnet-sdk-quickstart.md) om afbeeldingen te scannen en potentiële inhoud voor volwassenen en ongepaste te detecteren met behulp van tags, betrouwbaarheids scores en andere geëxtraheerde informatie.
+- Implementeer tekst toezicht. Gebruik de [API-console](try-text-api.md) of gebruik de [SNELSTARTGIDS van .NET SDK](dotnet-sdk-quickstart.md) voor het scannen van tekst inhoud voor mogelijk scheld woorden, ongewenste tekst classificatie (preview) en persoonlijke gegevens.
+- Implementeer de video toezicht. Volg de [instructies voor het beheer van Video's voor C#](video-moderation-api.md) om Video's te scannen en potentiële inhoud voor volwassenen en ongepaste te detecteren. 
