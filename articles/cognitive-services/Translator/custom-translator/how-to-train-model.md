@@ -1,7 +1,7 @@
 ---
-title: Train een model - Custom Translator
+title: Een model trainen-aangepaste Translator
 titleSuffix: Azure Cognitive Services
-description: Het trainen van een model is een belangrijke stap bij het bouwen van een vertaalmodel. Training gebeurt op basis van documenten die u voor die trainingen selecteert.
+description: Trainings een model is een belang rijke stap bij het bouwen van een Vertaal model. De training vindt plaats op basis van documenten die u voor die trainingen selecteert.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,69 +10,69 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: a875cc8f5e69be8b940f9d177d3b915bfaa2c973
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68595682"
 ---
 # <a name="train-a-model"></a>Een model trainen
 
-Het trainen van een model is de belangrijke stap om een vertaalmodel te bouwen, want zonder een opleiding kan model niet worden gebouwd. Training gebeurt op basis van documenten die u selecteert voor de trainingen.
+Training a model is de belang rijke stap bij het bouwen van een Vertaal model, omdat zonder trainingen geen training kan worden gebouwd. De training vindt plaats op basis van documenten die u voor de trainingen selecteert.
 
 Een model trainen:
 
-1.  Selecteer het project waar u een model wilt maken.
+1.  Selecteer het project waar u een model wilt bouwen.
 
-2.  Op het tabblad Gegevens voor het project worden alle relevante documenten voor het projecttaalpaar weergegeven. Selecteer handmatig de documenten die u wilt gebruiken om uw model te trainen. U trainings-, tuning- en testdocumenten selecteren op dit scherm. Ook selecteert u gewoon de trainingsset en laat Custom Translator de tuning- en testsets voor u maken.
+2.  Op het tabblad gegevens voor het project worden alle relevante documenten voor het taal paar van het project weer gegeven. Selecteer hand matig de documenten die u wilt gebruiken voor het trainen van uw model. U kunt in dit scherm trainings-, afstemmings-en test documenten selecteren. U hoeft alleen de Trainingsset te selecteren en aangepaste Translator te hebben om de afstemmings-en test sets voor u te maken.
 
-    -  Documentnaam: Naam van het document.
+    -  Document naam: naam van het document.
 
-    -  Koppeling: als dit document een parallel of eentalig document is. Eentalige documenten worden momenteel niet ondersteund voor training.
+    -  Koppelen: als dit document een parallel-of Monolingual-document is. Monolingual documenten worden momenteel niet ondersteund voor training.
 
-    -  Documenttype: kan training, tuning, testen of woordenboek zijn.
+    -  Document type: kan training, afstemming, testen of woorden lijst zijn.
 
-    -  Taalpaar: hiermee wordt de bron- en doeltaal voor het project weergegeven.
+    -  Taal paar: hier worden de bron-en doel taal voor het project weer gegeven.
 
-    -  Bronzinnen: geeft het aantal zinnen weer dat uit het bronbestand wordt gehaald.
+    -  Bron zinnen: toont het aantal zinnen dat is geëxtraheerd uit het bron bestand.
 
-    -  Doelzinnen: geeft het aantal zinnen weer dat uit het doelbestand wordt gehaald.
+    -  Doel zinnen: toont het aantal zinnen dat is geëxtraheerd uit het doel bestand.
 
     ![Model trainen](media/how-to/how-to-train-model.png)
 
-3.  Klik op de knop Trainen.
+3.  Klik op de knop trainen.
 
-4.  Geef in het dialoogvenster een naam voor uw model op.
+4.  Geef in het dialoog venster een naam op voor uw model.
 
-5.  Klik op Treinmodel.
+5.  Klik op model trainen.
 
-    ![Dialoogvenster Treinmodel](media/how-to/how-to-train-model-2.png)
+    ![Dialoog venster voor Train model](media/how-to/how-to-train-model-2.png)
 
-6.  Custom Translator zal de training indienen en de status van de training weergeven op het tabblad modellen.
+6.  De training wordt door aangepast Translator verzonden en de status van de training wordt weer gegeven op het tabblad modellen.
 
-    ![Treinmodelpagina](media/how-to/how-to-train-model-3.png)
+    ![Model pagina Train](media/how-to/how-to-train-model-3.png)
 
 >[!Note]
->Custom Translator ondersteunt 10 gelijktijdige trainingen binnen een werkruimte op elk moment.
+>Custom Translator ondersteunt tien gelijktijdige trainingen binnen een werk ruimte op elk gewenst moment.
 
 
 ## <a name="edit-a-model"></a>Een model bewerken
 
-U een model bewerken via de koppeling Bewerken op de pagina Modeldetails.
+U kunt een model bewerken met behulp van de koppeling bewerken op de pagina model Details.
 
-1.  Klik op het potloodpictogram.
+1.  Klik op het potlood pictogram.
 
     ![Model bewerken](media/how-to/how-to-edit-model.png)
 
-2.  In de dialoogvensterwijziging
+2.  In het dialoog venster wijzigen,
 
-    1.  Modelnaam (vereist): Geef uw model een betekenisvolle naam.
+    1.  Model naam (vereist): Geef uw model een zinvolle naam.
 
-        ![Dialoogvenster meer bewerken](media/how-to/how-to-edit-model-dialog.png)
+        ![Meer dialoog venster bewerken](media/how-to/how-to-edit-model-dialog.png)
 
 3.  Klik op Opslaan.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [het weergeven van modeldetails](how-to-view-model-details.md).
+- Meer informatie [over het weer geven van model Details](how-to-view-model-details.md).

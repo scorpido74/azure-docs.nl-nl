@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Mind Tools Toolkit | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Mind Tools Toolkit.
+title: 'Zelf studie: integratie met de Toolkit hulp middelen Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen de Toolkit van Azure Active Directory en de hulp middelen voor mindmaps.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,71 +16,71 @@ ms.date: 03/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b12bd8ba7998b924035a0946f9e32b88ce206e4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79476498"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mind-tools-toolkit"></a>Zelfstudie: Azure Active Directory-integratie met Mind Tools Toolkit
+# <a name="tutorial-azure-active-directory-integration-with-mind-tools-toolkit"></a>Zelf studie: integratie met de Toolkit van de mindmap-werkset Azure Active Directory
 
-In deze zelfstudie leert u hoe u Mind Tools Toolkit integreren met Azure Active Directory (Azure AD).
-Het integreren van mind tools toolkit met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u de Toolkit van de mindmap tools integreert met Azure Active Directory (Azure AD).
+Het integreren van de hulp programmas Toolkit met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot mindtoolstoolkit.
-* U uw gebruikers automatisch laten inloggen bij mindtoolstoolkit (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot de Toolkit met hulp middelen.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij de Toolkit hulp middelen (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie wilt configureren met mindtools toolkit, hebt u de volgende items nodig:
+U hebt de volgende items nodig om Azure AD-integratie te configureren met de Toolkit met hulp middelen:
 
-* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
-* Mind Tools Toolkit single sign-on enabled subscription
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Abonnement voor een eenmalige aanmelding met de hulp middelen Toolkit
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Mind Tools Toolkit ondersteunt **SP** geïnitieerde SSO
-* Mind Tools Toolkit ondersteunt **Just In Time** gebruikersinrichting
-* Zodra u mind tools toolkit hebt geconfigureerd, u sessiecontrole afdwingen, die exfiltratie en infiltratie van de gevoelige gegevens van uw organisatie in realtime beschermen. Sessiebeheer strekt zich uit van Voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* De Toolkit van mindmaps biedt ondersteuning voor door **SP** GEÏNITIEERDe SSO
+* De Toolkit voor mindmap-Hulpprogram Ma's ondersteunt **just-in-time** -gebruikers inrichting
+* Zodra u de Toolkit met de mindmap tools hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-mind-tools-toolkit-from-the-gallery"></a>Mind Tools Toolkit toevoegen vanuit de galerij
+## <a name="adding-mind-tools-toolkit-from-the-gallery"></a>Hulp programma voor mindmaps toevoegen vanuit de galerie
 
-Als u de integratie van Mind Tools Toolkit in Azure AD wilt configureren, moet u mind tools toolkit vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van de Toolkit met aandacht-werkset wilt configureren in azure AD, moet u de Toolkit hulp middelen toevoegen vanuit de galerie aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
-1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
-1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
-1. Typ Mind **Tools Toolkit** in de sectie Toevoegen in **de galerijsectie** in het zoekvak.
-1. Selecteer **Mind Tools Toolkit** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in het gedeelte **toevoegen vanuit de galerie** de opdracht **hulp programmas Toolkit** in het zoekvak.
+1. Selecteer de **Toolkit** van het resultaten paneel en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met Mind Tools Toolkit op basis van een testgebruiker genaamd **B.Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Mind Tools Toolkit.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met behulp van de Toolkit van de mindmap-werkset op basis van een test gebruiker met de naam **B. Simon**.
+Voor de werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in de Toolkit met hulp middelen worden ingesteld.
 
-Als u Azure AD single sign-on wilt configureren en testen met Mind Tools Toolkit, moet u de volgende bouwstenen voltooien:
+U moet de volgende bouw stenen volt ooien om de eenmalige aanmelding van Azure AD te configureren en te testen met de Toolkit van mindmaps.
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
-    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
-    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
-1. **[Mind Tools Toolkit SSO configureren](#configure-mind-tools-toolkit-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
-    * **[Maak Mind Tools Toolkit test gebruiker](#create-mind-tools-toolkit-test-user)** - om een tegenhanger van B.Simon in Mind Tools Toolkit die is gekoppeld aan de Azure AD vertegenwoordiging van de gebruiker.
-1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. De **[Services SSO](#configure-mind-tools-toolkit-sso)** van de mindmap-werkset configureren: voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    * Een **[test gebruiker](#create-mind-tools-toolkit-test-user)** met een mindmap-werkset maken: als u een equivalent van B. Simon wilt hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD te configureren met mindtoolstoolkit:
+Voer de volgende stappen uit om de eenmalige aanmelding voor Azure AD te configureren met de opdracht ' mindmap tools ':
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Mind Tools** Toolkit-toepassingsintegratie de optie **Eén aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Mindmap tools Toolkit** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -97,13 +97,13 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
     In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId>`.
 
     > [!Note]
-    > De waarde voor de aanmeldings-URL is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [mind tools toolkit client ondersteuningsteam](mailto:support@goodpractice.com) om de waarde te krijgen.
+    > De waarde voor de aanmeldings-URL is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team](mailto:support@goodpractice.com) van de Toolkit van het hulp programma.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Kopieer in de sectie **Mind Tools Toolkit** instellen de juiste URL(s) volgens uw eis.
+6. Kopieer de gewenste URL ('s) op basis van uw vereiste in het gedeelte **Mindmap tools Toolkit instellen** .
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -115,58 +115,58 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
-1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **nieuwe gebruiker** boven aan het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
-   1. Klik **op Maken**.
+   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
+   1. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Mind Tools Toolkit.
+In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan de Toolkit met aandacht.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
-1. Selecteer mind tools **toolkit**in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de lijst toepassingen de optie **hulp programma voor mindmaps**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
-    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
-1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
-1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
 
-## <a name="configure-mind-tools-toolkit-sso"></a>Mind Tools Toolkit SSO configureren
+## <a name="configure-mind-tools-toolkit-sso"></a>Services SSO van de mindmap-werkset configureren
 
-Als u eenmalige aanmelding wilt configureren aan de kant **van de Mind Tools Toolkit,** moet u de gedownloade Federation Metadata **XML** en de juiste gekopieerde URL's van Azure portal naar mind tools toolkit [support team](mailto:support@goodpractice.com)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op het vlak **hulp middelen** -werkset, moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar het [ondersteunings team van mindmap tools Toolkit](mailto:support@goodpractice.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
-### <a name="create-mind-tools-toolkit-test-user"></a>Mind Tools Toolkit test gebruiker maken
+### <a name="create-mind-tools-toolkit-test-user"></a>Test gebruiker voor het maken van een mindmap-werkset
 
-In deze sectie wordt een gebruiker genaamd B.Simon gemaakt in Mind Tools Toolkit. Mind Tools Toolkit ondersteunt **just-in-time provisioning**, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in mind tools toolkit, wordt er een nieuwe gemaakt wanneer u probeert toegang te krijgen tot Mind Tools Toolkit.
+In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in de Toolkit met hulp middelen. De Toolkit van mindmaps biedt ondersteuning voor **just-in-time-inrichting**, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker niet al bestaat in de mindmap tools Toolkit, wordt er een nieuwe gemaakt wanneer u probeert om de Toolkit van de mindmap tools te openen.
 
-### <a name="test-sso"></a>Test SSO
+### <a name="test-sso"></a>SSO testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Mind Tools Toolkit in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Mind Tools Toolkit waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel hulp middelen van mindmap in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Toolkit met hulp middelen waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Mind Tools Toolkit uitproberen met Azure AD](https://aad.portal.azure.com/)
+- [Try-werkset voor mindmaps met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Mind Tools Toolkit beschermen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [De Toolkit met denk bare Hulpprogram Ma's beveiligen met geavanceerde zicht baarheid en besturings elementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -1,7 +1,7 @@
 ---
 title: Een insluitende lezerservaring maken
 titleSuffix: Azure Cognitive Services
-description: In dit artikel ziet u hoe u een nieuwe Immersive Reader-bron maakt met een aangepast subdomein en vervolgens Azure AD configureert in uw Azure-tenant.
+description: In dit artikel wordt uitgelegd hoe u een nieuwe insluitende lezer-resource maakt met een aangepast subdomein en vervolgens Azure AD configureert in uw Azure-Tenant.
 services: cognitive-services
 author: rwaller
 manager: guillasi
@@ -11,27 +11,27 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
 ms.openlocfilehash: 41efe4592c65ae3cdd85ce1b212554e50691905a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78330716"
 ---
-# <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Een bron voor een meeslepende lezer maken en Azure Active Directory-verificatie configureren
+# <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Een resource voor insluitende lezer maken en Azure Active Directory authenticatie configureren
 
-In dit artikel bieden we een script waarmee een Immersive Reader-bron wordt gemaakt en Azure Active Directory(Azure AD)-verificatie wordt geconfigureerd. Elke keer dat een Immersive Reader-bron wordt gemaakt, of deze nu met dit script of in de portal wordt gebruikt, moet deze ook worden geconfigureerd met Azure AD-machtigingen. Dit script zal je daarbij helpen.
+In dit artikel bieden we een script waarmee een insluitende lezer-resource wordt gemaakt en Azure Active Directory-verificatie (Azure AD) wordt geconfigureerd. Telkens wanneer een insluitende lezer-resource wordt gemaakt, met dit script of in de portal, moet deze ook worden geconfigureerd met Azure AD-machtigingen. Dit script helpt u bij dat.
 
-Het script is ontworpen om alle benodigde Immersive Reader- en Azure AD-resources voor u allemaal in één stap te maken en te configureren. U echter ook gewoon Azure AD-verificatie configureren voor een bestaande Immersive Reader-bron, als u er bijvoorbeeld al een hebt gemaakt in de Azure-portal.
+Het script is ontworpen voor het maken en configureren van alle benodigde insluitende lezer en Azure AD-resources voor u in één stap. U kunt echter ook de Azure AD-verificatie voor een bestaande insluitende lezer-resource configureren, als dat bijvoorbeeld het geval is, dan moet u er al een hebben gemaakt in de Azure Portal.
 
-Voor sommige klanten kan het nodig zijn om meerdere Immersive Reader-bronnen te maken, voor ontwikkeling versus productie, of misschien voor meerdere verschillende regio's waarin uw service is geïmplementeerd. Voor die gevallen u meerdere keren terugkomen en het script meerdere keren gebruiken om verschillende bronnen voor meeslepende lezers te maken en deze te configureren met de Azure AD-machtigingen.
+Voor sommige klanten kan het nodig zijn om meerdere insluitende lezer-resources te maken voor ontwikkelings-en productie doeleinden, of mogelijk voor meerdere verschillende regio's waarop uw service is geïmplementeerd. In dergelijke gevallen kunt u het script meerdere keren gebruiken om verschillende insluitende lezers bronnen te maken en deze te configureren met de Azure AD-machtigingen.
 
-Het script is ontworpen om flexibel te zijn. Het zal eerst zoeken naar bestaande Immersive Reader en Azure AD-bronnen in uw abonnement, en maak ze alleen als dat nodig is als ze nog niet bestaan. Als het de eerste keer is dat je een Immersive Reader-bron maakt, doet het script alles wat je nodig hebt. Als u het alleen wilt gebruiken om Azure AD te configureren voor een bestaande Immersive Reader-bron die in de portal is gemaakt, doet dit ook. Het kan ook worden gebruikt om meerdere Immersive Reader-bronnen te maken en te configureren.
+Het script is zo ontworpen dat het flexibel is. Er wordt eerst gezocht naar bestaande insluitende lezer en Azure AD-resources in uw abonnement en deze worden alleen indien nodig gemaakt als ze nog niet bestaan. Als dit de eerste keer is dat u een insluitende lezer-resource maakt, heeft het script alles wat u nodig hebt. Als u de functie alleen wilt gebruiken voor het configureren van Azure AD voor een bestaande insluitende lezer-resource die in de portal is gemaakt, doet u dat ook. Het kan ook worden gebruikt voor het maken en configureren van meerdere insluitende Reader-resources.
 
-## <a name="set-up-powershell-environment"></a>PowerShell-omgeving instellen
+## <a name="set-up-powershell-environment"></a>Power shell-omgeving instellen
 
-1. Begin met het openen van de [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Controleer of de cloudshell is ingesteld op PowerShell in de `pwsh`vervolgkeuzelijst linksboven of door te typen.
+1. Begin met het openen van de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview). Zorg ervoor dat de Cloud shell is ingesteld op Power shell in de vervolg keuzelijst linksboven of door te `pwsh`typen.
 
-1. Kopieer en plak het volgende codefragment in de shell.
+1. Kopieer het volgende code fragment en plak het in de shell.
 
     ```azurepowershell-interactive
     function Create-ImmersiveReaderResource(
@@ -141,7 +141,7 @@ Het script is ontworpen om flexibel te zijn. Het zal eerst zoeken naar bestaande
     }
     ```
 
-1. Voer de `Create-ImmersiveReaderResource`functie uit, met de parameters naar gelang van het geval.
+1. Voer de functie `Create-ImmersiveReaderResource`uit en geef zo nodig de para meters op.
 
     ```azurepowershell-interactive
     Create-ImmersiveReaderResource
@@ -159,18 +159,18 @@ Het script is ontworpen om flexibel te zijn. Het zal eerst zoeken naar bestaande
 
     | Parameter | Opmerkingen |
     | --- | --- |
-    | SubscriptionName |Naam van het Azure-abonnement dat u wilt gebruiken voor uw Immersive Reader-bron. U moet een abonnement hebben om een resource te maken. |
-    | ResourceName |  Moet alfanumeriek zijn en '-' kunnen bevatten, zolang het '-' niet het eerste of laatste teken is. De lengte mag niet groter zijn dan 63 tekens.|
-    | ResourceSubdomein |Een aangepast subdomein is nodig voor uw Immersive Reader-bron. Het subdomein wordt door de SDK gebruikt wanneer de immersive reader-service wordt aangeroepen om de Reader te starten. Het subdomein moet wereldwijd uniek zijn. Het subdomein moet alfanumeriek zijn en '-' kunnen bevatten, zolang het '-' niet het eerste of laatste teken is. De lengte mag niet groter zijn dan 63 tekens. Deze parameter is optioneel als de resource al bestaat. |
-    | ResourceSKU |Opties: `S0`. Ga naar onze [prijspagina voor Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) voor meer informatie over elke beschikbare SKU. Deze parameter is optioneel als de resource al bestaat. |
-    | ResourceLocation |Opties: `eastus` `eastus2`, `southcentralus` `westus`, `westus2` `australiaeast`, `southeastasia` `centralindia`, `japaneast` `northeurope`, `uksouth` `westeurope`, , , , , . Deze parameter is optioneel als de resource al bestaat. |
-    | ResourceGroupName |Resources worden gemaakt in resourcegroepen binnen abonnementen. Geef de naam van een bestaande resourcegroep. Als de resourcegroep nog niet bestaat, wordt er een nieuwe met deze naam gemaakt. |
-    | ResourceGroupLocatie |Als uw resourcegroep niet bestaat, moet u een locatie leveren waar u de groep maken. Voer . `az account list-locations` Gebruik de *eigenschap naam* (zonder spaties) van het geretourneerde resultaat. Deze parameter is optioneel als uw resourcegroep al bestaat. |
-    | AADAppDisplayName |De weergavenaam van de Azure Active Directory-toepassing. Als er geen bestaande Azure AD-toepassing wordt gevonden, wordt er een nieuwe met deze naam gemaakt. Deze parameter is optioneel als de Azure AD-toepassing al bestaat. |
-    | AADAppIdentifierUri |De URI voor de Azure AD-app. Als er geen bestaande Azure AD-app wordt gevonden, wordt er een nieuwe app met deze URI gemaakt. Bijvoorbeeld `https://immersivereaderaad-mycompany`. |
-    | AADAppClientSecret |Een wachtwoord dat u maakt dat later wordt gebruikt om te verifiëren bij het aanschaffen van een token om de immersive reader te starten. Het wachtwoord moet ten minste 16 tekens lang zijn, ten minste 1 speciaal teken bevatten en ten minste 1 numeriek teken bevatten. |
+    | SubscriptionName |De naam van het Azure-abonnement dat moet worden gebruikt voor uw insluitende lezer-resource. U moet een abonnement hebben om een resource te kunnen maken. |
+    | ResourceName |  Moet alfanumeriek zijn en kan '-' bevatten, zolang het niet het eerste of laatste teken is. De lengte mag niet langer zijn dan 63 tekens.|
+    | ResourceSubdomain |Er is een aangepast subdomein nodig voor uw insluitende lezer-resource. Het subdomein wordt gebruikt door de SDK bij het aanroepen van de insluitende lezer-service om de lezer te starten. Het subdomein moet globaal uniek zijn. Het subdomein moet alfanumeriek zijn en kan '-' bevatten, zolang het niet het eerste of laatste teken is. De lengte mag niet langer zijn dan 63 tekens. Deze para meter is optioneel als de resource al bestaat. |
+    | ResourceSKU |Opties: `S0`. Ga naar onze [pagina met Cognitive Services prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) voor meer informatie over elke beschik bare SKU. Deze para meter is optioneel als de resource al bestaat. |
+    | ResourceLocation |Opties: `eastus`, `eastus2`, `southcentralus`, `westus`, `westus2`, `australiaeast`, `southeastasia`, `centralindia`, `japaneast`, `northeurope`, `uksouth`, `westeurope`. Deze para meter is optioneel als de resource al bestaat. |
+    | ResourceGroupName |Resources worden gemaakt in resource groepen binnen abonnementen. Geef de naam van een bestaande resource groep op. Als de resource groep nog niet bestaat, wordt er een nieuwe met deze naam gemaakt. |
+    | ResourceGroupLocation |Als uw resource groep niet bestaat, moet u een locatie opgeven voor het maken van de groep. Voer uit `az account list-locations`om een lijst met locaties te vinden. Gebruik de eigenschap *name* (zonder spaties) van het geretourneerde resultaat. Deze para meter is optioneel als uw resource groep al bestaat. |
+    | AADAppDisplayName |De weergave naam van de Azure Active Directory-toepassing. Als een bestaande Azure AD-toepassing niet wordt gevonden, wordt er een nieuw item met deze naam gemaakt. Deze para meter is optioneel als de Azure AD-toepassing al bestaat. |
+    | AADAppIdentifierUri |De URI voor de Azure AD-app. Als een bestaande Azure AD-app niet wordt gevonden, wordt er een nieuw item met deze URI gemaakt. Bijvoorbeeld `https://immersivereaderaad-mycompany`. |
+    | AADAppClientSecret |Een wacht woord dat u maakt, wordt later gebruikt voor verificatie bij het ophalen van een token om de insluitende lezer te starten. Het wacht woord moet ten minste 16 tekens lang zijn, ten minste één speciaal teken bevatten en ten minste één numeriek teken bevatten. |
 
-1. Kopieer de JSON-uitvoer naar een tekstbestand voor later gebruik. De uitvoer moet er als volgt uitzien.
+1. Kopieer de JSON-uitvoer naar een tekst bestand voor later gebruik. De uitvoer moet er als volgt uitzien.
 
     ```json
     {
@@ -183,10 +183,10 @@ Het script is ontworpen om flexibel te zijn. Het zal eerst zoeken naar bestaande
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijk de [Node.js snel start](./quickstart-nodejs.md) om te zien wat je nog meer doen met de Immersive Reader SDK met behulp van Node.js
-* Bekijk de [Python-zelfstudie](./tutorial-python.md) om te zien wat u nog meer doen met de Immersive Reader SDK met Python
-* Bekijk de [Swift-zelfstudie](./tutorial-ios-picture-immersive-reader.md) om te zien wat je nog meer doen met de Immersive Reader SDK met Swift
-* Ontdek de [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) en de [Immersive Reader SDK Reference](./reference.md)
+* Bekijk de [Snelstartgids voor node. js](./quickstart-nodejs.md) om te zien wat u nog meer kunt doen met de insluitende lezer-SDK met behulp van node. js
+* Bekijk de [python-zelf studie](./tutorial-python.md) om te zien wat u nog meer kunt doen met de insluitende Reader SDK met behulp van python
+* Bekijk de [SWIFT-zelf studie](./tutorial-ios-picture-immersive-reader.md) om te zien wat u nog meer met de insluitende lezer-SDK kunt doen met behulp van SWIFT
+* Verken de [insluitende lezer SDK](https://github.com/microsoft/immersive-reader-sdk) en de referentie voor de [insluitende lezer SDK](./reference.md)
 
 
 

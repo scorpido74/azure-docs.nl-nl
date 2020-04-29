@@ -1,7 +1,7 @@
 ---
-title: Regio's - Spraakservice
+title: Regio's-spraak service
 titleSuffix: Azure Cognitive Services
-description: Een lijst met beschikbare regio's en eindpunten voor de spraakservice, inclusief spraak-naar-tekst, tekst-naar-spraak en spraakvertaling.
+description: Een lijst met beschik bare regio's en eind punten voor de spraak service, inclusief spraak naar tekst, tekst naar spraak en spraak omzetting.
 services: cognitive-services
 author: mahilleb-msft
 manager: nitinme
@@ -12,39 +12,39 @@ ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
 ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220466"
 ---
-# <a name="speech-service-supported-regions"></a>Door spraakservice ondersteunde regio's
+# <a name="speech-service-supported-regions"></a>Ondersteunde regio's voor spraak Services
 
-Met de spraakservice kan uw toepassing audio converteren naar tekst, spraakvertaling uitvoeren en geheime tekst naar spraak uitvoeren. De service is beschikbaar in meerdere regio's met unieke eindpunten voor de Speech SDK en REST API's.
+Met de speech-service kan uw toepassing audio naar tekst omzetten, spraak omzetting uitvoeren en tekst naar spraak converteren. De service is beschikbaar in meerdere regio's met unieke eind punten voor de Speech SDK en REST Api's.
 
-De spraakportal voor het uitvoeren van aangepaste configuraties voor uw spraakervaring voor alle regio's is hier beschikbaar:https://speech.microsoft.com
+De spraak Portal om aangepaste configuraties uit te voeren op uw spraak ervaring voor alle regio's is hier beschikbaar:https://speech.microsoft.com
 
-Controleer de oproep voor het inschakelen van uw spraakservice op de regio voor uw abonnement.
+Zorg ervoor dat de oproep overeenkomt met de regio voor uw abonnement voor het aanroepen van uw spraak service.
 
 ## <a name="speech-sdk"></a>Speech-SDK
 
-In de [SpraakSDK](speech-sdk.md)worden regio's opgegeven als tekenreeks `SpeechConfig.FromSubscription` (bijvoorbeeld als parameter in de SpraakSDK voor C#).
+In de [Speech SDK](speech-sdk.md)worden regio's opgegeven als een teken reeks (bijvoorbeeld als een para meter voor `SpeechConfig.FromSubscription` in de Speech SDK voor C#).
 
-### <a name="speech-to-text-text-to-speech-and-translation"></a>Spraak-naar-tekst, tekst-naar-spraak en vertaling
+### <a name="speech-to-text-text-to-speech-and-translation"></a>Spraak naar tekst, tekst-naar-spraak en omzetting
 
-De portal voor het aanpassen van spraak is hier beschikbaar:https://speech.microsoft.com
+De portal voor spraak aanpassing is hier beschikbaar:https://speech.microsoft.com
 
-De spraakservice is in deze regio's beschikbaar voor **spraakherkenning,** **tekst-naar-spraak**en **vertaling:**
+De speech-service is beschikbaar in deze regio's voor **spraak herkenning**, **tekst naar spraak**en **vertaling**:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
-Als u de [Spraak-SDK](speech-sdk.md)gebruikt, worden regio's opgegeven door `SpeechConfig.FromSubscription`de **regio-id** (bijvoorbeeld als parameter om ). Controleer of de regio overeenkomt met de regio van uw abonnement.
+Als u de [spraak-SDK](speech-sdk.md)gebruikt, worden regio's opgegeven met de **regio-id** (bijvoorbeeld als een para meter `SpeechConfig.FromSubscription`aan). Zorg ervoor dat de regio overeenkomt met de regio van uw abonnement.
 
 ### <a name="intent-recognition"></a>Intentieherkenning
 
-Beschikbare regio's voor **intentieherkenning** via de SpraakSDK zijn de volgende:
+Beschik bare regio's voor **intentie herkenning** via de Speech SDK zijn de volgende:
 
-| Regio wereldwijd | Regio           | Regio-id |
+| Wereld wijde regio | Regio           | Regio-id |
 | ------------- | ---------------- | -------------------- |
 | Azië          | Azië - oost        | `eastasia`           |
 | Azië          | Azië - zuidoost   | `southeastasia`      |
@@ -59,11 +59,11 @@ Beschikbare regio's voor **intentieherkenning** via de SpraakSDK zijn de volgend
 | Noord-Amerika | VS - west 2        | `westus2`            |
 | Zuid-Amerika | Brazilië - zuid     | `brazilsouth`        |
 
-Dit is een subset van de publicatieregio's die worden ondersteund door de [dienst Taalbegrip (LUIS).](/azure/cognitive-services/luis/luis-reference-regions)
+Dit is een subset van de publicatie regio's die worden ondersteund door de [Language Understanding-service (Luis)](/azure/cognitive-services/luis/luis-reference-regions).
 
 ### <a name="voice-assistants"></a>Spraakassistenten
 
-De [Speech SDK](speech-sdk.md) ondersteunt spraakassistentmogelijkheden in deze regio's: **voice assistant**
+De [spraak-SDK](speech-sdk.md) ondersteunt de mogelijkheden van de **Voice Assistant** in deze regio's:
 
 | Regio         | Regio-id |
 | -------------- | -------------------- |
@@ -77,27 +77,27 @@ De [Speech SDK](speech-sdk.md) ondersteunt spraakassistentmogelijkheden in deze 
 
 ## <a name="rest-apis"></a>REST-API’s
 
-De spraakservice stelt ook REST-eindpunten bloot voor spraak-naar-tekst- en tekst-naar-spraakverzoeken.
+De spraak service stelt ook REST-eind punten beschikbaar voor aanvragen voor spraak naar tekst en tekst naar spraak.
 
 ### <a name="speech-to-text"></a>Spraak naar tekst
 
-Zie [Speech-to-text REST API voor](rest-speech-to-text.md)referentiedocumentatie voor spraak naar tekst.
+Zie [spraak-naar-tekst-rest API](rest-speech-to-text.md)voor naslag informatie over spraak naar tekst.
 
-Het eindpunt voor de REST API heeft deze indeling:
+Het eind punt voor de REST API heeft de volgende indeling:
 
 ```
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
 ```
 
-Vervang `<REGION_IDENTIFIER>` in deze tabel de id die overeenkomt met de regio van uw abonnement:
+Vervang `<REGION_IDENTIFIER>` door de id die overeenkomt met de regio van uw abonnement uit deze tabel:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
 > [!NOTE]
-> De taalparameter moet aan de URL worden toegevoegd om te voorkomen dat u een HTTP-fout van 4xx ontvangt. De taal die is ingesteld op Amerikaans Engels met `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`behulp van het Eindpunt van west-VS is bijvoorbeeld: .
+> De para meter language moet worden toegevoegd aan de URL om te voor komen dat er een 4xx HTTP-fout wordt ontvangen. Bijvoorbeeld, de taal die is ingesteld op Amerikaans-Engels met het eind punt VS `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`West is:.
 
 ### <a name="text-to-speech"></a>Tekst naar spraak
 
-Zie [Text-to-speech REST API voor](rest-text-to-speech.md)tekst-naar-spraakreferentie.
+Zie [tekst-naar-spraak-rest API](rest-text-to-speech.md)voor naslag informatie over tekst naar spraak.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]

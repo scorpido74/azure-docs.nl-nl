@@ -1,7 +1,7 @@
 ---
 title: Virtuele netwerken
 titleSuffix: Azure Cognitive Services
-description: Een gelaagde netwerkbeveiliging configureren voor uw cognitive services-bronnen.
+description: Configureer gelaagde netwerk beveiliging voor uw Cognitive Services-resources.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,40 +10,40 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
 ms.openlocfilehash: 0988c8154c63bb408493edf3243078e625c80d53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79371219"
 ---
-# <a name="configure-azure-cognitive-services-virtual-networks"></a>Virtuele netwerken van Azure Cognitive Services configureren
+# <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Cognitive Services virtuele netwerken configureren
 
-Azure Cognitive Services biedt een gelaagd beveiligingsmodel. Met dit model u uw Cognitive Services-accounts beveiligen voor een specifieke subset van netwerken. Wanneer netwerkregels zijn geconfigureerd, hebben alleen toepassingen die gegevens aanvragen via de opgegeven set netwerken toegang tot het account. U de toegang tot uw bronnen beperken met het filteren van aanvragen. Alleen aanvragen toestaan die afkomstig zijn van opgegeven IP-adressen, IP-bereiken of uit een lijst met subnetten in [Azure Virtual Networks](../virtual-network/virtual-networks-overview.md). Als je geïnteresseerd bent in dit aanbod, moet je [preview-toegang aanvragen.](https://aka.ms/cog-svc-vnet-signup)
+Azure Cognitive Services biedt een gelaagd beveiligings model. Met dit model kunt u uw Cognitive Services-accounts beveiligen met een specifieke subset van netwerken. Wanneer netwerk regels zijn geconfigureerd, hebben alleen toepassingen die gegevens aanvragen via de opgegeven set netwerken toegang tot het account. U kunt de toegang tot uw resources beperken met aanvraag filtering. Het toestaan van alleen aanvragen die afkomstig zijn van opgegeven IP-adressen, IP-bereiken of van een lijst met subnetten in [Azure Virtual Networks](../virtual-network/virtual-networks-overview.md). Als u geïnteresseerd bent in dit aanbod, moet u Preview- [toegang aanvragen](https://aka.ms/cog-svc-vnet-signup).
 
-Een toepassing die toegang heeft tot een Cognitive Services-bron wanneer netwerkregels van kracht zijn, vereist autorisatie. Autorisatie wordt ondersteund met [Azure Active Directory-referenties](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) of met een geldige API-sleutel.
+Een toepassing die toegang heeft tot een Cognitive Services resource wanneer de netwerk regels van kracht zijn, is autorisatie vereist. Autorisatie wordt ondersteund met [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD)-referenties of met een geldige API-sleutel.
 
 > [!IMPORTANT]
-> Als u firewallregels inschakelt voor uw Cognitive Services-account, worden binnenkomende aanvragen voor gegevens standaard geblokkeerd. Om aanvragen door te laten gaan, moet aan een van de volgende voorwaarden worden voldaan:
-> * De aanvraag moet afkomstig zijn van een service die werkt binnen een Azure Virtual Network (VNet) op de toegestane subnetlijst van het doel-Cognitive Services-account. Het eindpunt in aanvragen die afkomstig zijn van VNet moet worden ingesteld als het [aangepaste subdomein](cognitive-services-custom-subdomains.md) van uw Cognitive Services-account.
-> * Of het verzoek moet afkomstig zijn van een toegestane lijst met IP-adressen.
+> Als u firewall regels inschakelt voor uw Cognitive Services account, worden binnenkomende aanvragen voor gegevens standaard geblokkeerd. Voor het toestaan van aanvragen via moet aan een van de volgende voor waarden worden voldaan:
+> * De aanvraag moet afkomstig zijn van een service in een Azure Virtual Network (VNet) in de lijst met toegestane subnetten van het doel Cognitive Services account. Het eind punt van aanvragen die afkomstig zijn van VNet, moet worden ingesteld als het [aangepaste subdomein](cognitive-services-custom-subdomains.md) van uw Cognitive Services-account.
+> * Of de aanvraag moet afkomstig zijn uit een lijst met toegestane IP-adressen.
 >
-> Aanvragen die worden geblokkeerd, zijn ook die van andere Azure-services, van de Azure-portal, van logboekregistratie- en metrische services, enzovoort.
+> Aanvragen die zijn geblokkeerd, zijn onder andere die van andere Azure-Services, van de Azure Portal, van de services logboek registratie en metrische gegevens, enzovoort.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenarios"></a>Scenario's
 
-Als u uw cognitive services-bron wilt beveiligen, moet u eerst een regel configureren om standaard toegang tot verkeer van alle netwerken (inclusief internetverkeer) te weigeren. Vervolgens moet u regels configureren die toegang verlenen tot verkeer van specifieke VNets. Met deze configuratie u een beveiligde netwerkgrens voor uw toepassingen bouwen. U ook regels configureren om toegang te verlenen tot verkeer uit bepaalde IP-adresbereiken van openbare internet, waardoor verbindingen van specifieke internet- of on-premises clients kunnen worden ingeschakeld.
+Als u uw Cognitive Services resource wilt beveiligen, moet u eerst een regel configureren om de toegang tot verkeer van alle netwerken (met inbegrip van Internet verkeer) standaard te weigeren. Vervolgens configureert u regels die toegang verlenen tot verkeer van specifieke VNets. Met deze configuratie kunt u een beveiligde netwerk grens maken voor uw toepassingen. U kunt ook regels configureren voor het verlenen van toegang tot verkeer van open bare IP-adresbereiken voor het Internet, het inschakelen van verbindingen van specifieke internet-of lokale clients.
 
-Netwerkregels worden afgedwongen op alle netwerkprotocollen voor Azure Cognitive Services, waaronder REST en WebSocket. Om toegang te krijgen tot gegevens met behulp van hulpprogramma's zoals de Azure-testconsoles, moeten expliciete netwerkregels worden geconfigureerd. U netwerkregels toepassen op bestaande bronnen voor Cognitive Services of wanneer u nieuwe bronnen voor cognitieve services maakt. Zodra netwerkregels zijn toegepast, worden ze afgedwongen voor alle aanvragen.
+Netwerk regels worden op alle netwerk protocollen afgedwongen voor Azure Cognitive Services, inclusief REST en WebSocket. Om toegang te krijgen tot gegevens met behulp van hulpprogram ma's zoals de Azure test consoles, moeten expliciete netwerk regels worden geconfigureerd. U kunt netwerk regels Toep assen op bestaande Cognitive Services resources of wanneer u nieuwe Cognitive Services resources maakt. Zodra de netwerk regels zijn toegepast, worden ze afgedwongen voor alle aanvragen.
 
-## <a name="supported-regions-and-service-offerings"></a>Ondersteunde regio's en serviceaanbiedingen
+## <a name="supported-regions-and-service-offerings"></a>Ondersteunde regio's en service aanbiedingen
 
-Virtuele netwerkondersteuning voor cognitieve diensten die hieronder worden vermeld, is beperkt tot de *regio's Central US EUAP*, *South Central US*, East *US* *, West US 2,* *North Europe*, South *Africa North*, *West-Europe*, *Central India*, Australia *East*, *West US*en US *Gov Virginia* Azure. Als het serviceaanbod hier niet wordt vermeld, biedt het geen ondersteuning voor virtuele netwerken.
+Ondersteuning voor virtuele netwerken voor Cognitive Services onderstaande lijst is beperkt tot *de centrale VS-EUAP*, *Zuid-Centraal VS*, VS- *Oost*, *vs-West 2*, *Europa-Noord*, *Zuid-Afrika-Noord*, *Europa-West*, *Centraal-India*, *Australië-Oost*, *VS-West*en *US gov-Virginia* Azure-regio's. Als de service aanbieding hier niet wordt vermeld, ondersteunt deze geen virtuele netwerken.
 
 > [!div class="checklist"]
 > * [Anomaly Detector](./anomaly-detector/index.yml)
-> * [Computer Visie](./computer-vision/index.yml)
+> * [Computer Vision](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
 > * [Custom Vision](./custom-vision-service/index.yml)
 > * [Face](./face/index.yml)
@@ -53,15 +53,15 @@ Virtuele netwerkondersteuning voor cognitieve diensten die hieronder worden verm
 > * [Tekstanalyse](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
 
-Virtuele netwerkondersteuning voor cognitieve services die hieronder worden vermeld, is beperkt tot de *regio's Central US EUAP*, *South Central US*, East *US,* *West US 2*, *Global*en US *Gov Virginia* Azure.
+Ondersteuning voor virtuele netwerken voor Cognitive Services onderstaande lijst is beperkt tot de *centrale VS-EUAP*, *Zuid-Centraal VS*, VS- *Oost*, *VS-West 2*, *wereld wijd*en *US gov-Virginia* Azure-regio's.
 > [!div class="checklist"]
 > * [Translator Text](./translator/index.yml)
 
 ## <a name="service-tags"></a>Servicetags
-Naast het ondersteunen van eindpunten voor virtuele netwerkservices voor de bovenstaande services, ondersteunt Cognitive Services ook een servicetag voor uitgaande netwerkregelsconfiguratie. De volgende services zijn opgenomen in de CognitiveServicesManagement servicetag.
+Naast het ondersteunen van service-eind punten voor virtuele netwerken voor de bovenstaande services, ondersteunt Cognitive Services ook een servicetag voor de configuratie van uitgaande netwerk regels. De volgende services zijn opgenomen in het CognitiveServicesManagement-service label.
 > [!div class="checklist"]
 > * [Anomaly Detector](./anomaly-detector/index.yml)
-> * [Computer Visie](./computer-vision/index.yml)
+> * [Computer Vision](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
 > * [Custom Vision](./custom-vision-service/index.yml)
 > * [Face](./face/index.yml)
@@ -71,39 +71,39 @@ Naast het ondersteunen van eindpunten voor virtuele netwerkservices voor de bove
 > * [Tekstanalyse](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
 > * [Translator Text](./translator/index.yml)
-> * [Spraakservice](./speech-service/index.yml)
+> * [Speech Service](./speech-service/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>Standaardregel voor netwerktoegang wijzigen
 
-Standaard accepteren cognitive services-bronnen verbindingen van clients in elk netwerk. Als u de toegang wilt beperken tot bepaalde netwerken, moet u eerst de standaardactie wijzigen.
+Cognitive Services resources accepteren standaard verbindingen van clients in elk netwerk. Als u de toegang wilt beperken tot bepaalde netwerken, moet u eerst de standaardactie wijzigen.
 
 > [!WARNING]
-> Het aanbrengen van wijzigingen in netwerkregels kan van invloed zijn op de mogelijkheid van uw toepassingen om verbinding te maken met Azure Cognitive Services. Als u de standaardnetwerkregel instelt om alle toegang tot de gegevens te **weigeren,** wordt alle toegang tot de gegevens geblokkeerd, tenzij ook specifieke netwerkregels worden toegepast die toegang **verlenen.** Zorg ervoor dat u alleen toegang verleent tot netwerken die gebruikmaken van netwerkregels voordat u de standaardregel wijzigt om de toegang te weigeren. Als u IP-adressen voor uw on-premises netwerk toestaat, moet u alle mogelijke uitgaande openbare IP-adressen toevoegen van uw on-premises netwerk.
+> Het wijzigen van de netwerk regels kan invloed hebben op de mogelijkheid om verbinding te maken met Azure Cognitive Services. Als u de standaard netwerk regel instelt op **weigeren** , wordt alle toegang tot de gegevens geblokkeerd, tenzij specifieke netwerk regels die toegang **verlenen** , ook worden toegepast. Zorg ervoor dat u alleen toegang verleent tot netwerken die gebruikmaken van netwerkregels voordat u de standaardregel wijzigt om de toegang te weigeren. Als u IP-adressen voor vermeldingen voor uw on-premises netwerk wilt toestaan, moet u alle mogelijke uitgaande open bare IP-adressen van uw on-premises netwerk toevoegen.
 
 ### <a name="managing-default-network-access-rules"></a>Standaardregels voor netwerktoegang beheren
 
-U standaardregels voor netwerktoegang voor resources voor Cognitive Services beheren via de Azure-portal, PowerShell of Azure CLI.
+U kunt de standaard regels voor netwerk toegang voor Cognitive Services resources beheren via de Azure Portal, Power shell of de Azure CLI.
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-1. Ga naar de resource Cognitive Services die u wilt beveiligen.
+1. Ga naar de Cognitive Services resource die u wilt beveiligen.
 
-1. Selecteer het menu **RESOURCEBEHEER** met de naam **Virtueel netwerk**.
+1. Selecteer in het menu **resource beheer** de naam **virtueel netwerk**.
 
-   ![Optie virtueel netwerk](media/vnet/virtual-network-blade.png)
+   ![Optie voor virtueel netwerk](media/vnet/virtual-network-blade.png)
 
-1. Als u de toegang standaard wilt weigeren, kiest u ervoor om toegang toe te staan **vanuit geselecteerde netwerken**. Met de instelling **Geselecteerde netwerken** alleen, zonder begeleiding van geconfigureerde **virtuele netwerken** of **adresbereiken** , wordt alle toegang effectief geweigerd. Wanneer alle toegang wordt geweigerd, zijn aanvragen die de bron Cognitive Services proberen te gebruiken, niet toegestaan. De Azure-portal, Azure PowerShell of Azure CLI kan nog steeds worden gebruikt om de bron Voor Cognitieve Services te configureren.
+1. Als u de toegang standaard wilt weigeren, kiest u toegang vanaf **geselecteerde netwerken**toestaan. Met de **geselecteerde netwerken** alleen ingesteld, niet begeleid door geconfigureerde **virtuele netwerken** **of** adresbereiken: alle toegang wordt daad werkelijk geweigerd. Als alle toegang wordt geweigerd, zijn aanvragen voor het gebruik van de Cognitive Services resource niet toegestaan. De Azure Portal, Azure PowerShell of, Azure CLI, kan nog steeds worden gebruikt voor het configureren van de Cognitive Services resource.
 1. Als u verkeer van alle netwerken wilt toestaan, verleent u toegang vanaf **Alle netwerken**.
 
-   ![Virtuele netwerken ontkennen](media/vnet/virtual-network-deny.png)
+   ![Virtuele netwerken weigeren](media/vnet/virtual-network-deny.png)
 
 1. Klik op **Opslaan** om uw wijzigingen toe te passen.
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. Installeer de [Azure PowerShell](/powershell/azure/install-az-ps) en [meld u aan](/powershell/azure/authenticate-azureps)of selecteer **Proberen**.
+1. Installeer de [Azure PowerShell](/powershell/azure/install-az-ps) en [Meld](/powershell/azure/authenticate-azureps)u aan of selecteer **het bestand try**.
 
-1. Geef de status weer van de standaardregel voor de resource Cognitive Services.
+1. De status van de standaard regel voor de Cognitive Services resource weer geven.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -113,7 +113,7 @@ U standaardregels voor netwerktoegang voor resources voor Cognitive Services beh
     (Get-AzCognitiveServicesAccountNetworkRuleSet @parameters).DefaultAction
     ```
 
-1. Stel de standaardregel in om netwerktoegang standaard te weigeren.
+1. Stel de standaard regel in om netwerk toegang standaard te weigeren.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -124,7 +124,7 @@ U standaardregels voor netwerktoegang voor resources voor Cognitive Services beh
     Update-AzCognitiveServicesAccountNetworkRuleSet @parameters
     ```
 
-1. Stel de standaardregel in om standaard netwerktoegang toe te staan.
+1. Stel de standaard regel in op het standaard toestaan van netwerk toegang.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -137,9 +137,9 @@ U standaardregels voor netwerktoegang voor resources voor Cognitive Services beh
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-1. Installeer de [Azure CLI](/cli/azure/install-azure-cli) en meld [u aan](/cli/azure/authenticate-azure-cli)of selecteer Probeer **het**.
+1. Installeer de [Azure cli](/cli/azure/install-azure-cli) en [Meld](/cli/azure/authenticate-azure-cli)u aan of selecteer **proberen**.
 
-1. Geef de status weer van de standaardregel voor de resource Cognitive Services.
+1. De status van de standaard regel voor de Cognitive Services resource weer geven.
 
     ```azurecli-interactive
     az cognitiveservices account show \
@@ -147,7 +147,7 @@ U standaardregels voor netwerktoegang voor resources voor Cognitive Services beh
         --query networkRuleSet.defaultAction
     ```
 
-1. Stel de standaardregel in om netwerktoegang standaard te weigeren.
+1. Stel de standaard regel in om netwerk toegang standaard te weigeren.
 
     ```azurecli-interactive
     az cognitiveservices account update \
@@ -155,7 +155,7 @@ U standaardregels voor netwerktoegang voor resources voor Cognitive Services beh
         --default-action Deny
     ```
 
-1. Stel de standaardregel in om standaard netwerktoegang toe te staan.
+1. Stel de standaard regel in op het standaard toestaan van netwerk toegang.
 
     ```azurecli-interactive
     az cognitiveservices account update \
@@ -167,65 +167,65 @@ U standaardregels voor netwerktoegang voor resources voor Cognitive Services beh
 
 ## <a name="grant-access-from-a-virtual-network"></a>Toegang verlenen vanuit een virtueel netwerk
 
-U resources voor Cognitive Services configureren om alleen toegang te verlenen vanuit specifieke subnetten. De toegestane subnetten kunnen behoren tot een VNet in hetzelfde abonnement of in een ander abonnement, inclusief abonnementen die behoren tot een andere Azure Active Directory-tenant.
+U kunt Cognitive Services-resources zodanig configureren dat alleen toegang vanaf specifieke subnetten is toegestaan. De toegestane subnetten kunnen deel uitmaken van een VNet in hetzelfde abonnement of in een ander abonnement, met inbegrip van abonnementen die deel uitmaken van een andere Azure Active Directory Tenant.
 
-Schakel een [serviceeindpunt](../virtual-network/virtual-network-service-endpoints-overview.md) in voor Azure Cognitive Services binnen het VNet. Het eindpunt van de service leidt het verkeer van het VNet door een optimaal pad naar de Azure Cognitive Services-service. De identiteiten van het subnet en het virtuele netwerk worden ook bij elk verzoek verzonden. Beheerders kunnen vervolgens netwerkregels configureren voor de resource Cognitive Services waarmee aanvragen kunnen worden ontvangen van specifieke subnetten in een VNet. Clients die toegang hebben gekregen via deze netwerkregels, moeten blijven voldoen aan de autorisatievereisten van de Cognitive Services-bron om toegang te krijgen tot de gegevens.
+Schakel een [service-eind punt](../virtual-network/virtual-network-service-endpoints-overview.md) in voor Azure Cognitive services binnen het VNet. Het service-eind punt routeert verkeer van het VNet via een optimaal pad naar de Azure Cognitive Services-service. De identiteiten van het subnet en het virtuele netwerk worden ook met elke aanvraag verzonden. Beheerders kunnen vervolgens netwerk regels configureren voor de Cognitive Services resource waarmee aanvragen kunnen worden ontvangen van specifieke subnetten in een VNet. Clients die toegang hebben verleend via deze netwerk regels, moeten blijven voldoen aan de autorisatie vereisten van de Cognitive Services resource om toegang te krijgen tot de gegevens.
 
-Elke Cognitive Services-bron ondersteunt maximaal 100 virtuele netwerkregels, die kunnen worden gecombineerd met [IP-netwerkregels.](#grant-access-from-an-internet-ip-range)
+Elke Cognitive Services Resource ondersteunt Maxi maal 100 regels voor virtuele netwerken, die kunnen worden gecombineerd met [IP-netwerk regels](#grant-access-from-an-internet-ip-range).
 
 ### <a name="required-permissions"></a>Vereiste machtigingen
 
-Als u een virtuele netwerkregel wilt toepassen op een resource voor Cognitive Services, moet de gebruiker over de juiste machtigingen beschikken voor de subnetten die worden toegevoegd. De vereiste machtiging is de *standaardrol inzender* of de rol *Medewerker Cognitieve services.* Vereiste machtigingen kunnen ook worden toegevoegd aan aangepaste roldefinities.
+Als u een regel voor een virtueel netwerk wilt Toep assen op een Cognitive Services resource, moet de gebruiker de juiste machtigingen hebben voor de subnetten die worden toegevoegd. De vereiste machtiging is de standaard rol *Inzender* of de rol *Cognitive Services Inzender* . De vereiste machtigingen kunnen ook worden toegevoegd aan aangepaste roldefinities.
 
-Cognitive Services-bron en de virtuele netwerken die toegang krijgen, kunnen in verschillende abonnementen zijn, waaronder abonnementen die deel uitmaken van een andere Azure AD-tenant.
+Cognitive Services resource en de virtuele netwerken die toegang hebben verleend, kunnen zich in verschillende abonnementen bevinden, met inbegrip van abonnementen die deel uitmaken van een andere Azure AD-Tenant.
 
 > [!NOTE]
-> Configuratie van regels die toegang verlenen tot subnetten in virtuele netwerken die deel uitmaken van een andere Azure Active Directory-tenant, wordt momenteel alleen ondersteund via Powershell-, CLI- en REST-API's. Dergelijke regels kunnen niet worden geconfigureerd via de Azure-portal, hoewel ze kunnen worden bekeken in de portal.
+> Het configureren van regels die toegang verlenen tot subnetten in virtuele netwerken die deel uitmaken van een andere Azure Active Directory Tenant, worden momenteel alleen ondersteund via Power shell, CLI en REST Api's. Deze regels kunnen niet worden geconfigureerd via de Azure Portal, maar kunnen wel worden weer gegeven in de portal.
 
-### <a name="managing-virtual-network-rules"></a>Virtuele netwerkregels beheren
+### <a name="managing-virtual-network-rules"></a>Regels voor virtuele netwerken beheren
 
-U virtuele netwerkregels voor bronnen voor Cognitive Services beheren via de Azure-portal, PowerShell of Azure CLI.
+U kunt regels voor virtuele netwerken voor Cognitive Services resources beheren via de Azure Portal, Power shell of de Azure CLI.
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-1. Ga naar de resource Cognitive Services die u wilt beveiligen.
+1. Ga naar de Cognitive Services resource die u wilt beveiligen.
 
-1. Selecteer het menu **RESOURCEBEHEER** met de naam **Virtueel netwerk**.
+1. Selecteer in het menu **resource beheer** de naam **virtueel netwerk**.
 
-1. Controleer of u hebt geselecteerd om toegang toe te staan **vanuit geselecteerde netwerken**.
+1. Controleer of u hebt geselecteerd voor toegang tot **geselecteerde netwerken**.
 
-1. Als u toegang wilt verlenen tot een virtueel netwerk met een bestaande netwerkregel, selecteert u onder **Virtuele netwerken**de optie Bestaand virtueel **netwerk toevoegen**.
+1. Als u toegang wilt verlenen tot een virtueel netwerk met een bestaande netwerk regel, selecteert u **bestaande virtuele netwerk toevoegen**onder **virtuele netwerken**.
 
-   ![Bestaande vNet toevoegen](media/vnet/virtual-network-add-existing.png)
+   ![Bestaand vNet toevoegen](media/vnet/virtual-network-add-existing.png)
 
-1. Selecteer de opties **Virtuele netwerken** en **subnetten** en selecteer **Inschakelen**.
+1. Selecteer de opties voor **virtuele netwerken** en **subnetten** en selecteer vervolgens **inschakelen**.
 
-   ![Bestaande vNet-details toevoegen](media/vnet/virtual-network-add-existing-details.png)
+   ![Bestaande vNet-gegevens toevoegen](media/vnet/virtual-network-add-existing-details.png)
 
-1. Als u een nieuw virtueel netwerk wilt maken en toegang wilt verlenen, selecteert u **Nieuw virtueel netwerk toevoegen**.
+1. Als u een nieuw virtueel netwerk wilt maken en toegang wilt verlenen, selecteert u **nieuw virtueel netwerk toevoegen**.
 
-   ![Nieuwe vNet toevoegen](media/vnet/virtual-network-add-new.png)
+   ![Nieuw vNet toevoegen](media/vnet/virtual-network-add-new.png)
 
-1. Geef de informatie die nodig is om het nieuwe virtuele netwerk te maken en selecteer **Vervolgens Maken**.
+1. Geef de benodigde informatie op voor het maken van het nieuwe virtuele netwerk en selecteer vervolgens **maken**.
 
    ![VNet maken](media/vnet/virtual-network-create.png)
 
     > [!NOTE]
-    > Als een serviceeindpunt voor Azure Cognitive Services niet eerder is geconfigureerd voor de geselecteerde virtuele netwerk- en subnetten, u het configureren als onderdeel van deze bewerking.
+    > Als een service-eind punt voor Azure Cognitive Services niet eerder is geconfigureerd voor het geselecteerde virtuele netwerk en subnetten, kunt u deze configureren als onderdeel van deze bewerking.
     >
-    > Momenteel worden alleen virtuele netwerken die tot dezelfde Azure Active Directory-tenant behoren, weergegeven voor selectie tijdens het maken van regels. Als u toegang wilt verlenen tot een subnet in een virtueel netwerk van een andere tenant, gebruikt u Powershell-, CLI- of REST-API's.
+    > Momenteel worden alleen virtuele netwerken die deel uitmaken van dezelfde Azure Active Directory Tenant weer gegeven voor selectie tijdens het maken van de regel. Als u toegang wilt verlenen tot een subnet in een virtueel netwerk dat deel uitmaakt van een andere Tenant, gebruikt u Power shell, CLI of REST Api's.
 
-1. Als u een virtuele netwerk- of subnetregel wilt verwijderen, selecteert u **...** om het contextmenu voor het virtuele netwerk of subnet te openen en selecteert **u Verwijderen**.
+1. Als u een virtuele netwerk-of subnet-regel wilt verwijderen, selecteert u **...** om het context menu voor het virtuele netwerk of subnet te openen, en selecteer **verwijderen**.
 
    ![VNet verwijderen](media/vnet/virtual-network-remove.png)
 
 1. Klik op **Opslaan** om uw wijzigingen toe te passen.
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. Installeer de [Azure PowerShell](/powershell/azure/install-az-ps) en [meld u aan](/powershell/azure/authenticate-azureps)of selecteer **Proberen**.
+1. Installeer de [Azure PowerShell](/powershell/azure/install-az-ps) en [Meld](/powershell/azure/authenticate-azureps)u aan of selecteer **het bestand try**.
 
-1. Lijst virtuele netwerkregels.
+1. Regels van het virtuele netwerk weer geven.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -235,7 +235,7 @@ U virtuele netwerkregels voor bronnen voor Cognitive Services beheren via de Azu
     (Get-AzCognitiveServicesAccountNetworkRuleSet @parameters).VirtualNetworkRules
     ```
 
-1. Serviceeindpunt inschakelen voor Azure Cognitive Services op een bestaand virtueel netwerk en subnet.
+1. Service-eind punt inschakelen voor Azure Cognitive Services op een bestaand virtueel netwerk en subnet.
 
     ```azurepowershell-interactive
     Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" `
@@ -244,7 +244,7 @@ U virtuele netwerkregels voor bronnen voor Cognitive Services beheren via de Azu
         -ServiceEndpoint "Microsoft.CognitiveServices" | Set-AzVirtualNetwork
     ```
 
-1. Voeg een netwerkregel toe voor een virtueel netwerk en subnet.
+1. Voeg een netwerk regel toe voor een virtueel netwerk en een subnet.
 
     ```azurepowershell-interactive
     $subParameters = @{
@@ -262,9 +262,9 @@ U virtuele netwerkregels voor bronnen voor Cognitive Services beheren via de Azu
     ```
 
     > [!TIP]
-    > Als u een netwerkregel wilt toevoegen voor een subnet in een VNet dat behoort tot een andere Azure AD-tenant, gebruikt u een volledig gekwalificeerde **parameter VirtualNetworkResourceId** in de vorm "/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnet-name".
+    > Als u een netwerk regel wilt toevoegen voor een subnet in een VNet dat deel uitmaakt van een andere Azure AD-Tenant, gebruikt u een volledig gekwalificeerde **VirtualNetworkResourceId** -para meter in de notatie "/Subscriptions/Subscription-id/resourceGroups/resourceGroup-name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name".
 
-1. Een netwerkregel voor een virtueel netwerk en subnet verwijderen.
+1. Een netwerk regel verwijderen voor een virtueel netwerk en een subnet.
 
     ```azurepowershell-interactive
     $subParameters = @{
@@ -283,9 +283,9 @@ U virtuele netwerkregels voor bronnen voor Cognitive Services beheren via de Azu
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-1. Installeer de [Azure CLI](/cli/azure/install-azure-cli) en meld [u aan](/cli/azure/authenticate-azure-cli)of selecteer Probeer **het**.
+1. Installeer de [Azure cli](/cli/azure/install-azure-cli) en [Meld](/cli/azure/authenticate-azure-cli)u aan of selecteer **proberen**.
 
-1. Lijst virtuele netwerkregels.
+1. Regels van het virtuele netwerk weer geven.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule list \
@@ -293,14 +293,14 @@ U virtuele netwerkregels voor bronnen voor Cognitive Services beheren via de Azu
         --query virtualNetworkRules
     ```
 
-1. Serviceeindpunt inschakelen voor Azure Cognitive Services op een bestaand virtueel netwerk en subnet.
+1. Service-eind punt inschakelen voor Azure Cognitive Services op een bestaand virtueel netwerk en subnet.
 
     ```azurecli-interactive
     az network vnet subnet update -g "myresourcegroup" -n "mysubnet" \
     --vnet-name "myvnet" --service-endpoints "Microsoft.CognitiveServices"
     ```
 
-1. Voeg een netwerkregel toe voor een virtueel netwerk en subnet.
+1. Voeg een netwerk regel toe voor een virtueel netwerk en een subnet.
 
     ```azurecli-interactive
     $subnetid=(az network vnet subnet show \
@@ -314,11 +314,11 @@ U virtuele netwerkregels voor bronnen voor Cognitive Services beheren via de Azu
     ```
 
     > [!TIP]
-    > Als u een regel wilt toevoegen voor een subnet in een VNet dat behoort tot een andere Azure AD-tenant, gebruikt u een volledig gekwalificeerde subnet-id in de vorm "/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnetnaam".
+    > Als u een regel wilt toevoegen voor een subnet in een VNet dat deel uitmaakt van een andere Azure AD-Tenant, gebruikt u een volledig gekwalificeerde subnet-ID in de notatie '/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name '.
     > 
-    > U de **parameter abonnement** gebruiken om de subnet-id op te halen voor een VNet van een andere Azure AD-tenant.
+    > U kunt de para meter **abonnement** gebruiken om de subnet-id op te halen voor een VNet dat deel uitmaakt van een andere Azure AD-Tenant.
 
-1. Een netwerkregel voor een virtueel netwerk en subnet verwijderen.
+1. Een netwerk regel verwijderen voor een virtueel netwerk en een subnet.
 
     ```azurecli-interactive
     $subnetid=(az network vnet subnet show \
@@ -333,57 +333,57 @@ U virtuele netwerkregels voor bronnen voor Cognitive Services beheren via de Azu
 ***
 
 > [!IMPORTANT]
-> Zorg ervoor dat [u de standaardregel instelt](#change-the-default-network-access-rule) op **weigeren**of netwerkregels hebben geen effect.
+> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat netwerk regels geen effect hebben.
 
-## <a name="grant-access-from-an-internet-ip-range"></a>Toegang verlenen vanuit een IP-internetbereik
+## <a name="grant-access-from-an-internet-ip-range"></a>Toegang verlenen via een IP-adres bereik van Internet
 
-U resources voor Cognitive Services configureren om toegang te krijgen vanuit specifieke IP-adresbereiken van openbare internet. Deze configuratie verleent toegang tot specifieke diensten en on-premises netwerken, waardoor het algemene internetverkeer effectief wordt geblokkeerd.
+U kunt Cognitive Services resources zodanig configureren dat toegang vanaf specifieke IP-adresbereiken voor het Internet wordt toegestaan. Met deze configuratie wordt toegang verleend tot specifieke services en on-premises netwerken, waardoor het algemene Internet verkeer effectief wordt geblokkeerd.
 
-Geef toegestane internetadresbereiken op met [CIDR-notatie](https://tools.ietf.org/html/rfc4632) in het formulier `16.17.18.0/24` of als afzonderlijke IP-adressen zoals `16.17.18.19`.
+Geef toegestane Internet adresbereiken op met behulp van [CIDR-notatie](https://tools.ietf.org/html/rfc4632) in het formulier `16.17.18.0/24` of `16.17.18.19`als afzonderlijke IP-adressen, zoals.
 
    > [!Tip]
-   > Kleine adresbereiken met de voorvoegselgroottes "/31" of "/32" worden niet ondersteund. Deze bereiken moeten worden geconfigureerd met behulp van afzonderlijke IP-adresregels.
+   > Kleine adresbereiken die gebruikmaken van de grootte van het voor voegsel/31 of/32, worden niet ondersteund. Deze bereiken moeten worden geconfigureerd met behulp van afzonderlijke IP-adres regels.
 
-IP-netwerkregels zijn alleen toegestaan voor **openbare ip-adressen op internet.** IP-adresbereiken die zijn gereserveerd voor particuliere netwerken (zoals gedefinieerd in [RFC 1918)](https://tools.ietf.org/html/rfc1918#section-3)zijn niet toegestaan in IP-regels. Particuliere netwerken omvatten adressen `10.*`die `172.16.*`  -  `172.31.*`beginnen `192.168.*`met , en .
+IP-netwerk regels zijn alleen toegestaan voor **open bare Internet** -IP-adressen. IP-adresbereiken die zijn gereserveerd voor particuliere netwerken (zoals gedefinieerd in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) zijn niet toegestaan in IP-regels. Particuliere netwerken bevatten adressen die beginnen met `10.*`, `172.16.*`  -  `172.31.*`en `192.168.*`.
 
    > [!NOTE]
-   > IP-netwerkregels hebben geen effect op aanvragen die afkomstig zijn uit dezelfde Azure-regio als de bron Cognitive Services. Gebruik [virtuele netwerkregels](#grant-access-from-a-virtual-network) om aanvragen in dezelfde regio toe te staan.
+   > IP-netwerk regels hebben geen invloed op aanvragen die afkomstig zijn uit dezelfde Azure-regio als de Cognitive Services resource. Gebruik [regels voor virtuele netwerken](#grant-access-from-a-virtual-network) om aanvragen van dezelfde regio toe te staan.
 
-Op dit moment worden alleen IPV4-adressen ondersteund. Elke Cognitive Services-bron ondersteunt maximaal 100 IP-netwerkregels, die kunnen worden gecombineerd met [virtuele netwerkregels.](#grant-access-from-a-virtual-network)
+Er worden op dit moment alleen IPV4-adressen ondersteund. Elke Cognitive Services Resource ondersteunt Maxi maal 100 IP-netwerk regels, die kunnen worden gecombineerd met de regels voor het [virtuele netwerk](#grant-access-from-a-virtual-network).
 
-### <a name="configuring-access-from-on-premises-networks"></a>Toegang configureren vanaf on-premises netwerken
+### <a name="configuring-access-from-on-premises-networks"></a>Toegang vanaf on-premises netwerken configureren
 
-Als u toegang wilt verlenen vanuit uw on-premises netwerken tot uw Cognitive Services-bron met een IP-netwerkregel, moet u de IP-adressen identificeren die door uw netwerk worden gebruikt. Neem contact op met uw netwerkbeheerder voor hulp.
+Als u toegang wilt verlenen vanaf uw on-premises netwerken aan uw Cognitive Services-bron met een IP-netwerk regel, moet u de Internet gerichte IP-adressen identificeren die door uw netwerk worden gebruikt. Neem contact op met uw netwerk beheerder voor hulp.
 
-Als u [ExpressRoute](../expressroute/expressroute-introduction.md) on-premises gebruikt voor openbare peering of Microsoft-peering, moet u de NAT IP-adressen identificeren. Voor openbaar peering gebruikt elk ExpressRoute-circuit standaard twee NAT IP-adressen. Elk wordt toegepast op Azure-serviceverkeer wanneer het verkeer de Microsoft Azure-netwerkbackbone binnenkomt. Voor Microsoft-peering worden de NAT-IP-adressen die worden gebruikt, opgegeven of door de serviceprovider geleverd. Voor toegang tot uw serviceresources moet u deze openbare IP-adressen toestaan in de instelling voor IP-firewall voor de resource. Wanneer u op zoek bent naar de IP-adressen van uw ExpressRoute-circuit voor openbare peering, opent u [een ondersteuningsticket met ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) via de Azure-portal. Meer informatie over [NAT voor openbare peering en Microsoft-peering met ExpressRoute.](../expressroute/expressroute-nat.md#nat-requirements-for-azure-public-peering)
+Als u [ExpressRoute](../expressroute/expressroute-introduction.md) on-premises gebruikt voor open bare peering of micro soft-peering, moet u de NAT IP-adressen identificeren. Voor open bare peering gebruikt elk ExpressRoute-circuit standaard twee NAT IP-adressen. Elke wordt toegepast op Azure-service verkeer wanneer het verkeer de Microsoft Azure-netwerk-backbone binnenkomt. Voor micro soft-peering zijn de NAT IP-adressen die worden gebruikt door de klant of door de service provider verschaft. Voor toegang tot uw serviceresources moet u deze openbare IP-adressen toestaan in de instelling voor IP-firewall voor de resource. Wanneer u op zoek bent naar de IP-adressen van uw ExpressRoute-circuit voor openbare peering, opent u [een ondersteuningsticket met ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) via de Azure-portal. Meer informatie over [NAT voor openbare peering en Microsoft-peering met ExpressRoute.](../expressroute/expressroute-nat.md#nat-requirements-for-azure-public-peering)
 
-### <a name="managing-ip-network-rules"></a>IP-netwerkregels beheren
+### <a name="managing-ip-network-rules"></a>IP-netwerk regels beheren
 
-U IP-netwerkregels voor bronnen voor Cognitive Services beheren via de Azure-portal, PowerShell of Azure CLI.
+U kunt IP-netwerk regels voor Cognitive Services resources beheren via de Azure Portal, Power shell of de Azure CLI.
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-1. Ga naar de resource Cognitive Services die u wilt beveiligen.
+1. Ga naar de Cognitive Services resource die u wilt beveiligen.
 
-1. Selecteer het menu **RESOURCEBEHEER** met de naam **Virtueel netwerk**.
+1. Selecteer in het menu **resource beheer** de naam **virtueel netwerk**.
 
-1. Controleer of u hebt geselecteerd om toegang toe te staan **vanuit geselecteerde netwerken**.
+1. Controleer of u hebt geselecteerd voor toegang tot **geselecteerde netwerken**.
 
-1. Als u toegang wilt verlenen tot een IP-internetbereik, voert u het IP-adres- of adresbereik (in [CIDR-indeling)](https://tools.ietf.org/html/rfc4632)in onder > **Firewall-adresbereik**. **Firewall** Alleen geldige openbare IP-adressen (niet-gereserveerde) adressen worden geaccepteerd.
+1. Als u toegang tot een IP-adres bereik voor Internet wilt verlenen, voert u het adres bereik of het adres bereik (in [CIDR-indeling](https://tools.ietf.org/html/rfc4632)) in onder **firewall** > **adressen**. Alleen geldige open bare IP-adressen (niet-gereserveerd) worden geaccepteerd.
 
    ![IP-bereik toevoegen](media/vnet/virtual-network-add-ip-range.png)
 
-1. Als u een IP-netwerkregel <span class="docon docon-delete x-hidden-focus"></span> wilt verwijderen, selecteert u het pictogram prullenbak naast het adresbereik.
+1. Als u een IP-netwerk regel wilt verwijderen, selecteert <span class="docon docon-delete x-hidden-focus"></span> u het prullenbak pictogram naast het adres bereik.
 
    ![IP-bereik verwijderen](media/vnet/virtual-network-delete-ip-range.png)
 
 1. Klik op **Opslaan** om uw wijzigingen toe te passen.
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. Installeer de [Azure PowerShell](/powershell/azure/install-az-ps) en [meld u aan](/powershell/azure/authenticate-azureps)of selecteer **Proberen**.
+1. Installeer de [Azure PowerShell](/powershell/azure/install-az-ps) en [Meld](/powershell/azure/authenticate-azureps)u aan of selecteer **het bestand try**.
 
-1. Ip-netwerkregels weergeven.
+1. IP-netwerk regels weer geven.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -393,7 +393,7 @@ U IP-netwerkregels voor bronnen voor Cognitive Services beheren via de Azure-por
     (Get-AzCognitiveServicesAccountNetworkRuleSet @parameters).IPRules
     ```
 
-1. Voeg een netwerkregel toe voor een individueel IP-adres.
+1. Voeg een netwerk regel toe voor een afzonderlijk IP-adres.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -404,7 +404,7 @@ U IP-netwerkregels voor bronnen voor Cognitive Services beheren via de Azure-por
     Add-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-1. Voeg een netwerkregel toe voor een IP-adresbereik.
+1. Een netwerk regel voor een IP-adres bereik toevoegen.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -415,7 +415,7 @@ U IP-netwerkregels voor bronnen voor Cognitive Services beheren via de Azure-por
     Add-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-1. Een netwerkregel voor een individueel IP-adres verwijderen.
+1. Verwijder een netwerk regel voor een afzonderlijk IP-adres.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -426,7 +426,7 @@ U IP-netwerkregels voor bronnen voor Cognitive Services beheren via de Azure-por
     Remove-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-1. Een netwerkregel voor een IP-adresbereik verwijderen.
+1. Verwijder een netwerk regel voor een IP-adres bereik.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -439,16 +439,16 @@ U IP-netwerkregels voor bronnen voor Cognitive Services beheren via de Azure-por
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-1. Installeer de [Azure CLI](/cli/azure/install-azure-cli) en meld [u aan](/cli/azure/authenticate-azure-cli)of selecteer Probeer **het**.
+1. Installeer de [Azure cli](/cli/azure/install-azure-cli) en [Meld](/cli/azure/authenticate-azure-cli)u aan of selecteer **proberen**.
 
-1. Ip-netwerkregels weergeven.
+1. IP-netwerk regels weer geven.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule list \
         -g "myresourcegroup" -n "myaccount" --query ipRules
     ```
 
-1. Voeg een netwerkregel toe voor een individueel IP-adres.
+1. Voeg een netwerk regel toe voor een afzonderlijk IP-adres.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule add \
@@ -456,7 +456,7 @@ U IP-netwerkregels voor bronnen voor Cognitive Services beheren via de Azure-por
         --ip-address "16.17.18.19"
     ```
 
-1. Voeg een netwerkregel toe voor een IP-adresbereik.
+1. Een netwerk regel voor een IP-adres bereik toevoegen.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule add \
@@ -464,7 +464,7 @@ U IP-netwerkregels voor bronnen voor Cognitive Services beheren via de Azure-por
         --ip-address "16.17.18.0/24"
     ```
 
-1. Een netwerkregel voor een individueel IP-adres verwijderen.
+1. Verwijder een netwerk regel voor een afzonderlijk IP-adres.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule remove \
@@ -472,7 +472,7 @@ U IP-netwerkregels voor bronnen voor Cognitive Services beheren via de Azure-por
         --ip-address "16.17.18.19"
     ```
 
-1. Een netwerkregel voor een IP-adresbereik verwijderen.
+1. Verwijder een netwerk regel voor een IP-adres bereik.
 
     ```azurecli-interactive
     az cognitiveservices account network-rule remove \
@@ -483,9 +483,9 @@ U IP-netwerkregels voor bronnen voor Cognitive Services beheren via de Azure-por
 ***
 
 > [!IMPORTANT]
-> Zorg ervoor dat [u de standaardregel instelt](#change-the-default-network-access-rule) op **weigeren**of netwerkregels hebben geen effect.
+> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat netwerk regels geen effect hebben.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Ontdek de verschillende [Azure Cognitive Services](welcome.md)
-* Meer informatie over [Azure Virtual Network Service-eindpunten](../virtual-network/virtual-network-service-endpoints-overview.md)
+* De verschillende [Azure-Cognitive Services](welcome.md) verkennen
+* Meer informatie over [Azure Virtual Network Service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md)

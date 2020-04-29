@@ -1,7 +1,7 @@
 ---
-title: Taalondersteuning - QnA Maker
+title: Taal ondersteuning-QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Een lijst van cultuur, natuurlijke talen ondersteund door QnA Maker voor uw kennisbank. Meng talen niet in dezelfde kennisbank.
+description: Een lijst met cultuur, natuurlijke talen die door QnA Maker worden ondersteund voor uw Knowledge Base. Maak geen talen in dezelfde Knowledge Base.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220554"
 ---
-# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Taalondersteuning voor een QnA Maker-bron en kennisbasis
+# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Taal ondersteuning voor een QnA Maker resource en kennis bases
 
-Taal voor de service wordt geselecteerd wanneer u de eerste kennisbasis in de resource maakt. Alle aanvullende kennisbanken in de bron moeten in dezelfde taal zijn. 
+De taal voor de service wordt geselecteerd wanneer u de eerste Knowledge Base maakt in de resource. Alle aanvullende kennis grondslagen in de resource moeten zich in dezelfde taal bekomen. 
 
-De taal bepaalt de relevantie van de resultaten die QnA Maker biedt als antwoord op vragen van gebruikers.
+De taal bepaalt de relevantie van de resultaten QnA Maker worden uitgevoerd als reactie op gebruikers query's.
 
-Meer informatie over de [impact van taalselectie](../how-to/language-knowledge-base.md).
+Meer informatie over de [gevolgen van taal selectie](../how-to/language-knowledge-base.md).
 
 ## <a name="languages-supported"></a>Ondersteunde talen
 
-De volgende lijst bevat de talen die worden ondersteund voor een QnA Maker-bron. 
+De volgende lijst bevat de talen die worden ondersteund voor een QnA Maker bron. 
 
 |Taal|
 |--|

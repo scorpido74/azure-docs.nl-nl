@@ -1,7 +1,7 @@
 ---
-title: Taxonomie van beeldcategorieën - Computer Vision
+title: Taxonomie van afbeeldings categorieën-Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Download de 86 categorieën taxonomie voor de Computer Vision API in Azure Cognitive Services.
+description: De 86-categorieën van de taxonomie ophalen voor de Computer Vision-API in azure Cognitive Services.
 services: cognitive-services
 author: KellyDF
 manager: nitinme
@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: 42562f3e19844621cb3893cb4ce185e85cf7e0ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68565758"
 ---
 # <a name="computer-vision-86-category-taxonomy"></a>Computer Vision 86-categorie taxonomie

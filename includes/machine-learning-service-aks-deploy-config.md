@@ -5,48 +5,48 @@ ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
 ms.openlocfilehash: c71f35a06d904b45cb014d5199197220b57cf230
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79485948"
 ---
-De vermeldingen in `deploymentconfig.json` de documentkaart aan de parameters voor [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py). In de volgende tabel wordt de toewijzing tussen de entiteiten in het JSON-document en de parameters voor de methode beschreven:
+De vermeldingen in de `deploymentconfig.json` document structuur met de para meters voor [AksWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py). De volgende tabel beschrijft de toewijzing tussen de entiteiten in het JSON-document en de para meters voor de-methode:
 
-| JSON-entiteit | Methodeparameter | Beschrijving |
+| JSON-entiteit | Methode parameter | Beschrijving |
 | ----- | ----- | ----- |
-| `computeType` | N.v.t. | Het rekendoel. Voor AKS moet de `aks`waarde . |
-| `autoScaler` | N.v.t. | Bevat configuratie-elementen voor automatisch schalen. Zie de tabel autoscaler. |
-| &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Of u automatisch schalen voor de webservice wilt inschakelen. `numReplicas`  = Indien `0` `True`, ; anders. `False` |
+| `computeType` | N.v.t. | Het rekendoel. Voor AKS moet de waarde zijn `aks`. |
+| `autoScaler` | N.v.t. | Bevat configuratie-elementen voor automatisch schalen. Zie de tabel met automatische schalen. |
+| &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Hiermee wordt aangegeven of automatisch schalen moet worden ingeschakeld voor de webservice. `numReplicas`  = Als `0`, `True`; anders, `False`. |
 | &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | Het minimum aantal containers dat moet worden gebruikt bij het automatisch schalen van deze webservice. Standaard, `1`. |
 | &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | Het maximum aantal containers dat moet worden gebruikt bij het automatisch schalen van deze webservice. Standaard, `10`. |
-| &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | Hoe vaak probeert de autoscaler deze webservice te schalen. Standaard, `1`. |
-| &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | Het doelgebruik (in procenten van de 100) dat de autoscaler moet proberen te behouden voor deze webservice. Standaard, `70`. |
+| &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | Hoe vaak de automatische schaalr probeert deze webservice te schalen. Standaard, `1`. |
+| &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | Het doel gebruik (in procenten 100) dat de automatische schaalr moet proberen te onderhouden voor deze webservice. Standaard, `70`. |
 | `dataCollection` | N.v.t. | Bevat configuratie-elementen voor het verzamelen van gegevens. |
-| &emsp;&emsp;`storageEnabled` | `collect_model_data` | Of u modelgegevenswilt verzamelen voor de webservice. Standaard, `False`. |
-| `authEnabled` | `auth_enabled` | Al dan niet om sleutelverificatie voor de webservice in te schakelen. Beide `tokenAuthEnabled` `authEnabled` en `True`kan niet . Standaard, `True`. |
-| `tokenAuthEnabled` | `token_auth_enabled` | Al dan niet om tokenverificatie in te schakelen voor de webservice. Beide `tokenAuthEnabled` `authEnabled` en `True`kan niet . Standaard, `False`. |
-| `containerResourceRequirements` | N.v.t. | Container voor de CPU en geheugenentiteiten. |
-| &emsp;&emsp;`cpu` | `cpu_cores` | Het aantal CPU-cores dat moet worden toegewezen voor deze webservice. Standaardinstellingen`0.1` |
-| &emsp;&emsp;`memoryInGB` | `memory_gb` | De hoeveelheid geheugen (in GB) die moet worden toegewezen voor deze webservice. Standaard`0.5` |
-| `appInsightsEnabled` | `enable_app_insights` | Of u de logboekregistratie van Application Insights voor de webservice wilt inschakelen. Standaard, `False`. |
-| `scoringTimeoutMs` | `scoring_timeout_ms` | Een time-out om af te dwingen voor het scoren van oproepen naar de webservice. Standaard, `60000`. |
-| `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | De maximale gelijktijdige aanvragen per knooppunt voor deze webservice. Standaard, `1`. |
-| `maxQueueWaitMs` | `max_request_wait_time` | De maximale tijd dat een aanvraag in de wachtrij blijft (in milliseconden) voordat een 503-fout wordt geretourneerd. Standaard, `500`. |
-| `numReplicas` | `num_replicas` | Het aantal containers dat moet worden toegewezen voor deze webservice. Er is geen standaardwaarde. Als deze parameter niet is ingesteld, is de autoscaler standaard ingeschakeld. |
+| &emsp;&emsp;`storageEnabled` | `collect_model_data` | Hiermee wordt aangegeven of het verzamelen van model gegevens moet worden ingeschakeld voor de webservice. Standaard, `False`. |
+| `authEnabled` | `auth_enabled` | Hiermee wordt aangegeven of sleutel verificatie moet worden ingeschakeld voor de webservice. Beide `tokenAuthEnabled` en `authEnabled` kunnen niet `True`. Standaard, `True`. |
+| `tokenAuthEnabled` | `token_auth_enabled` | Hiermee wordt aangegeven of Token verificatie moet worden ingeschakeld voor de webservice. Beide `tokenAuthEnabled` en `authEnabled` kunnen niet `True`. Standaard, `False`. |
+| `containerResourceRequirements` | N.v.t. | Container voor de CPU-en geheugen entiteiten. |
+| &emsp;&emsp;`cpu` | `cpu_cores` | Het aantal CPU-kernen dat moet worden toegewezen voor deze webservice. Standaard`0.1` |
+| &emsp;&emsp;`memoryInGB` | `memory_gb` | De hoeveelheid geheugen (in GB) die voor deze webservice moet worden toegewezen. Prijs`0.5` |
+| `appInsightsEnabled` | `enable_app_insights` | Hiermee wordt aangegeven of Application Insights logboek registratie moet worden ingeschakeld voor de webservice. Standaard, `False`. |
+| `scoringTimeoutMs` | `scoring_timeout_ms` | Een time-out voor het afdwingen van het bepalen van aanroepen naar de webservice. Standaard, `60000`. |
+| `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | Het maximum aantal gelijktijdige aanvragen per knoop punt voor deze webservice. Standaard, `1`. |
+| `maxQueueWaitMs` | `max_request_wait_time` | De maximale tijd dat een aanvraag in de wachtrij van thee (in milliseconden) blijft voordat een 503-fout wordt geretourneerd. Standaard, `500`. |
+| `numReplicas` | `num_replicas` | Het aantal containers dat moet worden toegewezen voor deze webservice. Er is geen standaardwaarde. Als deze para meter niet is ingesteld, wordt automatisch schalen standaard ingeschakeld. |
 | `keys` | N.v.t. | Bevat configuratie-elementen voor sleutels. |
-| &emsp;&emsp;`primaryKey` | `primary_key` | Een primaire auth-toets die u gebruiken voor deze webservice |
-| &emsp;&emsp;`secondaryKey` | `secondary_key` | Een secundaire auth-sleutel om te gebruiken voor deze Webservice |
-| `gpuCores` | `gpu_cores` | Het aantal GPU-cores (per containerreplica) dat moet worden toegewezen voor deze webservice. Standaard is 1. Ondersteunt alleen hele getalwaarden. |
-| `livenessProbeRequirements` | N.v.t. | Bevat configuratie-elementen voor vereisten voor levendigheidsssonde. |
-| &emsp;&emsp;`periodSeconds` | `period_seconds` | Hoe vaak (in seconden) om de levendigheid sonde uit te voeren. Standaard tot 10 seconden. Minimumwaarde is 1. |
-| &emsp;&emsp;`initialDelaySeconds` | `initial_delay_seconds` | Aantal seconden nadat de container is gestart voordat levendigheidssondes worden gestart. Standaard waarden tot 310 |
-| &emsp;&emsp;`timeoutSeconds` | `timeout_seconds` | Aantal seconden waarna de levendigheid sonde een tijd uit. Standaard tot 2 seconden. Minimumwaarde is 1 |
-| &emsp;&emsp;`successThreshold` | `success_threshold` | Minimale opeenvolgende successen voor de levendigheid sonde te worden beschouwd als succesvol na te hebben gefaald. Standaard op 1. Minimumwaarde is 1. |
-| &emsp;&emsp;`failureThreshold` | `failure_threshold` | Wanneer een Pod wordt gestart en de liveness sonde mislukt, kubernetes zal proberen failureThreshold tijden alvorens op te geven. Standaard op 3. Minimumwaarde is 1. |
-| `namespace` | `namespace` | De Kubernetes-naamruimte waarde webservice wordt geïmplementeerd. Maximaal 63 alfanumerieke kleine letters ('a'-'z', '0'-'9') en koppelteken ('-') tekens. De eerste en laatste tekens kunnen geen koppeltekens zijn. |
+| &emsp;&emsp;`primaryKey` | `primary_key` | Een primaire verificatie sleutel die moet worden gebruikt voor deze webservice |
+| &emsp;&emsp;`secondaryKey` | `secondary_key` | Een secundaire verificatie sleutel die moet worden gebruikt voor deze webservice |
+| `gpuCores` | `gpu_cores` | Het aantal GPU-kernen (per container replica) dat moet worden toegewezen voor deze webservice. Standaard is 1. Alleen gehele numerieke waarden worden ondersteund. |
+| `livenessProbeRequirements` | N.v.t. | Bevat configuratie-elementen voor vereisten voor de test op de liveiteit. |
+| &emsp;&emsp;`periodSeconds` | `period_seconds` | Hoe vaak (in seconden) de duur van de test bewerking moet worden uitgevoerd. De standaard waarde is 10 seconden. De minimum waarde is 1. |
+| &emsp;&emsp;`initialDelaySeconds` | `initial_delay_seconds` | Aantal seconden nadat de container is gestart voordat de tests van de live-test worden geïnitieerd. De standaard waarde is 310 |
+| &emsp;&emsp;`timeoutSeconds` | `timeout_seconds` | Aantal seconden waarna een time-out optreedt voor de duur van de online test. De standaard waarde is 2 seconden. De minimum waarde is 1 |
+| &emsp;&emsp;`successThreshold` | `success_threshold` | De minimale opeenvolgende successen voor de test op de eerste keer worden als geslaagd beschouwd als ze zijn mislukt. De standaard waarde is 1. De minimum waarde is 1. |
+| &emsp;&emsp;`failureThreshold` | `failure_threshold` | Wanneer een pod wordt gestart en de test op de productie tijd mislukt, probeert Kubernetes failureThreshold tijden te proberen voordat deze wordt weer geven. De standaard waarde is 3. De minimum waarde is 1. |
+| `namespace` | `namespace` | De Kubernetes-naam ruimte waarin de webservice is geïmplementeerd. Maxi maal 63 kleine letters (' a-z ', ' 0 '-' 9 ') en afbreek streepjes ('-') tekens. De eerste en laatste tekens kunnen geen afbreek streepjes zijn. |
 
-De volgende JSON is een voorbeeldimplementatieconfiguratie voor gebruik met de CLI:
+De volgende JSON is een voorbeeld implementatie configuratie voor gebruik met de CLI:
 
 ```json
 {

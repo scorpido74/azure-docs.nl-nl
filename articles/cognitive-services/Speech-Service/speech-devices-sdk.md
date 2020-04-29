@@ -1,7 +1,7 @@
 ---
-title: Spraakapparaten SDK - Spraakservice
+title: Speech-apparaten SDK-Speech-Service
 titleSuffix: Azure Cognitive Services
-description: Ga aan de slag met de Speech Devices SDK. De Spraakservice werkt met een breed scala aan apparaten en audiobronnen. De Speech Devices SDK is een vooraf afgestemde bibliotheek die is gekoppeld aan speciaal gebouwde, microfoon array development kits.
+description: Aan de slag met de SDK voor spraak apparaten. De speech-service werkt met een groot aantal verschillende apparaten en audio bronnen. De SDK voor spraak apparaten is een vooraf afgestemde bibliotheek die is gekoppeld aan speciaal ontwikkelde, ontwikkel Kits voor microfoon matrices.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,49 +11,49 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
 ms.openlocfilehash: add0d27ae6a612fed0320b5329d19236b7bbbd01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79370641"
 ---
-# <a name="what-is-the-speech-devices-sdk"></a>Wat is de Speech Devices SDK?
+# <a name="what-is-the-speech-devices-sdk"></a>Wat is de SDK voor spraak apparaten?
 
-De [Spraakservice](overview.md) werkt met een breed scala aan apparaten en audiobronnen. Nu u uw spraaktoepassingen naar een hoger niveau tillen met afgestemde hardware en software. De Speech Devices SDK is een vooraf afgestemde bibliotheek die is gekoppeld aan speciaal gebouwde, microfoon array development kits.
+De [Speech-Service](overview.md) werkt met een groot aantal verschillende apparaten en audio bronnen. Nu kunt u uw spraak toepassingen naar een hoger niveau brengen met overeenkomende hardware en software. De SDK voor spraak apparaten is een vooraf afgestemde bibliotheek die is gekoppeld aan speciaal ontwikkelde, ontwikkel Kits voor microfoon matrices.
 
-De Speech Devices SDK kan u helpen:
+De SDK voor spraak apparaten kan u helpen bij het volgende:
 
-- Test snel nieuwe stemscenario's.
-- Integreer de spraakservice in de cloud eenvoudiger in uw apparaat.
-- Creëer een uitzonderlijke gebruikerservaring voor uw klanten.
+- Test nieuwe spraak scenario's snel.
+- Integreer de spraak service op basis van de Cloud eenvoudiger in uw apparaat.
+- Maak een buitengewone gebruikers ervaring voor uw klanten.
 
-De Spraakapparaten SDK verbruikt de [SpraakSDK.](speech-sdk.md) Met behulp van onze geavanceerde audioverwerkingsalgoritmen met de microfoonarray van het apparaat om de audio naar de [Spraakservice](overview.md)te verzenden. Het biedt nauwkeurige ver-veld [spraakherkenning](speech-to-text.md) via ruisonderdrukking, echo-onderdrukking, beamforming, en degalm.
+De speech-apparaten SDK verbruikt de [spraak-SDK](speech-sdk.md). Met onze geavanceerde algoritmen voor geluids verwerking met de microfoon matrix van het apparaat kunt u de audio naar de [Speech-Service](overview.md)verzenden. Het biedt nauw keurige [spraak herkenning](speech-to-text.md) via ruis, Echo annulering, beamforming en dereverberation.
 
-U de Spraakapparaten SDK ook gebruiken om omgevingsapparaten te bouwen met uw eigen [aangepaste zoekwoord.](speech-devices-sdk-create-kws.md) Een aangepast zoekwoord biedt een aanwijzing waarmee een gebruikersinteractie wordt gestart die uniek is voor uw merk.
+U kunt ook de speech apparaten SDK gebruiken om omgevings apparaten te bouwen die uw eigen [aangepaste sleutel woord](speech-devices-sdk-create-kws.md)hebben. Een aangepast tref woord biedt een hint waarmee een gebruikers interactie wordt gestart die uniek is voor uw merk.
 
-De Speech Devices SDK maakt verschillende spraakgestuurde scenario's mogelijk, zoals [spraakassistenten,](https://aka.ms/bots/speech/va)drive-thru bestelsystemen, [gesprekstranscriptie](conversation-transcription-service.md)en slimme luidsprekers. U reageren op gebruikers met tekst, ze standaard of [op een aangepaste stem terugspreken,](how-to-customize-voice-font.md)zoekresultaten bieden, [vertalen](speech-translation.md) naar andere talen en meer. We kijken ernaar uit om te zien wat je bouwt!
+De SDK voor spraak apparaten maakt een groot aantal scenario's met spraak functionaliteit mogelijk, zoals [spraak assistenten](https://aka.ms/bots/speech/va), bestel systemen voor stations, [conversatie transcriptie](conversation-transcription-service.md)en slimme sprekers. U kunt reageren op gebruikers met tekst, ze weer in een standaard-of [aangepaste stem](how-to-customize-voice-font.md)terugspreken, Zoek resultaten opgeven, [vertalen](speech-translation.md) naar andere talen en meer. We kijken ernaar uit om te zien wat u bouwt.
 
 ## <a name="get-the-speech-devices-sdk"></a>De Speech Devices SDK ophalen
 
 ### <a name="android"></a>Android
 
-Voor Android, apparaten downloaden de nieuwste versie van de [Android Spraakapparaten SDK](https://aka.ms/sdsdk-download-android).
+Voor Android downloaden apparaten de nieuwste versie van de [Android speech-apparaten SDK](https://aka.ms/sdsdk-download-android).
 
 ### <a name="windows"></a>Windows
 
-Voor Windows wordt de voorbeeldtoepassing geleverd als een Java-toepassing met meerdere platforms. Download de nieuwste versie van de [JRE Speech Devices SDK.](https://aka.ms/sdsdk-download-JRE)
-De applicatie is gebouwd met de Speech SDK pakket, en de Eclipse Java IDE (v4) op 64-bits Windows. De toepassing wordt uitgevoerd op een 64-bit Java 8 runtime-omgeving (JRE).
+Voor Windows wordt de voorbeeld toepassing meegeleverd als een platformoverschrijdende Java-toepassing. Down load de nieuwste versie van de software voor [jre speech-apparaten](https://aka.ms/sdsdk-download-JRE).
+De toepassing is gebouwd met het Speech SDK-pakket en de eclips Java IDE (v4) op 64-bits Windows. De toepassing wordt uitgevoerd op een 64-bit Java 8 runtime-omgeving (JRE).
 
 ### <a name="linux"></a>Linux
 
-Voor Linux wordt de voorbeeldtoepassing geleverd als een cross-platform Java-toepassing. Download de nieuwste versie van de [JRE Speech Devices SDK.](https://aka.ms/sdsdk-download-JRE)
-De applicatie is gebouwd met het Speech SDK pakket en de Eclipse Java IDE (v4) op 64-bits Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8). De toepassing wordt uitgevoerd op een 64-bit Java 8 runtime-omgeving (JRE).
+Voor Linux wordt de voorbeeld toepassing meegeleverd als een cross-platform Java-toepassing. Down load de nieuwste versie van de software voor [jre speech-apparaten](https://aka.ms/sdsdk-download-JRE).
+De toepassing is gebouwd met het Speech SDK-pakket en de eclips Java IDE (v4) op 64-bits Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8). De toepassing wordt uitgevoerd op een 64-bit Java 8 runtime-omgeving (JRE).
 
-Extra binaries zijn beschikbaar om aankomende apparaten te ondersteunen, [Roobo v2 DDK,](https://aka.ms/sdsdk-download-roobov2) [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter), en [GGEC Speaker](https://aka.ms/sdsdk-download-speaker).
+Er zijn extra binaire bestanden ter ondersteuning van aanstaande apparaten, [roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2), [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter)en [GGEC spreker](https://aka.ms/sdsdk-download-speaker).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Kies uw spraakapparaat](get-speech-devices-sdk.md)
+> [Uw spraak apparaat kiezen](get-speech-devices-sdk.md)
 > [!div class="nextstepaction"]
-> [Ontvang gratis een abonnementssleutel voor spraakservice](get-started.md)
+> [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)

@@ -1,7 +1,7 @@
 ---
-title: Afbeeldingen ophalen in uw aangepaste weergave - Bing Custom Search
+title: Afbeeldingen ophalen uit uw aangepaste weer gave-Bing Aangepaste zoekopdrachten
 titleSuffix: Azure Cognitive Services
-description: Overzicht op hoog niveau over het gebruik van Bing Custom Search om afbeeldingen uit uw aangepaste weergave van het web te halen.
+description: Overzicht op hoog niveau over het gebruik van Bing Aangepaste zoekopdrachten om installatie kopieën op te halen uit uw aangepaste weer gave van het web.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: scottwhi
 ms.openlocfilehash: 5fa71c62969e0f1ff7e98f374eca63efa051c041
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "66390331"
 ---
-# <a name="get-images-from-your-custom-view"></a>Afbeeldingen ophalen in uw aangepaste weergave
+# <a name="get-images-from-your-custom-view"></a>Afbeeldingen ophalen uit uw aangepaste weer gave
 
-Met Bing Custom Images Search u uw aangepaste zoekervaring verrijken met afbeeldingen. Bij aangepast zoeken, kunt u (net als bij webresultaten) zoeken naar afbeeldingen in de lijst websites van uw exemplaar. U de afbeeldingen krijgen met de Aangepaste afbeeldingen zoek-API van Bing of via de functie Gehoste gebruikersinterface. Het gebruik van de functie Gehoste gebruikersinterface is eenvoudig te gebruiken en wordt aanbevolen om uw zoekervaring in korte tijd in gebruik te nemen.  Zie [Uw gehoste gebruikersinterface configureren](hosted-ui.md)voor informatie over het configureren van uw gehoste gebruikersinterface om afbeeldingen op te nemen.
+Met Bing aangepaste afbeeldingen zoeken kunt u uw aangepaste zoek ervaring verrijken met afbeeldingen. Bij aangepast zoeken, kunt u (net als bij webresultaten) zoeken naar afbeeldingen in de lijst websites van uw exemplaar. U kunt de installatie kopieën ophalen met behulp van de zoek-API voor de aangepaste installatie kopieën van Bing of via de gehoste UI-functie. Het gebruik van de gehoste UI-functie is eenvoudig te gebruiken en wordt aanbevolen om uw zoek opdracht in een korte volg orde uit te voeren.  Zie [uw gehoste UI-ervaring configureren](hosted-ui.md)voor meer informatie over het configureren van uw gehoste gebruikers interface voor het toevoegen van installatie kopieën.
 
-Als u meer controle wilt over het weergeven van de zoekresultaten, u de Aangepaste zoek-API voor afbeeldingen van Bing gebruiken. Omdat het aanroepen van de API vergelijkbaar is met het aanroepen van de Bing Image Search API, wordt [Bing Image Search afgesloten](../Bing-Image-Search/overview.md) voor voorbeelden die de API aanroepen. Maar voordat je dat doet, maak jezelf vertrouwd met de [Custom Images Search API referentie-inhoud.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) De belangrijkste verschillen zijn de ondersteunde queryparameters (u moet de parameter customConfig-query opnemen) en het eindpunt waarnaar u aanvragen verzendt.
+Als u meer controle wilt over het weer geven van de zoek resultaten, kunt u de zoek-API van Bing aangepaste installatie kopieën gebruiken. Omdat het aanroepen van de API lijkt op het aanroepen van de Bing Afbeeldingen zoeken-API, wordt met de kassa [Bing Image Search](../Bing-Image-Search/overview.md) voor beelden van het aanroepen van de API. Maar voordat u dit doet, moet u vertrouwd raken met de naslag informatie voor het [zoeken naar aangepaste afbeeldingen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) in de API. De belangrijkste verschillen zijn de ondersteunde query parameters (u moet de query parameter customConfig toevoegen) en het eind punt waarnaar u aanvragen verzendt.
 
 <!--
 ## Next steps

@@ -1,7 +1,7 @@
 ---
-title: Reinforcement Learning - Personalizer
+title: Versterking van het onderwijs-persoonlijker
 titleSuffix: Azure Cognitive Services
-description: Personalizer gebruikt informatie over acties en de huidige context om betere rankingsuggesties te doen. De informatie over deze acties en context zijn kenmerken of eigenschappen die worden aangeduid als functies.
+description: Personaler maakt gebruik van informatie over acties en de huidige context om betere suggesties voor de rang schikking te maken. De informatie over deze acties en context zijn kenmerken of eigenschappen die functies worden genoemd.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,62 +11,62 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 36071cdee25cfa99fc54b0e5c0c0aa822cb5fe2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68662843"
 ---
-# <a name="what-is-reinforcement-learning"></a>Wat is Reinforcement Learning?
+# <a name="what-is-reinforcement-learning"></a>Wat is versterking van het onderwijs?
 
-Reinforcement Learning is een benadering van machine learning die gedrag leert door feedback te krijgen van het gebruik ervan.
+Educatie leren is een benadering van machine learning die gedrag leert door feedback te krijgen van het gebruik ervan.
  
-Reinforcement Learning werkt door:
+Educatief leren werkt door:
 
-* Het bieden van een kans of mate van vrijheid om een gedrag uit te voeren - zoals het maken van beslissingen of keuzes.
-* Het verstrekken van contextuele informatie over de omgeving en keuzes.
-* Feedback geven over hoe goed het gedrag een bepaald doel bereikt.
+* Het bieden van een verkoop kans of vrijheids graad voor het nemen van een gedrag, zoals het maken van beslissingen of keuzes.
+* Contextuele informatie over de omgeving en keuzen opgeven.
+* Feedback geven over hoe goed het gedrag een bepaald doel afhaalt.
 
-Hoewel er veel subtypen en stijlen van versterking leren, dit is hoe het concept werkt in Personalizer:
+Hoewel er veel subtypen en stijlen voor het versterken van het onderwijs zijn, is dit de manier waarop het concept werkt in Personaler:
 
-* Uw toepassing biedt de mogelijkheid om een stuk inhoud te tonen uit een lijst met alternatieven.
-* Uw applicatie geeft informatie over elk alternatief en de context van de gebruiker.
-* Uw toepassing berekent een _beloningsscore._
+* Uw toepassing biedt de mogelijkheid om één stukje inhoud uit een lijst met alternatieven weer te geven.
+* Uw toepassing bevat informatie over elke alternatieve en de context van de gebruiker.
+* Uw toepassing berekent een _belonings Score_.
 
-In tegenstelling tot sommige benaderingen van reinforcement learning, heeft Personalizer geen simulatie nodig om in te werken. De leeralgoritmen zijn ontworpen om te reageren op een buitenwereld (versus het te controleren) en te leren van elk datapunt met het inzicht dat het een unieke kans is die tijd en geld kost om te creëren, en dat er een niet-nul spijt (verlies van mogelijke beloning) suboptimale prestaties gebeurt.
+In tegens telling tot een aantal benaderingen van het versterken van educatie, is voor Personaler geen simulatie vereist om in te werken. De leer algoritmen zijn ontworpen om te reageren op een buiten wereld (en deze te beheren) en te leren van elk gegevens punt met een inzicht dat het een unieke kans is dat de tijd en het geld wordt gemaakt en dat er sprake is van een niet-nul (verlies van mogelijke beloning) als er suboptimale prestaties optreden.
 
-## <a name="what-type-of-reinforcement-learning-algorithms-does-personalizer-use"></a>Wat voor soort versterking leren algoritmen gebruikt Personalizer?
+## <a name="what-type-of-reinforcement-learning-algorithms-does-personalizer-use"></a>Welk type algoritme voor versterking van leer van persoonlijke gegevens wordt gebruikt?
 
-De huidige versie van Personalizer maakt gebruik van **contextuele bandieten**, een benadering van versterking leren dat is ingelijst rond het maken van beslissingen of keuzes tussen discrete acties, in een bepaalde context.
+De huidige versie van Personaler maakt gebruik van **contextuele Bandits**, een benadering voor het versterken van het leren van beslissingen of keuzes tussen discrete acties, in een bepaalde context.
 
-Het _beslissingsgeheugen_, het model dat is opgeleid om de best mogelijke beslissing vast te leggen, gezien een context, maakt gebruik van een set van lineaire modellen. Deze hebben herhaaldelijk bedrijfsresultaten laten zien en zijn een bewezen aanpak, deels omdat ze zeer snel kunnen leren van de echte wereld zonder multi-pass training nodig te hebben, en gedeeltelijk omdat ze begeleide leermodellen en diepe neurale netwerkmodellen.
+Het _beslissings geheugen_, het model dat is getraind voor het vastleggen van de best mogelijke beslissing, op basis van een context, maakt gebruik van een set lineaire modellen. Deze hebben herhaalde bedrijfs resultaten en zijn een bewezen benadering, deels omdat ze zeer snel van de praktijk kunnen leren, zonder dat ze training met meerdere gebruikers hoeven te hoeven doen, en dat ze gedeeltelijk kunnen worden uitgebreid met bewaakte leer modellen en diepe Neural-netwerk modellen.
 
-De locatie van het verkennen/exploiteren van verkeer wordt willekeurig gemaakt volgens het percentage dat is ingesteld voor verkenning, en het standaardalgoritme voor verkenning is epsilon-gulzig.
+De toewijzing van het gebruik van een verkennen/exploit-verkeer wordt op wille keurige wijze uitgevoerd volgens het percentage dat is ingesteld voor verkennen en het standaard algoritme voor verkennen is Epsilon-Greedy.
 
-### <a name="history-of-contextual-bandits"></a>Geschiedenis van contextuele bandieten
+### <a name="history-of-contextual-bandits"></a>Geschiedenis van contextuele Bandits
 
-John Langford bedacht de naam Contextual Bandits (Langford en Zhang [2007]) om een hardnekkige subset van versterkingsleren te beschrijven en heeft gewerkt aan een half dozijn papers die ons begrip van hoe te leren in dit paradigma verbeteren:
+John Langford heeft de naam contextuele Bandits (Langford en Zhang [2007]) gemunt om een Subtractieve subset van versterking van het onderwijs te beschrijven en heeft met een halve dozijn gewerkte kennis verbeterd over de manier waarop u in dit paradigma kunt leren werken:
 
 * Beygelzimer et al. [2011]
-* Dudík et al. [2011a,b]
+* Dudík et al. [2011a, b]
 * Agarwal et al. [2014, 2012]
 * Beygelzimer en Langford [2009]
 * Li et al. [2010]
 
-John heeft ook eerder verschillende tutorials gegeven over onderwerpen als Joint Prediction (ICML 2015), Contextual Bandit Theory (NIPS 2013), Active Learning (ICML 2009) en Sample Complexity Bounds (ICML 2003)
+John heeft ook enkele zelf studies gegeven die eerder in de onderwerpen zijn behandeld, zoals gezamenlijke voor spelling (ICML 2015), contextuele Bandit theorie (NIPS 2013), actief leren (ICML 2009) en voor beelden van complexiteits grenzen (ICML 2003)
 
-## <a name="what-machine-learning-frameworks-does-personalizer-use"></a>Welke machine learning frameworks gebruikt Personalizer?
+## <a name="what-machine-learning-frameworks-does-personalizer-use"></a>Wat machine learning Frameworks maakt gebruik van persoonlijker?
 
-Personalizer gebruikt [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit/wiki) momenteel als basis voor de machine learning. Dit framework zorgt voor maximale doorvoer en laagste latentie bij het maken van personalisatierangen en het trainen van het model met alle gebeurtenissen.
+Personaler maakt momenteel gebruik van [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit/wiki) als basis voor de machine learning. Dit kader biedt maximale door Voer en een laagste latentie bij het maken van een persoonlijke classificatie en het model trainen met alle gebeurtenissen.
 
 ## <a name="references"></a>Verwijzingen
 
-* [Contextuele beslissingen nemen met een lage technische schuld](https://arxiv.org/abs/1606.03966)
-* [Een reductiebenadering van eerlijke classificatie](https://arxiv.org/abs/1803.02453)
-* [Efficiënte contextuele bandieten in niet-stationaire werelden](https://arxiv.org/abs/1708.01799)
-* [Residual Loss Voorspelling: Versterking: leren zonder incrementele feedback](https://openreview.net/pdf?id=HJNMYceCW)
-* [Instructies en visuele waarnemingen toewijzen aan acties met reinforcement learning](https://arxiv.org/abs/1704.08795)
-* [Leren om beter te zoeken dan je leraar](https://arxiv.org/abs/1502.02206)
+* [Contextuele beslissingen nemen met weinig technische schulden](https://arxiv.org/abs/1606.03966)
+* [Een verlagings benadering van een billijke classificatie](https://arxiv.org/abs/1803.02453)
+* [Efficiënte contextuele Bandits in niet-stationaire werelden](https://arxiv.org/abs/1708.01799)
+* [Rest verlies voor spelling: versterking: leren zonder incrementele feedback](https://openreview.net/pdf?id=HJNMYceCW)
+* [Instructies en visuele waarnemingen toewijzen aan acties met versterking van het onderwijs](https://arxiv.org/abs/1704.08795)
+* [Leer beter zoeken dan uw docent](https://arxiv.org/abs/1502.02206)
 
 ## <a name="next-steps"></a>Volgende stappen
 

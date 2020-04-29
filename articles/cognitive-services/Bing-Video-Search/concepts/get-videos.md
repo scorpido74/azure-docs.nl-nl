@@ -1,7 +1,7 @@
 ---
-title: Zoeken naar video's met de Bing Video Search API
+title: Zoeken naar Video's met behulp van de Bing Video's zoeken-API
 titleSuffix: Azure Cognitive Services
-description: De Bing Video Search APIfinds en retourneert relevante video's van het web, het biedt verschillende functies voor intelligente en gerichte video ophalen op het web.
+description: De Bing Video Search APIfinds en retourneert relevante Video's van het web en biedt verschillende functies voor intelligente en gerichte video op het web.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
 ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220301"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Video's zoeken met de Bing Video's zoeken-API
@@ -120,10 +120,10 @@ Zie [Inzicht verkrijgen over een video](../video-insights.md) voor meer informat
 
 De Bing Video's zoeken-API retourneert standaard alle video's die relevant zijn voor de query. Als u alleen gratis video's wilt zien of video's die korter zijn dan vijf minuten, gebruikt u de volgende filterqueryparameters:
 
-- [prijzen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash;Filter video's op prijs (bijvoorbeeld video's die gratis zijn of waarvoor u moet betalen)
-- [resolutie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash;Filtervideo's op resolutie (bijvoorbeeld video's met een resolutie van 720p of hoger)
-- [videoLengtefiltervideo's](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash;op videolengte (bijvoorbeeld video's met een lengte van minder dan vijf minuten)
-- [versheidfiltervideo's](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)&mdash;op leeftijd (bijvoorbeeld video's die bing in de afgelopen week heeft ontdekt)
+- [prijs](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash;filter Video's op basis van prijzen (bijvoorbeeld Video's die gratis zijn of waarvoor u moet betalen voor)
+- [resolutie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash;filter Video's op resolutie (bijvoorbeeld Video's met een 720p of een hogere resolutie)
+- [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash;Video's filteren op video lengte (bijvoorbeeld Video's die minder dan vijf minuten lang zijn)
+- [Vernieuw](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)de Video's op leeftijd (bijvoorbeeld Video's die in de afgelopen week zijn gedetecteerd door Bing)&mdash;
 
 Als u video's uit een bepaald domein wilt opvragen, gebruikt u de query-operator [site:](https://msdn.microsoft.com/library/ff795613.aspx) in de queryreeks.
 

@@ -1,7 +1,7 @@
 ---
-title: Afbeeldingen van het web ophalen - Bing Image Search API
+title: Afbeeldingen ophalen van de Web-Bing Afbeeldingen zoeken-API
 titleSuffix: Azure Cognitive Services
-description: Gebruik de Bing Image Search API om relevante afbeeldingen van het web te zoeken en te krijgen.
+description: Gebruik de Bing Afbeeldingen zoeken-API voor het zoeken naar en ophalen van relevante installatie kopieën van het web.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 309bbca762149f8804742d9ef02d4c3e8dfcdc6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67542764"
 ---
-# <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Afbeeldingen van het web ophalen met de Bing Image Search API
+# <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Installatie kopieën van het web ophalen met de Bing Afbeeldingen zoeken-API
 
-Wanneer u de BING Image Search REST API gebruikt, u afbeeldingen van het web ophalen die gerelateerd zijn aan uw zoekterm door het volgende GET-verzoek te verzenden:
+Wanneer u de Bing Image Search REST API gebruikt, kunt u installatie kopieën ophalen van het web die aan uw zoek term zijn gerelateerd door de volgende GET-aanvraag te verzenden:
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies&mkt=en-us HTTP/1.1
@@ -31,13 +31,13 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Gebruik de [parameter q-query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) voor uw door de URL gecodeerde zoekterm. Bijvoorbeeld, als u *zeilen rubberboten,* `sailing+dinghies` ingesteld `sailing%20dinghies` `q` op of .
+Gebruik de [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) -query parameter voor uw zoek term met URL-code ring. Als u bijvoorbeeld *zeil dinghies*invoert, stelt `q` u in op `sailing+dinghies` of `sailing%20dinghies`.
 
 > [!IMPORTANT]
-> * Alle aanvragen moeten worden ingediend vanaf een server en niet van een client.
-> * Als het de eerste keer is dat u een van de Bing-zoek-API's aanroept, neemt u de header client-id niet op. Neem alleen de client-id op als u eerder een Bing-API hebt aangeroepen die een client-id heeft geretourneerd voor de gebruikers- en apparaatcombinatie.
+> * Alle aanvragen moeten worden gemaakt van een server en niet van een client.
+> * Als dit de eerste keer is dat u een van de Bing zoeken-Api's aanroept, neemt u de header van de client-ID niet op. Neem alleen de client-ID op als u eerder een Bing API hebt aangeroepen die een client-ID voor de combi natie van gebruikers en apparaten heeft geretourneerd.
 
-## <a name="get-images-from-a-specific-web-domain"></a>Afbeeldingen ophalen uit een specifiek webdomein
+## <a name="get-images-from-a-specific-web-domain"></a>Installatie kopieën ophalen van een specifiek webdomein
 
 Als u afbeeldingen uit een bepaald domein wilt opvragen, gebruikt de query-operator [site:](https://msdn.microsoft.com/library/ff795613.aspx).
 
@@ -46,24 +46,24 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghi
 ```
 
 > [!NOTE]
-> Antwoorden op query's met de `site:` operator kunnen inhoud voor volwassenen bevatten, ongeacht de instelling [safeSearch.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) Gebruik `site:` alleen als u op de hoogte bent van de inhoud op het domein.
+> Antwoorden op query's die gebruikmaken `site:` van de operator, bevatten mogelijk inhoud voor volwassenen, ongeacht de instelling van [SafeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) . Gebruik `site:` alleen als u op de hoogte bent van de inhoud van het domein.
 
 ## <a name="filter-images"></a>Afbeeldingen filteren
 
- Standaard retourneert de Image Search API alle afbeeldingen die relevant zijn voor de query. Als u de afbeeldingen wilt filteren die Bing retourneert (bijvoorbeeld om alleen afbeeldingen met een transparante achtergrond of specifieke grootte terug te sturen), gebruikt u de volgende queryparameters:
+ De Afbeeldingen zoeken-API retourneert standaard alle installatie kopieën die relevant zijn voor de query. Als u de installatie kopieën wilt filteren die door Bing worden geretourneerd (bijvoorbeeld om alleen afbeeldingen met een transparante achtergrond of een specifieke grootte te retour neren), gebruikt u de volgende query parameters:
 
-* [aspect](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#aspect)—Filter afbeeldingen op beeldverhouding (bijvoorbeeld standaard- of breedbeeldafbeeldingen).
-* [kleur](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#color)—Filter afbeeldingen op dominante kleur of zwart-wit.
-* [versheid](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#freshness)—Afbeeldingen filteren op leeftijd (bijvoorbeeld afbeeldingen die bing in de afgelopen week heeft ontdekt).
-* [hoogte](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#height), [breedte](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#width)—Afbeeldingen filteren op breedte en hoogte.
-* [imageContent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagecontent)—Filter afbeeldingen op inhoud (bijvoorbeeld afbeeldingen die alleen het gezicht van een persoon weergeven).
-* [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype)—Afbeeldingen filteren op type (bijvoorbeeld illustraties, geanimeerde GIF's of transparante achtergronden).
-* [licentie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license): afbeeldingen filteren op het type licentie dat aan de site is gekoppeld.
-* [grootte](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#size)—Afbeeldingen filteren op grootte, zoals kleine afbeeldingen tot 200x200 pixels.
+* [aspect](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#aspect): filter afbeeldingen op hoogte-breedte verhouding (bijvoorbeeld Standard-of Wide Screen-afbeeldingen).
+* [Color](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#color): filter afbeeldingen op dominante kleur of zwart en wit.
+* [versheid](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#freshness): filter afbeeldingen op leeftijd (bijvoorbeeld afbeeldingen die zijn gedetecteerd door Bing in de afgelopen week).
+* [hoogte](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#height), [breedte](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#width): filter afbeeldingen op breedte en hoogte.
+* [imageContent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagecontent): filter afbeeldingen op inhoud (bijvoorbeeld afbeeldingen waarin alleen het gezicht van een persoon wordt weer gegeven).
+* [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype): filter afbeeldingen op type (bijvoorbeeld illustraties, GIF-animaties of transparante achtergronden).
+* [licentie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license): filter afbeeldingen op het type licentie dat is gekoppeld aan de site.
+* [grootte](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#size): filter afbeeldingen op grootte, zoals kleine afbeeldingen tot 200x200 pixels.
 
 Als u afbeeldingen uit een bepaald domein wilt opvragen, gebruikt de query-operator [site:](https://msdn.microsoft.com/library/ff795613.aspx).
 
-In het volgende voorbeeld ziet u hoe u kleine afbeeldingen krijgen van ContosoSailing.com die Bing de afgelopen week heeft ontdekt.  
+In het volgende voor beeld ziet u hoe u kleine afbeeldingen kunt ophalen uit ContosoSailing.com die Bing in de afgelopen week is gedetecteerd.  
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies+site:contososailing.com&size=small&freshness=week&mkt=en-us HTTP/1.1  
@@ -74,13 +74,13 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```
 
-## <a name="bing-image-search-response-format"></a>Reactie-indeling Bing Image Search
+## <a name="bing-image-search-response-format"></a>Indeling van Bing Image Search-antwoord
 
-Het antwoordbericht van Bing bevat een [antwoord op afbeeldingen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) met een lijst met afbeeldingen waarvan Cognitive Services heeft vastgesteld dat ze relevant zijn voor de query. Elk [afbeeldingsobject](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) in de lijst bevat de volgende informatie over de afbeelding: de URL, de grootte ervan, de afmetingen, de coderingsindeling, een URL naar een miniatuur van de afbeelding en de afmetingen van de miniatuur.
+Het antwoord bericht van Bing bevat een antwoord op een [installatie kopie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) met een lijst met installatie kopieën die Cognitive Services vastgesteld dat deze relevant zijn voor de query. Elk [afbeeldings](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) object in de lijst bevat de volgende informatie over de afbeelding: de URL, de grootte, de afmetingen, de coderings indeling, een URL naar een miniatuur van de afbeelding en de afmetingen van de miniatuur.
 
 > [!NOTE]
-> * Afbeeldingen moeten worden weergegeven in de volgorde die in het antwoord wordt gegeven.
-> * Omdat URL-indelingen en parameters zonder kennisgeving kunnen worden gewijzigd, gebruikt u alle URL's zoals deze zijn. U mag geen afhankelijkheden nemen van de URL-indeling of parameters, behalve waar vermeld.
+> * Afbeeldingen moeten worden weer gegeven in de volg orde die in het antwoord is opgenomen.
+> * Omdat URL-indelingen en-para meters kunnen worden gewijzigd zonder kennisgeving, gebruikt u alle Url's als-is. U mag geen afhankelijkheden maken voor de URL-indeling of para meters, tenzij anders wordt vermeld.
 
 ```json
 {
@@ -109,8 +109,8 @@ Het antwoordbericht van Bing bevat een [antwoord op afbeeldingen](https://docs.m
 },
 ```
 
-Wanneer u de Bing Afbeeldingen zoeken-API aanroept, retourneert Bing een lijst met resultaten. De lijst is een subset van het totale aantal resultaten die relevant zijn voor de query. Het veld `totalEstimatedMatches` in de respons bevat een schatting van het aantal afbeeldingen dat beschikbaar is om weer te geven. Zie [Paging Images](../paging-images.md)voor meer informatie over het bekijken van de rest van de afbeeldingen.
+Wanneer u de Bing Afbeeldingen zoeken-API aanroept, retourneert Bing een lijst met resultaten. De lijst is een subset van het totale aantal resultaten die relevant zijn voor de query. Het veld `totalEstimatedMatches` in de respons bevat een schatting van het aantal afbeeldingen dat beschikbaar is om weer te geven. Zie [paginerings installatie kopieën](../paging-images.md)voor meer informatie over het door lopen van de rest van de installatie kopieën.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u de Bing Image Search API nog niet eerder hebt geprobeerd, probeert u een [snelle start](../quickstarts/csharp.md). Als u op zoek bent naar iets complexers, probeert u de zelfstudie om een [web-app met één pagina](../tutorial-bing-image-search-single-page-app.md)te maken.
+Als u de Bing Afbeeldingen zoeken-API nog niet eerder hebt uitgevoerd, kunt u een [Snelstartgids](../quickstarts/csharp.md)proberen. Als u op zoek bent naar iets complexere, probeert u de zelf studie om een [Web-app met één pagina](../tutorial-bing-image-search-single-page-app.md)te maken.

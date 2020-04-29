@@ -1,7 +1,7 @@
 ---
-title: Tekst transformeren - Translator Text API
+title: Tekst Translator Text-API transformeren
 titleSuffix: Azure Cognitive Services
-description: Tekst transformeren met de Translator Text API.
+description: Tekst transformeren met behulp van de Translator Text-API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,33 +11,33 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
 ms.openlocfilehash: 533f09b09b7f5899833669b5f0ad4ffa5efa3a43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68594910"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>De methode TransformText gebruiken
 
 > [!NOTE]
-> Deze methode wordt afgeschaft. Het is niet beschikbaar in V3.0 van de Translator Text API.
+> Deze methode is afgeschaft. Het is niet beschikbaar in V 3.0 van de Translator Text-API.
 
-De TransformText-methode is een tekstnormalisatiefunctie voor sociale media, die een genormaliseerde vorm van de invoer retourneert. De methode kan worden gebruikt als een voorbewerkingsstap in machinevertaling of andere toepassingen die schone invoertekst verwachten die meestal niet wordt gevonden in sociale media of door gebruikers gegenereerde inhoud. De functie werkt momenteel alleen met Engelse invoer.
+De methode TransformText is een tekstnormalisatie functie voor sociale media, waarmee een genormaliseerde vorm van de invoer wordt geretourneerd. De methode kan worden gebruikt als een voor bereiding voor het uitvoeren van een voor verwerking in machine vertalingen of andere toepassingen die een schone invoer tekst verwachten die niet normaal gesp roken wordt gevonden in sociale media of door gebruikers gegenereerde inhoud. De functie werkt momenteel alleen met Engelse invoer.
 
-De methode is een RESTful-service die GET over HTTP gebruikt. Het ondersteunt eenvoudige XML- en JSON-serialisatie.
+De methode is een REST-service die gebruikmaakt van HTTP. Het ondersteunt eenvoudige XML-en JSON-serialisatie.
 
 ## <a name="parameters"></a>Parameters
 
 | Parameter | Beschrijving |
 |:---|:---|
-| Autorisatiekoptekst | **Vereist** HTTP-header wordt gebruikt om de toepassing te identificeren. Gebruik toets: "Autorisatie" en waarde: "Drager" + " + access token. Voor meer informatie, ga hier.|
-| language | **Vereist** Een tekenreeks die de taalcode vertegenwoordigt. Deze parameter ondersteunt alleen Engels met **en** als taalnaam.|
-| category | **Optioneel** Een tekenreeks met de categorie of het domein van de vertaling. Deze parameter ondersteunt alleen de algemene **standaardoptie**.|
-| Zin | **Vereist** Een zin die je wilt corrigeren. |
+| Autorisatie-header | **Vereist** HTTP-header die wordt gebruikt om de toepassing te identificeren. Gebruik sleutel: ' autorisatie ' en waarde: ' Bearer ' + ' ' en het toegangs token. Meer informatie vindt u hier.|
+| language | **Vereist** Een teken reeks die de taal code vertegenwoordigt. Deze para meter ondersteunt alleen Engels met **en** als de taal naam.|
+| category | **Optioneel** Een teken reeks met de categorie of het domein van de vertaling. Deze para meter ondersteunt alleen de standaard optie **Algemeen**.|
+| veroordeeld | **Vereist** Een zin die u wilt corrigeren. |
 
 ## <a name="return-value"></a>Retourwaarde
 
-De retourwaarde geeft de getransformeerde zin.
+De geretourneerde waarde levert de getransformeerde zin.
 
 > [!div class="tabbedCodeSnippets"]
 > ```json

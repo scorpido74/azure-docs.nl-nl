@@ -1,7 +1,7 @@
 ---
 title: Best practices bij het gebruik van de Anomaly Detector-API
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over aanbevolen procedures bij het detecteren van afwijkingen met de Api voor anomaliedetector.
+description: Meer informatie over aanbevolen procedures voor het detecteren van afwijkingen met de anomalie detectie-API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,50 +11,50 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: aahi
 ms.openlocfilehash: 9407f2fc9375765efb6eb9688b3ebfeef24ba90a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67721622"
 ---
-# <a name="best-practices-for-using-the-anomaly-detector-api"></a>Aanbevolen procedures voor het gebruik van de API voor anomaliedetector
+# <a name="best-practices-for-using-the-anomaly-detector-api"></a>Aanbevolen procedures voor het gebruik van de anomalie detectie-API
 
-De Anomaly Detector API is een stateless anomalie detectie service. De nauwkeurigheid en prestaties van de resultaten kunnen worden beïnvloed door:
+De afwijkende detector-API is een staatloze detectie service voor stateless. De nauw keurigheid en prestaties van de resultaten kunnen worden beïnvloed door:
 
-* Hoe uw tijdreeksgegevens worden voorbereid.
-* De Api-parameters van de AnomalieDetector die zijn gebruikt.
-* Het aantal gegevenspunten in uw API-aanvraag. 
+* Hoe uw time series-gegevens worden voor bereid.
+* De afwijkende detector API-para meters die zijn gebruikt.
+* Het aantal gegevens punten in uw API-aanvraag. 
 
-Gebruik dit artikel voor meer informatie over aanbevolen procedures voor het gebruik van de API om de beste resultaten voor uw gegevens te verkrijgen. 
+In dit artikel vindt u meer informatie over de aanbevolen procedures voor het gebruik van de API voor het verkrijgen van de beste resultaten voor uw gegevens. 
 
-## <a name="when-to-use-batch-entire-or-latest-last-point-anomaly-detection"></a>Wanneer batch (volledige) of laatste (laatste) puntanomaliedetectie te gebruiken
+## <a name="when-to-use-batch-entire-or-latest-last-point-anomaly-detection"></a>Wanneer u batch (volledig) of laatste (laatste) punt anomalie detectie wilt gebruiken
 
-Met het batchdetectie-eindpunt van de Anomalie Detector API u afwijkingen detecteren via uw gegevens uit de gehele tijdreeks. In deze detectiemodus wordt één statistisch model gemaakt en toegepast op elk punt in de gegevensset. Als uw tijdreeks de onderstaande kenmerken heeft, raden we u aan batchdetectie te gebruiken om uw gegevens in één API-aanroep te bekijken.
+Met het batch detectie-eind punt van de afwijkings detectie-API kunt u afwijkingen detecteren via uw hele reeks gegevens. In deze detectie modus wordt één statistisch model gemaakt en toegepast op elk punt in de gegevensset. Als uw tijd reeks de onderstaande kenmerken heeft, kunt u het beste batch detectie gebruiken om een voor beeld van uw gegevens in één API-aanroep te bekijken.
 
-* Een seizoensgebonden tijdreeks, met af en toe afwijkingen.
-* Een vlakke trend tijdreeks, met af en toe spikes/dips. 
+* Een seizoen tijd reeks, met incidentele afwijkingen.
+* Een reeks vaste trend tijden, met incidentele pieken/spannings dips. 
 
-We raden u af om batchanomaliedetectie te gebruiken voor realtime gegevensbewaking of deze te gebruiken op tijdreeksgegevens die niet boven kenmerken staan. 
+Het is niet raadzaam om batch anomalie detectie te gebruiken voor realtime gegevens bewaking of het gebruik ervan op tijdreeks gegevens die geen hogere kenmerken hebben. 
 
-* Batchdetectie maakt en past slechts één model toe, de detectie voor elk punt wordt gedaan in de context van hele reeksen. Als de tijdreeksgegevenstrends op en neer zonder seizoensgebondenheid, kunnen sommige punten van verandering (dips en pieken in de gegevens) worden gemist door het model. Evenzo kunnen sommige punten van verandering die minder belangrijk zijn dan die later in de gegevensset niet worden geteld als belangrijk genoeg om in het model te worden opgenomen.
+* Batch detectie maakt en past slechts één model toe, de detectie voor elk punt wordt uitgevoerd in de context van de hele reeks. Als de tijdreeks gegevens trends omhoog en omlaag dalen zonder seizoensgebondenheid, kunnen sommige wijzigingen (spannings dips en pieken in de gegevens) worden gemist door het model. Het is ook mogelijk dat sommige wijzigingen die minder belang rijk zijn dan later in de gegevensset, niet als groot genoeg worden beschouwd om in het model te worden opgenomen.
 
-* Batchdetectie is trager dan het detecteren van de anomaliestatus van het laatste punt bij het doen van realtime gegevensbewaking, vanwege het aantal punten dat wordt geanalyseerd.
+* Batch detectie is langzamer dan het detecteren van de afwijkings status van het laatste punt bij het uitvoeren van real-time gegevens bewaking, vanwege het aantal punten dat wordt geanalyseerd.
 
-Voor real-time gegevensbewaking raden we u aan alleen de anomaliestatus van uw laatste gegevenspunt te detecteren. Door de nieuwste puntdetectie continu toe te passen, kan het monitoren van streaming data efficiënter en nauwkeuriger worden uitgevoerd.
+Voor realtime gegevens bewaking wordt aangeraden de afwijkings status van het meest recente gegevens punt alleen op te sporen. Door voortdurend de nieuwste punt detectie toe te passen, kan streaming-gegevens bewaking efficiënter en nauw keuriger worden uitgevoerd.
 
-In het onderstaande voorbeeld wordt beschreven welke invloed deze detectiemodi kunnen hebben op de prestaties. De eerste foto toont het resultaat van het continu detecteren van de anomalie status laatste punt langs 28 eerder gezien datapunten. De rode punten zijn anomalieën.
+In het volgende voor beeld wordt de impact beschreven die deze detectie modi kunnen hebben op de prestaties. In de eerste afbeelding ziet u het resultaat van het voortdurend detecteren van het laatste punt van de afwijkings status, evenals 28 eerder waargenomen gegevens punten. De rode punten zijn afwijkingen.
 
-![Een afbeelding met anomaliedetectie met behulp van het laatste punt](../media/last.png)
+![Een afbeelding met een afwijkings detectie met het laatste punt](../media/last.png)
 
-Hieronder is dezelfde gegevensset met behulp van batch anomalie detectie. Het model dat voor de bewerking is gemaakt, heeft verschillende afwijkingen genegeerd, gemarkeerd door rechthoeken.
+Hieronder ziet u dezelfde gegevensset met behulp van batch anomalie detectie. Het model dat is gemaakt voor de bewerking, heeft verschillende afwijkingen genegeerd, gemarkeerd door rechthoeken.
 
-![Een afbeelding met anomaliedetectie met behulp van de batchmethode](../media/entire.png)
+![Een afbeelding met de afwijkings detectie met de batch-methode](../media/entire.png)
 
 ## <a name="data-preparation"></a>Gegevensvoorbereiding
 
-De Api Anomaly Detector accepteert tijdreeksgegevens die zijn opgemaakt in een JSON-aanvraagobject. Een tijdreeks kan alle numerieke gegevens zijn die in de loop van de tijd in opeenvolgende volgorde worden geregistreerd. U vensters van uw tijdreeksgegevens naar het API-eindpunt van de Anomalie Detector verzenden om de prestaties van de API te verbeteren. Het minimum aantal gegevenspunten dat u verzenden is 12 en het maximum is 8640 punten. [Granulariteit](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) wordt gedefinieerd als de snelheid waarmee uw gegevens worden bemonsterd. 
+De anomalie detectie-API accepteert tijd reeks gegevens die zijn ingedeeld in een JSON-aanvraag object. Een tijd reeks kan de numerieke gegevens in sequentiële volg orde in de loop van de tijd worden vastgelegd. U kunt Windows van uw tijdreeks gegevens naar het afwijkings detector-API-eind punt verzenden om de prestaties van de API te verbeteren. Het minimum aantal gegevens punten dat u kunt verzenden is 12 en de maximum waarde is 8640 punten. [Granulariteit](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) wordt gedefinieerd als de snelheid waarmee uw gegevens worden bemonsterd. 
 
-Gegevenspunten die naar de API voor anomaliedetector worden verzonden, moeten een geldige gecoördineerde universele tijdstempel (UTC) en numerieke waarde hebben. 
+Gegevens punten die worden verzonden naar de anomalie detectie-API moeten een geldig UTC-tijds tempel (Coordinated Universal Time) en een numerieke waarde hebben. 
 
 ```json
 {
@@ -72,7 +72,7 @@ Gegevenspunten die naar de API voor anomaliedetector worden verzonden, moeten ee
 }
 ```
 
-Als uw gegevens worden bemonsterd met een niet-standaard tijdsinterval, u deze opgeven door het `customInterval` kenmerk in uw aanvraag toe te voegen. Als uw serie bijvoorbeeld elke 5 minuten wordt bemonsterd, u het volgende toevoegen aan uw JSON-aanvraag:
+Als uw gegevens worden bemonsterd met een niet-standaard tijds interval, kunt u deze opgeven door het `customInterval` kenmerk toe te voegen aan uw aanvraag. Als uw reeks bijvoorbeeld elke vijf minuten steek proeft, kunt u het volgende toevoegen aan uw JSON-aanvraag:
 
 ```json
 {
@@ -81,27 +81,27 @@ Als uw gegevens worden bemonsterd met een niet-standaard tijdsinterval, u deze o
 }
 ```
 
-### <a name="missing-data-points"></a>Ontbrekende gegevenspunten
+### <a name="missing-data-points"></a>Ontbrekende gegevens punten
 
-Ontbrekende gegevenspunten komen vaak voor in gelijkmatig verdeelde tijdreeksgegevenssets, vooral gegevenssets met een fijne granulariteit (een klein bemonsteringsinterval. Bijvoorbeeld, gegevens bemonsterd om de paar minuten). Het missen van minder dan 10% van het verwachte aantal punten in uw gegevens mag geen negatieve invloed hebben op uw detectieresultaten. Overweeg hiaten in uw gegevens op te vullen op basis van de kenmerken ervan, zoals het vervangen van gegevenspunten uit een eerdere periode, lineaire interpolatie of een voortschrijdend gemiddelde.
+Ontbrekende gegevens punten zijn gebruikelijk in gelijkmatig gedistribueerde tijdreeks gegevens sets, met name met een fijne granulariteit (een klein steekproef interval. Bijvoorbeeld gegevens die elke paar minuten worden sampled). Minder dan 10% van het verwachte aantal punten in uw gegevens mag geen negatieve invloed hebben op de detectie resultaten. Overweeg het invullen van hiaten in uw gegevens op basis van de kenmerken zoals het vervangen van gegevens punten uit een eerdere periode, lineaire interpolatie of een zwevend gemiddelde.
 
-### <a name="aggregate-distributed-data"></a>Gedistribueerde gegevens samenvoegen
+### <a name="aggregate-distributed-data"></a>Gedistribueerde gegevens verzamelen
 
-De Anomaly Detector API werkt het beste op een gelijkmatig verdeelde tijdreeks. Als uw gegevens willekeurig worden gedistribueerd, moet u deze samenvoegen met een tijdseenheid, zoals per minuut, per uur of dagelijks.
+De anomalie detectie-API werkt het beste op een even gedistribueerde tijd reeks. Als uw gegevens wille keurig worden gedistribueerd, moet u deze samen voegen met een tijds eenheid, bijvoorbeeld per minuut, elk uur of dagelijks.
 
-## <a name="anomaly-detection-on-data-with-seasonal-patterns"></a>Anomaliedetectie op gegevens met seizoenspatronen
+## <a name="anomaly-detection-on-data-with-seasonal-patterns"></a>Anomalie detectie voor gegevens met seizoensgebonden patronen
 
-Als u weet dat uw tijdreeksgegevens een seizoensgebonden patroon hebben (een gegevens die regelmatig plaatsvinden), u de nauwkeurigheid en api-responstijd verbeteren. 
+Als u weet dat uw time series-gegevens een seizoensgebonden patroon hebben (een met regel matige intervallen), kunt u de nauw keurigheid en API-reactie tijd verbeteren. 
 
-Als u `period` een JSON-aanvraag opgeeft, kan de latentie van anomaliedetectie met maximaal 50% worden verminderd. Het `period` is een geheel getal dat ongeveer aangeeft hoeveel gegevens punten de tijdreeks en duurt om een patroon te herhalen. Bijvoorbeeld, een tijdreeks met een datapunt `period` per `7`dag zou hebben een als , en een tijdreeks `period` met `7*24`een punt per uur (met hetzelfde wekelijkse patroon) zou hebben een van . Als u niet zeker bent van de patronen van uw gegevens, hoeft u deze parameter niet op te geven.
+Wanneer u `period` een JSON-aanvraag maakt, kan er een afwijkende detectie latentie van maxi maal 50% worden opgegeven. Het `period` is een geheel getal dat ongeveer aangeeft hoeveel gegevens punten de tijd reeks duurt om een patroon te herhalen. Een tijd reeks met één gegevens punt per dag zou bijvoorbeeld `period` een as `7`hebben en een tijd reeks met één punt per uur (met hetzelfde wekelijkse patroon) zou een `period` van `7*24`hebben. Als u niet zeker bent van de patronen van uw gegevens, hoeft u deze para meter niet op te geven.
 
-Voor de beste `period`resultaten, bieden 4 's waard van de gegevens punt, plus een extra. Bijvoorbeeld, uurgegevens met een wekelijks patroon zoals hierboven beschreven moeten 673`7 * 24 * 4 + 1`gegevenspunten in de aanvraaginstantie () bevatten.
+Voor de beste resultaten geeft u `period`4 aan gegevens punt op, plus een extra. Zo moeten gegevens per uur met een wekelijks patroon, zoals hierboven wordt beschreven, 673 gegevens punten leveren in de aanvraag tekst`7 * 24 * 4 + 1`().
 
-### <a name="sampling-data-for-real-time-monitoring"></a>Bemonsteringsgegevens voor realtime monitoring
+### <a name="sampling-data-for-real-time-monitoring"></a>Bemonsterings gegevens voor realtime-bewaking
 
-Als uw streaminggegevens met een korte interval (bijvoorbeeld seconden of minuten) worden bemonsterd, kan het verzenden van het aanbevolen aantal gegevenspunten het maximaal toegestane aantal van de Anomalie Detector API (8640 gegevenspunten) overschrijden. Als uw gegevens een stabiel seizoenspatroon weergeven, u overwegen een voorbeeld van uw tijdreeksgegevens te verzenden met een groter tijdsinterval, zoals uren. Het op deze manier bemonsteren van uw gegevens kan ook de API-responstijd merkbaar verbeteren. 
+Als uw streaminggegevens worden bemonsterd met een kort interval (bijvoorbeeld seconden of minuten), kan het verzenden van het aanbevolen aantal gegevens punten het Maxi maal toegestane maximum aantal (8640 gegevens punten) van de anomalie detectie API overschrijden. Als uw gegevens een stabiel seizoensgebonden patroon tonen, kunt u overwegen om een voor beeld van uw time series-gegevens te verzenden met een groter tijds interval, zoals uren. Het op deze manier bemonsteren van uw gegevens kan de reactie tijd van de API aanzienlijk verbeteren. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Wat is de Anomaly Detector-API?](../overview.md)
-* [Snelstart: afwijkingen in uw tijdreeksgegevens detecteren met behulp van de Anomalie Detector REST API](../quickstarts/detect-data-anomalies-csharp.md)
+* [Snelstartgids: afwijkingen in uw time series-gegevens detecteren met behulp van de anomalie detectie REST API](../quickstarts/detect-data-anomalies-csharp.md)

@@ -1,7 +1,7 @@
 ---
-title: Video's downloaden in je aangepaste weergave - Bing Custom Search
+title: Video's ophalen van uw aangepaste weer gave-Bing Aangepaste zoekopdrachten
 titleSuffix: Azure Cognitive Services
-description: Overzicht op hoog niveau over het gebruik van Bing Custom Search om video's uit uw aangepaste weergave van het web te krijgen.
+description: Overzicht op hoog niveau over het gebruik van Bing Aangepaste zoekopdrachten om Video's op te halen uit uw aangepaste weer gave van het web.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: scottwhi
 ms.openlocfilehash: 222256036a59c7df302546bbf82648c4d524d43f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68405088"
 ---
-# <a name="get-videos-from-your-custom-view"></a>Video's downloaden uit je aangepaste weergave
+# <a name="get-videos-from-your-custom-view"></a>Video's ophalen uit uw aangepaste weer gave
 
-Met Zoeken naar aangepaste video's van Bing kun je je aangepaste zoekervaring verrijken met video's. Bij aangepast zoeken, kunt u (net als bij webresultaten) zoeken naar video's in de lijst websites van uw exemplaar. Je de video's downloaden via de Aangepaste Video's Search API van Bing of via de functie Gehoste gebruikersinterface. Het gebruik van de functie Gehoste gebruikersinterface is eenvoudig te gebruiken en wordt aanbevolen om uw zoekervaring in korte tijd in gebruik te nemen. Zie [Uw gehoste gebruikersinterface-ervaring configureren](hosted-ui.md)voor informatie over het configureren van uw gehoste gebruikersinterface om video's op te nemen.
+Met de zoek functie voor aangepaste Video's in Bing kunt u uw aangepaste zoek ervaring met Video's verrijken. Bij aangepast zoeken, kunt u (net als bij webresultaten) zoeken naar video's in de lijst websites van uw exemplaar. U kunt de Video's ophalen met behulp van de zoek-API van Bing Custom Video's of via de gehoste UI-functie. Het gebruik van de gehoste UI-functie is eenvoudig te gebruiken en wordt aanbevolen om uw zoek opdracht in een korte volg orde uit te voeren. Zie [uw gehoste UI-ervaring configureren](hosted-ui.md)voor meer informatie over het configureren van uw gehoste gebruikers interface voor het toevoegen van Video's.
 
-Als u meer controle wilt over het weergeven van de zoekresultaten, u de aangepaste video-zoek-API voor video's van Bing gebruiken. Omdat het aanroepen van de API vergelijkbaar is met het aanroepen van de Bing Video Search API, wordt [Bing Video Search afgezocht](../Bing-Video-Search/search-the-web.md) voor voorbeelden die de API aanroepen. Maar voordat je dat doet, maak jezelf vertrouwd met de [Aangepaste Video's Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference) referentie-inhoud. De belangrijkste verschillen zijn de ondersteunde queryparameters (u moet de parameter customConfig-query opnemen) en het eindpunt waarnaar u aanvragen verzendt.
+Als u meer controle wilt over het weer geven van de zoek resultaten, kunt u de zoek-API van Bing Custom Video's gebruiken. Omdat het aanroepen van de API lijkt op het aanroepen van de Bing Video's zoeken-API, wordt met de kassa [Bing Video Search](../Bing-Video-Search/search-the-web.md) voor beelden van het aanroepen van de API. Maar voordat u dit doet, moet u vertrouwd raken met de [aangepaste Video's zoeken API-referentie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference) -inhoud. De belangrijkste verschillen zijn de ondersteunde query parameters (u moet de query parameter customConfig toevoegen) en het eind punt waarnaar u aanvragen verzendt.
 
 <!--
 ## Next steps

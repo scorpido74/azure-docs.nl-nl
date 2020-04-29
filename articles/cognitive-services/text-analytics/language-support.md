@@ -1,7 +1,7 @@
 ---
-title: Taalondersteuning - Text Analytics API
+title: Taal ondersteuning-Text Analytics-API
 titleSuffix: Azure Cognitive Services
-description: 'Een lijst met natuurlijke talen die worden ondersteund door de Text Analytics API. In dit artikel wordt uitgelegd welke talen voor elke bewerking worden ondersteund: sentimentanalyse, sleutelzinextractie, taaldetectie en entiteitsherkenning.'
+description: 'Een lijst met natuurlijke talen die worden ondersteund door de Text Analytics-API. In dit artikel wordt uitgelegd welke talen worden ondersteund voor elke bewerking: sentiment analyse, extractie van sleutel zinnen, taal detectie en entiteits herkenning.'
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,47 +11,47 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: c5a413a4fe8d9ac9b7aac59ca78cedc6d5a7a313
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79219278"
 ---
-# <a name="language-and-region-support-for-the-text-analytics-api"></a>Ondersteuning voor taal en regio voor de Text Analytics API
+# <a name="language-and-region-support-for-the-text-analytics-api"></a>Ondersteuning van talen en regio's voor de Text Analytics-API
 
-In dit artikel wordt uitgelegd welke talen voor elke bewerking worden ondersteund: sentimentanalyse, sleutelzinextractie, taaldetectie en benoemde entiteitsherkenning.
+In dit artikel wordt uitgelegd welke talen worden ondersteund voor elke bewerking: sentiment analyse, extractie van sleutel zinnen, taal detectie en benoemde entiteits herkenning.
 
 ## <a name="language-detection"></a>Taaldetectie
 
-De Text Analytics API kan een breed scala aan talen, varianten, dialecten en sommige regionale/culturele talen detecteren.  Taaldetectie retourneert het 'script' van een taal. Bijvoorbeeld, voor de zinsnede "Ik heb een `en` hond" het zal terugkeren in plaats van `en-US`. Het enige speciale geval is Chinees, waar `zh_CHS` de `zh_CHT` taaldetectiecapaciteit zal terugkeren of als het het manuscript kan bepalen gegeven de verstrekte tekst. In situaties waarin een specifiek script niet kan worden geïdentificeerd `zh`voor een Chinees document, zal het eenvoudig terugkeren.
+Het Text Analytics-API kan een breed scala aan talen, varianten, dialecten en bepaalde regionale/culturele talen detecteren.  Taaldetectie retourneert het ' script ' van een taal. Bijvoorbeeld, voor de woord groep ' Ik heb een hond ', wordt geretourneerd `en` in plaats `en-US`van. Het enige speciale geval is Chinees, waarbij de mogelijkheid om de taal te `zh_CHS` detecteren `zh_CHT` wordt geretourneerd of waarmee het script kan worden bepaald op basis van de opgegeven tekst. In situaties waarin een specifiek script niet kan worden geïdentificeerd voor een Chinees document, wordt dit gewoon `zh`geretourneerd.
 
-We publiceren niet de exacte lijst met talen voor deze functie, maar het kan een breed scala aan talen, varianten, dialecten en sommige regionale/culturele talen detecteren. 
+De exacte lijst met talen voor deze functie wordt niet gepubliceerd, maar het kan een breed scala aan talen, varianten, dialecten en enkele regionale/culturele talen detecteren. 
 
-Als u inhoud hebt uitgedrukt in een minder vaak gebruikte taal, u Taaldetectie proberen om te zien of een code wordt geretourneerd. Het antwoord voor talen die `unknown`niet kunnen worden gedetecteerd is .
+Als er inhoud in een minder vaak gebruikte taal wordt weer gegeven, kunt u Taaldetectie proberen om te zien of er een code wordt geretourneerd. Het antwoord op talen dat niet kan worden gedetecteerd `unknown`is.
 
-## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Sentimentanalyse, sleutelzinextractie en benoemde entiteitsherkenning
+## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Herkenning van Sentimentanalyse, Sleuteltermextractie en benoemde entiteit
 
-Voor sentimentanalyse, sleutelzinextractie en entiteitsherkenning is de lijst met ondersteunde talen selectiever omdat de analysatoren worden verfijnd om de taalkundige regels van extra talen te aanpassen. In Named Entity Recognition v2 is de ondersteuning voor de volledige reeks [entiteitstypen](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) momenteel beperkt tot de volgende talen: 
+Voor sentiment analyse, extractie van sleutel zinnen en entiteits herkenning is de lijst met ondersteunde talen meer selectief naarmate de analyseers worden verfijnd om te voldoen aan de taal kundige regels van andere talen. In benoemde entiteits herkenning v2 is de ondersteuning voor de volledige set [entiteits typen](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) momenteel beperkt tot de volgende talen: 
 * Engels
-* Chinees vereenvoudigd
+* Chinees-vereenvoudigd
 * Frans
 * Duits
 * Spaans
 
-Alleen `Person`de `Location` `Organization` entiteiten met de naam en de naam worden geretourneerd voor de andere talen.
+Alleen de `Person` `Location` en `Organization` benoemde entiteiten worden geretourneerd voor de andere talen.
 
-## <a name="language-list-and-status"></a>Taallijst en -status
+## <a name="language-list-and-status"></a>Taal lijst en status
 
-Taalondersteuning wordt in eerste instantie uitgerold in preview, waarbij ze onafhankelijk van elkaar en de Text Analytics-service in het algemeen afstuderen naar de algemeen beschikbare (GA)-status. Het is mogelijk dat talen in preview blijven, zelfs terwijl Text Analytics API overgaat naar algemeen beschikbaar.
+Taal ondersteuning wordt in eerste instantie in de preview-fase geïmplementeerd, met een afronding van de algemeen beschik bare (GA) status, onafhankelijk van elkaar en van de Text Analytics service. Het is mogelijk dat de talen in de preview-fase blijven, zelfs als Text Analytics-API overgangen algemeen beschikbaar zijn.
 
 > [!NOTE]
-> Zie [Benoemde entiteitstypen](named-entity-types.md)voor gedetailleerde taalondersteuning voor het openbare voorbeeld van Named Entity Recognition(NER).
+> Zie [benoemde entiteits typen](named-entity-types.md)voor gedetailleerde taal ondersteuning voor de ner (named entity Recognition) v3 open bare preview.
 
-| Taal              | Taalcode | Sentiment | Sleutelzinnen | Herkenning van benoemde entiteiten | Koppeling van entiteiten |       Opmerkingen        |
+| Taal              | Taalcode | Sentiment | Sleutel zinnen | Herkenning van benoemde entiteiten | Entiteit koppelen |       Opmerkingen        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | Arabisch                |     `ar`      |           |             |           ✔\*           |                |                    |
 | Tsjechisch                 |     `cs`      |           |             |           ✔\*           |                |                    |
-| Chinees vereenvoudigd    |   `zh-hans`   |  ✔\*\*   |             |            ✔             |                | `zh`ook aanvaard                   |
+| Chinees-vereenvoudigd    |   `zh-hans`   |  ✔\*\*   |             |            ✔             |                | `zh`ook geaccepteerd                   |
 | Chinees-traditioneel   |   `zh-hant`   |  ✔\*\*   |             |                          |                |                    |
 | Deens                |     `da`      |   ✔\*    |      ✔      |           ✔\*           |                |                    |
 | Nederlands                 |     `nl`      |   ✔\**   |      ✔      |           ✔\*           |                |                    |
@@ -64,20 +64,20 @@ Taalondersteuning wordt in eerste instantie uitgerold in preview, waarbij ze ona
 | Italiaans               |     `it`      |   ✔\**   |      ✔      |           ✔\*           |                |                    |
 | Japans              |     `ja`      |   ✔\**   |      ✔      |           ✔\*           |                |                    |
 | Koreaans                |     `ko`      |   ✔\*\*  |      ✔      |           ✔\*           |                |                    |
-| Noors (Bokmål)   |     `no`      |   ✔\*    |      ✔      |           ✔\*           |                | `nb`ook aanvaard                   |
+| Noors (Bokmål)   |     `no`      |   ✔\*    |      ✔      |           ✔\*           |                | `nb`ook geaccepteerd                   |
 | Pools                |     `pl`      |   ✔\*    |      ✔      |           ✔\*           |                |                    |
-| Portugees (Portugal) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔\*           |                | `pt`ook aanvaard |
+| Portugees (Portugal) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔\*           |                | `pt`ook geaccepteerd |
 | Portugees (Brazilië)   |    `pt-BR`    |           |      ✔      |           ✔\*           |                |                    |
 | Russisch               |     `ru`      |   ✔\*    |      ✔      |           ✔\*           |                |                    |
 | Spaans               |     `es`      |   ✔\**    |      ✔      |           ✔\*           |     ✔\**      |                    |
 | Zweeds               |     `sv`      |   ✔\*    |      ✔      |           ✔\*           |                |                    |
 | Turks               |     `tr`      |   ✔\*    |             |           ✔\*           |                |                    |
 
-\*Taalondersteuning is in preview
+\*Taal ondersteuning is beschikbaar als preview-versie
 
-\** Ook beschikbaar in de [Sentiment Analysis v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) en/ of [Named Entity Recognition v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) openbare previews.
+\** Ook beschikbaar in de [sentimentanalyse v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) en/of [benoemde entiteits herkenning v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) open bare voor beelden.
 
 ## <a name="see-also"></a>Zie ook
 
-[Pagina Documentatie van Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)   
+[Documentatie pagina van Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)   
 [Productpagina van Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

@@ -1,7 +1,7 @@
 ---
-title: Spraakserviceversleuteling van gegevens in rust
+title: Spraak service versleuteling van gegevens in rust
 titleSuffix: Azure Cognitive Services
-description: Spraakserviceversleuteling van gegevens in rust.
+description: Spraak service versleuteling van gegevens in rust.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
@@ -10,37 +10,37 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
 ms.openlocfilehash: 3ccc9820f38a8c32d0b390663eb6b4430b42e8f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79372357"
 ---
-# <a name="speech-service-encryption-of-data-at-rest"></a>Spraakserviceversleuteling van gegevens in rust
+# <a name="speech-service-encryption-of-data-at-rest"></a>Spraak service versleuteling van gegevens in rust
 
-Speech Service versleutelt uw gegevens automatisch wanneer deze worden gehandhaafd in de cloud. Spraakserviceversleuteling beschermt uw gegevens en helpt u om aan uw organisatorische beveiligings- en nalevingsverplichtingen te voldoen.
+Met de spraak service worden uw gegevens automatisch versleuteld wanneer deze persistent worden gemaakt in de Cloud. Met versleuteling van de spraak service worden uw gegevens beveiligd en wordt u geholpen bij het voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie.
 
-## <a name="about-cognitive-services-encryption"></a>Versleuteling van Cognitive Services
+## <a name="about-cognitive-services-encryption"></a>Over Cognitive Services versleuteling
 
-Gegevens worden versleuteld en gedecodeerd met [FIPS 140-2-compatibele](https://en.wikipedia.org/wiki/FIPS_140-2) [256-bits AES-versleuteling.](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) Versleuteling en decryptie zijn transparant, wat betekent dat encryptie en toegang voor u worden beheerd. Uw gegevens zijn standaard beveiligd en u hoeft uw code of toepassingen niet te wijzigen om te profiteren van versleuteling.
+Gegevens worden versleuteld en ontsleuteld met behulp van [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [-compatibele 256-bits AES-](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) versleuteling. Versleuteling en ontsleuteling zijn transparant, wat betekent dat versleuteling en toegang voor u worden beheerd. Uw gegevens zijn standaard beveiligd en u hoeft uw code of toepassingen niet te wijzigen om te kunnen profiteren van versleuteling.
 
-## <a name="about-encryption-key-management"></a>Over beheer van versleutelingssleutels
+## <a name="about-encryption-key-management"></a>Over het beheer van versleutelings sleutels
 
-Wanneer u aangepaste spraak en aangepaste spraak gebruikt, kan spraakservice volgende gegevens opslaan in de cloud:  
+Wanneer u Custom Speech en een aangepaste spraak-service gebruikt, kan de volgende gegevens in de cloud worden opgeslagen:  
 
-* Spraaktraceringsgegevens - alleen als u de tracering voor uw aangepaste eindpunt inschakelt
-* Geüploade trainings- en testgegevens
+* Gegevens voor spraak tracering: alleen als u de tracering inschakelt voor uw aangepaste eind punt
+* Geüploade trainings-en test gegevens
 
-Standaard worden uw gegevens opgeslagen in de opslag van Microsoft en maakt uw abonnement gebruik van door Microsoft beheerde versleutelingssleutels. Je hebt ook een optie om je eigen opslagaccount voor te bereiden. Toegang tot het archief wordt beheerd door de Managed Identity en spraakservice heeft geen directe toegang tot uw eigen gegevens, zoals spraaktraceringsgegevens, aanpassingstrainingsgegevens en aangepaste modellen.
+Standaard worden uw gegevens opgeslagen in de opslag van micro soft en gebruikt uw abonnement micro soft Managed Encryption Keys. U hebt ook de mogelijkheid om uw eigen opslag account voor te bereiden. Toegang tot de Store wordt beheerd door de beheerde identiteit en de spraakherkennings service heeft geen rechtstreekse toegang tot uw eigen gegevens, zoals gegevens over spraak tracering, aanpassings training en aangepaste modellen.
 
-Zie [Wat zijn beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)voor meer informatie over Beheerde identiteit.
+Zie [Wat zijn beheerde](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)identiteiten voor meer informatie over beheerde identiteiten.
 
-## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>Breng uw eigen opslag (BYOS) voor aanpassing en logboekregistratie
+## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>Uw eigen opslag (BYOS) meenemen voor aanpassing en logboek registratie
 
-Als u toegang wilt vragen om uw eigen opslag mee te nemen, vult u de Spraakservice in en verzendt u [deze in - neem uw eigen aanvraagformulier (Storage) mee.](https://aka.ms/cogsvc-cmk) Nadat u bent goedgekeurd, moet u uw eigen opslagaccount maken om de gegevens op te slaan die nodig zijn voor aanpassing en logboekregistratie. Wanneer u een opslagaccount toevoegt, schakelt de spraakservicebron een beheerde identiteit met systeem toegewezen in. Nadat de beheerde identiteit met systeemtoegewezen is ingeschakeld, wordt deze bron geregistreerd bij Azure Active Directory (AAD). Na registratie krijgt de beheerde identiteit toegang tot het opslagaccount. Hier vindt u meer informatie over Beheerde identiteiten. Zie [Wat zijn beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)voor meer informatie over Beheerde identiteit.
+Als u toegang wilt aanvragen om uw eigen opslag te maken, vult u het [BYOS-aanvraag formulier (uw eigen opslag)](https://aka.ms/cogsvc-cmk)in en verzendt u dit. Na goed keuring moet u uw eigen opslag account maken om de gegevens op te slaan die nodig zijn voor aanpassing en logboek registratie. Wanneer u een opslag account toevoegt, wordt door de speech service-bron een door het systeem toegewezen beheerde identiteit ingeschakeld. Nadat de door het systeem toegewezen beheerde identiteit is ingeschakeld, wordt deze bron geregistreerd bij Azure Active Directory (AAD). Nadat het is geregistreerd, krijgt de beheerde identiteit toegang tot het opslag account. Meer informatie over beheerde identiteiten vindt u hier. Zie [Wat zijn beheerde](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)identiteiten voor meer informatie over beheerde identiteiten.
 
 > [!IMPORTANT]
-> Als u beheerde identiteiten met systeemtoegewezen uitschakelt, wordt de toegang tot het opslagaccount verwijderd. Hierdoor kunnen de delen van de Spraakservice die toegang tot het opslagaccount vereisen, niet meer werken.  
+> Als u door het systeem toegewezen beheerde identiteiten uitschakelt, wordt de toegang tot het opslag account verwijderd. Dit zorgt ervoor dat de onderdelen van de spraak service die toegang tot het opslag account vereisen, niet meer werken.  
 
 ## <a name="regional-availability"></a>Regionale beschikbaarheid
 
@@ -52,5 +52,5 @@ BYOS is momenteel beschikbaar in deze regio's:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Spraakservice - breng uw eigen aanvraagformulier voor opslag (BYOS) mee](https://aka.ms/cogsvc-cmk)
-* [Wat zijn beheerde identiteiten.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+* [Speech service-aanvraag formulier voor uw eigen opslag (BYOS)](https://aka.ms/cogsvc-cmk)
+* [Wat zijn beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).

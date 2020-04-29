@@ -1,7 +1,7 @@
 ---
-title: Spraakassistenten - Spraakservice
+title: Spraak assistenten-spraak service
 titleSuffix: Azure Cognitive Services
-description: Een overzicht van de functies, mogelijkheden en beperkingen voor spraakassistenten met behulp van de Speech Software Development Kit (SDK).
+description: Een overzicht van de functies, mogelijkheden en beperkingen voor spraak assistenten met behulp van de speech Software Development Kit (SDK).
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -11,50 +11,50 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
 ms.openlocfilehash: 9219c9a72ce9e1cfba3504b0b8e16ade77f8a5e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79369893"
 ---
 # <a name="what-is-a-voice-assistant"></a>Wat is een spraakassistent?
 
-Spraakassistenten die de Spraakservice gebruiken, stellen ontwikkelaars in staat om natuurlijke, mensachtige conversationele interfaces te maken voor hun toepassingen en ervaringen.
+Met spraak assistenten die gebruikmaken van de speech-service kunnen ontwikkel aars natuurlijke, menselijke-achtige gespreks interfaces maken voor hun toepassingen en ervaringen.
 
-De spraakassistentservice biedt een snelle, betrouwbare interactie tussen een apparaat en een assistent-implementatie die gebruik maakt van het Direct Line Speech-kanaal van het Bot Framework of (2) de geïntegreerde aangepaste opdrachten (Preview)-service voor taakvoltooiing.
+De Voice Assistant-service biedt snelle, betrouw bare interactie tussen een apparaat en een assistent-implementatie die gebruikmaakt van (1) het directe lijn spraak kanaal van de bot-Framework of (2) de geïntegreerde service voor het uitvoeren van aangepaste opdrachten (preview) voor taak voltooiing.
 
-Toepassingen maken verbinding met de spraakassistentservice met de Speech Software Development Kit (SDK).
+Toepassingen maken verbinding met de Voice Assistant-service met de speech Software Development Kit (SDK).
 
-   ![Conceptueel diagram van de spraakherkenningsservicestroom van spraakassistenten](media/voice-assistants/overview.png "De stroom van de spraakassistent")
+   ![Conceptueel diagram van de service stroom van de Orchestrator-indeling voor spraak assistenten](media/voice-assistants/overview.png "De stroom van de Voice Assistant")
 
 ## <a name="choosing-an-assistant-solution"></a>Een assistent-oplossing kiezen
 
-De eerste stap naar het maken van een spraakassistent is om te beslissen wat het moet doen. De Spraakservice biedt meerdere, complementaire oplossingen voor het maken van uw assistent-interacties. Of u nu de flexibiliteit en veelzijdigheid wilt die het [Direct Line Speech-kanaal](direct-line-speech.md) van het Bot Framework biedt of de eenvoud van [aangepaste opdrachten (Preview)](custom-commands.md) voor eenvoudige scenario's, als u de juiste tools selecteert, wordt u op weg.
+De eerste stap bij het maken van een spraak assistent is bepalen wat het moet doen. De speech-service biedt meerdere, complementaire oplossingen voor het bouwen van uw assistent-interacties. Of u de flexibiliteit en veelzijdigheid wilt hebben dat het directe- [lijn spraak](direct-line-speech.md) kanaal van het bot-Framework of de eenvoud van [aangepaste opdrachten (preview)](custom-commands.md) voor duidelijke scenario's is, en u kunt de juiste hulpprogram ma's downloaden om aan de slag te gaan.
 
-| Als je wilt... | Overweeg dan... | Bijvoorbeeld... |
+| Als je wilt... | Bekijk vervolgens... | Bijvoorbeeld... |
 |-------------------|------------------|----------------|
-|Open gesprek met robuuste vaardighedenintegratie en volledige implementatiecontrole | Het [Direct Line Speech-kanaal](direct-line-speech.md) van het Bot Framework | <ul><li>"Ik moet naar Seattle"</li><li>"Wat voor pizza kan ik bestellen?"</li></ul>
-|Command and control of taakgericht gesprek met vereenvoudigde authoring en hosting | [Aangepaste opdrachten (voorbeeld)](custom-commands.md) | <ul><li>"Zet de overhead licht"</li><li>"Maak het 5 graden warmer"</ul>
+|Open-end-conversatie met robuuste integratie van vaardig heden en volledige implementatie beheer | Het [directe-lijn spraak](direct-line-speech.md) kanaal van het bot-Framework | <ul><li>"Ik moet naar Seattle gaan"</li><li>"Welk soort pizza kan ik best Ellen?"</li></ul>
+|Discussies over opdrachten en besturings elementen of taak gerichte uitwisseling met vereenvoudigd ontwerpen en hosten | [Aangepaste opdrachten (preview)](custom-commands.md) | <ul><li>"Het overhead licht inschakelen"</li><li>"Maak IT 5 graden warmer"</ul>
 
-We raden [Direct Line Speech](direct-line-speech.md) aan als de beste standaardkeuze als je nog niet zeker weet wat je assistent wilt hanteren. Het biedt integratie met een uitgebreide set tools en ontwerphulpmiddelen zoals de [Virtual Assistant Solution en Enterprise Template](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) en de [QnA Maker-service](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview) om voort te bouwen op gemeenschappelijke patronen en uw bestaande kennisbronnen te gebruiken.
+U wordt aangeraden [regel spraak direct](direct-line-speech.md) als de beste standaard keuze te gebruiken als u nog niet zeker weet wat uw assistent moet verwerken. Het biedt integratie met een uitgebreide set hulpprogram ma's en ontwerp hulpmiddelen, zoals de [Virtual assistent-oplossing en ondernemings sjabloon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) en de [QnA Maker-service](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview) voor het bouwen van algemene patronen en het gebruik van uw bestaande kennis bronnen.
 
-[Custom Commands (Preview)](custom-commands.md) biedt een gestroomlijnde ontwerp- en hostingervaring die specifiek is afgestemd op commando- en controlescenario's voor natuurlijke taal.
+[Aangepaste opdrachten (preview-versie)](custom-commands.md) bieden een gestroomlijnde ontwerp-en hosting-ervaring die specifiek is afgestemd op de opdracht-en controle scenario's in natuurlijke taal.
 
    ![Vergelijking van assistent-oplossingen](media/voice-assistants/assistant-solution-comparison.png "Vergelijking van assistent-oplossingen")
 
-## <a name="core-features"></a>Kernfuncties
+## <a name="core-features"></a>Kern functies
 
-Of u nu [Direct Line Speech](direct-line-speech.md) of Custom [Commands (Preview)](custom-commands.md) kiest om uw assistent-interacties te maken, u een uitgebreide set aanpassingsfuncties gebruiken om uw assistent aan te passen aan uw merk, product en persoonlijkheid.
+Ongeacht of u [direct lijn spraak](direct-line-speech.md) of [aangepaste opdrachten (preview)](custom-commands.md) kiest om uw assistent-interacties te maken, kunt u een uitgebreide set aanpassings functies gebruiken om uw assistent aan uw merk, product en persoonlijkheid aan te passen.
 
 | Categorie | Functies |
 |----------|----------|
-|[Aangepast trefwoord](speech-devices-sdk-create-kws.md) | Gebruikers kunnen gesprekken starten met assistenten met een aangepast zoekwoord zoals 'Hey Contoso'. Een app doet dit met een aangepaste trefwoordengine in de Speech SDK, die kan worden geconfigureerd met een aangepast zoekwoord [dat u hier genereren.](speech-devices-sdk-create-kws.md) Spraakassistenten kunnen trefwoordverificatie aan de servicezijde gebruiken om de nauwkeurigheid van de trefwoordactivering te verbeteren (ten opzichte van het apparaat alleen).
-|[Toespraak tot tekst](speech-to-text.md) | Spraakassistenten zetten realtime audio om in herkende tekst met [spraak naar tekst](speech-to-text.md) van de spraakservice. Deze tekst is beschikbaar, zoals deze is getranscribeerd, voor zowel uw assistent-implementatie als uw clientapplicatie.
-|[Tekst naar spraak](text-to-speech.md) | Tekstuele reacties van uw assistent worden gesynthetiseerd met [tekst-naar-spraak](text-to-speech.md) van de spraakservice. Deze synthese wordt vervolgens beschikbaar gesteld aan uw clientapplicatie als een audiostream. Microsoft biedt de mogelijkheid om uw eigen aangepaste, hoogwaardige Neurale TTS-stem te bouwen die een stem geeft aan uw merk. Neem voor meer informatie [contact met ons op.](mailto:mstts@microsoft.com)
+|[Aangepast tref woord](speech-devices-sdk-create-kws.md) | Gebruikers kunnen gesp rekken met assistenten starten met een aangepast tref woord zoals ' Hey Contoso '. Dit is een app met een aangepaste trefwoord engine in de Speech SDK, die kan worden geconfigureerd met een aangepast tref woord [dat u hier kunt genereren](speech-devices-sdk-create-kws.md). Spraak assistenten kunnen verificatie op service zijde gebruiken om de nauw keurigheid van de activering van het tref woord te verbeteren (alleen voor het apparaat).
+|[Spraak naar tekst](speech-to-text.md) | Via spraak [-naar-tekst](speech-to-text.md) van de spraak service kunt u in spraak assistenten real-time audio omzetten in herkende tekst. Deze tekst is beschikbaar, omdat deze is getranscribeerd, naar de implementatie van uw assistent en uw client toepassing.
+|[Tekst-naar-spraak](text-to-speech.md) | Tekstuele reacties van uw assistent worden gesynthesizerd met behulp van [tekst naar spraak](text-to-speech.md) vanuit de spraak service. Deze synthese wordt vervolgens beschikbaar gesteld voor uw client toepassing als een audio stroom. Micro soft biedt de mogelijkheid om uw eigen aangepaste Neural TTS-stem van hoge kwaliteit op te bouwen die een stem op uw merk levert. [Neem contact met ons](mailto:mstts@microsoft.com)op voor meer informatie.
 
-## <a name="getting-started-with-voice-assistants"></a>Aan de slag met spraakassistenten
+## <a name="getting-started-with-voice-assistants"></a>Aan de slag met spraak assistenten
 
-We bieden quickstarts die zijn ontworpen om u in minder dan 10 minuten code te laten uitvoeren. Deze tabel bevat een lijst met snel gestarte spraakassistenten, geordend op taal.
+We bieden Quick starts die zijn ontworpen om code in minder dan 10 minuten uit te voeren. Deze tabel bevat een lijst met Quick starts voor de Voice Assistant, geordend op taal.
 
 | Snelstartgids | Platform | API-verwijzing |
 |------------|----------|---------------|
@@ -64,30 +64,30 @@ We bieden quickstarts die zijn ontworpen om u in minder dan 10 minuten code te l
 
 ## <a name="sample-code"></a>Voorbeeldcode
 
-Voorbeeldcode voor het maken van een spraakassistent is beschikbaar op GitHub. Deze voorbeelden hebben betrekking op de clienttoepassing voor het verbinden met uw assistent in verschillende populaire programmeertalen.
+Voorbeeld code voor het maken van een spraak-assistent is beschikbaar op GitHub. Deze voor beelden beslaan de client toepassing voor het maken van verbinding met uw helper in verschillende populaire programmeer talen.
 
-* [Voorbeelden van spraakassistenten (SDK)](https://aka.ms/csspeech/samples)
-* [Zelfstudie: Spraakinschakelen van uw assistent met de Spraak-SDK, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
+* [Voor beelden van Voice Assistant (SDK)](https://aka.ms/csspeech/samples)
+* [Zelf studie: spraak inschakelen voor uw assistent met de spraak-SDK, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
 
 ## <a name="tutorial"></a>Zelfstudie
 
-Een zelfstudie over het [stem-inschakelen van uw assistent met behulp van het speech-sdk- en Direct Line-spraakkanaal](tutorial-voice-enable-your-bot-speech-sdk.md).
+Een zelf studie over hoe u [uw assistent stem kunt instellen met behulp van de Speech SDK en direct line speech Channel](tutorial-voice-enable-your-bot-speech-sdk.md).
 
 ## <a name="customization"></a>Aanpassing
 
-Spraakassistenten die zijn gebouwd met de spraakservice, kunnen het volledige scala aan aanpassingsopties gebruiken die beschikbaar zijn voor [spraak-naar-tekst,](speech-to-text.md) [tekst-naar-spraak](text-to-speech.md)en [aangepaste trefwoordselectie.](speech-devices-sdk-create-kws.md)
+Spraak assistenten die zijn gebouwd met behulp van de spraak service kunnen gebruikmaken van het volledige aanbod aan aanpassings opties voor [spraak naar tekst](speech-to-text.md), [tekst naar spraak](text-to-speech.md)en [aangepaste trefwoord selectie](speech-devices-sdk-create-kws.md).
 
 > [!NOTE]
-> Aanpassingsopties verschillen per taal/landtaal (zie [Ondersteunde talen).](supported-languages.md)
+> Aanpassings opties variëren per taal/land instelling (Zie [ondersteunde talen](supported-languages.md)).
 
-## <a name="reference-docs"></a>Referentiedocumenten
+## <a name="reference-docs"></a>Referentie documenten
 
 * [Speech-SDK](speech-sdk-reference.md)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Ontvang gratis een abonnementssleutel voor spraakservice](get-started.md)
-* [Download de Spraak-SDK](speech-sdk.md)
-* [Meer informatie over aangepaste opdrachten (voorbeeld)](custom-commands.md)
-* [Meer informatie over direct line spraak](direct-line-speech.md)
+* [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
+* [De Speech SDK ophalen](speech-sdk.md)
+* [Meer informatie over aangepaste opdrachten (preview-versie)](custom-commands.md)
+* [Meer informatie over direct line speech](direct-line-speech.md)

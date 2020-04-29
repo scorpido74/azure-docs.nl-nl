@@ -1,7 +1,7 @@
 ---
-title: Tekstverschuivingen in de API Text Analytics
+title: Tekst verschuivingen in de Text Analytics-API
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over verschuivingen veroorzaakt door meertalige en emoji-coderingen.
+description: Meer informatie over verschuivingen die worden veroorzaakt door meertalige en Emoji-code ringen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,38 +12,38 @@ ms.date: 03/09/2020
 ms.author: aahi
 ms.reviewer: jdesousa
 ms.openlocfilehash: 6e404c710a244f06676edf50c3f5c95a7d681e35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79219234"
 ---
-# <a name="text-offsets-in-the-text-analytics-api-output"></a>Tekstverschuivingen in de API-uitvoer van Text Analytics
+# <a name="text-offsets-in-the-text-analytics-api-output"></a>Tekst verschuivingen in de Text Analytics-API uitvoer
 
-Ondersteuning voor meertalige en emoji's heeft geleid tot Unicode-coderingen die meer dan één [codepunt](https://wikipedia.org/wiki/Code_point) gebruiken om één weergegeven teken weer te geven, een grafeme genoemd. Emoji's zoals 🌷 👍 en kunnen bijvoorbeeld meerdere tekens gebruiken om de vorm samen te stellen met extra tekens voor visuele kenmerken, zoals huidskleur. Op dezelfde manier wordt `अनुच्छेद` het Hindi-woord gecodeerd als vijf letters en drie combinerende markeringen.
+Meertalige en Emoji-ondersteuning heeft geleid tot Unicode-code ringen die meer dan één [code punt](https://wikipedia.org/wiki/Code_point) gebruiken om één weer gegeven teken te vertegenwoordigen, een grapheme genoemd. Bijvoorbeeld, emojis als 🌷 en 👍 kunnen meerdere tekens gebruiken om de vorm samen te stellen met extra tekens voor visuele kenmerken, zoals de weergave kleur. Op dezelfde manier wordt het `अनुच्छेद` Hindi woord als vijf letters gecodeerd en worden drie tekens gecombineerd.
 
-Vanwege de verschillende lengtes van mogelijke meertalige en emoji-coderingen, kan de Text Analytics API verschuivingen in het antwoord retourneren.
+Vanwege de verschillende lengtes van mogelijke meertalige en Emoji-code ringen, kan de Text Analytics-API retour neren in het antwoord.
 
-## <a name="offsets-in-the-api-response"></a>Verschuivingen in de API-respons. 
+## <a name="offsets-in-the-api-response"></a>Verschuivingen in de API-reactie. 
 
-Wanneer verschuivingen worden geretourneerd, onthoudt [Named Entity Recognition](../how-tos/text-analytics-how-to-entity-linking.md) u het [Sentiment Analysis](../how-tos/text-analytics-how-to-sentiment-analysis.md)volgende:
+Houd rekening met het volgende wanneer verschuivingen het API-antwoord retourneert, zoals [named entity Recognition](../how-tos/text-analytics-how-to-entity-linking.md) of [sentimentanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md):
 
-* Elementen in het antwoord kunnen specifiek zijn voor het eindpunt dat is aangeroepen. 
-* HTTP POST/GET payloads zijn gecodeerd in [UTF-8](https://www.w3schools.com/charsets/ref_html_utf8.asp), wat al dan niet de standaard tekencodering is op uw client-side compiler of besturingssysteem.
-* Verschuivingen verwijzen naar grafemetellingen op basis van de [Unicode 8.0.0-standaard,](https://unicode.org/versions/Unicode8.0.0) niet naar tekentellingen.
+* Elementen in het antwoord zijn mogelijk specifiek voor het eind punt dat is aangeroepen. 
+* HTTP POST/GET-nettoladingen worden gecodeerd in [UTF-8](https://www.w3schools.com/charsets/ref_html_utf8.asp), die al dan niet de standaard teken codering voor het compileren van de client of het besturings systeem kan zijn.
+* Verschuivingen verwijzen naar grapheme counts op basis van de [Unicode 8.0.0](https://unicode.org/versions/Unicode8.0.0) -standaard, niet de teken aantallen.
 
-## <a name="extracting-substrings-from-text-with-offsets"></a>Subtekenreeksen extraheren uit tekst met verschuivingen
+## <a name="extracting-substrings-from-text-with-offsets"></a>Subtekenreeksen ophalen uit tekst met verschuivingen
 
-Verschuivingen kunnen problemen veroorzaken bij het gebruik van substringmethoden op basis van tekens, bijvoorbeeld de methode [.NET-substring().](https://docs.microsoft.com/dotnet/api/system.string.substring?view=netframework-4.8) Een probleem is dat een verschuiving kan leiden tot een substring methode te eindigen in het midden van een multi-teken grafeme codering in plaats van het einde.
+Verschuivingen kunnen problemen veroorzaken bij het gebruik van methoden op basis van teken reeksen, bijvoorbeeld de methode .NET [subtekenreeks ()](https://docs.microsoft.com/dotnet/api/system.string.substring?view=netframework-4.8) . Eén probleem is dat een offset kan ertoe leiden dat een subtekenreeks-methode eindigt in het midden van een grapheme-code ring met meerdere tekens in plaats van het einde.
 
-Overweeg in .NET de klasse [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) te gebruiken, waarmee u met een tekenreeks werken als een reeks tekstuele elementen, in plaats van afzonderlijke tekenobjecten. U ook zoeken naar grapheme splitter bibliotheken in uw gewenste software omgeving. 
+In .NET kunt u de [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) -klasse gebruiken, waarmee u kunt werken met een teken reeks als een reeks tekstuele elementen, in plaats van afzonderlijke teken objecten. U kunt ook zoeken naar grapheme splitter-bibliotheken in uw favoriete software omgeving. 
 
-De Text Analytics API retourneert deze tekstuele elementen ook, voor het gemak.
+De Text Analytics-API retourneert ook deze tekstuele elementen, voor het gemak.
 
 ## <a name="see-also"></a>Zie ook
 
 * [Overzicht van Text Analytics](../overview.md)
 * [Sentimentanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Herkenning van entiteiten](../how-tos/text-analytics-how-to-entity-linking.md)
+* [Entiteit herkenning](../how-tos/text-analytics-how-to-entity-linking.md)
 * [Taal detecteren](../how-tos/text-analytics-how-to-keyword-extraction.md)
-* [Taalherkenning](../how-tos/text-analytics-how-to-language-detection.md)
+* [Taal herkenning](../how-tos/text-analytics-how-to-language-detection.md)

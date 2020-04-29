@@ -5,11 +5,11 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/27/2019
 ms.openlocfilehash: 844a31390f4eed5c695257d8e6f86aabf0259021
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67541522"
 ---
 > [!NOTE]
-> Omdat URL-indelingen en parameters zonder kennisgeving kunnen worden gewijzigd, gebruikt u alle URL's zoals deze zijn. U mag geen afhankelijkheden nemen van de URL-indeling of parameters, behalve waar vermeld.
+> Omdat URL-indelingen en-para meters kunnen worden gewijzigd zonder kennisgeving, gebruikt u alle Url's als-is. U mag geen afhankelijkheden maken voor de URL-indeling of para meters, tenzij anders wordt vermeld.

@@ -1,7 +1,7 @@
 ---
-title: Spraakfonetische sets - Spraakservice
+title: 'Fonetische ballon sets: spraak service'
 titleSuffix: Azure Cognitive Services
-description: Leer hoe je de spraakservice fonetische alfabetkaarten inkaart bij het International Fonetische Alfabet (IPA) en wanneer je welke set moet gebruiken.
+description: Meer informatie over het gebruik van het fonetische alfabet van de speech-service aan het internationale fonetische alfabet (IPA) en wanneer u de set wilt gebruiken.
 services: cognitive-services
 author: zhaoyunED
 manager: junwg
@@ -11,288 +11,288 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: jiajzhan
 ms.openlocfilehash: 770e97ad126f66efb43bf8cf7eb12f7510858192
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78675329"
 ---
-# <a name="speech-service-phonetic-sets"></a>Spraakservice fonetische sets
+# <a name="speech-service-phonetic-sets"></a>Fonetische sets van spraak service
 
-De spraakdienst definieert fonetische alfabetten ("telefoonsets" kort), bestaande uit zeven talen; `en-US`, `fr-FR` `de-DE`, `es-ES` `ja-JP`, `zh-CN`, `zh-TW`, en . De spraakservicetelefoon stelt doorgaans de kaart in op het <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">Internationale Fonetische <span class="docon docon-navigate-external x-hidden-focus"> </span>Alfabet (IPA). </a> Spraakservicetelefoonsets worden gebruikt in combinatie met de [Spraaksyntheseopmaaktaal (SSML),](speech-synthesis-markup.md)als onderdeel van het aanbod van de tekst-naar-spraakservice. In dit artikel leert u hoe deze telefoonsets in kaart worden gebracht en wanneer u welke telefoonset moet gebruiken.
+De speech-service definieert fonetische letters ("telefoon sets" voor korte), bestaande uit zeven talen; `en-US`, `fr-FR`, `de-DE`, `es-ES` `ja-JP`, `zh-CN`, en `zh-TW`. De telefoon sets van de spraak service worden doorgaans toegewezen aan het <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">internationale fonetische <span class="docon docon-navigate-external x-hidden-focus"> </span>alfabet (IPA) </a>. Telefoon sets voor spraak services worden gebruikt in combi natie met de [SSML (Speech synthese Markup Language)](speech-synthesis-markup.md)als onderdeel van de service aanbieding voor tekst naar spraak. In dit artikel leest u hoe deze telefoon sets worden toegewezen en wanneer u de telefoonset wilt gebruiken.
 
-# <a name="en-us"></a>[nl-VS](#tab/en-US)
+# <a name="en-us"></a>[en-US](#tab/en-US)
 
-### <a name="english-suprasegmentals"></a>Engelse suprasegmentals
+### <a name="english-suprasegmentals"></a>Engels suprasegmentals
 
-| Voorbeeld 1 (Begin voor medeklinker, woordinitiaal voor klinker) | Voorbeeld 2 (Intervocalic voor medeklinker, woord mediale kern voor klinker) | Voorbeeld 3 (Coda voor medeklinker, woord definitief voor klinker) | Opmerkingen |
+| Voor beeld 1 (begin voor medeklinker, woord voor klinker) | Voor beeld 2 (intervocaal-voor-medeklinker, woord in-Nucleus voor klinker) | Voor beeld 3 (CODA voor medeklinker, woord final voor klinker) | Opmerkingen |
 |--|--|--|--|
-| burger /b er **1** r - g ax r/ | falafel /f ax - l aa **1** - f ax l/ | gitaar /g ih - t aa **1** r/ | De reeks van de de diensttelefoon zet spanning na de klinker van de beklemtoonde lettergreep |
-| inopportune /ih **2** - n aa - p ax r - t uw 1 n/ | dissimilarity /d ih - s ih **2**- m ax - l eh 1 - r ax - t iy/ | personeelsbestand /w er 1 r k - f ao **2** r s/ | De reeks van de de diensttelefoon zet spanning na de klinker van de onder-beklemtoonde lettergreep |
+| burger/b er **1** r-g AX r/ | Falafel/f AX-l AA **1** -f AX l/ | gitaar/g IH-t AA **1** r/ | Spraak service telefoon instellen stress na de klinker van de benadrukte letter greep |
+| inopportune/IH **2** -n AA-p AX r-t, meer dan 1 n/ | ongelijkheid/d IH-s ih **2**-m AX-l eh 1-r AX-t iy/ | personeel/w er 1 r k-f ao **2** r s/ | Spraak service telefoon instellen stress na de klinker van de sub-benadrukte letter greep |
 
 ### <a name="english-vowels"></a>Engelse klinkers
 
 | `sapi` | `ipa` | Voorbeeld 1     | Voorbeeld 2 | Voorbeeld 3                   |
 |--------|-------|---------------|-----------|-----------------------------|
-| iy iy     | `i`   | **ea**t       | f**ee**l  | vall**ey**                  |
-| Ih     | `ɪ`   | **i**f        | f**i**ll  |                             |
-| Ey     | `eɪ`  | **een**te       | g**een**te  | d**ay**                     |
-| Eh     | `ɛ`   | **e**zeer     | p**e**t   | m**eh** (zeldzaam woord definitief) |
-| Ae     | `æ`   | **een**ctive    | c**a**t   | n**ah** (zeldzaam woord eindelijk) |
-| aa     | `ɑ`   | **o**bstinate | p**o**ppy | r**ah** (zeldzaam woord tot slot) |
-| ao     | `ɔ`   | **o**bereik    | c**au**se | Ut**ah**                    |
-| Uh     | `ʊ`   | b**oo**k      |           |                             |
-| ow     | `oʊ`  | **o**ld       | cl**o**ne | g**o**                      |
-| uw     | `u`   | **U**ber      | b**oo**st | t**oo**                     |
-| Ah     | `ʌ`   | **u**ncle     | c**u**t   |                             |
-| Ay     | `aɪ`  | **i**ce       | b**i**te  | fl**y**                     |
-| Aw     | `aʊ`  | **ou**t       | s**ou**th | c**ow**                     |
-| Oy     | `ɔɪ`  | **oi**l       | j**oi**n  | t**oy**                     |
-| y uw   | `ju`  | **Yu**ma      | h**u**man | f**ew**                     |
-| Ax     | `ə`   | **een**go       | wom**a**n | zijn**een**                    |
+| iy     | `i`   | **EA**t       | f**ee**l  | Vall**EY**                  |
+| ih     | `ɪ`   | **i**f        | f**i**ll  |                             |
+| EY     | `eɪ`  | **een**te       | g**a**te  | d**ay**                     |
+| eh     | `ɛ`   | **e**zeer     | p**e**t   | m**eh** (zeldzaam woord ten slotte) |
+| AE     | `æ`   | **een**ctive    | c**a**t   | n**AH** (zeldzaam woord ten slotte) |
+| aa     | `ɑ`   | **o**bstinate | p**o**ppy | r**AH** (zeldzame woord Finally) |
+| ao     | `ɔ`   | **o**-bereik    | c**au**se | UT**AH**                    |
+| Wat     | `ʊ`   | b**OO**k      |           |                             |
+| &     | `oʊ`  | **o**ld       | LC**o**ne | g**o**                      |
+| rug     | `u`   | **U**ber      | b**OO**St | t**OO**                     |
+| protocolspecifieke     | `ʌ`   | **u**ncle     | c**u**t   |                             |
+| ay     | `aɪ`  | **i**CE       | b**Ik wil**  | FL**y**                     |
+| AW     | `aʊ`  | **OE**t       | s**ou**-e | c**OE**                     |
+| oy     | `ɔɪ`  | **Oi**l       | j**Oi**n  | t**Oy**                     |
+| y-e   | `ju`  | **Yu**, ma      | h**u**man | f**ieuwe**                     |
+| AX     | `ə`   | **een**go       | WOM**a**n | zijn**een**                    |
 
 ### <a name="english-r-colored-vowels"></a>Engelse R-gekleurde klinkers
 
 | `sapi` | `ipa` | Voorbeeld 1    | Voorbeeld 2      | Voorbeeld 3  |
 |--------|-------|--------------|----------------|------------|
-| ih r   | `ɪɹ`  | **oor**s     | t**ir**amisu   | n**oor**   |
-| eh r   | `ɛɹ`  | **luchtvliegtuig** | app**ar**ently | sc**ar e**  |
-| uh r   | `ʊɹ`  |              |                | c**uw**e   |
-| ay r   | `aɪɹ` | **Ire**land  | f**ir**eplace  | ch**oir**  |
-| aw r   | `aʊɹ` | **uur**s    | p**ower**ful   | s**onze**   |
-| ao r   | `ɔɹ`  | **of**ange   | m**of**al      | s**roeispaan**   |
-| aa r   | `ɑɹ`  | **ar**tist   | st**ar**t      | c**ar**    |
-| er r   | `ɝ`   | **oor**th    | b**ir**d       | f**uw**    |
-| ax r   | `ɚ`   |              | alle**er**gy    | supp**er** |
+| IH r   | `ɪɹ`  | **oor**     | t**IR**-amisu   | n**oor**   |
+| eh r   | `ɛɹ`  | **vlieg**tuig | app**AR**ently | SC**AR**e  |
+| wat r   | `ʊɹ`  |              |                | c**uw**e   |
+| ay r   | `aɪɹ` | **Ierland**-land  | f**IR**-ePlace  | CH**oir**  |
+| AW r   | `aʊɹ` | **uur**s    | p**lagere**volledige   | s**onze**   |
+| Ao r   | `ɔɹ`  | **of**Ange   | m**of**al      | s**Oar**   |
+| AA r   | `ɑɹ`  | **AR**Tist   | St**AR**t      | c**AR**    |
+| er r   | `ɝ`   | **oor**    | b**IR**d       | f**uw**    |
+| AX r   | `ɚ`   |              | alle**Gy**    | onde**er** |
 
-### <a name="english-semivowels"></a>Engelse Semiklinkers
+### <a name="english-semivowels"></a>Engels Semivowels
 
 | `sapi` | `ipa` | Voorbeeld 1           | Voorbeeld 2  | Voorbeeld 3 |
 |--------|-------|---------------------|------------|-----------|
-| w      | `w`   | **w**ith, s**ue**de | al**w**ays |           |
-| y      | `j`   | **y**ard, f**e**w   | op**i**op  |           |
+| w      | `w`   | **w**i, s**UE**de | al**w**ays |           |
+| y      | `j`   | **y**-ARD, f**e**w   | op**i**  |           |
 
-### <a name="english-aspirated-oral-stops"></a>Engels aangezogen mondelinge stops
+### <a name="english-aspirated-oral-stops"></a>Engels aspirated orale stops
 
 | `sapi` | `ipa` | Voorbeeld 1 | Voorbeeld 2   | Voorbeeld 3  |
 |--------|-------|-----------|-------------|------------|
-| p      | `p`   | **p**ut   | ha**pp**en  | fla**p**   |
-| b      | `b`   | **b**ig   | num**b**er  | cra**b**   |
+| p      | `p`   | **p**UT   | ha**en**  | FLA-**p**   |
+| b      | `b`   | **b**IG   | num**b**er  | CRA**b**   |
 | t      | `t`   | **t**alk  | capi**t**al | sough**t** |
-| d      | `d`   | **d**ig   | liep**d**om  | ro**d**    |
-| k      | `k`   | **c**ut   | sla**ck**er | Ira**q**   |
-| g      | `g`   | **g**o    | a**g**o     | dra**g**   |
+| d      | `d`   | **d**IG   | door Voer**d**om  | ro**d**    |
+| k      | `k`   | **c**UT   | Sla-**verzonken** | Ira**q**   |
+| g      | `g`   | **g**o    | a**g**o     | DRA**g**   |
 
-### <a name="english-nasal-stops"></a>Engels Neus stopt
+### <a name="english-nasal-stops"></a>Engels nasal stopt
 
 | `sapi` | `ipa` | Voorbeeld 1        | Voorbeeld 2  | Voorbeeld 3   |
 |--------|-------|------------------|------------|-------------|
-| m      | `m`   | **m**op, smash   | ca**m**tijdperk | roo**m**    |
-| n      | `n`   | **n**o, s**n**ow | te**n**t   | chicke**n** |
-| Ng     | `ŋ`   |                  | li**n**k   | s**ing**    |
+| m      | `m`   | **m**op, Smash   | CA**m**era | Roo**m**    |
+| n      | `n`   | **n**tot en met**n toestaan** | te**n**t   | kuiken**n** |
+| lopen     | `ŋ`   |                  | Li**n**k   | s**ING**    |
 
-### <a name="english-fricatives"></a>Engelse fricatives
+### <a name="english-fricatives"></a>Engels fricatives
 
 | `sapi` | `ipa` | Voorbeeld 1   | Voorbeeld 2        | Voorbeeld 3  |
 |--------|-------|-------------|------------------|------------|
-| v      | `f`   | **f**ork f ork f ork f or    | le**f**t         | hal**f**   |
-| v      | `v`   | **v**alue   | e**v**ent        | lo**v**e   |
-| Th     | `θ`   | **th**in    | empa**th**y      | mon**th**  |
-| Dh     | `ð`   | **th**en    | mo**th**er       | smoo**th** |
-| s      | `s`   | **s**it     | ri**s**k         | feit**s**  |
-| z      | `z`   | **z**ap     | bu**s**y         | kid**s**   |
-| Sh     | `ʃ`   | **sh** e    | abbrevia**ti**on | ru**sh**   |
-| Zh     | `ʒ`   | **J**acques | plea**s**ure     | gara**g**g. |
-| h      | `h`   | **h**elp    | nl**h**ance      | a-**h**a!  |
+| v      | `f`   | **f**ORK    | Le**f**t         | hal**f**   |
+| v      | `v`   | **v**-aarde   | e**v**        | Lo**v**e   |
+| e     | `θ`   | **th**in    | EMPA**y**      | ma**e**  |
+| DH     | `ð`   | **th**en    | mo**th**       | Smoo**th** |
+| s      | `s`   | **s**it     | RI**s**k         | fact**s**  |
+| z      | `z`   | **z**-AP     | Bu**s**y         | Kid**s**   |
+| &     | `ʃ`   | **v** -e    | abbrevia**Ti** | ru**sh**   |
+| zh     | `ʒ`   | **J**acques | ureren**s**     | Gara**g** |
+| h      | `h`   | **h**Elp    | en**w**      | a-**h**a!  |
 
 ### <a name="english-affricates"></a>Engels affricates
 
 | `sapi` | `ipa` | Voorbeeld 1 | Voorbeeld 2    | Voorbeeld 3  |
 |--------|-------|-----------|--------------|------------|
-| ch     | `tʃ`  | **ch**in  | fu**t**ure   | atta**ch** |
-| Jh     | `dʒ`  | **j**oy   | ori**g**inal | oran**g.** |
+| ch     | `tʃ`  | **CH**in  | Fu**t**ureren   | Atta-**CH** |
+| jh     | `dʒ`  | **j**Oy   | Ori**g**Inal | Oran**g** |
 
-### <a name="english-approximants"></a>Engelse caisten
+### <a name="english-approximants"></a>Engels approximants
 
 | `sapi` | `ipa` | Voorbeeld 1          | Voorbeeld 2  | Voorbeeld 3 |
 |--------|-------|--------------------|------------|-----------|
-| l      | `l`   | **l**id, g**l**ad  | pa**l**aas | chi**ll** |
-| r      | `ɹ`   | **r**ed, b**r**ing | bo**rr**ow | ta**r**   |
+| l      | `l`   | **l**-id, g**l**AD  | PA**l**ACE | Chi**ll** |
+| r      | `ɹ`   | **r**Ed, b**r**ING | Bo**RR** | TA**r**   |
 
 # <a name="fr-fr"></a>[fr-FR](#tab/fr-FR)
 
-### <a name="french-suprasegmentals"></a>Franse suprasegmentals
+### <a name="french-suprasegmentals"></a>Frans suprasegmentals
 
-De de diensttelefoonreeks van de Toespraak zet spanning na de klinker van de beklemtoonde lettergreep, nochtans; de `fr-FR` spraakservicetelefoonset ondersteunt de IPA-substress '' niet. Als de IPA-substress nodig is, moet u de IPA rechtstreeks gebruiken.
+De telefoonset van de spraak service plaatst stress na de klinker van de benadrukte letter greep. de `fr-FR` set spraak service-telefoonset biedt geen ondersteuning voor de IPA substress ' ˌ '. Als de IPA-subbelasting nodig is, moet u de IPA rechtstreeks gebruiken.
 
 ### <a name="french-vowels"></a>Franse klinkers
 
 | `sapi` | `ipa` | Voorbeeld 1     | Voorbeeld 2       | Voorbeeld 3 |
 |--------|-------|---------------|-----------------|-----------|
-| a      | `a`   | **een**rbre     | p**a**tte       | ir**a**   |
-| aa     | `ɑ`   |               | p**â**te        | p**een**s   |
-| aa ~   | `ɑ̃`  | **nl**fant    | enf**en**t      | t**em**ps |
-| Ax     | `ə`   |               | p**e**tite      | L**e**    |
-| Eh     | `ɛ`   | **e**lle      | p**e**rdu       | ét**ai**t |
-| Eu     | `ø`   | **œu**fs      | cr**eu**ser     | qu**eu**  |
-| Ey     | `e`   | ému ému           | crétin          | ôté ôté       |
-| eh ~   | `ɛ̃`  | **im**portant im portant | p**ein**ture    | mat**in** |
-| iy iy     | `i`   | **i**dée      | huisdier**i**te      | ben**ik**   |
-| Oe     | `œ`   | **œu**f       | p**eu**r        |           |
-| Oh     | `ɔ`   | **o**bstacle  | c**o**rps       |           |
-| oh ~   | `ɔ̃`  | **op**ze      | r**op**deur     | b**op**   |
-| ow     | `o`   | **au**diteur  | b**eau**coup    | p**ô**    |
-| oe ~   | `œ̃ ` | **Vn**        | L**un**di       | br**un**  |
-| uw     | `u`   | **ou**trage   | intr**ou**vable | **Ou**    |
-| Uy     | `y`   | **u**ne       | p**u**nir       | él**u**   |
+| a      | `a`   | **een**rbre     | p**a**TTE       | IR**a**   |
+| aa     | `ɑ`   |               | p**â**te        | p**a**s   |
+| AA ~   | `ɑ̃`  | **en**fant    | er ENF**en**t      | t**em**PS |
+| AX     | `ə`   |               | p**e**tite      | l**e**    |
+| eh     | `ɛ`   | **e**lle      | p**e**RDU       | ét**AI**t |
+| EU     | `ø`   | **œu**FS      | CR**EU**ser     | qu-**EU**  |
+| EY     | `e`   | ému           | crétin          | ôté       |
+| eh ~   | `ɛ̃`  | **im**-poort | p**ein**tleggen    | Passe-**in** |
+| iy     | `i`   | **Ik**Dée      | huis dier dat**Ik**te      | ben**Ik**   |
+| OE     | `œ`   | **œu**f       | p**EU**r        |           |
+| Oh     | `ɔ`   | **o**bstacle  | c**o**RPS       |           |
+| Oh ~   | `ɔ̃`  | **op**deze      | r**op**deur     | b**op**   |
+| &     | `o`   | **au**-diteur  | b**Eau**versnijden    | p**ô**    |
+| OE ~   | `œ̃ ` | **maken**        | l**verwijderen**       | BR**un**  |
+| rug     | `u`   | **OE**trage   | intr**OE**vable | **OE**    |
+| uy     | `y`   | **u**ne       | p**u**NIR       | él**u**   |
 
-### <a name="french-consonants"></a>Franse medeklinkers
+### <a name="french-consonants"></a>Franse mede klinkers
 
 | `sapi` | `ipa` | Voorbeeld 1   | Voorbeeld 2     | Voorbeeld 3                        |
 |--------|-------|-------------|---------------|----------------------------------|
-| b      | `b`   | **b**ête    | ha**b**ille   | ro**b**e                         |
-| d      | `d`   | **d**ire    | ron**d**eur   | chau**d**e                       |
-| v      | `f`   | **f**emme f emme   | su**ff**ixe   | bo**f**                          |
-| g      | `g`   | **g**auche  | é**g**ale     | ba**gu**e                        |
-| Ng     | `ŋ`   |             |               | [<sup>1</sup>](#fr-1)**parkeren** |
-| Hy     | `ɥ`   | h**u**ile   | n**u**ire     |                                  |
-| k      | `k`   | **c**arte   | é**c**aille   | zijn**c**                          |
-| l      | `l`   | **L**ong    | é**l**ire     | ba**l**                          |
-| m      | `m`   | **m**adame  | ai**m**er     | po**mm**e                        |
-| n      | `n`   | **n**ous    | te**n**ir     | bo**nn**e                        |
-| Nj     | `ɲ`   |             |               | pei**gn**e                       |
-| p      | `p`   | **p**atte   | re**p**als     | ca**p**                          |
-| r      | `ʁ`   | **r**bij     | cha**r**iot   | senti**r**                       |
-| s      | `s`   | **s**ourir  | een**ss**ez     | pa**ss**e                        |
-| Sh     | `ʃ`   | **ch**anter | ma**ch**ine   | po**ch**e                        |
-| t      | `t`   | **t**ête    | ô**t**er      | ne**t**                          |
-| v      | `v`   | **v**ent    | in**v**enter  | rê**v**e                         |
-| w      | `w`   | **ou**i     | f**ou**ine    |                                  |
-| y      | `j`   | **y**od     | p**i**étiner  | Marse**ille**                    |
-| z      | `z`   | **z **éro   | rai**s**onner | ro**s**e                         |
-| Zh     | `ʒ`   | **j**ardin  | man**g**er    | piè**g.**                        |
-|        | `n‿`  |             |               | u**n** arbre                     |
-|        | `t‿`  |             |               | quan**d**                        |
+| b      | `b`   | **b**ête    | ha**b**Ille   | ro**b**e                         |
+| d      | `d`   | **d**Ierland    | Loek**d**   | Chau**d**e                       |
+| v      | `f`   | **f**Emme   | su**ff**IXe   | Bo**f**                          |
+| g      | `g`   | **g**auche  | é**g**ALE     | BA**gu**e                        |
+| lopen     | `ŋ`   |             |               | [<sup>1</sup>](#fr-1)Park**ING** |
+| hy     | `ɥ`   | h**u**/estand   | n**u**Ierland     |                                  |
+| k      | `k`   | **c**Arte   | é**c**Aille   | **c** zijn                          |
+| l      | `l`   | **l**ong    | é**l**Ierland     | BA**l**                          |
+| m      | `m`   | **m**Adam  | AI**m**er     | po**mm**e                        |
+| n      | `n`   | **n**organisatie-eenheden    | te**n**IR     | Bo**nn**e                        |
+| één     | `ɲ`   |             |               | Pei**GN**-e                       |
+| p      | `p`   | **p**Atte   | opnieuw**p**als     | CA-**p**                          |
+| r      | `ʁ`   | **r**op     | Cha**r**IOT   | senti**r**                       |
+| s      | `s`   | **s**ourir  | een**SS**EZ     | PA**SS**e                        |
+| &     | `ʃ`   | hoofd **stuk** | ma**CH**toe   | po**CH**e                        |
+| t      | `t`   | **t**ête    | ô**t**er      | nieu**t**                          |
+| v      | `v`   | **v**.    | in**v**invoeren  | Rê**v**e                         |
+| w      | `w`   | **OE**i     | f-**OE**toe    |                                  |
+| y      | `j`   | **y**od     | p**i**étiner  | Mars-**Ille**                    |
+| z      | `z`   | * * z * * éro   | Rai**s**onner | ro**s**e                         |
+| zh     | `ʒ`   | **j**Ardin  | man**dat**er    | Piè**g**                        |
+|        | `n‿`  |             |               | u**n** Arbre                     |
+|        | `t‿`  |             |               | Quan**d**                        |
 |        | `z‿`  |             |               | di**x**                          |
 
 <a id="fr-1"></a>
-**1** *Alleen voor sommige buitenlandse woorden.*
+**1** *alleen voor sommige buitenlandse woorden.*
 
 > [!TIP]
-> De `fr-FR` telefoonset van de spraakservice ondersteunt niet `n‿`de `t‿`volgende `z‿`Franse liasions, en . Als ze nodig zijn, moet u overwegen het gebruik van de IPA direct.
+> De `fr-FR` set spraak service-telefoon biedt geen ondersteuning voor de volgende `n‿`Franse `t‿`liasions, `z‿`, en. Als ze nodig zijn, kunt u overwegen om de IPA rechtstreeks te gebruiken.
 
 # <a name="de-de"></a>[de-DE](#tab/de-DE)
 
 ### <a name="german-suprasegmentals"></a>Duitse suprasegmentals
 
-| Voorbeeld 1 (Begin voor medeklinker, woordinitiaal voor klinker) | Voorbeeld 2 (Intervocalic voor medeklinker, woord mediale kern voor klinker) | Voorbeeld 3 (Coda voor medeklinker, woord definitief voor klinker) | Opmerkingen |
+| Voor beeld 1 (begin voor medeklinker, woord voor klinker) | Voor beeld 2 (intervocaal-voor-medeklinker, woord in-Nucleus voor klinker) | Voor beeld 3 (CODA voor medeklinker, woord final voor klinker) | Opmerkingen |
 |--|--|--|--|
-| anders /a **1** n - d ax r s/ | Vermenigvuldigingenzeichen /m uh l - t iy - p l iy - k a - ts y ow **1** n s - ts ay - c n/ | Biologie /b iy - ow - l ow - g iy **1**/ | De reeks van de de diensttelefoon zet spanning na de klinker van de beklemtoonde lettergreep |
-| Allgemeinwissen /a **2** l - g ax - m ay 1 n - v ih - s n/ | Abfallentsorgungsfirma /a 1 p - f a l - ^ eh n t - z oh **2** ax r - g uh ng s - f ih ax r - m a/ | Computertomographie /k oh m - p y uw 1 - t ax r - t ow - m ow - g r a - f iy **2**/ | De reeks van de de diensttelefoon zet spanning na de klinker van de onder-beklemtoonde lettergreep |
+| anders/a **1** n-d AX r s/ | Multiplikationszeichen/m wat l-t iy-p l iy-k a-TS y to **1** n-TS ay-c n/ | Biologie/b iy-OE-l to-g iy **1**/ | Spraak service telefoon instellen stress na de klinker van de benadrukte letter greep |
+| Allgemeinwissen/a **2** l-g AX-m ay 1 n-v IH-s n/ | Abfallentsorgungsfirma/a 1 p-f a l-^ eh n t-z Oh **2** AX r-g wat ng s-f IH AX r-m a/ | Computertomographie/k Oh m-p y 1-t AX r-t to-m OE-g r a-f iy **2**/ | Spraak service telefoon instellen stress na de klinker van de sub-benadrukte letter greep |
 
 ### <a name="german-vowels"></a>Duitse klinkers
 
 | `sapi` | `ipa`     | Voorbeeld 1                             | Voorbeeld 2     | Voorbeeld 3                          |
 |--------|-----------|---------------------------------------|---------------|------------------------------------|
-| A:     | `aː`      | **Een**ber                              | Maßst**a**b   | Schem**a**                         |
-| a      | `a`       | **Een**bfall                            | B**een**ch      | Agath**a**                         |
-| Oh     | `ɔ`       | **O**sten                             | Pf**o**sten   |                                    |
-| Eh:    | `ɛː`      | **Ä**hnlichkeit                       | B**ä**r       | [<sup>1.</sup>](#de-v-1) Fasci**ae** |
-| Eh     | `ɛ`       | **ä**ndern                            | Proz**e**nt   | Amygdal**ae**                      |
-| Ax     | `ə`       | [<sup>2</sup>](#de-v-2)'v**e**rstauen | Aach**e**n    | Frag**e**                          |
-| iy iy     | `iː`      | **Ik rende**weg.                              | abb**ie**gt   | Relativitätstheor**ie**            |
-| Ih     | `ɪ`       | **Ik**nnung                            | s**i**ngen    | Hout**y**                          |
-| Eu     | `øː`      | **Ö**sen                              | abl**ö**sten  | Malm**ö**                          |
-| ow     | `o`, `oː` | **o**hne                              | Balk**o**n    | Trept**ow**                        |
-| Oe     | `œ`       | **Ö**ffnung Ö ffnung                           | bef**ö**rdern |                                    |
-| Ey     | `e`, `eː` | **E**berhard                          | abf**e**gt    | b                                  |
-| uw     | `uː`      | **U**doen                               | H**u**t       | Akk**u**                           |
-| Uh     | `ʊ`       | **U**nterschiedes                     | b**u**nt      |                                    |
-| Ue     | `yː`      | **Ü**bermut Ü bermut                           | pfl**ü**gt    | Mannen**ü**                           |
-| Uy     | `ʏ`       | **ü**ppig ü ppig                             | S**y**stam    |                                    |
+| één     | `aː`      | **Ber**                              | Maßst**a**b   | Schem**a**                         |
+| a      | `a`       | **Een**bfall                            | B**a**CH      | Agath**a**                         |
+| Oh     | `ɔ`       | **O**sten                             | PF**o**sten   |                                    |
+| eh:    | `ɛː`      | **Ä**hnlichkeit                       | B**ä**r       | [<sup>1</sup>](#de-v-1) Fasci**AE** |
+| eh     | `ɛ`       | **ä**ndern                            | ProZ**e**NT   | Amygdal**AE**                      |
+| AX     | `ə`       | [<sup>2</sup>](#de-v-2)' v**e**rstauen | Aach**e**n    | Frag**e**                          |
+| iy     | `iː`      | **Ik heb**uitgevoerd                              | ABB**IE**gt   | Relativitätstheor**IE**            |
+| ih     | `ɪ`       | **Ik**nnung                            | s**Ik**ngen    | Hout**y**                          |
+| EU     | `øː`      | **Ö**afzen                              | ABL**ö**sten  | Malm**ö**                          |
+| &     | `o`, `oː` | **o**hne                              | Balk**o**n    | Trept**ow**                        |
+| OE     | `œ`       | **Ö**ffnung                           | BEF**ö**rdern |                                    |
+| EY     | `e`, `eː` | **E**Berhard                          | ABF-**e**gt    | b                                  |
+| rug     | `uː`      | **U**doen                               | H**u**t       | Akk**u**                           |
+| Wat     | `ʊ`       | **U**nterschiedes                     | b**u**NT      |                                    |
+| UE     | `yː`      | **Ü**bermut                           | PFL**ü**gt    | Mannen**ü**                           |
+| uy     | `ʏ`       | **ü**ppig                             | S**y**-stengel    |                                    |
 
 <a id="de-v-1"></a>
-**1** *Alleen in woorden van buitenlandse oorsprong, zoals: Fasci**ae**.*<br>
+**1** *alleen in woorden van vreemde oorsprong, zoals: fasci**AE**.*<br>
 <a id="de-v-2"></a>
-**2** *Woord-intially slechts in woorden van buitenlandse oorsprong zoals **Een**ppzal. Lettergreep-aanvankelijk in: 'v**e**rstauen.*
+**2** *woord-Intially alleen in woorden van vreemde oorsprong, zoals **een**ppointment. Letter greep-in eerste instantie: ' v**e**rstauen.*
 
 ### <a name="german-diphthong"></a>Duitse diphthong
 
 | `sapi` | `ipa`       | Voorbeeld 1    | Voorbeeld 2          | Voorbeeld 3 |
 |--------|-------------|--------------|--------------------|-----------|
-| Ay     | `ai`        | **ei**nsam   | Unabhängigk**ei**t | Abt**ei** |
-| Aw     | `au`        | **au**ßen    | abb**au**st        | St**au**  |
-| Oy     | `ɔy`, `ɔʏ̯` | **Eu-phorie** | tr**äu**mt         | sch**eu** |
+| ay     | `ai`        | **ei**nsam   | Unabhängigk**ei** | Abte**ei** |
+| AW     | `au`        | **au**-ßen    | ABB**au**St        | St**au**  |
+| oy     | `ɔy`, `ɔʏ̯` | **EU**-phorie | TR**äU**mt         | SCH-**EU** |
 
-### <a name="german-semivowels"></a>Duitse semiklinkers
+### <a name="german-semivowels"></a>Duitse semivowels
 
 | `sapi` | `ipa` | Voorbeeld 1 | Voorbeeld 2    | Voorbeeld 3  |
 |--------|-------|-----------|--------------|------------|
-| ax r   | `ɐ`   |           | abänd**er**n | **lock er** |
+| AX r   | `ɐ`   |           | abänd**er**n | Er is**een vergren** deling |
 
-### <a name="german-consonants"></a>Duitse medeklinkers
+### <a name="german-consonants"></a>Duitse mede klinkers
 
 | `sapi` | `ipa` | Voorbeeld 1 | Voorbeeld 2 | Voorbeeld 3 |
 |--|--|--|--|--|
-| b | `b` | **B**ank |  | [<sup>1.</sup>](#de-c-1) Pu**b** |  |
-| c | `ç` | **Ch**emie | mögli**ch**st | [<sup>2</sup>](#de-c-2)i**ch** |
-| d | `d` | **d**anken | [<sup>3.</sup>](#de-c-3) Len**d**l | [<sup>4.</sup>](#de-c-4) Clau**d**e |  |
-| Jh | `ʤ` | **J**eff | gemana**g**t | [<sup>5.</sup>](#de-c-5) Chan**g.** |
-| v | `f` | **F**ahrtdauer | angri**ff**slustig | abbruchrei**f** |  |
-| g | `g` | **g**ut |  | [<sup>6.</sup>](#de-c-6) Gre**g** |  |
+| b | `b` | **B**Ank |  | [<sup>1</sup>](#de-c-1) PU**b** |  |
+| c | `ç` | **CH**emie | mögli**CH**St | [<sup>2</sup>](#de-c-2)i/**CH** |
+| d | `d` | **d**anken | [<sup>3</sup>](#de-c-3) Len**d**l | [<sup>4</sup>](#de-c-4) Clau**d**e |  |
+| jh | `ʤ` | **J**eff | gemana**g**t | [<sup>5</sup>](#de-c-5) Kanaal**g**e |
+| v | `f` | **F**ahrtdauer | Angri**ff**slustig | abbruchrei**f** |  |
+| g | `g` | **g**UT |  | [<sup>6</sup>](#de-c-6) GRE**g** |  |
 | h | `h` | **H**ausanbau |  |  |  |
-| y | `j` | **J**od | Reakt**i**op | hu**i** |  |
-| k | `k` | **K**oma | Aspe**k**t | Flec**k** |  |
-| l | `l` | **L**au | ähne**l**n | zuvie**l** |  |
-| m | `m` | **M**ut | Een**m**t | Leh**m** |  |
-| n | `n` | **n**un | u**n**d | Huh**n** |  |
-| Ng | `ŋ` | [<sup>7</sup>](#de-c-7)**Ng**uyen | Schwa**nk** | R**ing** |  |
-| p | `p` | **P**artner P artner | abru**p**t | Ti p Ti**p** |  |
-| Pf | `pf` | **Pf**erd | dam**pf**t | Om**pf** |  |
-| r | `ʀ`, `r`, `ʁ` | **R**eise | knu**rr**t | Haa**r** |  |
-| s | `s` | [<sup>8</sup>](#de-c-8)**S**taccato | bi**s**t | mie**s** |  |
-| Sh | `ʃ` | **Sch**ule | mi**sch**t | lappi**sch** |  |
-| t | `t` | **T**raum | S**t**raße | Mu**t** |  |
-| Ts | `ts` | **Z**ug | Ar**z**t | Wit**z** |  |
-| ch | `tʃ` | **Tsch**echien Tsch echien | aufgepu**tsch**t | bundesdeu**tsch** |  |
-| v | `v` | **w**inken | Q**u**alle | [<sup>9.</sup>](#de-c-9) Gr**oo**ve |  |
-| x | [<sup>10</sup>](#de-c-10)`x`,[<sup>11.</sup>](#de-c-11)`ç` | [<sup>12.</sup>](#de-c-12) Ba**ch**erach | Ma**ch**t mögli**ch**st | Schma**ch** 'i**ch** |
-| z | `z` | **s**uper |  |  |  |
-| Zh | `ʒ` | **G**enre | B**re**ezinski | Edvi**g.** |
+| y | `j` | **J**od | Reakt**i** | hu**i** |  |
+| k | `k` | **K**oma | Aspe**k**t | FLEC**k** |  |
+| l | `l` | **l**au | ähne**l**n | zuvie**l** |  |
+| m | `m` | **M**UT | A**m**t | Leh**m** |  |
+| n | `n` | **n**niet verwijderen | u**n**d | Toch**n** |  |
+| lopen | `ŋ` | [<sup>7</sup>](#de-c-7)**ng**Uyen | **Lege** van schwa | R**ING** |  |
+| p | `p` | **P**artner | abru**p**t | TI**p** |  |
+| PF | `pf` | **PF**-nood herstel | Dam**PF**t | Naar**PF** |  |
+| r | `ʀ`, `r`, `ʁ` | **R**Eise | knu**RR**t | Haa**r** |  |
+| s | `s` | [<sup>8</sup>](#de-c-8)**S**taccato | bi**s**t | Mie**s** |  |
+| & | `ʃ` | **Sch**regel | Mi**sch**t | Lappi**sch** |  |
+| t | `t` | **T**Raum | S**t**raße | MU**t** |  |
+| Terminal | `ts` | **Z**mg | AR**z**t | Wit**z** |  |
+| ch | `tʃ` | **Tsch**echien | aufgepu**tsch**t | bundesdeu**tsch** |  |
+| v | `v` | **w**inken | Q**u**alle | [<sup>9</sup>](#de-c-9) Go**OO**ve |  |
+| x | [<sup>10</sup>](#de-c-10)`x`,[<sup>11</sup>](#de-c-11)`ç` | [<sup>12</sup>](#de-c-12) BA**CH**erach | Ma**CH**t mögli**CH**& St | Schma**CH** ' i**CH** |
+| z | `z` | **s**Super |  |  |  |
+| zh | `ʒ` | **G**Enre | B ezinski**opnieuw** | Edvi**g** |
 
 <a id="de-c-1"></a>
-**1** *Alleen in woorden van buitenlandse oorsprong, zoals: Pu**b**.*<br>
+**1** *alleen in woorden van vreemde oorsprong, zoals: PU**b**.*<br>
 <a id="de-c-2"></a>
-**2** *Soft "ch" na "e" en "i"*<br>
+**2** *zacht "ch" na "e" en "i"*<br>
 <a id="de-c-3"></a>
-**3** *Alleen in woorden van buitenlandse oorsprong, zoals: Len**d**l.*<br>
+**3** *alleen in woorden van vreemde oorsprong, zoals: len**d**l.*<br>
 <a id="de-c-4"></a>
-**4** *Alleen in woorden van buitenlandse oorsprong zoals: Clau**d**e.*<br>
+**4** *alleen in woorden van vreemde oorsprong, zoals: Clau**d**e.*<br>
 <a id="de-c-5"></a>
-**5** *Slechts in woorden van buitenlandse oorsprong zoals: Chan**g.***<br>
+**5** *alleen in woorden van vreemde oorsprong, zoals: kanaal**g**e.*<br>
 <a id="de-c-6"></a>
-**6** *Woord-terminaal alleen in woorden van buitenlandse oorsprong zoals Gre**g**.*<br>
+**6** *woord-terminalend alleen in woorden van vreemde oorsprong zoals GRE**g**.*<br>
 <a id="de-c-7"></a>
-**7** *Slechts in woorden van buitenlandse oorsprong zoals: **Ng**uyen.*<br>
+**7** *alleen in woorden van vreemde oorsprong, zoals: **ng**Uyen.*<br>
 <a id="de-c-8"></a>
-**8** *Alleen in woorden van buitenlandse oorsprong zoals: **S**taccato.*<br>
+**8** *alleen in woorden van vreemde oorsprong, zoals: **S**taccato.*<br>
 <a id="de-c-9"></a>
-**9** *Alleen in woorden van buitenlandse oorsprong, zoals: Gr**oo**ve.*<br>
+**9** *alleen in woorden van vreemde oorsprong, zoals: go**OO**ve.*<br>
 <a id="de-c-10"></a>
-**10** *De `x` IPA is een harde "ch" na alle niet-front klinkers (a, aa, oh, ow, uh, uw en de diphthong aw).*<br>
+**10** *de IPA `x` is een harde ' Ch ' na alle niet-voorste klinkers (a, AA, Oh, wat, en de diphthong AW).*<br>
 <a id="de-c-11"></a>
-**11** *De `ç` IPA is een zachte 'ch' na de voorklinkers (ih, iy, eh, ae, uy, ue, oe, eu ook in diphthongs ay, oy) en medeklinkers*<br>
+**11** *de IPA `ç` is een zacht ' Ch ' na de voor-klinker (IH, iy, eh, AE, uy, UE, OE, EU ook in diphthongs ay, Oy) en mede klinkers*<br>
 <a id="de-c-12"></a>
-**12** *Woord-aanvankelijk slechts in woorden van buitenlandse oorsprong, zoals: **J**uan. Lettergreep-aanvankelijk ook in woorden als: Ba**ch**erach.*<br>
+**12** *woord: in eerste instantie alleen in woorden van vreemde oorsprong, zoals **: J**UAN. Letter greep-in eerste instantie ook in woorden als: BA**CH**erach.*<br>
 
-### <a name="german-oral-consonants"></a>Duitse orale medeklinkers
+### <a name="german-oral-consonants"></a>Duitse mondelinge mede klinkers
 
 | `sapi` | `ipa` | Voorbeeld 1                                  |
 |--------|-------|--------------------------------------------|
-| ^      | `ʔ`   | beachtlich /b ax - ^ a 1 x t - l ih c/ |
+| ^      | `ʔ`   | beachtlich/b AX-^ a 1 x t-l IH c/ |
 
 > [!NOTE]
-> We moeten een [gs\] telefoon tussen twee verschillende klinkers toe te voegen, behalve de twee klinkers zijn een echte diphthong. Deze mondelinge medeklinker is een glottale <a href="http://en.wikipedia.org/wiki/Glottal_stop" target="_blank">stop, voor <span class="docon docon-navigate-external x-hidden-focus"> </a> </a>meer informatie, zie glottale stop .
+> We moeten een [GS\] -telefoon toevoegen tussen twee afzonderlijke klinkers, met uitzonde ring van de twee klinkers zijn een authentiek diphthong. Deze orale medeklinker is <a href="http://en.wikipedia.org/wiki/Glottal_stop" target="_blank">een glottis slag <span class="docon docon-navigate-external x-hidden-focus"> </a> </a>. Zie voor meer informatie glottis slag.
 
 # <a name="es-es"></a>[es-ES](#tab/es-ES)
 
@@ -300,93 +300,93 @@ De de diensttelefoonreeks van de Toespraak zet spanning na de klinker van de bek
 
 | `sapi` | `ipa` | Voorbeeld 1    | Voorbeeld 2     | Voorbeeld 3    |
 |--------|-------|--------------|---------------|--------------|
-| a      | `a`   | **een**lto     | c**een**ntar    | cas**a**     |
-| i      | `i`   | **i**bérica  | av**i**spa    | belasting**i**     |
-| a      | `e`   | **e**lefante | **e**nto    | elefant**e** |
-| o      | `o`   | **o**caso    | enc**o**ntrar | o o**o** |
-| U      | `u`   | **u**sted    | p**u**nta     | Juanl**u**   |
+| a      | `a`   | **een**LTO     | c**a**ntar    | CAS**a**     |
+| i      | `i`   | **Ik**bérica  | AV**i**Spa    | belastingen**i**     |
+| a      | `e`   | **e**LeFante | bij**e**nKlik    | Elefant**e** |
+| o      | `o`   | **o**caso    | ENC**o**ntrar | ocasenc**o** |
+| h      | `u`   | **u**sted    | p**u**NTA     | Juanl**u**   |
 
-### <a name="spanish-consonants"></a>Spaanse medeklinkers
+### <a name="spanish-consonants"></a>Spaanse mede klinkers
 
 | `sapi` | `ipa`      | Voorbeeld 1  | Voorbeeld 2      | Voorbeeld 3      |
 |--------|------------|------------|----------------|----------------|
 | b      | `b`        | **b**aobab |                | am**b**        |
-|        | `β`        |            | bao**b**ab     | baoba**b**     |
-| ch     | `tʃ`       | **ch**eque | co**ch**e      | Marraque**ch** |
-| d      | `d`        | **d**edo   |                | portlan**d**   |
-|        | `ð`        |            | de**d**o       | verda**d**     |
-| v      | `f`        | **f**ácil f ácil  | ele**f**ante   | pu**f**        |
-| g      | `g`        | **g**anga  |                | dópin**g**     |
-|        | `ɣ`        |            | a**g**ua       | tuare**g**     |
-| J      | `j`        | **i**odo   | cal**i**ente   | re**y**        |
-| Jj     | `j.j` `jj` |            | vi**ll**a      |                |
-| k      | `k`        | **c**oker  | bo**c**a       | titáni**c**    |
-| l      | `l`        | **l**ápiz  | a**l**a        | corde**l**     |
-| Ll     | `ʎ`        | **ll**ave  | desarro**ll**o |                |
-| m      | `m`        | **m**bestellen | a**m**ar       | álbu**m**      |
-| n      | `n`        | **n**ada   | ce**n**a       | rató**n**      |
-| Nj     | `ɲ`        | **ñ**aña   | ara**ñ**azo    |                |
-| p      | `p`        | **p**oca   | naar**p**o       | sto**p**       |
-| r      | `ɾ`        |            | ca**r**a       | abri**r**      |
-| Rr     | `r`        | **r**adio  | co**rr**e      | pu**rr**       |
-| s      | `s`        | **s**aco   | va**s**o       | pelo**s**      |
-| t      | `t`        | **t**oldo  | a**t**ar       | disque**t**    |
-| Th     | `θ`        | **z**ebra z ebra  | a**z**ul       | lápi**z**      |
-| w      | `w`        | h**u**eso  | ag**u a**       | gua**u**       |
-| x      | `x`        | **j**ota   | a**j**o        | relo**j**      |
+|        | `β`        |            | Bao**b**AB     | baoba**b**     |
+| ch     | `tʃ`       | **CH**eque | Co**CH**e      | Marraque-**CH** |
+| d      | `d`        | **d**Edo   |                | portlan**d**   |
+|        | `ð`        |            | de**d**o       | Verda**d**     |
+| v      | `f`        | **f**ácil  | ele**vooraf**   | PU**f**        |
+| g      | `g`        | **g**Anga  |                | dópin**g**     |
+|        | `ɣ`        |            | een**g**UA       | tuare**g**     |
+| v      | `j`        | **Ik**Odo   | CAL **-** Ente   | opnieuw**y**        |
+| JJ     | `j.j` `jj` |            | VI**ll**a      |                |
+| k      | `k`        | **c**oche  | Bo**c**a       | titáni**c**    |
+| l      | `l`        | **l**ápiz  | a**l**a        | koord**l**     |
+| ll     | `ʎ`        | **ll**Laan  | desarro**ll**o |                |
+| m      | `m`        | **m**-volg orde | a**m**AR       | álbu**m**      |
+| n      | `n`        | **n**Ada   | CE**n**a       | rató**n**      |
+| één     | `ɲ`        | **ñ**aña   | Ara**ñ**azo    |                |
+| p      | `p`        | **p**Oca   | naar**p**o       | waarschuwingsd**p**       |
+| r      | `ɾ`        |            | CA-**r**a       | Abri**r**      |
+| RR     | `r`        | **r**adio  | Co**RR**e      | PU**RR**       |
+| s      | `s`        | **s**accountable Care Organization   | VA**s**o       | pelo**s**      |
+| t      | `t`        | **t**oldo  | a**t**AR       | Disque**t**    |
+| e     | `θ`        | **z**ebra  | een**z**UL       | lápi**z**      |
+| w      | `w`        | h**u**ESO  | AG**u**a       | Gua**u**       |
+| x      | `x`        | **j**OTA   | een**j**o        | relo**j**      |
 
 > [!TIP]
-> De `es-ES` telefoonset van spraakservice ondersteunt de volgende `β` `ð`Spaanse `ɣ`IPA, en . Als ze nodig zijn, moet u overwegen het gebruik van de IPA direct.
+> De `es-ES` set spraak service-telefoon biedt geen ondersteuning voor de volgende `β`Spaanse `ð`IPA, `ɣ`, en. Als ze nodig zijn, kunt u overwegen om de IPA rechtstreeks te gebruiken.
 
 # <a name="zh-cn"></a>[zh-CN](#tab/zh-CN)
 
-De spraakservicetelefoon `zh-CN` ingesteld voor is gebaseerd op de native telefoon <a href="https://en.wikipedia.org/wiki/Pinyin" target="_blank">Pinyin <span class="docon docon-navigate-external x-hidden-focus"></span> </a> set.
+Het telefoon nummer van de spraak `zh-CN` service voor is gebaseerd op de ingebouwde telefoon- <a href="https://en.wikipedia.org/wiki/Pinyin" target="_blank">pinyinset <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
 
 ### <a name="tone"></a>Toon
 
-| Pinyin toon | `sapi` | Tekenvoorbeeld |
+| Pinyin Toon | `sapi` | Teken voorbeeld |
 |-------------|--------|-------------------|
-| mā          | ma 1  | 妈                 |
-| má má          | ma 2  | 麻                 |
-| mṭ mṭ          | ma 3  | 马                 |
-| mà mà          | ma 4  | 骂                 |
-| Ma          | ma 5  | 嘛                 |
+| mā          | MA 1  | 妈                 |
+| má          | ma 2  | 麻                 |
+| mǎ          | Ma 3  | 马                 |
+| mà          | ma 4  | 骂                 |
+| VG          | ma 5  | 嘛                 |
 
 #### <a name="example"></a>Voorbeeld
 
 | Teken | Speech Service                |
 |-----------|-------------------------------|
-| 组织关系      | zu 3 - zhi 1 - guan 1 - xi 5 |
-| ??        | lei 3 -jin 4                 |
-| 西宅巷       | xi 1 - zhai 2 - xiang 4      |
+| 组织关系      | zu 3-Zhi 1-Guan 1-XI 5 |
+| 累进        | lei 3-Jin 4                 |
+| 西宅巷       | XI 1-Zhai 2-Xiang 4      |
 
 # <a name="zh-tw"></a>[zh-TW](#tab/zh-TW)
 
-De Spraakservice telefoon `zh-TW` ingesteld voor is gebaseerd op de native telefoon <a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank">Bopomofo <span class="docon docon-navigate-external x-hidden-focus"></span> </a> ingesteld.
+Het telefoon nummer van de spraak `zh-TW` service voor is gebaseerd op de systeem eigen telefoon- <a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank">Bopomofo <span class="docon docon-navigate-external x-hidden-focus"></span> </a> -set.
 
 ### <a name="tone"></a>Toon
 
-| Spraakservicetoon | Bopomofo toon | Voorbeeld (woord) | Spraakservicetelefoons | Bopomofo | Pinyin |
+| Toon van Speech-Service | Bopomofo Toon | Voor beeld (woord) | Spraak service-telefoons | Bopomofo | Pinyin (拼音) |
 |---------------------|---------------|----------------|-----------------------|----------|-------------|
-| ˉ                   | leeg         | 偵              | Het is niet de eerste keer dat de                   | Het is niet de eerste keer dat de       | zhēn        |
-| Het is niet de eerste                   | Het is niet de eerste             | 察              | Het is niet de eerste keer dat de                   | Het is niet de eerste keer dat de      | chá         |
-| ーー                   | ーー             | 打              | Het is niet de eerste keer dat de                   | Het is niet de eerste keer dat de      | dṭ          |
-| ˋ                   | ˋ             | De man heeft een              | Het is niet de eerste keer dat de                   | Het is niet de eerste keer dat de      | wàng wàng        |
-| ˙                   | ˙             | 影子             | Het is niet de eerste keer dat de               | Het is niet de eerste keer dat de  | yṭng zi    |
+| ˉ                   | leeg         | 偵              | ㄓㄣˉ                   | ㄓㄣ       | zhēn        |
+| ˊ                   | ˊ             | 察              | ㄔㄚˊ                   | ㄔㄚˊ      | chá         |
+| ˇ                   | ˇ             | 打              | ㄉㄚˇ                   | ㄉㄚˇ      | dǎ          |
+| ˋ                   | ˋ             | 望              | ㄨㄤˋ                   | ㄨㄤˋ      | wàng        |
+| ˙                   | ˙             | 影子             | 一ㄥˇ ㄗ˙               | 一ㄥˇ ㄗ˙  | yǐng Zi    |
 
 #### <a name="example"></a>Voorbeeld
 
 | Teken | `sapi`   |
 |-----------|----------|
-| Het is niet de eerste         | ㄍㄡˇ      |
-| 然后        | Het is niet de eerste keer dat de   |
-| Het is niet de eerste keer dat de        | Het is niet de eerste keer dat de |
+| 狗         | ㄍㄡˇ      |
+| 然后        | ㄖㄢˊㄏㄡˋ   |
+| 剪掉        | ㄐㄧㄢˇㄉㄧㄠˋ |
 
 # <a name="ja-jp"></a>[ja-JP](#tab/ja-JP)
 
-De Spraakservice telefoon `ja-JP` ingesteld voor is gebaseerd op de native telefoon <a href="https://en.wikipedia.org/wiki/Kana" target="_blank">Kana <span class="docon docon-navigate-external x-hidden-focus"></span> </a> set.
+Het telefoon nummer van de spraak `ja-JP` service voor is gebaseerd op de systeem eigen telefoon <a href="https://en.wikipedia.org/wiki/Kana" target="_blank">Kana <span class="docon docon-navigate-external x-hidden-focus"></span> </a> -set.
 
-### <a name="stress"></a>Stress
+### <a name="stress"></a>Uitvoert
 
 | `sapi` | `ipa`          |
 |--------|----------------|
@@ -397,8 +397,8 @@ De Spraakservice telefoon `ja-JP` ingesteld voor is gebaseerd op de native telef
 
 | Teken | `sapi`  | `ipa`       |
 |-----------|---------|-------------|
-| 合成        | Het is niet de eerste keer dat de    | goーw?seji   |
-| 所有者       | ???? | ?joj???? |
-| 最適化       | ??????  | sajitecika |
+| 合成        | ゴ'ウセ    | Ga naar ˈ wɯseji   |
+| 所有者       | ショュ'ウ?ャ | ɕjojɯˈwɯɕja |
+| 最適化       | サィテキカ +  | sajitecikaˌ |
 
 ***
