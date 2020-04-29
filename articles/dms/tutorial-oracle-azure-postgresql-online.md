@@ -1,7 +1,7 @@
 ---
-title: 'Zelfstudie: Oracle online migreren naar Azure Database voor PostgreSQL'
+title: 'Zelf studie: Oracle online migreren naar Azure Database for PostgreSQL'
 titleSuffix: Azure Database Migration Service
-description: Leer een online migratie uitvoeren van Oracle on-premises of op virtuele machines naar Azure Database voor PostgreSQL met behulp van Azure Database Migration Service.
+description: Meer informatie over het uitvoeren van een online migratie van Oracle on-premises of op virtuele machines naar Azure Database for PostgreSQL met behulp van Azure Database Migration Service.
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -13,134 +13,134 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/24/2020
 ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78255570"
 ---
-# <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Zelfstudie: Oracle migreren naar Azure Database voor PostgreSQL online met DMS (Preview)
+# <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Zelf studie: Oracle migreren naar Azure Database for PostgreSQL online met behulp van DMS (preview)
 
-U Azure Database Migration Service gebruiken om de databases van Oracle-databases die on-premises of op virtuele machines worden gehost, te migreren naar [Azure Database voor PostgreSQL](https://docs.microsoft.com/azure/postgresql/) met minimale downtime. Met andere woorden, u de migratie voltooien met minimale downtime naar de toepassing. In deze zelfstudie **HR** migreert u de HR-voorbeelddatabase van een on-premises of virtuele machine-instantie van Oracle 11g naar Azure Database voor PostgreSQL met behulp van de online migratieactiviteit in Azure Database Migration Service.
+U kunt Azure Database Migration Service gebruiken om de data bases van Oracle-data bases die on-premises of op virtuele machines worden gehost, te migreren naar [Azure database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) met minimale downtime. Met andere woorden, u kunt de migratie volt ooien met minimale downtime voor de toepassing. In deze zelf studie migreert u de **HR** -voorbeeld database van een on-premises-of virtuele-machine-instantie van Oracle 11g naar Azure database for PostgreSQL met behulp van de online migratie activiteit in azure database Migration service.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 >
-> * Beoordeel de migratie-inspanning met behulp van de ora2pg tool.
-> * Migreer het voorbeeldschema met het gereedschap ora2pg.
+> * Evalueer de migratie inspanningen met het hulp programma ora2pg.
+> * Migreer het voorbeeld schema met het ora2pg-hulp programma.
 > * Maak een exemplaar van de Azure Database Migration Service.
-> * Maak een migratieproject met Azure Database Migration Service.
+> * Een migratie project maken met behulp van Azure Database Migration Service.
 > * De migratie uitvoeren.
 > * De migratie controleren.
 
 > [!NOTE]
-> Als u Azure Database Migration Service gebruikt om een onlinemigratie uit te voeren, moet u een instantie maken op basis van de prijscategorie Premium.
+> Als u Azure Database Migration Service voor het uitvoeren van een online migratie wilt gebruiken, moet u een instantie maken op basis van de prijs categorie Premium.
 
 > [!IMPORTANT]
-> Voor een optimale migratie-ervaring raadt Microsoft aan een exemplaar van Azure Database Migration Service te maken in dezelfde Azure-regio als de doeldatabase. Het verplaatsen van gegevens naar regio's of geografieën kan het migratieproces vertragen en fouten veroorzaken.
+> Voor een optimale migratie-ervaring raadt micro soft aan om een instantie van Azure Database Migration Service te maken in dezelfde Azure-regio als de doel database. Het verplaatsen van gegevens naar regio's of geografieën kan het migratieproces vertragen en fouten veroorzaken.
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-In dit artikel wordt beschreven hoe u een onlinemigratie uitvoert van Oracle naar Azure Database voor PostgreSQL.
+In dit artikel wordt beschreven hoe u een online migratie uitvoert van Oracle naar Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
-* Oracle [11g Release 2 (Standard Edition, Standard Edition One of Enterprise Edition)](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html)downloaden en installeren.
-* Download de voorbeeld **HR-database** [vanaf hier](https://docs.oracle.com/database/121/COMSC/installation.htm#COMSC00002).
-* Download en [installeer ora2pg op Windows of Linux.](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)
+* Down load en Installeer [Oracle 11G release 2 (Standard Edition, Standard Edition One of ENTER prise Edition)](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html).
+* Down load [hier](https://docs.oracle.com/database/121/COMSC/installation.htm#COMSC00002)de voor beeld- **HR** -data base.
+* Down load en [Installeer ora2pg op Windows of Linux](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf).
 * [Een exemplaar maken in Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).
-* Maak verbinding met de instantie en maak een database met behulp van de instructie in dit [document](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal).
-* Maak een Microsoft Azure Virtual Network for Azure Database Migration Service met behulp van het Azure Resource Manager-implementatiemodel, dat site-to-site-connectiviteit biedt met uw on-premises bronservers met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Zie de [virtual network documentation](https://docs.microsoft.com/azure/virtual-network/)en vooral de quickstart-artikelen met stapsgewijze details voor meer informatie over het maken van een virtueel netwerk.
+* Maak verbinding met het exemplaar en maak een Data Base met behulp van de instructie in dit [document](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal).
+* Maak een Microsoft Azure Virtual Network voor Azure Database Migration Service met behulp van het Azure Resource Manager implementatie model, dat site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Raadpleeg de [documentatie van Virtual Network](https://docs.microsoft.com/azure/virtual-network/)voor meer informatie over het maken van een virtueel netwerk, met name de Quick Start-artikelen met stapsgewijze Details.
 
   > [!NOTE]
-  > Als u ExpressRoute gebruikt met netwerkpeering naar Microsoft, voegt u tijdens de installatie van het virtuele netwerk ExpressRoute met netwerkpeering aan Microsoft de volgende [serviceeindpunten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) toe aan het subnet waarin de service wordt ingericht:
+  > Als u tijdens de installatie van het virtuele netwerk ExpressRoute gebruikt met Network-peering voor micro soft, voegt u de volgende service- [eind punten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) toe aan het subnet waarin de service wordt ingericht:
   >
-  > * Eindpunt van doeldatabase (bijvoorbeeld SQL-eindpunt, Cosmos DB-eindpunt, enzovoort)
-  > * Eindpunt voor opslag
-  > * Eindpunt van servicebus
+  > * Eind punt van de doel database (bijvoorbeeld SQL-eind punt, Cosmos DB-eind punt, enzovoort)
+  > * Opslag eindpunt
+  > * Service Bus-eind punt
   >
-  > Deze configuratie is nodig omdat azure database migratieservice geen internetverbinding heeft.
+  > Deze configuratie is nood zakelijk omdat Azure Database Migration Service geen verbinding met internet heeft.
 
-* Zorg ervoor dat de regels van uw NSG-regels (Virtual Network Network Security Group) de volgende binnenkomende communicatiepoorten naar Azure Database Migration Service niet blokkeren: 443, 53, 9354, 445, 12000. Zie het artikel [Netwerkverkeer filteren met netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)voor meer informatie over het filteren van het virtuele netwerk.
+* Zorg ervoor dat de regels voor de netwerk beveiligings groep (NSG) van uw virtuele netwerk niet de volgende binnenkomende communicatie poorten blok keren tot Azure Database Migration Service: 443, 53, 9354, 445, 12000. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)voor meer informatie over het filteren van NSG verkeer van virtuele netwerken.
 * Configureer uw [Windows Firewall voor toegang tot de database-engine](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-* Open uw Windows-firewall zodat Azure Database Migration Service toegang heeft tot de bron Oracle-server, die standaard TCP-poort 1521 is.
-* Wanneer u een firewalltoestel gebruikt voor uw brondatabase(s), moet u mogelijk firewallregels toevoegen om Azure Database Migration Service toegang te geven tot de brondatabase(s) voor migratie.
-* Maak een firewallregel op [serverniveau](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) voor Azure Database voor PostgreSQL om Azure Database Migration Service toegang te geven tot de doeldatabases. Geef het subnetbereik op van het virtuele netwerk dat wordt gebruikt voor Azure Database Migration Service.
-* Toegang tot de bronOracle-databases inschakelen.
+* Open uw Windows Firewall om Azure Database Migration Service toegang te geven tot de bron-Oracle-Server, die standaard TCP-poort 1521 is.
+* Wanneer u een firewall apparaat voor uw bron database (s) gebruikt, moet u mogelijk firewall regels toevoegen om Azure Database Migration Service toegang te geven tot de bron database (s) voor de migratie.
+* Maak een [firewall regel](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) op server niveau voor Azure Database for PostgreSQL om Azure database Migration service toegang tot de doel databases toe te staan. Geef het subnet-bereik van het virtuele netwerk op dat wordt gebruikt voor Azure Database Migration Service.
+* Toegang tot de bron-Oracle-data bases inschakelen.
 
   > [!NOTE]
-  > De DBA-rol is vereist voor een gebruiker om verbinding te maken met de Oracle-bron.
+  > De rol van de DBA is vereist voor een gebruiker om verbinding te maken met de Oracle-bron.
 
-  * ArchiefRedo-logboeken zijn vereist voor incrementele synchronisatie in Azure Database Migration Service om gegevenswijzigingen vast te leggen. Voer de volgende stappen uit om de Oracle-bron te configureren:
+  * Logboeken voor opnieuw uitvoeren is vereist voor incrementele synchronisatie in Azure Database Migration Service voor het vastleggen van gegevens wijziging. Volg deze stappen om de Oracle-bron te configureren:
     * Meld u aan met de SYSDBA-bevoegdheid door de volgende opdracht uit te voeren:
 
       ```
       sqlplus (user)/(password) as sysdba
       ```
 
-    * Sluit de database-instantie af door de volgende opdracht uit te voeren.
+    * Sluit het data base-exemplaar af door de volgende opdracht uit te voeren.
 
       ```
       SHUTDOWN IMMEDIATE;
       ```
 
-      Wacht op `'ORACLE instance shut down'`de bevestiging.
+      Wacht tot de bevestiging `'ORACLE instance shut down'`is bevestigd.
 
-    * Start de nieuwe instantie en monteer (maar open niet) de database om de archiveringsbu in of uit te schakelen met de volgende opdracht:
+    * Start het nieuwe exemplaar en koppel de data base (maar niet open) om de archiveringsinvoegtoepassing in of uit te scha kelen met de volgende opdracht:
 
       ```
       STARTUP MOUNT;
       ```
 
-      De databank moet worden gemonteerd; wachten op bevestiging 'Oracle instance started'.
+      De data base moet zijn gekoppeld. wacht op de bevestiging ' Oracle-exemplaar gestart '.
 
-    * Wijzig de databasearchiveringsmodus door de volgende opdracht uit te voeren:
+    * Wijzig de modus voor het archiveren van de data base door de volgende opdracht uit te voeren:
 
       ```
       ALTER DATABASE ARCHIVELOG;
       ```
 
-    * Open de database voor normale bewerkingen door de volgende opdracht uit te voeren:
+    * Open de Data Base voor normale bewerkingen door de volgende opdracht uit te voeren:
 
       ```
       ALTER DATABASE OPEN;
       ```
 
-      Mogelijk moet u het ARC-bestand opnieuw starten om te worden weergegeven.
+      Mogelijk moet u opnieuw opstarten om het ARC-bestand weer te geven.
 
-    * Voer de volgende opdracht uit om deze te verifiëren:
+    * Voer de volgende opdracht uit om te controleren:
 
       ```
       SELECT log_mode FROM v$database;
       ```
 
-      U moet een `'ARCHIVELOG'`antwoord ontvangen. Als het `'NOARCHIVELOG'`antwoord is, dan is de eis niet voldaan.
+      U ontvangt een antwoord `'ARCHIVELOG'`. Als het antwoord is `'NOARCHIVELOG'`, wordt niet voldaan aan de vereiste.
 
-  * Aanvullende logboekregistratie inschakelen voor replicatie met een van de volgende opties.
+  * Schakel aanvullende logboek registratie in voor replicatie met een van de volgende opties.
 
     * **Optie 1**.
-      Wijzig de aanvullende logboekregistratie op databaseniveau om alle tabellen met PK en unieke index te dekken. De detectiequery `'IMPLICIT'`wordt teruggekeerd.
+      Wijzig de aanvullende logboek registratie op database niveau voor alle tabellen met PK en unieke index. De detectie query wordt geretourneerd `'IMPLICIT'`.
 
       ```
       ALTER DATABASE ADD SUPPLEMENTAL LOG DATA (PRIMARY KEY, UNIQUE) COLUMNS;
       ```
 
-      Wijzig de aanvullende logboekregistratie op tabelniveau. Voer alleen uit voor tabellen met gegevensmanipulatie en geen PK's of unieke indexen.
+      De aanvullende logboek registratie voor tabel niveau wijzigen. Alleen uitvoeren voor tabellen die gegevens bewerken en geen PKs of unieke indexen hebben.
 
       ```
       ALTER TABLE [TABLENAME] ADD SUPPLEMENTAL LOG DATA (ALL) COLUMNS;
       ```
 
     * **Optie 2**.
-      Wijzig de aanvullende logboekregistratie op databaseniveau voor alle `'YES'`tabellen en de detectiequery retourneert .
+      Wijzig de aanvullende logboek registratie op database niveau voor alle tabellen en retourneert `'YES'`de detectie query.
 
       ```
       ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
       ```
 
-      Wijzig de aanvullende logboekregistratie op tabelniveau. Volg de onderstaande logica om slechts één instructie voor elke tabel uit te voeren.
+      De aanvullende logboek registratie voor tabel niveau wijzigen. Volg de onderstaande logica om slechts één instructie voor elke tabel uit te voeren.
 
       Als de tabel een primaire sleutel heeft:
 
@@ -160,27 +160,27 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
       ALTER TABLE xxx ADD SUPPLEMENTAL LOG DATA (ALL) COLUMNS;
       ```
 
-    Voer de volgende opdracht uit om deze te verifiëren:
+    Voer de volgende opdracht uit om te controleren:
 
       ```
       SELECT supplemental_log_data_min FROM v$database;
       ```
 
-    U moet een `'YES'`antwoord ontvangen.
+    U ontvangt een antwoord `'YES'`.
 
-## <a name="assess-the-effort-for-an-oracle-to-azure-database-for-postgresql-migration"></a>De inspanning voor een Oracle naar Azure Database voor PostgreSQL-migratie beoordelen
+## <a name="assess-the-effort-for-an-oracle-to-azure-database-for-postgresql-migration"></a>De inspanningen evalueren voor een Oracle-Azure Database for PostgreSQL migratie
 
-We raden u aan ora2pg te gebruiken om de inspanning te beoordelen die nodig is om van Oracle naar Azure Database voor PostgreSQL te migreren. Gebruik `ora2pg -t SHOW_REPORT` de richtlijn om een rapport te maken met alle Oracle-objecten, de geschatte migratiekosten (in ontwikkelaarsdagen) en bepaalde databaseobjecten die mogelijk speciale aandacht vereisen als onderdeel van de conversie.
+We raden u aan ora2pg te gebruiken om de inspanningen te evalueren die nodig zijn om van Oracle naar Azure Database for PostgreSQL te migreren. Gebruik de `ora2pg -t SHOW_REPORT` instructie voor het maken van een rapport met alle Oracle-objecten, de geschatte migratie kosten (in ontwikkelaars dagen) en bepaalde database objecten die mogelijk speciale aandacht vereisen als onderdeel van de conversie.
 
-De meeste klanten zullen veel tijd besteden aan het beoordelen van het beoordelingsrapport en rekening houdend met de automatische en handmatige conversie-inspanning.
+De meeste klanten best Eden veel tijd aan het beoordelen van het beoordelings rapport en het overwegen van de automatische en hand matige conversie.
 
-Zie de sectie **Premigratie: Beoordeling** van de [sectie Oracle naar Azure Database voor PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)om ora2pg te configureren en uit te voeren om een beoordelingsrapport te maken. Een voorbeeld ora2pg assessment report is [hier](https://ora2pg.darold.net/report.html)beschikbaar voor referentie .
+Als u ora2pg wilt configureren en uitvoeren voor het maken van een evaluatie rapport, raadpleegt u de sectie **premigratie: Assessment** van de [Oracle to Azure database for PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf). Er is een voor beeld van een ora2pg-evaluatie rapport beschikbaar [voor naslag informatie](https://ora2pg.darold.net/report.html).
 
 ## <a name="export-the-oracle-schema"></a>Het Oracle-schema exporteren
 
-We raden u aan ora2pg te gebruiken om het Oracle-schema en andere Oracle-objecten (typen, procedures, functies, enz.) om te zetten in een schema dat compatibel is met Azure Database voor PostgreSQL. ora2pg bevat veel richtlijnen om u te helpen bepaalde gegevenstypen vooraf te definiëren. U de `DATA_TYPE` richtlijn bijvoorbeeld gebruiken om alle GETAL(*,0) te vervangen door bigint in plaats van NUMERIEKE waarde(38).
+We raden u aan ora2pg te gebruiken om het Oracle-schema en andere Oracle-objecten (types, procedures, functions, enzovoort) te converteren naar een schema dat compatibel is met Azure Database for PostgreSQL. ora2pg bevat veel instructies om u te helpen bij het vooraf definiëren van bepaalde gegevens typen. U kunt bijvoorbeeld de `DATA_TYPE` instructie gebruiken om alle getallen (*, 0) te vervangen door bigint in plaats van numeriek (38).
 
-U ora2pg uitvoeren om elk van de databaseobjecten in .sql-bestanden te exporteren. U vervolgens de .sql-bestanden controleren voordat u ze importeert naar Azure Database voor PostgreSQL met behulp van psql of u de. SQL-script in PgAdmin.
+U kunt ora2pg uitvoeren om alle database objecten in. SQL-bestanden te exporteren. U kunt vervolgens de. SQL-bestanden controleren voordat u ze importeert in Azure Database for PostgreSQL met behulp van psql of u kunt de uitvoeren. SQL-script in PgAdmin.
 
 ```
 psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d database 
@@ -192,64 +192,64 @@ Bijvoorbeeld:
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
 ```
 
-Zie de sectie **Migratie: schema en gegevens** van de sectie Oracle naar Azure Database [voor PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)om ora2pg voor schemaconversie te configureren en uit te voeren.
+Zie de sectie **migratie: schema en gegevens** van de [Oracle to Azure database for PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)om ora2pg voor schema conversie te configureren en uit te voeren.
 
-## <a name="set-up-the-schema-in-azure-database-for-postgresql"></a>Het schema instellen in Azure Database voor PostgreSQL
+## <a name="set-up-the-schema-in-azure-database-for-postgresql"></a>Het schema instellen in Azure Database for PostgreSQL
 
-U ervoor kiezen om Oracle-tabelschema's, opgeslagen procedures, pakketten en andere databaseobjecten om te converteren naar Postgres-compatibel maken met ora2pg voordat u een migratiepijplijn start in Azure Database Migration Service. Zie de onderstaande links voor hoe te werken met ora2pg:
+U kunt ervoor kiezen om Oracle-tabel schema's, opgeslagen procedures, pakketten en andere database objecten te converteren om ze post gres compatibel te maken met behulp van ora2pg voordat u een migratie pijplijn in Azure Database Migration Service start. Zie de onderstaande koppelingen voor meer informatie over het werken met ora2pg:
 
-* [Ora2pg installeren op Windows](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)
-* [Oracle naar Azure PostgreSQL Migration Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)
+* [Ora2pg installeren in Windows](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)
+* [Migratie Cookbook van Oracle naar Azure PostgreSQL](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)
 
-Azure Database Migration Service kan ook het PostgreSQL-tabelschema maken. De service heeft toegang tot het tabelschema in de verbonden Oracle-bron en maakt een compatibel tabelschema in Azure Database voor PostgreSQL. Zorg ervoor dat u de schema-indeling in Azure Database voor PostgreSQL valideert en controleert nadat Azure Database Migration Service is voltooid bij het maken van het schema en het verplaatsen van de gegevens.
+Azure Database Migration Service kunt ook het PostgreSQL-tabel schema maken. De service opent het tabel schema in de verbonden Oracle-bron en maakt een compatibel tabel schema in Azure Database for PostgreSQL. Zorg ervoor dat u de schema-indeling valideert en controleert in Azure Database for PostgreSQL nadat Azure Database Migration Service klaar bent met het maken van het schema en het verplaatsen van de gegevens.
 
 > [!IMPORTANT]
-> Azure Database Migration Service maakt alleen het tabelschema. andere databaseobjecten, zoals opgeslagen procedures, pakketten, indexen, enz., worden niet gemaakt.
+> Azure Database Migration Service maakt alleen het tabel schema. andere database objecten, zoals opgeslagen procedures, pakketten, indexen, etc., worden niet gemaakt.
 
-Zorg er ook voor dat u de buitenlandse sleutel in de doeldatabase laat vallen voor de volledige belasting die moet worden uitgevoerd. Raadpleeg [hier](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online) de sectie **Het voorbeeldschema** van het artikel migreren voor een script dat u gebruiken om de buitenlandse sleutel te laten vallen. Gebruik Azure Database Migration Service om uit te voeren voor volledige belasting en synchronisatie.
+Zorg er ook voor dat u de refererende sleutel in de doel database verwijdert om de volledige belasting uit te voeren. Raadpleeg de sectie **het voorbeeld schema migreren** [van het artikel voor een](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online) script dat u kunt gebruiken om de refererende sleutel te verwijderen. Gebruik Azure Database Migration Service voor het uitvoeren van volledige belasting en synchronisatie.
 
-### <a name="when-the-postgresql-table-schema-already-exists"></a>Wanneer het PostgreSQL-tabelschema al bestaat
+### <a name="when-the-postgresql-table-schema-already-exists"></a>Wanneer het PostgreSQL-tabel schema al bestaat
 
-Als u een PostgreSQL-schema maakt met behulp van hulpprogramma's zoals ora2pg voordat u de gegevensbeweging start met Azure Database Migration Service, stelt u de brontabellen toe aan de doeltabellen in Azure Database Migration Service.
+Als u een PostgreSQL-schema maakt met behulp van hulpprogram ma's zoals ora2pg voordat u begint met het verplaatsen van gegevens met Azure Database Migration Service, kunt u de bron tabellen toewijzen aan de doel tabellen in Azure Database Migration Service.
 
-1. Wanneer u een nieuw Oracle naar Azure Database maakt voor het PostgreSQL-migratieproject, wordt u gevraagd om doeldatabase- en doelschema's te selecteren in de stap Schema's selecteren. Vul de doeldatabase en het doelschema in.
+1. Wanneer u een nieuwe Oracle-Azure Database for PostgreSQL maakt voor het migratie project, wordt u gevraagd om de doel database en het doel schema te selecteren in de stap schema's selecteren. Vul de doel database en het doel schema in.
 
    ![Portal-abonnementen weergeven](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
 
-2. In het scherm **Migratieinstellingen** wordt een lijst met tabellen weergegeven in de Oracle-bron. Azure Database Migration Service probeert tabellen in de bron en de doeltabellen aan te passen op basis van de tabelnaam. Als er meerdere overeenkomende doeltabellen met verschillende behuizingen bestaan, u selecteren aan welke doeltabel u wilt toewijzen.
+2. Het scherm **migratie-instellingen** bevat een lijst met tabellen in de Oracle-bron. Azure Database Migration Service probeert tabellen in de bron-en doel tabellen te vergelijken op basis van de tabel naam. Als er meerdere overeenkomende doel tabellen met een ander hoofdletter gebruik bestaan, kunt u selecteren welke doel tabel moet worden toegewezen.
 
     ![Portal-abonnementen weergeven](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
-> Als u brontabelnamen moet toewijzen aan tabellen [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) met verschillende namen, e-mail en kunnen we een script bieden om het proces te automatiseren.
+> Als u bron tabel namen wilt toewijzen aan tabellen met verschillende namen, e-mail [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) en wij kunnen een script opgeven om het proces te automatiseren.
 
-### <a name="when-the-postgresql-table-schema-doesnt-exist"></a>Wanneer het PostgreSQL-tabelschema niet bestaat
+### <a name="when-the-postgresql-table-schema-doesnt-exist"></a>Wanneer het PostgreSQL-tabel schema niet bestaat
 
-Als de doelPostgreSQL-database geen tabelschemagegevens bevat, converteert Azure Database Migration Service het bronschema en maakt deze opnieuw in de doeldatabase. Houd er rekening mee dat Azure Database Migration Service alleen het tabelschema maakt, niet andere databaseobjecten zoals opgeslagen procedures, pakketten en indexen.
-Als u azure databasemigratieservice het schema voor u wilt laten maken, moet u ervoor zorgen dat uw doelomgeving een schema bevat zonder bestaande tabellen. Als Azure Database Migration Service een tabel detecteert, gaat de service ervan uit dat het schema is gemaakt door een extern hulpprogramma zoals ora2pg.
+Als de doel-PostgreSQL-data base geen tabel schema gegevens bevat, wordt Azure Database Migration Service het bron schema geconverteerd en opnieuw gemaakt in de doel database. Houd er rekening mee dat Azure Database Migration Service alleen het tabel schema maakt, niet andere database objecten, zoals opgeslagen procedures, pakketten en indexen.
+Als u Azure Database Migration Service het schema voor u wilt maken, moet u ervoor zorgen dat uw doel omgeving een schema bevat zonder bestaande tabellen. Als Azure Database Migration Service een tabel detecteert, gaat de service ervan uit dat het schema is gemaakt door een extern hulp programma zoals ora2pg.
 
 > [!IMPORTANT]
-> Azure Database Migration Service vereist dat alle tabellen op dezelfde manier worden gemaakt, met behulp van Azure Database Migration Service of een tool zoals ora2pg, maar niet beide.
+> Azure Database Migration Service vereist dat alle tabellen op dezelfde manier worden gemaakt met behulp van Azure Database Migration Service of een hulp programma, zoals ora2pg, maar niet beide.
 
 Aan de slag:
 
-1. Maak een schema in de doeldatabase op basis van uw toepassingsvereisten. Standaard worden postgreSQL-tabelschema's en kolommennamen in kleine letters verwijderd. Oracle tabel schema en kolommen, aan de andere kant, zijn standaard in alle hoofdletters.
-2. Geef in de stap Schema's selecteren de doeldatabase en het doelschema op.
-3. Op basis van het schema dat u maakt in Azure Database voor PostgreSQL, gebruikt Azure Database Migration Service de volgende transformatieregels:
+1. Maak een schema in de doel database op basis van uw toepassings vereisten. PostgreSQL-tabel schema en kolommen namen zijn standaard kleine letters. Oracle-tabel schema en-kolommen zijn daarentegen standaard in hoofd letters.
+2. In de stap schema's selecteren geeft u de doel database en het doel schema op.
+3. Op basis van het schema dat u in Azure Database for PostgreSQL maakt, Azure Database Migration Service de volgende transformatie regels gebruikt:
 
-    Als de schemanaam in de Oracle-bron overeenkomt met die in Azure Database voor PostgreSQL, maakt Azure Database Migration Service *het tabelschema met dezelfde case als in het doel*.
+    Als de schema naam in de Oracle-bron en overeenkomt met die in Azure Database for PostgreSQL, dan *maakt Azure database Migration service het tabel schema met behulp van dezelfde case als in het doel*.
 
     Bijvoorbeeld:
 
-    | Bron Oracle-schema | Doel PostgreSQL Database.Schema | DMS heeft schema.table.column gemaakt |
+    | Oracle-bron schema | Doel PostgreSQL-data base. schema | Het DMS-schema is gemaakt. tabel. kolom |
     | ------------- | ------------- | ------------- |
-    | HR | targetHR.public | public.countries.country_id |
-    | HR | targetHR.trgthr | trgthr.countries.country_id |
-    | HR | targetHR.TARGETHR | "TARGETHR"." LANDEN"." COUNTRY_ID" |
-    | HR | targetHR.HR | "HR"." LANDEN"." COUNTRY_ID" |
-    | HR | targetHR.Hr | *Kan gemengde aanvragen niet in kaart brengen |
+    | HR | targetHR. public | openbaar. landen. country_id |
+    | HR | targetHR.trgthr | trgthr. landen. country_id |
+    | HR | targetHR.TARGETHR | "TARGETHR"." LANDEN "." COUNTRY_ID " |
+    | HR | targetHR.HR | ' HR '. LANDEN "." COUNTRY_ID " |
+    | HR | targetHR.Hr | * Kan geen gemengde cases toewijzen |
 
-    *Neem contact op [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)met contact met contact wilt maken met het schema en tabelnamen voor gemengde letters in doelPostgreSQL. We kunnen een script bieden voor het instellen van een tabelschema voor gemengde letters in de doelPostgreSQL-database.
+    * Als u schema voor gemengde cases en tabel namen wilt maken in [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)doel postgresql, neemt u contact op met. We kunnen een script opgeven voor het instellen van een schema voor het maken van een gemengde Case-tabel in de doel-PostgreSQL-data base.
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registreer de Microsoft.DataMigration-resourceprovider
 
@@ -261,7 +261,7 @@ Aan de slag:
 
     ![Resourceproviders weergeven](media/tutorial-oracle-azure-postgresql-online/portal-select-resource-provider.png)
 
-3. Zoek naar migratie en selecteer Vervolgens rechts van **Microsoft.DataMigration**de optie **Register**.
+3. Zoek naar migratie, klik rechts van **micro soft. DataMigration**, selecteer **registreren**.
 
     ![Resourceprovider registreren](media/tutorial-oracle-azure-postgresql-online/portal-register-resource-provider.png)
 
@@ -277,11 +277,11 @@ Aan de slag:
   
 3. Geef in het scherm **Migratieservice maken** een naam op voor de service, het abonnement en een nieuwe of bestaande resourcegroep.
 
-4. Selecteer een bestaand virtueel netwerk of maak een nieuw netwerk.
+4. Selecteer een bestaand virtueel netwerk of maak een nieuwe.
 
-    Het virtuele netwerk biedt Azure Database Migration Service toegang tot de bron Oracle en de doelAzure Database voor PostgreSQL-instantie.
+    Het virtuele netwerk biedt Azure Database Migration Service toegang tot de bron-Oracle en het doel Azure Database for PostgreSQL exemplaar.
 
-    Zie het artikel Een virtueel netwerk maken met de [Azure-portal](https://aka.ms/DMSVnet)voor meer informatie over het maken van een virtueel netwerk in de Azure-portal.
+    Zie het artikel [een virtueel netwerk maken met behulp van de Azure Portal](https://aka.ms/DMSVnet)voor meer informatie over het maken van een virtueel netwerk in de Azure Portal.
 
 5. Selecteer een prijscategorie.
 
@@ -304,42 +304,42 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
     ![Zoek uw exemplaar van de Azure Database Migration Service](media/tutorial-oracle-azure-postgresql-online/dms-instance-search.png)
 
 3. Selecteer + **Nieuw migratieproject**.
-4. Geef in het scherm **Nieuw migratieproject** een naam voor het project op, selecteer in het tekstvak **Bronservertype** **Oracle**, selecteer in het tekstvak **Doelservertype** De optie **Azure Database voor PostgreSQL**.
-5. Selecteer online **gegevensmigratie**in de sectie **Type activiteit kiezen** .
+4. Geef in het scherm **Nieuw migratie project** een naam op voor het project, Selecteer in het tekstvak **type bron server** de optie **Oracle**, Selecteer in het tekstvak **doel server type** de optie **Azure database for PostgreSQL**.
+5. Selecteer in de sectie **type activiteit kiezen** de optie **Online gegevens migratie**.
 
    ![Azure Database Migration Service-project maken](media/tutorial-oracle-azure-postgresql-online/dms-create-project5.png)
 
    > [!NOTE]
-   > U afwisselend **project maken kiezen** om nu het migratieproject te maken en de migratie later uit te voeren.
+   > U kunt ook **project maken** selecteren om het migratie project nu te maken en de migratie later uitvoeren.
 
-6. Selecteer **Opslaan,** noteer de vereisten om Azure Database Migration Service te gebruiken om een online migratie uit te voeren en selecteer **vervolgens Activiteit maken en uitvoeren**.
+6. Selecteer **Opslaan**, houd rekening met de vereisten voor het gebruik van Azure database Migration service om een online migratie uit te voeren en selecteer vervolgens **activiteit maken en uitvoeren**.
 
 ## <a name="specify-source-details"></a>Geef brondetails op
 
-* Geef in het scherm **Brondetails toevoegen** de verbindingsgegevens op voor de bron-Oracle-instantie.
+* Geef in het scherm **bron Details toevoegen** de verbindings gegevens voor de Oracle-bron instantie op.
 
   ![Scherm Brondetails toevoegen](media/tutorial-oracle-azure-postgresql-online/dms-add-source-details.png)
 
-## <a name="upload-oracle-oci-driver"></a>Oracle OCI-stuurprogramma uploaden
+## <a name="upload-oracle-oci-driver"></a>Oracle OCI-stuur programma uploaden
 
-1. Selecteer **Opslaan**en vervolgens op het **scherm OCI-stuurprogramma installeren,** meld u aan bij uw Oracle-account en download de driver **instantclient-basiclite-windows.x64-12.2.0.0.0.zip** (37.128.586 Byte(s)) (SHA1 Checksum: 865082268) vanaf [hier](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst).
-2. Download het stuurprogramma naar een gedeelde map.
+1. Selecteer **Opslaan**en meld u vervolgens [aan bij uw](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)Oracle-account in het scherm voor het installeren van een OCI- **stuur programma** en down load het stuur programma **instantclient-basiclite-windows. x64-12.2.0.1.0. zip** (37.128.586 byte (s)) (sha1-controlesom: 865082268).
+2. Down load het stuur programma naar een gedeelde map.
 
-   Zorg ervoor dat de map wordt gedeeld met de gebruikersnaam die u hebt opgegeven met minimale alleen-lezen toegang. Azure Database Migration Service opent en leest uit het aandeel om het OCI-stuurprogramma naar Azure te uploaden door zich voor te doen als de gebruikersnaam die u opgeeft.
+   Zorg ervoor dat de map wordt gedeeld met de gebruikers naam die u hebt opgegeven met minimale alleen-lezen toegang. Azure Database Migration Service toegang tot en lees bewerkingen van de share om het OCI-stuur programma naar Azure te uploaden door de gebruikers naam die u opgeeft, te imiteren.
 
-   De opgegeven gebruikersnaam moet een Windows-gebruikersaccount zijn.
+   De gebruikers naam die u opgeeft, moet een Windows-gebruikers account zijn.
 
-   ![OCI Driver Installeren](media/tutorial-oracle-azure-postgresql-online/dms-oci-driver-install.png)
+   ![OCI-stuur programma installeren](media/tutorial-oracle-azure-postgresql-online/dms-oci-driver-install.png)
 
 ## <a name="specify-target-details"></a>Doeldetails opgeven
 
-1. Selecteer **Opslaan**en geef vervolgens op het scherm **Doeldetails** de verbindingsgegevens op voor de doelazure-database voor PostgreSQL-server, het vooraf ingerichte exemplaar van Azure Database voor PostgreSQL waaraan het **HR-schema** is geïmplementeerd.
+1. Selecteer **Opslaan**en geef vervolgens in het scherm **doel Details** de verbindings gegevens voor de doel Azure database for postgresql server op. Dit is het vooraf ingerichte exemplaar van Azure database for PostgreSQL waarnaar het **HR** -schema is geïmplementeerd.
 
     ![Scherm Doeldetails](media/tutorial-oracle-azure-postgresql-online/dms-add-target-details1.png)
 
 2. Selecteer **Opslaan**, en klik vervolgens in het scherm **Toewijzen aan doeldatabases**, wijs de bron- en de doeldatabase voor de migratie toe.
 
-    Als de doeldatabase dezelfde databasenaam bevat als de brondatabase, selecteert Azure Database Migration Service standaard de doeldatabase.
+    Als de doel database dezelfde database naam als de bron database bevat Azure Database Migration Service de doel database standaard geselecteerd.
 
     ![Toewijzen aan doeldatabases](media/tutorial-oracle-azure-postgresql-online/dms-map-target-details.png)
 
@@ -351,15 +351,15 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
 * Selecteer **Migratie uitvoeren**.
 
-  Het venster migratieactiviteit wordt weergegeven en de **status** van de activiteit **initialiseert**.
+  Het venster migratie activiteit wordt weer gegeven en de **status** van de activiteit wordt **geïnitialiseerd**.
 
 ## <a name="monitor-the-migration"></a>Bewaak de migratie
 
 1. Selecteer in het scherm van de activiteitenmigratie **Vernieuwen** om de weergave bij te werken totdat de **Status** van de migratie als **Actief** wordt weergegeven.
 
-     ![Activiteitsstatus - actief](media/tutorial-oracle-azure-postgresql-online/dms-activity-running.png)
+     ![Activiteitsstatus-uitvoering](media/tutorial-oracle-azure-postgresql-online/dms-activity-running.png)
 
-2. Selecteer **onder Databasenaam**een specifieke database om de migratiestatus voor **Volledige gegevensbelasting** en **Incrementele gegevenssynchronisatiebewerkingen** te openen.
+2. Selecteer onder **database naam**een specifieke data base om de migratie status voor **volledige gegevens belasting** en **incrementele gegevens synchronisatie** te verkrijgen.
 
     ‘Alle gegevens worden geladen’ toont de migratiestatus van de eerste lading terwijl ‘Incrementele gegevenssynchronisatie’ de CDC-status (Change Data Capture) toont.
 
@@ -378,13 +378,13 @@ Nadat de eerste volledige lading is voltooid, worden de databases gemarkeerd als
    ![Cutover starten](media/tutorial-oracle-azure-postgresql-online/dms-start-cutover.png)
 
 3. Selecteer **Bevestigen** en selecteer vervolgens **Toepassen**.
-4. Wanneer de status van de databasemigratie **Voltooid**weergeeft, verbindt u uw toepassingen met de nieuwe doelstelling Azure Database voor PostgreSQL-instantie.
+4. Wanneer de status van de database migratie **is voltooid**, verbindt u uw toepassingen met het nieuwe doel Azure database for PostgreSQL exemplaar.
 
  > [!NOTE]
- > Aangezien PostgreSQL standaard schema.table.column in kleine letters heeft, u eerder in dit artikel terugkeren van hoofdletters naar kleine letters door het script in de **sectie Schema in Azure Database voor PostgreSQL in** te stellen.
+ > Omdat PostgreSQL standaard is ingesteld op schema. table. column in kleine letters, kunt u de hoofd letters in kleine letters herstellen met behulp van het script in de sectie **het schema instellen in azure database for PostgreSQL** eerder in dit artikel.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Raadpleeg het artikel [Bekende problemen/beperkingen met online migraties naar Azure Database for PostgreSQL](known-issues-azure-postgresql-online.md) voor informatie over bekende problemen en beperkingen bij het uitvoeren van online migraties naar Azure Database for PostgreSQL.
-* Zie het artikel Wat is Azure [Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
-* Zie het artikel [Wat is Azure Database voor PostgreSQL?](https://docs.microsoft.com/azure/postgresql/overview).
+* Zie het artikel [Wat is er Azure database Migration service?](https://docs.microsoft.com/azure/dms/dms-overview)voor informatie over de Azure database Migration service.
+* Zie het artikel [Wat is er Azure database for PostgreSQL?](https://docs.microsoft.com/azure/postgresql/overview)voor informatie over Azure database for PostgreSQL.

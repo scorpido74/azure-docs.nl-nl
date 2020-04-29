@@ -1,6 +1,6 @@
 ---
-title: SAP HANA-beschikbaarheid binnen één Azure-regio | Microsoft Documenten
-description: Beschrijft SAP HANA-bewerkingen op Azure native VM's in één Azure-regio.
+title: Beschik baarheid van SAP HANA binnen een Azure-regio | Microsoft Docs
+description: Beschrijft SAP HANA bewerkingen op Azure native Vm's in één Azure-regio.
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -16,116 +16,116 @@ ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ef7161e653ec582708f242b67c643d960d75e27f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78255463"
 ---
-# <a name="sap-hana-availability-within-one-azure-region"></a>SAP HANA-beschikbaarheid binnen één Azure-regio
-In dit artikel worden verschillende beschikbaarheidsscenario's binnen één Azure-regio beschreven. Azure heeft vele regio's, verspreid over de hele wereld. Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor de lijst met Azure-regio's . Voor het implementeren van SAP HANA op VM's binnen één Azure-regio biedt Microsoft implementatie van één VM met een HANA-exemplaar. Voor een grotere beschikbaarheid u twee VM's met twee HANA-exemplaren implementeren binnen een [Azure-beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) die HANA-systeemreplicatie gebruikt voor beschikbaarheid. 
+# <a name="sap-hana-availability-within-one-azure-region"></a>Beschik baarheid van SAP HANA binnen een Azure-regio
+In dit artikel worden verschillende beschikbaarheids scenario's binnen één Azure-regio beschreven. Azure heeft veel regio's, verspreid over de hele wereld. Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor de lijst met Azure-regio's. Voor de implementatie van SAP HANA op Vm's binnen één Azure-regio, biedt micro soft de implementatie van één virtuele machine met een HANA-exemplaar. Voor een verhoogde Beschik baarheid kunt u twee virtuele machines implementeren met twee HANA-instanties binnen een [Azure-beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) die gebruikmaakt van Hana-systeem replicatie voor Beschik baarheid. 
 
-Momenteel biedt Azure [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview)aan. In dit artikel worden beschikbaarheidszones niet in detail beschreven. Het bevat echter een algemene discussie over het gebruik van beschikbaarheidssets versus beschikbaarheidszones.
+Op dit moment biedt Azure [Azure-beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview). In dit artikel wordt Beschikbaarheidszones niet beschreven. Maar bevat een algemene discussie over het gebruik van beschikbaarheids sets versus Beschikbaarheidszones.
 
-Azure-regio's waar beschikbaarheidszones worden aangeboden, hebben meerdere datacenters. De datacenters zijn onafhankelijk in de levering van stroombron, koeling en netwerk. De reden voor het aanbieden van verschillende zones binnen één Azure-regio is het implementeren van toepassingen in twee of drie beschikbaarheidszones die worden aangeboden. Als u alle zones, problemen in stroom en netwerken implementeert die slechts betrekking hebben op één Azure Availability Zone-infrastructuur, is uw toepassingsimplementatie binnen een Azure-regio nog steeds functioneel. Er kan enige verminderde capaciteit optreden. Vm's in één zone kunnen bijvoorbeeld verloren gaan, maar VM's in de andere twee zones zijn nog steeds actief. 
+Azure-regio's waar Beschikbaarheidszones worden aangeboden, hebben meerdere data centers. De data centers zijn onafhankelijk van de voeding van voedings bronnen, koeling en netwerk. De reden voor het bieden van verschillende zones binnen één Azure-regio is het implementeren van toepassingen op twee of drie Beschikbaarheidszones die worden aangeboden. Implementaties in verschillende zones, problemen in de stroom en netwerken die van invloed zijn op één Azure-beschikbaarheids zone-infra structuur, de implementatie van uw toepassing binnen een Azure-regio nog steeds functioneel is. Er kan enige gereduceerde capaciteit optreden. Zo kunnen Vm's in de ene zone verloren gaan, maar worden de Vm's in de andere twee zones nog steeds uitgevoerd. 
  
-Een Azure Availability Set is een logische groeperingsmogelijkheid waarmee u ervoor zorgt dat de VM-resources die u binnen de beschikbaarheidsset plaatst, van elkaar worden geïsoleerd wanneer ze worden geïmplementeerd in een Azure-datacenter. Azure zorgt ervoor dat de VM's die u in een beschikbaarheidsset plaatst, op meerdere fysieke servers, rekenrekken, opslageenheden en netwerkswitches worden uitgevoerd. In sommige Azure-documentatie wordt deze configuratie aangeduid als plaatsingen in verschillende [update- en foutdomeinen.](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) Deze plaatsingen bevinden zich meestal in een Azure-datacenter. Ervan uitgaande dat stroombron- en netwerkproblemen van invloed zijn op het datacenter dat u implementeert, wordt al uw capaciteit in één Azure-regio beïnvloed.
+Een Azure-Beschikbaarheidsset is een logische groeperings functie waarmee u ervoor kunt zorgen dat de VM-resources die u in de Beschikbaarheidsset plaatst, niet van elkaar zijn geïsoleerd wanneer ze worden geïmplementeerd in een Azure-Data Center. Azure zorgt ervoor dat de VM's die u in een beschikbaarheidsset plaatst, op meerdere fysieke servers, rekenrekken, opslageenheden en netwerkswitches worden uitgevoerd. In sommige Azure-documentatie wordt deze configuratie plaatsingen genoemd in verschillende update- [en fout domeinen](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability). Deze plaatsingen bevinden zich doorgaans in een Azure-Data Center. Ervan uitgaande dat energie bronnen en netwerk problemen van invloed zijn op het Data Center dat u implementeert, is dit van invloed op uw capaciteit in één Azure-regio.
 
-De plaatsing van datacenters die Azure Availability Zones vertegenwoordigen, is een compromis tussen het leveren van aanvaardbare netwerklatentie tussen services die in verschillende zones worden geïmplementeerd en een afstand tussen datacenters. Natuurrampen zouden idealiter geen invloed hebben op de stroomvoorziening, de netwerkvoorziening en de infrastructuur voor alle beschikbaarheidszones in deze regio. Zoals echter monumentale natuurrampen hebben aangetoond, bieden beschikbaarheidszones mogelijk niet altijd de beschikbaarheid die u binnen één regio wilt. Denk aan orkaan Maria die het eiland Puerto Rico op 20 september 2017 trof. De orkaan veroorzaakte een bijna 100 procent black-out op het 90-mijl-brede eiland.
+De plaatsing van data centers die Azure-beschikbaarheidszones vertegenwoordigen, is een inbreuk tussen het leveren van een acceptabele netwerk latentie tussen services die zijn geïmplementeerd in verschillende zones en een afstand tussen data centers. Natuurlijk rampen is in het ideale geval niet van invloed op de kracht, het netwerk aanbod en de infra structuur voor alle Beschikbaarheidszones in deze regio. Als Monumental Natural rampen zijn weer gegeven, levert Beschikbaarheidszones mogelijk niet altijd de beschik baarheid die u binnen één regio wilt. U kunt nadenken over orkaan Maria dat op 20 september 2017 op het eiland Puerto Rico raakt. De orkaan veroorzaakt een bijna 100 procente bedrukbaar op het eiland 90-km breed.
 
 ## <a name="single-vm-scenario"></a>Scenario met één VM
 
-In een enkel VM-scenario maakt u een Azure VM voor het SAP HANA-exemplaar. U gebruikt Azure Premium Storage om de schijf van het besturingssysteem en al uw gegevensschijven te hosten. De Azure-uptime SLA van 99,9 procent en de SLA's van andere Azure-componenten zijn voldoende om uw beschikbaarheidsSLA's voor uw klanten te vervullen. In dit scenario hoeft u geen gebruik te maken van een Azure Availability Set voor VM's waarop de DBMS-laag wordt uitgevoerd. In dit scenario vertrouwt u op twee verschillende functies:
+In een scenario met één VM maakt u een virtuele Azure-machine voor het SAP HANA-exemplaar. U gebruikt Azure Premium Storage voor het hosten van de besturingssysteem schijf en al uw gegevens schijven. De SLA voor Azure-uptime van 99,9 procent en de Sla's van andere Azure-onderdelen is voldoende om u te laten voldoen aan uw beschikbaarheids overeenkomsten voor uw klanten. In dit scenario hoeft u geen gebruik te maken van een Azure-Beschikbaarheidsset voor Vm's die de DBMS-laag uitvoeren. In dit scenario vertrouwt u op twee verschillende functies:
 
-- Azure VM automatisch opnieuw opstarten (ook wel Azure-servicehealing genoemd)
+- Azure VM automatisch opnieuw starten (ook wel Azure service Retoucheer genoemd)
 - SAP HANA automatisch opnieuw opstarten
 
-Azure VM automatisch opnieuw opstarten, of service healing, is een functionaliteit in Azure die werkt op twee niveaus:
+Azure VM automatisch opnieuw opstarten of service retoucheert, is een functionaliteit in azure die op twee niveaus werkt:
 
-- De Azure-serverhost controleert de status van een VM die op de serverhost wordt gehost.
-- De Azure-structuurcontroller controleert de status en beschikbaarheid van de serverhost.
+- De Azure server-host controleert de status van een virtuele machine die wordt gehost op de server host.
+- De Azure Fabric-controller bewaakt de status en beschik baarheid van de server host.
 
-Een statuscontrolefunctionaliteit bewaakt de status van elke VM die wordt gehost op een Azure-serverhost. Als een VM in een niet-gezonde status valt, kan een reboot van de VM worden gestart door de Azure-hostagent die de status van de VM controleert. De fabriccontroller controleert de status van de host door veel verschillende parameters te controleren die problemen met de hosthardware kunnen aangeven. Het controleert ook op de toegankelijkheid van de host via het netwerk. Een indicatie van problemen met de host kan leiden tot de volgende gebeurtenissen:
+Een status controle functie controleert de status van elke virtuele machine die wordt gehost op een Azure server-host. Als een virtuele machine zich in een niet-goede staat bevindt, kan de virtuele machine opnieuw worden opgestart door de Azure Hosta Gent waarmee de status van de virtuele machine wordt gecontroleerd. De infrastructuur controller controleert de status van de host door een aantal verschillende para meters te controleren die kunnen wijzen op problemen met de hardware van de host. Ook wordt gecontroleerd op de toegankelijkheid van de host via het netwerk. Een indicatie van problemen met de host kan leiden tot de volgende gebeurtenissen:
 
-- Als de host een slechte status signaleert, wordt een herstart van de host en een herstart van de VM's die op de host werden uitgevoerd, geactiveerd.
-- Als de host niet in een gezonde toestand is na een succesvolle reboot, wordt een herschikking van de VM's gestart die oorspronkelijk op het nu ongezonde knooppunt op een gezonde hostserver stonden. In dit geval is de oorspronkelijke host gemarkeerd als niet gezond. Het zal niet worden gebruikt voor verdere implementaties totdat het is gewist of vervangen.
-- Als de ongezonde host problemen heeft tijdens het herstartproces, wordt een onmiddellijke herstart van de VM's op een gezonde host geactiveerd. 
+- Als de host een slechte status signaleert, wordt het opnieuw opstarten van de host en het opnieuw opstarten van de Vm's die worden uitgevoerd op de host geactiveerd.
+- Als de host niet in orde is nadat deze opnieuw is opgestart, wordt de virtuele machines die oorspronkelijk op het huidige beschadigde knoop punt waren, op een gezonde hostserver, opnieuw geïmplementeerd. In dit geval is de oorspronkelijke host gemarkeerd als niet in orde. Het wordt niet gebruikt voor verdere implementaties totdat deze is gewist of vervangen.
+- Als de beschadigde host problemen ondervindt tijdens het opnieuw opstarten, wordt direct opnieuw opstarten van de Vm's op een gezonde host geactiveerd. 
 
-Met de host- en VM-monitoring van Azure worden Azure VM's die hostproblemen ervaren, automatisch opnieuw gestart op een gezonde Azure-host. 
+Met de host-en VM-bewaking die door Azure wordt verstrekt, worden Azure-Vm's die problemen met de host ondervinden, automatisch opnieuw gestart op een goede Azure-host. 
 
 >[!IMPORTANT]
->Azure service healing zal niet opnieuw Linux VM's waar de gast OS is in een kernel paniek staat. De standaardinstellingen van de veelgebruikte Linux-releases worden niet automatisch opnieuw gestart met VM's of server waar de Linux-kernel in paniek staat. In plaats daarvan voorziet de standaard om het besturingssysteem in kernel paniekstatus te houden om een kernel debugger te kunnen koppelen om te analyseren. Azure eert dat gedrag door een VM niet automatisch opnieuw op te starten met het gastbesturingssysteem in een dergelijke status. Veronderstelling is dat dergelijke gebeurtenissen uiterst zeldzaam zijn. U het standaardgedrag overschrijven om een herstart van de vm in te schakelen. Als u het standaardgedrag wilt wijzigen, schakelt u de parameter 'kernel.panic' in /etc/sysctl.conf in. De tijd die u voor deze parameter instelt, is binnen enkele seconden. Aanbevolen waarden zijn 20-30 seconden te wachten voordat de herstart via deze parameter wordt geactiveerd. Zie <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf>ook .
+>Azure service retoucheert geen Linux-Vm's waar het gast besturingssysteem zich in de status van de kernel bevindt. De standaard instellingen van de meest gebruikte Linux-releases, worden niet automatisch opnieuw opgestart op Vm's of servers waarop de Linux-kernel zich in de stand-by staat bevindt. In plaats daarvan wordt de standaard instelling gebruikt om te zorgen dat het besturings systeem in de status van de kernel in staat is om een kerneldebugger toe te voegen om te analyseren. Azure respecteert dat gedrag door een virtuele machine niet automatisch opnieuw te starten met het gast besturingssysteem in een dergelijke status. Veronderstelling is dat dergelijke gevallen extreem zeldzaam zijn. U kunt het standaard gedrag overschrijven om het opnieuw opstarten van de virtuele machine in te scha kelen. Als u het standaard gedrag wilt wijzigen, schakelt u de para meter ' kernel. paniek ' in/etc/sysctl.conf. De tijd die u instelt voor deze para meter is in enkele seconden. Gemeen schappelijke aanbevolen waarden moeten 20-30 seconden wachten voordat de herstart via deze para meter wordt geactiveerd. Zie ook <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf>.
 
-De tweede functie waarop u in dit scenario vertrouwt, is het feit dat de HANA-service die wordt uitgevoerd in een opnieuw gestarte VM automatisch wordt gestart nadat de VM opnieuw is opgestart. U [hana service auto-herstart](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html) via de waakhond diensten van de verschillende HANA diensten.
+De tweede functie die u in dit scenario vertrouwt, is het feit dat de HANA-service die wordt uitgevoerd in een opnieuw opgestart VM automatisch wordt gestart nadat de VM opnieuw is opgestart. U kunt [Hana-service automatisch opnieuw opstarten](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html) via de watchdog-services van de verschillende Hana-Services.
 
-U dit single-VM-scenario verbeteren door een koud failoverknooppunt toe te voegen aan een SAP HANA-configuratie. In de SAP HANA-documentatie wordt deze instelling [host auto-failover](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/ae60cab98173431c97e8724856641207.html)genoemd. Deze configuratie kan zinvol zijn in een on-premises implementatiesituatie waarin de serverhardware beperkt is en u een knooppunt voor één server wijdt als het host-auto-failover-knooppunt voor een set productiehosts. Maar in Azure, waar de onderliggende infrastructuur van Azure een gezonde doelserver biedt voor een succesvolle vm-herstart, heeft het geen zin om SAP HANA-host automatisch failover te implementeren. Vanwege Azure-servicehealing is er geen referentiearchitectuur die een stand-by-knooppunt voor HANA-hostauto-failover voorziet. 
+U kunt dit scenario met één virtuele machine verbeteren door een koud failover-knoop punt toe te voegen aan een SAP HANA configuratie. In de SAP HANA-documentatie wordt deze instelling [automatische failover](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/ae60cab98173431c97e8724856641207.html)van de host genoemd. Deze configuratie kan zinvol zijn in een on-premises implementatie situatie waarbij de serverhardware beperkt is en u een knoop punt met één server toekent als het knoop punt voor automatische failover van de host voor een set productie-hosts. In azure, waarbij de onderliggende infra structuur van Azure een gezonde doel server biedt voor een geslaagde VM-herstart, is het niet logisch om SAP HANA automatische failover van de host te implementeren. Vanwege het herstellen van de Azure-service is er geen referentie architectuur die een stand-by-knoop punt voor de automatische failover van HANA-hosts voorkent. 
 
-### <a name="special-case-of-sap-hana-scale-out-configurations-in-azure"></a>Speciaal geval van SAP HANA scale-out configuraties in Azure
-Hoge beschikbaarheid voor SAP HANA scale-out configuraties is afhankelijk van service healing van Azure VM's en de herstart van de SAP HANA instantie als de VM is up and running again. Hoge beschikbaarheid architecturen op basis van HANA System Replication zullen worden geïntroduceerd op een later tijdstip. 
+### <a name="special-case-of-sap-hana-scale-out-configurations-in-azure"></a>Speciaal geval van SAP HANA scale-out configuraties in azure
+Hoge Beschik baarheid voor SAP HANA scale-out-configuraties is afhankelijk van de service retoucheert van virtuele machines van Azure en het opnieuw opstarten van de SAP HANA instantie omdat de VM weer actief is. Architecturen met hoge Beschik baarheid op basis van HANA-systeem replicatie zullen op een later tijdstip worden geïntroduceerd. 
 
 
-## <a name="availability-scenarios-for-two-different-vms"></a>Beschikbaarheidsscenario's voor twee verschillende VM's
+## <a name="availability-scenarios-for-two-different-vms"></a>Beschikbaarheids scenario's voor twee verschillende Vm's
 
-Als u twee Azure VM's gebruikt binnen een Azure Availability Set, u de uptime tussen deze twee VM's verhogen als ze in een Azure Availability Set binnen één Azure-regio worden geplaatst. De basisinstelling in Azure ziet eruit als volgt:
+Als u twee Azure-Vm's in een Azure-Beschikbaarheidsset gebruikt, kunt u de uptime tussen deze twee Vm's verhogen als deze in een Azure-Beschikbaarheidsset binnen één Azure-regio worden geplaatst. De basis instelling in azure zou er als volgt uitzien:
 
-![Diagram van twee VM's met alle lagen](./media/sap-hana-availability-one-region/two_vm_all_shell.PNG)
+![Diagram van twee virtuele machines met alle lagen](./media/sap-hana-availability-one-region/two_vm_all_shell.PNG)
 
-Om de verschillende beschikbaarheidsscenario's te illustreren, worden enkele lagen in het diagram weggelaten. Het diagram toont alleen lagen met VM's, hosts, Beschikbaarheidssets en Azure-gebieden. Azure Virtual Network-exemplaren, resourcegroepen en abonnementen spelen geen rol in de scenario's die in deze sectie worden beschreven.
+Als u de verschillende beschikbaarheids scenario's wilt illustreren, worden een aantal lagen in het diagram wegge laten. In het diagram worden alleen de lagen weer gegeven van Vm's, hosts, beschikbaarheids sets en Azure-regio's. Azure Virtual Network-instanties, resource groepen en abonnementen spelen geen rol in de scenario's die in deze sectie worden beschreven.
 
 ### <a name="replicate-backups-to-a-second-virtual-machine"></a>Back-ups repliceren naar een tweede virtuele machine
 
-Een van de meest rudimentaire opstellingen is het gebruik van back-ups. In het bijzonder u transactielogboekback-ups laten verzenden van de ene VM naar een andere Azure VM. U het azure-opslagtype kiezen. In deze installatie bent u verantwoordelijk voor het scripten van de kopie van geplande back-ups die worden uitgevoerd op de eerste VM naar de tweede VM. Als u de tweede VM-exemplaren moet gebruiken, moet u de back-ups voor volledige, incrementele/differentieelen en transactielogboeken herstellen tot het punt dat u nodig hebt. 
+Een van de meest elementaire-instellingen is het gebruik van back-ups. Met name kunnen er back-ups van transactie logboeken worden verzonden van de ene VM naar een andere virtuele machine van Azure. U kunt het type Azure Storage kiezen. In deze installatie moet u verantwoordelijk zijn voor het uitvoeren van scripts voor het kopiëren van geplande back-ups die worden uitgevoerd op de eerste VM naar de tweede VM. Als u de tweede VM-exemplaren wilt gebruiken, moet u de volledige, incrementele/differentiële en transactie logboek back-ups herstellen naar het punt dat u nodig hebt. 
 
-De architectuur ziet eruit als:
+De architectuur ziet er als volgt uit:
 
-![Diagram van twee VM's met opslagreplicatie](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
+![Diagram van twee virtuele machines met opslag replicatie](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
 
-Deze setup is niet goed geschikt voor het bereiken van grote Recovery Point Objective (RPO) en Recovery Time Objective (RTO) tijden. RTO tijden vooral zou lijden als gevolg van de noodzaak om volledig te herstellen van de volledige database met behulp van de gekopieerde back-ups. Deze instelling is echter handig voor het herstellen van onbedoelde verwijdering van gegevens op de belangrijkste instanties. Met deze instelling u op elk gewenst moment herstellen naar een bepaald tijdstip, de gegevens extraheren en de verwijderde gegevens importeren in uw hoofdinstantie. Daarom is het misschien zinvol om een back-up methode te gebruiken in combinatie met andere functionaliteit met hoge beschikbaarheid. 
+Deze installatie is niet geschikt voor het bereiken van geweldige beoogde herstel punten (RPO) en RTO (Recovery Time objectief). RTO keer dat de volledige data base volledig moet worden hersteld met behulp van de gekopieerde back-ups. Deze installatie is echter handig voor het herstellen van onbedoelde gegevens verwijdering op de belangrijkste instanties. Met deze installatie kunt u op elk gewenst moment herstellen naar een bepaald tijdstip, de gegevens extra heren en de verwijderde gegevens importeren in uw hoofd instantie. Daarom kan het zinvol zijn om een methode voor het kopiëren van back-ups te gebruiken in combi natie met andere functionaliteit voor hoge Beschik baarheid. 
 
-Terwijl back-ups worden gekopieerd, u mogelijk een kleinere vm gebruiken dan de hoofdvm waarop de SAP HANA-instantie wordt uitgevoerd. Houd er rekening mee dat u een kleiner aantal VHD's koppelen aan kleinere VM's. Zie [Grootte voor virtuele Linux-machines in Azure voor](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)informatie over de limieten van afzonderlijke VM-typen.
+Terwijl back-ups worden gekopieerd, kunt u mogelijk een kleinere virtuele machine gebruiken dan de hoofd-VM waarop het SAP HANA-exemplaar wordt uitgevoerd. Houd er rekening mee dat u een kleiner aantal Vhd's kunt koppelen aan kleinere Vm's. Zie [grootten voor virtuele Linux-machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)voor meer informatie over de limieten van afzonderlijke VM-typen.
 
-### <a name="sap-hana-system-replication-without-automatic-failover"></a>SAP HANA-systeemreplicatie zonder automatische failover
+### <a name="sap-hana-system-replication-without-automatic-failover"></a>Systeem replicatie SAP HANA zonder automatische failover
 
-De scenario's die in deze sectie worden beschreven, maken gebruik van SAP HANA-systeemreplicatie. Zie [Systeemreplicatie](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)voor de SAP-documentatie . Scenario's zonder automatische failover zijn niet gebruikelijk voor configuraties binnen één Azure-gebied. Een configuratie zonder automatische failover, hoewel het vermijden van een Pacemaker setup, verplicht u om te controleren en failover handmatig. Aangezien dit ook inspanningen en inspanningen vergt, vertrouwen de meeste klanten in plaats daarvan op Azure-servicehealing. Er zijn enkele randgevallen waarin deze configuratie kan helpen in termen van foutscenario's. Of, in sommige gevallen, een klant zou willen meer efficiëntie te realiseren.
+De scenario's die in deze sectie worden beschreven, gebruiken SAP HANA systeem replicatie. Zie [System Replication](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)(Engelstalig) voor de SAP-documentatie. Scenario's zonder automatische failover zijn niet gebruikelijk voor configuraties binnen één Azure-regio. Een configuratie zonder automatische failover, maar bij het vermijden van een pacemaker-installatie, moet u ervoor zorgen dat u hand matig kunt controleren en failover. Omdat dit het duurt en er ook is, vertrouwen de meeste klanten in plaats daarvan op Azure-service herstel. Er zijn enkele rand gevallen waarin deze configuratie kan helpen bij fout scenario's. Of, in sommige gevallen, kan een klant meer efficiëntie bedenken.
 
-#### <a name="sap-hana-system-replication-without-auto-failover-and-without-data-preload"></a>SAP HANA-systeemreplicatie zonder automatische failover en zonder gegevensvoorladen
+#### <a name="sap-hana-system-replication-without-auto-failover-and-without-data-preload"></a>Systeem replicatie SAP HANA zonder automatische failover en zonder vooraf laden van gegevens
 
-In dit scenario gebruikt u SAP HANA-systeemreplicatie om gegevens synchroon te verplaatsen om een RPO van 0 te bereiken. Aan de andere kant heb je een lang genoeg RTO dat je niet nodig hebt, hetzij failover of gegevens preloading in de HANA instantie cache. In dit geval is het mogelijk om verdere economie in uw configuratie te bereiken door de volgende acties te ondernemen:
+In dit scenario gebruikt u SAP HANA systeem replicatie om gegevens synchroon te verplaatsen om een RPO van 0 te krijgen. Aan de andere kant hebt u een lang genoeg RTO die u niet nodig hebt voor het vooraf laden van failover of gegevens in de cache van het HANA-exemplaar. In dit geval is het mogelijk om in uw configuratie verdere economie te behalen door de volgende acties uit te voeren:
 
-- Voer een andere SAP HANA-instantie uit in de tweede VM. De SAP HANA-instantie in de tweede VM neemt het grootste deel van het geheugen van de virtuele machine. In het geval van een failover naar de tweede VM, moet u de lopende SAP HANA-instantie met de gegevens volledig geladen in de tweede VM afsluiten, zodat de gerepliceerde gegevens kunnen worden geladen in de cache van de beoogde HANA-instantie in de tweede VM.
-- Gebruik een kleinere VM-grootte op de tweede vm. Als er een failover optreedt, hebt u een extra stap voor de handmatige failover. In deze stap wijzigt u het formaat van de vm op de grootte van de bron-vm. 
+- Voer een andere SAP HANA-exemplaar uit in de tweede VM. Het SAP HANA-exemplaar in de tweede VM neemt het grootste deel van het geheugen van de virtuele machine in beslag. Als een failover naar de tweede virtuele machine wordt uitgevoerd, moet u het actieve SAP HANA-exemplaar afsluiten dat de gegevens volledig in de tweede VM heeft geladen, zodat de gerepliceerde gegevens in de cache van het beoogde HANA-exemplaar in de tweede virtuele machine kunnen worden geladen.
+- Gebruik een kleinere VM-grootte op de tweede VM. Als er een failover optreedt, hebt u een extra stap voor de hand matige failover. In deze stap wijzigt u het formaat van de virtuele machine naar de grootte van de bron-VM. 
  
-Het scenario ziet eruit als volgt:
+Het scenario ziet er als volgt uit:
 
-![Diagram van twee VM's met opslagreplicatie](./media/sap-hana-availability-one-region/two_vm_HSR_sync_nopreload.PNG)
+![Diagram van twee virtuele machines met opslag replicatie](./media/sap-hana-availability-one-region/two_vm_HSR_sync_nopreload.PNG)
 
 > [!NOTE]
-> Zelfs als u geen vooraf laden van gegevens gebruikt in het HANA-systeemreplicatiedoel, hebt u ten minste 64 GB geheugen nodig. Je hebt naast 64 GB ook voldoende geheugen nodig om de rowstore-gegevens in het geheugen van de doelinstantie te bewaren.
+> Zelfs als u geen vooraf laden van gegevens gebruikt in het doel van de HANA-systeem replicatie, hebt u ten minste 64 GB geheugen nodig. Daarnaast hebt u voldoende geheugen nodig naast 64 GB om de rowstore-gegevens in het geheugen van het doel exemplaar te laten staan.
 
-#### <a name="sap-hana-system-replication-without-auto-failover-and-with-data-preload"></a>SAP HANA-systeemreplicatie zonder automatische failover en met gegevensvoorladen
+#### <a name="sap-hana-system-replication-without-auto-failover-and-with-data-preload"></a>Systeem replicatie SAP HANA zonder automatische failover en met vooraf laden van gegevens
 
-In dit scenario worden gegevens die in de tweede VM naar de HANA-instantie worden gerepliceerd, vooraf geladen. Dit elimineert de twee voordelen van het niet vooraf laden van gegevens. In dit geval u geen ander SAP HANA-systeem op de tweede VM uitvoeren. U ook geen kleiner VM-formaat gebruiken. Vandaar dat klanten dit scenario zelden implementeren.
+In dit scenario is het vooraf laden van gegevens die zijn gerepliceerd naar het HANA-exemplaar in de tweede virtuele machine. Dit elimineert de twee voor delen van het vooraf laden van gegevens. In dit geval kunt u geen ander SAP HANA-systeem op de tweede VM uitvoeren. U kunt ook geen kleinere VM-grootte gebruiken. Daarom implementeren klanten dit scenario zelden.
 
-### <a name="sap-hana-system-replication-with-automatic-failover"></a>SAP HANA-systeemreplicatie met automatische failover
+### <a name="sap-hana-system-replication-with-automatic-failover"></a>Systeem replicatie SAP HANA met automatische failover
 
-In de standaard configuratie van de beschikbaarheid binnen één Azure-regio hebben twee Azure VM's met SLES Linux een failovercluster gedefinieerd. Het SLES Linux cluster is gebaseerd op het [Pacemaker](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) framework, in combinatie met een [STONITH](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) apparaat. 
+In de standaard-en meest voorkomende beschikbaarheids configuratie binnen één Azure-regio, hebben twee Azure-Vm's met SLES Linux een failovercluster gedefinieerd. Het SLES Linux-cluster is gebaseerd op het [pacemaker](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) -Framework, in combi natie met een [STONITH](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) -apparaat. 
 
-Vanuit SAP HANA-perspectief wordt de gebruikte replicatiemodus gesynchroniseerd en wordt een automatische failover geconfigureerd. In de tweede VM fungeert het SAP HANA-exemplaar als een hot standby-knooppunt. Het stand-byknooppunt ontvangt een synchrone stroom van wijzigingsrecords van de primaire SAP HANA-instantie. Aangezien transacties worden gepleegd door de toepassing op het primaire knooppunt van de HANA, wacht het primaire HANA-knooppunt om de commit aan de toepassing te bevestigen totdat het secundaire SAP HANA-knooppunt bevestigt dat het de commit-record heeft ontvangen. SAP HANA biedt twee synchrone replicatiemodi. Zie de [SAP-artikel Replicatiemodi voor SAP HANA-systeemreplicatie voor](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html)meer informatie en voor een beschrijving van de verschillen tussen deze twee synchrone replicatiemodi.
+Vanuit een SAP HANA perspectief wordt de gebruikte replicatie modus gesynchroniseerd en wordt een automatische failover geconfigureerd. In de tweede VM fungeert het SAP HANA-exemplaar als een hot standby-knoop punt. Het knoop punt stand-by ontvangt een synchrone stroom van wijzigings records van het primaire SAP HANA exemplaar. Omdat trans acties worden doorgevoerd door de toepassing op het primaire knoop punt HANA, wacht het primaire HANA-knoop punt op het bevestigen van het door voeren van de toepassing totdat het secundaire SAP HANA knoop punt bevestigt dat het de commit-record heeft ontvangen. SAP HANA biedt twee synchrone replicatie modi. Zie voor meer informatie en voor een beschrijving van de verschillen tussen deze twee synchrone replicatie modi de SAP-artikel [replicatie modi voor SAP Hana-systeem replicatie](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html).
 
-De algehele configuratie ziet eruit als volgt:
+De algehele configuratie ziet er als volgt uit:
 
-![Diagram van twee VM's met opslagreplicatie en failover](./media/sap-hana-availability-one-region/two_vm_HSR_sync_auto_pre_preload.PNG)
+![Diagram van twee virtuele machines met opslag replicatie en failover](./media/sap-hana-availability-one-region/two_vm_HSR_sync_auto_pre_preload.PNG)
 
-U deze oplossing kiezen omdat u hiermee een RPO=0 en een lage RTO bereiken. Configureer de SAP HANA-clientconnectiviteit zodat de SAP HANA-clients het virtuele IP-adres gebruiken om verbinding te maken met de HANA-systeemreplicatieconfiguratie. Een dergelijke configuratie elimineert de noodzaak om de toepassing opnieuw te configureren als er een failover optreedt naar het secundaire knooppunt. In dit scenario moeten de Azure VM SKU's voor de primaire en secundaire VM's hetzelfde zijn.
+U kunt deze oplossing kiezen omdat u hiermee een RPO = 0 en een lage RTO kunt bezorgen. Configureer de SAP HANA client connectiviteit zodat de SAP HANA-clients het virtuele IP-adres gebruiken om verbinding te maken met de configuratie van de HANA-systeem replicatie. Een dergelijke configuratie elimineert de nood zaak om de toepassing opnieuw te configureren als er een failover naar het secundaire knoop punt plaatsvindt. In dit scenario moeten de Sku's van de Azure-VM voor de primaire en secundaire Vm's hetzelfde zijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor stapsgewijze richtlijnen voor het instellen van deze configuraties in Azure:
+Ga voor stapsgewijze instructies voor het instellen van deze configuraties in azure naar:
 
-- [SAP HANA-systeemreplicatie instellen in Azure VM's](sap-hana-high-availability.md)
-- [Hoge beschikbaarheid voor SAP HANA door gebruik te maken van systeemreplicatie](https://blogs.sap.com/2018/01/08/your-sap-on-azure-part-4-high-availability-for-sap-hana-using-system-replication/)
+- [SAP HANA systeem replicatie in virtuele Azure-machines instellen](sap-hana-high-availability.md)
+- [Hoge Beschik baarheid voor SAP HANA met behulp van systeem replicatie](https://blogs.sap.com/2018/01/08/your-sap-on-azure-part-4-high-availability-for-sap-hana-using-system-replication/)
 
-Zie voor meer informatie over de beschikbaarheid van SAP HANA in Azure-regio's:
+Zie voor meer informatie over de beschik baarheid van SAP HANA in azure-regio's:
 
-- [BESCHIKBAARHEID VAN SAP HANA in Azure-regio's](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions) 
+- [Beschik baarheid van SAP HANA in azure-regio's](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions) 
 

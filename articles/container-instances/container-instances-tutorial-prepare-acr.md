@@ -1,24 +1,24 @@
 ---
-title: Zelfstudie - Containerregister voorbereiden om afbeelding te implementeren
+title: Zelf studie-container register voorbereiden om installatie kopie te implementeren
 description: Zelfstudie voor Azure Container Instances, deel 2 van 3 - Azure-containerregister voorbereiden
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 1a5b9555572264b6a00b4ce73eaa0719d94fd99b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78252161"
 ---
-# <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Zelfstudie: Een Azure-containerregister maken en een containerafbeelding pushen
+# <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Zelf studie: een Azure container Registry maken en een container installatie kopie pushen
 
 Dit is deel 2 van een zelfstudie met drie delen. In [deel één](container-instances-tutorial-prepare-app.md) van de zelfstudie hebt u een Docker-containerinstallatiekopie gemaakt voor een Node.js-webtoepassing. In deze zelfstudie pusht u de installatiekopie naar Azure Container Registry. Als u nog geen containerinstallatiekopie hebt gemaakt, gaat u terug naar [Zelfstudie 1: Containerinstallatiekopie maken](container-instances-tutorial-prepare-app.md).
 
-Azure Container Registry is uw privéregister van Docker in Azure. In deze tutorial, deel twee van de serie, u:
+Azure Container Registry is uw privéregister van Docker in Azure. In deze zelf studie, deel twee van de reeks, kunt u:
 
 > [!div class="checklist"]
-> * Een Azure Container Registry-instantie maken met de Azure CLI
+> * Een Azure Container Registry-exemplaar maken met de Azure CLI
 > * Een containerinstallatiekopie taggen voor het Azure Container Registry
 > * De installatiekopie uploaden naar het register
 
@@ -125,7 +125,7 @@ REPOSITORY          TAG       IMAGE ID        CREATED           SIZE
 aci-tutorial-app    latest    5c745774dfa9    39 minutes ago    68.1 MB
 ```
 
-Tag de *aci-tutorial-app-afbeelding* met de login-server van uw containerregister. Voeg ook het label `:v1` toe aan het eind van de installatiekopienaam om het versienummer van de installatiekopie aan te geven. Vervang `<acrLoginServer>` door het resultaat van de opdracht [az acr show][az-acr-show] die u eerder hebt uitgevoerd.
+Codeer de *ACI-zelf studie-app-* installatie kopie met de aanmeldings server van uw container register. Voeg ook het label `:v1` toe aan het eind van de installatiekopienaam om het versienummer van de installatiekopie aan te geven. Vervang `<acrLoginServer>` door het resultaat van de opdracht [az acr show][az-acr-show] die u eerder hebt uitgevoerd.
 
 ```bash
 docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
@@ -142,7 +142,7 @@ mycontainerregistry082.azurecr.io/aci-tutorial-app    v1        5c745774dfa9    
 
 ## <a name="push-image-to-azure-container-registry"></a>Installatiekopie pushen naar Azure Container Registry
 
-Nu u de *aci-tutorial-app-afbeelding* hebt getagd met de volledige naam van uw privéregister, u de afbeelding naar het register pushen met de [pushopdracht docker.][docker-push] Vervang `<acrLoginServer>` door de volledige naam van de aanmeldingsserver die u in de vorige stap hebt verkregen.
+Nu u de installatie kopie van de *ACI-zelf studie-app* hebt gelabeld met de volledige naam van de aanmeldings server van uw persoonlijke REGI ster, kunt u de installatie kopie naar het REGI ster pushen met de opdracht [docker push][docker-push] . Vervang `<acrLoginServer>` door de volledige naam van de aanmeldingsserver die u in de vorige stap hebt verkregen.
 
 ```bash
 docker push <acrLoginServer>/aci-tutorial-app:v1
@@ -202,7 +202,7 @@ v1
 In deze zelfstudie hebt u een Azure Container Registry voorbereid voor gebruik met Azure Container Instances en hebt u een containerinstallatiekopie naar het register gepusht. De volgende stappen zijn voltooid:
 
 > [!div class="checklist"]
-> * Een Azure Container Registry-exemplaar maken met de Azure CLI
+> * Een Azure Container Registry-exemplaar gemaakt met de Azure CLI
 > * Er is een containerinstallatiekopie getagd voor Azure Container Registry
 > * Er is een installatiekopie naar Azure Container Registry geüpload
 
