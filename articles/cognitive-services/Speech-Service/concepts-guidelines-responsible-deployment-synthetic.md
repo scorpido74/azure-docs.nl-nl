@@ -1,7 +1,7 @@
 ---
-title: Richtlijnen voor een verantwoorde inzet van synthetische spraaktechnologie
+title: Richt lijnen voor de verantwoordelijke implementatie van synthetische spraak technologie
 titleSuffix: Azure Cognitive Services
-description: De algemene ontwerprichtlijnen van Microsoft voor het gebruik van synthetische spraaktechnologie. Deze werden ontwikkeld in studies die Microsoft uitgevoerd met stemtalent, consumenten, evenals personen met spraakstoornissen om de verantwoorde ontwikkeling van synthetische stem te begeleiden.
+description: De algemene ontwerp richtlijnen van micro soft voor het gebruik van synthetische spraak technologie. Deze zijn ontwikkeld in studies die micro soft heeft uitgevoerd met behulp van Voice-talen, consumenten en personen met spraak immuunziekten om de verantwoordelijke ontwikkeling van synthetische spraak te begeleiden.
 services: cognitive-services
 author: benoah
 manager: nitinme
@@ -11,59 +11,59 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
 ms.openlocfilehash: a529ac8b7ce16d3ee4463f1b4bc2e8007e5b79b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73836769"
 ---
-# <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Richtlijnen voor een verantwoorde inzet van synthetische spraaktechnologie
-Hier zijn de algemene ontwerprichtlijnen van Microsoft voor het gebruik van synthetische spraaktechnologie. Deze werden ontwikkeld in studies die Microsoft uitgevoerd met stemtalent, consumenten, evenals personen met spraakstoornissen om de verantwoorde ontwikkeling van synthetische stem te begeleiden.
+# <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Richt lijnen voor de verantwoordelijke implementatie van synthetische spraak technologie
+Hier volgen de algemene ontwerp richtlijnen van micro soft voor het gebruik van synthetische spraak technologie. Deze zijn ontwikkeld in studies die micro soft heeft uitgevoerd met behulp van stem talen, consumenten en personen met een speech immuunziekten om de verantwoordelijke ontwikkeling van synthetische spraak te begeleiden.
 
 ## <a name="general-considerations"></a>Algemene overwegingen
-Voor de implementatie van synthetische spraaktechnologie zijn de volgende richtlijnen van toepassing op de meeste scenario's.
+Voor de implementatie van synthetische spraak technologie gelden de volgende richt lijnen in de meeste scenario's.
 
-### <a name="disclose-when-the-voice-is-synthetic"></a>Onthullen wanneer de stem synthetisch is
-Openbaarmaking dat een stem is computer gegenereerd niet alleen minimaliseert het risico van schadelijke resultaten van misleiding, maar verhoogt ook het vertrouwen in de organisatie het leveren van de stem. Meer informatie over [hoe u het openbaar maken.](concepts-disclosure-guidelines.md)
+### <a name="disclose-when-the-voice-is-synthetic"></a>Openbaar maken wanneer de stem synthetisch is
+Het sluiten van een computer die niet wordt gegenereerd, minimaliseert niet alleen het risico op schadelijke resultaten van bedrog, maar verhoogt ook de vertrouwens relatie in de organisatie die de stem levert. Meer informatie over [het vrijgeven](concepts-disclosure-guidelines.md)van.
 
-### <a name="select-appropriate-voice-types-for-your-scenario"></a>De juiste stemtypen voor uw scenario selecteren
-Zorgvuldig overwegen de context van het gebruik en de mogelijke schade in verband met het gebruik van synthetische stem. Synthetische stemmen met hoge betrouwbaarheid zijn bijvoorbeeld mogelijk niet geschikt in scenario's met een hoog risico, zoals voor persoonlijke berichten, financiële transacties of complexe situaties die menselijk aanpassingsvermogen of empathie vereisen. Gebruikers kunnen ook verschillende verwachtingen hebben voor spraaktypen. Bijvoorbeeld, bij het luisteren naar gevoelig nieuws wordt gelezen door een synthetische stem, sommige gebruikers de voorkeur aan een meer empathische en mens-achtige lezing van het nieuws, terwijl anderen de voorkeur aan een meer monotone, onpartijdige stem. Overweeg uw toepassing te testen om gebruikersvoorkeuren beter te begrijpen.
+### <a name="select-appropriate-voice-types-for-your-scenario"></a>Selecteer de juiste spraak typen voor uw scenario
+Denk voorzichtig te weten over de gebruiks context en de mogelijke nadelen van het gebruik van synthetische spraak. Het is bijvoorbeeld mogelijk dat synthetische stemmen met hoge betrouw baarheid niet geschikt zijn voor scenario's met een hoog risico, zoals voor persoonlijke berichten, financiële trans acties of complexe situaties waarvoor Human adaptiveity of empathie is vereist. Gebruikers kunnen ook verschillende verwachtingen hebben voor spraak typen. Bijvoorbeeld, wanneer luistert naar gevoelige nieuws dat door een synthetische stem wordt gelezen, geven sommige gebruikers de voor keur aan een meer empathetic en mensen zoals het lezen van het nieuws, terwijl andere voor keuren voor een meer monotone, onzuivere spraak. U kunt uw toepassing testen om gebruikers voorkeuren beter te begrijpen.
 
-### <a name="be-transparent-about-capabilities-and-limitations"></a>Wees transparant over mogelijkheden en beperkingen
-Gebruikers hebben meer kans op hogere verwachtingen bij de interactie met high-fidelity synthetische spraakmiddelen. Bijgevolg, wanneer systeemmogelijkheden niet aan deze verwachtingen voldoen, kan vertrouwen lijden en kan dit leiden tot onaangename of zelfs schadelijke ervaringen.
+### <a name="be-transparent-about-capabilities-and-limitations"></a>Wees doorzichtig over de mogelijkheden en beperkingen
+Gebruikers hebben waarschijnlijk meer verwachtingen bij het communiceren met hoogwaardige, synthetische spraak agenten. Als de systeem mogelijkheden niet voldoen aan deze verwachtingen, kan de vertrouwens relatie echter nadelig worden voor komen en kan dit leiden tot onaangename of zelfs schadelijke ervaringen.
 
-### <a name="provide-optional-human-support"></a>Bied optionele menselijke ondersteuning
-In dubbelzinnige, transactionele scenario's (bijvoorbeeld een call support center) vertrouwen gebruikers niet altijd op een computeragent om op de juiste manier te reageren op hun verzoeken. Menselijke ondersteuning kan nodig zijn in deze situaties, ongeacht de realistische kwaliteit van de stem of het vermogen van het systeem.
+### <a name="provide-optional-human-support"></a>Optionele menselijke ondersteuning bieden
+In ambigue, transactionele scenario's (bijvoorbeeld een ondersteunings centrum voor aanroepen) vertrouwen gebruikers niet altijd een computer agent die op de juiste wijze reageert op hun aanvragen. Ondersteunings personeel kan nodig zijn in deze situaties, ongeacht de realistische kwaliteit van de stem of de capaciteit van het systeem.
 
-## <a name="considerations-for-voice-talent"></a>Overwegingen voor stemtalent
-Bij het werken met stemtalent, zoals stemacteurs, om synthetische stemmen te maken, is de onderstaande richtlijn van toepassing.
+## <a name="considerations-for-voice-talent"></a>Overwegingen voor spraak-talen
+Wanneer u werkt met spraak-talen, zoals stem actors, is de onderstaande richt lijn van toepassing.
 
-### <a name="obtain-meaningful-consent-from-voice-talent"></a>Krijg zinvolle toestemming van stemtalent
-Voice talent verwachten controle te hebben over hun stem lettertype (hoe en waar het zal worden gebruikt) en worden gecompenseerd wanneer het wordt gebruikt. Systeemeigenaren moeten daarom expliciete schriftelijke toestemming krijgen van stemtalent en duidelijke contractuele specificaties hebben over use cases, gebruiksduur, compensatie, enzovoort. Sommige stem talent zijn zich niet bewust van de potentiële kwaadaardige toepassingen van de technologie en moet worden opgeleid door systeemeigenaren over de mogelijkheden van de technologie. Voor meer informatie over stemtalent en toestemming, lees onze [Disclosure for Voice Talent](https://aka.ms/disclosure-voice-talent).
-
-
-## <a name="considerations-for-those-with-speech-disorders"></a>Overwegingen voor mensen met spraakstoornissen
-Bij het werken met personen met spraakstoornissen, om synthetische spraaktechnologie te creëren of te implementeren, zijn de volgende richtlijnen van toepassing.
-
-### <a name="provide-guidelines-to-establish-contracts"></a>Richtlijnen verstrekken om contracten op te stellen
-Geef richtlijnen voor het opstellen van contracten met personen die synthetische stem gebruiken voor hulp bij het spreken. In het contract moet worden overwogen de partijen te specificeren die eigenaar zijn van de stem, gebruiksduur, eigendomsoverdrachtscriteria, procedures voor het verwijderen van het spraaklettertype en hoe ongeautoriseerde toegang kan worden voorkomen. Bovendien, inschakelen van de contractuele overdracht van spraaklettertype eigendom na overlijden aan familieleden als die persoon toestemming heeft gegeven.
-
-### <a name="account-for-inconsistencies-in-speech-patterns"></a>Rekening houden met inconsistenties in spraakpatronen
-Voor personen met spraakstoornissen die hun eigen stemlettertypen opnemen, kunnen inconsistenties in hun spraakpatroon (slurring of onvermogen om bepaalde woorden uit te spreken) het opnameproces bemoeilijken. In deze gevallen moeten synthetische spraaktechnologie en opnamesessies geschikt zijn voor hen (dat wil zeggen, pauzes en extra aantal opnamesessies).
-
-### <a name="allow-modification-over-time"></a>Wijziging na verloop van tijd toestaan
-Personen met spraakstoornissen verlangen om updates te maken van hun synthetische stem te weerspiegelen veroudering (bijvoorbeeld, een kind het bereiken van de puberteit). Individuen kunnen ook stilistische voorkeuren hebben die in de loop van de tijd veranderen en kunnen wijzigingen willen aanbrengen in toonhoogte, accent of andere stemkenmerken.
+### <a name="obtain-meaningful-consent-from-voice-talent"></a>Nuttige toestemming verkrijgen van spraak-talen
+Voice-talen verwachten de controle over hun spraak lettertype (hoe en wanneer het wordt gebruikt) en worden gecompenseerd wanneer het wordt gebruikt. Systeem eigen aren moeten daarom expliciete schriftelijke toestemming van Voice-talen verkrijgen en duidelijke contractuele specificaties hebben over use cases, de duur van het gebruik, de compensatie, enzovoort. Sommige stem talen bieden geen informatie over het potentieel schadelijke gebruik van de technologie en moeten worden ondergebracht door systeem eigen aars over de mogelijkheden van de technologie. Lees voor meer informatie over stem talen en toestemming onze [openbaar making voor Voice-talen](https://aka.ms/disclosure-voice-talent).
 
 
-## <a name="reference-docs"></a>Referentiedocumenten
+## <a name="considerations-for-those-with-speech-disorders"></a>Aandachtspunten voor degenen met Speech immuunziekten
+Wanneer u werkt met individuen met spraak immuunziekten, kunt u de volgende richt lijnen gebruiken om synthetische spraak technologie te maken of te implementeren.
 
-* [Openbaarmaking voor Voice Talent](https://aka.ms/disclosure-voice-talent)
-* [Overzicht van Gating](concepts-gating-overview.md)
-* [Hoe openbaar te maken](concepts-disclosure-guidelines.md)
-* [Ontwerpontwerppatronen](concepts-disclosure-patterns.md)
+### <a name="provide-guidelines-to-establish-contracts"></a>Richt lijnen bieden voor het vaststellen van contracten
+Bieden richt lijnen voor het opstellen van contracten met personen die synthetische stem gebruiken voor hulp bij het spreken. In het contract moet worden gebruikgemaakt van de partijen die eigenaar zijn van de stem, de gebruiks duur, de eigendoms overdrachts criteria, de procedures voor het verwijderen van het spraak lettertype en het voor komen van onbevoegde toegang. Daarnaast moet de contractuele overdracht van het eigendom van het spraak lettertype na overlijden aan gezins leden worden ingeschakeld als deze persoon toestemming heeft gegeven.
+
+### <a name="account-for-inconsistencies-in-speech-patterns"></a>Account voor inconsistenties in spraak patronen
+Voor personen met een speech-immuunziekten die hun eigen spraak letter typen vastleggen, kunnen inconsistenties in hun spraak patroon (slurring of het onvermogen om bepaalde woorden aan te spreken) het registratie proces bemoeilijken. In dergelijke gevallen moeten synthetische spraak technologie en opname sessies deze bevatten (dat wil zeggen, onderbrekingen en een extra aantal opname sessies).
+
+### <a name="allow-modification-over-time"></a>Wijzigingen in de loop van de tijd toestaan
+Personen met spraak immuunziekten willen updates aan hun synthetische stem aanbrengen om te voldoen aan veroudering (bijvoorbeeld een kind dat puberty heeft bereikt). Personen kunnen ook stilistische voor keuren hebben die in de loop der tijd veranderen en wellicht wijzigingen aanbrengen in de Toon hoogte, accent of andere spraak kenmerken.
+
+
+## <a name="reference-docs"></a>Referentie documenten
+
+* [Openbaar making voor spraak-talen](https://aka.ms/disclosure-voice-talent)
+* [Overzicht van beperking](concepts-gating-overview.md)
+* [Vrijgeven](concepts-disclosure-guidelines.md)
+* [Ontwerp patronen voor openbaar making](concepts-disclosure-patterns.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Openbaarmaking voor Voice Talent](https://aka.ms/disclosure-voice-talent)
-* [Hoe openbaar te maken](concepts-disclosure-guidelines.md)
-* [Ontwerpontwerppatronen](concepts-disclosure-patterns.md)
+* [Openbaar making voor spraak-talen](https://aka.ms/disclosure-voice-talent)
+* [Vrijgeven](concepts-disclosure-guidelines.md)
+* [Ontwerp patronen voor openbaar making](concepts-disclosure-patterns.md)

@@ -1,7 +1,7 @@
 ---
-title: Een document uploaden - Aangepaste vertaler
+title: Een document-aangepaste vertaler uploaden
 titleSuffix: Azure Cognitive Services
-description: De functie voor het uploaden van documenten uploadt parallelle documenten (twee documenten waarbij de ene de oorsprong is en de andere de vertaling) naar de service.
+description: De functie voor het uploaden van documenten uploadt parallelle documenten (twee documenten waarbij een van de oorsprong en de andere de vertaling is) naar de service.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,81 +10,81 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: b2a249a40d8c782d54a12df43d33655f3409753c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73647388"
 ---
 # <a name="upload-a-document"></a>Een document uploaden
 
-In [Aangepaste vertaler](https://portal.customtranslator.azure.ai)u parallelle documenten uploaden om uw vertaalmodellen te trainen. [Parallelle documenten](what-are-parallel-documents.md) zijn paren van documenten waarbij de ene een vertaling van de andere is. Een document in het paar bevat zinnen in de brontaal en het andere document bevat deze zinnen vertaald in de doeltaal.
+In [Custom Translator](https://portal.customtranslator.azure.ai)kunt u parallelle documenten uploaden om uw Vertaal modellen te trainen. [Parallelle documenten](what-are-parallel-documents.md) zijn paren van documenten waarbij de ene vertaling van de andere is. Een document in het paar bevat zinnen in de bron taal en het andere document bevat de volgende zinnen die in de doel taal worden vertaald.
 
-Voordat u uw documenten uploadt, controleert u de [documentindelingen en richtlijnen voor naamgevingsconventieom](document-formats-naming-convention.md) om ervoor te zorgen dat uw bestandsindeling wordt ondersteund in Aangepaste vertaler.
+Voordat u uw documenten uploadt, raadpleegt u de [richt lijnen voor document indelingen en naamgevings regels](document-formats-naming-convention.md) om te controleren of uw bestands indeling wordt ondersteund in het aangepaste conversie programma.
 
-## <a name="how-to-upload-document"></a>Hoe document uploaden?
+## <a name="how-to-upload-document"></a>Hoe kunt u het document uploaden?
 
-Klik in de portal [Voor aangepaste vertalers](https://portal.customtranslator.azure.ai) op het tabblad Documenten om naar de pagina Documenten te gaan.
+Klik in de [aangepaste Vertaal](https://portal.customtranslator.azure.ai) Portal op het tabblad documenten om naar de pagina documenten te gaan.
 
-![Koppeling voor het uploaden van documenten](media/how-to/how-to-upload-1.png)
+![Koppeling voor document uploaden](media/how-to/how-to-upload-1.png)
 
 
-1.  Klik op de knop Bestanden uploaden op de pagina documenten.
+1.  Klik op de knop bestanden uploaden op de pagina documenten.
 
-    ![Documentpagina uploaden](media/how-to/how-to-upload-2.png)
+    ![Document pagina uploaden](media/how-to/how-to-upload-2.png)
 
-2.  Vul in het dialoogvenster de volgende gegevens in:
+2.  Vul de volgende gegevens in het dialoog venster in:
 
-    a.  Documenttype:
+    a.  Document type:
 
-    -  Training: Deze documenten worden gebruikt voor de trainingsset.
-    -  Tuning: Deze documenten worden gebruikt voor het afstemmen van de set.
-    -  Testen: Deze documenten worden gebruikt voor het testen van de set.
-    -  Woordlijst: deze document(s) worden gebruikt voor woordwoordenlijst.
-    -  Zinwoordenboek: deze document(s) worden gebruikt voor zinswoordenboek
+    -  Training: deze documenten worden gebruikt voor trainingen.
+    -  Afstemming: deze documenten worden gebruikt voor het afstemmen van de set.
+    -  Testen: deze documenten worden gebruikt voor het testen van de set.
+    -  Woordgroepen lijst: deze documenten worden gebruikt voor de woorden lijst voor woord groepen.
+    -  Woorden lijst voor zinnen: deze documenten worden gebruikt voor de woorden lijst
 
-    b.  Taalpaar
+    b.  Taal paar
 
-    c.  Document overschrijven als dit bestaat: schakel dit selectievakje in als u bestaande documenten met dezelfde naam wilt overschrijven.
+    c.  Document overschrijven indien aanwezig: Schakel dit selectie vakje in als u bestaande documenten met dezelfde naam wilt overschrijven.
 
-    d.  Vul de relevante sectie in voor parallelle gegevens of combogegevens.
+    d.  Vul de relevante sectie in voor parallelle gegevens of de combinatie gegevens.
 
     -  Parallelle gegevens:
-        -  Bronbestand: Selecteer brontaalbestand van uw lokale computer.
-        -  Doelbestand: selecteer doeltaalbestand van uw lokale computer.
-        -  Documentnaam: alleen gebruikt als u parallelle bestanden uploadt.
+        -  Bron bestand: Selecteer een bron taal bestand op de lokale computer.
+        -  Doel bestand: Selecteer een doel taal bestand op de lokale computer.
+        -  Document naam: wordt alleen gebruikt als u parallelle bestanden uploadt.
 
-    - Combo-gegevens:
-        -  Combinatiebestand: selecteer het combinatiebestand vanaf uw lokale computer. Uw combinatiebestand heeft zowel van uw bron als doeltaalzinnen. [Naamgevingconventie](document-formats-naming-convention.md) is belangrijk voor combobestanden.
+    - Combinatie gegevens:
+        -  Combinatie bestand: Selecteer het keuze lijst bestand op de lokale computer. Uw keuze lijst met invoervak bevat de zinnen van de bron-en doel taal. [Naamgevings regels](document-formats-naming-convention.md) zijn belang rijk voor de combi natie van bestanden.
 
-    e.  Klik op Uploaden
+    e.  Klik op uploaden
 
-    ![Dialoogvenster Document uploaden](media/how-to/how-to-upload-dialog.png)
+    ![Dialoog venster Document uploaden](media/how-to/how-to-upload-dialog.png)
 
-3.  Op dit moment verwerken we uw documenten en proberen we zinnen te extraheren. U op 'Voortgang uploaden weergeven' klikken om de status van uw documenten te controleren terwijl ze worden verwerkt.
+3.  Op dit moment verwerken we uw documenten en proberen we zinnen te extra heren. U kunt klikken op Upload voortgang weer geven om de status van uw documenten te controleren tijdens de verwerking.
 
-    ![Dialoogvenster Documentverwerking uploaden](media/how-to/how-to-upload-processing-dialog.png)
+    ![Dialoog venster document verwerking uploaden](media/how-to/how-to-upload-processing-dialog.png)
 
-4.  Op deze pagina worden de status en eventuele fouten voor elk bestand binnen uw upload weergegeven. Je de status van het aantal eerdere uploaden op elk gewenst moment bekijken door op het tabblad Uploadgeschiedenis te klikken.
+4.  Op deze pagina worden de status en eventuele fouten voor elk bestand in de upload weer gegeven. U kunt de oude upload status op elk gewenst moment weer geven door op het tabblad Upload geschiedenis te klikken.
 
-    ![Dialoogvenster Documentgeschiedenis uploaden](media/how-to/how-to-upload-document-history.png)
+    ![Dialoog venster document geschiedenis uploaden](media/how-to/how-to-upload-document-history.png)
 
 
-## <a name="view-upload-history"></a>Uploadgeschiedenis weergeven
+## <a name="view-upload-history"></a>Upload geschiedenis weer geven
 
-Op de pagina Uploadgeschiedenis u de geschiedenis van alle documentuploads bekijken, zoals documenttype, taalpaar, uploadstatus enz.
+Op de pagina upload geschiedenis kunt u de geschiedenis bekijken van alle uploads van documenten, zoals document type, taal paar, upload status etc.
 
-1. Klik in de portal [Aangepaste vertaler](https://portal.customtranslator.azure.ai) op Het tabblad Geschiedenis uploaden om de geschiedenis weer te geven.
+1. Klik in de [aangepaste Vertaal](https://portal.customtranslator.azure.ai) Portal op het tabblad geschiedenis uploaden om de geschiedenis weer te geven.
 
-    ![Tabblad Uploadgeschiedenis](media/how-to/how-to-upload-history-1.png)
+    ![Tabblad Upload geschiedenis](media/how-to/how-to-upload-history-1.png)
 
-2. Deze pagina toont de status van al uw eerdere uploads. Het toont uploads van meest recente tot minst recente. Voor elke upload wordt de documentnaam, de uploadstatus, de uploaddatum, het aantal geüploade bestanden, het type geüpload bestand en het taalpaar van het bestand weergegeven.
+2. Op deze pagina ziet u de status van al uw eerdere uploads. Er worden uploads van de meest recente naar minst recente weer gegeven. Voor elke upload worden de document naam, de upload status, de upload datum, het aantal geüploade bestanden, het type van het bestand dat is geüpload en het taal paar van het bestand weer gegeven.
 
-    ![Pagina Uploadgeschiedenis](media/how-to/how-to-document-history-2.png)
+    ![Pagina geschiedenis uploaden](media/how-to/how-to-document-history-2.png)
 
-3. Klik op een uploadgeschiedenisrecord. Op de pagina details van de uploadgeschiedenis u de bestanden bekijken die zijn geüpload als onderdeel van de upload, de geüploade status van het bestand, de taal van het bestand en het foutbericht (als er een fout is in het uploaden).
+3. Klik op een record Upload geschiedenis. In de detail pagina geschiedenis uploaden kunt u de bestanden weer geven die zijn geüpload als onderdeel van de upload, de geüploade status van het bestand, de taal van het bestand en het fout bericht (als er een fout is opgetreden bij het uploaden).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Gebruik de [pagina documentdetails](how-to-view-document-details.md) om de lijst met uitgepakte zinnen te bekijken.
-- [Hoe een model te trainen](how-to-train-model.md).
+- Gebruik de [pagina document Details](how-to-view-document-details.md) om een lijst met geëxtraheerde zinnen weer te geven.
+- [Het trainen van een model](how-to-train-model.md).

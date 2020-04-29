@@ -1,6 +1,6 @@
 ---
-title: CLI-voorbeeld- Failovergroep - Azure SQL Database-beheerde instantie
-description: Azure CLI-voorbeeldscript om een azure SQL Database-beheerde instantie te maken, deze toe te voegen aan een failovergroep en failover te testen.
+title: CLI-voor beeld-Failovergroep-Azure SQL Database beheerd exemplaar
+description: Azure CLI-voorbeeld script voor het maken van een door Azure SQL Database beheerd exemplaar, het toevoegen aan een failovergroep en failover testen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,15 +12,15 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
 ms.openlocfilehash: 8ffe40662ffaf8a1fb35a3d31acfaea78ea0fbeb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061922"
 ---
-# <a name="use-cli-to-add-an-azure-sql-database-managed-instance-to-a-failover-group"></a>CLI gebruiken om een Azure SQL Database-beheerde instantie toe te voegen aan een failovergroep
+# <a name="use-cli-to-add-an-azure-sql-database-managed-instance-to-a-failover-group"></a>CLI gebruiken om een door Azure SQL Database beheerd exemplaar toe te voegen aan een failovergroep
 
-In dit voorbeeld van Azure CLI worden twee beheerde exemplaren gemaakt, worden deze toegevoegd aan een failovergroep en wordt de failover van de primaire beheerde instantie naar de secundaire beheerde instantie getest.
+Dit Azure CLI-voor beeld maakt twee beheerde instanties, voegt deze toe aan een failovergroep en test vervolgens de failover van het primaire beheerde exemplaar naar het secundaire beheerde exemplaar.
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0 of hoger. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
@@ -36,26 +36,26 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 ### <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Gebruik de volgende opdracht om de resourcegroep en alle bijbehorende resources te verwijderen. U moet de brongroep twee keer verwijderen. Als u de resourcegroep de eerste keer verwijdert, worden de beheerde instantie en virtuele clusters verwijderd, maar wordt deze vervolgens mislukt met het foutbericht `az group delete : Long running operation failed with status 'Conflict'.`. Voer de opdracht verwijderen van de AZ-groep een tweede keer uit om resterende resources en de resourcegroep te verwijderen.
+Gebruik de volgende opdracht om de resource groep en alle bijbehorende resources te verwijderen. U moet de resource groep twee keer verwijderen. Als u de resource groep de eerste keer verwijdert, worden het beheerde exemplaar en de virtuele clusters verwijderd, maar wordt het `az group delete : Long running operation failed with status 'Conflict'.`fout bericht niet meer weer gegeven. Voer de opdracht AZ Group delete een tweede keer uit om eventuele rest resources en de resource groep te verwijderen.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Voorbeeldverwijzing
+## <a name="sample-reference"></a>Voorbeeld verwijzing
 
 In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | | |
 |---|---|
-| [az-netwerk vnet](/cli/azure/network/vnet) | Virtuele netwerkopdrachten.  |
-| [az-netwerk vnet subnet](/cli/azure/network/vnet/subnet) | Virtuele netwerksubnetopdrachten. |
-| [az netwerk nsg](/cli/azure/network/nsg) | Opdrachten voor netwerkbeveiligingsgroepen. |
-| [az-netwerk route-tabel](/cli/azure/network/route-table) | Opdrachten voor routetabel. |
-| [az sql mi](/cli/azure/sql/mi) | Beheerde instantieopdrachten. |
-| [az-netwerk public-ip](/cli/azure/network/public-ip) | Opdrachten voor openbare IP-adressen in het netwerk. |
-| [az-netwerk vnet-gateway](/cli/azure/network/vnet-gateway) | Opdrachten voor virtuele netwerkgateway. |
-| [az sql instance-failover-group](/cli/azure/sql/instance-failover-group) | Beheerde failovergroepopdrachten voor beheerde instantie. |
+| [AZ Network vnet](/cli/azure/network/vnet) | Virtuele-netwerk opdrachten.  |
+| [AZ Network vnet subnet](/cli/azure/network/vnet/subnet) | Subnetten van het virtuele netwerk. |
+| [AZ Network NSG](/cli/azure/network/nsg) | Opdrachten voor netwerk beveiligings groepen. |
+| [AZ Network Route-Table](/cli/azure/network/route-table) | Opdrachten van de route tabel. |
+| [AZ SQL mi](/cli/azure/sql/mi) | Managed instance-opdrachten. |
+| [AZ Network Public-IP](/cli/azure/network/public-ip) | Open bare IP-adres opdrachten van het netwerk. |
+| [AZ Network vnet-gateway](/cli/azure/network/vnet-gateway) | Virtual Network gateway-opdrachten. |
+| [AZ SQL Instance-failover-Group](/cli/azure/sql/instance-failover-group) | Opdrachten voor failover-groepen van beheerde exemplaren. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

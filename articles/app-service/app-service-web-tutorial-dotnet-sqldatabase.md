@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: ASP.NET-app met SQL-database'
+title: 'Zelf studie: ASP.NET-app met SQL Database'
 description: Informatie over het implementeren van een C# ASP.NET-app met een SQL Server-database in Azure.
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.devlang: csharp
@@ -7,15 +7,15 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: mvc, devcenter, vs-azure, seodec18
 ms.openlocfilehash: a9acb55f0a03a6ec1ba0bb6bb38c665b059b672b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80047025"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Zelfstudie: Een ASP.NET-app bouwen in Azure met SQL Database
 
-[Azure App Service](overview.md) biedt een zeer schaalbare, zelfpatchende webhostingservice. In deze zelfstudie leert u hoe u een gegevensgestuurde ASP.NET-app implementeert in App Service en de app verbindt met [Azure SQL Database](../sql-database/sql-database-technical-overview.md). Wanneer u klaar bent, wordt een ASP.NET-app uitgevoerd in Azure en is verbonden met SQL Database.
+[Azure app service](overview.md) biedt een uiterst schaal bare webhostingservice met self-patch functie. In deze zelfstudie leert u hoe u een gegevensgestuurde ASP.NET-app implementeert in App Service en de app verbindt met [Azure SQL Database](../sql-database/sql-database-technical-overview.md). Wanneer u klaar bent, hebt u een ASP.NET-app die wordt uitgevoerd in Azure en die is verbonden met SQL Database.
 
 ![Gepubliceerde ASP.NET-toepassing in Azure App Service](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
@@ -35,14 +35,14 @@ In deze zelfstudie leert u het volgende:
 
 Vereisten om deze zelfstudie te voltooien:
 
-Installeer <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> met de **ASP.NET en webdevelopment** workload.
+Installeer <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> met de **ASP.net-en Web Development** -werk belasting.
 
-Als u Visual Studio al hebt geïnstalleerd, voegt u de workloads toe in Visual Studio door op **Hulpmiddelen** > **voor extra's en functies te**klikken.
+Als u Visual Studio al hebt geïnstalleerd, voegt u de workloads toe in Visual Studio door te klikken op **hulpprogram** > ma's hulpprogram**ma's en functies ophalen**.
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
 - [Download het voorbeeldproject](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
-- Haal het *dotnet-sqldb-tutorial-master.zip-bestand* uit (unzip).
+- Pak het bestand *DotNet-sqldb-tutorial-Master. zip* uit (unzip).
 
 Het voorbeeldproject bevat een eenvoudige [ASP.NET MVC](https://www.asp.net/mvc)-CRUD-app (create-read-update-delete) die gebruikmaakt van [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
@@ -109,7 +109,7 @@ Configureer in het dialoogvenster **App Service-plan configureren** het nieuwe A
 
 | Instelling  | Voorgestelde waarde | Voor meer informatie |
 | ----------------- | ------------ | ----|
-|**App-serviceplan**| myAppServicePlan | [App Service-abonnementen](../app-service/overview-hosting-plans.md) |
+|**App Service plan**| myAppServicePlan | [App Service-abonnementen](../app-service/overview-hosting-plans.md) |
 |**Locatie**| Europa -west | [Azure-regio's](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
 |**Grootte**| Gratis | [Prijscategorieën](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
@@ -146,7 +146,7 @@ In het dialoogvenster **SQL Database configureren**:
 
 ![SQL Database configureren](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-Het dialoogvenster **App Service maken** toont de resources die u hebt geconfigureerd. Klik **op Maken**. 
+Het dialoogvenster **App Service maken** toont de resources die u hebt geconfigureerd. Klik op **maken**. 
 
 ![de resources die u hebt gemaakt](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
@@ -192,7 +192,7 @@ Zodra de Visual Studio klaar is met het maken van de firewallinstelling voor uw 
 
 Hier kunt u de meest voorkomende databasebewerkingen uitvoeren, zoals het uitvoeren van query's, het maken van weergaven en opgeslagen procedures en meer. 
 
-Vouw uw verbinding > **Databases** > **&lt;uw database>**  >  **Tabellen**uit. Klik met de rechtermuisknop op de `Todoes`-tabel en selecteer **Gegevens weergeven**. 
+Breid uw verbinding uit > **data bases** > **&lt;in uw data base>**  >  **tabellen**. Klik met de rechtermuisknop op de `Todoes`-tabel en selecteer **Gegevens weergeven**. 
 
 ![SQL Database-objecten verkennen](./media/app-service-web-tutorial-dotnet-sqldatabase/explore-sql-database.png)
 
@@ -300,7 +300,7 @@ Klik op **Configureren** om de publicatie-instellingen te openen.
 
 ![Publicatie-instellingen openen](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-settings.png)
 
-Klik in de wizard op **Volgende**.
+Klik in de wizard op **volgende**.
 
 Zorg ervoor dat de verbindingsreeks voor de SQL Database is gevuld in **MyDatabaseContext (MyDbConnection)**. Mogelijk moet u de **myToDoAppDb**-database uit de vervolgkeuzelijst selecteren. 
 
@@ -360,7 +360,7 @@ Selecteer in de vervolgkeuzelijst **Toepassingslogboeken (Bestandssysteem)**, **
 ![Wijzig het traceringsniveau naar Uitgebreid](./media/app-service-web-tutorial-dotnet-sqldatabase/trace-level-verbose.png)
 
 > [!TIP]
-> U kunt experimenteren met verschillende traceringsniveaus om te zien welke typen berichten worden weergegeven voor elk niveau. **Het informatieniveau** omvat bijvoorbeeld alle `Trace.TraceInformation()`logboeken die zijn gemaakt door , `Trace.TraceWarning()`en `Trace.TraceError()`, maar geen logboeken die zijn gemaakt door `Trace.WriteLine()`.
+> U kunt experimenteren met verschillende traceringsniveaus om te zien welke typen berichten worden weergegeven voor elk niveau. Het **informatie** niveau bevat bijvoorbeeld alle logboeken die zijn gemaakt `Trace.TraceInformation()`door `Trace.TraceWarning()`,, `Trace.TraceError()`en, maar niet de logboeken die zijn gemaakt door `Trace.WriteLine()`.
 >
 >
 
@@ -383,9 +383,9 @@ Om de service logboekstreaming te stoppen, klikt u op de knop **Bewaking stoppen
 
 ## <a name="manage-your-azure-app"></a>Uw Azure-app beheren
 
-Ga naar [Azure Portal](https://portal.azure.com) om de web-app te beheren. **App-services**zoeken en selecteren . 
+Ga naar [Azure Portal](https://portal.azure.com) om de web-app te beheren. Zoek en selecteer **app Services**. 
 
-![Zoeken naar Azure App Services](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-portal-navigate-app-services.png)
+![Zoeken naar Azure-app Services](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-portal-navigate-app-services.png)
 
 Selecteer de naam van uw Azure-app.
 
@@ -401,7 +401,7 @@ In de portal wordt standaard de pagina **Overzicht** getoond. Deze pagina geeft 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een SQL-database in Azure maken

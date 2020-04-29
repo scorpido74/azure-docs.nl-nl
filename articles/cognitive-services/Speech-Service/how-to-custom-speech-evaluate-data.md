@@ -1,7 +1,7 @@
 ---
-title: Nauwkeurigheid evalueren voor aangepaste spraak - Spraakservice
+title: Nauw keurigheid evalueren voor de Custom Speech Speech-Service
 titleSuffix: Azure Cognitive Services
-description: In dit document leert u hoe u kwantitatief de kwaliteit van ons spraak-naar-tekstmodel of uw aangepaste model meten. Audio + door mensen gelabelde transcriptiegegevens zijn vereist om de nauwkeurigheid te testen en er moet 30 tot 5 uur representatieve audio worden verstrekt.
+description: In dit document leert u hoe u de kwaliteit van het spraak-naar-tekst model of uw aangepaste model kwantitatief kunt meten. Audio en menselijk gelabelde transcriptie-gegevens zijn vereist om nauw keurigheid te testen en er moet een representatieve audio van 30 minuten tot 5 uur worden opgegeven.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,58 +11,58 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: f710b8bfdd4dcfd3b7a63aa0b457036ab7037016
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74806093"
 ---
-# <a name="evaluate-custom-speech-accuracy"></a>De nauwkeurigheid van aangepaste spraak evalueren
+# <a name="evaluate-custom-speech-accuracy"></a>Nauwkeurigheid van Custom Speech evalueren
 
-In dit document leert u hoe u kwantitatief de kwaliteit van het spraak-naar-tekstmodel van Microsoft of uw aangepaste model meten. Audio + door mensen gelabelde transcriptiegegevens zijn vereist om de nauwkeurigheid te testen en er moet 30 tot 5 uur representatieve audio worden verstrekt.
+In dit document leert u hoe u de kwaliteit van het spraak-naar-tekst model van micro soft of uw aangepaste model kwantitatief kunt meten. Audio en menselijk gelabelde transcriptie-gegevens zijn vereist om nauw keurigheid te testen en er moet een representatieve audio van 30 minuten tot 5 uur worden opgegeven.
 
-## <a name="what-is-word-error-rate-wer"></a>Wat is Word Error Rate (WER)?
+## <a name="what-is-word-error-rate-wer"></a>Wat is een woord fout (WER)?
 
-De industriestandaard om modelnauwkeurigheid te meten is *Word Error Rate* (WER). WER telt het aantal onjuiste woorden dat tijdens de herkenning is geïdentificeerd en verdeelt vervolgens door het totale aantal woorden in het transcript met het menselijk label. Ten slotte wordt dat aantal vermenigvuldigd met 100% om het WER te berekenen.
+De industrie standaard om de nauw keurigheid van het model te meten is een *woord fout* (wer). WER telt het aantal onjuiste woorden dat is geïdentificeerd tijdens de herkenning. vervolgens wordt gedeeld door het totale aantal woorden dat is opgegeven in de transcripten met menselijke labels. Ten slotte wordt dat aantal vermenigvuldigd met 100% om de WER te berekenen.
 
 ![WER-formule](./media/custom-speech/custom-speech-wer-formula.png)
 
-Verkeerd geïdentificeerde woorden vallen in drie categorieën:
+Onjuist geïdentificeerde woorden vallen in drie categorieën:
 
-* Invoeging (I): Woorden die ten onrechte zijn toegevoegd in het hypothesetranscript
-* Verwijdering (D): Woorden die niet zijn gedetecteerd in het hypothesetranscript
-* Substitutie (S): Woorden die werden vervangen tussen referentie en hypothese
+* Invoegen (I): woorden die onjuist zijn toegevoegd in de transcripten voor hypo Thesen
+* Verwijdering (D): woorden die niet worden gedetecteerd in de transcripten van hypo Thesen
+* Vervanging (en): woorden die zijn vervangen tussen verwijzing en hypo these
 
 Hier volgt een voorbeeld:
 
-![Voorbeeld van verkeerd geïdentificeerde woorden](./media/custom-speech/custom-speech-dis-words.png)
+![Voor beeld van onjuist geïdentificeerde woorden](./media/custom-speech/custom-speech-dis-words.png)
 
 ## <a name="resolve-errors-and-improve-wer"></a>Fouten oplossen en WER verbeteren
 
-U het WER gebruiken op basis van de resultaten van de machineherkenning om de kwaliteit van het model dat u gebruikt te evalueren met uw app, gereedschap of product. Een WER van 5%-10% wordt beschouwd als een goede kwaliteit en is klaar voor gebruik. Een WER van 20% is acceptabel, maar u aanvullende training overwegen. Een WER van 30% of meer signaleert slechte kwaliteit en vereist maatwerk en training.
+U kunt de WER van de resultaten van de computer herkenning gebruiken om de kwaliteit te evalueren van het model dat u gebruikt met uw app, hulp programma of product. Een WER van 5%-10% wordt beschouwd als een goede kwaliteit en is klaar voor gebruik. Een WER van 20% is acceptabel, maar u kunt ook extra training overwegen. Een WER van 30% of meer heeft een slechte kwaliteit en vereist aanpassing en training.
 
-Hoe de fouten worden verdeeld is belangrijk. Wanneer veel verwijderingsfouten worden aangetroffen, is dit meestal te wijten aan zwakke audiosignaalsterkte. Als u dit probleem wilt oplossen, moet u audiogegevens dichter bij de bron verzamelen. Invoegfouten betekenen dat de audio is opgenomen in een rumoerige omgeving en crosstalk aanwezig kan zijn, waardoor herkenningsproblemen ontstaan. Substitutiefouten worden vaak aangetroffen wanneer een onvoldoende voorbeeld van domeinspecifieke termen is verstrekt als transcripties met een menselijk label of verwante tekst.
+Hoe de fouten worden gedistribueerd, is belang rijk. Wanneer er veel verwijderings fouten optreden, is dit meestal het gevolg van een zwakke geluids signaal sterkte. Om dit probleem op te lossen, moet u audio gegevens dichter bij de bron verzamelen. Invoeg fouten betekenen dat de audio is vastgelegd in een rustige omgeving en dat er crosstalk mogelijk aanwezig zijn, waardoor herkennings problemen ontstaan. Vervangings fouten worden vaak aangetroffen wanneer er een ontoereikend voor beeld van specifieke domein termen is opgegeven als een transcripties of gerelateerde tekst.
 
-Door afzonderlijke bestanden te analyseren, u bepalen welk type fouten er bestaan en welke fouten uniek zijn voor een specifiek bestand. Als u problemen op bestandsniveau begrijpt, u verbeteringen targeten.
+Door afzonderlijke bestanden te analyseren, kunt u bepalen welk type fouten bestaan en welke fouten uniek zijn voor een bepaald bestand. Als u problemen ondervindt op bestands niveau, kunt u verbeteringen aanrichten.
 
 ## <a name="create-a-test"></a>Een test maken
 
-Als u de kwaliteit van microsoft's spraak-naar-tekst basislijnmodel of een aangepast model wilt testen dat u hebt getraind, u twee modellen naast elkaar vergelijken om de nauwkeurigheid te evalueren. De vergelijking omvat WER en herkenningsresultaten. Een aangepast model wordt doorgaans vergeleken met het basislijnmodel van Microsoft.
+Als u de kwaliteit van het spraak-naar-tekst basislijn model van micro soft of een aangepast model dat u hebt getraind wilt testen, kunt u twee modellen naast elkaar vergelijken om de nauw keurigheid te evalueren. De vergelijking omvat WER-en herkennings resultaten. Normaal gesp roken wordt een aangepast model vergeleken met het basis model van micro soft.
 
 Modellen naast elkaar evalueren:
 
-1. Meld u aan bij de [portal Aangepaste spraak](https://speech.microsoft.com/customspeech).
-2. Navigeer naar **spraak-naar-tekst > aangepaste spraak > testen**.
-3. Klik **op Test toevoegen**.
-4. Selecteer **Nauwkeurigheid evalueren**. Geef de test een naam, beschrijving en selecteer uw audio + met een mens gelabelde transcriptiegegevensset.
-5. Selecteer maximaal twee modellen die u wilt testen.
-6. Klik **op Maken**.
+1. Meld u aan bij de [Custom speech Portal](https://speech.microsoft.com/customspeech).
+2. Navigeer naar **> voor spraak naar tekst Custom Speech > tests**uit te voeren.
+3. Klik op **test toevoegen**.
+4. Selecteer **nauw keurigheid evalueren**. Geef een naam en beschrijving op voor de test en selecteer uw transcriptie-gegevensset voor audio + met Human label.
+5. Selecteer Maxi maal twee modellen die u wilt testen.
+6. Klik op **maken**.
 
-Nadat uw test is gemaakt, u de resultaten naast elkaar vergelijken.
+Nadat de test is gemaakt, kunt u de resultaten naast elkaar vergelijken.
 
-## <a name="side-by-side-comparison"></a>Side-by-side vergelijking
+## <a name="side-by-side-comparison"></a>Side-by-side-vergelijking
 
-Zodra de test is voltooid, aangegeven door de statuswijziging *in Geslaagd,* vindt u een WER-nummer voor beide modellen die in uw test zijn opgenomen. Klik op de testnaam om de pagina met testdetails te bekijken. Deze detailpagina bevat alle uitingen in uw gegevensset, met vermelding van de herkenningsresultaten van de twee modellen naast de transcriptie van de ingediende gegevensset. Als u de vergelijking naast elkaar wilt inspecteren, u verschillende fouttypen inschakelen, waaronder invoegen, verwijderen en vervangen. Door te luisteren naar de audio en herkenningsresultaten in elke kolom te vergelijken, die de door de mens gelabelde transcriptie en de resultaten voor twee spraak-naar-tekstmodellen toont, u bepalen welk model aan uw behoeften voldoet en waar aanvullende training en verbeteringen Vereist.
+Zodra de test is voltooid, wordt aangegeven dat de status is gewijzigd in *geslaagd*. u vindt hier een wer-nummer voor beide modellen die in de test zijn opgenomen. Klik op de naam van de test om de detail pagina van de test te bekijken. Deze detail pagina bevat een lijst met alle uitingen in uw gegevensset, waarmee de herkennings resultaten van de twee modellen naast de transcriptie van de verzonden gegevensset worden aangegeven. Als u de gelijktijdige vergelijking wilt controleren, kunt u verschillende fout typen met inbegrip van invoegen, verwijderen en vervangen. Als u naar de audio luistert en de herkennings resultaten in elke kolom vergelijkt, waarin de transcriptie en de resultaten van twee spraak-naar-tekst modellen worden weer gegeven, kunt u bepalen welk model aan uw behoeften voldoet en waar extra training en verbeteringen zijn vereist.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -72,4 +72,4 @@ Zodra de test is voltooid, aangegeven door de statuswijziging *in Geslaagd,* vin
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Uw gegevens voorbereiden en testen](how-to-custom-speech-test-data.md)
-* [Uw gegevens inspecteren](how-to-custom-speech-inspect-data.md)
+* [Uw gegevens controleren](how-to-custom-speech-inspect-data.md)

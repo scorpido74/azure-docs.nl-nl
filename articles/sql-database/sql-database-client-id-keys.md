@@ -1,6 +1,6 @@
 ---
-title: Waarden voor app-verificatie opvragen
-description: Maak een serviceprincipal voor toegang tot SQL Database vanuit code.
+title: Waarden ophalen voor app-verificatie
+description: Een service-principal maken voor toegang tot SQL Database vanuit code.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,24 +12,24 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 5b2c64660f37745f5b13d53559037e84ca20c47b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476963"
 ---
-# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>De vereiste waarden ophalen voor het verifiëren van een toepassing om toegang te krijgen tot SQL Database vanuit code
+# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>De vereiste waarden ophalen voor het verifiëren van een toepassing voor toegang tot SQL Database vanuit code
 
-Als u SQL Database wilt maken en beheren op basis van code, moet u uw app registreren in het Azure Active Directory-domein (AAD) in het abonnement waarin uw Azure-bronnen zijn gemaakt.
+Als u SQL Database wilt maken en beheren met code, moet u uw app registreren in het Azure Active Directory (AAD)-domein in het abonnement waar uw Azure-resources zijn gemaakt.
 
-## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Een serviceprincipal maken om toegang te krijgen tot bronnen van een toepassing
+## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Een service-principal maken voor toegang tot resources vanuit een toepassing
 
-In de volgende voorbeelden wordt de AD-toepassing (Active Directory) en de serviceprincipal gemaakt die we nodig hebben om onze C#-app te verifiëren. Het script voert de waarden uit die we nodig hebben voor het voorgaande C#-voorbeeld. Zie [Use Azure PowerShell to create a service principal to access resources](../active-directory/develop/howto-authenticate-service-principal-powershell.md) (Azure PowerShell gebruiken om een service-principal te maken voor toegang tot resources) voor gedetailleerde informatie.
+In de volgende voor beelden worden de Active Directory (AD)-toepassing en de service-principal gemaakt die we nodig hebben om onze C#-app te verifiëren. Het script voert de waarden uit die we nodig hebben voor het voorgaande C#-voorbeeld. Zie [Use Azure PowerShell to create a service principal to access resources](../active-directory/develop/howto-authenticate-service-principal-powershell.md) (Azure PowerShell gebruiken om een service-principal te maken voor toegang tot resources) voor gedetailleerde informatie.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
-> De PowerShell Azure Resource Manager (RM)-module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkelingen zijn voor de Az.Sql-module. De AzureRM-module blijft bugfixes ontvangen tot ten minste december 2020.  De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn nagenoeg identiek. Zie De nieuwe Azure [PowerShell Az-module introduceren](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit ervan.
+> De module Power shell Azure Resource Manager (RM) wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. De AzureRM-module blijft oplossingen ontvangen tot ten minste december 2020.  De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek. Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit.
 
 ```powershell
 # sign in to Azure
@@ -101,5 +101,5 @@ Write-Output "_applicationSecret:" $secret
 
 ## <a name="see-also"></a>Zie ook
 
-[Een SQL-database maken met C #](sql-database-get-started-csharp.md)  
-[Verbinding maken met SQL-database met Azure Active Directory Authentication](sql-database-aad-authentication.md)
+[Een SQL database maken met C #](sql-database-get-started-csharp.md)  
+[Verbinding maken met SQL Database met behulp van Azure Active Directory-verificatie](sql-database-aad-authentication.md)

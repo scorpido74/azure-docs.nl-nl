@@ -1,7 +1,7 @@
 ---
-title: API-query's en -antwoorden verzenden en gebruiken - Bing Local Business Search
+title: API-query's en-antwoorden verzenden en gebruiken-zoeken in lokale bedrijfs-Bing
 titleSuffix: Azure Cognitive Services
-description: Gebruik dit artikel voor meer informatie over het verzenden en gebruiken van zoekopdrachten met de Bing Local Business Search API.
+description: Gebruik dit artikel voor meer informatie over het verzenden en gebruiken van zoek query's met de Bing lokale Business Search-API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,33 +11,33 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rosh
 ms.openlocfilehash: 25bcdb89002fec4f9b67b091996d7bf80bcf21c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74326726"
 ---
-# <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>API-query's en -antwoorden van Bing Local Business Search verzenden en gebruiken
+# <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Query's en antwoorden van Bing Local Business Search-API verzenden en gebruiken
 
-U lokale resultaten uit de Bing Local Business Search API ophalen `Ocp-Apim-Subscription-Key` door een zoekopdracht naar het eindpunt te verzenden en de header op te nemen, wat vereist is. Samen met beschikbare [kopteksten](local-search-reference.md#headers) en [parameters](local-search-reference.md#query-parameters)kunnen zoekopdrachten worden aangepast door [geografische grenzen](specify-geographic-search.md) op te geven voor het te zoeken gebied en de [categorieën](local-search-query-response.md) plaatsen die worden geretourneerd.
+U kunt lokale resultaten ophalen van de Bing Local Business Search-API door een zoek opdracht naar het eind punt te verzenden `Ocp-Apim-Subscription-Key` en de header op te nemen, wat vereist is. Naast de beschik bare [kopteksten](local-search-reference.md#headers) en [para meters](local-search-reference.md#query-parameters)kunnen Zoek opdrachten worden aangepast door [geografische grenzen](specify-geographic-search.md) op te geven [voor het gebied](local-search-query-response.md) dat moet worden doorzocht, en de locatie van de geretourneerde locaties.
 
 ## <a name="creating-a-request"></a>Een aanvraag maken
 
-Als u een aanvraag wilt verzenden naar de Bing Local `q=` Business Search API, voegt u een `Ocp-Apim-Subscription-Key` zoekterm toe aan de parameter voordat u deze toevoegt aan het API-eindpunt en de koptekst. Bijvoorbeeld:
+Als u een aanvraag wilt verzenden naar de Bing lokale Business Search-API, voegt u een `q=` zoek term toe aan de para meter voordat u deze toevoegt aan `Ocp-Apim-Subscription-Key` het API-eind punt, inclusief de header. Bijvoorbeeld:
 
 `https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search?q=restaurant+in+Bellevue`
 
-De syntaxis van de volledige URL van het verzoek wordt hieronder weergegeven. Zie de Bing Local Business Search API [quickstarts](quickstarts/local-quickstart.md)en referentie-inhoud voor [kopteksten](local-search-reference.md#headers) en [parameters](local-search-reference.md#query-parameters) voor meer informatie over het verzenden van aanvragen. 
+De syntaxis van de volledige URL van de aanvraag wordt hieronder weer gegeven. Zie [Quick](quickstarts/local-quickstart.md)starts voor Bing Local Business Search API en referentie-inhoud voor [kopteksten](local-search-reference.md#headers) en [para meters](local-search-reference.md#query-parameters) voor meer informatie over het verzenden van aanvragen. 
 
-Zie [Zoekcategorieën voor de Bing Local Business Search API voor](local-categories.md)informatie over lokale zoekcategorieën.
+Voor informatie over lokale zoek categorieën raadpleegt u [zoeken naar categorieën voor de Bing lokale Business Search-API](local-categories.md).
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localCategories][&cc][&mkt][&safesearch][&setlang][&count][&first][&localCircularView][&localMapView]
 ```
 
-## <a name="using-responses"></a>Reacties gebruiken
+## <a name="using-responses"></a>Antwoorden gebruiken
 
-JSON-antwoorden uit de Bing Local `SearchResponse` Business Search API bevatten een object. De API retourneert relevante `places` zoekresultaten in het veld. als er geen resultaten `places` worden gevonden, wordt het veld niet opgenomen in het antwoord.
+JSON-antwoorden van de Bing lokale Business Search-API `SearchResponse` bevatten een object. De API retourneert relevante zoek resultaten in het `places` veld. Als er geen resultaten worden gevonden, `places` wordt het veld niet in het antwoord opgenomen.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -52,29 +52,29 @@ JSON-antwoorden uit de Bing Local `SearchResponse` Business Search API bevatten 
 . . . 
 ```
 
-### <a name="search-result-attributes"></a>Kenmerken van zoekresultaten
+### <a name="search-result-attributes"></a>Kenmerken van zoek resultaten
 
 De JSON-resultaten die door de API worden geretourneerd, bevatten de volgende kenmerken:
 
 * _type
 * adres
-* entiteitPresentatieInfo
-* Geo
+* entityPresentationInfo
+* geo
 * id
 * name
 * routeablePoint
 * telefoon
 * url
 
-Zie de [bing Local Search API v7-referentie](local-search-reference.md) voor algemene informatie over kopteksten, parameters, marktcodes, antwoordobjecten, fouten, enz..
+Zie voor algemene informatie over kopteksten, para meters, markt codes, antwoord objecten, fouten, enzovoort, de [Bing Local Search API V7](local-search-reference.md) -referentie
 
 > [!NOTE]
-> U, of een derde partij namens u, mag geen gegevens uit de Local Search API gebruiken, bewaren, opslaan, opslaan, delen of distribueren met het oog op het testen, ontwikkelen, trainen, distribueren of beschikbaar stellen van niet-Microsoft-service of -functies. 
+> U, of derden namens u, mag geen gegevens uit de lokale zoek opdracht gebruiken, bewaren, opslaan, delen of distribueren met het oog op het testen, ontwikkelen, trainen, distribueren of maken van een service of functie die niet van micro soft is. 
 
 
 ## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
-Het volgende JSON-antwoord bevat zoekresultaten `?q=restaurant+in+Bellevue`die door de query zijn opgegeven.
+De volgende JSON-respons bevat Zoek resultaten die door de `?q=restaurant+in+Bellevue`query zijn opgegeven.
 
 ```json
 Vary: Accept-Encoding
@@ -147,7 +147,7 @@ Expires: Tue, 16 Oct 2018 16:25:15 GMT
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Zoeken in lokaal bedrijf snel gestart](quickstarts/local-quickstart.md)
-- [Lokaal zakelijk zoeken Java snelaan de dag](quickstarts/local-search-java-quickstart.md)
-- [Lokaal zakelijk zoekknooppunt snel aan de slag](quickstarts/local-search-node-quickstart.md)
-- [Lokaal zoeken in Business Python snel gestart](quickstarts/local-search-python-quickstart.md)
+- [Snelstartgids voor lokale zakelijke Zoek opdrachten](quickstarts/local-quickstart.md)
+- [Lokale zakelijke zoek opdracht voor zoeken in Java Quick Start](quickstarts/local-search-java-quickstart.md)
+- [Quick start voor lokaal bedrijfs Zoek knooppunt](quickstarts/local-search-node-quickstart.md)
+- [Snelstartgids voor lokale zakelijke Zoek opdrachten python](quickstarts/local-search-python-quickstart.md)

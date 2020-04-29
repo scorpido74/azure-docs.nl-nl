@@ -1,7 +1,7 @@
 ---
-title: 'How to: Een correctie in één stap toevoegen aan een aangepaste opdracht (Voorbeeld) - Spraakservice'
+title: 'Procedure: een correctie met één stap toevoegen aan een aangepaste opdracht (preview)-spraak service'
 titleSuffix: Azure Cognitive Services
-description: In dit artikel leggen we uit hoe u correcties in één stap implementeert voor een opdracht in Aangepaste opdrachten.
+description: In dit artikel wordt uitgelegd hoe u correcties in één stap voor een opdracht in aangepaste opdrachten implementeert.
 services: cognitive-services
 author: encorona-ms
 manager: yetian
@@ -11,64 +11,64 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: encorona
 ms.openlocfilehash: 86a12bd1dccc2b6ac15010546d7e990b768ebc02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75456452"
 ---
-# <a name="how-to-add-a-one-step-correction-to-a-custom-command-preview"></a>How To: een correctie in één stap toevoegen aan een aangepaste opdracht (voorbeeld)
+# <a name="how-to-add-a-one-step-correction-to-a-custom-command-preview"></a>Procedure: een correctie met één stap toevoegen aan een aangepaste opdracht (preview-versie)
 
-In dit artikel leert u hoe u een bevestiging in één stap toevoegt aan een opdracht.
+In dit artikel leert u hoe u een bevestiging van één stap kunt toevoegen aan een opdracht.
 
-Correctie in één stap wordt gebruikt om een opdracht bij te werken die net is voltooid.
+Correctie van één stap wordt gebruikt om een opdracht bij te werken die zojuist is voltooid.
 
-D.w.z. als u enkel een alarm instelt, u uw mening veranderen en de tijd van het alarm bijwerken.
+Als u zojuist een alarm hebt ingesteld, kunt u dit echter wijzigen en de tijd van de wekker bijwerken.
 
-- Invoer: Zet de wekker voor morgen om 12.00 uur
-- Uitgang: "Ok, alarm ingesteld voor 12/06/2019 12:00:00"
-- Input: Nee, morgen om 13.00 uur
-- Uitvoer: "Ok
+- Invoer: alarm instellen voor morgen om 12:00 uur
+- Uitvoer: "OK, alarm ingesteld voor 12/06/2019 12:00:00"
+- Invoer: Nee, morgen op 1pm
+- Uitvoer: OK
 
-Houd er rekening mee dat dit impliceert dat u als ontwikkelaar een mechanisme hebt om het alarm in uw backend-toepassing bij te werken.
+Denk eraan dat u als een ontwikkelaar een mechanisme hebt voor het bijwerken van de waarschuwing in uw back-end-toepassing.
 
 ## <a name="prerequisites"></a>Vereisten
 
 U moet de stappen in de volgende artikelen hebben voltooid:
 
-- [Snelstart: een aangepaste opdracht maken (voorbeeld)](./quickstart-custom-speech-commands-create-new.md)
-- [Snelstart: een aangepaste opdracht maken met parameters (voorbeeld)](./quickstart-custom-speech-commands-create-parameters.md)
-- [How To: een bevestiging toevoegen aan een aangepaste opdracht (voorbeeld)](./how-to-custom-speech-commands-confirmations.md)
+- [Snelstartgids: een aangepaste opdracht maken (preview)](./quickstart-custom-speech-commands-create-new.md)
+- [Snelstartgids: een aangepaste opdracht maken met para meters (preview)](./quickstart-custom-speech-commands-create-parameters.md)
+- [Procedure: een bevestiging toevoegen aan een aangepaste opdracht (preview-versie)](./how-to-custom-speech-commands-confirmations.md)
 
-## <a name="add-the-advanced-rules-for-one-step-correction"></a>De geavanceerde regels voor correctie in één stap toevoegen 
+## <a name="add-the-advanced-rules-for-one-step-correction"></a>De geavanceerde regels voor correctie met één stap toevoegen 
 
-Als u correctie in één stap wilt aantonen, breiden we de opdracht **SetAlarm** die is gemaakt in de [bevestigingsinstructies uit.](./how-to-custom-speech-commands-confirmations.md)
+Als u een correctie met één stap wilt demonstreren, gaat u naar de **SetAlarm** -opdracht die u hebt gemaakt in de [bevestigingen](./how-to-custom-speech-commands-confirmations.md).
  
-1. Voeg een geavanceerde regel toe om het vorige alarm bij te werken. 
+1. Een geavanceerde regel toevoegen om de vorige waarschuwing bij te werken. 
 
-    Deze regel vraagt de gebruiker om de datum en het tijdstip van het alarm te bevestigen en verwacht een bevestiging (ja/nee) voor de volgende beurt.
+    Met deze regel wordt de gebruiker gevraagd om de datum en tijd van het alarm te bevestigen en wordt een bevestiging (Ja/Nee) voor de volgende beurt verwacht.
 
    | Instelling               | Voorgestelde waarde                                                  | Beschrijving                                        |
    | --------------------- | ---------------------------------------------------------------- | -------------------------------------------------- |
-   | Regelnaam             | Vorig alarm bijwerken                                            | Een naam die het doel van de regel beschrijft          |
-   | Voorwaarden            | UpdateLastCommand & Vereiste parameter - DateTime                | Voorwaarden die bepalen wanneer de regel kan worden uitgevoerd    |   
-   | Acties               | SpeechResponse - "- Vorige alarm bijwerken naar {DateTime}"       | De actie die moet worden ondernomen wanneer de regelvoorwaarde waar is |
-   | Staat na uitvoering | Voltooien, opdracht                                                 | Staat van de gebruiker na de turn                   |
+   | Regelnaam             | Vorige waarschuwing bijwerken                                            | Een naam die het doel van de regel beschrijft          |
+   | Voorwaarden            | UpdateLastCommand & vereiste para meter-DateTime                | Voor waarden die bepalen wanneer de regel kan worden uitgevoerd    |   
+   | Acties               | SpeechResponse--vorige waarschuwing bijwerken naar {DateTime}       | De actie die moet worden uitgevoerd wanneer de regel voorwaarde waar is |
+   | Status na uitvoering | Opdracht volt ooien                                                 | Status van de gebruiker na de turn                   |
 
-1. Verplaats de regel die u zojuist hebt gemaakt naar de bovenkant van geavanceerde regels (schuif over de regel in het deelvenster en klik op de pijl-omhoog).
+1. Verplaats de regel die u zojuist hebt gemaakt boven aan geavanceerde regels (Blader over de regel in het deel venster en klik op de pijl-omhoog).
    > [!div class="mx-imgBorder"]
-   > ![Een bereikvalidatie toevoegen](media/custom-speech-commands/one-step-correction-rules.png)
+   > ![Validatie van een bereik toevoegen](media/custom-speech-commands/one-step-correction-rules.png)
 
 > [!NOTE]
-> In een echte toepassing stuurt u in het gedeelte Acties van deze regel ook een activiteit terug naar de client of belt u een HTTP-eindpunt om het alarm in uw systeem bij te werken.
+> In een echte toepassing stuurt u in de sectie acties van deze regel ook een activiteit terug naar de client of roept u een HTTP-eind punt aan om de waarschuwing in uw systeem bij te werken.
 
 ## <a name="try-it-out"></a>Uitproberen
 
-Selecteer het deelvenster Testen en probeer een paar interacties.
+Selecteer het deel venster testen en probeer enkele interacties.
 
-- Invoer: Zet de wekker voor morgen om 12.00 uur
-- Output: "Weet u zeker dat u een alarm wilt instellen voor 12/07/2019 12:00:00?"
+- Invoer: alarm instellen voor morgen om 12:00 uur
+- Uitvoer: ' weet u zeker dat u een alarm wilt instellen voor 12/07/2019 12:00:00? '
 - Invoer: Ja
-- Uitgang: "Ok, alarm ingesteld voor 12/07/2019 12:00:00"
-- Input: Nee, morgen om 13.00 uur
-- Uitvoer: "Update van vorig alarm naar 12/07/2019 13:00:00"
+- Uitvoer: "OK, alarm ingesteld voor 12/07/2019 12:00:00"
+- Invoer: Nee, morgen op 1pm
+- Uitvoer: ' vorige waarschuwing bijwerken naar 12/07/2019 13:00:00 '

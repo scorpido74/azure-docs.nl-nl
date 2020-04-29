@@ -1,5 +1,5 @@
 ---
-title: CLI-voorbeeld maken van een Azure SQL-database
+title: CLI-voor beeld-een Azure-SQL database maken
 description: Gebruik dit Azure CLI-voorbeeldscript voor het maken van een SQL-database.
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
 ms.openlocfilehash: ecfa61f0680e20dd37a1fedc988664afa6e2a83b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067461"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>CLI gebruiken om één Azure SQL-database te maken en een firewallregel te configureren
@@ -36,21 +36,21 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 ### <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Gebruik de volgende opdracht om de resourcegroep en alle bijbehorende resources te verwijderen.
+Gebruik de volgende opdracht om de resource groep en alle bijbehorende resources te verwijderen.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Voorbeeldverwijzing
+## <a name="sample-reference"></a>Voorbeeld verwijzing
 
 In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | | |
 |---|---|
-| [az sql server](/cli/azure/sql/server#az-sql-server-create) | Serveropdrachten |
-| [az sql server firewall](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Serverfirewallopdrachten. |
-| [az sql db](/cli/azure/sql/db#az-sql-db-create) | Databaseopdrachten. |
+| [az sql server](/cli/azure/sql/server#az-sql-server-create) | Server opdrachten |
+| [AZ SQL Server firewall](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Server firewall-opdrachten. |
+| [AZ SQL DB](/cli/azure/sql/db#az-sql-db-create) | Data base-opdrachten. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

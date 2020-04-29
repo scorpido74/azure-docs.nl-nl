@@ -1,27 +1,27 @@
 ---
-title: Voorbeelden van azure monitor-logboekquery's | Microsoft Documenten
-description: Voorbeelden van logboekquery's in Azure Monitor met de Kusto-querytaal.
+title: Voor beelden van Azure Monitor-logboek query | Microsoft Docs
+description: Voor beelden van logboek query's in Azure Monitor met behulp van de Kusto-query taal.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
 ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79480280"
 ---
-# <a name="azure-monitor-log-query-examples"></a>Voorbeelden van azure monitor-logboekquery's
-Dit artikel bevat verschillende voorbeelden van [query's](log-query-overview.md) die de [Kusto-querytaal](/azure/kusto/query/) gebruiken om verschillende typen logboekgegevens uit Azure Monitor op te halen. Verschillende methoden worden gebruikt om gegevens te consolideren en te analyseren, zodat u deze voorbeelden gebruiken om verschillende strategieën te identificeren die u mogelijk voor uw eigen vereisten gebruikt.  
+# <a name="azure-monitor-log-query-examples"></a>Voor beelden van Azure Monitor-logboek query
+Dit artikel bevat verschillende voor beelden van [query's](log-query-overview.md) met behulp van de [Kusto-query taal](/azure/kusto/query/) om verschillende soorten logboek gegevens op te halen uit Azure monitor. Er worden verschillende methoden gebruikt om gegevens samen te voegen en te analyseren. u kunt deze voor beelden gebruiken om verschillende strategieën te identificeren die u voor uw eigen vereisten kunt gebruiken.  
 
-Zie de [Kusto-taalverwijzing](https://docs.microsoft.com/azure/kusto/query/) voor meer informatie over de verschillende zoekwoorden die in deze voorbeelden worden gebruikt. Ga door een [les over het maken van query's](get-started-queries.md) als u nieuw bent bij Azure Monitor.
+Zie de [Kusto-taal referentie](https://docs.microsoft.com/azure/kusto/query/) voor meer informatie over de verschillende tref woorden die in deze voor beelden worden gebruikt. Door loop een [Les over het maken van query's](get-started-queries.md) als u geen ervaring hebt met Azure monitor.
 
 ## <a name="events"></a>Gebeurtenissen
 
-### <a name="search-application-level-events-described-as-cryptographic"></a>Gebeurtenissen op toepassingsniveau zoeken die worden omschreven als 'Cryptografisch'
-In dit voorbeeld wordt in de tabel **Gebeurtenissen** gezocht naar records waarin **EventLog** _toepassing_ is en **RenderedDescription** _cryptografische_bevat. Inclusief records van de afgelopen 24 uur.
+### <a name="search-application-level-events-described-as-cryptographic"></a>Gebeurtenissen op toepassings niveau zoeken die worden beschreven als ' cryptografisch '
+In dit voor beeld wordt de tabel **Events** doorzocht op records waarin **Eventlog** _Application_ and **RenderedDescription** bevat _Cryptographic_. Bevat records van de afgelopen 24 uur.
 
 ```Kusto
 Event
@@ -30,8 +30,8 @@ Event
 | where RenderedDescription contains "cryptographic"
 ```
 
-### <a name="search-events-related-to-unmarshaling"></a>Zoekgebeurtenissen met betrekking tot unmarshaling
-Zoek gebeurtenissen **en** **beveiligingsgebeurtenissen** zoeken naar records waarin _unmarshaling wordt vermeld_.
+### <a name="search-events-related-to-unmarshaling"></a>Zoek gebeurtenissen met betrekking tot het opmars hallen
+Zoek tabellen **gebeurtenis** -en **SecurityEvents** voor records die _unmarshaling_vermelden.
 
 ```Kusto
 search in (Event, SecurityEvent) "unmarshaling"
@@ -39,9 +39,9 @@ search in (Event, SecurityEvent) "unmarshaling"
 
 ## <a name="heartbeat"></a>Hartslag
 
-### <a name="chart-a-week-over-week-view-of-the-number-of-computers-sending-data"></a>Een week-over-weekweergave weergeven van het aantal computers dat gegevens verzendt
+### <a name="chart-a-week-over-week-view-of-the-number-of-computers-sending-data"></a>Grafiek een week-over-week weergave van het aantal computers dat gegevens verzendt
 
-In het volgende voorbeeld wordt het aantal verschillende computers in kaart gebracht dat elke week heartbeats heeft verzonden.
+In het volgende voor beeld wordt het aantal afzonderlijke computers voor de heartbeats per week verzonden.
 
 ```Kusto
 Heartbeat
@@ -51,7 +51,7 @@ Heartbeat
 
 ### <a name="find-stale-computers"></a>Verouderde computers zoeken
 
-In het volgende voorbeeld worden computers gevonden die op de laatste dag actief waren, maar in het afgelopen uur geen heartbeats hebben verzonden.
+In het volgende voor beeld wordt gezocht naar computers die in de afgelopen dag actief waren, maar geen heartbeats hebben verzonden.
 
 ```Kusto
 Heartbeat
@@ -61,18 +61,18 @@ Heartbeat
 | where LastHeartbeat < ago(1h)
 ```
 
-### <a name="get-the-latest-heartbeat-record-per-computer-ip"></a>Ontvang de nieuwste hartslagrecord per computer-IP
+### <a name="get-the-latest-heartbeat-record-per-computer-ip"></a>De meest recente heartbeat-record ophalen per computer-IP
 
-In dit voorbeeld wordt de laatste heartbeatrecord voor elk computer-IP geretourneerd.
+In dit voor beeld wordt de laatste heartbeat-record voor elk IP-adres van de computer geretourneerd.
 ```Kusto
 Heartbeat
 | summarize arg_max(TimeGenerated, *) by ComputerIP
 ```
 
-### <a name="match-protected-status-records-with-heartbeat-records"></a>Beveiligde statusrecords koppelen aan heartbeatrecords
+### <a name="match-protected-status-records-with-heartbeat-records"></a>Beveiligde status records vergelijken met heartbeat-records
 
-In dit voorbeeld worden gerelateerde beveiligingsstatusrecords en heartbeatrecords gevonden die zijn afgestemd op zowel computer als tijd.
-Let op: het tijdsveld wordt afgerond op de dichtstbijzijnde minuut. We gebruikten runtime bin `round_time=bin(TimeGenerated, 1m)`berekening om dat te doen: .
+In dit voor beeld vindt u gerelateerde beveiligings status records en heartbeat-records, die overeenkomen op computer en tijd.
+Houd er rekening mee dat het veld tijd wordt afgerond op de dichtstbijzijnde minuut. We hebben de berekening van de runtime opslaglocatie gebruikt `round_time=bin(TimeGenerated, 1m)`om dat te doen:.
 
 ```Kusto
 let protection_data = ProtectionStatus
@@ -82,10 +82,10 @@ let heartbeat_data = Heartbeat
 protection_data | join (heartbeat_data) on Computer, round_time
 ```
 
-### <a name="server-availability-rate"></a>Beschikbaarheidssnelheid van de server
+### <a name="server-availability-rate"></a>Beschikbaarheids tempo server
 
-Bereken de beschikbaarheidssnelheid van de server op basis van hartslagrecords. Beschikbaarheid wordt gedefinieerd als "ten minste 1 hartslag per uur".
-Dus, als een server beschikbaar was 98 van 100 uur, de beschikbaarheid is 98%.
+Het beschikbaarheids tempo van de server berekenen op basis van heartbeat-records. Beschik baarheid is gedefinieerd als ' minstens 1 heartbeat per uur '.
+Als er dus een server beschikbaar was van 98 100 uur, is de beschik baarheid van 98%.
 
 ```Kusto
 let start_time=startofday(datetime("2018-03-01"));
@@ -100,10 +100,10 @@ Heartbeat
 ```
 
 
-## <a name="multiple-data-types"></a>Meerdere gegevenstypen
+## <a name="multiple-data-types"></a>Meerdere gegevens typen
 
-### <a name="chart-the-record-count-per-table"></a>Het recordaantal per tabel weergeven
-In het volgende voorbeeld worden alle records van alle tabellen van de afgelopen vijf uur opgehaald en wordt geteld hoeveel records er in elke tabel stonden. De resultaten worden weergegeven in een tijdgrafiek.
+### <a name="chart-the-record-count-per-table"></a>Grafiek van het aantal records per tabel
+In het volgende voor beeld worden alle records van alle tabellen van de afgelopen vijf uur verzameld en telt het aantal records in elke tabel. De resultaten worden weer gegeven in een timechart.
 
 ```Kusto
 union withsource=sourceTable *
@@ -112,8 +112,8 @@ union withsource=sourceTable *
 | render timechart
 ```
 
-### <a name="count-all-logs-collected-over-the-last-hour-by-type"></a>Alle logboeken tellen die in het afgelopen uur zijn verzameld op type
-In het volgende voorbeeld wordt in alles doorzocht dat in het afgelopen uur is gerapporteerd en worden de records van elke tabel op **Type geteld.** De resultaten worden weergegeven in een staafdiagram.
+### <a name="count-all-logs-collected-over-the-last-hour-by-type"></a>Alle logboeken die het afgelopen uur zijn verzameld per type tellen
+In het volgende voor beeld wordt gezocht naar alles in het afgelopen uur en worden de records van elke tabel per **type**geteld. De resultaten worden weer gegeven in een staaf diagram.
 
 ```Kusto
 search *
@@ -124,8 +124,8 @@ search *
 
 ## <a name="azurediagnostics"></a>AzureDiagnostics
 
-### <a name="count-azure-diagnostics-records-per-category"></a>Azure-diagnostische records tellen per categorie
-In dit voorbeeld worden alle Azure-diagnostische records voor elke unieke categorie geteld.
+### <a name="count-azure-diagnostics-records-per-category"></a>Azure Diagnostics-records per categorie tellen
+In dit voor beeld worden alle Azure Diagnostics-records voor elke unieke categorie geteld.
 
 ```Kusto
 AzureDiagnostics 
@@ -133,8 +133,8 @@ AzureDiagnostics
 | summarize count() by Category
 ```
 
-### <a name="get-a-random-record-for-each-unique-category"></a>Krijg een willekeurige record voor elke unieke categorie
-In dit voorbeeld wordt één willekeurige Azure-diagnoserecord voor elke unieke categorie ontvangen.
+### <a name="get-a-random-record-for-each-unique-category"></a>Een wille keurige record ophalen voor elke unieke categorie
+In dit voor beeld wordt één wille keurige Azure Diagnostics-record opgehaald voor elke unieke categorie.
 
 ```Kusto
 AzureDiagnostics
@@ -142,8 +142,8 @@ AzureDiagnostics
 | summarize any(*) by Category
 ```
 
-### <a name="get-the-latest-record-per-category"></a>Ontvang de nieuwste record per categorie
-In dit voorbeeld wordt de nieuwste Azure-diagnostische record in elke unieke categorie ontvangen.
+### <a name="get-the-latest-record-per-category"></a>De meest recente record per categorie ophalen
+In dit voor beeld wordt de meest recente Azure Diagnostics-record in elke unieke categorie opgehaald.
 
 ```Kusto
 AzureDiagnostics
@@ -153,8 +153,8 @@ AzureDiagnostics
 
 ## <a name="network-monitoring"></a>Netwerkbewaking
 
-### <a name="computers-with-unhealthy-latency"></a>Computers met ongezonde latentie
-In dit voorbeeld wordt een lijst met afzonderlijke computers met een ongezonde latentie.
+### <a name="computers-with-unhealthy-latency"></a>Computers met een onjuiste latentie
+In dit voor beeld wordt een lijst gemaakt van afzonderlijke computers met een onjuiste latentie.
 
 ```Kusto
 NetworkMonitoring 
@@ -165,8 +165,8 @@ NetworkMonitoring
 
 ## <a name="performance"></a>Prestaties
 
-### <a name="join-computer-perf-records-to-correlate-memory-and-cpu"></a>Deelnemen aan computerperf-records om geheugen en CPU te correleren
-In dit voorbeeld worden de **perf-records** van een bepaalde computer gecorreleerd en worden twee tijdgrafieken, de gemiddelde CPU en het maximale geheugen, gecorreleerd.
+### <a name="join-computer-perf-records-to-correlate-memory-and-cpu"></a>Computer prestatie records samen voegen om geheugen en CPU te correleren
+In dit voor beeld worden de **prestatie** records van een bepaalde computer en twee tijd grafieken, de gemiddelde CPU en het maximale geheugen, gemaakt.
 
 ```Kusto
 let StartTime = now()-5d;
@@ -185,8 +185,8 @@ Perf
 | render timechart
 ```
 
-### <a name="perf-cpu-utilization-graph-per-computer"></a>Grafiek perf CPU-gebruik per computer
-In dit voorbeeld wordt het CPU-gebruik berekend en in kaart gebracht van computers die beginnen met _Contoso_.
+### <a name="perf-cpu-utilization-graph-per-computer"></a>Grafiek van prestaties CPU-gebruik per computer
+In dit voor beeld wordt het CPU-gebruik van computers die beginnen met _Contoso_, berekend en gegrafeerd.
 
 ```Kusto
 Perf
@@ -199,8 +199,8 @@ Perf
 
 ## <a name="protection-status"></a>Beveiligingsstatus
 
-### <a name="computers-with-non-reporting-protection-status-duration"></a>Computers met de statusduur van de niet-rapportagestatus
-In dit voorbeeld worden computers weergegeven met een beveiligingsstatus _van Niet rapporteren_ en de duur waarin ze zich in deze status bevonden.
+### <a name="computers-with-non-reporting-protection-status-duration"></a>Computers met een status duur van niet-rapportage beveiliging
+In dit voor beeld worden computers weer gegeven die de beveiligings status _niet rapporteren_ hebben en de duur die ze in deze status hadden.
 
 ```Kusto
 ProtectionStatus
@@ -211,9 +211,9 @@ ProtectionStatus
 | extend durationNotReporting = endNotReporting - startNotReporting
 ```
 
-### <a name="match-protected-status-records-with-heartbeat-records"></a>Beveiligde statusrecords koppelen aan heartbeatrecords
-In dit voorbeeld worden gerelateerde beveiligingsstatusrecords en heartbeatrecords gevonden die op zowel computer als tijd zijn afgestemd.
-Het tijdsveld wordt afgerond op de dichtstbijzijnde minuut met behulp van **opslaglocatie**.
+### <a name="match-protected-status-records-with-heartbeat-records"></a>Beveiligde status records vergelijken met heartbeat-records
+In dit voor beeld worden gerelateerde beveiligings status records en vitale records gevonden die overeenkomen op zowel de computer als de tijd.
+Het veld tijd wordt afgerond op de dichtstbijzijnde minuut met behulp van **bin**.
 
 ```Kusto
 let protection_data = ProtectionStatus
@@ -224,13 +224,13 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ```
 
 
-## <a name="security-records"></a>Beveiligingsrecords
+## <a name="security-records"></a>Beveiligings records
 
-### <a name="count-security-events-by-activity-id"></a>Beveiligingsgebeurtenissen tellen op activiteits-id
+### <a name="count-security-events-by-activity-id"></a>Beveiligings gebeurtenissen per activiteits-ID tellen
 
 
-Dit voorbeeld is gebaseerd op de vaste \<\>-\<structuur\>van de kolom **Activiteit:** ID-naam .
-Het ontlijnt de **activiteitswaarde** in twee nieuwe kolommen en telt het optreden van elke **activityID**.
+In dit voor beeld wordt gebruikgemaakt van de vaste **Activity** structuur van de \<kolom\>-\<activiteit\>: id-naam.
+De waarde van de **activiteit** wordt geparseerd in twee nieuwe kolommen en telt het exemplaar van elke **activityID**.
 
 ```Kusto
 SecurityEvent
@@ -240,8 +240,8 @@ SecurityEvent
 | summarize count() by activityID
 ```
 
-### <a name="count-security-events-related-to-permissions"></a>Beveiligingsgebeurtenissen tellen met betrekking tot machtigingen
-In dit voorbeeld wordt het aantal **records van securityEvent** weergegeven, waarin de kolom **Activiteit** de hele term _Machtigingen_bevat. De query is van toepassing op records die in de afgelopen 30 minuten zijn gemaakt.
+### <a name="count-security-events-related-to-permissions"></a>Beveiligings gebeurtenissen met betrekking tot machtigingen tellen
+In dit voor beeld wordt het aantal **securityEvent** -records weer gegeven waarin de kolom **activiteit** de volledige term _machtigingen_bevat. De query is van toepassing op records die zijn gemaakt in de afgelopen 30 minuten.
 
 ```Kusto
 SecurityEvent
@@ -249,8 +249,8 @@ SecurityEvent
 | summarize EventCount = countif(Activity has "Permissions")
 ```
 
-### <a name="find-accounts-that-failed-to-log-in-from-computers-with-a-security-detection"></a>Accounts zoeken die niet kunnen inloggen vanaf computers met een beveiligingsdetectie
-In dit voorbeeld worden accounts gevonden en geteld die niet zijn aangemeld vanaf computers waarop we een beveiligingsdetectie identificeren.
+### <a name="find-accounts-that-failed-to-log-in-from-computers-with-a-security-detection"></a>Accounts zoeken die zich niet kunnen aanmelden bij computers met een beveiligings detectie
+In dit voor beeld worden accounts gevonden en geteld die niet kunnen worden aangemeld bij computers waarop we een beveiligings detectie identificeren.
 
 ```Kusto
 let detections = toscalar(SecurityDetection
@@ -260,8 +260,8 @@ SecurityEvent
 | summarize count() by Account
 ```
 
-### <a name="is-my-security-data-available"></a>Zijn mijn beveiligingsgegevens beschikbaar?
-Het starten van gegevensverkenning begint vaak met gegevensbeschikbaarheidscontrole. In dit voorbeeld wordt het aantal **SecurityEvent-records** in de afgelopen 30 minuten weergegeven.
+### <a name="is-my-security-data-available"></a>Zijn mijn beveiligings gegevens beschikbaar?
+Het verkennen van gegevens begint vaak met de controle van de gegevens beschikbaarheid. In dit voor beeld wordt het aantal **SecurityEvent** -records in de afgelopen 30 minuten weer gegeven.
 
 ```Kusto
 SecurityEvent 
@@ -269,8 +269,8 @@ SecurityEvent
 | count
 ```
 
-### <a name="parse-activity-name-and-id"></a>Naam en id van parse-activiteit
-De twee onderstaande voorbeelden zijn gebaseerd op \<de\>-\<\>vaste structuur van de kolom **Activiteit:** ID-naam . In het eerste voorbeeld wordt de **operator parse** gebruikt om waarden toe te wijzen aan twee nieuwe kolommen: **activityID** en **activityDesc**.
+### <a name="parse-activity-name-and-id"></a>Naam en ID van de parser-activiteit
+De twee voor beelden hieronder zijn afhankelijk van de vaste structuur **Activity** van de kolom \<activiteit\>-\<:\>id-naam. In het eerste voor beeld wordt de operator **parse** gebruikt om waarden toe te wijzen aan twee nieuwe kolommen: **activityID** en **activityDesc**.
 
 ```Kusto
 SecurityEvent
@@ -279,7 +279,7 @@ SecurityEvent
 | parse Activity with activityID " - " activityDesc
 ```
 
-In dit voorbeeld wordt de **gesplitste** operator gebruikt om een array met afzonderlijke waarden te maken
+In dit voor beeld wordt de operator **Split** gebruikt om een matrix met afzonderlijke waarden te maken
 ```Kusto
 SecurityEvent
 | take 100
@@ -288,8 +288,8 @@ SecurityEvent
 | project Activity , activityArr, activityId=activityArr[0]
 ```
 
-### <a name="explicit-credentials-processes"></a>Expliciete referentiesprocessen
-In het volgende voorbeeld wordt een cirkeldiagram weergegeven met processen die in de afgelopen week expliciete referenties hebben gebruikt
+### <a name="explicit-credentials-processes"></a>Expliciete referenties verwerken
+In het volgende voor beeld ziet u een cirkel diagram van processen die in de afgelopen week expliciete referenties hebben gebruikt
 
 ```Kusto
 SecurityEvent
@@ -300,9 +300,9 @@ SecurityEvent
 | render piechart 
 ```
 
-### <a name="top-running-processes"></a>Best lopende processen
+### <a name="top-running-processes"></a>Meest actieve processen
 
-In het volgende voorbeeld wordt een tijdslijn weergegeven voor de vijf meest voorkomende processen van de afgelopen drie dagen.
+In het volgende voor beeld ziet u de tijd lijn van de vijf meest voorkomende processen, in de afgelopen drie dagen.
 
 ```Kusto
 // Find all processes that started in the last three days. ID 4688: A new process has been created.
@@ -323,9 +323,9 @@ RunProcesses
 ```
 
 
-### <a name="find-repeating-failed-login-attempts-by-the-same-account-from-different-ips"></a>Herhaalde mislukte inlogpogingen zoeken door hetzelfde account van verschillende IP's
+### <a name="find-repeating-failed-login-attempts-by-the-same-account-from-different-ips"></a>Herhaalde mislukte aanmeldings pogingen zoeken op hetzelfde account uit verschillende Ip's
 
-In het volgende voorbeeld worden mislukte inlogpogingen van hetzelfde account van meer dan vijf verschillende IP's in de afgelopen zes uur gevonden.
+In het volgende voor beeld wordt gezocht naar mislukte aanmeldings pogingen van hetzelfde account van meer dan vijf verschillende Ip's in de afgelopen zes uur.
 
 ```Kusto
 SecurityEvent 
@@ -335,8 +335,8 @@ SecurityEvent
 | sort by IPCount desc
 ```
 
-### <a name="find-user-accounts-that-failed-to-log-in"></a>Gebruikersaccounts zoeken die niet zijn aangemeld 
-In het volgende voorbeeld worden gebruikersaccounts geïdentificeerd die op de laatste dag niet meer dan vijf keer zijn aangemeld en wanneer ze voor het laatst hebben geprobeerd in te loggen.
+### <a name="find-user-accounts-that-failed-to-log-in"></a>Gebruikers accounts zoeken waarvoor het aanmelden is mislukt 
+In het volgende voor beeld worden gebruikers accounts die in de afgelopen dag niet meer dan vijf keer zijn aangemeld, geïdentificeerd en wanneer de gebruiker zich voor het laatst heeft geprobeerd aan te melden.
 
 ```Kusto
 let timeframe = 1d;
@@ -348,7 +348,7 @@ SecurityEvent
 | project-away Account1
 ```
 
-Met behulp van **join**, en **laat** verklaringen kunnen we controleren of dezelfde verdachte accounts later in staat waren om in te loggen met succes.
+Met de instructie **samen voegen**kunnen we **controleren of dezelfde** verdachte accounts later kunnen worden aangemeld.
 
 ```Kusto
 let timeframe = 1d;
@@ -375,11 +375,11 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>Gebruik
 
-Het `Usage` gegevenstype kan worden gebruikt om het ingenomen gegevensvolume te volgen op oplossing of gegevenstype. Er zijn andere technieken om ingenomen gegevensvolumes te bestuderen per [computer](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer) of [Azure-abonnement, resourcegroep of resource.](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription)
+Het `Usage` gegevens type kan worden gebruikt om het opgenomen gegevens volume op basis van de oplossing of het gegevens type bij te houden. Er zijn andere technieken voor het onderzoeken van opgenomen gegevens volumes door de [computer](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer) of het [Azure-abonnement, de resource groep of de resource](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription).
 
 #### <a name="data-volume-by-solution"></a>Gegevensvolume per oplossing
 
-De query die wordt gebruikt om het factureerbare gegevensvolume per oplossing van de afgelopen maand te bekijken (met uitzondering van de laatste gedeeltelijke dag) is:
+De query die wordt gebruikt om het factureer bare gegevens volume per oplossing in de afgelopen maand te bekijken (met uitzonde ring van de laatste gedeeltelijke dag) is:
 
 ```kusto
 Usage 
@@ -389,11 +389,11 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-Houd er `where IsBillable = true` rekening mee dat de clausule gegevenstypen filtert uit bepaalde oplossingen waarvoor geen innamekosten zijn.  Ook de `TimeGenerated` clausule met is alleen om ervoor te zorgen dat de query-ervaring in de Azure-portal zal terug kijken dan de standaard 24 uur. Wanneer u het gegevenstype `EndTime` Gebruik gebruikt en `StartTime` de tijdbuckets weergeeft waarvoor de resultaten worden weergegeven. 
+Houd er rekening mee `where IsBillable = true` dat met de component gegevens typen worden gefilterd van bepaalde oplossingen waarvoor geen opname kosten worden berekend.  Ook de component with `TimeGenerated` is alleen om ervoor te zorgen dat de query-ervaring in het Azure Portal na de standaard 24 uur terugkeert. Wanneer u het gegevens type gebruik gebruikt `StartTime` en `EndTime` de tijds verzamelingen weergeeft waarvoor de resultaten worden weer gegeven. 
 
-#### <a name="data-volume-by-type"></a>Gegevensvolume per type
+#### <a name="data-volume-by-type"></a>Gegevens volume per type
 
-U verder inzoomen om gegevenstrends te bekijken op gegevenstype:
+U kunt verder inzoomen om gegevens trends weer te geven voor op gegevens type:
 
 ```kusto
 Usage 
@@ -403,7 +403,7 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
 ```
 
-Of om een tabel te zien op oplossing en type voor de afgelopen maand,
+Of om een tabel weer te geven op oplossing en type voor de afgelopen maand,
 
 ```kusto
 Usage 
@@ -415,12 +415,12 @@ Usage
 ```
 
 > [!NOTE]
-> Sommige velden van het gegevenstype Gebruik, terwijl ze nog in het schema staan, zijn afgeschaft en zullen hun waarden niet meer worden ingevuld. Dit zijn **computer-** en velden met betrekking tot inname (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** en **AverageProcessingTimeMs**.
+> Sommige velden van het gegevens type gebruik, terwijl ze nog steeds in het schema zijn, zijn afgeschaft en hun waarden worden niet meer ingevuld. Dit zijn zowel **computers** als velden met betrekking tot opname (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** en **AverageProcessingTimeMs**.
 
 ## <a name="updates"></a>Updates
 
-### <a name="computers-still-missing-updates"></a>Computers ontbreken nog steeds updates
-In dit voorbeeld wordt een lijst weergegeven met computers die een of meer kritieke updates een paar dagen geleden misten en nog steeds updates missen.
+### <a name="computers-still-missing-updates"></a>Er ontbreken nog updates op computers
+In dit voor beeld ziet u een lijst met computers waarvoor een of meer essentiële updates een paar dagen geleden ontbreken en nog steeds ontbrekende updates.
 
 ```Kusto
 let ComputersMissingUpdates3DaysAgo = Update
@@ -437,5 +437,5 @@ Update
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Raadpleeg de [Kusto-taalverwijzing](/azure/kusto/query) voor meer informatie over de taal.
-- Loop door een [les over het schrijven van logquery's in Azure Monitor.](get-started-queries.md)
+- Raadpleeg de [Naslag Gids voor Kusto](/azure/kusto/query) voor meer informatie over de taal.
+- Door loop een [Les over het schrijven van logboek query's in azure monitor](get-started-queries.md).

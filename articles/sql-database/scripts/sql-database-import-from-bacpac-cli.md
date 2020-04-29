@@ -1,6 +1,6 @@
 ---
-title: CLI-voorbeeld bacpac-bestand Importeren Azure SQL-database
-description: Azure CLI-voorbeeldscript om een BACPAC-bestand te importeren in een SQL-database
+title: CLI-voor beeld BACPAC-bestand importeren Azure SQL database
+description: Azure CLI-voorbeeld script voor het importeren van een BACPAC-bestand in een SQL database
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -12,15 +12,15 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
 ms.openlocfilehash: f47d0ec2edf54aaa708c176e92a9e1026b446882
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061833"
 ---
-# <a name="use-cli-to-import-a-bacpac-file-into-an-azure-sql-database"></a>CLI gebruiken om een BACPAC-bestand te importeren in een Azure SQL-database
+# <a name="use-cli-to-import-a-bacpac-file-into-an-azure-sql-database"></a>CLI gebruiken om een BACPAC-bestand te importeren in een Azure-SQL database
 
-In dit voorbeeld van het Azure CLI-script wordt een database uit een *bacpac-bestand* geïmporteerd in een Azure SQL-database.  
+In dit voor beeld van Azure CLI-script wordt een Data Base uit een *. Bacpac* -bestand in een Azure-SQL database geïmporteerd.  
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0 of hoger. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
@@ -36,20 +36,20 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 ### <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Gebruik de volgende opdracht om de resourcegroep en alle bijbehorende resources te verwijderen.
+Gebruik de volgende opdracht om de resource groep en alle bijbehorende resources te verwijderen.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Voorbeeldverwijzing
+## <a name="sample-reference"></a>Voorbeeld verwijzing
 
 In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | | |
 |---|---|
-| [az sql server](/cli/azure/sql/server) | Serveropdrachten. |
-| [az sql db importeren](/cli/azure/sql/db#az-sql-db-import) | Opdracht Databaseimporteren. |
+| [az sql server](/cli/azure/sql/server) | Server opdrachten. |
+| [AZ SQL DB import](/cli/azure/sql/db#az-sql-db-import) | Opdracht data base importeren. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

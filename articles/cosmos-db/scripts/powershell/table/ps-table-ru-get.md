@@ -1,6 +1,6 @@
 ---
-title: PowerShell-script om doorvoer (RU/s) voor Azure Cosmos DB Table API te krijgen
-description: Azure PowerShell-script - Azure Cosmos DB Get Throughput (RU/s) voor tabel-API
+title: Power shell-script voor het ophalen van door Voer (RU/s) voor Azure Cosmos DB Table-API
+description: Azure PowerShell script-Azure Cosmos DB door Voer (RU/s) voor Table-API ophalen
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: 0129b03e578d00689f085281d0499830e6ba37c2
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365566"
 ---
-# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Doorvoer (RU/s) opvragen voor een tabel voor Azure Cosmos DB - Tabel-API
+# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>De door Voer (RU/s) voor een tabel voor Azure Cosmos DB-Table-API ophalen
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,8 +39,8 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | Opdracht | Opmerkingen |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtablethroughput) | Hier wordt de doorvoerwaarde van de opgegeven tabel-API-tabel gegenereerd. |
-|**Azure-brongroepen**| |
+| [Get-AzCosmosDBTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtablethroughput) | Hiermee wordt de doorvoer waarde van de opgegeven Table-API tabel opgehaald. |
+|**Azure-resource groepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

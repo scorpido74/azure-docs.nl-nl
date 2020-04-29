@@ -1,19 +1,19 @@
 ---
-title: Zelfstudie - Een back-up maken van meerdere virtuele Azure-machines
-description: Leer in deze zelfstudie hoe u een vault voor Herstelservices maakt, een back-upbeleid definieert en tegelijkertijd een back-up maakt van meerdere virtuele machines.
+title: Zelf studie-back-ups maken van meerdere virtuele Azure-machines
+description: In deze zelf studie leert u hoe u een Recovery Services kluis kunt maken, een back-upbeleid kunt definiëren en tegelijkertijd meerdere virtuele machines kunt maken.
 ms.date: 01/31/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: f9306f2ef5c4b2a53dcba17cafca9ea13b8dab43
-ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80245239"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Azure Portal gebruiken voor het maken van een back-up van meerdere virtuele machines
 
-Wanneer u een back-up van gegevens in Azure maakt, kunt u die gegevens opslaan in een Azure-resource, een Recovery Services-kluis genaamd. De Recovery Services-kluisresource is beschikbaar via het menu Instellingen van de meeste Azure-services. Het voordeel van het hebben van de Vault Recovery Services geïntegreerd in het menu Instellingen van de meeste Azure-services maakt het eenvoudig om een back-up van gegevens te maken. Het is omslachtig om afzonderlijk met elke database of de virtuele machine in uw bedrijf te werken. Wat als u een back-up wilt uitvoeren van de gegevens voor alle virtuele machines op één afdeling of op één locatie? Als u een back-upbeleid maakt en dat beleid toepast op de gewenste virtuele machines, kunt u eenvoudig een back-up maken van meerdere virtuele machines. In deze zelfstudie wordt het volgende uitgelegd:
+Wanneer u een back-up van gegevens in Azure maakt, kunt u die gegevens opslaan in een Azure-resource, een Recovery Services-kluis genaamd. De Recovery Services-kluisresource is beschikbaar via het menu Instellingen van de meeste Azure-services. Het voor deel van het gebruik van de Recovery Services kluis geïntegreerd in het menu instellingen van de meeste Azure-Services maakt het eenvoudig om een back-up te maken van gegevens. Het is omslachtig om afzonderlijk met elke database of de virtuele machine in uw bedrijf te werken. Wat als u een back-up wilt uitvoeren van de gegevens voor alle virtuele machines op één afdeling of op één locatie? Als u een back-upbeleid maakt en dat beleid toepast op de gewenste virtuele machines, kunt u eenvoudig een back-up maken van meerdere virtuele machines. In deze zelfstudie wordt het volgende uitgelegd:
 
 > [!div class="checklist"]
 >
@@ -24,7 +24,7 @@ Wanneer u een back-up van gegevens in Azure maakt, kunt u die gegevens opslaan i
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
@@ -42,7 +42,7 @@ De Recovery Services-kluis bevat de back-upgegevens en het back-upbeleid dat wor
 
     * *myRecoveryServicesVault* in bij **Naam**.
     * De huidige abonnements-id wordt weergegeven in **Abonnement**. Als u meer abonnementen hebt, kunt u een ander abonnement kiezen voor de nieuwe kluis.
-    * Selecteer voor **Resourcegroep** de optie **Bestaande gebruiken** en kies *myResourceGroup*. Als *myResourceGroup* niet bestaat, selecteert u **Nieuw maken** en typt u *myResourceGroup*.
+    * Selecteer voor **Resourcegroep** de optie **Bestaande gebruiken** en kies *myResourceGroup*. Als *myResourceGroup* niet bestaat, selecteert u **nieuwe maken** en typt u *myResourceGroup*.
     * Kies in de vervolgkeuzelijst **Locatie** de optie *Europa - west*.
     * Klik op **Maken** om de Recovery Services-kluis te maken.
 
@@ -54,7 +54,7 @@ Wanneer u een Recovery Services-kluis maakt, heeft de kluis standaard geografisc
 
 ## <a name="set-backup-policy-to-protect-vms"></a>Back-upbeleid voor het beveiligen van virtuele machines instellen
 
-Nadat de Recovery Services-kluis is gemaakt, bestaat de volgende stap uit het configureren van de kluis voor het type gegevens en uit het instellen van het back-upbeleid. Het back-upbeleid is de planning voor hoe vaak en wanneer er herstelpunten worden gemaakt. Het beleid bevat ook de bewaartermijn voor de herstelpunten. Voor deze zelfstudie, laten we aannemen dat uw bedrijf is een sportcomplex met een hotel, stadion, en restaurants en concessies, en u bent de bescherming van de gegevens op de virtuele machines. Met de volgende stappen maakt u een back-upbeleid voor de financiële gegevens.
+Nadat de Recovery Services-kluis is gemaakt, bestaat de volgende stap uit het configureren van de kluis voor het type gegevens en uit het instellen van het back-upbeleid. Het back-upbeleid is de planning voor hoe vaak en wanneer er herstelpunten worden gemaakt. Het beleid bevat ook de bewaartermijn voor de herstelpunten. Voor deze zelf studie gaan we ervan uit dat uw bedrijf een sport complex is met een hotel, stadion, restaurants en concessies, en dat u de gegevens op de virtuele machines beveiligt. Met de volgende stappen maakt u een back-upbeleid voor de financiële gegevens.
 
 1. Selecteer **myRecoveryServicesVault** in de lijst met Recovery Services-kluizen om het dashboard ervan te openen.
 
@@ -84,7 +84,7 @@ Nadat de Recovery Services-kluis is gemaakt, bestaat de volgende stap uit het co
 
      Nadat het back-upbeleid is gemaakt, koppelt u het beleid aan de virtuele machines.
 
-6. Selecteer **in het** dialoogvenster Virtuele machines selecteren de optie *myVM* en klik op **OK** om het back-upbeleid te implementeren voor de virtuele machines.
+6. Selecteer in het dialoog venster **virtuele machines selecteren** de optie *myVM* en klik op **OK** om het back-upbeleid op de virtuele machines te implementeren.
 
     Alle virtuele machines die zich op dezelfde locatie bevinden en waaraan nog geen back-upbeleid is gekoppeld, worden weergegeven. *myVMH1* en *myVMR1* zijn geselecteerd om aan het beleid *Financiën* te worden gekoppeld.
 
@@ -148,7 +148,7 @@ Als u door wilt gaan met andere zelfstudies, verwijdert u de resources die u in 
 
     ![Het pictogram Instellingen](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
-4. Selecteer in het contextmenu **Back-up stoppen** om het menu Back-up stoppen te openen.
+4. Selecteer in het context menu de optie **back-up stoppen** om het menu back-up stoppen te openen.
 
     ![Het pictogram Instellingen](./media/tutorial-backup-vm-at-scale/context-menu-for-delete.png)
 
@@ -156,7 +156,7 @@ Als u door wilt gaan met andere zelfstudies, verwijdert u de resources die u in 
 
 6. Typ in het dialoogvenster **Typ de naam van het back-upitem** de tekst *myVM*.
 
-7. Zodra het back-upitem is geverifieerd (er verschijnt een vinkje), is **de knop Back-up stoppen** ingeschakeld. Klik op **Back-up stoppen** om het beleid te stoppen en de herstelpunten te verwijderen.
+7. Zodra het back-upitem is gecontroleerd (er wordt een vinkje weer gegeven), wordt de knop **back-up stoppen** ingeschakeld. Klik op **Back-up stoppen** om het beleid te stoppen en de herstelpunten te verwijderen.
 
     ![klik op Back-up stoppen om de kluis te verwijderen](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)
 

@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: een aangepaste opdracht maken met parameters (voorbeeld) - Spraakservice'
+title: 'Snelstartgids: een aangepaste opdracht maken met para meters (preview)-spraak service'
 titleSuffix: Azure Cognitive Services
-description: In dit artikel voegt u parameters toe aan een toepassing aangepaste opdrachten.
+description: In dit artikel voegt u para meters toe aan een toepassing voor aangepaste opdrachten.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -11,69 +11,69 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
 ms.openlocfilehash: 96312bac369cfa5fe3cb8a00fd63ecfbec624918
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80348532"
 ---
-# <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Snelstart: een aangepaste opdracht maken met parameters (voorbeeld)
+# <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Snelstartgids: een aangepaste opdracht maken met para meters (preview)
 
-In het [vorige artikel](./quickstart-custom-speech-commands-create-new.md)hebben we een nieuw project voor aangepaste opdrachten gemaakt om te reageren op opdrachten zonder parameters.
+In het [vorige artikel](./quickstart-custom-speech-commands-create-new.md)hebben we een nieuw project met aangepaste opdrachten gemaakt om te reageren op opdrachten zonder para meters.
 
-In dit artikel zullen we deze toepassing uitbreiden met parameters, zodat het kan omgaan met het in- en uitschakelen van meerdere apparaten.
+In dit artikel wordt deze toepassing uitgebreid met para meters zodat het mogelijk is om meerdere apparaten in te scha kelen en uit te scha kelen.
 
-## <a name="create-parameters"></a>Parameters maken
+## <a name="create-parameters"></a>Para meters maken
 
-1. Open het project [dat we eerder hebben gemaakt](./quickstart-custom-speech-commands-create-new.md)
-1. Omdat de opdracht nu aan en uit gaat, wijzigt u de naam van de opdracht in 'Uitschakelen'
-   - Plaats de plaats boven de naam van de opdracht en selecteer het pictogram bewerken om de naam te wijzigen
-1. Een nieuwe parameter maken om aan te geven of de gebruiker het apparaat wil in- of uitschakelen
-   - Het `+` pictogram naast de sectie Parameters selecteren
+1. Open het project dat [we eerder hebben gemaakt](./quickstart-custom-speech-commands-create-new.md)
+1. Omdat de opdracht nu wordt verwerkt en uitgeschakeld, wijzigt u de naam van de opdracht in ' TurnOnOff '
+   - Beweeg de muis aanwijzer over de naam van de opdracht en selecteer het bewerkings pictogram om de naam te wijzigen
+1. Maak een nieuwe para meter om aan te geven of de gebruiker het apparaat wil in-of uitschakelen
+   - Selecteer het `+` pictogram naast het gedeelte para meters
 
    > [!div class="mx-imgBorder"]
-   > ![Parameter maken](media/custom-speech-commands/create-on-off-parameter.png)
+   > ![Para meter maken](media/custom-speech-commands/create-on-off-parameter.png)
 
    | Instelling            | Voorgestelde waarde     | Beschrijving                                                                                               |
    | ------------------ | ------------------- | --------------------------------------------------------------------------------------------------------- |
-   | Name               | OnOff               | Een beschrijvende naam voor uw parameter                                                                     |
-   | Is wereldwijd          | Ongecontroleerde           | Selectievakje dat aangeeft of een waarde voor deze parameter wereldwijd wordt toegepast op alle opdrachten in het project |
-   | Vereist           | Gecontroleerd             | Selectievakje dat aangeeft of een waarde voor deze parameter vereist is voordat de opdracht wordt voltooid          |
-   | Antwoordsjabloon  | "- Aan of uit?"      | Een prompt om de waarde van deze parameter te vragen wanneer deze niet bekend is                                       |
-   | Type               | Tekenreeks              | Het type parameter, zoals Getal, Tekenreeks of Datumtijd                                               |
-   | Configuratie      | Tekenreekslijst         | Voor tekenreeksen beperkt een tekenreekslijst invoer tot een reeks mogelijke waarden                                      |
-   | Lijstwaarden voor tekenreeksen | aan, uit             | Voor een parameter String List, de set mogelijke waarden en hun synoniemen                                |
+   | Naam               | OnOff               | Een beschrijvende naam voor uw para meter                                                                     |
+   | Is wereld wijd          | uitgeschakeld           | Selectie vakje dat aangeeft of een waarde voor deze para meter globaal moet worden toegepast op alle opdrachten in het project |
+   | Vereist           | wel             | Selectie vakje dat aangeeft of een waarde voor deze para meter vereist is voordat de opdracht wordt voltooid          |
+   | Antwoord sjabloon  | '-Aan of uit? '      | Een prompt om te vragen naar de waarde van deze para meter als deze niet bekend is                                       |
+   | Type               | Tekenreeks              | Het type para meter, zoals getal, teken reeks of datum/tijd                                               |
+   | Configuratie      | Lijst met teken reeksen         | Voor teken reeksen beperkt een reeks lijst invoer naar een reeks mogelijke waarden                                      |
+   | Waarden van de lijst met teken reeksen | aan, uit             | Voor een para meter van een teken reeks lijst, de reeks mogelijke waarden en hun synoniemen                                |
 
-   - Selecteer vervolgens `+` opnieuw het pictogram om een tweede parameter toe te voegen om de naam van de apparaten weer te geven. Voor dit voorbeeld, een tv en een fan
+   - Selecteer vervolgens het `+` pictogram opnieuw om een tweede para meter toe te voegen om de naam van de apparaten weer te geven. Voor dit voor beeld is een tv en een ventilator
 
    | Instelling            | Voorgestelde waarde       | Beschrijving                                                                                               |
    | ------------------ | --------------------- | --------------------------------------------------------------------------------------------------------- |
-   | Name               | OnderwerpApparaat         | Een beschrijvende naam voor uw parameter                                                                     |
-   | Is wereldwijd          | Ongecontroleerde             | Selectievakje dat aangeeft of een waarde voor deze parameter wereldwijd wordt toegepast op alle opdrachten in het project |
-   | Vereist           | Gecontroleerd               | Selectievakje dat aangeeft of een waarde voor deze parameter vereist is voordat de opdracht wordt voltooid          |
-   | Antwoordsjabloon  | "- Welk apparaat?"     | Een prompt om de waarde van deze parameter te vragen wanneer deze niet bekend is                                       |
-   | Type               | Tekenreeks                | Het type parameter, zoals Getal, Tekenreeks of Datumtijd                                               |
-   | Configuratie      | Tekenreekslijst           | Voor tekenreeksen beperkt een tekenreekslijst invoer tot een reeks mogelijke waarden                                      |
-   | Lijstwaarden voor tekenreeksen | tv, ventilator               | Voor een parameter String List, de set mogelijke waarden en hun synoniemen                                |
-   | Synoniemen (tv)      | televisie, televisie     | Optionele synoniemen voor elke mogelijke waarde van een tekenreekslijstparameter                                      |
+   | Naam               | SubjectDevice         | Een beschrijvende naam voor uw para meter                                                                     |
+   | Is wereld wijd          | uitgeschakeld             | Selectie vakje dat aangeeft of een waarde voor deze para meter globaal moet worden toegepast op alle opdrachten in het project |
+   | Vereist           | wel               | Selectie vakje dat aangeeft of een waarde voor deze para meter vereist is voordat de opdracht wordt voltooid          |
+   | Antwoord sjabloon  | "-Welk apparaat?"     | Een prompt om te vragen naar de waarde van deze para meter als deze niet bekend is                                       |
+   | Type               | Tekenreeks                | Het type para meter, zoals getal, teken reeks of datum/tijd                                               |
+   | Configuratie      | Lijst met teken reeksen           | Voor teken reeksen beperkt een reeks lijst invoer naar een reeks mogelijke waarden                                      |
+   | Waarden van de lijst met teken reeksen | TV, ventilator               | Voor een para meter van een teken reeks lijst, de reeks mogelijke waarden en hun synoniemen                                |
+   | Synoniemen (TV)      | televisie, informatie     | Optionele synoniemen voor elke mogelijke waarde van een para meter van een teken reeks lijst                                      |
 
-## <a name="add-sample-sentences"></a>Voorbeeldzinnen toevoegen
+## <a name="add-sample-sentences"></a>Voorbeeld zinnen toevoegen
 
-Met parameters is het handig om voorbeeldzinnen toe te voegen die alle mogelijke combinaties bestrijken. Bijvoorbeeld:
+Met para meters is het handig om voorbeeld zinnen toe te voegen die betrekking hebben op alle mogelijke combi Naties. Bijvoorbeeld:
 
-1. Volledige parameterinformatie -`"turn {OnOff} the {SubjectDevice}"`
-1. Gedeeltelijke parameterinformatie -`"turn it {OnOff}"`
-1. Geen parameterinformatie -`"turn something"`
+1. Volledige parameter informatie-`"turn {OnOff} the {SubjectDevice}"`
+1. Gedeeltelijke parameter informatie-`"turn it {OnOff}"`
+1. Geen parameter informatie-`"turn something"`
 
-Met voorbeeldzinnen met verschillende hoeveelheden informatie kan de toepassing Aangepaste opdrachten zowel one-shot resoluties als multi-turn resoluties oplossen met gedeeltelijke informatie.
+Met een voor beeld van zinnen met verschillende hoeveel heden informatie kan de toepassing voor aangepaste opdrachten zowel oplossingen met één afronding als multi-turn oplossen met gedeeltelijke informatie.
 
-Met dat in gedachten bewerkt u de voorbeeldzinnen om de parameters te gebruiken zoals hieronder wordt voorgesteld.
+In dat doen kunt u de voorbeeld zinnen bewerken om de para meters te gebruiken zoals hieronder wordt voorgesteld.
 
 > [!TIP]
-> Gebruik in de editor Voorbeeldzinnen een krullende beugel om naar uw parameters te verwijzen. - `turn {OnOff} the {SubjectDevice}`Gebruik de voltooiing van tabbladen om te verwijzen naar eerder gemaakte parameters.
+> Gebruik accolades in de voor beelden van de editor om de para meters te raadplegen. - `turn {OnOff} the {SubjectDevice}`Gebruik Tab-aanvulling om te verwijzen naar eerder gemaakte para meters.
 
 > [!div class="mx-imgBorder"]
-> ![Voorbeeldzinnen met parameters](media/custom-speech-commands/create-parameter-sentences.png)
+> ![Voorbeeld zinnen met para meters](media/custom-speech-commands/create-parameter-sentences.png)
 
 ```
 turn {OnOff} the {SubjectDevice}
@@ -83,12 +83,12 @@ turn something {OnOff}
 turn something
 ```
 
-## <a name="add-parameters-to-completion-rule"></a>Parameters toevoegen aan de regel Voltooiing
+## <a name="add-parameters-to-completion-rule"></a>Para meters toevoegen aan voltooiings regel
 
-Wijzig de regel Voltooiing die u in [de vorige snelstart](./quickstart-custom-speech-commands-create-new.md)hebt gemaakt:
+Wijzig de voltooiings regel die u hebt gemaakt in [de vorige Snelstartgids](./quickstart-custom-speech-commands-create-new.md):
 
-1. Voeg een nieuwe voorwaarde toe en selecteer De parameter Vereist. Selecteer `OnOff` beide en`SubjectDevice`
-1. Bewerk de actie Spraakreactie om te gebruiken `OnOff` en: `SubjectDevice`
+1. Voeg een nieuwe voor waarde toe en selecteer de vereiste para meter. Selecteer beide `OnOff` en`SubjectDevice`
+1. Bewerk de actie voor spraak antwoorden om `OnOff` te `SubjectDevice`gebruiken en:
 
    ```
    - Ok, turning {OnOff} the {SubjectDevice}
@@ -96,19 +96,19 @@ Wijzig de regel Voltooiing die u in [de vorige snelstart](./quickstart-custom-sp
 
 ## <a name="try-it-out"></a>Uitproberen
 
-Open het chatpaneel Testen en probeer een paar interacties.
+Open het deel venster chat testen en probeer enkele interacties.
 
-- Invoer: zet de tv uit
-- Output: Ok, het uitschakelen van de tv
+- Invoer: de TV uitschakelen
+- Uitvoer: OK, de TV uitschakelen
 
-- Input: zet de televisie uit
-- Output: Ok, het uitschakelen van de tv
+- Invoer: de televisie uitschakelen
+- Uitvoer: OK, de TV uitschakelen
 
-- Invoer: schakel het uit
-- Uitgang: Welk apparaat?
-- Input: de tv
-- Output: Ok, het uitschakelen van de tv
+- Invoer: uitschakelen
+- Uitvoer: welk apparaat?
+- Invoer: de TV
+- Uitvoer: OK, de TV uitschakelen
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
-> [Snelstart: aangepaste opdrachten gebruiken met aangepaste spraak (voorbeeld)](./quickstart-custom-speech-commands-select-custom-voice.md)
+> [Snelstartgids: aangepaste opdrachten gebruiken met aangepaste spraak (preview-versie)](./quickstart-custom-speech-commands-select-custom-voice.md)

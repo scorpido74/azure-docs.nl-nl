@@ -1,7 +1,7 @@
 ---
-title: Trefwoordextractie met behulp van de API Voor Text Analytics REST
+title: Extractie van sleutel zinnen met behulp van de Text Analytics REST API
 titleSuffix: Azure Cognitive Services
-description: Sleutelzinnen extraheren met behulp van de TEXT Analytics REST API uit Azure Cognitive Services.
+description: Sleutel zinnen extra heren met behulp van de REST API Text Analytics van Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,13 +11,13 @@ ms.topic: article
 ms.date: 07/29/2019
 ms.author: raymondl
 ms.openlocfilehash: ec5ff756d7e732430675676868bc754627a2a4a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72429025"
 ---
-# <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Voorbeeld: Sleutelzinnen extraheren met Text Analytics
+# <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Voor beeld: sleutel zinnen extra heren met behulp van Text Analytics
 
 De [Sleuteltermextractie API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) evalueert ongestructureerde tekst en retourneert voor elk JSON-document een lijst met sleuteltermen.
 
@@ -32,9 +32,9 @@ Zie voor meer informatie [Ondersteunde talen](../text-analytics-supported-langua
 
 Sleuteltermextractie werkt het beste wanneer u grotere segmenten tekst opgeeft. Dit is het tegenovergestelde van sentimentanalyse, wat beter presteert op kleinere blokken tekst. Overweeg dienovereenkomstig herstructurering van de invoer voor de beste resultaten uit beide bewerkingen.
 
-U moet JSON-documenten in deze indeling hebben: ID, tekst, taal
+U moet JSON-documenten hebben met de volgende indeling: ID, tekst, taal
 
-De documentgrootte moet 5.120 of minder tekens per document zijn en u maximaal 1.000 items (ID's) per verzameling hebben. De verzameling is in de hoofdtekst van de aanvraag ingediend. Het volgende voorbeeld geeft de inhoud die u kunt indienen voor sleuteltermextractie.
+De document grootte moet 5.120 of minder tekens per document zijn en u kunt Maxi maal 1.000 items (Id's) per verzameling hebben. De verzameling is in de hoofdtekst van de aanvraag ingediend. Het volgende voorbeeld geeft de inhoud die u kunt indienen voor sleuteltermextractie.
 
 ```json
     {
@@ -70,13 +70,13 @@ De documentgrootte moet 5.120 of minder tekens per document zijn en u maximaal 1
 
 ## <a name="step-1-structure-the-request"></a>Stap 1: Structuur van de aanvraag
 
-Zie [De API voor Text Analytics aanroepen](text-analytics-how-to-call-api.md)voor informatie over de definitie van aanvragen. De volgende punten zijn voor uw gemak opnieuw geformuleerd:
+Zie [de Text Analytics-API aanroepen](text-analytics-how-to-call-api.md)voor informatie over de definitie van aanvragen. De volgende punten zijn voor uw gemak opnieuw geformuleerd:
 
-+ Maak een **POST**-aanvraag. Bekijk de API-documentatie voor dit verzoek: [Key Phrases API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6).
++ Maak een **POST**-aanvraag. Raadpleeg de API-documentatie voor deze aanvraag: [Key frases-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6).
 
-+ Stel het HTTP-eindpunt in voor het extraheren van de sleutelwoord met behulp van een Text Analytics-bron op Azure of een geinstantiated [Text Analytics-container.](text-analytics-how-to-install-containers.md) U moet `/text/analytics/v2.1/keyPhrases` opnemen in de URL. Bijvoorbeeld: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`.
++ Stel het HTTP-eind punt voor de extractie van sleutel woordgroepen in met behulp van een Text Analytics bron in azure of een geïnstantieerd [Text Analytics container](text-analytics-how-to-install-containers.md). U moet in `/text/analytics/v2.1/keyPhrases` de URL toevoegen. Bijvoorbeeld: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`.
 
-+ Stel een aanvraagkop in om de [toegangssleutel](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) voor Text Analytics-bewerkingen op te nemen.
++ Stel een aanvraag header in voor het toevoegen van de [toegangs sleutel](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) voor Text Analytics bewerkingen.
 
 + Verstrek in de hoofdtekst van de aanvraag de JSON-documentenverzameling die u hebt voorbereid voor deze analyse.
 
@@ -85,13 +85,13 @@ Zie [De API voor Text Analytics aanroepen](text-analytics-how-to-call-api.md)voo
 
 ## <a name="step-2-post-the-request"></a>Stap 2: De aanvraag posten
 
-Analyse wordt uitgevoerd na ontvangst van de aanvraag. Zie de sectie [gegevenslimieten](../overview.md#data-limits) in het overzicht voor informatie over de grootte en het aantal aanvragen dat u per minuut of per seconde verzenden.
+Analyse wordt uitgevoerd na ontvangst van de aanvraag. Zie de sectie [gegevens limieten](../overview.md#data-limits) in het overzicht voor meer informatie over de grootte en het aantal aanvragen dat u per minuut of per seconde kunt verzenden.
 
 Terughalen als de service staatloos is. Er worden geen gegevens opgeslagen in uw account. Resultaten worden onmiddellijk in het antwoord geretourneerd.
 
 ## <a name="step-3-view-results"></a>Stap 3: Resultaten weergeven
 
-Alle POST-verzoeken retourneren een ingedeeld JSON-antwoord met de id's en gedetecteerde eigenschappen. De volgorde van de geretourneerde sleutelzinnen wordt intern bepaald, door het model.
+Alle POST-verzoeken retourneren een ingedeeld JSON-antwoord met de id's en gedetecteerde eigenschappen. De volg orde van de geretourneerde sleutel zinnen wordt intern bepaald door het model.
 
 Uitvoer wordt onmiddellijk geretourneerd. U kunt de resultaten streamen naar een toepassing die JSON accepteert of u kunt de uitvoer opslaan als lokaal bestand en vervolgens importeren in een toepassing waarmee u kunt sorteren, zoeken en de gegevens kunt manipuleren.
 
@@ -146,16 +146,16 @@ Een voorbeeld van de uitvoer voor sleuteltermextractie:
     }
 ```
 
-Zoals opgemerkt, de analyzer vindt en gooi niet-essentiële woorden, en het houdt enkele termen of zinnen die lijken te zijn het onderwerp of object van een zin.
+Zoals aangegeven, detecteert en negeert het analyse programma niet-essentiële woorden en worden enkele termen of zinsdelen weer gegeven die het onderwerp of object van een zin lijken te zijn.
 
 ## <a name="summary"></a>Samenvatting
 
-In dit artikel hebt u concepten en werkstroom geleerd voor het extraheren van de sleutelzin met behulp van Text Analytics in Cognitive Services. Samenvatting:
+In dit artikel hebt u concepten en werk stromen geleerd voor het uitpakken van sleutel zinnen door gebruik te maken van Text Analytics in Cognitive Services. Samenvatting:
 
 + [Sleuteltermextractie-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) is beschikbaar in bepaalde talen.
-+ JSON-documenten in de aanvraaginstantie bevatten een ID, tekst en taalcode.
++ JSON-documenten in de hoofd tekst van de aanvraag bevatten een ID, tekst en taal code.
 + POST-aanvraag is een `/keyphrases`-eindpunt die een persoonlijke [toegangssleutel en een eindpunt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) gebruikt die geldig zijn voor uw abonnement.
-+ Responsuitvoer, die bestaat uit trefwoorden en woordgroepen voor elke document-id, kan worden gestreamd naar elke app die JSON accepteert, waaronder Microsoft Office Excel en Power BI, om er maar een paar te noemen.
++ De uitvoer van antwoorden, die bestaat uit sleutel woorden en zinsdelen voor elke document-ID, kan worden gestreamd naar elke app die JSON accepteert, met inbegrip van Microsoft Office Excel en Power BI, om een paar te noemen.
 
 ## <a name="see-also"></a>Zie ook
 
@@ -165,4 +165,4 @@ In dit artikel hebt u concepten en werkstroom geleerd voor het extraheren van de
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Text Analytics-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
+> [Tekstanalyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)

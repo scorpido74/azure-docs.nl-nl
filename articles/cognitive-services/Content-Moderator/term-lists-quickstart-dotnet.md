@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 68da335875752d326ee718cade3d501623c70b49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72935945"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>Tekst controleren aan de hand van een aangepaste termenlijst in C#
@@ -32,7 +32,7 @@ In dit artikel vindt u informatie en codevoorbeelden om aan de slag te gaan met 
 - Lijstgegevens bewerken.
 - De index vernieuwen zodat wijzigingen in de lijst worden gebruikt in een nieuwe scan.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint. 
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Registreren voor de Content Moderator-services
 
@@ -69,7 +69,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>De Content Moderator-client maken
 
-Voeg de volgende code toe om een Content Moderator-client voor uw abonnement te maken. Werk `AzureEndpoint` de `CMSubscriptionKey` velden en velden bij met de waarden van uw URL voor eindpunt en abonnementssleutel. Deze vindt u op het tabblad **Snel starten** van uw resource in de Azure-portal.
+Voeg de volgende code toe om een Content Moderator-client voor uw abonnement te maken. Werk de `AzureEndpoint` velden `CMSubscriptionKey` en bij met de waarden van uw eind punt-URL en abonnements sleutel. U vindt deze in het Azure Portal op het tabblad **Quick Start** van uw resource.
 
 ```csharp
 /// <summary>
@@ -264,7 +264,7 @@ U kunt tekst screenen met behulp van een termenlijst met **ContentModeratorClien
 - Een MIME-type, te weten 'text/html', 'text/xml', 'text/markdown' of 'text/plain'.
 - De tekst die moet worden gescreend.
 - Een Booleaanse waarde Stel dit veld in op **true** om AutoCorrectie toe te passen op de tekst voordat deze wordt gescreend.
-- Een Booleaanse waarde Stel dit veld **in op true** om persoonlijke gegevens in de tekst te detecteren.
+- Een Booleaanse waarde Stel dit veld in op **waar** om persoons gegevens in de tekst te detecteren.
 - De id van de termenlijst.
 
 Zie voor meer informatie de [API-naslaghandleiding](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f).
@@ -362,9 +362,9 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="compose-the-main-method"></a>De hoofdmethode opstellen
+## <a name="compose-the-main-method"></a>De methode Main opstellen
 
-Voeg de definitie van de **hoofdmethode** toe aan **termlisten**, **klasseprogramma**voor naamruimte . Sluit ten slotte de klasse **Programma** en de **naamruimte TermLists.**
+Voeg de definitie van de **hoofd** methode toe aan naam ruimte **TermLists**, Class- **programma**. Sluit ten slotte de **programma** klasse en de **TermLists** -naam ruimte.
 
 ```csharp
 static void Main(string[] args)
@@ -404,7 +404,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-application-to-see-the-output"></a>De toepassing uitvoeren om de uitvoer te bekijken
 
-De uitvoer van uw console ziet er als volgt uit:
+De uitvoer van de console ziet er als volgt uit:
 
 ```console
 Creating term list.

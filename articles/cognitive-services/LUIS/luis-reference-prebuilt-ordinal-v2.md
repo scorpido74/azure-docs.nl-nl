@@ -1,7 +1,7 @@
 ---
-title: Ordinal V2 voorgebouwde entiteit - LUIS
+title: Rang telwoord v2 vooraf gebouwde entiteit-LUIS
 titleSuffix: Azure Cognitive Services
-description: Dit artikel bevat prebuilt informatie over de entiteit v2 in Language Understanding (LUIS).
+description: Dit artikel bevat vooraf opgemaakte nummer v2-entiteits gegevens in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,24 +12,24 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 5e852313db75e598da647ea0f985e2ee18af16de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270489"
 ---
-# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>Ordinale V2-voorgebouwde entiteit voor een LUIS-app
-Ordinal V2-nummer breidt [Ordinal](luis-reference-prebuilt-ordinal.md) uit `next`met `last`relatieve `previous`verwijzingen zoals , en . Deze worden niet geëxtraheerd met behulp van de ordinale voorgebouwde entiteit.
+# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>Rang telwoord v2 vooraf gebouwde entiteit voor een LUIS-app
+Ordinal v2 `next`-nummer breidt [rang telwoord](luis-reference-prebuilt-ordinal.md) uit om relatieve verwijzingen te `last`bieden, `previous`zoals,, en. Deze worden niet geëxtraheerd met behulp van de vooraf gebouwde ordinale entiteit.
 
-## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>Oplossing voor prebuilt ordinale V2-entiteit
+## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>Oplossing voor vooraf ontwikkelde rang telwoord v2-entiteit
 
-De volgende entiteitsobjecten worden geretourneerd voor de query:
+De volgende entiteits objecten worden geretourneerd voor de query:
 
 `what is the second to last choice in the list`
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
-De volgende JSON `verbose` is met `false`de parameter ingesteld op:
+De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 
 ```json
 "entities": {
@@ -42,9 +42,9 @@ De volgende JSON `verbose` is met `false`de parameter ingesteld op:
 }
 ```
 
-#### <a name="v3-verbose-response"></a>[V3 verbose reactie](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
 
-De volgende JSON `verbose` is met `true`de parameter ingesteld op:
+De volgende JSON is met de `verbose` para meter ingesteld `true`op:
 
 ```json
 "entities": {
@@ -73,7 +73,7 @@ De volgende JSON `verbose` is met `true`de parameter ingesteld op:
 ```
 #### <a name="v2-response"></a>[V2-antwoord](#tab/V2)
 
-In het volgende voorbeeld ziet u de resolutie van de entiteit **builtin.ordinalV2.**
+In het volgende voor beeld ziet u de oplossing van de **ingebouwde entiteit. ordinalV2** .
 
 ```json
 "entities": [
@@ -93,6 +93,6 @@ In het volgende voorbeeld ziet u de resolutie van de entiteit **builtin.ordinalV
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [V3-voorspellingseindpunt](luis-migration-api-v3.md).
+Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
-Meer informatie over het [percentage,](luis-reference-prebuilt-percentage.md) [telefoonnummer](luis-reference-prebuilt-phonenumber.md)en [temperatuurentiteiten.](luis-reference-prebuilt-temperature.md)
+Meer informatie over het [percentage](luis-reference-prebuilt-percentage.md), het [telefoon nummer](luis-reference-prebuilt-phonenumber.md)en de [temperatuur](luis-reference-prebuilt-temperature.md) entiteiten.

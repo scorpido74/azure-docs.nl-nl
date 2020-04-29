@@ -1,7 +1,7 @@
 ---
-title: Methode voor talen van de vertalertekst-API
+title: Methode voor Translator Text-API talen
 titleSuffix: Azure Cognitive Services
-description: De methode Talen krijgt de set talen die momenteel worden ondersteund door andere bewerkingen van de Translator Text API.
+description: De methode languages haalt de set talen op die momenteel wordt ondersteund door andere bewerkingen van de Translator Text-API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,71 +11,71 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 37f70399e8125db559098869cdfffdf4533498d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73835838"
 ---
-# <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Talen
+# <a name="translator-text-api-30-languages"></a>Translator Text-API 3,0: talen
 
-Krijgt de set talen die momenteel worden ondersteund door andere bewerkingen van de Translator Text API. 
+Hiermee wordt de set talen opgehaald die momenteel door andere bewerkingen van de Translator Text-API worden ondersteund. 
 
 ## <a name="request-url"></a>Aanvraag-URL
 
-Stuur `GET` een verzoek naar:
+Een `GET` aanvraag verzenden naar:
 ```HTTP
 https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 ```
 
-## <a name="request-parameters"></a>Parameters aanvragen
+## <a name="request-parameters"></a>Aanvraag parameters
 
-De aangezochtparameters die op de querytekenreeks worden doorgegeven, zijn:
+Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
 
 <table width="100%">
-  <th width="20%">Queryparameter</th>
+  <th width="20%">Query parameter</th>
   <th>Beschrijving</th>
   <tr>
     <td>api-versie</td>
-    <td><em>Vereiste parameter</em>.<br/>Versie van de API die door de client is aangevraagd. Waarde moet `3.0`zijn .</td>
+    <td><em>Vereiste para meter</em>.<br/>De versie van de API die door de client is aangevraagd. Waarde moet zijn `3.0`.</td>
   </tr>
   <tr>
     <td>scope</td>
-    <td>*Optionele parameter*.<br/>Een door komma's gescheiden lijst met namen die de groep talen definiëren om terug te keren. Toegestane groepsnamen `translation`zijn: `transliteration` `dictionary`, en . Als er geen bereik wordt gegeven, worden alle `scope=translation,transliteration,dictionary`groepen geretourneerd, wat gelijk staat aan het passeren van . Zie de beschrijving van het [antwoordobject](#response-body)om te bepalen welke set ondersteunde talen geschikt is voor uw scenario.</td>
+    <td>*Optionele para meter*.<br/>Een door komma's gescheiden lijst met namen die de groep talen bepalen die moet worden geretourneerd. Toegestane groeps namen zijn `translation`: `transliteration` , `dictionary`en. Als er geen bereik is opgegeven, worden alle groepen geretourneerd, wat gelijk is aan door `scope=translation,transliteration,dictionary`geven. Zie de beschrijving van het [antwoord object](#response-body)om te bepalen welke set ondersteunde talen geschikt is voor uw scenario.</td>
   </tr>
 </table> 
 
-De headers van de vraag zijn:
+Aanvraag headers zijn:
 
 <table width="100%">
   <th width="20%">Headers</th>
   <th>Beschrijving</th>
   <tr>
     <td>Accept-Language</td>
-    <td>*Optionele aanvraagkoptekst*.<br/>De taal die moet worden gebruikt voor gebruikersinterfacetekenreeksen. Sommige velden in het antwoord zijn namen van talen of namen van regio's. Gebruik deze parameter om de taal te definiëren waarin deze namen worden geretourneerd. De taal wordt gespecificeerd door het verstrekken van een goed gevormde BCP 47 taaltag. Gebruik bijvoorbeeld de `fr` waarde om namen in het `zh-Hant` Frans op te vragen of gebruik de waarde om namen op te vragen in het Chinese Traditioneel.<br/>Namen worden in het Engels opgegeven wanneer een doeltaal niet is opgegeven of wanneer lokalisatie niet beschikbaar is.
+    <td>*Optionele aanvraag header*.<br/>De taal die moet worden gebruikt voor gebruikersinterfacetekenreeksen. Sommige velden in het antwoord zijn namen van talen of namen van regio's. Gebruik deze para meter om de taal te definiëren waarin deze namen worden geretourneerd. De taal wordt opgegeven door een juist opgemaakte BCP 47-taal code op te geven. Gebruik bijvoorbeeld de waarde `fr` voor het aanvragen van namen in het Frans of gebruik de `zh-Hant` waarde om namen aan te vragen in traditioneel Chinees.<br/>Namen worden in de Engelse taal weer gegeven wanneer er geen doel taal is opgegeven of wanneer lokalisatie niet beschikbaar is.
     </td>
   </tr>
   <tr>
-    <td>X-ClientTraceid</td>
-    <td>*Optionele aanvraagkoptekst*.<br/>Een door de klant gegenereerde GUID om de aanvraag op unieke wijze te identificeren.</td>
+    <td>X-ClientTraceId</td>
+    <td>*Optionele aanvraag header*.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren.</td>
   </tr>
 </table> 
 
-Verificatie is niet vereist om taalbronnen op te halen.
+Verificatie is niet vereist om taal bronnen op te halen.
 
 ## <a name="response-body"></a>Hoofdtekst van de reactie
 
-Een client `scope` gebruikt de queryparameter om te bepalen in welke groepen talen hij geïnteresseerd is.
+Een client gebruikt de `scope` query parameter voor het definiëren van de groepen van de talen waarin het is geïnteresseerd.
 
-* `scope=translation`biedt talen die worden ondersteund om tekst van de ene taal naar de andere te vertalen;
+* `scope=translation`biedt talen ondersteuning voor het vertalen van tekst van de ene taal naar een andere taal.
 
-* `scope=transliteration`biedt mogelijkheden voor het converteren van tekst in de ene taal van het ene script naar het andere script;
+* `scope=transliteration`biedt mogelijkheden voor het converteren van tekst in één taal van het ene script naar een ander script;
 
-* `scope=dictionary`biedt taalparen `Dictionary` waarvoor bewerkingen gegevens retourneren.
+* `scope=dictionary`biedt taal paren waarvoor `Dictionary` bewerkingen gegevens retour neren.
 
-Een client kan meerdere groepen tegelijk ophalen door een door komma's gescheiden lijst met namen op te geven. Als `scope=translation,transliteration,dictionary` u bijvoorbeeld ondersteunde talen voor alle groepen retourneert.
+Een client kan meerdere groepen tegelijkertijd ophalen door een door komma's gescheiden lijst met namen op te geven. Retourneert bijvoorbeeld `scope=translation,transliteration,dictionary` ondersteunde talen voor alle groepen.
 
-Een succesvol antwoord is een JSON-object met één eigenschap voor elke aangevraagde groep:
+Een geslaagde reactie is een JSON-object met één eigenschap voor elke aangevraagde groep:
 
 ```json
 {
@@ -93,17 +93,17 @@ Een succesvol antwoord is een JSON-object met één eigenschap voor elke aangevr
 
 De waarde voor elke eigenschap is als volgt.
 
-* `translation`Eigenschap
+* `translation`eigenschap
 
-  De waarde `translation` van de eigenschap is een woordenboek van (sleutel, waarde) paren. Elke toets is een BCP 47-taaltag. Een sleutel identificeert een taal waarnaar tekst kan worden vertaald of vertaald. De waarde die aan de sleutel is gekoppeld, is een JSON-object met eigenschappen die de taal beschrijven:
+  De waarde van de `translation` eigenschap is een woorden lijst van paren (sleutel, waarde). Elke sleutel is een BCP 47-taal code. Een sleutel geeft een taal aan waarvoor tekst kan worden vertaald of vertaald. De waarde die is gekoppeld aan de sleutel is een JSON-object met eigenschappen die de taal beschrijven:
 
-  * `name`: Geef de naam van de taal `Accept-Language` weer in de landine die via de kopwordt gevraagd.
+  * `name`: Weergave naam van de taal in de land instelling die `Accept-Language` via de header is aangevraagd.
 
-  * `nativeName`: Geef de naam van de taal weer in de landinstelling voor deze taal.
+  * `nativeName`: Weergave naam van de taal in de systeem eigen land instelling voor deze taal.
 
-  * `dir`: Directionaliteit, `rtl` die is voor talen `ltr` van rechts naar links of voor talen van links naar rechts.
+  * `dir`: Directionality, `rtl` voor talen die van rechts naar links worden geschreven of `ltr` voor talen van links naar rechts.
 
-  Een voorbeeld is:
+  Een voor beeld is:
           
   ```json
   {
@@ -119,27 +119,27 @@ De waarde voor elke eigenschap is als volgt.
   }
   ```
 
-* `transliteration`Eigenschap
+* `transliteration`eigenschap
 
-  De waarde `transliteration` van de eigenschap is een woordenboek van (sleutel, waarde) paren. Elke toets is een BCP 47-taaltag. Een sleutel identificeert een taal waarvoor tekst kan worden geconverteerd van het ene script naar het andere script. De waarde die aan de sleutel is gekoppeld, is een JSON-object met eigenschappen die de taal en de ondersteunde scripts beschrijven:
+  De waarde van de `transliteration` eigenschap is een woorden lijst van paren (sleutel, waarde). Elke sleutel is een BCP 47-taal code. Een sleutel geeft een taal aan waarvoor tekst kan worden geconverteerd van een script naar een ander script. De waarde die is gekoppeld aan de sleutel is een JSON-object met eigenschappen die de taal en de ondersteunde scripts beschrijven:
 
-  * `name`: Geef de naam van de taal `Accept-Language` weer in de landine die via de kopwordt gevraagd.
+  * `name`: Weergave naam van de taal in de land instelling die `Accept-Language` via de header is aangevraagd.
 
-  * `nativeName`: Geef de naam van de taal weer in de landinstelling voor deze taal.
+  * `nativeName`: Weergave naam van de taal in de systeem eigen land instelling voor deze taal.
 
-  * `scripts`: Lijst met scripts om van te converteren. Elk element `scripts` van de lijst heeft eigenschappen:
+  * `scripts`: Lijst met scripts waaruit moet worden geconverteerd. Elk element van de `scripts` lijst heeft eigenschappen:
 
-    * `code`: Code die het script identificeert.
+    * `code`: Code waarmee het script wordt geïdentificeerd.
 
-    * `name`: Weergave naam van het script in `Accept-Language` de landine gevraagd via header.
+    * `name`: Weergave naam van het script in de land instelling die `Accept-Language` via de header is aangevraagd.
 
-    * `nativeName`: Geef de naam van de taal weer in de landnaam voor de taal.
+    * `nativeName`: Weergave naam van de taal in de systeem eigen land instelling voor de taal.
 
-    * `dir`: Directionaliteit, `rtl` die is voor talen `ltr` van rechts naar links of voor talen van links naar rechts.
+    * `dir`: Directionality, `rtl` voor talen die van rechts naar links worden geschreven of `ltr` voor talen van links naar rechts.
 
-    * `toScripts`: Lijst met scripts die beschikbaar zijn om tekst naar om te zetten. Elk element `toScripts` van de `code` `name`lijst `nativeName`heeft `dir` eigenschappen , , en zoals eerder beschreven.
+    * `toScripts`: Lijst met scripts die beschikbaar zijn voor het converteren van tekst naar. Elk element van de `toScripts` lijst heeft eigenschappen `code`, `name`, `nativeName`en `dir` zoals eerder beschreven.
 
-  Een voorbeeld is:
+  Een voor beeld is:
 
   ```json
   {
@@ -184,27 +184,27 @@ De waarde voor elke eigenschap is als volgt.
   }
   ```
 
-* `dictionary`Eigenschap
+* `dictionary`eigenschap
 
-  De waarde `dictionary` van de eigenschap is een woordenboek van (sleutel, waarde) paren. Elke toets is een BCP 47-taaltag. De sleutel identificeert een taal waarvoor alternatieve vertalingen en back-translations beschikbaar zijn. De waarde is een JSON-object dat de brontaal en de doeltalen beschrijft met beschikbare vertalingen:
+  De waarde van de `dictionary` eigenschap is een woorden lijst van paren (sleutel, waarde). Elke sleutel is een BCP 47-taal code. De sleutel geeft een taal aan waarvoor alternatieve vertalingen en back-vertalingen beschikbaar zijn. De waarde is een JSON-object dat de bron taal en de doel talen beschrijft met beschik bare vertalingen:
 
-  * `name`: Geef de naam van de brontaal `Accept-Language` weer in de landine die via koptekst wordt aangevraagd.
+  * `name`: Weergave naam van de bron taal in de land instelling die `Accept-Language` via de header is aangevraagd.
 
-  * `nativeName`: Geef de naam van de taal weer in de landinstelling voor deze taal.
+  * `nativeName`: Weergave naam van de taal in de systeem eigen land instelling voor deze taal.
 
-  * `dir`: Directionaliteit, `rtl` die is voor talen `ltr` van rechts naar links of voor talen van links naar rechts.
+  * `dir`: Directionality, `rtl` voor talen die van rechts naar links worden geschreven of `ltr` voor talen van links naar rechts.
 
-  * `translations`: Lijst van talen met wisselende vertalingen en voorbeelden voor de query uitgedrukt in de brontaal. Elk element `translations` van de lijst heeft eigenschappen:
+  * `translations`: Lijst met talen met alterative-vertalingen en voor beelden voor de query, uitgedrukt in de bron taal. Elk element van de `translations` lijst heeft eigenschappen:
 
-    * `name`: Geef de naam van de doeltaal `Accept-Language` weer in de landtaal die via de koptekst wordt aangevraagd.
+    * `name`: Weergave naam van de doel taal in de land instelling die `Accept-Language` via de header is aangevraagd.
 
-    * `nativeName`: Geef de naam van de doeltaal weer in de landtaal voor de doeltaal.
+    * `nativeName`: Weergave naam van de doel taal in de land instellingen systeem eigen voor de doel taal.
 
-    * `dir`: Directionaliteit, `rtl` die is voor talen `ltr` van rechts naar links of voor talen van links naar rechts.
+    * `dir`: Directionality, `rtl` voor talen die van rechts naar links worden geschreven of `ltr` voor talen van links naar rechts.
     
-    * `code`: Taalcode die de doeltaal identificeert.
+    * `code`: Taal code die de doel taal aangeeft.
 
-  Een voorbeeld is:
+  Een voor beeld is:
 
   ```json
   "es": {
@@ -222,9 +222,9 @@ De waarde voor elke eigenschap is als volgt.
   },
   ```
 
-De structuur van het antwoordobject verandert niet zonder een wijziging in de versie van de API. Voor dezelfde versie van de API kan de lijst met beschikbare talen in de loop van de tijd veranderen omdat Microsoft Translator de lijst met talen die door zijn services worden ondersteund, voortdurend uitbreidt.
+De structuur van het antwoord object wordt niet gewijzigd zonder een wijziging in de versie van de API. Voor dezelfde versie van de API kan de lijst met beschik bare talen na verloop van tijd veranderen omdat micro soft Translator de lijst met talen die door de services worden ondersteund, doorlopend uitbreidt.
 
-De lijst met ondersteunde talen wordt niet vaak gewijzigd. Als u de netwerkbandbreedte wilt besparen en de reactievermogen wilt verbeteren,`ETag`moet een clienttoepassing overwegen om taalbronnen en de bijbehorende entiteitstag ( ) in cache te plaatsen. Vervolgens kan de clienttoepassing periodiek (bijvoorbeeld eenmaal per 24 uur) de service opvragen om de nieuwste set ondersteunde talen op te halen. Als u `ETag` de `If-None-Match` huidige waarde in een kopveld doorgeeft, kan de service de respons optimaliseren. Als de resource niet is gewijzigd, retourneert de service statuscode 304 en een lege antwoordinstantie.
+De lijst met ondersteunde talen wordt niet regel matig gewijzigd. Om de netwerk bandbreedte te besparen en de reactie tijd te verbeteren, moet een client toepassing overwegen om taal bronnen en de`ETag`bijbehorende entiteits code () in de cache te plaatsen. Vervolgens kan de client toepassing periodiek (bijvoorbeeld elke 24 uur) een query uitvoeren op de service om de meest recente set ondersteunde talen op te halen. Door de huidige `ETag` waarde in een `If-None-Match` header veld door te geven, kan de service de reactie optimaliseren. Als de resource niet is gewijzigd, wordt de status code 304 en een lege antwoord tekst door de service geretourneerd.
 
 ## <a name="response-headers"></a>Antwoordheaders
 
@@ -232,19 +232,19 @@ De lijst met ondersteunde talen wordt niet vaak gewijzigd. Als u de netwerkbandb
   <th width="20%">Headers</th>
   <th>Beschrijving</th>
   <tr>
-    <td>ETag (ETag)</td>
-    <td>Huidige waarde van de entiteitstag voor de gevraagde groepen ondersteunde talen. Om volgende aanvragen efficiënter te maken, `ETag` kan `If-None-Match` de client de waarde verzenden in een kopveld.
+    <td>ETag</td>
+    <td>Huidige waarde van de entiteits code voor de aangevraagde groepen met ondersteunde talen. Om volgende aanvragen efficiënter te maken, kan de client de `ETag` waarde in een `If-None-Match` header-veld verzenden.
     </td>
   </tr>
   <tr>
-    <td>X-RequestId</td>
-    <td>Waarde gegenereerd door de service om de aanvraag te identificeren. Het wordt gebruikt voor het oplossen van problemen.</td>
+    <td>X-aanvraag-}</td>
+    <td>De waarde die door de service is gegenereerd om de aanvraag te identificeren. Dit wordt gebruikt voor het oplossen van problemen.</td>
   </tr>
 </table> 
 
-## <a name="response-status-codes"></a>Statuscodes voor antwoord
+## <a name="response-status-codes"></a>Antwoord status codes
 
-Hieronder volgen de mogelijke HTTP-statuscodes die een aanvraag retourneert. 
+Hier volgen de mogelijke HTTP-status codes die een aanvraag retourneert. 
 
 <table width="100%">
   <th width="20%">Statuscode</th>
@@ -255,31 +255,31 @@ Hieronder volgen de mogelijke HTTP-statuscodes die een aanvraag retourneert.
   </tr>
   <tr>
     <td>304</td>
-    <td>De bron is niet gewijzigd sinds de `If-None-Match`versie die is opgegeven door aanvraagkoppen .</td>
+    <td>De resource is niet gewijzigd sinds de versie die is opgegeven door de `If-None-Match`aanvraag headers.</td>
   </tr>
   <tr>
     <td>400</td>
-    <td>Een van de queryparameters ontbreekt of is ongeldig. De aanvraagparameters corrigeren voordat u het opnieuw probeert.</td>
+    <td>Een van de queryparameters ontbreekt of is ongeldig. Corrigeer de aanvraag parameters voordat u het opnieuw probeert.</td>
   </tr>
   <tr>
     <td>429</td>
-    <td>De server heeft de aanvraag afgewezen omdat de client de aanvraaglimieten heeft overschreden.</td>
+    <td>De server heeft de aanvraag geweigerd omdat de aanvraag limieten voor de client is overschreden.</td>
   </tr>
   <tr>
     <td>500</td>
-    <td>Er is een onverwachte fout opgetreden. Als de fout blijft bestaan, meldt u deze met: datum `X-RequestId`en tijd van de `X-ClientTraceId`fout, aanvraag-id van antwoordkop en client-id van de hoofdtekst van de aanvraag .</td>
+    <td>Er is een onverwachte fout opgetreden. Als de fout zich blijft voordoen, meldt u deze met: datum en tijd van de fout, aanvraag `X-RequestId`-id van antwoord header en client `X-ClientTraceId`-id uit aanvraag header.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Server tijdelijk niet beschikbaar. Probeer het verzoek opnieuw. Als de fout blijft bestaan, meldt u deze met: datum `X-RequestId`en tijd van de `X-ClientTraceId`fout, aanvraag-id van antwoordkop en client-id van de hoofdtekst van de aanvraag .</td>
+    <td>De server is tijdelijk niet beschikbaar. Voer de aanvraag opnieuw uit. Als de fout zich blijft voordoen, meldt u deze met: datum en tijd van de fout, aanvraag `X-RequestId`-id van antwoord header en client `X-ClientTraceId`-id uit aanvraag header.</td>
   </tr>
 </table> 
 
-Als er een fout optreedt, retourneert de aanvraag ook een JSON-foutantwoord. De foutcode is een 6-cijferig getal dat de 3-cijferige HTTP-statuscode combineert, gevolgd door een 3-cijferig getal om de fout verder te categoriseren. Veelvoorkomende foutcodes zijn te vinden op de [referentiepagina v3 Translator Text API.](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) 
+Als er een fout optreedt, wordt door de aanvraag ook een JSON-fout bericht geretourneerd. De fout code is een getal van 6 cijfers, waarbij de HTTP-status code van 3 cijfers wordt gevolgd door een getal van drie cijfers om de fout verder te categoriseren. Algemene fout codes vindt u op de [pagina v3-Translator text-API-referentie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
 
 ## <a name="examples"></a>Voorbeelden
 
-In het volgende voorbeeld ziet u hoe u talen ophaalt die worden ondersteund voor tekstvertaling.
+In het volgende voor beeld ziet u hoe u talen kunt ophalen die worden ondersteund voor tekst vertaling.
 
 ```curl
 curl "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"

@@ -1,80 +1,80 @@
 ---
-title: Regio's publiceren & eindpunten - LUIS
-description: Het gebied dat is opgegeven in de Azure-portal is hetzelfde waar u de LUIS-app publiceert en een url voor eindpunt en voor dezelfde regio wordt gegenereerd.
+title: "&-eind punten voor het publiceren van regio's-LUIS"
+description: De regio die in de Azure Portal is opgegeven, is hetzelfde als waar u de LUIS-app publiceert en er wordt een eind punt-URL gegenereerd voor deze regio.
 ms.topic: reference
 ms.date: 11/19/2019
 ms.openlocfilehash: a7709d15a51637772d7a4775cd71c307dc21c52b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80292086"
 ---
-# <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Ontwerp- en publicatiegebieden en de bijbehorende sleutels
+# <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Ontwerpen en publiceren van regio's en de bijbehorende sleutels
 
-Drie ontwerpregio's worden ondersteund door bijbehorende LUIS-portalen. Als u een LUIS-app naar meer dan één regio wilt publiceren, hebt u ten minste één sleutel per regio nodig.
+Drie ontwerp regio's worden ondersteund door de bijbehorende LUIS-portals. Als u een LUIS-app naar meer dan één regio wilt publiceren, moet u ten minste één sleutel per regio hebben.
 
 <a name="luis-website"></a>
 
-## <a name="luis-authoring-regions"></a>LUIS-ontwerpgebieden
-Er zijn drie LUIS authoring portals, gebaseerd op regio. U moet in één en dezelfde regio maken en publiceren.
+## <a name="luis-authoring-regions"></a>LUIS-ontwerp regio's
+Er zijn drie LUIS voor het ontwerpen van portals, gebaseerd op de regio. U moet in één en dezelfde regio maken en publiceren.
 
-|LUIS|Ontwerpgebied|Azure-regionaam|
+|LUIS|Ontwerp gebied|Naam van Azure-regio|
 |--|--|--|
 |[www.luis.ai][www.luis.ai] <br>[preview.luis.ai](https://preview.luis.ai)|U.S.<br>niet Europa<br>niet Australië| `westus`|
 |[au.luis.ai][au.luis.ai] <br>[preview.au.luis.ai](https://preview.au.luis.ai)|Australië| `australiaeast`|
 |[eu.luis.ai][eu.luis.ai] <br>[preview.eu.luis.ai](https://preview.eu.luis.ai)|Europa|`westeurope`|
 
-Ontwerpgebieden hebben [fail-over-regio's gekoppeld](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Voor het ontwerpen van regio's zijn er [gepaarde failover-regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 <a name="regions-and-azure-resources"></a>
 
-## <a name="publishing-regions-and-azure-resources"></a>Publicatieregio's en Azure-bronnen
-De app wordt gepubliceerd in alle regio's die zijn gekoppeld aan de LUIS-resources die zijn toegevoegd aan de LUIS-portal. Voor een app die op [www.luis.ai][www.luis.ai]is gemaakt , als u bijvoorbeeld een LUIS- of Cognitive Service-bron in **westus** maakt en [deze als bron aan de app toevoegt,](luis-how-to-azure-subscription.md)wordt de app in die regio gepubliceerd.
+## <a name="publishing-regions-and-azure-resources"></a>Publicatie regio's en Azure-resources
+De app wordt gepubliceerd naar alle regio's die zijn gekoppeld aan de LUIS-resources die zijn toegevoegd in de LUIS-Portal. Als u bijvoorbeeld een app die is gemaakt op [www.Luis.ai][www.luis.ai], een Luis-of cognitieve service resource in **westus** maakt en [deze toevoegt aan de app als resource](luis-how-to-azure-subscription.md), wordt de app gepubliceerd in die regio.
 
 ## <a name="public-apps"></a>Openbare apps
-Een openbare app wordt in alle regio's gepubliceerd, zodat een gebruiker met een op een regio gebaseerde LUIS-bronsleutel toegang heeft tot de app in welke regio dan ook is gekoppeld aan zijn resourcesleutel.
+Een open bare app wordt in alle regio's gepubliceerd, zodat een gebruiker met een op regio gebaseerde LUIS-bron sleutel toegang kan krijgen tot de app in welke regio is gekoppeld aan de resource sleutel.
 
 <a name="publishing-regions"></a>
 
-## <a name="publishing-regions-are-tied-to-authoring-regions"></a>Publicatieregio's zijn gekoppeld aan ontwerpgebieden
+## <a name="publishing-regions-are-tied-to-authoring-regions"></a>Publicatie regio's zijn gekoppeld aan ontwerp regio's
 
-De app voor het ontwerpgebied kan alleen worden gepubliceerd naar een overeenkomstigpublicatiegebied. Als uw app zich momenteel in het verkeerde ontwerpgebied bevindt, exporteert u de app en importeert u deze in het juiste ontwerpgebied voor uw publicatiegebied.
+De ontwerp regio-app kan alleen worden gepubliceerd naar een bijbehorende publicatie regio. Als uw app momenteel deel uitmaakt van de verkeerde ontwerp regio, exporteert u de app en importeert u deze in het juiste ontwerp gebied voor de publicatie regio.
 
-LUIS-apps https://www.luis.ai die zijn gemaakt, kunnen worden gepubliceerd op alle eindpunten, behalve de [Europese](#publishing-to-europe) en [Australische](#publishing-to-australia) regio's.
+LUIS-apps die https://www.luis.ai zijn gemaakt op, kunnen naar alle eind punten worden gepubliceerd, met uitzonde ring van de [Europese](#publishing-to-europe) en [Australische](#publishing-to-australia) regio's.
 
 ## <a name="publishing-to-europe"></a>Publiceren naar Europa
 
-Als u wilt publiceren naar de https://eu.luis.ai Europese regio's, maakt u alleen LUIS-apps. Als u ergens anders probeert te publiceren met een sleutel in de regio Europa, geeft LUIS een waarschuwingsbericht weer. Gebruik https://eu.luis.aiin plaats daarvan . LUIS-apps [https://eu.luis.ai][eu.luis.ai] die zijn gemaakt, migreren niet automatisch naar andere regio's. Exporteer en importeer vervolgens de LUIS-app om deze te migreren.
+Als u wilt publiceren naar de Europese regio's, maakt u https://eu.luis.ai alleen Luis-apps. Als u ergens anders probeert te publiceren met een sleutel in de regio Europa, wordt er een waarschuwings bericht weer gegeven in LUIS. Gebruik https://eu.luis.aiin plaats daarvan. LUIS-apps die [https://eu.luis.ai][eu.luis.ai] zijn gemaakt in, worden niet automatisch gemigreerd naar andere regio's. Exporteer de LUIS-app en importeer deze vervolgens om deze te migreren.
 
-## <a name="europe-publishing-regions"></a>Europa dat regio's publiceert
+## <a name="europe-publishing-regions"></a>Europa-publicatie regio's
 
- Regio wereldwijd | Auteur API-gebied & auteurwebsite| & querygebied publiceren<br>`API region name`   |  URL-indeling eindpunt   |
+ Wereld wijde regio | Ontwerpen van API-regio & website ontwerpen| &-query regio publiceren<br>`API region name`   |  Indeling van eind punt-URL   |
 |-----|------|------|------|
 | [Europa](#publishing-to-europe)| `westeurope`<br>[eu.luis.ai][eu.luis.ai]| Frankrijk - centraal<br>`francecentral`     | `https://francecentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 | [Europa](#publishing-to-europe)| `westeurope`<br>[eu.luis.ai][eu.luis.ai]| Europa - noord<br>`northeurope`     | `https://northeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 | [Europa](#publishing-to-europe) | `westeurope`<br>[eu.luis.ai][eu.luis.ai]| Europa -west<br>`westeurope`    |  `https://westeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 | [Europa](#publishing-to-europe) | `westeurope`<br>[eu.luis.ai][eu.luis.ai]| Verenigd Koninkrijk Zuid<br>`uksouth`    |  `https://uksouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 
-## <a name="publishing-to-australia"></a>Publiceren naar Nederland
+## <a name="publishing-to-australia"></a>Publiceren naar Australië
 
-Als u wilt publiceren naar de https://au.luis.ai Australische regio's, maakt u alleen LUIS-apps. Als u ergens anders probeert te publiceren met een sleutel in de Australische regio, geeft LUIS een waarschuwingsbericht weer. Gebruik https://au.luis.aiin plaats daarvan . LUIS-apps [https://au.luis.ai][au.luis.ai] die zijn gemaakt, migreren niet automatisch naar andere regio's. Exporteer en importeer vervolgens de LUIS-app om deze te migreren.
+Als u wilt publiceren naar de Australische regio's, maakt u https://au.luis.ai alleen Luis-apps. Als u ergens anders probeert te publiceren met een sleutel in de regio Australië, wordt er een waarschuwings bericht weer gegeven in LUIS. Gebruik https://au.luis.aiin plaats daarvan. LUIS-apps die [https://au.luis.ai][au.luis.ai] zijn gemaakt in, worden niet automatisch gemigreerd naar andere regio's. Exporteer de LUIS-app en importeer deze vervolgens om deze te migreren.
 
-## <a name="australia-publishing-regions"></a>Australië publishing regio's
+## <a name="australia-publishing-regions"></a>Australië-publicatie regio's
 
- Regio wereldwijd | Auteur API-gebied & auteurwebsite| & querygebied publiceren<br>`API region name`   |  URL-indeling eindpunt   |
+ Wereld wijde regio | Ontwerpen van API-regio & website ontwerpen| &-query regio publiceren<br>`API region name`   |  Indeling van eind punt-URL   |
 |-----|------|------|------|
 | [Australië](#publishing-to-australia) | `australiaeast`<br>[au.luis.ai][au.luis.ai]| Australië - oost<br>`australiaeast`     |  `https://australiaeast.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 
 ## <a name="publishing-to-other-regions"></a>Publiceren naar andere regio's
 
-Als u wilt publiceren naar de [https://www.luis.ai](https://www.luis.ai) andere regio's, maakt u alleen LUIS-apps.
+Als u wilt publiceren naar de andere regio's, maakt u [https://www.luis.ai](https://www.luis.ai) alleen Luis-apps.
 
-## <a name="other-publishing-regions"></a>Andere publicatieregio's
+## <a name="other-publishing-regions"></a>Andere publicatie regio's
 
- Regio wereldwijd | Auteur API-gebied & auteurwebsite| & querygebied publiceren<br>`API region name`   |  URL-indeling eindpunt   |
+ Wereld wijde regio | Ontwerpen van API-regio & website ontwerpen| &-query regio publiceren<br>`API region name`   |  Indeling van eind punt-URL   |
 |-----|------|------|------|
-| Afrika | `westus`<br>[www.luis.ai][www.luis.ai]| Zuid-Afrika Noord<br>`southafricanorth` |  `https://southafricanorth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| Afrika | `westus`<br>[www.luis.ai][www.luis.ai]| Zuid-Afrika - noord<br>`southafricanorth` |  `https://southafricanorth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 | Azië | `westus`<br>[www.luis.ai][www.luis.ai]| India - centraal<br>`centralindia` |  `https://centralindia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 | Azië | `westus`<br>[www.luis.ai][www.luis.ai]| Azië - oost<br>`eastasia`     |  `https://eastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 | Azië | `westus`<br>[www.luis.ai][www.luis.ai]| Japan - oost<br>`japaneast`     |   `https://japaneast.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
@@ -94,18 +94,18 @@ Als u wilt publiceren naar de [https://www.luis.ai](https://www.luis.ai) andere 
 
 ## <a name="endpoints"></a>Eindpunten
 
-Meer informatie over de [doel- en voorspellingseindpunten](developer-reference-resource.md).
+Meer informatie over de [ontwerp-en Voorspellings eindpunten](developer-reference-resource.md).
 
 ## <a name="failover-regions"></a>Failover-regio's
 
-Elke regio heeft een secundaire regio om niet over te gaan. Europa faalt binnen Europa en Australië faalt in Australië.
+Elke regio heeft een secundaire regio waarvoor een failover moet worden uitgevoerd. In Europa wordt een failover uitgevoerd binnen Europa en Australië in Australië.
 
-Ontwerpgebieden hebben [fail-over-regio's gekoppeld](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Voor het ontwerpen van regio's zijn er [gepaarde failover-regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Verwijzing naar vooraf gebouwde entiteiten](./luis-reference-prebuilt-entities.md)
+> [Naslag informatie voor vooraf gemaakte entiteiten](./luis-reference-prebuilt-entities.md)
 
  [www.luis.ai]: https://www.luis.ai
  [au.luis.ai]: https://au.luis.ai

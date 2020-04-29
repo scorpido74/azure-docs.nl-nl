@@ -1,7 +1,7 @@
 ---
 title: Batchvoorspellingen uitvoeren met de Azure Machine Learning-ontwerpfunctie (preview)
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het trainen van een model en het instellen van een batchvoorspellingspijplijn met behulp van de ontwerper. Implementeer de pijplijn als een geparameteriseerde webservice, die vanuit elke HTTP-bibliotheek kan worden geactiveerd.
+description: Meer informatie over het trainen van een model en het instellen van een batch voorspelling-pijp lijn met behulp van de ontwerp functie. Implementeer de pijp lijn als een webservice met para meters die kan worden geactiveerd vanuit elke HTTP-bibliotheek.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,138 +11,138 @@ author: peterclu
 ms.date: 02/24/2020
 ms.custom: Ignite2019
 ms.openlocfilehash: 01d69bffcf2c17abceba8ba2e0893360bead8b12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477218"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>Batchvoorspellingen uitvoeren met de Azure Machine Learning-ontwerpfunctie (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-In dit artikel leert u hoe u de ontwerper gebruiken om een batchvoorspellingspijplijn te maken. Met batchvoorspelling u continu grote gegevenssets on-demand scoren met behulp van een webservice die vanuit elke HTTP-bibliotheek kan worden geactiveerd.
+In dit artikel leert u hoe u de Designer kunt gebruiken om een batch Voorspellings pijplijn te maken. Met batch-voor spelling kunt u op aanvraag van grote gegevens sets continu naar een webservice werken die kan worden geactiveerd vanuit elke HTTP-bibliotheek.
 
-In deze how-to leert u de volgende taken uit te voeren:
+In deze procedure leert u de volgende taken uit te voeren:
 
 > [!div class="checklist"]
-> * Een batch-gevolgtrekkingspijplijn maken en publiceren
-> * Een eindpunt van een pijplijn verbruiken
-> * Eindpuntversies beheren
+> * Een pijp lijn voor een batch-interferentie maken en publiceren
+> * Een pijplijn eindpunt gebruiken
+> * Eindpunt versies beheren
 
-Zie de bijbehorende [how-to.](how-to-run-batch-predictions.md)
+Zie voor meer informatie over het instellen van batch Score Services met behulp van de SDK de bijbehorende [How-to](how-to-run-batch-predictions.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Deze how-to gaat ervan uit dat je al een trainingspijplijn hebt. Voor een begeleide kennismaking met de ontwerper, voltooi [deel een van de ontwerper tutorial](tutorial-designer-automobile-price-train-score.md). 
+In deze procedure wordt ervan uitgegaan dat u al een trainings pijplijn hebt. Voor een begeleide Inleiding tot de ontwerp functie, voltooit u [deel één van de zelf studie](tutorial-designer-automobile-price-train-score.md). 
 
-## <a name="create-a-batch-inference-pipeline"></a>Een batch-inferencepijplijn maken
+## <a name="create-a-batch-inference-pipeline"></a>Een pijp lijn voor een batch-deinterferentie maken
 
-Uw trainingspijplijn moet ten minste één keer worden uitgevoerd om een inferencing pipeline te kunnen maken.
+Uw trainings pijplijn moet ten minste één keer worden uitgevoerd om een inleidende pijp lijn te kunnen maken.
 
-1. Ga naar het tabblad **Ontwerper** in uw werkruimte.
+1. Ga naar het tabblad **ontwerpen** in uw werk ruimte.
 
-1. Selecteer de trainingspijplijn die het model traint dat u wilt gebruiken om voorspelling te doen.
+1. Selecteer de trainings pijplijn die het model traint dat u wilt gebruiken om voor spellingen te maken.
 
-1. **Verzend** de pijplijn.
+1. **Verzend** de pijp lijn.
 
-    ![De pijplijn verzenden](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
+    ![De pijp lijn verzenden](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
 
-Nu de trainingspijplijn is uitgevoerd, u een batch-inferencepijplijn maken.
+Nu de training-pijp lijn is uitgevoerd, kunt u een batch-uitstel pijp lijn maken.
 
-1. Selecteer naast **Verzenden**de nieuwe vervolgkeuzelijst **Inferencepipeline maken**.
+1. Selecteer bij **verzenden**de optie nieuwe vervolg keuzelijst voor het maken van een **Inleiding**.
 
-1. Selecteer **batch-inferencepijplijn**.
+1. Selecteer de **pijp lijn voor batch-deinterferentie**.
 
-    ![Batch-inferencepipeline maken](./media/how-to-run-batch-predictions-designer/create-batch-inference.png)
+    ![Pijp lijn voor batch-deinterferentie maken](./media/how-to-run-batch-predictions-designer/create-batch-inference.png)
     
-Het resultaat is een standaard batch-inference pijplijn. 
+Het resultaat is een standaard pijp lijn voor batch-deinterferentie. 
 
-### <a name="add-a-pipeline-parameter"></a>Een parameter voor een pijplijn toevoegen
+### <a name="add-a-pipeline-parameter"></a>Een pijplijn parameter toevoegen
 
-Als u voorspellingen wilt maken over nieuwe gegevens, u handmatig een andere gegevensset in deze ontwerpweergave van de pijplijn verbinden of een parameter voor uw gegevensset maken. Met parameters u het gedrag van het batch-inferencingproces wijzigen tijdens runtime.
+Als u voor spellingen wilt maken voor nieuwe gegevens, kunt u een andere gegevensset hand matig verbinden in deze ontwerp weergave van een pijp lijn of een para meter voor uw gegevensset maken. Met para meters kunt u het gedrag van het proces voor batch deprocessen tijdens runtime wijzigen.
 
-In deze sectie maakt u een gegevenssetparameter om een andere gegevensset op te geven om voorspellingen op te doen.
+In deze sectie maakt u een gegevensset-para meter om een andere gegevensset op te geven voor het maken van voor spellingen.
 
-1. Selecteer de gegevenssetmodule.
+1. Selecteer de module gegevensset.
 
-1. Rechts van het canvas verschijnt een deelvenster. Selecteer onder aan het deelvenster de optie **Instellen als parameter voor pijplijn**.
+1. Er wordt een deel venster aan de rechter kant van het canvas weer gegeven. Selecteer aan de onderkant van het deel venster de **para meter instellen als pijplijn**.
    
-    Voer een naam voor de parameter in of accepteer de standaardwaarde.
+    Voer een naam in voor de para meter of accepteer de standaard waarde.
 
-## <a name="publish-your-batch-inferencing-pipeline"></a>Uw batch-inferencing-pijplijn publiceren
+## <a name="publish-your-batch-inferencing-pipeline"></a>Uw batch-verwerkings pijplijn publiceren
 
-Nu bent u klaar om de inferencing pipeline te implementeren. Dit zal de pijplijn implementeren en beschikbaar maken voor anderen om te gebruiken.
+U bent nu klaar om de pijp lijn voor het afnemen van de interferentie te implementeren. Hiermee wordt de pijp lijn geïmplementeerd en beschikbaar gemaakt zodat anderen deze kunnen gebruiken.
 
 1. Selecteer de knop **Publiceren**.
 
-1. Vouw in het dialoogvenster dat wordt weergegeven de vervolgkeuzelijst uit voor **PipelineEndpoint**en selecteer **Nieuw pipelineEndpoint**.
+1. Vouw in het dialoog venster dat wordt weer gegeven de vervolg keuzelijst voor **PipelineEndpoint**uit en selecteer **nieuwe PipelineEndpoint**.
 
-1. Geef een eindpuntnaam en optionele beschrijving op.
+1. Geef een naam en een optionele beschrijving voor het eind punt op.
 
-    Onder aan het dialoogvenster ziet u de parameter die u hebt geconfigureerd met een standaardwaarde van de gegevensset-id die tijdens de training wordt gebruikt.
+    Aan de onderkant van het dialoog venster ziet u de para meter die u hebt geconfigureerd met een standaard waarde van de gegevensset-ID die tijdens de training wordt gebruikt.
 
-1. Selecteer **Publiceren**.
+1. Selecteer **publiceren**.
 
-![Een pijplijn publiceren](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
+![Een pijp lijn publiceren](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
 
 
-## <a name="consume-an-endpoint"></a>Een eindpunt consumeren
+## <a name="consume-an-endpoint"></a>Een eind punt gebruiken
 
-Nu hebt u een gepubliceerde pijplijn met een gegevenssetparameter. De pijplijn gebruikt het getrainde model dat in de trainingspijplijn is gemaakt om de gegevensset te scoren die u als parameter hebt opgegeven.
+Nu hebt u een gepubliceerde pijp lijn met een gegevensset-para meter. De pijp lijn gebruikt het getrainde model dat in de trainings pijplijn is gemaakt om de gegevensset die u opgeeft als para meter te scoren.
 
-### <a name="submit-a-pipeline-run"></a>Een pijplijnrun verzenden 
+### <a name="submit-a-pipeline-run"></a>Een pijplijn uitvoering verzenden 
 
-In deze sectie stelt u een handmatige pijplijnrun in en wijzigt u de parameter pijplijn om nieuwe gegevens te scoren. 
+In deze sectie gaat u een hand matige pijplijn uitvoering instellen en de pijplijn parameter wijzigen om nieuwe gegevens te scoren. 
 
-1. Nadat de implementatie is voltooid, gaat u naar de sectie **Eindpunten.**
+1. Nadat de implementatie is voltooid, gaat u naar de sectie **endpoints** .
 
-1. Selecteer **Pijplijneindpunten**.
+1. Selecteer **pijplijn eindpunten**.
 
-1. Selecteer de naam van het eindpunt dat u hebt gemaakt.
+1. Selecteer de naam van het eind punt dat u hebt gemaakt.
 
-![Koppeling Eindpunt](./media/how-to-run-batch-predictions-designer/manage-endpoints.png)
+![Eindpunt koppeling](./media/how-to-run-batch-predictions-designer/manage-endpoints.png)
 
-1. Selecteer **Gepubliceerde pijplijnen**.
+1. Selecteer **gepubliceerde pijp lijnen**.
 
-    In dit scherm worden alle gepubliceerde pijplijnen weergegeven die onder dit eindpunt zijn gepubliceerd.
+    In dit scherm ziet u alle gepubliceerde pijp lijnen die zijn gepubliceerd onder dit eind punt.
 
-1. Selecteer de pijplijn die u hebt gepubliceerd.
+1. Selecteer de pijp lijn die u hebt gepubliceerd.
 
-    Op de pagina met details van de pijplijn ziet u een gedetailleerde uitvoeringsgeschiedenis en verbindingstekenreeksgegevens voor uw pijplijn. 
+    Op de pagina Details van pijp lijn ziet u een gedetailleerde uitvoerings geschiedenis en connection string informatie voor de pijp lijn. 
     
-1. Selecteer **Verzenden** om een handmatige uitvoering van de pijplijn te maken.
+1. Selecteer **verzenden** om een hand matige uitvoering van de pijp lijn te maken.
 
-    ![Pijplijngegevens](./media/how-to-run-batch-predictions-designer/submit-manual-run.png)
+    ![Pijp lijn Details](./media/how-to-run-batch-predictions-designer/submit-manual-run.png)
     
-1. Wijzig de parameter om een andere gegevensset te gebruiken.
+1. Wijzig de para meter om een andere gegevensset te gebruiken.
     
-1. Selecteer **Verzenden** om de pijplijn uit te voeren.
+1. Selecteer **verzenden** om de pijp lijn uit te voeren.
 
-### <a name="use-the-rest-endpoint"></a>Het REST-eindpunt gebruiken
+### <a name="use-the-rest-endpoint"></a>Het REST-eind punt gebruiken
 
-U vindt informatie over het consumeren van pijplijneindpunten en gepubliceerde pijplijn in de sectie **Eindpunten.**
+Meer informatie over het gebruik van pijplijn eindpunten en gepubliceerde pijp lijn vindt u in de sectie met **eind punten** .
 
-U vindt het REST-eindpunt van een pijplijneindpunt in het deelvenster Run-overzicht. Door het eindpunt aan te roepen, verbruikt u de standaard gepubliceerde pijplijn.
+U kunt het REST-eind punt van een pijplijn eindpunt vinden in het deel venster Overzicht uitvoeren. Door het eind punt aan te roepen, verbruikt u de standaard gepubliceerde pijp lijn.
 
-U ook een gepubliceerde pijplijn gebruiken op de pagina **Gepubliceerde pijplijnen.** Selecteer een gepubliceerde pijplijn en zoek het REST-eindpunt ervan. 
+U kunt ook een gepubliceerde pijp lijn gebruiken op de pagina **gepubliceerde pijp lijnen** . Selecteer een gepubliceerde pijp lijn en zoek het REST-eind punt. 
 
-![Resteindpuntdetails](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
+![Details van rest-eind punt](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
 
-Om een REST-gesprek te voeren, hebt u een OAuth 2.0-verificatiekop van het type OAuth 2.0 nodig. Zie de volgende [zelfstudiesectie](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) voor meer informatie over het instellen van verificatie op uw werkruimte en het maken van een parameterpunt REST-aanroep.
+Als u een REST-aanroep wilt uitvoeren, hebt u een OAuth 2,0 Bearer-type verificatie-header nodig. Raadpleeg de volgende [sectie zelf studie](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) voor meer informatie over het instellen van verificatie voor uw werk ruimte en het maken van een para meter rest-aanroep.
 
-## <a name="versioning-endpoints"></a>Eindpunten voor versiebeheer
+## <a name="versioning-endpoints"></a>Versie-eind punten
 
-De ontwerper wijst een versie toe aan elke volgende pijplijn die u publiceert naar een eindpunt. U de pijplijnversie opgeven die u als parameter wilt uitvoeren in uw REST-aanroep. Als u geen versienummer opgeeft, gebruikt de ontwerper de standaardpijplijn.
+De Designer wijst een versie toe aan elke volgende pijp lijn die u naar een eind punt publiceert. U kunt de pijplijn versie opgeven die u wilt uitvoeren als een para meter in uw REST-aanroep. Als u geen versie nummer opgeeft, maakt de ontwerp functie gebruik van de standaard pijplijn.
 
-Wanneer u een pijplijn publiceert, u ervoor kiezen om er de nieuwe standaardpijplijn voor dat eindpunt van te maken.
+Wanneer u een pijp lijn publiceert, kunt u ervoor kiezen om deze te maken als de nieuwe standaard pijplijn voor dat eind punt.
 
-![Standaardpijplijn instellen](./media/how-to-run-batch-predictions-designer/set-default-pipeline.png)
+![Standaard pijplijn instellen](./media/how-to-run-batch-predictions-designer/set-default-pipeline.png)
 
-U ook een nieuwe standaardpijplijn instellen op het tabblad **Gepubliceerde pijplijnen** van uw eindpunt.
+U kunt ook een nieuwe standaard pijplijn instellen op het tabblad **gepubliceerde pijp lijnen** van het eind punt.
 
-![Standaardpijplijn instellen](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
+![Standaard pijplijn instellen](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volg de [ontwerp-zelfstudie](tutorial-designer-automobile-price-train-score.md) om een regressiemodel te trainen en te implementeren.
+Volg de [zelf studie](tutorial-designer-automobile-price-train-score.md) over ontwerpen om een regressie model te trainen en te implementeren.
 ''

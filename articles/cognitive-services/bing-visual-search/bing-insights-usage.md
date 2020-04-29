@@ -1,7 +1,7 @@
 ---
-title: Voorbeelden van Bing-inzichten - Bing Visual Search
+title: Voor beelden van Bing Insights-Bing Visual Search
 titleSuffix: Azure Cognitive Services
-description: Dit artikel bevat voorbeelden van hoe Bing Visual Search afbeeldingen op Bing.com kan gebruiken en weergeven.
+description: In dit artikel vindt u voor beelden van hoe Bing Visual Search kunnen worden gebruikt en hoe u Image Insights kunt weer geven op Bing.com.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,71 +11,71 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: scottwhi
 ms.openlocfilehash: df66dbeebb04209921ff91c4b99a14580f026718
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74111633"
 ---
-# <a name="examples-of-bing-insights-usage"></a>Voorbeelden van gebruik van Bing-inzichten
+# <a name="examples-of-bing-insights-usage"></a>Voor beelden van het gebruik van Bing Insights
 
-Dit artikel bevat voorbeelden van hoe Bing afbeeldingsinzichten op Bing.com kan gebruiken en weergeven.
+In dit artikel vindt u voor beelden van hoe Bing kan worden gebruikt en hoe u Image Insights kunt weer geven op Bing.com.
 
-## <a name="pagesincluding-insight-example"></a>Pagina'sInclusief insight voorbeeld
+## <a name="pagesincluding-insight-example"></a>PagesIncluding Insight-voor beeld
 
-In de volgende pagina wordt een koppeling naar de eerste webpagina weergegeven en kan de gebruiker de lijst met andere webpagina's met de afbeelding uitvouwen en samenvouwen:
+In het volgende voor beeld wordt een koppeling naar de eerste webpagina weer gegeven en kan de gebruiker de lijst met andere webpagina's die de afbeelding bevatten, uitvouwen en samen vouwen:
 
-![Uitgebreide pagina's, waaronder](./media/pages-including.PNG)
+![Uitgevouwen pagina's, inclusief](./media/pages-including.PNG)
 
-## <a name="shoppingsources-insight-example"></a>ShoppingSources inzicht voorbeeld
+## <a name="shoppingsources-insight-example"></a>ShoppingSources Insight-voor beeld
 
-Het volgende laat zien hoe Bing winkelbronnen kan weergeven voor producten die in de afbeelding worden weergegeven:
+Hier volgt een voor beeld van de manier waarop Bing in de installatie kopie winkel bronnen kan weer geven voor producten:
 
 ![Winkelbronnen](./media/shopping-sources.PNG)
 
-## <a name="visualsearch-insight-example"></a>Voorbeeld van VisualSearch insight
+## <a name="visualsearch-insight-example"></a>VisualSearch Insight-voor beeld
 
-Hieronder ziet u hoe Bing visueel vergelijkbare afbeeldingen kan weergeven (zie **Gerelateerde afbeeldingen** in het voorbeeld):
+Hieronder ziet u hoe u met Bing visueel vergelijk bare afbeeldingen kunt weer geven (Zie **Verwante installatie kopieën** in het voor beeld):
 
 ![Visueel vergelijkbare afbeeldingen](./media/similar-images.PNG)
 
-## <a name="recipes-insight-example"></a>Recepten inzicht voorbeeld
+## <a name="recipes-insight-example"></a>Recepten Insight-voor beeld
 
-Hieronder ziet u hoe Bing recepten kan weergeven voor het voedsel dat in de afbeelding wordt weergegeven. Het voorbeeld laat de gebruiker weten dat er recepten beschikbaar zijn:
+Hieronder ziet u hoe u met Bing recepten kunt weer geven voor de levens middelen die in de afbeelding worden weer gegeven. In het voor beeld kan de gebruiker weten dat er recepten beschikbaar zijn:
 
-![Recepten en pagina's, waaronder](./media/recipes-pages-including.PNG)
+![Recepten en pagina's met inbegrip van](./media/recipes-pages-including.PNG)
 
- En biedt de link naar de recepten wanneer de gebruiker de lijst uitbreidt:
+ En biedt de koppeling naar de recepten wanneer de gebruiker de lijst uitbreidt:
 
-![Uitgebreide receptpagina's, waaronder](./media/expanded-recipes-pages-including.PNG)
+![Uitgebreide recepten pagina's, inclusief](./media/expanded-recipes-pages-including.PNG)
 
-## <a name="relatedsearches-insight-example"></a>Voorbeeld van inzicht in RelatedSearches
+## <a name="relatedsearches-insight-example"></a>RelatedSearches Insight-voor beeld
 
-Het volgende laat zien hoe Bing gerelateerde zoekopdrachten van afbeeldingen die door anderen zijn gemaakt, kan weergeven. Als de gebruiker op de afbeelding klikt, wordt de gebruiker naar de pagina Bing.com/images zoekresultaten voor die gerelateerde query geleid.
+Hieronder ziet u hoe u met Bing gerelateerde zoek acties kunt weer geven van installatie kopieën die door anderen zijn gemaakt. Als de gebruiker op de afbeelding klikt, wordt de gebruiker naar de pagina met zoek resultaten van de Bing.com/images voor die gerelateerde query geleid.
 
-![Gerelateerde zoekopdrachten naar afbeeldingen](./media/bordered-related-searches.PNG)
+![Verwante Zoek opdrachten voor installatie kopieën](./media/bordered-related-searches.PNG)
 
-## <a name="entity-insight-example"></a>Voorbeeld van entiteitsinzicht
+## <a name="entity-insight-example"></a>Voor beeld van entiteits inzicht
 
-Hieronder ziet u hoe Bing informatie over de entiteit (persoon, plaats of ding) in de afbeelding kan weergeven. Als de gebruiker op de entiteitskoppeling klikt, wordt de gebruiker naar de pagina Bing.com zoekresultaten voor de entiteit geleid:
+Hieronder ziet u hoe Bing informatie kan weer geven over de entiteit (persoon, plaats of ding) die in de afbeelding wordt weer gegeven. Als de gebruiker op de entiteits koppeling klikt, wordt de gebruiker naar de pagina met zoek resultaten voor Bing.com voor de entiteit geleid:
 
-![Entiteit die in afbeelding wordt weergegeven](./media/entity.PNG)
+![Entiteit weer gegeven in afbeelding](./media/entity.PNG)
 
-## <a name="displaying-other-insights-that-the-user-might-explore"></a>Andere inzichten weergeven die de gebruiker kan verkennen
+## <a name="displaying-other-insights-that-the-user-might-explore"></a>Andere inzichten weer geven die de gebruiker kan verkennen
 
-Hieronder ziet u hoe Bing andere informatie over de afbeelding kan weergeven die de gebruiker kan verkennen.
+Hieronder ziet u hoe Bing andere informatie kan weer geven over de installatie kopie die de gebruiker kan verkennen.
 
-![Ontdek andere inzichten over de afbeelding](./media/apple-pie-more-tags.PNG)
+![Andere inzichten over de installatie kopie verkennen](./media/apple-pie-more-tags.PNG)
 
-## <a name="bounding-boxes-and-hot-spots"></a>Omsluitende dozen en hotspots
+## <a name="bounding-boxes-and-hot-spots"></a>Omsluitende vakken en HOTS pots
 
-Niet-standaardtags bevatten het selectiekader dat het interessegebied identificeert in de afbeelding waarop de tag van toepassing is. Als het selectiekader niet de hele afbeelding identificeert, gebruikt u het selectiekader om een hotspot op de afbeelding te maken. De gebruiker kan op de hotspot klikken om informatie te krijgen met betrekking tot de inhoud die onder de hotspot (of rechthoek) wordt gevonden. Als de afbeelding bijvoorbeeld een afbeelding op hoge mode is, kunnen de resultaten tags (en omsluitende dozen) bevatten voor accessoires die in de afbeelding worden weergegeven, zoals een tas, sieraden, sjaals, enzovoort. In het volgende voorbeeld wordt een hotspotrechthoek weergegeven voor de zonnebril die in de afbeelding wordt weergegeven:
+Niet-standaard labels bevatten het begrenzingsvak dat het gebied van de interesse in de afbeelding aangeeft waarop de tag van toepassing is. Als de volledige afbeelding niet wordt geïdentificeerd in het begrenzingsvak, gebruikt u het selectie kader om een hotspot op de afbeelding te maken. De gebruiker kan op de hot spot klikken om informatie te krijgen over de inhoud die is gevonden onder de hot spot (of rechthoek). Als de afbeelding bijvoorbeeld een geavanceerde afbeelding is, bevatten de resultaten mogelijk Tags (en selectie kaders) voor accessoires die worden weer gegeven in de afbeelding, zoals een ring, juwelen, scarfs, enzovoort. In het volgende voor beeld ziet u een hotspot rechthoek voor de zonnebril die in de afbeelding worden weer gegeven:
 
-![Omsluitende doos en hotspot](./media/click-to-search.PNG)
+![Selectie kader en hot spot](./media/click-to-search.PNG)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Om aan de slag te gaan met je eerste aanvraag, zie de quickstarts: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
+Om aan de slag te gaan met uw eerste aanvraag, raadpleegt u Quick starts: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node. js](quickstarts/nodejs.md) | [python](quickstarts/python.md)
 
 
 

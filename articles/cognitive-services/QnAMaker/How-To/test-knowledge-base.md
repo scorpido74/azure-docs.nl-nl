@@ -1,88 +1,88 @@
 ---
-title: Hoe test je een kennisbank - QnA Maker
-description: Het testen van uw QnA Maker kennisbank is een belangrijk onderdeel van een iteratief proces om de nauwkeurigheid van de antwoorden die worden geretourneerd te verbeteren. U de kennisbank testen via een verbeterde chat-interface waarmee u ook bewerkingen aanbrengen.
+title: Een Knowledge Base testen-QnA Maker
+description: Het testen van uw QnA Maker Knowledge Base is een belang rijk onderdeel van een iteratief proces om de nauw keurigheid van de reacties die worden geretourneerd, te verbeteren. U kunt de Knowledge Base testen via een verbeterde chat-interface, waarmee u ook bewerkingen kunt uitvoeren.
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.openlocfilehash: da4988ced0b077952ce64e6227d16e58d40ae329
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78927263"
 ---
-# <a name="test-your-knowledge-base-in-qna-maker"></a>Test je kennisbank in QnA Maker
+# <a name="test-your-knowledge-base-in-qna-maker"></a>Test uw Knowledge Base in QnA Maker
 
-Het testen van uw QnA Maker kennisbank is een belangrijk onderdeel van een iteratief proces om de nauwkeurigheid van de antwoorden die worden geretourneerd te verbeteren. U de kennisbank testen via een verbeterde chat-interface waarmee u ook bewerkingen aanbrengen.
+Het testen van uw QnA Maker Knowledge Base is een belang rijk onderdeel van een iteratief proces om de nauw keurigheid van de reacties die worden geretourneerd, te verbeteren. U kunt de Knowledge Base testen via een verbeterde chat-interface, waarmee u ook bewerkingen kunt uitvoeren.
 
-## <a name="interactively-test-in-qna-maker-portal"></a>Interactief testen in QnA Maker portal
+## <a name="interactively-test-in-qna-maker-portal"></a>Interactief testen in QnA Maker Portal
 
-1. Krijg toegang tot uw kennisbank door de naam te selecteren op de pagina **Mijn kennisbanken.**
-1. Als u toegang wilt krijgen tot het deelvenster Dia-out testen, selecteert u **Testen** in het bovenste deelvenster van uw toepassing.
-1. Voer een query in het tekstvak in en selecteer Enter.
-1. Het best matched antwoord van de kennisbank wordt geretourneerd als antwoord.
+1. Open uw kennis database door de naam ervan te selecteren op de pagina **mijn Knowledge bases** .
+1. Als u toegang wilt krijgen tot het toetsen paneel testen, selecteert u **testen** in het bovenste paneel van de toepassing.
+1. Voer een query in het tekstvak in en selecteer ENTER.
+1. Het best overeenkomende antwoord van de Knowledge Base wordt geretourneerd als antwoord.
 
-### <a name="clear-test-panel"></a>Testpaneel wissen
+### <a name="clear-test-panel"></a>Test paneel wissen
 
-Als u alle ingevoerde testquery's en hun resultaten van de testconsole wilt wissen, selecteert u **Opnieuw beginnen** in de linkerbovenhoek van het testpaneel.
+Als u alle ingevoerde test query's en de bijbehorende resultaten wilt wissen uit de test console, selecteert u **opnieuw beginnen** in de linkerbovenhoek van het test paneel.
 
-### <a name="close-test-panel"></a>Testpaneel sluiten
+### <a name="close-test-panel"></a>Test paneel sluiten
 
-Als u het deelvenster Testen wilt sluiten, selecteert u de knop **Testen** opnieuw. Terwijl het testpaneel is geopend, u de inhoud van de Knowledge Base niet bewerken.
+Als u het test paneel wilt sluiten, selecteert u de knop **testen** opnieuw. Terwijl het test paneel is geopend, kunt u de inhoud van de Knowledge Base niet bewerken.
 
-### <a name="inspect-score"></a>Score inspecteren
+### <a name="inspect-score"></a>Score controleren
 
-U inspecteert de details van het testresultaat in het deelvenster Inspect.
+U kunt de details van het test resultaat bekijken in het deel venster inspecteren.
 
-1.  Als het deelvenster Proefdia-out is geopend, selecteert **u Inspecteren** voor meer informatie over dat antwoord.
+1.  Selecteer in het deel venster voor het testen van de schuif regelaar op **controleren** voor meer informatie over die reactie.
 
-    ![Reacties inspecteren](../media/qnamaker-how-to-test-kb/inspect.png)
+    ![Reacties controleren](../media/qnamaker-how-to-test-kb/inspect.png)
 
-2.  Het inspectiepanel verschijnt. Het paneel bevat de intentie voor de hoogste score en alle geïdentificeerde entiteiten. Het deelvenster toont het resultaat van de geselecteerde utterance.
+2.  Het deel venster inspectie wordt weer gegeven. Het paneel bevat de belangrijkste Score intentie en alle geïdentificeerde entiteiten. In het deel venster wordt het resultaat van de geselecteerde utterance weer gegeven.
 
-### <a name="correct-the-top-scoring-answer"></a>Het antwoord op de hoogste score corrigeren
+### <a name="correct-the-top-scoring-answer"></a>Het bovenste Score antwoord corrigeren
 
-Als het antwoord op de hoogste score onjuist is, selecteert u het juiste antwoord in de lijst en selecteert u **Opslaan en trainen**.
+Als het bovenste Score antwoord onjuist is, selecteert u het juiste antwoord in de lijst en selecteert u **opslaan en trainen**.
 
-![Het antwoord op de hoogste score corrigeren](../media/qnamaker-how-to-test-kb/choose-answer.png)
+![Het bovenste Score antwoord corrigeren](../media/qnamaker-how-to-test-kb/choose-answer.png)
 
 ### <a name="add-alternate-questions"></a>Alternatieve vragen toevoegen
 
-U alternatieve vormen van een vraag aan een bepaald antwoord toevoegen. Typ de alternatieve antwoorden in het tekstvak en klik op Enter om ze toe te voegen. Selecteer **Opslaan en trainen** om de updates op te slaan.
+U kunt alternatieve formulieren van een vraag toevoegen aan een bepaald antwoord. Typ de alternatieve antwoorden in het tekstvak en klik op ENTER om ze toe te voegen. Selecteer **opslaan en trainen** om de updates op te slaan.
 
 ![Alternatieve vragen toevoegen](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
 
 ### <a name="add-a-new-answer"></a>Een nieuw antwoord toevoegen
 
-U een nieuw antwoord toevoegen als een van de bestaande antwoorden die zijn gematcht onjuist zijn of het antwoord niet bestaat in de kennisbank (geen goede overeenkomst gevonden in de KB).
+U kunt een nieuw antwoord toevoegen als een van de bestaande antwoorden die overeenkomen onjuist is of als het antwoord niet aanwezig is in de Knowledge Base (er is geen goede overeenkomst gevonden in de KB).
 
-Gebruik onder aan de lijst met antwoorden het tekstvak om een nieuw antwoord in te voeren en druk op enter om het toe te voegen.
+Klik aan de onderkant van de lijst met antwoorden op het tekstvak om een nieuw antwoord in te voeren en druk op ENTER om het te voegen.
 
-Selecteer **Opslaan en trainen** om dit antwoord voort te zetten. Een nieuw vraag-antwoord paar is nu toegevoegd aan uw kennisbank.
+Selecteer **opslaan en trainen** om dit antwoord te behouden. Er is nu een nieuwe vraag-antwoord paar toegevoegd aan uw Knowledge Base.
 
 > [!NOTE]
-> Alle bewerkingen in uw kennisbank worden alleen opgeslagen wanneer u op de knop **Opslaan en trainen** drukt.
+> Alle wijzigingen in uw kennis database worden alleen opgeslagen wanneer u op de knop **opslaan en trainen** drukt.
 
-### <a name="test-the-published-knowledge-base"></a>Test de gepubliceerde kennisbank
+### <a name="test-the-published-knowledge-base"></a>De gepubliceerde kennis database testen
 
-U de gepubliceerde versie van knowledge base testen in het testvenster. Zodra u de KB hebt gepubliceerd, selecteert u het vak **Gepubliceerde KB** en verzendt u een query om resultaten van de gepubliceerde KB te krijgen.
+U kunt de gepubliceerde versie van de Knowledge Base testen in het test venster. Zodra u de KB hebt gepubliceerd, selecteert u het vak **gepubliceerde KB** en verzendt u een query om de resultaten van de gepubliceerde KB op te halen.
 
-![Test tegen een gepubliceerde KB](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
+![Testen op basis van een gepubliceerde KB](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
 
-## <a name="batch-test-with-tool"></a>Batchtest met gereedschap
+## <a name="batch-test-with-tool"></a>Batch test met hulp programma
 
-Gebruik het batchtestgereedschap wanneer u dat wilt:
+Gebruik het hulp programma voor batch tests wanneer u het volgende wilt doen:
 
-* bepalen top antwoord en score voor een set van vragen
-* het verwachte antwoord op reeks vragen valideren
+* beste antwoord en score voor een set vragen bepalen
+* het verwachte antwoord voor een set met vragen valideren
 
-Lees de [zelfstudie](../Quickstarts/batch-testing.md) voor batchtesten voor stapsgewijze instructies.
+Lees de [zelf studie](../Quickstarts/batch-testing.md) voor batch testen voor stapsgewijze instructies.
 
-Batch testen is voorzien van de batch testen tool. Deze tool is beschikbaar als een [rits uitvoerbaar](https://aka.ms/qnamakerbatchtestingtool) voor download of als [C # broncode](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting).
+Batch tests worden meegeleverd met het hulp programma voor batch tests. Dit hulp programma is beschikbaar als een [zip-uitvoerbaar bestand](https://aka.ms/qnamakerbatchtestingtool) dat kan worden gedownload of als [C#-bron code](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting).
 
-[Referentiedocumentatie over het hulpprogramma](../reference-tsv-format-batch-testing.md) omvat:
+[Naslag documentatie over het hulp programma](../reference-tsv-format-batch-testing.md) is onder andere:
 
-* het opdrachtregelvoorbeeld van het gereedschap
-* de indeling voor TSV-invoer- en outfilebestanden
+* het opdracht regel voorbeeld van het hulp programma
+* de indeling voor bestanden voor TSV-invoer en-uitvoer
 
 ## <a name="next-steps"></a>Volgende stappen
 

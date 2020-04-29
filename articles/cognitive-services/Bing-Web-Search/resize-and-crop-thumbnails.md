@@ -1,7 +1,7 @@
 ---
-title: Formaat en bijsnijdafbeeldingsminiaturen wijzigen - Bing Web Search API
+title: Miniatuur weergaven verg Roten/verkleinen en bijsnijden-Bing Webzoekopdrachten-API
 titleSuffix: Azure Cognitive Services
-description: Sommige antwoorden van de Bing Search API's bevatten URL's tot miniatuurafbeeldingen die door Bing worden weergegeven, die u aanpassen en bijsnijden, en kunnen queryparameters bevatten.
+description: Sommige antwoorden van de Bing Zoeken-API's bevatten Url's naar miniatuur afbeeldingen die worden geleverd door Bing, die u kunt verg Roten/verkleinen en bijsnijden, en kan query parameters bevatten.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,119 +12,119 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: aahi
 ms.openlocfilehash: 630b86f55a537d109c851cb585cfccc34d229f83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74110640"
 ---
-# <a name="resize-and-crop-thumbnail-images"></a>Miniatuurafbeeldingen wijzigen en bijsnijden
+# <a name="resize-and-crop-thumbnail-images"></a>Miniatuur afbeeldingen verg Roten of verkleinen en bijsnijden
 
-Sommige antwoorden van de Bing Search API's bevatten URL's tot miniatuurafbeeldingen die door Bing worden weergegeven, die u aanpassen en bijsnijden, en kunnen queryparameters bevatten. Bijvoorbeeld:
+Sommige antwoorden van de Bing Zoeken-API's bevatten Url's naar miniatuur afbeeldingen die worden geleverd door Bing, die u kunt verg Roten/verkleinen en bijsnijden, en kan query parameters bevatten. Bijvoorbeeld:
 
 `https://<host>/th?id=AMMS_92772df988...&w=110&h=73&rs=1&qlt=80&cdv=1&pid=16.1`
 
-Als u een subset van deze miniaturen weergeeft, biedt u een optie om de resterende afbeeldingen weer te geven.
+Als u een subset van deze miniaturen weergeeft, geeft u een optie om de resterende installatie kopieën weer te geven.
 
 > [!NOTE]
-> Zorg ervoor dat miniatuurafbeeldingen worden bijsnijden en het formaat van miniatuurafbeeldingen worden aangepast, zodat de rechten van derden worden aangepast, zoals vereist door de [gebruiks- en weergavevereisten van](use-display-requirements.md)Bing Search API.
+> Zorg ervoor dat het bijsnijden en aanpassen van miniatuur afbeeldingen een zoek scenario biedt met betrekking tot de rechten van derden, zoals wordt vereist door de vereisten voor het gebruik van de Bing Search-API [en de weer gave](use-display-requirements.md).
 
 ## <a name="resize-a-thumbnail"></a>Het formaat van een miniatuur wijzigen 
 
-Als u het formaat van een miniatuur `w` wilt wijzigen, `h` raadt Bing u aan slechts één van de queryparameters (breedte) of (hoogte) in de URL van de miniatuur op te geven. Als U alleen de hoogte of breedte opgeeft, behoudt Bing het oorspronkelijke aspect van de afbeelding. Geef de breedte en hoogte in pixels op. 
+Als u het formaat van een miniatuur wilt wijzigen, raadt Bing u `w` slechts één van de `h` query parameters (breedte) of (hoogte) in de URL van de miniatuur op. Als u alleen de hoogte of breedte opgeeft, kan het oorspronkelijke aspect van de afbeelding worden onderhouden. Geef de breedte en hoogte op in pixels. 
 
 Als de oorspronkelijke miniatuur bijvoorbeeld 480x620 is:
 
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=480&h=620`
 
-En u wilt de grootte `w` verkleinen, de parameter instellen `336`op een `h` nieuwe waarde (bijvoorbeeld) en de parameter verwijderen:
+En u de grootte wilt verkleinen, stelt u de `w` para meter in op een nieuwe waarde ( `336`bijvoorbeeld) en verwijdert u `h` de para meter:
 
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=336`
 
-Als u alleen de hoogte of breedte van een miniatuur opgeeft, blijft de oorspronkelijke beeldverhouding behouden. Als u beide parameters opgeeft en de beeldverhouding niet wordt gehandhaafd, voegt Bing witte vulling toe aan de rand van de afbeelding.
+Als u alleen de hoogte of breedte van een miniatuur opgeeft, wordt de oorspronkelijke hoogte-breedte verhouding van de afbeelding gehandhaafd. Als u beide para meters opgeeft en de hoogte-breedte verhouding niet wordt behouden, voegt Bing witte opvulling toe aan de rand van de afbeelding.
 
-Als u bijvoorbeeld het formaat van een afbeelding van 480x359 wijzigt tot 200x200 zonder bijsnijden, bevat de volledige breedte de afbeelding, maar de hoogte bevat 25 pixels witte vulling aan de boven- en onderkant van de afbeelding. Als de afbeelding 359x480 was, zouden de linker- en rechterranden witte vulling bevatten. Als u de afbeelding bijsnijdt, wordt er geen witte vulling toegevoegd.  
+Als u bijvoorbeeld het formaat van een 480x359-afbeelding wijzigt in 200x200 zonder dat deze is bijgesneden, bevat de volledige breedte de afbeelding, maar de hoogte bevat 25 pixels aan witte opvulling boven en onder aan de afbeelding. Als de afbeelding 359x480 is, bevatten de linker-en rechter rand witte opvulling. Als u de afbeelding bijsnijdt, wordt er geen witte opvulling toegevoegd.  
 
-De volgende afbeelding toont de oorspronkelijke grootte van een miniatuurafbeelding (480x300).  
+In de volgende afbeelding ziet u de oorspronkelijke grootte van een miniatuur afbeelding (480x300).  
   
-![Originele landschapsafbeelding](./media/resize-crop/bing-resize-crop-landscape.png)  
+![Oorspronkelijke liggende afbeelding](./media/resize-crop/bing-resize-crop-landscape.png)  
   
-De volgende afbeelding toont de grootte van de afbeelding tot 200x200. De beeldverhouding blijft behouden en de boven- en onderkant zijn opgevuld met wit (de zwarte rand hier is inbegrepen om de vulling te tonen).  
+In de volgende afbeelding ziet u de afbeelding waarvan de grootte is gewijzigd in 200x200. De hoogte-breedte verhouding wordt gehandhaafd en de boven-en onderrand worden gevuld met wit (de zwarte rand hier is opgenomen om de opvulling weer te geven).  
   
-![Afbeelding van grootte van het formaat](./media/resize-crop/bing-resize-crop-landscape-resized.png)  
+![Grootte van liggende afbeelding gewijzigd](./media/resize-crop/bing-resize-crop-landscape-resized.png)  
 
-Als u afmetingen opgeeft die groter zijn dan de oorspronkelijke breedte en hoogte van de afbeelding, voegt Bing witte vulling toe aan de linker- en bovenranden.  
+Als u dimensies opgeeft die groter zijn dan de oorspronkelijke breedte en hoogte van de afbeelding, voegt Bing witte opvulling toe aan de linker-en bovenrand.  
 
-## <a name="request-different-thumbnail-sizes"></a>Verschillende miniatuurformaten aanvragen
+## <a name="request-different-thumbnail-sizes"></a>Andere grootte aanvragen voor miniaturen
 
-Als u een andere miniatuurafbeeldingsgrootte wilt aanvragen, verwijdert u `id` `pid` alle queryparameters uit de URL van de miniatuur, behalve de parameters en parameters. Voeg vervolgens `&w` de queryparameter `&h` (breedte) of (hoogte) toe met de gewenste afbeeldingsgrootte in pixels, maar niet beide. Bing behoudt de oorspronkelijke beeldverhouding. 
+Als u een andere grootte voor een miniatuur afbeelding wilt aanvragen, verwijdert u alle query parameters uit de URL `id` van `pid` de miniatuur, met uitzonde ring van de para meters en. Voeg vervolgens de `&w` query parameter (Width) `&h` of (Height) toe met de gewenste afbeeldings grootte in pixels, maar niet beide. Bing behoudt de oorspronkelijke hoogte-breedte verhouding van de afbeelding. 
 
-Als u de breedte van de afbeelding die door de bovenstaande URL is opgegeven, wilt vergroten tot 165 pixels, gebruikt u de volgende URL:
+Als u de breedte van de afbeelding die is opgegeven door de bovenstaande URL wilt verg Roten naar 165 pixels, gebruikt u de volgende URL:
 
 `https://<host>/th?id=AMMS_92772df988...&w=165&pid=16.1`
 
-Als u een afbeelding aanvraagt die groter is dan de oorspronkelijke grootte van de afbeelding, voegt Bing indien nodig witte vulling rond de afbeelding toe. Als de oorspronkelijke grootte van de afbeelding bijvoorbeeld 474x316 is en u bent ingesteld `&w` op 500, geeft Bing een afbeelding van 500x333 terug. Deze afbeelding heeft 8,5 pixels witte vulling langs de boven- en onderkant en 13 pixels aan opvulling aan de linker- en rechterranden.
+Als u een afbeelding aanvraagt die groter is dan de oorspronkelijke grootte van de afbeelding, voegt Bing witruimte rond de afbeelding toe als dat nodig is. Als de oorspronkelijke grootte van de afbeelding bijvoorbeeld 474x316 is en u instelt `&w` op 500, retourneert Bing een 500x333-installatie kopie. Deze afbeelding krijgt een witte opvulling van 8,5 pixels langs de boven-en onderrand en 13 pixels aan de linker-en rechter rand.
 
-Als u wilt voorkomen dat Bing witte vulling toevoegt als de gevraagde `&p` grootte groter is dan de oorspronkelijke grootte van de afbeelding, stelt u de queryparameter in op 0. Als u bijvoorbeeld de `&p=0` parameter opneemt in de bovenstaande URL, retourneert Bing een afbeelding van 474x316 in plaats van een afbeelding van 500x333:
+Als u wilt voor komen dat Bing opvulling wordt toegevoegd als de aangevraagde grootte groter is dan de oorspronkelijke grootte `&p` van de afbeelding, stelt u de query parameter in op 0. Als u bijvoorbeeld de `&p=0` para meter in de bovenstaande URL opneemt, wordt door Bing een 474x316-installatie kopie geretourneerd in plaats van een 500x333-installatie kopie:
 
 `https://<host>/th?id=AMMS_92772df988...&w=500&p=0&pid=16.1`
 
-Als u `&w` beide `&h` en queryparameters opgeeft, behoudt Bing de beeldverhouding van de afbeelding en voegt u desbehoefte witte opvulling toe. Als de oorspronkelijke grootte van de afbeelding bijvoorbeeld 474x316 is en u de breedte-`&w=200&h=200`en hoogteparameters instelt op 200x200 ( ), retourneert Bing een afbeelding met 33 pixels witte vulling aan de boven- en onderkant. Als u `&p` de queryparameter opneemt, retourneert Bing een afbeelding van 200x134.
+Als u zowel `&w` als `&h` query parameters opgeeft, behoudt Bing de hoogte-breedte verhouding van de afbeelding en wordt er een witte opvulling toegevoegd. Als de oorspronkelijke grootte van de installatie kopie bijvoorbeeld 474x316 is en u de para meters voor breedte en hoogte instelt`&w=200&h=200`op 200x200 (), retourneert Bing een afbeelding met een witte opvulling van 33 pixels aan de bovenkant en de onderkant. Als u de `&p` query parameter opneemt, retourneert Bing een 200x134-installatie kopie.
 
 ## <a name="crop-a-thumbnail"></a>Een miniatuur bijsnijden 
 
-Als u een afbeelding `c` wilt bijsnijden, neemt u de parameter (bijsnijd)query op. U de volgende waarden gebruiken:
+Als u een afbeelding wilt bijsnijden `c` , neemt u de query parameter (bijsnijd) op. U kunt de volgende waarden gebruiken:
   
-- `4`&mdash; Blind Ratio  
+- `4`&mdash; Blinde verhouding  
 - `7`&mdash; Slimme verhouding  
 
-### <a name="smart-ratio-cropping"></a>Bijsnijden in slimme verhouding
+### <a name="smart-ratio-cropping"></a>Slimme verhouding bijsnijden
 
-Als u Smart Ratio bijsnijden `c` aanvraagt `7`(door de parameter in te stellen op ), wordt een afbeelding vanuit het midden van het gebied van belang naar buiten bijgewassen, met behoud van de beeldverhouding. Het gebied van belang is het gebied van de afbeelding waarvan Bing bepaalt dat de meeste importonderdelen bevat. Hieronder ziet u een voorbeeld regio van belang.  
+Als u het bijsnijden van intelligente verhoudingen aanvraagt (door de `c` para meter in te stellen op), snijdt Bing een afbeelding uit vanuit het midden van het gedeelte van de interesse naar `7`buiten, terwijl de hoogte-breedte verhouding van de afbeelding wordt behouden. De gewenste regio is het gebied van de installatie kopie die door Bing wordt bepaald en bevat de meeste import onderdelen. Hieronder ziet u een voor beeld-regio.  
   
-![Regio van belang](./media/resize-crop/bing-resize-crop-regionofinterest.png)
+![Interesse gebied](./media/resize-crop/bing-resize-crop-regionofinterest.png)
 
-Als u het formaat van een afbeelding wijzigt en slimme ratio bijsnijdt, verkleint Bing de afbeelding tot de gewenste grootte met behoud van de beeldverhouding. Bing snijdt de afbeelding vervolgens op basis van de afmetingen van de grootte. Als de grootte van de grootte bijvoorbeeld kleiner is dan of gelijk is aan de hoogte, wordt de afbeelding links en rechts van het middelpunt van het gebied bijsnijden. Anders zal Bing het bijsnijden naar de boven- en onderkant van het centrum van het gebied van belang.  
+Als u het formaat van een afbeelding wijzigt en het bijsnijden van intelligente verhoudingen aanvraagt, wordt de installatie kopie beperkt tot de gevraagde grootte en blijft de hoogte-breedte verhouding behouden. Bing snijdt de afbeelding vervolgens bij op basis van de afmetingen waarvan het formaat is gewijzigd. Als de breedte van het formaat kleiner is dan of gelijk is aan de hoogte, snijdt Bing de afbeelding aan de linkerkant en rechts van het midden van de interesse. Als dat niet het geval is, wordt dit door Bing aan de boven-en onderkant van het midden van de gewenste regio bijgesneden.  
   
  
-Het volgende toont de afbeelding teruggebracht tot 200x200 met behulp van Smart Ratio bijsnijden. Omdat Bing de afbeelding vanuit de linkerbovenhoek meet, wordt het onderste deel van de afbeelding bijgesneden. 
+Hieronder ziet u de afbeelding die is gereduceerd tot 200x200 met behulp van slimme verhoudingen. Omdat Bing de afbeelding in de linkerbovenhoek meet, wordt het onderste deel van de afbeelding bijgesneden. 
   
-![Landschapsafbeelding bijgesneden tot 200x200](./media/resize-crop/bing-resize-crop-landscape200x200c7.png) 
+![Liggende afbeelding bijgesneden tot 200x200](./media/resize-crop/bing-resize-crop-landscape200x200c7.png) 
   
-Het volgende toont de afbeelding teruggebracht tot 200x100 met behulp van Smart Ratio bijsnijden. Omdat Bing de afbeelding vanuit de linkerbovenhoek meet, wordt het onderste deel van de afbeelding bijgesneden. 
+Hieronder ziet u de afbeelding die is gereduceerd tot 200x100 met behulp van slimme verhoudingen. Omdat Bing de afbeelding in de linkerbovenhoek meet, wordt het onderste deel van de afbeelding bijgesneden. 
    
-![Landschapsafbeelding bijgesneden tot 200x100](./media/resize-crop/bing-resize-crop-landscape200x100c7.png)
+![Liggende afbeelding bijgesneden tot 200x100](./media/resize-crop/bing-resize-crop-landscape200x100c7.png)
   
-Het volgende toont de afbeelding teruggebracht tot 100x200 met behulp van Smart Ratio bijsnijden. Omdat Bing de afbeelding vanuit het midden meet, worden de linker- en rechterdelen van de afbeelding bijgesneden.
+Hieronder ziet u de afbeelding die is gereduceerd tot 100x200 met behulp van slimme verhoudingen. Omdat Bing de afbeelding van het midden meet, worden de linker-en rechter onderdelen van de afbeelding bijgesneden.
   
-![Landschapsafbeelding bijgesneden tot 100x200](./media/resize-crop/bing-resize-crop-landscape100x200c7.png) 
+![Liggende afbeelding bijgesneden tot 100x200](./media/resize-crop/bing-resize-crop-landscape100x200c7.png) 
 
-Als Bing het interessegebied van de afbeelding niet kan bepalen, gebruikt de service Blind Ratio bijsnijden.  
+Als Bing de afbeeldings regio niet kan bepalen, gebruikt de service blinde verhouding bijsnijden.  
 
-### <a name="blind-ratio-cropping"></a>Blind Ratio bijsnijden
+### <a name="blind-ratio-cropping"></a>Blind verhouding bijsnijden
 
-Als u Bijsnijding van de `c` rolverhouding aanvraagt (door de parameter in te stellen op), `4`gebruikt Bing de volgende regels om de afbeelding bij te snijden.  
+Als u de Uitsnij ding van blinde verhouding vraagt `c` (door `4`de para meter in te stellen op), gebruikt Bing de volgende regels om de afbeelding bij te snijden.  
   
-- Als `(Original Image Width / Original Image Height) < (Requested Image Width / Requested Image Height)`, wordt de afbeelding gemeten vanuit de linkerbovenhoek en bijgesneden aan de onderkant.  
-- Als `(Original Image Width / Original Image Height) > (Requested Image Width / Requested Image Height)`, wordt de afbeelding gemeten vanuit het midden en bijgesneden naar links en rechts.  
+- Als `(Original Image Width / Original Image Height) < (Requested Image Width / Requested Image Height)`, wordt de afbeelding gemeten vanaf de linkerbovenhoek en aan de onderkant bijgesneden.  
+- Als `(Original Image Width / Original Image Height) > (Requested Image Width / Requested Image Height)`de afbeelding wordt gemeten vanuit het midden en aan de linker-en rechter kant bijgesneden.  
 
-Het volgende toont een portretafbeelding van 225x300.  
+Hieronder ziet u een staande afbeelding 225x300.  
   
-![Origineel zonnebloembeeld](./media/resize-crop/bing-resize-crop-sunflower.png)
+![Oorspronkelijke zonnebloem-afbeelding](./media/resize-crop/bing-resize-crop-sunflower.png)
   
-Het volgende toont het beeld teruggebracht tot 200x200 met behulp van Blind Ratio bijsnijden. De afbeelding wordt gemeten vanaf de linkerbovenhoek, waardoor het onderste deel van de afbeelding wordt bijgesneden.  
+Hieronder ziet u de afbeelding verkleind tot 200x200 met behulp van blinde verhouding bijsnijden. De afbeelding wordt gemeten vanaf de linkerbovenhoek, waardoor het onderste deel van de afbeelding wordt bijgesneden.  
   
-![Zonnebloembeeld bijgesneden tot 200x200](./media/resize-crop/bing-resize-crop-sunflower200x200c4.png)
+![Zonnebloem-afbeelding bijgesneden tot 200x200](./media/resize-crop/bing-resize-crop-sunflower200x200c4.png)
   
-Het volgende toont het beeld teruggebracht tot 200x100 met behulp van Blind Ratio bijsnijden. De afbeelding wordt gemeten vanaf de linkerbovenhoek, waardoor het onderste deel van de afbeelding wordt bijgesneden.  
+Hieronder ziet u de afbeelding verkleind tot 200x100 met behulp van blinde verhouding bijsnijden. De afbeelding wordt gemeten vanaf de linkerbovenhoek, waardoor het onderste deel van de afbeelding wordt bijgesneden.  
   
-![Zonnebloembeeld bijgesneden tot 200x100](./media/resize-crop/bing-resize-crop-sunflower200x100c4.png)
+![Zonnebloem-afbeelding bijgesneden tot 200x100](./media/resize-crop/bing-resize-crop-sunflower200x100c4.png)
   
-Het volgende toont het beeld teruggebracht tot 100x200 met behulp van Blind Ratio bijsnijden. De afbeelding wordt gemeten vanuit het midden, waardoor de linker- en rechterdelen van de afbeelding worden bijgesneden.  
+Hieronder ziet u de afbeelding verkleind tot 100x200 met behulp van blinde verhouding bijsnijden. De afbeelding wordt gemeten vanuit het midden, waardoor de linker-en rechter delen van de afbeelding worden bijgesneden.  
   
-![Zonnebloembeeld bijgesneden tot 100x200](./media/resize-crop/bing-resize-crop-sunflower100x200c4.png)
+![Zonnebloem-afbeelding bijgesneden tot 100x200](./media/resize-crop/bing-resize-crop-sunflower100x200c4.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wat zijn de Bing Search API's?](bing-api-comparison.md)
+* [Wat zijn de Bing Zoeken-API's?](bing-api-comparison.md)
 * [Vereisten voor gebruik en weergave van Bing Zoeken-API's](use-display-requirements.md)

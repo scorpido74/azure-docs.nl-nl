@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Een MEAN-stack maken op een virtuele Linux-machine in Azure
+title: 'Zelf studie: een gemiddelde stack maken op een virtuele Linux-machine in azure'
 description: In deze zelfstudie leert u hoe u een MongoDB-, Express-, AngularJS- en Node.js- (MEAN-)stack maakt op een virtuele Linux-machine in Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 9e0ed3454f11907c5f183f08fd2ec51db3384225
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80154318"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Zelfstudie: Een MongoDB-, Express-, AngularJS- en Node.js- (MEAN-)stack maken op een virtuele Linux-machine in Azure
@@ -34,7 +34,7 @@ In deze zelfstudie leert u hoe u een MongoDB-, Express-, AngularJS- en Node.js- 
 > * Routes openen met AngularJS
 > * De toepassing uitvoeren
 
-Deze zelfstudie maakt gebruik van de CLI in de [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert **u Probeer deze** boven aan een codeblok.
+In deze zelf studie wordt gebruikgemaakt van de CLI binnen de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **deze** in het begin van een wille keurig code blok.
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
 
@@ -220,7 +220,7 @@ Met [MongoDB](https://www.mongodb.com) worden gegevens opgeslagen in flexibele J
 
 [AngularJS](https://angularjs.org) biedt een webframework voor het maken van dynamische weergaven in uw webtoepassingen. In deze zelfstudie wordt AngularJS gebruikt om de webpagina verbinding te laten maken met Express en acties op de boekdatabase uit te voeren.
 
-1. Wijzig de map *Books* een`cd ../..`back-up in Boeken ( ), maak vervolgens een map met de naam *openbaar* en voeg een bestand met de naam *script.js* toe met de controllerconfiguratie gedefinieerd.
+1. Wijzig de Directory-back- *Books* up naar`cd ../..`Books (), maak een map met de naam *Public* en voeg een bestand toe met de naam *script. js* en de configuratie van de controller.
 
     ```javascript
     var app = angular.module('myApp', []);
@@ -317,7 +317,7 @@ Met [MongoDB](https://www.mongodb.com) worden gegevens opgeslagen in flexibele J
 
 ##  <a name="run-the-application"></a>De toepassing uitvoeren
 
-1. Wijzig de map *Books* een`cd ..`back-up in Boeken ( ) en start de server door deze opdracht uit te voeren:
+1. Wijzig de Directory back-up *Books* naar Books`cd ..`() en start de server door de volgende opdracht uit te voeren:
 
     ```bash
     nodejs server.js
@@ -349,7 +349,7 @@ In deze zelfstudie hebt u een webtoepassing gemaakt die boekrecords bijhoudt met
 > * Routes openen met AngularJS
 > * De toepassing uitvoeren
 
-Ga naar de volgende zelfstudie om te leren hoe u webservers met TLS-certificaten beveiligen.
+Ga naar de volgende zelf studie om te leren hoe u webservers met TLS-certificaten kunt beveiligen.
 
 > [!div class="nextstepaction"]
 > [Beveiligde webserver met TLS](tutorial-secure-web-server.md)

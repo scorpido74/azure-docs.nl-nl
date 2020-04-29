@@ -1,5 +1,5 @@
 ---
-title: Logboekanalysewerkruimte maken - Azure PowerShell
+title: Log Analytics-werk ruimte maken-Azure PowerShell
 description: Voorbeeld van Azure PowerShell-script - Een Log Analytics-werkruimte maken
 ms.subservice: logs
 ms.topic: sample
@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/07/2017
 ms.openlocfilehash: 62b02de5d1c08f6047052d71e3be420cceb1c5c0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80054633"
 ---
 # <a name="create-a-log-analytics-workspace-with-powershell"></a>Een Log Analytics-werkruimte maken met PowerShell
@@ -33,8 +33,8 @@ In dit script worden de volgende opdrachten gebruikt om een nieuwe Log Analytics
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Get-azoperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace) | Hiermee wordt informatie opgehaald over een bestaande werkruimte. |
-| [Nieuwe-azoperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) | Hiermee wordt een werkruimte gemaakt in de opgegeven resourcegroep en locatie. |
+| [Get-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace) | Hiermee wordt informatie opgehaald over een bestaande werkruimte. |
+| [New-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) | Hiermee wordt een werkruimte gemaakt in de opgegeven resourcegroep en locatie. |
 
 
 ## <a name="next-steps"></a>Volgende stappen

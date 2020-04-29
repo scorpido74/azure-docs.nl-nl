@@ -1,51 +1,51 @@
 ---
-title: Server opnieuw opstarten - Azure portal - Azure Database voor MariaDB
-description: In dit artikel wordt beschreven hoe u een Azure Database voor MariaDB-server opnieuw starten met behulp van de Azure Portal.
+title: Server opnieuw starten-Azure Portal-Azure Database for MariaDB
+description: In dit artikel wordt beschreven hoe u een Azure Database for MariaDB server opnieuw kunt opstarten met behulp van Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: ed95304807a1a03880cc824c1a58f010203d418d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79534708"
 ---
-# <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Azure-database opnieuw starten voor MariaDB-server met Azure-portal
-In dit onderwerp wordt beschreven hoe u een Azure Database voor MariaDB-server opnieuw starten. Mogelijk moet u uw server opnieuw opstarten om onderhoudsredenen, wat een korte storing veroorzaakt wanneer de server de bewerking uitvoert.
+# <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Azure Database for MariaDB server opnieuw opstarten met Azure Portal
+In dit onderwerp wordt beschreven hoe u een Azure Database for MariaDB server opnieuw kunt starten. Mogelijk moet u de server opnieuw opstarten om onderhouds redenen te zorgen, waardoor er een korte storing optreedt terwijl de server de bewerking uitvoert.
 
-De herstart van de server wordt geblokkeerd als de service bezet is. De service verwerkt bijvoorbeeld mogelijk een eerder aangevraagde bewerking, zoals het schalen van vCores.
+Het opnieuw opstarten van de server wordt geblokkeerd als de service bezet is. De service kan bijvoorbeeld een eerder aangevraagde bewerking verwerken, zoals het schalen van vCores.
 
-De tijd die nodig is om een herstart te voltooien, is afhankelijk van het herstelproces van MariaDB. Om de herstarttijd te verminderen, raden we u aan de hoeveelheid activiteit die zich op de server voor de herstart voordoet te minimaliseren.
+De tijd die nodig is om opnieuw op te starten, is afhankelijk van het MariaDB-herstel proces. Om de herstarttijd te verlagen, raden we u aan om de hoeveelheid activiteit die op de server plaatsvindt, te minimaliseren voordat de computer opnieuw wordt opgestart.
 
 ## <a name="prerequisites"></a>Vereisten
-Om deze handleiding te voltooien, moet u het:
-- Een [Azure-database voor MariaDB-server](./quickstart-create-mariadb-server-database-using-azure-portal.md)
+U hebt het volgende nodig om deze hand leiding te volt ooien:
+- Een [Azure database for MariaDB server](./quickstart-create-mariadb-server-database-using-azure-portal.md)
 
 ## <a name="perform-server-restart"></a>Server opnieuw opstarten uitvoeren
 
-De volgende stappen starten de MariaDB-server:
+Met de volgende stappen wordt de MariaDB-server opnieuw gestart:
 
-1. Selecteer in de Azure-portal uw Azure-database voor MariaDB-server.
+1. Selecteer uw Azure Database for MariaDB server in het Azure Portal.
 
-2. Klik op de werkbalk van de **pagina Overzicht** van de server op **Opnieuw starten**.
+2. Klik op de werk balk van de pagina **overzicht** van de server op **opnieuw opstarten**.
 
-   ![Azure Database voor MariaDB - Overzicht - Knop Opnieuw opstarten](./media/howto-restart-server-portal/2-server.png)
+   ![Azure Database for MariaDB-overzicht-knop opnieuw opstarten](./media/howto-restart-server-portal/2-server.png)
 
-3. Klik **op Ja** om het opnieuw opstarten van de server te bevestigen.
+3. Klik op **Ja** om te bevestigen dat de server opnieuw wordt opgestart.
 
-   ![Azure Database voor MariaDB - Opnieuw starten bevestigen](./media/howto-restart-server-portal/3-restart-confirm.png)
+   ![Azure Database for MariaDB-opnieuw opstarten bevestigen](./media/howto-restart-server-portal/3-restart-confirm.png)
 
-4. Houd er rekening mee dat de serverstatus wordt gewijzigd in 'Opnieuw opstarten'.
+4. Houd er rekening mee dat de server status wordt gewijzigd in opnieuw opstarten.
 
-   ![Azure Database voor MariaDB - Status opnieuw opstarten](./media/howto-restart-server-portal/4-restarting-status.png)
+   ![Azure Database for MariaDB-start status](./media/howto-restart-server-portal/4-restarting-status.png)
 
-5. Controleer of het opnieuw opstarten van de server is gelukt.
+5. Het opnieuw opstarten van de server is voltooid.
 
-   ![Azure Database voor MariaDB - Succes opnieuw opstarten](./media/howto-restart-server-portal/5-restart-success.png)
+   ![Azure Database for MariaDB: opnieuw opstarten geslaagd](./media/howto-restart-server-portal/5-restart-success.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Snelstart: Azure-database maken voor MariaDB-server met Azure-portal](./quickstart-create-mariadb-server-database-using-azure-portal.md)
+[Snelstartgids: Azure Database for MariaDB-server maken met behulp van Azure Portal](./quickstart-create-mariadb-server-database-using-azure-portal.md)

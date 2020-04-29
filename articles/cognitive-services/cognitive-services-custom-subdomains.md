@@ -1,7 +1,7 @@
 ---
 title: Aangepaste subdomeinen
 titleSuffix: Azure Cognitive Services
-description: Aangepaste subdomeinnamen voor elke Cognitive Service-bron worden gemaakt via de Azure-portal, Azure Cloud Shell of Azure CLI.
+description: Aangepaste subdomein namen voor elke cognitieve service resource worden gemaakt via de Azure Portal, Azure Cloud Shell of Azure CLI.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,67 +10,67 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
 ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73647682"
 ---
-# <a name="custom-subdomain-names-for-cognitive-services"></a>Aangepaste subdomeinnamen voor cognitieve services
+# <a name="custom-subdomain-names-for-cognitive-services"></a>Aangepaste subdomein namen voor Cognitive Services
 
-Azure Cognitive Services gebruiken aangepaste subdomeinnamen voor elke bron die is gemaakt via de [Azure-portal,](https://portal.azure.com) [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)of Azure [CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). In tegenstelling tot regionale eindpunten, die gebruikelijk waren voor alle klanten in een specifieke Azure-regio, zijn aangepaste subdomeinnamen uniek voor de bron. Aangepaste subdomeinnamen zijn vereist om functies zoals Azure Active Directory (Azure AD) in te schakelen voor verificatie.
+In azure Cognitive Services worden aangepaste subdomein namen gebruikt voor elke resource die via de [Azure Portal](https://portal.azure.com), [Azure Cloud shell](https://azure.microsoft.com/features/cloud-shell/)of de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli)is gemaakt. In tegens telling tot regionale eind punten, die gemeen schappelijk zijn voor alle klanten in een specifieke Azure-regio, zijn aangepaste subdomein namen uniek voor de resource. Aangepaste subdomein namen zijn vereist om functies als Azure Active Directory (Azure AD) voor verificatie in te scha kelen.
 
-## <a name="how-does-this-impact-existing-resources"></a>Welke invloed heeft dit op bestaande bronnen?
+## <a name="how-does-this-impact-existing-resources"></a>Hoe beïnvloedt dit de bestaande resources?
 
-Cognitive Services-resources die vóór 1 juli 2019 zijn gemaakt, gebruiken de regionale eindpunten voor de bijbehorende service. Deze eindpunten werken met bestaande en nieuwe resources.
+Cognitive Services resources die zijn gemaakt voor 1 juli 2019, zullen de regionale eind punten voor de bijbehorende service gebruiken. Deze eind punten werken met bestaande en nieuwe resources.
 
-Als u een bestaande bron wilt migreren om aangepaste subdomeinnamen te gebruiken, zodat u functies zoals Azure AD inschakelen, volgt u de volgende instructies:
+Als u een bestaande resource wilt migreren om aangepaste subdomeinen te gebruiken, zodat u functies als Azure AD kunt inschakelen, volgt u deze instructies:
 
-1. Meld u aan bij de Azure-portal en zoek de bron Cognitive Services waaraan u een aangepaste subdomeinnaam wilt toevoegen.
-2. Zoek en selecteer aangepaste **domeinnaam genereren**in het **blad Overzicht** .
-3. Hiermee wordt een paneel geopend met instructies om een uniek aangepast subdomein voor uw resource te maken.
+1. Meld u aan bij de Azure Portal en zoek de Cognitive Services resource waaraan u een aangepast subdomein naam wilt toevoegen.
+2. Zoek op de Blade **overzicht** de optie **aangepaste domein naam genereren**en selecteer deze.
+3. Hiermee opent u een deel venster met instructies voor het maken van een uniek aangepast subdomein voor uw resource.
    > [!WARNING]
-   > Nadat u een aangepaste subdomeinnaam hebt **gemaakt, kan deze niet** meer worden gewijzigd.
+   > Nadat u een aangepaste subdomeinnaam hebt gemaakt, **kan deze niet meer** worden gewijzigd.
 
-## <a name="do-i-need-to-update-my-existing-resources"></a>Moet ik mijn bestaande bronnen bijwerken?
+## <a name="do-i-need-to-update-my-existing-resources"></a>Moet ik mijn bestaande resources bijwerken?
 
-Nee. Het regionale eindpunt blijft werken voor nieuwe en bestaande Cognitieve Services en de aangepaste subdomeinnaam is optioneel. Zelfs als een aangepaste subdomeinnaam wordt toegevoegd, blijft het regionale eindpunt met de resource werken.
+Nee. Het regionale eind punt blijft werken voor nieuwe en bestaande Cognitive Services en de aangepaste subdomeinnaam is optioneel. Zelfs als de naam van een aangepast subdomein wordt toegevoegd, blijft het regionale eind punt werken met de resource.
 
-## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>Wat als een SDK mij vraagt voor de regio voor een bron?
+## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>Wat gebeurt er als een SDK mij vraagt voor de regio van een resource?
 
 > [!WARNING]
-> De spraakservices bieden op dit moment **geen** ondersteuning voor aangepaste subdomeinen. Gebruik de regionale eindpunten bij het gebruik van de Spraakdiensten en bijbehorende SDK's.
+> De spraak Services ondersteunen op dit moment **geen** aangepaste subdomeinen. Gebruik de regionale eind punten wanneer u de spraak Services en de bijbehorende Sdk's gebruikt.
 
-Regionale eindpunten en aangepaste subdomeinnamen worden ondersteund en kunnen door elkaar worden gebruikt. Het volledige eindpunt is echter vereist.
+Regionale eind punten en aangepaste subdomeinen worden beide ondersteund en kunnen door elkaar worden gebruikt. Het volledige eind punt is echter vereist.
 
-Regio-informatie is beschikbaar in het **overzichtsblad** voor uw resource in de [Azure-portal.](https://portal.azure.com) Zie Zie Is er een [lijst met regionale eindpunten?](#is-there-a-list-of-regional-endpoints)
+Informatie over de regio is beschikbaar op de Blade **overzicht** voor uw resource in de [Azure Portal](https://portal.azure.com). Zie [is er een lijst met regionale eind](#is-there-a-list-of-regional-endpoints) punten voor de volledige lijst met regionale eind punten?
 
-## <a name="are-custom-subdomain-names-regional"></a>Zijn aangepaste subdomeinnamen regionaal?
+## <a name="are-custom-subdomain-names-regional"></a>Zijn aangepaste subdomein namen regionaal?
 
-Ja. Als u een aangepaste subdomeinnaam gebruikt, worden de regionale aspecten van uw resource voor Cognitieve Services niet gewijzigd.
+Ja. Het gebruik van een aangepaste subdomeinnaam heeft geen invloed op de regionale aspecten van uw Cognitive Services bron.
 
 ## <a name="what-are-the-requirements-for-a-custom-subdomain-name"></a>Wat zijn de vereisten voor een aangepaste subdomeinnaam?
 
-Een aangepaste subdomeinnaam is uniek voor uw bron. De naam kan alleen alfanumerieke `-` tekens en het teken bevatten; het moet tussen 2 en 64 tekens in `-`lengte zijn en kan niet eindigen met een .
+De naam van een aangepast subdomein is uniek voor uw resource. De naam mag alleen alfanumerieke tekens en het `-` teken bevatten. de waarde moet tussen 2 en 64 tekens lang zijn en mag niet eindigen op `-`een.
 
-## <a name="can-i-change-a-custom-domain-name"></a>Kan ik een aangepaste domeinnaam wijzigen?
+## <a name="can-i-change-a-custom-domain-name"></a>Kan ik een aangepaste domein naam wijzigen?
 
-Nee. Nadat een aangepaste subdomeinnaam is gemaakt en aan een resource is gekoppeld, kan deze niet worden gewijzigd.
+Nee. Nadat een aangepaste subdomeinnaam is gemaakt en aan een resource is gekoppeld, kan deze niet meer worden gewijzigd.
 
-## <a name="can-i-reuse-a-custom-domain-name"></a>Kan ik een aangepaste domeinnaam opnieuw gebruiken?
+## <a name="can-i-reuse-a-custom-domain-name"></a>Kan ik een aangepaste domein naam opnieuw gebruiken?
 
-Elke aangepaste subdomeinnaam is uniek, dus om een aangepaste subdomeinnaam die u aan een resource voor Cognitive Services hebt toegewezen, opnieuw te gebruiken, moet u de bestaande bron verwijderen. Nadat de bron is verwijderd, u de aangepaste subdomeinnaam opnieuw gebruiken.
+Elke aangepaste subdomeinnaam is uniek, dus als u een aangepaste subdomeinnaam die u hebt toegewezen aan een Cognitive Services resource opnieuw wilt gebruiken, moet u de bestaande resource verwijderen. Nadat de resource is verwijderd, kunt u de aangepaste subdomeinnaam opnieuw gebruiken.
 
-## <a name="is-there-a-list-of-regional-endpoints"></a>Is er een lijst met regionale eindpunten?
+## <a name="is-there-a-list-of-regional-endpoints"></a>Is er een lijst met regionale eind punten?
 
-Ja. Dit is een lijst met regionale eindpunten die u gebruiken met Azure Cognitive Services-bronnen.
+Ja. Dit is een lijst met regionale eind punten die u kunt gebruiken met Azure Cognitive Services-resources.
 
 > [!NOTE]
-> De Translator Text API en Bing Search API's maken gebruik van globale eindpunten.
+> De Translator Text-API en Bing Zoeken-API's globale eind punten gebruiken.
 
-| Eindpunttype | Regio | Eindpunt |
+| Type eind punt | Regio | Eindpunt |
 |---------------|--------|----------|
-| Public | Globale (vertalertekst & Bing) | `https://api.cognitive.microsoft.com` |
+| Public | Global (Translator Text & Bing) | `https://api.cognitive.microsoft.com` |
 | | Australië - oost | `https://australiaeast.api.cognitive.microsoft.com` |
 | | Brazilië - zuid | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Canada - midden | `https://canadacentral.api.cognitive.microsoft.com` |
@@ -84,7 +84,7 @@ Ja. Dit is een lijst met regionale eindpunten die u gebruiken met Azure Cognitiv
 | | Korea - centraal | `https://koreacentral.api.cognitive.microsoft.com` |
 | | VS - noord-centraal | `https://northcentralus.api.cognitive.microsoft.com` |
 | | Europa - noord | `https://northeurope.api.cognitive.microsoft.com` |
-| | Zuid-Afrika Noord | `https://southafricanorth.api.cognitive.microsoft.com` |
+| | Zuid-Afrika - noord | `https://southafricanorth.api.cognitive.microsoft.com` |
 | | VS - zuid-centraal | `https://southcentralus.api.cognitive.microsoft.com` |
 | | Azië - zuidoost | `https://southeastasia.api.cognitive.microsoft.com` |
 | | Verenigd Koninkrijk Zuid | `https://uksouth.api.cognitive.microsoft.com` |
@@ -93,7 +93,7 @@ Ja. Dit is een lijst met regionale eindpunten die u gebruiken met Azure Cognitiv
 | | VS - west | `https://westus.api.cognitive.microsoft.com` |
 | | VS - west 2 | `https://westus2.api.cognitive.microsoft.com` |
 | US Gov | VS (overheid) - Virginia | `https://virginia.api.cognitive.microsoft.us` |
-| China | China Oost 2 | `https://chinaeast2.api.cognitive.azure.cn` |
+| China | China-oost 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | China - noord | `https://chinanorth.api.cognitive.azure.cn` |
 
 ## <a name="see-also"></a>Zie ook

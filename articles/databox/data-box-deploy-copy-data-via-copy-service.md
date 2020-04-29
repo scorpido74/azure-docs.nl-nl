@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Gegevenskopieerservice gebruiken om naar uw apparaat te kopiëren'
+title: 'Zelf studie: Data Copy service gebruiken om naar uw apparaat te kopiëren'
 titleSuffix: Azure Data Box
 description: In deze zelfstudie leert u hoe u de gegevenskopieerservice gebruikt om gegevens naar uw Azure Data Box-apparaat te kopiëren
 services: databox
@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
 ms.openlocfilehash: ef0d79cae11a382bcca0ddb61e1d4a04b5db41e9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79501872"
 ---
-# <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Zelfstudie: De gegevenskopieerservice gebruiken om gegevens naar Azure Data Box (voorbeeld) te kopiëren
+# <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Zelf studie: de Data Copy-service gebruiken om gegevens te kopiëren naar Azure Data Box (preview-versie)
 
 In deze zelfstudie wordt beschreven hoe u gegevens opneemt met behulp van de gegevenskopieerservice, zonder gebruik te maken van een tussenliggende host. De gegevenskopieerservice wordt lokaal uitgevoerd op Microsoft Azure Data Box, maakt via SMB verbinding met uw NAS-apparaat (network-attached storage) en kopieert gegevens naar Data Box.
 
@@ -35,7 +35,7 @@ In deze zelfstudie leert u het volgende:
 
 Zorg voordat u begint voor het volgende:
 
-1. U hebt deze zelfstudie voltooid: [Azure-gegevensvak instellen](data-box-deploy-set-up.md).
+1. U hebt deze zelf studie voltooid: [stel Azure data Box](data-box-deploy-set-up.md)in.
 2. U hebt uw Data Box-apparaat ontvangen en de bestelstatus in de portal is **Geleverd**.
 3. U hebt de referenties van het bron-NAS-apparaat waarmee u verbinding wilt maken om gegevens te kopiëren.
 4. U bent verbonden met een netwerk met hoge snelheid. Het wordt aangeraden dat u beschikt over minimaal één 10-GbE-verbinding (Gigabit Ethernet). Als er geen 10-GbE-verbinding beschikbaar is, kunt u een 1-GbE-gegevenskoppeling gebruiken, maar dit heeft wel gevolgen voor de kopieersnelheid.
@@ -50,11 +50,11 @@ Wanneer u bent verbonden met het NAS-apparaat, kunt u uw gegevens gaan kopiëren
 
 * Als de gegevens worden gewijzigd terwijl deze door de kopieerservice worden gelezen, is het mogelijk dat er fouten optreden of gegevens beschadigd raken.
 
-* Zorg ervoor dat u een kopie van de brongegevens bijhoudt totdat u bevestigen dat het gegevensvak uw gegevens naar Azure Storage heeft overgebracht.
+* Zorg ervoor dat u een kopie van de bron gegevens bewaart totdat u kunt bevestigen dat de Data Box uw gegevens heeft overgebracht naar Azure Storage.
 
 U moet een taak maken als u gegevens wilt kopiëren met behulp van de gegevenskopieerservice:
 
-1. Ga in de lokale webgebruikersinterface van uw databox-apparaat naar**Kopieergegevens** **beheren.** > 
+1. Ga in de lokale web-UI van uw data Box apparaat naar **Manage** > **gegevens**beheren.
 2. Selecteer op de pagina **Gegevens kopiëren** de optie **Maken**.
 
     ![Maken selecteren op de pagina Gegevens kopiëren](media/data-box-deploy-copy-data-via-copy-service/click-create.png)
@@ -65,12 +65,12 @@ U moet een taak maken als u gegevens wilt kopiëren met behulp van de gegevensko
     |-------------------------------|---------|
     |**Taaknaam**                       |Een unieke naam van maximaal 230 tekens voor de taak. De volgende tekens zijn niet toegestaan in de naam van de taak: \<, \>, \|, \?, \*, \\, \:, \/ en \\\.         |
     |**Bronlocatie**                |Geef het SMB-pad naar de gegevensbron op in de indeling: `\\<ServerIPAddress>\<ShareName>` of `\\<ServerName>\<ShareName>`.        |
-    |**Gebruikersnaam**                       |Gebruikersnaam in de notatie `\\<DomainName><UserName>` voor toegang tot de gegevensbron. Als een lokale beheerder verbinding maakt, hebben ze expliciete beveiligingsmachtigingen nodig. Klik met de rechtermuisknop op de map, selecteer **Eigenschappen** en selecteer **Vervolgens Beveiliging**. Hiermee moet de lokale beheerder worden toegevoegd aan het tabblad **Beveiliging.**       |
+    |**Gebruikers**                       |Gebruikersnaam in de notatie `\\<DomainName><UserName>` voor toegang tot de gegevensbron. Als er verbinding wordt gemaakt met een lokale beheerder, moeten ze expliciete beveiligings machtigingen hebben. Klik met de rechter muisknop op de map, selecteer **Eigenschappen** en selecteer vervolgens **beveiliging**. Hiermee wordt de lokale beheerder toegevoegd op het tabblad **beveiliging** .       |
     |**Wachtwoord**                       |Wachtwoord voor toegang tot de gegevensbron.           |
     |**Doelopslagaccount**    |Selecteer in de lijst het doelopslagaccount waarnaar u de gegevens wilt uploaden.         |
-    |**Doeltype**       |Selecteer het doelopslagtype in de lijst: **Blob blokkeren,** **Paginablob**of **Azure-bestanden**.        |
+    |**Doeltype**       |Selecteer het type doel opslag in de lijst: **blok-BLOB**, **pagina-BLOB**of **Azure files**.        |
     |**Doelcontainer/-share**    |Voer de naam in van de container of share waarnaar u gegevens wilt uploaden in uw doelopslagaccount. De naam kan een sharenaam of een containernaam zijn. Gebruik bijvoorbeeld `myshare` of `mycontainer`. U kunt de naam ook invoeren in de indeling `sharename\directory_name` of `containername\virtual_directory_name`.        |
-    |**Bestanden kopiëren die overeenkomen met het patroon**    | U kunt het bestandsnaampatroon invoeren op de volgende twee manieren:<ul><li>**Jokerexpressies gebruiken:** Alleen `*` `?` en worden ondersteund in wildcard-expressies. De expressie `*.vhd` bijvoorbeeld komt overeen met alle bestanden die de extensie `.vhd` hebben. En zo komt `*.dl?` overeen met alle bestanden die de extensie `.dl` hebben of die beginnen met `.dl`, zoals `.dll`. En zo komt `*foo` overeen met alle bestanden waarvan de bestandsnaam eindigt op `foo`.<br>U kunt de expressie met jokertekens rechtstreeks invoeren in het veld. Standaard wordt de waarde die u in het veld invoert, beschouwd als een expressie met jokertekens.</li><li>**Gebruik reguliere expressies:** PoSIX-gebaseerde reguliere expressies worden ondersteund. De reguliere expressie `.*\.vhd` bijvoorbeeld komt overeen met alle bestanden die de extensie `.vhd` hebben. Voor reguliere expressies geeft u het `<pattern>` rechtstreeks op als `regex(<pattern>)`. Voor meer informatie over reguliere expressies gaat u naar [Regular expression language - a quick reference](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) (Reguliere expressies - een snelzoekgids).</li><ul>|
+    |**Bestanden kopiëren die overeenkomen met het patroon**    | U kunt het bestandsnaampatroon invoeren op de volgende twee manieren:<ul><li>**Joker teken expressies gebruiken:** Alleen `*` en `?` worden ondersteund in Joker teken expressies. De expressie `*.vhd` bijvoorbeeld komt overeen met alle bestanden die de extensie `.vhd` hebben. En zo komt `*.dl?` overeen met alle bestanden die de extensie `.dl` hebben of die beginnen met `.dl`, zoals `.dll`. En zo komt `*foo` overeen met alle bestanden waarvan de bestandsnaam eindigt op `foo`.<br>U kunt de expressie met jokertekens rechtstreeks invoeren in het veld. Standaard wordt de waarde die u in het veld invoert, beschouwd als een expressie met jokertekens.</li><li>**Reguliere expressies gebruiken:** Reguliere expressies op basis van POSIX worden ondersteund. De reguliere expressie `.*\.vhd` bijvoorbeeld komt overeen met alle bestanden die de extensie `.vhd` hebben. Voor reguliere expressies geeft u het `<pattern>` rechtstreeks op als `regex(<pattern>)`. Voor meer informatie over reguliere expressies gaat u naar [Regular expression language - a quick reference](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) (Reguliere expressies - een snelzoekgids).</li><ul>|
     |**Bestandsoptimalisatie**              |Als deze functie is ingeschakeld, worden bestanden die kleiner zijn dan 1 MB tijdens de opname verpakt. Dit verpakken versnelt het kopiëren van gegevens voor kleine bestanden. Het bespaart ook aanzienlijk veel tijd wanneer het aantal bestanden veel groter is dan het aantal directory's.        |
  
 4. Selecteer **Starten**. De invoer wordt gevalideerd en als de validatie is geslaagd, wordt de taak gestart. Het kan enkele minuten duren voordat de taak start.
@@ -142,7 +142,7 @@ Om de gegevensintegriteit te garanderen wordt een controlesom inline berekend te
 Wanneer de kopieertaak is voltooid, kunt u **Voorbereiding voor verzending** selecteren.
 
 >[!NOTE]
-> **Voorbereiden op het verzenden** kan niet worden uitgevoerd terwijl kopieertaken aan de gang zijn.
+> **Voorbereiding voor verzending** kan niet worden uitgevoerd terwijl er Kopieer taken worden uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

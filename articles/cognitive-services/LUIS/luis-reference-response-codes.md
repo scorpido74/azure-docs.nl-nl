@@ -1,7 +1,7 @@
 ---
-title: API HTTP-antwoordcodes - LUIS
+title: API HTTP-antwoord codes-LUIS
 titleSuffix: Azure Cognitive Services
-description: Begrijpen welke HTTP-antwoordcodes worden geretourneerd van de LUIS-ontwerp- en eindpunt-API's
+description: Meer informatie over de HTTP-respons codes die worden geretourneerd door de LUIS-ontwerpen en-eindpunt-Api's
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,34 +12,34 @@ ms.topic: reference
 ms.date: 03/04/2019
 ms.author: diberry
 ms.openlocfilehash: 405381a2d80ee6469b2b90bcb25923004fe55882
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270255"
 ---
-# <a name="common-api-response-codes-and-their-meaning"></a>Gemeenschappelijke API-antwoordcodes en de betekenis ervan
+# <a name="common-api-response-codes-and-their-meaning"></a>Veelvoorkomende API-respons codes en hun betekenis
 
-De [auteurs-](https://go.microsoft.com/fwlink/?linkid=2092087) en [eindpunt-API's](https://go.microsoft.com/fwlink/?linkid=2092356) retourneren HTTP-antwoordcodes. Hoewel antwoordberichten informatie bevatten die specifiek is voor een verzoek, is de HTTP-antwoordstatuscode algemeen.
+De [ontwerpen](https://go.microsoft.com/fwlink/?linkid=2092087) en [endpoint](https://go.microsoft.com/fwlink/?linkid=2092356) api's retour neren http-antwoord codes. Hoewel antwoord berichten informatie bevatten die specifiek is voor een aanvraag, is de status code van het HTTP-antwoord algemeen.
 
-## <a name="common-status-codes"></a>Gemeenschappelijke statuscodes
-In de volgende tabel worden enkele van de meest voorkomende HTTP-antwoordstatuscodes voor de [ontwerp-](https://go.microsoft.com/fwlink/?linkid=2092087) en [eindpunt-API's](https://go.microsoft.com/fwlink/?linkid=2092356) weergegeven:
+## <a name="common-status-codes"></a>Algemene status codes
+De volgende tabel bevat een aantal van de meest voorkomende status codes voor HTTP-antwoorden voor de api's voor [ontwerpen](https://go.microsoft.com/fwlink/?linkid=2092087) en [eind punten](https://go.microsoft.com/fwlink/?linkid=2092356) :
 
 |Code|API|Uitleg|
 |:--|--|--|
-|400|Auteur, Eindpunt|de parameters van de aanvraag onjuist zijn, wat betekent dat de vereiste parameters ontbreken, misvormd of te groot zijn|
-|400|Auteur, Eindpunt|het lichaam van het verzoek onjuist is, wat betekent dat de JSON ontbreekt, misvormd of te groot is|
-|401|Ontwerpen|gebruikte abonnementssleutel voor eindpunt, in plaats van de sleutel voor het schrijven|
-|401|Auteur, Eindpunt|ongeldige, misvormde of lege sleutel|
-|401|Auteur, Eindpunt| toets komt niet overeen met regio|
-|401|Ontwerpen|u bent niet de eigenaar of medewerker|
-|401|Ontwerpen|ongeldige volgorde van API-aanroepen|
-|403|Auteur, Eindpunt|totale maandelijkse maximumquotumlimiet overschreden|
-|409|Eindpunt|toepassing is nog steeds laden|
-|410|Eindpunt|toepassing moet worden omgeschoold en opnieuw worden gepubliceerd|
-|414|Eindpunt|query overschrijdt maximale tekenlimiet|
-|429|Auteur, Eindpunt|Tarieflimiet wordt overschreden (aanvragen/seconde)|
+|400|Ontwerpen, eind punt|de para meters van de aanvraag zijn onjuist, wat betekent dat de vereiste para meters ontbreken, ongeldig of te groot zijn|
+|400|Ontwerpen, eind punt|de hoofd tekst van de aanvraag is onjuist, wat betekent dat de JSON ontbreekt, ongeldig is of te groot is|
+|401|Ontwerpen|de gebruikte sleutel van het eindpunt abonnement in plaats van de sleutel voor schrijven|
+|401|Ontwerpen, eind punt|ongeldige, ongeldige of lege sleutel|
+|401|Ontwerpen, eind punt| sleutel komt niet overeen met regio|
+|401|Ontwerpen|u bent niet de eigenaar of de samen werker|
+|401|Ontwerpen|Ongeldige volg orde van API-aanroepen|
+|403|Ontwerpen, eind punt|de totale maandelijkse quotum limiet voor de sleutel is overschreden|
+|409|Eindpunt|de toepassing wordt nog steeds geladen|
+|410|Eindpunt|de toepassing moet opnieuw worden getraind en opnieuw worden gepubliceerd|
+|414|Eindpunt|de query overschrijdt het maximum aantal tekens|
+|429|Ontwerpen, eind punt|Frequentie limiet is overschreden (aanvragen/seconde)|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* REST [API-ontwerp-](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) en [eindpuntdocumentatie](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)
+* Documentatie over REST API- [ontwerpen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) en- [eind punten](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)

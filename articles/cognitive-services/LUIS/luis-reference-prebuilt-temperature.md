@@ -1,7 +1,7 @@
 ---
-title: Temperatuur prebuilt entiteit - LUIS
+title: Preconstrueerde temperatuur eenheid-LUIS
 titleSuffix: Azure Cognitive Services
-description: Dit artikel bevat vooraf ingebouwde informatie over de entiteit in Language Understanding (LUIS).
+description: Dit artikel bevat informatie over de standaard temperatuur van de entiteit in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,28 +12,28 @@ ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: 7e2b48c6353f56ab2269a8718146cb765797adba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270372"
 ---
-# <a name="temperature-prebuilt-entity-for-a-luis-app"></a>Vooraf gebouwde entiteit voor temperatuur voor een LUIS-app
-Temperatuur haalt een verscheidenheid aan temperatuurtypes. Omdat deze entiteit al is getraind, hoeft u geen voorbeelduitingen met temperatuur toe te voegen aan de toepassing. Temperatuur entiteit wordt ondersteund in [vele culturen](luis-reference-prebuilt-entities.md).
+# <a name="temperature-prebuilt-entity-for-a-luis-app"></a>Preconstrueerde temperatuur eenheid voor een LUIS-app
+Met de Tempe ratuur wordt een aantal verschillende temperatuur typen geëxtraheerd. Omdat deze entiteit al is getraind, hoeft u geen voor beeld-uitingen met een Tempe ratuur aan de toepassing toe te voegen. De temperatuur entiteit wordt ondersteund in [veel cult uren](luis-reference-prebuilt-entities.md).
 
-## <a name="types-of-temperature"></a>Soorten temperatuur
-Temperatuur wordt beheerd vanuit de [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819) GitHub repository
+## <a name="types-of-temperature"></a>Typen Tempe ratuur
+De Tempe ratuur wordt beheerd vanuit de [recognizers-tekst github-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819) opslag plaats
 
-## <a name="resolution-for-prebuilt-temperature-entity"></a>Oplossing voor vooraf gebouwde temperatuurentiteit
+## <a name="resolution-for-prebuilt-temperature-entity"></a>Oplossing voor vooraf samengestelde temperatuur entiteit
 
-De volgende entiteitsobjecten worden geretourneerd voor de query:
+De volgende entiteits objecten worden geretourneerd voor de query:
 
 `set the temperature to 30 degrees`
 
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
-De volgende JSON `verbose` is met `false`de parameter ingesteld op:
+De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 
 ```json
 "entities": {
@@ -45,8 +45,8 @@ De volgende JSON `verbose` is met `false`de parameter ingesteld op:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 verbose reactie](#tab/V3-verbose)
-De volgende JSON `verbose` is met `true`de parameter ingesteld op:
+#### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
+De volgende JSON is met de `verbose` para meter ingesteld `true`op:
 
 ```json
 "entities": {
@@ -75,7 +75,7 @@ De volgende JSON `verbose` is met `true`de parameter ingesteld op:
 ```
 #### <a name="v2-response"></a>[V2-antwoord](#tab/V2)
 
-In het volgende voorbeeld ziet u de resolutie van de entiteit **builtin.temperature.**
+In het volgende voor beeld ziet u de resolutie van de **inbuiltin. Tempe ratuur** -entiteit.
 
 ```json
 "entities": [
@@ -95,6 +95,6 @@ In het volgende voorbeeld ziet u de resolutie van de entiteit **builtin.temperat
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [V3-voorspellingseindpunt](luis-migration-api-v3.md).
+Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
-Meer informatie over het [percentage,](luis-reference-prebuilt-percentage.md) [het aantal](luis-reference-prebuilt-number.md)en [de leeftijdsentiteiten.](luis-reference-prebuilt-age.md)
+Meer informatie over de eenheden [percentage](luis-reference-prebuilt-percentage.md), [aantal](luis-reference-prebuilt-number.md)en [leeftijd](luis-reference-prebuilt-age.md) .

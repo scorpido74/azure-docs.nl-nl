@@ -1,7 +1,7 @@
 ---
-title: Inhoudsvertaling voorkomen - Translator Text API
+title: Vertaling van inhoud voor komen-Translator Text-API
 titleSuffix: Azure Cognitive Services
-description: Voorkom vertaling van inhoud met de Translator Text API. Met de Translator Text API u inhoud taggen zodat deze niet wordt vertaald.
+description: Omzetting van inhoud met de Translator Text-API voor komen. Met de Translator Text-API kunt u inhoud labelen zodat deze niet wordt vertaald.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: swmachan
 ms.openlocfilehash: c7be4a0ea1a9d24a8b262132632a0bbb63ae1b96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80052490"
 ---
-# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Hoe te voorkomen dat de vertaling van inhoud met de Translator Text API
+# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Omzetting van inhoud met de Translator Text-API voor komen
 
-Met de Translator Text API u inhoud taggen zodat deze niet wordt vertaald. U bijvoorbeeld code, een merknaam of een woord/zinswoord taggen die niet zinvol is wanneer deze is gelokaliseerd.
+Met de Translator Text-API kunt u inhoud labelen zodat deze niet wordt vertaald. Stel dat u code, een merk naam of een woord/zin wilt labelen die niet zinvol is wanneer deze wordt gelokaliseerd.
 
-## <a name="methods-for-preventing-translation"></a>Methoden om vertaling te voorkomen
+## <a name="methods-for-preventing-translation"></a>Methoden voor het voor komen van vertalingen
 
-1. Tag uw `notranslate`inhoud met . Het is door het ontwerp dat dit werkt alleen wanneer de invoer textType is ingesteld als HTML
+1. Voorzie uw inhoud van `notranslate`met. Het ontwerp dat dit alleen werkt als de invoer textType is ingesteld als HTML
 
    Voorbeeld:
 
@@ -37,13 +37,13 @@ Met de Translator Text API u inhoud taggen zodat deze niet wordt vertaald. U bij
    <div>This will be translated. </div>
    ```
 
-2. Gebruik het [dynamische woordenboek](dynamic-dictionary.md) om een specifieke vertaling voor te schrijven.
+2. Gebruik de [dynamische woorden lijst](dynamic-dictionary.md) om een specifieke vertaling te bepalen.
 
-3. Geef de tekenreeks niet door aan de Vertaaltekst-API voor vertaling.
+3. Geef de teken reeks niet door aan de Translator Text-API voor vertaling.
 
-4. Aangepaste vertaler: Gebruik een [woordenboek in Aangepaste vertaler](custom-translator/what-is-dictionary.md) om de vertaling van een zin met 100% waarschijnlijkheid voor te schrijven.
+4. Aangepaste vertaler: gebruik een [woorden lijst in het aangepaste conversie programma](custom-translator/what-is-dictionary.md) om de vertaling van een woord groep met een waarschijnlijkheid van 100% te bepalen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
-> [Vertaling in uw Translator API-aanroep vermijden](reference/v3-0-translate.md)
+> [Vertaling in de API-aanroep van Translator vermijden](reference/v3-0-translate.md)

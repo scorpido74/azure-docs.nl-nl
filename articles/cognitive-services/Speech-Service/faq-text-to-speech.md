@@ -1,7 +1,7 @@
 ---
-title: Veelgestelde vragen over tekst naar spraak
+title: Veelgestelde vragen over Text to Speech
 titleSuffix: Azure Cognitive Services
-description: Krijg antwoorden op de veelgestelde vragen over de tekst-naar-spraakservice.
+description: Krijg antwoorden op veelgestelde vragen over de Text to Speech-Service.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -11,57 +11,57 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
 ms.openlocfilehash: 19b8be83a3678164197ec0650b07091e941a04d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74110508"
 ---
-# <a name="text-to-speech-frequently-asked-questions"></a>Veelgestelde vragen over tekst naar spraak
+# <a name="text-to-speech-frequently-asked-questions"></a>Veelgestelde vragen over Text to Speech
 
-Als u geen antwoorden op uw vragen vinden in deze veelgestelde vragen, raadpleegt u [andere ondersteuningsopties.](support.md)
+Als u in deze veelgestelde vragen geen antwoorden op uw vragen kunt vinden, kunt u [Andere ondersteunings opties](support.md)bekijken.
 
 ## <a name="general"></a>Algemeen
 
-**V: Wat is het verschil tussen een standaard spraakmodel en een aangepast spraakmodel?**
+**V: wat is het verschil tussen een standaard spraak model en een aangepast spraak model?**
 
-**A**: Het standaardspraakmodel (ook wel _spraaklettertype_genoemd) is getraind met behulp van gegevens die eigendom zijn van Microsoft en is al geïmplementeerd in de cloud. U een aangepast spraakmodel gebruiken om een gemiddeld model aan te passen en het timbre en de expressie van de spraakstijl van de spreker overbrengen of een volledig, nieuw model trainen op basis van de trainingsgegevens die door de gebruiker zijn opgesteld. Tegenwoordig willen steeds meer klanten een unieke, merkstem voor hun bots. Het aangepaste voice-building platform is de juiste keuze voor die optie.
+**A**: het standaard spraak model (ook wel een _gesp roken letter type_genoemd) is getraind met behulp van gegevens van micro soft en is al geïmplementeerd in de Cloud. U kunt een aangepast spraak model gebruiken om een gemiddelde model aan te passen en de timbre en de expressie van de stem stijl van de spreker over te dragen of een volledig nieuw model te trainen op basis van de trainings gegevens die door de gebruiker zijn voor bereid. Vandaag, meer en meer klanten willen een van de een een-op-een-een-op-een-spraak-stem voor hun bots. Het aangepaste platform voor spraak opbouw is de juiste keuze voor die optie.
 
-**V: Waar moet ik beginnen als ik een standaard spraakmodel wil gebruiken?**
+**V: waar kan ik beginnen als ik een standaard spraak model wil gebruiken?**
 
-**A:** Meer dan 80 standaard spraakmodellen in meer dan 45 talen zijn beschikbaar via HTTP-verzoeken. Zorg eerst voor een [abonnementssleutel.](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) Zie de [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)voor rustoproepen naar de vooraf geïmplementeerde spraakmodellen.
+**A**: meer dan 80 standaard spraak modellen in meer dan 45 talen zijn beschikbaar via HTTP-aanvragen. Haal eerst een [abonnements sleutel](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)op. Zie de [rest API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)voor het maken van rest-aanroepen naar de voorgeïmplementeerde spraak modellen.
 
-**V: Als ik een aangepast spraakmodel wil gebruiken, is de API dan hetzelfde als die welke wordt gebruikt voor standaardstemmen?**
+**V: als ik een aangepast spraak model wil gebruiken, is de API hetzelfde als voor de standaard stemmen?**
 
-**A:** Wanneer een aangepast spraakmodel wordt gemaakt en geïmplementeerd, krijgt u een uniek eindpunt voor uw model. Als u de stem wilt gebruiken om in uw apps te spreken, moet u het eindpunt in uw HTTP-verzoeken opgeven. Dezelfde functionaliteit die beschikbaar is in de REST API voor de tekst-naar-spraakservice is beschikbaar voor uw aangepaste eindpunt. Meer informatie over het [maken en gebruiken van uw aangepaste eindpunt.](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-voice-endpoint)
+**A**: wanneer u een aangepast spraak model maakt en implementeert, krijgt u een uniek eind punt voor uw model. Als u de stem wilt gebruiken om in uw apps te spreken, moet u het eind punt in uw HTTP-aanvragen opgeven. De functionaliteit die beschikbaar is in de REST API voor de Text to Speech-Service is beschikbaar voor uw aangepaste eind punt. Meer informatie over [het maken en gebruiken van uw aangepaste eind punt](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-voice-endpoint).
 
-**V: Moet ik de trainingsgegevens voorbereiden om zelf aangepaste spraakmodellen te maken?**
+**V: moet ik de trainings gegevens voorbereiden voor het maken van aangepaste spraak modellen?**
 
-**A:** Ja, u moet de trainingsgegevens zelf voorbereiden op een aangepast spraakmodel.
+**A**: Ja, u moet de trainings gegevens zelf voorbereiden voor een aangepast spraak model.
 
-Een verzameling spraakgegevens is vereist om een aangepast spraakmodel te maken. Deze collectie bestaat uit een set audiobestanden van spraakopnames en een tekstbestand van de transcriptie van elk audiobestand. Het resultaat van uw digitale stem is sterk afhankelijk van de kwaliteit van uw trainingsgegevens. Om een goede tekst-naar-spraakstem te produceren, is het belangrijk dat de opnames worden gemaakt in een rustige kamer met een hoogwaardige, staande microfoon. Een consistente volume-, spreeksnelheid en spreektoonhoogte en zelfs consistentie in expressieve maniertjes van spraak zijn essentieel voor het bouwen van een geweldige digitale stem. We raden ten zeerste aan om de stemmen op te nemen in een opnamestudio.
+Er is een verzameling spraak gegevens vereist om een aangepast spraak model te maken. Deze verzameling bestaat uit een set audio bestanden met spraak opnames en een tekst bestand met de transcriptie van elk audio bestand. Het resultaat van uw digitale stem is sterk afhankelijk van de kwaliteit van uw trainings gegevens. Als u een goede tekst-naar-spraak-stem wilt maken, is het belang rijk dat de opnamen worden gemaakt in een stille ruimte met een permanente microfoon van hoge kwaliteit. Een consistent volume, een spreek snelheid en een uitmuntende Toon hoogte, en zelfs consistentie in expres mannerisms van spraak zijn essentieel voor het bouwen van een fantastische digitale stem. Het is raadzaam om de stemmen in een opname studio op te nemen.
 
-Momenteel bieden we geen online opnameondersteuning of hebben we aanbevelingen voor opnamestudio's. Zie voor de [indelingsvereiste hoe u opnamen en transcripties voorbereidt.](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-create-voice)
+Momenteel bieden we geen ondersteuning voor online-opnames of geen opname studio-aanbevelingen. Zie [opnamen en Transcripten voorbereiden](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-create-voice)voor de indelings vereiste.
 
-**V: Welke scripts moet ik gebruiken om de spraakgegevens op te nemen voor aangepaste spraaktraining?**
+**V: welke scripts moet ik gebruiken voor het vastleggen van de spraak gegevens voor een aangepaste spraak training?**
 
-**A:** We beperken de scripts voor spraakopname niet. U uw eigen scripts gebruiken om de toespraak op te nemen. Zorg ervoor dat u voldoende fonetische dekking in uw spraakgegevens. Als u een aangepaste stem wilt trainen, u beginnen met een klein volume spraakgegevens, wat 50 verschillende zinnen (ongeveer 3-5 minuten spraak) kan zijn. Hoe meer gegevens u verstrekt, hoe natuurlijker uw stem zal zijn. U beginnen met het trainen van een volledig spraaklettertype wanneer u opnamen van meer dan 2.000 zinnen (ongeveer 3-4 uur spraak) opgeeft. Om een hoge kwaliteit, volledige stem te krijgen, moet u opnamen van meer dan 6.000 zinnen (ongeveer 8-10 uren van toespraak) voorbereiden.
+**A**: de scripts voor spraak opname worden niet beperkt. U kunt uw eigen scripts gebruiken om de spraak op te nemen. Zorg ervoor dat u voldoende fonetische dekking in uw spraak gegevens hebt. Als u een aangepaste stem wilt trainen, kunt u beginnen met een klein aantal spraak gegevens dat 50 verschillende zinnen kan zijn (ongeveer 3-5 minuten van spraak). Hoe meer gegevens u verstrekt, hoe natuurlijk uw stem meer is. U kunt beginnen met het trainen van een volledige spraak letter type wanneer u opnamen van meer dan 2.000 zinnen levert (ongeveer 3-4 uur spraak). Als u een hoge kwaliteit wilt krijgen, moet u opnamen van meer dan 6.000 zinnen voorbereiden (ongeveer 8-10 uur spraak).
 
-We bieden aanvullende services om u te helpen scripts voor te bereiden voor opname. Neem contact op met [de klantenservice van Custom Voice](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation) voor vragen.
+We bieden extra services die u helpen bij het voorbereiden van scripts voor de opname. Neem contact op met de [aangepaste Voice-klanten service](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation) voor query's.
 
-**V: Wat als ik een hogere gelijktijdigheid nodig heb dan de standaardwaarde of wat er in de portal wordt aangeboden?**
+**V: wat moet ik doen als ik een hogere gelijktijdigheid nodig dan de standaard waarde of wat er wordt aangeboden in de portal?**
 
-**A:** U uw model opschalen in stappen van 20 gelijktijdige aanvragen. Neem contact op met [de klantenservice van Custom Voice](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation) voor vragen over hogere schaling.
+**A**: u kunt uw model omhoog schalen in stappen van 20 gelijktijdige aanvragen. Neem contact op met de [aangepaste ondersteuning voor spraak klanten](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation) voor meer informatie over hogere schaling.
 
-**V: Kan ik mijn model downloaden en lokaal uitvoeren?**
+**V: kan ik mijn model downloaden en lokaal uitvoeren?**
 
-**A:** Modellen kunnen niet lokaal worden gedownload en uitgevoerd.
+**A**: modellen kunnen niet lokaal worden gedownload en uitgevoerd.
 
-**V: Worden mijn verzoeken beperkt?**
+**V: mijn aanvragen worden beperkt?**
 
-**A:** De REST API beperkt aanvragen tot 25 per 5 seconden. Details zijn te vinden in onze pagina's voor [Tekst naar Spraak](text-to-speech.md).
+**A**: de rest API beperkt aanvragen tot 25 per 5 seconden. Meer informatie vindt u op onze pagina's voor [Text to speech](text-to-speech.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Probleemoplossing](troubleshooting.md)
-- [Opmerkingen vrijgeven](releasenotes.md)
+- [Problemen oplossen](troubleshooting.md)
+- [Releaseopmerkingen](releasenotes.md)

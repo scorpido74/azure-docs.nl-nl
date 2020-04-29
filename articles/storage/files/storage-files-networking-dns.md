@@ -1,6 +1,6 @@
 ---
-title: DNS-forwarding configureren voor Azure Files | Microsoft Documenten
-description: Een overzicht van netwerkopties voor Azure Files.
+title: Door sturen van DNS configureren voor Azure Files | Microsoft Docs
+description: Een overzicht van de netwerk opties voor Azure Files.
 author: roygara
 ms.service: storage
 ms.topic: overview
@@ -8,50 +8,50 @@ ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 35dfbcb274721049f2160719222ca89038c93356
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80082498"
 ---
-# <a name="configuring-dns-forwarding-for-azure-files"></a>DNS-forwarding voor Azure-bestanden configureren
-Met Azure Files u privéeindpunten maken voor de opslagaccounts die uw bestandsshares bevatten. Hoewel handig voor veel verschillende toepassingen, zijn privéeindpunten vooral handig voor het maken van verbinding met uw Azure-bestandsshares vanuit uw on-premises netwerk via een VPN- of ExpressRoute-verbinding via private-peering. 
+# <a name="configuring-dns-forwarding-for-azure-files"></a>DNS doorsturen configureren voor Azure Files
+Met Azure Files kunt u privé-eind punten maken voor de opslag accounts met uw bestands shares. Hoewel het nuttig is voor veel verschillende toepassingen, zijn privé-eind punten vooral nuttig om verbinding te maken met uw Azure-bestands shares van uw on-premises netwerk met behulp van een VPN-of ExpressRoute-verbinding met behulp van privé-peering. 
 
-Om verbindingen met uw opslagaccount over uw netwerktunnel te laten gaan, moet de volledig gekwalificeerde domeinnaam (FQDN) van uw opslagaccount worden opgelost naar het privé-IP-adres van uw privé-eindpunt. Om dit te bereiken, moet u het`core.windows.net` opslageindpuntachtervoegsel (voor openbare cloudregio's) doorsturen naar de Azure private DNS-service die toegankelijk is vanuit uw virtuele netwerk. In deze handleiding wordt uitgelegd hoe u DNS-forwarding instellen en configureren om het privé-eindpunt-IP-adres van uw opslagaccount op de juiste manier op te lossen.
+Als u verbinding wilt maken met uw opslag account om de netwerk tunnel te passeren, moet de Fully Qualified Domain Name (FQDN) van uw opslag account worden omgezet naar het privé-IP-adres van uw privé-eind punt. Om dit te bereiken, moet u het achtervoegsel van het opslag`core.windows.net` eindpunt (voor open bare Cloud regio's) door sturen naar de privé-DNS-service van Azure die toegankelijk is vanuit uw virtuele netwerk. In deze hand leiding wordt uitgelegd hoe DNS-door sturen kan worden ingesteld en geconfigureerd om te worden omgezet in het IP-adres van het privé-eind punt van uw opslag account.
 
-We raden u ten zeerste aan [planning voor een Azure Files-implementatie](storage-files-planning.md) en Azure [Files-netwerkoverwegingen](storage-files-networking-overview.md) te lezen voordat u de in dit artikel beschreven stappen voltooit.
+We raden u ten zeerste [aan de planning te lezen van een Azure files implementatie](storage-files-planning.md) en [Azure files netwerk overwegingen](storage-files-networking-overview.md) voordat u de stappen die in dit artikel worden beschreven, uitvoert.
 
 ## <a name="overview"></a>Overzicht
-Azure Files biedt twee hoofdtypen eindpunten voor toegang tot Azure-bestandsshares: 
-- Openbare eindpunten, die een openbaar IP-adres hebben en overal ter wereld toegankelijk zijn.
-- Privéeindpunten, die binnen een virtueel netwerk bestaan en een privé-IP-adres hebben vanuit de adresruimte van dat virtuele netwerk.
+Azure Files biedt twee hoofd typen eind punten voor toegang tot Azure-bestands shares: 
+- Open bare eind punten, die een openbaar IP-adres hebben en toegankelijk zijn vanaf elke locatie in de wereld.
+- Privé-eind punten, die zich binnen een virtueel netwerk bevinden en een persoonlijk IP-adres hebben in de adres ruimte van het virtuele netwerk.
 
-Openbare en privé eindpunten bestaan op het Azure-opslagaccount. Een opslagaccount is een beheerconstructie die een gedeelde opslaggroep vertegenwoordigt waarin u meerdere bestandsshares implementeren, evenals andere opslagbronnen, zoals blobcontainers of wachtrijen.
+Open bare en persoonlijke eind punten bestaan in het Azure-opslag account. Een opslag account is een beheer constructie die een gedeelde opslag groep vertegenwoordigt, waarbij u meerdere bestands shares en andere opslag resources, zoals BLOB-containers of wacht rijen, kunt implementeren.
 
-Elk opslagaccount heeft een volledig gekwalificeerde domeinnaam (FQDN). Voor de public cloudregio's volgt deze `storageaccount.file.core.windows.net` `storageaccount` FQDN het patroon waar de naam van het opslagaccount is. Wanneer u verzoeken doet tegen deze naam, zoals het monteren van het aandeel op uw werkstation met SMB, voert uw besturingssysteem een DNS-lookup uit om de volledig gekwalificeerde domeinnaam op te lossen naar een IP-adres waarnaar het kan worden gebruikt om de SMB-aanvragen te verzenden.
+Elk opslag account heeft een Fully Qualified Domain Name (FQDN). Voor de open bare Cloud regio's volgt deze FQDN het patroon `storageaccount.file.core.windows.net` waarin `storageaccount` de naam van het opslag account is. Wanneer u aanvragen voor deze naam maakt, zoals het koppelen van de share op uw werk station met behulp van SMB, voert het besturings systeem een DNS-zoek opdracht uit om de Fully Qualified Domain Name om te zetten in een IP-adres dat kan worden gebruikt om de SMB-aanvragen te verzenden naar.
 
-Lost standaard `storageaccount.file.core.windows.net` op naar het IP-adres van het openbare eindpunt. Het openbare eindpunt voor een opslagaccount wordt gehost op een Azure-opslagcluster dat de openbare eindpunten van veel andere opslagaccounts host. Wanneer u een privéeindpunt maakt, wordt een privé-DNS-zone gekoppeld aan het virtuele `storageaccount.file.core.windows.net` netwerk waaraan het is toegevoegd, met een CNAME-recordtoewijzing aan een A-recordvermelding voor het privé-IP-adres van het privéeindpunt van uw opslagaccount. Hierdoor u `storageaccount.file.core.windows.net` FQDN binnen het virtuele netwerk gebruiken en het naar het IP-adres van het privé-eindpunt laten oplossen.
+Wordt `storageaccount.file.core.windows.net` standaard omgezet naar het IP-adres van het open bare eind punt. Het open bare eind punt voor een opslag account wordt gehost op een Azure Storage-cluster waarop veel andere open bare eind punten van opslag accounts worden gehost. Wanneer u een persoonlijk eind punt maakt, wordt een privé-DNS-zone gekoppeld aan het virtuele netwerk waaraan deze is toegevoegd, met een `storageaccount.file.core.windows.net` CNAME-record toewijzing aan een record vermelding voor het privé-IP-adres van het privé-eind punt van uw opslag account. Hierdoor kunt u FQDN binnen `storageaccount.file.core.windows.net` het virtuele netwerk gebruiken en deze omzetten in het IP-adres van het privé-eind punt.
 
-Aangezien ons uiteindelijke doel is om toegang te krijgen tot de Azure-bestandsshares die binnen het opslagaccount worden gehost via een netwerktunnel zoals een VPN- of ExpressRoute-verbinding, moet u uw on-premises DNS-servers configureren om aanvragen door te sturen naar de Azure Bestandenservice voor de Azure private DNS-service. Om dit te bereiken, moet u `*.core.windows.net` *voorwaardelijke doorstuurtijd* van (of het juiste opslageindpuntachtervoegsel voor de nationale clouds van de Amerikaanse overheid, Duitsland of China) instellen naar een DNS-server die wordt gehost binnen uw virtuele Azure-netwerk. Deze DNS-server stuurt het verzoek vervolgens opnieuw door naar de privé-DNS-service van Azure, waarmee de volledig gekwalificeerde domeinnaam van het opslagaccount wordt opgelost naar het juiste privé-IP-adres.
+Omdat het uiteindelijke doel is om toegang te krijgen tot de Azure-bestands shares die worden gehost in het opslag account van on-premises met behulp van een netwerk tunnel, zoals een VPN-of ExpressRoute-verbinding, moet u uw lokale DNS-servers zo configureren dat aanvragen worden doorgestuurd naar de Azure Files-service naar de persoonlijke DNS-service van Azure. Hiervoor moet u *voorwaardelijk door sturen* van (of het juiste achtervoegsel `*.core.windows.net` van het opslag eindpunt voor de nationale Clouds van de Amerikaanse overheid, Duitsland of China) instellen op een DNS-server die wordt gehost in uw virtuele Azure-netwerk. Deze DNS-server stuurt de aanvraag vervolgens recursief door naar de privé-DNS-service van Azure, waarmee de Fully Qualified Domain Name van het opslag account wordt omgezet naar het juiste privé-IP-adres.
 
-Als u DNS-forwarding voor Azure Files configureert, moet een virtuele machine worden uitgevoerd om een DNS-server te hosten om de aanvragen door te sturen, maar dit is een eenmalige stap voor alle Azure-bestandsshares die binnen uw virtuele netwerk worden gehost. Bovendien is dit geen exclusieve vereiste voor Azure Files - elke Azure-service die privéeindpunten ondersteunt die u wilt openen vanaf on-premises, kan gebruik maken van de DNS-forwarding die u in deze handleiding configureert: Azure Blob-opslag, SQL Azure, Cosmos DB, Enz. 
+Voor het configureren van DNS-door sturen voor Azure Files moet een virtuele machine worden uitgevoerd voor het hosten van een DNS-server om de aanvragen door te sturen, maar dit is een eenmalige stap voor alle Azure-bestands shares die worden gehost in uw virtuele netwerk. Daarnaast is dit geen exclusieve vereiste voor het Azure Files-elke Azure-service die persoonlijke eind punten ondersteunt waartoe u vanaf de on-premises toegang wilt, kan het gebruik van de DNS-door Voer configureren in deze hand leiding: Azure Blob-opslag, SQL Azure, Cosmos DB, enzovoort. 
 
-Deze handleiding toont de stappen voor het configureren van DNS-forwarding voor het Azure-opslageindpunt, dus naast Azure-bestanden worden ook DNS-naamomzettingsverzoeken voor alle andere Azure-opslagservices (Azure Blob-opslag, Azure Table-opslag, Azure Queue-opslag, enz.) worden doorgestuurd naar de privé-DNS-service van Azure. Desgewenst kunnen ook extra eindpunten voor andere Azure-services worden toegevoegd. DNS-forwarding naar uw on-premises DNS-servers wordt ook geconfigureerd, zodat cloudbronnen binnen uw virtuele netwerk (zoals een DFS-N-server) on-premises machinenamen kunnen oplossen. 
+In deze hand leiding worden de stappen beschreven voor het configureren van DNS-door sturen voor het Azure Storage-eind punt, dus naast Azure Files, aanvragen voor DNS-naam omzetting voor alle andere Azure Storage-services (Azure Blob-opslag, Azure-tabel opslag, Azure Queue-opslag, enzovoort) worden doorgestuurd naar de privé-DNS-service van Azure. Extra eind punten voor andere Azure-Services kunnen eventueel ook worden toegevoegd. DNS-door sturen naar uw on-premises DNS-servers wordt ook geconfigureerd, waardoor Cloud bronnen in uw virtuele netwerk (zoals een DFS-N-server) worden omgezet om on-premises computer namen om te zetten. 
 
 ## <a name="prerequisites"></a>Vereisten
-Voordat u DNS-forwarding naar Azure Files instellen, moet u de volgende stappen hebben voltooid:
+Voordat u het door sturen van DNS naar Azure Files kunt instellen, moet u de volgende stappen hebben voltooid:
 
-- Een opslagaccount met een Azure-bestandsaandeel dat u wilt monteren. Zie [Een Azure-bestandsshare maken](storage-how-to-create-file-share.md)voor meer informatie over het maken van een opslagaccount en een Azure-bestandsshare.
-- Een privéeindpunt voor het opslagaccount. Zie [Een privéeindpunt maken](storage-files-networking-endpoints.md#create-a-private-endpoint)voor meer informatie over het maken van een privéeindpunt voor Azure-bestanden.
+- Een opslag account met een Azure-bestands share die u wilt koppelen. Zie [een Azure-bestands share maken](storage-how-to-create-file-share.md)voor meer informatie over het maken van een opslag account en een Azure-bestands share.
+- Een persoonlijk eind punt voor het opslag account. Zie [een persoonlijk eind punt maken](storage-files-networking-endpoints.md#create-a-private-endpoint)voor meer informatie over het maken van een persoonlijk eind punt voor Azure files.
 - De [nieuwste versie](https://docs.microsoft.com/powershell/azure/install-az-ps) van de Azure PowerShell-module.
 
 > [!Important]  
-> In deze handleiding wordt ervan uitgegaan dat u de DNS-server binnen Windows Server gebruikt in uw on-premises omgeving. Alle stappen die in deze handleiding worden beschreven, zijn mogelijk met elke DNS-server, niet alleen de Windows DNS-server.
+> In deze hand leiding wordt ervan uitgegaan dat u de DNS-server in Windows Server gebruikt in uw on-premises omgeving. Alle stappen die in deze hand leiding worden beschreven, zijn mogelijk met een DNS-server, niet alleen de Windows DNS-server.
 
-## <a name="manually-configuring-dns-forwarding"></a>Dns-forwarding handmatig configureren
-Als u al DNS-servers in uw Azure virtuele netwerk hebt, of als u gewoon liever uw eigen virtuele machines implementeert als DNS-servers volgens welke methodologie uw organisatie ook gebruikt, u DNS handmatig configureren met de ingebouwde DNS-server PowerShell-cmdlets.
+## <a name="manually-configuring-dns-forwarding"></a>DNS-door sturen hand matig configureren
+Als u al DNS-servers in uw virtuele Azure-netwerk hebt, of als u liever uw eigen virtuele machines implementeert om DNS-servers te zijn door een wille keurige methodologie die door uw organisatie wordt gebruikt, kunt u DNS hand matig configureren met de ingebouwde DNS-Server Power shell-cmdlets.
 
-Maak op uw on-premises DNS-servers `Add-DnsServerConditionalForwarderZone`een voorwaardelijke expediteer met behulp van . Deze voorwaardelijke expediteur moet worden geïmplementeerd op al uw on-premises DNS-servers om effectief te zijn bij het correct doorsturen van verkeer naar Azure. Vergeet niet `<azure-dns-server-ip>` om te vervangen door de juiste IP-adressen voor uw omgeving.
+Maak op uw on-premises DNS-servers een voorwaardelijke doorstuur server `Add-DnsServerConditionalForwarderZone`met behulp van. Deze voorwaardelijke doorstuur server moet worden geïmplementeerd op al uw on-premises DNS-servers om effectief verkeer naar Azure door te sturen. Vergeet niet door `<azure-dns-server-ip>` de juiste IP-adressen voor uw omgeving te vervangen.
 
 ```powershell
 $vnetDnsServers = "<azure-dns-server-ip>", "<azure-dns-server-ip>"
@@ -65,7 +65,7 @@ Add-DnsServerConditionalForwarderZone `
         -MasterServers $vnetDnsServers
 ```
 
-Op de DNS-servers binnen uw virtuele Azure-netwerk moet u ook een forwarder inschakelen, zodat aanvragen voor de DNS-zone voor opslagaccount `168.63.129.16`worden gericht op de Azure private DNS-service, die wordt voorgeschreven door het gereserveerde IP-adres. (Vergeet niet `$storageAccountEndpoint` te worden ingevuld als u de opdrachten uitvoert in een andere PowerShell-sessie.)
+Op de DNS-servers in uw virtuele Azure-netwerk moet u ook een doorstuur server plaatsen zodat aanvragen voor de DNS-zone van het opslag account worden omgeleid naar de privé-DNS-service van Azure, die wordt getransporteerd door `168.63.129.16`het gereserveerde IP-adres. (Vergeet niet om `$storageAccountEndpoint` te vullen als u de opdrachten in een andere Power shell-sessie uitvoert.)
 
 ```powershell
 Add-DnsServerConditionalForwarderZone `
@@ -73,10 +73,10 @@ Add-DnsServerConditionalForwarderZone `
         -MasterServers "168.63.129.16"
 ```
 
-## <a name="using-the-azure-files-hybrid-module-to-configure-dns-forwarding"></a>De hybride module Azure Files gebruiken om DNS-forwarding te configureren
-Om het configureren van DNS forwarding zo eenvoudig mogelijk te maken, hebben we automatisering geleverd in de Azure Files Hybrid-module. De cmdlets die worden verstrekt voor het manipuleren van DNS in deze module helpen u DNS-servers in uw virtuele Azure-netwerk te implementeren en uw on-premises DNS-servers bij te werken om naar hen door te sturen. 
+## <a name="using-the-azure-files-hybrid-module-to-configure-dns-forwarding"></a>De hybride module Azure Files gebruiken voor het configureren van DNS-door sturen
+Om het configureren van DNS zo eenvoudig mogelijk te maken, hebben we automatisering in de hybride module Azure Files. Met de cmdlets voor het bewerken van DNS in deze module helpt u bij het implementeren van DNS-servers in uw virtuele Azure-netwerk en bij het bijwerken van uw on-premises DNS-servers om deze te verzenden. 
 
-Als u de Azure Files Hybrid-module nog nooit hebt gebruikt, moet u deze eerst op uw werkstation installeren. Download de [nieuwste versie](https://github.com/Azure-Samples/azure-files-samples/releases) van de Azure Files Hybrid PowerShell-module:
+Als u de hybride module Azure Files niet meer hebt gebruikt, moet u deze eerst op uw werk station installeren. Down load de [nieuwste versie](https://github.com/Azure-Samples/azure-files-samples/releases) van de Azure files Hybrid Power shell-module:
 
 ```PowerShell
 # Unzip the downloaded file
@@ -92,9 +92,9 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted
 Import-Module -Name AzFilesHybrid
 ```
 
-Het implementeren van de DNS-forwarding-oplossing heeft twee stappen, het maken van een DNS-doorstuurregelset, die bepaalt naar welke Azure-services u aanvragen wilt doorsturen en naar de daadwerkelijke implementatie van de DNS-expediteurs. 
+De implementatie van de DNS-doorstuur oplossing bestaat uit twee stappen: het maken van een DNS-doorstuur regel set, waarmee wordt gedefinieerd naar welke Azure-Services u aanvragen wilt door sturen en de daad werkelijke implementatie van de DNS-doorstuur servers. 
 
-In het volgende voorbeeld worden aanvragen doorgestuurd naar het opslagaccount, inclusief aanvragen naar Azure-bestanden, Azure Blob-opslag, Azure Table-opslag en Azure Queue-opslag. Indien gewenst u doorsturen voor extra Azure-service toevoegen aan de regel via de `-AzureEndpoints` parameter van de `New-AzDnsForwardingRuleSet` cmdlet. Vergeet niet `<virtual-network-resource-group>` `<virtual-network-name>`om `<subnet-name>` te vervangen, , en met de juiste waarden voor uw omgeving.
+In het volgende voor beeld worden aanvragen doorgestuurd naar het opslag account, inclusief aanvragen voor Azure Files, Azure Blob-opslag, Azure-tabel opslag en Azure Queue-opslag. Desgewenst kunt u door sturen toevoegen voor extra Azure-service naar de regel via de `-AzureEndpoints` para meter van `New-AzDnsForwardingRuleSet` de cmdlet. Vergeet niet om `<virtual-network-resource-group>`, `<virtual-network-name>`en `<subnet-name>` met de juiste waarden voor uw omgeving te vervangen.
 
 ```PowerShell
 # Create a rule set, which defines the forwarding rules
@@ -108,21 +108,21 @@ New-AzDnsForwarder `
         -VirtualNetworkSubnetName "<subnet-name>"
 ```
 
-Mogelijk vindt u het bovendien nuttig/noodzakelijk om een aantal aanvullende parameters te leveren:
+Het kan ook nuttig/nood zakelijk zijn om verschillende extra para meters op te geven:
 
 | Parameternaam | Type | Beschrijving |
 |----------------|------|-------------|
-| `DnsServerResourceGroupName` | `string` | Standaard worden de DNS-servers geïmplementeerd in dezelfde brongroep als het virtuele netwerk. Als dit niet gewenst is, u met deze parameter een alternatieve resourcegroep kiezen waardeze moet worden geïmplementeerd. |
-| `DnsForwarderRootName` | `string` | Standaard hebben de DNS-servers die in Azure `DnsFwder-*`zijn geïmplementeerd de namen , waarbij het sterretje wordt ingevuld door een iterator. Deze parameter verandert de wortel van die `DnsFwder`naam (d.w.z. ). |
-| `VmTemporaryPassword` | `SecureString` | Standaard wordt een willekeurig wachtwoord gekozen voor het tijdelijke standaardaccount dat een VM heeft voordat het domein is samengevoegd. Nadat het domein is samengevoegd, wordt het standaardaccount uitgeschakeld. |
-| `DomainToJoin` | `string` | Het domein dat moet worden samengevoegd met de DNS VM(s) om lid te worden. Standaard wordt dit domein gekozen op basis van het domein van de computer waar u de cmdlets uitvoert. |
-| `DnsForwarderRedundancyCount` | `int` | Het aantal DNS-VM's dat moet worden geïmplementeerd voor uw virtuele netwerk. `New-AzDnsForwarder` Implementeert standaard twee DNS-servers in uw virtuele Azure-netwerk in een beschikbaarheidsset om redundantie te garanderen. Dit nummer kan naar wens worden gewijzigd. |
-| `OnPremDnsHostNames` | `HashSet<string>` | Een handmatig opgegeven lijst met on-premises DNS-hostnamen om doorstuurgers op te maken. Deze parameter is handig wanneer u forwarders niet op alle on-premises DNS-servers wilt toepassen, bijvoorbeeld wanneer u een reeks clients met handmatig opgegeven DNS-namen hebt. |
-| `Credential` | `PSCredential` | Een referentie die u moet gebruiken bij het bijwerken van de DNS-servers. Dit is handig wanneer het gebruikersaccount waarmee u bent ingelogd geen machtigingen heeft om DNS-instellingen te wijzigen. |
-| `SkipParentDomain` | `SwitchParameter` | Standaard worden DNS-expediteurs toegepast op het domein op het hoogste niveau dat in uw omgeving bestaat. Als u `northamerica.corp.contoso.com` bijvoorbeeld een onderliggend `corp.contoso.com`domein is van , wordt de `corp.contoso.com`expediteer gemaakt voor de DNS-servers die zijn gekoppeld aan . Deze parameter zorgt ervoor dat `northamerica.corp.contoso.com`expediteurs worden gemaakt in . |
+| `DnsServerResourceGroupName` | `string` | De DNS-servers worden standaard geïmplementeerd in dezelfde resource groep als het virtuele netwerk. Als dit niet gewenst is, kunt u met deze para meter een alternatieve resource groep kiezen die in moet worden geïmplementeerd. |
+| `DnsForwarderRootName` | `string` | De DNS-servers die in azure zijn geïmplementeerd, hebben standaard de namen `DnsFwder-*`, waarbij het sterretje door een iterator wordt gevuld. Met deze para meter wordt de hoofdmap van die naam ( `DnsFwder`dat wil zeggen) gewijzigd. |
+| `VmTemporaryPassword` | `SecureString` | Standaard wordt een wille keurig wacht woord gekozen voor het tijdelijke standaard account dat een virtuele machine heeft voordat deze lid is van een domein. Wanneer het lid is van een domein, wordt het standaard account uitgeschakeld. |
+| `DomainToJoin` | `string` | Het domein om lid te worden van de DNS-VM (s) die u wilt toevoegen. Dit domein wordt standaard gekozen op basis van het domein van de computer waarop u de cmdlets uitvoert. |
+| `DnsForwarderRedundancyCount` | `int` | Het aantal DNS-Vm's dat voor het virtuele netwerk moet worden geïmplementeerd. `New-AzDnsForwarder` Implementeert standaard twee DNS-servers in uw virtuele Azure-netwerk, in een beschikbaarheidsset, om redundantie te garanderen. Dit nummer kan naar wens worden gewijzigd. |
+| `OnPremDnsHostNames` | `HashSet<string>` | Een hand matig opgegeven lijst met lokale DNS-hostnamen om doorstuur servers te maken. Deze para meter is handig als u geen doorstuur servers wilt Toep assen op alle on-premises DNS-server, bijvoorbeeld wanneer u een bereik met clients hebt met hand matig opgegeven DNS-namen. |
+| `Credential` | `PSCredential` | Een referentie die moet worden gebruikt bij het bijwerken van de DNS-servers. Dit is handig wanneer het gebruikers account waarmee u bent aangemeld, geen machtigingen heeft om DNS-instellingen te wijzigen. |
+| `SkipParentDomain` | `SwitchParameter` | DNS-doorstuur servers worden standaard toegepast op het domein van het hoogste niveau dat zich in uw omgeving bevindt. Als `northamerica.corp.contoso.com` bijvoorbeeld een onderliggend domein is van `corp.contoso.com`, wordt de doorstuur server gemaakt voor de DNS-servers die zijn `corp.contoso.com`gekoppeld aan. Deze para meter zorgt ervoor dat doorstuur servers worden gemaakt `northamerica.corp.contoso.com`in. |
 
-## <a name="confirm-dns-forwarders"></a>DNS-expediteurs bevestigen
-Voordat u test om te zien of de DNS-expediteurs zijn toegepast, `Clear-DnsClientCache`raden we u aan de DNS-cache op uw lokale werkstation te wissen met behulp van . Gebruik `Resolve-DnsName` of. `nslookup`
+## <a name="confirm-dns-forwarders"></a>DNS-doorstuur servers bevestigen
+Voordat u test om te controleren of de DNS-doorstuur servers zijn toegepast, raden we u aan de DNS-cache op uw `Clear-DnsClientCache`lokale werk station uit te scha kelen met. Als u wilt testen of u de Fully Qualified Domain Name van uw opslag account kunt oplossen, gebruikt `Resolve-DnsName` u of `nslookup`.
 
 ```powershell
 # Replace storageaccount.file.core.windows.net with the appropriate FQDN for your storage account.
@@ -130,7 +130,7 @@ Voordat u test om te zien of de DNS-expediteurs zijn toegepast, `Clear-DnsClient
 Resolve-DnsName -Name storageaccount.file.core.windows.net
 ```
 
-Als de naamomzetting succesvol is, moet u het opgeloste IP-adres zien dat overeenkomt met het IP-adres van uw opslagaccount.
+Als de naam omzetting is geslaagd, ziet u dat het opgeloste IP-adres overeenkomt met het IP-adres van uw opslag account.
 
 ```Output
 Name                              Type   TTL   Section    NameHost
@@ -145,13 +145,13 @@ Section    : Answer
 IP4Address : 192.168.0.4
 ```
 
-Als u al een VPN- of ExpressRoute-verbinding `Test-NetConnection` hebt ingesteld, u ook zien dat een TCP-verbinding met uw opslagaccount kan worden gemaakt.
+Als u al een VPN-of ExpressRoute-verbinding hebt ingesteld, kunt u ook `Test-NetConnection` gebruiken om te zien dat een TCP-verbinding met uw opslag account kan worden uitgevoerd.
 
 ```PowerShell
 Test-NetConnection -ComputerName storageaccount.file.core.windows.net -CommonTCPPort SMB
 ```
 
 ## <a name="see-also"></a>Zie ook
-- [Implementatie van Azure Files plannen](storage-files-planning.md)
-- [Overwegingen voor Azure Files-netwerken](storage-files-networking-overview.md)
-- [Eindpunten azure files-netwerk configureren](storage-files-networking-endpoints.md)
+- [Planning voor de implementatie van Azure Files](storage-files-planning.md)
+- [Azure Files-netwerk overwegingen](storage-files-networking-overview.md)
+- [Azure Files netwerk eindpunten configureren](storage-files-networking-endpoints.md)

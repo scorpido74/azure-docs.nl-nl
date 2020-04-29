@@ -1,7 +1,7 @@
 ---
 title: Een audio-invoerapparaat selecteren met de Speech-SDK
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het selecteren van audio-invoerapparaten in de SpraakSDK (C++, C#, Python, Objective-C, Java, JavaScript) door de id's van de audioapparaten die op een systeem zijn aangesloten, te verkrijgen.
+description: Meer informatie over het selecteren van audio-invoer apparaten in de Speech SDK (C++, C#, Python, objectief-C, Java, java script) door de Id's te verkrijgen van de audio apparaten die zijn verbonden met een systeem.
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
 ms.openlocfilehash: 9891cdb59c757035afd17339b052d5587ac99b0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74109972"
 ---
-# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>How to: Een audio-invoerapparaat selecteren met de Spraak-SDK
+# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>Procedure: een audio-invoer apparaat selecteren met de Speech SDK
 
-Versie 1.3.0 van de Speech SDK introduceert een API om de audio-ingang te selecteren. In dit artikel wordt beschreven hoe u de id's van de audioapparaten die op een systeem zijn aangesloten, verkrijgen. Deze kunnen vervolgens worden gebruikt in de Speech-SDK door het audioapparaat via het `AudioConfig`-object te configureren:
+Versie 1.3.0 van de Speech SDK introduceert een API voor het selecteren van de audio-invoer. In dit artikel wordt beschreven hoe u de Id's kunt ophalen van de audio apparaten die zijn verbonden met een systeem. Deze kunnen vervolgens worden gebruikt in de Speech-SDK door het audioapparaat via het `AudioConfig`-object te configureren:
 
 ```C++
 audioConfig = AudioConfig.FromMicrophoneInput("<device id>");
@@ -46,7 +46,7 @@ audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```
 
 > [!Note]
-> Microfoongebruik is niet beschikbaar voor JavaScript dat wordt uitgevoerd in Node.js
+> Het gebruik van de microfoon is niet beschikbaar voor Java script dat wordt uitgevoerd in node. js
 
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>Id's van audioapparaten onder Windows voor bureaublad-toepassingen
 
@@ -175,7 +175,7 @@ Een voorbeeld van een apparaat-id is `{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-
 
 ## <a name="audio-device-ids-on-uwp"></a>Audioapparaat-id's op UWP
 
-Op het Universal Windows Platform (UWP) kunnen `Id()` audio-invoerapparaten [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) worden verkregen met behulp van de eigenschap van het bijbehorende object.
+Op de Universeel Windows-platform (UWP) kunnen audio-invoer apparaten worden verkregen met behulp van de `Id()` eigenschap [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) van het bijbehorende object.
 
 In de volgende codevoorbeelden kunt u zien hoe u dit in C++ en C# kunt doen:
 
@@ -365,7 +365,7 @@ Zo is `BuiltInMicrophoneDevice` de UID voor de ingebouwde microfoon.
 
 ## <a name="audio-device-ids-on-ios"></a>Audioapparaat-id's onder iOS
 
-Selectie van audioapparaten met de Speech-SDK wordt onder iOS niet ondersteund. Apps die de SDK gebruiken, kunnen [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) echter de audioroutering via het Framework beïnvloeden.
+Selectie van audioapparaten met de Speech-SDK wordt onder iOS niet ondersteund. Apps die gebruikmaken van de SDK, kunnen echter invloed hebben op [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) audio routering via het Framework.
 
 Bijvoorbeeld: de instructie
 
@@ -376,9 +376,9 @@ Bijvoorbeeld: de instructie
 
 maakt het gebruik van een Bluetooth-headset voor een spraakgestuurde app mogelijk.
 
-## <a name="audio-device-ids-in-javascript"></a>I-opnames voor audioapparaten in JavaScript
+## <a name="audio-device-ids-in-javascript"></a>Audio apparaat-Id's in Java script
 
-In JavaScript kan de methode [MediaDevices.enumerateDevices()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) worden gebruikt om de media-apparaten `fromMicrophone(...)`op te sommen en een apparaat-id te vinden om door te geven aan .
+In Java script kan de methode [MediaDevices. enumerateDevices ()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) worden gebruikt om de media apparaten te inventariseren en een apparaat-id te `fromMicrophone(...)`vinden die moet worden door gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 

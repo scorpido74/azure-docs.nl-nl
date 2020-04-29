@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
 ms.openlocfilehash: a1de313245e826511a7e9c864165ac44bcb48530
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80234185"
 ---
-### <a name="standard-and-neural-voices"></a>Standaard- en neurale stemmen
+### <a name="standard-and-neural-voices"></a>Standaard en Neural stemmen
 
-Gebruik deze tabel om de beschikbaarheid van standaard- en neurale stemmen per regio/eindpunt te bepalen:
+Gebruik deze tabel om de beschik baarheid van de standaard-en Neural stemmen per regio/eind punt te bepalen:
 
-| Regio | Eindpunt | Standaardstemmen | Neurale stemmen |
+| Regio | Eindpunt | Standaard stemmen | Neural stemmen |
 |--------|----------|-----------------|---------------|
 | Australië - oost | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
 | Brazilië - zuid | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nee |
@@ -40,7 +40,7 @@ Gebruik deze tabel om de beschikbaarheid van standaard- en neurale stemmen per r
 
 ### <a name="custom-voices"></a>Aangepaste stemmen
 
-Als u een aangepast spraaklettertype hebt gemaakt, gebruikt u het eindpunt dat u hebt gemaakt. U ook de onderstaande eindpunten `{deploymentId}` gebruiken, waarbij u de implementatie-id voor uw spraakmodel vervangt.
+Als u een aangepast spraak lettertype hebt gemaakt, gebruikt u het eind punt dat u hebt gemaakt. U kunt ook de onderstaande eind punten gebruiken om de `{deploymentId}` implementatie-id voor uw spraak model te vervangen.
 
 | Regio | Eindpunt |
 |--------|----------|

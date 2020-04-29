@@ -1,7 +1,7 @@
 ---
-title: 'Model voor crossvalideren: modulereferentie'
+title: 'Model voor kruis validatie: module verwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module Model voor crossvalideren in Azure Machine Learning om parameterschattingen voor classificatie- of regressiemodellen te vergelijken door de gegevens te partitioneren.
+description: Meer informatie over het gebruik van de model module kruislings valideren in Azure Machine Learning om de schatting van de para meters voor classificaties of regressie modellen te valideren door de gegevens te partitioneren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,120 +10,120 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: 7550bb7c6bbf7602245f9a9f1ac006ce693b36a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477643"
 ---
 # <a name="cross-validate-model"></a>Kruisvalidatie van model valideren
 
-In dit artikel wordt beschreven hoe u de module Model cross valideren gebruiken in Azure Machine Learning-ontwerper (voorbeeld). *Cross-validatie* is een techniek die vaak wordt gebruikt in machine learning om zowel de variabiliteit van een gegevensset als de betrouwbaarheid van elk model dat via die gegevens is getraind, te beoordelen.  
+In dit artikel wordt beschreven hoe u de module voor kruis validatie gebruikt in Azure Machine Learning Designer (preview). *Kruis validatie* is een techniek die vaak wordt gebruikt in machine learning om zowel de variabiliteit van een gegevensset als de betrouw baarheid te beoordelen van een model dat via deze gegevens is getraind.  
 
-De module Cross Validate Model neemt als invoer een gelabelde gegevensset, samen met een ongetraind classificatie- of regressiemodel. Het verdeelt de gegevensset in een aantal subsets *(plooien),* bouwt een model op elke vouw, en vervolgens retourneert een set van nauwkeurigheid statistieken voor elke vouw. Door de nauwkeurigheidsstatistieken voor alle plooien te vergelijken, u de kwaliteit van de gegevensset interpreteren. U dan begrijpen of het model gevoelig is voor variaties in de gegevens.  
+De module voor kruis validatie maakt als invoer een gegevensset met een label, samen met een niet-uitgetrainde classificatie of regressie model. De gegevensset wordt onderverdeeld in een aantal subsets (*vouwen*), bouwt een model op elke vouw en retourneert vervolgens een set nauw keurige statistieken voor elke vouw. Door de nauw keurige statistieken voor alle vouwen te vergelijken, kunt u de kwaliteit van de gegevensset interpreteren. U kunt vervolgens begrijpen of het model gevoelig is voor variaties in de gegevens.  
 
-Cross Validate Model retourneert ook voorspelde resultaten en waarschijnlijkheden voor de gegevensset, zodat u de betrouwbaarheid van de voorspellingen beoordelen.  
+Kruis valideren model retourneert ook voorspelde resultaten en waarschijnlijkheid voor de gegevensset, zodat u de betrouw baarheid van de voor spellingen kunt beoordelen.  
 
-### <a name="how-cross-validation-works"></a>Hoe cross-validatie werkt
+### <a name="how-cross-validation-works"></a>Hoe Kruis validatie werkt
 
-1. Cross-validatie verdeelt trainingsgegevens willekeurig in plooien. 
+1. Met kruis validatie worden trainings gegevens wille keurig verdeeld over vouwen. 
 
-   Het algoritme standaard op 10 vouwen als u de gegevensset nog niet eerder hebt verdeeld. Als u de gegevensset wilt verdelen in een ander aantal plooien, u de [partitie- en voorbeeldmodule](partition-and-sample.md) gebruiken en aangeven hoeveel vouwen u moet gebruiken.  
+   Het algoritme wordt standaard ingesteld op 10 vouwen als u de gegevensset niet eerder hebt gepartitioneerd. Als u de gegevensset wilt splitsen in een ander aantal vouwen, kunt u de module [Partition en sample](partition-and-sample.md) gebruiken en aangeven hoeveel vouwen u wilt gebruiken.  
 
-2.  De module zet de gegevens in vouw 1 opzij om te gebruiken voor validatie. (Dit wordt ook wel de *holdout fold*genoemd .) De module gebruikt de resterende plooien om een model te trainen. 
+2.  In de module worden de gegevens in vouw 1 gereserveerd om te worden gebruikt voor validatie. (Dit wordt ook wel de *evaluatie-vouw*genoemd.) De module gebruikt de resterende vouwen om een model te trainen. 
 
-    Als u bijvoorbeeld vijf vouwen maakt, genereert de module vijf modellen tijdens cross-validatie. De module traint elk model met behulp van vier vijfde van de gegevens. Het test elk model op de resterende een vijfde.  
+    Als u bijvoorbeeld vijf vouwen maakt, genereert de module vijf modellen tijdens Kruis validatie. De module treinen elk model met behulp van vier vijfde van de gegevens. Elk model wordt getest op het resterende aantal van een vijfde.  
 
-3.  Tijdens het testen van het model voor elke vouw evalueert de module meerdere nauwkeurigheidsstatistieken. Welke statistieken de module gebruikt, is afhankelijk van het type model dat u evalueert. Verschillende statistieken worden gebruikt om classificatiemodellen versus regressiemodellen te evalueren.  
+3.  Tijdens het testen van het model voor elke vouw, evalueert de module meerdere nauwkeurigheids statistieken. Welke statistieken de module gebruikt, is afhankelijk van het type model dat u wilt evalueren. Verschillende statistieken worden gebruikt om classificatie modellen en regressie modellen te evalueren.  
 
-4.  Wanneer het bouw- en evaluatieproces voor alle plooien is voltooid, genereert Cross Validate Model een reeks prestatiestatistieken en scoort het resultaten voor alle gegevens. Bekijk deze statistieken om te zien of een enkele vouw een hoge of lage nauwkeurigheid heeft. 
+4.  Wanneer het proces voor het maken en evalueren van alle vouwen is voltooid, genereert het Kruis validatie model een set prestatie gegevens en gescoorde resultaten voor alle gegevens. Bekijk deze metrische gegevens om te zien of een enkele Vouw een hoge of lage nauw keurigheid heeft. 
 
-### <a name="advantages-of-cross-validation"></a>Voordelen van cross-validatie
+### <a name="advantages-of-cross-validation"></a>Voor delen van kruis validatie
 
-Een andere en gangbare manier om een model te evalueren is om de gegevens te verdelen in een training en testset met behulp van [Split Data](split-data.md)en vervolgens het model op de trainingsgegevens te valideren. Maar cross-validatie biedt een aantal voordelen:  
+Een voor beeld van een gemeen schappelijke manier om een model te evalueren, is door de gegevens in een training te verdelen en te testen met behulp van [gesplitste gegevens](split-data.md)en vervolgens het model op de trainings gegevens te valideren. Kruis validatie biedt echter een aantal voor delen:  
 
--   Cross-validatie maakt gebruik van meer testgegevens.
+-   Kruis validatie maakt gebruik van meer test gegevens.
 
-    Cross-validatie meet de prestaties van het model met de opgegeven parameters in een grotere gegevensruimte. Dat wil zeggen, cross-validatie maakt gebruik van de volledige trainingsgegevensset voor zowel training als evaluatie, in plaats van een gedeelte. Als u een model daarentegen valideert met behulp van gegevens die zijn gegenereerd uit een willekeurige splitsing, evalueert u het model doorgaans op slechts 30 procent of minder van de beschikbare gegevens.  
+    Kruis validatie meet de prestaties van het model met de opgegeven para meters in een grotere gegevens ruimte. Dat wil zeggen dat kruis validatie gebruikmaakt van de volledige trainings gegevensset voor zowel trainingen als evaluatie, in plaats van een deel. Als u daarentegen een model valideert met behulp van gegevens die zijn gegenereerd op basis van een wille keurige splitsing, wordt het model doorgaans alleen op 30 procent of minder van de beschik bare gegevens geëvalueerd.  
 
-    Omdat cross-validatie het model echter meerdere keren traint en valideert via een grotere gegevensset, is het veel rekenintensiever. Het duurt veel langer dan valideren op een willekeurige splitsing.  
+    Omdat intervalidatie treinen echter het model meerdere keren in een grotere gegevensset valideert, is het veel meer reken kracht. Het duurt veel langer dan het valideren van een wille keurige splitsing.  
 
--   Cross-validatie evalueert zowel de gegevensset als het model.
+-   Bij Kruis validatie worden zowel de gegevensset als het model geëvalueerd.
 
-    Cross-validatie meet niet alleen de nauwkeurigheid van een model. Het geeft u ook een idee van hoe representatief de gegevensset is en hoe gevoelig het model kan zijn voor variaties in de gegevens.  
+    Bij Kruis validatie wordt niet alleen de nauw keurigheid van een model gemeten. Het biedt u ook een idee van hoe representatief de gegevensset is en hoe gevoelig het model kan zijn voor variaties in de gegevens.  
 
-## <a name="how-to-use-cross-validate-model"></a>Cross Validate-model gebruiken
+## <a name="how-to-use-cross-validate-model"></a>Model voor meerdere validatie gebruiken
 
-Cross-validatie kan lang duren als uw gegevensset groot is.  U dus Cross Validate Model gebruiken in de beginfase van het bouwen en testen van uw model. In die fase u de goedheid van de modelparameters evalueren (ervan uitgaande dat de berekeningstijd aanvaardbaar is). U vervolgens uw model trainen en evalueren met behulp van de vastgestelde parameters met de [modules Train Model](train-model.md) en Evaluate [Model.](evaluate-model.md)
+Kruis validatie kan veel tijd in beslag nemen als uw gegevensset groot is.  U kunt het model met meerdere validaties gebruiken in de eerste fase van het bouwen en testen van uw model. In die fase kunt u de goed keurigheid van de model parameters evalueren (ervan uitgaande dat de reken tijd Maxi maal is). U kunt vervolgens uw model trainen en evalueren met behulp van de ingestelde para meters met het [Train model](train-model.md) en de [model modules evalueren](evaluate-model.md) .
 
-In dit scenario traint en test u het model met behulp van Cross Validate Model.
+In dit scenario moet u het model trainen en testen met behulp van het model kruislings valideren.
 
-1. Voeg de module Model cross validate toe aan uw pijplijn. U het vinden in Azure Machine Learning designer, in de categorie **Model scoring & Evaluatie.** 
+1. Voeg de module model voor kruis validatie toe aan uw pijp lijn. U kunt het vinden in Azure Machine Learning designer in de categorie **beoordeling & evaluatie** van het model. 
 
-2. Verbind de uitvoer van een classificatie- of regressiemodel. 
+2. Verbind de uitvoer van een classificatie of regressie model. 
 
-    Als u bijvoorbeeld **tweeklassen versterkte beslissingsstructuur** gebruikt voor classificatie, configureert u het model met de gewenste parameters. Sleep vervolgens een connector van de **niet-getrainde modelpoort** van de classificatie naar de overeenkomende poort van Cross Validate Model. 
+    Als u bijvoorbeeld **twee klassen hebt gestimuleerd beslissings structuur** voor classificatie, configureert u het model met de gewenste para meters. Sleep vervolgens een connector van de niet- **getrainde model** poort van de classificatie naar de overeenkomende poort van kruislings validate model. 
 
     > [!TIP] 
-    > U hoeft het model niet te trainen, omdat Cross-Validate Model het model automatisch traint als onderdeel van de evaluatie.  
-3.  Verbind op de **gegevenssetpoort** van Cross Validate Model een gelabelde trainingsgegevensset.  
+    > U hoeft het model niet te trainen omdat Kruis validatie het model automatisch als onderdeel van de evaluatie ondertraint.  
+3.  Verbind op de **gegevensset** -poort van kruislings valideren model een trainings gegevensset met een label.  
 
-4.  Klik in het rechterdeelvenster van Model voor kruisvalidatie op **Kolom bewerken**. Selecteer de enkele kolom die het klassenlabel of de voorspelbare waarde bevat. 
+4.  Klik in het rechter paneel van het model Kruis validatie op **kolom bewerken**. Selecteer de enkelvoudige kolom die het klassen label of de voorspel bare waarde bevat. 
 
-5. Stel een waarde in voor de parameter **Random seed** als u de resultaten van cross-validatie wilt herhalen voor opeenvolgende uitvoeringen op dezelfde gegevens.  
+5. Stel een waarde in voor de **wille keurige Seed** -para meter als u de resultaten van kruis validatie wilt herhalen in opeenvolgende uitvoeringen van dezelfde gegevens.  
 
-6. Verzend de pijplijn.
+6. Verzend de pijp lijn.
 
-7. Zie de sectie [Resultaten](#results) voor een beschrijving van de rapporten.
+7. Zie de sectie met [resultaten](#results) voor een beschrijving van de rapporten.
 
 ## <a name="results"></a>Resultaten
 
-Nadat alle iteraties zijn voltooid, maakt Cross Validate Model scores voor de hele gegevensset. Het maakt ook prestatiestatistieken die u gebruiken om de kwaliteit van het model te beoordelen.
+Nadat alle iteraties zijn voltooid, maakt het Kruis validatie model scores voor de volledige gegevensset. Er worden ook prestatie gegevens gemaakt die u kunt gebruiken om de kwaliteit van het model te beoordelen.
 
 ### <a name="scored-results"></a>Gescoorde resultaten
 
-De eerste uitvoer van de module biedt de brongegevens voor elke rij, samen met enkele voorspelde waarden en gerelateerde waarschijnlijkheden. 
+De eerste uitvoer van de module levert de bron gegevens voor elke rij, samen met enkele voorspelde waarden en gerelateerde kansen. 
 
-Als u de resultaten wilt weergeven, klikt u in de pijplijn met de rechtermuisknop op de module Model kruisvalideren. Selecteer **Resultaten visualiseren gescoord**.
+Als u de resultaten wilt weer geven, klikt u in de pijp lijn met de rechter muisknop op de model module Kruis valideren. Selecteer **gescoorde resultaten visualiseren**.
 
 | Nieuwe kolomnaam      | Beschrijving                              |
 | -------------------- | ---------------------------------------- |
 | Labels met een score        | Deze kolom wordt toegevoegd aan het einde van de gegevensset. Het bevat de voorspelde waarde voor elke rij. |
-| Gescoorde waarschijnlijkheden | Deze kolom wordt toegevoegd aan het einde van de gegevensset. Het geeft de geschatte waarschijnlijkheid van de waarde in **Scored Labels**aan. |
-| Vouwnummer          | Geeft de op nul gebaseerde index aan van de vouw waaraan elke rij gegevens is toegewezen tijdens crossvalidatie. |
+| Gescoorde kansen | Deze kolom wordt toegevoegd aan het einde van de gegevensset. Deze geeft de geschatte waarschijnlijkheid van de waarde in de **gescoorde labels**aan. |
+| Vouw nummer          | Hiermee wordt de op nul gebaseerde index van de vouw aangegeven waarmee elke rij met gegevens tijdens Kruis validatie werd toegewezen. |
 
  ### <a name="evaluation-results"></a>Evaluatieresultaten
 
-Het tweede rapport is gegroepeerd op plooien. Vergeet niet dat Cross Validate Model tijdens de uitvoering de trainingsgegevens willekeurig opsplitst in *n-plooien* (standaard, 10). In elke iteratie over de gegevensset gebruikt Cross Validate Model één vouw als validatiegegevensset. Het maakt gebruik van de resterende *n-1* plooien om een model te trainen. Elk van de *n-modellen* wordt getest op basis van de gegevens in alle andere plooien.
+Het tweede rapport is gegroepeerd op vouwen. Houd er rekening mee dat tijdens de uitvoering door Kruis valideren model de opleidings gegevens wille keurig splitst in *n* vouwen (standaard 10). In elke iteratie over de gegevensset gebruikt het Kruis validatie model één vouw als een validatie gegevensset. De overige *n-1* vouwen worden gebruikt voor het trainen van een model. Elk van de *n* -modellen wordt getest op basis van de gegevens in alle andere vouwen.
 
-In dit rapport worden de plooien weergegeven op indexwaarde, in oplopende volgorde.  Als u op een andere kolom wilt bestellen, u de resultaten opslaan als een gegevensset.
+In dit rapport worden de vouwen weer gegeven op index waarde, in oplopende volg orde.  Als u wilt sorteren op een andere kolom, kunt u de resultaten opslaan als een gegevensset.
 
-Als u de resultaten wilt weergeven, klikt u in de pijplijn met de rechtermuisknop op de module Model kruisvalideren. Selecteer **Evaluatieresultaten visualiseren op vouw**.
+Als u de resultaten wilt weer geven, klikt u in de pijp lijn met de rechter muisknop op de model module Kruis valideren. Selecteer **evaluatie resultaten visualiseren door te vouwen**.
 
 
 |Kolomnaam| Beschrijving|
 |----|----|
-|Vouwnummer| Een id voor elke vouw. Als u vijf plooien hebt gemaakt, zouden er vijf subsets van gegevens zijn, genummerd 0 tot 4.
-|Aantal voorbeelden in gevouwen|Het aantal rijen dat aan elke vouw is toegewezen. Ze moeten ongeveer gelijk zijn. |
+|Vouw nummer| Een id voor elke vouw. Als u vijf vouwen hebt gemaakt, zijn er vijf subsets met gegevens, genummerd van 0 tot 4.
+|Aantal voor beelden in vouwen|Het aantal rijen dat aan elke vouw is toegewezen. Ze moeten ongeveer gelijk zijn. |
 
 
-De module bevat ook de volgende statistieken voor elke vouw, afhankelijk van het type model dat u evalueert: 
+De module bevat ook de volgende metrische gegevens voor elke vouw, afhankelijk van het type model dat u wilt evalueren: 
 
-+ **Classificatiemodellen**: Precisie, terugroepactie, F-score, AUC, nauwkeurigheid  
++ **Classificatie modellen**: precisie, intrekken, F-Score, AUC, nauw keurigheid  
 
-+ **Regressiemodellen**: Gemiddelde absolute fout, gemiddelde kwadraatfout, relatieve absolute fout, relatieve kwadraatfout en bepalingscoëfficiënt
++ **Regressie modellen**: absolute fout, wortel gemiddelde fout, relatieve absolute fout, relatieve kwadraat fout en coëfficiënt van bepaling
 
 
-## <a name="technical-notes"></a>Technische notities  
+## <a name="technical-notes"></a>Technische opmerkingen  
 
-+ Het is een beste manier om gegevenssets te normaliseren voordat u ze gebruikt voor cross-validatie. 
++ Het is een best practice om gegevens sets te normaliseren voordat u ze gebruikt voor kruis validatie. 
 
-+ Cross Validate Model is veel meer rekenintensief en duurt langer dan wanneer u het model hebt gevalideerd met behulp van een willekeurig verdeelde gegevensset. De reden hiervoor is dat Cross Validate Model het model meerdere keren traint en valideert.
++ Kruis validatie model is veel meer reken kracht en duurt langer dan als u het model hebt gevalideerd met behulp van een wille keurig opgesplitste gegevensset. De reden hiervoor is dat model treinen door kruisen en het model meerdere keren wordt gevalideerd.
 
-+ Het is niet nodig om de gegevensset op te splitsen in trainings- en testsets wanneer u cross-validatie gebruikt om de nauwkeurigheid van het model te meten. 
++ Het is niet nodig om de gegevensset te splitsen in trainings-en test sets wanneer u kruis validatie gebruikt om de nauw keurigheid van het model te meten. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
 

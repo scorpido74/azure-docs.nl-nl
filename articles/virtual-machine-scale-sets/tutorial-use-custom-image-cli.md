@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Een aangepaste VM-afbeelding gebruiken in een schaalset met Azure CLI
+title: Zelf studie-een aangepaste VM-installatie kopie gebruiken in een schaalset met Azure CLI
 description: Informatie over het gebruik van Azure CLI voor het maken van een aangepaste VM-installatiekopie die u kunt gebruiken om een virtuele-machineschaalset te implementeren
 author: cynthn
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 6d9f625bf425a33b690fd303a4f13d032bd59fa0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80062718"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Zelfstudie: Een aangepaste installatiekopie voor virtuele-machineschaalsets maken en gebruiken met Azure CLI
@@ -24,7 +24,7 @@ Wanneer u een schaalset maakt, geeft u een installatiekopie op die moet worden g
 > * Een aangepaste VM-installatiekopie maken
 > * Een schaalset implementeren die gebruikmaakt van de aangepaste VM-installatiekopie
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -91,7 +91,7 @@ Het duurt enkele minuten om de toewijzing ongedaan te maken en de virtuele machi
 
 U kunt nu een installatiekopie van de virtuele machine maken met behulp van [az image create](/cli//azure/image). In het volgende voorbeeld wordt er een installatiekopie met de naam *myImage* gemaakt van uw virtuele machine:
 
-> [OPMERKING] Als de locatie Resourcegroep en Virtuele machine `--location` verschillen, u de parameter aan de onderstaande opdrachten toevoegen aan de locatie van bron-VM die wordt gebruikt om de afbeelding te maken. 
+> ERAAN Als de resource groep en de locatie van de virtuele machine verschillen, kunt u `--location` de para meter aan de onderstaande opdrachten toevoegen aan de locatie van de bron-VM die wordt gebruikt om de installatie kopie te maken. 
 
 ```azurecli-interactive
 az image create \
@@ -147,7 +147,7 @@ Voer in uw webbrowser het openbare IP-adres in. De standaard NGINX-webpagina wor
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Als u uw schaalset en extra resources wilt verwijderen, verwijdert u de brongroep en al de bronnen met [de AZ-groep verwijderen](/cli/azure/group). De parameter `--no-wait` retourneert het besturingselement naar de prompt zonder te wachten totdat de bewerking is voltooid. De parameter `--yes` bevestigt dat u de resources wilt verwijderen, zonder een extra prompt om dit te doen.
+Als u de schaalset en aanvullende resources wilt verwijderen, verwijdert u de resource groep en alle bijbehorende resources met [AZ Group delete](/cli/azure/group). De parameter `--no-wait` retourneert het besturingselement naar de prompt zonder te wachten totdat de bewerking is voltooid. De parameter `--yes` bevestigt dat u de resources wilt verwijderen, zonder een extra prompt om dit te doen.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

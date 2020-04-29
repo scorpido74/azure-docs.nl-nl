@@ -1,7 +1,7 @@
 ---
-title: Spraakapparaten SDK Roobo Smart Audio Dev Kit v1 - Spraakservice
+title: Speech-apparaten SDK roobo Smart audio dev kit v1-Speech Service
 titleSuffix: Azure Cognitive Services
-description: Voorwaarden en instructies om aan de slag te gaan met de Speech Devices SDK, Roobo Smart Audio Dev Kit v1.
+description: Vereisten en instructies voor het aan de slag gaan met de SDK voor spraak apparaten, roobo Smart audio dev kit v1.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,36 +11,36 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.openlocfilehash: 9add5b063b67ddcc4cd5bf93e7f5b570b004e5ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74815590"
 ---
-# <a name="device-roobo-smart-audio-dev-kit"></a>Apparaat: Roobo Smart Audio Dev Kit
+# <a name="device-roobo-smart-audio-dev-kit"></a>Apparaat: roobo Smart audio dev kit
 
-Dit artikel bevat apparaatspecifieke informatie voor de Roobo Smart Audio Dev Kit.
+Dit artikel bevat apparaatspecifieke informatie voor de roobo Smart audio dev kit.
 
-## <a name="set-up-the-development-kit"></a>De ontwikkelkit instellen
+## <a name="set-up-the-development-kit"></a>De Development Kit instellen
 
-1. De development kit heeft twee micro USB-aansluitingen. De linker connector is om de macht van de ontwikkeling kit en wordt gemarkeerd als Macht in de afbeelding hieronder. De juiste is om het te controleren, en is gemarkeerd Foutopsporing in de afbeelding.
+1. De Development Kit heeft twee micro USB-connectors. De linker connector is de Power Development Kit om te zetten en is gemarkeerd als stroom in de onderstaande afbeelding. De juiste is om deze te beheren en is gemarkeerd als debug in de installatie kopie.
 
-    ![De dev-kit aansluiten](media/speech-devices-sdk/qsg-1.png)
+    ![De dev kit verbinden](media/speech-devices-sdk/qsg-1.png)
 
-1. Power the development kit by using a micro USB cable to connect the power port to a PC or power adapter. Een groene stroomindicator zal onder het bovenbord oplichten.
+1. Schakel de Development Kit uit met behulp van een micro USB-kabel om de voedings poort te verbinden met een PC of een stroom adapter. Een groene stroom indicator is afhankelijk van het bovenste bord.
 
-1. Als u de ontwikkelingskit wilt bedienen, sluit u de foutopsporingspoort aan op een computer met behulp van een tweede micro-USB-kabel. Het is essentieel om een kabel van hoge kwaliteit te gebruiken om betrouwbare communicatie te garanderen.
+1. Als u de Development Kit wilt beheren, verbindt u de poort voor fout opsporing met een computer met een tweede micro USB-kabel. Het is essentieel dat u een kabel van hoge kwaliteit gebruikt om betrouw bare communicatie te garanderen.
 
-1. Oriënteer uw ontwikkelkit voor de circulaire of lineaire configuratie.
+1. U kunt uw Development Kit richten op de ronde of lineaire configuratie.
 
-    |Configuratie van de ontwikkelingskit|Afdrukstand|
+    |Development Kit-configuratie|Afdrukstand|
     |-----------------------------|------------|
-    |Circulaire|Rechtop, met microfoons naar het plafond gericht|
-    |Lineair|Aan de zijkant, met microfoons naar u toe (weergegeven in de volgende afbeelding)|
+    |Uniforme|Rechtop, met microfoons gericht op het plafond|
+    |Lineair|Aan de zijkant, met microfoons die op u zijn gericht (weer gegeven in de volgende afbeelding)|
 
-    ![Lineaire dev kit oriëntatie](media/speech-devices-sdk/qsg-2.png)
+    ![De richting van de lineaire ontwikkel Kit](media/speech-devices-sdk/qsg-2.png)
 
-1. Installeer de certificaten en stel de machtigingen van het geluidsapparaat in. Typ de volgende opdrachten in een opdrachtpromptvenster:
+1. Installeer de certificaten en stel de machtigingen van het geluids apparaat in. Typ de volgende opdrachten in een opdracht prompt venster:
 
    ```powershell
    adb push C:\SDSDK\Android-Sample-Release\scripts\roobo_setup.sh /data/
@@ -52,25 +52,25 @@ Dit artikel bevat apparaatspecifieke informatie voor de Roobo Smart Audio Dev Ki
    ```
 
     > [!NOTE]
-    > Deze opdrachten maken gebruik van `adb.exe`de Android Debug Bridge, die deel uitmaakt van de Android Studio-installatie. Deze tool bevindt zich\[in C:\Gebruikers gebruikersnaam]\AppData\Local\Android\Sdk\platform-tools. U deze map aan uw pad toevoegen `adb`om het gemakkelijker te maken om een beroep te doen. Anders moet u het volledige pad naar uw installatie van adb.exe opgeven in elke opdracht die aanroept. `adb`
+    > Deze opdrachten maken gebruik van de Android Debug `adb.exe`Bridge, die deel uitmaakt van de Android Studio-installatie. Dit hulp programma bevindt\[zich in de C:\Users-gebruikers naam] \AppData\Local\Android\Sdk\platform-tools. U kunt deze map toevoegen aan het pad om het gemakkelijker te kunnen aanroepen `adb`. Anders moet u het volledige pad naar uw installatie van ADB. exe opgeven in elke opdracht die aanroept `adb`.
     >
-    > Als u een `no devices/emulators found` fout ziet, controleer dan of uw USB-kabel is aangesloten en een kabel van hoge kwaliteit is. U kunt `adb devices` gebruiken om te controleren of uw computer kan praten met de ontwikkeling kit als het zal een lijst van apparaten terug.
+    > Als er een fout optreedt `no devices/emulators found` , controleer dan of de USB-kabel is aangesloten en de kabel van een hoge kwaliteit is. U kunt gebruiken `adb devices` om te controleren of uw computer kan communiceren met de Development Kit, omdat er een lijst met apparaten wordt geretourneerd.
     >
     > [!TIP]
-    > Demp de microfoon en luidspreker van uw pc om er zeker van te zijn dat u met de microfoons van de ontwikkelkit werkt. Op deze manier activeert u het apparaat niet per ongeluk met audio van de pc.
+    > Demp de microfoon en spreker van uw PC om er zeker van te zijn dat u werkt met de smartphones van de Development Kit. Op deze manier wordt het apparaat niet per ongeluk geactiveerd op basis van de audio van de PC.
 
-1. Als u een luidspreker aan de dev-kit wilt bevestigen, u deze aansluiten op de audiolijn. U moet kiezen voor een luidspreker van goede kwaliteit met een 3,5 mm analoge stekker.
+1. Als u een spreker wilt toevoegen aan de dev kit, kunt u deze verbinden met de audio lijn uit. U moet een goede luid spreker met een analoge stekker van 3,5 mm kiezen.
 
-    ![Vysor audio](media/speech-devices-sdk/qsg-14.png)
+    ![Vysor-audio](media/speech-devices-sdk/qsg-14.png)
 
-## <a name="development-information"></a>Ontwikkelingsinformatie
+## <a name="development-information"></a>Ontwikkelings informatie
 
-Zie voor meer informatie over ontwikkeling de [Roobo-ontwikkelingsgids.](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf)
+Zie de [roobo Development Guide (Engelstalig](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf)) voor meer informatie over ontwikkel aars.
 
 ## <a name="audio"></a>Audio
 
-Roobo biedt een tool die alle audio vastlegt op flashgeheugen. Het kan u helpen audioproblemen op te lossen. Voor elke configuratie van de ontwikkelkit is een versie van de tool beschikbaar. Selecteer op de [Roobo-site](https://ddk.roobo.com/)uw apparaat en selecteer vervolgens de link **Roobo Tools** onderaan de pagina.
+Roobo biedt een hulp programma waarmee alle audio wordt vastgelegd in Flash-geheugen. Het kan handig zijn om geluids problemen op te lossen. Er wordt een versie van het hulp programma gegeven voor elke Development Kit-configuratie. Selecteer uw apparaat op de [roobo-site](https://ddk.roobo.com/)en selecteer vervolgens de koppeling **roobo extra** onder aan de pagina.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [De Voorbeeld-app Voor Android uitvoeren](speech-devices-sdk-android-quickstart.md)
+* [De Android-voor beeld-app uitvoeren](speech-devices-sdk-android-quickstart.md)

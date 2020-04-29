@@ -1,7 +1,7 @@
 ---
 title: Beveiliging
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over de verschillende beveiligingsoverwegingen voor cognitief services-gebruik.
+description: Meer informatie over de verschillende beveiligings overwegingen voor het gebruik van Cognitive Services.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,72 +10,72 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: dapine
 ms.openlocfilehash: c86d806c408c2e8226e632a0b15e1e8729c987f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80131538"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services-beveiliging
 
-Beveiliging moet worden beschouwd als een topprioriteit bij het ontwikkelen van alle toepassingen. Met het ontstaan van kunstmatige intelligentie toepassingen is beveiliging nog belangrijker. In dit artikel worden verschillende aspecten van Azure Cognitive Services-beveiliging beschreven, zoals het gebruik van transportlaagbeveiliging, verificatie en het veilig configureren van gevoelige gegevens.
+De beveiliging moet worden beschouwd als een topprioriteit bij het ontwikkelen van alle toepassingen. Met het begin van kunst matige intelligentie-toepassingen is de beveiliging nog belang rijker. In dit artikel worden verschillende aspecten van Azure Cognitive Services beveiliging beschreven, zoals het gebruik van trans port Layer Security, authenticatie en het veilig configureren van gevoelige gegevens.
 
 ## <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
 
-Alle eindpunten van Cognitive Services die via HTTP worden blootgesteld, dwingen TLS 1.2 af. Met een afgedwongen beveiligingsprotocol moeten consumenten die een eindpunt voor Cognitive Services proberen aan te roepen, zich aan deze richtlijnen houden:
+Alle Cognitive Services-eind punten die worden weer gegeven via HTTP afdwingen TLS 1,2. Met een afgedwongen beveiligings protocol moeten gebruikers die proberen een Cognitive Services eind punt aan te roepen, voldoen aan de volgende richt lijnen:
 
-* Het besturingssysteem (client besturingssysteem) moet TLS 1.2 ondersteunen
-* De taal (en het platform) die worden gebruikt om de HTTP-oproep te maken, moet TLS 1.2 opgeven als onderdeel van het verzoek
-  * Afhankelijk van de taal en het platform gebeurt het impliciet of expliciet specificeren van TLS
+* Het besturings systeem van de client moet TLS 1,2 ondersteunen
+* De taal (en het platform) waarmee de HTTP-aanroep moet TLS 1,2 opgeven als onderdeel van de aanvraag
+  * Afhankelijk van de taal en het platform wordt het opgeven van TLS impliciet of expliciet uitgevoerd
 
-Voor .NET-gebruikers u de <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">best practices <span class="docon docon-navigate-external x-hidden-focus"> </span>voor transportlaagbeveiliging </a>overwegen.
+Neem voor .NET-gebruikers rekening met de <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Aanbevolen <span class="docon docon-navigate-external x-hidden-focus"> </span>procedures voor Transport Layer Security </a>.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
-Bij het bespreken van authenticatie zijn er verschillende veelvoorkomende misvattingen. Authenticatie en autorisatie zijn vaak verward voor elkaar. Identiteit is ook een belangrijk onderdeel van veiligheid. Een identiteit is een verzameling van informatie over een <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">opdrachtgever. <span class="docon docon-navigate-external x-hidden-focus"> </span> </a> Identiteitsproviders (IdP) geven identiteiten aan verificatieservices. Verificatie is de handeling van het verifiëren van de identiteit van een gebruiker. Autorisatie is de specificatie van toegangsrechten en bevoegdheden voor resources voor een bepaalde identiteit. Verschillende van de Cognitive Services-aanbiedingen omvatten role-based access control (RBAC). RBAC kan worden gebruikt om een deel van de ceremonie die betrokken zijn bij het handmatig beheren van opdrachtgevers te vereenvoudigen. Zie voor meer informatie [op basis van rollentoegangscontrole voor Azure-resources](../role-based-access-control/overview.md).
+Bij het bespreken van verificatie zijn er verschillende veelvoorkomende problemen. Verificatie en autorisatie worden vaak voor elkaar verward. De identiteit is ook een belang rijk onderdeel van de beveiliging. Een identiteit is een verzameling gegevens over een <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">Principal <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>. Id-providers (IdP) bieden identiteiten aan verificatie services. Verificatie is het verifiëren van de identiteit van een gebruiker. Autorisatie is de specificatie van toegangs rechten en bevoegdheden voor bronnen voor een bepaalde identiteit. Diverse Cognitive Services-aanbiedingen, waaronder op rollen gebaseerd toegangs beheer (RBAC). RBAC kan worden gebruikt om een aantal van de ceremonie bij het hand matig beheren van principals te vereenvoudigen. Zie [op rollen gebaseerd toegangs beheer voor Azure-resources](../role-based-access-control/overview.md)voor meer informatie.
 
-Zie <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">Verificatieverzoeken<span class="docon docon-navigate-external x-hidden-focus"></span></a>voor Azure Cognitive Services voor meer informatie over verificatie met abonnementssleutels, toegangstokens en Azure Active Directory (AAD).
+Zie <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">aanvragen verifiëren voor Azure Cognitive Services<span class="docon docon-navigate-external x-hidden-focus"></span></a>voor meer informatie over verificatie met abonnements sleutels, toegangs tokens en Azure Active Directory (Aad).
 
-## <a name="environment-variables-and-application-configuration"></a>Omgevingsvariabelen en toepassingsconfiguratie
+## <a name="environment-variables-and-application-configuration"></a>Omgevings variabelen en toepassings configuratie
 
-Omgevingsvariabelen zijn naamwaardeparen die zijn opgeslagen binnen een specifieke omgeving. Een veiliger alternatief voor het gebruik van hardcoded waarden voor gevoelige gegevens, is het gebruik van omgevingsvariabelen. Hardcoded waarden zijn onzeker en moeten worden vermeden.
+Omgevings variabelen zijn naam/waarde-paren, die zijn opgeslagen in een specifieke omgeving. Een veiligere alternatief voor het gebruik van hardcoded waarden voor gevoelige gegevens is het gebruik van omgevings variabelen. Hardcoded waarden zijn onveilig en moeten worden vermeden.
 
 > [!CAUTION]
-> Gebruik **geen** hardcoded waarden voor gevoelige gegevens, dit is een groot beveiligingslek.
+> Gebruik **geen** hardcoded waarden voor gevoelige gegevens, maar dit is een belang rijk beveiligings probleem.
 
 > [!NOTE]
-> Terwijl omgevingsvariabelen in platte tekst worden opgeslagen, worden ze geïsoleerd naar een omgeving. Als een omgeving in het gedrang komt, zijn dat ook de variabelen met de omgeving.
+> Hoewel omgevings variabelen worden opgeslagen als tekst zonder opmaak, zijn ze geïsoleerd voor een omgeving. Als er is geknoeid met een omgeving, is dat ook de variabelen van de omgeving.
 
-### <a name="set-environment-variable"></a>Omgevingsvariabele instellen
+### <a name="set-environment-variable"></a>Omgevings variabele instellen
 
-Als u omgevingsvariabelen wilt instellen, gebruikt u `ENVIRONMENT_VARIABLE_KEY` een van `value` de volgende opdrachten - waarbij de benoemde sleutel is en de waarde is die is opgeslagen in de omgevingsvariabele.
+Als u omgevings variabelen wilt instellen, gebruikt u een van de `ENVIRONMENT_VARIABLE_KEY` volgende opdrachten: waarbij de `value` de benoemde sleutel is en de waarde is die is opgeslagen in de omgevings variabele.
 
-# <a name="command-line"></a>[Opdrachtregel](#tab/command-line)
+# <a name="command-line"></a>[Opdracht regel](#tab/command-line)
 
-Een persistente omgevingsvariabele maken en toewijzen, gezien de waarde.
+Maak een permanente omgevings variabele en wijs deze toe, op basis van de waarde.
 
 ```CMD
 :: Assigns the env var to the value
 setx ENVIRONMENT_VARIABLE_KEY="value"
 ```
 
-Lees in een nieuw exemplaar van de **opdrachtprompt**de omgevingsvariabele.
+Lees de omgevings variabele in een nieuw exemplaar van de **opdracht prompt**.
 
 ```CMD
 :: Prints the env var value
 echo %ENVIRONMENT_VARIABLE_KEY%
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Een persistente omgevingsvariabele maken en toewijzen, gezien de waarde.
+Maak een permanente omgevings variabele en wijs deze toe, op basis van de waarde.
 
 ```powershell
 # Assigns the env var to the value
 [System.Environment]::SetEnvironmentVariable('ENVIRONMENT_VARIABLE_KEY', 'value', 'User')
 ```
 
-Lees in een nieuw exemplaar van de **Windows PowerShell**de omgevingsvariabele.
+Lees de omgevings variabele in een nieuw exemplaar van **Windows Power shell**.
 
 ```powershell
 # Prints the env var value
@@ -84,14 +84,14 @@ Lees in een nieuw exemplaar van de **Windows PowerShell**de omgevingsvariabele.
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-Een persistente omgevingsvariabele maken en toewijzen, gezien de waarde.
+Maak een permanente omgevings variabele en wijs deze toe, op basis van de waarde.
 
 ```Bash
 # Assigns the env var to the value
 echo export ENVIRONMENT_VARIABLE_KEY="value" >> /etc/environment && source /etc/environment
 ```
 
-In een nieuw exemplaar van de **Bash,** lees de omgevingsvariabele.
+In een nieuw exemplaar van de **bash**leest u de omgevings variabele.
 
 ```Bash
 # Prints the env var value
@@ -104,15 +104,15 @@ echo "${ENVIRONMENT_VARIABLE_KEY}"
 ---
 
 > [!TIP]
-> Nadat u een omgevingsvariabele hebt ingesteld, start u uw geïntegreerde ontwikkelomgeving (IDE) opnieuw op om ervoor te zorgen dat nieuw toegevoegde omgevingsvariabelen beschikbaar zijn.
+> Nadat u een omgevings variabele hebt ingesteld, start u de Integrated Development Environment (IDE) opnieuw om er zeker van te zijn dat nieuwe, toegevoegde omgevings variabelen beschikbaar zijn.
 
-### <a name="get-environment-variable"></a>Omgevingsvariabele krijgen
+### <a name="get-environment-variable"></a>Omgevings variabele ophalen
 
-Om een omgevingsvariabele te krijgen, moet deze worden gelezen in het geheugen. Neem, afhankelijk van de taal die u gebruikt, de volgende codefragmenten in overweging. Deze codefragmenten laten zien hoe u `ENVIRONMENT_VARIABLE_KEY` omgevingsvariabele `value`krijgen, gezien de variabele en deze toewijzen aan een variabele met de naam.
+Als u een omgevings variabele wilt ophalen, moet deze in het geheugen worden gelezen. Afhankelijk van de taal die u gebruikt, moet u rekening houden met de volgende code fragmenten. Deze code fragmenten laten zien hoe u de omgevings variabele kunt `ENVIRONMENT_VARIABLE_KEY` ophalen en toewijzen aan een variabele `value`met de naam.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
-Zie voor meer <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>informatie .
+<a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` Zie <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>voor meer informatie.
 
 ```csharp
 using static System.Environment;
@@ -131,7 +131,7 @@ class Program
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-Zie voor meer <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>informatie .
+<a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` Zie <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>voor meer informatie.
 
 ```cpp
 #include <stdlib.h>
@@ -146,7 +146,7 @@ int main()
 
 # <a name="java"></a>[Java](#tab/java)
 
-Zie voor meer <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank"> `System.getenv` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>informatie .
+<a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank"> `System.getenv` Zie <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>voor meer informatie.
 
 ```java
 import java.lang.*;
@@ -163,7 +163,7 @@ public class Program {
 
 # <a name="nodejs"></a>[Node.js](#tab/node-js)
 
-Zie voor meer <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank"> `process.env` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>informatie .
+<a href="https://nodejs.org/api/process.html#process_process_env" target="_blank"> `process.env` Zie <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>voor meer informatie.
 
 ```javascript
 // Get the named env var, and assign it to the value variable
@@ -173,7 +173,7 @@ const value =
 
 # <a name="python"></a>[Python](#tab/python)
 
-Zie voor meer <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank"> `os.environ` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>informatie .
+<a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank"> `os.environ` Zie <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>voor meer informatie.
 
 ```python
 import os
@@ -182,9 +182,9 @@ import os
 value = os.environ['ENVIRONMENT_VARIABLE_KEY']
 ```
 
-# <a name="objective-c"></a>[Doelstelling-C](#tab/objective-c)
+# <a name="objective-c"></a>[Objective-C](#tab/objective-c)
 
-Zie voor meer <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank"> `environment` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>informatie .
+<a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank"> `environment` Zie <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>voor meer informatie.
 
 ```objectivec
 // Get the named env var, and assign it to the value variable
@@ -196,5 +196,5 @@ NSString* value =
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Ontdek de verschillende [Cognitive Services](welcome.md)
-* Meer informatie over [virtual networks van Cognitive Services](cognitive-services-virtual-networks.md)
+* De verschillende [Cognitive Services](welcome.md) verkennen
+* Meer informatie over [Cognitive Services virtuele netwerken](cognitive-services-virtual-networks.md)

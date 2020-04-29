@@ -1,7 +1,7 @@
 ---
-title: App publiceren - LUIS
+title: App publiceren-LUIS
 titleSuffix: Azure Cognitive Services
-description: Wanneer u klaar bent met het bouwen en testen van uw actieve LUIS-app, maakt u deze beschikbaar voor uw clienttoepassing door deze te publiceren naar het eindpunt.
+description: Wanneer u klaar bent met het maken en testen van uw actieve LUIS-app, moet u deze beschikbaar maken voor uw client toepassing door deze te publiceren naar het eind punt.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,45 +12,45 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: c91a3ca73d70dd5fd2848bed0f43f14a817087d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80053438"
 ---
-# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Uw actieve, getrainde app publiceren naar een endpoint voor fasering of productie
+# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Uw actieve, getrainde app publiceren naar een staging-of productie-eind punt
 
-Wanneer u klaar bent met het bouwen, trainen en testen van uw actieve LUIS-app, maakt u deze beschikbaar voor uw clienttoepassing door deze te publiceren naar het eindpunt. 
+Wanneer u klaar bent met het bouwen, trainen en testen van uw actieve LUIS-app, moet u deze beschikbaar maken voor uw client toepassing door deze te publiceren naar het eind punt. 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="publishing"></a>Publiceren
 
-1. Als u wilt publiceren naar het eindpunt, selecteert u **Publiceren** in het bovenste, rechterdeelvenster. 
+1. Als u wilt publiceren naar het eind punt, selecteert u in het bovenste deel venster **publiceren** . 
 
-    ![Knop Publiceren in de bovenste, rechternavigatiebalk](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
+    ![De knop publiceren in de bovenste navigatie balk, rechts](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
-1. Selecteer uw instellingen voor het gepubliceerde voorspellingseindpunt en selecteer **Vervolgens Publiceren**.
+1. Selecteer uw instellingen voor het gepubliceerde Voorspellings eindpunt en selecteer vervolgens **publiceren**.
 
-    ![Selecteer publicatie-instellingen en selecteer vervolgens knop Publiceren](./media/luis-how-to-publish-app/publish-pop-up.png)
+    ![Selecteer publicatie-instellingen en selecteer vervolgens de knop publiceren](./media/luis-how-to-publish-app/publish-pop-up.png)
 
-### <a name="publishing-slots"></a>Publicatieslots
+### <a name="publishing-slots"></a>Publicatie sleuven
 
-Selecteer de juiste sleuf wanneer het pop-upvenster wordt weergegeven: 
+Selecteer de juiste sleuf wanneer het pop-upvenster wordt weer gegeven: 
 
 * Faseren
 * Productie 
 
-Door beide publicatieslots te gebruiken, u met deze twee verschillende versies van uw app beschikbaar zijn op de gepubliceerde eindpunten of dezelfde versie op twee verschillende eindpunten. 
+Door beide publicatie sleuven te gebruiken, kunt u op deze manier twee verschillende versies van uw app beschikbaar maken voor de gepubliceerde eind punten of dezelfde versie op twee verschillende eind punten. 
 
-### <a name="publishing-regions"></a>Publicatieregio's
+### <a name="publishing-regions"></a>Publicatie regio's
 
-De app wordt gepubliceerd in alle regio's die zijn gekoppeld aan de LUIS-voorspellingseindpuntbronnen die zijn toegevoegd in de LUIS-portal vanaf de pagina Azure Resources **beheren.** -> **[Azure Resources](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** 
+De app wordt gepubliceerd naar alle regio's die zijn gekoppeld aan de Luis-Voorspellings eindpunt resources die zijn toegevoegd in de Luis-Portal op de pagina**[Azure-resources](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** **beheren** -> . 
 
-Voor een app die op [www.luis.ai](https://www.luis.ai)is gemaakt en als u bijvoorbeeld een LUIS-bron maakt in twee regio's, **westus** en **eastus,** en deze als resources aan de app toevoegt, wordt de app in beide regio's gepubliceerd. Zie Regio's voor meer informatie over [LUIS-regio's](luis-reference-regions.md).
+Als u bijvoorbeeld een app die is gemaakt op [www.Luis.ai](https://www.luis.ai), een Luis-resource in twee regio's, **westelijke** en **Oost**-as maakt en deze aan de app toevoegt als resources, wordt de app in beide regio's gepubliceerd. Zie [regio's](luis-reference-regions.md)voor meer informatie over Luis regio's.
 
 > [!TIP]
-> Er zijn 3 authoring regio's. U moet een auteur maken in de regio waarop u wilt publiceren. Als u in alle regio's wilt publiceren, moet u uw ontwerpproces en het resulterende getrainde model in alle 3 ontwerpregio's beheren. 
+> Er zijn drie ontwerp regio's. U moet ontwerpen in de regio waar u naar wilt publiceren. Als u naar alle regio's wilt publiceren, moet u uw ontwerp proces en het resulterende getrainde model in alle drie de ontwerp regio's beheren. 
 
 
 ## <a name="configuring-publish-settings"></a>Publicatie-instellingen configureren
@@ -58,41 +58,41 @@ Voor een app die op [www.luis.ai](https://www.luis.ai)is gemaakt en als u bijvoo
 Nadat u de sleuf hebt geselecteerd, configureert u de publicatie-instellingen voor:
 
 * Sentimentanalyse
-* Alleen spellingcorrectie - v2-voorspellingseindpunt
-* Het priming van de toespraak 
+* Spelling correctie-v2 alleen Voorspellings eindpunt
+* Spraak gebeuren 
 
-Nadat u hebt gepubliceerd, zijn deze instellingen beschikbaar voor controle op de pagina **Publicatie-instellingen van** de sectie **Beheren.** U de instellingen bij elke publicatie wijzigen. Als u een publicatie annuleert, worden alle wijzigingen die u tijdens de publicatie hebt aangebracht, ook geannuleerd. 
+Nadat u hebt gepubliceerd, zijn deze instellingen beschikbaar voor controle op de pagina **publicatie-instellingen** van de sectie **beheren** . U kunt de instellingen wijzigen bij elke publicatie. Als u een publicatie annuleert, worden alle wijzigingen die u tijdens het publiceren hebt aangebracht, ook geannuleerd. 
 
 ### <a name="when-your-app-is-published"></a>Wanneer uw app wordt gepubliceerd
 
-Wanneer uw app is gepubliceerd, wordt boven aan de browser een melding voor succes weergegeven. De melding bevat ook een link naar de eindpunten. 
+Als uw app is gepubliceerd, wordt boven aan de browser een melding over een geslaagde poging weer gegeven. De melding bevat ook een koppeling naar de eind punten. 
 
-Als u de URL van het eindpunt nodig hebt, selecteert u de koppeling. U ook naar de URL's van het eindpunt gaan door **Beheren** in het bovenste menu te selecteren en vervolgens **Azure Resources** in het linkermenu te selecteren. 
+Als u de URL van het eind punt nodig hebt, selecteert u de koppeling. U kunt ook naar de eind punt-Url's gaan door **beheren** te selecteren in het bovenste menu en vervolgens **Azure-resources** in het linkermenu te selecteren. 
 
 ## <a name="sentiment-analysis"></a>Sentimentanalyse
 
 <a name="enable-sentiment-analysis"></a>
 
-Sentimentanalyse stelt LUIS in staat om te integreren met [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) om sentiment en key phrase analyse te bieden. 
+Met sentiment analyse kan LUIS worden geïntegreerd met [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) voor het leveren van sentiment-en sleutel woordgroepen analyse. 
 
-U hoeft geen Text Analytics-sleutel te verstrekken en er zijn geen factureringskosten voor deze service voor uw Azure-account. 
+U hoeft geen Text Analytics sleutel op te geven en er worden geen kosten in rekening gebracht voor deze service voor uw Azure-account. 
 
-Sentimentgegevens zijn een score tussen 1 en 0 die het positieve (dichter bij 1) of negatieve (dichter bij 0) sentiment van de gegevens aangeven. Het sentiment `positive`label `neutral`van `negative` , en is per ondersteunde cultuur. Momenteel ondersteunt alleen Engels sentimentlabels. 
+Sentiment-gegevens is een score tussen 1 en 0 die de positieve waarde (dichter bij 1) of negatief (dichter bij 0) sentiment van de gegevens aangeeft. Het sentiment-label `positive`van `neutral`, en `negative` is per ondersteunde cultuur. Op dit moment worden alleen sentiment-labels in het Engels ondersteund. 
 
-Zie [Sentimentanalyse](luis-concept-data-extraction.md#sentiment-analysis) voor meer informatie over de JSON-eindpuntrespons met sentimentanalyse
+Zie [sentiment Analysis](luis-concept-data-extraction.md#sentiment-analysis) (Engelstalig) voor meer informatie over het JSON-eindpunt antwoord met sentiment analyse.
 
-## <a name="spelling-correction"></a>Spellingcorrectie
+## <a name="spelling-correction"></a>Spelling correctie
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
-Correcties op de spelling worden uitgevoerd vóór de luis-gebruiker utterance voorspelling. U eventuele wijzigingen in de oorspronkelijke utterance, inclusief spelling, in het antwoord zien.
+Correcties voor de spelling worden uitgevoerd voordat de LUIS-gebruiker utterance voor spelling. U kunt alle wijzigingen in de oorspronkelijke utterance zien, inclusief de spelling, in het antwoord.
 
-## <a name="speech-priming"></a>Het priming van de toespraak
+## <a name="speech-priming"></a>Spraak gebeuren
 
-Spraakpriming is het proces van het verzenden van het LUIS-model naar spraakservices voorafgaand aan de conversie van tekst naar spraak. Hierdoor kan de spraakservice spraakconversie nauwkeuriger voor uw model bieden. Dit maakt bot spraak en LUIS verzoeken en antwoorden in een gesprek door het maken van een spraakoproep en het krijgen van een LUIS reactie. Het biedt minder latentie in het algemeen.
+Speech gebeuren is het proces van het gebruik van het verzenden van het LUIS-model naar spraak Services voordat tekst naar spraak wordt geconverteerd. Hiermee kan de spraak service spraak conversie nauw keuriger maken voor uw model. Op die manier kunnen bot spraak-en LUIS-aanvragen en-antwoorden in één aanroep worden gedaan door één spraak aanroep te maken en een LUIS-antwoord terug te krijgen. Het biedt minder latentie in het algemeen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Sleutels beheren](./luis-how-to-azure-subscription.md) om sleutels toe te voegen aan Azure-abonnementssleutel voor LUIS en hoe u de Bing Spell Check-toets instelt en alle intenties in de resultaten opneemt.
-* Zie [Uw app trainen en testen](luis-interactive-test.md) voor instructies over het testen van uw gepubliceerde app in de testconsole.
+* Zie [sleutels beheren](./luis-how-to-azure-subscription.md) om sleutels toe te voegen aan de sleutel van een Azure-abonnement op Luis en hoe u de Bing spellingcontrole sleutel instelt en alle intenties in resultaten opneemt.
+* Zie [uw app trainen en testen](luis-interactive-test.md) voor instructies over het testen van uw gepubliceerde app in de test console.
 

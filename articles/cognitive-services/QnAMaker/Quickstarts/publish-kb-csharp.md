@@ -1,20 +1,20 @@
 ---
-title: 'Quickstart: Publiceer kennisbank, REST, C# - QnA Maker'
-description: Deze C# REST-based quickstart publiceert uw kennisbank en creëert een eindpunt dat kan worden aangeroepen in uw applicatie of chatbot.
+title: 'Snelstartgids: Knowledge Base publiceren, REST, C#-QnA Maker'
+description: Met deze op C# REST gebaseerde Snelstartgids publiceert u uw Knowledge Base en maakt u een eind punt dat kan worden aangeroepen in uw toepassing of chat-bot.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 0a2f64795d82928e33a10c7e9d162f2333cdf7bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78851705"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Snelstart: Een knowledge base publiceren in QnA Maker met behulp van C#
 
-In deze REST-quickstart wordt beschreven hoe u programmatisch uw KB (knowledge base ) kunt publiceren. Publishing pusht de nieuwste versie van de kennisbank naar een speciale Azure Cognitive Search-index en creëert een eindpunt dat kan worden aangeroepen in uw toepassing of chatbot.
+In deze REST-quickstart wordt beschreven hoe u programmatisch uw KB (knowledge base ) kunt publiceren. Publicatie duwt de nieuwste versie van de Knowledge Base naar een speciale Azure Cognitive Search-index en maakt een eind punt dat kan worden aangeroepen in uw toepassing of chat-bot.
 
 In deze snelstart worden QnA Maker-API's aangeroepen:
 * [Publiceren](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish): voor deze API zijn er geen gegevens in de hoofdtekst van de aanvraag nodig.
@@ -22,20 +22,20 @@ In deze snelstart worden QnA Maker-API's aangeroepen:
 ## <a name="prerequisites"></a>Vereisten
 
 * De meest recente [**Visual Studio Community edition**](https://www.visualstudio.com/downloads/).
-* U moet een [QnA Maker-service](../How-To/set-up-qnamaker-service-azure.md)hebben. Als u uw sleutel en eindpunt (inclusief de naam van de bron) wilt ophalen, selecteert u **Quickstart** voor uw resource in de Azure-portal.
-* Kb-id (QnA Maker Knowledge Base) `kbid` gevonden in de URL in de parameter querytekenreeks zoals hieronder weergegeven.
+* U moet een [QnA Maker-service](../How-To/set-up-qnamaker-service-azure.md)hebben. Als u de sleutel en het eind punt (inclusief de resource naam) wilt ophalen, selecteert u **Quick** start voor uw resource in het Azure Portal.
+* QnA Maker Knowledge Base-ID (KB) gevonden in de URL in `kbid` de query teken reeks parameter, zoals hieronder wordt weer gegeven.
 
     ![Id voor knowledge base in QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
     Als u nog geen knowledge base hebt, kunt u een voorbeeldexemplaar maken om te gebruiken met deze snelstart: [Een nieuwe knowledge base maken](create-new-kb-csharp.md).
 
 > [!NOTE]
-> Het volledige oplossingsbestand(en) is beschikbaar in de [ **Azure-Samples/cognitive-services-qnamaker-csharp** GitHub repository.](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/publish-knowledge-base)
+> De volledige oplossings bestanden zijn beschikbaar via de [ **Azure-samples/cognitieve-Services-qnamaker-csharp github-** opslag plaats](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/publish-knowledge-base).
 
 ## <a name="create-knowledge-base-project"></a>Een project met knowledge base maken
 
-1. Open Visual Studio 2019 Community editie.
-1. Maak een nieuw **console-app-project (.NET Core)** en geef een naam aan het project `QnaMakerQuickstart`. Accepteer de standaardwaarden voor de overige instellingen.
+1. Open Visual Studio 2019 Community Edition.
+1. Maak een nieuw **console-app (.net core)-** project en noem `QnaMakerQuickstart`het project. Accepteer de standaardwaarden voor de overige instellingen.
 
 ## <a name="add-required-dependencies"></a>Vereiste afhankelijkheden toevoegen
 
@@ -45,11 +45,11 @@ Boven in Program.cs vervangt u de enige using-instructie door de volgende regels
 
 ## <a name="add-required-constants"></a>Vereiste constanten toevoegen
 
-Voeg in de klasse **Programma** de vereiste constanten toe om toegang te krijgen tot QnA Maker.
+Voeg in de klasse **Program** de vereiste constanten toe om toegang te krijgen tot QnA Maker.
 
 [!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/publish-knowledge-base/QnAMakerPublishQuickstart/Program.cs?range=8-34 "Add the required constants")]
 
-## <a name="add-the-main-method-to-publish-the-knowledge-base"></a>De hoofdmethode toevoegen om de kennisbank te publiceren
+## <a name="add-the-main-method-to-publish-the-knowledge-base"></a>De methode Main voor het publiceren van de Knowledge Base toevoegen
 
 Voeg na de vereiste constanten de volgende code toe, waarmee een HTTP-aanvraag naar de QnA Maker-API wordt gedaan voor het publiceren van een knowledge base en het volgende antwoord wordt ontvangen:
 

@@ -1,7 +1,7 @@
 ---
-title: Patronen voegen nauwkeurigheid toe - LUIS
+title: Nauw keurigheid van patronen toevoegen-LUIS
 titleSuffix: Azure Cognitive Services
-description: Voeg patroonsjablonen toe om de nauwkeurigheid van de voorspelling in LUIS-toepassingen (Language Understanding) te verbeteren.
+description: Voeg patroon sjablonen toe om de nauw keurigheid van de voor spellingen te verbeteren in Language Understanding-toepassingen (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,66 +12,66 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 21afb12bf2464218119ebf52ebd980745e3d731d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76311713"
 ---
-# <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Patronen toevoegen om de nauwkeurigheid van de voorspelling te verbeteren
-Nadat een LUIS-app eindpuntuitingen heeft ontvangen, gebruikt u een [patroon](luis-concept-patterns.md) om de nauwkeurigheid van de voorspelling te verbeteren voor uitingen die een patroon in woordvolgorde en woordkeuze weergeven. Patronen gebruiken specifieke [syntaxis](luis-concept-patterns.md#pattern-syntax) om de locatie aan te geven van: [entiteiten,](luis-concept-entity-types.md) [entiteitrollen](luis-concept-roles.md)en optionele tekst.
+# <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Patronen toevoegen om de nauw keurigheid van de voor spelling te verbeteren
+Nadat een LUIS-app eind punt uitingen ontvangt, gebruikt u een [patroon](luis-concept-patterns.md) om de nauw keurigheid van de voor spelling te verbeteren voor uitingen die een patroon onthult in de woord volgorde en woord keuze. Patronen gebruiken specifieke [syntaxis](luis-concept-patterns.md#pattern-syntax) om de locatie van: [entiteiten](luis-concept-entity-types.md), entiteits [rollen](luis-concept-roles.md)en optionele tekst aan te geven.
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 > [!CAUTION]
-> Patronen omvatten alleen machine-geleerde entiteit ouders, niet subcomponenten.
+> Patronen bestaan alleen uit door machines geleerde entiteits-Parents, geen subonderdelen.
 
-## <a name="adding-example-utterances-as-pattern"></a>Voorbeelduitingen toevoegen als patroon
+## <a name="adding-example-utterances-as-pattern"></a>Voor beeld van uitingen als patroon toevoegen
 
-Als u een patroon voor een entiteit wilt toevoegen, u het patroon op de pagina Intent-details het _gemakkelijkst_ maken. Dit zorgt ervoor dat uw syntaxis overeenkomt met de voorbeeldutterance.
+Als u een patroon wilt toevoegen voor een entiteit, is de _eenvoudigste_ manier om het patroon te maken op de pagina Details van intentie. Dit zorgt ervoor dat uw syntaxis overeenkomt met het voor beeld utterance.
 
-1. Selecteer de app in de [preview LUIS-portal](https://preview.luis.ai)op de pagina **Mijn apps.**
-1. Selecteer op de lijst **Intents** de intentienaam van de voorbeeldutterance waaruit u een sjabloonutterance wilt maken.
-1. Selecteer op de pagina Intentiedetails de rij voor het voorbeeldutterance dat u als sjabloonutterance wilt gebruiken en selecteer **+ Toevoegen als patroon** op de contextwerkbalk.
-
-    > [!div class="mx-imgBorder"]
-    > ![Schermafbeelding van het selecteren van voorbeeldutterance als een sjabloonpatroon op de pagina Intent-details.](./media/luis-how-to-model-intent-pattern/add-example-utterances-as-pattern-template-utterance-from-intent-detail-page.png)
-
-1. Selecteer **Gereed** op de pagina **Patronen bevestigen** in het pop-upvak. U hoeft de subcomponenten, beperkingen of beschrijvingen van de entiteiten niet te definiëren. U hoeft alleen de door de machine geleerde entiteit op te sommen.
+1. Selecteer de app op de pagina **mijn apps** in de [Preview-portal van Luis](https://preview.luis.ai).
+1. Selecteer op de pagina lijst met **doel** stellingen de doel naam van het voor beeld utterance u een sjabloon utterance wilt maken.
+1. Selecteer op de pagina Details van intentie de rij voor het voor beeld-utterance dat u wilt gebruiken als de sjabloon utterance en selecteer **+ toevoegen als patroon** in de context werkbalk.
 
     > [!div class="mx-imgBorder"]
-    > ![Schermafbeelding van het bevestigen van voorbeeldutterance als een sjabloonpatroon op de pagina Intent-details.](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
+    > ![Scherm opname van het selecteren van voor beeld-utterance als sjabloon patroon op de detail pagina Details.](./media/luis-how-to-model-intent-pattern/add-example-utterances-as-pattern-template-utterance-from-intent-detail-page.png)
 
-1. Als u de sjabloon, zoals het selecteren van tekst `[]` als optioneel, met de (vierkante) haakjes moet bewerken, moet u deze bewerking maken vanaf de pagina **Patronen.**
-
-1. Selecteer in de navigatiebalk **Trainen** om de app te trainen met het nieuwe patroon.
-
-## <a name="add-template-utterance-using-correct-syntax"></a>Sjabloonutterance toevoegen met behulp van de juiste syntaxis
-
-1. Open uw app door de naam ervan te selecteren op de pagina **Mijn apps** en selecteer **Vervolgens Patronen** in het linkerdeelvenster onder **App-prestaties verbeteren**.
+1. Selecteer in het pop-upvenster **gereed** op de pagina **patronen bevestigen** . U hoeft de onderdelen, beperkingen of descriptors van de entiteiten niet te definiëren. U hoeft alleen de door de machine geleerde entiteit weer te geven.
 
     > [!div class="mx-imgBorder"]
-    > ![Schermafbeelding van de lijst met patronen](./media/luis-how-to-model-intent-pattern/patterns-1.png)
+    > ![Scherm opname van het bevestigende voor beeld-utterance als sjabloon patroon op de detail pagina van het doel.](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
+
+1. Als u de sjabloon moet bewerken, zoals het selecteren van tekst als optioneel, met behulp van de `[]` vier Kante haakjes, moet u deze bewerking op de pagina **patronen** maken.
+
+1. Selecteer in de navigatie balk **Train** om de app te trainen met het nieuwe patroon.
+
+## <a name="add-template-utterance-using-correct-syntax"></a>Sjabloon utterance toevoegen met de juiste syntaxis
+
+1. Open uw app door de naam ervan te selecteren op **mijn apps** pagina en vervolgens **patronen** te selecteren in het linkerdeel venster onder **app-prestaties verbeteren**.
+
+    > [!div class="mx-imgBorder"]
+    > ![Scherm afbeelding van de lijst patronen](./media/luis-how-to-model-intent-pattern/patterns-1.png)
 
 1. Selecteer de juiste intentie voor het patroon.
 
-1. Typ in het tekstvak van de sjabloon de sjabloonutterance en selecteer Enter. Wanneer u de entiteitsnaam wilt invoeren, gebruikt u de syntaxis van de juiste patroonentiteit. Begin de syntaxis van de entiteit met `{`. De lijst met entiteiten wordt weergegeven. Selecteer de juiste entiteit.
+1. Typ in het tekstvak sjabloon de sjabloon utterance en selecteer ENTER. Wanneer u de naam van de entiteit wilt opgeven, gebruikt u de juiste syntaxis voor de patroon entiteit. Start de entiteits syntaxis `{`met. De lijst met entiteiten wordt weer gegeven. Selecteer de juiste entiteit.
 
     > [!div class="mx-imgBorder"]
-    > ![Schermafbeelding van entiteit voor patroon](./media/luis-how-to-model-intent-pattern/patterns-3.png)
+    > ![Scherm afbeelding van de entiteit voor het patroon](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    Als uw entiteit een [rol](luis-concept-roles.md)bevat, geeft `:`u de rol aan `{Location:Origin}`met één dubbele punt, naar de naam van de entiteit, zoals . De lijst met rollen voor de entiteiten wordt weergegeven in een lijst. Selecteer de rol en selecteer Enter.
-
-    > [!div class="mx-imgBorder"]
-    > ![Schermafbeelding van entiteit met rol](./media/luis-how-to-model-intent-pattern/patterns-4.png)
-
-    Nadat u de juiste entiteit hebt geselecteerd, beëindigt u het invoeren van het patroon en selecteert u Enter. Wanneer u klaar bent met het invoeren van patronen, [traint u](luis-how-to-train.md) uw app.
+    Als uw entiteit een [rol](luis-concept-roles.md)bevat, geeft u de rol op met één dubbele `:`punt, achter de naam van de entiteit `{Location:Origin}`, zoals. De lijst met rollen voor de entiteiten wordt weer gegeven in een lijst. Selecteer de rol en selecteer vervolgens ENTER.
 
     > [!div class="mx-imgBorder"]
-    > ![Schermafbeelding van het ingevoerde patroon met beide typen entiteiten](./media/luis-how-to-model-intent-pattern/patterns-5.png)
+    > ![Scherm opname van entiteit met rol](./media/luis-how-to-model-intent-pattern/patterns-4.png)
 
-## <a name="train-your-app-after-changing-model-with-patterns"></a>Uw app trainen nadat u het model met patronen hebt gewijzigd
-Nadat u een patroon hebt toegevoegd, bewerkt, verwijderd of opnieuw hebt toewijzen, [traint](luis-how-to-train.md) en [publiceert](luis-how-to-publish-app.md) u uw app om uw wijzigingen te laten beïnvloeden op eindpuntquery's.
+    Nadat u de juiste entiteit hebt geselecteerd, voltooit u de invoer van het patroon en selecteert u vervolgens ENTER. Wanneer u klaar bent met het invoeren van patronen, [traint](luis-how-to-train.md) u uw app.
+
+    > [!div class="mx-imgBorder"]
+    > ![Scherm opname van het ingevoerde patroon met beide typen entiteiten](./media/luis-how-to-model-intent-pattern/patterns-5.png)
+
+## <a name="train-your-app-after-changing-model-with-patterns"></a>Uw app trainen na het wijzigen van het model met patronen
+Nadat u een patroon hebt toegevoegd, bewerkt, verwijderd of opnieuw toewijst, [traint](luis-how-to-train.md) u uw app en [publiceert](luis-how-to-publish-app.md) u deze voor uw wijzigingen om eindpunt query's te beïnvloeden.
 
 <a name="search-patterns"></a>
 <a name="edit-a-pattern"></a>
@@ -84,22 +84,22 @@ Nadat u een patroon hebt toegevoegd, bewerkt, verwijderd of opnieuw hebt toewijz
 <a name="remove-entity-or-intent-filter"></a>
 <a name="add-pattern-from-existing-utterance-on-intent-or-entity-page"></a>
 
-## <a name="use-contextual-toolbar"></a>Contextuele werkbalk gebruiken
+## <a name="use-contextual-toolbar"></a>Contextuele werk balk gebruiken
 
-Op de contextuele werkbalk boven de lijst met patronen u:
+Met de contextuele werk balk boven de lijst met patronen kunt u het volgende doen:
 
-* Zoeken naar patronen
+* Patronen zoeken
 * Een patroon bewerken
-* Afzonderlijk patroon opnieuw toewijzen aan verschillende intenties
-* Verschillende patronen opnieuw toewijzen aan verschillende intenties
-* Verwijder-een-enkel-patroon
+* Afzonderlijk patroon toewijzen aan ander doel
+* Verschillende patronen opnieuw toewijzen aan verschillende doel stellingen
+* Delete-a-enkel patroon
 * Verschillende patronen verwijderen
-* Lijst met filterpatroon per entiteit
-* Lijst-op-intentie filterenpatroon
-* Entiteit- of intentiefilter verwijderen
-* Patroon toevoegen van bestaande utterance on intent of entiteitspagina
+* Filter patroon lijst op entiteit
+* Filter-pattern-list-by-intentie
+* Entiteit of intentie filter verwijderen
+* Patroon toevoegen vanuit bestaande utterance op de pagina intentie of entiteit
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Leer hoe je [een patroon maken](luis-tutorial-pattern.md) met een patroon.any en rollen met een zelfstudie.
-* Meer informatie over het [trainen van](luis-how-to-train.md) uw app.
+* Meer informatie over het [bouwen van een patroon](luis-tutorial-pattern.md) met een patroon. alle en rollen met een zelf studie.
+* Meer informatie over het [trainen](luis-how-to-train.md) van uw app.

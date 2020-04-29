@@ -1,7 +1,7 @@
 ---
-title: Uw gegevens exporteren of verwijderen - Custom Vision Service
+title: Uw gegevens Custom Vision Service exporteren of verwijderen
 titleSuffix: Azure Cognitive Services
-description: U behoudt de volledige controle over uw gegevens. In dit artikel wordt uitgelegd hoe u uw gegevens bekijken, exporteren of verwijderen in de Aangepaste Vision-service.
+description: U behoudt de volledige controle over uw gegevens. In dit artikel wordt uitgelegd hoe u uw gegevens in de Custom Vision Service kunt weer geven, exporteren of verwijderen.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,27 +11,27 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: 82d9f4508db376ebbe69ef772c15fb732391a31d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73718966"
 ---
-# <a name="export-or-delete-user-data-in-custom-vision"></a>Gebruikersgegevens exporteren of verwijderen in Aangepast zicht
+# <a name="export-or-delete-user-data-in-custom-vision"></a>Gebruikers gegevens exporteren of verwijderen in Custom Vision
 
-Custom Vision verzamelt gebruikersgegevens om de service te bedienen, maar klanten hebben volledige controle over het bekijken, exporteren en verwijderen van hun gegevens met behulp van de Custom Vision [Training API's.](https://go.microsoft.com/fwlink/?linkid=865446)
+Custom Vision verzamelt gebruikers gegevens om de service te kunnen gebruiken, maar klanten hebben volledige controle over het weer geven, exporteren en verwijderen van hun gegevens met behulp van de Custom Vision [training-api's](https://go.microsoft.com/fwlink/?linkid=865446).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-Zie de volgende tabel voor meer informatie over het exporteren en verwijderen van gebruikersgegevens in Aangepast zicht.
+Zie de volgende tabel voor meer informatie over het exporteren en verwijderen van gebruikers gegevens in Custom Vision.
 
-| Gegevens | Exportbewerking | Bewerking verwijderen |
+| Gegevens | Export bewerking | Verwijder bewerking |
 | ---- | ---------------- | ---------------- |
-| Accountgegevens (abonnementssleutels) | [GetAccountInfo](https://go.microsoft.com/fwlink/?linkid=865446) | Verwijderen met Azure-portal (Azure-abonnementen). Of gebruik de knop Uw account verwijderen op CustomVision.ai instellingenpagina (Microsoft-accountabonnementen) | 
-| Iteratiedetails | [GetIteratie](https://go.microsoft.com/fwlink/?linkid=865446) | [Deleteiteration](https://go.microsoft.com/fwlink/?linkid=865446) |
-| Details iteratieprestaties | [GetiterationPerformance](https://go.microsoft.com/fwlink/?linkid=865446) | [Deleteiteration](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Lijst met iteraties | [GetIterations](https://go.microsoft.com/fwlink/?linkid=865446) | [Deleteiteration](https://go.microsoft.com/fwlink/?linkid=865446) |
-| Projecten en projectdetails | [GetProject](https://go.microsoft.com/fwlink/?linkid=865446) en [GetProjects](https://go.microsoft.com/fwlink/?linkid=865446) | [Project verwijderen](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Afbeeldingstags | [GetTag](https://go.microsoft.com/fwlink/?linkid=865446) en [GetTags](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteTag](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Installatiekopieën | [GetTaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (biedt uri voor het downloaden van afbeeldingen) en [GetUntaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (biedt uri voor het downloaden van afbeeldingen) | [Afbeeldingen verwijderen](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Geëxporteerde modellen | [GetExport](https://go.microsoft.com/fwlink/?linkid=865446) | Verwijderd bij het verwijderen van het account |
+| Account gegevens (abonnements sleutels) | [GetAccountInfo](https://go.microsoft.com/fwlink/?linkid=865446) | Verwijderen met Azure Portal (Azure-abonnementen). Of gebruik de knop uw account verwijderen op de pagina met CustomVision.ai-instellingen (micro soft-account abonnementen) | 
+| Details van herhaling | [GetIteration](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) |
+| Details van herhalings prestaties | [GetIterationPerformance](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Lijst met herhalingen | [GetIterations](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) |
+| Projecten en project Details | [GetProject](https://go.microsoft.com/fwlink/?linkid=865446) en [GetProjects](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteProject](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Afbeeldings Tags | [Gettag](https://go.microsoft.com/fwlink/?linkid=865446) en [GetTags](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteTag](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Installatiekopieën | [GetTaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (biedt een URI voor het downloaden van afbeeldingen) en [GetUntaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (biedt URI voor het downloaden van afbeeldingen) | [DeleteImages](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Geëxporteerde modellen | [GetExports](https://go.microsoft.com/fwlink/?linkid=865446) | Verwijderd bij het verwijderen van het account |

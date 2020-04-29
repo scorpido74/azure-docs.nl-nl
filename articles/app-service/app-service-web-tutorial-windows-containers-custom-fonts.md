@@ -1,14 +1,14 @@
 ---
-title: 'Zelfstudie: Verouderde app met container (Voorbeeld)'
+title: 'Zelf studie: verouderde app met container (preview-versie)'
 description: Meer informatie over het migreren van een aangepaste Windows-container naar Azure App Service en het implementeren van aangepaste software in de container.
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 74cb88bc1ace87155a35163ca8f9d3d6c4242ae0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80046623"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Een ASP.NET-app migreren naar Azure App Service met behulp van een Windows-container (preview)
@@ -24,9 +24,9 @@ Vereisten om deze zelfstudie te voltooien:
 - <a href="https://hub.docker.com/" target="_blank">Registreren voor een Docker Hub-account</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker voor Windows installeren</a>.
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Docker instellen voor het uitvoeren van Windows-containers</a>.
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">Installeer Visual Studio 2019</a> met de **ASP.NET- en webontwikkeling-** en **Azure-ontwikkelingsworkloads.** Als u Visual Studio 2019 al hebt geïnstalleerd:
-    - Installeer de nieuwste updates in Visual Studio door op > **Help-controle op updates**te klikken. **Help**
-    - Voeg de workloads toe in Visual Studio door op **Extra** > **Gereedschap en onderdelen te**klikken.
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">Installeer Visual Studio 2019</a> met de **ASP.net-en Web Development** -en **Azure-ontwikkel** werkbelastingen. Als u Visual Studio 2019 al hebt geïnstalleerd:
+    - Installeer de meest recente updates in Visual Studio door te klikken op **Help** > **controleren op updates**.
+    - Voeg de workloads toe in Visual Studio door te klikken op **extra** > **hulpprogram ma's en functies**.
 
 ## <a name="set-up-the-app-locally"></a>De app lokaal instellen
 
@@ -61,7 +61,7 @@ Klik in Solution Explorer met de rechtermuisknop op het project **CustomFontSamp
 
 ![Het dialoogvenster Nieuw ASP.NET-project](media/app-service-web-tutorial-windows-containers-custom-fonts/enable-container-orchestration.png)
 
-Selecteer **Docker Compose** > **OK**.
+Selecteer**OK** **docker-opstellen** > .
 
 Uw project is nu ingesteld om te worden uitgevoerd in een Windows-container. Er wordt een _Dockerfile_ toegevoegd aan het project **CustomFontSample**, en er wordt een **docker-compose**-project toegevoegd aan de oplossing. 
 
@@ -82,7 +82,7 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 U kunt _InstallFont.ps1_ vinden in het project **CustomFontSample**. Het is een eenvoudig script waarmee het lettertype wordt geïnstalleerd. U vindt een complexere versie van het script in het [Script Center](https://gallery.technet.microsoft.com/scriptcenter/fb742f92-e594-4d0c-8b79-27564c575133).
 
 > [!NOTE]
-> Als u de Windows-container lokaal wilt testen, moet u ervoor zorgen dat Docker is gestart op uw lokale machine.
+> Als u de Windows-container lokaal wilt testen, controleert u of docker is gestart op de lokale computer.
 >
 
 ## <a name="publish-to-azure-container-registry"></a>Publiceren naar Azure Container Registry
@@ -97,7 +97,7 @@ Klik in Solution Explorer met de rechtermuisknop op het project **CustomFontSamp
 
 ### <a name="create-registry-and-publish"></a>Register maken en publiceren
 
-Selecteer **containerregister** > **Maken van nieuw Azure Container Registry** > **Publish**in de wizard Publiceren.
+Selecteer in de wizard publiceren **container Registry** > **nieuwe maken Azure container Registry** > **publiceren**.
 
 ![Het dialoogvenster Nieuw ASP.NET-project](media/app-service-web-tutorial-windows-containers-custom-fonts/create-registry.png)
 
@@ -114,8 +114,8 @@ Configureer het nieuwe containerregister op basis van de voorgestelde waarden in
 | Instelling  | Voorgestelde waarde | Voor meer informatie |
 | ----------------- | ------------ | ----|
 |**DNS-voorvoegsel**| Behoud de gegenereerde registernaam of wijzig deze in een andere unieke naam. |  |
-|**Resourcegroep**| Klik op **New** (nieuw), typ **myResourceGroup** en klik op **OK**. |  |
-|**Sku**| Basic | [Prijscategorieën](https://azure.microsoft.com/pricing/details/container-registry/)|
+|**Resource groep**| Klik op **New** (nieuw), typ **myResourceGroup** en klik op **OK**. |  |
+|**SKU**| Basic | [Prijscategorieën](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**Registerlocatie**| Europa -west | |
 
 ![Azure Container Registry configureren](./media/app-service-web-tutorial-windows-containers-custom-fonts/configure-registry.png)
@@ -128,34 +128,34 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="create-a-web-app"></a>Een webtoepassing maken
 
-Selecteer in het linkermenu > De optie Een > **bronweb-web-app****voor containers** **maken**.
+Selecteer in het menu links de optie **een resource** > maken**Web** > **Web App for containers**.
 
-### <a name="configure-app-basics"></a>Basisbeginselen van apps configureren
+### <a name="configure-app-basics"></a>Basis beginselen van apps configureren
 
-Configureer de instellingen op het tabblad **Basisbeginselen** volgens de volgende tabel en klik op **Volgende: Docker**.
+Configureer op het tabblad **basis beginselen** de instellingen volgens de volgende tabel en klik vervolgens op **volgende: docker**.
 
 | Instelling  | Voorgestelde waarde | Voor meer informatie |
 | ----------------- | ------------ | ----|
 |**Abonnement**| Controleer of het juiste abonnement is geselecteerd. |  |
-|**Resourcegroep**| Selecteer **Nieuw maken,** typ **myResourceGroup**en klik op **OK**. |  |
+|**Resource groep**| Selecteer **nieuwe maken**, typ **myResourceGroup**en klik op **OK**. |  |
 |**Naam**| Typ een unieke naam. | De URL van de web-app is `http://<app-name>.azurewebsites.net`, waarbij `<app-name>` de naam van uw app is. |
-|**Publiceren**| Dockercontainer | |
+|**Publiceren**| Docker-container | |
 |**Besturingssysteem**| Windows | |
 |**Regio**| Europa -west | |
-|**Windows-abonnement**| Selecteer **Nieuw maken,** typ **myAppServicePlan**en klik op **OK**. | |
+|**Windows-abonnement**| Selecteer **nieuwe maken**, typ **myAppServicePlan**en klik op **OK**. | |
 
-Het tabblad **Basismoet** er als volgt uitzien:
+Het tabblad **basis beginselen** moet er als volgt uitzien:
 
 ![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
 
 ### <a name="configure-windows-container"></a>Windows-container configureren
 
-Configureer op het tabblad **Docker** uw aangepaste Windows-container zoals in de volgende tabel wordt weergegeven en selecteer **Controleren + maken**.
+Configureer op het tabblad **docker** de aangepaste Windows-container, zoals wordt weer gegeven in de volgende tabel, en selecteer vervolgens **controleren + maken**.
 
 | Instelling  | Voorgestelde waarde |
 | ----------------- | ------------ |
-|**Bron van installatiekopie**| Azure-containerregister |
-|**Register**| Selecteer [het register dat u eerder hebt gemaakt.](#publish-to-azure-container-registry) |
+|**Bron van installatiekopie**| Azure-container register |
+|**Registersubsleutel**| Selecteer [het REGI ster dat u eerder hebt gemaakt](#publish-to-azure-container-registry). |
 |**Installatiekopie**| customfontsample |
 |**Tag**| meest recente |
 
@@ -181,11 +181,11 @@ Wacht een paar minuten en probeer het opnieuw, totdat u de startpagina krijgt me
 
 ![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
-**Gefeliciteerd!** U hebt een ASP.NET toepassing gemigreerd naar Azure App Service in een Windows-container.
+**Voltooid!** U hebt een ASP.NET toepassing gemigreerd naar Azure App Service in een Windows-container.
 
 ## <a name="see-container-start-up-logs"></a>Logboeken voor opstarten van containers bekijken
 
-Het kan enige tijd duren voordat de Windows-container is geladen. Als u de voortgang wilt zien, navigeert u naar de volgende URL door * \<app-naam>* te vervangen door de naam van uw app.
+Het kan enige tijd duren voordat de Windows-container is geladen. Als u de voortgang wilt bekijken, gaat u naar de volgende URL door de * \<app-naam* te vervangen door de naam van uw app>.
 ```
 https://<app-name>.scm.azurewebsites.net/api/logstream
 ```

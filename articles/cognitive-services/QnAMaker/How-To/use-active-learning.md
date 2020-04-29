@@ -1,50 +1,50 @@
 ---
-title: Verbeter kennisbank - QnA Maker
-description: Verbeter de kwaliteit van je kennisbank met actief leren. Bestaande vragen controleren, accepteren of weigeren, toevoegen zonder bestaande vragen te verwijderen of te wijzigen.
+title: Knowledge Base-QnA Maker verbeteren
+description: Verbeter de kwaliteit van uw kennis basis met actief onderwijs. Beoordeling, accepteren of afwijzen, toevoegen zonder bestaande vragen te verwijderen of te wijzigen.
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 33b3c547b0aea9a1e235bf8a05d01aa16b468a71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80071131"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Actief leren gebruiken om uw Knowledge Base te verbeteren
 
-[Met actief leren](../Concepts/active-learning-suggestions.md) u de kwaliteit van uw kennisbasis verbeteren door alternatieve vragen voor te stellen. Gebruikersinzendingen worden in aanmerking genomen en worden weergegeven als suggesties in de lijst met alternatieve vragen. U hebt de flexibiliteit om deze suggesties als alternatieve vragen toe te voegen of ze af te wijzen.
+Met [actief leren](../Concepts/active-learning-suggestions.md) kunt u de kwaliteit van uw kennis basis verbeteren door alternatieve vragen te stellen. Gebruikers-inzendingen worden in aanmerking genomen en worden als suggesties weer gegeven in de lijst met alternatieve vragen. U hebt de flexibiliteit om deze suggesties als alternatieve vragen toe te voegen of af te wijzen.
 
-Je kennisbank verandert niet automatisch. Om elke wijziging van kracht te laten worden, moet u de suggesties accepteren. Deze suggesties voegen vragen toe, maar wijzigen of verwijderen bestaande vragen niet.
+Uw kennis database wordt niet automatisch gewijzigd. Als u een wijziging wilt door voeren, moet u de suggesties accepteren. Deze suggesties Voeg vragen toe, maar u kunt geen bestaande vragen wijzigen of verwijderen.
 
 
-## <a name="upgrade-runtime-version-to-use-active-learning"></a>Runtime-versie upgraden om actief leren te gebruiken
+## <a name="upgrade-runtime-version-to-use-active-learning"></a>Runtime versie bijwerken om actief leren te gebruiken
 
-Active Learning wordt ondersteund in runtime versie 4.4.0 en hoger. Als uw kennisbank is gemaakt op een eerdere versie, [kunt u uw runtime upgraden](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) om deze functie te gebruiken.
+Actief leren wordt ondersteund in runtime versie 4.4.0 en hoger. Als uw Knowledge Base is gemaakt in een eerdere versie, moet u [de runtime upgraden](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) om deze functie te gebruiken.
 
 ## <a name="turn-on-active-learning-for-alternate-questions"></a>Actief leren inschakelen voor alternatieve vragen
 
-Actief leren is standaard uitgeschakeld. Schakel het in om voorgestelde vragen te zien. Nadat u actief leren hebt ingeschakeld, moet u informatie uit de client-app naar QnA Maker verzenden. Zie [Architecturalflow voor het gebruik van GenerateAnswer en Train API's van een bot voor](improve-knowledge-base.md#architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot)meer informatie.
+Actief leren is standaard uitgeschakeld. Schakel deze in om voorgestelde vragen te bekijken. Nadat u actief leren hebt ingeschakeld, moet u gegevens van de client-app naar QnA Maker verzenden. Zie [de architectuur stroom voor het gebruik van GenerateAnswer en Train api's van een bot](improve-knowledge-base.md#architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot)voor meer informatie.
 
-1. Selecteer **Publiceren** om de kennisbank te publiceren. Actieve leerquery's worden alleen verzameld via het eindpunt voor het voorspellen van de GenerateAnswer API-voorspelling. De query's naar het deelvenster Testen in de QnA Maker-portal hebben geen invloed op actief leren.
+1. Selecteer **publiceren** om de Knowledge Base te publiceren. Actieve leer query's worden alleen verzameld van het GenerateAnswer API prediction-eind punt. De query's naar het test venster in de QnA Maker Portal hebben geen invloed op actief leren.
 
-1. Als u actief leren wilt inschakelen in de QnA Maker-portal, gaat u naar de rechterbovenhoek, selecteert u uw **naam**, ga naar [**Service-instellingen**](https://www.qnamaker.ai/UserSettings).
+1. Als u actief leren wilt inschakelen in de QnA Maker Portal, gaat u naar de rechter bovenhoek en selecteert u uw **naam**. Ga naar [**Service-instellingen**](https://www.qnamaker.ai/UserSettings).
 
-    ![Schakel de voorgestelde vraagalternatieven voor actief leren in op de pagina Service-instellingen. Selecteer uw gebruikersnaam in het menu rechtsboven en selecteer Service-instellingen.](../media/improve-knowledge-base/Endpoint-Keys.png)
+    ![Schakel de voorgestelde vraag van het actieve leer proces in op de pagina Service-instellingen. Selecteer uw gebruikers naam in het menu rechtsboven en selecteer vervolgens Service-instellingen.](../media/improve-knowledge-base/Endpoint-Keys.png)
 
 
-1. Zoek de QnA Maker-service en schakel **Active Learning in.**
+1. Zoek de QnA Maker-service en schakel vervolgens **actief leren**in.
 
     > [!div class="mx-imgBorder"]
-    > [![Schakel op de pagina Service-instellingen in op de functie Actief leren. Als u de functie niet inschakelen, moet u mogelijk uw service upgraden.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+    > [![Schakel op de pagina Service-instellingen de optie actief leren in. Als u de functie niet kunt in-of uitschakelen, moet u mogelijk een upgrade van uw service uitvoeren.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
     > [!Note]
-    > De exacte versie van de voorgaande afbeelding wordt alleen als voorbeeld weergegeven. Uw versie kan anders zijn.
+    > De exacte versie van de voor gaande afbeelding wordt alleen weer gegeven als voor beeld. Uw versie kan afwijken.
 
-    Zodra **Active Learning** is ingeschakeld, stelt de kennisbank op gezette tijden nieuwe vragen voor op basis van door de gebruiker ingediende vragen. U **Actief leren** uitschakelen door de instelling opnieuw te schakelen.
+    Zodra **actief leren** is ingeschakeld, worden met de Knowledge Base regel matig nieuwe vragen voorgesteld op basis van door de gebruiker ingediende vragen. U kunt **actief leren** uitschakelen door de instelling opnieuw in te scha kelen.
 
 ## <a name="review-suggested-alternate-questions"></a>Voorgestelde alternatieve vragen bekijken
 
-[Bekijk alternatieve voorgestelde vragen](improve-knowledge-base.md) op de **pagina Bewerken** van elke kennisbank.
+[Bekijk alternatieve voorgestelde vragen](improve-knowledge-base.md) op de pagina **bewerken** van elke kennis database.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
-title: IN CLI-voorbeeld actieve Azure SQL-database met georeplicatie
-description: Azure CLI-voorbeeldscript voor het instellen van actieve georeplicatie voor een gepoolde database in Azure SQL Database en mislukt.
+title: CLI-voor beeld-actieve geo-replicatie-gepoolde Azure-SQL database
+description: Azure CLI-voorbeeld script voor het instellen van actieve geo-replicatie voor een gegroepeerde Data base in Azure SQL Database en failover.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,15 +12,15 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 2646ed98f4a73c69d339df0134e8a565c958c514
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067364"
 ---
-# <a name="use-cli-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>CLI gebruiken om actieve georeplicatie te configureren voor een gepoolde database in Azure SQL Database
+# <a name="use-cli-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>CLI gebruiken voor het configureren van actieve geo-replicatie voor een gegroepeerde Data base in Azure SQL Database
 
-In dit voorbeeld van het Azure CLI-script wordt actieve georeplicatie geconfigureerd voor een samengevoegde database in Azure SQL Database en wordt deze niet overgezet naar de secundaire replica van de database.
+In dit voor beeld van Azure CLI-script wordt actieve geo-replicatie geconfigureerd voor een gegroepeerde Data base in Azure SQL Database en wordt er een failover uitgevoerd naar de secundaire replica van de data base.
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0 of hoger. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
@@ -42,21 +42,21 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Gebruik de volgende opdracht om de resourcegroep en alle bijbehorende resources te verwijderen.
+Gebruik de volgende opdracht om de resource groep en alle bijbehorende resources te verwijderen.
 
 ```azurecli-interactive
 az group delete --name $resource
 az group delete --name $secondaryResource
 ```
 
-## <a name="sample-reference"></a>Voorbeeldverwijzing
+## <a name="sample-reference"></a>Voorbeeld verwijzing
 
 In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | | |
 |---|---|
-| [az sql elastic-pool](/cli/azure/sql/elastic-pool) | Opdrachten voor elastische zwembaden |
-| [az sql db replica](/cli/azure/sql/db/replica) | Opdrachten voor databasereplicatie. |
+| [AZ SQL Elastic-pool](/cli/azure/sql/elastic-pool) | Elastische pool-opdrachten |
+| [AZ SQL DB replica](/cli/azure/sql/db/replica) | Data base-replicatie opdrachten. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

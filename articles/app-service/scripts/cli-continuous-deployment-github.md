@@ -1,6 +1,6 @@
 ---
-title: 'CLI: Continue implementatie van GitHub'
-description: Meer informatie over het gebruik van de Azure CLI om de implementatie en het beheer van uw App Service-app te automatiseren. In dit voorbeeld ziet u hoe u een app maakt met CI/CD van GitHub.
+title: 'CLI: doorlopende implementatie vanuit GitHub'
+description: Meer informatie over het gebruik van de Azure CLI voor het automatiseren van de implementatie en het beheer van uw App Service-app. In dit voor beeld ziet u hoe u een app met CI/CD maakt vanuit GitHub.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 0205c991-0989-4ca3-bb41-237dcc964460
@@ -10,17 +10,17 @@ ms.date: 09/02/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 0578ea7f677e1abaa5687295fc7bc871e6db2d3f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80044790"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-from-github-using-cli"></a>Een App Service-app maken met continue implementatie vanuit GitHub met behulp van CLI
 
 In dit voorbeeldscript wordt een app gemaakt in App Service met de bijbehorende resources en wordt er vervolgens continue implementatie vanuit een GitHub-opslagplaats ingesteld. Zie [Een app maken en code implementeren vanuit GitHub](cli-deploy-github.md) voor de implementatie van GitHub zonder continue implementatie. Voor dit voorbeeld hebt u het volgende nodig:
 
-* Een GitHub-opslagplaats met toepassingscode, waarvoor u beheerdersbevoegdheden hebt. Om automatische builds te krijgen, structureerjet u uw repository volgens de [tabel Uw repository voorbereiden.](../deploy-continuous-deployment.md#prepare-your-repository)
+* Een GitHub-opslagplaats met toepassingscode, waarvoor u beheerdersbevoegdheden hebt. Structureer uw opslag plaats op basis van de voor [bereiding van uw opslag plaats](../deploy-continuous-deployment.md#prepare-your-repository) om automatisch builds te krijgen.
 * Een [Personal Access Token (PAT)](https://help.github.com/articles/creating-an-access-token-for-command-line-use) voor uw GitHub-account.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

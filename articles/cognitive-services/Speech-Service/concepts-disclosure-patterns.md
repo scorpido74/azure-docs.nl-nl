@@ -1,7 +1,7 @@
 ---
-title: Ontwerpontwerppatronen
+title: Ontwerp patronen voor openbaar making
 titleSuffix: Azure Cognitive Services
-description: Ontwerppatronen en best practices voor openbaarmaking.
+description: Ontwerp patronen en aanbevolen procedures voor openbaar making.
 services: cognitive-services
 author: sharonlo101
 manager: nitinme
@@ -11,247 +11,247 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74776619"
 ---
 # <a name="disclosure-design-patterns"></a>Ontwerppatronen van openbaarmakingen
-Nu jullie het juiste [niveau van openbaarmaking](concepts-disclosure-guidelines.md#disclosure-assessment) voor jullie synthetische stemervaring&#39;hebben bepaald, is het&#39;een goed moment om potentiële ontwerppatronen te verkennen.
+Nu u&#39;dat u het juiste [niveau van openbaar making](concepts-disclosure-guidelines.md#disclosure-assessment) hebt vastgesteld voor uw synthetische spraak ervaring,&#39;een goede tijd om mogelijke ontwerp patronen te verkennen.
 ## <a name="overview"></a>Overzicht
-Er is een spectrum van disclosure design patronen die u toepassen op uw synthetische stem ervaring. Als de uitkomst van jullie onthullingsbeoordeling 'High Disclosure' was, raden we [**expliciete openbaarmaking**](#explicit-disclosure)aan , wat betekent dat we de oorsprong van de synthetische stem ronduit moeten communiceren. [**Impliciete openbaarmaking**](#implicit-disclosure) omvat signalen en interactiepatronen die stemervaringen ten goede komen, ongeacht of de vereiste openbaarmakingsniveaus hoog of laag zijn.
-![Spectrum van openbaarmakingspatronen](media/responsible-ai/disclosure-patterns/affordances.png)
+Er is een spectrum van ontwerp patronen voor het vrijgeven van informatie die u kunt Toep assen op uw synthetische spraak ervaring. Als het resultaat van de evaluatie van de uitgave ' hoge openbaar making ' is, raden we [**expliciete openbaar making**](#explicit-disclosure)aan, wat betekent dat de oorsprong van de synthetische stem uiterst goed wordt gecommuniceerd. [**Impliciete openbaar making**](#implicit-disclosure) omvat hints en interactie patronen die stem ervaring ondervinden, ongeacht of de vereiste verschaffings niveaus hoog of laag zijn.
+![Spectrum van uitschaffings patronen](media/responsible-ai/disclosure-patterns/affordances.png)
 
 
 
 
 
 
-| Expliciete openbaarmakingspatronen                                                                                                                                                                                    | Impliciete openbaarmakingspatronen                                                                 |
+| Expliciete verschaffings patronen                                                                                                                                                                                    | Impliciete uitschaffings patronen                                                                 |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-|[Transparante introductie](#transparent-introduction)<br> [Mondelinge transparante inleiding](#verbal-transparent-introduction)<br>  [Expliciet regellijn](#explicit-byline)<br>  [Aanpassing en kalibratie](#customization-and-calibration)<br> [Openbaarmaking van ouders](#parental-disclosure)<br> [Het bieden van mogelijkheden om meer te weten te komen over hoe de stem tot stand is gehaald](#providing-opportunities-to-learn-more-about-how-the-voice-was-made) | [Openbaarmaking van de mogelijkheid](#capability-disclosure)<br>[Impliciete aanwijzingen en feedback](#implicit-cues--feedback)<br> [Gesprekstransparantie](#conversational-transparency) |
+|[Transparante Inleiding](#transparent-introduction)<br> [Mondelinge transparante Inleiding](#verbal-transparent-introduction)<br>  [Expliciete regelnaam](#explicit-byline)<br>  [Aanpassing en kalibratie](#customization-and-calibration)<br> [Vrijgeven van ouders](#parental-disclosure)<br> [Mogelijkheden bieden voor meer informatie over hoe de stem is gemaakt](#providing-opportunities-to-learn-more-about-how-the-voice-was-made) | [Capaciteits deling](#capability-disclosure)<br>[Impliciete hints en feedback](#implicit-cues--feedback)<br> [Spreek transparantie](#conversational-transparency) |
 
 
 
-Gebruik de volgende grafiek om rechtstreeks te verwijzen naar de patronen die van toepassing zijn op uw synthetische stem. Sommige van de andere voorwaarden in deze grafiek kunnen ook van toepassing zijn op uw scenario:<br/>
+Gebruik de volgende grafiek om rechtstreeks naar de patronen te verwijzen die van toepassing zijn op uw synthetische stem. Enkele van de andere voor waarden in deze grafiek zijn mogelijk ook van toepassing op uw scenario:<br/>
 
 
 
-| Als uw synthetische stem ervaring ... | Aanbevelingen | Ontwerppatronen |
+| Als uw synthetische spraak ervaring... | Aanbevelingen | Ontwerppatronen |
 | --- | --- | --- |
-| Vereist hoge openbaarmaking  | Gebruik ten minste één expliciet patroon en impliciete aanwijzingen vooraf om gebruikers te helpen associaties op te bouwen. |[Expliciete openbaarmaking](#explicit-disclosure)<br>[Impliciete openbaarmaking](#implicit-disclosure)  |
-| Vereist lage openbaarmaking | Openbaarmaking kan minimaal of onnodig zijn, maar kan profiteren van een aantal impliciete patronen. | [Openbaarmaking van de mogelijkheid](#capability-disclosure)<br>[Gesprekstransparantie](#conversational-transparency)  |
-| Heeft een hoge mate van betrokkenheid | Bouw voor de lange termijn en bieden meerdere toegangspunten tot openbaarmaking langs de gebruikersreis. Het is ten zeerste aan te raden om een onboarding-ervaring te hebben. | [Transparante introductie](#transparent-introduction)<br>[Aanpassing en kalibratie](#customization-and-calibration)<br>[Openbaarmaking van de mogelijkheid](#capability-disclosure) |
-| Omvat kinderen als het primaire beoogde publiek | Richt ouders als de primaire openbaarmaking publiek en ervoor te zorgen dat ze effectief kunnen communiceren openbaarmaking aan kinderen.  | [Openbaarmaking van ouders](#parental-disclosure)<br>[Mondelinge transparante inleiding](#verbal-transparent-introduction)<br> [Impliciete openbaarmaking](#implicit-disclosure)<br> [Gesprekstransparantie](#conversational-transparency)  |
-| Omvat blinde gebruikers of mensen met slechtziendheid als primaire beoogde doelgroep  | Zorg voor alle gebruikers en zorg ervoor dat elke vorm van visuele openbaarmaking alternatieve tekst of geluidseffecten met elkaar heeft verbonden. Houd u aan toegankelijkheidsnormen voor contrastverhouding en weergavegrootte. Gebruik auditieve signalen om openbaarmaking te communiceren.  | [Mondelinge transparante inleiding](#verbal-transparent-introduction) <br>[Auditieve signalen](#implicit-cues--feedback)<br>[Haptische aanwijzingen](#implicit-cues--feedback)<br>[Gesprekstransparantie](#conversational-transparency)<br>[Toegankelijkheidsnormen](https://www.microsoft.com/accessibility) |
-| Is schermloos, apparaatloos of gebruikt stem als primaire of enige interactie-modus | Gebruik auditieve signalen om openbaarmaking te communiceren. | [Mondelinge transparante inleiding](#verbal-transparent-introduction) <br> [Auditieve signalen](#implicit-cues--feedback)  |
-| Omvat mogelijk meerdere gebruikers/luisteraars (bijv. persoonlijke assistent in meerdere huishoudens)  | Houd rekening met verschillende gebruikerscontexten en niveaus van begrip en bieden meerdere mogelijkheden voor openbaarmaking in de gebruikersreis.  | [Transparante inleiding (gebruiker retourneren)](#transparent-introduction)<br> [Het bieden van mogelijkheden om meer te weten te komen over hoe de stem tot stand is gehaald](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)<br> [Gesprekstransparantie](#conversational-transparency)  |
+| Hoge vrijgeven vereist  | Gebruik ten minste één expliciet patroon en impliciete hints vooraan om gebruikers te helpen bij het bouwen van koppelingen. |[Expliciete openbaar making](#explicit-disclosure)<br>[Impliciete vrijgeven](#implicit-disclosure)  |
+| Vereist een lage vrijgave | De openbaar making kan mini maal of onnodig zijn, maar kan wel van een aantal impliciete patronen profiteren. | [Capaciteits deling](#capability-disclosure)<br>[Spreek transparantie](#conversational-transparency)  |
+| Heeft een hoog niveau van betrokkenheid | Bouw op lange termijn en bied meerdere ingangs punten voor de publicatie van de gebruikers reis. Het is raadzaam om een onboarding-ervaring te hebben. | [Transparante Inleiding](#transparent-introduction)<br>[Aanpassing en kalibratie](#customization-and-calibration)<br>[Capaciteits deling](#capability-disclosure) |
+| Omvat onderliggende items als de primaire doel groep | Doel ouders als de primaire doel groep en zorg ervoor dat ze de openbaar making naar kinderen effectief kunnen communiceren.  | [Vrijgeven van ouders](#parental-disclosure)<br>[Mondelinge transparante Inleiding](#verbal-transparent-introduction)<br> [Impliciete vrijgeven](#implicit-disclosure)<br> [Spreek transparantie](#conversational-transparency)  |
+| Bevat blinde gebruikers of mensen met een beperkt gezichts vermogen als de primaire doel groep  | Behorende bij alle gebruikers, en zorg ervoor dat alle vormen van een visuele openbaar making alternatieve tekst of geluids effecten hebben. Voldoen aan de toegankelijkheids normen voor contrast verhouding en weergave grootte. Gebruik auditieve aanwijzingen voor het communiceren van informatie.  | [Mondelinge transparante Inleiding](#verbal-transparent-introduction) <br>[Auditieve hints](#implicit-cues--feedback)<br>[Haptic-hints](#implicit-cues--feedback)<br>[Spreek transparantie](#conversational-transparency)<br>[Toegankelijkheids standaarden](https://www.microsoft.com/accessibility) |
+| Is scherm-kleiner, apparaat minder of stem alleen als primaire of enige modus van interactie | Gebruik auditieve aanwijzingen voor het communiceren van informatie. | [Mondelinge transparante Inleiding](#verbal-transparent-introduction) <br> [Auditieve hints](#implicit-cues--feedback)  |
+| Bevat mogelijk meerdere gebruikers/listeners (bijvoorbeeld persoonlijke assistenten in meerdere gezin)  | Wees mindful van verschillende gebruikers contexten en niveaus van inzichten en bied meerdere mogelijkheden voor openbaar making in de gebruikers reis.  | [Transparante inleiding (retour gebruiker)](#transparent-introduction)<br> [Mogelijkheden bieden voor meer informatie over hoe de stem is gemaakt](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)<br> [Spreek transparantie](#conversational-transparency)  |
 
 
 
-## <a name="explicit-disclosure"></a>Expliciete openbaarmaking
-Als uw synthetische spraakervaring een hoge openbaarmaking vereist, is het het beste om ten minste één van de volgende expliciete patronen te gebruiken om de synthetische aard duidelijk te vermelden.
-### <a name="transparent-introduction"></a>Transparante introductie
+## <a name="explicit-disclosure"></a>Expliciete openbaar making
+Als uw synthetische stem ervaring een hoge openbaar making vereist, kunt u het beste ten minste één van de volgende expliciete patronen gebruiken om de synthetische aard duidelijk te vermelden.
+### <a name="transparent-introduction"></a>Transparante Inleiding
 
-Voordat de spraakervaring begint, introduceert u de digitale assistent door volledig transparant te zijn over de oorsprong van zijn stem en zijn mogelijkheden. Het optimale moment om dit patroon te gebruiken is bij het instappen van een nieuwe gebruiker of bij het introduceren van nieuwe functies voor een terugkerende gebruiker. Het implementeren van impliciete signalen tijdens een introductie helpt gebruikers een mentaal model te vormen over het synthetische karakter van de digitale agent.
+Voordat de spraak ervaring begint, introduceert we de digitale assistent door volledig doorzichtig te zijn over de oorsprong van zijn stem en de mogelijkheden ervan. Het beste moment om dit patroon te gebruiken, is bij het voorbereiden van een nieuwe gebruiker of bij het introduceren van nieuwe functies aan een terugkerende gebruiker. Bij het implementeren van impliciete hints tijdens een inleiding kunnen gebruikers een geestelijke model maken over de synthetische aard van de digitale agent.
 
-#### <a name="first-time-user-experience"></a>Eerste gebruikerservaring
+#### <a name="first-time-user-experience"></a>Gebruikers ervaring voor de eerste keer
 
-![Transparante introductie tijdens first run experience](media/responsible-ai/disclosure-patterns/transparent-intro-first.png) <br>
-*De synthetische stem wordt geïntroduceerd tijdens het onboarding en een nieuwe gebruiker.*
+![Transparante Inleiding tijdens de eerste uitvoering](media/responsible-ai/disclosure-patterns/transparent-intro-first.png) <br>
+*De synthetische stem wordt geïntroduceerd tijdens het onboarden van een nieuwe gebruiker.*
 
 Aanbevelingen
-- Beschrijf dat de stem kunstmatig &quot;is&quot;(bijv. digitaal)
+- Beschrijf of de stem kunst matig is ( &quot;bijvoorbeeld&quot;digitaal)
 - Beschrijf wat de agent kan doen
-- Vermeld expliciet de stem&#39;oorsprong
-- Bied een toegangspunt om meer te weten te komen over de synthetische stem
+- De stem&#39;s-oorsprong expliciet aangeven
+- Een ingangs punt bieden voor meer informatie over de synthetische stem
 
-#### <a name="returning-user-experience"></a>Gebruikerservaring retourneren
+#### <a name="returning-user-experience"></a>Gebruikers ervaring retour neren
 
-Als een gebruiker de onboarding-ervaring overslaat, blijft u toegangspunten bieden voor de transparent introduction-ervaring totdat de gebruiker de stem voor de eerste keer activeert.
+Als een gebruiker de voorbereidings ervaring overs laat, kunt u door gaan met het aanbieden van toegangs punten tot de transparante Inleiding tot de gebruiker de stem voor de eerste keer activeert.
 <br/>
 
-![Transparante introductie tijdens de gebruikerservaring retourneren](media/responsible-ai/disclosure-patterns/transparent-intro-return.png)<br/>
-*Zorg voor een consistent toegangspunt tot de synthetische spraakervaring. Laat de gebruiker terugkeren naar de onboarding-ervaring wanneer deze de stem voor het eerst activeert op elk moment in de gebruikersreis.*
+![Transparante Inleiding tijdens het retour neren van gebruikers ervaring](media/responsible-ai/disclosure-patterns/transparent-intro-return.png)<br/>
+*Geef een consistent ingangs punt op voor de synthetische spraak ervaring. Hiermee staat u toe dat de gebruiker terugkeert naar de voorbereidings ervaring wanneer deze de stem voor het eerst op een wille keurig punt in het traject van de gebruiker activeren.*
 
 
-### <a name="verbal-transparent-introduction"></a>Mondelinge transparante inleiding
+### <a name="verbal-transparent-introduction"></a>Mondelinge transparante Inleiding
 
-Een gesproken prompt waarin de oorsprong van de digitale assistent&#39;stem is expliciet genoeg op zijn eigen om openbaarmaking te bereiken. Dit patroon is het beste voor hoge openbaarmaking scenario's waar spraak is de enige wijze van interactie beschikbaar.
+Een gesp roken prompt waarin de oorsprong van de digitale assistent&#39;s Voice duidelijk genoeg is om te worden vrijgegeven. Dit patroon is het meest geschikt voor scenario's met hoge openbaar making waarbij Voice de enige modus van interactie is die beschikbaar is.
 <br/>
 
-![Mondeling gesproken transparante inleiding](media/responsible-ai/disclosure-patterns/spoken-prompt-1.png)
-<br/>*Gebruik een transparante introductie wanneer er momenten in de gebruikerservaring zijn waarop u een persoon al introduceren of toeschrijven&#39;zijn stem.*
+![Mondelinge uitgesp roken doorzichtige Inleiding](media/responsible-ai/disclosure-patterns/spoken-prompt-1.png)
+<br/>*Gebruik een transparante inleiding wanneer er even in de gebruikers ervaring wordt gebruikgemaakt van een persoon&#39;s-stem.*
 
 
-![Mondeling gesproken transparante inleiding in eerste persoon](media/responsible-ai/disclosure-patterns/spoken-prompt-2.png)<br/>
-*Voor extra transparantie kan de stemacteur de oorsprong van de synthetische stem in de eerste persoon onthullen.*
+![Mondelinge Inleiding in de eerste persoon](media/responsible-ai/disclosure-patterns/spoken-prompt-2.png)<br/>
+*Voor extra transparantie kan de voice actor de oorsprong van de synthetische stem in de eerste persoon openbaar maken.*
 
-### <a name="explicit-byline"></a>Expliciet regellijn
+### <a name="explicit-byline"></a>Expliciete regelnaam
 
-Gebruik dit patroon als de gebruiker interactie heeft met een audiospeler of interactieve component om de stem te activeren.
+Gebruik dit patroon als de gebruiker interactie heeft met een audio speler of een interactief onderdeel om de stem te activeren.
 
 
-![Expliciete omlijn in een nieuwsmediascenario](media/responsible-ai/disclosure-patterns/explicit-byline.png) <br/>
-*Een expliciete naamregel is de toeschrijving van waar de stem vandaan kwam.*
+![Expliciete bericht regel in een nieuws media scenario](media/responsible-ai/disclosure-patterns/explicit-byline.png) <br/>
+*Een expliciete regelnaam is de toewijzing van waar de Voice vandaan komt.*
 
 Aanbevelingen
 
-- Aanbiedingspunt voor meer informatie over de gesynthetiseerde stem
+- Ingangs punt van aanbieding voor meer informatie over de gesynthesizerde Voice
 
 ### <a name="customization-and-calibration"></a>Aanpassing en kalibratie
 
-Geef gebruikers controle over hoe de digitale assistent op hen reageert (d.w.z. hoe de stem klinkt).  Wanneer een gebruiker interageert met een systeem op hun eigen voorwaarden en met specifieke doelen in het achterhoofd, dan per definitie, ze hebben al begrepen dat het&#39;niet een echte persoon.
+Gebruikers controle bieden over de manier waarop de digitale assistent reageert (bijvoorbeeld hoe de spraak geluiden).  Wanneer een gebruiker communiceert met een systeem op basis van hun eigen voor waarden en met specifieke doel stellingen in de praktijk, dan hebben ze al begrepen dat deze&#39;s die geen echte persoon is.
 
-#### <a name="user-control"></a>Gebruikersbeheer
+#### <a name="user-control"></a>Gebruikers besturings element
 
-Bied keuzes die een betekenisvolle en merkbare impact hebben op de synthetische spraakervaring.
+Bied keuzen die een zinvolle en merkbaar effect hebben op de synthetische spraak ervaring.
 
-![Gebruikersvoorkeuren](media/responsible-ai/disclosure-patterns/customization-user-control.png)<br/>
-*Met gebruikersvoorkeuren kunnen gebruikers hun ervaring aanpassen en verbeteren.*
-
-Aanbevelingen
-
-- Gebruikers toestaan de stem aan te passen (bijvoorbeeld het selecteren van taal- en spraaktype)
-- Geef gebruikers een manier om het systeem te leren reageren op zijn/haar unieke stem (bijvoorbeeld spraakkalibratie, aangepaste commando's)
-- Optimaliseren voor door gebruikers gegenereerde of contextuele interacties (bijv. herinneringen)
-
-#### <a name="persona-customization"></a>Persona-aanpassing
-
-Bied manieren om de digitale assistent aan te passen&#39;de stem. Als de stem is gebaseerd op een beroemdheid of een zeer herkenbaar persoon, overweeg dan het gebruik van zowel visuele als gesproken introducties wanneer gebruikers een voorbeeld van de stem bekijken.
-
-![Aanpassing van de stem](media/responsible-ai/disclosure-patterns/customization-voice-type.png)<br/>
-*Het aanbieden van de mogelijkheid om te kiezen uit een set van stemmen helpt overbrengen van de kunstmatige natuur.*
-
-Aanbevelingen
-- Gebruikers toestaan een voorbeeld te bekijken van het geluid van elke stem
-- Gebruik een authentieke introductie voor elke stem
-- Geef toegangspunten om meer te weten te komen over de gesynthetiseerde stem
-
-### <a name="parental-disclosure"></a>Openbaarmaking van ouders
-
-Naast het voldoen aan coppa-regels, informatie verstrekken aan ouders als uw primaire beoogde publiek jonge kinderen is en uw blootstellingsniveau hoog is. Voor gevoelig gebruik, overwegen gating de ervaring totdat een volwassene heeft erkend het gebruik van de synthetische stem. Moedig ouders aan om de boodschap aan hun kinderen over te brengen.
-
-![Openbaarmaking voor ouders](media/responsible-ai/disclosure-patterns/parental-disclosure.png)<br/>
-*Een transparante introductie geoptimaliseerd voor ouders zorgt ervoor dat een volwassene bewust werd gemaakt van het synthetische karakter van de stem voordat een kind ermee omgaat.*
+![Gebruikers voorkeuren](media/responsible-ai/disclosure-patterns/customization-user-control.png)<br/>
+*Gebruikers voorkeuren bieden de mogelijkheid om hun ervaring aan te passen en te verbeteren.*
 
 Aanbevelingen
 
-- Betarget ouders als het primaire publiek voor openbaarmaking
-- Moedig ouders aan om openbaarmaking aan hun kinderen mee te delen
-- Geef toegangspunten om meer te weten te komen over de gesynthetiseerde stem
-- Gate de ervaring door &quot;het&quot; vragen van ouders een eenvoudige bescherming vraag om te laten zien dat ze de openbaarmaking hebben gelezen
+- Gebruikers toestaan de stem aan te passen (bijvoorbeeld de taal en het type spraak)
+- Geef gebruikers een manier om het systeem te leren om te reageren op de unieke spraak (bijvoorbeeld spraak kalibratie, aangepaste opdrachten)
+- Optimaliseren voor door de gebruiker gegenereerde of contextuele interacties (bijvoorbeeld herinneringen)
 
-### <a name="providing-opportunities-to-learn-more-about-how-the-voice-was-made"></a>Het bieden van mogelijkheden om meer te weten te komen over hoe de stem tot stand is gehaald
+#### <a name="persona-customization"></a>Aangepaste persona
 
-Bied contextgevoelige toegangspunten tot een pagina, pop-up of externe site die meer informatie geeft over de synthetische spraaktechnologie. U bijvoorbeeld een koppeling weergeven om meer te weten te komen tijdens het instappen of wanneer de gebruiker om meer informatie vraagt tijdens het gesprek.
+Bied manieren om de digitale assistent&#39;s Voice aan te passen. Als de stem is gebaseerd op een beroemdheden of een zeer herken bare persoon, overweeg dan om zowel visuele als gesp roken introducties te gebruiken wanneer gebruikers de stem bekijken.
 
-![Toegangspunt voor meer informatie](media/responsible-ai/disclosure-patterns/learn-more-entry-point.png)<br/>
-*Voorbeeld van een toegangspunt om de mogelijkheid te bieden om meer te weten te komen over de gesynthetiseerde stem.*
+![Stem aanpassen](media/responsible-ai/disclosure-patterns/customization-voice-type.png)<br/>
+*Met de mogelijkheid om te kiezen uit een reeks stemmen kan de kunst matige aard worden genoteerd.*
 
-Zodra een gebruiker vraagt om meer informatie over de synthetische stem, het primaire doel is om hen te informeren over de oorsprong van de synthetische stem en om transparant te zijn over de technologie.
+Aanbevelingen
+- Gebruikers toestaan om het geluid van elke stem te bekijken
+- Een authentieke inleiding voor elke stem gebruiken
+- Ingangs punten voor aanbiedingen voor meer informatie over de gesynthesizerde Voice
 
-![Geef gebruikers meer informatie over synthetische spraak](media/responsible-ai/disclosure-patterns/learn-more.png)<br/>
-*Meer informatie kan worden aangeboden in een externe site help site.*
+### <a name="parental-disclosure"></a>Vrijgeven van ouders
+
+Naast het voldoen aan COPPA-voor Schriften, bieden we een openbaar making aan ouders als uw primaire doel groep jonge kinderen is en uw blootstellings niveau hoog is. Voor gevoelige toepassingen kunt u de ervaring beperking voordat een volwassene het gebruik van de synthetische stem heeft bevestigd. Stimuleer ouders om het bericht aan hun kinderen te communiceren.
+
+![Openbaar making voor ouders](media/responsible-ai/disclosure-patterns/parental-disclosure.png)<br/>
+*Een transparante inleiding die is geoptimaliseerd voor ouders, zorgt ervoor dat een volwassene op de hoogte is gesteld van de synthetische aard van de stem voordat een kind ermee werkt.*
 
 Aanbevelingen
 
-- Vereenvoudig complexe concepten en vermijd het gebruik van legale en technische jargon
-- Begraaf deze inhoud niet in privacy- en gebruiksvoorwaarden
-- Houd de inhoud beknopt en gebruik afbeeldingen wanneer deze beschikbaar zijn
+- Ouders als primaire doel groep voor openbaar making
+- Ouders aanmoedigen om openbaar making naar hun kinderen te communiceren
+- Ingangs punten voor aanbiedingen voor meer informatie over de gesynthesizerde Voice
+- U kunt de ervaring het beste met een &quot;eenvoudige&quot; veiligheids vraag door geven aan ouders, zodat ze de openbaar making hebben gelezen
 
-## <a name="implicit-disclosure"></a>Impliciete openbaarmaking
+### <a name="providing-opportunities-to-learn-more-about-how-the-voice-was-made"></a>Mogelijkheden bieden voor meer informatie over hoe de stem is gemaakt
 
-Consistentie is de sleutel tot het bereiken van openbaarmaking impliciet gedurende de hele user journey. Consistent gebruik van visuele en auditieve signalen op verschillende apparaten en interactiewijzen kan helpen bij het opbouwen van verbanden tussen impliciete patronen en expliciete openbaarmaking.
+U kunt context gevoelige ingangs punten aanbieden aan een pagina, pop-up of externe site met meer informatie over de synthetische spraak technologie. U kunt bijvoorbeeld een koppeling laten weer gegeven om meer te weten te komen tijdens het voorbereiden of wanneer de gebruiker tijdens het gesprek meer informatie vraagt.
 
-![Consistentie van impliciete signalen](media/responsible-ai/disclosure-patterns/consistency.png)
+![Toegangs punt voor meer informatie](media/responsible-ai/disclosure-patterns/learn-more-entry-point.png)<br/>
+*Voor beeld van een ingangs punt om de kans te bieden om meer te weten te komen over de geleerde stem.*
 
-### <a name="implicit-cues--feedback"></a>Impliciete aanwijzingen & feedback
+Zodra een gebruiker meer informatie heeft aangevraagd over de synthetische stem, is het primaire doel om hen te informeren over de oorsprong van de synthetische stem en om transparant te zijn voor de technologie.
 
-Antropomorfisme kan zich op verschillende manieren manifesteren, van de werkelijke visuele weergave van de agent, tot de stem, geluiden, lichtpatronen, stuiterende vormen of zelfs de trilling van een apparaat. Bij het definiëren van uw persona, leverage impliciete signalen en feedback patronen in plaats van streven naar een zeer mens-achtige avatar. Dit is een manier om de noodzaak van meer expliciete openbaarmaking te minimaliseren.
+![Gebruikers meer informatie geven over synthetische stem](media/responsible-ai/disclosure-patterns/learn-more.png)<br/>
+*Meer informatie vindt u in de Help-site van een externe site.*
 
-![Visuele aanwijzingen en feedback](media/responsible-ai/disclosure-patterns/visual-affordances.png)<br/>
-*Deze signalen helpen de agent te antropomorfiseren zonder al te menselijk te zijn. Ze kunnen ook effectieve openbaarmakingmechanismen worden wanneer ze in de loop van de tijd consequent worden gebruikt.*
+Aanbevelingen
 
-Houd rekening met de verschillende manieren van interactie van uw ervaring bij het opnemen van de volgende typen signalen:
+- Vereenvoudig complexe concepten en Vermijd het gebruik van Legalese en technisch jargon
+- Bury deze inhoud niet in de privacyverklaring voor privacy en gebruiks voorwaarden
+- Beknopte inhoud voor komen en afbeeldingen gebruiken indien beschikbaar
 
-| Visuele aanwijzingen                                                                                                                                                               | Auditieve signalen                                                      | Haptische aanwijzingen |
+## <a name="implicit-disclosure"></a>Impliciete vrijgeven
+
+Consistentie is de sleutel om de vrijgave impliciet te bereiken tijdens de gebruikers traject. Consistent gebruik van visuele en auditieve hints op alle apparaten en modi van interactie kan helpen bij het bouwen van koppelingen tussen impliciete patronen en expliciete openbaar making.
+
+![Consistentie van impliciete hints](media/responsible-ai/disclosure-patterns/consistency.png)
+
+### <a name="implicit-cues--feedback"></a>Impliciete hints & feedback
+
+Anthropomorphism kunnen op verschillende manieren worden gemanifesteerd, van de werkelijke visuele weer gave van de agent tot de spraak, geluiden, patronen van licht, stuiterende vormen of zelfs de trillingen van een apparaat. Wanneer u uw persoon definieert, maakt u gebruik van impliciete hints en feedback patronen in plaats van een zeer menselijke achtige avatar. Dit is een manier om de nood zaak voor een meer expliciete openbaar making te minimaliseren.
+
+![Visuele hints en feedback](media/responsible-ai/disclosure-patterns/visual-affordances.png)<br/>
+*Deze hints helpen de agent te anthropomorphizeen zonder dat ze niet te voor menselijke handen zijn. Ze kunnen ook worden toegepast op hun eigen manier wanneer ze consistent in de loop van de tijd worden gebruikt.*
+
+Houd rekening met de verschillende modi van interacties van uw ervaring bij het opnemen van de volgende soorten hints:
+
+| Visuele aanwijzingen                                                                                                                                                               | Auditieve hints                                                      | Haptic-hints |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|-------------|
-|  Avatar <br>Responsieve real-time cues (bijvoorbeeld animaties)<br> Niet-schermsignalen (bijvoorbeeld verlichting en patronen op een apparaat)<br>  | Sonicon (bijvoorbeeld een kort onderscheidend geluid, serie van muzikale noten) | Trillingen   |
+|  Avatar <br>Responsieve realtime-hints (zoals animaties)<br> Niet-scherm aanwijzingen (bijvoorbeeld verlichting en patronen op een apparaat)<br>  | Sonicon (bijvoorbeeld een korte, onderscheidende klank, reeks muziek notities) | Trill   |
 
-### <a name="capability-disclosure"></a>Openbaarmaking van de mogelijkheid
+### <a name="capability-disclosure"></a>Capaciteits deling
 
-Openbaarmaking kan impliciet worden bereikt door nauwkeurige verwachtingen te stellen voor waartoe de digitale assistent in staat is. Geef voorbeeldopdrachten zodat gebruikers kunnen leren hoe ze met de digitale assistent kunnen communiceren en contextuele hulp kunnen bieden om meer te weten te komen over de synthetische stem in de vroege stadia van de ervaring.
+De openbaar making kan impliciet worden gerealiseerd door nauw keurige verwachtingen in te stellen voor de mogelijkheden van de digitale assistent. Geef voorbeeld opdrachten op, zodat gebruikers kunnen leren omgaan met de digitale assistent en context contextuele hulp kunnen bieden om meer te weten te komen over de synthetische stem tijdens de eerste fasen van de ervaring.
 
-![Visuele aanwijzingen en feedback](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
+![Visuele hints en feedback](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
 
-### <a name="conversational-transparency"></a>Gesprekstransparantie
+### <a name="conversational-transparency"></a>Spreek transparantie
 
-Wanneer gesprekken in onverwachte paden vallen, u overwegen standaardantwoorden te maken die kunnen helpen bij het resetten van verwachtingen, het versterken van de transparantie en gebruikers naar succesvolle paden sturen. Er zijn mogelijkheden om expliciete openbaarmaking ook in gesprek te gebruiken.
+Wanneer conversaties in onverwachte paden terechtkomen, overweeg dan om standaard reacties te formuleren waarmee u verwachtingen kunt resetten, de transparantie moet versterken en gebruikers naar geslaagde paden kunnen worden gestuurd. Er zijn ook mogelijkheden voor het gebruik van expliciete informatie over conversaties.
 
 ![Onverwachte paden verwerken](media/responsible-ai/disclosure-patterns/conversational-transparency-1.png)<br/>
 
 <br/>
-Off-task &quot;of&quot; persoonlijke vragen gericht aan de agent zijn een goed moment om gebruikers te herinneren aan de synthetische aard van de agent en sturen ze om te gaan met het op de juiste manier of om ze te verwijzen naar een echte persoon.
+Niet-taak- &quot;of&quot; persoonlijke vragen die gericht zijn op de agent, zijn een goede tijd om gebruikers te herinneren van de synthetische aard van de agent en hen te laten instemmen om deze op de juiste wijze te laten werken of om ze om te leiden naar een echte persoon.
 
-![Vragen over het afhandelen van taken](media/responsible-ai/disclosure-patterns/conversational-transparency-2.png)<br/>
+![Taak vragen afhandelen](media/responsible-ai/disclosure-patterns/conversational-transparency-2.png)<br/>
 
-## <a name="when-to-disclose"></a>Wanneer bekend te maken
+## <a name="when-to-disclose"></a>Wanneer te vermelden
 
-Er zijn veel mogelijkheden voor openbaarmaking gedurende de hele gebruikersreis. Ontwerp voor het eerste gebruik, tweede gebruik, nth &quot;gebruik..., maar omarm ook momenten van het niet&quot; benadrukken van transparantie, zoals wanneer het systeem een fout maakt of wanneer de gebruiker een beperking van de agent ontdekt&#39;s mogelijkheden.
+Er zijn veel mogelijkheden voor openbaar making tijdens de gebruikers traject. Ontwerp voor het eerste gebruik, het tweede gebruik, een ne gebruik..., maar ook een fout &quot;&quot; in het markeren van de transparantie, zoals wanneer het systeem een fout maakt of wanneer de gebruiker een beperking van de agent&#39;s-mogelijkheden detecteert.
 
-![Openbaarmakingsmogelijkheden tijdens een gebruikerstraject](media/responsible-ai/disclosure-patterns/touchpoints.png)<br/>
+![Verkoop kansen voor het hele gebruikers traject](media/responsible-ai/disclosure-patterns/touchpoints.png)<br/>
 
-Voorbeeld van een standaard gebruikersreis van de digitale assistent die verschillende openbaarmakingsmogelijkheden belicht.
+Voor beeld van een standaard gebruikers reis met een digitale assistent die verschillende verkoop kansen markeert.
 
-### <a name="up-front"></a>Up-front
+### <a name="up-front"></a>Vooraf
 
-Het optimale moment voor openbaarmaking is de eerste keer dat een persoon interageert met de synthetische stem.In een persoonlijk spraakassistentscenario zou dit tijdens het instappen zijn, of de eerste keer dat de gebruiker de ervaring vrijwel losmaakt. In andere scenario's kan het de eerste keer zijn dat een synthetische stem inhoud op een website leest of de eerste keer dat een gebruiker interactie heeft met een virtueel teken.
+Het beste moment voor vrijgeven is de eerste keer dat een persoon communiceert met de synthetische stem.In een persoonlijk voicemail scenario zou dit tijdens het voorbereidings proces kunnen zijn, of de eerste keer dat de gebruiker de gebruikers ervaring het eerst vergeeft. In andere scenario's is het mogelijk de eerste keer dat een synthetische spraak inhoud op een website leest of de eerste keer dat een gebruiker met een virtueel teken communiceert.
 
-- [Transparante introductie](#transparent-introduction)
-- [Openbaarmaking van de mogelijkheid](#capability-disclosure)
+- [Transparante Inleiding](#transparent-introduction)
+- [Capaciteits deling](#capability-disclosure)
 - [Aanpassing en kalibratie](#customization-and-calibration)
-- [Impliciete aanwijzingen](#implicit-cues--feedback)
+- [Impliciete hints](#implicit-cues--feedback)
 
-### <a name="upon-request"></a>Op verzoek
+### <a name="upon-request"></a>Op aanvraag
 
-Gebruikers moeten gemakkelijk toegang hebben tot aanvullende informatie, voorkeuren kunnen beheren en op elk moment tijdens de gebruikersreis transparante communicatie kunnen ontvangen wanneer daarom wordt gevraagd.
+Gebruikers moeten toegang hebben tot extra informatie, controle voorkeuren en op elk moment tijdens de gebruikers traject transparante communicatie kunnen krijgen.
 
-- [Het bieden van mogelijkheden om meer te weten te komen over hoe de stem tot stand is gehaald](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
+- [Mogelijkheden bieden voor meer informatie over hoe de stem is gemaakt](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
 - [Aanpassing en kalibratie](#customization-and-calibration)
-- [Gesprekstransparantie](#conversational-transparency)
+- [Spreek transparantie](#conversational-transparency)
 
 ### <a name="continuously"></a>Voortdurend
 
-Gebruik de impliciete ontwerppatronen die de gebruikerservaring continu verbeteren.
+Gebruik de impliciete ontwerp patronen die de gebruikers ervaring voortdurend verbeteren.
 
-- [Openbaarmaking van de mogelijkheid](#capability-disclosure)
-- [Impliciete aanwijzingen](#implicit-cues--feedback)
+- [Capaciteits deling](#capability-disclosure)
+- [Impliciete hints](#implicit-cues--feedback)
 
-### <a name="when-the-system-fails"></a>Wanneer het systeem uitvalt
+### <a name="when-the-system-fails"></a>Wanneer het systeem is mislukt
 
-Gebruik openbaarmaking als een kans om gracieus te falen.
+Gebruik openbaar making als een kans om zonder problemen te werken.
 
-- [Gesprekstransparantie](#conversational-transparency)
-- [Het bieden van mogelijkheden om meer te weten te komen over hoe de stem tot stand is gehaald](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
-- [Overdracht aan de mens](#conversational-transparency)
+- [Spreek transparantie](#conversational-transparency)
+- [Mogelijkheden bieden voor meer informatie over hoe de stem is gemaakt](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
+- [Voor mensen](#conversational-transparency)
 
 
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
-- [Richtlijnen voor Microsoft Bot](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
-- [Richtlijnen voor Cortana-ontwerp](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
-- [Richtlijnen voor microsoft Windows UWP-spraakontwerp](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
-- [Richtlijnen voor spraakopdrachten van Microsoft Windows Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
+- [Richt lijnen voor micro soft bot](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
+- [Richt lijnen voor Cortana-ontwerp](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
+- [Richt lijnen voor spraak ontwerp van micro soft Windows UWP](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
+- [Richt lijnen voor spraak opdrachten voor micro soft Windows Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
 
-## <a name="reference-docs"></a>Referentiedocumenten
+## <a name="reference-docs"></a>Referentie documenten
 
-* [Openbaarmaking voor Voice Talent](https://aka.ms/disclosure-voice-talent)
-* [Richtlijnen voor verantwoorde implementatie van synthetische spraaktechnologie](concepts-guidelines-responsible-deployment-synthetic.md)
-* [Overzicht van Gating](concepts-gating-overview.md)
-* [Hoe openbaar te maken](concepts-disclosure-guidelines.md)
+* [Openbaar making voor spraak-talen](https://aka.ms/disclosure-voice-talent)
+* [Richt lijnen voor de verantwoordelijke implementatie van synthetische spraak technologie](concepts-guidelines-responsible-deployment-synthetic.md)
+* [Overzicht van beperking](concepts-gating-overview.md)
+* [Vrijgeven](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Openbaarmaking voor Voice Talent](https://aka.ms/disclosure-voice-talent)
+* [Openbaar making voor spraak-talen](https://aka.ms/disclosure-voice-talent)

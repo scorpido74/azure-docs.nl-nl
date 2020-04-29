@@ -1,6 +1,6 @@
 ---
-title: Continue implementatie vanuit Azure Repos
-description: Meer informatie over het gebruik van de Azure CLI om de implementatie en het beheer van uw App Service-app te automatiseren. In dit voorbeeld ziet u hoe u CI/CD instelt vanuit Azure Repos.
+title: Continue implementatie vanuit Azure opslag plaatsen
+description: Meer informatie over het gebruik van de Azure CLI voor het automatiseren van de implementatie en het beheer van uw App Service-app. In dit voor beeld ziet u hoe u CI/CD instelt vanuit Azure opslag plaatsen.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 389d3bd3-cd8e-4715-a3a1-031ec061d385
@@ -10,17 +10,17 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: c0e9db3825de9c8c1429bec1edcc6bbb65588fcd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80058043"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>Een App Service-app maken met continue implementatie met behulp van Azure CLI
 
-Met dit voorbeeldscript wordt een app in App-service gemaakt met de bijbehorende resources en wordt de continue implementatie vanuit een Azure DevOps-opslagplaats ingesteld. Voor dit voorbeeld hebt u het volgende nodig:
+Met dit voorbeeld script wordt een app gemaakt in App Service met de bijbehorende resources en wordt vervolgens doorlopende implementatie vanuit een Azure DevOps-opslag plaats ingesteld. Voor dit voorbeeld hebt u het volgende nodig:
 
-* Een Azure DevOps-opslagplaats met toepassingscode waarvoor u beheerdersmachtigingen hebt.
+* Een Azure DevOps-opslag plaats met toepassings code, waarvoor u beheerders machtigingen hebt.
 * Een [persoonlijk toegangstoken (PAT)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts) voor uw Azure DevOps-organisatie.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

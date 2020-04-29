@@ -1,5 +1,5 @@
 ---
-title: Pushmeldingen verzenden naar Windows Phone-apps met Azure Notification Hubs| Microsoft Documenten
+title: Push meldingen verzenden naar Windows Phone-apps met behulp van Azure Notification Hubs | Microsoft Docs
 description: In deze zelfstudie leert u hoe u met Azure Notification Hubs pushmeldingen verzendt naar een Windows Phone 8 of Windows Phone 8.1 Silverlight-toepassing.
 services: notification-hubs
 documentationcenter: windows
@@ -19,13 +19,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 9cad4bfc474ef23492858ed3b0a6447932b589b4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80127084"
 ---
-# <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>Zelfstudie: Pushmeldingen verzenden naar Windows Phone-apps met behulp van Meldingenhubs
+# <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>Zelf studie: Push meldingen verzenden naar Windows Phone-apps met behulp van Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -141,7 +141,7 @@ In deze sectie maakt u een Windows Phone-toepassing die zichzelf bij uw Notifica
 
     1. Selecteer **Windows Phone** bij **Platforms**.
     2. Selecteer **Pop-up** bij **Meldingstype**.
-    3. Selecteer **Verzenden**
+    3. Selecteer **verzenden**
     4. Bekijk het **resultaat** in de lijst onderaan het venster.
 
         ![Het venster Verzenden testen](./media/notification-hubs-windows-phone-get-started/test-send-window.png)

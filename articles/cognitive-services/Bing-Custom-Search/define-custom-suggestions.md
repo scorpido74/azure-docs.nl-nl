@@ -1,7 +1,7 @@
 ---
-title: Aangepaste suggesties voor automatisch voorstellen definiëren - Bing Custom Search
+title: Aangepaste suggesties voor automatische suggesties definiëren-Bing Aangepaste zoekopdrachten
 titleSuffix: Azure Cognitive Services
-description: Aangepaste Autosuggest retourneert een lijst met voorgestelde querytekenreeksen die relevant zijn voor uw zoekervaring.
+description: Aangepaste automatische suggestie retourneert een lijst met voorgestelde zoek opdracht reeksen die relevant zijn voor uw zoek ervaring.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,67 +11,67 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
 ms.openlocfilehash: 5b2b8871d868e827532f23c7ef4f14fb00afb5bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74072805"
 ---
-# <a name="configure-your-custom-autosuggest-experience"></a>Uw aangepaste autosuggest-ervaring configureren
+# <a name="configure-your-custom-autosuggest-experience"></a>Uw aangepaste automatische suggesties configureren
 
-Aangepaste Autosuggest retourneert een lijst met voorgestelde querytekenreeksen die relevant zijn voor uw zoekervaring. De voorgestelde querytekenreeksen zijn gebaseerd op een gedeeltelijke querytekenreeks die de gebruiker in het zoekvak opgeeft. De lijst bevat maximaal 10 suggesties. 
+Aangepaste automatische suggestie retourneert een lijst met voorgestelde zoek opdracht reeksen die relevant zijn voor uw zoek ervaring. De voorgestelde query teken reeksen zijn gebaseerd op een gedeeltelijke query teken reeks die de gebruiker in het zoekvak heeft. De lijst bevat een maximum van 10 suggesties. 
 
-U geeft op of u alleen aangepaste suggesties wilt retourneren of dat u ook Bing-suggesties wilt opnemen. Als u Bing-suggesties opneemt, worden aangepaste suggesties weergegeven vóór de Bing-suggesties. Als u voldoende relevante suggesties verstrekt, is het mogelijk dat de geretourneerde lijst met suggesties geen Bing-suggesties bevat. Bing-suggesties bevinden zich altijd in de context van uw aangepaste zoekinstantie. 
+U geeft aan of u alleen aangepaste suggesties wilt retour neren of ook Bing suggesties wilt toevoegen. Als u Bing Suggestions opneemt, worden er aangepaste suggesties voor de Bing-suggesties weer gegeven. Als u voldoende relevante suggesties levert, is het mogelijk dat de geretourneerde lijst met suggesties geen Bing-suggesties bevat. Bing-suggesties zijn altijd in de context van uw aangepaste zoek exemplaar. 
 
-Als u suggesties voor zoekopdrachten voor uw instantie wilt configureren, klikt u op het tabblad **Automatisch voorstellen.**  
+Klik op het tabblad **Automatische suggestie** om suggesties voor zoek query's voor uw exemplaar te configureren.  
 
 > [!NOTE]
-> Als u deze functie wilt gebruiken, moet u zich abonneren op Aangepast zoeken op het juiste niveau (zie [prijzen).](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)
+> Als u deze functie wilt gebruiken, moet u zich abonneren op een aangepaste zoek opdracht op het juiste niveau (Zie [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)).
 
-Het kan tot 24 uur duren voordat suggesties worden weergegeven in het servereindpunt (API of gehoste gebruikersinterface).
+Het kan tot 24 uur duren voordat suggesties worden weer gegeven in het verzorgings eindpunt (API of gehoste gebruikers interface).
 
 ## <a name="enable-bing-suggestions"></a>Bing-suggesties inschakelen
 
-Als u Bing-suggesties wilt inschakelen, schakelt u de schuifregelaar **Automatische Bing-suggesties** in op de op-positie. De schuifregelaar wordt blauw.
+Als u Bing-suggesties wilt inschakelen, schakelt u de schuif regelaar voor **automatische Bing-suggesties** in op de positie aan. De schuif regelaar wordt blauw.
 
-## <a name="add-your-own-suggestions"></a>Voeg uw eigen suggesties toe
+## <a name="add-your-own-suggestions"></a>Uw eigen suggesties toevoegen
 
-Als u uw eigen suggesties voor querytekenreeksen wilt toevoegen, voegt u deze toe aan de lijst onder door **de gebruiker gedefinieerde suggesties**. Nadat u een suggestie in de lijst hebt **+** toegevoegd, drukt u op de enter-toets of klikt u op het pictogram. U de suggestie in elke taal opgeven. U maximaal 5.000 querytekenreekssuggesties toevoegen.
+Als u uw eigen query teken reeks suggesties wilt toevoegen, voegt u deze toe aan de lijst onder door de **gebruiker gedefinieerde suggesties**. Nadat u een suggestie in de lijst hebt toegevoegd, drukt u op ENTER of **+** klikt u op het pictogram. U kunt de suggestie in elke taal opgeven. U kunt Maxi maal 5.000 query teken reeks suggesties toevoegen.
 
-## <a name="upload-suggestions"></a>Suggesties uploaden
+## <a name="upload-suggestions"></a>Suggesties voor uploaden
 
-Als optie u een lijst met suggesties uit een bestand uploaden. Het bestand moet één querytekenreeks per regel bevatten. Als u het bestand wilt uploaden, klikt u op het pictogram uploaden en selecteert u het bestand dat u wilt uploaden. De service haalt de suggesties uit het bestand en voegt deze toe aan de lijst.
+Als optie kunt u een lijst met suggesties uit een bestand uploaden. Het bestand moet één Zoek query teken reeks per regel bevatten. Als u het bestand wilt uploaden, klikt u op het pictogram uploaden en selecteert u het bestand dat u wilt uploaden. De service extraheert de suggesties uit het bestand en voegt deze toe aan de lijst.
 
 ## <a name="remove-suggestions"></a>Suggesties verwijderen
 
-Als u een suggestie voor een querytekenreeks wilt verwijderen, klikt u op het pictogram Verwijderen naast de suggestie die u wilt verwijderen.
+Als u een suggestie voor een query reeks wilt verwijderen, klikt u op het pictogram verwijderen naast het voor Stel dat u wilt verwijderen.
 
-## <a name="block-suggestions"></a>Suggesties blokkeren
+## <a name="block-suggestions"></a>Suggesties blok keren
 
-Als u Bing-suggesties opneemt, u een lijst met querytekenreeksen toevoegen waarvan u niet wilt dat Bing terugkeert. Als u geblokkeerde querytekenreeksen wilt toevoegen, klikt u op **Geblokkeerde suggesties weergeven**. Voeg de querytekenreeks toe aan de lijst **+** en druk op de enter-toets of klik op het pictogram. U maximaal 50 geblokkeerde querytekenreeksen toevoegen.
+Als u Bing Suggestions opneemt, kunt u een lijst met zoek opdracht reeksen toevoegen die niet door Bing moeten worden geretourneerd. Klik op **geblokkeerde suggesties weer geven**om geblokkeerde query reeksen toe te voegen. Voeg de query reeks toe aan de lijst en druk op ENTER of klik op **+** het pictogram. U kunt Maxi maal 50 geblokkeerde query reeksen toevoegen.
 
 
 
 [!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
 >[!NOTE]  
->Het kan tot 24 uur duren voordat aangepaste configuratiewijzigingen automatisch worden doorgevoerd.
+>Het kan tot 24 uur duren voordat aangepaste wijzigingen in de configuratie van de automatische suggestie van kracht worden.
 
 
-## <a name="enabling-autosuggest-in-hosted-ui"></a>Autosuggest inschakelen in gehoste gebruikersinterface
+## <a name="enabling-autosuggest-in-hosted-ui"></a>Automatische suggesties inschakelen in de gehoste UI
 
-Als u querytekenreekssuggesties voor uw gehoste gebruikersinterface wilt inschakelen, klikt u op **Gehoste gebruikersinterface**. Schuif omlaag naar de sectie **Extra configuratie.** Selecteer **onder Zoeken op internet**de optie **Aan** voor Automatisch **voorstellen inschakelen**. Als u Automatisch voorstellen wilt inschakelen, moet u een indeling selecteren die een zoekvak bevat.
+Klik op **gehoste gebruikers interface**om suggesties voor query reeksen voor uw gehoste gebruikers interface in te scha kelen. Schuif omlaag naar de sectie **aanvullende configuratie** . Selecteer onder **zoeken** **op** Internet voor **Automatische suggestie inschakelen**. Als u automatische suggesties wilt inschakelen, moet u een indeling selecteren die een zoekvak bevat.
 
 
-## <a name="calling-the-autosuggest-api"></a>De API voor Autosuggest aanroepen
+## <a name="calling-the-autosuggest-api"></a>De automatische suggestie-API aanroepen
 
-Als u voorgestelde querytekenreeksen wilt krijgen `GET` met de Bing Custom Search API, stuurt u een aanvraag naar het volgende eindpunt.
+Als u voorgestelde query teken reeksen wilt ophalen met behulp `GET` van de Bing Custom Search-API, stuurt u een aanvraag naar het volgende eind punt.
 
 ```
 GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/Suggestions 
 ```
 
-Het antwoord bevat `SearchAction` een lijst met objecten die de voorgestelde querytekenreeksen bevatten.
+Het antwoord bevat een lijst met `SearchAction` objecten die de voorgestelde query teken reeksen bevatten.
 
 ```
         {  
@@ -81,13 +81,13 @@ Het antwoord bevat `SearchAction` een lijst met objecten die de voorgestelde que
         },  
 ```
 
-Elke suggestie `displayText` bevat `query` een en veld. Het `displayText` veld bevat de voorgestelde querytekenreeks die u gebruikt om de vervolgkeuzelijst van uw zoekvak in te vullen.
+Elke suggestie bevat een `displayText` en `query` -veld. Het `displayText` veld bevat de voorgestelde query teken reeks die u gebruikt om de vervolg keuzelijst van uw zoekvak in te vullen.
 
-Als de gebruiker een voorgestelde querytekenreeks selecteert in de vervolgkeuzelijst, gebruikt u de querytekenreeks in het `query` veld wanneer u de Bing Custom Search [API](overview.md)aanroept.
+Als de gebruiker een voorgestelde query teken reeks in de vervolg keuzelijst selecteert, gebruikt u de query reeks `query` in het veld bij het aanroepen van de [Bing Custom Search-API](overview.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Aangepaste suggesties ophalen](./get-custom-suggestions.md)
-- [Uw aangepaste instantie doorzoeken](./search-your-custom-view.md)
-- [Aangepaste gehoste gebruikersinterface configureren en gebruiken](./hosted-ui.md)
+- [Zoek uw aangepaste exemplaar](./search-your-custom-view.md)
+- [Aangepaste gehoste gebruikers interface configureren en gebruiken](./hosted-ui.md)

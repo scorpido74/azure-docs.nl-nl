@@ -1,5 +1,5 @@
 ---
-title: Voorbeeld van de gebruikersinterface van LUIS-portalen
+title: Preview-versie van LUIS Portal-gebruikers interface
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -9,11 +9,11 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: diberry
 ms.openlocfilehash: eaa4aff264006371be93fda26d43ef33c20b4405
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73613698"
 ---
 > [!NOTE]
-> Dit document maakt gebruik van de [preview LUIS-portal](https://preview.luis.ai). 
+> Dit document maakt gebruik van de [Preview-Luis Portal](https://preview.luis.ai). 

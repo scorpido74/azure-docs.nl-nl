@@ -1,7 +1,7 @@
 ---
-title: Vertaling aanpassen - Vertaler Tekst API
+title: Aanpassing van vertalingen-Translator Text-API
 titleSuffix: Azure Cognitive Services
-description: Gebruik de Microsoft Translator Hub om uw eigen machinevertaalsysteem te bouwen met uw gewenste terminologie en stijl.
+description: Gebruik de micro soft Translator-hub om uw eigen machine-Vertaal systeem te bouwen met behulp van de gewenste terminologie en stijl.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,57 +11,57 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.openlocfilehash: be9c06d45da4d83c26f82343c9cb7b19ba19b4ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71257626"
 ---
-# <a name="customize-your-text-translations"></a>Uw tekstvertalingen aanpassen
+# <a name="customize-your-text-translations"></a>Uw tekst vertalingen aanpassen
 
-De Microsoft Custom Translator is een functie van de Microsoft Translator-service, waarmee gebruikers de geavanceerde neurale machinevertaling van Microsoft Translator kunnen aanpassen bij het vertalen van tekst met behulp van de Translator Text API (alleen versie 3).
+Micro soft Custom Translator is een functie van de micro soft Translator-service, waarmee gebruikers de geavanceerde Neural machine vertalingen van micro soft Translator kunnen aanpassen bij het vertalen van tekst met behulp van de Translator Text-API (alleen versie 3).
 
-De functie kan ook worden gebruikt om spraakvertaling aan te passen wanneer deze wordt gebruikt met [Cognitive Services Speech.](https://docs.microsoft.com/azure/cognitive-services/speech-service/)
+De functie kan ook worden gebruikt om spraak omzetting aan te passen wanneer u deze gebruikt met [Cognitive Services speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
 
 ## <a name="custom-translator"></a>Custom Translator
 
-Met Custom Translator u neurale vertaalsystemen bouwen die inzicht hebben in de terminologie die wordt gebruikt in uw eigen bedrijf en branche. Het aangepaste vertaalsysteem wordt vervolgens geïntegreerd in bestaande toepassingen, workflows en websites.
+Met Custom Translator kunt u Neural-Vertaal systemen bouwen die inzicht hebben in de terminologie die wordt gebruikt in uw eigen bedrijf en branche. Het aangepaste Vertaal systeem wordt vervolgens geïntegreerd in bestaande toepassingen, werk stromen en websites.
 
 ### <a name="how-does-it-work"></a>Hoe werkt het?
 
-Gebruik uw eerder vertaalde documenten (folders, webpagina's, documentatie, enz.) om een vertaalsysteem te bouwen dat uw domeinspecifieke terminologie en stijl weerspiegelt, beter dan een standaard vertaalsysteem. Gebruikers kunnen TMX-, XLIFF-, TXT-, DOCX- en XLSX-documenten uploaden.  
+Gebruik uw eerder vertaalde documenten (folders, webpagina's, documentatie enz.) om een Vertaal systeem te maken dat overeenkomt met uw specifieke terminologie en stijl van uw domein, beter dan een standaard Vertaal systeem. Gebruikers kunnen TMX-, XLIFF-, TXT-, DOCX-en XLSX-documenten uploaden.  
 
-Het systeem accepteert ook gegevens die parallel lopen op documentniveau, maar nog niet zijn uitgelijnd op zinsniveau. Als gebruikers toegang hebben tot versies van dezelfde inhoud in meerdere talen, maar in afzonderlijke documenten kan Aangepaste Vertaler zinnen automatisch koppelen aan documenten.  Het systeem kan ook eentalige gegevens in een of beide talen gebruiken om de parallelle trainingsgegevens aan te vullen om de vertalingen te verbeteren.
+Het systeem accepteert ook gegevens die parallel zijn op document niveau, maar die nog niet zijn afgestemd op het niveau van de zin. Als gebruikers toegang hebben tot versies van dezelfde inhoud in meerdere talen, maar in afzonderlijke documenten aangepaste vertalers kunnen automatisch worden afgestemd op de verschillende documenten.  Het systeem kan ook Monolingual-gegevens in een of beide talen gebruiken om de parallelle trainings gegevens aan te vullen om de vertalingen te verbeteren.
 
-Het aangepaste systeem is dan beschikbaar via een regelmatige oproep naar de Microsoft Translator Text API met behulp van de categorieparameter.
+Het aangepaste systeem is vervolgens beschikbaar via een regel matige oproep naar de micro soft-Translator Text-API met behulp van de para meter Category.
 
-Gezien het juiste type en de hoeveelheid trainingsgegevens is het niet ongewoon om winsten tussen 5 en 10 te verwachten, of zelfs meer BLEU-punten op de vertaalkwaliteit met behulp van Custom Translator.
+Gezien het passende type en de juiste hoeveelheid trainings gegevens, is het niet ongebruikelijk om te verwachten dat er geen winst meer is tussen 5 en 10, of zelfs meer BLEU punten op Vertaal kwaliteit door gebruik te maken van aangepaste vertalers.
 
-Meer details over de verschillende aanpassingsniveaus op basis van beschikbare gegevens vindt u in de [Gebruikershandleiding Voor aangepaste vertalers.](https://aka.ms/CustomTranslatorDocs)
+Meer informatie over de verschillende aanpassings niveaus op basis van beschik bare gegevens vindt u in de [Gebruikers handleiding voor aangepaste vertalers](https://aka.ms/CustomTranslatorDocs).
 
 
-## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
+## <a name="microsoft-translator-hub"></a>Micro soft Translator-hub
 
 > [!NOTE]
-> De verouderde Microsoft Translator Hub wordt op 17 mei 2019 met pensioen gegaan. [Bekijk belangrijke migratie-informatie en -datums](https://www.microsoft.com/translator/business/hub/).  
+> De verouderde micro soft Translator-hub wordt op 17 mei 2019 buiten gebruik gesteld. [Belang rijke migratie-informatie en-datums weer geven](https://www.microsoft.com/translator/business/hub/).  
 
-## <a name="custom-translator-versus-hub"></a>Aangepaste vertaler versus hub
+## <a name="custom-translator-versus-hub"></a>Aangepaste Translator versus hub
 
 |   | **Hub** | **Custom Translator**|
 |:-----|:----:|:----:|
-|Functiestatus aanpassen   | Algemene beschikbaarheid  | Algemene beschikbaarheid |
-| Text API-versie  | V2 alleen   | V3 alleen |
+|Status van aanpassings functie   | Algemene Beschik baarheid  | Algemene Beschik baarheid |
+| Tekst-API-versie  | Alleen v2   | Alleen v3 |
 | SMT-aanpassing | Ja   | Nee |
-| NMT-aanpassing | Nee    | Ja |
-| Nieuwe uniforme Spraakservices aanpassing | Nee    | Ja |
-| [Geen spoor](https://www.aka.ms/notrace) | Ja  | Ja |
+| NMT aanpassen | Nee    | Ja |
+| Nieuwe aanpassing van Unified speech Services | Nee    | Ja |
+| [Geen tracering](https://www.aka.ms/notrace) | Ja  | Ja |
 
-## <a name="collaborative-translations-framework"></a>Samenwerkingskader voor vertalingen
+## <a name="collaborative-translations-framework"></a>Framework voor gezamenlijke vertalingen
 
 > [!NOTE]
-> Vanaf 1 februari 2018 zijn AddTranslation() en AddTranslationArray() niet meer beschikbaar voor gebruik met de Translator Text API V2.0. Deze methoden zullen mislukken en niets zal worden geschreven. De Translator Text API V3.0 ondersteunt deze methoden niet.
+> Vanaf 1 februari 2018, AddTranslation () en AddTranslationArray () zijn niet meer beschikbaar voor gebruik met de Translator Text-API V 2.0. Deze methoden mislukken en er worden niets geschreven. De Translator Text-API V 3.0 biedt geen ondersteuning voor deze methoden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een aangepast taalsysteem instellen met aangepaste vertaler](https://aka.ms/CustomTranslatorDocs)
+> [Een aangepast taal systeem instellen met behulp van aangepaste Translator](https://aka.ms/CustomTranslatorDocs)

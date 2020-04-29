@@ -1,7 +1,7 @@
 ---
-title: Een trainingsgegevensset maken voor een aangepast model - Formulierherkenning
+title: Een trainings gegevensverzameling maken voor een aangepaste herkenner van het model formulier
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over hoe u ervoor zorgen dat uw trainingsgegevensset is geoptimaliseerd voor het trainen van een Form Recognizer-model.
+description: Meer informatie over hoe u ervoor kunt zorgen dat uw trainings gegevensverzameling is geoptimaliseerd voor het trainen van een model voor formulier herkenning.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,41 +10,41 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
 ms.openlocfilehash: 71ad7c5dd3ad74082da552cd3c45142bc0c2d624
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75380623"
 ---
-# <a name="build-a-training-data-set-for-a-custom-model"></a>Een trainingsgegevensset maken voor een aangepast model
+# <a name="build-a-training-data-set-for-a-custom-model"></a>Een trainings gegevensverzameling voor een aangepast model bouwen
 
-Wanneer u het aangepaste model Form Recognizer gebruikt, verstrekt u uw eigen trainingsgegevens, zodat het model kan trainen naar uw branchespecifieke formulieren. U een model trainen met vijf ingevulde formulieren of een leeg formulier (u moet het woord 'leeg' in de bestandsnaam opnemen) plus twee ingevulde formulieren. Zelfs als u voldoende ingevulde formulieren hebt om mee te trainen, kan het toevoegen van een leeg formulier aan uw trainingsgegevensset de nauwkeurigheid van het model verbeteren.
+Wanneer u het aangepaste model voor formulier herkenning gebruikt, geeft u uw eigen trainings gegevens op zodat het model kan worden opgeleid voor uw branchespecifieke formulieren. U kunt een model trainen met vijf ingevulde formulieren of een leeg formulier (u moet het woord ' empty ' in de bestands naam) plus twee ingevulde formulieren toevoegen. Zelfs als u over voldoende ingevulde formulieren beschikt voor het trainen van, kunt u een leeg formulier toevoegen aan uw trainings gegevensset om de nauw keurigheid van het model te verbeteren.
 
-Als u handmatig gelabelde trainingsgegevens wilt gebruiken, moet u beginnen met ten minste vijf vormen van hetzelfde type. U nog steeds niet-gelabelde formulieren en een leeg formulier in dezelfde gegevensset gebruiken.
+Als u hand matig gelabelde trainings gegevens wilt gebruiken, moet u beginnen met ten minste vijf soorten van hetzelfde type. U kunt nog steeds niet-gelabelde formulieren en een leeg formulier in dezelfde gegevensset gebruiken.
 
-## <a name="training-data-tips"></a>Tips voor trainingsgegevens
+## <a name="training-data-tips"></a>Tips voor trainings gegevens
 
-Het is belangrijk om een gegevensset te gebruiken die is geoptimaliseerd voor training. Gebruik de volgende tips om ervoor te zorgen dat u de beste resultaten krijgt van de bewerking [Train Custom Model:](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)
+Het is belang rijk dat u een gegevens verzameling gebruikt die is geoptimaliseerd voor training. Gebruik de volgende tips om ervoor te zorgen dat u de beste resultaten krijgt van de bewerking [aangepast model van Train](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) :
 
-* Gebruik indien mogelijk pdf-documenten op basis van tekst in plaats van op afbeeldingen gebaseerde documenten. Gescande PDF's worden verwerkt als afbeeldingen.
-* Gebruik voorbeelden die al hun velden hebben ingevuld voor ingevulde formulieren.
+* Gebruik zo mogelijk PDF-documenten op basis van tekst in plaats van op afbeeldingen gebaseerde documenten. Gescande Pdf's worden behandeld als installatie kopieën.
+* Voor ingevulde formulieren gebruikt u voor beelden waarvoor alle velden zijn ingevuld.
 * Gebruik in formulieren met in elk veld verschillende waarden.
-* Als uw formulierafbeeldingen van lagere kwaliteit zijn, gebruikt u bijvoorbeeld een grotere gegevensset (10-15 afbeeldingen).
-* De totale grootte van de trainingsgegevensset kan oplopen tot 500 pagina's.
+* Als uw formulier afbeeldingen een lagere kwaliteit hebben, gebruikt u een grotere gegevensset (bijvoorbeeld 10-15 installatie kopieën).
+* De totale grootte van de set met trainings gegevens kan Maxi maal 500 pagina's zijn.
 
-## <a name="general-input-requirements"></a>Algemene inputvereisten
+## <a name="general-input-requirements"></a>Algemene invoer vereisten
 
-Zorg ervoor dat uw trainingsgegevensset ook voldoet aan de invoervereisten voor alle form recognizeer-inhoud. 
+Zorg ervoor dat uw trainings gegevensverzameling ook voldoet aan de invoer vereisten voor alle inhoud van de formulier herkenning. 
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
 
-## <a name="upload-your-training-data"></a>Uw trainingsgegevens uploaden
+## <a name="upload-your-training-data"></a>Uw trainings gegevens uploaden
 
-Wanneer u de set formulierdocumenten hebt samengesteld die u voor training gebruikt, moet u deze uploaden naar een Azure blob-opslagcontainer. Als u niet weet hoe u een Azure-opslagaccount met een container maakt, volgt u de [snelstart voor Azure-portal voor Azure-opslag.](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
+Wanneer u de set formulier documenten die u voor training gebruikt, hebt samengesteld, moet u deze uploaden naar een Azure Blob Storage-container. Als u niet weet hoe u een Azure-opslag account maakt met een container, volgt u de [Azure Storage Snelstartgids voor Azure Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
 
-### <a name="organize-your-data-in-subfolders-optional"></a>Uw gegevens ordenen in submappen (optioneel)
+### <a name="organize-your-data-in-subfolders-optional"></a>Organiseer uw gegevens in submappen (optioneel)
 
-Standaard gebruikt de [API voor aangepast model trainen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) alleen formulierdocumenten die zich aan de basis van uw opslagcontainer bevinden. U echter trainen met gegevens in submappen als u deze opgeeft in de API-aanroep. Normaal gesproken heeft de hoofdtekst van de [aanroep Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) het volgende formulier, waar `<SAS URL>` is de URL van de url van de handtekening van de gedeelde toegang van uw container:
+Standaard worden alleen formulier documenten gebruikt die zich [in de hoofdmap](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) van uw opslag container bevinden. U kunt echter met gegevens in submappen trainen als u deze in de API-aanroep opgeeft. Normaal gesp roken heeft de hoofd tekst van de [trein aangepaste model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) aanroep het volgende formulier `<SAS URL>` , waarbij de URL van de gedeelde Access-hand tekening van de container is:
 
 ```json
 {
@@ -52,7 +52,7 @@ Standaard gebruikt de [API voor aangepast model trainen](https://westus2.dev.cog
 }
 ```
 
-Als u de volgende inhoud toevoegt aan de aanvraaginstantie, wordt de API getraind met documenten in submappen. Het `"prefix"` veld is optioneel en beperkt de trainingsgegevensset tot bestanden waarvan de paden beginnen met de opgegeven tekenreeks. Dus een `"Test"`waarde van, bijvoorbeeld, zal ertoe leiden dat de API om alleen te kijken naar de bestanden of mappen die beginnen met het woord "Test".
+Als u de volgende inhoud aan de aanvraag tekst toevoegt, wordt de API getraind met documenten die zich in submappen bevinden. Het `"prefix"` veld is optioneel en beperkt de set trainings gegevens tot bestanden waarvan het pad begint met de opgegeven teken reeks. Een waarde van `"Test"`bijvoorbeeld resulteert in de API alleen om te kijken naar de bestanden of mappen die beginnen met het woord ' test '.
 
 ```json
 {
@@ -67,8 +67,8 @@ Als u de volgende inhoud toevoegt aan de aanvraaginstantie, wordt de API getrain
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u een trainingsgegevensset maken, volgt u een snelle start om een aangepast formulierherkenningsmodel te trainen en deze op uw formulieren te gebruiken.
+Nu u hebt geleerd hoe u een set trainings gegevens bouwt, volgt u een Snelstartgids om een aangepast model voor formulier herkenning te trainen en te beginnen met het gebruik ervan in uw formulieren.
 
-* [Snelstart: een model trainen en formuliergegevens extraheren met behulp van cURL](./quickstarts/curl-train-extract.md)
-* [Snelstart: train een model en verpak formuliergegevens met de REST API met Python](./quickstarts/python-train-extract.md)
+* [Snelstartgids: een model trainen en formulier gegevens extra heren met behulp van krul](./quickstarts/curl-train-extract.md)
+* [Quick Start: een model trainen en formulier gegevens extra heren met behulp van de REST API met python](./quickstarts/python-train-extract.md)
 * [Trainen met labels met behulp van de REST API en Python](./quickstarts/python-labeled-data.md)

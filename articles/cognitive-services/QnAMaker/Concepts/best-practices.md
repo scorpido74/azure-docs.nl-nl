@@ -1,145 +1,145 @@
 ---
-title: Best practices - QnA Maker
-description: Gebruik deze aanbevolen procedures om uw kennisbank te verbeteren en betere resultaten te bieden aan de eindgebruikers van uw applicatie/chatbot.
+title: Aanbevolen procedures-QnA Maker
+description: Gebruik deze aanbevolen procedures om uw Knowledge Base te verbeteren en betere resultaten te bieden aan de eind gebruikers van uw toepassing/chat-bot.
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.openlocfilehash: 9a6f7f7d6edc4544942476050a1ed3c2011af7fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80053134"
 ---
-# <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Best practices van een Kennisbank QnA Maker
+# <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Aanbevolen procedures voor een QnA Maker Knowledge Base
 
-De [knowledge base development lifecycle](../Concepts/development-lifecycle-knowledge-base.md) begeleidt u bij het beheren van uw KB van begin tot eind. Gebruik deze best practices om uw kennisbank te verbeteren en betere resultaten te bieden aan de eindgebruikers van uw clienttoepassing of chatbot.
+De [Knowledge Base-ontwikkelings levenscyclus](../Concepts/development-lifecycle-knowledge-base.md) helpt u bij het beheren van uw KB van begin tot eind. Gebruik deze aanbevolen procedures om uw Knowledge Base te verbeteren en betere resultaten te bieden aan de eind gebruikers van uw client toepassing of chat-bot.
 
 ## <a name="extraction"></a>Extractie
 
-De QnA Maker-service verbetert voortdurend de algoritmen die QnA's uit inhoud halen en breidt de lijst met ondersteunde bestands- en HTML-indelingen uit. Volg de [richtlijnen](../Concepts/content-types.md) voor gegevensextractie op basis van uw documenttype.
+De QnA Maker-service verbetert de algoritmen die QnAs extra heren uit inhoud en breiden de lijst met ondersteunde bestands-en HTML-indelingen voortdurend uit. Volg de [richt lijnen](../Concepts/content-types.md) voor gegevens extractie op basis van uw document type.
 
-In het algemeen moeten FAQ-pagina's op zichzelf staan en niet worden gecombineerd met andere informatie. Producthandleidingen moeten duidelijke koppen en bij voorkeur een indexpagina hebben.
+Over het algemeen moeten pagina's met veelgestelde vragen zelfstandig zijn en niet worden gecombineerd met andere informatie. Product handleidingen moeten duidelijke kopteksten en bij voor keur een index pagina bevatten.
 
 ### <a name="configuring-multi-turn"></a>Multi-turn configureren
 
-[Creëer je kennisbank](../how-to/multiturn-conversation.md#create-a-multi-turn-conversation-from-a-documents-structure) met multi-turn extractie ingeschakeld. Als uw kennisbank de vraaghiërarchie wel of juist ondersteunt, kan deze hiërarchie uit het document worden gehaald of worden gemaakt nadat het document is geëxtraheerd.
+[Maak uw Knowledge Base](../how-to/multiturn-conversation.md#create-a-multi-turn-conversation-from-a-documents-structure) met meerdere Schakel extractie ingeschakeld. Als uw Knowledge Base wel of geen vraag hiërarchie ondersteunt, kan deze hiërarchie worden geëxtraheerd uit het document of worden gemaakt nadat het document is geëxtraheerd.
 
-## <a name="creating-good-questions-and-answers"></a>Goede vragen en antwoorden creëren
+## <a name="creating-good-questions-and-answers"></a>Goede vragen en antwoorden maken
 
 ### <a name="good-questions"></a>Goede vragen
 
-De beste vragen zijn eenvoudig. Overweeg het sleutelwoord of de zin voor elke vraag en maak vervolgens een eenvoudige vraag voor dat sleutelwoord of die zin.
+De beste vragen zijn eenvoudig. Bekijk het sleutel woord of de woord groep voor elke vraag en maak een eenvoudige vraag voor die sleutel woord of woord groep.
 
-Voeg zoveel alternatieve vragen als je nodig hebt, maar houd de wijzigingen eenvoudig. Het toevoegen van meer woorden of formuleringen die geen deel uitmaken van het belangrijkste doel van de vraag helpt QnA Maker niet om een overeenkomst te vinden.
+Voeg zoveel alternatieve vragen toe als u nodig hebt, maar behoud de aanpassingen eenvoudig. Het toevoegen van meer woorden of frasen die geen deel uitmaken van het belangrijkste doel van de vraag, helpt niet bij het QnA Maker vinden van een overeenkomst.
 
 
 ### <a name="add-relevant-alternative-questions"></a>Relevante alternatieve vragen toevoegen
 
-Uw gebruiker kan vragen invoeren met een `How do I add a toner cartridge to my printer?` gespreksstijl van `toner cartridge`tekst of een trefwoordzoekopdracht zoals . De kennisbank moet beide stijlen van vragen hebben om het beste antwoord correct terug te geven. Als u niet zeker weet welke zoekwoorden een klant invoert, gebruikt u Toepassingsstatistiekengegevens om query's te analyseren.
+Uw gebruiker kan vragen invoeren met een spreek stijl of een zoek opdracht `How do I add a toner cartridge to my printer?` op tref woorden, zoals `toner cartridge`. De Knowledge Base moet beide stijlen van vragen hebben om het beste antwoord correct te kunnen retour neren. Als u niet zeker weet welke tref woorden een klant invoert, gebruikt u Application Insights gegevens voor het analyseren van query's.
 
 ### <a name="good-answers"></a>Goede antwoorden
 
-De beste antwoorden zijn eenvoudige antwoorden, maar niet te eenvoudig. Gebruik geen antwoorden `yes` zoals `no`en . Als uw antwoord moet linken naar andere bronnen of een rijke ervaring met media en links biedt, `strictFilters` gebruikt u [metagegevens om](../how-to/edit-knowledge-base.md#add-metadata) onderscheid te maken tussen antwoorden en verzendt u de [query](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) met metagegevenstags in de eigenschap om de juiste antwoordversie te krijgen.
+De beste antwoorden zijn eenvoudige antwoorden, maar niet te eenvoudig. Gebruik geen antwoorden zoals `yes` en. `no` Als uw antwoord moet worden gekoppeld aan andere bronnen of als u een uitgebreide ervaring met media en koppelingen wilt bieden, gebruikt u [labels voor meta gegevens](../how-to/edit-knowledge-base.md#add-metadata) om onderscheid te maken tussen antwoorden. `strictFilters` vervolgens verzendt u [de query](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) met de tags voor meta gegevens in de eigenschap om de juiste antwoord versie te verkrijgen.
 
-|Antwoord|Follup-up prompts|
+|Antwoord|Follup vragen|
 |--|--|
-|Sluit de Surface-laptop uit met de aan/uit-knop op het toetsenbord.|* Sleutelcombinaties om te slapen, af te sluiten en opnieuw op te starten.<br>* Hoe maak je hard-boot een Surface laptop<br>* Hoe verander je het BIOS voor een Surface-laptop<br>* Verschillen tussen slaap, afsluiten en opnieuw opstarten|
-|De klantenservice is 24 uur per dag bereikbaar via telefoon, Skype en sms.|* Contactgegevens voor verkoop.<br> * Kantoor- en winkellocaties en uren voor een persoonlijk bezoek.<br> * Accessoires voor een Surface-laptop.|
+|Schakel de Surface-laptop uit met de knop aan/uit op het toetsen bord.|* Toetsen combinaties die in de slaap stand worden gezet, afgesloten en opnieuw starten.<br>* Een oppervlakte laptop hard opstarten<br>* Het BIOS voor een Surface-laptop wijzigen<br>* Verschillen tussen de slaap stand, afsluiten en opnieuw opstarten|
+|Klanten service is 24 uur per dag beschikbaar via telefoon-, Skype-en SMS-berichten.|* Neem contact op met de verkoop gegevens.<br> * Kantoor-en opslag locaties en-uren voor een persoonlijk bezoek.<br> * Accessoires voor een Surface-laptop.|
 
-## <a name="chit-chat"></a>Chit-Chat Chit-Chat
-Voeg chit-chat toe aan je bot, om je bot meer conversatie en boeiendheid te maken, met een lage inspanning. U eenvoudig chit-chat-gegevenssets toevoegen van vooraf gedefinieerde persoonlijkheden bij het maken van uw KB en deze op elk gewenst moment wijzigen. Meer informatie over het [toevoegen van chit-chat aan uw KB.](../How-To/chit-chat-knowledge-base.md)
+## <a name="chit-chat"></a>Chit-Chat
+Voeg Chit-Chat toe aan uw bot om uw bot meer praten en aantrekkelijker te maken, met weinig moeite. U kunt eenvoudig Chit toevoegen van vooraf gedefinieerde persoonlijke gegevens wanneer u uw KB maakt en deze op elk gewenst moment wijzigen. Meer informatie over het [toevoegen van Chit-Chat aan uw KB](../How-To/chit-chat-knowledge-base.md).
 
-Chit-chat wordt ondersteund in [vele talen.](../how-to/chit-chat-knowledge-base.md#language-support)
+Chit: chatten wordt ondersteund in [veel talen](../how-to/chit-chat-knowledge-base.md#language-support).
 
-### <a name="choosing-a-personality"></a>Het kiezen van een persoonlijkheid
-Chit-chat wordt ondersteund voor verschillende vooraf gedefinieerde persoonlijkheden:
+### <a name="choosing-a-personality"></a>Een persoonlijkheid kiezen
+Chit-Chat wordt ondersteund voor verschillende vooraf gedefinieerde persoonlijke voors:
 
-|Persoonlijkheid |QnA Maker-gegevenssetbestand |
+|Persoonlijkheid |QnA Maker Gegevenssetbestand |
 |---------|-----|
-|Professional |[qna_chitchat_professional.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
-|Vriendelijke |[qna_chitchat_friendly.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
-|Witty |[qna_chitchat_witty.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
-|Zorg |[qna_chitchat_caring.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
-|Enthousiast |[qna_chitchat_enthusiastic.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_enthusiastic.tsv) |
+|Professional |[qna_chitchat_professional. TSV](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
+|Weergave |[qna_chitchat_friendly. TSV](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
+|Witty |[qna_chitchat_witty. TSV](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
+|Caring |[qna_chitchat_caring. TSV](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
+|Enthousiast |[qna_chitchat_enthusiastic. TSV](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_enthusiastic.tsv) |
 
-De antwoorden variëren van formeel tot informeel en oneerbiedig. U moet de persoonlijkheid selecteren die het dichtst is afgestemd op de toon die u wilt voor uw bot. U de [gegevenssets](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)bekijken en een set kiezen die als basis voor uw bot dient en vervolgens de antwoorden aanpassen.
+De antwoorden variëren van formeel naar informele en irreverent. U moet de persoonlijkheid selecteren die het dichtst in de buurt is uitgelijnd met de Toon die u voor uw bot wilt. U kunt de [gegevens sets](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)bekijken en er een selecteren die als basis voor uw bot fungeert en vervolgens de antwoorden aanpassen.
 
-### <a name="edit-bot-specific-questions"></a>Botspecifieke vragen bewerken
-Er zijn een aantal bot-specifieke vragen die deel uitmaken van de chit-chat data set, en zijn ingevuld met generieke antwoorden. Wijzig deze antwoorden om uw botgegevens het beste weer te geven.
+### <a name="edit-bot-specific-questions"></a>Bot-specifieke vragen bewerken
+Er zijn bepaalde bot-specifieke vragen die deel uitmaken van de Chit-Chat gegevens verzameling en die zijn ingevuld met algemene antwoorden. Wijzig deze antwoorden zodat ze het beste overeenkomen met de details van uw bot.
 
-We raden u aan de volgende chit-chat QnAs specifieker te maken:
+We raden u aan om de volgende Chit-Chat QnAs specifieker te maken:
 
 * Wie ben jij?
-* Wat kun je doen?
+* Wat kunt u doen?
 * How old are you?
-* Wie heeft jou geschapen?
+* Wie heeft u gemaakt?
 * Hello
 
-### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>Aangepaste chit-chat toevoegen met een metadatatag
+### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>Aangepaste Chit-Chat toevoegen met een meta gegevens code
 
-Als u uw eigen chit-chat QnA paren toevoegt, zorg ervoor dat metadata toe te voegen, zodat deze antwoorden worden geretourneerd. Het metagegevensnaam/waardepaar is `editorial:chitchat`.
+Als u uw eigen Chit-Chat QnA-paren toevoegt, moet u ervoor zorgen dat u meta gegevens toevoegt zodat deze antwoorden worden geretourneerd. De naam/waarde-paar van `editorial:chitchat`de meta gegevens is.
 
-## <a name="searching-for-answers"></a>Zoeken naar antwoorden
+## <a name="searching-for-answers"></a>Antwoorden zoeken
 
-GenerateAnswer API gebruikt zowel vragen als het antwoord om te zoeken naar de beste antwoorden op de zoekopdracht van een gebruiker.
+GenerateAnswer-API maakt gebruik van beide vragen en het antwoord op zoek naar de beste antwoorden op de query van een gebruiker.
 
-### <a name="searching-questions-only-when-answer-is-not-relevant"></a>Alleen vragen zoeken als antwoord niet relevant is
+### <a name="searching-questions-only-when-answer-is-not-relevant"></a>Vragen alleen zoeken wanneer antwoord niet relevant is
 
-Gebruik [`RankerType=QuestionOnly`](#choosing-ranker-type) de als je niet wilt antwoorden zoeken.
+Gebruik de [`RankerType=QuestionOnly`](#choosing-ranker-type) als u geen antwoorden wilt zoeken.
 
-Een voorbeeld hiervan is wanneer de kennisbank is een catalogus van afkortingen als vragen met hun volledige vorm als het antwoord. De waarde van het antwoord zal niet helpen om te zoeken naar het juiste antwoord.
+Een voor beeld hiervan is wanneer de Knowledge Base een catalogus van acroniemen is als vragen met hun volledige formulier als antwoord. De waarde van het antwoord kan niet helpen bij het zoeken naar het juiste antwoord.
 
-## <a name="rankingscoring"></a>Ranking/scoren
-Zorg ervoor dat u optimaal gebruik maakt van de classificatiefuncties die QnA Maker ondersteunt. Hierdoor wordt de kans verbeterd dat een bepaalde gebruikersquery wordt beantwoord met een passend antwoord.
+## <a name="rankingscoring"></a>Rang schikking/Score
+Zorg ervoor dat u het beste gebruik maakt van de classificatie functies die QnA Maker ondersteunt. Als u dit doet, wordt de kans dat een bepaalde gebruikers query wordt beantwoord met een juiste reactie verbeterd.
 
-### <a name="choosing-a-threshold"></a>Een drempel kiezen
+### <a name="choosing-a-threshold"></a>Een drempel waarde kiezen
 
-De [standaardbetrouwbaarheidsscore](confidence-score.md) die als drempelwaarde wordt gebruikt, is 0, maar u [de drempelwaarde](confidence-score.md#set-threshold) voor uw KB wijzigen op basis van uw behoeften. Aangezien elke KB anders is, moet u de drempel testen en kiezen die het meest geschikt is voor uw KB.
+De standaard [betrouwbaarheids Score](confidence-score.md) die wordt gebruikt als drempel waarde is 0, maar u kunt [de drempel waarde](confidence-score.md#set-threshold) voor uw KB wijzigen op basis van uw behoeften. Omdat elke KB afwijkt, moet u de drempel waarde testen en kiezen die het meest geschikt is voor uw KB.
 
-### <a name="choosing-ranker-type"></a>Ranker-type kiezen
-QnA Maker doorzoekt standaard vragen en antwoorden. Als u alleen door vragen wilt zoeken om `RankerType=QuestionOnly` een antwoord te genereren, gebruikt u de post-hoofd van het verzoek generateanswer.
+### <a name="choosing-ranker-type"></a>Type rangorde kiezen
+QnA Maker zoekt standaard naar vragen en antwoorden. Als u alleen vragen wilt doorzoeken, gebruikt u de `RankerType=QuestionOnly` in de hoofd tekst van de GenerateAnswer-aanvraag om een antwoord te genereren.
 
 ### <a name="add-alternate-questions"></a>Alternatieve vragen toevoegen
-[Alternatieve vragen](../How-To/edit-knowledge-base.md) verbeteren de kans op een overeenkomst met een gebruikersquery. Alternatieve vragen zijn handig wanneer er meerdere manieren zijn waarop dezelfde vraag kan worden gesteld. Dit kunnen wijzigingen in de zinsstructuur en woordstijl omvatten.
+[Alternatieve vragen](../How-To/edit-knowledge-base.md) verbeteren de kans op een overeenkomst met een gebruikers query. Alternatieve vragen zijn handig wanneer er meerdere manieren zijn waarop dezelfde vraag kan worden gesteld. Dit kan wijzigingen bevatten in de sentence-structuur en de woord stijl.
 
 |Oorspronkelijke query|Alternatieve query's|Wijzigen|
 |--|--|--|
-|Is parkeren mogelijk?|Heeft u een parkeerplaats?|zinsstructuur|
- |Hallo|Yo<br>Hey daar!|woordstijl of slang|
+|Is parkeer plaatsen beschikbaar?|Hebt u een auto Park?|Sentence-structuur|
+ |Hallo|Yo<br>Dat is alles.|woord stijl of slang|
 
 <a name="use-metadata-filters"></a>
 
-### <a name="use-metadata-tags-to-filter-questions-and-answers"></a>Metagegevenstags gebruiken om vragen en antwoorden te filteren
+### <a name="use-metadata-tags-to-filter-questions-and-answers"></a>Tags voor meta gegevens gebruiken voor het filteren van vragen en antwoorden
 
-[Metagegevens](../How-To/edit-knowledge-base.md) voegt de mogelijkheid voor een clienttoepassing om te weten dat het niet alle antwoorden moet nemen, maar in plaats daarvan om de resultaten van een gebruikersquery te beperken op basis van metadatatags. Het antwoord van de kennisbank kan verschillen op basis van de metadatatag, zelfs als de query hetzelfde is. Bijvoorbeeld, *"waar is parkeren gelegen"* kan een ander antwoord hebben als de locatie van het restaurant tak is anders - dat wil zeggen, de metadata is *Locatie: Seattle* versus *Locatie: Redmond*.
+[Meta gegevens](../How-To/edit-knowledge-base.md) voegen de mogelijkheid toe om een client toepassing te laten weten dat deze niet alle antwoorden mag hebben, maar in plaats daarvan de resultaten van een gebruikers query te beperken op basis van meta gegevenslabels. Het antwoord van de Knowledge Base kan variëren op basis van de meta gegevens code, zelfs als de query hetzelfde is. Bijvoorbeeld *' waar bevindt zich parkeren '* kan een ander antwoord hebben als de locatie van de restaurant vertakking anders is, dat wil zeggen, de meta gegevens zijn *Locatie: Seattle* versus *Locatie: Redmond*.
 
 ### <a name="use-synonyms"></a>Synoniemen gebruiken
-Hoewel er enige ondersteuning is voor synoniemen in het Engels, gebruikt u hoofdletter-ongevoelige woordwijzigingen via de [Api Wijzigingen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) om synoniemen toe te voegen aan zoekwoorden die een andere vorm aannemen. Synoniemen worden toegevoegd op QnA Maker service-niveau en gedeeld door alle kennisbanken in de dienst.
+Hoewel er enige ondersteuning is voor synoniemen in de Engelse taal, gebruikt u hoofdletter gevoelige woord wijzigingen via de [aanpassings-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) om synoniemen toe te voegen aan tref woorden die een andere vorm hebben. Synoniemen worden toegevoegd op het QnA Maker service niveau en worden gedeeld door alle kennis grondslagen in de service.
 
-|Origineel woord|Synoniemen|
+|Oorspronkelijk woord|Synoniemen|
 |--|--|
-|Kopen|kopen<br>net-banking<br>netto bankieren|
+|ze|kopen<br>net-bankieren<br>net bankieren|
 
-### <a name="use-distinct-words-to-differentiate-questions"></a>Afzonderlijke woorden gebruiken om vragen te differentiëren
-QnA Maker's ranking algoritme, dat een gebruikersquery matcht met een vraag in de kennisbank, werkt het beste als elke vraag een andere behoefte aangaat. Herhaling van hetzelfde woord dat tussen vragen is ingesteld, vermindert de kans dat het juiste antwoord wordt gekozen voor een bepaalde gebruikersquery met die woorden.
+### <a name="use-distinct-words-to-differentiate-questions"></a>Afzonderlijke woorden gebruiken om vragen te onderscheiden
+Het classificatie algoritme van QnA Maker, dat overeenkomt met een gebruikers query met een vraag in de Knowledge Base, werkt het beste als elke vraag een andere behoefte behandelt. Herhaling van dezelfde woord set tussen vragen vermindert de kans dat het juiste antwoord wordt gekozen voor een bepaalde gebruikers query met deze woorden.
 
-U bijvoorbeeld twee afzonderlijke QnA's hebben met de volgende vragen:
+U kunt bijvoorbeeld twee afzonderlijke QnAs hebben met de volgende vragen:
 
-|QnA's|
+|QnAs|
 |--|
-|waar is de *parkeerlocatie*|
-|waar is de *ATM-locatie*|
+|waar bevindt zich de parkeer *locatie*|
+|waar is de ATM- *locatie*|
 
-Aangezien deze twee QnA's zijn geformuleerd met zeer vergelijkbare woorden, deze gelijkenis kan leiden tot zeer vergelijkbare scores voor veel gebruikersquery's die worden geformuleerd als *"waar is `<x>` de locatie"*. In plaats daarvan proberen om duidelijk te onderscheiden met vragen als *"waar is de parkeerplaats"* en *"waar is de atm"*, door het vermijden van woorden als "locatie" dat zou kunnen worden in veel vragen in uw KB.
+Omdat deze twee QnAs worden aangeduid met zeer vergelijk bare woorden, kan deze soort gelijke scores worden veroorzaakt door veel gebruikers query's die zijn aangeduid als *' waar is de `<x>` locatie '*. Probeer in plaats daarvan duidelijk te onderscheiden van query's zoals *' waar is de parkeer partij '* en *' waar is de ATM '*, door woorden als ' locatie ' te vermijden, zodat u veel vragen in uw KB kunt vinden.
 
 ## <a name="collaborate"></a>Samenwerken
-QnA Maker stelt gebruikers in staat om samen te [werken](../How-to/collaborate-knowledge-base.md) aan een kennisbank. Gebruikers hebben toegang nodig tot de Azure QnA Maker-brongroep om toegang te krijgen tot de kennisbases. Sommige organisaties willen de bewerken en het onderhoud van de kennisbasis mogelijk uitbesteden en kunnen nog steeds de toegang tot hun Azure-bronnen beveiligen. Dit editor-approver-model wordt gedaan door twee identieke [QnA Maker-services](../How-to/set-up-qnamaker-service-azure.md) in verschillende abonnementen in te stellen en er een te selecteren voor de bewerkingscyclus. Zodra het testen is voltooid, wordt de inhoud van de knowledge base overgedragen met een [import-exportproces](../Tutorials/migrate-knowledge-base.md) naar de QnA Maker-service van de goedkeurder die uiteindelijk de kennisbank publiceert en het eindpunt bijwerkt.
+Met QnA Maker kunnen gebruikers [samen werken](../How-to/collaborate-knowledge-base.md) aan een Knowledge Base. Gebruikers moeten toegang hebben tot de resource groep Azure QnA Maker om toegang te krijgen tot de kennis bases. Sommige organisaties willen het bewerken en onderhouden van de Knowledge Base mogelijk maken en nog steeds toegang tot hun Azure-resources kunnen beveiligen. Dit model voor redacteur-goed keuring wordt uitgevoerd door twee identieke [QnA Maker Services](../How-to/set-up-qnamaker-service-azure.md) in verschillende abonnementen in te stellen en er een te selecteren voor de bewerking voor het bewerken van de test cyclus. Zodra het testen is voltooid, wordt de inhoud van de Knowledge Base met een [import-export](../Tutorials/migrate-knowledge-base.md) proces overgebracht naar de QnA Maker-service van de goed keurder die de Knowledge Base uiteindelijk gaat publiceren en het eind punt bijwerkt.
 
 
 
 ## <a name="active-learning"></a>Actief leren
 
-[Actief leren](../How-to/use-active-learning.md) doet het beste werk van het suggereren van alternatieve vragen wanneer het een breed scala van kwaliteit en kwantiteit van de gebruiker op basis van query's heeft. Het is belangrijk om gebruikersquery's van client-applicaties zonder censuur toe te staan aan de actieve leerfeedbacklus. Zodra vragen worden voorgesteld in de QnA Maker-portal, u **[filteren op suggesties](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** en deze suggesties vervolgens bekijken en accepteren of afwijzen.
+Met het [actieve leer proces](../How-to/use-active-learning.md) wordt geadviseerd om alternatieve vragen te stellen wanneer het een breed scala van kwaliteit en aantal op gebruikers gebaseerde query's heeft. Het is belang rijk om gebruikers query's van client toepassingen toe te staan om deel te nemen aan de feedback-lus van het actieve Learning zonder dat de censoren. Zodra vragen worden voorgesteld in de QnA Maker Portal, kunt u **[filteren op suggesties](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** en deze suggesties bekijken en accepteren of afwijzen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,7 +1,7 @@
 ---
-title: URL-voorgebouwde entiteiten - LUIS
+title: URL-preconstrueerde entiteiten-LUIS
 titleSuffix: Azure Cognitive Services
-description: Dit artikel bevat vooraf ingebouwde informatie over de url in Language Understanding (LUIS).
+description: Dit artikel bevat URL-vooraf opgebouwde entiteits gegevens in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,27 +12,27 @@ ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
 ms.openlocfilehash: 49f145ce3e9022826abad5d274dd611bb2cc6530
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270352"
 ---
-# <a name="url-prebuilt-entity-for-a-luis-app"></a>URL-voorgebouwde entiteit voor een LUIS-app
-URL-entiteit haalt URL's uit met domeinnamen of IP-adressen. Omdat deze entiteit al is getraind, hoeft u geen voorbeelduitingen met URL's aan de toepassing toe te voegen. URL-entiteit wordt `en-us` alleen ondersteund in cultuur.
+# <a name="url-prebuilt-entity-for-a-luis-app"></a>URL preconstrueerde entiteit voor een LUIS-app
+URL-entiteit extraheert Url's met domein namen of IP-adressen. Omdat deze entiteit al is getraind, hoeft u geen voor beeld-uitingen met Url's aan de toepassing toe te voegen. URL-entiteit wordt alleen `en-us` ondersteund in cultuur.
 
-## <a name="types-of-urls"></a>Typen URL's
-Url wordt beheerd vanuit de [GitHub-repository Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml)
+## <a name="types-of-urls"></a>Typen Url's
+URL wordt beheerd vanuit de map [recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) github
 
-## <a name="resolution-for-prebuilt-url-entity"></a>Oplossing voor vooraf gebouwde URL-entiteit
+## <a name="resolution-for-prebuilt-url-entity"></a>Oplossing voor preingebouwde URL-entiteit
 
-De volgende entiteitsobjecten worden geretourneerd voor de query:
+De volgende entiteits objecten worden geretourneerd voor de query:
 
 `https://www.luis.ai is a great cognitive services example of artificial intelligence`
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
-De volgende JSON `verbose` is met `false`de parameter ingesteld op:
+De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 
 ```json
 "entities": {
@@ -41,9 +41,9 @@ De volgende JSON `verbose` is met `false`de parameter ingesteld op:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 verbose reactie](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
 
-De volgende JSON `verbose` is met `true`de parameter ingesteld op:
+De volgende JSON is met de `verbose` para meter ingesteld `true`op:
 
 ```json
 "entities": {
@@ -69,7 +69,7 @@ De volgende JSON `verbose` is met `true`de parameter ingesteld op:
 ```
 #### <a name="v2-response"></a>[V2-antwoord](#tab/V2)
 
-Het volgende voorbeeld toont https://www.luis.ai de resolutie van de is een groot voorbeeld van cognitieve diensten van kunstmatige intelligentie
+In het volgende voor beeld ziet u de https://www.luis.ai oplossing van het is een fantastische voor beeld van de cognitieve services van kunst matige intelligentie
 
 ```json
 "entities": [
@@ -86,6 +86,6 @@ Het volgende voorbeeld toont https://www.luis.ai de resolutie van de is een groo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [V3-voorspellingseindpunt](luis-migration-api-v3.md).
+Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
-Meer informatie over de [ordinale,](luis-reference-prebuilt-ordinal.md) [aantal-](luis-reference-prebuilt-number.md)en [temperatuurentiteiten.](luis-reference-prebuilt-temperature.md)
+Meer informatie over het [rang telwoord](luis-reference-prebuilt-ordinal.md), het [aantal](luis-reference-prebuilt-number.md)en de [Tempe ratuur](luis-reference-prebuilt-temperature.md) .

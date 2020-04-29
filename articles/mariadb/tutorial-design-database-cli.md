@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een Azure-database ontwerpen voor MariaDB - Azure CLI'
+title: 'Zelf studie: een Azure Database for MariaDB ontwerpen-Azure CLI'
 description: In deze zelfstudie wordt uitgelegd hoe u een Azure Database for MariaDB-server en -database maakt en beheert met behulp van Azure CLI vanaf de opdrachtregel.
 author: ajlam
 ms.author: andrela
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc
 ms.openlocfilehash: 455d7a0c1b3826060ade1083ec6eea99e397574b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79534844"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Zelfstudie: een Azure Database for MariaDB ontwerpen met Azure CLI
@@ -22,15 +22,15 @@ Azure Database for MariaDB is een relationele databaseservice in de Microsoft Cl
 > [!div class="checklist"]
 > * Een Azure Database for MariaDB maken
 > * De serverfirewall configureren
-> * [Mysql-opdrachtregelgereedschap gebruiken](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) om een database te maken
+> * Het [opdracht regel programma mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) gebruiken om een Data Base te maken
 > * Voorbeeldgegevens laden
 > * Querygegevens
 > * Gegevens bijwerken
 > * Gegevens terugzetten
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
 
-U de Azure Cloud Shell in de browser gebruiken of [Azure CLI op]( /cli/azure/install-azure-cli) uw eigen computer installeren om de codeblokken in deze zelfstudie uit te voeren.
+U kunt de Azure Cloud Shell in de browser gebruiken of [Azure cli installeren]( /cli/azure/install-azure-cli) op uw eigen computer om de code blokken in deze zelf studie uit te voeren.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -122,7 +122,7 @@ mysql -h mydemoserver.database.windows.net -u myadmin@mydemoserver -p
 ```
 
 ## <a name="create-a-blank-database"></a>Een lege database maken
-Zodra u bent verbonden met de server, maakt u een lege database.
+Wanneer u met de server bent verbonden, maakt u een lege data base.
 ```sql
 mysql> CREATE DATABASE mysampledb;
 ```
@@ -201,7 +201,7 @@ In deze zelfstudie hebt u het volgende geleerd:
 > [!div class="checklist"]
 > * Een Azure Database for MariaDB-server maken
 > * De serverfirewall configureren
-> * [Mysql-opdrachtregelgereedschap gebruiken](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) om een database te maken
+> * Het [opdracht regel programma mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) gebruiken om een Data Base te maken
 > * Voorbeeldgegevens laden
 > * Querygegevens
 > * Gegevens bijwerken

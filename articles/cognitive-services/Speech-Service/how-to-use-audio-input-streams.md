@@ -1,7 +1,7 @@
 ---
-title: Spraak SDK-audio-invoerstreamconcepten
+title: Concepten van spraak-SDK audio-invoer
 titleSuffix: Azure Cognitive Services
-description: Een overzicht van de mogelijkheden van de SpraakSDK's audio input stream API.
+description: Een overzicht van de mogelijkheden van de audio-invoer stroom-API van de Speech SDK.
 services: cognitive-services
 author: fmegen
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
 ms.openlocfilehash: 3039276a49e7bb41660d114e78ca047a3f77f279
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74109933"
 ---
-# <a name="about-the-speech-sdk-audio-input-stream-api"></a>Informatie over de API voor spraakSDK-audioinvoerstream
+# <a name="about-the-speech-sdk-audio-input-stream-api"></a>Over de Speech SDK audio input stream API
 
-De **Audio Input Stream** API van de Speech SDK biedt een manier om audio naar de leveranciers te streamen in plaats van de microfoon of de API's voor invoerbestanden te gebruiken.
+De **Audio-invoer stroom** -API van de Speech-SDK biedt een manier om audio naar de recognizers te streamen in plaats van de microfoon of het invoer bestand-api's te gebruiken.
 
-De volgende stappen zijn vereist bij het gebruik van audio-invoerstromen:
+De volgende stappen zijn vereist voor het gebruik van audio-invoer stromen:
 
-- Identificeer de indeling van de audiostream. Het formaat moet worden ondersteund door de Spraak-SDK en de Spraakservice. Momenteel wordt alleen de volgende configuratie ondersteund:
+- De indeling van de audio stroom identificeren. De indeling moet worden ondersteund door de Speech SDK en de speech-service. Op dit moment wordt alleen de volgende configuratie ondersteund:
 
-  Audiosamples in PCM-indeling, één kanaal, 16000 samples per seconde, 32000 bytes per seconde, twee blokuitlijning (16 bits inclusief opvulling voor een monster), 16 bits per monster.
+  Audio samples in PCM-indeling, één kanaal, 16000 samples per seconde, 32000 bytes per seconde, twee Bloks uitlijnen (16-bits inclusief opvulling voor een voor beeld), 16 bits per voor beeld.
 
-  De bijbehorende code in de SDK om de audio-indeling te maken ziet er als volgt uit:
+  De bijbehorende code in de SDK voor het maken van de audio-indeling ziet er als volgt uit:
 
   ```csharp
   byte channels = 1;
@@ -36,9 +36,9 @@ De volgende stappen zijn vereist bij het gebruik van audio-invoerstromen:
   var audioFormat = AudioStreamFormat.GetWaveFormatPCM(samplesPerSecond, bitsPerSample, channels);
   ```
 
-- Zorg ervoor dat uw code de RAW-audiogegevens kan leveren volgens deze specificaties. Als uw audiobrongegevens niet overeenkomen met de ondersteunde indelingen, moet de audio worden getranscodeerd naar de vereiste indeling.
+- Zorg ervoor dat uw code de onbewerkte audio gegevens kan leveren aan de hand van deze specificaties. Als uw audio bron gegevens niet overeenkomen met de ondersteunde indelingen, moet de audio worden omgezet in de vereiste indeling.
 
-- Maak uw eigen audio-invoerstreamklasse die is afgeleid van `PullAudioInputStreamCallback`. Implementeer `Read()` de `Close()` leden en de leden. De exacte functiehandtekening is taalafhankelijk, maar de code lijkt op dit voorbeeld:
+- Maak uw eigen audio-invoer stroom klasse die `PullAudioInputStreamCallback`is afgeleid van. Implementeer de `Read()` leden `Close()` en. De exacte functie handtekening is taal afhankelijk, maar de code ziet er ongeveer als volgt uit:
 
   ```csharp
    public class ContosoAudioStream : PullAudioInputStreamCallback {
@@ -59,7 +59,7 @@ De volgende stappen zijn vereist bij het gebruik van audio-invoerstromen:
    };
   ```
 
-- Maak een audioconfiguratie op basis van uw audio-indeling en invoerstream. Geef zowel uw reguliere spraakconfiguratie als de configuratie van de audio-invoer door wanneer u uw herkenningsapparaat maakt. Bijvoorbeeld:
+- Een audio configuratie maken op basis van de audio-indeling en de invoer stroom. Geef zowel uw normale spraak configuratie als de audio-invoer configuratie op wanneer u uw herkenner maakt. Bijvoorbeeld:
 
   ```csharp
   var audioConfig = AudioConfig.FromStreamInput(new ContosoAudioStream(config), audioFormat);
@@ -76,4 +76,4 @@ De volgende stappen zijn vereist bij het gebruik van audio-invoerstromen:
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Uw proefabonnement voor Speech ophalen](https://azure.microsoft.com/try/cognitive-services/)
-- [Bekijk hoe u spraak in C herkent #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+- [Zie spraak herkennen in C #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

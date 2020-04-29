@@ -1,7 +1,7 @@
 ---
-title: SpraakSDK-geheugengebruik bijhouden - Spraakservice
+title: Het bijhouden van het geheugen gebruik van Speech SDK-spraak service
 titleSuffix: Azure Cognitive Services
-description: De Speech Service SDK ondersteunt tal van programmeertalen voor spraak-naar-tekst en tekst-naar-spraak conversie, samen met spraakvertaling. In dit artikel wordt gesproken over hulpprogramma's voor geheugenbeheer die in de SDK zijn ingebouwd.
+description: De Speech Service SDK ondersteunt talloze programmeer talen voor conversie van spraak naar tekst en tekst naar spraak, samen met spraak omzetting. In dit artikel vindt u informatie over het hulp programma voor geheugen beheer dat is ingebouwd in de SDK.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,35 +12,35 @@ ms.date: 12/10/2019
 ms.author: rhurey
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: da5103317a2215aca68cec14ba8a0951258c9b89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75456430"
 ---
-# <a name="how-to-track-speech-sdk-memory-usage"></a>Het geheugengebruik van Speech SDK bijhouden
+# <a name="how-to-track-speech-sdk-memory-usage"></a>Het bijhouden van het geheugen gebruik van Speech SDK
 
-De Speech SDK is gebaseerd op een native code base die wordt geprojecteerd in meerdere programmeertalen door middel van een reeks interoperabiliteitslagen. Elke taalspecifieke projectie heeft idiomatisch correcte eigenschappen om de objectlevenscyclus te beheren. Daarnaast bevat de Speech SDK hulpprogramma's voor geheugenbeheer om het gebruik van resources bij te houden met objectlogboekregistratie en objectlimieten. 
+De Speech SDK is gebaseerd op een systeem eigen code basis die is geprojecteerd in meerdere programmeer talen via een reeks interoperabiliteits lagen. Elke taalspecifieke projectie heeft idiomatically juiste functies voor het beheren van de levens cyclus van het object. Daarnaast bevat de spraak-SDK hulp middelen voor geheugen beheer voor het bijhouden van resource gebruik met object logboek registratie en object limieten. 
 
-## <a name="how-to-read-object-logs"></a>Objectlogboeken lezen
+## <a name="how-to-read-object-logs"></a>Object logboeken lezen
 
-Als [SpraakSDK-logboekregistratie is ingeschakeld,](how-to-use-logging.md)worden trackingtags uitgezonden om historische objectobservatie in te schakelen. Deze tags omvatten: 
+Als [spraak-SDK-logboek registratie is ingeschakeld](how-to-use-logging.md), worden tracking Tags verzonden om historische object waarnemingen mogelijk te maken. Deze tags zijn onder andere: 
 
 * `TrackHandle` of `StopTracking` 
-* Het objecttype
-* Het huidige aantal objecten dat het type object bijhoudt en het huidige aantal dat wordt bijgehouden.
+* Het object type
+* Het huidige aantal objecten dat het type van het object en het huidige nummer wordt bijgehouden.
 
-Hier is een voorbeeldlogboek: 
+Hier volgt een voor beeld van een logboek: 
 
 ```terminal
 (284): 8604ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:90 TrackHandle type=Microsoft::CognitiveServices::Speech::Impl::ISpxRecognitionResult handle=0x0x7f688401e1a0, ptr=0x0x7f688401e1a0, total=19
 ```
 
-## <a name="set-a-warning-threshold"></a>Een waarschuwingsdrempel instellen
+## <a name="set-a-warning-threshold"></a>Een waarschuwings drempel instellen
 
-U hebt de optie om een waarschuwingsdrempel te maken en als die drempelwaarde wordt overschreden (ervan uitgaande dat logboekregistratie is ingeschakeld), wordt een waarschuwingsbericht geregistreerd. Het waarschuwingsbericht bevat een dump van alle objecten die bestaan, samen met hun telling. Deze informatie kan worden gebruikt om problemen beter te begrijpen. 
+U hebt de optie om een waarschuwings drempel te maken en als de drempel waarde wordt overschreden (uitgaande logboek registratie is ingeschakeld), wordt er een waarschuwings bericht vastgelegd. Het waarschuwings bericht bevat een dump van alle objecten in aanwezigheid, samen met het aantal. Deze informatie kan worden gebruikt om problemen beter te begrijpen. 
 
-Als u een waarschuwingsdrempel wilt inschakelen, moet deze op een `SpeechConfig` object worden opgegeven. Dit object wordt gecontroleerd wanneer een nieuwe herkenningwordt gemaakt. Laten we in de volgende voorbeelden aannemen dat u `SpeechConfig` een `config`instantie hebt gemaakt met de naam:
+Als u een waarschuwings drempel wilt inschakelen, moet u deze opgeven `SpeechConfig` voor een object. Dit object wordt gecontroleerd wanneer een nieuwe herkenner wordt gemaakt. In de volgende voor beelden wordt ervan uitgegaan dat u een instantie hebt gemaakt `SpeechConfig` met `config`de naam:
 
 ::: zone pivot="programming-language-csharp"
 
@@ -83,13 +83,13 @@ speech_config.set_property_by_name(“SPEECH-ObjectCountWarnThreshold", "10000")
 ::: zone-end
 
 > [!TIP]
-> De standaardwaarde voor deze eigenschap is 10.000.
+> De standaard waarde voor deze eigenschap is 10.000.
 
-## <a name="set-an-error-threshold"></a>Een foutdrempel instellen 
+## <a name="set-an-error-threshold"></a>Een drempel waarde voor fouten instellen 
 
-Met de SpraakSDK u het maximum aantal objecten instellen dat op een bepaald moment is toegestaan. Als deze instelling is ingeschakeld, mislukken pogingen om nieuwe herkenningsobjecten te maken wanneer het maximale aantal wordt geraakt. Bestaande objecten blijven werken.
+Met de Speech SDK kunt u het maximum aantal objecten instellen dat op een bepaald moment is toegestaan. Als deze instelling is ingeschakeld, zullen pogingen om nieuwe Recognizer-objecten te maken mislukken wanneer het maximum aantal wordt bereikt. Bestaande objecten blijven werken.
 
-Hier is een voorbeeldfout:
+Hier volgt een voorbeeld fout:
 
 ```terminal
 Runtime error: The maximum object count of 500 has been exceeded.
@@ -102,7 +102,7 @@ class Microsoft::CognitiveServices::Speech::Impl::ISpxAudioConfig 0
 class Microsoft::CognitiveServices::Speech::Impl::ISpxSpeechConfig 0
 ```
 
-Als u een foutdrempel wilt inschakelen, moet deze op een `SpeechConfig` object worden opgegeven. Dit object wordt gecontroleerd wanneer een nieuwe herkenningwordt gemaakt. Laten we in de volgende voorbeelden aannemen dat u `SpeechConfig` een `config`instantie hebt gemaakt met de naam:
+Als u een drempel waarde voor fouten wilt inschakelen, moet u `SpeechConfig` deze opgeven voor een object. Dit object wordt gecontroleerd wanneer een nieuwe herkenner wordt gemaakt. In de volgende voor beelden wordt ervan uitgegaan dat u een instantie hebt gemaakt `SpeechConfig` met `config`de naam:
 
 ::: zone pivot="programming-language-csharp"
 
@@ -145,9 +145,9 @@ speech_config.set_property_by_name(“SPEECH-ObjectCountErrorThreshold", "10000"
 ::: zone-end
 
 > [!TIP]
-> De standaardwaarde voor deze eigenschap is de `size_t` platformspecifieke maximumwaarde voor een gegevenstype. Een typische herkenning verbruikt tussen de 7 en 10 interne objecten.
+> De standaard waarde voor deze eigenschap is de platformspecifieke maximum waarde voor een `size_t` gegevens type. Er wordt een typische herkenning gebruikt tussen 7 en 10 interne objecten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Uw proefabonnement van spraakservice aanschaffen](get-started.md)
+* [Uw proef abonnement voor spraak services ophalen](get-started.md)
 * [Meer informatie over het herkennen van spraak met een microfoon](quickstarts/speech-to-text-from-microphone.md)

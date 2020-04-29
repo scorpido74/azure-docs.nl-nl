@@ -1,7 +1,7 @@
 ---
-title: Wat is de Immersive Reader API?
+title: Wat is de insluitende Reader-API?
 titleSuffix: Azure Cognitive Services
-description: De Immersive Reader API is een tool die kan worden gebruikt om mensen met leerverschillen tegemoet te komen of nieuwe lezers en taalstudenten te helpen.
+description: De insluitende Reader-API is een hulp programma dat kan worden gebruikt om personen te voorzien van verschillende leer verschillen of om nieuwe lezers en taal kennis te helpen.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -11,56 +11,56 @@ ms.topic: overview
 ms.date: 01/4/2020
 ms.author: metan
 ms.openlocfilehash: 2eab7ab62f6a7a105dab33aa889af9f2be3a3fa3
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80052389"
 ---
 # <a name="what-is-immersive-reader"></a>Wat is Insluitende lezer?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-De [Immersive Reader](https://www.onenote.com/learningtools) is een inclusief ontworpen tool die bewezen technieken implementeert om het begrijpen van lezen te verbeteren voor opkomende lezers, taalstudenten en mensen met leerverschillen zoals dyslexie.
+De [insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulp programma dat bewezen technieken implementeert om de Lees vaardigheid van opkomende lezers, taal kennisers en mensen te verbeteren, zoals Dyslexia.
 
 U kunt de Insluitende lezer gebruiken in uw webtoepassing door de SDK voor de Insluitende lezer te gebruiken.
 
-## <a name="what-does-immersive-reader-do"></a>Wat doet Immersive Reader?
+## <a name="what-does-immersive-reader-do"></a>Wat doet insluitende lezer?
 
-De Immersive Reader is ontworpen om lezen toegankelijker te maken voor iedereen.
+De insluitende lezer is ontworpen om het lezen van iedereen toegankelijk te maken.
 
-* Toont inhoud in een minimale leesweergave
+* Hiermee wordt inhoud in een minimale Lees weergave weer gegeven
 
   ![Insluitende lezer](./media/immersive-reader.png)
 
-* Geeft afbeeldingen weer van veelgebruikte woorden
+* Afbeeldingen van veelgebruikte woorden weer geven
 
-  ![Afbeeldingswoordenboek](./media/picture-dictionary.png)
+  ![Afbeeldings woordenlijst](./media/picture-dictionary.png)
 
-* Hoogtepunten zelfstandige naamwoorden, werkwoorden, bijvoeglijke naamwoorden en bijwoorden
+* De naam van zelfstandige naam woorden, werk woorden, bijvoegingen en bewerkings parameters
 
-  ![Delen van spraak](./media/parts-of-speech.png)
+  ![Spraak onderdelen](./media/parts-of-speech.png)
 
-* Leest uw inhoud hardop voor
+* Hiermee wordt uw inhoud hardop voor u gelezen
 
-  ![Voorlezen](./media/read-aloud.png)
+  ![Hardop voor lezen](./media/read-aloud.png)
 
-* Vertaalt uw inhoud naar een andere taal
+* Zet uw inhoud om in een andere taal
 
   ![Omzetting](./media/translation.png)
 
-* Woorden opsplitsen in lettergrepen
+* Onderbreekt woorden in letter grepen
 
   ![Syllabification](./media/syllabification.png)
 
-## <a name="how-does-immersive-reader-work"></a>Hoe werkt Immersive Reader?
+## <a name="how-does-immersive-reader-work"></a>Hoe werkt insluitende lezer?
 
-De Immersive Reader is een standalone web-app die, wanneer aangeroepen met behulp van de Immersive `iframe`Reader JavaScript SDK, wordt weergegeven op de top van uw bestaande web-app via een . Wanneer u de API aanroept om de immersive reader te starten, geeft u de inhoud op die u wilt weergeven in de immersive reader. Onze SDK verzorgt de creatie `iframe` en styling van de en communicatie met de Immersive Reader backend service, die de inhoud verwerkt voor delen van spraak, tekst naar spraak, vertaling, enzovoort.
+De insluitende lezer is een zelfstandige web-app die, wanneer deze wordt aangeroepen met behulp van de Java script SDK van de insluitende lezer, boven `iframe`op uw bestaande web-app wordt weer gegeven via een. Wanneer u de API aanroept om de insluitende lezer te starten, geeft u de inhoud op die u wilt weer geven in de insluitende lezer. Onze SDK verwerkt het maken en de stijl van `iframe` de en communicatie met de back-end van de insluitende lezer, die de inhoud verwerkt voor onderdelen van spraak, tekst naar spraak, vertaling, enzovoort.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Aan de slag met Insluitende lezer:
 
-* Spring in de [quickstart](./quickstart.md)
-* Ontdek de [Immersive Reader SDK op GitHub](https://github.com/microsoft/immersive-reader-sdk)
-* Lees de [Naslaggids voor de meeslepende lezer SDK](./reference.md)
+* Ga naar de [Snelstartgids](./quickstart.md)
+* De [insluitende lezer-SDK op github](https://github.com/microsoft/immersive-reader-sdk) verkennen
+* Lees de [referentie voor de insluitende lezer-SDK](./reference.md)

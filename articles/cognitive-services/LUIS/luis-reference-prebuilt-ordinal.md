@@ -1,7 +1,7 @@
 ---
-title: Ordinale voorgebouwde entiteit - LUIS
+title: Vooraf samengestelde ordinale entiteit-LUIS
 titleSuffix: Azure Cognitive Services
-description: Dit artikel bevat ordinale vooraf gebouwde entiteitsinformatie in Language Understanding (LUIS).
+description: Dit artikel bevat vooraf opgemaakte informatie over de volg orde van de gegevens in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,27 +12,27 @@ ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: bb3bb27db48255f534e873ed4e93ac62f07016af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78273449"
 ---
-# <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>Ordinale vooraf gebouwde entiteit voor een LUIS-app
-Ordinaal getal is een numerieke weergave van `first` `second`een `third`object in een set: , , Omdat deze entiteit al is getraind, hoeft u geen voorbeelduitingen toe te voegen die ordinaal zijn, aan de toepassingsintenties. Ordinale entiteit wordt ondersteund in [vele culturen.](luis-reference-prebuilt-entities.md)
+# <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>Vooraf gebouwde ordinale entiteit voor een LUIS-app
+Rang nummer is een numerieke representatie van een object in een set: `first`, `second`, `third`. Omdat deze entiteit al is getraind, hoeft u geen voor beeld-uitingen met een rang telwoord toe te voegen aan de toepassings intentie. Ordinale entiteit wordt ondersteund in [veel cult uren](luis-reference-prebuilt-entities.md).
 
-## <a name="types-of-ordinal"></a>Soorten ordinale
-Ordinal wordt beheerd vanuit de [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) GitHub repository
+## <a name="types-of-ordinal"></a>Typen rang telwoord
+Rang telwoord wordt beheerd vanuit de map [recognizers-text github-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) opslag plaats
 
-## <a name="resolution-for-prebuilt-ordinal-entity"></a>Oplossing voor vooraf gebouwde ordinale entiteit
+## <a name="resolution-for-prebuilt-ordinal-entity"></a>Oplossing voor de vooraf gedefinieerde ordinale entiteit
 
-De volgende entiteitsobjecten worden geretourneerd voor de query:
+De volgende entiteits objecten worden geretourneerd voor de query:
 
 `Order the second option`
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
-De volgende JSON `verbose` is met `false`de parameter ingesteld op:
+De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 
 ```json
 "entities": {
@@ -41,8 +41,8 @@ De volgende JSON `verbose` is met `false`de parameter ingesteld op:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 verbose reactie](#tab/V3-verbose)
-De volgende JSON `verbose` is met `true`de parameter ingesteld op:
+#### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
+De volgende JSON is met de `verbose` para meter ingesteld `true`op:
 
 ```json
 "entities": {
@@ -69,7 +69,7 @@ De volgende JSON `verbose` is met `true`de parameter ingesteld op:
 
 #### <a name="v2-response"></a>[V2-antwoord](#tab/V2)
 
-In het volgende voorbeeld ziet u de resolutie van de **entiteit builtin.ordinal.**
+In het volgende voor beeld ziet u de resolutie van de **inbuiltin. ordinal** -entiteit.
 
 ```json
 "entities": [
@@ -88,6 +88,6 @@ In het volgende voorbeeld ziet u de resolutie van de **entiteit builtin.ordinal.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [V3-voorspellingseindpunt](luis-migration-api-v3.md).
+Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
-Meer informatie over de [OrdinalV2,](luis-reference-prebuilt-ordinal-v2.md) [telefoonnummer](luis-reference-prebuilt-phonenumber.md)en [temperatuurentiteiten.](luis-reference-prebuilt-temperature.md)
+Meer informatie over de [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md), het [telefoon nummer](luis-reference-prebuilt-phonenumber.md)en de [temperatuur](luis-reference-prebuilt-temperature.md) entiteiten.

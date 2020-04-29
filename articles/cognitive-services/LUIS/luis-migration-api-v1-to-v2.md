@@ -1,7 +1,7 @@
 ---
-title: v1-v2-API-migratie
+title: Migratie van v1 tot v2 API
 titleSuffix: Azure Cognitive Services
-description: Het eindpunt van versie 1 en het schrijven van API's voor taalbegrip worden afgeschaft. Gebruik deze handleiding om te begrijpen hoe u migreren naar versie 2-eindpunt en het ontwerpen van API's.
+description: De Api's voor het versie 1-eind punt en de ontwerp-Language Understanding zijn afgeschaft. Gebruik deze hand leiding om te begrijpen hoe u kunt migreren naar versie 2-eind punt-en ontwerp-Api's.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,38 +12,38 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: diberry
 ms.openlocfilehash: 2f67bf0951ef8928297c71e8fc9f924cf05c63f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68932696"
 ---
-# <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>API v1-v2-migratiehandleiding voor LUIS-apps
-Het [eindpunt](https://aka.ms/v1-endpoint-api-docs) van versie 1 en [het maken van](https://aka.ms/v1-authoring-api-docs) API's zijn afgeschaft. Gebruik deze handleiding om te begrijpen hoe u migreren naar versie [2-eindpunt](https://go.microsoft.com/fwlink/?linkid=2092356) en [het ontwerpen van](https://go.microsoft.com/fwlink/?linkid=2092087) API's. 
+# <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>API v1 naar v2-migratie handleiding voor LUIS-apps
+De api's voor het versie 1- [eind punt](https://aka.ms/v1-endpoint-api-docs) en het [ontwerp](https://aka.ms/v1-authoring-api-docs) zijn afgeschaft. Gebruik deze hand leiding om te begrijpen hoe u kunt migreren naar versie 2- [eind punt](https://go.microsoft.com/fwlink/?linkid=2092356) -en [ontwerp](https://go.microsoft.com/fwlink/?linkid=2092087) -api's. 
 
 ## <a name="new-azure-regions"></a>Nieuwe Azure-regio's
-LUIS heeft nieuwe [regio's](https://aka.ms/LUIS-regions) voorzien voor de LUIS API's. LUIS biedt een ander portaal voor regiogroepen. De toepassing moet worden geschreven in dezelfde regio die u verwacht op te vragen. Toepassingen migreren niet automatisch regio's. U exporteert de app vanuit de ene regio en importeert vervolgens naar een andere regio om beschikbaar te zijn in een nieuwe regio.
+LUIS heeft nieuwe [regio's](https://aka.ms/LUIS-regions) voor de Luis-api's. LUIS biedt een andere portal voor regio groepen. De toepassing moet worden gemaakt in dezelfde regio als die waarvoor u de query verwacht. In toepassingen worden regio's niet automatisch gemigreerd. U exporteert de app uit de ene regio en importeert deze vervolgens in een nieuwe regio.
 
-## <a name="authoring-route-changes"></a>Wijzigingen in ontwerproute
-De api-route voor het ontwerpen is gewijzigd van het gebruik van de **progroute** naar het gebruik van de **api-route.**
+## <a name="authoring-route-changes"></a>Wijzigingen in de route worden geschreven
+De API-route van authoring is gewijzigd van met behulp van de **PROG** -route naar met behulp van de **API** -route.
 
 
 | versie | route |
 |--|--|
-|1|/luis/v1.0/**prog**/apps|
-|2|/luis/**api**/v2.0/apps|
+|1|/Luis/v1.0/**PROG**/apps|
+|2|/Luis/-**API**/v2.0/apps|
 
 
-## <a name="endpoint-route-changes"></a>Wijzigingen in eindpuntroute
-De endpoint API heeft nieuwe querytekenreeksparameters en een andere respons. Als de breedbosevlag waar is, worden alle intenties, ongeacht de score, geretourneerd in een array met de naam intents, naast de topScoringIntent.
+## <a name="endpoint-route-changes"></a>Wijzigingen van eindpunt route
+De eindpunt-API heeft nieuwe query reeks parameters en een ander antwoord. Als de vlag uitgebreid is ingesteld op True, worden alle intentiesen, ongeacht de score, geretourneerd in een matrix met de naam intenties, naast het topScoringIntent.
 
-| versie | GET-route |
+| versie | Route ophalen |
 |--|--|
-|1|/luis/v1/application?ID={appId}&q={q}|
-|2|/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]|
+|1|/Luis/v1/Application? ID = {appId} &q = {q}|
+|2|/luis/v2.0/apps/{appId}? q = {q} [&time zone offset] [&uitgebreid] [&spelling] [&fase ring] [&Bing-spelling controle-abonnement-sleutel] [&logboek]|
 
 
-v1 endpoint success response:
+geslaagde reacties van v1-eind punt:
 ```json
 {
   "odata.metadata":"https://dialogice.cloudapp.net/odata/$metadata#domain","value":[
@@ -54,7 +54,7 @@ v1 endpoint success response:
 }
 ```
 
-v2 endpoint success response:
+geslaagde reactie v2-eind punt:
 ```json
 {
   "query": "forward to frank 30 dollars through HSBC",
@@ -104,71 +104,71 @@ v2 endpoint success response:
 }
 ```
 
-## <a name="key-management-no-longer-in-api"></a>Sleutelbeheer niet meer in API
-De abonnementseindpuntsleutel API's worden afgeschaft en keren 410 GONE terug.
+## <a name="key-management-no-longer-in-api"></a>Sleutel beheer is niet meer beschikbaar in API
+De Api's voor het abonnements-endpoint zijn afgeschaft en retour neren 410 weg.
 
 | versie | route |
 |--|--|
-|1|/luis/v1.0/prog/abonnementen|
+|1|/luis/v1.0/prog/subscriptions|
 |1|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-[Azure-eindpuntsleutels](luis-how-to-azure-subscription.md) worden gegenereerd in de Azure-portal. U wijst de sleutel toe aan een LUIS-app op de **[pagina Publiceren.](luis-how-to-azure-subscription.md)** U hoeft de werkelijke sleutelwaarde niet te weten. LUIS gebruikt de abonnementsnaam om de toewijzing te maken. 
+Azure- [eindpunt sleutels](luis-how-to-azure-subscription.md) worden gegenereerd in de Azure Portal. U wijst de sleutel toe aan een LUIS-app op de pagina **[publiceren](luis-how-to-azure-subscription.md)** . U hoeft niet meer te weten over de daad werkelijke sleutel waarde. LUIS maakt gebruik van de naam van het abonnement om de toewijzing te maken. 
 
-## <a name="new-versioning-route"></a>Nieuwe versieroute
-Het v2-model is nu opgenomen in een [versie.](luis-how-to-manage-versions.md) Een versienaam is 10 tekens in de route. De standaardversie is "0.1".
-
-| versie | route |
-|--|--|
-|1|/luis/v1.0/**prog**/apps/{appId}/entiteiten|
-|2|/luis/**api**/v2.0/apps/{appId}/**versies**/{versionId}/entiteiten|
-
-## <a name="metadata-renamed"></a>Metagegevens omgedoopt
-Verschillende API's die LUIS-metadata retourneren, hebben nieuwe namen.
-
-| v1-routenaam | v2-routenaam |
-|--|--|
-|PersonalAssistantApps |Assistenten|
-|toepassingsculturen|culturen|
-|toepassingsdomeinen|Domeinen|
-|toepassingsgebruiksscenario's|gebruiksscenario's|
-
-
-## <a name="sample-renamed-to-suggest"></a>"Voorbeeld" omgedoopt tot "suggereren"
-LUIS stelt uitingen voor van bestaande [eindpuntuitingen](luis-how-to-review-endpoint-utterances.md) die het model kunnen verbeteren. In de vorige versie werd dit **voorbeeld**genoemd. In de nieuwe versie wordt de naam gewijzigd van voorbeeld om **te suggereren**. Dit wordt **[Eindpuntuitingen controleren](luis-how-to-review-endpoint-utterances.md)** op de LUIS-website genoemd.
+## <a name="new-versioning-route"></a>Nieuwe versie route
+Het v2-model is nu opgenomen in een [versie](luis-how-to-manage-versions.md). Een versie naam is 10 tekens in de route. De standaard versie is ' 0,1 '.
 
 | versie | route |
 |--|--|
-|1|/luis/v1.0/**prog**/apps/{appId}/entiteiten/{entityId}/**voorbeeld**|
-|1|/luis/v1.0/**prog**/apps/{appId}/intents/{intentId}/**voorbeeld**|
-|2|/luis/**api**/v2.0/apps/{appId}/**versies**/{versionId}/entiteiten/{entityId}/**stel voor**|
-|2|/luis/**api**/v2.0/apps/{appId}/**versies**/{versionId}/intents/{intentId}/**stel voor**|
+|1|/Luis/v1.0/**PROG**/apps/{AppID}/entities|
+|2|/Luis/**API**/v2.0/apps/{AppID}/-**versies**/{versionId}/entities|
 
+## <a name="metadata-renamed"></a>De naam van de meta gegevens is gewijzigd
+Verschillende Api's die LUIS-meta gegevens retour neren, hebben nieuwe namen.
 
-## <a name="create-app-from-prebuilt-domains"></a>App maken op basis van vooraf gebouwde domeinen
-[Vooraf gebouwde domeinen](luis-how-to-use-prebuilt-domains.md) bieden een vooraf gedefinieerd domeinmodel. Met vooraf gebouwde domeinen u uw LUIS-toepassing snel ontwikkelen voor algemene domeinen. Met deze API u een nieuwe app maken op basis van een vooraf gebouwd domein. Het antwoord is de nieuwe appID.
-
-|v2-route|Werkwoord|
+| v1-route naam | v2-route naam |
 |--|--|
-|/luis/api/v2.0/apps/customprebuiltdomains  |krijgen, posten|
+|PersonalAssistantApps |assistenten|
+|applicationcultures|culturen|
+|applicationdomains|domeinen|
+|applicationusagescenarios|usagescenarios|
+
+
+## <a name="sample-renamed-to-suggest"></a>' Voor beeld ' is gewijzigd in ' suggereren '
+LUIS raadt uitingen aan van de bestaande [eindpunt uitingen](luis-how-to-review-endpoint-utterances.md) die het model kan verbeteren. In de vorige versie werd dit voor **beeld**genoemd. In de nieuwe versie wordt de naam gewijzigd van voor beeld om te **suggereren**. Dit wordt **[geëvalueerd eind punt uitingen](luis-how-to-review-endpoint-utterances.md)** op de Luis-website genoemd.
+
+| versie | route |
+|--|--|
+|1|/Luis/v1.0/**PROG**/apps/{AppID}/entities/{entityId}/-voor**beeld**|
+|1|/Luis/v1.0/**PROG**/apps/{AppID}/intents/{intentId}/-voor**beeld**|
+|2|/Luis/**API**/v2.0/apps/{AppID}/-**versies**/{versionId}/entities/{entityId}/**suggereren**|
+|2|/Luis/**API**/v2.0/apps/{AppID}/-**versies**/{versionId}/intents/{intentId}/**suggereren**|
+
+
+## <a name="create-app-from-prebuilt-domains"></a>Een app maken op basis van vooraf gebouwde domeinen
+Vooraf [ontwikkelde domeinen](luis-how-to-use-prebuilt-domains.md) bieden een voorgedefinieerd domein model. Met vooraf gemaakte domeinen kunt u snel uw LUIS-toepassing ontwikkelen voor algemene domeinen. Met deze API kunt u een nieuwe app maken op basis van een vooraf gebouwd domein. Het antwoord is de nieuwe appID.
+
+|v2-route|term|
+|--|--|
+|/luis/api/v2.0/apps/customprebuiltdomains  |Get, post|
 |/luis/api/v2.0/apps/customprebuiltdomains/{culture}  |ophalen|
 
-## <a name="importing-1x-app-into-2x"></a>1.x-app importeren in 2.x
-De JSON van de geëxporteerde 1.x-app heeft een aantal gebieden die u moet wijzigen voordat u importeert in [LUIS][LUIS] 2.0. 
+## <a name="importing-1x-app-into-2x"></a>De 1. x-app wordt geïmporteerd in 2. x
+De geëxporteerde JSON van de 1. x-app heeft enkele gebieden die u moet wijzigen voordat u deze importeert in [LUIS][LUIS] 2,0. 
 
 ### <a name="prebuilt-entities"></a>Vooraf gemaakte entiteiten 
-De [vooraf gebouwde entiteiten](luis-prebuilt-entities.md) zijn gewijzigd. Zorg ervoor dat u de V2-voorgebouwde entiteiten gebruikt. Dit omvat het gebruik van [datetimeV2](luis-reference-prebuilt-datetimev2.md), in plaats van datumtijd. 
+De [vooraf gemaakte entiteiten](luis-prebuilt-entities.md) zijn gewijzigd. Zorg ervoor dat u de v2 vooraf gedefinieerde entiteiten gebruikt. Dit omvat het gebruik van [datetimeV2](luis-reference-prebuilt-datetimev2.md)in plaats van DateTime. 
 
 ### <a name="actions"></a>Acties
-De eigenschap acties is niet langer geldig. Het moet een lege 
+De eigenschap actions is niet meer geldig. Deze moet leeg zijn 
 
 ### <a name="labeled-utterances"></a>Gelabelde uitingen
-V1 stond gelabelde uitingen toe om spaties aan het begin of einde van het woord of de woordgroep op te nemen. Verwijderde de spaties. 
+V1 heeft uitingen toegestaan om spaties toe te voegen aan het begin of einde van het woord of de woord groep. De spaties zijn verwijderd. 
 
-## <a name="common-reasons-for-http-response-status-codes"></a>Veelvoorkomende redenen voor HTTP-antwoordstatuscodes
-Zie [LUIS API-antwoordcodes](luis-reference-response-codes.md).
+## <a name="common-reasons-for-http-response-status-codes"></a>Veelvoorkomende redenen voor HTTP-antwoord status codes
+Zie [Luis-API-respons codes](luis-reference-response-codes.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik de v2-API-documentatie om bestaande REST-aanroepen bij te werken naar [LUIS-eindpunten](https://go.microsoft.com/fwlink/?linkid=2092356) en [het ontwerpen van](https://go.microsoft.com/fwlink/?linkid=2092087) API's. 
+Gebruik de v2 API-documentatie om bestaande REST-aanroepen bij te werken naar LUIS- [eind punt](https://go.microsoft.com/fwlink/?linkid=2092356) -en [ontwerp](https://go.microsoft.com/fwlink/?linkid=2092087) -api's. 
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

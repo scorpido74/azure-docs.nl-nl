@@ -1,7 +1,7 @@
 ---
-title: Uw aangepaste zoekopdracht delen - Bing Custom Search
+title: Uw aangepaste zoek opdracht delen-Bing Aangepaste zoekopdrachten
 titleSuffix: Azure Cognitive Services
-description: Maak het eenvoudig om gezamenlijke bewerking en het testen van uw instantie toe te staan door deze te delen met leden van uw team.
+description: Eenvoudig samen werken en het testen van uw exemplaar toestaan door het te delen met leden van uw team.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 5a08ee7f5ea3d5e8c393ea4c1a64c353e24777e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74072699"
 ---
-# <a name="share-your-custom-search-instance"></a>Uw aangepaste zoekexemplaar delen
+# <a name="share-your-custom-search-instance"></a>Uw aangepaste zoek exemplaar delen
 
-U kunt het gezamenlijk bewerken en testen van uw exemplaar eenvoudig toestaan door het te delen met leden van uw team. U uw exemplaar delen met iedereen die alleen zijn/haar e-mailadres gebruikt. Een instantie delen:
+U kunt het gezamenlijk bewerken en testen van uw exemplaar eenvoudig toestaan door het te delen met leden van uw team. U kunt uw exemplaar delen met iedereen die alleen hun e-mail adres gebruikt. Een exemplaar delen:
 
-- Aanmelden bij [Aangepast zoeken](https://customsearch.ai)
-- Een instantie Aangepast zoeken selecteren
-- Klik op het instellingenpictogram (wordt weergegeven als een versnelling). 
-- Voer **onder Uw instantie delen**het e-mailadres in van de persoon waarmee u uw exemplaar wilt delen en klik op **Delen**. 
+- Aanmelden bij [aangepaste zoek opdracht](https://customsearch.ai)
+- Een aangepast Zoek exemplaar selecteren
+- Klik op het instellingen pictogram (wordt weer gegeven als tand wiel). 
+- Onder **uw exemplaar delen**voert u het e-mail adres in van de persoon met wie u uw exemplaar wilt delen en klikt u op **delen**. 
 
-Nadat het e-mailadres is toegevoegd, wordt het toegevoegd aan de **instantie die wordt gedeeld met** de lijst. Herhaal het proces voor elke persoon met wie u uw instantie wilt delen. 
+Nadat u het e-mail adres hebt toegevoegd, wordt het toegevoegd aan het exemplaar dat wordt **gedeeld met** de lijst. Herhaal dit proces voor elke persoon met wie u uw exemplaar wilt delen. 
 
-Als u iemands e-mail aan de lijst wilt toevoegen, is het niet nodig dat deze e-mail een aangepast zoekaccount heeft. Ze moeten zich aanmelden voor Custom Search voordat ze configuratiewijzigingen aanbrengen. Nadat u een instantie met iemand hebt gedeeld, ziet deze deze instantie in de lijst met aangepaste zoekinstanties. Slechts één persoon kan een instantie tegelijk wijzigen. Als u een instantie probeert te wijzigen die iemand anders bewerkt, wordt een waarschuwing weergegeven. Een instantie kan worden gedeeld met maximaal 10 gebruikers.
+Als u een e-mail bericht wilt toevoegen aan de lijst, hoeft u geen aangepast Zoek account te hebben. Ze moeten zich registreren voor aangepaste zoek opdrachten voordat ze configuratie wijzigingen aanbrengen. Nadat u een exemplaar met iemand hebt gedeeld, worden deze in de lijst met aangepaste zoek instanties weer geven. Er kan slechts één persoon tegelijk een exemplaar wijzigen. Als u een exemplaar probeert te wijzigen dat iemand anders bewerkt, wordt er een waarschuwing weer gegeven. Een exemplaar kan worden gedeeld met Maxi maal 10 gebruikers.
 
-## <a name="stop-sharing"></a>Stoppen met delen
+## <a name="stop-sharing"></a>Delen beëindigen
 
-Als u wilt stoppen met het delen van een instantie met iemand, gebruikt u het pictogram Verwijderen om het e-mailadres uit de lijst te verwijderen. Hiermee wordt de instantie ook uit de lijst met instanties verwijderd.
+Als u wilt stoppen met het delen van een exemplaar met iemand, gebruikt u het pictogram verwijderen om hun e-mail adres te verwijderen uit de lijst. Hiermee wordt ook het exemplaar verwijderd uit de lijst met exemplaren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Uw aangepaste autosuggestie-ervaring configureren](define-custom-suggestions.md)
+- [Uw aangepaste automatische suggesties configureren](define-custom-suggestions.md)

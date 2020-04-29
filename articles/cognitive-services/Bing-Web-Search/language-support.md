@@ -1,7 +1,7 @@
 ---
-title: Taalondersteuning - Bing Web Search API
+title: Taal ondersteuning-Bing Webzoekopdrachten-API
 titleSuffix: Azure Cognitive Services
-description: Een lijst met natuurlijke talen, landen en regio's die worden ondersteund door de Bing News Search API.
+description: Een lijst met natuurlijke talen, landen en regio's die worden ondersteund door de Bing Nieuws zoeken-API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
 ms.openlocfilehash: 9425de6e75a9a46d71ff85ce49b0650c8e7a9a16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68882675"
 ---
-# <a name="language-and-region-support-for-the-bing-web-search-api"></a>Ondersteuning voor taal en regio voor de Bing Web Search API
+# <a name="language-and-region-support-for-the-bing-web-search-api"></a>Ondersteuning van talen en regio's voor de Bing Webzoekopdrachten-API
 
-De Bing Web Search API ondersteunt meer dan drie dozijn landen of regio's, waarvan er vele met meer dan één taal. Als u een land of regio opgeeft met een query, u zoekresultaten verfijnen op basis van de interesses van dat land of dat gebied. De resultaten kunnen koppelingen naar Bing bevatten en deze koppelingen kunnen de gebruikerservaring van Bing lokaliseren op basis van het opgegeven land/regio of taal.
+Het Bing Webzoekopdrachten-API ondersteunt meer dan drie dozijn landen of regio's, veel met meer dan één taal. Het opgeven van een land of regio met een query helpt de zoek resultaten te verfijnen op basis van de interesses van die landen of regio's. De resultaten kunnen koppelingen naar Bing bevatten en deze koppelingen kunnen de Bing-gebruikers ervaring lokaliseren op basis van de opgegeven land/regio of taal.
 
-U een land of `cc` gebied opgeven met behulp van de queryparameter. Wanneer een land of regio is opgegeven, moet u een of meer taalcodes opgeven met de [ `Accept-Language` koptekst](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers). Gebruik de [tabel Markten](#markets) voor een lijst met talen die in elke markt worden ondersteund.
+U kunt een land of regio opgeven met behulp van de `cc` query parameter. Wanneer u een land of regio hebt opgegeven, moet u een of meer taal codes met de [ `Accept-Language` header](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)opgeven. Gebruik de [tabel Markets](#markets) voor een lijst met talen die op elke markt worden ondersteund.
 
-U ook de markt `mkt` opgeven met de queryparameter en een code uit de tabel **Markten.** Als u een markt opgeeft, geeft u tegelijkertijd een land of regio en een voorkeurstaal op. U de taal expliciet `setLang` instellen met de queryparameter.
+U kunt ook de-markt met de `mkt` query parameter en een code uit de tabel **Markets** opgeven. Als u een markt opgeeft, geeft u een land of regio en een voorkeurs taal op. U kunt de taal expliciet instellen met de `setLang` query parameter.
 
 ## <a name="countriesregions"></a>Landen/regio's
 
@@ -66,19 +66,19 @@ U ook de markt `mkt` opgeven met de queryparameter en een code uit de tabel **Ma
 |Verenigd Koninkrijk|GB|
 |Verenigde Staten|VS|
 
-## <a name="markets"></a>Markten
+## <a name="markets"></a>Landen
 
-|Land/regio|Taal|Marktcode|
+|Land/regio|Taal|Markt code|
 |-------|--------|-----------|
 |Argentinië|Spaans|es-AR|
-|Australië|Engels|nl-AU|
+|Australië|Engels|en-AU|
 |Oostenrijk|Duits|de-AT|
-|België|Nederlands|nl-BE|
-|België|Frans|fr-BE|
+|België|Nederlands|nl-worden|
+|België|Frans|fr-worden|
 |Brazilië|Portugees|pt-BR|
-|Canada|Engels|nl-CA|
-|Canada|Frans|fr-CA|
-|Chili|Spaans|es-CL|
+|Canada|Engels|en-CA|
+|Canada|Frans|FR-CA|
+|Chili|Spaans|es-LC|
 |Denemarken|Deens|da-DK|
 |Finland|Fins|fi-FI|
 |Frankrijk|Frans|fr-FR|
@@ -89,27 +89,27 @@ U ook de markt `mkt` opgeven met de queryparameter en een code uit de tabel **Ma
 |Italië|Italiaans|it-IT|
 |Japan|Japans|ja-JP|
 |Korea|Koreaans|ko-KR|
-|Maleisië|Engels|en-MY|
+|Maleisië|Engels|en-mijn|
 |Mexico|Spaans|es-MX|
 |Nederland|Nederlands|nl-NL|
-|Nieuw-Zeeland|Engels|nl-NZ|
-|Noorwegen|Norwegian|No-no|
+|Nieuw-Zeeland|Engels|en-NZ|
+|Noorwegen|Norwegian|Nee-Nee|
 |China|Chinees|zh-CN|
 |Polen|Pools|pl-PL|
 |Portugal|Portugees|pt-PT|
 |Filipijnen|Engels|en-PH|
 |Rusland|Russisch|ru-RU|
 |Saoedi-Arabië|Arabisch|ar-SA|
-|Zuid-Afrika|Engels|nl-ZA|
+|Zuid-Afrika|Engels|en-ZA|
 |Spanje|Spaans|es-ES|
 |Zweden|Zweeds|sv-SE|
-|Zwitserland|Frans|fr-CH|
-|Zwitserland|Duits|de-CH|
+|Zwitserland|Frans|FR-CH|
+|Zwitserland|Duits|Dech|
 |Taiwan|Traditioneel Chinees|zh-TW|
 |Turkije|Turks|tr-TR|
 |Verenigd Koninkrijk|Engels|en-GB|
 |Verenigde Staten|Engels|nl-NL|
-|Verenigde Staten|Spaans|es-VS|
+|Verenigde Staten|Spaans|es-Verenigde Staten|
 
 ## <a name="next-steps"></a>Volgende stappen
 
