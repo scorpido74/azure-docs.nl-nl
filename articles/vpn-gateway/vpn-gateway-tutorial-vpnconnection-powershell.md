@@ -1,5 +1,5 @@
 ---
-title: 'Azure VPN-gateway: S2S VPN-verbindingen maken en beheren: zelfstudie'
+title: 'Azure VPN Gateway: S2S VPN-verbindingen maken en beheren: zelf studie'
 description: 'Zelfstudie: Azure S2S VPN-verbindingen maken en beheren met behulp van de Azure PowerShell-module'
 services: vpn-gateway
 author: yushwang
@@ -9,13 +9,13 @@ ms.date: 03/11/2020
 ms.author: yushwang
 ms.custom: mvc
 ms.openlocfilehash: 18c6188e1b13c35a4c28a5f9e7fc863f00798eed
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80616402"
 ---
-# <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>Zelfstudie: S2S VPN-verbindingen maken en beheren met PowerShell
+# <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>Zelf studie: S2S VPN-verbindingen maken en beheren met Power shell
 
 Azure S2S VPN-verbindingen bieden veilige, cross-premises connectiviteit tussen de klanten-premises en Azure. Deze zelfstudie neemt levenscycli van IPsec S2S VPN-verbindingen door zoals het maken en beheren van een S2S VPN-verbinding. Procedures voor:
 
@@ -35,7 +35,7 @@ Het volgende diagram toont de topologie voor deze zelfstudie:
 
 ## <a name="requirements"></a>Vereisten
 
-Voltooi de eerste zelfstudie: [Maak VPN-gateway met Azure PowerShell](vpn-gateway-tutorial-create-gateway-powershell.md) om de volgende bronnen te maken:
+Voltooi de eerste zelf studie: [Maak een VPN-gateway met Azure PowerShell](vpn-gateway-tutorial-create-gateway-powershell.md) om de volgende resources te maken:
 
 1. Resourcegroep (TestRG1), het virtuele netwerk (VNet1) en het GatewaySubnet
 2. VPN-gateway (VNet1GW)
@@ -102,7 +102,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection1 -ResourceGroupName $RG1
   -ConnectionType IPsec -SharedKey "Azure@!b2C3" -ConnectionProtocol IKEv2
 ```
 
-Voeg de optionele eigenschap **- EnableBGP $True** toe om BGP in te schakelen voor de verbinding als u van BGP gebruikmaakt. Deze optie is standaard uitgeschakeld. Parameter '-ConnectionProtocol' is optioneel met IKEv2 als standaard. U de verbinding met IKEv1-protocollen maken door **-ConnectionProtocol IKEv1**op te geven.
+Voeg de optionele eigenschap **- EnableBGP $True** toe om BGP in te schakelen voor de verbinding als u van BGP gebruikmaakt. Deze optie is standaard uitgeschakeld. De para meter-ConnectionProtocol is optioneel met IKEv2 als standaard waarde. U kunt de verbinding met IKEv1-protocollen maken door **ConnectionProtocol IKEv1**op te geven.
 
 ## <a name="update-the-vpn-connection-pre-shared-key-bgp-and-ipsecike-policy"></a>Werk de vooraf gedeelde sleutel voor VPN-verbinding, BGP en het IPsec-/IKE-beleid bij
 
@@ -120,7 +120,7 @@ Get-AzVirtualNetworkGatewayConnectionSharedKey `
   -Name $Connection1 -ResourceGroupName $RG1
 ```
 
-De uitvoer is "**Azure\@!b2C3**" naar aanleiding van het bovenstaande voorbeeld. Gebruik de onderstaande opdracht om de vooraf gedeelde sleutelwaarde te wijzigen in Azure**\@!_b2=C3:**
+De uitvoer is '**\@Azure! b2C3**' volgens het bovenstaande voor beeld. Gebruik de onderstaande opdracht om de waarde van de vooraf gedeelde sleutel te wijzigen in '**Azure\@! _b2 = C3**':
 
 ```azurepowershell-interactive
 Set-AzVirtualNetworkGatewayConnectionSharedKey `
@@ -136,7 +136,7 @@ Azure VPN-gateway biedt ondersteuning voor een dynamisch BGP-routeringsprotocol.
 * On-premises lokale netwerkgateway ASN
 * On-premises lokale netwerkgateway BGP-peer-IP-adres
 
-Als u de BGP-eigenschappen niet hebt geconfigureerd, worden deze eigenschappen met de volgende opdrachten toegevoegd aan uw VPN-gateway en lokale netwerkgateway: [Set-AzVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgateway) en [Set-AzLocalNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/set-azlocalnetworkgateway).
+Als u de BGP-eigenschappen niet hebt geconfigureerd, worden deze eigenschappen door de volgende opdrachten toegevoegd aan uw VPN-gateway en lokale netwerk gateway: [set-AzVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgateway) en [set-AzLocalNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/set-azlocalnetworkgateway).
 
 Gebruik het volgende voorbeeld om BGP-eigenschappen te configureren:
 
@@ -245,5 +245,5 @@ In deze zelfstudie hebt u meer geleerd over het maken en beheren van S2S VPN-ver
 Ga naar de volgende zelfstudies voor meer informatie over S2S-, VNet-naar-VNet- en P2S-verbindingen.
 
 > [!div class="nextstepaction"]
-> * [VNet-verbindingen maken](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [VNet-naar-VNet-verbindingen maken](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [P2S-verbindingen maken](vpn-gateway-howto-point-to-site-resource-manager-portal.md)

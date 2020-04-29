@@ -1,7 +1,7 @@
 ---
-title: Spraakapparaten SDK Roobo Smart Audio Dev Kit v2 - Spraakservice
+title: Speech-apparaten SDK roobo Smart audio dev kit v2-Speech Service
 titleSuffix: Azure Cognitive Services
-description: Voorwaarden en instructies om aan de slag te gaan met de Speech Devices SDK, Roobo Smart Audio Dev Kit v2.
+description: Vereisten en instructies voor het aan de slag gaan met de SDK voor spraak apparaten, roobo Smart audio dev kit v2.
 services: cognitive-services
 author: anushapatnala
 manager: wellsi
@@ -11,31 +11,31 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: v-anusp
 ms.openlocfilehash: 2f325c80877068c53d690bd7ff74f768dab3a174
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80371577"
 ---
-# <a name="device-roobo-smart-audio-dev-kit-v2"></a>Apparaat: Roobo Smart Audio Dev Kit v2
+# <a name="device-roobo-smart-audio-dev-kit-v2"></a>Apparaat: roobo Smart audio dev kit v2
 
-Dit artikel bevat apparaatspecifieke informatie voor de Roobo Smart Audio Dev Kit2.
+Dit artikel bevat apparaatspecifieke informatie voor de roobo Smart audio dev Kit2.
 
-## <a name="set-up-the-development-kit"></a>De ontwikkelkit instellen
+## <a name="set-up-the-development-kit"></a>De Development Kit instellen
 
-1. De development kit heeft twee micro USB-aansluitingen. De linker connector is om de macht van de ontwikkeling kit en wordt gemarkeerd als Macht in de afbeelding hieronder. De juiste is om het te controleren, en is gemarkeerd Foutopsporing in de afbeelding. 
-    ![De dev-kit aansluiten](media/speech-devices-sdk/roobo-v2-connections.png)
-1. Power the development kit by using a micro USB cable to connect the power port to a PC or power adapter. Een groene stroomindicator zal onder het bovenbord oplichten.
-1. Als u de ontwikkelingskit wilt bedienen, sluit u de foutopsporingspoort aan op een computer met behulp van een tweede micro-USB-kabel. Het is essentieel om een hoogwaardige kabel te gebruiken om betrouwbare communicatie te garanderen.
-1. Oriënteer uw ontwikkelingskit circulair - Rechtop, met microfoons naar het plafond zoals hierboven weergegeven
+1. De Development Kit heeft twee micro USB-connectors. De linker connector is de Power Development Kit om te zetten en is gemarkeerd als stroom in de onderstaande afbeelding. De juiste is om deze te beheren en is gemarkeerd als debug in de installatie kopie. 
+    ![De dev kit verbinden](media/speech-devices-sdk/roobo-v2-connections.png)
+1. Schakel de Development Kit uit met behulp van een micro USB-kabel om de voedings poort te verbinden met een PC of een stroom adapter. Een groene stroom indicator is afhankelijk van het bovenste bord.
+1. Als u de Development Kit wilt beheren, verbindt u de poort voor fout opsporing met een computer met een tweede micro USB-kabel. Het is essentieel dat u een kabel van hoge kwaliteit gebruikt om betrouw bare communicatie te garanderen.
+1. Uw Development Kit rond rechtop plaatsen, met microfoons die zijn gericht op het plafond zoals hierboven wordt weer gegeven
 
 
-## <a name="development-information"></a>Ontwikkelingsinformatie
+## <a name="development-information"></a>Ontwikkelings informatie
 
-Zie voor meer informatie over ontwikkeling de [Roobo-ontwikkelingsgids.](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf)
+Zie de [roobo Development Guide (Engelstalig](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf)) voor meer informatie over ontwikkel aars.
 
-## <a name="audio-recordplay"></a>Audiorecord/afspelen
+## <a name="audio-recordplay"></a>Audio Record/Play
 
-DDK2-audiobewerkingen kunnen op de volgende manieren worden uitgevoerd:
-* Gebruik ALSA Open-source bibliotheken en hun toepassingen.
-* Gebruik de appmainprog-interface om de ontwikkeling van toepassingen uit te doen. DDK2 audio - gerelateerde software framework maakt gebruik van standaard ALSA framework, u gebruik maken van libasound. Dus om software direct te ontwikkelen. Zo u ALSA's arecord en aplay direct gebruiken om audio op te nemen en af te spelen.
+DDK2-audio bewerkingen kunnen op de volgende manieren worden uitgevoerd:
+* Gebruik ALSA open-source-bibliotheken en hun toepassingen.
+* Gebruik de appmainprog-interface voor het ontwikkelen van toepassingen. DDK2 audio-gerelateerde software Framework gebruikt het standaard ALSA-Framework, dat u kunt gebruiken libasound. Om software direct te ontwikkelen. U kunt ALSA arecord en aplay rechtstreeks gebruiken om audio te registreren en af te spelen.

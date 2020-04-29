@@ -1,7 +1,7 @@
 ---
-title: Dimensie vooraf gebouwde entiteiten - LUIS
+title: Dimensies vooraf gemaakte entiteiten-LUIS
 titleSuffix: Azure Cognitive Services
-description: Dit artikel bevat vooraf gebouwde entiteitsinformatie in Language Understanding (LUIS).
+description: Dit artikel bevat vooraf samengestelde entiteits gegevens in Language Understanding (LUIS).
 services: cognitive-services
 ms.custom: seodec18
 author: diberry
@@ -12,28 +12,28 @@ ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: 3c7bebb38d0331c76eeaaa1d9d6464c568a61b83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270636"
 ---
-# <a name="dimension-prebuilt-entity-for-a-luis-app"></a>Dimensie vooraf gebouwde entiteit voor een LUIS-app
-De vooraf gebouwde dimensieentiteit detecteert verschillende soorten dimensies, ongeacht de LUIS-app-cultuur. Omdat deze entiteit al is getraind, hoeft u geen voorbeelduitingen met afmetingen toe te voegen aan de toepassingsintenties. Dimension entiteit wordt ondersteund in [vele culturen](luis-reference-prebuilt-entities.md).
+# <a name="dimension-prebuilt-entity-for-a-luis-app"></a>Samengestelde dimensie-entiteit voor een LUIS-app
+De vooraf samengestelde dimensie-entiteit detecteert verschillende typen dimensies, ongeacht de LUIS-app-cultuur. Omdat deze entiteit al is getraind, hoeft u geen voorbeeld uitingen met dimensies toe te voegen aan de toepassings intentie. Dimensie-entiteit wordt ondersteund in [veel cult uren](luis-reference-prebuilt-entities.md).
 
-## <a name="types-of-dimension"></a>Soorten afmetingen
+## <a name="types-of-dimension"></a>Typen dimensie
 
-Dimension wordt beheerd vanuit de [GitHub-repository met Recognizers-tekst.](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml)
+Dimensie wordt beheerd vanuit de GitHub-opslag plaats voor [tekst herkenning](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) .
 
-## <a name="resolution-for-dimension-entity"></a>Oplossing voor dimensieentiteit
+## <a name="resolution-for-dimension-entity"></a>Oplossing voor dimensie-entiteit
 
-De volgende entiteitsobjecten worden geretourneerd voor de query:
+De volgende entiteits objecten worden geretourneerd voor de query:
 
 `10 1/2 miles of cable`
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
-De volgende JSON `verbose` is met `false`de parameter ingesteld op:
+De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 
 ```json
 "entities": {
@@ -45,8 +45,8 @@ De volgende JSON `verbose` is met `false`de parameter ingesteld op:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 verbose reactie](#tab/V3-verbose)
-De volgende JSON `verbose` is met `true`de parameter ingesteld op:
+#### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
+De volgende JSON is met de `verbose` para meter ingesteld `true`op:
 
 ```json
 "entities": {
@@ -76,7 +76,7 @@ De volgende JSON `verbose` is met `true`de parameter ingesteld op:
 
 #### <a name="v2-response"></a>[V2-antwoord](#tab/V2)
 
-In het volgende voorbeeld ziet u de resolutie van de entiteit **builtin.dimension.**
+In het volgende voor beeld ziet u de resolutie van de **inbuiltin. dimensie** -entiteit.
 
 ```json
 {
@@ -94,6 +94,6 @@ In het volgende voorbeeld ziet u de resolutie van de entiteit **builtin.dimensio
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [V3-voorspellingseindpunt](luis-migration-api-v3.md).
+Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
-Meer informatie over de [e-mail,](luis-reference-prebuilt-email.md) [het nummer](luis-reference-prebuilt-number.md)en [de ordinale](luis-reference-prebuilt-ordinal.md) entiteiten.
+Meer informatie over de entiteiten [e-mail](luis-reference-prebuilt-email.md), [nummer](luis-reference-prebuilt-number.md)en [rang telwoord](luis-reference-prebuilt-ordinal.md) .

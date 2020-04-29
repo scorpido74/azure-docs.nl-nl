@@ -1,6 +1,6 @@
 ---
-title: PowerShell-script om RU/s bij te werken in Azure Cosmos DB Cassandra API-bronnen
-description: Meer informatie over het gebruik van een PowerShell-script om de doorvoer voor een keyspace of een tabel in Azure Cosmos DB Cassandra API bij te werken
+title: Power shell-script voor het bijwerken van RU/s in Azure Cosmos DB Cassandra-API resources
+description: Meer informatie over het gebruik van een Power shell-script voor het bijwerken van de door Voer voor een spatie of een tabel in Azure Cosmos DB Cassandra-API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: ef10dd7566d74a112a849f500da1831bc8ccb682
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365700"
 ---
-# <a name="update-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>RU/s bijwerken voor een keyspace of tabel voor Azure Cosmos DB - Cassandra API
+# <a name="update-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Update RU/s voor een spatie of tabel voor Azure Cosmos DB-Cassandra-API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,12 +39,12 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | Opdracht | Opmerkingen |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Set-AzCosmosDBCassandraKeyspace](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbcassandrakeyspace) | Hiermee maakt of werkt u een Cosmos DB Cassandra API Keyspace uit. |
-| [Nieuwe-AzCosmosDBCassandraClusterKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraclusterkey) | Hiermee maakt u een nieuwe CosmosDB Cassandra Cluster Key. |
-| [Nieuw-AzCosmosDBCassandraColumn](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandracolumn) | Hiermee maakt u een nieuwe CosmosDB Cassandra Column. |
-| [Nieuw-AzCosmosDBCassandraSchema](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraschema) | Hiermee maakt u een nieuw CosmosDB Cassandra Schema. |
-| [Set-azcosmosDBCassandratable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbcassandratable) | Hiermee maakt of werkt u een Cosmos DB Cassandra API-tabel uit. |
-|**Azure-brongroepen**| |
+| [Set-AzCosmosDBCassandraKeyspace](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbcassandrakeyspace) | Hiermee wordt een Cosmos DB Cassandra-API-spatie gemaakt of bijgewerkt. |
+| [New-AzCosmosDBCassandraClusterKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraclusterkey) | Hiermee maakt u een nieuwe CosmosDB Cassandra-cluster sleutel. |
+| [New-AzCosmosDBCassandraColumn](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandracolumn) | Hiermee maakt u een nieuwe CosmosDB-Cassandra-kolom. |
+| [New-AzCosmosDBCassandraSchema](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraschema) | Hiermee maakt u een nieuw CosmosDB Cassandra-schema. |
+| [Set-AzCosmosDBCassandraTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbcassandratable) | Hiermee wordt een Cosmos DB Cassandra-API-tabel gemaakt of bijgewerkt. |
+|**Azure-resource groepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

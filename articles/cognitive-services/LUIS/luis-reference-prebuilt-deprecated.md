@@ -1,7 +1,7 @@
 ---
-title: Afgeschafte voorgebouwde entiteiten - LUIS
+title: Afgeschafte vooraf samengestelde entiteiten-LUIS
 titleSuffix: Azure Cognitive Services
-description: Dit artikel bevat afgeschafte vooraf gebouwde entiteitsinformatie in Language Understanding (LUIS).
+description: Dit artikel bevat afgeschafte vooraf opgebouwde entiteits gegevens in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -12,23 +12,23 @@ ms.topic: reference
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270679"
 ---
-# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Vooraf aangelegde vooraf gebouwde entiteiten in een LUIS-app
-De volgende vooraf gebouwde entiteiten worden afgeschaft en kunnen niet worden toegevoegd aan nieuwe LUIS-apps.
+# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Afgeschafte vooraf gemaakte entiteiten in een LUIS-app
+De volgende vooraf gemaakte entiteiten zijn afgeschaft en kunnen niet worden toegevoegd aan nieuwe LUIS-apps.
 
-* **Datumtijd**: Bestaande LUIS-apps die **datumtijd** gebruiken, moeten worden gemigreerd naar **datetimeV2,** hoewel de entiteit datetime blijft functioneren in reeds bestaande apps die deze gebruiken.
-* **Geografie**: Bestaande LUIS-apps die **geografie** gebruiken, worden ondersteund tot december 2018.
-* **Encyclopedie**: Bestaande LUIS-apps die **encyclopedie** gebruiken, worden ondersteund tot december 2018.
+* **DateTime**: bestaande Luis-apps die gebruikmaken van **DateTime** , moeten worden gemigreerd naar **datetimeV2**, hoewel de datetime-entiteit blijft functioneren in reeds bestaande apps die gebruikmaken van deze datum.
+* **Geografie**: bestaande Luis-apps die gebruikmaken van **geografie** , worden ondersteund tot december 2018.
+* **Encyclopedie**: bestaande Luis-apps die gebruikmaken van de **encyclopedie** , worden ondersteund tot december 2018.
 
-## <a name="geography-culture"></a>Aardrijkskundecultuur
-**Geografie** is alleen beschikbaar `en-us` in de landomgeving.
+## <a name="geography-culture"></a>Geografie cultuur
+**Geografie** is alleen beschikbaar in de `en-us` land instelling.
 
-#### <a name="3-geography-subtypes"></a>3 Subtypen geografie
+#### <a name="3-geography-subtypes"></a>subtypen van drie Geografie
 
 Vooraf gebouwde entiteit   |   Voorbeeld van een utterance   |   JSON
 ------|------|------|
@@ -39,11 +39,11 @@ Vooraf gebouwde entiteit   |   Voorbeeld van een utterance   |   JSON
 `builtin.geography.pointOfInterest`   |   `amazon river` |`{ "type": "builtin.geography.pointOfInterest", "entity": "amazon river" }`|
 `builtin.geography.pointOfInterest`   |   `sahara desert`|`{ "type": "builtin.geography.pointOfInterest", "entity": "sahara desert" }`|
 
-## <a name="encyclopedia-culture"></a>Encyclopediecultuur
-**Encyclopedie** is alleen `en-US` beschikbaar in de landomgeving.
+## <a name="encyclopedia-culture"></a>Encyclopedie-cultuur
+De **encyclopedie** is alleen beschikbaar `en-US` in de land instelling.
 
-#### <a name="encyclopedia-subtypes"></a>Subtypen encyclopedie
-De ingebouwde entiteit Encyclopedie bevat meer dan 100 subtypen in de volgende tabel: Bovendien brengen encyclopedieentiteiten vaak naar meerdere typen. Bijvoorbeeld, de query Ronald Reagan levert:
+#### <a name="encyclopedia-subtypes"></a>Subtypen voor encyclopedie
+De ingebouwde invoeg entiteit van de encyclopedie omvat meer dan 100 subtypen in de volgende tabel: de encyclopedie-entiteiten worden bovendien vaak aan meerdere typen toegewezen. De query Ronald Reagan levert bijvoorbeeld het volgende resultaat:
 
 ```json
 {
@@ -65,7 +65,7 @@ De ingebouwde entiteit Encyclopedie bevat meer dan 100 subtypen in de volgende t
  ```
 
 
-Vooraf gebouwde entiteit   |   Vooraf gebouwde entiteit (subtypen)   |   Voorbeeld van een utterance
+Vooraf gebouwde entiteit   |   Vooraf samengestelde entiteit (subtypen)   |   Voorbeeld van een utterance
 ------|------|------|
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.people.person`| `bryan adams` |
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.film.producer`| `walt disney` |
@@ -163,5 +163,5 @@ Vooraf gebouwde entiteit   |   Vooraf gebouwde entiteit (subtypen)   |   Voorbee
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de [dimensie,](luis-reference-prebuilt-dimension.md) [e-mailentiteiten](luis-reference-prebuilt-email.md) en [nummer](luis-reference-prebuilt-number.md).
+Meer informatie over de [dimensie](luis-reference-prebuilt-dimension.md), de [e-mail](luis-reference-prebuilt-email.md) entiteiten en het [aantal](luis-reference-prebuilt-number.md).
 

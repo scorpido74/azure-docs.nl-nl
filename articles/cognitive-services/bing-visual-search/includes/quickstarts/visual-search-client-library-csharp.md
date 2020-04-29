@@ -1,5 +1,5 @@
 ---
-title: Bing Visual Search C# clientbibliotheek snel aan de slag
+title: Quick start voor Bing Visual Search C#-client bibliotheek
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
 ms.openlocfilehash: b8ddd73451ff09e4db7ff529b04e7d7acfd6632a
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80550007"
 ---
-Gebruik deze snelle start om afbeeldingsinzichten te krijgen van de Bing Visual Search-service met behulp van de C#-clientbibliotheek. Hoewel Bing Visual Search een REST API heeft die compatibel is met de meeste programmeertalen, biedt de clientbibliotheek een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub.](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVisualSearch)
+Gebruik deze Quick Start om image Insights te verkrijgen van de Bing Visual Search-service, met behulp van de C#-client bibliotheek. Hoewel Bing Visual Search een REST API compatibel met de meeste programmeer talen heeft, biedt de client bibliotheek een eenvoudige manier om de service te integreren in uw toepassingen. De bron code voor dit voor beeld is te vinden op [github](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVisualSearch).
 
-[Voorbeeld van naslagdocumentatie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-dotnet) | [Bibliotheekbroncode](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch) | [(NuGet)-voorbeelden](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VisualSearch/) | [Samples](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
+[Reference documentation](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-dotnet) | NuGet-voor[beelden](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/) ([Source code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch) | [package)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VisualSearch/) | voor referentie documentatie
 
 ## <a name="prerequisites"></a>Vereisten
 

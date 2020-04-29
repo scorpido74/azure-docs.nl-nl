@@ -1,6 +1,6 @@
 ---
-title: PowerShell-script om Azure Cosmos DB Gremlin API-database en grafiek te maken
-description: Azure PowerShell-script - Azure Cosmos DB maken Gremlin API-database en grafiek
+title: Power shell-script voor het maken van Azure Cosmos DB Gremlin API-data base en-grafiek
+description: 'Azure PowerShell script: Azure Cosmos DB Gremlin API-data base en-grafiek maken'
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: 862a4668bfb313c613080bad2c7ba94256314fd9
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80366061"
 ---
-# <a name="create-a-database-and-graph-for-azure-cosmos-db---gremlin-api"></a>Een database en grafiek maken voor Azure Cosmos DB - Gremlin API
+# <a name="create-a-database-and-graph-for-azure-cosmos-db---gremlin-api"></a>Een Data Base en Graph maken voor de Azure Cosmos DB-Gremlin-API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,14 +38,14 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure-bronnen**| |
-| [Nieuw-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
+|**Azure-resources**| |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Hiermee worden Cosmos DB-accounts vermeld of wordt een opgegeven Cosmos DB-account weergegeven. |
-| [Set-AzCosmosDBGremlinDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbgremlindatabase) | Hiermee maakt of werkt u een Gremlin API-database uit. |
-| [Nieuw-AzCosmosDBGremlinConflictResolutionPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbgremlinconflictresolutionpolicy) | Hiermee maakt u een Gremlin API Write Conflict Resolution Policy. |
-| [Set-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbgremlingraph) | Hiermee maakt of werkt u een Gremlin API Graph uit. |
-|**Azure-brongroepen**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Een lijst met Cosmos DB accounts of een opgegeven Cosmos DB-account. |
+| [Set-AzCosmosDBGremlinDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbgremlindatabase) | Hiermee wordt een Gremlin API-data base gemaakt of bijgewerkt. |
+| [New-AzCosmosDBGremlinConflictResolutionPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbgremlinconflictresolutionpolicy) | Hiermee maakt u een Gremlin API write conflict-oplossings beleid. |
+| [Set-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbgremlingraph) | Hiermee wordt een Gremlin API-grafiek gemaakt of bijgewerkt. |
+|**Azure-resource groepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

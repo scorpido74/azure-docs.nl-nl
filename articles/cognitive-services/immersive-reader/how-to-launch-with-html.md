@@ -1,7 +1,7 @@
 ---
 title: De Insluitende lezer starten met HTML-inhoud
 titleSuffix: Azure Cognitive Services
-description: In dit artikel ziet u hoe u de meeslepende lezer starten met HTML-inhoud.
+description: In dit artikel wordt uitgelegd hoe u de insluitende lezer met HTML-inhoud kunt starten.
 author: metanMSFT
 manager: guillasi
 ms.service: cognitive-services
@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: bc7ab46113e1b819fc71a9f6e8a18400f8acfbef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75946241"
 ---
-# <a name="how-to-launch-the-immersive-reader-with-html-content"></a>Hoe de meeslepende lezer te starten met HTML-inhoud
+# <a name="how-to-launch-the-immersive-reader-with-html-content"></a>De insluitende lezer starten met HTML-inhoud
 
-In dit artikel wordt uitgelegd hoe u de Immersive Reader met HTML-inhoud starten.
+In dit artikel wordt beschreven hoe u de insluitende lezer met HTML-inhoud kunt starten.
 
 ## <a name="prepare-the-html-content"></a>De HTML-inhoud voorbereiden
 
-Plaats de inhoud die u wilt renderen in de meeslepende lezer in een containerelement. Zorg ervoor dat het containerelement een unieke `id`heeft. De Immersive Reader biedt ondersteuning voor basis-HTML-elementen, zie de [referentie](./reference.md#html-support) voor meer informatie.
+Plaats de inhoud die u wilt weer geven in de insluitende lezer binnen een container element. Zorg ervoor dat het container element een unieke `id`naam heeft. De insluitende lezer biedt ondersteuning voor eenvoudige HTML-elementen. Zie de [referentie](./reference.md#html-support) voor meer informatie.
 
 ```html
 <div id='immersive-reader-content'>
@@ -38,17 +38,17 @@ Plaats de inhoud die u wilt renderen in de meeslepende lezer in een containerele
 </div>
 ```
 
-## <a name="get-the-html-content-in-javascript"></a>De HTML-inhoud in JavaScript oppakken
+## <a name="get-the-html-content-in-javascript"></a>De HTML-inhoud in Java script ophalen
 
-Gebruik `id` het containerelement om de HTML-inhoud in uw JavaScript-code op te halen.
+Gebruik het `id` element van de container om de HTML-inhoud in uw Java script-code op te halen.
 
 ```javascript
 const htmlContent = document.getElementById('immersive-reader-content').innerHTML;
 ```
 
-## <a name="launch-the-immersive-reader-with-your-html-content"></a>Start de meeslepende lezer met uw HTML-inhoud
+## <a name="launch-the-immersive-reader-with-your-html-content"></a>De insluitende lezer starten met uw HTML-inhoud
 
-Stel `ImmersiveReader.launchAsync`bij het aanroepen `mimeType` de `text/html` eigenschap van de chunk in om rendering HTML in te schakelen.
+Wanneer u `ImmersiveReader.launchAsync`aanroept, stelt u `mimeType` de eigenschap `text/html` van het segment in op om rendering van HTML in te scha kelen.
 
 ```javascript
 const data = {
@@ -63,4 +63,4 @@ ImmersiveReader.launchAsync(YOUR_TOKEN, YOUR_SUBDOMAIN, data, YOUR_OPTIONS);
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Ontdek de [Meeslepende Reader SDK-referentie](./reference.md)
+* De referentie voor de [insluitende lezer-SDK](./reference.md) verkennen

@@ -1,6 +1,6 @@
 ---
-title: PowerShell-script om doorvoer (RU/s) voor Azure Cosmos DB Gremlin API te krijgen
-description: Azure PowerShell-script - Azure Cosmos DB Get Throughput (RU/s) voor Gremlin API
+title: Power shell-script voor het ophalen van door Voer (RU/s) voor Azure Cosmos DB Gremlin-API
+description: Azure PowerShell script-Azure Cosmos DB de door Voer (RU/s) voor de Gremlin-API ophalen
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: fa376aff9c127d5792da9e0489079ca3a1c67cf2
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80366033"
 ---
-# <a name="get-throughput-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Ontvang doorvoer (RU/s) voor een database of grafiek voor Azure Cosmos DB - Gremlin API
+# <a name="get-throughput-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>De door Voer (RU/s) voor een Data Base of grafiek voor de Azure Cosmos DB-Gremlin-API ophalen
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,9 +39,9 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | Opdracht | Opmerkingen |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBGremlinDatabaseDoorvoer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlindatabasethroughput) | Hier krijgt u de doorvoerwaarde van de opgegeven Gremlin API-database. |
-| [Get-AzCosmosDBGremlinGraphDoorvoer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraphthroughput) | Hier krijgt u de doorvoerwaarde van de opgegeven Gremlin API Graph. |
-|**Azure-brongroepen**| |
+| [Get-AzCosmosDBGremlinDatabaseThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlindatabasethroughput) | Hiermee wordt de doorvoer waarde opgehaald van de opgegeven Gremlin API-data base. |
+| [Get-AzCosmosDBGremlinGraphThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraphthroughput) | Hiermee wordt de doorvoer waarde opgehaald van de opgegeven Gremlin API-grafiek. |
+|**Azure-resource groepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

@@ -1,7 +1,7 @@
 ---
-title: Voorbeeldmethode voor voorbeelden van vertaaltekst-API-woordenboek
+title: Voor beelden van Translator Text-API Dictionary-methode
 titleSuffix: Azure Cognitive Services
-description: De methode Voorbeelden van voorbeelden van vertalerstekstAPI's bevat voorbeelden die laten zien hoe termen in het woordenboek in context worden gebruikt.
+description: De methode Translator Text-API Dictionary-voor beelden biedt voor beelden die laten zien hoe voor waarden in de woorden lijst worden gebruikt in de context.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,52 +11,52 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
 ms.openlocfilehash: b3551a8df19e47178c7bacd9218cfa60b66d81f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76548064"
 ---
-# <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3.0: Voorbeelden van woordenboeken
+# <a name="translator-text-api-30-dictionary-examples"></a>Translator Text-API 3,0: woordenlijst voorbeelden
 
-Geeft voorbeelden die laten zien hoe termen in het woordenboek in context worden gebruikt. Deze bewerking wordt gebruikt in combinatie met [Dictionary lookup](./v3-0-dictionary-lookup.md).
+Biedt voor beelden die laten zien hoe termen in de woorden lijst in de context worden gebruikt. Deze bewerking wordt samen gebruikt bij het [opzoeken van woorden lijsten](./v3-0-dictionary-lookup.md).
 
 ## <a name="request-url"></a>Aanvraag-URL
 
-Stuur `POST` een verzoek naar:
+Een `POST` aanvraag verzenden naar:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0
 ```
 
-## <a name="request-parameters"></a>Parameters aanvragen
+## <a name="request-parameters"></a>Aanvraag parameters
 
-De aangezochtparameters die op de querytekenreeks worden doorgegeven, zijn:
+Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
 
-| Queryparameter | Beschrijving |
+| Query parameter | Beschrijving |
 | --------- | ----------- |
-| api-versie <img width=200/> | **Vereiste parameter**.<br/>Versie van de API die door de client is aangevraagd. Waarde moet `3.0`zijn . |
-| from | **Vereiste parameter**.<br/>Hiermee geeft u de taal van de invoertekst op. De brontaal moet een van de ondersteunde `dictionary` [talen](./v3-0-languages.md) zijn die in het toepassingsgebied zijn opgenomen. |
-| tot | **Vereiste parameter**.<br/>Hiermee geeft u de taal van de uitvoertekst op. De doeltaal moet een van de ondersteunde `dictionary` [talen](./v3-0-languages.md) zijn die in het toepassingsgebied zijn opgenomen.  | 
+| api-versie <img width=200/> | **Vereiste para meter**.<br/>De versie van de API die door de client is aangevraagd. Waarde moet zijn `3.0`. |
+| from | **Vereiste para meter**.<br/>Geeft de taal van de invoer tekst aan. De bron taal moet een van de [ondersteunde talen](./v3-0-languages.md) zijn die in het `dictionary` bereik zijn opgenomen. |
+| tot | **Vereiste para meter**.<br/>Hiermee geeft u de taal van de uitvoer tekst op. De doel taal moet een van de [ondersteunde talen](./v3-0-languages.md) zijn die in het `dictionary` bereik zijn opgenomen.  | 
 
-Aanvraagkoppen zijn:
+Aanvraag headers zijn onder andere:
 
 | Headers  | Beschrijving |
 | ------ | ----------- |
-| Verificatiekop(en) <img width=200/>  | **Vereiste aanvraagheader**.<br/>Zie <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">beschikbare opties voor verificatie</a>. |
-| Content-Type | **Vereiste aanvraagheader**.<br/>Hiermee geeft u het inhoudstype van de payload op. Mogelijke waarden `application/json`zijn: . |
-| Inhoudslengte   | **Vereiste aanvraagheader**.<br/>De lengte van het verzoek lichaam. |
-| X-ClientTraceid   | **Optioneel**.<br/>Een door de klant gegenereerde GUID om de aanvraag op unieke wijze te identificeren. U deze koptekst weglaten als u de traceid `ClientTraceId`in de querytekenreeks opneemt met een queryparameter met de naam. |
+| Verificatie header (s) <img width=200/>  | De **vereiste aanvraag header**.<br/>Bekijk de <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">beschik bare opties voor authenticatie</a>. |
+| Content-Type | De **vereiste aanvraag header**.<br/>Hiermee geeft u het inhouds type van de payload op. Mogelijke waarden zijn: `application/json`. |
+| Content-length   | De **vereiste aanvraag header**.<br/>De lengte van de aanvraag tekst. |
+| X-ClientTraceId   | **Optioneel**.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. U kunt deze koptekst weglaten als u de tracerings-ID in de query reeks opneemt `ClientTraceId`met behulp van een query parameter met de naam. |
 
 ## <a name="request-body"></a>Aanvraagbody
 
-De instantie van het verzoek is een JSON array. Elk array-element is een JSON-object met de volgende eigenschappen:
+De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSON-object met de volgende eigenschappen:
 
-  * `Text`: Een tekenreeks die de term opzoekt. Dit moet de waarde `normalizedText` zijn van een veld uit de back-translations van een eerdere [opzoekaanvraag van een woordenboek.](./v3-0-dictionary-lookup.md) Het kan ook de `normalizedSource` waarde van het veld zijn.
+  * `Text`: Een teken reeks die de term aangeeft die moet worden gezocht. Dit moet de waarde zijn van een `normalizedText` veld uit de back-vertalingen van een eerdere lookup-aanvraag voor een [woorden lijst](./v3-0-dictionary-lookup.md) . Dit kan ook de waarde van het `normalizedSource` veld zijn.
 
-  * `Translation`: Een tekenreeks die de vertaalde tekst opgeeft die eerder is geretourneerd door de [opzoekbewerking Woordenboek.](./v3-0-dictionary-lookup.md) Dit moet de waarde `normalizedTarget` uit `translations` het veld in de lijst met de [opzoekreactie van](./v3-0-dictionary-lookup.md) het woordenboek zijn. De service retourneert voorbeelden voor het specifieke brondoelwoordpaar.
+  * `Translation`: Een teken reeks waarmee de vertaalde tekst wordt opgegeven die eerder door de zoek bewerking van de [woorden lijst](./v3-0-dictionary-lookup.md) is geretourneerd. Dit moet de waarde zijn uit het `normalizedTarget` veld in de `translations` lijst van het antwoord op de [woorden lijst opzoeken](./v3-0-dictionary-lookup.md) . Met de service worden voor beelden geretourneerd voor het specifieke woord paar van de doel groep.
 
-Een voorbeeld is:
+Een voor beeld is:
 
 ```json
 [
@@ -66,43 +66,43 @@ Een voorbeeld is:
 
 De volgende beperkingen zijn van toepassing:
 
-* De array kan hoogstens 10 elementen hebben.
-* De tekstwaarde van een arrayelement mag niet meer dan 100 tekens, inclusief spaties, overschrijden.
+* De matrix kan Maxi maal 10 elementen bevatten.
+* De tekst waarde van een matrix element mag niet langer zijn dan 100 tekens, inclusief spaties.
 
 ## <a name="response-body"></a>Hoofdtekst van de reactie
 
-Een succesvol antwoord is een JSON-array met één resultaat voor elke tekenreeks in de invoerarray. Een resultaatobject bevat de volgende eigenschappen:
+Een geslaagde reactie is een JSON-matrix met één resultaat voor elke teken reeks in de invoer matrix. Een resultaat object bevat de volgende eigenschappen:
 
-  * `normalizedSource`: Een tekenreeks die de genormaliseerde vorm van de bronterm geeft. Over het algemeen moet dit identiek `Text` zijn aan de waarde van het veld op de overeenkomende lijstindex in de hoofdtekst van het verzoek.
+  * `normalizedSource`: Een teken reeks met de genormaliseerde vorm van de bron term. Over het algemeen moet dit gelijk zijn aan de waarde van `Text` het veld in de hoofd tekst van de aanvraag.
     
-  * `normalizedTarget`: Een tekenreeks die de genormaliseerde vorm van de doelterm geeft. Over het algemeen moet dit identiek `Translation` zijn aan de waarde van het veld op de overeenkomende lijstindex in de hoofdtekst van het verzoek.
+  * `normalizedTarget`: Een teken reeks met de genormaliseerde vorm van de doel term. Over het algemeen moet dit gelijk zijn aan de waarde van `Translation` het veld in de hoofd tekst van de aanvraag.
   
-  * `examples`: Een lijst met voorbeelden voor het (bronterm, doeltermijn) paar. Elk element van de lijst is een object met de volgende eigenschappen:
+  * `examples`: Een lijst met voor beelden voor het paar (bron term, doel term). Elk element van de lijst is een object met de volgende eigenschappen:
 
-    * `sourcePrefix`: De tekenreeks die moet worden samengevoegd `sourceTerm` _vóór_ de waarde van het vormen van een volledig voorbeeld. Voeg geen spatieteken toe, want het is er al wanneer het zou moeten zijn. Deze waarde kan een lege tekenreeks zijn.
+    * `sourcePrefix`: De teken reeks die moet worden samengevoegd _vóór_ de `sourceTerm` waarde van om een volledig voor beeld te vormen. Voeg geen spatie toe, omdat deze al aanwezig is wanneer dit moet zijn. Deze waarde kan een lege teken reeks zijn.
 
-    * `sourceTerm`: Een tekenreeks die gelijk is aan de werkelijke term die is opgezocht. De tekenreeks wordt `sourcePrefix` `sourceSuffix` toegevoegd met en om het volledige voorbeeld te vormen. De waarde ervan is gescheiden, zodat deze kan worden gemarkeerd in een gebruikersinterface, bijvoorbeeld door deze vet te maken.
+    * `sourceTerm`: Een teken reeks die gelijk is aan de werkelijke term die wordt opgezocht. De teken reeks wordt toegevoegd `sourcePrefix` aan `sourceSuffix` en voor het volledige voor beeld. De waarde ervan wordt gescheiden, zodat deze kan worden gemarkeerd in een gebruikers interface, bijvoorbeeld door het vet te maken.
 
-    * `sourceSuffix`: De tekenreeks die moet _after_ worden samengevoegd `sourceTerm` na de waarde van het vormen van een volledig voorbeeld. Voeg geen spatieteken toe, want het is er al wanneer het zou moeten zijn. Deze waarde kan een lege tekenreeks zijn.
+    * `sourceSuffix`: De teken reeks die moet worden samengevoegd _na_ de `sourceTerm` waarde van om een volledig voor beeld te vormen. Voeg geen spatie toe, omdat deze al aanwezig is wanneer dit moet zijn. Deze waarde kan een lege teken reeks zijn.
 
-    * `targetPrefix`: Een tekenreeks `sourcePrefix` vergelijkbaar met maar voor het doel.
+    * `targetPrefix`: Een teken reeks die `sourcePrefix` vergelijkbaar is met maar voor het doel.
 
-    * `targetTerm`: Een tekenreeks `sourceTerm` vergelijkbaar met maar voor het doel.
+    * `targetTerm`: Een teken reeks die `sourceTerm` vergelijkbaar is met maar voor het doel.
 
-    * `targetSuffix`: Een tekenreeks `sourceSuffix` vergelijkbaar met maar voor het doel.
+    * `targetSuffix`: Een teken reeks die `sourceSuffix` vergelijkbaar is met maar voor het doel.
 
     > [!NOTE]
-    > Als er geen voorbeelden in het woordenboek staan, is het `examples` antwoord 200 (OK), maar is de lijst een lege lijst.
+    > Als er geen voor beelden in de woorden lijst staan, is de reactie 200 (OK) `examples` , maar is de lijst een lege lijst.
 
 ## <a name="examples"></a>Voorbeelden
 
-In dit voorbeeld ziet u hoe u voorbeelden `fly` opzoeken voor `volar`het paar dat bestaat uit de Engelse term en de Spaanse vertaling.
+In dit voor beeld ziet u hoe u voor beelden kunt opzoeken voor het paar dat `fly` is gemaakt met de `volar`Engelse term en de Spaanse vertaling.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"
 ```
 
-Het responslichaam (afgekort voor duidelijkheid) is:
+De antwoord tekst (afgekort voor de duidelijkheid) is:
 
 ```
 [

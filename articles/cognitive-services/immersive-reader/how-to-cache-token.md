@@ -1,7 +1,7 @@
 ---
 title: Het verificatietoken cachen
 titleSuffix: Azure Cognitive Services
-description: In dit artikel ziet u hoe u het verificatietoken in de cache opslaan.
+description: In dit artikel wordt uitgelegd hoe u het verificatie token in de cache opslaat.
 author: metanMSFT
 manager: guillasi
 ms.service: cognitive-services
@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: e652aa29b1c1935fcc4887dbe13ef9b683a8bd05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75946164"
 ---
-# <a name="how-to-cache-the-authentication-token"></a>Het verificatietoken in de cache opslaan
+# <a name="how-to-cache-the-authentication-token"></a>Het verificatie token in de cache opslaan
 
-In dit artikel wordt uitgelegd hoe u het verificatietoken in de cache opslaan om de prestaties van uw toepassing te verbeteren.
+In dit artikel wordt beschreven hoe u het verificatie token in de cache opslaat om de prestaties van uw toepassing te verbeteren.
 
-## <a name="using-aspnet"></a>Met behulp van ASP.NET
+## <a name="using-aspnet"></a>ASP.NET gebruiken
 
-Importeer het **Microsoft.IdentityModel.Clients.ActiveDirectory** NuGet-pakket, dat wordt gebruikt om een token te verkrijgen. Gebruik vervolgens de volgende code `AuthenticationResult`om een verificatiewaarden te verkrijgen die u hebt gekregen toen u [de bron Immersive Reader hebt gemaakt.](./how-to-create-immersive-reader.md)
+Importeer het NuGet-pakket **micro soft. Identity model. clients. ActiveDirectory** , dat wordt gebruikt om een token op te halen. Gebruik vervolgens de volgende code om een `AuthenticationResult`te verkrijgen met de verificatie waarden die u hebt gekregen tijdens [het maken van de insluitende lezer-resource](./how-to-create-immersive-reader.md).
 
 ```csharp
 private async Task<AuthenticationResult> GetTokenAsync()
@@ -34,11 +34,11 @@ private async Task<AuthenticationResult> GetTokenAsync()
 }
 ```
 
-Het `AuthenticationResult` object `AccessToken` heeft een eigenschap die het werkelijke token is dat u gebruikt bij de lancering van de Immersive Reader met behulp van de SDK. Het heeft `ExpiresOn` ook een eigenschap die aangeeft wanneer het token verloopt. Voordat u de Immersive Reader start, u controleren of het token is verlopen en een nieuw token alleen aanschaffen als het is verlopen.
+Het `AuthenticationResult` object heeft een `AccessToken` eigenschap die het token bevat dat u wilt gebruiken bij het starten van de insluitende lezer met behulp van de SDK. Het bevat ook een `ExpiresOn` eigenschap die ziet wanneer het token verloopt. Voordat u de insluitende lezer start, kunt u controleren of het token is verlopen en alleen een nieuw token verkrijgen als het is verlopen.
 
-## <a name="using-nodejs"></a>Node.JS gebruiken
+## <a name="using-nodejs"></a>Node. JS gebruiken
 
-Voeg [**request**](https://www.npmjs.com/package/request) het aanvraagnpm-pakket toe aan uw project. Gebruik de volgende code om een token te verkrijgen, met behulp van de verificatiewaarden die u hebt gekregen toen u [de bron Immersive Reader maakte.](./how-to-create-immersive-reader.md)
+Voeg het [**aanvraag**](https://www.npmjs.com/package/request) NPM-pakket toe aan uw project. Gebruik de volgende code om een token te verkrijgen, met behulp van de verificatie waarden die u hebt gekregen tijdens [het maken van de insluitende lezer-resource](./how-to-create-immersive-reader.md).
 
 ```javascript
 router.get('/token', function(req, res) {
@@ -64,7 +64,7 @@ router.get('/token', function(req, res) {
 });
 ```
 
-De `expires_on` eigenschap is de datum en het tijdstip waarop het token verloopt, uitgedrukt als het aantal seconden sinds 1 januari 1970 UTC. Gebruik deze waarde om te bepalen of uw token is verlopen voordat u een nieuwe token probeert te aanschaffen.
+De `expires_on` eigenschap is de datum en tijd waarop het token verloopt, uitgedrukt als het aantal seconden sinds 1 januari 1970 UTC. Gebruik deze waarde om te bepalen of uw token is verlopen voordat er wordt geprobeerd een nieuwe te verkrijgen.
 
 ```javascript
 async function getToken() {
@@ -77,4 +77,4 @@ async function getToken() {
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Ontdek de [Meeslepende Reader SDK-referentie](./reference.md)
+* De referentie voor de [insluitende lezer-SDK](./reference.md) verkennen

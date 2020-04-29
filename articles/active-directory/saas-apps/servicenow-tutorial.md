@@ -16,10 +16,10 @@ ms.date: 03/25/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fe6c857e5b0c2f48f27c167c177dbf1f4651986
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80384106"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met ServiceNow
@@ -479,7 +479,7 @@ Wanneer u de tegel ServiceNow in het toegangs venster selecteert, wordt u automa
 
         ![Scherm opname van de start pagina van de toepassing](./media/servicenow-tutorial/test02.png)
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

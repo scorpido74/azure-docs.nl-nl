@@ -9,15 +9,15 @@ ms.date: 03/30/2020
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: dcc34123731a3c60b4e76c9180c2e5c2a7c56b92
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80529289"
 ---
 * Een actief Azure-account. (Als u geen account hebt, kunt u binnen een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
 
-* [Python versie 3.7 of hoger](https://www.python.org/downloads/) wordt aanbevolen. Zorg ervoor dat u de 32-bits of 64-bits installatie gebruikt, zoals vereist door uw configuratie. Zorg ervoor dat u Python toevoegt aan uw platformspecifieke omgevingsvariabele als u hierom wordt gevraagd tijdens de installatie. Zie [Azure IoT-apparaatfuncties](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features) in de SDK-documentatie voor andere versies van Python.
+* [Python-versie 3,7 of hoger](https://www.python.org/downloads/) wordt aanbevolen. Zorg ervoor dat u de 32-bits of 64-bits installatie gebruikt, zoals vereist door uw configuratie. Zorg ervoor dat u Python toevoegt aan uw platformspecifieke omgevingsvariabele als u hierom wordt gevraagd tijdens de installatie. Zie [Azure IOT-apparaatfuncties](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features) in de SDK-documentatie voor andere versies van python die worden ondersteund.
 
     > [!IMPORTANT]
-    > Omdat de apparaatcode in dit artikel de asynchrone API gebruikt, u Python 2.7 niet gebruiken.
+    > Omdat de apparaatcode in dit artikel de asynchrone API gebruikt, kunt u python 2,7 niet gebruiken.

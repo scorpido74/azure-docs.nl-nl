@@ -1,5 +1,5 @@
 ---
-title: Pushmeldingen naar Android verzenden met Azure Notification Hubs en Firebase | Microsoft Documenten
+title: Push meldingen verzenden naar Android met behulp van Azure Notification Hubs en Firebase | Microsoft Docs
 description: In deze zelfstudie leert u hoe u met Azure Notification Hubs en Google Cloud Messaging pushmeldingen verzendt naar Android-apparaten.
 services: notification-hubs
 documentationcenter: android
@@ -19,19 +19,19 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
 ms.openlocfilehash: e6bc4ed94c8b8e62740f81497231a163283ebcb7
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80521560"
 ---
-# <a name="tutorial-send-push-notifications-to-android-devices-using-firebase"></a>Zelfstudie: Pushmeldingen verzenden naar Android-apparaten met Firebase
+# <a name="tutorial-send-push-notifications-to-android-devices-using-firebase"></a>Zelf studie: Push meldingen verzenden naar Android-apparaten met behulp van Firebase
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 In deze zelfstudie wordt gedemonstreerd hoe u met Azure Notification Hubs en Firebase Cloud Messaging (FCM) meldingen kunt pushen naar een Android-toepassing. In deze zelfstudie gaat u een lege Android-app maken die pushmeldingen ontvangt via Firebase Cloud Messaging (FCM).
 
-De voltooide code voor deze zelfstudie kan worden gedownload [van GitHub.](https://github.com/Azure/azure-notificationhubs-android/tree/master/FCMTutorialApp)
+De voltooide code voor deze zelf studie kan worden gedownload [van github](https://github.com/Azure/azure-notificationhubs-android/tree/master/FCMTutorialApp).
 
 In deze zelfstudie voert u de volgende stappen uit:
 
@@ -46,23 +46,23 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 U hebt een actief Azure-account nodig om deze zelfstudie te voltooien. Als u geen account hebt, kunt u binnen een paar minuten een gratis proefaccount maken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/free/) voor meer informatie. 
 
-Je hebt ook de volgende items nodig: 
+U hebt ook de volgende items nodig: 
 
 * De nieuwste versie van [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797)
-* Android 2.3 of hoger voor Firebase Cloud Messaging
-* Google Repository revisie 27 of hoger voor Firebase Cloud Messaging
-* Google Play Services 9.0.2 of hoger voor Firebase Cloud Messaging
+* Android 2,3 of hoger voor Firebase Cloud Messa ging
+* Google repository revisie 27 of hoger voor Firebase Cloud Messa ging
+* Google Play Services 9.0.2 of hoger voor Firebase Cloud Messa ging
 
-Het invullen van deze zelfstudie is een voorwaarde voor het doen van alle andere Notification Hubs-zelfstudies voor Android-apps.
+Het volt ooien van deze zelf studie is een vereiste voor het uitvoeren van alle andere Notification Hubs zelf studies voor Android-apps.
 
 ## <a name="create-an-android-studio-project"></a>Een Android Studio-project maken
 
 1. Start Android Studio.
-2. Selecteer **Bestand**, wijs **Nieuw**aan en selecteer Vervolgens **Nieuw project**. 
-2. Selecteer op de pagina **Uw project kiezen** de optie Lege **activiteit**en selecteer **Volgende**. 
-3. Ga op de pagina **Uw project configureren** de volgende stappen uit: 
+2. Selecteer **bestand**, wijs **Nieuw**aan en selecteer vervolgens **Nieuw project**. 
+2. Selecteer op de pagina **uw project kiezen** de optie **lege activiteit**en selecteer vervolgens **volgende**. 
+3. Voer de volgende stappen uit op de pagina **uw project configureren** : 
     1. Voer een naam in voor de toepassing.
-    2. Geef een locatie op waar u de projectbestanden opslaan. 
+    2. Geef een locatie op waar de project bestanden moeten worden opgeslagen. 
     3. Selecteer **Finish**. 
 
         ![Het project configureren](./media/notification-hubs-android-push-notification-google-fcm-get-started/configure-project.png)
@@ -77,32 +77,32 @@ Het invullen van deze zelfstudie is een voorwaarde voor het doen van alle andere
 
 ### <a name="configure-firebase-cloud-messaging-settings-for-the-hub"></a>Firebase Cloud Messaging-instellingen voor de hub configureren
 
-1. Selecteer in het linkerdeelvenster onder **Instellingen** de optie **Google (GCM/FCM).** 
-2. Voer de **serversleutel** in voor het FCM-project dat u eerder hebt opgeslagen. 
-3. Selecteer op de werkbalk **Opslaan**. 
+1. Selecteer in het linkerdeel venster onder **instellingen** **Google (GCM/FCM)**. 
+2. Voer de **Server sleutel** in voor het FCM-project dat u eerder hebt opgeslagen. 
+3. Selecteer op de werk balk de optie **Opslaan**. 
 
-    ![Azure Notification Hub - Google (FCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
-4. De Azure-portal geeft een bericht weer in waarschuwingen dat de hub is bijgewerkt. De knop **Opslaan** kan niet worden gekozen. 
+    ![Azure notification hub-Google (FCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
+4. In het Azure Portal wordt een bericht weer gegeven in waarschuwingen dat de hub is bijgewerkt. De knop **Opslaan** kan niet worden gekozen. 
 
-Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messaging. Je hebt ook de verbindingstekenreeksen die nodig zijn om meldingen naar een apparaat te verzenden en een app te registreren om meldingen te ontvangen.
+Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messa ging. U hebt ook de verbindings reeksen die nodig zijn om meldingen naar een apparaat te verzenden en een app te registreren voor het ontvangen van meldingen.
 
 ## <a name="connect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>Uw app verbinden met de Notification Hub
 
 ### <a name="add-google-play-services-to-the-project"></a>Google Play-services aan het project toevoegen
 
-1. Selecteer in Android Studio **Extra** in het menu en selecteer **vervolgens SDK Manager**. 
-2. Selecteer de doelversie van de Android SDK die in uw project wordt gebruikt. Selecteer vervolgens **Pakketgegevens weergeven**. 
+1. Selecteer in Android Studio **Hulpprogram ma's** in het menu en selecteer vervolgens **SDK-beheer**. 
+2. Selecteer de doel versie van de Android SDK die in uw project wordt gebruikt. Selecteer vervolgens **pakket details weer geven**. 
 
     ![Android SDK Manager - doelversie selecteren](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
-3. Selecteer **Google API's**als deze nog niet is geïnstalleerd.
+3. Selecteer **Google api's**, als deze nog niet is geïnstalleerd.
 
     ![Android SDK Manager - Google API’s geselecteerd](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
-4. Ga naar het tabblad **Hulpmiddelen voor SDK.** Als u Google Play Services nog niet hebt geïnstalleerd, selecteert u **Google Play Services** zoals weergegeven in de volgende afbeelding. Selecteer vervolgens **Toepassen** om te installeren. Noteer het SDK-pad om het in een later stadium te kunnen gebruiken.
+4. Schakel over naar het tabblad **SDK-Hulpprogram ma's** . Als u Google Play-Services nog niet hebt geïnstalleerd, selecteert u **Google play services** , zoals in de volgende afbeelding wordt weer gegeven. Selecteer vervolgens **Toep assen** om te installeren. Noteer het SDK-pad om het in een later stadium te kunnen gebruiken.
 
     ![Android SDK Manager - Google Play Services geselecteerd](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
 3. Klik op **OK** zodra het dialoogvenster **Wijziging bevestigen** wordt weergegeven. De vereiste onderdelen worden geïnstalleerd met behulp van het installatieprogramma voor onderdelen. Selecteer **Voltooien** zodra de onderdelen zijn geïnstalleerd.
 4. Selecteer **OK** om het dialoogvenster **Instellingen voor nieuwe projecten** te sluiten.  
-1. Open het bestand AndroidManifest.xml en voeg de volgende tag toe aan de *toepassingstag.*
+1. Open het bestand AndroidManifest. XML en voeg de volgende tag toe aan het label *Application* .
 
     ```xml
     <meta-data android:name="com.google.android.gms.version"
@@ -112,7 +112,7 @@ Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messaging. Je hebt o
 
 ### <a name="add-azure-notification-hubs-libraries"></a>Azure Notification Hubs-bibliotheken toevoegen
 
-1. Voeg in het bestand Build.Gradle voor de app de volgende regels toe in de sectie Afhankelijkheden.
+1. Voeg in het bestand build. Gradle voor de app de volgende regels toe aan de sectie dependencies.
 
     ```gradle
     implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
@@ -130,23 +130,23 @@ Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messaging. Je hebt o
 
 ### <a name="add-google-firebase-support"></a>Ondersteuning voor Google Firebase toevoegen
 
-1. Voeg in het bestand Build.Gradle voor de app de volgende regels toe in de sectie **Afhankelijkheden** als deze nog niet bestaan. 
+1. Voeg in het bestand build. Gradle voor de app de volgende regels toe aan de sectie **dependencies** als deze nog niet bestaan. 
 
     ```gradle
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
     ```
 
-2. Voeg de volgende plug-in toe aan het einde van het bestand als deze er nog niet is. 
+2. Voeg de volgende invoeg toepassing aan het einde van het bestand toe als dit nog niet is gebeurd. 
 
     ```gradle
     apply plugin: 'com.google.gms.google-services'
     ```
 3. Selecteer **Nu synchroniseren** op de werkbalk.
 
-### <a name="update-the-androidmanifestxml-file"></a>Het Bestand AndroidManifest.xml bijwerken
+### <a name="update-the-androidmanifestxml-file"></a>Het bestand AndroidManifest. XML bijwerken
 
-1. Nadat u uw FCM-registratietoken hebt ontvangen, gebruikt u het om u te [registreren bij Azure Notification Hubs.](notification-hubs-push-notification-registration-management.md) U ondersteunt deze registratie op `IntentService` de `RegistrationIntentService`achtergrond met behulp van een naam . Deze service vernieuwt ook uw FCM-registratietoken. U maakt ook `FirebaseService` een klasse die `FirebaseMessagingService` is `onMessageReceived` genoemd als subklasse van en overschrijft de methode om meldingen te ontvangen en te verwerken. 
+1. Nadat u uw FCM-registratie token hebt ontvangen, gebruikt u dit om u te [registreren bij Azure notification hubs](notification-hubs-push-notification-registration-management.md). U kunt deze registratie op de achtergrond ondersteunen met behulp van een `IntentService` naam `RegistrationIntentService`. Met deze service wordt ook uw FCM-registratie token vernieuwd. U maakt ook een klasse met `FirebaseService` de naam als subklasse `FirebaseMessagingService` van en overschrijft de `onMessageReceived` methode om meldingen te ontvangen en af te handelen. 
 
     Voeg de volgende servicedefinitie toe aan het bestand AndroidManifest.xml in de `<application>`-tag.
 
@@ -163,7 +163,7 @@ Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messaging. Je hebt o
         </intent-filter>
     </service>
     ```
-3. Voeg de volgende benodigde FCM-gerelateerde machtigingen toe onder de `</application>` tag.
+3. Voeg de volgende vereiste FCM-gerelateerde machtigingen toe onder `</application>` de-tag.
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -173,12 +173,12 @@ Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messaging. Je hebt o
 
 ### <a name="add-code"></a>Code toevoegen
 
-1. Vouw in de Projectview **app** > **src** > **main** > **java**uit. Klik met de rechtermuisknop op de pakketmap onder **java,** selecteer **Nieuw**en selecteer **Java-klasse**. Typ **Meldingsinstellingen** voor de naam en selecteer **OK**.
+1. Vouw in de Project weergave **app** > **src** > **Main** > **Java**uit. Klik met de rechter muisknop op de pakketmap onder **Java**, selecteer **Nieuw**en selecteer vervolgens **Java-klasse**. Voer **NotificationSettings** in als naam en selecteer **OK**.
 
     Zorg ervoor dat u de volgende drie tijdelijke aanduidingen in de volgende code bijwerkt voor de klasse `NotificationSettings`:
 
-   * **HubListenConnectionString**: de verbindingsreeks **DefaultListenAccessSignature** voor de hub. U die verbindingstekenreeks kopiëren door te klikken op **Toegangsbeleid** in uw hub in de [Azure-portal.]
-   * **HubName:** gebruik de naam van uw hub die wordt weergegeven op de hubpagina in de [Azure-portal.]
+   * **HubListenConnectionString**: de verbindingsreeks **DefaultListenAccessSignature** voor de hub. U kunt deze connection string kopiëren door te klikken op **toegangs beleid** in uw hub in de [Azure Portal].
+   * **HubName**: gebruik de naam van uw hub die wordt weer gegeven op de hub-pagina in het [Azure Portal].
 
      `NotificationSettings`-code:
 
@@ -190,9 +190,9 @@ Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messaging. Je hebt o
         ```
 
      > [!IMPORTANT]
-     > Voer de **naam** en de **DefaultListenSharedAccessSignature** van uw hub in voordat u verder gaat. 
+     > Voer de **naam** en het **DefaultListenSharedAccessSignature** van uw hub in voordat u verder gaat. 
 
-2. Voeg een andere nieuwe klasse toe aan uw project met de naam `RegistrationIntentService`. Deze klasse implementeert de `IntentService` interface. Het behandelt ook [het vernieuwen van het FCM-token](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) en het registreren met de [meldingshub.](notification-hubs-push-notification-registration-management.md)
+2. Voeg een andere nieuwe klasse toe aan uw project met de naam `RegistrationIntentService`. Deze klasse implementeert de `IntentService` interface. Ook wordt [het vernieuwen van het FCM-token](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) en [de registratie bij de notification hub](notification-hubs-push-notification-registration-management.md)afgehandeld.
 
     Gebruik de volgende code voor deze klasse.
 
@@ -294,7 +294,7 @@ Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messaging. Je hebt o
     }
     ```
 
-3. Voeg `MainActivity` in de klasse `import` de volgende instructies toe boven de klassedeclaratie.
+3. Voeg in `MainActivity` de klasse de volgende `import` instructies toe boven de klassen declaratie.
 
     ```java
     import com.google.android.gms.common.ConnectionResult;
@@ -314,7 +314,7 @@ Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messaging. Je hebt o
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     ```
 
-5. Voeg `MainActivity` in de klasse de volgende methode toe om de beschikbaarheid van Google Play Services te controleren.
+5. Voeg in `MainActivity` de klasse de volgende methode toe om de beschik baarheid van Google play services te controleren.
 
     ```java
     /**
@@ -341,7 +341,7 @@ Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messaging. Je hebt o
     }
     ```
 
-6. Voeg `MainActivity` in de klasse de volgende code toe die `IntentService` controleert op Google Play Services voordat u het aanroepen van het om uw FCM-registratietoken te krijgen en u te registreren bij uw hub:
+6. Voeg in `MainActivity` de-klasse de volgende code toe die controleert op Google Play Services voordat u `IntentService` de AANroept om uw FCM-registratie token op te halen en te registreren bij uw hub:
 
     ```java
     public void registerWithNotificationHubs()
@@ -354,7 +354,7 @@ Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messaging. Je hebt o
     }
     ```
 
-7. Voeg `OnCreate` in de `MainActivity` methode van de klasse de volgende code toe om het registratieproces te starten wanneer de activiteit wordt gemaakt:
+7. Voeg in `OnCreate` de methode van `MainActivity` de klasse de volgende code toe om het registratie proces te starten wanneer de activiteit wordt gemaakt:
 
     ```java
     @Override
@@ -368,7 +368,7 @@ Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messaging. Je hebt o
     }
     ```
 
-8. Als u de status van de app wilt verifiëren `MainActivity`en de status van uw rapport in uw app wilt rapporteren, voegt u deze aanvullende methoden toe aan:
+8. Als u de status van de app en het rapport in uw app wilt controleren, `MainActivity`voegt u deze extra methoden toe aan:
 
     ```java
     @Override
@@ -407,7 +407,7 @@ Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messaging. Je hebt o
     }
     ```
 
-9. Voor de methode `ToastNotify` wordt het besturingselement *Hello World gebruikt * `TextView` om de status en kennisgevingen permanent in de app te melden. Voeg in de > **indeling** > **activity_main.xml** de volgende ID toe voor dat besturingselement. **res**
+9. Voor de methode `ToastNotify` wordt het besturingselement *Hello World gebruikt * `TextView` om de status en kennisgevingen permanent in de app te melden. Voeg in de indeling **Res** > **Layout** > **activity_main. XML** de volgende id toe voor dat besturings element.
 
     ```java
     android:id="@+id/text_hello"
@@ -415,7 +415,7 @@ Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messaging. Je hebt o
 
     ![Azure Notification Hubs - Verzenden testen](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
 
-10. Vervolgens voegt u een subklasse toe voor de ontvanger die u hebt gedefinieerd in AndroidManifest.xml. Voeg een andere nieuwe klasse toe aan uw project met de naam `FirebaseService`.
+10. Vervolgens voegt u een subklasse toe voor de ontvanger die u hebt gedefinieerd in AndroidManifest. XML. Voeg een andere nieuwe klasse toe aan uw project met de naam `FirebaseService`.
 
 11. Voeg boven in `FirebaseService.java` de volgende importinstructie toe:
 
@@ -435,9 +435,9 @@ Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messaging. Je hebt o
     import androidx.core.app.NotificationCompat;
     ```
 
-12. Voeg de volgende `FirebaseService` code voor de klasse `FirebaseMessagingService`toe, waardoor deze een subklasse van .
+12. Voeg de volgende code toe voor `FirebaseService` de klasse, waardoor er een subklasse `FirebaseMessagingService`van wordt gemaakt.
 
-    Deze code overschrijft de `onMessageReceived` methode en rapporteert meldingen die worden ontvangen. het stuurt ook de push-melding naar `sendNotification()` de Android-meldingsmanager met behulp van de methode. Bel `sendNotification()` de methode wanneer de app niet wordt uitgevoerd en er een melding wordt ontvangen.
+    Deze code overschrijft de `onMessageReceived` methode en rapport meldingen die worden ontvangen. ook wordt de push melding verzonden naar de Android Notification Manager met behulp `sendNotification()` van de-methode. Roep de `sendNotification()` methode aan wanneer de app niet wordt uitgevoerd en er een melding wordt ontvangen.
 
     ```java
     public class FirebaseService extends FirebaseMessagingService
@@ -522,33 +522,33 @@ Uw hub is nu geconfigureerd om te werken met Firebase Cloud Messaging. Je hebt o
     }
     ```
 
-13. Selecteer in Android Studio op de menubalk **Build** > **Rebuild Project** om ervoor te zorgen dat er geen fouten in uw code zitten. Als u een fout `ic_launcher` ontvangt over het pictogram, verwijdert u de volgende instructie uit het Bestand AndroidManifest.xml: 
+13. Selecteer in Android Studio op de menu balk de optie project **opnieuw** > **samen stellen** om te controleren of er fouten in uw code zijn. Als er een fout bericht over het `ic_launcher` pictogram wordt weer gegeven, verwijdert u de volgende instructie uit het bestand AndroidManifest. XML: 
 
     ```
         android:icon="@mipmap/ic_launcher"
     ```
-14. Zorg ervoor dat u een virtueel apparaat hebt voor het uitvoeren van de app. Als u er geen hebt, voegt u er als volgt een toe:
+14. Zorg ervoor dat u een virtueel apparaat hebt voor het uitvoeren van de app. Als u er geen hebt, voegt u een als volgt toe:
     1. ![Apparaatbeheer openen](./media/notification-hubs-android-push-notification-google-fcm-get-started/open-device-manager.png)
     2. ![Virtueel apparaat maken](./media/notification-hubs-android-push-notification-google-fcm-get-started/your-virtual-devices.PNG)
 
-15. Voer de app uit op het geselecteerde apparaat en controleer of deze met de hub is geregistreerd.
+15. Voer de app uit op het geselecteerde apparaat en controleer of deze is geregistreerd met de hub.
 
     > [!NOTE]
-    > Registratie kan mislukken tijdens `onTokenRefresh()` de eerste lancering totdat de methode van de instantie-id-service wordt aangeroepen. De vernieuwing moet een succesvolle registratie met de Notification Hub tot stand brengen.
+    > Registratie kan mislukken tijdens de eerste keer starten totdat `onTokenRefresh()` de methode van de exemplaar-id-service wordt aangeroepen. De vernieuwing moet een succesvolle registratie met de Notification Hub tot stand brengen.
 
     ![De registratie van het apparaat is voltooid](./media/notification-hubs-android-push-notification-google-fcm-get-started/device-registration.png)
 
 ## <a name="test-send-notification-from-the-notification-hub"></a>Testen van melding verzenden vanuit de Notification Hub
 
-U pushmeldingen verzenden vanuit de [Azure-portal] door de volgende stappen te nemen:
+U kunt push meldingen verzenden via de [Azure Portal] door de volgende stappen uit te voeren:
 
-1. Selecteer in de Azure-portal op de pagina Meldingshub voor uw hub de optie **Verzenden testen** in de sectie **Probleemoplossing.**
+1. Selecteer in de Azure Portal op de pagina notification hub voor uw hub **testen verzenden** in de sectie **probleem oplossing** .
 3. Selecteer voor **Platforms** de optie **Android**.
-4. Selecteer **Verzenden**.  Je ziet nog geen melding op het Android-apparaat omdat je de mobiele app er niet op hebt uitgevoerd. Nadat u de mobiele app hebt uitgevoerd, selecteert u opnieuw de knop **Verzenden** om het meldingsbericht weer te geven.
+4. Selecteer **Verzenden**.  Er wordt nog geen melding op het Android-apparaat weer geven omdat u de mobiele app niet op de computer hebt uitgevoerd. Nadat u de mobiele app hebt uitgevoerd, selecteert u de knop **verzenden** opnieuw om het meldings bericht weer te geven.
 5. Bekijk het resultaat van de bewerking in de lijst onderaan.
 
     ![Azure Notification Hubs - Verzenden testen](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-test-send.png)
-6. U ziet het meldingsbericht op uw apparaat. 
+6. U ziet het meldings bericht op het apparaat. 
 
     ![Melding op apparaat](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-on-device.png)
     
@@ -556,15 +556,15 @@ U pushmeldingen verzenden vanuit de [Azure-portal] door de volgende stappen te n
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
 ### <a name="run-the-mobile-app-on-emulator"></a>De mobiele app uitvoeren in een emulator
-Voordat u pushmeldingen in een emulator test, moet u ervoor zorgen dat uw emulatorafbeelding het Google API-niveau ondersteunt dat u voor uw app hebt gekozen. Als uw afbeelding geen native Google-API's ondersteunt, krijgt u mogelijk de uitzondering **service\_niet\_beschikbaar.**
+Voordat u push meldingen in een emulator test, moet u ervoor zorgen dat uw emulator-installatie kopie het Google API-niveau ondersteunt dat u voor uw app hebt gekozen. Als uw installatie kopie geen ondersteuning biedt voor systeem eigen Google Api's, wordt de uitzonde ring **\_service niet\_beschikbaar** weer geven.
 
-Zorg er ook voor dat je je Google-account hebt toegevoegd aan je hardloopemulator onder > **Instellingenaccounts**. **Settings** Anders kunnen uw pogingen om u te registreren bij FCM resulteren in de uitzondering **\_VERIFICATIE MISLUKT.**
+Zorg er ook voor dat u uw Google-account hebt toegevoegd aan de actieve emulator onder **instellingen** > **accounts**. Als u dit niet doet, kan het zijn dat uw pogingen om te registreren bij FCM resulteren in een uitzonde ring van de **verificatie\_** .
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u Firebase Cloud Messaging gebruikt om meldingen uit te zenden naar alle Android-apparaten die bij de service zijn geregistreerd. Ga verder met de volgende zelfstudie als u wilt weten hoe u pushmeldingen kunt verzenden naar specifieke apparaten:
+In deze zelf studie hebt u Firebase Cloud Messa ging gebruikt om meldingen te verzenden naar alle Android-apparaten die zijn geregistreerd bij de service. Ga verder met de volgende zelfstudie als u wilt weten hoe u pushmeldingen kunt verzenden naar specifieke apparaten:
 
 > [!div class="nextstepaction"]
->[Zelfstudie: Pushmeldingen naar specifieke Android-apparaten](push-notifications-android-specific-devices-firebase-cloud-messaging.md)
+>[Zelf studie: Push meldingen naar specifieke Android-apparaten](push-notifications-android-specific-devices-firebase-cloud-messaging.md)
 
 <!-- Images. -->
 

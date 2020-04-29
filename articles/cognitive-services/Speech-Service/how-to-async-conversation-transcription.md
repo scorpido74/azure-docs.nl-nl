@@ -1,7 +1,7 @@
 ---
-title: Asynchrone gesprekstranscriptie (voorbeeld) - Spraakservice
+title: Asynchroon gesprek transcriptie (preview)-spraak service
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het gebruik van asynchrone gesprekstranscriptie met behulp van de spraakservice. Alleen beschikbaar voor Java.
+description: Meer informatie over het gebruik van asynchrone conversatie-transcriptie met behulp van de speech-service. Alleen beschikbaar voor Java.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: amishu
 ms.openlocfilehash: 57543f4a3779145ce66259eec1abac195b63c7ba
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80384293"
 ---
-# <a name="asynchronous-conversation-transcription-preview"></a>Asynchrone gesprekstranscriptie (voorbeeld)
+# <a name="asynchronous-conversation-transcription-preview"></a>Asynchrone conversatie transcriptie (preview-versie)
 
-In dit artikel wordt asynchrone gesprekstranscriptie gedemonstreerd met behulp van de **RemoteConversationTranscriptionClient** API. Als u Gesprekstranscriptie hebt geconfigureerd om asynchrone transcriptie uit te voeren en een `conversationId`, u de transcriptie verkrijgen die aan die `conversationId` is gekoppeld met behulp van de Api voor **RemoteConversationTranscriptionClient.**
+In dit artikel wordt asynchroon gesprek transcriptie gedemonstreerd met behulp van de **RemoteConversationTranscriptionClient** -API. Als u conversatie transcriptie hebt geconfigureerd om asynchrone transcriptie uit te voeren en `conversationId`een hebt, kunt u de transcriptie verkrijgen die `conversationId` is gekoppeld aan die met de **RemoteConversationTranscriptionClient** -API.
 
-## <a name="asynchronous-vs-real-time--asynchronous"></a>Asynchroon vs. real-time + asynchroon
+## <a name="asynchronous-vs-real-time--asynchronous"></a>Asynchroon versus realtime + asynchroon
 
-Met asynchrone transcriptie streamt u de gespreksaudio, maar hebt u geen transcriptie nodig die in realtime wordt geretourneerd. In plaats daarvan, nadat de `conversationId` `Conversation` audio is verzonden, gebruik de van om query voor de status van de asynchrone transcriptie. Wanneer de asynchrone transcriptie klaar is, krijgt u een `RemoteConversationTranscriptionResult`.
+Met asynchrone transcriptie streamt u de conversatie audio, maar hoeft er in realtime geen transcriptie te worden geretourneerd. Na het verzenden van de audio gebruikt u in plaats `conversationId` daarvan `Conversation` de van om de status van de asynchrone transcriptie te zoeken. Wanneer de asynchrone transcriptie klaar is, krijgt u een `RemoteConversationTranscriptionResult`.
 
-Met real-time plus asynchrone, krijg je de transcriptie in real time, maar ook de transcriptie door te vragen met de `conversationId` (vergelijkbaar met asynchrone scenario).
+Met realtime plus asynchroon krijgt u de transcriptie in realtime, maar krijgt u ook de transcriptie door een query uit te geven op basis `conversationId` van het scenario (vergelijkbaar met asynchroon).
 
-Er zijn twee stappen nodig om asynchrone transcriptie te bereiken. De eerste stap is het uploaden van de audio, het kiezen van asynchrone alleen of real-time plus asynchroon. De tweede stap is om de transcriptie resultaten te krijgen.
+Er zijn twee stappen vereist voor het uitvoeren van asynchrone transcriptie. De eerste stap is het uploaden van de audio, het kiezen van alleen asynchroon of realtime plus asynchroon. De tweede stap bestaat uit het ophalen van de transcriptie-resultaten.
 
 ## <a name="upload-the-audio"></a>De audio uploaden
 
-Voordat asynchrone transcriptie kan worden uitgevoerd, moet u de audio naar Conversation Transcription Service verzenden met behulp van Microsoft Cognitive Speech client SDK (versie 1.8.0 of hoger).
+Voordat asynchrone transcriptie kunnen worden uitgevoerd, moet u de audio verzenden naar de conversatie transcriptie-service met behulp van de micro soft cognitieve speech client SDK (versie 1.8.0 of hoger).
 
-In deze voorbeeldcode ziet u hoe u gesprekstranscriber maakt voor de asynchrone modus. Om audio naar de transcriber te streamen, moet u audiostreamingcode toevoegen die is afgeleid van [Transcribe-gesprekken in realtime met de Speech SDK.](how-to-use-conversation-transcription-service.md) Raadpleeg het gedeelte **Beperkingen** van dat onderwerp om de ondersteunde API's en talen te bekijken.
+Deze voorbeeld code laat zien hoe u een conversatie transcriber kunt maken voor de modus alleen asynchroon. Als u audio naar de transcriber wilt streamen, moet u audio streaming code die is afgeleid van het verzetten van [conversaties in realtime met de spraak-SDK](how-to-use-conversation-transcription-service.md)toevoegen. Raadpleeg de sectie **beperkingen** van het onderwerp voor een overzicht van de ondersteunde platforms en talen api's.
 
 ```java
 // Create the speech config object
@@ -101,7 +101,7 @@ Future<?> future = transcriber.startTranscribingAsync();
 ...
 ```
 
-Als u wilt dat real-time _plus_ asynchrone, commentaar en uncomment de juiste regels code als volgt:
+Als u real-time _plus_ asynchroon en commentaar wilt toevoegen aan de juiste regels code, volgt u de volgende stappen:
 
 ```java
 // Set the property for asynchronous transcription
@@ -111,17 +111,17 @@ Als u wilt dat real-time _plus_ asynchrone, commentaar en uncomment de juiste re
 speechConfig.setServiceProperty("transcriptionMode", "RealTimeAndAsync", ServicePropertyChannel.UriQueryParameter);
 ```
 
-## <a name="get-transcription-results"></a>Transcriptieresultaten
+## <a name="get-transcription-results"></a>Transcriptie-resultaten ophalen
 
-Deze stap krijgt de asynchrone transcriptie resultaten, maar gaat ervan uit dat alle real-time verwerking die u nodig zou kunnen hebben wordt elders gedaan. Zie [Gesprekken transcriberen in realtime met de Speech SDK](how-to-use-conversation-transcription-service.md)voor meer informatie.
+Met deze stap worden de asynchrone transcriptie-resultaten opgehaald, maar er wordt uitgegaan van een real-time verwerking die u mogelijk op een andere locatie moet uitvoeren. Zie voor meer informatie [telegespreks gesprekken in realtime met de spraak-SDK](how-to-use-conversation-transcription-service.md).
 
-Voor de hier getoonde code hebt u **versie 1.8.0 op afstand**nodig, alleen ondersteund voor Java (1.8.0 of hoger) op Windows, Linux en Android (API-niveau 26 of hoger).
+Voor de code die hier wordt weer gegeven, hebt u **versie 1.8.0 van de externe conversatie**nodig, alleen ondersteund voor Java (1.8.0 of hoger) in Windows, Linux en Android (alleen API-niveau 26 of hoger).
 
-### <a name="obtaining-the-client-sdk"></a>Het verkrijgen van de client SDK
+### <a name="obtaining-the-client-sdk"></a>De client-SDK verkrijgen
 
-U **een extern gesprek** verkrijgen door uw pom.xml-bestand als volgt te bewerken.
+U kunt **communicatie op afstand** verkrijgen door uw pom. XML-bestand als volgt te bewerken.
 
-1. Maak aan het einde van het `</project>`bestand, `repositories` vóór de afsluitende tag, een element met een verwijzing naar de Maven-opslagplaats voor de SpraakSDK:
+1. Maak aan het einde van het bestand een `</project>` `repositories` element met een verwijzing naar de Maven-opslag plaats voor de spraak-SDK, vóór de afsluit code.
 
    ```xml
    <repositories>
@@ -133,7 +133,7 @@ U **een extern gesprek** verkrijgen door uw pom.xml-bestand als volgt te bewerke
    </repositories>
    ```
 
-2. Voeg ook `dependencies` een element toe, met de remoteconversation-client-sdk 1.8.0 als afhankelijkheid:
+2. Voeg ook een `dependencies` element toe, met de remoteconversation-client-SDK 1.8.0 als afhankelijkheid:
 
    ```xml
    <dependencies>
@@ -145,11 +145,11 @@ U **een extern gesprek** verkrijgen door uw pom.xml-bestand als volgt te bewerke
    </dependencies>
    ```
 
-3. De wijzigingen opslaan
+3. Sla de wijzigingen op
 
-### <a name="sample-transcription-code"></a>Voorbeeld transcriptiecode
+### <a name="sample-transcription-code"></a>Voorbeeld code transcriptie
 
-Nadat u `conversationId`de externe gesprekstranscriptieclient **RemoteConversationTranscriptionClient** hebt gemaakt bij de clienttoepassing om de status van de asynchrone transcriptie op te vragen. Gebruik **de methode getTranscriptionOperation** in **RemoteConversationTranscriptionClient** om een [PollerFlux-object](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java) te krijgen. Het object PollerFlux heeft informatie over de externe bewerkingsstatus **RemoteConversationTranscriptionOperation** en het uiteindelijke resultaat **RemoteConversationTranscriptionResult**. Zodra de bewerking is voltooid, krijgt **u RemoteConversationTranscriptionResult** door **getFinalResult** op een [SyncPoller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java)te bellen. In deze code printen we gewoon de resultaatinhoud af op systeemuitvoer.
+Nadat u de `conversationId`hebt gemaakt, maakt u een externe conversatie transcriptie-client **RemoteConversationTranscriptionClient** op de client toepassing om de status van de asynchrone transcriptie op te vragen. Gebruik de methode **getTranscriptionOperation** in **RemoteConversationTranscriptionClient** om een [PollerFlux](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java) -object op te halen. Het PollerFlux-object bevat informatie over de externe bewerkings status **RemoteConversationTranscriptionOperation** en het uiteindelijke resultaat **RemoteConversationTranscriptionResult**. Zodra de bewerking is voltooid, kunt u **RemoteConversationTranscriptionResult** ophalen door **getFinalResult** aan te roepen op een [SyncPoller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java). In deze code wordt de inhoud van het resultaat gewoon naar de systeem uitvoer afgedrukt.
 
 ```java
 // Create the speech config object

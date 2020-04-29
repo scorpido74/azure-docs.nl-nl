@@ -1,7 +1,7 @@
 ---
-title: Een gehoste gebruikersinterface configureren voor aangepaste zoekopdrachten van Bing | Microsoft Documenten
+title: Een gehoste gebruikers interface configureren voor Bing Aangepaste zoekopdrachten | Microsoft Docs
 titleSuffix: Azure Cognitive Services
-description: Gebruik dit artikel om een gehoste gebruikersinterface voor bing Custom Search te configureren en te integreren.
+description: Gebruik dit artikel om een gehoste gebruikers interface voor Bing Aangepaste zoekopdrachten te configureren en te integreren.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: 2cc89bf57167db75404c044f58d18ab48edfaf38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68854072"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Gehoste UI-ervaring configureren
 
-Bing Custom Search biedt een gehoste gebruikersinterface die u eenvoudig integreren in uw webpagina's en webtoepassingen als een JavaScript-codefragment. Met de portal Aangepast zoeken bing u de indeling, kleur en zoekopties van de gebruikersinterface configureren.
+Bing Aangepaste zoekopdrachten biedt een gehoste gebruikers interface die u eenvoudig kunt integreren in uw webpagina's en webtoepassingen als een Java script-code fragment. Met de Bing Aangepaste zoekopdrachten Portal kunt u de opties voor indeling, kleur en zoeken van de gebruikers interface configureren.
 
 
 
-## <a name="configure-the-custom-hosted-ui"></a>De aangepaste gehoste gebruikersinterface configureren
+## <a name="configure-the-custom-hosted-ui"></a>De aangepaste gehoste gebruikers interface configureren
 
-Voer de volgende stappen uit om een gehoste gebruikersinterface voor uw webtoepassingen te configureren. Terwijl u wijzigingen aanbrengt, geeft het deelvenster aan de rechterkant u een voorbeeld van uw gebruikersinterface. De weergegeven zoekresultaten zijn geen werkelijke resultaten voor uw instantie.
+Als u een gehoste gebruikers interface voor uw webtoepassingen wilt configureren, volgt u deze stappen. Wanneer u wijzigingen aanbrengt, krijgt u in het deel venster aan de rechter kant een voor beeld van uw gebruikers interface. De weer gegeven Zoek resultaten zijn geen werkelijke resultaten voor uw exemplaar.
 
-1. Meld u aan bij de portal Aangepast [zoeken](https://customsearch.ai)van Bing .  
+1. Meld u aan bij Bing Aangepaste zoekopdrachten [Portal](https://customsearch.ai).  
   
-2. Selecteer de instantie Aangepast zoeken bij Bing.
+2. Selecteer uw Bing Aangepaste zoekopdrachten-exemplaar.
 
 3. Klik op het tabblad **Hosted UI**.  
   
@@ -37,30 +37,30 @@ Voer de volgende stappen uit om een gehoste gebruikersinterface voor uw webtoepa
 
     |  |  |
     |---------|---------|
-    |Zoekbalk en resultaten (standaard)    | Hiermee wordt een zoekvak met zoekresultaten eronder weergegeven.         |
-    |Alleen resultaten     | Hiermee worden alleen zoekresultaten weergegeven zonder zoekvak. Wanneer u deze indeling gebruikt, moet`&q=<query string>`u de zoekopdracht () opgeven. Voeg de queryparameter toe aan de aanvraag-URL in het JavaScript-fragment of de HTML-eindpuntkoppeling.        |
-    |Pop-over     | Biedt een zoekvak en geeft de zoekresultaten weer in een schuifoverlay.        |
+    |Zoek balk en resultaten (standaard)    | Hiermee wordt een zoekvak met zoek resultaten weer gegeven daaronder.         |
+    |Alleen resultaten     | Alleen Zoek resultaten worden weer gegeven, zonder zoekvak. Wanneer u deze indeling gebruikt, moet u de zoek query (`&q=<query string>`) opgeven. Voeg de query-para meter toe aan de aanvraag-URL in het Java script-fragment of de koppeling naar het HTML-eind punt.        |
+    |Pop-over     | Voorziet in een zoekvak en de zoek resultaten worden weer gegeven in een schuif bare overlay.        |
     
-5. Selecteer een kleurenthema. U de kleuren aanpassen aan uw toepassing door op **Thema aanpassen .** Als u een kleur wilt wijzigen, voert u de `#366eb8`RGB HEX-waarde van de kleur in (bijvoorbeeld) of klikt u op het kleurenvoorbeeld.
+5. Selecteer een kleurenthema. U kunt de kleuren aanpassen aan uw toepassing door te klikken op **thema aanpassen**. Als u een kleur wilt wijzigen, voert u de RGB HEXADECIMALe waarde van de kleur `#366eb8`(bijvoorbeeld) in of klikt u op de kleur voorbeeld.
 
-   U een voorbeeld van uw wijzigingen bekijken aan de rechterkant van de portal. Als u **op Opnieuw instellen naar standaard** klikt, worden de wijzigingen teruggezet naar de standaardkleuren voor het geselecteerde thema.
+   U kunt een voor beeld bekijken van uw wijzigingen aan de rechter kant van de portal. **Als u op opnieuw instellen** klikt, worden de standaard kleuren voor het geselecteerde thema hersteld.
 
    > [!NOTE]
-   > Houd rekening met toegankelijkheid bij het kiezen van kleuren.
+   > Houd bij het kiezen van kleuren rekening met toegankelijkheid.
 
-6. Geef **onder Aanvullende configuraties**waarden op die geschikt zijn voor uw app. Deze instellingen zijn optioneel. Zie het voorbeeldvenster aan de rechterkant om het effect van het toepassen of verwijderen ervan te zien. Beschikbare configuratieopties zijn:  
+6. Geef onder **aanvullende configuraties**waarden op die geschikt zijn voor uw app. Deze instellingen zijn optioneel. Zie het voorbeeld venster aan de rechter kant om het effect van het Toep assen of verwijderen van deze items te bekijken. Beschik bare configuratie opties zijn:  
 
-7. Voer de zoekabonnementssleutel in of kies er een in de vervolgkeuzelijst. De vervolgkeuzelijst wordt gevuld met sleutels uit de abonnementen van uw Azure-account. Zie [API-account voor Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).  
+7. Voer de sleutel voor het zoek abonnement in of kies er een in de vervolg keuzelijst. De vervolg keuzelijst wordt gevuld met sleutels uit de abonnementen van uw Azure-account. Zie [Cognitive Services-API-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).  
 
-8. Als u automatisch voorstellen hebt ingeschakeld, voert u de abonnementssleutel automatisch voor stellen of kiest u er een in de vervolgkeuzelijst. De vervolgkeuzelijst wordt gevuld met sleutels uit de abonnementen van uw Azure-account. Aangepaste Autosuggest vereist een specifieke abonnementslaag, zie de [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/).
+8. Als u automatische suggesties hebt ingeschakeld, voert u de abonnements sleutel voor Automatische suggestie in of kiest u er een in de vervolg keuzelijst. De vervolg keuzelijst wordt gevuld met sleutels uit de abonnementen van uw Azure-account. Voor aangepaste automatische suggesties is een specifieke abonnementweergave vereist. Zie de [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/).
 
 [!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
-## <a name="consume-custom-ui"></a>Aangepaste gebruikersinterface consumeren
+## <a name="consume-custom-ui"></a>Aangepaste gebruikers interface gebruiken
 
-Als u de gehoste gebruikersinterface wilt gebruiken, gaat u als gevolg van: 
+Als u de gehoste gebruikers interface wilt gebruiken, hetzij: 
 
-- Het script opnemen op uw webpagina  
+- Het script toevoegen aan uw webpagina  
   
   ```html
   <html>
@@ -78,90 +78,90 @@ Als u de gehoste gebruikersinterface wilt gebruiken, gaat u als gevolg van:
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > Voeg indien nodig de volgende queryparameters toe aan de URL. Zie [Aangepaste API-verwijzing voor zoekopdrachten](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) voor informatie over deze parameters.
+  > Voeg indien nodig de volgende query parameters toe aan de URL. Zie [aangepaste zoekopdrachten-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) Reference (Engelstalig) voor meer informatie over deze para meters.
   >
   > - q
   > - mkt
-  > - Safesearch
+  > - SafeSearch
   > - setlang
 
   > [!IMPORTANT]
-  > De pagina kan uw privacyverklaring of andere mededelingen en voorwaarden niet weergeven. De geschiktheid voor uw gebruik kan variëren.  
+  > De pagina kan uw privacyverklaring of andere mede delingen en voor waarden niet weer geven. De geschiktheid voor uw gebruik kan variëren.  
 
-Ga voor meer informatie, waaronder uw aangepaste configuratie-id, naar **Eindpunten** onder het tabblad **Productie.**
+Ga naar **eind punten** onder het tabblad **productie** voor aanvullende informatie, inclusief uw aangepaste configuratie-ID.
 
 ## <a name="configuration-options"></a>Configuratie-opties
 
-U het gedrag van uw gehoste gebruikersinterface configureren door op **Extra configuraties**te klikken en waarden op te geven. Deze instellingen zijn optioneel. Zie het voorbeeldvenster aan de rechterkant om het effect van het toepassen of verwijderen ervan te zien. 
+U kunt het gedrag van uw gehoste gebruikers interface configureren door te klikken op **aanvullende configuraties**en waarden op te geven. Deze instellingen zijn optioneel. Zie het voorbeeld venster aan de rechter kant om het effect van het Toep assen of verwijderen van deze items te bekijken. 
 
-### <a name="web-search-configurations"></a>Webzoekconfiguraties
+### <a name="web-search-configurations"></a>Webzoekactie configuraties
 
 |  |  |
 |---------|---------|
-|Webresultaten ingeschakeld    | Hiermee bepaalt u of zoeken op het web is ingeschakeld (u ziet een tabblad Web boven aan de pagina)        |
-|Automatisch voorstellen inschakelen     | Hiermee bepaalt u of aangepaste automatisch voorstellen is ingeschakeld (zie [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/) voor extra kosten).        |
-|Webresultaten per pagina    | Aantal zoekresultaten op het web dat tegelijk moet worden weergegeven (het maximum is 50 resultaten per pagina).        |
-|Afbeeldingsbijschrift   | Hiermee bepaalt u of afbeeldingen worden weergegeven met zoekresultaten.|
+|Webresultaten ingeschakeld    | Hiermee wordt bepaald of zoeken op internet is ingeschakeld (boven aan de pagina wordt het tabblad Web weer geven)        |
+|Automatische suggestie inschakelen     | Hiermee wordt bepaald of aangepaste automatische suggesties zijn ingeschakeld (Zie de [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/) voor extra kosten).        |
+|Webresultaten per pagina    | Aantal Zoek resultaten van de webtoepassingen tegelijk worden weer gegeven (de maximum waarde is 50 resultaten per pagina).        |
+|Bijschrift voor afbeelding   | Hiermee wordt bepaald of afbeeldingen worden weer gegeven met zoek resultaten.|
 
 
-De volgende configuraties worden weergegeven als u op **Geavanceerde configuraties weergeven**klikt:
+De volgende configuraties worden weer gegeven als u op **geavanceerde configuraties weer geven**klikt:
 
 
 |  | |
 |---------|---------|
-|Woorden markeren     | Hiermee bepaalt u of resultaten worden weergegeven met alle seintermen.         |
-|Koppelingsdoel    |  Hiermee bepaalt u of de webpagina wordt geopend op een nieuw browsertabblad (Leeg) of op hetzelfde browsertabblad (zelf) wanneer de gebruiker op een zoekresultaat klikt.        |
+|Markeer woorden     | Hiermee wordt bepaald of resultaten worden weer gegeven met een vetgedrukte zoek term.         |
+|Doel van koppeling    |  Bepaalt of de webpagina wordt geopend in een nieuw browser tabblad (leeg) of hetzelfde browser tabblad (zelf) wanneer de gebruiker op een Zoek resultaat klikt.        |
 
-### <a name="image-search-configurations"></a>Afbeeldingszoekconfiguraties
+### <a name="image-search-configurations"></a>Configuraties voor afbeeldingen zoeken
 
 | | |
 |---------|---------|
-|Afbeeldingsresultaten ingeschakeld     | Hiermee bepaalt u of zoeken naar afbeeldingen is ingeschakeld (u ziet een tabblad Afbeeldingen boven aan de pagina).            |
-|Afbeeldingsresultaten per pagina     | Aantal zoekresultaten van afbeeldingen dat tegelijk moet worden weergegeven (het maximum is 150 resultaten per pagina).          |
+|Resultaten van afbeelding ingeschakeld     | Hiermee wordt bepaald of de afbeelding zoeken is ingeschakeld (boven aan de pagina wordt een tabblad afbeeldingen weer geven).            |
+|Afbeeldings resultaten per pagina     | Aantal Zoek resultaten van de afbeelding dat tegelijk wordt weer gegeven (de maximum waarde is 150 resultaten per pagina).          |
 
-De volgende configuratie wordt weergegeven als u op **Geavanceerde configuraties weergeven**klikt.  
+De volgende configuratie wordt weer gegeven als u op **geavanceerde configuraties weer geven**klikt.  
   
 | | |
 |---------|---------|
-| Filters inschakelen     | Hiermee voegt u filters toe die de gebruiker kan gebruiken om de afbeeldingen te filteren die Bing retourneert. De gebruiker kan bijvoorbeeld de resultaten filteren op alleen geanimeerde GIF's.|
+| Filters inschakelen     | Voegt filters toe die de gebruiker kan gebruiken om de afbeeldingen te filteren die door Bing worden geretourneerd. De gebruiker kan bijvoorbeeld de resultaten filteren voor alleen GIF-animaties.|
 
-### <a name="video-search-configurations"></a>Videozoekconfiguraties
+### <a name="video-search-configurations"></a>Configuraties voor video zoeken
 
 |  | |
 |---------|---------|
-|Videoresultaten ingeschakeld     | Hiermee bepaalt u of het zoeken naar video is ingeschakeld (u ziet een tabblad Video's boven aan de pagina).           |
-|Videoresultaten per pagina   | Aantal videozoekresultaten dat tegelijk moet worden weergegeven (het maximum is 150 resultaten per pagina).        |
+|Video resultaten ingeschakeld     | Hiermee wordt bepaald of zoeken in video is ingeschakeld (het tabblad Video's wordt boven aan de pagina weer geven).           |
+|Video resultaten per pagina   | Aantal Zoek resultaten van de video dat tegelijk wordt weer gegeven (de maximum waarde is 150 resultaten per pagina).        |
 
-De volgende configuratie wordt weergegeven als u op **Geavanceerde configuraties weergeven**klikt.  
+De volgende configuratie wordt weer gegeven als u op **geavanceerde configuraties weer geven**klikt.  
   
 |  | |
 |---------|---------|
-|Filters inschakelen    | Hiermee voegt u filters toe die de gebruiker kan gebruiken om de video's te filteren die Bing retourneert. De gebruiker kan bijvoorbeeld de resultaten filteren voor video's met een specifieke resolutie of video's die in de afgelopen 24 uur zijn ontdekt.          |
+|Filters inschakelen    | Hiermee voegt u filters toe die de gebruiker kan gebruiken voor het filteren van de Video's die door Bing worden geretourneerd. De gebruiker kan bijvoorbeeld de resultaten filteren voor Video's met een specifieke resolutie of Video's die in de afgelopen 24 uur zijn gedetecteerd.          |
 
 ### <a name="miscellaneous-configurations"></a>Diverse configuraties
 
 
 | |  |
 |---------|---------|
-|Paginatitel   | Tekst die wordt weergegeven in het titelgebied van de pagina met zoekresultaten (niet voor een pop-over-indeling).        |
-|Werkbalkthema    | Hiermee bepaalt u de achtergrondkleur van het titelgebied van de pagina met zoekresultaten. |
+|Paginatitel   | De tekst die wordt weer gegeven in het titel gebied van de pagina met zoek resultaten (niet voor pop-over-indeling).        |
+|Thema van de werk balk    | Bepaalt de achtergrond kleur van het titel gebied van de pagina met zoek resultaten. |
 
-De volgende configuraties worden weergegeven als u op **Geavanceerde configuraties weergeven**klikt.  
+De volgende configuraties worden weer gegeven als u op **geavanceerde configuraties weer geven**klikt.  
 
 |Kolom1  |Kolom2  |
 |---------|---------|
-|Tijdelijke aanduiding voor tekstvan het zoekvak   | Tekst die vóór invoer in het zoekvak wordt weergegeven.        |
-|Url van titelkoppeling    |Doel voor de titelkoppeling.         |
-|Logo URL     | Afbeelding die naast de titel wordt weergegeven.         |
-|Favicon    | Pictogram weergegeven in de titelbalk van de browser.          |
+|Tijdelijke aanduiding voor tekst in zoekvak   | Tekst die wordt weer gegeven in het zoekvak vóór invoer.        |
+|URL van titel koppeling    |Doel voor de koppeling titel.         |
+|URL logo     | Afbeelding die naast de titel wordt weer gegeven.         |
+|Favicon    | Pictogram dat wordt weer gegeven in de titel balk van de browser.          |
 
-De volgende configuraties zijn alleen van toepassing als u de gehoste gebruikersinterface gebruikt via het HTML-eindpunt (deze zijn niet van toepassing als u het JavaScript-fragment gebruikt).
+De volgende configuraties zijn alleen van toepassing als u gebruikmaakt van de gehoste gebruikers interface via het HTML-eind punt (ze zijn niet van toepassing als u het Java script-fragment gebruikt).
 
 - Paginatitel
-- Werkbalkthema
-- URL van titelkoppeling
-- Logo URL
-- Faviicon URL  
+- Thema van de werk balk
+- URL van titel koppeling
+- URL logo
+- Faviicon-URL  
 
 ## <a name="next-steps"></a>Volgende stappen
 

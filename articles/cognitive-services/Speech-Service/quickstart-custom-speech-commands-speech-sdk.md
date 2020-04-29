@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: verbinding maken met een app Aangepaste opdrachten met Spraak-SDK - Spraakservice'
+title: 'Quick Start: verbinding maken met een app voor aangepaste opdrachten met Speech SDK-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: In dit artikel maakt u een Speech SDK-clienttoepassing met aangepaste opdrachten.
+description: In dit artikel maakt u een Speech SDK-client toepassing met aangepaste opdrachten.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -11,61 +11,61 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
 ms.openlocfilehash: 9e324af0b90f595b5b7af2a417a562efb193d854
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76156774"
 ---
-# <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Snelstart: verbinding maken met een toepassing aangepaste opdrachten met de Spraak-SDK (Voorbeeld)
+# <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Quick Start: verbinding maken met een toepassing voor aangepaste opdrachten met de spraak-SDK (preview)
 
-Nadat u een gehoste toepassing voor aangepaste opdrachten hebt gemaakt, u vanaf een clientapparaat met deze toepassing beginnen te praten.
+Nadat u een gehoste aangepaste opdrachten toepassing hebt gemaakt, kunt u aan de slag met het praten vanaf een client apparaat.
 
-In dit artikel:
+In dit artikel voert u de volgende handelingen uit:
 
-- Een toepassing met aangepaste opdrachten publiceren en een toepassings-id (App-id)
-- Een client-app maken met de Spraak-SDK waarmee u met uw toepassing Aangepaste opdrachten praten
+- Een toepassing voor aangepaste opdrachten publiceren en een toepassings-id ophalen (App-ID)
+- Een client-app maken met behulp van de Speech SDK zodat u kunt communiceren met uw toepassing voor aangepaste opdrachten
 
 ## <a name="prerequisites"></a>Vereisten
 
-Een toepassing Met aangepaste opdrachten is vereist om dit artikel te voltooien. Als u nog geen toepassing voor aangepaste opdrachten hebt gemaakt, u dit doen in deze vorige quickstarts:
+Er is een toepassing voor aangepaste opdrachten vereist om dit artikel te volt ooien. Als u nog geen toepassing voor aangepaste opdrachten hebt gemaakt, kunt u dit doen in deze vorige Snelstartgids:
 
-- [Snelstart: een aangepaste opdracht maken (voorbeeld)](./quickstart-custom-speech-commands-create-new.md)
-- [Snelstart: een aangepaste opdracht maken met parameters (voorbeeld)](./quickstart-custom-speech-commands-create-parameters.md)
+- [Snelstartgids: een aangepaste opdracht maken (preview)](./quickstart-custom-speech-commands-create-new.md)
+- [Snelstartgids: een aangepaste opdracht maken met para meters (preview)](./quickstart-custom-speech-commands-create-parameters.md)
 
-Je hebt ook nodig:
+U hebt ook het volgende nodig:
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Een Azure-abonnementssleutel voor Spraakservices. [Gratis een gratis of](get-started.md) maak het op de [Azure-portal](https://portal.azure.com)
+- Een Azure-abonnements sleutel voor spraak Services. [Ontvang een gratis versie](get-started.md) of maak deze op de [Azure Portal](https://portal.azure.com)
 
 ## <a name="optional-get-started-fast"></a>Optioneel: snel aan de slag
 
-In deze snelle start wordt stap voor stap beschreven hoe u een clienttoepassing maken om verbinding te maken met uw app Aangepaste opdrachten. Als u er liever direct in duikt, is de volledige, kant-en-klare broncode die `quickstart` in deze quickstart wordt gebruikt, beschikbaar in de [Spraak-SDK-voorbeelden](https://aka.ms/csspeech/samples) onder de map.
+In deze Snelstartgids wordt stapsgewijs beschreven hoe u een client toepassing kunt maken om verbinding te maken met uw aangepaste opdrachten-app. Als u voor het eerst wilt beginnen, is de volledige, kant-en-assembly-bron code die wordt gebruikt in deze Quick Start, beschikbaar in `quickstart` de voor [beelden van Speech SDK](https://aka.ms/csspeech/samples) onder de-map.
 
-## <a name="step-1-publish-custom-commands-application"></a>Stap 1: Toepassing Aangepaste opdrachten publiceren
+## <a name="step-1-publish-custom-commands-application"></a>Stap 1: de toepassing voor het publiceren van aangepaste opdrachten
 
-1. De [eerder gemaakte toepassing Aangepaste opdrachten openen](./quickstart-custom-speech-commands-create-new.md) en de optie Publiceren **selecteren**
+1. Open uw [eerder gemaakte toepassing voor aangepaste opdrachten](./quickstart-custom-speech-commands-create-new.md) en selecteer **publiceren**
 
    > [!div class="mx-imgBorder"]
    > ![Uw toepassing publiceren](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
-1. De app-id kopiëren van de publicatiemelding voor later gebruik
+1. De App-ID uit de publicatie melding kopiëren voor later gebruik
 
-## <a name="step-2-create-a-visual-studio-project"></a>Stap 2: Een Visual Studio-project maken
+## <a name="step-2-create-a-visual-studio-project"></a>Stap 2: een Visual Studio-project maken
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
-## <a name="step-3-add-sample-code"></a>Stap 3: Voorbeeldcode toevoegen
+## <a name="step-3-add-sample-code"></a>Stap 3: voorbeeld code toevoegen
 
-In deze stap voegen we de XAML-code toe die de gebruikersinterface van de toepassing definieert en voegen we de C#-code-behind-implementatie toe.
+In deze stap voegen we de XAML-code toe die de gebruikers interface van de toepassing definieert en voegt u de C#-code-behind-implementatie toe.
 
 ### <a name="xaml-code"></a>XAML-code
 
-Maak de gebruikersinterface van de toepassing door de XAML-code toe te voegen.
+Maak de gebruikers interface van de toepassing door de XAML-code toe te voegen.
 
-1. Open **in Solution Explorer**`MainPage.xaml`
+1. Open in **Solution Explorer**`MainPage.xaml`
 
-1. Vervang in de XAML-weergave van de ontwerper de volledige inhoud door het volgende codefragment:
+1. Vervang in de XAML-weer gave van de ontwerp functie de volledige inhoud door het volgende code fragment:
 
    ```xml
    <Page
@@ -112,22 +112,22 @@ Maak de gebruikersinterface van de toepassing door de XAML-code toe te voegen.
    </Page>
    ```
 
-De ontwerpweergave wordt bijgewerkt om de gebruikersinterface van de toepassing weer te geven.
+De Ontwerpweergave is bijgewerkt om de gebruikers interface van de toepassing weer te geven.
 
-### <a name="c-code-behind-source"></a>C# code-behind bron
+### <a name="c-code-behind-source"></a>C#-code-achter-bron
 
-Voeg de code-behind bron toe, zodat de toepassing werkt zoals verwacht. De code-behind bron omvat:
+Voeg de code achter de bron toe zodat de toepassing werkt zoals verwacht. De bron code achter bevat:
 
-- Vereiste `using` instructies `Speech` voor `Speech.Dialog` de en naamruimten
-- Een eenvoudige implementatie om toegang tot de microfoon te garanderen, verbonden met een knophandler
-- Basisgebruikersvan gebruikersinterface om berichten en fouten in de toepassing te presenteren
-- Een landingspunt voor het initialisatiecodepad dat later wordt ingevuld
-- Een helper om tekst-naar-spraak af te spelen (zonder streamingondersteuning)
-- Een lege knophandler om te beginnen met luisteren die later wordt ingevuld
+- Vereiste `using` instructies voor de `Speech` en `Speech.Dialog` -naam ruimten
+- Een eenvoudige implementatie om toegang tot de microfoon te garanderen, bekabeld tot een knop-handler
+- Helpers van de Basic-gebruikers interface om berichten en fouten in de toepassing weer te geven
+- Een overloop punt voor het pad van de initialisatie code dat later wordt ingevuld
+- Een helper voor het afspelen van tekst naar spraak (zonder streaming-ondersteuning)
+- Een lege knop-handler om te Luis teren die later wordt ingevuld
 
-Voeg de code-behind bron als volgt toe:
+Voeg als volgt de code-behind bron toe:
 
-1. Open in **Solution Explorer**het broncodebestand `MainPage.xaml.cs` met `MainPage.xaml`code achter (gegroepeerd onder)
+1. Open in **Solution Explorer**het bron bestand `MainPage.xaml.cs` van de code-behind (gegroepeerd `MainPage.xaml`onder)
 
 1. Vervang de inhoud van het bestand door de volgende code:
 
@@ -299,7 +299,7 @@ Voeg de code-behind bron als volgt toe:
    }
    ```
 
-1. Voeg de volgende code toe aan de methodebody van`InitializeDialogServiceConnector`
+1. Voeg de volgende code toe aan de methode hoofdtekst van`InitializeDialogServiceConnector`
 
    ```csharp
    // This code creates the `DialogServiceConnector` with your subscription information.
@@ -314,9 +314,9 @@ Voeg de code-behind bron als volgt toe:
    connector = new DialogServiceConnector(speechCommandsConfig);
    ```
 
-1. De `YourApplicationId`tekenreeksen `YourSpeechSubscriptionKey`en `YourServiceRegion` uw eigen waarden voor uw app, spraakabonnement en [regio vervangen](regions.md)
+1. Vervang de teken `YourApplicationId`reeksen `YourSpeechSubscriptionKey`, en `YourServiceRegion` met uw eigen waarden voor uw app, het spraak abonnement en de [regio](regions.md)
 
-1. Het volgende codefragment toevoegen aan het einde van de methodebody van`InitializeDialogServiceConnector`
+1. Voeg het volgende code fragment toe aan het einde van de methode hoofdtekst van`InitializeDialogServiceConnector`
 
    ```csharp
    //
@@ -374,7 +374,7 @@ Voeg de code-behind bron als volgt toe:
    };
    ```
 
-1. Het volgende codefragment toevoegen aan `ListenButton_ButtonClicked` de `MainPage` hoofdtekst van de methode in de klasse
+1. Voeg het volgende code fragment toe aan de hoofd tekst `ListenButton_ButtonClicked` van de methode `MainPage` in de klasse
 
    ```csharp
    // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
@@ -398,24 +398,24 @@ Voeg de code-behind bron als volgt toe:
    }
    ```
 
-1. Kies Alles**opslaan** **op** > de menubalk om de wijzigingen op te slaan
+1. Kies in de menu balk de optie **bestand** > **Alles opslaan** om uw wijzigingen op te slaan.
 
 ## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 
-1. Kies**build-oplossing** **bouwen** > om de toepassing te bouwen op de menubalk. De code moet zonder fouten worden gecompileerd.
+1. **Kies** > build**Build Solution** in de menu balk om de toepassing te bouwen. De code moet zonder fouten worden gecompileerd.
 
-1. Kies **Foutopsporing debuggen** > **debuggen** (of druk op **F5)** om de toepassing te starten. Het **helloworld** venster verschijnt.
+1. Kies **fout** > **opsporing starten** (of druk op **F5**) om de toepassing te starten. Het venster **HelloWorld** wordt weer gegeven.
 
-   ![Voorbeeld van uwp-toepassing voor virtuele assistent in C# - snel starten](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
+   ![Voor beeld van een UWP-toepassing voor virtuele assistenten in C#-Quick Start](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
-1. Selecteer **Microfoon inschakelen**. Als de aanvraag voor toegangsmachtigingen wordt opduikt, selecteert u **Ja**.
+1. Selecteer **microfoon inschakelen**. Als de toegangs machtigings aanvraag wordt weer gegeven, selecteert u **Ja**.
 
-   ![Machtigingsaanvraag voor toegang voor microfoon](media/sdk/qs-csharp-uwp-10-access-prompt.png)
+   ![Verzoek om toegang tot de microfoon](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. Selecteer **Praten**en spreek een Engelse zin of zin in de microfoon van uw apparaat. Uw toespraak wordt verzonden naar het kanaal Direct Line Speech en getranscribeerd naar tekst, die in het venster wordt weergegeven.
+1. Selecteer **Talk**en spreek een Engelse zin of zin in op de microfoon van uw apparaat. Uw spraak wordt verzonden naar het directe lijn spraak kanaal en naar tekst getranscribeerd, die wordt weer gegeven in het venster.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [How to: Opdrachten uitvoeren op de client met de Speech SDK (preview)](./how-to-custom-speech-commands-fulfill-sdk.md)
-> [How To: Validaties toevoegen aan aangepaste opdrachtparameters (Preview)](./how-to-custom-speech-commands-validations.md)
+> [Procedure: opdrachten op de client uitvoeren met de Speech-SDK (preview)](./how-to-custom-speech-commands-fulfill-sdk.md)
+> [procedure: validaties toevoegen aan aangepaste opdracht parameters (preview-versie)](./how-to-custom-speech-commands-validations.md)

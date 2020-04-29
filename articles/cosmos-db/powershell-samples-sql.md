@@ -1,38 +1,38 @@
 ---
-title: Azure PowerShell-voorbeelden voor Azure Cosmos DB - SQL (Core) API
-description: De Azure PowerShell-voorbeelden downloaden om verschillende veelvoorkomende taken uit te voeren in Azure Cosmos DB SQL API-accounts
+title: Azure PowerShell-voor beelden voor Azure Cosmos DB-SQL-API (core)
+description: De Azure PowerShell-voor beelden ophalen om verschillende algemene taken uit te voeren in Azure Cosmos DB SQL-API-accounts
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/26/2020
 ms.author: mjbrown
 ms.openlocfilehash: efc0ff8e6c198071d3906a0e7e999510198f73bf
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80366183"
 ---
-# <a name="azure-powershell-samples-for-azure-cosmos-db---sql-core-api"></a>Azure PowerShell-voorbeelden voor Azure Cosmos DB - SQL (Core) API
+# <a name="azure-powershell-samples-for-azure-cosmos-db---sql-core-api"></a>Azure PowerShell-voor beelden voor Azure Cosmos DB-SQL-API (core)
 
-De volgende tabel bevat koppelingen naar veelgebruikte Azure PowerShell-scripts voor Azure Cosmos DB voor SQL(Core)-API. Als je deze PowerShell-samples wilt vorken voor Cosmos DB uit onze GitHub-repository, ga je naar [Cosmos DB PowerShell Samples op GitHub.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/cosmosdb)
+De volgende tabel bevat koppelingen naar veelgebruikte Azure PowerShell scripts voor Azure Cosmos DB for SQL-API (core). Als u deze Power shell-voor beelden wilt splitsen voor Cosmos DB in onze GitHub-opslag plaats, gaat u naar [Cosmos DB Power shell-voor beelden op github](https://github.com/Azure/azure-docs-powershell-samples/tree/master/cosmosdb).
 
-Zie [Azure Cosmos DB SQL API-bronnen beheren met PowerShell](manage-with-powershell.md)voor extra Cosmos DB PowerShell-samples voor SQL-API en -documentatie . Zie [Cassandra API](powershell-samples-cassandra.md), [MongoDB API](powershell-samples-mongodb.md), [Gremlin API](powershell-samples-gremlin.md)en Table API voor Cosmos DB PowerShell-samples voor andere API's . [Table API](powershell-samples-table.md)
+Zie [Azure Cosmos DB SQL API-resources beheren met Power shell](manage-with-powershell.md)voor aanvullende Cosmos DB Power shell-voor beelden voor SQL (kern)-API en-documentatie. Zie [Cassandra-API](powershell-samples-cassandra.md), [MongoDb API](powershell-samples-mongodb.md), [Gremlin API](powershell-samples-gremlin.md)en [Table-API](powershell-samples-table.md)voor Cosmos DB Power shell-voor beelden voor andere api's.
 
 > [!NOTE]
-> De monsters maken gebruik van [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) management cmdlets. Houd er `Az.CosmosDB` rekening mee dat de cmdlets nog in de preview staan en voor de release kunnen veranderen. Controleer regelmatig op `Az.CosmosDB` updates.
+> De voor beelden gebruiken [AZ. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) Management-cmdlets. Houd er rekening mee `Az.CosmosDB` dat de cmdlets nog in Preview zijn en kunnen worden gewijzigd voordat de release wordt uitgebracht. Controleer `Az.CosmosDB` regel matig of er updates zijn.
 
 | | |
 |---|---|
-|[Een account, database en container maken](scripts/powershell/sql/ps-sql-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Maak een Azure Cosmos DB-account, database en container. |
-|[Een container maken met een grote partitiesleutel](scripts/powershell/sql/ps-sql-container-create-large-partition-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Maak een container met een grote partitiesleutel. |
-|[Databases of containers weergeven of openen](scripts/powershell/sql/ps-sql-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Lijst of ontvang database of containers. |
-|[Ontvang RU/s](scripts/powershell/sql/ps-sql-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ontvang RU/s voor een database of container. |
-|[RU/s bijwerken](scripts/powershell/sql/ps-sql-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| RU/s bijwerken voor een database of container. |
-|[Een container maken zonder indexbeleid](scripts/powershell/sql/ps-sql-container-create-index-none.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Maak een Azure Cosmos-container met indexbeleid uitgeschakeld.|
-|[Een account bijwerken](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Werk het standaardconsistentieniveau van een Cosmos DB-account bij. |
-|[Regio's van een account bijwerken](scripts/powershell/common/ps-account-update-region.md?toc=%2fpowershell%2fmodule%2ftoc.json)| De regio's van een Cosmos DB-account bijwerken. |
-|[Prioriteit voor failover wijzigen of failover activeren](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Wijzig de regionale failoverprioriteit van een Azure Cosmos-account of activeer een handmatige failover. |
-|[Accountsleutels of verbindingstekenreeksen](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ontvang primaire en secundaire sleutels, verbindingstekenreeksen of regenereerde een accountsleutel van een Azure Cosmos DB-account. |
-|[Een Cosmos-account maken met IP-firewall](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Maak een Azure Cosmos DB-account met IP Firewall ingeschakeld. |
+|[Een account, data base en container maken](scripts/powershell/sql/ps-sql-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Een Azure Cosmos DB-account,-data base en-container maken. |
+|[Een container met een grote partitie sleutel maken](scripts/powershell/sql/ps-sql-container-create-large-partition-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Maak een container met een grote partitie sleutel. |
+|[Data bases of containers weer geven of ophalen](scripts/powershell/sql/ps-sql-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Data Base of containers weer geven of ophalen. |
+|[Ophalen van RU/s](scripts/powershell/sql/ps-sql-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ophalen van RU/s voor een Data Base of container. |
+|[RU/s bijwerken](scripts/powershell/sql/ps-sql-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Update RU/s voor een Data Base of container. |
+|[Een container maken zonder index beleid](scripts/powershell/sql/ps-sql-container-create-index-none.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Een Azure Cosmos-container maken waarvoor het index beleid is uitgeschakeld.|
+|[Een account bijwerken](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Het standaard consistentie niveau van een Cosmos DB-account bijwerken. |
+|[De regio's van een account bijwerken](scripts/powershell/common/ps-account-update-region.md?toc=%2fpowershell%2fmodule%2ftoc.json)| De regio's van een Cosmos DB-account bijwerken. |
+|[Failover-prioriteit of trigger-failover wijzigen](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Wijzig de prioriteit van de regionale failover van een Azure Cosmos-account of Activeer een hand matige failover. |
+|[Account sleutels of verbindings reeksen](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| De primaire en secundaire sleutels, verbindings reeksen ophalen of een account sleutel van een Azure Cosmos DB account opnieuw genereren. |
+|[Een Cosmos-account maken met een IP-firewall](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Maak een Azure Cosmos DB-account waarop IP-firewall is ingeschakeld. |
 |||

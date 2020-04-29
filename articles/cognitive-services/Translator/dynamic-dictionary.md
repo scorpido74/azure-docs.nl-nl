@@ -1,7 +1,7 @@
 ---
-title: Dynamisch woordenboek - Api voor vertalertekst
+title: Dynamische woorden lijst-Translator Text-API
 titleSuffix: Azure Cognitive Services
-description: In dit artikel wordt uitgelegd hoe u de functie dynamische woordenboek van de Azure Cognitive Services Translator Text API gebruikt.
+description: In dit artikel wordt uitgelegd hoe u de functie voor dynamische woorden lijsten van de Azure Cognitive Services Translator Text-API gebruikt.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,31 +11,31 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.openlocfilehash: 944bca8644da6127e73af04eb75d01697cd34399
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75446713"
 ---
-# <a name="how-to-use-a-dynamic-dictionary"></a>Een dynamisch woordenboek gebruiken
+# <a name="how-to-use-a-dynamic-dictionary"></a>Een dynamische woorden lijst gebruiken
 
-Als u de vertaling die u wilt toepassen op een woord of een woordaluist al weet, u deze als opmerking in de aanvraag opgeven. Het dynamische woordenboek is alleen veilig voor samengestelde naamwoorden zoals eigen namen en productnamen.
+Als u al weet wat de vertaling is die u wilt Toep assen op een woord of een woord groep, kunt u deze als aantekeningen opgeven in de aanvraag. De dynamische woorden lijst is alleen veilig voor samengestelde samen stellingen zoals eigen namen en product namen.
 
 **Syntaxis:**
 
-<mstrans:dictionary translation="vertaling van zin">zin</mstrans:dictionary>
+<msTrans: Dictionary Translator = "vertaling van woord groep" >frase</msTrans: Dictionary>
 
 **Vereisten:**
 
-* De `From` `To` talen en talen moeten Engels en een andere ondersteunde taal bevatten. 
-* U moet `From` de parameter opnemen in uw API-vertaalaanvraag in plaats van de functie automatisch detecteren te gebruiken. 
+* De `From` talen `To` en moeten Engels en een andere ondersteunde taal bevatten. 
+* U moet de `From` para meter in uw API-Vertaal aanvraag toevoegen in plaats van de functie Automatische detectie te gebruiken. 
 
-**Voorbeeld: en-de:**
+**Voor beeld: nl-de:**
 
-Broninvoer:`The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.`
+Bron invoer:`The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.`
 
-Doeluitvoer:`Das Wort "wordomatic" ist ein Wörterbucheintrag.`
+Doel uitvoer:`Das Wort "wordomatic" ist ein Wörterbucheintrag.`
 
 Deze functie werkt op dezelfde manier met en zonder HTML-modus.
 
-Gebruik de functie spaarzaam. Een betere manier om vertaling aan te passen is door aangepaste vertaler te gebruiken. Custom Translator maakt optimaal gebruik van context en statistische waarschijnlijkheden. Als u trainingsgegevens hebt of maken die uw werk of woordgroep in context weergeven, krijgt u veel betere resultaten. Meer informatie over Custom Translator [https://aka.ms/CustomTranslator](https://aka.ms/CustomTranslator)vindt u op .
+Gebruik de functie spaarzaam. Een betere manier om de vertaling aan te passen, is door aangepaste Translator te gebruiken. Aangepaste vertaler maakt volledig gebruik van context-en statistische kansen. Als u trainings gegevens hebt of kunt maken waarin uw werk of zin in de context wordt weer gegeven, krijgt u veel betere resultaten. Meer informatie over Custom Translator vindt u op [https://aka.ms/CustomTranslator](https://aka.ms/CustomTranslator).

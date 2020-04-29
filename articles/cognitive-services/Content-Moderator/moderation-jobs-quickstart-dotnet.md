@@ -1,7 +1,7 @@
 ---
-title: Moderatietaken gebruiken met .NET - Inhoudsmoderator
+title: Beheer taken gebruiken met behulp van .NET-Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Gebruik de Content Moderator .NET SDK om end-to-end content moderatietaken voor afbeeldings- of tekstinhoud te starten in Azure Content Moderator.
+description: Gebruik de Content Moderator .NET SDK om end-to-end taken voor het beheer van inhoud te initiëren voor afbeeldings-of tekst inhoud in azure Content Moderator.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: fe1b5b4171dc5e61c1c82abfd723d0b77a05a5b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76294334"
 ---
-# <a name="define-and-use-moderation-jobs-net"></a>Moderatietaken definiëren en gebruiken (.NET)
+# <a name="define-and-use-moderation-jobs-net"></a>Toezicht taken definiëren en gebruiken (.NET)
 
-Een moderatietaak dient als een soort wrapper voor de functionaliteit van contentmoderatie, workflows en reviews. Deze handleiding bevat informatie en codevoorbeelden om u te helpen aan de slag te gaan met de [Content Moderator SDK voor .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) om:
+Een toezicht taak fungeert als een soort wrapper voor de functionaliteit van toezicht op inhoud, werk stromen en Beoordelingen. Deze hand leiding bevat informatie en code voorbeelden waarmee u aan de slag kunt met de [Content moderator SDK voor .net voor](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) het volgende:
 
 - Een beoordelingstaak starten voor het scannen en maken van beoordelingen voor menselijke beoordelaars
 - De status van een openstaande beoordeling opvragen
 - De definitieve status van de beoordeling volgen en opvragen
-- De controleresultaten verzenden naar de terugbel-URL
+- De beoordelings resultaten verzenden naar de call back-URL
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Meld u aan of maak een account aan op de site van het [hulpprogramma Inhoudsmoderator.](https://contentmoderator.cognitive.microsoft.com/)
+- Meld u aan of maak een account op de site van het Content Moderator [controle programma](https://contentmoderator.cognitive.microsoft.com/) .
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Instellen dat uw API-sleutel de beoordelings-API kan aanroepen voor het maken van de beoordeling
 
@@ -80,7 +80,7 @@ using System.Threading;
 Voeg de volgende code toe om een Content Moderator-client voor uw abonnement te maken.
 
 > [!IMPORTANT]
-> Werk de velden **AzureEndpoint** en **CMSubscriptionKey** bij met de waarden van uw URL-punt en abonnementssleutel.
+> Werk de velden **AzureEndpoint** en **CMSubscriptionKey** bij met de waarden van uw eind punt-URL en abonnements sleutel.
 
 ```csharp
 /// <summary>

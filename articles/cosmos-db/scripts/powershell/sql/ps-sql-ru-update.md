@@ -1,6 +1,6 @@
 ---
-title: PowerShell-script om doorvoer (RU/s) bij te werken voor een Azure Cosmos DB SQL API-database of -container
-description: PowerShell-script om doorvoer (RU/s) bij te werken voor een Azure Cosmos DB SQL API-database of -container
+title: Power shell-script voor het bijwerken van de door Voer (RU/s) voor een Azure Cosmos DB SQL API-data base of-container
+description: Power shell-script voor het bijwerken van de door Voer (RU/s) voor een Azure Cosmos DB SQL API-data base of-container
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/17/2020
 ms.author: mjbrown
 ms.openlocfilehash: 950a76c2caaffe6eef578d5614e9469c5942e08c
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365973"
 ---
-# <a name="update-throughput-rus-for-an-azure-cosmos-db-sql-api-database-or-container"></a>Doorvoer (RU/s) bijwerken voor een Azure Cosmos DB SQL API-database of -container
+# <a name="update-throughput-rus-for-an-azure-cosmos-db-sql-api-database-or-container"></a>De door Voer (RU/s) bijwerken voor een Azure Cosmos DB SQL API-data base of-container
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,10 +39,10 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | Opdracht | Opmerkingen |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Set-azcosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | Hiermee maakt u een nieuwe of worden een bestaande Cosmos DB SQL Database bijgewerkt. |
-| [Get-azcosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | Krijgt een Cosmos DB SQL Container. |
-| [Set-azcosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | Hiermee maakt u een nieuwe of worden een bestaande Cosmos DB SQL Container bijgewerkt. |
-|**Azure-brongroepen**| |
+| [Set-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | Hiermee wordt een bestaande Cosmos DB SQL Database gemaakt of bijgewerkt. |
+| [Get-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | Hiermee haalt u een Cosmos DB SQL-container op. |
+| [Set-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | Hiermee wordt een bestaande Cosmos DB SQL-container gemaakt of bijgewerkt. |
+|**Azure-resource groepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

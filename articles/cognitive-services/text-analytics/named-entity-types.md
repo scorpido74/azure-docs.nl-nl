@@ -1,7 +1,7 @@
 ---
-title: Ondersteunde typen voor benoemde entiteitsherkenning
+title: Ondersteunde typen voor herkenning van benoemde entiteiten
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over de ondersteunde entiteitstypen in de Text Analytics API.
+description: Meer informatie over de ondersteunde entiteits typen in de Text Analytics-API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: 164e803a6af8a7d1ccdc9c70cc3e42b787857b3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77086909"
 ---
-# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>Ondersteunde typen voor benoemde entiteitserkenning versie 3 (voorbeeld)
+# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>Ondersteunde typen voor de benoemde entiteit herkenning versie 3 (preview)
 
-De Text Analytics API biedt de mogelijkheid om entiteiten in tekst te identificeren en te disambiguaten. [Named Entity Recognition](how-tos/text-analytics-how-to-entity-linking.md) (NER) is de mogelijkheid om verschillende entiteiten in tekst te identificeren en te categoriseren in vooraf gedefinieerde klassen.
+De Text Analytics-API biedt de mogelijkheid om entiteiten te identificeren en te dubbel zinnigheid die in tekst zijn gevonden. [Herkenning van benoemde entiteiten](how-tos/text-analytics-how-to-entity-linking.md) (ner) is de mogelijkheid om verschillende entiteiten in tekst te identificeren en deze te categoriseren in vooraf gedefinieerde klassen.
 
 ## <a name="entity-types"></a>Entiteitstypen
 
-De ondersteunde entiteitstypen en subtypen (indien van toepassing) worden hieronder vermeld:
+De ondersteunde entiteits typen en subtypen (indien van toepassing) worden hieronder weer gegeven:
 
 #### <a name="general"></a>[Algemeen](#tab/general)
 
@@ -37,4 +37,4 @@ De ondersteunde entiteitstypen en subtypen (indien van toepassing) worden hieron
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Naamsbekendheid gebruiken in Text Analytics](how-tos/text-analytics-how-to-entity-linking.md)
+* [Benoemde entiteits herkenning gebruiken in Text Analytics](how-tos/text-analytics-how-to-entity-linking.md)

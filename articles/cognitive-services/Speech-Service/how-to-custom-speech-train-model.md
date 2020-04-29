@@ -1,7 +1,7 @@
 ---
-title: Train een model voor Aangepaste Spraak - Spraakservice
+title: Een model trainen voor Custom Speech-Speech-Service
 titleSuffix: Azure Cognitive Services
-description: Het trainen van een spraak-naar-tekstmodel kan de herkenningsnauwkeurigheid voor het basislijnmodel van Microsoft of een aangepast model verbeteren. Een model wordt getraind met behulp van transcripties met een menselijk label en verwante tekst.
+description: Als u een spraak-naar-tekst model wilt trainen, kunt u de nauw keurigheid van de herkenning voor het basislijn model van micro soft of een aangepast model verbeteren. Een model wordt getraind met behulp van transcripties en gerelateerde tekst.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,52 +11,52 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: a2bc39a35299f56ba52a0143ce123560bd4d88fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77137770"
 ---
-# <a name="train-a-model-for-custom-speech"></a>Een model trainen voor aangepaste spraak
+# <a name="train-a-model-for-custom-speech"></a>Een model trainen voor Custom Speech
 
-Het trainen van een spraak-naar-tekstmodel kan de herkenningsnauwkeurigheid voor het basislijnmodel van Microsoft verbeteren. Een model wordt getraind met behulp van transcripties met een menselijk label en verwante tekst. Deze gegevenssets samen met eerder geüploade audiogegevens worden gebruikt om het spraak-naar-tekstmodel te verfijnen en te trainen om woorden, zinnen, afkortingen, namen en andere productspecifieke termen te herkennen. Hoe meer in-domain datasets die u verstrekt (gegevens die gerelateerd zijn aan wat gebruikers zullen zeggen en wat u verwacht te herkennen), hoe nauwkeuriger uw model zal zijn, wat resulteert in verbeterde herkenning. Houd er rekening mee dat door niet-gerelateerde gegevens in uw training te voeren, u de nauwkeurigheid van uw model verminderen of schaden.
+Training van een model voor spraak naar tekst kan de nauw keurigheid van de herkenning voor het basislijn model van micro soft verbeteren. Een model wordt getraind met behulp van transcripties en gerelateerde tekst. Deze gegevens sets en eerder geüploade audio gegevens worden gebruikt voor het verfijnen en trainen van het spraak-naar-tekst model om woorden, zinsdelen, acroniemen, namen en andere productspecifieke voor waarden te herkennen. Hoe meer gegevens sets in het domein zijn die u opgeeft (wat betreft wat gebruikers zeggen en wat u verwacht te herkennen), des te nauw keuriger is uw model, wat resulteert in verbeterde herkenning. Wanneer u niet-gerelateerde gegevens indeelt in uw training, kunt u de nauw keurigheid van uw model verminderen of onnauwkeuriger maken.
 
-## <a name="use-training-to-resolve-accuracy-issues"></a>Training gebruiken om nauwkeurigheidsproblemen op te lossen
+## <a name="use-training-to-resolve-accuracy-issues"></a>Training gebruiken om nauw keurige problemen op te lossen
 
-Als u problemen ondervindt met herkenning smaken met uw model, kan het gebruik van door mensen gelabelde transcripties en gerelateerde gegevens voor aanvullende training helpen om de nauwkeurigheid te verbeteren. Gebruik deze tabel om te bepalen welke gegevensset u wilt gebruiken om uw probleem(en) op te lossen:
+Als u herkennings problemen ondervindt met uw model, kunt u de nauw keurigheid verbeteren door gebruik te maken van transcripten met menselijke labels en gerelateerde gegevens voor extra training. Gebruik deze tabel om te bepalen welke gegevensset moet worden gebruikt voor het oplossen van uw probleem (en):
 
 | Gebruiksvoorbeeld | Gegevenstype |
 | -------- | --------- |
-| Verbeter de nauwkeurigheid van de herkenning op branchespecifieke woordenschat en grammatica, zoals medische terminologie of IT-jargon. | Verwante tekst (zinnen/uitingen) |
-| Definieer de fonetische en weergegeven vorm van een woord of term met een niet-standaard uitspraak, zoals productnamen of afkortingen. | Verwante tekst (uitspraak) |
-| Verbeter de herkenningsnauwkeurigheid op spreekstijlen, accenten of specifieke achtergrondgeluiden. | Audio + transcripties met menselijk label |
+| Verbeter nauw keurigheid van herkenning op branchespecifieke woorden lijst en grammatica, zoals medische terminologie of het jargon. | Gerelateerde tekst (zinnen/uitingen) |
+| Definieer de fonetische en weer gegeven vorm van een woord of term met een niet-standaard uitspraak, zoals product namen of acroniemen. | Gerelateerde tekst (uitspraak) |
+| Verbeter de herkennings nauwkeurigheid op spraak stijlen, accenten of specifieke achtergrond ruis. | Audio en Transcripten met menselijke labels |
 
 > [!IMPORTANT]
-> Als u geen gegevensset hebt geüpload, raadpleegt u [Uw gegevens voorbereiden en testen.](how-to-custom-speech-test-data.md) Dit document bevat instructies voor het uploaden van gegevens en richtlijnen voor het maken van gegevenssets van hoge kwaliteit.
+> Als u geen gegevensset hebt geüpload, raadpleegt u [uw gegevens voorbereiden en testen](how-to-custom-speech-test-data.md). In dit document vindt u instructies voor het uploaden van gegevens en richt lijnen voor het maken van sets met hoge kwaliteit.
 
 ## <a name="train-and-evaluate-a-model"></a>Een model trainen en evalueren
 
-De eerste stap om een model te trainen is het uploaden van trainingsgegevens. Gebruik [Uw gegevens voorbereiden en testen](how-to-custom-speech-test-data.md) op stapsgewijze instructies om transcripties en gerelateerde tekst (uitingen en uitspraken) voor te bereiden. Nadat u trainingsgegevens hebt geüpload, volgt u de volgende instructies om uw model te trainen:
+De eerste stap voor het trainen van een model is het uploaden van trainings gegevens. Gebruik voor [bereiding en test uw gegevens](how-to-custom-speech-test-data.md) voor stapsgewijze instructies voor het voorbereiden van transcripties en gerelateerde tekst met menselijke labels (uitingen en uitspraak). Nadat u de trainings gegevens hebt geüpload, volgt u deze instructies om te beginnen met het trainen van uw model:
 
-1. Meld u aan bij de [portal Aangepaste spraak](https://speech.microsoft.com/customspeech).
-2. Navigeer naar **aangepaste > spraaktraining**naar spraak naar tekst >.
-3. Klik **op Treinmodel**.
-4. Geef vervolgens uw training een **naam** en **beschrijving.**
-5. Selecteer in de vervolgkeuzelijst **Scenario en Basislijnmodel** het scenario dat het beste bij uw domein past. Als u niet zeker weet welk scenario u wilt kiezen, selecteert u **Algemeen**. Het basislijnmodel is het startpunt voor de training. Als u geen voorkeur hebt, u de nieuwste gebruiken.
-6. Kies op de pagina **Trainingsgegevens selecteren** een of meerdere audio+ transcriptiesets met een mens die u wilt gebruiken voor training.
-7. Zodra de training is voltooid, u ervoor kiezen om nauwkeurigheidstests uit te voeren op het nieuw getrainde model. Deze stap is optioneel.
-8. Selecteer **Maken** om uw aangepaste model te maken.
+1. Meld u aan bij de [Custom speech Portal](https://speech.microsoft.com/customspeech).
+2. Navigeer naar **spraak-naar-tekst > Custom Speech > training**.
+3. Klik op **model trainen**.
+4. Geef vervolgens uw training een **naam** en **Beschrijving**.
+5. Selecteer in de vervolg keuzelijst **scenario en basislijn model** het scenario dat het meest geschikt is voor uw domein. Als u niet zeker weet welk scenario u moet kiezen, selecteert u **Algemeen**. Het basis model is het begin punt voor training. Als u geen voor keur hebt, kunt u de nieuwste gebruiken.
+6. Kies op de pagina **trainings gegevens selecteren** een of meer transcriptie-gegevens sets met audio en menselijke labels die u wilt gebruiken voor de training.
+7. Zodra de training is voltooid, kunt u ervoor kiezen om nauw keuriger tests uit te voeren op het nieuwe getrainde model. Deze stap is optioneel.
+8. Selecteer **maken** om uw aangepaste model te maken.
 
-In de trainingstabel wordt een nieuw item weergegeven dat overeenkomt met dit nieuw gemaakte model. In de tabel wordt ook de status weergegeven: Verwerking, Geslaagd, Mislukt.
+In de tabel training wordt een nieuw item weer gegeven dat overeenkomt met dit nieuwe model. In de tabel wordt ook de volgende status weer gegeven: verwerken, geslaagd, mislukt.
 
-## <a name="evaluate-the-accuracy-of-a-trained-model"></a>De nauwkeurigheid van een getraind model evalueren
+## <a name="evaluate-the-accuracy-of-a-trained-model"></a>De nauw keurigheid van een getraind model evalueren
 
-U de gegevens inspecteren en de modelnauwkeurigheid evalueren met behulp van deze documenten:
+U kunt de gegevens controleren en de model nauwkeurigheid evalueren met behulp van deze documenten:
 
-- [Uw gegevens inspecteren](how-to-custom-speech-inspect-data.md)
+- [Uw gegevens controleren](how-to-custom-speech-inspect-data.md)
 - [Uw gegevens evalueren](how-to-custom-speech-evaluate-data.md)
 
-Als u ervoor kiest om de nauwkeurigheid te testen, is het belangrijk om een akoestische gegevensset te selecteren die verschilt van de gegevens die u met uw model hebt gebruikt om een realistisch beeld te krijgen van de prestaties van het model.
+Als u ervoor hebt gekozen om nauw keurigheid te testen, is het belang rijk dat u een akoestische gegevensset selecteert die afwijkt van het model dat u hebt gebruikt voor de prestaties van het model.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -65,6 +65,6 @@ Als u ervoor kiest om de nauwkeurigheid te testen, is het belangrijk om een akoe
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Uw gegevens voorbereiden en testen](how-to-custom-speech-test-data.md)
-- [Uw gegevens inspecteren](how-to-custom-speech-inspect-data.md)
+- [Uw gegevens controleren](how-to-custom-speech-inspect-data.md)
 - [Uw gegevens evalueren](how-to-custom-speech-evaluate-data.md)
 - [Uw model trainen](how-to-custom-speech-train-model.md)

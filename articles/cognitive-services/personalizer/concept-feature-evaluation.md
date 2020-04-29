@@ -1,7 +1,7 @@
 ---
-title: Functie-evaluatie - Personalizer
+title: Functie-evaluatie-persoonlijker
 titleSuffix: Azure Cognitive Services
-description: Wanneer u een evaluatie uitvoert in uw Personalizer-bron vanuit de Azure-portal, biedt Personalizer informatie over welke functies van context en acties het model beïnvloeden.
+description: Wanneer u een evaluatie uitvoert in uw Personaler-resource vanuit het Azure Portal, bevat Personaler informatie over de functies van context en acties die van invloed zijn op het model.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,75 +11,75 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: 31243b5e9da55aafbc376fa416c1b00a4499c116
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70242419"
 ---
 # <a name="feature-evaluation"></a>Functie-evaluatie
 
-Wanneer u een evaluatie uitvoert in uw Personalizer-bron vanuit de [Azure-portal,](https://portal.azure.com)biedt Personalizer informatie over welke functies van context en acties het model beïnvloeden. 
+Wanneer u een evaluatie uitvoert in uw Personaler-resource vanuit het [Azure Portal](https://portal.azure.com), bevat personaler informatie over de functies van context en acties die van invloed zijn op het model. 
 
-Dit is handig om:
+Dit is handig om het volgende te doen:
 
-* Stel je extra functies voor die je zou kunnen gebruiken, om inspiratie op te doen uit welke functies belangrijker zijn in het model.
-* Bekijk welke functies niet belangrijk zijn en verwijder ze mogelijk of analyseer mogelijk verder wat het gebruik kan beïnvloeden.
-* Geef advies aan redactie- of curatieteams over nieuwe inhoud of producten die het waard zijn om in de catalogus te worden opgenomen.
-* Veelvoorkomende problemen en fouten oplossen die zich voordoen bij het verzenden van functies naar Personalizer.
+* Stel dat er aanvullende functies zijn die u kunt gebruiken, en krijg inspiratie van welke functies belang rijker zijn in het model.
+* Bekijk welke functies niet belang rijk zijn en of u deze kunt verwijderen of verder wilt analyseren wat het gebruik kan beïnvloeden.
+* Geef richt lijnen op voor redactionele of curator-teams over nieuwe inhoud of producten die in de catalogus worden gebracht.
+* Veelvoorkomende problemen en fouten oplossen die zich voordoen bij het verzenden van functies naar persoonlijkere.
 
-De belangrijkste kenmerken hebben sterkere gewichten in het model. Omdat deze functies een sterker gewicht hebben, zijn ze meestal aanwezig wanneer Personalizer hogere beloningen behaalt.
+De belangrijkste functies hebben betere gewichten in het model. Omdat deze functies een sterker gewicht hebben, zijn ze vaak aanwezig als persoonlijker betere beloningen verkrijgt.
 
-## <a name="getting-feature-importance-evaluation"></a>Evaluatie van functiebelang
+## <a name="getting-feature-importance-evaluation"></a>Evaluatie van functie urgentie ophalen
 
-Als u de resultaten van het functiebelang wilt bekijken, moet u een evaluatie uitvoeren. De evaluatie maakt door de mens leesbare functielabels op basis van de functienamen die tijdens de evaluatieperiode zijn waargenomen.
+Als u de belang rijke resultaten van de functie wilt bekijken, moet u een evaluatie uitvoeren. De evaluatie maakt labels voor menselijke Lees bare onderdelen op basis van de functie namen die tijdens de evaluatie periode zijn waargenomen.
 
-De resulterende informatie over functiebelang vertegenwoordigt het huidige Personalizer online model. De evaluatie analyseert functie belang van het model opgeslagen op de einddatum van de evaluatieperiode, na het ondergaan van alle training gedaan tijdens de evaluatie, met het huidige online leerbeleid. 
+De resulterende informatie over de functie urgentie is het huidige online model van Personaler. De evaluatie analyseert het belang van de functie van het model dat is opgeslagen op de eind datum van de evaluatie periode, nadat alle training tijdens de evaluatie is uitgevoerd, met het huidige online learning-beleid. 
 
-De resultaten van het functiebelang vertegenwoordigen geen ander beleid en modellen die tijdens de evaluatie zijn getest of gemaakt.  De evaluatie bevat geen functies die na het einde van de evaluatieperiode naar Personalizer zijn verzonden.
+De belang rijke resultaten van de functie vertegenwoordigen geen andere beleids regels en modellen die tijdens de evaluatie zijn getest of gemaakt.  De evaluatie bevat geen functies die na het einde van de evaluatie periode naar Personaler worden verzonden.
 
-## <a name="how-to-interpret-the-feature-importance-evaluation"></a>Evaluatie van het functiebelang interpreteren
+## <a name="how-to-interpret-the-feature-importance-evaluation"></a>De evaluatie van de functie urgentie interpreteren
 
-Personalizer evalueert functies door het creëren van "groepen" van functies die vergelijkbaar belang hebben. Men kan zeggen dat de ene groep over het algemeen belangrijker is dan andere, maar binnen de groep is het ordenen van functies alfabetisch.
+Personaler evalueert functies door ' groepen ' te maken van functies met een vergelijk bare prioriteit. Een groep kan worden beschouwd als een algemeen sterker belang dan andere, maar binnen de groep is de volg orde van de functies alfabetisch.
 
-Informatie over elke functie bevat:
+Informatie over elke functie omvat:
 
-* Of de functie afkomstig is van Context of Acties.
-* Functiesleutel en -waarde.
+* Hiermee wordt aangegeven of de functie afkomstig is van context of acties.
+* Functie sleutel en waarde.
 
-Een app voor het bestellen van een ijssalon kan bijvoorbeeld 'Context.Weer:Warm' als een zeer belangrijke functie zien.
+Een voor beeld van een bestel-app met Ice room kan bijvoorbeeld ' context. weer: Hot ' zien als een belang rijk onderdeel.
 
-Personalizer geeft correlaties weer van functies die, wanneer ze samen in aanmerking worden genomen, hogere beloningen opleveren.
+Persoonlijker toont de correlaties van functies die, wanneer ze samen in aanmerking worden genomen, hogere beloningen produceren.
 
-U bijvoorbeeld 'Context.Weer:Warm *met* Action.MenuItem:IceCream' en 'Context.Weer:Koud *met* Action.MenuItem:WarmTea:
+Zo ziet u mogelijk ' context. weer: Hot *with* action. menu item: ijs ' en ' context. weer: koud *met* action. menu item: WarmTea:
 
-## <a name="actions-you-can-take-based-on-feature-evaluation"></a>Acties die u uitvoeren op basis van functie-evaluatie
+## <a name="actions-you-can-take-based-on-feature-evaluation"></a>Acties die u kunt uitvoeren op basis van de functie-evaluatie
 
-### <a name="imagine-additional-features-you-could-use"></a>Stel je extra functies voor die je zou kunnen gebruiken
+### <a name="imagine-additional-features-you-could-use"></a>Stel dat u aanvullende functies kunt gebruiken
 
-Laat u inspireren door de belangrijkste functies in het model. Als u bijvoorbeeld 'Context.MobileBattery:Low' ziet in een mobiele video-app, denkt u dat het type verbinding ervoor kan kiezen dat klanten er ook voor kiezen om de ene videoclip boven de andere te zien en vervolgens functies over het type connectiviteit en bandbreedte toe te voegen aan uw app.
+Vind inspiratie van de belang rijke functies in het model. Als u bijvoorbeeld ' context. MobileBattery: low ' ziet in een video mobiele app, kunt u denken dat het verbindings type ook kan zorgen dat klanten een video clip over een andere weer geven en vervolgens functies toevoegen over het verbindings type en de band breedte in uw app.
 
-### <a name="see-what-features-are-not-important"></a>Bekijk welke functies niet belangrijk zijn
+### <a name="see-what-features-are-not-important"></a>Bekijk welke functies niet belang rijk zijn
 
-Verwijder mogelijk onbelangrijke functies of analyseer verder wat het gebruik kan beïnvloeden. Functies kunnen laag scoren om vele redenen. Men zou kunnen zijn dat echt de functie geen invloed heeft op het gedrag van gebruikers. Maar het kan ook betekenen dat de functie niet duidelijk is voor de gebruiker. 
+Mogelijk onbelangrijke functies te verwijderen of om te analyseren wat van invloed kan zijn op het gebruik. Functies kunnen om verschillende redenen laag worden gerangschikt. Een van de mogelijke oorzaken is dat de functie niet van invloed is op het gedrag van de gebruiker. Maar het kan ook betekenen dat de functie niet zichtbaar is voor de gebruiker. 
 
-Een videosite kan bijvoorbeeld zien dat "Action.VideoResolution=4k" een functie van weinig belang is, die het onderzoek van gebruikers tegenspreekt. De oorzaak kan zijn dat de toepassing niet eens de videoresolutie vermeldt of weergeeft, zodat gebruikers hun gedrag niet zouden veranderen op basis van deze resolutie.
+Een video site zou bijvoorbeeld kunnen zien dat "Action. VideoResolution = 4.000" een functie met lage urgentie is, wat in strijd is met gebruikers onderzoek. De oorzaak kan zijn dat de toepassing de video resolutie niet vermeldt of weergeeft, zodat gebruikers hun gedrag op basis daarvan niet kunnen wijzigen.
 
-### <a name="provide-guidance-to-editorial-or-curation-teams"></a>Leiding geven aan redactie- of curatieteams
+### <a name="provide-guidance-to-editorial-or-curation-teams"></a>Richt lijnen bieden voor redactionele of curator-teams
 
-Geef richtlijnen over nieuwe inhoud of producten die het waard zijn om in de catalogus te brengen. Personalizer is ontworpen om een hulpmiddel te zijn dat het menselijk inzicht en teams vergroot. Een manier om dit te doen is door het verstrekken van informatie aan redactionele groepen over wat is het over producten, artikelen of inhoud die gedrag drijft. Het scenario voor videotoepassingen kan bijvoorbeeld aantonen dat er een belangrijke functie is genaamd 'Action.VideoEntities.Cat:true', waardoor de redactie wordt gevraagd om meer kattenvideo's in te voeren.
+Geef richt lijnen op voor nieuwe inhoud of producten die in de catalogus worden gebracht. Personaler is ontworpen om een hulp programma te zijn waarmee mensen inzicht en teams worden uitgebreid. Een manier om dit te doen, is door informatie op te geven over producten, artikelen of inhoud die het gedrag verstuurt. In het scenario van de video-toepassing kan bijvoorbeeld worden weer gegeven dat er een belang rijke functie met de naam action. VideoEntities. cat: True is, waarin het redactionele team wordt gevraagd om meer kat Video's te nemen.
 
 ### <a name="troubleshoot-common-problems-and-mistakes"></a>Veelvoorkomende problemen en fouten oplossen
 
-Veelvoorkomende problemen en fouten kunnen worden opgelost door uw toepassingscode te wijzigen, zodat deze geen ongepaste of onjuist opgemaakte functies naar Personalizer stuurt. 
+Veelvoorkomende problemen en fouten kunnen worden opgelost door de code van uw toepassing te wijzigen, zodat er geen ongewenste of onjuist opgemaakte functies naar Personaler worden verzonden. 
 
 Veelvoorkomende fouten bij het verzenden van functies zijn onder andere:
 
-* Het verzenden van persoonlijk identificeerbare informatie (PII). PII die specifiek is voor één persoon (zoals naam, telefoonnummer, creditcardnummers, IP-adressen) mag niet worden gebruikt met Personalizer. Als uw toepassing gebruikers moet volgen, gebruikt u een niet-identificerende UUID of een ander gebruikersnaamnummer. In de meeste scenario's is dit ook problematisch.
-* Bij grote aantallen gebruikers is het onwaarschijnlijk dat de interactie van elke gebruiker meer weegt dan alle interactie van de bevolking, dus het verzenden van gebruikers-id's (zelfs als niet-PII) zal waarschijnlijk meer ruis dan waarde toevoegen aan het model.
-* Datumtijdvelden verzenden als nauwkeurige tijdstempels in plaats van prestatiegerichte tijdwaarden. Functies zoals Context.TimeStamp.Day=Monday of "Context.TimeStamp.Hour"="13" is handiger. Er zullen hoogstens 7 of 24 eigenschapwaarden voor elk zijn. Maar "Context.TimeStamp":"1985-04-12T23:20:50.52Z" is zo nauwkeurig dat er geen manier zal zijn om ervan te leren omdat het nooit meer zal gebeuren.
+* Het verzenden van persoons gegevens (PII). Persoonlijke gegevens die specifiek zijn voor één persoon (zoals naam, telefoon nummer, creditcard nummers en IP-adressen) mogen niet worden gebruikt met Personaler. Als uw toepassing gebruikers moet bijhouden, gebruikt u een niet-identificerende UUID of een ander nummer van de gebruikers-id. In de meeste scenario's is dit ook problematisch.
+* Met een groot aantal gebruikers is het niet waarschijnlijk dat de interactie van elke gebruiker meer overschrijdt dan alle interactie van de populatie, waardoor het verzenden van gebruikers-Id's (zelfs als niet-PII) waarschijnlijk meer ruis zal toevoegen dan de waarde voor het model.
+* Het verzenden van datum-en tijd velden als exacte tijds tempels in plaats van featurized tijd waarden. Bevat functies zoals context. time stamp. Day = maandag of ' context. time stamp. Hour ' = "13" is nuttiger. Er zijn Maxi maal 7 of 24 functie waarden voor elk. Maar ' context. time stamp ': ' 1985-04-12T23:20:50.52 Z ' is zo nauw keurig dat er geen andere manier is om deze te leren, omdat het nooit meer gebeurt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Begrijp [schaalbaarheid en prestaties](concepts-scalability-performance.md) met Personalizer.
+Meer informatie over [schaal baarheid en prestaties](concepts-scalability-performance.md) met persoonlijker.
 

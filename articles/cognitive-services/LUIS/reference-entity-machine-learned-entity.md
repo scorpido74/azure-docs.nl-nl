@@ -1,7 +1,7 @@
 ---
-title: Type door machines geleerde entiteit - LUIS
+title: Door de machine geleerde entiteits type-LUIS
 titleSuffix: Azure Cognitive Services
-description: De door de machine geleerde entiteit is de voorkeursentiteit voor het bouwen van LUIS-toepassingen.
+description: De door de machine geleerde entiteit is de voorkeurs entiteit voor het bouwen van LUIS-toepassingen.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: reference
 ms.date: 12/30/2019
 ms.author: diberry
 ms.openlocfilehash: aac4ba3ec63d425cac782f5db65bba923d24ed71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75551995"
 ---
 # <a name="machine-learned-entity"></a>Entiteit op basis van machine learning
 
-De door de machine geleerde entiteit is de voorkeursentiteit voor het bouwen van LUIS-toepassingen.
+De door de machine geleerde entiteit is de voorkeurs entiteit voor het bouwen van LUIS-toepassingen.
 
 
-## <a name="example-json"></a>Voorbeeld JSON
+## <a name="example-json"></a>Voor beeld JSON
 
-Stel dat de app pizzabestellingen aanneemt, zoals de zelfstudie van de [ontontbindingbare entiteit.](tutorial-machine-learned-entity.md) Elke bestelling kan verschillende pizza's bevatten, waaronder verschillende maten.
+Stel dat de app pizza-orders gebruikt, zoals de [zelf studie voor de opstel bare entiteit](tutorial-machine-learned-entity.md). Elke order kan verschillende pizzas bevatten, met inbegrip van verschillende grootten.
 
 Hier zijn enkele voorbeelden van utterances:
 
-|Voorbeelduitingen voor pizza-app|
+|Voor beeld van uitingen voor pizza-app|
 |--|
 |`Can I get a pepperoni pizza and a can of coke please`|
 |`can I get a small pizza with onions peppers and olives`|
@@ -36,15 +36,15 @@ Hier zijn enkele voorbeelden van utterances:
 
 
 
-#### <a name="v3-prediction-endpoint-response"></a>[V3 voorspelling eindpuntrespons](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
-Omdat een door machines geleerde entiteit veel subcomponenten kan hebben met beperkingen en beschrijvingen, is dit slechts een voorbeeld. Het moet worden beschouwd als een gids voor wat uw entiteit zal terugkeren.
+Omdat een door een machine geleerde entiteit veel subonderdelen met beperkingen en descriptors kan hebben, is dit slechts een voor beeld. Deze moet worden beschouwd als een hand leiding voor wat uw entiteit retourneert.
 
-Houd rekening met de query:
+Bekijk de query:
 
 `deliver 1 large cheese pizza on thin crust and 2 medium pepperoni pizzas on deep dish crust`
 
-Dit is de `verbose=false` JSON als deze is ingesteld in de querytekenreeks:
+Dit is de JSON als `verbose=false` deze is ingesteld in de query reeks:
 
 ```json
 "entities": {
@@ -102,7 +102,7 @@ Dit is de `verbose=false` JSON als deze is ingesteld in de querytekenreeks:
 
 ```
 
-Dit is de `verbose=true` JSON als deze is ingesteld in de querytekenreeks:
+Dit is de JSON als `verbose=true` deze is ingesteld in de query reeks:
 
 ```json
 "entities": {
@@ -341,13 +341,13 @@ Dit is de `verbose=true` JSON als deze is ingesteld in de querytekenreeks:
     }
 }
 ```
-#### <a name="v2-prediction-endpoint-response"></a>[V2 voorspelling eindpuntrespons](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
-Deze entiteit is niet beschikbaar in de v2-voorspellingsruntime.
+Deze entiteit is niet beschikbaar in de v2-Voorspellings runtime.
 * * *
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de machine-geleerde entiteit, waaronder een [zelfstudie,](tutorial-machine-learned-entity.md) [concepten](luis-concept-entity-types.md#design-entities-for-decomposition)en [handleiding](luis-how-to-add-entities.md#create-a-machine-learned-entity).
+Meer informatie over de door de machine geleerde entiteit, inclusief een [zelf studie](tutorial-machine-learned-entity.md), [concepten](luis-concept-entity-types.md#design-entities-for-decomposition)en [instructies](luis-how-to-add-entities.md#create-a-machine-learned-entity).
 
-Meer informatie over de [entiteit lijst](reference-entity-list.md) en de entiteit met [reguliere expressie.](reference-entity-regular-expression.md)
+Meer informatie over de entiteit [lijst](reference-entity-list.md) entiteit en [reguliere expressie](reference-entity-regular-expression.md) .

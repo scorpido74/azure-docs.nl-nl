@@ -1,6 +1,6 @@
 ---
-title: PowerShell-script om database en verzameling te maken in de API van Azure Cosmos DB voor MongoDB
-description: Azure PowerShell-script - Azure Cosmos DB maken MongoDB API-database en -verzameling
+title: Power shell-script voor het maken van een Data Base en verzameling in de API van Azure Cosmos DB voor MongoDB
+description: 'Azure PowerShell script: Azure Cosmos DB MongoDB API-data base en-verzameling maken'
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: 59e30de7a0f069cfc69db715115f776034e94909
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365884"
 ---
-# <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>Een database en verzameling maken voor Azure Cosmos DB - MongoDB API
+# <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>Een Data Base en verzameling maken voor de Azure Cosmos DB-MongoDB-API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,11 +39,11 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | Opdracht | Opmerkingen |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Nieuw-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Hiermee maakt u een nieuw Cosmos DB-account. |
-| [Set-AzCosmosDBMongoDBDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbdatabase) | Hiermee maakt u een nieuwe of actualiseert u een bestaande Cosmos DB MongoDB API-database. |
-| [Nieuw-AzCosmosDBMongoDBIndex](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbindex) | Hiermee maakt u een nieuwe MongoDB API-index. |
-| [Set-AzCosmosDBMongoDBCollectie](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbcollection) | Hiermee maakt u een nieuwe of worden een bestaande Cosmos DB SQL Collection bijgewerkt. |
-|**Azure-brongroepen**| |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Hiermee maakt u een nieuw Cosmos DB-account. |
+| [Set-AzCosmosDBMongoDBDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbdatabase) | Hiermee wordt een bestaande Cosmos DB MongoDB API-data base gemaakt of bijgewerkt. |
+| [New-AzCosmosDBMongoDBIndex](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbindex) | Hiermee maakt u een nieuwe MongoDB API-index. |
+| [Set-AzCosmosDBMongoDBCollection](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbcollection) | Hiermee wordt een bestaande Cosmos DB SQL-collectie gemaakt of bijgewerkt. |
+|**Azure-resource groepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

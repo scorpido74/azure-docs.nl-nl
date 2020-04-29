@@ -1,6 +1,6 @@
 ---
-title: PowerShell-script om een container te maken waarbij indexering is uitgeschakeld in een Azure Cosmos DB-account
-description: Azure PowerShell-scriptvoorbeeld - Een container maken waarbij indexering is uitgeschakeld in een Azure Cosmos DB-account
+title: Power shell-script voor het maken van een container waarvoor indexeren is uitgeschakeld in een Azure Cosmos DB-account
+description: 'Azure PowerShell-voorbeeld script: een container maken waarvan de indexering is uitgeschakeld in een Azure Cosmos DB-account'
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/17/2020
 ms.author: mjbrown
 ms.openlocfilehash: e4cf09ede1ea532d784b6d486cdb54d510d13652
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365643"
 ---
-# <a name="create-a-container-with-indexing-turned-off-in-an-azure-cosmos-db-account-using-powershell"></a>Een container maken waarbij indexering is uitgeschakeld in een Azure Cosmos DB-account met PowerShell
+# <a name="create-a-container-with-indexing-turned-off-in-an-azure-cosmos-db-account-using-powershell"></a>Een container maken waarvoor indexeren is uitgeschakeld in een Azure Cosmos DB-account met behulp van Power shell
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,11 +39,11 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | Opdracht | Opmerkingen |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Nieuw-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Hiermee maakt u een nieuw Cosmos DB-account. |
-| [Set-azcosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | Hiermee maakt u een nieuwe of worden een bestaande Cosmos DB SQL Database bijgewerkt. |
-| [Nieuw-AzCosmosDBSqlIndexingBeleid](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlindexingpolicy) | Hiermee maakt u een nieuw object van het type PSSqlIndexingPolicy dat wordt gebruikt als parameter voor Set-AzCosmosDBSqlContainer. |
-| [Set-azcosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | Hiermee maakt u een nieuwe of worden een bestaande Cosmos DB SQL Container bijgewerkt. |
-|**Azure-brongroepen**| |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Hiermee maakt u een nieuw Cosmos DB-account. |
+| [Set-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | Hiermee wordt een bestaande Cosmos DB SQL Database gemaakt of bijgewerkt. |
+| [New-AzCosmosDBSqlIndexingPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlindexingpolicy) | Hiermee wordt een nieuw object van het type PSSqlIndexingPolicy gebruikt als para meter voor set-AzCosmosDBSqlContainer. |
+| [Set-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | Hiermee wordt een bestaande Cosmos DB SQL-container gemaakt of bijgewerkt. |
+|**Azure-resource groepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

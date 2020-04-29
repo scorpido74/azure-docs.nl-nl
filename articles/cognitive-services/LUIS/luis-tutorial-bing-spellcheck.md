@@ -1,7 +1,7 @@
 ---
-title: Foutgespelde woorden corrigeren - LUIS
+title: Verkeerd gespelde woorden corrigeren-LUIS
 titleSuffix: Azure Cognitive Services
-description: Corrigeer verkeerd gespelde woorden in uitingen door Bing Spell Check API V7 toe te voegen aan LUIS-eindpuntquery's.
+description: Corrigeer verkeerd gespelde woorden in uitingen door Bing Spellingcontrole-API V7 toe te voegen aan LUIS-eindpunt query's.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,75 +12,75 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: a1e43cfc55611c432652055db2ac8411d835608b
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80396822"
 ---
-# <a name="correct-misspelled-words-with-bing-spell-check"></a>Verkeerd gespelde woorden corrigeren met Bing Spell Check
+# <a name="correct-misspelled-words-with-bing-spell-check"></a>Verkeerd gespelde woorden corrigeren met Bing Spellingcontrole
 
-U uw LUIS-app integreren met [Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) om verkeerd gespelde woorden in uitingen te corrigeren voordat LUIS de score en entiteiten van de utterance voorspelt. 
+U kunt uw LUIS-app integreren met [Bing spellingcontrole-API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) om verkeerd gespelde woorden in uitingen te corrigeren voordat Luis de score en entiteiten van de utterance voor spelt. 
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
 
-## <a name="create-first-key-for-bing-spell-check-v7"></a>Eerste sleutel maken voor Bing Spell Check V7
+## <a name="create-first-key-for-bing-spell-check-v7"></a>Eerste sleutel voor Bing Spellingcontrole V7 maken
 
-Je [eerste Bing Spell Check API v7-toets](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) is gratis. 
+Uw [eerste Bing spellingcontrole-API V7-sleutel](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) is gratis. 
 
 ![Gratis sleutel maken](./media/luis-tutorial-bing-spellcheck/free-key.png)
 
 <a name="create-subscription-key"></a>
 
-## <a name="create-endpoint-key"></a>Eindpunttoets maken
-Als uw gratis sleutel is verlopen, maakt u een eindpuntsleutel.
+## <a name="create-endpoint-key"></a>Eindpunt sleutel maken
+Als uw gratis sleutel is verlopen, maakt u een eindpunt sleutel.
 
-1. Log in bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
 
-2. Selecteer **Een resource maken** in de linkerbovenhoek.
+2. Selecteer **een resource maken** in de linkerbovenhoek.
 
 3. Typ `Bing Spell Check API V7` in het zoekvak.
 
-    ![Zoeken naar Bing Spell Check API V7](./media/luis-tutorial-bing-spellcheck/portal-search.png)
+    ![Zoeken naar Bing Spellingcontrole-API V7](./media/luis-tutorial-bing-spellcheck/portal-search.png)
 
 4. Selecteer de service. 
 
-5. Rechts verschijnt een informatiepaneel met informatie, waaronder de juridische kennisgeving. Selecteer **Maken** om het proces voor het maken van abonnementen te starten. 
+5. Er wordt rechts een informatie venster weer gegeven met daarin informatie, inclusief de juridische kennisgeving. Selecteer **maken** om het proces voor het maken van het abonnement te starten. 
 
-6. Voer in het volgende deelvenster uw service-instellingen in. Wacht tot het proces voor het maken van service is voltooid.
+6. Geef in het volgende deel venster uw service-instellingen op. Wacht totdat het proces voor het maken van de service is voltooid.
 
     ![Service-instellingen invoeren](./media/luis-tutorial-bing-spellcheck/subscription-settings.png)
 
-7. Selecteer **Alle bronnen** onder de titel **Favorieten** aan de linkerkant.
+7. Selecteer **alle resources** onder de titel **Favorieten** in de navigatie aan de linkerkant.
 
-8. Selecteer de nieuwe service. Het type is **Cognitive Services** en de locatie is **globaal.** 
+8. Selecteer de nieuwe service. Het type is **Cognitive Services** en de locatie is **globaal**. 
 
-9. Selecteer **Toetsen om** uw nieuwe toetsen te zien in het hoofdpaneel.
+9. Selecteer in het hoofd paneel **sleutels** om uw nieuwe sleutels weer te geven.
 
-    ![Sleutels grijpen](./media/luis-tutorial-bing-spellcheck/grab-keys.png)
+    ![Sleutels ophalen](./media/luis-tutorial-bing-spellcheck/grab-keys.png)
 
-10. Kopieer de eerste sleutel. Je hebt maar één van de twee sleutels nodig. 
+10. Kopieer de eerste sleutel. U hebt slechts een van de twee sleutels nodig. 
 
 <!--
 ## Using the key in LUIS test panel
 There are two places in LUIS to use the key. The first is in the [test panel](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key isn't saved into LUIS but instead is a session variable. You need to set the key every time you want the test panel to apply the Bing Spell Check API v7 service to the utterance. See [instructions](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) in the test panel for setting the key.
 -->
-## <a name="adding-the-key-to-the-endpoint-url"></a>De sleutel toevoegen aan de URL van het eindpunt
-De eindpuntquery heeft de sleutel nodig die is doorgegeven in de querytekenreeksparameters voor elke query die u spellingcorrectie wilt toepassen. U hebt mogelijk een chatbot die LUIS aanroept of u de LUIS-eindpuntAPI rechtstreeks aanroepen. Ongeacht hoe het eindpunt wordt aangeroepen, moet elke oproep de vereiste informatie bevatten om spellingcorrecties goed te laten werken.
+## <a name="adding-the-key-to-the-endpoint-url"></a>De sleutel toevoegen aan de eind punt-URL
+Voor de eindpunt query moet de sleutel worden door gegeven in de query teken reeks parameters voor elke query waarop u de spelling correctie wilt Toep assen. Mogelijk hebt u een chatbot die LUIS aanroept of u kunt de LUIS endpoint API rechtstreeks aanroepen. Ongeacht hoe het eind punt wordt aangeroepen, moeten elke aanroep de vereiste informatie bevatten die de spelling correcties goed kunnen uitvoeren.
 
-De URL van het eindpunt heeft verschillende waarden die correct moeten worden doorgegeven. De Bing Spell Check API v7-toets is gewoon een van deze. U moet de parameter **spellCheck** op true instellen en u moet de waarde van **bing-spell-check-subscription-key** instellen op de sleutelwaarde:
+De eind punt-URL heeft verschillende waarden die correct moeten worden door gegeven. De Bing Spellingcontrole-API V7-sleutel is slechts een van deze. U moet de para meter **Spelling** controle instellen op True en u moet de waarde van **Bing-spelling check-Subscription-Key** instellen op de sleutel waarde:
 
 `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appID}?subscription-key={luisKey}&spellCheck=true&bing-spell-check-subscription-key={bingKey}&verbose=true&timezoneOffset=0&q={utterance}`
 
-## <a name="send-misspelled-utterance-to-luis"></a>Verkeerd gespelde uitingen naar LUIS verzenden
-1. Kopieer in een webbrowser de voorgaande `region`tekenreeks `appId` `luisKey`en `bingKey` vervang de , , en met uw eigen waarden. Zorg ervoor dat u het eindpuntgebied gebruikt als dit verschilt van uw [publicatiegebied](luis-reference-regions.md).
+## <a name="send-misspelled-utterance-to-luis"></a>Verkeerd gespeld utterance naar LUIS verzenden
+1. Kopieer in een webbrowser de voor gaande teken reeks en vervang de `region`, `appId` `luisKey` `bingKey` , en door uw eigen waarden. Zorg ervoor dat u de regio van het eind punt gebruikt als deze niet overeenkomt met de publicatie [regio](luis-reference-regions.md).
 
-2. Voeg een verkeerd gespelde uiting toe, zoals "Hoe ver is de mountainn?". In het `mountain`Engels, `n`met een , is de juiste spelling. 
+2. Voeg een verkeerd gespelde utterance toe, zoals ' hoe ver is de mountainn? '. In het Engels `mountain`is, met `n`een, de juiste spelling. 
 
-3. Selecteer enter om de query naar LUIS te verzenden.
+3. Selecteer ENTER om de query naar LUIS te verzenden.
 
-4. LUIS reageert met een `How far is the mountain?`JSON resultaat voor . Als Bing Spell Check API v7 `query` een spelfout detecteert, bevat het veld in het `alteredQuery` JSON-antwoord van de LUIS-app de oorspronkelijke query en bevat het veld de gecorrigeerde query die naar LUIS is verzonden.
+4. LUIS reageert met een JSON-resultaat `How far is the mountain?`voor. Als Bing Spellingcontrole-API V7 een verkeerde spelling detecteert, `query` bevat het veld in het JSON-antwoord van de Luis-app de oorspronkelijke `alteredQuery` query en bevat het veld de gecorrigeerde query die wordt verzonden naar Luis.
 
 ```json
 {
@@ -94,17 +94,17 @@ De URL van het eindpunt heeft verschillende waarden die correct moeten worden do
 }
 ```
 
-## <a name="ignore-spelling-mistakes"></a>Spelfouten negeren
+## <a name="ignore-spelling-mistakes"></a>Spel fouten negeren
 
-Als u de Bing Spell Check API v7-service niet wilt gebruiken, moet u de juiste en onjuiste spelling toevoegen. 
+Als u de Bing Spellingcontrole-API V7-service niet wilt gebruiken, moet u de juiste en onjuiste spelling toevoegen. 
 
 Twee oplossingen zijn:
 
-* Label voorbeeld uitingen die de alle verschillende spellingen hebben, zodat LUIS kan leren juiste spelling en typefouten. Deze optie vereist meer etiketteringsinspanning dan het gebruiken van een spellingscontrole.
-* Maak een woordenlijst met alle varianten van het woord. Met deze oplossing hoeft u de woordvariaties in de voorbeelduitingen niet te labelen. 
+* Voor beeld van een label uitingen die de verschillende spellingen hebben, zodat LUIS de juiste spelling en type fouten kan ontdekken. Voor deze optie is meer inspanning vereist dan het gebruik van een spelling controle.
+* Een woordgroepen lijst maken met alle variaties van het woord. Met deze oplossing hoeft u geen label te maken voor de woord variaties in het voor beeld uitingen. 
 
-## <a name="publishing-page"></a>Publicatiepagina
-De [publicatiepagina](luis-how-to-publish-app.md) heeft een selectievakje **Bing-spellingcontrole inschakelen.** Dit is een gemak om de sleutel te maken en te begrijpen hoe de URL van het eindpunt verandert. U moet nog steeds de juiste eindpuntparameters gebruiken om de spelling voor elke utterance te laten corrigeren. 
+## <a name="publishing-page"></a>Publicatie pagina
+Op de [publicatie](luis-how-to-publish-app.md) pagina is het selectie vakje **Bing spelling controle inschakelen ingeschakeld** . Dit is een handige manier om de sleutel te maken en te begrijpen hoe de eind punt-URL verandert. U moet nog steeds de juiste eindpunt parameters gebruiken om de spelling voor elke utterance te corrigeren. 
 
 > [!div class="nextstepaction"]
-> [Meer informatie over voorbeelduitingen](luis-how-to-add-example-utterances.md)
+> [Meer informatie over voorbeeld uitingen](luis-how-to-add-example-utterances.md)

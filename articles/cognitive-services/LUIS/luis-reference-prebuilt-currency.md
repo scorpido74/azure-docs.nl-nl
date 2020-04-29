@@ -1,7 +1,7 @@
 ---
-title: Valuta prebuilt entiteit - LUIS
+title: Valuta vooraf samengestelde entiteit-LUIS
 titleSuffix: Azure Cognitive Services
-description: Dit artikel bevat vooraf gebouwde informatie over entiteiten in Language Understanding (LUIS).
+description: Dit artikel bevat informatie over de valuta vooraf opgebouwde entiteit in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,23 +12,23 @@ ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: 56d264fa976967ae4772f50b4aa6f58b30355d6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270770"
 ---
-# <a name="currency-prebuilt-entity-for-a-luis-app"></a>Vooraf gebouwde valuta voor een LUIS-app
-De vooraf gebouwde valutaentiteit detecteert valuta in veel coupures en landen/regio's, ongeacht de luis-app-cultuur. Omdat deze entiteit al is getraind, hoeft u geen voorbeelduitingen met valuta toe te voegen aan de toepassingsintenties. Valuta entiteit wordt ondersteund in [vele culturen](luis-reference-prebuilt-entities.md).
+# <a name="currency-prebuilt-entity-for-a-luis-app"></a>Voor de valuta vooraf samengestelde entiteit voor een LUIS-app
+De vooraf samengestelde valuta-entiteit detecteert valuta in veel coupures en landen/regio's, ongeacht de LUIS-app-cultuur. Omdat deze entiteit al is getraind, hoeft u geen voor beeld-uitingen met valuta toe te voegen aan de toepassings intentie. De valuta-entiteit wordt ondersteund in [veel cultures](luis-reference-prebuilt-entities.md).
 
 ## <a name="types-of-currency"></a>Soorten valuta
-Valuta wordt beheerd vanuit de [GitHub-repository met Recognizers-tekst](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L26)
+Valuta wordt beheerd vanuit de map [recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L26) github
 
-## <a name="resolution-for-currency-entity"></a>Resolutie voor valutaentiteit
+## <a name="resolution-for-currency-entity"></a>Oplossing voor valuta-entiteit
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
-De volgende JSON `verbose` is met `false`de parameter ingesteld op:
+De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 
 ```json
 "entities": {
@@ -40,8 +40,8 @@ De volgende JSON `verbose` is met `false`de parameter ingesteld op:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 verbose reactie](#tab/V3-verbose)
-De volgende JSON `verbose` is met `true`de parameter ingesteld op:
+#### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
+De volgende JSON is met de `verbose` para meter ingesteld `true`op:
 
 ```json
 "entities": {
@@ -68,7 +68,7 @@ De volgende JSON `verbose` is met `true`de parameter ingesteld op:
 
 #### <a name="v2-response"></a>[V2-antwoord](#tab/V2)
 
-In het volgende voorbeeld ziet u de resolutie van de entiteit **builtin.currency.**
+In het volgende voor beeld ziet u de oplossing van de **inbuiltin. Currency** -entiteit.
 
 ```json
 "entities": [
@@ -88,6 +88,6 @@ In het volgende voorbeeld ziet u de resolutie van de entiteit **builtin.currency
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [V3-voorspellingseindpunt](luis-migration-api-v3.md).
+Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
-Meer informatie over de [datumtijdV2,](luis-reference-prebuilt-datetimev2.md) [dimensie](luis-reference-prebuilt-dimension.md)en [e-mailentiteiten.](luis-reference-prebuilt-email.md)
+Meer informatie over de entiteiten [datetimeV2](luis-reference-prebuilt-datetimev2.md), [Dimension](luis-reference-prebuilt-dimension.md)en [e-mail](luis-reference-prebuilt-email.md) .

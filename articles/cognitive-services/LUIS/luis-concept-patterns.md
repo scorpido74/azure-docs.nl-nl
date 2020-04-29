@@ -1,7 +1,7 @@
 ---
-title: Patronen helpen bij het voorspellen - LUIS
+title: Help voor voor spelling van patronen-LUIS
 titleSuffix: Azure Cognitive Services
-description: Met een patroon u meer nauwkeurigheid voor een intentie krijgen zonder veel meer uitingen te verstrekken.
+description: Een patroon biedt u de mogelijkheid om nauw keuriger te zijn voor een intentie zonder veel meer uitingen te bieden.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,69 +12,69 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
 ms.openlocfilehash: 6c1b548de25369c162b4a08dfa20fce62c17f99f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75890291"
 ---
-# <a name="patterns-improve-prediction-accuracy"></a>Patronen verbeteren de nauwkeurigheid van de voorspelling
-Patronen zijn ontworpen om de nauwkeurigheid te verbeteren wanneer verschillende uitingen zeer vergelijkbaar zijn.  Met een patroon u meer nauwkeurigheid voor een intentie krijgen zonder veel meer uitingen te verstrekken. 
+# <a name="patterns-improve-prediction-accuracy"></a>Nauw keurigheid van de voor spelling verbeteren
+Patronen zijn ontworpen om de nauw keurigheid te verbeteren wanneer verschillende uitingen zeer vergelijkbaar zijn.  Een patroon biedt u de mogelijkheid om nauw keuriger te zijn voor een intentie zonder veel meer uitingen te bieden. 
 
-## <a name="patterns-solve-low-intent-confidence"></a>Patronen lossen vertrouwen met lage intentie op
-Overweeg een Human Resources-app die rapporteert op het organigram met betrekking tot een werknemer. Gezien de naam en relatie van een werknemer, stuurt LUIS de betrokken werknemers terug. Overweeg een werknemer, Tom, met een manager naam Alice, en een team van ondergeschikten genaamd: Michael, Rebecca, en Carl.
+## <a name="patterns-solve-low-intent-confidence"></a>Patronen voor minder betrouw baarheid oplossen
+Overweeg een Human resources-app die rapporteert over het organigram in relatie tot een werk nemer. Op basis van de naam en relatie van een werk nemer LUIS worden de betrokken werk nemers geretourneerd. Overweeg een werk nemer, Tom, met de naam van een manager en een team van ondergeschikten met de naam Michael, Rebecca en Carl.
 
-![Afbeelding van het organigram](./media/luis-concept-patterns/org-chart.png)
+![Afbeelding van organigram](./media/luis-concept-patterns/org-chart.png)
 
-|Utterances|Intentie voorspeld|Intentiescore|
+|Utterances|Intentie voor speld|Intente Score|
 |--|--|--|
-|Wie is Tom's ondergeschikte?|GetOrgChart|.30|
+|Wie is de ondergeschikte van Tom?|GetOrgChart|.30|
 |Wie is de ondergeschikte van Tom?|GetOrgChart|.30|
 
-Als een app tussen de 10 en 20 uitingen heeft met verschillende lengtes van de zin, verschillende woordvolgorde en zelfs verschillende woorden (synoniemen van 'ondergeschikt', 'beheren', 'rapporteren'), kan LUIS een lage betrouwbaarheidsscore retourneren. Maak een patroon om LUIS inzicht te geven in het belang van de woordvolgorde. 
+Als een app tussen 10 en 20 uitingen met verschillende lengten van zinnen, een andere woord volgorde en zelfs andere woorden (synoniemen, ' beheer ', ' rapport ') heeft, kan LUIS een lage betrouwbaarheids Score retour neren. Maak een patroon om LUIS inzicht te krijgen in het belang van de woord volgorde. 
 
-Patronen lossen de volgende situaties op: 
+Met patronen worden de volgende situaties opgelost: 
 
-* De intentiescore is laag
-* De juiste intentie is niet de topscore, maar te dicht bij de topscore. 
+* De intentie Score is laag
+* De juiste intentie is niet de hoogste score, maar te dicht bij de bovenste Score. 
 
-## <a name="patterns-are-not-a-guarantee-of-intent"></a>Patronen zijn geen garantie voor intentie
-Patronen maken gebruik van een mix van voorspellingstechnologieën. Het instellen van een intentie voor een sjabloonutterance in een patroon is geen garantie voor de intentievoorspelling, maar het is een sterk signaal. 
+## <a name="patterns-are-not-a-guarantee-of-intent"></a>Patronen zijn geen garantie van intentie
+Patronen gebruiken een combi natie van voorspellings technologieën. Het instellen van een intentie voor een sjabloon utterance in een patroon is geen garantie voor de intentie voorspelling, maar is een sterk signaal. 
 
 <a name="patterns-do-not-improve-entity-detection"/></a>
 
-## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Patronen verbeteren de detectie van door de machine geleerde entiteit niet
+## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>De door de machine gedetecteerde entiteits detectie worden niet door patronen verbeterd
 
-Een patroon is in de eerste plaats bedoeld om de voorspelling van intenties en rollen te helpen. Het _patroon.elke_ entiteit wordt gebruikt om entiteiten uit vrije vorm te extraheren. Hoewel patronen entiteiten gebruiken, helpt een patroon niet bij het detecteren van een door de machine geleerde entiteit.  
+Een patroon is hoofd zakelijk bedoeld om de voor spelling van intenties en rollen te helpen. Het _patroon. elke_ entiteit wordt gebruikt om vrije-vorm entiteiten te extra heren. Hoewel patronen gebruikmaken van entiteiten, kan een patroon niet helpen bij het detecteren van een door de machine geleerde entiteit.  
 
-Verwacht geen verbeterde entiteitsvoorspelling als u meerdere uitingen samenvouwt in één patroon. Als u eenvoudige entiteiten wilt afvuren, moet u uitingen toevoegen of lijstentiteiten gebruiken, anders wordt uw patroon niet afvuurt.
+Het is niet raadzaam om verbeterde entiteits voorspellingen te zien als u meerdere uitingen samenvouwt tot één patroon. Voor eenvoudige entiteiten die moeten worden gestart, moet u uitingen toevoegen of de lijst entiteiten gebruiken. anders wordt uw patroon niet geactiveerd.
 
-## <a name="patterns-use-entity-roles"></a>Patronen gebruiken entiteitsrollen
-Als twee of meer entiteiten in een patroon contextueel gerelateerd zijn, gebruiken patronen [entiteitsrollen](luis-concept-roles.md) om contextuele informatie over entiteiten te extraheren.  
+## <a name="patterns-use-entity-roles"></a>Patronen gebruiken entiteits rollen
+Als twee of meer entiteiten in een patroon contextuele gerelateerde zijn, gebruiken patronen entiteits [rollen](luis-concept-roles.md) om contextuele informatie over entiteiten te extra heren.  
 
-## <a name="prediction-scores-with-and-without-patterns"></a>Voorspellingscores met en zonder patronen
-Gezien genoeg voorbeelduitingen, zou LUIS in staat zijn om voorspelling vertrouwen te verhogen zonder patronen. Patronen verhogen de betrouwbaarheidsscore zonder dat u zoveel uitingen hoeft te leveren.  
+## <a name="prediction-scores-with-and-without-patterns"></a>Voorspellings scores met en zonder patronen
+Gezien voldoende voor beeld uitingen, kan LUIS de Voorspellings betrouwbaarheid zonder patronen verg Roten. Patronen verhogen de betrouwbaarheids Score zonder zoveel uitingen te bieden.  
 
-## <a name="pattern-matching"></a>Patroonherkenning
-Een patroon wordt gekoppeld aan het detecteren van de entiteiten in het patroon eerst, vervolgens valideren van de rest van de woorden en woordvolgorde van het patroon. Entiteiten zijn vereist in het patroon voor een patroon te evenaren. Het patroon wordt toegepast op tokenniveau, niet op het tekenniveau. 
+## <a name="pattern-matching"></a>Patroon vergelijking
+Er wordt een patroon vergeleken op basis van het detecteren van de entiteiten in het patroon, waarna de rest van de woorden en de woord volgorde van het patroon worden gevalideerd. Entiteiten zijn vereist in het patroon voor een patroon dat overeenkomt met. Het patroon wordt toegepast op token niveau, niet op het teken niveau. 
 
-## <a name="pattern-only-apps"></a>Apps met alleen patronen
-U een app bouwen met intents die geen voorbeelduitingen hebben, zolang er een patroon is voor elke intentie. Voor een app met alleen patronen mag het patroon geen door de machine geleerde entiteiten bevatten, omdat hiervoor voorbeelduitingen nodig zijn. 
+## <a name="pattern-only-apps"></a>Alleen patroon-apps
+U kunt een app bouwen met intenties die geen voor beeld uitingen hebben, zolang er voor elke intentie een patroon is. Het patroon mag voor een alleen-patroon app geen door machines geleerde entiteiten bevatten, omdat hiervoor bijvoorbeeld uitingen nodig zijn. 
 
 ## <a name="best-practices"></a>Aanbevolen procedures
-Leer [aanbevolen procedures](luis-concept-best-practices.md).
+Lees de [Aanbevolen procedures](luis-concept-best-practices.md).
 
 ## <a name="pattern-syntax"></a>Patroonsyntaxis
 
-Leer de syntaxis van het patroon uit de verwijzing naar de [syntaxis van het patroon](reference-pattern-syntax.md). 
+Meer informatie over de syntaxis van patronen in de syntaxis van de [patroon verwijzing](reference-pattern-syntax.md). 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over patronen:
 
 * [Patronen toevoegen](luis-how-to-model-intent-pattern.md)
-* [Hoe patroon.een entiteit toe te voegen](luis-how-to-add-entities.md#add-a-patternany-entity)
+* [Een patroon toevoegen. elke entiteit](luis-how-to-add-entities.md#add-a-patternany-entity)
 * [Syntaxis van patronen](reference-pattern-syntax.md)
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het implementeren van patronen in deze zelfstudie](luis-tutorial-pattern.md)
+> [Meer informatie over het implementeren van patronen in deze zelf studie](luis-tutorial-pattern.md)
