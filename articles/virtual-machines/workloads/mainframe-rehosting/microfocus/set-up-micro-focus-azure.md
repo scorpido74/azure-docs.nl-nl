@@ -1,6 +1,6 @@
 ---
-title: Micro Focus Enterprise Server 4.0 en Enterprise Developer 4.0 installeren op Azure | Microsoft Documenten
-description: Host uw IBM z/OS mainframeworkloads opnieuw met behulp van de Micro Focus-ontwikkel- en testomgeving op virtuele Azure-machines (VM's).
+title: Micro Focus Enter prise Server 4,0 en Enter prise Developer 4,0 op Azure installeren | Microsoft Docs
+description: Host uw IBM z/OS mainframe-workloads met behulp van de micro focus ontwikkelings-en test omgeving op virtuele machines van Azure (Vm's).
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -13,118 +13,118 @@ tags: ''
 keywords: ''
 ms.service: multiple
 ms.openlocfilehash: 5b3fa5faccf17df17bc4f7cc2d8b023b868fdbe1
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411200"
 ---
-# <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>Micro Focus Enterprise Server 4.0 en Enterprise Developer 4.0 installeren op Azure
+# <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>Micro Focus Enter prise Server 4,0 en Enter prise Developer 4,0 op Azure installeren
 
-In dit artikel ziet u hoe [u Micro Focus Enterprise Server 4.0](https://www.microfocus.com/documentation/enterprise-developer/es30/) en Micro Focus Enterprise Developer [4.0](https://www.microfocus.com/documentation/enterprise-developer/ed_30/) inStelt op Azure.
+In dit artikel wordt uitgelegd hoe u [micro focus Enter prise Server 4,0](https://www.microfocus.com/documentation/enterprise-developer/es30/) en [micro focus enter prise Developer 4,0](https://www.microfocus.com/documentation/enterprise-developer/ed_30/) kunt instellen op Azure.
 
-Een veelvoorkomende werkbelasting op Azure is een ontwikkel- en testomgeving. Dit scenario komt vaak voor omdat het zo kosteneffectief en gemakkelijk te implementeren en af te bouwen is. Met Enterprise Server heeft Micro Focus een van de grootste mainframe rehostingplatforms gecreëerd die beschikbaar zijn. U z/OS-workloads uitvoeren op een goedkoper x86-platform op Azure met behulp van virtuele Windows- of Linux-virtuele machines (VM's).
+Een veelvoorkomende werk belasting op Azure is een ontwikkel-en test omgeving. Dit scenario is gebruikelijk omdat het voordelig en eenvoudig te implementeren is. Met Enter prise server heeft micro focus een van de grootste platformen voor het hosten van mainframes die beschikbaar zijn. U kunt met behulp van virtuele Windows-of Linux-machines (Vm's) de werk belasting van een z/O'S uitvoeren op een goedkopere x86-platform op Azure.
 
 > [!NOTE]
-> Binnenkort beschikbaar: instructies voor het instellen van [Micro Focus Enterprise Server 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) op Azure VM's.
+> Binnenkort beschikbaar: instructies voor het instellen van [micro focus Enter prise Server 5,0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) op Azure-vm's.
 
-Deze instelling maakt gebruik van Azure VM's waarop de Windows Server 2016-afbeelding wordt uitgevoerd vanuit de Azure Marketplace met Microsoft SQL Server 2017 die al is geïnstalleerd. Deze instelling is ook van toepassing op Azure Stack.
+Deze instelling maakt gebruik van Azure-Vm's waarop de installatie kopie van Windows Server 2016 wordt uitgevoerd vanuit Azure Marketplace met Microsoft SQL Server 2017 al geïnstalleerd. Deze instelling is ook van toepassing op Azure Stack.
 
-De bijbehorende ontwikkelomgeving voor Enterprise Server is Enterprise Developer, die draait op Microsoft Visual Studio 2017 of hoger, Visual Studio Community (gratis te downloaden) of Eclipse. In dit artikel ziet u hoe u deze implementeert met behulp van een virtuele windows server 2016-machine die wordt geleverd met Visual Studio 2017 of hoger.
+De bijbehorende ontwikkel omgeving voor Enter prise server is Enter prise Developer, dat wordt uitgevoerd op micro soft Visual Studio 2017 of hoger, Visual Studio Community (gratis te downloaden) of eclips. In dit artikel wordt beschreven hoe u dit implementeert met een virtuele machine met Windows Server 2016, die wordt geleverd bij Visual Studio 2017 of hoger is geïnstalleerd.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, raadpleegt u de volgende vereisten:
+Bekijk de volgende vereisten voordat u aan de slag gaat:
 
-- Een Azure-abonnement. Als je nog geen account hebt, maak je een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat je begint.
+- Een Azure-abonnement. Als u er nog geen hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
-- De Micro Focus software en een geldige licentie (of proeflicentie). Als u een bestaande Micro Focus-klant bent, neemt u contact op met uw Micro Focus-vertegenwoordiger. Anders, [vraag een proef aan.](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/)
+- De micro focus-software en een geldige licentie (of proef licentie). Als u een bestaande micro focus-klant bent, neemt u contact op met uw micro focus-vertegenwoordiger. Vraag anders [een proef versie](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/)aan.
 
-- Download de documentatie voor [Enterprise Server en Enterprise Developer.](https://www.microfocus.com/documentation/enterprise-developer/#")
+- Down load de documentatie voor [Enter prise server en Enter prise Developer](https://www.microfocus.com/documentation/enterprise-developer/#").
 
 > [!NOTE]
-> Een aanbevolen praktijk is het instellen van een vpn-tunnel (site-to-site virtual private network) of een jumpbox, zodat u de toegang tot de Azure VM's beheren.
+> Een best practice is het instellen van een site-naar-site VPN-tunnel (virtueel particulier netwerk) of een JumpBox zodat u de toegang tot de virtuele Azure-machines kunt beheren.
 
 ## <a name="install-enterprise-server"></a>Enterprise-server installeren
 
-1. Voor een betere beveiliging en beheerbaarheid u overwegen om een nieuwe resourcegroep te maken voor dit project, bijvoorbeeld **RGMicroFocusEntServer.** Gebruik het eerste deel van de naam in Azure om het type resource te kiezen om het gemakkelijker te maken om in een lijst te herkennen.
+1. Voor betere beveiliging en beheer kunt u overwegen om een nieuwe resource groep te maken voor dit project, bijvoorbeeld **RGMicroFocusEntServer**. Gebruik het eerste deel van de naam in azure om het type resource te kiezen, zodat het gemakkelijker is om een lijst te maken.
 
-2. Hiermee maakt u een virtuele machine. Selecteer in de Azure Marketplace de gewenste virtuele machine en besturingssysteem. Hier is een aanbevolen setup:
+2. Hiermee maakt u een virtuele machine. Selecteer in azure Marketplace de virtuele machine en het besturings systeem dat u wilt. Hier volgt een aanbevolen installatie:
 
-    - **Enterprise Server**: Selecteer ES2 v3 VM (met 2 vCPU's en 16 GB geheugen) met Windows Server 2016 en SQL Server 2017 geïnstalleerd. Deze afbeelding is beschikbaar op de Azure Marketplace. Enterprise Server kan azure SQL Database ook gebruiken.
+    - **Enter prise server**: Selecteer ES2 v3 VM (met 2 vcpu's en 16 GB geheugen) met Windows Server 2016 en SQL Server 2017 geïnstalleerd. Deze installatie kopie is beschikbaar op de Azure Marketplace. Enter prise server kan ook Azure SQL Database gebruiken.
 
-    - **Enterprise Developer**: Selecteer B2ms VM (met 2 vCPU's en 8 GB geheugen) met Windows 10 en Visual Studio geïnstalleerd. Deze afbeelding is beschikbaar op de Azure Marketplace.
+    - **Enter prise Developer**: Selecteer B2ms VM (met 2 vcpu's en 8 GB geheugen) met Windows 10 en Visual Studio geïnstalleerd. Deze installatie kopie is beschikbaar op de Azure Marketplace.
 
-3. Voer in de sectie **Basisbeginselen** uw gebruikersnaam en wachtwoord in. Selecteer het **abonnement** en **locatie/regio** dat u wilt gebruiken voor de VM's. Selecteer **RGMicroFocusEntServer** voor de resourcegroep.
+3. Voer in de sectie **basis beginselen** uw gebruikers naam en wacht woord in. Selecteer het **abonnement** en de **locatie/regio** die u wilt gebruiken voor de vm's. Selecteer **RGMicroFocusEntServer** voor de resource groep.
 
-4. Zet beide VM's in hetzelfde virtuele netwerk, zodat ze met elkaar kunnen communiceren.
+4. Plaats beide Vm's in hetzelfde virtuele netwerk zodat ze met elkaar kunnen communiceren.
 
-5. Accepteer de standaardinstellingen voor de rest van de instellingen. Onthoud de gebruikersnaam en het wachtwoord dat u maakt voor de beheerder van deze VM's.
+5. Accepteer de standaard waarden voor de overige instellingen. Onthoud de gebruikers naam en het wacht woord die u voor de beheerder van deze Vm's hebt gemaakt.
 
-6. Wanneer de virtuele machines zijn gemaakt, opent u binnenkomende poorten 9003, 86 en 80 voor HTTP en 3389 voor RDP op de Enterprise Server-machine en 3389 op de machine Developer.
+6. Wanneer de virtuele machines zijn gemaakt, opent u de binnenkomende poorten 9003, 86 en 80 voor HTTP en 3389 voor RDP op de computer van de Enter prise-server en de 3389 op de ontwikkel computer.
 
-7. Als u zich wilt aanmelden bij de virtuele machine van Enterprise Server, selecteert u in Azure-portal de ES2 v3 VM. Ga naar de sectie **Overzicht** en selecteer **Verbinding maken** om een RDP-sessie te starten. Meld u aan met de referenties die u voor de vm hebt gemaakt.
+7. Als u zich wilt aanmelden bij de virtuele machine van de Enter prise-server, selecteert u in Azure Portal de ES2 v3 VM. Ga naar de sectie **overzicht** en selecteer **verbinding maken** om een RDP-sessie te starten. Meld u aan met de referenties die u hebt gemaakt voor de virtuele machine.
 
-8. Laad vanuit de RDP-sessie de volgende twee bestanden. Omdat u Windows gebruikt, u de bestanden slepen en neerzetten in de RDP-sessie:
+8. Laad vanuit de RDP-sessie de volgende twee bestanden. Omdat u Windows gebruikt, kunt u de bestanden slepen en neerzetten in de RDP-sessie:
 
-    - **es\_40.exe**, het installatiebestand van Enterprise Server.
+    - **es\_40. exe**, het installatie bestand van de Enter prise-server.
 
-    - **mflic**, het bijbehorende licentiebestand — Enterprise Server wordt niet geladen zonder.
+    - **mflic**, het bijbehorende licentie bestand — de Enter prise-server wordt niet geladen zonder dat.
 
-9. Dubbelklik op het bestand om de installatie te starten. Selecteer in het eerste venster de installatielocatie en accepteer de licentieovereenkomst voor eindgebruikers.
+9. Dubbel klik op het bestand om de installatie te starten. Selecteer de installatie locatie in het eerste venster en accepteer de gebruiksrecht overeenkomst.
 
-     ![Scherm Micro Focus Enterprise Server Setup](media/01-enterprise-server.png)
+     ![Micro Focus Enter prise server-installatie scherm](media/01-enterprise-server.png)
 
-     Wanneer de installatie is voltooid, wordt het volgende bericht weergegeven:
+     Wanneer het installatie programma is voltooid, wordt het volgende bericht weer gegeven:
 
-     ![Scherm Micro Focus Enterprise Server Setup](media/02-enterprise-server.png)
+     ![Micro Focus Enter prise server-installatie scherm](media/02-enterprise-server.png)
 
 ### <a name="check-for-updates"></a>Naar updates zoeken
 
-Controleer na de installatie op eventuele aanvullende updates, omdat een aantal vereisten, zoals de Microsoft C++ Redistributable en .NET Framework, samen met Enterprise Server zijn geïnstalleerd.
+Controleer na de installatie of er aanvullende updates zijn, omdat een aantal vereisten, zoals micro soft C++ Redistributable en .NET Framework, samen met de Enter prise-server zijn geïnstalleerd.
 
 ### <a name="upload-the-license"></a>De licentie uploaden
 
-1. Start de Micro Focus License Administration.
+1. Start het micro focus licentie beheer.
 
-2. Klik **op** \> **Licentiebeheer voor Microfocus starten** \> **License Administration**en klik vervolgens op het tabblad **Installeren.** Kies het type licentie-indeling dat u wilt uploaden: een licentiebestand of een licentiecode met 16 tekens. Blader bijvoorbeeld voor een bestand in **licentiebestand**naar het **mfplic-bestand dat** eerder naar de vm is geüpload en selecteer **Licenties installeren.**
+2. Klik op **Start** \> **micro focus licentie beheer** \> **licentie beheer**en klik vervolgens op het tabblad **installeren** . Kies het type licentie-indeling dat u wilt uploaden: een licentie bestand of een licentie code van 16 tekens. Voor een bestand, in **licentie bestand**, bladert u bijvoorbeeld naar het **mflic** -bestand dat u eerder naar de virtuele machine hebt geüpload en selecteert u **Licenties installeren**.
 
-     ![Dialoogvenster Micro Focus-licentiebeheer](media/03-enterprise-server.png)
+     ![Het dialoog venster micro focus licentie beheer](media/03-enterprise-server.png)
 
-3. Controleer of Enterprise Server wordt geladen. Probeer de site Enterprise Server Administration te <http://localhost:86/> starten vanuit een browser met deze URL . De pagina Enterprise Server Beheer wordt weergegeven zoals weergegeven.
+3. Controleer of ENTER prise server wordt geladen. Probeer de Enter prise server-beheer site te starten vanuit een browser <http://localhost:86/> met behulp van deze URL. De pagina Enter prise server-beheer wordt weer gegeven zoals weer gegeven.
 
-     ![Pagina Enterprise Server Beheer](media/04-enterprise-admin.png)
+     ![Beheer pagina voor Enter prise server](media/04-enterprise-admin.png)
 
-## <a name="install-enterprise-developer-on-the-developer-machine"></a>Enterprise Developer installeren op de ontwikkelaarsmachine
+## <a name="install-enterprise-developer-on-the-developer-machine"></a>Enter prise Developer installeren op de ontwikkelaars computer
 
-1. Selecteer de eerder gemaakte brongroep (bijvoorbeeld **RGMicroFocusEntServer)** en selecteer vervolgens de ontwikkelaarsafbeelding.
+1. Selecteer de resource groep die u eerder hebt gemaakt (bijvoorbeeld **RGMicroFocusEntServer**) en selecteer vervolgens de installatie kopie voor ontwikkel aars.
 
-2. Als u zich wilt aanmelden bij de virtuele machine, gaat u naar de sectie **Overzicht** en selecteert u **Verbinding maken**. Met dit aanmelden wordt een RDP-sessie gestart. Meld u aan met de referenties die u voor de vm hebt gemaakt.
+2. Als u zich wilt aanmelden bij de virtuele machine, gaat u naar de sectie **overzicht** en selecteert u **verbinding maken**. Met deze aanmelding wordt een RDP-sessie gestart. Meld u aan met de referenties die u hebt gemaakt voor de virtuele machine.
 
-3. Laad vanuit de RDP-sessie de volgende twee bestanden (slepen en neerzetten als je wilt):
+3. Laad vanuit de RDP-sessie de volgende twee bestanden (Sleep en zet deze indien gewenst):
 
-    - **edvs2017.exe**, het installatiebestand van Enterprise Server.
+    - **edvs2017. exe**, het installatie bestand van de Enter prise-server.
 
-    - **mflic**, het bijbehorende licentiebestand (Enterprise Developer zal niet laden zonder).
+    - **mflic**, het bijbehorende licentie bestand (Enter prise Developer wordt niet zonder IT) geladen.
 
-4. Dubbelklik op het **bestand edvs2017.exe** om de installatie te starten. Selecteer in het eerste venster de installatielocatie en accepteer de licentieovereenkomst voor eindgebruikers. Kies **Rumba 9.5 installeren** om deze terminalemulator te installeren, die u waarschijnlijk nodig hebt.
+4. Dubbel klik op het bestand **edvs2017. exe** om de installatie te starten. Selecteer de installatie locatie in het eerste venster en accepteer de gebruiksrecht overeenkomst. Als u wilt, kiest u **Rumba 9,5 installeren** om deze Terminal Emulator te installeren. dit hebt u waarschijnlijk nodig.
 
-     ![Dialoogvenster Micro Focus Enterprise Developer voor Visual Studio 2017 Setup](media/04-enterprise-server.png)
+     ![Het dialoog venster micro focus Enter prise Developer voor Visual Studio 2017 Setup](media/04-enterprise-server.png)
 
-5. Nadat de installatie is voltooid, wordt het volgende bericht weergegeven:
+5. Nadat de installatie is voltooid, wordt het volgende bericht weer gegeven:
 
-     ![Geslaagd bericht instellen](media/05-enterprise-server.png)
+     ![Bericht installatie voltooid](media/05-enterprise-server.png)
 
-6. Start de Micro Focus License Manager net als voor Enterprise Server. Kies **Start** \> **Licentiebeheer** \> **License Administration**voor microfocus starten en klik op het tabblad **Installeren.**
+6. Start de micro focus-licentie beheer net zoals u dat voor de Enter prise-server hebt gedaan. Kies **licentie beheer** **starten** \> met **micro focus licentie beheer** \> en klik op het tabblad **installeren** .
 
-7. Kies het type licentie-indeling dat u wilt uploaden: een licentiebestand of een licentiecode van 16 tekens. Blader bijvoorbeeld voor een bestand in **licentiebestand**naar het **mfplic-bestand dat** eerder naar de vm is geüpload en selecteer **Licenties installeren.**
+7. Kies het type licentie-indeling dat u wilt uploaden: een licentie bestand of een licentie code van 16 tekens. Voor een bestand, in **licentie bestand**, bladert u bijvoorbeeld naar het **mflic** -bestand dat u eerder naar de virtuele machine hebt geüpload en selecteert u **Licenties installeren**.
 
-     ![Dialoogvenster Micro Focus-licentiebeheer](media/07-enterprise-server.png)
+     ![Het dialoog venster micro focus licentie beheer](media/07-enterprise-server.png)
 
-Wanneer Enterprise Developer wordt geladen, is de implementatie van een Micro Focus-ontwikkel- en testomgeving op Azure voltooid!
+Als Enter prise Developer wordt geladen, is uw implementatie van een micro focus-en test omgeving in azure voltooid.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [De bankdemo-toepassing instellen](./demo.md)
-- [Enterprise Server uitvoeren in Docker-containers](./run-enterprise-server-container.md)
+- [De Bank demo-toepassing instellen](./demo.md)
+- [Enter prise server uitvoeren in docker-containers](./run-enterprise-server-container.md)
 - [Migratie van mainframetoepassingen](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)

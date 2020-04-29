@@ -1,6 +1,6 @@
 ---
-title: Azure VM Guest OS-firewall blokkeert binnenkomend verkeer | Microsoft Documenten
-description: Meer informatie over het oplossen van het RDP-verbindingsprobleem (Remote Desktop Portal) dat de firewall van het gastbesturingssysteem inkomend verkeer blokkeert.
+title: Het inkomend verkeer wordt geblokkeerd door de firewall van de Azure VM-gast besturingssysteem | Microsoft Docs
+description: Meer informatie over het oplossen van het verbindings probleem met de Extern bureaublad Portal (RDP) dat het gast besturingssysteem firewall inkomend verkeer blokkeert.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -15,19 +15,19 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 1b80fc997a4b3d2b472717b1ec2f379a4e958d8c
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422561"
 ---
-# <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Azure VM Guest OS-firewall blokkeert binnenkomend verkeer
+# <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>De firewall van het Azure VM-gast besturingssysteem blokkeert het inkomende verkeer
 
-In dit artikel wordt besproken hoe u het RDP-probleem (Remote Desktop Portal) oplossen dat optreedt als de firewall van het gastbesturingssysteem binnenkomend verkeer blokkeert.
+In dit artikel wordt beschreven hoe u het Extern bureaublad Portal-probleem (RDP) kunt oplossen dat zich voordoet als de firewall van het gast besturingssysteem inkomend verkeer blokkeert.
 
 ## <a name="symptoms"></a>Symptomen
 
-U geen RDP-verbinding gebruiken om verbinding te maken met een virtuele Azure-machine (VM). Van Opstartdiagnostiek -> Screenshot, het laat zien dat het besturingssysteem volledig is geladen op het welkomstscherm (Ctrl+Alt+Del).
+U kunt geen RDP-verbinding gebruiken om verbinding te maken met een virtuele Azure-machine (VM). Vanuit diagnostische gegevens over opstarten: > scherm afbeelding, ziet u dat het besturings systeem volledig is geladen in het welkomst scherm (CTRL + ALT + DEL).
 
 ## <a name="cause"></a>Oorzaak
 
@@ -37,122 +37,122 @@ De RDP-regel is niet ingesteld om het RDP-verkeer toe te staan.
 
 ### <a name="cause-2"></a>Oorzaak 2
 
-De firewallprofielen van het gastsysteem zijn ingesteld om alle binnenkomende verbindingen te blokkeren, inclusief het RDP-verkeer.
+De profielen van het gast systeem firewall zijn ingesteld om alle binnenkomende verbindingen, inclusief het RDP-verkeer, te blok keren.
 
-![Firewall-instelling](./media/guest-os-firewall-blocking-inbound-traffic/firewall-advanced-setting.png)
+![Firewall instelling](./media/guest-os-firewall-blocking-inbound-traffic/firewall-advanced-setting.png)
 
 ## <a name="solution"></a>Oplossing
 
-Voordat u deze stappen volgt, maakt u een momentopname van de systeemschijf van de betreffende VM als back-up. Zie [Momentopname een schijf voor](../windows/snapshot-copy-managed-disk.md)meer informatie .
+Voordat u deze stappen volgt, moet u een moment opname maken van de systeem schijf van de betrokken VM als back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie.
 
-Als u het probleem wilt oplossen, gebruikt u een van de methoden in [Hoe externe hulpprogramma's te gebruiken om Azure VM-problemen op](remote-tools-troubleshoot-azure-vm-issues.md) te lossen om op afstand verbinding te maken met de VM en bewerkt u vervolgens de firewallregels voor gastbesturingssystemen om RDP-verkeer toe te **staan.**
+Om het probleem op te lossen, gebruikt u een van de methoden in [het gebruik van externe hulpprogram ma's voor het oplossen](remote-tools-troubleshoot-azure-vm-issues.md) van problemen met virtuele Azure-machines om extern verbinding te maken met de VM en vervolgens de firewall regels voor het gast besturingssysteem te bewerken om RDP-verkeer **toe te staan** .
 
-### <a name="online-troubleshooting"></a>Online probleemoplossing
+### <a name="online-troubleshooting"></a>Online problemen oplossen
 
-Maak verbinding met de [seriële console en open vervolgens een PowerShell-exemplaar](serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Als de seriële console niet is ingeschakeld op de vm, gaat u naar["De VM offline herstellen](troubleshoot-rdp-internal-error.md#repair-the-vm-offline).
+Maak verbinding met de [seriële console en open vervolgens een Power shell-exemplaar](serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Als de seriële console niet is ingeschakeld op de virtuele machine, gaat u naar[de virtuele machine offline herstellen](troubleshoot-rdp-internal-error.md#repair-the-vm-offline).
 
-#### <a name="mitigation-1"></a>Mitigatie 1
+#### <a name="mitigation-1"></a>Risico beperking 1
 
-1.  Als Azure Agent is geïnstalleerd en correct werkt op de VM, u de optie Alleen configuratie opnieuw instellen gebruiken onder **Ondersteuning + het wachtwoord opnieuw** > **instellen** in het VM-menu.
+1.  Als Azure agent is geïnstalleerd en correct werkt op de virtuele machine, kunt u de optie ' configuratie alleen opnieuw instellen ' onder **ondersteuning en probleem oplossing** > voor het**opnieuw instellen van het wacht woord** in het VM-menu gebruiken.
 
-2.  Als u deze hersteloptie uitvoert, gaat u als volgt te werk:
+2.  Als u deze herstel optie uitvoert, gebeurt het volgende:
 
-    *   Hiermee schakelt u een RDP-component in als deze is uitgeschakeld.
+    *   Hiermee schakelt u een RDP-onderdeel in als dit is uitgeschakeld.
 
-    *   Hiermee schakelt u alle Windows-firewallprofielen in.
+    *   Hiermee worden alle Windows Firewall-profielen ingeschakeld.
 
-    *   Controleer of de RDP-regel is ingeschakeld in Windows Firewall.
+    *   Zorg ervoor dat de RDP-regel is ingeschakeld in Windows Firewall.
 
-    *   Als de vorige stappen niet werken, stelt u de firewallregel handmatig opnieuw in. Om dit te doen, query alle regels die de naam "Extern bureaublad" bevatten door het uitvoeren van de volgende opdracht:
+    *   Als de vorige stappen niet werken, stelt u de firewall regel hand matig opnieuw in. Als u dit wilt doen, voert u een query uit op alle regels die de naam ' Extern bureaublad ' bevatten door de volgende opdracht uit te voeren:
 
         ```cmd
         netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(Name.*Remote Desktop)" -context 9,4 | more
         ```
 
-        Als de RDP-poort is ingesteld op een andere poort dan 3389, moet u een aangepaste regel vinden die mogelijk is gemaakt en ingesteld op deze poort. Als u wilt zoeken naar alle binnenkomende regels met een aangepaste poort, voert u de volgende opdracht uit:
+        Als de RDP-poort is ingesteld op een andere poort dan 3389, moet u een aangepaste regel vinden die mogelijk is gemaakt en ingesteld op deze poort. Voer de volgende opdracht uit om een query uit te voeren voor alle regels voor binnenkomende verbindingen met een aangepaste poort:
 
         ```cmd
         netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(LocalPort.*<CUSTOM PORT>)" -context 9,4 | more
         ```
 
-3.  Als u ziet dat de regel is uitgeschakeld, schakelt u deze in. Als u een hele groep wilt openen, zoals de ingebouwde groep Extern bureaublad, voert u de volgende opdracht uit:
+3.  Als u ziet dat de regel is uitgeschakeld, schakelt u deze in. Als u een hele groep wilt openen, zoals de ingebouwde Extern bureaublad groep, voert u de volgende opdracht uit:
 
     ```cmd
     netsh advfirewall firewall set rule group="Remote Desktop" new enable=yes
     ```
 
-    Voer anders de volgende opdracht uit om de specifieke TCP-In-regel voor Extern bureaublad te openen:
+    Als u de specifieke regel voor de Extern bureaublad (TCP-in) wilt openen, voert u de volgende opdracht uit:
 
     ```cmd
     netsh advfirewall firewall set rule name="<CUSTOM RULE NAME>" new enable=yes
     ```
 
-4.  Voor het oplossen van problemen u de firewallprofielen uitschakelen in UIT:
+4.  Voor het oplossen van problemen kunt u de Firewall profielen uitschakelen:
 
     ```cmd
     netsh advfirewall set allprofiles state off
     ```
 
-    Nadat u het oplossen van problemen hebt voltooid en de firewall correct hebt ingesteld, schakelt u de firewall opnieuw in.
+    Nadat u klaar bent met het oplossen van problemen en de firewall correct hebt ingesteld, schakelt u de firewall opnieuw in.
 
     > [!Note]
-    > U hoeft de VM niet opnieuw op te starten om deze wijzigingen toe te passen.
+    > U hoeft de virtuele machine niet opnieuw op te starten om deze wijzigingen toe te passen.
 
-5.  Probeer een RDP-verbinding te maken om toegang te krijgen tot de VM.
+5.  Probeer een RDP-verbinding te maken voor toegang tot de virtuele machine.
 
-#### <a name="mitigation-2"></a>Mitigatie 2
+#### <a name="mitigation-2"></a>Risico beperking 2
 
-1.  Vraag de firewallprofielen op om te bepalen of het inkomende firewallbeleid is ingesteld op *BlockInboundAlways:*
+1.  Query's uitvoeren op de Firewall profielen om te bepalen of het beleid voor binnenkomende firewall is ingesteld op *BlockInboundAlways*:
 
     ```cmd
     netsh advfirewall show allprofiles | more
     ```
 
-    ![Alle profielen](./media/guest-os-firewall-blocking-inbound-traffic/firewall-profiles.png)
+    ![Allprofiles](./media/guest-os-firewall-blocking-inbound-traffic/firewall-profiles.png)
 
     > [!Note]
-    > De volgende richtlijnen zijn van toepassing op het firewallbeleid, afhankelijk van hoe het is ingesteld:
-    >    * *BlockInbound*: Al het binnenkomende verkeer wordt geblokkeerd, tenzij u een regel hebt die van kracht is om dat verkeer toe te staan.
-    >    * *BlockInboundAlways*: Alle firewallregels worden genegeerd en al het verkeer wordt geblokkeerd.
+    > De volgende richt lijnen zijn van toepassing op het firewall beleid, afhankelijk van de instelling:
+    >    * *BlockInbound*: alle binnenkomend verkeer wordt geblokkeerd, tenzij u een regel van kracht hebt om dat verkeer toe te staan.
+    >    * *BlockInboundAlways*: alle firewall regels worden genegeerd en alle verkeer wordt geblokkeerd.
 
-2.  Bewerk de *DefaultInboundAction* om deze profielen in te stellen **op Verkeer toestaan.** Voer hiervoor de volgende opdracht uit:
+2.  Bewerk de *DefaultInboundAction* om deze profielen in te stellen voor het **toestaan** van verkeer. Voer hiervoor de volgende opdracht uit:
 
     ```cmd
     netsh advfirewall set allprofiles firewallpolicy allowinbound,allowoutbound
     ```
 
-3.  Bevraag de profielen opnieuw om ervoor te zorgen dat de wijziging is doorgevoerd. Voer hiervoor de volgende opdracht uit:
+3.  Zoek de profielen opnieuw op om ervoor te zorgen dat de wijziging is doorgevoerd. Voer hiervoor de volgende opdracht uit:
 
     ```cmd
     netsh advfirewall show allprofiles | more
     ```
 
     > [!Note]
-    > U hoeft de VM niet opnieuw op te starten om de wijzigingen toe te passen.
+    > U hoeft de virtuele machine niet opnieuw op te starten om de wijzigingen toe te passen.
 
 4.  Probeer opnieuw toegang te krijgen tot uw VM via RDP.
 
-### <a name="offline-mitigations"></a>Offline mitigaties
+### <a name="offline-mitigations"></a>Offline oplossingen
 
-1.  [Koppel de systeemschijf aan een herstelvm](troubleshoot-recovery-disks-portal-windows.md).
+1.  [Koppel de systeem schijf aan een herstel-VM](troubleshoot-recovery-disks-portal-windows.md).
 
-2.  Start een verbinding met Extern bureaublad met de herstel-vm.
+2.  Start een Extern bureaublad verbinding met de virtuele machine voor herstel.
 
-3.  Controleer of de schijf is gemarkeerd als **Online** in de schijfbeheerconsole. Let op de stationsletter die is toegewezen aan de gekoppelde systeemschijf.
+3.  Zorg ervoor dat de schijf is gemarkeerd als **online** in de schijf beheer-console. Noteer de stationsletter die is toegewezen aan de gekoppelde systeem schijf.
 
-#### <a name="mitigation-1"></a>Mitigatie 1
+#### <a name="mitigation-1"></a>Risico beperking 1
 
-Zie [Een firewallregel inschakelen op een gastbesturingssysteem](enable-disable-firewall-rule-guest-os.md).
+Lees [hoe u een firewall regel in een gast besturingssysteem inschakelt](enable-disable-firewall-rule-guest-os.md).
 
-#### <a name="mitigation-2"></a>Mitigatie 2
+#### <a name="mitigation-2"></a>Risico beperking 2
 
-1.  [Koppel de systeemschijf aan een herstelvm](troubleshoot-recovery-disks-portal-windows.md).
+1.  [Koppel de systeem schijf aan een herstel-VM](troubleshoot-recovery-disks-portal-windows.md).
 
-2.  Start een verbinding met Extern bureaublad met de herstel-vm.
+2.  Start een Extern bureaublad verbinding met de virtuele machine voor herstel.
 
-3.  Nadat de systeemschijf is gekoppeld aan de herstel-VM, moet u ervoor zorgen dat de schijf is gemarkeerd als **Online** in de schijfbeheerconsole. Let op de stationsletter die is toegewezen aan de gekoppelde osschijf.
+3.  Nadat de systeem schijf is gekoppeld aan de herstel-VM, controleert u of de schijf is gemarkeerd als **online** in de schijf beheer-console. Noteer de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf.
 
-4.  Open een verhoogde CMD-instantie en voer het volgende script uit:
+4.  Open een met verhoogde bevoegdheden een CMD-exemplaar en voer het volgende script uit:
 
     ```cmd
     REM Backup the registry prior doing any change
@@ -173,6 +173,6 @@ Zie [Een firewallregel inschakelen op een gastbesturingssysteem](enable-disable
     reg unload HKLM\BROKENSYSTEM
     ```
 
-5.  [Maak de systeemschijf los en maak de VM opnieuw.](troubleshoot-recovery-disks-portal-windows.md)
+5.  [Ontkoppel de systeem schijf en maak de virtuele machine opnieuw](troubleshoot-recovery-disks-portal-windows.md).
 
 6.  Controleer of het probleem is opgelost.

@@ -1,6 +1,6 @@
 ---
-title: Netwerkbeveiliging voor Azure Event Hubs
-description: In dit artikel wordt beschreven hoe u toegang vanaf privéeindpunten configureert
+title: Netwerk beveiliging voor Azure Event Hubs
+description: In dit artikel wordt beschreven hoe u toegang kunt configureren vanaf privé-eind punten
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -8,86 +8,86 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 46e6a9ecc2ed09aed1076f12c1f61a966485bdad
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422771"
 ---
-# <a name="network-security-for-azure-event-hubs"></a>Netwerkbeveiliging voor Azure Event Hubs 
-In dit artikel wordt beschreven hoe u de volgende beveiligingsfuncties gebruiken met Azure Event Hubs: 
+# <a name="network-security-for-azure-event-hubs"></a>Netwerk beveiliging voor Azure Event Hubs 
+In dit artikel wordt beschreven hoe u de volgende beveiligings functies gebruikt met Azure Event Hubs: 
 
 - Servicetags
-- IP Firewall-regels
-- Eindpunten van netwerkservice
-- Privéeindpunten (voorbeeld)
+- IP-firewall regels
+- Netwerk service-eind punten
+- Persoonlijke eind punten (preview-versie)
 
 
 ## <a name="service-tags"></a>Servicetags
-Een servicetag vertegenwoordigt een groep IP-adresvoorvoegsels van een bepaalde Azure-service. Microsoft beheert de adresvoorvoegsels die zijn gebruikt door de servicetag en werkt de servicetag automatisch bij wanneer adressen veranderen, waardoor de complexiteit van frequente updates voor netwerkbeveiligingsregels wordt geminimaliseerd. Zie [Overzicht servicetags voor](../virtual-network/service-tags-overview.md)meer informatie over servicetags.
+Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde Azure-service. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag en werkt de servicetag automatisch bij met gewijzigde adressen, zodat de complexiteit van regel matige updates voor netwerk beveiligings regels wordt geminimaliseerd. Zie [service Tags Overview](../virtual-network/service-tags-overview.md)(Engelstalig) voor meer informatie over service tags.
 
-U servicetags gebruiken om netwerktoegangsbesturingselementen te definiëren in [netwerkbeveiligingsgroepen](../virtual-network/security-overview.md#security-rules) of [Azure Firewall.](../firewall/service-tags.md) Gebruik servicetags in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de servicetag (bijvoorbeeld **EventHub)** op te geven in het juiste *bron-* of *doelveld* van een regel, u het verkeer voor de desbetreffende service toestaan of weigeren.
+U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](../virtual-network/security-overview.md#security-rules) of [Azure firewall](../firewall/service-tags.md). Gebruik service tags in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door de naam van de service label (bijvoorbeeld **EventHub**) op te geven in het juiste *bron* -of *doel* veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren.
 
-| Servicetag | Doel | Kan u in-komende of uitgaande gebruiken? | Kan regionaal zijn? | Kan u gebruik maken van Azure Firewall? |
+| Servicetag | Doel | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **EventHub** | Azure-gebeurtenishubs. | Uitgaand | Ja | Ja |
+| **EventHub** | Azure Event Hubs. | Uitgaand | Ja | Ja |
 
 
 ## <a name="ip-firewall"></a>IP-firewall 
-Standaard zijn naamruimten van Event Hubs toegankelijk vanaf internet, zolang de aanvraag wordt geleverd met geldige verificatie en autorisatie. Met IP-firewall u deze verder beperken tot alleen een set IPv4-adressen of IPv4-adresbereiken in [CIDR-notatie (Classless Inter-Domain Routing).](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+Event Hubs naam ruimten zijn standaard toegankelijk vanuit Internet zolang de aanvraag een geldige verificatie en autorisatie heeft. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
-Deze functie is handig in scenario's waarin Azure Event Hubs alleen toegankelijk moeten zijn vanaf bepaalde bekende sites. Met firewallregels u regels configureren om verkeer te accepteren dat afkomstig is van specifieke IPv4-adressen. Als u bijvoorbeeld Gebeurtenishubs met [Azure Express-route](/azure/expressroute/expressroute-faqs#supported-services)gebruikt, u een **firewallregel** maken om verkeer toe te staan vanaf alleen uw on-premises infrastructuur-IP-adressen. 
+Deze functie is handig in scenario's waarin Azure Event Hubs alleen toegankelijk moet zijn vanaf bepaalde bekende sites. Met firewall regels kunt u regels configureren voor het accepteren van verkeer dat afkomstig is van specifieke IPv4-adressen. Als u bijvoorbeeld Event Hubs met [Azure Express route](/azure/expressroute/expressroute-faqs#supported-services)gebruikt, kunt u een **firewall regel** maken om alleen verkeer toe te staan van uw on-premises IP-adressen van de infra structuur. 
 
-De IP-firewallregels worden toegepast op het naamruimteniveau van Gebeurtenishubs. Daarom zijn de regels van toepassing op alle verbindingen van clients die een ondersteund protocol gebruiken. Elke verbindingspoging vanaf een IP-adres dat niet overeenkomt met een toegestane IP-regel op de naamruimte van gebeurtenishubs, wordt afgewezen als ongeautoriseerd. In het antwoord wordt geen IP-regel vermeld. IP-filterregels worden op volgorde toegepast en de eerste regel die overeenkomt met het IP-adres bepaalt de actie Accepteren of weigeren.
+De IP-firewall regels worden toegepast op het niveau van de Event Hubs naam ruimte. Daarom gelden de regels voor alle verbindingen van clients die gebruikmaken van elk ondersteund protocol. Een verbindings poging van een IP-adres dat niet overeenkomt met een toegestane IP-regel op de Event Hubs naam ruimte, wordt geweigerd als niet-geautoriseerd. De IP-regel wordt niet vermeld in het antwoord. IP-filter regels worden in volg orde toegepast en de eerste regel die overeenkomt met het IP-adres, bepaalt de accepteren of afwijzen.
 
-Zie [IP-firewall configureren voor een gebeurtenishub voor](event-hubs-ip-filtering.md) meer informatie
+Zie [IP-Firewall configureren voor een event hub](event-hubs-ip-filtering.md) voor meer informatie
 
-## <a name="network-service-endpoints"></a>Eindpunten van netwerkservice
-De integratie van Event Hubs met [Virtual Network (VNet) Service Endpoints](../virtual-network/virtual-network-service-endpoints-overview.md) maakt veilige toegang tot messaging-mogelijkheden mogelijk van workloads zoals virtuele machines die gebonden zijn aan virtuele netwerken, waarbij het netwerkverkeer pad aan beide uiteinden wordt beveiligd.
+## <a name="network-service-endpoints"></a>Netwerk service-eind punten
+Dankzij de integratie van Event Hubs met de [service-eind punten van Virtual Network (VNet)](../virtual-network/virtual-network-service-endpoints-overview.md) is beveiligde toegang mogelijk tot berichten mogelijkheden van werk belastingen, zoals virtuele machines die zijn gebonden aan virtuele netwerken, waarbij het netwerkpad van het netwerk verkeer aan beide uiteinden wordt beveiligd.
 
-Eenmaal geconfigureerd om gebonden te zijn aan ten minste één eindpunt van de virtuele netwerksubnetservice, accepteert de respectievelijke naamruimte van Gebeurtenishubs niet langer verkeer van overal, maar geautoriseerde subnetten in virtuele netwerken. Vanuit het perspectief van het virtuele netwerk configureert het binden van een naamruimte van Gebeurtenishubs aan een serviceeindpunt een geïsoleerde netwerktunnel van het virtuele netwerksubnet naar de berichtenservice. 
+Eenmaal geconfigureerd om te zijn gebonden aan ten minste één subnet-service-eind punt van een virtueel netwerk, accepteert de respectieve Event Hubs naam ruimte geen verkeer meer vanaf een wille keurige locatie, maar gemachtigd subnetten in virtuele netwerken. Vanuit het perspectief van het virtuele netwerk moet u een Event Hubs naam ruimte binden aan een service-eind punt een geïsoleerde netwerk tunnel van het subnet van het virtuele netwerk naar de berichten service configureren. 
 
-Het resultaat is een privé- en geïsoleerde relatie tussen de workloads die aan het subnet zijn gebonden en de respectievelijke naamruimte van Gebeurtenishubs, ondanks het waarneembare netwerkadres van het eindpunt van de berichtenservice dat zich in een openbaar IP-bereik bevindt. Er is een uitzondering op dit gedrag. Als u standaard een serviceeindpunt `denyall` inschakelt, wordt de regel in de [IP-firewall](event-hubs-ip-filtering.md) die aan het virtuele netwerk is gekoppeld, ingeschakeld. U specifieke IP-adressen toevoegen in de IP-firewall om toegang tot het openbare eindpunt van de Gebeurtenishub mogelijk te maken. 
+Het resultaat is een privé-en geïsoleerde relatie tussen de werk belastingen die zijn gebonden aan het subnet en de betreffende Event Hubs naam ruimte, ondanks het waarneem bare netwerk adres van het berichten service-eind punt in een openbaar IP-bereik. Er is een uitzonde ring op dit gedrag. Als u een service-eind punt inschakelt `denyall` , wordt de regel in de [IP-firewall](event-hubs-ip-filtering.md) die aan het virtuele netwerk is gekoppeld, standaard ingeschakeld. U kunt specifieke IP-adressen toevoegen aan de IP-firewall om toegang tot het open bare eind punt van Event hub mogelijk te maken. 
 
 > [!IMPORTANT]
-> Virtuele netwerken worden ondersteund in de lagen **Standard** en **Dedicated** van Event Hubs. Het wordt niet ondersteund in de **basislaag.**
+> Virtuele netwerken worden ondersteund in de lagen **Standard** en **Dedicated** van Event Hubs. Het wordt niet ondersteund in de laag **basis** .
 
-### <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Geavanceerde beveiligingsscenario's mogelijk gemaakt door VNet-integratie 
+### <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Geavanceerde beveiligings scenario's ingeschakeld door VNet-integratie 
 
-Oplossingen die strakke en gecompartimenteerde beveiliging vereisen en waar virtuele netwerksubnetten de segmentatie tussen de gecompartimenteerde services bieden, moeten nog steeds communicatiepaden worden nodig tussen services die zich in die compartimenten bevinden.
+Oplossingen die een strakke en compartmentalized beveiliging vereisen en waarbij virtuele netwerk-subnetten de segmentatie tussen de compartmentalized-services bieden, is nog steeds communicatie paden nodig tussen services die zich in deze compartimenten bevinden.
 
-Elke directe IP-route tussen de compartimenten, inclusief die met HTTPS via TCP/IP, brengt het risico met zich mee dat kwetsbaarheden vanaf de netwerklaag worden gebruikt. Messaging-diensten bieden geïsoleerde communicatiepaden, waar berichten zelfs naar de schijf worden geschreven terwijl ze tussen partijen overstappen. Workloads in twee afzonderlijke virtuele netwerken die beide gebonden zijn aan dezelfde instantie Event Hubs, kunnen efficiënt en betrouwbaar communiceren via berichten, terwijl de respectieve integriteit van de netwerkisolatiegrens behouden blijft.
+Elke onmiddellijke IP-route tussen de compartimenten, waaronder die van HTTPS via TCP/IP, vormt het risico van misbruik van beveiligings problemen vanuit de netwerklaag. Berichten services bieden geïsoleerde communicatie paden, waar berichten zelfs naar de schijf worden geschreven wanneer ze tussen partijen worden overgezet. Werk belastingen in twee verschillende virtuele netwerken die beide zijn gebonden aan hetzelfde Event Hubs-exemplaar kunnen efficiënt en betrouwbaar communiceren via berichten, terwijl de respectieve integriteit van de isolatie grens van het netwerk behouden blijft.
  
-Dat betekent dat uw beveiligingsgevoelige cloudoplossingen niet alleen toegang krijgen tot azure toonaangevende betrouwbare en schaalbare asynchrone berichtenmogelijkheden, maar ze kunnen nu messaging gebruiken om communicatiepaden te maken tussen beveiligde oplossingscompartimenten die inherent veiliger zijn dan wat haalbaar is met elke peer-to-peer communicatiemodus, inclusief HTTPS en andere TLS-beveiligde socketprotocollen.
+Dit betekent dat uw beveiligings gevoelige cloud oplossingen niet alleen toegang krijgen tot de toonaangevende betrouw bare en schaal bare asynchrone berichten mogelijkheden van Azure, maar ze kunnen nu gebruikmaken van berichten om communicatie paden te maken tussen veilige oplossingen compartimenten die inherent veiliger zijn dan wat kan worden behaald met een peer-to-peer communicatie modus, inclusief HTTPS en andere met TLS beveiligde socket protocollen.
 
-### <a name="bind-event-hubs-to-virtual-networks"></a>Gebeurtenishubs binden aan virtuele netwerken
+### <a name="bind-event-hubs-to-virtual-networks"></a>Event hubs binden aan virtuele netwerken
 
-**Virtuele netwerkregels** zijn de beveiligingsfunctie voor firewalls die bepaalt of uw Azure Event Hubs naamruimte verbindingen van een bepaald virtueel netwerksubnet accepteert.
+**Regels voor virtuele netwerken** zijn de firewall beveiligings functie waarmee wordt bepaald of de naam ruimte van uw Azure-Event hubs verbindingen accepteert van een bepaald subnet van een virtueel netwerk.
 
-Het binden van een naamruimte voor gebeurtenishubs aan een virtueel netwerk is een proces in twee stappen. U moet eerst een eindpunt van de **virtuele netwerkservice** maken op het subnet van een virtueel netwerk en dit inschakelen voor **Microsoft.EventHub,** zoals uitgelegd in het artikel [over eindpuntvan](../virtual-network/virtual-network-service-endpoints-overview.md) de service. Zodra u het serviceeindpunt hebt toegevoegd, bindt u de naamruimte van gebeurtenishubs eraan met een **virtuele netwerkregel**.
+Het binden van een Event Hubs naam ruimte aan een virtueel netwerk is een proces dat uit twee stappen bestaat. U moet eerst een service- **eind punt voor een virtueel netwerk** maken in het subnet van een virtueel netwerk en deze inschakelen voor **micro soft. EventHub** , zoals wordt uitgelegd in het artikel [overzicht van service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md) . Wanneer u het service-eind punt hebt toegevoegd, bindt u de naam ruimte van de Event Hubs met een regel voor het **virtuele netwerk**.
 
-De virtuele netwerkregel is een koppeling van de naamruimte van gebeurtenishubs met een virtueel netwerksubnet. Hoewel de regel bestaat, krijgen alle workloads die aan het subnet zijn gebonden, toegang tot de naamruimte van gebeurtenishubs. Event Hubs zelf maakt nooit uitgaande verbindingen, hoeft geen toegang te krijgen en krijgt daarom nooit toegang tot je subnet door deze regel in te schakelen.
+De regel van het virtuele netwerk is een koppeling van de Event Hubs naam ruimte met een subnet van een virtueel netwerk. Terwijl de regel bestaat, krijgen alle werk belastingen die aan het subnet zijn gebonden toegang tot de Event Hubs naam ruimte. Event Hubs zichzelf geen uitgaande verbindingen tot stand brengt, hoeft geen toegang te krijgen en wordt daarom nooit toegang tot uw subnet verleend door deze regel in te scha kelen.
 
-Zie [Eindpunten voor virtuele netwerkservice configureren voor een gebeurtenishub voor](event-hubs-service-endpoints.md) meer informatie
+Zie [service-eind punten voor virtuele netwerken configureren voor een event hub](event-hubs-service-endpoints.md) voor meer informatie
 
-## <a name="private-endpoints"></a>Privéeindpunten
+## <a name="private-endpoints"></a>Privé-eind punten
 
-[Azure Private Link-service](../private-link/private-link-overview.md) stelt u in staat om toegang te krijgen tot Azure Services (bijvoorbeeld Azure Event Hubs, Azure Storage en Azure Cosmos DB) en Azure gehoste klant/partnerservices via een **privéeindpunt** in uw virtuele netwerk.
+Met [Azure Private Link service](../private-link/private-link-overview.md) kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Event Hubs, Azure Storage en Azure Cosmos DB) en door Azure gehoste klanten/partner services via een **persoonlijk eind punt** in uw virtuele netwerk.
 
-Een privéeindpunt is een netwerkinterface die u privé en veilig verbindt met een service die wordt aangedreven door Azure Private Link. Het privéeindpunt maakt gebruik van een privé-IP-adres van uw VNet, waardoor de service effectief in uw VNet wordt opgenomen. Al het verkeer naar de service kan worden doorgestuurd via het privéeindpunt, zodat er geen gateways, NAT-apparaten, ExpressRoute- of VPN-verbindingen of openbare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U verbinding maken met een instantie van een Azure-bron, zodat u het hoogste niveau van granulariteit in toegangscontrole hebt.
+Een persoonlijk eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met een service die wordt aangestuurd door een persoonlijke Azure-koppeling. Het persoonlijke eind punt maakt gebruik van een privé-IP-adres uit uw VNet, waardoor de service effectief in uw VNet wordt gezet. Al het verkeer naar de service kan worden gerouteerd via het persoonlijke eind punt, zodat er geen gateways, NAT-apparaten, ExpressRoute of VPN-verbindingen of open bare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt verbinding maken met een exemplaar van een Azure-resource, zodat u het hoogste granulatie niveau krijgt in toegangs beheer.
 
 > [!NOTE]
-> Deze functie wordt alleen ondersteund met de **specifieke** laag. Zie [Overzicht van evenementhubs dedicated](event-hubs-dedicated-overview.md)voor meer informatie over de specifieke laag. 
+> Deze functie wordt alleen ondersteund met de **toegewezen** laag. Zie [overzicht van Event hubs dedicated](event-hubs-dedicated-overview.md)voor meer informatie over de toegewezen laag. 
 >
-> Deze functie is momenteel in **preview**. 
+> Deze functie is momenteel beschikbaar als **Preview-versie**. 
 
 
-Zie [Privéeindpunten configureren voor een gebeurtenishub voor](private-link-service.md) meer informatie
+Zie voor meer informatie [privé-eind punten configureren voor een event hub](private-link-service.md)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:
 
-- [IP-firewall configureren voor een gebeurtenishub](event-hubs-ip-filtering.md)
-- [Eindpunten voor virtuele netwerkservice configureren voor een gebeurtenishub](event-hubs-service-endpoints.md)
-- [Privéeindpunten configureren voor een gebeurtenishub](private-link-service.md)
+- [IP-Firewall configureren voor een Event Hub](event-hubs-ip-filtering.md)
+- [Service-eind punten voor virtuele netwerken configureren voor een Event Hub](event-hubs-service-endpoints.md)
+- [Privé-eind punten configureren voor een Event Hub](private-link-service.md)

@@ -1,6 +1,6 @@
 ---
-title: Opslagaccountreferenties beheren, apparaat uit de StorSimple 8000-serie
-description: Hier wordt uitgelegd hoe u de pagina StorSimple Device Manager Configure gebruiken om de beveiligingssleutels voor een opslagaccount toe te voegen, te bewerken, te verwijderen of te roteren.
+title: Referenties voor het opslag account beheren, StorSimple 8000 Series-apparaat
+description: In dit artikel wordt uitgelegd hoe u de StorSimple Apparaatbeheer pagina configureren kunt gebruiken om de beveiligings sleutels voor een opslag account toe te voegen, te bewerken, te verwijderen of te roteren.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,168 +15,168 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 65aa83731be97b59a36a5baf60ea308690a0dcf8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80297750"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>De StorSimple Device Manager-service gebruiken om uw opslagaccountreferenties te beheren
+# <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>De StorSimple Apparaatbeheer-service gebruiken voor het beheren van uw referenties voor het opslag account
 
 ## <a name="overview"></a>Overzicht
 
-De sectie **Configuratie** in het storSimple Device Manager-serviceblad bevat alle algemene serviceparameters die kunnen worden gemaakt in de StorSimple Device Manager-service. Deze parameters kunnen worden toegepast op alle apparaten die met de service zijn verbonden en omvatten:
+In de **configuratie** sectie van de Blade StorSimple Apparaatbeheer service worden alle globale service parameters weer gegeven die kunnen worden gemaakt in de StorSimple Apparaatbeheer-service. Deze para meters kunnen worden toegepast op alle apparaten die zijn verbonden met de service, en omvatten:
 
 * Opslagaccountreferenties
-* Bandbreedtesjablonen 
-* Toegangsbeheerrecords 
+* Bandbreedte sjablonen 
+* Access Control records 
 
-In deze zelfstudie wordt uitgelegd hoe u opslagaccountreferenties toevoegt, bewerkt of verwijdert of de beveiligingssleutels voor een opslagaccount roteren.
+In deze zelf studie wordt uitgelegd hoe u referenties voor het opslag account kunt toevoegen, bewerken of verwijderen, of hoe u de beveiligings sleutels voor een opslag account kunt draaien.
 
  ![Lijst met opslagaccountreferenties](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
 
-Opslagaccounts bevatten de referenties die het StorSimple-apparaat gebruikt om toegang te krijgen tot uw opslagaccount bij uw cloudserviceprovider. Voor Microsoft Azure-opslagaccounts zijn dit referenties zoals de accountnaam en de primaire toegangssleutel. 
+Opslag accounts bevatten de referenties die het StorSimple-apparaat gebruikt voor toegang tot uw opslag account met uw Cloud serviceprovider. Voor Microsoft Azure opslag accounts zijn dit referenties zoals de account naam en de primaire toegangs sleutel. 
 
-In het blade **met referenties voor opslagaccounts** worden alle opslagaccounts die voor het factureringsabonnement zijn gemaakt, weergegeven in een tabelindeling met de volgende gegevens:
+Op de Blade referenties voor het **opslag account** worden alle opslag accounts die zijn gemaakt voor het abonnement, weer gegeven in een tabel indeling die de volgende informatie bevat:
 
-* **Naam** : de unieke naam die aan het account is toegewezen toen het werd gemaakt.
-* **SSL ingeschakeld** – Of de TLS is ingeschakeld en device-to-cloud communicatie is via het beveiligde kanaal.
-* **Gebruikt door** – Het aantal volumes dat het opslagaccount gebruikt.
+* **Naam** : de unieke naam die is toegewezen aan het account wanneer deze is gemaakt.
+* **SSL ingeschakeld** : Hiermee wordt aangegeven of TLS is ingeschakeld en apparaat-naar-Cloud-communicatie via het beveiligde kanaal.
+* **Gebruikt door** : het aantal volumes dat gebruikmaakt van het opslag account.
 
-De meest voorkomende taken met betrekking tot opslagaccounts die kunnen worden uitgevoerd, zijn:
+De meest voorkomende taken met betrekking tot opslag accounts die kunnen worden uitgevoerd, zijn:
 
-* Een opslagaccount toevoegen 
-* Een opslagaccount bewerken 
+* Een opslag account toevoegen 
+* Een opslag account bewerken 
 * Een opslagaccount verwijderen 
-* Sleutelrotatie van opslagrekeningen 
+* Sleutel rotatie van opslag accounts 
 
 ## <a name="types-of-storage-accounts"></a>Typen opslagaccounts
 
-Er zijn drie soorten opslagaccounts die kunnen worden gebruikt met uw StorSimple-apparaat.
+Er zijn drie typen opslag accounts die kunnen worden gebruikt met uw StorSimple-apparaat.
 
-* **Automatisch gegenereerde opslagaccounts** – Zoals de naam al doet vermoeden, wordt dit type opslagaccount automatisch gegenereerd wanneer de service voor het eerst wordt gemaakt. Zie [Stap 1: Een nieuwe service maken](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service) in Uw [on-premises StorSimple-apparaat implementeren](storsimple-8000-deployment-walkthrough-u2.md)voor meer informatie over hoe dit opslagaccount wordt gemaakt. 
-* **Opslagaccounts in het serviceabonnement:** dit zijn de Azure-opslagaccounts die zijn gekoppeld aan hetzelfde abonnement als dat van de service. Zie [Over Azure Storage Accounts](../storage/common/storage-create-storage-account.md)voor meer informatie over hoe deze opslagaccounts worden gemaakt. 
-* **Opslagaccounts buiten het serviceabonnement:** dit zijn de Azure-opslagaccounts die niet aan uw service zijn gekoppeld en waarschijnlijk bestonden voordat de service werd gemaakt.
+* **Automatisch gegenereerde opslag accounts** : als de naam wordt voorgesteld, wordt dit type opslag account automatisch gegenereerd wanneer de service voor het eerst wordt gemaakt. Zie [stap 1: een nieuwe service maken](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service) in [uw on-premises StorSimple-apparaat implementeren](storsimple-8000-deployment-walkthrough-u2.md)voor meer informatie over hoe dit opslag account wordt gemaakt. 
+* **Opslag accounts in het service abonnement** : Dit zijn de Azure Storage-accounts die zijn gekoppeld aan hetzelfde abonnement als die van de service. Zie [over Azure Storage-accounts](../storage/common/storage-create-storage-account.md)voor meer informatie over de manier waarop deze opslag accounts worden gemaakt. 
+* **Opslag accounts buiten het service abonnement** : Dit zijn de Azure Storage-accounts die niet zijn gekoppeld aan uw service en die waarschijnlijk bestonden voordat de service werd gemaakt.
 
-## <a name="add-a-storage-account"></a>Een opslagaccount toevoegen
+## <a name="add-a-storage-account"></a>Een opslag account toevoegen
 
-U een opslagaccount toevoegen door een unieke vriendelijke naam en toegangsreferenties op te geven die zijn gekoppeld aan het opslagaccount (met de opgegeven cloudserviceprovider). U hebt ook de mogelijkheid om de TLS-modus (Transport Layer Security), voorheen bekend als Secure Sockets Layer (SSL)-modus, in te schakelen om een beveiligd kanaal voor netwerkcommunicatie tussen uw apparaat en de cloud te maken.
+U kunt een opslag account toevoegen door een unieke beschrijvende naam op te geven en toegang te krijgen tot de referenties die zijn gekoppeld aan het opslag account (met de opgegeven Cloud serviceprovider). U kunt ook de modus Transport Layer Security (TLS), voorheen bekend als Secure Sockets Layer (SSL) inschakelen om een beveiligd kanaal te maken voor netwerk communicatie tussen uw apparaat en de Cloud.
 
-U meerdere accounts maken voor een bepaalde cloudserviceprovider. Houd er echter rekening mee dat u na het aanmaken van een opslagaccount de cloudserviceprovider niet wijzigen.
+U kunt meerdere accounts maken voor een bepaalde Cloud serviceprovider. Houd er echter rekening mee dat u na het maken van een opslag account de Cloud serviceprovider niet kunt wijzigen.
 
-Terwijl het opslagaccount wordt opgeslagen, probeert de service te communiceren met uw cloudserviceprovider. De referenties en het door u opgegeven toegangsmateriaal worden op dit moment geverifieerd. Er wordt alleen een opslagaccount gemaakt als de verificatie slaagt. Als de verificatie mislukt, wordt een geschikt foutbericht weergegeven.
+Terwijl het opslag account wordt opgeslagen, probeert de service te communiceren met uw Cloud serviceprovider. De referenties en het toegangs materiaal dat u hebt opgegeven, worden op dit moment geverifieerd. Een opslag account wordt alleen gemaakt als de verificatie slaagt. Als de verificatie mislukt, wordt een geschikt fout bericht weer gegeven.
 
-Gebruik de volgende procedures om Azure-opslagaccountreferenties toe te voegen:
+Gebruik de volgende procedures om referenties voor het Azure Storage-account toe te voegen:
 
-* Een opslagaccountreferentie toevoegen met hetzelfde Azure-abonnement als de Service Apparaatbeheer
-* Een Azure-opslagaccountreferentie toevoegen die buiten het serviceabonnement voor Apparaatbeheer valt
+* Een opslag account referentie toevoegen die hetzelfde Azure-abonnement als de Apparaatbeheer-service heeft
+* Een Azure Storage-account referentie toevoegen die zich buiten het Apparaatbeheer-service abonnement bevindt
 
 [!INCLUDE [add-a-storage-account-update2](../../includes/storsimple-8000-configure-new-storage-account-u2.md)]
 
-#### <a name="to-add-an-azure-storage-account-credential-outside-of-the-storsimple-device-manager-service-subscription"></a>Een Azure-opslagaccountreferentie toevoegen buiten het StorSimple Device Manager-serviceabonnement
+#### <a name="to-add-an-azure-storage-account-credential-outside-of-the-storsimple-device-manager-service-subscription"></a>Een Azure Storage-account referentie toevoegen buiten het StorSimple Apparaatbeheer service-abonnement
 
-1. Navigeer naar uw StorSimple Device Manager-service en selecteer en dubbelklik erop. Hiermee wordt het **overzichtsblad** geopend.
-2. Selecteer **Accountreferenties opslaan** in de sectie **Configuratie.** Hier worden alle bestaande opslagaccountreferenties weergegeven die zijn gekoppeld aan de StorSimple Device Manager-service.
-3. Klik op**toevoegen**.
-4. Ga als volgt te werk in het referentieblad voor **een opslagaccount** toevoegen:
+1. Ga naar de StorSimple-Apparaatbeheer service, selecteer en dubbel klik erop. Hiermee opent u de Blade **overzicht** .
+2. Selecteer **referenties voor het opslag account** in de **configuratie** sectie. Hiermee wordt een lijst weer gegeven met alle bestaande referenties voor opslag accounts die zijn gekoppeld aan de StorSimple-Apparaatbeheer service.
+3. Klik op **Add**.
+4. Ga als volgt te werk op de Blade **een opslag account referentie toevoegen** :
    
-    1. Selecteer Voor **Abonnement**de optie **Andere**.
+    1. Selecteer voor **abonnement** **andere**.
    
-    2. Geef de naam op van uw Azure-opslagaccountreferentie.
+    2. Geef de naam op van de referenties van uw Azure Storage-account.
    
-    3. Geef in het tekstvak **Voor toegang tot opslagaccounttoegang** de primaire toegangssleutel voor uw Azure-opslagaccountreferentie. Als u deze sleutel wilt ophalen, gaat u naar de Azure Storage-service, selecteert u uw opslagaccountreferentie en klikt u op **Accountsleutels beheren**. U nu de primaire toegangssleutel kopiëren.
+    3. Geef in het tekstvak **toegangs sleutel voor opslag account** de primaire toegangs sleutel voor uw Azure Storage-account referentie op. Als u deze sleutel wilt ophalen, gaat u naar de Azure Storage-service, selecteert u de referenties van uw opslag account en klikt u op **account sleutels beheren**. U kunt nu de primaire toegangs sleutel kopiëren.
    
-    4. Als u TLS wilt inschakelen, klikt u op de knop **Inschakelen** om een beveiligd kanaal te maken voor netwerkcommunicatie tussen uw StorSimple Device Manager-service en de cloud. Klik alleen **op de** knop Uitschakelen als u actief bent in een privécloud.
+    4. Als u TLS wilt inschakelen, klikt u op de knop **inschakelen** om een beveiligd kanaal te maken voor netwerk communicatie tussen uw StorSimple-Apparaatbeheer service en de Cloud. Klik op de knop **uitschakelen** alleen als u binnen een privécloud werkt.
    
-    5. Klik op**toevoegen**. U wordt hiervan op de hoogte gesteld nadat het opslagaccountreferentie is gemaakt.
+    5. Klik op **Add**. U krijgt een melding wanneer de referenties van het opslag account zijn gemaakt.
 
-5. De nieuw gemaakte opslagaccountreferentie wordt weergegeven op het StorSimple Configure Device Manager-serviceblad onder **Accountreferenties opslag.**
+5. De nieuwe opslag account referentie wordt weer gegeven op de Blade StorSimple configureren Apparaatbeheer service onder referenties voor het **opslag account**.
    
 
 
-## <a name="edit-a-storage-account"></a>Een opslagaccount bewerken
+## <a name="edit-a-storage-account"></a>Een opslag account bewerken
 
-U een opslagaccount bewerken dat wordt gebruikt door een volumecontainer. Als u een opslagaccount bewerkt dat momenteel in gebruik is, is het enige veld dat u wijzigen de toegangssleutel voor het opslagaccount. U de nieuwe opslagtoegangssleutel leveren en de bijgewerkte instellingen opslaan.
+U kunt een opslag account bewerken dat wordt gebruikt door een volume container. Als u een opslag account bewerkt dat momenteel in gebruik is, is het enige veld dat kan worden gewijzigd de toegangs sleutel voor het opslag account. U kunt de nieuwe toegangs sleutel voor opslag opgeven en de bijgewerkte instellingen opslaan.
 
-#### <a name="to-edit-a-storage-account"></a>Een opslagaccount bewerken
+#### <a name="to-edit-a-storage-account"></a>Een opslag account bewerken
 
 1. Ga naar uw StorSimple-apparaatbeheerservice. Klik in de sectie **Configuratie** op **Opslagaccountreferenties**.
 
     ![Opslagaccountreferenties](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
 
-2. Selecteer en klik in het blad voor referenties van **het opslagaccount** in de lijst met referenties van opslagaccounten op het blad dat u wilt bewerken. 
+2. Selecteer op de Blade referenties voor het **opslag account** in de lijst met referenties voor het opslag account de optie die u wilt bewerken. 
 
-3. U de **SSL-selectie inschakelen** wijzigen. U ook op **Meer klikken...** en vervolgens toegangssleutel synchroniseren selecteren om de toegangssleutels van uw opslagaccount **te roteren.** Ga naar [Key rotation of storage accounts](#key-rotation-of-storage-accounts) voor meer informatie over het uitvoeren van sleutelrotatie. Nadat u de instellingen hebt gewijzigd, klikt u op **Opslaan**. 
+3. U kunt de selectie **SSL inschakelen** wijzigen. U kunt ook op **meer klikken...** en vervolgens **synchronisatie toegangs sleutel selecteren om** de toegangs sleutels van uw opslag account te roteren. Ga naar [sleutel rotatie van opslag accounts](#key-rotation-of-storage-accounts) voor meer informatie over het uitvoeren van een sleutel rotatie. Nadat u de instellingen hebt gewijzigd, klikt u op **Opslaan**. 
 
-    ![Referenties van bewerkte opslagaccount opslaan](./media/storsimple-8000-manage-storage-accounts/editstorageacct3.png)
+    ![De referenties voor het bewerkte opslag account opslaan](./media/storsimple-8000-manage-storage-accounts/editstorageacct3.png)
 
 4. Klik op **Ja** als u om bevestiging wordt gevraagd. 
 
     ![Wijzigingen bevestigen](./media/storsimple-8000-manage-storage-accounts/editstorageacct4.png)
 
-De instellingen worden bijgewerkt en opgeslagen voor uw opslagaccount. 
+De instellingen worden bijgewerkt en opgeslagen voor uw opslag account. 
 
 ## <a name="delete-a-storage-account"></a>Een opslagaccount verwijderen
 
 > [!IMPORTANT]
-> U een opslagaccount alleen verwijderen als het niet wordt gebruikt door een volumecontainer. Als een opslagaccount wordt gebruikt door een volumecontainer, verwijdert u eerst de volumecontainer en verwijdert u vervolgens het bijbehorende opslagaccount.
+> U kunt een opslag account alleen verwijderen als dit niet wordt gebruikt door een volume container. Als een opslag account wordt gebruikt door een volume container, moet u eerst de volume container verwijderen en vervolgens het bijbehorende opslag account verwijderen.
 
-#### <a name="to-delete-a-storage-account"></a>Een opslagaccount verwijderen
+#### <a name="to-delete-a-storage-account"></a>Een opslag account verwijderen
 
 1. Ga naar uw StorSimple-apparaatbeheerservice. Klik in de sectie **Configuratie** op **Opslagaccountreferenties**.
 
-2. Plaats in de tabellijst met opslagaccounts de plaats in het account dat u wilt verwijderen. Klik met de rechtermuisknop om het contextmenu aan te roepen en klik op **Verwijderen**.
+2. Beweeg de muis aanwijzer over het account dat u wilt verwijderen in de lijst in tabel vorm van opslag accounts. Klik met de rechter muisknop om het context menu aan te roepen en klik op **verwijderen**.
 
-    ![Opslagaccountreferenties verwijderen](./media/storsimple-8000-manage-storage-accounts/deletestorageacct1.png)
+    ![Referenties voor het opslag account verwijderen](./media/storsimple-8000-manage-storage-accounts/deletestorageacct1.png)
 
-3. Klik op **Ja** om door te gaan met de verwijdering wanneer u om bevestiging wordt gevraagd. De tabeltabelaanbieding wordt bijgewerkt om de wijzigingen weer te geven.
+3. Wanneer u om bevestiging wordt gevraagd, klikt u op **Ja** om door te gaan met het verwijderen. De lijst in tabel vorm wordt bijgewerkt met de wijzigingen.
 
     ![De verwijdering bevestigen](./media/storsimple-8000-manage-storage-accounts/deletestorageacct2.png)
 
-## <a name="key-rotation-of-storage-accounts"></a>Sleutelrotatie van opslagrekeningen
+## <a name="key-rotation-of-storage-accounts"></a>Sleutel rotatie van opslag accounts
 
-Om veiligheidsredenen is sleutelrotatie vaak een vereiste in datacenters. Elk Microsoft Azure-abonnement kan een of meer gekoppelde opslagaccounts hebben. De toegang tot deze accounts wordt beheerd door het abonnement en toegangssleutels voor elk opslagaccount. 
+Uit veiligheids overwegingen is het vaak een vereiste voor het draaien van sleutels in data centers. Elk Microsoft Azure-abonnement kan een of meer gekoppelde opslag accounts hebben. De toegang tot deze accounts wordt bepaald door het abonnement en de toegangs sleutels voor elk opslag account. 
 
-Wanneer u een opslagaccount maakt, genereert Microsoft Azure twee 512-bits opslagtoegangssleutels die worden gebruikt voor verificatie wanneer het opslagaccount wordt geopend. Met twee opslagtoegangssleutels u de sleutels opnieuw genereren zonder onderbreking van uw opslagservice of toegang tot die service. De sleutel die momenteel in gebruik is, is de *primaire* sleutel en de back-upsleutel wordt de *secundaire* sleutel genoemd. Een van deze twee sleutels moet worden geleverd wanneer uw Microsoft Azure StorSimple-apparaat toegang heeft tot uw cloudopslagserviceprovider.
+Wanneer u een opslag account maakt, genereert Microsoft Azure 2 512-bits opslag toegangs sleutels die worden gebruikt voor verificatie wanneer het opslag account wordt geopend. Als u twee opslag toegangs sleutels hebt, kunt u de sleutels opnieuw genereren zonder dat uw opslag service of toegang tot die service wordt onderbroken. De sleutel die momenteel wordt gebruikt, is de *primaire* sleutel en de back-upsleutel wordt aangeduid als de *secundaire* sleutel. Een van deze twee sleutels moet worden opgegeven wanneer uw Microsoft Azure StorSimple-apparaat toegang heeft tot uw Cloud Storage-Provider.
 
-## <a name="what-is-key-rotation"></a>Wat is sleutelrotatie?
+## <a name="what-is-key-rotation"></a>Wat is het draaien van sleutels?
 
-Toepassingen gebruiken doorgaans slechts één van de sleutels om toegang te krijgen tot uw gegevens. Na een bepaalde periode u uw toepassingen laten overschakelen naar het gebruik van de tweede sleutel. Nadat u uw toepassingen hebt overgeschakeld naar de secundaire sleutel, u de eerste sleutel met pensioen laten gaan en vervolgens een nieuwe sleutel genereren. Met behulp van de twee sleutels op deze manier u uw toepassingen toegang tot de gegevens zonder enige downtime.
+Normaal gesp roken gebruiken toepassingen slechts een van de sleutels om toegang te krijgen tot uw gegevens. Na een bepaalde periode kunt u uw toepassingen overschakelen op het gebruik van de tweede sleutel. Nadat u uw toepassingen hebt overgeschakeld naar de secundaire sleutel, kunt u de eerste sleutel buiten gebruik stellen en vervolgens een nieuwe sleutel genereren. Met behulp van de twee toetsen op deze manier kunnen uw toepassingen toegang krijgen tot de gegevens zonder uitval tijd.
 
-De opslagaccountsleutels worden altijd in een versleutelde vorm in de service opgeslagen. Deze kunnen echter worden gereset via de StorSimple Device Manager-service. De service kan de primaire sleutel en secundaire sleutel krijgen voor alle opslagaccounts in hetzelfde abonnement, inclusief accounts die zijn gemaakt in de opslagservice en de standaardopslagaccounts die zijn gegenereerd toen de StorSimple Device Manager-service voor het eerst werd gegenereerd Gemaakt. De StorSimple Device Manager-service haalt deze sleutels altijd uit de klassieke Azure-portal en slaat ze vervolgens op een versleutelde manier op.
+De sleutels voor het opslag account worden in een versleutelde vorm altijd opgeslagen in de service. Deze kunnen echter opnieuw worden ingesteld via de StorSimple-Apparaatbeheer service. De service kan de primaire sleutel en secundaire sleutel ophalen voor alle opslag accounts in hetzelfde abonnement, met inbegrip van accounts die in de opslag service zijn gemaakt, evenals de standaard opslag accounts die worden gegenereerd wanneer de StorSimple-Apparaatbeheer service voor het eerst werd gemaakt. Met de StorSimple-Apparaatbeheer service worden deze sleutels altijd opgehaald uit de klassieke Azure-Portal en vervolgens op een versleutelde manier opgeslagen.
 
-## <a name="rotation-workflow"></a>Rotatiewerkstroom
+## <a name="rotation-workflow"></a>Werk stroom voor rotatie
 
-Een Microsoft Azure-beheerder kan de primaire of secundaire sleutel regenereren of wijzigen door rechtstreeks toegang te krijgen tot het opslagaccount (via de Microsoft Azure Storage-service). De StorSimple Device Manager-service ziet deze wijziging niet automatisch.
+Een Microsoft Azure beheerder kan de primaire of secundaire sleutel opnieuw genereren of wijzigen door rechtstreeks toegang te krijgen tot het opslag account (via de Microsoft Azure Storage-Service). Deze wijziging wordt niet automatisch weer geven door de StorSimple-Apparaatbeheer service.
 
-Als u de StorSimple Device Manager-service wilt informeren over de wijziging, moet u toegang krijgen tot de StorSimple Device Manager-service, toegang krijgen tot het opslagaccount en vervolgens de primaire of secundaire sleutel synchroniseren (afhankelijk van welke sleutel is gewijzigd). De service krijgt dan de nieuwste sleutel, versleutelt de sleutels en stuurt de versleutelde sleutel naar het apparaat.
+Als u de StorSimple-Apparaatbeheer service van de wijziging wilt inlichten, moet u toegang hebben tot de StorSimple Apparaatbeheer-service, toegang krijgen tot het opslag account en vervolgens de primaire of secundaire sleutel synchroniseren (afhankelijk van wat er is gewijzigd). De service haalt vervolgens de meest recente sleutel, versleutelt de sleutels en stuurt de versleutelde sleutel naar het apparaat.
 
-#### <a name="to-synchronize-keys-for-storage-accounts-in-the-same-subscription-as-the-service"></a>Sleutels voor opslagaccounts synchroniseren in hetzelfde abonnement als de service 
+#### <a name="to-synchronize-keys-for-storage-accounts-in-the-same-subscription-as-the-service"></a>Sleutels synchroniseren voor opslag accounts in hetzelfde abonnement als de service 
 1. Ga naar uw StorSimple-apparaatbeheerservice. Klik in de sectie **Configuratie** op **Opslagaccountreferenties**.
-2. Klik in de tabeltabellijst met opslagaccounts op de vermelding die u wilt wijzigen. 
+2. Klik in de lijst in tabel vorm van opslag accounts op het item dat u wilt wijzigen. 
 
-    ![toetsen synchroniseren](./media/storsimple-8000-manage-storage-accounts/syncaccesskey1.png)
+    ![sleutels synchroniseren](./media/storsimple-8000-manage-storage-accounts/syncaccesskey1.png)
 
-3. Klik **op ... Meer** en selecteer vervolgens **Toegangssleutel synchroniseren om te roteren.**   
+3. Klik op **... Meer** en selecteer vervolgens **synchronisatie toegangs sleutel om te roteren**.   
 
-    ![toetsen synchroniseren](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
+    ![sleutels synchroniseren](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
 
-4. In de StorSimple Device Manager-service moet u de sleutel bijwerken die eerder is gewijzigd in de Microsoft Azure Storage-service. Als de primaire toegangssleutel is gewijzigd (geregenereerd), selecteert u **primaire** sleutel. Als de secundaire sleutel is gewijzigd, selecteert u **de secundaire** toets. Klik **op Synchronisatietoets**.
+4. In de StorSimple-Apparaatbeheer service moet u de sleutel bijwerken die eerder in de Microsoft Azure Storage-service is gewijzigd. Als de primaire toegangs sleutel is gewijzigd (opnieuw gegenereerd), selecteert u **primaire** sleutel. Selecteer **secundaire** sleutel als de secundaire sleutel is gewijzigd. Klik op **synchronisatie sleutel**.
       
-      ![toetsen synchroniseren](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
+      ![sleutels synchroniseren](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
-U wordt hiervan op de hoogte gesteld nadat de sleutel is gesynchroniseerd.
+U wordt gewaarschuwd nadat de sleutel is gesynchroniseerd.
 
-#### <a name="to-synchronize-keys-for-storage-accounts-outside-of-the-service-subscription"></a>Sleutels voor opslagaccounts buiten het serviceabonnement synchroniseren
-1. Klik **op** de pagina Services op het tabblad **Configureren.**
-2. Klik **op Opslagaccounts toevoegen/bewerken**.
-3. Ga als volgt te werk in het dialoogvenster:
+#### <a name="to-synchronize-keys-for-storage-accounts-outside-of-the-service-subscription"></a>Sleutels voor opslag accounts buiten het service abonnement synchroniseren
+1. Klik op de pagina **Services** op het tabblad **configureren** .
+2. Klik op **opslag accounts toevoegen/bewerken**.
+3. Ga als volgt te werk in het dialoog venster:
    
-   1. Selecteer het opslagaccount met de toegangssleutel die u wilt bijwerken.
-   2. U moet de opslagtoegangssleutel bijwerken in de StorSimple Device Manager-service. In dit geval ziet u de opslagtoegangssleutel. Voer de nieuwe sleutel in het vak **Toegangssleutel voor opslagaccount in.** 
-   3. Sla uw wijzigingen op. Uw toegangssleutel voor uw opslagaccount moet nu worden bijgewerkt.
+   1. Selecteer het opslag account met de toegangs sleutel die u wilt bijwerken.
+   2. U moet de toegangs sleutel voor opslag bijwerken in de StorSimple-Apparaatbeheer service. In dit geval ziet u de toegangs sleutel voor opslag. Voer de nieuwe sleutel in het vak **toegangs sleutel voor het opslag account** in. 
+   3. Sla uw wijzigingen op. De toegangs sleutel voor uw opslag account moet nu worden bijgewerkt.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [Beveiliging van StorSimple](storsimple-8000-security.md).
-* Meer informatie over [het gebruik van de StorSimple Device Manager-service om uw StorSimple-apparaat te beheren.](storsimple-8000-manager-service-administration.md)
+* Meer informatie over [StorSimple-beveiliging](storsimple-8000-security.md).
+* Meer informatie over [het gebruik van de StorSimple Apparaatbeheer-service voor het beheren van uw StorSimple-apparaat](storsimple-8000-manager-service-administration.md).
 

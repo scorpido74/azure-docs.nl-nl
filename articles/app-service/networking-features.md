@@ -1,6 +1,6 @@
 ---
 title: Netwerkfuncties
-description: Meer informatie over de netwerkfuncties in Azure App Service en welke functies u nodig hebt voor uw netwerkbehoeften voor beveiliging of functionaliteit.
+description: Meer informatie over de netwerk functies in Azure App Service en welke functies u nodig hebt voor uw netwerk behoeften voor beveiliging of functionaliteit.
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
@@ -8,219 +8,219 @@ ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 79f85261115dbddcb0b04cd2863a90912de2ab87
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80474902"
 ---
-# <a name="app-service-networking-features"></a>App Service-netwerkfuncties
+# <a name="app-service-networking-features"></a>App Service-netwerk functies
 
-Toepassingen in de Azure App Service kunnen op meerdere manieren worden geïmplementeerd. Standaard zijn door App Service gehoste apps direct internettoegankelijk en kunnen ze alleen gehoste eindpunten via internet bereiken. Veel klanttoepassingen moeten echter het in- en uitgaande netwerkverkeer beheren. Er zijn verschillende functies beschikbaar in de App-service om aan die behoeften te voldoen. De uitdaging is te weten welke functie moet worden gebruikt om een bepaald probleem op te lossen. Dit document is bedoeld om klanten te helpen bepalen welke functie moet worden gebruikt op basis van enkele voorbeeldgebruiksvoorbeelden.
+Toepassingen in de Azure App Service kunnen op verschillende manieren worden geïmplementeerd. App Service gehoste apps zijn standaard rechtstreeks toegankelijk voor Internet en kunnen alleen Internet gehoste eind punten bereiken. Veel klant toepassingen moeten echter het inkomende en uitgaande netwerk verkeer beheren. Er zijn verschillende functies die beschikbaar zijn in de App Service om aan deze behoeften te voldoen. De uitdaging is te weten welke functie moet worden gebruikt om een bepaald probleem op te lossen. Dit document is bedoeld om klanten te helpen bepalen welke functie moet worden gebruikt op basis van enkele voor beelden van gebruiks voorbeelden.
 
-Er zijn twee primaire implementatietypen voor de Azure App Service. Er is de multi-tenant openbare dienst, die App Service-abonnementen host in de Gratis, Gedeelde, Basis,Standaard, Premium en Premiumv2-prijzen SKU's. Dan is er de single tenant App Service Environment (ASE), die geïsoleerde SKU App Service-abonnementen rechtstreeks in uw Azure Virtual Network (VNet) host. De functies die u gebruikt, variëren als u zich in de multi-tenantservice of in een ASE bevindt. 
+Er zijn twee primaire implementatie typen voor de Azure App Service. Er is een open bare multi tenant-service, die als host fungeert voor App Service plannen in de gratis, gedeelde, Basic, Standard, Premium en Premiumv2 prijzen-Sku's. Vervolgens is er één Tenant App Service Environment (ASE), die als host fungeert voor geïsoleerde SKU App Service plannen rechtstreeks in uw Azure-Virtual Network (VNet). De functies die u gebruikt, zijn afhankelijk van of u zich in de multi tenant-service of in een ASE bevindt. 
 
-## <a name="multi-tenant-app-service-networking-features"></a>Netwerkfuncties voor apps met meerdere tenantn 
+## <a name="multi-tenant-app-service-networking-features"></a>Multi tenant-App Service-netwerk functies 
 
-De Azure App Service is een gedistribueerd systeem. De rollen die binnenkomende HTTP/HTTPS-aanvragen verwerken, worden front-ends genoemd. De rollen die de werklast van de klant hosten, worden werknemers genoemd. Alle rollen in een App Service-implementatie bestaan in een netwerk met meerdere tenant's. Omdat er veel verschillende klanten in dezelfde app-serviceschaaleenheid zitten, u het App Service-netwerk niet rechtstreeks met uw netwerk verbinden. In plaats van de netwerken met elkaar te verbinden, hebben we functies nodig om de verschillende aspecten van applicatiecommunicatie te behandelen. De functies die aanvragen naar uw app afhandelen, kunnen niet worden gebruikt om problemen op te lossen bij het voeren van gesprekken vanuit uw app. Ook de functies die problemen oplossen voor gesprekken van uw app kunnen niet worden gebruikt om problemen op te lossen naar uw app.  
+Het Azure App Service is een gedistribueerd systeem. De rollen die binnenkomende HTTP/HTTPS-aanvragen verwerken, worden front-ends genoemd. De rollen die als host fungeren voor de werk belasting van de klant, worden werk nemers genoemd. Alle rollen in een App Service-implementatie bestaan in een netwerk met meerdere tenants. Omdat er veel verschillende klanten zijn in dezelfde App Service Scale-eenheid, kunt u het App Service netwerk niet rechtstreeks verbinden met uw netwerk. In plaats van de netwerken te verbinden, hebben we functies nodig om de verschillende aspecten van toepassings communicatie te kunnen afhandelen. De functies voor het verwerken van aanvragen voor uw app kunnen niet worden gebruikt om problemen op te lossen bij het aanroepen van uw app. Op dezelfde manier kunnen de functies voor het oplossen van problemen met aanroepen vanuit uw app niet worden gebruikt om problemen met uw app op te lossen.  
 
 | Binnenkomende functies | Uitgaande functies |
 |---------------------|-------------------|
-| App-toegewezen adres | Hybride verbindingen |
-| Toegangsbeperkingen | Vereiste VNet-gateway-integratie |
+| Toegewezen adres van de app | Hybride verbindingen |
+| Toegangs beperkingen | Vereiste VNet-integratie voor gateway |
 | Service-eindpunten | VNet-integratie |
 
-Tenzij anders vermeld, kunnen alle functies samen worden gebruikt. U de functies mengen om uw verschillende problemen op te lossen.
+Tenzij anders vermeld, kunnen alle functies tegelijk worden gebruikt. U kunt de functies combi neren om uw verschillende problemen op te lossen.
 
-## <a name="use-case-and-features"></a>Gebruikscase en functies
+## <a name="use-case-and-features"></a>Use-case en-functies
 
-Voor een bepaalde use case, kunnen er een paar manieren om het probleem op te lossen.  De juiste functie om te gebruiken is soms te wijten aan redenen die verder gaan dan alleen de use case zelf. In de volgende inkomende gebruiksvoorbeelden wordt uitgelegd hoe u netwerkfuncties van App Service gebruiken om problemen op te lossen rond het regelen van verkeer dat naar uw app gaat. 
+U kunt het probleem op een aantal manieren oplossen voor een gegeven use-case.  De juiste functie die u moet gebruiken, is soms te wijten aan een andere reden dan alleen de use-case zelf. In de volgende inkomende use-cases wordt uitgelegd hoe u App Service-netwerk functies kunt gebruiken om problemen op te lossen bij het beheren van verkeer dat naar uw app gaat. 
  
-| Binnenkomende gebruiksaanvragen | Functie |
+| Inkomende use cases | Functie |
 |---------------------|-------------------|
-| Ondersteuning voor IP-gebaseerde SSL-behoeften voor uw app | app toegewezen adres |
-| Niet gedeeld, speciaal binnenkomend adres voor uw app | app toegewezen adres |
-| Toegang tot uw app beperken vanaf een reeks goed gedefinieerde adressen | Toegangsbeperkingen |
-| Toegang tot mijn app beperken vanuit bronnen in een VNet | Service-eindpunten </br> ILB ASE </br> Privéeindpunt (voorbeeld) |
-| Mijn app blootleggen op een privé-IP in mijn VNet | ILB ASE </br> privé-IP voor binnenkomen op een toepassingsgateway met serviceeindpunten </br> Serviceeindpunt (voorbeeld) |
-| Mijn app beveiligen met een WAF | Application Gateway + ILB ASE </br> Application Gateway met service-eindpunten </br> Azure-voordeur met toegangsbeperkingen |
-| Verkeer over de balans naar mijn apps in verschillende regio's | Azure-voordeur met toegangsbeperkingen | 
-| Load balansverkeer in dezelfde regio | [Application Gateway met service-eindpunten][appgwserviceendpoints] | 
+| Ondersteuning voor op IP gebaseerde SSL-behoeften voor uw app | toegewezen adres van de app |
+| Niet gedeeld, toegewezen inkomend adres voor uw app | toegewezen adres van de app |
+| De toegang tot uw app beperken vanuit een reeks goed gedefinieerde adressen | Toegangs beperkingen |
+| Toegang tot mijn app beperken van resources in een VNet | Service-eindpunten </br> ILB ASE </br> Persoonlijk eind punt (preview-versie) |
+| Mijn app beschikbaar maken op een privé-IP in mijn VNet | ILB ASE </br> persoonlijk IP-adres voor inkomend verkeer op een Application Gateway met Service-eind punten </br> Service-eind punt (preview-versie) |
+| Mijn app beveiligen met een WAF | Application Gateway + ILB ASE </br> Application Gateway met service-eindpunten </br> Azure front deur met toegangs beperkingen |
+| Taak verdeling van verkeer naar mijn apps in verschillende regio's | Azure front deur met toegangs beperkingen | 
+| Taak verdeling van verkeer in dezelfde regio | [Application Gateway met service-eindpunten][appgwserviceendpoints] | 
 
-In de volgende uitgaande use cases wordt uitgelegd hoe u netwerkfuncties van App Service gebruiken om uitgaande toegangsbehoeften voor uw app op te lossen. 
+In de volgende uitgaande use-cases wordt uitgelegd hoe u App Service-netwerk functies kunt gebruiken om uw app te verhelpen. 
 
 | Uitgaande use cases | Functie |
 |---------------------|-------------------|
-| Toegang tot bronnen in een Azure Virtual Network in dezelfde regio | VNet-integratie </br> Ase |
-| Toegang tot bronnen in een Azure Virtual Network in een andere regio | Vereiste VNet-gateway-integratie </br> ASE en VNet peering |
-| Toegang tot bronnen die zijn beveiligd met serviceeindpunten | VNet-integratie </br> Ase |
-| Toegang tot bronnen in een privénetwerk dat niet is verbonden met Azure | Hybride verbindingen |
-| Toegang tot bronnen op de circuits van ExpressRoute | VNet-integratie </br> Ase | 
-| Uitgaand verkeer beveiligen vanuit uw web-app | VNet-integratie- en netwerkbeveiligingsgroepen </br> Ase | 
-| Uitgaand verkeer routeren vanuit uw web-app | VNet-integratie- en routetabellen </br> Ase | 
+| Toegang tot resources in een Azure-Virtual Network in dezelfde regio | VNet-integratie </br> ASE |
+| Toegang tot resources in een Azure-Virtual Network in een andere regio | Vereiste VNet-integratie voor gateway </br> ASE en VNet-peering |
+| Toegang tot resources die zijn beveiligd met Service-eind punten | VNet-integratie </br> ASE |
+| Toegang tot bronnen in een particulier netwerk dat niet is verbonden met Azure | Hybride verbindingen |
+| Toegang tot resources via ExpressRoute-circuits | VNet-integratie </br> ASE | 
+| Uitgaand verkeer van uw web-app beveiligen | VNet-integratie en netwerk beveiligings groepen </br> ASE | 
+| Uitgaand verkeer van uw web-app door sturen | VNet-integratie en route tabellen </br> ASE | 
 
 
-### <a name="default-networking-behavior"></a>Standaardnetwerkgedrag
+### <a name="default-networking-behavior"></a>Standaard netwerk gedrag
 
-De schaaleenheden azure app-service ondersteunen veel klanten in elke implementatie. De gratis en gedeelde SKU-plannen hosten de werkbelasting van klanten voor werknemers met meerdere huurders. In de basis- en bovenstaande plannen worden de workloads van klanten host die zijn toegewezen aan slechts één App Service-abonnement (ASP). Als u een Standard App Service-abonnement had, worden alle apps in dat abonnement op dezelfde werknemer uitgevoerd. Als u de werknemer uitschaalt, worden alle apps in die ASP gerepliceerd op een nieuwe werknemer voor elk exemplaar in uw ASP. De werknemers die worden gebruikt voor Premiumv2 verschillen van de werknemers die worden gebruikt voor de andere plannen. Elke app-service-implementatie heeft één IP-adres dat wordt gebruikt voor al het binnenkomende verkeer naar de apps in die App Service-implementatie. Er zijn echter overal van 4 tot 11 adressen die worden gebruikt voor het maken van uitgaande gesprekken. Deze adressen worden gedeeld door alle apps in die App Service-implementatie. De uitgaande adressen zijn verschillend op basis van de verschillende werktypen. Dat betekent dat de adressen die worden gebruikt door de Gratis, Gedeelde, Basis-, Standaard- en Premium-ASP's anders zijn dan de adressen die worden gebruikt voor uitgaande gesprekken van de Premiumv2 ASP's. Als u in de eigenschappen voor uw app kijkt, u de binnenkomende en uitgaande adressen zien die door uw app worden gebruikt. Als u een afhankelijkheid met een IP ACL moet vergrendelen, gebruikt u de mogelijkeOutboundAddresses. 
+De Azure App Service schaal eenheden ondersteunen veel klanten in elke implementatie. Met de gratis en gedeelde SKU worden de workloads van de klant gehost op werk nemers met meerdere tenants. De basis en hierboven plannen voor de werk belasting van hosters die uitsluitend zijn toegewezen aan één App Service plan (ASP). Als u een Standard-App Service plan had, worden alle apps in dat plan uitgevoerd op dezelfde werk nemer. Als u de werk nemer uitbreidt, worden alle apps in die ASP gerepliceerd op een nieuwe werk nemer voor elk exemplaar in uw ASP. De werk nemers die worden gebruikt voor Premiumv2 verschillen van de werk nemers die worden gebruikt voor de andere plannen. Elke App Service-implementatie heeft één IP-adres dat wordt gebruikt voor al het inkomende verkeer naar de apps in die App Service-implementatie. Er zijn echter ook geen vier tot 11 adressen die worden gebruikt voor het maken van uitgaande oproepen. Deze adressen worden gedeeld door alle apps in die App Service implementatie. De uitgaande adressen verschillen op basis van de verschillende typen werk nemers. Dit betekent dat de adressen die worden gebruikt door de ASPs gratis, gedeeld, basis, standaard en Premium anders zijn dan de adressen die worden gebruikt voor uitgaande oproepen van de Premiumv2-ASPs. Als u de eigenschappen voor uw app bekijkt, ziet u de inkomende en uitgaande adressen die worden gebruikt door uw app. Als u een afhankelijkheid met een IP-ACL wilt vergren delen, gebruikt u de possibleOutboundAddresses. 
 
 ![App-eigenschappen](media/networking-features/app-properties.png)
 
-App Service heeft een aantal eindpunten die worden gebruikt om de service te beheren.  Deze adressen worden gepubliceerd in een apart document en staan ook in de IP-servicetag van AppServiceManagement. De AppServiceManagement-tag wordt alleen gebruikt met een App Service Environment (ASE) waar u dergelijk verkeer moet toestaan. De inkomende adressen van de App-service worden bijgehouden in de IP-servicetag van AppService. Er is geen IP-servicetag die de uitgaande adressen bevat die door App Service worden gebruikt. 
+App Service heeft een aantal eind punten die worden gebruikt om de service te beheren.  Deze adressen worden gepubliceerd in een afzonderlijk document en bevinden zich ook in het AppServiceManagement IP-service label. De label AppServiceManagement wordt alleen gebruikt met een App Service Environment (ASE) waarin u dergelijk verkeer moet toestaan. De App Service inkomende adressen worden gevolgd in de AppService IP-service-tag. Er is geen IP-servicetag die de uitgaande adressen bevat die door App Service worden gebruikt. 
 
-![In- en uitgaand diagram voor app-service](media/networking-features/default-behavior.png)
+![App Service binnenkomend en uitgaand diagram](media/networking-features/default-behavior.png)
 
-### <a name="app-assigned-address"></a>App-toegewezen adres 
+### <a name="app-assigned-address"></a>Toegewezen adres van de app 
 
-De toegewezen adresfunctie voor apps is een uitloper van de IP-gebaseerde SSL-mogelijkheid en wordt geopend door SSL in te stellen met uw app. Deze functie kan worden gebruikt voor IP-gebaseerde SSL-gesprekken, maar het kan ook worden gebruikt om uw app een adres te geven dat alleen deze heeft. 
+De functie voor het toegewezen adres van de app is een offshoot van de op IP gebaseerde SSL-mogelijkheid en wordt gebruikt door SSL in te stellen met uw app. Deze functie kan worden gebruikt voor SSL-aanroepen op basis van IP, maar kan ook worden gebruikt om uw app een adres te geven dat alleen het heeft. 
 
-![App-toegewezen adresdiagram](media/networking-features/app-assigned-address.png)
+![Diagram van toegewezen adres van app](media/networking-features/app-assigned-address.png)
 
-Wanneer u een toegewezen adres voor apps gebruikt, gaat uw verkeer nog steeds door dezelfde front-endrollen die al het binnenkomende verkeer naar de schaaleenheid App-service verwerken. Het adres dat aan uw app is toegewezen, wordt echter alleen door uw app gebruikt. De use cases voor deze functie zijn:
+Wanneer u een aan een app toegewezen adres gebruikt, loopt uw verkeer nog steeds door dezelfde front-end-rollen die al het binnenkomende verkeer naar de App Service Scale-eenheid verwerken. Het adres dat is toegewezen aan uw app, wordt echter alleen gebruikt door uw app. De use cases voor deze functie zijn:
 
-* Ondersteuning voor IP-gebaseerde SSL-behoeften voor uw app
-* Stel een speciaal adres in voor uw app dat niet met iets anders wordt gedeeld
+* Ondersteuning voor op IP gebaseerde SSL-behoeften voor uw app
+* Stel een toegewezen adres in voor uw app die niet met iets anders is gedeeld
 
-U meer informatie krijgen over het instellen van een adres in uw app met de zelfstudie over [Een TLS/SSL-certificaat toevoegen in Azure App Service.][appassignedaddress] 
+U kunt meer informatie over het instellen van een adres in uw app met behulp van de zelf studie over het [toevoegen van een TLS/SSL-certificaat in azure app service][appassignedaddress]. 
 
-### <a name="access-restrictions"></a>Toegangsbeperkingen 
+### <a name="access-restrictions"></a>Toegangs beperkingen 
 
-Met de mogelijkheid Toegangsbeperkingen u **binnenkomende** aanvragen filteren op basis van het IP-adres van de oorsprong. De filteractie vindt plaats op de front-endrollen die stroomopwaarts staan van de werknemersrollen waarin uw apps worden uitgevoerd. Aangezien de front-endrollen stroomopwaarts van de werknemers zijn, kan de mogelijkheid Toegangsbeperkingen worden beschouwd als bescherming op netwerkniveau voor uw apps. Met de functie u een lijst maken met adresblokken toestaan en weigeren die in prioriteitsvolgorde worden geëvalueerd. Het is vergelijkbaar met de NSG-functie (Network Security Group) die in Azure Networking bestaat.  U deze functie gebruiken in een ASE of in de multi-tenant service. Bij gebruik met een ILB ASE u de toegang vanuit privéadresblokken beperken.
+Met de mogelijkheid tot toegangs beperkingen kunt u **inkomende** aanvragen filteren op basis van het IP-adres van de oorsprong. De filter actie vindt plaats op de front-end-rollen die upstream zijn van de werk rollen waar uw apps worden uitgevoerd. Aangezien de front-end-rollen upstream van de werk nemers zijn, kan de mogelijkheid tot toegangs beperkingen worden beschouwd als beveiliging op netwerk niveau voor uw apps. Met deze functie kunt u een lijst met adressen blokken voor toestaan en weigeren maken die in volg orde van prioriteit worden geëvalueerd. Het is vergelijkbaar met de functie voor netwerk beveiligings groepen (NSG) die zich in azure-netwerken bevindt.  U kunt deze functie gebruiken in een ASE of in de multi tenant-service. Wanneer u gebruikt met een ILB-ASE, kunt u de toegang beperken tot persoonlijke adres blokken.
 
-![Toegangsbeperkingen](media/networking-features/access-restrictions.png)
+![Toegangs beperkingen](media/networking-features/access-restrictions.png)
 
-De functie Toegangsbeperkingen helpt bij scenario's waarin u de IP-adressen wilt beperken die kunnen worden gebruikt om uw app te bereiken. Onder de use cases voor deze functie zijn:
+De functie toegangs beperkingen helpt bij scenario's waarin u de IP-adressen wilt beperken die kunnen worden gebruikt om uw app te bereiken. De gebruiks voorbeelden voor deze functie zijn:
 
-* Toegang tot uw app beperken vanaf een reeks goed gedefinieerde adressen 
-* Beperk de toegang tot het komen via een load-balancing service, zoals Azure Front Door. Als u uw binnenkomend verkeer naar Azure Front Door wilt vergrendelen, maakt u regels om verkeer toe te staan vanaf 147.243.0.0.0/16 en 2a01:111:2050::/44. 
+* De toegang tot uw app beperken vanuit een reeks goed gedefinieerde adressen 
+* Beperk de toegang tot een service voor taak verdeling, zoals Azure front deur. Als u uw inkomende verkeer naar Azure front-deur wilt vergren delen, maakt u regels om verkeer toe te staan van 147.243.0.0/16 en 2a01:111:2050::/44. 
 
-![Toegangsbeperkingen met voordeur](media/networking-features/access-restrictions-afd.png)
+![Toegangs beperkingen met de voor deur](media/networking-features/access-restrictions-afd.png)
 
-Als u de toegang tot uw app wilt vergrendelen, zodat deze alleen kan worden bereikt via bronnen in uw Azure Virtual Network (VNet), hebt u een statisch openbaar adres nodig op wat uw bron ook in uw VNet is. Als de resources geen openbaar adres hebben, moet u in plaats daarvan de functie Serviceeindpunten gebruiken. Meer informatie over het inschakelen van deze functie met de zelfstudie over [Het configureren van toegangsbeperkingen][iprestrictions].
+Als u de toegang tot uw app wilt vergren delen zodat deze alleen kan worden bereikt vanuit resources in uw Azure Virtual Network (VNet), hebt u een statisch openbaar adres nodig, ongeacht uw bron in uw VNet. Als de resources geen openbaar adres hebben, moet u in plaats daarvan de functie Service-eind punten gebruiken. Meer informatie over het inschakelen van deze functie met de zelf studie over het [configureren van toegangs beperkingen][iprestrictions].
 
 ### <a name="service-endpoints"></a>Service-eindpunten
 
-Met serviceeindpunten u **binnenkomende** toegang tot uw app vergrendelen, zodat het bronadres afkomstig moet zijn van een reeks subnetten die u selecteert. Deze functie werkt in combinatie met de IP Access-beperkingen. Serviceeindpunten worden ingesteld in dezelfde gebruikerservaring als de IP-toegangsbeperkingen. U een lijst met toegangsregels voor toestaan/weigeren maken die zowel openbare adressen als subnetten in uw VNets bevatten. Deze functie ondersteunt scenario's zoals:
+Met Service-eind punten kunt u **inkomende** toegang tot uw app vergren delen, zodat het bron adres moet afkomstig zijn van een reeks subnetten die u selecteert. Deze functie werkt in combi natie met de beperkingen voor de IP-toegang. Service-eind punten worden ingesteld in dezelfde gebruikers ervaring als de IP-toegangs beperkingen. U kunt een lijst met toegestane/geweigerde toegangs regels maken die open bare adressen en subnetten in uw VNets bevatten. Deze functie biedt ondersteuning voor scenario's zoals:
 
-![serviceeindpunten](media/networking-features/service-endpoints.png)
+![Service-eind punten](media/networking-features/service-endpoints.png)
 
-* Een toepassingsgateway instellen met uw app om binnenkomend verkeer naar uw app te vergrendelen
-* De toegang tot uw app beperken tot bronnen in uw VNet. Dit kunnen VM's, AS's of zelfs andere apps zijn die VNet-integratie gebruiken 
+* Een Application Gateway met uw app instellen om inkomend verkeer naar uw app te vergren delen
+* De toegang tot uw app beperken tot resources in uw VNet. Dit kunnen Vm's, as of zelfs andere apps zijn die gebruikmaken van VNet-integratie 
 
-![serviceeindpunten met toepassingsgateway](media/networking-features/service-endpoints-appgw.png)
+![Service-eind punten met Application Gateway](media/networking-features/service-endpoints-appgw.png)
 
-Meer informatie over het configureren van serviceeindpunten met uw app vindt u in de zelfstudie over Het [configureren van serviceeindpunttoegangsbeperkingen][serviceendpoints]
+Meer informatie over het configureren van service-eind punten met uw app vindt u in de zelf studie over het [configureren van toegangs beperkingen voor service-eind punten][serviceendpoints]
 
-### <a name="private-endpoint-preview"></a>Privéeindpunt (voorbeeld)
+### <a name="private-endpoint-preview"></a>Persoonlijk eind punt (preview-versie)
 
-Private Endpoint is een netwerkinterface die u privé en veilig verbindt met uw webapp via Azure Private Link. Private Endpoint maakt gebruik van een privé-IP-adres van uw VNet, waardoor de web-app effectief in uw VNet wordt opgenomen. Deze functie is alleen bedoeld voor **binnenkomende** stromen naar uw web-app.
-[Privéeindpunten gebruiken voor Azure Web App (voorbeeld)][privateendpoints]
+Privé-eind punt is een netwerk interface waarmee u privé en veilig verbinding maakt met uw web-app met behulp van een persoonlijke Azure-koppeling. Persoonlijk eind punt maakt gebruik van een privé-IP-adres uit uw VNet, waardoor de web-app effectief in uw VNet wordt gezet. Deze functie is alleen voor **inkomende** stromen naar uw web-app.
+[Privé-eind punten gebruiken voor Azure-web-app (preview-versie)][privateendpoints]
  
 ### <a name="hybrid-connections"></a>Hybride verbindingen
 
-Met Hybride verbindingen van App Service kunnen uw apps **uitgaande** gesprekken voeren naar opgegeven TCP-eindpunten. Het eindpunt kan on-premises zijn, in een VNet of waar dan ook waarmee uitgaand verkeer naar Azure op poort 443 mogelijk is. De functie vereist de installatie van een relay agent genaamd de Hybrid Connection Manager (HCM) op een Windows Server 2012 of nieuwere host. De HCM moet Azure Relay kunnen bereiken in poort 443. De HCM kan worden gedownload van de Gebruikersinterface voor hybride verbindingen van de App Service in de portal. 
+Met App Service Hybride verbindingen kunnen uw apps **uitgaande** aanroepen naar opgegeven TCP-eind punten maken. Het eind punt kan on-premises zijn, in een VNet of op een wille keurige locatie waarmee uitgaand verkeer naar Azure wordt toegestaan op poort 443. Voor de functie is de installatie van een relay-agent met de naam Hybrid Connection Manager (HCM) op een Windows Server 2012-host of nieuwer. De HCM moet kunnen bereiken Azure Relay op poort 443. De HCM kan worden gedownload van de App Service Hybride verbindingen gebruikers interface in de portal. 
 
-![Netwerkstroom hybride verbindingen](media/networking-features/hybrid-connections.png)
+![Netwerk stroom Hybride verbindingen](media/networking-features/hybrid-connections.png)
 
-De functie Hybride verbindingen van App Service is gebouwd op de azure relay-hybrideverbindingen. App Service maakt gebruik van een gespecialiseerde vorm van de functie die alleen het maken van uitgaande gesprekken vanuit uw app naar een TCP-host en -poort ondersteunt. Deze host en poort hoeven alleen op te lossen op de host waar de HCM is geïnstalleerd. Wanneer de app in App Service een DNS-lookup doet op de host en poort die is gedefinieerd in uw hybride verbinding, wordt het verkeer automatisch omgeleid om door de hybride verbinding en de hybride verbindingsbeheer te gaan. Lees de documentatie over hybride verbindingen van [App Service voor][hybridconn] meer informatie over hybride verbindingen
+De functie App Service Hybride verbindingen is gebaseerd op de Azure Relay Hybride verbindingen-mogelijkheid. App Service maakt gebruik van een speciale vorm van de functie die alleen ondersteuning biedt voor het maken van uitgaande oproepen vanuit uw app naar een TCP-host en-poort. Deze host en poort hoeven alleen te worden omgezet op de host waarop de HCM is geïnstalleerd. Wanneer de app in App Service een DNS-zoek opdracht op de host en poort die in uw hybride verbinding is gedefinieerd, wordt het verkeer automatisch omgeleid om door de hybride verbinding te gaan en de Hybrid Connection Manager. Raadpleeg de documentatie op [App Service hybride verbindingen][hybridconn] voor meer informatie over hybride verbindingen.
 
-Deze functie wordt vaak gebruikt om:
+Deze functie wordt vaak gebruikt voor het volgende:
 
-* Toegang tot bronnen in privénetwerken die niet zijn verbonden met Azure met een VPN of ExpressRoute
-* Ondersteuning voor het verhogen en verplaatsen van on-premises apps naar App Service zonder dat u ook ondersteunende databases hoeft te verplaatsen  
-* Zorg veilig voor toegang tot één host en poort per hybride verbinding. De meeste netwerkfuncties bieden open toegang tot een netwerk en met hybride verbindingen hebt u alleen de enkele host en poort die u bereiken.
-* Omvallen scenario's die niet worden gedekt door andere uitgaande connectiviteitsmethoden
-* Ontwikkeling uitvoeren in App Service waar de apps eenvoudig on-premises resources kunnen gebruiken 
+* Toegang tot bronnen in particuliere netwerken die niet zijn verbonden met Azure met een VPN-of ExpressRoute
+* Ondersteuning voor liften en verschuivingen van on-premises apps naar App Service zonder dat ook ondersteunende data bases moeten worden verplaatst  
+* Veilig toegang bieden tot één host en poort per hybride verbinding. De meeste netwerk functies openen toegang tot een netwerk en met Hybride verbindingen u slechts één host en poort hebt die u kunt bereiken.
+* Bedekkings scenario's die niet worden gedekt door andere methoden voor uitgaande connectiviteit
+* Ontwikkeling in App Service waarbij de apps eenvoudig on-premises resources kunnen gebruiken 
 
-Omdat de functie toegang biedt tot on-premises bronnen zonder een inkomende firewallgat, is deze populair bij ontwikkelaars. De andere uitgaande App Service-netwerkfuncties zijn zeer Azure Virtual Networking-gerelateerd. Hybrid Connections heeft geen afhankelijkheid van het doorlopen van een VNet en kan worden gebruikt voor een breder scala aan netwerkbehoeften. Het is belangrijk op te merken dat de App Service Hybrid Connections functie niet schelen of weten wat je doet op de top van het. Dat wil zeggen dat u het gebruiken om toegang te krijgen tot een database, een webservice of een willekeurige TCP-socket op een mainframe. De functie tunnels in wezen TCP-pakketten. 
+Omdat de functie toegang tot on-premises bronnen mogelijk maakt zonder een uitgaand firewall-gat, is het populair bij ontwikkel aars. De andere uitgaande App Service-netwerk functies zijn zeer samenhangende virtuele netwerken in Azure. Hybride verbindingen heeft geen afhankelijkheid van het gebruik van een VNet en kan worden gebruikt voor een groter aantal netwerk behoeften. Het is belang rijk te weten dat de functie van App Service Hybride verbindingen geen bedoelt of weet wat u eraan doet. Dat wil zeggen dat u deze kunt gebruiken voor toegang tot een Data Base, een webservice of een wille keurige TCP-socket op een mainframe. De functie tunnelt in feite TCP-pakketten. 
 
-Terwijl hybride verbindingen is populair voor ontwikkeling, het wordt ook gebruikt in tal van productie-toepassingen ook. Het is geweldig voor toegang tot een webservice of database, maar is niet geschikt voor situaties waarbij veel verbindingen worden gemaakt. 
+Hoewel Hybride verbindingen populair is voor ontwikkeling, wordt het ook gebruikt in talloze productie toepassingen. Het is ideaal voor het verkrijgen van toegang tot een webservice of Data Base, maar is niet geschikt voor situaties waarbij veel verbindingen worden gemaakt. 
 
-### <a name="gateway-required-vnet-integration"></a>Vereiste VNet-gateway-integratie 
+### <a name="gateway-required-vnet-integration"></a>Vereiste VNet-integratie voor gateway 
 
-Met de vereiste App Service VNet-integratiefunctie kan uw app **uitgaande** aanvragen indienen in een Azure Virtual Network. De functie werkt door de host te verbinden waarop uw app wordt uitgevoerd op een Virtual Network-gateway op uw VNet met een point-to-site VPN. Wanneer u de functie configureert, krijgt uw app een van de point-to-site-adressen die aan elke instantie zijn toegewezen. Met deze functie hebt u toegang tot bronnen in VNets voor Klassieke of Resource Manager in elke regio. 
+Met de gateway die is vereist App Service VNet-integratie functie kan uw app **uitgaande** aanvragen indienen in een Azure-Virtual Network. De functie werkt door verbinding te maken met de host waarop uw app wordt uitgevoerd op een Virtual Network gateway op uw VNet met een punt-naar-site-VPN. Wanneer u de functie configureert, haalt uw app een van de punt-naar-site-adressen die zijn toegewezen aan elk exemplaar. Met deze functie kunt u toegang krijgen tot resources in een klassieke of Resource Manager-VNets in elke regio. 
 
-![Vereiste VNet-gateway-integratie](media/networking-features/gw-vnet-integration.png)
+![Vereiste VNet-integratie voor gateway](media/networking-features/gw-vnet-integration.png)
 
-Deze functie lost het probleem op van de toegang tot bronnen in andere VNets en kan zelfs worden gebruikt om verbinding te maken via een VNet met andere VNets of zelfs on-premises. Het werkt niet met ExpressRoute aangesloten VNets, maar wel met Site-to-site VPN connected networks. Het is normaal gesproken ongepast om deze functie te gebruiken vanuit een app in een App Service Environment (ASE), omdat de ASE al in uw VNet staat. De use cases die deze functie oplost zijn:
+Met deze functie kunt u het probleem met het openen van bronnen in andere VNets oplossen en zelfs gebruiken om via een VNet verbinding te maken met een ander VNets of zelfs on-premises. Het werkt niet met ExpressRoute verbonden VNets, maar wel met site-naar-site-VPN verbonden netwerken. Het is normaal gesp roken niet geschikt om deze functie te gebruiken vanuit een app in een App Service Environment (ASE), omdat de ASE zich al in uw VNet bevindt. De use cases die deze functie oplost, zijn:
 
-* Toegang tot bronnen op privé-IP's in uw virtuele Azure-netwerken 
-* Toegang tot on-premises bronnen als er een site-to-site VPN is 
-* Toegang tot bronnen in peered VNets 
+* Toegang tot bronnen op privé Ip's in uw virtuele Azure-netwerken 
+* On-premises toegang tot bronnen als er sprake is van een site-naar-site-VPN 
+* Toegang tot resources in de peered VNets 
 
-Wanneer deze functie is ingeschakeld, gebruikt uw app de DNS-server waarmee de bestemming VNet is geconfigureerd. U meer lezen over deze functie in de documentatie over [App Service VNet Integration][vnetintegrationp2s]. 
+Als deze functie is ingeschakeld, gebruikt uw app de DNS-server waarop het doel-VNet is geconfigureerd. Meer informatie over deze functie vindt u in de documentatie over [app service VNet-integratie][vnetintegrationp2s]. 
 
 ### <a name="vnet-integration"></a>VNet-integratie
 
-De vereiste VNet-integratiefunctie voor gateway's is erg handig, maar lost nog steeds geen toegang tot bronnen op via ExpressRoute. Naast het nodig hebben om via ExpressRoute-verbindingen te bereiken, is er ook behoefte aan apps om te kunnen bellen naar serviceendpoint beveiligde services. Om beide extra behoeften op te lossen, is een andere VNet-integratiemogelijkheid toegevoegd. Met de nieuwe VNet-integratiefunctie u de back-end van uw app in een subnet plaatsen in een VNet resourcemanager in dezelfde regio. Deze functie is niet beschikbaar in een App Service-omgeving, die al in een VNet staat. Deze functie maakt het mogelijk:
+De gateway vereist VNet-integratie functie is zeer nuttig, maar er is nog steeds geen oplossing voor het openen van resources over ExpressRoute. Op het niveau van de ExpressRoute-verbindingen is het nodig dat apps aanroepen van beveiligde services voor service-eind punten kunnen maken. Voor het oplossen van beide extra behoeften is een andere VNet-integratie mogelijkheid toegevoegd. Met de nieuwe functie VNet-integratie kunt u de back-end van uw app in een subnet in een resource manager-VNet in dezelfde regio plaatsen. Deze functie is niet beschikbaar vanuit een App Service Environment, die zich al in een VNet bevindt. Met deze functie kunt u:
 
-* Toegang tot resources in VNets van Resource Manager in dezelfde regio
-* Toegang tot bronnen die zijn beveiligd met serviceeindpunten 
-* Toegang tot bronnen die toegankelijk zijn via ExpressRoute- of VPN-verbindingen
+* Toegang tot resources in de Resource Manager-VNets in dezelfde regio
+* Toegang tot resources die zijn beveiligd met Service-eind punten 
+* Toegang tot bronnen die toegankelijk zijn via ExpressRoute of VPN-verbindingen
 * Alle uitgaande verkeer beveiligen 
-* Force tunneling al uitgaand verkeer. 
+* Geforceerde tunneling voor al het uitgaande verkeer. 
 
 ![VNet-integratie](media/networking-features/vnet-integration.png)
 
-Lees de documenten over [App Service VNet Integration][vnetintegration]voor meer informatie over deze functie.
+Lees de documenten over [app service VNet-integratie][vnetintegration]voor meer informatie over deze functie.
 
 ## <a name="app-service-environment"></a>App Service-omgeving 
 
-Een App Service Environment (ASE) is een enkele tenant implementatie van de Azure App Service die wordt uitgevoerd in uw VNet. De ASE maakt use cases mogelijk zoals:
+Een App Service Environment (ASE) is een implementatie met één Tenant van de Azure App Service die wordt uitgevoerd in uw VNet. De ASE maakt gebruik van cases zoals:
 
-* Toegang tot bronnen in uw VNet
-* Toegang tot bronnen op ExpressRoute
-* Uw apps blootstellen met een privéadres in uw VNet 
-* Toegang tot bronnen op alle serviceeindpunten 
+* Toegang tot resources in uw VNet
+* Toegang tot resources via ExpressRoute
+* Uw apps beschikbaar maken met een privé adres in uw VNet 
+* Toegang tot resources via service-eind punten 
 
-Met een ASE hoeft u geen functies zoals VNet Integration of service-eindpunten te gebruiken, omdat de ASE al in uw VNet staat. Als u toegang wilt krijgen tot bronnen zoals SQL of Storage via serviceeindpunten, schakelt u serviceeindpunten in op het ASE-subnet. Als u toegang wilt tot bronnen in het VNet, is er geen extra configuratie vereist.  Als u toegang wilt tot bronnen via ExpressRoute, bevindt u zich al in het VNet en hoeft u niets te configureren op de ASE of de apps erin. 
+Met een ASE hoeft u geen functies zoals VNet-integratie of service-eind punten te gebruiken omdat de ASE zich al in uw VNet bevindt. Als u toegang wilt krijgen tot bronnen zoals SQL of opslag via service-eind punten, schakelt u service-eind punten in op het ASE-subnet. Als u toegang wilt krijgen tot resources in het VNet, is er geen aanvullende configuratie vereist.  Als u toegang wilt krijgen tot resources in ExpressRoute, bent u al in het VNet en hoeft u niets te configureren voor de ASE of de apps in de service. 
 
-Omdat de apps in een ILB ASE kunnen worden blootgesteld op een privé IP-adres, u eenvoudig WAF-apparaten toevoegen om alleen de apps die u wilt bloot te stellen aan het internet en de rest veilig te houden. Het leent zich voor een eenvoudige ontwikkeling van multi-tier applicaties. 
+Omdat de apps in een ILB-ASE kunnen worden weer gegeven op een privé-IP-adres, kunt u eenvoudig WAF-apparaten toevoegen om alleen de apps die u wilt Internet beschikbaar te maken en de rest veilig te houden. Het is een goed proces voor het ontwikkelen van toepassingen met meerdere lagen. 
 
-Er zijn een aantal dingen die nog niet mogelijk zijn van de multi-tenant service die afkomstig zijn van een ASE. Die omvatten dingen als:
+Er zijn een aantal dingen die nog niet mogelijk zijn van de multi tenant-service uit een ASE. Dit zijn onder andere zaken als:
 
-* Uw apps blootleggen op een privé-IP-adres
-* Alle uitgaande verkeer beveiligen met netwerkbesturingselementen die geen deel uitmaken van uw app 
-* Uw apps hosten in één tenantservice 
-* Opschalen naar veel meer exemplaren dan mogelijk is in de multi-tenant service 
-* Privé-CA-clientcertificaten laden voor gebruik door uw apps met beveiligde CA-eindpunten 
-* Force TLS 1.1 in alle apps die in het systeem worden gehost zonder dat u op app-niveau uitschakelen 
-* Geef een speciaal uitgaand adres op voor alle apps in uw ASE die niet worden gedeeld met klanten 
+* Uw apps beschikbaar maken op een privé-IP-adres
+* Alle uitgaand verkeer beveiligen met netwerk besturings elementen die geen deel uitmaken van uw app 
+* Uw apps hosten in één Tenant service 
+* U kunt Maxi maal meer exemplaren schalen dan mogelijk zijn in de multi tenant-service 
+* Certificaten voor persoonlijke certificerings instanties laden voor gebruik door uw apps met beveiligde eind punten voor persoonlijke certificerings instanties 
+* TLS 1,1 afdwingen voor alle apps die worden gehost in het systeem zonder enige mogelijkheid om uit te scha kelen op het niveau van de app 
+* Geef een toegewezen uitgaand adres op voor alle apps in uw ASE die niet met klanten worden gedeeld 
 
 ![ASE in een VNet](media/networking-features/app-service-environment.png)
 
-De ASE biedt het beste verhaal rond geïsoleerde en toegewijde app-hosting, maar komt wel met een aantal managementuitdagingen. Enkele dingen om te overwegen voordat u een operationele ASE gebruikt, zijn:
+De ASE biedt het beste verhaal rond geïsoleerde en toegewezen app-hosting, maar biedt wel enkele beheer problemen. Enkele zaken die u moet overwegen voordat u een operationele ASE gebruikt, zijn:
  
- * Een ASE loopt binnen uw VNet, maar heeft wel afhankelijkheden buiten het VNet. Die afhankelijkheden moeten worden toegestaan. Lees meer in [Netwerkoverwegingen voor een App Service-omgeving][networkinfo]
- * Een ASE schaalt niet meteen op zoals de multi-tenant service. U moet anticiperen op schaalbehoeften in plaats van reactief schalen. 
- * Een ASE heeft een hogere up front kosten in verband met het. Om het meeste uit uw ASE te halen, moet u van plan zijn om veel workloads in één ASE te stoppen in plaats van het te laten gebruiken voor kleine inspanningen
- * De apps in een ASE kunnen de toegang tot sommige apps in een ASE niet beperken en niet tot andere.
- * De ASE is in een subnet en alle netwerkregels gelden voor al het verkeer van en naar die ASE. Als u binnenkomende verkeersregels voor slechts één app wilt toewijzen, gebruikt u Toegangsbeperkingen. 
+ * Een ASE wordt binnen uw VNet uitgevoerd, maar heeft afhankelijkheden buiten het VNet. Deze afhankelijkheden moeten zijn toegestaan. Meer informatie vindt u in [netwerk overwegingen voor een app service Environment][networkinfo]
+ * Een ASE schaalt niet direct zoals de multi tenant-service. U moet anticiperen op schaal behoeften in plaats van opnieuw te schalen. 
+ * Aan een ASE zijn hogere kosten verbonden. Om optimaal gebruik te kunnen gaan van uw ASE, moet u een planning nemen voor het nemen van veel werk belastingen in één ASE in plaats van deze voor kleine inspanningen te gebruiken
+ * De apps in een ASE kunnen de toegang tot sommige apps in een ASE niet beperken en andere niet.
+ * De ASE bevindt zich in een subnet en alle netwerk regels zijn van toepassing op alle verkeer van en naar die ASE. Als u regels voor binnenkomend verkeer voor slechts één app wilt toewijzen, gebruikt u toegangs beperkingen. 
 
-## <a name="combining-features"></a>Functies combineren 
+## <a name="combining-features"></a>Functies combi neren 
 
-De functies die zijn vermeld voor de multi-tenant service kunnen samen worden gebruikt om uitgebreidere use cases op te lossen. Twee van de meest voorkomende use cases worden hier beschreven, maar het zijn slechts voorbeelden. Door te begrijpen wat de verschillende functies doen, u bijna al uw systeemarchitectuurbehoeften oplossen.
+De functies die worden vermeld voor de multi tenant-service kunnen samen worden gebruikt voor het oplossen van meer uitgebreide use-cases. Twee van de meest voorkomende gebruiks voorbeelden worden hier beschreven, maar ze zijn slechts voor beelden. Als u wilt weten wat de verschillende functies doen, kunt u bijna al uw systeem architectuur vereisten oplossen.
 
-### <a name="inject-app-into-a-vnet"></a>App injecteren in een VNet
+### <a name="inject-app-into-a-vnet"></a>App in een VNet injecteren
 
-Een veelgebruikte aanvraag is hoe u uw app in een VNet plaatst. Als u uw app in een VNet plaatst, worden de binnenkomende en uitgaande eindpunten voor een app binnen een VNet opgenomen. De ASE biedt de beste oplossing om dit probleem op te lossen, maar u het meeste krijgen van wat nodig is in de multi-tenant service door functies te combineren. U bijvoorbeeld intranettoepassingen met privé-inkomende en uitgaande adressen hosten door:
+Een gemeen schappelijke aanvraag is informatie over het plaatsen van uw app in een VNet. Als u uw app in een VNet plaatst, worden de binnenkomende en uitgaande eind punten voor een app binnen een VNet. De ASE biedt de beste oplossing om dit probleem op te lossen, maar u kunt de meeste van wat nodig is met in de multi tenant-service door functies te combi neren. U kunt bijvoorbeeld alleen toepassingen op intranet hosten met persoonlijke inkomende en uitgaande adressen:
 
-* Een toepassingsgateway maken met privé-in- en uitgaand adres
-* Binnenkomend verkeer naar uw app beveiligen met serviceeindpunten 
-* Gebruik de nieuwe VNet-integratie, zodat de back-end van uw app in uw VNet staat 
+* Een Application Gateway maken met privé-en inkomend adres
+* Inkomend verkeer naar uw app beveiligen met Service-eind punten 
+* Gebruik de nieuwe VNet-integratie zodat de back-end van uw app zich in uw VNet bevindt 
 
-Deze implementatiestijl geeft u geen speciaal adres voor uitgaand verkeer naar het internet of geeft u de mogelijkheid om al het uitgaande verkeer van uw app te vergrendelen.  Deze implementatiestijl zou u een groot deel van wat je anders zou krijgen met een ASE. 
+Met deze implementatie stijl krijgt u geen toegewezen adres voor uitgaand verkeer naar Internet of hebt u de mogelijkheid om al het uitgaande verkeer van uw app te vergren delen.  Met deze implementatie stijl krijgt u een groot deel van wat u alleen op een andere manier zou kunnen bereiken met een ASE. 
 
 ### <a name="create-multi-tier-applications"></a>Toepassingen met meerdere lagen maken
 
-Een multi-tier applicatie is een toepassing waarbij de API backend apps alleen toegankelijk zijn vanaf de front-end laag. Als u een toepassing met meerdere lagen wilt maken, u het als:
+Een toepassing met meerdere lagen is een toepassing waarbij de API-back-end-apps alleen kunnen worden geopend vanuit de front-end-laag. Als u een toepassing met meerdere lagen wilt maken, kunt u het volgende doen:
 
-* VNet-integratie gebruiken om de backend van uw front-end web-app te verbinden met een subnet in een VNet
-* Serviceeindpunten gebruiken om binnenkomend verkeer naar uw API-app te beveiligen om alleen afkomstig te zijn van het subnet dat wordt gebruikt door uw front-end web-app
+* VNet-integratie gebruiken om de back-end van uw front-end-web-app te verbinden met een subnet in een VNet
+* Gebruik service-eind punten om inkomend verkeer naar uw API-app te beveiligen tot alleen afkomstig van het subnet dat door de front-end-web-app wordt gebruikt
 
-![multi-tier app](media/networking-features/multi-tier-app.png)
+![app met meerdere lagen](media/networking-features/multi-tier-app.png)
 
-U meerdere front-end apps dezelfde API-app laten gebruiken door VNet-integratie te gebruiken van de andere front-end-apps en serviceeindpunten uit de API-app met hun subnetten.  
+U kunt meerdere front-end-apps dezelfde API-app gebruiken met behulp van VNet-integratie van de andere front-end-apps en service-eind punten van de API-app met hun subnetten.  
 
 <!--Links-->
 [appassignedaddress]: https://docs.microsoft.com/azure/app-service/configure-ssl-certificate

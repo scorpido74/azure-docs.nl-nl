@@ -1,6 +1,6 @@
 ---
-title: Checklist voor prestaties en schaalbaarheid voor Blob-opslag - Azure Storage
-description: Een checklist van beproefde praktijken voor gebruik met Blob-opslag bij het ontwikkelen van krachtige toepassingen.
+title: Controle lijst voor prestaties en schaal baarheid voor Blob Storage-Azure Storage
+description: Een controle lijst met bewezen procedures voor het gebruik van Blob Storage in het ontwikkelen van toepassingen met hoge prestaties.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,282 +9,282 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80473932"
 ---
-# <a name="performance-and-scalability-checklist-for-blob-storage"></a>Checklist voor prestaties en schaalbaarheid voor Blob-opslag
+# <a name="performance-and-scalability-checklist-for-blob-storage"></a>Controle lijst voor prestaties en schaal baarheid voor Blob Storage
 
-Microsoft heeft een aantal beproefde praktijken ontwikkeld voor het ontwikkelen van krachtige toepassingen met Blob-opslag. Deze checklist identificeert belangrijke praktijken die ontwikkelaars kunnen volgen om de prestaties te optimaliseren. Houd deze praktijken in gedachten tijdens het ontwerpen van uw toepassing en gedurende het hele proces.
+Micro soft heeft een aantal bewezen prak tijken ontwikkeld voor het ontwikkelen van toepassingen met hoge prestaties met Blob Storage. Deze controle lijst bevat de belangrijkste procedures die ontwikkel aars kunnen volgen om de prestaties te optimaliseren. Houd bij het ontwerpen van uw toepassing en tijdens het proces de volgende procedures in acht.
 
-Azure Storage heeft schaalbaarheids- en prestatiedoelstellingen voor capaciteit, transactiesnelheid en bandbreedte. Zie [Schaalbaarheids- en prestatiedoelen voor standaardopslagaccounts en](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) [schaalbaarheids- en prestatiedoelen voor Blob-opslag](scalability-targets.md)voor meer informatie over azure-opslagdoelen.
+Azure Storage heeft schaal baarheid en prestatie doelen voor capaciteit, transactie snelheid en band breedte. Zie [schaalbaarheids-en prestatie doelen voor standaard opslag accounts](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) en [schaal baarheid en prestatie doelen voor Blob Storage](scalability-targets.md)voor meer informatie over Azure Storage schaalbaarheids doelen.
 
 ## <a name="checklist"></a>Controlelijst
 
-In dit artikel worden bewezen praktijken voor prestaties georganiseerd in een checklist die u volgen tijdens het ontwikkelen van uw Blob-opslagtoepassing.
+In dit artikel worden bewezen procedures voor het uitvoeren van prestaties in een controle lijst georganiseerd die u kunt volgen tijdens het ontwikkelen van uw Blob Storage-toepassing.
 
-| Gereed | Categorie | Ontwerpoverweging |
+| Gereed | Categorie | Ontwerp overweging |
 | --- | --- | --- |
-| &nbsp; |Schaalbaarheidsdoelen |[u uw toepassing zo ontwerpen dat deze niet meer gebruikt dan het maximum aantal opslagaccounts?](#maximum-number-of-storage-accounts) |
-| &nbsp; |Schaalbaarheidsdoelen |[Vermijdt u naderende capaciteits- en transactielimieten?](#capacity-and-transaction-targets) |
-| &nbsp; |Schaalbaarheidsdoelen |[Hebben een groot aantal clients gelijktijdig toegang tot één blob?](#multiple-clients-accessing-a-single-blob-concurrently) |
-| &nbsp; |Schaalbaarheidsdoelen |[Blijft uw toepassing binnen de schaalbaarheidsdoelstellingen voor één blob?](#bandwidth-and-operations-per-blob) |
-| &nbsp; |Partitionering |[Is uw naamgevingsconventie ontworpen om een betere load-balancing mogelijk te maken?](#partitioning) |
-| &nbsp; |Netwerken |[Hebben client-side apparaten voldoende hoge bandbreedte en lage latentie om de benodigde prestaties te bereiken?](#throughput) |
-| &nbsp; |Netwerken |[Hebben client-side apparaten een netwerkkoppeling van hoge kwaliteit?](#link-quality) |
-| &nbsp; |Netwerken |[Is de clienttoepassing in dezelfde regio als het opslagaccount?](#location) |
-| &nbsp; |Directe toegang tot de client |[Gebruikt u shared access signatures (SAS) en cross-origin resource sharing (CORS) om directe toegang tot Azure Storage mogelijk te maken?](#sas-and-cors) |
-| &nbsp; |Caching |[Worden gegevens in cache van uw toepassing in cache opgenomen en zelden gewijzigd?](#reading-data) |
-| &nbsp; |Caching |[Is uw toepassing batching updates door ze caching op de client en vervolgens uploaden ze in grotere sets?](#uploading-data-in-batches) |
-| &nbsp; |.NET-configuratie |[Gebruikt u .NET Core 2.1 of hoger voor optimale prestaties?](#use-net-core) |
-| &nbsp; |.NET-configuratie |[Hebt u uw client geconfigureerd om voldoende gelijktijdige verbindingen te gebruiken?](#increase-default-connection-limit) |
-| &nbsp; |.NET-configuratie |[Heeft u voor .NET-toepassingen .NET geconfigureerd om een voldoende aantal threads te gebruiken?](#increase-minimum-number-of-threads) |
-| &nbsp; |Parallellisme |[Hebt u ervoor gezorgd dat parallellisme op de juiste manier wordt begrensd, zodat u de mogelijkheden van uw klant niet overbelast of de schaalbaarheidsdoelstellingen benadert?](#unbounded-parallelism) |
-| &nbsp; |Hulpprogramma's |[Gebruikt u de nieuwste versies van door Microsoft geleverde clientbibliotheken en -hulpprogramma's?](#client-libraries-and-tools) |
-| &nbsp; |Nieuwe pogingen |[Gebruikt u een herprobeerbeleid met een exponentiële back-off voor beperking van fouten en time-outs?](#timeout-and-server-busy-errors) |
-| &nbsp; |Nieuwe pogingen |[Is uw toepassing het vermijden van nieuwe tries voor niet-herprobeerbare fouten?](#non-retryable-errors) |
-| &nbsp; |Blobs kopiëren |[Kopieert u blobs op de meest efficiënte manier?](#blob-copy-apis) |
-| &nbsp; |Blobs kopiëren |[Gebruikt u de nieuwste versie van AzCopy voor bulkcopybewerkingen?](#use-azcopy) |
-| &nbsp; |Blobs kopiëren |[Gebruikt u de Azure Data Box-familie voor het importeren van grote hoeveelheden gegevens?](#use-azure-data-box) |
-| &nbsp; |Inhoudsdistributie |[Gebruikt u een CDN voor contentdistributie?](#content-distribution) |
-| &nbsp; |Metagegevens gebruiken |[Slaat u veelgebruikte metadata over blobs op in hun metadata?](#use-metadata) |
-| &nbsp; |Snel uploaden |[Wanneer u probeert om een blob snel te uploaden, upload je blokken parallel?](#upload-one-large-blob-quickly) |
-| &nbsp; |Snel uploaden |[Wanneer u probeert om veel blobs snel te uploaden, upload je blobs parallel?](#upload-many-blobs-quickly) |
-| &nbsp; |Blob-type |[Gebruikt u paginablobs of blokkeert u blobs indien nodig?](#choose-the-correct-type-of-blob) |
+| &nbsp; |Schaalbaarheids doelen |[Kunt u uw toepassing zo ontwerpen dat deze niet meer dan het maximale aantal opslag accounts gebruikt?](#maximum-number-of-storage-accounts) |
+| &nbsp; |Schaalbaarheids doelen |[Vermijdt u benadering van capaciteits-en transactie limieten?](#capacity-and-transaction-targets) |
+| &nbsp; |Schaalbaarheids doelen |[Is een groot aantal clients gelijktijdig toegang tot één BLOB?](#multiple-clients-accessing-a-single-blob-concurrently) |
+| &nbsp; |Schaalbaarheids doelen |[Blijft uw toepassing binnen de schaalbaarheids doelen voor één BLOB?](#bandwidth-and-operations-per-blob) |
+| &nbsp; |Partitionering |[Is uw naamgevings Conventie ontworpen om een betere taak verdeling te bieden?](#partitioning) |
+| &nbsp; |Netwerken |[Hebben apparaten aan de client zijde voldoende band breedte en lage latentie om de benodigde prestaties te verwezenlijken?](#throughput) |
+| &nbsp; |Netwerken |[Hebben apparaten aan de client zijde een netwerk koppeling van hoge kwaliteit?](#link-quality) |
+| &nbsp; |Netwerken |[Bevindt de client toepassing zich in dezelfde regio als het opslag account?](#location) |
+| &nbsp; |Directe client toegang |[Maakt u gebruik van Shared Access signatures (SAS) en cross-Origin Resource Sharing (CORS) om direct toegang tot Azure Storage te bieden?](#sas-and-cors) |
+| &nbsp; |Caching |[Worden de gegevens in de toepassing opgeslagen die regel matig worden geopend en zelden worden gewijzigd?](#reading-data) |
+| &nbsp; |Caching |[Worden de updates voor de toepassing in de cache opgeslagen op de client en vervolgens geüpload in grotere sets?](#uploading-data-in-batches) |
+| &nbsp; |.NET-configuratie |[Gebruikt u .NET Core 2,1 of hoger voor optimale prestaties?](#use-net-core) |
+| &nbsp; |.NET-configuratie |[Hebt u uw client geconfigureerd voor het gebruik van een voldoende aantal gelijktijdige verbindingen?](#increase-default-connection-limit) |
+| &nbsp; |.NET-configuratie |[Voor .NET-toepassingen hebt u .NET geconfigureerd voor het gebruik van een voldoende aantal threads?](#increase-minimum-number-of-threads) |
+| &nbsp; |Parallelle uitvoering |[Hebt u gegarandeerd dat de parallelle kracht op de juiste wijze is gebonden, zodat u de mogelijkheden van uw client niet overbelastt of de schaalbaarheids doelen kunt benaderen?](#unbounded-parallelism) |
+| &nbsp; |Hulpprogramma's |[Gebruikt u de nieuwste versies van door micro soft meegeleverde client bibliotheken en-hulpprogram ma's?](#client-libraries-and-tools) |
+| &nbsp; |Nieuwe pogingen |[Gebruikt u een beleid voor opnieuw proberen met een exponentiële uitstel voor het beperken van fouten en time-outs?](#timeout-and-server-busy-errors) |
+| &nbsp; |Nieuwe pogingen |[Voor komt uw toepassing nieuwe pogingen voor niet-herstel bare fouten?](#non-retryable-errors) |
+| &nbsp; |Blobs kopiëren |[Worden de blobs op de meest efficiënte manier gekopieerd?](#blob-copy-apis) |
+| &nbsp; |Blobs kopiëren |[Gebruikt u de meest recente versie van AzCopy voor bulk Kopieer bewerkingen?](#use-azcopy) |
+| &nbsp; |Blobs kopiëren |[Gebruikt u de Azure Data Box-serie voor het importeren van grote hoeveel heden gegevens?](#use-azure-data-box) |
+| &nbsp; |Inhouds distributie |[Gebruikt u een CDN voor inhouds distributie?](#content-distribution) |
+| &nbsp; |Meta gegevens gebruiken |[Slaat u veelgebruikte meta gegevens over blobs op in hun meta gegevens?](#use-metadata) |
+| &nbsp; |Snel uploaden |[Als u probeert een BLOB snel te uploaden, kunt u blokken parallel uploaden?](#upload-one-large-blob-quickly) |
+| &nbsp; |Snel uploaden |[Kunt u blobs parallel uploaden wanneer u een groot aantal blobs wilt uploaden?](#upload-many-blobs-quickly) |
+| &nbsp; |Blob-type |[Gebruikt u pagina-blobs of blok-blobs wanneer dit van toepassing is?](#choose-the-correct-type-of-blob) |
 
-## <a name="scalability-targets"></a>Schaalbaarheidsdoelen
+## <a name="scalability-targets"></a>Schaalbaarheids doelen
 
-Als uw toepassing een van de schaalbaarheidsdoelen benadert of overschrijdt, kan deze worden geconfronteerd met verhoogde transactielatencies of beperking. Wanneer Azure Storage uw toepassing beperkt, begint de service met het retourneren van 503 (Server bezet) of 500 (Time-out van bewerking). Het vermijden van deze fouten door binnen de grenzen van de schaalbaarheidsdoelstellingen te blijven, is een belangrijk onderdeel van het verbeteren van de prestaties van uw toepassing.
+Als uw toepassing een van de schaalbaarheids doelen benadert of overschrijdt, kunnen er meer trans acties of beperkingen optreden. Wanneer Azure Storage uw toepassing beperkt, begint de service met het retour neren van 503 (server bezet) of 500 (time-out voor bewerking). Als u deze fouten vermijdt door binnen de grenzen van de schaalbaarheids doelen te blijven, is een belang rijk onderdeel van het verbeteren van de prestaties van uw toepassing.
 
-Zie [Schaalbaarheids- en prestatiedoelen](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage)voor Azure Storage voor meer informatie over schaalbaarheidsdoelen voor de wachtrijservice.
+Zie [Azure Storage schaal baarheid en prestatie doelen](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage)voor meer informatie over de schaalbaarheids doelen voor de Queue-service.
 
-### <a name="maximum-number-of-storage-accounts"></a>Maximum aantal opslagaccounts
+### <a name="maximum-number-of-storage-accounts"></a>Maximum aantal opslag accounts
 
-Als u het maximum aantal opslagaccounts nadert dat is toegestaan voor een bepaalde combinatie van abonnement/regio, evalueert u uw scenario en bepaalt u of een van de volgende voorwaarden van toepassing is:
+Als u het maximum aantal opslag accounts nadert dat is toegestaan voor een bepaalde combi natie van abonnement/regio, evalueert u uw scenario en bepaalt u of een van de volgende voor waarden van toepassing is:
 
-- Gebruikt u opslagaccounts om onbeheerde schijven op te slaan en deze schijven toe te voegen aan uw virtuele machines (VM's)? Voor dit scenario raadt Microsoft aan beheerde schijven te gebruiken. Beheerde schijven schalen automatisch en zonder de noodzaak om afzonderlijke opslagaccounts te maken en te beheren. Zie [Inleiding tot door Azure beheerde schijven voor](../../virtual-machines/windows/managed-disks-overview.md) meer informatie
-- Gebruikt u één opslagaccount per klant, met het oog op gegevensisolatie? Voor dit scenario raadt Microsoft aan om voor elke klant een blobcontainer te gebruiken in plaats van een volledig opslagaccount. Met Azure Storage u nu RBAC-rollen (role-based access control) per container toewijzen. Zie [Toegang verlenen tot Azure blob- en wachtrijgegevens met RBAC in de Azure-portal](../common/storage-auth-aad-rbac-portal.md)voor meer informatie.
-- Gebruikt u meerdere opslagaccounts om de invallen, de uitgang, de I/O-bewerkingen per seconde (IOPS) of de capaciteit te vergroten? In dit scenario raadt Microsoft u aan gebruik te maken van hogere limieten voor opslagaccounts om het aantal opslagaccounts te verminderen dat nodig is voor uw werkbelasting, indien mogelijk. Neem contact op met [Azure Support](https://azure.microsoft.com/support/options/) om hogere limieten voor uw opslagaccount aan te vragen. Zie [Grotere opslagaccounts op](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)grotere schaal aankondigen voor meer informatie .
+- Gebruikt u opslag accounts voor het opslaan van niet-beheerde schijven en het toevoegen van die schijven aan uw virtuele machines (Vm's)? Voor dit scenario raadt micro soft aan om beheerde schijven te gebruiken. Beheerde schijven kunnen automatisch worden geschaald en zonder dat u afzonderlijke opslag accounts hoeft te maken en beheren. Zie [Introduction to Azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md) (Engelstalig) voor meer informatie
+- Gebruikt u één opslag account per klant, voor het doel van gegevens isolatie? Voor dit scenario raadt micro soft aan om een BLOB-container te gebruiken voor elke klant, in plaats van een hele opslag account. Azure Storage kunt nu op rollen gebaseerd toegangs beheer (RBAC) rollen per container toewijzen. Zie voor meer informatie [toegang verlenen tot Azure Blob-en wachtrij gegevens met RBAC in het Azure Portal](../common/storage-auth-aad-rbac-portal.md).
+- Gebruikt u meerdere opslag accounts om Shard uit te breiden, uitvoer, I/O-bewerkingen per seconde (IOPS) of capaciteit? In dit scenario raadt micro soft u aan gebruik te maken van verhoogde limieten voor opslag accounts om zo mogelijk het aantal opslag accounts te beperken dat vereist is voor uw werk belasting. Neem contact op met de [ondersteuning van Azure](https://azure.microsoft.com/support/options/) om verhoogde limieten voor uw opslag account aan te vragen. Zie voor meer informatie [aankondigen van grotere opslag accounts met hogere schaal](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
-### <a name="capacity-and-transaction-targets"></a>Capaciteits- en transactiedoelstellingen
+### <a name="capacity-and-transaction-targets"></a>Capaciteits-en transactie doelen
 
-Als uw toepassing de schaalbaarheidsdoelen voor één opslagaccount nadert, u overwegen een van de volgende benaderingen te kiezen:  
+Als uw toepassing de schaalbaarheids doelen voor één opslag account nadert, kunt u een van de volgende benaderingen aannemen:  
 
-- Als uw toepassing het transactiedoel bereikt, u overwegen blokblobopslagaccounts te gebruiken, die zijn geoptimaliseerd voor hoge transactiesnelheden en lage en consistente latentie. Zie [Overzicht van Azure-opslagaccount](../common/storage-account-overview.md) voor meer informatie.
-- Heroverweeg de werkbelasting die ervoor zorgt dat uw toepassing de schaalbaarheidsdoelstelling benadert of overschrijdt. u het anders ontwerpen om minder bandbreedte of capaciteit te gebruiken, of minder transacties?
-- Als uw toepassing een van de schaalbaarheidsdoelen moet overschrijden, maakt u meerdere opslagaccounts en partitiet u uw toepassingsgegevens over die meerdere opslagaccounts. Als u dit patroon gebruikt, moet u uw toepassing zo ontwerpen dat u in de toekomst meer opslagaccounts toevoegen voor taakverdeling. Opslagaccounts zelf hebben geen andere kosten dan uw gebruik in termen van opgeslagen gegevens, transacties of overgedragen gegevens.
-- Als uw toepassing de bandbreedtedoelen nadert, u overwegen gegevens aan de clientzijde te comprimeren om de bandbreedte te verminderen die nodig is om de gegevens naar Azure Storage te verzenden.
-    Hoewel het comprimeren van gegevens bandbreedte kan besparen en de netwerkprestaties kan verbeteren, kan dit ook negatieve effecten hebben op de prestaties. Evalueer de prestatie-impact van de aanvullende verwerkingsvereisten voor gegevenscompressie en decompressie aan de clientzijde. Houd er rekening mee dat het opslaan van gecomprimeerde gegevens het oplossen van problemen moeilijker kan maken, omdat het mogelijk moeilijker is om de gegevens te bekijken met behulp van standaardhulpprogramma's.
-- Als uw toepassing de schaalbaarheidsdoelen nadert, zorg er dan voor dat u een exponentiële back-off gebruikt voor nieuwe pogingen. Het is het beste om te proberen te voorkomen dat het bereiken van de schaalbaarheidsdoelstellingen door de uitvoering van de aanbevelingen beschreven in dit artikel. Echter, met behulp van een exponentiële backoff voor nieuwe pogingen zal voorkomen dat uw toepassing van snel opnieuw proberen, die kan maken throttling erger. Zie voor meer informatie de sectie met de titel [Timeout and Server Busy errors](#timeout-and-server-busy-errors).
+- Als uw toepassing het doel van de trans actie opneemt, kunt u gebruikmaken van blok-Blob Storage-accounts, die zijn geoptimaliseerd voor hoge transactie tarieven en lage en consistente latentie. Zie [Overzicht van Azure-opslagaccount](../common/storage-account-overview.md) voor meer informatie.
+- Bekijk de werk belasting die ervoor zorgt dat uw toepassing het schaalbaarheids doel benadert of overschrijdt. Kunt u het op verschillende manieren ontwerpen om minder band breedte of capaciteit of minder trans acties te gebruiken?
+- Als uw toepassing een van de schaalbaarheids doelen moet overschrijden, maakt u meerdere opslag accounts en partitioneert u uw toepassings gegevens over deze meerdere opslag accounts. Als u dit patroon gebruikt, moet u ervoor zorgen dat u uw toepassing ontwerpt, zodat u in de toekomst meer opslag accounts kunt toevoegen voor taak verdeling. Opslag accounts zelf hebben geen andere kosten dan uw gebruik in termen van opgeslagen gegevens, gemaakte trans acties of overgedragen gegevens.
+- Als uw toepassing de bandbreedte doelen nadert, kunt u overwegen om de gegevens aan de client zijde te comprimeren om de band breedte te verminderen die nodig is om de gegevens naar Azure Storage te verzenden.
+    Tijdens het comprimeren van gegevens kan band breedte worden bespaard en de netwerk prestaties worden verbeterd, maar kan ook negatieve gevolgen voor de prestaties hebben. Evalueer de invloed op de prestaties van de extra verwerkings vereisten voor gegevens compressie en decompressie aan de client zijde. Houd er rekening mee dat het opslaan van gecomprimeerde gegevens lastigere problemen kan opleveren omdat het mogelijk moeilijker is om de gegevens te bekijken met behulp van standaard hulpprogramma's.
+- Als uw toepassing de schaalbaarheids doelen nadert, moet u ervoor zorgen dat u een exponentiële uitstel gebruikt voor nieuwe pogingen. Het is raadzaam om te voor komen dat u de schaalbaarheids doelen bereikt door de aanbevelingen te implementeren die in dit artikel worden beschreven. Als u echter een exponentiële uitstel gebruikt voor nieuwe pogingen, kan uw toepassing niet snel opnieuw proberen, waardoor het beperken van de toepassingen kan worden verergerd. Zie voor meer informatie de sectie met de titel [time-out en server bezet](#timeout-and-server-busy-errors).
 
-### <a name="multiple-clients-accessing-a-single-blob-concurrently"></a>Meerdere clients die gelijktijdig toegang hebben tot één blob
+### <a name="multiple-clients-accessing-a-single-blob-concurrently"></a>Meerdere clients hebben gelijktijdig toegang tot een enkele BLOB
 
-Als u een groot aantal clients gelijktijdig toegang hebt tot één blob, moet u rekening houden met zowel de schaalbaarheidsdoelen per blob als per opslagaccount. Het exacte aantal clients dat toegang heeft tot één blob, is afhankelijk van factoren zoals het aantal clients dat de blob tegelijkertijd aanvraagt, de grootte van de blob en netwerkvoorwaarden.
+Als u een groot aantal clients tegelijkertijd toegang tot één BLOB wilt geven, moet u rekening houden met zowel een BLOB als een schaal baarheid voor het opslag account. Het exacte aantal clients dat toegang heeft tot één blob, varieert afhankelijk van factoren zoals het aantal clients dat de BLOB tegelijk aanvraagt, de grootte van de BLOB en netwerk omstandigheden.
 
-Als de blob kan worden verspreid via een CDN, zoals afbeeldingen of video's die vanaf een website worden weergegeven, u een CDN gebruiken. Zie voor meer informatie de sectie met de titel [Inhoudsdistributie](#content-distribution).
+Als de Blob kan worden gedistribueerd via een CDN, zoals afbeeldingen of Video's die van een website worden bediend, kunt u een CDN gebruiken. Zie de sectie getiteld [Content Distribution](#content-distribution)(Engelstalig) voor meer informatie.
 
-In andere scenario's, zoals wetenschappelijke simulaties waarbij de gegevens vertrouwelijk zijn, hebt u twee opties. De eerste is om de toegang van uw workload zodanig te spreiden dat de blob gedurende een bepaalde periode wordt geopend vs tegelijkertijd toegankelijk te zijn. U de blob ook tijdelijk kopiëren naar meerdere opslagaccounts om het totale IOPS per blob en voor opslagaccounts te verhogen. De resultaten variëren afhankelijk van het gedrag van uw toepassing, dus zorg ervoor dat u gelijktijdigheidspatronen test tijdens het ontwerp.
+In andere scenario's, zoals weten schappelijke simulaties waarin de gegevens vertrouwelijk zijn, hebt u twee opties. De eerste is om de toegang van uw werk belasting te spreiden, zodat de BLOB gedurende een bepaalde tijd toegankelijk is en tegelijkertijd wordt geopend. U kunt de BLOB ook tijdelijk kopiëren naar meerdere opslag accounts om het totale aantal IOPS per Blob en andere opslag accounts te verhogen. De resultaten variëren afhankelijk van het gedrag van uw toepassing. Zorg er dus voor dat u gelijktijdigheids patronen tijdens het ontwerpen test.
 
-### <a name="bandwidth-and-operations-per-blob"></a>Bandbreedte en bewerkingen per blob
+### <a name="bandwidth-and-operations-per-blob"></a>Band breedte en bewerkingen per BLOB
 
-Eén blob ondersteunt maximaal 500 aanvragen per seconde. Als u meerdere clients hebt die dezelfde blob moeten lezen en u deze limiet mogelijk overschrijdt, u overwegen een blokblobopslagaccount te gebruiken. Een blokblobopslagaccount biedt een hoger aanvraagpercentage of I/O-bewerkingen per seconde (IOPS).
+Eén BLOB ondersteunt Maxi maal 500 aanvragen per seconde. Als u meerdere clients hebt die dezelfde BLOB moeten lezen en u deze limiet kunt overschrijden, kunt u overwegen een blok-Blob-opslag account te gebruiken. Een blok-Blob-opslag account biedt een hogere aanvraag frequentie of I/O-bewerkingen per seconde (IOPS).
 
-U ook een CDN (Content Delivery Network) zoals Azure CDN gebruiken om bewerkingen op de blob te distribueren. Zie [Azure CDN-overzicht](../../cdn/cdn-overview.md)voor meer informatie over Azure CDN.  
+U kunt ook een CDN (Content Delivery Network) gebruiken, zoals Azure CDN om bewerkingen op de BLOB te distribueren. Zie [Azure CDN Overview](../../cdn/cdn-overview.md)voor meer informatie over Azure CDN.  
 
 ## <a name="partitioning"></a>Partitionering
 
-Inzicht in hoe Azure Storage-partities van uw blobgegevens nuttig zijn om de prestaties te verbeteren. Azure Storage kan gegevens sneller in één partitie weergeven dan gegevens die meerdere partities omvatten. Door uw blobs de juiste naam te bieden, u de efficiëntie van leesverzoeken verbeteren.
+Meer informatie over hoe Azure Storage uw BLOB-gegevens partitioneert, is handig voor het verbeteren van de prestaties. Azure Storage kunnen gegevens sneller in één partitie leveren dan gegevens die meerdere partities omspannen. Als u de blobs op de juiste wijze benoemt, kunt u de efficiëntie van Lees aanvragen verbeteren.
 
-Blob-opslag maakt gebruik van een op bereik gebaseerd partitieschema voor schalen en taakverdeling. Elke blob heeft een partitiesleutel die bestaat uit de volledige blobnaam (account+container+blob). De partitiesleutel wordt gebruikt om blobgegevens in bereiken te verdelen. De bereiken worden vervolgens load-balanced over Blob-opslag.
+Blob-opslag maakt gebruik van een partitie schema op basis van bereik voor schalen en taak verdeling. Elke BLOB heeft een partitie sleutel die bestaat uit de volledige naam van de BLOB (account + container + blob). De partitie sleutel wordt gebruikt voor het partitioneren van BLOB-gegevens in bereiken. De bereiken worden vervolgens gelijkmatig verdeeld over de Blob-opslag.
 
-Op bereik gebaseerde partitionering betekent dat naamgevingsconventies die lexicale volgorde gebruiken (bijvoorbeeld *mypayroll,* *myperformance,* *myemployees,* etc.) of timestamps *(log20160101*, *log20160102*, *log20160102,* enz.) eerder zullen resulteren in de co-locatie van de partities op dezelfde partitieserver. , totdat een verhoogde belasting vereist dat ze worden opgesplitst in kleinere bereiken. Het co-lokaliseren van blobs op dezelfde partitieserver verbetert de prestaties, dus een belangrijk onderdeel van prestatieverbetering bestaat uit het benoemen van blobs op een manier die ze het meest effectief organiseert.
+Partitioneren op basis van een bereik houdt in dat naam conventies die gebruikmaken van lexicale ordening (bijvoorbeeld *mypayroll*, *myperformance*, *myemployees*, enzovoort) of tijds tempels (*log20160101*, *log20160102*, *log20160102*enzovoort), meer zullen leiden tot de partities die zich op dezelfde partitie server bevinden. , totdat meer belasting nodig is, moeten ze worden opgesplitst in kleinere bereiken. Door co-locaties op dezelfde partitie server te plaatsen, verbetert u de prestaties, zodat een belang rijk onderdeel van de prestatie verbetering de naam blobs biedt op een manier die ze het meest effectief organiseert.
 
-Alle blobs in een container kunnen bijvoorbeeld door één server worden bediend totdat de belasting op deze blobs verdere herbalancering van de partitiebereiken vereist. Op dezelfde manier kan een groep licht geladen accounts met hun namen in lexicale volgorde door één server worden bediend totdat de belasting op een of al deze accounts vereist dat ze worden gesplitst over meerdere partitieservers.
+Alle blobs in een container kunnen bijvoorbeeld worden bediend door één server totdat de belasting voor deze blobs verdere herverdeling van de partitielay-bereiken vereist. Op dezelfde manier kan een groep met zeer bewaarde accounts met hun namen die zijn gerangschikt in lexicale volg orde worden bediend door één server totdat de belasting van een of meer van deze accounts moet worden verdeeld over meerdere partitie servers.
 
-Elke load-balancing operatie kan invloed hebben op de latentie van opslagaanroepen tijdens de bewerking. De mogelijkheid van de service om een plotselinge uitbarsting van verkeer naar een partitie te verwerken, wordt beperkt door de schaalbaarheid van een enkele partitieserver totdat de taakverdelingsbewerking wordt gestart en het bereik van de partitiesleutel opnieuw in evenwicht brengt.
+Elke bewerking voor taak verdeling kan van invloed zijn op de latentie van opslag aanroepen tijdens de bewerking. De mogelijkheid van de service om een plotselinge hoeveelheid verkeer naar een partitie af te handelen, wordt beperkt door de schaal baarheid van een enkele partitie server totdat de taak verdeling wordt geactiveerd en het partitie sleutel bereik opnieuw wordt gebalanceerd.
 
-U een aantal aanbevolen procedures volgen om de frequentie van dergelijke bewerkingen te verminderen.  
+U kunt een aantal aanbevolen procedures volgen om de frequentie van dergelijke bewerkingen te verminderen.  
 
-- Gebruik indien mogelijk blob- of blokformaten groter dan 4 MiB voor standaardopslagaccounts en meer dan 256 KiB voor premium opslagaccounts. Grotere blob- of blokgroottes activeren automatisch blobs met hoge doorvoer. Blobs met hoge doorvoer bieden krachtige inname die niet wordt beïnvloed door partitienaamgeving.
-- Controleer de naamgevingsconventie die u gebruikt voor accounts, containers, blobs, tabellen en wachtrijen. Overweeg account-, container- of blobnamen vooraf op te stellen met een hash van drie cijfers met behulp van een hashing-functie die het beste bij uw behoeften past.
-- Als u uw gegevens organiseert met behulp van tijdstempels of numerieke id's, moet u ervoor zorgen dat u geen append-only (of prepend-only) verkeerspatroon gebruikt. Deze patronen zijn niet geschikt voor een op bereik gebaseerd partitioneringssysteem. Deze patronen kunnen ertoe leiden dat al het verkeer naar één partitie gaat en het systeem beperkt van effectief balanceren.
+- Gebruik, indien mogelijk, Blob of blok grootten van meer dan 4 MiB voor standaard opslag accounts en meer dan 256 KiB voor Premium Storage-accounts. Grotere BLOB-of blok grootten activeren automatisch blok-blobs met hoge door voer. Blok-blobs met hoge door Voer bieden hoogwaardige opname die niet wordt beïnvloed door de naamgeving van partities.
+- Bekijk de naamgevings Conventie die u gebruikt voor accounts, containers, blobs, tabellen en wacht rijen. Overweeg het vooraf bepalen van namen van accounts, containers of blobs met een hash met drie cijfers met een hash-functie die het beste bij uw behoeften past.
+- Als u uw gegevens indeelt met behulp van tijds tempels of numerieke id's, moet u ervoor zorgen dat u geen gebruik maakt van een patroon voor alleen toevoegen (of alleen laten voorafgaan door). Deze patronen zijn niet geschikt voor een partitie systeem op basis van een bereik. Deze patronen kunnen leiden tot al het verkeer naar één partitie en beperken het systeem van doel treffende taak verdeling.
 
-    Als u bijvoorbeeld dagelijkse bewerkingen hebt die een blob met een tijdstempel gebruiken, zoals *yyyymmdd,* wordt al het verkeer voor die dagelijkse bewerking naar één blob geleid, die wordt bediend door één partitieserver. Overweeg of de limieten per blob en limieten per partitie aan uw behoeften voldoen en overweeg deze bewerking indien nodig in meerdere blobs op te splitsen. Als u tijdreeksgegevens opslaat in uw tabellen, kan al het verkeer worden doorverwezen naar het laatste deel van de sleutelnaamruimte. Als u numerieke id's gebruikt, moet u de ID vooraf fixeren met een hash van drie cijfers. Als u tijdstempels gebruikt, moet u de tijdstempel met de secondenwaarde voorzetten, bijvoorbeeld *ssyyyymmdd.* Als uw toepassing routinematig aanbiedings- en querybewerkingen uitvoert, kiest u een hashing-functie die het aantal query's beperkt. In sommige gevallen kan een willekeurig voorvoegsel voldoende zijn.
+    Als u bijvoorbeeld dagelijkse bewerkingen hebt die gebruikmaken van een blob met een tijds tempel zoals *jjjmmdd*, wordt al het verkeer voor die dagelijkse bewerking omgeleid naar één blob, die wordt bediend door één partitie server. Bepaal of de limieten per Blob en de limieten per partitie aan uw behoeften voldoen en overweeg deze bewerking zo nodig te verbreken in meerdere blobs. En als u tijdreeks gegevens in uw tabellen opslaat, kan al het verkeer worden omgeleid naar het laatste deel van de sleutel naam ruimte. Als u numerieke Id's gebruikt, moet u het voor voegsel van de ID met een hash met drie cijfers. Als u tijds tempels gebruikt, moet u een voor voegsel van de tijds tempel maken met de seconden waarde, bijvoorbeeld *ssyyyymmdd*. Als uw toepassing een lijst-en query bewerking uitvoert, kiest u een hash-functie waarmee het aantal query's wordt beperkt. In sommige gevallen kan een wille keurig voor voegsel voldoende zijn.
   
-- Zie [Azure Storage: Een zeer beschikbare cloudopslagservice met sterke consistentie voor](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)meer informatie over het partitieschema dat wordt gebruikt in Azure Storage.
+- Zie [Azure Storage: een Maxi maal beschik bare Cloud opslag service met sterke consistentie](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)voor meer informatie over het partitie schema dat wordt gebruikt in azure Storage.
 
 ## <a name="networking"></a>Netwerken
 
-De fysieke netwerkbeperkingen van de toepassing kunnen een aanzienlijke invloed hebben op de prestaties. In de volgende secties worden enkele beperkingen beschreven die gebruikers kunnen tegenkomen.  
+De beperkingen van het fysieke netwerk van de toepassing kunnen een grote invloed hebben op de prestaties. In de volgende secties worden enkele beperkingen beschreven die gebruikers kunnen tegen komen.  
 
-### <a name="client-network-capability"></a>Clientnetwerkmogelijkheid
+### <a name="client-network-capability"></a>Client netwerk mogelijkheid
 
-Bandbreedte en de kwaliteit van de netwerkkoppeling spelen een belangrijke rol in de prestaties van toepassingen, zoals beschreven in de volgende secties.
+De band breedte en de kwaliteit van de netwerk koppeling spelen belang rijke rollen in de toepassings prestaties, zoals beschreven in de volgende secties.
 
 #### <a name="throughput"></a>Doorvoer
 
-Voor bandbreedte is het probleem vaak de mogelijkheden van de client. Grotere Azure-exemplaren hebben NIC's met een grotere capaciteit, dus u moet overwegen een grotere instantie of meer VM's te gebruiken als u hogere netwerklimieten van één machine nodig hebt. Als u azure-opslag opent vanuit een on-premises toepassing, geldt dezelfde regel: begrijp de netwerkmogelijkheden van het clientapparaat en de netwerkconnectiviteit met de Azure Storage-locatie en verbeter deze indien nodig of ontwerp uw toepassing om binnen hun mogelijkheden te werken.
+Voor band breedte is het probleem vaak de mogelijkheden van de client. Grotere Azure-instanties hebben Nic's met een grotere capaciteit. u moet dus overwegen een grotere instantie of meer Vm's te gebruiken als u hogere netwerk limieten van één computer nodig hebt. Als u Azure Storage opent vanuit een on-premises toepassing, geldt dezelfde regel: inzicht in de netwerk mogelijkheden van het client apparaat en de netwerk verbinding met de Azure Storage locatie en verbeter deze indien nodig, of ontwerp uw toepassing zodat deze binnen hun mogelijkheden kan werken.
 
-#### <a name="link-quality"></a>Koppelingskwaliteit
+#### <a name="link-quality"></a>Koppelings kwaliteit
 
-Zoals bij elk netwerkgebruik, houd er rekening mee dat netwerkomstandigheden die resulteren in fouten en pakketverlies de effectieve doorvoer zullen vertragen.  Het gebruik van WireShark of NetMon kan helpen bij het diagnosticeren van dit probleem.  
+Net als bij elk netwerk gebruik moet u er rekening mee houden dat de netwerk omstandigheden die fouten veroorzaken en pakket verlies leiden tot een trage door voer.  Het gebruik van WireShark of NetMon kan helpen bij het vaststellen van dit probleem.  
 
 ### <a name="location"></a>Locatie
 
-In elke gedistribueerde omgeving levert het plaatsen van de client in de buurt van de server de beste prestaties. Voor toegang tot Azure Storage met de laagste latentie bevindt de beste locatie voor uw client zich binnen dezelfde Azure-regio. Als u bijvoorbeeld een Azure-webapp hebt die Azure Storage gebruikt, zoekt u deze vervolgens binnen één regio, zoals US West of Asia Southeast. Co-locating resources vermindert de latentie en de kosten, omdat bandbreedtegebruik binnen één regio gratis is.  
+In een gedistribueerde omgeving biedt de-client bij de server de beste prestaties. Voor toegang tot Azure Storage met de laagste latentie bevindt de beste locatie voor uw client zich in dezelfde Azure-regio. Als u bijvoorbeeld een Azure-web-app hebt die gebruikmaakt van Azure Storage, zoekt u deze binnen één regio, zoals vs-West of Azië-Zuidoost. Door co-locaties te plaatsen vermindert u de latentie en de kosten, omdat het bandbreedte gebruik binnen één regio gratis is.  
 
-Als clienttoepassingen toegang krijgen tot Azure Storage, maar niet worden gehost in Azure, zoals apps voor mobiele apparaten of on-premises bedrijfsservices, kan het lokaliseren van het opslagaccount in een regio in de buurt van die clients de latentie verminderen. Als uw klanten breed verdeeld zijn (bijvoorbeeld sommige in Noord-Amerika en sommige in Europa), u overwegen één opslagaccount per regio te gebruiken. Deze aanpak is gemakkelijker te implementeren als de gegevens die de toepassing opslaat specifiek zijn voor individuele gebruikers en niet vereist dat gegevens tussen opslagaccounts worden gerepliceerd.
+Als client toepassingen toegang krijgen tot Azure Storage maar niet worden gehost in azure, zoals apps voor mobiele apparaten of on-premises bedrijfs Services, kan de latentie worden verminderd door het opslag account in een regio in de buurt van die clients te zoeken. Als uw clients breed worden gedistribueerd (bijvoorbeeld sommige in Noord-Amerika en sommige in Europa), kunt u een opslag account per regio gebruiken. Deze methode is eenvoudiger te implementeren als de gegevens die de app opslaat, specifiek zijn voor afzonderlijke gebruikers en er geen replicatie van gegevens tussen opslag accounts nodig is.
 
-Gebruik een netwerk voor het leveren van inhoud, zoals Azure CDN, voor een brede distributie van blob-inhoud. Zie Azure CDN voor meer informatie over Azure [CDN.](../../cdn/cdn-overview.md)  
+Gebruik een Content Delivery Network, zoals Azure CDN, voor een brede distributie van blob-inhoud. Zie [Azure CDN](../../cdn/cdn-overview.md)voor meer informatie over Azure CDN.  
 
 ## <a name="sas-and-cors"></a>SAS en CORS
 
-Stel dat u code zoals JavaScript die wordt uitgevoerd in de webbrowser van een gebruiker of in een mobiele telefoon-app moet autoriseren om toegang te krijgen tot gegevens in Azure Storage. Een benadering is het bouwen van een service-applicatie die fungeert als een proxy. Het apparaat van de gebruiker verifieert met de service, die op zijn beurt de toegang tot Azure Storage-bronnen autoriseert. Op deze manier u voorkomen dat uw opslagaccountsleutels op onveilige apparaten worden blootgesteld. Deze benadering plaatst echter een aanzienlijke overhead voor de servicetoepassing, omdat alle gegevens die tussen het apparaat van de gebruiker en Azure Storage worden overgedragen, door de servicetoepassing moeten worden doorgegeven.
+Stel dat u code moet machtigen zoals Java script dat wordt uitgevoerd in de webbrowser van een gebruiker of in een mobiele telefoon-app om toegang te krijgen tot gegevens in Azure Storage. Een manier is om een service toepassing te bouwen die fungeert als een proxy. Het apparaat van de gebruiker wordt geverifieerd bij de service, die op zijn beurt toegang tot Azure Storage bronnen verleent. Op deze manier kunt u voor komen dat u de sleutels van uw opslag account op onveilige apparaten weergeeft. Met deze benadering wordt echter een aanzienlijke overhead op de service toepassing geplaatst, omdat alle gegevens die worden overgedragen tussen het apparaat van de gebruiker en Azure Storage door de service toepassing moeten worden door gegeven.
 
-U voorkomen dat u een servicetoepassing gebruikt als proxy voor Azure Storage met behulp van sas (Shared Access Signatures). Met SAS u het apparaat van uw gebruiker in staat stellen om rechtstreeks aanvragen in Azure Storage in te dienen met behulp van een beperkt toegangstoken. Als een gebruiker bijvoorbeeld een foto naar uw toepassing wil uploaden, kan uw servicetoepassing een SAS genereren en naar het apparaat van de gebruiker verzenden. Het SAS-token kan toestemming verlenen om voor een bepaald tijdsinterval naar een Azure Storage-bron te schrijven, waarna het SAS-token verloopt. Zie Beperkte toegang tot [Azure Storage-bronnen verlenen met behulp van gedeelde toegangshandtekeningen (SAS)](../common/storage-sas-overview.md)voor meer informatie over SAS.  
+U kunt voor komen dat een service toepassing wordt gebruikt als proxy voor Azure Storage met behulp van Shared Access signatures (SAS). Met SAS kunt u het apparaat van uw gebruiker in staat stellen om aanvragen rechtstreeks naar Azure Storage te brengen met behulp van een beperkt toegangs token. Als een gebruiker bijvoorbeeld een foto wil uploaden naar uw toepassing, kan uw service toepassing een SAS genereren en deze verzenden naar het apparaat van de gebruiker. Het SAS-token kan toestemming geven om te schrijven naar een Azure Storage resource gedurende een opgegeven tijds interval, waarna de SAS-token verloopt. Zie voor meer informatie over SA'S [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md).  
 
-Doorgaans staat een webbrowser JavaScript niet toe op een pagina die wordt gehost door een website op een domein om bepaalde bewerkingen, zoals schrijfbewerkingen, naar een ander domein uit te voeren. Dit beleid, dat bekend staat als het beleid van dezelfde oorsprong, voorkomt dat een kwaadaardig script op de ene pagina toegang krijgt tot gegevens op een andere webpagina. Het beleid van dezelfde oorsprong kan echter een beperking zijn bij het bouwen van een oplossing in de cloud. Cross-origin resource sharing (CORS) is een browserfunctie waarmee het doeldomein kan communiceren met de browser die het vertrouwt op aanvragen die afkomstig zijn uit het brondomein.
+Normaal gesp roken staat een webbrowser geen Java script toe op een pagina die wordt gehost door een website op het ene domein om bepaalde bewerkingen, zoals schrijf bewerkingen, uit te voeren op een ander domein. Op basis van dit beleid wordt voor komen dat een schadelijk script op één pagina de toegang tot gegevens op een andere webpagina kan verkrijgen. Hetzelfde-Origin-beleid kan echter een beperking zijn bij het bouwen van een oplossing in de Cloud. Cross-Origin Resource Sharing (CORS) is een browser functie waarmee het doel domein kan communiceren met de browser waarmee aanvragen worden vertrouwd die afkomstig zijn van het bron domein.
 
-Stel dat een webtoepassing die wordt uitgevoerd in Azure een aanvraag voor een bron naar een Azure Storage-account maakt. De webtoepassing is het brondomein en het opslagaccount is het doeldomein. U CORS configureren voor een van de Azure Storage-services om te communiceren met de webbrowser dat aanvragen van het brondomein worden vertrouwd door Azure Storage. Zie [CORS-ondersteuning (Cross-origin resource sharing) voor Azure Storage voor](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services)meer informatie over CORS.  
+Stel bijvoorbeeld dat een webtoepassing die in azure wordt uitgevoerd, een aanvraag voor een bron naar een Azure Storage-account maakt. De webtoepassing is het bron domein en het opslag account is het doel domein. U kunt CORS voor elk van de Azure Storage-services configureren om te communiceren met de webbrowser die aanvragen van het bron domein worden vertrouwd door Azure Storage. Zie [ondersteuning voor het gebruik van cors (cross-Origin Resource Sharing) voor Azure Storage](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services)voor meer informatie over cors.  
   
-Zowel SAS als CORS kunnen u helpen onnodige belasting op uw webapplicatie te voorkomen.  
+Zowel SAS als CORS kan u helpen om te voor komen dat uw webtoepassing onnodig wordt geladen.  
 
 ## <a name="caching"></a>Caching
 
-Caching speelt een belangrijke rol in de prestaties. In de volgende secties worden de aanbevolen procedures voor caching besproken.
+Caching speelt een belang rijke rol bij de prestaties. In de volgende secties worden aanbevolen procedures voor caching besproken.
 
 ### <a name="reading-data"></a>Gegevens lezen
 
-In het algemeen is het lezen van gegevens eenmaal de voorkeur boven het twee keer lezen. Overweeg het voorbeeld van een webtoepassing waarmee een 50 MiB-blob uit de Azure-opslag is opgehaald om als inhoud voor een gebruiker te dienen. Idealiter cachet de toepassing de blob lokaal naar de schijf en haalt vervolgens de in de cache opgeslagen versie op voor volgende gebruikersverzoeken.
+Over het algemeen is het lezen van gegevens één keer de voor keur. Bekijk het voor beeld van een webtoepassing die een 50 MiB-BLOB heeft opgehaald van de Azure Storage die als inhoud moet fungeren voor een gebruiker. In het ideale geval wordt de BLOB lokaal in de cache opgeslagen en wordt de versie van de cache voor volgende gebruikers aanvragen opgehaald.
 
-Een manier om te voorkomen dat het ophalen van een blob als het niet is gewijzigd sinds het in de cache is opgeslagen, is door de GET-bewerking te kwalificeren met een voorwaardelijke koptekst voor wijzigingstijd. Als de laatste gewijzigde tijd is na de tijd dat de blob in de cache is opgeslagen, wordt de blob opgehaald en opnieuw in de cache opgeslagen. Anders wordt de blob in de cache opgehaald voor optimale prestaties.
+Een manier om te voor komen dat een BLOB wordt opgehaald als deze niet is gewijzigd sinds de cache is opgeslagen, is door de GET-bewerking te kwalificeren met een voorwaardelijke header voor wijzigings tijd. Als het tijdstip van de laatste wijziging na het tijdstip waarop de BLOB in de cache is opgeslagen, wordt de BLOB opgehaald en opnieuw in de cache geplaatst. Anders wordt de BLOB in de cache opgehaald voor optimale prestaties.
 
-U ook besluiten om uw toepassing te ontwerpen om ervan uit te gaan dat de blob gedurende een korte periode ongewijzigd blijft nadat u deze hebt opgehaald. In dit geval hoeft de toepassing niet te controleren of de blob tijdens dat interval is gewijzigd.
+U kunt ook besluiten uw toepassing te ontwerpen om ervan uit te gaan dat de BLOB gedurende een korte periode ongewijzigd blijft nadat u deze hebt opgehaald. In dit geval hoeft de toepassing niet te controleren of de BLOB tijdens dat interval is gewijzigd.
 
-Configuratiegegevens, opzoekgegevens en andere gegevens die vaak door de toepassing worden gebruikt, zijn goede kandidaten voor caching.  
+Configuratie gegevens, opzoek gegevens en andere gegevens die vaak door de toepassing worden gebruikt, zijn goede kandidaten voor caching.  
 
-Zie [Voorwaardelijke kopteksten opgeven voor Blob-servicebewerkingen voor](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations)meer informatie over het gebruik van voorwaardelijke kopteksten.  
+Zie voor meer informatie over het gebruik van voorwaardelijke kopteksten [voorwaardelijke kopteksten voor BLOB service bewerkingen opgeven](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations).  
 
 ### <a name="uploading-data-in-batches"></a>Gegevens uploaden in batches
 
-In sommige scenario's u gegevens lokaal samenvoegen en deze vervolgens periodiek uploaden in een batch in plaats van elk stuk gegevens onmiddellijk te uploaden. Stel dat een webtoepassing een logboekbestand met activiteiten bijhoudt. De toepassing kan details van elke activiteit uploaden als het gebeurt met een tabel (waarvoor veel opslagbewerkingen nodig zijn), of het kan activiteitsgegevens opslaan in een lokaal logboekbestand en vervolgens periodiek alle activiteitsdetails uploaden als een afgebakend bestand naar een blob. Als elke logboekvermelding 1 KB groot is, u duizenden vermeldingen in één transactie uploaden. Een enkele transactie ondersteunt het uploaden van een blob van maximaal 64 MiB in grootte. De ontwikkelaar van de toepassing moet ontwerpen voor de mogelijkheid van clientapparaat of uploadfouten. Als de activiteitsgegevens moeten worden gedownload voor een tijdsinterval in plaats van voor één activiteit, wordt het gebruik van Blob-opslag aanbevolen via tabelopslag.
+In sommige scenario's kunt u gegevens lokaal samen voegen, en deze vervolgens periodiek uploaden in een batch in plaats van elk stukje gegevens onmiddellijk te uploaden. Stel bijvoorbeeld dat een webtoepassing een logboek bestand met activiteiten bijhoudt. De toepassing kan gegevens van elke activiteit uploaden als deze wordt uitgevoerd in een tabel (waarvoor veel opslag bewerkingen nodig zijn), of de gegevens van de activiteit kan worden opgeslagen in een lokaal logboek bestand en vervolgens periodiek alle activiteit details uploaden als een bestand met scheidings tekens naar een blob. Als elke logboek vermelding 1 KB groot is, kunt u duizenden vermeldingen uploaden in één trans actie. Eén trans actie ondersteunt het uploaden van een BLOB van Maxi maal 64 MiB-grootte. De ontwikkelaar van de toepassing moet ontwerpen voor de mogelijkheid van client apparaten of upload fouten. Als de gegevens van de activiteit moeten worden gedownload gedurende een tijds interval in plaats van voor één activiteit, wordt het gebruik van Blob Storage aanbevolen voor tabel opslag.
 
 ## <a name="net-configuration"></a>.NET-configuratie
 
-Als u het .NET Framework gebruikt, worden in deze sectie een aantal snelle configuratie-instellingen weergegeven die u gebruiken om aanzienlijke prestatieverbeteringen aan te brengen.  Als u andere talen gebruikt, controleert u of vergelijkbare concepten van toepassing zijn in de door u gekozen taal.  
+Als u de .NET Framework gebruikt, worden in deze sectie verschillende snelle configuratie-instellingen weer gegeven die u kunt gebruiken om belang rijke prestatie verbeteringen aan te brengen.  Als u andere talen gebruikt, controleert u of er soort gelijke concepten van toepassing zijn in de taal die u hebt gekozen.  
 
-### <a name="use-net-core"></a>Gebruik .NET Core
+### <a name="use-net-core"></a>.NET core gebruiken
 
-Ontwikkel uw Azure Storage-toepassingen met .NET Core 2.1 of hoger om te profiteren van prestatieverbeteringen. Het gebruik van .NET Core 3.x wordt aanbevolen wanneer dat mogelijk is.
+Ontwikkel uw Azure Storage-toepassingen met .NET Core 2,1 of hoger om te profiteren van de prestatie verbeteringen. .NET Core 3. x wordt aanbevolen als dat mogelijk is.
 
-Zie de volgende blogberichten voor meer informatie over prestatieverbeteringen in .NET Core:
+Voor meer informatie over prestatie verbeteringen in .NET core raadpleegt u de volgende blog berichten:
 
-- [Prestatieverbeteringen in .NET Core 3.0](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/)
-- [Prestatieverbeteringen in .NET Core 2.1](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-2-1/)
+- [Prestatie verbeteringen in .NET Core 3,0](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/)
+- [Prestatie verbeteringen in .NET Core 2,1](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-2-1/)
 
-### <a name="increase-default-connection-limit"></a>Standaardverbindingslimiet verhogen
+### <a name="increase-default-connection-limit"></a>Standaard verbindings limiet verhogen
 
-In .NET verhoogt de volgende code de standaardverbindingslimiet (die meestal twee is in een clientomgeving of tien in een serveromgeving) tot 100. Doorgaans moet u de waarde instellen op ongeveer het aantal threads dat door uw toepassing wordt gebruikt. Stel de verbindingslimiet in voordat u verbindingen opent.
+In .NET verhoogt de volgende code de standaard verbindings limiet (meestal twee in een client omgeving of tien in een server omgeving) tot 100. Normaal gesp roken moet u de waarde instellen op ongeveer het aantal threads dat door uw toepassing wordt gebruikt. Stel de verbindings limiet in voordat u verbindingen opent.
 
 ```csharp
 ServicePointManager.DefaultConnectionLimit = 100; //(Or More)  
 ```
 
-Zie de documentatie voor andere programmeertalen om te bepalen hoe u de verbindingslimiet instelt.  
+Zie de documentatie voor meer informatie over het instellen van de verbindings limiet voor andere programmeer talen.  
 
-Zie de blogpost Web [Services: Concurrent Connections voor](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/)meer informatie.  
+Zie voor meer informatie het blog bericht [webservices: gelijktijdige verbindingen](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/).  
 
-### <a name="increase-minimum-number-of-threads"></a>Minimumaantal threads verhogen
+### <a name="increase-minimum-number-of-threads"></a>Minimum aantal threads verhogen
 
-Als u synchrone aanroepen samen met asynchrone taken gebruikt, u het aantal threads in de threadgroep verhogen:
+Als u synchrone aanroepen gebruikt in combi natie met asynchrone taken, wilt u mogelijk het aantal threads in de thread groep verhogen:
 
 ```csharp
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-Zie de methode [ThreadPool.SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads) voor meer informatie.  
+Zie de methode [thread pool. onSetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads) voor meer informatie.  
 
-## <a name="unbounded-parallelism"></a>Onbegrensd eerwerk
+## <a name="unbounded-parallelism"></a>Niet-gebonden parallellisme
 
-Hoewel parallellisme geweldig kan zijn voor prestaties, wees voorzichtig met het gebruik van onbegrensd eerwerk, wat betekent dat er geen limiet wordt afgedwongen op het aantal threads of parallelle aanvragen. Zorg ervoor dat u parallelle aanvragen voor het uploaden of downloaden van gegevens beperkt, toegang krijgt tot meerdere partities in hetzelfde opslagaccount of toegang krijgt tot meerdere items in dezelfde partitie. Als parallellisme niet wordt begrensd, kan uw toepassing de mogelijkheden van het clientapparaat of de schaalbaarheidsdoelen van het opslagaccount overschrijden, wat resulteert in langere latencies en beperking.  
+Parallelle uitvoering kan ideaal zijn voor prestaties, wees voorzichtig met het gebruik van een ongebonden parallelle afname, wat betekent dat er geen limiet wordt afgedwongen voor het aantal threads of parallelle aanvragen. Zorg ervoor dat u parallelle aanvragen beperkt tot het uploaden of downloaden van gegevens, om toegang te krijgen tot meerdere partities in hetzelfde opslag account of om toegang te krijgen tot meerdere items in dezelfde partitie. Als parallellisme niet is gebonden, kan uw toepassing de mogelijkheden van het client apparaat of de schaalbaarheids doelen van het opslag account overschrijden, wat resulteert in langere latenties en beperking.  
 
-## <a name="client-libraries-and-tools"></a>Clientbibliotheken en -hulpprogramma's
+## <a name="client-libraries-and-tools"></a>Client bibliotheken en hulpprogram ma's
 
-Gebruik altijd de nieuwste clientbibliotheken en hulpprogramma's van Microsoft voor de beste prestaties. Azure Storage-clientbibliotheken zijn beschikbaar voor verschillende talen. Azure Storage ondersteunt ook PowerShell en Azure CLI. Microsoft ontwikkelt deze clientbibliotheken en -tools actief met het oog op prestaties, houdt ze up-to-date met de nieuwste serviceversies en zorgt ervoor dat ze veel van de beproefde prestatiepraktijken intern afhandelen. Zie de [naslagdocumentatie azure storage voor](/azure/storage/#reference)meer informatie .
+Gebruik altijd de nieuwste client bibliotheken en hulpprogram ma's van micro soft voor de beste prestaties. Azure Storage-client bibliotheken zijn beschikbaar voor verschillende talen. Azure Storage biedt ook ondersteuning voor Power shell en Azure CLI. Micro soft ontwikkelt deze client bibliotheken en hulpprogram ma's met het oog op de prestaties, houdt ze up-to-date met de nieuwste service versies en zorgt ervoor dat ze een groot aantal van de bewezen activiteiten intern verwerken. Zie de [documentatie over Azure Storage](/azure/storage/#reference)voor meer informatie.
 
-## <a name="handle-service-errors"></a>Servicefouten verwerken
+## <a name="handle-service-errors"></a>Service fouten afhandelen
 
-Azure Storage retourneert een fout wanneer de service een aanvraag niet kan verwerken. Inzicht in de fouten die in een bepaald scenario door Azure Storage kunnen worden geretourneerd, is handig voor het optimaliseren van de prestaties.
+Azure Storage retourneert een fout wanneer de service een aanvraag niet kan verwerken. Informatie over de fouten die door Azure Storage in een bepaald scenario kunnen worden geretourneerd, is handig voor het optimaliseren van de prestaties.
 
-### <a name="timeout-and-server-busy-errors"></a>Time-out en serverdrukke fouten
+### <a name="timeout-and-server-busy-errors"></a>Fouten bij time-out en server bezet
 
-Azure Storage kan uw toepassing beperken als de schaalbaarheidslimieten worden beperkt. In sommige gevallen kan Azure Storage een aanvraag mogelijk niet verwerken vanwege een tijdelijke voorwaarde. In beide gevallen kan de service een fout van 503 (Server bezet) of 500 (Time-out) retourneren. Deze fouten kunnen ook optreden als de service gegevenspartities opnieuw in evenwicht brengt om een hogere doorvoer mogelijk te maken. De clienttoepassing moet doorgaans de bewerking opnieuw proberen die een van deze fouten veroorzaakt. Als Azure Storage uw toepassing echter verzwaren omdat deze de schaalbaarheidsdoelen overschrijdt, of zelfs als de service om een andere reden niet in staat is om de aanvraag te dienen, kunnen agressieve pogingen het probleem verergeren. Het gebruik van een exponentieel back-off retry-beleid wordt aanbevolen en de clientbibliotheken worden standaard gebruikt voor dit gedrag. Bijvoorbeeld, uw toepassing kan opnieuw proberen na 2 seconden, dan 4 seconden, dan 10 seconden, dan 30 seconden, en dan volledig opgeven. Op deze manier vermindert uw toepassing de belasting van de service aanzienlijk, in plaats van gedrag te verergeren dat kan leiden tot beperking.  
+Azure Storage kan uw toepassing beperken als deze de schaalbaarheids limieten nadert. In sommige gevallen kan Azure Storage mogelijk geen aanvraag verwerken vanwege enige tijdelijke situatie. In beide gevallen kan de service een fout van 503 (server bezet) of 500 (Timeout) retour neren. Deze fouten kunnen zich ook voordoen als de service gegevens partities opnieuw moet verdelen voor een hogere door voer. De client toepassing moet meestal de bewerking opnieuw uitvoeren waardoor een van deze fouten wordt veroorzaakt. Als Azure Storage echter uw toepassing beperkt, omdat deze de schaalbaarheids doelen overschrijdt, of zelfs als de service om een andere reden niet kan worden uitgevoerd, kunnen agressieve pogingen het probleem erger maken. Het gebruik van een exponentiële beleid voor opnieuw proberen wordt aanbevolen en de client bibliotheken zijn standaard ingesteld op dit gedrag. Uw toepassing kan bijvoorbeeld na 2 seconden of 4 seconden, vervolgens 10 seconden, vervolgens 30 seconden, opnieuw worden geprobeerd en vervolgens volledig weer geven. Op deze manier vermindert uw toepassing de belasting van de service aanzienlijk, in plaats van exacerbating gedrag dat kan leiden tot het beperken van het probleem.  
 
-Verbindingsfouten kunnen onmiddellijk opnieuw worden geprobeerd, omdat ze niet het gevolg zijn van beperking en naar verwachting van voorbijgaande aard zijn.  
+Connectiviteits fouten kunnen onmiddellijk opnieuw worden geprobeerd, omdat ze niet het gevolg zijn van een beperking en naar verwachting tijdelijk zijn.  
 
-### <a name="non-retryable-errors"></a>Niet-opnieuw probeerbare fouten
+### <a name="non-retryable-errors"></a>Niet-herstel bare fouten
 
-De clientbibliotheken behandelen nieuwe pogingen met het besef welke fouten opnieuw kunnen worden geprobeerd en welke niet. Als u echter de Azure Storage REST API rechtstreeks aanroept, zijn er enkele fouten die u niet opnieuw moet proberen. Een fout van 400 (Slechte aanvraag) geeft bijvoorbeeld aan dat de clienttoepassing een aanvraag heeft verzonden die niet kon worden verwerkt omdat deze niet in het verwachte formulier stond. Het opnieuw verzenden van deze aanvraag resulteert elke keer hetzelfde antwoord, dus het heeft geen zin om het opnieuw te proberen. Als u de Azure Storage REST API rechtstreeks aanroept, moet u zich bewust zijn van mogelijke fouten en of deze opnieuw moeten worden geprobeerd.
+De client bibliotheken voeren een nieuwe poging uit met een bewustzijn welke fouten opnieuw kunnen worden geprobeerd en wat niet mogelijk is. Als u echter de Azure Storage REST API rechtstreeks aanroept, zijn er enkele fouten die u niet opnieuw moet proberen. Bijvoorbeeld, een 400 (ongeldige aanvraag) geeft aan dat de client toepassing een aanvraag heeft verzonden die niet kan worden verwerkt omdat deze niet in de verwachte vorm werd weer gegeven. Als deze aanvraag opnieuw wordt verzonden, wordt dezelfde reactie elke keer uitgevoerd, zodat er geen punt in de nieuwe poging wordt gedaan. Als u de REST API Azure Storage rechtstreeks aanroept, moet u rekening houden met mogelijke fouten en of deze opnieuw moeten worden geprobeerd.
 
-Zie [Status- en foutcodes](/rest/api/storageservices/status-and-error-codes2)voor meer informatie over foutcodes voor Azure Storage.
+Zie [status-en fout codes](/rest/api/storageservices/status-and-error-codes2)voor meer informatie over Azure Storage fout codes.
 
 ## <a name="copying-and-moving-blobs"></a>Blobs kopiëren en verplaatsen
 
-Azure Storage biedt een aantal oplossingen voor het kopiëren en verplaatsen van blobs binnen een opslagaccount, tussen opslagaccounts en tussen on-premises systemen en de cloud. In dit gedeelte worden enkele van deze opties beschreven in termen van hun effecten op de prestaties. Zie [Een Azure-oplossing kiezen voor gegevensoverdracht voor](../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)informatie over het efficiënt overbrengen van gegevens van of naar Blob-opslag.
+Azure Storage biedt een aantal oplossingen voor het kopiëren en verplaatsen van blobs in een opslag account, tussen opslag accounts en tussen on-premises systemen en de Cloud. In deze sectie worden enkele van deze opties beschreven, wat betreft de gevolgen voor de prestaties. Zie [een Azure-oplossing voor gegevens overdracht kiezen](../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor informatie over het efficiënt overdragen van gegevens naar of van Blob Storage.
 
-### <a name="blob-copy-apis"></a>Blob-kopieer-API's
+### <a name="blob-copy-apis"></a>BLOB Copy-Api's
 
-Als u blobs wilt kopiëren in opslagaccounts, gebruikt u de [bewerking Blokkeren van URL plaatsen.](/rest/api/storageservices/put-block-from-url) Met deze bewerking worden gegevens synchroon van elke URL-bron naar een blokblob gekopieerd. Het `Put Block from URL` gebruik van de bewerking kan de vereiste bandbreedte aanzienlijk verminderen wanneer u gegevens migreert in opslagaccounts. Omdat de kopieerbewerking plaatsvindt aan de servicezijde, hoeft u de gegevens niet te downloaden en opnieuw te uploaden.
+Als u blobs wilt kopiëren tussen opslag accounts, gebruikt u de bewerking [blok keren vanaf URL](/rest/api/storageservices/put-block-from-url) . Met deze bewerking worden gegevens synchroon gekopieerd van een URL-bron naar een blok-blob. Het gebruik `Put Block from URL` van de bewerking kan de vereiste band breedte aanzienlijk verminderen wanneer u gegevens migreert tussen opslag accounts. Omdat de Kopieer bewerking plaatsvindt aan de kant van de service, hoeft u de gegevens niet te downloaden en opnieuw te uploaden.
 
-Als u gegevens binnen hetzelfde opslagaccount wilt kopiëren, gebruikt u de bewerking [Blob kopiëren.](/rest/api/storageservices/Copy-Blob) Het kopiëren van gegevens binnen hetzelfde opslagaccount wordt doorgaans snel voltooid.  
+Als u gegevens wilt kopiëren binnen hetzelfde opslag account, gebruikt u de bewerking [BLOB kopiëren](/rest/api/storageservices/Copy-Blob) . Het kopiëren van gegevens binnen hetzelfde opslag account wordt meestal snel voltooid.  
 
 ### <a name="use-azcopy"></a>AzCopy gebruiken
 
-Het AzCopy-opdrachtregelhulpprogramma is een eenvoudige en efficiënte optie voor bulkoverdracht van blobs naar, van en tussen opslagaccounts. AzCopy is geoptimaliseerd voor dit scenario en kan hoge overdrachtssnelheden bereiken. AzCopy versie 10 `Put Block From URL` gebruikt de bewerking om blobgegevens te kopiëren over opslagaccounts. Zie [Gegevens kopiëren of verplaatsen naar Azure Storage met AzCopy v10](/azure/storage/common/storage-use-azcopy-v10)voor meer informatie.  
+Het AzCopy-opdracht regel programma is een eenvoudige en efficiënte optie voor bulk overdracht van blobs naar, van en tussen opslag accounts. AzCopy is geoptimaliseerd voor dit scenario en kan hoge overdrachts snelheden bezorgen. AzCopy versie 10 gebruikt de `Put Block From URL` bewerking voor het kopiëren van BLOB-gegevens over opslag accounts. Zie voor meer informatie [kopiëren of verplaatsen van gegevens naar Azure Storage met behulp van AzCopy V10 toevoegen](/azure/storage/common/storage-use-azcopy-v10).  
 
-### <a name="use-azure-data-box"></a>Azure-gegevensvak gebruiken
+### <a name="use-azure-data-box"></a>Azure Data Box gebruiken
 
-Als u grote hoeveelheden gegevens wilt importeren in Blob-opslag, u overwegen de Azure Data Box-familie te gebruiken voor offline overdrachten. Door Microsoft geleverde Data Box-apparaten zijn een goede keuze voor het verplaatsen van grote hoeveelheden gegevens naar Azure wanneer u beperkt bent door tijd, beschikbaarheid van het netwerk of kosten. Zie de Azure [DataBox-documentatie](/azure/databox/)voor meer informatie .
+Voor het importeren van grote hoeveel heden gegevens in Blob Storage kunt u de Azure Data Box-serie gebruiken voor offline overdrachten. Door micro soft geleverde Data Box-apparaten zijn een goede keuze om grote hoeveel heden gegevens naar Azure te verplaatsen wanneer u beperkt bent door tijd, netwerk beschikbaarheid of kosten. Zie de [documentatie van Azure DataBox](/azure/databox/)voor meer informatie.
 
-## <a name="content-distribution"></a>Inhoudsdistributie
+## <a name="content-distribution"></a>Inhouds distributie
 
-Soms moet een toepassing dezelfde inhoud aan veel gebruikers aanbieden (bijvoorbeeld een productdemovideo die wordt gebruikt op de startpagina van een website), zich in dezelfde of meerdere regio's. Gebruik in dit scenario een CDN (Content Delivery Network), zoals Azure CDN, om blob-inhoud geografisch te distribueren. In tegenstelling tot een Azure Storage-account dat in één regio bestaat en dat geen inhoud met lage latentie kan leveren aan andere regio's, gebruikt Azure CDN servers in meerdere datacenters over de hele wereld. Bovendien kan een CDN doorgaans veel hogere uitgangslimieten ondersteunen dan een enkel opslagaccount.  
+Soms moet een toepassing dezelfde inhoud aanbieden aan veel gebruikers (bijvoorbeeld een product demo video die wordt gebruikt op de start pagina van een website), die zich in dezelfde of meerdere regio's bevindt. In dit scenario gebruikt u een Content Delivery Network (CDN), zoals Azure CDN om blob-inhoud geografisch te distribueren. In tegens telling tot een Azure Storage-account dat bestaat in één regio en die geen inhoud met lage latentie kan leveren aan andere regio's, Azure CDN servers gebruiken in meerdere data centers over de hele wereld. Daarnaast kan een CDN veel hogere uitwijkings limieten ondersteunen dan één opslag account.  
 
-Zie Azure CDN voor meer informatie over Azure [CDN.](../../cdn/cdn-overview.md)
+Zie [Azure CDN](../../cdn/cdn-overview.md)voor meer informatie over Azure CDN.
 
-## <a name="use-metadata"></a>Metagegevens gebruiken
+## <a name="use-metadata"></a>Meta gegevens gebruiken
 
-De Blob-service ondersteunt HEAD-aanvragen, die blob-eigenschappen of metagegevens kunnen bevatten. Als uw toepassing bijvoorbeeld de exif-gegevens (exchangable image format) van een foto nodig heeft, kan deze de foto ophalen en extraheren. Om bandbreedte te besparen en de prestaties te verbeteren, kan uw toepassing de Exif-gegevens opslaan in de metagegevens van de blob wanneer de toepassing de foto uploadt. U vervolgens de Exif-gegevens in metagegevens ophalen met alleen een HEAD-verzoek. Het ophalen van alleen metagegevens en niet de volledige inhoud van de blob bespaart aanzienlijke bandbreedte en vermindert de verwerkingstijd die nodig is om de Exif-gegevens te extraheren. Houd er rekening mee dat 8 KiB metagegevens per blob kunnen worden opgeslagen.  
+Het Blob service ondersteunt HEAD-aanvragen, die BLOB-eigenschappen of meta gegevens kunnen bevatten. Als uw toepassing bijvoorbeeld de EXIF-gegevens (wissel bare afbeeldings indeling) van een foto nodig heeft, kan deze de foto ophalen en uitpakken. Om band breedte te besparen en de prestaties te verbeteren, kan uw toepassing de EXIF-gegevens opslaan in de meta gegevens van de BLOB wanneer de toepassing de foto uploadt. U kunt vervolgens de EXIF-gegevens in meta gegevens ophalen met behulp van een HEAD-aanvraag. Het ophalen van alleen meta gegevens en niet de volledige inhoud van de BLOB bespaart aanzienlijke band breedte en vermindert de verwerkings tijd die nodig is om de EXIF-gegevens te extra heren. Houd er rekening mee dat 8 KiB van meta gegevens per Blob kan worden opgeslagen.  
 
-## <a name="upload-blobs-quickly"></a>Blobs snel uploaden
+## <a name="upload-blobs-quickly"></a>Snel blobs uploaden
 
-Als u blobs snel wilt uploaden, bepaalt u eerst of u één blob of veel uploadt. Gebruik de onderstaande richtlijnen om de juiste methode te bepalen die u wilt gebruiken, afhankelijk van uw scenario.  
+Als u blobs snel wilt uploaden, moet u eerst bepalen of u een of meer blobs wilt uploaden. Gebruik de onderstaande richt lijnen om te bepalen welke methode het meest geschikt is voor uw scenario.  
 
-### <a name="upload-one-large-blob-quickly"></a>Eén grote blob snel uploaden
+### <a name="upload-one-large-blob-quickly"></a>Snel één grote BLOB uploaden
 
-Als u één grote blob snel wilt uploaden, kan een clienttoepassing de blokken of pagina's parallel uploaden, rekening houdend met de schaalbaarheidsdoelen voor afzonderlijke blobs en het opslagaccount als geheel. De Azure Storage-clientbibliotheken ondersteunen het gelijktijdig uploaden. U bijvoorbeeld de volgende eigenschappen gebruiken om het aantal gelijktijdige aanvragen op te geven dat is toegestaan in .NET of Java. Clientbibliotheken voor andere ondersteunde talen bieden vergelijkbare opties.
+Als u snel een enkele grote BLOB wilt uploaden, kan een client toepassing de blokken of pagina's parallel uploaden, waarbij de mindful van de schaalbaarheids doelen voor afzonderlijke blobs en het opslag account als geheel worden bijgewerkt. De Azure Storage-client bibliotheken ondersteunen gelijktijdig uploaden. U kunt bijvoorbeeld de volgende eigenschappen gebruiken om het aantal gelijktijdige aanvragen op te geven dat is toegestaan in .NET of Java. Client bibliotheken voor andere ondersteunde talen bieden vergelijk bare opties.
 
-- Stel voor .NET de eigenschap [BlobRequestOptions.ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount) in.
-- Voor Java/Android belt u de methode [BlobRequestOptions.setConcurrentRequestCount (laatste integer concurrentRequestCount).](/java/api/com.microsoft.azure.storage.blob.blobrequestoptions.setconcurrentrequestcount)
+- Voor .NET, stelt u de eigenschap [BlobRequestOptions. ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount) in.
+- Voor Java/Android roept u de methode [BlobRequestOptions. setConcurrentRequestCount (Final integer concurrentRequestCount)](/java/api/com.microsoft.azure.storage.blob.blobrequestoptions.setconcurrentrequestcount) aan.
 
-### <a name="upload-many-blobs-quickly"></a>Upload snel veel blobs
+### <a name="upload-many-blobs-quickly"></a>Snel veel blobs uploaden
 
-Als u veel blobs snel wilt uploaden, uploadt u blobs parallel. Parallel uploaden is sneller dan het uploaden van enkele blobs tegelijk met parallelle blokuploads, omdat het de upload over meerdere partities van de opslagservice verspreidt. AzCopy voert standaard uploads parallel uit en wordt aanbevolen voor dit scenario. Zie [Aan de slag met AzCopy](../common/storage-use-azcopy-v10.md)voor meer informatie.  
+Als u snel een groot aantal blobs wilt uploaden, uploadt u blobs parallel. Gelijktijdig uploaden is sneller dan het uploaden van één BLOB tegelijk met parallelle blok uploads, omdat de upload wordt gespreid over meerdere partities van de opslag service. AzCopy voert standaard gelijktijdig uploads uit en wordt aanbevolen voor dit scenario. Zie [aan de slag met AzCopy](../common/storage-use-azcopy-v10.md)voor meer informatie.  
 
-## <a name="choose-the-correct-type-of-blob"></a>Het juiste type blob kiezen
+## <a name="choose-the-correct-type-of-blob"></a>Het juiste type BLOB kiezen
 
-Azure Storage ondersteunt blokblobs, toevoegen blobs en paginablobs. Voor een bepaald gebruiksscenario heeft uw keuze van blobtype invloed op de prestaties en schaalbaarheid van uw oplossing.
+Azure Storage ondersteunt blok-blobs, toevoeg-blobs en pagina-blobs. Voor een bepaald gebruiks scenario is uw keuze van het type blob van invloed op de prestaties en schaal baarheid van uw oplossing.
 
-Blokblobs zijn geschikt wanneer u grote hoeveelheden gegevens efficiënt wilt uploaden. Een clienttoepassing die bijvoorbeeld foto's of video's uploadt naar Blob-opslag, is gericht op blokblobs.
+Blok-blobs zijn geschikt wanneer u grote hoeveel heden gegevens efficiënt wilt uploaden. Een client toepassing die bijvoorbeeld Foto's of Video's uploadt naar Blob Storage, zou blok-blobs als doel zouden hebben.
 
-Blobs toevoegen zijn vergelijkbaar met blobs blokkeren omdat ze uit blokken bestaan. Wanneer u een toevoegende blob wijzigt, worden alleen blokken toegevoegd aan het einde van de blob. Blobs toevoegen is handig voor scenario's zoals logboekregistratie, wanneer een toepassing gegevens moet toevoegen aan een bestaande blob.
+Toevoeg-blobs zijn vergelijkbaar met blok-blobs, omdat ze bestaan uit blokken. Wanneer u een toevoeg-BLOB wijzigt, worden blokken alleen toegevoegd aan het einde van de blob. Toevoeg-blobs zijn handig voor scenario's zoals logboek registratie, wanneer een toepassing gegevens moet toevoegen aan een bestaande blob.
 
-Paginablobs zijn geschikt als de toepassing willekeurige schrijfbewerkingen op de gegevens moet uitvoeren. Azure-schijven voor virtuele machines worden bijvoorbeeld opgeslagen als paginablobs. Zie [Blobs voor blokken begrijpen, blobs toevoegen en paginablobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)voor meer informatie.  
+Pagina-blobs zijn geschikt als de toepassing wille keurige schrijf bewerkingen op de gegevens moet uitvoeren. Virtuele-machine schijven van Azure worden bijvoorbeeld opgeslagen als pagina-blobs. Zie voor meer informatie [over blok-blobs, toevoeg-blobs en pagina-blobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Schaalbaarheid en prestatiedoelen voor Blob-opslag](scalability-targets.md)
-- [Schaalbaarheid en prestatiedoelen voor standaardopslagaccounts](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [Status- en foutcodes](/rest/api/storageservices/Status-and-Error-Codes2)
+- [Schaalbaarheids-en prestatie doelen voor Blob Storage](scalability-targets.md)
+- [Schaalbaarheids-en prestatie doelen voor standaard opslag accounts](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Status en fout codes](/rest/api/storageservices/Status-and-Error-Codes2)

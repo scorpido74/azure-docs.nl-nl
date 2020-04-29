@@ -1,6 +1,6 @@
 ---
-title: Apparaatoverzicht gebruiken in de StorSimple Device Manager-service
-description: Beschrijft het overzicht van de StorSimple Device Manager-serviceapparaat en hoe u deze gebruiken om opslagstatistieken en verbonden initiators weer te geven en het serienummer en IQN te vinden.
+title: Apparaat-samen vatting gebruiken in StorSimple Apparaatbeheer-service
+description: Beschrijft de samen vatting van StorSimple Apparaatbeheer service-apparaat en hoe u deze kunt gebruiken om metrische gegevens over de opslag en verbonden initia tors weer te geven en het serie nummer en de IQN te vinden.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,85 +15,85 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 7801cdc6573799330e5173db82dead8d4f2cd83f
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398255"
 ---
-# <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Het apparaatoverzicht gebruiken in de StorSimple Device Manager-service
+# <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Het apparaat samen vatting gebruiken in StorSimple Apparaatbeheer-service
 
 ## <a name="overview"></a>Overzicht
-Het storSimple-apparaatoverzichtsblad geeft u een overzicht van informatie voor een specifiek StorSimple-apparaat, in tegenstelling tot het serviceoverzichtsblad, dat u informatie geeft over alle apparaten die zijn opgenomen in uw Microsoft Azure StorSimple-oplossing.
+De Blade samen vatting van StorSimple biedt u een overzicht van de informatie voor een specifiek StorSimple-apparaat, in tegens telling tot de Blade samen vatting van de service, die u informatie geeft over alle apparaten die in uw Microsoft Azure StorSimple oplossing zijn opgenomen.
 
-Het apparaatoverzichtsblad biedt een overzicht van een Apparaat uit de StorSimple 8000-serie dat is geregistreerd bij een bepaalde StorSimple Device Manager, waarbij de apparaatproblemen worden benadrukt die de aandacht van een systeembeheerder nodig hebben. Deze zelfstudie introduceert het apparaatoverzichtsblad, legt de inhoud en functie uit en beschrijft de taken die u vanaf dit blad uitvoeren.
+Op de Blade samen vatting van apparaten vindt u een overzichts weergave van een StorSimple 8000 Series-apparaat dat is geregistreerd met een bepaalde StorSimple-Apparaatbeheer, waarbij u de problemen met het apparaat markeert waarvoor een systeem beheerder is vereist. In deze zelf studie wordt de Blade samen vatting van apparaten geïntroduceerd, worden de inhoud en functie uitgelegd en worden de taken beschreven die u kunt uitvoeren vanuit deze Blade.
 
-Op het overzichtsblad van het apparaat worden de volgende gegevens weergegeven:
+Op de Blade samen vatting van apparaten wordt de volgende informatie weer gegeven:
 
-![Apparaatoverzichtsblad](./media/storsimple-8000-device-dashboard/device-summary1.png)
+![Blade overzicht van apparaten](./media/storsimple-8000-device-dashboard/device-summary1.png)
 
-## <a name="management-command-bar"></a>Opdrachtbalk beheer
+## <a name="management-command-bar"></a>Opdracht balk beheer
 
-In het StorSimple-apparaatblad ziet u de opties voor het beheren van uw StorSimple-apparaat. U ziet de management commando's over de bovenkant van het blad en aan de linkerkant. Gebruik deze opties om aandelen of volumes toe te voegen of bij te werken of te mislukken via uw apparaat.
+Op de Blade StorSimple-apparaat ziet u de opties voor het beheren van uw StorSimple-apparaat. U ziet de beheer opdrachten aan de bovenkant van de Blade en aan de linkerkant. Gebruik deze opties om shares of volumes toe te voegen, of om uw apparaat bij te werken of te laten mislukken.
 
-![Opdrachtbalk beheer](./media/storsimple-8000-device-dashboard/device-summary2.png)
+![Opdracht balk beheer](./media/storsimple-8000-device-dashboard/device-summary2.png)
 
 ## <a name="essentials"></a>Essentials
 
-Het essentiële gebied vangt een aantal van de belangrijke eigenschappen, zoals de status, het model, doel IQN, en de software-versie. 
+In het gebied essentiële elementen worden enkele belang rijke eigenschappen vastgelegd, zoals de status, het model, de IQN van het doel en de software versie. 
 
-![Apparaatbenodigdheden](./media/storsimple-8000-device-dashboard/device-summary3.png)
+![Essentiële apparaten](./media/storsimple-8000-device-dashboard/device-summary3.png)
 
 ## <a name="monitoring"></a>Bewaking
 
-* De tegel **Waarschuwingen** biedt een momentopname van alle actieve waarschuwingen voor uw apparaat, gegroepeerd op waarschuwingsernst.
+* De tegel **waarschuwingen** bevat een moment opname van alle actieve waarschuwingen voor uw apparaat, gegroepeerd op ernst van de waarschuwing.
 
-    ![Waarschuwingstegel](./media/storsimple-8000-device-dashboard/device-summary4.png)
+    ![Waarschuwings tegel](./media/storsimple-8000-device-dashboard/device-summary4.png)
 
-    Klik op de tegel om het zwaard **Waarschuwingen** te openen en klik vervolgens op een afzonderlijke waarschuwing om aanvullende details over die waarschuwing weer te geven, inclusief aanbevolen acties. U de waarschuwing ook wissen als het probleem is opgelost.
+    Klik op de tegel om de Blade **waarschuwingen** te openen en klik vervolgens op een afzonderlijke waarschuwing om aanvullende informatie over die waarschuwing weer te geven, inclusief eventuele aanbevolen acties. U kunt ook de waarschuwing wissen als het probleem is opgelost.
 
-    ![Klik op waarschuwingstegel](./media/storsimple-8000-device-dashboard/device-summary10.png)
+    ![Klik op waarschuwings tegel](./media/storsimple-8000-device-dashboard/device-summary10.png)
 
-* De tegel **Status en status** biedt inzicht in de status van de hardwarecomponent voor een apparaat, inclusief de apparaatstatus. De status van het apparaat kan offline, online, gedeactiveerd of klaar zijn om in te stellen.
+* Op de tegel **status en** status vindt u inzicht in de status van het hardwareonderdeel voor een apparaat, met inbegrip van de Apparaatstatus. De apparaatstatus kan offline, online, gedeactiveerd of klaar zijn om te worden ingesteld.
 
-    ![Tegel Status en gezondheid](./media/storsimple-8000-device-dashboard/device-summary5.png)
+    ![Status-en status tegel](./media/storsimple-8000-device-dashboard/device-summary5.png)
 
-* De tegel **Volumes** geeft een overzicht van het aantal volumes in uw apparaat gegroepeerd op status.
+* De tegel **volumes** bevat een samen vatting van het aantal volumes in uw apparaat, gegroepeerd op status.
 
-    ![Tegel Volumes](./media/storsimple-8000-device-dashboard/device-summary6.png)
+    ![Tegel volumes](./media/storsimple-8000-device-dashboard/device-summary6.png)
 
-    Klik op de tegel om het lijstblad **volumes** te openen en klik vervolgens op een afzonderlijk volume om de eigenschappen ervan weer te geven of te wijzigen.
+    Klik op de tegel om de Blade **volume** lijst te openen en klik vervolgens op een afzonderlijk volume om de eigenschappen weer te geven of te wijzigen.
     
-    ![Klik op de tegel Volumes](./media/storsimple-8000-device-dashboard/device-summary9.png)
+    ![Klik op volume tegel](./media/storsimple-8000-device-dashboard/device-summary9.png)
     
-    Zie voor meer informatie hoe u [volumes beheert](storsimple-8000-manage-volumes-u2.md).
+    Zie [volumes beheren](storsimple-8000-manage-volumes-u2.md)voor meer informatie.
 
-* In de grafiek **Gebruik** u de primaire opslag weergeven die op uw apparaat wordt gebruikt en de cloudopslag die in de afgelopen zeven dagen is verbruikt, de standaardperiode.
+* In het **gebruiks** diagram kunt u de primaire opslag weer geven die wordt gebruikt op uw apparaat en de Cloud opslag verbruikt in de afgelopen 7 dagen, de standaard periode.
 
-     ![Gebruikstegel](./media/storsimple-8000-device-dashboard/device-summary7.png)
+     ![Gebruiks tegel](./media/storsimple-8000-device-dashboard/device-summary7.png)
     
-     Als u een andere tijdschaal wilt kiezen, gebruikt u de optie **Bewerken** in de rechterbovenhoek van de grafiek.
+     Als u een andere tijd schaal wilt kiezen, gebruikt u de optie **bewerken** in de rechter bovenhoek van de grafiek.
 
-     ![Gebruiksdiagram bewerken](./media/storsimple-8000-device-dashboard/device-summary12.png)
+     ![Gebruiks diagram bewerken](./media/storsimple-8000-device-dashboard/device-summary12.png)
 
-     In deze grafiek u statistieken weergeven voor de totale primaire opslag (de hoeveelheid gegevens die door hosts naar uw apparaat is geschreven) en de totale cloudopslag die uw apparaat gedurende een bepaalde periode verbruikt.
+     In deze grafiek kunt u metrische gegevens weer geven voor de totale primaire opslag (de hoeveelheid door hosts naar uw apparaat geschreven) en de totale Cloud opslag die gedurende een bepaalde periode door uw apparaat wordt gebruikt.
   
-     In deze context verwijst *primaire opslag* naar de totale hoeveelheid gegevens die door de host is geschreven en kan deze worden opgesplitst in volumetype: *primaire gelaagde opslag* omvat zowel lokaal opgeslagen gegevens als gegevens die zijn gelaagd naar de cloud. *Primaire lokaal vastgemaakte opslag* bevat alleen gegevens die lokaal zijn opgeslagen. *Cloudopslag*daarentegen is een meting van de totale hoeveelheid gegevens die in de cloud is opgeslagen. Deze opslag omvat gelaagde gegevens en back-ups. De gegevens die in de cloud zijn opgeslagen, worden gededuplicateen en gecomprimeerd, terwijl primaire opslag de hoeveelheid opslagruimte aangeeft die wordt gebruikt voordat de gegevens worden gededupliceerd en gecomprimeerd. (U deze twee getallen vergelijken om een idee te krijgen van de compressiesnelheid.) Voor zowel primaire als cloudopslag zijn de weergegeven bedragen gebaseerd op de trackingfrequentie die u configureert. Als u bijvoorbeeld een frequentie van één week kiest, worden in de grafiek gegevens weergegeven voor elke dag in de vorige week.
+     In deze context verwijst *primaire opslag* naar de totale hoeveelheid gegevens die is geschreven door de host en kan deze worden onderverdeeld op volume type: *primaire, gelaagde opslag* omvat lokaal opgeslagen gegevens en gelaagde gegevens in de Cloud. *Primaire lokaal vastgemaakte opslag* bevat alleen gegevens die lokaal zijn opgeslagen. *Cloud opslag*is aan de andere kant een meting van de totale hoeveelheid gegevens die in de Cloud is opgeslagen. Deze opslag bevat gelaagde gegevens en back-ups. De gegevens die in de Cloud zijn opgeslagen, worden ontdubbeld en gecomprimeerd, terwijl de primaire opslag de hoeveelheid opslag aangeeft die wordt gebruikt voordat de gegevens worden ontdubbeld en gecomprimeerd. (U kunt deze twee getallen vergelijken om een idee te krijgen van de compressie frequentie.) Voor zowel de primaire als de Cloud opslag zijn de weer gegeven hoeveel heden gebaseerd op de tracerings frequentie die u configureert. Als u bijvoorbeeld een frequentie van één week kiest, toont de grafiek de gegevens voor elke dag in de vorige week.
 
-     Als u wilt zien hoeveel cloudopslag in de loop van de tijd wordt verbruikt, selecteert u de optie **GEBRUIKTE cloudopslagopslag.** Als u de totale opslag wilt zien die door de host is geschreven, selecteert u de **gebruikte primaire trapstenopslag** en de gebruikte primaire locatieopslag voor **lokale opslag.** 
-     Zie [De StorSimple Device Manager-service gebruiken om uw StorSimple-apparaat te controleren](storsimple-monitor-device.md)voor meer informatie.
+     Selecteer de optie **Cloud opslag die is gebruikt** voor een overzicht van de hoeveelheid Cloud opslag die gedurende een bepaalde periode is verbruikt. Als u de totale opslag die is geschreven door de host wilt zien, selecteert u de optie **primaire GElaagde opslag** en **gebruikte primaire lokaal vastgemaakte opslag** . 
+     Zie [de StorSimple Apparaatbeheer-service gebruiken om uw StorSimple-apparaat te controleren](storsimple-monitor-device.md)voor meer informatie.
 
 
-* De tegel **Capaciteit** geeft de primaire opslag weer die is ingericht en over het apparaat blijft ten opzichte van de totale opslagruimte die beschikbaar is voor hetzelfde apparaat. **Provisioned** verwijst naar de hoeveelheid opslagruimte die is voorbereid en toegewezen voor gebruik, **Remaining** verwijst naar de resterende capaciteit die kan worden ingericht over dit apparaat. 
+* In de tegel **capaciteit** wordt de primaire opslag weer gegeven die op het apparaat is ingericht en overgebleven ten opzichte van de totale beschik bare opslag. **Ingericht** heeft betrekking op de hoeveelheid opslag ruimte die is voor bereid en toegewezen voor gebruik. het **resterende gedeelte** verwijst naar de resterende capaciteit die op dit apparaat kan worden ingericht. 
 
-    ![Gebruikstegel](./media/storsimple-8000-device-dashboard/device-summary8.png)
+    ![Gebruiks tegel](./media/storsimple-8000-device-dashboard/device-summary8.png)
 
-    Klik op deze tegel om te bekijken hoe de capaciteit is ingericht voor gelaagde en lokaal vastgemaakte volumes. De **resterende gelaagde** capaciteit is de beschikbare capaciteit die kan worden ingericht inclusief cloud, terwijl **de resterende lokale** is de capaciteit die overblijft op de schijven die zijn aangesloten op dit apparaat.
+    Klik op deze tegel om te zien hoe de capaciteit wordt ingericht op gelaagde en lokaal vastgemaakte volumes. De **resterende gelaagde** capaciteit is de beschik bare capaciteit die kan worden ingericht, inclusief de Cloud, terwijl de **resterende lokale** capaciteit het resterende aantal schijven is dat is gekoppeld aan dit apparaat.
 
-    ![Klik op gebruiksgrafiek](./media/storsimple-8000-device-dashboard/device-summary13.png)
+    ![Klik op gebruiks diagram](./media/storsimple-8000-device-dashboard/device-summary13.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over het [StorSimple-serviceoverzichtsblad](storsimple-8000-service-dashboard.md).
-* Meer informatie over [het gebruik van de StorSimple Device Manager-service om uw StorSimple-apparaat te beheren.](storsimple-8000-manager-service-administration.md)
+* Meer informatie over de [Blade overzicht](storsimple-8000-service-dashboard.md)van de StorSimple-service.
+* Meer informatie over [het gebruik van de StorSimple Apparaatbeheer-service voor het beheren van uw StorSimple-apparaat](storsimple-8000-manager-service-administration.md).
 

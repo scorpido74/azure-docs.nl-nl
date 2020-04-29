@@ -1,71 +1,71 @@
 ---
-title: Doorvoerkosten optimaliseren in Azure Cosmos DB
-description: In dit artikel wordt uitgelegd hoe u de doorvoerkosten voor de gegevens die zijn opgeslagen in Azure Cosmos DB optimaliseren.
+title: De doorvoer kosten optimaliseren in Azure Cosmos DB
+description: In dit artikel wordt uitgelegd hoe u doorvoer kosten optimaliseert voor de gegevens die zijn opgeslagen in Azure Cosmos DB.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: c80ab4acd745717e2e68ae7d9dc818594ad1ce9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6c3e9462b26b44857eea6b53092baeeb5034364
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79501462"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Kosten voor ingerichte doorvoer optimaliseren in Azure Cosmos DB
 
-Door het aanbieden van een ingerichte doorvoermodel biedt Azure Cosmos DB voorspelbare prestaties op elke schaal. Het reserveren of inrichten van doorvoer van tevoren elimineert het "luidruchtige neighbor-effect" op uw prestaties. U geeft de exacte hoeveelheid doorvoer op die u nodig hebt en Azure Cosmos DB garandeert de geconfigureerde doorvoer, ondersteund door SLA.
+Dankzij een ingericht doorvoer model biedt Azure Cosmos DB voorspel bare prestaties op elke schaal. Door de door Voer vooraf te leveren of in te richten, elimineert u het ' ruislijke neighbor-effect ' op uw prestaties. U geeft de exacte hoeveelheid door Voer die u nodig hebt en Azure Cosmos DB garandeert de geconfigureerde door Voer, ondersteund door SLA.
 
-U beginnen met een minimale doorvoer van 400 RU/sec en maximaal tientallen miljoenen aanvragen per seconde of zelfs meer opschalen. Elk verzoek dat u uitgeeft tegen uw Azure Cosmos-container of -database, zoals een leesaanvraag, schrijfaanvraag, queryaanvraag, opgeslagen procedures, heeft een overeenkomstige kosten die worden afgetrokken van uw ingerichte doorvoer. Als u 400 RU/s indient en een query uitgeeft die 40 RU's kost, u 10 van dergelijke query's per seconde uitgeven. Elk verzoek verder dan dat krijgt tarief-beperkt en je moet opnieuw proberen het verzoek. Als u clientstuurprogramma's gebruikt, ondersteunen ze de logica voor automatische opnieuw proberen.
+U kunt beginnen met een minimale door Voer van 400 RU/SEC en tot tien tallen miljoenen aanvragen per seconde of zelfs meer schalen. Elke aanvraag die u uitgeeft tegen uw Azure Cosmos-container of-Data Base, zoals een lees aanvraag, schrijf aanvraag, query aanvraag, opgeslagen procedures hebben een overeenkomende kosten die worden afgetrokken van uw ingerichte door voer. Als u 400 RU/s inricht en een query uitgeeft die de kosten 40 RUs heeft, kunt u 10 dergelijke query's per seconde verzenden. Alle aanvragen die groter zijn dan de frequentie beperkt zijn en u moet de aanvraag opnieuw proberen. Als u client Stuur Programma's gebruikt, ondersteunen ze de automatische logica voor opnieuw proberen.
 
 U kunt doorvoer inrichten in databases of containers, en elke strategie kan helpen kosten te besparen, afhankelijk van het scenario.
 
-## <a name="optimize-by-provisioning-throughput-at-different-levels"></a>Optimaliseren door doorvoer op verschillende niveaus in te richten
+## <a name="optimize-by-provisioning-throughput-at-different-levels"></a>Optimaliseren door door Voer in te richten op verschillende niveaus
 
-* Als u doorvoer indient op een database, kunnen alle containers, bijvoorbeeld verzamelingen/tabellen/grafieken in die database, de doorvoer delen op basis van de belasting. Doorvoer gereserveerd op databaseniveau wordt ongelijk gedeeld, afhankelijk van de werkbelasting op een specifieke set containers.
+* Als u de door Voer inricht voor een Data Base, kunnen alle containers, bijvoorbeeld verzamelingen/tabellen/grafieken binnen die data base, de door Voer delen op basis van de belasting. De door Voer die is gereserveerd op database niveau, wordt ongelijk gedeeld, afhankelijk van de werk belasting voor een specifieke set containers.
 
-* Als u doorvoer op een container indient, wordt de doorvoer gegarandeerd voor die container, ondersteund door de SLA. De keuze van een logische partitiesleutel is cruciaal voor een gelijkmatige verdeling van de belasting over alle logische partities van een container. Zie [Artikelen partitioneren](partitioning-overview.md) en [horizontaal schalen](partition-data.md) voor meer informatie.
+* Als u de door Voer voor een container inricht, wordt de door Voer gegarandeerd voor die container, ondersteund door de SLA. De keuze van een logische partitie sleutel is van cruciaal belang voor een gelijkmatige verdeling van de belasting over alle logische partities van een container. Zie artikelen [partitioneren](partitioning-overview.md) en [horizon taal schalen](partition-data.md) voor meer informatie.
 
-Hieronder volgen enkele richtlijnen om te beslissen over een ingerichte doorvoerstrategie:
+Hier volgen enkele richt lijnen voor het kiezen van een ingerichte doorvoer strategie:
 
-**Overweeg doorvoer in te richten op een Azure Cosmos-database (met een set containers) als:**
+**Overweeg de door Voer in te richten op een Azure Cosmos-data base (met een set containers) als**:
 
-1. U hebt enkele tientallen Azure Cosmos-containers en wilt de doorvoer over sommige of alle containers delen. 
+1. U hebt een aantal dozijn Azure Cosmos-containers en u kunt door Voer voor een aantal of alle daarvan delen. 
 
-2. U migreert vanuit een database met één tenant die is ontworpen om te worden uitgevoerd op vm's die door IaaS zijn gehost of on-premises, bijvoorbeeld NoSQL- of relationele databases naar Azure Cosmos DB. En als u veel collecties / tabellen / grafieken en u wilt geen wijzigingen aan te brengen in uw gegevensmodel. Houd er rekening mee dat u een aantal voordelen van Azure Cosmos DB moet compromitteren als u uw gegevensmodel niet bijwerkt wanneer u migreert vanuit een on-premises database. Het wordt aanbevolen dat u altijd uw gegevensmodel opnieuw toegang krijgt om het meeste uit de prestaties te halen en ook te optimaliseren voor kosten. 
+2. U migreert vanuit een Data Base met één Tenant die is ontworpen om te worden uitgevoerd op virtuele machines met IaaS of on-premises, bijvoorbeeld NoSQL of relationele data bases om Azure Cosmos DB. En als u veel verzamelingen/tabellen/grafieken hebt en u geen wijzigingen wilt aanbrengen in uw gegevens model. Houd er rekening mee dat u een aantal van de voor delen van Azure Cosmos DB als u uw gegevens model niet bijwerkt tijdens het migreren van een on-premises data base. Het is raadzaam om altijd toegang te krijgen tot uw gegevens model om optimaal te profiteren van de prestaties en om de kosten te optimaliseren. 
 
-3. U wilt ongeplande pieken in workloads absorberen op grond van gepoolde doorvoer op databaseniveau, onderworpen aan onverwachte piek in werkbelasting. 
+3. U wilt ongeplande pieken in werk belastingen opvangen door een gegroepeerde door Voer op het database niveau dat is onderhevig aan onverwachte pieken in de werk belasting. 
 
-4. In plaats van specifieke doorvoer in te stellen op afzonderlijke containers, wilt u de totale doorvoer over een set containers in de database krijgen.
+4. In plaats van specifieke door Voer in te stellen voor afzonderlijke containers, zorgt u ervoor dat u de geaggregeerde door Voer voor een set containers binnen de Data Base kunt ophalen.
 
-**Overweeg de doorvoer op een afzonderlijke container in te richten als:**
+**Overweeg door Voer in te richten op een afzonderlijke container als:**
 
-1. Je hebt een paar Azure Cosmos containers. Omdat Azure Cosmos DB schema-agnostisch is, kan een container items bevatten met heterogene schema's en hoeven klanten geen meerdere containertypen te maken, één voor elke entiteit. Het is altijd een optie om te overwegen of het groeperen van afzonderlijke zeggen 10-20 containers in een enkele container zinvol is. Met een minimum van 400 R's voor containers zou het bundelen van alle 10-20 containers in één kosteneffectiever kunnen zijn. 
+1. U hebt een aantal Azure Cosmos-containers. Omdat Azure Cosmos DB schema-neutraal is, kan een container items bevatten die heterogene schema's hebben en hoeven klanten niet meerdere container typen te maken, één voor elke entiteit. Het is altijd een optie om na te gaan of het groeperen van afzonderlijke aanbiedingen van 10-20-containers in één container zinvol is. Met een minimum van 400 RUs voor containers kan de pooling van alle 10-20-containers in één kosten effectief zijn. 
 
-2. U wilt de doorvoer op een specifieke container regelen en de gegarandeerde doorvoer krijgen op een bepaalde container die wordt ondersteund door SLA.
+2. U de door Voer voor een specifieke container wilt beheren en de gegarandeerde door Voer op een bepaalde container wilt ophalen die wordt ondersteund door SLA.
 
 **Overweeg een hybride van de bovenstaande twee strategieën:**
 
-1. Zoals eerder vermeld, Azure Cosmos DB u de bovenstaande twee strategieën mixen en matchen, zodat u nu enkele containers in azure cosmos-database hebben, die de doorvoer kunnen delen die in de database is ingericht, evenals sommige containers in dezelfde database , die mogelijk specifieke hoeveelheden ingerichte doorvoer hebben. 
+1. Zoals eerder vermeld, kunt u met Azure Cosmos DB de bovenstaande twee strategieën combi neren en vergelijken, zodat u nu een aantal containers in azure Cosmos-Data Base hebt, die de door Voer inrichten in de data base kunnen delen, evenals een aantal containers in dezelfde data base, die mogelijk specifieke hoeveel heden ingerichte door voer hebben. 
 
-2. U de bovenstaande strategieën toepassen om te komen met een hybride configuratie, waarbij u zowel databaseniveau ingerichte doorvoer hebt met een aantal containers met een speciale doorvoer.
+2. U kunt de bovenstaande strategieën Toep assen om te gaan met een hybride configuratie, waarbij u zowel de door Voer op database niveau als een aantal containers met een speciale door Voer hebt.
 
-Zoals in de volgende tabel wordt weergegeven, u, afhankelijk van de keuze van de API, doorvoer inrichten op verschillende granulariteiten.
+Zoals in de volgende tabel wordt weer gegeven, is afhankelijk van de keuze van de API, kunt u de door Voer op verschillende granulariteit inrichten.
 
-|API|Configureren **voor gedeelde** doorvoer |Configureren **voor speciale** doorvoer |
+|API|Configureer voor **gedeelde** door Voer |Voor **specifieke** door Voer configureren |
 |----|----|----|
 |SQL-API|Database|Container|
 |Azure Cosmos DB-API voor MongoDB|Database|Verzameling|
-|Cassandra-API|Sleutelruimte|Tabel|
+|Cassandra-API|Keys Pace|Tabel|
 |Gremlin-API|Databaseaccount|Graph|
 |Tabel-API|Databaseaccount|Tabel|
 
-Door de doorvoer op verschillende niveaus in te richten, u uw kosten optimaliseren op basis van de kenmerken van uw werkbelasting. Zoals eerder vermeld, u programmatisch en op elk moment uw ingerichte doorvoer voor afzonderlijke containers(en) of collectief over een set containers verhogen of verlagen. Door de doorvoer elastisch te schalen als uw werkbelasting verandert, betaalt u alleen voor de doorvoer die u hebt geconfigureerd. Als uw container of een set containers over meerdere regio's wordt verdeeld, wordt de doorvoer die u op de container configureert of een set containers gegarandeerd beschikbaar gesteld in alle regio's.
+Door de door Voer op verschillende niveaus in te richten, kunt u uw kosten optimaliseren op basis van de kenmerken van uw werk belasting. Zoals eerder vermeld, kunt u programmatisch en op elk gewenst moment uw ingerichte door Voer verg Roten of verkleinen voor afzonderlijke container (s) of gezamenlijk over een set containers. Door de door voer te verg Roten of verkleinen als uw werk belasting wordt gewijzigd, betaalt u alleen voor de door u geconfigureerde door voer. Als uw container of een set containers wordt gedistribueerd over meerdere regio's, wordt de door u geconfigureerde door Voer voor de container of een set containers gegarandeerd in alle regio's beschikbaar gesteld.
 
-## <a name="optimize-with-rate-limiting-your-requests"></a>Optimaliseren met tariefbeperkende verzoeken
+## <a name="optimize-with-rate-limiting-your-requests"></a>Optimaliseren met frequentie-uw aanvragen beperken
 
-Voor workloads die niet gevoelig zijn voor latentie, u minder doorvoer inrichten en de snelheid van de toepassing beperken wanneer de werkelijke doorvoer de ingerichte doorvoer overschrijdt. De server beëindigt de aanvraag `RequestRateTooLarge` preventief met (HTTP-statuscode `x-ms-retry-after-ms` 429) en retourneert de koptekst met vermelding van de hoeveelheid tijd, in milliseconden, die de gebruiker moet wachten voordat de aanvraag opnieuw wordt geprobeerd. 
+Voor workloads die niet gevoelig zijn voor latentie, kunt u minder door Voer inrichten en de toepassing de snelheids beperking laten afhandelen wanneer de werkelijke door Voer de ingerichte door Voer overschrijdt. De server preventief de aanvraag met `RequestRateTooLarge` (http-status code 429) en retourneert de `x-ms-retry-after-ms` header die de hoeveelheid tijd, in milliseconden, aangeeft dat de gebruiker moet wachten voordat de aanvraag opnieuw wordt uitgevoerd. 
 
 ```html
 HTTP Status 429, 
@@ -73,13 +73,13 @@ HTTP Status 429,
  x-ms-retry-after-ms :100
 ```
 
-### <a name="retry-logic-in-sdks"></a>Logica opnieuw proberen in SDK's 
+### <a name="retry-logic-in-sdks"></a>Logica voor opnieuw proberen in Sdk's 
 
-De native SDKs (.NET/.NET Core, Java, Node.js en Python) vangen impliciet dit antwoord, respecteren de server-opgegeven retry-after header en proberen het verzoek opnieuw. Tenzij uw account gelijktijdig door meerdere clients wordt geopend, slaagt de volgende poging.
+De systeem eigen Sdk's (.NET/.NET core, Java, node. js en python) ondervangen dit antwoord impliciet, respecteert de door de server opgegeven nieuwe poging na de header en voert de aanvraag opnieuw uit. Tenzij uw account gelijktijdig wordt geopend door meerdere clients, zal de volgende poging slagen.
 
-Als u meer dan één client cumulatief boven het aanvraagpercentage hebt, is het aantal standaardopnieuw proberen, dat momenteel is ingesteld op 9, mogelijk niet voldoende. In dergelijke gevallen gooit `RequestRateTooLargeException` de client een met statuscode 429 naar de toepassing. Het aantal standaardwijzigingen kan worden `RetryOptions` gewijzigd door de instantie Verbindingsbeleid in te stellen. Standaard wordt `RequestRateTooLargeException` de met statuscode 429 geretourneerd na een cumulatieve wachttijd van 30 seconden als de aanvraag boven het aanvraagpercentage blijft werken. Dit gebeurt zelfs wanneer het aantal huidige opnieuw proberen lager is dan het maximale aantal nieuwe try's, of het nu de standaardwaarde van 9 of een door de gebruiker gedefinieerde waarde is. 
+Als u meer dan één client cumulatief op dezelfde manier hebt uitgevoerd, is het standaard aantal nieuwe pogingen, dat momenteel is ingesteld op 9, niet voldoende. In dergelijke gevallen genereert de client een `RequestRateTooLargeException` met de status code 429 naar de toepassing. Het standaard aantal nieuwe pogingen kan worden gewijzigd door de `RetryOptions` in te stellen op het Connection Policy-exemplaar. Standaard wordt de met `RequestRateTooLargeException` de status code 429 geretourneerd na een cumulatieve wacht tijd van 30 seconden als de aanvraag boven het aanvraag aantal blijft. Dit gebeurt zelfs wanneer het huidige aantal nieuwe pogingen kleiner is dan het maximum aantal nieuwe pogingen. Dit is de standaard waarde van 9 of een door de gebruiker gedefinieerd getal. 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) is ingesteld op 3, dus in dit geval, als een aanvraagbewerking wordt beperkt door de gereserveerde doorvoer voor de container te overschrijden, wordt de aanvraagbewerking drie keer opnieuw geprobeerd voordat de uitzondering op de toepassing wordt geplaatst. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) is ingesteld op 60, dus in dit geval als de cumulatieve wachttijd opnieuw proberen in seconden sinds het eerste verzoek meer dan 60 seconden, wordt de uitzondering gegooid.
+[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) is ingesteld op 3. in dit geval, als een aanvraag is beperkt door de gereserveerde door Voer voor de container te overschrijden, wordt de aanvraag bewerking drie keer opnieuw geprobeerd voordat de uitzonde ring voor de toepassing wordt gegenereerd. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) is ingesteld op 60. in dit geval geldt dat als de cumulatieve wacht tijd voor opnieuw proberen in seconden sinds de eerste aanvraag 60 seconden overschrijdt, de uitzonde ring wordt gegenereerd.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -89,98 +89,98 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 ## <a name="partitioning-strategy-and-provisioned-throughput-costs"></a>Partitioneringsstrategie en kosten van ingerichte doorvoer
 
-Een goede scheidingsstrategie is belangrijk om de kosten in Azure Cosmos DB te optimaliseren. Zorg ervoor dat er geen scheeftrekking van partities is, die worden weergegeven via opslagstatistieken. Zorg ervoor dat er geen scheeftrekking van doorvoer is voor een partitie, die wordt weergegeven met doorvoerstatistieken. Zorg ervoor dat er geen scheeftrekking is ten opzichte van bepaalde partitiesleutels. Dominante sleutels in opslag worden weergegeven door middel van metrische gegevens, maar de sleutel is afhankelijk van uw toepassingstoegangspatroon. Het is het beste om na te denken over de juiste logische partitiesleutel. Een goede partitiesleutel zal naar verwachting de volgende kenmerken hebben:
+Een goede partitionatie strategie is belang rijk voor het optimaliseren van de kosten in Azure Cosmos DB. Zorg ervoor dat er geen scheefheid van partities bestaat, die worden weer gegeven via metrische opslag gegevens. Zorg ervoor dat er geen asymmetrische door Voer voor een partitie is, die wordt weer gegeven met metrische gegevens over de door voer. Zorg ervoor dat er geen scheefheid is voor bepaalde partitie sleutels. Dominante sleutels in de opslag worden weer gegeven via metrische gegevens, maar de sleutel is afhankelijk van het toegangs patroon van uw toepassing. U kunt het beste nadenken over de juiste logische partitie sleutel. Er wordt naar verwachting een goede partitie sleutel met de volgende kenmerken:
 
-* Kies een partitiesleutel die de werkbelasting gelijkmatig over alle partities en gelijkmatig in de loop van de tijd verspreidt. Met andere woorden, moet je niet over een aantal sleutels met de meerderheid van de gegevens en sommige sleutels met minder of geen gegevens. 
+* Kies een partitie sleutel waarmee de werk belasting gelijkmatig over alle partities en gelijkmatig over de tijd wordt verdeeld. Met andere woorden, u hebt geen sleutels met een meerderheid van de gegevens en bepaalde sleutels met minder of geen gegevens. 
 
-* Kies een partitiesleutel waarmee toegangspatronen gelijkmatig kunnen worden verdeeld over logische partities. De werklast is redelijk zelfs over alle toetsen. Met andere woorden, het grootste deel van de werkbelasting moet niet worden gericht op een paar specifieke toetsen. 
+* Kies een partitie sleutel waarmee de toegang tot patronen gelijkmatig over logische partities kan worden verdeeld. De werk belasting is redelijk zelfs in alle sleutels. Met andere woorden, het meren deel van de werk belasting mag niet worden gericht op enkele specifieke sleutels. 
 
-* Kies een partitiesleutel met een breed scala aan waarden. 
+* Kies een partitie sleutel met een breed scala aan waarden. 
 
-Het basisidee is om de gegevens en de activiteit in uw container over de set logische partities te verspreiden, zodat bronnen voor gegevensopslag en -doorvoer over de logische partities kunnen worden verdeeld. Kandidaten voor partitiesleutels kunnen de eigenschappen bevatten die vaak als filter in uw query's worden weergegeven. Query's kunnen efficiënt worden gerouteerd door de partitiesleutel op te nemen in het filterpredicaat. Met een dergelijke partitioneringsstrategie zal het optimaliseren van de ingerichte doorvoer een stuk eenvoudiger zijn. 
+Het is een goed idee om de gegevens en de activiteit in uw container over de set logische partities te verdelen, zodat resources voor gegevens opslag en-door Voer kunnen worden gedistribueerd over de logische partities. Kandidaten voor partitie sleutels kunnen de eigenschappen bevatten die regel matig worden weer gegeven als een filter in uw query's. Query's kunnen efficiënt worden gerouteerd door de partitie sleutel op te nemen in het filter predicaat. Met een dergelijke partitie strategie is het optimaliseren van ingerichte door Voer veel eenvoudiger. 
 
-### <a name="design-smaller-items-for-higher-throughput"></a>Kleinere items ontwerpen voor een hogere doorvoer 
+### <a name="design-smaller-items-for-higher-throughput"></a>Kleinere items ontwerpen voor een hogere door Voer 
 
-De aanvraagkosten of de kosten voor het verwerken van aanvragen van een bepaalde bewerking zijn rechtstreeks gerelateerd aan de grootte van het artikel. Bewerkingen op grote artikelen kosten meer dan bewerkingen op kleinere artikelen. 
+De verwerkings kosten voor aanvragen of de belasting van de aanvraag voor een bepaalde bewerking worden rechtstreeks gecorreleerd aan de grootte van het item. Bewerkingen voor grote items hebben meer kosten dan bewerkingen op kleinere items. 
 
-## <a name="data-access-patterns"></a>Patronen voor gegevenstoegang 
+## <a name="data-access-patterns"></a>Patronen voor gegevens toegang 
 
-Het is altijd een goede gewoonte om uw gegevens logisch te scheiden in logische categorieën op basis van hoe vaak u toegang hebt tot de gegevens. Door het te categoriseren als warme, gemiddelde of koude gegevens u de verbruikte opslag en de benodigde doorvoer verfijnen. Afhankelijk van de frequentie van de toegang u de gegevens in afzonderlijke containers plaatsen (bijvoorbeeld tabellen, grafieken en verzamelingen) en de ingerichte doorvoer erop afstemmen om aan de behoeften van dat gegevenssegment te voldoen. 
+Het is altijd een goed idee om uw gegevens logisch te scheiden in logische categorieën, op basis van hoe vaak u toegang krijgt tot de gegevens. Door deze te categoriseren als dynamische, middel grote of koude gegevens, kunt u de verbruikte opslag en de door Voer aanpassen. Afhankelijk van de frequentie van de toegang, kunt u de gegevens in afzonderlijke containers plaatsen (bijvoorbeeld tabellen, grafieken en verzamelingen) en de ingerichte door Voer voor hen verfijnen om te voldoen aan de behoeften van het gegevens segment. 
 
-Als u Azure Cosmos DB gebruikt en u weet dat u niet op bepaalde gegevenswaarden gaat zoeken of er zelden toegang toe hebt, moet u de gecomprimeerde waarden van deze kenmerken opslaan. Met deze methode bespaart u op opslagruimte, indexruimte en ingerichte doorvoer en resulteert u in lagere kosten.
+Daarnaast kunt u, als u Azure Cosmos DB gebruikt, en u weet dat u niet op bepaalde gegevens waarden wilt zoeken of zelden toegang wilt krijgen, moet u de gecomprimeerde waarden van deze kenmerken opslaan. Met deze methode bespaart u opslag ruimte, index ruimte en ingerichte door Voer, en resulteert dit in lagere kosten.
 
-## <a name="optimize-by-changing-indexing-policy"></a>Optimaliseren door indexeringsbeleid te wijzigen 
+## <a name="optimize-by-changing-indexing-policy"></a>Optimaliseren door het indexerings beleid te wijzigen 
 
-Azure Cosmos DB indexeert standaard automatisch elke eigenschap van elke record. Dit is bedoeld om de ontwikkeling te vergemakkelijken en uitstekende prestaties te garanderen voor veel verschillende soorten ad-hocquery's. Als u grote records met duizenden eigenschappen hebt, is het mogelijk dat het betalen van de doorvoerkosten voor het indexeren van elke eigenschap mogelijk niet nuttig is, vooral als u alleen vraag naar 10 of 20 van deze eigenschappen. Naarmate u dichter bij het krijgen van een greep op uw specifieke werklast, onze richtlijnen is om uw indexbeleid af te stemmen. De volledige details over azure cosmos DB-indexeringsbeleid vindt u [hier](indexing-policies.md). 
+Standaard indexeert Azure Cosmos DB automatisch elke eigenschap van elke record. Dit is bedoeld om de ontwikkeling te vereenvoudigen en uitstekende prestaties te garanderen in veel verschillende soorten ad hoc-query's. Als u grote records met duizenden eigenschappen hebt, kunt u de door Voer voor het indexeren van elke eigenschap onbruikbaar maken, met name als u alleen een query uitvoert op 10 of 20 van die eigenschappen. Wanneer u een greep op uw specifieke werk belasting dichterbij komt, kunt u het index beleid afstemmen op onze richt lijnen. Volledige informatie over Azure Cosmos DB indexerings beleid vindt u [hier](indexing-policies.md). 
 
-## <a name="monitoring-provisioned-and-consumed-throughput"></a>Monitoring van de ingerichte en verbruikte doorvoer 
+## <a name="monitoring-provisioned-and-consumed-throughput"></a>Beschik bare en geconsumeerde door Voer bewaken 
 
-U het totale aantal ingerichte RU's, het aantal aanvragen met beperkte tariefaanvragen en het aantal RU's dat u hebt verbruikt in de Azure-portal controleren. In de volgende afbeelding ziet u een voorbeeldgebruiksstatistiek:
+U kunt het totale aantal ingerichte RUs, het aantal tarieven voor beperkte aanvragen en het aantal RUs dat u hebt verbruikt, bewaken in de Azure Portal. In de volgende afbeelding ziet u een voor beeld van een gebruiks metriek:
 
-![Aanvraageenheden in de Azure-portal controleren](./media/optimize-cost-throughput/monitoring.png)
+![Aanvraag eenheden bewaken in de Azure Portal](./media/optimize-cost-throughput/monitoring.png)
 
-U ook waarschuwingen instellen om te controleren of het aantal aanvragen met beperkte tarief een specifieke drempelwaarde overschrijdt. Zie [Hoe u het DB-artikel van Azure Cosmos DB](use-metrics.md) controleren voor meer informatie. Deze waarschuwingen kunnen een e-mail verzenden naar de accountbeheerders of een aangepaste HTTP Webhook of een Azure-functie aanroepen om de ingerichte doorvoer automatisch te verhogen. 
+U kunt ook waarschuwingen instellen om te controleren of het aantal aanvragen met beperkte geldigheid een specifieke drempel waarde overschrijdt. Zie [Azure Cosmos DB artikel controleren](use-metrics.md) voor meer informatie. Deze waarschuwingen kunnen een e-mail verzenden naar de account beheerders of een aangepaste HTTP-webhook of een Azure-functie aanroepen om de ingerichte door Voer automatisch te verg Roten. 
 
-## <a name="scale-your-throughput-elastically-and-on-demand"></a>Schaal uw doorvoer elastisch en on-demand 
+## <a name="scale-your-throughput-elastically-and-on-demand"></a>Uw door Voer elastisch en op aanvraag schalen 
 
-Aangezien u wordt gefactureerd voor de ingerichte doorvoer, kan het afstemmen van de ingerichte doorvoer op uw behoeften u helpen de kosten voor de ongebruikte doorvoer te vermijden. U uw ingerichte doorvoer op elk gewenst moment naar boven of omlaag schalen. Als uw doorvoerbehoeften zeer voorspelbaar zijn, u Azure-functies gebruiken en een timertrigger gebruiken om de doorvoer op een planning te [verhogen of te verlagen.](scale-on-schedule.md) 
+Omdat u de ingerichte door Voer hebt gefactureerd, kunt u met de ingerichte door Voer aan uw behoeften het voor komen van de kosten voor de ongebruikte door voer. U kunt uw ingerichte door Voer op elk gewenst moment omhoog of omlaag schalen, indien nodig. Als uw doorvoer behoeften zeer voorspelbaar zijn, kunt u Azure Functions gebruiken en een timer trigger gebruiken om [de door Voer van een planning te verg Roten of verkleinen](scale-on-schedule.md). 
 
-* Het monitoren van het verbruik van uw RU's en de verhouding van tariefbeperkte aanvragen kan aantonen dat u de hele dag of week niet constant hoeft te blijven. U 's nachts of in het weekend minder verkeer ontvangen. Door azure portal of Azure Cosmos DB native SDKs of REST API te gebruiken, u uw ingerichte doorvoer op elk gewenst moment schalen. De REST API van Azure Cosmos DB biedt eindpunten om het prestatieniveau van uw containers programmatisch bij te werken, waardoor het eenvoudig is om de doorvoer van uw code aan te passen, afhankelijk van het tijdstip van de dag of de dag van de week. De bewerking wordt uitgevoerd zonder downtime en wordt meestal in minder dan een minuut uitgevoerd. 
+* Het bewaken van het verbruik van uw RUs en de verhouding van aanvragen met beperkte snelheid kan ertoe leiden dat u gedurende de hele dag of de week niet over de gehele constante hoeft te beschikken. Mogelijk ontvangt u 's nachts of tijdens het weekend minder verkeer. Door gebruik te maken van Azure Portal of Azure Cosmos DB systeem eigen Sdk's of REST API kunt u de ingerichte door Voer op elk gewenst moment schalen. De REST API van Azure Cosmos DB biedt eind punten om het prestatie niveau van uw containers programmatisch bij te werken, waardoor het eenvoudig is om de door Voer van uw code aan te passen, afhankelijk van de tijd van de dag of de dag van de week. De bewerking wordt uitgevoerd zonder uitval tijd en duurt meestal minder dan een minuut. 
 
-* Een van de gebieden die u moet schalen doorvoer is wanneer u gegevens inneemt in Azure Cosmos DB, bijvoorbeeld tijdens de gegevensmigratie. Zodra u de migratie hebt voltooid, u de ingerichte doorvoer naar beneden schalen om de steady state van de oplossing te verwerken.  
+* Een van de gebieden die u moet door Voer schalen is wanneer u gegevens opneemt in Azure Cosmos DB, bijvoorbeeld tijdens de gegevens migratie. Wanneer u de migratie hebt voltooid, kunt u de ingerichte door Voer omlaag schalen om de stabiele status van de oplossing af te handelen.  
 
-* Vergeet niet dat de facturering is op de granulariteit van een uur, dus je bespaart geen geld als u uw ingerichte doorvoer vaker dan een uur per keer.
+* Houd er rekening mee dat de facturering één uur nauw keurig is, zodat u geen geld bespaart als u de ingerichte door Voer vaker dan één uur per keer wijzigt.
 
-## <a name="determine-the-throughput-needed-for-a-new-workload"></a>De doorvoer bepalen die nodig is voor een nieuwe werkbelasting 
+## <a name="determine-the-throughput-needed-for-a-new-workload"></a>De door Voer bepalen die nodig is voor een nieuwe workload 
 
-Als u de ingerichte doorvoer voor een nieuwe werkbelasting wilt bepalen, u de volgende stappen gebruiken: 
+U kunt de volgende stappen gebruiken om de ingerichte door Voer voor een nieuwe workload te bepalen: 
 
-1. Voer een eerste, ruwe evaluatie uit met behulp van de capaciteitsplanner en pas uw schattingen aan met behulp van de Azure Cosmos Explorer in de Azure-portal. 
+1. Voer een initiële, ruwe evaluatie uit met behulp van de capaciteits planner en pas uw schattingen aan met behulp van de Azure Cosmos Explorer in de Azure Portal. 
 
-2. Het wordt aanbevolen om de containers te maken met een hogere doorvoer dan verwacht en vervolgens af te bouwen als dat nodig is. 
+2. Het is raadzaam om de containers met een hogere door voer te maken dan verwacht en vervolgens naar behoefte te schalen. 
 
-3. Het wordt aanbevolen om een van de native Azure Cosmos DB SDK's te gebruiken om te profiteren van automatische pogingen wanneer aanvragen beperkt worden. Als u werkt aan een platform dat niet wordt ondersteund en de REST API van `x-ms-retry-after-ms` Cosmos DB gebruikt, implementeert u uw eigen beleid voor nieuwe technieken met behulp van de header. 
+3. Het is raadzaam een van de systeem eigen Azure Cosmos DB Sdk's te gebruiken om te profiteren van automatische nieuwe pogingen wanneer aanvragen een beperkt aantal zijn. Als u werkt met een platform dat niet wordt ondersteund en gebruikmaakt van de REST API van Cosmos DB, implementeert u uw eigen beleid `x-ms-retry-after-ms` voor opnieuw proberen met behulp van de header. 
 
-4. Zorg ervoor dat de toepassingscode de aanvraag op een elegante manier ondersteunt wanneer alle pogingen mislukken. 
+4. Zorg ervoor dat uw toepassings code de situatie op de juiste wijze ondersteunt wanneer alle pogingen mislukken. 
 
-5. U waarschuwingen van de Azure-portal configureren om meldingen te ontvangen voor beperking van de snelheid. U beginnen met conservatieve limieten zoals 10 tarief-beperkte verzoeken in de afgelopen 15 minuten en overschakelen naar meer gretige regels als je eenmaal erachter te komen uw werkelijke verbruik. Af en toe tarieflimieten zijn prima, ze laten zien dat je speelt met de limieten die je hebt ingesteld en dat is precies wat je wilt doen. 
+5. U kunt waarschuwingen van de Azure Portal configureren voor het ontvangen van meldingen voor de frequentie beperking. U kunt beginnen met een conservatieve limiet zoals tien aanvragen met een beperkte frequentie in de afgelopen 15 minuten en overschakelen naar meer regels wanneer u het werkelijke verbruik hebt afgesteld. De limieten voor incidentele tarieven zijn nauw keurig, ze geven aan dat u de limieten die u hebt ingesteld en die precies zijn wat u wilt doen. 
 
-6. Gebruik monitoring om inzicht te krijgen in uw verkeerspatroon, zodat u overwegen of u uw doorvoerinrichting gedurende de dag of een week dynamisch aanpassen. 
+6. Gebruik bewaking om inzicht te krijgen in uw verkeers patroon, zodat u rekening moet houden met de nood zaak om uw doorvoer inrichting binnen de dag of een week dynamisch aan te passen. 
 
-7. Controleer uw ingerichte versus verbruikte doorvoerratio regelmatig om ervoor te zorgen dat u niet meer hebt ingericht dan het vereiste aantal containers en databases. Na een beetje meer dan ingerichte doorvoer is een goede veiligheidscontrole.  
+7. Controleer uw ingerichte versus verbruikte doorvoer ratio regel matig om er zeker van te zijn dat u niet meer dan het vereiste aantal containers en data bases hebt ingericht. Een beetje over de ingerichte door Voer is een goede veiligheids controle.  
 
-### <a name="best-practices-to-optimize-provisioned-throughput"></a>Aanbevolen procedures om de ingerichte doorvoer te optimaliseren 
+### <a name="best-practices-to-optimize-provisioned-throughput"></a>Aanbevolen procedures voor het optimaliseren van ingerichte door Voer 
 
-Met de volgende stappen u uw oplossingen zeer schaalbaar en kosteneffectief maken bij het gebruik van Azure Cosmos DB.  
+De volgende stappen helpen u bij het gebruik van Azure Cosmos DB om uw oplossingen uiterst schaalbaar en rendabel te maken.  
 
-1. Als u de ingerichte doorvoer in containers en databases aanzienlijk overhebt, moet u de in provisioned Vs-aanbevolen VS controleren en de workloads verfijnen.  
+1. Als u de ingerichte door Voer voor alle containers en data bases aanzienlijk hebt overbelast, moet u de werk belastingen die zijn ingericht versus gebruikt voor het verfijnen van de workloads controleren.  
 
-2. Een methode voor het schatten van de hoeveelheid gereserveerde doorvoer die door uw toepassing vereist is, is het registreren van de RU-kosten voor aanvraageenheden die zijn gekoppeld aan het uitvoeren van typische bewerkingen tegen een representatieve Azure Cosmos-container of -database die door uw toepassing wordt gebruikt en schat vervolgens het aantal bewerkingen dat u per seconde verwacht uit te voeren. Zorg ervoor dat u typische query's en het gebruik ervan ook meet en opneemt. Zie [De kosten van query's optimaliseren](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)voor meer informatie over het programmatisch schatten van ru-kosten van query's of het gebruik van portal. 
+2. Een methode voor het schatten van de hoeveelheid gereserveerde door Voer die is vereist door uw toepassing is het vastleggen van de RU-kosten voor aanvraag eenheden die zijn gekoppeld aan het uitvoeren van gang bare bewerkingen voor een representatieve Azure Cosmos-container of-Data Base die wordt gebruikt door uw toepassing. vervolgens wordt een schatting gemaakt van het aantal bewerkingen dat u per seconde moet uitvoeren. Zorg ervoor dat u normale query's en hun gebruik ook bemeett en opneemt. Zie [de kosten van Query's optimaliseren](online-backup-and-restore.md)voor meer informatie over het programmatisch schatten van de kosten van query's via een programma of het gebruik van de portal. 
 
-3. Een andere manier om bewerkingen en hun kosten in R's te krijgen, is door Azure Monitor-logboeken in te schakelen, waardoor u de indeling van de bewerking/duur en de aanvraagkosten krijgt. Azure Cosmos DB biedt aanvraagkosten voor elke bewerking, zodat elke bewerkingskosten kunnen worden opgeslagen vanaf het antwoord en vervolgens kan worden gebruikt voor analyse. 
+3. Een andere manier om bewerkingen en hun kosten in RUs te verkrijgen, is door Azure Monitor-Logboeken in te scha kelen, waarmee u de bewerkings-en tijds duur en de aanvraag kosten kunt opsplitsen. Azure Cosmos DB biedt voor elke bewerking een aanvraag kosten, zodat elke bewerkings kosten kunnen worden opgeslagen in het antwoord en vervolgens worden gebruikt voor analyse. 
 
-4. U de ingerichte doorvoer elastisch op en neer schalen als u aan uw werkbelastingbehoeften moet voldoen. 
+4. U kunt de ingerichte door Voer op een flexibele manier omhoog en omlaag schalen als u behoefte hebt aan uw werk belasting. 
 
-5. U regio's toevoegen en verwijderen die zijn gekoppeld aan uw Azure Cosmos-account als u dat nodig hebt en de kosten beheren. 
+5. U kunt regio's die zijn gekoppeld aan uw Azure Cosmos-account toevoegen en verwijderen wanneer u deze nodig hebt en de kosten wilt beheren. 
 
-6. Zorg ervoor dat u zelfs gegevens en workloads over logische partities van uw containers hebt. Als u een ongelijke partitieverdeling hebt, kan dit leiden tot een hogere hoeveelheid doorvoer dan de waarde die nodig is. Als u vastgeeft dat u een scheve verdeling hebt, raden we u aan de werkbelasting gelijkmatig over de partities te verdelen of de gegevens opnieuw te verdelen. 
+6. Zorg ervoor dat u een gelijkmatige verdeling van gegevens en workloads over logische partities van uw containers hebt. Als u een ongelijke partitie distributie hebt, kan dit ertoe leiden dat er een hogere hoeveelheid door Voer wordt ingesteld dan de waarde die nodig is. Als u identificeert dat u een scheefe distributie hebt, raden we u aan de werk belasting gelijkmatig over de partities te verdelen of de gegevens opnieuw te partitioneren. 
 
-7. Als u veel containers hebt en deze containers geen SLA's nodig hebben, u de op de database gebaseerde aanbieding gebruiken voor de gevallen waarin de SLA's per containerdoorvoer niet van toepassing zijn. U moet bepalen welke van de Azure Cosmos-containers u wilt migreren naar de doorvoeraanbieding op databaseniveau en deze vervolgens migreren met behulp van een oplossing op basis van een wijzigingsfeed. 
+7. Als er veel containers zijn en voor deze containers geen service overeenkomsten zijn vereist, kunt u de op een Data Base gebaseerde aanbieding gebruiken voor de gevallen waarin de Sla's per container doorvoer niet van toepassing zijn. U moet bepalen welke van de Azure Cosmos-containers u wilt migreren naar de aanbieding voor de door Voer van het data base-niveau en deze vervolgens migreren met behulp van een oplossing voor wijzigings invoer. 
 
-8. Overweeg het gebruik van de "Cosmos DB Free Tier" (gratis voor een jaar), Probeer Cosmos DB (maximaal drie regio's) of downloadbare Cosmos DB emulator voor dev / test scenario's. Door gebruik te maken van deze opties voor test-dev, u uw kosten aanzienlijk verlagen.  
+8. Overweeg het gebruik van de Cosmos DB gratis laag (gratis voor één jaar), probeer Cosmos DB (Maxi maal drie regio's) of down loadable Cosmos DB-emulator voor ontwikkel-en test scenario's. Door deze opties voor test-dev te gebruiken, kunt u uw kosten aanzienlijk verlagen.  
 
-9. U workloadspecifieke kostenoptimalisaties verder uitvoeren, bijvoorbeeld door batchgrootte, load-balancing reads in meerdere regio's te vergroten en gegevens te dedupliceren, indien van toepassing.
+9. U kunt verdere workload-specifieke kosten optimalisaties uitvoeren, bijvoorbeeld het verg Roten van de Batch-grootte, de taak verdeling over meerdere regio's en het verdubbelen van gegevens, indien van toepassing.
 
-10. Met azure cosmos DB gereserveerde capaciteit, u aanzienlijke kortingen krijgen voor maximaal 65% voor drie jaar. Azure Cosmos DB gereserveerde capaciteitsmodel is een vooraf toezegging op aanvragen eenheden die nodig zijn in de tijd. De kortingen zijn gelaagd zodanig dat hoe meer aanvraag eenheden die u gebruikt over een langere periode, hoe meer uw korting zal zijn. Deze kortingen worden onmiddellijk toegepast. Alle R's die boven uw ingerichte waarden worden gebruikt, worden in rekening gebracht op basis van de niet-gereserveerde capaciteitskosten. Zie [Cosmos DB gereserveerde capaciteit](cosmos-db-reserved-capacity.md)) voor meer details. Overweeg de gereserveerde capaciteit in te kopen om uw ingerichte doorvoerkosten verder te verlagen.  
+10. Met Azure Cosmos DB gereserveerde capaciteit kunt u gedurende drie jaar aanzienlijke kortingen krijgen voor Maxi maal 65%. Azure Cosmos DB gereserveerde capaciteits model is een toezeg ging van aanvragen voor aanvraag eenheden die gedurende een bepaalde periode nodig zijn. De kortingen worden zodanig gelaagd dat de meer aanvraag eenheden die u gedurende een langere periode gebruikt, hoe meer uw korting zal zijn. Deze kortingen worden onmiddellijk toegepast. Elk RUs dat wordt gebruikt voor uw ingerichte waarden wordt in rekening gebracht op basis van de niet-gereserveerde capaciteits kosten. Zie [Cosmos DB gereserveerde capaciteit](cosmos-db-reserved-capacity.md)) voor meer informatie. Overweeg gereserveerde capaciteit aan te schaffen om uw ingerichte doorvoer kosten verder te verlagen.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Vervolgens u meer te weten komen over kostenoptimalisatie in Azure Cosmos DB met de volgende artikelen:
+Daarna kunt u meer te weten komen over cost Optimization in Azure Cosmos DB met de volgende artikelen:
 
-* Meer informatie over [optimaliseren voor ontwikkeling en testen](optimize-dev-test.md)
-* Meer informatie over [het begrijpen van uw Azure Cosmos DB-factuur](understand-your-bill.md)
-* Meer informatie over [het optimaliseren van opslagkosten](optimize-cost-storage.md)
-* Meer informatie over [het optimaliseren van de kosten van lezen en schrijven](optimize-cost-reads-writes.md)
+* Meer informatie over het [optimaliseren voor ontwikkeling en testen](optimize-dev-test.md)
+* Meer informatie over [uw Azure Cosmos DB factuur](understand-your-bill.md)
+* Meer informatie over het [optimaliseren van opslag kosten](optimize-cost-storage.md)
+* Meer informatie over [het optimaliseren van de kosten van lees-en schrijf bewerkingen](optimize-cost-reads-writes.md)
 * Meer informatie over [het optimaliseren van de kosten van query's](optimize-cost-queries.md)
-* Meer informatie over [het optimaliseren van de kosten van Azure Cosmos-accounts met meerdere regio's](optimize-cost-regions.md)
+* Meer informatie over [het optimaliseren van de kosten voor Azure Cosmos-accounts met meerdere regio's](optimize-cost-regions.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Aangepaste transformatie coderen met Media Services v3 Azure CLI | Microsoft Documenten
-description: In dit onderwerp wordt uitgelegd hoe u Azure Media Services v3 gebruiken om een aangepaste transformatie te coderen met Azure CLI.
+title: Aangepaste trans formatie coderen met Media Services v3 Azure CLI | Microsoft Docs
+description: In dit onderwerp wordt beschreven hoe u Azure Media Services V3 gebruikt om een aangepaste trans formatie te coderen met behulp van Azure CLI.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,38 +13,38 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 7c1b446ccf04199449f012e738f6a03660735f50
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80382950"
 ---
-# <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Coderen met een aangepaste transformatie - Azure CLI
+# <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Coderen met een aangepaste trans formatie-Azure CLI
 
-Wanneer u codeert met Azure Media Services, u snel aan de slag met een van de aanbevolen ingebouwde voorinstellingen, op basis van aanbevolen procedures in de branche, zoals aangetoond in de snel aanstart [van streamingbestanden.](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) U ook een aangepaste voorinstelling maken om uw specifieke scenario of apparaatvereisten te targeten.
+Wanneer u code ring met Azure Media Services, kunt u snel aan de slag met een van de aanbevolen ingebouwde voor instellingen, op basis van best practices in de branche, zoals wordt getoond in de Snelstartgids voor [streaming-bestanden](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) . U kunt ook een aangepaste voor instelling maken om uw specifieke scenario-of apparaat vereisten te bereiken.
 
 ## <a name="considerations"></a>Overwegingen
 
-Bij het maken van aangepaste voorinstellingen zijn de volgende overwegingen van toepassing:
+Bij het maken van aangepaste voor instellingen gelden de volgende overwegingen:
 
-* Alle waarden voor hoogte en breedte op AVC-inhoud moeten een veelvoud van 4 zijn.
-* In Azure Media Services v3 zijn alle coderingsbitrates in bits per seconde. Dit is anders dan de presets met onze v2 API's, die kilobits per seconde als eenheid gebruikten. Als de bitrate in v2 bijvoorbeeld is opgegeven als 128 (kilobits/seconde), wordt deze in v3 ingesteld op 128000 (bits/seconde).
+* Alle waarden voor de hoogte en breedte van AVC-inhoud moeten een meervoud van 4 zijn.
+* In Azure Media Services v3 bevinden alle coderings bitsnelheden zich in bits per seconde. Dit wijkt af van de voor instellingen met onze v2 Api's, die kilobits/seconde als eenheid hebben gebruikt. Als de bitrate in v2 bijvoorbeeld is opgegeven als 128 (kilobits/seconde), wordt deze in v3 ingesteld op 128000 (bits/seconde).
 
 ## <a name="prerequisites"></a>Vereisten
 
 [Een Azure Media Services-account maken](create-account-cli-how-to.md).
 
-Zorg ervoor dat u de naam van de brongroep en de naam van het Media Services-account onthoudt.
+Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet.
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
-## <a name="define-a-custom-preset"></a>Een aangepaste voorinstelling definiëren
+## <a name="define-a-custom-preset"></a>Een aangepaste voor instelling definiëren
 
-In het volgende voorbeeld wordt de aanvraagtekst van een nieuwe transformatie gedefinieerd. We definiëren een reeks uitvoerdie we willen genereren wanneer deze transformatie wordt gebruikt.
+In het volgende voor beeld wordt de hoofd tekst van de aanvraag van een nieuwe trans formatie gedefinieerd. We definiëren een set uitvoer die we willen genereren wanneer deze trans formatie wordt gebruikt.
 
-In dit voorbeeld voegen we eerst een AacAudio-laag toe voor de audiocodering en twee H264Video-lagen voor de videocodering. In de videolagen wijzen we labels toe, zodat ze kunnen worden gebruikt in de namen van uitvoerbestanden. Vervolgens willen we dat de uitvoer ook miniaturen bevat. In het onderstaande voorbeeld geven we afbeeldingen op in PNG-indeling, gegenereerd bij 50% van de resolutie van de invoervideo, en bij drie tijdstempels - {25%, 50%, 75} van de lengte van de invoervideo. Ten slotte specificeren we het formaat voor de uitvoerbestanden - een voor video + audio en een andere voor de miniaturen. Aangezien we meerdere H264Layers hebben, moeten we macro's gebruiken die unieke namen per laag produceren. We kunnen een `{Label}` `{Bitrate}` of macro gebruiken, het voorbeeld toont het eerste.
+In dit voor beeld voegen we eerst een AacAudio-laag toe voor de audio codering en twee H264Video-lagen voor de video codering. In de video lagen worden labels toegewezen zodat ze kunnen worden gebruikt in de naam van het uitvoer bestand. Vervolgens willen we dat de uitvoer ook miniaturen bevat. In het onderstaande voor beeld geven we installatie kopieën op in PNG-indeling, gegenereerd om 50% van de oplossing van de video-invoer en met drie time Stamps-{25%, 50%, 75} van de lengte van de invoer video. Ten slotte geven we de indeling voor de uitvoer bestanden op: één voor video en audio, en een andere voor de miniaturen. Omdat we meerdere H264Layers hebben, moeten we macro's gebruiken waarmee unieke namen per laag worden geproduceerd. We kunnen een `{Label}` or `{Bitrate}` -macro gebruiken, maar in het voor beeld wordt het voormalige weer gegeven.
 
-We gaan deze transformatie opslaan in een bestand. In dit voorbeeld geven `customPreset.json`we een naam aan het bestand .
+We gaan deze trans formatie opslaan in een bestand. In dit voor beeld noemen we het bestand `customPreset.json`.
 
 ```json
 {
@@ -124,21 +124,21 @@ We gaan deze transformatie opslaan in een bestand. In dit voorbeeld geven `custo
 }
 ```
 
-## <a name="create-a-new-transform"></a>Een nieuwe transformatie maken  
+## <a name="create-a-new-transform"></a>Een nieuwe trans formatie maken  
 
-In dit voorbeeld maken we een **transformatie** die is gebaseerd op de aangepaste voorinstelling die we eerder hebben gedefinieerd. Bij het maken van een transformatie moet u eerst controleren of er al een bestaat. Als de transformatie bestaat, u deze opnieuw gebruiken. Met `show` de volgende `customTransformName` opdracht wordt de transformatie geretourneerd als deze bestaat:
+In dit voor beeld maken we een **trans formatie** die is gebaseerd op de aangepaste voor instelling die we eerder hebben gedefinieerd. Wanneer u een trans formatie maakt, moet u eerst controleren of er al een bestaat. Als de trans formatie bestaat, kunt u deze opnieuw gebruiken. Met de `show` volgende opdracht wordt `customTransformName` de trans formatie geretourneerd als deze bestaat:
 
 ```azurecli-interactive
 az ams transform show -a amsaccount -g amsResourceGroup -n customTransformName
 ```
 
-Met de volgende opdracht Azure CLI wordt de transformatie gemaakt op basis van de aangepaste voorinstelling (eerder gedefinieerd).
+Met de volgende Azure CLI-opdracht wordt de trans formatie gemaakt op basis van de aangepaste voor instelling (eerder gedefinieerd).
 
 ```azurecli-interactive
 az ams transform create -a amsaccount -g amsResourceGroup -n customTransformName --description "Basic Transform using a custom encoding preset" --preset customPreset.json
 ```
 
-Als Media Services de transformatie wilt toepassen op de opgegeven video of audio, moet u een taak indienen onder die transformatie. Zie [Quickstart: Videobestanden streamen - Azure CLI](stream-files-cli-quickstart.md)voor een compleet voorbeeld waarin wordt weergegeven hoe u een taak onder een transformatie verzenden.
+Als Media Services de trans formatie op de opgegeven video of audio wilt Toep assen, moet u een taak onder die trans formatie indienen. Voor een volledig voor beeld waarin wordt getoond hoe u een taak onder een trans formatie verzendt, raadpleegt u [Quick Start: video bestanden streamen-Azure cli](stream-files-cli-quickstart.md).
 
 ## <a name="see-also"></a>Zie ook
 

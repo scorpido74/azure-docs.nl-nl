@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5f83fa040de501adf3afa523086e100244fa619
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331793"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Aangepaste installatie van Azure AD Connect
@@ -39,8 +39,8 @@ Wanneer u de synchronisatieservices installeert, kunt de optie voor optionele co
 
 | Optionele configuratie | Beschrijving |
 | --- | --- |
-| Een bestaande SQL Server gebruiken |Hiermee kunt u de naam van de SQL Server en de exemplaarnaam opgeven. Kies deze optie als u al een databaseserver heeft die u wilt gebruiken. Voer de exemplaarnaam, gevolgd door een komma en poortnummer, in bij **Exemplaarnaam** als bladeren niet is ingeschakeld voor uw SQL Server.  Geef vervolgens de naam op van de Azure AD Connect-database.  Uw SQL-bevoegdheden bepalen of er een nieuwe database wordt gemaakt of dat uw SQL-beheerder de database van tevoren moet maken.  Als u SQL SA-machtigingen hebt, ziet [u Hoe u deze installeert met behulp van een bestaande database.](how-to-connect-install-existing-database.md)  Als u delegated permissions (DBO) hebt gekregen, [raadpleegt u Azure AD Connect installeren met sql-gedelegeerde beheerdersmachtigingen](how-to-connect-install-sql-delegation.md). |
-| Een bestaand serviceaccount gebruiken |Azure AD Connect maakt standaard gebruik van een virtueel serviceaccount voor de synchronisatieservices. Als u een externe SQL-server gebruikt of een proxyserver waarvoor verificatie is vereist, hebt u een **beheerd serviceaccount** of een serviceaccount in het domein nodig en moet u het wachtwoord kennen. Voer in dat geval het te gebruiken account in. Zorg dat de gebruiker die de installatie uitvoert een SA in SQL is, zodat een aanmelding voor het serviceaccount kan worden aangemaakt.  Zie [Azure AD Connect-accounts en -machtigingen](reference-connect-accounts-permissions.md#adsync-service-account). </br></br>In de laatste versie kan de inrichting van de database out-of-band worden uitgevoerd door de SQL-beheerder en vervolgens worden geïnstalleerd door de Azure AD Connect-beheerder met eigendomsrechten voor de database.  Raadpleeg [Install Azure AD Connect using SQL delegated administrator permissions](how-to-connect-install-sql-delegation.md) (Azure AD Connect installeren met SQL-gedelegeerde beheerdersmachtigingen) voor meer informatie.|
+| Een bestaande SQL Server gebruiken |Hiermee kunt u de naam van de SQL Server en de exemplaarnaam opgeven. Kies deze optie als u al een databaseserver heeft die u wilt gebruiken. Voer de exemplaarnaam, gevolgd door een komma en poortnummer, in bij **Exemplaarnaam** als bladeren niet is ingeschakeld voor uw SQL Server.  Geef vervolgens de naam op van de Azure AD Connect-Data Base.  Uw SQL-bevoegdheden bepalen of er een nieuwe Data Base wordt gemaakt of dat de SQL-beheerder de data base vooraf moet maken.  Als u SQL-SA-machtigingen hebt, ziet u [hoe u kunt installeren met behulp van een bestaande data base](how-to-connect-install-existing-database.md).  Zie [Install Azure AD Connect with SQL delegated Administrator Permissions](how-to-connect-install-sql-delegation.md)(Engelstalig) als u bent gedelegeerde machtigingen (dbo). |
+| Een bestaand serviceaccount gebruiken |Azure AD Connect maakt standaard gebruik van een virtueel serviceaccount voor de synchronisatieservices. Als u een externe SQL-server gebruikt of een proxyserver waarvoor verificatie is vereist, hebt u een **beheerd serviceaccount** of een serviceaccount in het domein nodig en moet u het wachtwoord kennen. Voer in dat geval het te gebruiken account in. Zorg dat de gebruiker die de installatie uitvoert een SA in SQL is, zodat een aanmelding voor het serviceaccount kan worden aangemaakt.  Zie [Azure AD Connect accounts en machtigingen](reference-connect-accounts-permissions.md#adsync-service-account). </br></br>In de laatste versie kan de inrichting van de database out-of-band worden uitgevoerd door de SQL-beheerder en vervolgens worden geïnstalleerd door de Azure AD Connect-beheerder met eigendomsrechten voor de database.  Raadpleeg [Install Azure AD Connect using SQL delegated administrator permissions](how-to-connect-install-sql-delegation.md) (Azure AD Connect installeren met SQL-gedelegeerde beheerdersmachtigingen) voor meer informatie.|
 | Aangepaste synchronisatiegroepen opgeven |Azure AD Connect maakt standaard vier groepen lokaal op de server aan wanneer de synchronisatieservices worden geïnstalleerd. Deze groepen zijn: Beheerders, Operators, Bladeren en Wachtwoord opnieuw instellen. U kunt hier uw eigen groepen opgeven. De groepen moeten lokaal op de server zijn en mogen zich niet in het domein bevinden. |
 
 ### <a name="user-sign-in"></a>Gebruikersaanmelding
@@ -86,10 +86,10 @@ Nadat u de forestnaam hebt ingevoerd en op **Map toevoegen** hebt geklikt, wordt
 
 ![Verbinding maken met Directory](./media/how-to-connect-install-custom/connectdir02.png)
 
-#### <a name="enterprise-admin-and-domain-admin-accounts-not-supported"></a>Accounts voor bedrijfsbeheer en domeinbeheerder worden niet ondersteund
-Vanaf build 1.4.18.0 wordt het niet langer ondersteund om een Enterprise Admin of een Domain Admin-account te gebruiken als ad DS Connector-account.  Als u een account probeert in te voeren dat een bedrijfsbeheerder of domeinbeheerder is wanneer u **een bestaand account gebruikt,** ontvangt u de volgende fout:
+#### <a name="enterprise-admin-and-domain-admin-accounts-not-supported"></a>Ondernemings Administrator-en domein beheerders accounts worden niet ondersteund
+Vanaf build 1.4.18.0 wordt niet meer ondersteund voor het gebruik van een ondernemings Administrator of een domein beheerders account als AD DS Connector-account.  Als u probeert een account in te voeren dat een ondernemings beheerder of domein beheerder is wanneer u **bestaand account gebruiken**opgeeft, wordt de volgende fout weer gegeven:
 
-  **"Het gebruik van een Enterprise- of Domain administrator-account voor uw AD-forestaccount is niet toegestaan.  Laat Azure AD Connect het account voor u maken of een synchronisatieaccount opgeven met de juiste machtigingen.  &lt;Meer&gt;informatie "**
+  **Het gebruik van een ondernemings-of domein beheerders account voor uw AD-forest-account is niet toegestaan.  Laat Azure AD Connect het account voor u maken of geef een synchronisatie account op met de juiste machtigingen.  &lt;Meer&gt;informatie '**
 
 ### <a name="azure-ad-sign-in-configuration"></a>Aanmeldconfiguratie Azure AD
 Op deze pagina kunt u bekijken welke UPN-domeinen zich in de on-premises AD DS bevinden en in Azure AD zijn geverifieerd. Daarnaast kunt u op deze pagina het kenmerk configureren dat voor de userPrincipalName moet worden gebruikt.
@@ -182,7 +182,7 @@ In dit scherm kunt u de optionele functies voor uw specifieke scenario's selecte
 | Synchronisatie van wachtwoord-hashes |Als u federatie als de oplossing voor aanmelden hebt geselecteerd, dan kunt u deze optie inschakelen. Synchronisatie van wachtwoord-hashes kan vervolgens als een back-upoptie worden gebruikt. Zie [Wachtwoord-hashsynchronisatie](how-to-connect-password-hash-synchronization.md) voor meer informatie. </br></br>Als u Pass-through-verificatie hebt geselecteerd, kan deze optie ook worden ingeschakeld als ondersteuning voor verouderde clients en als back-upoptie. Zie [Wachtwoord-hashsynchronisatie](how-to-connect-password-hash-synchronization.md) voor meer informatie.|
 | Wachtwoord terugschrijven |Door wachtwoord terugschrijven in te schakelen worden wachtwoordwijzigingen in Azure AD teruggeschreven naar uw on-premises directory. Zie voor meer informatie [Getting started with password management](../authentication/quickstart-sspr.md). |
 | Groep terugschrijven |Als u de functie **Office 365-groepen** gebruikt, dan kunnen deze groepen in uw on-premises Active Directory worden weergegeven. Deze optie is alleen beschikbaar als Exchange in uw on-premises Active Directory aanwezig is. Zie voor meer informatie [Group writeback](how-to-connect-preview.md#group-writeback). |
-| Apparaat terugschrijven |Hiermee u apparaatobjecten in Azure AD terugschrijven naar uw on-premises Active Directory voor voorwaardelijke toegang. Zie voor meer informatie [Enabling device writeback in Azure AD Connect](how-to-connect-device-writeback.md). |
+| Apparaat terugschrijven |Hiermee kunt u objecten in azure AD terugschrijven naar uw on-premises Active Directory voor scenario's voor voorwaardelijke toegang. Zie voor meer informatie [Enabling device writeback in Azure AD Connect](how-to-connect-device-writeback.md). |
 | Synchronisatie van directory-extensiekenmerken |Door synchronisatie van directory-extensiekenmerken in te schakelen worden de opgegeven kenmerken gesynchroniseerd naar Azure AD. Zie voor meer informatie [Directory extensions](how-to-connect-sync-feature-directory-extensions.md). |
 
 ### <a name="azure-ad-app-and-attribute-filtering"></a>Azure AD-app- en -kenmerkfilters
@@ -224,7 +224,7 @@ Voor elk forest in Azure AD Connect dat is toegevoegd, moet u referenties van de
 >Forests waarvoor u eenmalige aanmelding niet wilt gebruiken, kunt u overslaan.
 
 #### <a name="configure-the-intranet-zone-for-client-machines"></a>De intranetzone voor clientcomputers configureren
-Om ervoor te zorgen dat de clientaanmeldingen automatisch in de intranetzone worden aangemeld, moet u ervoor zorgen dat de URL deel uitmaakt van de intranetzone. De desktopcomputers die via het domein zijn gekoppeld, verzenden dan automatisch een Kerberos-ticket wanneer ze zijn verbonden met het bedrijfsnetwerk.
+Om ervoor te zorgen dat de client aanmeldingen automatisch in de intranet zone, moet u ervoor zorgen dat de URL deel uitmaakt van de intranet zone. De desktopcomputers die via het domein zijn gekoppeld, verzenden dan automatisch een Kerberos-ticket wanneer ze zijn verbonden met het bedrijfsnetwerk.
 Op een computer met de hulpprogramma's voor Groepsbeleidsbeheer.
 
 1.  Open de hulpprogramma's voor Groepsbeleidsbeheer
@@ -239,23 +239,23 @@ Op een computer met de hulpprogramma's voor Groepsbeleidsbeheer.
 5.  Het moet er ongeveer als volgt uitzien:  
 ![Intranetzones](./media/how-to-connect-install-custom/sitezone.png)
 
-6.  Klik twee keer op **Ok.**
+6.  Klik twee maal op **OK** .
 
 ## <a name="configuring-federation-with-ad-fs"></a>Federatie met AD FS configureren
 AD FS is heel eenvoudig met een paar muisklikken met Azure AD Connect te configureren. Voorafgaand aan de configuratie is het volgende vereist.
 
 * Een Windows Server 2012 R2-server of later als de federatieserver, waarop extern beheer is ingeschakeld
 * Een Windows Server 2012 R2-server of later als de webtoepassingsproxyserver, waarop extern beheer is ingeschakeld
-* Een TLS/SSL-certificaat voor de federatieservicenaam die u wilt gebruiken (bijvoorbeeld sts.contoso.com)
+* Een TLS/SSL-certificaat voor de naam van de Federation-service die u wilt gebruiken (bijvoorbeeld sts.contoso.com)
 
 >[!NOTE]
->U een TLS/SSL-certificaat voor uw AD FS-farm bijwerken met Azure AD Connect, zelfs als u het niet gebruikt om uw federatievertrouwensrelatie te beheren.
+>U kunt een TLS/SSL-certificaat voor uw AD FS-farm bijwerken met Azure AD Connect, zelfs als u dit niet gebruikt voor het beheren van uw federatieve vertrouwens relatie.
 
 ### <a name="ad-fs-configuration-pre-requisites"></a>Vereisten voor de AD FS-configuratie
 Zorg dat WinRM is ingeschakeld op de externe servers om uw AD FS-farm met behulp van Azure AD Connect te configureren. Zorg ervoor dat u de andere taken in [federatievereisten](how-to-connect-install-prerequisites.md#prerequisites-for-federation-installation-and-configuration) hebt uitgevoerd. Neem daarnaast de vereisten voor poorten door die vermeld staan in [Tabel 3 - Azure AD Connect en federatieve servers/WAP](reference-connect-ports.md#table-3---azure-ad-connect-and-ad-fs-federation-serverswap).
 
 ### <a name="create-a-new-ad-fs-farm-or-use-an-existing-ad-fs-farm"></a>Maak een nieuwe AD FS-farm aan of gebruik een bestaande AD FS-farm
-U kunt een bestaande AD FS-farm gebruiken of u kunt ervoor kiezen een nieuwe AD FS-farm aan te maken. Als u ervoor kiest om een nieuwe te maken, moet u het TLS/SSL-certificaat verstrekken. Als het TLS/SSL-certificaat wordt beveiligd met een wachtwoord, wordt u om het wachtwoord gevraagd.
+U kunt een bestaande AD FS-farm gebruiken of u kunt ervoor kiezen een nieuwe AD FS-farm aan te maken. Als u ervoor kiest om een nieuw item te maken, moet u het TLS/SSL-certificaat opgeven. Als het TLS/SSL-certificaat wordt beveiligd met een wacht woord, wordt u gevraagd het wacht woord op te vragen.
 
 ![AD FS-Farm](./media/how-to-connect-install-custom/adfs1.png)
 
@@ -320,7 +320,7 @@ Wanneer u het te federeren domein selecteert, geeft Azure AD Connect u de inform
 ## <a name="configuring-federation-with-pingfederate"></a>Federatie configureren met PingFederate
 PingFederate is heel eenvoudig met een paar muisklikken met Azure AD Connect te configureren. Er moet echter wel aan de volgende voorwaarden worden voldaan.
 - PingFederate 8.4 of hoger.  Zie het Engelstalige artikel [PingFederate Integration with Azure Active Directory and Office 365](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html) voor meer informatie.
-- Een TLS/SSL-certificaat voor de federatieservicenaam die u wilt gebruiken (bijvoorbeeld sts.contoso.com)
+- Een TLS/SSL-certificaat voor de naam van de Federation-service die u wilt gebruiken (bijvoorbeeld sts.contoso.com)
 
 ### <a name="verify-the-domain"></a>Het domein verifiëren
 Nadat u Federatie met PingFederate hebt geselecteerd, wordt u gevraagd om het domein te verifiëren dat u wilt federeren.  Selecteer het domein in de vervolgkeuzelijst.
@@ -397,7 +397,7 @@ Als u wilt controleren of end-to-end-verificatie is gelukt, voert u een of meer 
 De volgende sectie bevat oplossingen voor fouten en informatie die u kunt gebruiken als u een probleem ondervindt bij het installeren van Azure AD Connect.
 
 ### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>De ADSync-database bevat al gegevens en kan niet worden overschreven
-Wanneer u Azure AD Connect op maat installeert en de optie **Selecteer Een bestaande SQL-server gebruiken** op de pagina Vereiste onderdelen **installeren,** u een fout tegenkomen waarin staat dat **de ADSync-database al gegevens bevat en niet kan worden overschreven. Verwijder de bestaande database en probeer het opnieuw.**
+Wanneer u Azure AD Connect installeert en de optie **een bestaande SQL Server gebruiken** op de pagina **vereiste onderdelen installeren** selecteert, wordt er mogelijk een fout bericht weer gegeven waarin staat dat **de data base van ADSync al gegevens bevat en niet kan worden overschreven. Verwijder de bestaande data base en probeer het opnieuw.**
 
 ![Fout](./media/how-to-connect-install-custom/error1.png)
 

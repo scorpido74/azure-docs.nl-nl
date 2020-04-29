@@ -1,6 +1,6 @@
 ---
-title: Inzicht in het gebruik en het gebruikersgedrag van mobiele toepassingen met Visual Studio App Center en Azure-services
-description: Meer informatie over de services zoals App Center waarmee u slimme zakelijke beslissingen nemen door te begrijpen hoe gebruikers uw mobiele toepassing gebruiken.
+title: Inzicht in het gebruik van mobiele toepassingen en gebruikers gedrag met Visual Studio App Center en Azure-Services
+description: Meer informatie over de services zoals App Center die u helpen bij het maken van zakelijke beslissingen door te weten hoe gebruikers uw mobiele toepassing gebruiken.
 author: codemillmatt
 ms.assetid: 34a8a070-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
@@ -8,70 +8,70 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
 ms.openlocfilehash: 4dc3cea4497c55dda0d8da2ca29201615dadff19
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241083"
 ---
 # <a name="analyze-and-understand-mobile-application-use"></a>Het gebruik van mobiele toepassingen analyseren en begrijpen
-Hoe goed begrijpt u hoe uw gebruikers uw toepassingen gebruiken? Hoeveel actieve gebruikers heeft uw toepassing en hoe verandert het gebruik in de loop van de tijd? Welke functies gebruiken ze en welke worden het meest gebruikt? Waar zijn deze gebruikers gebaseerd? Hoeveel gebruikers gebruiken de nieuwste versie van de toepassing? Al deze vragen zijn belangrijk om te begrijpen om van uw app een succesvol bedrijf te maken. Als u dit soort vragen over gebruiksanalyses wilt beantwoorden, moet u gebruiksgegevens van uw apps verzamelen.
+Hoe goed begrijpt u hoe uw gebruikers uw toepassingen gebruiken? Hoeveel actieve gebruikers hebben uw toepassing en hoe wordt het gebruik in de loop van de tijd gewijzigd? Welke functies worden gebruikt, en welke onderdelen zijn het meest geschikt? Waar zijn deze gebruikers? Hoeveel gebruikers gebruiken de nieuwste versie van de toepassing? Al deze vragen zijn belang rijk om te begrijpen hoe u uw app kunt omzetten in een succesvol bedrijf. Als u deze vragen over gebruiks analyse wilt beantwoorden, moet u gebruiks gegevens van uw apps verzamelen.
 
-Hoe meer u naar beneden kijkt in de gegevens, hoe meer u manieren vinden om uw toepassing te verbeteren en uw gebruikers tevreden te houden. Het is belangrijk om gegevens te gebruiken om bruikbare inzichten te vinden en gebruikers tevreden te houden.
+Hoe meer u in de gegevens zoekt, hoe meer u kunt zien hoe uw toepassing kan worden verbeterd en uw gebruikers tevreden blijven. Het is belang rijk om gegevens te gebruiken om inzicht te krijgen in inzichten en gebruikers ervan te bedenken.
 
-## <a name="importance-of-analytics"></a>Belang van analytics
-- Begrijp uw gebruikers, hoe ze omgaan met uw toepassing en wat hen terugbrengt om uw toepassing te verfijnen en geweldige ervaringen te bieden om uw bedrijf te laten groeien.
-- Houd uw gebruiksstatistieken bij om weloverwogen beslissingen te nemen over hoe u uw toepassing op de markt brengen en uw klanten beter van dienst zijn.
+## <a name="importance-of-analytics"></a>Belang van analyse
+- Inzicht in uw gebruikers, hoe ze communiceren met uw toepassing en wat ze terugbrengt om uw toepassing te verfijnen en een fantastische ervaring te bieden om uw bedrijf uit te breiden.
+- Volg uw metrische gegevens over gebruik om gefundeerde beslissingen te nemen over de marketing van uw toepassing en uw klanten beter te laten verzorgen.
 - Meet de prestaties van uw toepassing.
-- Ontdek welke onderdelen van uw toepassing waarde en prestaties opleveren.
-- Krijg datagestuurde inzichten in problemen die betrekking hebben op churn en retentie.
+- Meer informatie over de onderdelen van de waarde en prestaties van uw toepassing.
+- Profiteer van gegevensgestuurde inzichten in problemen die betrekking hebben op verloop en retentie.
 
-Gebruik de volgende services om analyse van mobiele toepassingen in te schakelen.
+Gebruik de volgende services om Mobile Application Analytics in te scha kelen.
 
 ## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[Met App Center Analytics](/appcenter/analytics/) kun je je doelgroep laten groeien door je te concentreren op wat belangrijk is. Het biedt diepgaande rapportage en inzichten over gebruikerssessies, topapparaten, OS-versies en gedragsanalyses. Maak eenvoudig aangepaste gebeurtenissen om alles bij te houden met uitgebreide toepassingsanalyses.
+Met [app Center Analytics](/appcenter/analytics/) kunt u uw doel groep verg Roten door te focussen op wat belang rijk is. Het biedt uitgebreide rapportage en inzichten over gebruikers sessies, de belangrijkste apparaten, versies van besturings systemen en gedrags analyses. U kunt eenvoudig aangepaste gebeurtenissen maken om alles met uitgebreide toepassings analyse bij te houden.
 
    **Belangrijke functies**
-   - Houd gebruikspatronen, gebruikersacceptatie en andere betrokkenheidsstatistieken gratis bij.
-   - Trends, gebruikersgedrag en betrokkenheid identificeren via aangepaste gebeurtenissen.
-   - Verkrijg kant-en-klare statistieken en gedetailleerde inzichten over het gebruik van toepassingen (dagelijks, wekelijks, maandelijks), sessies, apparaateigenschappen en demografische gegevens van gebruikers in één dashboard.
-   - Exporteer continu al uw App Center Analytics-gegevens naar Azure voor onbeperkte bewaring. App Center Analytics ondersteunt export naar Azure Blob-opslag en Azure Application Insights.
-   - Integreer met Azure Application Insights voor nog diepere inzichten, zoals retentie, trechteranalyse en cohorten.
-   - Gebruik eenlijns SDK-integratie om binnen enkele minuten aan de slag te gaan.
-   - Krijg platformondersteuning voor iOS, Android, macOS, tvOS, Xamarin, React Native, Unity en Cordova.
+   - Houd gebruiks patronen, acceptatie van gebruikers en andere metrische gegevens over betrokkenheid gratis bij.
+   - Bepaal trends, gebruikers gedrag en betrokkenheid via aangepaste gebeurtenissen.
+   - U kunt out-of-the-box-metrische gegevens en gedetailleerde inzichten over toepassings gebruik (dagelijks, wekelijks, maandelijks), sessies, apparaateigenschappen en gebruikers demografische in één dash board verkrijgen.
+   - Exporteer voortdurend al uw App Center Analytics-gegevens naar Azure voor een onbeperkte Bewaar periode. App Center Analytics ondersteunt de export naar Azure Blob-opslag en Azure-toepassing Insights.
+   - Integreer met Azure-toepassing inzichten voor nog diepere inzichten, zoals retentie, trechter analyse en cohorts.
+   - Gebruik een SDK-integratie met één regel om binnen enkele minuten aan de slag te gaan.
+   - Profiteer van platform ondersteuning voor iOS, Android, macOS, tvOS, Xamarin, systeem eigen, eenheids-en Cordova.
 
    **Verwijzingen**
-   - [Aanmelden bij App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
+   - [Meld u aan met App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
    - [Aan de slag met App Center Analytics](/appcenter/analytics/)
 
 ## <a name="azure-monitor"></a>Azure Monitor
-Azure Monitor bevat [Application Insights](/azure/azure-monitor/app/app-insights-overview), waarmee u telemetrie verzamelen en analyseren om de prestaties te maximaliseren en uw mobiele toepassing te controleren. U profiteren van Application Insights door App Center Analytics te gebruiken om export naar Application Insights in te stellen. Application Insights kan de aangepaste gebeurtenistelemetrie van uw toepassingen opvragen, segmenteren, filteren en analyseren, buiten de analysetools die App Center biedt.
+Azure Monitor bevat [Application Insights](/azure/azure-monitor/app/app-insights-overview), waarmee u telemetrie kunt verzamelen en analyseren om de prestaties te maximaliseren en uw mobiele toepassing te bewaken. U kunt profiteren van Application Insights met behulp van App Center Analytics om de export naar Application Insights in te stellen. Application Insights kunt de telemetrie van de aangepaste gebeurtenissen van uw toepassingen opvragen, segmenteren, filteren en analyseren, naast de analyse hulpprogramma's die App Center biedt.
 
 **Belangrijke functies**
    - Vraag de telemetriegegevens van aangepaste gebeurtenissen op.
-   - Filter gebeurtenistelemetrie met krachtige segmentatiemogelijkheden.
-   - Analyseer conversie-, retentie- en navigatiepatronen in uw toepassing. U kunt gebruikmaken van:
-     - Trechters om conversiepercentages te analyseren en te controleren.
-     - Retentie om te analyseren hoe goed uw toepassing gebruikers in de loop van de tijd behoudt.
-     - Werkmappen om visualisaties en tekst te combineren tot een deelbaar rapport.
-     - Cohorten om specifieke groepen gebruikers of gebeurtenissen een naam te geven en op te slaan, zodat ze eenvoudig kunnen worden verwezen vanuit andere analysetools.
+   - Filter Event telemetrie met krachtige segmentatie mogelijkheden.
+   - Analyseer conversie, retentie en navigatie patronen in uw toepassing. U kunt gebruikmaken van:
+     - Trechters om conversie tarieven te analyseren en te bewaken.
+     - Bewaar om te analyseren hoe goed de toepassing gebruikers in de loop van de tijd blijven houden.
+     - Werkmappen om visualisaties en tekst in een deelbaar rapport te combi neren.
+     - Cohorts om specifieke groepen gebruikers of gebeurtenissen te benoemen en op te slaan, zodat ze eenvoudig kunnen worden gerefereerd vanuit andere analyse hulpprogramma's.
 
 **Verwijzingen**
-- [Azure-portal](https://portal.azure.com/)
-- [Analyseer uw mobiele applicatie met App Center en Application Insights](/azure/azure-monitor/learn/mobile-center-quickstart)
-- [App Center Analytics gebruiken met toepassingsinzichten](/azure/azure-monitor/app/usage-overview)
+- [Azure Portal](https://portal.azure.com/)
+- [Analyseer uw mobiele toepassing met App Center en Application Insights](/azure/azure-monitor/learn/mobile-center-quickstart)
+- [App Center Analytics gebruiken met Application Insights](/azure/azure-monitor/app/usage-overview)
 
 ## <a name="azure-playfab"></a>Azure PlayFab
-[Azure PlayFab](https://playfab.com/) biedt een compleet back-endplatform met gameservices, realtime analyses en LiveOps die u nodig hebt om games van wereldklasse te maken die met de cloud zijn verbonden. Deze services verminderen de barrières voor lancering voor game-ontwikkelaars. Ze bieden zowel grote als kleine studio's kosteneffectieve ontwikkelingsoplossingen die schalen met hun games. De services kunnen studio's helpen spelers te betrekken, te behouden en geld te verdienen. Met PlayFab kunnen ontwikkelaars de intelligente cloud gebruiken om games te bouwen en te bedienen, gaminggegevens te analyseren en de algehele game-ervaringen te verbeteren.
+[Azure PlayFab](https://playfab.com/) biedt een volledig back-end-platform met Game Services, realtime analyses en LiveOps die u nodig hebt voor het maken van hoogwaardige, met de Cloud verbonden games. Deze services verminderen de belemmeringen voor het starten van ontwikkel aars van spellen. Ze bieden zowel grote als kleine Studios kosteneffectieve ontwikkel oplossingen die met hun games kunnen worden geschaald. Met de services kunnen de bewaarde en geld verdienen spelers worden geholpen. Met PlayFab kunnen ontwikkel aars de intelligente Cloud gebruiken om games te bouwen en gebruiken, gaming gegevens te analyseren en de algehele gaming ervaring te verbeteren.
 
 **Belangrijke functies**
-   - Monitor real-time dashboards.
-   - Evalueer de prestaties van je game aan de hand van de beste statistieken.
-   - Bekijk samenvattingen van de dagelijkse en maandelijkse prestaties van je game via automatisch gegenereerde rapporten. U de rapporten bekijken in Game Manager en ze dagelijks laten downloaden of leveren in uw inbox.
-   - Gebruik A/B-tests om experimenten uit te voeren en de optimale instelling voor een bepaalde variabele te bepalen.
+   - Realtime-Dash boards bewaken.
+   - Evalueer de prestaties van uw games via de belangrijkste metrische gegevens.
+   - Bekijk samen vattingen van de dagelijkse en maandelijkse prestaties van uw game via automatisch gegenereerde rapporten. U kunt de rapporten weer geven in game Manager en deze dagelijks downloaden of afleveren in uw postvak in.
+   - Gebruik A/B testen om experimenten uit te voeren en de optimale instelling voor een bepaalde variabele te bepalen.
    - Gebruik segmentatie voor spelers om geautomatiseerde groeperingen van spelers te definiëren.
     
 **Verwijzingen**
-- [PlayFab-portal](https://developer.playfab.com/en-US/sign-up)
-- [Analytics](/gaming/playfab/#pivot=documentation&panel=analytics)
-- [Snel gestart](/gaming/playfab/#pivot=documentation&panel=quickstarts) 
+- [PlayFab-Portal](https://developer.playfab.com/en-US/sign-up)
+- [Analyse](/gaming/playfab/#pivot=documentation&panel=analytics)
+- [Snelstartgidsen](/gaming/playfab/#pivot=documentation&panel=quickstarts) 

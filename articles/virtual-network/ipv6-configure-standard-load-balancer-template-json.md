@@ -1,7 +1,7 @@
 ---
-title: Een IPv6 dual stack-toepassing implementeren in het virtuele Azure-netwerk - Resource Manger-sjabloon
+title: Een IPv6-toepassing met dubbele stack implementeren in een virtueel netwerk van Azure-Resource Manager-sjabloon
 titlesuffix: Azure Virtual Network
-description: In dit artikel ziet u hoe u een IPv6 dual stack-toepassing implementeert met Standard Load Balancer in het virtuele Azure-netwerk met behulp van VM-sjablonen voor Azure Resource Manager.
+description: In dit artikel wordt beschreven hoe u een IPv6-toepassing met dubbele stack implementeert met Standard Load Balancer in een virtueel Azure-netwerk met behulp van Azure Resource Manager VM-sjablonen.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,23 +13,23 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: 1f9531b5d1decfd462a82b9d389c5af519591c83
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420649"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template"></a>Een IPv6 dual stack-toepassing implementeren in het virtuele Azure-netwerk - Sjabloon
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template"></a>Een IPv6-toepassing met dubbele stack implementeren in het virtuele netwerk van Azure-sjabloon
 
-In dit artikel vindt u een lijst met IPv6-configuratietaken met het gedeelte van de VM-sjabloon Azure Resource Manager dat van toepassing is op. Gebruik de in dit artikel beschreven sjabloon om een Dual Stack (IPv4 + IPv6)-toepassing te implementeren met behulp van Standard Load Balancer in Azure die een virtueel dual stack-netwerk met IPv4- en IPv6-subnetten bevat, een StandaardLoad Balancer met dubbele (IPv4 + IPv6) front-endconfiguraties, VM's met NIC's met een dubbele IP-configuratie, netwerkbeveiligingsgroep en openbare IP-adressen. 
+Dit artikel bevat een lijst met IPv6-configuratie taken met het gedeelte van de Azure Resource Manager VM-sjabloon dat van toepassing is op. Gebruik de sjabloon die in dit artikel wordt beschreven voor het implementeren van een dual stack (IPv4 + IPv6)-toepassing met behulp van Standard Load Balancer in azure met een dual stack virtueel netwerk met IPv4-en IPv6-subnetten, een Standard Load Balancer met dubbele (IPv4 + IPv6) front-end configuraties, Vm's met Nic's met een dubbele IP-configuratie, netwerk beveiligings groep en open bare Ip's. 
 
 ## <a name="required-configurations"></a>Vereiste configuraties
 
-Zoek naar de sjabloonsecties in de sjabloon om te zien waar ze moeten plaatsvinden.
+Zoek naar de sjabloon secties in de sjabloon om te zien waar ze zich moeten voordoen.
 
-### <a name="ipv6-addressspace-for-the-virtual-network"></a>IPv6-adresSpace voor het virtuele netwerk
+### <a name="ipv6-addressspace-for-the-virtual-network"></a>IPv6-addressSpace voor het virtuele netwerk
 
-Sjabloonsectie om toe te voegen:
+Sjabloon sectie die moet worden toegevoegd:
 
 ```JSON
         "addressSpace": {
@@ -38,9 +38,9 @@ Sjabloonsectie om toe te voegen:
             "[variables('vnetv6AddressRange')]"    
 ```
 
-### <a name="ipv6-subnet-within-the-ipv6-virtual-network-addressspace"></a>IPv6-subnet binnen het virtuele netwerkadres IPv6Space
+### <a name="ipv6-subnet-within-the-ipv6-virtual-network-addressspace"></a>IPv6-subnet binnen het virtuele IPv6-netwerk addressSpace
 
-Sjabloonsectie om toe te voegen:
+Sjabloon sectie die moet worden toegevoegd:
 ```JSON
           {
             "name": "V6Subnet",
@@ -52,7 +52,7 @@ Sjabloonsectie om toe te voegen:
 
 ### <a name="ipv6-configuration-for-the-nic"></a>IPv6-configuratie voor de NIC
 
-Sjabloonsectie om toe te voegen:
+Sjabloon sectie die moet worden toegevoegd:
 ```JSON
           {
             "name": "ipconfig-v6",
@@ -68,7 +68,7 @@ Sjabloonsectie om toe te voegen:
                 }
 ```
 
-### <a name="ipv6-network-security-group-nsg-rules"></a>NSG-regels (IPv6-netwerkbeveiligingsgroep)
+### <a name="ipv6-network-security-group-nsg-rules"></a>NSG-regels (IPv6-netwerk beveiligings groep)
 
 ```JSON
           {
@@ -88,7 +88,7 @@ Sjabloonsectie om toe te voegen:
 
 ## <a name="conditional-configuration"></a>Voorwaardelijke configuratie
 
-Als u een virtueel netwerktoestel gebruikt, voegt u IPv6-routes toe in de routetabel. Anders is deze configuratie optioneel.
+Als u een virtueel netwerk apparaat gebruikt, voegt u IPv6-routes toe aan de route tabel. Anders is deze configuratie optioneel.
 
 ```JSON
     {
@@ -109,7 +109,7 @@ Als u een virtueel netwerktoestel gebruikt, voegt u IPv6-routes toe in de routet
 
 ## <a name="optional-configuration"></a>Optionele configuratie
 
-### <a name="ipv6-internet-access-for-the-virtual-network"></a>IPv6-internettoegang voor het virtuele netwerk
+### <a name="ipv6-internet-access-for-the-virtual-network"></a>IPv6 Internet toegang voor het virtuele netwerk
 
 ```JSON
 {
@@ -120,7 +120,7 @@ Als u een virtueel netwerktoestel gebruikt, voegt u IPv6-routes toe in de routet
               }
 ```
 
-### <a name="ipv6-public-ip-addresses"></a>IPv6-openbare IP-adressen
+### <a name="ipv6-public-ip-addresses"></a>Open bare IPv6-IP-adressen
 
 ```JSON
     {
@@ -137,7 +137,7 @@ Als u een virtueel netwerktoestel gebruikt, voegt u IPv6-routes toe in de routet
       }
 ```
 
-### <a name="ipv6-front-end-for-load-balancer"></a>IPv6 Front-end voor Load Balancer
+### <a name="ipv6-front-end-for-load-balancer"></a>IPv6-front-end voor Load Balancer
 
 ```JSON
           {
@@ -148,7 +148,7 @@ Als u een virtueel netwerktoestel gebruikt, voegt u IPv6-routes toe in de routet
               }
 ```
 
-### <a name="ipv6-back-end-address-pool-for-load-balancer"></a>IPv6 Back-end-adresgroep voor Load Balancer
+### <a name="ipv6-back-end-address-pool-for-load-balancer"></a>Adres groep voor IPv6-back-end voor Load Balancer
 
 ```JSON
               "backendAddressPool": {
@@ -161,7 +161,7 @@ Als u een virtueel netwerktoestel gebruikt, voegt u IPv6-routes toe in de routet
             "name": "lbrule-v6"
 ```
 
-### <a name="ipv6-load-balancer-rules-to-associate-incoming-and-outgoing-ports"></a>IPv6-load balancerregels voor het koppelen van binnenkomende en uitgaande poorten
+### <a name="ipv6-load-balancer-rules-to-associate-incoming-and-outgoing-ports"></a>IPv6-load balancer regels om binnenkomende en uitgaande poorten te koppelen
 
 ```JSON
           {
@@ -178,9 +178,9 @@ Als u een virtueel netwerktoestel gebruikt, voegt u IPv6-routes toe in de routet
                 }
 ```
 
-## <a name="sample-vm-template-json"></a>Voorbeeld VM-sjabloon JSON
-Als u een IPv6 dual stack-toepassing wilt implementeren in het virtuele Azure-netwerk met Azure Resource Manager-sjabloon, geeft u [hier voorbeeldsjabloon weer](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-stdlb/).
+## <a name="sample-vm-template-json"></a>Voor beeld-VM-sjabloon JSON
+Als u een IPv6-toepassing met dubbele stack wilt implementeren in een virtueel Azure-netwerk met Azure Resource Manager sjabloon, kunt u [hier](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-stdlb/)voorbeeld sjabloon bekijken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U vindt hier meer informatie over de prijzen voor [openbare IP-adressen,](https://azure.microsoft.com/pricing/details/ip-addresses/) [netwerkbandbreedte](https://azure.microsoft.com/pricing/details/bandwidth/)of [Load Balancer.](https://azure.microsoft.com/pricing/details/load-balancer/)
+U kunt details vinden over de prijzen voor [open bare IP-adressen](https://azure.microsoft.com/pricing/details/ip-addresses/), [netwerk bandbreedte](https://azure.microsoft.com/pricing/details/bandwidth/)of [Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/).

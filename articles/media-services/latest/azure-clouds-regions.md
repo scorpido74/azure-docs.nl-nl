@@ -1,6 +1,6 @@
 ---
 title: Clouds en regio's waarin Azure Media Services v3 beschikbaar is
-description: In dit artikel wordt gesproken over Azure-clouds en -regio's waarin Azure Media Services v3 beschikbaar is.
+description: Dit artikel spreekt over Azure-Clouds en-regio's waarin Azure Media Services v3 beschikbaar is.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,42 +12,42 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
 ms.openlocfilehash: 1257bf4dfb0d5b2c4995cac760290f97293a0c0f
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80382967"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Clouds en regio's waarin Azure Media Services v3 bestaat
 
-Azure Media Services v3 is beschikbaar via azure resource manager-manifest in het wereldwijde Azure, Azure Government, Azure Germany, Azure China 21Vianet. Niet alle Media Services-functies zijn echter beschikbaar in alle Azure-clouds. In dit document worden de beschikbaarheid van de belangrijkste V3-componenten van Media Services beschreven.
+Azure Media Services v3 is beschikbaar via Azure Resource Manager-manifest in Global Azure, Azure Government, Azure Duitsland, Azure China 21Vianet. Niet alle Media Services-functies zijn echter beschikbaar in alle Azure-Clouds. In dit document wordt een overzicht van de beschik baarheid van belangrijkste Media Services v3-onderdelen beschreven.
 
-## <a name="feature-availability-in-azure-clouds"></a>Beschikbaarheid van functies in Azure-clouds
+## <a name="feature-availability-in-azure-clouds"></a>Beschik baarheid van functies in azure-Clouds
 
-| Functie|Globale Azure-regio's | Azure Government|Azure Duitsland|Azure China 21Vianet|
+| Functie|Wereld wijde Azure-regio's | Azure Government|Azure Duitsland|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | Beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
 | [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
 | [StandardEncoderPreset](encoding-concept.md) | Beschikbaar | Beschikbaar | Beschikbaar | Beschikbaar |
-| [LiveEvenementen](live-streaming-overview.md) | Beschikbaar | Beschikbaar | Beschikbaar | Beschikbaar |
-| [StreamingEindpunten](streaming-endpoint-concept.md) | Beschikbaar | Beschikbaar | Beschikbaar | Beschikbaar |
+| [LiveEvents](live-streaming-overview.md) | Beschikbaar | Beschikbaar | Beschikbaar | Beschikbaar |
+| [StreamingEndpoints](streaming-endpoint-concept.md) | Beschikbaar | Beschikbaar | Beschikbaar | Beschikbaar |
 
-## <a name="regionsgeographieslocations"></a>Regio's/regio's/locaties
+## <a name="regionsgeographieslocations"></a>Regio's/geografi/locaties
 
-[Regio's waarin de Azure Media Services-service wordt geïmplementeerd](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
+[Regio's waarin de Azure Media Services-service is geïmplementeerd](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
-### <a name="region-code-name"></a>Regiocodenaam
+### <a name="region-code-name"></a>Regio code naam
 
-Wanneer u de **locatieparameter** moet leveren, moet u de regiocodenaam als **locatiewaarde** opgeven. Als u de codenaam wilt krijgen van het gebied waarin uw account zich bevindt en naar uw oproep moet worden doorgestuurd, u de volgende regel uitvoeren in [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
+Wanneer u de **locatie** parameter moet opgeven, moet u de naam van de regio code opgeven als **locatie** waarde. Als u de code naam wilt ophalen van de regio waarin uw account zich bevindt en de aanroep moet worden doorgestuurd naar, kunt u de volgende regel uitvoeren in [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 
 ```azurecli-interactive
 az account list-locations
 ```
 
-Zodra u de bovenstaande regel uitvoert, krijgt u een lijst met alle Azure-regio's. Navigeer naar het Azure-gebied met de *weergaveNaam die* u zoekt en gebruik de *naamwaarde* voor de **locatieparameter.**
+Wanneer u de hierboven weer gegeven regel hebt uitgevoerd, krijgt u een lijst met alle Azure-regio's. Ga naar de Azure-regio met de *DisplayName* die u zoekt en gebruik de *naam* waarde voor de **locatie** parameter.
 
-Voor de Azure-regio West US 2 (hieronder weergegeven) gebruikt u bijvoorbeeld 'westus2' voor de **locatieparameter.**
+Voor de Azure-regio vs-West 2 (hieronder weer gegeven) gebruikt u bijvoorbeeld ' westus2 ' voor de **locatie** parameter.
 
 ```json
    {
@@ -62,39 +62,39 @@ Voor de Azure-regio West US 2 (hieronder weergegeven) gebruikt u bijvoorbeeld 'w
 
 ## <a name="endpoints"></a>Eindpunten  
 
-De volgende eindpunten zijn belangrijk om te weten wanneer u verbinding maakt met Media Services-accounts uit verschillende nationale Azure-clouds.
+De volgende eind punten zijn belang rijk om te weten wanneer u verbinding maakt met Media Services accounts van verschillende nationale Azure-Clouds.
 
-### <a name="global-azure"></a>Globale Azure
+### <a name="global-azure"></a>Wereld wijd Azure
 
 |Eindpunten||
 | --- | --- |
 | Azure Resource Manager |  `https://management.azure.com/` |
-| Authentication | `https://login.microsoftonline.com/` |
-| Token-doelgroep | `https://management.core.windows.net/` |
+| Verificatie | `https://login.microsoftonline.com/` |
+| Token doelgroep | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Government
 
 |Eindpunten||
 | --- | --- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
-| Authentication | `https://login.microsoftonline.us/` |
-| Token-doelgroep | `https://management.core.usgovcloudapi.net/` |
+| Verificatie | `https://login.microsoftonline.us/` |
+| Token doelgroep | `https://management.core.usgovcloudapi.net/` |
 
 ### <a name="azure-germany"></a>Azure Duitsland
 
 | Eindpunten ||
 | --- | --- |  
 | Azure Resource Manager | `https://management.cloudapi.de/` |
-| Authentication | `https://login.microsoftonline.de/` |
-| Token-doelgroep | `https://management.core.cloudapi.de/`|
+| Verificatie | `https://login.microsoftonline.de/` |
+| Token doelgroep | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure China 21Vianet
 
 |Eindpunten||
 | --- | --- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
-| Authentication | `https://login.chinacloudapi.cn/` |
-| Token-doelgroep |  `https://management.core.chinacloudapi.cn/` |
+| Verificatie | `https://login.chinacloudapi.cn/` |
+| Token doelgroep |  `https://management.core.chinacloudapi.cn/` |
 
 ## <a name="see-also"></a>Zie ook
 
@@ -104,4 +104,4 @@ De volgende eindpunten zijn belangrijk om te weten wanneer u verbinding maakt me
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Media Services v3 overzicht](media-services-overview.md)
+[Overzicht van Media Services v3](media-services-overview.md)

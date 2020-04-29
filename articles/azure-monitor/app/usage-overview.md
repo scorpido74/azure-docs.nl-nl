@@ -1,28 +1,28 @@
 ---
-title: Gebruiksanalyse met Azure Application Insights | Microsoft-documenten
-description: Begrijp uw gebruikers en wat ze met uw app doen.
+title: Gebruiks analyse met Azure-toepassing Insights | Micro soft docs
+description: Inzicht in uw gebruikers en wat ze met uw app doen.
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: e964b1b5b9d5500f2d9f24ed765299389e6dbbb9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80283953"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Gebruiksanalyse met Application Insights
 
-Welke functies van uw web of mobiele app zijn het populairst? Bereiken uw gebruikers hun doelen met uw app? Vallen ze af op bepaalde punten, en komen ze later terug?  [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) helpt u krachtige inzichten te krijgen in hoe mensen uw app gebruiken. Elke keer dat u uw app bijwerkt, u beoordelen hoe goed het werkt voor gebruikers. Met deze kennis u datagedreven beslissingen nemen over uw volgende ontwikkelingscycli.
+Welke functies van uw web-of mobiele app zijn het meest populair? Bereiken uw gebruikers hun doel stellingen met uw app? Vallen ze op bepaalde punten uit en retour neren ze later?  [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) helpt u krachtige inzichten te krijgen in de manier waarop mensen uw app gebruiken. Telkens wanneer u uw app bijwerkt, kunt u bepalen hoe goed het werkt voor gebruikers. Met deze kennis kunt u op gegevens gebaseerde beslissingen nemen over uw volgende ontwikkelings cycli.
 
 ## <a name="send-telemetry-from-your-app"></a>Telemetrie verzenden vanuit uw app
 
-De beste ervaring wordt verkregen door Application Insights te installeren, zowel in uw app-servercode als in uw webpagina's. De client- en serveronderdelen van uw app sturen telemetrie terug naar de Azure-portal voor analyse.
+De beste ervaring wordt verkregen door Application Insights te installeren in de code van uw app-server en op uw webpagina's. De client-en Server onderdelen van uw app sturen telemetrie terug naar de Azure Portal voor analyse.
 
-1. **Servercode:** Installeer de juiste module voor uw [ASP.NET,](../../azure-monitor/app/asp-net.md) [Azure,](../../azure-monitor/app/app-insights-overview.md) [Java,](../../azure-monitor/app/java-get-started.md) [Node.js](../../azure-monitor/app/nodejs.md)of [andere](../../azure-monitor/app/platforms.md) app.
+1. **Server code:** Installeer de juiste module voor uw [ASP.net](../../azure-monitor/app/asp-net.md), [Azure](../../azure-monitor/app/app-insights-overview.md), [Java](../../azure-monitor/app/java-get-started.md), [node. js](../../azure-monitor/app/nodejs.md)of een [andere](../../azure-monitor/app/platforms.md) app.
 
-    * *Wilt u geen servercode installeren? Maak [gewoon een Azure Application Insights-bron.](../../azure-monitor/app/create-new-resource.md )*
+    * *Wilt u geen server code installeren? U hoeft alleen maar [een Azure-toepassing Insights-resource te maken](../../azure-monitor/app/create-new-resource.md ).*
 
-2. **Webpaginacode:** Voeg het volgende script toe aan ``</head>``uw webpagina voordat u het slot sluit . Vervang de instrumentatiesleutel door de juiste waarde voor uw Application Insights-bron:
+2. **Webpagina code:** Voeg het volgende script toe aan de webpagina voordat deze wordt ``</head>``gesloten. Vervang de instrumentatie sleutel door de juiste waarde voor uw Application Insights Bron:
     
     ```html
     <script type="text/javascript">
@@ -34,63 +34,63 @@ De beste ervaring wordt verkregen door Application Insights te installeren, zowe
     </script>
     ```
 
-    Bekijk het [Referentieartikel JavaScript SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript)voor meer geavanceerde configuraties voor het bewaken van websites.
+    Raadpleeg het [naslag artikel over Java script SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript)voor meer informatie over geavanceerde configuraties voor het controleren van websites.
 
-3. **Mobiele app-code:** Gebruik de App Center SDK om gebeurtenissen uit uw app te verzamelen en stuur vervolgens kopieën van deze gebeurtenissen naar Application Insights voor analyse door [deze handleiding te volgen.](../../azure-monitor/learn/mobile-center-quickstart.md)
+3. **Mobiele app-code:** Gebruik de App Center SDK voor het verzamelen van gebeurtenissen uit uw app en verzend vervolgens kopieën van deze gebeurtenissen naar Application Insights voor analyse door [deze hand leiding te volgen](../../azure-monitor/learn/mobile-center-quickstart.md).
 
-4. **Ontvang telemetrie:** Voer uw project een paar minuten uit in de foutopsporingsmodus en zoek vervolgens naar resultaten in het overzichtsblad in Application Insights.
+4. **Telemetrie ophalen:** Voer uw project gedurende enkele minuten uit in de foutopsporingsmodus en zoek vervolgens naar resultaten op de Blade overzicht in Application Insights.
 
-    Publiceer uw app om de prestaties van uw app te controleren en te ontdekken wat uw gebruikers met uw app doen.
+    Publiceer uw app voor het bewaken van de prestaties van uw app en ontdek wat uw gebruikers doen met uw app.
 
-## <a name="include-user-and-session-id-in-your-telemetry"></a>Gebruikers- en sessie-id opnemen in uw telemetrie
-Om gebruikers in de loop van de tijd te kunnen volgen, vereist Application Insights een manier om ze te identificeren. Het gereedschap Gebeurtenissen is het enige hulpprogramma voor gebruik waarvoor geen gebruikersnaam of sessie-id vereist is.
+## <a name="include-user-and-session-id-in-your-telemetry"></a>Gebruikers-en sessie-ID in uw telemetrie toevoegen
+Om gebruikers na verloop van tijd bij te houden, moet Application Insights een manier om ze te identificeren. Het hulp programma gebeurtenissen is het enige gebruiks hulpmiddel waarvoor geen gebruikers-ID of sessie-ID is vereist.
 
-Begin met het verzenden van gebruikers- en sessie-id's met behulp van [dit proces](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context).
+Het verzenden van gebruikers-en sessie-Id's starten met [dit proces](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context).
 
-## <a name="explore-usage-demographics-and-statistics"></a>Bekijk de demografische gegevens en statistieken van het gebruik
-Ontdek wanneer mensen uw app gebruiken, in welke pagina's ze het meest geïnteresseerd zijn, waar uw gebruikers zich bevinden, welke browsers en besturingssystemen ze gebruiken. 
+## <a name="explore-usage-demographics-and-statistics"></a>Demografische gegevens over gebruik en statistieken verkennen
+Ontdek wanneer mensen uw app gebruiken, op welke pagina's ze het meest geïnteresseerd zijn, waar uw gebruikers zich bevinden, welke browsers en besturings systemen ze gebruiken. 
 
-De rapporten Gebruikers en sessies filteren uw gegevens op pagina's of aangepaste gebeurtenissen en segmenteren deze op eigenschappen zoals locatie, omgeving en pagina. U ook uw eigen filters toevoegen.
+Met de rapporten gebruikers en sessies worden uw gegevens op pagina's of aangepaste gebeurtenissen gefilterd en gesegmenteerd op basis van eigenschappen zoals locatie, omgeving en pagina. U kunt ook uw eigen filters toevoegen.
 
 ![Gebruikers](./media/usage-overview/users.png)  
 
-Inzichten aan de rechterkant wijzen op interessante patronen in de set van gegevens.  
+Inzichten aan de rechter kant van interessante patronen in de set met gegevens.  
 
-* Het rapport **Gebruikers** telt het aantal unieke gebruikers dat toegang heeft tot uw pagina's binnen de door u gekozen tijdsperioden. Voor web-apps worden gebruikers geteld met behulp van cookies. Als iemand toegang heeft tot uw site met verschillende browsers of clientmachines, of zijn cookies verwijdert, worden deze cookies meer dan één keer geteld.
-* Het rapport **Sessies** telt het aantal gebruikerssessies dat toegang heeft tot uw site. Een sessie is een periode van activiteit door een gebruiker, beëindigd door een periode van inactiviteit van meer dan een half uur.
+* Het rapport **gebruikers** telt het aantal unieke gebruikers dat toegang heeft tot uw pagina's binnen de gekozen tijds periode. Voor web-apps worden gebruikers geteld met behulp van cookies. Als iemand uw site opent met verschillende browsers of client machines, of als de cookies worden gewist, worden ze meer dan één keer geteld.
+* Het rapport **sessies** telt het aantal gebruikers sessies die toegang hebben tot uw site. Een sessie is een periode van activiteit door een gebruiker, die door een periode van inactiviteit van meer dan een half uur wordt beëindigd.
 
-[Meer informatie over de tools voor gebruikers, sessies en evenementen](usage-segmentation.md)  
+[Meer informatie over de hulpprogram ma's gebruikers, sessies en gebeurtenissen](usage-segmentation.md)  
 
-## <a name="retention---how-many-users-come-back"></a>Retentie - hoeveel gebruikers komen terug?
+## <a name="retention---how-many-users-come-back"></a>Bewaren-hoeveel gebruikers worden weer gegeven?
 
-Retentie helpt u te begrijpen hoe vaak uw gebruikers terugkeren om hun app te gebruiken, op basis van cohorten gebruikers die tijdens een bepaalde tijdsemmer zakelijke actie hebben uitgevoerd. 
+Retentie helpt u te begrijpen hoe vaak uw gebruikers terugkeren naar het gebruik van hun app, op basis van cohorts van gebruikers die een bepaalde zakelijke actie hebben uitgevoerd tijdens een bepaalde periode. 
 
-- Begrijpen welke specifieke functies ervoor zorgen dat gebruikers meer terugkomen dan anderen 
-- Vormhypothesen op basis van echte gebruikersgegevens 
-- Bepalen of retentie een probleem is in uw product 
+- Meer informatie over de specifieke functies waarmee gebruikers meer dan andere kunnen terugkomen 
+- Formulier hypo Thesen op basis van echte gebruikers gegevens 
+- Bepalen of er een probleem is met het bewaren van uw product 
 
 ![Bewaartermijn](./media/usage-overview/retention.png) 
 
-Met de bewaarbesturingselementen bovenaan u specifieke gebeurtenissen en tijdsbereik definiëren om retentie te berekenen. De grafiek in het midden geeft een visuele weergave van het totale retentiepercentage tegen het opgegeven tijdsbereik. De grafiek aan de onderkant staat voor individuele retentie in een bepaalde periode. Met dit detailniveau u begrijpen wat uw gebruikers doen en wat van invloed kan zijn op terugkerende gebruikers op een meer gedetailleerde granulariteit.  
+Met de besturings elementen voor retentie bovenaan kunt u specifieke gebeurtenissen en tijds bereik definiëren voor het berekenen van de Bewaar periode. De grafiek in het midden geeft een visuele weer gave van het algemene Bewaar percentage op basis van het opgegeven tijds bereik. In de grafiek aan de onderkant staat een afzonderlijke Bewaar periode in een bepaalde tijd. Met dit detail niveau kunt u begrijpen wat uw gebruikers doen en wat van invloed kan zijn op het retour neren van gebruikers met een gedetailleerdere granulariteit.  
 
-[Meer informatie over het gereedschap Retentie](usage-retention.md)
+[Meer informatie over het hulp programma voor retentie](usage-retention.md)
 
-## <a name="custom-business-events"></a>Aangepaste zakelijke evenementen
+## <a name="custom-business-events"></a>Aangepaste zakelijke gebeurtenissen
 
-Om een duidelijk inzicht te krijgen in wat gebruikers met uw app doen, is het handig om regels code in te voegen om aangepaste gebeurtenissen te registreren. Deze gebeurtenissen kunnen alles bijhouden, van gedetailleerde gebruikersacties, zoals het klikken op specifieke knoppen, tot belangrijkere zakelijke evenementen, zoals het doen van een aankoop of het winnen van een game. 
+Om duidelijk inzicht te krijgen in wat gebruikers met uw app doen, is het handig om regels code in te voegen voor het vastleggen van aangepaste gebeurtenissen. Deze gebeurtenissen kunnen alles volgen van gedetailleerde gebruikers acties, zoals het klikken op specifieke knoppen, tot belang rijke zakelijke gebeurtenissen, zoals het maken van een aankoop of het winnen van een spel. 
 
-Hoewel paginaweergaven in sommige gevallen nuttige gebeurtenissen kunnen vertegenwoordigen, is dit in het algemeen niet waar. Een gebruiker kan een productpagina openen zonder het product te kopen. 
+In sommige gevallen kunnen pagina weergaven nuttige gebeurtenissen vertegenwoordigen. Dit is in het algemeen niet waar. Een gebruiker kan een product pagina openen zonder het product aan te schaffen. 
 
-Met specifieke zakelijke gebeurtenissen u de voortgang van uw gebruikers via uw site in kaart brengen. U hun voorkeuren voor verschillende opties te vinden, en waar ze afhaken of problemen hebben. Met deze kennis u weloverwogen beslissingen nemen over de prioriteiten in uw ontwikkelingsachterstand.
+Met specifieke zakelijke evenementen kunt u de voortgang van uw gebruikers via uw site in kaart brengen. U kunt hun voor keuren vinden voor verschillende opties en waar ze uitvallen of problemen opleveren. Met deze kennis kunt u weloverwogen beslissingen nemen over de prioriteiten in uw ontwikkelings achterstand.
 
-Gebeurtenissen kunnen worden geregistreerd vanaf de clientzijde van de app:
+Gebeurtenissen kunnen worden vastgelegd van de client zijde van de app:
 
 ```JavaScript
 
     appInsights.trackEvent("ExpandDetailTab", {DetailTab: tabName});
 ```
 
-Of vanaf de serverkant:
+Of aan de server zijde:
 
 ```csharp
     var tc = new Microsoft.ApplicationInsights.TelemetryClient();
@@ -101,27 +101,27 @@ Of vanaf de serverkant:
     tc.TrackEvent("CompletedPurchase");
 ```
 
-U eigenschapswaarden aan deze gebeurtenissen koppelen, zodat u de gebeurtenissen filteren of splitsen wanneer u ze in de portal inspecteert. Bovendien is aan elke gebeurtenis een standaardset met eigenschappen gekoppeld, zoals een anonieme gebruikers-id, waarmee u de volgorde van de activiteiten van een individuele gebruiker traceren.
+U kunt eigenschaps waarden aan deze gebeurtenissen koppelen, zodat u de gebeurtenissen kunt filteren of splitsen wanneer u ze in de portal inspecteert. Daarnaast is er een standaardset eigenschappen gekoppeld aan elke gebeurtenis, zoals een anonieme gebruikers-ID, waarmee u de volg orde van de activiteiten van een afzonderlijke gebruiker kunt traceren.
 
-Meer informatie over [aangepaste gebeurtenissen](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) en [eigenschappen](../../azure-monitor/app/api-custom-events-metrics.md#properties).
+Meer informatie over [aangepaste gebeurtenissen](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) en [Eigenschappen](../../azure-monitor/app/api-custom-events-metrics.md#properties).
 
-### <a name="slice-and-dice-events"></a>Slice en dobbelstenen evenementen
+### <a name="slice-and-dice-events"></a>Segment-en dobbel stenen gebeurtenissen
 
-In de hulpprogramma's Gebruikers, Sessies en Gebeurtenissen u aangepaste gebeurtenissen segmenteren en dobbelen op basis van gebruiker, gebeurtenisnaam en eigenschappen.
+In de hulpprogram ma's gebruikers, sessies en gebeurtenissen kunt u aangepaste gebeurtenissen op basis van gebruiker, gebeurtenis naam en eigenschappen delen en aan een dobbel stenen uitdelen.
 ![Gebruikers](./media/usage-overview/users.png)  
   
-## <a name="design-the-telemetry-with-the-app"></a>De telemetrie met de app ontwerpen
+## <a name="design-the-telemetry-with-the-app"></a>De telemetrie ontwerpen met de app
 
-Wanneer u elke functie van uw app ontwerpt, moet u overwegen hoe u het succes ervan met uw gebruikers gaat meten. Bepaal welke zakelijke gebeurtenissen u moet vastleggen en codeer de trackingcalls voor deze gebeurtenissen vanaf het begin in uw app.
+Houd bij het ontwerpen van elk onderdeel van uw app rekening met de manier waarop u het succes van uw gebruikers wilt meten. Bepaal welke zakelijke gebeurtenissen u moet vastleggen en codeer de tracerings aanroepen voor die gebeurtenissen in uw app vanaf het begin.
 
-## <a name="a--b-testing"></a>A | B Testen
-Als u niet weet welke variant van een functie succesvoller zal zijn, laat u ze allebei los, waardoor ze allemaal toegankelijk zijn voor verschillende gebruikers. Meet het succes van elk, en ga dan naar een uniforme versie.
+## <a name="a--b-testing"></a>A | B testen
+Als u niet weet welke variant van een functie succesvol is, kunt u beide versies vrijgeven, zodat elke gebruiker toegankelijk is voor verschillende gebruikers. Meet het succes van elke en ga vervolgens naar een uniforme versie.
 
-Voor deze techniek koppelt u verschillende eigenschapswaarden aan alle telemetrie die door elke versie van uw app wordt verzonden. U dat doen door eigenschappen te definiëren in de actieve TelemetrieContext. Deze standaardeigenschappen worden toegevoegd aan elk telemetriebericht dat de toepassing verzendt - niet alleen uw aangepaste berichten, maar ook de standaardtelemetrie.
+Voor deze techniek koppelt u afzonderlijke eigenschaps waarden aan alle telemetrie die door elke versie van uw app worden verzonden. U kunt dit doen door eigenschappen te definiëren in de actieve TelemetryContext. Deze standaard eigenschappen worden toegevoegd aan elk telemetrie-bericht dat de toepassing verzendt, niet alleen uw aangepaste berichten, maar ook de standaard-telemetrie.
 
-Filter en spliter uw gegevens in de portal Application Insights op de eigenschapswaarden, zodat de verschillende versies worden vergeleken.
+Filter en Splits uw gegevens op de eigenschaps waarden in de Application Insights Portal, zodat u de verschillende versies kunt vergelijken.
 
-Stel hiervoor [een telemetrieinitialisator in:](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)
+[Stel hiervoor een initialisatie functie voor telemetrie](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)in:
 
 **ASP.NET-apps**
 
@@ -140,7 +140,7 @@ Stel hiervoor [een telemetrieinitialisator in:](../../azure-monitor/app/api-filt
     }
 ```
 
-In de web-app initializer zoals Global.asax.cs:
+In de initialisatie functie van de web-app, zoals Global.asax.cs:
 
 ```csharp
 
@@ -155,9 +155,9 @@ In de web-app initializer zoals Global.asax.cs:
 **ASP.NET Core-apps**
 
 > [!NOTE]
-> Het toevoegen `ApplicationInsights.config` van `TelemetryConfiguration.Active` initialisator met behulp van of het gebruik is niet geldig voor ASP.NET Core-toepassingen. 
+> Het toevoegen van initializer `ApplicationInsights.config` met `TelemetryConfiguration.Active` of gebruikt is niet geldig voor ASP.net core toepassingen. 
 
-Voor [ASP.NET Core-toepassingen](asp-net-core.md#adding-telemetryinitializers) `TelemetryInitializer` wordt het toevoegen van een nieuwe gedaan door deze toe te voegen aan de container Dependency Injection, zoals hieronder wordt weergegeven. Dit gebeurt `ConfigureServices` in de `Startup.cs` methode van uw klas.
+Voor [ASP.net core](asp-net-core.md#adding-telemetryinitializers) toepassingen voegt u een nieuw `TelemetryInitializer` item toe door het toe te voegen aan de container voor het invoegen van afhankelijkheden, zoals hieronder wordt weer gegeven. Dit doet u in `ConfigureServices` de methode van `Startup.cs` uw klasse.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -168,12 +168,12 @@ Voor [ASP.NET Core-toepassingen](asp-net-core.md#adding-telemetryinitializers) `
 }
 ```
 
-Alle nieuwe TelemetrieClients voegen automatisch de eigenschapswaarde toe die u opgeeft. Afzonderlijke telemetriegebeurtenissen kunnen de standaardwaarden overschrijven.
+Alle nieuwe TelemetryClients voegen automatisch de eigenschaps waarde toe die u opgeeft. Afzonderlijke telemetrie-gebeurtenissen kunnen de standaard waarden onderdrukken.
 
 ## <a name="next-steps"></a>Volgende stappen
    - [Gebruikers, sessies, gebeurtenissen](usage-segmentation.md)
    - [Trechters](usage-funnels.md)
-   - [Retentie](usage-retention.md)
+   - [Bewaartermijn](usage-retention.md)
    - [Gebruikersstromen](usage-flows.md)
    - [Werkmappen](../../azure-monitor/app/usage-workbooks.md)
-   - [Gebruikerscontext toevoegen](usage-send-user-context.md)
+   - [Gebruikers context toevoegen](usage-send-user-context.md)

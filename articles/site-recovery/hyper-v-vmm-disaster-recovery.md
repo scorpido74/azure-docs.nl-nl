@@ -1,5 +1,5 @@
 ---
-title: Hyper-V-noodherstel instellen op een secundaire site met Azure Site Recovery
+title: Herstel na nood geval voor Hyper-V instellen op een secundaire site met Azure Site Recovery
 description: Informatie over het instellen van herstel na noodgevallen voor Hyper-V-VM's tussen uw on-premises sites met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: f7de3c28463a86852cba03713ca4c500e7ca0339
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80437511"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Herstel na noodgevallen instellen voor Hyper-V-VM's naar een secundaire on-premises site
@@ -44,7 +44,7 @@ Bij [netwerktoewijzing](hyper-v-vmm-network-mapping.md) worden on-premises VMM-n
 
 - Virtuele machines worden verbonden met de juiste VM-doelnetwerken na een failover. 
 - Gerepliceerde VM's worden optimaal op Hyper-V-doelhostservers geplaatst. 
-- Als u netwerktoewijzing niet configureert, worden replica-VM's niet meer verbonden met een VM-netwerk na een failover.
+- Als u geen netwerk toewijzing configureert, worden replica-Vm's na een failover niet verbonden met een VM-netwerk.
 
 Bereid VMM als volgt voor:
 
@@ -64,7 +64,7 @@ Bereid VMM als volgt voor:
 
 Selecteer wat u wilt repliceren en waar u naar wilt repliceren.
 
-1. Klik op **Siteherstel** > **stap 1: Doel infrastructuurbeveiliging** > **voorbereiden**.
+1. Klik op **site Recovery** > **stap 1:** > **doel infrastructuur beveiliging**voorbereiden.
 2. Selecteer **Naar herstelsite** en selecteer **Ja, met Hyper-V**.
 3. Selecteer **Ja** om aan te geven dat u VMM gebruikt voor het beheren van de Hyper-V-hosts.
 4. Selecteer **Ja** als u een secundaire VMM-server hebt. Als u replicatie tussen clouds op een enkele VMM-server implementeert, klikt u op **Nee**. Klik vervolgens op **OK**.
@@ -74,7 +74,7 @@ Selecteer wat u wilt repliceren en waar u naar wilt repliceren.
 
 Installeer de Azure Site Recovery-provider op de VMM-servers en detecteer en registreer servers in de kluis.
 
-1. Klik **op Infrastructuurbron** > **Source**voorbereiden .
+1. Klik op **infra structuur** > **bron**voorbereiden.
 2. Klik in **Bron voorbereiden** op **+ VMM** om een VMM-server toe te voegen.
 3. Controleer in **Server toevoegen**of **System Center VMM-server** wordt weergegeven bij **Servertype**.
 4. Download het installatieprogramma voor de Azure Site Recovery-provider.
@@ -98,21 +98,21 @@ Installeer de Azure Site Recovery-provider op de VMM-servers en detecteer en reg
 6. Controleer in **Kluisnaam** de naam van de kluis waarin de server wordt geregistreerd. Klik op **Volgende**.
 7. Geef bij **Proxyverbinding** op hoe de provider die wordt uitgevoerd op de VMM-server verbinding maakt met Azure.
    - U kunt opgeven dat de provider rechtstreeks met internet of via een proxyserver verbinding moet maken. Geef indien nodig proxyinstellingen op.
-   - Als u een proxy gebruikt, wordt er automatisch een VMM RunAs-account (DRAProxyAccount) gemaakt met de opgegeven proxyreferenties. Configureer de proxyserver zodanig dat dit account kan worden geverifieerd. De instellingen van de RunAs-account kunnen worden gewijzigd in de VMM-console > **Instellingen** > **Beveiliging** > **als accounts worden uitgevoerd.**
+   - Als u een proxy gebruikt, wordt er automatisch een VMM RunAs-account (DRAProxyAccount) gemaakt met de opgegeven proxyreferenties. Configureer de proxyserver zodanig dat dit account kan worden geverifieerd. De RunAs-account instellingen kunnen worden gewijzigd in de VMM-console > **instellingen** > **beveiliging** > **uitvoeren als-accounts**.
    - Start de VMM-service opnieuw om de wijzigingen door te voeren.
 8. Selecteer in **Registratiesleutel** de sleutel die u hebt gedownload en naar de VMM-server hebt gekopieerd.
 9. De coderingsinstelling is niet relevant in dit scenario. 
 10. Geef in **Servernaam** een beschrijvende naam op om de VMM-server in de kluis te identificeren. Geef in een cluster de VMM-clusterrolnaam op.
 11. Geef bij **Cloudmetagegevens synchroniseren** aan of u metagegevens voor alle clouds op de VMM-server wilt synchroniseren. Deze actie hoeft op elke server slechts één keer te worden uitgevoerd. Als u niet alle clouds wilt synchroniseren, laat u deze instelling uitgeschakeld. U kunt elke cloud afzonderlijk synchroniseren in de cloudeigenschappen in de VMM-console.
-12. Klik op **Volgende** om het proces te voltooien. Na de registratie worden door Site Recovery metagegevens van de VMM-server opgehaald. De server wordt weergegeven **in Servers** > **VMM-servers** in de kluis.
-13. Nadat de server in de kluis is weergegeven, selecteert u in > **Bronvoorbereidingsbron** de VMM-server en selecteert u de cloud waarin de Hyper-V-host zich bevindt. **Source** Klik vervolgens op **OK**.
+12. Klik op **Volgende** om het proces te voltooien. Na de registratie worden door Site Recovery metagegevens van de VMM-server opgehaald. De server wordt weer gegeven in **servers** > **VMM-servers** in de kluis.
+13. Wanneer de server in de kluis wordt weer gegeven, selecteert u de VMM-server in **bron** > voor**bereiding bron** en selecteert u de Cloud waarin de Hyper-V-host zich bevindt. Klik vervolgens op **OK**.
 
 
 ## <a name="set-up-the-target-environment"></a>De doelomgeving instellen
 
 Selecteer de VMM-doelserver en -cloud:
 
-1. Klik **op Infrastructuurdoel** > **Target**voorbereiden en selecteer de doelvmm-server.
+1. Klik op **infrastructuur** > **doel**voorbereiden en selecteer de doel-VMM-server.
 2. VMM-clouds die zijn gesynchroniseerd met Site Recovery worden weergegeven. Selecteer de doelcloud.
 
    ![Doel](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
@@ -122,14 +122,14 @@ Selecteer de VMM-doelserver en -cloud:
 
 Controleer voordat u begint of alle hosts die het beleid gebruiken hetzelfde besturingssysteem hebben. Als op hosts verschillende versies van Windows Server worden uitgevoerd, hebt u meerdere soorten replicatiebeleid nodig.
 
-1. Als u een nieuw replicatiebeleid wilt maken, klikt u op**Replicatieinstellingen** >  **voor infrastructuur** > **voorbereiden +Maken en koppelen**.
-2. Geef **in Beleid maken en koppelen**een beleidsnaam op. Het type bron en doel moet **Hyper-V** zijn.
+1. Als u een nieuw replicatie beleid wilt maken, klikt u op **infra structuur** > voorbereiden**replicatie-instellingen** > **+ maken en koppelen**.
+2. Geef in **beleid maken en koppelen**een beleids naam op. Het type bron en doel moet **Hyper-V** zijn.
 3. Bij **Versie Hyper-V-host** selecteert u het besturingssysteem dat op de host wordt uitgevoerd.
 4. Bij **Verificatietype** en **Verificatiepoort** geeft u op hoe verkeer tussen de primaire en Hyper-V-hostserver en Hyper-V-hostserver voor herstel wordt geverifieerd.
     - Selecteer **Certificaat**, tenzij u een werkende Kerberos-omgeving hebt. Azure Site Recovery configureert automatisch certificaten voor HTTPS-verificatie. U hoeft niets handmatig te ondernemen.
     - Standaard worden poort 8083 en 8084 (voor certificaten) in de Windows Firewall op de Hyper-V-hostservers geopend.
     - Als u **Kerberos** selecteert, wordt een Kerberos-ticket gebruikt voor wederzijdse verificatie van de hostservers. Kerberos is alleen relevant voor Hyper-V-hostservers die worden uitgevoerd op Windows Server 2012 R2 of hoger.
-1. Geef in **Frequentie kopiëren**op hoe vaak u deltagegevens wilt repliceren na de eerste replicatie (elke 30 seconden, 5 of 15 minuten).
+1. Geef in **Kopieer frequentie**op hoe vaak u de Delta gegevens na de initiële replicatie wilt repliceren (elke 30 seconden, 5 of 15 minuten).
 2. Geef in **Bewaarperiode van het herstelpunt** op hoeveel uur elk herstelpunt moet worden bewaard binnen een tijdsvenster. Gerepliceerde machines kunnen te allen tijde worden hersteld naar een willekeurig punt binnen een tijdsvenster.
 3. Geef in **Frequentie van de app-consistente momentopname** op hoe vaak (elke 1-12 uur) er herstelpunten moeten worden gemaakt met toepassingsconsistente momentopnamen. Hyper-V maakt gebruik van twee soorten momentopnamen:
     - **Standaardmomentopname**: biedt een incrementele momentopname van de volledige virtuele machine.
@@ -145,7 +145,7 @@ Controleer voordat u begint of alle hosts die het beleid gebruiken hetzelfde bes
 
 ## <a name="enable-replication"></a>Replicatie inschakelen
 
-1. Klik **op Toepassingsbron** > **Source**repliceren . 
+1. Klik op **toepassings** > **bron**repliceren. 
 2. Selecteer bij **Bron** de VMM-server en de cloud waarin de Hyper-V-hosts die u wilt repliceren zich bevinden. Klik vervolgens op **OK**.
 3. Verifieer bij **Doel** de secundaire VMM-server en cloud.
 4. Selecteer in **Virtuele machines** de VM's die u wilt beveiligen in de lijst.

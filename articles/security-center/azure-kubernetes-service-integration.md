@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center en Azure Kubernetes-service
+title: Azure Security Center-en Azure Kubernetes-service
 description: Meer informatie over de integratie van Azure Security Center met Azure Kubernetes Services
 services: security-center
 documentationcenter: na
@@ -13,52 +13,52 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: d5c74ac760b5746d37468d692c2a46d5aedbee72
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80436181"
 ---
-# <a name="azure-kubernetes-services-integration-with-security-center"></a>Azure Kubernetes Services-integratie met Security Center
+# <a name="azure-kubernetes-services-integration-with-security-center"></a>Integratie van Azure Kubernetes Services met Security Center
 
-Azure Kubernetes Service (AKS) is de beheerde service van Microsoft voor het ontwikkelen, implementeren en beheren van gecontaineriseerde toepassingen. 
+Azure Kubernetes service (AKS) is de beheerde service van micro soft voor het ontwikkelen, implementeren en beheren van toepassingen in containers. 
 
-Gebruik AKS samen met de standaardlaag van Azure Security Center (zie [prijzen)](security-center-pricing.md)om meer inzicht te krijgen in uw AKS-knooppunten, cloudverkeer en beveiligingsbesturingselementen.
+Gebruik AKS in combi natie met de standaardlaag van Azure Security Center (Zie [prijzen](security-center-pricing.md)) voor een diep gaande zicht baarheid van uw AKS knooppunten, Cloud verkeer en beveiligings controles.
 
-Security Center biedt beveiligingsvoordelen voor uw AKS-clusters met behulp van gegevens die al zijn verzameld door het AKS-hoofdknooppunt. 
+Security Center zorgt voor een afdoende beveiliging voor uw AKS-clusters met behulp van gegevens die al zijn verzameld door het hoofd knooppunt AKS. 
 
-![Overzicht van Azure Security Center en Azure Kubernetes Service (AKS) op hoog niveau](./media/azure-kubernetes-service-integration/aks-asc-integration-overview.png)
+![Overzicht op hoog niveau van Azure Security Center en Azure Kubernetes service (AKS)](./media/azure-kubernetes-service-integration/aks-asc-integration-overview.png)
 
-Samen vormen deze twee tools het beste cloud-native Kubernetes-beveiligingsaanbod. 
+Deze twee hulp middelen vormen samen de best mogelijke Cloud-native Kubernetes-beveiligings aanbieding. 
 
-## <a name="benefits-of-integration"></a>Voordelen van integratie
+## <a name="benefits-of-integration"></a>Voor delen van integratie
 
-Het gebruik van de twee diensten samen biedt:
+Het gebruik van de twee services biedt samen:
 
-* **Beveiligingsaanbevelingen** - Security Center identificeert uw AKS-resources en categoriseert ze: van clusters tot afzonderlijke virtuele machines. Vervolgens u beveiligingsaanbevelingen per resource bekijken. Zie voor meer informatie de aanbevelingen voor containers in de [referentielijst met aanbevelingen](recommendations-reference.md#recs-containers). 
+* **Aanbevelingen voor beveiliging** -Security Center identificeert uw AKS-resources en categoriseert deze: van clusters tot afzonderlijke virtuele machines. U kunt vervolgens beveiligings aanbevelingen per resource bekijken. Zie aanbevelingen voor containers in de [lijst met aanbevelingen](recommendations-reference.md#recs-containers)voor meer informatie. 
 
-* **Verharding van de omgeving** - Security Center bewaakt voortdurend de configuratie van uw Kubernetes-clusters en Docker-configuraties. Het genereert vervolgens beveiligingsaanbevelingen die de industrienormen weerspiegelen.
+* **Omgevings beveiliging** -Security Center continu de configuratie van uw Kubernetes-clusters en docker-configuraties bewaakt. Vervolgens worden beveiligings aanbevelingen gegenereerd die de industrie normen weer spie gelen.
 
-* **Run-time bescherming** - Door continue analyse van de volgende AKS-bronnen waarschuwt Security Center u voor bedreigingen en schadelijke activiteiten die worden gedetecteerd op host- *en* AKS-clusterniveau:
-    * Ruwe beveiligingsgebeurtenissen, zoals netwerkgegevens en procescreatie
-    * Het Kubernetes-controlelogboek
+* **Run-time beveiliging** : door doorlopende analyse van de volgende AKS bronnen, Security Center u op de hoogte van bedreigingen en schadelijke activiteiten die zijn gedetecteerd op de host *en* het AKS-cluster niveau:
+    * Onbewerkte beveiligings gebeurtenissen, zoals netwerk gegevens en het maken van processen
+    * Het Kubernetes-controle logboek
 
-    Zie [bedreigingsbeveiliging voor Azure-containers voor](threat-protection.md#azure-containers) meer informatie
+    Zie [Threat Protection for Azure containers](threat-protection.md#azure-containers) (Engelstalig) voor meer informatie.
 
-    Zie deze secties in de referentietabel waarschuwingen voor de lijst met mogelijke waarschuwingen: [waarschuwingen op clusterniveau](alerts-reference.md#alerts-akscluster) van AKS en [waarschuwingen op containerhostniveau](alerts-reference.md#alerts-containerhost).  
+    Zie voor de lijst met mogelijke waarschuwingen deze secties in de naslag tabel waarschuwingen: [waarschuwingen op AKS-niveau](alerts-reference.md#alerts-akscluster) en [waarschuwingen op hostniveau op container](alerts-reference.md#alerts-containerhost)niveau.  
 
-![Azure Security Center en Azure Kubernetes Service (AKS) in meer detail](./media/azure-kubernetes-service-integration/aks-asc-integration-detailed.png)
+![Azure Security Center en Azure Kubernetes service (AKS) meer details](./media/azure-kubernetes-service-integration/aks-asc-integration-detailed.png)
 
 > [!NOTE]
-> Sommige gegevens die door Azure Security Center zijn gescand vanuit uw Kubernetes-omgeving, kunnen gevoelige informatie bevatten.
+> Sommige van de gegevens die worden gescand door Azure Security Center in uw Kubernetes-omgeving kunnen gevoelige informatie bevatten.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de containerbeveiligingsfuncties van Security Center:
+Zie voor meer informatie over de beveiligings functies van de container van Security Center:
 
-* [Azure Security Center en containerbeveiliging](container-security.md)
+* [Azure Security Center en container beveiliging](container-security.md)
 
 * [Integratie met Azure Container Registry](azure-container-registry-integration.md)
 
-* [Gegevensbeheer bij Microsoft](https://www.microsoft.com/trust-center/privacy/data-management) - beschrijft het gegevensbeleid van Microsoft-services (waaronder Azure, Intune en Office 365), details over het gegevensbeheer van Microsoft en het bewaarbeleid dat van invloed is op uw gegevens
+* [Gegevens beheer bij micro soft](https://www.microsoft.com/trust-center/privacy/data-management) : beschrijft het gegevens beleid van micro soft-Services (inclusief Azure, intune en Office 365), Details van het gegevens beheer van micro soft en het Bewaar beleid dat van invloed is op uw gegevens

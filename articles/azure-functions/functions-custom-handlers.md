@@ -1,53 +1,53 @@
 ---
-title: Aangepaste handlers voor Azure Functions (voorbeeld)
-description: Leer Azure-functies te gebruiken met elke taal of runtime-versie.
+title: Aangepaste handlers Azure Functions (preview-versie)
+description: Meer informatie over het gebruik van Azure Functions met elke taal of runtime versie.
 author: craigshoemaker
 ms.author: cshoe
 ms.date: 3/18/2020
 ms.topic: article
 ms.openlocfilehash: 5abc216e182d7becd9d6f42e0f566ee96d09c2a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79479252"
 ---
-# <a name="azure-functions-custom-handlers-preview"></a>Aangepaste handlers voor Azure Functions (voorbeeld)
+# <a name="azure-functions-custom-handlers-preview"></a>Aangepaste handlers Azure Functions (preview-versie)
 
-Elke functie-app wordt uitgevoerd door een taalspecifieke handler. Hoewel Azure Functions standaard veel [taalhandlers](./supported-languages.md) ondersteunt, zijn er gevallen waarin u mogelijk extra controle wilt over de uitvoeringsomgeving van de app. Aangepaste handlers geven u deze extra controle.
+Elke functions-app wordt uitgevoerd door een taalspecifieke handler. Hoewel Azure Functions veel [taal ingangen](./supported-languages.md) ondersteunt, zijn er situaties waarin u mogelijk extra controle wilt over de app Execution Environment. Aangepaste handlers bieden u dit extra besturings element.
 
-Aangepaste handlers zijn lichtgewicht webservers die gebeurtenissen ontvangen van de functions-host. Elke taal die HTTP-primitieven ondersteunt, kan een aangepaste handler implementeren.
+Aangepaste handlers zijn Lightweight webservers die gebeurtenissen ontvangen van de host functions. Elke taal die HTTP-primitieven ondersteunt, kan een aangepaste handler implementeren.
 
-Aangepaste handlers zijn het meest geschikt voor situaties waarin u:
+Aangepaste handlers zijn het meest geschikt voor situaties waar u het volgende wilt doen:
 
-- Een functie-app implementeren in een taal die verder gaat dan de officieel ondersteunde talen
-- Een functie-app implementeren in een taalversie of runtime die niet standaard wordt ondersteund
-- Gedetailleerde controle hebben over de uitvoeringsomgeving van de app
+- Implementeer een functions-app in een andere taal dan de officieel ondersteunde talen
+- Een functions-app implementeren in een taal versie of-runtime die standaard niet wordt ondersteund
+- Nauw keurige controle hebben over de uitvoerings omgeving van de app
 
-Met aangepaste handlers worden alle [triggers en invoer- en uitvoerbindingen](./functions-triggers-bindings.md) ondersteund via [extensiebundels.](./functions-bindings-register.md)
+Met aangepaste handlers worden alle [Triggers en invoer-en uitvoer bindingen](./functions-triggers-bindings.md) ondersteund via [uitbreidings bundels](./functions-bindings-register.md).
 
 ## <a name="overview"></a>Overzicht
 
-In het volgende diagram ziet u de relatie tussen de host functies en een webserver die is geïmplementeerd als een aangepaste handler.
+In het volgende diagram ziet u de relatie tussen de host functions en een webserver die is geïmplementeerd als een aangepaste handler.
 
-![Overzicht van aangepaste handlers voor Azure Functions](./media/functions-custom-handlers/azure-functions-custom-handlers-overview.png)
+![Overzicht van Azure Functions aangepaste handler](./media/functions-custom-handlers/azure-functions-custom-handlers-overview.png)
 
-- Gebeurtenissen activeren een aanvraag die naar de host Functies is verzonden. De gebeurtenis draagt ofwel een ruwe HTTP-payload (voor HTTP-geactiveerde functies zonder bindingen), of een payload die invoerbindende gegevens voor de functie bevat.
-- De host functies proxies vervolgens het verzoek aan de webserver door de afgifte van een [aanvraag payload](#request-payload).
-- De webserver voert de afzonderlijke functie uit en retourneert een [antwoordpayload](#response-payload) naar de host Functies.
-- De functies host proxy's de reactie als een output bindende payload aan het doel.
+- Gebeurtenissen activeren een aanvraag die wordt verzonden naar de host functions. De gebeurtenis voert een onbewerkte HTTP-nettolading (voor functies die met HTTP worden geactiveerd zonder bindingen) of een Payload die invoer bindings gegevens voor de functie bevat.
+- De host functions stuurt vervolgens de aanvraag door naar de webserver door een [aanvraag lading](#request-payload)uit te geven.
+- De webserver voert de afzonderlijke functie uit en retourneert een nettolading van de [reactie](#response-payload) op de host functions.
+- De functions host het antwoord als een nettolading van de uitvoer binding aan het doel.
 
-Een Azure Functions-app die is geïmplementeerd als een aangepaste handler, moet de *bestanden host.json* en *function.json* configureren volgens een aantal conventies.
+Een Azure Functions-app die als aangepaste handler is geïmplementeerd, moet de *host. json* -en *Function. json* -bestanden configureren volgens een aantal conventies.
 
-## <a name="application-structure"></a>Toepassingsstructuur
+## <a name="application-structure"></a>Toepassings structuur
 
-Als u een aangepaste handler wilt implementeren, hebt u de volgende aspecten van uw toepassing nodig:
+Als u een aangepaste handler wilt implementeren, hebt u de volgende aspecten nodig voor uw toepassing:
 
-- Een *host.json-bestand* aan de basis van uw app
-- Een *function.json-bestand* voor elke functie (in een map die overeenkomt met de functienaam)
-- Een opdracht, script of uitvoerbare, waarop een webserver wordt uitgevoerd
+- Een *host. json* -bestand in de hoofdmap van uw app
+- Een *Function. json* -bestand voor elke functie (in een map die overeenkomt met de naam van de functie)
+- Een opdracht, script of uitvoerbaar bestand, waarmee een webserver wordt uitgevoerd
 
-In het volgende diagram ziet u hoe deze bestanden er uitzien op het bestandssysteem voor een functie met de naam "order".
+In het volgende diagram ziet u hoe deze bestanden eruitzien op het bestands systeem voor een functie met de naam ' order '.
 
 ```bash
 | /order
@@ -58,9 +58,9 @@ In het volgende diagram ziet u hoe deze bestanden er uitzien op het bestandssyst
 
 ### <a name="configuration"></a>Configuratie
 
-De toepassing is geconfigureerd via het *host.json-bestand.* Dit bestand vertelt de host functies waar aanvragen moeten worden verzonden door te wijzen naar een webserver die HTTP-gebeurtenissen kan verwerken.
+De toepassing wordt geconfigureerd via het bestand *host. json* . Dit bestand vertelt de functions-host waar aanvragen worden verzonden door te verwijzen naar een webserver die HTTP-gebeurtenissen kan verwerken.
 
-Een aangepaste handler wordt gedefinieerd door het *host.json-bestand* te configureren met `httpWorker` details over hoe u de webserver via de sectie uitvoeren.
+Er wordt een aangepaste handler gedefinieerd door het bestand *host. json* te configureren met informatie over het uitvoeren van de webserver `httpWorker` via de sectie.
 
 ```json
 {
@@ -73,9 +73,9 @@ Een aangepaste handler wordt gedefinieerd door het *host.json-bestand* te config
 }
 ```
 
-De `httpWorker` sectie verwijst naar een doel `defaultExecutablePath`zoals gedefinieerd door de . Het uitvoeringsdoel kan een opdracht zijn, uitvoerbaar of bestand waarin de webserver is geïmplementeerd.
+De `httpWorker` sectie verwijst naar een doel zoals gedefinieerd door de `defaultExecutablePath`. Het doel van de uitvoering kan een opdracht, een uitvoerbaar bestand of een file zijn waarin de webserver is geïmplementeerd.
 
-Voor gescripte `defaultExecutablePath` apps wijst u naar de `defaultWorkerPath` runtime van de scripttaal en wijst naar de locatie van het scriptbestand. In het volgende voorbeeld ziet u hoe een JavaScript-app in Node.js is geconfigureerd als een aangepaste handler.
+Voor scripted apps `defaultExecutablePath` verwijst naar de runtime van de script taal en `defaultWorkerPath` verwijst naar de locatie van het script bestand. In het volgende voor beeld ziet u hoe een Java script-app in node. js wordt geconfigureerd als een aangepaste handler.
 
 ```json
 {
@@ -89,7 +89,7 @@ Voor gescripte `defaultExecutablePath` apps wijst u naar de `defaultWorkerPath` 
 }
 ```
 
-U ook argumenten `arguments` doorgeven met behulp van de array:
+U kunt ook argumenten door geven met `arguments` behulp van de matrix:
 
 ```json
 {
@@ -104,32 +104,32 @@ U ook argumenten `arguments` doorgeven met behulp van de array:
 }
 ```
 
-Argumenten zijn nodig voor veel foutopsporingsinstellingen. Zie de sectie [Foutopsporing](#debugging) voor meer details.
+Er zijn argumenten nodig voor een groot aantal instellingen voor fout opsporing. Zie de sectie [fout opsporing](#debugging) voor meer details.
 
 > [!NOTE]
-> Het *bestand host.json* moet zich op hetzelfde niveau in de mapstructuur bevinden als de draaiende webserver. Sommige talen en toolchains plaatsen dit bestand mogelijk niet standaard bij de toepassingsroot.
+> Het *JSON* -bestand van de host moet zich op hetzelfde niveau bein de mapstructuur als de actieve webserver. In sommige talen en toolchains wordt dit bestand niet standaard op de hoofdmap van de toepassing geplaatst.
 
 #### <a name="bindings-support"></a>Ondersteuning voor bindingen
 
-Standaardtriggers en invoer- en uitvoerbindingen zijn beschikbaar door te verwijzen naar [extensiebundels](./functions-bindings-register.md) in uw *host.json-bestand.*
+Standaard triggers samen met invoer-en uitvoer bindingen zijn beschikbaar door te verwijzen naar [uitbreidings bundels](./functions-bindings-register.md) in het JSON-bestand van de *host* .
 
-### <a name="function-metadata"></a>Functiemetagegevens
+### <a name="function-metadata"></a>Functie-meta gegevens
 
-Bij gebruik met een aangepaste handler verschilt de inhoud van *function.json* niet van hoe u een functie onder een andere context zou definiëren. De enige vereiste is dat *function.json-bestanden* zich in een map moeten bevinden die is vernoemd naar de functienaam.
+Wanneer u gebruikt met een aangepaste handler, is de *functie. json* -inhoud niet anders dan hoe u een functie onder elke andere context definieert. De enige vereiste is die *functie. json* -bestanden moeten zich in een map met de naam bevinden die overeenkomt met de functie naam.
 
 ### <a name="request-payload"></a>Payload aanvragen
 
-Het verzoek payload voor pure HTTP functies is de ruwe HTTP verzoek payload. Pure HTTP-functies worden gedefinieerd als functies zonder invoer- of uitvoerbindingen, die een HTTP-antwoord retourneren.
+De aanvraag lading voor zuivere HTTP-functies is de onbewerkte HTTP-aanvraag nettolading. Zuivere HTTP-functies worden gedefinieerd als functions zonder invoer-of uitvoer bindingen, die een HTTP-antwoord retour neren.
 
-Elk ander type functie dat invoer, uitvoerbindingen of wordt geactiveerd via een andere gebeurtenisbron dan HTTP, heeft een aangepaste aanvraagpayload.
+Elk ander type functie dat ofwel invoer, uitvoer bindingen of wordt geactiveerd via een andere gebeurtenis bron dan HTTP, heeft een aangepaste aanvraag lading.
 
-De volgende code vertegenwoordigt een payload van een voorbeeldaanvraag. De payload bevat een JSON `Data` structuur `Metadata`met twee leden: en .
+De volgende code vertegenwoordigt een nettolading van de voorbeeld aanvraag. De payload bevat een JSON-structuur met twee leden `Data` : `Metadata`en.
 
-Het `Data` lid bevat toetsen die overeenkomen met invoer- en triggernamen zoals gedefinieerd in de bindingenarray in het *function.json-bestand.*
+Het `Data` lid bevat sleutels die overeenkomen met de namen van de invoer en de trigger, zoals gedefinieerd in de bindingen matrix in het bestand *Function. json* .
 
-Het `Metadata` lid bevat [metagegevens die zijn gegenereerd uit de gebeurtenisbron.](./functions-bindings-expressions-patterns.md#trigger-metadata)
+Het `Metadata` lid bevat [meta gegevens die zijn gegenereerd op basis van de bron van de gebeurtenis](./functions-bindings-expressions-patterns.md#trigger-metadata).
 
-Gezien de bindingen die zijn gedefinieerd in het volgende *function.json-bestand:*
+Op basis van de bindingen die zijn gedefinieerd in het volgende *Function. json* -bestand:
 
 ```json
 {
@@ -152,7 +152,7 @@ Gezien de bindingen die zijn gedefinieerd in het volgende *function.json-bestand
 }
 ```
 
-Een aanvraagpayload die vergelijkbaar is met dit voorbeeld wordt geretourneerd:
+Een aanvraag lading vergelijkbaar met dit voor beeld wordt geretourneerd:
 
 ```json
 {
@@ -175,30 +175,30 @@ Een aanvraagpayload die vergelijkbaar is met dit voorbeeld wordt geretourneerd:
 }
 ```
 
-### <a name="response-payload"></a>Reactiepayload
+### <a name="response-payload"></a>Nettolading van reactie
 
-Per conventie worden functiereacties opgemaakt als sleutel-/waardeparen. Ondersteunde toetsen zijn:
+Per Conventie worden functie reacties opgemaakt als sleutel/waarde-paren. Ondersteunde sleutels zijn onder andere:
 
-| <nobr>Payload-toets</nobr>   | Gegevenstype | Opmerkingen                                                      |
+| <nobr>Payload-sleutel</nobr>   | Gegevenstype | Opmerkingen                                                      |
 | ------------- | --------- | ------------------------------------------------------------ |
-| `Outputs`     | JSON      | Houdt responswaarden zoals gedefinieerd `bindings` door de array het *function.json-bestand.*<br /><br />Als een functie bijvoorbeeld is geconfigureerd met een blob-opslaguitvoerbinding met de naam 'blob', bevat deze een `Outputs` sleutel met de naam `blob`, die is ingesteld op de waarde van de blob. |
-| `Logs`        | matrix     | Berichten worden weergegeven in de aanroeplogboeken voor functies.<br /><br />Wanneer u wordt uitgevoerd in Azure, worden berichten weergegeven in Toepassingsinzichten. |
-| `ReturnValue` | tekenreeks    | Wordt gebruikt om een antwoord te `$return` geven wanneer een uitvoer is geconfigureerd zoals in het *function.json-bestand.* |
+| `Outputs`     | JSON      | Bevat reactie waarden zoals gedefinieerd door de `bindings` matrix het bestand *Function. json* .<br /><br />Als een functie bijvoorbeeld is geconfigureerd met een Blob Storage-uitvoer binding met de naam ' BLOB ', `Outputs` dan bevat een sleutel `blob`met de naam, die is ingesteld op de waarde van de blob. |
+| `Logs`        | matrix     | Berichten worden weer gegeven in de functie Logboeken van functies.<br /><br />Bij het uitvoeren in Azure worden berichten weer gegeven in Application Insights. |
+| `ReturnValue` | tekenreeks    | Wordt gebruikt om een reactie te geven wanneer een uitvoer is `$return` geconfigureerd als in het bestand *Function. json* . |
 
-Zie het [voorbeeld voor een monsterpayload.](#bindings-implementation)
+Zie het [voor beeld voor een nettolading van een](#bindings-implementation)voor beeld.
 
 ## <a name="examples"></a>Voorbeelden
 
-Aangepaste handlers kunnen worden geïmplementeerd in elke taal die HTTP-gebeurtenissen ondersteunt. Hoewel Azure Functions [JavaScript en Node.js volledig ondersteunt,](./functions-reference-node.md)laten de volgende voorbeelden zien hoe u een aangepaste handler implementeert met JavaScript in Node.js ten behoeve van instructie.
+Aangepaste handlers kunnen worden geïmplementeerd in elke taal waarin HTTP-gebeurtenissen worden ondersteund. Hoewel Azure Functions [Java script en node. js volledig ondersteunt](./functions-reference-node.md), ziet u in de volgende voor beelden hoe u een aangepaste handler kunt implementeren met behulp van Java script in node. js.
 
 > [!TIP]
-> Hoewel het een handleiding is om te leren hoe je een aangepaste handler in andere talen implementeert, kunnen de voorbeelden die hier op Node.js worden weergegeven ook handig zijn als u een functie-app wilt uitvoeren in een niet-ondersteunde versie van Node.js.
+> Hoewel u een hand leiding hebt voor het implementeren van een aangepaste handler in andere talen, kunnen de node. js-voor beelden die hier worden weer gegeven, ook nuttig zijn als u een functions-app wilt uitvoeren in een niet-ondersteunde versie van node. js.
 
-## <a name="http-only-function"></a>Http-only, functie
+## <a name="http-only-function"></a>Alleen HTTP-functie
 
-In het volgende voorbeeld wordt uitgelegd hoe u een HTTP-geactiveerde functie configureert zonder extra bindingen of uitvoer. Het scenario dat in dit voorbeeld `http` wordt geïmplementeerd, bevat een functie met de naam a `GET` of `POST` .
+In het volgende voor beeld ziet u hoe u een door HTTP geactiveerde functie kunt configureren zonder extra bindingen of uitvoer. Het scenario dat in dit voor beeld wordt geïmplementeerd, `http` bevat een functie `GET` met `POST` de naam die een of accepteert.
 
-Het volgende fragment geeft aan hoe een aanvraag voor de functie is samengesteld.
+Het volgende code fragment vertegenwoordigt hoe een aanvraag voor de functie is samengesteld.
 
 ```http
 POST http://127.0.0.1:7071/api/hello HTTP/1.1
@@ -213,7 +213,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>Implementatie
 
-In een map met de naam *http*configureert het *bestand function.json* de functie HTTP-geactiveerd.
+In een map met de naam *http*, wordt met het bestand *Function. json* de door http geactiveerde functie geconfigureerd.
 
 ```json
 {
@@ -233,9 +233,9 @@ In een map met de naam *http*configureert het *bestand function.json* de functie
 }
 ```
 
-De functie is geconfigureerd `GET` om `POST` beide en aanvragen te accepteren `res`en de resultaatwaarde wordt geleverd via een argument met de naam .
+De functie is geconfigureerd om zowel `GET` als `POST` -aanvragen te accepteren en de resultaat waarde wordt opgegeven via een `res`argument met de naam.
 
-Aan de hoofdtekst van de app is het bestand *host.json* geconfigureerd `server.js` om Node.js uit te voeren en het bestand te gebruiken.
+In de hoofdmap van de app is het bestand *host. json* geconfigureerd om node. js uit te voeren en het `server.js` bestand te laten wijzen.
 
 ```json
 {
@@ -249,7 +249,7 @@ Aan de hoofdtekst van de app is het bestand *host.json* geconfigureerd `server.j
 }
 ```
 
-Het bestand file *server.js* implementeert een webserver en HTTP-functie.
+Het bestand *server. js* -bestand implementeert een webserver en http-functie.
 
 ```javascript
 const express = require("express");
@@ -274,18 +274,18 @@ app.post("/hello", (req, res) => {
 });
 ```
 
-In dit voorbeeld wordt Express gebruikt om een webserver te maken voor het `FUNCTIONS_HTTPWORKER_PORT`afhandelen van HTTP-gebeurtenissen en is ingesteld om naar aanvragen te luisteren via de .
+In dit voor beeld wordt Express gebruikt om een webserver te maken voor het afhandelen van HTTP-gebeurtenissen en wordt ingesteld `FUNCTIONS_HTTPWORKER_PORT`om te Luis teren naar aanvragen via de.
 
-De functie wordt gedefinieerd op `/hello`het pad van . `GET`verzoeken worden afgehandeld door een eenvoudig `POST` JSON-object terug te `req.body`sturen en aanvragen hebben toegang tot de aanvraaginstantie via .
+De functie wordt gedefinieerd in het pad van `/hello`. `GET`aanvragen worden verwerkt door een eenvoudig JSON-object te retour `POST` neren en aanvragen hebben toegang tot de hoofd `req.body`tekst van de aanvraag via.
 
-De route voor de `/hello` bestelfunctie `/api/hello` hier is en niet omdat de host Functies de aanvraag proxy's naar de aangepaste handler.
+De route voor de functie order is `/hello` hier niet `/api/hello` mogelijk omdat de host functions de aanvraag naar de aangepaste handler in de proxy verstuurt.
 
 >[!NOTE]
->Het `FUNCTIONS_HTTPWORKER_PORT` is niet de openbare aangenomen poort die wordt gebruikt om de functie aan te roepen. Deze poort wordt gebruikt door de functiehost om de aangepaste handler aan te roepen.
+>De `FUNCTIONS_HTTPWORKER_PORT` is niet de open bare poort die wordt gebruikt om de functie aan te roepen. Deze poort wordt gebruikt door de host functions om de aangepaste handler aan te roepen.
 
 ## <a name="function-with-bindings"></a>Functie met bindingen
 
-Het scenario dat in dit voorbeeld `order` wordt geïmplementeerd, bevat een functie met de naam die een `POST` functie accepteert met een payload die een productorder vertegenwoordigt. Als een order naar de functie wordt geplaatst, wordt een wachtrijopslagbericht gemaakt en wordt een HTTP-antwoord geretourneerd.
+Het scenario dat in dit voor beeld wordt geïmplementeerd, `order` bevat een functie `POST` met de naam die een-Payload accepteert die een product order vertegenwoordigt. Als een order wordt gepost naar de functie, wordt een Queue Storage bericht gemaakt en wordt een HTTP-antwoord geretourneerd.
 
 ```http
 POST http://127.0.0.1:7071/api/order HTTP/1.1
@@ -302,7 +302,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>Implementatie
 
-In een *map*met de naam volgorde configureert het *bestand function.json* de functie HTTP-triggered.
+In een map met de naam *order*, wordt met het bestand *Function. json* de door http geactiveerde functie geconfigureerd.
 
 ```json
 {
@@ -331,9 +331,9 @@ In een *map*met de naam volgorde configureert het *bestand function.json* de fun
 
 ```
 
-Deze functie wordt gedefinieerd als een [HTTP-geactiveerde functie](./functions-bindings-http-webhook-trigger.md) die een [HTTP-antwoord retourneert](./functions-bindings-http-webhook-output.md) en een [wachtrijopslagbericht](./functions-bindings-storage-queue-output.md) retourneert.
+Deze functie is gedefinieerd als een [http-geactiveerde functie](./functions-bindings-http-webhook-trigger.md) die een [http-antwoord](./functions-bindings-http-webhook-output.md) retourneert en een [wachtrij-opslag](./functions-bindings-storage-queue-output.md) bericht uitvoert.
 
-Aan de hoofdtekst van de app is het bestand *host.json* geconfigureerd `server.js` om Node.js uit te voeren en het bestand te gebruiken.
+In de hoofdmap van de app is het bestand *host. json* geconfigureerd om node. js uit te voeren en het `server.js` bestand te laten wijzen.
 
 ```json
 {
@@ -347,7 +347,7 @@ Aan de hoofdtekst van de app is het bestand *host.json* geconfigureerd `server.j
 }
 ```
 
-Het bestand file *server.js* implementeert een webserver en HTTP-functie.
+Het bestand *server. js* -bestand implementeert een webserver en http-functie.
 
 ```javascript
 const express = require("express");
@@ -379,24 +379,24 @@ app.post("/order", (req, res) => {
 });
 ```
 
-In dit voorbeeld wordt Express gebruikt om een webserver te maken voor het `FUNCTIONS_HTTPWORKER_PORT`afhandelen van HTTP-gebeurtenissen en is ingesteld om naar aanvragen te luisteren via de .
+In dit voor beeld wordt Express gebruikt om een webserver te maken voor het afhandelen van HTTP-gebeurtenissen en wordt ingesteld `FUNCTIONS_HTTPWORKER_PORT`om te Luis teren naar aanvragen via de.
 
-De functie wordt gedefinieerd op `/order` het pad van .  De route voor de `/order` bestelfunctie `/api/order` hier is en niet omdat de host Functies de aanvraag proxy's naar de aangepaste handler.
+De functie wordt gedefinieerd in het pad van `/order` .  De route voor de functie order is `/order` hier niet `/api/order` mogelijk omdat de host functions de aanvraag naar de aangepaste handler in de proxy verstuurt.
 
-Als `POST` aanvragen naar deze functie worden verzonden, worden gegevens via een paar punten weergegeven:
+Wanneer `POST` er aanvragen worden verzonden naar deze functie, worden gegevens via een paar punten weer gegeven:
 
-- De aanvraaginstantie is beschikbaar via`req.body`
-- De gegevens die naar de functie worden geplaatst, zijn beschikbaar via`req.body.Data.req.Body`
+- De aanvraag tekst is beschikbaar via`req.body`
+- De gegevens die naar de functie worden gepost, zijn beschikbaar via`req.body.Data.req.Body`
 
-Het antwoord van de functie is opgemaakt in `Outputs` een sleutel/waardepaar waarbij het lid een JSON-waarde heeft waarbij de toetsen overeenkomen met de uitvoer zoals gedefinieerd in het *function.json-bestand.*
+De reactie van de functie is ingedeeld in een sleutel/waarde-paar `Outputs` waarbij het lid een JSON-waarde bevat waarin de sleutels overeenkomen met de uitvoer zoals gedefinieerd in het bestand *Function. json* .
 
-Door `message` het bericht dat uit de aanvraag `res` is binnengekomen, in te stellen en met het verwachte HTTP-antwoord, wordt in deze functie een bericht naar Wachtrijopslag uitgevoerd en wordt een HTTP-antwoord geretourneerd.
+Als de `message` instelling gelijk is aan het bericht dat is ontvangen van de aanvraag `res` en aan het verwachte HTTP-antwoord, voert deze functie een bericht uit dat Queue Storage en wordt een HTTP-antwoord geretourneerd.
 
 ## <a name="debugging"></a>Foutopsporing
 
-Als u de aangepaste handler-app Functies wilt debuggen, moet u argumenten toevoegen die geschikt zijn voor de taal en de runtime om foutopsporing in te schakelen.
+Als u fouten wilt opsporen in uw aangepaste handler-app voor functies, moet u argumenten toevoegen die geschikt zijn voor de taal en runtime om fout opsporing in te scha kelen.
 
-Als u bijvoorbeeld een Node.js-toepassing `--inspect` wilt debuggen, wordt de vlag doorgegeven als argument in het bestand *host.json.*
+Als u bijvoorbeeld fouten wilt opsporen in een node. js `--inspect` -toepassing, wordt de vlag door gegeven als een argument in het bestand *host. json* .
 
 ```json
 {
@@ -412,21 +412,21 @@ Als u bijvoorbeeld een Node.js-toepassing `--inspect` wilt debuggen, wordt de vl
 ```
 
 > [!NOTE]
-> De foutopsporingsconfiguratie maakt deel uit van uw *host.json-bestand,* wat betekent dat u de argumenten mogelijk moet verwijderen voordat u naar productie wordt geïmplementeerd.
+> De configuratie van fout opsporing maakt deel uit van uw *host. json* -bestand, wat betekent dat u de enige argumenten moet verwijderen voordat u de productie implementeert.
 
-Met deze configuratie u het hostproces van de functie starten met de volgende opdracht:
+Met deze configuratie kunt u het hostproces van de functie starten met de volgende opdracht:
 
 ```bash
 func host start
 ```
 
-Zodra het proces is gestart, u een debugger en hit breakpoints.
+Zodra het proces is gestart, kunt u een debugger en bezoekers-onderbrekings punten koppelen.
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-Het volgende voorbeeld is een voorbeeldconfiguratie die laat zien hoe u uw *launch.json-bestand* instellen om uw app te verbinden met de foutopsporing van de Visual Studio Code.
+In het volgende voor beeld ziet u hoe u het bestand *Launch. json* kunt instellen om uw app te verbinden met het fout opsporingsprogramma van Visual Studio code.
 
-Dit voorbeeld is voor Node.js, dus het kan zijn dat u dit voorbeeld moet wijzigen voor andere talen of looptijden.
+Dit voor beeld is voor node. js, dus u moet dit voor beeld wellicht aanpassen voor andere talen of Runtimes.
 
 ```json
 {
@@ -443,15 +443,15 @@ Dit voorbeeld is voor Node.js, dus het kan zijn dat u dit voorbeeld moet wijzige
 }
 ```
 
-## <a name="deploying"></a>Implementeren
+## <a name="deploying"></a>Installeert
 
-Een aangepaste handler kan worden geïmplementeerd in bijna elke Azure Functions-hostingoptie (zie [beperkingen).](#restrictions) Als uw handler aangepaste afhankelijkheden vereist (zoals een taalruntime), moet u mogelijk een [aangepaste container](./functions-create-function-linux-custom-image.md)gebruiken.
+Een aangepaste handler kan naar bijna elke Azure Functions Hosting optie worden geïmplementeerd (Zie [beperkingen](#restrictions)). Als voor uw handler aangepaste afhankelijkheden (zoals een language runtime) zijn vereist, moet u mogelijk een [aangepaste container](./functions-create-function-linux-custom-image.md)gebruiken.
 
 ## <a name="restrictions"></a>Beperkingen
 
-- Aangepaste handlers worden niet ondersteund in Linux-consumptieplannen.
-- De webserver moet binnen 60 seconden starten.
+- Aangepaste handlers worden niet ondersteund in Linux-verbruiks abonnementen.
+- De webserver moet binnen 60 seconden beginnen.
 
 ## <a name="samples"></a>Voorbeelden
 
-Raadpleeg de [aangepaste handlervoorbeelden GitHub repo](https://github.com/Azure-Samples/functions-custom-handlers) voor voorbeelden van het implementeren van functies in verschillende talen.
+Raadpleeg de aangepaste handler-voor beelden [github opslag plaats](https://github.com/Azure-Samples/functions-custom-handlers) voor voor beelden van hoe functies in verschillende talen kunnen worden geïmplementeerd.

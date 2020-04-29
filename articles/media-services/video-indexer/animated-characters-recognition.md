@@ -1,7 +1,7 @@
 ---
-title: Detectie van geanimeerde tekens met video-indexer
+title: Herkenning van animatie-tekens met Video Indexer
 titleSuffix: Azure Media Services
-description: In dit onderwerp wordt uitgelegd hoe u geanimeerde tekendetectie gebruiken met Video Indexer.
+description: In dit onderwerp ziet u hoe u met behulp van animatie teken detectie kunt gebruiken met Video Indexer.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,171 +11,171 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
 ms.openlocfilehash: af608dcfbb5d98cf3116de4e14dc12bf6facb97b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76989906"
 ---
-# <a name="animated-character-detection-preview"></a>Detectie van geanimeerde tekens (voorbeeld)
+# <a name="animated-character-detection-preview"></a>Detectie van geanimeerde tekens (preview-versie)
 
-Azure Media Services Video Indexer ondersteunt detectie, groepering en herkenning van tekens in geanimeerde inhoud via integratie met [Cognitive Services custom vision.](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) Deze functionaliteit is beschikbaar zowel via de portal als via de API.
+Azure Media Services Video Indexer ondersteunt de detectie, groepering en herkenning van tekens in inhoud met animatie via integratie met [Cognitive Services aangepaste visie](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). Deze functionaliteit is beschikbaar via de portal en via de API.
 
-Na het uploaden van een geanimeerde video met een specifiek animatiemodel, haalt Video Indexer hoofdframes uit, detecteert geanimeerde tekens in deze frames, groepeert vergelijkbaar teken en kiest het beste voorbeeld. Vervolgens stuurt het de gegroepeerde tekens naar Custom Vision die tekens identificeert op basis van de modellen waarop het is getraind. 
+Nadat u een bewegende video met een specifiek animatie model hebt geüpload, worden in Video Indexer hoofd frames geëxtraheerd, worden animatie-tekens in deze frames gedetecteerd, worden vergelijk bare tekens gegroepeerd en wordt het beste voor beeld gekozen. Vervolgens worden de gegroepeerde tekens verzonden naar Custom Vision waarmee tekens worden geïdentificeerd op basis van de modellen waarop het is getraind. 
 
-Voordat u begint met het trainen van uw model, worden de tekens naamloos gedetecteerd. Als u namen toevoegt en het model traint, herkent de video-indexer de tekens en geeft deze een naam.
+Voordat u begint met het trainen van uw model, worden de tekens gedetecteerd namelessly. Wanneer u namen toevoegt en het model traint, worden de tekens door de Video Indexer herkend en worden ze dienovereenkomstig een naam genoemd.
 
 ## <a name="flow-diagram"></a>Stroomdiagram
 
-In het volgende diagram wordt de stroom van het geanimeerde tekendetectieproces getoond.
+In het volgende diagram ziet u de stroom van het detectie proces voor de animatie.
 
 ![Stroomdiagram](./media/animated-characters-recognition/flow.png)
 
 ## <a name="accounts"></a>Accounts
 
-Afhankelijk van een type video-indexeraccount zijn er verschillende functiesets beschikbaar. Zie [Een Video Indexer-account maken dat is verbonden met Azure](connect-to-azure.md)voor informatie over het verbinden van uw account met Azure.
+Afhankelijk van een type Video Indexer-account, zijn er verschillende functie sets beschikbaar. Zie [een video indexer-account maken dat is verbonden met Azure](connect-to-azure.md)voor meer informatie over het verbinden van uw account met Azure.
 
-* Proefaccount: Video Indexer gebruikt een intern Custom Vision-account om een model te maken en deze te koppelen aan uw Video Indexer-account. 
-* Betaald account: je koppelt je Custom Vision-account aan je Video Indexer-account (als je er nog geen hebt, moet je eerst een account aanmaken).
+* Proef account: Video Indexer gebruikt een intern Custom Vision-account om een model te maken en te verbinden met uw Video Indexer-account. 
+* Betaald account: u kunt uw Custom Vision-account koppelen aan uw Video Indexer-account (als u er nog geen hebt, moet u eerst een account maken).
 
-### <a name="trial-vs-paid"></a>Proef versus betaald
+### <a name="trial-vs-paid"></a>Proef versie versus betaald
 
-|Functionaliteit|Proefversie|Betaald|
+|Functionaliteit|Proefversie|Teken|
 |---|---|---|
-|Aangepaste Vision-account|Beheerd achter de schermen door Video Indexer. |Uw Custom Vision-account is verbonden met Video Indexer.|
-|Aantal animatiemodellen|Eén|Maximaal 100 modellen per account (Beperking van Aangepaste Visie).|
-|Het model trainen|Video Indexer traint het model voor nieuwe tekens extra voorbeelden van bestaande tekens.|De eigenaar van het account traint het model wanneer hij klaar is om wijzigingen aan te brengen.|
-|Geavanceerde opties in Aangepaste Visie|Geen toegang tot de Custom Vision portal.|U de modellen zelf aanpassen in de Custom Vision portal.|
+|Custom Vision-account|Wordt beheerd achter de schermen door Video Indexer. |Uw Custom Vision-account is verbonden met Video Indexer.|
+|Aantal animatie modellen|Eén|Maxi maal 100 modellen per account (Custom Vision beperking).|
+|Het model trainen|Video Indexer treinen het model voor nieuwe tekens meer voor beelden van bestaande tekens.|De eigenaar van het account traint het model wanneer ze klaar zijn om wijzigingen aan te brengen.|
+|Geavanceerde opties in Custom Vision|Geen toegang tot de Custom Vision Portal.|U kunt de modellen zelf aanpassen in de Custom Vision Portal.|
 
-## <a name="use-the-animated-character-detection-with-portal"></a>De detectie van geanimeerde tekens gebruiken met portal 
+## <a name="use-the-animated-character-detection-with-portal"></a>De herkenning van de animatie gebruiken met portal 
 
-In deze sectie worden de stappen beschreven die u moet nemen om het animatiemodel voor tekendetectie te gebruiken. 
+In deze sectie worden de stappen beschreven die u moet uitvoeren om te beginnen met het detectie model voor animatie-tekens. 
 
-Aangezien in de proefaccounts de Custom Vision-integratie wordt beheerd door Video Indexer, u beginnen met het maken en gebruiken van het animatietekenmodel en de volgende sectie overslaan ('Uw Aangepaste Visie-account verbinden').
+Omdat de Custom Vision-integratie wordt beheerd door Video Indexer, kunt u beginnen met het maken en gebruiken van het model met animatie-tekens en de volgende sectie ("verbinding maken met uw Custom Vision-account") overs Laan.
 
-### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>Uw Custom Vision-account koppelen (alleen betaalde accounts)
+### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>Verbinding maken met uw Custom Vision-account (alleen betaalde accounts)
 
-Als u eigenaar bent van een betaalde video-indexaccount, moet u eerst een Aangepast Visie-account koppelen. Als je nog geen Custom Vision-account hebt, maak er dan een aan. Zie [Aangepaste visie](../../cognitive-services/custom-vision-service/home.md)voor meer informatie.
+Als u een Video Indexer betaalde account hebt, moet u eerst verbinding maken met een Custom Vision-account. Als u nog geen Custom Vision-account hebt, moet u er een maken. Zie [Custom Vision](../../cognitive-services/custom-vision-service/home.md)voor meer informatie.
 
 > [!NOTE]
-> Beide accounts moeten zich in dezelfde regio bevinden. De Custom Vision integratie wordt momenteel niet ondersteund in de regio Japan.
+> Beide accounts moeten zich in dezelfde regio bevinden. De integratie van Custom Vision wordt momenteel niet ondersteund in de Japan-regio.
 
-#### <a name="connect-a-custom-vision-account-with-api"></a>Een Custom Vision-account koppelen met API 
+#### <a name="connect-a-custom-vision-account-with-api"></a>Een Custom Vision-account verbinden met API 
 
-Volg deze stappen om uw Aangepaste Visie-account te koppelen aan Video Indexer of om het Aangepaste Visie-account te wijzigen dat momenteel is verbonden met videoindexer:
+Volg deze stappen om u te verbinden Custom Vision account te Video Indexer of het Custom Vision account te wijzigen dat momenteel is verbonden met Video Indexer:
 
-1. Blader naar [www.customvision.ai](https://www.customvision.ai) en log in.
-1. Kopieer de volgende toetsen: 
+1. Ga naar [www.customvision.ai](https://www.customvision.ai) en meld u aan.
+1. Kopieer de volgende sleutels: 
 
-    * Trainingssleutel (voor de opleidingsbron)
-    * Voorspellingssleutel (voor de voorspellingsbron)
+    * Trainings sleutel (voor de trainings resource)
+    * Voorspellings sleutel (voor de Voorspellings resource)
     * Eindpunt 
-    * Bron-ID voorspellen
+    * Resource-ID voor voor spelling
     
     > [!NOTE]
-    > Om alle sleutels te bieden moet je twee afzonderlijke resources in Custom Vision hebben, een voor training en een voor voorspelling.
-1. Blader en meld u aan bij de [video-indexer](https://vi.microsoft.com/).
-1. Klik op het vraagteken in de rechterbovenhoek van de pagina en kies **API-verwijzing**.
-1. Zorg ervoor dat u bent geabonneerd op API-beheer door op het tabblad **Producten** te klikken. Als u een API hebt aangesloten, u verder gaan naar de volgende stap, anders u zich abonneren. 
-1. Klik op de ontwikkelaarsportal op de **naslaggids voltooien** en blader naar **Bewerkingen**.  
-1. Selecteer **Aangepaste visie-account (PREVIEW) verbinden** en klik op **Proberen**.
-1. Vul de vereiste velden in, evenals het toegangstoken en klik op **Verzenden**. 
+    > Om alle sleutels te bieden die u nodig hebt om twee afzonderlijke resources te hebben in Custom Vision, één voor de training en één voor voor spellingen.
+1. Blader en meld u aan bij de [video indexer](https://vi.microsoft.com/).
+1. Klik op het vraag teken in de rechter bovenhoek van de pagina en kies API- **verwijzing**.
+1. Zorg ervoor dat u bent geabonneerd op API Management door te klikken op het tabblad **producten** . Als u een API hebt verbonden, kunt u door gaan met de volgende stap, anders abonneren. 
+1. Op de ontwikkelaars Portal klikt u op de **volledige API-verwijzing** en bladert u naar **bewerkingen**.  
+1. Selecteer **verbinding maken Custom Vision account (preview)** en klik op **proberen**.
+1. Vul de vereiste velden en het toegangs token in en klik op **verzenden**. 
 
-    Ga voor meer informatie over hoe u het toegangstoken voor video-indexer krijgen naar de [ontwikkelaarsportal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token?)en raadpleeg de [relevante documentatie](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api).  
-1. Zodra het gesprek 200 OK-antwoord heeft beantwoord, is uw account verbonden.
-1. Ga als volgt te werk om uw verbinding te verifiëren door naar de [portal Video-indexer](https://vi.microsoft.com/)te bladeren:
-1. Klik rechtsboven op de **knop Aanpassing van het inhoudsmodel.**
-1. Ga naar het tabblad **Geanimeerde tekens.**
-1. Zodra u op Modellen beheren in Custom Vision klikt"**, wordt u overgezet naar het Custom Vision-account dat u zojuist hebt aangesloten.
+    Ga naar de [ontwikkelaars Portal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token?)voor meer informatie over het verkrijgen van het video indexer toegangs token en Raadpleeg de [relevante documentatie](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api).  
+1. Zodra de aanroep 200 OK reageert, is uw account verbonden.
+1. Als u wilt controleren of uw verbinding is, gaat u naar de [video indexer](https://vi.microsoft.com/)-portal:
+1. Klik op de knop **aanpassing van inhouds model** in de rechter bovenhoek.
+1. Ga naar het tabblad **tekens met animatie** .
+1. Zodra u op modellen beheren in Custom Vision ' * * ' klikt, wordt u overgezet naar het Custom Vision account dat u zojuist hebt verbonden.
 
 > [!NOTE]
-> Momenteel worden alleen modellen ondersteund die zijn gemaakt via Video Indexer. Modellen die zijn gemaakt via Custom Vision zijn niet beschikbaar. Bovendien is het beste om modellen te bewerken die alleen via Video Indexer zijn gemaakt via het Video Indexer-platform, omdat wijzigingen die via Custom Vision zijn aangebracht, onbedoelde resultaten kunnen veroorzaken.
+> Op dit moment worden alleen modellen ondersteund die zijn gemaakt via Video Indexer. Modellen die via Custom Vision zijn gemaakt, zijn niet beschikbaar. Daarnaast is het best practice om modellen te bewerken die via Video Indexer alleen via het Video Indexer platform zijn gemaakt, omdat wijzigingen die via Custom Vision zijn aangebracht, onbedoelde resultaten kunnen veroorzaken.
 
-### <a name="create-an-animated-characters-model"></a>Een model voor geanimeerde tekens maken
+### <a name="create-an-animated-characters-model"></a>Een model met een animatie teken maken
 
 1. Ga naar de [Video Indexer](https://vi.microsoft.com/)-website en meld u aan.
-1. Klik op de knop aanpassing van het inhoudsmodel in de rechterbovenhoek van de pagina.
+1. Klik op de knop aanpassing van inhouds model in de rechter bovenhoek van de pagina.
 
-    ![Aanpassing van inhoudsmodel](./media/animated-characters-recognition/content-model-customization.png)
-1. Ga naar het tabblad **Geanimeerde tekens** in de sectie modelaanpassing.
-1. Klik op **Model toevoegen**.
-1. Geef een naam aan u en klik op Enter om de naam op te slaan.
+    ![Aanpassing van het inhouds model](./media/animated-characters-recognition/content-model-customization.png)
+1. Ga naar het tabblad met **animatie tekens** in de sectie model aanpassing.
+1. Klik op **model toevoegen**.
+1. Geef een naam op voor het model en klik op ENTER om de naam op te slaan.
 
 > [!NOTE]
-> De beste praktijk is om een aangepaste visie model voor elke animatieserie. 
+> Het best practice heeft één aangepast Vision model voor elke animatie reeks. 
 
-### <a name="index-a-video-with-an-animated-model"></a>Een video indexeren met een animatiemodel
+### <a name="index-a-video-with-an-animated-model"></a>Een video indexeren met een animatie model
 
-1. Klik op de knop **Uploaden** in het bovenste menu.
-1. Kies een video die u wilt uploaden (uit een bestand of een URL).
+1. Klik op de knop **uploaden** in het bovenste menu.
+1. Kies een video die u wilt uploaden (vanuit een bestand of een URL).
 1. Klik op **Geavanceerde opties**.
-1. Kies **onder Personen / Geanimeerde tekens** **animatiemodellen**.
-1. Als u één model hebt, wordt het automatisch gekozen en als u meerdere modellen hebt, u de relevante optie kiezen uit het vervolgkeuzemenu.
+1. Onder **personen/animatie tekens** kiest u **animatie modellen**.
+1. Als u één model hebt, wordt dit automatisch gekozen en als u meerdere modellen hebt, kunt u de gewenste optie kiezen in het vervolg keuzemenu.
 1. Klik op uploaden.
-1. Zodra de video is geïndexeerd, ziet u de gedetecteerde tekens in de sectie **Geanimeerde tekens** in het deelvenster **Insights.**
+1. Zodra de video is geïndexeerd, worden de gedetecteerde tekens in het gedeelte met **animatie tekens** in het deel venster **inzichten** weer geven.
 
 > [!NOTE] 
-> Voordat het model wordt getagd en getraind, krijgen alle geanimeerde personages de naam "Unknown #X". Nadat u het model hebt getraind, worden ze ook herkend.
+> Voordat u het model kunt labelen en trainen, krijgen alle animatie-tekens de naam onbekend #X. Nadat u het model hebt getraind, worden ze ook herkend.
 
-### <a name="customize-the-animated-characters-models"></a>De modellen van de geanimeerde tekens aanpassen
+### <a name="customize-the-animated-characters-models"></a>De modellen met animatie tekens aanpassen
 
-1. Tag en train het model.
+1. Het model labelen en trainen.
 
-    1. Tag het gedetecteerde teken door de naam te bewerken. Zodra een teken is opgeleid in het model, zal het worden herkend de volgende video geïndexeerd met dat model. 
-    1. Als u een geanimeerd teken in uw video wilt taggen, gaat u naar het tabblad **Inzichten** en klikt u op de knop **Bewerken** in de rechterbovenhoek van het venster.
-    1. Klik in het deelvenster **Insights** op een van de gedetecteerde geanimeerde tekens en wijzig hun namen in 'Onbekende #X' (of de naam die eerder aan het teken is toegewezen).
-    1. Nadat u de nieuwe naam hebt intypen, klikt u op het controlepictogram naast de nieuwe naam. Hiermee slaat u de nieuwe naam op in het model in Video Indexer.
-    1. Nadat u klaar bent met het bewerken van alle gewenste namen, moet u het model trainen.
+    1. Label het gedetecteerde teken door de naam te bewerken. Zodra een teken is getraind in het model, wordt dit herkend aan de volgende video die met het model is geïndexeerd. 
+    1. Als u een animatie teken in uw video wilt labelen, gaat u naar het tabblad **inzichten** en klikt u op de knop **bewerken** in de rechter bovenhoek van het venster.
+    1. Klik in het deel venster **inzichten** op een van de gedetecteerde tekens met animatie en wijzig de namen van ' onbekend #X ' (of de naam die eerder aan het teken is toegewezen).
+    1. Nadat u de nieuwe naam hebt getypt, klikt u op het controle pictogram naast de nieuwe naam. Hiermee slaat u de nieuwe naam op in het model in Video Indexer.
+    1. Wanneer u klaar bent met het bewerken van alle gewenste namen, moet u het model trainen.
 
-        Open de aanpassingspagina en klik op het tabblad **Geanimeerde tekens** en klik op de knop **Trein** om uw model te trainen.
+        Open de pagina aanpassing en klik op het tabblad **tekst met animatie** en klik vervolgens op de knop **trainen** om uw model te trainen.
          
-        Als u een betaald account hebt, u klikken op de koppeling Modellen beheren in de koppeling **Klantvisie** (zoals hieronder wordt weergegeven). U wordt vervolgens doorgestuurd naar de pagina van het model in **Aangepaste visie.**
+        Als u een betaald account hebt, kunt u klikken op de koppeling **modellen beheren in Customer Vision** (zoals hieronder weer gegeven). Vervolgens wordt u doorgestuurd naar de pagina van het model in **Custom Vision**.
  
-        ![Aanpassing van inhoudsmodel](./media/animated-characters-recognition/content-model-customization-tab.png)
+        ![Aanpassing van het inhouds model](./media/animated-characters-recognition/content-model-customization-tab.png)
 
-     1. Eenmaal getraind, elke video die zal worden geïndexeerd of opnieuw geïndexeerd met dat model zal herkennen de getrainde tekens. 
-    Betaalde accounts die toegang hebben tot hun Custom Vision-account kunnen de modellen en getagde afbeeldingen daar zien. Meer informatie over [het verbeteren van uw classificatie in Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
+     1. Eenmaal getraind, worden de getrainde tekens herkend door alle Video's die worden geïndexeerd of herindexeerd met het model. 
+    Betaalde accounts die toegang hebben tot hun Custom Vision-account kunnen de modellen en gelabelde installatie kopieën daar zien. Meer informatie over [het verbeteren van uw classificatie in Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
 
-1. Een geanimeerd teken verwijderen.
+1. Een animatie teken verwijderen.
 
-    1. Als u een geanimeerd teken in uw video-inzichten wilt verwijderen, gaat u naar het tabblad **Inzichten** en klikt u op de knop **Bewerken** in de rechterbovenhoek van het venster.
-    1. Kies het geanimeerde teken en klik op de knop **Verwijderen** onder hun naam.
+    1. Als u een animatie teken in uw video inzichten wilt verwijderen, gaat u naar het tabblad **inzichten** en klikt u op de knop **bewerken** in de rechter bovenhoek van het venster.
+    1. Kies het animatie teken en klik vervolgens op de knop **verwijderen** onder hun naam.
 
     > [!NOTE]
-    > Hierdoor wordt het inzicht uit deze video verwijderd, maar heeft dit geen invloed op het model.
+    > Hiermee wordt het inzicht uit deze video verwijderd, maar dit is niet van invloed op het model.
 
 1. Een model verwijderen.
 
-    1. Klik op de **knop Inhoudsmodel in** het bovenste menu en ga naar het tabblad **Geanimeerde tekens.**
-    1. Klik op het ellipspictogram rechts van het model dat u wilt verwijderen en vervolgens op de verwijderknop.
+    1. Klik op de knop **aanpassing van inhouds model** in het bovenste menu en ga naar het tabblad **tekens met animatie** .
+    1. Klik op het pictogram met het weglatings teken rechts van het model dat u wilt verwijderen en klik vervolgens op de knop verwijderen.
     
-    * Betaald account: het model wordt losgekoppeld van Video Indexer en u het niet opnieuw verbinden.
-    * Proefaccount: het model wordt ook uit de visie van de douane verwijderd. 
+    * Betaald account: het model wordt losgekoppeld van Video Indexer en u kunt dit niet opnieuw verbinden.
+    * Proef account: het model wordt ook verwijderd uit het douane gezicht. 
     
         > [!NOTE]
-        > In een proefaccount hebt u slechts één model dat u gebruiken. Nadat u het hebt verwijderd, u andere modellen niet trainen.
+        > In een proef account hebt u slechts één model dat u kunt gebruiken. Nadat u de app hebt verwijderd, kunt u geen andere modellen trainen.
 
-## <a name="use-the-animated-character-detection-with-api"></a>De detectie van geanimeerde tekens gebruiken met API 
+## <a name="use-the-animated-character-detection-with-api"></a>De functie voor het detecteren van een animatie met API gebruiken 
 
-1. Een Aangepaste Visie-account verbinden.
+1. Verbinding maken met een Custom Vision-account.
 
-    Als u eigenaar bent van een betaalde video-indexaccount, moet u eerst een Aangepast Visie-account koppelen. <br/>
-    Als je nog geen Custom Vision-account hebt, maak er dan een aan. Zie [Aangepaste visie](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home)voor meer informatie.
+    Als u een Video Indexer betaalde account hebt, moet u eerst verbinding maken met een Custom Vision-account. <br/>
+    Als u nog geen Custom Vision-account hebt, moet u er een maken. Zie [Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home)voor meer informatie.
 
-    [Verbind uw Custom Vision-account met API.](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag)
-1. Maak een model voor geanimeerde tekens.
+    [Verbind uw Custom Vision-account met behulp van API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag).
+1. Maak een model met animatie-tekens.
 
-    Gebruik de API [voor het maken van animatiemodellen.](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Animation-Model?&groupBy=tag)
-1. Indexeer of indexeer een video opnieuw.
+    Gebruik de API voor het maken van een [animatie model](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Animation-Model?&groupBy=tag) .
+1. Een video indexeren of opnieuw indexeren.
 
-    Gebruik de [API voor het opnieuw indexeren.](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) 
-1. Pas de modellen van de geanimeerde tekens aan.
+    Gebruik de API voor [opnieuw indexeren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) . 
+1. Pas de modellen met animatie-tekens aan.
 
-    Gebruik de [API voor treinanimatiemodellen.](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Train-Animation-Model?&groupBy=tag)
+    Gebruik de [Train animatie model](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Train-Animation-Model?&groupBy=tag) -API.
 
-### <a name="view-the-output"></a>De uitvoer weergeven
+### <a name="view-the-output"></a>De uitvoer weer geven
 
-Bekijk de geanimeerde tekens in het gegenereerde JSON-bestand.
+Bekijk de animatie tekens in het gegenereerde JSON-bestand.
 
 ```json
 "animatedCharacters": [
@@ -208,9 +208,9 @@ Bekijk de geanimeerde tekens in het gegenereerde JSON-bestand.
 
 ## <a name="limitations"></a>Beperkingen
 
-* Momenteel wordt de mogelijkheid voor "animatie-identificatie" niet ondersteund in de regio Oost-Azië.
-* Tekens die klein of ver in de video lijken te zijn, worden mogelijk niet goed geïdentificeerd als de kwaliteit van de video slecht is.
-* De aanbeveling is om een model per set geanimeerde tekens te gebruiken (bijvoorbeeld per animatieserie).
+* Momenteel wordt de functie voor animatie-identificatie niet ondersteund in de regio Oost-Azië.
+* Tekens die klein of ten opzichte van de video worden weer gegeven, worden mogelijk niet goed herkend als de kwaliteit van de video slecht is.
+* De aanbeveling is een model te gebruiken per set met animatie tekens (bijvoorbeeld per reeks met animatie).
 
 ## <a name="next-steps"></a>Volgende stappen
 

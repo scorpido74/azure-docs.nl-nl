@@ -1,39 +1,39 @@
 ---
-title: Eeuwige orkestraties in duurzame functies - Azure
-description: Meer informatie over het implementeren van eeuwige orkestraties met de extensie Duurzame functies voor Azure-functies.
+title: Eeuwige-integratie in Durable Functions-Azure
+description: Meer informatie over het implementeren van eeuwige-integratie met behulp van de Durable Functions-extensie voor Azure Functions.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d55e08fecbd1338284607ac59fe354c6fa8cb1ea
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478815"
 ---
-# <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Eeuwige orkestraties in duurzame functies (Azure-functies)
+# <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Eeuwige-integraties in Durable Functions (Azure Functions)
 
-*Eeuwige orkestraties* zijn orkestorfuncties die nooit eindigen. Ze zijn handig wanneer u [duurzame functies](durable-functions-overview.md) wilt gebruiken voor aggregators en elk scenario dat een oneindige lus vereist.
+*Eeuwige* -indelingen zijn Orchestrator-functies die nooit eindigen. Ze zijn handig wanneer u [Durable functions](durable-functions-overview.md) wilt gebruiken voor aggregators en elk scenario waarvoor een oneindige lus is vereist.
 
-## <a name="orchestration-history"></a>Orkestratiegeschiedenis
+## <a name="orchestration-history"></a>Orchestration-geschiedenis
 
-Zoals uitgelegd in het [orchestration history](durable-functions-orchestrations.md#orchestration-history) topic, houdt het Sustainable Task Framework de geschiedenis van elke functieorkestratie bij. Deze geschiedenis groeit voortdurend zolang de orchestrator-functie nieuw werk blijft plannen. Als de orchestrator-functie in een oneindige lus gaat en continu werk schema's uitwerkt, kan deze geschiedenis kritisch groot worden en aanzienlijke prestatieproblemen veroorzaken. Het *eeuwige orkestratieconcept* is ontworpen om dit soort problemen te beperken voor toepassingen die oneindige lussen nodig hebben.
+Zoals uitgelegd in het onderwerp [Orchestration-geschiedenis](durable-functions-orchestrations.md#orchestration-history) , houdt het duurzame taak raamwerk de geschiedenis bij van elke functie indeling. Deze geschiedenis neemt voortdurend toe zolang de Orchestrator-functie blijft werken om nieuwe werkzaamheden te plannen. Als de Orchestrator-functie een oneindige lus doorloopt en voortdurend schema's werken, kan deze geschiedenis kritiek toenemen en aanzienlijke prestatie problemen veroorzaken. Het *eeuwige-Orchestration* -concept is ontworpen om dit soort problemen te verhelpen voor toepassingen die oneindige lussen nodig hebben.
 
 ## <a name="resetting-and-restarting"></a>Opnieuw instellen en opnieuw starten
 
-In plaats van oneindige lussen te gebruiken, resetten orchestrator-functies hun status door de `ContinueAsNew` (.NET) of `continueAsNew` (JavaScript)-methode van de [orchestration triggerbinding](durable-functions-bindings.md#orchestration-trigger)aan te roepen. Deze methode neemt een enkele JSON-serializable parameter, die de nieuwe input voor de volgende orchestrator functie generatie wordt.
+In plaats van een oneindige lus te gebruiken, wordt de status van Orchestrator `ContinueAsNew` -functies opnieuw ingesteld `continueAsNew` door de (.net) of (Java script)-methode van de [Orchestration-trigger binding](durable-functions-bindings.md#orchestration-trigger)aan te roepen. Deze methode heeft één JSON-Serializable-para meter, die de nieuwe invoer wordt voor de volgende Orchestrator-functie generatie.
 
-Wanneer `ContinueAsNew` wordt aangeroepen, wordt een bericht voor zichzelf indewachtrijen voordat het wordt afgesloten. Het bericht start de instantie opnieuw met de nieuwe invoerwaarde. Dezelfde instantie-ID wordt bewaard, maar de geschiedenis van de orchestrator-functie wordt effectief afgekapt.
+Wanneer `ContinueAsNew` wordt aangeroepen, in het exemplaar een bericht naar zichzelf voordat het wordt afgesloten. Het bericht start het exemplaar opnieuw met de nieuwe invoer waarde. Dezelfde exemplaar-ID wordt bewaard, maar de geschiedenis van de Orchestrator-functie wordt in feite afgekapt.
 
 > [!NOTE]
-> Het framework Duurzame taak behoudt dezelfde instantie-id, maar maakt intern een nieuwe `ContinueAsNew` *uitvoerings-ID* voor de orchestrator-functie die wordt gereset door . Deze uitvoerings-ID is over het algemeen niet extern blootgesteld, maar het kan nuttig zijn om te weten over bij het debuggen orchestration uitvoering.
+> Het duurzame taak raamwerk houdt dezelfde exemplaar-ID bij, maar maakt intern een nieuwe *uitvoerings-id* voor de Orchestrator-functie die `ContinueAsNew`opnieuw wordt ingesteld door. Deze uitvoerings-ID wordt over het algemeen niet extern weer gegeven, maar het kan nuttig zijn om te weten wanneer de uitvoering van een fout in de Orchestration is opgetreden.
 
-## <a name="periodic-work-example"></a>Voorbeeld van periodiek werk
+## <a name="periodic-work-example"></a>Voor beeld van periodieke werk
 
-Een voorbeeld voor eeuwige orkestraties is code die periodiek werk voor onbepaalde tijd moet doen.
+Een use-case voor eeuwige-indelingen is code die voor onbepaalde tijd periodiek moet worden uitgevoerd.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Periodic_Cleanup_Loop")]
@@ -51,7 +51,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Het vorige C#-voorbeeld is voor Duurzame functies 2.x. Voor duurzame functies 1.x `DurableOrchestrationContext` moet `IDurableOrchestrationContext`u in plaats van . Zie het artikel [Duurzame functies voor](durable-functions-versions.md) meer informatie over de verschillen tussen versies.
+> Het vorige C#-voor beeld is voor Durable Functions 2. x. Voor Durable Functions 1. x moet u in plaats `DurableOrchestrationContext` van `IDurableOrchestrationContext`gebruiken. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
@@ -72,16 +72,16 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Het verschil tussen dit voorbeeld en een functie die door een timer wordt geactiveerd, is dat de triggertijden voor het opschonen hier niet zijn gebaseerd op een planning. Een CRON-schema dat elk uur een functie uitvoert, voert deze bijvoorbeeld uit om 1:00, 2:00, 3:00 enz. In dit voorbeeld, echter, als de opruiming duurt 30 minuten, dan zal het worden gepland om 1:00, 2:30, 4:00, etc. en er is geen kans op overlap.
+Het verschil tussen dit voor beeld en een door een timer geactiveerde functie is dat hier niet op basis van een schema wordt geactiveerd. Zo kan een CRON-schema waarmee een functie elk uur wordt uitgevoerd, worden uitgevoerd op 1:00, 2:00, 3:00 enz. Dit kan mogelijk worden uitgevoerd in overlappende problemen. Als het opschonen echter 30 minuten duurt, wordt het gepland op 1:00, 2:30, 4:00 enzovoort. er is geen kans op overlap ping.
 
-## <a name="starting-an-eternal-orchestration"></a>Het starten van een eeuwige orkestratie
+## <a name="starting-an-eternal-orchestration"></a>Een eeuwige-indeling starten
 
-Gebruik `StartNewAsync` de (.NET) `startNew` of de (JavaScript) methode om een eeuwige orchestration te starten, net zoals je zou elke andere orchestration functie.  
+Gebruik de `StartNewAsync` (.net) of de `startNew` (Java script)-methode om een eeuwige-indeling te starten, net als bij andere Orchestration-functies.  
 
 > [!NOTE]
-> Als u ervoor moet zorgen dat er een singleton eeuwige orkestratie `id` wordt uitgevoerd, is het belangrijk om dezelfde instantie te behouden bij het starten van de orkestratie. Zie [Instantiebeheer](durable-functions-instance-management.md)voor meer informatie.
+> Als u er zeker van wilt zijn dat er een singleton eeuwige-indeling wordt uitgevoerd, is het belang rijk `id` dat u hetzelfde exemplaar behoudt bij het starten van de indeling. Zie [instance Management](durable-functions-instance-management.md)(Engelstalig) voor meer informatie.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Trigger_Eternal_Orchestration")]
@@ -97,7 +97,7 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 ```
 
 > [!NOTE]
-> De vorige code is voor duurzame functies 2.x. Voor duurzame functies 1.x `OrchestrationClient` moet u `DurableClient` attribuut gebruiken in plaats `DurableOrchestrationClient` van het `IDurableOrchestrationClient`kenmerk en moet u het parametertype gebruiken in plaats van . Zie het artikel [Duurzame functies voor](durable-functions-versions.md) meer informatie over de verschillen tussen versies.
+> De vorige code is voor Durable Functions 2. x. Voor Durable Functions 1. x, moet u kenmerk `OrchestrationClient` gebruiken in plaats van `DurableClient` het kenmerk, en moet u het `DurableOrchestrationClient` parameter type gebruiken in `IDurableOrchestrationClient`plaats van. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
@@ -118,13 +118,13 @@ module.exports = async function (context, req) {
 
 ---
 
-## <a name="exit-from-an-eternal-orchestration"></a>Exit van een eeuwige orkestratie
+## <a name="exit-from-an-eternal-orchestration"></a>Afsluiten vanuit een eeuwige-indeling
 
-Als een orchestrator-functie uiteindelijk moet worden voltooid, hoeft `ContinueAsNew` u alleen maar *niet* te bellen en de functie te laten afsluiten.
+Als een Orchestrator-functie uiteindelijk moet worden voltooid, hoeft u *niet* te bellen `ContinueAsNew` en kunt u de functie niet afsluiten.
 
-Als een orchestrator-functie zich in een oneindige `TerminateAsync` lus bevindt `terminate` en moet worden gestopt, gebruikt u de methode (.NET) of (JavaScript) van de [orchestration-clientbinding](durable-functions-bindings.md#orchestration-client) om deze te stoppen. Zie [Instantiebeheer](durable-functions-instance-management.md)voor meer informatie.
+Als een Orchestrator-functie zich in een oneindige lus bevindt en moet worden `TerminateAsync` gestopt, gebruikt u `terminate` de methode (.net) of (Java script) van de [Orchestration-client binding](durable-functions-bindings.md#orchestration-client) om deze te stoppen. Zie [instance Management](durable-functions-instance-management.md)(Engelstalig) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het implementeren van singleton orchestrations](durable-functions-singletons.md)
+> [Meer informatie over het implementeren van Singleton-indelingen](durable-functions-singletons.md)

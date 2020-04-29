@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen over Azure Security Center - vragen over bestaande Log Analytics-agents
-description: Deze veelgestelde vragen beantwoorden vragen voor klanten die de Log Analytics-agent al gebruiken en overweegt Azure Security Center, een product dat u helpt bedreigingen te voorkomen, detecteren en erop te reageren.
+title: 'Azure Security Center Veelgestelde vragen: vragen over bestaande Log Analytics agents'
+description: Deze veelgestelde vragen beantwoordt vragen aan klanten die al gebruikmaken van de Log Analytics agent en overwegen Azure Security Center, een product dat u helpt bij het voor komen, detecteren en reageren op bedreigingen.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,35 +14,35 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: f6384c1e9e14e38b4c44c5ac79a674839b43b4ca
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80436153"
 ---
-# <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Veelgestelde vragen voor klanten die azure monitorlogboeken al gebruiken<a name="existingloganalyticscust"></a>
+# <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Veelgestelde vragen voor klanten die Azure Monitor-logboeken al gebruiken<a name="existingloganalyticscust"></a>
 
-## <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>Overschrijft Security Center bestaande verbindingen tussen VM's en werkruimten?
+## <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>Worden bestaande verbindingen tussen Vm's en werk ruimten Security Center overschreven?
 
-Als de agent Log Analytics al is geïnstalleerd als Azure-extensie, overschrijft Beveiligingscentrum de bestaande werkruimteverbinding niet. In plaats daarvan gebruikt Security Center de bestaande werkruimte. De VM wordt beveiligd op voorwaarde dat de "Security" of "SecurityCenterFree" oplossing is geïnstalleerd op de werkruimte waaraan het rapporteert. 
+Als de Log Analytics-agent al is geïnstalleerd op een virtuele machine als Azure-extensie, wordt de bestaande werkruimte verbinding niet overschreven door Security Center. In plaats daarvan maakt Security Center gebruik van de bestaande werk ruimte. De virtuele machine wordt beveiligd, op voor waarde dat de oplossing ' Security ' of ' SecurityCenterFree ' is geïnstalleerd op de werk ruimte waarmee deze wordt gerapporteerd. 
 
-Er is een oplossing voor beveiligingscentrum geïnstalleerd op de werkruimte die is geselecteerd in het scherm Gegevensverzameling als deze nog niet aanwezig is, en de oplossing wordt alleen toegepast op de relevante VM's. Wanneer u een oplossing toevoegt, wordt deze standaard automatisch geïmplementeerd op alle Windows- en Linux-agents die zijn aangesloten op uw Log Analytics-werkruimte. [Met Solution Targeting](../operations-management-suite/operations-management-suite-solution-targeting.md) u een scope toepassen op uw oplossingen.
+Er wordt een Security Center oplossing geïnstalleerd op de werk ruimte die is geselecteerd in het scherm voor het verzamelen van gegevens, als deze nog niet aanwezig is, en de oplossing wordt alleen toegepast op de relevante Vm's. Wanneer u een oplossing toevoegt, wordt deze automatisch geïmplementeerd op alle Windows-en Linux-agents die zijn verbonden met uw Log Analytics-werk ruimte. Met [doel items van oplossingen](../operations-management-suite/operations-management-suite-solution-targeting.md) kunt u een bereik Toep assen op uw oplossingen.
 
 > [!TIP]
-> Als de Log Analytics-agent rechtstreeks op de VM is geïnstalleerd (niet als Azure-extensie), installeert Beveiligingscentrum de loganalyse-agent niet en is de beveiligingscontrole beperkt.
+> Als de Log Analytics-agent rechtstreeks op de virtuele machine is geïnstalleerd (niet als een Azure-extensie), installeert Security Center de Log Analytics agent niet en is de beveiligings controle beperkt.
 
-## <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Installeert Security Center oplossingen op mijn bestaande Log Analytics-werkruimten? Wat zijn de implicaties voor facturering?
-Wanneer beveiligingscentrum vaststelt dat een vm al is verbonden met een werkruimte die u hebt gemaakt, maakt Security Center oplossingen op deze werkruimte mogelijk op basis van uw prijscategorie. De oplossingen worden alleen toegepast op de relevante Azure VM's, via [oplossingstargeting,](../operations-management-suite/operations-management-suite-solution-targeting.md)zodat de facturering hetzelfde blijft.
+## <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Installeert Security Center oplossingen op mijn bestaande Log Analytics-werk ruimten? Wat zijn de gevolgen voor facturering?
+Als Security Center identificeert dat er al een virtuele machine is verbonden met een werk ruimte die u hebt gemaakt, Security Center de oplossingen in deze werk ruimte inschakelen volgens de prijs categorie. De oplossingen worden alleen toegepast op de relevante Azure-Vm's, via [oplossings doelen](../operations-management-suite/operations-management-suite-solution-targeting.md), zodat de facturering op dezelfde manier blijft.
 
-- **Gratis laag** – Security Center installeert de 'SecurityCenterFree'-oplossing op de werkruimte. U wordt niet gefactureerd voor de gratis laag.
-- **Standaardlaag** – Security Center installeert de 'Security'-oplossing op de werkruimte.
+- **Gratis laag** – Security Center installeert de oplossing ' SecurityCenterFree ' in de werk ruimte. Er worden geen kosten in rekening gebracht voor de gratis laag.
+- **Standard-laag** – Security Center installeert de oplossing beveiliging in de werk ruimte.
 
-   ![Oplossingen op standaardwerkruimte](./media/security-center-platform-migration-faq/solutions.png)
+   ![Oplossingen in de standaardwerk ruimte](./media/security-center-platform-migration-faq/solutions.png)
 
-## <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>Ik heb al werkruimten in mijn omgeving, kan ik ze gebruiken om beveiligingsgegevens te verzamelen?
-Als de agent Log Analytics al is geïnstalleerd als Azure-extensie, gebruikt Beveiligingscentrum de bestaande verbonden werkruimte. Een Security Center-oplossing is geïnstalleerd op de werkruimte als deze nog niet aanwezig is en de oplossing wordt alleen toegepast op de relevante VM's via [oplossingstargeting.](../operations-management-suite/operations-management-suite-solution-targeting.md)
+## <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>Ik heb al werk ruimten in mijn omgeving. kan ik deze gebruiken voor het verzamelen van beveiligings gegevens?
+Als de Log Analytics-agent al is geïnstalleerd op een virtuele machine als Azure-extensie, Security Center gebruikt de bestaande verbonden werk ruimte. Er wordt een Security Center oplossing geïnstalleerd op de werk ruimte als deze nog niet aanwezig is, en de oplossing wordt alleen toegepast op de relevante Vm's via de [doel stellingen](../operations-management-suite/operations-management-suite-solution-targeting.md)van de oplossing.
 
-Wanneer Security Center de Log Analytics-agent op VM's installeert, wordt de standaardwerkruimte(s) gebruikt die zijn gemaakt door Security Center.
+Wanneer Security Center de Log Analytics-agent op Vm's installeert, worden de standaardwerk ruimte (n) gebruikt die door Security Center is gemaakt.
 
-## <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>Ik heb al een beveiligingsoplossing op mijn werkplekken. Wat zijn de implicaties voor facturering?
-De oplossing Security & Audit wordt gebruikt om standaardstandaardfuncties voor Azure VM's in te schakelen. Als de oplossing Voor & beveiliging al op een werkruimte is geïnstalleerd, gebruikt Security Center de bestaande oplossing. Er is geen wijziging in de facturering.
+## <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>Ik heb al een beveiligings oplossing voor mijn werk ruimten. Wat zijn de gevolgen voor facturering?
+De oplossing beveiligings & controle wordt gebruikt om Security Center Standard-laag functies voor Azure-Vm's in te scha kelen. Als de oplossing beveiligings & controle al is geïnstalleerd op een werk ruimte, gebruikt Security Center de bestaande oplossing. Er is geen wijziging in de facturering.

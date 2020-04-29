@@ -1,6 +1,6 @@
 ---
-title: Controle naar opslagaccount achter VNet en firewall
-description: Controle configureren om databasegebeurtenissen te schrijven op een opslagaccount achter virtueel netwerk en firewall
+title: Controleren op opslag account achter VNet en firewall
+description: Configureer controle om database gebeurtenissen te schrijven op een opslag account achter het virtuele netwerk en de firewall
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,78 +11,78 @@ ms.reviewer: vanto
 ms.date: 03/19/2020
 ms.custom: azure-synapse
 ms.openlocfilehash: 6345d210e26747f921595039a2a3c8e11be11fda
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80387627"
 ---
-# <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Audit schrijven naar een opslagaccount achter VNet en firewall
+# <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Schrijf audit naar een opslag account achter VNet en firewall
 
-Auditing voor [Azure SQL Database](sql-database-technical-overview.md) en Azure [Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) ondersteunt het schrijven van databasegebeurtenissen naar een Azure [Storage-account](../storage/common/storage-account-overview.md) achter een virtueel netwerk en firewall. 
+Controles voor [Azure SQL database](sql-database-technical-overview.md) en [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) bieden ondersteuning voor het schrijven van Database gebeurtenissen naar een [Azure Storage account](../storage/common/storage-account-overview.md) achter een virtueel netwerk en een firewall. 
 
-In dit artikel worden twee manieren uitgelegd om Azure SQL Server en Azure-opslagaccount voor deze optie te configureren. De eerste maakt gebruik van de Azure-portal, de tweede maakt gebruik van REST.
+In dit artikel worden twee manieren beschreven om Azure SQL Server en Azure Storage-account te configureren voor deze optie. De eerste gebruikt de Azure Portal, de tweede gebruikt REST.
 
 ### <a name="background"></a>Achtergrond
 
-[Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md) is de fundamentele bouwsteen voor uw privénetwerk in Azure. Met VNet kunnen veel typen Azure-resources, zoals Virtual Azure Machines (VM), veilig met elkaar, internet en on-premises netwerken communiceren. VNet is vergelijkbaar met een traditioneel netwerk in uw eigen datacenter, maar brengt extra voordelen met zich mee van Azure-infrastructuur zoals schaal, beschikbaarheid en isolatie.
+[Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md) is de fundamentele bouw steen voor uw particuliere netwerk in Azure. Met VNet kunnen veel typen Azure-resources, zoals Azure Virtual Machines (VM), veilig communiceren met elkaar, Internet en on-premises netwerken. VNet is vergelijkbaar met een traditioneel netwerk in uw eigen Data Center, maar biedt extra voor delen van Azure-infra structuur, zoals schaal, Beschik baarheid en isolatie.
 
-Zie [Wat is Azure Virtual Network](../virtual-network/virtual-networks-overview.md)voor meer informatie over de VNet-concepten, Aanbevolen procedures en nog veel meer.
+Zie [Wat is Azure Virtual Network](../virtual-network/virtual-networks-overview.md)voor meer informatie over de VNet-concepten, aanbevolen procedures en nog veel meer.
 
-Zie [Snelstart: Een virtueel netwerk maken met de Azure-portal](../virtual-network/quick-create-portal.md)voor meer informatie over het maken van een virtueel netwerk.
+Zie [Quick Start: een virtueel netwerk maken met behulp van de Azure Portal](../virtual-network/quick-create-portal.md)voor meer informatie over het maken van een virtueel netwerk.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor controle om te schrijven naar een opslagaccount achter een VNet of firewall, zijn de volgende vereisten vereist:
+De volgende vereisten zijn vereist om te schrijven naar een opslag account achter een VNet of een firewall:
 
 > [!div class="checklist"]
-> * Een v2-opslagaccount voor algemene doeleinden. Als u een v1- of blobopslagaccount voor algemene doeleinden hebt, [kunt u upgraden naar een v2-opslagaccount voor algemene doeleinden](../storage/common/storage-account-upgrade.md). Zie [Typen opslagaccounts](../storage/common/storage-account-overview.md#types-of-storage-accounts)voor meer informatie .
-> * Het opslagaccount moet zich op hetzelfde abonnement en op dezelfde locatie bevinden als de Azure SQL Database-server. 
-> * Het Azure Storage-account vereist `Allow trusted Microsoft services to access this storage account`. Stel dit in op de firewalls voor **opslagaccount en virtuele netwerken.**
-> * U moet `Microsoft.Authorization/roleAssignments/write` toestemming hebben voor het geselecteerde opslagaccount. Zie [Azure ingebouwde rollen](../role-based-access-control/built-in-roles.md)voor meer informatie.
+> * Een v2-opslag account voor algemeen gebruik. Als u een v1-of Blob-opslag account voor algemeen gebruik hebt, [moet u een upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik](../storage/common/storage-account-upgrade.md). Zie [typen opslag accounts](../storage/common/storage-account-overview.md#types-of-storage-accounts)voor meer informatie.
+> * Het opslag account moet zich op hetzelfde abonnement en op dezelfde locatie als de Azure SQL Database-Server. 
+> * Het Azure Storage-account `Allow trusted Microsoft services to access this storage account`vereist. Stel dit in op het opslag account **firewalls en virtuele netwerken**.
+> * U moet een `Microsoft.Authorization/roleAssignments/write` machtiging hebben voor het geselecteerde opslag account. Zie [ingebouwde rollen van Azure](../role-based-access-control/built-in-roles.md)voor meer informatie.
 
 ## <a name="configure-in-azure-portal"></a>Configureren in Azure Portal
 
-Maak verbinding met [azure portal](https://portal.azure.com) met uw abonnement. Navigeer naar de brongroep en Azure SQL-databaseserver.
+Maak verbinding met [Azure Portal](https://portal.azure.com) met uw abonnement. Navigeer naar de resource groep en de Azure SQL database-server.
 
-1. Klik op **Controle** onder de kop Beveiliging. Selecteer **Op**.
+1. Klik op **controleren** onder de kop beveiliging. Selecteer **aan**.
 
-2. Selecteer **Opslag**. Selecteer het opslagaccount waar logboeken worden opgeslagen. Het opslagaccount moet voldoen aan de vereisten die in [Voorwaarden worden](#prerequisites)vermeld.
+2. Selecteer **Opslag**. Selecteer het opslag account waarin de logboeken worden opgeslagen. Het opslag account moet voldoen aan de vereisten die worden vermeld in [vereiste onderdelen](#prerequisites).
 
-3. **Opslaggegevens openen** 
+3. **Opslag Details** openen 
 
   > [!NOTE]
-  > Als het geselecteerde opslagaccount zich achter VNet bevindt, ziet u het volgende bericht:
+  > Als het geselecteerde opslag account zich achter VNet bevindt, wordt het volgende bericht weer gegeven:
   >
   >`You have selected a storage account that is behind a firewall or in a virtual network. Using this storage: requires an Active Directory admin on the server; enables 'Allow trusted Microsoft services to access this storage account' on the storage account; and creates a server managed identity with 'storage blob data contributor' RBAC.`
   >
-  >Als u dit bericht niet ziet, zit het opslagaccount niet achter een VNet.
+  >Als u dit bericht niet ziet, bevindt het opslag account zich niet achter een VNet.
 
-4. Selecteer het aantal dagen voor de bewaartermijn. Klik vervolgens op **OK**. Logboeken die ouder zijn dan de bewaartermijn worden verwijderd.
+4. Selecteer het aantal dagen voor de Bewaar periode. Klik vervolgens op **OK**. Logboeken die ouder zijn dan de Bewaar periode, worden verwijderd.
 
-5. Selecteer **Opslaan** in uw controle-instellingen.
+5. Selecteer **Opslaan** in de controle-instellingen.
 
-U hebt de audit geconfigureerd om naar een opslagaccount achter een VNet of firewall te schrijven. 
+U hebt de audit geconfigureerd om te schrijven naar een opslag account achter een VNet of firewall. 
 
 ## <a name="configure-with-rest-commands"></a>Configureren met REST-opdrachten
 
-Als alternatief voor het gebruik van de Azure-portal u REST-opdrachten gebruiken om controle te configureren om databasegebeurtenissen te schrijven op een opslagaccount achter een VNet en Firewall. 
+Als alternatief voor het gebruik van de Azure Portal kunt u REST-opdrachten gebruiken om de controle te configureren voor het schrijven van database gebeurtenissen op een opslag account achter een VNet en firewall. 
 
-De voorbeeldscripts in deze sectie vereisen dat u het script bijwerkt voordat u ze uitvoert. Vervang de volgende waarden in de scripts:
+De voorbeeld scripts in deze sectie vereisen dat u het script bijwerkt voordat u ze uitvoert. Vervang de volgende waarden in de scripts:
 
-|Voorbeeldwaarde|Voorbeeldbeschrijving|
+|Voorbeeldwaarde|Voorbeeld beschrijving|
 |:-----|:-----|
 |`<subscriptionId>`| Azure-abonnements-ID|
 |`<resource group>`| Resourcegroep|
-|`<sql database server>`| Naam Azure SQL-databaseserver|
-|`<administrator login>`| SQL-databasebeheerdersaccount |
-|`<complex password>`| Complex wachtwoord voor het beheerdersaccount|
+|`<sql database server>`| Naam van Azure SQL database-server|
+|`<administrator login>`| SQL database beheerders account |
+|`<complex password>`| Complex wacht woord voor het beheerders account|
 
-Ga als lid van het nieuwe BEDRIJF over sql-controle om gebeurtenissen te schrijven naar een opslagaccount achter een VNet of Firewall:
+SQL-controle configureren om gebeurtenissen te schrijven naar een opslag account achter een VNet of firewall:
 
-1. Registreer uw Azure SQL Database-server met Azure Active Directory (Azure AD). Gebruik PowerShell of REST API.
+1. Registreer uw Azure SQL Database-Server bij Azure Active Directory (Azure AD). Gebruik Power shell of REST API.
 
-   **Powershell**
+   **Zo**
    
    ```powershell
    Connect-AzAccount
@@ -90,9 +90,9 @@ Ga als lid van het nieuwe BEDRIJF over sql-controle om gebeurtenissen te schrijv
    Set-AzSqlServer -ResourceGroupName <your resource group> -ServerName <azure server name> -AssignIdentity
    ```
    
-   [**REST API**](https://docs.microsoft.com/rest/api/sql/servers/createorupdate):
+   [**rest API**](https://docs.microsoft.com/rest/api/sql/servers/createorupdate):
 
-   Voorbeeldaanvraag
+   Voorbeeld aanvraag
 
    ```html
    PUT https://management.azure.com/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Sql/servers/<azure server name>?api-version=2015-05-01-preview
@@ -114,14 +114,14 @@ Ga als lid van het nieuwe BEDRIJF over sql-controle om gebeurtenissen te schrijv
    }
    ```
 
-2. Open [Azure Portal](https://portal.azure.com). Ga naar uw opslagaccount. Zoek **Toegangsbeheer (IAM)** en klik op **Roltoewijzing toevoegen**. Wijs **De RBAC-rol opslagblobgegevens-bijdrage rbac** toe aan uw Azure SQL Server die uw Azure SQL-database host die u hebt geregistreerd bij Azure Active Directory (Azure AD) zoals in de vorige stap.
+2. Open [Azure Portal](https://portal.azure.com). Ga naar uw opslagaccount. Zoek **Access Control (IAM)** en klik op **roltoewijzing toevoegen**. Wijs de RBAC-rol **Storage BLOB data Inzender** toe aan uw Azure SQL Server die als host fungeert voor uw azure-SQL database die u hebt geregistreerd bij Azure Active Directory (Azure AD), zoals in de vorige stap.
 
    > [!NOTE]
-   > Alleen leden met eigenaarbevoegdheid kunnen deze stap uitvoeren. Raadpleeg [azure-ingebouwde rollen](../role-based-access-control/built-in-roles.md)voor verschillende ingebouwde rollen voor Azure-resources.
+   > Alleen leden met de bevoegdheid eigenaar kunnen deze stap uitvoeren. Raadpleeg de [ingebouwde rollen van Azure](../role-based-access-control/built-in-roles.md)voor verschillende ingebouwde rollen voor Azure-resources.
 
-3. Configureer [het blob-controlebeleid van Azure SQL-server](/rest/api/sql/server%20auditing%20settings/createorupdate)zonder een *storageAccountAccessKey*op te geven:
+3. [Het controle beleid voor blobs van Azure SQL Server](/rest/api/sql/server%20auditing%20settings/createorupdate)configureren zonder een *storageAccountAccessKey*op te geven:
 
-   Voorbeeldaanvraag
+   Voorbeeld aanvraag
 
    ```html
    PUT https://management.azure.com/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Sql/servers/<azure server name>?api-version=2017-03-01-preview
@@ -140,6 +140,6 @@ Ga als lid van het nieuwe BEDRIJF over sql-controle om gebeurtenissen te schrijv
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Gebruik PowerShell om een eindpunt voor virtuele netwerkservices te maken en vervolgens een virtuele netwerkregel voor Azure SQL Database.](sql-database-vnet-service-endpoint-rule-powershell.md)
-- [Virtuele netwerkregels: bewerkingen met REST API's](/rest/api/sql/virtualnetworkrules)
-- [Eindpunten en regels voor virtuele netwerkservice gebruiken voor databaseservers](sql-database-vnet-service-endpoint-rule-overview.md)
+- [Gebruik Power shell om een service-eind punt voor een virtueel netwerk te maken en vervolgens een regel voor het virtuele netwerk voor Azure SQL Database.](sql-database-vnet-service-endpoint-rule-powershell.md)
+- [Virtual Network regels: bewerkingen met REST-Api's](/rest/api/sql/virtualnetworkrules)
+- [Service-eind punten en-regels voor virtuele netwerken gebruiken voor database servers](sql-database-vnet-service-endpoint-rule-overview.md)

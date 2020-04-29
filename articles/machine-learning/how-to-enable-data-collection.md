@@ -1,7 +1,7 @@
 ---
-title: Gegevens verzamelen over uw productiemodellen
+title: Gegevens verzamelen in uw productie modellen
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het verzamelen van Azure Machine Learning-invoermodelgegevens in Azure Blob-opslag.
+description: Meer informatie over het verzamelen van Azure Machine Learning invoer model gegevens in Azure Blob-opslag.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,10 +12,10 @@ author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
 ms.openlocfilehash: 44acc81df9eb6dc6a6af28b5b0f4730aa93adffc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80475442"
 ---
 # <a name="collect-data-for-models-in-production"></a>Gegevens verzamelen voor modellen in productie
@@ -23,32 +23,32 @@ ms.locfileid: "80475442"
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 >[!IMPORTANT]
-> De Azure Machine Learning Monitoring SDK wordt binnenkort buiten gebruik gesteld. De SDK is nog steeds geschikt voor ontwikkelaars die momenteel de SDK gebruiken om gegevensdrift in modellen te controleren. Maar voor nieuwe klanten raden we u aan de vereenvoudigde gegevensbewaking te gebruiken [met Application Insights.](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)
+> De Azure Machine Learning monitoring-SDK wordt binnenkort ingetrokken. De SDK is nog steeds geschikt voor ontwikkel aars die momenteel de SDK gebruiken om gegevens drift in modellen te bewaken. Voor nieuwe klanten raden wij u echter aan de vereenvoudigde [gegevens bewaking met Application Insights](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)te gebruiken.
 
-In dit artikel ziet u hoe u invoermodelgegevens verzamelt van Azure Machine Learning. Het laat ook zien hoe u de invoergegevens implementeert in een AKS-cluster (Azure Kubernetes Service) en de uitvoergegevens opslaat in Azure Blob-opslag.
+In dit artikel wordt uitgelegd hoe u invoer model gegevens van Azure Machine Learning kunt verzamelen. Ook wordt uitgelegd hoe u de invoer gegevens implementeert in een AKS-cluster (Azure Kubernetes service) en de uitvoer gegevens opslaat in Azure Blob-opslag.
 
-Zodra verzameling is ingeschakeld, helpen de gegevens die u verzamelt u:
+Zodra de verzameling is ingeschakeld, kunt u met de gegevens die u verzamelt, het volgende doen:
 
-* [Monitor gegevensdriften](how-to-monitor-data-drift.md) als productiegegevens uw model binnenkomen.
+* [Bewaak gegevens drift](how-to-monitor-data-drift.md) als productie gegevens uw model binnenkomen.
 
-* Neem betere beslissingen over wanneer u uw model moet omscholen of optimaliseren.
+* Neem betere beslissingen over wanneer u uw model opnieuw traint of optimaliseert.
 
-* Train uw model om met de verzamelde gegevens.
+* Train uw model opnieuw met de verzamelde gegevens.
 
-## <a name="what-is-collected-and-where-it-goes"></a>Wat wordt verzameld en waar het naartoe gaat
+## <a name="what-is-collected-and-where-it-goes"></a>Wat wordt verzameld en waar het gaat
 
 De volgende gegevens kunnen worden verzameld:
 
-* Modelleer invoergegevens van webservices die zijn geïmplementeerd in een AKS-cluster. Spraakaudio, afbeeldingen en video worden *niet* verzameld.
+* Model invoer gegevens van webservices die zijn geïmplementeerd in een AKS-cluster. Voice audio, afbeeldingen en video worden *niet* verzameld.
   
-* Modelvoorspellingen met behulp van productie-invoergegevens.
+* Model voorspellingen met behulp van invoer gegevens voor productie.
 
 >[!NOTE]
-> Vooraggregatie en voorberekeningen van deze gegevens maken momenteel geen deel uit van de incassoservice.
+> Preaggregatie en voor berekeningen op deze gegevens maken momenteel geen deel uit van de verzamelings service.
 
-De uitvoer wordt opgeslagen in Blob-opslag. Omdat de gegevens worden toegevoegd aan blob-opslag, u uw favoriete hulpmiddel kiezen om de analyse uit te voeren.
+De uitvoer wordt opgeslagen in Blob Storage. Omdat de gegevens worden toegevoegd aan de Blob-opslag, kunt u uw favoriete hulp programma kiezen om de analyse uit te voeren.
 
-Het pad naar de uitvoergegevens in de blob volgt de volgende syntaxis:
+Het pad naar de uitvoer gegevens in de BLOB volgt de volgende syntaxis:
 
 ```
 /modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
@@ -56,35 +56,35 @@ Het pad naar de uitvoergegevens in de blob volgt de volgende syntaxis:
 ```
 
 >[!NOTE]
-> In versies van de Azure Machine Learning SDK voor Python eerder dan `designation` versie 0.1.0a16 wordt het argument genoemd `identifier`. Als u uw code met een eerdere versie hebt ontwikkeld, moet u deze dienovereenkomstig bijwerken.
+> In versies van de Azure Machine Learning SDK voor python ouder dan versie 0.1.0 A16 wordt het `designation` argument genoemd `identifier`. Als u uw code hebt ontwikkeld met een eerdere versie, moet u deze dienovereenkomstig bijwerken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://aka.ms/AMLFree) voordat u begint.
+- Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://aka.ms/AMLFree) aan voordat u begint.
 
-- Er moet een AzureMachine Learning-werkruimte, een lokale map met uw scripts en de Azure Machine Learning SDK voor Python worden geïnstalleerd. Zie [Een ontwikkelomgeving configureren](how-to-configure-environment.md)voor meer informatie over het installeren ervan.
+- Er moet een AzureMachine Learning-werk ruimte, een lokale map met uw scripts en de Azure Machine Learning SDK voor python zijn geïnstalleerd. Zie [How to configure a Development Environment (een ontwikkel omgeving configureren](how-to-configure-environment.md)) voor meer informatie over het installeren van deze.
 
-- U hebt een getraind machinelearningmodel nodig om te worden geïmplementeerd op AKS. Als u geen model hebt, raadpleegt u de zelfstudie van het [classificatiemodel Treinafbeelding.](tutorial-train-models-with-aml.md)
+- U hebt een getraind machine learning-model nodig om te worden geïmplementeerd op AKS. Als u geen model hebt, raadpleegt u de zelf studie over het [classificatie Model Train image](tutorial-train-models-with-aml.md) .
 
-- Je hebt een AKS-cluster nodig. Zie Hoe te implementeren [en waar](how-to-deploy-and-where.md)te worden geïmplementeerd voor informatie over het maken van een en implementeren.
+- U hebt een AKS-cluster nodig. Voor informatie over hoe u een maakt en implementeert, raadpleegt [u hoe u implementeert en waar](how-to-deploy-and-where.md).
 
-- [Stel uw omgeving in](how-to-configure-environment.md) en installeer de [Azure Machine Learning Monitoring SDK.](https://aka.ms/aml-monitoring-sdk)
+- [Stel uw omgeving](how-to-configure-environment.md) in en installeer de [Azure machine learning monitoring-SDK](https://aka.ms/aml-monitoring-sdk).
 
 ## <a name="enable-data-collection"></a>Gegevensverzameling inschakelen
 
-U gegevensverzameling inschakelen, ongeacht het model dat u implementeert via Azure Machine Learning of andere hulpprogramma's.
+U kunt gegevens verzameling inschakelen, ongeacht het model dat u via Azure Machine Learning of andere hulpprogram ma's implementeert.
 
-Als u het verzamelen van gegevens wilt inschakelen, moet u:
+Als u gegevens verzameling wilt inschakelen, moet u het volgende doen:
 
-1. Open het scorebestand.
+1. Open het Score bestand.
 
-1. Voeg de [volgende code](https://aka.ms/aml-monitoring-sdk) boven aan het bestand toe:
+1. Voeg de [volgende code](https://aka.ms/aml-monitoring-sdk) toe boven aan het bestand:
 
    ```python 
    from azureml.monitoring import ModelDataCollector
    ```
 
-1. Declareer uw variabelen voor `init` het verzamelen van gegevens in uw functie:
+1. Declareer de variabelen voor het verzamelen `init` van gegevens in uw functie:
 
     ```python
     global inputs_dc, prediction_dc
@@ -92,11 +92,11 @@ Als u het verzamelen van gegevens wilt inschakelen, moet u:
     prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
-    *CorrelationId* is een optionele parameter. U hoeft het niet te gebruiken als uw model het niet nodig heeft. Gebruik van *CorrelationId* helpt u gemakkelijker in kaart te brengen met andere gegevens, zoals *LoanNumber* of *CustomerId.*
+    *CorrelationId* is een optionele para meter. U hoeft deze niet te gebruiken als uw model dit niet nodig heeft. Het gebruik van *CorrelationId* helpt u gemakkelijker te koppelen met andere gegevens, zoals *LoanNumber* of *CustomerId*.
     
-    De parameter *Identifier* wordt later gebruikt voor het bouwen van de mapstructuur in uw blob. U het gebruiken om ruwe gegevens te onderscheiden van verwerkte gegevens.
+    De *id* -para meter wordt later gebruikt voor het maken van de mapstructuur in uw blob. U kunt deze gebruiken om onbewerkte gegevens te onderscheiden van verwerkte gegevens.
 
-1. Voeg de volgende regels `run(input_df)` code toe aan de functie:
+1. Voeg de volgende regels code toe aan de `run(input_df)` functie:
 
     ```python
     data = np.array(data)
@@ -105,131 +105,131 @@ Als u het verzamelen van gegevens wilt inschakelen, moet u:
     prediction_dc.collect(result) #this call is saving our input data into Azure Blob
     ```
 
-1. Het verzamelen van gegevens wordt *niet* automatisch ingesteld op **true** wanneer u een service implementeert in AKS. Werk uw configuratiebestand bij, zoals in het volgende voorbeeld:
+1. Het verzamelen van gegevens wordt *niet* automatisch ingesteld op **True** wanneer u een service in AKS implementeert. Werk uw configuratie bestand bij, zoals in het volgende voor beeld:
 
     ```python
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True)
     ```
 
-    U Application Insights ook inschakelen voor servicebewaking door deze configuratie te wijzigen:
+    U kunt ook Application Insights voor service bewaking inschakelen door deze configuratie te wijzigen:
 
     ```python
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True, enable_app_insights=True)
     ```
 
-1. Zie Hoe u een nieuwe afbeelding wilt implementeren en waar u een nieuwe afbeelding wilt maken en het machine learning-model wilt [implementeren.](how-to-deploy-and-where.md)
+1. Zie [implementeren en waar](how-to-deploy-and-where.md)als u een nieuwe installatie kopie wilt maken en het machine learning model wilt implementeren.
 
-Als u al een service hebt met de afhankelijkheden die zijn geïnstalleerd in uw omgevingsbestand en het scorebestand, schakelt u het verzamelen van gegevens in door de volgende stappen te volgen:
+Als u al een service hebt met de afhankelijkheden die zijn geïnstalleerd in uw omgevings bestand en Score bestand, schakelt u het verzamelen van gegevens in door de volgende stappen uit te voeren:
 
-1. Ga naar [Azure Machine Learning](https://ml.azure.com).
+1. Ga naar [Azure machine learning](https://ml.azure.com).
 
-1. Open uw werkruimte.
+1. Open uw werk ruimte.
 
-1. Selecteer **Implementaties** > **Selecteer service** > **Bewerken**.
+1. Selecteer **implementaties** > **selecteren service** > **bewerken**.
 
    ![De service bewerken](././media/how-to-enable-data-collection/EditService.PNG)
 
-1. Selecteer in **Geavanceerde instellingen**de optie **Application Insights-diagnostiek en gegevensverzameling inschakelen.**
+1. Selecteer in **Geavanceerde instellingen**de optie **Application Insights diagnose en gegevens verzameling inschakelen**.
 
-1. Selecteer **Bijwerken** om de wijzigingen toe te passen.
+1. Selecteer **bijwerken** om de wijzigingen toe te passen.
 
 ## <a name="disable-data-collection"></a>Gegevens verzamelen uitschakelen
 
-U op elk gewenst moment stoppen met het verzamelen van gegevens. Gebruik Python-code of Azure Machine Learning om het verzamelen van gegevens uit te schakelen.
+U kunt het verzamelen van gegevens op elk gewenst moment stoppen. Gebruik python-code of Azure Machine Learning om het verzamelen van gegevens uit te scha kelen.
 
-### <a name="option-1---disable-data-collection-in-azure-machine-learning"></a>Optie 1 - Gegevensverzameling uitschakelen in Azure Machine Learning
+### <a name="option-1---disable-data-collection-in-azure-machine-learning"></a>Optie 1: het verzamelen van gegevens in Azure Machine Learning uitschakelen
 
-1. Meld u aan bij [Azure Machine Learning](https://ml.azure.com).
+1. Meld u aan bij [Azure machine learning](https://ml.azure.com).
 
-1. Open uw werkruimte.
+1. Open uw werk ruimte.
 
-1. Selecteer **Implementaties** > **Selecteer service** > **Bewerken**.
+1. Selecteer **implementaties** > **selecteren service** > **bewerken**.
 
-   [![De optie Bewerken selecteren](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
+   [![Selecteer de optie bewerken](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
-1. In **Geavanceerde instellingen**u de diagnose en **gegevensverzameling van Application Insights inschakelen.**
+1. Schakel in **Geavanceerde instellingen** **Application Insights diagnose en gegevens verzameling inschakelen**uit.
 
-1. Selecteer **Bijwerken** om de wijziging toe te passen.
+1. Selecteer **bijwerken** om de wijziging toe te passen.
 
-U hebt ook toegang tot deze instellingen in uw werkruimte in [Azure Machine Learning.](https://ml.azure.com)
+U kunt deze instellingen ook openen in uw werk ruimte in [Azure machine learning](https://ml.azure.com).
 
-### <a name="option-2---use-python-to-disable-data-collection"></a>Optie 2 - Python gebruiken om gegevensverzameling uit te schakelen
+### <a name="option-2---use-python-to-disable-data-collection"></a>Optie 2: gebruik python om het verzamelen van gegevens uit te scha kelen
 
   ```python 
   ## replace <service_name> with the name of the web service
   <service_name>.update(collect_model_data=False)
   ```
 
-## <a name="validate-and-analyze-your-data"></a>Uw gegevens valideren en analyseren
+## <a name="validate-and-analyze-your-data"></a>Valideer en analyseer uw gegevens
 
-U een hulpmiddel kiezen met uw voorkeur om de gegevens te analyseren die zijn verzameld in uw Blob-opslag.
+U kunt een hulp programma kiezen van uw voor keur voor het analyseren van de gegevens die in uw Blob-opslag zijn verzameld.
 
-### <a name="quickly-access-your-blob-data"></a>Snel toegang tot uw blobgegevens
+### <a name="quickly-access-your-blob-data"></a>Snel toegang krijgen tot uw BLOB-gegevens
 
-1. Meld u aan bij [Azure Machine Learning](https://ml.azure.com).
+1. Meld u aan bij [Azure machine learning](https://ml.azure.com).
 
-1. Open uw werkruimte.
+1. Open uw werk ruimte.
 
 1. Selecteer **Opslag**.
 
-    [![De optie Opslag selecteren](./media/how-to-enable-data-collection/StorageLocation.png)](././media/how-to-enable-data-collection/StorageLocation.png#lightbox)
+    [![Selecteer de optie voor opslag](./media/how-to-enable-data-collection/StorageLocation.png)](././media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
-1. Volg het pad naar de uitvoergegevens van de blob met deze syntaxis:
+1. Volg het pad naar de uitvoer gegevens van de blob met de volgende syntaxis:
 
    ```
    /modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
    # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
    ```
 
-### <a name="analyze-model-data-using-power-bi"></a>Modelgegevens analyseren met Power BI
+### <a name="analyze-model-data-using-power-bi"></a>Model gegevens analyseren met behulp van Power BI
 
-1. Power [BI-bureaublad](https://www.powerbi.com)downloaden en openen .
+1. Down load en open [Power bi Desktop](https://www.powerbi.com).
 
-1. Selecteer **Gegevens opvragen** en selecteer [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
+1. Selecteer **gegevens ophalen** en selecteer [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
 
-    [![Power BI-blob-instelling](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
+    [![Setup van Power BI BLOB](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
-1. Voeg de naam van uw opslagaccount toe en voer uw opslagsleutel in. U deze informatie vinden door **Instellingen** > **Toegangstoetsen** in uw blob te selecteren.
+1. Voeg de naam van uw opslag account toe en voer uw opslag sleutel in. U kunt deze informatie vinden door **instellingen** > **toegangs sleutels** in uw BLOB te selecteren.
 
-1. Selecteer de **modelgegevenscontainer** en selecteer **Bewerken**.
+1. Selecteer de container **model gegevens** en selecteer **bewerken**.
 
     [![Power BI Navigator](./media/how-to-enable-data-collection/pbiNavigator.png)](././media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
-1. Klik in de queryeditor onder de kolom **Naam** en voeg uw opslagaccount toe.
+1. Klik in de query-editor op onder de kolom **naam** en voeg uw opslag account toe.
 
-1. Voer uw modelpad in het filter in. Als u alleen bestanden van een bepaald jaar of maand wilt bekijken, vouwt u het filterpad uit. Als u bijvoorbeeld alleen naar gegevens van maart wilt kijken, gebruikt u dit filterpad:
+1. Voer het pad naar het model in het filter in. Als u alleen wilt zoeken naar bestanden van een bepaald jaar of per maand, vouwt u het pad naar het filter uit. Als u bijvoorbeeld alleen in maart gegevens wilt bekijken, gebruikt u dit pad naar het filter:
 
-   /modeldata/\<subscriptionid\<\<>/ resourcegroupname>/\<workspacename>/ webservicename\<>/ modelname>/\<modelversion>/\<designation>/year\<>/3
+   /modeldata/\<subscriptionid>/\<resourcegroupname>/\<werkruimte>/\<webservicenaam\<>/modelnaam>/\<modelversion>/\<aanwijzing>/\<jaar>/3
 
-1. Filter de gegevens die voor u relevant zijn op basis **van naamwaarden.** Als u voorspellingen en invoer hebt opgeslagen, moet u voor elk query een query maken.
+1. Filter de gegevens die relevant zijn voor u op basis van **naam** waarden. Als u voor spellingen en invoer hebt opgeslagen, moet u een query maken voor elke.
 
-1. Selecteer de neerwaartse dubbele pijlen naast de kolomkop **Inhoud** om de bestanden te combineren.
+1. Selecteer de dubbele pijl-omlaag **naast de kolomkop om de bestanden** te combi neren.
 
-    [![Power BI-inhoud](./media/how-to-enable-data-collection/pbiContent.png)](././media/how-to-enable-data-collection/pbiContent.png#lightbox)
+    [![Power BI inhoud](./media/how-to-enable-data-collection/pbiContent.png)](././media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
-1. Selecteer **OK**. De gegevens preloads.
+1. Selecteer **OK**. De gegevens worden geladen.
 
-    [![Power BI-combinatiebestanden](./media/how-to-enable-data-collection/pbiCombine.png)](././media/how-to-enable-data-collection/pbiCombine.png#lightbox)
+    [![Power BI bestanden combi neren](./media/how-to-enable-data-collection/pbiCombine.png)](././media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
-1. Selecteer **Sluiten en toepassen**.
+1. Selecteer **sluiten en Toep assen**.
 
-1. Als u invoer en voorspellingen hebt toegevoegd, worden uw tabellen automatisch geordend op **RequestId-waarden.**
+1. Als u invoer en voor spellingen hebt toegevoegd, worden uw tabellen automatisch gerangschikt op basis van **aanvraag** -waarden.
 
-1. Begin met het bouwen van uw aangepaste rapporten op uw modelgegevens.
+1. Begin met het bouwen van uw aangepaste rapporten in uw model gegevens.
 
-### <a name="analyze-model-data-using-azure-databricks"></a>Modelgegevens analyseren met Azure Databricks
+### <a name="analyze-model-data-using-azure-databricks"></a>Model gegevens analyseren met behulp van Azure Databricks
 
-1. Maak een [Azure Databricks-werkruimte](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
+1. Maak een [Azure Databricks-werk ruimte](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
 
-1. Ga naar uw Databricks-werkruimte.
+1. Ga naar uw Databricks-werk ruimte.
 
-1. Selecteer **Gegevens uploaden**in uw werkruimte Databricks .
+1. Selecteer **gegevens uploaden**in uw Databricks-werk ruimte.
 
-    [![De optie Gegevensstenen uploaden selecteren](./media/how-to-enable-data-collection/dbupload.png)](././media/how-to-enable-data-collection/dbupload.png#lightbox)
+    [![De optie Databricks-gegevens uploaden selecteren](./media/how-to-enable-data-collection/dbupload.png)](././media/how-to-enable-data-collection/dbupload.png#lightbox)
 
-1. Selecteer **Nieuwe tabel maken** en selecteer Andere **gegevensbronnen** > **azure blob-opslagtabel** > **maken in notitieblok**.
+1. Selecteer **nieuwe tabel maken** en selecteer **andere gegevens bronnen** > **Azure Blob Storage** > **tabel maken in notitie blok**.
 
-    [![Databricks tabel creatie](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
+    [![Databricks-tabel maken](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 
 1. Werk de locatie van uw gegevens bij. Hier volgt een voorbeeld:
 
@@ -240,4 +240,4 @@ U een hulpmiddel kiezen met uw voorkeur om de gegevens te analyseren die zijn ve
 
     [![Databricks-installatie](./media/how-to-enable-data-collection/dbsetup.png)](././media/how-to-enable-data-collection/dbsetup.png#lightbox)
 
-1. Volg de stappen op de sjabloon om uw gegevens weer te geven en te analyseren.
+1. Volg de stappen in de sjabloon om uw gegevens weer te geven en te analyseren.

@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services-inhoud publiceren met .NET | Microsoft Documenten
-description: Meer informatie over het maken van een locator die wordt gebruikt om een streaming-URL op te bouwen. Codevoorbeelden zijn geschreven in C# en gebruiken de Media Services SDK voor .NET.
+title: Azure Media Services inhoud publiceren met .NET | Microsoft Docs
+description: Meer informatie over het maken van een Locator die wordt gebruikt voor het bouwen van een streaming-URL. Code voorbeelden zijn geschreven in C# en gebruiken de Media Services SDK voor .NET.
 author: juliako
 manager: femila
 editor: ''
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 615a6afb0f7a3e133603db10e7c79add3322070c
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80476707"
 ---
-# <a name="publish-media-services-content-using-net"></a>Inhoud van Media Services publiceren met .NET  
+# <a name="publish-media-services-content-using-net"></a>Media Services inhoud publiceren met .NET  
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-deliver-streaming-content.md)
 > * [.NET](media-services-deliver-streaming-content.md)
@@ -30,33 +30,33 @@ ms.locfileid: "80476707"
 > 
 
 ## <a name="overview"></a>Overzicht
-U een adaptieve bitrate MP4-set streamen door een OnDemand-streaminglocator te maken en een streaming-URL te bouwen. Het [coderingsonderwerp van een asset](media-services-encode-asset.md) laat zien hoe u coderen in een adaptieve bitrate MP4-set. 
+U kunt een adaptieve bitsnelheid-MP4 streamen die is ingesteld door een OnDemand streaming-Locator te maken en een streaming-URL te bouwen. De [code ring van een Asset](media-services-encode-asset.md) -onderwerp laat zien hoe u kunt coderen in een adaptieve bitsnelheid MP4-set. 
 
 > [!NOTE]
-> Als uw inhoud is versleuteld, configureert u het beleid voor het leveren van activa (zoals beschreven in [dit](media-services-dotnet-configure-asset-delivery-policy.md) onderwerp) voordat u een locator maakt. 
+> Als uw inhoud is versleuteld, moet u het beleid voor de levering van assets configureren (zoals beschreven in [Dit](media-services-dotnet-configure-asset-delivery-policy.md) onderwerp) voordat u een Locator maakt. 
 > 
 > 
 
-U ook een OnDemand-streaminglocator gebruiken om URL's te bouwen die wijzen op MP4-bestanden die geleidelijk kunnen worden gedownload.  
+U kunt ook een OnDemand streaming-Locator gebruiken om Url's te bouwen die verwijzen naar MP4-bestanden die progressief kunnen worden gedownload.  
 
-In dit onderwerp ziet u hoe u een OnDemand-streaminglocator maakt om uw asset te publiceren en een streaming-URL's voor vloeiend, MPEG-streepje en HLS te bouwen. Het toont ook warm om progressieve download URL's te bouwen. 
+In dit onderwerp wordt beschreven hoe u een OnDemand streaming-Locator maakt om uw asset te publiceren en een vloeiende, MPEG-DASH en HLS streaming-Url's te bouwen. Ook wordt weer gegeven hoe u progressieve down load-Url's kunt bouwen. 
 
-## <a name="create-an-ondemand-streaming-locator"></a>Een OnDemand streaming locator maken
-Als u de OnDemand-streaminglocator wilt maken en URL's wilt krijgen, moet u de volgende dingen doen:
+## <a name="create-an-ondemand-streaming-locator"></a>Een OnDemand streaming-Locator maken
+Als u de OnDemand streaming-Locator wilt maken en Url's wilt ophalen, moet u de volgende handelingen uitvoeren:
 
-1. Als de inhoud is versleuteld, definieert u een toegangsbeleid.
-2. Maak een OnDemand streaming locator.
-3. Als u van plan bent te streamen, krijgt u het streaming manifestbestand (.ism) in het item. 
+1. Als de inhoud is versleuteld, definieert u een toegangs beleid.
+2. Maak een OnDemand streaming-Locator.
+3. Als u van plan bent om te streamen, haalt u het streaming-manifest bestand (. ISM) op in de Asset. 
    
-   Als u van plan bent om geleidelijk te downloaden, krijgt u de namen van MP4-bestanden in het item.  
-4. Maak URL's voor het manifestbestand of MP4-bestanden. 
+   Als u van plan bent om geleidelijk te downloaden, kunt u de namen van MP4-bestanden in de Asset ophalen.  
+4. Bouw Url's naar het manifest bestand of de MP4-bestanden. 
 
 
 >[!NOTE]
->Er geldt een limiet van 1.000.000 beleidsregels voor verschillende AMS-beleidsitems (bijvoorbeeld voor Locator-beleid of ContentKeyAuthorizationPolicy). Gebruik dezelfde beleids-ID als u altijd dezelfde dagen / toegangsmachtigingen gebruikt. Bijvoorbeeld beleid voor locators die bedoeld zijn om lang te blijven bestaan (niet-uploadbeleid). Raadpleeg [dit](media-services-dotnet-manage-entities.md#limit-access-policies) onderwerp voor meer informatie.
+>Er geldt een limiet van 1.000.000 beleidsregels voor verschillende AMS-beleidsitems (bijvoorbeeld voor Locator-beleid of ContentKeyAuthorizationPolicy). Gebruik dezelfde beleids-ID als u altijd dezelfde dagen/toegangs machtigingen gebruikt. Bijvoorbeeld beleids regels voor Locators die zijn bedoeld om gedurende een lange periode te blijven (niet-upload beleid). Raadpleeg [dit](media-services-dotnet-manage-entities.md#limit-access-policies) onderwerp voor meer informatie.
 
 ### <a name="use-media-services-net-sdk"></a>Media Services .NET SDK gebruiken
-Url's voor streaming maken 
+Streaming-Url's bouwen 
 
 ```csharp
     private static void BuildStreamingURLs(IAsset asset)
@@ -97,7 +97,7 @@ Url's voor streaming maken
     }
 ```
 
-De uitgangen:
+De uitvoer:
 
     URL to manifest for client streaming using Smooth Streaming protocol:
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
@@ -108,11 +108,11 @@ De uitgangen:
 
 
 > [!NOTE]
-> U uw inhoud ook streamen via een TLS-verbinding. Als u deze aanpak wilt doen, moet u ervoor zorgen dat uw streaming-URL's beginnen met HTTPS. Op dit moment ondersteunt AMS TLS niet met aangepaste domeinen.
+> U kunt ook uw inhoud streamen via een TLS-verbinding. Als u deze aanpak wilt uitvoeren, moet u ervoor zorgen dat uw streaming-Url's beginnen met HTTPS. AMS biedt momenteel geen ondersteuning voor TLS met aangepaste domeinen.
 > 
 > 
 
-Progressieve download-URL's maken 
+Url's voor progressieve down loads maken 
 
 ```csharp
     private static void BuildProgressiveDownloadURLs(IAsset asset)
@@ -143,7 +143,7 @@ Progressieve download-URL's maken
             Console.WriteLine(originLocator.Path + pd.Name);
     }
 ```
-De uitgangen:
+De uitvoer:
 
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_400kbps_AAC_und_ch2_96kbps.mp4
@@ -153,7 +153,7 @@ De uitgangen:
     . . . 
 
 ### <a name="use-media-services-net-sdk-extensions"></a>Media Services .NET SDK-extensies gebruiken
-De volgende codeaanroepen .NET SDK-extensiesmethoden die een locator maken en de ID's voor vloeiend streamen, HLS en MPEG-DASH genereren voor adaptieve streaming.
+Met de volgende code worden .NET SDK-extensie methoden aangeroepen waarmee een Locator wordt gemaakt en de Smooth Streaming, HLS en MPEG-DASH-Url's voor adaptieve streaming worden gegenereerd.
 ```csharp
     // Create a loctor.
     _context.Locators.Create(
@@ -180,5 +180,5 @@ De volgende codeaanroepen .NET SDK-extensiesmethoden die een locator maken en de
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Assets downloaden](media-services-deliver-asset-download.md)
-* [Beleid voor het leveren van activa configureren](media-services-dotnet-configure-asset-delivery-policy.md)
+* [Leverings beleid voor assets configureren](media-services-dotnet-configure-asset-delivery-policy.md)
 

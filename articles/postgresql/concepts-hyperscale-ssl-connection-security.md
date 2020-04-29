@@ -1,41 +1,41 @@
 ---
-title: TLS - Hyperscale (Citus) - Azure Database voor PostgreSQL
-description: Instructies en informatie om Azure Database te configureren voor PostgreSQL - Hyperscale (Citus) en bijbehorende toepassingen om TLS-verbindingen correct te gebruiken.
+title: TLS-grootschalige (Citus)-Azure Database for PostgreSQL
+description: Instructies en informatie voor het configureren van Azure Database for PostgreSQL-grootschalige (Citus) en bijbehorende toepassingen voor het goed gebruiken van TLS-verbindingen.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 8a691b6d3f28800ab1cb38a72f124e950d485084
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422338"
 ---
-# <a name="configure-tls-in-azure-database-for-postgresql---hyperscale-citus"></a>TLS configureren in Azure Database voor PostgreSQL - Hyperscale (Citus)
-Clienttoepassingsverbindingen met het knooppunt hyperscale (Citus) vereisen Tls (Transport Layer Security), voorheen bekend als Secure Sockets Layer (SSL). Het afdwingen van TLS-verbindingen tussen uw databaseserver en uw clienttoepassingen helpt te beschermen tegen "man-in-the-middle"-aanvallen door de gegevensstroom tussen de server en uw toepassing te versleutelen.
+# <a name="configure-tls-in-azure-database-for-postgresql---hyperscale-citus"></a>TLS configureren in Azure Database for PostgreSQL-grootschalige (Citus)
+Client toepassings verbindingen met het grootschalige (Citus)-coördinator knooppunt vereisen Transport Layer Security (TLS), voorheen bekend als Secure Sockets Layer (SSL). Het afdwingen van TLS-verbindingen tussen uw database server en uw client toepassingen helpt bij het beveiligen van ' man-in-the-middle '-aanvallen door de gegevens stroom tussen de server en uw toepassing te versleutelen.
 
 ## <a name="enforcing-tls-connections"></a>TLS-verbindingen afdwingen
-Voor alle Azure Database voor PostgreSQL-servers die via de Azure-portal zijn ingericht, is handhaving van TLS-verbindingen standaard ingeschakeld. 
+Voor alle Azure Database for PostgreSQL servers die via de Azure Portal worden ingericht, wordt het afdwingen van TLS-verbindingen standaard ingeschakeld. 
 
-Ook verbindingstekenreeksen die vooraf zijn gedefinieerd in de instellingen voor verbindingstekenreeksen onder uw server in de Azure-portal, bevatten de vereiste parameters voor algemene talen om verbinding te maken met uw databaseserver via TLS. De TLS-parameter varieert op basis van de connector, bijvoorbeeld 'ssl=true' of 'sslmode=require' of 'sslmode=required' en andere varianten.
+De verbindings reeksen die vooraf zijn gedefinieerd in de instellingen voor verbindings reeksen onder uw server in de Azure Portal bevatten ook de vereiste para meters voor algemene talen om verbinding te maken met uw database server met behulp van TLS. De TLS-para meter varieert op basis van de connector, bijvoorbeeld "SSL = True" of "sslmode = vereist" of "sslmode = required" en andere variaties.
 
-## <a name="ensure-your-application-or-framework-supports-tls-connections"></a>Ervoor zorgen dat uw toepassing of framework TLS-verbindingen ondersteunt
-Sommige toepassingsframeworks die PostgreSQL gebruiken voor hun databaseservices, schakelen TLS tijdens de installatie niet standaard in. Als uw PostgreSQL-server TLS-verbindingen afdwingt, maar de toepassing niet is geconfigureerd voor TLS, kan het zijn dat de toepassing geen verbinding maakt met uw databaseserver. Raadpleeg de documentatie van uw toepassing voor meer informatie over het inschakelen van TLS-verbindingen.
+## <a name="ensure-your-application-or-framework-supports-tls-connections"></a>Zorg ervoor dat uw toepassing of Framework TLS-verbindingen ondersteunt
+Voor sommige toepassings raamwerken die gebruikmaken van PostgreSQL voor hun database services, wordt TLS niet standaard ingeschakeld tijdens de installatie. Als uw PostgreSQL-server TLS-verbindingen afdwingt, maar de toepassing niet is geconfigureerd voor TLS, kan de toepassing geen verbinding maken met de database server. Raadpleeg de documentatie van uw toepassing voor informatie over het inschakelen van TLS-verbindingen.
 
-## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>Toepassingen waarvoor certificaatverificatie voor TLS-connectiviteit vereist is
-In sommige gevallen vereisen toepassingen een lokaal certificaatbestand dat is gegenereerd uit een bestand van een vertrouwde Certificaatautoriteit (CA) om veilig verbinding te maken. Het certificaat om verbinding te maken met een Azure Database voor PostgreSQL - Hyperscale (Citus) bevindt zich op https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem. Download het certificaatbestand en sla het op op de gewenste locatie.
+## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>Toepassingen waarvoor certificaat verificatie voor TLS-connectiviteit is vereist
+In sommige gevallen vereist toepassingen een lokaal certificaat bestand dat is gegenereerd op basis van een certificaat bestand van een vertrouwde certificerings instantie (. CER) om veilig verbinding te kunnen maken. Het certificaat om verbinding te maken met een Azure Database for PostgreSQL-grootschalige (Citus) bevindt zich op https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem. Down load het certificaat bestand en sla het op naar uw voorkeurs locatie.
 
 ### <a name="connect-using-psql"></a>Verbinding maken met psql
-In het volgende voorbeeld ziet u hoe u verbinding maken met uw knooppunt voor Hyperscale-coördinator (Citus) met behulp van het psql-opdrachtregelhulpprogramma. Gebruik `sslmode=verify-full` de instelling voor verbindingstekenreeksen om tls-certificaatverificatie af te dwingen. Geef het lokale certificaatbestandspad door aan de `sslrootcert` parameter.
+In het volgende voor beeld ziet u hoe u verbinding maakt met uw grootschalige (Citus)-coördinator knooppunt met behulp van het psql-opdracht regel programma. Gebruik de `sslmode=verify-full` instelling Connection String om TLS-certificaat verificatie af te dwingen. Geef het pad van het lokale certificaat bestand `sslrootcert` door aan de para meter.
 
-Hieronder vindt u een voorbeeld van de psql-verbindingstekenreeks:
+Hieronder ziet u een voor beeld van de psql-connection string:
 ```
 psql "sslmode=verify-full sslrootcert=DigiCertGlobalRootCA.crt.pem host=mydemoserver.postgres.database.azure.com dbname=citus user=citus password=your_pass"
 ```
 > [!TIP]
-> Controleer of de `sslrootcert` waarde die is doorgegeven aan het bestandspad overeenkomt met het certificaat dat u hebt opgeslagen.
+> Controleer of de waarde die is `sslrootcert` door gegeven, overeenkomt met het bestandspad voor het certificaat dat u hebt opgeslagen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Verhoog de beveiliging verder met [Firewall-regels in Azure Database voor PostgreSQL - Hyperscale (Citus).](concepts-hyperscale-firewall-rules.md)
+Verbeter de beveiliging verder met de [firewall regels in azure database for PostgreSQL-grootschalige (Citus)](concepts-hyperscale-firewall-rules.md).

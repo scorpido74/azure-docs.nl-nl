@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
 ms.openlocfilehash: 987cdd76ba533fa0ae4b37c2755fe84a00d14de5
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80435852"
 ---
 # <a name="azure-security-center-data-security"></a>Gegevensbeveiliging in Azure Security Center
@@ -49,9 +49,9 @@ Azure Security Center analyseert gegevens uit de volgende bronnen om inzicht in 
 |-------------------------------------|---------------|
 | Verenigde Staten, Brazilië, Zuid-Afrika | Verenigde Staten |
 | Canada                              | Canada        |
-| Europa (exclusief Verenigd Koninkrijk)   | Europa        |
+| Europa (exclusief Verenigd Konink rijk)   | Europa        |
 | Verenigd Koninkrijk                      | Verenigd Koninkrijk |
-| Azië (met uitzondering van India, Japan, Korea, China)   | Azië en Stille Oceaan  |
+| Azië (exclusief India, Japan, Korea, China)   | Azië en Stille Oceaan  |
 | Korea                              | Azië en Stille Oceaan  |
 | India                               | India         |
 | Japan                               | Japan         |
@@ -71,8 +71,8 @@ Machine-artefacten worden centraal opgeslagen in dezelfde regio als de virtuele 
 
 ## <a name="managing-data-collection-from-virtual-machines"></a>Gegevensverzameling van virtuele machines beheren
 
-Wanneer u Security Center inschakelt in Azure, wordt gegevensverzameling ingeschakeld voor elk van uw Azure-abonnementen. U kunt gegevensverzameling voor uw abonnementen ook inschakelen in het gedeelte Beveiligingsbeleid van Azure Security Center. Wanneer gegevensverzameling is ingeschakeld, voorziet Azure Security Center de loganalytics-agent op alle bestaande ondersteunde virtuele Azure-machines en alle nieuwe machines die worden gemaakt.
-De Log Analytics-agent scant op verschillende beveiligingsgerelateerde configuraties en gebeurtenissen in [Event Tracing for Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW)-traces. Bovendien worden door het besturingssysteem gebeurtenislogboekgebeurtenissen gegenereerd tijdens het uitvoeren van de machine. Voorbeelden van dergelijke gegevens zijn: besturingssysteemtype en -versie, besturingssysteemlogboeken (Windows-gebeurtenislogboeken), actieve processen, computernaam, IP-adressen, aangemelde gebruiker en tenant-ID. De log-analyse-agent leest gebeurtenislogboekvermeldingen en ETW-traces en kopieert deze naar uw werkruimte(s) voor analyse. De agent Log Analytics kopieert ook crashdumpbestanden naar uw werkruimte(s), schakelt procescreatiegebeurtenissen in en schakel opdrachtregelcontrole in.
+Wanneer u Security Center inschakelt in Azure, wordt gegevensverzameling ingeschakeld voor elk van uw Azure-abonnementen. U kunt gegevensverzameling voor uw abonnementen ook inschakelen in het gedeelte Beveiligingsbeleid van Azure Security Center. Wanneer het verzamelen van gegevens is ingeschakeld, wordt de Log Analytics agent door Azure Security Center ingericht op alle bestaande virtuele machines van Azure en nieuwe die worden gemaakt.
+De Log Analytics-agent scant op verschillende aan beveiliging gerelateerde configuraties en legt deze vast in [Event Tracing for Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) -traceringen (etw). Bovendien worden door het besturingssysteem gebeurtenislogboekgebeurtenissen gegenereerd tijdens het uitvoeren van de machine. Voorbeelden van dergelijke gegevens zijn: besturingssysteemtype en -versie, besturingssysteemlogboeken (Windows-gebeurtenislogboeken), actieve processen, computernaam, IP-adressen, aangemelde gebruiker en tenant-ID. De Log Analytics-agent leest vermeldingen in gebeurtenis logboeken en ETW-traceringen en kopieert deze naar uw werk ruimte (n) voor analyse. De Log Analytics-agent kopieert ook crash dump bestanden naar uw werk ruimte (n), schakelt gebeurtenissen voor het maken van processen en controle van de opdracht regel in.
 
 Als u de gratis variant van Azure Security Center gebruikt, kunt u het verzamelen van gegevens van virtuele machines ook uitschakelen in het beveiligingsbeleid. Het verzamelen van gegevens is vereist voor abonnementen uit de prijscategorie Standard. De verzameling van momentopnamen en artefacten voor de VM-schijf is nog steeds ingeschakeld, zelfs als het verzamelen van gegevens is uitgeschakeld.
 
@@ -80,8 +80,8 @@ Als u de gratis variant van Azure Security Center gebruikt, kunt u het verzamele
 
 Klanten kunnen gegevens die verband houden met Security Center gebruiken uit verschillende gegevensstromen, zoals hieronder weergegeven:
 
-* **Azure Activity:** alle beveiligingswaarschuwingen, goedgekeurde [Just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) aanvragen van het Beveiligingscentrum en alle waarschuwingen die worden gegenereerd door [adaptieve toepassingsbesturingselementen.](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
-* **Azure Monitor-logboeken:** alle beveiligingswaarschuwingen.
+* **Azure activity**: alle beveiligings waarschuwingen, goedgekeurd Security Center [just-in-time-](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) aanvragen en alle waarschuwingen die worden gegenereerd door [adaptieve toepassings besturings elementen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application).
+* **Azure monitor-logboeken**: alle beveiligings waarschuwingen.
 
 
 > [!NOTE]
@@ -90,8 +90,8 @@ Klanten kunnen gegevens die verband houden met Security Center gebruiken uit ver
 ## <a name="see-also"></a>Zie ook
 In dit document hebt u geleerd hoe gegevens worden beheerd en beveiligd in Azure Security Center. Zie de volgende onderwerpen voor meer informatie over Azure Security Center:
 
-* [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md) — Meer informatie over het plannen en begrijpen van de ontwerpoverwegingen om Azure Security Center te implementeren en te begrijpen.
-* [Bewaking van de beveiligingsstatus in Azure Security Center](security-center-monitoring.md) — Meer informatie over het bewaken van de status van uw Azure-resources
-* [Beveiligingswaarschuwingen beheren en beantwoorden in Azure Security Center](security-center-managing-and-responding-alerts.md) — Meer informatie over het beheren en reageren op beveiligingswaarschuwingen
+* [Azure Security Center plannings-en bedienings handleiding](security-center-planning-and-operations-guide.md) : informatie over het plannen en begrijpen van de ontwerp overwegingen bij het aannemen van Azure Security Center.
+* [Beveiligings status controleren in azure Security Center](security-center-monitoring.md) : informatie over het controleren van de status van uw Azure-resources
+* [Beveiligings waarschuwingen beheren en erop reageren in azure Security Center](security-center-managing-and-responding-alerts.md) : meer informatie over het beheren en reageren op beveiligings waarschuwingen
 * [Partneroplossingen bewaken met Azure Security Center](security-center-partner-solutions.md): leer hoe u de integriteitsstatus van uw partneroplossingen kunt bewaken.
-* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) — Blogberichten over Azure-beveiliging en -naleving zoeken
+* [Azure-beveiligings blog](https://blogs.msdn.com/b/azuresecurity/) : vind blog berichten over de beveiliging en naleving van Azure

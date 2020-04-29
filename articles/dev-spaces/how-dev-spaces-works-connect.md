@@ -1,57 +1,57 @@
 ---
-title: Hoe het aansluiten van uw ontwikkelcomputer op uw AKS-cluster werkt
+title: Hoe verbinding maken met uw ontwikkel computer met uw AKS-cluster werkt
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: Beschrijft de processen voor het gebruik van Azure Dev Spaces om uw ontwikkelcomputer te verbinden met uw Azure Kubernetes Service-cluster
-keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
+description: Hierin worden de processen beschreven die gebruikmaken van Azure dev Spaces om uw ontwikkel computer te verbinden met uw Azure Kubernetes service-cluster
+keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
 ms.openlocfilehash: a74a5a623006ccd64441023c2c4bc9ad3dcb517e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241710"
 ---
-# <a name="how-connecting-your-development-computer-to-your-aks-cluster-works"></a>Hoe het aansluiten van uw ontwikkelcomputer op uw AKS-cluster werkt
+# <a name="how-connecting-your-development-computer-to-your-aks-cluster-works"></a>Hoe verbinding maken met uw ontwikkel computer met uw AKS-cluster werkt
 
-Met Azure Dev Spaces u uw ontwikkelcomputer verbinden met uw AKS-cluster, zodat u code op uw ontwikkelcomputer uitvoeren en debuggen alsof deze op het cluster wordt uitgevoerd. Azure Dev Spaces leidt het verkeer tussen uw verbonden AKS-cluster om door een pod op uw cluster uit te voeren die fungeert als een externe agent om verkeer tussen uw ontwikkelingsmachine en het cluster om te leiden. Met deze verkeersomleiding kunnen code op uw ontwikkelingscomputer en services die in uw AKS-cluster worden uitgevoerd, communiceren alsof ze zich in hetzelfde AKS-cluster bevinden. Met deze verbinding u ook code uitvoeren en debuggen met of zonder een container op uw ontwikkelingscomputer. Door uw ontwikkelcomputer aan te sluiten op uw cluster u uw toepassing snel ontwikkelen en end-to-end testen uitvoeren.
+Met Azure dev Spaces kunt u uw ontwikkel computer verbinden met uw AKS-cluster, zodat u code op uw ontwikkel computer uitvoert, alsof deze op het cluster wordt uitgevoerd. Azure dev Spaces omleidt verkeer tussen uw verbonden AKS-cluster door een pod op uw cluster uit te voeren dat fungeert als een externe agent om verkeer tussen uw ontwikkel computer en het cluster om te leiden. Met deze omleidings functie voor verkeer kan code op uw ontwikkel computer en-services die worden uitgevoerd in uw AKS-cluster communiceren alsof ze zich in hetzelfde AKS-cluster bevonden. Met deze verbinding kunt u ook code uitvoeren en fouten opsporen met of zonder een container op uw ontwikkel computer. Het verbinden van uw ontwikkel computer met uw cluster helpt u snel uw toepassing te ontwikkelen en end-to-end tests uit te voeren.
 
 ## <a name="connecting-to-your-cluster"></a>Verbinding maken met uw cluster
 
-U maakt verbinding met uw bestaande AKS-cluster met [Behulp van Visual Studio Code][vs-code] met de Azure [Dev Spaces-extensie][azds-vs-code] die is geïnstalleerd op MacOS of Windows 10. Wanneer u een verbinding tot stand wilt brengen, u al het verkeer van en naar een nieuwe of bestaande pod in het cluster omleiden naar uw ontwikkelingscomputer.
+U maakt verbinding met uw bestaande AKS-cluster met behulp van [Visual Studio code][vs-code] en de [Azure dev Spaces][azds-vs-code] -extensie die wordt uitgevoerd op MacOS of Windows 10. Wanneer u een verbinding tot stand brengt, hebt u de mogelijkheid om al het verkeer van en naar een nieuwe of bestaande pod in het cluster om te leiden naar uw ontwikkel computer.
 
 > [!NOTE]
-> Wanneer u Visual Studio Code gebruikt om verbinding te maken met uw cluster, biedt de azure dev spaces-extensie u de mogelijkheid om een service om te leiden naar uw ontwikkelcomputer. Deze optie is een handige manier om een pod te identificeren voor omleiding. Alle omleiding tussen uw AKS-cluster en uw ontwikkelingscomputer is voor een pod.
+> Wanneer u Visual Studio code gebruikt om verbinding te maken met uw cluster, kunt u met de Azure dev Spaces-extensie een service omleiden naar uw ontwikkel computer. Deze optie is een handige manier om een pod voor omleiding te identificeren. Alle omleiding tussen uw AKS-cluster en uw ontwikkel computer is voor een pod.
 
-Als u verbinding maakt met uw cluster, hoeft u Azure Dev Spaces niet in uw cluster te hebben ingeschakeld. In plaats daarvan, wanneer de Azure Dev Spaces-extensie een verbinding met uw cluster tot leggen, gaat het als het gaat om:
+Voor het maken van een verbinding met uw cluster hoeft u geen Azure dev Spaces in te scha kelen in uw cluster. Wanneer de Azure dev Spaces-extensie een verbinding met uw cluster tot stand brengt, wordt het volgende gebruikt:
 
-* Hiermee vervangt u de container in de pod op het AKS-cluster door een externe agentcontainer die verkeer doorverwijst naar uw ontwikkelingscomputer. Wanneer azure Dev Spaces een nieuwe pod omleidt, maakt het een nieuwe pod in uw AKS-cluster met de externe agent.
-* Met [wordt kubectl port-forward uitgevoerd][kubectl-port-forward] op uw ontwikkelcomputer om verkeer van uw ontwikkelingscomputer door te sturen naar de externe agent die in uw cluster wordt uitgevoerd.
-* Verzamelt omgevingsinformatie van uw cluster met behulp van de externe agent. Deze informatie over de omgeving omvat omgevingsvariabelen, zichtbare services, volumemounts en geheime bevestigingen.
-* Hiermee stelt u de omgeving in de Visual Studio Code-terminal in, zodat de service op uw ontwikkelingscomputer toegang heeft tot dezelfde variabelen als wanneer deze op het cluster wordt uitgevoerd.  
-* Werkt uw hosts-bestand bij om services op uw AKS-cluster toe te stellen aan lokale IP-adressen op uw ontwikkelingscomputer. Met deze bestandsvermeldingen kunnen code die op uw ontwikkelingscomputer wordt uitgevoerd, aanvragen indienen bij andere services die in uw cluster worden uitgevoerd. Als u uw hosts-bestand wilt bijwerken, vraagt Azure Dev Spaces om beheerderstoegang op uw ontwikkelcomputer wanneer u verbinding maakt met uw cluster.
+* Vervangt de container in het pod op het AKS-cluster met een externe agent container die verkeer omleidt naar uw ontwikkel computer. Bij het omleiden van een nieuwe pod maakt Azure dev Spaces een nieuwe pod in uw AKS-cluster met de externe agent.
+* Voert [kubectl-poort-vooruit][kubectl-port-forward] uit op uw ontwikkel computer om verkeer door te sturen van uw ontwikkel computer naar de externe agent die in uw cluster wordt uitgevoerd.
+* Hiermee worden omgevings gegevens uit uw cluster verzameld met de externe agent. Deze omgevings informatie omvat omgevings variabelen, zicht bare Services, volume koppelingen en geheime koppels.
+* Hiermee stelt u de omgeving in de Visual Studio code-terminal in, zodat de service op uw ontwikkel computer toegang heeft tot dezelfde variabelen als wanneer deze op het cluster wordt uitgevoerd.  
+* Werkt uw hosts-bestand bij om services op uw AKS-cluster toe te wijzen aan lokale IP-adressen op de ontwikkel computer. Met deze hosts file entries kan code die wordt uitgevoerd op uw ontwikkel computer, aanvragen indienen bij andere services die in uw cluster worden uitgevoerd. Voor het bijwerken van uw hosts-bestand vraagt Azure dev Spaces om beheerders toegang op uw ontwikkel computer wanneer er verbinding wordt gemaakt met uw cluster.
 
-Als azure dev-ruimten in uw cluster zijn ingeschakeld, u ook de verkeersomleiding gebruiken [die wordt aangeboden door Azure Dev Spaces.][how-it-works-routing] Met de verkeersomleiding die azure dev spaces aanbiedt, u verbinding maken met een kopie van uw service die wordt uitgevoerd in een onderliggende dev-ruimte. Als u een onderliggende dev-ruimte gebruikt, u voorkomen dat anderen die in de bovenliggende dev-ruimte werken, worden verstoord, omdat u alleen het verkeer dat zich richt op het exemplaar van uw service voor de onderliggende ruimte omleidt, waardoor de instantie van de bovenliggende ruimte van de service ongewijzigd blijft.
+Als Azure dev Spaces wel zijn ingeschakeld op uw cluster, hebt u ook de mogelijkheid om de [omleiding van verkeer te gebruiken die wordt aangeboden door Azure dev Spaces][how-it-works-routing]. Met de omleiding van het verkeer dat wordt aangeboden door Azure dev Spaces, kunt u verbinding maken met een kopie van uw service die wordt uitgevoerd in een onderliggende ontwikkel ruimte. Door gebruik te maken van een onderliggende ontwikkel ruimte helpt u te voor komen dat anderen werken in de bovenliggende ontwikkel ruimte omdat u alleen het verkeer omleidt dat is gericht op het exemplaar van de onderliggende ruimte van uw service, waardoor het bovenliggende Space-exemplaar van de service niet meer kan worden gewijzigd.
 
-Zodra u verbinding maakt met uw cluster, wordt het verkeer doorgestuurd naar uw ontwikkelingscomputer, ongeacht of u uw service op uw ontwikkelingscomputer hebt uitgevoerd.
+Zodra u verbinding hebt gemaakt met uw cluster, wordt het verkeer doorgestuurd naar uw ontwikkel computer, ongeacht of u uw service op uw ontwikkel computer uitvoert.
 
-## <a name="running-code-on-your-development-computer"></a>Code uitvoeren op uw ontwikkelingscomputer
+## <a name="running-code-on-your-development-computer"></a>Code uitvoeren op uw ontwikkel computer
 
-Nadat u een verbinding met uw AKS-cluster hebt gemaakt, u elke code native op uw computer uitvoeren, zonder containerisatie. Elk netwerkverkeer dat de externe agent ontvangt, wordt doorgestuurd naar de lokale poort die tijdens de verbinding is opgegeven, zodat uw native running-code dat verkeer kan accepteren en verwerken. De omgevingsvariabelen, volumes en geheimen van uw cluster worden beschikbaar gesteld voor code die op uw ontwikkelingscomputer wordt uitgevoerd. Als gevolg van de bestandsvermeldingen en poortdoorsturen die door Azure Dev Spaces aan uw ontwikkelaarscomputer zijn toegevoegd, kan uw code netwerkverkeer verzenden naar services die op uw cluster worden uitgevoerd met behulp van de servicenamen van uw cluster en dat verkeer wordt doorgestuurd naar de services die in uw cluster worden uitgevoerd.
+Nadat u een verbinding met uw AKS-cluster tot stand hebt gebracht, kunt u wille keurige code uitvoeren op uw computer, zonder container opslag. Elk netwerk verkeer dat door de externe agent wordt ontvangen, wordt omgeleid naar de lokale poort die tijdens de verbinding is opgegeven, zodat uw systeem eigen code die verkeer kan accepteren en verwerken. De omgevings variabelen, volumes en geheimen van uw cluster worden beschikbaar gesteld aan code die wordt uitgevoerd op uw ontwikkel computer. Als gevolg van de hosts bestands vermeldingen en poort door sturen toegevoegd aan uw ontwikkelaars computer door Azure dev Spaces, kan uw code netwerk verkeer verzenden naar services die worden uitgevoerd op uw cluster met behulp van de service namen van het cluster en dat verkeer wordt doorgestuurd naar de services die in uw cluster worden uitgevoerd.
 
-Aangezien uw code wordt uitgevoerd op uw ontwikkelingscomputer, hebt u de flexibiliteit om elke tool die u normaal gebruikt voor de ontwikkeling te gebruiken om uw code uit te voeren en te debuggen. Het verkeer wordt de hele tijd dat u verbonden bent omgeleid tussen uw ontwikkelingscomputer en uw cluster. Met deze permanente verbinding u uw code zoveel mogelijk starten, stoppen en opnieuw starten zonder dat u een verbinding opnieuw hoeft te maken.
+Omdat uw code wordt uitgevoerd op uw ontwikkel computer, hebt u de flexibiliteit om een hulp programma te gebruiken dat u normaal gesp roken gebruikt voor ontwikkeling om uw code uit te voeren en fouten op te sporen. Verkeer wordt gerouteerd tussen uw ontwikkel computer en uw cluster op het hele moment dat u verbonden bent. Met deze permanente verbinding kunt u de code zo veel mogelijk starten, stoppen en opnieuw starten zonder dat u opnieuw een verbinding hoeft te maken.
 
-Bovendien biedt Azure Dev Spaces een manier om omgevingsvariabelen en gemonteerde bestanden die beschikbaar zijn voor pods in uw AKS-cluster in uw ontwikkelcomputer te repliceren via het *bestand azds-local.env.* U dit bestand ook gebruiken om nieuwe omgevingsvariabelen en volumemounts te maken.
+Daarnaast biedt Azure dev Spaces een manier om omgevings variabelen en gekoppelde bestanden te repliceren die beschikbaar zijn voor een Peul in uw AKS-cluster in uw ontwikkel computer via het bestand *azds-local. env* . U kunt dit bestand ook gebruiken om nieuwe omgevings variabelen en volume koppelingen te maken.
 
-## <a name="additional-configuration-with-azds-localenv"></a>Aanvullende configuratie met azds-local.env
+## <a name="additional-configuration-with-azds-localenv"></a>Aanvullende configuratie met azds-local. env
 
-Met *het azds-local.env-bestand* u omgevingsvariabelen en bevestigde bestanden repliceren die beschikbaar zijn voor uw pods in uw AKS-cluster. U de volgende acties opgeven in een *bestand azds-local.env:*
+Met het bestand *azds-local. env* kunt u omgevings variabelen en gekoppelde bestanden die beschikbaar zijn voor uw Peul, repliceren in uw AKS-cluster. U kunt de volgende acties opgeven in een *azds-local. env* -bestand:
 
-* Download een volume en stel het pad naar dat volume in als omgevingsvariabele.
-* Download een individueel bestand of een set bestanden van een volume en monteer het op uw ontwikkelingscomputer.
-* Maak een service beschikbaar, ongeacht het cluster met wie u bent verbonden.
+* Down load een volume en stel het pad naar dat volume in als een omgevings variabele.
+* Down load een afzonderlijk bestand of een set bestanden van een volume en koppel deze op uw ontwikkel computer.
+* Een service beschikbaar maken, ongeacht het cluster waarmee u bent verbonden.
 
-Hier is een voorbeeld *azds-local.env* bestand:
+Hier volgt een voor beeld van een *azds-local. env* -bestand:
 
 ```
 # This downloads the "whitelist" volume from the container,
@@ -82,15 +82,15 @@ MYAPP1_SERVICE_HOST=${services.myapp1}
 MYAPP2_SERVICE_HOST=${services.mynamespace.myapp2}
 ```
 
-Een standaard *bestand azds-local.env* wordt niet automatisch gemaakt, dus u moet het bestand handmatig maken aan de basis van uw project.
+Een standaard *azds-local. env* -bestand wordt niet automatisch gemaakt, dus u moet het bestand hand matig maken in de hoofdmap van het project.
 
 ## <a name="diagnostics-and-logging"></a>Diagnostische gegevens en logboekregistratie
 
-Wanneer u verbinding maakt met uw AKS-cluster, worden diagnostische logboeken van uw cluster aangemeld bij de tijdelijke map van uw [ontwikkelingscomputer.][azds-tmp-dir] Met Visual Studio Code u ook de opdracht *Diagnostische gegevens weergeven* gebruiken om de huidige omgevingsvariabelen en DNS-vermeldingen uit uw AKS-cluster af te drukken.
+Wanneer u bent verbonden met uw AKS-cluster, worden de diagnostische logboeken van uw cluster vastgelegd in de [tijdelijke map][azds-tmp-dir]van uw ontwikkel computer. Met Visual Studio code kunt u ook de opdracht *Diagnostische gegevens weer geven* gebruiken om de huidige omgevings variabelen en DNS-vermeldingen uit uw AKS-cluster af te drukken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Uw ontwikkelcomputer verbinden met een AKS-cluster om][connect]aan de slag te gaan met het aansluiten van uw lokale ontwikkelingscomputer op uw AKS-cluster.
+Zie [uw ontwikkel computer verbinden met een AKS-cluster][connect]om aan de slag te gaan met het verbinden van uw lokale ontwikkel computer met uw AKS-cluster.
 
 [azds-tmp-dir]: troubleshooting.md#before-you-begin
 [azds-vs-code]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds

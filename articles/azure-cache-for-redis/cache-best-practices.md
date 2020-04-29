@@ -1,90 +1,90 @@
 ---
 title: Aanbevolen procedures voor Azure Cache voor Redis
-description: Lees hoe u uw Azure-cache effectief gebruiken voor Redis door deze aanbevolen procedures te volgen.
+description: Meer informatie over het gebruik van uw Azure-cache voor redis door deze aanbevolen procedures te volgen.
 author: joncole
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
 ms.openlocfilehash: 105a3996753a1d1c2d71846cc8bad574e4498acf
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478605"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Aanbevolen procedures voor Azure Cache voor Redis 
-Door deze aanbevolen procedures te volgen, u helpen bij het maximaliseren van de prestaties en het kosteneffectieve gebruik van uw Azure-cache voor bijvoorbeeld Redis.
+Door deze aanbevolen procedures te volgen, kunt u de prestaties en het rendabele gebruik van uw Azure-cache voor redis-instantie maximaliseren.
 
 ## <a name="configuration-and-concepts"></a>Configuratie en concepten
- * **Gebruik standaard- of premiumlaag voor productiesystemen.**  De basislaag is een enkel knooppuntsysteem zonder gegevensreplicatie en zonder SLA. Gebruik minimaal een C1-cache.  C0-caches zijn bedoeld voor eenvoudige dev/ testscenario's omdat ze een gedeelde CPU-kern hebben, weinig geheugen en gevoelig zijn voor "luidruchtige buren"-problemen.
+ * **Gebruik de standaard-of Premium-laag voor productie systemen.**  De laag basis is een systeem met één knoop punt zonder gegevens replicatie en geen SLA. Gebruik minimaal een C1-cache.  C0-caches zijn bedoeld voor eenvoudige ontwikkel-en test scenario's, omdat ze een gedeelde CPU-kern, weinig geheugen hebben en gevoelig zijn voor problemen met ' ruis in de buur '.
 
- * **Vergeet niet dat Redis een gegevensarchief in het geheugen is.**  [In dit artikel](cache-troubleshoot-data-loss.md) worden enkele scenario's beschreven waarin gegevensverlies kan optreden.
+ * **Houd er rekening mee dat redis een in-Memory-gegevens archief is.**  [Dit artikel](cache-troubleshoot-data-loss.md) bevat een overzicht van een aantal scenario's waarin gegevens verlies kan optreden.
 
- * **Ontwikkel uw systeem zodanig dat het kan omgaan met verbinding blips** [als gevolg van patchen en failover](cache-failover.md).
+ * **Ontwikkel uw systeem zodanig dat het verbindings problemen kan verwerken** [vanwege patches en failover](cache-failover.md).
 
- * **Configureer uw [instelling die is gereserveerd voor maximaal geheugen](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) om de reactiesnelheid van het systeem** onder geheugendrukomstandigheden te verbeteren.  Een voldoende reserveringsinstelling is vooral belangrijk voor schrijfzware workloads of als u grotere waarden (100 KB of meer) opslaat in Redis. U moet beginnen met 10% van de grootte van uw cache en dit percentage verhogen als u schrijf-zware lasten hebt.
+ * **Configureer uw [maxmemory-gereserveerde instelling](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) om de reactie snelheid van het systeem te verbeteren** onder geheugen druk omstandigheden.  Een voldoende reserverings instelling is met name belang rijk voor schrijf zware workloads of als u grotere waarden opslaat (100 KB of meer) in redis. U moet beginnen met 10% van de grootte van uw cache en dit percentage verhogen als u schrijf-zware belasting hebt.
 
- * **Redis werkt het beste met kleinere waarden,** dus overweeg het hakken van grotere gegevens in meerdere sleutels.  In [deze Redis discussie](https://stackoverflow.com/questions/55517224/what-is-the-ideal-value-size-range-for-redis-is-100kb-too-large/), worden enkele overwegingen vermeld die u zorgvuldig moet overwegen.  Lees [dit artikel](cache-troubleshoot-client.md#large-request-or-response-size) voor een voorbeeld probleem dat kan worden veroorzaakt door grote waarden.
+ * **Redis werkt het beste met kleinere waarden**. u kunt dus grotere gegevens in meerdere sleutels afzetten.  In [deze redis-discussie](https://stackoverflow.com/questions/55517224/what-is-the-ideal-value-size-range-for-redis-is-100kb-too-large/)worden enkele overwegingen vermeld die u zorgvuldig moet overwegen.  Lees [dit artikel](cache-troubleshoot-client.md#large-request-or-response-size) voor een voor beeld van een probleem dat kan worden veroorzaakt door grote waarden.
 
- * **Zoek uw cache-exemplaar en uw toepassing in dezelfde regio.**  Als er verbinding wordt gemaakt met een cache in een andere regio, kan dit leiden tot een aanzienlijk hogere latentie en kan dit ten koste gaan van de betrouwbaarheid.  Hoewel u verbinding maken van buiten Azure, wordt dit niet *aanbevolen, vooral wanneer u Redis als cache gebruikt.*  Als u Redis gebruikt als slechts een sleutel/waardeopslag, is latentie mogelijk niet de belangrijkste zorg. 
+ * **Zoek uw cache-exemplaar en uw toepassing in dezelfde regio.**  Als er verbinding wordt gemaakt met een cache in een andere regio, kan dit leiden tot een aanzienlijk hogere latentie en kan dit ten koste gaan van de betrouwbaarheid.  Terwijl u verbinding kunt maken vanuit Azure, is het niet aanbevolen om *redis als een cache te gebruiken*.  Als u redis als alleen een sleutel/waarde-archief gebruikt, is latentie mogelijk niet het belangrijkste probleem. 
 
- * **Verbindingen opnieuw gebruiken.**  Het maken van nieuwe verbindingen is duur en verhoogt de latentie, zodat verbindingen zoveel mogelijk worden hergebruikt. Als u ervoor kiest om nieuwe verbindingen te maken, moet u de oude verbindingen sluiten voordat u ze vrijgeeft (zelfs in beheerde geheugentalen zoals .NET of Java).
+ * **Verbindingen opnieuw gebruiken.**  Het maken van nieuwe verbindingen is duur en neemt vertraging in beslag, dus hergebruik zo veel mogelijk verbindingen. Als u ervoor kiest nieuwe verbindingen te maken, moet u ervoor zorgen dat u de oude verbindingen sluit voordat u ze uitgeeft (zelfs in beheerde geheugen talen zoals .NET of Java).
 
- * **Configureer uw clientbibliotheek om een *connect time-out* van ten minste 15 seconden te gebruiken,** waardoor het systeem zelfs onder hogere CPU-omstandigheden de tijd heeft om verbinding te maken.  Een kleine time-outwaarde voor verbindingen garandeert niet dat de verbinding in dat tijdsbestek tot stand komt.  Als er iets misgaat (hoge client CPU, hoge server CPU, enzovoort), dan is een korte verbinding time-out waarde zal leiden tot de verbinding poging om te mislukken. Dit gedrag maakt een slechte situatie vaak erger.  In plaats van te helpen, kortere time-outs verergeren het probleem door het systeem te dwingen om het proces van het proberen om opnieuw verbinding te maken, wat kan leiden tot een *verbinding-> mislukken -> opnieuw proberen* lus. We raden u over het algemeen aan om uw time-out van de verbinding op 15 seconden of hoger te laten. Het is beter om uw verbinding poging te laten slagen na 15 of 20 seconden dan om het niet snel alleen om opnieuw te proberen. Zo'n nieuwe lus kan ervoor zorgen dat uw uitval langer duurt dan wanneer u het systeem in eerste instantie gewoon langer laat duren.  
+ * **Configureer uw client bibliotheek zodanig dat er een *time-out* voor de verbinding van ten minste 15 seconden wordt gebruikt**, waarbij de systeem tijd nodig is om verbinding te maken, zelfs onder hogere CPU-omstandigheden.  Een time-outwaarde voor een kleine verbinding garandeert niet dat de verbinding in dat tijds bestek tot stand is gebracht.  Als er iets mis gaat (hoge CPU van client, een hoge CPU van een server, enzovoort), wordt de verbindings poging mislukt als er een korte time-outwaarde voor de verbinding is. Dit gedrag zorgt vaak voor een slechtere situatie.  In plaats van hulp te bieden, verergert u het probleem door het systeem te dwingen het proces van opnieuw proberen opnieuw verbinding te maken, wat kan leiden tot een *verbindings > mislukken > probeer het opnieuw* . U wordt aangeraden de verbindingstime-out op 15 seconden of hoger te laten staan. Het is beter om uw verbindings poging na 15 of 20 seconden te laten slagen dan om het probleem alleen snel op te verbreken. Een dergelijke retry-lus kan ertoe leiden dat uw onderbreking langer duurt dan wanneer u het systeem gewoon in eerste instantie neemt.  
      > [!NOTE]
-     > Deze richtlijnen zijn specifiek voor de *verbindingspoging* en hebben geen betrekking op de tijd die u bereid bent te wachten tot een *bewerking* als GET of SET is voltooid.
+     > Deze richt lijnen zijn specifiek voor de *verbindings poging* en zijn niet gerelateerd aan de tijd die u bereid bent te wachten op een *bewerking* zoals Get of set to complete.
  
- * **Vermijd dure bewerkingen** - Sommige Redis-bewerkingen, zoals de [opdracht KEYS,](https://redis.io/commands/keys) zijn *erg* duur en moeten worden vermeden.  Zie voor meer informatie enkele overwegingen rond [langlopende opdrachten](cache-troubleshoot-server.md#long-running-commands)
+ * **Vermijd dure bewerkingen** : sommige redis-bewerkingen, zoals de opdracht [sleutels](https://redis.io/commands/keys) , zijn *erg* duur en moeten worden vermeden.  Zie enkele overwegingen rond [langlopende opdrachten](cache-troubleshoot-server.md#long-running-commands) voor meer informatie
 
- * **Tls-versleuteling gebruiken** - Voor Azure Cache voor Redis is tls-versleutelde communicatie standaard vereist.  TLS-versies 1.0, 1.1 en 1.2 worden momenteel ondersteund.  TLS 1.0 en 1.1 zijn echter op weg naar afschaffing industriebreed, dus gebruik TLS 1.2 indien mogelijk.  Als uw clientbibliotheek of -tool TLS niet ondersteunt, kan het inschakelen van onversleutelde verbindingen worden gedaan [via de Azure-portal](cache-configure.md#access-ports) of [beheer-API's.](https://docs.microsoft.com/rest/api/redis/redis/update)  In dergelijke gevallen waarin versleutelde verbindingen niet mogelijk zijn, wordt aanbevolen om uw cache en clienttoepassing in een virtueel netwerk te plaatsen.  Zie deze [tabel](cache-how-to-premium-vnet.md#outbound-port-requirements)voor meer informatie over welke poorten worden gebruikt in het scenario voor virtuele netwerkcache.
+ * **TLS-versleuteling gebruiken** : voor Azure cache voor redis is standaard TLS-versleutelde communicatie vereist.  TLS-versies 1,0, 1,1 en 1,2 worden momenteel ondersteund.  TLS 1,0 en 1,1 bevinden zich echter op een pad naar de hele industrie, dus gebruik TLS 1,2 als dat mogelijk is.  Als uw client bibliotheek of-hulp programma geen TLS ondersteunt, kunnen niet-versleutelde verbindingen worden uitgevoerd [via de Azure Portal](cache-configure.md#access-ports) -of [beheer-api's](https://docs.microsoft.com/rest/api/redis/redis/update).  In dergelijke gevallen is het raadzaam om uw cache-en client toepassing in te zetten in een virtueel netwerk.  Zie deze [tabel](cache-how-to-premium-vnet.md#outbound-port-requirements)voor meer informatie over welke poorten worden gebruikt in het scenario van de virtuele netwerk cache.
  
-## <a name="memory-management"></a>Geheugenbeheer
-Er zijn verschillende dingen met betrekking tot geheugengebruik binnen uw Redis-serverinstantie die u mogelijk wilt overwegen.  Hier zijn een paar:
+## <a name="memory-management"></a>Geheugen beheer
+Er zijn verschillende dingen die betrekking hebben op het gebruik van het geheugen in uw redis-server exemplaar dat u mogelijk wilt overwegen.  Hier volgen enkele:
 
- * **Kies een [uitzettingsbeleid](https://redis.io/topics/lru-cache) dat werkt voor uw toepassing.**  Het standaardbeleid voor Azure Redis is *vluchtig-lru*, wat betekent dat alleen sleutels met een TTL-waardeset in aanmerking komen voor uitzetting.  Als er geen sleutels een TTL-waarde hebben, wordt er geen sleutels verwijderd door het systeem.  Als u wilt dat het systeem om een sleutel te worden uitgezet als onder geheugendruk, dan u overwegen de *allkeys-lru* beleid.
+ * **Kies een [verwijderings beleid](https://redis.io/topics/lru-cache) dat geschikt is voor uw toepassing.**  Het standaard beleid voor Azure redis is *vluchtig-LRU*. Dit betekent dat alleen sleutels waarvoor een TTL-waarde is ingesteld, in aanmerking komen voor verwijdering.  Als er geen sleutels zijn met een TTL-waarde, worden de sleutels niet door het systeem verwijderd.  Als u wilt dat het systeem een wille keurige sleutel mag verwijderen als deze onder geheugen druk wordt weer geven, kunt u het *AllKeys-LRU-* beleid overwegen.
 
- * **Stel een vervaldatum in op uw sleutels.**  Een expiratie verwijdert sleutels proactief in plaats van te wachten tot er geheugendruk is.  Wanneer uitzetting werkt vanwege de geheugendruk, kan dit extra belasting veroorzaken op uw server.  Zie de documentatie voor de opdrachten [VERLOPEN](https://redis.io/commands/expire) en [VERLOPENAT](https://redis.io/commands/expireat) voor meer informatie.
+ * **Stel een verloop waarde in voor uw sleutels.**  Bij een verloop datum worden sleutels proactief verwijderd in plaats van te wachten totdat er geheugen druk is.  Als het verwijderen wordt gestart vanwege geheugen belasting, kan dit een extra belasting voor uw server veroorzaken.  Zie de documentatie voor de opdrachten [Expires](https://redis.io/commands/expire) en [EXPIREAT](https://redis.io/commands/expireat) voor meer informatie.
  
-## <a name="client-library-specific-guidance"></a>Specifieke richtlijnen voor clientbibliotheek
- * [StackExchange.Redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
- * [Java - Welke client moet ik gebruiken?](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
+## <a name="client-library-specific-guidance"></a>Specifieke richt lijnen voor de client bibliotheek
+ * [Stack Exchange. redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
+ * [Java-welke client moet ik gebruiken?](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
  * [Sla (Java)](https://gist.github.com/warrenzhu25/181ccac7fa70411f7eb72aff23aa8a6a#file-azure-redis-lettuce-best-practices-md)
  * [Jedis (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
  * [Node.js](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-node-js-md)
  * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
- * [Asp.Net Sessie-statusprovider](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
+ * [Asp.Net-sessie status provider](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
 
 
 ## <a name="when-is-it-safe-to-retry"></a>Wanneer is het veilig om het opnieuw te proberen?
-Helaas is er geen eenvoudig antwoord.  Elke toepassing moet beslissen welke bewerkingen opnieuw kunnen worden geprobeerd en welke niet.  Elke bewerking heeft verschillende vereisten en afhankelijkheden tussen de toetsen.  Hier zijn een aantal dingen die je zou kunnen overwegen:
+Helaas is er geen eenvoudig antwoord.  Elke toepassing moet bepalen welke bewerkingen opnieuw kunnen worden uitgevoerd en wat niet mogelijk is.  Elke bewerking heeft verschillende vereisten en intersleutel-afhankelijkheden.  Hier volgen enkele dingen die u kunt overwegen:
 
- * U fouten aan de clientzijde krijgen, ook al heeft Redis de opdracht die u hebt gevraagd om uit te voeren uitgevoerd.  Bijvoorbeeld:
-     - Time-outs zijn een klant-side concept.  Als de bewerking de server heeft bereikt, voert de server de opdracht uit, zelfs als de client het wachten opgeeft.  
-     - Wanneer er een fout optreedt op de socketverbinding, is het niet mogelijk om te weten of de bewerking daadwerkelijk op de server is uitgevoerd.  De verbindingsfout kan bijvoorbeeld optreden nadat de server de aanvraag heeft verwerkt, maar voordat de client het antwoord ontvangt.
- *  Hoe reageert mijn toepassing als ik per ongeluk twee keer dezelfde bewerking uitvoert?  Wat als ik bijvoorbeeld een geheel getal twee keer in plaats van één keer toename?  Is mijn aanvraag schrijven naar dezelfde sleutel van meerdere plaatsen?  Wat gebeurt er als mijn logica opnieuw proberen een waarde overschrijft die is ingesteld door een ander deel van mijn app?
+ * U kunt fouten aan de client zijde verkrijgen, zelfs als redis de opdracht heeft uitgevoerd die u hebt gevraagd om uit te voeren.  Bijvoorbeeld:
+     - Time-outs zijn een concept aan de client zijde.  Als de-server is bereikt, voert de server de opdracht uit, zelfs als de client wacht op te geven.  
+     - Als er een fout optreedt op de socket verbinding, is het niet mogelijk om te weten of de bewerking daad werkelijk is uitgevoerd op de server.  De verbindings fout kan bijvoorbeeld optreden nadat de server de aanvraag heeft verwerkt, maar voordat de client het antwoord ontvangt.
+ *  Hoe reageert mijn toepassing als ik de bewerking per ongeluk twee keer uitgevoerd?  Wat moet ik doen als ik een geheel getal twee keer in plaats van één keer Verhoog?  Schrijft mijn toepassing naar dezelfde sleutel vanaf meerdere locaties?  Wat gebeurt er als mijn pogings logica een waarde overschrijft die is ingesteld door een ander onderdeel van mijn app?
 
-Als u wilt testen hoe uw code werkt onder foutvoorwaarden, u overwegen de [functie Opnieuw opstarten](cache-administration.md#reboot)te gebruiken. Met rebooten u zien welke invloed is op de verbindingsblips op uw toepassing.
+Als u wilt testen hoe uw code werkt onder fout voorwaarden, kunt u overwegen de [herstart-functie](cache-administration.md#reboot)te gebruiken. Door opnieuw op te starten, kunt u zien hoe de verbindings problemen invloed heeft op uw toepassing.
 
 ## <a name="performance-testing"></a>Prestaties testen
- * **Begin met `redis-benchmark.exe` het gebruik van** een gevoel voor mogelijke doorvoer / latentie voor het schrijven van uw eigen perf tests.  Redis-benchmark documentatie is hier te [vinden.](https://redis.io/topics/benchmarks)  Houd er rekening mee dat redis-benchmark tls niet ondersteunt, dus je moet [de Niet-TLS-poort via de Portal inschakelen](cache-configure.md#access-ports) voordat je de test uitvoert.  [Een windows compatibele versie van redis-benchmark.exe is hier te vinden](https://github.com/MSOpenTech/redis/releases)
- * De client-VM die wordt gebruikt voor het testen moet **zich in dezelfde regio bevinden** als de instantie van de Redis-cache.
- * **We raden u aan dv2 VM-serie** voor uw klant te gebruiken, omdat ze betere hardware hebben en de beste resultaten zullen geven.
- * Zorg ervoor dat de client-VM die u gebruikt **minstens evenveel rekenkracht en bandbreedte* heeft als de cache die wordt getest. 
- * **Schakel VRSS** in op de clientmachine als u windows gebruikt.  [Zie hier voor meer informatie](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx).  Voorbeeld powershell script:
-     >PowerShell -ExecutionPolicy Unrestricted enable-netadapterRSS -name (get-netadapter). Naam 
+ * **Begin met `redis-benchmark.exe` ** om een mogelijke door Voer/latentie te leren voordat u uw eigen prestatie tests schrijft.  Redis-Bench Mark-documentatie vindt u [hier](https://redis.io/topics/benchmarks).  Houd er rekening mee dat redis-Bench Mark geen ondersteuning biedt voor TLS, zodat u [de niet-TLS-poort via de portal moet inschakelen](cache-configure.md#access-ports) voordat u de test uitvoert.  [Een Windows-compatibele versie van redis-benchmark. exe vindt u hier](https://github.com/MSOpenTech/redis/releases)
+ * De client-VM die wordt gebruikt voor het testen moet zich **in dezelfde regio** bevinden als uw redis-cache-exemplaar.
+ * **We raden u** aan om een DV2-VM-reeks te gebruiken voor uw client, omdat deze betere hardware heeft en de beste resultaten oplevert.
+ * Zorg ervoor dat de client-VM die u gebruikt,*ten minste evenveel reken kracht en band breedte* heeft als de cache die wordt getest. 
+ * **Schakel VRSS** in op de client computer als u zich in Windows bevindt.  [Zie hier voor meer informatie](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx).  Voor beeld Power shell-script:
+     >Power shell-ExecutionPolicy unrestricted Enable-NetAdapterRSS-name (Get-netadapter). Naam 
      
- * **Overweeg de exemplaren van De Premium-laag-Roodis te gebruiken.**  Deze cacheformaten hebben een betere netwerklatentie en doorvoer omdat ze werken op betere hardware voor zowel CPU als netwerk.
+ * **Overweeg het gebruik van redis-exemplaren van een Premium-laag**.  Deze cache grootten hebben een betere netwerk latentie en door Voer omdat ze worden uitgevoerd op betere hardware voor zowel CPU als netwerk.
  
      > [!NOTE]
-     > Onze waargenomen prestatieresultaten worden [hier gepubliceerd](cache-faq.md#azure-cache-for-redis-performance) ter referentie.   Houd er ook rekening mee dat SSL/TLS wat overhead toevoegt, zodat u mogelijk andere latencies en/of doorvoer krijgt als u transportversleuteling gebruikt.
+     > Onze waargenomen prestatie resultaten worden [hier](cache-faq.md#azure-cache-for-redis-performance) voor uw referentie gepubliceerd.   Houd er ook rekening mee dat SSL/TLS enige overhead toevoegt, waardoor u mogelijk verschillende vertragingen en/of door Voer kunt krijgen als u transport versleuteling gebruikt.
  
-### <a name="redis-benchmark-examples"></a>Voorbeelden van Redis-Benchmark
-**Pre-test setup**: Bereid de cache-instantie voor met gegevens die nodig zijn voor de onderstaande latentie- en doorvoertestopdrachten.
-> redis-benchmark.exe -h yourcache.redis.cache.windows.net -a yourAccesskey -t SET -n 10 -d 1024 
+### <a name="redis-benchmark-examples"></a>Voor beelden van redis-benchmarks
+**Installatie vooraf testen**: bereid het cache-exemplaar voor met de gegevens die zijn vereist voor de onderstaande opdrachten voor latentie en door voer.
+> redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 
 
-**Latentie testen:** Test GET-aanvragen met een 1k-payload.
-> redis-benchmark.exe -h yourcache.redis.cache.windows.net -a yourAccesskey -t GET -d 1024 -P 50 -c 4
+**Test latentie**: aanvragen ophalen met een payload van 1 KB.
+> redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-d 1024-P 50-c 4
 
-**Ga als het gaat om een testdoorvoer:** Pipelined GET verzoeken met 1k payload.
-> redis-benchmark.exe -h yourcache.redis.cache.windows.net -a yourAccesskey -t GET -n 1000000 -d 1024 -P 50 -c 50
+De **door Voer testen:** GET-aanvragen in de pipeline met een payload van 1 KB.
+> redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50

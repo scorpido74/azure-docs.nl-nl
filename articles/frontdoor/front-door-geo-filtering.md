@@ -1,6 +1,6 @@
 ---
-title: Geofiltering op een domein voor Azure Front Door | Microsoft Documenten
-description: In dit artikel vindt u meer informatie over het beleid voor geofiltering voor Azure Front Door
+title: Geografisch filteren op een domein voor Azure front deur | Microsoft Docs
+description: In dit artikel vindt u meer informatie over beleid voor geo-filtering voor Azure front-deur
 services: frontdoor
 documentationcenter: ''
 author: KumudD
@@ -14,23 +14,23 @@ ms.date: 03/21/2019
 ms.author: kumud
 ms.reviewer: tyao
 ms.openlocfilehash: 2cdde705d0e9f0905d4c33648b5415758d838b06
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411168"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Wat is geo-filteren op een domein voor Azure Front Door?
 
-Azure Front Door reageert standaard op gebruikersverzoeken, ongeacht de locatie van de gebruiker die de aanvraag indient. In sommige gevallen u de toegang tot uw webtoepassingen echter per land/regio beperken. Met de WAF-service (Web application firewall) bij Front Door u een beleid definiëren met behulp van aangepaste toegangsregels voor een specifiek pad op uw eindpunt om toegang uit bepaalde landen/regio's toe te staan of te blokkeren. 
+Standaard reageert Azure front deur op gebruikers aanvragen, ongeacht de locatie van de gebruiker die de aanvraag heeft gedaan. In sommige gevallen wilt u echter mogelijk de toegang tot uw webtoepassingen beperken op basis van land/regio. Met de WAF-service (Web Application firewall) aan de voor deur kunt u een beleid definiëren met aangepaste toegangs regels voor een specifiek pad op uw eind punt om toegang toe te staan of te blok keren voor bepaalde landen/regio's. 
 
-Een WAF-beleid bevat meestal een reeks aangepaste regels. Een regel bestaat uit voorwaarden voor overeenkomsten, een actie en een prioriteit. In de voorwaarde voor overeenkomst definieert u een overeenkomende variabele, een operator en een overeenkomende waarde.  Voor de ge-filterregel is REMOTE_ADDR de overeenkomende variabele, GeoMatch de operator, en de waarde is het landnummer van twee letters. U kunt een GeoMatch-voorwaarde combineren met een REQUEST_URI-tekenreeks-voorwaarde voor overeenkomst om een op een pad gebaseerde geo-filterregel te maken.
+Een WAF-beleid bevat meestal een set aangepaste regels. Een regel bestaat uit voorwaarden voor overeenkomsten, een actie en een prioriteit. In de voorwaarde voor overeenkomst definieert u een overeenkomende variabele, een operator en een overeenkomende waarde.  Voor de ge-filterregel is REMOTE_ADDR de overeenkomende variabele, GeoMatch de operator, en de waarde is het landnummer van twee letters. U kunt een GeoMatch-voorwaarde combineren met een REQUEST_URI-tekenreeks-voorwaarde voor overeenkomst om een op een pad gebaseerde geo-filterregel te maken.
 
-U een geofilteringsbeleid voor uw voordeur configureren door [Azure PowerShell](front-door-tutorial-geo-filtering.md) te gebruiken of door onze [quickstartsjabloon te gebruiken.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)
+U kunt een beleid voor geofiltering configureren voor uw voor deur door gebruik te maken van [Azure PowerShell](front-door-tutorial-geo-filtering.md) of door gebruik te maken van de Quick Start- [sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
 
-## <a name="country-code-reference"></a>Referentie van landcode
+## <a name="country-code-reference"></a>Land code referentie
 
-|Landcode | Landnaam |
+|Landcode | Land naam |
 | ----- | ----- |
 | AD | Andorra |
 | AE | Verenigde Arabische Emiraten|
@@ -53,7 +53,7 @@ U een geofilteringsbeleid voor uw voordeur configureren door [Azure PowerShell](
 | BH | Bahrein|
 | BI | Burundi|
 | BJ | Benin|
-| BL | Sint-Barthélemie|
+| BL | Saint--Barthélemy|
 | BN | Brunei Darussalam|
 | BO | Bolivia|
 | BR | Brazilië|

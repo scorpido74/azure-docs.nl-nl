@@ -1,6 +1,6 @@
 ---
-title: Azure Analysis Services hoge beschikbaarheid | Microsoft Documenten
-description: In dit artikel wordt beschreven hoe Azure Analysis Services een hoge beschikbaarheid biedt tijdens serviceonderbreking.
+title: Hoge Beschik baarheid Azure Analysis Services | Microsoft Docs
+description: In dit artikel wordt beschreven hoe Azure Analysis Services hoge Beschik baarheid biedt tijdens de onderbreking van de service.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,31 +8,31 @@ ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 78a6d41b638d79111a58830f0cb0d5190ea0796c
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80408671"
 ---
-# <a name="analysis-services-high-availability"></a>Analysis Services hoge beschikbaarheid
+# <a name="analysis-services-high-availability"></a>Analysis Services hoge Beschik baarheid
 
-In dit artikel wordt beschreven dat de hoge beschikbaarheid voor Azure Analysis Services-servers hoog beschikbaar is. 
+In dit artikel wordt beschreven hoe u maximale Beschik baarheid voor Azure Analysis Services-servers waarborgt. 
 
-## <a name="assuring-high-availability-during-a-service-disruption"></a>Zorgen voor een hoge beschikbaarheid tijdens een serviceonderbreking
+## <a name="assuring-high-availability-during-a-service-disruption"></a>Hoge Beschik baarheid garanderen tijdens een onderbreking van de service
 
-Hoewel dit zeldzaam is, kan een Azure-datacenter een storing hebben. Wanneer er een storing optreedt, veroorzaakt dit een bedrijfsonderbreking die een paar minuten kan duren of uren kan duren. Hoge beschikbaarheid wordt meestal bereikt met serverredundantie. Met Azure Analysis Services u redundantie bereiken door extra secundaire servers in een of meer regio's te maken. Bij het maken van redundante servers, om ervoor te zorgen dat de gegevens en metagegevens op die servers gesynchroniseerd zijn met de server in een regio die offline is gegaan, u:
+In zeldzame gevallen kan een Azure-Data Center een storing hebben. Als er zich een storing voordoet, wordt er een probleem ondertreden waardoor het een paar minuten duurt of dat de uren langer duren. Hoge Beschik baarheid wordt meestal bereikt met server redundantie. Met Azure Analysis Services kunt u redundantie krijgen door extra, secundaire servers in een of meer regio's te maken. Bij het maken van redundante servers om ervoor te zorgen dat de gegevens en meta gegevens op die servers synchroon zijn met de server in een regio die offline is, kunt u het volgende doen:
 
-* Implementeer modellen naar redundante servers in andere regio's. Deze methode vereist het verwerken van gegevens op zowel uw primaire server als redundante servers parallel, zodat alle servers gesynchroniseerd zijn.
+* Implementeer modellen op redundante servers in andere regio's. Deze methode vereist het verwerken van gegevens op zowel uw primaire server als redundante servers parallel, waardoor alle servers worden gesynchroniseerd.
 
-* [Back-ups](analysis-services-backup.md) van databases van uw primaire server en herstellen op redundante servers. U bijvoorbeeld nachtelijke back-ups naar Azure-opslag automatiseren en herstellen naar andere redundante servers in andere regio's. 
+* [Back-ups maken](analysis-services-backup.md) van data bases van uw primaire server en herstellen op redundante servers. U kunt bijvoorbeeld avond back-ups naar Azure Storage automatiseren en herstellen naar andere redundante servers in andere regio's. 
 
-Als uw primaire server in beide gevallen een storing ondervindt, moet u de verbindingstekenreeksen wijzigen bij het rapporteren van clients om verbinding te maken met de server in een ander regionaal datacenter. Deze wijziging moet worden beschouwd als een laatste redmiddel en alleen als er een catastrofale regionale datacenterstoring optreedt. Het is waarschijnlijker dat een datacenterstoring bij het hosten van uw primaire server weer online komt voordat u verbindingen op alle clients bijwerken. 
+Als op de primaire server een storing optreedt, moet u de verbindings reeksen in Reporting-clients wijzigen om verbinding te maken met de server in een ander regionaal Data Center. Deze wijziging moet worden beschouwd als een laatste redmiddel en alleen als er sprake is van een onherstelbare regionale Data Center storing. Het is waarschijnlijker dat een Data Center-storing die uw primaire server host, weer online komt voordat u verbindingen op alle clients zou kunnen bijwerken. 
 
-Om te voorkomen dat de verbindingstekenreeksen voor rapportageclients moeten worden gewijzigd, u een [serveralias](analysis-services-server-alias.md) voor uw primaire server maken. Als de primaire server uitvalt, u de alias wijzigen die naar een redundante server in een andere regio moet worden aanwijs. U alias naar servernaam automatiseren door een endpoint statuscontrole op de primaire server te coderen. Als de statuscontrole mislukt, kan hetzelfde eindpunt rechtstreeks naar een redundante server in een andere regio. 
+Als u wilt voor komen dat verbindings reeksen op Reporting-clients worden gewijzigd, kunt u een server [alias](analysis-services-server-alias.md) maken voor de primaire server. Als de primaire server uitvalt, kunt u de alias wijzigen zodat deze verwijst naar een redundante server in een andere regio. U kunt de alias voor de server naam automatiseren door een eindpunt status controle op de primaire server uit te schrijven. Als de status controle mislukt, kan hetzelfde eind punt worden doorgestuurd naar een redundante server in een andere regio. 
 
 ## <a name="related-information"></a>Gerelateerde informatie
 
-[Back-up maken en herstellen](analysis-services-backup.md)   
-[Azure-analyseservices beheren](analysis-services-manage.md)   
-[Namen van aliasservers](analysis-services-server-alias.md) 
+[Back-ups maken en herstellen](analysis-services-backup.md)   
+[Azure Analysis Services beheren](analysis-services-manage.md)   
+[Alias server namen](analysis-services-server-alias.md) 
 

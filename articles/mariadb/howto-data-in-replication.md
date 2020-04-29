@@ -1,92 +1,92 @@
 ---
-title: Gegevens-in-replicatie configureren - Azure-database voor MariaDB
-description: In dit artikel wordt beschreven hoe u Gegevens-in-replicatie in Azure-database instelt voor MariaDB.
+title: Replicatie van gegevens configureren-Azure Database for MariaDB
+description: In dit artikel wordt beschreven hoe u Replicatie van inkomende gegevens instelt in Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/30/2020
 ms.openlocfilehash: 332feffead74174ba0b9b278d8de1c5957d5b9e6
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422474"
 ---
-# <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Gegevens-in-replicatie configureren in Azure-database voor MariaDB
+# <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Replicatie van inkomende gegevens configureren in Azure Database for MariaDB
 
-In dit artikel wordt beschreven hoe u Gegevens-in-replicatie in Azure Database voor MariaDB instelt door de hoofd- en replicaservers te configureren. In dit artikel wordt ervan uitgegaan dat u enige ervaring hebt met MariaDB-servers en -databases.
+In dit artikel wordt beschreven hoe u Replicatie van inkomende gegevens instelt in Azure Database for MariaDB door de hoofd-en replica servers te configureren. In dit artikel wordt ervan uitgegaan dat u een eerdere ervaring hebt met MariaDB-servers en-data bases.
 
-Als u een replica wilt maken in de Azure Database for MariaDB-service, synchroniseert Gegevens-in-replicatie gegevens van een on-premises master MariaDB-server, in virtuele machines (VM's) of in clouddatabaseservices.
+Voor het maken van een replica in de Azure Database for MariaDB-service, Replicatie van inkomende gegevens synchroniseert gegevens van een Master MariaDB-server on-premises, in virtuele machines (Vm's) of in Cloud database services.
 
-Bekijk de [beperkingen en vereisten](concepts-data-in-replication.md#limitations-and-considerations) van de replicatie van gegevens voordat u de stappen in dit artikel uitvoert.
+Bekijk de [beperkingen en vereisten](concepts-data-in-replication.md#limitations-and-considerations) van gegevens replicatie voordat u de stappen in dit artikel uitvoert.
 
 > [!NOTE]
-> Als uw hoofdserver versie 10.2 of nieuwer is, raden we u aan Gegevens-in-replicatie in te stellen met behulp van [Global Transaction ID](https://mariadb.com/kb/en/library/gtid/).
+> Als uw hoofd Server versie 10,2 of nieuwer is, raden we u aan om Replicatie van inkomende gegevens in te stellen met behulp van de [algemene trans actie-id](https://mariadb.com/kb/en/library/gtid/).
 
 
-## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>Een MariaDB-server maken om als replica te gebruiken
+## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>Een MariaDB-server maken om te gebruiken als replica
 
-1. Maak een nieuwe Azure Database voor MariaDB-server (bijvoorbeeld replica.mariadb.database.azure.com). De server is de replicaserver in Gegevens-in-replicatie.
+1. Maak een nieuwe Azure Database for MariaDB-server (bijvoorbeeld replica.mariadb.database.azure.com). De server is de replica server in Replicatie van inkomende gegevens.
 
-    Zie [Een Azure Database voor MariaDB-server maken voor](quickstart-create-mariadb-server-database-using-azure-portal.md)meer informatie over het maken van servers met behulp van de Azure-portal.
+    Zie [een Azure database for MariaDB-server maken met behulp van de Azure Portal](quickstart-create-mariadb-server-database-using-azure-portal.md)voor meer informatie over het maken van een server.
 
    > [!IMPORTANT]
-   > U moet de Azure Database voor MariaDB-server maken in de prijzenlagen Algemeen Doel of Geheugengeoptimaliseerd.
+   > U moet de Azure Database for MariaDB-server maken in de prijs Categorieën Algemeen of geoptimaliseerd voor geheugen.
 
-2. Maak identieke gebruikersaccounts en bijbehorende bevoegdheden.
+2. Maak identieke gebruikers accounts en bijbehorende bevoegdheden.
     
-    Gebruikersaccounts worden niet gerepliceerd van de hoofdserver naar de replicaserver. Als u gebruikers toegang wilt bieden tot de replicaserver, moet u handmatig alle accounts en bijbehorende bevoegdheden maken op de nieuw gemaakte Azure Database voor MariaDB-server.
+    Gebruikers accounts worden niet gerepliceerd van de hoofd server naar de replica server. Als u gebruikers toegang wilt geven tot de replica-server, moet u hand matig alle accounts en de bijbehorende bevoegdheden maken op de nieuw gemaakte Azure Database for MariaDB-server.
 
-3. Voeg het IP-adres van de hoofdserver toe aan de firewallregels van de replica. 
+3. Voeg het IP-adres van de hoofd server toe aan de firewall regels van de replica. 
 
    Firewallregels bijwerken met de [Azure-portal](howto-manage-firewall-portal.md) of [Azure CLI](howto-manage-firewall-cli.md).
 
-## <a name="configure-the-master-server"></a>De hoofdserver configureren
+## <a name="configure-the-master-server"></a>De hoofd server configureren
 
-De volgende stappen bereiden en configureren van de on-premises MariaDB-server, in een vm of in een clouddatabaseservice voor gegevensreplicatie. De MariaDB-server is de stramien in gegevensreplicatie.
+In de volgende stappen wordt de MariaDB-server die on-premises, in een VM of in een Cloud database service voor Replicatie van inkomende gegevens wordt gehost, voor bereid en geconfigureerd. De MariaDB-server is de Master in Replicatie van inkomende gegevens.
 
-1. Controleer de vereisten van de [hoofdserver](concepts-data-in-replication.md#requirements) voordat u verdergaat. 
+1. Controleer de [vereisten van de hoofd server](concepts-data-in-replication.md#requirements) voordat u doorgaat. 
 
-   Zorg er bijvoorbeeld voor dat de hoofdserver zowel binnenkomend als uitgaand verkeer toestaat op poort 3306 en dat de hoofdserver een **openbaar IP-adres**heeft, dat de DNS openbaar toegankelijk is of een volledig gekwalificeerde domeinnaam (FQDN) heeft. 
+   Zorg er bijvoorbeeld voor dat de hoofd server zowel binnenkomend als uitgaand verkeer op poort 3306 toestaat en dat de hoofd server een **openbaar IP-adres**heeft, de DNS openbaar toegankelijk is of een Fully QUALIFIED domain name (FQDN) heeft. 
    
-   Test de connectiviteit met de hoofdserver door te proberen verbinding te maken vanuit een hulpprogramma zoals de MySQL-opdrachtregel die wordt gehost op een andere machine of vanuit de [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) die beschikbaar is in de Azure-portal.
+   Test de verbinding met de hoofd server door te proberen verbinding te maken vanaf een hulp programma zoals de MySQL-opdracht regel die wordt gehost op een andere computer of op basis van het [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) dat beschikbaar is in de Azure Portal.
 
-2. Schakel binaire logboekregistratie in.
+2. Schakel binaire logboek registratie in.
     
-    Voer de volgende opdracht in om te zien of binaire logboekregistratie is ingeschakeld op het stramien:
+    Voer de volgende opdracht in om te controleren of binaire logboek registratie is ingeschakeld op de Master:
 
    ```sql
    SHOW VARIABLES LIKE 'log_bin';
    ```
 
-   Als de [`log_bin`](https://mariadb.com/kb/en/library/replication-and-binary-log-server-system-variables/#log_bin) variabele `ON`de waarde retourneert, is binaire logboekregistratie ingeschakeld op uw server.
+   Als de variabele [`log_bin`](https://mariadb.com/kb/en/library/replication-and-binary-log-server-system-variables/#log_bin) de waarde `ON`retourneert, wordt de binaire logboek registratie ingeschakeld op de server.
 
-   Als `log_bin` de `OFF`waarde wordt geretourneerd, bewerk het `log_bin=ON` **bestand my.cnf** zodat binaire logboekregistratie wordt ingeschakeld. Start de server opnieuw op om de wijziging van kracht te laten worden.
+   Als `log_bin` de waarde `OFF`wordt geretourneerd, bewerkt u het bestand **My. cnf** zodat binaire logboek registratie wordt `log_bin=ON` ingeschakeld. Start de server opnieuw op om de wijziging van kracht te laten worden.
 
-3. Hoofdserverinstellingen configureren.
+3. Configureer de instellingen van de hoofd server.
 
-    Met replicatie in gegevens `lower_case_table_names` moet de parameter consistent zijn tussen de stramien- en replicaservers. De `lower_case_table_names` parameter is `1` standaard ingesteld op Azure Database voor MariaDB.
+    Replicatie van inkomende gegevens moet de para `lower_case_table_names` meter consistent zijn tussen de Master-en replica-servers. De `lower_case_table_names` para meter wordt standaard `1` ingesteld op Azure database for MariaDB.
 
    ```sql
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-4. Maak een nieuwe replicatierol en stel machtigingen in.
+4. Maak een nieuwe replicatie functie en stel machtigingen in.
 
-   Maak een gebruikersaccount op de hoofdserver die is geconfigureerd met replicatiebevoegdheden. U een account maken met SQL-opdrachten of MySQL Workbench. Als u van plan bent te repliceren met SSL, moet u dit opgeven wanneer u het gebruikersaccount maakt.
+   Maak een gebruikers account op de hoofd server die is geconfigureerd met replicatie bevoegdheden. U kunt een account maken met behulp van SQL-opdrachten of MySQL Workbench. Als u van plan bent om met SSL te repliceren, moet u dit opgeven wanneer u het gebruikers account maakt.
    
-   Zie de [MariaDB-documentatie](https://mariadb.com/kb/en/library/create-user/)voor meer informatie over het toevoegen van gebruikersaccounts op uw hoofdserver.
+   Zie de [MariaDB-documentatie](https://mariadb.com/kb/en/library/create-user/)voor meer informatie over het toevoegen van gebruikers accounts op uw hoofd server.
 
-   Door de volgende opdrachten te gebruiken, heeft de nieuwe replicatierol toegang tot het model vanaf elke machine, niet alleen de machine die de master zelf host. Geef voor deze toegang **de synchronisatiegebruiker\@'%'** op in de opdracht om een gebruiker te maken.
+   Door de volgende opdrachten te gebruiken, heeft de nieuwe replicatie functie vanaf elke computer toegang tot de Master, niet alleen de computer die als host fungeert voor het model zelf. Geef voor deze toegang **syncuser\@'% '** op in de opdracht om een gebruiker te maken.
    
-   Zie [Accountnamen opgeven](https://mariadb.com/kb/en/library/create-user/#account-names)voor meer informatie over MariaDB-documentatie.
+   Zie [account namen opgeven](https://mariadb.com/kb/en/library/create-user/#account-names)voor meer informatie over MariaDB-documentatie.
 
-   **SQL, opdracht**
+   **SQL-opdracht**
 
    - Replicatie met SSL
 
-       Als u SSL voor alle gebruikersverbindingen wilt vereisen, voert u de volgende opdracht in om een gebruiker te maken:
+       Als u SSL wilt vereisen voor alle gebruikers verbindingen, voert u de volgende opdracht in om een gebruiker te maken:
 
        ```sql
        CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
@@ -95,7 +95,7 @@ De volgende stappen bereiden en configureren van de on-premises MariaDB-server, 
 
    - Replicatie zonder SSL
 
-       Als SSL niet voor alle verbindingen vereist is, voert u de volgende opdracht in om een gebruiker te maken:
+       Als SSL niet is vereist voor alle verbindingen, voert u de volgende opdracht in om een gebruiker te maken:
     
        ```sql
        CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
@@ -104,80 +104,80 @@ De volgende stappen bereiden en configureren van de on-premises MariaDB-server, 
 
    **MySQL Workbench**
 
-   Als u de replicatierol wilt maken in MySQL Workbench, selecteert u in het deelvenster **Beheer** de optie **Gebruikers en bevoegdheden**. Selecteer vervolgens **Account toevoegen**.
+   Als u de replicatie functie in MySQL Workbench wilt maken, selecteert u in het deel venster **beheer** de optie **gebruikers en bevoegdheden**. Selecteer vervolgens **account toevoegen**.
  
    ![Gebruikers en bevoegdheden](./media/howto-data-in-replication/users_privileges.png)
 
-   Voer een gebruikersnaam in het veld **Aanmeldingsnaam in.**
+   Voer een gebruikers naam in het veld **aanmeldings naam** in.
 
    ![Gebruiker synchroniseren](./media/howto-data-in-replication/syncuser.png)
  
-   Selecteer het deelvenster **Beheerrollen** en selecteer vervolgens in de lijst **met globale bevoegdheden**de optie **Replicatieslave**. Selecteer **Toepassen** om de replicatierol te maken.
+   Selecteer het paneel **beheerders rollen** en selecteer in de lijst met **globale bevoegdheden** **replicatie-slave**. Selecteer **Toep assen** om de replicatie functie te maken.
 
-   ![Replicatieslave](./media/howto-data-in-replication/replicationslave.png)
+   ![Replicatie-slave](./media/howto-data-in-replication/replicationslave.png)
 
 
-5. Stel de hoofdserver in op alleen-lezen modus.
+5. Stel de hoofd server in op de modus alleen-lezen.
 
-   Voordat u een database dumpt, moet de server in de alleen-lezen modus worden geplaatst. In de alleen-lezenmodus kan de master geen schrijftransacties verwerken. Om de impact van het bedrijf te voorkomen, plant u het alleen-lezen venster tijdens een daluren.
+   Voordat u een Data Base dumpt, moet de server in de modus alleen-lezen worden geplaatst. In de modus alleen-lezen kan de Master geen schrijf transacties verwerken. Als u bedrijfs impact wilt voor komen, moet u het alleen-lezen venster tijdens een rustige tijd plannen.
 
    ```sql
    FLUSH TABLES WITH READ LOCK;
    SET GLOBAL read_only = ON;
    ```
 
-6. Download de huidige binaire logboekbestandsnaam en -verschuiving.
+6. De huidige binaire logboek bestandsnaam en-offset ophalen.
 
-   Voer de opdracht [`show master status`](https://mariadb.com/kb/en/library/show-master-status/)uit om de huidige binaire logboekbestandsnaam en -verschuiving te bepalen.
+   Voer de opdracht [`show master status`](https://mariadb.com/kb/en/library/show-master-status/)uit om de naam van het huidige binaire logboek bestand en-offset te bepalen.
     
    ```sql
    show master status;
    ```
-   De resultaten moeten vergelijkbaar zijn met de volgende tabel:
+   De resultaten moeten er ongeveer uitzien als in de volgende tabel:
    
-   ![Resultaten van masterstatus](./media/howto-data-in-replication/masterstatus.png)
+   ![Resultaten van de hoofd status](./media/howto-data-in-replication/masterstatus.png)
 
-   Let op de binaire bestandsnaam, omdat deze in latere stappen wordt gebruikt.
+   Noteer de naam van het binaire bestand, omdat deze wordt gebruikt in latere stappen.
    
-7. Krijg de GTID-positie (optioneel, nodig voor replicatie met GTID).
+7. De GTID-positie ophalen (optioneel, vereist voor replicatie met GTID).
 
-   Voer de [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) functie uit om de GTID-positie voor de bijbehorende binlog-bestandsnaam en -verschuiving te krijgen.
+   Voer de functie [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) uit om de GTID-positie voor de bijbehorende binlog-bestands naam en-offset op te halen.
   
     ```sql
     select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);
     ```
  
 
-## <a name="dump-and-restore-the-master-server"></a>De hoofdserver dumpen en herstellen
+## <a name="dump-and-restore-the-master-server"></a>De master server dumpen en herstellen
 
-1. Dump alle databases van de hoofdserver.
+1. Alle data bases van de hoofd server dumpen.
 
-   Gebruik mysqldump om alle databases van de hoofdserver te dumpen. Het is niet nodig om de MySQL-bibliotheek en testbibliotheek te dumpen.
+   Gebruik mysqldump om alle data bases van de hoofd server te dumpen. Het is niet nodig om de MySQL-bibliotheek en test bibliotheek te dumpen.
 
-    Zie [Dumpen en herstellen voor](howto-migrate-dump-restore.md)meer informatie.
+    Zie [dump and Restore](howto-migrate-dump-restore.md)(Engelstalig) voor meer informatie.
 
-2. Stel de hoofdserver in op de lees-/schrijfmodus.
+2. Stel de hoofd server in op de modus lezen/schrijven.
 
-   Nadat de database is gedumpt, wijzigt u de master MariaDB-server terug naar de lees-/schrijfmodus.
+   Nadat de data base is gedumpt, wijzigt u de Master MariaDB-server weer in de modus lezen/schrijven.
 
    ```sql
    SET GLOBAL read_only = OFF;
    UNLOCK TABLES;
    ```
 
-3. Het dumpbestand terugzetten naar de nieuwe server.
+3. Herstel het dump bestand naar de nieuwe server.
 
-   Het dumpbestand herstellen naar de server die is gemaakt in de Azure Database for MariaDB-service. Zie [& herstellen plaatsen](howto-migrate-dump-restore.md) voor het herstellen van een dumpbestand naar een MariaDB-server.
+   Herstel het dump bestand naar de server die in de Azure Database for MariaDB-service is gemaakt. Zie [dump & herstellen](howto-migrate-dump-restore.md) voor het herstellen van een dump bestand naar een MariaDB-server.
 
-   Als het dumpbestand groot is, uploadt u het naar een VM in Azure binnen dezelfde regio als uw replicaserver. Herstel deze naar de Azure Database voor MariaDB-server vanaf de VM.
+   Als het dump bestand groot is, uploadt u het naar een virtuele machine in azure binnen dezelfde regio als de replica server. Zet het bestand terug naar de Azure Database for MariaDB-server vanuit de VM.
 
-## <a name="link-the-master-and-replica-servers-to-start-data-in-replication"></a>De hoofd- en replicaservers koppelen aan het starten van gegevens-in-replicatie
+## <a name="link-the-master-and-replica-servers-to-start-data-in-replication"></a>De Master-en replica servers koppelen om Replicatie van inkomende gegevens te starten
 
-1. Stel de hoofdserver in.
+1. Stel de hoofd server in.
 
-   Alle gegevens-in replicatiefuncties worden uitgevoerd volgens opgeslagen procedures. U alle procedures vinden bij [Gegevens-in Replicatie opgeslagen procedures](reference-data-in-stored-procedures.md). Opgeslagen procedures kunnen worden uitgevoerd in de MySQL-shell of MySQL Workbench.
+   Alle Replicatie van inkomende gegevens-functies worden uitgevoerd door opgeslagen procedures. U kunt alle procedures vinden op [replicatie van inkomende gegevens opgeslagen procedures](reference-data-in-stored-procedures.md). Opgeslagen procedures kunnen worden uitgevoerd in de MySQL-shell of MySQL Workbench.
 
-   Als u twee servers wilt koppelen en replicatie wilt starten, meldt u zich aan bij de doelreplicaserver in de Azure DB voor MariaDB-service. Stel vervolgens de externe instantie in als `mysql.az_replication_change_master` `mysql.az_replication_change_master_with_gtid` hoofdserver met behulp van de of opgeslagen procedure op de Azure DB voor MariaDB-server.
+   Als u twee servers wilt koppelen en replicatie wilt starten, meldt u zich aan bij de doel replica server in de Azure DB for MariaDB-service. Stel vervolgens het externe exemplaar in als de hoofd server met behulp `mysql.az_replication_change_master` van `mysql.az_replication_change_master_with_gtid` de of opgeslagen procedure op de Azure DB for MariaDB-server.
 
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
@@ -189,22 +189,22 @@ De volgende stappen bereiden en configureren van de on-premises MariaDB-server, 
    CALL mysql.az_replication_change_master_with_gtid('<master_host>', '<master_user>', '<master_password>', 3306, '<master_gtid_pos>', '<master_ssl_ca>');
    ```
 
-   - master_host: hostnaam van de hoofdserver
-   - master_user: gebruikersnaam voor de hoofdserver
-   - master_password: wachtwoord voor de hoofdserver
-   - master_log_file: binaire logboekbestandsnaam van het uitvoeren`show master status`
-   - master_log_pos: binaire logboekpositie vanaf het uitvoeren`show master status`
-   - master_gtid_pos: GTID-positie van het lopen`select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);`
-   - master_ssl_ca: de context van het CA-certificaat. Als u SSL niet gebruikt, geeft u een lege tekenreeks door.*
+   - master_host: de hostnaam van de hoofd server
+   - master_user: gebruikers naam voor de hoofd server
+   - master_password: wacht woord voor de hoofd server
+   - master_log_file: de naam van het binaire logboek bestand is niet actief`show master status`
+   - master_log_pos: de positie van het binaire logboek van wordt uitgevoerd`show master status`
+   - master_gtid_pos: GTID positie van uitvoering`select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);`
+   - master_ssl_ca: de context van het CA-certificaat. Als u geen gebruik maakt van SSL, geeft u een lege teken reeks door. *
     
     
-    *We raden aan om de parameter master_ssl_ca als variabele door te geven. Zie de volgende voorbeelden voor meer informatie.
+    * We raden u aan de para meter master_ssl_ca aan te geven als een variabele. Zie de volgende voor beelden voor meer informatie.
 
    **Voorbeelden**
 
    - Replicatie met SSL
 
-       Maak de `@cert` variabele door de volgende opdrachten uit te voeren:
+       Maak de variabele `@cert` door de volgende opdrachten uit te voeren:
 
        ```sql
        SET @cert = '-----BEGIN CERTIFICATE-----
@@ -212,68 +212,68 @@ De volgende stappen bereiden en configureren van de on-premises MariaDB-server, 
        -----END CERTIFICATE-----'
        ```
 
-       Replicatie met SSL is ingesteld tussen een hoofdserver die wordt gehost in het domein companya.com en een replicaserver die wordt gehost in Azure Database voor MariaDB. Deze opgeslagen procedure wordt uitgevoerd op de replica.
+       Replicatie met SSL wordt ingesteld tussen een hoofd server die wordt gehost in het domein companya.com en een replica server gehost in Azure Database for MariaDB. Deze opgeslagen procedure wordt uitgevoerd op de replica.
     
        ```sql
        CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mariadb-bin.000016', 475, @cert);
        ```
    - Replicatie zonder SSL
 
-       Replicatie zonder SSL is ingesteld tussen een hoofdserver die wordt gehost in het domein companya.com en een replicaserver die wordt gehost in Azure Database voor MariaDB. Deze opgeslagen procedure wordt uitgevoerd op de replica.
+       Replicatie zonder SSL wordt ingesteld tussen een hoofd server die wordt gehost in het domein companya.com en een replica server gehost in Azure Database for MariaDB. Deze opgeslagen procedure wordt uitgevoerd op de replica.
 
        ```sql
        CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mariadb-bin.000016', 475, '');
        ```
 
-2. Begin met replicatie.
+2. Replicatie starten.
 
-   Bel `mysql.az_replication_start` de opgeslagen procedure om de replicatie te starten.
+   Roep de `mysql.az_replication_start` opgeslagen procedure aan om de replicatie te starten.
 
    ```sql
    CALL mysql.az_replication_start;
    ```
 
-3. Controleer de replicatiestatus.
+3. Controleer de replicatie status.
 
-   Roep [`show slave status`](https://mariadb.com/kb/en/library/show-slave-status/) de opdracht op de replicaserver aan om de replicatiestatus weer te geven.
+   Roep de [`show slave status`](https://mariadb.com/kb/en/library/show-slave-status/) opdracht op de replica server om de replicatie status weer te geven.
     
    ```sql
    show slave status;
    ```
 
-   Als `Slave_IO_Running` `Slave_SQL_Running` en zijn `yes`in de status, en de waarde van `Seconds_Behind_Master` is `0`, replicatie werkt. `Seconds_Behind_Master`geeft aan hoe laat de replica is. Als de waarde `0`dat niet is, verwerkt de replica updates.
+   `Slave_SQL_Running` Als `Slave_IO_Running` de status `yes`en de waarde van `Seconds_Behind_Master` is `0`, werkt de replicatie. `Seconds_Behind_Master`Hiermee wordt aangegeven hoe laat de replica. Als dat niet `0`het geval is, verwerkt de replica de updates.
 
-4. Werk de bijbehorende servervariabelen bij om de replicatie van gegevens in te maken (alleen vereist voor replicatie zonder GTID).
+4. Werk de bijbehorende server variabelen bij om de replicatie van gegevens te beveiligen (alleen vereist voor replicatie zonder GTID).
     
-    Vanwege een native replicatiebeperking in MariaDB, [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) moet u replicatie instellen en variabelen instellen [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) zonder het GTID-scenario.
+    Vanwege een systeem eigen replicatie beperking in MariaDB moet u voor- [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) en [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) -variabelen instellen voor replicatie zonder het GTID-scenario.
 
-    Controleer de gegevensservers `sync_master_info` `sync_relay_log_info` en variabelen van uw slave-server om te controleren of `1`de replicatie van de gegevens stabiel is en stel de variabelen in op .
+    Controleer de en `sync_master_info` `sync_relay_log_info` de variabelen van uw slave-server om er zeker van te zijn dat de replicatie van de gegevens stabiel is `1`en stel de variabelen in op.
     
 ## <a name="other-stored-procedures"></a>Andere opgeslagen procedures
 
 ### <a name="stop-replication"></a>Replicatie stoppen
 
-Als u de replicatie tussen de stramien en de replicaserver wilt stoppen, gebruikt u de volgende opgeslagen procedure:
+Gebruik de volgende opgeslagen procedure om de replicatie tussen de hoofd-en replica server te stoppen:
 
 ```sql
 CALL mysql.az_replication_stop;
 ```
 
-### <a name="remove-the-replication-relationship"></a>De replicatierelatie verwijderen
+### <a name="remove-the-replication-relationship"></a>De replicatie relatie verwijderen
 
-Als u de relatie tussen de hoofdstram en de replicaserver wilt verwijderen, gebruikt u de volgende opgeslagen procedure:
+Als u de relatie tussen de Master-en replica server wilt verwijderen, gebruikt u de volgende opgeslagen procedure:
 
 ```sql
 CALL mysql.az_replication_remove_master;
 ```
 
-### <a name="skip-the-replication-error"></a>De replicatiefout overslaan
+### <a name="skip-the-replication-error"></a>De replicatie fout overs Laan
 
-Als u een replicatiefout wilt overslaan en replicatie wilt toestaan, gebruikt u de volgende opgeslagen procedure:
+Als u een replicatie fout wilt overs Laan en replicatie wilt toestaan, gebruikt u de volgende opgeslagen procedure:
     
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [Gegevens-in-replicatie](concepts-data-in-replication.md) voor Azure Database voor MariaDB.
+Meer informatie over [replicatie van inkomende gegevens](concepts-data-in-replication.md) voor Azure database for MariaDB.

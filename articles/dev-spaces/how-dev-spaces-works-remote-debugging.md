@@ -1,41 +1,41 @@
 ---
-title: Hoe het opsporen van uw code op afstand werkt met Azure Dev Spaces
+title: Hoe kan ik de code op afstand opsporen met Azure dev Spaces?
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: Beschrijft de processen voor het opsporen van externe fouten op Azure Kubernetes-service met Azure Dev Spaces
-keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
+description: Beschrijft de processen voor externe fout opsporing op de Azure Kubernetes-service met Azure dev Spaces
+keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
 ms.openlocfilehash: a9f303ea6f954285a319be137a594f7ce127f740
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241398"
 ---
-# <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>Hoe het opsporen van uw code op afstand werkt met Azure Dev Spaces
+# <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>Hoe kan ik de code op afstand opsporen met Azure dev Spaces?
 
-Azure Dev Spaces biedt u meerdere manieren om Kubernetes-toepassingen snel te herhalen en te debuggen en samen te werken met uw team op een AKS-cluster (Azure Kubernetes Service). Zodra uw project in een dev-ruimte wordt uitgevoerd, biedt Azure Dev Spaces een manier om een lopende toepassing in AKS te koppelen en te debuggen.
+Met Azure dev Spaces kunt u op verschillende manieren snel en probleem oplossing voor Kubernetes-toepassingen en samen werken met uw team op een AKS-cluster (Azure Kubernetes service). Zodra het project wordt uitgevoerd in een dev Space, biedt Azure dev Spaces een manier om een actieve toepassing in AKS te koppelen en fouten op te sporen.
 
-In dit artikel wordt beschreven hoe het opsporen van externe debuggen met Dev Spaces werkt.
+In dit artikel wordt beschreven hoe externe fout opsporing met ontwikkel ruimten werkt.
 
-## <a name="debug-your-code"></a>Uw code debuggen
+## <a name="debug-your-code"></a>Fouten opsporen in uw code
 
-Voor Java-, .NET Core- en Node.js-toepassingen u uw toepassing die rechtstreeks in uw dev-ruimte wordt uitgevoerd, debuggen met behulp van Visual Studio Code of Visual Studio. Visual Studio Code en Visual Studio bieden tooling om verbinding te maken met uw dev-ruimte, uw toepassing te starten en een foutopsporing toe te voegen. Na `azds prep`het uitvoeren u uw project openen in Visual Studio Code of Visual Studio. Visual Studio Code of Visual Studio genereert hun eigen configuratiebestanden voor het verbinden die los staat van het uitvoeren. `azds prep` Vanuit Visual Studio Code of Visual Studio u breekpunten instellen en uw toepassing starten op uw ontwikkelruimte.
+Voor Java-, .NET core-en node. js-toepassingen kunt u fouten opsporen in uw toepassing die rechtstreeks wordt uitgevoerd in uw ontwikkel ruimte met Visual Studio code of Visual Studio. Visual Studio code en Visual Studio bieden hulp middelen om verbinding te maken met uw ontwikkel ruimte, uw toepassing te starten en een fout opsporingsprogramma te koppelen. Na het `azds prep`uitvoeren van kunt u het project openen in Visual Studio code of Visual Studio. Visual Studio code of Visual Studio genereert hun eigen configuratie bestanden om verbinding te maken die niet wordt uitgevoerd `azds prep`. Vanuit Visual Studio code of Visual Studio kunt u onderbrekings punten instellen en uw toepassing starten op uw dev-ruimte.
 
-![Uw code debuggen](media/get-started-node/debug-configuration-nodejs2.png)
+![Fout opsporing voor uw code](media/get-started-node/debug-configuration-nodejs2.png)
 
-Wanneer u uw toepassing start met Visual Studio Code of Visual Studio voor foutopsporing, worden deze `azds up`gestart en verbinding met uw ontwikkelruimte gemaakt op dezelfde manier als hardlopen. Ook de client-side tooling in Visual Studio Code en Visual Studio bieden elk een extra parameter met specifieke informatie voor het debuggen. De parameter bevat de naam van de foutopsporing, de locatie van de foutopsporing in de afbeelding van de foutopsporing en de doellocatie in de container van de toepassing om de map debugger te monteren.
+Wanneer u uw toepassing start met Visual Studio code of Visual Studio voor het opsporen van fouten, worden de start-en verbinding maken met uw ontwikkel ruimte `azds up`op dezelfde manier uitgevoerd als met. Daarnaast bieden het programma aan de client zijde in Visual Studio code en Visual Studio elk een extra para meter met specifieke informatie voor fout opsporing. De para meter bevat de naam van de afbeelding van het fout opsporingsprogramma, de locatie van het fout opsporingsprogramma in de installatie kopie van de fout opsporing en de doel locatie binnen de container van de toepassing om de map met fout opsporing te koppelen.
 
-De foutopsporingsafbeelding wordt automatisch bepaald door de tooling aan de clientzijde. Het maakt gebruik van een methode die vergelijkbaar is met `azds prep`die welke wordt gebruikt tijdens Dockerfile en Helm grafiek genereren bij het uitvoeren van . Nadat de foutopsporing is gemonteerd in de afbeelding van `azds exec`de toepassing, wordt deze uitgevoerd met behulp van .
+De afbeelding van het fout opsporingsprogramma wordt automatisch bepaald door het hulp programma aan de client zijde. Er wordt gebruikgemaakt van een methode die vergelijkbaar is met die in de Dockerfile-en `azds prep`helm-grafiek wordt gegenereerd wanneer deze wordt uitgevoerd. Nadat het fout opsporingsprogramma in de installatie kopie van de toepassing is gekoppeld, wordt `azds exec`het uitgevoerd met.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende snelstarts om aan de slag te gaan met Azure Dev Spaces voor het opsporen van uw project op afstand:
+Raadpleeg de volgende Snelstartgids om aan de slag te gaan met Azure dev Spaces voor het op afstand opsporen van fouten in uw project:
 
-* [Snel herhalen en debuggen met Visual Studio Code en Java][quickstart-java]
-* [Snel herhalen en debuggen met Visual Studio Code en .NET][quickstart-netcore]
-* [Snel herhalen en debuggen met Visual Studio Code en Node.js][quickstart-node]
-* [Snel herhalen en debuggen met Visual Studio en .NET Core][quickstart-vs]
+* [Snel herhalen en fouten opsporen met Visual Studio code en Java][quickstart-java]
+* [Snel herhalen en fouten opsporen met Visual Studio code en .NET][quickstart-netcore]
+* [Snel herhalen en fouten opsporen met Visual Studio code en node. js][quickstart-node]
+* [Snel herhalen en fouten opsporen met Visual Studio en .NET core][quickstart-vs]
 
 
 [quickstart-java]: quickstart-java.md

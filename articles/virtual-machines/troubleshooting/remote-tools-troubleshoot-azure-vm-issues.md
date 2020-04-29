@@ -1,6 +1,6 @@
 ---
-title: Externe hulpprogramma's gebruiken om Azure VM-problemen op te lossen | Microsoft Documenten
-description: Meer informatie over PsExec, PowerShell-scripts en andere externe hulpprogramma's die u gebruiken om externe Azure VM-problemen op te lossen zonder RDP te gebruiken.
+title: Externe hulpprogram ma's gebruiken voor het oplossen van problemen met virtuele Azure-machines | Microsoft Docs
+description: Meer informatie over PsExec, Power shell-scripts en andere externe hulpprogram ma's die u kunt gebruiken om problemen met externe Azure-VM'S op te lossen zonder RDP te gebruiken.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -15,23 +15,23 @@ ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
 ms.openlocfilehash: d29b2b7c2b9194f20afe4c74d117847f0e343b12
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422606"
 ---
-# <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Externe hulpprogramma's gebruiken om Azure VM-problemen op te lossen
+# <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Externe hulpprogram ma's gebruiken voor het oplossen van problemen met Azure VM
 
-Wanneer u problemen op een virtuele Azure-machine (VM) oplost, u verbinding maken met de VM met behulp van de externe hulpprogramma's die in dit artikel worden besproken in plaats van het Extern bureaublad-protocol (RDP) te gebruiken.
+Wanneer u problemen met een virtuele Azure-machine (VM) oplost, kunt u verbinding maken met de VM met behulp van de externe hulpprogram ma's die in dit artikel worden besproken in plaats van de Remote Desktop Protocol (RDP) te gebruiken.
 
 ## <a name="serial-console"></a>Seriële console
 
-Gebruik een [seriële console voor Azure Virtual Machines](serial-console-windows.md) om opdrachten uit te voeren op de externe Azure VM.
+Gebruik een [seriële console voor Azure virtual machines](serial-console-windows.md) om opdrachten uit te voeren op de externe Azure-VM.
 
 ## <a name="remote-cmd"></a>Externe CMD
 
-[PsExec downloaden](https://docs.microsoft.com/sysinternals/downloads/psexec). Maak verbinding met de VM door de volgende opdracht uit te voeren:
+Down load [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec). Maak verbinding met de virtuele machine door de volgende opdracht uit te voeren:
 
 ```cmd
 psexec \\<computer>-u user -s cmd
@@ -39,27 +39,27 @@ psexec \\<computer>-u user -s cmd
 
 >[!NOTE]
 >* De opdracht moet worden uitgevoerd op een computer die zich in hetzelfde virtuele netwerk bevindt.
->* DIP of HostName kan \<worden gebruikt om computer> te vervangen.
->* De parameter -s zorgt ervoor dat de opdracht wordt aangeroepen met behulp van Systeemaccount (beheerdersmachtiging).
+>* DIP of hostnaam kan worden gebruikt om computer \<> te vervangen.
+>* De para meter-s zorgt ervoor dat de opdracht wordt aangeroepen met behulp van systeem account (Administrator-machtiging).
 >* PsExec maakt gebruik van TCP-poorten 135 en 445. Als gevolg hiervan moeten de twee poorten open zijn op de firewall.
 
-## <a name="run-command"></a>Voer de opdracht  uit
+## <a name="run-command"></a>Opdracht uitvoeren
 
-Zie [PowerShell-scripts uitvoeren in uw Windows VM met opdracht](../windows/run-command.md)uitvoeren voor meer informatie over het gebruik van de opdracht Opdracht Uitvoeren om scripts op de vm uit te voeren.
+Zie [Power shell-scripts uitvoeren in uw Windows-VM met de opdracht uitvoeren](../windows/run-command.md)voor meer informatie over het gebruik van de functie opdracht uitvoeren om scripts uit te voeren op de virtuele machine.
 
 ## <a name="custom-script-extension"></a>Aangepaste scriptextensie
 
-U de functie Aangepaste scriptextensie gebruiken om een aangepast script uit te voeren op de doel-VM. Om deze functie te kunnen gebruiken, moet aan de volgende voorwaarden worden voldaan:
+U kunt de functie aangepaste script extensie gebruiken om een aangepast script uit te voeren op de doel-VM. Als u deze functie wilt gebruiken, moet aan de volgende voor waarden worden voldaan:
 
-* De VM heeft connectiviteit.
-* Azure Virtual Machine Agent is geïnstalleerd en werkt zoals verwacht op de VM.
-* De extensie is niet eerder op de VM geïnstalleerd.
+* De virtuele machine heeft connectiviteit.
+* De agent van de virtuele machine van Azure is geïnstalleerd en werkt zoals verwacht op de VM.
+* De extensie is niet eerder geïnstalleerd op de virtuele machine.
  
-  De extensie injecteert het script alleen de eerste keer dat het wordt gebruikt. Als u deze functie later gebruikt, herkent de extensie dat deze al is gebruikt en wordt het nieuwe script niet geüpload.
+  De uitbrei ding injecteert het script alleen de eerste keer dat deze wordt gebruikt. Als u deze functie later gebruikt, detecteert de uitbrei ding dat deze al is gebruikt en uploadt het nieuwe script niet.
 
-Upload uw script naar een opslagaccount en genereer een eigen container. Voer vervolgens het volgende script uit in Azure PowerShell op een computer met connectiviteit met de VM.
+Upload uw script naar een opslag account en Genereer een eigen container. Voer vervolgens het volgende script uit in Azure PowerShell op een computer die verbinding met de virtuele machine heeft.
 
-### <a name="for-classic-deployment-model-vms"></a>Vm's voor klassiek implementatiemodel
+### <a name="for-classic-deployment-model-vms"></a>Voor het klassieke implementatie model Vm's
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
@@ -90,7 +90,7 @@ $vm = Get-AzureVM -ServiceName $vmCloudService -Name $vmName
 Set-AzureVMCustomScriptExtension "CustomScriptExtension" -VM $vm -StorageAccountName $storageAccount -StorageAccountKey $storagekey -ContainerName $container -FileName $blobName -Run $blobName | Update-AzureVM
 ```
 
-### <a name="for-azure-resource-manager-vms"></a>VMs van Azure Resource Manager
+### <a name="for-azure-resource-manager-vms"></a>Voor Azure Resource Manager Vm's
 
  
 
@@ -120,32 +120,32 @@ Set-AzureStorageBlobContent -File $localScript -Container $container -Blob $blob
 Set-AzVMCustomScriptExtension -Name "CustomScriptExtension" -ResourceGroupName $vmResourceGroup -VMName $vmName -Location $vmLocation -StorageAccountName $storageAccount -StorageAccountKey $storagekey -ContainerName $container -FileName $blobName -Run $blobName
 ```
 
-## <a name="remote-powershell"></a>Externe PowerShell
+## <a name="remote-powershell"></a>Externe Power shell
 
 >[!NOTE]
->TCP Port 5986 (HTTPS) moet open zijn, zodat u deze optie gebruiken.
+>TCP-poort 5986 (HTTPS) moet zijn geopend, zodat u deze optie kunt gebruiken.
 >
->Voor Azure Resource Manager VM's moet u poort 5986 openen in de netwerkbeveiligingsgroep (NSG). Zie Beveiligingsgroepen voor meer informatie. 
+>Voor Azure Resource Manager Vm's moet u poort 5986 openen voor de netwerk beveiligings groep (NSG). Zie beveiligings groepen voor meer informatie. 
 >
->Voor RDFE VM's moet u een eindpunt hebben met een privéhaven (5986) en een openbare haven. Dan moet je ook die openbare poort op de NSG openen.
+>Voor virtuele machines van RDFE moet u een eind punt hebben met een particuliere poort (5986) en een open bare poort. Daarna moet u die open bare poort ook openen op de NSG.
 
-### <a name="set-up-the-client-computer"></a>De clientcomputer instellen
+### <a name="set-up-the-client-computer"></a>De client computer instellen
 
-Als u PowerShell wilt gebruiken om op afstand verbinding te maken met de VIRTUELE V.D. Voeg hiervoor de VM toe aan de lijst vertrouwde hosts van PowerShell door de volgende opdracht uit te voeren, naar gelang van het geval.
+Als u Power shell wilt gebruiken om op afstand verbinding te maken met de virtuele machine, moet u eerst de client computer instellen om de verbinding toe te staan. U doet dit door de virtuele machine toe te voegen aan de lijst met vertrouwde hosts van Power shell door de volgende opdracht uit te voeren, indien van toepassing.
 
-Eén vm toevoegen aan de lijst met vertrouwde hosts:
+Eén virtuele machine toevoegen aan de lijst met vertrouwde hosts:
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value <ComputerName>
 ```
 
-Ga als u meerdere VM's toevoegt aan de lijst met vertrouwde hosts:
+Meerdere Vm's toevoegen aan de lijst met vertrouwde hosts:
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value <ComputerName1>,<ComputerName2>
 ```
 
-Ga als u alle computers toevoegen aan de lijst met vertrouwde hosts:
+Alle computers toevoegen aan de lijst met vertrouwde hosts:
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value *
@@ -153,7 +153,7 @@ Set-Item wsman:\localhost\Client\TrustedHosts -value *
 
 ### <a name="enable-remoteps-on-the-vm"></a>RemotePS inschakelen op de VM
 
-Voor VM's die zijn gemaakt met behulp van het klassieke implementatiemodel, gebruikt u de aangepaste scriptextensie om het volgende script uit te voeren:
+Voor virtuele machines die zijn gemaakt met het klassieke implementatie model, gebruikt u de aangepaste script extensie om het volgende script uit te voeren:
 
 ```powershell
 Enable-PSRemoting -Force
@@ -163,31 +163,31 @@ $command = "winrm create winrm/config/Listener?Address=*+Transport=HTTPS @{Hostn
 cmd.exe /C $command
 ```
 
-Gebruik voor Azure Resource Manager VM's voer opdrachten uit vanuit de portal om het EnableRemotePS-script uit te voeren:
+Voor Azure Resource Manager Vm's gebruikt u de opdrachten uitvoeren vanuit de portal om het EnableRemotePS-script uit te voeren:
 
-![Voer de opdracht  uit](./media/remote-tools-troubleshoot-azure-vm-issues/run-command.png)
+![Opdracht uitvoeren](./media/remote-tools-troubleshoot-azure-vm-issues/run-command.png)
 
 ### <a name="connect-to-the-vm"></a>Verbinding maken met de virtuele machine
 
-Voer de volgende opdracht uit op basis van de locatie van de clientcomputer:
+Voer de volgende opdracht uit op basis van de locatie van de client computer:
 
 * Buiten het virtuele netwerk of de implementatie
 
-  * Voer de volgende opdracht uit voor een vm die is gemaakt met behulp van het klassieke implementatiemodel:
+  * Voer de volgende opdracht uit voor een VM die is gemaakt met het klassieke implementatie model:
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
     Enter-PSSession -ComputerName  "<<CLOUDSERVICENAME.cloudapp.net>>" -port "<<PUBLIC PORT NUMBER>>" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-  * Voeg voor een VM azure resource manager eerst een DNS-naam toe aan het openbare IP-adres. Zie [Een volledig gekwalificeerde domeinnaam maken in de Azure-portal voor een Windows-vm voor](../windows/portal-create-fqdn.md)gedetailleerde stappen. Voer daarna de volgende opdracht uit:
+  * Voor een Azure Resource Manager virtuele machine voegt u eerst een DNS-naam toe aan het open bare IP-adres. Zie [een Fully Qualified Domain name maken in de Azure portal voor een Windows-VM](../windows/portal-create-fqdn.md)voor gedetailleerde stappen. Voer daarna de volgende opdracht uit:
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
     Enter-PSSession -ComputerName "<<DNSname.DataCenter.cloudapp.azure.com>>" -port "5986" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-* Voer de volgende opdracht uit in het virtuele netwerk of de volgende implementatie:
+* Voer in het virtuele netwerk of de implementatie de volgende opdracht uit:
   
   ```powershell
   $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
@@ -195,9 +195,9 @@ Voer de volgende opdracht uit op basis van de locatie van de clientcomputer:
   ```
 
 >[!NOTE] 
->Als u de SkipCaCheck-vlag instelt, wordt de vereiste om een certificaat naar de VM te importeren bij het starten van de sessie omzeild.
+>Als u de vlag SkipCaCheck instelt, wordt de vereiste voor het importeren van een certificaat naar de VM tijdens het starten van de sessie omzeild.
 
-U de cmdlet Aanroepen om een script op afstand op de VM uit te voeren.
+U kunt ook de cmdlet invoke-opdracht gebruiken om op afstand een script uit te voeren op de virtuele machine.
 
 ```powershell
 Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
@@ -206,54 +206,54 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 ## <a name="remote-registry"></a>Extern register
 
 >[!NOTE]
->TCP-poort 135 of 445 moet open zijn om deze optie te kunnen gebruiken.
+>TCP-poort 135 of 445 moet geopend zijn om deze optie te kunnen gebruiken.
 >
->Voor Azure Resource Manager VM's moet u poort 5986 openen op de NSG. Zie Beveiligingsgroepen voor meer informatie. 
+>Voor Azure Resource Manager Vm's moet u poort 5986 openen op de NSG. Zie beveiligings groepen voor meer informatie. 
 >
->Voor RDFE VM's moet u een eindpunt hebben met een privéhaven 5986 en een openbare haven. Je moet ook die openbare poort op de NSG openen.
+>Voor virtuele machines van RDFE moet u een eind punt hebben met een particuliere poort 5986 en een open bare poort. U moet deze open bare poort ook openen op de NSG.
 
-1. Open de registereditor (regedit.exe) vanuit een andere virtuele virtuele netwerk.
+1. Open de REGI ster-editor (Regedit. exe) vanaf een andere VM in hetzelfde virtuele netwerk.
 
-2. Selecteer **Netwerkregister Bestandsverbinding** > **selecteren**.
+2. Selecteer **bestand** > **Connect netwerk Registry**.
 
-   ![Registereditor](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
+   ![REGI ster-editor](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 
-3. Zoek de doel-VM op **hostnaam** of **dynamisch IP** (bij voorkeur) door deze in te voeren in het vak **De objectnaam invoeren om te selecteren.**
+3. Zoek de doel-VM op basis van de **hostnaam** of het **dynamische IP-adres** (voor keur) door deze in het vak **Geef de object naam op te** geven.
 
-   ![Voer de objectnaam in om het vak te selecteren](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
+   ![Geef de object naam op om het vak te selecteren](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
  
-4. Voer de referenties voor de doel-VM in.
+4. Voer de referenties in voor de doel-VM.
 
-5. Breng de nodige registerwijzigingen aan.
+5. Breng de benodigde wijzigingen aan in het REGI ster.
 
-## <a name="remote-services-console"></a>Console voor externe services
+## <a name="remote-services-console"></a>Externe Services-console
 
 >[!NOTE]
->TCP-poorten 135 of 445 moeten open zijn om deze optie te kunnen gebruiken.
+>TCP-poorten 135 of 445 moeten zijn geopend om deze optie te kunnen gebruiken.
 >
->Voor Azure Resource Manager VM's moet u poort 5986 openen op de NSG. Zie Beveiligingsgroepen voor meer informatie. 
+>Voor Azure Resource Manager Vm's moet u poort 5986 openen op de NSG. Zie beveiligings groepen voor meer informatie. 
 >
->Voor RDFE VM's moet u een eindpunt hebben met een privéhaven 5986 en een openbare haven. Je moet ook die openbare poort op de NSG openen.
+>Voor virtuele machines van RDFE moet u een eind punt hebben met een particuliere poort 5986 en een open bare poort. U moet deze open bare poort ook openen op de NSG.
 
-1. Open vanaf een andere VM op hetzelfde virtuele netwerk een exemplaar van **Services.msc**.
+1. Open vanuit een andere VM in hetzelfde virtuele netwerk een exemplaar van **Services. msc**.
 
-2. Klik met de rechtermuisknop op **Services (Lokaal).**
+2. Klik met de rechter muisknop op **Services (lokaal)**.
 
-3. Selecteer **Verbinding maken met een andere computer**.
+3. Selecteer **verbinding maken met een andere computer**.
 
    ![Externe service](./media/remote-tools-troubleshoot-azure-vm-issues/remote-services.png)
 
-4. Voer het dynamische IP-adres van de doel-vm in.
+4. Voer het dynamische IP-adres van de doel-VM in.
 
    ![Dynamische IP-invoer](./media/remote-tools-troubleshoot-azure-vm-issues/input-ip-address.png)
 
-5. Breng de nodige wijzigingen aan in de services.
+5. Breng de benodigde wijzigingen aan in de services.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie Enter-PSSession voor meer informatie over de cmdlet [Enter-PSSession.](https://technet.microsoft.com/library/hh849707.aspx)
-- Zie [Aangepaste scriptextensie voor Windows voor](../extensions/custom-script-classic.md)meer informatie over de aangepaste scriptextensie voor Windows.
-- PsExec is onderdeel van de [PSTools Suite.](https://download.sysinternals.com/files/PSTools.zip)
-- Zie [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools)voor meer informatie over de PSTools Suite.
+- Zie [Enter-PSSession](https://technet.microsoft.com/library/hh849707.aspx)voor meer informatie over de cmdlet Enter-PSSession.
+- Zie [aangepaste script extensie voor Windows](../extensions/custom-script-classic.md)voor meer informatie over de aangepaste script extensie voor Windows met behulp van het klassieke implementatie model.
+- PsExec maakt deel uit van de [PSTools-Suite](https://download.sysinternals.com/files/PSTools.zip).
+- Zie [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools)voor meer informatie over de PSTools-Suite.
 
 

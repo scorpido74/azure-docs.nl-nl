@@ -1,56 +1,56 @@
 ---
-title: Aks-knooppunten (Azure Kubernetes Service) automatisch herstellen
-description: Meer informatie over de functionaliteit voor automatische reparatie van knooppunten en hoe AKS kapotte werknemersknooppunten oplost.
+title: De knoop punten van de Azure Kubernetes-service (AKS) automatisch herstellen
+description: Meer informatie over de functionaliteit voor automatisch herstel van knoop punten en hoe AKS de gebroken werk knooppunten herstelt.
 services: container-service
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 9bf9df69a0a6bfa4d9f4029278d2a146811980c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80284837"
 ---
-# <a name="azure-kubernetes-service-aks-node-auto-repair"></a>Azure Kubernetes Service (AKS) knooppunt automatisch herstellen
+# <a name="azure-kubernetes-service-aks-node-auto-repair"></a>Automatische reparatie van het knoop punt Azure Kubernetes service (AKS)
 
-AKS controleert continu de status van werknemersknooppunten en voert automatische reparatie van de knooppunten uit als ze ongezond worden. In deze documentatie wordt beschreven hoe Aks (Azure Kubernetes Service) werknemersknooppunten controleert en ongezonde werknemersknooppunten herstelt.  De documentatie is om AKS-operators te informeren over het gedrag van knooppuntreparatiefunctionaliteit. Het is ook belangrijk op te merken dat Azure-platform [onderhoud uitvoert op virtuele machines][vm-updates] die problemen ervaren. AKS en Azure werken samen om serviceonderbrekingen voor uw clusters te minimaliseren.
+AKS controleert voortdurend de status van worker-knoop punten en voert automatisch herstel van de knoop punten uit als deze een slechte status hebben. In deze documentatie wordt beschreven hoe u met Azure Kubernetes service (AKS) werk knooppunten bewaakt en beschadigde werk knooppunten herstelt.  De documentatie is om AKS-Opera tors te informeren over het gedrag van de functionaliteit voor het herstellen van knoop punten. Het is ook belang rijk te weten dat het Azure-platform [onderhoud uitvoert op virtual machines][vm-updates] die problemen ondervinden. AKS en Azure werken samen om service onderbrekingen voor uw clusters te minimaliseren.
 
 > [!Important]
-> De functionaliteit voor automatische reparatie van knooppunten wordt momenteel niet ondersteund voor groepen voor windows server-knooppunt.
+> De functionaliteit voor automatisch herstellen van knoop punten wordt momenteel niet ondersteund voor Windows Server-knooppunt groepen.
 
-## <a name="how-aks-checks-for-unhealthy-nodes"></a>Hoe AKS controleert op ongezonde knooppunten
+## <a name="how-aks-checks-for-unhealthy-nodes"></a>Hoe AKS controleert op beschadigde knoop punten
 
 > [!Note]
-> AKS onderneemt herstelactie op knooppunten met het gebruikersaccount **aks-remediator**.
+> AKS neemt reparatie actie op knoop punten met het gebruikers account **AKS-** herstel bewerking.
 
-AKS gebruikt regels om te bepalen of een knooppunt een ongezonde status is en moet worden gerepareerd. AKS gebruikt de volgende regels om te bepalen of automatische reparatie nodig is.
+AKS gebruikt regels om te bepalen of een knoop punt een slechte status heeft en moet worden hersteld. AKS maakt gebruik van de volgende regels om te bepalen of automatisch herstel nodig is.
 
-* Het knooppunt rapporteert de status van **NotReady** bij opeenvolgende controles binnen een tijdsbestek van 10 minuten
-* Het knooppunt meldt geen status binnen 10 minuten
+* Het knoop punt rapporteert de status van een **loopvlak** bij opeenvolgende controles binnen een periode van tien minuten
+* Het knoop punt rapporteert geen status binnen 10 minuten
 
-U handmatig de status van uw knooppunten controleren met kubectl. 
+U kunt de status van uw knoop punten hand matig controleren met kubectl. 
 
 ```
 kubectl get nodes
 ```
 
-## <a name="how-automatic-repair-works"></a>Hoe automatische reparatie werkt
+## <a name="how-automatic-repair-works"></a>Hoe werkt automatisch herstellen?
 
 > [!Note]
-> AKS onderneemt herstelactie op knooppunten met het gebruikersaccount **aks-remediator**.
+> AKS neemt reparatie actie op knoop punten met het gebruikers account **AKS-** herstel bewerking.
 
-Dit gedrag is voor **virtuele machineschaalsets**.  Auto-repair neemt verschillende stappen om een kapot knooppunt te repareren.  Als wordt vastgesteld dat een knooppunt niet in orde is, probeert AKS verschillende herstelstappen.  De stappen worden in deze volgorde uitgevoerd:
+Dit gedrag is voor **Virtual Machine Scale sets**.  Automatisch herstel neemt verschillende stappen uit om een beschadigd knoop punt te herstellen.  Als een knoop punt wordt beschouwd als een slechte status, probeert AKS verschillende herbemiddelings stappen.  De stappen worden in deze volg orde uitgevoerd:
 
-1. Nadat de runtime van de container gedurende 10 minuten niet meer reageert, worden de falende runtime-services opnieuw gestart op het knooppunt.
-2. Als het knooppunt niet binnen 10 minuten klaar is, wordt het knooppunt opnieuw opgestart.
-3. Als het knooppunt niet binnen 30 minuten klaar is, wordt het knooppunt opnieuw weergegeven.
+1. Nadat de container runtime gedurende tien minuten niet meer reageert, worden de mislukte runtime services opnieuw gestart op het knoop punt.
+2. Als het knoop punt niet binnen tien minuten is voltooid, wordt het knoop punt opnieuw opgestart.
+3. Als het knoop punt niet binnen 30 minuten klaar is, wordt de installatie kopie van het knoop punt hersteld.
 
 > [!Note]
-> Als meerdere knooppunten niet in orde zijn, worden ze één voor één gerepareerd
+> Als meerdere knoop punten een slechte status hebben, worden ze één voor één gerepareerd
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik [beschikbaarheidszones][availability-zones] om de hoge beschikbaarheid met uw AKS-clusterworkloads te verhogen.
+Gebruik [Beschikbaarheidszones][availability-zones] om maximale Beschik baarheid te verg Roten met uw AKS-cluster werkbelastingen.
 
 <!-- LINKS - External -->
 

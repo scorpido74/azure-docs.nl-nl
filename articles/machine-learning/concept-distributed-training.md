@@ -1,7 +1,7 @@
 ---
 title: Wat is gedistribueerde training?
 titleSuffix: Azure Machine Learning
-description: Meer informatie over gedistribueerde training en hoe Azure Machine Learning dit ondersteunt.
+description: Meer informatie over gedistribueerde trainingen en hoe Azure Machine Learning dit ondersteunt.
 services: machine-learning
 ms.service: machine-learning
 author: nibaccam
@@ -10,45 +10,45 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.openlocfilehash: a0d5bf795e4759a105b9a235770f37aa10bd6751
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80385543"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Gedistribueerde training met Azure Machine Learning
 
-In dit artikel leert u over gedistribueerde training en hoe Azure Machine Learning dit ondersteunt voor deep learning-modellen. 
+In dit artikel vindt u meer informatie over gedistribueerde trainingen en hoe Azure Machine Learning deze ondersteunt voor diepe leer modellen. 
 
-In gedistribueerde training wordt de werklast om een model te trainen opgesplitst en gedeeld tussen meerdere miniprocessors, zogenaamde worker nodes. Deze werkknooppunten werken parallel om de modeltraining te versnellen. Gedistribueerde training kan worden gebruikt voor traditionele ML-modellen, maar is beter geschikt voor rekenkracht en tijdintensieve taken, zoals [deep learning](concept-deep-learning-vs-machine-learning.md) voor het trainen van diepe neurale netwerken.
+In de gedistribueerde training wordt de werk belasting voor het trainen van een model opgesplitst en gedeeld met meerdere mini processors, die werk knooppunten worden genoemd. Deze worker-knoop punten werken parallel met het versnellen van model training. Gedistribueerde training kan worden gebruikt voor traditionele ML-modellen, maar is beter geschikt voor reken-en tijdrovende taken, zoals [diepe](concept-deep-learning-vs-machine-learning.md) training voor het trainen van diepe Neural-netwerken.
 
-## <a name="deep-learning-and-distributed-training"></a>Deep learning en gedistribueerde training 
+## <a name="deep-learning-and-distributed-training"></a>Diep gaande lessen en gedistribueerde trainingen 
 
-Er zijn twee belangrijke soorten gedistribueerde opleidingen: [dataparallellisme](#data-parallelism) en [modelparallellisme.](#model-parallelism) Voor gedistribueerde training over deep learning-modellen ondersteunt de [Azure Machine Learning SDK in Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) integraties met populaire frameworks, PyTorch en TensorFlow. Beide frameworks maken gebruik van dataparallellisme voor gedistribueerde training en kunnen gebruikmaken van [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) voor het optimaliseren van rekensnelheden. 
+Er zijn twee hoofd typen gedistribueerde training: [gegevens parallellisme](#data-parallelism) en [model parallellisme](#model-parallelism). Voor gedistribueerde training over diepe leer modellen ondersteunt de [Azure machine learning SDK in python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) integraties met populaire frameworks, PyTorch en tensor flow. Beide Frameworks gebruiken gegevens parallellisme voor gedistribueerde trainingen en kunnen gebruikmaken van [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) voor het optimaliseren van reken snelheden. 
 
 * [Gedistribueerde training met PyTorch](how-to-train-pytorch.md#distributed-training)
 
-* [Gedistribueerde training met TensorFlow](how-to-train-tensorflow.md#distributed-training)
+* [Gedistribueerde training met tensor flow](how-to-train-tensorflow.md#distributed-training)
 
-Voor ML-modellen waarvoor geen gedistribueerde training nodig is, raadpleegt u [treinmodellen met Azure Machine Learning](concept-train-machine-learning-model.md#python-sdk) voor de verschillende manieren om modellen te trainen met de Python SDK.
+Voor ML-modellen waarvoor geen gedistribueerde training nodig is, raadpleegt u [modellen met Azure machine learning](concept-train-machine-learning-model.md#python-sdk) voor de verschillende manieren om modellen te trainen met behulp van de PYTHON-SDK.
 
-## <a name="data-parallelism"></a>Parallellisme van gegevens
+## <a name="data-parallelism"></a>Gegevens parallellisme
 
-Data parallellisme is het gemakkelijkst te implementeren van de twee gedistribueerde trainingsbenaderingen, en is voldoende voor de meeste use cases.
+Gegevens parallellisme is de eenvoudigste manier om de twee gedistribueerde trainings benaderingen te implementeren en is voldoende voor de meeste gebruiks scenario's.
 
-In deze benadering worden de gegevens verdeeld in partities, waarbij het aantal partities gelijk is aan het totale aantal beschikbare knooppunten in het compute cluster. Het model wordt gekopieerd in elk van deze werkknooppunten en elke werknemer werkt op zijn eigen subset van de gegevens. Houd er rekening mee dat elk knooppunt de capaciteit moet hebben om het model dat wordt getraind te ondersteunen, dat wil zeggen dat het model volledig op elk knooppunt moet passen.
+In deze benadering worden de gegevens onderverdeeld in partities, waarbij het aantal partities gelijk is aan het totale aantal beschik bare knoop punten in het berekenings cluster. Het model wordt in elk van deze worker-knoop punten gekopieerd en elke werk nemer werkt op een eigen subset van de gegevens. Houd er rekening mee dat elk knoop punt de capaciteit moet hebben voor de ondersteuning van het model dat wordt getraind. het model moet volledig op elk knoop punt passen.
 
-Elk knooppunt berekent onafhankelijk de fouten tussen zijn voorspellingen voor zijn trainingsmonsters en de gelabelde uitvoer. Elk knooppunt werkt op zijn beurt zijn model bij op basis van de fouten en moet alle wijzigingen aan de andere knooppunten doorgeven om hun bijbehorende modellen bij te werken. Dit betekent dat de werknemersknooppunten de modelparameters of verlopen moeten synchroniseren aan het einde van de batchberekening om ervoor te zorgen dat ze een consistent model trainen. 
+Elk knoop punt berekent onafhankelijk de fouten tussen de voor spellingen van de trainings voorbeelden en de gelabelde uitvoer. Elk knoop punt werkt op zijn beurt het model bij op basis van de fouten en moet alle wijzigingen door geven aan de andere knoop punten om de bijbehorende modellen bij te werken. Dit betekent dat de worker-knoop punten de model parameters, of verlopen, aan het einde van de batch berekening moeten synchroniseren om ervoor te zorgen dat ze een consistent model trainen. 
 
-## <a name="model-parallelism"></a>Modelparallelisme
+## <a name="model-parallelism"></a>Model parallellisme
 
-In modelparallellisme, ook wel netwerkparallellisme genoemd, wordt het model gesegmenteerd in verschillende onderdelen die gelijktijdig in verschillende knooppunten kunnen worden uitgevoerd en elk model wordt uitgevoerd op dezelfde gegevens. De schaalbaarheid van deze methode is afhankelijk van de mate van taakparallelisatie van het algoritme en het is complexer te implementeren dan dataparallellisme. 
+In model parallellisme, ook wel netwerk parallellisme genoemd, wordt het model gesegmenteerd in verschillende onderdelen die gelijktijdig kunnen worden uitgevoerd op verschillende knoop punten, en elk van beide worden uitgevoerd op dezelfde gegevens. De schaal baarheid van deze methode is afhankelijk van de mate van taak parallel Lise ring van het algoritme en is complexer voor implementatie dan gegevens parallellisme. 
 
-In modelparallellisme hoeven worker nodes alleen de gedeelde parameters te synchroniseren, meestal eenmaal voor elke voorwaartse of achterwaartse propagatiestap. Ook grotere modellen zijn geen probleem, omdat elk knooppunt werkt op een subsectie van het model op dezelfde trainingsgegevens.
+In model parallelie hoeven werk knooppunten alleen de gedeelde para meters te synchroniseren, meestal één keer voor elke stap voorwaarts of achterwaarts door geven. Grotere modellen zijn ook niet relevant omdat elk knoop punt wordt uitgevoerd op een subsectie van het model in dezelfde trainings gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [instellen van trainingsomgevingen](how-to-set-up-training-targets.md) met de Python SDK.
-* Zie het [referentiearchitectuurscenario](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/training-deep-learning)voor een technisch voorbeeld .
-* [Train ML-modellen met TensorFlow](how-to-train-tensorflow.md).
-* [Train ML modellen met PyTorch](how-to-train-pytorch.md). 
+* Meer informatie over het [instellen van trainings omgevingen](how-to-set-up-training-targets.md) met de PYTHON-SDK.
+* Zie het [scenario referentie architectuur](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/training-deep-learning)voor een technisch voor beeld.
+* [Train ml-modellen met tensor flow](how-to-train-tensorflow.md).
+* [Train ml-modellen met PyTorch](how-to-train-pytorch.md). 

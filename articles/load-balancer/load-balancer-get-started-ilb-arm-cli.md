@@ -1,7 +1,7 @@
 ---
-title: Een interne Basislastbalancer maken - Azure CLI
+title: Een interne Basic-Load Balancer maken-Azure CLI
 titleSuffix: Azure Load Balancer
-description: In dit artikel leert u hoe u een interne load balancer maakt met Azure CLI
+description: In dit artikel leest u hoe u een interne load balancer maakt met behulp van Azure CLI
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: allensu
 ms.openlocfilehash: 51df1936e5d8725b2243e7c0084973370139c540
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79457008"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Een interne load balancer maken met Azure CLI om taken te verdelen over VM's
@@ -62,7 +62,7 @@ In deze sectie wordt beschreven hoe u de volgende onderdelen van de load balance
 
 ### <a name="create-the-load-balancer"></a>Load balancer maken
 
-Maak een interne Load Balancer met [az-netwerk lb maak naam](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) **myLoadBalancer** die een frontend IP-configuratie genaamd **myFrontEnd**bevat, een back-end pool met de naam **myBackEndPool** die is gekoppeld aan een privé IP-adres **10.0.0.7.
+Maak een interne Load Balancer met [AZ Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) met de naam **myLoadBalancer** die een front-end-IP-configuratie met de naam **myFrontEnd**bevat, een back-end-pool met de naam **myBackEndPool** die is gekoppeld aan een privé-IP-adres * * 10.0.0.7.
 
 ```azurecli-interactive
   az network lb create \

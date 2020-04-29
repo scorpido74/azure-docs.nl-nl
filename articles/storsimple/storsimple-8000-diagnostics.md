@@ -1,6 +1,6 @@
 ---
-title: Diagnostics Tool om problemen op te lossen StorSimple 8000 apparaat | Microsoft Documenten
-description: Beschrijft de storSimple-apparaatmodi en legt uit hoe u Windows PowerShell voor StorSimple gebruiken om de apparaatmodus te wijzigen.
+title: Diagnostisch hulp programma voor het oplossen van problemen met het StorSimple 8000-apparaat | Microsoft Docs
+description: Hierin worden de StorSimple beschreven en wordt uitgelegd hoe u Windows PowerShell voor StorSimple kunt gebruiken om de modus apparaat te wijzigen.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,86 +15,86 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 48bd909eefbaea15cf6ca2427e106ad9bc0ffbb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80298748"
 ---
-# <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Gebruik het StorSimple Diagnostics Tool om problemen met apparaten uit de 8000-serie op te lossen
+# <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Het hulp programma StorSimple Diagnostics gebruiken om problemen met de 8000 Series-apparaten op te lossen
 
 ## <a name="overview"></a>Overzicht
 
-De StorSimple Diagnostics tool diagnosticeert problemen met betrekking tot de status van systeem-, prestatie-, netwerk- en hardwarecomponent voor een StorSimple-apparaat. De diagnosetool kan in verschillende scenario's worden gebruikt. Deze scenario's omvatten werkbelastingplanning, het implementeren van een StorSimple-apparaat, het beoordelen van de netwerkomgeving en het bepalen van de prestaties van een operationeel apparaat. Dit artikel geeft een overzicht van de diagnostische tool en beschrijft hoe de tool kan worden gebruikt met een StorSimple-apparaat.
+Het hulp programma StorSimple Diagnostics diagnosticeert problemen met betrekking tot de status van het systeem, de prestaties, het netwerk en het onderdeel Hardware voor een StorSimple-apparaat. Het hulp programma Diagnostics kan worden gebruikt in verschillende scenario's. Deze scenario's omvatten het plannen van werk belastingen, het implementeren van een StorSimple-apparaat, het beoordelen van de netwerk omgeving en het bepalen van de prestaties van een operationeel apparaat. Dit artikel bevat een overzicht van het diagnostische hulp programma en beschrijft hoe het hulp programma kan worden gebruikt met een StorSimple-apparaat.
 
-De diagnosetool is voornamelijk bedoeld voor on-premises apparaten uit de StorSimple 8000-serie (8100 en 8600).
+Het diagnostische hulp programma is voornamelijk bedoeld voor 8000 StorSimple-Series on-premises apparaten (8100 en 8600).
 
-## <a name="run-diagnostics-tool"></a>Diagnosegereedschap uitvoeren
+## <a name="run-diagnostics-tool"></a>Diagnostisch hulp programma uitvoeren
 
-Deze tool kan worden uitgevoerd via de Windows PowerShell-interface van uw StorSimple-apparaat. Er zijn twee manieren om toegang te krijgen tot de lokale interface van uw apparaat:
+Dit hulp programma kan worden uitgevoerd via de Windows Power shell-interface van uw StorSimple-apparaat. Er zijn twee manieren om toegang te krijgen tot de lokale interface van uw apparaat:
 
-* [Gebruik PuTTY om verbinding te maken met de seriële console van het apparaat.](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)
-* [Op afstand toegang tot de tool via de Windows PowerShell voor StorSimple](storsimple-8000-remote-connect.md).
+* [Putty gebruiken om verbinding te maken met de seriële console van het apparaat](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
+* [Extern toegang tot het hulp programma via de Windows PowerShell voor StorSimple](storsimple-8000-remote-connect.md).
 
-In dit artikel gaan we ervan uit dat u via PuTTY verbinding hebt gemaakt met de seriële console van het apparaat.
+In dit artikel wordt ervan uitgegaan dat u via PuTTy verbinding hebt gemaakt met de seriële console van het apparaat.
 
-#### <a name="to-run-the-diagnostics-tool"></a>Het diagnosegereedschap uitvoeren
+#### <a name="to-run-the-diagnostics-tool"></a>Het hulp programma voor diagnostische gegevens uitvoeren
 
-Zodra u verbinding hebt gemaakt met de Windows PowerShell-interface van het apparaat, voert u de volgende stappen uit om de cmdlet uit te voeren.
-1. Meld u aan bij de seriële console van het apparaat door de stappen te volgen in [PuTTY gebruiken om verbinding te maken met de seriële console van het apparaat](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
+Wanneer u verbinding hebt gemaakt met de Windows Power shell-interface van het apparaat, voert u de volgende stappen uit om de cmdlet uit te voeren.
+1. Meld u aan bij de seriële console van het apparaat door de stappen in [putty gebruiken te volgen om verbinding te maken met de seriële console van het apparaat](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
 
 2. Typ de volgende opdracht:
 
     `Invoke-HcsDiagnostics`
 
-    Als de scopeparameter niet is opgegeven, voert de cmdlet alle diagnostische tests uit. Deze tests omvatten systeem- en hardwarecomponentstatus, netwerk en prestaties. 
+    Als de bereik parameter niet is opgegeven, voert de cmdlet alle diagnostische tests uit. Deze tests omvatten systeem, de status van het hardwareonderdeel, het netwerk en de prestaties. 
     
-    Als u alleen een specifieke test wilt uitvoeren, geeft u de bereikparameter op. Als u bijvoorbeeld alleen de netwerktest wilt uitvoeren, typt u
+    Als u alleen een specifieke test wilt uitvoeren, geeft u de bereik parameter op. Als u bijvoorbeeld alleen de netwerk test wilt uitvoeren, typt u
 
     `Invoke-HcsDiagnostics -Scope Network`
 
-3. Selecteer en kopieer de uitvoer vanuit het PuTTY-venster naar een tekstbestand voor verdere analyse.
+3. Selecteer en kopieer de uitvoer van het PuTTy-venster naar een tekst bestand voor verdere analyse.
 
-## <a name="scenarios-to-use-the-diagnostics-tool"></a>Scenario's voor het gebruik van het diagnosegereedschap
+## <a name="scenarios-to-use-the-diagnostics-tool"></a>Scenario's voor het gebruik van het hulp programma voor diagnostische gegevens
 
-Gebruik het diagnoseprogramma om problemen op te lossen met de netwerk-, prestatie-, systeem- en hardwarestatus van het systeem. Hier zijn enkele mogelijke scenario's:
+Gebruik het diagnostische hulp programma voor het oplossen van problemen met het netwerk, de prestaties, het systeem en de hardware-status van het systeem. Hier volgen enkele mogelijke scenario's:
 
-* **Apparaat offline** - Uw StorSimple 8000-serie apparaat is offline. Echter, van de Windows PowerShell-interface, lijkt het erop dat zowel de controllers zijn up and running.
-    * U deze tool gebruiken om vervolgens de netwerkstatus te bepalen.
+* **Apparaat offline** : uw StorSimple 8000-serie apparaat is offline. Vanuit de Windows Power shell-interface lijkt het echter alsof beide controllers actief zijn.
+    * U kunt dit hulp programma gebruiken om de netwerk status te bepalen.
          
          > [!NOTE]
-         > Gebruik deze tool niet om de prestaties en netwerkinstellingen op een apparaat te beoordelen vóór de registratie (of configureren via de wizard Setup). Er wordt een geldig IP-adres aan het apparaat toegewezen tijdens de wizard setup en registratie. U deze cmdlet, op een apparaat dat niet is geregistreerd, voor de gezondheid van de hardware en het systeem. Gebruik bijvoorbeeld de bereikparameter:
+         > Gebruik dit hulp programma niet om de prestaties en netwerk instellingen op een apparaat te beoordelen vóór de registratie (of configureren via de wizard Setup). Er wordt een geldig IP-adres toegewezen aan het apparaat tijdens de installatie wizard en registratie. U kunt deze cmdlet uitvoeren op een apparaat dat niet is geregistreerd voor hardware-status en systeem. Gebruik de bereik parameter, bijvoorbeeld:
          >
          > `Invoke-HcsDiagnostics -Scope Hardware`
          >
          > `Invoke-HcsDiagnostics -Scope System`
 
-* **Permanente apparaatproblemen** - U ondervindt apparaatproblemen die lijken te blijven bestaan. Registratie faalt bijvoorbeeld. U ook apparaatproblemen ondervinden nadat het apparaat een tijdje is geregistreerd en operationeel is.
-    * Gebruik deze tool in dit geval voor voorbereidende probleemoplossing voordat u een serviceaanvraag registreert bij Microsoft Support. We raden u aan deze tool uit te voeren en de uitvoer van deze tool vast te leggen. U deze uitvoer vervolgens aan Ondersteuning verstrekken om het oplossen van problemen te versnellen.
-    * Als er hardwareonderdelen of clusterfouten zijn, moet u zich aanmelden bij een ondersteuningsaanvraag.
+* **Problemen met persistent apparaat** -u ondervindt problemen met het apparaat dat persistent lijkt te zijn. Zo mislukt de registratie. U kunt ook hardwareproblemen ondervinden nadat het apparaat is geregistreerd en operationeel is.
+    * In dit geval gebruikt u dit hulp programma voor het oplossen van problemen voordat u een service aanvraag registreert bij Microsoft Ondersteuning. U wordt aangeraden dit hulp programma uit te voeren en de uitvoer van dit hulp programma vast te leggen. Vervolgens kunt u deze uitvoer opgeven ter ondersteuning van het versnellen van het oplossen van problemen.
+    * Als er hardware-onderdelen of cluster fouten zijn, moet u zich aanmelden bij een Ondersteuningsaanvraag.
 
-* **Lage apparaatprestaties** - Uw StorSimple-apparaat is traag.
-    * Voer in dit geval deze cmdlet uit met de bereikparameter ingesteld op prestaties. Analyseer de output. U krijgt de cloud read-write latencies. Gebruik de gerapporteerde latencies als maximaal haalbare doelstelling, factor in sommige overhead voor de interne gegevensverwerking en implementeer vervolgens de workloads op het systeem. Ga voor meer informatie naar [De netwerktest gebruiken om de prestaties van het apparaat op te lossen.](#network-test)
+* **Prestaties van minder apparaat** : uw StorSimple-apparaat is traag.
+    * In dit geval voert u deze cmdlet uit met de bereik parameter ingesteld op prestaties. Analyseer de uitvoer. U krijgt de latentie voor lezen/schrijven in de Cloud. Gebruik de gerapporteerde latenties als Maxi maal Haal bare doel, factor in enige overhead voor het verwerken van interne gegevens en implementeer vervolgens de werk belastingen op het systeem. Ga voor meer informatie naar [gebruik van de netwerk test om de prestaties van het apparaat op te lossen](#network-test).
 
 
-## <a name="diagnostics-test-and-sample-outputs"></a>Diagnostische test en monsteruitgangen
+## <a name="diagnostics-test-and-sample-outputs"></a>Diagnostische tests en voorbeeld uitvoer
 
-### <a name="hardware-test"></a>Hardwaretest
+### <a name="hardware-test"></a>Hardware testen
 
-Deze test bepaalt de status van de hardwarecomponenten, de USM-firmware en de schijffirmware die op uw systeem wordt uitgevoerd.
+Deze test bepaalt de status van de hardwareonderdelen, de eigenschappen van-firmware en de schijf firmware die op uw systeem wordt uitgevoerd.
 
-* De gerapporteerde hardwarecomponenten zijn onderdelen die de test hebben mislukt of die niet in het systeem aanwezig zijn.
-* De FIRMWARE- en schijffirmwareversies van de USM worden gerapporteerd voor de controller 0, Controller 1 en gedeelde componenten in uw systeem. Ga voor een volledige lijst met hardwarecomponenten naar:
+* De hardware-onderdelen die zijn gerapporteerd, zijn de onderdelen waarvan de test is mislukt of die niet aanwezig zijn in het systeem.
+* De eigenschappen van firmware en de firmware versie van de schijf worden gerapporteerd voor de controller 0, controller 1 en gedeelde onderdelen in uw systeem. Voor een volledige lijst met hardwareonderdelen gaat u naar:
 
-    * [Componenten in de primaire behuizing](storsimple-8000-monitor-hardware-status.md#component-list-for-primary-enclosure-of-storsimple-device)
-    * [Componenten in EBOD-behuizing](storsimple-8000-monitor-hardware-status.md#component-list-for-ebod-enclosure-of-storsimple-device)
+    * [Onderdelen in primaire behuizing](storsimple-8000-monitor-hardware-status.md#component-list-for-primary-enclosure-of-storsimple-device)
+    * [Onderdelen in EBOD Enclosure](storsimple-8000-monitor-hardware-status.md#component-list-for-ebod-enclosure-of-storsimple-device)
 
 > [!NOTE]
-> Als de hardwaretestonderdelen rapporteert, [meldt u zich aan bij een serviceaanvraag met Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+> Als de hardware-test mislukte onderdelen rapporteert, [meldt u zich aan bij een service aanvraag met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md).
 
-#### <a name="sample-output-of-hardware-test-run-on-an-8100-device"></a>Voorbeelduitvoer van hardwaretests op een 8100-apparaat
+#### <a name="sample-output-of-hardware-test-run-on-an-8100-device"></a>Voorbeeld uitvoer van de test uitvoering van een hardware op een 8100-apparaat
 
-Hier is een voorbeeld uitgang van een StorSimple 8100 apparaat. In het 8100-modelapparaat is de EBOD-behuizing niet aanwezig. Daarom worden de ebod-controllercomponenten niet gerapporteerd.
+Hier volgt een voor beeld van een uitvoer van een StorSimple 8100-apparaat. In het 8100-model apparaat is de EBOD Enclosure niet aanwezig. Daarom worden de onderdelen van de EBOD-controller niet gerapporteerd.
 
 ```
 Controller0>Invoke-HcsDiagnostics -Scope Hardware
@@ -204,19 +204,19 @@ DisksFirmware       : SmrtStor:TXA2D20400GA6XYR:KZ50
 --------------------------------------------------
 ```
 
-### <a name="system-test"></a>Systeemtest
+### <a name="system-test"></a>Systeem test
 
-Deze test rapporteert de systeeminformatie, de beschikbare updates, de clusterinformatie en de servicegegevens voor uw apparaat.
+Deze test rapporteert de systeem gegevens, de beschik bare updates, de cluster gegevens en de service-informatie voor uw apparaat.
 
-* De systeeminformatie omvat het model, het serienummer van het apparaat, de tijdzone, de status van de controller en de gedetailleerde softwareversie die op het systeem wordt uitgevoerd. Als u de verschillende systeemparameters wilt begrijpen die als uitvoer worden gerapporteerd, gaat u naar [Systeeminformatie interpreteren](#appendix-interpreting-system-information).
+* De systeem informatie omvat het model, serie nummer van het apparaat, de tijd zone, de controller status en de gedetailleerde software versie die op het systeem wordt uitgevoerd. Om inzicht te krijgen in de verschillende systeem parameters die als uitvoer zijn gerapporteerd, gaat u naar [systeem informatie interpreteren](#appendix-interpreting-system-information).
 
-* De beschikbaarheid van de update rapporteert of de reguliere en onderhoudsmodi beschikbaar zijn en de bijbehorende pakketnamen. Als `RegularUpdates` `MaintenanceModeUpdates` en `false`zijn, geeft dit aan dat de updates niet beschikbaar zijn. Uw apparaat is up-to-date.
-* De clusterinformatie bevat de informatie over verschillende logische componenten van alle HCS-clustergroepen en hun respectieve statussen. Als u een offline clustergroep ziet in dit gedeelte van het rapport, neemt u [contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md).
-* De service-informatie bevat de namen en statussen van alle HCS- en CiS-services die op uw apparaat worden uitgevoerd. Deze informatie is handig voor de Microsoft Support bij het oplossen van het apparaatprobleem.
+* De beschik baarheid van de Update meldt of de standaard-en onderhouds modus beschikbaar zijn en de bijbehorende pakket namen. Als `RegularUpdates` dat `MaintenanceModeUpdates` zo `false`is, geeft dit aan dat de updates niet beschikbaar zijn. Het apparaat is up-to-date.
+* De cluster informatie bevat de informatie over de verschillende logische onderdelen van alle HCS-cluster groepen en de bijbehorende statussen. Als u in deze sectie van het rapport een offline cluster groep ziet, [neemt u contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md).
+* De service-informatie bevat de namen en statussen van alle HCS-en CiS-services die op het apparaat worden uitgevoerd. Deze informatie is nuttig voor de Microsoft Ondersteuning bij het oplossen van problemen met het apparaat.
 
-#### <a name="sample-output-of-system-test-run-on-an-8100-device"></a>Voorbeelduitvoer van systeemtests op een 8100-apparaat
+#### <a name="sample-output-of-system-test-run-on-an-8100-device"></a>Voorbeeld uitvoer van de test uitvoering van een systeem op een 8100-apparaat
 
-Hier is een voorbeeld uitvoer van het systeem test uitgevoerd op een 8100 apparaat.
+Hier volgt een voor beeld van de uitvoer van de systeem test op een 8100-apparaat.
 
 ```
 Controller0>Invoke-HcsDiagnostics -Scope System
@@ -321,24 +321,24 @@ hcs_startup                                   Stopped hcs_startup
 --------------------------------------------------
 ```
 
-### <a name="network-test"></a>Netwerktest
+### <a name="network-test"></a>Netwerk test
 
-Deze test valideert de status van de netwerkinterfaces, poorten, DNS- en NTP-serverconnectiviteit, TLS/SSL-certificaat, opslagaccountreferenties, connectiviteit met de updateservers en webproxyconnectiviteit op uw StorSimple-apparaat.
+Deze test valideert de status van de netwerk interfaces, poorten, DNS-en NTP-server connectiviteit, TLS/SSL-certificaat, referenties van het opslag account, de connectiviteit met de update servers en de connectiviteit van webproxy op uw StorSimple-apparaat.
 
-#### <a name="sample-output-of-network-test-when-only-data0-is-enabled"></a>Voorbeelduitvoer van netwerktest wanneer alleen DATA0 is ingeschakeld
+#### <a name="sample-output-of-network-test-when-only-data0-is-enabled"></a>Voorbeeld uitvoer van netwerk test wanneer alleen DATA0 is ingeschakeld
 
-Hier is een voorbeeld van de 8100 apparaat. U in de uitvoer zien dat:
-* Alleen DATA 0- en DATA 1-netwerkinterfaces zijn ingeschakeld en geconfigureerd.
-* GEGEVENS 2 - 5 zijn niet ingeschakeld in de portal.
-* De DNS-serverconfiguratie is geldig en het apparaat kan verbinding maken via de DNS-server.
-* De NTP-serverconnectiviteit is ook prima.
-* Havens 80 en 443 zijn open. Poort 9354 is echter geblokkeerd. Op basis van de [systeemnetwerkvereisten](storsimple-system-requirements.md)moet u deze poort openen voor de communicatie van de servicebus.
-* De TLS/SSL-certificering is geldig.
-* Het apparaat kan verbinding maken met het opslagaccount: _myss8000storageacct_.
-* De verbinding met Update-servers is geldig.
+Hier volgt een voor beeld van de uitvoer van het 8100-apparaat. U kunt in de uitvoer zien dat:
+* Alleen DATA 0-en DATA 1-netwerk interfaces zijn ingeschakeld en geconfigureerd.
+* DATA 2-5 zijn niet ingeschakeld in de portal.
+* De configuratie van de DNS-server is geldig en het apparaat kan verbinding maken via de DNS-server.
+* De NTP-server verbinding is ook prima.
+* De poorten 80 en 443 zijn geopend. Poort 9354 is echter geblokkeerd. Op basis van de [systeem netwerk vereisten](storsimple-system-requirements.md)moet u deze poort openen voor de service bus-communicatie.
+* Het TLS/SSL-certificaat is geldig.
+* Het apparaat kan verbinding maken met het opslag account: _myss8000storageacct_.
+* De verbinding met update servers is geldig.
 * De webproxy is niet geconfigureerd op dit apparaat.
 
-#### <a name="sample-output-of-network-test-when-data0-and-data1-are-enabled"></a>Voorbeelduitvoer van netwerktest wanneer DATA0 en DATA1 zijn ingeschakeld
+#### <a name="sample-output-of-network-test-when-data0-and-data1-are-enabled"></a>Voorbeeld uitvoer van netwerk test wanneer DATA0 en DATA1 zijn ingeschakeld
 
 ```
 Controller0>Invoke-HcsDiagnostics -Scope Network
@@ -368,31 +368,31 @@ Web proxy                               Not enabled         Web proxy is not...
 
 ### <a name="performance-test"></a>Prestatietest
 
-Deze test rapporteert de cloudprestaties via de latencies voor het schrijven van cloud-schrijfresultaten voor uw apparaat. Deze tool kan worden gebruikt om een basislijn vast te stellen van de cloudprestaties die u bereiken met StorSimple. De tool rapporteert de maximale prestaties (best case scenario voor lees-schrijf latencies) die u krijgen voor uw verbinding.
+Deze test rapporteert de prestaties van de Cloud via de latentie lees-schrijf bewerkingen in de Cloud voor uw apparaat. Dit hulp programma kan worden gebruikt om een basis lijn te maken van de prestaties van de cloud die u kunt realiseren met StorSimple. Het hulp programma rapporteert het maximale prestatie niveau (een beste scenario voor latentie Lees bewerkingen) dat u voor uw verbinding kunt krijgen.
 
-Aangezien de tool de maximaal haalbare prestaties rapporteert, kunnen we de gerapporteerde lees-schrijflatencies gebruiken als doelen bij het implementeren van de workloads.
+Wanneer het hulp programma de Maxi maal Haal bare prestaties rapporteert, kunnen we de gerapporteerde wacht tijden voor lezen en schrijven gebruiken als doelen bij het implementeren van de werk belastingen.
 
-De test simuleert de blobformaten die zijn gekoppeld aan de verschillende volumetypen op het apparaat. Regelmatige gelaagde en back-ups van lokaal vastgemaakte volumes gebruiken een blobgrootte van 64 KB. Gelaagde volumes met aangevinkte archiefoptie gebruiken de grootte van 512 KB blobgegevens. Als uw apparaat gelaagde en lokaal vastgemaakte volumes heeft geconfigureerd, wordt alleen de test uitgevoerd die overeenkomt met de grootte van de 64 KB blobgegevens.
+De test simuleert de BLOB-grootten die zijn gekoppeld aan de verschillende volume typen op het apparaat. Normale lagen en back-ups van lokaal vastgemaakte volumes gebruiken een grootte van 64 KB-blobs. Gelaagde volumes met de optie Archief selectie vakje grootte van 512 KB BLOB-gegevens. Als uw apparaat belaagde en lokaal vastgemaakte volumes heeft geconfigureerd, wordt alleen de test uitgevoerd die overeenkomt met de grootte van 64 KB BLOB-gegevens.
 
-Voer de volgende stappen uit om dit gereedschap te gebruiken:
+Als u dit hulp programma wilt gebruiken, voert u de volgende stappen uit:
 
-1.  Maak eerst een mix van gelaagde volumes en gelaagde volumes waarbij de gearchiveerde optie is ingeschakeld. Deze actie zorgt ervoor dat de tool de tests uitvoert voor zowel 64 KB- als 512 KB-blobformaten.
+1.  Maak eerst een combi natie van gelaagde volumes en gelaagde volumes met de optie gearchiveerd ingeschakeld. Met deze actie zorgt u ervoor dat het hulp programma de tests uitvoert voor zowel 64 KB als 512 KB-BLOB-groottes.
 
 2. Voer de cmdlet uit nadat u de volumes hebt gemaakt en geconfigureerd. Type:
 
     `Invoke-HcsDiagnostics -Scope Performance`
 
-3. Noteer de lees-schrijflatencies die door het hulpprogramma worden gerapporteerd. Deze test kan enkele minuten duren voordat de resultaten worden gerapporteerd.
+3. Noteer de wacht tijden voor lezen en schrijven die door het hulp programma worden gerapporteerd. Het uitvoeren van deze test kan enkele minuten duren voordat de resultaten worden gerapporteerd.
 
-4. Als de verbindingslatencies allemaal onder het verwachte bereik vallen, kunnen de latencies die door het hulpprogramma worden gerapporteerd, worden gebruikt als maximaal haalbaar doel bij het implementeren van de workloads. Factor in sommige overhead voor interne gegevensverwerking.
+4. Als de latentie van de verbinding zich allemaal onder het verwachte bereik bevinden, kunnen de latenties die door het hulp programma worden gerapporteerd, worden gebruikt als Maxi maal Haal bare doel bij het implementeren van de werk belastingen. Factor in enige overhead voor het verwerken van interne gegevens.
 
-    Als de lees-schrijflatencies die door het diagnoseprogramma worden gerapporteerd hoog zijn:
+    Als de latentie voor lees bewerkingen die is gerapporteerd door het diagnostische hulp programma hoog is:
 
-    1. Configureer Storage Analytics voor blob-services en analyseer de uitvoer om inzicht te krijgen in de latencies voor het Azure-opslagaccount. Ga voor gedetailleerde instructies naar [Het inschakelen en configureren van Storage Analytics](../storage/common/storage-enable-and-view-metrics.md). Als deze latencies ook hoog en vergelijkbaar zijn met de nummers die u hebt ontvangen van het hulpprogramma StorSimple Diagnostics, moet u een serviceaanvraag registreren met Azure-opslag.
+    1. Configureer Opslaganalyse voor BLOB-Services en analyseer de uitvoer om inzicht te krijgen in de latenties voor het Azure-opslag account. Ga naar [Opslaganalyse inschakelen en configureren](../storage/common/storage-enable-and-view-metrics.md)voor gedetailleerde instructies. Als deze latenties ook hoog zijn en vergelijkbaar zijn met de getallen die u hebt ontvangen van het hulp programma StorSimple Diagnostics, moet u een service aanvraag registreren bij Azure Storage.
 
-    2. Als de latenomvan het opslagaccount laag is, neemt u contact op met uw netwerkbeheerder om eventuele latentieproblemen in uw netwerk te onderzoeken.
+    2. Als de wacht tijden van het opslag account laag zijn, neemt u contact op met uw netwerk beheerder om latentie problemen in uw netwerk te onderzoeken.
 
-#### <a name="sample-output-of-performance-test-run-on-an-8100-device"></a>Voorbeelduitvoer van prestatietests op een 8100-apparaat
+#### <a name="sample-output-of-performance-test-run-on-an-8100-device"></a>Voorbeeld uitvoer van de prestatie test wordt uitgevoerd op een 8100-apparaat
 
 ```
 Controller0>Invoke-HcsDiagnostics -Scope Performance
@@ -410,36 +410,36 @@ Cloud read latency: 4924 ms using credential 'myss8000storageacct', blob size '5
 Controller0>
 ```
 
-## <a name="appendix-interpreting-system-information"></a>Aanhangsel: interpretatie van systeeminformatie
+## <a name="appendix-interpreting-system-information"></a>Bijlage: systeem informatie interpreteren
 
-Hier is een tabel waarin wordt beschreven wat de verschillende Windows PowerShell-parameters in de systeeminformatiekaart aan. 
+Hier volgt een tabel met een beschrijving van de verschillende Windows Power shell-para meters in de systeem informatie worden toegewezen aan. 
 
-| PowerShell-parameter    | Beschrijving  |
+| Power shell-para meter    | Beschrijving  |
 |-------------------------|------------------|
 | Exemplaar-id             | Elke controller heeft een unieke id of een GUID die eraan is gekoppeld.|
-| Name                    | De vriendelijke naam van het apparaat zoals geconfigureerd via de Azure-portal tijdens de implementatie van het apparaat. De standaardvriendelijke naam is het serienummer van het apparaat. |
+| Naam                    | De beschrijvende naam van het apparaat, zoals geconfigureerd via de Azure Portal tijdens de implementatie van het apparaat. De standaard beschrijvende naam is het serie nummer van het apparaat. |
 | Model                   | Het model van uw StorSimple 8000-serie apparaat. Het model kan 8100 of 8600 zijn.|
-| SerialNumber            | Het serienummer van het apparaat wordt toegewezen in de fabriek en is 15 tekens lang. 8600-SHX0991003G44HT geeft bijvoorbeeld aan:<br> 8600 – Is het apparaatmodel.<br>SHX – Is de productielocatie.<br> 0991003 - Is een specifiek product. <br> G44HT- de laatste 5 cijfers worden verhoogd om unieke serienummers te maken. Dit is mogelijk geen sequentiële set.|
-| Tijdzone                | De apparaattijdzone zoals geconfigureerd in de Azure-portal tijdens de implementatie van het apparaat.|
-| CurrentController (CurrentController)       | De controller waarmee u bent verbonden via de Windows PowerShell-interface van uw StorSimple-apparaat.|
-| ActiveController (ActiveController)        | De controller die actief is op uw apparaat en alle netwerk- en schijfbewerkingen regelt. Dit kan Controller 0 of Controller 1 zijn.  |
-| Controller0Status       | De status van Controller 0 op uw apparaat. De status van de controller kan normaal zijn, in herstelmodus of onbereikbaar.|
-| Controller1Status       | De status van Controller 1 op uw apparaat.  De status van de controller kan normaal zijn, in herstelmodus of onbereikbaar.|
-| SystemMode SystemMode              | De algehele status van uw StorSimple-apparaat. De status van het apparaat kan normaal zijn, onderhoud of buiten gebruik worden gesteld (komt overeen met gedeactiveerd in de Azure-portal).|
-| FriendlySoftwareVersie | De vriendelijke string die overeenkomt met de apparaatsoftwareversie. Voor een systeem met Update 4 zou de vriendelijke softwareversie StorSimple 8000 Series Update 4.0 zijn.|
-| HcsSoftwareVersie      | De HCS-softwareversie die op uw apparaat wordt uitgevoerd. Zo is de HCS-softwareversie die overeenkomt met StorSimple 8000 Series Update 4.0 6.3.9600.17820. |
-| ApiVersie              | De softwareversie van de Windows PowerShell API van het HCS-apparaat.|
-| VhdVersie              | De softwareversie van het fabrieksbeeld waarmee het apparaat is verzonden. Als u uw apparaat opnieuw instelt op standaardinstellingen in de fabriek, wordt deze softwareversie uitgevoerd.|
-| OSVersion               | De softwareversie van het Windows Server-besturingssysteem die op het apparaat wordt uitgevoerd. Het StorSimple-apparaat is gebaseerd op de Windows Server 2012 R2 die overeenkomt met 6.3.9600.|
-| CisAgentVersie         | De versie voor uw Cis-agent die op uw StorSimple-apparaat draait. Deze agent helpt te communiceren met de StorSimple Manager-service die in Azure wordt uitgevoerd.|
-| MdsAgentVersie         | De versie die overeenkomt met de Mds-agent die op uw StorSimple-apparaat wordt uitgevoerd. Deze agent verplaatst gegevens naar de Monitoring and Diagnostics Service (MDS).|
-| Lsisas2Versie          | De versie die overeenkomt met de LSI-stuurprogramma's op uw StorSimple-apparaat.|
+| SerialNumber            | Het serie nummer van het apparaat wordt toegewezen aan de fabriek en is 15 tekens lang. 8600-SHX0991003G44HT geeft bijvoorbeeld het volgende aan:<br> 8600: is het model van het apparaat.<br>SHX: is de productie site.<br> 0991003-is een specifiek product. <br> G44HT: de laatste vijf cijfers worden verhoogd om unieke serie nummers te maken. Dit kan geen opeenvolgende set zijn.|
+| Tijdzone                | De tijd zone van het apparaat zoals geconfigureerd in de Azure Portal tijdens de implementatie van het apparaat.|
+| CurrentController       | De controller waarmee u verbinding hebt via de Windows Power shell-interface van uw StorSimple-apparaat.|
+| ActiveController        | De controller die actief is op uw apparaat en die alle netwerk-en schijf bewerkingen beheert. Dit kan controller 0 of controller 1 zijn.  |
+| Controller0Status       | De status van controller 0 op het apparaat. De controller status kan normaal, in de herstel modus of onbereikbaar zijn.|
+| Controller1Status       | De status van controller 1 op het apparaat.  De controller status kan normaal, in de herstel modus of onbereikbaar zijn.|
+| SystemMode              | De algemene status van uw StorSimple-apparaat. De apparaatstatus kan normaal, onderhoud of uit bedrijf worden genomen (komt overeen met deactiveren in de Azure Portal).|
+| FriendlySoftwareVersion | De beschrijvende teken reeks die overeenkomt met de versie van de apparaatsoftware. Voor een systeem waarop update 4 wordt uitgevoerd, is de beschrijvende software versie StorSimple 8000 Series update 4,0.|
+| HcsSoftwareVersion      | De versie van de HCS-software die op uw apparaat wordt uitgevoerd. De HCS-software versie die overeenkomt met StorSimple 8000 Series update 4,0 is bijvoorbeeld 6.3.9600.17820. |
+| ApiVersion              | De software versie van de Windows Power shell-API van het HCS-apparaat.|
+| VhdVersion              | De software versie van de fabrieks installatie kopie waarmee het apparaat is geleverd. Als u de fabrieks instellingen van uw apparaat herstelt, wordt deze software versie uitgevoerd.|
+| OSVersion               | De software versie van het Windows Server-besturings systeem dat op het apparaat wordt uitgevoerd. Het StorSimple-apparaat is gebaseerd op de Windows Server 2012 R2 die overeenkomt met 6.3.9600.|
+| CisAgentVersion         | De versie van de CIS-agent die wordt uitgevoerd op uw StorSimple-apparaat. Deze agent helpt te communiceren met de StorSimple Manager-service die wordt uitgevoerd in Azure.|
+| MdsAgentVersion         | De versie die overeenkomt met de MDS-agent die wordt uitgevoerd op uw StorSimple-apparaat. Met deze agent worden gegevens verplaatst naar de service bewaking en diagnose.|
+| Lsisas2Version          | De versie die overeenkomt met de LSI-Stuur Programma's op uw StorSimple-apparaat.|
 | Capaciteit                | De totale capaciteit van het apparaat in bytes.|
-| RemoteManagementMode    | Geeft aan of het apparaat op afstand kan worden beheerd via de Windows PowerShell-interface. |
-| FipsMode                | Geeft aan of de FIPS-modus (Federal Information Processing Standard) van de Verenigde Staten is ingeschakeld op uw apparaat. De FIPS 140-standaard definieert cryptografische algoritmen die zijn goedgekeurd voor gebruik door computersystemen van de Amerikaanse federale overheid voor de bescherming van gevoelige gegevens. Voor apparaten met Update 4 of hoger is de FIPS-modus standaard ingeschakeld. |
+| RemoteManagementMode    | Hiermee wordt aangegeven of het apparaat extern kan worden beheerd via de Windows Power shell-interface. |
+| FipsMode                | Hiermee geeft u op of de FIPS-modus (Verenigde Staten Federal Information Processing Standard) is ingeschakeld op uw apparaat. De FIPS 140-standaard definieert cryptografische algoritmen die zijn goedgekeurd voor gebruik door Amerikaanse Federal Government-computer systemen voor de beveiliging van gevoelige gegevens. Voor apparaten met update 4 of hoger is de FIPS-modus standaard ingeschakeld. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie [over de syntaxis van de cmdlet Invoke-HcsDiagnostics](https://technet.microsoft.com/library/mt795371.aspx).
+* Meer informatie over de [syntaxis van de cmdlet invoke-HcsDiagnostics](https://technet.microsoft.com/library/mt795371.aspx).
 
-* Meer informatie over het [oplossen van implementatieproblemen](storsimple-troubleshoot-deployment.md) op uw StorSimple-apparaat.
+* Meer informatie over het [oplossen van implementatie problemen](storsimple-troubleshoot-deployment.md) op uw StorSimple-apparaat.

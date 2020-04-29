@@ -1,6 +1,6 @@
 ---
-title: Postbode configureren - Azure Digital Twins | Microsoft Documenten
-description: Meer informatie over het configureren en gebruiken van Postman om de Azure Digital Twins API's te testen.
+title: Postman-Azure Digital Apparaatdubbels configureren | Microsoft Docs
+description: Meer informatie over het configureren en gebruiken van Postman voor het testen van de Azure Digital Apparaatdubbels-Api's.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,101 +9,101 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: ffcfb4f6ec5f6c654d0b243af85034ab575e0d88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80297161"
 ---
-# <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postbode configureren voor Azure Digital Twins
+# <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postman configureren voor Azure Digital Apparaatdubbels
 
-In dit artikel wordt beschreven hoe u de Postman REST-client configureert om te communiceren met en de Azure Digital Twins Management API's te testen. In het bijzonder beschrijft het:
+In dit artikel wordt beschreven hoe u de Postman REST-client kunt configureren om te communiceren met en de Azure Digital Apparaatdubbels Management-Api's te testen. In het bijzonder wordt beschreven:
 
-* Een Azure Active Directory-toepassing configureren om de impliciete subsidiestroom van OAuth 2.0 te gebruiken.
-* De Postman REST-client gebruiken om HTTP-aanvragen voor tokendragende producten te maken voor uw beheer-API's.
-* Hoe postman te gebruiken om meerdelige POST-verzoeken te doen aan uw Management API's.
+* Een Azure Active Directory-toepassing configureren voor het gebruik van de impliciete OAuth 2,0-toekennings stroom.
+* Het gebruik van de Postman REST-client om token-HTTP-aanvragen te maken voor uw beheer-Api's.
+* Postman gebruiken om meerdelige POST-aanvragen te maken voor uw beheer-Api's.
 
-## <a name="postman-summary"></a>Postman samenvatting
+## <a name="postman-summary"></a>Overzicht van postman
 
-Ga aan de slag met Azure Digital Twins met behulp van een REST-clienttool zoals [Postman](https://www.getpostman.com/) om uw lokale testomgeving voor te bereiden. De Postman-client helpt om snel complexe HTTP-aanvragen te maken. Download de desktopversie van de Postman-client door naar [www.getpostman.com/apps](https://www.getpostman.com/apps).
+Ga aan de slag met Azure Digital Apparaatdubbels door gebruik te maken van een REST-client hulpprogramma, zoals [postman](https://www.getpostman.com/) , om uw lokale test omgeving voor te bereiden. De Postman-client helpt snel complexe HTTP-aanvragen te maken. Down load de desktop versie van de Postman-client door naar [www.getpostman.com/apps](https://www.getpostman.com/apps)te gaan.
 
-[Postman](https://www.getpostman.com/) is een REST-testtool die belangrijke HTTP-aanvraagfunctionaliteiten in een nuttige gui op desktop en plug-in lokaliseert.
+[Postman](https://www.getpostman.com/) is een hulp programma voor rest testen dat de belangrijkste functies voor HTTP-aanvragen in een handige, op bureau blad gebaseerde gebruikers interface zoekt.
 
-Via de Postman-client kunnen ontwikkelaars van oplossingen het soort HTTP-aanvraag opgeven (*POST*, *GET*, *UPDATE*, *PATCH*en *Delete),* API-eindpunt om aan te roepen en het gebruik van TLS. Postman ondersteunt ook het toevoegen van HTTP-aanvraagkoppen, parameters, formuliergegevens en -instanties.
+Met de Postman-client kunnen ontwikkel aars van oplossingen het type HTTP-aanvraag (*post*, *Get*, *Update*, *patch*en *Delete*), het API-eind punt voor het aanroepen en het gebruik van TLS opgeven. Postman biedt ook ondersteuning voor het toevoegen van HTTP-aanvraag headers, para meters, formulier gegevens en instanties.
 
-## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>Azure Active Directory configureren om de impliciete subsidiestroom van OAuth 2.0 te gebruiken
+## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>Azure Active Directory configureren voor het gebruik van de OAuth 2,0 impliciete toekennings stroom
 
-1. Volg de stappen in [de Quickstart](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) om een Azure Active Directory-toepassing te maken en te configureren. U ook een bestaande app-registratie opnieuw gebruiken.
+1. Volg de stappen in [de Quick](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) start om een Azure Active Directory-toepassing te maken en te configureren. U kunt ook een bestaande app-registratie hergebruiken.
 
-    [![Een nieuwe postman redirect URI configureren](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
+    [![Een nieuwe postman-omleidings-URI configureren](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
-1. Voeg nu een **OmleidingsURI** toe aan `https://www.getpostman.com/oauth2/callback`.
+1. Voeg nu een **omleidings** - `https://www.getpostman.com/oauth2/callback`URI toe aan.
 
-1. Schakel het selectievakje Impliciete > **toekenningstoegangstokens** in om de impliciete subsidiestroom van OAuth 2.0 te kunnen gebruiken. **Implicit grant** Selecteer **Configureren**en vervolgens **Opslaan**.
+1. Schakel het selectie vakje **impliciete** > **toegangs tokens** in om toe te staan dat de OAuth 2,0 impliciete toekennings stroom moet worden gebruikt. Selecteer **configureren**en vervolgens **Opslaan**.
 
 1. Kopieer de **client-id** van uw Azure Active Directory-app.
 
-## <a name="obtain-an-oauth-20-token"></a>Een OAuth 2.0-token verkrijgen
+## <a name="obtain-an-oauth-20-token"></a>Een OAuth 2,0-token verkrijgen
 
 [!INCLUDE [digital-twins-management-api](../../includes/digital-twins-management-api.md)]
 
-Postman instellen en configureren om een Azure Active Directory-token te verkrijgen. Vervolgens moet u een geverifieerd HTTP-verzoek indienen bij Azure Digital Twins met behulp van het verkregen token:
+Postman instellen en configureren om een Azure Active Directory token te verkrijgen. Vervolgens maakt u een geverifieerde HTTP-aanvraag voor Azure Digital Apparaatdubbels met behulp van het verkregen token:
 
-1. Controleer of de **URL van autorisatie** juist is. Het moet het formaat:
+1. Controleer of uw **autorisatie-URL** juist is. De notatie moet de volgende indeling hebben:
 
     ```plaintext
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | Name  | Vervangen door | Voorbeeld |
+    | Naam  | Vervangen door | Voorbeeld |
     |---------|---------|---------|
-    | YOUR_AZURE_TENANT | De naam van uw huurder of organisatie. Gebruik de mensvriendelijke naam in plaats van de alfanumerieke **tenant-id** van uw Azure Active Directory-appregistratie. | `microsoft` |
+    | YOUR_AZURE_TENANT | De naam van uw Tenant of organisatie. Gebruik de mensen vriendelijke naam in plaats van de alfanumerieke **Tenant-id** van uw Azure Active Directory app-registratie. | `microsoft` |
 
 1. Ga naar [www.getpostman.com](https://www.getpostman.com/) om de app te downloaden.
 
-1. We willen get verzoek te maken. Selecteer het tabblad **Autorisatie,** selecteer OAuth 2.0 en selecteer **Vervolgens Nieuw toegangstoken opbrengen**.
+1. We willen een GET-aanvraag maken. Selecteer het tabblad **autorisatie** , selecteer OAuth 2,0 en selecteer vervolgens **nieuw toegangs Token ophalen**.
 
     | Veld  | Waarde |
     |---------|---------|
     | Toekenningstype | `Implicit` |
     | Callback-URL | `https://www.getpostman.com/oauth2/callback` |
-    | Auth.-URL | De **URL van autorisatie** gebruiken vanaf **stap 1** |
-    | Client-id | De **toepassings-id gebruiken** voor de Azure Active Directory-app die is gemaakt of hergebruikt uit de vorige sectie |
+    | Auth.-URL | Gebruik de **autorisatie-URL** uit **stap 1** |
+    | Client-id | Gebruik de **toepassings-id** voor de app Azure Active Directory die is gemaakt of opnieuw is gebruikt in de vorige sectie |
     | Bereik | Leeg laten |
     | Status | Leeg laten |
     | Clientverificatie | `Send as Basic Auth header` |
 
-1. De client moet nu worden weergegeven als:
+1. De client moet er nu als volgt uitzien:
 
-    [![Voorbeeld van postmanclienttoken](media/how-to-configure-postman/configure-postman-oauth-token.png)](media/how-to-configure-postman/configure-postman-oauth-token.png#lightbox)
+    [![Postman client token-voor beeld](media/how-to-configure-postman/configure-postman-oauth-token.png)](media/how-to-configure-postman/configure-postman-oauth-token.png#lightbox)
 
 1. Selecteer **Token aanvragen**.
   
-1. Schuif omlaag en selecteer **Token gebruiken**.
+1. Schuif omlaag en selecteer **token gebruiken**.
 
-## <a name="make-a-multipart-post-request"></a>Een meerdelige POST-aanvraag indienen
+## <a name="make-a-multipart-post-request"></a>Een meerdelige POST-aanvraag maken
 
-Configureer Na het voltooien van de vorige stappen de postman om een geverifieerd HTTP-berichtverzoek voor meerdere delen in te dienen:
+Na het volt ooien van de vorige stappen, moet u na het uitvoeren van een geverifieerde HTTP meerdelige POST-aanvraag:
 
-1. Voeg onder het tabblad **Kopteksten** een HTTP-aanvraagkoptoets **Inhoudstype** met waarde `multipart/mixed`toe.
+1. Voeg op het tabblad **headers** een sleutel inhoud van een http **-** aanvraag header toe van `multipart/mixed`het type waarde.
 
-   [![Inhoudstype opgeven, meerdelige/gemengde](media/how-to-configure-postman/configure-postman-content-type.png)](media/how-to-configure-postman/configure-postman-content-type.png#lightbox)
+   [![Multi parts/Mixed voor het inhouds type opgeven](media/how-to-configure-postman/configure-postman-content-type.png)](media/how-to-configure-postman/configure-postman-content-type.png#lightbox)
 
-1. Niet-tekstgegevens serialiseren in bestanden. JSON-gegevens worden opgeslagen als een JSON-bestand.
-1. Selecteer **Body** onder het `form-data`tabblad Hoofd de optie . 
-1. Voeg elk bestand toe door een `File` **sleutelnaam** toe te kennen en .
-1. Selecteer vervolgens elk bestand via de knop **Bestand kiezen.**
+1. Serialisatie van niet-tekst gegevens in bestanden. JSON-gegevens worden opgeslagen als een JSON-bestand.
+1. Selecteer `form-data`op het tabblad **hoofd tekst** . 
+1. Voeg elk bestand toe door een **sleutel** naam toe te `File`wijzen en te selecteren.
+1. Selecteer vervolgens elk bestand via de knop **bestand kiezen** .
 
-   [![Postman client vorm lichaam voorbeeld](media/how-to-configure-postman/configure-postman-form-body.png)](media/how-to-configure-postman/configure-postman-form-body.png#lightbox)
+   [![Postman-client voor beeld van hoofd tekst](media/how-to-configure-postman/configure-postman-form-body.png)](media/how-to-configure-postman/configure-postman-form-body.png#lightbox)
 
    >[!NOTE]
-   > * De Postman-client vereist niet dat meerdelige segmenten een handmatig toegewezen **Inhoudstype** of **Inhoudsbeschikking**hebben.
-   > * U hoeft deze kopteksten niet voor elk onderdeel op te geven.
-   > * U moet `multipart/mixed` voor het hele verzoek een ander **geschikt inhoudstype** selecteren of een ander geschikt inhoudstype selecteren.
+   > * De Postman-client vereist niet dat meerdelige segmenten een hand matig toegewezen **inhouds type** of **Content-Disposition**hebben.
+   > * U hoeft deze headers niet voor elk onderdeel op te geven.
+   > * U moet of `multipart/mixed` een ander toepasselijk **type inhoud** voor de hele aanvraag selecteren.
 
-1. Tot slot selecteert u **Verzenden** om uw meerdelige HTTP POST-aanvraag in te dienen. Een statuscode `200` `201` van of geeft een geslaagde aanvraag aan. Het juiste antwoordbericht wordt weergegeven in de clientinterface.
+1. Selecteer ten slotte **verzenden** om uw multi part HTTP POST-aanvraag te verzenden. Een status code van `200` of `201` geeft een geslaagde aanvraag aan. Het juiste antwoord bericht wordt weer gegeven in de client interface.
 
-1. Valideer uw HTTP POST-aanvraaggegevens door het API-eindpunt aan te roepen: 
+1. Valideer uw HTTP POST-aanvraag gegevens door het API-eind punt aan te roepen: 
 
    ```URL
    YOUR_MANAGEMENT_API_URL/spaces/blobs?includes=description
@@ -111,8 +111,8 @@ Configureer Na het voltooien van de vorige stappen de postman om een geverifieer
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees Hoe u [Azure Digital Twins-beheerAPI's gebruiken](how-to-navigate-apis.md)voor meer informatie over de API's voor beheer van Digital Twins en hoe u deze gebruiken.
+- Lees [hoe u Azure Digital apparaatdubbels Management-api's kunt gebruiken](how-to-navigate-apis.md)voor meer informatie over de Api's voor Digital apparaatdubbels-beheer en hoe u deze kunt gebruiken.
 
-- Gebruik meerdelige aanvragen om [blobs toe te voegen aan de entiteiten van Azure Digital Twins.](./how-to-add-blobs.md)
+- Gebruik meerdelige aanvragen om [blobs toe te voegen aan Azure Digital apparaatdubbels-entiteiten](./how-to-add-blobs.md).
 
-- Lees [Authenticeren met API's](./security-authenticating-apis.md)voor meer informatie over het verifiëren met de beheer-API's.
+- Lees [verificatie met api's](./security-authenticating-apis.md)voor meer informatie over verificatie met de beheer-api's.

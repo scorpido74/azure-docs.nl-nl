@@ -1,6 +1,6 @@
 ---
-title: Azure VM-formaten - HPC | Microsoft Documenten
-description: Geeft een lijst van de verschillende formaten die beschikbaar zijn voor virtuele machines met een hoge prestaties in Azure. Bevat informatie over het aantal vCPU's, gegevensschijven en NIC's, evenals opslagdoorvoer en netwerkbandbreedte voor formaten in deze serie.
+title: Azure VM-grootten-HPC | Microsoft Docs
+description: Geeft een lijst van de verschillende beschik bare grootten voor High Performance Computing virtuele machines in Azure. Bevat informatie over het aantal Vcpu's, gegevens schijven en Nic's en de opslag doorvoer en netwerk bandbreedte voor grootten in deze serie.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -16,54 +16,54 @@ ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jonbeck
 ms.openlocfilehash: df22c857571e51bb886ff1d25db185a306999540
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420861"
 ---
-# <a name="high-performance-computing-vm-sizes"></a>Vm-formaten met hoge prestaties
+# <a name="high-performance-computing-vm-sizes"></a>High Performance Computing VM-grootten
 
-Azure H-serie virtuele machines (VM's) zijn ontworpen om prestaties van leiderschapsklasse, MPI-schaalbaarheid en kostenefficiëntie te leveren voor een verscheidenheid aan echte HPC-workloads.
+Virtuele machines (Vm's) van de H-serie van Azure zijn ontworpen voor het leveren van prestaties van een leiderschaps klasse, MPI-schaal baarheid en rendabele efficiëntie voor diverse realistische HPC-workloads.
 
-[HBv2-serie](hbv2-series.md) Vm's zijn voorzien van 200 Gb/sec Mellanox HDR InfiniBand, terwijl zowel HB- als HC-serie VM's beschikken over 100 Gb/sec Mellanox EDR InfiniBand. Elk van deze VM-typen zijn verbonden in een niet-blokkerende vetstructuur voor geoptimaliseerde en consistente RDMA-prestaties. HBv2 VM's ondersteunen Adaptive Routing en de Dynamic Connected Transport (DCT, naast standaard RC- en UD-transporten). Deze functies verbeteren de prestaties, schaalbaarheid en consistentie van toepassingen en het gebruik ervan wordt ten zeerste aanbevolen.
+[HBv2-serie](hbv2-series.md) De functie Vm's 200 GB/sec Mellanox HDR InfiniBand, terwijl zowel de virtuele machines van de HB-als de HC-serie 100 GB/sec Mellanox EDR InfiniBand zijn. Elk van deze VM-typen is verbonden met een niet-blokkerende Fat-structuur voor geoptimaliseerde en consistente RDMA-prestaties. HBv2 Vm's ondersteunen adaptieve route ring en het dynamisch verbonden Trans Port (DCT, in aanvulling op standaard-RC-en UD-transporten). Deze functies verbeteren de prestaties, schaal baarheid en consistentie van toepassingen, en het gebruik ervan wordt ten zeerste aanbevolen.
 
-[HB-serie](hb-series.md) VM's zijn geoptimaliseerd voor toepassingen die worden aangedreven door geheugenbandbreedte, zoals vloeistofdynamica, expliciete eindige elementenanalyse en weermodellering. HB VM's zijn voorzien van 60 AMD EPYC 7551 processorcores, 4 GB RAM per CPU-kern en geen hyperthreading. Het AMD EPYC-platform biedt meer dan 260 GB/s geheugenbandbreedte.
+[HB-serie](hb-series.md) Vm's zijn geoptimaliseerd voor toepassingen die worden aangedreven door geheugen bandbreedte, zoals een Hydraulic-dynamiek, een expliciete, beperkte element analyse en weer modellen. HB Vm's feature 60 AMD EPYC 7551-processor kernen, 4 GB RAM per CPU-kern en geen hyperthreading. Het AMD EPYC-platform biedt meer dan 260 GB/sec. geheugen bandbreedte.
 
-[HC-serie](hc-series.md) VM's zijn geoptimaliseerd voor toepassingen die worden aangedreven door dichte berekeningen, zoals impliciete eindige elementenanalyse, moleculaire dynamica en computationele chemie. HC VM's zijn voorzien van 44 Intel Xeon Platinum 8168-processorcores, 8 GB RAM per CPU-kern en geen hyperthreading. Het Intel Xeon Platinum-platform ondersteunt Intel's rijke ecosysteem van softwaretools zoals de Intel Math Kernel Library.
+[HC-serie](hc-series.md) Vm's zijn geoptimaliseerd voor toepassingen die worden aangedreven door een compacte reken kracht, zoals impliciete, geeindigd element analyse, moleculaire dynamiek en reken kundige schei kunde. HC Vm's feature 44 Intel Xeon Platinum 8168-processor kernen, 8 GB aan RAM per CPU-kern en geen hyperthreading. Het Intel Xeon Platinum-platform biedt ondersteuning voor een uitgebreid ecosysteem van Intel-software Programma's zoals de Intel math-kernelmodus.
 
-[H-serie](h-series.md) VM's zijn geoptimaliseerd voor toepassingen die worden aangedreven door hoge CPU-frequenties of grote geheugen-per-core-vereisten. Vm's uit de H-serie zijn voorzien van 8 of 16 Intel Xeon E5 2667 v3-processorcores, 7 of 14 GB RAM per CPU-kern en geen hyperthreading. H-serie beschikt over 56 Gb/sec Mellanox FDR InfiniBand in een niet-blokkerende vetboom configuratie voor consistente RDMA prestaties. Vm's uit de H-serie ondersteunen Intel MPI 5.x en MS-MPI.
+[H-serie](h-series.md) Vm's zijn geoptimaliseerd voor toepassingen die worden aangedreven door hoge CPU-frequenties of grote geheugen per kern vereisten. Met de H-serie Vm's functie 8 of 16 Intel Xeon E5 2667 v3 processor cores, 7 of 14 GB RAM per CPU-kern en zonder hyperthreading. Functies van de H-serie 56 GB/sec Mellanox FDR InfiniBand in een niet-blokkerende Fat-structuur configuratie voor consistente RDMA-prestaties. Virtuele machines uit de H-serie ondersteunen Intel MPI 5. x en MS-MPI.
 
 > [!NOTE]
-> De A8 – A11 VM's zijn gepland voor pensionering op 3/2021. Zie [HPC-migratiegids](https://azure.microsoft.com/resources/hpc-migration-guide/)voor meer informatie.
+> De A8-A11-Vm's worden gepland voor buiten gebruiks telling op 3/2021. Zie voor meer informatie [HPC-migratie handleiding](https://azure.microsoft.com/resources/hpc-migration-guide/).
 
 ## <a name="rdma-capable-instances"></a>Met RDMA compatibele exemplaren
 
-De meeste HPC VM-formaten (HBv2, HB, HC, H16r, H16mr, A8 en A9) zijn voorzien van een netwerkinterface voor RDMA-connectiviteit (Remote Direct Memory Access). Geselecteerde [N-serie]https://docs.microsoft.com/azure/virtual-machines/nc-series) ( maten aangeduid met 'r' zoals de NC24rs configuraties (NC24rs_v3, NC24rs_v2 en NC24r) zijn ook RDMA-geschikt. Deze interface is een aanvulling op de standaard Azure-netwerkinterface die beschikbaar is in de andere VM-formaten.
+De meeste HPC VM-grootten (HBv2, HB, HC, H16r, H16mr, A8 en A9) beschikken over een netwerk interface voor RDMA-verbindingen (Remote Direct Memory Access). Geselecteerd [N-serie] (https://docs.microsoft.com/azure/virtual-machines/nc-series) grootten die zijn aangeduid met r, zoals de NC24rs-configuraties (NC24rs_v3, NC24rs_v2 en NC24r) zijn ook geschikt voor RDMA. Deze interface is een aanvulling op de standaard Azure-netwerk interface die beschikbaar is in de andere VM-grootten.
 
-Met deze interface kunnen de RDMA-geschikte exemplaren communiceren via een IB-netwerk (InfiniBand), dat werkt tegen HDR-snelheden voor HBv2, EDR-tarieven voor HB-, HC-, FDR-tarieven voor H16r-, H16mr- en RDMA-compatibele virtuele machines uit de N-serie en QDR-tarieven voor A8- en A9-VM's. Deze RDMA-mogelijkheden kunnen de schaalbaarheid en prestaties van bepaalde MPI-toepassingen (Message Passing Interface) verbeteren. Zie voor meer informatie over de snelheid de details in de tabellen op deze pagina.
+Met deze interface kunnen de RDMA-compatibele instanties communiceren via een InfiniBand (IB)-netwerk, op basis van de HDR-tarieven voor HBv2, EDR-tarieven voor HB, HC, FDR-tarieven voor H16r, H16mr en een RDMA-functionaliteit voor A8-en A9-Vm's. Deze RDMA-mogelijkheden kunnen de schaal baarheid en prestaties van bepaalde MPI-toepassingen (Message Passing Interface) verhogen. Zie de details in de tabellen op deze pagina voor meer informatie over de snelheid.
 
 > [!NOTE]
-> In Azure HPC zijn er twee klassen vm's, afhankelijk van of ze SR-IOV zijn ingeschakeld voor InfiniBand. Momenteel zijn de SR-IOV voor InfiniBand enabled VM's: HBv2, HB, HC en NCv3. De rest van de infiniBand ingeschakelde VM's zijn niet SR-IOV ingeschakeld.
-> RDMA over IB wordt ondersteund voor alle RDMA-geschikte VM's.
-> IP over IB wordt alleen ondersteund op de VMs met SR-IOV.IP over IB is only supported on the SR-IOV enabled VM's.
+> In azure HPC zijn er twee klassen Vm's, afhankelijk van het feit of SR-IOV is ingeschakeld voor InfiniBand. Momenteel zijn de SR-IOV voor InfiniBand ingeschakelde Vm's: HBv2, HB, HC en NCv3. Voor de rest van de InfiniBand ingeschakelde Vm's is SR-IOV niet ingeschakeld.
+> RDMA via IB wordt ondersteund voor alle virtuele machines met RDMA-functionaliteit.
+> IP over IB wordt alleen ondersteund op Vm's met SR-IOV-functionaliteit.
 
-- **Besturingssysteem** - Linux wordt zeer goed ondersteund voor HPC VM's, distro's zoals CentOS, RHEL, Ubuntu, SUSE zijn gebruikelijk. Wat de ondersteuning van Windows betreft, wordt Windows Server 2016 ondersteund op alle VM's uit de HPC-serie. Windows Server 2012 R2, Windows Server 2012 worden ook ondersteund op de vm's die niet zijn ingeschakeld voor SR-IOV.
+- **Besturings systeem** : Linux wordt zeer goed ondersteund voor HPC-vm's, distributies zoals CENTOS, RHEL, Ubuntu, SuSE. Windows Server 2016 wordt ondersteund op alle virtuele machines van de HPC-serie met betrekking tot Windows-ondersteuning. Windows Server 2012 R2, Windows Server 2012 wordt ook ondersteund op Vm's waarvoor geen SR-IOV is ingeschakeld.
 
-- **MPI** - De SR-IOV ingeschakeld VM maten op Azure (HBv2, HB, HC, NCv3) kunnen bijna elke smaak van MPI worden gebruikt met Mellanox OFED.
-Op niet-SR-IOV-enabled VM's gebruiken ondersteunde MPI-implementaties de Microsoft Network Direct (ND)-interface om te communiceren tussen VM's. Daarom worden alleen Microsoft MPI (MS-MPI) 2012 R2 of hoger en Intel MPI 5.x-versies ondersteund. Latere versies (2017, 2018) van de Intel MPI-runtime-bibliotheek zijn mogelijk al dan niet compatibel met de Azure RDMA-stuurprogramma's.
+- **Mpi** : met de VM-grootten van SR-IOV op Azure (HBV2, HB, HC, NCv3) kunt u bijna alle mpi gebruiken met Mellanox OFED.
+Op Vm's waarvoor geen SR-IOV is ingeschakeld, wordt in ondersteunde MPI-implementaties de micro soft Network direct (ND)-interface gebruikt voor communicatie tussen Vm's. Daarom worden alleen micro soft MPI (MS-MPI) 2012 R2 of hoger en Intel MPI 5. x-versies ondersteund. Latere versies (2017, 2018) van de Intel MPI runtime-bibliotheek kunnen al dan niet compatibel zijn met de Azure RDMA-Stuur Programma's.
 
-- **InfiniBandDriver<Linux| Windows> VM-extensie** - Voeg op VM's met RDMA de InfiniBandDriver-<Linux toe| Windows> extensie om InfiniBand in te schakelen. Op Linux installeert de InfiniBandDriverLinux VM-extensie de Mellanox OFED-drivers (op SR-IOV VM's) voor RDMA-connectiviteit. Op Windows installeert de InfiniBandDriverWindows VM-extensie Windows Network Direct-stuurprogramma's (op niet-SR-IOV VM's) of Mellanox OFED-stuurprogramma's (op SR-IOV VM's) voor RDMA-connectiviteit.
-In bepaalde implementaties van A8- en A9-exemplaren wordt de HpcVmDrivers-extensie automatisch toegevoegd. Houd er rekening mee dat de VM-extensie HpcVmDrivers wordt afgeschaft; het wordt niet bijgewerkt.
-Als u de VM-extensie aan een VM wilt toevoegen, u [Azure PowerShell-cmdlets](/powershell/azure/overview) gebruiken. 
+- **InfiniBandDriver<Linux | Windows> VM-extensie** -op RDMA-compatibele vm's, voeg de InfiniBandDriver<Linux toe | Extensie voor Windows-> om InfiniBand in te scha kelen. Op Linux installeert de InfiniBandDriverLinux-VM-extensie de Mellanox OFED-Stuur programma's (op SR-IOV-Vm's) voor RDMA-connectiviteit. In Windows installeert de InfiniBandDriverWindows-VM-extensie Windows-netwerk directe Stuur programma's (op niet-SR-IOV-Vm's) of Mellanox OFED-Stuur programma's (op SR-IOV-Vm's) voor RDMA-connectiviteit.
+In bepaalde implementaties van A8-en A9-instanties wordt de uitbrei ding HpcVmDrivers automatisch toegevoegd. Houd er rekening mee dat de HpcVmDrivers VM-extensie wordt afgeschaft. het wordt niet bijgewerkt.
+U kunt [Azure PowerShell](/powershell/azure/overview) -cmdlets gebruiken om de VM-extensie toe te voegen aan een virtuele machine. 
 
-  Met de volgende opdracht wordt de nieuwste versie 1.0 InfiniBandDriverWindows-extensie geïnstalleerd op een bestaande VM met RDMA-geschikte VM met de naam *myVM* die is geïmplementeerd in de resourcegroep genaamd *myResourceGroup* in de *regio West-VS:*
+  Met de volgende opdracht wordt de meest recente versie 1,0 InfiniBandDriverWindows-extensie geïnstalleerd op een bestaande virtuele RDMA-VM met de naam *myVM* die is geïmplementeerd in de resource groep met de naam *myResourceGroup* in de regio *VS-West* :
 
   ```powershell
   Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverWindows" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverWindows" -TypeHandlerVersion "1.0"
   ```
 
-  Vm-extensies kunnen ook worden opgenomen in Azure Resource Manager-sjablonen voor eenvoudige implementatie, met het volgende JSON-element:
+  VM-extensies kunnen ook worden opgenomen in Azure Resource Manager sjablonen voor een eenvoudige implementatie, met het volgende JSON-element:
 
   ```json
   "properties":{
@@ -73,7 +73,7 @@ Als u de VM-extensie aan een VM wilt toevoegen, u [Azure PowerShell-cmdlets](/po
   } 
   ```
 
-  Met de volgende opdracht wordt de nieuwste versie 1.0 InfiniBandDriverWindows-extensie geïnstalleerd op alle VM's die geschikt zijn voor RDMA in een bestaande virtuele machineschaalset met de naam *myVMSS* geïmplementeerd in de brongroep *myResourceGroup:*
+  Met de volgende opdracht wordt de meest recente versie 1,0 InfiniBandDriverWindows-extensie geïnstalleerd op alle virtuele machines met RDMA-functionaliteit in een bestaande VM-schaalset met de naam *myVMSS* geïmplementeerd in de resource groep met de naam *myResourceGroup*:
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
@@ -82,43 +82,43 @@ Als u de VM-extensie aan een VM wilt toevoegen, u [Azure PowerShell-cmdlets](/po
   Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
   ```
 
-  Zie [Virtuele machine-extensies en -functies voor](./extensions/overview.md)meer informatie. U ook werken met extensies voor VM's die zijn geïmplementeerd in het [klassieke implementatiemodel.](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)
+  Zie [extensies en functies van virtuele machines](./extensions/overview.md)voor meer informatie. U kunt ook werken met uitbrei dingen voor virtuele machines die zijn geïmplementeerd in het [klassieke implementatie model](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic).
 
-- **RDMA-netwerkadresruimte** - Het RDMA-netwerk in Azure reserveert de adresruimte 172.16.0.0/16. Als u MPI-toepassingen wilt uitvoeren op instanties die zijn geïmplementeerd in een virtueel Azure-netwerk, moet u ervoor zorgen dat de virtuele netwerkadresruimte het RDMA-netwerk niet overlapt.
+- **RDMA-netwerk adres ruimte** : het RDMA-netwerk in azure behoudt de adres ruimte 172.16.0.0/16. Als u MPI-toepassingen wilt uitvoeren op instanties die zijn geïmplementeerd in een virtueel Azure-netwerk, moet u ervoor zorgen dat de adres ruimte van het virtuele netwerk het RDMA-netwerk niet overlapt.
 
-## <a name="cluster-configuration-options"></a>Clusterconfiguratieopties
+## <a name="cluster-configuration-options"></a>Opties voor cluster configuratie
 
-Azure biedt verschillende opties voor het maken van clusters van Windows HPC-VM's die kunnen communiceren via het RDMA-netwerk, waaronder: 
+Azure biedt verschillende opties voor het maken van clusters van Windows HPC-Vm's die kunnen communiceren met behulp van het RDMA-netwerk, waaronder: 
 
-- **Virtuele machines** - Implementeer de HPC-vm's met RDMA in dezelfde schaalset of beschikbaarheidsset (wanneer u het implementatiemodel azure resource manager gebruikt). Als u het klassieke implementatiemodel gebruikt, implementeert u de VM's in dezelfde cloudservice.
+- **Virtuele machines** : implementeer de met RDMA compatibele HPC-vm's in dezelfde schaalset of beschikbaarheidsset (wanneer u het Azure Resource Manager-implementatie model gebruikt). Als u het klassieke implementatie model gebruikt, implementeert u de virtuele machines in dezelfde Cloud service.
 
-- **Virtuele machineschaalsets** - Controleer in een vmss (virtual machine scale set) of u de implementatie beperkt tot één plaatsingsgroep. Stel bijvoorbeeld in een resourcemanagersjabloon `singlePlacementGroup` de `true`eigenschap in op . Houd er rekening mee dat de maximale `singlePlacementGroup` VMSS-grootte die kan worden opgebouwd met eigenschap is `true` beperkt tot 100 VM's standaard. Als de behoeften aan uw HPC-taakschaal hoger zijn dan 100 VM's in één VMSS-tenant, u een verhoging aanvragen en kosteloos [een online verzoek voor klantenondersteuning](../azure-supportability/how-to-create-azure-support-request.md) openen.
+- **Virtuele-machine schaal sets** : in een virtuele-machine Scale set (VMSS), moet u ervoor zorgen dat u de implementatie beperkt tot één plaatsings groep. Stel bijvoorbeeld in een resource manager-sjabloon de `singlePlacementGroup` eigenschap in op. `true` Houd er rekening mee dat de maximale VMSS-grootte die met `singlePlacementGroup` de eigenschap `true` kan worden ingesteld, standaard wordt beperkt bij 100 vm's. Als uw HPC-taken schaal behoeften hoger zijn dan 100 Vm's in één VMSS-Tenant, kunt u een verhoging aanvragen, [een online klant ondersteunings aanvraag openen](../azure-supportability/how-to-create-azure-support-request.md) .
 
-- **MPI onder virtuele machines** - Als RDMA (bijvoorbeeld met behulp van MPI-communicatie) tussen virtuele machines (VM's) vereist is, moet u ervoor zorgen dat de VM's zich in dezelfde virtuele machineschaalset of beschikbaarheidsset bevinden.
+- **Mpi tussen virtuele machines** : als RDMA (bijvoorbeeld met MPI-communicatie) is vereist tussen virtuele machines (vm's), moet u ervoor zorgen dat de vm's zich in dezelfde virtuele-machine schaalset of beschik bare set bevinden.
 
-- **Azure CycleCloud** - Maak een HPC-cluster in [Azure CycleCloud](/azure/cyclecloud/) om MPI-taken uit te voeren.
+- **Azure CycleCloud** : Maak een HPC-cluster in [Azure CycleCloud](/azure/cyclecloud/) om mpi-taken uit te voeren.
 
-- **Azure Batch** - Maak een [Azure Batch-groep](/azure/batch/) om MPI-workloads uit te voeren. Zie [Multi-instance taken gebruiken om MPI-toepassingen (Message Passing Interface) uit te voeren in Azure Batch](../batch/batch-mpi.md)als u computerintensieve exemplaren wilt gebruiken bij het uitvoeren van MPI-toepassingen met Azure Batch.
+- **Azure batch** : maak een [Azure batch](/azure/batch/) groep voor het uitvoeren van MPI-workloads. Als u computerintensieve instanties wilt gebruiken bij het uitvoeren van MPI-toepassingen met Azure Batch, raadpleegt u [taken met meerdere instanties gebruiken om mpi-toepassingen (Message Passing Interface) uit te voeren in azure batch](../batch/batch-mpi.md).
 
-- **Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) bevat een runtime-omgeving voor MS-MPI die het Azure RDMA-netwerk gebruikt wanneer het wordt geïmplementeerd op Linux-VM's die geschikt zijn voor RDMA. Zie Bijvoorbeeld implementaties [een Linux RDMA-cluster instellen met HPC Pack om MPI-toepassingen uit te voeren.](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam)
+- **Micro soft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) bevat een runtime-omgeving voor MS-mpi die gebruikmaakt van het Azure RDMA-netwerk wanneer het is geïmplementeerd op RDMA-compatibele Linux-vm's. Zie voor beelden van implementaties [een Linux RDMA-cluster met HPC Pack instellen voor het uitvoeren van MPI-toepassingen](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
 
 ## <a name="deployment-considerations"></a>Overwegingen bij de implementatie
 
-- **Azure-abonnement** : als u meer dan een paar rekenintensieve exemplaren wilt implementeren, u rekening houden met een abonnement op basis van betalen per gebruik of andere aankoopopties. Als u een [gratis account van Azure](https://azure.microsoft.com/free/) gebruikt, kunt u slechts een paar Azure Compute-resources van Azure gebruiken.
+- **Azure-abonnement** : als u meer dan een aantal computerintensieve exemplaren wilt implementeren, kunt u een abonnement op basis van betalen naar gebruik of andere aankoop opties overwegen. Als u een [gratis account van Azure](https://azure.microsoft.com/free/) gebruikt, kunt u slechts een paar Azure Compute-resources van Azure gebruiken.
 
-- **Prijzen en beschikbaarheid** - Deze VM-formaten worden alleen aangeboden in de standaardprijslaag. Controleer [producten die beschikbaar zijn per regio](https://azure.microsoft.com/global-infrastructure/services/) op beschikbaarheid in Azure-regio's.
+- **Prijzen en beschik baarheid** : deze VM-grootten worden alleen aangeboden in de prijs categorie Standard. Controleer of de beschik [bare producten per regio beschikbaar zijn](https://azure.microsoft.com/global-infrastructure/services/) in azure-regio's.
 
-- **Kernenquotum** : mogelijk moet u het coresquotum in uw Azure-abonnement verhogen ten opzichte van de standaardwaarde. Uw abonnement kan ook het aantal cores beperken dat u implementeren in bepaalde VM-groottefamilies, waaronder de H-serie. Als u een quotumverhoging wilt aanvragen, opent u kosteloos [een online verzoek om klantenondersteuning.](../azure-supportability/how-to-create-azure-support-request.md) (Standaardlimieten kunnen variëren afhankelijk van uw abonnementscategorie.)
+- **Quotum voor kernen** : u moet mogelijk het quotum voor kernen in uw Azure-abonnement verhogen van de standaard waarde. Uw abonnement kan ook het aantal kernen beperken dat u kunt implementeren in bepaalde VM-grootte families, inclusief de H-serie. Als u een quotum toename wilt aanvragen, opent u gratis [een aanvraag voor een online klant ondersteuning](../azure-supportability/how-to-create-azure-support-request.md) . (De standaard limieten kunnen variëren, afhankelijk van de categorie abonnement.)
 
   > [!NOTE]
-  > Neem contact op met Azure Support als u op grote schaal capaciteitsbehoeften hebt. Azure-quota zijn kredietlimieten, geen capaciteitsgaranties. Ongeacht uw quotum worden er alleen kosten in rekening gebracht voor kernen die u gebruikt.
+  > Neem contact op met de ondersteuning van Azure als er grootschalige capaciteits behoeften zijn. Azure-quota zijn krediet limieten, geen capaciteits garanties. Ongeacht uw quotum worden er alleen kosten in rekening gebracht voor kernen die u gebruikt.
   
-- **Virtueel netwerk** : een [virtueel Azure-netwerk](https://azure.microsoft.com/documentation/services/virtual-network/) is niet vereist om de rekenintensieve exemplaren te gebruiken. Voor veel implementaties hebt u echter ten minste een virtueel Cloud-netwerk of een site-to-site-verbinding nodig als u toegang moet krijgen tot on-premises bronnen. Maak indien nodig een nieuw virtueel netwerk om de exemplaren te implementeren. Het toevoegen van computerintensieve VM's aan een virtueel netwerk in een affiniteitsgroep wordt niet ondersteund.
+- **Virtueel netwerk** : een virtueel Azure- [netwerk](https://azure.microsoft.com/documentation/services/virtual-network/) is niet vereist voor het gebruik van de compute-intensieve exemplaren. Voor veel implementaties hebt u echter mini maal een Azure Virtual Network op basis van de Cloud of een site-naar-site-verbinding nodig als u toegang nodig hebt tot on-premises resources. Als dat nodig is, maakt u een nieuw virtueel netwerk om de exemplaren te implementeren. Het toevoegen van Compute-intensieve Vm's aan een virtueel netwerk in een affiniteits groep wordt niet ondersteund.
 
-- **Grootte wijzigen** - Vanwege hun gespecialiseerde hardware u alleen het formaat van rekenintensieve exemplaren binnen dezelfde grootte-reeksen (H-serie of rekenintensieve A-reeksen) wijzigen. U bijvoorbeeld het formaat van een H-serie VM alleen wijzigen van de ene H-serie naar de andere. Bovendien wordt het wijzigen van het formaat van een niet-rekenintensieve grootte naar een rekenintensieve grootte niet ondersteund.  
+- **Grootte wijzigen** : vanwege hun gespecialiseerde hardware kunt u alleen Compute-intensieve instanties binnen dezelfde grootte familie (H-serie of COMPUTE-intensieve A-serie) wijzigen. U kunt bijvoorbeeld alleen het formaat van een VM van de H-serie wijzigen van de grootte van de h-serie in een andere. Bovendien wordt het wijzigen van de grootte van een niet-reken intensief formaat naar een berekenings intensief formaat niet ondersteund.  
 
 
-## <a name="other-sizes"></a>Andere maten
+## <a name="other-sizes"></a>Andere grootten
 
 - [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerde rekenkracht](sizes-compute.md)
@@ -129,6 +129,6 @@ Azure biedt verschillende opties voor het maken van clusters van Windows HPC-VM'
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het optimaliseren van uw HPC-toepassing voor Azure en enkele voorbeelden op [HPC-workloads] (https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/overview) 
+- Meer informatie over het optimaliseren van uw HPC-toepassing voor Azure en enkele voor beelden in [HPC-workloads] (https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/overview) 
 
-- Meer informatie over hoe [Azure compute units (ACU)](acu.md) u kunnen helpen bij het vergelijken van rekenprestaties in Azure SKU's.
+- Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.

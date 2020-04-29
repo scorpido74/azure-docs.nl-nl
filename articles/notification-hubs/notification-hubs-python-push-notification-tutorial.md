@@ -1,6 +1,6 @@
 ---
-title: Meldingshubs gebruiken met Python
-description: Meer informatie over het gebruik van Azure Notification Hubs vanuit een Python-toepassing.
+title: Notification Hubs gebruiken met python
+description: Meer informatie over het gebruik van Azure Notification Hubs van een python-toepassing.
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -17,46 +17,46 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 1ff8c382813654b1dee38a99bf2cc0ca67afbedd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76313824"
 ---
-# <a name="how-to-use-notification-hubs-from-python"></a>Meldingshubs van Python gebruiken
+# <a name="how-to-use-notification-hubs-from-python"></a>Notification Hubs van python gebruiken
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-U hebt toegang tot alle functies van Notification Hubs vanaf een Java/PHP/Python/Ruby back-end via de Notification Hub REST-interface zoals beschreven in het MSDN-artikel [Notification Hubs REST API's.](https://msdn.microsoft.com/library/dn223264.aspx)
+U hebt toegang tot alle Notification Hubs functies van een Java/PHP/python/ruby-back-end met behulp van de REST-interface van de notification hub, zoals beschreven in het MSDN-artikel [Notification hubs rest-api's](https://msdn.microsoft.com/library/dn223264.aspx).
 
 > [!NOTE]
-> Dit is een voorbeeldreferentie-implementatie voor het implementeren van de melding die in Python wordt uitgevoerd en is niet de officieel ondersteunde Notifications Hub Python SDK. Het monster is gemaakt met Python 3.4.
+> Dit is een voor beeld van een implementatie van een referentie voor het implementeren van de melding verzenden in Python en is niet de door de officiële ondersteunde meldingen hub-SDK. Het voor beeld is gemaakt met behulp van python 3,4.
 
 In dit artikel leest u informatie over:
 
-- Bouw een REST-client voor Notification Hubs-functies in Python.
-- Stuur meldingen via de Python-interface naar de API's voor de rest van de meldingshub.
-- Ontvang een dump van de HTTP REST-aanvraag/-reactie voor foutopsporing/educatief doel.
+- Bouw een REST-client voor Notification Hubs functies in python.
+- Verzend meldingen via de Python-interface naar de notification hub-REST Api's.
+- Ontvang een dump van de HTTP REST-aanvraag/respons voor fout opsporing/educatief gebruik.
 
-U de [zelfstudie Aan de slag](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) voor uw mobiele platform naar keuze volgen en het back-endgedeelte in Python implementeren.
+U kunt de [zelf studie aan de slag](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) volgen voor het mobiele platform van uw keuze, waarbij u het back-end-gedeelte in python implementeert.
 
 > [!NOTE]
-> Het bereik van de steekproef is alleen beperkt tot het verzenden van meldingen en het doet geen registratiebeheer.
+> Het bereik van het voor beeld is alleen beperkt tot het verzenden van meldingen en voert geen registratie beheer uit.
 
-## <a name="client-interface"></a>Clientinterface
+## <a name="client-interface"></a>Client interface
 
-De hoofdclientinterface kan dezelfde methoden bieden die beschikbaar zijn in de [SDK .NET Notification Hubs.](https://msdn.microsoft.com/library/jj933431.aspx) Deze interface u direct vertalen alle tutorials en monsters die momenteel beschikbaar zijn op deze site, en bijgedragen door de gemeenschap op het internet.
+De hoofd client interface kan dezelfde methoden bieden die beschikbaar zijn in de [.net notification hubs SDK](https://msdn.microsoft.com/library/jj933431.aspx). Met deze interface kunt u rechtstreeks alle zelf studies en voor beelden die op deze site beschikbaar zijn, vertalen en door de community op internet bijgedragen.
 
-U vindt alle code beschikbaar in de [Python REST wrapper monster].
+U kunt alle beschik bare code vinden in het [PYTHON rest wrapper]-voor beeld.
 
-Bijvoorbeeld om een client te maken:
+Als u bijvoorbeeld een client wilt maken:
 
 ```python
 isDebug = True
 hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 ```
 
-Ga als lid van het Oproosteren van Windows:
+Een Windows-pop-upmelding verzenden:
 
 ```python
 wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello world!</text></binding></visual></toast>"""
@@ -65,17 +65,17 @@ hub.send_windows_notification(wns_payload)
 
 ## <a name="implementation"></a>Implementatie
 
-Als u dat nog niet hebt gedaan, volgt u de [zelfstudie Aan] de slag tot aan het laatste gedeelte waar u de back-end moet implementeren.
+Als u dit nog niet hebt gedaan, volgt u de [zelf studie] aan de slag tot aan de laatste sectie waarin u de back-end moet implementeren.
 
-Alle details om een volledige REST wrapper te implementeren zijn te vinden op [MSDN.](https://msdn.microsoft.com/library/dn530746.aspx) In deze sectie wordt de Python-implementatie beschreven van de belangrijkste stappen die nodig zijn om toegang te krijgen tot REST-eindpunten van meldingenhubs en meldingen te verzenden
+Alle Details voor het implementeren van een volledige REST wrapper vindt u op [MSDN](https://msdn.microsoft.com/library/dn530746.aspx). In deze sectie wordt de python-implementatie beschreven van de belangrijkste stappen die nodig zijn om toegang te krijgen tot Notification Hubs REST-eind punten en meldingen te verzenden
 
 1. De verbindingsreeks parseren
-2. Het autorisatietoken genereren
-3. Een melding verzenden met http rest API
+2. Het autorisatie token genereren
+3. Een melding verzenden via HTTP REST API
 
 ### <a name="parse-the-connection-string"></a>De verbindingsreeks parseren
 
-Hier is de hoofdklasse die de client implementeert, waarvan de constructor de verbindingstekenreeks ontlijdt:
+Hier is de hoofd klasse die de client implementeert, waarvan de constructor de connection string parseert:
 
 ```python
 class NotificationHub:
@@ -100,10 +100,10 @@ class NotificationHub:
                 self.SasKeyValue = part[16:]
 ```
 
-### <a name="create-security-token"></a>Beveiligingstoken maken
+### <a name="create-security-token"></a>Beveiligings token maken
 
-De details van het maken van beveiligingstoken's zijn [hier](https://msdn.microsoft.com/library/dn495627.aspx)beschikbaar.
-Voeg de volgende `NotificationHub` methoden toe aan de klasse om het token te maken op basis van de URI van de huidige aanvraag en de referenties die uit de verbindingstekenreeks zijn geëxtraheerd.
+De Details voor het maken van het beveiligings token zijn [hier](https://msdn.microsoft.com/library/dn495627.aspx)beschikbaar.
+Voeg de volgende methoden toe `NotificationHub` aan de klasse om het token te maken op basis van de URI van de huidige aanvraag en de referenties die zijn geëxtraheerd uit de Connection String.
 
 ```python
 @staticmethod
@@ -137,9 +137,9 @@ def generate_sas_token(self):
     return sas_token
 ```
 
-### <a name="send-a-notification-using-http-rest-api"></a>Een melding verzenden met http rest API
+### <a name="send-a-notification-using-http-rest-api"></a>Een melding verzenden via HTTP REST API
 
-Laat eerst een klasse definiëren die een melding vertegenwoordigt.
+U kunt eerst een klasse definiëren die een melding weergeeft.
 
 ```python
 class Notification:
@@ -161,11 +161,11 @@ class Notification:
         self.headers = None
 ```
 
-Deze klasse is een container voor een native meldingsinstantie of een set eigenschappen van een sjabloonmelding, een set kopteksten, die indeling (native platform of sjabloon) en platformspecifieke eigenschappen bevat (zoals de eigenschap Expiration van Apple en WNS-headers).
+Deze klasse is een container voor een systeem eigen meldings hoofdtekst of een set eigenschappen van een sjabloon melding, een set kopteksten, die een indeling (systeem eigen platform of sjabloon) en platformspecifieke eigenschappen (zoals Apple Expires-eigenschappen en WNS-headers) bevat.
 
-Raadpleeg de [API's van De REST van de meldingshubs](https://msdn.microsoft.com/library/dn495827.aspx) en de indelingen van de specifieke meldingsplatforms voor alle beschikbare opties.
+Raadpleeg de [documentatie van Notification hubs rest-api's](https://msdn.microsoft.com/library/dn495827.aspx) en de specifieke indelingen voor het meldings platform voor alle beschik bare opties.
 
-Schrijf nu met deze klasse de verzendmeldingsmethoden binnen in de `NotificationHub` klasse.
+Nu met deze klasse, schrijft u de methoden voor het verzenden van `NotificationHub` meldingen binnen de klasse.
 
 ```python
 def make_http_request(self, url, payload, headers):
@@ -287,40 +287,40 @@ def send_template_notification(self, properties, tags=""):
     self.send_notification(nh, tags)
 ```
 
-Deze methoden sturen een HTTP POST-verzoek naar het eindpunt /messages van uw meldingshub, met de juiste hoofdtekst en kopteksten om de melding te verzenden.
+Met deze methoden wordt een HTTP POST-aanvraag verzonden naar het/messages-eind punt van uw notification hub, met de juiste hoofd tekst en headers voor het verzenden van de melding.
 
-### <a name="using-debug-property-to-enable-detailed-logging"></a>De eigenschap Foutopsporing gebruiken om gedetailleerde logboekregistratie in te schakelen
+### <a name="using-debug-property-to-enable-detailed-logging"></a>De eigenschap debug gebruiken om gedetailleerde logboek registratie in te scha kelen
 
-Als u de eigenschap Foutopsporing inschakelt terwijl de meldingshub wordt geïnitialeerd, worden gedetailleerde logboekinformatie over de HTTP-aanvraag- en reactiedump en de gedetailleerde meldingsberichtverzonden weergegeven.
-De [eigenschap TestSend van Meldingenhubs](https://docs.microsoft.com/previous-versions/azure/reference/dn495827(v=azure.100)) retourneert gedetailleerde informatie over de uitkomst van de meldingsverzonding.
-Om het te gebruiken - initialiseren met behulp van de volgende code:
+Als u de eigenschap debug inschakelt tijdens het initialiseren van de notification hub, worden gedetailleerde logboek gegevens over de HTTP-aanvraag en de reactie dump opgeslagen, evenals een gedetailleerd waarschuwings bericht over verzen ding.
+De [eigenschap TestSend](https://docs.microsoft.com/previous-versions/azure/reference/dn495827(v=azure.100)) van de notification hubs retourneert gedetailleerde informatie over de melding verzenden resultaat.
+Als u de initialisatie wilt gebruiken, gebruikt u de volgende code:
 
 ```python
 hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 ```
 
-De HTTP-URL voor het verzenden van meldingen hub wordt als gevolg hiervan toegevoegd met een 'test'-querytekenreeks.
+De HTTP-URL voor de verzend aanvraag van de notification hub wordt toegevoegd als resultaat van een test query teken reeks.
 
-## <a name="complete-the-tutorial"></a><a name="complete-tutorial"></a>De zelfstudie voltooien
+## <a name="complete-the-tutorial"></a><a name="complete-tutorial"></a>De zelf studie volt ooien
 
-Nu u de zelfstudie Aan de slag voltooien door de melding vanaf een Python-back-end te verzenden.
+U kunt nu de zelf studie aan de slag volt ooien door de melding van een back-end van python te verzenden.
 
-Initialiseer uw Client Meldinghubs (vervang de verbindingstekenreeks en de naam van de hub zoals geïnstrueerd in de [zelfstudie Aan]de slag):
+Initialiseer uw Notification Hubs-client (Vervang de connection string en de naam van de hub volgens de instructies in de [zelf studie aan de slag]):
 
 ```python
 hub = NotificationHub("myConnectionString", "myNotificationHubName")
 ```
 
-Voeg vervolgens de verzendcode toe, afhankelijk van uw mobiele doelplatform. In dit voorbeeld worden ook methoden op een hoger niveau toegevoegd om het verzenden van meldingen op basis van het platform mogelijk te maken, bijvoorbeeld send_windows_notification voor windows; send_apple_notification (voor appel) etc.
+Voeg vervolgens de verzend code toe, afhankelijk van uw mobiele doel platform. Dit voor beeld voegt ook methoden op een hoger niveau toe om het verzenden van meldingen op basis van het platform mogelijk te maken, bijvoorbeeld send_windows_notification voor Windows. send_apple_notification (voor Apple) etc.
 
-### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows Store en Windows Phone 8.1 (niet-Zilverlicht)
+### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows Store en Windows Phone 8,1 (niet-Silverlight)
 
 ```python
 wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Test</text></binding></visual></toast>"""
 hub.send_windows_notification(wns_payload)
 ```
 
-### <a name="windows-phone-80-and-81-silverlight"></a>Windows Phone 8.0 en 8.1 Zilverlicht
+### <a name="windows-phone-80-and-81-silverlight"></a>Windows Phone 8,0 en 8,1 Silverlight
 
 ```python
 hub.send_mpns_notification(toast)
@@ -374,30 +374,30 @@ baidu_payload = {
 hub.send_baidu_notification(baidu_payload)
 ```
 
-Als u uw Python-code uitvoert, moet er een melding worden weergegeven op uw doelapparaat.
+Als u de python-code uitvoert, moet er een melding op uw doel apparaat worden weer gegeven.
 
 ## <a name="examples"></a>Voorbeelden
 
 ### <a name="enabling-the-debug-property"></a>De `debug` eigenschap inschakelen
 
-Wanneer u de foutopsporingsvlag inschakelt tijdens het initialiseren van de NotificationHub, ziet u gedetailleerde HTTP-aanvraag- en reactiedump en NotificationOutcome zoals het volgende, waar u begrijpen welke HTTP-headers in het verzoek worden doorgegeven en welk HTTP-antwoord was ontvangen van de Notification Hub:
+Wanneer u de vlag debug tijdens het initialiseren van de NotificationHub inschakelt, ziet u gedetailleerde HTTP-aanvraag-en reactie dump en NotificationOutcome zoals het volgende, waar u kunt zien welke HTTP-headers in de aanvraag worden door gegeven en welk HTTP-antwoord is ontvangen van de notification hub:
 
 ![][1]
 
-U ziet bijvoorbeeld het resultaat van de meldingshub.
+U ziet bijvoorbeeld een gedetailleerd resultaat van de notification hub.
 
-- wanneer het bericht naar de pushmeldingsservice wordt verzonden.
+- Wanneer het bericht is verzonden naar de service voor push meldingen.
     ```xml
     <Outcome>The Notification was successfully sent to the Push Notification System</Outcome>
     ```
-- Als er geen doelen zijn gevonden voor een pushmelding, dan ziet u waarschijnlijk de volgende uitvoer als de reactie (wat aangeeft dat er geen registraties zijn gevonden om de melding af te leveren, waarschijnlijk omdat de registraties een aantal niet-overeenkomende tags)
+- Als er geen doelen voor een push melding zijn gevonden, wordt waarschijnlijk de volgende uitvoer weer gegeven als het antwoord (wat aangeeft dat er geen registraties zijn gevonden om de melding te leveren waarschijnlijk omdat de registraties niet-overeenkomende labels bevatten)
     ```xml
     '<NotificationOutcome xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="https://www.w3.org/2001/XMLSchema-instance"><Success>0</Success><Failure>0</Failure><Results i:nil="true"/></NotificationOutcome>'
     ```
 
-### <a name="broadcast-toast-notification-to-windows"></a>Pop-upmelding uitzenden naar Windows
+### <a name="broadcast-toast-notification-to-windows"></a>Pop-upmelding aan Windows verzenden
 
-Let op de kopteksten die worden verzonden wanneer u een melding van een uitzendingspop verzendt naar de Windows-client.
+Let op de kopteksten die worden verzonden wanneer u een melding voor een broadcast-pop naar Windows-client verzendt.
 
 ```python
 hub.send_windows_notification(wns_payload)
@@ -405,9 +405,9 @@ hub.send_windows_notification(wns_payload)
 
 ![][2]
 
-### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>Melding verzenden met vermelding van een tag (of tagexpressie)
+### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>Melding verzenden met een tag (of een label expressie)
 
-Let op de Tags HTTP-header, die wordt toegevoegd aan het HTTP-verzoek (in het onderstaande voorbeeld wordt de melding alleen verzonden naar registraties met 'sport'-payload)
+Let op de Tags HTTP-header die wordt toegevoegd aan de HTTP-aanvraag (in het volgende voor beeld wordt de melding alleen verzonden naar registraties met de nettolading ' sporten ')
 
 ```python
 hub.send_windows_notification(wns_payload, "sports")
@@ -415,9 +415,9 @@ hub.send_windows_notification(wns_payload, "sports")
 
 ![][3]
 
-### <a name="send-notification-specifying-multiple-tags"></a>Melding verzenden met meerdere tags
+### <a name="send-notification-specifying-multiple-tags"></a>Melding verzenden met meerdere labels
 
-Zie hoe de HTTP-header tags worden gewijzigd wanneer meerdere tags worden verzonden.
+U ziet hoe de HTTP-header van Tags verandert wanneer er meerdere labels worden verzonden.
 
 ```python
 tags = {'sports', 'politics'}
@@ -426,17 +426,17 @@ hub.send_windows_notification(wns_payload, tags)
 
 ![][4]
 
-### <a name="templated-notification"></a>Aangemeld met sjabloon
+### <a name="templated-notification"></a>Sjabloon melding
 
-De http-header wordt opgemaakt en de payload-instantie wordt verzonden als onderdeel van de HTTP-aanvraaginstantie:
+U ziet dat de notatie van de HTTP-header wordt gewijzigd en de lading-hoofd tekst wordt verzonden als onderdeel van de HTTP-aanvraag tekst:
 
-**Clientzijde - geregistreerde sjabloon:**
+**Geregistreerde sjabloon aan de client zijde:**
 
 ```python
 var template = @"<toast><visual><binding template=""ToastText01""><text id=""1"">$(greeting_en)</text></binding></visual></toast>";
 ```
 
-**Server kant - het verzenden van de payload:**
+**Server zijde: verzenden van de lading**
 
 ```python
 template_payload = {'greeting_en': 'Hello', 'greeting_fr': 'Salut'}
@@ -447,17 +447,17 @@ hub.send_template_notification(template_payload)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel is te zien hoe u een Python REST-client voor Notification Hubs maakt. Hier kunt u het volgende doen:
+In dit artikel wordt uitgelegd hoe u een python REST-client maakt voor Notification Hubs. Hier kunt u het volgende doen:
 
-- Download de volledige [Python REST wrapper monster,]die alle code in dit artikel bevat.
-- Lees verder over de functie Tagging-functie voor meldingenhubs in de [zelfstudie Breaking News]
-- Lees verder over de functie Sjablonen voor meldingenhubs in de [zelfstudie Nieuws lokaliseren]
+- Down load het volledige [PYTHON rest-wrapper]-voor beeld, dat alle code in dit artikel bevat.
+- Meer informatie over de functie voor het markeren van Notification Hubs in het [laatste nieuws zelf studie]
+- Blijf leren over Notification Hubs-sjablonen in de [zelf studie over het lokaliseren van nieuws]
 
 <!-- URLs -->
-[Voorbeeld van python REST-wrapper]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
+[Python REST wrapper-voor beeld]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
 [Zelfstudie Aan de slag]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Zelfstudie Breaking News]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
-[Zelfstudie Nieuws lokaliseren]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
+[Zelf studie over laatste nieuws]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
+[Nieuws zelf studie voor lokalisatie]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-python-backend-how-to/DetailedLoggingInfo.png

@@ -1,6 +1,6 @@
 ---
-title: Beschikbaarheid en consistentie - Azure Event Hubs | Microsoft Documenten
-description: Zo u de maximale hoeveelheid beschikbaarheid en consistentie met Azure Event Hubs bieden met behulp van partities.
+title: Beschik baarheid en consistentie-Azure Event Hubs | Microsoft Docs
+description: De maximale hoeveelheid Beschik baarheid en consistentie bieden met Azure Event Hubs met behulp van partities.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -14,44 +14,44 @@ ms.workload: na
 ms.date: 03/27/2020
 ms.author: shvija
 ms.openlocfilehash: 0546adb6131479a8f5d2e7e31819483200586839
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80397325"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Beschikbaarheid en consistentie in Event Hubs
 
 ## <a name="overview"></a>Overzicht
-Azure Event Hubs gebruikt een [partitiemodel](event-hubs-scalability.md#partitions) om de beschikbaarheid en parallelisatie binnen één gebeurtenishub te verbeteren. Als een gebeurtenishub bijvoorbeeld vier partities heeft en een van deze partities wordt verplaatst van de ene server naar de andere in een taakverdelingsbewerking, u nog steeds verzenden en ontvangen van drie andere partities. Bovendien u met meer partities meer gelijktijdige lezers hebben die uw gegevens verwerken, waardoor uw totale doorvoer wordt verbeterd. Inzicht in de implicaties van partitionering en bestellen in een gedistribueerd systeem is een essentieel aspect van het ontwerp van oplossingen.
+Azure Event Hubs maakt gebruik van een [partitie model](event-hubs-scalability.md#partitions) om Beschik baarheid en parallel Lise ring binnen één event hub te verbeteren. Als een Event Hub bijvoorbeeld vier partities heeft en een van deze partities wordt verplaatst van de ene server naar de andere in een taak verdeling, kunt u nog steeds vanuit drie andere partities verzenden en ontvangen. Daarnaast kunt u met meer partities meer gelijktijdige lezers uw gegevens laten verwerken, waardoor uw geaggregeerde door Voer wordt verbeterd. Meer informatie over de gevolgen van het partitioneren en best Ellen in een gedistribueerd systeem is een essentieel aspect van het oplossings ontwerp.
 
-Om de afweging tussen bestellen en beschikbaarheid te verklaren, zie de [stelling van het GLB](https://en.wikipedia.org/wiki/CAP_theorem), ook wel bekend als de stelling van brewer. Deze stelling bespreekt de keuze tussen consistentie, beschikbaarheid en partitietolerantie. Het stelt dat voor de systemen verdeeld door het netwerk is er altijd afweging tussen consistentie en beschikbaarheid.
+Zie de [Cap theorema](https://en.wikipedia.org/wiki/CAP_theorem), ook wel bekend als theorema van Brewer, om de afweging tussen volg orde en beschik baarheid te verklaren. In deze theorema wordt de keuze beschreven tussen consistentie, Beschik baarheid en partitie tolerantie. Dit geeft aan dat voor de systemen die door netwerk zijn gepartitioneerd, altijd de consistentie en beschik baarheid worden verzorgd.
 
-De stelling van de brouwer definieert consistentie en beschikbaarheid als volgt:
-* Partitietolerantie: de mogelijkheid van een gegevensverwerkingssysteem om gegevens te blijven verwerken, zelfs als er een partitiefout optreedt.
-* Beschikbaarheid: een niet-falend knooppunt retourneert een redelijk antwoord binnen een redelijke tijd (zonder fouten of time-outs).
-* Consistentie: een read is gegarandeerd de meest recente schrijven voor een bepaalde client terug te keren.
+Brewer van theorema definieert consistentie en beschik baarheid als volgt:
+* Partitie tolerantie: de mogelijkheid van een systeem voor gegevens verwerking om gegevens te blijven verwerken, zelfs als er een partitie fout optreedt.
+* Beschik baarheid: een niet-mislukt knoop punt retourneert binnen een redelijke hoeveelheid tijd (zonder fouten of time-outs) een redelijke reactie.
+* Consistentie: een lees bewerking is gegarandeerd de meest recente schrijf bewerking voor een bepaalde client te retour neren.
 
-## <a name="partition-tolerance"></a>Partitietolerantie
-Event Hubs is gebouwd bovenop een verdeeld gegevensmodel. U het aantal partities in uw gebeurtenishub configureren tijdens de installatie, maar u deze waarde later niet wijzigen. Aangezien u partities moet gebruiken met Event Hubs, moet u een beslissing nemen over beschikbaarheid en consistentie voor uw toepassing.
+## <a name="partition-tolerance"></a>Partitie tolerantie
+Event Hubs is gebaseerd op een gepartitioneerd gegevens model. U kunt het aantal partities in uw Event Hub configureren tijdens de installatie, maar u kunt deze waarde later niet wijzigen. Omdat u partities moet gebruiken met Event Hubs, dient u een beslissing te nemen over de beschik baarheid en consistentie voor uw toepassing.
 
 ## <a name="availability"></a>Beschikbaarheid
-De eenvoudigste manier om aan de slag te gaan met Gebeurtenishubs is door het standaardgedrag te gebruiken. 
+De eenvoudigste manier om aan de slag te gaan met Event Hubs is het standaard gedrag te gebruiken. 
 
-#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs (5.0.0 of hoger)](#tab/latest)
-Als u een nieuw **[EventHubProducerClient-object](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient?view=azure-dotnet)** maakt en de **[methode SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync?view=azure-dotnet)** gebruikt, worden uw gebeurtenissen automatisch verdeeld over partities in uw gebeurtenishub. Dit gedrag zorgt voor de grootste hoeveelheid up-time.
+#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure. Messa ging. Event hubs (5.0.0 of hoger)](#tab/latest)
+Als u een nieuw **[EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient?view=azure-dotnet)** -object maakt en de methode **[SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync?view=azure-dotnet)** gebruikt, worden uw gebeurtenissen automatisch gedistribueerd tussen partities in uw event hub. Dit gedrag zorgt voor de grootste hoeveelheid tijd.
 
-#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft.Azure.EventHubs (4.1.0 of eerder)](#tab/old)
-Als u een nieuw **[EventHubClient-object](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** maakt en de methode **[Verzenden](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** gebruikt, worden uw gebeurtenissen automatisch verdeeld over partities in uw gebeurtenishub. Dit gedrag zorgt voor de grootste hoeveelheid up-time.
+#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Micro soft. Azure. Event hubs (4.1.0 of eerder)](#tab/old)
+Als u een nieuw **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** -object maakt en de **[Verzend](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** methode gebruikt, worden uw gebeurtenissen automatisch gedistribueerd tussen partities in uw event hub. Dit gedrag zorgt voor de grootste hoeveelheid tijd.
 
 ---
 
-Voor use cases waarvoor de maximale uptime nodig is, heeft dit model de voorkeur.
+Voor use-cases waarvoor de maximale hoeveelheid tijd is vereist, heeft dit model de voor keur.
 
 ## <a name="consistency"></a>Consistentie
-In sommige scenario's kan het ordenen van gebeurtenissen belangrijk zijn. U wilt bijvoorbeeld dat uw back-endsysteem een updateopdracht verwerkt voordat een opdracht verwijderen wordt gedaan. In dit geval u de partitiesleutel instellen op `PartitionSender` een gebeurtenis of een object gebruiken (als u de oude Microsoft.Azure.Messaging-bibliotheek gebruikt) om alleen gebeurtenissen naar een bepaalde partitie te verzenden. Als u dit doet, zorgt u ervoor dat wanneer deze gebeurtenissen uit de partitie worden gelezen, ze in volgorde worden gelezen. Zie [Code migreren van PartitionSender naar EventHubProducerClient voor het publiceren van gebeurtenissen naar een partitie](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition)als u de bibliotheek **Azure.Messaging.EventHubs** gebruikt en voor meer informatie.
+In sommige scenario's kan de volg orde van gebeurtenissen belang rijk zijn. Het is bijvoorbeeld mogelijk dat u wilt dat uw back-end-systeem een update opdracht verwerkt vóór een opdracht verwijderen. In dit geval kunt u de partitie sleutel instellen voor een gebeurtenis of een `PartitionSender` object gebruiken (als u de oude bibliotheek van micro soft. Azure. Messa ging gebruikt) om alleen gebeurtenissen naar een bepaalde partitie te verzenden. Dit zorgt ervoor dat wanneer deze gebeurtenissen worden gelezen uit de partitie, ze in de juiste volg orde worden gelezen. Als u de bibliotheek **Azure. Messa ging. Event hubs** gebruikt en voor meer informatie raadpleegt u [code migreren van PartitionSender naar EventHubProducerClient voor het publiceren van gebeurtenissen naar een partitie](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition).
 
-#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs (5.0.0 of hoger)](#tab/latest)
+#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure. Messa ging. Event hubs (5.0.0 of hoger)](#tab/latest)
 
 ```csharp
 var connectionString = "<< CONNECTION STRING FOR THE EVENT HUBS NAMESPACE >>";
@@ -68,7 +68,7 @@ await using (var producerClient = new EventHubProducerClient(connectionString, e
 }
 ```
 
-#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft.Azure.EventHubs (4.1.0 of eerder)](#tab/old)
+#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Micro soft. Azure. Event hubs (4.1.0 of eerder)](#tab/old)
 
 ```csharp
 var connectionString = "<< CONNECTION STRING FOR THE EVENT HUBS NAMESPACE >>";
@@ -94,11 +94,11 @@ finally
 
 ---
 
-Houd er bij deze configuratie rekening mee dat als de specifieke partitie waarnaar u verzendt niet beschikbaar is, u een foutmelding ontvangt. Als vergelijkingspunt stuurt de gebeurtenisservice uw gebeurtenis naar de eerstvolgende beschikbare partitie als u geen affiniteit hebt met één partitie.
+Houd er bij deze configuratie rekening mee dat als de specifieke partitie waarnaar u wilt verzenden niet beschikbaar is, er een fout bericht wordt weer gegeven. Als u geen affiniteit hebt voor een enkele partitie, stuurt de Event Hubs-service uw gebeurtenis naar de volgende beschik bare partitie.
 
-Een mogelijke oplossing om te zorgen voor het bestellen, terwijl ook het maximaliseren van de tijd, zou zijn om gebeurtenissen te verzamelen als onderdeel van uw gebeurtenisverwerking toepassing. De eenvoudigste manier om dit te bereiken is door uw evenement te stempelen met een aangepaste eigenschap van het volgnummer. In de volgende code ziet u een voorbeeld:
+Een mogelijke oplossing om te zorgen voor bestellingen, terwijl ook de maximale tijd wordt gemaximaliseerd, is het verzamelen van gebeurtenissen als onderdeel van de toepassing voor het verwerken van gebeurtenissen. De eenvoudigste manier om dit te bereiken is door uw gebeurtenis te stem pelen met een aangepaste volgorde nummer eigenschap. In de volgende code ziet u een voorbeeld:
 
-#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs (5.0.0 of hoger)](#tab/latest)
+#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure. Messa ging. Event hubs (5.0.0 of hoger)](#tab/latest)
 
 ```csharp
 // create a producer client that you can use to send events to an event hub
@@ -124,7 +124,7 @@ await using (var producerClient = new EventHubProducerClient(connectionString, e
 }
 ```
 
-#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft.Azure.EventHubs (4.1.0 of eerder)](#tab/old)
+#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Micro soft. Azure. Event hubs (4.1.0 of eerder)](#tab/old)
 ```csharp
 // Create an Event Hubs client
 var client = new EventHubClient(connectionString, eventHubName);
@@ -146,10 +146,10 @@ await producer.SendAsync(data);
 ```
 ---
 
-In dit voorbeeld wordt uw gebeurtenis naar een van de beschikbare partities in uw gebeurtenishub geplaatst en wordt het bijbehorende volgnummer van uw toepassing ingesteld. Deze oplossing vereist dat de status door uw verwerkingstoepassing wordt bewaard, maar geeft uw afzenders een eindpunt dat waarschijnlijk beschikbaar is.
+In dit voor beeld wordt uw gebeurtenis verzonden naar een van de beschik bare partities in uw Event Hub en wordt het overeenkomstige Volg nummer van uw toepassing ingesteld. Voor deze oplossing moet de status worden behouden door de verwerkings toepassing, maar geeft uw afzenders een eind punt dat waarschijnlijk beschikbaar is.
 
 ## <a name="next-steps"></a>Volgende stappen
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
-* [Overzicht van de service event hubs](event-hubs-what-is-event-hubs.md)
+* [Overzicht van Event Hubs-service](event-hubs-what-is-event-hubs.md)
 * [Een Event Hub maken](event-hubs-create.md)

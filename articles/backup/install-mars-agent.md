@@ -1,71 +1,71 @@
 ---
-title: De MARS-agent (Microsoft Azure Recovery Services) installeren
-description: Meer informatie over het installeren van de MARS-agent (Microsoft Azure Recovery Services) om een back-up te maken van Windows-machines.
+title: De Microsoft Azure Recovery Services-agent (MARS) installeren
+description: Meer informatie over het installeren van de Microsoft Azure Recovery Services-agent (MARS) voor het maken van back-ups van Windows-machines.
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: d3932b66dbc41ff2631e2cccbe716c0877a509d3
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422922"
 ---
-# <a name="install-the-azure-backup-mars-agent"></a>De Azure Backup MARS-agent installeren
+# <a name="install-the-azure-backup-mars-agent"></a>Installeer de Azure Backup MARS-agent
 
-In dit artikel wordt uitgelegd hoe u de MARS-agent (Microsoft Azure Recovery Services) installeert. MARS wordt ook wel de Azure Backup-agent genoemd.
+In dit artikel wordt uitgelegd hoe u de Microsoft Azure Recovery Services-agent (MARS) installeert. MARS wordt ook wel de Azure Backup-Agent genoemd.
 
 ## <a name="about-the-mars-agent"></a>Over de MARS-agent
 
-Azure Backup maakt gebruik van de MARS-agent om een back-up te maken van bestanden, mappen en systeemstatus van on-premises machines en Azure VM's. Deze back-ups worden opgeslagen in een vault van Recovery Services in Azure. U de agent uitvoeren:
+Azure Backup maakt gebruik van de MARS-agent om een back-up te maken van bestanden, mappen en de systeem status van on-premises machines en Azure-Vm's. Deze back-ups worden opgeslagen in een Recovery Services kluis in Azure. U kunt de agent uitvoeren:
 
-* Direct op on-premises Windows-machines. Deze machines kunnen rechtstreeks een back-up maken naar een vault van Recovery Services in Azure.
-* Op Azure VM's die Windows naast elkaar uitvoeren met de Azure VM-back-upextensie. De agent maakt een back-up van specifieke bestanden en mappen op de VM.
-* Op een MABS-exemplaar (Microsoft Azure Backup Server) of een DPM-server (System Center Data Protection Manager). In dit scenario maken machines en workloads een back-up naar MABS of Data Protection Manager. Vervolgens gebruikt MABS of Data Protection Manager de MARS-agent om een back-up te maken van een kluis in Azure.
+* Rechtstreeks op de on-premises Windows-computers. Deze machines kunnen rechtstreeks een back-up maken van een Recovery Services kluis in Azure.
+* Op virtuele Azure-machines waarop Windows naast de Azure VM-back-upextensie wordt uitgevoerd. De agent maakt een back-up van specifieke bestanden en mappen op de VM.
+* Op een MABS-exemplaar (Microsoft Azure Backup Server) of een System Center Data Protection Manager (DPM)-server. In dit scenario maken machines en workloads een back-up naar MABS of Data Protection Manager. MABS of Data Protection Manager maakt gebruik van de MARS-agent om een back-up te maken naar een kluis in Azure.
 
 De gegevens die beschikbaar zijn voor back-up, zijn afhankelijk van waar de agent is geïnstalleerd.
 
 > [!NOTE]
-> Over het algemeen maakt u een back-up van een Azure-vm met behulp van een Azure Backup-extensie op de VM. Met deze methode wordt een back-up gemaakt van de hele VM. Als u een back-up wilt maken van specifieke bestanden en mappen op de VM, installeert en gebruikt u de MARS-agent naast de extensie. Zie [Architectuur van een ingebouwde Azure VM-back-up](backup-architecture.md#architecture-built-in-azure-vm-backup)voor meer informatie.
+> Over het algemeen maakt u een back-up van een virtuele Azure-machine met behulp van een Azure Backup-extensie op de VM. Met deze methode maakt u een back-up van de volledige VM. Als u een back-up wilt maken van specifieke bestanden en mappen op de VM, installeert en gebruikt u de MARS-agent naast de extensie. Zie [architectuur van een ingebouwde Azure VM-back-up](backup-architecture.md#architecture-built-in-azure-vm-backup)voor meer informatie.
 
 ![Stappen voor back-upproces](./media/backup-configure-vault/initial-backup-process.png)
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-* Meer informatie over hoe [Azure Backup de MARS-agent gebruikt om een back-up te maken van Windows-machines.](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders)
-* Meer informatie over de [back-uparchitectuur](backup-architecture.md#architecture-back-up-to-dpmmabs) waarop de MARS-agent wordt uitgevoerd op een secundaire MABS- of Data Protection Manager-server.
-* Bekijk [wat er wordt ondersteund en wat je back-ups](backup-support-matrix-mars-agent.md) maken door de MARS-agent.
-* Zorg ervoor dat u een Azure-account hebt als u een back-up van een server of client naar Azure wilt maken. Als je geen account hebt, kun je in slechts een paar minuten een [gratis](https://azure.microsoft.com/free/) account aanmaken.
-* Controleer de internettoegang op de machines waarvan u een back-up wilt maken.
-* Zorg ervoor dat de gebruiker die de installatie en configuratie van de MARS-agent uitvoert, lokale beheerdersbevoegdheden op de server heeft om te worden beveiligd.
+* Meer informatie over hoe [Azure backup de Mars-agent gebruikt om een back-up te maken van Windows-machines](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders).
+* Meer informatie over de [back-uparchitectuur](backup-architecture.md#architecture-back-up-to-dpmmabs) voor het uitvoeren van de Mars-agent op een secundaire MABS of Data Protection Manager-server.
+* Bekijk [wat wordt ondersteund en waarvan u een back-up kunt maken](backup-support-matrix-mars-agent.md) door de Mars-agent.
+* Zorg ervoor dat u een Azure-account hebt als u een back-up van een server of client naar Azure wilt maken. Als u geen account hebt, kunt u in slechts een paar minuten een [gratis versie](https://azure.microsoft.com/free/) maken.
+* Controleer de Internet toegang op de computers waarvan u een back-up wilt maken.
+* Zorg ervoor dat de gebruiker die de installatie en configuratie van de MARS-agent uitvoert, lokale beheerders rechten heeft op de server die moet worden beveiligd.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-## <a name="modify-storage-replication"></a>Opslagreplicatie wijzigen
+## <a name="modify-storage-replication"></a>Opslag replicatie wijzigen
 
-Standaard gebruiken kluizen [georedundante opslag (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+Standaard gebruiken kluizen de [geo-redundante opslag (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
 
 * Als de kluis uw primaire back-upmechanisme is, raden we u aan GRS te gebruiken.
-* U [lrs (localredundante opslag)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) gebruiken om azure-opslagkosten te verlagen.
+* U kunt [lokaal redundante opslag (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) gebruiken om de kosten voor Azure Storage te reduceren.
 
-Ga als lid van het type opslagreplicatie:
+Het type opslag replicatie wijzigen:
 
-1. Selecteer **eigenschappen** in de nieuwe kluis onder de sectie **Instellingen.**
+1. Selecteer in de nieuwe kluis **Eigenschappen** onder de sectie **instellingen** .
 
-1. Selecteer Op de pagina **Eigenschappen** onder **Back-upconfiguratie**de optie **Bijwerken**.
+1. Selecteer op de pagina **Eigenschappen** onder **back-upconfiguratie**de optie **bijwerken**.
 
-1. Selecteer het type opslagreplicatie en selecteer **Opslaan**.
+1. Selecteer het type opslag replicatie en selecteer **Opslaan**.
 
     ![Back-upconfiguratie bijwerken](./media/backup-afs/backup-configuration.png)
 
 > [!NOTE]
-> U het type opslagreplicatie niet wijzigen nadat de kluis is ingesteld en bevat back-upitems. Als u dit wilt doen, moet u de kluis opnieuw maken.
+> U kunt het type opslag replicatie niet wijzigen nadat de kluis is ingesteld en back-upitems bevat. Als u dit wilt doen, moet u de kluis opnieuw maken.
 >
 
-### <a name="verify-internet-access"></a>Internettoegang verifiëren
+### <a name="verify-internet-access"></a>Internet toegang controleren
 
-Als uw machine beperkte internettoegang heeft, moet u ervoor zorgen dat firewall-instellingen op de machine of proxy de volgende URL's en IP-adressen toestaan:
+Als uw computer beperkte internet toegang heeft, moet u ervoor zorgen dat de firewall instellingen op de computer of de proxy de volgende Url's en IP-adressen toestaan:
 
-*  URL's
+* URL's
   * `www\.msftncsi.com`
   * `*.Microsoft.com`
   * `*.WindowsAzure.com`
@@ -75,11 +75,11 @@ Als uw machine beperkte internettoegang heeft, moet u ervoor zorgen dat firewall
   * 20.190.128.0/18
   * 40.126.0.0/18
 
-### <a name="use-azure-expressroute"></a>Azure ExpressRoute gebruiken
+### <a name="use-azure-expressroute"></a>Azure-ExpressRoute gebruiken
 
-U een back-up van uw gegevens maken via Azure ExpressRoute door gebruik te maken van openbare peering (beschikbaar voor oude circuits) en Microsoft-peering. Back-up via private peering wordt niet ondersteund.
+U kunt een back-up van uw gegevens via Azure ExpressRoute maken met behulp van open bare peering (beschikbaar voor oude circuits) en micro soft-peering. Back-up via privé-peering wordt niet ondersteund.
 
-Als u openbare peering wilt gebruiken, moet u eerst de toegang tot de volgende domeinen en adressen garanderen:
+Als u open bare peering wilt gebruiken, zorg er dan voor dat u toegang hebt tot de volgende domeinen en adressen:
 
 * `http://www.msftncsi.com/ncsi.txt`
 * `microsoft.com`
@@ -87,79 +87,79 @@ Als u openbare peering wilt gebruiken, moet u eerst de toegang tot de volgende d
 * `.microsoftonline.com`
 * `.windows.net`
 
-Als u Microsoft-peering wilt gebruiken, selecteert u de volgende services, regio's en relevante communitywaarden:
+Als u micro soft-peering wilt gebruiken, selecteert u de volgende services, regio's en relevante Community-waarden:
 
 * Azure Active Directory (12076:5060)
-* Azure-regio, afhankelijk van de locatie van uw vault voor Herstelservices
-* Azure Storage, afhankelijk van de locatie van uw Vault Recovery Services
+* Azure-regio, op basis van de locatie van uw Recovery Services kluis
+* Azure Storage, op basis van de locatie van uw Recovery Services kluis
 
-Zie [Routeringsvereisten expressroute voor](https://docs.microsoft.com/azure/expressroute/expressroute-routing)meer informatie.
+Zie [ExpressRoute Routing requirements](https://docs.microsoft.com/azure/expressroute/expressroute-routing)(Engelstalig) voor meer informatie.
 
 > [!NOTE]
-> Openbare peering is afgeschaft voor nieuwe circuits.
+> Open bare peering is afgeschaft voor nieuwe circuits.
 
-Alle voorgaande URL's en IP-adressen gebruiken het HTTPS-protocol op poort 443.
+Alle voor gaande Url's en IP-adressen gebruiken het HTTPS-protocol op poort 443.
 
-### <a name="private-endpoints"></a>Privéeindpunten
+### <a name="private-endpoints"></a>Privé-eind punten
 
 [!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
-## <a name="download-the-mars-agent"></a>Download de MARS-agent
+## <a name="download-the-mars-agent"></a>De MARS-agent downloaden
 
-Download de MARS-agent zodat u deze installeren op de machines waarvan u een back-up wilt maken.
+Down load de MARS-agent zodat u deze kunt installeren op de computers waarvan u een back-up wilt maken.
 
-Als u de agent al op machines hebt geïnstalleerd, moet u ervoor zorgen dat u de nieuwste versie van de agent uitvoert. Zoek de nieuwste versie in de portal, of ga direct naar de [download](https://aka.ms/azurebackup_agent).
+Als u de agent al op alle computers hebt geïnstalleerd, moet u ervoor zorgen dat u de nieuwste versie van de agent uitvoert. Zoek de meest recente versie in de portal of ga rechtstreeks naar de [down load](https://aka.ms/azurebackup_agent).
 
-1. Selecteer **Back-up**in de kluis onder **Aan de slag**.
+1. Selecteer in de kluis, onder **aan**de slag, **back-up maken**.
 
-    ![Het back-updoel openen](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
+    ![Het doel van de back-up openen](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
-1. Selecteer **On-premises**onder **Waar wordt uw werkbelasting uitgevoerd?** Selecteer deze optie, zelfs als u de MARS-agent op een Azure VM wilt installeren.
-1. Selecteer **Bestanden en mappen**onder Wat wilt u een **back-up maken?** U ook **Systeemstatus**selecteren. Er zijn veel andere opties beschikbaar, maar deze opties worden alleen ondersteund als u een secundaire back-upserver uitvoert. Selecteer **Infrastructuur voorbereiden**.
+1. Selecteer onder **waar wordt uw workload uitgevoerd? de**optie **on-premises**. Selecteer deze optie, zelfs als u de MARS-agent wilt installeren op een virtuele Azure-machine.
+1. Selecteer **bestanden en mappen**onder **waarvan wilt u een back-up maken?** U kunt ook **systeem status**selecteren. Er zijn veel andere opties beschikbaar, maar deze opties worden alleen ondersteund als u een secundaire back-upserver uitvoert. Selecteer **infra structuur voorbereiden**.
 
     ![Bestanden en mappen configureren](./media/backup-try-azure-backup-in-10-mins/set-file-folder.png)
 
-1. Download de MARS-agent voor **voorbereiden infrastructuur**onder de **agent Herstelservices installeren.**
+1. Voor het voorbereiden van de **infra structuur**, onder **Installeer Recovery Services agent**, downloadt u de Mars-agent.
 
     ![De infrastructuur voorbereiden](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
 
-1. Selecteer **Opslaan**in het downloadmenu . Standaard wordt het bestand *MARSagentinstaller.exe* opgeslagen in de map Downloads.
+1. Selecteer in het menu downloaden de optie **Opslaan**. Standaard wordt het bestand *MARSagentinstaller.exe* opgeslagen in de map Downloads.
 
-1. Selecteer **Al downloaden of gebruiken van de nieuwste Recovery Services Agent**en download vervolgens de vault credentials.
+1. Selecteer **al downloaden of gebruik de nieuwste Recovery Services-agent**en down load vervolgens de kluis referenties.
 
     ![Kluisreferenties downloaden](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-1. Selecteer **Opslaan**. Het bestand wordt gedownload naar de map Downloads. U het bestand met vault-referenties niet openen.
+1. Selecteer **Opslaan**. Het bestand wordt gedownload naar de map down loads. Het kluis referentie bestand kan niet worden geopend.
 
 ## <a name="install-and-register-the-agent"></a>De agent installeren en registreren
 
-1. Voer het *MARSagentinstaller.exe-bestand* uit op de machines die u wilt back-ups maken.
-1. Selecteer **installatie-instellingen**in de wizard Installatie-installatie van MARS- agent . Kies daar waar u de agent wilt installeren en kies een locatie voor de cache. Selecteer **vervolgens Volgende**.
-   * Azure Backup gebruikt de cache om gegevensmomentopnamen op te slaan voordat deze naar Azure worden verzonden.
-   * De cachelocatie moet vrije ruimte hebben die gelijk is aan ten minste 5 procent van de grootte van de gegevens waar u een back-up van maakt.
+1. Voer het bestand *MARSagentinstaller. exe* uit op de computers waarvan u een back-up wilt maken.
+1. In de installatie wizard van de MARS-agent selecteert u **installatie-instellingen**. Hier kunt u kiezen waar u de agent wilt installeren en kiest u een locatie voor de cache. Selecteer **volgende**.
+   * Azure Backup gebruikt de cache om moment opnamen van gegevens op te slaan voordat ze naar Azure worden verzonden.
+   * De cache locatie moet vrije ruimte hebben die gelijk is aan ten minste 5 procent van de grootte van de gegevens waarvan u een back-up maakt.
 
-    ![Installatie-instellingen kiezen in de wizard Installatie van MARS-agent](./media/backup-configure-vault/mars1.png)
+    ![Installatie-instellingen kiezen in de installatie wizard van de MARS-agent](./media/backup-configure-vault/mars1.png)
 
-1. Geef **voor proxyconfiguratie**op hoe de agent die op de Windows-machine wordt uitgevoerd, verbinding maakt met internet. Selecteer **vervolgens Volgende**.
+1. Geef voor **proxy configuratie**op hoe de agent die wordt uitgevoerd op de Windows-computer, verbinding maakt met internet. Selecteer **volgende**.
 
    * Als u een aangepaste proxy gebruikt, geeft u de benodigde proxy-instellingen en referenties op.
-   * Houd er rekening mee dat de agent toegang nodig heeft tot [specifieke URL's.](#before-you-start)
+   * Houd er rekening mee dat de agent toegang moet hebben tot [specifieke url's](#before-you-start).
 
-    ![Internettoegang instellen in de wizard MARS](./media/backup-configure-vault/mars2.png)
+    ![Internet toegang instellen in de MARS-wizard](./media/backup-configure-vault/mars2.png)
 
-1. Controleer **voor installatie**de vereisten en selecteer **Installeren**.
-1. Nadat de agent is geïnstalleerd, selecteert **u Doorgaan naar registratie**.
-1. Blader in **Register Server Wizard** > **Vault Identification**naar en selecteer het referentiesbestand dat u hebt gedownload. Selecteer **vervolgens Volgende**.
+1. Controleer de vereisten voor de **installatie**en selecteer **installeren**.
+1. Nadat de agent is geïnstalleerd, selecteert u **door gaan naar registratie**.
+1. In de >  **wizard Server registreren****kluis-id**, bladert u naar en selecteert u het referentie bestand dat u hebt gedownload. Selecteer **volgende**.
 
-    ![Vault-referenties toevoegen met de wizard Server registreren](./media/backup-configure-vault/register1.png)
+    ![Kluis referenties toevoegen met behulp van de wizard Server registreren](./media/backup-configure-vault/register1.png)
 
-1. Geef op de pagina **Versleutelingsinstelling** een wachtwoordzin op die wordt gebruikt om back-ups voor de machine te versleutelen en te decoderen.
+1. Geef op de pagina **versleutelings instelling** een wachtwoordzin op die wordt gebruikt voor het versleutelen en ontsleutelen van back-ups voor de machine.
 
-    * Sla de wachtwoordzin op een veilige locatie op. Je hebt het nodig om een back-up te herstellen.
-    * Als u de wachtwoordzin verliest of vergeet, kan Microsoft u niet helpen bij het herstellen van de back-upgegevens.
+    * Sla de wachtwoordzin op een veilige locatie op. U hebt deze nodig om een back-up te herstellen.
+    * Als u de wachtwoordzin kwijtraakt of vergeet, kan micro soft u niet helpen bij het herstellen van de back-upgegevens.
 
-1. Selecteer **Finish**. De agent is nu geïnstalleerd, en uw machine is geregistreerd bij de kluis. U kunt nu uw back-up configureren en plannen.
+1. Selecteer **Finish**. De agent is nu geïnstalleerd en de computer is geregistreerd bij de kluis. U kunt nu uw back-up configureren en plannen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [maken van back-ups van Windows-machines met de Azure Backup MARS-agent](backup-windows-with-mars-agent.md)
+Meer informatie over [het maken van een back-up van Windows-machines met behulp van de Azure backup Mars-agent](backup-windows-with-mars-agent.md)

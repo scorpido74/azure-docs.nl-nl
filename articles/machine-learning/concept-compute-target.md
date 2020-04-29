@@ -1,7 +1,7 @@
 ---
-title: Wat zijn rekendoelen
+title: Wat zijn reken doelen?
 titleSuffix: Azure Machine Learning
-description: Definieer waar u uw model wilt trainen of implementeren met Azure Machine Learning.
+description: Bepaal waar u uw model wilt trainen of implementeren met Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,72 +10,72 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 03/30/2020
 ms.openlocfilehash: f9ca75943eaec2ae018b54145d872fc09294035e
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398182"
 ---
-#  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Wat zijn rekendoelen in Azure Machine Learning? 
+#  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Wat zijn Compute-doelen in Azure Machine Learning? 
 
-Een **compute target** is een aangewezen compute resource/omgeving waar u uw trainingsscript uitvoert of uw service-implementatie host. Deze locatie kan uw lokale machine zijn of een cloudgebaseerde compute resource. Door rekendoelen te gebruiken, u later uw compute-omgeving wijzigen zonder dat u uw code hoeft te wijzigen.  
+Een **Compute-doel** is een aangewezen reken resource/omgeving waar u uw trainings script uitvoert of uw service-implementatie host. Deze locatie kan uw lokale machine of een cloud-gebaseerde reken resource zijn. Met Compute-doelen kunt u op een later tijdstip uw berekenings omgeving wijzigen zonder dat u de code hoeft te wijzigen.  
 
-In een typische levenscyclus van modelontwikkeling u het:
-1. Begin met het ontwikkelen en experimenteren op een kleine hoeveelheid data. In dit stadium raden we uw lokale omgeving (lokale computer of cloud-gebaseerde VM) aan als uw rekendoel. 
-2. Schaal op naar grotere gegevens of doe gedistribueerde training met behulp van een van deze [trainingscomputetargets.](#train)  
-3. Zodra uw model klaar is, implementeert u het naar een webhostingomgeving of IoT-apparaat met een van deze [compute-doelen voor implementatie.](#deploy)
+In een typische levens cyclus voor model ontwikkeling kunt u het volgende doen:
+1. Begin met het ontwikkelen en experimenteren van een kleine hoeveelheid gegevens. In deze fase raden wij uw lokale omgeving (lokale computer of Cloud-VM) aan als uw reken doel. 
+2. Schaal omhoog naar grotere gegevens of voer gedistribueerde training uit met behulp van een van deze [trainings Compute-doelen](#train).  
+3. Zodra uw model klaar is, implementeert u het in een webhost of IoT-apparaat met een van deze doelen voor de [implementatie](#deploy).
 
-De rekenresources die u voor uw rekendoelen gebruikt, zijn gekoppeld aan een [werkruimte.](concept-workspace.md) Andere rekenbronnen dan de lokale machine worden gedeeld door gebruikers van de werkruimte.
+De reken resources die u voor uw reken doelen gebruikt, worden aan een [werk ruimte](concept-workspace.md)gekoppeld. Andere reken bronnen dan de lokale computer worden gedeeld door gebruikers van de werk ruimte.
 
-## <a name="training-compute-targets"></a><a name="train"></a>Rekendoelen trainen
+## <a name="training-compute-targets"></a><a name="train"></a>Doelen van de trainings compute
 
-Azure Machine Learning biedt verschillende ondersteuning voor verschillende rekenbronnen.  U ook uw eigen rekenbron toevoegen, hoewel de ondersteuning voor verschillende scenario's kan variëren.
+Azure Machine Learning heeft verschillende ondersteuning voor verschillende reken bronnen.  U kunt ook uw eigen reken resource toevoegen, maar ondersteuning voor verschillende scenario's kan variëren.
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 
-Meer informatie over [het instellen en gebruiken van een rekendoel voor modeltraining](how-to-set-up-training-targets.md).
+Meer informatie over [het instellen en gebruiken van een berekenings doel voor model training](how-to-set-up-training-targets.md).
 
-## <a name="deployment-targets"></a><a name="deploy"></a>Implementatiedoelen
+## <a name="deployment-targets"></a><a name="deploy"></a>Implementatie doelen
 
-De volgende compute resources kunnen worden gebruikt om uw modelimplementatie te hosten.
+De volgende reken bronnen kunnen worden gebruikt voor het hosten van uw model implementatie.
 
 [!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
 
-Meer informatie over [waar en hoe u uw model implementeren in een rekendoel.](how-to-deploy-and-where.md)
+Meer informatie over [waar en hoe u uw model implementeert in een compute-doel](how-to-deploy-and-where.md).
 
 <a name="amlcompute"></a>
-## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning compute (beheerd)
+## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning Compute (beheerd)
 
-Een beheerde compute resource wordt gemaakt en beheerd door Azure Machine Learning. Deze compute is geoptimaliseerd voor machine learning workloads. Azure Machine Learning compute clusters en [compute instances](concept-compute-instance.md) zijn de enige beheerde computes. In de toekomst kunnen extra beheerde rekenresources worden toegevoegd.
+Een beheerde Compute-resource wordt gemaakt en beheerd door Azure Machine Learning. Deze berekening is geoptimaliseerd voor machine learning workloads. Azure Machine Learning compute-clusters en [reken instanties](concept-compute-instance.md) zijn de enige beheerde reken processen. Extra beheerde reken bronnen kunnen in de toekomst worden toegevoegd.
 
-U Azure Machine Learning compute instances (preview) of compute clusters maken van:
+U kunt Azure Machine Learning Compute instances (preview) of reken clusters maken van:
 * Azure Machine Learning Studio
 * Azure Portal
-* Python SDK [ComputeInstance-](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) en [AmlCompute-klassen](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py)
+* Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) -en [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) -klassen
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)
 * Resource Manager-sjabloon
 
-U ook compute clusters maken met behulp van de [machine learning-extensie voor de Azure CLI.](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training)
+U kunt ook reken clusters maken met behulp [van de extensie machine learning voor de Azure cli](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training).
 
-Wanneer deze compute resources worden gemaakt, maken ze automatisch deel uit van uw werkruimte in tegenstelling tot andere soorten rekendoelen.
+Wanneer u deze reken resources maakt, worden deze automatisch onderdeel van uw werk ruimte, in tegens telling tot andere soorten Compute-doelen.
 
-### <a name="compute-clusters"></a>Compute clusters
+### <a name="compute-clusters"></a>Reken clusters
 
-U Azure Machine Learning-compute clusters gebruiken voor training en voor batch-inferencing (preview).  Met deze compute resource hebt u het:
+U kunt Azure Machine Learning compute-clusters gebruiken voor training en voor het afleiden van batches (preview-versie).  Met deze reken resource hebt u het volgende:
 
-* Cluster met één of meerdere node
-* Automatisch schalen elke keer dat u een run indient 
-* Automatisch clusterbeheer en taakplanning 
-* Ondersteuning voor zowel CPU- als GPU-bronnen
+* Cluster met één of meerdere knoop punten
+* Automatisch schalen elke keer dat u een uitvoering verzendt 
+* Automatische Cluster beheer en taak planning 
+* Ondersteuning voor zowel CPU-als GPU-resources
 
 
 
-## <a name="unmanaged-compute"></a>Onbeheerde gegevens
+## <a name="unmanaged-compute"></a>Onbeheerde compute
 
-Een onbeheerd compute-doel wordt *niet* beheerd door Azure Machine Learning. U maakt dit type compute-doel buiten Azure Machine Learning en koppelt het vervolgens aan uw werkruimte. Onbeheerde rekenresources kunnen extra stappen vereisen om de prestaties voor machine learning-workloads te behouden of te verbeteren.
+Een niet-beheerd reken doel wordt *niet* beheerd door Azure machine learning. U maakt dit type reken doel buiten Azure Machine Learning en koppelt het vervolgens aan uw werk ruimte. Onbeheerde reken resources kunnen extra stappen vereisen om de prestaties van machine learning werk belastingen te hand haven of te verbeteren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Leer hoe u het volgende doet:
-* [Een rekendoel instellen om uw model te trainen](how-to-set-up-training-targets.md)
-* [Uw model implementeren op een rekendoel](how-to-deploy-and-where.md)
+* [Een reken doel instellen om uw model te trainen](how-to-set-up-training-targets.md)
+* [Uw model implementeren naar een berekenings doel](how-to-deploy-and-where.md)

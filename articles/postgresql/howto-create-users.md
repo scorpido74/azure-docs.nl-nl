@@ -1,49 +1,49 @@
 ---
-title: Gebruikers maken - Azure Database voor PostgreSQL - Single Server
-description: In dit artikel wordt beschreven hoe u nieuwe gebruikersaccounts maken om te communiceren met een Azure Database voor PostgreSQL - Single Server.
+title: Gebruikers maken-Azure Database for PostgreSQL-één server
+description: In dit artikel wordt beschreven hoe u nieuwe gebruikers accounts kunt maken om te communiceren met een Azure Database for PostgreSQL-één-server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.openlocfilehash: 127d484d6cfc35368803069f9c3d602e787baa56
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80384344"
 ---
-# <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Gebruikers maken in Azure Database voor PostgreSQL - Single Server
+# <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Gebruikers maken in Azure Database for PostgreSQL-één server
 
-In dit artikel wordt beschreven hoe u gebruikers maken binnen een Azure Database voor PostgreSQL-server.
+In dit artikel wordt beschreven hoe u gebruikers kunt maken binnen een Azure Database for PostgreSQL-server.
 
-Als u meer wilt weten over het maken en beheren van Azure-abonnementsgebruikers en hun bevoegdheden, u het [RBAC-artikel (Azure role based access control)](../role-based-access-control/built-in-roles.md) bezoeken of bekijken [hoe u rollen aanpassen.](../role-based-access-control/custom-roles.md)
+Als u meer wilt weten over het maken en beheren van Azure-abonnements gebruikers en hun bevoegdheden, kunt u het [artikel Azure Role based Access Control (RBAC)](../role-based-access-control/built-in-roles.md) bezoeken of de [rollen aanpassen](../role-based-access-control/custom-roles.md).
 
 ## <a name="the-server-admin-account"></a>Het beheerdersaccount voor de server
 
-Toen u uw Azure Database voor PostgreSQL voor het eerst maakte, hebt u een gebruikersnaam en wachtwoord voor serverbeheerder opgegeven. Voor meer informatie u de [Quickstart](quickstart-create-server-database-portal.md) volgen om de stapsgewijze aanpak te zien. Aangezien de gebruikersnaam van de serverbeheerder een aangepaste naam is, u de gekozen gebruikersnaam van de serverbeheerder zoeken vanuit de Azure-portal.
+Wanneer u uw Azure Database for PostgreSQL voor het eerst hebt gemaakt, hebt u de gebruikers naam en het wacht woord voor de server beheerder opgegeven. Voor meer informatie kunt u de [Snelstartgids](quickstart-create-server-database-portal.md) volgen om de stapsgewijze benadering te bekijken. Omdat de gebruikers naam van de server beheerder een aangepaste naam is, kunt u de gekozen gebruikers naam voor de server beheerder vinden in de Azure Portal.
 
-De Azure Database voor PostgreSQL-server wordt gemaakt met de 3 standaardrollen gedefinieerd. U deze rollen bekijken door de opdracht uit te voeren:`SELECT rolname FROM pg_roles;`
+De Azure Database for PostgreSQL-server wordt gemaakt met de drie standaard rollen gedefinieerd. U kunt deze rollen zien door de opdracht uit te voeren:`SELECT rolname FROM pg_roles;`
 
 - azure_pg_admin
 - azure_superuser
-- uw serverbeheerder
+- de gebruiker van de server beheerder
 
-Uw serverbeheerder is lid van de azure_pg_admin rol. Het serverbeheerdersaccount maakt echter geen deel uit van de azure_superuser rol. Aangezien deze service een beheerde PaaS-service is, maakt alleen Microsoft deel uit van de rol van de supergebruiker.
+De gebruiker van de server beheerder is lid van de rol azure_pg_admin. Het account van de server beheerder maakt echter geen deel uit van de azure_superuser rol. Omdat deze service een beheerde PaaS-service is, maakt alleen micro soft deel uit van de rol van super gebruiker.
 
-De PostgreSQL-engine gebruikt bevoegdheden om de toegang tot databaseobjecten te beheren, zoals besproken in de [PostgreSQL-productdocumentatie.](https://www.postgresql.org/docs/current/static/sql-createrole.html) In Azure Database voor PostgreSQL krijgt de serverbeheerder deze bevoegdheden: LOGIN, NOSUPERUSER, INHERIT, CREATEDB, CREATERole, NOREPLICATION
+De PostgreSQL-engine gebruikt bevoegdheden om de toegang tot database objecten te beheren, zoals beschreven in de [product documentatie van postgresql](https://www.postgresql.org/docs/current/static/sql-createrole.html). De gebruiker van de server beheerder heeft in Azure Database for PostgreSQL de volgende bevoegdheden verleend: aanmelding, gebruiker, overnemen, CREATEDB, CREATEROLE, replicatie
 
-Het gebruikersaccount van de serverbeheerder kan worden gebruikt om extra gebruikers te maken en deze gebruikers in de azure_pg_admin rol toe te kennen. Het serverbeheeraccount kan ook worden gebruikt om minder bevoorrechte gebruikers en rollen te maken die toegang hebben tot afzonderlijke databases en schema's.
+De gebruikers account van de server beheerder kan worden gebruikt om extra gebruikers te maken en deze gebruikers toe te kennen aan de azure_pg_admin rol. Het account voor de server beheerder kan ook worden gebruikt voor het maken van minder privilegede gebruikers en rollen die toegang hebben tot afzonderlijke data bases en schema's.
 
-## <a name="how-to-create-additional-admin-users-in-azure-database-for-postgresql"></a>Extra beheerdersgebruikers maken in Azure Database voor PostgreSQL
+## <a name="how-to-create-additional-admin-users-in-azure-database-for-postgresql"></a>Aanvullende gebruikers met beheerders rechten maken in Azure Database for PostgreSQL
 
-1. Download de verbindingsgegevens en de gebruikersnaam van de beheerder.
-   Voor verbinding met uw databaseserver moet u beschikken over de volledige servernaam en aanmeldingsreferenties van de beheerder. U de servernaam en aanmeldingsgegevens eenvoudig vinden op de pagina **serveroverzicht** of de pagina **Eigenschappen** in de Azure-portal.
+1. De verbindings gegevens en de gebruikers naam van de beheerder ophalen.
+   Voor verbinding met uw databaseserver moet u beschikken over de volledige servernaam en aanmeldingsreferenties van de beheerder. U kunt eenvoudig de server naam en aanmeldings gegevens vinden op de pagina **overzicht** van de server of op de pagina **eigenschappen** in de Azure Portal.
 
-2. Gebruik het beheerdersaccount en het wachtwoord om verbinding te maken met uw databaseserver. Gebruik de voorkeursclienttool, zoals pgAdmin of psql.
-   Als u niet zeker weet hoe u verbinding maken, raadpleegt u [de snelle start](./quickstart-create-server-database-portal.md)
+2. Gebruik het beheerders account en-wacht woord om verbinding te maken met uw database server. Gebruik het client hulpprogramma van uw voor keur, zoals pgAdmin of psql.
+   Als u niet zeker weet hoe u verbinding kunt maken, raadpleegt u [Quick](./quickstart-create-server-database-portal.md) start
 
-3. Bewerk en voer de volgende SQL-code uit. Vervang uw nieuwe gebruikersnaam voor de tijdelijke waarde <new_user> en vervang het tijdelijke wachtwoord door uw eigen sterke wachtwoord. 
+3. Bewerk de volgende SQL-code en voer deze uit. Vervang de nieuwe gebruikers naam voor de waarde van de tijdelijke aanduiding <new_user> en vervang het wacht woord voor de tijdelijke aanduiding door uw eigen sterke wacht woord. 
 
    ```sql
    CREATE ROLE <new_user> WITH LOGIN NOSUPERUSER INHERIT CREATEDB CREATEROLE NOREPLICATION PASSWORD '<StrongPassword!>';
@@ -51,16 +51,16 @@ Het gebruikersaccount van de serverbeheerder kan worden gebruikt om extra gebrui
    GRANT azure_pg_admin TO <new_user>;
    ```
 
-## <a name="how-to-create-database-users-in-azure-database-for-postgresql"></a>Databasegebruikers maken in Azure Database voor PostgreSQL
+## <a name="how-to-create-database-users-in-azure-database-for-postgresql"></a>Database gebruikers maken in Azure Database for PostgreSQL
 
-1. Download de verbindingsgegevens en de gebruikersnaam van de beheerder.
-   Voor verbinding met uw databaseserver moet u beschikken over de volledige servernaam en aanmeldingsreferenties van de beheerder. U de servernaam en aanmeldingsgegevens eenvoudig vinden op de pagina **serveroverzicht** of de pagina **Eigenschappen** in de Azure-portal.
+1. De verbindings gegevens en de gebruikers naam van de beheerder ophalen.
+   Voor verbinding met uw databaseserver moet u beschikken over de volledige servernaam en aanmeldingsreferenties van de beheerder. U kunt eenvoudig de server naam en aanmeldings gegevens vinden op de pagina **overzicht** van de server of op de pagina **eigenschappen** in de Azure Portal.
 
-2. Gebruik het beheerdersaccount en het wachtwoord om verbinding te maken met uw databaseserver. Gebruik de voorkeursclienttool, zoals pgAdmin of psql.
+2. Gebruik het beheerders account en-wacht woord om verbinding te maken met uw database server. Gebruik het client hulpprogramma van uw voor keur, zoals pgAdmin of psql.
 
-3. Bewerk en voer de volgende SQL-code uit. Vervang de tijdelijke `<db_user>` aanduidingswaarde door uw beoogde nieuwe `<newdb>` gebruikersnaam en tijdelijke waarde door uw eigen databasenaam. Vervang het tijdelijke wachtwoord door uw eigen sterke wachtwoord.
+3. Bewerk de volgende SQL-code en voer deze uit. Vervang de waarde `<db_user>` van de tijdelijke aanduiding door de gewenste nieuwe gebruikers naam en `<newdb>` de tijdelijke aanduiding voor de naam van uw eigen data base. Vervang het wacht woord voor de tijdelijke aanduiding door uw eigen sterke wacht woord.
 
-   Met deze syntaxis van sql-code wordt bijvoorbeeld een nieuwe database met de naam testdb gemaakt. Vervolgens wordt een nieuwe gebruiker in de PostgreSQL-service gemaakt en worden verbindingsrechten toegekend aan de nieuwe database voor die gebruiker.
+   Met deze SQL-code syntaxis maakt u een nieuwe Data Base met de naam testdb, bijvoorbeeld als doel. Vervolgens wordt er een nieuwe gebruiker in de PostgreSQL-service gemaakt en worden er verbindings rechten verleend aan de nieuwe Data Base voor die gebruiker.
 
    ```sql
    CREATE DATABASE <newdb>;
@@ -70,13 +70,13 @@ Het gebruikersaccount van de serverbeheerder kan worden gebruikt om extra gebrui
    GRANT CONNECT ON DATABASE <newdb> TO <db_user>;
    ```
 
-4. Met behulp van een beheerdersaccount moet u mogelijk extra bevoegdheden verlenen om de objecten in de database te beveiligen. Raadpleeg de [PostgreSQL-documentatie](https://www.postgresql.org/docs/current/static/ddl-priv.html) voor meer informatie over databaserollen en -bevoegdheden. Bijvoorbeeld:
+4. Als u een Administrator-account gebruikt, moet u mogelijk extra bevoegdheden verlenen om de objecten in de-data base te beveiligen. Raadpleeg de [postgresql-documentatie](https://www.postgresql.org/docs/current/static/ddl-priv.html) voor meer informatie over database rollen en bevoegdheden. Bijvoorbeeld:
 
    ```sql
    GRANT ALL PRIVILEGES ON DATABASE <newdb> TO <db_user>;
    ```
 
-5. Meld u aan bij uw server en geef de aangewezen database op met de nieuwe gebruikersnaam en het nieuwe wachtwoord. In dit voorbeeld wordt de psql-opdrachtregel weergegeven. Met deze opdracht wordt u gevraagd om het wachtwoord voor de gebruikersnaam. Vervang uw eigen servernaam, databasenaam en gebruikersnaam.
+5. Meld u aan bij de server, waarbij u de aangewezen data base opgeeft met de nieuwe gebruikers naam en wacht woord. In dit voor beeld wordt de psql-opdracht regel weer gegeven. Met deze opdracht wordt u gevraagd om het wacht woord voor de gebruikers naam. Vervang uw eigen server naam, database naam en gebruikers naam.
 
    ```shell
    psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=db_user@mydemoserver --dbname=newdb
@@ -84,6 +84,6 @@ Het gebruikersaccount van de serverbeheerder kan worden gebruikt om extra gebrui
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Open de firewall voor de IP-adressen van de machines van de nieuwe gebruikers om verbinding te maken: [Azure Database maken en beheren voor PostgreSQL-firewallregels met behulp van de Azure-portal](howto-manage-firewall-using-portal.md) of Azure [CLI](howto-manage-firewall-using-cli.md).
+Open de firewall voor de IP-adressen van de computers van de nieuwe gebruikers zodat ze verbinding kunnen maken: [Azure database for PostgreSQL firewall regels maken en beheren met behulp van de Azure Portal](howto-manage-firewall-using-portal.md) of [Azure cli](howto-manage-firewall-using-cli.md).
 
-Zie PostgreSQL-productdocumentatie voor [Databaserollen en -bevoegdheden](https://www.postgresql.org/docs/current/static/user-manag.html), [SYNTAXIS](https://www.postgresql.org/docs/current/static/sql-grant.html)en [Bevoegdheden](https://www.postgresql.org/docs/current/static/ddl-priv.html)voor meer informatie over gebruikersaccountbeheer .
+Zie PostgreSQL-product documentatie voor [database rollen en bevoegdheden](https://www.postgresql.org/docs/current/static/user-manag.html), [syntaxis voor granting](https://www.postgresql.org/docs/current/static/sql-grant.html)en [privileges](https://www.postgresql.org/docs/current/static/ddl-priv.html)(Engelstalig) voor meer informatie over het beheer van gebruikers accounts.
