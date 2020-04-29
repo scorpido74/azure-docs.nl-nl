@@ -1,7 +1,7 @@
 ---
-title: 'Zelfstudie: gegevens voorbereiden om clustering uit te voeren in R'
+title: 'Zelf studie: gegevens voorbereiden voor het uitvoeren van clusters in R'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: In deel één van deze driedelige zelfstudiereeks bereidt u de gegevens uit een Azure SQL-database voor om clustering uit te voeren in R met Azure SQL Database Machine Learning Services (preview).
+description: In deel één van deze reeks met drie zelf studies gaat u de gegevens voorbereiden van een Azure-SQL database voor het uitvoeren van clusters in R met Azure SQL Database Machine Learning Services (preview).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -15,74 +15,74 @@ manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: abe7d5ed1d4ba1308abde04aee32a3ea222456b8
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81452873"
 ---
-# <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Zelfstudie: Gegevens voorbereiden om clustering uit te voeren in R met Azure SQL Database Machine Learning Services (voorbeeld)
+# <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Zelf studie: gegevens voorbereiden voor het uitvoeren van clusters in R met Azure SQL Database Machine Learning Services (preview-versie)
 
-In deel één van deze driedelige zelfstudiereeks importeert en bereidt u de gegevens uit een Azure SQL-database met R. Later in deze reeks gebruikt u deze gegevens om een clusteringmodel in R te trainen en te implementeren met Azure SQL Database Machine Learning Services (voorbeeld).
+In deel één van deze reeks met drie delen zelf studies importeert u de gegevens uit een Azure-SQL database met R en bereidt u deze voor. Verderop in deze reeks gebruikt u deze gegevens om een cluster model in R te trainen en te implementeren met Azure SQL Database Machine Learning Services (preview).
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-*Clustering* kan worden uitgelegd als het organiseren van gegevens in groepen waar leden van een groep op de een of andere manier vergelijkbaar zijn.
-U gebruikt het **K-Means-algoritme** om de clustering van klanten uit te voeren in een gegevensset van productaankopen en retourzendingen. Door klanten te clusteren, u uw marketinginspanningen effectiever richten door specifieke groepen te targeten.
-K-Means clustering is een *onbewaakt leeralgoritme* dat zoekt naar patronen in gegevens op basis van overeenkomsten.
+*Clustering* kan worden uitgelegd als het organiseren van gegevens in groepen waar leden van een groep op een of andere manier op elkaar lijken.
+U gebruikt het **-algoritme K-geeft** om het clusteren van klanten uit te voeren in een gegevensset van product aankopen en retourneert. Door klanten te clusteren, kunt u uw marketing inspanningen effectiever richten door specifieke groepen te richten.
+K: clusteren is een algoritme voor het leren van een niet- *Super visie* waarmee naar patronen in gegevens wordt gezocht op basis van overeenkomsten.
 
-In deel één en twee van deze serie ontwikkel je een aantal R-scripts in RStudio om je gegevens voor te bereiden en een machine learning-model te trainen. Vervolgens, in deel drie, voer je die R-scripts uit in een SQL-database met behulp van opgeslagen procedures.
+In delen één en twee van deze reeksen ontwikkelt u enkele R-scripts in RStudio om uw gegevens voor te bereiden en een machine learning model te trainen. In deel drie voert u de R-scripts in een SQL database uit met behulp van opgeslagen procedures.
 
-In dit artikel leer je hoe je:
+In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Een voorbeelddatabase importeren in een Azure SQL-database
-> * Afzonderlijke klanten langs verschillende dimensies met Behulp van R
-> * De gegevens uit de Azure SQL-database in een R-gegevensframe laden
+> * Een voorbeeld database importeren in een Azure-SQL database
+> * Afzonderlijke klanten langs verschillende dimensies met R
+> * De gegevens van de Azure-SQL database in een R-gegevens frame laden
 
-In [deel twee](sql-database-tutorial-clustering-model-build.md)leer je hoe je een K-Means clustering model maakt en traint in R.
+In [deel twee](sql-database-tutorial-clustering-model-build.md)leert u hoe u een K-cluster model maakt en traint in R.
 
-In [deel drie](sql-database-tutorial-clustering-model-deploy.md)leert u hoe u een opgeslagen procedure maakt in een Azure SQL-database die clustering in R kan uitvoeren op basis van nieuwe gegevens.
+In [deel drie](sql-database-tutorial-clustering-model-deploy.md)leert u hoe u een opgeslagen procedure maakt in een Azure-SQL database die clustering in R kan uitvoeren op basis van nieuwe gegevens.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement - Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/) voordat u begint.
+* Azure-abonnement: als u nog geen abonnement op Azure hebt, moet u [een account maken](https://azure.microsoft.com/free/) voordat u begint.
 
-* [Azure SQL Database met Machine Learning Services (met R)](sql-database-machine-learning-services-overview.md) ingeschakeld.
+* [Azure SQL database met Machine Learning Services (met R)](sql-database-machine-learning-services-overview.md) ingeschakeld.
 
-* RevoScaleR-pakket - Zie [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) voor opties om dit pakket lokaal te installeren.
+* RevoScaleR-pakket: Zie [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) voor opties om dit pakket lokaal te installeren.
 
-* R IDE - Deze zelfstudie maakt gebruik van [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/).
+* R IDE: in deze zelf studie wordt [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/)gebruikt.
 
-* SQL-querytool - Deze zelfstudie gaat ervan uit dat u [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) of SQL Server Management [Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) gebruikt.
+* Hulp programma voor SQL-query's-in deze zelf studie wordt ervan uitgegaan dat u [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) of [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) gebruikt.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
 Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-## <a name="import-the-sample-database"></a>De voorbeelddatabase importeren
+## <a name="import-the-sample-database"></a>De voorbeeld database importeren
 
-De voorbeeldgegevensset die in deze zelfstudie wordt gebruikt, is opgeslagen in een .bacpac-databaseback-upbestand dat u downloaden en gebruiken. **.bacpac** Deze gegevensset is afgeleid van de [tpcx-bb-gegevensset](http://www.tpc.org/tpcx-bb/default.asp) van de [Transaction Processing Performance Council (TPC).](http://www.tpc.org/default.asp)
+De voor beeld-gegevensset die in deze zelf studie wordt gebruikt, is opgeslagen in een **. Bacpac** -back-upbestand dat u kunt downloaden en gebruiken. Deze gegevensset is afgeleid van de [tpcx-BB-](http://www.tpc.org/tpcx-bb/default.asp) gegevensset die is verschaft door de [Trans Action processing pregent (TPC)](http://www.tpc.org/default.asp).
 
-1. Download het bestand [tpcxbb_1gb.bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/tpcxbb_1gb.bacpac).
+1. Down load het bestand [tpcxbb_1gb. Bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/tpcxbb_1gb.bacpac).
 
-1. Volg de aanwijzingen in [Een BACPAC-bestand importeren om een Azure SQL-database te maken,](https://docs.microsoft.com/azure/sql-database/sql-database-import)met behulp van deze gegevens:
+1. Volg de instructies in [een BACPAC-bestand importeren om een Azure SQL database te maken](https://docs.microsoft.com/azure/sql-database/sql-database-import)met behulp van de volgende gegevens:
 
-   * Importeren uit het **tpcxbb_1gb.bacpac-bestand** dat u hebt gedownload
-   * Kies tijdens de openbare preview de **Gen5/vCore-configuratie** voor de nieuwe database
-   * De nieuwe database "tpcxbb_1gb" een naam geven
+   * Importeren uit het **tpcxbb_1gb. Bacpac** -bestand dat u hebt gedownload
+   * Kies tijdens de open bare Preview de configuratie van de **GEN5-vCore** voor de nieuwe data base
+   * Geef de nieuwe data base de naam tpcxbb_1gb
 
 ## <a name="separate-customers"></a>Afzonderlijke klanten
 
 Maak een nieuw RScript-bestand in RStudio en voer het volgende script uit.
 In de SQL-query scheidt u klanten langs de volgende dimensies:
 
-* **orderRatio** = return order ratio (totaal aantal orders gedeeltelijk of volledig geretourneerd ten opzichte van het totale aantal orders)
-* **itemsRatio** = verhouding retourobject (totaal aantal geretourneerde objecten versus het aantal gekochte objecten)
-* **monetaryRatio** = rendementsratio (totaal bedrag van de geretourneerde posten versus het gekochte bedrag)
-* **frequentie** = retourfrequentie
+* **orderRatio** = verhouding van retour orders (het totale aantal orders is gedeeltelijk of volledig geretourneerd versus het totale aantal orders)
+* **itemsRatio** = geretourneerde item verhouding (het totale aantal geretourneerde items versus het aantal gekochte items)
+* **monetaryRatio** = verhouding retour bedrag (totale monetaire hoeveelheid items die wordt geretourneerd versus het aangeschafte bedrag)
+* **frequentie** = retour frequentie
 
-Vervang **server,** **UID**en **PWD** in de **plakfunctie** door uw eigen verbindingsgegevens.
+Vervang in de functie **Paste** **Server**, **UID**en **pwd** door uw eigen verbindings gegevens.
 
 ```r
 # Define the connection string to connect to the tpcxbb_1gb database
@@ -157,10 +157,10 @@ LEFT OUTER JOIN (
 "
 ```
 
-## <a name="load-the-data-into-a-data-frame"></a>De gegevens in een gegevensframe laden
+## <a name="load-the-data-into-a-data-frame"></a>De gegevens in een gegevens frame laden
 
-Gebruik nu het volgende script om de resultaten van de query terug te sturen naar een R-gegevensframe met de **rxSqlServerData-functie.**
-Als onderdeel van het proces definieert u het type voor de geselecteerde kolommen (met behulp van colClasses) om ervoor te zorgen dat de typen correct naar R worden overgebracht.
+Gebruik nu het volgende script om de resultaten van de query te retour neren naar een R-gegevens frame met behulp van de functie **rxSqlServerData** .
+Als onderdeel van het proces definieert u het type voor de geselecteerde kolommen (met behulp van colClasses) om ervoor te zorgen dat de typen correct worden overgebracht naar R.
 
 ```r
 # Query SQL Server using input_query and get the results back
@@ -183,7 +183,7 @@ customer_data <- rxDataStep(customer_returns);
 head(customer_data, n = 5);
 ```
 
-U ziet resultaten die vergelijkbaar zijn met het volgende.
+De resultaten moeten er ongeveer als volgt uitzien.
 
 ```results
   customer orderRatio itemsRatio monetaryRatio frequency
@@ -196,24 +196,24 @@ U ziet resultaten die vergelijkbaar zijn met het volgende.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-***Als u niet verder gaat met deze zelfstudie,*** verwijdert u de tpcxbb_1gb-database van uw Azure SQL Database-server.
+***Als u niet verder gaat met deze zelf studie***, verwijdert u de tpcxbb_1gb-data base van de Azure SQL database-server.
 
-Voer de volgende stappen uit vanuit de Azure-portal:
+Voer de volgende stappen uit op de Azure Portal:
 
-1. Selecteer alle **bronnen** of **SQL-databases**in het linkermenu in de Azure-portal.
-1. Voer in het veld **Filteren op naam...** **tpcxbb_1gb**in en selecteer uw abonnement.
-1. Selecteer uw **tpcxbb_1gb** database.
+1. Selecteer in het menu aan de linkerkant in het Azure Portal **alle resources** of **SQL-data bases**.
+1. In het veld **filteren op naam...** voert u **tpcxbb_1gb**in en selecteert u uw abonnement.
+1. Selecteer uw **tpcxbb_1gb** -data base.
 1. Selecteer **Verwijderen** op de pagina **Overzicht**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deel één van deze zelfstudiereeks hebt u de volgende stappen voltooid:
+In deel één van deze reeks zelf studies hebt u de volgende stappen uitgevoerd:
 
-* Een voorbeelddatabase importeren in een Azure SQL-database
-* Afzonderlijke klanten langs verschillende dimensies met Behulp van R
-* De gegevens uit de Azure SQL-database in een R-gegevensframe laden
+* Een voorbeeld database importeren in een Azure-SQL database
+* Afzonderlijke klanten langs verschillende dimensies met R
+* De gegevens van de Azure-SQL database in een R-gegevens frame laden
 
-Als u een machine learning-model wilt maken dat deze klantgegevens gebruikt, volgt u deel twee van deze zelfstudiereeks:
+Als u een machine learning model wilt maken dat gebruikmaakt van deze klant gegevens, volgt u deel twee van deze reeks zelf studies:
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Een voorspellend model maken in R met Azure SQL Database Machine Learning Services (voorbeeld)](sql-database-tutorial-clustering-model-build.md)
+> [Zelf studie: een voorspellend model maken in R met Azure SQL Database Machine Learning Services (preview)](sql-database-tutorial-clustering-model-build.md)

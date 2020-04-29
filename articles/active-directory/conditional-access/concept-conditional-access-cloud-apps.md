@@ -1,6 +1,6 @@
 ---
-title: Cloud-apps of -acties in beleid voor voorwaardelijke toegang - Azure Active Directory
-description: Wat zijn cloud-apps of -acties in een Azure AD Conditional Access-beleid
+title: Cloud-apps of-acties in het beleid voor voorwaardelijke toegang-Azure Active Directory
+description: Wat zijn Cloud-apps of acties in een beleid voor voorwaardelijke toegang van Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,51 +12,51 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b15b022726c09ccbaf9674775d114c8dd1916e1d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457294"
 ---
-# <a name="conditional-access-cloud-apps-or-actions"></a>Voorwaardelijke toegang: cloud-apps of -acties
+# <a name="conditional-access-cloud-apps-or-actions"></a>Voorwaardelijke toegang: Cloud-apps of-acties
 
-Cloud-apps of -acties zijn een belangrijk signaal in een beleid voor voorwaardelijke toegang. Met beleid voor voorwaardelijke toegang kunnen beheerders besturingselementen toewijzen aan specifieke toepassingen of acties.
+Cloud-apps of-acties zijn een belang rijk signaal in een beleid voor voorwaardelijke toegang. Met beleid voor voorwaardelijke toegang kunnen beheerders besturings elementen aan specifieke toepassingen of acties toewijzen.
 
-- Beheerders kunnen kiezen uit de lijst met toepassingen die ingebouwde Microsoft-toepassingen bevatten en alle [geïntegreerde Azure AD-toepassingen,](../manage-apps/what-is-application-management.md) waaronder galerie, niet-galerij en toepassingen die zijn gepubliceerd via [Application Proxy.](../manage-apps/what-is-application-proxy.md)
-- Beheerders kunnen ervoor kiezen om beleid niet te definiëren op basis van een cloudtoepassing, maar op een gebruikersactie. De enige ondersteunde actie is Beveiligingsgegevens registreren (voorbeeld), waardoor voorwaardelijke toegang controles rond de [gecombineerde registratie-ervaring van beveiligingsgegevens](../authentication/howto-registration-mfa-sspr-combined.md)kan worden uitgevoerd.
+- Beheerders kunnen kiezen uit de lijst met toepassingen met ingebouwde micro soft-toepassingen en [Azure AD Integrated-toepassingen](../manage-apps/what-is-application-management.md) , waaronder galerie, niet-galerie en toepassingen die zijn gepubliceerd via [toepassings proxy](../manage-apps/what-is-application-proxy.md).
+- Beheerders kunnen ervoor kiezen om beleid te definiëren dat niet is gebaseerd op een Cloud toepassing maar bij een gebruikers actie. De enige ondersteunde actie is het registreren van beveiligings gegevens (preview), waardoor voorwaardelijke toegang kan leiden tot het afdwingen van besturings elementen voor de [registratie van gecombineerde beveiligings gegevens](../authentication/howto-registration-mfa-sspr-combined.md).
 
-![Een beleid voor voorwaardelijke toegang definiëren en cloud-apps opgeven](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
+![Beleid voor voorwaardelijke toegang definiëren en Cloud-apps opgeven](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
-## <a name="microsoft-cloud-applications"></a>Microsoft-cloudtoepassingen
+## <a name="microsoft-cloud-applications"></a>Micro soft-Cloud toepassingen
 
-Veel van de bestaande Microsoft-cloudtoepassingen zijn opgenomen in de lijst met toepassingen waaruit u kiezen. 
+Veel van de bestaande micro soft-Cloud toepassingen zijn opgenomen in de lijst met toepassingen waaruit u kunt kiezen. 
 
-Beheerders kunnen een beleid voor voorwaardelijke toegang toewijzen aan de volgende cloud-apps van Microsoft. Sommige apps, zoals de Office 365 (preview) en Microsoft Azure Management, bevatten meerdere gerelateerde onderliggende apps of services. De volgende lijst is niet volledig en kan worden gewijzigd.
+Beheerders kunnen een beleid voor voorwaardelijke toegang toewijzen aan de volgende Cloud-apps van micro soft. Sommige apps zoals Office 365 (preview) en Microsoft Azure Management omvatten meerdere verwante onderliggende apps of services. De volgende lijst is niet limitatief en kan worden gewijzigd.
 
-- [Office 365 (voorbeeld)](#office-365-preview)
+- [Office 365 (preview-versie)](#office-365-preview)
 - Azure Analysis Services
 - Azure DevOps
 - [Azure SQL Database en Data Warehouse](../../sql-database/sql-database-conditional-access.md)
 - Dynamics CRM Online
-- Analyse van Microsoft Application Insights
-- [Microsoft Azure-informatiebeveiliging](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
-- [Microsoft Azure-beheer](#microsoft-azure-management)
-- Microsoft Azure-abonnementsbeheer
+- Micro soft Application Insights Analytics
+- [Microsoft Azure Information Protection](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
+- [Microsoft Azure beheer](#microsoft-azure-management)
+- Abonnements beheer Microsoft Azure
 - Microsoft Cloud App Security
-- Access Control Portal voor Microsoft Commerce-hulpprogramma's
-- Verificatieservice voor Microsoft Commerce-hulpprogramma's
+- Micro soft commerce tools Access Control-Portal
+- Micro soft commerce tools-verificatie service
 - Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
-- [Microsoft Intune-inschrijving](/intune/enrollment/multi-factor-authentication)
-- Microsoft Planner
+- [Inschrijving Microsoft Intune](/intune/enrollment/multi-factor-authentication)
+- Micro soft planner
 - Microsoft PowerApps
-- Microsoft Zoeken in Bing
+- Micro soft Search in Bing
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
 - Office 365 Exchange Online
-- Office 365 SharePoint Online
+- Office 365 share point online
 - Office 365 Yammer
 - Office Delve
 - Office Sway
@@ -64,18 +64,18 @@ Beheerders kunnen een beleid voor voorwaardelijke toegang toewijzen aan de volge
 - Power BI-service
 - Project Online
 - Skype voor Bedrijven Online
-- Virtual Private Network (VPN)
+- Virtueel particulier netwerk (VPN)
 - Windows Defender ATP
 
-### <a name="office-365-preview"></a>Office 365 (voorbeeld)
+### <a name="office-365-preview"></a>Office 365 (preview-versie)
 
-Office 365 biedt cloudgebaseerde productiviteits- en samenwerkingsservices zoals Exchange, SharePoint en Microsoft Teams. Office 365-cloudservices zijn sterk geïntegreerd om soepele en collaboratieve ervaringen te garanderen. Deze integratie kan verwarring veroorzaken bij het maken van beleid, omdat sommige apps, zoals Microsoft Teams, afhankelijk zijn van andere apps, zoals SharePoint of Exchange.
+Office 365 biedt productiviteits-en samenwerkings Services op basis van de Cloud, zoals Exchange, share point en micro soft teams. Office 365 Cloud Services zijn diep geïntegreerd om soepele en samen werkende ervaringen te garanderen. Deze integratie kan leiden tot Verwar ring bij het maken van beleid als sommige apps, zoals micro soft-teams, afhankelijk zijn van andere onderdelen, zoals share point of Exchange.
 
-De Office 365 (preview) app maakt het mogelijk om deze services in één keer te targeten. We raden u aan de nieuwe Office 365-app (preview) te gebruiken in plaats van afzonderlijke cloud-apps te targeten. Door deze groep toepassingen te targeten, u problemen voorkomen die zich kunnen voordoen als gevolg van inconsistent beleid en afhankelijkheden.
+De Office 365-app (preview) maakt het mogelijk om deze services in één keer te richten. We raden u aan de nieuwe app Office 365 (preview) te gebruiken, in plaats van afzonderlijke Cloud-apps te richten. Gericht op deze groep toepassingen helpt problemen te voor komen die zich kunnen voordoen als gevolg van inconsistent beleid en afhankelijkheden.
 
-Beheerders kunnen ervoor kiezen om specifieke apps uit te sluiten van het beleid als ze dat willen door de Office 365 -app (preview) op te sluiten en de specifieke apps van hun keuze in het beleid uit te sluiten.
+Beheerders kunnen ervoor kiezen om specifieke apps uit te sluiten van het beleid als ze dit willen doen door de Office 365 (preview)-app op te nemen en de specifieke apps van hun keuze in het beleid uit te sluiten.
 
-Belangrijke toepassingen die zijn opgenomen in de client-app Office 365 (preview):
+Belangrijkste toepassingen die zijn opgenomen in de client-app voor Office 365 (preview):
 
    - Microsoft Flow
    - Microsoft Forms
@@ -83,8 +83,8 @@ Belangrijke toepassingen die zijn opgenomen in de client-app Office 365 (preview
    - Microsoft To-Do
    - Microsoft Teams
    - Office 365 Exchange Online
-   - Office 365 SharePoint Online
-   - Office 365-zoekservice
+   - Office 365 share point online
+   - Office 365 Search Service
    - Office 365 Yammer
    - Office Delve
    - Office Online
@@ -94,37 +94,37 @@ Belangrijke toepassingen die zijn opgenomen in de client-app Office 365 (preview
    - Skype voor Bedrijven Online
    - Sway
 
-### <a name="microsoft-azure-management"></a>Microsoft Azure-beheer
+### <a name="microsoft-azure-management"></a>Microsoft Azure beheer
 
-De Microsoft Azure Management-toepassing bevat meerdere onderliggende services. 
+De Microsoft Azure-beheer toepassing bevat meerdere onderliggende services. 
 
    - Azure Portal
-   - Azure Resource Manager-provider
-   - Klassieke implementatiemodel API's
+   - Azure Resource Manager provider
+   - Klassieke implementatie model-Api's
    - Azure PowerShell
-   - Beheerdersportal voor Visual Studio-abonnementen
+   - Beheerders portal voor Visual Studio-abonnementen
    - Azure DevOps
-   - Azure Data Factory-portal
+   - Azure Data Factory Portal
 
 > [!NOTE]
-> De Microsoft Azure Management-toepassing is van toepassing op Azure PowerShell, dat de Azure Resource Manager API aanroept. Het is niet van toepassing op Azure AD PowerShell, dat Microsoft Graph aanroept.
+> De Microsoft Azure-beheer toepassing is van toepassing op Azure PowerShell, die de Azure Resource Manager API aanroept. Het is niet van toepassing op Azure AD Power shell, die Microsoft Graph aanroept.
 
 ## <a name="other-applications"></a>Andere toepassingen
 
-Naast de Microsoft-apps kunnen beheerders elke Azure AD-geregistreerde toepassing toevoegen aan het beleid voor voorwaardelijke toegang. Deze aanvragen kunnen bestaan uit: 
+Naast de micro soft-apps kunnen beheerders een door Azure AD geregistreerde toepassing toevoegen aan beleid voor voorwaardelijke toegang. Deze toepassingen kunnen bestaan uit: 
 
 - Toepassingen die zijn gepubliceerd via [Azure AD-toepassingsproxy](../manage-apps/what-is-application-proxy.md)
-- [Toepassingen toegevoegd vanuit de galerie](../manage-apps/add-application-portal.md)
-- [Aangepaste toepassingen die niet in de galerie zijn](../manage-apps/add-non-gallery-app.md)
-- [Verouderde toepassingen gepubliceerd via app delivery controllers en netwerken](../manage-apps/secure-hybrid-access.md)
+- [Toepassingen die zijn toegevoegd vanuit de galerie](../manage-apps/add-application-portal.md)
+- [Aangepaste toepassingen die niet voor komt in de galerie](../manage-apps/add-non-gallery-app.md)
+- [Verouderde toepassingen die zijn gepubliceerd via app Delivery controllers en Networks](../manage-apps/secure-hybrid-access.md)
 
 ## <a name="user-actions"></a>Gebruikersacties
 
-Gebruikersacties zijn taken die door een gebruiker kunnen worden uitgevoerd. De enige momenteel ondersteunde actie is **Beveiligingsgegevens registreren**, waarmee het beleid voor voorwaardelijke toegang kan worden gehandhaafd wanneer gebruikers die zijn ingeschakeld voor gecombineerde registratie, proberen hun beveiligingsgegevens te registreren. Meer informatie is te vinden in het artikel, [Gecombineerde security informatie registratie](../authentication/concept-registration-mfa-sspr-combined.md).
+Gebruikers acties zijn taken die door een gebruiker kunnen worden uitgevoerd. De enige bewerking die momenteel wordt ondersteund, is het **registreren van beveiligings gegevens**, waardoor het beleid voor voorwaardelijke toegang kan worden afgedwongen wanneer gebruikers die zijn ingeschakeld voor gecombineerde registratie proberen hun beveiligings gegevens te registreren. Meer informatie vindt u in het artikel, [registratie van gecombineerde beveiligings gegevens](../authentication/concept-registration-mfa-sspr-combined.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Voorwaardelijke toegang: voorwaarden](concept-conditional-access-conditions.md)
+- [Voorwaardelijke toegang: voor waarden](concept-conditional-access-conditions.md)
 
-- [Gemeenschappelijk beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
-- [Clienttoepassingsafhankelijkheden](service-dependencies.md)
+- [Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
+- [Client toepassings afhankelijkheden](service-dependencies.md)

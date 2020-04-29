@@ -1,7 +1,7 @@
 ---
-title: 'Zelfstudie: Een clustermodel implementeren in R'
+title: 'Zelf studie: een cluster model implementeren in R'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: In deel drie van deze driedelige zelfstudiereeks implementeert u een clusteringmodel in R met Azure SQL Database Machine Learning Services (preview).
+description: In deel drie van deze serie met drie delen zelf studies implementeert u een cluster model in R met Azure SQL Database Machine Learning Services (preview).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -15,43 +15,43 @@ manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: ef478246108d40a0c97d7dab03ecf1e5b474410b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81452890"
 ---
-# <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Zelfstudie: Een clusteringmodel implementeren in R met Azure SQL Database Machine Learning Services (voorbeeld)
+# <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Zelf studie: een cluster model implementeren in R met Azure SQL Database Machine Learning Services (preview)
 
-In deel drie van deze driedelige zelfstudiereeks implementeert u een clusteringmodel, ontwikkeld in R, in een SQL-database met Azure SQL Database Machine Learning Services (preview).
+In deel drie van deze reeks met drie zelf studies implementeert u een cluster model dat is ontwikkeld in R, in een SQL database met behulp van Azure SQL Database Machine Learning Services (preview).
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-U maakt een opgeslagen procedure met een ingesloten R-script dat clustering uitvoert. Omdat uw model wordt uitgevoerd in de Azure SQL-database, kan het eenvoudig worden getraind tegen gegevens die zijn opgeslagen in de database.
+U maakt een opgeslagen procedure met een Inge sloten R-script dat clustering uitvoert. Omdat uw model wordt uitgevoerd in Azure SQL database, kan het eenvoudig worden getraind op basis van gegevens die zijn opgeslagen in de data base.
 
-In dit artikel leer je hoe je:
+In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Een opgeslagen procedure maken die het model genereert
-> * Clustering uitvoeren in SQL-database
-> * De clusterinformatie gebruiken
+> * Een opgeslagen procedure maken waarmee het model wordt gegenereerd
+> * Clustering in SQL Database uitvoeren
+> * De cluster informatie gebruiken
 
-In [deel één](sql-database-tutorial-clustering-model-prepare-data.md)hebt u geleerd hoe u de gegevens uit een Azure SQL-database voorbereiden om clustering uit te voeren.
+In [deel één](sql-database-tutorial-clustering-model-prepare-data.md)hebt u geleerd hoe u de gegevens van een Azure-SQL database voorbereidt voor het uitvoeren van een cluster.
 
-In [deel twee](sql-database-tutorial-clustering-model-build.md)heb je geleerd hoe je een K-Means clustering model maakt en traint in R.
+In [deel twee](sql-database-tutorial-clustering-model-build.md)hebt u geleerd hoe u een K-cluster model maakt en traint in R.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Deel drie van deze zelfstudieserie gaat ervan uit dat u [**deel één**](sql-database-tutorial-clustering-model-prepare-data.md) en [**deel twee**](sql-database-tutorial-clustering-model-build.md)hebt voltooid.
+* In deel drie van deze zelf studie wordt ervan uitgegaan dat u [**deel één**](sql-database-tutorial-clustering-model-prepare-data.md) en [**deel twee**](sql-database-tutorial-clustering-model-build.md)hebt voltooid.
 
-## <a name="create-a-stored-procedure-that-generates-the-model"></a>Een opgeslagen procedure maken die het model genereert
+## <a name="create-a-stored-procedure-that-generates-the-model"></a>Een opgeslagen procedure maken waarmee het model wordt gegenereerd
 
-Voer het volgende T-SQL-script uit om de opgeslagen procedure te maken. De procedure reconstrueert de stappen die u hebt ontwikkeld in de delen één en twee van deze zelfstudiereeks:
+Voer het volgende T-SQL-script uit om de opgeslagen procedure te maken. Met de procedure worden de stappen die u in delen één en twee van deze zelfstudie reeks hebt ontwikkeld, opnieuw gemaakt:
 
-* klanten classificeren op basis van hun aankoop- en retourgeschiedenis
-* genereren van vier clusters van klanten met behulp van een K-Means algoritme
+* klanten classificeren op basis van hun aankoop-en retour geschiedenis
+* vier klanten clusters genereren met behulp van een K-betekent-algoritme
 
-De procedure slaat de resulterende klantclustertoewijzingen op in de databasetabel **customer_return_clusters**.
+In de procedure worden de resulterende klant cluster toewijzingen opgeslagen in de database tabel **customer_return_clusters**.
 
 ```sql
 USE [tpcxbb_1gb]
@@ -176,7 +176,7 @@ END;
 GO
 ```
 
-## <a name="perform-clustering-in-sql-database"></a>Clustering uitvoeren in SQL-database
+## <a name="perform-clustering-in-sql-database"></a>Clustering in SQL Database uitvoeren
 
 Nu u de opgeslagen procedure hebt gemaakt, voert u het volgende script uit om clustering uit te voeren.
 
@@ -189,7 +189,7 @@ TRUNCATE TABLE customer_return_clusters;
 EXECUTE [dbo].[generate_customer_return_clusters];
 ```
 
-Controleer of het werkt en of we daadwerkelijk de lijst met klanten en hun clustertoewijzingen hebben.
+Controleer of het werkt en of we de lijst met klanten en hun cluster toewijzingen werkelijk hebben.
 
 ```sql
 --Select data from table customer_return_clusters
@@ -207,11 +207,11 @@ cluster  customer  orderRatio  itemsRatio  monetaryRatio  frequency
 2        32549     0           0           0.031281       4
 ```
 
-## <a name="use-the-clustering-information"></a>De clusterinformatie gebruiken
+## <a name="use-the-clustering-information"></a>De cluster informatie gebruiken
 
-Omdat u de clusterprocedure in de database hebt opgeslagen, kan deze clustering efficiënt uitvoeren op basis van klantgegevens die in dezelfde database zijn opgeslagen. U de procedure uitvoeren wanneer uw klantgegevens worden bijgewerkt en de bijgewerkte clusterinformatie gebruiken.
+Omdat u de clustering procedure in de-Data Base hebt opgeslagen, kan deze efficiënt worden geclusterd op basis van klant gegevens die zijn opgeslagen in dezelfde data base. U kunt de procedure uitvoeren wanneer uw klant gegevens worden bijgewerkt en de bijgewerkte cluster informatie gebruiken.
 
-Stel dat u een promotionele e-mail wilt verzenden naar klanten in cluster 3, de groep met een actiever retourgedrag (u zien hoe de vier clusters in [deel twee](sql-database-tutorial-clustering-model-build.md#analyze-the-results)zijn beschreven). De volgende code selecteert de e-mailadressen van klanten in cluster 3.
+Stel dat u een promotie-e-mail wilt verzenden naar klanten in cluster 3, de groep met meer actief retour gedrag (u kunt zien hoe de vier clusters in [deel twee](sql-database-tutorial-clustering-model-build.md#analyze-the-results)zijn beschreven). Met de volgende code worden de e-mail adressen van klanten in cluster 3 geselecteerd.
 
 ```sql
 USE [tpcxbb_1gb]
@@ -223,30 +223,30 @@ JOIN [dbo].[customer_return_clusters] AS r ON r.customer = customer.c_customer_s
 WHERE r.cluster = 3
 ```
 
-U de **r.cluster-waarde** wijzigen om e-mailadressen voor klanten in andere clusters te retourneren.
+U kunt de waarde **r. cluster** wijzigen om e-mail adressen voor klanten in andere clusters te retour neren.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze zelfstudie, u de tpcxbb_1gb-database verwijderen van uw Azure SQL Database-server.
+Wanneer u klaar bent met deze zelf studie, kunt u de tpcxbb_1gb-data base verwijderen van de Azure SQL Database-Server.
 
-Voer de volgende stappen uit vanuit de Azure-portal:
+Voer de volgende stappen uit op de Azure Portal:
 
-1. Selecteer alle **bronnen** of **SQL-databases**in het linkermenu in de Azure-portal.
-1. Voer in het veld **Filteren op naam...** **tpcxbb_1gb**in en selecteer uw abonnement.
-1. Selecteer uw **tpcxbb_1gb** database.
+1. Selecteer in het menu aan de linkerkant in het Azure Portal **alle resources** of **SQL-data bases**.
+1. In het veld **filteren op naam...** voert u **tpcxbb_1gb**in en selecteert u uw abonnement.
+1. Selecteer uw **tpcxbb_1gb** -data base.
 1. Selecteer **Verwijderen** op de pagina **Overzicht**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deel drie van deze zelfstudiereeks hebt u de volgende stappen voltooid:
+In deel drie van deze reeks zelf studies hebt u de volgende stappen uitgevoerd:
 
-* Een opgeslagen procedure maken die het model genereert
-* Clustering uitvoeren in SQL-database
-* De clusterinformatie gebruiken
+* Een opgeslagen procedure maken waarmee het model wordt gegenereerd
+* Clustering in SQL Database uitvoeren
+* De cluster informatie gebruiken
 
-Zie voor meer informatie over het gebruik van R in Azure SQL Database Machine Learning Services (voorbeeld):
+Zie voor meer informatie over het gebruik van R in Azure SQL Database Machine Learning Services (preview):
 
-* [Zelfstudie: Gegevens voorbereiden om een voorspellend model in R te trainen met Azure SQL Database Machine Learning Services (voorbeeld)](sql-database-tutorial-predictive-model-prepare-data.md)
-* [Geavanceerde R-functies schrijven in Azure SQL Database met Machine Learning Services (voorbeeld)](sql-database-machine-learning-services-functions.md)
-* [Werken met R- en SQL-gegevens in Azure SQL Database Machine Learning Services (voorbeeld)](sql-database-machine-learning-services-data-issues.md)
-* [Een R-pakket toevoegen aan Azure SQL Database Machine Learning Services (voorbeeld)](sql-database-machine-learning-services-add-r-packages.md)
+* [Zelf studie: gegevens voorbereiden om een voorspellend model in R te trainen met Azure SQL Database Machine Learning Services (preview-versie)](sql-database-tutorial-predictive-model-prepare-data.md)
+* [Geavanceerde R-functies schrijven in Azure SQL Database met behulp van Machine Learning Services (preview)](sql-database-machine-learning-services-functions.md)
+* [Werken met R-en SQL-gegevens in Azure SQL Database Machine Learning Services (preview-versie)](sql-database-machine-learning-services-data-issues.md)
+* [Een R-pakket toevoegen aan Azure SQL Database Machine Learning Services (preview-versie)](sql-database-machine-learning-services-add-r-packages.md)

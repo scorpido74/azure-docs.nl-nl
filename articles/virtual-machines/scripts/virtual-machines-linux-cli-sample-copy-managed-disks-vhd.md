@@ -1,6 +1,6 @@
 ---
-title: Een beheerde schijven naar een opslagaccount kopiëren - CLI-voorbeeld
-description: Azure CLI-voorbeeld - Een beheerde schijven exporteren of kopiëren naar een opslagaccount.
+title: Een beheerde schijven naar een opslag account kopiëren-CLI-voor beeld
+description: Azure CLI-voor beeld-een beheerde schijven exporteren of kopiëren naar een opslag account.
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -16,15 +16,15 @@ ms.date: 05/09/2019
 ms.author: ramankum
 ms.custom: mvc,seodec18
 ms.openlocfilehash: d841519aeedb4b85fb897b45fa09be6c62b1fa2a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459981"
 ---
 # <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Een beheerde schijf naar een opslagaccount exporteren of kopiëren met behulp van Azure CLI
 
-Met dit script wordt de onderliggende VHD van een beheerde schijf geëxporteerd naar een opslagaccount in dezelfde of een andere regio. Eerst wordt de SAS-URI van de beheerde schijf gegenereerd, waarna deze wordt gebruikt om de VHD naar een opslagaccount te kopiëren. Gebruik dit script om beheerde schijven naar een andere regio te kopiëren voor regionale uitbreiding. Als u het VHD-bestand van een beheerde schijf in Azure Marketplace wilt publiceren, u dit script gebruiken om het VHD-bestand naar een opslagaccount te kopiëren en vervolgens een SAS URI van de gekopieerde VHD te genereren om het in de Marketplace te publiceren.   
+Met dit script wordt de onderliggende VHD van een beheerde schijf geëxporteerd naar een opslagaccount in dezelfde of een andere regio. Eerst wordt de SAS-URI van de beheerde schijf gegenereerd, waarna deze wordt gebruikt om de VHD naar een opslagaccount te kopiëren. Gebruik dit script om beheerde schijven naar een andere regio te kopiëren voor regionale uitbreiding. Als u het VHD-bestand van een beheerde schijf wilt publiceren in azure Marketplace, kunt u dit script gebruiken om het VHD-bestand te kopiëren naar een opslag account en vervolgens een SAS-URI van de gekopieerde VHD genereren om deze op de Marketplace te publiceren.   
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]

@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie - Rollen azure analysis services configureren | Microsoft Documenten
-description: Meer informatie over het configureren van Azure Analysis Services-beheerders en gebruikersrollen met behulp van de Azure-portal of SQL Server Management Studio.
+title: Zelf studie-Azure Analysis Services rollen configureren | Microsoft Docs
+description: Meer informatie over het configureren van Azure Analysis Services beheerders-en gebruikers rollen met behulp van de Azure Portal of SQL Server Management Studio.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
@@ -8,10 +8,10 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: 0bedc88b78f2ac758d3201965425b42b69580719
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81454251"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Zelfstudie: Serverbeheerder- en gebruikersrollen configureren
@@ -67,7 +67,7 @@ Voor de resterende taken gebruikt u SSMS voor het maken van verbinding met en he
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Een gebruikersaccount toevoegen aan de rol van serverbeheerder
 
-In deze taak voegt u een gebruikers- of groepsaccount uit uw Azure AD toe aan de serverbeheerderrol. Als u een beveiligingsgroep `obj:groupid@tenantid`opgeeft, gebruikt u .
+In deze taak voegt u een gebruikers- of groepsaccount uit uw Azure AD toe aan de serverbeheerderrol. Als u een beveiligings groep opgeeft, `obj:groupid@tenantid`gebruikt u.
 
 1. Klik in **Objectverkenner** met de rechtermuisknop op de naam van uw server en klik vervolgens op **Eigenschappen**. 
 2. In het **eigenschappenvenster van de analyseserver** klikt u op **Beveiliging** > **Toevoegen**.
@@ -130,13 +130,13 @@ In deze taak gebruikt u de opdracht [Maken](https://docs.microsoft.com/analysis-
 ## <a name="verify-your-changes"></a>Uw wijzigingen verifiëren
 
 1. Klik in **Objectverkenner** op uw servernaam en klik vervolgens op **Vernieuwen** of druk op **F5**.
-2. Databases **uitvouwen** > **adventureworks** > **Rollen**. Controleer of het gebruikersaccount en de rolwijzigingen die u hebt toegevoegd in de voorgaande taken, worden weergegeven.   
+2. Vouw **data bases** > uit van**AdventureWorks** > -**rollen**. Controleer of het gebruikersaccount en de rolwijzigingen die u hebt toegevoegd in de voorgaande taken, worden weergegeven.   
 
     ![Verifiëren in Objectverkenner](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Verwijder de accounts en rollen voor gebruikers of groepen wanneer u deze niet meer nodig hebt. Gebruik hiervoor het**lidmaatschap** **van Eigenschappen van rollen** > om gebruikersaccounts te verwijderen of klik met de rechtermuisknop op een rol en klik vervolgens op **Verwijderen**.
+Verwijder de accounts en rollen voor gebruikers of groepen wanneer u deze niet meer nodig hebt. Als u dit wilt doen, gebruikt u**lidmaatschap** van **rollen** > om gebruikers accounts te verwijderen, of klikt u met de rechter muisknop op een rol en klikt u vervolgens op **verwijderen**.
 
 
 ## <a name="next-steps"></a>Volgende stappen

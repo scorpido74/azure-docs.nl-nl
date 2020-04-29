@@ -1,5 +1,5 @@
 ---
-title: Een beheerde schijf maken op basis van een momentopname - PowerShell-voorbeeld
+title: Een beheerde schijf maken op basis van een moment opname-Power shell-voor beeld
 description: 'Azure PowerShell-voorbeeldscript: een beheerde schijf maken op basis van een momentopname'
 services: virtual-machines-linux
 documentationcenter: storage
@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
 ms.openlocfilehash: 89ab1a388aa6497e559a1746ee8165ccd8cae1ef
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459880"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-powershell"></a>Een beheerde schijf maken met PowerShell op basis van een momentopname

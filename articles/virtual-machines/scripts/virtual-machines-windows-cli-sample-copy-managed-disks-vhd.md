@@ -1,5 +1,5 @@
 ---
-title: Een beheerde schijven naar een opslagaccount kopiëren - CLI-voorbeeld
+title: Een beheerde schijven naar een opslag account kopiëren-CLI-voor beeld
 description: 'Voorbeeld van Azure CLI: beheerde schijven naar een opslagaccount exporteren of kopiëren.'
 services: virtual-machines-windows
 documentationcenter: storage
@@ -16,10 +16,10 @@ ms.date: 09/17/2018
 ms.author: ramankum
 ms.custom: mvc,seodec18
 ms.openlocfilehash: 64db152c6ebd2e8be4dc8034222eb5f1610946ae
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459607"
 ---
 # <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Een beheerde schijf naar een opslagaccount exporteren of kopiëren met behulp van Azure CLI
@@ -49,4 +49,4 @@ Dit script gebruikt de volgende opdrachten voor het genereren van de SAS-URI voo
 
 Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
-Aanvullende virtuele machine en beheerde schijven CLI-scriptvoorbeelden zijn te vinden in de [Azure Windows VM-documentatie.](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Meer informatie over de CLI-voorbeeld scripts voor virtuele machines en beheerde schijven vindt u in de documentatie van de [Azure Windows-VM](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

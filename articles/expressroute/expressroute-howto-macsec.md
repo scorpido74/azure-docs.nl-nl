@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: MACsec configureren'
-description: Met dit artikel u MACsec configureren om de verbindingen tussen uw edgerouters en de edgerouters van Microsoft te beveiligen.
+title: 'Azure-ExpressRoute: MACsec configureren'
+description: Dit artikel helpt u bij het configureren van MACsec om de verbindingen tussen uw Edge-routers en de Edge-routers van micro soft te beveiligen.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
 ms.openlocfilehash: 572147ca43e9a4dea9d9601dfa1dac8ba1c97ed0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458229"
 ---
-# <a name="configure-macsec-on-expressroute-direct-ports"></a>MACsec configureren op ExpressRoute Direct-poorten
+# <a name="configure-macsec-on-expressroute-direct-ports"></a>MACsec op ExpressRoute direct-poorten configureren
 
-Met dit artikel u MACsec configureren om de verbindingen tussen uw edgerouters en microsofts edgerouters te beveiligen met PowerShell.
+Dit artikel helpt u bij het configureren van MACsec om de verbindingen tussen uw Edge-routers en de Edge-routers van micro soft te beveiligen met behulp van Power shell.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Bevestig het volgende voordat u de configuratie start:
+Bevestig het volgende voordat u begint met de configuratie:
 
-* U begrijpt [ExpressRoute Direct inrichten van workflows.](expressroute-erdirect-about.md)
-* U hebt een [ExpressRoute Direct-poortbron gemaakt.](expressroute-howto-erdirect.md)
-* Als u PowerShell lokaal wilt uitvoeren, controleert u of de nieuwste versie van Azure PowerShell op uw computer is geïnstalleerd.
+* U begrijpt [ExpressRoute direct Provisioning-werk stromen](expressroute-erdirect-about.md).
+* U hebt een [ExpressRoute-directe poort resource](expressroute-howto-erdirect.md)gemaakt.
+* Als u Power shell lokaal wilt uitvoeren, controleert u of de meest recente versie van Azure PowerShell op uw computer is geïnstalleerd.
 
 ### <a name="working-with-azure-powershell"></a>Werken met Azure PowerShell
 
@@ -32,39 +32,39 @@ Bevestig het volgende voordat u de configuratie start:
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-### <a name="sign-in-and-select-the-right-subscription"></a>Aanmelden en het juiste abonnement selecteren
+### <a name="sign-in-and-select-the-right-subscription"></a>Meld u aan en selecteer het juiste abonnement
 
 Als u de configuratie wilt starten, meldt u zich aan bij uw Azure-account en selecteert u het abonnement dat u wilt gebruiken.
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
 
-## <a name="1-create-azure-key-vault-macsec-secrets-and-user-identity"></a>1. Azure Key Vault, MACsec-geheimen en gebruikersidentiteit maken
+## <a name="1-create-azure-key-vault-macsec-secrets-and-user-identity"></a>1. Maak Azure Key Vault, MACsec geheimen en gebruikers identiteit
 
-1. Maak een Key Vault-exemplaar om MACsec-geheimen op te slaan in een nieuwe resourcegroep.
+1. Maak een Key Vault-exemplaar om MACsec geheimen op te slaan in een nieuwe resource groep.
 
     ```azurepowershell-interactive
     New-AzResourceGroup -Name "your_resource_group" -Location "resource_location"
     $keyVault = New-AzKeyVault -Name "your_key_vault_name" -ResourceGroupName "your_resource_group" -Location "resource_location" -EnableSoftDelete 
     ```
 
-    Als u al een sleutelkluis of een resourcegroep hebt, u deze opnieuw gebruiken. Het is echter van cruciaal belang dat u de functie [ **soft-delete** ](../key-vault/general/overview-soft-delete.md) inschakelt op uw bestaande sleutelkluis. Als soft-delete niet is ingeschakeld, u de volgende opdrachten gebruiken om deze in te schakelen:
+    Als u al een sleutel kluis of een resource groep hebt, kunt u deze opnieuw gebruiken. Het is echter essentieel dat u de functie voor [ **voorlopig verwijderen** ](../key-vault/general/overview-soft-delete.md) in uw bestaande sleutel kluis inschakelt. Als voorlopig verwijderen niet is ingeschakeld, kunt u de volgende opdrachten gebruiken om het in te scha kelen:
 
     ```azurepowershell-interactive
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "your_existing_keyvault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
     Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
     ```
-2. Maak een gebruikersidentiteit.
+2. Een gebruikers-id maken.
 
     ```azurepowershell-interactive
     $identity = New-AzUserAssignedIdentity  -Name "identity_name" -Location "resource_location" -ResourceGroupName "your_resource_group"
     ```
 
-    Als Nieuw-AzUserAssignedIdentity niet wordt herkend als een geldige PowerShell-cmdlet, installeert u de volgende module (in de administratormodus) en voert u de bovenstaande opdracht opnieuw uit.
+    Als New-AzUserAssignedIdentity niet wordt herkend als een geldige Power shell-cmdlet, installeert u de volgende module (in de beheerders modus) en voert u de bovenstaande opdracht opnieuw uit.
 
     ```azurepowershell-interactive
     Install-Module -Name Az.ManagedServiceIdentity
     ```
-3. Maak een verbindingskoppelingssleutel (CAK) en een sleutelnaam van de verbindingskoppeling (CKN) en bewaar deze in de sleutelkluis.
+3. Maak een connectiviteits sleutel (CAK) en een connectiviteits sleutel naam (CKN) en sla deze op in de sleutel kluis.
 
     ```azurepowershell-interactive
     $CAK = ConvertTo-SecureString "your_key" -AsPlainText -Force
@@ -72,26 +72,26 @@ Als u de configuratie wilt starten, meldt u zich aan bij uw Azure-account en sel
     $MACsecCAKSecret = Set-AzKeyVaultSecret -VaultName "your_key_vault_name" -Name "CAK_name" -SecretValue $CAK
     $MACsecCKNSecret = Set-AzKeyVaultSecret -VaultName "your_key_vault_name" -Name "CKN_name" -SecretValue $CKN
     ```
-4. Wijs de GET-toestemming toe aan de gebruikersidentiteit.
+4. Wijs de machtiging GET toe aan de gebruikers-id.
 
     ```azurepowershell-interactive
     Set-AzKeyVaultAccessPolicy -VaultName "your_key_vault_name" -PermissionsToSecrets get -ObjectId $identity.PrincipalId
     ```
 
-   Nu kan deze identiteit de geheimen, bijvoorbeeld CAK en CKN, uit de sleutelkluis halen.
-5. Stel deze gebruikersidentiteit in om te worden gebruikt door ExpressRoute.
+   Deze identiteit kan nu de geheimen ophalen, bijvoorbeeld CAK en CKN, van de sleutel kluis.
+5. Stel deze gebruikers-id in die moet worden gebruikt door ExpressRoute.
 
     ```azurepowershell-interactive
     $erIdentity = New-AzExpressRoutePortIdentity -UserAssignedIdentityId $identity.Id
     ```
  
-## <a name="2-configure-macsec-on-expressroute-direct-ports"></a>2. MACsec configureren op ExpressRoute Direct-poorten
+## <a name="2-configure-macsec-on-expressroute-direct-ports"></a>2. MACsec op ExpressRoute direct-poorten configureren
 
-### <a name="to-enable-macsec"></a>Macsec inschakelen
+### <a name="to-enable-macsec"></a>MACsec inschakelen
 
-Elke Instantie ExpressRoute Direct heeft twee fysieke poorten. U ervoor kiezen om MACsec op beide poorten tegelijk in te schakelen of MACsec in te schakelen op één poort tegelijk. Als u dit één poort tegelijk doet (door het verkeer over te schakelen naar een actieve poort terwijl u de andere poort onderhoudt) kan dit helpen de onderbreking te minimaliseren als uw ExpressRoute Direct al in gebruik is.
+Elk ExpressRoute direct-exemplaar heeft twee fysieke poorten. U kunt ervoor kiezen om MACsec op beide poorten tegelijk in te scha kelen of MACsec in te scha kelen op één poort tegelijk. Als de service één poort op het moment is (door verkeer naar een actieve poort te scha kelen tijdens het onderhoud van de andere poort), kan de onderbreking worden geminimaliseerd als uw ExpressRoute direct in gebruik is.
 
-1. Stel MACsec-geheimen in en vercijfer en koppel de gebruikersidentiteit aan de poort, zodat de ExpressRoute-beheercode indien nodig toegang heeft tot de MACsec-geheimen.
+1. Stel MACsec geheimen en versleuteling in en koppel de gebruikers identiteit aan de poort zodat de ExpressRoute-beheer code zo nodig toegang heeft tot de MACsec geheimen.
 
     ```azurepowershell-interactive
     $erDirect = Get-AzExpressRoutePort -ResourceGroupName "your_resource_group" -Name "your_direct_port_name"
@@ -104,7 +104,7 @@ Elke Instantie ExpressRoute Direct heeft twee fysieke poorten. U ervoor kiezen o
     $erDirect.identity = $erIdentity
     Set-AzExpressRoutePort -ExpressRoutePort $erDirect
     ```
-2. (Optioneel) Als de poorten in de status Bestuursrechter staan, u de volgende opdrachten uitvoeren om de poorten weer te geven.
+2. Beschrijving Als de poorten in de status van beheer worden weer geven, kunt u de volgende opdrachten uitvoeren om de poorten weer te geven.
 
     ```azurepowershell-interactive
     $erDirect = Get-AzExpressRoutePort -ResourceGroupName "your_resource_group" -Name "your_direct_port_name"
@@ -113,11 +113,11 @@ Elke Instantie ExpressRoute Direct heeft twee fysieke poorten. U ervoor kiezen o
     Set-AzExpressRoutePort -ExpressRoutePort $erDirect
     ```
 
-    Op dit moment is MACsec ingeschakeld op de ExpressRoute Direct-poorten aan Microsoft-zijde. Als u het niet hebt geconfigureerd op uw edge-apparaten, u deze configureren met dezelfde MACsec-geheimen en -code.
+    Op dit punt is MACsec ingeschakeld voor de directe poorten van ExpressRoute aan micro soft. Als u dit nog niet hebt geconfigureerd op uw edge-apparaten, kunt u door gaan met het configureren van de MACsec-geheimen en versleuteling.
 
 ### <a name="to-disable-macsec"></a>MACsec uitschakelen
 
-Als MACsec niet langer gewenst is op uw ExpressRoute Direct-exemplaar, u de volgende opdrachten uitvoeren om deze uit te schakelen.
+Als MACsec niet meer nodig is voor uw ExpressRoute direct-exemplaar, kunt u de volgende opdrachten uitvoeren om het uit te scha kelen.
 
 ```azurepowershell-interactive
 $erDirect = Get-AzExpressRoutePort -ResourceGroupName "your_resource_group" -Name "your_direct_port_name"
@@ -129,12 +129,12 @@ $erDirect.identity = $null
 Set-AzExpressRoutePort -ExpressRoutePort $erDirect
 ```
 
-Op dit moment is MACsec uitgeschakeld op de ExpressRoute Direct-poorten aan de Microsoft-kant.
+Op dit punt is MACsec uitgeschakeld op de ExpressRoute direct-poorten aan de kant van micro soft.
 
 ### <a name="test-connectivity"></a>Connectiviteit testen
-Nadat u MACsec (inclusief MACsec-sleutelupdate) hebt geconfigureerd op uw ExpressRoute Direct-poorten, [controleert u of](expressroute-troubleshooting-expressroute-overview.md) de BGP-sessies van de circuits actief zijn. Als u nog geen circuit op de poorten hebt, maakt u er eerst een en stelt u Azure Private Peering of Microsoft Peering van het circuit in. Als MACsec verkeerd is geconfigureerd, inclusief de mismatch van DE MACsec-sleutel, tussen uw netwerkapparaten en de netwerkapparaten van Microsoft, ziet u geen ARP-resolutie op laag 2 en BGP-instelling in laag 3. Als alles goed is geconfigureerd, ziet u de BGP-routes correct geadverteerd in beide richtingen en uw applicatiegegevens stromen dienovereenkomstig over ExpressRoute.
+Nadat u MACsec (inclusief MACsec-sleutel update) hebt geconfigureerd op uw ExpressRoute direct-poorten, [controleert](expressroute-troubleshooting-expressroute-overview.md) u of de BGP-sessies van de circuits actief zijn. Als u nog geen circuit op de poorten hebt, moet u er eerst een maken en persoonlijke Azure-peering of micro soft-peering van het circuit instellen. Als MACsec onjuist is geconfigureerd, met inbegrip van de MACsec-sleutel die niet overeenkomt tussen uw netwerk apparaten en de netwerk apparaten van micro soft, ziet u geen ARP-resolutie op laag 2 en BGP-inrichting op laag 3. Als alles goed is geconfigureerd, ziet u dat de BGP-routes correct zijn geadverteerd in zowel de richtingen als de gegevens stroom van uw toepassing overeenkomstig ExpressRoute.
 
 ## <a name="next-steps"></a>Volgende stappen
-1. [Maak een ExpressRoute-circuit op ExpressRoute Direct](expressroute-howto-erdirect.md)
+1. [Een ExpressRoute-circuit maken op ExpressRoute direct](expressroute-howto-erdirect.md)
 2. [Een ExpressRoute-circuit koppelen aan een virtueel Azure-netwerk](expressroute-howto-linkvnet-arm.md)
-3. [ExpressRoute-connectiviteit verifiëren](expressroute-troubleshooting-expressroute-overview.md)
+3. [ExpressRoute-connectiviteit controleren](expressroute-troubleshooting-expressroute-overview.md)

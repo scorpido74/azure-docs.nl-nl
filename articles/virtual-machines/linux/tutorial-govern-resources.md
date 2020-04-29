@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie - Virtuele machines beheren met de CLI
-description: In deze zelfstudie leert u hoe u de Azure CLI gebruiken om virtuele Azure-machines te beheren door RBAC, politie, vergrendelingen en tags toe te passen.
+title: Zelf studie-virtuele machines beheren met de CLI
+description: In deze zelf studie leert u hoe u de Azure CLI gebruikt voor het beheren van virtuele Azure-machines door RBAC, policies, vergren delingen en tags toe te passen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -13,13 +13,13 @@ ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
 ms.openlocfilehash: 883bc209c343784e07bb5e03dc9f721c19b2f635
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460083"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Zelfstudie: Meer informatie over het beheer van virtuele linuxmachines met Azure CLI
+# <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Zelf studie: meer informatie over het beheer van virtuele Linux-machines met Azure CLI
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
@@ -63,7 +63,7 @@ adgroupId=$(az ad group show --group <your-group-name> --query objectId --output
 az role assignment create --assignee-object-id $adgroupId --role "Virtual Machine Contributor" --resource-group myResourceGroup
 ```
 
-Als u een fout ontvangt met de vermelding **Principal \<guid> niet bestaat in de map,** heeft de nieuwe groep zich niet verspreid in Azure Active Directory. Probeer de opdracht opnieuw uit te voeren.
+Als er een fout bericht wordt weer **gegeven \<met de melding dat de Principal-GUID> niet in de directory bestaat, is**de nieuwe groep niet door gegeven in de Azure Active Directory. Probeer de opdracht opnieuw uit te voeren.
 
 Normaal gesproken herhaalt u het proces voor *Inzender voor netwerken* en *Inzender voor opslagaccounts* om ervoor te zorgen dat gebruikers worden toegewezen om de geïmplementeerde resources te beheren. In dit artikel kunt u deze stappen overslaan.
 
@@ -171,7 +171,7 @@ U ziet een fout met de melding dat de verwijderbewerking niet kan worden voltooi
 
 ## <a name="tag-resources"></a>Resources taggen
 
-U past [tags](../../azure-resource-manager/management/tag-resources.md) toe op uw Azure-resources om ze logisch te ordenen op categorieën. Elke tag bestaat uit een naam en een waarde. U kunt de naam Omgeving en de waarde Productie bijvoorbeeld toepassen op alle resources in de productie.
+U past [Tags](../../azure-resource-manager/management/tag-resources.md) toe op uw Azure-resources om ze logisch te organiseren op basis van categorieën. Elke tag bestaat uit een naam en een waarde. U kunt de naam Omgeving en de waarde Productie bijvoorbeeld toepassen op alle resources in de productie.
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
@@ -235,7 +235,7 @@ In deze zelfstudie hebt u een aangepaste installatiekopie voor een virtuele mach
 > * Kritieke resources beveiligt met vergrendelingen
 > * Resources tagt voor facturering en beheer
 
-Ga naar de volgende zelfstudie om te leren hoe u wijzigingen identificeren en pakketupdates op een virtuele machine beheren.
+Ga naar de volgende zelf studie voor meer informatie over het identificeren van wijzigingen en het beheren van pakket updates op een virtuele machine.
 
 > [!div class="nextstepaction"]
 > [Virtuele machines beheren](tutorial-config-management.md)

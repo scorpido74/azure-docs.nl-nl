@@ -1,7 +1,7 @@
 ---
 title: Wat is Azure Virtual Network NAT?
 titlesuffix: Azure Virtual Network
-description: Overzicht van nat-functies, resources, architectuur en implementatie van virtueel netwerk. Ontdek hoe Virtual Network NAT werkt en hoe u NAT-gatewaybronnen in de cloud gebruiken.
+description: Overzicht van Virtual Network NAT-functies,-bronnen,-architectuur en-implementatie. Meer informatie over de werking van Virtual Network NAT en het gebruik van NAT-gateway bronnen in de Cloud.
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2020
 ms.author: allensu
 ms.openlocfilehash: 50fc8b9cefe88a80f3f954ce363139b6a4a38589
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80548391"
 ---
 # <a name="what-is-virtual-network-nat"></a>Wat is Virtual Network NAT?
 
-Virtual Network NAT (network address translation) vereenvoudigt de internetverbinding met alleen-het-netwerk voor virtuele netwerken. Wanneer geconfigureerd op een subnet, alle uitgaande connectiviteit maakt gebruik van uw opgegeven statische openbare IP-adressen.  Uitgaande connectiviteit is mogelijk zonder load balancer of openbare IP-adressen die direct aan virtuele machines zijn gekoppeld. NAT is volledig beheerd en zeer veerkrachtig.
+Virtual Network NAT (Network Address Translation) vereenvoudigt alleen uitgaande internet connectiviteit voor virtuele netwerken. Wanneer de configuratie op een subnet is geconfigureerd, gebruikt alle uitgaande verbindingen uw opgegeven statische open bare IP-adressen.  Uitgaande verbindingen zijn mogelijk zonder load balancer of open bare IP-adressen die rechtstreeks zijn gekoppeld aan virtuele machines. NAT is volledig beheerd en zeer flexibel.
 
 <!-- 
 <img src="./media/nat-overview/flow-map.svg" width="270" align="center">
@@ -31,32 +31,32 @@ Virtual Network NAT (network address translation) vereenvoudigt de internetverbi
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/flow-map.svg" width="256" title="Nat virtueel netwerk">
+  <img src="./media/nat-overview/flow-map.svg" width="256" title="Virtual Network NAT">
 </p>
 
 
 
-*Figuur: Virtual Network NAT*
+*Afbeelding: Virtual Network NAT*
 
-## <a name="static-ip-addresses-for-outbound-only"></a>Statische IP-adressen voor alleen uitgaande
+## <a name="static-ip-addresses-for-outbound-only"></a>Statische IP-adressen voor alleen-uitgaand verkeer
 
-Uitgaande connectiviteit kan worden gedefinieerd voor elk subnet met NAT.  Meerdere subnetten binnen hetzelfde virtuele netwerk kunnen verschillende NAT's hebben. Een subnet wordt geconfigureerd door op te geven welke NAT-gatewaybron moet worden gebruikt. Alle UDP- en TCP-uitgaande stromen van elke virtuele machine-instantie gebruiken NAT. 
+Voor elk subnet met NAT kan uitgaande connectiviteit worden gedefinieerd.  Meerdere subnetten binnen hetzelfde virtuele netwerk kunnen verschillende Nat's hebben. Een subnet wordt geconfigureerd door de NAT-gateway resource op te geven die moet worden gebruikt. Alle uitgaande UDP-en TCP-stromen van alle exemplaren van een virtuele machine worden NAT gebruikt. 
 
-NAT is compatibel met standaard SKU public IP-adresbronnen of openbare IP-voorvoegselbronnen of een combinatie van beide.  U een openbaar IP-voorvoegsel rechtstreeks gebruiken of de openbare IP-adressen van het voorvoegsel over meerdere NAT-gatewaybronnen distribueren. NAT verzorgt al het verkeer naar het bereik van IP-adressen van het voorvoegsel.  Elke IP whitelisting van uw implementaties is nu eenvoudig.
+NAT is compatibel met Standard SKU open bare IP-adres bronnen of open bare IP-prefix bronnen of een combi natie van beide.  U kunt rechtstreeks een openbaar IP-voor voegsel gebruiken of de open bare IP-adressen van het voor voegsel verdelen over meerdere NAT gateway-resources. NAT zal al het verkeer opschonen naar het bereik van de IP-adressen van het voor voegsel.  Elk IP-white list van uw implementaties is nu eenvoudig.
 
-Al het uitgaande verkeer voor het subnet wordt automatisch door NAT verwerkt zonder enige klantconfiguratie.  Door de gebruiker gedefinieerde routes zijn niet nodig. NAT heeft voorrang op andere uitgaande scenario's en vervangt de standaardinternetbestemming van een subnet.
+Al het uitgaande verkeer voor het subnet wordt automatisch door NAT verwerkt zonder dat er een klant configuratie is.  Door de gebruiker gedefinieerde routes zijn niet nodig. NAT heeft voor rang op andere uitgaande scenario's en vervangt de standaard Internet bestemming van een subnet.
 
-## <a name="on-demand-snat-with-multiple-ip-addresses-for-scale"></a>On-demand SNAT met meerdere IP-adressen voor schaal
+## <a name="on-demand-snat-with-multiple-ip-addresses-for-scale"></a>SNAT op aanvraag met meerdere IP-adressen voor schalen
 
-NAT gebruikt "port network address translation" (PNAT of PAT) en wordt aanbevolen voor de meeste workloads. Dynamische of uiteenlopende workloads kunnen eenvoudig worden opgevangen met on-demand uitgaande stroomtoewijzing. Uitgebreide pre-planning, pre-toewijzing en uiteindelijk overprovisioning van uitgaande middelen wordt vermeden. SNAT-poortbronnen worden gedeeld en beschikbaar voor alle subnetten met behulp van een specifieke NAT-gatewaybron en worden waar nodig geleverd.
+NAT gebruikt ' poort Network Address Translation ' (PNAT of PAT) en wordt aanbevolen voor de meeste werk belastingen. Dynamische of uiteenlopende werk belastingen kunnen eenvoudig worden afgestemd op een uitgaande stroom toewijzing op aanvraag. Een uitgebreide vooraf-planning, vooraf-toewijzing en uiteindelijk overmatiging van uitgaande bronnen wordt voor komen. De SNAT-poort resources worden gedeeld en beschikbaar in alle subnetten met behulp van een specifieke NAT-gateway resource en worden weer gegeven wanneer dat nodig is.
 
-Een openbaar IP-adres dat aan NAT is gekoppeld, biedt maximaal 64.000 gelijktijdige stromen voor UDP en TCP. U beginnen met één IP-adres en maximaal 16 openbare IP-adressen opschalen.
+Een openbaar IP-adres dat is gekoppeld aan NAT biedt Maxi maal 64.000 gelijktijdige stromen voor UDP en TCP. U kunt beginnen met één IP-adres en Maxi maal 16 open bare IP-adressen schalen.
 
-NAT maakt het mogelijk stromen te maken van het virtuele netwerk naar het internet. Retourverkeer van het internet is alleen toegestaan als reactie op een actieve stroom.
+NAT maakt het mogelijk om stromen te maken van het virtuele netwerk naar het internet. Het retour verkeer van het internet is alleen toegestaan als reactie op een actieve stroom.
 
-In tegenstelling tot load balancer uitgaande SNAT, nat heeft geen beperkingen waarop prive IP van een virtuele machine instantie kan uitgaande verbindingen te maken.  Secundaire IP-configuraties kunnen een uitgaande internetverbinding met NAT maken.
+In tegens telling tot load balancer uitgaande SNAT heeft NAT geen beperkingen voor het privé-IP-adres van een exemplaar van een virtuele machine, waarmee uitgaande verbindingen kunnen worden gemaakt.  Secundaire IP-configuraties kunnen uitgaande Internet verbinding maken met NAT.
 
-## <a name="coexistence-of-inbound-and-outbound"></a>Coëxistentie van in- en uitgaande
+## <a name="coexistence-of-inbound-and-outbound"></a>Samen werking van inkomend en uitgaand
 
 NAT is compatibel met de volgende standaard SKU-resources:
 
@@ -64,37 +64,37 @@ NAT is compatibel met de volgende standaard SKU-resources:
 - Openbaar IP-adres
 - Voorvoegsel voor het openbare IP-adres
 
-Wanneer deze bronnen samen met NAT worden gebruikt, bieden deze bronnen inkomende internetverbinding met uw subnet(s). NAT biedt alle uitgaande internetverbinding van uw subnet(s).
+Bij gebruik in combi natie met NAT bieden deze bronnen inkomende Internet connectiviteit voor uw subnet (s). NAT biedt alle uitgaande internet connectiviteit van uw subnet ('s).
 
-NAT en compatibele Standaard SKU-functies zijn zich bewust van de richting waarin de stroom is gestart. Inkomende en uitgaande scenario's kunnen naast elkaar bestaan. Deze scenario's ontvangen de juiste netwerkadresvertalingen omdat deze functies op de hoogte zijn van de stroomrichting. 
+NAT en compatibele standaard-SKU-functies zijn op de hoogte van de richting waarin de stroom is gestart. De scenario's voor inkomend en uitgaand verkeer kunnen naast elkaar bestaan. In deze scenario's worden de juiste vertalingen van het netwerk adres weer gegeven, omdat deze functies op de hoogte zijn van de richting van de stroom. 
 
 <!-- 
 <img src="./media/nat-overview/flow-direction4.svg" width="500" align="center">
 ![Virtual Network NAT flow direction](./media/nat-overview/flow-direction4.svg)
 -->
 <p align="center">
-  <img src="./media/nat-overview/flow-direction4.svg" width="512" title="Nat-stroomrichting voor virtueel netwerk">
+  <img src="./media/nat-overview/flow-direction4.svg" width="512" title="Richting van Virtual Network NAT-stroom">
 </p>
 
-*Figuur: Nat-stroomrichting voor virtueel netwerk*
+*Afbeelding: de richting van de NAT-stroom Virtual Network*
 
-## <a name="fully-managed-highly-resilient"></a>Volledig beheerd, zeer veerkrachtig
+## <a name="fully-managed-highly-resilient"></a>Volledig beheerd, zeer flexibel
 
-NAT is vanaf het begin volledig uitgeschaald. Er is geen opvoerende of scale-out operatie vereist.  Azure beheert de werking van NAT voor u.  NAT heeft altijd meerdere foutdomeinen en kan meerdere storingen voorkomen zonder serviceuitval.
+NAT is volledig uitgebreid van het begin. Er is geen afronding of uitbreilijke bewerking vereist.  Azure beheert de werking van NAT voor u.  NAT heeft altijd meerdere fout domeinen en kan meerdere storingen ondervinden zonder service onderbreking.
 
-## <a name="tcp-reset-for-unrecognized-flows"></a>TCP-reset voor niet-herkende stromen
+## <a name="tcp-reset-for-unrecognized-flows"></a>TCP Reset voor niet-herkende stromen
 
-De privékant van NAT stuurt TCP Reset-pakketten voor pogingen om te communiceren via een TCP-verbinding die niet bestaat. Een voorbeeld hiervan zijn verbindingen die een niet-actieve time-out hebben bereikt. In het volgende ontvangen pakket wordt een TCP Reset teruggegeven aan het privé-IP-adres om de verbinding te seinen en te forceren.
+De persoonlijke kant van NAT verzendt TCP-Reset pakketten voor pogingen om te communiceren op een TCP-verbinding die niet bestaat. Een voor beeld hiervan is verbindingen die een time-out voor inactiviteit hebben bereikt. Het volgende ontvangen pakket retourneert een TCP Reset naar het privé-IP-adres om het sluiten van de verbinding te Signa leren en af te dwingen.
 
-De openbare kant van NAT genereert geen TCP Reset-pakketten of ander verkeer.  Alleen verkeer dat door het virtuele netwerk van de klant wordt geproduceerd, wordt uitgestoten.
+De open bare zijde van NAT genereert geen pakketten voor TCP-Reset of andere verkeer.  Alleen verkeer dat door het virtuele netwerk van de klant wordt geproduceerd, wordt verzonden.
 
-## <a name="configurable-tcp-idle-timeout"></a>Configureerbare TCP-idle time-out
+## <a name="configurable-tcp-idle-timeout"></a>Configureer bare time-out voor TCP-inactiviteit
 
-Een standaard TCP idle time-out van 4 minuten wordt gebruikt en kan worden verhoogd tot maximaal 120 minuten. Elke activiteit op een stroom kan ook de niet-actieve timer resetten, inclusief TCP-keepalives.
+Een standaard-time-out voor TCP-inactiviteit van 4 minuten wordt gebruikt en kan tot 120 minuten worden verhoogd. Elke activiteit in een stroom kan ook de niet-actieve timer opnieuw instellen, inclusief TCP-keepalives.
 
-## <a name="regional-or-zone-isolation-with-availability-zones"></a>Regionale isolatie of zone-isolatie met beschikbaarheidszones
+## <a name="regional-or-zone-isolation-with-availability-zones"></a>Regionale of zone-isolatie met beschikbaarheids zones
 
-NAT is standaard regionaal. Bij het maken [van scenario's voor beschikbaarheidszones](../availability-zones/az-overview.md) kan NAT worden geïsoleerd in een specifieke zone (zonale implementatie).
+NAT is standaard regionaal. Wanneer u scenario's voor [beschikbaarheids zones](../availability-zones/az-overview.md) maakt, kan nat worden geïsoleerd in een specifieke zone (zonegebonden-implementatie).
 
 <!-- 
 <img src="./media/nat-overview/az-directions.svg" width="500" align="center">
@@ -102,61 +102,61 @@ NAT is standaard regionaal. Bij het maken [van scenario's voor beschikbaarheidsz
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/az-directions.svg" width="512" title="Nat van virtueel netwerk met beschikbaarheidszones">
+  <img src="./media/nat-overview/az-directions.svg" width="512" title="Virtual Network NAT met beschikbaarheids zones">
 </p>
 
-*Figuur: Virtual Network NAT met beschikbaarheidszones*
+*Afbeelding: Virtual Network NAT met beschikbaarheids zones*
 
-## <a name="multi-dimensional-metrics-for-observability"></a>Multidimensionale statistieken voor waarneembaarheid
+## <a name="multi-dimensional-metrics-for-observability"></a>Multi-dimensionale metrische gegevens voor de naleving
 
-U de werking van uw NAT controleren via multidimensionale statistieken die worden weergegeven in Azure Monitor. Deze statistieken kunnen worden gebruikt om het gebruik en voor het oplossen van problemen te observeren.  NAT-gatewaybronnen geven de volgende statistieken bloot:
+U kunt de werking van uw NAT bewaken door middel van multidimensionale metrische gegevens die beschikbaar zijn in Azure Monitor. Deze metrische gegevens kunnen worden gebruikt om het gebruik te observeren en voor het oplossen van problemen.  De resources van de NAT-gateway bieden de volgende metrische gegevens:
 - Bytes
-- Pakketten
-- Gedropte pakketten
-- Totale SNAT-verbindingen
-- SNAT-verbindingsstatusovergangen per interval.
+- Pakket
+- Verwijderde pakketten
+- Totaal SNAT-verbindingen
+- Overdrachten van SNAT-verbindings status per interval.
 
 <!-- "ADD when PM is done" Learn more about [NAT gateway metrics](./nat-gateway-metrics.md) -->
 
 ## <a name="sla"></a>SLA
 
-Bij algemene beschikbaarheid is NAT-gegevenspad ten minste 99,9% beschikbaar.
+Bij algemene Beschik baarheid is het NAT-gegevenspad ten minste 99,9% beschikbaar.
 
 
 ## <a name="pricing"></a>Prijzen
 
-NAT-gateway wordt gefactureerd met twee afzonderlijke meters:
+De NAT-gateway wordt gefactureerd met twee afzonderlijke meters:
 
 | Meter | Tarief |
 | --- | --- |
 | Resource-uren | $0.045/uur |
-| Gegevens verwerkt | $ 0,045/GB |
+| Verwerkte gegevens | $0.045/GB |
 
-Resourceuren zijn goed voor de duur waarin een NAT-gatewaybron bestaat.
-Gegevens verwerkte accounts voor al het verkeer dat wordt verwerkt door een NAT-gatewaybron.
+Resource-uren accounts voor de duur waarin een NAT-gateway bron bestaat.
+Gegevens verwerkte accounts voor al het verkeer dat is verwerkt door een NAT-gateway resource.
 
 ## <a name="availability"></a>Beschikbaarheid
 
-Nat van het virtuele netwerk en de NAT-gatewaybron zijn beschikbaar in alle azure public [cloud-regio's.](https://azure.microsoft.com/global-infrastructure/regions/)
+Virtual Network NAT en de NAT-gateway resource zijn beschikbaar in alle open bare Cloud [regio's](https://azure.microsoft.com/global-infrastructure/regions/)van Azure.
 
 ## <a name="support"></a>Ondersteuning
 
-NAT wordt ondersteund via normale ondersteuningskanalen.
+NAT wordt ondersteund via normale ondersteunings kanalen.
 
 ## <a name="feedback"></a>Feedback
 
-We willen weten hoe we de service kunnen verbeteren. Voorstellen en stemmen over wat we moeten bouwen volgende op [UserVoice voor NAT](https://aka.ms/natuservoice).
+We willen weten hoe we de service kunnen verbeteren. Voorst Ellen en stemmen op wat we moeten bouwen op [UserVoice voor NAT](https://aka.ms/natuservoice).
 
 
 ## <a name="limitations"></a>Beperkingen
 
-* NAT is compatibel met standaard SKU public IP, public IP-voorvoegsel en load balancer-resources. Basisresources, zoals basisloadbalancer en alle producten die daaruit zijn afgeleid, zijn niet compatibel met NAT.  Basisresources moeten worden geplaatst op een subnet dat niet is geconfigureerd met NAT.
-* IPv4-adresfamilie wordt ondersteund.  NAT heeft geen interactie met IPv6-adresfamilie.  NAT kan niet worden geïmplementeerd op een subnet met een IPv6-voorvoegsel.
-* NSG-stroomlogboekregistratie wordt niet ondersteund bij het gebruik van NAT.
+* NAT is compatibel met een standaard-SKU openbaar IP-adres, een openbaar IP-voor voegsel en load balancer-resources. Basis bronnen, zoals basis load balancer, en alle producten die hiervan zijn afgeleid, zijn niet compatibel met NAT.  Basis bronnen moeten worden geplaatst op een subnet dat niet is geconfigureerd met NAT.
+* De IPv4-adres familie wordt ondersteund.  NAT communiceert niet met een IPv6-adres groep.  NAT kan niet worden geïmplementeerd op een subnet met een IPv6-voor voegsel.
+* Logboek registratie van de NSG-stroom wordt niet ondersteund bij gebruik van NAT.
 * NAT kan niet meerdere virtuele netwerken omvatten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [NAT-gatewaybron](./nat-gateway-resource.md).
-* [Vertel ons wat we nu moeten bouwen voor Virtual Network NAT in UserVoice.](https://aka.ms/natuservoice)
+* Meer informatie over de [NAT gateway-resource](./nat-gateway-resource.md).
+* [Vertel ons wat u nu kunt bouwen voor Virtual Network nat in UserVoice](https://aka.ms/natuservoice).
 

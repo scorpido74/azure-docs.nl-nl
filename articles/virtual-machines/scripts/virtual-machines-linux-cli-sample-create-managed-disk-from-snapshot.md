@@ -1,5 +1,5 @@
 ---
-title: Een beheerde schijf maken op basis van een momentopname - CLI-voorbeeld
+title: Een beheerde schijf maken op basis van een moment opname-CLI-voor beeld
 description: 'Azure CLI-voorbeeldscript: een beheerde schijf maken op basis van een momentopname'
 services: virtual-machines-linux
 documentationcenter: storage
@@ -16,10 +16,10 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: c0c009573393a65d901634fca8de3cf03df6b874
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460406"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-cli"></a>Een beheerde schijf maken met CLI op basis van een momentopname

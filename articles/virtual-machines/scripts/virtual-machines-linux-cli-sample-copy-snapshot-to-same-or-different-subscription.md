@@ -1,6 +1,6 @@
 ---
-title: Beheerde schijfmomentopname naar een abonnement kopiëren - CLI-voorbeeld
-description: Voorbeeld van Azure CLI Script - Momentopname van een beheerde schijf kopiëren (of verplaatsen) naar een zelfde of ander abonnement met CLI
+title: Moment opname van een beheerde schijf kopiëren naar een abonnement-CLI-voor beeld
+description: 'Azure CLI-voorbeeld script: een moment opname van een beheerde schijf kopiëren (of verplaatsen) naar hetzelfde of een ander abonnement met CLI'
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -16,19 +16,19 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 707fc2f805e19487f93affd2c58943090233967f
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459964"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>Met CLI een momentopname van een beheerde schijf kopiëren naar hetzelfde of een ander abonnement
 
 Met dit script wordt een momentopname van een beheerde schijf gekopieerd naar hetzelfde of een ander abonnement. Gebruik dit script voor de volgende scenario's:
 
-1. Migreer een momentopname in Premium-opslag (Premium_LRS) naar Standaardopslag (Standard_LRS of Standard_ZRS) om uw kosten te verlagen.
-1. Migreer een momentopname van lokaal redundante opslag (Premium_LRS, Standard_LRS) naar zoneredundante opslag (Standard_ZRS) om te profiteren van de hogere betrouwbaarheid van ZRS-opslag.
-1. Een momentopname verplaatsen naar een ander abonnement in dezelfde regio voor een langere retentie.
+1. Migreer een moment opname in Premium Storage (Premium_LRS) naar de standaard opslag (Standard_LRS of Standard_ZRS) om uw kosten te verlagen.
+1. Migreer een moment opname van lokaal redundante opslag (Premium_LRS, Standard_LRS) naar zone redundante opslag (Standard_ZRS) om te profiteren van de hogere betrouw baarheid van ZRS-opslag.
+1. Een moment opname verplaatsen naar een ander abonnement in dezelfde regio voor een langere Bewaar periode.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 

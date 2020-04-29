@@ -1,6 +1,6 @@
 ---
-title: Azure Storage-versleuteling voor gegevens in rust
-description: Azure Storage beschermt uw gegevens door deze automatisch te versleutelen voordat deze naar de cloud worden gebracht. U vertrouwen op door Microsoft beheerde sleutels voor de versleuteling van de gegevens in uw opslagaccount, of u versleuteling beheren met uw eigen sleutels.
+title: Azure Storage versleuteling voor Data-at-rest
+description: Azure Storage beveiligt uw gegevens door deze automatisch te versleutelen voordat deze in de cloud worden bewaard. U kunt gebruikmaken van door micro soft beheerde sleutels voor het versleutelen van de gegevens in uw opslag account, of u kunt versleuteling beheren met uw eigen sleutels.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,47 +10,47 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: c737ccf83dae0cc4b198b9cd708a55b988e6593b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457940"
 ---
-# <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-versleuteling voor gegevens in rust
+# <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage versleuteling voor Data-at-rest
 
-Azure Storage versleutelt uw gegevens automatisch wanneer deze worden gehandhaafd in de cloud. Azure Storage-versleuteling beschermt uw gegevens en helpt u om te voldoen aan uw verplichtingen op het gebied van organisatiebeveiliging en naleving.
+Azure Storage worden uw gegevens automatisch versleuteld wanneer deze persistent worden gemaakt in de Cloud. Azure Storage versleuteling beveiligt uw gegevens en helpt u om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie.
 
-## <a name="about-azure-storage-encryption"></a>Over Azure Storage-versleuteling
+## <a name="about-azure-storage-encryption"></a>Over Azure Storage versleuteling
 
-Gegevens in Azure Storage worden versleuteld en transparant gedecodeerd met behulp van 256-bits [AES-versleuteling](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), een van de sterkste blokcijfers die beschikbaar zijn en is FIPS 140-2-compatibel. Azure Storage-versleuteling is vergelijkbaar met BitLocker-versleuteling op Windows.
+Gegevens in Azure Storage worden transparant versleuteld en ontsleuteld met 256-bits [AES-versleuteling](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), een van de krach tigste blok cijfers die beschikbaar zijn en is compatibel met FIPS 140-2. Azure Storage versleuteling lijkt op BitLocker-versleuteling in Windows.
 
-Azure Storage-versleuteling is ingeschakeld voor alle opslagaccounts, inclusief zowel Resource Manager- als klassieke opslagaccounts. Azure Storage-versleuteling kan niet worden uitgeschakeld. Omdat uw gegevens standaard zijn beveiligd, hoeft u uw code of toepassingen niet te wijzigen om gebruik te maken van Azure Storage-versleuteling.
+Azure Storage versleuteling is ingeschakeld voor alle opslag accounts, met inbegrip van Resource Manager en klassieke opslag accounts. Azure Storage versleuteling kan niet worden uitgeschakeld. Omdat uw gegevens standaard worden beveiligd, hoeft u uw code of toepassingen niet te wijzigen om Azure Storage versleuteling te benutten.
 
-Gegevens in een opslagaccount worden versleuteld, ongeacht de prestatielaag (standaard of premium), toegangslaag (hot of cool) of implementatiemodel (Azure Resource Manager of klassiek). Alle blobs in de archieflaag zijn ook versleuteld. Alle redundantieopties voor Azure Storage ondersteunen versleuteling en alle gegevens in zowel de primaire als secundaire regio's worden versleuteld wanneer georeplicatie is ingeschakeld. Alle Azure Storage-bronnen zijn versleuteld, inclusief blobs, schijven, bestanden, wachtrijen en tabellen. Alle objectmetadata is ook versleuteld. Er zijn geen extra kosten verbonden aan Azure Storage-versleuteling.
+Gegevens in een opslag account worden versleuteld, ongeacht de standaardlaag (Standard of Premium), de Access-laag (Hot of cool) of het implementatie model (Azure Resource Manager of klassiek). Alle blobs in de archief laag worden ook versleuteld. Alle Azure Storage redundantie opties ondersteunen versleuteling en alle gegevens in de primaire en secundaire regio's worden versleuteld wanneer geo-replicatie is ingeschakeld. Alle Azure Storage bronnen worden versleuteld, waaronder blobs, schijven, bestanden, wacht rijen en tabellen. Alle meta gegevens van objecten worden ook versleuteld. Er zijn geen extra kosten verbonden aan Azure Storage versleuteling.
 
-Elke blokblob, toevoegenblob of paginablob die na 20 oktober 2017 naar Azure Storage is geschreven, is versleuteld. Blobs die vóór deze datum zijn gemaakt, worden nog steeds versleuteld door een achtergrondproces. Als u de versleuteling wilt forceren van een blob die vóór 20 oktober 2017 is gemaakt, u de blob opnieuw schrijven. Zie [De versleutelingsstatus van een blob controleren](../blobs/storage-blob-encryption-status.md)voor meer informatie over het controleren van de versleutelingsstatus van een blob.
+Elke blok-blob, een toevoeg-BLOB of een pagina-blob die na 20 oktober 2017 is geschreven naar Azure Storage, is versleuteld. De blobs die vóór deze datum zijn gemaakt, worden versleuteld met een achtergrond proces. Als u de versleuteling wilt afdwingen van een blob die is gemaakt vóór 20 oktober 2017, kunt u de BLOB herschrijven. Zie [de versleutelings status van een BLOB controleren](../blobs/storage-blob-encryption-status.md)voor meer informatie over het controleren van de versleutelings status van een blob.
 
-Zie [Cryptografie API: Next Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)voor meer informatie over de cryptografische modules die ten grondslag liggen aan Azure Storage-versleuteling.
+Zie [crypto GRAFIE API: Next Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)(Engelstalig) voor meer informatie over de onderliggende cryptografische modules Azure Storage versleuteling.
 
-## <a name="about-encryption-key-management"></a>Over beheer van versleutelingssleutels
+## <a name="about-encryption-key-management"></a>Over het beheer van versleutelings sleutels
 
-Gegevens in een nieuw opslagaccount worden versleuteld met door Microsoft beheerde sleutels. U vertrouwen op door Microsoft beheerde sleutels voor de versleuteling van uw gegevens, of u versleuteling beheren met uw eigen sleutels. Als u ervoor kiest om versleuteling met uw eigen sleutels te beheren, hebt u twee opties:
+Gegevens in een nieuw opslag account worden versleuteld met door micro soft beheerde sleutels. U kunt gebruikmaken van door micro soft beheerde sleutels voor het versleutelen van uw gegevens, maar u kunt ook versleuteling beheren met uw eigen sleutels. Als u ervoor kiest om versleuteling te beheren met uw eigen sleutels, hebt u twee opties:
 
-- U een door de klant beheerde sleutel opgeven met Azure Key Vault die u wilt gebruiken voor het versleutelen en decoderen van gegevens in *Blob-opslag* en in Azure-bestanden. <sup>1,2</sup> Zie [Sleutels met beheerde sleutels van klanten gebruiken met Azure Key Vault om Azure Storage-versleuteling te beheren](encryption-customer-managed-keys.md)voor meer informatie over door klanten beheerde sleutels.
-- U een *door de klant geleverde sleutel* opgeven voor Blob-opslagbewerkingen. Een client die een lees- of schrijfverzoek indient tegen Blob-opslag, kan een versleutelingssleutel bevatten op het verzoek om gedetailleerde controle over hoe blobgegevens worden versleuteld en gedecodeerd. Zie [Een versleutelingssleutel geven op een verzoek om blobopslag (preview) voor](encryption-customer-provided-keys.md)meer informatie over door de klant verstrekte sleutels.
+- U kunt een door de *klant beheerde sleutel* opgeven met Azure Key Vault die moet worden gebruikt voor het versleutelen en ontsleutelen van gegevens in Blob Storage en in azure files. <sup>1, 2</sup> als u meer informatie wilt over door de klant beheerde sleutels, raadpleegt u [door de klant beheerde sleutels gebruiken met Azure Key Vault voor het beheren van Azure Storage versleuteling](encryption-customer-managed-keys.md).
+- U kunt een door de *klant opgegeven sleutel* voor Blob-opslag bewerkingen opgeven. Een client die een lees-of schrijf aanvraag uitvoert voor Blob Storage, kan een versleutelings sleutel bevatten op de aanvraag voor gedetailleerde controle over hoe BLOB-gegevens worden versleuteld en ontsleuteld. Zie voor meer informatie over door de klant geleverde sleutels [een versleutelings sleutel opgeven voor een aanvraag voor Blob-opslag (preview)](encryption-customer-provided-keys.md).
 
-In de volgende tabel worden sleutelbeheeropties voor Azure Storage-versleuteling vergeleken.
+De volgende tabel vergelijkt de opties voor sleutel beheer voor Azure Storage versleuteling.
 
-|                                        |    Door Microsoft beheerde sleutels                             |    Door klant beheerde sleutels                                                                                                                        |    Door de klant geleverde sleutels                                                          |
+|                                        |    Door micro soft beheerde sleutels                             |    Door klant beheerde sleutels                                                                                                                        |    Door de klant verschafte sleutels                                                          |
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-|    Versleutelings-/decryptiebewerkingen    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    Ondersteuning voor Azure Storage-services    |    Alle                                                |    Blob-opslag, Azure Files<sup>1,2</sup>                                                                                                               |    Blob Storage                                                                  |
-|    Sleutelopslag                         |    Microsoft-sleutelarchief    |    Azure Key Vault                                                                                                                              |    De eigen sleutelwinkel van de klant                                                                 |
-|    Belangrijkste rotatieverantwoordelijkheid         |    Microsoft                                          |    Klant                                                                                                                                     |    Klant                                                                      |
-|    Sleutelbesturingselement                          |    Microsoft                                     |    Klant                                                                                                                    |    Klant                                                                 |
+|    Bewerkingen voor versleuteling/ontsleuteling    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
+|    Azure Storage services ondersteund    |    Alle                                                |    Blob-opslag, Azure Files<sup>1, 2</sup>                                                                                                               |    Blob Storage                                                                  |
+|    Sleutel opslag                         |    Micro soft-sleutel archief    |    Azure Key Vault                                                                                                                              |    Eigen sleutel archief van de klant                                                                 |
+|    Verantwoordelijkheid voor sleutel rotatie         |    Microsoft                                          |    Klant                                                                                                                                     |    Klant                                                                      |
+|    Sleutel besturings element                          |    Microsoft                                     |    Klant                                                                                                                    |    Klant                                                                 |
 
-<sup>1</sup> Zie Een account maken dat door klanten beheerde sleutels ondersteunt voor informatie over het maken van een account dat door klanten [beheerde sleutels voor wachtrijen ondersteunt.](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)<br />
-<sup>2</sup> Zie Een account maken dat door klanten beheerde sleutels ondersteunt voor informatie over het maken van een account dat door klanten [beheerde sleutels voor tabellen ondersteunt.](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
+<sup>1</sup> Zie [een account maken dat door de klant beheerde sleutels voor wacht rijen ondersteunt](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)voor meer informatie over het maken van een account dat gebruikmaakt van door de klant beheerde sleutels met behulp van een wachtrij opslag.<br />
+<sup>2</sup> Zie voor meer informatie over het maken van een account dat gebruikmaakt van door de klant beheerde sleutels met table-opslag [een account maken dat door de klant beheerde sleutels voor tabellen ondersteunt](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
 
 ## <a name="next-steps"></a>Volgende stappen
 

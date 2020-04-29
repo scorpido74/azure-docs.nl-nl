@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-voorbeeld - Een Azure VM maken met Azure-monitor
-description: 'Azure CLI-voorbeeld : maak een Azure VM met Windows Server 2016 VM en Azure Monitor.'
+title: Azure CLI-voor beeld-een Azure-VM met Azure Monitor maken
+description: 'Azure CLI-voor beeld: een Azure-VM met Windows Server 2016 VM en Azure Monitor maken.'
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -16,13 +16,13 @@ ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
 ms.openlocfilehash: b3c8c045b7d773f6345072ed46c4a668d0db8ec5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459471"
 ---
-# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Een VM bewaken met Azure Monitor-logboeken
+# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Een virtuele machine bewaken met Azure Monitor-logboeken
 
 Met dit script maakt u een virtuele machine in Azure, installeert u de Log Analytics-agent en registreert u het systeem bij een Log Analytics-werkruimte. Nadat het script is uitgevoerd, is de virtuele machine zichtbaar in Azure-bewaking.
 

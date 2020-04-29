@@ -1,20 +1,20 @@
 ---
-title: Overzicht van de preview-voorbeeld van Azure Notebooks
-description: Voer Jupyter-notitieblokken in de cloud uit met de gratis Azure Notebooks Preview-service, waarbij geen installatie of configuratie vereist is.
+title: Overzicht van Azure Notebooks preview
+description: Voer Jupyter-notebooks uit in de Cloud met behulp van de preview-service gratis Azure Notebooks, waarbij geen installatie of configuratie vereist is.
 ms.topic: overview
 ms.date: 04/05/2019
 ms.openlocfilehash: bd2355bdefcedca5026a25915dc1da55fdc33a36
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75646327"
 ---
-# <a name="overview-of-azure-notebooks-preview"></a>Overzicht van de preview-voorbeeld van Azure Notebooks
+# <a name="overview-of-azure-notebooks-preview"></a>Overzicht van Azure Notebooks preview
 
 Azure Notebooks is een gratis gehoste service om Jupyter-notebooks te ontwikkelen en uitvoeren in de cloud, zonder installatie. [Jupyter](https://jupyter.org/) (voorheen IPython) is een opensourceproject waarmee u eenvoudig Markdown-tekst, uitvoerbare code en permanente gegevens, afbeeldingen en visualisaties kunt combineren op één deelbaar canvas, het *notebook* (de afbeelding is ter beschikking gesteld door jupyter.org):
 
-[![Voorbeelden van Jupyter-notitieblokken](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![Voor beelden van Jupyter-notebooks](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 Vanwege deze krachtige combinatie van code, afbeeldingen en verklarende tekst is Jupyter populair geworden voor vele toepassingen, waaronder onderwijs in datawetenschap, het opschonen en transformeren van gegevens, numerieke simulatie, statistisch modelleren en de ontwikkeling van modellen voor machine learning.
 
@@ -51,7 +51,7 @@ Azure Notebooks is een gratis service, maar om misbruik te voorkomen is elk proj
 
 Als u alle beperkingen wilt opheffen, meld u zich met behulp van Azure Active Directory aan bij Azure Notebooks met een account (bijvoorbeeld een zakelijk account). Als dit account is gekoppeld aan een Azure-abonnement, kunt u elk Azure Data Science Virtual Machine-exemplaar binnen dat abonnement verbinden. Zie [Manage and configure projects - Compute tier](configure-manage-azure-notebooks-projects.md#compute-tier) (Projecten beheren en configureren - Compute-laag) voor meer informatie.
 
-Notebookservers bestaan gegarandeerd maximaal 8 uur. In de meeste gevallen is uw container niet onderworpen aan deze limiet en blijft deze na deze tijd worden uitgevoerd, maar langdurige sessies kunnen af en toe worden afgesloten voor systeemstabiliteit.
+Notebook servers zijn gegarandeerd Maxi maal 8 uur beschikbaar. In de meeste gevallen is de container niet onderhevig aan deze limiet en blijft deze later worden uitgevoerd, maar er kunnen soms langdurige sessies worden afgesloten voor een systeem stabiliteit.
 
 ## <a name="available-kernels-and-environments"></a>Beschikbare kernels en omgevingen
 

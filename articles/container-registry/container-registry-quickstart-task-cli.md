@@ -1,22 +1,22 @@
 ---
-title: Snelstart - Containerafbeelding & uitvoeren
-description: Voer snel taken uit met Azure Container Registry om een Docker-containerimage on-demand in de cloud te bouwen en uit te voeren.
+title: Quick Start-een installatie kopie van &-container maken
+description: Voer snel taken uit met Azure Container Registry om op aanvraag een docker-container installatie kopie te maken en uit te voeren in de Cloud.
 ms.topic: quickstart
 ms.date: 01/31/2020
 ms.openlocfilehash: f08f10dd170acaa8594ad5a47f5ef58e27288b10
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76986271"
 ---
-# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Snelstart: een containerafbeelding maken en uitvoeren met Azure Container Registry Tasks
+# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Snelstartgids: een container installatie kopie bouwen en uitvoeren met Azure Container Registry taken
 
-In deze quickstart gebruikt u azure containerregistry-takenopdrachten om snel een Docker-containerafbeelding in Azure te bouwen, te pushen en uit te voeren, die laat zien hoe u uw 'inner-loop'-ontwikkelingscyclus naar de cloud ontladen. [ACR Tasks][container-registry-tasks-overview] is een reeks functies binnen Azure Container Registry waarmee u containerafbeeldingen beheren en wijzigen tijdens de levenscyclus van de container. 
+In deze Quick Start gebruikt u Azure Container Registry opdrachten voor taken om snel een docker-container installatie kopie in azure te bouwen, te pushen en uit te voeren, waarin wordt weer gegeven hoe u de ontwikkelings cyclus voor ' Inner-loop ' kunt overzetten naar de Cloud. [ACR-taken][container-registry-tasks-overview] is een reeks functies in azure container Registry die u helpen bij het beheren en wijzigen van container installatie kopieën in de levens cyclus van de container. 
 
-Na deze snelle start, ontdek meer geavanceerde functies van ACR-taken. ACR Tasks kan imagebuilds automatiseren op basis van codecommits of basisafbeeldingsupdates, of meerdere containers parallel testen, onder andere scenario's. 
+Nadat u deze Snelstartgids hebt bekeken, kunt u meer geavanceerde functies van ACR-taken verkennen. Met ACR-taken kunnen installatie kopieën worden geautomatiseerd op basis van code doorvoer of basis installatie kopie-updates of meerdere containers parallel, onder andere scenario's, testen. 
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account][azure-account] voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account][azure-account] aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -24,7 +24,7 @@ U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Als u nog geen containerregister hebt, maakt u eerst een resourcegroep met de opdracht [AZ-groep maken.][az-group-create] Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
+Als u nog geen container register hebt, maakt u eerst een resource groep met de opdracht [AZ Group Create][az-group-create] . Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
 In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
 
@@ -34,23 +34,23 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Een containerregister maken
 
-Maak een containerregister met de opdracht [az acr create.][az-acr-create] De registernaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. In het volgende voorbeeld wordt *myContainerRegistry008* gebruikt. Werk deze waarde bij naar een unieke waarde.
+Maak een container register met de opdracht [AZ ACR Create][az-acr-create] . De registernaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. In het volgende voor beeld wordt *myContainerRegistry008* gebruikt. Werk deze waarde bij naar een unieke waarde.
 
 ```azurecli-interactive
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-In dit voorbeeld wordt een *Basisregister,* een voor kosten geoptimaliseerde optie voor ontwikkelaars die meer te weten komen over Azure Container Registry. Zie [Azure Container Registry-SKU's][container-registry-skus] voor meer informatie over de beschikbare servicelagen.
+In dit voor beeld wordt een *basis* register gemaakt, een kosten geoptimaliseerde optie voor ontwikkel aars die over Azure container Registry leren. Zie [Azure Container Registry-SKU's][container-registry-skus] voor meer informatie over de beschikbare servicelagen.
 
-## <a name="build-an-image-from-a-dockerfile"></a>Een afbeelding maken vanuit een Dockerfile
+## <a name="build-an-image-from-a-dockerfile"></a>Een installatie kopie bouwen op basis van een Dockerfile
 
-Gebruik nu Azure Container Registry om een afbeelding te maken. Maak eerst een werkmap en maak vervolgens een Dockerfile met de naam *Dockerfile* met de volgende inhoud. Dit is een eenvoudig voorbeeld om een Linux-containerafbeelding te bouwen, maar u uw eigen standaard Dockerfile maken en afbeeldingen bouwen voor andere platforms. Aanbevelingsvoorbeelden in dit artikel zijn opgemaakt voor de bashshell.
+Gebruik nu Azure Container Registry om een installatie kopie te maken. Maak eerst een werkmap en maak vervolgens een Dockerfile met de naam *Dockerfile* met de volgende inhoud. Dit is een eenvoudig voor beeld van het bouwen van een Linux-container installatie kopie, maar u kunt uw eigen standaard Dockerfile maken en installatie kopieën bouwen voor andere platforms. De opdracht voorbeelden in dit artikel zijn ingedeeld voor de bash-shell.
 
 ```bash
 echo FROM hello-world > Dockerfile
 ```
 
-Voer de [az acr build][az-acr-build] opdracht uit om het beeld te bouwen. Wanneer de afbeelding met succes is gebouwd, wordt deze naar uw register gepusht. In het volgende `sample/hello-world:v1` voorbeeld wordt de afbeelding weergegeven. De `.` aan het einde van de opdracht stelt de locatie van het Dockerbestand in, in dit geval de huidige map.
+Voer de opdracht [AZ ACR build][az-acr-build] uit om de installatie kopie te bouwen. Wanneer de installatie kopie is gemaakt, wordt deze naar het REGI ster gepusht. In het volgende voor beeld wordt `sample/hello-world:v1` de installatie kopie gepusht. `.` Aan het einde van de opdracht wordt de locatie van de Dockerfile ingesteld, in dit geval de huidige map.
 
 ```azurecli-interactive
 az acr build --image sample/hello-world:v1 \
@@ -58,7 +58,7 @@ az acr build --image sample/hello-world:v1 \
   --file Dockerfile . 
 ```
 
-Uitvoer van een succesvolle build en push is vergelijkbaar met het volgende:
+Uitvoer van een geslaagde build en push lijkt op het volgende:
 
 ```console
 Packing source code into tar to upload...
@@ -110,18 +110,18 @@ v1: digest: sha256:92c7f9c92844bbbb5d0a101b22f7c2a7949e40f8ea90c8b3bc396879d95e8
 Run ID: ca8 was successful after 10s
 ```
 
-## <a name="run-the-image"></a>De afbeelding uitvoeren
+## <a name="run-the-image"></a>De installatie kopie uitvoeren
 
-Voer nu snel de afbeelding uit die u hebt gemaakt en naar uw register hebt geduwd. Hier gebruik je [az acr run][az-acr-run] om de container opdracht uit te voeren. In uw werkstroom voor containerontwikkeling kan dit een validatiestap zijn voordat u de afbeelding implementeert of u de opdracht opnemen in een [YAML-bestand met meerdere stappen.][container-registry-tasks-multi-step] 
+Voer nu snel de installatie kopie uit die u hebt gemaakt en gepusht naar het REGI ster. Hier gebruikt u [AZ ACR run][az-acr-run] om de container opdracht uit te voeren. In de ontwikkel werk stroom van de container kan dit een validatie stap zijn voordat u de installatie kopie implementeert, of u kunt de opdracht in een [yaml-bestand met meerdere stappen][container-registry-tasks-multi-step]toevoegen. 
 
-In het `$Registry` volgende voorbeeld wordt het register opgegeven waar u de opdracht uitvoert:
+Het volgende voor beeld `$Registry` wordt gebruikt om het REGI ster op te geven waarin u de opdracht uitvoert:
 
 ```azurecli-interactive
 az acr run --registry myContainerRegistry008 \
   --cmd '$Registry/sample/hello-world:v1' /dev/null
 ```
 
-De `cmd` parameter in dit voorbeeld voert de `cmd` container `docker run` uit in `docker` de standaardconfiguratie, maar ondersteunt extra parameters of zelfs andere opdrachten.
+Met `cmd` de para meter in dit voor beeld wordt de container in de standaard `cmd` configuratie uitgevoerd `docker run` , maar worden aanvullende `docker` para meters of zelfs andere opdrachten ondersteund.
 
 De uitvoer lijkt op het volgende:
 
@@ -178,10 +178,10 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u functies van ACR-taken gebruikt om snel een Docker-containerafbeelding in Azure te bouwen, te pushen en uit te voeren, zonder een lokale Docker-installatie. Ga verder naar de zelfstudies Azure Container Registry Tasks voor meer informatie over het gebruik van ACR-taken om het bouwen en bijwerken van afbeeldingen te automatiseren.
+In deze Quick Start hebt u functies van ACR-taken gebruikt om snel een docker-container installatie kopie in azure te bouwen, te pushen en uit te voeren, zonder een lokale docker-installatie. Ga verder met de zelf studies over Azure Container Registry taken voor meer informatie over het gebruik van ACR-taken voor het automatiseren van installatie kopieën en updates.
 
 > [!div class="nextstepaction"]
-> [Zelfstudies Azure Container Registry Tasks][container-registry-tutorial-quick-task]
+> [Zelf studies over Azure Container Registry taken][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

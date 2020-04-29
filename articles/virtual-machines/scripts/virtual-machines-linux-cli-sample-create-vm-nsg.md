@@ -1,6 +1,6 @@
 ---
-title: "CLI-voorbeeld: twee VM's maken met een interne en externe NSG"
-description: Maak twee VM's met interne en externe NSG om netwerkverkeer te beveiligen met behulp van de Azure CLI.
+title: 'CLI-voor beeld: twee virtuele machines maken met een interne en externe NSG'
+description: Maak twee virtuele machines met interne en externe NSG om netwerk verkeer te beveiligen met behulp van de Azure CLI.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,13 +16,13 @@ ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: b4339ab2c512a96614158f673cb07b60184f5f71
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459947"
 ---
-# <a name="secure-network-traffic-between-virtual-machines-using-an-nsg"></a>Veilig netwerkverkeer tussen virtuele machines met behulp van een NSG
+# <a name="secure-network-traffic-between-virtual-machines-using-an-nsg"></a>Netwerk verkeer tussen virtuele machines beveiligen met behulp van een NSG
 
 Met dit script worden twee virtuele machines gemaakt en wordt het binnenkomende verkeer naar beide machines beveiligd. Eén virtuele machine is toegankelijk via internet en heeft een netwerkbeveiligingsgroep (NSG) die is geconfigureerd voor verkeer op poort 22 en 80. De tweede virtuele machine is niet toegankelijk via internet en heeft een NSG die zo is geconfigureerd dat alleen verkeer van de eerste virtuele machine wordt toegelaten.
 

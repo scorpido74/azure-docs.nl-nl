@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Een back-up maken van virtuele Linux-machines in de Azure-portal
+title: 'Zelf studie: een back-up maken van virtuele Linux-machines in de Azure Portal'
 description: In deze zelfstudie leert u hoe u Azure Portal gebruikt om uw virtuele Linux-machines te beschermen met Azure Backup.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,10 +15,10 @@ ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d233cba65d190178c500f78d4817e233ab46d780
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460067"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Zelfstudie: Back-ups maken en bestanden herstellen voor virtuele Linux-machines in Azure
@@ -45,12 +45,12 @@ U plant als volgt een dagelijkse back-up naar een Recovery Services-kluis:
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Selecteer **Virtuele machines** in het menu aan de linkerkant. 
 3. Selecteer in de lijst de virtuele machine waarvan u een back-up wilt maken.
-4. Klik in de sectie **Instellingen** van de VM-blade op **Back-up**. Het **back-upblad inschakelen** wordt geopend.
+4. Klik in de sectie **Instellingen** van de VM-blade op **Back-up**. De Blade **back-up inschakelen** wordt geopend.
 5. Klik in **Recovery Services-kluis** op **Nieuwe maken** en geef de naam op voor de nieuwe kluis. Een nieuwe kluis wordt gemaakt in dezelfde resourcegroep en op dezelfde locatie als de virtuele machine.
 6. Klik op **Back-upbeleid**. Handhaaf voor dit voorbeeld de standaardwaarden en klik op **OK**.
 7. Klik op de blade **Back-up inschakelen** op **Back-up inschakelen**. Hiermee maakt u een dagelijkse back-up op basis van het standaardschema.
 10. Klik op de blade **Back-up** op **Nu een back-up maken** om een initieel herstelpunt te maken.
-11. Klik in het **mes Back-up nu** op het agendapictogram, gebruik het agendabesturingselement om de laatste dag te selecteren waarop dit herstelpunt wordt bewaard en klik op **Back-up**.
+11. Klik op de Blade **nu een back-up maken** op het kalender pictogram en selecteer de laatste dag dat dit herstel punt wordt bewaard en klik op **back-up**.
 12. Op de blade **Backup** voor uw VM ziet u het aantal herstelpunten dat is voltooid.
 
     ![Herstelpunten](./media/tutorial-backup-vms/backup-complete.png)

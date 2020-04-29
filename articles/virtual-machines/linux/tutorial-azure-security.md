@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Azure Security Center voor Linux VM's gebruiken in Azure
+title: Zelf studie-Azure Security Center gebruiken voor Linux-Vm's in azure
 description: In deze zelfstudie krijgt u informatie over de functies van Azure Security Center die helpen uw virtuele Linux-machines in Azure te beschermen en te beveiligen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,10 +15,10 @@ ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 9b70474a985cde1cd6d7d98e84f7f228fde7a812
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460100"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Zelfstudie: Azure Security Center gebruiken om virtuele Linux-machines te controleren
@@ -102,14 +102,14 @@ Wanneer aanbevelingen worden doorgevoerd, worden ze als opgelost gemarkeerd.
 
 ## <a name="view-detected-threats"></a>Gedetecteerde bedreigingen bekijken
 
-Security Center geeft naast aanbevelingen voor resourceconfiguratie ook meldingen voor geconstateerde bedreigingen weer. De functie voor beveiligingsmeldingen combineert de verzamelde gegevens van elke VM, Azure-netwerklogboeken en gekoppelde partneroplossingen om bedreigingen voor Azure-resources te detecteren. Zie Hoe detecteert Security Center bedreigingen voor diepgaande informatie over de detectiemogelijkheden van beveiligingscentrum [voor bedreigingen?](../../security-center/security-center-alerts-overview.md#detect-threats)
+Security Center geeft naast aanbevelingen voor resourceconfiguratie ook meldingen voor geconstateerde bedreigingen weer. De functie voor beveiligingsmeldingen combineert de verzamelde gegevens van elke VM, Azure-netwerklogboeken en gekoppelde partneroplossingen om bedreigingen voor Azure-resources te detecteren. Zie [How Security Center bedreigingen detecteren?](../../security-center/security-center-alerts-overview.md#detect-threats)voor uitgebreide informatie over de detectie mogelijkheden van Security Center bedreigingen.
 
 De functie voor beveiligingsmeldingen vereist dat de Security Center-prijscategorie wordt verhoogd van *Gratis* naar *Standard*. Er is een **gratis proefversie** beschikbaar wanneer u naar deze hogere prijscategorie overstapt. 
 
 De prijscategorie wijzigen:  
 
 1. Klik in het Security Center-dashboard op **Beveiligingsbeleid** en selecteer vervolgens uw abonnement.
-2. Selecteer **Prijsniveau**.
+2. Selecteer de **prijs categorie**.
 3. Selecteer **Standard** en klik vervolgens op **Opslaan** boven in de blade.
 
 

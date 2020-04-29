@@ -1,7 +1,7 @@
 ---
 title: 'Een virtueel netwerk maken: quickstart - Azure-portal'
 titleSuffix: Azure Virtual Network
-description: "Snelstart: maak een virtueel netwerk in de Azure-portal. Met deze netwerken kunnen Azure-bronnen, zoals VM's, veilig met elkaar en het internet communiceren."
+description: "Snelstartgids: een virtueel netwerk maken in de Azure Portal. Met deze netwerken kunnen Azure-resources, zoals Vm's, veilig communiceren met elkaar en Internet."
 author: KumudD
 tags: azure-resource-manager
 ms.service: virtual-network
@@ -12,27 +12,27 @@ ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
 ms.openlocfilehash: 1a1593566b8bdb72f322d64c1ee99c7018f49329
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240070"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Snelstart: een virtueel netwerk maken met Azure Portal
 
-In deze quickstart leert u hoe u een virtueel netwerk maakt met behulp van de Azure-portal. U implementeert twee virtuele machines (VM's). Vervolgens communiceert u veilig tussen VM's en maakt u verbinding met VM's via internet. Een virtueel netwerk is de fundamentele bouwsteen voor uw privénetwerk in Azure. Hiermee kunnen Azure-bronnen, zoals VM's, veilig met elkaar en met het internet communiceren.
+In deze Quick Start leert u hoe u een virtueel netwerk maakt met behulp van de Azure Portal. U implementeert twee virtuele machines (Vm's). Vervolgens communiceert u veilig tussen Vm's en maakt u verbinding met Vm's via internet. Een virtueel netwerk is de fundamentele bouw steen voor uw particuliere netwerk in Azure. Hierdoor kunnen Azure-resources, zoals Vm's, veilig communiceren met elkaar en met internet.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-account met een actief abonnement. [Maak er gratis een.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+* Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-1. Selecteer in het menu azure portal de optie **Een resource maken**. Selecteer **netwerknetwerk Netwerken** > **in**Azure Marketplace .
+1. Selecteer in het menu Azure Portal de optie **een resource maken**. Selecteer in azure Marketplace de optie **netwerken** > **virtueel netwerk**.
 
 1. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens:
 
@@ -40,16 +40,16 @@ Meld u aan bij [Azure Portal](https://portal.azure.com).
     | ------- | ----- |
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
-    | Name | Voer *myVirtualNetwork* in. |
-    | Locatie | Selecteer **Oost-VS**.|
+    | Naam | Voer *myVirtualNetwork* in. |
+    | Locatie | Selecteer **VS Oost**.|
 
-1. Selecteer **Volgende: IP-adressen**en voor **IPv4-adresruimte**voer *u 10.1.0.0/16 in*.
+1. Selecteer **volgende: IP-adressen**en voer voor **IPv4-adres ruimte** *10.1.0.0/16*in.
 
-1. Selecteer **Subnet toevoegen**en voer *vervolgens mijnVirtualSubnet* in voor **subnetnaam** en *10.1.0.0/24* voor **subnetadresbereik**.
+1. Selecteer **subnet toevoegen**en voer *MyVirtualSubnet* in als **subnetnaam** en *10.1.0.0/24* voor het **adres bereik**van het subnet.
 
-1. Selecteer **Toevoegen**en selecteer **Vervolgens Controleren + maken**. Laat de rest als standaard en selecteer **Maken**.
+1. Selecteer **toevoegen**en selecteer vervolgens **controleren + maken**. Laat de rest als standaard en selecteer **maken**.
 
-1. Selecteer in **Virtueel netwerk maken**de optie **Maken**.
+1. Selecteer **maken**in **virtueel netwerk maken**.
 
 ## <a name="create-virtual-machines"></a>Virtuele machines maken
 
@@ -57,49 +57,49 @@ Maak twee virtuele machines in het virtuele netwerk:
 
 ### <a name="create-the-first-vm"></a>De eerste VM maken
 
-1. Selecteer in het menu azure portal de optie **Een resource maken**.
+1. Selecteer in het menu Azure Portal de optie **een resource maken**.
 
-1. Selecteer **Compute** > **Windows Server 2019 Datacenter**in Azure Marketplace . Selecteer **Maken**.
+1. Selecteer op de Azure Marketplace **Compute** > **Windows Server 2019 Data Center**. Selecteer **Maken**.
 
 1. Typ of selecteer in **Een virtuele machine maken - Basisprincipes** de volgende gegevens:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | **Projectdetails** | |
+    | **Project Details** | |
     | Abonnement | Selecteer uw abonnement. |
-    | Resourcegroep | Selecteer **myResourceGroup**. U hebt deze resourcegroep in de vorige sectie gemaakt. |
-    | **Instantiedetails** |  |
+    | Resourcegroep | Selecteer **myResourceGroup**. U hebt deze resource groep gemaakt in de vorige sectie. |
+    | **Exemplaar Details** |  |
     | Naam van de virtuele machine | Voer *myVm1* in. |
-    | Regio | Selecteer **Oost-VS**. |
-    | Beschikbaarheidsopties | **Standaard-naar-geen redundantie van de infrastructuur vereist**. |
-    | Installatiekopie | Standaard naar **Windows Server 2019 Datacenter**. |
-    | Grootte | Standaard standaard **DS1 v2**. |
-    | **Beheerdersaccount** |  |
-    | Gebruikersnaam | Voer een gebruikersnaam van uw keuze in. |
+    | Regio | Selecteer **VS Oost**. |
+    | Beschikbaarheidsopties | Standaard is **er geen infrastructuur redundantie vereist**. |
+    | Installatiekopie | Standaard naar **Windows Server 2019 Data Center**. |
+    | Grootte | Standaard ingesteld op **standaard ds1 versie 2**. |
+    | **Administrator-account** |  |
+    | Gebruikersnaam | Voer een gebruikers naam van uw keuze in. |
     | Wachtwoord | Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    | Wachtwoord bevestigen | Voer het wachtwoord opnieuw in. |
-    | **Binnenkomende poortregels** |  |
+    | Wachtwoord bevestigen | Voer het wacht woord opnieuw in. |
+    | **Binnenkomende poort regels** |  |
     | Openbare poorten voor inkomend verkeer | Selecteer **Geselecteerde poorten toestaan**. |
-    | Binnenkomende poorten selecteren | Voer *HTTP (80)* en *RDP (3389) in.* |
-    | **Bespaar geld** |  |
-    | Hebt u al een Windows-licentie? | Standaard op **Nee**. |
+    | Binnenkomende poorten selecteren | Voer *http (80)* en *RDP (3389)* in. |
+    | **Geld besparen** |  |
+    | Hebt u al een Windows-licentie? | Standaard ingesteld op **Nee**. |
 
-1. Selecteer **Volgende: Schijven**.
+1. Selecteer **volgende: schijven**.
 
-1. In **Een virtuele machine maken - Schijven,** de standaardinstellingen behouden en **Volgende: Netwerken selecteren**.
+1. In **een virtuele machine maken-schijven**, behoud de standaard instellingen en selecteer **volgende: netwerken**.
 
 1. Selecteer in **Een virtuele machine maken - Netwerken** de volgende gegevens:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Virtueel netwerk | Standaard naar **myVirtualNetwork**. |
-    | Subnet | Standaard naar **myVirtualSubnet (10.1.0.0/24)**. |
-    | Openbare IP | Standaard naar **(nieuwe) myVm-ip**. |
-    | NIC-netwerkbeveiligingsgroep | Standaard naar **Basic**. |
-    | Openbare poorten voor inkomend verkeer | Standaard geselecteerde **poorten toestaan**. |
-    | Binnenkomende poorten selecteren | Standaard naar **HTTP** en **RDP**.
+    | Virtueel netwerk | Standaard ingesteld op **myVirtualNetwork**. |
+    | Subnet | Standaard ingesteld op **myVirtualSubnet (10.1.0.0/24)**. |
+    | Openbare IP | Standaard naar **(nieuw) myVm-IP**. |
+    | NIC-netwerk beveiligings groep | Standaard ingesteld op **basis**. |
+    | Openbare poorten voor inkomend verkeer | Standaard instelling voor het **toestaan van geselecteerde poorten**. |
+    | Binnenkomende poorten selecteren | Standaard ingesteld op **http** en **RDP**.
 
-1. Selecteer **Volgende: Beheer**.
+1. Selecteer **volgende: beheer**.
 
 1. Selecteer in **Een virtuele machine maken - Beheer** voor **Opslagaccount voor diagnose** de optie **Nieuw**.
 
@@ -107,14 +107,14 @@ Maak twee virtuele machines in het virtuele netwerk:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Name | Voer *myvmstorageaccount* in. Als deze naam wordt aangenomen, maakt u een unieke naam.|
-    | Soort account | Standaard opslag **(algemeen gebruik v1)**. |
-    | Prestaties | Standaard naar **standaard**. |
-    | Replicatie | Standaard voor **lokaal redundante opslag (LRS)**. |
+    | Naam | Voer *myvmstorageaccount* in. Als deze naam wordt gebruikt, maakt u een unieke naam.|
+    | Soort account | Standaard voor **opslag (algemeen gebruik v1)**. |
+    | Prestaties | Standaard ingesteld op **standaard**. |
+    | Replicatie | Standaard naar **lokaal redundante opslag (LRS)**. |
 
-1. Selecteer **OK**en selecteer **Vervolgens Controleren + maken**. U wordt naar de **pagina Controleren + maken geleid,** waar Azure uw configuratie valideert.
+1. Selecteer **OK**en selecteer vervolgens **bekijken + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert.
 
-1. Wanneer u het **doorgegeven bericht Validatie ziet,** selecteert u **Maken**.
+1. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**.
 
 ### <a name="create-the-second-vm"></a>De tweede VM maken
 
@@ -123,32 +123,32 @@ Herhaal de procedure in de vorige sectie om een andere virtuele machine te maken
 > [!IMPORTANT]
 > Voer *myVm2*in voor de naam van de **virtuele machine**.
 >
-> Voor **diagnosisopslagaccount**moet u ervoor zorgen dat u **myvmstorageaccount**selecteert in plaats van er een te maken.
+> Zorg ervoor dat u voor **Diagnostic Storage**-account **myvmstorageaccount**selecteert, in plaats van er een te maken.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Verbinding maken met een virtuele machine via internet
 
-Nadat u *myVm1*hebt gemaakt, maakt u verbinding met het internet.
+Nadat u *myVm1*hebt gemaakt, maakt u verbinding met internet.
 
-1. Zoek en selecteer myVm1 in de *Azure-portal*.
+1. Zoek in het Azure Portal naar en selecteer *myVm1*.
 
-1. Selecteer **Verbinding maken**en vervolgens **RDP**.
+1. Selecteer **verbinding maken**en vervolgens **RDP**.
 
     ![Verbinding maken met een virtuele machine](./media/quick-create-portal/connect-to-virtual-machine.png)
 
-    De **connect-pagina** wordt geopend.
+    De pagina **verbinding maken** wordt geopend.
 
 1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
 
 1. Open het RDP-bestand. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
 
-1. Voer de gebruikersnaam en het wachtwoord in dat u hebt opgegeven bij het maken van de vm.
+1. Voer de gebruikers naam en het wacht woord in die u hebt opgegeven bij het maken van de virtuele machine.
 
     > [!NOTE]
-    > Mogelijk moet u **Meer opties** > selecteren**Gebruik een ander account**om de referenties op te geven die u hebt ingevoerd toen u de vm hebt gemaakt.
+    > Mogelijk moet u **meer opties** > selecteren**een ander account gebruiken**om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine.
 
 1. Selecteer **OK**.
 
-1. U een certificaatwaarschuwing ontvangen wanneer u zich aanmeldt. Als er een certificaatwaarschuwing wordt weergegeven, selecteert u **Ja** of **Doorgaan**.
+1. Er wordt mogelijk een certificaat waarschuwing weer gegeven wanneer u zich aanmeldt. Als er een certificaatwaarschuwing wordt weergegeven, selecteert u **Ja** of **Doorgaan**.
 
 1. Wanneer het VM-bureaublad wordt weergegeven, minimaliseert u het om terug te gaan naar het lokale bureaublad.
 
@@ -158,7 +158,7 @@ Nadat u *myVm1*hebt gemaakt, maakt u verbinding met het internet.
 
 1. Voer `ping myVm2` in.
 
-    U ontvangt een bericht dat vergelijkbaar is met deze uitvoer:
+    Er wordt een bericht weer gegeven dat vergelijkbaar is met deze uitvoer:
 
     ```output
     Pinging myVm2.0v0zze1s0uiedpvtxz5z0r0cxg.bx.internal.clouda
@@ -179,7 +179,7 @@ Nadat u *myVm1*hebt gemaakt, maakt u verbinding met het internet.
     New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
     ```
 
-    Met deze opdracht kan ICMP binnenkomen via de Windows-firewall:
+    Met deze opdracht wordt ICMP-inkomend verkeer via de Windows firewall toegestaan:
 
 1. Sluit de externe bureaubladverbinding met *myVm1*.
 
@@ -202,17 +202,17 @@ Nadat u *myVm1*hebt gemaakt, maakt u verbinding met het internet.
         Minimum = 0ms, Maximum = 1ms, Average = 0ms
     ```
 
-    U ontvangt antwoorden van *myVm1,* omdat u ICMP hebt toegestaan via de Windows-firewall op de *myVm1* VM in stap 3.
+    U ontvangt antwoorden van *myVm1*, omdat u ICMP hebt toegestaan via de Windows Firewall op de virtuele *myVm1* -machine in stap 3.
 
 1. Sluit de externe bureaubladverbinding met *myVm2*.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-In deze snelstart hebt u een standaard virtueel netwerk en twee virtuele machines gemaakt. U hebt vanaf het internet verbinding gemaakt met één VM en veilig gecommuniceerd tussen de twee VM's.
+In deze snelstart hebt u een standaard virtueel netwerk en twee virtuele machines gemaakt. U hebt verbinding gemaakt met één virtuele machine via internet en u kunt een beveiligde communicatie tussen de twee virtuele machines.
 
-Wanneer u klaar bent met het virtuele netwerk en de VM's, verwijdert u de brongroep en alle bronnen die deze bevat:
+Wanneer u klaar bent met het virtuele netwerk en de Vm's, verwijdert u de resource groep en alle resources die deze bevat:
 
-1. Zoeken naar en selecteer *myResourceGroup*.
+1. Zoek en selecteer *myResourceGroup*.
 
 1. Selecteer **Resourcegroep verwijderen**.
 
@@ -220,6 +220,6 @@ Wanneer u klaar bent met het virtuele netwerk en de VM's, verwijdert u de brongr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Een virtueel netwerk maken, wijzigen of verwijderen](manage-virtual-network.md)voor meer informatie over virtuele netwerkinstellingen.
+Zie [een virtueel netwerk maken, wijzigen of verwijderen](manage-virtual-network.md)voor meer informatie over de instellingen van het virtuele netwerk.
 
-Azure maakt standaard veilige communicatie tussen VM's mogelijk. Azure staat alleen inkomende externe desktopverbindingen met Windows VM's vanaf het internet toe. Zie [Netwerkverkeer filteren](tutorial-filter-network-traffic.md)voor meer informatie over typen VM-netwerkcommunicatie.
+Standaard staat Azure beveiligde communicatie tussen Vm's toe. Azure staat alleen binnenkomende externe bureaublad verbindingen met Windows Vm's via Internet toe. Zie [netwerk verkeer filteren](tutorial-filter-network-traffic.md)voor meer informatie over typen VM-netwerk communicatie.

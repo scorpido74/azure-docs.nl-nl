@@ -1,5 +1,5 @@
 ---
-title: PowerShell-voorbeeld - Momentopname exporteren/kopiëren als VHD naar een opslagaccount in verschillende regio's
+title: Power shell-voor beeld-moment opname exporteren/kopiëren als VHD naar een opslag account in een andere regio
 description: 'Azure PowerShell-voorbeeldscript: momentopname exporteren/kopiëren als VHD naar een opslagaccount in een andere regio'
 services: virtual-machines-windows
 documentationcenter: storage
@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
 ms.openlocfilehash: 540ad6e820a909f86b43d1957d8abb407a0606d8
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460331"
 ---
 # <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Beheerde momentopnamen exporteren/kopiëren als VHD naar een opslagaccount in een andere regio met PowerShell

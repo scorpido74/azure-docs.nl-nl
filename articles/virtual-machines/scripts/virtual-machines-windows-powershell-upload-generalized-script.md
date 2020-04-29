@@ -1,5 +1,5 @@
 ---
-title: Een gegeneraliseerd VHD-voorbeeld uploaden naar Azure PowerShell Script
+title: Een gegeneraliseerde VHD uploaden naar Azure PowerShell script voorbeeld
 description: In dit artikel vindt u informatie over een voorbeeldscript van PowerShell waarmee u een gegeneraliseerde VHD (virtuele harde schijf) kunt uploaden naar Azure om een nieuwe VM (virtuele machine) te maken met behulp van het implementatiemodel van Resource Manager en Managed Disks.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,10 +15,10 @@ ms.date: 01/02/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: a922d6d859fab808b5100090cda40b5d14aaaee9
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81458944"
 ---
 # <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>Voorbeeld van een script voor het uploaden van een VHD naar Azure om een nieuwe VM te maken

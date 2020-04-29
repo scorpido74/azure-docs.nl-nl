@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Aangepaste VM-afbeeldingen maken met de Azure CLI
+title: 'Zelf studie: aangepaste VM-installatie kopieën maken met Azure CLI'
 description: In deze zelfstudie leert u hoe u Azure CLI gebruikt om een aangepaste installatiekopie van een virtuele machine te maken in Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,10 +15,10 @@ ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: dc7b395d46fd28cde9ccbbda8a8a55447efa61c9
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460049"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Zelfstudie: Een aangepaste installatiekopie van een Azure-VM maken met Azure CLI
@@ -32,7 +32,7 @@ Aangepaste installatiekopieën zijn soortgelijk aan Marketplace-installatiekopie
 > * Alle installatiekopieën in uw abonnement weergeven
 > * Een aangepaste installatiekopie verwijderen
 
-Deze zelfstudie maakt gebruik van de CLI in de [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert **u Probeer deze** boven aan een codeblok.
+In deze zelf studie wordt gebruikgemaakt van de CLI binnen de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **deze** in het begin van een wille keurig code blok.
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
 
@@ -40,7 +40,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure
 
 In de onderstaande stappen wordt gedetailleerd beschreven hoe u van een bestaande virtuele machine een herbruikbare aangepaste installatiekopie maakt die u kunt gebruiken om nieuwe virtuele machines te maken.
 
-Om het voorbeeld in deze zelfstudie uit te voeren, moet u een bestaande virtuele machine hebben. Indien nodig kan dit [scriptvoorbeeld](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md) er een voor u maken. Vervang tijdens het volgen van de zelfstudie de namen van de resourcegroep en de virtuele machine waar nodig.
+Om het voorbeeld in deze zelfstudie uit te voeren, moet u een bestaande virtuele machine hebben. Zo nodig kan dit [voorbeeld script](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md) een voor u maken. Vervang tijdens het volgen van de zelfstudie de namen van de resourcegroep en de virtuele machine waar nodig.
 
 ## <a name="create-a-custom-image"></a>Een aangepaste installatiekopie maken
 
@@ -51,7 +51,7 @@ Voor het maken van een installatiekopie van een virtuele machine moet u de virtu
 Met het ongedaan maken van de inrichting wordt de virtuele machine gegeneraliseerd omdat machinespecifieke informatie wordt verwijderd. Dankzij deze generalisatie kunnen meerdere virtuele machines worden geïmplementeerd op basis van één installatiekopie. Tijdens het ongedaan maken van de inrichting wordt de naam van de host opnieuw ingesteld op *localhost.localdomain*. SSH-hostsleutels, naamserverconfiguraties hoofdwachtwoord en in de cache geplaatste DHCP-leases worden ook verwijderd.
 
 > [!WARNING]
-> Als u de VM als gegeneraliseerd dedint en markeert, wordt bron-VM onbruikbaar en kan deze niet opnieuw worden gestart. 
+> Als u de virtuele machine onbeschikbaar maakt en markeert als gegeneraliseerd, wordt de bron-VM onbruikbaar en kan deze niet opnieuw worden gestart. 
 
 Voor het ongedaan maken van de inrichting van de virtuele machine gebruikt u de Azure VM-agent (waagent). De Azure VM-agent is geïnstalleerd op de virtuele machine en beheert de inrichting en interactie met de Azure-infrastructuurcontroller. Zie de [Gebruikershandleiding voor Azure Linux Agent](../extensions/agent-linux.md) voor meer informatie.
 
@@ -110,7 +110,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-We raden u aan het aantal gelijktijdige implementaties te beperken tot 20 VM's vanuit één afbeelding. Als u grootschalige, gelijktijdige implementaties van meer dan 20 VM's van dezelfde aangepaste afbeelding plant, moet u een [gedeelde afbeeldingsgalerie](shared-image-galleries.md) met meerdere afbeeldingsreplica's gebruiken. 
+We raden u aan om het aantal gelijktijdige implementaties te beperken tot 20 virtuele machines uit één installatie kopie. Als u grootschalige, gelijktijdige implementaties van meer dan 20 Vm's van dezelfde aangepaste installatie kopie plant, moet u een galerie met [gedeelde afbeeldingen](shared-image-galleries.md) gebruiken met meerdere installatie kopieën van replica's. 
 
 ## <a name="image-management"></a>Installatiekopiebeheer 
 
@@ -145,5 +145,5 @@ In deze zelfstudie hebt u een aangepaste installatiekopie voor een virtuele mach
 Ga naar de volgende zelfstudie voor meer informatie over virtuele machines met hoge beschikbaarheid.
 
 > [!div class="nextstepaction"]
-> [Maak zeer beschikbare VM's](tutorial-availability-sets.md).
+> [Maxi maal beschik bare virtuele machines maken](tutorial-availability-sets.md).
 

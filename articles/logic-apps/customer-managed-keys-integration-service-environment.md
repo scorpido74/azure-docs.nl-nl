@@ -1,99 +1,99 @@
 ---
-title: Door de klant beheerde sleutels instellen om gegevens in rust in ISE's te versleutelen
-description: Uw eigen versleutelingssleutels maken en beheren om gegevens in rust te beveiligen voor integratieserviceomgevingen (ISEs) in Azure Logic Apps
+title: Door de klant beheerde sleutels instellen voor het versleutelen van gegevens in rust in ISEs
+description: Maak en beheer uw eigen coderings sleutels voor het beveiligen van gegevens op rest voor integratie service omgevingen (ISEs) in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 7314559849f0b2019820ec3cb4fb10c684d330d6
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458434"
 ---
-# <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Door de klant beheerde sleutels instellen om gegevens in rust te versleutelen voor integratieserviceomgevingen (ISEs) in Azure Logic Apps
+# <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Door de klant beheerde sleutels instellen om gegevens in rust te versleutelen voor integratie service omgevingen (ISEs) in Azure Logic Apps
 
-Azure Logic Apps vertrouwt op Azure Storage om gegevens in rust op te slaan en automatisch [te versleutelen.](../storage/common/storage-service-encryption.md) Deze versleuteling beschermt uw gegevens en helpt u om te voldoen aan uw organisatorische beveiligings- en nalevingsverplichtingen. Azure Storage gebruikt standaard door Microsoft beheerde sleutels om uw gegevens te versleutelen. Zie [Azure Storage-versleuteling voor gegevens in rust](../storage/common/storage-service-encryption.md) en Azure Data [Encryption-at-Rest](../security/fundamentals/encryption-atrest.md)voor meer informatie over hoe Azure Storage-versleuteling werkt.
+Azure Logic Apps is afhankelijk van Azure Storage om gegevens in rust op te slaan en automatisch te [versleutelen](../storage/common/storage-service-encryption.md). Deze versleuteling beveiligt uw gegevens en helpt u te voldoen aan de verplichtingen voor beveiliging en naleving van uw organisatie. Azure Storage maakt standaard gebruik van door micro soft beheerde sleutels om uw gegevens te versleutelen. Zie voor meer informatie over de werking van Azure Storage versleuteling [Azure Storage versleuteling voor Data-at-rest](../storage/common/storage-service-encryption.md) en [Azure Data Encryption-at-rest](../security/fundamentals/encryption-atrest.md).
 
-Wanneer u een [integratieserviceomgeving (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) maakt voor het hosten van uw logische apps en u meer controle wilt over de versleutelingssleutels die door Azure Storage worden gebruikt, u uw eigen sleutel instellen, gebruiken en beheren met [Azure Key Vault.](../key-vault/general/overview.md) Deze mogelijkheid wordt ook wel "Bring Your Own Key" (BYOK) genoemd en uw sleutel wordt een "door de klant beheerde sleutel" genoemd.
+Wanneer u een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) maakt voor het hosten van uw logische apps en u meer controle wilt hebben over de versleutelings sleutels die worden gebruikt door Azure Storage, kunt u uw eigen sleutel instellen, gebruiken en beheren met behulp van [Azure Key Vault](../key-vault/general/overview.md). Deze mogelijkheid is ook bekend als ' Bring Your Own Key ' (BYOK) en uw sleutel wordt een ' door de klant beheerde sleutel ' genoemd.
 
-In dit onderwerp wordt uitgelegd hoe u uw eigen versleutelingssleutel instelt en opgeeft die u gebruiken wanneer u uw ISE maakt met behulp van de LOGIC Apps REST API. Zie [Een integratieserviceomgeving (ISE) maken met de LOGIC Apps REST API](../logic-apps/create-integration-service-environment-rest-api.md)voor de algemene stappen om een ISE te maken via logic apps rest api.
+In dit onderwerp wordt beschreven hoe u uw eigen versleutelings sleutel instelt en opgeeft die u wilt gebruiken wanneer u uw ISE maakt met behulp van de Logic Apps REST API. Zie voor de algemene stappen voor het maken van een ISE via Logic Apps REST API [een Integration service Environment (ISE) maken met behulp van de Logic Apps rest API](../logic-apps/create-integration-service-environment-rest-api.md).
 
 ## <a name="considerations"></a>Overwegingen
 
-* Op dit moment is klantbeheerde sleutelondersteuning voor een ISE alleen beschikbaar in deze Azure-regio's: West US 2, East US en South Central US
+* Op dit moment is de door de klant beheerde sleutel ondersteuning voor een ISE alleen beschikbaar in de volgende Azure-regio's: VS-West 2, VS-Oost en Zuid-Centraal VS
 
-* U een door de klant beheerde sleutel alleen opgeven *wanneer u uw ISE maakt,* niet achteraf. U deze sleutel niet uitschakelen nadat uw ISE is gemaakt. Momenteel bestaat er geen ondersteuning voor het roteren van een door de klant beheerde sleutel voor een ISE.
+* U kunt alleen een door de klant beheerde sleutel opgeven *Wanneer u uw ISE maakt*, niet daarna. U kunt deze sleutel niet uitschakelen nadat de ISE is gemaakt. Momenteel bestaat er geen ondersteuning voor het draaien van een door de klant beheerde sleutel voor een ISE.
 
-* Om door klanten beheerde sleutels te ondersteunen, vereist uw ISE dat de [door het systeem toegewezen beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) is ingeschakeld. Met deze identiteit kan de ISE toegang tot bronnen in andere Azure AD-tenants (Azure Directory) verifiëren, zodat u zich niet hoeft aan te melden met uw referenties.
+* Ter ondersteuning van door de klant beheerde sleutels vereist uw ISE dat de door het [systeem toegewezen beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) is ingeschakeld. Met deze identiteit kan de ISE toegang tot resources in andere Azure Active Directory-tenants (Azure AD) verifiëren, zodat u zich niet hoeft aan te melden met uw referenties.
 
-* Om momenteel een ISE te maken die door klanten beheerde sleutels ondersteunt en de door het systeem toegewezen identiteit heeft ingeschakeld, moet u de Logic Apps REST API aanroepen met behulp van een HTTPS PUT-verzoek.
+* Als u momenteel een ISE wilt maken die door de klant beheerde sleutels ondersteunt en de door het systeem toegewezen identiteit is ingeschakeld, moet u de Logic Apps REST API aanroepen met behulp van een HTTPS PUT-aanvraag.
 
-* Binnen *30 minuten* nadat u het HTTPS PUT-verzoek hebt verzonden waarmee uw ISE is gemaakt, moet u [de sleutelkluis toegang geven tot de door het SYSTEEM toegewezen identiteit van uw ISE.](#identity-access-to-key-vault) Anders mislukt ISE-creatie en wordt er een fout met machtigingen gegenereerd.
+* Binnen *30 minuten* nadat u de https put-aanvraag hebt verzonden die uw ISE maakt, moet u toegang tot de [sleutel kluis verlenen aan de door het systeem toegewezen identiteit van uw ISE](#identity-access-to-key-vault). Anders mislukt het maken van ISE en wordt er een machtigings fout gegenereerd.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Dezelfde [voorwaarden](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) en [vereisten om toegang voor uw ISE in te schakelen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) als wanneer u een ISE maakt in de Azure-portal
+* Dezelfde vereisten [prerequisites](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) en [voor waarden om toegang te krijgen tot uw ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) als bij het maken van een ISE in de Azure Portal
 
-* Een Azure-sleutelkluis met de eigenschappen **Soft Delete** en Do **Not Purge** ingeschakeld
+* Een Azure-sleutel kluis met de opties **voorlopig verwijderen** en **niet opschonen** ingeschakeld
 
-  Zie Overzicht van [Azure Key Vault soft-delete](../key-vault/general/overview-soft-delete.md) van Azure Key Vault en Configureren van door de klant [beheerde sleutels met Azure Key Vault](../storage/common/storage-encryption-keys-portal.md)voor meer informatie over het inschakelen van deze eigenschappen. Als u nieuw bent in Azure Key Vault, leest u hoe u [een sleutelkluis maakt](../key-vault/secrets/quick-create-portal.md#create-a-vault) met behulp van de Azure-portal of met de opdracht Azure PowerShell, [New-AzKeyVault.](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)
+  Zie [Azure Key Vault overzicht van voorlopig verwijderen](../key-vault/general/overview-soft-delete.md) en [door de klant beheerde sleutels configureren met Azure Key Vault](../storage/common/storage-encryption-keys-portal.md)voor meer informatie over het inschakelen van deze eigenschappen. Als u niet bekend bent met Azure Key Vault, kunt [u leren hoe u een sleutel kluis maakt](../key-vault/secrets/quick-create-portal.md#create-a-vault) met behulp van de Azure portal of met behulp van de Azure PowerShell opdracht [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault).
 
-* In uw sleutelkluis wordt een sleutel gemaakt met deze eigenschapswaarden:
+* In uw sleutel kluis is dit een sleutel die is gemaakt met de volgende eigenschaps waarden:
 
   | Eigenschap | Waarde |
   |----------|-------|
-  | **Sleuteltype** | RSA |
-  | **RSA-sleutelgrootte** | 2048 |
+  | **Sleutel type** | RSA |
+  | **RSA-sleutel grootte** | 2048 |
   | **Ingeschakeld** | Ja |
   |||
 
-  ![Uw door de klant beheerde versleutelingssleutel maken](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
+  ![Uw door de klant beheerde versleutelings sleutel maken](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
 
-  Zie [Door de klant beheerde sleutels configureren met Azure Key Vault](../storage/common/storage-encryption-keys-portal.md) of de opdracht Azure PowerShell, [Add-AzKeyVaultKey.](https://docs.microsoft.com/powershell/module/az.keyvault/Add-AzKeyVaultKey)
+  Zie voor meer informatie door de [klant beheerde sleutels configureren met Azure Key Vault](../storage/common/storage-encryption-keys-portal.md) of de Azure PowerShell opdracht, [add-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Add-AzKeyVaultKey).
 
-* Een tool die u gebruiken om uw ISE te maken door de Logic Apps REST API aan te roepen met een HTTPS PUT-aanvraag. U bijvoorbeeld [Postman](https://www.getpostman.com/downloads/)gebruiken of een logische app maken die deze taak uitvoert.
+* Een hulp programma dat u kunt gebruiken om uw ISE te maken door de Logic Apps REST API aan te roepen met een HTTPS-aanvraag. U kunt bijvoorbeeld [postman](https://www.getpostman.com/downloads/)gebruiken of u kunt een logische app maken die deze taak uitvoert.
 
 <a name="enable-support-key-system-identity"></a>
 
-## <a name="create-ise-with-key-vault-and-managed-identity-support"></a>ISE maken met sleutelkluis en beheerde identiteitsondersteuning
+## <a name="create-ise-with-key-vault-and-managed-identity-support"></a>ISE maken met sleutel kluis en beheerde identiteits ondersteuning
 
-Als u uw ISE wilt maken door de LOGIC Apps REST API aan te roepen, voert u dit HTTPS PUT-verzoek in:
+Als u uw ISE wilt maken door de Logic Apps REST API aan te roepen, maakt u deze HTTPS-aanvraag:
 
 `PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
 
 > [!IMPORTANT]
-> De Logic Apps REST API 2019-05-01 versie vereist dat u uw eigen HTTP PUT-aanvraag voor ISE-connectors maakt.
+> Voor de versie Logic Apps REST API 2019-05-01 moet u uw eigen HTTP PUT-aanvraag voor ISE-connectors maken.
 
-Implementatie duurt meestal binnen twee uur om te voltooien. Af en toe kan de implementatie tot vier uur duren. Als u de implementatiestatus wilt controleren, selecteert u in de [Azure-portal](https://portal.azure.com)op uw Azure-werkbalk het pictogram meldingen, waarmee het deelvenster meldingen wordt geopend.
+Het volt ooien van de implementatie duurt gewoonlijk binnen twee uur. De implementatie kan af en toe Maxi maal vier uur duren. Als u de implementatie status wilt controleren, selecteert u in de [Azure Portal](https://portal.azure.com)op de Azure-werk balk het meldingen pictogram, waarmee het deel venster meldingen wordt geopend.
 
 > [!NOTE]
-> Als de implementatie mislukt of als u uw ISE verwijdert, kan het tot een uur duren voordat azure uw subnetten vrijgeeft. Deze vertraging betekent dat u mogelijk moet wachten voordat u deze subnetten in een andere ISE opnieuw gebruikt.
+> Als de implementatie mislukt of als u uw ISE verwijdert, kan het tot een uur duren voordat de subnetten worden vrijgegeven. Deze vertraging betekent dat u mogelijk moet wachten voordat u deze subnetten opnieuw gebruikt in een andere ISE.
 >
-> Als u uw virtuele netwerk verwijdert, duurt het over het algemeen maximaal twee uur voordat azure uw subnetten vrijgeeft, maar deze bewerking kan langer duren. 
-> Controleer bij het verwijderen van virtuele netwerken of er nog steeds geen bronnen zijn verbonden. 
-> Zie [Virtueel netwerk verwijderen](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
+> Als u het virtuele netwerk verwijdert, duurt het over het algemeen Maxi maal twee uur voordat de subnetten worden vrijgegeven, maar deze bewerking kan langer duren. 
+> Wanneer u virtuele netwerken verwijdert, moet u ervoor zorgen dat er nog geen resources zijn verbonden. 
+> Zie [virtueel netwerk verwijderen](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 ### <a name="request-header"></a>Aanvraagheader
 
-Neem in de koptekst van de aanvraag de volgende eigenschappen op:
+Neem de volgende eigenschappen op in de aanvraag header:
 
-* `Content-type`: Stel deze `application/json`eigenschapswaarde in op .
+* `Content-type`: Stel de waarde van deze `application/json`eigenschap in op.
 
-* `Authorization`: Stel deze eigenschapswaarde in op het token aan toonder voor de klant die toegang heeft tot het Azure-abonnement of de brongroep die u wilt gebruiken.
+* `Authorization`: Stel deze eigenschaps waarde in op het Bearer-token voor de klant die toegang heeft tot het Azure-abonnement of de resource groep die u wilt gebruiken.
 
 ### <a name="request-body"></a>Aanvraagbody
 
-Schakel in de aanvraaginstantie ondersteuning in voor deze aanvullende items door hun informatie in uw ISE-definitie te verstrekken:
+Schakel in de hoofd tekst van de aanvraag ondersteuning in voor deze aanvullende items door hun gegevens op te geven in uw ISE-definitie:
 
-* De door het systeem toegewezen beheerde identiteit die uw ISE gebruikt om toegang te krijgen tot uw sleutelkluis
-* Uw sleutelkluis en de door de klant beheerde sleutel die u wilt gebruiken
+* De door het systeem toegewezen beheerde identiteit die uw ISE gebruikt om toegang te krijgen tot uw sleutel kluis
+* Uw sleutel kluis en de door de klant beheerde sleutel die u wilt gebruiken
 
-#### <a name="request-body-syntax"></a>Syntaxis van de hoofdtekst van het verzoek
+#### <a name="request-body-syntax"></a>Syntaxis van aanvraag tekst
 
-Hier is de syntaxis van de aanvraaginstantie, waarin de eigenschappen worden beschreven die moeten worden gebruikt wanneer u uw ISE maakt:
+Hier volgt de syntaxis van de hoofd tekst van de aanvraag, waarin de eigenschappen worden beschreven die moeten worden gebruikt bij het maken van uw ISE:
 
 ```json
 {
@@ -142,9 +142,9 @@ Hier is de syntaxis van de aanvraaginstantie, waarin de eigenschappen worden bes
 }
 ```
 
-#### <a name="request-body-example"></a>Voorbeeld van het hoofdvoorbeeld van aanvraag
+#### <a name="request-body-example"></a>Voor beeld van aanvraag tekst
 
-In dit voorbeeldaanvraaghoofd worden de voorbeeldwaarden weergegeven:
+In dit voor beeld van de aanvraag tekst worden de voorbeeld waarden weer gegeven:
 
 ```json
 {
@@ -195,37 +195,37 @@ In dit voorbeeldaanvraaghoofd worden de voorbeeldwaarden weergegeven:
 
 <a name="identity-access-to-key-vault"></a>
 
-## <a name="grant-access-to-your-key-vault"></a>Geef toegang tot uw sleutelkluis
+## <a name="grant-access-to-your-key-vault"></a>Toegang verlenen tot uw sleutel kluis
 
-Binnen *30 minuten* nadat u het HTTP PUT-verzoek hebt verzonden om uw ISE te maken, moet u een toegangsbeleid toevoegen aan uw sleutelkluis voor de door het SYSTEEM toegewezen identiteit van uw ISE. Anders mislukt het maken van uw ISE en krijgt u een fout met machtigingen. 
+Binnen *30 minuten* nadat u de HTTP put-aanvraag voor het maken van uw ISE hebt verzonden, moet u een toegangs beleid toevoegen aan de sleutel kluis voor de door het systeem toegewezen identiteit van uw ISE. Als u dit niet doet, mislukt het maken van uw ISE en krijgt u een machtigings fout. 
 
-Voor deze taak u de opdracht Azure PowerShell [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) gebruiken of deze stappen volgen in de Azure-portal:
+Voor deze taak kunt u de Azure PowerShell [set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) gebruiken of kunt u deze stappen volgen in de Azure portal:
 
-1. Open uw Azure-sleutelkluis in de [Azure-portal.](https://portal.azure.com)
+1. Open uw Azure-sleutel kluis in de [Azure Portal](https://portal.azure.com).
 
-1. Selecteer **access-beleid** > **Toegangsbeleid toevoegen**in het menu Sleutelkluis, bijvoorbeeld:
+1. Selecteer in uw sleutel kluis menu **toegangs** > beleid**toevoegen toegangs beleid**, bijvoorbeeld:
 
-   ![Toegangsbeleid toevoegen voor beheerde identiteit met systeemtoegewezen identiteit](./media/customer-managed-keys-integration-service-environment/add-ise-access-policy-key-vault.png)
+   ![Toegangs beleid voor door het systeem toegewezen beheerde identiteit toevoegen](./media/customer-managed-keys-integration-service-environment/add-ise-access-policy-key-vault.png)
 
-1. Voer de volgende stappen uit nadat het deelvenster **Toegangsbeleid toevoegen** is geopend:
+1. Wanneer het deel venster **toegangs beleid toevoegen** wordt geopend, voert u de volgende stappen uit:
 
-   1. Selecteer de volgende opties:
+   1. Selecteer deze opties:
 
       | Instelling | Waarden |
       |---------|--------|
-      | **De lijst configureren vanuit sjabloon (optioneel)** | Sleutelbeheer |
-      | **Belangrijkste machtigingen** | - **Key Management Operations:** Get, List <p><p>- **Cryptografische bewerkingen:** Toets uitpakken, wrap-toets |
+      | **Van sjabloon configureren (optioneel)** | Sleutel beheer |
+      | **Sleutel machtigingen** | - **Sleutel beheer bewerkingen**: ophalen, lijst <p><p>- **Cryptografische bewerkingen**: uitpakken van sleutel, terugloop sleutel |
       |||
 
-      ![Selecteer 'Sleutelbeheer' > 'Belangrijke machtigingen'](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
+      ![Selecteer sleutel beheer > sleutel machtigingen](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
 
-   1. Selecteer Geen **geselecteerd** **voor Selecteren voor Hoofd selecteren**. Nadat het **hoofdvenster** is geopend, zoekt en selecteert u in het zoekvak uw ISE. Wanneer u klaar bent, kiest **u Toevoegen** > **selecteren**.
+   1. Selecteer voor **Select Principal** **geen geselecteerd**. Nadat het **hoofd** venster is geopend, zoekt en selecteert u uw ISE in het zoekvak. Wanneer u klaar bent, kiest **u** > **toevoegen**selecteren.
 
-      ![Selecteer uw ISE om te gebruiken als hoofd](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
+      ![Selecteer de ISE die u als Principal wilt gebruiken](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
 
-   1. Wanneer u klaar bent met het deelvenster **Toegangsbeleid,** selecteert u **Opslaan**.
+   1. Wanneer u klaar bent met het deel venster **toegangs beleid** , selecteert u **Opslaan**.
 
-Zie [Key Vault-verificatie met een beheerde identiteit opgeven](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault)voor meer informatie.
+Zie [Key Vault-verificatie bieden met een beheerde identiteit](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

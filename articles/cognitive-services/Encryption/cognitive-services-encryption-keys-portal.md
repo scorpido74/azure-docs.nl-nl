@@ -1,7 +1,7 @@
 ---
-title: De Azure-portal gebruiken om door de klant beheerde sleutels te configureren
+title: Gebruik de Azure Portal voor het configureren van door de klant beheerde sleutels
 titleSuffix: Cognitive Services
-description: Meer informatie over het gebruik van de Azure-portal om door klanten beheerde sleutels te configureren met Azure Key Vault. Met door de klant beheerde toetsen u toegangsbesturingselementen maken, roteren, uitschakelen en intrekken.
+description: Meer informatie over het gebruik van de Azure Portal voor het configureren van door de klant beheerde sleutels met Azure Key Vault. Door de klant beheerde sleutels bieden u de mogelijkheid om toegangs beheer te maken, te draaien, uit te scha kelen en in te trekken.
 services: cognitive-services
 author: erindormier
 ms.service: cognitive-services
@@ -9,104 +9,104 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: egeaney
 ms.openlocfilehash: 04a8a8d2520376931f2bb7727c1e751b83f6315f
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81455254"
 ---
-# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Door de klant beheerde sleutels configureren met Azure Key Vault met behulp van de Azure-portal
+# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Door de klant beheerde sleutels met Azure Key Vault configureren met behulp van de Azure Portal
 
-U moet Azure Key Vault gebruiken om uw door de klant beheerde sleutels op te slaan. U uw eigen sleutels maken en opslaan in een sleutelkluis, of u de Azure Key Vault API's gebruiken om sleutels te genereren. De resource Cognitive Services en de sleutelkluis moeten zich in dezelfde regio en in dezelfde Azure Active Directory-tenant (Azure AD) bevinden, maar ze kunnen zich in verschillende abonnementen bevinden. Zie Wat is Azure Key Vault voor meer informatie over Azure Key [Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+U moet Azure Key Vault gebruiken om uw door de klant beheerde sleutels op te slaan. U kunt zelf sleutels maken en deze opslaan in een sleutel kluis, of u kunt de Azure Key Vault-Api's gebruiken om sleutels te genereren. De Cognitive Services resource en de sleutel kluis moeten zich in dezelfde regio bevinden en in dezelfde Azure Active Directory (Azure AD)-Tenant, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Wat is Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)voor meer informatie over Azure Key Vault.
 
-In dit artikel ziet u hoe u een Azure Key Vault configureert met door de klant beheerde sleutels met behulp van de [Azure-portal.](https://portal.azure.com/) Zie [Snelstart: Een geheim instellen en ophalen uit Azure Key Vault met behulp van de Azure-portal](../../key-vault/secrets/quick-create-portal.md)voor meer informatie over het maken van een sleutelkluis met de Azure-portal.
+In dit artikel wordt beschreven hoe u een Azure Key Vault met door de klant beheerde sleutels configureert met behulp van de [Azure Portal](https://portal.azure.com/). Voor informatie over het maken van een sleutel kluis met behulp van de Azure Portal, raadpleegt u [Quick Start: een geheim instellen en ophalen van Azure Key Vault met behulp van de Azure Portal](../../key-vault/secrets/quick-create-portal.md).
 
 ## <a name="configure-azure-key-vault"></a>Azure Key Vault configureren
 
-Met behulp van door de klant beheerde sleutels moeten twee eigenschappen worden ingesteld op de sleutelkluis, **Soft Delete** en Do **Not Purge.** Deze eigenschappen zijn standaard niet ingeschakeld, maar kunnen worden ingeschakeld met PowerShell of Azure CLI op een nieuwe of bestaande sleutelkluis.
+Voor het gebruik van door de klant beheerde sleutels moet u twee eigenschappen instellen op de sleutel kluis, **verwijderen** en **niet wissen**. Deze eigenschappen zijn niet standaard ingeschakeld, maar kunnen worden ingeschakeld met Power shell of Azure CLI in een nieuwe of bestaande sleutel kluis.
 
 > [!IMPORTANT]
-> Als u de eigenschappen **Soft Delete** and Do **Not Purge** niet hebt ingeschakeld en u uw sleutel verwijdert, u de gegevens niet herstellen in uw cognitive service-bron.
+> Als u niet de opties **voorlopig verwijderen** en **niet wissen** hebt ingeschakeld en u de sleutel verwijdert, kunt u de gegevens in uw cognitieve service resource niet herstellen.
 
-Zie de secties getiteld **Soft-delete** en **Inschakelen van zuiveringsbeveiliging** inschakelen in een van de volgende artikelen voor meer informatie over het inschakelen van deze eigenschappen op een bestaand sleutelkluis:
+Voor meer informatie over het inschakelen van deze eigenschappen voor een bestaande sleutel kluis raadpleegt u de secties met het **inschakelen van zacht verwijderen** en het **inschakelen van beveiliging opschonen** in een van de volgende artikelen:
 
-- [Soft-delete gebruiken met PowerShell](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell).
-- [Soft-delete gebruiken met CLI](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-cli).
+- [Voorlopig verwijderen gebruiken met Power shell](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell).
+- [Voorlopig verwijderen gebruiken met CLI](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-cli).
 
-Alleen RSA-sleutels van grootte 2048 worden ondersteund met Azure Storage-versleuteling. Zie **Key Vault-sleutels** in [Over Azure Key Vault-sleutels, -geheimen en -certificaten](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys)voor meer informatie over sleutels.
+Alleen RSA-sleutels met een grootte van 2048 worden ondersteund met Azure Storage versleuteling. Zie **Key Vault sleutels** in [over Azure Key Vault sleutels, geheimen en certificaten](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys)voor meer informatie over sleutels.
 
 ## <a name="enable-customer-managed-keys"></a>Door de klant beheerde sleutels inschakelen
 
-Voer de volgende stappen uit om door klanten beheerde sleutels in de Azure-portal in te schakelen:
+Voer de volgende stappen uit om door de klant beheerde sleutels in te scha kelen in de Azure Portal:
 
-1. Navigeer naar uw resource Cognitive Services.
-1. Klik op het **pagina-pagina Instellingen** voor uw resource voor Cognitive Services op **Versleuteling**. Selecteer de optie **Beheerde sleutels van** de klant, zoals in de volgende afbeelding wordt weergegeven.
+1. Navigeer naar uw Cognitive Services-resource.
+1. Klik op de Blade **instellingen** voor uw Cognitive Services bron op **versleuteling**. Selecteer de optie door de **klant beheerde sleutels** , zoals wordt weer gegeven in de volgende afbeelding.
 
-    ![Schermafbeelding van het selecteren van door klanten beheerde sleutels](../media/cognitive-services-encryption/selectcmk.png)
+    ![Scherm afbeelding die laat zien hoe u door de klant beheerde sleutels selecteert](../media/cognitive-services-encryption/selectcmk.png)
 
 ## <a name="specify-a-key"></a>Een sleutel opgeven
 
-Nadat u door de klant beheerde sleutels hebt ingeschakeld, u een sleutel opgeven om te koppelen aan de resource Cognitive Services.
+Nadat u door de klant beheerde sleutels hebt ingeschakeld, hebt u de mogelijkheid om een sleutel op te geven die u wilt koppelen aan de Cognitive Services resource.
 
-### <a name="specify-a-key-as-a-uri"></a>Een sleutel opgeven als URI
+### <a name="specify-a-key-as-a-uri"></a>Een sleutel opgeven als een URI
 
 Voer de volgende stappen uit om een sleutel als URI op te geven:
 
-1. Als u de sleutelURI in de Azure-portal wilt vinden, navigeert u naar uw sleutelkluis en selecteert u de instelling **Sleutels.** Selecteer de gewenste sleutel en klik op de toets om de versies te bekijken. Selecteer een belangrijke versie om de instellingen voor die versie weer te geven.
-1. Kopieer de waarde van het veld **Sleutel-id,** dat de URI biedt.
+1. Als u de sleutel-URI in de Azure Portal wilt zoeken, navigeert u naar uw sleutel kluis en selecteert u de instelling **sleutels** . Selecteer de gewenste sleutel en klik vervolgens op de sleutel om de versies ervan weer te geven. Selecteer een sleutel versie om de instellingen voor die versie weer te geven.
+1. Kopieer de waarde van het veld **sleutel-id** , dat de URI levert.
 
-    ![Schermafbeelding van de sleutelkluissleutel URI](../media/cognitive-services-encryption/key-uri-portal.png)
+    ![Scherm opname van sleutel kluis sleutel-URI](../media/cognitive-services-encryption/key-uri-portal.png)
 
-1. Kies in de **coderingsinstellingen** voor uw opslagaccount de optie Uri van de **toets invoeren.**
-1. Plak de URI die u hebt gekopieerd in het veld **Sleutel URI.**
+1. Kies in de **versleutelings** instellingen voor uw opslag account de optie **sleutel-URI opgeven** .
+1. Plak de URI die u hebt gekopieerd in het veld **sleutel-URI** .
 
-   ![Schermafbeelding van het invoeren van sleutelURI](../media/cognitive-services-encryption/ssecmk2.png)
+   ![Scherm afbeelding die laat zien hoe de sleutel-URI moet worden ingevoerd](../media/cognitive-services-encryption/ssecmk2.png)
 
-1. Geef het abonnement op dat de sleutelkluis bevat.
+1. Geef het abonnement op dat de sleutel kluis bevat.
 1. Sla uw wijzigingen op.
 
-### <a name="specify-a-key-from-a-key-vault"></a>Een sleutel uit een sleutelkluis opgeven
+### <a name="specify-a-key-from-a-key-vault"></a>Een sleutel uit een sleutel kluis opgeven
 
-Als u een sleutel uit een sleutelkluis wilt opgeven, moet u eerst ervoor zorgen dat u een sleutelkluis hebt die een sleutel bevat. Voer de volgende stappen uit om een sleutel uit een sleutelkluis op te geven:
+Als u een sleutel van een sleutel kluis wilt opgeven, moet u eerst controleren of u een sleutel kluis hebt die een sleutel bevat. Voer de volgende stappen uit om een sleutel van een sleutel kluis op te geven:
 
-1. Kies de optie **Selecteren in Key Vault.**
-1. Selecteer de sleutelkluis met de sleutel die u wilt gebruiken.
-1. Selecteer de sleutel in de sleutelkluis.
+1. Kies de optie **selecteren uit Key Vault** .
+1. Selecteer de sleutel kluis met de sleutel die u wilt gebruiken.
+1. Selecteer de sleutel in de sleutel kluis.
 
-   ![Schermafbeelding van de optie sleuteloptie met door de klant beheerde knop](../media/cognitive-services-encryption/ssecmk3.png)
+   ![Scherm afbeelding met door de klant beheerde sleutel optie](../media/cognitive-services-encryption/ssecmk3.png)
 
 1. Sla uw wijzigingen op.
 
-## <a name="update-the-key-version"></a>De belangrijkste versie bijwerken
+## <a name="update-the-key-version"></a>De sleutel versie bijwerken
 
-Wanneer u een nieuwe versie van een sleutel maakt, werkt u de bron Cognitive Services bij om de nieuwe versie te gebruiken. Volg deze stappen:
+Wanneer u een nieuwe versie van een sleutel maakt, werkt u de Cognitive Services resource bij om de nieuwe versie te gebruiken. Volg deze stappen:
 
-1. Navigeer naar uw resource Cognitive Services en geef de **versleutelingsinstellingen** weer.
-1. Voer de URI in voor de nieuwe sleutelversie. U afwisselend de sleutelkluis en de sleutel opnieuw selecteren om de versie bij te werken.
+1. Navigeer naar uw Cognitive Services-resource en geef de **versleutelings** instellingen weer.
+1. Voer de URI in voor de nieuwe sleutel versie. U kunt ook de sleutel kluis en de sleutel opnieuw selecteren om de versie bij te werken.
 1. Sla uw wijzigingen op.
 
 ## <a name="use-a-different-key"></a>Een andere sleutel gebruiken
 
-Voer de volgende stappen uit om de sleutel voor versleuteling te wijzigen:
+Voer de volgende stappen uit om de sleutel te wijzigen die wordt gebruikt voor versleuteling:
 
-1. Navigeer naar uw resource Cognitive Services en geef de **versleutelingsinstellingen** weer.
-1. Voer de URI in voor de nieuwe sleutel. U afwisselend de sleutelkluis selecteren en een nieuwe sleutel kiezen.
+1. Navigeer naar uw Cognitive Services-resource en geef de **versleutelings** instellingen weer.
+1. Voer de URI in voor de nieuwe sleutel. U kunt ook de sleutel kluis selecteren en een nieuwe sleutel kiezen.
 1. Sla uw wijzigingen op.
 
 ## <a name="disable-customer-managed-keys"></a>Door de klant beheerde sleutels uitschakelen
 
-Wanneer u door de klant beheerde sleutels uitschakelt, wordt uw cognitive services-bron vervolgens versleuteld met door Microsoft beheerde sleutels. Voer de volgende stappen uit om door klanten beheerde sleutels uit te schakelen:
+Wanneer u door de klant beheerde sleutels uitschakelt, wordt uw Cognitive Services-resource vervolgens versleuteld met door micro soft beheerde sleutels. Voer de volgende stappen uit om door de klant beheerde sleutels uit te scha kelen:
 
-1. Navigeer naar uw resource Cognitive Services en geef de **versleutelingsinstellingen** weer.
-1. Schakel het selectievakje naast de instelling **Uw eigen sleutel gebruiken** uit.
+1. Navigeer naar uw Cognitive Services-resource en geef de **versleutelings** instellingen weer.
+1. Schakel het selectie vakje naast de instelling **uw eigen sleutel gebruiken** uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wat is Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
-* [Formulier voor het aanvragen van een door de klant beheerde sleutelformulier voor de klant](https://aka.ms/cogsvc-cmk)
-* [Face Services-versleuteling van gegevens in rust](../Face/face-encryption-of-data-at-rest.md)
-* [QnA Maker encryptie van gegevens in rust](../QnAMaker/qna-maker-encryption-of-data-at-rest.md)
-* [Taalbegrijpende serviceversleuteling van gegevens in rust](../LUIS/luis-encryption-of-data-at-rest.md)
-* [Content Moderator encryptie van gegevens in rust](../Content-Moderator/content-moderator-encryption-of-data-at-rest.md)
-* [Vertaler encryptie van gegevens in rust](../translator/translator-encryption-of-data-at-rest.md)
-* [Personalisator encryptie van gegevens in rust](../personalizer/personalizer-encryption-of-data-at-rest.md)
+* [Wat is Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
+* [Cognitive Services aanvraag formulier voor door de klant beheerde sleutel](https://aka.ms/cogsvc-cmk)
+* [Gezichts Services versleuteling van gegevens in rust](../Face/face-encryption-of-data-at-rest.md)
+* [QnA Maker versleuteling van gegevens in rust](../QnAMaker/qna-maker-encryption-of-data-at-rest.md)
+* [Language Understanding-service versleuteling van gegevens in rust](../LUIS/luis-encryption-of-data-at-rest.md)
+* [Content Moderator versleuteling van gegevens in rust](../Content-Moderator/content-moderator-encryption-of-data-at-rest.md)
+* [Conversie van gegevens in rust versleutelen](../translator/translator-encryption-of-data-at-rest.md)
+* [Personalisatie versleuteling van gegevens in rust](../personalizer/personalizer-encryption-of-data-at-rest.md)

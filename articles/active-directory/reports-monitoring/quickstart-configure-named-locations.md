@@ -17,17 +17,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: df45ab0a7b1729ae6c1602c9769cd5b6da26f6ac
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74014347"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Snelstart: Benoemde locaties configureren in Azure Active Directory
 
 Met benoemde locaties, kunt u vertrouwde IP-adresbereiken in uw organisatie een label geven. Azure AD maakt gebruik van benoemde locaties om:
-- Detecteer valse positieven in [risicodetecties.](concept-risk-events.md) Aanmelden van een vertrouwde benoemde locaties verlaagt het aanmeldingsrisico van een gebruiker.   
-- [Locatiegebaseerde voorwaardelijke toegang](../conditional-access/location-condition.md)configureren .
+- Detecteer fout-positieven in [risico detecties](concept-risk-events.md). Aanmelden van een vertrouwde benoemde locaties verlaagt het aanmeldingsrisico van een gebruiker.   
+- Configureer [op locatie gebaseerde voorwaardelijke toegang](../conditional-access/location-condition.md).
 
 In deze snelstartgids leert u hoe benoemde locaties in uw omgeving te configureren.
 
@@ -35,17 +35,17 @@ In deze snelstartgids leert u hoe benoemde locaties in uw omgeving te configurer
 
 U hebt het volgende nodig om deze quickstart te voltooien:
 
-* Een Azure AD-tenant. Meld u aan voor een [gratis proefperiode.](https://azure.microsoft.com/trial/get-started-active-directory/) 
+* Een Azure AD-tenant. Meld u aan voor een [gratis proef versie](https://azure.microsoft.com/trial/get-started-active-directory/). 
 * Een gebruiker die een globale administrator is voor de tenant.
 * Een IP-adresbereik dat is tot stand gebracht en betrouwbaar in uw organisatie. Het IP-adresbereik moet in **Classless Interdomain routering (CIDR)** indeling zijn.
 
 ## <a name="configure-named-locations"></a>Benoemde locaties configureren
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Selecteer in het linkerdeelvenster **Azure Active Directory**en selecteer Voorwaardelijke **toegang** in de sectie **Beveiliging.**
+2. Selecteer **Azure Active Directory**in het linkerdeel venster en selecteer vervolgens **voorwaardelijke toegang** in het gedeelte **beveiliging** .
 
-    ![Tabblad Voorwaardelijke toegang](./media/quickstart-configure-named-locations/entrypoint.png)
+    ![Tabblad voorwaardelijke toegang](./media/quickstart-configure-named-locations/entrypoint.png)
 
 3. Op de pagina **Voorwaardelijke toegang**, selecteer **Benoemde locaties** en selecteer **Nieuwe locatie**.
 
@@ -55,7 +55,7 @@ U hebt het volgende nodig om deze quickstart te voltooien:
 
    * In het vak **Naam** typt u een naam voor uw benoemde locatie.
    * In de **IP-adresbereiken** typt u het IP-adresbereik in CIDR-indeling.  
-   * Klik **op Maken**.
+   * Klik op **maken**.
     
      ![De nieuwe blade](./media/quickstart-configure-named-locations/61.png)
 
@@ -64,5 +64,5 @@ U hebt het volgende nodig om deze quickstart te voltooien:
 Zie voor meer informatie:
 
 - [Voorwaardelijke toegang voor Azure AD](../active-directory-conditional-access-azure-portal.md).
-- [Locatievoorwaarden in Voorwaardelijke toegang voor Azure AD](../conditional-access/location-condition.md)
-- [Meldingspunt riskante aanmeldingen](concept-risky-sign-ins.md).  
+- [Voor waarden voor locaties in voorwaardelijke toegang voor Azure AD](../conditional-access/location-condition.md)
+- [Rapport Risk ante aanmeldingen](concept-risky-sign-ins.md).  

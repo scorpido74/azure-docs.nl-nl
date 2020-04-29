@@ -1,31 +1,31 @@
 ---
-title: PowerShell-werkstroom voor Azure-automatisering leren
-description: Dit artikel is bedoeld als een snelle les voor auteurs die bekend zijn met PowerShell om de specifieke verschillen tussen PowerShell en PowerShell Workflow en concepten die van toepassing zijn op Automation runbooks te begrijpen.
+title: Power shell-werk stroom voor Azure Automation leren
+description: Dit artikel is bedoeld als snelle les voor auteurs die bekend zijn met Power shell om inzicht te krijgen in de specifieke verschillen tussen Power shell en Power shell workflow en concepten die van toepassing zijn op Automation-runbooks.
 services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1b275239c19584bc11472711a32972aa3ebea1ab
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457532"
 ---
-# <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>De belangrijkste Windows PowerShell-werkstroomconcepten voor runbooks voor automatisering leren
+# <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Hoofd concepten van Windows Power shell-werk stromen voor Automation-runbooks
 
-Runbooks in Azure Automation worden geïmplementeerd als Windows PowerShell-werkstromen.  Een Windows PowerShell-werkstroom is vergelijkbaar met een Windows PowerShell-script, maar heeft een aantal belangrijke verschillen die verwarrend kunnen zijn voor een nieuwe gebruiker.  Hoewel dit artikel bedoeld is om u te helpen runbooks te schrijven met powershell-werkstroom, raden we u aan runbooks te schrijven met PowerShell, tenzij u controlepunten nodig hebt.  Er zijn verschillende syntaxisverschillen bij het maken van PowerShell Workflow-runbooks en deze verschillen vereisen iets meer werk om effectieve werkstromen te schrijven.
+Runbooks in Azure Automation worden geïmplementeerd als Windows Power shell-werk stromen.  Een Windows Power shell-werk stroom is vergelijkbaar met een Windows Power shell-script, maar heeft een aantal belang rijke verschillen die verwarrend kunnen zijn voor een nieuwe gebruiker.  Hoewel dit artikel is bedoeld om u te helpen bij het schrijven van runbooks met behulp van Power shell workflow, raden we u aan runbooks te schrijven met Power shell tenzij u controle punten nodig hebt.  Er zijn verschillende syntaxis verschillen bij het ontwerpen van Power shell workflow-runbooks en deze verschillen vereisen wat meer werk om effectief werk stromen te schrijven.
 
-Een werkstroom is een opeenvolging van geprogrammeerde, met elkaar verbonden stappen waarmee langlopende taken worden uitgevoerd of die de coördinatie vereisen van meerdere stappen op meerdere apparaten of beheerde knooppunten. De voordelen van een werkstroom op een normaal script omvatten de mogelijkheid om gelijktijdig een actie tegen meerdere apparaten uit te voeren en de mogelijkheid om automatisch te herstellen van fouten. Een Windows PowerShell-werkstroom is een Windows PowerShell-script dat windows workflow foundation gebruikt. Terwijl de werkstroom is geschreven met Windows PowerShell-syntaxis en gelanceerd door Windows PowerShell, wordt het verwerkt door Windows Workflow Foundation.
+Een werkstroom is een opeenvolging van geprogrammeerde, met elkaar verbonden stappen waarmee langlopende taken worden uitgevoerd of die de coördinatie vereisen van meerdere stappen op meerdere apparaten of beheerde knooppunten. De voordelen van een werkstroom op een normaal script omvatten de mogelijkheid om gelijktijdig een actie tegen meerdere apparaten uit te voeren en de mogelijkheid om automatisch te herstellen van fouten. Een Windows Power shell-werk stroom is een Windows Power shell-script dat gebruikmaakt van Windows Workflow Foundation. Terwijl de werkstroom is geschreven met Windows PowerShell-syntaxis en gelanceerd door Windows PowerShell, wordt het verwerkt door Windows Workflow Foundation.
 
-Zie [Aan de slag met Windows PowerShell-workflow](https://technet.microsoft.com/library/jj134242.aspx)voor meer informatie over de onderwerpen in dit artikel.
+Zie aan de slag [met Windows Power shell-werk stroom](https://technet.microsoft.com/library/jj134242.aspx)voor meer informatie over de onderwerpen in dit artikel.
 
 >[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor installatie-instructies voor az-modules op uw hybride runbookworker. Voor uw Automatiseringsaccount u uw modules bijwerken naar de nieuwste versie met [Azure PowerShell-modules bijwerken in Azure Automation.](automation-update-azure-modules.md)
+>Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
 
-## <a name="basic-structure-of-a-workflow"></a>Basisstructuur van een werkstroom
+## <a name="basic-structure-of-a-workflow"></a>Basis structuur van een werk stroom
 
-De eerste stap naar het converteren van een PowerShell-script `Workflow` naar een PowerShell-werkstroom wordt bij het trefwoord bijgesloten.  Een werkstroom `Workflow` begint met het trefwoord gevolgd door de hoofdtekst van het script ingesloten in accolades. De naam van de `Workflow` werkstroom volgt het zoekwoord zoals weergegeven in de volgende syntaxis:
+De eerste stap voor het converteren van een Power shell-script naar een Power shell-werk `Workflow` stroom is gekoppeld aan het sleutel woord.  Een werk stroom begint met `Workflow` het sleutel woord gevolgd door de hoofd tekst van het script tussen accolades. De naam van de werk stroom volgt `Workflow` het tref woord, zoals wordt weer gegeven in de volgende syntaxis:
 
 ```powershell
 Workflow Test-Workflow
@@ -34,31 +34,31 @@ Workflow Test-Workflow
 }
 ```
 
-De naam van de werkstroom moet overeenkomen met de naam van het runbook Automatisering. Als de runbook wordt geïmporteerd, moet de bestandsnaam overeenkomen met de werkstroomnaam en moet deze eindigen op *.ps1*.
+De naam van de werk stroom moet overeenkomen met de naam van het Automation-runbook. Als het runbook wordt geïmporteerd, moet de bestands naam overeenkomen met de naam van de werk stroom en moet eindigen op *. ps1*.
 
-Als u parameters aan de `Param` werkstroom wilt toevoegen, gebruikt u het trefwoord zoals in een script.
+Als u para meters wilt toevoegen aan de `Param` werk stroom, gebruikt u het sleutel woord net zoals u zou doen in een script.
 
 ## <a name="code-changes"></a>Codewijzigingen
 
-PowerShell-werkstroomcode ziet er bijna identiek uit aan PowerShell-scriptcode, met uitzondering van een paar belangrijke wijzigingen.  In de volgende secties worden wijzigingen beschreven die u moet aanbrengen in een PowerShell-script dat moet worden uitgevoerd in een werkstroom.
+Power shell-werk stroom code lijkt bijna identiek te zijn met Power shell-script code, met uitzonde ring van enkele belang rijke wijzigingen.  In de volgende secties wordt beschreven welke wijzigingen u moet aanbrengen in een Power shell-script om deze in een werk stroom uit te voeren.
 
 ### <a name="activities"></a>Activiteiten
 
-Een activiteit is een specifieke taak in een werkstroom. Zoals een script uit een of meer opdrachten bestaat, bestaat een werkstroom uit een of meer activiteiten die achter elkaar worden uitgevoerd. Windows PowerShell-werkstroom converteert automatisch veel van de Windows PowerShell cmdlets in activiteiten wanneer het een werkstroom uitvoert. Wanneer u een van deze cmdlets opgeeft in uw runbook, wordt de bijbehorende activiteit uitgevoerd door Windows Workflow Foundation. Voor die cmdlets zonder bijbehorende activiteit voert Windows PowerShell Workflow de cmdlet automatisch uit binnen een [InlineScript-activiteit.](#inlinescript) Er is een set cmdlets die zijn uitgesloten en niet kan worden gebruikt in een werkstroom, tenzij u ze expliciet opneemt in een InlineScript-blok. Zie Activiteiten gebruiken in [scriptwerkstromen voor](https://technet.microsoft.com/library/jj574194.aspx)meer informatie over deze concepten.
+Een activiteit is een specifieke taak in een werkstroom. Zoals een script uit een of meer opdrachten bestaat, bestaat een werkstroom uit een of meer activiteiten die achter elkaar worden uitgevoerd. Windows PowerShell-werkstroom converteert automatisch veel van de Windows PowerShell cmdlets in activiteiten wanneer het een werkstroom uitvoert. Wanneer u een van deze cmdlets in uw runbook opgeeft, wordt de bijbehorende activiteit uitgevoerd door Windows Workflow Foundation. Voor die cmdlets zonder een bijbehorende activiteit voert Windows Power shell-werk stroom automatisch de cmdlet uit binnen een [InlineScript](#inlinescript) -activiteit. Er is een set cmdlets die zijn uitgesloten en niet kan worden gebruikt in een werk stroom, tenzij u ze expliciet opneemt in een InlineScript-blok. Zie voor meer informatie over deze concepten [activiteiten gebruiken in script werk stromen](https://technet.microsoft.com/library/jj574194.aspx).
 
-Werkstroomactiviteiten delen een aantal gemeenschappelijke parameters om hun werking te configureren. Zie [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx)voor meer informatie over de algemene werkstroomparameters .
+Werkstroomactiviteiten delen een aantal gemeenschappelijke parameters om hun werking te configureren. Zie [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx)voor meer informatie over de algemene werk stroom parameters.
 
-### <a name="positional-parameters"></a>Positionele parameters
+### <a name="positional-parameters"></a>Positionele para meters
 
-U geen positionele parameters gebruiken met activiteiten en cmdlets in een workflow.  Dit alles betekent dat u parameternamen moet gebruiken.
+U kunt geen positionele para meters gebruiken met activiteiten en cmdlets in een werk stroom.  Dit betekent dat u parameter namen moet gebruiken.
 
-Houd bijvoorbeeld rekening met de volgende code waarmee alle services worden uitgevoerd.
+Neem bijvoorbeeld de volgende code op waarmee alle actieve services worden opgehaald.
 
 ```azurepowershell-interactive
 Get-Service | Where-Object {$_.Status -eq "Running"}
 ```
 
-Als u dezelfde code probeert uit te voeren in een werkstroom, ontvangt u een bericht als 'Parameterset kan niet worden opgelost met de opgegeven benoemde parameters'.  Geef de parameternaam op als volgt om dit te corrigeren.
+Als u probeert dezelfde code in een werk stroom uit te voeren, ontvangt u een bericht als de para meter set kan niet worden omgezet met de opgegeven benoemde para meters.  Als u dit wilt corrigeren, geeft u de parameter naam op zoals in het volgende.
 
 ```powershell
 Workflow Get-RunningServices
@@ -67,18 +67,18 @@ Workflow Get-RunningServices
 }
 ```
 
-### <a name="deserialized-objects"></a>Gedeserialiseerde objecten
+### <a name="deserialized-objects"></a>Gedeserialiseerd objecten
 
-Objecten in werkstromen worden gedeserialiseerd.  Dit betekent dat hun eigenschappen nog steeds beschikbaar zijn, maar niet hun methoden.  Denk bijvoorbeeld aan de volgende PowerShell-code waarmee een service wordt gestopt met de methode Stoppen van het object Service.
+Objecten in werk stromen worden gedeserialiseerd.  Dit betekent dat hun eigenschappen nog steeds beschikbaar zijn, maar niet hun methoden.  Denk bijvoorbeeld aan de volgende Power shell-code die een service stopt met de methode stop van het object service.
 
 ```azurepowershell-interactive
 $Service = Get-Service -Name MyService
 $Service.Stop()
 ```
 
-Als u dit probeert uit te voeren in een werkstroom, ontvangt u een foutmelding 'Methodeaanroep wordt niet ondersteund in een Windows PowerShell-werkstroom'.
+Als u probeert dit in een werk stroom uit te voeren, wordt een fout bericht weer gegeven dat het aanroepen van de methode niet wordt ondersteund in een Windows Power shell-werk stroom.
 
-Een optie is om deze twee regels code in een [InlineScript-blok](#inlinescript) te verpakken, in welk geval $Service een serviceobject in het blok zou zijn.
+Een optie is om deze twee regels code in een [InlineScript](#inlinescript) -blok te laten teruglopen in welk geval $service een service object in het blok zou zijn.
 
 ```powershell
 Workflow Stop-Service
@@ -90,7 +90,7 @@ Workflow Stop-Service
 }
 ```
 
-Een andere optie is om een andere cmdlet te gebruiken die dezelfde functionaliteit uitvoert als de methode, als er een beschikbaar is.  In ons voorbeeld biedt de Stop-Service-cmdlet dezelfde functionaliteit als de methode Stoppen en u het volgende gebruiken voor een werkstroom.
+Een andere optie is het gebruik van een andere cmdlet die dezelfde functionaliteit als de-methode uitvoert, als er een beschikbaar is.  In ons voor beeld biedt de stop-service-cmdlet dezelfde functionaliteit als de methode stop en kunt u het volgende gebruiken voor een werk stroom.
 
 ```powershell
 Workflow Stop-MyService
@@ -102,9 +102,9 @@ Workflow Stop-MyService
 
 ## <a name="inlinescript"></a>InlineScript
 
-De`InlineScript` activiteit is handig wanneer u een of meer opdrachten moet uitvoeren als traditioneel PowerShell-script in plaats van powershell-werkstroom.  Waar opdrachten in een werkstroom naar Windows Workflow Foundation worden verzonden voor verwerking, worden opdrachten in een InlineScript blok verwerkt door Windows PowerShell.
+De`InlineScript` activiteit is handig als u een of meer opdrachten wilt uitvoeren als traditioneel Power shell-script in plaats van Power shell-werk stroom.  Waar opdrachten in een werkstroom naar Windows Workflow Foundation worden verzonden voor verwerking, worden opdrachten in een InlineScript blok verwerkt door Windows PowerShell.
 
-InlineScript gebruikt de volgende syntaxis hieronder.
+InlineScript maakt gebruik van de volgende syntaxis die hieronder wordt weer gegeven.
 
 ```powershell
 InlineScript
@@ -113,7 +113,7 @@ InlineScript
 } <Common Parameters>
 ```
 
-U de uitvoer van een InlineScript retourneren door de uitvoer toe te wijs aan een variabele. In het volgende voorbeeld wordt een service gestopt en wordt de servicenaam uitgevoerd.
+U kunt de uitvoer van een InlineScript retour neren door de uitvoer toe te wijzen aan een variabele. In het volgende voor beeld wordt een service gestopt en wordt de naam van de service vervolgens uitgevoerd.
 
 ```powershell
 Workflow Stop-MyService
@@ -128,7 +128,7 @@ Workflow Stop-MyService
 }
 ```
 
-U waarden doorgeven aan een InlineScript-blok, maar u moet **$Using** scopemodifier gebruiken.  Het volgende voorbeeld is identiek aan het vorige voorbeeld, behalve dat de servicenaam wordt geleverd door een variabele.
+U kunt waarden door geven in een InlineScript-blok, maar u moet **$using** bereik wijzigings functie gebruiken.  Het volgende voor beeld is identiek aan het vorige voor beeld, behalve dat de service naam wordt verschaft door een variabele.
 
 ```powershell
 Workflow Stop-MyService
@@ -145,19 +145,19 @@ Workflow Stop-MyService
 }
 ```
 
-Hoewel InlineScript-activiteiten van cruciaal belang kunnen zijn in bepaalde werkstromen, ondersteunen ze geen werkstroomconstructies en mogen ze alleen worden gebruikt wanneer dat nodig is om de volgende redenen:
+Hoewel InlineScript-activiteiten in bepaalde werk stromen kritiek kunnen zijn, bieden ze geen ondersteuning voor werk stroom constructies en mogen ze alleen worden gebruikt wanneer dit nodig is om de volgende redenen:
 
-* U [geen controlepunten](#checkpoints) gebruiken in een InlineScript-blok. Als er een fout optreedt binnen het blok, moet deze vanaf het begin van het blok worden hervat.
-* U geen [parallelle uitvoering](#parallel-processing) gebruiken in een InlineScriptBlock.
-* InlineScript beïnvloedt de schaalbaarheid van de werkstroom omdat de Windows PowerShell-sessie gedurende de gehele lengte van het InlineScript-blok wordt gehouden.
+* U kunt geen [controle punten](#checkpoints) gebruiken in een InlineScript-blok. Als er een fout optreedt in het blok, moet dit worden hervat vanaf het begin van het blok.
+* U kunt geen [parallelle uitvoering](#parallel-processing) in een InlineScriptBlock gebruiken.
+* InlineScript is van invloed op de schaal baarheid van de werk stroom, omdat deze de Windows Power shell-sessie voor de volledige lengte van het blok InlineScript bevat.
 
-Zie [Windows PowerShell-opdrachten uitvoeren in een werkstroom](https://technet.microsoft.com/library/jj574197.aspx) en [about_InlineScript](https://technet.microsoft.com/library/jj649082.aspx)voor meer informatie over het gebruik van InlineScript.
+Zie [Windows Power shell-opdrachten uitvoeren in een werk stroom](https://technet.microsoft.com/library/jj574197.aspx) en [about_InlineScript](https://technet.microsoft.com/library/jj649082.aspx)voor meer informatie over het gebruik van InlineScript.
 
 ## <a name="parallel-processing"></a>Parallelle verwerking
 
 Een voordeel van Windows PowerShell-werkstromen is de mogelijkheid om een ​​reeks opdrachten parallel uit te voeren in plaats van opeenvolgend zoals bij een typische script.
 
-U `Parallel` het trefwoord gebruiken om een scriptblok te maken met meerdere opdrachten die gelijktijdig worden uitgevoerd. Hiermee wordt de volgende syntaxis gebruikt. In dit geval beginnen Activiteit1 en Activiteit2 tegelijkertijd. Activity3 begint pas nadat zowel Activiteit1 als Activiteit2 zijn voltooid.
+U kunt het `Parallel` sleutel woord gebruiken om een script blok te maken met meerdere opdrachten die gelijktijdig worden uitgevoerd. Dit maakt gebruik van de volgende syntaxis die hieronder wordt weer gegeven. In dit geval worden Activiteit1 en Activiteit2 op hetzelfde moment gestart. Activiteit3 start pas als zowel Activiteit1 als Activiteit2 zijn voltooid.
 
 ```powershell
 Parallel
@@ -168,7 +168,7 @@ Parallel
 <Activity3>
 ```
 
-Denk bijvoorbeeld aan de volgende PowerShell-opdrachten die meerdere bestanden naar een netwerkbestemming kopiëren.  Deze opdrachten worden opeenvolgend uitgevoerd, zodat één bestand moet worden gekopieerd voordat het volgende wordt gestart.
+Denk bijvoorbeeld aan de volgende Power shell-opdrachten waarmee meerdere bestanden naar een netwerk bestemming worden gekopieerd.  Deze opdrachten worden sequentieel uitgevoerd, zodat één bestand moet worden gekopieerd voordat de volgende wordt gestart.
 
 ```azurepowershell-interactive
 Copy-Item -Path C:\LocalPath\File1.txt -Destination \\NetworkPath\File1.txt
@@ -176,7 +176,7 @@ Copy-Item -Path C:\LocalPath\File2.txt -Destination \\NetworkPath\File2.txt
 Copy-Item -Path C:\LocalPath\File3.txt -Destination \\NetworkPath\File3.txt
 ```
 
-De volgende werkstroom voert dezelfde opdrachten parallel uit, zodat ze allemaal tegelijkertijd beginnen te kopiëren.  Pas nadat ze allemaal zijn gekopieerd, wordt het voltooiingsbericht weergegeven.
+In de volgende werk stroom worden dezelfde opdrachten parallel uitgevoerd, zodat ze allemaal op hetzelfde moment worden gekopieerd.  Alleen als deze zijn gekopieerd, wordt het voltooiings bericht weer gegeven.
 
 ```powershell
 Workflow Copy-Files
@@ -192,7 +192,7 @@ Workflow Copy-Files
 }
 ```
 
-U `ForEach -Parallel` de constructie gebruiken om opdrachten voor elk item in een verzameling gelijktijdig te verwerken. De items in de verzameling worden parallel verwerkt, terwijl de opdrachten in het scriptblok sequentieel worden uitgevoerd. Hiermee wordt de volgende syntaxis gebruikt. In dit geval begint Activiteit1 op hetzelfde moment voor alle items in de collectie. Voor elk item wordt Activiteit2 gestart nadat Activiteit1 is voltooid. Activiteit3 wordt pas gestart nadat zowel Activiteit1 als Activiteit2 voor alle items zijn voltooid. We gebruiken `ThrottleLimit` de parameter om het parallellisme te beperken. Te hoog `ThrottleLimit` van een kan problemen veroorzaken. De ideale waarde `ThrottleLimit` voor de parameter is afhankelijk van vele factoren in uw omgeving. Probeer te beginnen met een lage waarde en probeer verschillende stijgende waarden totdat u er een vindt die werkt voor uw specifieke omstandigheid.
+U kunt de `ForEach -Parallel` construct gebruiken om opdrachten voor elk item in een verzameling tegelijk te verwerken. De items in de verzameling worden parallel verwerkt, terwijl de opdrachten in het scriptblok sequentieel worden uitgevoerd. Dit maakt gebruik van de volgende syntaxis die hieronder wordt weer gegeven. In dit geval wordt Activiteit1 op hetzelfde moment gestart voor alle items in de verzameling. Activiteit2 wordt voor elk item gestart nadat Activiteit1 is voltooid. Activiteit3 start pas als zowel Activiteit1 als Activiteit2 zijn voltooid voor alle items. We gebruiken de `ThrottleLimit` para meter om de parallellisme te beperken. Te hoog van een `ThrottleLimit` kan problemen veroorzaken. De ideale waarde voor de `ThrottleLimit` para meter is afhankelijk van een groot aantal factoren in uw omgeving. U moet beginnen met een lage waarde en verschillende waarden verhogen totdat u er een hebt gevonden die geschikt is voor uw specifieke omstandigheid.
 
 ```powershell
 ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
@@ -203,7 +203,7 @@ ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
 <Activity3>
 ```
 
-Het volgende voorbeeld is vergelijkbaar met het vorige voorbeeld het kopiëren van bestanden parallel.  In dit geval wordt voor elk bestand een bericht weergegeven nadat het is kopieën.  Pas nadat ze allemaal volledig zijn gekopieerd, wordt het definitieve voltooiingsbericht weergegeven.
+Het volgende voor beeld is vergelijkbaar met het vorige voor beeld van het kopiëren van bestanden parallel.  In dit geval wordt een bericht weer gegeven voor elk bestand nadat het is gekopieerd.  Alleen als ze volledig zijn gekopieerd, wordt het laatste voltooiings bericht weer gegeven.
 
 ```powershell
 Workflow Copy-Files
@@ -221,13 +221,13 @@ Workflow Copy-Files
 ```
 
 > [!NOTE]
-> We raden het uitvoeren van onderliggende runbooks niet parallel aan, omdat dit is aangetoond dat dit onbetrouwbare resultaten oplevert. De uitvoer van het onderliggende runbook wordt soms niet weergegeven en instellingen in een onderliggende runbook kunnen van invloed zijn op de andere parallelle onderliggende runbooks. Variabelen zoals $VerbosePreference, $WarningPreference en andere mogen niet worden gepropageerd naar de runbooks voor kinderen. En als het onderliggende runbook deze waarden wijzigt, worden ze mogelijk niet goed hersteld na aanroep.
+> Het is niet raadzaam om onderliggende runbooks parallel uit te voeren, omdat deze is weer gegeven om onbetrouwbare resultaten te geven. De uitvoer van het onderliggende runbook wordt soms niet weer gegeven en instellingen in één onderliggend runbook kunnen van invloed zijn op de andere parallelle onderliggende runbooks. Variabelen zoals $VerbosePreference, $WarningPreference en anderen mogen niet worden door gegeven aan de onderliggende runbooks. En als het onderliggende runbook deze waarden wijzigt, zijn ze mogelijk niet juist teruggezet na het aanroepen.
 
 ## <a name="checkpoints"></a>Controlepunten
 
-Een *controlepunt* is een momentopname van de huidige status van de werkstroom die de huidige waarde voor variabelen en eventuele uitvoer die tot dat punt wordt gegenereerd, bevat. Als een werkstroom ten onrechte eindigt of wordt opgeschort, begint de volgende keer dat deze wordt uitgevoerd, vanaf het laatste controlepunt in plaats van het begin van de werkstroom.  U een controlepunt instellen `Checkpoint-Workflow` in een werkstroom met de activiteit. Azure Automation heeft een functie genaamd [fair share,](automation-runbook-execution.md#fair-share)waarbij elke runbook die 3 uur wordt uitgevoerd, wordt gelost om andere runbooks uit te voeren. Uiteindelijk wordt het geloste runbook opnieuw geladen en wanneer dit het is, wordt de uitvoering hervat vanaf het laatste controlepunt in het runbook. Om te garanderen dat het runbook uiteindelijk wordt voltooid, moet u controlepunten toevoegen met intervallen die minder dan 3 uur duren. Als tijdens elke run een nieuw controlepunt wordt toegevoegd en als het runbook na 3 uur wordt uitgezet vanwege een fout, wordt het runbook voor onbepaalde tijd hervat.
+Een *controle punt* is een moment opname van de huidige status van de werk stroom die de huidige waarde voor variabelen bevat en een uitvoer die op dat punt is gegenereerd. Als een werk stroom eindigt met een fout of wordt onderbroken, wordt deze in de volgende keer uitgevoerd vanaf het laatste controle punt in plaats van aan het begin van de werk stroom.  U kunt een controle punt instellen in een werk stroom `Checkpoint-Workflow` met de activiteit. Azure Automation heeft een functie met de naam [fair share](automation-runbook-execution.md#fair-share), waarbij elk runbook dat drie uur wordt uitgevoerd, wordt verwijderd zodat andere runbooks kunnen worden uitgevoerd. Uiteindelijk wordt het niet-geladen runbook opnieuw geladen en wanneer dit het geval is, wordt de uitvoering hervat vanaf het laatste controle punt dat in het runbook is gemaakt. Om ervoor te zorgen dat het runbook uiteindelijk wordt voltooid, moet u controle punten toevoegen met intervallen die minder dan drie uur worden uitgevoerd. Als tijdens elke uitvoering een nieuw controle punt wordt toegevoegd en als het runbook na 3 uur wordt verwijderd als gevolg van een fout, wordt het runbook voor onbepaalde tijd hervat.
 
-In de volgende voorbeeldcode treedt een uitzondering op nadat Activiteit2 ervoor zorgt dat de werkstroom is beëindigd. Wanneer de werkstroom opnieuw wordt uitgevoerd, wordt activiteit2 gestart, omdat dit vlak na de laatste controlepuntset was.
+In de volgende voorbeeld code treedt een uitzonde ring op nadat de werk stroom is beëindigd door Activiteit2. Wanneer de werk stroom opnieuw wordt uitgevoerd, wordt deze gestart door Activiteit2 uit te voeren, aangezien dit net nadat het laatste controle punt is ingesteld.
 
 ```powershell
 <Activity1>
@@ -237,9 +237,9 @@ Checkpoint-Workflow
 <Activity3>
 ```
 
-U moet controlepunten instellen in een werkstroom na activiteiten die mogelijk kunnen worden geuitzondering en mogen niet worden herhaald als de werkstroom wordt hervat. Uw werkstroom kan bijvoorbeeld een virtuele machine maken. U moet een controlepunt vastleggen zowel voor als na de opdrachten voor het aanmaken van de virtuele machine. Als de creatie mislukt, worden de opdrachten herhaald als de werkstroom opnieuw wordt gestart. Als de werkstroom mislukt nadat de creatie is geslaagd, wordt de virtuele machine niet opnieuw gemaakt wanneer de werkstroom wordt hervat.
+U moet controle punten instellen in een werk stroom na activiteiten die mogelijk gevoelig zijn voor uitzonde ring en niet moeten worden herhaald als de werk stroom wordt hervat. Uw werk stroom kan bijvoorbeeld een virtuele machine maken. U moet een controlepunt vastleggen zowel voor als na de opdrachten voor het aanmaken van de virtuele machine. Als het maken mislukt, worden de opdrachten herhaald als de werk stroom opnieuw wordt gestart. Als de werk stroom mislukt nadat het maken is voltooid, wordt de virtuele machine niet opnieuw gemaakt wanneer de werk stroom wordt hervat.
 
-In het volgende voorbeeld worden meerdere bestanden naar een netwerklocatie gekopieerd en wordt na elk bestand een controlepunt ingesteld.  Als de netwerklocatie verloren gaat, eindigt de werkstroom ten onrechte.  Wanneer het opnieuw wordt gestart, wordt deze hervat bij het laatste controlepunt, wat betekent dat alleen de bestanden die al zijn gekopieerd, worden overgeslagen.
+In het volgende voor beeld worden meerdere bestanden gekopieerd naar een netwerk locatie en wordt na elk bestand een controle punt ingesteld.  Als de netwerk locatie is verbroken, eindigt de werk stroom met de fout.  Wanneer het opnieuw wordt gestart, wordt het op het laatste controle punt hervat, wat betekent dat alleen de bestanden die al zijn gekopieerd, worden overgeslagen.
 
 ```powershell
 Workflow Copy-Files
@@ -257,9 +257,9 @@ Workflow Copy-Files
 }
 ```
 
-Omdat gebruikersnaamreferenties niet worden gehandhaafd nadat u de activiteit [Onderbreken-werkstroom](https://technet.microsoft.com/library/jj733586.aspx) of na het laatste controlepunt hebt aangeroepen, `Suspend-Workflow` moet u de referenties op null instellen en deze vervolgens opnieuw ophalen in het assetarchief nadat of het controlepunt is aangeroepen.  Anders ontvangt u mogelijk het volgende foutbericht:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
+Omdat de referenties van de gebruikers naam niet worden bewaard nadat u de activiteit [suspend-workflow](https://technet.microsoft.com/library/jj733586.aspx) of na het laatste controle punt hebt aangeroepen, moet u de referenties instellen op null en ze vervolgens opnieuw ophalen uit `Suspend-Workflow` de Asset Store nadat het controle punt is aangeroepen.  Anders wordt het volgende fout bericht weer gegeven:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
-Dezelfde code laat zien hoe u hiermee omgaat in uw PowerShell Workflow-runbooks.
+In de volgende code ziet u hoe u dit kunt afhandelen in uw Power shell workflow-runbooks.
 
 ```powershell
 workflow CreateTestVms
@@ -286,14 +286,14 @@ workflow CreateTestVms
 ```
 
 > [!NOTE]
-> Voor niet-grafische PowerShell-runbooks `Add-AzAccount` en `Add-AzureRMAccount` zijn aliassen voor [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). U deze cmdlets gebruiken of u [uw modules](automation-update-azure-modules.md) in uw Automation-account updaten naar de nieuwste versies. Mogelijk moet u uw modules bijwerken, zelfs als u zojuist een nieuw Automation-account hebt gemaakt.
+> Voor niet-grafische power shell- `Add-AzAccount` runbooks `Add-AzureRMAccount` en aliassen voor [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). U kunt deze cmdlets gebruiken of u kunt [uw modules](automation-update-azure-modules.md) in uw Automation-account bijwerken naar de meest recente versies. Mogelijk moet u uw modules bijwerken, zelfs als u zojuist een nieuw Automation-account hebt gemaakt.
 
 
-Dit is niet vereist als u een Run As-account gebruikt dat is geconfigureerd met een serviceprincipal.
+Dit is niet vereist als u verificatie uitvoert met een run as-account dat is geconfigureerd met een service-principal.
 
-Zie [Controlepunten toevoegen aan een scriptwerkstroomvoor](https://technet.microsoft.com/library/jj574114.aspx)meer informatie over controlepunten.
+Zie [controle punten toevoegen aan een script werk stroom](https://technet.microsoft.com/library/jj574114.aspx)voor meer informatie over controle punten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Mijn eerste PowerShell-werkstroomrunboek](automation-first-runbook-textual.md) om aan de slag te gaan met PowerShell-werkstroomrunboeken
+* Zie [mijn eerste Power shell workflow-runbook](automation-first-runbook-textual.md) om aan de slag te gaan met Power shell workflow-runbooks
 

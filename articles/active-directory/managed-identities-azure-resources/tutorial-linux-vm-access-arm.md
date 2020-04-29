@@ -1,5 +1,5 @@
 ---
-title: Snelstart`:` Een beheerde identiteit gebruiken om toegang te krijgen tot Azure Resource Manager - Azure AD
+title: Quick`:` start een beheerde identiteit gebruiken om toegang te krijgen tot Azure Resource Manager-Azure AD
 description: Een snelstart waarbij u het proces doorloopt voor het gebruiken van een door het Linux-VM-systeem toegewezen beheerde identiteit om toegang te krijgen tot Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ee10a73579e8533cd14ecfeeebab44e726ba16b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74326326"
 ---
 # <a name="use-a-linux-vm-system-assigned-managed-identity-to-access-azure-resource-manager"></a>Een door het Linux-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Resource Manager
@@ -44,7 +44,7 @@ Met behulp van beheerde identiteiten voor Azure-resources kan uw code toegangsto
 2. Selecteer de specifieke **resourcegroep** die u eerder hebt gemaakt.
 3. Ga naar **Toegangsbeheer (IAM)** in het linkerpaneel.
 4. Klik op **Toevoegen** om een nieuwe roltoewijzing voor de virtuele machine toe te voegen. Kies **Rol** als **lezer**.
-5. Toewijzen in de volgende vervolgkeuzelijst **toegang tot** de **virtuele**machine van de bron .
+5. Wijs in de volgende vervolg keuzelijst **toegang toe aan** de **virtuele bron machine**.
 6. Controleer vervolgens of het juiste abonnement wordt weergegeven in de vervolgkeuzelijst **Abonnement**. Bij **Resourcegroep** selecteert u **Alle resourcegroepen**.
 7. Kies ten slotte bij **Selecteren** uw virtuele Linux-machine in de vervolgkeuzelijst en klik op **Opslaan**.
 
@@ -55,7 +55,7 @@ Met behulp van beheerde identiteiten voor Azure-resources kan uw code toegangsto
 U hebt een SSH-client nodig om deze stappen uit te voeren. Als u Windows gebruikt, kunt u de SSH-client in het [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/about) gebruiken. Zie [De sleutels van uw SSH-client gebruiken onder Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md) of [Een sleutelpaar met een openbare SSH-sleutel en een privé-sleutel maken en gebruiken voor virtuele Linux-machines in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md) als u hulp nodig hebt bij het configureren van de sleutels van uw SSH-client.
 
 1. Navigeer in de portal naar de virtuele Linux-machine en klik in het **overzicht** op **Verbinden**.  
-2. **Maak verbinding** met de VM met de SSH-client van uw keuze. 
+2. **Maak verbinding** met de virtuele machine met de SSH-client van uw keuze. 
 3. Dien in het terminalvenster met behulp van `curl` een aanvraag in bij het eindpunt van de lokaal beheerde identiteiten voor Azure-resources om een toegangstoken voor Azure Resource Manager op te halen.  
  
     Hieronder ziet u de `curl`-aanvraag voor het toegangstoken.  
@@ -101,4 +101,4 @@ In deze snelstart hebt u geleerd hoe u toegang krijgt tot de Azure Resource Mana
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
->[Maak, lijst of verwijder een door de gebruiker toegewezen beheerde identiteit met Azure PowerShell](how-to-manage-ua-identity-powershell.md)
+>[een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met behulp van Azure PowerShell](how-to-manage-ua-identity-powershell.md)

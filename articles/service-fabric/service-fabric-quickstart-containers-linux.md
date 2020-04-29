@@ -1,15 +1,15 @@
 ---
-title: Een Linux-container-app maken op ServiceFabric in Azure
+title: Een Linux-container-app maken op Service Fabric in azure
 description: In deze snelstartgids maakt u een Docker-installatiekopie met uw toepassing, pusht u de installatiekopie naar een containerregister en implementeert u de container vervolgens naar een Service Fabric-cluster.
 ms.topic: quickstart
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: eb0a83d0110002cc32998af4083d06cf6e86e16a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75372683"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Snelstartgids: Linux-containers implementeren op Service Fabric
@@ -26,7 +26,7 @@ Dit zijn de vereisten voor het voltooien van deze snelstart:
 
 1. Als u nog geen abonnement op Azure hebt, [maakt u een gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
 
-2. De [Azure CLI installeren](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
+2. De [Azure cli](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) installeren
 
 3. Installeer de [Service Fabric-SDK en -CLI](service-fabric-get-started-linux.md#installation-methods)
 
@@ -108,7 +108,7 @@ Mozilla Firefox is de standaardbrowser in Ubuntu 16.04. U kunt het certificaat i
     ./install.sh
     ```
 
-3. Open een webbrowser en ga naar het Service Fabric Explorer-eindpunt voor uw cluster. Het eindpunt heeft de volgende indeling: **https://\<mijn-azure-service-fabric-cluster-url>:19080/Explorer**; bijvoorbeeld . `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer` </br>
+3. Open een webbrowser en ga naar het Service Fabric Explorer-eindpunt voor uw cluster. Het eind punt heeft de volgende indeling **:\<https://My-Azure-service-Fabric-cluster-URL>:19080/Explorer**; bijvoorbeeld `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`. </br>
 
 4. Als u het **toepassings**knooppunt uitvouwt, ziet u nu een vermelding voor het type stemtoepassing en het exemplaar dat u hebt gemaakt.
 
@@ -169,7 +169,7 @@ Gebruik het uninstall-script (uninstall.sh) dat is opgegeven in de sjabloon om h
 
 De eenvoudigste manier om het cluster en alle resources te verwijderen, is om de resourcegroep te verwijderen.
 
-Meld u aan bij Azure en selecteer de abonnements-ID waarmee u het cluster wilt verwijderen. U kunt uw abonnements-id vinden door u aan te melden bij de Azure-portal. Verwijder de resourcegroep en alle clusterresources met behulp van de opdracht [az group delete](/cli/azure/group?view=azure-cli-latest).
+Meld u aan bij Azure en selecteer het abonnement-ID waarmee u het cluster wilt verwijderen. U kunt uw abonnements-id vinden door u aan te melden bij de Azure-portal. Verwijder de resourcegroep en alle clusterresources met behulp van de opdracht [az group delete](/cli/azure/group?view=azure-cli-latest).
 
 ```azurecli
 az login

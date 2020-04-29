@@ -1,7 +1,7 @@
 ---
 title: Geavanceerde R-functies schrijven
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Meer informatie over het schrijven van een R-functie voor geavanceerde statistische berekeningen in Azure SQL Database met Machine Learning Services (voorbeeld).
+description: Meer informatie over het schrijven van een R-functie voor geavanceerde statistische berekeningen in Azure SQL Database met behulp van Machine Learning Services (preview).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -15,15 +15,15 @@ manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: ba78267b1c6dc8f0e1bd25bb8ecdb1d8d344d03e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81453111"
 ---
-# <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Geavanceerde R-functies schrijven in Azure SQL Database met Machine Learning Services (voorbeeld)
+# <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Geavanceerde R-functies schrijven in Azure SQL Database met behulp van Machine Learning Services (preview)
 
-In dit artikel wordt beschreven hoe u Wiskundige en hulpprogrammafuncties van R insluit in een SQL-opgeslagen procedure. Geavanceerde statistische functies die ingewikkeld zijn om te implementeren in T-SQL kunnen worden gedaan in R met slechts een enkele regel code.
+In dit artikel wordt beschreven hoe u R wiskundige en hulpprogramma functies insluit in een door SQL opgeslagen procedure. Geavanceerde statistische functies die gecompliceerd zijn om te worden geïmplementeerd in T-SQL, kunnen worden uitgevoerd in R met slechts één regel code.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
@@ -31,21 +31,21 @@ In dit artikel wordt beschreven hoe u Wiskundige en hulpprogrammafuncties van R 
 
 - Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/) voordat u begint.
 
-- Als u de voorbeeldcode in deze oefeningen wilt uitvoeren, moet u eerst Azure SQL Database hebben [met Machine Learning Services (met R)](sql-database-machine-learning-services-overview.md) ingeschakeld.
+- Als u de voorbeeld code in deze oefeningen wilt uitvoeren, moet u eerst [Azure SQL database hebben met Machine Learning Services (met R)](sql-database-machine-learning-services-overview.md) ingeschakeld.
 
-- Zorg ervoor dat u de nieuwste [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) hebt geïnstalleerd. U R-scripts uitvoeren met andere databasebeheer- of querytools, maar in deze quickstart gebruikt u SSMS.
+- Zorg ervoor dat u de nieuwste versie van [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) hebt geïnstalleerd. U kunt R-scripts uitvoeren met andere database beheer-of query hulpprogramma's, maar in deze Snelstartgids gebruikt u SSMS.
 
-## <a name="create-a-stored-procedure-to-generate-random-numbers"></a>Een opgeslagen procedure maken om willekeurige getallen te genereren
+## <a name="create-a-stored-procedure-to-generate-random-numbers"></a>Een opgeslagen procedure maken voor het genereren van wille keurige getallen
 
-Laten we voor de eenvoud `stats` het R-pakket gebruiken dat standaard is geïnstalleerd en geladen met Azure SQL Database met machine learning services (voorbeeld). Het pakket bevat honderden functies voor veelvoorkomende `rnorm` statistische taken, waaronder de functie. Deze functie genereert een bepaald aantal willekeurige getallen met behulp van de normale verdeling, gezien een standaarddeviatie en middelen.
+Voor eenvoud gebruiken we het R `stats` -pakket dat standaard is geïnstalleerd en geladen met Azure SQL database met behulp van Machine Learning Services (preview). Het pakket bevat honderden functies voor algemene statistische taken, waaronder de `rnorm` functie. Deze functie genereert een opgegeven aantal wille keurige getallen met behulp van de normale distributie, op basis van een standaard afwijking en een gemiddelde.
 
-De volgende R-code retourneert bijvoorbeeld 100 nummers op een gemiddelde van 50, met een standaarddeviatie van 3.
+De volgende R-code retourneert bijvoorbeeld 100 getallen met een gemiddelde van 50, op basis van een standaard afwijking van 3.
 
 ```R
 as.data.frame(rnorm(100, mean = 50, sd = 3));
 ```
 
-Als u deze lijn Van R `sp_execute_external_script` vanuit T-SQL wilt aanroepen, voert u de Functie R uit en voegt u de R-functie toe aan de parameter R-script, zoals deze:
+Als u deze regel van R vanuit T-SQL wilt aanroepen, voert `sp_execute_external_script` u de r-functie uit in de para meter r-script en voegt u deze toe als volgt:
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -56,9 +56,9 @@ OutputDataSet <- as.data.frame(rnorm(100, mean = 50, sd =3));
 WITH RESULT SETS(([Density] FLOAT NOT NULL));
 ```
 
-Wat als u het gemakkelijker wilt maken om een andere set willekeurige getallen te genereren?
+Wat moet u doen als u eenvoudiger een andere set wille keurige getallen wilt genereren?
 
-Dat is eenvoudig in combinatie met SQL. U definieert een opgeslagen procedure die de argumenten van de gebruiker krijgt en geeft deze argumenten vervolgens door in het R-script als variabelen.
+Dat is eenvoudig in combi natie met SQL. U definieert een opgeslagen procedure die de argumenten van de gebruiker ophaalt en geeft die argumenten vervolgens door in het R-script als variabelen.
 
 ```sql
 CREATE PROCEDURE MyRNorm (
@@ -79,13 +79,13 @@ OutputDataSet <- as.data.frame(rnorm(mynumbers, mymean, mysd));
 WITH RESULT SETS(([Density] FLOAT NOT NULL));
 ```
 
-- De eerste regel definieert elk van de SQL-invoerparameters die nodig zijn wanneer de opgeslagen procedure wordt uitgevoerd.
+- De eerste regel definieert elk van de para meters voor SQL-invoer die vereist zijn wanneer de opgeslagen procedure wordt uitgevoerd.
 
-- De lijn `@params` die begint met definieert alle variabelen die door de R-code worden gebruikt en de bijbehorende SQL-gegevenstypen.
+- De regel die begint `@params` met definieert alle variabelen die worden gebruikt door de R-code en de bijbehorende SQL-gegevens typen.
 
-- De regels die onmiddellijk volgen, brengen de SQL-parameternamen in kaart met de bijbehorende R-variabelenamen.
+- De regels die onmiddellijk volgen, wijzen de namen van SQL-para meters toe aan de corresponderende R-variabele namen.
 
-Nu u de R-functie in een opgeslagen procedure hebt verpakt, u de functie eenvoudig aanroepen en verschillende waarden doorgeven, zoals deze:
+Nu u de R-functie in een opgeslagen procedure hebt ingepakt, kunt u de functie eenvoudig aanroepen en in verschillende waarden door geven, bijvoorbeeld:
 
 ```sql
 EXECUTE MyRNorm @param1 = 100
@@ -93,11 +93,11 @@ EXECUTE MyRNorm @param1 = 100
     , @param3 = 3
 ```
 
-## <a name="use-r-utility-functions-for-troubleshooting"></a>Gebruik R-hulpprogrammafuncties voor het oplossen van problemen
+## <a name="use-r-utility-functions-for-troubleshooting"></a>R-hulpprogramma functies gebruiken voor het oplossen van problemen
 
-Het `utils` pakket, standaard geïnstalleerd, biedt een verscheidenheid aan hulpprogrammafuncties voor het onderzoeken van de huidige R-omgeving. Deze functies kunnen handig zijn als u discrepanties vindt in de manier waarop uw R-code presteert in SQL en in externe omgevingen. U bijvoorbeeld de `memory.limit()` R-functie gebruiken om geheugen te krijgen voor de huidige R-omgeving.
+Het `utils` pakket dat standaard wordt geïnstalleerd, biedt diverse hulp functies voor het onderzoeken van de huidige R-omgeving. Deze functies kunnen nuttig zijn als u verschillen zoekt in de manier waarop uw R-code wordt uitgevoerd in SQL en buiten omgevingen. U kunt bijvoorbeeld de functie R `memory.limit()` gebruiken om geheugen voor de huidige R-omgeving op te halen.
 
-Omdat `utils` het pakket is geïnstalleerd maar niet standaard `library()` is geladen, moet u de functie eerst gebruiken om het pakket te laden.
+Omdat het `utils` pakket is geïnstalleerd maar niet standaard is geladen, moet u de `library()` functie gebruiken om deze eerst te laden.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -111,4 +111,4 @@ WITH RESULT SETS(([Col1] INT NOT NULL));
 ```
 
 > [!TIP]
-> Veel gebruikers gebruiken de systeemtimingfuncties graag `system.time` in `proc.time`R, zoals en , om de tijd vast te leggen die door R-processen wordt gebruikt en prestatieproblemen te analyseren.
+> Veel gebruikers gebruiken de systeem timing functies in R, zoals `system.time` en `proc.time`, voor het vastleggen van de tijd die wordt gebruikt door R-processen en het analyseren van prestatie problemen.

@@ -1,16 +1,16 @@
 ---
-title: 'Snelstart: nieuwe beleidstoewijzing met Azure CLI'
-description: In deze snelstart gebruikt u Azure CLI om een Azure-beleidstoewijzing te maken om niet-compatibele resources te identificeren.
+title: 'Snelstartgids: nieuwe beleids toewijzing met Azure CLI'
+description: In deze Quick Start gebruikt u Azure CLI om een Azure Policy toewijzing te maken om niet-compatibele resources te identificeren.
 ms.date: 01/11/2020
 ms.topic: quickstart
 ms.openlocfilehash: 7f76191d97a936c745fc2b13b54011e787e0b5e6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75978324"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Snelstart: een beleidstoewijzing maken om niet-compatibele resources met Azure CLI te identificeren
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Snelstartgids: een beleids toewijzing maken om niet-compatibele resources te identificeren met Azure CLI
 
 De eerste stap in het begrijpen van naleving in Azure is het identificeren van de status van uw resources.
 In deze quickstart gaat u een beleidstoewijzing maken voor het identificeren van virtuele machines die geen beheerde schijven gebruiken.
@@ -21,17 +21,17 @@ Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
+- Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
 
-- Deze quickstart vereist dat u Azure CLI-versie 2.0.76 of hoger uitvoert om de CLI lokaal te installeren en te gebruiken. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
+- Voor deze Quick start moet u Azure CLI versie 2.0.76 of hoger uitvoeren om de CLI lokaal te installeren en te gebruiken. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
 
-- Registreer de Azure Policy Insights-bronprovider met Azure CLI. Als u de resourceprovider registreert, controleer dan of uw abonnement ermee werkt. Als u een resourceprovider wilt registreren, moet u toestemming hebben om de bewerking van de resourceprovider te registeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar. Voer de volgende opdracht uit om de resourceprovider te registreren:
+- Registreer de Azure Policy Insights-resource provider met behulp van Azure CLI. Als u de resourceprovider registreert, controleer dan of uw abonnement ermee werkt. Als u een resourceprovider wilt registreren, moet u toestemming hebben om de bewerking van de resourceprovider te registeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar. Voer de volgende opdracht uit om de resourceprovider te registreren:
 
   ```azurecli-interactive
   az provider register --namespace 'Microsoft.PolicyInsights'
   ```
 
-  Zie [Resourceproviders en -typen](../../azure-resource-manager/management/resource-providers-and-types.md) voor meer informatie over het registreren en weergeven van resourceproviders
+  Zie [resource providers en-typen](../../azure-resource-manager/management/resource-providers-and-types.md) voor meer informatie over het registreren en weer geven van resource providers.
 
 - Installeer de [ARMClient](https://github.com/projectkudu/ARMClient) als u dit nog niet hebt gedaan. Dit is een hulpprogramma waarmee HTTP-aanvragen worden verzonden naar Azure Resource Manager-API’s.
 
@@ -62,7 +62,7 @@ Als u de resources wilt zien die niet compatibel zijn onder deze nieuwe toewijzi
 az policy assignment list --query "[?displayName=='Audit VMs without managed disks Assignment'].id"
 ```
 
-Zie [az-beleidstoewijzing](/cli/azure/policy/assignment)voor meer informatie over beleids-id's.
+Zie [AZ Policy Assignment](/cli/azure/policy/assignment)(Engelstalig) voor meer informatie over beleids toewijzings-id's.
 
 Voer daarna de volgende opdracht uit om de resource-id's te verkrijgen van de niet-compatibele resources. Deze worden uitgevoerd naar een JSON-bestand:
 

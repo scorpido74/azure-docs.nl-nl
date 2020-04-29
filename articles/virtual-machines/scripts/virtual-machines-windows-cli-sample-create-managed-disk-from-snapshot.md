@@ -1,5 +1,5 @@
 ---
-title: Een beheerde schijf maken op basis van een momentopname - CLI-voorbeeld
+title: Een beheerde schijf maken op basis van een moment opname-CLI-voor beeld
 description: 'Azure CLI-voorbeeldscript: een beheerde schijf maken op basis van een momentopname'
 services: virtual-machines-windows
 documentationcenter: storage
@@ -16,10 +16,10 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 00fdfe3669e0ad84702f20be4d7efffcdc871149
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459539"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-cli"></a>Een beheerde schijf maken met CLI op basis van een momentopname
@@ -47,4 +47,4 @@ Dit script gebruikt de volgende opdrachten om een beheerde schijf te maken op ba
 
 Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
-Aanvullende virtuele machine en beheerde schijven CLI-scriptvoorbeelden zijn te vinden in de [Azure Windows VM-documentatie.](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Meer informatie over de CLI-voorbeeld scripts voor virtuele machines en beheerde schijven vindt u in de documentatie van de [Azure Windows-VM](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

@@ -1,77 +1,77 @@
 ---
-title: Een Jupyter-notitieblok klonen vanuit GitHub met Azure-notitieblok
-description: Kloon snel een Jupyter-notitieblok uit een GitHub-opslagplaats en voer het uit in uw Azure Notebooks-account.
+title: Een Jupyter-notebook klonen vanuit GitHub met Azure Notebooks preview
+description: Kloon snel een Jupyter-notebook vanuit een GitHub-opslag plaats en voer deze uit in uw Azure Notebooks-account.
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.openlocfilehash: d0f3a12ff04e115074c3821c5e29652484710bca
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77064594"
 ---
-# <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>Snelstart: een notitieblok klonen in de preview-proefversie van Azure Notebooks
+# <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>Snelstartgids: een notitie blok klonen in Azure Notebooks preview
 
-In deze quickstart kopieert u een Jupyter-notitieblok dat is opgeslagen in GitHub naar een Azure Notebooks-account. 
+In deze Snelstartgids kopieert u een Jupyter-notebook die is opgeslagen in GitHub naar een Azure Notebooks-account. 
 
-GitHub-repositories bieden opslag- en versiebeheer voor Jupyter-laptops. Bijdragers onderhouden lokale kopieën van de opslagplaatsen en voeren de notitieblokken uit die kopieën uit. Als u een Jupyter-notitieblok van GitHub in uw Azure Notebooks-account vastmaakt, wordt een onafhankelijke kopie van het notitieblok gemaakt. Wijzigingen worden alleen opgeslagen in uw Azure Notebooks-account en hebben geen invloed op de oorspronkelijke GitHub-opslagplaats. 
+GitHub-opslag plaatsen bieden opslag-en versie beheer voor Jupyter-notebooks. Mede werkers behouden lokale kopieën van de opslag plaatsen en voeren de notitie blokken uit die kopieën. Als u een Jupyter-notebook van GitHub naar uw Azure Notebooks-account kloont, wordt er een onafhankelijke kopie van het notitie blok gemaakt. Wijzigingen worden alleen in uw Azure Notebooks-account opgeslagen en hebben geen invloed op de oorspronkelijke GitHub-opslag plaats. 
 
-Omdat uw Azure Notebooks-kloon zich in de cloud bevindt, u deze delen met bijdragers, die geen lokale kopieën hoeven te maken of Jupyter op hun computers hoeven te laten installeren. U een notitieblok ook gewoon klonen als uitgangspunt voor een eigen project, of om gegevensbestanden te verkrijgen. 
+Omdat uw Azure Notebooks kloon zich in de Cloud bevindt, kunt u deze delen met samen werkers, die geen lokale kopieën hoeven te maken of Jupyter op hun computers hebben geïnstalleerd. U kunt een notitie blok ook gewoon als uitgangs punt voor een eigen project klonen of gegevens bestanden ophalen. 
 
 ## <a name="prerequisites"></a>Vereisten
 Geen.
 
-## <a name="clone-azure-cognitive-services-notebooks"></a>Azure Cognitive Services-notitieblokken klonen
+## <a name="clone-azure-cognitive-services-notebooks"></a>Azure Cognitive Services-notebooks klonen
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-1. Ga naar [Azure-notitieblokken](https://notebooks.azure.com) en meld u aan. Zie [Snelstart - Aanmelden bij Azure-notitieblokken voor](quickstart-sign-in-azure-notebooks.md)meer informatie.
+1. Ga naar [Azure notebooks](https://notebooks.azure.com) en meld u aan. Zie [Quick Start (aanmelden bij Azure notebooks](quickstart-sign-in-azure-notebooks.md)) voor meer informatie.
 
-1. Selecteer op uw openbare profielpagina **Mijn projecten** boven aan de pagina:
+1. Selecteer op de pagina openbaar profiel **Mijn projecten** boven aan de pagina:
 
-    ![Koppeling Mijn projecten boven aan het browservenster](media/quickstarts/my-projects-link.png)
+    ![De koppeling Mijn projecten bovenaan in het browser venster](media/quickstarts/my-projects-link.png)
 
-1. Selecteer **op** de pagina Mijn projecten de pijl-omhoog -knop (sneltoets: U; de knop wordt weergegeven als **GitHub Repo uploaden** wanneer het browservenster breed genoeg is):
+1. Selecteer op de pagina **Mijn projecten** de pijl-omhoog (sneltoets: U; de knop wordt weer gegeven als **Upload github opslag plaats** wanneer het browser venster breed genoeg is):
 
-    ![GitHub Repo-opdracht uploaden op de pagina Mijn projecten](media/quickstarts/upload-github-repo-command.png)
+    ![GitHub opslag plaats-opdracht uploaden op de pagina Mijn projecten](media/quickstarts/upload-github-repo-command.png)
 
-1. Selecteer **Upload GitHub Repository** vervolgens **Importeren:**
+1. In de **github-opslag plaats** die wordt weer gegeven, voert u de volgende gegevens in of stelt u deze in en selecteert u **importeren**:
 
-   - **GitHub repository**: Microsoft/cognitive-services-notebooks (met deze naam worden de Jupyter-notitieblokken voor Azure Cognitive Services bij [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)).
-   - **Kloon recursief**: (gewist)
-   - **Projectnaam**: Cognitive Services Clone
-   - **Project ID**: cognitive-services-clone
-   - **Publiek**: (gewist)
+   - **Github-opslag plaats**: micro soft/cognitieve-Services-notebooks (deze naam klont de Jupyter- [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)notebooks voor Azure Cognitive Services op).
+   - **Recursief klonen**: (uitgeschakeld)
+   - **Project naam**: klonen Cognitive Services
+   - **Project-id**: cognitieve-Services-klonen
+   - **Openbaar**: (uitgeschakeld)
 
-     ![GitHub Repo pop-up uploaden om repo-informatie te verzamelen](media/quickstarts/upload-github-repo-popup.png)
+     ![GitHub opslag plaats-pop uploaden om opslag plaats informatie te verzamelen](media/quickstarts/upload-github-repo-popup.png)
 
-1. Wees geduldig terwijl het proces is voltooid; het klonen van een opslagplaats kan een paar minuten duren.
+1. Een ogen blik geduld. het proces wordt voltooid. het klonen van een opslag plaats kan een paar minuten duren.
 
-1. Zodra het klonen is voltooid, neemt Azure Notebooks u mee naar het nieuwe project waar u de kopieën van alle bestanden zien.
+1. Wanneer het klonen is voltooid, gaat u Azure Notebooks naar het nieuwe project waarin u de kopieën van alle bestanden kunt zien.
 
     [![](media/quickstarts/completed-clone.png "View of a completed clone")](media/quickstarts/completed-clone.png#lightbox)
 
-## <a name="share-a-notebook"></a>Een notitieblok delen
+## <a name="share-a-notebook"></a>Een notitie blok delen
 
-1. Als u uw kopie van het gekloonde project wilt delen, gebruikt u het besturingselement **Delen** of een koppeling verkrijgen, ontvangt u HTML- of Markdown-code die de koppeling bevat of maakt u een e-mailbericht met de koppeling:
+1. Als u uw kopie van het gekloonde project wilt delen, gebruikt u het besturings element **delen** of verkrijgt u een koppeling, haalt u een HTML-code op die de koppeling bevat of maakt u een e-mail bericht met de koppeling:
 
-    ![Opdracht Projectdelen](media/quickstarts/share-project-command.png)
+    ![De opdracht project share](media/quickstarts/share-project-command.png)
 
-1. Omdat je de openbare optie **hebt** goedgekeurd bij het klonen van het project, is de kloon privé. Als u uw exemplaar openbaar wilt maken, selecteert u **Projectinstellingen,** stelt u de optie **Openbaar project** in de pop-up in en selecteert u **Opslaan**.
+1. Omdat u de **open bare** optie hebt uitgeschakeld tijdens het klonen van het project, is de kloon persoonlijk. Als u uw kopie openbaar wilt maken, selecteert u **project instellingen**, stelt u de optie **openbaar project** in het pop-upvenster in en selecteert u vervolgens **Opslaan**.
 
-1. Selecteer een notitieblok in het project om het uit te voeren. Elk notitieblok in de Azure Cognitive Services-repository is bijvoorbeeld zijn eigen, op zichzelf staande Quickstart. De afbeelding hieronder toont het resultaat van het gebruik van de BingImageSearchAPI notebook, na het toevoegen van een Cognitive Services API-abonnementssleutel en het wijzigen van de zoekterm "puppies" in "konijnen":
+1. Selecteer een notitie blok in het project om het uit te voeren. Elk notebook in de Azure Cognitive Services-opslag plaats is bijvoorbeeld een eigen eigen Snelstartgids. In de onderstaande afbeelding ziet u het resultaat van het gebruik van de BingImageSearchAPI-notebook, na het toevoegen van een Cognitive Services API-abonnements sleutel en het wijzigen van de zoek term ' Puppies ' in ' Bunnies ':
 
-    ![Jupyter-laptop dat is gekloond van GitHub](media/quickstarts/clone-notebook-result.png)
+    ![Uitvoeren van Jupyter-notebook gekloond vanuit GitHub](media/quickstarts/clone-notebook-result.png)
 
-1. Wanneer u klaar bent met het uitvoeren van het notitieblok, selecteert u **Bestand** > **sluiten en stoppen** om het notitieblok en het browservenster te sluiten.
+1. Wanneer u klaar bent met het uitvoeren van het notitie blok, selecteert u **bestand** > **sluiten en stoppen** om het notitie blok en het browser venster te sluiten.
 
-1. Als u een afzonderlijk notitieblok in het project wilt delen, klikt u met de rechtermuisknop op het notitieblok en selecteert **u Koppeling kopiëren** (sneltoets: y):
+1. Als u een afzonderlijke notebook in het project wilt delen, klikt u met de rechter muisknop op het notitie blok en selecteert u **koppeling kopiëren** (sneltoets: y):
 
-    ![Opdracht Contextmenu om een koppeling naar een afzonderlijk notitieblok te kopiëren](media/quickstarts/copy-link-to-individual-notebook.png)
+    ![Opdracht context menu om een koppeling naar een afzonderlijke notebook te kopiëren](media/quickstarts/copy-link-to-individual-notebook.png)
 
-1. Als u andere bestanden dan notitieblokken wilt bewerken, klikt u met de rechtermuisknop op het bestand in het project en selecteert u **Bestand bewerken** (sneltoets: i). De **standaardactie, Uitvoeren** (sneltoets: r), toont alleen de bestandsinhoud en staat bewerking niet toe.
+1. Als u andere bestanden dan notebooks wilt bewerken, klikt u met de rechter muisknop op het bestand in het project en selecteert u **bestand bewerken** (sneltoets: i). Met de standaard actie **(sneltoets** : r) wordt alleen de inhoud van het bestand weer gegeven en kan niet worden bewerkt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Een Jupyter-notitieblok maken en uitvoeren om lineaire regressie uit te voeren](tutorial-create-run-jupyter-notebook.md)
+> [Zelf studie: een Jupyter-notebook maken en uitvoeren om lineaire regressie uit te voeren](tutorial-create-run-jupyter-notebook.md)

@@ -1,5 +1,5 @@
 ---
-title: De VHD van een beheerde schijf exporteren/kopiëren naar een opslagaccount in verschillende regio's - PowerShell-voorbeeld
+title: De VHD van een beheerde schijf exporteren/kopiëren naar een opslag account in een andere regio-Power shell-voor beeld
 description: 'Voorbeeld van Azure PowerShell-script: VHD van een beheerde schijf exporteren/kopiëren naar een opslagaccount in dezelfde of een andere regio'
 services: virtual-machines-windows
 documentationcenter: storage
@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
 ms.openlocfilehash: 8388863bb88e3e97d16ad7c80aad6387cf9e03b9
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459369"
 ---
 # <a name="exportcopy-the-vhd-of-a-managed-disk-to-a-storage-account-in-different-region-with-powershell"></a>VHD van een beheerde schijf met PowerShell exporteren/kopiëren naar een opslagaccount in een andere regio

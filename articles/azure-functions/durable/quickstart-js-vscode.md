@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.reviewer: azfuncdf, antchu
 ms.openlocfilehash: 55098daa69d3e878140b20095b0a3e08811269e1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80257645"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Uw eerste duurzame functie maken in JavaScript
@@ -28,46 +28,46 @@ Vereisten om deze zelfstudie te voltooien:
 
 * Installeer [Visual Studio Code](https://code.visualstudio.com/download).
 
-* De [azure-functie](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) vs-code-extensie installeren
+* De [Azure functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) VS code-extensie installeren
 
-* Zorg ervoor dat u de nieuwste versie van de [Azure Functions Core Tools hebt.](../functions-run-local.md)
+* Zorg ervoor dat u de nieuwste versie van de [Azure functions core tools](../functions-run-local.md)hebt.
 
-* Voor duurzame functies is een Azure-opslagaccount vereist. U hebt een Azure-abonnement nodig.
+* Durable Functions een Azure-opslag account vereist. U hebt een Azure-abonnement nodig.
 
-* Zorg ervoor dat versie 10.x of 12.x van [Node.js](https://nodejs.org/) is geïnstalleerd.
+* Zorg ervoor dat versie 10. x of 12. x van [node. js](https://nodejs.org/) is geïnstalleerd.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Uw lokale project maken 
 
-In deze sectie gebruikt u Visual Studio Code om een lokaal Azure-functieproject te maken. 
+In deze sectie gebruikt u Visual Studio code om een lokaal Azure Functions project te maken. 
 
-1. Druk in Visual Studio Code op F1 (of Ctrl/Cmd+Shift+P) om het opdrachtpalet te openen. Zoek en selecteer `Azure Functions: Create New Project...`in het opdrachtpalet .
+1. Druk in Visual Studio code op F1 (of Ctrl/Cmd + Shift + P) om het opdracht palet te openen. In het opdracht palet zoekt en selecteert u `Azure Functions: Create New Project...`.
 
     ![Functie maken](media/quickstart-js-vscode/functions-create-project.png)
 
-1. Kies een lege maplocatie voor uw project en kies **Selecteren**.
+1. Kies een lege maplocatie voor het project en kies **selecteren**.
 
-1. Geef de volgende aanwijzingen op:
+1. Voer de volgende informatie in om de aanwijzingen te volgen:
 
     | Vraag | Waarde | Beschrijving |
     | ------ | ----- | ----------- |
-    | Een taal selecteren voor uw functie-app-project | JavaScript | Maak een lokaal project Node.js Functions. |
-    | Een versie selecteren | Azure-functies v3 | U ziet deze optie alleen als de Core Tools nog niet zijn geïnstalleerd. In dit geval worden Core Tools geïnstalleerd wanneer u de app voor het eerst uitvoert. |
-    | Een sjabloon selecteren voor de eerste functie van uw project | Sla voor nu | |
-    | Selecteer hoe u uw project wilt openen | Openen in het huidige venster | Hiermee opent u VS-code opnieuw in de door u geselecteerde map. |
+    | Selecteer een taal voor uw functie-app-project | Javascript | Een lokaal node. js-functie project maken. |
+    | Een versie selecteren | Azure Functions v3 | U ziet deze optie alleen wanneer de kern Hulpprogramma's niet al zijn geïnstalleerd. In dit geval worden de kern Hulpprogramma's geïnstalleerd wanneer u de app voor het eerst uitvoert. |
+    | Selecteer een sjabloon voor de eerste functie van uw project | Nu overs Laan | |
+    | Selecteer hoe u uw project wilt openen | In het huidige venster openen | Opent de VS code in de map die u hebt geselecteerd. |
 
-Visual Studio Code installeert indien nodig de Core Tools voor Azure Functions Core. Het maakt ook een functie-app project in een map. Dit project bevat de configuratiebestanden [host.json](../functions-host-json.md) en [local.settings.json.](../functions-run-local.md#local-settings-file)
+Met Visual Studio code worden de Azure Functions Core Tools, indien nodig, geïnstalleerd. Er wordt ook een functie-app-project gemaakt in een map. Dit project bevat de configuratie bestanden [host. json](../functions-host-json.md) en [Local. settings. json](../functions-run-local.md#local-settings-file) .
 
-Er wordt ook een bestand package.json gemaakt in de hoofdmap.
+Er wordt ook een package. JSON-bestand gemaakt in de hoofdmap.
 
-### <a name="enable-azure-functions-v2-compatibility-mode"></a>Compatibiliteitsmodus Azure Functions V2 inschakelen
+### <a name="enable-azure-functions-v2-compatibility-mode"></a>Compatibiliteits modus voor Azure Functions v2 inschakelen
 
-JavaScript-duurzame functies vereisen momenteel dat de compatibiliteitsmodus Azure Functions V2 is ingeschakeld.
+Java script Durable Functions vereisen dat de Azure Functions v2-compatibiliteits modus is ingeschakeld.
 
-1. Open *local.settings.json* om de instellingen te bewerken die worden gebruikt bij het lokaal uitvoeren van de app.
+1. Open *Local. settings. json* om de instellingen te bewerken die worden gebruikt wanneer de app lokaal wordt uitgevoerd.
 
-1. Voeg een `FUNCTIONS_V2_COMPATIBILITY_MODE` instelling toe `true`met de naam waarde van .
+1. Voeg een instelling toe `FUNCTIONS_V2_COMPATIBILITY_MODE` met de naam met `true`een waarde van.
 
     ```json
     {
@@ -82,102 +82,102 @@ JavaScript-duurzame functies vereisen momenteel dat de compatibiliteitsmodus Azu
 
 ## <a name="install-the-durable-functions-npm-package"></a>Het NPM-pakket voor Durable Functions installeren
 
-Als u wilt werken met duurzame functies in een functie-app Node.js, gebruikt u een bibliotheek met de naam `durable-functions`.
+Als u wilt werken met Durable Functions in een node. js-functie-app, gebruikt `durable-functions`u een bibliotheek met de naam.
 
-1. Gebruik het menu *Weergave* of Ctrl+Shift+' om een nieuwe terminal in VS-code te openen.
+1. Gebruik het menu *weer geven* of CTRL + SHIFT + om een nieuwe terminal te openen in VS code.
 
 1. Installeer het `durable-functions` NPM-pakket met duurzame functies door `npm install durable-functions` uit te voeren in de hoofdmap van de functie-app.
 
 ## <a name="creating-your-functions"></a>Uw functies maken
 
-De meest elementaire app voor duurzame functies bevat drie functies:
+De meest eenvoudige Durable Functions-app bevat drie functies:
 
-* *Orchestrator-functie* - beschrijft een werkstroom die andere functies orkestreert.
-* *Activiteitsfunctie* - aangeroepen door de orchestrator-functie, voert werk uit en retourneert optioneel een waarde.
-* *Clientfunctie* - een reguliere Azure-functie waarmee een orchestrator-functie wordt gestart. In dit voorbeeld wordt een HTTP-geactiveerde functie gebruikt.
+* *Orchestrator-functie* : beschrijft een werk stroom die andere functies organiseert.
+* *Activiteit functie* : wordt aangeroepen door de Orchestrator-functie, voert het werk uit en retourneert optioneel een waarde.
+* *Client functie* : een reguliere Azure-functie waarmee een Orchestrator-functie wordt gestart. In dit voor beeld wordt een door HTTP geactiveerde functie gebruikt.
 
-### <a name="orchestrator-function"></a>Orchestrator, functie
+### <a name="orchestrator-function"></a>Orchestrator-functie
 
-U gebruikt een sjabloon om de duurzame functiecode in uw project te maken.
+U gebruikt een sjabloon om de duurzame functie code in uw project te maken.
 
-1. Zoek en selecteer `Azure Functions: Create Function...`in het opdrachtpalet .
+1. In het opdracht palet zoekt en selecteert u `Azure Functions: Create Function...`.
 
-1. Geef de volgende aanwijzingen op:
-
-    | Vraag | Waarde | Beschrijving |
-    | ------ | ----- | ----------- |
-    | Een sjabloon voor uw functie selecteren | Duurzame functies orchestrator | Een orkestratie met duurzame functies maken |
-    | Een functienaam opgeven | HelloOrchestrator HelloOrchestrator | Naam van uw duurzame functie |
-
-U hebt een orchestrator toegevoegd om activiteitsfuncties te coördineren. Open *HelloOrchestrator/index.js* om de functie orchestrator te bekijken. Elke aanroep om een `Hello`activiteitsfunctie met de naam aan te `context.df.callActivity` roepen .
-
-Vervolgens voegt u de activiteitsfunctie waarnaar wordt verwezen. `Hello`
-
-### <a name="activity-function"></a>Activiteit, functie
-
-1. Zoek en selecteer `Azure Functions: Create Function...`in het opdrachtpalet .
-
-1. Geef de volgende aanwijzingen op:
+1. Voer de volgende informatie in om de aanwijzingen te volgen:
 
     | Vraag | Waarde | Beschrijving |
     | ------ | ----- | ----------- |
-    | Een sjabloon voor uw functie selecteren | Activiteit duurzame functies | Een activiteitsfunctie maken |
-    | Een functienaam opgeven | Hello | Naam van uw activiteitsfunctie |
+    | Selecteer een sjabloon voor de functie | Durable Functions Orchestrator | Een Durable Functions indeling maken |
+    | Een functie naam opgeven | HelloOrchestrator | Naam van uw duurzame functie |
 
-U hebt de `Hello` activiteitsfunctie toegevoegd die door de orchestrator wordt aangeroepen. Open *Hello/index.js* om te zien dat het een naam als invoer neemt en een begroeting teruggeeft. Een activiteitsfunctie is de plaats waar u acties uitvoert, zoals het maken van een databaseaanroep of het uitvoeren van een berekening.
+U hebt een Orchestrator toegevoegd om de activiteit functies te coördineren. Open *HelloOrchestrator/index. js* om de Orchestrator-functie weer te geven. Elke aanroep voor `context.df.callActivity` het aanroepen van een activiteit `Hello`functie met de naam.
 
-Ten slotte voegt u een HTTP-geactiveerde functie toe waarmee de orkestratie wordt gestart.
+Vervolgens voegt u de functie voor de `Hello` activiteit waarnaar wordt verwezen toe.
 
-### <a name="client-function-http-starter"></a>Clientfunctie (HTTP starter)
+### <a name="activity-function"></a>Functie activity
 
-1. Zoek en selecteer `Azure Functions: Create Function...`in het opdrachtpalet .
+1. In het opdracht palet zoekt en selecteert u `Azure Functions: Create Function...`.
 
-1. Geef de volgende aanwijzingen op:
+1. Voer de volgende informatie in om de aanwijzingen te volgen:
 
     | Vraag | Waarde | Beschrijving |
     | ------ | ----- | ----------- |
-    | Een sjabloon voor uw functie selecteren | Duurzame functies HTTP starter | Een HTTP-starterfunctie maken |
-    | Een functienaam opgeven | Duurzame functieshttpStart | Naam van uw activiteitsfunctie |
-    | Autorisatieniveau | Anoniem | Voor demodoeleinden u toestaan dat de functie zonder verificatie wordt aangeroepen |
+    | Selecteer een sjabloon voor de functie | Durable Functions activiteit | Een activiteit functie maken |
+    | Een functie naam opgeven | Hello | De naam van de functie van de activiteit |
 
-U hebt een HTTP-geactiveerde functie toegevoegd waarmee een orkestratie wordt gestart. Open *Duurzame functiesHttpStart/index.js* om `client.startNew` te zien dat het wordt gebruikt om een nieuwe orkestratie te starten. Vervolgens wordt `client.createCheckStatusResponse` gebruikt om een HTTP-antwoord met URL's terug te sturen die kunnen worden gebruikt om de nieuwe orkestratie te controleren en te beheren.
+U hebt de `Hello` activiteit functie toegevoegd die wordt aangeroepen door de Orchestrator. Open *Hello/index. js* om te zien dat het een naam krijgt als invoer en een begroeting retourneert. Met een activiteit functie kunt u acties uitvoeren zoals het maken van een database oproep of het uitvoeren van een berekening.
 
-U hebt nu een app Duurzame functies die lokaal kan worden uitgevoerd en kan worden geïmplementeerd in Azure.
+Ten slotte voegt u een door HTTP geactiveerde functie toe waarmee de indeling wordt gestart.
+
+### <a name="client-function-http-starter"></a>Client functie (HTTP-starter)
+
+1. In het opdracht palet zoekt en selecteert u `Azure Functions: Create Function...`.
+
+1. Voer de volgende informatie in om de aanwijzingen te volgen:
+
+    | Vraag | Waarde | Beschrijving |
+    | ------ | ----- | ----------- |
+    | Selecteer een sjabloon voor de functie | Durable Functions HTTP-starter | Een HTTP-starter-functie maken |
+    | Een functie naam opgeven | DurableFunctionsHttpStart | De naam van de functie van de activiteit |
+    | Autorisatieniveau | Anoniem | Toestaan dat de functie wordt aangeroepen zonder verificatie voor demonstratie doeleinden |
+
+U hebt een door HTTP geactiveerde functie toegevoegd waarmee een indeling wordt gestart. Open *DurableFunctionsHttpStart/index. js* om te zien dat dit `client.startNew` wordt gebruikt om een nieuwe indeling te starten. Vervolgens wordt gebruikt `client.createCheckStatusResponse` om een HTTP-antwoord met url's te retour neren dat kan worden gebruikt om de nieuwe indeling te controleren en te beheren.
+
+U hebt nu een Durable Functions-app die lokaal kan worden uitgevoerd en geïmplementeerd in Azure.
 
 ## <a name="test-the-function-locally"></a>De functie lokaal testen
 
 Met Azure Functions Core-hulpprogramma's kunt u een Azure Functions-project uitvoeren op uw lokale ontwikkelcomputer. De eerste keer dat u een functie vanuit Visual Studio Code start, wordt u gevraagd deze hulpprogramma's te installeren.
 
-1. Als u de functie wilt `Hello` testen, stelt u een breekpunt in in de code van de activiteitsfunctie (*Hello/index.js*). Druk op F5 of selecteer `Debug: Start Debugging` in het opdrachtpalet om het functie-app-project te starten. De uitvoer van Core Tools wordt weergegeven in het deelvenster **Terminal**.
+1. Als u uw functie wilt testen, stelt u een `Hello` onderbrekings punt in voor de functie code van de activiteit (*Hallo/index. js*). Druk op F5 of `Debug: Start Debugging` Selecteer een optie in het opdracht palet om het project van de functie-app te starten. De uitvoer van Core Tools wordt weergegeven in het deelvenster **Terminal**.
 
     > [!NOTE]
-    > Raadpleeg de [Sustainable Functions Diagnostics](durable-functions-diagnostics.md#debugging) voor meer informatie over foutopsporing.
+    > Raadpleeg het [Durable functions diagnostische](durable-functions-diagnostics.md#debugging) gegevens voor meer informatie over fout opsporing.
 
-1. Voor duurzame functies moet een Azure Storage-account worden uitgevoerd. Wanneer VS Code u vraagt een opslagaccount te selecteren, kiest **u Opslagaccount selecteren**.
+1. Durable Functions moet een Azure Storage account worden uitgevoerd. Wanneer VS-code u vraagt een opslag account te selecteren, kiest u **opslag account selecteren**.
 
     ![Een opslagaccount maken](media/quickstart-js-vscode/functions-select-storage.png)
 
-1. Geef de volgende informatie naar aanleiding van de volgende aanwijzingen om een nieuw opslagaccount in Azure te maken.
+1. Volg de aanwijzingen om de volgende informatie op te geven voor het maken van een nieuw opslag account in Azure.
 
     | Vraag | Waarde | Beschrijving |
     | ------ | ----- | ----------- |
-    | Abonnement selecteren | *naam van uw abonnement* | selecteer uw Azure-abonnement |
-    | Een opslagaccount selecteren | Een nieuw opslagaccount maken |  |
-    | Voer de naam in van het nieuwe opslagaccount | *unieke naam* | Naam van het opslagaccount dat u wilt maken |
-    | Een resourcegroep selecteren | *unieke naam* | Naam van de resourcegroep die moet worden gemaakt |
-    | Een locatie selecteren | *regio* | Een gebied bij u in de buurt selecteren |
+    | Abonnement selecteren | *de naam van uw abonnement* | selecteer uw Azure-abonnement |
+    | Een opslag account selecteren | Een nieuw opslagaccount maken |  |
+    | Voer de naam van het nieuwe opslag account in | *unieke naam* | De naam van het opslag account dat moet worden gemaakt |
+    | Een resourcegroep selecteren | *unieke naam* | De naam van de resource groep die u wilt maken |
+    | Een locatie selecteren | *deel* | Selecteer een regio die dicht bij u ligt |
 
 1. Kopieer het URL-eindpunt van de door HTTP getriggerde functie in het deelvenster **Terminal**.
 
     ![Lokale Azure-uitvoer](media/quickstart-js-vscode/functions-f5.png)
 
-1. Met behulp van een tool zoals [Postman](https://www.getpostman.com/) of [cURL,](https://curl.haxx.se/)stuur je een HTTP POST-verzoek naar het URL-eindpunt. Vervang het laatste segment door de naam`HelloOrchestrator`van de orchestrator-functie ( ). De URL moet `http://localhost:7071/api/orchestrators/HelloOrchestrator`vergelijkbaar zijn met .
+1. Verzend met een hulp programma zoals [postman](https://www.getpostman.com/) of [krul](https://curl.haxx.se/)een HTTP POST-aanvraag naar het URL-eind punt. Vervang het laatste segment door de naam van de Orchestrator-functie (`HelloOrchestrator`). De URL moet vergelijkbaar zijn met `http://localhost:7071/api/orchestrators/HelloOrchestrator`.
 
-   Het antwoord is het eerste resultaat van de HTTP-functie om u te laten weten dat de duurzame orkestratie is begonnen. Dit is nog niet het eindresultaat van de orchestrator. De reactie bevat enkele nuttige URL's. Maar eerst gaan we de status van de orchestrator opvragen.
+   Het antwoord is het eerste resultaat van de HTTP-functie zodat u weet dat de duurzame indeling is gestart. Dit is nog niet het eindresultaat van de orchestrator. De reactie bevat enkele nuttige URL's. Maar eerst gaan we de status van de orchestrator opvragen.
 
-1. Kopieer de URL-waarde voor `statusQueryGetUri` en plak deze in de adresbalk van de browser en voer de aanvraag uit. U ook Postman blijven gebruiken om de GET-aanvraag uit te geven.
+1. Kopieer de URL-waarde `statusQueryGetUri` voor en plak deze in de adres balk van de browser en voer de aanvraag uit. U kunt postman ook blijven gebruiken om de GET-aanvraag uit te geven.
 
-   De aanvraag voert een query uit op het orchestrator-exemplaar voor de status. U moet een eventueel antwoord krijgen, waaruit blijkt dat de instantie is voltooid, en omvat de uitgangen of resultaten van de duurzame functie. Het lijkt erop dat: 
+   De aanvraag voert een query uit op het orchestrator-exemplaar voor de status. U moet een eindige reactie krijgen, waarin wordt weer gegeven dat het exemplaar is voltooid en dat de uitvoer of resultaten van de duurzame functie bevat. Het ziet er als volgt uit: 
 
     ```json
     {
@@ -196,7 +196,7 @@ Met Azure Functions Core-hulpprogramma's kunt u een Azure Functions-project uitv
     }
     ```
 
-1. Als u foutopsporing wilt stoppen, drukt u op **Shift + F5** in VS-code.
+1. Als u het fout opsporingsprogramma wilt stoppen, drukt u op **SHIFT + F5** in VS code.
 
 Nadat u hebt gecontroleerd of de functie correct wordt uitgevoerd op uw lokale computer, is het tijd om het project te publiceren in Azure.
 
@@ -204,23 +204,23 @@ Nadat u hebt gecontroleerd of de functie correct wordt uitgevoerd op uw lokale c
 
 [!INCLUDE [functions-publish-project-vscode](../../../includes/functions-publish-project-vscode.md)]
 
-### <a name="enable-azure-functions-v2-compatibility-mode"></a>Compatibiliteitsmodus Azure Functions V2 inschakelen
+### <a name="enable-azure-functions-v2-compatibility-mode"></a>Compatibiliteits modus voor Azure Functions v2 inschakelen
 
-Dezelfde Azure Functions V2-compatibiliteit die u lokaal hebt ingeschakeld, moet worden ingeschakeld in de app in Azure.
+Dezelfde Azure Functions v2-compatibiliteit die u lokaal hebt ingeschakeld, moet worden ingeschakeld in de app in Azure.
 
-1. Zoek en selecteer `Azure Functions: Edit Setting...`met het opdrachtpalet .
+1. Zoek en selecteer `Azure Functions: Edit Setting...`met behulp van het opdracht palet.
 
 1. Volg de aanwijzingen om uw functie-app in uw Azure-abonnement te vinden.
 
 1. Selecteer `Create new App Setting...`.
 
-1. Voer een nieuwe `FUNCTIONS_V2_COMPATIBILITY_MODE`instellingstoets in van .
+1. Voer een nieuwe instellings sleutel `FUNCTIONS_V2_COMPATIBILITY_MODE`van in.
 
-1. Voer een instellingswaarde in van `true`.
+1. Voer een waarde in voor `true`de instelling.
 
 ## <a name="test-your-function-in-azure"></a>Uw functie testen in Azure
 
-1. Kopieer de URL van de HTTP-trigger vanuit het deelvenster **Output** (Uitvoer). De URL die uw HTTP-geactiveerde functie aanroept, moet in deze indeling staan:`http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
+1. Kopieer de URL van de HTTP-trigger vanuit het deelvenster **Output** (Uitvoer). De URL die uw HTTP-geactiveerde functie aanroept, moet de volgende indeling hebben:`http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
 
 2. Plak deze nieuwe URL van de HTTP-aanvraag in de adresbalk van uw browser. U krijgt dezelfde statusreactie als eerder, toen u de gepubliceerde app gebruikte.
 

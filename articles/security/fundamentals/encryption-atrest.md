@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure-gegevensversleuteling-at-rest | Microsoft Documenten
-description: In dit artikel vindt u een overzicht van microsoft Azure-gegevensversleuteling in rust, de algemene mogelijkheden en algemene overwegingen.
+title: Microsoft Azure gegevens versleuteling-at-rest | Microsoft Docs
+description: Dit artikel bevat een overzicht van Microsoft Azure gegevens versleuteling in rust, de algemene mogelijkheden en algemene overwegingen.
 services: security
 documentationcenter: na
 author: msmbaldwin
@@ -16,256 +16,256 @@ ms.workload: na
 ms.date: 04/07/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 1e08e758fbba911d3391794f5bab31aaf6a5fc73
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81454676"
 ---
-# <a name="azure-data-encryption-at-rest"></a>Azure-gegevensversleuteling-at-rest
+# <a name="azure-data-encryption-at-rest"></a>Azure-gegevens versleuteling-at-rest
 
-Microsoft Azure bevat hulpprogramma's om gegevens te beveiligen op basis van de beveiligings- en nalevingsbehoeften van uw bedrijf. Deze paper richt zich op:
+Microsoft Azure bevat hulpprogram ma's voor het beveiligen van gegevens op basis van de beveiligings-en nalevings behoeften van uw bedrijf. Dit document is gericht op:
 
-- Hoe gegevens in rust worden beschermd in Microsoft Azure
-- Bespreekt de verschillende onderdelen die deelnemen aan de implementatie van gegevensbescherming,
-- Beoordelingen voors en tegens van de verschillende key management bescherming benaderingen.
+- Hoe gegevens worden beveiligd in de rest van Microsoft Azure
+- Bespreekt de verschillende onderdelen die deel uitmaken van de implementatie van gegevens beveiliging,
+- Beoordelingen van de voor-en nadelen van de verschillende beveiligings benaderingen voor sleutel beheer.
 
-Versleuteling in rust is een veelvoorkomende beveiligingsvereiste. In Azure kunnen organisaties gegevens in rust versleutelen zonder het risico of de kosten van een aangepaste oplossing voor sleutelbeheer. Organisaties hebben de mogelijkheid om Azure encryptie in rust volledig te laten beheren. Daarnaast hebben organisaties verschillende opties om encryptie- of encryptiesleutels nauwkeurig te beheren.
+Versleuteling op rest is een gemeen schappelijke beveiligings vereiste. In azure kunnen organisaties gegevens in rust versleutelen zonder het risico of de kosten van een aangepaste oplossing voor sleutel beheer. Organisaties hebben de mogelijkheid om de versleuteling van Azure volledig te beheren. Daarnaast hebben organisaties verschillende opties om versleuteling of versleutelings sleutels nauw keurig te beheren.
 
-## <a name="what-is-encryption-at-rest"></a>Wat is encryptie in rust?
+## <a name="what-is-encryption-at-rest"></a>Wat is versleuteling in rust?
 
-Encryptie at Rest is de codering (encryptie) van gegevens wanneer deze worden gehandhaafd. De encryptie bij rust ontwerpen in Azure gebruiken symmetrische encryptie te versleutelen en te decoderen grote hoeveelheden gegevens snel volgens een eenvoudig conceptueel model:
+Versleuteling bij rest is de code ring (versleuteling) van gegevens wanneer deze persistent wordt gemaakt. De versleuteling bij rest-ontwerpen in azure gebruikt symmetrische versleuteling om grote hoeveel heden gegevens snel te versleutelen en te ontsleutelen op basis van een eenvoudig conceptueel model:
 
-- Een symmetrische encryptiesleutel wordt gebruikt om gegevens te versleutelen terwijl deze naar opslag wordt geschreven.
-- Dezelfde encryptiesleutel wordt gebruikt om die gegevens te decoderen omdat deze worden gereadied voor gebruik in het geheugen.
-- Gegevens kunnen worden verdeeld en voor elke partitie kunnen verschillende sleutels worden gebruikt.
-- Sleutels moeten worden opgeslagen op een veilige locatie met identiteitsgebaseerdtoegangscontrole en controlebeleid. Gegevensversleutelingssleutels worden vaak versleuteld met een sleutelversleutelingssleutel in Azure Key Vault om de toegang verder te beperken.
+- Een symmetrische versleutelings sleutel wordt gebruikt voor het versleutelen van gegevens die naar opslag worden geschreven.
+- Dezelfde versleutelings sleutel wordt gebruikt om die gegevens te ontsleutelen wanneer deze gereed is voor gebruik in het geheugen.
+- Gegevens kunnen gepartitioneerd zijn en verschillende sleutels kunnen voor elke partitie worden gebruikt.
+- Sleutels moeten worden opgeslagen op een veilige locatie met toegangs beheer op basis van identiteit en controle beleid. Gegevens versleutelings sleutels worden vaak versleuteld met een sleutel versleutelings sleutel in Azure Key Vault om de toegang verder te beperken.
 
-In de praktijk vereisen belangrijke beheer- en controlescenario's, evenals schaal- en beschikbaarheidsgaranties, extra constructies. Microsoft Azure Encryption at Rest-concepten en -componenten worden hieronder beschreven.
+In de praktijk moeten sleutel beheer-en controle scenario's, evenals schaal-en beschikbaarheids garanties, extra constructs vereisen. Microsoft Azure versleuteling bij rest-concepten en-onderdelen worden hieronder beschreven.
 
-## <a name="the-purpose-of-encryption-at-rest"></a>Het doel van encryptie in rust
+## <a name="the-purpose-of-encryption-at-rest"></a>Het doel van versleuteling bij rust
 
-Versleuteling in rust biedt gegevensbescherming voor opgeslagen gegevens (in rust). Aanvallen op gegevens in rust omvatten pogingen om fysieke toegang te verkrijgen tot de hardware waarop de gegevens worden opgeslagen, en vervolgens de opgenomen gegevens in gevaar te brengen. Bij een dergelijke aanval kan de harde schijf van een server verkeerd zijn behandeld tijdens onderhoud, waardoor een aanvaller de harde schijf kan verwijderen. Later zou de aanvaller zet de harde schijf in een computer onder hun controle om te proberen toegang te krijgen tot de gegevens.
+Versleuteling bij rest biedt gegevens beveiliging voor opgeslagen gegevens (op rest). Aanvallen tegen gegevens op rest zijn onder andere pogingen om fysieke toegang te verkrijgen tot de hardware waarop de gegevens worden opgeslagen en vervolgens de Inge sloten gegevens in gevaar te brengen. In een dergelijke aanval is het mogelijk dat de harde schijf van een server tijdens het onderhoud niet kan worden verwerkt, waardoor een aanvaller de harde schijf kan verwijderen. Later zou de aanvaller de harde schijf in een computer onder hun controle kunnen plaatsen om toegang te krijgen tot de gegevens.
 
-Versleuteling in rust is ontworpen om te voorkomen dat de aanvaller toegang krijgt tot de onversleutelde gegevens door ervoor te zorgen dat de gegevens worden versleuteld wanneer ze op de schijf zijn. Als een aanvaller een harde schijf met versleutelde gegevens, maar niet de encryptiesleutels verkrijgt, moet de aanvaller de versleuteling verslaan om de gegevens te lezen. Deze aanval is veel complexer en resource verbruikendan toegang tot onversleutelde gegevens op een harde schijf. Om deze reden, encryptie in rust is sterk aanbevolen en is een hoge prioriteit vereiste voor veel organisaties.
+Versleuteling op rest is ontworpen om te voor komen dat een aanvaller toegang krijgt tot de niet-versleutelde gegevens door ervoor te zorgen dat de gegevens worden versleuteld wanneer ze op schijf zijn. Als een aanvaller een harde schijf verkrijgt met versleutelde gegevens, maar niet de versleutelings sleutels, moet de aanvaller de versleuteling verslaan om de gegevens te lezen. Deze aanval is veel ingewik kelder en maakt gebruik van resources dan toegang tot niet-versleutelde gegevens op een harde schijf. Daarom wordt versleuteling in rust sterk aanbevolen en is een hoge prioriteit vereist voor veel organisaties.
 
-Versleuteling in rust kan ook vereist zijn door de behoefte van een organisatie aan gegevensbeheer en compliance-inspanningen. Industrie- en overheidsvoorschriften zoals HIPAA, PCI en FedRAMP bevatten specifieke waarborgen met betrekking tot gegevensbescherming en versleutelingsvereisten. Encryptie in rust is een verplichte maatregel die nodig is voor de naleving van een aantal van deze voorschriften. Zie [Federal Information Processing Standard (FIPS) Publication 140-2 voor](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2)meer informatie over de benadering van FIPS 140-2 van Microsoft. 
+Versleuteling in rust kan ook worden vereist door de nood zaak van een organisatie voor data governance en nalevings inspanningen. Industriële en wettelijke voor schriften zoals HIPAA, PCI en FedRAMP, leggen specifieke veiligheids maatregelen vast over de vereisten voor gegevens bescherming en-versleuteling. Versleuteling op rest is een verplichte maat regel die vereist is om te voldoen aan sommige van deze voor Schriften. Zie voor meer informatie over de micro soft-benadering van FIPS 140-2-validatie [Federal Information Processing Standard (FIPS)-publicatie 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2). 
 
-Naast het voldoen aan naleving seinen en wettelijke vereisten, biedt versleuteling in rust bescherming-diepgaande bescherming. Microsoft Azure biedt een compatibel platform voor services, toepassingen en gegevens. Het biedt ook uitgebreide faciliteit en fysieke beveiliging, controle over gegevenstoegangscontrole en controle. Het is echter belangrijk om extra "overlappende" beveiligingsmaatregelen te bieden in het geval een van de andere beveiligingsmaatregelen mislukt en encryptie in rust biedt een dergelijke beveiligingsmaatregel.
+Naast het voldoen aan de nalevings vereisten en de regelgeving, biedt versleuteling op rest een ingrijpende beveiliging. Microsoft Azure biedt een compatibel platform voor services, toepassingen en gegevens. Het biedt ook uitgebreide functionaliteit en fysieke beveiliging, gegevens toegangs beheer en controle. Het is echter belang rijk om extra "overlappende" beveiligings maatregelen te bieden voor het geval een van de andere veiligheids maatregelen mislukt en versleuteling in rust biedt een dergelijke veiligheids maatregel.
 
-Microsoft zet zich in voor versleuteling bij rustopties in cloudservices en geeft klanten controle over versleutelingssleutels en logboeken van sleutelgebruik. Daarnaast werkt Microsoft aan het standaard versleutelen van alle klantgegevens in rust.
+Micro soft hecht veel belang aan het versleutelen van de rest-opties in Cloud Services en geeft klanten controle over de versleutelings sleutels en logboeken van het sleutel gebruik. Daarnaast werkt micro soft standaard bij het versleutelen van alle klant gegevens op rest.
 
-## <a name="azure-encryption-at-rest-components"></a>Azure-versleuteling bij restcomponenten
+## <a name="azure-encryption-at-rest-components"></a>Azure-versleuteling bij rest-onderdelen
 
-Zoals eerder beschreven, het doel van encryptie in rust is dat gegevens die wordt aangehouden op de schijf wordt versleuteld met een geheime encryptiesleutel. Om dat doel te bereiken moet het maken, opslaan, toegangscontrole en beheer van de versleutelingssleutels worden verstrekt om dat doel te bereiken. Hoewel details kunnen variëren, kunnen implementaties voor Versleuteling van Azure-services bij Rust worden beschreven in termen die worden geïllustreerd in het volgende diagram.
+Zoals eerder beschreven, is het doel van het versleutelen van versleuteling bij rest de gegevens die persistent zijn op schijf versleuteld met een geheime versleutelings sleutel. U kunt het beste een beveiligde sleutel maken, opslag, Toegangs beheer en beheer van de versleutelings sleutels opgeven. Hoewel de details kunnen verschillen, kan de Azure-Services-versleuteling bij rest-implementaties worden beschreven in termen die in het volgende diagram worden geïllustreerd.
 
 ![Onderdelen](./media/encryption-atrest/azure-security-encryption-atrest-fig1.png)
 
 ### <a name="azure-key-vault"></a>Azure Key Vault
 
-De opslaglocatie van de encryptiesleutels en toegangsbeheer tot deze sleutels staat centraal in een coderingsmodel in rust. De sleutels moeten hoog beveiligd zijn, maar beheersbaar zijn door bepaalde gebruikers en beschikbaar zijn voor specifieke services. Voor Azure-services is Azure Key Vault de aanbevolen oplossing voor sleutelopslag en biedt het een gemeenschappelijke beheerervaring voor alle services. Sleutels worden opgeslagen en beheerd in sleutelkluizen en toegang tot een sleutelkluis kan worden gegeven aan gebruikers of services. Azure Key Vault ondersteunt het maken van sleutels door klanten of het importeren van klantsleutels voor gebruik in door de klant beheerde coderingssleutelscenario's.
+De opslag locatie van de versleutelings sleutels en toegangs beheer voor die sleutels is centraal voor een versleuteling in het rest-model. De sleutels moeten zeer goed worden beveiligd, maar kunnen worden beheerd door opgegeven gebruikers en beschikbaar zijn voor specifieke services. Voor Azure-Services is Azure Key Vault de aanbevolen oplossing voor sleutel opslag en biedt een gemeen schappelijke beheer ervaring tussen services. Sleutels worden opgeslagen en beheerd in sleutel kluizen, en toegang tot een sleutel kluis kan worden gegeven aan gebruikers of services. Azure Key Vault ondersteunt het maken van sleutels of het importeren van klant sleutels voor gebruik in scenario's met door de klant beheerde versleutelings sleutel.
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Machtigingen voor het gebruik van de sleutels die zijn opgeslagen in Azure Key Vault, voor het beheren of openen van versleuteling voor versleuteling en decryptie, kunnen worden gegeven aan Azure Active Directory-accounts.
+Machtigingen voor het gebruik van sleutels die zijn opgeslagen in Azure Key Vault, om deze te beheren of te openen voor versleuteling bij rest versleuteling en ontsleuteling, kunnen worden verleend aan Azure Active Directory-accounts.
 
-### <a name="key-hierarchy"></a>Sleutelhiërarchie
+### <a name="key-hierarchy"></a>Sleutel hiërarchie
 
-Meer dan één versleutelingssleutel wordt gebruikt in een encryptie-at-rest-implementatie. Het opslaan van een versleutelingssleutel in Azure Key Vault zorgt voor veilige toegang tot sleutels en centraal beheer van sleutels. Echter, service lokale toegang tot encryptiesleutels is efficiënter voor bulk encryptie en decryptie dan interactie met Key Vault voor elke gegevensoperatie, waardoor voor sterkere encryptie en betere prestaties. Het beperken van het gebruik van een enkele encryptiesleutel vermindert het risico dat de sleutel wordt aangetast en de kosten van herversleuteling wanneer een sleutel moet worden vervangen. Azure-versleutelingen bij rustmodellen maken gebruik van een sleutelhiërarchie die bestaat uit de volgende typen sleutels om aan al deze behoeften te voldoen:
+Er wordt meer dan één versleutelings sleutel gebruikt in een versleuteling bij rest-implementatie. Het opslaan van een versleutelings sleutel in Azure Key Vault zorgt voor veilige toegang tot de sleutel en Centraal beheer van sleutels. De lokale toegang tot de versleutelings sleutels van de service is echter efficiënter voor bulk versleuteling en ontsleuteling dan met Key Vault voor elke gegevens bewerking, waardoor een sterkere versleuteling en betere prestaties mogelijk zijn. Het beperken van het gebruik van één versleutelings sleutel vermindert het risico dat de sleutel wordt aangetast en de kosten voor het opnieuw versleutelen wanneer een sleutel moet worden vervangen. Azure-versleuteling bij rest-modellen gebruiken een belang rijke hiërarchie die bestaat uit de volgende soorten sleutels om deze behoeften aan te pakken:
 
-- **Data Encryption Key (DEK)** – Een symmetrische AES256-sleutel die wordt gebruikt om een partitie of blok gegevens te versleutelen.  Eén bron kan veel partities en veel gegevensversleutelingssleutels bevatten. Het versleutelen van elk blok gegevens met een andere sleutel maakt crypto-analyseaanvallen moeilijker. Toegang tot DEKs is nodig door de resourceprovider of toepassingsinstantie die een specifiek blok versleutelt en ontsleutelt. Wanneer een DEK wordt vervangen door een nieuwe sleutel, moeten alleen de gegevens in het bijbehorende blok opnieuw worden versleuteld met de nieuwe sleutel.
-- **Key Encryption Key (KEK)** – Een encryptiesleutel die wordt gebruikt om de gegevensversleutelingssleutels te versleutelen. Met het gebruik van een sleutelversleutelingssleutel die Key Vault nooit verlaat, kunnen de gegevensversleutelingssleutels zelf worden versleuteld en gecontroleerd. De entiteit die toegang heeft tot het KEK kan anders zijn dan de entiteit die de DEK nodig heeft. Een entiteit kan toegang tot de DEK bemiddelen om de toegang van elke DEK tot een specifieke partitie te beperken. Aangezien de KEK nodig is om de DEKs te decoderen, is de KEK in feite een enkel punt waarmee DEKs effectief kunnen worden verwijderd door verwijdering van de KEK.
+- **Gegevens versleutelings sleutel (dek)** : een SYMMETRISCHe AES256-sleutel die wordt gebruikt om een partitie of gegevens blok te versleutelen.  Eén resource kan veel partities en veel gegevens versleutelings sleutels hebben. Het versleutelen van elk gegevens blok met een andere sleutel maakt crypto-analyse aanvallen lastiger. Toegang tot DEKs is vereist voor de resource provider of het toepassings exemplaar dat een specifiek blok versleutelt en ontsleutelt. Wanneer een DEK wordt vervangen door een nieuwe sleutel, moeten alleen de gegevens in het bijbehorende blok opnieuw worden versleuteld met de nieuwe sleutel.
+- Sleutel versleutelings **sleutel (KEK)** : een versleutelings sleutel die wordt gebruikt om de gegevens versleutelings sleutels te versleutelen. Door gebruik te maken van een versleutelings sleutel die Key Vault nooit verlaat, kunnen de gegevens versleutelings sleutels zelf worden versleuteld en beheerd. De entiteit die toegang heeft tot de KEK kan afwijken van de entiteit waarvoor de DEK is vereist. Een entiteit kan toegang tot de DEK Broker om de toegang van elke DEK te beperken tot een specifieke partitie. Omdat de KEK is vereist voor het ontsleutelen van de DEKs, is de KEK een specifiek punt waarmee DEKs effectief kan worden verwijderd door het verwijderen van de KEK.
 
-De gegevensversleutelingssleutels, versleuteld met de sleutelversleutelingssleutels, worden afzonderlijk opgeslagen en alleen een entiteit met toegang tot de sleutelversleutelingssleutel kan deze gegevensversleutelingssleutels decoderen. Verschillende modellen van sleutelopslag worden ondersteund. We zullen elk model later in het volgende gedeelte in meer detail bespreken.
+De gegevens versleutelings sleutels, versleuteld met de sleutel versleutelings sleutels, worden afzonderlijk opgeslagen en alleen een entiteit met toegang tot de sleutel coderings sleutel kan deze versleutelings sleutels ontsleutelen. Verschillende modellen van sleutel opslag worden ondersteund. Verderop in de volgende sectie wordt elk model uitvoerig besproken.
 
-## <a name="data-encryption-models"></a>Gegevensversleutelingsmodellen
+## <a name="data-encryption-models"></a>Gegevens versleutelings modellen
 
-Een goed begrip van de verschillende versleutelingsmodellen en hun voor- en nadelen is essentieel om te begrijpen hoe de verschillende resourceproviders in Azure versleuteling in Rest implementeren. Deze definities worden gedeeld tussen alle resourceproviders in Azure om gemeenschappelijke taal en taxonomie te garanderen.
+Het is belang rijk dat u begrijpt hoe de verschillende versleutelings modellen en hun voor-en nadelen essentieel zijn om te zien hoe de verschillende resource providers in azure versleuteling in rust implementeren. Deze definities worden gedeeld door alle resource providers in azure om een gemeen schappelijke taal en taxonomie te garanderen.
 
-Er zijn drie scenario's voor server-side encryptie:
+Er zijn drie scenario's voor versleuteling aan server zijde:
 
-- Versleuteling aan de serverzijde met servicebeheerde sleutels
-  - Azure Resource Providers voeren de versleutelings- en decryptiebewerkingen uit
-  - Microsoft beheert de sleutels
-  - Volledige cloudfunctionaliteit
+- Versleuteling aan de server zijde met door service beheerde sleutels
+  - Azure-resource providers voeren de bewerkingen voor versleuteling en ontsleuteling uit
+  - Micro soft beheert de sleutels
+  - Volledige Cloud functionaliteit
 
-- Versleuteling aan de serverzijde met door de klant beheerde sleutels in Azure Key Vault
-  - Azure Resource Providers voeren de versleutelings- en decryptiebewerkingen uit
-  - Sleutels voor klantcontroles via Azure Key Vault
-  - Volledige cloudfunctionaliteit
+- Versleuteling aan de server zijde met door de klant beheerde sleutels in Azure Key Vault
+  - Azure-resource providers voeren de bewerkingen voor versleuteling en ontsleuteling uit
+  - De besturings elementen van de klant worden via Azure Key Vault
+  - Volledige Cloud functionaliteit
 
-- Server-side encryptie met behulp van door de klant beheerde sleutels op door de klant gecontroleerde hardware
-  - Azure Resource Providers voeren de versleutelings- en decryptiebewerkingen uit
-  - Sleutels van klantcontroles op door de klant gecontroleerde hardware
-  - Volledige cloudfunctionaliteit
+- Versleuteling aan de server zijde met door de klant beheerde sleutels op door de klant bestuurde hardware
+  - Azure-resource providers voeren de bewerkingen voor versleuteling en ontsleuteling uit
+  - Klant besturings elementen sleutels voor door de klant beheerde hardware
+  - Volledige Cloud functionaliteit
 
-Voor versleuteling aan de clientzijde u rekening houden met het volgende:
+Voor versleuteling aan de client zijde moet u rekening houden met het volgende:
 
-- Azure-services kunnen gedecodeerde gegevens niet zien
-- Klanten beheren en slaan sleutels on-premises (of in andere beveiligde winkels). Sleutels zijn niet beschikbaar voor Azure-services
-- Minder cloudfunctionaliteit
+- De gedecodeerde gegevens kunnen niet worden weer gegeven in Azure-Services
+- Klanten beheren en bewaren sleutels on-premises (of in andere beveiligde winkels). Sleutels zijn niet beschikbaar voor Azure-Services
+- Gereduceerde Cloud functionaliteit
 
-De ondersteunde versleutelingsmodellen in Azure splitsen zich op in twee hoofdgroepen: 'Clientencryption' en 'Server-side Encryption' zoals eerder vermeld. Onafhankelijk van het gebruikte versleutelingsmodel, raden Azure-services altijd het gebruik van een veilig transport zoals TLS of HTTPS aan. Daarom moet versleuteling in het vervoer worden aangepakt door het transportprotocol en mag het geen belangrijke factor zijn bij het bepalen welke encryptie in rustmodel moet worden gebruikt.
+De ondersteunde versleutelings modellen in Azure worden onderverdeeld in twee hoofd groepen: ' client versleuteling ' en ' versleuteling aan de server zijde ' zoals eerder beschreven. Onafhankelijk van de versleutelings methode voor het gebruikte rest model, raadt Azure-Services altijd het gebruik van een beveiligd Trans Port, zoals TLS of HTTPS, aan. Versleuteling in Trans Port moet daarom worden verholpen door het transport protocol en mag niet een belang rijke factor zijn bij het bepalen van de versleuteling in het rest model dat moet worden gebruikt.
 
-### <a name="client-encryption-model"></a>Clientversleutelingsmodel
+### <a name="client-encryption-model"></a>Client versleutelings model
 
-Clientversleutelingsmodel verwijst naar versleuteling die buiten de ResourceProvider of Azure wordt uitgevoerd door de service- of aanroepende toepassing. De versleuteling kan worden uitgevoerd door de servicetoepassing in Azure of door een toepassing die wordt uitgevoerd in het datacenter van de klant. In beide gevallen ontvangt de Azure Resource Provider bij het gebruik van dit versleutelingsmodel een versleutelde blob met gegevens zonder de mogelijkheid om de gegevens op enigerlei wijze te decoderen of toegang te hebben tot de versleutelingssleutels. In dit model wordt het sleutelbeheer uitgevoerd door de aanroepende service/toepassing en is het ondoorzichtig voor de Azure-service.
+Het client versleutelings model verwijst naar de versleuteling die buiten de resource provider of Azure wordt uitgevoerd door de service of de toepassing die u aanroept. De versleuteling kan worden uitgevoerd door de service toepassing in azure of door een toepassing die wordt uitgevoerd in het Data Center van de klant. Bij het gebruik van dit versleutelings model ontvangt de Azure-resource provider een versleutelde blob van gegevens zonder de mogelijkheid om de gegevens op enigerlei wijze te ontsleutelen of toegang te geven tot de versleutelings sleutels. In dit model wordt het sleutel beheer uitgevoerd door de aanroepende service/toepassing en is deze ondoorzichtig voor de Azure-service.
 
 ![Client](./media/encryption-atrest/azure-security-encryption-atrest-fig2.png)
 
-### <a name="server-side-encryption-model"></a>Versleutelingsmodel aan de serverzijde
+### <a name="server-side-encryption-model"></a>Versleutelings model aan server zijde
 
-Versleutelingsmodellen aan de serverzijde verwijzen naar versleuteling die wordt uitgevoerd door de Azure-service. In dat model voert de Resource Provider de versleutelings- en decoderende bewerkingen uit. Azure Storage kan bijvoorbeeld gegevens ontvangen in platte tekstbewerkingen en de versleuteling en decryptie intern uitvoeren. De Resourceprovider kan versleutelingssleutels gebruiken die worden beheerd door Microsoft of door de klant, afhankelijk van de opgegeven configuratie.
+Versleutelings modellen aan de server zijde verwijzen naar versleuteling die wordt uitgevoerd door de Azure-service. In dat model voert de resource provider de bewerkingen versleutelen en ontsleutelen uit. Azure Storage kunnen bijvoorbeeld gegevens ontvangen in bewerkingen met tekst zonder opmaak en de versleuteling en ontsleuteling intern uitvoeren. De resource provider kan gebruikmaken van versleutelings sleutels die door micro soft of door de klant worden beheerd, afhankelijk van de ingestelde configuratie.
 
 ![server](./media/encryption-atrest/azure-security-encryption-atrest-fig3.png)
 
-### <a name="server-side-encryption-key-management-models"></a>Beheermodellen aan de serverzijde
+### <a name="server-side-encryption-key-management-models"></a>Beheer modellen voor versleutelings sleutels aan server zijde
 
-Elk van de server-side encryptie bij rust modellen impliceert onderscheidende kenmerken van key management. Dit omvat waar en hoe encryptiesleutels worden gemaakt en opgeslagen, evenals de toegangsmodellen en de sleutelrotatieprocedures.
+Elk van de versleuteling aan de server zijde bij rest modellen impliceert de onderscheidende kenmerken van sleutel beheer. Dit omvat waar en hoe versleutelings sleutels worden gemaakt en opgeslagen, evenals de toegangs modellen en de procedures voor sleutel rotatie.
 
-#### <a name="server-side-encryption-using-service-managed-keys"></a>Versleuteling aan de serverzijde met servicebeheerde sleutels
+#### <a name="server-side-encryption-using-service-managed-keys"></a>Versleuteling aan de server zijde met door service beheerde sleutels
 
-Voor veel klanten is de essentiële eis om ervoor te zorgen dat de gegevens worden versleuteld wanneer deze in rust zijn. Server-side encryptie met behulp van service-managed Keys maakt dit model mogelijk door klanten in staat te stellen de specifieke bron (Storage Account, SQL DB, enz.) te markeren voor versleuteling en alle belangrijke beheeraspecten over te laten, zoals sleuteluitgifte, rotatie en back-up naar Microsoft. De meeste Azure Services die versleuteling in rust ondersteunen, ondersteunen doorgaans dit model van het ontladen van het beheer van de versleutelingssleutels naar Azure. De Azure-resourceprovider maakt de sleutels, plaatst ze in beveiligde opslag en haalt ze op wanneer dat nodig is. Dit betekent dat de service volledige toegang heeft tot de sleutels en dat de service volledige controle heeft over het beheer van de referentielevenscyclus.
+Voor veel klanten is de essentiële vereiste om ervoor te zorgen dat de gegevens worden versleuteld wanneer deze in rust zijn. Versleuteling aan de server zijde met door service beheerde sleutels maakt dit model mogelijk door klanten toe te staan om de specifieke resource (opslag account, SQL-data base, enzovoort) te markeren voor versleuteling en alle aspecten van het sleutel beheer, zoals sleutel uitgifte, rotatie en back-up naar micro soft, te laten staan. De meeste Azure-Services die ondersteuning bieden voor versleuteling in rust, bieden doorgaans ondersteuning voor dit model van het beheer van de versleutelings sleutels naar Azure. De Azure-resource provider maakt de sleutels, plaatst deze in beveiligde opslag en haalt ze op wanneer dat nodig is. Dit betekent dat de service volledige toegang heeft tot de sleutels en dat de service volledige controle heeft over het beheer van de referentie levenscyclus.
 
-![Beheerd](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
+![bijgehouden](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
 
-Server-side encryptie met behulp van service-managed keys dus snel adressen de noodzaak om encryptie in rust met lage overhead aan de klant. Wanneer een klant beschikbaar is, opent hij doorgaans de Azure-portal voor de doelabonnements- en resourceprovider en controleert een vak met de vermelding dat de gegevens moeten worden versleuteld. In sommige Resource Managers server-side encryptie met service-managed sleutels is standaard ingeschakeld.
+Versleuteling aan de server zijde met door service beheerde sleutels maakt daarom snel de nood zaak om versleuteling op rest te hebben met lage overhead voor de klant. Als er een klant beschikbaar is, wordt doorgaans de Azure Portal voor het doel abonnement en de resource provider geopend en wordt een vak gecontroleerd waarin wordt aangegeven dat de gegevens moeten worden versleuteld. In sommige bron beheer server versleuteling met door service beheerde sleutels is standaard ingeschakeld.
 
-Server-side encryptie met door Microsoft beheerde sleutels impliceert wel dat de service volledige toegang heeft tot het opslaan en beheren van de sleutels. Hoewel sommige klanten de sleutels willen beheren omdat ze het gevoel hebben dat ze meer beveiliging krijgen, moeten de kosten en het risico die gepaard gaan met een aangepaste sleutelopslagoplossing worden overwogen bij de evaluatie van dit model. In veel gevallen kan een organisatie bepalen dat resourcebeperkingen of risico's van een on-premises oplossing groter kunnen zijn dan het risico van cloudbeheer van de versleuteling bij rustsleutels.  Dit model is echter mogelijk niet voldoende voor organisaties die vereisten hebben om de creatie of levenscyclus van de versleutelingssleutels te beheren of om ander personeel de versleutelingssleutels van een service te laten beheren dan die welke de service beheren (dat wil zeggen, de scheiding van sleutelbeheer van het algemene beheermodel voor de service).
+Versleuteling aan de server zijde met door micro soft beheerde sleutels betekent dat de service volledige toegang heeft tot de sleutels op te slaan en te beheren. Hoewel sommige klanten de sleutels willen beheren omdat ze ervan overtuigd zijn dat ze betere beveiliging krijgen, moeten de kosten en risico's die zijn gekoppeld aan een oplossing voor aangepaste sleutel opslag worden overwogen bij het evalueren van dit model. In veel gevallen kan een organisatie bepalen dat resource beperkingen of Risico's van een on-premises oplossing groter zijn dan het risico van Cloud beheer van de versleuteling bij rust sleutels.  Dit model is echter mogelijk niet voldoende voor organisaties die vereisten hebben om het maken of de levens cyclus van de versleutelings sleutels te beheren of om te beschikken over verschillende mede werkers van de versleutelings sleutels van een service te laten beheer (dat wil zeggen, schei ding van sleutel beheer van het algehele beheer model voor de service).
 
-##### <a name="key-access"></a>Toegang tot sleutels
+##### <a name="key-access"></a>Sleutel toegang
 
-Wanneer server-side encryptie met servicebeheerde sleutels wordt gebruikt, worden de sleutelcreatie, -opslag en servicetoegang allemaal beheerd door de service. Doorgaans slaan de fundamentele Azure-bronproviders de gegevensversleutelingssleutels op in een winkel die dicht bij de gegevens staat en snel beschikbaar en toegankelijk is, terwijl de sleutelcoderingssleutels worden opgeslagen in een beveiligde interne winkel.
+Wanneer versleuteling aan de server zijde met door service beheerde sleutels wordt gebruikt, worden de sleutel maken, opslag en toegang tot de service allemaal beheerd door de service. Normaal gesp roken worden de gegevens versleutelings sleutels in een archief opgeslagen die dicht bij de gegevens staan en snel beschikbaar en toegankelijk zijn wanneer de sleutel versleutelings sleutels worden opgeslagen in een veilige interne opslag.
 
 **Voordelen**
 
 - Eenvoudige installatie
-- Microsoft beheert sleutelrotatie, back-up en redundantie
-- De klant heeft niet de kosten in verband met de implementatie of het risico van een aangepaste sleutelbeheerschema.
+- Micro soft beheert de belangrijkste draaiing, back-up en redundantie
+- De klant heeft niet de kosten die zijn gekoppeld aan de implementatie of het risico van een aangepast sleutel beheer schema.
 
 **Nadelen**
 
-- Geen klantcontrole over de coderingssleutels (sleutelspecificatie, levenscyclus, intrekking, enz.)
-- Geen mogelijkheid om sleutelbeheer te scheiden van het algemene managementmodel voor de service
+- Geen klant controle over de versleutelings sleutels (sleutel specificatie, levens cyclus, intrekken, enz.)
+- Het is niet mogelijk om sleutel beheer te scheiden van het algehele beheer model voor de service
 
-#### <a name="server-side-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Versleuteling aan de serverzijde met door de klant beheerde sleutels in Azure Key Vault
+#### <a name="server-side-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Versleuteling aan de server zijde met door de klant beheerde sleutels in Azure Key Vault
 
-Voor scenario's waarbij het vereiste is om de gegevens in rust te versleutelen en de versleutelingssleutels te beheren, kunnen klanten server-side encryptie gebruiken met behulp van door de klant beheerde sleutels in Key Vault. Sommige services slaan mogelijk alleen de hoofdsleutelversleutelingssleutel op in Azure Key Vault en slaan de versleutelde gegevensversleutelingssleutel op een interne locatie dichter bij de gegevens. In dat scenario kunnen klanten hun eigen sleutels meenemen naar Key Vault (BYOK – Bring Your Own Key), of nieuwe genereren en gebruiken om de gewenste bronnen te versleutelen. Terwijl de Resource Provider voert de encryptie en decryptie operaties, het maakt gebruik van de geconfigureerde sleutel encryptiesleutel als de hoofdsleutel voor alle encryptie bewerkingen.
+Voor scenario's waarbij de vereiste is om de gegevens in rust te versleutelen en de versleutelings sleutels te beheren, kunnen klanten versleuteling aan de server zijde gebruiken met door de klant beheerde sleutels in Key Vault. Sommige services kunnen alleen de sleutel voor de sleutel van de basis sleutel opslaan in Azure Key Vault en de versleutelde gegevens versleutelings sleutel opslaan op een interne locatie dichter bij de gegevens. In dat geval kunnen klanten hun eigen sleutels naar Key Vault (Bring Your Own Key BYOK) brengen, of nieuwe codes genereren en ze gebruiken om de gewenste resources te versleutelen. Terwijl de resource provider de bewerkingen voor versleuteling en ontsleuteling uitvoert, wordt de geconfigureerde sleutel versleutelings sleutel gebruikt als basis sleutel voor alle versleutelings bewerkingen.
 
-Verlies van sleutelversleutelingssleutels betekent verlies van gegevens. Om deze reden mogen sleutels niet worden verwijderd. Toetsen moeten worden geback-upt wanneer gemaakt of gedraaid. [Soft-Delete](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) moet zijn ingeschakeld op elke kluis die sleutelversleutelingssleutels opslaat. In plaats van een sleutel te verwijderen, wordt de ingestelde set ingeschakeld voor false of stelt u de vervaldatum in.
+Verlies van sleutel versleutelings sleutels betekent gegevens verlies. Daarom mogen sleutels niet worden verwijderd. Er moet een back-up van sleutels worden gemaakt wanneer u deze maakt of roteert. [Zacht verwijderen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) moet zijn ingeschakeld op een kluis die sleutel versleutelings sleutels opslaat. In plaats van een sleutel te verwijderen, stelt u ingeschakeld in op ONWAAR of stelt u de verval datum in.
 
-##### <a name="key-access"></a>Sleuteltoegang
+##### <a name="key-access"></a>Sleutel toegang
 
-Het server-side encryptiemodel met door de klant beheerde sleutels in Azure Key Vault omvat de service die toegang krijgt tot de sleutels om te versleutelen en te decoderen als dat nodig is. Versleuteling in rustsleutels worden toegankelijk gemaakt voor een service via een toegangscontrolebeleid. Dit beleid geeft de serviceidentiteit toegang tot de sleutel. Een Azure-service die namens een gekoppeld abonnement wordt uitgevoerd, kan worden geconfigureerd met een identiteit in dat abonnement. De service kan Azure Active Directory-verificatie uitvoeren en een verificatietoken ontvangen dat zichzelf identificeert als die service die optreedt namens het abonnement. Dat token kan vervolgens worden gepresenteerd aan Key Vault om een sleutel te verkrijgen waartoe het toegang heeft gekregen.
+Het versleutelings model aan de server zijde met door de klant beheerde sleutels in Azure Key Vault omvat de service die toegang heeft tot de sleutels voor versleutelen en ontsleutelen, indien nodig. Versleuteling bij rest sleutels wordt via een toegangscontrole beleid toegankelijk gemaakt voor een service. Dit beleid verleent de service identiteit toegang om de sleutel te ontvangen. Een Azure-service die namens een gekoppeld abonnement wordt uitgevoerd, kan worden geconfigureerd met een identiteit in dat abonnement. De service kan Azure Active Directory verificatie uitvoeren en een verificatie token ontvangen dat zichzelf identificeert als die service namens het abonnement. Dit token kan vervolgens worden weer gegeven aan Key Vault om een sleutel te verkrijgen waaraan toegang is verleend.
 
-Voor bewerkingen met behulp van versleutelingssleutels kan een service-identiteit toegang krijgen tot een van de volgende bewerkingen: decoderen, versleutelen, uitpakkenKey, wrapKey, verifiëren, ondertekenen, ophalen, aanbieden, bijwerken, maken, importeren, verwijderen, back-upen en herstellen.
+Voor bewerkingen die gebruikmaken van versleutelings sleutels, kan aan een service-identiteit toegang worden verleend voor een van de volgende bewerkingen: ontsleutelen, versleutelen, sleutel uitpakken, wrapKey, verifiëren, ondertekenen, ophalen, weer geven, bijwerken, maken, importeren, verwijderen, back-up en herstellen.
 
-Als u een sleutel wilt verkrijgen voor het versleutelen of ontsleutelen van gegevens in rust, wordt de service-identiteit uitgevoerd die de serviceinstantie Van Resource Manager zal uitvoeren zoals moet Ontsleutel (om de sleutel voor decryptie te krijgen) en WrapKey (om een sleutel in sleutelkluis in te voegen bij het maken van een nieuwe sleutel).
+Voor het verkrijgen van een sleutel voor gebruik bij het versleutelen of ontsleutelen van gegevens in rust de service-identiteit die door het service-exemplaar van de resource manager moet worden uitgevoerd sleutel uitpakken (om de sleutel voor ontsleuteling op te halen) en WrapKey (om een sleutel in te voegen in de sleutel kluis bij het maken van een nieuwe sleutel).
 
 >[!NOTE]
->Zie de beveiligde pagina van uw sleutelkluis in de [Azure Key Vault-documentatie](../../key-vault/general/secure-your-key-vault.md)voor meer informatie over key vault-autorisatie.
+>Zie de pagina uw sleutel kluis beveiligen in de [Azure Key Vault documentatie](../../key-vault/general/secure-your-key-vault.md)voor meer informatie over Key Vault autorisatie.
 
 **Voordelen**
 
-- Volledige controle over de gebruikte sleutels - encryptiesleutels worden beheerd in de Key Vault van de klant onder controle van de klant.
-- Mogelijkheid om meerdere services te versleutelen naar één master
-- Kan sleutelbeheer scheiden van het algemene managementmodel voor de service
-- Kan service en sleutellocatie in verschillende regio's definiëren
+- Volledige controle over de gebruikte sleutels: coderings sleutels worden beheerd in de Key Vault van de klant onder het besturings element van de klant.
+- Mogelijkheid om meerdere services te versleutelen op één Master
+- Kan sleutel beheer scheiden van het algehele beheer model voor de service
+- Kan de locatie van de service en de sleutel in verschillende regio's bepalen
 
 **Nadelen**
 
-- Klant heeft volledige verantwoordelijkheid voor key access management
-- Klant is volledig verantwoordelijk voor key lifecycle management
-- Aanvullende & configuratieoverhead
+- De klant heeft volledige verantwoordelijkheid voor belangrijkste toegangs beheer
+- De klant heeft volledige verantwoordelijkheid voor het beheer van de levens cyclus van sleutels
+- Extra installatie & configuratie overhead
 
-#### <a name="server-side-encryption-using-customer-managed-keys-in-customer-controlled-hardware"></a>Server-side encryptie met behulp van door de klant beheerde sleutels in klantgestuurde hardware
+#### <a name="server-side-encryption-using-customer-managed-keys-in-customer-controlled-hardware"></a>Versleuteling aan de server zijde met door de klant beheerde sleutels in door de klant bestuurde hardware
 
-Sommige Azure-services maken het HYOK-sleutelbeheermodel (Host Your Own Key) inschakelen. Deze beheermodus is handig in scenario's waarin het nodig is om de gegevens in rust te versleutelen en de sleutels te beheren in een eigen opslagplaats buiten de controle van Microsoft. In dit model moet de service de sleutel ophalen van een externe site. Prestatie- en beschikbaarheidsgaranties worden beïnvloed en de configuratie is complexer. Bovendien, omdat de service toegang heeft tot de DEK tijdens de versleutelings- en decryptiebewerkingen, zijn de algemene beveiligingsgaranties van dit model vergelijkbaar met wanneer de sleutels worden beheerd door de klant in Azure Key Vault.  Als gevolg hiervan is dit model niet geschikt voor de meeste organisaties, tenzij ze specifieke vereisten voor sleutelbeheer hebben. Vanwege deze beperkingen ondersteunen de meeste Azure Services geen serverversleuteling met behulp van serverbeheersleutels in door de klant beheerde hardware.
+Met sommige Azure-Services wordt de host van uw eigen sleutel (HYOK) Key Management model ingeschakeld. Deze beheer modus is handig in scenario's waarin de gegevens in rust moeten worden versleuteld en de sleutels in een eigen opslag plaats buiten de controle van micro soft moeten worden beheerd. In dit model moet de service de sleutel ophalen van een externe site. De prestaties en de beschik baarheid van de garantie worden beïnvloed en de configuratie is ingewik kelder. Omdat de service echter toegang heeft tot de DEK tijdens de versleutelings-en ontsleutelings bewerkingen, zijn de algemene beveiligings garanties van dit model vergelijkbaar met wanneer de sleutels door de klant worden beheerd in Azure Key Vault.  Als gevolg hiervan is dit model niet geschikt voor de meeste organisaties, tenzij ze specifieke vereisten voor sleutel beheer hebben. Als gevolg van deze beperkingen bieden de meeste Azure-Services geen ondersteuning voor versleuteling aan de server zijde met behulp van door de server beheerde sleutels in door de klant bewaakte hardware.
 
-##### <a name="key-access"></a>Sleuteltoegang
+##### <a name="key-access"></a>Sleutel toegang
 
-Wanneer server-side encryptie met behulp van service-managed sleutels in klantgestuurde hardware wordt gebruikt, worden de sleutels onderhouden op een systeem geconfigureerd door de klant. Azure-services die dit model ondersteunen, bieden een manier om een veilige verbinding tot stand te brengen met een door de klant geleverde sleutelwinkel.
+Wanneer versleuteling aan de server zijde met door service beheerde sleutels in door de klant bewaakte hardware wordt gebruikt, worden de sleutels op een door de klant geconfigureerd systeem beheerd. Azure-Services die dit model ondersteunen, bieden een manier om een beveiligde verbinding tot stand te brengen met een door de klant geleverd sleutel archief.
 
 **Voordelen**
 
-- Volledige controle over de gebruikte hoofdsleutel - encryptiesleutels worden beheerd door een klant die opslaat
-- Mogelijkheid om meerdere services te versleutelen naar één master
-- Kan sleutelbeheer scheiden van het algemene managementmodel voor de service
-- Kan service en sleutellocatie in verschillende regio's definiëren
+- Volledige controle over de gebruikte basis sleutel: coderings sleutels worden beheerd door een door de klant verschafte winkel
+- Mogelijkheid om meerdere services te versleutelen op één Master
+- Kan sleutel beheer scheiden van het algehele beheer model voor de service
+- Kan de locatie van de service en de sleutel in verschillende regio's bepalen
 
 **Nadelen**
 
-- Volledige verantwoordelijkheid voor sleutelopslag, beveiliging, prestaties en beschikbaarheid
-- Volledige verantwoordelijkheid voor key access management
-- Volledige verantwoordelijkheid voor sleutellevenscyclusbeheer
-- Aanzienlijke installatie-, configuratie- en doorlopende onderhoudskosten
-- Verhoogde afhankelijkheid van de beschikbaarheid van het netwerk tussen het klantendatacenter en Azure-datacenters.
+- Volledige verantwoordelijkheid voor sleutel opslag, beveiliging, prestaties en beschik baarheid
+- Volledige verantwoordelijkheid voor belangrijkste toegangs beheer
+- Volledige verantwoordelijkheid voor het beheer van de levens cyclus van sleutels
+- Aanzienlijke kosten voor installatie, configuratie en onderhouds werkzaamheden
+- Toename van de beschik baarheid van het netwerk tussen het Data Center van de klant en Azure-data centers.
 
-## <a name="encryption-at-rest-in-microsoft-cloud-services"></a>Versleuteling in rust in Microsoft-cloudservices
+## <a name="encryption-at-rest-in-microsoft-cloud-services"></a>Versleuteling in rust in micro soft-Cloud Services
 
-Microsoft Cloud-services worden gebruikt in alle drie de cloudmodellen: IaaS, PaaS, SaaS. Hieronder vindt u voorbeelden van hoe ze passen op elk model:
+Microsoft Cloud Services worden in alle drie Cloud modellen gebruikt: IaaS, PaaS, SaaS. Hieronder ziet u voor beelden van hoe ze in elk model passen:
 
-- Softwareservices, software als server of SaaS genoemd, die door de cloud worden geleverd, zoals Office 365.
-- Platformservices waarmee klanten gebruikmaken van de cloud in hun applicaties, waarbij ze de cloud gebruiken voor zaken als opslag, analytics en servicebusfunctionaliteit.
-- Infrastructuurservices of Infrastructure as a Service (IaaS) waarin de klant besturingssystemen en toepassingen implementeert die in de cloud worden gehost en mogelijk gebruik maken van andere cloudservices.
+- Software Services, aangeduid als software als een server of SaaS, die de toepassing heeft die door de Cloud wordt verschaft, zoals Office 365.
+- Platform services die klanten gebruikmaken van de cloud in hun toepassingen, met behulp van de Cloud voor zaken als opslag, analyses en service bus-functionaliteit.
+- Infrastructuur services of Infrastructure as a Service (IaaS) waarin de klant besturings systemen en toepassingen implementeert die worden gehost in de Cloud en mogelijk gebruikmaken van andere Cloud Services.
 
-### <a name="encryption-at-rest-for-saas-customers"></a>Encryptie in rust voor SaaS-klanten
+### <a name="encryption-at-rest-for-saas-customers"></a>Versleuteling op rest voor SaaS-klanten
 
-Klanten van Software as a Service (SaaS) hebben doorgaans versleuteling in rust ingeschakeld of beschikbaar in elke service. Office 365 heeft verschillende opties voor klanten om versleuteling in rust te verifiëren of in te schakelen. Zie [Versleuteling in Office 365](https://docs.microsoft.com/office365/securitycompliance/encryption)voor informatie over Office 365-services.
+SaaS-klanten (Software as a Service) hebben doorgaans versleuteling op rest ingeschakeld of beschikbaar in elke service. Office 365 biedt verschillende opties voor klanten om versleuteling op rest te verifiëren of in te scha kelen. Zie [versleuteling in office 365](https://docs.microsoft.com/office365/securitycompliance/encryption)voor meer informatie over Office 365-Services.
 
-### <a name="encryption-at-rest-for-paas-customers"></a>Encryptie in rust voor PaaS-klanten
+### <a name="encryption-at-rest-for-paas-customers"></a>Versleuteling bij rest voor PaaS-klanten
 
-De gegevens van de klant van Platform as a Service (PaaS) bevinden zich meestal in een opslagservice zoals Blob Storage, maar kunnen ook in de cache worden opgeslagen of opgeslagen in de toepassingsuitvoeringsomgeving, zoals een virtuele machine. Als u de beschikbare opties voor versleuteling in rust wilt zien, bekijkt u de onderstaande tabel voor de opslag- en toepassingsplatforms die u gebruikt.
+De gegevens van platform as a Service (PaaS) bevinden zich doorgaans in een opslag service, zoals Blob Storage, maar kunnen ook worden opgeslagen in de cache van de toepassings Execution omgeving, zoals een virtuele machine. Bekijk de onderstaande tabel voor de opslag-en toepassings platformen die u gebruikt om de versleutelings opties voor de beschik bare rest te bekijken.
 
-### <a name="encryption-at-rest-for-iaas-customers"></a>Encryptie in rust voor IaaS-klanten
+### <a name="encryption-at-rest-for-iaas-customers"></a>Versleuteling bij rest voor IaaS-klanten
 
-IaaS-klanten (Infrastructure as a Service) kunnen verschillende diensten en toepassingen in gebruik hebben. IaaS-services kunnen versleuteling in rust inschakelen in hun door Azure gehoste virtuele machines en VHD's met Azure Disk Encryption.
+IaaS-klanten (Infrastructure as a Service) kunnen een groot aantal services en toepassingen gebruiken. IaaS Services kunnen versleuteling in de rest inschakelen in hun door Azure gehoste virtuele machines en Vhd's met behulp van Azure Disk Encryption.
 
 #### <a name="encrypted-storage"></a>Versleutelde opslag
 
-Net als PaaS kunnen IaaS-oplossingen gebruikmaken van andere Azure-services die gegevens die in rust zijn versleuteld opslaan. In deze gevallen u de ondersteuning voor Versleuteling bij rust inschakelen, zoals geleverd door elke verbruikte Azure-service. De onderstaande tabel somt de belangrijkste opslag-, services- en toepassingsplatforms op en het ondersteunde model van Encryption at Rest. 
+Net als PaaS kunnen IaaS-oplossingen gebruikmaken van andere Azure-Services die gegevens versleuteld bewaren op rest. In dergelijke gevallen kunt u de versleuteling inschakelen op rest-ondersteuning, zoals wordt geboden door elke verbruikte Azure-service. In de onderstaande tabel worden de belangrijkste opslag-, service-en toepassings platforms en het versleutelings model op rest-ondersteuning opgesomd. 
 
-#### <a name="encrypted-compute"></a>Versleutelde rekenkracht
+#### <a name="encrypted-compute"></a>Versleutelde compute
 
-Alle beheerde schijven, momentopnamen en afbeeldingen worden versleuteld met behulp van Storage Service Encryption met behulp van een servicebeheersleutel. Een completere Encryption at Rest-oplossing zorgt ervoor dat de gegevens nooit onversleuteld worden weergegeven. Tijdens het verwerken van de gegevens op een virtuele machine kunnen gegevens worden weergegeven in het Windows-paginabestand of het Linux-swapbestand, een crashdump of een toepassingslogboek. Om ervoor te zorgen dat deze gegevens in rust worden versleuteld, kunnen IaaS-toepassingen Azure Disk Encryption gebruiken op een azure IaaS virtuele machine (Windows of Linux) en virtuele schijf.
+Alle Managed Disks, moment opnamen en installatie kopieën worden versleuteld met behulp van Storage Service Encryption met een door een service beheerde sleutel. Een meer complete versleuteling bij rest-oplossing zorgt ervoor dat de gegevens niet in een niet-versleutelde vorm worden bewaard. Tijdens het verwerken van de gegevens op een virtuele machine kunnen gegevens worden bewaard in het Windows-pagina bestand of het Linux-wissel bestand, een crash dump of een toepassings logboek. Om ervoor te zorgen dat deze gegevens in rust worden versleuteld, kunnen IaaS-toepassingen gebruikmaken van Azure Disk Encryption op een virtuele machine met Azure IaaS (Windows of Linux) en virtuele schijf.
 
-#### <a name="custom-encryption-at-rest"></a>Aangepaste versleuteling in rust
+#### <a name="custom-encryption-at-rest"></a>Aangepaste versleuteling bij rest
 
-Het wordt aanbevolen dat IaaS-toepassingen waar mogelijk gebruik maken van Azure Disk Encryption and Encryption at Rest-opties die worden geleverd door alle verbruikte Azure-services. In sommige gevallen, zoals onregelmatige versleutelingsvereisten of niet-Azure-gebaseerde opslag, moet een ontwikkelaar van een IaaS-toepassing mogelijk zelf versleuteling implementeren. Ontwikkelaars van IaaS-oplossingen kunnen beter integreren met Azure-beheer en klantverwachtingen door gebruik te maken van bepaalde Azure-componenten. Met name ontwikkelaars moeten de Azure Key Vault-service gebruiken om veilige sleutelopslag te bieden en hun klanten consistente sleutelbeheeropties te bieden met die van de meeste Azure-platformservices. Daarnaast moeten aangepaste oplossingen Azure-Managed Service Identities gebruiken om serviceaccounts toegang te geven tot versleutelingssleutels. Zie hun respectieve SDK's voor informatie over ontwikkelaars over Azure Key Vault en Managed Service Identities.
+Het wordt aanbevolen om waar mogelijk IaaS toepassingen Azure Disk Encryption en versleuteling te gebruiken bij rest opties die worden verschaft door alle verbruikte Azure-Services. In sommige gevallen, zoals onregelmatige versleutelings vereisten of opslag op basis van Azure, moet een ontwikkelaar van een IaaS-toepassing mogelijk versleuteling op rest zelf implementeren. Ontwikkel aars van IaaS-oplossingen kunnen beter integreren met Azure-beheer en klant verwachtingen door gebruik te maken van bepaalde Azure-onderdelen. Met name moeten ontwikkel aars de Azure Key Vault-service gebruiken voor het leveren van beveiligde sleutel opslag en hun klanten een consistente sleutel beheer opties bieden met die van de meeste services van het Azure-platform. Daarnaast moeten aangepaste oplossingen door Azure beheerde service-identiteiten worden gebruikt om service accounts toegang te geven tot versleutelings sleutels. Voor informatie over ontwikkel aars over Azure Key Vault en beheerde service-identiteiten raadpleegt u hun respectieve Sdk's.
 
-## <a name="azure-resource-providers-encryption-model-support"></a>Ondersteuning voor versleutelingsmodel azure-bronproviders
+## <a name="azure-resource-providers-encryption-model-support"></a>Ondersteuning voor het versleutelings model van Azure-resource providers
 
-Microsoft Azure Services ondersteunen elk een of meer van de versleuteling bij restmodellen. Voor sommige services zijn echter mogelijk geen versleutelingsmodellen van toepassing. Voor services die door klanten beheerde sleutelscenario's ondersteunen, kunnen ze alleen een subset van de sleuteltypen ondersteunen die Azure Key Vault ondersteunt voor sleutelversleutelingssleutels. Bovendien kunnen services ondersteuning voor deze scenario's en sleuteltypen in verschillende schema's vrijgeven. In deze sectie wordt de ondersteuning voor versleuteling in rust beschreven op het moment van schrijven voor elk van de belangrijkste Azure-gegevensopslagservices.
+Microsoft Azure Services bieden ondersteuning voor een of meer van de versleuteling bij rest-modellen. Voor sommige services zijn echter een of meer van de versleutelings modellen niet van toepassing. Voor services die door de klant beheerde sleutel scenario's ondersteunen, kunnen ze slechts een subset van de sleutel typen ondersteunen die Azure Key Vault ondersteunt voor sleutel versleutelings sleutels. Daarnaast kunnen services de ondersteuning voor deze scenario's en sleutel typen in verschillende schema's vrijgeven. In deze sectie wordt de versleuteling op rest-ondersteuning beschreven op het moment van schrijven voor elk van de belangrijkste Azure-Services voor gegevens opslag.
 
-### <a name="azure-disk-encryption"></a>Azure-schijfversleuteling
+### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Elke klant die IaaS-functies (Azure Infrastructure as a Service) gebruikt, kan in rust versleuteling voor zijn IaaS-vm's en schijven bereiken via Azure Disk Encryption. Zie de [azure diskencryptiedocumentatie](../azure-security-disk-encryption-overview.md)voor meer informatie over Azure Disk-versleuteling.
+Elke klant die gebruikmaakt van Azure Infrastructure as a Service (IaaS)-functies, kan versleutelen op rest voor hun IaaS Vm's en schijven via Azure Disk Encryption. Zie de [Azure Disk Encryption-documentatie](../azure-security-disk-encryption-overview.md)voor meer informatie over Azure Disk Encryption.
 
 #### <a name="azure-storage"></a>Azure Storage
 
-Alle Azure Storage Services (Blob storage, Queue storage, Table storage en Azure Files) ondersteunen server-side encryptie in rust; sommige services ondersteunen bovendien door de klant beheerde sleutels en versleuteling aan de clientzijde. 
+Alle Azure Storage services (Blob-opslag, wachtrij opslag, tabel opslag en Azure Files) ondersteunen server versleuteling in rust. Sommige services ondersteunen daarnaast door de klant beheerde sleutels en versleuteling aan de client zijde. 
 
-- Serverzijde: Alle Azure Storage Services maken standaard server-side encryptie mogelijk met behulp van servicebeheersleutels, die transparant is voor de toepassing. Zie [Azure Storage Service Encryption for Data at Rest voor](../../storage/common/storage-service-encryption.md)meer informatie. Azure Blob-opslag en Azure Files ondersteunen ook RSA 2048-bits door klanten beheerde sleutels in Azure Key Vault. Zie [Storage Service-versleuteling met door de klant beheerde sleutels in Azure Key Vault](../../storage/common/storage-encryption-keys-portal.md)voor meer informatie.
-- Clientzijde: Azure Blobs, Tabellen en Wachtrijen ondersteunen versleuteling aan clientzijde. Bij het gebruik van client-side encryptie, klanten versleutelen de gegevens en uploaden de gegevens als een versleutelde blob. Key management wordt gedaan door de klant. Zie [Client-Side Encryption en Azure Key Vault voor Microsoft Azure Storage voor](../../storage/common/storage-client-side-encryption.md)meer informatie.
+- Aan de server zijde: alle Azure Storage services maken server zijde versleuteling mogelijk door gebruik te maken van door de service beheerde sleutels, die transparant zijn voor de toepassing. Zie [Azure Storage-service versleuteling voor Data-at-rest](../../storage/common/storage-service-encryption.md)voor meer informatie. Azure Blob-opslag en Azure Files ondersteunen ook RSA 2048-bits door de klant beheerde sleutels in Azure Key Vault. Zie [Storage service Encryption het gebruik van door de klant beheerde sleutels in azure Key Vault](../../storage/common/storage-encryption-keys-portal.md)voor meer informatie.
+- Client zijde: Azure-blobs,-tabellen en-wacht rijen ondersteunen versleuteling aan de client zijde. Wanneer u versleuteling aan de client zijde gebruikt, versleutelt klanten de gegevens en uploadt de gegevens als een versleutelde blob. Sleutel beheer wordt uitgevoerd door de klant. Zie [versleuteling aan client zijde en Azure Key Vault voor Microsoft Azure Storage](../../storage/common/storage-client-side-encryption.md)voor meer informatie.
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 
-Azure SQL Database ondersteunt momenteel versleuteling in rust voor door Microsoft beheerde servicezijde en versleutelingsscenario's aan de clientzijde.
+Azure SQL Database biedt momenteel ondersteuning voor versleuteling in rust voor micro soft-beheerde service-en versleutelings scenario's aan de client zijde.
 
-Ondersteuning voor serverversleuteling wordt momenteel geleverd via de SQL-functie genaamd Transparent Data Encryption. Zodra een Azure SQL Database-klant TDE-sleutel inschakelt, worden ze automatisch gemaakt en beheerd. Versleuteling in rust kan worden ingeschakeld op database- en serverniveau. Vanaf juni 2017 is [Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) standaard ingeschakeld in nieuw gemaakte databases. Azure SQL Database ondersteunt RSA 2048-bits door klanten beheerde sleutels in Azure Key Vault. Zie [Transparante gegevensversleuteling met Bring Your Own Key-ondersteuning voor Azure SQL Database en Data Warehouse voor](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current)meer informatie.
+Ondersteuning voor Server versleuteling wordt momenteel geboden via de SQL-functie met de naam Transparent Data Encryption. Zodra een Azure SQL Database klant wordt ingeschakeld, wordt er automatisch een TDE-sleutel gemaakt en beheerd. Versleuteling in rust kan worden ingeschakeld op Data Base-en server niveau. Vanaf 2017 juni is [transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) standaard ingeschakeld voor nieuw gemaakte data bases. Azure SQL Database ondersteunt door de klant beheerde sleutels van RSA 2048-bits in Azure Key Vault. Zie [transparent Data Encryption met Bring your own Key ondersteuning voor Azure SQL database en Data Warehouse](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current)voor meer informatie.
 
-Client-side encryptie van Azure SQL Database-gegevens wordt ondersteund via de [functie Altijd versleuteld.](https://msdn.microsoft.com/library/mt163865.aspx) Always Encrypted maakt gebruik van een sleutel die is gemaakt en opgeslagen door de client. Klanten kunnen de hoofdsleutel opslaan in een Windows-certificaatarchief, Azure Key Vault of een lokale hardwarebeveiligingsmodule. Met SQL Server Management Studio kiezen SQL-gebruikers welke sleutel ze willen gebruiken om welke kolom te versleutelen.
+Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund via de [Always encrypted](https://msdn.microsoft.com/library/mt163865.aspx) -functie. Always Encrypted gebruikt een sleutel die door de client is gemaakt en opgeslagen. Klanten kunnen de hoofd sleutel opslaan in een Windows-certificaat archief, Azure Key Vault of een lokale hardware Security module. Met behulp van SQL Server Management Studio kiezen SQL-gebruikers welke sleutel ze willen gebruiken om de kolom te versleutelen.
 
-#### <a name="encryption-model-and-key-management-table"></a>Coderingsmodel en sleutelbeheertabel
+#### <a name="encryption-model-and-key-management-table"></a>Versleutelings model en sleutel beheer tabel
 
-|                                  |                    | **Versleutelingsmodel en sleutelbeheer** |                    |
+|                                  |                    | **Versleutelings model en sleutel beheer** |                    |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
-|                                  | **Serverzijde met servicebeheerde sleutel**     | **Serverzijde met door de klant beheerde sleutel**             | **Clientzijde met clientbeheerde sleutel**      |
+|                                  | **Server-side met door service beheerde sleutel**     | **Server-zijde met door de klant beheerde sleutel**             | **Client-side met door client beheerde sleutel**      |
 | **AI en Machine Learning**      |                    |                    |                    |
 | Azure Cognitive Search           | Ja                | Ja                | -                  |
 | Azure Cognitive Services         | Ja                | Ja                | -                  |
 | Azure Machine Learning           | Ja                | Ja                | -                  |
-| Azure Machine Learning Studio    | Ja                | Preview, RSA 2048-bit | -               |
+| Azure Machine Learning Studio    | Ja                | Preview, RSA 2048-bits | -               |
 | Content Moderator                | Ja                | Ja                | -                  |
 | Face                             | Ja                | Ja                | -                  |
 | Taal begrijpen           | Ja                | Ja                | -                  |
@@ -273,43 +273,43 @@ Client-side encryptie van Azure SQL Database-gegevens wordt ondersteund via de [
 | QnA Maker                        | Ja                | Ja                | -                  |
 | Spraakservices                  | Ja                | Ja                | -                  |
 | Translator Text                  | Ja                | Ja                | -                  |
-| Power BI                         | Ja                | Preview, RSA 2048-bit | -                  |
-| **Analytics**                    |                    |                    |                    |
+| Power BI                         | Ja                | Preview, RSA 2048-bits | -                  |
+| **Analyse**                    |                    |                    |                    |
 | Azure Stream Analytics           | Ja                | N.v.t.\*            | -                  |
-| Event Hubs                       | Ja                | Ja, alle RSA Lengtes. | -                  |
-| Functions                        | Ja                | Ja, alle RSA Lengtes. | -                  |
+| Event Hubs                       | Ja                | Ja, alle RSA-lengten. | -                  |
+| Functions                        | Ja                | Ja, alle RSA-lengten. | -                  |
 | Azure Analysis Services          | Ja                | -                  | -                  |
 | Azure Data Catalog               | Ja                | -                  | -                  |
 | Azure HDInsight                  | Ja                | Alle                | -                  |
-| Inzichten in Azure-monitortoepassingen | Ja                | Ja                | -                  |
+| Azure Monitor Application Insights | Ja                | Ja                | -                  |
 | Azure Monitor Log Analytics      | Ja                | Ja                | -                  |
 | Azure Data Explorer              | Ja                | Ja                | -                  |
 | Azure Data Factory               | Ja                | Ja                | -                  |
-| Azure Data Lake Store            | Ja                | Ja, RSA 2048-bit  | -                  |
+| Azure Data Lake Store            | Ja                | Ja, RSA 2048-bits  | -                  |
 | **Containers**                   |                    |                    |                    |
 | Azure Kubernetes Service         | Ja                | Ja                | -                  |
 | Container Instances              | Ja                | Ja                | -                  |
 | Container Registry               | Ja                | Ja                | -                  |
 | **Compute**                      |                    |                    |                    |
-| Virtuele machines                 | Ja                | Ja, RSA 2048-bit  | -                  |
-| Virtuele machineschaalset        | Ja                | Ja, RSA 2048-bit  | -                  |
-| SAP HANA                         | Ja                | Ja, RSA 2048-bit  | -                  |
-| App Service                      | Ja                | Ja\*\*            | -                  |
-| Automation                       | Ja                | Ja\*\*            | -                  |
-| Azure Functions                  | Ja                | Ja\*\*            | -                  |
-| Azure-portal                     | Ja                | Ja\*\*            | -                  |
+| Virtuele machines                 | Ja                | Ja, RSA 2048-bits  | -                  |
+| Schaalset voor virtuele machines        | Ja                | Ja, RSA 2048-bits  | -                  |
+| SAP HANA                         | Ja                | Ja, RSA 2048-bits  | -                  |
+| App Service                      | Ja                | Klikt\*\*            | -                  |
+| Automation                       | Ja                | Klikt\*\*            | -                  |
+| Azure Functions                  | Ja                | Klikt\*\*            | -                  |
+| Azure-portal                     | Ja                | Klikt\*\*            | -                  |
 | Logic Apps                       | Ja                | Ja                | -                  |
-| Azure Managed Applications       | Ja                | Ja\*\*            | -                  |
+| Azure Managed Applications       | Ja                | Klikt\*\*            | -                  |
 | Service Bus                      | Ja                | Ja                | -                  |
 | Site Recovery                    | Ja                | Ja                | -                  |
 | **Databases**                    |                    |                    |                    |
-| SQL Server op Virtual Machines   | Ja                | Ja, RSA 2048-bit  | Ja                |
-| Azure SQL Database               | Ja                | Ja, RSA 2048-bit  | Ja                |
-| Azure SQL-database voor MariaDB   | Ja                | -                  | -                  |
-| Azure SQL-database voor MySQL     | Ja                | Ja                | -                  |
-| Azure SQL-database voor PostgreSQL | Ja               | Ja                | -                  |
-| Azure Synapse Analytics          | Ja                | Ja, RSA 2048-bit  | -                  |
-| SQL Server Stretch Database      | Ja                | Ja, RSA 2048-bit  | Ja                |
+| SQL Server op Virtual Machines   | Ja                | Ja, RSA 2048-bits  | Ja                |
+| Azure SQL Database               | Ja                | Ja, RSA 2048-bits  | Ja                |
+| Azure SQL Database voor MariaDB   | Ja                | -                  | -                  |
+| Azure SQL Database voor MySQL     | Ja                | Ja                | -                  |
+| Azure SQL Database voor PostgreSQL | Ja               | Ja                | -                  |
+| Azure Synapse Analytics          | Ja                | Ja, RSA 2048-bits  | -                  |
+| SQL Server Stretch Database      | Ja                | Ja, RSA 2048-bits  | Ja                |
 | Table Storage                    | Ja                | Ja                | Ja                |
 | Azure Cosmos DB                  | Ja                | Ja                | -                  |
 | Azure Databricks                 | Ja                | Ja                | -                  |
@@ -319,14 +319,14 @@ Client-side encryptie van Azure SQL Database-gegevens wordt ondersteund via de [
 | Azure-opslagplaatsen                      | Ja                | -                  | Ja                |
 | **Identiteit**                     |                    |                    |                    |
 | Azure Active Directory           | Ja                | -                  | -                  |
-| Azure Active Directory Domain Services | Ja          | Ja, RSA 2048-bit  | -                  |
+| Azure Active Directory Domain Services | Ja          | Ja, RSA 2048-bits  | -                  |
 | **Integratie**                  |                    |                    |                    |
 | Service Bus                      | Ja                | Ja                | Ja                |
 | Event Grid                       | Ja                | -                  | -                  |
 | API Management                   | Ja                | -                  | -                  |
 | **IoT-services**                 |                    |                    |                    |
 | IoT Hub                          | Ja                | Ja                | Ja                |
-| Inrichting van IoT-hub-apparaten      | Ja                | Ja                | -                  |
+| IoT Hub Device Provisioning      | Ja                | Ja                | -                  |
 | **Beheer en governance**    |                    |                    |                    |
 | Azure Site Recovery              | Ja                | -                  | -                  |
 | Azure Migrate                    | Ja                | Ja                | -                  |
@@ -336,28 +336,28 @@ Client-side encryptie van Azure SQL Database-gegevens wordt ondersteund via de [
 | Azure Security Center voor IoT    | Ja                | Ja                | -                  |
 | Azure Sentinel                   | Ja                | Ja                | -                  |
 | **Storage**                      |                    |                    |                    |
-| Blob Storage                     | Ja                | Ja, RSA 2048-bit  | Ja                |
-| Premium Blob-opslag             | Ja                | Ja, RSA 2048-bit  | Ja                |
+| Blob Storage                     | Ja                | Ja, RSA 2048-bits  | Ja                |
+| Premium-Blob Storage             | Ja                | Ja, RSA 2048-bits  | Ja                |
 | Disk Storage                     | Ja                | Ja                | -                  |
-| Ultraschijfopslag               | Ja                | Ja                | -                  |
-| Beheerde schijfopslag             | Ja                | Ja                | -                  |
-| File Storage                     | Ja                | Ja, RSA 2048-bit  | -                  |
-| Opslag van Bestand Premium             | Ja                | Ja, RSA 2048-bit  | -                  |
-| File Sync                        | Ja                | Ja, RSA 2048-bit  | -                  |
+| Ultra Disk Storage               | Ja                | Ja                | -                  |
+| Beheerde Disk Storage             | Ja                | Ja                | -                  |
+| File Storage                     | Ja                | Ja, RSA 2048-bits  | -                  |
+| Bestands Premium Storage             | Ja                | Ja, RSA 2048-bits  | -                  |
+| File Sync                        | Ja                | Ja, RSA 2048-bits  | -                  |
 | Queue Storage                    | Ja                | Ja                | Ja                |
 | Avere vFXT                       | Ja                | -                  | -                  |
 | Azure Cache voor Redis            | Ja                | N.v.t.\*              | -                  |
 | Azure NetApp Files               | Ja                | Ja                | -                  |
-| Archive Storage                  | Ja                | Ja, RSA 2048-bit  | -                  |
-| StorSimple                       | Ja                | Ja, RSA 2048-bit  | Ja                |
+| Archive Storage                  | Ja                | Ja, RSA 2048-bits  | -                  |
+| StorSimple                       | Ja                | Ja, RSA 2048-bits  | Ja                |
 | Azure Backup                     | Ja                | Ja                | Ja                |
 | Data Box                         | Ja                | -                  | Ja                |
 | Data Box Edge                    | Ja                | Ja                | -                  |
 
-\*Deze service blijft niet bestaan in gegevens. Eventuele tijdelijke caches worden versleuteld met een Microsoft-sleutel.
+\*Met deze service worden gegevens niet persistent gemaakt. Tijdelijke caches, indien aanwezig, worden versleuteld met een micro soft-sleutel.
 
-\*\*Deze service ondersteunt het opslaan van gegevens in uw eigen Key Vault, Storage Account of andere gegevens blijvende service die al server-side encryptie ondersteunt met customer-managed key.
+\*\*Deze service biedt ondersteuning voor het opslaan van gegevens in uw eigen Key Vault, opslag account of een andere service voor gegevens persistentie die al ondersteuning biedt voor versleuteling aan de server zijde met door de klant beheerde sleutel.
 
 ## <a name="conclusion"></a>Conclusie
 
-Bescherming van klantgegevens die zijn opgeslagen in Azure Services is van het grootste belang voor Microsoft. Alle azure-gehoste services zijn toegewijd aan het bieden van opties voor versleuteling bij rust. Azure-services ondersteunen door services beheerde sleutels, door de klant beheerde sleutels of versleuteling aan de clientzijde. Azure-services verbeteren de beschikbaarheid van versleuteling bij rust in grote lijnen en er zijn nieuwe opties gepland voor preview en algemene beschikbaarheid in de komende maanden.
+De beveiliging van klant gegevens die zijn opgeslagen in Azure-Services is van cruciaal belang voor micro soft. Alle door Azure gehoste services zijn doorgevoerd om versleuteling te bieden met behulp van rest-opties. Azure-Services ondersteunen door service beheerde sleutels, door de klant beheerde sleutels of versleuteling aan de client zijde. Azure-Services verbeteren de versleuteling op rest Beschik baarheid en nieuwe opties zijn gepland voor preview en algemene Beschik baarheid in de komende maanden.
