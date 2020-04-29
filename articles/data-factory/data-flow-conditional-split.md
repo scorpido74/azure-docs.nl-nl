@@ -1,6 +1,6 @@
 ---
-title: Voorwaardelijke gesplitste transformatie in kaartgegevensstroom
-description: Gegevens splitsen in verschillende stromen met behulp van de voorwaardelijke gesplitste transformatie in azure datastroom voor het toewijzen van gegevens
+title: Voorwaardelijke Splits Transform in toewijzing van gegevens stroom
+description: Gegevens in verschillende stromen splitsen met behulp van de Conditional Split trans formatie in Azure Data Factory toewijzing van gegevens stroom
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
 ms.openlocfilehash: bd9241e526d7cf42f0697afb8635c085a08c80d8
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606489"
 ---
-# <a name="conditional-split-transformation-in-mapping-data-flow"></a>Voorwaardelijke gesplitste transformatie in kaartgegevensstroom
+# <a name="conditional-split-transformation-in-mapping-data-flow"></a>Voorwaardelijke Splits Transform in toewijzing van gegevens stroom
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-De voorwaardelijke gesplitste transformatie leidt gegevensrijen naar verschillende streams op basis van overeenkomende voorwaarden. De voorwaardelijke gesplitste transformatie is vergelijkbaar met een CASE-beslissingsstructuur in een programmeertaal. De transformatie evalueert expressies en leidt de gegevensrij op basis van de resultaten naar de opgegeven stroom.
+Met de Conditional Split trans formatie worden gegevens rijen naar verschillende stromen gerouteerd op basis van overeenkomende voor waarden. De Conditional Split trans formatie is vergelijkbaar met een beslissings structuur voor de situatie in een programmeer taal. De trans formatie evalueert expressies en op basis van de resultaten, stuurt de gegevensrij door naar de opgegeven stroom.
 
 ## <a name="configuration"></a>Configuratie
 
-Met **de instelling Splitsen wordt** bepaald of de rij gegevens naar de eerste overeenkomende stream of elke stream loopt die overeenkomt met deze.
+De instelling **splitsen op** bepaalt of de rij van de gegevens naar de eerste overeenkomende stream of elke stream die overeenkomt met moet stromen.
 
-Gebruik de opbouw van gegevensstromenexpressie om een expressie voor de gesplitste voorwaarde in te voeren. Als u een nieuwe voorwaarde wilt toevoegen, klikt u op het pluspictogram in een bestaande rij. Er kan ook een standaardstream worden toegevoegd voor rijen die niet overeenkomen met een voorwaarde.
+Gebruik de opbouw functie voor de data flow-expressie om een expressie voor de Splits voorwaarde in te voeren. Klik op het plus pictogram in een bestaande rij om een nieuwe voor waarde toe te voegen. Er kan ook een standaard stroom worden toegevoegd voor rijen die niet overeenkomen met een voor waarde.
 
-![voorwaardelijke splitsing](media/data-flow/conditionalsplit1.png "opties voor voorwaardelijke splitsing")
+![Conditional Split](media/data-flow/conditionalsplit1.png "Conditional Split opties")
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 
@@ -45,13 +45,13 @@ Gebruik de opbouw van gegevensstromenexpressie om een expressie voor de gesplits
 
 ### <a name="example"></a>Voorbeeld
 
-Het onderstaande voorbeeld is `SplitByYear` een voorwaardelijke gesplitste `CleanData`transformatie met de naam die inkomende stream inneemt . Deze transformatie heeft `year < 1960` twee `year > 1980`gesplitste voorwaarden en . `disjoint`is vals omdat de gegevens naar de eerste overeenkomende voorwaarde gaan. Elke rij die overeenkomt met `moviesBefore1960`de eerste voorwaarde gaat naar uitvoerstroom. Alle resterende rijen die overeenkomen met `moviesAFter1980`de tweede voorwaarde gaan naar uitvoerstroom . Alle andere rijen stromen `AllOtherMovies`door de standaardstroom .
+Het onderstaande voor beeld is een Conditional Split trans `SplitByYear` formatie met de naam die `CleanData`in de inkomende stroom neemt. Deze trans formatie heeft twee gesplitste voor waarden `year < 1960` en. `year > 1980` `disjoint`is onwaar, omdat de gegevens worden verplaatst naar de eerste overeenkomende voor waarde. Elke rij die overeenkomt met de eerste voor waarde `moviesBefore1960`, gaat naar uitvoer stroom. Alle resterende rijen die overeenkomen met de tweede voor waarde `moviesAFter1980`, gaan naar uitvoer stroom. Alle andere rijen stromen via de standaard stroom `AllOtherMovies`.
 
-In de UX van de Data Factory lijkt deze transformatie op de onderstaande afbeelding:
+In de Data Factory UX ziet deze trans formatie er als volgt uit:
 
-![voorwaardelijke splitsing](media/data-flow/conditionalsplit1.png "opties voor voorwaardelijke splitsing")
+![Conditional Split](media/data-flow/conditionalsplit1.png "Conditional Split opties")
 
-Het gegevensstroomscript voor deze transformatie bevindt zich in het onderstaande fragment:
+Het gegevens stroom script voor deze trans formatie bevindt zich in het volgende fragment:
 
 ```
 CleanData
@@ -64,4 +64,4 @@ CleanData
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Algemene gegevensstroomtransformaties die worden gebruikt met voorwaardelijke splitsing zijn de [jointransformatie,](data-flow-join.md) [opzoektransformatie](data-flow-lookup.md)en de [geselecteerde transformatie](data-flow-select.md)
+Gemeen schappelijke gegevensstroom transformaties die worden gebruikt met Conditional Split zijn de trans [formatie voor samen voegen](data-flow-join.md), de [Zoek transformatie](data-flow-lookup.md)en de [selectie transformatie](data-flow-select.md)

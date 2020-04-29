@@ -1,7 +1,7 @@
 ---
 title: Voorbeelden van Jupyter-notebooks
 titleSuffix: Azure Machine Learning
-description: Zoek en gebruik voorbeeld Jupyter-notitieblokken om de Azure Machine Learning Python voor SDK te verkennen.
+description: Zoek en gebruik voor beelden van Jupyter-notebooks om de Azure Machine Learning python voor SDK te verkennen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,50 +12,50 @@ ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: 7242b82ee5c43878a33731bd1f02b685020f22b0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78673622"
 ---
-# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Azure Machine Learning verkennen met Jupyter-notitieblokken
+# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Azure Machine Learning verkennen met Jupyter-notebooks
 
-Het [voorbeeld Azure Machine Learning Notebooks repository](https://github.com/azure/machinelearningnotebooks) bevat de nieuwste Azure Machine Learning Python SDK-voorbeelden. Deze Juypter-notebooks zijn ontworpen om u te helpen de SDK te verkennen en als model te dienen voor uw eigen machine learning-projecten.
+Het [voor beeld Azure machine learning-notitie blokken](https://github.com/azure/machinelearningnotebooks) bevat de meest recente Azure machine learning python SDK-voor beelden. Deze Juypter-notebooks zijn ontworpen om u te helpen de SDK te verkennen en als modellen te gebruiken voor uw eigen machine learning projecten.
 
-In dit artikel ziet u hoe u toegang krijgt tot de repository vanuit de volgende omgevingen:
+In dit artikel wordt beschreven hoe u toegang kunt krijgen tot de opslag plaats vanuit de volgende omgevingen:
 
-- [Azure Machine Learning-rekeninstantie](#notebookvm)
-- [Neem uw eigen notebookserver mee](#byo)
+- [Reken instantie Azure Machine Learning](#notebookvm)
+- [Uw eigen notebook server meenemen](#byo)
 - [Data Science Virtual Machine](#dsvm)
 
 > [!NOTE]
-> Zodra u de opslagplaats hebt gekloond, vindt u zelfstudienotitieblokken in de map **met zelfstudies** en functiespecifieke notitieblokken in de map **how-to-use-azureml.**
+> Zodra u de opslag plaats hebt gekloond, vindt u de notitie blokken voor zelf **studies** in de mappen map en specifieke notitie blokken in de map **How-to-use-azureml** .
 
 <a name="notebookvm"></a>
-## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>Voorbeelden van gegevens over de rekeninstantie Azure Machine Learning downloaden
+## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>Voor beelden van Azure Machine Learning Reken instantie ophalen
 
-De eenvoudigste manier om met de voorbeelden aan de slag te gaan, is door de [omgeving Zelfstudie: Setup en werkruimte](tutorial-1st-experiment-sdk-setup.md)te voltooien. Zodra u klaar bent, beschikt u over een speciale notebookserver die vooraf is geladen met de SDK en de voorbeeldopslagplaats. Geen downloads of installatie nodig.
+De eenvoudigste manier om aan de slag te gaan met de voor beelden is het volt ooien van de [zelf studie: Setup-omgeving en-werk ruimte](tutorial-1st-experiment-sdk-setup.md). Zodra u klaar bent, hebt u een vooraf geladen notebook server met de SDK en de voor beeld-opslag plaats. Geen down loads of installatie vereist.
 
 <a name="byo"></a>
 
-## <a name="get-samples-on-your-notebook-server"></a>Voorbeelden op uw notitieblokserver downloaden
+## <a name="get-samples-on-your-notebook-server"></a>Voor beelden ophalen van uw notebook server
 
-Als u uw eigen notebookserver mee wilt nemen voor lokale ontwikkeling, voert u de volgende stappen uit:
+Voer de volgende stappen uit als u uw eigen notebook server wilt maken voor lokale ontwikkeling:
 
 [!INCLUDE [aml-your-server](../../includes/aml-your-server.md)]
 
-Deze instructies installeren de basis SDK pakketten die nodig zijn voor de quickstart en tutorial notebooks. Voor andere voorbeeldnotitieblokken moet u mogelijk extra onderdelen installeren. Zie [De Azure Machine Learning SDK voor Python installeren voor](https://docs.microsoft.com/python/api/overview/azure/ml/install)meer informatie.
+In deze instructies worden de basis-SDK-pakketten geïnstalleerd die nodig zijn voor de notebooks Snelstartgids en zelf studie. Voor andere voor beelden van notitie blokken moet u mogelijk extra onderdelen installeren. Zie [de Azure machine learning SDK voor python installeren](https://docs.microsoft.com/python/api/overview/azure/ml/install)voor meer informatie.
 
 <a name="dsvm"></a>
-## <a name="get-samples-on-dsvm"></a>Voorbeelden downloaden op DSVM
+## <a name="get-samples-on-dsvm"></a>Voor beelden ophalen op DSVM
 
-De Data Science Virtual Machine (DSVM) is een aangepaste VM-afbeelding die speciaal is gebouwd voor het doen van data science. Als u [een DSVM maakt,](how-to-configure-environment.md#dsvm)worden de SDK- en notebookserver voor u geïnstalleerd en geconfigureerd. U moet echter nog steeds een werkruimte maken en de voorbeeldopslagplaats klonen.
+De Data Science Virtual Machine (DSVM) is een aangepaste VM-installatie kopie die speciaal is gebouwd voor het uitvoeren van data Science. Als u [een DSVM maakt](how-to-configure-environment.md#dsvm), worden de SDK-en notebook server geïnstalleerd en geconfigureerd voor u. U moet echter nog steeds een werk ruimte maken en de voorbeeld opslagplaats klonen.
 
 [!INCLUDE [aml-dsvm-server](../../includes/aml-dsvm-server.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [voorbeeldnotitieblokken](https://aka.ms/aml-notebooks) om te ontdekken wat Azure Machine Learning kan doen of probeer deze zelfstudies:
+Bekijk de [voorbeeld notitieblokken](https://aka.ms/aml-notebooks) om te ontdekken wat Azure machine learning kan doen of probeer deze zelf studies:
 
 - [Een model voor de classificatie van afbeeldingen trainen en implementeren met MNIST](tutorial-train-models-with-aml.md)
 

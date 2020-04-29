@@ -1,6 +1,6 @@
 ---
-title: Informatie over MQTT-ondersteuning voor Azure IoT Device Provisioning Service | Microsoft Documenten
-description: Handleiding voor ontwikkelaars - ondersteuning voor apparaten die verbinding maken met het DPS-apparaateindpunt (Azure IoT Device Provisioning Service) met behulp van het MQTT-protocol.
+title: Meer informatie over Azure IoT Device Provisioning Service MQTT-ondersteuning | Microsoft Docs
+description: 'Ontwikkelaars gids: ondersteuning voor apparaten die verbinding maken met het op het apparaat gerichte eind punt van de Azure IoT Device Provisioning Service (DPS) met het MQTT-protocol.'
 author: rajeevmv
 ms.service: iot-dps
 services: iot-dps
@@ -11,79 +11,79 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 213fc3412a2dfad77946e52a355a30774d6860c7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680677"
 ---
-# <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Communiceren met uw DPS met het MQTT-protocol
+# <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Communiceren met uw DPS met het MQTT-Protocol
 
-DPS stelt apparaten in staat om te communiceren met het eindpunt van het DPS-apparaat met:
+Met DPS kunnen apparaten met het eind punt van het DPS-apparaat communiceren met:
 
-* [MQTT v3.1.1](https://mqtt.org/) op poort 8883
-* [MQTT v3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718127) via WebSocket op poort 443.
+* [MQTT v 3.1.1](https://mqtt.org/) op poort 8883
+* [MQTT v 3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718127) over WebSocket op poort 443.
 
-DPS is geen full-featured MQTT broker en ondersteunt niet alle gedragingen die zijn gespecificeerd in de MQTT v3.1.1-standaard. In dit artikel wordt beschreven hoe apparaten ondersteund MQTT-gedrag kunnen gebruiken om met DPS te communiceren.
+DPS is geen volledig functionele MQTT-Broker en biedt geen ondersteuning voor alle gedragingen die zijn opgegeven in de MQTT v 3.1.1-standaard. In dit artikel wordt beschreven hoe apparaten ondersteund MQTT-gedrag kunnen gebruiken om te communiceren met DPS.
 
-Alle apparaatcommunicatie met DPS moet worden beveiligd met TLS/SSL. Daarom ondersteunt DPS geen niet-beveiligde verbindingen via poort 1883.
+Alle communicatie met DPS moet worden beveiligd met behulp van TLS/SSL. Daarom biedt DPS geen ondersteuning voor niet-beveiligde verbindingen via poort 1883.
 
  > [!NOTE] 
- > DPS ondersteunt momenteel geen apparaten die [tpm-attestmechanisme](https://docs.microsoft.com/azure/iot-dps/concepts-device#attestation-mechanism) gebruiken via het MQTT-protocol.
+ > DPS biedt momenteel geen ondersteuning voor apparaten met behulp van TPM- [Attestation-mechanismen](https://docs.microsoft.com/azure/iot-dps/concepts-device#attestation-mechanism) via het MQTT-protocol.
 
 ## <a name="connecting-to-dps"></a>Verbinding maken met DPS
 
 Een apparaat kan het MQTT-protocol gebruiken om verbinding te maken met een DPS met behulp van een van de volgende opties.
 
-* Bibliotheken in de [Azure IoT Provisioning SDKs](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#microsoft-azure-provisioning-sdks).
-* Het MQTT protocol direct.
+* Bibliotheken in de [Azure IOT Provisioning sdk's](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#microsoft-azure-provisioning-sdks).
+* Het MQTT-protocol direct.
 
-## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>Het MQTT-protocol direct gebruiken (als apparaat)
+## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>Het MQTT-protocol direct gebruiken (als een apparaat)
 
-Als een apparaat de sdk's van het apparaat niet kan gebruiken, kan het nog steeds verbinding maken met de eindpunten van openbare apparaten via het MQTT-protocol op poort 8883. In het **CONNECT-pakket** moet het apparaat de volgende waarden gebruiken:
+Als een apparaat de Sdk's van het apparaat niet kan gebruiken, kan het nog steeds verbinding maken met de eind punten van het open bare apparaat met behulp van het MQTT-protocol op poort 8883. In het **Connect** -pakket moet het apparaat de volgende waarden gebruiken:
 
-* Gebruik **registrationId**voor het veld **ClientId** .
+* Gebruik **registratie**voor het veld **ClientId** .
 
-* Gebruik **Username** voor het `{idScope}/registrations/{registration_id}/api-version=2019-03-31`veld `{idScope}` Gebruikersnaam de [idScope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) van de DPS.
+* Voor het veld **username** gebruikt u `{idScope}/registrations/{registration_id}/api-version=2019-03-31`, waarbij `{idScope}` de [idScope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) van de DPS is.
 
-* Gebruik voor het veld **Wachtwoord** een SAS-token. Het formaat van het SAS-token is hetzelfde als voor zowel de HTTPS- als DEAMQP-protocollen:
+* Gebruik voor het **wachtwoord** veld een SAS-token. De indeling van de SAS-token is hetzelfde als voor de HTTPS-en AMQP-protocollen:
 
-  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration`De resourceURI moet in `{idScope}/registrations/{registration_id}`de indeling zijn . De beleidsnaam `registration`zou moeten zijn .
+  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration`De resourceURI moet de indeling `{idScope}/registrations/{registration_id}`hebben. De naam van het beleid `registration`moet zijn.
 
   > [!NOTE]
-  > Als u X.509-certificaatverificatie gebruikt, zijn SAS-tokenwachtwoorden niet vereist.
+  > Als u X. 509-certificaat authenticatie gebruikt, zijn SAS-token wachtwoorden niet vereist.
 
-  Zie het gedeelte beveiligingstokens van Beheer toegang tot [DPS voor](how-to-control-access.md#security-tokens)meer informatie over het genereren van SAS-tokens.
+  Zie de sectie beveiligings tokens van [toegang tot DPS beheren](how-to-control-access.md#security-tokens)voor meer informatie over het genereren van SAS-tokens.
 
-Het volgende is een lijst met DPS-implementatiespecifieke gedragingen:
+Hieronder vindt u een lijst met implementatie-specifieke gedragingen voor DPS:
 
- * DPS ondersteunt niet de functionaliteit van **cleansession-vlag** die wordt ingesteld op **0**.
+ * DPS biedt geen ondersteuning voor de functionaliteit van de vlag **CleanSession** die wordt ingesteld op **0**.
 
- * Wanneer een apparaat-app zich abonneert op een onderwerp met **QoS 2,** verleent DPS maximaal QoS-niveau 1 in het **SUBACK-pakket.** Daarna levert DPS berichten aan het apparaat met QoS 1.
+ * Wanneer een apparaat-app zich abonneert op een onderwerp met **QoS 2**, verleent DPS Maxi maal QoS-niveau 1 in het **SUBACK** -pakket. Daarna levert DPS berichten op het apparaat met behulp van QoS 1.
 
 ## <a name="tlsssl-configuration"></a>TLS/SSL-configuratie
 
-Om het MQTT-protocol rechtstreeks te gebruiken, *moet* uw client verbinding maken via TLS 1.2. Pogingen om deze stap over te slaan mislukken met verbindingsfouten.
+Als u het MQTT-protocol direct wilt gebruiken, *moet* de client verbinding maken via TLS 1,2. Pogingen om deze stap over te slaan mislukken met verbindings fouten.
 
 
 ## <a name="registering-a-device"></a>Een apparaat registreren
 
-Als u een apparaat wilt registreren via `$dps/registrations/res/#` DPS, moet een apparaat zich abonneren met behulp **van een onderwerpfilter.** De wildcard `#` op meerdere niveaus in het onderwerpfilter wordt alleen gebruikt om het apparaat extra eigenschappen in de onderwerpnaam te laten ontvangen. DPS staat het gebruik `#` van `?` de of wildcards voor het filteren van subonderwerpen niet toe. Aangezien DPS geen pub-sub berichtenmakelaar voor algemeen gebruik is, ondersteunt het alleen de gedocumenteerde onderwerpnamen en onderwerpfilters.
+Als u een apparaat wilt registreren via DPS, moet een apparaat `$dps/registrations/res/#` zich abonneren met als een **onderwerps filter**. Het Joker teken `#` op meerdere niveaus in het onderwerps filter wordt alleen gebruikt om het apparaat in staat te stellen extra eigenschappen in de onderwerpnaam te ontvangen. DPS staat het gebruik van de `#` of `?` -joker tekens voor het filteren van subonderwerpen niet toe. Omdat DPS geen algemene pub-berichten Broker is, worden alleen de gedocumenteerde onderwerps namen en onderwerps filters ondersteund.
 
-Het apparaat moet een registerbericht `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` naar DPS publiceren met als **onderwerpnaam**. Het laadvermogen moet het object [Apparaatregistratie](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) bevatten in JSON-indeling.
-In een succesvol scenario ontvangt het apparaat `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` binnen enkele seconden een antwoord op de onderwerpnaam waarbij x de retry-after-waarde is. Het laadvermogen van het antwoord bevat het object [RegistrationOperationStatus](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) in JSON-formaat.
+Het apparaat moet een REGI ster-bericht publiceren naar `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` DPS met als **onderwerpnaam**. De payload moet het [apparaatregistratie](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) -object in JSON-indeling bevatten.
+In een geslaagd scenario krijgt het apparaat een antwoord op de `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` onderwerpnaam waarbij x de waarde voor opnieuw proberen (in seconden) is. De nettolading van het antwoord bevat het object [RegistrationOperationStatus](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) in JSON-indeling.
 
-## <a name="polling-for-registration-operation-status"></a>Polling voor registratieoperatiestatus
+## <a name="polling-for-registration-operation-status"></a>Polling voor de status van de registratie bewerking
 
-Het apparaat moet de service periodiek peilen om het resultaat van de registratievan het apparaat te ontvangen. Ervan uitgaande dat het apparaat `$dps/registrations/res/#` zich al heeft geabonneerd op het onderwerp `$dps/registrations/GET/iotdps-get-operationstatus/?$rid={request_id}&operationId={operationId}` zoals hierboven aangegeven, kan het een bericht over de status van het onderwerp publiceren op de onderwerpnaam. De bewerkings-ID in dit bericht moet de waarde zijn die in de vorige stap is ontvangen in het antwoordbericht RegistrationOperationStatus. In het succesvolle geval zal de `$dps/registrations/res/200/?$rid={request_id}` dienst reageren op het onderwerp. Het laadvermogen van het antwoord bevat het object RegistrationOperationStatus. Het apparaat moet de service blijven peilen als de responscode 202 is na een vertraging die gelijk is aan de retry-after-periode. De registratiebewerking van het apparaat is geslaagd als de service een statuscode van 200 retourneert.
+Het apparaat moet de service periodiek pollen om het resultaat van de registratie van het apparaat te ontvangen. Ervan uitgaande dat het apparaat al is geabonneerd op het `$dps/registrations/res/#` onderwerp zoals hierboven aangegeven, kan het een Get operationstatus-bericht publiceren naar `$dps/registrations/GET/iotdps-get-operationstatus/?$rid={request_id}&operationId={operationId}` de onderwerpnaam. De bewerkings-ID in dit bericht moet de waarde zijn die wordt ontvangen in het RegistrationOperationStatus-respons bericht in de vorige stap. In het geval van succes reageert de service op het `$dps/registrations/res/200/?$rid={request_id}` onderwerp. De nettolading van het antwoord bevat het object RegistrationOperationStatus. Op het apparaat moet de service worden gecontroleerd als de antwoord code 202 na een vertraging gelijk is aan de periode voor opnieuw proberen. De registratie van het apparaat slaagt als de service een 200-status code retourneert.
 
-## <a name="connecting-over-websocket"></a>Verbinding maken via Websocket
-Wanneer u verbinding maakt via Websocket, geeft u het subprotocol op als `mqtt`. Volg [RFC 6455](https://tools.ietf.org/html/rfc6455).
+## <a name="connecting-over-websocket"></a>Verbinding maken via WebSocket
+Wanneer u verbinding maakt via WebSocket, geeft u het `mqtt`subprotocol op als. Volg [RFC 6455](https://tools.ietf.org/html/rfc6455).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie de [MQTT-documentatie](https://mqtt.org/documentation)voor meer informatie over het MQTT-protocol.
 
-Zie:
+Zie voor meer informatie over de mogelijkheden van DPS:
 
 * [Over IoT DPS](about-iot-dps.md)

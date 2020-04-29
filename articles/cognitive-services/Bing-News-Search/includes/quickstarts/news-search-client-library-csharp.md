@@ -1,5 +1,5 @@
 ---
-title: Bing News Search C# clientbibliotheek snel aan de slag
+title: Quick start voor Bing News Search C#-client bibliotheek
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,18 +9,18 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.openlocfilehash: fd43fcb1b5fb70862ed1c1fa5111f0893495b437
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79503886"
 ---
-Gebruik deze snelle start om te beginnen met het zoeken naar nieuws met de Bing News Search-clientbibliotheek voor C#. Hoewel Bing News Search een REST API heeft die compatibel is met de meeste programmeertalen, biedt de clientbibliotheek een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub.](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingNewsSearch)
+Gebruik deze Quick Start om te beginnen met zoeken naar nieuws met de Bing News Search-client bibliotheek voor C#. Hoewel Bing News Search een REST API compatibel met de meeste programmeer talen heeft, biedt de client bibliotheek een eenvoudige manier om de service te integreren in uw toepassingen. De bron code voor dit voor beeld is te vinden op [github](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingNewsSearch).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Elke editie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
-* Het [Json.NET](https://www.newtonsoft.com/json) framework, beschikbaar als NuGet-pakket.
+* Een versie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
+* Het [JSON.net](https://www.newtonsoft.com/json) -Framework, beschikbaar als een NuGet-pakket.
 * Als u Linux/MacOS gebruikt, kan deze toepassing worden uitgevoerd met behulp van [Mono](https://www.mono-project.com/).
 
 * Het [NuGet-pakket voor de Bing Nieuws zoeken SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.NewsSearch/1.2.0). Als u dit pakket installeert, worden ook de volgende onderdelen geïnstalleerd:
@@ -28,7 +28,7 @@ Gebruik deze snelle start om te beginnen met het zoeken naar nieuws met de Bing 
     * Microsoft.Rest.ClientRuntime.Azure
     * Newtonsoft.Json
 
-Als u een consoletoepassing wilt instellen met de `Manage NuGet Packages` bing-clientbibliotheek voor nieuwszoeken, bladert u naar de optie in de Solution Explorer in Visual Studio.  Voeg het pakket `Microsoft.Azure.CognitiveServices.Search.NewsSearch` toe.
+Als u een console toepassing wilt instellen met behulp van de Bing News Search-client `Manage NuGet Packages` bibliotheek, bladert u naar de optie in de Solution Explorer in Visual Studio.  Voeg het pakket `Microsoft.Azure.CognitiveServices.Search.NewsSearch` toe.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](~/includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
@@ -84,4 +84,4 @@ Als u een consoletoepassing wilt instellen met de `Manage NuGet Packages` bing-c
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app voor één pagina maken](../../tutorial-bing-news-search-single-page-app.md)
+> [Een web-app met één pagina maken](../../tutorial-bing-news-search-single-page-app.md)

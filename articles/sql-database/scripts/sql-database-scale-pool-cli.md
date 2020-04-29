@@ -1,5 +1,5 @@
 ---
-title: CLI-voorbeeld schaalt een SQL-elastische pool-Azure SQL Database
+title: In het CLI-voor beeld wordt een elastische SQL-pool geschaald-Azure SQL Database
 description: Voorbeeld van Azure CLI-script voor het schalen van een elastische pool naar Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
 ms.openlocfilehash: b229aa8976705c5e3ad83c468ebc10a261f14a4f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067399"
 ---
 # <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Een elastische pool schalen naar Azure SQL Database met CLI
@@ -36,21 +36,21 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 ### <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Gebruik de volgende opdracht om de resourcegroep en alle bijbehorende resources te verwijderen.
+Gebruik de volgende opdracht om de resource groep en alle bijbehorende resources te verwijderen.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Voorbeeldverwijzing
+## <a name="sample-reference"></a>Voorbeeld verwijzing
 
 In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | | |
 |---|---|
-| [az sql server](/cli/azure/sql/server) | Serveropdrachten. |
-| [az sql db](/cli/azure/sql/db) | Databaseopdrachten. |
-| [az sql elastic-pools](/cli/azure/sql/elastic-pool) | Elastische poolopdrachten. |
+| [az sql server](/cli/azure/sql/server) | Server opdrachten. |
+| [AZ SQL DB](/cli/azure/sql/db) | Data base-opdrachten. |
+| [AZ SQL elastisch-Pools](/cli/azure/sql/elastic-pool) | Elastische pool-opdrachten. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

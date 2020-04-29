@@ -1,41 +1,41 @@
 ---
-title: Azure Application Insights Agent - aan de slag | Microsoft Documenten
-description: Een quickstart gids voor Application Insights Agent. Monitor de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET web-apps die on-premises, in VM's of op Azure worden gehost.
+title: Azure-toepassing Insights-agent-aan de slag | Microsoft Docs
+description: Een Snelstartgids voor Application Insights agent. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 4cfa136585611e81a4060c5544d5dc464b32f12c
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537437"
 ---
-# <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Aan de slag met Azure Monitor Application Insights Agent voor on-premises servers
+# <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Aan de slag met Azure Monitor Application Insights-agent voor on-premises servers
 
-Dit artikel bevat de quickstartopdrachten die naar verwachting voor de meeste omgevingen werken.
-De instructies zijn afhankelijk van de PowerShell Gallery om updates te distribueren.
-Deze opdrachten ondersteunen de `-Proxy` parameter PowerShell.
+Dit artikel bevat de Quick Start-opdrachten die naar verwachting werken voor de meeste omgevingen.
+De instructies zijn afhankelijk van de PowerShell Gallery voor het distribueren van updates.
+Deze opdrachten ondersteunen de Power `-Proxy` shell-para meter.
 
-Zie de [gedetailleerde instructies](status-monitor-v2-detailed-instructions.md)voor een uitleg van deze opdrachten, aanpassingsinstructies en informatie over het oplossen van problemen.
+Raadpleeg de [gedetailleerde instructies](status-monitor-v2-detailed-instructions.md)voor een uitleg van deze opdrachten, instructies voor het aanpassen en informatie over het oplossen van problemen.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="download-and-install-via-powershell-gallery"></a>Downloaden en installeren via PowerShell Gallery
 
 ### <a name="install-prerequisites"></a>Vereiste onderdelen installeren
-Voer PowerShell uit als beheerder.
+Voer Power shell uit als beheerder.
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 Install-Module -Name PowerShellGet -Force
 ``` 
-Sluit PowerShell.
+Sluit Power shell.
 
-### <a name="install-application-insights-agent"></a>Application Insights Agent installeren
-Voer PowerShell uit als beheerder.
+### <a name="install-application-insights-agent"></a>Application Insights-agent installeren
+Voer Power shell uit als beheerder.
 ```powershell   
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 Install-Module -Name Az.ApplicationMonitor -AllowPrerelease -AcceptLicense
@@ -48,11 +48,11 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 ```
     
         
-## <a name="download-and-install-manually-offline-option"></a>Handmatig downloaden en installeren (offline optie)
+## <a name="download-and-install-manually-offline-option"></a>Hand matig downloaden en installeren (offline optie)
 ### <a name="download-the-module"></a>De module downloaden
-Download handmatig de nieuwste versie van de module van [PowerShell Gallery.](https://www.powershellgallery.com/packages/Az.ApplicationMonitor)
+Down load de nieuwste versie van de module hand matig van [PowerShell Gallery](https://www.powershellgallery.com/packages/Az.ApplicationMonitor).
 
-### <a name="unzip-and-install-application-insights-agent"></a>Application Insights Agent uitpakken en installeren
+### <a name="unzip-and-install-application-insights-agent"></a>Application Insights agent uitpakken en installeren
 ```powershell
 $pathToNupkg = "C:\Users\t\Desktop\Az.ApplicationMonitor.0.3.0-alpha.nupkg"
 $pathToZip = ([io.path]::ChangeExtension($pathToNupkg, "zip"))
@@ -71,18 +71,18 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 
  Uw telemetrie weergeven:
 
-- [Bekijk statistieken](../../azure-monitor/platform/metrics-charts.md) om de prestaties en het gebruik te controleren.
-- [Zoek gebeurtenissen en logboeken](../../azure-monitor/app/diagnostic-search.md) om problemen te diagnosticeren.
-- [Gebruik Analytics](../../azure-monitor/app/analytics.md) voor meer geavanceerde query's.
-- [Dashboards maken](../../azure-monitor/app/overview-dashboard.md).
+- [Bekijk metrische gegevens](../../azure-monitor/platform/metrics-charts.md) om de prestaties en het gebruik te bewaken.
+- [Zoek gebeurtenissen en logboeken](../../azure-monitor/app/diagnostic-search.md) om problemen op te sporen.
+- [Gebruik analyses](../../azure-monitor/app/analytics.md) voor meer geavanceerde query's.
+- [Dash boards maken](../../azure-monitor/app/overview-dashboard.md).
 
  Meer telemetrie toevoegen:
 
 - [Maak webtests](monitor-web-app-availability.md) om ervoor te zorgen dat uw site actief blijft.
-- [Voeg telemetrie van webclient toe](../../azure-monitor/app/javascript.md) om uitzonderingen van webpaginacode te bekijken en tracecalls in te schakelen.
-- [Voeg de Application Insights SDK toe aan uw code,](../../azure-monitor/app/asp-net.md) zodat u trace- en logoproepen invoegen.
+- [Voeg de telemetrie van de webclient](../../azure-monitor/app/javascript.md) toe om uitzonde ringen van webpagina code te bekijken en tracerings aanroepen in te scha kelen.
+- [Voeg de Application INSIGHTS SDK toe aan uw code](../../azure-monitor/app/asp-net.md) zodat u tracerings-en logboek aanroepen kunt invoegen.
 
-Doe meer met Application Insights Agent:
+Meer doen met Application Insights agent:
 
-- Bekijk de [gedetailleerde instructies](status-monitor-v2-detailed-instructions.md) voor een uitleg van de commando's hier gevonden.
-- Gebruik onze gids om application insights agent op te [lossen.](status-monitor-v2-troubleshoot.md)
+- Raadpleeg de [gedetailleerde instructies](status-monitor-v2-detailed-instructions.md) voor een uitleg van de opdrachten die hier worden weer gegeven.
+- Gebruik onze hand leiding om Application Insights-agent op te [lossen](status-monitor-v2-troubleshoot.md) .

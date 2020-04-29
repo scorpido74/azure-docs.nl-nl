@@ -9,30 +9,30 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 2ebf5d574b4d185953ab0f7984648c440d6f107e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678626"
 ---
-De PowerShell-cmdlet **Get-AzPeeringLocation** retourneert een lijst `Kind`met peeringlocaties met de verplichte parameter , die u in latere stappen zult gebruiken.
+De Power shell **-cmdlet Get-AzPeeringLocation** retourneert een lijst met peering locaties met de `Kind`verplichte para meter, die u in latere stappen zult gebruiken.
 
 ```powershell
 Get-AzPeeringLocation -Kind "Exchange"
 ```
 
-Exchange-peeringlocaties bevatten de volgende velden:
-* ExchangeName
-* PeeringLocatie
+Exchange-peering locaties bevatten de volgende velden:
+* Exchangenaam
+* PeeringLocation
 * Land
 * PeeringDBFacilityId
 * PeeringDBFacilityLink
-* MicrosoftIPv4Adres
-* MicrosoftIPv6Adres
+* MicrosoftIPv4Address
+* MicrosoftIPv6Address
 
-Bevestig dat u aanwezig bent op de gewenste peering faciliteit door te verwijzen naar [PeeringDB](https://wwww.peeringdb.com).
+Controleer of u aanwezig bent bij de gewenste peering-faciliteit door te verwijzen naar [PeeringDB](https://wwww.peeringdb.com).
 
-In dit voorbeeld ziet u hoe u Seattle gebruiken als peeringlocatie om een peering te maken.
+In dit voor beeld ziet u hoe u Seattle gebruikt als de peering-locatie voor het maken van een peering.
 
 ```powershell
 $exchangeLocations = Get-AzPeeringLocation -Kind Exchange

@@ -1,6 +1,6 @@
 ---
 title: Problemen met Automation-accounts oplossen
-description: Meer informatie over het oplossen en oplossen van problemen met een Azure-account.
+description: Meer informatie over het oplossen van problemen met een Azure-account.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: 7b5e7171ac679384966e9dce79425cd1fa881c53
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81679384"
 ---
-# <a name="troubleshoot-the-automation-account"></a>Problemen met het automatiseringsaccount oplossen
+# <a name="troubleshoot-the-automation-account"></a>Problemen met het Automation-account oplossen
 
-In dit artikel worden oplossingen besproken voor problemen die u tegenkomen wanneer u een Automatiseringsaccount gebruikt. In de volgende secties worden specifieke foutberichten en mogelijke oplossingen voor elk van deze secties belicht. Zie [Een Azure-account maken](../automation-quickstart-create-account.md)voor algemene informatie over automatiseringsaccounts .
+In dit artikel worden oplossingen beschreven voor problemen die kunnen optreden wanneer u een Automation-account gebruikt. In de volgende secties worden specifieke fout berichten en mogelijke oplossingen voor elk weer gemarkeerd. Zie [een Azure-account maken](../automation-quickstart-create-account.md)voor algemene informatie over Automation-accounts.
 
-## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Scenario: Kan automation resourceprovider niet registreren voor abonnementen
+## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Scenario: kan Automation-resource provider niet registreren voor abonnementen
 
 ### <a name="issue"></a>Probleem
 
-Wanneer u werkt met beheeroplossingen in uw Automatiseringsaccount, komt u de volgende fout tegen:
+Wanneer u met beheer oplossingen in uw Automation-account werkt, treedt de volgende fout op:
 
 ```error
 Error details: Unable to register Automation Resource Provider for subscriptions:
@@ -31,26 +31,26 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 ### <a name="cause"></a>Oorzaak
 
-De Automation Resource Provider is niet geregistreerd in het abonnement.
+De resource provider voor Automation is niet geregistreerd in het abonnement.
 
 ### <a name="resolution"></a>Oplossing
 
-Voer de volgende stappen uit in de Azure-portal als u de Automation Resource Provider wilt registreren:
+Voer de volgende stappen uit in de Azure Portal om de resource provider Automation te registreren:
 
-1. Ga vanuit uw browser naar de [Azure-portal.](https://portal.azure.com)
+1. Ga in uw browser naar de [Azure Portal](https://portal.azure.com).
 
 2. Navigeer naar **abonnementen** en selecteer uw abonnement op de pagina Abonnementen.   
 
-3. Selecteer **Resourceproviders**onder **Instellingen**.
+3. Onder **instellingen**selecteert u **resource providers**.
 
-4. Controleer in de lijst met resourceproviders of de **microsoft.automation-resourceprovider** is geregistreerd.
+4. Controleer in de lijst met resource providers of de resource provider **micro soft. Automation** is geregistreerd.
 
-5. Als de provider niet wordt vermeld, registreert u deze zoals beschreven in [Fouten oplossen voor de registratie van resourcesprovider.](/azure/azure-resource-manager/resource-manager-register-provider-errors)
+5. Als de provider niet wordt weer gegeven, registreert u deze zoals beschreven in [fouten voor de registratie van de resource provider oplossen](/azure/azure-resource-manager/resource-manager-register-provider-errors).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als je het probleem hierboven niet ziet of het probleem niet oplossen, probeer je een van de volgende kanalen voor extra ondersteuning:
+Als uw probleem niet hierboven wordt weer geven of als u het probleem niet kunt oplossen, kunt u een van de volgende kanalen proberen voor aanvullende ondersteuning:
 
-* Krijg antwoorden van Azure-experts via [Azure Forums.](https://azure.microsoft.com/support/forums/)
-* Maak [@AzureSupport](https://twitter.com/azuresupport)verbinding met het officiële Microsoft Azure-account voor het verbeteren van de klantervaring door de Azure-community te verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
-* Een Azure-ondersteuningsincident indienen. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer **Ondersteuning opdoen**.
+* Krijg antwoorden van Azure-experts via [Azure-forums](https://azure.microsoft.com/support/forums/).
+* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport)met, het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+* Een ondersteunings incident voor Azure. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.

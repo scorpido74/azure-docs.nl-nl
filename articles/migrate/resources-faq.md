@@ -1,75 +1,75 @@
 ---
-title: Veelgestelde vragen over Azure Migreren
-description: Antwoorden op veelgestelde vragen over de Azure Migrate-service.
+title: Veelgestelde vragen over Azure Migrate
+description: Krijg antwoorden op veelgestelde vragen over de Azure Migrate-service.
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81530314"
 ---
-# <a name="azure-migrate-common-questions"></a>Azure Migreren: veelgestelde vragen
+# <a name="azure-migrate-common-questions"></a>Azure Migrate: algemene vragen
 
-In dit artikel worden veelgestelde vragen over Azure Migreren beantwoord. Als u vragen hebt nadat u dit artikel hebt gelezen, u deze plaatsen in het [Azure Migrate-forum.](https://aka.ms/AzureMigrateForum) U ook deze artikelen bekijken:
+In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Migrate. Als u vragen hebt nadat u dit artikel hebt gelezen, kunt u ze in het [Azure migrate-forum](https://aka.ms/AzureMigrateForum)plaatsen. U kunt ook deze artikelen bekijken:
 
-- Vragen over het [Azure Migrate-toestel](common-questions-appliance.md)
-- Vragen over [detectie-, beoordelings- en afhankelijkheidsvisualisatie](common-questions-discovery-assessment.md)
+- Vragen over het [Azure migrate apparaat](common-questions-appliance.md)
+- Vragen over de [visualisatie van detectie, beoordeling en afhankelijkheid](common-questions-discovery-assessment.md)
 
 ## <a name="what-is-azure-migrate"></a>Wat is Azure Migrate?
 
-Azure Migrate biedt een centrale hub om detectie, beoordeling en migratie van uw on-premises apps en workloads en private en public cloud VM's naar Azure bij te houden. De hub biedt Azure Migrate-hulpprogramma's voor beoordeling en migratie en ISV-aanbiedingen van derden. [Meer informatie](migrate-services-overview.md).
+Azure Migrate biedt een centrale hub voor het bijhouden van de detectie, evaluatie en migratie van uw on-premises apps en werk belastingen, en persoonlijke en open bare Cloud-Vm's naar Azure. De hub biedt Azure Migrate tools voor evaluatie en migratie en ISV-aanbiedingen van derden. [Meer informatie](migrate-services-overview.md).
 
 ## <a name="what-can-i-do-with-azure-migrate"></a>Wat kan ik doen met Azure Migrate?
 
-Gebruik Azure Migrate om on-premises infrastructuur, toepassingen en gegevens te ontdekken, te beoordelen en te migreren naar Azure. Azure Migrate ondersteunt beoordeling en migratie van on-premises Vm's vMware, Hyper-V VM's, fysieke servers, andere gevirtualiseerde VM's, databases, web-apps en virtuele desktops. 
+Gebruik Azure Migrate om on-premises infra structuur, toepassingen en gegevens te detecteren, te evalueren en te migreren naar Azure. Azure Migrate ondersteunt de evaluatie en migratie van on-premises virtuele VMware-machines, Hyper-V-Vm's, fysieke servers, andere gevirtualiseerde Vm's, data bases, Web-apps en virtuele Bureau bladen. 
 
 ## <a name="whats-the-difference-between-azure-migrate-and-azure-site-recovery"></a>Wat is het verschil tussen Azure Migrate en Azure Site Recovery?
 
-[Azure Migrate](migrate-services-overview.md) biedt een gecentraliseerde hub voor beoordeling en migratie naar Azure. 
+[Azure migrate](migrate-services-overview.md) biedt een gecentraliseerde hub voor evaluatie en migratie naar Azure. 
 
-[Azure Site Recovery](../site-recovery/site-recovery-overview.md) is een oplossing voor noodherstel. 
+[Azure site Recovery](../site-recovery/site-recovery-overview.md) is een oplossing voor nood herstel. 
 
-Het hulpprogramma Azure Migreren: Servermigratie gebruikt een aantal back-end siteherstelfunctionaliteit voor lift-and-shift-migratie van sommige on-premises machines.
+Het Azure Migrate: hulp programma voor server migratie maakt gebruik van enige back-end-Site Recovery functionaliteit voor het migreren van een aantal on-premises machines.
 
-## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Wat is het verschil tussen Azure Migrate: Server Assessment en de MAP Toolkit?
+## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Wat is het verschil tussen Azure Migrate: Server analyse en de kaart Toolkit?
 
-Serverbeoordeling biedt beoordeling om te helpen bij de gereedheid van migratie en evaluatie van workloads voor migratie naar Azure. De [Microsoft Assessment and Planning (MAP) Toolkit](https://www.microsoft.com/download/details.aspx?id=7826) helpt bij andere taken, waaronder migratieplanning voor nieuwere versies van Windows-client- en serverbesturingssystemen en het bijhouden van softwaregebruik. Voor deze scenario's blijft u de MAP Toolkit gebruiken.
+Server evaluatie biedt een evaluatie van de voor bereiding op de migratie en de evaluatie van werk belastingen voor migratie naar Azure. De [micro soft Assessment and planning (kaart) Toolkit](https://www.microsoft.com/download/details.aspx?id=7826) helpt bij andere taken, waaronder migratie planning voor nieuwere versies van Windows-besturings systemen voor clients en servers, en het bijhouden van software gebruik. Voor deze scenario's kunt u de kaart Toolkit blijven gebruiken.
 
-## <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>Wat is het verschil tussen serverbeoordeling en de siteherstelimplementatieplanner?
+## <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>Wat is het verschil tussen server evaluatie en het Site Recovery Deployment Planner?
 
-Server assessment is een hulpprogramma voor migratieplanning. De Site Recovery Deployment Planner is een hulpprogramma voor noodherstelplanning.
+Server evaluatie is een hulp programma voor migratie planning. De Site Recovery Deployment Planner is een hulp programma voor herstel na nood gevallen.
 
-Kies uw tool op basis van wat u wilt doen:
+Kies uw hulp programma op basis van wat u wilt doen:
 
-- **On-premises migratie naar Azure**plannen: als u van plan bent uw on-premises servers naar Azure te migreren, gebruikt u Serverbeoordeling voor migratieplanning. Server Assessment beoordeelt on-premises workloads en biedt richtlijnen en tools om u te helpen migreren. Nadat het migratieplan is uitgevoerd, u hulpprogramma's zoals Azure Migreren: Servermigratie gebruiken om de machines naar Azure te migreren.
-- **Herstel na noodgevallen plannen voor Azure:** Als u noodherstel wilt instellen van on-premises naar Azure met Site recovery, gebruikt u de Site Recovery Deployment Planner. De Deployment Planner biedt een diepgaande, site recovery-specifieke beoordeling van uw on-premises omgeving met het oog op disaster recovery. Het biedt aanbevelingen met betrekking tot herstel na noodgevallen, zoals replicatie en failover.
+- **On-premises migratie naar Azure plannen**: als u van plan bent om uw on-premises servers naar Azure te migreren, gebruikt u Server evaluatie voor migratie planning. Server evaluatie evalueert on-premises workloads en biedt hulp middelen en hulpprogram ma's waarmee u kunt migreren. Nadat het migratie plan is geïmplementeerd, kunt u hulpprogram ma's zoals Azure Migrate gebruiken: Server migratie om de machines te migreren naar Azure.
+- **Herstel na nood geval naar Azure plannen**: als u van plan bent om herstel na nood gevallen van on-premises naar azure met site Recovery in te stellen, gebruikt u de site Recovery Deployment planner. De Deployment Planner biedt een diep gaande Site Recovery-specifieke evaluatie van uw on-premises omgeving voor nood herstel. Het bevat aanbevelingen met betrekking tot herstel na nood gevallen, zoals replicatie en failover.
 
-## <a name="how-does-server-migration-work-with-site-recovery"></a>Hoe werkt servermigratie met siteherstel?
+## <a name="how-does-server-migration-work-with-site-recovery"></a>Hoe werkt de migratie van servers met Site Recovery?
 
-- Als u Azure Migrate: Servermigratie gebruikt om een *agentloze* migratie van on-premises VMware VM's uit te voeren, is migratie native naar Azure Migrate en wordt Siteherstel niet gebruikt.
-- Als u Azure Migrate: Servermigratie gebruikt om een op *agent gebaseerde* migratie van VMware VM's uit te voeren of als u Hyper-V VM's of fysieke servers migreert, gebruikt Azure Migrate: ServerMigratie de Azure Site Recovery-replicatieengine.
+- Als u Azure Migrate: Server migratie voor het uitvoeren van *een niet* -werkende migratie van on-premises virtuele VMware-machines, is migratie standaard naar Azure migrate en wordt site Recovery niet gebruikt.
+- Als u Azure Migrate: Server migratie gebruikt voor het uitvoeren van een *op agents gebaseerde* migratie van VMware-vm's, of als u virtuele Hyper-V-machines of fysieke servers migreert, Azure migrate: Server migratie maakt gebruik van de Azure site Recovery replicatie-engine.
 
-## <a name="which-geographies-are-supported"></a>Welke regio's worden ondersteund?
+## <a name="which-geographies-are-supported"></a>Welke geografische gebieden worden ondersteund?
 
-Bekijk de ondersteunde regio's voor [publieke](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheidswolken.](migrate-support-matrix.md#supported-geographies-azure-government)
+Bekijk de ondersteunde geographs voor [open bare](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheids Clouds](migrate-support-matrix.md#supported-geographies-azure-government).
 
 ## <a name="how-do-i-get-started"></a>Hoe ga ik aan de slag?
 
-Identificeer het hulpprogramma dat u nodig hebt en voeg het hulpprogramma toe aan een Azure Migrate-project. 
+Bepaal het hulp programma dat u nodig hebt en voeg het hulp programma toe aan een Azure Migrate-project. 
 
-Ga als u een ISV-tool of Movere toevoegt:
+Een ISV-hulp programma of-overwerker toevoegen:
 
-1. Ga aan de slag door een licentie te verkrijgen of meld je aan voor een gratis proefperiode, in overeenstemming met het gereedschapsbeleid. Licenties voor gereedschappen zijn in overeenstemming met het ISV- of gereedschapslicentiemodel.
-2. In elk hulpprogramma is er een optie om verbinding te maken met Azure Migrate. Volg de hulpprogramma-instructies en -documentatie om het hulpprogramma te verbinden met Azure Migrate.
+1. Ga aan de slag met het verkrijgen van een licentie of Meld u aan voor een gratis proef versie, in overeenstemming met het hulp programma beleid. Licentie verlening voor hulpprogram ma's is in overeenstemming met het ISV-of hulp programma licentie model.
+2. In elk hulp programma is er een optie om verbinding te maken met Azure Migrate. Volg de instructies en documentatie van het hulp programma om verbinding te maken met het hulp programma met Azure Migrate.
 
-U uw migratiereis volgen vanuit het Azure Migrate-project, in Azure en in andere hulpprogramma's.
+U kunt uw migratie traject volgen vanuit het Azure Migrate project, in Azure en in andere hulpprogram ma's.
 
-## <a name="how-do-i-delete-a-project"></a>Hoe verwijder ik een project?
+## <a name="how-do-i-delete-a-project"></a>Een project Hoe kan ik verwijderen?
 
 Meer informatie over het [verwijderen van een project](how-to-delete-project.md). 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees het [overzicht Azure Migreren](migrate-services-overview.md).
+Lees het [Azure migrate overzicht](migrate-services-overview.md).

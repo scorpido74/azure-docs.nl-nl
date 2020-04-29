@@ -1,7 +1,7 @@
 ---
-title: Beveiligde web-API - overzicht
+title: Beveiligde web-API-overzicht
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het maken van een beveiligde web-API (overzicht).
+description: Meer informatie over het bouwen van een beveiligde web-API (overzicht).
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,28 +13,28 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: cf66757d28a3883664aaacd85baad9cc0dea6956
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537199"
 ---
-# <a name="scenario-protected-web-api"></a>Scenario: Beveiligde web-API
+# <a name="scenario-protected-web-api"></a>Scenario: beveiligde web-API
 
-In dit scenario leert u hoe u een web-API blootleggen. U leert ook hoe u de web-API beschermen, zodat alleen geverifieerde gebruikers er toegang toe hebben.
+In dit scenario leert u hoe u een web-API beschikbaar maakt. U leert ook hoe u de Web-API kunt beveiligen, zodat alleen geverifieerde gebruikers er toegang toe hebben.
 
-Als u uw web-API wilt gebruiken, moet u geverifieerde gebruikers met zowel werk- als schoolaccounts inschakelen of persoonlijke microsoft-accounts inschakelen.
+Als u uw web-API wilt gebruiken, moet u geverifieerde gebruikers met zowel werk-als school accounts inschakelen of persoonlijke micro soft-accounts inschakelen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="specifics"></a>Details
+## <a name="specifics"></a>Opsporingsgegevens
 
-Hier vindt u specifieke informatie die u moet weten om web-API's te beschermen:
+Hier vindt u specifieke informatie die u moet kennen om Web-Api's te beveiligen:
 
-- Uw app-registratie moet ten minste één bereik blootleggen. De tokenversie die door uw web-API wordt geaccepteerd, is afhankelijk van de aanmeldingsdoelgroep.
-- De codeconfiguratie voor de web-API moet het token valideren dat wordt gebruikt wanneer de web-API wordt aangeroepen.
+- De registratie van uw app moet ten minste één bereik weer geven. De token versie die door de Web-API wordt geaccepteerd, is afhankelijk van de aanmeldings doel groep.
+- De code configuratie voor de Web-API moet het token valideren dat wordt gebruikt wanneer de Web-API wordt aangeroepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

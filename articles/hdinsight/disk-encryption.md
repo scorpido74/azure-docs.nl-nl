@@ -1,6 +1,6 @@
 ---
-title: Door de klant beheerde sleutelschijfversleuteling voor Azure HDInsight
-description: In dit artikel wordt beschreven hoe u uw eigen versleutelingssleutel uit Azure Key Vault gebruiken om gegevens te versleutelen die zijn opgeslagen op beheerde schijven in Azure HDInsight-clusters.
+title: Door de klant beheerde sleutel versleuteling van de schijf voor Azure HDInsight
+description: In dit artikel wordt beschreven hoe u uw eigen versleutelings sleutel gebruikt van Azure Key Vault voor het versleutelen van gegevens die zijn opgeslagen op Managed disks in azure HDInsight-clusters.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
@@ -8,111 +8,111 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 732709dbcb5ebe54025a963379128f1a1e74183e
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536298"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>Schijfversleuteling met behulp van door klant beheerde sleutel
 
-Azure HDInsight ondersteunt door de klant beheerde sleutelversleuteling voor gegevens op beheerde schijven en resourceschijven die zijn gekoppeld aan virtuele machines van hdInsight-cluster. Met deze functie u Azure Key Vault gebruiken om de versleutelingssleutels te beheren die gegevens in rust op uw HDInsight-clusters beveiligen.
+Azure HDInsight ondersteunt door de klant beheerde sleutel versleuteling voor gegevens op beheerde schijven en bron schijven die zijn gekoppeld aan virtuele machines van het HDInsight-cluster. Met deze functie kunt u Azure Key Vault gebruiken om de versleutelings sleutels te beheren waarmee gegevens in rust op uw HDInsight-clusters worden beveiligd.
 
-Alle beheerde schijven in HDInsight zijn beveiligd met Azure Storage Service Encryption (SSE). Standaard worden de gegevens op die schijven versleuteld met door Microsoft beheerde sleutels. Als u door de klant beheerde sleutels voor HDInsight inschakelt, verstrekt u de coderingssleutels voor HDInsight om deze sleutels te gebruiken en te beheren met Azure Key Vault.
+Alle beheerde schijven in HDInsight worden beveiligd met Azure Storage-service versleuteling (SSE). Standaard worden de gegevens op deze schijven versleuteld met door micro soft beheerde sleutels. Als u door de klant beheerde sleutels voor HDInsight inschakelt, geeft u de versleutelings sleutels voor HDInsight op om deze sleutels te gebruiken en te beheren met behulp van Azure Key Vault.
 
-Dit document heeft geen adres van gegevens die zijn opgeslagen in uw Azure Storage-account. Zie [Azure Storage-versleuteling voor gegevens in rust](../storage/common/storage-service-encryption.md)voor meer informatie over Azure Storage-versleuteling. Uw clusters kunnen een of meer gekoppelde Azure Storage-accounts hebben waarbij de versleutelingssleutels ook door Microsoft kunnen worden beheerd of door de klant worden beheerd, maar de versleutelingsservice is anders.
+Dit document bevat geen informatie over de gegevens die zijn opgeslagen in uw Azure Storage-account. Zie [Azure Storage encryption for Data at rest](../storage/common/storage-service-encryption.md)(Engelstalig) voor meer informatie over Azure Storage versleuteling. Uw clusters kunnen een of meer gekoppelde Azure Storage-accounts bevatten waarbij de versleutelings sleutels ook door micro soft worden beheerd of door de klant worden beheerd, maar de versleutelings service verschilt.
 
 ## <a name="introduction"></a>Inleiding
 
-Door de klant beheerde sleutelversleuteling is een proces in één stap dat wordt afgehandeld tijdens het maken van een cluster zonder extra kosten. Het enige wat u hoeft te doen is HDInsight registreren als een beheerde identiteit met Azure Key Vault en de versleutelingssleutel toevoegen wanneer u uw cluster maakt.
+Door de klant beheerde sleutel versleuteling is een proces dat uit één stap wordt verwerkt tijdens het maken van het cluster zonder extra kosten. Het enige wat u hoeft te doen, is HDInsight registreren als een beheerde identiteit met Azure Key Vault en de versleutelings sleutel toevoegen wanneer u het cluster maakt.
 
-Zowel resourceschijf als beheerde schijven op elk knooppunt van het cluster worden versleuteld met een symmetrische gegevensversleutelingssleutel (DEK). De DEK is beveiligd met behulp van de Key Encryption Key (KEK) uit uw sleutelkluis. De versleutelings- en decryptieprocessen worden volledig afgehandeld door Azure HDInsight.
+Zowel de bron schijf als de beheerde schijven op elk knoop punt van het cluster worden versleuteld met een symmetrische gegevens versleutelings sleutel (DEK). De DEK wordt beschermd met behulp van de sleutel versleutelings sleutel (KEK) van uw sleutel kluis. De processen voor versleuteling en ontsleuteling worden volledig verwerkt door Azure HDInsight.
 
-Als de firewall voor de sleutelkluis is ingeschakeld op de sleutelkluis waar de schijfversleutelingssleutel is opgeslagen, moeten de IP-adressen van de REGIONALE Resourceprovider VAN HDInsight voor het gebied waar het cluster wordt geïmplementeerd, worden toegevoegd aan de configuratie van de sleutelkluisfirewall. Dit is nodig omdat HDInsight geen vertrouwde Azure-sleutelkluisservice is.
+Als de sleutel kluis firewall is ingeschakeld op de sleutel kluis waarop de schijf versleutelings sleutel is opgeslagen, moeten de IP-adressen van de HDInsight regionale resource provider voor de regio waar het cluster wordt geïmplementeerd, worden toegevoegd aan de firewall configuratie van de sleutel kluis. Dit is nodig omdat HDInsight geen vertrouwde Azure Key kluis-service is.
 
-U de Azure-portal of Azure CLI gebruiken om de sleutels in de sleutelkluis veilig te draaien. Wanneer een sleutel roteert, begint het HDInsight-cluster de nieuwe sleutel binnen enkele minuten te gebruiken. Schakel de soft [delete-functies](../key-vault/general/overview-soft-delete.md) voor de beveiliging in om te beschermen tegen ransomware-scenario's en per ongeluk verwijderen. Sleutelkluizen zonder deze beveiligingsfunctie worden niet ondersteund.
+U kunt de Azure Portal of Azure CLI gebruiken om de sleutels in de sleutel kluis veilig te draaien. Wanneer een sleutel draait, begint het HDInsight-cluster binnen enkele minuten met de nieuwe sleutel. Schakel de beveiliging van de functie voor het [voorlopig verwijderen](../key-vault/general/overview-soft-delete.md) van sleutels in voor beveiliging tegen Ransomware-scenario's en onbedoeld verwijderen. Sleutel kluizen zonder deze beveiligings functie worden niet ondersteund.
 
-|Clustertype |OS-schijf (beheerde schijf) |Gegevensschijf (beheerde schijf) |Tijdelijke gegevensschijf (lokale SSD) |
+|Cluster type |BESTURINGSSYSTEEM schijf (beheerde schijf) |Gegevens schijf (beheerde schijf) |Tijdelijke gegevens schijf (lokale SSD) |
 |---|---|---|---|
-|Kafka, HBase met Accelerated schrijft|[SSE-versleuteling](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|SSE-versleuteling + optionele CMK-versleuteling|Optionele CMK-versleuteling|
-|Alle andere clusters (Spark, Interactive, Hadoop, HBase zonder Accelerated schrijft)|SSE-versleuteling|N.v.t.|Optionele CMK-versleuteling|
+|Kafka, HBase met versnelde schrijf bewerkingen|[SSE-versleuteling](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|SSE-versleuteling + optionele CMK-versleuteling|Optionele CMK-versleuteling|
+|Alle andere clusters (Spark, Interactive, Hadoop, HBase zonder versnelde schrijf bewerkingen)|SSE-versleuteling|N.v.t.|Optionele CMK-versleuteling|
 
 ## <a name="get-started-with-customer-managed-keys"></a>Aan de slag met door de klant beheerde sleutels
 
-Als u een HDInsight-cluster met klantbeheer ingeschakeld wilt maken, doorlopen we de volgende stappen:
+Als u een HDInsight-cluster met door de klant beheerde sleutels wilt maken, gaan we verder met de volgende stappen:
 
-1. Beheerde identiteiten maken voor Azure-bronnen
+1. Beheerde identiteiten maken voor Azure-resources
 1. Azure Key Vault maken
-1. Toets maken
-1. Toegangsbeleid maken
-1. HDInsight-cluster maken met klantbeheerde sleutel ingeschakeld
-1. De versleutelingssleutel roteren
+1. Sleutel maken
+1. Toegangs beleid maken
+1. HDInsight-cluster maken met door de klant beheerde sleutel ingeschakeld
+1. De versleutelings sleutel draaien
 
-## <a name="create-managed-identities-for-azure-resources"></a>Beheerde identiteiten maken voor Azure-bronnen
+## <a name="create-managed-identities-for-azure-resources"></a>Beheerde identiteiten maken voor Azure-resources
 
-Maak een door de gebruiker toegewezen beheerde identiteit om te verifiëren naar Key Vault.
+Maak een door de gebruiker toegewezen beheerde identiteit om te verifiëren bij Key Vault.
 
-Zie [Een door de gebruiker toegewezen beheerde identiteit maken](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) voor specifieke stappen. Zie [Beheerde identiteiten in Azure HDInsight](hdinsight-managed-identities.md)voor meer informatie over hoe beheerde identiteiten werken in Azure HDInsight. Zorg ervoor dat u de beheerde identiteitsbron-id opslaat voor wanneer u deze toevoegt aan het toegangsbeleid voor sleutelkluizen.
+Zie [een door de gebruiker toegewezen beheerde identiteit maken](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) voor specifieke stappen. Zie [beheerde identiteiten in azure hdinsight](hdinsight-managed-identities.md)voor meer informatie over de werking van beheerde identiteiten in azure hdinsight. Zorg ervoor dat u de resource-ID van de beheerde ID opslaat wanneer u deze toevoegt aan het Key Vault toegangs beleid.
 
 ## <a name="create-azure-key-vault"></a>Azure Key Vault maken
 
 Een sleutelkluis maken. Zie [Azure Key Vault maken](../key-vault/secrets/quick-create-portal.md) voor specifieke stappen.
 
-HDInsight ondersteunt alleen Azure Key Vault. Als u uw eigen sleutelkluis hebt, u uw sleutels importeren in Azure Key Vault. Houd er rekening mee dat de sleutelkluis **Soft delete** moet hebben ingeschakeld. Ga voor meer informatie over het importeren van bestaande sleutels naar [Over sleutels, geheimen en certificaten](../key-vault/about-keys-secrets-and-certificates.md).
+HDInsight ondersteunt alleen Azure Key Vault. Als u uw eigen sleutel kluis hebt, kunt u uw sleutels importeren in Azure Key Vault. Houd er rekening mee dat voor de sleutel kluis **voorlopig verwijderen** moet zijn ingeschakeld. Ga voor meer informatie over het importeren van bestaande sleutels naar [sleutels, geheimen en certificaten](../key-vault/about-keys-secrets-and-certificates.md).
 
-## <a name="create-key"></a>Toets maken
+## <a name="create-key"></a>Sleutel maken
 
-1. Navigeer vanuit uw nieuwe sleutelkluis naar > **Instellingentoetsen** > **+ Genereren/importeren**. **Settings**
+1. Navigeer vanuit uw nieuwe sleutel kluis naar **instellingen** > **sleutels** > **+ genereren/importeren**.
 
-    ![Een nieuwe sleutel genereren in Azure Key Vault](./media/disk-encryption/create-new-key.png "Een nieuwe sleutel genereren in Azure Key Vault")
+    ![Een nieuwe sleutel in Azure Key Vault genereren](./media/disk-encryption/create-new-key.png "Een nieuwe sleutel in Azure Key Vault genereren")
 
-1. Geef een naam op en selecteer **Maken**. Het **standaardsleuteltype** **RSA behouden**.
+1. Geef een naam op en selecteer **maken**. Het standaard **sleutel type** van **RSA**onderhouden.
 
-    ![genereert sleutelnaam](./media/disk-encryption/create-key.png "Sleutelnaam genereren")
+    ![genereert sleutel naam](./media/disk-encryption/create-key.png "Sleutel naam genereren")
 
-1. Wanneer u terugkeert naar de pagina **Sleutels,** selecteert u de sleutel die u hebt gemaakt.
+1. Wanneer u terugkeert naar de pagina **sleutels** , selecteert u de sleutel die u hebt gemaakt.
 
-    ![key vault key list](./media/disk-encryption/key-vault-key-list.png)
+    ![sleutel kluis sleutel lijst](./media/disk-encryption/key-vault-key-list.png)
 
-1. Selecteer de versie om de pagina **Sleutelversie te** openen. Wanneer u uw eigen sleutel gebruikt voor HDInsight-clusterversleuteling, moet u de sleutel URI leveren. Kopieer de **sleutel-id** en sla deze ergens op totdat u klaar bent om uw cluster te maken.
+1. Selecteer de versie om de pagina met de **sleutel versie** te openen. Wanneer u uw eigen sleutel voor HDInsight-cluster versleuteling gebruikt, moet u de sleutel-URI opgeven. Kopieer de **sleutel-id** en sla deze ergens op totdat u klaar bent om uw cluster te maken.
 
-    ![sleutel-id krijgen](./media/disk-encryption/get-key-identifier.png)
+    ![sleutel-id ophalen](./media/disk-encryption/get-key-identifier.png)
 
-## <a name="create-access-policy"></a>Toegangsbeleid maken
+## <a name="create-access-policy"></a>Toegangs beleid maken
 
-1. Navigeer vanuit uw nieuwe sleutelkluis naar > **Instellingentoegangsbeleid** > **+ Toegangsbeleid toevoegen**. **Settings**
+1. Ga vanuit de nieuwe sleutel kluis naar **instellingen** > **toegangs beleid** > **+ toegangs beleid toevoegen**.
 
-    ![Nieuw Azure Key Vault-toegangsbeleid maken](./media/disk-encryption/key-vault-access-policy.png)
+    ![Nieuw toegangs beleid voor Azure Key Vault maken](./media/disk-encryption/key-vault-access-policy.png)
 
-1. Geef op de pagina **Toegangsbeleid toevoegen** de volgende gegevens op:
+1. Geef op de pagina **toegangs beleid toevoegen** de volgende informatie op:
 
     |Eigenschap |Beschrijving|
     |---|---|
-    |Belangrijkste machtigingen|Selecteer **Get,** **Uitpakken sleutel**en **Wrap Key**.|
-    |Geheime machtigingen|Selecteer **Oppakken,** **instellen**en **verwijderen**.|
-    |Hoofdprincipal selecteren|Selecteer de door de gebruiker toegewezen beheerde identiteit die u eerder hebt gemaakt.|
+    |Sleutel machtigingen|Selecteer **ophalen**, **deterugloop sleutel**en **Terugloop sleutel**.|
+    |Geheime machtigingen|Selecteer **ophalen**, **instellen**en **verwijderen**.|
+    |Principal selecteren|Selecteer de door de gebruiker toegewezen beheerde identiteit die u eerder hebt gemaakt.|
 
-    ![Hoofdpunt selecteren instellen voor Azure Key Vault-toegangsbeleid](./media/disk-encryption/azure-portal-add-access-policy.png)
+    ![Selecteer de principal voor Azure Key Vault toegangs beleid instellen](./media/disk-encryption/azure-portal-add-access-policy.png)
 
 1. Selecteer **Toevoegen**.
 
 1. Selecteer **Opslaan**.
 
-    ![Azure Key Vault-toegangsbeleid opslaan](./media/disk-encryption/add-key-vault-access-policy-save.png)
+    ![Azure Key Vault toegangs beleid opslaan](./media/disk-encryption/add-key-vault-access-policy-save.png)
 
-## <a name="create-cluster-with-customer-managed-key-disk-encryption"></a>Cluster maken met door de klant beheerde sleutelschijfversleuteling
+## <a name="create-cluster-with-customer-managed-key-disk-encryption"></a>Een cluster maken met door de klant beheerde sleutel schijf versleuteling
 
-U bent nu klaar om een nieuw HDInsight-cluster te maken. Door de klant beheerde sleutel kan alleen worden toegepast op nieuwe clusters tijdens het maken van clusters. Versleuteling kan niet worden verwijderd uit door de klant beheerde sleutelclusters en de door de klant beheerde sleutel kan niet worden toegevoegd aan bestaande clusters.
+U bent nu klaar om een nieuw HDInsight-cluster te maken. Door de klant beheerde sleutel kan alleen worden toegepast op nieuwe clusters tijdens het maken van het cluster. Versleuteling kan niet worden verwijderd uit door de klant beheerde sleutel clusters en de door de klant beheerde sleutel kan niet worden toegevoegd aan bestaande clusters.
 
 ### <a name="using-the-azure-portal"></a>Azure Portal gebruiken
 
-Geef tijdens het maken van het cluster de volledige **sleutel-id**op, inclusief de belangrijkste versie. Bijvoorbeeld `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. U moet ook de beheerde identiteit aan het cluster toewijzen en de belangrijkste URI opgeven.
+Geef tijdens het maken van het cluster de volledige **sleutel-id**op, met inbegrip van de sleutel versie. Bijvoorbeeld `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. U moet ook de beheerde identiteit toewijzen aan het cluster en de sleutel-URI opgeven.
 
 ![Nieuw cluster maken](./media/disk-encryption/create-cluster-portal.png)
 
 ### <a name="using-azure-cli"></a>Azure CLI gebruiken
 
-In het volgende voorbeeld ziet u hoe u Azure CLI gebruikt om een nieuw Apache Spark-cluster te maken met schijfversleuteling ingeschakeld. Zie [Azure CLI az hdinsight create voor](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)meer informatie.
+In het volgende voor beeld ziet u hoe u Azure CLI gebruikt om een nieuw Apache Spark-cluster te maken waarvoor schijf versleuteling is ingeschakeld. Zie [Azure cli AZ hdinsight Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)voor meer informatie.
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
@@ -126,9 +126,9 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 
 ### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen gebruiken
 
-In het volgende voorbeeld ziet u hoe u een Azure Resource Manager-sjabloon gebruikt om een nieuw Apache Spark-cluster te maken waarmee schijfversleuteling is ingeschakeld. Zie [Wat zijn ARM-sjablonen voor](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)meer informatie?
+In het volgende voor beeld ziet u hoe u een Azure Resource Manager sjabloon gebruikt om een nieuw Apache Spark-cluster te maken waarvoor schijf versleuteling is ingeschakeld. Zie [Wat zijn arm-sjablonen?](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)voor meer informatie.
 
-In dit voorbeeld wordt PowerShell gebruikt om de sjabloon aan te roepen.
+In dit voor beeld wordt Power shell gebruikt om de sjabloon aan te roepen.
 
 ```powershell
 $templateFile = "azuredeploy.json"
@@ -153,7 +153,7 @@ New-AzResourceGroupDeployment `
   -managedIdentityName $managedIdentityName
 ```
 
-De inhoud van de `azuredeploy.json`sjabloon resourcebeheer:
+De inhoud van de resource beheer sjabloon, `azuredeploy.json`:
 
 ```json
 {
@@ -338,19 +338,19 @@ De inhoud van de `azuredeploy.json`sjabloon resourcebeheer:
 }
 ```
 
-## <a name="rotating-the-encryption-key"></a>De versleutelingssleutel roteren
+## <a name="rotating-the-encryption-key"></a>De versleutelings sleutel draaien
 
-Er zijn mogelijk scenario's waarin u de versleutelingssleutels wilt wijzigen die door het HDInsight-cluster worden gebruikt nadat deze is gemaakt. Dit kan eenvoudig via het portaal. Voor deze bewerking moet het cluster toegang hebben tot zowel de huidige sleutel als de beoogde nieuwe sleutel, anders mislukt de bewerking van de roterende sleutel.
+Er zijn mogelijk scenario's waarin u mogelijk de versleutelings sleutels wilt wijzigen die door het HDInsight-cluster worden gebruikt nadat het is gemaakt. Dit kan eenvoudig zijn via de portal. Voor deze bewerking moet het cluster toegang hebben tot zowel de huidige sleutel als de beoogde nieuwe sleutel, anders kan de bewerking voor het draaien van de sleutel niet worden uitgevoerd.
 
 ### <a name="using-the-azure-portal"></a>Azure Portal gebruiken
 
-Om de sleutel te draaien, heb je de basissleutel kluis URI nodig. Zodra u dat hebt gedaan, gaat u naar de sectie HDInsight-clustereigenschappen in de portal en klikt u op **Sleutel wijzigen** onder URL van **de schijfversleutelingssleutel**. Voer de nieuwe sleutel-url in en verzend om de sleutel te roteren.
+Als u de sleutel wilt draaien, hebt u de URL van de basis sleutel kluis nodig. Als u dat hebt gedaan, gaat u naar de sectie eigenschappen van HDInsight-cluster in de portal en klikt u op de **sleutel wijzigen** onder URL voor de **schijf versleutelings sleutel**. Voer in de nieuwe sleutel-URL in en verzend de sleutel om deze te draaien.
 
-![schijfversleutelingssleutel roteren](./media/disk-encryption/change-key.png)
+![schijf versleutelings sleutel draaien](./media/disk-encryption/change-key.png)
 
 ### <a name="using-azure-cli"></a>Azure CLI gebruiken
 
-In het volgende voorbeeld ziet u hoe u de schijfversleutelingssleutel voor een bestaand HDInsight-cluster roteren. Zie [Azure CLI az hdinsight rotate-disk-encryption-key](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-rotate-disk-encryption-key)voor meer informatie.
+In het volgende voor beeld ziet u hoe u de schijf versleutelings sleutel voor een bestaand HDInsight-cluster roteert. Zie [Azure cli AZ hdinsight Rotate-Disk-Encryption-Key](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-rotate-disk-encryption-key)voor meer informatie.
 
 ```azurecli
 az hdinsight rotate-disk-encryption-key \
@@ -361,43 +361,43 @@ az hdinsight rotate-disk-encryption-key \
 --resource-group MyResourceGroup
 ```
 
-## <a name="faq-for-customer-managed-key-encryption"></a>Veelgestelde vragen over door de klant beheerde sleutelversleuteling
+## <a name="faq-for-customer-managed-key-encryption"></a>Veelgestelde vragen over versleuteling door de klant beheerde sleutel
 
-**Hoe heeft het HDInsight-cluster toegang tot mijn sleutelkluis?**
+**Hoe opent het HDInsight-cluster mijn sleutel kluis?**
 
-HDInsight heeft toegang tot uw Azure Key Vault-exemplaar met behulp van de beheerde identiteit die u koppelt aan het HDInsight-cluster. Deze beheerde identiteit kan worden gemaakt voor of tijdens het maken van het cluster. U moet ook de beheerde identiteit toegang verlenen tot de sleutelkluis waar de sleutel is opgeslagen.
+HDInsight opent uw Azure Key Vault-exemplaar met behulp van de beheerde identiteit die u aan het HDInsight-cluster koppelt. Deze beheerde identiteit kan worden gemaakt vóór of tijdens het maken van het cluster. U moet ook de beheerde identiteits toegang verlenen aan de sleutel kluis waar de sleutel wordt opgeslagen.
 
-**Is deze functie beschikbaar voor alle clusters op HDInsight?**
+**Is deze functie beschikbaar voor alle clusters in HDInsight?**
 
-Versleuteling van door de klant beheerde sleutelversleuteling is beschikbaar voor alle clustertypen, behalve Spark 2.1 en 2.2.
+Door de klant beheerde sleutel versleuteling is beschikbaar voor alle cluster typen behalve Spark 2,1 en 2,2.
 
-**Kan ik meerdere sleutels gebruiken om verschillende schijven of mappen te versleutelen?**
+**Kan ik meerdere sleutels gebruiken voor het versleutelen van verschillende schijven of mappen?**
 
-Nee, alle beheerde schijven en resourceschijven worden versleuteld met dezelfde sleutel.
+Nee, alle beheerde schijven en bron schijven worden versleuteld met dezelfde sleutel.
 
-**Wat gebeurt er als het cluster geen toegang meer heeft tot de sleutelkluis of de sleutel?**
+**Wat gebeurt er als het cluster geen toegang meer heeft tot de sleutel kluis of de sleutel?**
 
-Als het cluster de toegang tot de sleutel verliest, worden waarschuwingen weergegeven in de Apache Ambari-portal. In deze status mislukt de bewerking **Sleutel wijzigen.** Zodra de toegang tot de sleutel is hersteld, verdwijnen ambari-waarschuwingen en kunnen bewerkingen zoals sleutelrotatie met succes worden uitgevoerd.
+Als het cluster de toegang tot de sleutel verliest, worden waarschuwingen weer gegeven in de Apache Ambari-Portal. In deze status mislukt de **wijzigings sleutel** bewerking. Zodra de toegang tot de sleutel is hersteld, worden de Ambari-waarschuwingen verwijderd en worden bewerkingen, zoals het draaien van sleutels, kunnen worden uitgevoerd.
 
-![Belangrijke toegang Ambari alert](./media/disk-encryption/ambari-alert.png)
+![Ambari-waarschuwing voor Key Access](./media/disk-encryption/ambari-alert.png)
 
 **Hoe kan ik het cluster herstellen als de sleutels worden verwijderd?**
 
-Aangezien alleen de sleutels met "Soft Delete" worden ondersteund, moet het cluster, als de sleutels in de sleutelkluis worden hersteld, weer toegang krijgen tot de sleutels. Zie [AzKeyVaultKeyRemoval ongedaan maken](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) of [az-keyvault-key-recover.](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover)
+Omdat alleen de sleutels "voorlopig verwijderen" worden ondersteund en de sleutels worden hersteld in de sleutel kluis, moet het cluster weer toegang krijgen tot de sleutels. Als u een Azure Key Vault sleutel wilt herstellen, raadpleegt u [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) of [AZ-sleutel kluis-Key-Recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover).
 
-**Welke schijftypen zijn versleuteld? Zijn os-schijven/resourceschijven ook versleuteld?**
+**Welke schijf typen zijn versleuteld? Zijn besturingssysteem schijven/bron schijven ook versleuteld?**
 
-Bronschijven en gegevens/beheerde schijven worden versleuteld. OS-schijven zijn niet versleuteld.
+Bron schijven en gegevens/beheerde schijven worden versleuteld. BESTURINGSSYSTEEM schijven zijn niet versleuteld.
 
-**Als een cluster wordt opgeschaald, ondersteunen de nieuwe knooppunten de door de klant beheerde sleutels dan naadloos?**
+**Als een cluster omhoog wordt geschaald, worden door de nieuwe knoop punten naadloos door de klant beheerde sleutels ondersteund?**
 
-Ja. Het cluster heeft toegang nodig tot de sleutel in de sleutelkluis tijdens het opschalen. Dezelfde sleutel wordt gebruikt om zowel beheerde schijven als resourceschijven in het cluster te versleutelen.
+Ja. Het cluster moet toegang hebben tot de sleutel in de sleutel kluis tijdens het omhoog schalen. Dezelfde sleutel wordt gebruikt voor het versleutelen van zowel beheerde schijven als bron schijven in het cluster.
 
-**Zijn door de klant beheerde sleutels beschikbaar op mijn locatie?**
+**Zijn de door de klant beheerde sleutels beschikbaar op mijn locatie?**
 
-HDInsight door de klant beheerde sleutels zijn beschikbaar in alle openbare clouds en nationale clouds.
+Door de klant beheerde sleutels van HDInsight zijn beschikbaar in alle open bare Clouds en nationale Clouds.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie Wat is Azure Key Vault voor meer informatie over Azure Key [Vault.](../key-vault/general/overview.md)
-* [Overzicht van bedrijfsbeveiliging in Azure HDInsight](./domain-joined/hdinsight-security-overview.md).
+* Zie [Wat is Azure Key Vault](../key-vault/general/overview.md)voor meer informatie over Azure Key Vault.
+* [Overzicht van ENTER prise Security in azure HDInsight](./domain-joined/hdinsight-security-overview.md).

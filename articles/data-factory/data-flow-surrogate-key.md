@@ -1,6 +1,6 @@
 ---
-title: Surrogaatsleuteltransformatie in kaartbrengen gegevensstroom
-description: De mapping dataflow surrogate key transformation van Azure Data Factory gebruiken om sequentiële sleutelwaarden te genereren
+title: Surrogaat sleutel transformatie bij toewijzing van gegevens stroom
+description: De trans formatie van de gegevens stroom surrogaat van Azure Data Factory gebruiken om sequentiële sleutel waarden te genereren
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,51 +9,51 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
 ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606297"
 ---
-# <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Surrogaatsleuteltransformatie in kaartbrengen gegevensstroom 
+# <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Surrogaat sleutel transformatie bij toewijzing van gegevens stroom 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Gebruik de surrogaatsleuteltransformatie om een verhogingssleutelwaarde toe te voegen aan elke rij gegevens. Dit is handig bij het ontwerpen van dimensietabellen in een analytisch gegevensmodel voor een sterschema. In een sterschema vereist elk lid in uw dimensietabellen een unieke sleutel die een niet-zakelijke sleutel is.
+Gebruik de trans formatie van de surrogaat sleutel om een incrementele sleutel waarde toe te voegen aan elke rij gegevens. Dit is handig bij het ontwerpen van dimensie tabellen in een ster schema analytisch gegevens model. In een ster schema is voor elk lid in de dimensie tabellen een unieke sleutel vereist die een niet-bedrijfs sleutel is.
 
 ## <a name="configuration"></a>Configuratie
 
-![Surrogaat sleutel transformeren](media/data-flow/surrogate.png "Surrogaat sleutel transformatie")
+![Surrogaat sleutel transformatie](media/data-flow/surrogate.png "Surrogaat sleutel transformatie")
 
-**Sleutelkolom:** De naam van de gegenereerde surrogaatsleutelkolom.
+**Sleutel kolom:** De naam van de gegenereerde surrogaat sleutel kolom.
 
-**Beginwaarde:** De laagste sleutelwaarde die wordt gegenereerd.
+**Begin waarde:** De laagste sleutel waarde die wordt gegenereerd.
 
-## <a name="increment-keys-from-existing-sources"></a>Toetsen uit bestaande bronnen verhogen
+## <a name="increment-keys-from-existing-sources"></a>Sleutels van bestaande bronnen stapsgewijs verhogen
 
-Als u uw reeks wilt starten vanaf een waarde die in een bron bestaat, gebruikt u een afgeleide kolomtransformatie na de transformatie van de surrogaatsleutel om de twee waarden samen toe te voegen:
+Als u de volg orde wilt starten vanuit een waarde die voor komt in een bron, gebruikt u een afgeleide kolom transformatie na de trans formatie van de surrogaat sleutel om de twee waarden samen toe te voegen:
 
-![SK voeg Max toe](media/data-flow/sk006.png "Surrogaat sleutel transformatie voeg Max")
+![SK toevoegen Max](media/data-flow/sk006.png "Aantal trans formatie van surrogaat sleutel maximum toevoegen")
 
-### <a name="increment-from-existing-maximum-value"></a>Verhoging van de bestaande maximumwaarde
+### <a name="increment-from-existing-maximum-value"></a>Toename van de bestaande maximum waarde
 
-Om de belangrijkste waarde met de vorige max te zaaien, zijn er twee technieken die u gebruiken op basis van waar uw brongegevens zich bevinden.
+Als u de sleutel waarde met het vorige maximum wilt seeden, zijn er twee methoden die u kunt gebruiken op basis van waar de bron gegevens zich bevinden.
 
-#### <a name="database-sources"></a>Databasebronnen
+#### <a name="database-sources"></a>Database bronnen
 
-Gebruik een SQL-queryoptie om MAX() uit uw bron te selecteren. Bijvoorbeeld,`Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
+Gebruik een SQL-query optie om MAX () te selecteren in de bron. Bijvoorbeeld:`Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
 
-![Surrogaatsleutelquery](media/data-flow/sk002.png "Surrogaatsleuteltransformatiequery")
+![Surrogaat sleutel query](media/data-flow/sk002.png "Query voor surrogaat sleutel transformatie")
 
-#### <a name="file-sources"></a>Bestandsbronnen
+#### <a name="file-sources"></a>Bestands bronnen
 
-Als uw vorige maximumwaarde zich in `max()` een bestand bevindt, gebruikt u de functie in de samengevoegde transformatie om de vorige maximale waarde te krijgen:
+Als uw vorige maximum waarde zich in een bestand bevindt `max()` , gebruikt u de functie in de cumulatieve trans formatie om de vorige maximum waarde op te halen:
 
-![Surrogaatsleutelbestand](media/data-flow/sk008.png "Surrogaatsleutelbestand")
+![Surrogaat sleutel bestand](media/data-flow/sk008.png "Surrogaat sleutel bestand")
 
-In beide gevallen moet u deelnemen aan uw binnenkomende nieuwe gegevens samen met uw bron die de vorige maximale waarde bevat.
+In beide gevallen moet u uw inkomende nieuwe gegevens samen voegen met de bron die de vorige maximum waarde bevat.
 
-![Surrogaatsleutel Join](media/data-flow/sk004.png "Surrogaatsleutel Join")
+![Surrogaat sleutel toevoegen](media/data-flow/sk004.png "Surrogaat sleutel toevoegen")
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 
@@ -69,9 +69,9 @@ In beide gevallen moet u deelnemen aan uw binnenkomende nieuwe gegevens samen me
 
 ### <a name="example"></a>Voorbeeld
 
-![Surrogaat sleutel transformeren](media/data-flow/surrogate.png "Surrogaat sleutel transformatie")
+![Surrogaat sleutel transformatie](media/data-flow/surrogate.png "Surrogaat sleutel transformatie")
 
-Het script voor de gegevensstroom voor de bovenstaande surrogaatsleutelconfiguratie bevindt zich in het onderstaande codefragment.
+Het gegevens stroom script voor de configuratie van de bovenstaande surrogaat sleutel bevindt zich in het onderstaande code fragment.
 
 ```
 AggregateDayStats
@@ -83,4 +83,4 @@ AggregateDayStats
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze voorbeelden worden de transformaties [Join en](data-flow-join.md) [Afgeleide Kolom](data-flow-derived-column.md) gebruikt.
+In deze voor beelden [worden](data-flow-join.md) de combi neren en [afgeleide kolom](data-flow-derived-column.md) transformaties gebruikt.

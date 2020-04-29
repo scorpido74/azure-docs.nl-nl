@@ -1,8 +1,8 @@
 ---
-title: Live streaming encoders aanbevolen door Media Services - Azure | Microsoft Documenten
-description: Meer informatie over live streaming on-premises encoders aanbevolen door Media Services
+title: Live streaming encoders die worden aanbevolen door Media Services-Azure | Microsoft Docs
+description: Meer informatie over on-premises coderings Programma's voor live streamen aanbevolen door Media Services
 services: media-services
-keywords: codering;encoders;media
+keywords: code ring; encoders; media
 author: johndeu
 manager: johndeu
 ms.author: johndeu
@@ -10,104 +10,104 @@ ms.date: 04/16/2020
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 0676b6b183c64dcd0fb15b87de48a4afed3a0011
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641806"
 ---
-# <a name="tested-on-premises-live-streaming-encoders"></a>Getest on-premises live streaming encoders
+# <a name="tested-on-premises-live-streaming-encoders"></a>Geteste on-premises live streaming encoders
 
-In Azure Media Services vertegenwoordigt een [Live Event](https://docs.microsoft.com/rest/api/media/liveevents) (kanaal) een pijplijn voor het verwerken van live streaming content. Het Live Event ontvangt op twee manieren live-invoerstreams.
+In Azure Media Services vertegenwoordigt een [live gebeurtenis](https://docs.microsoft.com/rest/api/media/liveevents) (kanaal) een pijp lijn voor het verwerken van live-streaming-inhoud. De live-gebeurtenis ontvangt Live invoer stromen op een van de volgende twee manieren.
 
-* Een on-premises live-encoder stuurt een multi-bitrate RTMP- of Smooth Streaming -stream (gefragmenteerde MP4) naar het Live-evenement dat niet is ingeschakeld om live codering met Media Services uit te voeren. De ingenomen streams passeren Live Events zonder verdere verwerking. Deze methode wordt **pass-through**genoemd. We raden de live-encoder aan om multibitrate streams te verzenden in plaats van een single-bitrate stream naar een pass-through live evenement om adaptieve bitrate streaming naar de client mogelijk te maken. 
+* Een on-premises Live Encoder verzendt een gegevensgestuurde multi-bitrate RTMP-of Smooth Streaming (gefragmenteerde MP4)-stream naar de live gebeurtenis die niet is ingeschakeld voor het uitvoeren van Live code ring met Media Services. De opgenomen streams passeren Live gebeurtenissen zonder verdere verwerking. Deze methode wordt **Pass-Through**genoemd. We raden u aan om met het Live coderings programma multi-bitrate streams te verzenden in plaats van een single-bitrate stream naar een Pass-through live-gebeurtenis om Adaptive Bitrate Streaming toe te staan aan de client. 
 
-    Als u multibitrates streams gebruikt voor de pass-through live gebeurtenis, moeten de video GOP-grootte en de videofragmenten op verschillende bitrates worden gesynchroniseerd om onverwacht gedrag aan de afspeelkant te voorkomen.
+    Als u multi-bitrate streams gebruikt voor de Pass-through live-gebeurtenis, moeten de grootte van de video-GOP terug en de video fragmenten op verschillende bitsnelheden worden gesynchroniseerd om onverwacht gedrag bij het afspelen te voor komen.
 
   > [!TIP]
-  > Het gebruik van een pass-through methode is de meest economische manier om live streaming te doen.
+  > Het gebruik van een Pass-Through-methode is de voordeligste manier om live streamen uit te voeren.
  
-* Een on-premises live-encoder stuurt een stream met één bitrate naar het Live-evenement die is ingeschakeld om live codering met Media Services uit te voeren in een van de volgende indelingen: RTMP of Smooth Streaming (gefragmenteerde MP4). Het Live Event voert vervolgens live codering uit van de binnenkomende single-bitrate stream naar een multi-bitrate (adaptieve) videostream.
+* Een on-premises Live Encoder verzendt een stream met één bitsnelheid naar de live gebeurtenis die is ingeschakeld voor het uitvoeren van Live code ring met Media Services in een van de volgende indelingen: RTMP of Smooth Streaming (gefragmenteerde MP4). De live-gebeurtenis voert vervolgens Live encoding uit van de inkomende single-bitrate stream naar een multi-bitrate-video stroom (adaptief).
 
-Dit artikel bespreekt geteste on-premises live streaming encoders. Zie [uw on-premises encoder controleren](become-on-premises-encoder-partner.md) of u instructies hebt over het verifiëren van uw on-premises encoder
+In dit artikel worden de geteste on-premises live streaming encoders besproken. Zie [uw on-premises encoder controleren](become-on-premises-encoder-partner.md) voor instructies voor het controleren van uw on-premises Live coderings programma
 
-Zie Live streaming met Media Services [v3](live-streaming-overview.md)voor gedetailleerde informatie over live-codering met Media Services.
+Zie voor gedetailleerde informatie over Live encoding met Media Services [live streamen met Media Services v3](live-streaming-overview.md).
 
-## <a name="encoder-requirements"></a>Encoder-eisen
+## <a name="encoder-requirements"></a>Encoder vereisten
 
-Encoders moeten TLS 1.2 ondersteunen bij het gebruik van HTTPS- of RTMPS-protocollen.
+Encoders moeten TLS 1,2 ondersteunen bij het gebruik van HTTPS-of RTMP-protocollen.
 
-## <a name="live-encoders-that-output-rtmp"></a>Live-encoders die RTMP uiteren
+## <a name="live-encoders-that-output-rtmp"></a>Live coderings Programma's die RTMP uitvoeren
 
-Media Services raadt het gebruik aan van een van de volgende live-encoders met RTMP als uitvoer. De ondersteunde URL-schema's zijn `rtmp://` of `rtmps://`.
+Media Services raadt het gebruik aan van een van de volgende live-encoders met RTMP als uitvoer. De ondersteunde URL-schema's `rtmp://` zijn `rtmps://`of.
 
 Bij het streamen via RTMP controleert u de instellingen voor de firewall en/of proxy om te zien of de uitgaande TCP-poorten 1935 en 1936 open zijn.<br/><br/>
 Bij het streamen via RTMPS controleert u de instellingen voor de firewall en/of proxy om te zien of de uitgaande TCP-poorten 2935 en 2936 open zijn.
 
 > [!NOTE]
-> Encoders moeten TLS 1.2 ondersteunen bij het gebruik van RTMPS-protocollen.
+> Encoders moeten TLS 1,2 ondersteunen bij het gebruik van RTMP-protocollen.
 
 - Adobe Flash Media Live Encoder 3.2
-- [Cambria Live 4.3](https://www.capellasystems.net/products/cambria-live/)
-- Elemental Live (versie 2.14.15 en hoger)
+- [Cambria Live 4,3](https://www.capellasystems.net/products/cambria-live/)
+- Elementair Live (versie 2.14.15 en hoger)
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
 - Switcher Studio (iOS)
-- Telestream Wirecast (versie 13.0.2 of hoger vanwege de TLS 1.2 vereiste)
-- Telestream Wirecast S (alleen RTMP wordt ondersteund)
+- Telestream-Wirecast (versie 13.0.2 of hoger vanwege de TLS 1,2-vereiste)
+- Telestream-Wirecast S (alleen RTMP wordt ondersteund)
 - Teradek Slice 756
 - VMIX
 - xStream
 - [Ffmpeg](https://www.ffmpeg.org)
-- [GoPro (GoPro)](https://gopro.com/help/articles/block/getting-started-with-live-streaming) Hero 7 en Hero 8
+- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming) Helden 7 en held 8
 - [Restream.io](https://restream.io/)
 
-## <a name="live-encoders-that-output-fragmented-mp4"></a>Live encoders die gefragmenteerde MP4 uitte
+## <a name="live-encoders-that-output-fragmented-mp4"></a>Live coderings Programma's die gefragmenteerde MP4 uitvoeren
 
-Media Services raadt aan om een van de volgende live-encoders te gebruiken die multibitrate Smooth Streaming (gefragmenteerde MP4) als uitvoer hebben. De ondersteunde URL-schema's zijn `http://` of `https://`.
+Media Services raadt u aan om een van de volgende Live coderings Programma's te gebruiken met multi-bitrate Smooth Streaming (gefragmenteerde MP4) als uitvoer. De ondersteunde URL-schema's `http://` zijn `https://`of.
 
 > [!NOTE]
-> Encoders moeten TLS 1.2 ondersteunen bij het gebruik van HTTPS-protocollen.
+> Encoders moeten TLS 1,2 ondersteunen bij het gebruik van HTTPS-protocollen.
 
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Elemental Live (versie 2.14.15 en hoger vanwege de TLS 1.2-vereiste)
+- Elementaire Live (versie 2.14.15 en hoger vanwege de TLS 1,2-vereiste)
 - Envivio 4Caster C4 Gen III 
-- Stel je Communicatie Selenio MCP3
+- Denk aan de communicatie selenio MCP3
 - Media Excel Hero Live en Hero 4K (UHD/HEVC)
 - [Ffmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
->  Als u live-evenementen streamt in meerdere talen (bijvoorbeeld één Engels audiospoor en één Spaans audiospoor), u dit bereiken met de Media Excel live-encoder die is geconfigureerd om de live-feed naar een live-evenement te verzenden.
+>  Als u live-gebeurtenissen in meerdere talen wilt streamen (bijvoorbeeld een Engels audio nummer en één Spaans audio spoor), kunt u dit doen met de media Excel live encoder die is geconfigureerd voor het verzenden van live feeds naar een Pass-through live-gebeurtenis.
 
-## <a name="configuring-on-premises-live-encoder-settings"></a>On-premises instellingen voor live-encoder configureren
+## <a name="configuring-on-premises-live-encoder-settings"></a>Instellingen voor on-premises Live coderings Programma's configureren
 
-Zie Vergelijking van [typen live-evenementen](live-event-types-comparison.md)voor informatie over de instellingen die geldig zijn voor uw live-evenementtype.
+Zie voor meer informatie over welke instellingen geldig zijn voor uw live-gebeurtenis type [vergelijking van live gebeurtenis typen](live-event-types-comparison.md).
 
 ### <a name="playback-requirements"></a>Vereisten voor afspelen
 
-Om inhoud af te spelen, moet zowel een audio- als videostream aanwezig zijn. Het afspelen van de videostream wordt niet ondersteund.
+Als u de inhoud wilt afspelen, moet zowel een audio-als een video stroom aanwezig zijn. Afspelen van de stream alleen video wordt niet ondersteund.
 
 ### <a name="configuration-tips"></a>Configuratietips
 
 - Gebruik indien mogelijk een vaste internetverbinding.
-- Wanneer u de bandbreedtevereisten bepaalt, verdubbelt u de streamingbitrates. Hoewel deze eenvoudige regel niet verplicht is, helpt deze eenvoudige regel de impact van netwerkcongestie te beperken.
-- Sluit bij het gebruik van softwaregebaseerde encoders onnodige programma's af.
-- Het wijzigen van uw encoderconfiguratie nadat deze is begonnen met duwen heeft negatieve effecten op de gebeurtenis. Configuratiewijzigingen kunnen ertoe leiden dat de gebeurtenis instabiel wordt. 
-- Zorg ervoor dat u uzelf voldoende tijd geeft om uw evenement op te zetten. Voor grootschalige evenementen raden we aan om de installatie een uur voor uw evenement te starten.
-- Gebruik de H.264-video- en OC-audiocodec-uitvoer.
-- Zorg ervoor dat er een hoofdframe of GOP-tijdelijke uitlijning is tussen videokwaliteiten.
-- Zorg ervoor dat er een unieke streamnaam is voor elke videokwaliteit.
-- Gebruik strikte CBR-codering aanbevolen voor optimale adaptieve bitrate prestaties.
+- Wanneer u de vereisten voor de band breedte bepaalt, verdubbelt u de streaming bitrates. Hoewel het niet verplicht is, kunt u met deze eenvoudige regel de impact van de netwerk congestie verminderen.
+- Wanneer u software encoders gebruikt, moet u overbodige Program ma's sluiten.
+- Het wijzigen van de encoder configuratie nadat deze is gestart, heeft negatieve gevolgen voor de gebeurtenis. Configuratie wijzigingen kunnen ertoe leiden dat de gebeurtenis Insta Biel wordt. 
+- Zorg ervoor dat u uw gebeurtenis in ruime tijd kunt instellen. Voor grootschalige gebeurtenissen raden we u aan om de installatie een uur voor uw gebeurtenis te starten.
+- De H. 264 video-en AAC-audio-codec uitvoer gebruiken.
+- Zorg ervoor dat er sprake is van een belang rijke frame of GOP terug tijdelijke uitlijning over de video-eigenschappen.
+- Zorg ervoor dat er een unieke stroom naam is voor elke video kwaliteit.
+- Gebruik strikte CBR-code ring aanbevolen voor optimale communicatie prestaties.
 
 > [!IMPORTANT]
-> Bekijk de fysieke conditie van de machine (CPU / Geheugen / etc) als het uploaden van fragmenten naar de cloud gaat CPU en IO operaties. Als u instellingen in de encoder wijzigt, moet u de kanalen / live gebeurtenis opnieuw instellen om de wijziging van kracht te laten worden.
+> Bekijk de fysieke toestand van de machine (CPU/geheugen/etc.) als het uploaden van fragmenten naar de Cloud CPU-en i/o-bewerkingen vergt. Als u instellingen in het coderings programma wijzigt, moet u er zeker van zijn dat de kanalen/live-gebeurtenis opnieuw worden ingesteld om de wijziging door te voeren.
 
 ## <a name="see-also"></a>Zie ook
 
-[Live streaming met Media Services v3](live-streaming-overview.md)
+[Live streamen met Media Services v3](live-streaming-overview.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Hoe u uw encoder verifiëren](become-on-premises-encoder-partner.md)
+[Uw coderings programma verifiëren](become-on-premises-encoder-partner.md)

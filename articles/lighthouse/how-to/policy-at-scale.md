@@ -1,24 +1,24 @@
 ---
-title: Azure-beleid implementeren voor gedelegeerde abonnementen op schaal
-description: Lees hoe azure gedelegeerd resourcebeheer u een beleidsdefinitie en beleidstoewijzing implementeren voor meerdere tenants.
+title: Azure Policy implementeren voor gedelegeerde abonnementen op de juiste schaal
+description: Meer informatie over hoe u met Azure delegated resource management een beleids definitie en beleids toewijzing kunt implementeren voor meerdere tenants.
 ms.date: 11/8/2019
 ms.topic: conceptual
 ms.openlocfilehash: 3fe7e48c56e9a5af93e9642ee16c50cfbce34f9e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81481822"
 ---
-# <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Azure-beleid implementeren voor gedelegeerde abonnementen op schaal
+# <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Azure Policy implementeren voor gedelegeerde abonnementen op de juiste schaal
 
-Als serviceprovider hebt u mogelijk meerdere klanttenants aan boord genomen voor Azure-gedelegeerd bronbeheer. [Azure Lighthouse](../overview.md) stelt serviceproviders in staat om bewerkingen op schaal uit te voeren voor meerdere tenants tegelijk, waardoor beheertaken efficiënter worden.
+Als service provider hebt u mogelijk meerdere tenants voor klanten voor het beheer van gedelegeerde resources voor Azure voor bereid. Met [Azure Lighthouse](../overview.md) kunnen service providers bewerkingen op verschillende tijdstippen in meerdere tenants tegelijk uitvoeren, waardoor beheer taken efficiënter zijn.
 
-In dit onderwerp ziet u hoe u [Azure Policy](../../governance/policy/index.yml) gebruiken om een beleidsdefinitie en beleidstoewijzing te implementeren voor meerdere tenants met PowerShell-opdrachten. In dit voorbeeld zorgt de beleidsdefinitie ervoor dat opslagaccounts worden beveiligd door alleen HTTPS-verkeer toe te staan.
+In dit onderwerp wordt beschreven hoe u [Azure Policy](../../governance/policy/index.yml) kunt gebruiken om een beleids definitie en beleids toewijzing te implementeren voor meerdere tenants met behulp van Power shell-opdrachten. In dit voor beeld zorgt de beleids definitie ervoor dat opslag accounts worden beveiligd door alleen HTTPS-verkeer toe te staan.
 
-## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Azure Resource Graph gebruiken om query's te maken tussen clienttenants
+## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Azure resource Graph gebruiken voor het uitvoeren van een query op de tenants van de klant
 
-U [Azure Resource Graph](../../governance/resource-graph/index.yml) gebruiken om alle abonnementen in de klanttenants die u beheert, te bevragen. In dit voorbeeld identificeren we opslagaccounts in deze abonnementen waarvoor momenteel geen HTTPS-verkeer nodig is.  
+U kunt [Azure resource Graph](../../governance/resource-graph/index.yml) gebruiken om een query uit te zoeken voor alle abonnementen in de tenants van de klant die u beheert. In dit voor beeld identificeren we opslag accounts in deze abonnementen die momenteel geen HTTPS-verkeer vereisen.  
 
 ```powershell
 $MspTenant = "insert your managing tenantId here"
@@ -30,9 +30,9 @@ $ManagedSubscriptions = Search-AzGraph -Query "ResourceContainers | where type =
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccounts' | project name, location, subscriptionId, tenantId, properties.supportsHttpsTrafficOnly" -subscription $ManagedSubscriptions.subscriptionId | convertto-json
 ```
 
-## <a name="deploy-a-policy-across-multiple-customer-tenants"></a>Een beleid implementeren voor meerdere klanttenants
+## <a name="deploy-a-policy-across-multiple-customer-tenants"></a>Een beleid implementeren over meerdere tenants van de klant
 
-In het onderstaande voorbeeld ziet u hoe u een [Azure Resource Manager-sjabloon](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-https-storage/enforceHttpsStorage.json) gebruiken om een beleidsdefinitie en beleidstoewijzing te implementeren voor gedelegeerde abonnementen in meerdere klanttenants. Deze beleidsdefinitie vereist dat alle opslagaccounts HTTPS-verkeer gebruiken, waardoor het maken van nieuwe opslagaccounts die niet voldoen en het markeren van bestaande opslagaccounts wordt voorkomen zonder dat de instelling als niet-compatibel is.
+In het onderstaande voor beeld ziet u hoe u een [Azure Resource Manager sjabloon](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-https-storage/enforceHttpsStorage.json) gebruikt om een beleids definitie en beleids toewijzing te implementeren voor gedelegeerde abonnementen in meerdere tenants van klanten. Deze beleids definitie vereist dat alle opslag accounts gebruikmaken van HTTPS-verkeer, waardoor er geen nieuwe opslag accounts kunnen worden gemaakt die niet voldoen aan bestaande opslag accounts en zonder de instelling worden gemarkeerd als niet-compatibel.
 
 ```powershell
 Write-Output "In total, there are $($ManagedSubscriptions.Count) delegated customer subscriptions to be managed"
@@ -48,9 +48,9 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
-## <a name="validate-the-policy-deployment"></a>De beleidsimplementatie valideren
+## <a name="validate-the-policy-deployment"></a>De beleids implementatie valideren
 
-Nadat u de sjabloon Azure Resource Manager hebt geïmplementeerd, u bevestigen dat de beleidsdefinitie is toegepast door te proberen een opslagaccount te maken met **EnableHttpsTrafficOnly** ingesteld op **false** in een van uw gedelegeerde abonnementen. Vanwege de beleidstoewijzing u dit opslagaccount niet maken.  
+Nadat u de Azure Resource Manager sjabloon hebt geïmplementeerd, kunt u controleren of de beleids definitie is toegepast door te proberen een opslag account te maken waarvoor **EnableHttpsTrafficOnly** is ingesteld op **False** in een van uw gedelegeerde abonnementen. U kunt dit opslag account niet maken vanwege de beleids toewijzing.  
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -Location eastus -Force).ResourceGroupName `
@@ -63,7 +63,7 @@ New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent, verwijdert u de beleidsdefinitie en -toewijzing die door de implementatie is gemaakt.
+Wanneer u klaar bent, verwijdert u de beleids definitie en toewijzing die door de implementatie is gemaakt.
 
 ```powershell
 foreach ($ManagedSub in $ManagedSubscriptions)
@@ -90,5 +90,5 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Azure-beleid](../../governance/policy/index.yml).
-- Meer informatie over [cross-tenant management ervaringen](../concepts/cross-tenant-management-experience.md).
+- Meer informatie over [Azure Policy](../../governance/policy/index.yml).
+- Meer informatie over de [ervaring op het beheer van cross-tenants](../concepts/cross-tenant-management-experience.md).

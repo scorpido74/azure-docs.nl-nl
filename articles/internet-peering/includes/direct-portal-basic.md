@@ -9,47 +9,47 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 00c24212706555667ad4680c086ece24f15ca59a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678516"
 ---
-1. Selecteer **Een resource maken** > **Zie alles**.
+1. Selecteer **een resource** > maken**Alles bekijken**.
 
     > [!div class="mx-imgBorder"]
-    > ![Zoeken naar peering](../media/setup-seeall.png)
+    > ![Zoeken in peering](../media/setup-seeall.png)
 
-1. Zoek **naar Peering** in het zoekvak en selecteer **Enter** op het toetsenbord. Selecteer in de resultaten een **Peering-bron.**
+1. Zoek op **peering** in het zoekvak en selecteer **Enter** op het toetsen bord. Selecteer een **peering** -resource in de resultaten.
 
     > [!div class="mx-imgBorder"]
     > ![Peering starten](../media/setup-launch.png)
 
-1. Nadat **Peering** is gestart, bekijkt u de pagina om de details te begrijpen. Wanneer u klaar bent, selecteert u **Maken**.
+1. Nadat **peering** is gestart, controleert u de pagina om de details te begrijpen. Wanneer u klaar bent, selecteert u **maken**.
 
     > [!div class="mx-imgBorder"]
     > ![Peering maken](../media/setup-create.png)
 
-1. Vul op de pagina **Een peering maken** op het tabblad **Basisbeginselen** de vakken in zoals hier wordt weergegeven.
+1. Vul op de pagina **een peering maken** op het tabblad **basis beginselen** de selectie vakjes in, zoals hier wordt weer gegeven.
 
     > [!div class="mx-imgBorder"]
-    > ![Tabblad Basisbeginselen voor peering](../media/setup-basics-tab.png)
+    > ![Tabblad basis informatie over peering](../media/setup-basics-tab.png)
 
-    * Selecteer uw **Azure-abonnement**.
-    * Voor **resourcegroep**u een bestaande resourcegroep kiezen in de vervolgkeuzelijst of een nieuwe groep maken door **Nieuw maken te**selecteren. We maken een nieuwe resourcegroep voor dit voorbeeld.
-    * **Naam** komt overeen met de naam van de resource en kan alles zijn wat je kiest.
-    * **Regio** wordt automatisch geselecteerd als u een bestaande resourcegroep hebt gekozen. Als u ervoor kiest om een nieuwe resourcegroep te maken, moet u ook de Azure-regio kiezen waar u de resource wilt laten wonen.
+    * Selecteer uw Azure- **abonnement**.
+    * Voor **resource groep**kunt u een bestaande resource groep in de vervolg keuzelijst kiezen of een nieuwe groep maken door **Nieuw maken**te selecteren. We maken een nieuwe resource groep voor dit voor beeld.
+    * De **naam** komt overeen met de naam van de resource en kan alles zijn wat u kiest.
+    * De **regio** wordt geselecteerd als u een bestaande resource groep hebt gekozen. Als u ervoor hebt gekozen om een nieuwe resource groep te maken, moet u ook de Azure-regio kiezen waar u de resource wilt opslaan.
 
         > [!NOTE]
-        > Het gebied waar een resourcegroep zich bevindt, is onafhankelijk van de locatie waar u peering met Microsoft wilt maken. Maar het is een aanbevolen manier om uw peeringbronnen te organiseren binnen resourcegroepen die zich in de dichtstbijzijnde Azure-regio's bevinden. Voor peerings in Ashburn u bijvoorbeeld een resourcegroep maken in Oost-VS of Oost-US2.
+        > De regio waar een resource groep zich bevindt, is onafhankelijk van de locatie waar u peering met micro soft wilt maken. Maar het is een best practice om uw peering resources te organiseren in resource groepen die zich in de dichtstbijzijnde Azure-regio's bevinden. U kunt bijvoorbeeld voor peerings in Ashburn een resource groep maken in VS-Oost of Oost-VS2.
 
-    * Selecteer uw ASN in het vak **Peer ASN.**
+    * Selecteer uw ASN in het vak **peer ASN** .
 
         > [!IMPORTANT]
-        > * U alleen een ASN kiezen met Validatiestaat als goedgekeurd voordat u een peering-aanvraag indient. Als u zojuist uw PeerAsn-aanvraag hebt ingediend, wacht u 12 uur of zo tot de ASSOCIATIE ASN is goedgekeurd. Als de ASN die u selecteert, nog in behandeling is, ziet u een foutbericht. 
-        > * Als u de ASN die u moet kiezen niet ziet, controleert u of u het juiste abonnement hebt geselecteerd. Controleer in dat verband of u PeerAsn al hebt gemaakt met behulp van [Associate Peer ASN voor Azure-abonnement.](../howto-subscription-association-portal.md)
+        > * U kunt alleen een ASN met ValidationState als goedgekeurd kiezen voordat u een peering-aanvraag indient. Als u zojuist uw PeerAsn-aanvraag hebt verzonden, wacht u 12 uur of voor een ASN-koppeling die u wilt goed keuren. Als de ASN die u hebt geselecteerd, in afwachting is van validatie, wordt een fout bericht weer gegeven. 
+        > * Als u de ASN die u nodig hebt, niet ziet, controleert u of u het juiste abonnement hebt geselecteerd. Als dit het geval is, controleert u of u PeerAsn al hebt gemaakt met behulp van [peer ASN koppelen aan Azure-abonnement](../howto-subscription-association-portal.md).
 
         > [!div class="mx-imgBorder"]
-        > ![Peering Basics ingevuld](../media/setup-direct-basics-filled-tab.png)
+        > ![Basis beginselen van peering ingevuld](../media/setup-direct-basics-filled-tab.png)
 
-    * Selecteer **Volgende: Configuratie >** om door te gaan.
+    * Selecteer **volgende: configuratie >** om door te gaan.

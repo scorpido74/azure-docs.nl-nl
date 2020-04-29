@@ -9,23 +9,23 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: b2609a069872ec55ac9068fadcbb3f312d68a630
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680799"
 ---
-In deze sectie wordt beschreven hoe u de volgende wijzigingsbewerkingen voor Direct peering uitvoert:
+In deze sectie wordt beschreven hoe u de volgende wijzigings bewerkingen uitvoert voor directe peering:
 
-* Directe peeringverbindingen toevoegen.
-* Directe peeringverbindingen verwijderen.
-* Bandbreedte upgraden of downgraden op Actieve verbindingen.
-* IPv4- of IPv6-sessies toevoegen op Actieve verbindingen.
-* IPv4- of IPv6-sessies verwijderen op Actieve verbindingen.
+* Directe peering-verbindingen toevoegen.
+* Verwijder directe peering-verbindingen.
+* De band breedte van actieve verbindingen upgraden of verlagen.
+* IPv4-of IPv6-sessies toevoegen aan actieve verbindingen.
+* IPv4-of IPv6-sessies op actieve verbindingen verwijderen.
 
-### <a name="add-direct-peering-connections"></a>Directe peeringverbindingen toevoegen
+### <a name="add-direct-peering-connections"></a>Directe peering-verbindingen toevoegen
 
-In dit voorbeeld wordt beschreven hoe u verbindingen toevoegt aan bestaande direct peering.
+In dit voor beeld wordt beschreven hoe u verbindingen kunt toevoegen aan bestaande directe peering.
 
 ```powershell
 
@@ -44,9 +44,9 @@ $directPeering.Connections.Add($connection)
 $directPeering | Update-AzPeering
 ```
 
-### <a name="remove-direct-peering-connections"></a>Directe peeringverbindingen verwijderen
+### <a name="remove-direct-peering-connections"></a>Directe peering-verbindingen verwijderen
 
-Het verwijderen van een verbinding wordt momenteel niet ondersteund op PowerShell. Neem voor meer informatie contact op met [Microsoft peering](mailto:peeringexperience@microsoft.com).
+Het verwijderen van een verbinding wordt momenteel niet ondersteund in Power shell. Neem contact op met [micro soft-peering](mailto:peeringexperience@microsoft.com)voor meer informatie.
 
 <!--
 ```powershell
@@ -56,9 +56,9 @@ $directPeering | Update-AzPeering
 ```
 -->
 
-### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>Bandbreedte upgraden of downgraden op Actieve verbindingen
+### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>De band breedte van actieve verbindingen upgraden of verlagen
 
-In dit voorbeeld wordt beschreven hoe u 10 Gbps toevoegt aan een bestaande directe verbinding.
+In dit voor beeld wordt beschreven hoe u 10 Gbps kunt toevoegen aan een bestaande directe verbinding.
 
 ```powershell
 
@@ -68,9 +68,9 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="add-ipv4-or-ipv6-sessions-on-active-connections"></a>IPv4- of IPv6-sessies toevoegen aan Actieve verbindingen
+### <a name="add-ipv4-or-ipv6-sessions-on-active-connections"></a>IPv4-of IPv6-sessies toevoegen aan actieve verbindingen
 
-In dit voorbeeld wordt beschreven hoe u een IPv6-sessie toevoegt aan een bestaande directe verbinding met alleen een IPv4-sessie. 
+In dit voor beeld wordt beschreven hoe u een IPv6-sessie kunt toevoegen aan een bestaande directe verbinding met alleen een IPv4-sessie. 
 
 ```powershell
 
@@ -80,6 +80,6 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="remove-ipv4-or-ipv6-sessions-on-active-connections"></a>IPv4- of IPv6-sessies verwijderen op Actieve verbindingen
+### <a name="remove-ipv4-or-ipv6-sessions-on-active-connections"></a>IPv4-of IPv6-sessies voor actieve verbindingen verwijderen
 
-Het verwijderen van een IPv4- of IPv6-sessie van een bestaande verbinding wordt momenteel niet ondersteund op PowerShell. Neem voor meer informatie contact op met [Microsoft peering](mailto:peeringexperience@microsoft.com).
+Het verwijderen van een IPv4-of IPv6-sessie van een bestaande verbinding wordt momenteel niet ondersteund in Power shell. Neem contact op met [micro soft-peering](mailto:peeringexperience@microsoft.com)voor meer informatie.

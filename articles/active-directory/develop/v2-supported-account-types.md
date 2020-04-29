@@ -1,6 +1,6 @@
 ---
-title: Ondersteunde accountstypen - Microsoft-identiteitsplatform | Azure
-description: Conceptuele documentatie over doelgroepen en ondersteunde accounttypen in toepassingen
+title: Ondersteunde account typen-micro soft Identity platform | Azure
+description: Conceptuele documentatie over doel groepen en ondersteunde account typen in toepassingen
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,47 +13,47 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: b3b0114bb5d545755fe59c49605d6def341d2275
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535771"
 ---
 # <a name="supported-account-types"></a>Ondersteunde accounttypen
 
-In dit artikel wordt uitgelegd welke accountstypen (soms doelgroepen genoemd) worden ondersteund in toepassingen.
+In dit artikel wordt uitgelegd welke typen accounts (soms benoemde doel groepen) worden ondersteund in toepassingen.
 
 <!-- This section can be in an include for many of the scenarios (SPA, web app signing-in users, protecting a web API, Desktop (depending on the flows), Mobile -->
 
-## <a name="supported-accounts-types-in-microsoft-identity-platform-applications"></a>Ondersteunde accountstypen in Microsoft Identity-platformtoepassingen
+## <a name="supported-accounts-types-in-microsoft-identity-platform-applications"></a>Ondersteunde account typen in micro soft Identity platform-toepassingen
 
-In de openbare Microsoft Azure-cloud kunnen de meeste typen apps zich aanmelden bij gebruikers met elk publiek:
+In de Microsoft Azure open bare Cloud kunnen de meeste typen apps zich aanmelden met een wille keurige doel groep:
 
-- Als u een LOB-toepassing (Line of Business) schrijft, u zich aanmelden bij gebruikers in uw eigen organisatie. Een dergelijke toepassing wordt soms **één tenant**genoemd.
-- Als u een ISV bent, u een toepassing schrijven die gebruikers aanmeldt:
+- Als u een LOB-toepassing (line-of-Business) schrijft, kunt u zich aanmelden bij gebruikers in uw eigen organisatie. Een dergelijke toepassing heeft soms de naam **enkele Tenant**.
+- Als u een ISV bent, kunt u een toepassing schrijven die gebruikers aanmeldt:
 
-  - In elke organisatie. Een dergelijke toepassing wordt een **multi-tenant** webapplicatie genoemd. Soms lees je dat het gebruikers aanmeldt met hun werk- of schoolaccounts.
-  - Met hun werk of school of persoonlijk Microsoft-account.
-  - Met alleen een persoonlijk Microsoft-account.
+  - In elke organisatie. Een dergelijke toepassing heet een webtoepassing **met meerdere tenants** . Soms leest u dat de gebruiker zich aanmeldt met hun werk-of school account.
+  - Met hun werk-of school-of persoonlijke Microsoft-account.
+  - Met alleen persoonlijke Microsoft-account.
     > [!NOTE]
-    > Momenteel ondersteunt het Microsoft-identiteitsplatform persoonlijke Microsoft-accounts alleen door een app voor persoonlijke accounts voor **werk of school of Microsoft te**registreren en vervolgens `https://login.microsoftonline.com/consumers`het aanmelden in de code voor de toepassing te beperken door een Azure AD-autoriteit op te geven bij het bouwen van de toepassing, zoals .
+    > Momenteel ondersteunt het micro soft-identiteits platform persoonlijke micro soft-accounts alleen door een app te registreren voor **werk-of school-of micro soft-accounts**, en vervolgens het aanmelden in de code voor de toepassing te beperken door een Azure AD-instantie `https://login.microsoftonline.com/consumers`op te geven bij het bouwen van de toepassing, zoals.
 
-- Als u een toepassing voor een bedrijf schrijft aan consumenten, u zich ook aanmelden bij gebruikers met hun sociale identiteit met Azure AD B2C.
+- Als u een bedrijf naar consumenten schrijft, kunt u gebruikers ook aanmelden met hun sociale identiteit, met behulp van Azure AD B2C.
 
-## <a name="certain-authentication-flows-dont-support-all-the-account-types"></a>Bepaalde verificatiestromen ondersteunen niet alle accounttypen
+## <a name="certain-authentication-flows-dont-support-all-the-account-types"></a>Bepaalde verificatie stromen ondersteunen niet alle account typen
 
-Sommige accounttypen kunnen niet worden gebruikt met bepaalde verificatiestromen. Bijvoorbeeld in desktop-, UWP-toepassingen of daemon-toepassingen:
+Sommige account typen kunnen niet worden gebruikt met bepaalde verificatie stromen. Bijvoorbeeld in Desktop-, UWP-toepassingen of daemon-toepassingen:
 
-- Daemon-toepassingen kunnen alleen worden gebruikt met Azure Active Directory-organisaties. Het heeft geen zin om te proberen daemon-toepassingen te gebruiken om persoonlijke accounts van Microsoft te manipuleren (de toestemming van de beheerder wordt nooit verleend).
-- U de geïntegreerde Windows-verificatiestroom alleen gebruiken met werk- of schoolaccounts (in uw organisatie of een organisatie). Geïntegreerde Windows-verificatie werkt namelijk met domeinaccounts en vereist dat de machines worden samengevoegd of Azure AD is samengevoegd. Deze stroom heeft geen zin voor persoonlijke Microsoft-accounts.
-- De [Resource Owner Password Grant](./v2-oauth-ropc.md) (Gebruikersnaam/Wachtwoord) kan niet worden gebruikt met persoonlijke Microsoft-accounts. Persoonlijke Microsoft-accounts vereisen namelijk dat de gebruiker toestemming geeft voor toegang tot persoonlijke bronnen bij elke aanmeldingssessie. Daarom is dit gedrag niet compatibel met niet-interactieve stromen.
-- Apparaatcodestroom werkt nog niet met persoonlijke Microsoft-accounts.
+- Daemon-toepassingen kunnen alleen worden gebruikt met Azure Active Directory organisaties. Het is niet zinvol om daemon-toepassingen te gebruiken voor het bewerken van persoonlijke micro soft-accounts (de beheerders toestemming wordt nooit verleend).
+- U kunt de geïntegreerde Windows-verificatie stroom alleen gebruiken met werk-of school accounts (in uw organisatie of een organisatie). Geïntegreerde Windows-verificatie werkt inderdaad met domein accounts en vereist dat de computers lid zijn van een domein of lid zijn van Azure AD. Deze stroom is niet zinvol voor persoonlijke micro soft-accounts.
+- Het [wacht woord](./v2-oauth-ropc.md) voor de resource-eigenaar kan niet worden gebruikt met persoonlijke micro soft-accounts. Persoonlijke micro soft-accounts vereisen inderdaad dat de gebruiker toegang heeft tot persoonlijke bronnen bij elke aanmeldings sessie. Daarom is dit gedrag niet compatibel met niet-interactieve stromen.
+- De code stroom van het apparaat werkt nog niet met persoonlijke micro soft-accounts.
 
-## <a name="supported-account-types-in-national-clouds"></a>Ondersteunde accounttypen in nationale clouds
+## <a name="supported-account-types-in-national-clouds"></a>Ondersteunde account typen in nationale Clouds
 
- Apps kunnen zich ook aanmelden voor gebruikers in [nationale clouds.](authentication-national-cloud.md) Persoonlijke microsoft-accounts worden echter niet ondersteund in deze clouds (per definitie van deze clouds). Daarom worden de ondersteunde accounttypen voor deze clouds gereduceerd tot uw organisatie (single tenant) of organisaties (multi-tenant toepassingen).
+ Apps kunnen zich ook aanmelden bij gebruikers in [nationale Clouds](authentication-national-cloud.md). Persoonlijke micro soft-accounts worden echter niet ondersteund in deze Clouds (per definitie van deze Clouds). Daarom zijn de ondersteunde account typen voor deze Clouds, naar uw organisatie (één Tenant) of voor alle organisaties (toepassingen met meerdere tenants) gereduceerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Tenancy in Azure Active Directory](./single-and-multi-tenant-apps.md)
-- Meer informatie over [Nationale Clouds](./authentication-national-cloud.md)
+- Meer informatie over [pacht in azure Active Directory](./single-and-multi-tenant-apps.md)
+- Meer informatie over [nationale Clouds](./authentication-national-cloud.md)

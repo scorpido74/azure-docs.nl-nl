@@ -1,30 +1,30 @@
 ---
-title: 'Zelfstudie: e-mail verzenden met Logische Apps'
-description: Meer informatie over het aanroepen van bedrijfsprocessen vanuit uw App Service-app. Stuur e-mails, tweets en Facebook-berichten, voeg toe aan mailinglijsten en nog veel meer.
+title: 'Zelf studie: e-mail met Logic Apps verzenden'
+description: Meer informatie over het aanroepen van bedrijfs processen vanuit uw App Service-app. Verzend e-mail berichten, tweets en Facebook-berichten, voeg ze toe aan de verzend lijsten en nog veel meer.
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
 ms.openlocfilehash: 4073b49a134356943bd7da8d54bf574f2e0d5eea
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81604856"
 ---
-# <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Zelfstudie: E-mail verzenden en andere bedrijfsprocessen van App Service aanroepen
+# <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Zelf studie: e-mail verzenden en andere bedrijfs processen aanroepen via App Service
 
-In deze zelfstudie leert u hoe u uw App Service-app integreren met uw bedrijfsprocessen. Dit is gebruikelijk bij web-app-scenario's, zoals:
+In deze zelf studie leert u hoe u uw App Service-app integreert met uw bedrijfs processen. Dit is gebruikelijk voor web app-scenario's, zoals:
 
-- Bevestigingse-mail verzenden voor een transactie
+- Bevestigings-e-mail voor een trans actie verzenden
 - Gebruiker toevoegen aan Facebook-groep
-- Maak verbinding met systemen van derden zoals SAP, SalesForce, enz.
-- Exchange-standaard B2B-berichten
+- Maak verbinding met systemen van derden als SAP, Sales Force, enzovoort.
+- Uitwisseling van standaard B2B-berichten
 
-In deze zelfstudie verstuurt u e-mails met Gmail vanuit uw App Service-app met [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Er zijn andere manieren om e-mails te verzenden vanuit een web-app, zoals SMTP-configuratie die wordt geleverd door uw taalframework. Logic Apps brengt echter veel meer kracht naar uw App Service-app zonder dat uw code wordt toegevoegd. Logic Apps biedt een eenvoudige configuratie-interface voor de meest populaire bedrijfsintegraties en uw app kan ze op elk gewenst moment bellen met een HTTP-verzoek.
+In deze zelf studie verzendt u e-mail berichten met Gmail vanuit uw App Service-app met behulp van [Azure Logic apps](../logic-apps/logic-apps-overview.md). Er zijn andere manieren om e-mail berichten te verzenden vanuit een web-app, zoals de SMTP-configuratie van uw taal raamwerk. Logic Apps biedt uw App Service-app echter veel meer kracht zonder complexiteit toe te voegen aan uw code. Logic Apps biedt een eenvoudige configuratie-interface voor de populairste bedrijfs integraties, en uw app kan ze op elk gewenst moment aanroepen met een HTTP-aanvraag.
 
 ## <a name="prerequisite"></a>Vereiste
 
-Implementeer een app met het taalkader van uw keuze naar App Service. Zie hieronder:
+Implementeer een app met het taal raamwerk van uw keuze om App Service. Zie hieronder om een zelf studie te volgen voor het implementeren van een voor beeld-app:
 
 # <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
@@ -32,19 +32,19 @@ Implementeer een app met het taalkader van uw keuze naar App Service. Zie hieron
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-[Zelfstudie: Een ASP.NET Core- en SQL Database-app maken in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)
+[Zelf studie: een ASP.NET Core-en SQL Database-app bouwen in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)
 
 # <a name="nodejs"></a>[Node.js](#tab/node)
 
-[Zelfstudie: Een Node.js- en MongoDB-app bouwen in Azure](app-service-web-tutorial-nodejs-mongodb-app.md)
+[Zelf studie: een node. js-en MongoDB-app bouwen in azure](app-service-web-tutorial-nodejs-mongodb-app.md)
 
 # <a name="php"></a>[PHP](#tab/php)
 
-[Zelfstudie: Een PHP- en MySQL-app bouwen in Azure](app-service-web-tutorial-php-mysql.md)
+[Zelf studie: een PHP-en MySQL-app bouwen in azure](app-service-web-tutorial-php-mysql.md)
 
 # <a name="python"></a>[Python](#tab/python)
 
-[Zelfstudie: Een Python-webapp (Django) uitvoeren met PostgreSQL in Azure App Service](containers/tutorial-python-postgresql-app.md)
+[Zelf studie: een Python-web-app (Django) uitvoeren met PostgreSQL in Azure App Service](containers/tutorial-python-postgresql-app.md)
 
 # <a name="ruby"></a>[Ruby](#tab/ruby)
 
@@ -54,15 +54,15 @@ Implementeer een app met het taalkader van uw keuze naar App Service. Zie hieron
 
 ## <a name="create-the-logic-app"></a>De logische app maken
 
-1. Maak in de [Azure-portal](https://portal.azure.com)een lege logische app door de instructies in [Uw logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)te volgen. Wanneer u de **Logic Apps Designer**ziet, keert u terug naar deze zelfstudie.
-1. Selecteer op de welkomstpagina voor Logic Apps Designer de optie **Wanneer een HTTP-aanvraag wordt ontvangen** onder Start met een algemene **trigger**.
+1. Maak in de [Azure Portal](https://portal.azure.com)een lege logische app door de instructies in [uw logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)te volgen. Wanneer u de **Logic apps Designer**ziet, keert u terug naar deze zelf studie.
+1. Selecteer op de welkomst pagina voor Logic Apps Designer **Wanneer een HTTP-aanvraag wordt ontvangen** onder **beginnen met een gemeen schappelijke trigger**.
 
     ![](./media/tutorial-send-email/receive-http-request.png)
-1. Selecteer in het dialoogvenster voor **Wanneer een HTTP-aanvraag wordt ontvangen,** de optie **Voorbeeldpayload gebruiken om schema te genereren**.
+1. In het dialoog venster voor **Wanneer een HTTP-aanvraag wordt ontvangen**, selecteert u voor **beeld-Payload gebruiken om een schema te genereren**.
 
     ![](./media/tutorial-send-email/generate-schema-with-payload.png)
 
-1. Kopieer het volgende voorbeeld JSON naar het tekstvak en selecteer **Gereed**.
+1. Kopieer de volgende JSON van het voor beeld naar het tekstvak en selecteer **gereed**.
 
     ```json
     {
@@ -72,70 +72,70 @@ Implementeer een app met het taalkader van uw keuze naar App Service. Zie hieron
     }
     ```
 
-    Het schema wordt nu gegenereerd voor de gewenste aanvraaggegevens. In de praktijk u gewoon de werkelijke aanvraaggegevens vastleggen die uw toepassingscode genereert en Azure het JSON-schema voor u laten genereren. 
-1. Selecteer Boven aan de Logic Apps Designer de optie **Opslaan**. 
+    Het schema wordt nu gegenereerd voor de gewenste aanvraag gegevens. In de praktijk kunt u alleen de werkelijke aanvraag gegevens vastleggen die door de toepassings code worden gegenereerd en Azure het JSON-schema laten genereren. 
+1. Selecteer op de pagina Logic Apps Designer de optie **Opslaan**. 
 
-    U nu de URL van uw HTTP-aanvraagtrigger zien. Selecteer het kopieerpictogram om het te kopiëren voor later gebruik.
+    U kunt nu de URL van de HTTP-aanvraag trigger zien. Selecteer het Kopieer pictogram om het te kopiëren voor later gebruik.
 
     ![](./media/tutorial-send-email/http-request-url.png)
 
-    Deze HTTP-aanvraagdefinitie is een trigger voor alles wat u wilt doen in deze logische app, of het nu Gmail of iets anders is. Later zult u deze URL aanroepen in uw App Service-app. Zie de [http-aanvraag-/antwoordverwijzing](../connectors/connectors-native-reqres.md)voor meer informatie over de trigger van de aanvraag.
+    Deze definitie van de HTTP-aanvraag is een trigger naar alles wat u in deze logische app wilt doen. Dit is Gmail of iets anders. Later roept u deze URL op in uw App Service-app. Zie de [HTTP-aanvraag/antwoord-verwijzing](../connectors/connectors-native-reqres.md)voor meer informatie over de aanvraag trigger.
 
-1. Klik onder aan de ontwerper op **Nieuwe stap,** typ **Gmail** in het zoekvak acties en zoek en selecteer **E-mail verzenden (V2).**
+1. Klik onder aan de ontwerp functie op **nieuwe stap**, typ **Gmail** in het zoekvak acties en zoek en selecteer **e-mail verzenden (v2)**.
     
     > [!TIP]
-    > U zoeken naar andere soorten integraties, zoals SendGrid, MailChimp, Office 365 en SalesForce. Zie [Logic Apps-documentatie](https://docs.microsoft.com/azure/logic-apps/)voor meer informatie.
-1. Selecteer in het dialoogvenster **Gmail** de optie **Aanmelden** en aanmelden bij het Gmail-account waaruit u de e-mail wilt verzenden.
+    > U kunt zoeken naar andere typen integraties, zoals SendGrid, MailChimp, Office 365 en Sales Force. Zie [Logic apps-documentatie](https://docs.microsoft.com/azure/logic-apps/)voor meer informatie.
+1. In het dialoog venster **Gmail** selecteert u **Aanmelden** en meldt u zich aan bij het Gmail-account waaruit u het e-mail bericht wilt verzenden.
 
     ![](./media/tutorial-send-email/gmail-sign-in.png)
 
-1. Als u bent aangemeld, klikt u in het tekstvak **Aan** en wordt het dialoogvenster dynamische inhoud automatisch geopend.
+1. Wanneer u bent aangemeld, klikt u in het tekstvak **naar** en wordt automatisch het dialoog venster dynamische inhoud geopend.
 
-1. Selecteer **meer**zien naast de actie **Wanneer een HTTP-aanvraag is ontvangen** .
+1. Naast de actie **Wanneer een HTTP-aanvraag wordt ontvangen** , selecteert u **meer weer geven**.
 
     ![](./media/tutorial-send-email/expand-dynamic-content.png)
 
-    U ziet nu de drie eigenschappen van uw voorbeeld JSON-gegevens die u eerder hebt gebruikt. In deze stap gebruikt u deze eigenschappen uit de HTTP-aanvraag om een e-mail te maken.
-1. Aangezien u de waarde voor het veld **Aan** selecteert, kiest **u e-mail**. Schakel desgevraagd het dialoogvenster dynamische inhoud uit door op **Dynamische inhoud toevoegen**te klikken.
+    U ziet nu de drie eigenschappen van uw voor beeld-JSON-gegevens die u eerder hebt gebruikt. In deze stap gebruikt u deze eigenschappen van de HTTP-aanvraag om een e-mail bericht te maken.
+1. Omdat u de waarde voor het veld **aan** selecteert, kiest u **e-mail**. Als u wilt, schakelt u het dialoog venster dynamische inhoud uit door te klikken op **dynamische inhoud toevoegen**.
 
     ![](./media/tutorial-send-email/hide-dynamic-content.png)
 
-1. Selecteer **Onderwerp** en **hoofdtekst**in de vervolgkeuzelijst **Nieuwe parameter** toevoegen .
+1. Selecteer in de vervolg keuzelijst **nieuwe para meter toevoegen** het **onderwerp** en de **hoofd tekst**.
 
-1. Klik in het tekstvak **Onderwerp** en kies op dezelfde manier **taak**. Als de cursor zich nog steeds in het vak **Onderwerp** begeeft, *wordt het tekstvak gemaakt*. 
+1. Klik in het tekstvak **onderwerp** en kies op dezelfde manier **taak**. Terwijl de cursor zich nog in het vak **onderwerp** bevindt, typt u *gemaakt*. 
 
-1. Klik in het **lichaam,** en op dezelfde manier, kies **verschuldigd**. De cursor naar links van **due** verplaatsen en typ *Dit werkitem moet worden betaald op*.
+1. Klik in de **hoofd tekst**en kies op dezelfde manier de optie **verval datum**. Verplaats de cursor naar links van **eind datum** en typ *dit werk item moet worden voltooid*.
 
     > [!TIP]
-    > Als u HTML-inhoud rechtstreeks in de e-mailtekst wilt bewerken, selecteert u **Codeweergave** boven aan het venster Logic Apps Designer. Zorg ervoor dat u de dynamische inhoudscode bewaart `@{triggerBody()?['due']}`(bijvoorbeeld)
+    > Als u HTML-inhoud rechtstreeks in de hoofd tekst van de e-mail wilt bewerken, selecteert u de **code weergave** boven aan het venster Logic apps Designer. Zorg ervoor dat u de code van de dynamische inhoud behoudt (bijvoorbeeld `@{triggerBody()?['due']}`)
     >
     > ![](./media/tutorial-send-email/edit-rich-html-email.png) 
 
-1. Voeg vervolgens een asynchrone HTTP-reactie toe aan de HTTP-trigger. Klik tussen de HTTP-trigger en **+** de actie Gmail op het bord en selecteer **Een parallelle vertakking toevoegen**.
+1. Voeg vervolgens een asynchroon HTTP-antwoord toe aan de HTTP-trigger. Klik tussen de HTTP-trigger en de Gmail-actie **+** op het teken en selecteer **een parallelle vertakking toevoegen**.
 
     ![](./media/tutorial-send-email/add-http-response.png)
 
-1. Selecteer in het zoekvak **naar respons**en selecteer vervolgens de **actie Antwoord.**
+1. Zoek in het zoekvak naar **antwoord**en selecteer vervolgens de **reactie** actie.
 
     ![](./media/tutorial-send-email/choose-response-action.png)
 
-    Standaard stuurt de reactieactie een HTTP 200. Dat is goed genoeg voor deze tutorial. Zie de [http-aanvraag/-antwoordverwijzing](../connectors/connectors-native-reqres.md)voor meer informatie .
+    Standaard verzendt de reactie actie een HTTP-200. Dat is voldoende voor deze zelf studie. Zie de [HTTP-aanvraag/antwoord-verwijzing](../connectors/connectors-native-reqres.md)voor meer informatie.
 
-1. Selecteer opnieuw **opslaan** boven aan de Logic Apps Designer. 
+1. Selecteer aan de bovenkant van de Logic Apps Designer opnieuw **Opslaan** . 
 
-## <a name="add-http-request-code-to-app"></a>HTTP-aanvraagcode toevoegen aan app
+## <a name="add-http-request-code-to-app"></a>HTTP-aanvraag code toevoegen aan de app
 
-Zorg ervoor dat u de URL van de HTTP-aanvraagtrigger van eerder hebt gekopieerd. Omdat het gevoelige informatie bevat, is het best practice dat u deze niet rechtstreeks in de code plaatst. Met App Service u in plaats daarvan verwijzen naar een omgevingsvariabele, met behulp van app-instellingen. 
+Zorg ervoor dat u de URL van de HTTP-aanvraag trigger van eerder hebt gekopieerd. Omdat het gevoelige informatie bevat, is het best practice dat u deze niet rechtstreeks in de code plaatst. Met App Service kunt u in plaats daarvan naar een omgevings variabele verwijzen met behulp van app-instellingen. 
 
-Maak in de [Cloud Shell](https://shell.azure.com)de app-instelling met de volgende opdracht (vervang * \<de app-naam>, * * \<>van de resourcegroep *en * \<>van de logica-app-url): *
+Maak in de [Cloud shell](https://shell.azure.com)de app-instelling met de volgende opdracht (Vervang * \<app-name>*, * \<resource-group-name>* en * \<Logic-app-URL>*):
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings LOGIC_APP_URL="<your-logic-app-url>"
 ```
 
-Maak in uw code een standaard HTTP-bericht naar de URL met behulp van een HTTP-clienttaal die beschikbaar is voor uw taalkader, met de volgende configuratie:
+Maak in uw code een standaard HTTP post naar de URL met behulp van een HTTP-client taal die beschikbaar is voor uw taal raamwerk, met de volgende configuratie:
 
-- De aanvraaginstantie bevat dezelfde JSON-indeling die u aan uw logische app hebt geleverd:
+- De aanvraag tekst bevat dezelfde JSON-indeling die u hebt opgegeven voor uw logische app:
 
     ```json
     {
@@ -145,14 +145,14 @@ Maak in uw code een standaard HTTP-bericht naar de URL met behulp van een HTTP-c
     }
     ```
 
-- De aanvraag bevat `Content-Type: application/json`de kop . 
-- Om de prestaties te optimaliseren, stuurt u de aanvraag indien mogelijk asynchroon.
+- De aanvraag bevat de kop `Content-Type: application/json`. 
+- Als u de prestaties wilt optimaliseren, moet u de aanvraag asynchroon verzenden indien mogelijk.
 
-Klik op het tabblad voorkeurtaal/framework hieronder om een voorbeeld te zien.
+Klik op het tabblad Voorkeurs taal/Framework hieronder om een voor beeld te bekijken.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
-In ASP.NET u de HTTP-post verzenden met de klasse [System.Net.Http.HttpClient.](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) Bijvoorbeeld:
+In ASP.NET kunt u het HTTP-bericht verzenden met de klasse [System .net. http. httpclient maakt](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) . Bijvoorbeeld:
 
 ```csharp
 // requires using System.Net.Http;
@@ -173,11 +173,11 @@ HttpResponseMessage result = await client.PostAsync(
 var statusCode = result.StatusCode.ToString();
 ```
 
-Als u deze code test in de voorbeeld-app voor [zelfstudie: een ASP.NET-app bouwen in Azure met SQL Database,](app-service-web-tutorial-dotnet-sqldatabase.md)u deze gebruiken om een e-mailbevestiging te verzenden in de [actie Maken](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/blob/master/DotNetAppSqlDb/Controllers/TodosController.cs#L52-L63)nadat het `Todo` item is toegevoegd. Als u de bovenstaande asynchrone code wilt gebruiken, converteert u de actie Maken naar asynchroon.
+Als u deze code test op de voor beeld-app voor de [zelf studie: een ASP.net-app bouwen in azure met SQL database](app-service-web-tutorial-dotnet-sqldatabase.md), u kunt deze gebruiken om een e-mail bevestiging te verzenden `Todo` in de [actie maken](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/blob/master/DotNetAppSqlDb/Controllers/TodosController.cs#L52-L63)nadat het item is toegevoegd. Als u de asynchrone code hierboven wilt gebruiken, moet u de actie maken in asynchroon omzetten.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-In ASP.NET Core u de HTTP-post verzenden met de klasse [System.Net.Http.HttpClient.](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) Bijvoorbeeld:
+In ASP.NET Core kunt u het HTTP-bericht verzenden met de klasse [System .net. http. httpclient maakt](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) . Bijvoorbeeld:
 
 ```csharp
 // requires using System.Net.Http;
@@ -199,13 +199,13 @@ var statusCode = result.StatusCode.ToString();
 ```
 
 > [!NOTE]
-> Deze code is geschreven voor eenvoud van demonstratie. In de praktijk u een `HttpClient` object niet voor elke aanvraag instantiëren. Volg de richtlijnen bij [Gebruik IHttpClientFactory om veerkrachtige HTTP-aanvragen te implementeren.](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)
+> Deze code is geschreven voor het eenvoudig te demonstreren. In de praktijk moet u voor `HttpClient` elke aanvraag geen object instantiëren. Volg de richt lijnen in [use IHttpClientFactory om flexibele HTTP-aanvragen te implementeren](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests).
 
-Als u deze code test in de voorbeeld-app voor [zelfstudie: een ASP.NET Core- en SQL Database-app in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)maken, u deze gebruiken om een e-mailbevestiging te verzenden in de actie [Maken](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)nadat het `Todo` item is toegevoegd.
+Als u deze code op de voor beeld-app test [: een ASP.net core-en SQL database-app bouwen in azure app service](app-service-web-tutorial-dotnetcore-sqldb.md), kunt u deze gebruiken om een e-mail bevestiging te verzenden in de [actie maken](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)nadat het `Todo` item is toegevoegd.
 
 # <a name="nodejs"></a>[Node.js](#tab/node)
 
-In Node.js u de HTTP-post eenvoudig verzenden met een npm-pakket zoals [axios.](https://www.npmjs.com/package/axios) Bijvoorbeeld:
+In node. js kunt u het HTTP-bericht eenvoudig verzenden met een NPM-pakket, zoals [Axios](https://www.npmjs.com/package/axios). Bijvoorbeeld:
 
 ```javascript
 // Requires npm install --save axios
@@ -228,11 +228,11 @@ var jsonData = {
 
 ```
 
-Als u deze code test in de voorbeeld-app voor [zelfstudie: een Node.js- en MongoDB-app in Azure bouwen,](app-service-web-tutorial-nodejs-mongodb-app.md)u deze gebruiken om een e-mailbevestiging in de [functie maken](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)te verzenden, nadat [het artikel is opgeslagen.](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24)
+Als u deze code test op de voor beeld-app voor de [zelf studie: een node. js-en MongoDb-app bouwen in azure](app-service-web-tutorial-nodejs-mongodb-app.md), u kunt deze gebruiken om een e-mail bevestiging te verzenden in de [functie Create](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)nadat [het artikel is opgeslagen](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24).
 
 # <a name="php"></a>[PHP](#tab/php)
 
-In PHP, u de HTTP-post gemakkelijk met [Guzzle](http://docs.guzzlephp.org/en/stable/index.html). Bijvoorbeeld:
+In PHP kunt u het HTTP-bericht eenvoudig verzenden met [Guzzle](http://docs.guzzlephp.org/en/stable/index.html). Bijvoorbeeld:
 
 ```php
 // Requires composer require guzzlehttp/guzzle:~6.0
@@ -260,11 +260,11 @@ $response = $promise->wait();
 Log::info(print_r($response, TRUE));
 ```
 
-Als u deze code test in de voorbeeld-app voor [Zelfstudie: Een PHP- en MySQL-app bouwen in Azure,](app-service-web-tutorial-php-mysql.md)u deze gebruiken om een e-mailbevestiging te verzenden in de [functie Route::post,](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)vlak voor de retourinstructie.
+Als u deze code op de voor beeld-app test [: een PHP-en MySQL-app bouwen in azure](app-service-web-tutorial-php-mysql.md), kunt u deze gebruiken om een e-mail bevestiging te verzenden in de [functie route::p ost](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48), net vóór de instructie return.
 
 # <a name="python"></a>[Python](#tab/python)
 
-In Python u de HTTP-post eenvoudig verzenden met [aanvragen.](https://pypi.org/project/requests/) Bijvoorbeeld:
+In python kunt u het HTTP-bericht eenvoudig verzenden met [aanvragen](https://pypi.org/project/requests/). Bijvoorbeeld:
 
 ```python
 # Requires pip install requests && pip freeze > requirements.txt
@@ -291,11 +291,11 @@ async with aiohttp.post('http://httpbin.org/post', data=json.dump(payload)) as r
     print(await resp.status())
 ``` -->
 
-Als u deze code test in de voorbeeld-app voor [Zelfstudie: Voer een Python-web-app (Django) uit met PostgreSQL in Azure App Service,](containers/tutorial-python-postgresql-app.md)u deze gebruiken om een e-mailbevestiging te verzenden in de [functie Route::post,](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)vlak voor de retourinstructie.
+Als u deze code test op de voor beeld-app voor de [zelf studie: een Python-web-app (Django) uitvoeren met postgresql in azure app service](containers/tutorial-python-postgresql-app.md), kunt u deze gebruiken om een e-mail bevestiging te verzenden in de [ost-functie:p](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48), net vóór de instructie return.
 
 # <a name="ruby"></a>[Ruby](#tab/ruby)
 
-In Ruby u de HTTP-post eenvoudig verzenden met [JSONClient.](https://www.rubydoc.info/gems/httpclient/JSONClient) Bijvoorbeeld:
+In Ruby kunt u het HTTP-bericht eenvoudig verzenden met [JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient). Bijvoorbeeld:
 
 ```ruby
 clnt = JSONClient.new
@@ -308,12 +308,12 @@ body = {
 connection = clnt.post_async(ENV['LOGIC_APP_URL'], body)
 ```
 
-Als u deze code test in de voorbeeld-app voor [een Ruby- en Postgres-app bouwen in Azure App Service op Linux,](containers/tutorial-ruby-postgres-app.md)u deze gebruiken om een e-mailbevestiging te verzenden in de [actie maken,](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L26-L38) [wanneer @task.save dit slaagt.](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L30)
+Als u deze code test in de voor beeld-app voor het [bouwen van een Ruby-en post gres-app in azure app service op Linux](containers/tutorial-ruby-postgres-app.md), kunt u deze gebruiken om een e-mail bevestiging te verzenden in de actie [maken](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L26-L38) [Wanneer @task.save deze slaagt](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L30).
 
 ---
 
 # <a name="more-resources"></a>Meer bronnen
 
 [Zelfstudie: een RESTful API hosten met CORS in Azure App Service](app-service-web-tutorial-rest-api.md)  
-[HTTP-aanvraag-/antwoordverwijzing voor Logische apps](../connectors/connectors-native-reqres.md)  
-[Snelstart: uw eerste werkstroom maken met Azure Logic Apps - Azure-portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+[HTTP-aanvraag/antwoord referentie voor Logic Apps](../connectors/connectors-native-reqres.md)  
+[Snelstartgids: uw eerste werk stroom maken met behulp van Azure Logic Apps-Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)

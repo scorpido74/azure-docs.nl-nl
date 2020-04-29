@@ -1,16 +1,16 @@
 ---
 title: PowerShell-voorbeelden
-description: Zoek Azure PowerShell-voorbeelden voor enkele van de algemene App Service-scenario's. Meer informatie over het automatiseren van uw implementatie- of beheertaken van app-service.
+description: Zoek Azure PowerShell-voor beelden voor een aantal algemene App Service scenario's. Meer informatie over het automatiseren van uw App Service-implementatie-of beheer taken.
 tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
 ms.date: 03/08/2017
 ms.custom: mvc
 ms.openlocfilehash: f289bd453f2387282402394c807fe9700151f221
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81532422"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>PowerShell-voorbeelden voor Azure App Service
@@ -27,7 +27,7 @@ De volgende tabel bevat koppelingen naar PowerShell-scripts die zijn gemaakt met
 | [Een app maken en code implementeren in een faseringsomgeving](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Hiermee maakt u een App Service-app met een implementatiesite voor het faseren van codewijzigingen. |
 |**App configureren**||
 | [Een aangepast domein toewijzen aan een app](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hiermee maakt u een App Service-app en wijst u er een aangepaste domeinnaam aan toe. |
-| [Een aangepast TLS/SSL-certificaat aan een app binden](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hiermee maakt u een App Service-app en wordt het TLS/SSL-certificaat van een aangepaste domeinnaam eraan gekoppeld. |
+| [Een aangepast TLS/SSL-certificaat binden aan een app](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hiermee maakt u een App Service-app en verbindt u het TLS/SSL-certificaat van een aangepaste domein naam. |
 |**App schalen**||
 | [Een app handmatig schalen](./scripts/powershell-scale-manual.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Hiermee maakt u een App Service-app en schaalt u deze over twee exemplaren. |
 | [Een app wereldwijd schalen met een architectuur voor hoge beschikbaarheid](./scripts/powershell-scale-high-availability.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Hiermee maakt u twee App Service-apps in twee verschillende geografische regio's en maakt u deze met behulp van Azure Traffic Manager beschikbaar via één eindpunt. |

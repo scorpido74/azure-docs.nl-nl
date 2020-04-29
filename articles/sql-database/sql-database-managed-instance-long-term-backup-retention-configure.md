@@ -1,6 +1,6 @@
 ---
-title: 'Beheerde instantie: Back-upretentie op lange termijn (PowerShell)'
-description: Meer informatie over het opslaan en herstellen van geautomatiseerde back-ups op afzonderlijke Azure Blob-opslagcontainers voor een Azure SQL Database beheerd exemplaar met PowerShell.
+title: 'Beheerd exemplaar: retentie op lange termijn (Power shell)'
+description: Meer informatie over het opslaan en herstellen van automatische back-ups op afzonderlijke Azure Blob Storage-containers voor een Azure SQL Database beheerd exemplaar met behulp van Power shell.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -13,28 +13,28 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/19/2020
 ms.openlocfilehash: 24eacb555704593fe44bc2d949de44de163345bc
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81677103"
 ---
-# <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>Azure SQL Database beheerde instantie voor langdurige back-upretentie (PowerShell)
+# <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>De lange termijn retentie van Azure SQL Database Managed instance beheren (Power shell)
 
-In de instantie beheerd azure SQL Database u een LTR [(Long Term Backup Retention](sql-database-long-term-retention.md#managed-instance-support) Policy) configureren als een beperkte openbare preview-functie. Hiermee u databaseback-ups tot 10 jaar automatisch behouden in afzonderlijke Azure Blob-opslagcontainers. U vervolgens een database herstellen met behulp van deze back-ups met PowerShell.
+In Azure SQL Database beheerde instantie kunt u een langdurige Bewaar beleid (LTR) voor [back-ups voor de lange termijn](sql-database-long-term-retention.md#managed-instance-support) configureren als een beperkte open bare preview-functie. Zo kunt u automatisch back-ups van data bases in afzonderlijke Azure Blob-opslag containers bewaren gedurende Maxi maal tien jaar. U kunt vervolgens een Data Base met behulp van deze back-ups herstellen met Power shell.
 
    > [!IMPORTANT]
-   > LTR voor beheerde exemplaren is momenteel in beperkte preview en beschikbaar voor EA- en CSP-abonnementen per geval. Als u inschrijving wilt aanvragen, maakt u een [Azure-ondersteuningsticket](https://azure.microsoft.com/support/create-ticket/) onder het ondersteuningsonderwerp **Back-up, Herstel en Ondersteuning voor bedrijfscontinuïteit/langetermijnback-upbehouden.** 
+   > LTR voor beheerde instanties is momenteel een beperkte preview-versie en is per geval beschikbaar voor EA-en CSP-abonnementen. Als u de inschrijving wilt aanvragen, maakt u een [ondersteunings ticket voor Azure](https://azure.microsoft.com/support/create-ticket/) onder het ondersteunings onderwerp **back-ups maken, herstellen en bedrijfs continuïteit/lange termijn back-ups bewaren**. 
 
 
-In de volgende secties ziet u hoe u PowerShell gebruiken om de langetermijnback-upretentie te configureren, back-ups in Azure SQL-opslag weer te geven en te herstellen vanuit een back-up in Azure SQL-opslag.
+In de volgende secties ziet u hoe u Power shell kunt gebruiken voor het configureren van de lange termijn retentie van back-ups, het weer geven van back-ups in Azure SQL Storage en het herstellen van een back-up in Azure SQL Storage.
 
-## <a name="rbac-roles-to-manage-long-term-retention"></a>RBAC-rollen voor het beheren van langetermijnretentie
+## <a name="rbac-roles-to-manage-long-term-retention"></a>RBAC-rollen voor het beheren van lange termijn retentie
 
 Voor **Get-AzSqlInstanceDatabaseLongTermRetentionBackup** en **Restore-AzSqlInstanceDatabase**moet u een van de volgende rollen hebben:
 
-- Rol van abonnement-eigenaar of
-- Rol van beheerde instantieinzender of
+- Rol van abonnements eigenaar of
+- Rol Inzender voor beheerde instanties of
 - Aangepaste rol met de volgende machtigingen:
   - `Microsoft.Sql/locations/longTermRetentionManagedInstanceBackups/read`
   - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionManagedInstanceBackups/read`
@@ -42,14 +42,14 @@ Voor **Get-AzSqlInstanceDatabaseLongTermRetentionBackup** en **Restore-AzSqlInst
 
 Voor **Remove-AzSqlInstanceDatabaseLongTermRetentionBackup**moet u een van de volgende rollen hebben:
 
-- Rol van abonnement-eigenaar of
+- Rol van abonnements eigenaar of
 - Aangepaste rol met de volgende machtiging:
   - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 
 > [!NOTE]
-> De rol Inzender van beheerde instantie heeft geen toestemming om LTR-back-ups te verwijderen.
+> De rol Inzender voor beheerde instanties heeft geen machtiging voor het verwijderen van V.L.N.R.-back-ups.
 
-RBAC-machtigingen kunnen worden verleend in het bereik van *een abonnement* of *resourcegroep.* Om toegang te krijgen tot LTR-back-ups die behoren tot een gevallen exemplaar, moet de toestemming echter worden verleend in het *abonnementsbereik* van die instantie.
+RBAC-machtigingen kunnen worden verleend in *abonnementen* of in het bereik van de *resource groep* . Voor toegang tot LTR-back-ups die deel uitmaken van een verwijderde instantie, moet de machtiging echter worden verleend in het *abonnements* bereik van dat exemplaar.
 
 - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 
@@ -76,9 +76,9 @@ Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -InstanceName $instanceNa
     -DatabaseName $dbName -ResourceGroupName $resourceGroup -WeeklyRetention P12W -YearlyRetention P5Y -WeekOfYear 16
 ```
 
-## <a name="view-ltr-policies"></a>LTR-beleid bekijken
+## <a name="view-ltr-policies"></a>LTR-beleid weer geven
 
-In dit voorbeeld ziet u hoe u het LTR-beleid in een instantie weergeven
+Dit voor beeld laat zien hoe u het LTR-beleid in een exemplaar kunt weer geven
 
 ```powershell
 # gets the current version of LTR policy for the database
@@ -88,16 +88,16 @@ $ltrPolicies = Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -InstanceN
 
 ## <a name="clear-an-ltr-policy"></a>Een LTR-beleid wissen
 
-In dit voorbeeld ziet u hoe u een LTR-beleid uit een database wissen
+Dit voor beeld laat zien hoe u een LTR-beleid uit een Data Base wist
 
 ```powershell
 Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -InstanceName $instanceName `
    -DatabaseName $dbName -ResourceGroupName $resourceGroup -RemovePolicy
 ```
 
-## <a name="view-ltr-backups"></a>LTR-back-ups weergeven
+## <a name="view-ltr-backups"></a>LTR-back-ups weer geven
 
-In dit voorbeeld ziet u hoe u de LTR-back-ups in een instantie weergeven.
+Dit voor beeld laat zien hoe u de LTR-back-ups binnen een exemplaar kunt weer geven.
 
 ```powershell
 # get the list of all LTR backups in a specific Azure region
@@ -119,7 +119,7 @@ $ltrBackups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $instan
 
 ## <a name="delete-ltr-backups"></a>LTR-back-ups verwijderen
 
-In dit voorbeeld ziet u hoe u een LTR-back-up verwijdert uit de lijst met back-ups.
+In dit voor beeld ziet u hoe u een LTR-back-up verwijdert uit de lijst met back-ups.
 
 ```powershell
 # remove the earliest backup
@@ -128,11 +128,11 @@ Remove-AzSqlInstanceDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.Resou
 ```
 
 > [!IMPORTANT]
-> Het verwijderen van LTR-back-up is niet omkeerbaar. Als u een LTR-back-up wilt verwijderen nadat de instantie is verwijderd, moet u toestemming voor het bereik van abonnement hebben. U meldingen over elke verwijdering instellen in Azure Monitor door te filteren op bewerking 'Verwijdert een back-up voor retentie op lange termijn'. Het activiteitenlogboek bevat informatie over wie en wanneer het verzoek is ingediend. Zie [Waarschuwingen voor activiteitenlogboeken maken](../azure-monitor/platform/alerts-activity-log.md) voor gedetailleerde instructies.
+> LTR-back-up verwijderen is niet-omkeerbaar. Als u een LTR-back-up wilt verwijderen nadat het exemplaar is verwijderd, moet u een machtiging voor het abonnements bereik hebben. U kunt meldingen over elke verwijderings bewerking instellen in Azure Monitor door te filteren op een back-up van een lange termijn retentie verwijderen. Het activiteiten logboek bevat informatie over wie en wanneer de aanvraag is ingediend. Zie [waarschuwingen voor activiteiten logboeken maken](../azure-monitor/platform/alerts-activity-log.md) voor gedetailleerde instructies.
 
-## <a name="restore-from-ltr-backups"></a>Herstellen van LTR-back-ups
+## <a name="restore-from-ltr-backups"></a>Herstellen vanuit LTR-back-ups
 
-In dit voorbeeld ziet u hoe u herstelt vanuit een LTR-back-up. Let op, deze interface is niet gewijzigd, maar de parameter resource id vereist nu de LTR back-up resource id.
+In dit voor beeld ziet u hoe u een LTR-back-up herstelt. Opmerking: deze interface is niet gewijzigd, maar voor de resource-id-para meter is nu de bron-id LTR backup vereist.
 
 ```powershell
 # restore a specific LTR backup as an P1 database on the instance $instanceName of the resource group $resourceGroup
@@ -141,10 +141,10 @@ Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId $ltrBacku
 ```
 
 > [!IMPORTANT]
-> Als u wilt herstellen van een LTR-back-up nadat de instantie is verwijderd, moet u machtigingen hebben voor het abonnement van de instantie en moet dat abonnement actief zijn. U moet ook de optionele parameter ResourceGroupName weglaten.
+> Als u een LTR-back-up wilt herstellen nadat het exemplaar is verwijderd, moet u machtigingen hebben die zijn afgestemd op het abonnement van het exemplaar en dat abonnement moet actief zijn. U moet ook de optionele para meter-ResourceGroupName weglaten.
 
 > [!NOTE]
-> Hier kunt u verbinding maken met de herstelde database met behulp van SQL Server Management Studio om noodzakelijke taken uit te voeren, zoals een deel van de gegevens uit de herstelde database extraheren om naar de bestaande database te kopiëren, of de bestaande database verwijderen en de naam van de herstelde database wijzigen in de naam van de bestaande database. Zie [punt in de tijd herstellen](sql-database-recovery-using-backups.md#point-in-time-restore).
+> Hier kunt u verbinding maken met de herstelde database met behulp van SQL Server Management Studio om noodzakelijke taken uit te voeren, zoals een deel van de gegevens uit de herstelde database extraheren om naar de bestaande database te kopiëren, of de bestaande database verwijderen en de naam van de herstelde database wijzigen in de naam van de bestaande database. Zie [herstel punt in tijd](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 ## <a name="next-steps"></a>Volgende stappen
 

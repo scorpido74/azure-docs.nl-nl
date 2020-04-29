@@ -1,6 +1,6 @@
 ---
-title: Log support ticket of open case voor Azure Data Box | Microsoft Documenten
-description: Meer informatie over het registreren van ondersteuningsaanvragen voor problemen met betrekking tot uw gegevensvak of gegevensboxschijforders.
+title: Ondersteunings ticket voor logboek registratie of open Case voor Azure Data Box | Microsoft Docs
+description: Meer informatie over het registreren van een ondersteunings aanvraag voor problemen met uw Data Box of Data Box Disk orders.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,79 +9,79 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: alkohli
 ms.openlocfilehash: a3d533080af373ca209a9b393d02d1606d7cb22d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461732"
 ---
-# <a name="open-a-support-ticket-for-azure-data-box"></a>Een ondersteuningsticket openen voor Azure Data Box
+# <a name="open-a-support-ticket-for-azure-data-box"></a>Open een ondersteunings ticket voor Azure Data Box
 
-Dit artikel is van toepassing op Azure Data Box, Azure Data Box Heavy en Azure Data Box Disk, die allemaal worden beheerd door de Azure Data Box-service. Als u problemen ondervindt met uw Azure Data Box-service, u een serviceaanvraag voor technische ondersteuning maken. Dit artikel leidt je door:
+Dit artikel is van toepassing op Azure Data Box, Azure Data Box Heavy en Azure Data Box Disk, die allemaal worden beheerd door de Azure Data Box-Service. Als u problemen ondervindt met uw Azure Data Box-Service, kunt u een service aanvraag voor technische ondersteuning maken. Dit artikel begeleidt u door:
 
-* Een ondersteuningsaanvraag maken.
-* Hoe u de levenscyclus van een ondersteuningsaanvraag vanuit de portal beheren.
+* Een ondersteunings aanvraag maken.
+* Een ondersteunings aanvraag levenscyclus beheren vanuit de portal.
 
 ## <a name="create-a-support-request"></a>Een ondersteuningsaanvraag maken
 
-Voer de volgende stappen uit om een ondersteuningsaanvraag te maken:
+Voer de volgende stappen uit om een ondersteunings aanvraag te maken:
 
-1. Ga naar uw gegevensvak of gegevensvakschijfvolgorde. Navigeer naar de sectie **ONDERSTEUNING + PROBLEEMOPLOSSING** en klik op **Nieuw ondersteuningsverzoek**.
+1. Ga naar uw Data Box of Data Box Disk bestelling. Navigeer naar ondersteuning en de sectie **probleem oplossing** en klik vervolgens op **nieuwe ondersteunings aanvraag**.
 
     ![Nieuw ondersteuningsverzoek](./media/data-box-disk-contact-microsoft-support/data-box-disk-support-request.png)
 
-2. Selecteer **basisbeginselen**in **Nieuw ondersteuningsverzoek**. Ga **in Basisbeginselen**de volgende stappen uit:
+2. In **nieuwe ondersteunings aanvraag**selecteert u **basis principes**. Voer de volgende stappen uit in de **basis beginselen**:
 
-    1. Selecteer **Technische**optie in de vervolgkeuzelijst **Probleemtype.**
+    1. Selecteer in de vervolg keuzelijst **probleem type** de optie **technisch**.
     2. Kies uw **abonnement**.
-    3. Controleer **onder Service**Alle **services**. Selecteer **gegevensvak**in de vervolgkeuzelijst . 
-    4. Geef uw **ondersteuningsplan op**.
+    3. Onder **service**, Controleer **alle services**. Selecteer **Data Box**in de vervolg keuzelijst. 
+    4. Geef uw **ondersteunings plan**op.
     5. Klik op **Volgende**.
 
         ![Basisbeginselen](./media/data-box-disk-contact-microsoft-support/data-box-disk-support1.png)
 
-3. Selecteer stap 2 **Probleem**in **Nieuw ondersteuningsverzoek**. Ga **in Probleem**de volgende stappen uit:
+3. Selecteer in **nieuwe ondersteunings aanvraag** **stap 2-probleem**. Voer de volgende stappen uit om het **probleem te verhelpen**:
 
-    1. Kies de **ernst** als **C - Minimale impact**. Ondersteuning zal het bijwerken indien nodig.
-    2. Selecteer het **type Probleem** in de vervolgkeuzelijst.
-    3. Kies een overeenkomstige **rubriek**op basis van het probleemtype dat u hebt geselecteerd.
-    4. Geef een **titel** op voor het probleem en meer **details**.
-    5. Geef de begindatum en tijd voor het probleem op.
-    6. Klik **in het uploaden van bestanden**op het mappictogram om door andere bestanden te bladeren die u wilt uploaden.
-    7. Controleer **diagnostische gegevens delen**.
+    1. Kies de **Ernst** als een **C-minimale impact**. Ondersteuning wordt indien nodig bijgewerkt.
+    2. Selecteer het **probleem type** in de vervolg keuzelijst.
+    3. Kies een overeenkomende **categorie**op basis van het probleem type dat u hebt geselecteerd.
+    4. Geef een **titel** op voor het probleem en meer **Details**.
+    5. Geef de begin datum en-tijd op voor het probleem.
+    6. Klik in het **bestand uploaden**op het mappictogram om te bladeren naar de andere bestanden die u wilt uploaden.
+    7. Controleer de **Diagnostische gegevens voor delen**.
     8. Klik op **Volgende**.
 
        ![Probleem](./media/data-box-disk-contact-microsoft-support/data-box-disk-support2.png)
 
-4. Klik in **Nieuw ondersteuningsverzoek**op **Contactgegevens van stap 3**. Ga **in Contactgegevens**de volgende stappen uit:
+4. Klik in **nieuwe ondersteunings aanvraag**op **stap 3 contact gegevens**. Voer bij **contact gegevens**de volgende stappen uit:
 
-   1. Geef in de **contactopties**de contactmethode (telefoon of e-mail) en de taal op. De reactietijd wordt automatisch geselecteerd op basis van uw abonnement.
-   2. Geef in de **contactgegevens**uw naam, e-mail, optionele contactpersoon, land/regio op. Selecteer **Wijzigingen in contactpersonen opslaan voor toekomstige ondersteuningsaanvragen**.
-   3. Klik **op Maken**.
+   1. Geef in de **contact opties**uw favoriete contact wijze op (telefoon of e-mail) en de taal. De reactie tijd wordt automatisch geselecteerd op basis van uw abonnement.
+   2. Geef in de **contact gegevens**uw naam, e-mail adres, optionele contact persoon, land/regio. Selecteer **wijzigingen in contact persoon opslaan voor toekomstige ondersteunings aanvragen**.
+   3. Klik op **maken**.
 
        ![Contactgegevens](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 
-      Microsoft Support gebruikt deze informatie om contact met u op te nemen voor meer informatie, diagnose en oplossing.
-      Nadat u uw aanvraag hebt ingediend, neemt een ondersteuningstechnicus zo snel mogelijk contact met u op om verder te gaan met uw verzoek.
+      Microsoft Ondersteuning gebruikt deze informatie om u te bereiken voor meer informatie, diagnose en oplossing.
+      Nadat u uw aanvraag hebt ingediend, neemt een ondersteunings technicus zo snel mogelijk contact met u op om te kunnen door gaan met uw aanvraag.
 
-## <a name="manage-a-support-request"></a>Een ondersteuningsverzoek beheren
+## <a name="manage-a-support-request"></a>Een ondersteunings aanvraag beheren
 
 Nadat u een ondersteuningsticket hebt gemaakt, kunt u de voortgang van het ticket vanuit de portal beheren.
 
-#### <a name="to-manage-your-support-requests"></a>Uw ondersteuningsverzoeken beheren
+#### <a name="to-manage-your-support-requests"></a>Uw ondersteunings aanvragen beheren
 
-1. Als u naar de help- en ondersteuningspagina wilt gaan, navigeert u **naar Bladeren > Help + ondersteuning.**
+1. Als u naar de pagina Help en ondersteuning wilt gaan, bladert u naar **> Help en ondersteuning**.
 
-    ![Ondersteuningsaanvragen beheren](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket1.png)
+    ![Ondersteunings aanvragen beheren](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket1.png)
 
-2. Een tabeltabellijst met **recente ondersteuningsaanvragen** wordt weergegeven in **Help + ondersteuning**.
+2. In **Help en ondersteuning**wordt een lijst in tabel vorm met **recente ondersteunings aanvragen** weer gegeven.
 
-    ![Ondersteuningsaanvragen beheren](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png)
+    ![Ondersteunings aanvragen beheren](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png)
 
-3. Selecteer en klik op een ondersteuningsverzoek. U de status en de details van dit verzoek bekijken. Klik **+ Nieuw bericht** als u dit verzoek wilt opvolgen.
+3. Selecteer en klik op een ondersteunings aanvraag. U kunt de status en de Details voor deze aanvraag bekijken. Klik op **+ Nieuw bericht** als u deze aanvraag wilt opvolgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [oplossen van problemen met betrekking tot gegevensboxschijf](data-box-disk-troubleshoot.md).
-Meer informatie over het [oplossen van problemen met betrekking tot gegevensvak](data-box-troubleshoot.md).
-Meer informatie over het [oplossen van problemen met betrekking tot De Blob-opslag voor gegevensboxen](data-box-troubleshoot-rest.md).
+Meer informatie over het [oplossen van problemen met data Box Disk](data-box-disk-troubleshoot.md).
+Meer informatie over het [oplossen van problemen met data Box](data-box-troubleshoot.md).
+Meer informatie over het [oplossen van problemen met data Box Blob-opslag](data-box-troubleshoot-rest.md).

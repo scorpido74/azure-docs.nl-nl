@@ -1,6 +1,6 @@
 ---
-title: Schemadrift in kaartgegevensstroom
-description: Veerkrachtige gegevensstromen bouwen in Azure Data Factory met Schema Drift
+title: Schema-drift in toewijzing van gegevens stroom
+description: Flexibele gegevens stromen bouwen in Azure Data Factory met schema-drift
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,71 +9,71 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
 ms.openlocfilehash: 6e361d23860ce8f40abba5c246242cf345bb974c
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606101"
 ---
-# <a name="schema-drift-in-mapping-data-flow"></a>Schemadrift in kaartgegevensstroom
+# <a name="schema-drift-in-mapping-data-flow"></a>Schema-drift in toewijzing van gegevens stroom
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Schemadrift is het geval wanneer uw bronnen vaak metagegevens wijzigen. Velden, kolommen en typen kunnen on the fly worden toegevoegd, verwijderd of gewijzigd. Zonder verwerking voor schemadrift wordt uw gegevensstroom kwetsbaar voor upstream gegevensbronwijzigingen. Typische ETL-patronen mislukken wanneer binnenkomende kolommen en velden veranderen omdat ze meestal zijn gekoppeld aan die bronnamen.
+Schema-drift is het geval waarin uw bronnen vaak meta gegevens wijzigen. Velden, kolommen en, typen kunnen worden toegevoegd, verwijderd of gewijzigd. Zonder de verwerking van schema drift wordt uw gegevens stroom kwetsbaar voor wijzigingen in de gegevens bron stroomopwaarts. Gebruikelijke ETL-patronen mislukken wanneer binnenkomende kolommen en velden worden gewijzigd omdat ze vaak aan deze bron namen worden gekoppeld.
 
-Om te beschermen tegen schemadrift, is het belangrijk om de faciliteiten in een dataflow-tool te hebben waarmee u als Data Engineer:
+Als u wilt beveiligen tegen schema drift, is het belang rijk dat u beschikt over de mogelijkheden van een hulp programma voor gegevens stromen zodat u, als een technicus, de volgende handelingen kunt uitvoeren:
 
-* Bronnen definiëren met veranderlijke veldnamen, gegevenstypen, waarden en groottes
-* Transformatieparameters definiëren die kunnen werken met gegevenspatronen in plaats van hardgecodeerde velden en waarden
-* Expressies definiëren die patronen begrijpen die overeenkomen met binnenkomende velden, in plaats van benoemde velden te gebruiken
+* Bronnen definiëren die zijn ververanderd veld namen, gegevens typen, waarden en grootten
+* Transformatie parameters definiëren die kunnen werken met gegevens patronen in plaats van in code vastgelegde velden en waarden
+* Expressies definiëren die inzicht krijgen in patronen die overeenkomen met binnenkomende velden, in plaats van met behulp van benoemde velden
 
-Azure Data Factory ondersteunt native flexibele schema's die van uitvoering naar uitvoering veranderen, zodat u algemene gegevenstransformatielogica bouwen zonder dat u uw gegevensstromen opnieuw hoeft te compileren.
+Azure Data Factory systeem eigen ondersteuning biedt voor flexibele schema's die van uitvoering naar uitvoering veranderen, zodat u een generieke gegevens transformatie logica kunt bouwen zonder dat u uw gegevens stromen opnieuw hoeft te compileren.
 
-U moet een architecturale beslissing nemen in uw gegevensstroom om schemadrift in uw stroom te accepteren. Wanneer u dit doet, u beschermen tegen schemawijzigingen van de bronnen. U verliest echter vroege binding van uw kolommen en typen in uw gegevensstroom. Azure Data Factory behandelt schemadriftstromen als laatbindende stromen, dus wanneer u uw transformaties bouwt, zijn de zwevende kolomnamen niet beschikbaar in de schemaweergaven gedurende de hele stroom.
+U moet in uw gegevens stroom een architectuur besluit nemen om schema drift in uw stroom te accepteren. Wanneer u dit doet, kunt u zich beschermen tegen schema wijzigingen van de bronnen. U verliest echter een vroege binding van uw kolommen en typen in uw gegevens stroom. Azure Data Factory behandel schema-drijf stromen als late binding stromen, dus wanneer u de trans formaties bouwt, zijn de geplaatste kolom namen niet voor u beschikbaar in de schema weergaven in de hele stroom.
 
-Deze video biedt een inleiding tot enkele van de complexe oplossingen die u eenvoudig bouwen in ADF met de schemadriftfunctie van de gegevensstroom. In dit voorbeeld bouwen we herbruikbare patronen op basis van flexibele databaseschema's:
+Deze video bevat een inleiding tot een aantal van de complexe oplossingen die u eenvoudig kunt bouwen in de ADF met de functie schema-drift van de gegevens stroom. In dit voor beeld maken we herbruikbare patronen op basis van flexibele database schema's:
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tyx7]
 
-## <a name="schema-drift-in-source"></a>Schemadrift in bron
+## <a name="schema-drift-in-source"></a>Schema-drift in bron
 
-Kolommen die in uw gegevensstroom van uw brondefinitie komen, worden gedefinieerd als 'zwevend' wanneer ze niet aanwezig zijn in uw bronprojectie. U de bronprojectie bekijken vanaf het projectietabblad in de brontransformatie. Wanneer u een gegevensset voor uw bron selecteert, neemt ADF automatisch het schema uit de gegevensset en maakt een project uit die schemadefinitie van gegevensset.
+Kolommen die worden opgenomen in uw gegevens stroom van uw bron definitie worden gedefinieerd als ' overgelopen ' wanneer ze niet aanwezig zijn in de bron projectie. U kunt de bron projectie bekijken op het tabblad projectie van de bron transformatie. Wanneer u een gegevensset voor uw bron selecteert, neemt ADF automatisch het schema uit de gegevensset en maakt een project van die schema definitie van de gegevensset.
 
-In een brontransformatie wordt schemadrift gedefinieerd als leeskolommen die niet zijn gedefinieerd in het gegevenssetschema. Als u schemadrift wilt inschakelen, schakelt u **Schemadrift** toestaan in uw brontransformatie in.
+In een bron transformatie wordt schema-drift gedefinieerd als het lezen van kolommen die uw gegevensset-schema niet definiëren. Als u schema-drift wilt inschakelen, schakelt u **schema-drift toestaan** in uw bron transformatie in.
 
-![Drijvende bron van schema](media/data-flow/schemadrift001.png "Drijvende bron van schema")
+![Bron van schema-drift](media/data-flow/schemadrift001.png "Bron van schema-drift")
 
-Wanneer schemadrift is ingeschakeld, worden alle binnenkomende velden tijdens de uitvoering uit uw bron gelezen en door de hele stroom naar de gootsteen doorgegeven. Standaard komen alle nieuw gedetecteerde kolommen, bekend als *zwevende kolommen,* als een tekenreeksgegevenstype. Als u wilt dat uw gegevensstroom automatisch gegevenstypen van zwevende kolommen afstelt, schakelt u **Kolomtypen Infer** in uw broninstellingen in.
+Wanneer schema-drift is ingeschakeld, worden alle binnenkomende velden tijdens de uitvoering van de bron gelezen en door de hele stroom aan de Sink door gegeven. Standaard worden alle nieuw gedetecteerde kolommen, ook wel *gedrijfte kolommen*, binnenkomen als teken reeks gegevens type. Als u wilt dat uw gegevens stroom automatisch gegevens typen van geplaatste kolommen afleiden, controleert u overlopende **kolom typen** in de bron instellingen.
 
-## <a name="schema-drift-in-sink"></a>De afwijking van het schema in gootsteen
+## <a name="schema-drift-in-sink"></a>Schema-drift in Sink
 
-In een sinktransformatie is schemadrift wanneer u extra kolommen schrijft bovenop wat is gedefinieerd in het sinkgegevensschema. Als u schemadrift wilt inschakelen, schakelt u **Schemadrift** toestaan in uw gootsteentransformatie in.
+In een Sink-trans formatie is schema drift wanneer u extra kolommen schrijft boven op wat is gedefinieerd in het sink-gegevens schema. Als u schema-drift wilt inschakelen, controleert u **schema-drift toestaan** in uw Sink-trans formatie.
 
-![De afwijkingsgootsteen van het schema](media/data-flow/schemadrift002.png "De afwijkingsgootsteen van het schema")
+![Sink voor schema-drift](media/data-flow/schemadrift002.png "Sink voor schema-drift")
 
-Als schemadrift is ingeschakeld, controleert u of de schuifregelaar **Automatisch toewijzen** op het tabblad Toewijzing is ingeschakeld. Met deze schuifregelaar aan worden alle binnenkomende kolommen naar uw bestemming geschreven. Anders moet u op regels gebaseerde toewijzing gebruiken om zwevende kolommen te schrijven.
+Als schema-drift is ingeschakeld, zorgt u ervoor dat de schuif regelaar **automatische toewijzing** op het tabblad toewijzing is ingeschakeld. Met deze schuif regelaar aan worden alle binnenkomende kolommen naar uw bestemming geschreven. Anders moet u op regels gebaseerde toewijzing gebruiken om gedrijfde kolommen te schrijven.
 
-![Automatische toewijzing van sink](media/data-flow/automap.png "Automatische toewijzing van sink")
+![Automatische toewijzing van sinks](media/data-flow/automap.png "Automatische toewijzing van sinks")
 
-## <a name="transforming-drifted-columns"></a>Zwevende kolommen transformeren
+## <a name="transforming-drifted-columns"></a>Gedrijfte kolommen transformeren
 
-Wanneer uw gegevensstroom kolommen heeft afgedwaald, u deze openen in uw transformaties met de volgende methoden:
+Wanneer de gegevens stroom een geplaatste kolom heeft, kunt u deze in uw trans formaties gebruiken met de volgende methoden:
 
-* Gebruik `byPosition` de `byName` expressies en expressies om expliciet naar een kolom te verwijzen op naam of positienummer.
-* Een kolompatroon toevoegen in een afgeleide kolom of aggregaattransformatie die overeenkomt met een combinatie van naam, stroom, positie of type
-* Op regels gebaseerde toewijzing toevoegen aan een transformatie Selecteren of Gootsteen om zwevende kolommen via een patroon af te koppelen aan kolommen aliassen
+* Gebruik de `byPosition` and `byName` -expressies om expliciet te verwijzen naar een kolom met de naam of het positie nummer.
+* Een kolom patroon toevoegen aan een afgeleide kolom of aggregatie transformatie die overeenkomt met een combi natie van naam, stroom, positie of type
+* Op een regel gebaseerde toewijzing in een SELECT-of sink-trans formatie toevoegen om gedrijfte kolommen te vergelijken met kolommen aliassen via een patroon
 
-Zie [Kolompatronen in de toewijzingsgegevensstroom](concepts-data-flow-column-pattern.md)voor meer informatie over het implementeren van kolompatronen.
+Zie voor meer informatie over het implementeren van kolom patronen [kolom patronen in gegevens stroom toewijzen](concepts-data-flow-column-pattern.md).
 
-### <a name="map-drifted-columns-quick-action"></a>Snel actie van zwevende kolommen toewijzen
+### <a name="map-drifted-columns-quick-action"></a>Snelle actie voor het toewijzen van gedrijfte kolommen
 
-Als u expliciet wilt verwijzen naar zwevende kolommen, u snel toewijzingen voor deze kolommen genereren via een snelle actie voor gegevensvoorbeeld. Zodra [de foutopsporingsmodus](concepts-data-flow-debug-mode.md) is ingeschakeld, gaat u naar het tabblad Gegevensvoorbeeld en klikt u op **Vernieuwen** om een gegevensvoorbeeld op te halen. Als gegevensfabriek detecteert dat er zwevende kolommen bestaan, u op **Drifted** toewijzen klikken en een afgeleide kolom genereren waarmee u alle zwevende kolommen in schemaweergaven stroomafwaarts verwijzen.
+Als u expliciete verwijzingen naar gerefereerde kolommen wilt maken, kunt u snel toewijzingen voor deze kolommen genereren via een snelle actie voor het voor beeld van gegevens. Zodra de [foutopsporingsmodus](concepts-data-flow-debug-mode.md) is ingeschakeld, gaat u naar het tabblad voor beeld van gegevens en klikt u op **vernieuwen** om een voor beeld van de gegevens op te halen. Als data factory detecteert dat er geplaatste kolommen bestaan, kunt u op geplaatste **kaart** klikken en een afgeleide kolom genereren waarmee u kunt verwijzen naar alle geplaatste kolommen in schema weergaven downstream.
 
-![Kaart dreef](media/data-flow/mapdrifted1.png "Kaart dreef")
+![Toegewezen kaart](media/data-flow/mapdrifted1.png "Toegewezen kaart")
 
-In de gegenereerde afgeleide kolomtransformatie wordt elke zwevende kolom toegewezen aan de gedetecteerde naam en het gegevenstype. In het bovenstaande voorbeeld van gegevens wordt de kolom 'movieId' gedetecteerd als een geheel getal. Nadat **op Map Drifted** is geklikt, wordt movieId `toInteger(byName('movieId'))` gedefinieerd in de afgeleide kolom als en opgenomen in schemaweergaven in downstreamtransformaties.
+In de gegenereerde afgeleide kolom transformatie wordt elke geplaatste kolom toegewezen aan de gedetecteerde naam en het gegevens type. In het bovenstaande voor beeld van de gegevens wordt de kolom ' movieId ' gedetecteerd als een geheel getal. Nadat u hebt geklikt **, wordt movieId** gedefinieerd in de afgeleide `toInteger(byName('movieId'))` kolom als en opgenomen in schema weergaven in downstream-trans formaties.
 
-![Kaart dreef](media/data-flow/mapdrifted2.png "Kaart dreef")
+![Toegewezen kaart](media/data-flow/mapdrifted2.png "Toegewezen kaart")
 
 ## <a name="next-steps"></a>Volgende stappen
-In de [expressiontaal gegevensstroom](data-flow-expression-functions.md)vindt u extra faciliteiten voor kolompatronen en schemadrift, waaronder 'byName' en 'byPosition'.
+In de [taal van de data flow-expressie](data-flow-expression-functions.md)vindt u aanvullende voorzieningen voor kolom patronen en schema-drift, waaronder "byName" en "byPosition".

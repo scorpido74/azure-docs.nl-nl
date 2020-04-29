@@ -1,76 +1,76 @@
 ---
-title: Slimme detectie - foutafwijkingen in Application Insights | Microsoft Documenten
-description: Waarschuwt u voor ongebruikelijke wijzigingen in de snelheid van mislukte aanvragen voor uw web-app en biedt diagnostische analyse. Er is geen configuratie nodig.
+title: Slimme detectie-fout afwijkingen, in Application Insights | Microsoft Docs
+description: Hiermee wordt u gewaarschuwd voor ongebruikelijke wijzigingen in de frequentie van mislukte aanvragen voor uw web-app en diagnostische analyse. Er is geen configuratie nodig.
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
 ms.openlocfilehash: a1bce3ab86748d8247a72da3bd70e0f2e8155dbf
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536808"
 ---
-# <a name="smart-detection---failure-anomalies"></a>Slimme detectie - Afwijkingen van storingen
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) waarschuwt u automatisch in bijna realtime als uw web-app een abnormale stijging van het aantal mislukte aanvragen ervaart. Het detecteert een ongebruikelijke stijging van het aantal HTTP-aanvragen of afhankelijkheidsoproepen die worden gerapporteerd als mislukt. Voor aanvragen hebben mislukte aanvragen meestal antwoordcodes van 400 of hoger. Om u te helpen triage en diagnose van het probleem, een analyse van de kenmerken van de fouten en de bijbehorende toepassingsgegevens wordt verstrekt in de waarschuwingsgegevens. Er zijn ook links naar de Application Insights portal voor verdere diagnose. De functie heeft geen set-up of configuratie nodig, omdat het machine learning-algoritmen gebruikt om het normale uitvalpercentage te voorspellen.
+# <a name="smart-detection---failure-anomalies"></a>Slimme detectie-fout afwijkingen
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) waarschuwt u automatisch in bijna realtime als uw web-app een abnormale toename in de frequentie van mislukte aanvragen ondervindt. Er wordt een ongebruikelijke toename gedetecteerd met het aantal HTTP-aanvragen of afhankelijkheids aanroepen dat als mislukt wordt gerapporteerd. Voor aanvragen bevat mislukte aanvragen meestal antwoord codes van 400 of hoger. Om u te helpen het probleem te sorteren en te diagnosticeren, wordt een analyse van de kenmerken van de fouten en gerelateerde toepassings gegevens weer gegeven in de waarschuwings Details. Er zijn ook koppelingen naar de Application Insights portal voor verdere diagnose. De functie heeft geen instellingen of configuratie nodig, omdat deze machine learning algoritmen gebruikt om het normale fout aantal te voors pellen.
 
-Deze functie werkt voor elke web-app, gehost in de cloud of op uw eigen servers, die toepassingsaanvraag- of afhankelijkheidsgegevens genereren. Als u bijvoorbeeld een werkrol hebt die [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) of [TrackDependency() aanroept.](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
+Deze functie werkt voor elke web-app, die wordt gehost in de Cloud of op uw eigen servers, waarmee toepassings aanvragen of afhankelijkheids gegevens worden gegenereerd. Als u bijvoorbeeld een werknemersrol hebt die [TrackRequest ()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) of [TrackDependency ()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)aanroept.
 
-Na het instellen van [Application Insights voor uw project](../../azure-monitor/app/app-insights-overview.md)en als uw app een bepaalde minimale hoeveelheid gegevens genereert, duurt smart detection van foutafwijkingen 24 uur om het normale gedrag van uw app te leren, voordat deze is ingeschakeld en waarschuwingen kan verzenden.
+Na het instellen van [Application Insights voor uw project](../../azure-monitor/app/app-insights-overview.md), en als uw app een bepaalde minimale hoeveelheid gegevens genereert, neemt Slimme detectie van fout afwijkingen 24 uur in beslag om het normale gedrag van uw app te achterhalen, voordat deze wordt ingeschakeld en waarschuwingen kan verzenden.
 
-Hier is een voorbeeldwaarschuwing:
+Hier volgt een voor beeld van een waarschuwing:
 
 [![](./media/proactive-failure-diagnostics/013.png "Sample smart detection alert showing cluster analysis around failure")](./media/proactive-failure-diagnostics/013.png#lightbox)
 
-De waarschuwingsgegevens zullen u vertellen:
+In de details van de waarschuwing ziet u het volgende:
 
-* Het percentage fouten in vergelijking met normaal app-gedrag.
-* Hoeveel gebruikers worden beïnvloed - zodat u weet hoeveel u zich zorgen moet maken.
-* Een karakteristiek patroon in verband met de fouten. In dit voorbeeld is er een bepaalde antwoordcode, aanvraagnaam (bewerking) en toepassingsversie. Dat vertelt je meteen waar je moet beginnen met kijken in je code. Andere mogelijkheden kunnen een specifieke browser of client besturingssysteem.
-* De uitzondering, logboeksporen en afhankelijkheidsfouten (databases of andere externe componenten) die lijken te zijn gekoppeld aan de gekarakteriseerde fouten.
-* Links rechtstreeks naar relevante zoekopdrachten op de gegevens in Application Insights.
+* De fout frequentie vergeleken met het gedrag van de normale app.
+* Het aantal gebruikers waarop dit van toepassing is, zodat u weet hoeveel u zich kunt voordoen.
+* Een karakteristiek patroon dat is gekoppeld aan de fouten. In dit voor beeld is er een bepaalde antwoord code, aanvraag naam (Operation) en toepassings versie. Zo weet u meteen waar u moet beginnen met het zoeken naar uw code. Andere mogelijkheden zijn mogelijk een specifieke browser of client besturingssysteem.
+* De uitzonde ring, logboek traceringen en afhankelijkheids fout (data bases of andere externe onderdelen) die moeten worden gekoppeld aan de getekende fouten.
+* Hiermee worden rechtstreeks koppelingen naar relevante Zoek opdrachten op de gegevens in Application Insights.
 
-## <a name="benefits-of-smart-detection"></a>Voordelen van slimme detectie
-Gewone [metrische waarschuwingen](../../azure-monitor/app/alerts.md) vertellen u dat er mogelijk een probleem is. Maar Smart Detection begint het diagnostische werk voor u, het uitvoeren van veel van de analyse die u anders zou moeten doen. Je krijgt de resultaten netjes verpakt, zodat u snel naar de wortel van het probleem.
+## <a name="benefits-of-smart-detection"></a>Voor delen van Slimme detectie
+Normale [metrische waarschuwingen](../../azure-monitor/app/alerts.md) geven aan dat er mogelijk een probleem is. Met Slimme detectie wordt het diagnostische werk voor u gestart, waarbij veel van de analyse wordt uitgevoerd die u anders zou moeten uitvoeren. U krijgt de resultaten die u netjes kunt bundelen, zodat u snel aan de slag kunt met het probleem.
 
 ## <a name="how-it-works"></a>Hoe werkt het?
-Smart Detection controleert de gegevens die u van uw app ontvangt, en in het bijzonder de uitvalpercentages. Deze regel telt het aantal `Successful request` aanvragen waarvoor de eigenschap onjuist is en `Successful call` het aantal afhankelijkheidsoproepen waarvoor de eigenschap vals is. Voor aanvragen standaard `Successful request == (resultCode < 400)` (tenzij u aangepaste code hebt geschreven om uw eigen [TrackRequest-aanroepen](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) te [filteren](../../azure-monitor/app/api-filtering-sampling.md#filtering) of te genereren). 
+Slimme detectie bewaakt de gegevens die van uw app zijn ontvangen, met name de uitval snelheid. Deze regel telt het aantal aanvragen waarvoor de `Successful request` eigenschap False is en het aantal afhankelijkheids aanroepen waarvoor de `Successful call` eigenschap False is. Voor aanvragen standaard `Successful request == (resultCode < 400)` (tenzij u aangepaste code hebt geschreven om uw eigen [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) -aanroepen te [filteren](../../azure-monitor/app/api-filtering-sampling.md#filtering) of te genereren). 
 
-De prestaties van uw app hebben een typisch gedragspatroon. Sommige verzoeken of afhankelijkheidsoproepen zijn gevoeliger voor fouten dan andere; en het totale percentage mislukkingen kan omhoog gaan naarmate de belasting toeneemt. Smart Detection maakt gebruik van machine learning om deze afwijkingen te vinden.
+De prestaties van uw app hebben een typisch patroon van het gedrag. Sommige aanvragen of afhankelijkheids aanroepen zijn gevoelig voor fouten dan andere. en het totale aantal fouten kan optreden naarmate de belasting toeneemt. Slimme detectie maakt gebruik van machine learning om deze afwijkingen te vinden.
 
-Aangezien gegevens afkomstig zijn van Application Insights uit uw web-app, vergelijkt Smart Detection het huidige gedrag met de patronen van de afgelopen dagen. Als een abnormale stijging van het percentage mislukkingen wordt waargenomen in vergelijking met eerdere prestaties, wordt een analyse geactiveerd.
+Wanneer gegevens worden geleverd in Application Insights van uw web-app, vergelijkt Slimme detectie het huidige gedrag met de patronen die in de afgelopen paar dagen zijn waargenomen. Als een abnormale toename van het aantal fouten wordt waargenomen door vergelijking met de vorige prestaties, wordt een analyse geactiveerd.
 
-Wanneer een analyse wordt geactiveerd, voert de service een clusteranalyse uit op de mislukte aanvraag om te proberen een patroon van waarden te identificeren dat de fouten kenmerkt. 
+Wanneer een analyse wordt geactiveerd, voert de service een cluster analyse uit op de mislukte aanvraag, om te proberen een patroon van waarden te identificeren dat de fouten kenmerkt. 
 
-In het bovenstaande voorbeeld heeft de analyse ontdekt dat de meeste fouten gaan over een specifieke resultaatcode, aanvraagnaam, Server URL-host en rolinstantie. 
+In het bovenstaande voor beeld heeft de analyse ontdekt dat de meeste fouten betrekking hebben op een specifieke resultaat code, aanvraag naam, server-URL-host en rolinstantie. 
 
-Wanneer uw service met deze aanroepen wordt uitgevoerd, zoekt de analyzer naar een uitzondering en een afhankelijkheidsfout die zijn gekoppeld aan aanvragen in het cluster dat is geïdentificeerd, samen met een voorbeeld van eventuele traceringslogboeken die aan deze aanvragen zijn gekoppeld.
+Als uw service wordt gebruikt met deze aanroepen, zoekt de Analyzer naar een uitzonde ring en een afhankelijkheids fout die is gekoppeld aan aanvragen in het cluster dat is geïdentificeerd, samen met een voor beeld van traceer logboeken die zijn gekoppeld aan deze aanvragen.
 
-De resulterende analyse wordt als waarschuwing naar u verzonden, tenzij u deze niet hebt geconfigureerd.
+De resulterende analyse wordt naar u verzonden als waarschuwing, tenzij u deze hebt geconfigureerd.
 
-Net als de [waarschuwingen die u handmatig instelt,](../../azure-monitor/app/alerts.md)u de status van de geactiveerde waarschuwing inspecteren, die kan worden opgelost als het probleem is opgelost. Configureer de waarschuwingsregels op de pagina Waarschuwingen van uw bron Application Insights. Maar in tegenstelling tot andere waarschuwingen hoeft u slimme detectie niet in te stellen of te configureren. Als u wilt, u het uitschakelen of de beoogde e-mailadressen wijzigen.
+Net als de [waarschuwingen die u hand matig hebt ingesteld](../../azure-monitor/app/alerts.md), kunt u de status van de geactiveerde waarschuwing inspecteren, die kan worden opgelost als het probleem is opgelost. Configureer de waarschuwings regels op de pagina waarschuwingen van uw Application Insights-resource. Maar in tegens telling tot andere waarschuwingen hoeft u geen slimme detectie in te stellen of te configureren. Als u wilt, kunt u deze uitschakelen of de e-mail adressen van het doel wijzigen.
 
-### <a name="alert-logic-details"></a>Details van waarschuwingslogica
+### <a name="alert-logic-details"></a>Details van waarschuwings logica
 
-De waarschuwingen worden geactiveerd door ons eigen machine learning-algoritme, zodat we de exacte implementatiedetails niet kunnen delen. Met dat gezegd, begrijpen we dat je soms meer moet weten over hoe de onderliggende logica werkt. De primaire factoren die worden geëvalueerd om te bepalen of een waarschuwing moet worden geactiveerd, zijn: 
+De waarschuwingen worden geactiveerd door onze eigen machine learning-algoritme, zodat de details van de exacte implementatie niet kunnen worden gedeeld. We begrijpen dat u soms meer moet weten over de werking van de onderliggende logica. De primaire factoren die worden geëvalueerd om te bepalen of een waarschuwing moet worden geactiveerd zijn: 
 
-* Analyse van het percentage aanvragen/afhankelijkheden in een roltijdvenster van 20 minuten.
-* Een vergelijking van het faalpercentage van de laatste 20 minuten met de snelheid in de laatste 40 minuten en de afgelopen zeven dagen, en op zoek naar significante afwijkingen die x-keer die standaarddeviatie overschrijden.
-* Met behulp van een adaptieve limiet voor het minimale verzuimpercentage, dat varieert afhankelijk van het aantal aanvragen/afhankelijkheden van de app.
-* Er is logica die automatisch de toestand van de ontslagen waarschuwingsmonitor kan oplossen, als het probleem gedurende 8-24 uur niet meer wordt gedetecteerd.
+* Analyse van het percentage mislukte aanvragen/afhankelijkheden in een rollend venster van 20 minuten.
+* Een vergelijking van het uitval percentage van de laatste 20 minuten tot het percentage in de afgelopen 40 minuten en de afgelopen zeven dagen en op zoek naar aanzienlijke afwijkingen die de X-tijden van de standaard deviatie overschrijden.
+* Het gebruik van een adaptieve limiet voor het minimale uitval percentage, dat varieert op basis van het volume van de aanvragen/afhankelijkheden van de app.
+* Er is een logica waarmee de geactiveerde waarschuwing voor waarschuwings monitor automatisch kan worden opgelost als het probleem gedurende 8-24 uur niet meer wordt gedetecteerd.
 
 ## <a name="configure-alerts"></a>Waarschuwingen configureren
 
-U de waarschuwingsregel voor slimme detectie uitschakelen vanuit de portal of Azure Resource Manager gebruiken[(zie voorbeeld van sjabloon).](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)
+U kunt de waarschuwings regel voor slimme detectie uitschakelen vanuit de portal of met behulp van Azure Resource Manager ([Zie voor beeld van sjabloon](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)).
 
-Deze waarschuwingsregel wordt gemaakt met een bijbehorende [actiegroep](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) met de naam 'Application Insights Smart Detection' die e-mail- en webhook-acties bevat en kan worden uitgebreid om extra acties te activeren wanneer de waarschuwing wordt geactiveerd.
+Deze waarschuwings regel wordt gemaakt met een bijbehorende [actie groep](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) met de naam ' Application Insights Slimme detectie ' die e-mail en webhook-acties bevat, en kan worden uitgebreid om aanvullende acties te activeren wanneer de waarschuwing wordt geactiveerd.
 
 > [!NOTE]
-> E-mailmeldingen die vanuit deze waarschuwingsregel worden verzonden, worden nu standaard verzonden naar gebruikers die zijn gekoppeld aan de rollen Monitoring Reader en Monitoring Contributor van het abonnement. Meer informatie hierover vindt [u hier.](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification)
-> Meldingen die vanuit deze waarschuwingsregel worden verzonden, volgen het [algemene waarschuwingsschema](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema).
+> E-mail meldingen die vanuit deze waarschuwings regel worden verzonden, worden nu standaard verzonden naar gebruikers die zijn gekoppeld aan de bewakings-en bewakings functies van het abonnement. Hier vindt u meer informatie over dit [onderwerp](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification).
+> Meldingen die vanuit deze waarschuwings regel worden verzonden, volgen het [algemene waarschuwings schema](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema).
 >
 
-Open de pagina Waarschuwingen. Waarschuwingregels voor foutafwijkingen worden opgenomen, samen met eventuele waarschuwingen die u handmatig hebt ingesteld, en u zien of deze momenteel in de waarschuwingsstatus staat.
+Open de pagina waarschuwingen. Waarschuwings regels voor fout afwijkingen zijn opgenomen in alle waarschuwingen die u hand matig hebt ingesteld en u kunt zien of deze zich momenteel in de status van de waarschuwing bevindt.
 
 [![](./media/proactive-failure-diagnostics/021.png "On the Application Insights resource page, click 'Alerts' tile, then 'Manage alert rules'")](./media/proactive-failure-diagnostics/021.png#lightbox)
 
@@ -78,9 +78,9 @@ Klik op de waarschuwing om deze te configureren.
 
 [![](./media/proactive-failure-diagnostics/032.png "Rule configuration screen")](./media/proactive-failure-diagnostics/032.png#lightbox)
 
-U een waarschuwingsregel voor foutanomalieën uitschakelen of verwijderen, maar u geen andere regel maken op dezelfde Application Insights-bron.
+U kunt een waarschuwings regel voor fout afwijkingen uitschakelen of verwijderen, maar niet op dezelfde Application Insights resource maken.
 
-## <a name="example-of-failure-anomalies-alert-webhook-payload"></a>Voorbeeld van failure anomalieën alert webhook payload
+## <a name="example-of-failure-anomalies-alert-webhook-payload"></a>Voor beeld van fout afwijkingen waarschuwing webhook Payload
 
 ```json
 {
@@ -288,76 +288,76 @@ U een waarschuwingsregel voor foutanomalieën uitschakelen of verwijderen, maar 
 }
 ```
 
-## <a name="triage-and-diagnose-an-alert"></a>Triage en diagnose van een waarschuwing
+## <a name="triage-and-diagnose-an-alert"></a>Een waarschuwing sorteren en vaststellen
 
-Een waarschuwing geeft aan dat er een abnormale stijging van het mislukte verzoekpercentage is gedetecteerd. Het is waarschijnlijk dat er een probleem is met uw app of de omgeving.
+Een waarschuwing geeft aan dat een abnormale toename van het aantal mislukte aanvragen is gedetecteerd. Waarschijnlijk is er sprake van een probleem met uw app of van de omgeving.
 
-Om verder te onderzoeken, klik op 'Bekijk alle details in Application Insights' de links op deze pagina brengt u rechtstreeks naar een [zoekpagina](../../azure-monitor/app/diagnostic-search.md) gefilterd op de relevante verzoeken, uitzondering, afhankelijkheid, of sporen. 
+Als u verder wilt onderzoeken, klikt u op ' volledige details weer geven in Application Insights ' op de koppelingen op deze pagina gaat u rechtstreeks naar een [Zoek pagina](../../azure-monitor/app/diagnostic-search.md) die wordt gefilterd op de relevante aanvragen, uitzonde ringen, afhankelijkheid of traceringen. 
 
-U de [Azure-portal](https://portal.azure.com)ook openen, naar de toepassingsstatistiekenbron voor uw app navigeren en de pagina Fouten openen.
+U kunt ook de [Azure Portal](https://portal.azure.com)openen, naar de Application Insights resource voor uw app gaan en de pagina fouten openen.
 
-Als u op 'Fouten diagnosticeren' klikt, krijgt u meer details en u het probleem oplossen.
+Als u op fouten opsporen klikt, krijgt u meer informatie en kunt u het probleem oplossen.
 
 [![](./media/proactive-failure-diagnostics/051.png "Diagnostic search")](./media/proactive-failure-diagnostics/051.png#lightbox)
 
-Aan de andere kant van het aantal aanvragen en het aantal getroffen gebruikers u bepalen hoe urgent het probleem is. In het bovenstaande voorbeeld geeft het percentage mislukkingen van 78,5% aan dat er iets ergs aan de hand is. Aan de andere kant werden slechts 46 gebruikers getroffen. Als het uw app was, zou u kunnen beoordelen hoe ernstig dat is.
+Op basis van het percentage aanvragen en het aantal betrokken gebruikers kunt u bepalen hoe urgent het probleem is. In het bovenstaande voor beeld wordt het uitval percentage van 78,5% vergeleken met een normaal percentage van 2,2%, wat erop wijst dat er iets mis gaat. Aan de andere kant werden slechts 46 gebruikers beïnvloed. Als dit uw app is, kunt u beoordelen hoe ernstig het is.
 
-In veel gevallen u het probleem snel diagnosticeren op de opgegeven aanvraagnaam, uitzonderings-, afhankelijkheidsfout en traceringsgegevens.
+In veel gevallen kunt u het probleem snel vaststellen op basis van de gegevens van de aanvraag naam, uitzonde ring, fout bij het openen van een afhankelijkheid en traceer gegeven.
 
-In dit voorbeeld was er een uitzondering op sql-database als gevolg van aanvraaglimiet wordt bereikt.
+In dit voor beeld is er een uitzonde ring van SQL database omdat de aanvraag limiet is bereikt.
 
 [![](./media/proactive-failure-diagnostics/052.png "Failed request details")](./media/proactive-failure-diagnostics/052.png#lightbox)
 
-## <a name="review-recent-alerts"></a>Recente waarschuwingen bekijken
+## <a name="review-recent-alerts"></a>Recente waarschuwingen controleren
 
-Klik **op Waarschuwingen** op de resourcepagina Application Insights om bij de meest recente ontslagen waarschuwingen te komen:
+Klik op **waarschuwingen** op de pagina Application Insights resource om de meest recente geactiveerde waarschuwingen weer te geven:
 
 [![](./media/proactive-failure-diagnostics/070.png "Alerts summary")](./media/proactive-failure-diagnostics/070.png#lightbox)
 
-## <a name="whats-the-difference-"></a>Wat is het verschil ...
-Slimme detectie van foutafwijkingen vormt een aanvulling op andere vergelijkbare, maar onderscheidende functies van Application Insights.
+## <a name="whats-the-difference-"></a>Wat is het verschil...
+Slimme detectie van fout afwijkingen is een aanvulling op andere vergelijk bare functies van Application Insights.
 
-* [Metrische waarschuwingen](../../azure-monitor/app/alerts.md) worden door u ingesteld en kunnen een breed scala aan statistieken controleren, zoals cpu-bezetting, aanvraagpercentages, laadtijden van pagina's, enzovoort. U ze gebruiken om u te waarschuwen, bijvoorbeeld als u meer resources moet toevoegen. Slimme detectie van foutafwijkingen omvat daarentegen een klein aantal kritieke statistieken (momenteel alleen mislukte aanvraagsnelheid), die zijn ontworpen om u op de hoogte te stellen zodra de mislukte aanvraagsnelheid van uw web-app toeneemt in vergelijking met het normale gedrag van de web-app. In tegenstelling tot metrische waarschuwingen stelt Slimme detectie automatisch drempelwaarden in bij reactiewijzigingen in het gedrag. Smart Detection begint ook het diagnostisch werk voor u, waardoor u tijd bespaart bij het oplossen van problemen.
+* [Metrische waarschuwingen](../../azure-monitor/app/alerts.md) worden door u ingesteld en kunnen een breed scala aan metrische gegevens bewaken, zoals CPU-bezetting, aanvraag tarieven, pagina laad tijden, enzovoort. U kunt deze gebruiken om u te waarschuwen als u bijvoorbeeld meer resources wilt toevoegen. Slimme detectie van fout afwijkingen is daarentegen van toepassing op een klein aantal kritische metrische gegevens (momenteel alleen mislukte aanvragen), ontworpen om u vrijwel realtime te informeren wanneer de frequentie van de mislukte aanvragen van de web-app toeneemt in vergelijking met het normale gedrag van de web-app. In tegens telling tot metrische waarschuwingen worden door slimme detectie automatisch drempel waarden ingesteld en bijgewerkt als reactie wijzigingen in het gedrag optreden. Slimme detectie start ook het diagnostische werk voor u en bespaart u tijd bij het oplossen van problemen.
 
-* [Slimme detectie van prestatieafwijkingen](proactive-performance-diagnostics.md) maakt ook gebruik van machineintelligentie om ongebruikelijke patronen in uw statistieken te ontdekken en er is geen configuratie door u vereist. Maar in tegenstelling tot Smart Detection van foutafwijkingen, is het doel van Smart Detection of performance anomalieën het vinden van segmenten van uw gebruiksspruitstuk die slecht kunnen worden bediend - bijvoorbeeld door specifieke pagina's op een specifiek type browser. De analyse wordt dagelijks uitgevoerd, en als er een resultaat wordt gevonden, is het waarschijnlijk veel minder dringend dan een waarschuwing. De analyse voor foutafwijkingen wordt daarentegen continu uitgevoerd op binnenkomende toepassingsgegevens en u wordt binnen enkele minuten op de hoogte gesteld als de fouten van de server groter zijn dan verwacht.
+* [Slimme detectie van prestatie afwijkingen](proactive-performance-diagnostics.md) maakt ook gebruik van machine Intelligence om ongebruikelijke patronen in uw metrische gegevens te ontdekken. u hoeft hiervoor geen configuratie op te nemen. Maar in tegens telling tot Slimme detectie van fout afwijkingen, is het doel van de detectie van de prestatie afwijkingen te bepalen van de segmenten van uw gebruiks fragmenten die mogelijk niet goed worden aangeboden, bijvoorbeeld door specifieke pagina's van een specifiek type browser. De analyse wordt dagelijks uitgevoerd en als er een resultaat wordt gevonden, is het waarschijnlijk veel minder urgent dan een waarschuwing. Daarentegen wordt de analyse voor fout afwijkingen doorlopend uitgevoerd op binnenkomende toepassings gegevens en wordt u binnen enkele minuten gewaarschuwd als de snelheid van de server fouten groter is dan verwacht.
 
-## <a name="if-you-receive-a-smart-detection-alert"></a>Als u een waarschuwing voor slimme detectie ontvangt
+## <a name="if-you-receive-a-smart-detection-alert"></a>Als u een Smart detection-waarschuwing ontvangt
 *Waarom heb ik deze waarschuwing ontvangen?*
 
-* We ontdekten een abnormale stijging van het aantal mislukte aanvragen in vergelijking met de normale basislijn van de voorgaande periode. Na analyse van de fouten en bijbehorende toepassingsgegevens, denken we dat er een probleem is dat u moet onderzoeken.
+* Er is een abnormale toename in de frequentie van mislukte aanvragen gedetecteerd vergeleken met de normale basis lijn van de voor gaande periode. Na de analyse van de fouten en de bijbehorende toepassings gegevens, denken we dat er een probleem is waarin u moet letten.
 
-*Betekent de melding dat ik zeker een probleem heb?*
+*Is er een probleem met de melding?*
 
-* We proberen te waarschuwen voor verstoring of degradatie van apps, maar alleen u de semantiek en de impact op de app of gebruikers volledig begrijpen.
+* We proberen een waarschuwing te ontvangen over het onderbreken of degraderen van apps, maar alleen u kunt de semantiek en de impact van de app of gebruikers volledig begrijpen.
 
-*Dus, je kijkt naar mijn aanvraaggegevens?*
+*En nu gaat u naar mijn toepassings gegevens?*
 
-* Nee. De service is volledig automatisch. Alleen jij krijgt de meldingen. Uw gegevens zijn [privé.](../../azure-monitor/app/data-retention-privacy.md)
+* Nee. De service is volledig automatisch. Alleen de meldingen worden weer geven. Uw gegevens zijn [privé](../../azure-monitor/app/data-retention-privacy.md).
 
-*Moet ik me abonneren op deze waarschuwing?*
+*Moet ik zich abonneren op deze waarschuwing?*
 
-* Nee. Elke toepassing die aanvraaggegevens verzendt, heeft de waarschuwingsregel Slimme detectie.
+* Nee. Elke toepassing die aanvraag gegevens verzendt, heeft de regel waarschuwing voor slimme detectie.
 
-*Kan ik me afmelden of de meldingen naar mijn collega's sturen?*
+*Kan ik uw abonnement opzeggen of meldingen ontvangen die naar mijn collega's worden verzonden?*
 
-* Ja, Klik in waarschuwingsregels op de regel Slimme detectie om deze te configureren. U de waarschuwing uitschakelen of geadresseerden voor de waarschuwing wijzigen.
+* Ja, klik in waarschuwings regels op de regel voor slimme detectie om deze te configureren. U kunt de waarschuwing uitschakelen of ontvangers wijzigen voor de waarschuwing.
 
-*Ik ben de e-mail kwijt. Waar vind ik de meldingen in de portal?*
+*Ik ben de e-mail kwijt geraakt. Waar vind ik de meldingen in de portal?*
 
-* In de activiteitslogboeken. Open in Azure de bron Application Insights voor uw app en selecteer Activiteitslogboeken.
+* In de activiteiten Logboeken. Open in azure de Application Insights resource voor uw app en selecteer vervolgens activiteiten Logboeken.
 
-*Sommige van de waarschuwingen zijn over bekende problemen en ik wil ze niet ontvangen.*
+*Sommige waarschuwingen zijn te vinden op bekende problemen en ik wil ze niet ontvangen.*
 
-* U de functie voor het onderdrukken [van waarschuwingsregels](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules) gebruiken.
+* U kunt de functie voor het onderdrukken van [waarschuwings regels](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules) gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
-Met deze diagnostische hulpprogramma's u de gegevens uit uw app inspecteren:
+Deze diagnostische hulpprogram ma's helpen u bij het controleren van de gegevens in uw app:
 
-* [Metrische verkenner](../../azure-monitor/platform/metrics-charts.md)
-* [Zoekverkenner](../../azure-monitor/app/diagnostic-search.md)
-* [Analytics - krachtige querytaal](../../azure-monitor/log-query/get-started-portal.md)
+* [Metrische Explorer](../../azure-monitor/platform/metrics-charts.md)
+* [Zoek Verkenner](../../azure-monitor/app/diagnostic-search.md)
+* [Analyse-krachtige query taal](../../azure-monitor/log-query/get-started-portal.md)
 
 Slimme detecties zijn automatisch. Maar misschien wilt u nog meer waarschuwingen instellen?
 
-* [Handmatig geconfigureerde metrische waarschuwingen](../../azure-monitor/app/alerts.md)
+* [Hand matig geconfigureerde metrische waarschuwingen](../../azure-monitor/app/alerts.md)
 * [Webtests voor beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md)

@@ -9,29 +9,29 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: beffb2babefd86c2807e21e9337cba66f42fcfc2
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678506"
 ---
-Installeer en importeert voordat u met de configuratie begint, de vereiste modules. U hebt beheerdersrechten nodig om modules in PowerShell te installeren.
+Installeer en importeer de vereiste modules voordat u begint met de configuratie. U hebt Administrator-bevoegdheden nodig om modules in Power shell te installeren.
 
-1. Installeer en importeer de Az-module.
+1. Installeer en importeer de AZ-module.
     ```powershell
     Install-Module Az -AllowClobber
     Import-Module Az
     ```
-1. Installeer en importeer de Az.Peering module.
+1. Installeer en importeer de AZ. peering-module.
     ```powershell
     Install-Module -Name Az.Peering -AllowClobber
     Import-Module Az.Peering
     ```
-1. Controleer met deze opdracht of de modules correct zijn geïmporteerd:
+1. Controleer of de modules correct zijn geïmporteerd met behulp van deze opdracht:
     ```powershell
     Get-Module
     ```
-1. Meld u aan bij uw Azure-account met deze opdracht:
+1. Meld u aan bij uw Azure-account met behulp van deze opdracht:
     ```powershell
     Connect-AzAccount
     ```
@@ -40,14 +40,14 @@ Installeer en importeert voordat u met de configuratie begint, de vereiste modul
     Get-AzSubscription
     Select-AzSubscription -SubscriptionId "subscription-id"
     ```
-1. Als u nog geen resourcegroep hebt, moet u er een maken voordat u een peering maakt. U dit doen door de volgende opdracht uit te voeren:
+1. Als u nog geen resource groep hebt, moet u er een maken voordat u een peering maakt. U kunt dit doen door de volgende opdracht uit te voeren:
 
     ```powershell
     New-AzResourceGroup -Name "PeeringResourceGroup" -Location "Central US"
     ```
 > [!IMPORTANT]
-> Als u uw ASN en abonnement nog niet hebt gekoppeld, volgt u de stappen in [Associate Peer ASN](../howto-subscription-association-powershell.md). Deze actie is vereist om een peering aan te vragen.
+> Als u uw ASN en abonnement nog niet hebt gekoppeld, volgt u de stappen in [peer-ASN koppelen](../howto-subscription-association-powershell.md). Deze actie is vereist om een peering aan te vragen.
 
 > [!NOTE]
-> De locatie van een resourcegroep is onafhankelijk van de locatie waar u kiest voor het instellen van een peering.
+> De locatie van een resource groep is onafhankelijk van de locatie waar u voor het instellen van een peering kiest.
 &nbsp;

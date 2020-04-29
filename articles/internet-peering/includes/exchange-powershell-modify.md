@@ -9,22 +9,22 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 12d169697a35af446392843eb57e6ec3a5508e45
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678674"
 ---
-De volgende wijzigingsbewerkingen worden ondersteund voor Exchange-peering:
-* Exchange-peeringverbindingen toevoegen.
-* Exchange-peeringverbindingen verwijderen.
-* Voeg een IPv4- of IPv6-sessie toe op Actieve verbindingen.
-* Een IPv4- of IPv6-sessie verwijderen op Actieve verbindingen.
+De volgende wijzigings bewerkingen worden ondersteund voor Exchange-peering:
+* Exchange-peering-verbindingen toevoegen.
+* Verwijder Exchange peering-verbindingen.
+* Een IPv4-of IPv6-sessie toevoegen aan actieve verbindingen.
+* Een IPv4-of IPv6-sessie op actieve verbindingen verwijderen.
 
 
-### <a name="add-exchange-peering-connections"></a>Exchange-peeringverbindingen toevoegen
+### <a name="add-exchange-peering-connections"></a>Exchange-peering verbindingen toevoegen
 
-In dit voorbeeld wordt beschreven hoe u verbindingen toevoegt aan een bestaande Exchange-peering.
+In dit voor beeld wordt beschreven hoe u verbindingen kunt toevoegen aan een bestaande Exchange-peering.
 
 ```powershell
 
@@ -43,9 +43,9 @@ $exchangePeering | Update-AzPeering
 
 ```
 
-### <a name="remove-exchange-peering-connections"></a>Exchange-peeringverbindingen verwijderen
+### <a name="remove-exchange-peering-connections"></a>Exchange-peering verbindingen verwijderen
 
-In dit voorbeeld wordt beschreven hoe u verbindingen met een bestaande Exchange-peering verwijdert.
+In dit voor beeld wordt beschreven hoe u verbindingen met een bestaande Exchange-peering verwijdert.
 
 ```powershell
 
@@ -73,7 +73,7 @@ Tags              : {}
 
 ```
 
-Voer in de volgende opdracht in plaats van 0 het indexnummer in voor de verbinding die u wilt verwijderen.
+Voer in de volgende opdracht in plaats van 0 het index nummer in voor de verbinding die u wilt verwijderen.
 
 ```powershell
 
@@ -85,9 +85,9 @@ $exchangePeering | Update-AzPeering
 
 ```
 
-### <a name="add-an-ipv4-or-ipv6-session-on-active-connections"></a>Een IPv4- of IPv6-sessie toevoegen op Actieve verbindingen
+### <a name="add-an-ipv4-or-ipv6-session-on-active-connections"></a>Een IPv4-of IPv6-sessie toevoegen aan actieve verbindingen
 
-In dit voorbeeld wordt beschreven hoe u een IPv6-sessie toevoegt aan een bestaande Exchange-verbinding.
+In dit voor beeld wordt beschreven hoe u een IPv6-sessie toevoegt aan een bestaande Exchange-verbinding.
 
 ```powershell
 
@@ -99,6 +99,6 @@ $exchangePeering | Update-AzPeering
 
 ```
 
-### <a name="remove-an-ipv4-or-ipv6-session-on-active-connections"></a>Een IPv4- of IPv6-sessie verwijderen op Actieve verbindingen
+### <a name="remove-an-ipv4-or-ipv6-session-on-active-connections"></a>Een IPv4-of IPv6-sessie op actieve verbindingen verwijderen
 
-Het verwijderen van een IPv4- of IPv6-sessie van een bestaande verbinding wordt momenteel niet ondersteund op PowerShell. Neem voor meer informatie contact op met [Microsoft peering](mailto:peeringexperience@microsoft.com).
+Het verwijderen van een IPv4-of IPv6-sessie van een bestaande verbinding wordt momenteel niet ondersteund in Power shell. Neem contact op met [micro soft-peering](mailto:peeringexperience@microsoft.com)voor meer informatie.
