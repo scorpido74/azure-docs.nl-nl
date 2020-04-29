@@ -1,75 +1,75 @@
 ---
-title: Beperkingen voor duurzame orchestrator-code - Azure-functies
-description: Orchestration-functiereplay en codebeperkingen voor duurzame azure-functies.
+title: Duurzame Orchestrator-code beperkingen-Azure Functions
+description: De functie herhalingen en code beperkingen voor Azure Durable Functions.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4ed604302ca187ad4953e865d68dc73030a37c02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77562136"
 ---
-# <a name="orchestrator-function-code-constraints"></a>Beperkingen van orchestrator-functiecode
+# <a name="orchestrator-function-code-constraints"></a>Functie code beperkingen van Orchestrator
 
-Duurzame functies is een uitbreiding van [Azure-functies](../functions-overview.md) waarmee u stateful-apps bouwen. U een [orchestrator-functie](durable-functions-orchestrations.md) gebruiken om de uitvoering van andere duurzame functies binnen een functie-app te orkestreren. Orchestrator-functies zijn stateful, betrouwbaar en mogelijk langlopend.
+Durable Functions is een uitbrei ding van [Azure functions](../functions-overview.md) waarmee u stateful apps kunt bouwen. U kunt een [Orchestrator-functie](durable-functions-orchestrations.md) gebruiken om de uitvoering van andere duurzame functies in een functie-app te organiseren. Orchestrator-functies zijn stateful, betrouwbaar en mogelijk lang actief.
 
 ## <a name="orchestrator-code-constraints"></a>Codebeperkingen voor orchestrator
 
-Orchestrator-functies maken gebruik van [event sourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) om betrouwbare uitvoering te garanderen en de lokale variabele status te behouden. Het [replay-gedrag](durable-functions-orchestrations.md#reliability) van orchestrator-code creëert beperkingen op het type code dat u schrijven in een orchestrator-functie. Orkestorfuncties moeten bijvoorbeeld *deterministisch*zijn: een orchestratorfunctie wordt meerdere keren afgespeeld en moet telkens hetzelfde resultaat opleveren.
+Orchestrator-functies gebruiken [gebeurtenis bronnen](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) om betrouw bare uitvoering te garanderen en om de lokale status van de variabele te onderhouden. Het [gedrag](durable-functions-orchestrations.md#reliability) voor opnieuw afspelen van Orchestrator-code maakt beperkingen voor het type code dat u kunt schrijven in een Orchestrator-functie. Orchestrator-functies moeten bijvoorbeeld *deterministisch*zijn: een Orchestrator-functie wordt meerdere keren opnieuw afgespeeld en moet telkens hetzelfde resultaat opleveren.
 
-### <a name="using-deterministic-apis"></a>Deterministische API's gebruiken
+### <a name="using-deterministic-apis"></a>Deterministische Api's gebruiken
 
-Deze sectie bevat een aantal eenvoudige richtlijnen die ervoor zorgen dat uw code deterministisch is.
+In deze sectie vindt u enkele eenvoudige richt lijnen om ervoor te zorgen dat uw code deterministisch is.
 
-Orchestrator-functies kunnen elke API in hun doeltalen aanroepen. Het is echter belangrijk dat orchestrator-functies alleen deterministische API's noemen. Een *deterministische API* is een API die altijd dezelfde waarde retourneert gezien dezelfde invoer, ongeacht wanneer of hoe vaak deze wordt aangeroepen.
+Orchestrator-functies kunnen wille keurige API'S aanroepen in hun doel talen. Het is echter belang rijk dat Orchestrator-functies alleen deterministische Api's aanroepen. Een *deterministische API* is een API die altijd dezelfde waarde retourneert als dezelfde invoer, ongeacht wanneer of hoe vaak deze wordt aangeroepen.
 
-In de volgende tabel worden voorbeelden weergegeven van API's die u moet vermijden omdat ze *niet* deterministisch zijn. Deze beperkingen zijn alleen van toepassing op orchestrator-functies. Andere functietypen hebben dergelijke beperkingen niet.
+De volgende tabel bevat voor beelden van Api's die u moet vermijden omdat deze *niet* deterministisch zijn. Deze beperkingen gelden alleen voor Orchestrator-functies. Andere functie typen hebben deze beperkingen niet.
 
 | API-categorie | Reden | Tijdelijke oplossing |
 | ------------ | ------ | ---------- |
-| Datums en tijden  | API's die de huidige datum of tijd retourneren, zijn niet deterministisch omdat de geretourneerde waarde voor elke herhaling anders is. | Gebruik`CurrentUtcDateTime` de API in `currentUtcDateTime` .NET of de API in JavaScript, die veilig zijn voor opnieuw afspelen. |
-| GUIDs en UUIDs  | API's die een willekeurige GUID of UUID retourneren, zijn niet-deterministisch omdat de gegenereerde waarde voor elke herhaling anders is. | Gebruik `NewGuid` in .NET of `newGuid` in JavaScript om veilig willekeurige GUID's te genereren. |
-| Willekeurige getallen | API's die willekeurige getallen retourneren zijn niet deterministisch omdat de gegenereerde waarde voor elke herhaling verschilt. | Gebruik een activiteitsfunctie om willekeurige getallen terug te sturen naar een orkestratie. De retourwaarden van activiteitsfuncties zijn altijd veilig voor herhaling. |
-| Bindingen | Invoer- en uitvoerbindingen doen doorgaans I/O en zijn niet-deterministisch. Een orchestrator-functie mag zelfs de [orchestration client](durable-functions-bindings.md#orchestration-client) en [entiteitclientbindingen](durable-functions-bindings.md#entity-client) niet rechtstreeks gebruiken. | Gebruik invoer- en uitvoerbindingen in client- of activiteitsfuncties. |
-| Netwerk | Netwerkoproepen hebben betrekking op externe systemen en zijn niet-deterministisch. | Gebruik activiteitsfuncties om netwerkaante-oproepen uit te voeren. Als u een HTTP-gesprek wilt voeren vanuit uw orchestrator-functie, u ook de [duurzame HTTP-API's](durable-functions-http-features.md#consuming-http-apis)gebruiken. |
-| API's blokkeren | Het blokkeren `Thread.Sleep` van API's zoals in .NET en vergelijkbare API's kan prestatie- en schaalproblemen veroorzaken voor orchestrator-functies en moeten worden vermeden. In het Azure Functions-gebruiksplan kunnen ze zelfs leiden tot onnodige runtime-kosten. | Gebruik alternatieven voor het blokkeren van API's wanneer deze beschikbaar zijn. Gebruik bijvoorbeeld `CreateTimer` om vertragingen in de uitvoering van orkestratie in te voeren. [Duurzame timervertragingen](durable-functions-timers.md) tellen niet mee voor de uitvoeringstijd van een orchestrator-functie. |
-| Async API's | Orchestrator-code mag nooit een synchronisatiebewerking `IDurableOrchestrationContext` starten, `context.df` behalve met behulp van de API of de API van het object. U bijvoorbeeld geen `Task.Run`gebruik `Task.Delay`maken `HttpClient.SendAsync` van , `setTimeout` `setInterval` , en in .NET of en in JavaScript. In het Framework Voor duurzame taken wordt orchestrator-code op één thread uitgevoerd. Het kan niet communiceren met andere threads die kunnen worden aangeroepen door andere async API's. | Een orchestrator-functie moet alleen duurzame async-aanroepen. Activiteitsfuncties moeten elke andere async API-aanroepen uitvoeren. |
-| JavaScript-functies async | U JavaScript orchestrator-functies `async` niet declareren omdat de runtime node.js niet garandeert dat asynchrone functies deterministisch zijn. | JavaScript-orchestrator-functies declareren als synchrone generatorfuncties. |
-| Threading API's | In het Framework Voor duurzame taken wordt orchestrator-code uitgevoerd op één thread en kan het niet communiceren met andere threads. Het introduceren van nieuwe threads in de uitvoering van een orkestratie kan resulteren in niet-deterministische uitvoering of impasses. | Orchestrator-functies mogen bijna nooit threading API's gebruiken. Vermijd bijvoorbeeld in .NET `ConfigureAwait(continueOnCapturedContext: false)`het gebruik van ; dit zorgt ervoor dat taakvoortzettingen worden uitgevoerd `SynchronizationContext`op het origineel van de orchestrator-functie. Als dergelijke API's nodig zijn, beperk het gebruik ervan tot alleen activiteitsfuncties. |
-| Statische variabelen | Vermijd het gebruik van niet-constante statische variabelen in orchestrator-functies omdat hun waarden in de loop van de tijd kunnen veranderen, wat resulteert in niet-deterministisch runtime-gedrag. | Gebruik constanten of beperk het gebruik van statische variabelen tot activiteitsfuncties. |
-| Omgevingsvariabelen | Gebruik geen omgevingsvariabelen in orchestrator-functies. Hun waarden kunnen in de loop van de tijd veranderen, wat resulteert in niet-deterministisch runtime-gedrag. | Omgevingsvariabelen moeten alleen worden verwezen vanuit clientfuncties of activiteitsfuncties. |
-| Oneindige lussen | Vermijd oneindige lussen in orchestrator-functies. Omdat het framework voor duurzame taken de uitvoeringsgeschiedenis opslaat naarmate de orchestration-functie vordert, kan een oneindige lus ervoor zorgen dat een orchestrator-instantie zonder geheugen komt te zitten. | Gebruik API's zoals `ContinueAsNew` in .NET `continueAsNew` of JavaScript voor oneindige lusscenario's om de functie-uitvoering opnieuw te starten en eerdere uitvoeringsgeschiedenis te verwijderen. |
+| Datums en tijden  | Api's die de huidige datum of tijd retour neren, zijn niet-deterministisch, omdat de geretourneerde waarde voor elke herhaling afwijkt. | Gebruik de`CurrentUtcDateTime` API in .net of de `currentUtcDateTime` API in Java script, die veilig is voor opnieuw afspelen. |
+| GUID'S en UUID  | Api's die een wille keurige GUID of UUID retour neren, zijn niet-deterministisch, omdat de gegenereerde waarde voor elke herhaling verschillend is. | Gebruik `NewGuid` in .net of `newGuid` in Java script om wille keurige guid's veilig te genereren. |
+| Wille keurige getallen | Api's die wille keurige getallen retour neren, zijn niet-deterministisch omdat de gegenereerde waarde voor elke herhaling verschillend is. | Gebruik een functie activiteit om wille keurige getallen te retour neren naar een indeling. De retour waarden van de activiteit functies zijn altijd veilig voor opnieuw afspelen. |
+| Bindingen | Invoer-en uitvoer bindingen worden normaal gesp roken I/O en niet-deterministisch. Een Orchestrator-functie mag niet rechtstreeks gebruikmaken van de client bindingen van de [Orchestration-client](durable-functions-bindings.md#orchestration-client) en- [entiteit](durable-functions-bindings.md#entity-client) . | Gebruik invoer-en uitvoer bindingen binnen client-of activiteit functies. |
+| Netwerk | Netwerk aanroepen zijn vereist voor externe systemen en zijn niet-deterministisch. | Gebruik activiteit functies om netwerk aanroepen te maken. Als u een HTTP-aanroep van uw Orchestrator-functie wilt maken, kunt u ook de [duurzame HTTP-api's](durable-functions-http-features.md#consuming-http-apis)gebruiken. |
+| Api's blok keren | Het blok keren `Thread.Sleep` van api's zoals in .net en soort gelijke api's kan leiden tot prestatie-en schaal problemen voor Orchestrator-functies en moet worden vermeden. In het Azure Functions verbruiks abonnement kunnen ze zelfs leiden tot onnodige runtime kosten. | Gebruik alternatieven om Api's te blok keren wanneer deze beschikbaar zijn. U kunt bijvoorbeeld gebruiken `CreateTimer` om vertragingen in de Orchestration-uitvoering uit te voeren. [Duurzame timer](durable-functions-timers.md) vertragingen tellen niet mee voor de uitvoerings tijd van een Orchestrator-functie. |
+| Async-Api's | De Orchestrator-code mag nooit een asynchrone bewerking starten, behalve door `IDurableOrchestrationContext` gebruik te maken `context.df` van de API of de API van het object. U kunt bijvoorbeeld niet `Task.Run`gebruiken, `Task.Delay`, en `HttpClient.SendAsync` in .net of `setTimeout` en `setInterval` in Java script. Het duurzame taak raamwerk voert Orchestrator-code uit op één thread. Er kan niet worden gecommuniceerd met andere threads die kunnen worden aangeroepen door andere async-Api's. | Een Orchestrator-functie mag alleen duurzame asynchrone aanroepen maken. Activiteit functies moeten andere async-API-aanroepen uitvoeren. |
+| Asynchrone Java script-functies | U kunt geen Java script Orchestrator-functies `async` declareren omdat de node. js-runtime niet garandeert dat asynchrone functies deterministisch zijn. | Java script Orchestrator declareert functies als synchrone Generator functies. |
+| Threading-Api's | Het duurzame taak raamwerk voert Orchestrator-code uit op één thread en kan niet communiceren met andere threads. Het introduceren van nieuwe threads in de uitvoering van een Orchestration kan leiden tot niet-deterministische uitvoering of deadlocks. | Orchestrator-functies moeten vrijwel nooit threading-Api's gebruiken. Vermijd bijvoorbeeld in .NET het gebruik `ConfigureAwait(continueOnCapturedContext: false)`van; Dit zorgt ervoor dat taak voortzettingen worden uitgevoerd op de originele `SynchronizationContext`Orchestrator-functie. Als dergelijke Api's nood zakelijk zijn, beperkt u het gebruik ervan tot alleen activiteit functies. |
+| Statische variabelen | Vermijd het gebruik van niet-constante statische variabelen in Orchestrator-functies, omdat hun waarden in de loop van de tijd kunnen veranderen, wat resulteert in niet-deterministisch runtime gedrag. | Gebruik constanten of beperk het gebruik van statische variabelen tot activiteit functies. |
+| Omgevingsvariabelen | Gebruik geen omgevings variabelen in Orchestrator-functies. Hun waarden kunnen na verloop van tijd veranderen, wat resulteert in niet-deterministisch runtime gedrag. | Naar omgevings variabelen moet alleen worden verwezen vanuit client functies of activiteit functies. |
+| Oneindige lussen | Vermijd oneindige lussen in Orchestrator-functies. Omdat het duurzame taak raamwerk uitvoerings geschiedenis opslaat als de Orchestration-functie, kan een oneindige lus ertoe leiden dat er onvoldoende geheugen beschikbaar is voor een Orchestrator-exemplaar. | Gebruik voor oneindige lussen Api's zoals `ContinueAsNew` in .net of `continueAsNew` in Java script om de uitvoering van de functie opnieuw te starten en de vorige uitvoerings geschiedenis te verwijderen. |
 
-Hoewel het toepassen van deze beperkingen in eerste instantie misschien moeilijk lijkt, zijn ze in de praktijk gemakkelijk te volgen.
+Hoewel het Toep assen van deze beperkingen mogelijk moeilijk te voor het eerst lijkt, kan het zijn dat ze gemakkelijk te volgen zijn.
 
-Het Framework Duurzame taken probeert schendingen van de voorgaande regels op te sporen. Als er een overtreding wordt gevonden, wordt in het framework een **uitzondering voor nondeterministicorchestrationexception gehesen.** Dit detectiegedrag zal echter niet alle schendingen opvangen en u moet er niet van afhankelijk zijn.
+Het duurzame taak raamwerk probeert schendingen van de voor gaande regels te detecteren. Als er een schending wordt gevonden, genereert het Framework een **NonDeterministicOrchestrationException** -uitzonde ring. Dit detectie gedrag onderschept echter niet alle schendingen en u moet er niet op vertrouwen.
 
 ## <a name="versioning"></a>Versiebeheer
 
-Een duurzame orkestratie kan continu draaien voor dagen, maanden, jaren, of zelfs [eeuwig](durable-functions-eternal-orchestrations.md). Alle code-updates die zijn gemaakt voor apps voor duurzame functies die van invloed zijn op onvoltooide orkestraties, kunnen het replay-gedrag van de orkestraties verbreken. Daarom is het belangrijk om zorgvuldig te plannen bij het maken van updates voor code. Zie [het versieartikel](durable-functions-versioning.md)voor een meer gedetailleerde beschrijving van de versie van uw code.
+Een duurzame indeling kan continu worden uitgevoerd voor dagen, maanden, jaren of zelfs [eternally](durable-functions-eternal-orchestrations.md). Code-updates die zijn aangebracht in Durable Functions-apps die invloed hebben op onvoltooide indelingen, kunnen het gedrag van het opnieuw afspelen van de Orchestration mogelijk verstoren. Daarom is het belang rijk om zorgvuldig te plannen bij het maken van updates voor code. Zie het [artikel versie nummer](durable-functions-versioning.md)voor een gedetailleerde beschrijving van de versie van uw code.
 
 ## <a name="durable-tasks"></a>Duurzame taken
 
 > [!NOTE]
-> In dit gedeelte worden de interne implementatiedetails van het kader voor duurzame taken beschreven. U duurzame functies gebruiken zonder deze informatie te kennen. Het is alleen bedoeld om u te helpen het replaygedrag te begrijpen.
+> In deze sectie worden de interne implementatie details van het duurzame taak raamwerk beschreven. U kunt gebruikmaken van duurzame functies zonder dat u deze informatie hoeft te weten. Het is alleen bedoeld om u inzicht te geven in het replay-gedrag.
 
-Taken die veilig kunnen wachten in orchestrator-functies worden af en toe *duurzame taken*genoemd. Het framework Duurzame taken maakt en beheert deze taken. Voorbeelden hiervan zijn de taken die worden geretourneerd door **CallActivityAsync,** **WaitForExternalEvent**en **CreateTimer** in .NET orchestrator-functies.
+Taken die veilig kunnen worden gewacht in Orchestrator-functies, worden af en toe aangeduid als *duurzame taken*. Met het duurzame taak raamwerk worden deze taken gemaakt en beheerd. Voor beelden zijn de taken die worden geretourneerd door **CallActivityAsync**, **WaitForExternalEvent**en **CreateTimer** in .net Orchestrator-functies.
 
-Deze duurzame taken worden intern beheerd `TaskCompletionSource` door een lijst met objecten in .NET. Tijdens het opnieuw afspelen worden deze taken gemaakt als onderdeel van de uitvoering van orchestrator-code. Ze zijn klaar als de dispatcher de bijbehorende geschiedenisgebeurtenissen opsomt.
+Deze duurzame taken worden intern beheerd door een lijst met `TaskCompletionSource` objecten in .net. Tijdens het opnieuw afspelen worden deze taken gemaakt als onderdeel van de uitvoering van de Orchestrator-code. Ze zijn voltooid, omdat de verzender de bijbehorende geschiedenis gebeurtenissen inventariseert.
 
-De taken worden synchroon uitgevoerd met behulp van één thread totdat alle geschiedenis is afgespeeld. Duurzame taken die nog niet zijn voltooid aan het einde van de geschiedenis replay hebben de juiste acties uitgevoerd. Een bericht kan bijvoorbeeld in de wachtrij staan om een activiteitsfunctie aan te roepen.
+De taken worden synchroon uitgevoerd met één thread totdat alle geschiedenis is herhaald. Duurzame taken die niet zijn voltooid door het einde van de replay van de geschiedenis, hebben de juiste acties uitgevoerd. Zo kan een bericht in de wachtrij worden geplaatst om een activiteit functie aan te roepen.
 
-De beschrijving van het runtimegedrag in deze sectie moet u helpen `await` `yield` te begrijpen waarom een orchestrator-functie niet kan worden gebruikt of in een niet-duurzame taak. Er zijn twee redenen: de dispatcherthread kan niet wachten tot de taak is voltooid en elke terugroep van die taak kan mogelijk de trackingstatus van de orchestrator-functie beschadigen. Sommige runtime controles zijn op zijn plaats om te helpen detecteren deze schendingen.
+In deze sectie vindt u een beschrijving van het runtime gedrag dat u kunt begrijpen waarom een Orchestrator `await` - `yield` functie niet kan worden gebruikt of in een niet-duurzame taak. Er zijn twee redenen: de dispatcher-thread kan niet wachten tot de taak is voltooid en eventuele retour aanroepen door deze taak kunnen de tracerings status van de Orchestrator-functie mogelijk beschadigen. Sommige runtime controles zijn aanwezig om deze schendingen te detecteren.
 
-Raadpleeg de [broncode duurzame taak op GitHub](https://github.com/Azure/durabletask)voor meer informatie over hoe het Framework voor duurzame taken orkestloper uitvoert. Zie in het bijzonder [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) en [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs).
+Raadpleeg de [bron code van de duurzame taak op github](https://github.com/Azure/durabletask)voor meer informatie over hoe het duurzame taak raamwerk Orchestrator-functies uitvoert. Zie [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) en [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het aanroepen van suborchestrations](durable-functions-sub-orchestrations.md)
+> [Meer informatie over het aanroepen van sub-indelingen](durable-functions-sub-orchestrations.md)
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het omgaan met versiebeheer](durable-functions-versioning.md)
+> [Meer informatie over het verwerken van versie beheer](durable-functions-versioning.md)

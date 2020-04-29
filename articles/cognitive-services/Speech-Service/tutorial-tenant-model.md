@@ -1,7 +1,7 @@
 ---
-title: Een tenantmodel maken (voorbeeld) - Spraakservice
+title: 'Een Tenant model maken (preview): spraak service'
 titleSuffix: Azure Cognitive Services
-description: Genereer automatisch een veilig, compatibel tenantmodel (Aangepaste spraak met Office 365-gegevens) dat uw Office 365-gegevens gebruikt om optimale spraakherkenning te bieden voor organisatiespecifieke termen.
+description: Genereer automatisch een beveiligd, compatibel Tenant model (Custom Speech met Office 365-gegevens) dat uw Office 365-gegevens gebruikt voor het leveren van optimale spraak herkenning voor specifieke voor waarden van de organisatie.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,100 +11,100 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: erhopf
 ms.openlocfilehash: a83ed5c9cec994c1bc4cadd5cf6208c159823658
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77469014"
 ---
-# <a name="tutorial-create-a-tenant-model-preview"></a>Zelfstudie: Een tenantmodel maken (voorbeeld)
+# <a name="tutorial-create-a-tenant-model-preview"></a>Zelf studie: een Tenant model maken (preview)
 
-Tenantmodel (Aangepaste spraak met Office 365-gegevens) is een opt-in-service voor zakelijke Office 365-klanten die automatisch een aangepast spraakherkenningsmodel genereert op basis van de Office 365-gegevens van uw organisatie. Het model is geoptimaliseerd voor technische termen, jargon en namen van mensen, allemaal op een veilige en conforme manier.
+Tenant model (Custom Speech met Office 365-gegevens) is een opt-in-service voor Office 365 Enter prise-klanten die automatisch een aangepast spraakherkennings model genereren op basis van de Office 365-gegevens van uw organisatie. Het model is geoptimaliseerd voor technische termen, jargon en namen van personen, allemaal op een veilige en compatibele manier.
 
 > [!IMPORTANT]
-> Als uw organisatie zich inschrijft met behulp van de tenantmodelservice, heeft Spraakservice toegang tot het taalmodel van uw organisatie. Het model wordt gegenereerd uit openbare e-mails en documenten van openbare office 365-groepen, die door iedereen in uw organisatie kunnen worden gezien. De Office 365-beheerder van uw organisatie kan het gebruik van het taalmodel voor de hele organisatie in- of uitschakelen via de Office 365-beheerportal.
+> Als uw organisatie zich registreert met behulp van de Tenant model-service, kan de spraak service toegang krijgen tot het taal model van uw organisatie. Het model wordt gegenereerd op basis van e-mail berichten en documenten van Office 365 open bare groep, die kunnen worden gezien door iedereen in uw organisatie. De Office 365-beheerder van uw organisatie kan het gebruik van het organisatiebrede taal model in-of uitschakelen vanuit de Office 365-beheer Portal.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Inschrijven voor het tenantmodel met het Microsoft 365-beheercentrum
-> * Een spraakabonnementssleutel aanschaffen
-> * Een tenantmodel maken
-> * Een tenantmodel implementeren
-> * Gebruik uw tenantmodel met de SpraakSDK
+> * Registreren in het Tenant model met behulp van het Microsoft 365-beheer centrum
+> * Een spraak abonnement sleutel ophalen
+> * Een Tenant model maken
+> * Een Tenant model implementeren
+> * Uw Tenant model gebruiken met de Speech SDK
 
-## <a name="enroll-in-the-tenant-model-service"></a>Inschrijven voor de tenantmodelservice
+## <a name="enroll-in-the-tenant-model-service"></a>Registreren in de Tenant model service
 
-Voordat u uw tenantmodel implementeren, moet u zijn ingeschreven in de tenantmodelservice. De inschrijving is voltooid in het Microsoft 365-beheercentrum en kan alleen worden gedaan door uw Microsoft 365-beheerder.
+Voordat u uw Tenant model kunt implementeren, moet u worden inge schreven bij de service Tenant model. De inschrijving is voltooid in het beheer centrum van Microsoft 365 en kan alleen worden uitgevoerd door uw Microsoft 365-beheerder.
 
 1. Meld u aan bij het [Microsoft 365-beheercentrum](https://admin.microsoft.com).
 
-1. Selecteer in het linkerdeelvenster **Instellingen**en selecteer **Vervolgens Instellingen** in het geneste menu en selecteer vervolgens Azure Speech **Services** in het hoofdvenster.
+1. Selecteer in het linkerdeel venster **instellingen**, selecteer **instellingen** in het geneste menu en selecteer vervolgens **Azure speech Services** in het hoofd venster.
 
-   ![Het deelvenster 'Services &-invoegtoepassing'](media/tenant-language-model/tenant-language-model-enrollment.png)
+   ![Het deel venster Services &-invoeg toepassingen](media/tenant-language-model/tenant-language-model-enrollment.png)
 
-1. Schakel het selectievakje **Het taalmodel voor de hele organisatie toestaan** in en selecteer Wijzigingen **opslaan**.
+1. Schakel het selectie vakje **het taal model voor de hele organisatie toestaan** in en selecteer vervolgens **wijzigingen opslaan**.
 
-   ![Het deelvenster Azure Speech Services](media/tenant-language-model/tenant-language-model-enrollment-2.png)
+   ![Het deel venster spraak services van Azure](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
-Ga als u de instantie tenantmodel uitschakelt:
-1. Herhaal de voorgaande stappen 1 en 2.
-1. Schakel het selectievakje **Het taalmodel voor de hele organisatie toestaan** uit en selecteer Wijzigingen **opslaan**.
+Het Tenant model exemplaar uitschakelen:
+1. Herhaal de voor gaande stappen 1 en 2.
+1. Schakel het selectie vakje **het taal model voor de hele organisatie toestaan** uit en selecteer vervolgens **wijzigingen opslaan**.
 
-## <a name="get-a-speech-subscription-key"></a>Een spraakabonnementssleutel aanschaffen
+## <a name="get-a-speech-subscription-key"></a>Een spraak abonnement sleutel ophalen
 
-Als u uw tenantmodel wilt gebruiken met de Spraak-SDK, hebt u een Spraakbron en de bijbehorende abonnementssleutel nodig.
+Als u uw Tenant model wilt gebruiken met de Speech SDK, hebt u een spraak bron en de bijbehorende abonnements sleutel nodig.
 
-1. Meld u aan bij [Azure Portal](https://aka.ms/azureportal).
+1. Meld u aan bij de [Azure-portal](https://aka.ms/azureportal).
 1. Selecteer **Een resource maken**.
-1. Typ **Spraak**in het vak **Zoeken** .
-1. Selecteer **Spraak**in de lijst met resultaten en selecteer **Vervolgens Maken**.
-1. Volg de instructies op het scherm om uw resource te maken. Vereisten:
-   * **Locatie** is ingesteld op **ofwel eastus** of **westus**.
-   * **De prijscategorie** is ingesteld op **S0**.
+1. Typ in het **zoekvak** **spraak**.
+1. Selecteer in de lijst met resultaten **spraak**en selecteer vervolgens **maken**.
+1. Volg de instructies op het scherm om de resource te maken. Vereisten:
+   * De **locatie** is ingesteld op **Oost** -of **westus**.
+   * **Prijs categorie** wordt ingesteld op **s0**.
 1. Selecteer **Maken**.
 
-   Na een paar minuten wordt uw resource gemaakt. De abonnementssleutel is beschikbaar in de sectie **Overzicht** voor uw resource.
+   Na een paar minuten wordt uw resource gemaakt. De abonnements sleutel is beschikbaar in het gedeelte **overzicht** van uw resource.
 
-## <a name="create-a-language-model"></a>Een taalmodel maken
+## <a name="create-a-language-model"></a>Een taal model maken
 
-Nadat uw beheerder TenantModel voor uw organisatie heeft ingeschakeld, u een taalmodel maken dat is gebaseerd op uw Office 365-gegevens.
+Nadat de beheerder Tenant model heeft ingeschakeld voor uw organisatie, kunt u een taal model maken dat is gebaseerd op uw Office 365-gegevens.
 
 1. Meld u aan bij [Speech Studio](https://speech.microsoft.com/).
-1. Selecteer rechtsboven **Instellingen** (tandwielpictogram) en selecteer **tenantmodelinstellingen**.
+1. Selecteer in de rechter bovenhoek de optie **instellingen** (tandwiel pictogram) en selecteer vervolgens **Tenant model instellingen**.
 
-   ![De koppeling 'Tenantmodel-instellingen'](media/tenant-language-model/tenant-language-settings.png)
+   ![De koppeling Tenant model instellingen](media/tenant-language-model/tenant-language-settings.png)
 
-   Speech Studio toont een bericht waarin u weet of u gekwalificeerd bent om een tenantmodel te maken.
+   In speech Studio wordt een bericht weer gegeven waarin u kunt zien of u een Tenant model wilt maken.
 
    > [!NOTE]
-   > Zakelijke Office 365-klanten in Noord-Amerika komen in aanmerking voor het maken van een tenantmodel (Engels). Als u een klantvergrendelingsbox, klantsleutel of klant van de overheid van Office 365 bent, is deze functie niet beschikbaar. Zie het belangrijkste om te bepalen of u klantvergrendeling of klantsleutelklant bent:
+   > Office 365 Enter prise-klanten in Noord-Amerika komen in aanmerking voor het maken van een Tenant model (Engels). Als u een Klanten-lockbox, klant sleutel of Office 365 Government-klant bent, is deze functie niet beschikbaar. Ga als volgt te werk om te bepalen of u een klant van Klanten-lockbox of klant code bent?
    > * [Klanten-lockbox](/microsoft-365/compliance/customer-lockbox-requests)
-   > * [Klantsleutel](/microsoft-365/compliance/customer-key-overview)
-   > * [Office 365-regering](https://www.microsoft.com/microsoft-365/government)
+   > * [Klant sleutel](/microsoft-365/compliance/customer-key-overview)
+   > * [Office 365 Government](https://www.microsoft.com/microsoft-365/government)
 
 1. Selecteer **Aanmelden**.
 
-   Wanneer uw tenantmodel klaar is, ontvangt u een bevestigingsbericht met verdere instructies.
+   Wanneer uw Tenant model klaar is, ontvangt u een bevestigings e-mail bericht met verdere instructies.
 
-## <a name="deploy-your-tenant-model"></a>Uw tenantmodel implementeren
+## <a name="deploy-your-tenant-model"></a>Uw Tenant model implementeren
 
-Wanneer de instantie van uw tenantmodel gereed is, implementeert u deze als volgt:
+Wanneer uw Tenant model exemplaar gereed is, implementeert u dit door het volgende te doen:
 
-1. Selecteer in uw bevestigingsbericht de knop **Model weergeven.** Of meld je aan bij [Speech Studio](https://speech.microsoft.com/).
-1. Selecteer rechtsboven **Instellingen** (tandwielpictogram) en selecteer **tenantmodelinstellingen**.
+1. Selecteer in uw bevestigings e-mail bericht de knop **model weer geven** . Of Meld u aan bij [Speech Studio](https://speech.microsoft.com/).
+1. Selecteer in de rechter bovenhoek de optie **instellingen** (tandwiel pictogram) en selecteer vervolgens **Tenant model instellingen**.
 
-   ![De koppeling 'Tenantmodel-instellingen'](media/tenant-language-model/tenant-language-settings.png)
+   ![De koppeling Tenant model instellingen](media/tenant-language-model/tenant-language-settings.png)
 
 1. Selecteer **Implementeren**.
 
-   Wanneer uw model is geïmplementeerd, wordt de status *gewijzigd in Geïmplementeerd.*
+   Wanneer het model is geïmplementeerd, wordt de status gewijzigd in *geïmplementeerd*.
 
-## <a name="use-your-tenant-model-with-the-speech-sdk"></a>Gebruik uw tenantmodel met de SpraakSDK
+## <a name="use-your-tenant-model-with-the-speech-sdk"></a>Uw Tenant model gebruiken met de Speech SDK
 
-Nu u uw model hebt geïmplementeerd, u het gebruiken met de Speech SDK. In deze sectie gebruikt u voorbeeldcode om spraakservice aan te roepen met Azure AD-verificatie (Azure AD).
+Nu u het model hebt geïmplementeerd, kunt u het gebruiken met de spraak-SDK. In deze sectie gebruikt u voorbeeld code om de spraak service aan te roepen met behulp van Azure Active Directory-verificatie (Azure AD).
 
-Laten we eens kijken naar de code die u gebruikt om de Speech SDK in C#te bellen. In dit voorbeeld voert u spraakherkenning uit met behulp van uw tenantmodel. Deze handleiding gaat ervan uit dat uw platform al is ingesteld. Zie [Quickstart: Spraak herkennen, C# (.NET Core)](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)als u installatiehulp nodig hebt.
+Laten we eens kijken naar de code die u gaat gebruiken voor het aanroepen van de Speech SDK in C#. In dit voor beeld voert u spraak herkenning uit met behulp van uw Tenant model. In deze hand leiding wordt ervan uitgegaan dat uw platform al is ingesteld. Als u hulp nodig hebt bij de installatie, raadpleegt u [Quick Start: Speech herkennen, C# (.net core)](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore).
 
 Kopieer deze code naar uw project:
 
@@ -287,11 +287,11 @@ namespace PrincetonSROnly.FrontEnd.Samples
 }
 ```
 
-Vervolgens moet u het project opnieuw opbouwen en uitvoeren vanaf de opdrachtregel. Voordat u de opdracht uitvoert, werkt u een aantal parameters bij door het volgende te doen:
+Vervolgens moet u het project opnieuw opbouwen en uitvoeren vanaf de opdracht regel. Voordat u de opdracht uitvoert, moet u een aantal para meters bijwerken door het volgende te doen:
 
-1. Vervang `<Username>` `<Password>` en met de waarden voor een geldige tenantgebruiker.
-1. Vervang `<Subscription-Key>` de abonnementssleutel voor uw spraakbron. Deze waarde is beschikbaar in de sectie **Overzicht** voor uw spraakbron in de [Azure-portal.](https://aka.ms/azureportal)
-1. Vervang `<Endpoint-Uri>` door het volgende eindpunt. Zorg ervoor dat `{your region}` u de regio vervangt waar uw spraakbron is gemaakt. Deze regio's `westus`worden `westus2`ondersteund: , , en `eastus`. Uw regiogegevens zijn beschikbaar in het gedeelte **Overzicht** van uw spraakbron in de [Azure-portal.](https://aka.ms/azureportal)
+1. Vervang `<Username>` en `<Password>` door de waarden voor een geldige Tenant gebruiker.
+1. Vervang `<Subscription-Key>` door de abonnements sleutel voor uw spraak bron. Deze waarde is beschikbaar in het gedeelte **overzicht** voor uw spraak resource in de [Azure Portal](https://aka.ms/azureportal).
+1. Vervang `<Endpoint-Uri>` door het volgende eind punt. Zorg ervoor dat u vervangt `{your region}` door de regio waarin uw spraak bron is gemaakt. Deze regio's worden ondersteund: `westus`, `westus2`en `eastus`. Uw regio gegevens zijn beschikbaar in de sectie **overzicht** van uw spraak resource in de [Azure Portal](https://aka.ms/azureportal).
    ```
    "wss://{your region}.online.princeton.customspeech.ai/msgraphcustomspeech/conversation/v1".
    ```
@@ -301,9 +301,9 @@ Vervolgens moet u het project opnieuw opbouwen en uitvoeren vanaf de opdrachtreg
    dotnet TenantLMSample.dll --Username=<Username> --Password=<Password> --SubscriptionKey=<Subscription-Key> --EndpointUri=<Endpoint-Uri>
    ```
 
-In deze zelfstudie hebt u geleerd hoe u Office 365-gegevens gebruiken om een aangepast spraakherkenningsmodel te maken, deze te implementeren en te gebruiken met de Speech SDK.
+In deze zelf studie hebt u geleerd hoe u Office 365-gegevens kunt gebruiken om een aangepast spraakherkennings model te maken, dit te implementeren en te gebruiken met de spraak-SDK.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Spraakstudio](https://speech.microsoft.com/)
+* [Speech Studio](https://speech.microsoft.com/)
 * [Speech-SDK](speech-sdk.md)

@@ -1,7 +1,7 @@
 ---
-title: REST gebruiken om ML-resources te beheren
+title: REST gebruiken voor het beheren van ML-resources
 titleSuffix: Azure Machine Learning
-description: RestAPI's gebruiken om Azure ML-resources te maken, uit te voeren en te verwijderen
+description: REST-Api's gebruiken om Azure ML-resources te maken, uit te voeren en te verwijderen
 author: lobrien
 ms.author: laobri
 services: machine-learning
@@ -10,50 +10,50 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.openlocfilehash: 419dbd998abc5cbd2da64a990e13d46f3fb2efbe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77580625"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-resources maken, uitvoeren en verwijderen met REST
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Er zijn verschillende manieren om uw Azure ML-resources te beheren. U de [portal,](https://portal.azure.com/) [command-line interface](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)of [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)gebruiken. U ook kiezen voor de REST API. De REST API gebruikt HTTP-werkwoorden op een standaardmanier om resources te maken, op te halen, bij te werken en te verwijderen. De REST API werkt met elke taal of tool die HTTP-aanvragen kan indienen. De eenvoudige structuur van REST maakt het vaak een goede keuze in scriptingomgevingen en voor MLOps-automatisering. 
+Er zijn verschillende manieren om uw Azure ML-resources te beheren. U kunt de [Portal](https://portal.azure.com/), de [opdracht regel interface](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)of de [python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)gebruiken. U kunt ook de REST API kiezen. De REST API maakt gebruik van HTTP-termen op een standaard manier om resources te maken, op te halen, bij te werken en te verwijderen. De REST API werkt met elke taal of elk hulp programma waarmee HTTP-aanvragen kunnen worden gemaakt. Met de eenvoudige structuur van de REST is het vaak een goede keuze in script omgevingen en voor MLOps Automation. 
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Een autorisatietoken ophalen
-> * Een restaanvraag met correct opgemaakte aanvraag maken met behulp van serviceprincipal-verificatie
-> * GET-aanvragen gebruiken om informatie op te halen over de hiërarchische bronnen van Azure ML
-> * PUT- en POST-aanvragen gebruiken om resources te maken en te wijzigen
-> * Delete-aanvragen gebruiken om resources op te schonen 
-> * Sleutelautorisatie gebruiken om geïmplementeerde modellen te scoren
+> * Een autorisatie Token ophalen
+> * Een goed opgemaakte REST-aanvraag maken met Service-Principal-verificatie
+> * GET-aanvragen gebruiken om informatie op te halen over de hiërarchische resources van Azure ML
+> * PUT-en POST-aanvragen gebruiken om resources te maken en te wijzigen
+> * DELETE-aanvragen gebruiken om resources op te schonen 
+> * Verificatie op basis van een sleutel gebruiken om geïmplementeerde modellen te scoren
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een **Azure-abonnement** waarvoor u beheerdersrechten hebt. Als je een dergelijk abonnement niet hebt, probeer dan het [gratis of betaalde persoonlijke abonnement](https://aka.ms/AMLFree)
-- Een [Azure Machine Learning Workspace](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
-- Administratieve REST-aanvragen maken gebruik van serviceprincipal-verificatie. De stappen uitvoeren in [Verificatie instellen voor Azure Machine Learning-resources en -werkstromen](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication) om een serviceprincipal in uw werkruimte te maken
-- Het **krulnut.** Het **curl-programma** is beschikbaar in het [Windows-subsysteem voor Linux](https://aka.ms/wslinstall/) of een UNIX-distributie. In PowerShell is **curl** een alias voor `curl -d "key=val" -X POST uri` `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` **Invoke-WebRequest** en wordt . 
+- Een **Azure-abonnement** waarvoor u beheerders rechten hebt. Als u geen abonnement hebt, probeer [dan het gratis of betaalde persoonlijke abonnement](https://aka.ms/AMLFree)
+- Een [Azure machine learning-werkruimte](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
+- Beheer REST-aanvragen gebruiken Service-Principal-verificatie. Volg de stappen in [verificatie instellen voor Azure machine learning resources en werk stromen](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication) om een service-principal te maken in uw werk ruimte
+- Het **krul** -hulp programma. Het **krul** programma is beschikbaar in het [Windows-subsysteem voor Linux](https://aka.ms/wslinstall/) of een Unix-distributie. In Power shell is **krul** een alias voor **invoke-WebRequest** en `curl -d "key=val" -X POST uri` wordt `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri`. 
 
-## <a name="retrieve-a-service-principal-authentication-token"></a>Een serviceprincipal-verificatietoken ophalen
+## <a name="retrieve-a-service-principal-authentication-token"></a>Een Service-Principal-verificatie Token ophalen
 
-Administratieve REST-aanvragen worden geverifieerd met een impliciete oauth2-stroom. Deze verificatiestroom maakt gebruik van een token dat wordt verstrekt door de serviceprincipal van uw abonnement. Als u dit token wilt ophalen, hebt u het oog op:
+Beheer REST-aanvragen worden geverifieerd met een OAuth2 impliciete stroom. Deze verificatie stroom maakt gebruik van een token van de service-principal van uw abonnement. Als u dit token wilt ophalen, hebt u het volgende nodig:
 
-- Uw tenant-id (het identificeren van de organisatie waartoe uw abonnement behoort)
-- Uw client-id (die wordt gekoppeld aan het gemaakte token)
-- Uw klant geheim (die u moet beschermen)
+- Uw Tenant-ID (die de organisatie identificeert waartoe uw abonnement behoort)
+- De client-ID (die wordt gekoppeld aan het gemaakte token)
+- Uw client geheim (dat u moet beveiligen)
 
-Deze waarden moeten worden weergegeven vanaf het antwoord op de creatie van uw serviceprincipal zoals besproken in [Verificatie instellen voor Azure Machine Learning-resources en -werkstromen.](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication) Als u uw bedrijfsabonnement gebruikt, hebt u mogelijk geen toestemming om een serviceprincipal te maken. In dat geval moet u een [gratis of betaald persoonlijk abonnement](https://aka.ms/AMLFree)gebruiken.
+U moet deze waarden van het antwoord hebben op het maken van de Service-Principal zoals wordt beschreven in [verificatie instellen voor Azure machine learning resources en werk stromen](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication). Als u uw bedrijfs abonnement gebruikt, bent u mogelijk niet gemachtigd om een service-principal te maken. In dat geval moet u een [gratis of betaald persoonlijk abonnement](https://aka.ms/AMLFree)gebruiken.
 
-Ga als lid van het opmaken van een token:
+Een Token ophalen:
 
 1. Een terminalvenster openen
-1. Voer de volgende code in op de opdrachtregel
-1. Vervang uw eigen `{your-tenant-id}` `{your-client-id}`waarden `{your-client-secret}`voor , en . In dit artikel, snaren omgeven door krullende haakjes zijn variabelen die u moet vervangen door uw eigen juiste waarden.
+1. Voer de volgende code in op de opdracht regel
+1. Vervang uw eigen waarden voor `{your-tenant-id}`, `{your-client-id}`en `{your-client-secret}`. In dit artikel zijn teken reeksen omgeven door accolades variabelen die u moet vervangen door uw eigen juiste waarden.
 1. De opdracht uitvoeren
 
 ```bash
@@ -61,7 +61,7 @@ curl -X POST https://login.microsoftonline.com/{your-tenant-id}/oauth2/token \
 -d "grant_type=client_credentials&resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id={your-client-id}&client_secret={your-client-secret}" \
 ```
 
-Het antwoord moet een toegangstoken bieden dat goed is voor een uur:
+Het antwoord moet gedurende één uur een geldig toegangs token bieden:
 
 ```json
 {
@@ -75,25 +75,25 @@ Het antwoord moet een toegangstoken bieden dat goed is voor een uur:
 }
 ```
 
-Noteer het token, omdat u het gebruikt om alle volgende administratieve verzoeken te verifiëren. U doet dit door een autorisatiekop in te stellen in alle aanvragen:
+Noteer het token, zoals u het gebruikt om alle volgende beheer aanvragen te verifiëren. U doet dit door in alle aanvragen een autorisatie-header in te stellen:
 
 ```bash
 curl -h "Authentication: Bearer {your-access-token}" ...more args...
 ```
 
-Houd er rekening mee dat de waarde begint met de tekenreeks 'Drager' inclusief een enkele spatie voordat u het token toevoegt.
+Houd er rekening mee dat de waarde begint met de teken reeks ' Bearer ', inclusief één spatie voordat u het token toevoegt.
 
-## <a name="get-a-list-of-resource-groups-associated-with-your-subscription"></a>Een lijst met resourcegroepen die aan uw abonnement zijn gekoppeld
+## <a name="get-a-list-of-resource-groups-associated-with-your-subscription"></a>Een lijst ophalen met resource groepen die zijn gekoppeld aan uw abonnement
 
-Voer het als nodig op om de lijst met resourcegroepen op te halen die aan uw abonnement zijn gekoppeld:
+Voer de volgende handelingen uit om de lijst met resource groepen die zijn gekoppeld aan uw abonnement op te halen:
 
 ```bash
 curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups?api-version=2019-11-01 -H "Authorization:Bearer {your-access-token}"
 ```
 
-In Azure worden veel REST API's gepubliceerd. Elke serviceprovider werkt zijn API bij op zijn eigen cadans, maar doet dit zonder bestaande programma's te breken. De serviceprovider gebruikt `api-version` het argument om compatibiliteit te garanderen. Het `api-version` argument varieert van service tot service. Voor de Machine Learning-service is de `2019-11-01`huidige API-versie bijvoorbeeld . Voor opslagaccounts is `2019-06-01`het. Voor sleutelkluizen is `2019-09-01`het. Alle REST-aanroepen `api-version` moeten het argument instellen op de verwachte waarde. U vertrouwen op de syntaxis en semantiek van de opgegeven versie, zelfs als de API blijft evolueren. Als u een verzoek zonder `api-version` argument naar een provider verzendt, bevat het antwoord een door de mens leesbare lijst met ondersteunde waarden. 
+In Azure worden veel REST-Api's gepubliceerd. Elke service provider werkt de API op hun eigen uitgebracht bij, maar zonder de bestaande Program ma's te verbreken. De service provider gebruikt het `api-version` argument om compatibiliteit te garanderen. Het `api-version` argument is afhankelijk van service-to-service. Voor de Machine Learning-service is `2019-11-01`de huidige API-versie bijvoorbeeld. Voor opslag accounts is `2019-06-01`dit. Voor sleutel kluizen is dit `2019-09-01`. Alle REST-aanroepen moeten `api-version` het argument instellen op de verwachte waarde. U kunt vertrouwen op de syntaxis en de semantiek van de opgegeven versie, zelfs als de API blijft ontwikkelen. Als u zonder het `api-version` argument een aanvraag naar een provider verzendt, bevat het antwoord een lijst met ondersteunde waarden die door de mens kan worden gelezen. 
 
-De bovenstaande oproep zal resulteren in een verdichte JSON reactie van het formulier: 
+De bovenstaande aanroep resulteert in een gecomprimeerde JSON-reactie van het formulier: 
 
 ```json
 {
@@ -121,16 +121,16 @@ De bovenstaande oproep zal resulteren in een verdichte JSON reactie van het form
 ```
 
 
-## <a name="drill-down-into-workspaces-and-their-resources"></a>Inzoomen op werkruimten en hun bronnen
+## <a name="drill-down-into-workspaces-and-their-resources"></a>Inzoomen op werk ruimten en hun resources
 
-Als u de set werkruimten in een resourcegroep `{your-subscription-id}`wilt `{your-resource-group}`ophalen, voert u het volgende uit, waarbij u de volgende handelingen uitvoert, waarbij u vervangt en `{your-access-token}`: 
+Als u de set met werk ruimten in een resource groep wilt ophalen, voert u het volgende `{your-subscription-id}`uit `{your-resource-group}`, vervangt `{your-access-token}`u, en: 
 
 ```
 curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/?api-version=2019-11-01 \
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Opnieuw ontvangt u een JSON-lijst, deze keer met een lijst, waarvan elk item een werkruimte beschrijft:
+U ontvangt een JSON-lijst, deze keer met een lijst, elk item waarvan een werk ruimte wordt weer gegeven:
 
 ```json
 {
@@ -166,7 +166,7 @@ Opnieuw ontvangt u een JSON-lijst, deze keer met een lijst, waarvan elk item een
 }
 ```
 
-Als u wilt werken met resources in een werkruimte, schakelt u over van de algemene **management.azure.com** server naar een REST API-server die specifiek is voor de locatie van de werkruimte. Let op de `discoveryUrl` waarde van de sleutel in de bovenstaande JSON-respons. Als je die URL ontvangt, ontvang je een antwoord als:
+Als u wilt werken met resources binnen een werk ruimte, schakelt u van de algemene **Management.Azure.com** -server naar een rest API-server die specifiek is voor de locatie van de werk ruimte. Noteer de waarde van de `discoveryUrl` sleutel in de bovenstaande JSON-reactie. Als u die URL krijgt, ontvangt u een antwoord op de volgende manier:
 
 ```json
 {
@@ -183,7 +183,7 @@ Als u wilt werken met resources in een werkruimte, schakelt u over van de algeme
 }
 ```
 
-De waarde `api` van het antwoord is de URL van de server die u gebruikt voor aanvullende aanvragen. Als u experimenten wilt weergeven, stuurt u bijvoorbeeld de volgende opdracht. Vervang `regional-api-server` door de `api` waarde van het `centralus.api.azureml.ms`antwoord (bijvoorbeeld). Ook `your-subscription-id`vervangen `your-resource-group` `your-workspace-name`, `your-access-token` , , en zoals gebruikelijk:
+De waarde van het `api` antwoord is de URL van de server die u gaat gebruiken voor aanvullende aanvragen. Als u experimenten wilt weer geven, verzendt u bijvoorbeeld de volgende opdracht. Vervang `regional-api-server` door de waarde van het `api` antwoord (bijvoorbeeld `centralus.api.azureml.ms`). Vervang `your-subscription-id`, `your-resource-group`, `your-workspace-name`, en `your-access-token` zo gebruikelijk:
 
 ```bash
 curl https://{regional-api-server}/history/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
@@ -191,7 +191,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/exp
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Als u geregistreerde modellen in uw werkruimte wilt ophalen, verzendt u ook:
+Als u geregistreerde modellen wilt ophalen in uw werk ruimte, verzendt u het volgende:
 
 ```bash
 curl https://{regional-api-server}/modelmanagement/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
@@ -199,35 +199,35 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Merk op dat om experimenten `history/v1.0` op te sommen waarmee `modelmanagement/v1.0`het pad begint terwijl ze modellen moeten weergeven, het pad begint met . De REST API is verdeeld in verschillende operationele groepen, elk met een apart pad. De API-verwijzingsdocumenten op de onderstaande koppelingen geven de bewerkingen, parameters en antwoordcodes voor de verschillende bewerkingen weer.
+U ziet dat bij het weer geven van experimenten `history/v1.0` het pad begint met while om modellen weer te `modelmanagement/v1.0`geven, het pad begint met. De REST API is onderverdeeld in verschillende operationele groepen, elk met een uniek pad. De API-referentie documenten op de koppelingen hieronder staan de bewerkingen, para meters en antwoord codes voor de verschillende bewerkingen.
 
 |Onderwerp|Pad|Naslaginformatie|
 |-|-|-|
-|Artefacten|artefact/v2.0/|[REST API-verwijzing](https://docs.microsoft.com/rest/api/azureml/artifacts)|
-|Gegevenswinkels|datastore/v1.0/|[REST API-verwijzing](https://docs.microsoft.com/rest/api/azureml/datastores)|
-|Hyperparameters afstemmen|hyperdrive/v1.0/|[REST API-verwijzing](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
-|Modellen|modelmanagement/v1.0/|[REST API-verwijzing](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
-|Uitvoer.gesch|uitvoering/v1.0/ en geschiedenis/v1.0/|[REST API-verwijzing](https://docs.microsoft.com/rest/api/azureml/runs)|
+|Artefacten|artefact/v 2.0/|[Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/azureml/artifacts)|
+|Gegevens archieven|Data Store/v 1.0/|[Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/azureml/datastores)|
+|Hyperparameters afstemmen|Hyperdrive/v 1.0/|[Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
+|Modellen|Modelmanagement/v 1.0/|[Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
+|Uitvoer.gesch|uitvoering/v 1.0/en geschiedenis/v 1.0/|[Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/azureml/runs)|
 
-U de REST API verkennen met behulp van het algemene patroon van:
+U kunt de REST API verkennen met behulp van het algemene patroon van:
 
-|URL-component|Voorbeeld|
+|URL-onderdeel|Voorbeeld|
 |-|-|
 | https://| |
-| regionale-api-server/ | centralus.api.azureml.ms/ |
-| operations-path/ | geschiedenis/v1.0/ |
-| abonnementen/{your-subscription-id}/ | abonnementen/abcde123-abab-abab-1234-0123456789abc/ |
-| resourceGroepen/{uw-resourcegroep}/ | resourceGroepen/MyResourceGroup/ |
-| providers/operation-provider/ | providers/Microsoft.MachineLearningServices/ |
-| provider-resource-path/ | werkruimten/MLWorkspace/MyWorkspace/FirstExperiment/runs/1/ |
-| operations-endpoint/ | artefacten/metagegevens/ |
+| regionaal-API-server/ | centralus.api.azureml.ms/ |
+| bewerkingen-pad/ | geschiedenis/v 1.0/ |
+| abonnementen/{uw-abonnement-id}/ | abonnementen/abcde123-ABAB-ABAB-1234-0123456789abc/ |
+| resourceGroups/{uw-Resource-Group}/ | resourceGroups/MyResourceGroup/ |
+| providers/Operation-provider/ | providers/micro soft. MachineLearningServices/ |
+| provider-resource-pad/ | werk ruimten/MLWorkspace/MyWorkspace/FirstExperiment/runs/1/ |
+| bewerkingen-eind punt/ | artefacten/meta gegevens/ |
 
 
-## <a name="create-and-modify-resources-using-put-and-post-requests"></a>Bronnen maken en wijzigen met PUT- en POST-aanvragen
+## <a name="create-and-modify-resources-using-put-and-post-requests"></a>Resources maken en wijzigen met behulp van PUT-en POST-aanvragen
 
-Naast het ophalen van resources met het GET-werkwoord, ondersteunt de REST API het maken van alle resources die nodig zijn om ML-oplossingen te trainen, implementeren en bewaken. 
+Naast het ophalen van resources met de bewerking GET, ondersteunt de REST API het maken van alle resources die nodig zijn voor het trainen, implementeren en bewaken van ML-oplossingen. 
 
-Voor het trainen en uitvoeren van ML-modellen zijn rekenresources vereist. U de rekenbronnen van een werkruimte weergeven met: 
+Voor trainings-en actieve ML-modellen zijn reken resources vereist. U kunt de reken resources van een werk ruimte weer geven met: 
 
 ```bash
 curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
@@ -235,7 +235,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/com
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Als u een benoemde compute resource wilt maken of overschrijven, gebruikt u een PUT-aanvraag. In het volgende, naast de nu bekende `your-subscription-id` `your-resource-group`vervangingen van , `your-workspace-name`, en `your-access-token` `vmPriority`, `scaleSettings` `adminUserName`substituut `your-compute-name`, en waarden voor `location`, `vmSize`, , , , en `adminUserPassword`. Zoals opgegeven in de verwijzing bij [Machine Learning Compute - Create Or Update SDK Reference,](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)maakt de volgende opdracht een speciale Standard_D1 met één knooppunt (een basis-CPU-compute resource) die na 30 minuten wordt afgebroken:
+Als u een benoemde Compute-resource wilt maken of overschrijven, gebruikt u een PUT-aanvraag. In de volgende `your-subscription-id`, naast de nu bekende vervangingen, `your-resource-group`, `your-workspace-name`, en `your-access-token`, substitueer `your-compute-name`en waarden voor `location`, `vmSize`, `vmPriority`, `scaleSettings` `adminUserName`, en. `adminUserPassword` Zoals beschreven in de referentie bij [machine learning Compute-SDK-verwijzing maken of bijwerken](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate), maakt de volgende opdracht een toegewezen Standard_D1 met één knoop punt (een basis-CPU-reken resource) die na 30 minuten omlaag wordt geschaald:
 
 ```bash
 curl -X PUT \
@@ -264,13 +264,13 @@ curl -X PUT \
 ```
 
 > [!Note]
-> In Windows-terminals moet u mogelijk ontsnappen aan de dubbele aanhalingstekens bij het verzenden van JSON-gegevens. Dat wil zeggen, `"location"` `\"location\"`tekst zoals wordt . 
+> In Windows-terminals moet u mogelijk de dubbele aanhalings tekens verescapeen bij het verzenden van JSON-gegevens. Dat wil zeggen, de tekst `"location"` wordt `\"location\"`bijvoorbeeld. 
 
-Een succesvol verzoek `201 Created` krijgt een antwoord, maar houd er rekening mee dat dit antwoord gewoon betekent dat het inrichtingsproces is begonnen. Je moet de portal peilen (of gebruiken) om de succesvolle voltooiing ervan te bevestigen.
+Een geslaagde aanvraag ontvangt een `201 Created` reactie, maar houd er rekening mee dat dit antwoord simpelweg betekent dat het inrichtings proces is gestart. U moet pollen (of de portal gebruiken) om de geslaagde voltooiing te bevestigen.
 
-### <a name="create-an-experimental-run"></a>Een experimentele run maken
+### <a name="create-an-experimental-run"></a>Een experimentele uitvoering maken
 
-Als u een run in een experiment wilt starten, hebt u een zip-map nodig met uw trainingsscript en gerelateerde bestanden en een JSON-bestand met rundefinitie. De zip-map moet het Python-invoerbestand in de hoofdmap hebben. Als voorbeeld, rits een triviaal Python-programma zoals het volgende in een map genaamd **train.zip**.
+Als u een run binnen een experiment wilt starten, hebt u een zip-map met uw trainings script en gerelateerde bestanden nodig en een JSON-bestand met de definitie van de run. De map zip moet het python-invoer bestand hebben in de hoofdmap. Een voor beeld: een trivial python-programma zoals het volgende in een map met de naam **Train. zip**.
 
 ```python
 # hello.py
@@ -278,7 +278,7 @@ Als u een run in een experiment wilt starten, hebt u een zip-map nodig met uw tr
 print("Hello, REST!")
 ```
 
-Sla dit volgende fragment op als **definition.json**. Bevestig dat de waarde 'Script' overeenkomt met de naam van het Python-bestand dat u zojuist hebt opgeritst. Bevestig dat de waarde 'Doel' overeenkomt met de naam van een beschikbare rekenbron. 
+Sla dit volgende fragment op als **definitie. json**. Bevestig dat de waarde ' script ' overeenkomt met de naam van het python-bestand dat u net hebt ingepakt. Bevestig dat de doel waarde overeenkomt met de naam van een beschik bare Compute-resource. 
 
 ```json
 {
@@ -320,7 +320,7 @@ Sla dit volgende fragment op als **definition.json**. Bevestig dat de waarde 'Sc
 }
 ```
 
-Plaats deze bestanden op `multipart/form-data` de server met inhoud:
+Post deze bestanden op de server met `multipart/form-data` behulp van inhoud:
 
 ```bash
 curl https://{regional-api-server}/execution/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/experiments/{your-experiment-name}/startrun?api-version=2019-11-01 \
@@ -331,7 +331,7 @@ curl https://{regional-api-server}/execution/v1.0/subscriptions/{your-subscripti
   -F runDefinitionFile=@runDefinition.json
 ```
 
-Een succesvol POST-verzoek `200 OK` genereert een status, met een antwoordtekst die de id van de gemaakte run bevat:
+Met een succes volle POST-aanvraag `200 OK` wordt een status gegenereerd met een antwoord tekst die de id van de gemaakte uitvoering bevat:
 
 ```json
 {
@@ -339,7 +339,7 @@ Een succesvol POST-verzoek `200 OK` genereert een status, met een antwoordtekst 
 }
 ```
 
-U een run controleren met behulp van het REST-ful patroon dat nu bekend moet zijn:
+U kunt een uitvoering bewaken met het REST-volledige-patroon dat nu bekend moet zijn:
 
 ```bash
 curl 'https://{regional-api-server}/history/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/experiments/{your-experiment-names}/runs/{your-run-id}?api-version=2019-11-01' \
@@ -348,7 +348,7 @@ curl 'https://{regional-api-server}/history/v1.0/subscriptions/{your-subscriptio
 
 ### <a name="delete-resources-you-no-longer-need"></a>Resources verwijderen die u niet meer nodig hebt
 
-Sommige, maar niet alle bronnen ondersteunen het werkwoord DELETE. Controleer de [API-verwijzing](https://docs.microsoft.com/rest/api/azureml/) voordat u zich verbindt met de REST API voor use-cases voor verwijdering. Als u bijvoorbeeld een model wilt verwijderen, u het:
+Sommige, maar niet alle resources ondersteunen de VERWIJDERings bewerking. Controleer de [API-verwijzing](https://docs.microsoft.com/rest/api/azureml/) voordat u de rest API doorvoert voor het gebruik van verwijderings aanvragen. Als u een model wilt verwijderen, kunt u bijvoorbeeld het volgende gebruiken:
 
 ```bash
 curl
@@ -359,7 +359,7 @@ curl
 
 ## <a name="use-rest-to-score-a-deployed-model"></a>REST gebruiken om een geïmplementeerd model te scoren
 
-Hoewel het mogelijk is om een model zo te implementeren dat het wordt geverifieerd met een serviceprincipal, gebruiken de meeste clientgerichte implementaties verificatie op basis van sleutels. De juiste sleutel vindt u op de pagina van uw implementatie op het tabblad **Eindpunten** van Studio. Op dezelfde locatie wordt de score van uw eindpunt URI weergegeven. De ingangen van uw model moeten worden `data`gemodelleerd als een JSON-array met de naam:
+Hoewel het mogelijk is om een model te implementeren, zodat het wordt geverifieerd met een Service-Principal, gebruiken de meeste client gerichte implementaties op basis van sleutel verificatie. U vindt de juiste sleutel op de pagina van de implementatie op het tabblad **eind punten** van Studio. Op dezelfde locatie wordt de Score-URI van uw eind punt weer gegeven. De invoer van uw model moet worden gemodelleerd als een JSON `data`-matrix met de naam:
 
 ```bash
 curl 'https://{scoring-uri}' \
@@ -368,11 +368,11 @@ curl 'https://{scoring-uri}' \
   -d '{ "data" : [ {model-specific-data-structure} ] }
 ```
 
-## <a name="create-a-workspace-using-rest"></a>Een werkruimte maken met REST 
+## <a name="create-a-workspace-using-rest"></a>Een werk ruimte maken met behulp van REST 
 
-Elke Azure ML-werkruimte is afhankelijk van vier andere Azure-resources: een containerregister met beheer ingeschakeld, een sleutelkluis, een Application Insights-bron en een opslagaccount. U geen werkruimte maken totdat deze bronnen bestaan. Raadpleeg de REST API-referentie voor de details van het maken van elk van deze bronnen.
+Elke Azure ML-werk ruimte heeft een afhankelijkheid van vier andere Azure-resources: een container register met ingeschakelde beheerders, een sleutel kluis, een Application Insights bron en een opslag account. U kunt pas een werk ruimte maken als deze resources bestaan. Raadpleeg de REST API verwijzing voor de details van het maken van deze resources.
 
-Als u een werkruimte wilt maken, `management.azure.com`plaatst u een aanroep die vergelijkbaar is met het volgende op . Hoewel deze oproep vereist dat u een groot aantal variabelen instelt, is deze structureel identiek aan andere oproepen die in dit artikel zijn besproken. 
+Als u een werk ruimte wilt maken, plaatst u een gesprek dat `management.azure.com`lijkt op het volgende. Hoewel voor deze aanroep een groot aantal variabelen moet worden ingesteld, is deze structuur identiek aan andere aanroepen die in dit artikel worden besproken. 
 
 ```bash
 curl -X PUT \
@@ -400,27 +400,27 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 }'
 ```
 
-U ontvangt `202 Accepted` een antwoord en, in de `Location` geretourneerde kopteksten, een URI. U deze URI ophalen voor informatie over de implementatie, inclusief nuttige foutopsporingsgegevens als er een probleem is met een van uw afhankelijke bronnen (bijvoorbeeld als u bent vergeten beheerderstoegang in uw containerregister in te schakelen). 
+U ontvangt een `202 Accepted` reactie en, in de geretourneerde headers, een `Location` URI. U kunt deze URI ophalen voor informatie over de implementatie, met inbegrip van nuttige informatie over fout opsporing als er een probleem is met een van de afhankelijke bronnen (bijvoorbeeld als u bent verg eten om beheerders toegang in te scha kelen in uw container register). 
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-### <a name="resource-provider-errors"></a>Fouten in resourceprovider
+### <a name="resource-provider-errors"></a>Fouten van de resource provider
 
 [!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
 
-### <a name="moving-the-workspace"></a>De werkruimte verplaatsen
+### <a name="moving-the-workspace"></a>De werk ruimte verplaatsen
 
 > [!WARNING]
-> Het verplaatsen van uw Azure Machine Learning-werkruimte naar een ander abonnement of het verplaatsen van het eigen abonnement naar een nieuwe tenant wordt niet ondersteund. Dit kan fouten veroorzaken.
+> Het verplaatsen van uw Azure Machine Learning-werk ruimte naar een ander abonnement of het verplaatsen van het abonnement dat eigenaar is naar een nieuwe Tenant, wordt niet ondersteund. Dit kan fouten veroorzaken.
 
-### <a name="deleting-the-azure-container-registry"></a>Het Azure-containerregister verwijderen
+### <a name="deleting-the-azure-container-registry"></a>De Azure Container Registry verwijderen
 
-De Azure Machine Learning-werkruimte gebruikt Azure Container Registry (ACR) voor sommige bewerkingen. Het zal automatisch een ACR-exemplaar maken wanneer het er voor het eerst een nodig heeft.
+In de Azure Machine Learning-werk ruimte wordt Azure Container Registry (ACR) gebruikt voor bepaalde bewerkingen. Er wordt automatisch een ACR-exemplaar gemaakt wanneer dit voor het eerst nodig is.
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk de volledige [AzureML REST API-referentie.](https://docs.microsoft.com/rest/api/azureml/)
-- Meer informatie over het gebruik van Studio & Designer to [Predict auto prijs met de ontwerper (preview)](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score).
-- Ontdek [Azure Machine Learning met Jupyter-notitieblokken.](https://docs.microsoft.com/azure//machine-learning/samples-notebooks)
+- Verken de volledige [referentie voor AzureML-rest API](https://docs.microsoft.com/rest/api/azureml/).
+- Meer informatie over het gebruik van Studio & Designer voor het voors [pellen van prijzen voor auto Mobile met de ontwerp functie (preview)](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score).
+- Verken [Azure machine learning met Jupyter-notebooks](https://docs.microsoft.com/azure//machine-learning/samples-notebooks).

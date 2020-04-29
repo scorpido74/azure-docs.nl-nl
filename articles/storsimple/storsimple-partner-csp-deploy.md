@@ -1,6 +1,6 @@
 ---
-title: StorSimple Virtual Array for Cloud Solution Provider Program implementeren
-description: Een overzicht over de StorSimple en CSP voor StorSimple partners.
+title: StorSimple Virtual array implementeren voor het Cloud Solution Provider-programma
+description: Een overzicht van de StorSimple en CSP voor StorSimple-partners.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,93 +15,93 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 7f1927a67127766c72be463c283225135b2a2aad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77466906"
 ---
-# <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>StorSimple Virtual Array for Cloud Solution Provider Program implementeren
+# <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>StorSimple Virtual array implementeren voor het Cloud Solution Provider-programma
 
 ## <a name="overview"></a>Overzicht
 
-StorSimple Virtual Array kan worden geïmplementeerd door de Cloud Solution Provider (CSP) partners voor hun klanten. Een CSP-partner kan een StorSimple Device Manager-service maken. Deze service kan vervolgens worden gebruikt voor het implementeren en beheren van StorSimple Virtual Array en de bijbehorende shares, volumes en back-ups.
+De virtuele StorSimple-matrix kan worden geïmplementeerd door de CSP-partners (Cloud Solution Provider) voor hun klanten. Een CSP-partner kan een StorSimple-Apparaatbeheer service maken. Deze service kan vervolgens worden gebruikt voor het implementeren en beheren van de virtuele StorSimple-matrix en de bijbehorende shares, volumes en back-ups.
 
-In dit artikel wordt beschreven hoe een CSP-partner een klant of een nieuw abonnement aan een bestaande klant kan toevoegen en vervolgens een service kan maken om een StorSimple Virtual Array in CSP te implementeren.
+In dit artikel wordt beschreven hoe een CSP-partner een klant of een nieuw abonnement aan een bestaande klant kan toevoegen en vervolgens een service kan maken voor het implementeren van een virtuele StorSimple-matrix in CSP.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u begint, moet u ervoor zorgen dat:
 
-- U bent ingeschreven in het kader van het CSP-programma.
-- U beschikt over geldige [inloggegevens van het Partnercenter.](https://partnercenter.microsoft.com/) Met de referenties u zich aanmelden bij de partnerportal om nieuwe klanten toe te voegen, klanten te zoeken of naar een klantenaccount te navigeren vanuit het partnerdashboard. De CSP kan namens de klant functioneren als StorSimple-beheerder in de Azure-portal.
+- U bent Inge schreven onder het CSP-programma.
+- U hebt geldige aanmeldings referenties voor het [partner centrum](https://partnercenter.microsoft.com/) . Met de referenties kunt u zich aanmelden bij de Partner Portal om nieuwe klanten toe te voegen, te zoeken naar klanten of naar een klant account te navigeren vanuit het dash board van de partner. De CSP kan worden gebruikt als een StorSimple-beheerder namens de klant in de Azure Portal.
                              
 ## <a name="add-a-customer"></a>Een klant toevoegen
 
-Als u een klant toevoegt, wordt er automatisch een abonnement gemaakt. Als u een klant wilt toevoegen (en automatisch een abonnement wilt maken), voert u de volgende stappen uit in de partnerportal.
+Als u een klant toevoegt, wordt er automatisch een abonnement gemaakt. Als u een klant wilt toevoegen (en automatisch een abonnement wilt maken), voert u de volgende stappen uit in de partner portal.
 
-1. Ga naar het [Partnercentrum](https://partnercenter.microsoft.com/) en meld u aan met uw CSP-referenties. Klik op **Dashboard**.
+1. Ga naar het [partner centrum](https://partnercenter.microsoft.com/) en meld u aan met uw CSP-referenties. Klik op **dash board**.
 
-     ![Dashboard in partnercentrum](./media/storsimple-partner-csp-deploy/image1.png)
+     ![Dash board in partner centrum](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. Klik in het linkerdeelvenster op **Klanten**. Klik in het rechterdeelvenster op **Klanten toevoegen**. Voer de gegevens van de klant in. Klik **op Volgende: Abonnementen** om een klantabonnement te maken.
+2. Klik in het linkerdeel venster op **klanten**. Klik in het rechterdeel venster op **klanten toevoegen**. Voer de details van de klant in. Klik op **volgende: abonnementen** om een klant abonnement te maken.
 
     ![Klant toevoegen](./media/storsimple-partner-csp-deploy/image2.png)
 
-3.  Selecteer **Microsoft Azure-aanbieding.** Schuif naar de onderkant van de pagina en klik op **Controleren**.
+3.  Selecteer **Microsoft Azure** aanbieding. Ga naar de onderkant van de pagina en klik op **controleren**.
 
-    ![Abonnementsgegevens bekijken](./media/storsimple-partner-csp-deploy/image3.png)
+    ![Abonnements gegevens controleren](./media/storsimple-partner-csp-deploy/image3.png)
                               
-4. Bekijk de informatie en klik op **Verzenden**.
+4. Lees de informatie en klik op **verzenden**.
 
     ![Abonnement verzenden](./media/storsimple-partner-csp-deploy/image4.png)
 
-5. Sla de bevestigingsgegevens op voor toekomstige referentie.
+5. Sla de bevestigings gegevens op voor toekomstig naslag doeleinden.
 
     ![Bevestiging opslaan](./media/storsimple-partner-csp-deploy/image5.png)
 
-6. Zoek of navigeer naar de klant die u zojuist hebt toegevoegd. Klik op de **bedrijfsnaam** om in te zoomen op de details.
+6. Zoek of navigeer naar de klant die u zojuist hebt toegevoegd. Klik op de naam van het **bedrijf** om in te zoomen op de details.
 
     ![Zoeken naar de klant](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. Selecteer **Servicebeheer**in het linkerdeelvenster . Klik in het rechterdeelvenster onder **Services beheren**op **Microsoft Azure Management Portal** om u aan te melden als Azure-beheerder voor uw klant.
+7. Selecteer **Service beheer**in het linkerdeel venster. Klik in het rechterdeel venster onder **Services beheren**op **Microsoft Azure Management Portal** om u aan te melden als een Azure-beheerder voor uw klant.
 
     ![Aanmelden bij Azure Portal](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. Als u een StorSimple-apparaatbeheer wilt maken, klikt u op **+ Nieuw** en zoekt of navigeert u naar **de StorSimple Virtual Device-serie**. Ga voor meer informatie naar [Een StorSimple Device Manager-service implementeren.](storsimple-virtual-array-manage-service.md)
+8. Als u een StorSimple-Apparaatbeheer wilt maken, klikt u op **+ Nieuw** en zoekt of navigeert u naar **StorSimple virtuele-Device Series**. Ga naar [Deploy a StorSimple Apparaatbeheer service](storsimple-virtual-array-manage-service.md)voor meer informatie.
 
-    ![StorSimple Device Manager-service maken](./media/storsimple-partner-csp-deploy/image8.png)
+    ![StorSimple Apparaatbeheer-service maken](./media/storsimple-partner-csp-deploy/image8.png)
 
 
 ## <a name="add-a-subscription"></a>Een abonnement toevoegen
 
-In sommige gevallen hebt u mogelijk een bestaande klant en moet u een abonnement toevoegen. Voer de volgende stappen uit in de partnerportal om een abonnement toe te voegen aan een bestaande klant.
+In sommige gevallen hebt u mogelijk een bestaande klant en moet u een abonnement toevoegen. Als u een abonnement wilt toevoegen aan een bestaande klant, voert u de volgende stappen uit in de partner portal.
 
-1. Ga naar het [Partnercentrum](https://partnercenter.microsoft.com/) en meld u aan met uw CSP-referenties. Klik op **Dashboard**.
+1. Ga naar het [partner centrum](https://partnercenter.microsoft.com/) en meld u aan met uw CSP-referenties. Klik op **dash board**.
 
-     ![Dashboard in partnercentrum](./media/storsimple-partner-csp-deploy/image1.png)
+     ![Dash board in partner centrum](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. Klik in het linkerdeelvenster op **Klanten**. Zoek of navigeer naar de klant waaraan u een abonnement wilt toevoegen. Klik ![op het](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) pictogram Controle uitvouwen om de rij voor de bedrijfsnaam voor uw klant uit te vouwen. Klik in de details op **Abonnementen toevoegen**.
+2. Klik in het linkerdeel venster op **klanten**. Zoek of navigeer naar de klant aan wie u een abonnement wilt toevoegen. Klik op ![het pictogram selectie](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) uitvouwen om de rij voor de bedrijfs naam voor uw klant uit te vouwen. Klik in de details op **abonnementen toevoegen**.
 
     ![Customers](./media/storsimple-partner-csp-deploy/image10.png)
 
-3. Controleer **Microsoft Azure** op de **topaanbiedingen** in het abonnement en klik op **Verzenden**. Hierdoor ontstaat een nieuw abonnement.
+3. Controleer **Microsoft Azure** voor de **beste aanbiedingen** in het abonnement en klik op **verzenden**. Hiermee maakt u een nieuw abonnement.
 
     ![Nieuw abonnement toevoegen](./media/storsimple-partner-csp-deploy/image11.png)
 
-6. Nadat een nieuw abonnement is gemaakt, klikt u op **<- Klanten** in het linkerdeelvenster om terug te keren naar de pagina **Klanten.** Zoek naar de klant voor wie u zojuist een abonnement hebt gemaakt. Klik op de **bedrijfsnaam** om in te zoomen op de details.
+6. Wanneer een nieuw abonnement is gemaakt, klikt u op **<--klanten** in het linkerdeel venster om terug te gaan naar de pagina **klanten** . Zoek naar de klant voor wie u zojuist een abonnement hebt gemaakt. Klik op de naam van het **bedrijf** om in te zoomen op de details.
 
     ![Zoeken naar de klant](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. Selecteer **Servicebeheer**in het linkerdeelvenster . Klik in het rechterdeelvenster onder **Services beheren**op **Microsoft Azure Management Portal** om u aan te melden als Azure-beheerder voor uw klant.
+7. Selecteer **Service beheer**in het linkerdeel venster. Klik in het rechterdeel venster onder **Services beheren**op **Microsoft Azure Management Portal** om u aan te melden als een Azure-beheerder voor uw klant.
 
     ![Aanmelden bij Azure Portal](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. Als u een StorSimple-apparaatbeheer wilt maken, klikt u op **+ Nieuw** en zoekt of navigeert u naar **de StorSimple Virtual Device-serie**. Ga voor meer informatie naar [Een StorSimple Device Manager-service implementeren.](storsimple-virtual-array-manage-service.md)
+8. Als u een StorSimple-Apparaatbeheer wilt maken, klikt u op **+ Nieuw** en zoekt of navigeert u naar **StorSimple virtuele-Device Series**. Ga naar [Deploy a StorSimple Apparaatbeheer service](storsimple-virtual-array-manage-service.md)voor meer informatie.
 
-    ![StorSimple Device Manager-service maken](./media/storsimple-partner-csp-deploy/image8.png)
+    ![StorSimple Apparaatbeheer-service maken](./media/storsimple-partner-csp-deploy/image8.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u meer vragen over de StorSimple in CSP, ga dan naar [StorSimple in CSP: Veelgestelde vragen](storsimple-partner-csp-faq.md).
-- Als u klaar bent om uw StorSimple te implementeren, gaat u naar [Uw StorSimple implementeren in CSP.](storsimple-partner-csp-deploy.md)
+- Als u meer vragen hebt over de StorSimple in CSP, gaat u naar [StorSimple in CSP: veelgestelde vragen](storsimple-partner-csp-faq.md).
+- Als u klaar bent om uw StorSimple te implementeren, gaat u naar [uw StorSimple implementeren in CSP](storsimple-partner-csp-deploy.md).

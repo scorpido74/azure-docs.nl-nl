@@ -1,6 +1,6 @@
 ---
-title: Time Series Insights integreren met remote monitoring - Azure | Microsoft Documenten
-description: In deze how-to leert u hoe u Time Series Insights configureert voor een bestaande oplossing voor bewaking op afstand die nog geen Time Series Insights bevat.
+title: Time Series Insights integreren met externe controle-Azure | Microsoft Docs
+description: In deze procedure leert u hoe u Time Series Insights kunt configureren voor een bestaande oplossing voor controle op afstand die nog geen Time Series Insights bevat.
 author: Philmea
 manager: timlt
 ms.author: philmea
@@ -9,138 +9,138 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77564641"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integreer Azure Time Series Insights met Externe bewaking
 
-Azure Time Series Insights is een volledig beheerde analyse-, opslag- en visualisatieservice voor het beheren van iot-scale tijdreeksgegevens in de cloud. U Time Series Insights gebruiken om tijdreeksgegevens op te slaan en te beheren, gebeurtenissen tegelijkertijd te verkennen en te visualiseren, root-cause-analyses uit te voeren en meerdere sites en assets te vergelijken.
+Azure Time Series Insights is een volledig beheerde analyse-, opslag-en visualisatie service voor het beheren van gegevens in de Cloud voor de tijd reeks van IoT-schaal. U kunt Time Series Insights gebruiken om gegevens van een tijd reeks op te slaan en te beheren, gebeurtenissen tegelijkertijd te verkennen en te visualiseren, de analyse van de hoofd oorzaak uit te voeren en meerdere sites en assets te vergelijken.
 
-De Remote Monitoring oplossingsversneller biedt nu automatische implementatie en integratie met Time Series Insights. In deze how-to leert u hoe u Time Series Insights configureert voor een bestaande oplossing voor externe bewaking die nog geen Time Series Insights bevat.
+De oplossings versneller voor externe controle biedt nu automatische implementatie en integratie met Time Series Insights. In deze procedure leert u hoe u Time Series Insights kunt configureren voor een bestaande oplossing voor controle op afstand die nog geen Time Series Insights bevat.
 
 > [!NOTE]
-> Time Series Insights is momenteel niet beschikbaar in de Azure China-cloud. Nieuwe remote monitoring oplossing sversneller implementaties in de Azure China cloud gebruik Cosmos DB voor alle opslag.
+> Time Series Insights is momenteel niet beschikbaar in de Azure China-Cloud. Nieuwe implementaties van oplossingen voor externe bewaking in de cloud van Azure China gebruik Cosmos DB voor alle opslag.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om deze how-to te voltooien, moet u al een oplossing voor externe bewaking hebben geïmplementeerd:
+Als u deze procedure wilt volt ooien, moet u al een oplossing voor externe controle hebben geïmplementeerd:
 
-* [De remote monitoring oplossingsversneller implementeren](quickstart-remote-monitoring-deploy.md)
+* [De oplossings versneller voor externe controle implementeren](quickstart-remote-monitoring-deploy.md)
 
-## <a name="create-a-consumer-group"></a>Een consumentengroep maken
+## <a name="create-a-consumer-group"></a>Een Consumer groep maken
 
-Maak een speciale consumentengroep in uw IoT-hub om gegevens te streamen naar Time Series Insights.
+Maak een speciale Consumer groep in uw IoT Hub die moet worden gebruikt voor het streamen van gegevens naar Time Series Insights.
 
 > [!NOTE]
-> Consumentengroepen worden door toepassingen gebruikt om gegevens uit Azure IoT Hub te halen. Elke consumentengroep staat maximaal vijf outputconsumenten toe. U moet een nieuwe consumentengroep maken voor elke vijf uitgangsputten en u maximaal 32 consumentengroepen maken.
+> Consumenten groepen worden gebruikt door toepassingen voor het ophalen van gegevens uit Azure IoT Hub. Elke consumenten groep biedt Maxi maal vijf uitvoer verbruikers. U moet een nieuwe Consumer groep maken voor elke vijf uitvoer-sinks en u kunt Maxi maal 32 consumenten groepen maken.
 
-1. Klik in de Azure-portal op de knop Cloud Shell.
+1. Klik in het Azure Portal op de knop Cloud Shell.
 
-1. Voer de volgende opdracht uit om een nieuwe consumentengroep te maken. Gebruik de naam van de IoT-hub in uw implementatie met externe bewaking en de naam van uw implementatie op afstandbewaking als de naam van de brongroep:
+1. Voer de volgende opdracht uit om een nieuwe consumenten groep te maken. Gebruik de naam van de IoT-hub in uw implementatie voor externe controle en de naam van uw implementatie voor externe controle als de naam van de resource groep:
 
 ```azurecli-interactive
 az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsights --resource-group ContosoRM
 ```
 
-## <a name="deploy-time-series-insights"></a>Inzichten in tijdreeksen implementeren
+## <a name="deploy-time-series-insights"></a>Time Series Insights implementeren
 
-Implementeer vervolgens Time Series Insights als extra bron in uw oplossing voor externe bewaking en verbind deze met de IoT-hub.
+Implementeer vervolgens Time Series Insights als een extra bron in uw oplossing voor externe controle en verbind deze met de IoT-hub.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-1. Selecteer Inzicht in een > bron**internet van dingen** > **voor timeseries** **maken.**
+1. Selecteer **een resource** > **maken internet of Things** > **Time Series Insights**.
 
-    ![Inzichten in nieuwe tijdseries](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights.png)
+    ![Nieuwe Time Series Insights](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights.png)
 
-1. Als u uw timeseries insights-omgeving wilt maken, gebruikt u de waarden in de volgende tabel:
+1. Als u uw Time Series Insights omgeving wilt maken, gebruikt u de waarden in de volgende tabel:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Naam van omgeving | De volgende screenshot maakt gebruik van de naam **contorosrmtsi**. Kies uw eigen unieke naam wanneer u deze stap voltooit. |
+    | Naam van omgeving | De volgende scherm afbeelding maakt gebruik van de naam **contorosrmtsi**. Kies uw eigen unieke naam wanneer u deze stap uitvoert. |
     | Abonnement | Selecteer uw Azure-abonnement in de vervolgkeuzelijst. |
-    | Resourcegroep | **Bestaande gebruiken**. Selecteer de naam van uw bestaande externe bewakingsbrongroep. |
-    | Locatie | We gebruiken **Oost-VS.** Maak uw omgeving in dezelfde regio als uw oplossing voor externe bewaking, indien mogelijk. |
+    | Resourcegroep | **Bestaande gebruiken**. Selecteer de naam van de bestaande resource groep voor externe bewaking. |
+    | Locatie | We gebruiken **VS-Oost**. Maak indien mogelijk uw omgeving in dezelfde regio als uw oplossing voor externe controle. |
     | Sku |**S1** |
     | Capaciteit | **1** |
 
-    ![Inzichten in de tijdreeks maken](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
+    ![Time Series Insights maken](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
-1. Klik **op Maken**. Het kan even duren voordat de omgeving wordt gecreëerd.
+1. Klik op **maken**. Het kan even duren voordat de omgeving is gemaakt.
 
 ## <a name="create-event-source"></a>Gebeurtenisbron maken
 
-Maak een nieuwe gebeurtenisbron om verbinding te maken met uw IoT-hub. Zorg ervoor dat u de consumentengroep gebruikt die in de vorige stappen is gemaakt. Time Series Insights vereist dat elke service een speciale consumentengroep heeft die niet door een andere service wordt gebruikt.
+Maak een nieuwe gebeurtenis bron om verbinding te maken met uw IoT-hub. Zorg ervoor dat u de Consumer groep gebruikt die in de vorige stappen is gemaakt. Time Series Insights moet elke service een speciale Consumer-groep hebben die niet wordt gebruikt door een andere service.
 
-1. Navigeer naar uw nieuwe Time Series Insights-omgeving.
+1. Navigeer naar uw nieuwe Time Series Insights omgeving.
 
-1. Selecteer aan de linkerkant **Gebeurtenisbronnen**.
+1. Klik aan de linkerkant op **gebeurtenis bronnen**.
 
-    ![Gebeurtenisbronnen weergeven](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources.png)
+    ![Gebeurtenis bronnen weer geven](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources.png)
 
-1. Klik op**toevoegen**.
+1. Klik op **Add**.
 
-    ![Gebeurtenisbron toevoegen](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources-add.png)
+    ![Gebeurtenis bron toevoegen](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources-add.png)
 
-1. Als u uw IoT-hub wilt configureren als een nieuwe gebeurtenisbron, gebruikt u de waarden in de volgende tabel:
+1. Als u uw IoT-hub als een nieuwe gebeurtenis bron wilt configureren, gebruikt u de waarden in de volgende tabel:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Naam van gebeurtenisbron | De volgende screenshot maakt gebruik van de naam **contosorm-iot-hub**. Gebruik je eigen unieke naam wanneer je deze stap voltooit. |
-    | Bron | **IoT-hub** |
-    | Importoptie | **IoT Hub gebruiken via beschikbare abonnementen** |
+    | Naam van gebeurtenisbron | De volgende scherm afbeelding maakt gebruik van de naam **contosorm-IOT-hub**. Gebruik uw eigen unieke naam wanneer u deze stap uitvoert. |
+    | Bron | **IoT Hub** |
+    | Importoptie | **IoT Hub van beschik bare abonnementen gebruiken** |
     | Abonnements-id | Selecteer uw Azure-abonnement in de vervolgkeuzelijst. |
-    | Iot-hubnaam | **contosorma57a6**. Gebruik de naam van uw IoT-hub vanuit uw oplossing voor externe bewaking. |
-    | Naam van het IoT-hub-beleid | **iothubowner** Controleer of het gebruikte beleid een eigenaarbeleid is. |
-    | Iot hub beleidssleutel | Dit veld wordt automatisch ingevuld. |
-    | IoT-hub-consumentengroep | **tijdreekseninzichten** |
-    | Serialisatie-indeling voor gebeurtenissen | **Json**     | 
+    | IOT-hub-naam | **contosorma57a6**. Gebruik de naam van uw IoT-hub vanuit uw oplossing voor externe controle. |
+    | Naam van het IoT-hub-beleid | **iothubowner** Zorg ervoor dat het gebruikte beleid een eigenaars beleid is. |
+    | Beleids sleutel voor IOT hub | Dit veld wordt automatisch ingevuld. |
+    | IoT-hub-consumentengroep | **timeseriesinsights** |
+    | Serialisatie-indeling voor gebeurtenissen | **JSON**     | 
     | Naam van de timestamp-eigenschap | Leeg laten |
 
-    ![Gebeurtenisbron maken](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
+    ![Gebeurtenis bron maken](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Klik **op Maken**.
+1. Klik op **maken**.
 
-## <a name="configure-the-data-access-policy"></a>Het beleid voor gegevenstoegangs configureren
+## <a name="configure-the-data-access-policy"></a>Het beleid voor gegevens toegang configureren
 
-Voeg uw toepassing en gebruikers toe onder het beleid voor gegevenstoegang in de Azure-portal om ervoor te zorgen dat alle gebruikers die toegang hebben tot uw oplossing voor externe bewaking gegevens kunnen verkennen in de Time Series Insights explorer. 
+Om ervoor te zorgen dat alle gebruikers die toegang hebben tot uw oplossing voor externe controle, gegevens kunnen verkennen in de Time Series Insights Explorer, voegt u uw toepassing en gebruikers toe onder beleid voor gegevens toegang in de Azure Portal. 
 
 1. Kies **Resourcegroepen** in de navigatielijst.
 
-1. Kies de **contosorm-brongroep.**
+1. Kies de resource groep **ContosoRM** .
 
-1. Kies **contosormtsi** in de lijst met Azure-bronnen.
+1. Kies **contosormtsi** in de lijst met Azure-resources.
 
-1. Kies **Beleid voor gegevenstoegang** om de huidige lijst met roltoewijzingen weer te geven.
+1. Kies **Data Access policies** om de huidige lijst met roltoewijzingen weer te geven.
 
-1. Kies **Toevoegen** om het deelvenster **Gebruikersregel selecteren te** openen.
+1. Kies **toevoegen** om het deel venster **gebruikers regel selecteren** te openen.
 
-   Als u geen machtigingen hebt om rollen toe te wijzen, ziet u de optie **Toevoegen** niet.
+   Als u geen machtigingen hebt om rollen toe te wijzen, ziet u de optie **toevoegen** niet.
 
-1. Selecteer **in** de vervolgkeuzelijst Rol een rol zoals **Reader** en **Contributor**.
+1. Selecteer in de vervolg keuzelijst **rol** een rol zoals **lezer** en **Inzender**.
 
 1. Selecteer in de lijst **Selecteren** een gebruiker, groep of toepassing. Als u de beveiligings-principal niet in de lijst ziet staan, kunt u tekst typen in het vak **Selecteren** om te zoeken naar weergavenamen, e-mailadressen en object-id's.
 
-1. Kies **Opslaan** om de roltoewijzing te maken. Na enkele ogenblikken krijgt de beveiligingsprincipal de rol toegewezen in het beleid voor gegevenstoegang.
+1. Kies **Opslaan** om de roltoewijzing te maken. Na enkele ogen blikken wordt aan de beveiligingsprincipal de rol toegewezen in het beleid voor gegevens toegang.
 
 > [!NOTE]
-> Als u extra gebruikers toegang moet verlenen tot de Time Series Insights explorer, u deze stappen gebruiken om [gegevenstoegang te verlenen.](../time-series-insights/time-series-insights-data-access.md#grant-data-access)
+> Als u extra gebruikers toegang wilt verlenen tot de Time Series Insights Explorer, kunt u deze stappen gebruiken om [toegang tot gegevens te verlenen](../time-series-insights/time-series-insights-data-access.md#grant-data-access).
 
 ## <a name="configure-azure-stream-analytics"></a>Azure Stream Analytics configureren 
 
-De volgende stap is het configureren van de microservice Azure Stream Analytics Manager om te stoppen met het verzenden van berichten naar Cosmos DB en ze alleen op te slaan in Time Series Insights. Sla deze stap over als u uw berichten wilt dupliceren in Cosmos DB.
+De volgende stap is het configureren van de Azure Stream Analytics Manager-micro service om het verzenden van berichten naar Cosmos DB te stoppen en deze alleen op te slaan in Time Series Insights. Sla deze stap over als u uw berichten in Cosmos DB wilt dupliceren.
 
 1. Kies **Resourcegroepen** in de navigatielijst.
 
-1. Kies de **contosorm-brongroep.**
+1. Kies de resource groep **ContosoRM** .
 
-1. Zoek de streamingtaak Azure Stream Analytics (ASA) in de lijst met bronnen. De naam van de bron begint met **streamingjobs-**.
+1. Zoek de streaming-taak van Azure Stream Analytics (ASA) in de lijst met resources. De resource naam begint met **streamingjobs-**.
 
-1. Klik bovenaan op de knop om de ASA-streamingtaken te stoppen.
+1. Klik bovenaan op de knop om de ASA streaming-taken te stoppen.
 
-1. Bewerk de ASA-query en verwijder de **SELECT,** **INTO**en **VAN-clausules** die wijzen op de berichtenstream in Cosmos DB. Deze clausules moeten onder aan de query staan en lijken op het volgende voorbeeld:
+1. Bewerk de ASA-query en verwijder de componenten **Select**, **into**en **from** die verwijzen naar de berichten stroom in Cosmos db. Deze componenten moeten aan de onderkant van de query worden weer geven, zoals in het volgende voor beeld:
 
     ```sql
     SELECT
@@ -159,9 +159,9 @@ De volgende stap is het configureren van de microservice Azure Stream Analytics 
         DeviceTelemetry T PARTITION BY PartitionId TIMESTAMP BY T.EventEnqueuedUtcTime
     ```
 
-6. Start de streamingtaken van Azure Stream Analytics opnieuw.
+6. Start de Azure Stream Analytics streaming-taken opnieuw.
 
-7. Trek de laatste wijzigingen in de microservice van Azure Stream Analytics manager door de volgende opdracht te typen bij de opdrachtprompt:
+7. Haal de meest recente wijzigingen door aan de micro service Azure Stream Analytics Manager door de volgende opdracht te typen bij de opdracht prompt:
 
 .NET: 
 
@@ -175,9 +175,9 @@ Java:
 docker pull azureiotpcs/asa-manager-java:1.0.2
 ```
 
-## <a name="configure-the-telemetry-microservice"></a>De microservice Telemetrie configureren
+## <a name="configure-the-telemetry-microservice"></a>De telemetrie-service configureren
 
-Trek de nieuwste microservice telemetrie uit door de volgende opdracht in de opdrachtprompt te typen:
+Haal de meest recente telemetrie-service op door de volgende opdracht in te voeren in de opdracht prompt:
 
 .NET:
 
@@ -191,37 +191,37 @@ Java:
 docker pull azureiotpcs/telemetry-java:1.0.2
 ```
 
-## <a name="optional-configure-the-web-ui-to-link-to-the-time-series-insights-explorer"></a>*[Optioneel]* De webgebruikersinterface configureren om een koppeling te maken naar de Time Series Insights-verkenner
+## <a name="optional-configure-the-web-ui-to-link-to-the-time-series-insights-explorer"></a>*[Optioneel]* De Web-UI configureren om een koppeling naar de Time Series Insights Explorer te maken
 
-Om uw gegevens eenvoudig te bekijken in de Time Series Insights-verkenner, raden we u aan de gebruikersinterface aan te werken om eenvoudig een koppeling naar de omgeving te maken. Als u dit wilt doen, trekt u de nieuwste wijzigingen in de webgebruikersinterface uit met de volgende opdracht:
+Als u uw gegevens eenvoudig in de Time Series Insights Explorer wilt weer geven, kunt u het beste de gebruikers interface aanpassen, zodat u gemakkelijk kunt koppelen aan de omgeving. Als u dit wilt doen, haalt u de meest recente wijzigingen door aan de Web-UI met de volgende opdracht:
 
 ```cmd/sh
 docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 ```
 
-## <a name="configure-the-environment-variables"></a>De omgevingsvariabelen configureren
+## <a name="configure-the-environment-variables"></a>De omgevings variabelen configureren
 
-Als u de Time Series Insights-integratie wilt voltooien, moet u de omgeving van uw implementatie configureren voor de bijgewerkte microservices.
+Als u de integratie van Time Series Insights wilt volt ooien, moet u de omgeving van uw implementatie configureren voor de bijgewerkte micro Services.
 
-### <a name="basic-deployments"></a>Basisimplementaties
+### <a name="basic-deployments"></a>Basis implementaties
 
-Configureer de `basic` omgeving van implementatie voor de bijgewerkte microservices.
+Configureer de `basic` implementatie omgeving voor de bijgewerkte micro Services.
 
-1. Klik in de Azure-portal op het tabblad **Azure Active Directory** in het linkerdeelvenster.
+1. Klik in het Azure Portal op het tabblad **Azure Active Directory** in het deel venster aan de linkerkant.
 
-1. Klik op **App-registraties**.
+1. Klik op **app-registraties**.
 
-1. Zoek naar en klik op uw **ContosoRM** applicatie.
+1. Zoek en klik op uw **ContosoRM** -toepassing.
 
-1. Navigeer naar > **Instellingentoetsen** en maak vervolgens een nieuwe sleutel voor uw toepassing. **Settings** Zorg ervoor dat u de sleutelwaarde naar een veilige locatie kopieert.
+1. Navigeer naar **instellingen** > **sleutels** en maak een nieuwe sleutel voor uw toepassing. Zorg ervoor dat u de sleutel waarde naar een veilige locatie kopieert.
 
-1. Trek de [nieuwste docker componeren yaml bestand](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) van GitHub repo met behulp van de nieuwste tag. 
+1. Haal het [meest recente docker yaml-bestand](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) op uit github opslag plaats met de nieuwste tag. 
 
-1. SSH in de VM door de stappen te volgen die zijn beschreven voor [het maken en gebruiken van SSH-toetsen.](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
+1. SSH naar de virtuele machine door de stappen te volgen die worden beschreven in het [maken en gebruiken van SSH-sleutels](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
 
-1. Als u `cd /app`verbonden bent, typt u .
+1. Zodra u verbinding hebt `cd /app`gemaakt, typt u.
 
-1. Voeg de volgende omgevingsvariabelen toe aan elke microservice in het `env-setup` docker samenstellen yaml-bestand en het script in de VM:
+1. Voeg de volgende omgevings variabelen toe aan elke micro service in het docker yaml-bestand en `env-setup` het script in de virtuele machine:
 
     ```sh
     PCS_TELEMETRY_STORAGE_TYPE=tsi
@@ -231,24 +231,24 @@ Configureer de `basic` omgeving van implementatie voor de bijgewerkte microservi
     PCS_AAD_APPSECRET={AAD application key}
     ```
 
-1. Navigeer naar de **telemetrieservice** en bewerk ook het docker-samenstellingsbestand door dezelfde omgevingsvariabelen hierboven toe te voegen.
+1. Ga naar de **telemetrie-service** en bewerk het bestand docker opstellen door hierboven dezelfde omgevings variabelen toe te voegen.
 
-1. Navigeer naar de **ASA-managerservice** en bewerk `PCS_TELEMETRY_STORAGE_TYPE`het bestand voor het samenstellen van de docker door .
+1. Ga naar de **service ASA Manager** en bewerk het bestand docker opstellen door het toe `PCS_TELEMETRY_STORAGE_TYPE`te voegen.
 
-1. Start de dockercontainers opnieuw met behulp `sudo ./start.sh` van de VM.
+1. Start de docker-containers `sudo ./start.sh` opnieuw op via de VM.
 
 > [!NOTE]
-> De bovenstaande configuratie van omgevingsvariabelen is geldig voor versies met externe bewaking vóór 1.0.2
+> De bovenstaande configuratie van omgevings variabelen is geldig voor versies van externe controle voordat 1.0.2
 
-### <a name="standard-deployments"></a>Standaardimplementaties
+### <a name="standard-deployments"></a>Standaard implementaties
 
-De omgeving `standard` van implementatie configureren voor de bijgewerkte microservices hierboven
+Configureer de `standard` implementatie omgeving voor de bijgewerkte micro services hierboven
 
-1. Voer bij de `kubectl proxy`opdrachtregel uit. Zie voor meer informatie [toegang tot de Kubernetes API](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server).
+1. Voer op de opdracht regel uit `kubectl proxy`. Zie [toegang tot de Kubernetes-API](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server)voor meer informatie.
 
-1. Open de Kubernetes-beheerconsole.
+1. Open de Kubernetes-beheer console.
 
-1. Zoek de configuratiekaart om de volgende nieuwe omgevingsvariabelen voor TSI toe te voegen:
+1. Zoek de configuratie toewijzing om de volgende nieuwe omgevings variabelen voor de TSI toe te voegen:
 
     ```yaml
     telemetry.storage.type: "tsi"
@@ -256,7 +256,7 @@ De omgeving `standard` van implementatie configureren voor de bijgewerkte micros
     security.auth.serviceprincipal.secret: "{AAD application service principal secret}"
     ```
 
-4. Bewerk het yaml-bestand voor de inhoudsservice:
+4. Bewerk het sjabloon yaml-bestand voor de telemetrie-service Pod:
 
     ```yaml
     - name: PCS_AAD_TENANT
@@ -286,7 +286,7 @@ De omgeving `standard` van implementatie configureren voor de bijgewerkte micros
             key: telemetry.tsi.fqdn
     ```
 
-5. Bewerk het yaml-bestand voor de sjabloon voor asa-beheerservicepod:
+5. Bewerk het sjabloon yaml-bestand voor de ASA Manager-service Pod:
 
     ```yaml
     - name: PCS_TELEMETRY_STORAGE_TYPE
@@ -298,6 +298,6 @@ De omgeving `standard` van implementatie configureren voor de bijgewerkte micros
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie onze zelfstudie over het uitvoeren van een analyse van de [oorzaak](iot-accelerators-remote-monitoring-root-cause-analysis.md)voor meer informatie over het verkennen van uw gegevens en het diagnosticeren van een waarschuwing in de Time Series Insights-verkenner.
+* Zie onze zelf studie over het [uitvoeren van een analyse van hoofd oorzaken](iot-accelerators-remote-monitoring-root-cause-analysis.md)voor meer informatie over het verkennen van uw gegevens en het vaststellen van een waarschuwing in de time series Insights Explorer.
 
-* Zie documentatie over de Azure Time Series Insights explorer voor meer informatie over het verkennen en opvragen van gegevens in de Verkenner van Time Series [Insights.](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer)
+* Zie de documentatie op de [Azure time series Insights Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer)voor informatie over het verkennen en opvragen van gegevens in de time series Insights Explorer.

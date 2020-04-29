@@ -1,6 +1,6 @@
 ---
-title: Uw gegevens visualiseren met behulp van dashboards op basis van Azure Monitor-werkmappen in Azure Sentinel | Microsoft Documenten
-description: Gebruik deze zelfstudie om te leren hoe u uw gegevens visualiseert met behulp van dashboards op basis van werkmappen in Azure Sentinel.
+title: Visualiseer uw gegevens met behulp van Dash boards op basis van Azure Monitor werkmappen in azure Sentinel | Microsoft Docs
+description: Gebruik deze zelf studie om te leren hoe u uw gegevens kunt visualiseren met behulp van Dash boards op basis van werkmappen in azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,79 +15,79 @@ ms.workload: na
 ms.date: 01/01/2020
 ms.author: yelevin
 ms.openlocfilehash: b4461ac43e9356536914b345ef28f5de62fc9f82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77585217"
 ---
-# <a name="tutorial-visualize-and-monitor-your-data"></a>Zelfstudie: Uw gegevens visualiseren en bewaken
+# <a name="tutorial-visualize-and-monitor-your-data"></a>Zelf studie: uw gegevens visualiseren en bewaken
 
 
 
-Nadat u [uw gegevensbronnen](quickstart-onboard.md) hebt verbonden met Azure Sentinel, u de gegevens visualiseren en bewaken met behulp van de Azure Sentinel-adoptie van Azure Monitor-werkmappen, die veelzijdigheid biedt bij het maken van aangepaste dashboards. Hoewel de werkmappen anders worden weergegeven in Azure Sentinel, kan het handig zijn om te zien hoe u [interactieve rapporten maken met Azure Monitor-werkmappen.](../azure-monitor/app/usage-workbooks.md) Met Azure Sentinel u aangepaste werkmappen maken voor uw gegevens en wordt ook ingebouwde werkmapsjablonen geleverd waarmee u snel inzicht krijgen in uw gegevens zodra u een gegevensbron aansluit.
+Nadat u [uw gegevens bronnen](quickstart-onboard.md) aan Azure Sentinel hebt gekoppeld, kunt u de gegevens visualiseren en bewaken met behulp van de Azure Sentinel-acceptatie van Azure monitor werkmappen, die veelzijdigheid biedt bij het maken van aangepaste Dash boards. Hoewel de werkmappen anders worden weer gegeven in de Azure-Sentinel, kan het nuttig zijn om te zien hoe u [interactieve rapporten met Azure monitor werkmappen maakt](../azure-monitor/app/usage-workbooks.md). Met Azure Sentinel kunt u aangepaste werkmappen maken voor uw gegevens en ook met ingebouwde werkmap sjablonen, zodat u snel inzicht kunt krijgen in uw gegevens zodra u verbinding maakt met een gegevens bron.
 
 
-Met deze zelfstudie u uw gegevens visualiseren in Azure Sentinel.
+Deze zelf studie helpt u bij het visualiseren van uw gegevens in azure Sentinel.
 > [!div class="checklist"]
 > * Ingebouwde werkmappen gebruiken
 > * Nieuwe werkmappen maken
 
 ## <a name="prerequisites"></a>Vereisten
 
-- U moet ten minste machtigingen voor werkmaplezers of werkmapbijdragen hebben in de brongroep van de Azure Sentinel-werkruimte.
+- U moet mini maal over machtigingen voor de werkmap lezer of werkmap beschikken voor de resource groep van de Azure Sentinel-werk ruimte.
 
 > [!NOTE]
-> De werkmappen die u zien in Azure Sentinel, worden opgeslagen in de azure sentinel-werkruimtebrongroep en worden getagd door de werkruimte waarin ze zijn gemaakt.
+> De werkmappen die u in azure Sentinel kunt zien, worden opgeslagen in de resource groep voor de Azure-Sentinel-werk ruimte en worden gelabeld door de werk ruimte waarin ze zijn gemaakt.
 
 ## <a name="use-built-in-workbooks"></a>Ingebouwde werkmappen gebruiken
 
-1. Ga naar **Werkmappen** en selecteer **Sjablonen** om de volledige lijst met ingebouwde werkmappen van Azure Sentinel weer te geven. Als u wilt zien welke relevant zijn voor de gegevenstypen die u hebt verbonden, wordt in het veld **Vereiste gegevenstypen** in elke werkmap het gegevenstype naast een groen vinkje weergegeven als u al relevante gegevens naar Azure Sentinel streamt.
-  ![naar werkmappen gaan](./media/tutorial-monitor-data/access-workbooks.png)
-1. Klik **op Werkmap weergeven** om de sjabloon te zien die is gevuld met uw gegevens.
+1. Ga naar **werkmappen** en selecteer vervolgens **sjablonen** om de volledige lijst met ingebouwde Azure-Sentinel-werkmappen weer te geven. Om te zien welke relevant zijn voor de gegevens typen die u hebt verbonden, wordt in het veld **vereiste gegevens typen** in elke werkmap het gegevens type weer gegeven naast een groen vinkje als u al relevante gegevens streamt naar Azure Sentinel.
+  ![Ga naar werkmappen](./media/tutorial-monitor-data/access-workbooks.png)
+1. Klik op **werkmap weer geven** om de sjabloon te bekijken die is ingevuld met uw gegevens.
   
-1. Als u de werkmap wilt bewerken, selecteert u **Opslaan**en selecteert u de locatie waar u het json-bestand voor de sjabloon wilt opslaan. 
+1. Als u de werkmap wilt bewerken, selecteert u **Opslaan**en selecteert u vervolgens de locatie waar u het JSON-bestand voor de sjabloon wilt opslaan. 
 
    > [!NOTE]
-   > Hiermee wordt een Azure-bron gemaakt op basis van de relevante sjabloon en wordt het Json-bestand van de sjabloon zelf opgeslagen en niet de gegevens.
+   > Hiermee wordt een Azure-resource gemaakt op basis van de relevante sjabloon en wordt het JSON-sjabloon bestand zelf en niet de gegevens opgeslagen.
 
 
-1. Selecteer **Werkmap weergeven**. Klik vervolgens op de knop **Bewerken** bovenaan. U de werkmap nu bewerken en aanpassen aan uw behoeften. Zie hoe u interactieve rapporten maakt met [Azure Monitor Workbooks](../azure-monitor/app/usage-workbooks.md)voor meer informatie over het aanpassen van de werkmap.
-![werkmappen weergeven](./media/tutorial-monitor-data/workbook-graph.png)
-1. Nadat u uw wijzigingen hebt aangebracht, u de werkmap opslaan. 
+1. Selecteer **werkmap weer geven**. Klik vervolgens bovenaan op de knop **bewerken** . U kunt de werkmap nu bewerken en aanpassen op basis van uw behoeften. Zie [interactieve rapporten maken met Azure monitor werkmappen](../azure-monitor/app/usage-workbooks.md)voor meer informatie over het aanpassen van de werkmap.
+![werkmappen weer geven](./media/tutorial-monitor-data/workbook-graph.png)
+1. Nadat u de wijzigingen hebt aangebracht, kunt u de werkmap opslaan. 
 
-1. U de werkmap ook klonen: Selecteer **Bewerken** en vervolgens **opslaan als**, zorg ervoor dat u deze opslaat met een andere naam, onder dezelfde abonnements- en resourcegroep. Deze werkmappen worden weergegeven onder het tabblad **Mijn werkmappen.**
+1. U kunt de werkmap ook klonen: Selecteer **bewerken** en vervolgens **Opslaan als**, en zorg ervoor dat u deze opslaat onder een andere naam, onder hetzelfde abonnement en dezelfde resource groep. Deze werkmappen worden weer gegeven op het tabblad **mijn werkmappen** .
 
 
 ## <a name="create-new-workbook"></a>Nieuwe werkmap maken
 
-1. Ga naar **Werkmappen** en selecteer **Werkmap toevoegen** om helemaal opnieuw een nieuwe werkmap te maken.
-  ![naar werkmappen gaan](./media/tutorial-monitor-data/create-workbook.png)
+1. Ga naar **werkmappen** en selecteer vervolgens **werkmap toevoegen** om een nieuwe werkmap helemaal opnieuw te maken.
+  ![Ga naar werkmappen](./media/tutorial-monitor-data/create-workbook.png)
 
-1. Als u de werkmap wilt bewerken, selecteert u **Bewerken**en voegt u indien nodig tekst, query's en parameters toe. Zie hoe u interactieve rapporten maakt met [Azure Monitor Workbooks](../azure-monitor/app/usage-workbooks.md)voor meer informatie over het aanpassen van de werkmap. 
+1. Als u de werkmap wilt bewerken, selecteert u **bewerken**en voegt u indien nodig tekst, query's en para meters toe. Zie [interactieve rapporten maken met Azure monitor werkmappen](../azure-monitor/app/usage-workbooks.md)voor meer informatie over het aanpassen van de werkmap. 
 
-1. Wanneer u een query maakt, stelt u de **gegevensbron** in op **Logboeken,** wordt het **resourcetype** ingesteld op **Logboekanalyse** en kiest u vervolgens de relevante werkruimte(s). 
+1. Wanneer u een query bouwt, stelt u de **gegevens bron** in op **Logboeken**, wordt het **resource type** ingesteld op **log Analytics** en kiest u vervolgens de relevante werk ruimte (n). 
 
-1. Nadat u uw werkmap hebt gemaakt, slaat u de werkmap op om ervoor te zorgen dat u deze opslaat onder de abonnements- en brongroep van uw Azure Sentinel-werkruimte.
+1. Nadat u de werkmap hebt gemaakt, slaat u de werkmap op en zorgt u ervoor dat u deze opslaat onder het abonnement en de resource groep van uw Azure Sentinel-werk ruimte.
 
-1. Als u anderen in uw organisatie de werkmap wilt laten gebruiken, selecteert u Onder Opslaan om **Gedeelde rapporten** **te** selecteren. Als u wilt dat deze werkmap alleen voor u beschikbaar is, selecteert u **Mijn rapporten**.
+1. Als u wilt dat anderen in uw organisatie de werkmap kunnen gebruiken, klikt u onder **Opslaan om** **gedeelde rapporten**te selecteren. Als u wilt dat deze werkmap alleen voor u beschikbaar is, selecteert u **mijn rapporten**.
 
-1. Als u wilt schakelen tussen werkmappen in uw](./media/tutorial-monitor-data/switch.png)werkruimte, u **Open** ![Switch-werkmappen openen selecteren in het bovenste deelvenster van een werkmap. Schakel in het venster dat naar rechts opent tussen werkmappen.
+1. Als u wilt scha kelen tussen werkmappen in uw werk ruimte **Open** ![, kunt u](./media/tutorial-monitor-data/switch.png)open switch-werkmappen selecteren in het bovenste deel venster van een werkmap. In het venster dat aan de rechter kant wordt geopend, schakelt u tussen werkmappen.
 
-   ![Werkmappen schakelen](./media/tutorial-monitor-data/switch-workbooks.png)
+   ![Scha kelen tussen werkmappen](./media/tutorial-monitor-data/switch-workbooks.png)
 
 
 ## <a name="how-to-delete-workbooks"></a>Werkmappen verwijderen
 
-U werkmappen verwijderen die zijn gemaakt met een Azure Sentinel-sjabloon. 
+U kunt werkmappen verwijderen die zijn gemaakt op basis van een Azure-Sentinel-sjabloon. 
 
-Als u een aangepaste werkmap wilt verwijderen, selecteert u op de pagina Werkmappen de opgeslagen werkmap die u wilt verwijderen en selecteert u **Verwijderen**. Hiermee wordt de opgeslagen werkmap verwijderd.
+Als u een aangepaste werkmap wilt verwijderen, selecteert u op de pagina werkmappen de opgeslagen werkmap die u wilt verwijderen en selecteert u **verwijderen**. Hiermee wordt de opgeslagen werkmap verwijderd.
 
 > [!NOTE]
-> Hiermee worden de resource en eventuele wijzigingen in de sjabloon verwijderd. De oorspronkelijke sjabloon blijft beschikbaar.
+> Hiermee verwijdert u de resource en wijzigingen die u hebt aangebracht in de sjabloon. De oorspronkelijke sjabloon blijft beschikbaar.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u uw gegevens weergeven in Azure Sentinel.
+In deze zelf studie hebt u geleerd hoe u uw gegevens in azure Sentinel kunt weer geven.
 
-Zie [Geautomatiseerde bedreigingsreacties instellen in Azure Sentinel](tutorial-respond-threats-playbook.md)voor meer informatie over het automatiseren van uw reacties op bedreigingen.
+Zie voor meer informatie over het automatiseren van uw reacties op bedreigingen [automatische bedreigings reacties instellen in azure Sentinel](tutorial-respond-threats-playbook.md).

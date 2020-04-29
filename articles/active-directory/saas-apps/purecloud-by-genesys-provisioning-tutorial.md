@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: PureCloud by Genesys configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
-description: Meer informatie over het automatisch inrichten en de-inrichten van gebruikersaccounts van Azure AD naar PureCloud door Genesys.
+title: 'Zelf studie: PureCloud op Genesys configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts van Azure AD naar PureCloud door Genesys.
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -16,65 +16,65 @@ ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
 ms.openlocfilehash: 119690b9046821ab538d879e1209c6ef77277370
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77370679"
 ---
-# <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Zelfstudie: PureCloud by Genesys configureren voor automatische gebruikersinrichting
+# <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Zelf studie: PureCloud configureren door Genesys voor automatische gebruikers inrichting
 
-In deze zelfstudie worden de stappen beschreven die u moet uitvoeren in zowel PureCloud by Genesys als Azure Active Directory (Azure AD) om automatische gebruikersinrichting te configureren. Wanneer azure AD is geconfigureerd, worden gebruikers en groepen automatisch in- en uit-de-bepalingen naar [PureCloud door Genesys](https://www.genesys.com) voorzien met behulp van de Azure AD Provisioning-service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md). 
+In deze zelf studie worden de stappen beschreven die u moet uitvoeren in zowel PureCloud als Genesys en Azure Active Directory (Azure AD) om het automatisch inrichten van gebruikers te configureren. Wanneer de configuratie is geconfigureerd, worden gebruikers en groepen door Azure AD automatisch ingericht en de [PureCloud door Genesys](https://www.genesys.com) met behulp van de Azure AD-inrichtings service. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen. 
 
 
 ## <a name="capabilities-supported"></a>Ondersteunde mogelijkheden
 > [!div class="checklist"]
-> * Gebruikers maken in PureCloud by Genesys
-> * Verwijder gebruikers in PureCloud by Genesys wanneer ze geen toegang meer nodig hebben
-> * Gebruikerskenmerken gesynchroniseerd houden tussen Azure AD en PureCloud by Genesys
-> * Provision groepen en groepslidmaatschappen in PureCloud door Genesys
-> * [Single sign-on to](https://docs.microsoft.com/azure/active-directory/saas-apps/purecloud-by-genesys-tutorial) PureCloud by Genesys (aanbevolen)
+> * Gebruikers maken in PureCloud door Genesys
+> * Gebruikers in PureCloud verwijderen door Genesys wanneer ze geen toegang meer nodig hebben
+> * Gebruikers kenmerken gesynchroniseerd laten tussen Azure AD en PureCloud door Genesys
+> * Inrichtings groepen en groepslid maatschappen in PureCloud door Genesys
+> * [Eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/saas-apps/purecloud-by-genesys-tutorial) voor PureCloud door Genesys (aanbevolen)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt:
+In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
-* [Een Azure AD-tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Een gebruikersaccount in Azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) om provisioning te configureren (bijvoorbeeld toepassingsbeheerder, cloudtoepassingsbeheerder, toepassingseigenaar of globale beheerder). 
-* Een PureCloud [organisatie](https://help.mypurecloud.com/?p=81984).
-* Een gebruiker met [machtigingen](https://help.mypurecloud.com/?p=24360) om een Oauth-client te maken.
+* [Een Azure AD-Tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Een gebruikers account in azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) voor het configureren van inrichting (bijvoorbeeld toepassings beheerder, Cloud toepassings beheerder, eigenaar van de toepassing of globale beheerder). 
+* Een PureCloud [-organisatie](https://help.mypurecloud.com/?p=81984).
+* Een gebruiker met [machtigingen](https://help.mypurecloud.com/?p=24360) voor het maken van een OAuth-client.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>Step 1. Uw inrichtingsimplementatie plannen
-1. Meer informatie over [hoe de inprovisioningservice werkt.](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)
-2. Bepaal wie in de ruimte voor [de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)zal zijn .
-3. Bepaal welke gegevens u wilt [toewijzen tussen Azure AD en PureCloud van Genesys.](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) 
+## <a name="step-1-plan-your-provisioning-deployment"></a>Step 1. Uw inrichtings implementatie plannen
+1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
+3. Bepaal welke gegevens moeten worden [toegewezen tussen Azure AD en PureCloud door Genesys](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-## <a name="step-2-configure-purecloud-by-genesys-to-support-provisioning-with-azure-ad"></a>Stap 2. PureCloud by Genesys configureren om provisioning met Azure AD te ondersteunen
+## <a name="step-2-configure-purecloud-by-genesys-to-support-provisioning-with-azure-ad"></a>Stap 2. PureCloud configureren door Genesys voor het ondersteunen van het inrichten met Azure AD
 
-1. Maak een [Oauth-client](https://help.mypurecloud.com/?p=188023) die is geconfigureerd in uw PureCloud-organisatie.
-2. Genereer een token [met uw oauth-client.](https://developer.mypurecloud.com/api/rest/authorization/use-client-credentials.html)
-3. Als u groepslidmaatschap automatisch wilt inrichten binnen PureCloud, moet u [Groepen in](https://help.mypurecloud.com/?p=52397) PureCloud maken met een identieke naam als de groep in Azure AD.
+1. Maak een [OAuth-client](https://help.mypurecloud.com/?p=188023) die is geconfigureerd in uw PureCloud-organisatie.
+2. Genereer een token [met uw OAuth-client](https://developer.mypurecloud.com/api/rest/authorization/use-client-credentials.html).
+3. Als u het groepslid maatschap automatisch wilt inrichten binnen PureCloud, moet u [groepen maken](https://help.mypurecloud.com/?p=52397) in PureCloud met een identieke naam voor de groep in azure AD.
 
-## <a name="step-3-add-purecloud-by-genesys-from-the-azure-ad-application-gallery"></a>Stap 3. PureCloud by Genesys toevoegen vanuit de Azure AD-toepassingsgalerie
+## <a name="step-3-add-purecloud-by-genesys-from-the-azure-ad-application-gallery"></a>Stap 3. PureCloud toevoegen door Genesys uit de Azure AD-toepassings galerie
 
-Voeg PureCloud by Genesys toe vanuit de Azure AD-toepassingsgalerie om de inrichting voor PureCloud door Genesys te beheren. Als u eerder PureCloud by Genesys voor SSO hebt ingesteld, u dezelfde toepassing gebruiken. Het wordt echter aanbevolen om een aparte app te maken bij het testen van de integratie in eerste instantie. Meer informatie over het toevoegen van een toepassing uit de galerie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
+Voeg PureCloud door Genesys toe vanuit de Azure AD-toepassings galerie om het beheer van de inrichting te starten op PureCloud door Genesys. Als u eerder PureCloud hebt ingesteld door Genesys voor SSO, kunt u dezelfde toepassing gebruiken. Het is echter raadzaam dat u een afzonderlijke app maakt wanneer u de integratie in eerste instantie test. Meer informatie over het toevoegen van een toepassing uit [de galerie.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Stap 4. Bepalen wie in het vermogen van de inrichting 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Stap 4. Definiëren wie binnen het bereik van de inrichting valt 
 
-Met de Azure AD-inrichtingsservice u scopen die worden ingericht op basis van toewijzing aan de toepassing en of op basis van kenmerken van de gebruiker /groep. Als u ervoor kiest om het bereik te bepalen wie op basis van toewijzing aan uw app wordt toegewezen, u de volgende [stappen](../manage-apps/assign-user-or-group-access-portal.md) gebruiken om gebruikers en groepen aan de toepassing toe te wijzen. Als u ervoor kiest om scope die zal worden ingericht uitsluitend op basis van attributen van de gebruiker of groep, u gebruik maken van een scoping filter zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)beschreven. 
+Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basis van de toewijzing aan de toepassing en of op basis van kenmerken van de gebruiker/groep. Als u ervoor kiest om te bepalen wie wordt ingericht voor uw app op basis van de toewijzing, kunt u de volgende [stappen](../manage-apps/assign-user-or-group-access-portal.md) gebruiken om gebruikers en groepen toe te wijzen aan de toepassing. Als u kiest voor het bereik dat alleen wordt ingericht op basis van kenmerken van de gebruiker of groep, kunt u een bereik filter gebruiken zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)wordt beschreven. 
 
-* Wanneer u gebruikers en groepen door Genesys aan PureCloud toewijst, moet u een andere rol dan **Standaardtoegang**selecteren. Gebruikers met de functie Standaardtoegang zijn uitgesloten van inrichten en worden gemarkeerd als niet effectief gerechtigd in de inrichtingslogboeken. Als de enige rol die beschikbaar is in de toepassing de standaardtoegangsrol is, u [het toepassingsmanifest bijwerken](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) om extra rollen toe te voegen. 
+* Wanneer u gebruikers en groepen toewijst aan PureCloud door Genesys, moet u een andere rol dan de **standaard toegang**selecteren. Gebruikers met de rol standaard toegang worden uitgesloten van inrichting en worden gemarkeerd als niet effectief in de inrichtings Logboeken. Als de enige rol die beschikbaar is op de toepassing de standaard rol Access is, kunt u [het toepassings manifest bijwerken](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) om extra rollen toe te voegen. 
 
-* Begin klein. Test met een kleine set gebruikers en groepen voordat u naar iedereen uitrolt. Wanneer de inrichtingsruimte is ingesteld op toegewezen gebruikers en groepen, u dit beheren door een of twee gebruikers of groepen aan de app toe te wijzen. Wanneer het bereik is ingesteld op alle gebruikers en groepen, u een [op kenmerken gebaseerd scopingfilter](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)opgeven. 
+* Begin klein. Test met een klein aantal gebruikers en groepen voordat u naar iedereen uitrolt. Wanneer het bereik voor inrichting is ingesteld op toegewezen gebruikers en groepen, kunt u dit beheren door een of twee gebruikers of groepen toe te wijzen aan de app. Wanneer bereik is ingesteld op alle gebruikers en groepen, kunt u een [kenmerk op basis van bereik filteren](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)opgeven. 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-purecloud-by-genesys"></a>Stap 5. Automatische gebruikersinrichting configureren voor PureCloud door Genesys 
+## <a name="step-5-configure-automatic-user-provisioning-to-purecloud-by-genesys"></a>Stap 5. Automatische gebruikers inrichting configureren voor PureCloud door Genesys 
 
-In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of groepen in TestApp te maken, bij te werken en uit te schakelen op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
+In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in TestApp te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
-### <a name="to-configure-automatic-user-provisioning-for-purecloud-by-genesys-in-azure-ad"></a>Ga als het gaat om het configureren van automatische gebruikersinrichting voor PureCloud door Genesys in Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-purecloud-by-genesys-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor PureCloud door Genesys in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -82,78 +82,78 @@ In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of
 
     ![De koppeling PureCloud by Genesys in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **Inrichten.**
+3. Selecteer het tabblad **inrichten** .
 
-    ![Tabblad Inrichten](common/provisioning.png)
+    ![Tabblad inrichten](common/provisioning.png)
 
-4. Stel de **inrichtingsmodus** in op **Automatisch**.
+4. Stel de **inrichtings modus** in op **automatisch**.
 
-    ![Tabblad Inrichten](common/provisioning-automatic.png)
+    ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Voer onder de sectie **Beheerdersreferenties** uw PureCloud by Genesys API URL en Oauth Token in de velden **Tenant URL** en **Secret Token** in. De API-URL wordt `{{API Url}}/api/v2/scim/v2`gestructureerd als , met behulp van de API-URL voor uw PureCloud-regio vanuit het [PureCloud Developer Center.](https://developer.mypurecloud.com/api/rest/index.html) Klik **op Testverbinding** om ervoor te zorgen dat Azure AD verbinding kan maken met PureCloud by Genesys. Als de verbinding mislukt, moet u ervoor zorgen dat uw PureCloud by Genesys-account beheerdersmachtigingen heeft en het opnieuw proberen.
+5. Typ in het gedeelte **beheerders referenties** de PureCloud van de API-URL en het OAuth-token in de velden **Tenant-URL** en **geheime** token in respectievelijk. De API-URL wordt gestructureerd als `{{API Url}}/api/v2/scim/v2`, met behulp van de API-URL voor uw PureCloud-regio in het [PureCloud Developer Center](https://developer.mypurecloud.com/api/rest/index.html). Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met PureCloud door Genesys. Als de verbinding mislukt, controleert u of uw PureCloud door Genesys-account beheerders machtigingen heeft en probeer het opnieuw.
 
-    ![Provisioning](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
+    ![inrichtings](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
 
-6. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fout moet ontvangen en schakel het selectievakje **Een e-mailmelding verzenden in wanneer er een fout optreedt.**
+6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje **e-mail melding verzenden wanneer een fout optreedt** in.
 
-    ![E-mail met meldingen](common/provisioning-notification-email.png)
+    ![E-mail melding](common/provisioning-notification-email.png)
 
 7. Selecteer **Opslaan**.
 
-8. Selecteer Azure **Active Directory-gebruikers synchroniseren met PureCloud by Genesys**onder de sectie **Toewijzingen** .
+8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met PureCloud door Genesys**.
 
-9. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar PureCloud by Genesys in de sectie **Attribute-Mapping.** De kenmerken die zijn geselecteerd als **Eigenschappen matching** worden gebruikt om de gebruikersaccounts in PureCloud by Genesys te matchen voor updatebewerkingen. Als u ervoor kiest het [overeenkomende doelkenmerk](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)te wijzigen, moet u ervoor zorgen dat de PureCloud by Genesys API filteringgebruikers ondersteunt op basis van dat kenmerk. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
+9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar PureCloud door Genesys in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt om de gebruikers accounts in PureCloud door Genesys te vergelijken voor bijwerk bewerkingen. Als u ervoor kiest om het [overeenkomende doel kenmerk](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)te wijzigen, moet u ervoor zorgen dat het PureCloud door GENESYS-API het filteren van gebruikers op basis van dat kenmerk ondersteunt. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
      |Kenmerk|Type|
      |---|---|
      |userName|Tekenreeks|
      |actief|Booleaans|
      |displayName|Tekenreeks|
-     |e-mails[type eq "werk"].waarde|Tekenreeks|
+     |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
      |titel|Tekenreeks|
-     |phoneNumbers[type eq "mobile"].value|Tekenreeks|
-     |phoneNumbers[type eq "werk"].waarde|Tekenreeks|
-     |urn:ietf:params:scim:schema's:extension:enterprise:2.0:User:department|Tekenreeks|
-     |urn:ietf:params:scim:schema's:extension:enterprise:2.0:User:manager|Naslaginformatie|
+     |phoneNumbers [type EQ "Mobile"]. waarde|Tekenreeks|
+     |phoneNumbers [type EQ "werk]. waarde|Tekenreeks|
+     |urn: IETF: params: scim: schemas: extension: Enter prise: 2.0: gebruiker: Department|Tekenreeks|
+     |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager|Naslaginformatie|
 
-10. Selecteer azure **Active Directory-groepen synchroniseren met PureCloud by Genesys**onder de sectie **Toewijzingen** .
+10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren op PureCloud door Genesys**.
 
-11. Bekijk de groepskenmerken die zijn gesynchroniseerd van Azure AD naar PureCloud by Genesys in de sectie **Attribute-Mapping.** De kenmerken die zijn geselecteerd als **Eigenschappen matching** worden gebruikt om de groepen in PureCloud by Genesys te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren. PureCloud by Genesys ondersteunt geen groepscreatie of verwijdering en ondersteunt alleen het bijwerken van groepen.
+11. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar PureCloud door Genesys in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om de groepen in PureCloud door Genesys te vergelijken voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren. PureCloud door Genesys biedt geen ondersteuning voor het maken of verwijderen van groepen en biedt alleen ondersteuning voor het bijwerken van een groep.
 
       |Kenmerk|Type|
       |---|---|
       |displayName|Tekenreeks|
-      |extern id|Tekenreeks|
+      |externalId|Tekenreeks|
       |leden|Naslaginformatie|
 
-12. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)
+12. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
-13. Als u de Azure AD-inrichtingsservice voor PureCloud by Genesys wilt inschakelen, wijzigt u de **ininrichtingsstatus** in **Aan** in de sectie **Instellingen.**
+13. Als u de Azure AD-inrichtings service voor PureCloud door **Genesys wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
-    ![Status inrichten ingeschakeld](common/provisioning-toggle-on.png)
+    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
 
-14. Definieer de gebruikers en/of groepen die u wilt inrichten op PureCloud by Genesys door de gewenste waarden in **Scope** te kiezen in de sectie **Instellingen.**
+14. Definieer de gebruikers en/of groepen die u wilt inrichten voor PureCloud door Genesys door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
 
-    ![Inrichtingskader](common/provisioning-scope.png)
+    ![Inrichtings bereik](common/provisioning-scope.png)
 
-15. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
+15. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
-    ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
+    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatiecyclus gestart van alle gebruikers en groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste cyclus duurt langer om uit te voeren dan de volgende cycli, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. 
+Met deze bewerking wordt de initiële synchronisatie cyclus gestart van alle gebruikers en groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . De eerste cyclus duurt langer dan volgende cycli, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. 
 
 ## <a name="step-6-monitor-your-deployment"></a>Stap 6. Uw implementatie bewaken
-Zodra u de inrichting hebt geconfigureerd, gebruikt u de volgende resources om uw implementatie te controleren:
+Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw implementatie te bewaken:
 
-* Gebruik de [inrichtingslogboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) om te bepalen welke gebruikers met succes of zonder succes zijn ingericht
-* Controleer de [voortgangsbalk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtingscyclus te bekijken en hoe dicht deze bij voltooiing is
-* Als de inrichtingsconfiguratie in een ongezonde status lijkt te zijn, wordt de toepassing in quarantaine geplaatst. Meer informatie over quarantainestaten [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+* De [inrichtings logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) gebruiken om te bepalen welke gebruikers al dan niet met succes zijn ingericht
+* Controleer de [voortgangs balk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtings cyclus te bekijken en te bepalen hoe dicht deze is voltooid
+* Als de inrichtings configuratie een slechte status heeft, gaat de toepassing in quarantaine. Meer informatie over de quarantaine statussen [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)

@@ -1,5 +1,5 @@
 ---
-title: Fortinet-gegevens verbinden met Azure Sentinel| Microsoft Documenten
+title: Fortinet-gegevens koppelen aan Azure-Sentinel | Microsoft Docs
 description: Meer informatie over het verbinden van Fortinet-gegevens met Azure Sentinel.
 services: sentinel
 documentationcenter: na
@@ -16,25 +16,25 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: aabc95fcb8d3b32b89bb83f4f6892c3d40b03417
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588192"
 ---
-# <a name="connect-fortinet-to-azure-sentinel"></a>Fortinet verbinden met Azure Sentinel
+# <a name="connect-fortinet-to-azure-sentinel"></a>Fortinet verbinden met Azure-Sentinel
 
 
 
-In dit artikel wordt uitgelegd hoe u uw Fortinet-toestel verbinden met Azure Sentinel. Met de Fortinet-gegevensconnector u eenvoudig uw Fortinet-logboeken verbinden met Azure Sentinel, dashboards bekijken, aangepaste waarschuwingen maken en onderzoek verbeteren. Het gebruik van Fortinet op Azure Sentinel geeft u meer inzicht in het internetgebruik van uw organisatie en verbetert de beveiligingsmogelijkheden. 
+In dit artikel wordt uitgelegd hoe u uw Fortinet-apparaat verbindt met Azure Sentinel. Met de Fortinet Data Connector kunt u eenvoudig uw Fortinet-logboeken verbinden met Azure Sentinel, voor het weer geven van Dash boards, het maken van aangepaste waarschuwingen en het verbeteren van onderzoek. Door het gebruik van Fortinet op Azure-Sentinel krijgt u meer inzicht in het Internet gebruik van uw organisatie en worden de mogelijkheden voor beveiligings bewerkingen verbeterd. 
 
 
  
-## <a name="forward-fortinet-logs-to-the-syslog-agent"></a>Fortinet-logboeken doorsturen naar de Syslog-agent
+## <a name="forward-fortinet-logs-to-the-syslog-agent"></a>De Fortinet-logboeken door sturen naar de syslog-agent
 
-Configureer Fortinet om Syslog-berichten in CEF-indeling door te sturen naar uw Azure-werkruimte via de Syslog-agent.
+Configureer Fortinet voor het door sturen van syslog-berichten in de CEF-indeling naar uw Azure-werk ruimte via de syslog-agent.
 
-1. Open de CLI op uw Fortinet-toestel en voer de volgende opdrachten uit:
+1. Open de CLI op uw Fortinet-apparaat en voer de volgende opdrachten uit:
 
         config log syslogd setting
         set format cef
@@ -43,22 +43,22 @@ Configureer Fortinet om Syslog-berichten in CEF-indeling door te sturen naar uw 
         set status enable
         end
 
-    - Vervang het **ip-adres** van de server door het IP-adres van de agent.
-    - Stel de **syslogpoort** in op **514** of de poort die op de agent is ingesteld.
-    - Als u de CEF-indeling in vroege FortiOS-versies wilt inschakelen, moet u mogelijk de opdrachtset **csv uitschakelen**uitvoeren.
+    - Vervang het IP **-adres** van de server door het IP-adres van de agent.
+    - Stel de **syslog-poort** in op **514** of de poort die is ingesteld op de agent.
+    - Als u de CEF-indeling in vroege FortiOS-versies wilt inschakelen, moet u mogelijk de opdracht set **CSV Disable**uitvoeren.
  
    > [!NOTE] 
-   > Ga voor meer informatie naar de [fortinet-documentbibliotheek.](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary) Selecteer uw versie en gebruik de **naslaggids** en **naslaginformatie over het logboekbericht**.
+   > Ga naar de [document bibliotheek van Fortinet](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary)voor meer informatie. Selecteer uw versie en gebruik de naslag **handleiding** en het **logboek bericht**.
 
-1. Als u het relevante schema wilt gebruiken in Azure Monitor `CommonSecurityLog`Log Analytics voor de Fortinet-gebeurtenissen, zoekt u naar .
+1. Als u het relevante schema in Azure Monitor Log Analytics voor de Fortinet-gebeurtenissen wilt gebruiken `CommonSecurityLog`, zoekt u naar.
 
-1. Ga verder naar [STAP 3: Connectiviteit valideren.](connect-cef-verify.md)
+1. Ga door naar [stap 3: de verbinding valideren](connect-cef-verify.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd hoe u Fortinet-apparaten verbinden met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en potentiële bedreigingen.](quickstart-get-visibility.md)
-- Aan de slag met [het detecteren van bedreigingen met Azure Sentinel.](tutorial-detect-threats-built-in.md)
-- [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te controleren.
+In dit artikel hebt u geleerd hoe u Fortinet-apparaten verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+- [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
 
 

@@ -1,6 +1,6 @@
 ---
-title: AMQP gebruiken met Java Message Service API & Azure Service Bus
-description: De Java Message Service (JMS) gebruiken met Azure Service Bus en Advanced Message Queuing Protocol (AMQP) 1.0.
+title: Gebruik AMQP met de API voor Java-berichten service & Azure Service Bus
+description: De Java-berichten service (JMS) gebruiken met Azure Service Bus en Advanced Message Queueing Protocol (AMQP) 1,0.
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -15,41 +15,41 @@ ms.date: 10/22/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: cd06838abbb69af5684fdea18c42f6a8f95ffe2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77371264"
 ---
-# <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>De Java Message Service (JMS) gebruiken met Azure Service Bus en AMQP 1.0
-In dit artikel wordt uitgelegd hoe u azure servicebus-berichtenfuncties (wachtrijen en publicatie-/abonneeronderwerpen) van Java-toepassingen gebruiken met behulp van de populaire API-standaard (Java Message Service) (JMS). Er is een [begeleidend artikel](service-bus-amqp-dotnet.md) waarin wordt uitgelegd hoe u hetzelfde doen met de Azure Service Bus .NET API. U deze twee gidsen samen gebruiken om meer te weten te komen over cross-platform messaging met AMQP 1.0.
+# <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>De Java-berichten service (JMS) gebruiken met Azure Service Bus en AMQP 1,0
+In dit artikel wordt uitgelegd hoe u functies van Azure Service Bus berichten (wacht rijen en publiceren/abonneren) gebruikt vanuit Java-toepassingen met behulp van de populaire API-standaard voor Java-berichten service (JMS). Er is een [aanvullende artikel](service-bus-amqp-dotnet.md) waarin wordt uitgelegd hoe u hetzelfde kunt doen met behulp van de Azure service bus .net API. U kunt deze twee hand leidingen gebruiken om meer te weten te komen over cross-platform berichten met behulp van AMQP 1,0.
 
-Het Advanced Message Queuing Protocol (AMQP) 1.0 is een efficiënt, betrouwbaar messaging-protocol op draadniveau dat u gebruiken om robuuste, cross-platform messaging-toepassingen te bouwen.
+De Advanced Message Queueing Protocol (AMQP) 1,0 is een efficiënte, betrouw bare, Wire-level berichten protocol dat u kunt gebruiken voor het bouwen van robuuste, platform onafhankelijke toepassingen voor berichten uitwisseling.
 
-Ondersteuning voor AMQP 1.0 in Azure Service Bus betekent dat u de wachtrijen en publicatie/abonneren van brokered messaging-functies van een reeks platforms gebruiken met behulp van een efficiënt binair protocol. Bovendien u toepassingen bouwen die bestaan uit componenten die zijn gebouwd met behulp van een mix van talen, frameworks en besturingssystemen.
+Ondersteuning voor AMQP 1,0 in Azure Service Bus houdt in dat u de functie voor het maken van de wachtrij en het publiceren/abonneren van Brokered Messaging-functies kunt gebruiken vanuit diverse platformen met behulp van een efficiënt binair protocol. Daarnaast kunt u toepassingen bouwen die bestaan uit onderdelen die zijn gebouwd met behulp van een combi natie van talen, frameworks en besturings systemen.
 
 ## <a name="get-started-with-service-bus"></a>Aan de slag met Service Bus
-In deze handleiding wordt ervan uitgegaan dat u al `basicqueue`een naamruimte van de servicebus hebt met een wachtrij met de naam . Als u dit niet doet, u [de naamruimte en wachtrij maken](service-bus-create-namespace-portal.md) met behulp van de [Azure-portal.](https://portal.azure.com) Zie [Aan de slag met wachtrijen voor servicebus's](service-bus-dotnet-get-started-with-queues.md)voor meer informatie over het maken van naamruimten en wachtrijen voor servicebussen.
+In deze hand leiding wordt ervan uitgegaan dat u al een Service Bus naam ruimte `basicqueue`hebt met een wachtrij met de naam. Als dat niet het geval is, kunt u [de naam ruimte en wachtrij maken](service-bus-create-namespace-portal.md) met behulp van de [Azure Portal](https://portal.azure.com). Zie [aan de slag met Service Bus wachtrijen](service-bus-dotnet-get-started-with-queues.md)voor meer informatie over het maken van service bus naam ruimten en wacht rijen.
 
 > [!NOTE]
-> Partitiewachtrijen en onderwerpen ondersteunen ook AMQP. Zie [Partitioned messaging-entiteiten](service-bus-partitioning.md) en [AMQP 1.0-ondersteuning voor wachtrijen en onderwerpen voor servicebus-indelingen](service-bus-partitioned-queues-and-topics-amqp-overview.md).
+> Gepartitioneerde wacht rijen en onderwerpen bieden ook ondersteuning voor AMQP. Zie [gepartitioneerde Messa ging-entiteiten](service-bus-partitioning.md) en [AMQP 1,0-ondersteuning voor service bus gepartitioneerde wacht rijen en onderwerpen](service-bus-partitioned-queues-and-topics-amqp-overview.md)voor meer informatie.
 > 
 > 
 
-## <a name="downloading-the-amqp-10-jms-client-library"></a>De AMQP 1.0 JMS-clientbibliotheek downloaden
-Voor informatie over waar de nieuwste versie van de Apache Qpid JMS [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html)AMQP 1.0 clientbibliotheek te downloaden, bezoek .
+## <a name="downloading-the-amqp-10-jms-client-library"></a>De AMQP 1,0 JMS-client bibliotheek downloaden
+Ga naar [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html)voor informatie over waar u de nieuwste versie van de Apache QPID JMS AMQP 1,0-client bibliotheek kunt downloaden.
 
-U moet de volgende vier JAR-bestanden uit het Apache Qpid JMS AMQP 1.0-distributiearchief toevoegen aan het Java CLASSPATH bij het bouwen en uitvoeren van JMS-toepassingen met Service Bus:
+U moet de volgende vier JAR-bestanden van het Apache Qpid JMS AMQP 1,0-distributie archief toevoegen aan het Java-KLASSENPAD bij het bouwen en uitvoeren van JMS-toepassingen met Service Bus:
 
-* geronimo-jms\_1.1\_spec-1.0.jar
-* qpid-jms-client-[version].jar
+* geronimo-jms\_1,1\_spec-1.0. jar
+* QPid-JMS-client-[versie]. jar
 
 > [!NOTE]
-> JMS JAR namen en versies kunnen zijn veranderd. Zie [Qpid JMS - AMQP 1.0 voor](https://qpid.apache.org/maven.html#qpid-jms-amqp-10)meer informatie.
+> JMSe JAR-namen en-versies zijn mogelijk gewijzigd. Zie [QPID JMS-AMQP 1,0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10)voor meer informatie.
 
 ## <a name="coding-java-applications"></a>Java-toepassingen coderen
-### <a name="java-naming-and-directory-interface-jndi"></a>Java-naamgeving en directory-interface (JNDI)
-JMS gebruikt de Java Naming and Directory Interface (JNDI) om een scheiding te maken tussen logische namen en fysieke namen. Twee typen JMS-objecten worden opgelost met JNDI: ConnectionFactory en Destination. JNDI maakt gebruik van een providermodel waarin u verschillende directoryservices aansluiten om taken voor naamomzetting te verwerken. De Apache Qpid JMS AMQP 1.0-bibliotheek wordt geleverd met een eenvoudige JNDI-provider met een eenvoudige eigenschapsbestand die is geconfigureerd met behulp van een eigenschappenbestand met de volgende indeling:
+### <a name="java-naming-and-directory-interface-jndi"></a>Java-naamgeving en Directory-interface (JNDI)
+JMS maakt gebruik van de Java-naamgevings-en Directory interface (JNDI) om een schei ding tussen logische namen en fysieke namen te maken. Twee typen JMS-objecten worden omgezet met behulp van JNDI: ConnectionFactory en Destination. JNDI maakt gebruik van een provider model waarin u verschillende Directory Services kunt koppelen om taken voor naam omzetting af te handelen. De Apache Qpid JMS AMQP 1,0-bibliotheek wordt geleverd met een eenvoudige JNDI provider op basis van een bestand dat is geconfigureerd met behulp van een eigenschappen bestand van de volgende indeling:
 
 ```TEXT
 # servicebus.properties - sample JNDI configuration
@@ -66,7 +66,7 @@ queue.QUEUE = queue1
 
 #### <a name="setup-jndi-context-and-configure-the-connectionfactory"></a>JNDI-context instellen en de ConnectionFactory configureren
 
-De **verbindingstekenreeks** waarnaar wordt verwezen in de tekenreeks die beschikbaar is in de 'Gedeelde toegangsbeleidsregels' in de [Azure-portal](https://portal.azure.com) onder **primaire verbindingstekenreeks**
+De **Connections Tring** waarnaar wordt verwezen in de beschik baarheid in het beleid voor gedeelde toegang in de [Azure Portal](https://portal.azure.com) onder **primaire verbindings reeks**
 ```java
 // The connection string builder is the only part of the azure-servicebus SDK library
 // we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
@@ -86,10 +86,10 @@ ConnectionFactory cf = (ConnectionFactory) context.lookup("SBCF");
 Destination queue = (Destination) context.lookup("QUEUE");
 ```
 
-#### <a name="configure-producer-and-consumer-destination-queues"></a>Wachtrijen voor productie- en consumentenbestemmingen configureren
-De vermelding die wordt gebruikt om een bestemming in de JNDI-provider van Qpid-eigenschappen te definiëren, heeft de volgende indeling:
+#### <a name="configure-producer-and-consumer-destination-queues"></a>Producer-en consumenten doel wachtrijen configureren
+De vermelding die wordt gebruikt voor het definiëren van een bestemming in het QPid eigenschappen bestand JNDI provider heeft de volgende indeling:
 
-De doelwachtrij voor de producent maken - 
+De doel wachtrij voor de producent maken- 
 ```java
 String queueName = "queueName";
 Destination queue = (Destination) queueName;
@@ -103,7 +103,7 @@ Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 MessageProducer producer = session.createProducer(queue);
 ```
 
-Een bestemmingswachtrij maken voor de consument - 
+Een doel wachtrij maken voor de Consumer- 
 ```java
 String queueName = "queueName";
 Destination queue = (Destination) queueName;
@@ -118,10 +118,10 @@ MessageConsumer consumer = session.createConsumer(queue);
 ```
 
 ### <a name="write-the-jms-application"></a>De JMS-toepassing schrijven
-Er zijn geen speciale API's of opties vereist bij het gebruik van JMS met Service Bus. Er zijn echter een paar beperkingen die later zullen worden behandeld. Zoals bij elke JMS-toepassing, het eerste wat nodig is configuratie van de JNDI-omgeving, om te kunnen een **ConnectionFactory** en bestemmingen op te lossen.
+Er zijn geen speciale Api's of opties vereist wanneer u JMS gebruikt met Service Bus. Er zijn echter enkele beperkingen die later worden besproken. Net als bij elke JMS toepassing is het eerste wat vereist is, de configuratie van de JNDI-omgeving, zodat u een **ConnectionFactory** en doelen kunt omzetten.
 
-#### <a name="configure-the-jndi-initialcontext"></a>De JNDI InitialContext configureren
-De JNDI-omgeving wordt geconfigureerd door een hashtable met configuratiegegevens door te geven aan de constructor van de klasse javax.naming.InitialContext. De twee vereiste elementen in de hashtabel zijn de klassennaam van de initialcontextfabriek en de URL van de provider. In de volgende code ziet u hoe u de JNDI-omgeving configureert om de JNDI-provider op basis van het Qpid-eigenschappenbestand te gebruiken met een eigenschappenbestand met de naam **servicebus.properties**.
+#### <a name="configure-the-jndi-initialcontext"></a>De JNDI-InitialContext configureren
+De JNDI-omgeving wordt geconfigureerd door een hashtabel van configuratie-informatie door te geven aan de constructor van de klasse javax. name. InitialContext. De twee vereiste elementen in de hashtabel zijn de naam van de klasse van de eerste context-Factory en de provider-URL. De volgende code laat zien hoe u de JNDI-omgeving kunt configureren voor het gebruik van de QPid-eigenschappen bestand op basis van JNDI met een eigenschappen bestand met de naam **servicebus. Properties**.
 
 ```java
 // set up JNDI context
@@ -133,10 +133,10 @@ hashtable.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.jms.jndi.JmsInit
 Context context = new InitialContext(hashtable);
 ``` 
 
-### <a name="a-simple-jms-application-using-a-service-bus-queue"></a>Een eenvoudige JMS-toepassing met een wachtrij voor servicebus
-In het volgende voorbeeldprogramma worden JMS TextMessages naar een wachtrij voor servicebussen verzonden met de logische naam Van De JNDI van QUEUE en worden de berichten teruggestuurd.
+### <a name="a-simple-jms-application-using-a-service-bus-queue"></a>Een eenvoudige JMS-toepassing met behulp van een Service Bus wachtrij
+In het volgende voor beeld wordt JMS TextMessages naar een Service Bus wachtrij verzonden met de logische JNDI-naam van de wachtrij en ontvangt de berichten terug.
 
-U hebt allemaal snel toegang tot alle broncode- en configuratiegegevens van de [JMS-wachtrij voor Azure Service Bus Samples](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client/JmsQueueQuickstart)
+U hebt alle toegang tot alle bron code-en configuratie gegevens van de Azure Service Bus-voor [beelden JMS-wachtrij Quick](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client/JmsQueueQuickstart) start
 
 ```java
 // Copyright (c) Microsoft. All rights reserved.
@@ -298,8 +298,8 @@ public class JmsQueueQuickstart {
 ```
 
 ### <a name="run-the-application"></a>De toepassing uitvoeren
-Geef de **verbindingstekenreeks door** vanuit het beleid voor gedeelde toegang om de toepassing uit te voeren.
-Hieronder vindt u de uitvoer van het formulier door de toepassing uit te voeren:
+Geef de **verbindings reeks** op uit het beleid voor gedeelde toegang om de toepassing uit te voeren.
+Hieronder ziet u de uitvoer van het formulier door de toepassing uit te voeren:
 
 ```Output
 > mvn clean package
@@ -330,8 +330,8 @@ Closing queue client.
 
 ```
 
-## <a name="amqp-disposition-and-service-bus-operation-mapping"></a>AMQP-toewijzing van dispositie en servicebus
-Hier is hoe een AMQP-dispositie zich vertaalt naar een Service Bus-bewerking:
+## <a name="amqp-disposition-and-service-bus-operation-mapping"></a>Toewijzing van AMQP-toestand en Service Bus-bewerking
+Dit is de manier waarop een AMQP-toestand wordt omgezet in een Service Bus bewerking:
 
 ```Output
 ACCEPTED = 1; -> Complete()
@@ -341,50 +341,50 @@ MODIFIED_FAILED = 4; -> Abandon() which increases delivery count
 MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ```
 
-## <a name="jms-topics-vs-service-bus-topics"></a>JMS-onderwerpen vs. Service Bus-onderwerpen
-Het gebruik van Azure Service Bus-onderwerpen en -abonnementen via de JAVA Message Service (JMS)-API biedt basismogelijkheden voor verzenden en ontvangen. Het is een handige keuze bij het overzetten van toepassingen van andere berichtenmakelaars met JMS-compatibele API's, hoewel Service Bus-onderwerpen verschillen van JMS-onderwerpen en een paar aanpassingen vereisen. 
+## <a name="jms-topics-vs-service-bus-topics"></a>Onderwerpen over JMS en Service Bus
+Het gebruik van Azure Service Bus-onderwerpen en-abonnementen via de API van de Java-berichten service (JMS) biedt eenvoudige mogelijkheden voor verzenden en ontvangen. Het is een handige keuze bij het overbrengen van toepassingen van andere bericht brokers met JMS-compatibele Api's, zelfs als Service Bus-onderwerpen verschillen van JMS-onderwerpen en enkele aanpassingen vereisen. 
 
-Azure Service Bus-onderwerpen leiden berichten naar benoemde, gedeelde, duurzame abonnementen die worden beheerd via de Azure Resource Management-interface, de Azure-opdrachtregelhulpprogramma's of via de Azure-portal. Elk abonnement biedt maximaal 2000 selectieregels, die elk een filtervoorwaarde kunnen hebben en, voor SQL-filters, ook een actie voor het transformeren van metagegevens. Elke filtervoorwaardeovereenkomst selecteert het invoerbericht dat naar het abonnement moet worden gekopieerd.  
+Azure Service Bus-onderwerpen sturen berichten naar benoemde, gedeelde, duurzame abonnementen die worden beheerd via de Azure resource management-interface, de opdracht regel Programma's van Azure of via de Azure Portal. Elk abonnement staat Maxi maal 2000 selectie regels toe, die elk een filter voorwaarde kunnen hebben en, voor SQL-filters, ook een transformatie actie voor meta gegevens. Elke overeenkomst voor de filter voorwaarde komt overeen met het invoer bericht dat in het abonnement moet worden gekopieerd.  
 
-Het ontvangen van berichten van abonnementen is identiek ontvangen van berichten uit wachtrijen. Elk abonnement heeft een bijbehorende wachtrij voor dode letters en de mogelijkheid om berichten automatisch door te sturen naar een andere wachtrij of onderwerpen. 
+Het ontvangen van berichten van abonnementen is gelijk aan het ontvangen van berichten uit wacht rijen. Elk abonnement beschikt over een gekoppelde wachtrij met onbestelbare berichten en de mogelijkheid om bericht automatisch door te sturen naar een andere wachtrij of onderwerpen. 
 
-JMS-onderwerpen stellen clients in staat om dynamisch niet-duurzame en duurzame abonnees te maken die optioneel filterberichten met berichtkiezer toestaan. Deze niet-gedeelde entiteiten worden niet ondersteund door Service Bus. De syntaxis van de SQL-filterregel voor Service Bus is echter vergelijkbaar met de syntaxis van de berichtkiezer die wordt ondersteund door JMS. 
+Met JMS-onderwerpen kunnen clients dynamisch niet-duurzame en duurzame abonnees maken die optioneel filteren op berichten met bericht selectie vakjes. Deze niet-gedeelde entiteiten worden niet ondersteund door Service Bus. De syntaxis van de SQL-filter regel voor Service Bus is echter vergelijkbaar met de syntaxis van de bericht kiezer die wordt ondersteund door JMS. 
 
-De uitgeverkant van HET JMS-onderwerp is compatibel met Service Bus, zoals in dit voorbeeld wordt weergegeven, maar dynamische abonnees niet. De volgende topologiegerelateerde JMS-API's worden niet ondersteund met Service Bus. 
+Het JMS-onderwerp Uitgever is compatibel met Service Bus, zoals in dit voor beeld wordt weer gegeven, maar dynamische abonnees niet. De volgende topologie-gerelateerde JMS-Api's worden niet ondersteund met Service Bus. 
 
 ## <a name="unsupported-features-and-restrictions"></a>Niet-ondersteunde functies en beperkingen
-De volgende beperkingen bestaan bij het gebruik van JMS via AMQP 1.0 met Service Bus, namelijk:
+De volgende beperkingen zijn van het gebruik van JMS over AMQP 1,0 met Service Bus, namelijk:
 
-* Per **sessie**is slechts één **MessageProducer** of **MessageConsumer** toegestaan. Als u meerdere **MessageProducers** of **MessageConsumers** in een toepassing wilt maken, maakt u een speciale **sessie** voor elk van hen.
-* Vluchtige onderwerpabonnementen worden momenteel niet ondersteund.
+* Er is slechts één **MessageProducer** of **MessageConsumer** per **sessie**toegestaan. Als u meerdere **MessageProducers** of **MessageConsumers** in een toepassing wilt maken, maakt u een speciale **sessie** voor elk van deze.
+* Tijdelijke abonnementen op onderwerpen worden momenteel niet ondersteund.
 * **MessageSelectors** worden momenteel niet ondersteund.
-* Gedistribueerde transacties worden niet ondersteund (maar afgehandelde sessies worden ondersteund).
+* Gedistribueerde trans acties worden niet ondersteund (maar transactionele sessies worden ondersteund).
 
-Bovendien splitst Azure Service Bus het besturingsvlak uit het gegevensvlak en ondersteunt het daarom geen verschillende dynamische topologiefuncties van JMS:
+Daarnaast wordt Azure Service Bus het besturings element gesplitst van het gegevens vlak en wordt daarom niet meerdere dynamische topologie functies van JMS ondersteund:
 
 | Niet-ondersteunde methode          | Vervangen door                                                                             |
 |-----------------------------|------------------------------------------------------------------------------------------|
-| SustainableSubscriber maken     | Een onderwerpabonnement maken dat de berichtkiezer overstuurt                                 |
-| creëertSustainableConsumer       | Een onderwerpabonnement maken dat de berichtkiezer overstuurt                                 |
-| makenSharedConsumer        | Service Bus onderwerpen zijn altijd deelbaar, zie hierboven                                       |
-| creërenSharedDurableConsumer | Service Bus onderwerpen zijn altijd deelbaar, zie hierboven                                       |
-| makenTemporaryTopic        | een onderwerp maken via beheer-API/tools/portal met *AutoDeleteOnIdle* ingesteld op een vervaldatum |
-| createTopic                 | een onderwerp maken via beheer-API/tools/portal                                           |
-| Uitschrijven                 | de API/tools/portal voor onderwerpbeheer verwijderen                                             |
-| createBrowser               | Unsupported. De peek-functionaliteit van de API servicebus gebruiken                         |
-| makenWachtrij                 | een wachtrij maken via beheer-API/tools/portal                                           | 
-| tijdelijke wachtrij maken        | een wachtrij maken via beheer-API/tools/portal met *AutoDeleteOnIdle* ingesteld op een vervaldatum |
-| ontvangenNoWait               | gebruik maken van de receive() methode die door de Service Bus SDK en geef een zeer lage of nul time-out |
+| createDurableSubscriber     | een onderwerp-abonnement maken poort voor de bericht kiezer                                 |
+| createDurableConsumer       | een onderwerp-abonnement maken poort voor de bericht kiezer                                 |
+| createSharedConsumer        | Service Bus-onderwerpen zijn altijd deelbaar, zie hierboven                                       |
+| createSharedDurableConsumer | Service Bus-onderwerpen zijn altijd deelbaar, zie hierboven                                       |
+| createTemporaryTopic        | een onderwerp maken via beheer-API/hulpprogram ma's/Portal waarbij *AutoDeleteOnIdle* is ingesteld op een verloop periode |
+| createTopic                 | een onderwerp maken via Management API/tools/Portal                                           |
+| afmelden                 | de topic Management API/tools/Portal verwijderen                                             |
+| createBrowser               | niet-ondersteunde. De functie Peek () van de Service Bus-API gebruiken                         |
+| createQueue                 | een wachtrij maken via Management API/tools/Portal                                           | 
+| createTemporaryQueue        | een wachtrij maken via beheer-API/hulpprogram ma's/Portal waarbij *AutoDeleteOnIdle* is ingesteld op een verloop periode |
+| receiveNoWait               | de methode receive () gebruiken die is opgegeven door de Service Bus SDK en een zeer lage of nul time-out opgeven |
 
 ## <a name="summary"></a>Samenvatting
-Deze handleiding liet zien hoe u servicebus-berichtenfuncties (wachtrijen en publicatie-/subscribe-onderwerpen) van Java gebruiken met behulp van de populaire JMS API en AMQP 1.0.
+In deze hand leiding wordt uitgelegd hoe u Service Bus Brokered Messaging functies (wacht rijen en onderwerpen voor publiceren/abonneren) kunt gebruiken vanuit Java met behulp van de populaire JMS-API en AMQP 1,0.
 
-U servicebus AMQP 1.0 ook uit andere talen gebruiken, waaronder .NET, C, Python en PHP. Componenten die met deze verschillende talen zijn gebouwd, kunnen berichten betrouwbaar en op volledige getrouwheid uitwisselen met behulp van de AMQP 1.0-ondersteuning in Service Bus.
+U kunt ook Service Bus AMQP 1,0 gebruiken uit andere talen, waaronder .NET, C, python en PHP. Onderdelen die zijn gebouwd met behulp van deze verschillende talen kunnen berichten veilig en met volledige kwaliteit uitwisselen met behulp van de AMQP 1,0-ondersteuning in Service Bus.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [AMQP 1.0-ondersteuning in Azure Service Bus](service-bus-amqp-overview.md)
-* [AMQP 1.0 gebruiken met de Service Bus .NET API](service-bus-dotnet-advanced-message-queuing.md)
-* [Service Bus AMQP 1.0 Developer's Guide](service-bus-amqp-dotnet.md)
+* [Ondersteuning voor AMQP 1,0 in Azure Service Bus](service-bus-amqp-overview.md)
+* [AMQP 1,0 gebruiken met de Service Bus .NET API](service-bus-dotnet-advanced-message-queuing.md)
+* [Service Bus AMQP 1,0-hand leiding voor ontwikkel aars](service-bus-amqp-dotnet.md)
 * [Aan de slag met Service Bus-wachtrijen](service-bus-dotnet-get-started-with-queues.md)
 * [Java Developer Center](https://azure.microsoft.com/develop/java/)
 

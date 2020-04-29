@@ -1,6 +1,6 @@
 ---
-title: Windows-firewallgegevens verbinden met Azure Sentinel| Microsoft Documenten
-description: Meer informatie over het verbinden van Windows-firewallgegevens met Azure Sentinel.
+title: Windows Firewall-gegevens verbinden met Azure Sentinel | Microsoft Docs
+description: Meer informatie over hoe u Windows Firewall-gegevens verbindt met Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,49 +16,49 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: 5d2f68261143c3fc5bbcda0b739af17251eeee63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588056"
 ---
 # <a name="connect-windows-firewall"></a>Verbinding maken met Windows-firewall
 
 
 
-Met de Windows-firewallconnector u eenvoudig uw Windows-firewalls-logboeken aansluiten als ze zijn verbonden met uw Azure Sentinel-werkruimte. Met deze verbinding u dashboards bekijken, aangepaste waarschuwingen maken en het onderzoek verbeteren. Dit geeft u meer inzicht in het netwerk van uw organisatie en verbetert uw beveiligingsmogelijkheden. De oplossing verzamelt Windows-firewallgebeurtenissen van de Windows-machines waarop een Log Analytics-agent is geïnstalleerd. 
+Met de Windows Firewall-connector kunt u eenvoudig uw Windows firewalls-logboeken verbinden als ze zijn verbonden met uw Azure Sentinel-werk ruimte. Met deze verbinding kunt u Dash boards weer geven, aangepaste waarschuwingen maken en het onderzoek verbeteren. Dit geeft u meer inzicht in het netwerk van uw organisatie en verbetert de mogelijkheden van beveiligings bewerkingen. De oplossing verzamelt Windows Firewall-gebeurtenissen van de Windows-computers waarop een Log Analytics-agent is geïnstalleerd. 
 
 
 > [!NOTE]
-> - Gegevens worden opgeslagen in de geografische locatie van de werkruimte waarop u Azure Sentinel uitvoert.
-> - Als Azure Sentinel en Azure Security Center worden verzameld in dezelfde werkruimte, hoeft u de Windows Firewall-oplossing niet via deze connector in te schakelen. Als u het toch hebt ingeschakeld, veroorzaakt dit geen dubbele gegevens. 
+> - Gegevens worden opgeslagen in de geografische locatie van de werk ruimte waarop u Azure Sentinel uitvoert.
+> - Als Azure Sentinel en Azure Security Center worden verzameld in dezelfde werk ruimte, is het niet nodig om de Windows Firewall oplossing via deze connector in te scha kelen. Als u dit toch hebt ingeschakeld, worden er geen dubbele gegevens weer gegeven. 
 
 ## <a name="enable-the-connector"></a>De connector inschakelen 
 
-1. Selecteer **gegevensconnectors** in de Azure Sentinel-portal en klik vervolgens op de **Windows-firewalltegel.** 
-1.  Als uw Windows-machines zich in Azure bevinden:
-    1. Klik **op Agent installeren op de virtuele machine van Azure Windows**.
-    1. Selecteer **in** de lijst Virtuele machines de Windows-machine die u naar Azure Sentinel wilt streamen. Zorg ervoor dat dit een Windows VM is.
-    1. Klik in het venster dat voor die virtuele machine wordt geopend op **Verbinden**.  
-    1. Klik **op Inschakelen** in het venster Windows **firewall-connector.** 
+1. Selecteer in de Azure-Sentinel-Portal de optie **gegevens connectors** en klik vervolgens op de tegel **Windows Firewall** . 
+1.  Als uw Windows-computers zich in azure bevinden:
+    1. Klik op **agent installeren op virtuele machine van Azure Windows**.
+    1. Selecteer in de lijst **virtuele machines** de Windows-machine die u wilt streamen naar Azure Sentinel. Zorg ervoor dat dit een Windows-VM is.
+    1. Klik in het venster dat wordt geopend voor die VM op **verbinden**.  
+    1. Klik op **inschakelen** in het venster **Windows Firewall connector** . 
 
-2. Als uw Windows-machine geen Azure VM is:
-    1. Klik **op Installatieagent op niet-Azure-machines**.
-    1. Selecteer in het venster **Direct-agent** de optie **Windows-agent downloaden (64-bits)** of **Windows-agent downloaden (32-bits).**
-    1. Installeer de agent op uw Windows-machine. Kopieer de **werkruimte-id**, **primaire toets**en **secundaire sleutel** en gebruik deze wanneer deze wordt gevraagd tijdens de installatie.
+2. Als uw Windows-computer geen Azure-VM is:
+    1. Klik op **agent installeren op niet-Azure-machines**.
+    1. Selecteer in het venster **direct agent** de optie **Windows-agent (64 bits) downloaden** of **Windows-agent (32 bits) downloaden**.
+    1. Installeer de agent op de Windows-computer. Kopieer de **werk ruimte-id**, **primaire sleutel**en **secundaire sleutel** en gebruik deze wanneer u hierom wordt gevraagd tijdens de installatie.
 
-4. Selecteer welke gegevenstypen u wilt streamen.
-5. Klik **op Oplossing installeren**.
-6. Als u het relevante schema wilt gebruiken in Log Analytics voor de Windows-firewall, zoekt u naar **SecurityEvent**.
+4. Selecteer welke gegevens typen u wilt streamen.
+5. Klik op **oplossing installeren**.
+6. Als u het relevante schema in Log Analytics voor Windows Firewall wilt gebruiken, zoekt u naar **SecurityEvent**.
 
 ## <a name="validate-connectivity"></a>Connectiviteit valideren
 
-Het kan meer dan 20 minuten duren voordat uw logboeken worden weergegeven in Log Analytics. 
+Het kan 20 minuten duren voordat uw logboeken in Log Analytics worden weer gegeven. 
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u Windows-firewall verbinden met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en potentiële bedreigingen.](quickstart-get-visibility.md)
-- Aan de slag met [het detecteren van bedreigingen met Azure Sentinel.](tutorial-detect-threats-built-in.md)
+In dit document hebt u geleerd hoe u Windows Firewall verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 

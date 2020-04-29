@@ -1,7 +1,7 @@
 ---
-title: "Snelstart: Maak intentie met REST API's - LUIS"
+title: "Quick Start: profiteren van intenties met REST-Api's-LUIS"
 titleSuffix: Azure Cognitive Services
-description: Gebruik in deze REST API quickstart een beschikbare openbare LUIS-app om de intentie van een gebruiker te bepalen aan de basis van gesprekstekst.
+description: Gebruik in deze REST API Snelstartgids een beschik bare open bare LUIS-app om de bedoeling van een gebruiker te bepalen op basis van de conversatie tekst.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -13,13 +13,13 @@ ms.date: 02/14/2020
 ms.author: diberry
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 58f164f1522975faa2e7a7e7d7ed08145a6c5889
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77524645"
 ---
-# <a name="quickstart-change-model-with-rest-apis"></a>Snelstart: Model wijzigen met REST API's
+# <a name="quickstart-change-model-with-rest-apis"></a>Snelstartgids: model wijzigen met REST-Api's
 
 In deze quickstart voegt u voorbeelden van utterances toe aan een Travel Agent-app en traint u de app. Voorbeeldutterances zijn teksten uit gesprekken met gebruikers die worden toegewezen aan een intentie. Door voorbeeldutterances op te geven voor intenties leert u LUIS welke soorten door de gebruiker geleverde tekst bij welke intentie horen.
 

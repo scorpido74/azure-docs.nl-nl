@@ -1,44 +1,44 @@
 ---
-title: Automatisch schalen in Azure met behulp van een aangepaste statistiek
-description: Meer informatie over het schalen van uw resource op aangepaste statistiek in Azure.
+title: Automatisch schalen in azure met behulp van een aangepaste metrische gegevens
+description: Meer informatie over hoe u uw resource kunt schalen op basis van aangepaste metrische gegevens in Azure.
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 7758c440c75af5819099110dcbdaf5a86a1d2a04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77425116"
 ---
-# <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Aan de slag met automatische schaal op aangepaste statistiek in Azure
-In dit artikel wordt beschreven hoe u uw resource schalen met een aangepaste statistiek in azure-portal.
+# <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Aan de slag met automatisch schalen op basis van aangepaste metrische gegevens in azure
+In dit artikel wordt beschreven hoe u uw resource kunt schalen op basis van een aangepaste metriek in Azure Portal.
 
-Azure Monitor autoscale is alleen van toepassing op [Virtual Machine Scale Sets,](https://azure.microsoft.com/services/virtual-machine-scale-sets/) [Cloud Services](https://azure.microsoft.com/services/cloud-services/), App Service - [Web Apps](https://azure.microsoft.com/services/app-service/web/), Azure Data [Explorer Cluster](https://azure.microsoft.com/services/data-explorer/) ,   
-Integratieserviceomgeving en [API-beheerservices.](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)
+Azure Monitor automatisch schalen alleen van toepassing is op [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-web apps](https://azure.microsoft.com/services/app-service/web/), [Azure Data Explorer-cluster](https://azure.microsoft.com/services/data-explorer/)   
+Integratieserviceomgeving-en [API Management-Services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
-## <a name="lets-get-started"></a>Laat aan de slag
-In dit artikel wordt ervan uitgegaan dat u een web-app hebt met toepassingsinzichten geconfigureerd. Als u er nog geen hebt, u [Application Insights instellen voor uw ASP.NET website][1]
+## <a name="lets-get-started"></a>Hiermee kunt u aan de slag
+In dit artikel wordt ervan uitgegaan dat u een web-app met Application Insights hebt geconfigureerd. Als u er nog geen hebt, kunt u [Application Insights instellen voor uw ASP.net-website][1]
 
-- [Azure-portal openen][2]
-- Klik op het azure-monitorpictogram in het linkernavigatiedeelvenster.
-  ![Azure-monitor starten][3]
-- Klik op de instelling Automatisch schalen om alle resources weer te geven waarvoor ![automatische schaal van toepassing is, samen met de huidige status Automatisch schalen ontdekken in Azure-monitor][4]
-- Open het blad 'Automatisch schalen' in Azure Monitor en selecteer een resource die u wilt schalen
-  > Opmerking: in de onderstaande stappen wordt een app-serviceplan gebruikt dat is gekoppeld aan een web-app waarin app-inzichten zijn geconfigureerd.
-- Let er in het schaalinstellingsblad voor de resource op dat het huidige aantal instantie1 is. Klik op 'Autoscale inschakelen'.
-  ![Schaalinstelling voor nieuwe web-app][5]
-- Geef een naam op voor de schaalinstelling en klik op 'Een regel toevoegen'. Let op de opties voor schaalregels die worden geopend als een contextvenster aan de rechterkant. Standaard stelt het de optie in om het aantal instanceen met 1 te schalen als het CPU-percentage van de resource meer dan 70% bedraagt. Wijzig de metrische bron bovenaan in 'Application Insights', selecteer de bron voor app-inzichten in de vervolgkeuzelijst 'Resource' en selecteer vervolgens de aangepaste statistiek op basis waarvan u wilt schalen.
-  ![Schalen op aangepaste statistiek][6]
-- Voeg, net als de bovenstaande stap, een schaalregel toe die het aantal schaalwaarden met 1 schaalt en verlaagt als de aangepaste statistiek onder een drempelwaarde ligt.
-  ![Schaal op basis van cpu][7]
-- Stel de instantielimieten in. Als u bijvoorbeeld wilt schalen tussen 2-5 instanties, afhankelijk van de aangepaste metrische schommelingen, stelt u 'minimum' in op '2', 'maximaal' op '5' en 'standaard' op '2'
-  > Opmerking: Als er een probleem is met het lezen van de resourcestatistieken en de huidige capaciteit lager is dan de standaardcapaciteit, wordt Autoscale, om de beschikbaarheid van de resource te garanderen, uitgeschaald naar de standaardwaarde. Als de huidige capaciteit al hoger is dan de standaardcapaciteit, wordt Automatisch schalen niet inschaald.
-- Klik op 'Opslaan'
+- [Azure Portal][2] openen
+- Klik op Azure Monitor pictogram in het navigatie deel venster links.
+  ![Azure Monitor starten][3]
+- Klik op instelling voor automatisch schalen om alle resources weer te geven waarvoor automatische schaal baarheid van toepassing is, samen met de huidige ![automatische schaal status automatisch schalen in azure monitor][4]
+- Open de Blade automatisch schalen in Azure Monitor en selecteer een resource die u wilt schalen
+  > Opmerking: in de volgende stappen wordt een app service-plan gebruikt dat is gekoppeld aan een web-app die app Insights heeft geconfigureerd.
+- In de Blade schaal instelling voor de resource ziet u dat het huidige aantal exemplaren 1 is. Klik op automatisch schalen inschakelen.
+  ![Schaal instelling voor nieuwe web-app][5]
+- Geef een naam op voor de schaal instelling en klik op ' een regel toevoegen '. U ziet de opties voor de schaal regel die als context deel venster worden weer gegeven aan de rechter kant. Standaard wordt de optie voor het schalen van het aantal instanties door 1 ingesteld als het CPU-percentage van de resource groter is dan 70%. Wijzig de metrische bron boven aan ' Application Insights ', selecteer de app Insights-resource in de vervolg keuzelijst resource en selecteer vervolgens de aangepaste metriek op basis waarvan u de schaal wilt aanpassen.
+  ![Schalen op aangepaste metrische gegevens][6]
+- Net als bij de bovenstaande stap voegt u een schaal regel toe die wordt geschaald en verlaagt u het aantal schalen met 1 als de aangepaste metriek onder een drempel waarde ligt.
+  ![Schalen op basis van CPU][7]
+- Stel de limieten van het exemplaar in. Als u bijvoorbeeld wilt schalen tussen 2-5-instanties, afhankelijk van de aangepaste fluctuaties van de metriek, stelt u ' minimum ' in ' 2 ', ' maximum ' op ' 5 ' en ' standaard ' in ' 2 '
+  > Opmerking: als er een probleem is opgetreden bij het lezen van de metrische gegevens van de resource en de huidige capaciteit lager is dan de standaard capaciteit, moet automatisch schalen worden uitgebreid naar de standaard waarde om te zorgen voor de beschik baarheid van de resource. Als de huidige capaciteit al hoger is dan standaard capaciteit, kan automatisch schalen niet worden geschaald.
+- Klik op opslaan
 
-Gefeliciteerd! U hebt nu uw schaalinstelling gemaakt om uw web-app automatisch te schalen op basis van een aangepaste statistiek.
+Gefeliciteerd! U hebt nu de schaal instelling gemaakt om uw web-app automatisch te schalen op basis van een aangepaste metriek.
 
-> Opmerking: dezelfde stappen zijn van toepassing om aan de slag te gaan met een VMSS- of cloudservicerol.
+> Opmerking: dezelfde stappen zijn van toepassing om aan de slag te gaan met een VMSS of Cloud service-rol.
 
 <!--Reference-->
 [1]: https://docs.microsoft.com/azure/application-insights/app-insights-asp-net

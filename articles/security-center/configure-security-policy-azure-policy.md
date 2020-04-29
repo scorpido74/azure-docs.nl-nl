@@ -1,6 +1,6 @@
 ---
-title: Azure-beleidsbeveiligingsbeleid maken en bewerken met de REST-API
-description: Meer informatie over Azure Policy policy management via een REST API.
+title: Azure Policy beveiligings beleid maken en bewerken met behulp van de REST API
+description: Meer informatie over Azure Policy-beleids beheer via een REST API.
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,37 +9,37 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77430938"
 ---
-# <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Een beveiligingsbeleid configureren in Azure-beleid met de REST-API
+# <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Een beveiligings beleid configureren in Azure Policy met behulp van de REST API
 
-Als onderdeel van de native integratie met Azure Policy stelt Azure Security Center u in staat om gebruik te maken van de REST API van Azure Policy om beleidstoewijzingen te maken. De volgende instructies lopen u door het maken van beleidsopdrachten, evenals het aanpassen van bestaande opdrachten. 
+Als onderdeel van de systeem eigen integratie met Azure Policy, Azure Security Center kunt u de REST API van Azure Policy benutten om beleids toewijzingen te maken. De volgende instructies begeleiden u bij het maken van beleids toewijzingen, evenals het aanpassen van bestaande toewijzingen. 
 
-Belangrijke concepten in Azure Policy: 
+Belang rijke concepten in Azure Policy: 
 
-- Een **beleidsdefinitie** is een regel 
+- Een **beleids definitie** is een regel 
 
-- Een **initiatief** is een verzameling beleidsdefinities (regels) 
+- Een **initiatief** is een verzameling beleids definities (regels) 
 
-- Een **opdracht** is een toepassing van een initiatief of een beleid op een specifieke scope (managementgroup, abonnement, etc.) 
+- Een **toewijzing** is een toepassing van een initiatief of een beleid voor een specifiek bereik (beheer groep, abonnement, enz.) 
 
-Security Center heeft een ingebouwd initiatief dat al zijn beveiligingsbeleid omvat. Als u het beleid van Security Center voor uw Azure-resources wilt beoordelen, moet u een toewijzing maken voor de beheergroep of het abonnement dat u wilt beoordelen.
+Security Center heeft een ingebouwd initiatief dat alle beveiligings beleidsregels omvat. Als u het beleid van Security Center op uw Azure-resources wilt beoordelen, moet u een toewijzing maken voor de beheer groep of het abonnement dat u wilt beoordelen.
 
-Het ingebouwde initiatief heeft standaard het beleid van Security Center ingeschakeld. U ervoor kiezen om bepaalde beleidsregels uit het ingebouwde initiatief uit te schakelen. Als u bijvoorbeeld alle beleidsregels van beveiligingscentrum wilt toepassen, behalve de firewall van **de webtoepassingstoepassing,** wijzigt u de waarde van de effectparameter van het beleid in **Uitgeschakeld**. 
+Het ingebouwde initiatief heeft standaard alle beleids regels van Security Center ingeschakeld. U kunt ervoor kiezen om bepaalde beleids regels uit het ingebouwde initiatief uit te scha kelen. Als u bijvoorbeeld alle beleids regels van Security Center wilt Toep assen, met uitzonde ring van **Web Application firewall**, wijzigt u de waarde van de effect parameter van het beleid in **uitgeschakeld**. 
 
 ## <a name="api-examples"></a>API-voorbeelden
 
-Vervang in de volgende voorbeelden de volgende variabelen:
+Vervang deze variabelen in de volgende voor beelden:
 
-- **{scope}** voer de naam in van de beheergroep of het abonnement waarop u het beleid toepast.
-- **{policyAssignmentName}** voer de [naam van de relevante beleidstoewijzing in](#policy-names).
-- **{naam}** voer uw naam of de naam in van de beheerder die de beleidswijziging heeft goedgekeurd.
+- **{Scope}** Voer de naam in van de beheer groep of het abonnement waarop u het beleid toepast.
+- **{policyAssignmentName}** Voer de [naam van de relevante beleids toewijzing in](#policy-names).
+- **{name}** Voer uw naam in of de naam van de beheerder die de beleids wijziging heeft goedgekeurd.
 
-In dit voorbeeld ziet u hoe u het ingebouwde Security Center-initiatief toewijst aan een abonnements- of beheergroep
+Dit voor beeld laat zien hoe u het ingebouwde Security Center initiatief toewijst aan een abonnement of beheer groep
  
  ```
     PUT  
@@ -68,13 +68,13 @@ In dit voorbeeld ziet u hoe u het ingebouwde Security Center-initiatief toewijst
     } 
  ```
 
-In dit voorbeeld ziet u hoe u het ingebouwde beveiligingscentrum-initiatief aan een abonnement toewijst, waarbij het volgende beleid is uitgeschakeld: 
+Dit voor beeld laat zien hoe u het ingebouwde Security Center initiatief toewijst aan een abonnement, waarbij het volgende beleid is uitgeschakeld: 
 
-- Systeemupdates ("systemUpdatesMonitoringEffect") 
+- Systeem updates ("systemUpdatesMonitoringEffect") 
 
-- Beveiligingsconfiguraties ("systemConfigurationsMonitoringEffect") 
+- Beveiligings configuraties ("systemConfigurationsMonitoringEffect") 
 
-- Endpoint protection ("endpointProtectionMonitoringEffect") 
+- Endpoint Protection ("endpointProtectionMonitoringEffect") 
 
  ```
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
@@ -109,34 +109,34 @@ In dit voorbeeld ziet u hoe u het ingebouwde beveiligingscentrum-initiatief aan 
     
     } 
  ```
-In dit voorbeeld ziet u hoe u een toewijzing verwijdert:
+In dit voor beeld ziet u hoe u een toewijzing verwijdert:
  ```
     DELETE   
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
  ```
 
-## <a name="policy-names-reference"></a>Verwijzing naar beleidsnamen<a name="policy-names"></a>
+## <a name="policy-names-reference"></a>Naslag informatie over beleids namen<a name="policy-names"></a>
 
-|Beleidsnaam in Beveiligingscentrum|Beleidsnaam weergegeven in Azure-beleid |Parameternaam Beleidseffect|
+|Beleids naam in Security Center|Beleids naam die wordt weer gegeven in Azure Policy |Parameter naam van beleids effect|
 |----|----|----|
-|SQL-versleuteling |Onversleutelde SQL-database controleren in Azure Security Center |sqlEncryptionMonitoringEffect| 
-|Controleren voor SQL |Niet-geauditeerde SQL-database controleren in Azure Security Center |sqlAuditingMonitoringEffect|
-|Systeemupdates |Ontbrekende systeemupdates controleren in Azure Security Center |systemUpdatesMonitoringEffect|
+|SQL-versleuteling |Niet-versleutelde SQL database in Azure Security Center bewaken |sqlEncryptionMonitoringEffect| 
+|Controleren voor SQL |Ongecontroleerde SQL database in Azure Security Center bewaken |sqlAuditingMonitoringEffect|
+|Systeemupdates |Ontbrekende systeem updates bewaken in Azure Security Center |systemUpdatesMonitoringEffect|
 |Storage-versleuteling |Ontbrekende blobversleuteling voor opslagaccounts controleren |storageEncryptionMonitoringEffect|
-|JIT-netwerktoegang |Mogelijke just-in-time (JIT)-toegang controleren in Azure Security Center |jitNetworkAccessMonitoringEffect |
-|Adaptieve toepassingsbesturingselementen |Mogelijke app Whitelisting bewaken in Azure Security Center |adaptieveApplicationControlsMonitoringEffect|
-|Netwerkbeveiligingsgroepen |Tolerante netwerktoegang controleren in Azure Security Center |networkSecurityGroupsMonitoringEffect| 
-|Beveiligingsconfiguraties |Os-kwetsbaarheden in Azure Security Center bewaken |systemConfigurationsMonitoringEffect| 
-|Eindpuntbeveiliging |Ontbrekende endpointbeveiliging controleren in Azure Security Center |endpointProtectionMonitoringEffect |
-|Schijfversleuteling |Onversleutelde VM-schijven controleren in Azure Security Center |diskEncryptionMonitoringEffect|
-|Beoordeling van beveiligingslekken |VM-kwetsbaarheden in Azure Security Center bewaken |vulnerabilityAssessmentMonitoringEffect|
-|Web Application Firewall |Onbeschermde webtoepassing controleren in Azure Security Center |webApplicationFirewallMonitoringEffect |
-|Next Generation Firewall |Onbeschermde netwerkeindpunten bewaken in Azure Security Center| |
+|JIT-netwerk toegang |Mogelijke JIT-toegang (just-in-time) in een netwerk controleren in Azure Security Center |jitNetworkAccessMonitoringEffect |
+|Adaptieve toepassingsbesturingselementen |Mogelijke app-white list in Azure Security Center bewaken |adaptiveApplicationControlsMonitoringEffect|
+|Netwerkbeveiligingsgroepen |Bewaak strikte netwerk toegang in Azure Security Center |networkSecurityGroupsMonitoringEffect| 
+|Beveiligingsconfiguraties |Beveiligings problemen met het besturings systeem in Azure Security Center bewaken |systemConfigurationsMonitoringEffect| 
+|Endpoint Protection |Ontbrekende Endpoint Protection in Azure Security Center controleren |endpointProtectionMonitoringEffect |
+|Schijfversleuteling |Niet-versleutelde VM-schijven in Azure Security Center bewaken |diskEncryptionMonitoringEffect|
+|Evaluatie van beveiligingsproblemen |VM-beveiligings problemen in Azure Security Center bewaken |vulnerabilityAssessmentMonitoringEffect|
+|Web Application Firewall |Niet-beveiligde webtoepassing in Azure Security Center bewaken |webApplicationFirewallMonitoringEffect |
+|Next Generation Firewall |Niet-beveiligde netwerk eindpunten bewaken in Azure Security Center| |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor ander gerelateerd materiaal de volgende artikelen: 
+Raadpleeg de volgende artikelen voor meer gerelateerde materialen: 
 
-- [Aangepast beveiligingsbeleid](custom-security-policies.md)
-- [Overzicht van het beveiligingsbeleid](tutorial-security-policy.md)
+- [Aangepast beveiligings beleid](custom-security-policies.md)
+- [Overzicht van beveiligings beleid](tutorial-security-policy.md)

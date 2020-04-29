@@ -1,54 +1,54 @@
 ---
 title: Logische apps aanroepen, triggeren of nesten
-description: HTTP-eindpunten instellen voor het aanroepen, activeren of nesten van logische app-werkstromen in Azure Logic Apps
+description: HTTP-eind punten instellen voor het aanroepen, activeren of nesten van logische app-werk stromen in Azure Logic Apps
 services: logic-apps
 ms.workload: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 11/04/2019
 ms.openlocfilehash: d5b5a69c7927d07c0ae6b3b56ec97b6551e5d46b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77191335"
 ---
-# <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Logische apps aanbellen, activeren of nesten met HTTP-eindpunten in Azure Logic Apps
+# <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Logische apps aanroepen, activeren of nesten met behulp van HTTP-eind punten in Azure Logic Apps
 
-Als u uw logische app bereikbaar wilt maken via een URL, zodat uw logische app binnenkomende aanvragen van andere services kan ontvangen, u een synchrone HTTP-eindpunt als trigger op die logische app native weergeven. Wanneer u deze mogelijkheid instelt, u uw logische app ook nesten in andere logische apps, waarmee u een patroon van aanroepbare eindpunten maken.
+Als u wilt dat uw logische app kan worden opgeroepen via een URL zodat uw logische app binnenkomende aanvragen van andere services kan ontvangen, kunt u in de logische app een synchroon HTTP-eind punt beschikbaar maken als een trigger. Wanneer u deze mogelijkheid instelt, kunt u ook uw logische app nesten in andere logische apps, waarmee u een patroon van aanroep bare eind punten maakt.
 
-Als u een HTTP-eindpunt wilt instellen, u een van deze triggertypen gebruiken waarmee logische apps binnenkomende aanvragen kunnen ontvangen:
+Als u een HTTP-eind punt wilt instellen, kunt u een van deze trigger typen gebruiken, waarmee logische apps binnenkomende aanvragen kunnen ontvangen:
 
 * [Aanvraag](../connectors/connectors-native-reqres.md)
 * [HTTP-webhook](../connectors/connectors-native-webhook.md)
-* Beheerde connectortriggers met het [type ApiConnectionWebhook](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) en kunnen binnenkomende HTTP-aanvragen ontvangen
+* Beheerde connector triggers die het [ApiConnectionWebhook-type](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) hebben en binnenkomende HTTP-aanvragen kunnen ontvangen
 
 > [!NOTE]
-> In deze voorbeelden wordt de trigger van Request gebruikt, maar u elke http-trigger op basis van aanvragen gebruiken die in de vorige lijst staat. Alle principes zijn identiek van toepassing op deze andere triggertypes.
+> In deze voor beelden wordt de trigger voor aanvragen gebruikt, maar u kunt elke op HTTP-aanvraag gebaseerde trigger gebruiken die in de vorige lijst voor komt. Alle principes zijn identiek van toepassing op deze andere trigger typen.
 
-Zie Wat is Azure Logic [Apps](../logic-apps/logic-apps-overview.md) en [Quickstart: Uw eerste logische app maken als](../logic-apps/quickstart-create-first-logic-app-workflow.md)u nieuw bent in logische apps.
+Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* De logische app waarin u het HTTP-eindpunt als trigger wilt instellen. U beginnen met een lege logische app of een bestaande logische app waarbij u de huidige trigger wilt vervangen. Dit voorbeeld begint met een lege logische app.
+* De logische app waar u het HTTP-eind punt wilt instellen als de trigger. U kunt beginnen met een lege logische app of een bestaande logische app waarvoor u de huidige trigger wilt vervangen. Dit voor beeld begint met een lege logische app.
 
-## <a name="create-a-callable-endpoint"></a>Een callable endpoint maken
+## <a name="create-a-callable-endpoint"></a>Een aanroepbaar eind punt maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Maak en open een lege logische app in de Logic App Designer.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Een lege logische app maken en openen in de ontwerp functie voor logische apps.
 
-   In dit voorbeeld wordt de trigger Van aanvraag gebruikt, maar u elke trigger gebruiken die binnenkomende HTTP-aanvragen kan ontvangen. Alle principes zijn identiek van toepassing op deze triggers. Zie [Binnenkomende HTTPS-oproepen ontvangen en reageren met Azure Logic Apps](../connectors/connectors-native-reqres.md)voor meer informatie over de trigger van Request.
+   In dit voor beeld wordt de trigger voor aanvragen gebruikt, maar u kunt elke trigger gebruiken die binnenkomende HTTP-aanvragen kan ontvangen. Alle principes zijn identiek van toepassing op deze triggers. Zie voor meer informatie over de aanvraag trigger [binnenkomende https-aanroepen ontvangen en erop reageren met behulp van Azure Logic apps](../connectors/connectors-native-reqres.md).
 
-1. Selecteer ingebouwd onder het zoekvak **ingebouwde**. Voer in het `request` zoekvak in als filter. Selecteer in de lijst triggers de optie **Wanneer een HTTP-aanvraag is ontvangen**.
+1. Selecteer in het zoekvak **ingebouwde**. Voer `request` in het zoekvak in als uw filter. Selecteer in de lijst triggers **Wanneer een HTTP-aanvraag wordt ontvangen**.
 
-   ![De trigger van Aanvraag zoeken en selecteren](./media/logic-apps-http-endpoint/find-and-select-request-trigger.png)
+   ![De aanvraag trigger zoeken en selecteren](./media/logic-apps-http-endpoint/find-and-select-request-trigger.png)
 
-1. Optioneel u in het vak **JSON-schema van aanvraaginstantie** een JSON-schema invoeren waarin de payload of gegevens worden beschreven waarvan u verwacht dat de trigger deze ontvangt.
+1. Desgewenst kunt u in het vak JSON-schema van de **aanvraag tekst** een JSON-schema invoeren waarmee de payload of gegevens worden beschreven die u verwacht dat de trigger wordt ontvangen.
 
-   De ontwerper gebruikt dit schema om tokens te genereren die triggeroutputs vertegenwoordigen. U vervolgens eenvoudig naar deze uitvoer verwijzen in de workflow van uw logische app. Meer informatie over [tokens die zijn gegenereerd uit JSON-schema's.](#generated-tokens)
+   De ontwerp functie gebruikt dit schema voor het genereren van tokens die trigger-uitvoer vertegenwoordigen. U kunt vervolgens eenvoudig naar deze uitvoer verwijzen tijdens de werk stroom van de logische app. Meer informatie over de [tokens die zijn gegenereerd op basis van JSON-schema's](#generated-tokens).
 
-   Voer voor dit voorbeeld het laatste schema in:
+   Voor dit voor beeld voert u dit schema in:
 
    ```json
       {
@@ -75,13 +75,13 @@ Zie Wat is Azure Logic [Apps](../logic-apps/logic-apps-overview.md) en [Quicksta
    }
     ```
 
-   ![Json-schema voor de actie Aanvragen opvragen](./media/logic-apps-http-endpoint/manual-request-trigger-schema.png)
+   ![Het JSON-schema voor de aanvraag actie opgeven](./media/logic-apps-http-endpoint/manual-request-trigger-schema.png)
 
-   U ook een JSON-schema genereren door een monsterpayload op te geven:
+   U kunt ook een JSON-schema genereren door een voor beeld van een nettolading te bieden:
 
-   1. Selecteer in de **trigger Van aanvraag** de optie **Voorbeeldpayload gebruiken om schema te genereren**.
+   1. Selecteer in de trigger voor de **aanvraag** een **voor beeld-nettolading gebruiken om een schema te genereren**.
 
-   1. Voer in het **laadlaadveld van een monster VAN JSON** uw monsterpayload in, bijvoorbeeld:
+   1. In het vak **een voor beeld van een JSON-nettolading invoeren of plakken** voert u de voor beeld-nettolading in, bijvoorbeeld:
 
       ```json
       {
@@ -94,29 +94,29 @@ Zie Wat is Azure Logic [Apps](../logic-apps/logic-apps-overview.md) en [Quicksta
       }
       ```
 
-   1. Wanneer u klaar bent, selecteert u **Gereed**.
+   1. Wanneer u klaar bent, selecteert u **gereed**.
 
-      In het vak **JSON-schema van aanvraaginstantie** wordt nu het gegenereerde schema weergegeven.
+      In de vak **JSON schema van aanvraag tekst** wordt nu het gegenereerde schema weer gegeven.
 
 1. Sla uw logische app op.
 
-   In het vak **HTTP-post in dit URL-vak** wordt nu de gegenereerde terugroep-URL weergegeven die andere services kunnen gebruiken om uw logische app te bellen en te activeren. Deze URL bevat een SAS-sleutel (Shared Access Signature), die wordt gebruikt voor verificatie, in de queryparameters, bijvoorbeeld:
+   Het vak **http post naar deze URL** bevat nu de gegenereerde call back-URL die andere services kunnen gebruiken om uw logische app aan te roepen en te activeren. Deze URL bevat een Shared Access Signature (SAS) sleutel, die wordt gebruikt voor verificatie, in de query parameters, bijvoorbeeld:
 
-   ![Gegenereerde terugroep-URL voor eindpunt](./media/logic-apps-http-endpoint/generated-endpoint-url.png)
+   ![Gegenereerde call back-URL voor eind punt](./media/logic-apps-http-endpoint/generated-endpoint-url.png)
 
-   U de HTTP-eindpunt-URL ook ophalen in het **overzichtsvenster** van uw logische app.
+   U kunt de URL van het HTTP-eind punt ook ophalen uit het **overzichts** venster van uw logische app.
 
-   1. Selecteer **Overzicht**in het menu van uw logische app .
+   1. Selecteer **overzicht**in het menu van de logische app.
 
-   1. Selecteer in de sectie **Samenvatting** de optie **Triggergeschiedenis weergeven**.
+   1. Selecteer in de sectie **samen vatting** de optie **trigger geschiedenis weer geven**.
 
-      ![HTTP-eindpunt-URL ophalen vanuit Azure-portal](./media/logic-apps-http-endpoint/find-manual-trigger-url.png)
+      ![URL voor HTTP-eind punt ophalen uit Azure Portal](./media/logic-apps-http-endpoint/find-manual-trigger-url.png)
 
-   1. Kopieer onder **Callback-url [POST]** de URL:
+   1. Kopieer onder **URL voor terugbellen [post]** de URL:
 
-      ![HTTP-eindpunt-URL kopiëren vanuit Azure-portal](./media/logic-apps-http-endpoint/copy-manual-trigger-callback-url.png)
+      ![URL van het HTTP-eind punt kopiëren van Azure Portal](./media/logic-apps-http-endpoint/copy-manual-trigger-callback-url.png)
 
-      Of u de URL krijgen door deze oproep te doen:
+      U kunt ook de URL ophalen door de volgende aanroep te nemen:
 
       ```http
       POST https://management.azure.com/{logic-app-resource-ID}/triggers/{endpoint-trigger-name}/listCallbackURL?api-version=2016-06-01
@@ -126,73 +126,73 @@ Zie Wat is Azure Logic [Apps](../logic-apps/logic-apps-overview.md) en [Quicksta
 
 ## <a name="set-expected-http-method"></a>Verwachte HTTP-methode instellen
 
-Standaard verwacht de trigger Van aanvraag een HTTP POST-aanvraag. U echter een andere te verwachten methode opgeven, maar slechts één methode.
+De aanvraag trigger verwacht standaard een HTTP POST-aanvraag. U kunt echter een andere methode opgeven die u wilt verwachten, maar slechts één methode.
 
-1. Open in de trigger Van Aanvraag de lijst **Nieuwe parameter toevoegen** en selecteer **Methode**, waarbij deze eigenschap aan de trigger wordt toegevoegd.
+1. Open in de trigger voor aanvragen de lijst **nieuwe para meter toevoegen** en selecteer **methode**, waarmee deze eigenschap wordt toegevoegd aan de trigger.
 
-   ![Eigenschap 'Methode' toevoegen om te activeren](./media/logic-apps-http-endpoint/select-add-new-parameter-for-method.png)
+   ![Eigenschap ' methode ' toevoegen aan trigger](./media/logic-apps-http-endpoint/select-add-new-parameter-for-method.png)
 
-1. Selecteer **in** de lijst Methode een andere methode die de trigger verwacht. U ook een aangepaste methode opgeven.
+1. Selecteer in de lijst **methode** een andere methode die de trigger verwacht. U kunt ook een aangepaste methode opgeven.
 
-   Selecteer bijvoorbeeld de **GET-methode,** zodat u de URL van uw HTTP-eindpunt later testen.
+   Selecteer bijvoorbeeld de **Get** -methode, zodat u de URL van uw http-eind punt later kunt testen.
 
-   ![Selecteer HTTP-methode die u wilt gebruiken voor trigger](./media/logic-apps-http-endpoint/select-method-request-trigger.png)
+   ![De HTTP-methode selecteren die voor de trigger moet worden gebruikt](./media/logic-apps-http-endpoint/select-method-request-trigger.png)
 
-## <a name="accept-parameters-in-endpoint-url"></a>Parameters in de URL van eindpunt accepteren
+## <a name="accept-parameters-in-endpoint-url"></a>Para meters accepteren in eind punt-URL
 
-Wanneer u wilt dat de URL van het eindpunt parameters accepteert, geeft u het relatieve pad in de trigger op. U moet ook expliciet [de methode instellen](#set-method) die uw HTTP-aanvraag verwacht.
+Wanneer u wilt dat de eind punt-URL para meters accepteert, geeft u het relatieve pad op in de trigger. U moet ook expliciet [de methode instellen](#set-method) die uw HTTP-aanvraag verwacht.
 
-1. Open in de trigger Van Aanvraag de lijst **Nieuwe parameter toevoegen** en selecteer Relatief **pad,** waarbij deze eigenschap aan de trigger wordt toegevoegd.
+1. Open in de trigger voor aanvragen de lijst **nieuwe para meter toevoegen** en selecteer **relatief pad**, waarmee deze eigenschap wordt toegevoegd aan de trigger.
 
-   ![Eigenschap 'Relatief pad' toevoegen om te activeren](./media/logic-apps-http-endpoint/select-add-new-parameter-for-relative-path.png)
+   ![Eigenschap relatief pad toevoegen aan trigger](./media/logic-apps-http-endpoint/select-add-new-parameter-for-relative-path.png)
 
-1. Geef in de eigenschap **Relatief pad** het relatieve pad op voor de parameter in uw `address/{postalCode}`JSON-schema dat u wilt dat uw URL accepteert, bijvoorbeeld .
+1. Geef in de eigenschap **relatief pad** het relatieve pad voor de para meter in uw JSON-schema op dat u door de URL wilt laten accepteren, `address/{postalCode}`bijvoorbeeld.
 
-   ![Het relatieve pad voor de parameter opgeven](./media/logic-apps-http-endpoint/relative-path-url-value.png)
+   ![Geef het relatieve pad op voor de para meter](./media/logic-apps-http-endpoint/relative-path-url-value.png)
 
-1. Als u de parameter wilt gebruiken, zoekt en voegt u een **reactieactie** toe aan uw logische app.
+1. Zoek en voeg een **antwoord** actie toe aan uw logische app om de para meter te gebruiken.
 
-   1. Selecteer onder de trigger Van Verzoek de optie **Nieuwe stap** > **Een actie toevoegen**.
+   1. Selecteer **nieuwe stap** > **een actie toevoegen**onder de trigger voor aanvragen.
 
-   1. Voer **onder Een actie kiezen**in `response` het zoekvak in als filter.
+   1. Voer `response` onder **Kies een actie**in het zoekvak in als uw filter.
 
-   1. Selecteer in de lijst met acties de **actie Antwoord.**
+   1. Selecteer in de lijst acties de actie **reactie** .
 
-1. Neem in de eigenschap Body van de actie **Antwoord** het token op dat de parameter vertegenwoordigt die u hebt opgegeven in het relatieve pad van de trigger.
+1. Neem in de eigenschap **hoofd tekst** van de reactie actie het token op dat staat voor de para meter die u hebt opgegeven in het relatieve pad van uw trigger.
 
-   Stel dat u bijvoorbeeld wilt dat `Postal Code: {postalCode}`de actie Reactie wordt teruggegeven .
+   Stel dat u wilt dat de reactie actie wordt geretourneerd `Postal Code: {postalCode}`.
 
-   Voer **Body** in de `Postal Code: ` eigenschap Lichaam een naloopruimte in. Selecteer in de lijst met dynamische inhoud die wordt weergegeven het **postcodetoken.**
+   Voer `Postal Code: ` in de eigenschap **Body** een afsluitende spatie in. Selecteer in de lijst met dynamische inhoud die wordt weer gegeven het token **Post code** .
 
-   ![De opgegeven parameter toevoegen aan de antwoordbody](./media/logic-apps-http-endpoint/relative-url-with-parameter-token.png)
+   ![De opgegeven para meter toevoegen aan de antwoord tekst](./media/logic-apps-http-endpoint/relative-url-with-parameter-token.png)
 
-   De eigenschap **Body** bevat nu de geselecteerde parameter:
+   De eigenschap **Body** bevat nu de geselecteerde para meter:
 
-   ![Voorbeeldreactiebody met parameter](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
+   ![Voorbeeld tekst van antwoord met para meter](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
 
 1. Sla uw logische app op.
 
-    Uw HTTP-eindpunt-URL bevat nu het relatieve pad, bijvoorbeeld:
+    De URL van uw HTTP-eind punt bevat nu het relatieve pad, bijvoorbeeld:
 
     ```http
     https://prod-25.westus.logic.azure.com/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke/address/{postalCode}?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}
     ```
 
-1. Als u uw HTTP-eindpunt wilt testen, kopieert en `{postalCode}` plakt u de bijgewerkte URL in een ander browservenster, maar vervangt u `123456`door en drukt u op Enter.
+1. Als u uw HTTP-eind punt wilt testen, kopieert en plakt u de bijgewerkte URL in een `{postalCode}` ander `123456`browser venster, maar vervangt u door en drukt u op ENTER.
 
-   Uw browser toont deze tekst:`Postal Code: 123456`
+   Deze tekst wordt weer gegeven in de browser:`Postal Code: 123456`
 
-## <a name="call-logic-app-through-http-endpoint"></a>App voor gesprekslogica via HTTP-eindpunt
+## <a name="call-logic-app-through-http-endpoint"></a>Logische app aanroepen via HTTP-eind punt
 
-Nadat u het HTTP-eindpunt hebt gemaakt, u `POST` de logische app activeren door een HTTP-verzoek naar de volledige URL van het eindpunt te verzenden. Logische apps hebben ingebouwde ondersteuning voor direct-access endpoints.
+Nadat u het HTTP-eind punt hebt gemaakt, kunt u de logische app activeren door `POST` een HTTP-aanvraag te verzenden naar de volledige URL van het eind punt. Logic apps hebben ingebouwde ondersteuning voor directe toegangs punten.
 
 <a name="generated-tokens"></a>
 
-## <a name="tokens-generated-from-schema"></a>Tokens gegenereerd uit schema
+## <a name="tokens-generated-from-schema"></a>Tokens die zijn gegenereerd op basis van het schema
 
-Wanneer u een JSON-schema opgeeft in de trigger Van Aanvraag, genereert de Logic App Designer tokens voor de eigenschappen in dat schema. U deze tokens vervolgens gebruiken voor het doorgeven van gegevens via uw logica-app-workflow.
+Wanneer u een JSON-schema in de aanvraag trigger opgeeft, worden in de ontwerp functie voor logische apps tokens voor de eigenschappen in dat schema gegenereerd. U kunt vervolgens deze tokens gebruiken voor het door geven van gegevens via de werk stroom van uw logische app.
 
-Als u bijvoorbeeld meer eigenschappen toevoegt, zoals `"suite"`, aan uw JSON-schema, zijn tokens voor deze eigenschappen beschikbaar die u in de latere stappen voor uw logische app gebruiken. Hier is het volledige JSON schema:
+Als u bijvoorbeeld meer eigenschappen toevoegt, zoals `"suite"`aan uw JSON-schema, zijn tokens voor die eigenschappen beschikbaar voor gebruik in de volgende stappen voor uw logische app. Dit is het volledige JSON-schema:
 
 ```json
    {
@@ -222,29 +222,29 @@ Als u bijvoorbeeld meer eigenschappen toevoegt, zoals `"suite"`, aan uw JSON-sch
 }
 ```
 
-## <a name="create-nested-logic-apps"></a>Geneste logische apps maken
+## <a name="create-nested-logic-apps"></a>Geneste Logic apps maken
 
-U werkstromen in uw logische app nesten door andere logische apps toe te voegen die aanvragen kunnen ontvangen. Voer de volgende stappen uit om deze logische apps op te nemen:
+U kunt werk stromen nesten in uw logische app door andere logische apps toe te voegen die aanvragen kunnen ontvangen. Voer de volgende stappen uit om deze Logic apps op te nemen:
 
-1. Selecteer onder de stap waarin u een andere logische app wilt aanroepen, de optie **Nieuwe stap** > **Een actie toevoegen**.
+1. Selecteer **nieuwe stap** > **een actie toevoegen**onder de stap waarin u een andere logische app wilt aanroepen.
 
-1. Selecteer **Ingebouwde**actie onder **Een actie kiezen**. Voer in het `logic apps` zoekvak in als filter. Selecteer in de lijst met acties de optie **Een werkstroom voor Logische apps kiezen**.
+1. Selecteer onder **Kies een actie de**optie **ingebouwd**. Voer `logic apps` in het zoekvak in als uw filter. Selecteer in de lijst acties de optie **een Logic apps werk stroom kiezen**.
 
-   ![Nest-logica-app in de huidige logica-app](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
+   ![Logische app nesten in huidige logische app](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
-   De ontwerper toont de in aanmerking komende logische apps die u selecteren.
+   In de ontwerp functie worden de in aanmerking komende Logic apps weer gegeven die u kunt selecteren.
 
-1. Selecteer de logische app die u wilt aanroepen vanuit uw huidige logica-app.
+1. Selecteer de logische app die u wilt aanroepen vanuit uw huidige logische app.
 
-   ![Logische app selecteren om aan te bellen vanuit de huidige logische app](./media/logic-apps-http-endpoint/select-logic-app-to-nest.png)
+   ![Logische app selecteren die moet worden aangeroepen vanuit de huidige logische app](./media/logic-apps-http-endpoint/select-logic-app-to-nest.png)
 
-## <a name="reference-content-from-an-incoming-request"></a>Inhoud van een binnenkomende aanvraag verwijzen
+## <a name="reference-content-from-an-incoming-request"></a>Verwijzen naar inhoud van een binnenkomende aanvraag
 
-Als het inhoudstype van `application/json`de binnenkomende aanvraag is, u verwijzen naar de eigenschappen in de binnenkomende aanvraag. Anders wordt deze inhoud behandeld als één binaire eenheid die u doorgeven aan andere API's. Als u wilt verwijzen naar deze inhoud in de werkstroom van uw logische app, moet u die inhoud eerst converteren.
+Als het inhouds type van de inkomende aanvraag `application/json`is, kunt u naar de eigenschappen in de binnenkomende aanvraag verwijzen. Anders wordt deze inhoud behandeld als een enkele binaire eenheid die u kunt door geven aan andere Api's. Als u wilt verwijzen naar deze inhoud in de werk stroom van uw logische app, moet u deze inhoud eerst converteren.
 
-Als u bijvoorbeeld inhoud doorgeeft `application/xml` die tekst heeft, u de [ `@xpath()` expressie](../logic-apps/workflow-definition-language-functions-reference.md#xpath) gebruiken om een XPath-extractie uit te voeren of de [ `@json()` expressie](../logic-apps/workflow-definition-language-functions-reference.md#json) gebruiken voor het converteren van XML naar JSON. Meer informatie over het werken met ondersteunde [inhoudstypen](../logic-apps/logic-apps-content-type.md).
+Als u bijvoorbeeld inhoud doorgeeft die van het type `application/xml` is, kunt u de [ `@xpath()` expressie](../logic-apps/workflow-definition-language-functions-reference.md#xpath) gebruiken om een XPath-extractie uit te voeren of de [ `@json()` expressie](../logic-apps/workflow-definition-language-functions-reference.md#json) gebruiken voor het converteren van XML naar JSON. Meer informatie over het werken met ondersteunde [inhouds typen](../logic-apps/logic-apps-content-type.md).
 
-Als u de uitvoer van een binnenkomende [ `@triggerOutputs` ](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs)aanvraag wilt ophalen, u de expressie gebruiken. Stel dat u uitvoer hebt die er in het voorbeeld uitziet:
+Als u de uitvoer van een binnenkomende aanvraag wilt ophalen, kunt u de [ `@triggerOutputs` expressie](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs)gebruiken. Stel dat u een uitvoer hebt die er ongeveer zo uitziet als in dit voor beeld:
 
 ```json
 {
@@ -257,32 +257,32 @@ Als u de uitvoer van een binnenkomende [ `@triggerOutputs` ](../logic-apps/workf
 }
 ```
 
-Als u `body` toegang wilt krijgen tot specifiek de eigenschap, u de [ `@triggerBody()` expressie](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) als snelkoppeling gebruiken.
+Voor toegang tot specifiek `body` de eigenschap kunt u de [ `@triggerBody()` expressie](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) gebruiken als een snelkoppeling.
 
-## <a name="respond-to-requests"></a>Reageren op verzoeken
+## <a name="respond-to-requests"></a>Reageren op aanvragen
 
-Soms wilt u reageren op bepaalde verzoeken die uw logische app activeren door inhoud terug te sturen naar de beller. Als u de statuscode, koptekst en hoofdtekst voor uw reactie wilt maken, gebruikt u de actie Reactie. Deze actie kan overal in uw logische app worden weergegeven, niet alleen aan het einde van uw werkstroom. Als uw logische app geen reactieactie bevat, reageert het HTTP-eindpunt *onmiddellijk* met de **status Geaccepteerd 202.**
+Soms wilt u reageren op bepaalde aanvragen die uw logische app activeren door inhoud te retour neren aan de aanroeper. Als u de status code, koptekst en hoofd tekst voor uw antwoord wilt maken, gebruikt u de reactie actie. Deze actie kan overal in uw logische app worden weer gegeven, niet alleen aan het einde van uw werk stroom. Als uw logische app geen reactie actie bevat, reageert het HTTP-eind punt *onmiddellijk* met de **geaccepteerde status 202** .
 
-Als de oorspronkelijke beller het antwoord wil ontvangen, moeten alle vereiste stappen voor het antwoord binnen de [tijd-outlimiet van](./logic-apps-limits-and-config.md) de aanvraag worden voltooid, tenzij de geactiveerde logische-app wordt aangeroepen als een geneste logische app. Als er binnen deze limiet geen antwoord wordt geretourneerd, is de binnenkomende aanvraag een time-out en ontvangt het **time-outantwoord van** de client.
+De oorspronkelijke beller kan het antwoord alleen ophalen als alle vereiste stappen voor het antwoord binnen de [time-outlimiet](./logic-apps-limits-and-config.md) van de aanvraag zijn voltooid, tenzij de geactiveerde logische app wordt aangeroepen als een geneste logische app. Als er geen antwoord wordt geretourneerd binnen deze limiet, wordt er een time-out voor de inkomende aanvraag verzonden en ontvangt de **408-time-out** van de client.
 
-Voor geneste logische apps blijft de bovenliggende logica-app wachten op een antwoord totdat alle stappen zijn voltooid, ongeacht hoeveel tijd er nodig is.
+Voor geneste logische apps blijft de bovenliggende logische app wachten op een reactie totdat alle stappen zijn voltooid, ongeacht de hoeveelheid tijd die nodig is.
 
-### <a name="construct-the-response"></a>Het antwoord samenstellen
+### <a name="construct-the-response"></a>Het antwoord maken
 
-In de reactiebody u meerdere kopteksten en elk type inhoud opnemen. De koptekst van deze reactie geeft bijvoorbeeld aan `application/json` dat het inhoudstype `town` van `postalCode` het antwoord is en dat de hoofdtekst waarden voor de eigenschappen en eigenschappen bevat, op basis van het JSON-schema dat eerder in dit onderwerp is beschreven voor de trigger van Request.
+In de antwoord tekst kunt u meerdere kopteksten en elk type inhoud toevoegen. De koptekst van dit antwoord geeft bijvoorbeeld aan dat het inhouds type van het antwoord `application/json` is en dat de hoofd tekst waarden bevat `town` voor `postalCode` de eigenschappen en, op basis van het JSON-schema dat eerder in dit onderwerp voor de aanvraag trigger is beschreven.
 
-![Antwoordinhoud bieden voor http-reactieactie](./media/logic-apps-http-endpoint/content-for-response-action.png)
+![Reactie-inhoud voor HTTP-antwoord actie opgeven](./media/logic-apps-http-endpoint/content-for-response-action.png)
 
-Reacties hebben de volgende eigenschappen:
+Antwoorden hebben de volgende eigenschappen:
 
-| Eigenschap (weergave) | Eigenschap (JSON) | Beschrijving |
+| Eigenschap (weer geven) | Eigenschap (JSON) | Beschrijving |
 |--------------------|-----------------|-------------|
-| **Statuscode** | `statusCode` | De HTTP-statuscode die u wilt gebruiken in het antwoord op de binnenkomende aanvraag. Deze code kan elke geldige statuscode zijn die begint met 2xx, 4xx of 5xx. 3xx-statuscodes zijn echter niet toegestaan. |
-| **Headers** | `headers` | Een of meer kopteksten die in het antwoord moeten worden opgenomen |
-| **Hoofdtekst** | `body` | Een hoofdobject dat een tekenreeks, een JSON-object of zelfs binaire inhoud kan zijn waarnaar uit een vorige stap wordt verwezen |
+| **Status code** | `statusCode` | De HTTP-status code die in het antwoord op de binnenkomende aanvraag moet worden gebruikt. Deze code kan een geldige status code zijn die begint met 2xx, 4xx of 5xx. 3xx-status codes zijn echter niet toegestaan. |
+| **Headers** | `headers` | Een of meer headers die moeten worden meegenomen in het antwoord |
+| **Hoofdtekst** | `body` | Een body-object dat een teken reeks, een JSON-object of zelfs binaire inhoud waarnaar wordt verwezen vanuit een vorige stap kan zijn. |
 ||||
 
-Als u de JSON-definitie voor de actie Respons en de volledige JSON-definitie van uw logische app wilt weergeven, selecteert u op de werkbalk Logic App Designer de **codeweergave**.
+Als u de JSON-definitie voor de reactie actie en de volledige JSON-definitie van de logische app wilt weer geven, selecteert u op de werk balk van de Logic app-ontwerp functie de **code weergave**.
 
 ``` json
 "Response": {
@@ -304,25 +304,25 @@ Als u de JSON-definitie voor de actie Respons en de volledige JSON-definitie van
 
 ## <a name="q--a"></a>Vragen en antwoorden
 
-#### <a name="q-what-about-url-security"></a>V: Hoe zit het met URL-beveiliging?
+#### <a name="q-what-about-url-security"></a>V: wat gebeurt er met URL-beveiliging?
 
-**A:** Azure genereert veilig url's voor terugroepen van logische apps met Behulp van [Shared Access Signature (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature). Deze handtekening wordt uitgevoerd als een queryparameter en moet worden gevalideerd voordat uw logische app kan worden uitgevoerd. Azure genereert de handtekening met behulp van een unieke combinatie van een geheime sleutel per logische app, de triggernaam en de bewerking die wordt uitgevoerd. Dus tenzij iemand toegang heeft tot de geheime logic app-toets, kan deze persoon geen geldige handtekening genereren.
+**A**: Azure maakt veilig-call back-url's voor logische apps met behulp van [Shared Access Signature (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature). Deze hand tekening wordt door gegeven als een query parameter en moet worden gevalideerd voordat de logische app kan worden uitgevoerd. Azure genereert de hand tekening met een unieke combi natie van een geheime sleutel per logische app, de naam van de trigger en de bewerking die wordt uitgevoerd. Tenzij iemand toegang heeft tot de sleutel van de geheime logische app, kan er dus geen geldige hand tekening worden gegenereerd.
 
 > [!IMPORTANT]
-> Voor productie- en beveiligingssystemen raden we u ten zeerste af om uw logische app rechtstreeks vanuit de browser te bellen om deze redenen:
+> Voor productie-en hogere beveiligings systemen raden wij u ten zeerste aan om uw logische app rechtstreeks vanuit de browser aan te roepen om de volgende redenen:
 >
-> * De gedeelde toegangssleutel wordt weergegeven in de URL.
-> * U het beveiligingsinhoudsbeleid niet beheren vanwege gedeelde domeinen voor Azure Logic Apps-klanten.
+> * De gedeelde toegangs sleutel wordt weer gegeven in de URL.
+> * U kunt geen beleids regels voor beveiligings inhoud beheren vanwege gedeelde domeinen van Azure Logic Apps klanten.
 
-#### <a name="q-can-i-configure-http-endpoints-further"></a>V: Kan ik HTTP-eindpunten verder configureren?
+#### <a name="q-can-i-configure-http-endpoints-further"></a>V: kan ik HTTP-eind punten verder configureren?
 
-**A:** Ja, HTTP-eindpunten ondersteunen meer geavanceerde configuratie via [Azure API Management](../api-management/api-management-key-concepts.md). Deze service biedt u ook de mogelijkheid om al uw API's consistent te beheren, inclusief logische apps, aangepaste domeinnamen in te stellen, meer verificatiemethoden te gebruiken en meer, bijvoorbeeld:
+**A**: Ja, http-eind punten ondersteunen meer geavanceerde configuratie via [Azure API Management](../api-management/api-management-key-concepts.md). Deze service biedt ook de mogelijkheid om alle Api's consistent te beheren, met inbegrip van Logic apps, het instellen van aangepaste domein namen, het gebruiken van meer verificatie methoden en meer, bijvoorbeeld:
 
-* [De aanvraagmethode wijzigen](../api-management/api-management-advanced-policies.md#SetRequestMethod)
+* [De aanvraag methode wijzigen](../api-management/api-management-advanced-policies.md#SetRequestMethod)
 * [De URL-segmenten van de aanvraag wijzigen](../api-management/api-management-transformation-policies.md#RewriteURL)
-* Uw API-beheerdomeinen instellen in de [Azure-portal](https://portal.azure.com/)
-* Beleid instellen om te controleren op basisverificatie
+* Uw API Management domeinen instellen in de [Azure Portal](https://portal.azure.com/)
+* Beleid instellen om te controleren op basis verificatie
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Binnenkomende HTTPS-oproepen ontvangen en beantwoorden met Azure Logic Apps](../connectors/connectors-native-reqres.md)
+* [Binnenkomende HTTPS-aanroepen ontvangen en erop reageren met behulp van Azure Logic Apps](../connectors/connectors-native-reqres.md)

@@ -1,6 +1,6 @@
 ---
-title: Statistieken in Azure Monitor - Azure Event Hubs | Microsoft Documenten
-description: In dit artikel vindt u informatie over het gebruik van Azure Monitoring om Azure Event Hubs te controleren
+title: Metrische gegevens in Azure Monitor-Azure Event Hubs | Microsoft Docs
+description: Dit artikel bevat informatie over het gebruik van Azure monitoring voor het bewaken van Azure Event Hubs
 services: event-hubs
 documentationcenter: .NET
 author: ShubhaVijayasarathy
@@ -16,118 +16,118 @@ ms.custom: seodec18
 ms.date: 09/18/2019
 ms.author: shvija
 ms.openlocfilehash: 96c346f4359740fda5638dfdbe5735c5bdfce8c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162647"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Metrische gegevens van Azure Event Hubs in Azure Monitor
 
-Met statistieken over gebeurtenishubs u de status van de bronnen van Event Hubs in uw Azure-abonnement weergeven. Met een uitgebreide set metrische gegevens u de algehele status van uw gebeurtenishubs niet alleen op naamruimteniveau, maar ook op entiteitsniveau beoordelen. Deze statistieken kunnen belangrijk zijn omdat ze u helpen om de status van uw gebeurtenishubs te controleren. Statistieken kunnen ook helpen bij het oplossen van problemen met de oorzaak van de oorzaak zonder dat u contact hoeft op te nemen met Azure-ondersteuning.
+Event Hubs metrische gegevens geven u de status van Event Hubs resources in uw Azure-abonnement. Met een uitgebreide set met metrische gegevens kunt u de algemene status van uw event hubs niet alleen op het niveau van de naam ruimte beoordelen, maar ook op het niveau van de entiteit. Deze statistieken kunnen van belang zijn wanneer u de status van uw event hubs bewaken. Metrische gegevens kunnen ook helpen bij het oplossen van problemen met de hoofd oorzaak zonder dat u contact hoeft op te nemen met de ondersteuning van Azure.
 
-Azure Monitor biedt uniforme gebruikersinterfaces voor bewaking in verschillende Azure-services. Zie [Controle in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md) en de Azure [Monitor-statistieken ophalen met het voorbeeld .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) op GitHub voor meer informatie.
+Azure Monitor biedt uniforme gebruikers interfaces voor bewaking in verschillende Azure-Services. Zie voor meer informatie [bewaking in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md) en het voor beeld [Azure monitor metrische gegevens ophalen met .net](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) op github.
 
-## <a name="access-metrics"></a>Toegangsstatistieken
+## <a name="access-metrics"></a>Toegangs gegevens
 
-Azure Monitor biedt meerdere manieren om toegang te krijgen tot statistieken. U via de [Azure-portal](https://portal.azure.com)toegang krijgen tot statistieken of de Azure Monitor API's (REST en .NET) en analyseoplossingen zoals Log Analytics en Event Hubs gebruiken. Zie [Gegevens controleren die zijn verzameld door Azure Monitor](../azure-monitor/platform/data-platform.md)voor meer informatie.
+Azure Monitor biedt meerdere manieren om toegang te krijgen tot metrische gegevens. U hebt toegang tot metrische gegevens via de [Azure Portal](https://portal.azure.com), of u kunt gebruikmaken van de Azure monitor API'S (rest en .net) en analyse oplossingen, zoals Log Analytics en Event hubs. Zie [bewaking van gegevens die zijn verzameld door Azure monitor](../azure-monitor/platform/data-platform.md)voor meer informatie.
 
-Statistieken zijn standaard ingeschakeld en u hebt toegang tot de meest recente 30 dagen aan gegevens. Als u gegevens voor een langere periode moet bewaren, u metrische gegevens archiveren naar een Azure Storage-account. Dit is geconfigureerd in [diagnostische instellingen](../azure-monitor/platform/diagnostic-settings.md) in Azure Monitor.
+Metrische gegevens zijn standaard ingeschakeld, en u kunt toegang krijgen tot de meest recente 30 dagen. Als u gegevens gedurende een langere periode wilt behouden, kunt u metrische gegevens archiveren naar een Azure Storage-account. Dit wordt geconfigureerd in [Diagnostische instellingen](../azure-monitor/platform/diagnostic-settings.md) in azure monitor.
 
 
-## <a name="access-metrics-in-the-portal"></a>Toegang tot statistieken in de portal
+## <a name="access-metrics-in-the-portal"></a>Toegang tot metrische gegevens in de portal
 
-U statistieken in de loop van de tijd controleren in de [Azure-portal.](https://portal.azure.com) In het volgende voorbeeld ziet u hoe u succesvolle aanvragen en binnenkomende aanvragen op accountniveau weergeven:
+U kunt metrische gegevens gedurende een bepaalde periode bewaken in de [Azure Portal](https://portal.azure.com). In het volgende voor beeld ziet u hoe u geslaagde aanvragen en inkomende aanvragen kunt weer geven op account niveau:
 
-![Bekijk succesvolle statistieken][1]
+![Geslaagde metrische gegevens weer geven][1]
 
-U ook rechtstreeks via de naamruimte statistieken openen. Selecteer hiervoor uw naamruimte en klik op **Statistieken**. Als u statistieken wilt weergeven die zijn gefilterd op het bereik van de gebeurtenishub, selecteert u de gebeurtenishub en klikt u op **Statistieken**.
+U kunt ook rechtstreeks toegang krijgen tot metrische gegevens via de naam ruimte. Hiertoe selecteert u uw naam ruimte en klikt u op **metrische gegevens**. Als u de metrische gegevens wilt weer geven die zijn gefilterd op het bereik van de Event Hub, selecteert u de Event Hub en klikt u vervolgens op **metrische gegevens**.
 
-Voor statistieken die dimensies ondersteunen, moet u filteren met de gewenste dimensiewaarde zoals weergegeven in het volgende voorbeeld:
+Voor metrische gegevens ondersteunen dimensies, moet u filteren met de gewenste dimensie waarde, zoals weer gegeven in het volgende voor beeld:
 
-![Filter met dimensiewaarde][2]
+![Filteren met dimensie waarde][2]
 
 ## <a name="billing"></a>Billing
 
-Het gebruik van metrische gegevens in Azure Monitor is momenteel gratis. Als u echter aanvullende oplossingen gebruikt die metrische gegevens opnemen, wordt u mogelijk gefactureerd door deze oplossingen. U wordt bijvoorbeeld gefactureerd door Azure Storage als u metrische gegevens archiveert naar een Azure Storage-account. U wordt ook gefactureerd door Azure als u metrische gegevens streamt naar Azure Monitor-logboeken voor geavanceerde analyse.
+Het gebruik van metrische gegevens in Azure Monitor is momenteel gratis. Als u echter aanvullende oplossingen gebruikt waarmee metrische gegevens worden opgenomen, worden deze oplossingen mogelijk gefactureerd. U wordt bijvoorbeeld gefactureerd door Azure Storage als u metrische gegevens archiveert naar een Azure Storage-account. U wordt ook gefactureerd door Azure als u metrische gegevens streamt naar Azure Monitor-logboeken voor geavanceerde analyse.
 
-De volgende statistieken geven u een overzicht van de status van uw service. 
+Met de volgende metrische gegevens krijgt u een overzicht van de status van uw service. 
 
 > [!NOTE]
-> We zijn verschillende statistieken aan het deprecating omdat ze onder een andere naam worden verplaatst. Hiervoor u uw referenties bijwerken. Statistieken die zijn gemarkeerd met het trefwoord 'afgeschaft' worden in de toekomst niet ondersteund.
+> Er worden verschillende metrische gegevens overgezet omdat deze onder een andere naam worden geplaatst. Hiervoor moet u mogelijk uw referenties bijwerken. Metrische gegevens die zijn gemarkeerd met het sleutel woord ' afgeschaft ' worden niet verder ondersteund.
 
-Alle metrische waarden worden elke minuut naar Azure Monitor verzonden. De tijdgranulariteit definieert het tijdsinterval waarvoor metrische waarden worden weergegeven. Het ondersteunde tijdsinterval voor alle statistieken van Event Hubs is 1 minuut.
+Alle waarden voor metrische gegevens worden elke minuut naar Azure Monitor verzonden. De granulatie tijd definieert het tijds interval waarvoor metrische waarden worden weer gegeven. Het ondersteunde tijds interval voor alle Event Hubs meet waarden is 1 minuut.
 
-## <a name="request-metrics"></a>Statistieken aanvragen
+## <a name="request-metrics"></a>Metrische gegevens aanvragen
 
-Telt het aantal aanvragen voor gegevens- en beheerbewerkingen.
-
-| Metrische naam | Beschrijving |
-| ------------------- | ----------------- |
-| Binnenkomende aanvragen  | Het aantal aanvragen dat gedurende een bepaalde periode naar de Azure Event Hubs-service is gedaan. <br/><br/> Eenheid: Aantal <br/> Aggregatietype: Totaal <br/> Dimensie: EntityName |
-| Succesvolle aanvragen    | Het aantal geslaagde aanvragen voor de Azure Event Hubs-service gedurende een bepaalde periode. <br/><br/> Eenheid: Aantal <br/> Aggregatietype: Totaal <br/> Dimensie: EntityName |
-| Serverfouten  | Het aantal aanvragen dat niet is verwerkt als gevolg van een fout in de Azure Event Hubs-service gedurende een bepaalde periode. <br/><br/>Eenheid: Aantal <br/> Aggregatietype: Totaal <br/> Dimensie: EntityName |
-|Gebruikersfouten |Het aantal aanvragen dat niet is verwerkt vanwege gebruikersfouten gedurende een bepaalde periode.<br/><br/> Eenheid: Aantal <br/> Aggregatietype: Totaal <br/> Dimensie: EntityName|
-|Overschrijdingsfouten quotum |Het aantal aanvragen overschreed het beschikbare quotum. Zie [dit artikel](event-hubs-quotas.md) voor meer informatie over quota voor gebeurtenishubs.<br/><br/> Eenheid: Aantal <br/> Aggregatietype: Totaal <br/> Dimensie: EntityName|
-
-## <a name="throughput-metrics"></a>Doorvoerstatistieken
+Telt het aantal gegevens-en beheer bewerkings aanvragen.
 
 | Metrische naam | Beschrijving |
 | ------------------- | ----------------- |
-|Gewurgde aanvragen |Het aantal aanvragen dat is beperkt omdat het gebruik van de doorvoereenheid is overschreden.<br/><br/> Eenheid: Aantal <br/> Aggregatietype: Totaal <br/> Dimensie: EntityName|
+| Binnenkomende aanvragen  | Het aantal aanvragen voor de Azure Event Hubs-service gedurende een opgegeven periode. <br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName |
+| Geslaagde aanvragen    | Het aantal geslaagde aanvragen voor de Azure Event Hubs-service gedurende een opgegeven periode. <br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName |
+| Server fouten  | Het aantal niet-verwerkte aanvragen vanwege een fout in de Azure Event Hubs-service gedurende een opgegeven periode. <br/><br/>Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName |
+|Gebruikers fouten |Het aantal aanvragen dat niet is verwerkt wegens gebruikers fouten gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+|Quota overschreden fouten |Het aantal aanvragen heeft het beschik bare quotum overschreden. Raadpleeg [dit artikel](event-hubs-quotas.md) voor meer informatie over Event hubs quota's.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 
-## <a name="message-metrics"></a>Berichtstatistieken
-
-| Metrische naam | Beschrijving |
-| ------------------- | ----------------- |
-|Binnenkomende berichten |Het aantal gebeurtenissen of berichten dat gedurende een bepaalde periode naar gebeurtenishubs wordt verzonden.<br/><br/> Eenheid: Aantal <br/> Aggregatietype: Totaal <br/> Dimensie: EntityName|
-|Uitgaande berichten |Het aantal gebeurtenissen of berichten dat gedurende een bepaalde periode is opgehaald uit gebeurtenishubs.<br/><br/> Eenheid: Aantal <br/> Aggregatietype: Totaal <br/> Dimensie: EntityName|
-|Binnenkomende bytes |Het aantal bytes dat gedurende een bepaalde periode naar de Azure Event Hubs-service is verzonden.<br/><br/> Eenheid: Bytes <br/> Aggregatietype: Totaal <br/> Dimensie: EntityName|
-|Uitgaande bytes |Het aantal bytes dat gedurende een bepaalde periode is opgehaald uit de Azure Event Hubs-service.<br/><br/> Eenheid: Bytes <br/> Aggregatietype: Totaal <br/> Dimensie: EntityName|
-
-## <a name="connection-metrics"></a>Verbindingsstatistieken
+## <a name="throughput-metrics"></a>Metrische gegevens over door Voer
 
 | Metrische naam | Beschrijving |
 | ------------------- | ----------------- |
-|Actieve verbindingen |Het aantal actieve verbindingen op een naamruimte en op een entiteit.<br/><br/> Eenheid: Aantal <br/> Aggregatietype: Totaal <br/> Dimensie: EntityName|
-|Geopende verbindingen |Het aantal open verbindingen.<br/><br/> Eenheid: Aantal <br/> Aggregatietype: Totaal <br/> Dimensie: EntityName|
-|Verbindingen gesloten |Het aantal gesloten verbindingen.<br/><br/> Eenheid: Aantal <br/> Aggregatietype: Totaal <br/> Dimensie: EntityName|
+|Vertraagde aanvragen |Het aantal aanvragen dat is beperkt omdat het gebruik van de doorvoereenheid is overschreden.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 
-## <a name="event-hubs-capture-metrics"></a>Statistieken voor het vastleggen van gebeurtenishubs
-
-U statistieken voor het vastleggen van gebeurtenishubs controleren wanneer u de opnamefunctie voor uw gebeurtenishubs inschakelt. De volgende statistieken beschrijven wat u controleren met Vastleggen ingeschakeld.
+## <a name="message-metrics"></a>Metrische gegevens van bericht
 
 | Metrische naam | Beschrijving |
 | ------------------- | ----------------- |
-|Achterstand vastleggen |Het aantal bytes dat nog moet worden vastgelegd naar de gekozen bestemming.<br/><br/> Eenheid: Bytes <br/> Aggregatietype: Totaal <br/> Dimensie: EntityName|
-|Vastgelegde berichten |Het aantal berichten of gebeurtenissen dat gedurende een bepaalde periode naar de gekozen bestemming wordt vastgelegd.<br/><br/> Eenheid: Aantal <br/> Aggregatietype: Totaal <br/> Dimensie: EntityName|
-|Vastgelegde bytes |Het aantal bytes dat gedurende een bepaalde periode naar de gekozen bestemming wordt vastgelegd.<br/><br/> Eenheid: Bytes <br/> Aggregatietype: Totaal <br/> Dimensie: EntityName|
+|Inkomende berichten |Het aantal gebeurtenissen of berichten dat is verzonden naar Event Hubs gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+|Uitgaande berichten |Het aantal gebeurtenissen of berichten dat is opgehaald uit Event Hubs gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+|Binnenkomende bytes |Het aantal bytes dat is verzonden naar de Azure Event Hubs-service gedurende een opgegeven periode.<br/><br/> Eenheid: bytes <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+|Uitgaande bytes |Het aantal bytes dat is opgehaald uit de Azure Event Hubs-service gedurende een opgegeven periode.<br/><br/> Eenheid: bytes <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 
-## <a name="metrics-dimensions"></a>Afmetingen met statistieken
-
-Azure Event Hubs ondersteunt de volgende dimensies voor metrische gegevens in Azure Monitor. Het toevoegen van dimensies aan uw statistieken is optioneel. Als u geen dimensies toevoegt, worden metrische gegevens opgegeven op het naamruimteniveau. 
+## <a name="connection-metrics"></a>Verbindings gegevens
 
 | Metrische naam | Beschrijving |
 | ------------------- | ----------------- |
-|Entiteitsnaam| Event Hubs ondersteunt de entiteiten van de gebeurtenishub onder de naamruimte.|
+|ActiveConnections |Het aantal actieve verbindingen op een naam ruimte en op een entiteit.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+|Geopende verbindingen |Het aantal geopende verbindingen.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+|Gesloten verbindingen |Het aantal gesloten verbindingen.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 
-## <a name="azure-monitor-integration-with-siem-tools"></a>Azure Monitor-integratie met SIEM-hulpprogramma's
-Als u uw bewakingsgegevens (activiteitslogboeken, diagnostische logboeken, enz.) routeren naar een gebeurtenishub met Azure Monitor, zodat u eenvoudig integreren met SIEM-hulpprogramma's (Security Information and Event Management). Zie de volgende artikelen/blogberichten voor meer informatie:
+## <a name="event-hubs-capture-metrics"></a>Metrische gegevens van vastleggen Event Hubs
 
-- [Azure-bewakingsgegevens streamen naar een gebeurtenishub voor verbruik door een extern hulpprogramma](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
-- [Inleiding tot Azure-logboekintegratie](../security/fundamentals/azure-log-integration-overview.md)
+U kunt de metrische gegevens van Event Hubs vastleggen controleren wanneer u de functie vastleggen inschakelt voor uw event hubs. De volgende metrische gegevens beschrijven wat u kunt bewaken met vastleggen ingeschakeld.
+
+| Metrische naam | Beschrijving |
+| ------------------- | ----------------- |
+|Achterstand vastleggen |Het aantal bytes dat nog moet worden vastgelegd voor de gekozen bestemming.<br/><br/> Eenheid: bytes <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+|Vastgelegde berichten |Het aantal berichten of gebeurtenissen dat gedurende een opgegeven periode is vastgelegd voor de gekozen bestemming.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+|Vastgelegde bytes |Het aantal bytes dat is vastgelegd voor de gekozen bestemming gedurende een opgegeven periode.<br/><br/> Eenheid: bytes <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+
+## <a name="metrics-dimensions"></a>Metrische dimensies
+
+Azure Event Hubs ondersteunt de volgende dimensies voor metrische gegevens in Azure Monitor. Het toevoegen van dimensies aan uw metrische gegevens is optioneel. Als u geen dimensies toevoegt, worden metrische gegevens opgegeven op het niveau van de naam ruimte. 
+
+| Metrische naam | Beschrijving |
+| ------------------- | ----------------- |
+|EntityName| Event Hubs ondersteunt de Event Hub entiteiten in de naam ruimte.|
+
+## <a name="azure-monitor-integration-with-siem-tools"></a>Integratie met SIEM-hulpprogram ma's Azure Monitor
+Door uw bewakings gegevens (activiteiten logboeken, Diagnostische logboeken, enzovoort) te routeren naar een Event Hub met Azure Monitor kunt u gemakkelijk integreren met de hulpprogram ma's van Security Information and Event Management (SIEM). Raadpleeg de volgende artikelen/blog berichten voor meer informatie:
+
+- [Azure-bewakings gegevens streamen naar een Event Hub voor gebruik door een extern hulp programma](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
+- [Inleiding tot Azure Log Integration](../security/fundamentals/azure-log-integration-overview.md)
 - [Azure Monitor gebruiken om te integreren met SIEM-hulpprogramma's](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-In het scenario waarin een SIEM-tool loggegevens van een gebeurtenishub verbruikt, als u geen binnenkomende berichten ziet of als u binnenkomende berichten ziet, maar geen uitgaande berichten in de grafiek met statistieken, voert u de volgende stappen uit:
+In het scenario waarin een SIEM-hulp programma logboek gegevens van een Event Hub verbruikt, als u geen inkomende berichten ziet of als u inkomende berichten ziet, maar geen uitgaande berichten in de grafiek metrische gegevens, volgt u deze stappen:
 
-- Als er **geen binnenkomende berichten**zijn, betekent dit dat de Azure Monitor-service geen logboeken voor controle/diagnose naar de gebeurtenishub verplaatst. Open in dit scenario een ondersteuningsticket met het Azure Monitor-team. 
-- als er binnenkomende berichten zijn, maar **geen uitgaande berichten,** betekent dit dat de SIEM-toepassing de berichten niet leest. Neem contact op met de SIEM-provider om te bepalen of de configuratie van de gebeurtenishub die toepassingen correct is.
+- Als er **geen inkomende berichten**zijn, betekent dit dat de Azure Monitor-service geen controle-en Diagnostische logboeken naar de Event hub verplaatst. In dit scenario opent u een ondersteunings ticket met het Azure Monitor team. 
+- Als er inkomende berichten zijn, maar **geen uitgaande berichten**, betekent dit dat de Siem-toepassing de berichten niet leest. Neem contact op met de SIEM-provider om te bepalen of de configuratie van de Event Hub deze toepassingen juist is.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie het [overzicht Azure Monitoring](../monitoring-and-diagnostics/monitoring-overview.md).
-* [Azure Monitor-statistieken ophalen met .NET-voorbeeld](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) op GitHub. 
+* Zie het [overzicht van Azure-bewaking](../monitoring-and-diagnostics/monitoring-overview.md).
+* [Azure monitor metrische gegevens ophalen met .net](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) -voor beeld op github. 
 
 Voor meer informatie over Event Hubs gaat u naar de volgende koppelingen:
 

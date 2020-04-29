@@ -1,6 +1,6 @@
 ---
-title: Accounts en referenties delen - Azure Active Directory | Microsoft Documenten
-description: Beschrijft hoe Azure Active Directory organisaties in staat stelt om accounts voor on-premises apps en consumentencloudservices veilig te delen.
+title: Accounts en referenties delen-Azure Active Directory | Microsoft Docs
+description: Hierin wordt beschreven hoe Azure Active Directory organisaties in staat stelt om accounts veilig te delen voor on-premises apps en Cloud Services voor consumenten.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,66 +16,66 @@ ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 987c3ee7c90eb0bb793b96eb2771efbb258f16a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77565499"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Accounts delen met Azure AD
 
 ## <a name="overview"></a>Overzicht
 
-Soms moeten organisaties één gebruikersnaam en wachtwoord voor meerdere personen gebruiken, wat meestal in twee gevallen gebeurt:
+Soms moeten organisaties één gebruikers naam en wacht woord voor meerdere personen gebruiken. dit gebeurt meestal in twee gevallen:
 
-* Wanneer u toegang krijgt tot toepassingen waarvoor voor elke gebruiker een uniek aanmeldings- en wachtwoord vereist is, of het nu gaat om on-premises apps of consumentencloudservices (bijvoorbeeld zakelijke sociale media-accounts).
-* Bij het maken van omgevingen voor meerdere gebruikers. Mogelijk hebt u één lokaal account dat verhoogde bevoegdheden heeft en wordt gebruikt voor kerninstellingen, beheer en herstelactiviteiten. Bijvoorbeeld het lokale account 'globale beheerder' voor Office 365 of het hoofdaccount in Salesforce.
+* Bij het openen van toepassingen waarvoor een unieke aanmelding en een uniek wacht woord is vereist voor elke gebruiker, ongeacht of deze on-premises apps of Cloud Services van de consument zijn (bijvoorbeeld zakelijke sociale media-accounts).
+* Bij het maken van omgevingen met meerdere gebruikers. Mogelijk hebt u één lokaal account met verhoogde bevoegdheden en wordt dit gebruikt om de kern installatie, het beheer en de herstel activiteiten uit te voeren. Bijvoorbeeld het lokale account ' globale beheerder ' voor Office 365 of het hoofd account in Sales Force.
 
-Traditioneel worden deze accounts gedeeld door de referenties (gebruikersnaam en wachtwoord) te distribueren naar de juiste personen of ze op te slaan op een gedeelde locatie waar meerdere vertrouwde agents toegang tot hebben.
+Deze accounts worden gewoonlijk gedeeld door de referenties (gebruikers naam en wacht woord) te distribueren naar de juiste personen of op een gedeelde locatie op te slaan waar meerdere vertrouwde agents toegang toe hebben.
 
-Het traditionele deelmodel heeft verschillende nadelen:
+Het traditionele model voor delen heeft verschillende nadelen:
 
-* Als u toegang tot nieuwe toepassingen inschakelt, moet u referenties distribueren naar iedereen die toegang nodig heeft.
-* Elke gedeelde toepassing kan zijn eigen unieke set gedeelde referenties vereisen, waarbij gebruikers meerdere sets referenties moeten onthouden. Wanneer gebruikers veel referenties moeten onthouden, neemt het risico toe dat ze hun toevlucht nemen tot risicovolle praktijken. (bijvoorbeeld het opschrijven van wachtwoorden).
-* Je niet zeggen wie toegang heeft tot een toepassing.
-* U niet zeggen wie toegang heeft *tot* een toepassing.
+* Als u toegang tot nieuwe toepassingen wilt inschakelen, moet u referenties distribueren naar iedereen die toegang nodig heeft.
+* Elke gedeelde toepassing kan een eigen unieke set met gedeelde referenties vereisen, zodat gebruikers meerdere sets referenties kunnen onthouden. Wanneer gebruikers veel referenties moeten onthouden, neemt het risico toe dat ze een risico volle prak tijken nemen. (bijvoorbeeld het schrijven van wacht woorden).
+* U kunt niet bepalen wie toegang heeft tot een toepassing.
+* U kunt niet bepalen wie *toegang heeft gehad tot* een toepassing.
 * Wanneer u de toegang tot een toepassing wilt verwijderen, moet u de referenties bijwerken en opnieuw distribueren naar iedereen die toegang tot die toepassing nodig heeft.
 
-## <a name="azure-active-directory-account-sharing"></a>Delen van Azure Active Directory-account
+## <a name="azure-active-directory-account-sharing"></a>Azure Active Directory account delen
 
-Azure AD biedt een nieuwe benadering voor het gebruik van gedeelde accounts die deze nadelen elimineert.
+Azure AD biedt een nieuwe benadering voor het gebruik van gedeelde accounts die deze nadelen elimineren.
 
-De Azure AD-beheerder configureert welke toepassingen een gebruiker kan openen met behulp van het Toegangspaneel en het type eenmalige aanmelding te kiezen dat het meest geschikt is voor die toepassing. Een van die typen, *met een wachtwoord gebaseerdeenmalig aanmelden,* laat Azure AD fungeren als een soort 'broker' tijdens het aanmeldingsproces voor die app.
+De Azure AD-beheerder configureert welke toepassingen een gebruiker kan openen met behulp van het toegangs venster en kiest het type eenmalige aanmelding dat het meest geschikt is voor die toepassing. Een van deze typen, *op wacht woord gebaseerde eenmalige aanmelding*, laat Azure AD Act als een soort ' Broker ' tijdens het aanmeldings proces voor die app.
 
-Gebruikers melden zich één keer aan met hun organisatieaccount. Dit account is dezelfde account die ze regelmatig gebruiken om toegang te krijgen tot hun bureaublad of e-mail. Ze kunnen alleen de toepassingen ontdekken en openen waaraan ze zijn toegewezen. Met gedeelde accounts kan deze lijst met toepassingen een willekeurig aantal gedeelde referenties bevatten. De eindgebruiker hoeft de verschillende accounts die ze mogelijk gebruiken niet te onthouden of op te schrijven.
+Gebruikers melden zich aan met hun organisatie account. Dit account is hetzelfde als het wordt regel matig gebruikt om toegang te krijgen tot hun bureau blad of e-mail adres. Ze kunnen alleen de toepassingen detecteren en openen die aan hen zijn toegewezen. Bij gedeelde accounts kan deze lijst met toepassingen een wille keurig aantal gedeelde referenties bevatten. De eind gebruiker hoeft de verschillende accounts die mogelijk worden gebruikt, niet te onthouden of te noteren.
 
-Gedeelde accounts vergroten niet alleen het toezicht en verbeteren de bruikbaarheid, ze verbeteren ook uw beveiliging. Gebruikers met machtigingen om de referenties te gebruiken, zien het gedeelde wachtwoord niet, maar krijgen machtigingen om het wachtwoord te gebruiken als onderdeel van een georkestreerde verificatiestroom. Verder bieden sommige wachtwoord SSO-toepassingen u de mogelijkheid om Azure AD te gebruiken om wachtwoorden periodiek te rolloveren (bijwerken). Het systeem maakt gebruik van grote, complexe wachtwoorden, wat de accountbeveiliging verhoogt. De beheerder kan eenvoudig toegang tot een toepassing verlenen of intrekken, weet wie toegang heeft tot het account en wie er in het verleden toegang toe heeft gehad.
+Gedeelde accounts verhogen niet alleen het toezicht en verbeteren de bruikbaarheid van uw veiligheid. Gebruikers met machtigingen voor het gebruik van de referenties zien het gedeelde wacht woord niet, maar krijgen wel machtigingen om het wacht woord te gebruiken als onderdeel van een georganisatiede verificatie stroom. Daarnaast biedt sommige SSO-toepassingen voor eenmalige aanmelding u de mogelijkheid om met behulp van Azure AD regel matig rollover (update)-wacht woorden te gebruiken. Het systeem maakt gebruik van grote, complexe wacht woorden die de beveiliging van het account verhogen. De beheerder kan eenvoudig toegang tot een toepassing verlenen of intrekken, weet wie toegang heeft tot het account en wie het in het verleden heeft bezocht.
 
-Azure AD ondersteunt gedeelde accounts voor elk EMS-licentieplan (Enterprise Mobility Suite) of Azure AD Premium voor alle typen wachtwoordtoepassingen. U accounts voor duizenden vooraf geïntegreerde toepassingen in de toepassingsgalerie delen en uw eigen wachtwoordauthenticating-toepassing toevoegen met [aangepaste SSO-apps.](../manage-apps/configure-single-sign-on-non-gallery-applications.md)
+Azure AD biedt ondersteuning voor gedeelde accounts voor een Enter prise Mobility Suite (EMS) of Azure AD Premium licentie abonnement, in alle typen wacht woord-toepassingen voor eenmalige aanmelding. U kunt accounts delen voor duizenden vooraf geïntegreerde toepassingen in de toepassings galerie en u kunt uw eigen toepassing voor wachtwoord verificatie toevoegen met [aangepaste SSO-apps](../manage-apps/configure-single-sign-on-non-gallery-applications.md).
 
-Azure AD-functies die het delen van een account inschakelen, zijn onder andere:
+Azure AD-functies die het delen van accounts mogelijk maken omvatten:
 
-* [Eenmalige aanmelding voor wachtwoorden](../manage-apps/what-is-single-sign-on.md#password-based-sso)
-* Eenmalige aanmeldingsagent voor wachtwoorden
-* [Groepstoewijzing](groups-self-service-management.md)
-* Aangepaste wachtwoord-apps
-* [Dashboard voor app-gebruik/rapporten](../active-directory-passwords-get-insights.md)
-* Toegangsportalen voor eindgebruikers
+* [Eenmalige aanmelding met wacht woord](../manage-apps/what-is-single-sign-on.md#password-based-sso)
+* Aanmeldings agent voor eenmalige aanmelding
+* [Groeps toewijzing](groups-self-service-management.md)
+* Aangepaste wacht woord-apps
+* [App-gebruiks Dashboard/-rapporten](../active-directory-passwords-get-insights.md)
+* Portals voor toegang door eind gebruikers
 * [App-proxy](../manage-apps/application-proxy.md)
 * [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/all/)
 
 ## <a name="sharing-an-account"></a>Een account delen
 
-Als u Azure AD wilt gebruiken om een account te delen, moet u het:
+Als u Azure AD wilt gebruiken om een account te delen, moet u het volgende doen:
 
-* Een galerie voor [toepassings-apps](https://azure.microsoft.com/marketplace/active-directory/) of [aangepaste toepassing toevoegen](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)
-* De toepassing voor wachtwoord Single Sign-On (SSO) configureren
-* [Groepstoewijzing](groups-saasapps.md) gebruiken en de optie selecteren om een gedeelde referentie in te voeren
+* Een app- [Galerie](https://azure.microsoft.com/marketplace/active-directory/) voor toepassingen of een [aangepaste toepassing](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/) toevoegen
+* De toepassing configureren voor eenmalige aanmelding met een wacht woord (SSO)
+* Gebruik [toewijzing op basis van een groep](groups-saasapps.md) en selecteer de optie om een gedeelde referentie in te voeren
 
-U uw gedeelde account ook veiliger maken met Multi-Factor Authentication (MFA) (meer informatie over [het beveiligen van toepassingen met Azure AD)](../authentication/concept-mfa-whichversion.md)en u de mogelijkheid delegeren om te beheren wie toegang heeft tot de toepassing met Azure AD [selfservicegroepbeheer.](groups-self-service-management.md)
+U kunt uw gedeelde account ook veiliger maken met Multi-Factor Authentication (MFA) (meer informatie over het [beveiligen van toepassingen met Azure AD](../authentication/concept-mfa-whichversion.md)) en u kunt de mogelijkheid voor het beheren van toegang tot de toepassing overdragen met behulp van het selfservice groeps beheer van [Azure AD](groups-self-service-management.md) .
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Application Management in Azure Active Directory](../manage-apps/what-is-application-management.md) (Toepassingsbeheer in Azure Active Directory)
 * [Apps beveiligen met voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md)
-* [Selfservice group management/SSAA](groups-self-service-management.md)
+* [Self-service voor groeps beheer/SSAA](groups-self-service-management.md)

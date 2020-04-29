@@ -1,48 +1,48 @@
 ---
-title: Inzicht in functiebeheer met Azure App-configuratie
-description: Functies in- en uitschakelen met Azure App-configuratie
+title: Onderdeel beheer met Azure-app configuratie
+description: Functies in-en uitschakelen met behulp van Azure-app configuratie
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 8227810c154078fc8424b2cadd373394d07e9730
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77523727"
 ---
-# <a name="feature-management-overview"></a>Overzicht van functiebeheer
+# <a name="feature-management-overview"></a>Overzicht van functie beheer
 
-Traditioneel vereist het verzenden van een nieuwe toepassingsfunctie een volledige herschikking van de toepassing zelf. Het testen van een functie vereist vaak meerdere implementaties van de toepassing.  Elke implementatie kan de functie wijzigen of de functie blootstellen aan verschillende klanten voor het testen.  
+Normaal gesp roken moet u voor het verzenden van een nieuwe toepassings functie een volledige herimplementatie van de toepassing zelf uitvoeren. Voor het testen van een functie zijn vaak meerdere implementaties van de toepassing vereist.  Elke implementatie kan de functie wijzigen of de functie beschikbaar maken voor verschillende klanten om te testen.  
 
-Feature management is een moderne software-ontwikkeling praktijk die functie release los van code implementatie ontkoppelt en maakt snelle wijzigingen in de beschikbaarheid van functies op aanvraag. Het maakt gebruik van een techniek genaamd *feature flags* (ook bekend als *feature toggles,* *feature switches,* enzovoort) om dynamisch beheer van de levenscyclus van een functie.
+Feature Management is een moderne software-ontwikkelings praktijk die de functie release van code-implementatie loskoppelt en de beschik baarheid van functies op aanvraag snel kunt wijzigen. Er wordt gebruikgemaakt van een techniek die *functie vlaggen* (ook wel *functie* *Schakel opties, functie switches*, enzovoort) gebruikt om de levens cyclus van een functie dynamisch te beheren.
 
-Functiebeheer helpt ontwikkelaars bij het aanpakken van de volgende problemen:
+Met functie beheer kunnen ontwikkel aars de volgende problemen oplossen:
 
-* **Beheer van codebranch**: Gebruik functievlaggen om nieuwe toepassingsfunctionaliteit te verpakken die momenteel in ontwikkeling is. Dergelijke functionaliteit is standaard "verborgen". U de functie veilig verzenden, ook al is deze niet voltooid, en blijft het slapend in productie. Met behulp van deze aanpak, *genaamd donkere implementatie,* u al uw code vrijgeven aan het einde van elke ontwikkelingscyclus. U hoeft codebranches niet langer te onderhouden in meerdere ontwikkelingscycli, omdat een bepaalde functie meer dan één cyclus vereist om te voltooien.
-* **Test in productie**: Gebruik functievlaggen om vroege toegang te verlenen tot nieuwe functionaliteit in de productie. U bijvoorbeeld de toegang tot teamleden of interne bètatesters beperken. Deze gebruikers zullen de full-fidelity productie-ervaring ervaren in plaats van een gesimuleerde of gedeeltelijke ervaring in een testomgeving.
-* **Flighting**: Gebruik functievlaggen om stapsgewijs nieuwe functionaliteit uit te rollen voor eindgebruikers. U eerst een klein percentage van uw gebruikerspopulatie targeten en dat percentage geleidelijk in de loop van de tijd verhogen.
-* **Instant kill switch**: Feature flags bieden een inherent vangnet voor het vrijgeven van nieuwe functionaliteit. U toepassingsfuncties in- en uitschakelen zonder code opnieuw te implementeren. Indien nodig u een functie snel uitschakelen zonder uw toepassing opnieuw te bouwen en opnieuw te implementeren.
-* **Selectieve activering:** gebruik functievlaggen om uw gebruikers te segmenteren en een specifieke set functies aan elke groep te leveren. Mogelijk hebt u een functie die alleen werkt op een bepaalde webbrowser. U een functievlag definiëren, zodat alleen gebruikers van die browser de functie kunnen zien en gebruiken. Met deze aanpak u de ondersteunde browserlijst later eenvoudig uitbreiden zonder dat u wijzigingen in de code hoeft aan te brengen.
+* **Code Branch Management**: gebruik functie vlaggen om nieuwe toepassings functionaliteit te verpakken die momenteel wordt ontwikkeld. Deze functionaliteit is standaard verborgen. U kunt de functie veilig verzenden, zelfs als deze nog niet is voltooid, en deze blijft in productie. Met deze methode, een *donkere implementatie*genoemd, kunt u al uw code aan het einde van elke ontwikkel cyclus vrijgeven. Het is niet meer nodig om code vertakkingen in meerdere ontwikkel cycli te onderhouden, omdat voor een bepaalde functie meer dan één cyclus vereist is.
+* **Test in productie**: gebruik functie vlaggen om vroegtijdige toegang te verlenen tot nieuwe functionaliteit in de productie. U kunt bijvoorbeeld de toegang tot team leden of interne bèta testers beperken. Deze gebruikers hebben de volledige betrouw baarheid van de productie in plaats van een gesimuleerde of gedeeltelijke ervaring in een test omgeving.
+* **Flighting**: gebruik functie vlaggen om een incrementele nieuwe functionaliteit voor eind gebruikers te implementeren. U kunt eerst een klein percentage van uw gebruikers populatie instellen en dit percentage geleidelijk verhogen.
+* **Instant Kill-Switch**: functie vlaggen bieden een inherenend veiligheids netwerk voor het vrijgeven van nieuwe functionaliteit. U kunt toepassings functies in-en uitschakelen zonder dat u code hoeft te implementeren. Als dat nodig is, kunt u een functie snel uitschakelen zonder uw toepassing opnieuw te bouwen en opnieuw te implementeren.
+* **Selectieve activering**: gebruik functie vlaggen om uw gebruikers te segmenteren en een specifieke set functies aan elke groep te leveren. Mogelijk hebt u een functie die alleen werkt in een bepaalde webbrowser. U kunt een functie vlag definiëren zodat alleen gebruikers van die browser de functie kunnen zien en gebruiken. Met deze methode kunt u de ondersteunde browser lijst later eenvoudig uitbreiden zonder dat u code wijzigingen hoeft aan te brengen.
 
 ## <a name="basic-concepts"></a>Basisbegrippen
 
-Hier zijn een aantal nieuwe termen met betrekking tot feature management:
+Hier volgen enkele nieuwe voor waarden met betrekking tot het beheer van functies:
 
-* **Functievlag**: Een functievlag is een variabele met een binaire status van *aan* of *uit*. De functievlag heeft ook een bijbehorend codeblok. De status van de functievlag activeert of het codeblok wordt uitgevoerd.
-* **Feature manager**: Een feature manager is een applicatiepakket dat de levenscyclus van alle functievlaggen in een toepassing verwerkt. De functiemanager biedt ook extra functionaliteit, waaronder het incachen van functievlaggen en het bijwerken van hun status.
-* **Filter:** een filter is een regel voor het evalueren van de status van een functievlag. Mogelijke filters zijn gebruikersgroepen, apparaat- of browsertypen, geografische locaties en tijdvensters.
+* **Functie vlag**: een functie vlag is een variabele met de binaire status *in* of *uit*. De functie vlag heeft ook een bijbehorend code blok. De status van de functie vlag geeft aan of het code blok wordt uitgevoerd.
+* **Functie beheer**: een functie beheerder is een toepassings pakket dat de levens cyclus van alle functie vlaggen in een toepassing verwerkt. Functie beheer biedt ook aanvullende functionaliteit, waaronder de functie vlaggen voor caching en het bijwerken van de statussen.
+* **Filter**: een filter is een regel voor het evalueren van de status van een functie vlag. Mogelijke filters zijn gebruikers groepen, apparaat-of browser typen, geografische locaties en tijd Vensters.
 
-Een effectieve implementatie van feature management bestaat uit ten minste twee componenten die in overleg werken:
+Een efficiënte implementatie van feature Management bestaat uit ten minste twee onderdelen die in overleg werken:
 
-* Een toepassing die gebruik maakt van functievlaggen.
-* Een aparte opslagplaats die de functievlaggen en hun huidige statussen opslaat.
+* Een toepassing die gebruikmaakt van functie vlaggen.
+* Een afzonderlijke opslag plaats waarin de functie vlaggen en de huidige statussen worden opgeslagen.
 
-## <a name="using-feature-flags-in-your-code"></a>Functievlaggen gebruiken in uw code
+## <a name="using-feature-flags-in-your-code"></a>Functie vlaggen gebruiken in uw code
 
-Het basispatroon voor het implementeren van functievlaggen in een toepassing is eenvoudig. Een functievlag is een Booleaanse statusvariabele die een voorwaardelijke instructie in uw code regelt:
+Het basis patroon voor het implementeren van functie vlaggen in een toepassing is eenvoudig. Een functie vlag is een Booleaanse status variabele die een voorwaardelijke instructie in uw code beheert:
 
 ```csharp
 if (featureFlag) {
@@ -50,19 +50,19 @@ if (featureFlag) {
 }
 ```
 
-U de `featureFlag` waarde van statisch instellen.
+U kunt de waarde van `featureFlag` statisch instellen.
 
 ```csharp
 bool featureFlag = true;
 ```
 
-U de status van de vlag evalueren op basis van bepaalde regels:
+U kunt de status van de vlag evalueren op basis van bepaalde regels:
 
 ```csharp
 bool featureFlag = isBetaUser();
 ```
 
-U het voorwaardelijke instellen uitbreiden om toepassingsgedrag in te stellen voor een van beide statussen:
+U kunt de voorwaardelijke actie voor het instellen van het toepassings gedrag voor een van beide statussen uitbreiden:
 
 ```csharp
 if (featureFlag) {
@@ -72,15 +72,15 @@ if (featureFlag) {
 }
 ```
 
-## <a name="feature-flag-repository"></a>Opslagplaats functievlag
+## <a name="feature-flag-repository"></a>Opslag plaats voor functie vlaggen
 
-Als u functievlaggen effectief wilt gebruiken, moet u alle functievlaggen die in een toepassing worden gebruikt, extern maken. Hiermee u functievlagstatussen wijzigen zonder de toepassing zelf te wijzigen en opnieuw te implementeren.
+Als u functie vlaggen effectief wilt gebruiken, moet u alle functie vlaggen Externalize die in een toepassing worden gebruikt. Hierdoor kunt u de status van de functie vlaggen wijzigen zonder de toepassing zelf te wijzigen en opnieuw te implementeren.
 
-Azure App Configuration biedt een gecentraliseerde opslagplaats voor functievlaggen. U het gebruiken om verschillende soorten functievlaggen te definiëren en hun toestanden snel en vol vertrouwen te manipuleren. U vervolgens de app-configuratiebibliotheken gebruiken voor verschillende programmeertaalframeworks om eenvoudig toegang te krijgen tot deze functievlaggen vanuit uw toepassing.
+Azure-app configuratie biedt een centrale opslag plaats voor functie vlaggen. U kunt dit gebruiken om verschillende soorten functie vlaggen te definiëren en hun status snel en met vertrouwen te manipuleren. Vervolgens kunt u de app-configuratie bibliotheken voor verschillende programmeer taal raamwerken gebruiken om gemakkelijk toegang te krijgen tot deze functie vlaggen vanuit uw toepassing.
 
-[Gebruik functievlaggen in een ASP.NET Core-app](./use-feature-flags-dotnet-core.md) laat zien hoe de .NET Core App Configuration provider en Feature Management libraries samen worden gebruikt om functievlaggen voor uw ASP.NET webapplicatie te implementeren.
+[Gebruik functie vlaggen in een ASP.net core-app](./use-feature-flags-dotnet-core.md) om te zien hoe de .net core-app configuratie provider en onderdelen beheer bibliotheken samen worden gebruikt om functie vlaggen voor uw ASP.NET-webtoepassing te implementeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Functievlaggen toevoegen aan een ASP.NET Core-web-app](./quickstart-feature-flag-aspnet-core.md)  
+> [Functie vlaggen toevoegen aan een ASP.NET Core web-app](./quickstart-feature-flag-aspnet-core.md)  

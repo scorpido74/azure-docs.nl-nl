@@ -1,49 +1,49 @@
 ---
-title: Azure Functions SignalR Service-bindingen
-description: Meer informatie over het gebruik van SignalR-servicebindingen met Azure-functies.
+title: Service bindingen van Azure Functions signalering
+description: Meer informatie over het gebruik van seingevings service bindingen met Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
 ms.openlocfilehash: 863620ce6f0af33b05ef290ae95ccdc99a53a54d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77523033"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>SignalR-servicebindingen voor Azure Functions
 
-In deze set artikelen wordt uitgelegd hoe u realtime berichten verifiëren en verzenden naar clients die zijn verbonden met [Azure SignalR Service](https://azure.microsoft.com/services/signalr-service/) met behulp van SignalR Service-bindingen in Azure-functies. Azure Functions ondersteunt invoer- en uitvoerbindingen voor SignalR Service.
+In deze reeks artikelen wordt uitgelegd hoe u real-time berichten verifieert en verzendt naar clients die zijn verbonden met de [Azure signalerings service](https://azure.microsoft.com/services/signalr-service/) door gebruik te maken van de service bindingen van de signalering in azure functions. Azure Functions ondersteunt invoer- en uitvoerbindingen voor SignalR Service.
 
-| Actie | Type |
+| Bewerking | Type |
 |---------|---------|
-| De URL en het access-token van de service retourneren | [Invoerbinding](./functions-bindings-signalr-service-input.md) |
-| Berichten van De SignalR-service verzenden |[Uitvoerbinding](./functions-bindings-signalr-service-output.md) |
+| De URL en het toegangs token van het service-eind punt retour neren | [Invoer binding](./functions-bindings-signalr-service-input.md) |
+| Signaal service berichten verzenden |[Uitvoer binding](./functions-bindings-signalr-service-output.md) |
 
-## <a name="add-to-your-functions-app"></a>Toevoegen aan de app Functies
+## <a name="add-to-your-functions-app"></a>Toevoegen aan uw functions-app
 
-### <a name="functions-2x-and-higher"></a>Functies 2.x en hoger
+### <a name="functions-2x-and-higher"></a>Functies 2. x en hoger
 
-Werken met de trigger en bindingen vereist dat u verwijzen naar de juiste pakket. Het NuGet-pakket wordt gebruikt voor .NET-klassebibliotheken, terwijl de extensiebundel wordt gebruikt voor alle andere toepassingstypen.
+Voor het werken met de trigger en bindingen moet u verwijzen naar het juiste pakket. Het NuGet-pakket wordt gebruikt voor .NET-klassen bibliotheken terwijl de uitbreidings bundel wordt gebruikt voor alle andere toepassings typen.
 
 | Taal                                        | Toevoegen door...                                   | Opmerkingen 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | Het [NuGet-pakket]installeren , versie 3.x | |
-| C# Script, Java, JavaScript, Python, PowerShell | De [uitbreidingsbundel registreren]          | De [Azure Tools-extensie] wordt aanbevolen om te gebruiken met Visual Studio Code. |
-| C# Script (alleen online in Azure-portal)         | Een binding toevoegen                            | Zie [Uw extensies bijwerken]als u bestaande bindende extensies wilt bijwerken zonder dat u uw functie-app opnieuw hoeft te publiceren. |
+| C#                                              | Het [NuGet-pakket]installeren, versie 3. x | |
+| C#-script, Java, java script, Python, Power shell | De [uitbreidings bundel] registreren          | De [extensie voor Azure-Hulpprogram ma's] wordt aanbevolen voor gebruik met Visual Studio code. |
+| C#-script (alleen online in Azure Portal)         | Een binding toevoegen                            | Zie [uw extensies bijwerken]om bestaande bindings extensies bij te werken zonder uw functie-app opnieuw te publiceren. |
 
 [NuGet-pakket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService
 [core tools]: ./functions-run-local.md
-[extensiebundel]: ./functions-bindings-register.md#extension-bundles
+[uitbreidings bundel]: ./functions-bindings-register.md#extension-bundles
 [Uw extensies bijwerken]: ./install-update-binding-extensions-manual.md
-[Azure Tools-extensie]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
+[Extensie van Azure-Hulpprogram Ma's]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
-Raadpleeg de ontwikkeling en configuratie van Azure Functions met [Azure SignalR Service](../azure-signalr/signalr-concept-serverless-development-config.md)voor meer informatie over het samen configureren en gebruiken van SignalR-service en Azure-functies.
+Raadpleeg [Azure functions ontwikkeling en configuratie met de Azure signalerings service](../azure-signalr/signalr-concept-serverless-development-config.md)voor meer informatie over het configureren en gebruiken van de seingevings service en Azure functions samen.
 
-### <a name="annotations-library-java-only"></a>Annotatiesbibliotheek (alleen Java)
+### <a name="annotations-library-java-only"></a>Aantekeningen bibliotheek (alleen Java)
 
-Als u de annotaties van de SignalR-service in Java-functies wilt gebruiken, moet u een afhankelijkheid toevoegen aan het artefact *azure-functions-java-library-signalr* (versie 1.0 of hoger) aan uw *pom.xml-bestand.*
+Als u de aantekeningen van de seingevings service in Java-functies wilt gebruiken, moet u een afhankelijkheid toevoegen aan het *Azure-functions-Java-Library-seingevings-* artefact (versie 1,0 of hoger) aan uw *pom. XML* -bestand.
 
 ```xml
 <dependency>
@@ -55,5 +55,5 @@ Als u de annotaties van de SignalR-service in Java-functies wilt gebruiken, moet
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [De URL en het toegangstoken voor serviceeindpunt (invoerbinding) retourneren](./functions-bindings-signalr-service-input.md)
-- [Berichten van SignalR-service verzenden (uitvoerbinding)](./functions-bindings-signalr-service-output.md) 
+- [De URL en het toegangs token van het service-eind punt retour neren (invoer binding)](./functions-bindings-signalr-service-input.md)
+- [Signaal service berichten verzenden (uitvoer binding)](./functions-bindings-signalr-service-output.md) 

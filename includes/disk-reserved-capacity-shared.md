@@ -9,98 +9,98 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: cb959b94807678187363d3132ece273584f13a0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77590736"
 ---
-Bespaar op uw Azure Disk Storage-gebruik met gereserveerde capaciteit. Met Azure Disk Storage-reserveringen in combinatie met Azure Reserved Virtual Machine Instances u de totale vm-kosten (virtual machine) verlagen. De reserveringskorting wordt automatisch toegepast op de overeenkomende schijven in het geselecteerde reserveringsbereik. Vanwege deze automatische toepassing hoeft u geen reservering toe te wijzen aan een beheerde schijf om de kortingen te krijgen.
+Bespaar op uw Azure Disk Storage gebruik met gereserveerde capaciteit. Azure Disk Storage reserve ringen gecombineerd met Azure Reserved Virtual Machine Instances kunt u de totale kosten van virtuele machines (VM) verlagen. De reserverings korting wordt automatisch toegepast op de overeenkomende schijven in het geselecteerde reserverings bereik. Als gevolg van deze automatische toepassing hoeft u geen reserve ring toe te wijzen aan een beheerde schijf om de kortingen te krijgen.
 
-Kortingen worden elk uur toegepast, afhankelijk van het schijfgebruik. Ongebruikte gereserveerde capaciteit wordt niet overgedragen. Kortingen op azure diskopslagreserveringen zijn niet van toepassing op onbeheerde schijven, ultraschijven of paginablobverbruik.
+Kortingen worden per uur toegepast, afhankelijk van het schijf gebruik. Niet-gebruikte gereserveerde capaciteit wordt niet overgedragen. Azure Disk Storage reserverings kortingen zijn niet van toepassing op niet-beheerde schijven, Ultra schijven of het gebruik van pagina-blobs.
 
-## <a name="determine-your-storage-needs"></a>Bepaal uw opslagbehoeften
+## <a name="determine-your-storage-needs"></a>Uw opslag behoeften bepalen
 
-Voordat u een reservering aanschaft, bepaalt u uw opslagbehoeften. Momenteel zijn Azure Disk Storage-reserveringen alleen beschikbaar voor bepaalde Azure premium SSD SKU's. De SKU van een premium SSD bepaalt de grootte en prestaties van de schijf.
+Bepaal uw opslag behoeften voordat u een reserve ring aanschaft. Momenteel zijn Azure Disk Storage reserve ringen alleen beschikbaar voor geselecteerde Azure Premium SSD-Sku's. De SKU van een Premium SSD bepaalt de grootte en prestaties van de schijf.
 
-Bij het bepalen van uw opslagbehoeften, denk niet aan schijven op basis van alleen capaciteit. U bijvoorbeeld geen reservering hebben voor een P40-schijf en deze gebruiken om te betalen voor twee kleinere P30-schijven. Bij de aankoop van een reservering koopt u alleen een reservering voor het totale aantal schijven per SKU.
+Bij het bepalen van uw opslag behoeften kunt u geen schijven zien op basis van slechts capaciteit. U kunt bijvoorbeeld geen reserve ring voor een P40-schijf hebben en gebruiken om te betalen voor twee kleinere P30-schijven. Bij het aanschaffen van een reserve ring koopt u alleen een reserve ring voor het totale aantal schijven per SKU.
 
-Er wordt een schijfreservering gemaakt per schijf SKU. Als gevolg hiervan is het reserveringsverbruik gebaseerd op de eenheid van de schijfSKU's in plaats van de opgegeven grootte.
+Er wordt een schijf reservering per schijf-SKU gemaakt. Als gevolg hiervan is het reserverings verbruik gebaseerd op de eenheid van de schijf-Sku's in plaats van de gegeven grootte.
 
-Stel dat u één P40-schijf reserveert met 2 TiB met ingerichte opslagcapaciteit. Ga er ook van uit dat u slechts twee P30-schijven toewijst. De P40 reservering in dat geval geen rekening houdt met P30 verbruik, en u betaalt de pay-as-you-go tarief op de P30 schijven.
+Stel dat u een P40-schijf met 2 TiB van de ingerichte opslag capaciteit reserveert. Stel ook dat u slechts twee P30-schijven toewijst. De P40-reserve ring in dat geval heeft geen rekening met het P30-verbruik en u betaalt het betalen naar gebruik-tarief op de P30-schijven.
 <br/>
 <br/>
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-## <a name="purchase-considerations"></a>Aankoopoverwegingen
+## <a name="purchase-considerations"></a>Overwegingen bij de aankoop
 
-We raden de volgende praktijken aan bij het overwegen van schijfreserveringsaankopen:
+We raden u aan de volgende procedures uit te voeren bij het overwegen van een aankoop van schijf reservering:
 
-- Analyseer uw gebruiksgegevens om te bepalen welke reserveringen u moet kopen. Zorg ervoor dat u het gebruik in schijfSKU's bijhoudt in plaats van de ingerichte of gebruikte schijfcapaciteit.
-- Bekijk uw schijfreservering samen met uw VM-reservering. We raden ten zeerste aan om reserveringen te maken voor zowel VM-gebruik als schijfgebruik voor maximale besparingen. U beginnen met het bepalen van de juiste VM-reservering en vervolgens de schijfreservering evalueren. Over het algemeen hebt u een standaardconfiguratie voor elk van uw workloads. Een SQL Server-server kan bijvoorbeeld twee P40-gegevensschijven en één P30-besturingssysteemschijf hebben.
+- Analyseer uw gebruiks gegevens om te helpen bepalen welke reserve ringen u moet aanschaffen. Zorg ervoor dat u het gebruik in schijf-Sku's bijhoudt in plaats van de ingerichte schijf capaciteit.
+- Controleer uw schijf reservering samen met uw VM-reserve ring. We raden u ten zeerste aan reserve ringen te maken voor zowel het gebruik van virtuele machines als voor schijf gebruik voor maximale besparingen. U kunt beginnen met het bepalen van de juiste reserve ring van de virtuele machine en vervolgens de schijf reservering evalueren. Over het algemeen hebt u een standaard configuratie voor elk van uw workloads. Een SQL Server-server kan bijvoorbeeld twee P40-gegevens schijven en één P30-besturingssysteem schijf bevatten.
   
-  Dit soort patroon kan u helpen bij het bepalen van het gereserveerde bedrag dat u zou kunnen kopen. Deze aanpak kan het evaluatieproces vereenvoudigen en ervoor zorgen dat u een uitgelijnd plan hebt voor zowel uw VM als schijven. Het plan bevat overwegingen zoals abonnementen of regio's.
+  Met dit soort patroon kunt u de gereserveerde hoeveelheid bepalen die u mogelijk aanschaft. Deze aanpak kan het evaluatie proces vereenvoudigen en ervoor zorgen dat u beschikt over een uitgelijnd abonnement voor uw virtuele machine en schijven. Het plan bevat overwegingen zoals abonnementen of regio's.
 
-## <a name="purchase-restrictions"></a>Aankoopbeperkingen
+## <a name="purchase-restrictions"></a>Aankoop beperkingen
 
-Reserveringskortingen zijn momenteel niet beschikbaar voor het volgende:
+Er zijn momenteel geen reserverings kortingen beschikbaar voor het volgende:
 
-- Onbeheerde schijven of paginablobs.
-- Standaard SSD's of standaard harde schijven (HDD's).
-- Premium SSD SKU's kleiner dan P30: P1, P2, P3, P4, P6, P10, P15 en P20 SSD SKU's.
-- Schijven in azure-, Azure-Duitsland- of Azure China-regio's.
+- Onbeheerde schijven of pagina-blobs.
+- Standaard Ssd's of standaard harde schijven (Hdd's).
+- Premium-SSD Sku's die kleiner zijn dan P30: P1, P2, P3, P4, P6, P10, P15 en P20 SSD-Sku's.
+- Schijven in de regio's Azure Government, Azure Duitsland en Azure China.
 
-In zeldzame omstandigheden beperkt Azure de aankoop van nieuwe reserveringen tot een subset van schijfSKU's vanwege de lage capaciteit in een regio.
+In zeldzame gevallen beperkt Azure de aanschaf van nieuwe reserve ringen aan een subset schijf-Sku's vanwege een geringe capaciteit in een regio.
 
-## <a name="buy-a-disk-reservation"></a>Een schijfreservering kopen
+## <a name="buy-a-disk-reservation"></a>Een schijf reservering aanschaffen
 
-U Azure Disk Storage-reserveringen aanschaffen via de [Azure-portal.](https://portal.azure.com/) U de reservering vooraf of met maandelijkse betalingen betalen. Zie [Reserveringen kopen met maandelijkse betalingen](../articles/cost-management-billing/reservations/monthly-payments-reservations.md)voor meer informatie over de aankoop met maandelijkse betalingen.
+U kunt Azure Disk Storage reserve ringen aanschaffen via de [Azure Portal](https://portal.azure.com/). U kunt betalen voor de reserve ring, hetzij vooraf, hetzij met maandelijkse betalingen. Zie [reserve ringen met maandelijkse betalingen kopen](../articles/cost-management-billing/reservations/monthly-payments-reservations.md)voor meer informatie over het aanschaffen met maandelijkse betalingen.
 
-Volg de volgende stappen om gereserveerde capaciteit aan te schaffen:
+Volg deze stappen om gereserveerde capaciteit aan te schaffen:
 
-1. Ga naar het deelvenster [Reserveringen kopen](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Browse_AddCommand) in de Azure-portal.
+1. Ga naar het deel venster [Inkoop reserveringen](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Browse_AddCommand) in het Azure Portal.
 
-1. Selecteer **Azure Managed Disks** om een reservering aan te schaffen.
+1. Selecteer **Azure Managed disks** om een reserve ring aan te schaffen.
 
-    ![Deelvenster voor het kopen van reserveringen](media/disks-reserved-capacity/disks-reserved-purchase-reservation.png) 
+    ![Deel venster voor het kopen van reserve ringen](media/disks-reserved-capacity/disks-reserved-purchase-reservation.png) 
 
-1. Geef de vereiste waarden op die in de volgende tabel zijn beschreven:
+1. Geef de vereiste waarden op die in de volgende tabel worden beschreven:
 
    |Element  |Beschrijving  |
    |---------|---------|
-   |**Scope**   |  Hoeveel abonnementen het factureringsvoordeel kunnen gebruiken dat aan de reservering is gekoppeld. Deze waarde geeft ook aan hoe de reservering wordt toegepast op specifieke abonnementen. <br/><br/> Als u **Gedeeld**selecteert, wordt de reserveringskorting toegepast op Azure Storage-capaciteit in elk abonnement binnen uw factureringscontext. De factureringscontext is gebaseerd op de manier waarop u zich hebt aangemeld voor Azure. Voor zakelijke klanten is het gedeelde bereik de inschrijving en omvat het alle abonnementen binnen de inschrijving. Voor betalen per gebruik-klanten omvat het gedeelde bereik alle afzonderlijke abonnementen met betalen per gebruik-tarieven die door de accountbeheerder zijn gemaakt.  <br/><br/>  Als u **Eén abonnement selecteert,** wordt de reserveringskorting toegepast op Azure Storage-capaciteit in het geselecteerde abonnement. <br/><br/> Als u **Één resourcegroep**selecteert, wordt de reserveringskorting toegepast op azure-opslagcapaciteit in het geselecteerde abonnement en in de geselecteerde resourcegroep van dat abonnement. <br/><br/> U het reserveringsbereik wijzigen nadat u de reservering hebt gekocht.  |
-   |**Abonnement**  | Het abonnement dat u gebruikt om te betalen voor de Azure Storage-reservering. De betaalmethode op het geselecteerde abonnement wordt gebruikt bij het in rekening brengen van de kosten. Het abonnement moet een van de volgende typen zijn:<br/><ul><li> Enterprise Agreement (aanbiedingsnummers MS-AZR-0017P en MS-AZR-0148P). Voor een Enterprise-abonnement worden de kosten afgetrokken van het monetaire toezeggingssaldo van de inschrijving of als overschrijding in rekening gebracht.</li><br/><li>Individueel abonnement met pay-as-you-go tarieven (aanbiedingnummers MS-AZR-0003P en MS-AZR-0023P). Voor een individueel abonnement met betalen per gebruik worden de kosten in rekening gebracht op de creditcard- of factuurbetalingsmethode op het abonnement.</li></ul>    |
-   | **Schijven** | De SKU die u wilt maken. |
-   | **Regio** | De regio waar de reservering van kracht is. |
-   | **Factureringsfrequentie** | Hoe vaak de rekening wordt gefactureerd voor de reservering. Opties zijn **maandelijks** en **vooraf**. |
+   |**Bereik**   |  Hoeveel abonnementen kunnen gebruikmaken van het facturerings voordeel dat is gekoppeld aan de reserve ring. Met deze waarde wordt ook aangegeven hoe de reserve ring wordt toegepast op specifieke abonnementen. <br/><br/> Als u **gedeeld**selecteert, wordt de reserverings korting toegepast op Azure storage capaciteit in elk abonnement binnen uw facturerings context. De facturerings context is gebaseerd op de manier waarop u zich hebt geregistreerd voor Azure. Voor zakelijke klanten is het gedeelde bereik de inschrijving en omvat alle abonnementen binnen de inschrijving. Voor betalen per gebruik-klanten bevat het gedeelde bereik alle afzonderlijke abonnementen met betalen per gebruik-tarieven die zijn gemaakt door de account beheerder.  <br/><br/>  Als u **één abonnement**selecteert, wordt de reserverings korting toegepast op Azure storage capaciteit in het geselecteerde abonnement. <br/><br/> Als u **één resource groep**selecteert, wordt de reserverings korting toegepast op Azure storage capaciteit in het geselecteerde abonnement en in de geselecteerde resource groep van dat abonnement. <br/><br/> U kunt het reserverings bereik wijzigen nadat u de reserve ring hebt aangeschaft.  |
+   |**Abonnement**  | Het abonnement dat u gebruikt om te betalen voor de Azure Storage reserve ring. De betalings wijze voor het geselecteerde abonnement wordt gebruikt bij het opladen van de kosten. Het abonnement moet een van de volgende typen zijn:<br/><ul><li> Enterprise Agreement (de nummers MS-AZR-0017P en MS-AZR-0148P). Voor een Enter prise-abonnement worden de kosten afgetrokken van het monetaire toezeggings saldo van de inschrijving of worden deze gefactureerd als overschrijding.</li><br/><li>Individueel abonnement met betalen per gebruik-tarieven (AZR-0003P en MS-AZR-0023P). Voor een afzonderlijk abonnement met betalen per gebruik-tarieven worden de kosten in rekening gebracht op basis van de credit card of factuur betalings methode voor het abonnement.</li></ul>    |
+   | **Cd's** | De SKU die u wilt maken. |
+   | **Regio** | De regio waar de reserve ring van kracht is. |
+   | **Facturerings frequentie** | Hoe vaak het account wordt gefactureerd voor de reserve ring. Opties zijn **maandelijks** en **vooraf**. |
 
-    ![Deelvenster voor het selecteren van het product dat u wilt kopen.png](media/disks-reserved-capacity/premium-ssd-reserved-purchase-selection.png)
+    ![Deel venster voor het selecteren van het product dat u wilt kopen. png](media/disks-reserved-capacity/premium-ssd-reserved-purchase-selection.png)
 
-1. Nadat u de waarden voor uw reservering hebt opgegeven, worden de kosten in de Azure-portal weergegeven. De portal toont ook het kortingspercentage ten opzichte van pay-as-you-go facturering. Selecteer **Volgende** om door te gaan naar het deelvenster **Reserveringen kopen.**
+1. Nadat u de waarden voor de reserve ring hebt opgegeven, worden de kosten door de Azure Portal weer gegeven. In de portal wordt ook het kortings percentage weer gegeven over betalen per gebruik-facturering. Selecteer **volgende** om door te gaan naar het deel venster **reserve ringen voor inkoop** .
 
-1. In het deelvenster **Reserveringen kopen** u uw reservering een naam geven en het totale aantal reserveringen selecteren dat u wilt maken. Het aantal reserveringen kaarten aan het aantal schijven. Als u bijvoorbeeld honderd schijven wilt reserveren, voert u de **waarde Hoeveelheid** **100**in.
+1. In het deel venster **Inkoop reserveringen** kunt u uw reserve ring een naam geven en het totale aantal reserve ringen selecteren dat u wilt maken. Het aantal reserve ringen wordt toegewezen aan het aantal schijven. Als u bijvoorbeeld honderd schijven wilt reserveren, voert u de **hoeveelheid** waarde **100**in.
 
-1. Bekijk de totale kosten van de reservering.
+1. Bekijk de totale kosten van de reserve ring.
 
-    ![Het deelvenster Reserveringen kopen](media/disks-reserved-capacity/premium-ssd-reserved-selecting-sku-total-purchase.png)
+    ![Het deel venster Inkoop reserveringen](media/disks-reserved-capacity/premium-ssd-reserved-selecting-sku-total-purchase.png)
 
-Nadat u een reservering hebt gekocht, wordt deze automatisch toegepast op bestaande schijfopslagbronnen die overeenkomen met de reserveringsvoorwaarden. Als u nog geen bronnen voor schijfopslag hebt gemaakt, is de reservering van toepassing wanneer u een resource maakt die overeenkomt met de reserveringsvoorwaarden. In beide gevallen begint de reserveringstermijn onmiddellijk na een succesvolle aankoop.
+Nadat u een reserve ring hebt aangeschaft, wordt deze automatisch toegepast op alle bestaande Disk Storage resources die overeenkomen met de reserverings voorwaarden. Als u nog geen Disk Storage resources hebt gemaakt, is de reserve ring van toepassing wanneer u een resource maakt die overeenkomt met de reserverings voorwaarden. In beide gevallen begint de reserverings periode onmiddellijk na een geslaagde aankoop.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Annulering, omwisseling of terugbetaling van reserveringen
 
-U reserveringen binnen bepaalde beperkingen annuleren, ruilen of terugbetalen. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations) voor meer informatie.
+U kunt in bepaalde beperkingen reserve ringen annuleren, uitwisselen of terugbetalen. Zie [self-service-uitwisseling en terugbetalingen voor Azure Reservations](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)voor meer informatie.
 
-## <a name="expiration-of-a-reservation"></a>Het verstrijken van een reservering
+## <a name="expiration-of-a-reservation"></a>Verval datum van een reserve ring
 
-Wanneer een reservering verloopt, wordt elke Azure Disk Storage-capaciteit die u onder die reservering gebruikt, gefactureerd tegen het tarief voor betalen per gebruik. Reserveringen worden niet automatisch vernieuwd.
+Wanneer een reserve ring verloopt, wordt elke Azure Disk Storage capaciteit die u gebruikt onder die reserve ring, gefactureerd op basis van het betalen naar gebruik-tarief. Reserveringen worden niet automatisch vernieuwd.
 
-U ontvangt 30 dagen voor het verstrijken van de reservering een e-mailmelding en opnieuw op de vervaldatum. Als u wilt blijven profiteren van de kostenbesparingen die een reservering biedt, verlengt u deze niet later dan de vervaldatum.
+U ontvangt een e-mail melding van 30 dagen vóór het verlopen van de reserve ring en opnieuw op de verval datum. Om te kunnen profiteren van de kosten besparingen die een reserve ring biedt, verlengt u deze niet later dan de verval datum.
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
 
-Als u vragen hebt of hulp nodig hebt, [maakt u een ondersteuningsverzoek.](https://go.microsoft.com/fwlink/?linkid=2083458)
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Wat zijn Azure-reserveringen?](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Wat zijn Azure Reservations?](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [Reserveringskorting toepassen op Azure Disk Storage](../articles/cost-management-billing/reservations/understand-disk-reservations.md)

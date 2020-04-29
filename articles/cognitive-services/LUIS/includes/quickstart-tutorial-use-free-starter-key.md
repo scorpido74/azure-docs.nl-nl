@@ -11,10 +11,10 @@ ms.topic: include
 ms.custom: include file
 ms.author: diberry
 ms.openlocfilehash: 0f5ee8b1f575c3caa8e1e2608444ea853c51d53f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77371880"
 ---
-Voor dit artikel u het gratis [LUIS-account](../luis-concept-keys.md#starter-key) en de startsleutel gebruiken om uw LUIS-toepassing te schrijven.
+Voor dit artikel kunt u het gratis [Luis](../luis-concept-keys.md#starter-key) -account en de bijbehorende start sleutel gebruiken om uw Luis-toepassing te ontwerpen.

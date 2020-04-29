@@ -1,66 +1,66 @@
 ---
-title: De wijzigingsfeedschatter gebruiken - Azure Cosmos DB
-description: Meer informatie over het gebruik van de change feed estimator om de voortgang van uw change feed processor te analyseren
+title: De wijzigings feed gebruiken Estimator-Azure Cosmos DB
+description: Meer informatie over het gebruik van de Change feed Estimator voor het analyseren van de voortgang van de processor voor wijzigings invoer
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: maquaran
 ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77585285"
 ---
-# <a name="use-the-change-feed-estimator"></a>De wijzigingsfeedschatter gebruiken
+# <a name="use-the-change-feed-estimator"></a>De Estimator van de wijzigings feed gebruiken
 
-In dit artikel wordt beschreven hoe u de voortgang van de exemplaren van uw [wijzigingsfeedprocessor](./change-feed-processor.md) controleren terwijl ze de wijzigingsfeed lezen.
+In dit artikel wordt beschreven hoe u de voortgang van uw [feeds voor wijzigings](./change-feed-processor.md) instanties kunt bewaken terwijl de wijzigings feed wordt gelezen.
 
-## <a name="why-is-monitoring-progress-important"></a>Waarom is het monitoren van de vooruitgang belangrijk?
+## <a name="why-is-monitoring-progress-important"></a>Waarom is de bewakings voortgang belang rijk?
 
-De wijzigingsfeedprocessor fungeert als een aanwijzer die verder gaat in uw [wijzigingsfeed](./change-feed.md) en de wijzigingen in een gemachtigde implementatie oplevert. 
+De wijzigings verwerkings processor fungeert als een pointer die door uw [wijzigings feed](./change-feed.md) doorloopt en de wijzigingen voor de implementatie van een gemachtigde bezorgt. 
 
-Uw implementatie van de wijzigingsfeedprocessor kan wijzigingen in een bepaald tempo verwerken op basis van de beschikbare bronnen zoals CPU, geheugen, netwerk, enzovoort.
+De implementatie van de wijzigings feed-processor kan wijzigingen verwerken met een bepaald percentage op basis van de beschik bare resources zoals CPU, geheugen, netwerk, enzovoort.
 
-Als deze snelheid langzamer is dan de snelheid waarmee uw wijzigingen plaatsvinden in uw Azure Cosmos-container, loopt uw processor achter.
+Als dit percentage langzamer is dan de snelheid waarmee uw wijzigingen worden aangebracht in de Azure Cosmos-container, begint de processor met de vertraging.
 
-Als u dit scenario identificeert, wordt u beter weten of we onze implementatie van de wijzigingsfeedprocessor moeten schalen.
+Door dit scenario te identificeren, kunt u beter begrijpen of we de implementatie van de wijzigings feed moeten schalen.
 
-## <a name="implement-the-change-feed-estimator"></a>De change feed estimator implementeren
+## <a name="implement-the-change-feed-estimator"></a>De Estimator voor de wijzigings feed implementeren
 
-Net als de [change feed processor](./change-feed-processor.md), de change feed schatter werkt als een push model. De schatter meet het verschil tussen het laatst verwerkte artikel (gedefinieerd door de status van de leasecontainer) en de laatste wijziging in de container en duwt deze waarde naar een gemachtigde. Het interval waarmee de meting wordt uitgevoerd, kan ook worden aangepast met een standaardwaarde van 5 seconden.
+Net als bij de [Change feed-processor](./change-feed-processor.md)werkt de Estimator van de wijzigings feed als een push model. In het Estimator wordt het verschil gemeten tussen het laatst verwerkte item (gedefinieerd door de status van de leases-container) en de laatste wijziging in de container, en deze waarde naar een gemachtigde pushen. Het interval waarmee de meting wordt uitgevoerd, kan ook worden aangepast met een standaard waarde van 5 seconden.
 
-Als u bijvoorbeeld de feedprocessor voor wijzigingen als volgt gedefinieerd:
+Als u bijvoorbeeld de processor voor de wijzigings feed als volgt definieert:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimator)]
 
-De juiste manier om een schatter te initialiseren `GetChangeFeedEstimatorBuilder` om die processor te meten zou gebruiken als volgt:
+De juiste manier om een Estimator te initialiseren om te meten dat de processor `GetChangeFeedEstimatorBuilder` als zodanig wordt gebruikt:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimator)]
 
-Waar zowel de processor als de `leaseContainer` schatter dezelfde en dezelfde naam delen.
+Waarbij zowel de processor als de Estimator dezelfde `leaseContainer` en dezelfde naam hebben.
 
-De andere twee parameters zijn de gemachtigde, die een getal ontvangt dat aangeeft **hoeveel wijzigingen in behandeling zijn om** door de processor te worden gelezen en het tijdsinterval waarop u deze meting wilt laten plaatsvinden.
+De andere twee para meters zijn de gemachtigde. er wordt dan een getal weer gegeven dat aangeeft hoeveel **wijzigingen in behandeling moeten worden gelezen** door de processor en het tijds interval waarop deze meting moet worden uitgevoerd.
 
-Een voorbeeld van een gemachtigde die de schatting ontvangt, is:
+Een voor beeld van een gemachtigde die de schatting ontvangt, is:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=EstimationDelegate)]
 
-U deze schatting naar uw bewakingsoplossing sturen en deze gebruiken om te begrijpen hoe uw vooruitgang zich in de loop van de tijd gedraagt.
+U kunt deze schatting verzenden naar uw bewakings oplossing en deze gebruiken om te begrijpen hoe de voortgang in de loop van de tijd gedraagt.
 
 > [!NOTE]
-> De wijzigingsfeedchatter hoeft niet te worden geïmplementeerd als onderdeel van uw change feed-processor en maakt ook geen deel uit van hetzelfde project. Het kan onafhankelijk zijn en in een heel ander geval worden uitgevoerd. Het hoeft alleen maar dezelfde naam en lease configuratie te gebruiken.
+> De Estimator van de wijzigings feed hoeft niet te worden geïmplementeerd als onderdeel van de processor voor wijzigings invoer en niet deel uitmaken van hetzelfde project. Het kan onafhankelijk zijn en in een volledig ander exemplaar worden uitgevoerd. U hoeft alleen dezelfde naam en lease configuratie te gebruiken.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
-* [Gebruiksvoorbeelden op GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
-* [Aanvullende voorbeelden op GitHub](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
+* [Voor beelden van gebruik op GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
+* [Aanvullende voor beelden op GitHub](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U nu verder gaan met meer informatie over de feedprocessor wijzigen in de volgende artikelen:
+U kunt nu door gaan met meer informatie over het wijzigen van de feed-processor in de volgende artikelen:
 
-* [Overzicht van de feedprocessor van change](change-feed-processor.md)
+* [Overzicht van de processor voor wijzigings invoer](change-feed-processor.md)
 * [Starttijd van verwerker van wijzigingenfeed](how-to-configure-change-feed-start-time.md)

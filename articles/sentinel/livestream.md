@@ -1,6 +1,6 @@
 ---
-title: Gebruik jachtlivestream in Azure Sentinel om bedreigingen te detecteren| Microsoft Documenten
-description: In dit artikel wordt beschreven hoe u de livestream van de jacht in Azure Sentinel gebruiken om gegevens bij te houden.
+title: Gebruik jacht Livestream in azure Sentinel om bedreigingen te detecteren | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u met behulp van jacht Livestream in azure Sentinel gegevens bijhoudt.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,100 +16,100 @@ ms.workload: na
 ms.date: 12/06/2019
 ms.author: yelevin
 ms.openlocfilehash: b392644e504fa8187e637278bef8718c9c2caa3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77582123"
 ---
-# <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Gebruik jachtlivestream in Azure Sentinel om bedreigingen te detecteren
+# <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Jacht Livestream in azure Sentinel gebruiken om bedreigingen te detecteren
 
 > [!IMPORTANT]
-> Hunting livestream in Azure Sentinel is momenteel in openbare preview en geleidelijk uitrollen naar huurders.
-> Deze functie wordt geleverd zonder een serviceniveauovereenkomst en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
+> Jacht Livestream in azure Sentinel is momenteel beschikbaar als open bare preview-versie en wordt geleidelijk geïmplementeerd naar tenants.
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-Gebruik de jachtlivestream om interactieve sessies te maken waarmee u nieuw gemaakte query's testen wanneer gebeurtenissen plaatsvinden, meldingen krijgen van de sessies wanneer een overeenkomst wordt gevonden en indien nodig onderzoeken kunnen starten. U snel een livestreamsessie maken met behulp van een Log Analytics-query.
+Gebruik jacht Livestream om interactieve sessies te maken waarmee u nieuw gemaakte query's kunt testen wanneer er gebeurtenissen optreden, meldingen van de sessies ontvangen wanneer een overeenkomst wordt gevonden en indien nodig onderzoek starten. U kunt snel een livestream-sessie maken met behulp van een Log Analytics-query.
 
-- **Nieuw gemaakte query's testen wanneer gebeurtenissen zich voordoen**
+- **Nieuw gemaakte query's testen wanneer er gebeurtenissen optreden**
     
-    U query's testen en aanpassen zonder conflicten aan de huidige regels die actief worden toegepast op gebeurtenissen. Nadat u hebt bevestigd dat deze nieuwe query's werken zoals verwacht, is het eenvoudig om ze te promoten bij aangepaste waarschuwingsregels door een optie te selecteren die de sessie naar een waarschuwing tilt.
+    U kunt query's testen en aanpassen zonder conflicten met de huidige regels die actief worden toegepast op gebeurtenissen. Nadat u hebt gecontroleerd of deze nieuwe query's werken zoals verwacht, kunt u ze eenvoudig promo veren tot aangepaste waarschuwings regels door een optie te selecteren waarmee de sessie wordt uitgebreid naar een waarschuwing.
 
 - **Ontvang een melding wanneer er bedreigingen optreden**
     
-    U bedreigingsgegevensfeeds vergelijken met geaggregeerde logboekgegevens en een melding ontvangen wanneer een overeenkomst plaatsvindt. Bedreigingsgegevensfeeds zijn doorlopende gegevensstromen die gerelateerd zijn aan potentiële of huidige bedreigingen, dus de melding kan wijzen op een potentiële bedreiging voor uw organisatie. Maak een livestreamsessie in plaats van een aangepaste waarschuwingsregel wanneer u op de hoogte wilt worden gesteld van een mogelijk probleem zonder de overheadkosten van het handhaven van een aangepaste waarschuwingsregel.
+    U kunt bedreigingen gegevensfeeds vergelijken met geaggregeerde logboek gegevens en een melding ontvangen wanneer er een overeenkomst plaatsvindt. Bedreigings gegevensfeeds zijn actieve streams van gegevens die gerelateerd zijn aan potentiële of huidige bedreigingen, zodat de melding kan wijzen op een mogelijke bedreiging voor uw organisatie. Maak in plaats van een aangepaste waarschuwings regel een livestream-sessie wanneer u op de hoogte wilt worden gesteld van een mogelijk probleem zonder de overhead van het onderhouden van een aangepaste waarschuwings regel.
 
-- **Start onderzoeken**
+- **Onderzoek starten**
     
-    Als er een actief onderzoek is waarbij een actief zoals een host of gebruiker betrokken is, u specifieke (of enige) activiteit in de logboekgegevens bekijken wanneer deze zich op dat actief voordoet. U een melding krijgen wanneer die activiteit plaatsvindt.
+    Als er sprake is van een actief onderzoek waarbij een activum zoals een host of gebruiker is betrokken, kunt u specifieke (of alle) activiteiten in de logboek gegevens weer geven als deze op die Asset plaatsvinden. U kunt een melding ontvangen wanneer deze activiteit optreedt.
 
 
-## <a name="create-a-livestream-session"></a>Een livestreamsessie maken
+## <a name="create-a-livestream-session"></a>Een livestream-sessie maken
 
-U een livestreamsessie maken op basis van een bestaande jachtquery of uw sessie helemaal opnieuw maken.
+U kunt een livestream-sessie maken op basis van een bestaande zoek opdracht of een volledig nieuwe sessie maken.
 
-1. Navigeer in de Azure-portal naar **Sentinel** > **Threat management** > **Hunting.**
+1. Navigeer in het Azure Portal naar **Sentinel** > **Threat Management** > -**jacht**.
 
-2. Ga als volgt te werk om een livestreamsessie te maken op basis van een jachtquery:
+2. Een livestream-sessie maken op basis van een zoek opdracht:
     
-    1. Zoek op het tabblad **Query's** de te gebruiken jachtquery.
-    2. Klik met de rechtermuisknop op de query en selecteer **Toevoegen aan livestream**. Bijvoorbeeld:
+    1. Ga op het tabblad **query's** naar de zoek opdracht die u wilt gebruiken.
+    2. Klik met de rechter muisknop op de query en selecteer **toevoegen aan Livestream**. Bijvoorbeeld:
     
     > [!div class="mx-imgBorder"]
-    > ![Livestream-sessie maken vanuit Azure Sentinel-jachtquery](./media/livestream/livestream-from-query.png)
+    > ![een livestream-sessie maken vanuit de Azure-query voor de Sentinel-jacht](./media/livestream/livestream-from-query.png)
 
-3. Ga als volgt te werk om een livestreamsessie te maken: 
+3. Een volledig nieuwe Livestream-sessie maken: 
     
-    1. Het tabblad **Livestream** selecteren
+    1. Selecteer het tabblad **Livestream**
     2. Selecteer **Ga naar livestream**.
     
-4. In **Livestream** het livestream-deelvenster:
+4. In het deel venster **Livestream** :
     
-    - Als u een livestream vanuit een query hebt gestart, controleert u de query en voert u eventuele wijzigingen aan die u wilt aanbrengen.
-    - Als je vanaf nul bent begonnen met livestream, maak je je zoekopdracht. 
+    - Als u Livestream van een query hebt gestart, controleert u de query en brengt u de gewenste wijzigingen aan.
+    - Als u Livestream helemaal niet hebt gestart, maakt u de query. 
 
-5. Selecteer **Afspelen** op de opdrachtbalk.
+5. Selecteer **afspelen** in de opdracht balk.
     
-    De statusbalk onder de opdrachtbalk geeft aan of uw livestreamsessie wordt uitgevoerd of onderbroken. In het volgende voorbeeld wordt de sessie uitgevoerd:
-    
-    > [!div class="mx-imgBorder"]
-    > ![livestreamsessie maken vanuit Azure Sentinel-jacht](./media/livestream/livestream-session.png)
-
-6. Selecteer **Opslaan** op de opdrachtbalk.
-    
-    Tenzij u **Onderbreken**selecteert, blijft de sessie worden uitgevoerd totdat u bent afgemeld bij de Azure-portal.
-
-## <a name="view-your-livestream-sessions"></a>Bekijk je livestreamsessies
-
-1. Navigeer in de Azure-portal naar het**Hunting** > tabblad **Hunting** > **Livestream** van Sentinel**Threat Management.** > 
-
-2. Selecteer de livestreamsessie die u wilt bekijken of bewerken. Bijvoorbeeld:
+    De status balk onder de opdracht balk geeft aan of uw Livestream-sessie actief of onderbroken is. In het volgende voor beeld wordt de sessie uitgevoerd:
     
     > [!div class="mx-imgBorder"]
-    > ![livestreamsessie maken vanuit Azure Sentinel-jachtquery](./media/livestream/livestream-tab.png)
+    > ![een livestream-sessie maken vanuit een Azure Sentinel-jacht](./media/livestream/livestream-session.png)
+
+6. Selecteer **Opslaan** vanaf de opdracht balk.
     
-    De geselecteerde livestreamsessie wordt geopend zodat je spelen, pauzeren, bewerken enzovoort.
+    Tenzij u **onderbreken**selecteert, blijft de sessie actief totdat u bent afgemeld bij de Azure Portal.
 
-## <a name="receive-notifications-when-new-events-occur"></a>Meldingen ontvangen wanneer er nieuwe gebeurtenissen plaatsvinden
+## <a name="view-your-livestream-sessions"></a>Uw Livestream-sessies weer geven
 
-Omdat livestreammeldingen voor nieuwe gebeurtenissen Azure-portalmeldingen gebruiken, ziet u deze meldingen wanneer u de Azure-portal gebruikt. Bijvoorbeeld:
+1. Ga in het Azure Portal naar de**Livestream** -tabblad voor **Sentinel** > **Threat Management** > -**jacht** > .
 
-![Azure-portalmelding voor livestream](./media/livestream/notification.png)
+2. Selecteer de Livestream-sessie die u wilt weer geven of bewerken. Bijvoorbeeld:
+    
+    > [!div class="mx-imgBorder"]
+    > ![een livestream-sessie maken vanuit de Azure-query voor de Sentinel-jacht](./media/livestream/livestream-tab.png)
+    
+    De geselecteerde Livestream-sessie wordt geopend, zodat u deze kunt afspelen, onderbreken, bewerken, enzovoort.
 
-Selecteer de melding om het **deelvenster Livestream te** openen.
+## <a name="receive-notifications-when-new-events-occur"></a>Meldingen ontvangen wanneer er nieuwe gebeurtenissen optreden
+
+Omdat Livestream-meldingen voor nieuwe gebeurtenissen gebruikmaken van Azure Portal meldingen, worden deze meldingen weer geven wanneer u de Azure Portal gebruikt. Bijvoorbeeld:
+
+![Azure Portal-melding voor LiveStream](./media/livestream/notification.png)
+
+Selecteer de melding om het deel venster **Livestream** te openen.
  
-## <a name="elevate-a-livestream-session-to-an-alert"></a>Een livestreamsessie naar een waarschuwing verheffen
+## <a name="elevate-a-livestream-session-to-an-alert"></a>Een livestream-sessie verhogen naar een waarschuwing
 
-Je een livestreamsessie promoten bij een nieuwe waarschuwing door Omhoog te selecteren **om te waarschuwen** in de opdrachtbalk van de betreffende livestreamsessie:
+U kunt een livestream-sessie promo veren naar een nieuwe waarschuwing door **uitbrei ding op waarschuwing te** selecteren in de opdracht balk van de relevante Livestream-sessie:
 
 > [!div class="mx-imgBorder"]
-> ![Livestreamsessie verheffen tot een waarschuwing](./media/livestream/elevate-to-alert.png)
+> ![Livestream-sessie verhogen naar een waarschuwing](./media/livestream/elevate-to-alert.png)
 
-Met deze actie wordt de wizard regelcreatie geopend, die vooraf is gevuld met de query die is gekoppeld aan de livestreamsessie.
+Met deze actie wordt de wizard voor het maken van regels geopend. deze wordt vooraf ingevuld met de query die is gekoppeld aan de Livestream-sessie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel heb je geleerd hoe je jachtlivestream gebruiken in Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+In dit artikel hebt u geleerd hoe u de jacht Livestream in azure Sentinel kunt gebruiken. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
 
-- [Proactief op zoek naar bedreigingen](hunting.md)
-- [Notitieblokken gebruiken om geautomatiseerde jachtcampagnes uit te voeren](notebooks.md)
+- [Proactief zoeken naar bedreigingen](hunting.md)
+- [Notitie blokken gebruiken voor het uitvoeren van geautomatiseerde jacht-campagnes](notebooks.md)

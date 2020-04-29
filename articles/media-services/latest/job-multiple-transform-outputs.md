@@ -1,6 +1,6 @@
 ---
-title: Een Azure Media Services-taak maken met meerdere transformatie-uitgangen
-description: In dit onderwerp wordt uitgelegd hoe u een Azure Media Services-taak maken met meerdere transformatie-uitgangen.
+title: Een Azure Media Services-taak maken met meerdere trans formatie-uitvoer
+description: In dit onderwerp ziet u hoe u een Azure Media Services-taak maakt met meerdere trans formatie-uitvoer.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,23 +12,23 @@ ms.topic: article
 ms.date: 02/17/2020
 ms.author: juliako
 ms.openlocfilehash: dbbeeb33ee46b37ec920fe598483c332d3439689
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77563139"
 ---
-# <a name="create-a-job-with-multiple-transform-outputs"></a>Een taak maken met meerdere transformatie-uitgangen
+# <a name="create-a-job-with-multiple-transform-outputs"></a>Een taak met meerdere trans formatie-uitvoer maken
 
-In dit onderwerp ziet u hoe u een transformatie maakt met twee transformatieuitgangen. De eerste vraagt om de invoer te worden gecodeerd voor adaptieve bitrate streaming met een ingebouwde [AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset) preset. De tweede vraagt om het audiosignaal in de invoervideo te verwerken met de [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets). Nadat de transformatie is gemaakt, u een taak indienen die uw video dienovereenkomstig verwerkt. Aangezien we in dit voorbeeld twee transformatie-uitgangen opgeven, moeten we twee taakuitvoer opgeven. U ervoor kiezen om beide taakuitvoer naar hetzelfde actief te leiden (zoals hieronder wordt weergegeven), of u de resultaten laten schrijven naar afzonderlijke activa.
+In dit onderwerp wordt beschreven hoe u een trans formatie maakt met twee trans formatie-uitvoer. De eerste keer dat de invoer wordt gecodeerd voor Adaptive Bitrate Streaming met een ingebouwde [AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset) -voor instelling. De tweede roept het audio signaal in de invoer video op dat met de [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets)moet worden verwerkt. Nadat de trans formatie is gemaakt, kunt u een taak verzenden waarmee uw video op de juiste wijze wordt verwerkt. Omdat in dit voor beeld twee trans formatie-uitvoer worden opgegeven, moeten we twee taak uitvoer opgeven. U kunt ervoor kiezen om beide taak uitvoer naar dezelfde activa te sturen (zoals hieronder wordt weer gegeven), of u kunt de resultaten naar afzonderlijke assets schrijven.
  
 
 > [!TIP]
-> Voordat u begint met het ontwikkelen, bekijkt [u Ontwikkelen met Media Services v3 API's](media-services-apis-overview.md) (inclusief informatie over toegang tot API's, naamgevingsconventies, enz.)
+> Controleer voordat u begint met het ontwikkelen [met behulp van Media Services v3 api's](media-services-apis-overview.md) (bevat informatie over het openen van api's, naam conventies, enzovoort).
 
 ## <a name="create-a-transform"></a>Een transformatie maken
 
-In de volgende code ziet u hoe u een transformatie maakt die twee uitvoer produceert.
+De volgende code laat zien hoe u een trans formatie maakt die twee uitvoer produceert.
 
 ```csharp
 private static async Task<Transform> GetOrCreateTransformAsync(
@@ -67,7 +67,7 @@ private static async Task<Transform> GetOrCreateTransformAsync(
 ```
 ## <a name="submit-a-job"></a>Een taak indienen
 
-Maak een taak met een HTTPS-URL-invoer en met twee taakuitvoer.
+Maak een taak met een invoer van een HTTPS-URL en met twee taak uitvoer.
 
 ```csharp
 private static async Task<Job> SubmitJobAsync(IAzureMediaServicesClient client,
@@ -135,4 +135,4 @@ Zie [Foutcodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Azure Media Services v3-voorbeelden met .NET](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/) 
+[Azure Media Services v3-voor beelden met behulp van .NET](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/) 

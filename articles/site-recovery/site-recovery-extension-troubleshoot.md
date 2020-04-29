@@ -1,112 +1,112 @@
 ---
-title: Problemen met de Azure VM-extensie oplossen voor herstel na noodgevallen met Azure Site Recovery
-description: Problemen met de Azure VM-extensie oplossen voor herstel na noodgevallen met Azure Site Recovery.
+title: Problemen met de Azure VM-extensie oplossen voor herstel na nood gevallen met Azure Site Recovery
+description: Los problemen met de Azure VM-extensie op voor herstel na nood gevallen met Azure Site Recovery.
 author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.openlocfilehash: a780a42179a0bacf0e4a12ba1e75ae84943539b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77190727"
 ---
-# <a name="troubleshoot-azure-vm-extension-issues"></a>Problemen met Azure VM-extensie oplossen
+# <a name="troubleshoot-azure-vm-extension-issues"></a>Problemen met Azure VM-extensies oplossen
 
-In dit artikel vindt u stappen voor het oplossen van problemen met problemen waarmee u azure-fouten met betrekking tot de VM-agent en -extensie oplossen.
-
-
-## <a name="azure-site-recovery-extension-time-out"></a>Time-out azure site recovery-extensie  
-
-Foutbericht: "Taakuitvoering is een time-out tijdens het bijhouden van de extensiebewerking die moet worden gestart"<br>
-Foutcode: "151076"
-
- Azure Site Recovery heeft een extensie op de virtuele machine geïnstalleerd als onderdeel van een beveiligingstaak inschakelen. Een van de volgende voorwaarden kan voorkomen dat de bescherming wordt geactiveerd en ervoor zorgen dat de taak mislukt. Voer de volgende stappen voor het oplossen van problemen uit en probeer uw bewerking opnieuw uit:
-
-- [De agent is geïnstalleerd in de VM, maar reageert niet (voor Windows VM's)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
-- [De agent die in de VM is geïnstalleerd, is verouderd (voor Linux VM's)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
-- [De extensie Siteherstel wordt niet bijgewerkt of geladen](#the-site-recovery-extension-fails-to-update-or-load)
-
-Foutbericht: 'Vorige extensie siteherstel neemt meer tijd in beslag dan verwacht'.<br>
-Foutcode: "150066"
-
-- [De agent is geïnstalleerd in de VM, maar reageert niet (voor Windows VM's)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
-- [De agent die in de VM is geïnstalleerd, is verouderd (voor Linux VM's)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
-- [De status van de extensie Siteherstel is onjuist](#the-site-recovery-extension-fails-to-update-or-load)
-
-## <a name="protection-fails-because-the-vm-agent-is-unresponsive"></a>Beveiliging mislukt omdat de VM-agent niet reageert
-
-Foutbericht: "Taakuitvoering is een time-out tijdens het bijhouden van de extensiebewerking die moet worden gestart."<br>
-Foutcode: "151099"
-
-Deze fout kan optreden als de Azure-gastagent in de virtuele machine niet in de gereedstaat is.
-
-U de status van Azure-gastagent controleren in de [Azure-portal.](https://portal.azure.com/) Ga naar de virtuele machine die u probeert te beveiligen en controleer de status in de status > van de > **VM-instellingen** >  **VM****Properties****eigenschappenagent**. De meeste van de tijd, de status van de agent is klaar na het opnieuw opstarten van de virtuele machine. Als u echter niet opnieuw opstarten of als u nog steeds met het probleem te maken hebt, voert u de volgende stappen voor het oplossen van problemen uit:
-
-- [De agent is geïnstalleerd in de VM, maar reageert niet (voor Windows VM's)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
-- [De agent die in de VM is geïnstalleerd, is verouderd (voor Linux VM's)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
+Dit artikel bevat probleemoplossings stappen die u kunnen helpen bij het oplossen van Azure Site Recovery fouten met betrekking tot de VM-agent en-extensie.
 
 
-Foutbericht: "Taakuitvoering is een time-out tijdens het bijhouden van de extensiebewerking die moet worden gestart."<br>
-Foutcode: "151095"
+## <a name="azure-site-recovery-extension-time-out"></a>Time-out voor uitbrei ding van Azure Site Recovery  
 
-Deze fout treedt op wanneer de agentversie op de Linux-machine verouderd is. Voer de volgende stappen voor het oplossen van problemen uit:
+Fout bericht: er is een time-out opgetreden bij het uitvoeren van de taak tijdens het bijhouden van de extensie bewerking die moet worden gestart<br>
+Fout code: "151076"
 
-- [De agent die in de VM is geïnstalleerd, is verouderd (voor Linux VM's)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)  
+ Azure Site Recovery een uitbrei ding op de virtuele machine hebt geïnstalleerd als onderdeel van een taak voor het inschakelen van beveiliging. Een van de volgende omstandigheden kan verhinderen dat de beveiliging wordt geactiveerd en dat de taak mislukt. Voer de volgende stappen voor probleem oplossing uit en voer de bewerking opnieuw uit:
+
+- [De agent is geïnstalleerd op de VM, maar reageert niet (voor Windows-Vm's)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
+- [De agent die is geïnstalleerd in de virtuele machine is verouderd (voor Linux-Vm's)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
+- [De uitbrei ding van de Site Recovery kan niet worden bijgewerkt of geladen](#the-site-recovery-extension-fails-to-update-or-load)
+
+Fout bericht: de bewerking voor een eerdere Site Recovery-extensie neemt meer tijd in beslag dan verwacht.<br>
+Fout code: "150066"
+
+- [De agent is geïnstalleerd op de VM, maar reageert niet (voor Windows-Vm's)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
+- [De agent die is geïnstalleerd in de virtuele machine is verouderd (voor Linux-Vm's)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
+- [De status van de Site Recovery-extensie is onjuist](#the-site-recovery-extension-fails-to-update-or-load)
+
+## <a name="protection-fails-because-the-vm-agent-is-unresponsive"></a>De beveiliging is mislukt omdat de VM-agent niet reageert
+
+Fout bericht: er is een time-out opgetreden bij het uitvoeren van de taak tijdens het bijhouden van de extensie bewerking die moet worden gestart.<br>
+Fout code: "151099"
+
+Deze fout kan optreden als de Azure-gast agent op de virtuele machine niet de status gereed heeft.
+
+U kunt de status van de Azure-gast agent controleren in het [Azure Portal](https://portal.azure.com/). Ga naar de virtuele machine die u wilt beveiligen en controleer**de status in**de**Eigenschappen** > van de **VM** > -**instellingen** > . De meeste tijd is de status van de agent gereed na het opnieuw opstarten van de virtuele machine. Als u echter niet opnieuw kunt opstarten of u nog steeds het probleem ondervindt, voert u de volgende stappen voor probleem oplossing uit:
+
+- [De agent is geïnstalleerd op de VM, maar reageert niet (voor Windows-Vm's)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
+- [De agent die is geïnstalleerd in de virtuele machine is verouderd (voor Linux-Vm's)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
+
+
+Fout bericht: er is een time-out opgetreden bij het uitvoeren van de taak tijdens het bijhouden van de extensie bewerking die moet worden gestart.<br>
+Fout code: "151095"
+
+Deze fout treedt op wanneer de agent versie op de Linux-computer verouderd is. Voer de volgende stap voor het oplossen van problemen uit:
+
+- [De agent die is geïnstalleerd in de virtuele machine is verouderd (voor Linux-Vm's)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)  
 
 ## <a name="causes-and-solutions"></a>Oorzaken en oplossingen
 
-### <a name="the-agent-is-installed-in-the-vm-but-its-unresponsive-for-windows-vms"></a><a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>De agent is geïnstalleerd in de VM, maar reageert niet (voor Windows VM's)
+### <a name="the-agent-is-installed-in-the-vm-but-its-unresponsive-for-windows-vms"></a><a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>De agent is geïnstalleerd op de VM, maar reageert niet (voor Windows-Vm's)
 
 #### <a name="solution"></a>Oplossing
-De VM-agent is mogelijk beschadigd of de service is mogelijk gestopt. Het opnieuw installeren van de VM-agent helpt om de nieuwste versie te krijgen. Het helpt ook de communicatie met de service opnieuw op te starten.
+De VM-agent is mogelijk beschadigd of de service is gestopt. Het opnieuw installeren van de VM-agent helpt de meest recente versie op te halen. Het helpt ook om communicatie met de service opnieuw te starten.
 
-1. Bepaal of de Windows Azure Guest Agent-service wordt uitgevoerd in de VM-services (services.msc). Start de Windows Azure Guest Agent-service opnieuw.    
-1. Als de Windows Azure Guest Agent-service niet zichtbaar is in services, opent u het Configuratiescherm. Ga naar **Programma's en functies** om te zien of de Windows Guest Agent-service is geïnstalleerd.
-1. Als de Windows Azure Guest Agent wordt weergegeven in **Programma's en onderdelen,** verwijdert u de Windows Azure Guest Agent.
-1. Download en installeer de [nieuwste versie van de agent MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). U hebt beheerdersrechten nodig om de installatie te voltooien.
-1. Controleer of de Windows Azure Guest Agent-service wordt weergegeven in services.
-1. Start de beveiligingstaak opnieuw.
+1. Bepaal of de Windows Azure Guest Agent-service wordt uitgevoerd in de VM-Services (Services. msc). Start de Windows Azure Guest Agent-service opnieuw.    
+1. Als de Windows Azure Guest Agent-service niet wordt weer gegeven in Services, opent u het configuratie scherm. Ga naar **Program ma's en onderdelen** om te controleren of de Windows Guest Agent-service is geïnstalleerd.
+1. Als de Windows Azure Guest-agent wordt weer gegeven in **Program ma's en onderdelen**, verwijdert u de Windows Azure-gast agent.
+1. Down load en installeer de [nieuwste versie van de agent-MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). U hebt beheerders rechten nodig om de installatie te volt ooien.
+1. Controleer of de Windows Azure Guest Agent-service wordt weer gegeven in Services.
+1. Start de beveiligings taak opnieuw.
 
-Controleer ook of [Microsoft .NET 4.5 is geïnstalleerd](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) in de VM. U hebt .NET 4.5 nodig om met de service te communiceren.
+Controleer ook of [Microsoft .NET 4,5 is geïnstalleerd](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) in de VM. U hebt .NET 4,5 nodig voor de VM-agent om te communiceren met de service.
 
-### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>De agent die in de VM is geïnstalleerd, is verouderd (voor Linux VM's)
+### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>De agent die is geïnstalleerd in de virtuele machine is verouderd (voor Linux-Vm's)
 
 #### <a name="solution"></a>Oplossing
-De meeste agent-gerelateerde of extensie-gerelateerde fouten voor Linux VM's worden veroorzaakt door problemen die van invloed zijn op een verouderde VM-agent. Volg de volgende algemene richtlijnen om dit probleem op te lossen:
+De meeste fout-en extensie-gerelateerde storingen voor Linux-Vm's worden veroorzaakt door problemen die van invloed zijn op een verouderde VM-agent. Volg deze algemene richt lijnen om dit probleem op te lossen:
 
-1. Volg de instructies voor [het bijwerken van de Linux VM-agent.](../virtual-machines/linux/update-agent.md)
+1. Volg de instructies voor [het bijwerken van de Linux VM-agent](../virtual-machines/linux/update-agent.md).
 
    > [!NOTE]
-   > We raden u *ten zeerste aan* de agent alleen te updaten via een distributieopslagplaats. We raden u af om de agentcode rechtstreeks van GitHub te downloaden en bij te werken. Als de nieuwste agent voor uw distributie niet beschikbaar is, neemt u contact op met de distributieondersteuning voor instructies over het installeren ervan. Als u wilt controleren op de meest recente agent, gaat u naar de Windows [Azure Linux-agentpagina](https://github.com/Azure/WALinuxAgent/releases) in de GitHub-opslagplaats.
+   > We *raden u ten zeerste* aan de agent alleen bij te werken via een distributie opslagplaats. Het is niet raadzaam de agent code rechtstreeks vanuit GitHub te downloaden en bij te werken. Als de meest recente agent voor uw distributie niet beschikbaar is, neemt u contact op met de distributie ondersteuning voor instructies over het installeren ervan. Als u de meest recente agent wilt controleren, gaat u naar de pagina van de [Windows Azure Linux-agent](https://github.com/Azure/WALinuxAgent/releases) in de GitHub-opslag plaats.
 
-1. Controleer of de Azure-agent op de VM wordt uitgevoerd door de volgende opdracht uit te voeren:`ps -e`
+1. Zorg ervoor dat de Azure-agent op de virtuele machine wordt uitgevoerd door de volgende opdracht uit te voeren:`ps -e`
 
-   Als het proces niet wordt uitgevoerd, start u het opnieuw op met de volgende opdrachten:
+   Als het proces niet wordt uitgevoerd, start u het opnieuw met behulp van de volgende opdrachten:
 
    - Voor Ubuntu:`service walinuxagent start`
    - Voor andere distributies:`service waagent start`
 
-1. [De automatische herstartagent configureren](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
-1. Bescherming van de virtuele machine mogelijk maken.
+1. [Configureer de agent voor automatisch opnieuw opstarten](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
+1. Schakel de beveiliging van de virtuele machine in.
 
-### <a name="the-site-recovery-extension-fails-to-update-or-load"></a>De extensie Siteherstel wordt niet bijgewerkt of geladen
+### <a name="the-site-recovery-extension-fails-to-update-or-load"></a>De uitbrei ding van de Site Recovery kan niet worden bijgewerkt of geladen
 
-De extensiestatus wordt weergegeven als 'Leeg', 'NotReady' of 'Overgang'.
+De status van de uitbrei ding wordt weer gegeven als ' leeg ', ' geen loopvlak ' of ' overgang '.
 
 #### <a name="solution"></a>Oplossing
 
 Verwijder de extensie en start de bewerking opnieuw.
 
-Ga als een verwijderen uit de extensie:
+De uitbrei ding verwijderen:
 
-1. Ga in de [Azure-portal](https://portal.azure.com/)naar de VM met back-upfouten.
-1. Selecteer **Instellingen**.
-1. Selecteer **Extensies**.
-1. Selecteer **Siteherstelextensie**.
+1. Ga in het [Azure Portal](https://portal.azure.com/)naar de virtuele machine waarop een back-up is mislukt.
+1. **Instellingen**selecteren.
+1. Selecteer **uitbrei dingen**.
+1. Selecteer **site Recovery extensie**.
 1. Selecteer **Verwijderen**.
 
-Als de VMSnapshot-extensie voor Linux VM niet wordt weergegeven in de Azure-portal, [werkt u de Azure Linux Agent bij](../virtual-machines/linux/update-agent.md). Voer dan de bescherming uit.
+Als de VMSnapshot-extensie niet wordt weer gegeven in de Azure Portal, moet u voor de virtuele Linux-machine [de Azure Linux-agent bijwerken](../virtual-machines/linux/update-agent.md). Voer vervolgens de beveiliging uit.
 
-Wanneer u deze stappen voltooit, wordt de extensie opnieuw geïnstalleerd tijdens de beveiliging.
+Wanneer u deze stappen hebt voltooid, wordt de extensie tijdens de beveiliging opnieuw geïnstalleerd.

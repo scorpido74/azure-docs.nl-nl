@@ -1,6 +1,6 @@
 ---
-title: Bekijk Azure VMware CloudSimple portalgebruikers - Azure VMware-oplossing van CloudSimple
-description: Beschrijft hoe u de lijst bekijken met gebruikers die toegang hebben tot de CloudSimple-portal via de Azure-portal
+title: Azure VMware CloudSimple Portal-gebruikers weer geven-Azure VMware-oplossing op CloudSimple
+description: Hierin wordt beschreven hoe u de lijst met gebruikers die toegang hebben tot de CloudSimple-Portal kunt weer geven via de Azure Portal
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -9,17 +9,17 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: f9043fbbb77059eb4e4ed42dbef8a42e5790d565
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77564003"
 ---
-# <a name="view-the-list-of-cloudsimple-portal-users"></a>Bekijk de lijst met CloudSimple-portalgebruikers
+# <a name="view-the-list-of-cloudsimple-portal-users"></a>De lijst met CloudSimple-Portal gebruikers weer geven
 
-Gebruikers worden toegevoegd aan de gebruikerslijst wanneer ze voor het eerst toegang krijgen tot de CloudSimple-portal. Als u de lijst met gebruikers wilt weergeven die toegang hebben tot de CloudSimple-portal via Azure, [opent u de CloudSimple-portal,](access-cloudsimple-portal.md)selecteert u **Account** in het zijmenu en selecteert u **Gebruikers** in de CloudSimple-portal.
+Gebruikers worden toegevoegd aan de lijst met gebruikers wanneer ze voor het eerst toegang krijgen tot de CloudSimple-Portal. Als u de lijst met gebruikers wilt weer geven die toegang hebben tot de CloudSimple-portal via Azure, [opent u de CloudSimple-Portal](access-cloudsimple-portal.md), selecteert u **account** in het menu aan de zijkant en selecteert u vervolgens **gebruikers** in de CloudSimple-Portal.
 
-* Als u de gebruikersgegevens wilt weergeven, waaronder het Azure-abonnement, de tenant en de gebruikers-id's, klikt u op een item op de pagina **Gebruikers.**
+* Als u de gebruikers gegevens wilt weer geven, met inbegrip van het Azure-abonnement, de Tenant en de gebruikers-id, klikt u op een item op de pagina **gebruikers** .
 
-* Als u een controlelogboek van activiteit voor een gebruiker wilt weergeven, selecteert u het tabblad **Controlelogboek.**
-* Als u een gebruikersaccount wilt vergrendelen of ontgrendelen, klikt u op de **vergrendelde** schakelaar wanneer u de gebruikersgegevens weergeeft. Wanneer het account is ontgrendeld, heeft de gebruiker toegang tot de CloudSimple-portal. Wanneer het account is vergrendeld, wordt de toegang tot de portal geblokkeerd.
+* Als u een controle logboek van activiteit voor een gebruiker wilt weer geven, selecteert u het tabblad **controle logboek** .
+* Als u een gebruikers account wilt vergren delen of ontgrendelen, klikt u op de **vergrendelde** wissel knop wanneer de gebruikers details worden weer gegeven. Wanneer het account is ontgrendeld, kan de gebruiker toegang krijgen tot de CloudSimple-Portal. Wanneer het account is vergrendeld, wordt de toegang tot de portal geblokkeerd.

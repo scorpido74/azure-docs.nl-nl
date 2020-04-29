@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
 ms.openlocfilehash: 5b1b361778de145a5e32a07bb0164ff2293d9a1a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77279688"
 ---
-Kopieer in de sectie **Beheren** (menu rechtsboven) op de pagina **Azure Resources** (linkermenu) de URL **Van voorbeeldquery** en plak vervolgens in een nieuw browsertabblad.
+Kopieer in het gedeelte **beheren** (rechtsboven) op de pagina **Azure-resources** (menu links) de **voorbeeld query** -URL en plak deze in een nieuw browser tabblad.
 
-De URL van het eindpunt ziet eruit als de volgende indeling, waarbij uw eigen app-id en eindpuntsleutel APP-ID en KEY-ID vervangen:
+De eind punt-URL ziet eruit als in de volgende notatie, met uw eigen App-ID en de sleutel van het eind punt, waarbij de APP-ID en de sleutel-ID worden vervangen:
 
 ```console
 https://westus.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/APP-ID/slots/production/predict?subscription-key=KEY-ID&verbose=true&show-all-intents=true&log=true&query=YOUR_QUERY_HERE

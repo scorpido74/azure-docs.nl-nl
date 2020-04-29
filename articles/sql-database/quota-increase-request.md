@@ -1,6 +1,6 @@
 ---
-title: Een quotumverhoging aanvragen
-description: Op deze pagina wordt beschreven hoe u een ondersteuningsaanvraag maakt om de quota voor afzonderlijke databases, servers en beheerde exemplaren van Azure SQL Database te verhogen.
+title: Een quotum verhoging aanvragen
+description: Op deze pagina wordt beschreven hoe u een ondersteunings aanvraag maakt om de quota's voor Azure SQL Database afzonderlijke data bases, servers en beheerde exemplaren te verhogen.
 services: sql-database
 ms.service: sql-database
 ms.topic: conceptual
@@ -9,115 +9,115 @@ ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 02/04/2020
 ms.openlocfilehash: ff2be6972bb4e8af266d0aa8a56d1879bc1b8b78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77586152"
 ---
-# <a name="request-quota-increases-for-azure-sql-database"></a>Verhoging van het aanvraagquotum voor Azure SQL-database
+# <a name="request-quota-increases-for-azure-sql-database"></a>Toename van quotum aanvragen voor Azure SQL Database
 
-In dit artikel wordt uitgelegd hoe u een quotumverhoging voor Azure SQL Database aanvragen voor afzonderlijke databases, servers en beheerde exemplaren. Het legt ook uit hoe u abonnementstoegang tot een regio inschakelen.
+In dit artikel wordt uitgelegd hoe u een quotum verhoging kunt aanvragen voor Azure SQL Database voor afzonderlijke data bases, servers en beheerde exemplaren. Ook wordt uitgelegd hoe u de toegang tot een regio kunt inschakelen voor abonnementen.
 
-## <a name="create-a-new-support-request"></a><a id="newquota"></a>Een nieuw ondersteuningsverzoek maken
+## <a name="create-a-new-support-request"></a><a id="newquota"></a>Een nieuwe ondersteunings aanvraag maken
 
-Gebruik de volgende stappen om een nieuwe ondersteuningsaanvraag te maken vanuit de Azure-portal voor SQL Database.
+Gebruik de volgende stappen om een nieuwe ondersteunings aanvraag te maken op basis van de Azure Portal voor SQL Database.
 
-1. Selecteer **help + ondersteuning**in het menu Azure [portal](https://portal.azure.com) .
+1. Selecteer **Help en ondersteuning**in het menu [Azure Portal](https://portal.azure.com) .
 
-   ![De koppeling Help + ondersteuning](./media/quota-increase-request/help-plus-support.png)
+   ![De koppeling Help en ondersteuning](./media/quota-increase-request/help-plus-support.png)
 
-1. Selecteer in **Help + ondersteuning**de optie Nieuw **ondersteuningsverzoek**.
+1. Selecteer **nieuwe ondersteunings aanvraag**in **Help en ondersteuning**.
 
-    ![Een nieuw ondersteuningsverzoek maken](./media/quota-increase-request/new-support-request.png)
+    ![Een nieuwe ondersteunings aanvraag maken](./media/quota-increase-request/new-support-request.png)
 
-1. Selecteer **Service- en abonnementslimieten (quota)** **voor issuetype.**
+1. Selecteer voor **probleem type** **service-en abonnements limieten (quota's)**.
 
-   ![Een probleemtype selecteren](./media/quota-increase-request/select-quota-issue-type.png)
+   ![Selecteer een probleem type](./media/quota-increase-request/select-quota-issue-type.png)
 
-1. Selecteer **bij Abonnement**het abonnement waarvan u het quotum wilt verhogen.
+1. Selecteer bij **abonnement**het abonnement waarvan u het quotum wilt verhogen.
 
-   ![Een abonnement selecteren voor een verhoogd quotum](./media/quota-increase-request/select-subscription-support-request.png)
+   ![Selecteer een abonnement voor een verhoogd quotum](./media/quota-increase-request/select-subscription-support-request.png)
 
-1. Selecteer **voor quotumtype**een van de volgende quotatypen:
+1. Selecteer bij **quotum type**een van de volgende quotum typen:
 
-   - **SQL-database** voor afzonderlijke database- en elastische poolquota.
-   - **SQL Database Managed Instance** voor beheerde exemplaren.
+   - **SQL database** voor de quota van één data base en elastische groep.
+   - **SQL database beheerde instantie** voor beheerde exemplaren.
 
-   Selecteer **vervolgens Volgende: Oplossingen >>**.
+   Selecteer vervolgens **volgende: oplossingen >>**.
 
-   ![Een quotumtype selecteren](./media/quota-increase-request/select-quota-type.png)
+   ![Een quotum type selecteren](./media/quota-increase-request/select-quota-type.png)
 
-1. Selecteer **in** het venster Details de optie **Details opgeven** om aanvullende informatie in te voeren.
+1. Selecteer in het **detail** venster **Details opgeven** om aanvullende informatie in te voeren.
 
-   ![De link 'Details geven'](./media/quota-increase-request/provide-details-link.png)
+   ![De koppeling Details opgeven](./media/quota-increase-request/provide-details-link.png)
 
-Als u op **Details opgeven klikt,** wordt in het venster **Quotadetails** weergegeven waarmee u aanvullende informatie toevoegen. In de volgende secties worden de verschillende opties voor **SQL Database-** en **SQL Database Managed Instance-quotatypen** beschreven.
+Als u op **Details geven** klikt, wordt het venster **quotum Details** weer gegeven waarin u aanvullende informatie kunt toevoegen. In de volgende secties vindt u een beschrijving van de verschillende opties voor **SQL database** en SQL database het quotum type **Managed instance** .
 
-## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a>SQL-databasequotatypen
+## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a>SQL Database quotum typen
 
-In de volgende secties worden drie quotaverhogende opties voor de **SQL Database-quotatypen** beschreven:
+In de volgende secties worden drie quota verhogings opties beschreven voor de **SQL database** quotum typen:
 
-- DTU's (Databasetransactie-eenheden) per server
+- Data base Trans Action units (Dtu's) per server
 - Servers per abonnement
-- Abonnementstoegang tot een regio inschakelen
+- Abonnements toegang tot een regio inschakelen
 
-### <a name="database-transaction-units-dtus-per-server"></a>DTU's (Databasetransactie-eenheden) per server
+### <a name="database-transaction-units-dtus-per-server"></a>Data base Trans Action units (Dtu's) per server
 
-Gebruik de volgende stappen om een verhoging van de DTU's per server aan te vragen.
+Gebruik de volgende stappen om een verhoging van de Dtu's per server aan te vragen.
 
-1. Selecteer de **DTU's (Databasetransactieeenheden) per** serverquotumtype.
+1. Selecteer het **dtu's (data base Trans Action units) per server-** quotum type.
 
-1. Selecteer **in** de lijst Resource de resource die u wilt targeten.
+1. Selecteer in de lijst **resource** de resource die u wilt instellen.
 
-1. Voer in het veld **Nieuw quotum** de nieuwe DTU-limiet in die u aanvraagt.
+1. Voer in het veld **nieuw quotum** de nieuwe DTU-limiet in die u aanvraagt.
 
-   ![DTU-quotumgegevens](./media/quota-increase-request/quota-details-dtus.png)
+   ![DTU-quotum Details](./media/quota-increase-request/quota-details-dtus.png)
 
-Zie [Resourcelimieten voor afzonderlijke databases met behulp van het DTU-inkoopmodel](sql-database-dtu-resource-limits-single-databases.md) en [resources-limieten voor elastische pools met behulp van het DTU-inkoopmodel](sql-database-dtu-resource-limits-elastic-pools.md).
+Zie voor meer informatie [resource limieten voor afzonderlijke data bases met behulp van het DTU-aankoop model](sql-database-dtu-resource-limits-single-databases.md) en de [resource limieten voor elastische Pools met behulp van het DTU-aankoop model](sql-database-dtu-resource-limits-elastic-pools.md).
 
 ### <a name="servers-per-subscription"></a>Servers per abonnement
 
-Gebruik de volgende stappen om een toename van het aantal servers per abonnement aan te vragen.
+Gebruik de volgende stappen om een verhoging van het aantal servers per abonnement aan te vragen.
 
-1. Selecteer het **type servers per abonnementsquotum.**
+1. Selecteer het quotum type voor **servers per abonnement** .
 
-1. Selecteer **in** de lijst Locatie het Azure-gebied dat u wilt gebruiken. Het quotum is per abonnement in elke regio.
+1. Selecteer in de lijst **locatie** de Azure-regio die u wilt gebruiken. Het quotum is per abonnement in elke regio.
 
-1. Voer in het veld **Nieuw quotum** uw aanvraag in voor het maximum aantal servers in die regio.
+1. In het veld **nieuw quotum** voert u uw aanvraag in voor het maximum aantal servers in die regio.
 
-   ![Gegevens over serversquota](./media/quota-increase-request/quota-details-servers.png)
+   ![Details van servers-quota](./media/quota-increase-request/quota-details-servers.png)
 
-Zie [SQL Database resource limits en resource governance](sql-database-resource-limits-database-server.md)voor meer informatie.
+Zie [SQL database resource limieten en resource governance](sql-database-resource-limits-database-server.md)voor meer informatie.
 
-### <a name="enable-subscription-access-to-a-region"></a><a id="other"></a>Abonnementstoegang tot een regio inschakelen
+### <a name="enable-subscription-access-to-a-region"></a><a id="other"></a>Abonnements toegang tot een regio inschakelen
 
-Sommige aanbiedingstypen zijn niet in elke regio beschikbaar. Mogelijk ziet u een fout als volgt:
+Sommige aanbiedings typen zijn niet beschikbaar in elke regio. Er wordt mogelijk een fout bericht weer geven, zoals het volgende:
 
 `This location is not available for subscription`
 
-Als uw abonnement toegang nodig heeft in een bepaalde regio, gebruikt u de optie **Andere quotaaanvraag** om toegang aan te vragen. Geef in uw aanvraag de aanbiedings- en SKU-gegevens op die u voor de regio wilt inschakelen. Zie [Azure SQL Database-prijzen](https://azure.microsoft.com/pricing/details/sql-database/single/)voor het verkennen van de opties voor het aanbieden en sku.
+Als uw abonnement toegang moet hebben tot een bepaalde regio, gebruikt u de optie **andere quotum aanvraag** om toegang aan te vragen. Geef in uw aanvraag de aanbieding-en SKU-Details op die u wilt inschakelen voor de regio. Zie [Azure SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/single/)voor meer informatie over de aanbiedings-en SKU-opties.
 
-![Overige contingentgegevens](./media/quota-increase-request/quota-details-whitelisting.png)
+![Andere quotum Details](./media/quota-increase-request/quota-details-whitelisting.png)
 
-## <a name="managed-instance-quota-type"></a><a id="sqlmiquota"></a>Beheerd instantiequotumtype
+## <a name="managed-instance-quota-type"></a><a id="sqlmiquota"></a>Quota type voor beheerd exemplaar
 
-Gebruik de volgende stappen voor het quotumtype **SQL Server Managed Instance:**
+Gebruik de volgende stappen voor het quota type **SQL Server Managed instance** :
 
-1. Selecteer **in** de lijst Regio het Azure-gebied dat u wilt targeten.
+1. Selecteer in de lijst **regio** de Azure-regio die u wilt instellen.
 
-1. Voer de nieuwe limieten in die u aanvraagt voor **Subnet** en **vCore.**
+1. Voer de nieuwe limieten in die u aanvraagt voor het **subnet** en de **vCore**.
 
-   ![Details van beheerde instantiequota](./media/quota-increase-request/quota-details-managed-instance.png)
+   ![Details van beheerd exemplaar quotum](./media/quota-increase-request/quota-details-managed-instance.png)
 
-Zie [Overzicht Azure SQL Database managed instance resource limits](sql-database-managed-instance-resource-limits.md)voor meer informatie.
+Zie [overzicht Azure SQL database beheerde exemplaar resource limieten](sql-database-managed-instance-resource-limits.md)voor meer informatie.
 
-## <a name="submit-your-request"></a>Uw aanvraag indienen
+## <a name="submit-your-request"></a>Uw aanvraag verzenden
 
-De laatste stap is het invullen van de resterende details van uw SQL Database-quotumaanvraag. Selecteer **Vervolgens Volgende: Controleren +>>maken **en klik na het bekijken van de aanvraaggegevens op **Maken** om de aanvraag in te dienen.
+De laatste stap bestaat uit het invullen van de resterende Details van uw SQL Database quotum aanvraag. Selecteer **volgende: controleren +>>maken **en klik na het controleren van de aanvraag gegevens op **maken** om de aanvraag in te dienen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u uw aanvraag hebt ingediend, wordt het beoordeeld. U wordt gecontacteerd met een antwoord op basis van de informatie die u in het formulier.
+Nadat u uw aanvraag hebt ingediend, wordt deze gecontroleerd. U neemt contact met een antwoord op op basis van de informatie die u in het formulier hebt verstrekt.
 
-Zie [Azure-abonnements- en servicelimieten, quota en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md)voor meer informatie over andere Azure-limieten.
+Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md)voor meer informatie over andere Azure-limieten.

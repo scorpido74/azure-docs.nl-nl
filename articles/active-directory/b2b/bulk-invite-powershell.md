@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie voor bulkuitnodigende B2B-samenwerkingsgebruikers - Azure Active Directory | Microsoft Documenten
-description: In deze zelfstudie leert u hoe u PowerShell en een CSV-bestand gebruiken om bulkuitnodigingen te verzenden naar externe gastgebruikers van Azure AD B2B-samenwerking.
+title: Zelf studie voor het bulksgewijs uitnodigen van B2B-samenwerkings gebruikers-Azure Active Directory | Microsoft Docs
+description: In deze zelf studie leert u hoe u Power shell en een CSV-bestand gebruikt voor het verzenden van bulk uitnodigingen aan gast gebruikers van externe Azure AD B2B-samen werking.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,13 +12,13 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 89e24d9ff76184c36aee5c14f15f9713b30f6f1d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77172658"
 ---
-# <a name="tutorial-use-powershell-to-bulk-invite-azure-ad-b2b-collaboration-users"></a>Zelfstudie: PowerShell gebruiken om Azure AD B2B-samenwerkingsgebruikers uit te nodigen
+# <a name="tutorial-use-powershell-to-bulk-invite-azure-ad-b2b-collaboration-users"></a>Zelf studie: Power shell gebruiken om Azure AD B2B-samenwerkings gebruikers uit te nodigen
 
 Als u Azure Active Directory (Azure AD) B2B-samenwerking gebruikt om te werken met externe partners, kunt u tegelijkertijd meerdere gastgebruikers uitnodigen voor uw organisatie. In deze zelfstudie leert u hoe u PowerShell gebruikt voor het verzenden van bulk-uitnodigingen naar externe gebruikers. Ga als volgt te werk:
 
@@ -27,7 +27,7 @@ Als u Azure Active Directory (Azure AD) B2B-samenwerking gebruikt om te werken m
 > * Voer een PowerShell-script uit voor het verzenden van uitnodigingen
 > * Controleer of de gebruikers zijn toegevoegd aan de map
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint. 
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -126,7 +126,7 @@ Controleer of de uitgenodigde gebruikers zijn toegevoegd aan Microsoft Azure AD 
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-U ziet de gebruikers die u hebt uitgenodigd, met een gebruikersnaam (UPN)\@in de indeling *e-mailadres*#EXT#*domein.* Bijvoorbeeld *\@lstokes_fabrikam.com#EXT# contoso.onmicrosoft.com*, waar contoso.onmicrosoft.com de organisatie is van waaruit u de uitnodigingen hebt verzonden.
+De gebruikers die u hebt uitgenodigd, worden weer gegeven met een User Principal Name (UPN) in de notatie *EmailAddress*#EXT #\@*domein*. Bijvoorbeeld *lstokes_fabrikam. com # ext #\@contoso.onmicrosoft.com*, waarbij contoso.onmicrosoft.com de organisatie is van waaruit u de uitnodigingen hebt verzonden.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

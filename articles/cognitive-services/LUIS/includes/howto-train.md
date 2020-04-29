@@ -11,17 +11,17 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
 ms.openlocfilehash: 636669ee4284d218d5ac2c6e2e7cdb37b00b3a5b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77279564"
 ---
 1. Selecteer rechtsboven op de website van LUIS de knop **Train**.
 
     ![De knop Train](../media/train-button-preview.png)
 
-2. Training is voltooid wanneer u de status ziet die het succes bevestigt.
+2. De training is voltooid wanneer u de status bevestigend ziet.
 
     > [!Tip]
-    > **Meldingen** zijn beschikbaar in de navigatie rechtsboven en bevatten een geschiedenis.
+    > **Meldingen** zijn beschikbaar in de rechter bovenhoek en bevatten een geschiedenis.

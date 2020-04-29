@@ -1,71 +1,71 @@
 ---
-title: Gebruikers maken - Hyperscale (Citus) - Azure Database voor PostgreSQL
-description: In dit artikel wordt beschreven hoe u nieuwe gebruikersaccounts maken om te communiceren met een Azure Database voor PostgreSQL - Hyperscale (Citus).
+title: Gebruikers maken-grootschalige (Citus)-Azure Database for PostgreSQL
+description: In dit artikel wordt beschreven hoe u nieuwe gebruikers accounts kunt maken om te communiceren met een Azure Database for PostgreSQL-grootschalige (Citus).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 1/8/2019
 ms.openlocfilehash: 674fd4372bdf7c3782d18aaf04b48eb0067a9b2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77484924"
 ---
-# <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Gebruikers maken in Azure Database voor PostgreSQL - Hyperscale (Citus)
+# <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Gebruikers maken in Azure Database for PostgreSQL-grootschalige (Citus)
 
 > [!NOTE]
-> De term "gebruikers" verwijst naar gebruikers binnen een Hyperscale (Citus) servergroep. Ga naar het [RBAC-artikel (Azure role based access control)](../role-based-access-control/built-in-roles.md) of bekijk [hoe u rollen aanpassen](../role-based-access-control/custom-roles.md)om in plaats daarvan meer te weten te komen over gebruikers van Azure-abonnementen en hun bevoegdheden.
+> De term ' gebruikers ' verwijst naar gebruikers in een grootschalige (Citus)-Server groep. Voor meer informatie over Azure-abonnements gebruikers en hun bevoegdheden gaat u naar het [artikel op basis van Azure Role Access Control (RBAC)](../role-based-access-control/built-in-roles.md) of raadpleegt u [How to Customize roles](../role-based-access-control/custom-roles.md).
 
 ## <a name="the-server-admin-account"></a>Het beheerdersaccount voor de server
 
-De PostgreSQL-engine gebruikt [rollen](https://www.postgresql.org/docs/current/sql-createrole.html) om de toegang tot databaseobjecten te beheren en een nieuw gemaakte Hyperscale-servergroep (Citus) wordt geleverd met verschillende rollen die vooraf zijn gedefinieerd:
+De PostgreSQL-engine gebruikt [rollen](https://www.postgresql.org/docs/current/sql-createrole.html) om de toegang tot database objecten te beheren en een nieuw gemaakte grootschalige (Citus)-Server groep wordt geleverd met vooraf gedefinieerde rollen:
 
-* De [standaardPostgreSQL-rollen](https://www.postgresql.org/docs/current/default-roles.html)
+* De [standaard postgresql-rollen](https://www.postgresql.org/docs/current/default-roles.html)
 * `azure_pg_admin`
 * `postgres`
 * `citus`
 
-Aangezien Hyperscale een beheerde PaaS-service is, `postgres` kan alleen Microsoft zich aanmelden met de rol van de supergebruiker. Voor beperkte administratieve toegang biedt `citus` Hyperscale de rol.
+Omdat grootschalige een beheerde PaaS-service is, kan alleen micro soft zich aanmelden `postgres` met de rol van super gebruiker. Voor beperkte beheerders toegang biedt grootschalige de `citus` rol.
 
-Machtigingen voor `citus` de rol:
+Machtigingen voor de `citus` rol:
 
-* Lees alle configuratievariabelen, zelfs variabelen die normaal alleen zichtbaar zijn voor supergebruikers.
-* Lees alle\_\_ \* pg stat weergaven en gebruik verschillende statistieken-gerelateerde extensies - zelfs weergaven of extensies normaal alleen zichtbaar voor supergebruikers.
-* Voer bewakingsfuncties uit die ACCESS SHARE-vergrendelingen op tabellen kunnen gebruiken, mogelijk voor een lange tijd.
-* [Maak PostgreSQL-extensies](concepts-hyperscale-extensions.md) (omdat de `azure_pg_admin`rol lid is van ).
+* Lees alle configuratie variabelen, zelfs variabelen die normaal gesp roken alleen zichtbaar zijn voor supergebruikers.
+* Lees alles over\_alle\_ \* pagina's met statistieken en gebruik verschillende,, zelfs weer gaven of uitbrei dingen die normaal gesp roken alleen zichtbaar zijn voor supergebruikers.
+* Voer bewakings functies uit die toegangs vergrendelingen kunnen hebben voor tabellen, mogelijk gedurende een lange periode.
+* [Maak postgresql-extensies](concepts-hyperscale-extensions.md) (omdat de rol lid is van `azure_pg_admin`).
 
-Met name `citus` de rol heeft een aantal beperkingen:
+Met name voor `citus` de rol gelden enkele beperkingen:
 
 * Kan geen rollen maken
-* Kan geen databases maken
+* Kan geen data bases maken
 
-## <a name="how-to-create-additional-user-roles"></a>Extra gebruikersrollen maken
+## <a name="how-to-create-additional-user-roles"></a>Aanvullende gebruikers rollen maken
 
-Zoals gezegd `citus` heeft het beheerdersaccount geen toestemming om extra gebruikers te maken. Als u een gebruiker wilt toevoegen, gebruikt u de Azure-portalinterface.
+Zoals vermeld, heeft `citus` het beheerders account geen toestemming om extra gebruikers te maken. Gebruik de Azure Portal-interface om een gebruiker toe te voegen.
 
-1. Ga naar de pagina **Rollen** voor uw hyperscale-servergroep en klik op **+ Toevoegen:**
+1. Ga naar de pagina **rollen** voor uw grootschalige-Server groep en klik op **+ toevoegen**:
 
-   ![De rollenspagina](media/howto-hyperscale-create-users/1-role-page.png)
+   ![De pagina rollen](media/howto-hyperscale-create-users/1-role-page.png)
 
-2. Voer de naam en het wachtwoord van de rol in. Klik op **Opslaan**.
+2. Voer de rolnaam en het wacht woord in. Klik op **Opslaan**.
 
    ![Rol toevoegen](media/howto-hyperscale-create-users/2-add-user-fields.png)
 
-De gebruiker wordt gemaakt op het coördinatorknooppunt van de servergroep en wordt gepropageerd naar alle werknemersknooppunten. Rollen die via de `LOGIN` Azure-portal zijn gemaakt, hebben het kenmerk, wat betekent dat het echte gebruikers zijn die zich kunnen aanmelden bij de database.
+De gebruiker wordt gemaakt op het coördinator knooppunt van de Server groep en door gegeven aan alle worker-knoop punten. Rollen die zijn gemaakt via de Azure Portal `LOGIN` hebben het kenmerk, wat betekent dat ze echte gebruikers zijn die zich kunnen aanmelden bij de data base.
 
-## <a name="how-to-modify-privileges-for-user-role"></a>Bevoegdheden voor gebruikersrol wijzigen
+## <a name="how-to-modify-privileges-for-user-role"></a>Bevoegdheden voor een gebruikersrol wijzigen
 
-Nieuwe gebruikersrollen worden vaak gebruikt om databasetoegang te bieden met beperkte bevoegdheden. Als u gebruikersrechten wilt wijzigen, gebruikt u standaard PostgreSQL-opdrachten met behulp van een tool zoals PgAdmin of psql. (Zie [verbinding maken met psql](quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql) in de Quickstart Hyperscale (Citus).
+Nieuwe gebruikers rollen worden meestal gebruikt om toegang tot data bases te bieden met beperkte bevoegdheden. Als u gebruikers bevoegdheden wilt wijzigen, gebruikt u de standaard PostgreSQL-opdrachten met een hulp programma zoals PgAdmin of psql. (Zie [verbinding maken met psql](quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql) in de grootschalige (Citus) Quick Start.)
 
-Bijvoorbeeld, om `db_user` toe `mytable`te staan om te lezen , verlenen van de toestemming:
+Als u bijvoorbeeld het volgende `db_user` wilt toestaan `mytable`, verleent u de machtiging:
 
 ```sql
 GRANT SELECT ON mytable TO db_user;
 ```
 
-Hyperscale (Citus) propageert subsidie-instructies met één tabel door het hele cluster en past deze toe op alle werknemersknooppunten. Grants die systeembreed zijn (bijvoorbeeld voor alle tabellen in een schema) moeten echter op elk datumknooppunt worden uitgevoerd.  Gebruik `run_command_on_workers()` de helperfunctie:
+Met grootschalige (Citus) worden GRANT-instructies met één tabel via het hele cluster door gegeven en toegepast op alle worker-knoop punten. Subsidies die voor het hele systeem zijn (bijvoorbeeld voor alle tabellen in een schema), moeten op elk datum knooppunt worden uitgevoerd.  Gebruik de `run_command_on_workers()` Help-functie:
 
 ```sql
 -- applies to the coordinator node
@@ -77,20 +77,20 @@ SELECT run_command_on_workers(
 );
 ```
 
-## <a name="how-to-delete-a-user-role-or-change-their-password"></a>Een gebruikersrol verwijderen of hun wachtwoord wijzigen
+## <a name="how-to-delete-a-user-role-or-change-their-password"></a>Een gebruikersrol verwijderen of het wacht woord wijzigen
 
-Als u een gebruiker wilt bijwerken, gaat u naar de pagina **Rollen** voor uw hyperscale-servergroep en klikt u op de ellipsen **...** naast de gebruiker. De ellipsen openen een menu om de gebruiker te verwijderen of hun wachtwoord opnieuw in te stellen.
+Als u een gebruiker wilt bijwerken, gaat u naar de pagina **rollen** voor uw grootschalige-Server groep en klikt u op de weglatings tekens **...** naast de gebruiker. De weglatings tekens openen een menu om de gebruiker te verwijderen of hun wacht woord opnieuw in te stellen.
 
    ![Een rol bewerken](media/howto-hyperscale-create-users/edit-role.png)
 
-De `citus` rol is geprivilegieerd en kan niet worden verwijderd.
+De `citus` rol is privileged en kan niet worden verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Open de firewall voor de IP-adressen van de machines van de nieuwe gebruikers om verbinding te maken: [Hyperscale -firewallregels maken en beheren met behulp van de Azure-portal.](howto-hyperscale-manage-firewall-using-portal.md)
+Open de firewall voor de IP-adressen van de computers van de nieuwe gebruikers zodat ze verbinding kunnen maken: [grootschalige (Citus) firewall regels maken en beheren met behulp van de Azure Portal](howto-hyperscale-manage-firewall-using-portal.md).
 
-Zie PostgreSQL-productdocumentatie voor meer informatie over accountbeheer van databasegebruikers:
+Zie PostgreSQL-product documentatie voor meer informatie over het beheer van database gebruikers accounts:
 
-* [Databaserollen en -bevoegdheden](https://www.postgresql.org/docs/current/static/user-manag.html)
-* [AS GRANT](https://www.postgresql.org/docs/current/static/sql-grant.html)
+* [Database rollen en-bevoegdheden](https://www.postgresql.org/docs/current/static/user-manag.html)
+* [Syntaxis van GRANT](https://www.postgresql.org/docs/current/static/sql-grant.html)
 * [Bevoegdheden](https://www.postgresql.org/docs/current/static/ddl-priv.html)

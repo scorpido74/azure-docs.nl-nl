@@ -1,32 +1,32 @@
 ---
-title: Azure IoT Hub-bindingen voor Azure-functies
-description: Leer iot-hubtrigger en -binding gebruiken in Azure-functies.
+title: Azure IoT Hub-bindingen voor Azure Functions
+description: Meer informatie over het gebruik van IoT Hub trigger en binding in Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 1c25543b16c3486a8f6a445427346382faaaa09a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77586123"
 ---
-# <a name="azure-iot-hub-bindings-for-azure-functions"></a>Azure IoT Hub-bindingen voor Azure-functies
+# <a name="azure-iot-hub-bindings-for-azure-functions"></a>Azure IoT Hub-bindingen voor Azure Functions
 
-In deze set artikelen wordt uitgelegd hoe u werken met Azure Functions-bindingen voor IoT Hub. De IoT Hub-ondersteuning is gebaseerd op de [Azure Event Hubs Binding.](functions-bindings-event-hubs.md)
+In deze reeks artikelen wordt uitgelegd hoe u Azure Functions bindingen voor IoT Hub kunt gebruiken. De IoT Hub ondersteuning is gebaseerd op de [Azure Event hubs-binding](functions-bindings-event-hubs.md).
 
 > [!IMPORTANT]
-> Terwijl de volgende codevoorbeelden de Gebeurtenishub-API gebruiken, is de opgegeven syntaxis van toepassing op IoT Hub-functies.
+> Hoewel de volgende code voorbeelden de Event hub API gebruiken, is de opgegeven syntaxis van toepassing op IoT Hub-functies.
 
-| Actie | Type |
+| Bewerking | Type |
 |--------|------|
-| Reageer op gebeurtenissen die zijn verzonden naar een IoT-hub-gebeurtenisstream. | [Trigger](./functions-bindings-event-iot-trigger.md) |
-| Gebeurtenissen schrijven naar een IoT-gebeurtenisstream | [Uitvoerbinding](./functions-bindings-event-iot-output.md) |
+| Reageren op gebeurtenissen die worden verzonden naar een IoT hub-gebeurtenis stroom. | [Trigger](./functions-bindings-event-iot-trigger.md) |
+| Gebeurtenissen schrijven naar een IoT-gebeurtenis stroom | [Uitvoer binding](./functions-bindings-event-iot-output.md) |
 
 [!INCLUDE [functions-bindings-event-hubs](../../includes/functions-bindings-event-hubs.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Reageren op gebeurtenissen die zijn verzonden naar een gebeurtenisgebeurtenisstream (Trigger)](./functions-bindings-event-iot-trigger.md)
-- [Gebeurtenissen schrijven naar een gebeurtenisstream (uitvoerbinding)](./functions-bindings-event-iot-output.md)
+- [Reageren op gebeurtenissen die worden verzonden naar een Event Hub gebeurtenis stroom (trigger)](./functions-bindings-event-iot-trigger.md)
+- [Gebeurtenissen schrijven naar een gebeurtenis stroom (uitvoer binding)](./functions-bindings-event-iot-output.md)

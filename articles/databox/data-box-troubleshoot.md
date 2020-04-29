@@ -1,6 +1,6 @@
 ---
-title: Problemen met uw Azure-gegevensvak oplossen, Azure Data Box Heavy
-description: Beschrijft hoe u problemen in Azure Data Box en Azure Data Box Heavy oplossen bij het kopiëren van gegevens naar deze apparaten.
+title: Los problemen op uw Azure Data Box op Azure Data Box Heavy
+description: Hierin wordt beschreven hoe u problemen oplost die worden weer gegeven in Azure Data Box en Azure Data Box Heavy bij het kopiëren van gegevens naar deze apparaten.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,240 +9,240 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: 51935516e26f263e44a926bf9b7d7ec24a5eeb9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77560062"
 ---
-# <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Problemen met Azure Data Box en Azure Data Box Heavy oplossen
+# <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Problemen oplossen die verband houden met Azure Data Box en Azure Data Box Heavy
 
-In dit artikel vindt u informatie over het oplossen van problemen die u zien bij het gebruik van het Azure Data Box of Azure Data Box Heavy. Het artikel bevat de lijst met mogelijke fouten die worden gezien wanneer gegevens worden gekopieerd naar de gegevensvak of wanneer gegevens worden geüpload vanuit databox.
+In dit artikel vindt u informatie over het oplossen van problemen die kunnen optreden bij het gebruik van de Azure Data Box of Azure Data Box Heavy. Het artikel bevat een lijst met mogelijke fouten die worden weer gegeven wanneer gegevens worden gekopieerd naar het Data Box of wanneer gegevens van Data Box worden geüpload.
 
-## <a name="error-classes"></a>Foutklassen
+## <a name="error-classes"></a>Fout klassen
 
-De fouten in Data Box en Data Box Heavy worden als volgt samengevat:
+De fouten in Data Box en Data Box Heavy worden als volgt samenvatten:
 
-| Foutcategorie*        | Beschrijving        | Aanbevolen actie    |
+| Fout categorie *        | Beschrijving        | Aanbevolen actie    |
 |----------------------------------------------|---------|--------------------------------------|
-| Namen container of delen | De container- of sharenamen volgen de azure-naamgevingsregels niet.  |Download de foutlijsten. <br> Wijzig de naam van de containers of aandelen. [Meer informatie](#container-or-share-name-errors).  |
-| Limiet voor container- of deelgrootte | De totale gegevens in containers of aandelen overschrijden de Azure-limiet.   |Download de foutlijsten. <br> Verminder de algemene gegevens in de container of deel. [Meer informatie](#container-or-share-size-limit-errors).|
-| Limiet voor object- of bestandsgrootte | Het object of de bestanden in containers of shares overschrijdt de Azure-limiet.|Download de foutlijsten. <br> Verklein de bestandsgrootte in de container of deel. [Meer informatie](#object-or-file-size-limit-errors). |    
-| Gegevens of bestandstype | De gegevensindeling of het bestandstype wordt niet ondersteund. |Download de foutlijsten. <br> Voor paginablobs of beheerde schijven moet u ervoor zorgen dat de gegevens 512 bytes zijn uitgelijnd en gekopieerd naar de vooraf gemaakte mappen. [Meer informatie](#data-or-file-type-errors). |
-| Niet-kritieke blob- of bestandsfouten  | De blob- of bestandsnamen volgen de Azure-naamgevingsregels niet of het bestandstype wordt niet ondersteund. | Deze blob of bestanden mogen niet worden gekopieerd of de namen kunnen worden gewijzigd. [Meer informatie over het oplossen van deze fouten](#non-critical-blob-or-file-errors). |
+| Container-of share namen | De container-of share namen volgen niet de Azure-naamgevings regels.  |Down load de fout lijsten. <br> Wijzig de naam van de containers of shares. [Meer informatie](#container-or-share-name-errors).  |
+| Maximale grootte van container of share | De totale gegevens in containers of shares overschrijden de limiet van Azure.   |Down load de fout lijsten. <br> Verminder de totale hoeveelheid gegevens in de container of de share. [Meer informatie](#container-or-share-size-limit-errors).|
+| Maximale object-of bestands grootte | Het object of de bestanden in containers of shares overschrijden de limiet van Azure.|Down load de fout lijsten. <br> Verklein de bestands grootte in de container of de share. [Meer informatie](#object-or-file-size-limit-errors). |    
+| Gegevens-of bestands type | De gegevens indeling of het bestands type wordt niet ondersteund. |Down load de fout lijsten. <br> Voor pagina-blobs of Managed disks zorgt u ervoor dat de gegevens 512-bytes zijn uitgelijnd en naar de vooraf gemaakte mappen worden gekopieerd. [Meer informatie](#data-or-file-type-errors). |
+| Niet-kritieke BLOB-of bestands fouten  | De BLOB-of bestands namen voldoen niet aan de Azure-naamgevings regels of het bestands type wordt niet ondersteund. | Deze blobs of bestanden worden mogelijk niet gekopieerd of de namen kunnen worden gewijzigd. [Meer informatie over het oplossen van deze fouten](#non-critical-blob-or-file-errors). |
 
-\*De eerste vier foutcategorieën zijn kritieke fouten en moeten worden opgelost voordat u zich voorbereiden op het verzenden.
+\*De eerste vier fout categorieën zijn kritieke fouten en moeten worden opgelost voordat u kunt door gaan met het voorbereiden van de verzen ding.
 
 
-## <a name="container-or-share-name-errors"></a>Fouten in container- of share-naam
+## <a name="container-or-share-name-errors"></a>Fouten in containers of share namen
 
-Dit zijn fouten met betrekking tot container en delen namen.
+Dit zijn fouten met betrekking tot container-en share namen.
 
 ### <a name="error_container_or_share_name_length"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
 
-**Foutbeschrijving:** De container of de naam van het aandeel moet tussen 3 en 63 tekens liggen. 
+**Fout beschrijving:** De container-of share naam moet tussen de 3 en 63 tekens lang zijn. 
 
-**Voorgestelde resolutie:** De map onder de Gegevensbox of Data Box Heavy share (SMB/NFS) waarnaar u gegevens hebt gekopieerd, wordt een Azure-container in uw opslagaccount. 
+**Voorgestelde oplossing:** De map onder de Data Box of Data Box Heavy share (SMB/NFS) waarnaar u gegevens hebt gekopieerd, wordt een Azure-container in uw opslag account. 
 
-- Download en controleer op de pagina **Verbinding en kopie** van de lokale webgebruikersinterface van het apparaat de foutbestanden om de mapnamen met problemen te identificeren.
-- Wijzig de mapnaam onder het gegevensvak of het aandeel Zwaar gegevens om ervoor te zorgen dat:
+- Down load op de pagina **verbinding maken en kopiëren** van de lokale web-UI van het apparaat en controleer de fout bestanden om de mapnamen met problemen te identificeren.
+- Wijzig de mapnaam onder de Data Box of Data Box Heavy share om ervoor te zorgen dat:
 
-    - De naam heeft tussen 3 en 63 tekens.
-    - De namen kunnen alleen letters, cijfers en koppeltekens hebben.
-    - De namen kunnen niet beginnen of eindigen met koppeltekens.
-    - De namen mogen geen opeenvolgende koppeltekens hebben.
-    - Voorbeelden van geldige `my-folder-1`namen: ,`my-really-extra-long-folder-111`
-    - Voorbeelden van namen die niet `my-folder_1`geldig `my` `--myfolder`zijn: , , `myfolder--``myfolder!`
+    - De naam moet tussen de 3 en 63 tekens lang zijn.
+    - De namen mogen alleen letters, cijfers en afbreek streepjes bevatten.
+    - De namen mogen niet beginnen of eindigen met een afbreek streepje.
+    - De namen mogen geen opeenvolgende afbreek streepjes bevatten.
+    - Voor beelden van geldige namen `my-folder-1`:,`my-really-extra-long-folder-111`
+    - Voor beelden van namen die ongeldig zijn `my-folder_1`: `my`, `--myfolder`, `myfolder--`,,`myfolder!`
 
-    Zie de Azure-naamgevingsconventies voor [containernamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [namen delen voor](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)meer informatie.
+    Zie de Azure-naamgevings conventies voor [container namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
 
 
 ### <a name="error_container_or_share_name_alpha_numeric_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
 
-**Foutbeschrijving:** De container of de naam van het aandeel mag alleen bestaan uit letters, cijfers of koppeltekens.
+**Fout beschrijving:** De container-of share naam mag alleen bestaan uit letters, cijfers of afbreek streepjes.
 
-**Voorgestelde resolutie:** De map onder de Gegevensbox of Data Box Heavy share (SMB/NFS) waarnaar u gegevens hebt gekopieerd, wordt een Azure-container in uw opslagaccount. 
+**Voorgestelde oplossing:** De map onder de Data Box of Data Box Heavy share (SMB/NFS) waarnaar u gegevens hebt gekopieerd, wordt een Azure-container in uw opslag account. 
 
-- Download en controleer op de pagina **Verbinding en kopie** van de lokale webgebruikersinterface van het apparaat de foutbestanden om de mapnamen met problemen te identificeren.
-- Wijzig de mapnaam onder het gegevensvak of het aandeel Zwaar gegevens om ervoor te zorgen dat:
+- Down load op de pagina **verbinding maken en kopiëren** van de lokale web-UI van het apparaat en controleer de fout bestanden om de mapnamen met problemen te identificeren.
+- Wijzig de mapnaam onder de Data Box of Data Box Heavy share om ervoor te zorgen dat:
 
-    - De naam heeft tussen 3 en 63 tekens.
-    - De namen kunnen alleen letters, cijfers en koppeltekens hebben.
-    - De namen kunnen niet beginnen of eindigen met koppeltekens.
-    - De namen mogen geen opeenvolgende koppeltekens hebben.
-    - Voorbeelden van geldige `my-folder-1`namen: ,`my-really-extra-long-folder-111`
-    - Voorbeelden van namen die niet `my-folder_1`geldig `my` `--myfolder`zijn: , , `myfolder--``myfolder!`
+    - De naam moet tussen de 3 en 63 tekens lang zijn.
+    - De namen mogen alleen letters, cijfers en afbreek streepjes bevatten.
+    - De namen mogen niet beginnen of eindigen met een afbreek streepje.
+    - De namen mogen geen opeenvolgende afbreek streepjes bevatten.
+    - Voor beelden van geldige namen `my-folder-1`:,`my-really-extra-long-folder-111`
+    - Voor beelden van namen die ongeldig zijn `my-folder_1`: `my`, `--myfolder`, `myfolder--`,,`myfolder!`
 
-    Zie de Azure-naamgevingsconventies voor [containernamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [namen delen voor](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)meer informatie.
+    Zie de Azure-naamgevings conventies voor [container namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
 
 ### <a name="error_container_or_share_name_improper_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_IMPROPER_DASH
 
-**Foutbeschrijving:** De containernamen en namen van delen kunnen niet beginnen of eindigen met koppeltekens en kunnen geen opeenvolgende koppeltekens hebben.
+**Fout beschrijving:** De container namen en share namen mogen niet beginnen of eindigen met afbreek streepjes en kunnen geen opeenvolgende afbreek streepjes bevatten.
 
-**Voorgestelde resolutie:** De map onder de Gegevensbox of Data Box Heavy share (SMB/NFS) waarnaar u gegevens hebt gekopieerd, wordt een Azure-container in uw opslagaccount. 
+**Voorgestelde oplossing:** De map onder de Data Box of Data Box Heavy share (SMB/NFS) waarnaar u gegevens hebt gekopieerd, wordt een Azure-container in uw opslag account. 
 
-- Download en controleer op de pagina **Verbinding en kopie** van de lokale webgebruikersinterface van het apparaat de foutbestanden om de mapnamen met problemen te identificeren.
-- Wijzig de mapnaam onder het gegevensvak of het aandeel Zwaar gegevens om ervoor te zorgen dat:
+- Down load op de pagina **verbinding maken en kopiëren** van de lokale web-UI van het apparaat en controleer de fout bestanden om de mapnamen met problemen te identificeren.
+- Wijzig de mapnaam onder de Data Box of Data Box Heavy share om ervoor te zorgen dat:
 
-    - De naam heeft tussen 3 en 63 tekens.
-    - De namen kunnen alleen letters, cijfers en koppeltekens hebben.
-    - De namen kunnen niet beginnen of eindigen met koppeltekens.
-    - De namen mogen geen opeenvolgende koppeltekens hebben.
-    - Voorbeelden van geldige `my-folder-1`namen: ,`my-really-extra-long-folder-111`
-    - Voorbeelden van namen die niet `my-folder_1`geldig `my` `--myfolder`zijn: , , `myfolder--``myfolder!`
+    - De naam moet tussen de 3 en 63 tekens lang zijn.
+    - De namen mogen alleen letters, cijfers en afbreek streepjes bevatten.
+    - De namen mogen niet beginnen of eindigen met een afbreek streepje.
+    - De namen mogen geen opeenvolgende afbreek streepjes bevatten.
+    - Voor beelden van geldige namen `my-folder-1`:,`my-really-extra-long-folder-111`
+    - Voor beelden van namen die ongeldig zijn `my-folder_1`: `my`, `--myfolder`, `myfolder--`,,`myfolder!`
 
-    Zie de Azure-naamgevingsconventies voor [containernamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [namen delen voor](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)meer informatie.
+    Zie de Azure-naamgevings conventies voor [container namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
 
-## <a name="container-or-share-size-limit-errors"></a>Fouten in container- of sharesizelimiet
+## <a name="container-or-share-size-limit-errors"></a>Fouten in de container of share grootte beperken
 
-Dit zijn fouten die verband houden met gegevens die groter zijn dan de grootte van de gegevens die in een container of een aandeel zijn toegestaan.
+Dit zijn fouten met betrekking tot gegevens die de omvang van gegevens overschrijden die zijn toegestaan in een container of een share.
 
 ### <a name="error_container_or_share_capacity_exceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
 
-**Foutbeschrijving:** Azure-bestandsshare beperkt een aandeel tot 5 TB aan gegevens. Deze limiet is voor sommige aandelen overschreden.
+**Fout beschrijving:** Azure-bestands share beperkt een share tot 5 TB aan gegevens. Deze limiet is overschreden voor sommige shares.
 
-**Voorgestelde resolutie:** Download en bekijk op de pagina **Verbinding en kopie** van de lokale web-gebruikersinterface de foutbestanden.
+**Voorgestelde oplossing:** Down load en controleer de fout bestanden op de pagina **verbinding maken en kopiëren** van de lokale webgebruikersinterface.
 
-Identificeer de mappen met dit probleem uit de foutlogboeken en zorg ervoor dat de bestanden in die map jonger zijn dan 5 TB.
+Bepaal de mappen met dit probleem uit de fout logboeken en zorg ervoor dat de bestanden in die map minder dan 5 TB zijn.
 
 
-## <a name="object-or-file-size-limit-errors"></a>Fouten in object- of bestandsgroottelimiet
+## <a name="object-or-file-size-limit-errors"></a>Fouten bij de object-of bestands grootte limiet
 
-Dit zijn fouten die verband houden met gegevens die de maximale grootte van het object of het bestand dat is toegestaan in Azure overschrijden. 
+Dit zijn fouten met betrekking tot gegevens die de maximale grootte van een object overschrijden of het bestand dat in Azure is toegestaan. 
 
 ### <a name="error_blob_or_file_size_limit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
 
-**Foutbeschrijving:** De bestandsgrootte overschrijdt de maximale bestandsgrootte voor upload.
+**Fout beschrijving:** De bestands grootte overschrijdt de maximale bestands grootte voor het uploaden.
 
-**Voorgestelde resolutie:** De blob of de bestandsgrootte overschrijdt de maximaal toegestane limiet voor het uploaden.
+**Voorgestelde oplossing:** De BLOB of de bestands grootte overschrijdt de Maxi maal toegestane limiet voor het uploaden.
 
-- Download en bekijk op de pagina **Verbinding en kopie** van de lokale web-gebruikersinterface de foutbestanden.
-- Zorg ervoor dat de blob- en bestandsgrootten de limieten voor de grootte van azure-objecten niet overschrijden.
+- Down load en controleer de fout bestanden op de pagina **verbinding maken en kopiëren** van de lokale webgebruikersinterface.
+- Zorg ervoor dat de BLOB-en bestands grootten de limieten voor de grootte van Azure-objecten niet overschrijden.
 
-## <a name="data-or-file-type-errors"></a>Fouten in gegevens of bestandstype
+## <a name="data-or-file-type-errors"></a>Gegevens of bestands type fouten
 
-Dit zijn fouten die verband houden met niet-ondersteund bestandstype of gegevenstype in de container of delen. 
+Dit zijn fouten met betrekking tot niet-ondersteund bestands type of gegevens type gevonden in de container of share. 
 
 ### <a name="error_blob_or_file_size_alignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
 
-**Foutbeschrijving:** De blob of het bestand is onjuist uitgelijnd.
+**Fout beschrijving:** De BLOB of het bestand is onjuist uitgelijnd.
 
-**Voorgestelde resolutie:** De paginablobshare op Data Box of Data Box Heavy ondersteunt alleen bestanden die 512 bytes zijn uitgelijnd (bijvoorbeeld VHD/VHDX). Alle gegevens die naar het blobaandeel van de pagina worden gekopieerd, worden als paginablobs naar Azure geüpload.
+**Voorgestelde oplossing:** De pagina-BLOB-share op Data Box of Data Box Heavy ondersteunt alleen bestanden van 512 bytes uitgelijnd (bijvoorbeeld VHD/VHDX). Alle gegevens die zijn gekopieerd naar de pagina-blob, worden geüpload naar Azure als pagina-blobs.
 
-Verwijder niet-VHD/VHDX-gegevens uit het delen van de paginablob. U shares gebruiken voor blokblob- of Azure-bestanden voor algemene gegevens.
+Verwijder alle niet-VHD/VHDX-gegevens van de pagina-BLOB-share. U kunt shares gebruiken voor blok-BLOB of Azure files voor algemene gegevens.
 
-Zie [Overzicht van paginablobs voor](../storage/blobs/storage-blob-pageblob-overview.md)meer informatie .
+Zie [overzicht van pagina-blobs](../storage/blobs/storage-blob-pageblob-overview.md)voor meer informatie.
 
 ### <a name="error_blob_or_file_type_unsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
 
-**Foutbeschrijving:** Er is een niet-ondersteund bestandstype aanwezig in een beheerde schijfshare. Alleen vaste VHD's zijn toegestaan.
+**Fout beschrijving:** Er is een niet-ondersteund bestands type aanwezig in een beheerde schijf share. Alleen vaste Vhd's zijn toegestaan.
 
-**Voorgestelde resolutie:**
+**Voorgestelde oplossing:**
 
-- Zorg ervoor dat u alleen de vaste VHD's uploadt om beheerde schijven te maken.
-- VHDX-bestanden of **dynamische** en **differentiërende** VHD's worden niet ondersteund.
+- Zorg ervoor dat u alleen de vaste Vhd's uploadt om beheerde schijven te maken.
+- VHDX-bestanden of **dynamische** en **differentiërende** vhd's worden niet ondersteund.
 
 ### <a name="error_directory_disallowed_for_type"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
 
-**Foutbeschrijving:** Een map is niet toegestaan in een van de reeds bestaande mappen voor de beheerde schijven. Alleen vaste VHD's zijn toegestaan in deze mappen.
+**Fout beschrijving:** Een directory is niet toegestaan in een van de bestaande mappen voor de Managed disks. In deze mappen zijn alleen vaste Vhd's toegestaan.
 
-**Voorgestelde resolutie:** Voor beheerde schijven worden binnen elk aandeel de volgende drie mappen gemaakt die overeenkomen met containers in uw opslagaccount: Premium SSD, Standard HDD en Standard SSD. Deze mappen komen overeen met de prestatielaag voor de beheerde schijf.
+**Voorgestelde oplossing:** Voor Managed disks, binnen elke share, worden de volgende drie mappen gemaakt die overeenkomen met containers in uw opslag account: Premium-SSD, Standard-HDD en Standard-SSD. Deze mappen komen overeen met de prestatie tier van de beheerde schijf.
 
-- Zorg ervoor dat u uw paginablobgegevens (VHD's) kopieert naar een van deze bestaande mappen.
-- Een map of map is niet toegestaan in deze bestaande mappen. Verwijder alle mappen die u hebt gemaakt in de reeds bestaande mappen.
+- Zorg ervoor dat u de pagina-blobgegevens (Vhd's) kopieert naar een van deze bestaande mappen.
+- Een map of directory is niet toegestaan in deze bestaande mappen. Verwijder alle mappen die u hebt gemaakt in de reeds bestaande mappen.
 
-Zie [Kopiëren naar beheerde schijven voor](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box)meer informatie.
+Zie [kopiëren naar Managed disks](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box)voor meer informatie.
 
 ### <a name="reparse_point_error"></a>REPARSE_POINT_ERROR
 
-**Foutbeschrijving:** Symbolische links zijn niet toegestaan in Linux. 
+**Fout beschrijving:** Symbolische koppelingen zijn niet toegestaan in Linux. 
 
-**Voorgestelde resolutie:** De symbolische links zijn meestal links, pijpen, en andere dergelijke bestanden. Verwijder de koppelingen of los de koppelingen op en kopieer de gegevens.
+**Voorgestelde oplossing:** De symbolische koppelingen zijn doorgaans koppelingen, sluizen en andere dergelijke bestanden. Verwijder de koppelingen of los de koppelingen op en kopieer de gegevens.
 
 
-## <a name="non-critical-blob-or-file-errors"></a>Niet-kritieke blob- of bestandsfouten
+## <a name="non-critical-blob-or-file-errors"></a>Niet-kritieke BLOB-of bestands fouten
 
-Alle niet-kritieke fouten met betrekking tot namen van blobs, bestanden of containers die worden gezien tijdens het kopiëren van gegevens, worden samengevat in de volgende sectie. Als deze fouten aanwezig zijn, worden de namen aangepast aan de Azure-naamgevingsconventies. De bijbehorende orderstatus voor het uploaden van gegevens wordt **voltooid met waarschuwingen**.  
+De volgende sectie bevat een overzicht van alle niet-kritieke fouten met betrekking tot de namen van blobs, bestanden of containers die tijdens het kopiëren van de gegevens worden weer gegeven. Als deze fouten aanwezig zijn, worden de namen gewijzigd in overeenstemming met de Azure-naamgevings conventies. De bijbehorende order status voor het uploaden van gegevens wordt **voltooid met waarschuwingen**.  
 
 ### <a name="error_blob_or_file_name_character_control"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_CONTROL
 
-**Foutbeschrijving:** De blob- of bestandsnamen bevatten niet-ondersteunde besturingselementtekens.
+**Fout beschrijving:** De BLOB-of bestands namen bevatten niet-ondersteunde Stuur codes.
 
-**Voorgestelde resolutie:** De blobs of de bestanden die u hebt gekopieerd, bevatten namen met niet-ondersteunde tekens.
+**Voorgestelde oplossing:** De blobs of de bestanden die u hebt gekopieerd, bevatten namen met niet-ondersteunde tekens.
 
-Download en bekijk op de pagina **Verbinding en kopie** van de lokale web-gebruikersinterface de foutbestanden.
-Verwijder of wijzig de naam van de bestanden om niet-ondersteunde tekens te verwijderen.
+Down load en controleer de fout bestanden op de pagina **verbinding maken en kopiëren** van de lokale webgebruikersinterface.
+Verwijder de bestanden om niet-ondersteunde tekens te verwijderen of de naam ervan te wijzigen.
 
-Zie de Azure-naamgevingsconventies voor [blobnamen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) en [bestandsnamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)voor meer informatie.
+Zie de Azure-naamgevings conventies voor [BLOB-namen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) en [bestands namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)voor meer informatie.
 
 ### <a name="error_blob_or_file_name_character_illegal"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL
 
-**Foutbeschrijving:** De blob- of bestandsnamen bevatten illegale tekens.
+**Fout beschrijving:** De BLOB-of bestands namen bevatten ongeldige tekens.
 
-**Voorgestelde resolutie:** De blobs of de bestanden die u hebt gekopieerd, bevatten namen met niet-ondersteunde tekens.
+**Voorgestelde oplossing:** De blobs of de bestanden die u hebt gekopieerd, bevatten namen met niet-ondersteunde tekens.
 
-Download en bekijk op de pagina **Verbinding en kopie** van de lokale web-gebruikersinterface de foutbestanden.
-Verwijder of wijzig de naam van de bestanden om niet-ondersteunde tekens te verwijderen.
+Down load en controleer de fout bestanden op de pagina **verbinding maken en kopiëren** van de lokale webgebruikersinterface.
+Verwijder de bestanden om niet-ondersteunde tekens te verwijderen of de naam ervan te wijzigen.
 
-Zie de Azure-naamgevingsconventies voor [blobnamen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) en [bestandsnamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)voor meer informatie.
+Zie de Azure-naamgevings conventies voor [BLOB-namen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) en [bestands namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)voor meer informatie.
 
 
 ### <a name="error_blob_or_file_name_ending"></a>ERROR_BLOB_OR_FILE_NAME_ENDING
 
-**Foutbeschrijving:** De blob- of bestandsnamen eindigen met slechte tekens.
+**Fout beschrijving:** De BLOB-of bestands namen eindigen met ongeldige tekens.
 
-**Voorgestelde resolutie:** De blobs of de bestanden die u hebt gekopieerd, bevatten namen met niet-ondersteunde tekens.
+**Voorgestelde oplossing:** De blobs of de bestanden die u hebt gekopieerd, bevatten namen met niet-ondersteunde tekens.
 
-Download en bekijk op de pagina **Verbinding en kopie** van de lokale web-gebruikersinterface de foutbestanden.
-Verwijder of wijzig de naam van de bestanden om niet-ondersteunde tekens te verwijderen.
+Down load en controleer de fout bestanden op de pagina **verbinding maken en kopiëren** van de lokale webgebruikersinterface.
+Verwijder de bestanden om niet-ondersteunde tekens te verwijderen of de naam ervan te wijzigen.
 
-Zie de Azure-naamgevingsconventies voor [blobnamen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) en [bestandsnamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)voor meer informatie.
+Zie de Azure-naamgevings conventies voor [BLOB-namen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) en [bestands namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)voor meer informatie.
 
 
 ### <a name="error_blob_or_file_name_segment_count"></a>ERROR_BLOB_OR_FILE_NAME_SEGMENT_COUNT
 
-**Foutbeschrijving:** De blob- of bestandsnaam bevat te veel padsegmenten.
+**Fout beschrijving:** De BLOB of bestands naam bevat te veel padsegmenten.
 
-**Voorgestelde resolutie:** De blobs of de bestanden die u hebt gekopieerd, overschrijden het maximum aantal padsegmenten. Een padsegment is de tekenreeks tussen opeenvolgende tekens van de scheidingsteken, bijvoorbeeld de voorwaartse slash /.
+**Voorgestelde oplossing:** De blobs of de bestanden die u hebt gekopieerd, overschrijden het maximum aantal padsegmenten. Een padsegment is de teken reeks tussen opeenvolgende scheidings tekens, bijvoorbeeld de slash/.
 
-- Download en bekijk op de pagina **Verbinding en kopie** van de lokale web-gebruikersinterface de foutbestanden.
-- Zorg ervoor dat de [blobnamen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) en [bestandsnamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) voldoen aan Azure-naamgevingsconventies.
+- Down load en controleer de fout bestanden op de pagina **verbinding maken en kopiëren** van de lokale webgebruikersinterface.
+- Zorg ervoor dat de [namen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) van de BLOB en de [bestands namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) voldoen aan de Azure-naamgevings conventies.
 
 ### <a name="error_blob_or_file_name_aggregate_length"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
 
-**Foutbeschrijving:** De blob- of bestandsnaam is te lang.
+**Fout beschrijving:** De BLOB of bestands naam is te lang.
 
-**Voorgestelde resolutie:** De blob of de bestandsnamen overschrijden de maximale lengte.
+**Voorgestelde oplossing:** De BLOB of de bestands namen overschrijden de maximum lengte.
 
-- Download en bekijk op de pagina **Verbinding en kopie** van de lokale web-gebruikersinterface de foutbestanden.
-- De naam van de blob mag niet groter zijn dan 1.024 tekens.
-- Verwijder of wijzig de naam van de blob of bestanden zodat de namen niet meer dan 1024 tekens bevatten.
+- Down load en controleer de fout bestanden op de pagina **verbinding maken en kopiëren** van de lokale webgebruikersinterface.
+- De naam van de BLOB mag niet langer zijn dan 1.024 tekens.
+- Verwijder of wijzig de naam van de BLOB of bestanden zodat de namen niet langer zijn dan 1024 tekens.
 
-Zie de Azure-naamgevingsconventies voor blobnamen en bestandsnamen voor meer informatie.
+Zie de Azure-naamgevings conventies voor BLOB-namen en bestands namen voor meer informatie.
 
 ### <a name="error_blob_or_file_name_component_length"></a>ERROR_BLOB_OR_FILE_NAME_COMPONENT_LENGTH
 
-**Foutbeschrijving:** Een van de segmenten in de blob- of bestandsnaam is te lang.
+**Fout beschrijving:** Een van de segmenten in de BLOB of bestands naam is te lang.
 
-**Voorgestelde resolutie:** Een van de padsegmenten in de blob- of bestandsnaam overschrijdt de maximale aantallen tekens. Een padsegment is de tekenreeks tussen opeenvolgende tekens van de scheidingsteken, bijvoorbeeld de voorwaartse slash /.
+**Voorgestelde oplossing:** Een van de padsegmenten in de BLOB of bestands naam overschrijdt het maximum aantal tekens. Een padsegment is de teken reeks tussen opeenvolgende scheidings tekens, bijvoorbeeld de slash/.
 
-- Download en bekijk op de pagina **Verbinding en kopie** van de lokale web-gebruikersinterface de foutbestanden.
-- Zorg ervoor dat de [blobnamen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) en [bestandsnamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) voldoen aan Azure-naamgevingsconventies.
+- Down load en controleer de fout bestanden op de pagina **verbinding maken en kopiëren** van de lokale webgebruikersinterface.
+- Zorg ervoor dat de [namen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) van de BLOB en de [bestands namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) voldoen aan de Azure-naamgevings conventies.
 
 
 ### <a name="error_container_or_share_name_disallowed_for_type"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
 
-**Foutbeschrijving:** Onjuiste containernamen zijn opgegeven voor beheerde schijfshares.
+**Fout beschrijving:** Er zijn onjuiste container namen opgegeven voor beheerde schijf shares.
 
-**Voorgestelde resolutie:** Voor beheerde schijven worden binnen elk aandeel de volgende mappen gemaakt die overeenkomen met containers in uw opslagaccount: Premium SSD, Standard HDD en Standard SSD. Deze mappen komen overeen met de prestatielaag voor de beheerde schijf.
+**Voorgestelde oplossing:** Voor beheerde schijven worden binnen elke share de volgende mappen gemaakt die overeenkomen met containers in uw opslag account: Premium-SSD, Standard-HDD en Standard-SSD. Deze mappen komen overeen met de prestatie tier van de beheerde schijf.
 
-- Zorg ervoor dat u uw paginablobgegevens (VHD's) kopieert naar een van deze bestaande mappen. Alleen gegevens van deze bestaande containers worden geüpload naar Azure.
-- Elke andere map die is gemaakt op hetzelfde niveau als Premium SSD, Standard HDD en Standard SSD komt niet overeen met een geldige prestatielaag en kan niet worden gebruikt.
-- Verwijder bestanden of mappen die buiten de prestatielagen zijn gemaakt.
+- Zorg ervoor dat u de pagina-blobgegevens (Vhd's) kopieert naar een van deze bestaande mappen. Alleen gegevens van deze bestaande containers worden geüpload naar Azure.
+- Andere mappen die op hetzelfde niveau worden gemaakt als Premium-SSD, Standard-HDD en Standard-SSD komen niet overeen met een geldige prestatie-laag en kunnen niet worden gebruikt.
+- Bestanden of mappen verwijderen die buiten de prestatie lagen zijn gemaakt.
 
-Zie [Kopiëren naar beheerde schijven voor](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box)meer informatie.
+Zie [kopiëren naar Managed disks](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box)voor meer informatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de vereisten van het [Gegevensvak Blob-opslagsysteem](data-box-system-requirements-rest.md).
+- Meer informatie over de [vereisten voor het data Box Blob-opslag systeem](data-box-system-requirements-rest.md).

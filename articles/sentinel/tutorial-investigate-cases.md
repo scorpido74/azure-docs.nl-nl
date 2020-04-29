@@ -1,6 +1,6 @@
 ---
-title: Incidenten onderzoeken met Azure Sentinel| Microsoft Documenten
-description: Gebruik deze zelfstudie om te leren hoe u incidenten met Azure Sentinel onderzoeken.
+title: Incidenten onderzoeken met Azure Sentinel | Microsoft Docs
+description: Gebruik deze zelf studie om te leren hoe u incidenten met Azure Sentinel kunt onderzoeken.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,102 +15,102 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: ecd8c508d05bfeb541a6cb5efbcdf2fffd3c78d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77587189"
 ---
-# <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Zelfstudie: Incidenten onderzoeken met Azure Sentinel
+# <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Zelf studie: incidenten onderzoeken met Azure Sentinel
 
 > [!IMPORTANT]
-> De onderzoeksgrafiek is momenteel in openbare preview.
-> Deze functie wordt geleverd zonder een serviceniveauovereenkomst en wordt niet aanbevolen voor productieworkloads.
-> Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
+> De onderzoek grafiek is momenteel beschikbaar als open bare preview.
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen.
+> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-Met deze zelfstudie u incidenten met Azure Sentinel onderzoeken. Nadat u uw gegevensbronnen hebt verbonden met Azure Sentinel, wilt u een melding ontvangen wanneer er iets verdachts gebeurt. Om u in staat te stellen dit te doen, u met Azure Sentinel geavanceerde waarschuwingsregels maken die incidenten genereren die u toewijzen en onderzoeken.
+Deze zelf studie helpt u bij het onderzoeken van incidenten met Azure Sentinel. Nadat u uw gegevens bronnen hebt verbonden met Azure Sentinel, wilt u een melding ontvangen wanneer er iets verdacht is. Hiervoor kunt u met Azure Sentinel geavanceerde waarschuwings regels maken waarmee incidenten worden gegenereerd die u kunt toewijzen en onderzoeken.
 
-Dit artikel behandelt:
+In dit artikel komen de volgende onderwerpen aan bod:
 > [!div class="checklist"]
 > * Incidenten onderzoeken
-> * De onderzoeksgrafiek gebruiken
+> * De onderzoek grafiek gebruiken
 > * Op bedreigingen reageren
 
-Een incident kan meerdere waarschuwingen bevatten. Het is een samenvoeging van al het relevante bewijs voor een specifiek onderzoek. Er wordt een incident gemaakt op basis van analytische regels die u hebt gemaakt op de **pagina Analytics.** De eigenschappen met betrekking tot de waarschuwingen, zoals ernst en status, worden ingesteld op het incidentniveau. Nadat u Azure Sentinel hebt laten weten welke soorten bedreigingen u zoekt en hoe u deze vinden, u gedetecteerde bedreigingen controleren door incidenten te onderzoeken.
+Een incident kan meerdere waarschuwingen bevatten. Het is een aggregatie van alle relevante bewijzen voor een specifiek onderzoek. Er wordt een incident gemaakt op basis van analytische regels die u hebt gemaakt op de **Analytics** -pagina. De eigenschappen die betrekking hebben op de waarschuwingen, zoals ernst en status, worden ingesteld op incident niveau. Nadat u Azure-Sentinel weet wat voor soort bedreigingen u zoekt en hoe u deze kunt vinden, kun u gedetecteerde bedreigingen bewaken door incidenten te onderzoeken.
 
 ## <a name="prerequisites"></a>Vereisten
-U het incident alleen onderzoeken als u de toewijzingsvelden van de entiteit hebt gebruikt wanneer u uw analytische regel instelt. De onderzoeksgrafiek vereist dat uw oorspronkelijke incident entiteiten bevat.
+U kunt het incident alleen onderzoeken als u de velden voor entiteits toewijzing hebt gebruikt bij het instellen van de analytische regel. Het onderzoek diagram vereist dat uw oorspronkelijke incident entiteiten bevat.
 
 ## <a name="how-to-investigate-incidents"></a>Incidenten onderzoeken
 
-1. Selecteer **Incidenten**. Op de pagina **Incidenten** u weten hoeveel incidenten u hebt, hoeveel er open zijn, hoeveel u hebt ingesteld op **In uitvoering**en hoeveel er zijn gesloten. Voor elk incident u zien hoe laat het is opgetreden en hoe laat het incident is. Kijk naar de ernst om te beslissen welke incidenten het eerst moeten worden verwerkt.
+1. Selecteer **incidenten**. Op de pagina **incidenten** kunt u zien hoeveel incidenten u hebt, hoeveel er zijn geopend, hoeveel er openstaan en hoeveel u hebt ingesteld op **in uitvoering**en hoeveel er zijn gesloten. Voor elk incident ziet u de tijd waarop het probleem is opgetreden en de status van het incident. Bekijk de ernst om te bepalen welke incidenten het eerst moeten worden verwerkt.
 
-    ![Ernst van incidenten weergeven](media/tutorial-investigate-cases/incident-severity.png)
+    ![Ernst van incident weer geven](media/tutorial-investigate-cases/incident-severity.png)
 
-1. U de incidenten filteren als dat nodig is, bijvoorbeeld op status of ernst.
+1. U kunt de incidenten zo nodig filteren, bijvoorbeeld op basis van de status of de ernst.
 
-1. Als u een onderzoek wilt starten, selecteert u een specifiek incident. Aan de rechterkant ziet u gedetailleerde informatie over het incident, inclusief de ernst, een overzicht van het aantal betrokken entiteiten, de onbewerkte gebeurtenissen die dit incident hebben veroorzaakt en de unieke ID van het incident.
+1. Selecteer een specifiek incident om een onderzoek te starten. Aan de rechter kant kunt u gedetailleerde informatie voor het incident bekijken, inclusief de ernst, samen vatting van het aantal betrokken entiteiten, de onbewerkte gebeurtenissen die dit incident hebben geactiveerd en de unieke ID van het incident.
 
-1. Als u meer details wilt bekijken over de waarschuwingen en entiteiten in het incident, selecteert u **Volledige details weergeven** op de incidentpagina en bekijkt u de relevante tabbladen die de incidentgegevens samenvatten. Controleer op het tabblad **Waarschuwingen** de waarschuwing zelf. U alle relevante informatie over de waarschuwing zien: de query die de waarschuwing heeft geactiveerd, het aantal geretourneerde resultaten per query en de mogelijkheid om playbooks op de waarschuwingen uit te voeren. Als u nog verder wilt inzoomen op het incident, selecteert u het aantal **gebeurtenissen**. Hiermee wordt de query geopend die de resultaten en de gebeurtenissen heeft gegenereerd die de waarschuwing hebben geactiveerd in Log Analytics. Op het tabblad **Entiteiten** ziet u alle entiteiten die u hebt toegewezen als onderdeel van de definitie van waarschuwingsregel.
+1. Als u meer informatie over de waarschuwingen en entiteiten in het incident wilt weer geven, selecteert u **volledige details weer geven** op de pagina incident en bekijkt u de relevante tabbladen met een overzicht van de informatie over het incident. Bekijk op het tabblad **waarschuwingen** de waarschuwing zelf. U kunt alle relevante informatie over de waarschuwing zien: de query die de waarschuwing heeft geactiveerd, het aantal resultaten dat per query wordt geretourneerd en de mogelijkheid om playbooks uit te voeren op de waarschuwingen. Als u nog meer wilt inzoomen op het incident, selecteert u het aantal **gebeurtenissen**. Hiermee opent u de query die de resultaten heeft gegenereerd en de gebeurtenissen die de waarschuwing hebben geactiveerd in Log Analytics. Op het tabblad **entiteiten** ziet u alle entiteiten die u hebt toegewezen als onderdeel van de definitie van de waarschuwings regel.
 
-    ![Waarschuwingsgegevens weergeven](media/tutorial-investigate-cases/alert-details.png)
+    ![Waarschuwings details weer geven](media/tutorial-investigate-cases/alert-details.png)
 
-1. Als u een incident actief onderzoekt, is het een goed idee om de status van het incident in te stellen **op in uitvoering** totdat u het sluit.
+1. Als u een incident actief onderzoekt, is het een goed idee om de status van het incident in te stellen op **in behandeling** tot u het hebt gesloten.
 
-1. Incidenten kunnen worden toegewezen aan een specifieke gebruiker. Voor elk incident u een eigenaar toewijzen door het veld **Incident-eigenaar** in te stellen. Alle incidenten beginnen als niet toegewezen. U ook opmerkingen toevoegen, zodat andere analisten in staat zullen zijn om te begrijpen wat u onderzocht en wat uw zorgen zijn rond het incident.
+1. Incidenten kunnen worden toegewezen aan een specifieke gebruiker. U kunt voor elk incident een eigenaar toewijzen door het veld eigenaar van het **incident** in te stellen. Alle incidenten worden gestart als niet-toegewezen. U kunt ook opmerkingen toevoegen zodat andere analisten kunnen begrijpen wat u hebt onderzocht en wat uw bezorgdheid over het incident zijn.
 
-    ![Incident toewijzen aan gebruiker](media/tutorial-investigate-cases/assign-incident-to-user.png)
+    ![Incident aan gebruiker toewijzen](media/tutorial-investigate-cases/assign-incident-to-user.png)
 
-1. Selecteer **Onderzoeken** om de onderzoekskaart te bekijken.
+1. Selecteer **onderzoeken** om de kaart weer te geven.
 
-## <a name="use-the-investigation-graph-to-deep-dive"></a>Gebruik de onderzoeksgrafiek om diep te duiken
+## <a name="use-the-investigation-graph-to-deep-dive"></a>De onderzoek grafiek gebruiken om te dieper
 
-De onderzoeksgrafiek stelt analisten in staat om voor elk onderzoek de juiste vragen te stellen. De onderzoeksgrafiek helpt u de omvang van een potentiële beveiligingsbedreiging te begrijpen en te identificeren door relevante gegevens te correleren met een betrokken entiteit. U dieper duiken en elke entiteit in de grafiek onderzoeken door deze te selecteren en te kiezen tussen verschillende uitbreidingsopties.  
+In het onderzoek diagram kunnen analisten de juiste vragen stellen voor elk onderzoek. De onderzoek grafiek helpt u bij het begrijpen van het bereik en het identificeren van de hoofd oorzaak van een mogelijke beveiligings risico door relevante gegevens met een wille keurige entiteit te correleren. U kunt een diep gaande en onderzoek doen naar elke entiteit die in de grafiek wordt weer gegeven door deze te selecteren en te kiezen tussen verschillende uitbreidings opties.  
   
-De onderzoeksgrafiek geeft u de tekst:
+In het onderzoek diagram vindt u het volgende:
 
-- **Visuele context uit ruwe gegevens:** in de live, visuele grafiek worden entiteitsrelaties weergegeven die automatisch uit de ruwe gegevens worden geëxtraheerd. Hierdoor u eenvoudig verbindingen zien tussen verschillende gegevensbronnen.
+- **Visuele context van onbewerkte gegevens: in**de Live, visuele grafiek worden entiteits relaties weer gegeven die automatisch zijn geëxtraheerd uit de onbewerkte gegevens. Zo kunt u eenvoudig verbindingen tussen verschillende gegevens bronnen weer geven.
 
-- **Volledige detectie van het onderzoeksbereik:** breid uw onderzoeksbereik uit met ingebouwde verkenningsquery's om het volledige bereik van een inbreuk te laten zien.
+- **Volledige detectie van het onderzoek bereik**: Breid uw onderzoek uit met behulp van ingebouwde onderzoek query's om het volledige bereik van een schending te behalen.
 
-- **Ingebouwde onderzoeksstappen**: Gebruik vooraf gedefinieerde verkenningsopties om ervoor te zorgen dat u de juiste vragen stelt in het licht van een bedreiging.
+- **Geïntegreerde onderzoek stappen**: gebruik vooraf gedefinieerde opties om ervoor te zorgen dat u de juiste vragen in het vlak van een bedreiging vraagt.
 
-Ga als het gaat om het gebruik van de onderzoeksgrafiek:
+De onderzoek grafiek gebruiken:
 
-1. Selecteer een incident en selecteer **Vervolgens Onderzoeken**. Dit brengt je naar de onderzoeksgrafiek. De grafiek biedt een illustratieve kaart van de entiteiten die rechtstreeks zijn verbonden met de waarschuwing en elke bron die verder is verbonden.
+1. Selecteer een incident en selecteer vervolgens **onderzoeken**. Hiermee gaat u naar het onderzoek diagram. De grafiek bevat een illustrerende kaart van de entiteiten die rechtstreeks zijn verbonden met de waarschuwing en elke resource die u hebt verbonden.
 
    > [!IMPORTANT] 
-   > U het incident alleen onderzoeken als u de toewijzingsvelden van de entiteit hebt gebruikt wanneer u uw analytische regel instelt. De onderzoeksgrafiek vereist dat uw oorspronkelijke incident entiteiten bevat.
+   > U kunt het incident alleen onderzoeken als u de velden voor entiteits toewijzing hebt gebruikt bij het instellen van de analytische regel. Het onderzoek diagram vereist dat uw oorspronkelijke incident entiteiten bevat.
 
    ![Kaart weergeven](media/tutorial-investigate-cases/map1.png)
 
-1. Selecteer een entiteit die het deelvenster Entiteiten wilt **openen,** zodat u informatie over die entiteit bekijken.
+1. Selecteer een entiteit om het deel venster **entiteiten** te openen, zodat u informatie over die entiteit kunt controleren.
 
-    ![Entiteiten weergeven in kaart](media/tutorial-investigate-cases/map-entities.png)
+    ![Entiteiten in kaart weer geven](media/tutorial-investigate-cases/map-entities.png)
   
-1. Breid uw onderzoek uit door over elke entiteit te zweven om een lijst met vragen te onthullen die zijn ontworpen door onze beveiligingsexperts en analisten per entiteitstype om uw onderzoek te verdiepen. We noemen deze opties **exploratie query's**.
+1. Breid uw onderzoek uit door over te bewegen op elke entiteit om een lijst met vragen te tonen die zijn ontworpen door onze beveiligings experts en analisten per entiteits type om uw onderzoek te verdiepen. We noemen deze opties voor het **verkennen van query's**.
 
-    ![Meer informatie](media/tutorial-investigate-cases/exploration-cases.png)
+    ![Meer details bekijken](media/tutorial-investigate-cases/exploration-cases.png)
 
-   Op een computer u bijvoorbeeld gerelateerde waarschuwingen aanvragen. Als u een verkenningsquery selecteert, worden de resulterende titels weer aan de grafiek toegevoegd. In dit voorbeeld heeft het selecteren **van Gerelateerde waarschuwingen** de volgende waarschuwingen in de grafiek geretourneerd:
+   Op een computer kunt u bijvoorbeeld gerelateerde waarschuwingen aanvragen. Als u een onderzoek query selecteert, worden de resulterende vergunningen toegevoegd aan de grafiek. In dit voor beeld wordt het selecteren van **gerelateerde waarschuwingen** met de volgende waarschuwingen in de grafiek weer gegeven:
 
-    ![Gerelateerde waarschuwingen weergeven](media/tutorial-investigate-cases/related-alerts.png)
+    ![Gerelateerde waarschuwingen weer geven](media/tutorial-investigate-cases/related-alerts.png)
 
-1. Voor elke verkenningsquery u de optie selecteren om de resultaten van de ruwe gebeurtenis en de query die wordt gebruikt in Logboekanalyse te openen, door **Gebeurtenissen\>** te selecteren.
+1. Voor elke onderzoek query kunt u de optie selecteren voor het openen van de onbewerkte gebeurtenis resultaten en de query die in Log Analytics wordt gebruikt door **gebeurtenissen\>** te selecteren.
 
-1. Om het incident te begrijpen, geeft de grafiek u een parallelle tijdlijn.
+1. Om het incident te begrijpen, biedt de grafiek een parallelle tijd lijn.
 
-    ![Tijdlijn weergeven in kaart](media/tutorial-investigate-cases/map-timeline.png)
+    ![Tijd lijn weer geven in kaart](media/tutorial-investigate-cases/map-timeline.png)
 
-1. Zweef over de tijdlijn om te zien welke dingen op de grafiek op welk moment in de tijd hebben plaatsgevonden.
+1. Beweeg de muis aanwijzer over de tijd lijn om te zien welke items in de grafiek zich voordoen op welk moment.
 
-    ![Tijdlijn in kaart gebruiken om waarschuwingen te onderzoeken](media/tutorial-investigate-cases/use-timeline.png)
+    ![Tijd lijn gebruiken in kaart voor het onderzoeken van waarschuwingen](media/tutorial-investigate-cases/use-timeline.png)
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u geleerd hoe u aan de slag met het onderzoeken van incidenten met Azure Sentinel. Ga verder naar de zelfstudie voor [het reageren op bedreigingen met behulp van geautomatiseerde playbooks.](tutorial-respond-threats-playbook.md)
+In deze zelf studie hebt u geleerd hoe u aan de slag gaat met het onderzoeken van incidenten met behulp van Azure Sentinel. Ga verder met de zelf studie voor het [reageren op bedreigingen met behulp van automatische playbooks](tutorial-respond-threats-playbook.md).
 > [!div class="nextstepaction"]
-> [Reageer op bedreigingen om](tutorial-respond-threats-playbook.md) uw reacties op bedreigingen te automatiseren.
+> [Reageer op bedreigingen](tutorial-respond-threats-playbook.md) om uw reacties op bedreigingen te automatiseren.
 

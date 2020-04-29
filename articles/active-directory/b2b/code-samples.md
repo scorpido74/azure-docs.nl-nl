@@ -1,5 +1,5 @@
 ---
-title: B2B-samenwerkingscode en PowerShell-voorbeelden - Azure AD
+title: B2B-samenwerkings code en Power shell-voor beelden-Azure AD
 description: Code- en PowerShell-voorbeelden voor Azure Active Directory B2B-samenwerking
 services: active-directory
 ms.service: active-directory
@@ -13,10 +13,10 @@ ms.reviewer: elisolMS
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 03a7a9c0c9ed308944b57e7659fefa81178af78b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77368140"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Voorbeelden van de Azure Active Directory B2B-samenwerkingscode en PowerShell
@@ -26,7 +26,7 @@ U kunt externe gebruikers bulksgewijs uitnodigen voor een organisatie aan de han
 
 1. Het .CSV-bestand voorbereiden Maak een nieuw .CSV-bestand en noem dit bestand uitnodigings.csv. In dit voorbeeld wordt het bestand opgeslagen in C:\data. Dit bestand bevat de volgende informatie:
   
-   Name                  |  InvitedUserEmailAddress
+   Naam                  |  InvitedUserEmailAddress
    --------------------- | --------------------------
    Gmail B2B-genodigde     | b2binvitee@gmail.com
    Outlook B2B-genodigde   | b2binvitee@outlook.com
@@ -56,7 +56,7 @@ Deze cmdlet stuurt een uitnodiging naar de e-mailadressen in invitations.csv. Aa
 - Berichten naar CC’s verzenden of e-mailberichten helemaal onderdrukken
 
 ## <a name="code-sample"></a>Codevoorbeeld
-Hier laten we zien hoe u de uitnodigings-API in de ‘alleen-appmodus’ kunt aanroepen om de aflossings-URL op te halen voor de resource waarvoor u de B2B-gebruiker uitnodigt. Het doel is het verzenden van een aangepaste uitnodigingsmail. De e-mail kan worden samengesteld met een HTTP-client, zodat u aanpassen hoe het eruit ziet en verzenden via de Microsoft Graph API.
+Hier laten we zien hoe u de uitnodigings-API in de ‘alleen-appmodus’ kunt aanroepen om de aflossings-URL op te halen voor de resource waarvoor u de B2B-gebruiker uitnodigt. Het doel is het verzenden van een aangepaste uitnodigingsmail. Het e-mail bericht kan worden samengesteld met een HTTP-client, zodat u kunt aanpassen hoe het eruitziet en het verzendt via de Microsoft Graph-API.
 
 ```csharp
 namespace SampleInviteApp

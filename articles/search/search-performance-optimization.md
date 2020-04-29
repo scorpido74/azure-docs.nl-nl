@@ -1,7 +1,7 @@
 ---
 title: Schalen voor prestaties
 titleSuffix: Azure Cognitive Search
-description: Leer technieken en aanbevolen procedures voor het afstemmen van Azure Cognitive Search-prestaties en het configureren van optimale schaal.
+description: Leer technieken en aanbevolen procedures voor het afstemmen van de prestaties van Azure Cognitive Search en het configureren van de optimale schaal.
 manager: nitinme
 author: LiamCavanagh
 ms.author: liamca
@@ -10,120 +10,120 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 7c2857de0613be400f83544e1dabe079b7497bbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77212388"
 ---
-# <a name="scale-for-performance-on-azure-cognitive-search"></a>Schalen voor prestaties op Azure Cognitive Search
+# <a name="scale-for-performance-on-azure-cognitive-search"></a>Schaal voor prestaties op Azure Cognitive Search
 
-In dit artikel worden aanbevolen procedures beschreven voor geavanceerde scenario's met geavanceerde vereisten voor schaalbaarheid en beschikbaarheid.
+In dit artikel worden aanbevolen procedures beschreven voor geavanceerde scenario's met geavanceerde vereisten voor schaal baarheid en beschik baarheid.
 
-## <a name="start-with-baseline-numbers"></a>Begin met basislijnnummers
+## <a name="start-with-baseline-numbers"></a>Beginnen met basislijn nummers
 
-Voordat u een grotere implementatie-inspanning uitvoert, moet u weten hoe een typische querybelasting eruit ziet. Met de volgende richtlijnen u bij de basislijnquerynummers komen.
+Voordat u een grotere implementatie inspanning inneemt, moet u weten hoe een typische query belasting eruitziet. De volgende richt lijnen kunnen u helpen bij het aankomen van basislijn query nummers.
 
-1. Kies een doellatentie (of maximale hoeveelheid tijd) die een typische zoekaanvraag moet inbeslagnemen om te voltooien.
+1. Kies een doel latentie (of maximale tijds duur) waarmee een typische zoek opdracht moet worden voltooid.
 
-1. Maak en test een echte workload met uw zoekservice met een realistische gegevensset om deze latentiesnelheden te meten.
+1. Maak en test een echte werk belasting op uw zoek service met een realistische gegevensset om deze latentie tarieven te meten.
 
-1. Begin met een laag aantal query's per seconde (QPS) en verhoog vervolgens geleidelijk het aantal dat in de test wordt uitgevoerd totdat de querylatentie onder het vooraf gedefinieerde doel zakt. Dit is een belangrijke benchmark om u te helpen plannen voor schaal als uw toepassing groeit in gebruik.
+1. Begin met een laag aantal query's per seconde (QPS) en verhoog vervolgens geleidelijk het aantal dat in de test wordt uitgevoerd totdat de query latentie onder het vooraf gedefinieerde doel daalt. Dit is een belang rijk referentie punt om u te helpen bij het plannen van de schaal als uw toepassing groeit in gebruik.
 
-1. Hergebruik HTTP-verbindingen waar mogelijk. Als u de Azure Cognitive Search .NET SDK gebruikt, betekent dit dat u een instantie of [SearchIndexClient-instantie](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) opnieuw moet gebruiken en als u de REST-API gebruikt, moet u één HttpClient opnieuw gebruiken.
+1. Gebruik waar mogelijk HTTP-verbindingen. Als u de Azure Cognitive Search .NET SDK gebruikt, betekent dit dat u een instantie of [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) -exemplaar opnieuw moet gebruiken. Als u de rest API gebruikt, moet u één httpclient maakt opnieuw gebruiken.
 
-1. Varieer de inhoud van queryaanvragen, zodat er wordt gezocht in verschillende delen van uw index. Variatie is belangrijk, want als u voortdurend dezelfde zoekaanvragen uitvoert, zal het incacheren van gegevens ervoor zorgen dat de prestaties er beter uitzien dan met een meer uiteenlopende queryset.
+1. U kan de query op aanvragen van query's variëren zodat de zoek actie plaatsvindt in verschillende onderdelen van de index. Variatie is belang rijk omdat als u dezelfde Zoek opdrachten doorlopend uitvoert, het opslaan van gegevens in de cache wordt gestart, waardoor de prestaties kunnen worden verbeterd.
 
-1. Varieer de structuur van queryaanvragen zodat u verschillende soorten query's krijgt. Niet elke zoekopdracht presteert op hetzelfde niveau. Een documentopzoek- of zoeksuggestie is bijvoorbeeld meestal sneller dan een query met een aanzienlijk aantal facetten en filters. Testsamenstelling moet verschillende query's bevatten, in ongeveer dezelfde verhoudingen als u zou verwachten in de productie.  
+1. U kunt de structuur van query-aanvragen variëren zodat u verschillende soorten query's krijgt. Niet alle zoek query's moeten op hetzelfde niveau worden uitgevoerd. Bijvoorbeeld: een zoek-of zoek voorstel voor documenten is doorgaans sneller dan een query met een groot aantal facetten en filters. De test samenstelling moet verschillende query's bevatten, in ongeveer dezelfde verhouding als bij de productie.  
 
-Tijdens het maken van deze testworkloads zijn er enkele kenmerken van Azure Cognitive Search om in gedachten te houden:
+Tijdens het maken van deze test werkbelastingen zijn er enkele kenmerken van Azure Cognitive Search die u moet onthouden:
 
-+ Het is mogelijk overbelasting van uw service door te veel zoekopdrachten in een keer te duwen. Wanneer dit gebeurt, ziet u HTTP 503-antwoordcodes. Als u een 503 tijdens het testen wilt vermijden, begint u met verschillende reeksen zoekaanvragen om de verschillen in latentiepercentages te zien terwijl u meer zoekaanvragen toevoegt.
++ Het is mogelijk om uw service te overbelasten door te veel zoek query's tegelijk te pushen. Als dit gebeurt, worden HTTP 503-antwoord codes weer geven. Als u een 503 tijdens het testen wilt voor komen, kunt u beginnen met verschillende bereiken van zoek opdrachten om de verschillen in latentie te zien wanneer u meer zoek aanvragen toevoegt.
 
-+ Azure Cognitive Search voert geen indexeringstaken uit op de achtergrond. Als uw service query- en indexeringsworkloads gelijktijdig verwerkt, houdt u hier rekening mee door taken te indexeren in uw querytests of door opties te verkennen voor het uitvoeren van indexeringstaken tijdens de daluren.
++ Met Azure Cognitive Search worden index taken niet op de achtergrond uitgevoerd. Als uw service tegelijkertijd query's uitvoert en werk belastingen gelijktijdig indexeert, moet u rekening houden met het introduceren van index taken in uw query tests of door opties te verkennen voor het uitvoeren van index taken tijdens de piek uren.
 
 > [!Tip]
-> U een realistische querybelasting simuleren met behulp van load testing-hulpprogramma's. Probeer [het testen van laden met Azure DevOps](https://docs.microsoft.com/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) of gebruik een van deze [alternatieven.](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops#alternatives)
+> U kunt een realistische query belasting simuleren met behulp van hulpprogram ma's voor het testen van de belasting. Probeer [tests met Azure DevOps te laden](https://docs.microsoft.com/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) of gebruik een van deze [alternatieven](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops#alternatives).
 
-## <a name="scale-for-high-query-volume"></a>Schalen voor hoog queryvolume
+## <a name="scale-for-high-query-volume"></a>Schaal voor hoog query volume
 
-Een service wordt overbelast wanneer query's te lang duren of wanneer de service aanvragen begint te laten vallen. Als dit gebeurt, u het probleem op twee manieren aanpakken:
+Een service wordt overbelast wanneer query's te lang duren of wanneer de service aanvragen verwijdert. Als dit het geval is, kunt u het probleem op een van de volgende twee manieren aanpakken:
 
 + **Replica's toevoegen**  
 
-  Elke replica is een kopie van uw gegevens, waardoor de service saldoaanvragen kan laden tegen meerdere kopieën.  Alle taakverdeling en replicatie van gegevens wordt beheerd door Azure Cognitive Search en u het aantal replica's dat voor uw service is toegewezen op elk gewenst moment wijzigen. U maximaal 12 replica's toewijzen in een standaardzoekservice en 3 replica's in een zoekservice Basic. Replica's kunnen worden aangepast vanuit de [Azure-portal](search-create-service-portal.md) of [PowerShell.](search-manage-powershell.md)
+  Elke replica is een kopie van uw gegevens, zodat de service aanvragen voor meerdere exemplaren kan verdelen.  Alle taak verdeling en replicatie van gegevens worden beheerd door Azure Cognitive Search en u kunt op elk gewenst moment het aantal replica's aanpassen dat voor uw service wordt toegewezen. U kunt Maxi maal 12 replica's toewijzen in een Standard-zoek service en 3 replica's in een Basic Search-service. Replica's kunnen worden aangepast op basis van de [Azure Portal](search-create-service-portal.md) of [Power shell](search-manage-powershell.md).
 
-+ **Een nieuwe service op een hoger niveau maken**  
++ **Een nieuwe service in een hogere laag maken**  
 
-  Azure Cognitive Search wordt geleverd in een [aantal lagen](https://azure.microsoft.com/pricing/details/search/) en elk biedt verschillende niveaus van prestaties. In sommige gevallen u zoveel query's hebben dat de laag waarop u zich bevindt niet voldoende doorlooptijd kan bieden, zelfs niet wanneer replica's zijn uitgeschakeld. In dit geval u overwegen om over te stappen op een hoger presterende laag, zoals de standaards3-laag, die is ontworpen voor scenario's met grote aantallen documenten en extreem hoge queryworkloads.
+  Azure Cognitive Search maakt deel uit [van een aantal lagen](https://azure.microsoft.com/pricing/details/search/) en elk abonnement biedt verschillende prestatie niveaus. In sommige gevallen hebt u mogelijk zoveel query's die de laag die u aanmeldt, niet voldoende opleverbaar bieden, zelfs wanneer er replica's worden benut. In dit geval kunt u overwegen om over te stappen op een hoger niveau, zoals de standaard S3-laag, ontworpen voor scenario's met een groot aantal documenten en extreem hoge query werkbelastingen.
 
-## <a name="scale-for-slow-individual-queries"></a>Schalen voor langzame afzonderlijke query's
+## <a name="scale-for-slow-individual-queries"></a>Schaal voor langzame afzonderlijke query's
 
-Een andere reden voor hoge latentietarieven is een enkele query die te lang duurt om te voltooien. In dit geval helpt het toevoegen van replica's niet. Twee mogelijke opties die kunnen helpen zijn het volgende:
+Een andere reden voor hoge latentie is dat een enkele query te lang duurt om te worden voltooid. In dit geval is het toevoegen van replica's geen uitkomst. Twee mogelijke opties die kunnen helpen bij het volgende:
 
-+ **Partities vergroten**
++ **Partities verhogen**
 
-  Een partitie splitst gegevens over extra computerbronnen. Twee partities splitsen gegevens in de helft, een derde partitie splitst het in derden, enzovoort. Een positief neveneffect is dat langzamere query's soms sneller presteren als gevolg van parallelle computing. We hebben parallellen opgemerkt op query's met een lage selectiviteit, zoals query's die overeenkomen met veel documenten of facetten die betrekking hebben op een groot aantal documenten. Aangezien een significante berekening vereist is om de relevantie van de documenten te scoren of om het aantal documenten te tellen, helpt het toevoegen van extra partities om query's sneller te voltooien.  
+  Een partitie splitst gegevens over extra computer bronnen. Met twee partities worden gegevens in de helft gesplitst, een derde partitie gesplitst in derde, enzovoort. Eén positieve neven effect is dat tragere query's soms sneller worden uitgevoerd als gevolg van parallelle computing. We hebben op parallel Lise ring genoteerd dat er weinig selectiviteit-query's zijn, zoals query's die overeenkomen met veel documenten, of facetten die aantallen bieden over een groot aantal documenten. Aangezien er een belang rijke berekening is vereist om de relevancy van de documenten te beoordelen, of om het aantal documenten te tellen, kunnen er met extra partities sneller query's worden uitgevoerd.  
    
-  Er kunnen maximaal 12 partities zijn in de standaardzoekservice en 1 partitie in de zoekservice Basic. Partities kunnen worden aangepast via de [Azure-portal](search-create-service-portal.md) of [PowerShell.](search-manage-powershell.md)
+  Er kunnen Maxi maal 12 partities in de Standard Search-service en 1 partitie in de Basic Search-service zijn. Partities kunnen worden aangepast op basis van de [Azure Portal](search-create-service-portal.md) of [Power shell](search-manage-powershell.md).
 
-+ **Hoge kardinaliteitvelden beperken**
++ **Velden met hoge kardinaliteit beperken**
 
-  Een veld met hoge kardinaliteit bestaat uit een facetable of filterbaar veld met een aanzienlijk aantal unieke waarden en verbruikt daardoor aanzienlijke bronnen bij het berekenen van resultaten. Als u bijvoorbeeld een product-id of beschrijvingsveld als facetable/filterbaar instelt, telt dit als een hoge kardinaliteit omdat de meeste waarden van document tot document uniek zijn. Beperk waar mogelijk het aantal velden met hoge kardinaliteit.
+  Een hoog veld voor kardinaliteit bestaat uit een facetbaar of filterbaar veld met een groot aantal unieke waarden. als gevolg hiervan worden aanzienlijke bronnen verbruikt bij het berekenen van resultaten. Zo kunt u bijvoorbeeld een product-ID of beschrijvings veld instellen als facetable/filterbaar als hoge kardinaliteit, omdat de meeste waarden van document naar document uniek zijn. Beperk waar mogelijk het aantal velden met hoge kardinaliteit.
 
-+ **Zoeklaag vergroten**  
++ **Zoek niveau verhogen**  
 
-  Door naar een hogere Azure Cognitive Search-laag te gaan, kan dit een andere manier zijn om de prestaties van langzame query's te verbeteren. Elke hogere laag biedt snellere CPU's en meer geheugen, die beide een positieve invloed hebben op de queryprestaties.
+  Het verplaatsen naar een hogere Azure Cognitive Search-laag kan een andere manier zijn om de prestaties van trage query's te verbeteren. Elke hogere laag biedt snellere Cpu's en meer geheugen, beide met een positieve invloed op de prestaties van query's.
 
-## <a name="scale-for-availability"></a>Schaal voor beschikbaarheid
+## <a name="scale-for-availability"></a>Schaal voor Beschik baarheid
 
-Replica's helpen niet alleen de latentie van query's te verminderen, maar kunnen ook een hoge beschikbaarheid mogelijk maken. Met één replica moet u periodieke downtime verwachten als gevolg van het opnieuw opstarten van de server na software-updates of voor andere onderhoudsgebeurtenissen die zullen plaatsvinden. Daarom is het belangrijk om te overwegen of uw toepassing een hoge beschikbaarheid van zoekopdrachten (query's) en schrijfbewerkingen vereist (indexeren van gebeurtenissen). Azure Cognitive Search biedt SLA-opties voor alle betaalde zoekaanbiedingen met de volgende kenmerken:
+Replica's helpen niet alleen de latentie van query's te verminderen, maar kunnen ook hoge Beschik baarheid toestaan. Met één replica moet u een periodieke downtime verwachten omdat de server opnieuw wordt opgestart na software-updates of voor andere onderhouds gebeurtenissen die optreden. Daarom is het belang rijk om te overwegen of uw toepassing hoge Beschik baarheid van zoek opdrachten (query's) vereist en schrijf bewerkingen (indexerings gebeurtenissen). Azure Cognitive Search biedt SLA-opties voor alle betaalde zoek aanbiedingen met de volgende kenmerken:
 
-+ Twee replica's voor een hoge beschikbaarheid van alleen-lezen workloads (query's)
++ Twee replica's voor hoge Beschik baarheid van alleen-lezen workloads (query's)
 
-+ Drie of meer replica's voor een hoge beschikbaarheid van lees-schrijfworkloads (query's en indexering)
++ Drie of meer replica's voor hoge Beschik baarheid van werk belastingen voor lezen/schrijven (query's en indexering)
 
-Ga voor meer informatie hierover naar de [Azure Cognitive Search Service Level Agreement](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+Ga naar de [Azure Cognitive Search Service Level Agreement](https://azure.microsoft.com/support/legal/sla/search/v1_0/)voor meer informatie hierover.
 
-Aangezien replica's kopieën van uw gegevens zijn, kan Azure Cognitive Search met meerdere replica's opnieuw opstarten en onderhoud uitvoeren tegen één replica, terwijl de uitvoering van query's wordt voortgezet op andere replica's. Omgekeerd, als u replica's wegte nemen, zult u queryprestatiesdegradatie oplopen, ervan uitgaande dat deze replica's een onderbenutte bron waren.
+Aangezien replica's kopieën zijn van uw gegevens, kunnen met meerdere replica's Azure Cognitive Search de computer opnieuw opstarten en onderhoud uitvoeren voor één replica, terwijl de uitvoering van de query wordt voortgezet op andere replica's. Als u replica's hebt verwijderd, kunt u de prestaties van de query afnemen, ervan uitgaande dat deze replica's een minder gebruikte bron zijn.
 
-## <a name="scale-for-geo-distributed-workloads-and-geo-redundancy"></a>Schaal voor geo-gedistribueerde workloads en georedundantie
+## <a name="scale-for-geo-distributed-workloads-and-geo-redundancy"></a>Schaal voor geografisch gedistribueerde workloads en geo-redundantie
 
-Voor geo-gedistribueerde workloads hebben gebruikers die zich ver van het hostdatacenter bevinden, hogere latentiesnelheden. Een beperking is het leveren van meerdere zoekservices in regio's die dichter bij deze gebruikers liggen.
+Voor geografisch gedistribueerde werk belastingen hebben gebruikers die zich ver van het host-data centrum bevinden een hogere latentie snelheid. Een beperking is het inrichten van meerdere zoek services in regio's met dichter nabijheid voor deze gebruikers.
 
-Azure Cognitive Search biedt momenteel geen geautomatiseerde methode voor georeplicerende Azure Cognitive Search-indexen in verschillende regio's, maar er zijn enkele technieken die kunnen worden gebruikt die dit proces eenvoudig kunnen implementeren en beheren. Deze worden beschreven in de volgende paar secties.
+Azure Cognitive Search biedt momenteel geen automatische methode voor het geo-repliceren van Azure Cognitive Search-indexen in regio's, maar er zijn enkele technieken die kunnen worden gebruikt om dit proces eenvoudig te implementeren en te beheren. Deze worden in de volgende paar secties beschreven.
 
-Het doel van een geogedistribueerde set zoekservices is om twee of meer indexen beschikbaar te hebben in twee of meer regio's, waarbij een gebruiker wordt doorgestuurd naar de Azure Cognitive Search-service die de laagste latentie biedt zoals in dit voorbeeld wordt gezien:
+Het doel van een geografisch gedistribueerde set Zoek Services bestaat uit twee of meer indexen die beschikbaar zijn in twee of meer regio's, waarbij een gebruiker wordt doorgestuurd naar de Azure Cognitive Search-service die de laagste latentie levert zoals in dit voor beeld wordt weer gegeven:
 
-   ![Kruisoverzicht van services per regio][1]
+   ![Meerdere tabbladen van services per regio][1]
 
-### <a name="keep-data-synchronized-across-multiple-services"></a>Gegevens gesynchroniseerd houden voor meerdere services
+### <a name="keep-data-synchronized-across-multiple-services"></a>Gegevens gesynchroniseerd blijven tussen meerdere services
 
-Er zijn twee opties om uw gedistribueerde zoekservices gesynchroniseerd te houden, die bestaan uit het gebruik van de [Azure Cognitive Search Indexer](search-indexer-overview.md) of de Push API (ook wel de [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)genoemd).  
+Er zijn twee opties om uw gedistribueerde zoek services synchroon te houden, die bestaan uit het gebruik van de [azure Cognitive Search indexer](search-indexer-overview.md) of de Push-API (ook wel de [Azure Cognitive Search rest API](https://docs.microsoft.com/rest/api/searchservice/)genoemd).  
 
-### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Indexers gebruiken voor het bijwerken van inhoud op meerdere services
+### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Indexeer functies gebruiken voor het bijwerken van inhoud op meerdere services
 
-Als u al indexeren op één service gebruikt, u een tweede indexer op een tweede service configureren om hetzelfde gegevensbronobject te gebruiken en gegevens van dezelfde locatie te halen. Elke service in elke regio heeft zijn eigen indexeren en een doelindex (uw zoekindex wordt niet gedeeld, wat betekent dat gegevens worden gedupliceerd), maar elke indexer verwijst naar dezelfde gegevensbron.
+Als u Indexeer functie al gebruikt voor één service, kunt u een tweede Indexeer functie configureren voor een tweede service om hetzelfde gegevens bron object te gebruiken en gegevens uit dezelfde locatie op te halen. Elke service in elke regio heeft een eigen Indexeer functie en een doel index (uw zoek index wordt niet gedeeld, wat betekent dat de gegevens worden gedupliceerd), maar elke Indexeer functie verwijst naar dezelfde gegevens bron.
 
-Hier is een high-level visuele van hoe die architectuur eruit zou zien.
+Hier volgt een globaal visueel element van wat die architectuur eruit zou zien.
 
-   ![Enkele gegevensbron met gedistribueerde indexer- en servicecombinaties][2]
+   ![Eén gegevens bron met combi Naties van gedistribueerde Indexeer functies en services][2]
 
-### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>REST API's gebruiken voor het pushen van inhoudsupdates op meerdere services
+### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>REST-Api's gebruiken voor het pushen van inhouds updates op meerdere services
 
-Als u de Azure Cognitive Search REST API gebruikt om [inhoud in uw Azure Cognitive Search-index te pushen,](https://docs.microsoft.com/rest/api/searchservice/update-index)u uw verschillende zoekservices synchroon houden door wijzigingen in alle zoekservices te pushen wanneer een update nodig is. Zorg er in uw code voor dat u gevallen verwerkt waarin een update naar één zoekservice mislukt, maar slaagt voor andere zoekservices.
+Als u de Azure Cognitive Search-REST API gebruikt om [inhoud in uw Azure Cognitive search-index te pushen](https://docs.microsoft.com/rest/api/searchservice/update-index), kunt u uw verschillende Zoek Services synchroon laten door wijzigingen in alle zoek services te pushen wanneer een update is vereist. Zorg ervoor dat u in uw code cases afhandelt waarbij een update naar één zoek service mislukt, maar slaagt voor andere zoek services.
 
-## <a name="leverage-azure-traffic-manager"></a>Azure Traffic Manager gebruiken
+## <a name="leverage-azure-traffic-manager"></a>Gebruik Azure Traffic Manager
 
-[Met Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) u aanvragen doorsturen naar meerdere geo-gelokaliseerde websites die vervolgens worden ondersteund door meerdere zoekservices. Een voordeel van traffic manager is dat het Azure Cognitive Search kan onderzoeken om ervoor te zorgen dat het beschikbaar is en gebruikers te leiden naar alternatieve zoekservices in het geval van downtime. Als u bovendien zoekaanvragen routert via Azure-websites, u met Azure Traffic Manager balansaanvragen laden waarin de website is up, maar niet Azure Cognitive Search. Hier is een voorbeeld van wat de architectuur die Traffic Manager gebruikt.
+Met [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) kunt u aanvragen naar meerdere geo-locaties routeren die vervolgens door meerdere zoek services worden ondersteund. Een voor deel van het Traffic Manager is dat het Azure Cognitive Search kan testen om er zeker van te zijn dat het beschikbaar is en gebruikers kan omleiden naar alternatieve Zoek Services in het geval van downtime. Daarnaast kunt u, als u zoek aanvragen begeleidt via Azure-websites, in azure Traffic Manager taken verdelen waarbij de website wel of niet Azure Cognitive Search is. Hier volgt een voor beeld van de architectuur die gebruikmaakt van Traffic Manager.
 
-   ![Cross-tab van services per regio, met centrale Verkeersmanager][3]
+   ![Meerdere tabbladen van services per regio, met centrale Traffic Manager][3]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Servicelimieten](search-limits-quotas-capacity.md)voor meer informatie over de prijsniveaus en servicelimieten voor elk niveau. Zie [Plannen voor capaciteit](search-capacity-planning.md) voor meer informatie over partitie- en replicacombinaties.
+Zie [service limieten](search-limits-quotas-capacity.md)voor meer informatie over de prijs categorieën en de limieten voor services voor elk van deze. Zie [capaciteit plannen](search-capacity-planning.md) voor meer informatie over combi Naties van partities en replica's.
 
-Voor een discussie over de prestaties en demonstraties van de technieken besproken in dit artikel, bekijk de volgende video:
+Bekijk de volgende video voor een bespreking van de prestaties en demonstraties van de technieken die in dit artikel worden besproken:
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
 > 

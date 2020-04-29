@@ -9,10 +9,10 @@ ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: cc53f7ae6eb6254eaa05bf643ecfa0188650df95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77461855"
 ---
 In deze sectie wordt beschreven hoe u een IoT-hub maakt met behulp van de [Azure-portal](https://portal.azure.com).

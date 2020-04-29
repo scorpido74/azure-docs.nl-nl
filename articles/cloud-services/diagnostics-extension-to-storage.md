@@ -1,6 +1,6 @@
 ---
 title: Diagnostische gegevens opslaan en weergeven in Azure Storage
-description: Meer informatie over het verzamelen van Azure-diagnostische gegevens in een Azure Storage-account, zodat u deze bekijken met een van de verschillende beschikbare hulpprogramma's.
+description: Meer informatie over het verzamelen van diagnostische gegevens van Azure in een Azure Storage-account, zodat u deze kunt bekijken met een van de beschik bare hulpprogram ma's.
 services: azure-monitor
 author: bwren
 ms.service: azure-monitor
@@ -9,17 +9,17 @@ ms.date: 08/01/2016
 ms.author: bwren
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: 17430330d068fb55b45f073afecb8ba348286cb5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77472672"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Diagnostische gegevens opslaan en weergeven in Azure Storage
-Diagnostische gegevens worden niet permanent opgeslagen, tenzij u deze overzet naar de Microsoft Azure-opslagemulator of naar Azure-opslag. Eenmaal in opslag, kan het worden bekeken met een van de verschillende beschikbare tools.
+Diagnostische gegevens worden niet permanent opgeslagen, tenzij u deze overdraagt naar de Microsoft Azure Storage emulator of naar Azure Storage. Eenmaal in de opslag kan het worden weer gegeven met een van de beschik bare hulpprogram ma's.
 
-## <a name="specify-a-storage-account"></a>Een opslagaccount opgeven
-U geeft het opslagaccount op dat u wilt gebruiken in het bestand ServiceConfiguration.cscfg. De accountgegevens worden gedefinieerd als een verbindingstekenreeks in een configuratie-instelling. In het volgende voorbeeld wordt de standaardverbindingstekenreeks weergegeven die is gemaakt voor een nieuw Cloud Service-project in Visual Studio:
+## <a name="specify-a-storage-account"></a>Een opslag account opgeven
+U geeft het opslag account op dat u wilt gebruiken in het ServiceConfiguration. cscfg-bestand. De account gegevens worden gedefinieerd als een connection string in een configuratie-instelling. In het volgende voor beeld ziet u de standaard connection string gemaakt voor een nieuw Cloud service project in Visual Studio:
 
 ```
     <ConfigurationSettings>
@@ -27,57 +27,57 @@ U geeft het opslagaccount op dat u wilt gebruiken in het bestand ServiceConfigur
     </ConfigurationSettings>
 ```
 
-U deze verbindingstekenreeks wijzigen om accountgegevens voor een Azure-opslagaccount te verstrekken.
+U kunt deze connection string wijzigen om account gegevens op te geven voor een Azure-opslag account.
 
-Afhankelijk van het type diagnostische gegevens dat wordt verzameld, gebruikt Azure Diagnostics de Blob-service of de tabelservice. In de volgende tabel worden de gegevensbronnen weergegeven die blijven bestaan en de indeling ervan.
+Afhankelijk van het type diagnostische gegevens dat wordt verzameld, gebruikt Azure Diagnostics de Blob service of de Table service. De volgende tabel geeft een lijst van de gegevens bronnen die persistent zijn en de indeling.
 
-| Gegevensbron | Opslagindeling |
+| Gegevensbron | Opslag indeling |
 | --- | --- |
 | Azure-logboeken |Tabel |
-| IIS 7.0-logboeken |Blob |
+| IIS 7,0-logboeken |Blob |
 | Logboeken van Azure Diagnostics-infrastructuur |Tabel |
-| Logboeken van mislukte aanvraagtracering |Blob |
-| Logboeken voor Windows-gebeurtenissen |Tabel |
+| Logboeken met traceringen van mislukte aanvragen |Blob |
+| Windows-gebeurtenis logboeken |Tabel |
 | Prestatiemeteritems |Tabel |
 | Crashdumps |Blob |
 | Aangepaste foutenlogboeken |Blob |
 
-## <a name="transfer-diagnostic-data"></a>Diagnostische gegevens overbrengen
-Voor SDK 2.5 en hoger kan het verzoek om diagnostische gegevens over te dragen via het configuratiebestand plaatsvinden. U diagnostische gegevens overdragen met geplande intervallen zoals opgegeven in de configuratie.
+## <a name="transfer-diagnostic-data"></a>Diagnostische gegevens overdragen
+Voor SDK 2,5 en hoger kan de aanvraag voor het overdragen van diagnostische gegevens plaatsvinden via het configuratie bestand. U kunt Diagnostische gegevens op geplande intervallen overdragen zoals opgegeven in de configuratie.
 
-Voor SDK 2.4 en vorige u vragen om de diagnostische gegevens zowel via het configuratiebestand als programmatisch over te dragen. De programmatische aanpak stelt u ook in staat om on-demand transfers te doen.
+Voor SDK 2,4 en eerder kunt u aanvragen voor het overdragen van de diagnostische gegevens via het configuratie bestand en programmatisch. Via de programmatische benadering kunt u ook on-demand overdrachten uitvoeren.
 
 > [!IMPORTANT]
-> Wanneer u diagnostische gegevens overdraagt naar een Azure-opslagaccount, brengt u kosten met zich mee voor de opslagbronnen die uw diagnostische gegevens gebruiken.
+> Wanneer u Diagnostische gegevens overbrengt naar een Azure-opslag account, worden er kosten in rekening gebracht voor de opslag resources die door uw diagnostische gegevens worden gebruikt.
 > 
 > 
 
 ## <a name="store-diagnostic-data"></a>Diagnostische gegevens opslaan
-Logboekgegevens worden opgeslagen in blob- of tabelopslag met de volgende namen:
+Logboek gegevens worden opgeslagen in BLOB-of tabel opslag met de volgende namen:
 
 **Tabellen**
 
-* **WadLogsTable** - Logs geschreven in code met behulp van de trace listener.
-* **WADDiagnosticInfrastructureLogsTable** - Diagnostische monitor- en configuratiewijzigingen.
-* **WADDirectoriesTable** – Mappen die de diagnostische monitor controleert.  Dit omvat IIS-logboeken, IIS-logboeken met mislukte aanvragen en aangepaste mappen.  De locatie van het bloblogboekbestand wordt opgegeven in het veld Container en de naam van de blob bevindt zich in het veld Relativepath.  Het veld AbsolutePath geeft de locatie en naam van het bestand aan zoals het bestond op de virtuele Azure-machine.
-* **WADPerformanceCountersTable** – Prestatiemeteritems.
-* **WADWindowsEventLogsTable** – Windows Event logs.
+* **WadLogsTable** : Logboeken geschreven in code met behulp van de traceer-listener.
+* **WADDiagnosticInfrastructureLogsTable** : diagnostische monitor-en configuratie wijzigingen.
+* **WADDirectoriesTable** : de mappen die door de diagnostische monitor worden bewaakt.  Dit zijn onder andere IIS-logboeken, IIS-aanvraag logboeken en aangepaste directory's.  De locatie van het BLOB-logboek bestand wordt opgegeven in het container veld en de naam van de BLOB bevindt zich in het veld RelativePath.  Het veld AbsolutePath geeft de locatie en de naam van het bestand aan zoals het aanwezig is op de virtuele Azure-machine.
+* **WADPerformanceCountersTable** : prestatie meter items.
+* **WADWindowsEventLogsTable** : Windows-gebeurtenis Logboeken.
 
 **Blobs**
 
-* **wad-control-container** – (Alleen voor SDK 2.4 en vorige) Bevat de XML-configuratiebestanden die de Azure-diagnose regelt.
-* **wad-iis-failedreqlogfiles** – Bevat informatie uit IIS Failed Request-logboeken.
-* **wad-iis-logfiles** – Bevat informatie over IIS-logboeken.
-* **'op maat'** – Een aangepaste container op basis van het configureren van mappen die worden gecontroleerd door de diagnostische monitor.  De naam van deze blobcontainer wordt opgegeven in WADDirectoriesTable.
+* **wad-Control-container** – (alleen voor SDK 2,4 en eerder) bevat de XML-configuratie bestanden die de diagnostische gegevens van Azure beheren.
+* **wad-IIS-failedreqlogfiles** – bevat informatie uit logboeken voor mislukte aanvragen van IIS.
+* **wad-IIS-logboek bestanden** – bevat informatie over IIS-logboeken.
+* **aangepast** : een aangepaste container die is gebaseerd op het configureren van mappen die worden bewaakt door de diagnostische monitor.  De naam van deze BLOB-container wordt opgegeven in WADDirectoriesTable.
 
-## <a name="tools-to-view-diagnostic-data"></a>Hulpprogramma's voor het weergeven van diagnostische gegevens
-Er zijn verschillende tools beschikbaar om de gegevens te bekijken nadat deze naar opslag zijn overgebracht. Bijvoorbeeld:
+## <a name="tools-to-view-diagnostic-data"></a>Hulpprogram ma's voor het weer geven van diagnostische gegevens
+Er zijn verschillende hulpprogram ma's beschikbaar voor het weer geven van de gegevens nadat deze zijn overgebracht naar opslag. Bijvoorbeeld:
 
-* Server Explorer in Visual Studio - Als u de Azure Tools voor Microsoft Visual Studio hebt geïnstalleerd, u het Azure-opslagknooppunt in Server Explorer gebruiken om alleen-lezen blob- en tabelgegevens van uw Azure-opslagaccounts weer te geven. U gegevens weergeven van uw emulatoraccount voor lokale opslag en ook van opslagaccounts die u voor Azure hebt gemaakt. Zie [Opslagbronnen bladeren en beheren met Server Explorer](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)voor meer informatie.
-* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) is een zelfstandige app waarmee u eenvoudig werken met Azure Storage-gegevens op Windows, OSX en Linux.
-* [Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) bevat Azure Diagnostics Manager waarmee u de diagnostische gegevens bekijken, downloaden en beheren die worden verzameld door de toepassingen die op Azure worden uitgevoerd.
+* Server Explorer in Visual Studio: als u de Azure-Hulpprogram Ma's voor micro soft Visual Studio hebt geïnstalleerd, kunt u het knoop punt Azure Storage in Server Explorer gebruiken om alleen-lezen Blob-en tabel gegevens uit uw Azure-opslag accounts weer te geven. U kunt gegevens weer geven vanuit uw lokale opslag emulator-account en ook van opslag accounts die u hebt gemaakt voor Azure. Zie [opslag resources doorzoeken en beheren met Server Explorer](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)voor meer informatie.
+* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) is een zelfstandige app waarmee u eenvoudig met Azure Storage gegevens kunt werken in Windows, OSX en Linux.
+* [Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) bevat Azure Diagnostics Manager waarmee u de diagnostische gegevens kunt weer geven, downloaden en beheren die zijn verzameld door de toepassingen die worden uitgevoerd op Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
-[De stroom in een Cloud Services-toepassing traceren met Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
+[De stroom in een Cloud Services toepassing traceren met Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 
 

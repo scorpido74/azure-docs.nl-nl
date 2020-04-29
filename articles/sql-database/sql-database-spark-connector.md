@@ -12,10 +12,10 @@ ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/25/2018
 ms.openlocfilehash: b22ec475c0281a54d65921bc450b35723aa23219
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77471649"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>Versnel real-time big data Analytics met Spark-connector voor Azure SQL Database en SQL Server

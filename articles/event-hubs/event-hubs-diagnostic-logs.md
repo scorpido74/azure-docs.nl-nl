@@ -1,6 +1,6 @@
 ---
-title: Diagnostische logboeken instellen - Azure Event Hub | Microsoft Documenten
-description: Meer informatie over het instellen van activiteitslogboeken en diagnostische logboeken voor gebeurtenishubs in Azure.
+title: Diagnostische logboeken instellen-Azure Event hub | Microsoft Docs
+description: Meer informatie over het instellen van activiteiten logboeken en Diagnostische logboeken voor Event hubs in Azure.
 keywords: ''
 documentationcenter: ''
 services: event-hubs
@@ -17,76 +17,76 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 68aa62ad34f8db531d439a581ef024862da0f90c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162307"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Diagnostische logboeken instellen voor een Azure Event Hub
 
-U twee typen logboeken voor Azure Event Hubs weergeven:
+U kunt twee typen logboeken voor Azure Event Hubs bekijken:
 
-* **[Activiteitslogboeken:](../azure-monitor/platform/platform-logs-overview.md)** met deze logboeken vindt u informatie over bewerkingen die op een taak worden uitgevoerd. De logboeken zijn altijd ingeschakeld.
-* **[Diagnostische logboeken:](../azure-monitor/platform/platform-logs-overview.md)** U diagnostische logboeken configureren voor een rijkere weergave van alles wat er met een taak gebeurt. Diagnostische logboeken hebben betrekking op activiteiten vanaf het moment dat de taak wordt gemaakt totdat de taak is verwijderd, inclusief updates en activiteiten die plaatsvinden terwijl de taak wordt uitgevoerd.
+* **[Activiteiten logboeken](../azure-monitor/platform/platform-logs-overview.md)**: deze logboeken bevatten informatie over de bewerkingen die worden uitgevoerd op een taak. De logboeken zijn altijd ingeschakeld.
+* **[Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md)**: u kunt Diagnostische logboeken configureren voor een uitgebreidere weer gave van alles wat er gebeurt met een taak. Diagnostische logboeken behandelen activiteiten vanaf het moment dat de taak wordt gemaakt, totdat de taak wordt verwijderd, inclusief updates en activiteiten die optreden terwijl de taak wordt uitgevoerd.
 
 ## <a name="enable-diagnostic-logs"></a>Diagnostische logboeken inschakelen
 
-Diagnostische logboeken zijn standaard uitgeschakeld. Voer de volgende stappen uit om diagnostische logboeken in te schakelen:
+Diagnostische logboeken zijn standaard uitgeschakeld. Voer de volgende stappen uit om Diagnostische logboeken in te scha kelen:
 
-1.  Klik in de [Azure-portal](https://portal.azure.com)onder **Monitoring + Beheer**op Diagnostische **logboeken**.
+1.  Klik in de [Azure Portal](https://portal.azure.com)onder **controle en beheer**op **Diagnostische logboeken**.
 
-    ![Navigatie van deelvenster naar diagnostische logboeken](./media/event-hubs-diagnostic-logs/image1.png)
+    ![Deel venster navigatie naar Diagnostische logboeken](./media/event-hubs-diagnostic-logs/image1.png)
 
-2.  Klik op de resource die u wilt controleren.
+2.  Klik op de resource die u wilt bewaken.
 
 3.  Klik op **Diagnostische gegevens inschakelen**.
 
     ![Diagnostische logboeken inschakelen](./media/event-hubs-diagnostic-logs/image2.png)
 
-4.  Klik voor **status**op **Aan**.
+4.  Voor **status** **, klikt u op.**
 
-    ![De status van diagnostische logboeken wijzigen](./media/event-hubs-diagnostic-logs/image3.png)
+    ![De status van Diagnostische logboeken wijzigen](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  Stel het gewenste archiefdoel in. bijvoorbeeld een opslagaccount, een gebeurtenishub of Azure Monitor-logboeken.
+5.  Stel het gewenste archief doel in; bijvoorbeeld een opslag account, een Event Hub of Azure Monitor Logboeken.
 
-6.  Sla de nieuwe diagnostische instellingen op.
+6.  Sla de nieuwe instellingen voor diagnostische gegevens op.
 
-Nieuwe instellingen worden van kracht in ongeveer 10 minuten. Daarna worden logboeken weergegeven in het geconfigureerde archiefdoel in het **deelvenster Logboeken diagnostische gegevens.**
+Nieuwe instellingen worden in ongeveer 10 minuten van kracht. Daarna worden logboeken weer gegeven in het geconfigureerde archief doel in het deel venster **Diagnostische logboeken** .
 
-Zie het overzicht van Diagnostische [logboeken van Azure](../azure-monitor/platform/platform-logs-overview.md)voor meer informatie over het configureren van diagnostische gegevens.
+Zie voor meer informatie over het configureren van diagnostische gegevens het [overzicht van Azure Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md).
 
-## <a name="diagnostic-logs-categories"></a>Categorieën diagnostische logboeken
+## <a name="diagnostic-logs-categories"></a>Categorieën met Diagnostische logboeken
 
-Event Hubs legt diagnostische logboeken vast voor twee categorieën:
+Event Hubs Diagnostische logboeken voor twee categorieën worden vastgelegd:
 
-* **Archieflogboeken**: logboeken met betrekking tot Event Hubs-archieven, in het bijzonder, logboeken met betrekking tot archieffouten.
-* **Operationele logboeken:** informatie over wat er gebeurt tijdens gebeurtenishubsbewerkingen, met name het bewerkingstype, inclusief het maken van gebeurtenishubs, gebruikte resources en de status van de bewerking.
+* **Archief logboeken**: Logboeken gerelateerd aan Event hubs archieven, met name logboeken die betrekking hebben op archief fouten.
+* **Operationele logboeken**: informatie over wat er gebeurt tijdens Event hubs bewerkingen, met name het bewerkings type, inclusief Event hub maken, gebruikte resources en de status van de bewerking.
 
-## <a name="diagnostic-logs-schema"></a>Schema diagnostische logboeken
+## <a name="diagnostic-logs-schema"></a>Schema voor Diagnostische logboeken
 
-Alle logboeken worden opgeslagen in de JSON-indeling (JavaScript Object Notation). Elk item heeft tekenreeksvelden die de notatie gebruiken die in de volgende secties is beschreven.
+Alle logboeken worden opgeslagen in de indeling van de JavaScript Object Notation (JSON). Elke vermelding bevat teken reeks velden die gebruikmaken van de indeling die wordt beschreven in de volgende secties.
 
-### <a name="archive-logs-schema"></a>Schema voor archieflogboeken
+### <a name="archive-logs-schema"></a>Schema voor archief logboeken
 
-Json-tekenreeksen voor archieflogboeken bevatten elementen in de volgende tabel:
+De JSON-teken reeksen van het archief logboek bevatten elementen die in de volgende tabel worden weer gegeven:
 
-Name | Beschrijving
+Naam | Beschrijving
 ------- | -------
-Taaknaam | Beschrijving van de taak die is mislukt.
-ActivityId (ActivityId) | Interne ID, gebruikt voor tracking.
-trackingId | Interne ID, gebruikt voor tracking.
-resourceId | Azure Resource Manager-bron-id.
-eventHub | Volledige naam van gebeurtenishub (inclusief naamruimtenaam).
-partitionId | Gebeurtenishubpartitie waarnaar wordt geschreven.
-archiefStap | ArchiveFlushWriter
-startTime | Begintijd van het mislukken.
-Mislukkingen | Het aantal keren dat er is gefaald.
-duurInSeconden | Duur van de mislukking.
-message | Foutbericht.
-category | Archieflogboeken
+TaskName | Beschrijving van de taak die is mislukt.
+ActivityId | Interne ID, gebruikt voor tracering.
+trackingId | Interne ID, gebruikt voor tracering.
+resourceId | Azure Resource Manager Resource-ID.
+eventHub | Volledige naam van Event hub (bevat naam van naam ruimte).
+partitionId | De Event hub-partitie waarnaar wordt geschreven.
+archiveStep | ArchiveFlushWriter
+startTime | Begin tijd van de fout.
+Masters | Aantal keren dat de fout is opgetreden.
+durationInSeconds | Duur van de fout.
+message | Fout bericht.
+category | ArchiveLogs
 
-De volgende code is een voorbeeld van een JSON-tekenreeks voor archieflogboeken:
+De volgende code is een voor beeld van een JSON-teken reeks in het archief logboek:
 
 ```json
 {
@@ -105,23 +105,23 @@ De volgende code is een voorbeeld van een JSON-tekenreeks voor archieflogboeken:
 }
 ```
 
-### <a name="operational-logs-schema"></a>Schema voor operationele logboeken
+### <a name="operational-logs-schema"></a>Schema van operationele logboeken
 
-Json-tekenreeksen voor operationele logboeken bevatten elementen in de volgende tabel:
+De JSON-teken reeksen van het operationele logboek bevatten elementen die in de volgende tabel worden weer gegeven:
 
-Name | Beschrijving
+Naam | Beschrijving
 ------- | -------
-ActivityId (ActivityId) | Interne ID, gebruikt om het doel bij te houden.
+ActivityId | Interne ID, gebruikt voor het bijhouden van het doel.
 Gebeurtenisnaam | naam van bewerking.  
-resourceId | Azure Resource Manager-bron-id.
-SubscriptionId | Abonnement-ID.
-EventTimeString | Operatietijd.
-EventProperties | Bedrijfseigenschappen.
-Status | De status van de bewerking.
-Caller | Beller van de bewerking (Azure-portal of beheerclient).
-category | OperationalLogs (OperationalLogs)
+resourceId | Azure Resource Manager Resource-ID.
+SubscriptionId | Abonnements-ID.
+EventTimeString | Bewerkings tijd.
+EventProperties | Eigenschappen van de bewerking.
+Status | Bewerkings status.
+Caller | De aanroeper van de bewerking (Azure Portal-of Management-client).
+category | OperationalLogs
 
-De volgende code is een voorbeeld van een operationele JSON-tekenreeks voor logboeken:
+De volgende code is een voor beeld van een JSON-teken reeks voor een operationeel logboek:
 
 ```json
 Example:
@@ -139,7 +139,7 @@ Example:
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Inleiding tot eventhubs](event-hubs-what-is-event-hubs.md)
+- [Inleiding tot Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Event Hubs-API-overzicht](event-hubs-api-overview.md)
 - Aan de slag met Event Hubs
     - [.NET Core](get-started-dotnet-standard-send-v2.md)

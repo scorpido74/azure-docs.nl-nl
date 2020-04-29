@@ -1,7 +1,7 @@
 ---
-title: Cognitieve services koppelen aan een skillset
+title: Cognitive Services koppelen aan een vaardig heden
 titleSuffix: Azure Cognitive Search
-description: Instructies voor het koppelen van een Cognitive Services all-in-one-abonnement aan een AI-verrijkingspijplijn in Azure Cognitive Search.
+description: Instructies voor het koppelen van een Cognitive Services alles-in-één-abonnement op een AI-pijp lijn in azure Cognitive Search.
 manager: nitinme
 author: LuisCabrer
 ms.author: luisca
@@ -9,108 +9,108 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 254c912114e3f1c7a495f389bc6a6416cbde7e11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77472448"
 ---
-# <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Een resource voor Cognitive Services koppelen aan een skillset in Azure Cognitive Search 
+# <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Een Cognitive Services resource koppelen aan een vaardig heden in azure Cognitive Search 
 
-Wanneer u een verrijkingspijplijn configureert in Azure Cognitive Search, u een beperkt aantal documenten gratis verrijken. Voor grotere en frequentere workloads moet u een factureerbare resource voor Cognitive Services toevoegen.
+Bij het configureren van een verrijkings pijplijn in azure Cognitive Search, kunt u een beperkt aantal gratis documenten verrijken. Voor grotere en frequentere werk belastingen moet u een factureer bare Cognitive Services resource koppelen.
 
-In dit artikel leert u hoe u een resource koppelt door een sleutel toe te voegen aan een skillset die een verrijkingspijplijn definieert.
+In dit artikel leert u hoe u een resource kunt koppelen door een sleutel toe te wijzen aan een vaardig heden die een verrijkings pijplijn definieert.
 
-## <a name="resources-used-during-enrichment"></a>Middelen die tijdens de verrijking worden gebruikt
+## <a name="resources-used-during-enrichment"></a>Bronnen die worden gebruikt tijdens de verrijking
 
-Azure Cognitive Search is afhankelijk van Cognitive Services, waaronder [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) voor beeldanalyse en optische tekenherkenning (OCR), [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) voor natuurlijke taalverwerking en andere verrijkingen zoals [Tekstvertaling.](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) In de context van verrijking in Azure Cognitive Search worden deze AI-algoritmen verpakt in een *vaardigheid*, geplaatst in een *skillset*en verwezen door een *indexeerder* tijdens het indexeren.
+Azure Cognitive Search heeft een afhankelijkheid op Cognitive Services, waaronder [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) voor het analyseren van afbeeldingen en optische teken herkenning (OCR), [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) voor de verwerking van natuurlijke taal en andere verrijkingen zoals [tekst vertalingen](https://azure.microsoft.com/services/cognitive-services/translator-text-api/). In de context van verrijking in azure Cognitive Search worden deze AI-algoritmen in een *vaardigheid*verpakt, in een *vakkennisset*geplaatst en tijdens het indexeren naar een *indexer* verwezen.
 
 ## <a name="how-billing-works"></a>Werking van facturering
 
-+ Azure Cognitive Search gebruikt de resourcesleutel Cognitive Services die u op een skillset opgeeft om te factureren voor beeld- en tekstverrijking. Uitvoering van factureerbare vaardigheden is tegen de [Cognitive Services pay-as-you go prijs.](https://azure.microsoft.com/pricing/details/cognitive-services/)
++ Azure Cognitive Search maakt gebruik van de Cognitive Services resource sleutel die u op een vaardighedenset hebt geboden om afbeeldings-en tekst verrijking te factureren. Het uitvoeren van factureer bare vaardig heden bevindt zich op de Cognitive Services prijs op basis van [betalen per gebruik](https://azure.microsoft.com/pricing/details/cognitive-services/).
 
-+ Imageextractie is een Azure Cognitive Search-bewerking die optreedt wanneer documenten worden gekraakt voordat ze worden verrijkt. Beeldextractie is factureerbaar. Zie de [prijspagina azure cognitive search](https://go.microsoft.com/fwlink/?linkid=2042400)voor de prijzen van afbeeldingen.
++ Afbeeldings extractie is een Azure Cognitive Search bewerking die optreedt wanneer documenten worden gekraakt voordat verrijking wordt uitgevoerd. De afbeeldings extractie is Factureerbaar. Zie de [pagina met prijzen voor Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400)voor meer informatie over het ophalen van images.
 
-+ Tekstextractie vindt ook plaats tijdens de zin voor het kraken van documenten. Het is niet factureerbaar.
++ Tekst extractie vindt ook plaats tijdens het kraken van documenten. Het is niet factureerbaar.
 
-+ Vaardigheden die geen cognitieve services aanroepen, waaronder voorwaardelijke, vormvormer- en tekstsamenvoeging- en tekstgesplitstvaardigheden, zijn niet factureerbaar.
++ Vaardig heden die geen Cognitive Services aanroepen, zoals voorwaardelijke tekst, shaper, tekst samenvoeging en gesplitste vaardig heden, zijn niet factureerbaar.
 
-## <a name="same-region-requirement"></a>Eis voor dezelfde regio
+## <a name="same-region-requirement"></a>Dezelfde regio vereiste
 
-We vereisen dat Azure Cognitive Search en Azure Cognitive Services binnen dezelfde regio bestaan. Anders krijgt u dit bericht tijdens de looptijd:`"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+Azure Cognitive Search en Azure Cognitive Services zijn vereist in dezelfde regio. Anders wordt dit bericht weer gegeven tijdens de uitvoering:`"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
 
-Er is geen manier om een service over regio's te verplaatsen. Als u deze fout krijgt, moet u een nieuwe bron voor Cognitieve services maken in dezelfde regio als Azure Cognitive Search.
+Er is geen manier om een service te verplaatsen tussen regio's. Als u deze fout ontvangt, moet u een nieuwe Cognitive Services-resource maken in dezelfde regio als Azure Cognitive Search.
 
 > [!NOTE]
-> Sommige ingebouwde vaardigheden zijn gebaseerd op niet-regionale cognitieve diensten (bijvoorbeeld de [Text Translation Skill).](cognitive-search-skill-text-translation.md) Het gebruik van een niet-regionale vaardigheid betekent dat uw aanvraag mogelijk wordt onderhouden in een andere regio dan de azure cognitive search-regio. Zie de pagina Cognitive Services [product per regio voor](https://aka.ms/allinoneregioninfo) meer informatie over niet-regionale diensten.
+> Sommige ingebouwde vaardig heden zijn gebaseerd op niet-regionale Cognitive Services (bijvoorbeeld de [tekst Vertaal vaardigheid](cognitive-search-skill-text-translation.md)). Als u een niet-regionale vaardigheid gebruikt, kan het zijn dat uw aanvraag wordt verwerkt in een andere regio dan de Azure Cognitive Search-regio. Zie de pagina [Cognitive Services product per regio](https://aka.ms/allinoneregioninfo) voor meer informatie over niet-regionale Services.
 
 ## <a name="use-free-resources"></a>Gratis bronnen gebruiken
 
-U een beperkte, gratis verwerkingsoptie gebruiken om de AI-verrijkingszelfstudie en quickstart-oefeningen te voltooien.
+U kunt een beperkte, gratis verwerkings optie gebruiken voor het volt ooien van de zelf studie voor AI-verrijking en Snelstartgids.
 
-Gratis (Beperkte verrijkingen) middelen zijn beperkt tot 20 documenten per dag, per indexer. U de indexer verwijderen en opnieuw maken om de teller opnieuw te instellen.
+Gratis (beperkte verrijkingen) resources zijn beperkt tot 20 documenten per dag, per Indexeer functie. U kunt de Indexeer functie verwijderen en opnieuw maken om de teller opnieuw in te stellen.
 
-1. Open de wizard Gegevens importeren:
+1. Open de wizard gegevens importeren:
 
-   ![De wizard Gegevens importeren openen](media/search-get-started-portal/import-data-cmd.png "De wizard Gegevens importeren openen")
+   ![De wizard gegevens importeren openen](media/search-get-started-portal/import-data-cmd.png "De wizard gegevens importeren openen")
 
-1. Kies een gegevensbron en ga verder **met AI-verrijking toevoegen (optioneel).** Zie [Een index maken in de Azure-portal](search-get-started-portal.md)voor een stapsgewijze doorloop van deze wizard.
+1. Kies een gegevens bron en blijf **AI-verrijking toevoegen (optioneel)**. Zie [een index maken in de Azure Portal](search-get-started-portal.md)voor een stapsgewijze uitleg van deze wizard.
 
-1. Breid **Cognitieve services bij voegen** uit en selecteer vervolgens Gratis **(beperkte verrijkingen):**
+1. Vouw **Cognitive Services koppelen** uit en selecteer vervolgens **gratis (beperkte verrijkingen)**:
 
-   ![Uitgebreide sectie Cognitieve services bijvoegen](./media/cognitive-search-attach-cognitive-services/attach1.png "Uitgebreide sectie Cognitieve services bijvoegen")
+   ![Sectie uitgebreide Cognitive Services toevoegen](./media/cognitive-search-attach-cognitive-services/attach1.png "Sectie uitgebreide Cognitive Services toevoegen")
 
-1. U nu doorgaan naar de volgende stappen, waaronder **Cognitieve vaardigheden toevoegen.**
+1. U kunt nu door gaan met de volgende stappen, waaronder **cognitieve vaardig heden toevoegen**.
 
-## <a name="use-billable-resources"></a>Factureerbare bronnen gebruiken
+## <a name="use-billable-resources"></a>Factureer bare resources gebruiken
 
-Voor workloads die meer dan 20 verrijkingen per dag maken, moet u een factureerbare resource voor Cognitive Services toevoegen. We raden u aan altijd een factureerbare Cognitive Services-bron toe te voegen, zelfs als u nooit van plan bent API's voor Cognitive Services te bellen. Als u een resource koppelt, wordt de dagelijkse limiet overschreven.
+Voor workloads die meer dan 20 verrijkingen per dag maken, moet u ervoor zorgen dat u een factureer bare Cognitive Services resource koppelt. U wordt aangeraden altijd een factureer bare Cognitive Services resource te koppelen, zelfs als u niet van plan bent om Cognitive Services-API's aan te roepen. Als u een resource koppelt, wordt de dagelijkse limiet overschreven.
 
-U wordt alleen in rekening gebracht voor vaardigheden die de API's voor cognitieve services noemen. U wordt niet gefactureerd voor [aangepaste vaardigheden](cognitive-search-create-custom-skill-example.md)of vaardigheden zoals [tekstfusie,](cognitive-search-skill-textmerger.md) [tekstsplitter](cognitive-search-skill-textsplit.md)en [shaper,](cognitive-search-skill-shaper.md)die niet op API's zijn gebaseerd.
+Er worden alleen kosten in rekening gebracht voor de vaardig heden die de Cognitive Services-API's aanroepen. U wordt niet gefactureerd voor [aangepaste vaardig heden](cognitive-search-create-custom-skill-example.md)of vaardig heden zoals [tekst fusie](cognitive-search-skill-textmerger.md), [tekst splitsing](cognitive-search-skill-textsplit.md)en [shaper](cognitive-search-skill-shaper.md), die geen API-gebaseerd zijn.
 
-1. Open de wizard Gegevens importeren, kies een gegevensbron en ga verder **met AI-verrijking toevoegen (optioneel).**
+1. Open de wizard gegevens importeren, kies een gegevens bron en blijf **AI-verrijking toevoegen (optioneel)**.
 
-1. Vouw **Cognitieve services bijvoegen** uit en selecteer vervolgens **Nieuwe resource voor cognitieve services maken**. Er wordt een nieuw tabblad geopend, zodat u de resource maken:
+1. Vouw **Cognitive Services koppelen** uit en selecteer vervolgens **nieuwe Cognitive Services resource maken**. Er wordt een nieuw tabblad geopend, zodat u de resource kunt maken:
 
    ![Een Cognitive Services-resource maken](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Een Cognitive Services-resource maken")
 
-1. Selecteer **in** de lijst Locatie het gebied waar uw Azure Cognitive Search-service zich bevindt. Zorg ervoor dat u deze regio gebruikt om prestatieredenen. Als u deze regio gebruikt, worden ook uitgaande bandbreedtekosten in verschillende regio's ongeldig gemaakt.
+1. Selecteer in de lijst **locatie** de regio waar uw Azure Cognitive Search-service zich bevindt. Zorg ervoor dat u deze regio gebruikt om prestatie redenen. Als u deze regio gebruikt, worden ook de kosten voor uitgaande band breedte tussen regio's verwijderd.
 
-1. Selecteer **In** de lijst Met prijzen **S0** om de alles-in-één verzameling functies voor cognitieve services te krijgen, inclusief de functies Visie en Taal die de ingebouwde vaardigheden van Azure Cognitive Search weergeven.
+1. Selecteer in de lijst **prijs categorie** de optie **s0** om de alles-in-één-verzameling van Cognitive Services-functies op te halen, met inbegrip van de visie-en taal functies die de ingebouwde vaardig heden van Azure Cognitive Search.
 
-   Voor de s0-laag vindt u tarieven voor specifieke workloads op de [prijspagina Cognitive Services.](https://azure.microsoft.com/pricing/details/cognitive-services/)
+   Voor de S0-laag kunt u tarieven voor specifieke werk belastingen vinden op de [pagina met Cognitive Services prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/).
   
-   + Controleer in de lijst **Aanbieding selecteren** of **cognitieve services** zijn geselecteerd.
-   + Onder **Taalfuncties** zijn de tarieven voor **Text Analytics Standard** van toepassing op AI-indexering.
-   + Onder **Vision-functies** zijn de tarieven voor **Computer Vision S1** van toepassing.
+   + Zorg ervoor dat **Cognitive Services** is geselecteerd in de lijst **aanbieding selecteren** .
+   + Onder **taal** functies zijn de tarieven voor **Text Analytics standaard** van toepassing op AI-indexering.
+   + Onder **Vision** -functies zijn de tarieven voor **Computer Vision S1** van toepassing.
 
-1. Selecteer **Maken** om de nieuwe resource Voor Cognitieve Services in te richten.
+1. Selecteer **maken** om de nieuwe Cognitive Services resource in te richten.
 
-1. Ga terug naar het vorige tabblad, dat de wizard Gegevens importeren bevat. Selecteer **Vernieuwen** om de resource Cognitive Services weer te geven en selecteer vervolgens de resource:
+1. Ga terug naar het vorige tabblad, dat de wizard gegevens importeren bevat. Selecteer **vernieuwen** om de Cognitive Services resource weer te geven en selecteer vervolgens de resource:
 
-   ![De resource Cognitive Services selecteren](./media/cognitive-search-attach-cognitive-services/attach2.png "De resource Cognitive Services selecteren")
+   ![De Cognitive Services resource selecteren](./media/cognitive-search-attach-cognitive-services/attach2.png "De Cognitive Services resource selecteren")
 
-1. Vouw de sectie **Cognitieve vaardigheden toevoegen uit** om de specifieke cognitieve vaardigheden te selecteren die u op uw gegevens wilt uitvoeren. Voltooi de rest van de wizard.
+1. Vouw de sectie **cognitieve vaardig heden toevoegen** uit om de specifieke cognitieve vaardig heden te selecteren die u wilt uitvoeren op uw gegevens. Voltooi de rest van de wizard.
 
-## <a name="attach-an-existing-skillset-to-a-cognitive-services-resource"></a>Een bestaande skillset koppelen aan een resource voor Cognitive Services
+## <a name="attach-an-existing-skillset-to-a-cognitive-services-resource"></a>Een bestaande vaardig heden koppelen aan een Cognitive Services resource
 
-Als u een bestaande skillset hebt, u deze koppelen aan een nieuwe of andere resource voor Cognitive Services.
+Als u een bestaande vaardig heden hebt, kunt u deze koppelen aan een nieuwe of andere Cognitive Services resource.
 
-1. Selecteer op de pagina **Serviceoverzicht** de optie **Skillsets:**
+1. Selecteer op de pagina **service overzicht** de optie **vaardig heden**:
 
-   ![Tabblad Skillsets](./media/cognitive-search-attach-cognitive-services/attach-existing1.png "Tabblad Skillsets")
+   ![Tabblad vaardig heden](./media/cognitive-search-attach-cognitive-services/attach-existing1.png "Tabblad vaardig heden")
 
-1. Selecteer de naam van de skillset en selecteer vervolgens een bestaande resource of maak een nieuwe resource. Selecteer **OK** om uw wijzigingen te bevestigen.
+1. Selecteer de naam van de vaardig heden en selecteer vervolgens een bestaande resource of maak een nieuwe. Selecteer **OK** om uw wijzigingen te bevestigen.
 
-   ![Lijst met skillset-bronnen](./media/cognitive-search-attach-cognitive-services/attach-existing2.png "Lijst met skillset-bronnen")
+   ![Lijst met vaardig heden-resources](./media/cognitive-search-attach-cognitive-services/attach-existing2.png "Lijst met vaardig heden-resources")
 
-   Houd er rekening mee dat de optie **Gratis (Beperkte verrijkingen)** u beperkt tot 20 documenten per dag en dat u **nieuwe resource voor cognitieve services** maken om een nieuwe factureerbare bron in te richten. Als u een nieuwe bron maakt, selecteert u **Vernieuwen** om de lijst met bronnen voor cognitieve services te vernieuwen en selecteert u de bron.
+   Houd er rekening mee dat de optie **gratis (beperkte verrijkingen)** u per dag beperkt tot 20 documenten en dat u **nieuwe Cognitive Services resource maken** kunt gebruiken om een nieuwe factureer bare resource in te richten. Als u een nieuwe resource maakt, selecteert u **vernieuwen** om de lijst met Cognitive services resources te vernieuwen en selecteert u vervolgens de resource.
 
-## <a name="attach-cognitive-services-programmatically"></a>Cognitieve services programmatisch koppelen
+## <a name="attach-cognitive-services-programmatically"></a>Cognitive Services via een programma koppelen
 
-Wanneer u de skillset programmatisch definieert, `cognitiveServices` voegt u een sectie toe aan de skillset. Neem in die sectie de sleutel op van de resource Cognitive Services die u wilt koppelen aan de skillset. Houd er rekening mee dat de bron zich in dezelfde regio moet bevinden als uw Azure Cognitive Search-bron. Ook, `@odata.type`en stel `#Microsoft.Azure.Search.CognitiveServicesByKey`het in op .
+Wanneer u de vaardig heden programmatisch definieert, voegt u een `cognitiveServices` sectie toe aan de vaardig heden. In dat gedeelte moet u de sleutel van de Cognitive Services resource die u wilt koppelen aan de vaardig heden, toevoegen. Houd er rekening mee dat de resource zich in dezelfde regio als uw Azure Cognitive Search-resource moet bevinden. Neem `@odata.type`ook de naam op en stel `#Microsoft.Azure.Search.CognitiveServicesByKey`deze in op.
 
-In het volgende voorbeeld ziet u dit patroon. Let `cognitiveServices` op de sectie aan het einde van de definitie.
+In het volgende voor beeld ziet u dit patroon. U ziet `cognitiveServices` de sectie aan het einde van de definitie.
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
@@ -146,29 +146,29 @@ Content-Type: application/json
 }
 ```
 
-## <a name="example-estimate-costs"></a>Voorbeeld: Kosten schatten
+## <a name="example-estimate-costs"></a>Voor beeld: kosten schatten
 
-Als u de kosten wilt schatten die zijn gekoppeld aan het indexeren van cognitief zoeken, begint u met een idee van hoe een gemiddeld document eruit ziet, zodat u bepaalde getallen uitvoeren. U bijvoorbeeld bij benadering:
+Als u een schatting wilt maken van de kosten die zijn gekoppeld aan het indexeren van cognitieve Zoek opdrachten, begint u met een idee van wat een gemiddeld document lijkt te zijn, zodat u enkele getallen kunt uitvoeren. U kunt bijvoorbeeld ongeveer het volgende doen:
 
-+ 1000 PDF's.
-+ Zes pagina's per stuk.
++ 1.000 Pdf's.
++ Zes pagina's per.
 + Eén afbeelding per pagina (6.000 afbeeldingen).
 + 3.000 tekens per pagina.
 
-Neem een pijplijn die bestaat uit het kraken van documenten van elke PDF, beeld- en tekstextractie, optische tekenherkenning (OCR) van afbeeldingen en entiteitsherkenning van organisaties.
+Stel dat u een pijp lijn hebt die bestaat uit het kraken van een document van elke PDF, extractie van afbeeldingen en tekst, optische teken herkenning (OCR) van afbeeldingen en entiteits herkenning van organisaties.
 
-De prijzen in dit artikel zijn hypothetisch. Ze worden gebruikt om het schattingsproces te illustreren. Uw kosten kunnen lager zijn. Zie [Prijzen voor cognitieve services](https://azure.microsoft.com/pricing/details/cognitive-services)voor de werkelijke prijzen van transacties.
+De prijzen die in dit artikel worden weer gegeven, zijn hypothetisch. Ze worden gebruikt om het schattings proces te illustreren. De kosten zijn lager. Zie [Cognitive Services prijzen](https://azure.microsoft.com/pricing/details/cognitive-services)voor de werkelijke prijzen van trans acties.
 
-1. Voor het kraken van documenten met tekst- en afbeeldingsinhoud is tekstextractie momenteel gratis. Voor 6.000 afbeeldingen, neem $1 voor elke 1.000 beelden geëxtraheerd. Dat kost $6,00 voor deze stap.
+1. Voor het kraken van documenten met tekst-en afbeeldings inhoud is tekst extractie momenteel gratis. Voor 6.000 installatie kopieën wordt aangenomen dat $1 voor elke 1.000 installatie kopieën worden geëxtraheerd. Dat is een prijs van $6,00 voor deze stap.
 
-2. Voor OCR van 6.000 afbeeldingen in het Engels gebruikt de OCR-cognitieve vaardigheid het beste algoritme (DescribeText). Ervan uitgaande dat een kostprijs van $ 2,50 per 1.000 beelden worden geanalyseerd, zou u betalen $ 15,00 voor deze stap.
+2. Voor OCR van 6.000-afbeeldingen in het Engels gebruikt de OCR cognitieve vaardigheid het beste algoritme (DescribeText). Uitgaande van een kosten van $2,50 per 1.000 installatie kopieën, betaalt u $15,00 voor deze stap.
 
-3. Voor entiteitsextractie hebt u in totaal drie tekstrecords per pagina. Elke plaat bestaat uit 1000 tekens. Drie tekstrecords per pagina vermenigvuldigd met 6.000 pagina's zijn gelijk aan 18.000 tekstrecords. Ervan uitgaande dat $ 2,00 per 1.000 tekst records, zou deze stap kosten $36.00.
+3. Voor het uitpakken van de entiteit hebt u per pagina in totaal drie tekst records. Elke record is 1.000 tekens. Drie tekst records per pagina vermenigvuldigd met 6.000 pagina's is gelijk aan 18.000 tekst records. Als er $2,00 per 1.000-tekst records worden berekend, wordt deze stap $36,00.
 
-Om alles bij elkaar te zetten, zou je ongeveer $ 57,00 betalen om 1.000 PDF-documenten van dit type in te nemen met de beschreven vaardigheden.
+U betaalt ongeveer $57,00 tot opname van 1.000 PDF-documenten van dit type met de beschreven vaardig heden.
 
 ## <a name="next-steps"></a>Volgende stappen
-+ [Prijspagina Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/)
-+ [Een vaardighedenset definiëren](cognitive-search-defining-skillset.md)
-+ [Skillset (REST) maken](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Verrijkte velden in kaart brengen](cognitive-search-output-field-mapping.md)
++ [Pagina met prijzen voor Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/)
++ [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
++ [Vaardig heden maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Verrijkte velden toewijzen](cognitive-search-output-field-mapping.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Virtual Machines shutdown zit vast bij Het opnieuw opstarten, afsluiten of stoppen van services | Microsoft Documenten
-description: Met dit artikel u servicefouten in Azure Windows Virtual Machines oplossen.
+title: Het afsluiten van Azure Virtual Machines is vastgelopen bij het opnieuw starten, afsluiten of stoppen van services | Microsoft Docs
+description: Dit artikel helpt u bij het oplossen van problemen met service fouten in azure Windows Virtual Machines.
 services: virtual-machines-windows
 documentationCenter: ''
 author: v-miegge
@@ -13,99 +13,99 @@ ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
 ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77371357"
 ---
-# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM shutdown zit vast bij 'Opnieuw opstarten', 'Afsluiten' of 'Services stoppen'
+# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Het afsluiten van Azure Windows VM is vastgelopen op het opnieuw starten, afsluiten of stoppen van services
 
-In dit artikel vindt u stappen om de problemen op te lossen van berichten 'Opnieuw opstarten', 'Afsluiten' of 'Services stoppen' die u tegenkomen wanneer u een virtuele Windows-machine (VM) opnieuw opstart in Microsoft Azure.
+In dit artikel worden de stappen beschreven voor het oplossen van de problemen met het opnieuw starten, afsluiten of stoppen van services die kunnen optreden wanneer u een virtuele Windows-machine (VM) opnieuw opstart in Microsoft Azure.
 
 ## <a name="symptoms"></a>Symptomen
 
-Wanneer u [Opstartdiagnose](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de schermafbeelding van de virtuele machine weer te geven, ziet u mogelijk dat op de schermafbeelding het bericht 'Opnieuw opstarten', 'Afsluiten' of 'Services stoppen' wordt weergegeven.
+Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u mogelijk dat de scherm opname het bericht ' opnieuw opstarten ', ' afsluiten ' of ' Services stoppen ' weergeeft.
 
-![Servicesschermen opnieuw opstarten, afsluiten en stoppen](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
+![Schermen van services opnieuw starten, afsluiten en stoppen](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
  
 ## <a name="cause"></a>Oorzaak
 
-Windows gebruikt het afsluitproces om systeemonderhoudsbewerkingen uit te voeren en proceswijzigingen zoals updates, rollen en functies. Het wordt afgeraden om dit kritieke proces te onderbreken totdat het is voltooid. Afhankelijk van het aantal updates/wijzigingen en de VM-grootte kan het proces lang duren. Als het proces wordt gestopt, is het mogelijk dat het besturingssysteem beschadigd raakt. Onderbreek het proces alleen als het te lang duurt.
+Windows gebruikt het afsluit proces om systeem onderhouds bewerkingen uit te voeren en wijzigingen, zoals updates, functies en onderdelen, te verwerken. Het wordt niet aanbevolen dit kritieke proces te onderbreken totdat het is voltooid. Afhankelijk van het aantal updates/wijzigingen en de grootte van de virtuele machine kan het proces enige tijd in beslag nemen. Als het proces wordt gestopt, is het mogelijk dat het besturings systeem beschadigd raakt. Onderbreek alleen het proces als het erg lang duurt.
 
 ## <a name="solution"></a>Oplossing
 
-### <a name="collect-a-process-memory-dump"></a>Een procesgeheugendump verzamelen
+### <a name="collect-a-process-memory-dump"></a>Een geheugen dump van het proces verzamelen
 
-1. Download [het procdump-hulpprogramma](http://download.sysinternals.com/files/Procdump.zip) in een nieuwe of bestaande gegevensschijf, die is gekoppeld aan een werkende VM uit dezelfde regio.
+1. Down load het [Procdump-hulp programma](http://download.sysinternals.com/files/Procdump.zip) naar een nieuwe of bestaande gegevens schijf die is gekoppeld aan een werkende VM uit dezelfde regio.
 
-2. Maak de schijf los met de bestanden die nodig zijn van de werkende vm en voeg de schijf aan uw kapotte vm. We noemen deze schijf de **Utility disk**.
+2. Ontkoppel de schijf met de benodigde bestanden van de werkende VM en koppel de schijf aan de beschadigde virtuele machine. De schijf van het **hulp programma**wordt aangeroepen.
 
-Gebruik [Seriële console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) om de volgende stappen uit te voeren:
+Gebruik de [seriële console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) om de volgende stappen uit te voeren:
 
-1. Open een administratieve Powershell en controleer de service die is opgehangen bij het stoppen.
+1. Open een beheer-Power shell en controleer de service die is vastgelopen bij het stoppen.
 
    ``
    Get-Service | Where-Object {$_.Status -eq "STOP_PENDING"}
    ``
 
-2. Op een administratieve CMD, krijg de PID van de opgehangen dienst.
+2. Haal de PID van de vastgelopen service op in een beheer opdracht.
 
    ``
    tasklist /svc | findstr /i <STOPING SERVICE>
    ``
 
-3. Krijg een memory dump monster <STOPPING SERVICE>van het opgehangen proces.
+3. Een voor beeld van een geheugen dump ophalen uit <STOPPING SERVICE>het vastgelopen proces.
 
    ``
    procdump.exe -s 5 -n 3 -ma <PID>
    ``
 
-4. Dood nu het opgehangen proces om het shutdown proces te ontgrendelen.
+4. Beëindig nu het vastgelopen proces om het afsluit proces te ontgrendelen.
 
    ``
    taskkill /PID <PID> /t /f
    ``
 
-Zodra het OS opnieuw begint, als het normaal start, zorg er dan gewoon voor dat de consistentie van het besturingssysteem ok is. Als er melding wordt gemaakt van corruptie, voert u de volgende opdracht uit totdat de schijf zonder corruptie is:
+Als het besturings systeem opnieuw wordt opgestart, moet u er zeker van zijn dat de besturingssysteem consistentie OK is. Als beschadiging wordt gerapporteerd, voert u de volgende opdracht uit totdat de schijf vrij is:
 
 ``
 dism /online /cleanup-image /restorehealth
 ``
 
-Als u niet in staat bent om een proces geheugen dump te verzamelen, of dit probleem is recursieve en u moet een root cause analyse, ga verder met het verzamelen van een OS memory dump hieronder, de opbrengst om een ondersteuningsverzoek te openen.
+Als u geen dump van het proces geheugen kunt verzamelen, of dit probleem recursief is en u een analyse van de hoofd oorzaak hebt, kunt u door gaan met het verzamelen van een OS-geheugen dump hieronder, de door Voer om een ondersteunings aanvraag te openen.
 
-### <a name="collect-an-os-memory-dump"></a>Een geheugendump van het besturingssysteem verzamelen
+### <a name="collect-an-os-memory-dump"></a>Een dump van het besturings systeem verzamelen
 
-Als het probleem niet is opgelost nadat u hebt gewacht tot de wijzigingen zijn verwerkt, moet u een geheugendumpbestand verzamelen en contact opnemen met ondersteuning. Voer de volgende stappen uit om het bestand Dump te verzamelen:
+Als het probleem niet wordt opgelost nadat u hebt gewacht tot de wijzigingen zijn verwerkt, moet u een geheugen dump bestand verzamelen en contact opnemen met de ondersteuning. Voer de volgende stappen uit om het dump bestand te verzamelen:
 
-**De OS-schijf koppelen aan een herstel-vm**
+**De besturingssysteem schijf koppelen aan een herstel-VM**
 
-1. Maak een momentopname van de OS-schijf van de getroffen VM als back-up. Zie [Momentopname een schijf voor](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)meer informatie .
+1. Maak een moment opname van de besturingssysteem schijf van de betrokken VM als back-up. Zie [snap shot a disk](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)(Engelstalig) voor meer informatie.
 
-2. [Koppel de OS-schijf aan een herstelvm](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+2. [Koppel de besturingssysteem schijf aan een herstel-VM](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
 
-3. Extern bureaublad naar de herstel-VM.
+3. Extern bureau blad naar de herstel-VM.
 
-4. Als de osschijf is versleuteld, moet u de versleuteling uitschakelen voordat u naar de volgende stap gaat. Zie [De versleutelde besturingssysteemschijf in de vm decoderen die niet kan worden opgestart.](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-bitlocker-boot-error#solution)
+4. Als de besturingssysteem schijf is versleuteld, moet u de versleuteling uitschakelen voordat u verdergaat met de volgende stap. Zie [de versleutelde besturingssysteem schijf ontsleutelen in de virtuele machine die niet kan worden opgestart](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-bitlocker-boot-error#solution)voor meer informatie.
 
-**Dumpbestand zoeken en een ondersteuningsticket indienen**
+**Dump bestand zoeken en een ondersteunings ticket verzenden**
 
-1. Ga op de herstel-vm naar de Windows-map in de bijgevoegde osschijf. Als de stuurprogrammaletter die is toegewezen aan de gekoppelde osschijf F is, moet u naar F:\Windows gaan.
+1. Ga op de herstel-VM naar de map Windows in de gekoppelde besturingssysteem schijf. Als de stuur programma-letter die is toegewezen aan de gekoppelde besturingssysteem schijf F is, moet u naar F:\Windows.
 
-2. Zoek het memory.dmp-bestand en [dien vervolgens een ondersteuningsticket in](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) bij het dumpbestand.
+2. Zoek het bestand Memory. dmp en [Verzend een ondersteunings ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) met het dump bestand.
 
-Als u het dumpbestand niet vinden, verplaatst u de volgende stap om dumplogboek en seriële console in te schakelen.
+Als u het dump bestand niet kunt vinden, gaat u naar de volgende stap om dump logboek en seriële console in te scha kelen.
 
-**Dumplog en Seriële console inschakelen**
+**Dump logboek en seriële console inschakelen**
 
-Voer het volgende script uit om dumplog en Seriële console in te schakelen.
+Voer het volgende script uit om dump logboek en seriële console in te scha kelen.
 
-1. Open de sessie Prompt met verhoogde opdracht (Uitvoeren als beheerder).
+1. Open een opdracht prompt sessie met verhoogde bevoegdheden (als administrator uitvoeren).
 
 2. Voer het volgende script uit:
 
-   In dit script gaan we ervan uit dat de stationsletter die is toegewezen aan de gekoppelde OS-schijf F is. Vervang deze door de juiste waarde in uw VM.
+   In dit script gaan we ervan uit dat de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf F. Vervang deze door de juiste waarde in uw VM.
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -129,9 +129,9 @@ Voer het volgende script uit om dumplog en Seriële console in te schakelen.
    reg unload HKLM\BROKENSYSTEM
    ```
 
-3. Controleer of er voldoende ruimte op de schijf is om evenveel geheugen toe te wijzen als het RAM-geheugen, afhankelijk van de grootte die u voor deze virtuele machine selecteert.
+3. Controleer of er voldoende ruimte op de schijf is om zoveel geheugen toe te wijzen als het RAM-geheugen, afhankelijk van de grootte die u voor deze VM selecteert.
 
-4. Als er niet genoeg ruimte is of als de VM groot is (G-, GS- of E-reeks), u de locatie wijzigen waar dit bestand wordt gemaakt en dat doorverwijzen naar een andere gegevensschijf, die is gekoppeld aan de VM. Als u de locatie wilt wijzigen, moet u de volgende sleutel wijzigen:
+4. Als er onvoldoende ruimte is of de virtuele machine groot is (G, GS of E-serie), kunt u de locatie wijzigen waar dit bestand wordt gemaakt en naar elke andere gegevens schijf verwijzen die aan de VM is gekoppeld. Als u de locatie wilt wijzigen, moet u de volgende sleutel wijzigen:
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -142,16 +142,16 @@ Voer het volgende script uit om dumplog en Seriële console in te schakelen.
    reg unload HKLM\BROKENSYSTEM
    ```
 
-5. [Maak de osschijf los en koppel de osschijf opnieuw aan de betreffende VM.](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal)
+5. [Ontkoppel de besturingssysteem schijf en koppel de besturingssysteem schijf opnieuw aan de betreffende VM](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
 
-6. Start de VM en krijg toegang tot de seriële console.
+6. Start de VM en open de seriële console.
 
-7. Selecteer Niet-maskerbare interrupt (NMI) verzenden om de geheugendump te activeren.
+7. Selecteer niet-maskeer bare interrupt (NMI) verzenden om de geheugen dump te activeren.
 
-   ![Niet-maskerbare onderbreking verzenden](./media/boot-error-troubleshooting-windows/send-nonmaskable-interrupt.png)
+   ![Niet-maskeer bare interrupt verzenden](./media/boot-error-troubleshooting-windows/send-nonmaskable-interrupt.png)
 
-8. Voeg de OS-schijf opnieuw toe aan een herstel-vm en verzamel het dumpbestand.
+8. Koppel de besturingssysteem schijf weer aan een herstel-VM en probeer het dump bestand te verzamelen.
 
 ## <a name="contact-microsoft-support"></a>Contact opnemen met Microsoft Ondersteuning
 
-Nadat u het dumpbestand hebt verzameld, neemt u contact op met microsoft-ondersteuning om de hoofdoorzaak vast te stellen.
+Nadat u het dump bestand hebt verzameld, neemt u contact op met micro soft ondersteuning om de hoofd oorzaak te bepalen.

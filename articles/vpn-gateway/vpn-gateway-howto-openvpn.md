@@ -1,6 +1,6 @@
 ---
-title: 'OpenVPN configureren op Azure VPN Gateway: PowerShell'
-description: Stappen om OpenVPN voor Azure VPN Gateway te configureren
+title: 'OpenVPN configureren in azure VPN Gateway: Power shell'
+description: Stappen voor het configureren van OpenVPN voor Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
 ms.openlocfilehash: 7505420cc31fe751ecc0c114a89fea0734cbc6cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162404"
 ---
-# <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>OpenVPN configureren voor Azure point-to-site VPN-gateway
+# <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>OpenVPN configureren voor Azure punt-naar-site-VPN Gateway
 
-Met dit artikel u **OpenVPN® Protocol** instellen op Azure VPN Gateway. In het artikel wordt ervan uitgegaan dat u al een werkpunt-naar-site-omgeving hebt. Als u dit niet doet, gebruikt u de instructies in stap 1 om een point-to-site VPN te maken.
+Dit artikel helpt u bij het instellen van **OpenVPN®-protocol** op Azure VPN gateway. In dit artikel wordt ervan uitgegaan dat u al een werk punt-naar-site-omgeving hebt. Als u dit niet doet, gebruikt u de instructies in stap 1 om een punt-naar-site-VPN te maken.
 
 
 
-## <a name="1-create-a-point-to-site-vpn"></a><a name="vnet"></a>1. Maak een point-to-site VPN
+## <a name="1-create-a-point-to-site-vpn"></a><a name="vnet"></a>1. een punt-naar-site-VPN maken
 
-Als u nog geen functionerende point-to-site-omgeving hebt, volgt u de instructie om er een te maken. Zie [Een point-to-site VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md) maken om een point-to-site VPN-gateway te maken en te configureren met native Azure-certificaatverificatie. 
+Als u nog geen werkende Point-to-site-omgeving hebt, volgt u de instructie om er een te maken. Zie [een punt-naar-site-VPN maken](vpn-gateway-howto-point-to-site-resource-manager-portal.md) voor het maken en configureren van een punt-naar-site-VPN-gateway met systeem eigen Azure-certificaat verificatie. 
 
 > [!IMPORTANT]
-> De Basic SKU wordt niet ondersteund voor OpenVPN.
+> De basis-SKU wordt niet ondersteund voor OpenVPN.
 
-## <a name="2-enable-openvpn-on-the-gateway"></a><a name="enable"></a>2. OpenVPN inschakelen op de gateway
+## <a name="2-enable-openvpn-on-the-gateway"></a><a name="enable"></a>2. Schakel OpenVPN in op de gateway
 
-Schakel OpenVPN in op uw gateway. Controleer of de gateway al is geconfigureerd voor point-to-site (IKEv2 of SSTP) voordat u de volgende opdrachten uitvoert:
+Schakel OpenVPN in op uw gateway. Zorg ervoor dat de gateway al is geconfigureerd voor punt-naar-site (IKEv2 of SSTP) voordat u de volgende opdrachten uitvoert:
 
 ```azurepowershell-interactive
 $gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $name
@@ -38,6 +38,6 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientProtocol OpenVP
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [OpenVPN-clients configureren](vpn-gateway-howto-openvpn-clients.md)om clients voor OpenVPN te configureren.
+Zie [openvpn-clients configureren](vpn-gateway-howto-openvpn-clients.md)voor meer informatie over het configureren van clients voor openvpn.
 
-**"OpenVPN" is een handelsmerk van OpenVPN Inc.**
+**' OpenVPN ' is een handels merk van OpenVPN Inc.**
