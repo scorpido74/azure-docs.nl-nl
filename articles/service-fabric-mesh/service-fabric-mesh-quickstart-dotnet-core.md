@@ -1,5 +1,5 @@
 ---
-title: Snelstart - Een web-app implementeren in Azure Service Fabric-mesh
+title: 'Quick Start: een web-app implementeren in azure Service Fabric mesh'
 description: In deze quickstart kunt u zien hoe u een ASP.NET Core-website maakt en publiceert in Azure Service Fabric Mesh met behulp van Visual Studio.
 author: dkkapur
 ms.topic: quickstart
@@ -7,10 +7,10 @@ ms.date: 07/17/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 276f8860f407693a7ff08048399fa6edf16aaf0a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75459066"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Snelstart, een web-app maken en implementeren in Azure Service Fabric Mesh
@@ -25,7 +25,7 @@ U hebt een Azure-abonnement nodig. Als u nog geen abonnement op Azure hebt, kunt
 
 ## <a name="create-a-service-fabric-mesh-project"></a>Een Service Fabric Mesh-project maken
 
-Open Visual Studio en selecteer **Bestand** > **Nieuw** > **Project...**
+Open Visual Studio en selecteer **bestand** > **New** > **project...**
 
 In het dialoogvenster **New Project** typt u `mesh` in het vak **Search**. Selecteer de sjabloon **Service Fabric Mesh Application**. (Als u de sjabloon niet ziet, controleert u of u de Mesh-SDK en de previewversie van de hulpmiddelen van Visual Studio hebt geïnstalleerd, zoals beschreven in [set up your development environment](service-fabric-mesh-howto-setup-developer-environment-sdk.md) (uw ontwikkelomgeving instellen).) 
 

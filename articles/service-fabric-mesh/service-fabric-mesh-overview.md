@@ -1,15 +1,15 @@
 ---
-title: Overzicht van Azure Service Fabric Mesh
+title: Overzicht van Azure Service Fabric mesh
 description: Meer informatie over Azure Service Fabric Mesh. Met Azure Service Fabric Mesh kunt u uw toepassing implementeren en schalen zonder u zorgen te maken over de infrastructuurbehoeften van uw toepassing.
 author: dkkapur
 ms.author: dekapur
 ms.date: 10/1/2018
 ms.topic: overview
 ms.openlocfilehash: d6522d417556104a1ece703c725f3fbeab49d683
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75458985"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Wat is Service Fabric?
@@ -17,7 +17,7 @@ ms.locfileid: "75458985"
 Deze video geeft een kort overzicht van Service Fabric Mesh.
 > [!VIDEO https://www.youtube.com/embed/7qWeVGzAid0]
 
-Azure Service Fabric Mesh is een volledig beheerde service waarmee ontwikkelaars microservices-toepassingen kunnen implementeren zonder virtuele machines, opslag of netwerken hoeven te beheren. U kunt toepassingen die worden gehost in Service Fabric Mesh uitvoeren en schalen zonder u zorgen te maken over de infrastructuur die dit mogelijk maakt.  Service Fabric Mesh bestaat uit clusters met duizenden machines.  Alle clusterbewerkingen zijn verborgen voor de ontwikkelaar. Upload uw code en geef resources op die u nodig hebt, beschikbaarheidsvereisten en resourcelimieten.  Service Fabric Mesh wijst automatisch de infrastructuur toe en handelt problemen met de infrastructuur af, waarbij ervoor wordt gezorgd dat uw toepassingen maximaal beschikbaar zijn. U hoeft zich alleen bezig te houden met de status en de reactietijd van uw toepassing, niet met de infrastructuur.  
+Azure Service Fabric Mesh is een volledig beheerde service waarmee ontwikkelaars microservices-toepassingen kunnen implementeren zonder virtuele machines, opslag of netwerken hoeven te beheren. U kunt toepassingen die worden gehost in Service Fabric Mesh uitvoeren en schalen zonder u zorgen te maken over de infrastructuur die dit mogelijk maakt.  Service Fabric Mesh bestaat uit clusters met duizenden machines.  Alle clusterbewerkingen zijn verborgen voor de ontwikkelaar. Upload uw code en geef de resources op die u nodig hebt, de vereisten voor de beschik baarheid en de resource limieten.  Service Fabric Mesh wijst automatisch de infrastructuur toe en handelt problemen met de infrastructuur af, waarbij ervoor wordt gezorgd dat uw toepassingen maximaal beschikbaar zijn. U hoeft zich alleen bezig te houden met de status en de reactietijd van uw toepassing, niet met de infrastructuur.  
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -25,24 +25,24 @@ Dit artikel bevat een overzicht van de belangrijkste voordelen van Service Fabri
 
 ## <a name="great-developer-experience"></a>Geweldige ontwikkelervaring
 
-Service Fabric Mesh ondersteunt alle programmeertalen en frameworks die kunnen worden uitgevoerd in een container. Ondersteuning voor Visual Studio 2019 en Visual Studio Code tooling biedt een krachtige bewerkings- en foutopsporingservaring voor .NET- en .NET Core-toepassingen. 
+Service Fabric Mesh ondersteunt alle programmeertalen en frameworks die kunnen worden uitgevoerd in een container. Ondersteuning voor Visual Studio 2019 en Visual Studio code tool biedt een krachtige methode voor het bewerken en opsporen van fouten voor .NET-en .NET core-toepassingen. 
 
 Met Service Fabric Mesh kunt u het volgende:
 
 - Bestaande toepassingen via 'lift and shift' verplaatsen naar containers om uw huidige toepassingen te moderniseren en op schaal uit te voeren.
-- Nieuwe microservices-toepassingen op schaal bouwen en implementeren in Azure.  Integreren met andere Azure-services of bestaande toepassingen die in containers worden uitgevoerd. Elke microservice maakt deel uit van een veilige, netwerkgeïsoleerde toepassing. De microservice heeft resource governance beleid gedefinieerd voor CPU-cores, geheugen, schijfruimte, en nog veel meer.
+- Nieuwe microservices-toepassingen op schaal bouwen en implementeren in Azure.  Integreren met andere Azure-services of bestaande toepassingen die in containers worden uitgevoerd. Elke micro service maakt deel uit van een veilige, geïsoleerde netwerk toepassing. De micro service heeft het beheer beleid voor resources dat is gedefinieerd voor CPU-kernen, geheugen, schijf ruimte en meer.
 - Integreren en uitbreiden van bestaande toepassingen zonder wijzigingen aan te brengen in deze toepassingen. Uw eigen virtuele netwerk gebruiken om bestaande toepassingen met de nieuwe toepassing te verbinden.  
 - Uw bestaande Cloud Services-toepassingen moderniseren door te migreren naar Service Fabric Mesh.  
 
 ## <a name="simple-operational-lifecycle"></a>Eenvoudige operationele levenscyclus
 
-Beheer eenvoudig het uitvoeren van toepassingen, het bewaken van toepassingen en het opsporen van foutopsporing in productieomgevingen. Dit beheer omvat toepassingsupgrades en versiebeheer. Deze toepassingen kunnen bestaan uit een enkele microservice of meerdere microservices geïsoleerd binnen hun eigen netwerk. Toepassingen worden efficiënt uitgevoerd met snelle implementatie, plaatsing en failovertijden.
+U kunt eenvoudig actieve toepassingen, bewakings toepassingen en fout opsporing in productie omgevingen beheren. Dit beheer omvat upgrades van toepassingen en versies. Deze toepassingen kunnen bestaan uit een enkele microservice of meerdere microservices geïsoleerd binnen hun eigen netwerk. Toepassingen worden efficiënt uitgevoerd met snelle implementatie, plaatsing en failovertijden.
 
 Met Service Fabric Mesh kunt u het volgende:
 
 - Implementeren en beheren van toepassingen zonder expliciete inrichting en beheer van de infrastructuur.  Door Service Fabric Mesh wordt de onderliggende infrastructuur voor u ingericht, bijgewerkt en van patches voorzien.
 - Continue integratie instellen met behulp van de geïntegreerde hulpprogramma's om toepassingen gemakkelijk te verpakken en te implementeren.
-- Maak gebruik van alle functies van Azure Resource Manager-bronnen. Voorbeelden van deze functies zijn audit trail en [role-based access control](/azure/role-based-access-control/overview)). Alle resources die u implementeert voor de Service Fabric Mesh-service in Azure zijn Azure Resource Manager-bronnen. Deze bronnen omvatten toepassingen, services, geheimen, enzovoort.
+- Maak gebruik van alle functies van Azure Resource Manager resources. Voor beelden van deze functies zijn onder andere controle-Trail en [op rollen gebaseerd toegangs beheer](/azure/role-based-access-control/overview)). Alle resources die u in azure implementeert voor de Service Fabric mesh-service, zijn Azure Resource Manager resources. Deze resources zijn onder andere toepassingen, services, geheimen, enzovoort.
 - Implementeren en beheren van resources met behulp van [Azure Portal](https://portal.azure.com), Resource Manager-sjablonen of Azure CLI/PowerShell-bibliotheken.
 - Instellen van operationele bewaking en waarschuwingen met behulp van [Application Insights](/azure/application-insights/) (of een hulpprogramma naar keuze) om de operationele en diagnostische traceringen van het platform vast te leggen.
 - Toegang krijgen tot diagnostische gegevens van de toepassing die afkomstig zijn uit het toepassingmodel via [Application Insights](/azure/application-insights/) of een hulpprogramma naar keuze.
@@ -50,7 +50,7 @@ Met Service Fabric Mesh kunt u het volgende:
 
 ## <a name="mission-critical-platform-capabilities"></a>Bedrijfskritieke platformmogelijkheden
 
-Service Fabric Mesh maakt een verzameling clusters die [Azure-beschikbaarheidszones](/azure/availability-zones/az-overview) en/of geo-politieke regionale grenzen omspannen. Service Fabric Mesh beschrijft toepassingen met een reeks intenties, zoals schaal, hardwarevereisten, duurzaamheidsvereisten en beveiligingsbeleid.  Wanneer de toepassing wordt geïmplementeerd, zoekt Service Fabric Mesh naar de optimale plaats om deze uit te voeren.
+Service Fabric Mesh maakt een verzameling clusters die [Azure-beschikbaarheidszones](/azure/availability-zones/az-overview) en/of geo-politieke regionale grenzen omspannen. Service Fabric mesh beschrijft toepassingen met een set intenties, zoals schaal, hardwarevereisten, duurzaamheids vereisten en beveiligings beleid.  Wanneer de toepassing wordt geïmplementeerd, zoekt Service Fabric Mesh naar de optimale plaats om deze uit te voeren.
 
 Met Service Fabric Mesh kunt u het volgende:
 

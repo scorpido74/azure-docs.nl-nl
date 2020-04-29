@@ -1,6 +1,6 @@
 ---
-title: Snelstart - Een Azure-privéeindpunt maken met Azure CLI
-description: Meer informatie over het privéeindpunt van Azure in deze Quickstart
+title: 'Snelstartgids: een persoonlijk Azure-eind punt maken met behulp van Azure CLI'
+description: Meer informatie over persoonlijk Azure-eind punt in deze Snelstartgids
 services: private-link
 author: malopMSFT
 ms.service: private-link
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: dbcb833e6f8b90cebd3d013e58168558bcd96827
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75459968"
 ---
-# <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Snelstart: een privéeindpunt maken met Azure CLI
-Private Endpoint is de fundamentele bouwsteen voor Private Link in Azure. Hiermee kunnen Azure-resources, zoals virtuele machines (VM's), privé communiceren met Private Link Resources. In deze Quickstart leert u hoe u een VM maakt op een virtueel netwerk, een SQL Database Server met een privéeindpunt met Azure CLI. Vervolgens hebt u toegang tot de VM om de private link-bron (in dit voorbeeld een private Azure SQL Database-server) veilig te openen. 
+# <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Snelstartgids: een persoonlijk eind punt maken met Azure CLI
+Persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hierdoor kunnen Azure-resources, zoals virtuele machines (Vm's), privé communiceren met persoonlijke koppelings bronnen. In deze Quick Start leert u hoe u een virtuele machine maakt in een virtueel netwerk, een SQL Database-Server met een persoonlijk eind punt met behulp van Azure CLI. Vervolgens hebt u toegang tot de virtuele machine en kunt u veilig toegang krijgen tot de persoonlijke koppelings bron (een persoonlijke Azure SQL Database Server in dit voor beeld). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -23,14 +23,14 @@ Als u ervoor kiest om Azure CLI lokaal te installeren en te gebruiken, moet u vo
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Voordat u een resource maken, moet u een resourcegroep maken om het virtuele netwerk te hosten. Maak een resourcegroep maken met [az group create](/cli/azure/group). In dit voorbeeld wordt een resourcegroep met de naam *myResourceGroup* op de locatie *Westcentralus* ge:
+Voordat u een resource kunt maken, moet u een resource groep maken om de Virtual Network te hosten. Maak een resourcegroep maken met [az group create](/cli/azure/group). In dit voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *westcentralus* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westcentralus
 ```
 
 ## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
-Maak een virtueel netwerk met [az-netwerk vnet maken](/cli/azure/network/vnet). In dit voorbeeld wordt een standaard virtueel netwerk met de naam *myVirtualNetwork* gemaakt met één subnet met de naam *mySubnet:*
+Maak een Virtual Network met [AZ Network vnet Create](/cli/azure/network/vnet). In dit voor beeld wordt een standaard Virtual Network gemaakt met de naam *myVirtualNetwork* met één subnet met de naam *mySubnet*:
 
 ```azurecli-interactive
 az network vnet create \
@@ -38,8 +38,8 @@ az network vnet create \
  --resource-group myResourceGroup \
  --subnet-name mySubnet
 ```
-## <a name="disable-subnet-private-endpoint-policies"></a>Subnet privéeindpuntbeleid uitschakelen 
-Azure implementeert resources naar een subnet binnen een virtueel netwerk, dus u moet het subnet maken of bijwerken om privéeindpuntnetwerkbeleid uit te schakelen. Update een subnetconfiguratie genaamd *mySubnet* met [az-netwerk vnet subnet update:](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)
+## <a name="disable-subnet-private-endpoint-policies"></a>Beleid voor privé-eind punten van subnet uitschakelen 
+Azure implementeert resources in een subnet binnen een virtueel netwerk, dus u moet het subnet maken of bijwerken om beleid voor privé-eindpunt netwerk uit te scha kelen. Een subnet-configuratie met de naam *mySubnet* bijwerken met [AZ Network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -49,17 +49,17 @@ az network vnet subnet update \
  --disable-private-endpoint-network-policies true
 ```
 ## <a name="create-the-vm"></a>De virtuele machine maken 
-Maak een VM met az vm maken. Geef desgevraagd een wachtwoord op dat moet worden gebruikt als aanmeldingsreferenties voor de virtuele machine. In dit voorbeeld wordt een VM met de naam *myVm gemaakt:* 
+Maak een virtuele machine met AZ VM Create. Wanneer u hierom wordt gevraagd, geeft u een wacht woord op dat moet worden gebruikt als aanmeldings referenties voor de virtuele machine. In dit voor beeld wordt een VM gemaakt met de naam *myVm*: 
 ```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVm \
   --image Win2019Datacenter
 ```
- Let op het openbare IP-adres van de VM. U gebruikt dit adres om in de volgende stap verbinding te maken met de virtuele machine via internet.
+ Noteer het open bare IP-adres van de virtuele machine. U gebruikt dit adres om in de volgende stap verbinding te maken met de virtuele machine via internet.
 
-## <a name="create-a-sql-database-server"></a>Een SQL Database Server maken 
-Maak een SQL Database Server met de opdracht AZ SQL Server create. Houd er rekening mee dat de naam van uw SQL Server uniek moet zijn in Azure, dus vervang de tijdelijke aanduidingswaarde tussen haakjes door uw eigen unieke waarde: 
+## <a name="create-a-sql-database-server"></a>Een SQL Database-Server maken 
+Maak een SQL Database-Server met de opdracht AZ SQL Server Create. Houd er rekening mee dat de naam van uw SQL Server uniek moet zijn in azure, dus Vervang de waarde van de tijdelijke aanduiding tussen vier Kante haken door uw eigen unieke waarde: 
 
 ```azurecli-interactive
 # Create a logical server in the resource group 
@@ -81,10 +81,10 @@ az sql db create \
     --capacity 1 
 ```
 
-Houd er rekening mee ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` dat de SQL Server ID vergelijkbaar is met U gebruikt de SQL Server ID in de volgende stap. 
+Opmerking: de SQL Server-ID is ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` vergelijkbaar met de SQL Server-id in de volgende stap. 
 
-## <a name="create-the-private-endpoint"></a>Het privéeindpunt maken 
-Maak een privéeindpunt voor de SQL Database-server in uw virtuele netwerk: 
+## <a name="create-the-private-endpoint"></a>Het persoonlijke eind punt maken 
+Maak een persoonlijk eind punt voor de SQL Database-Server in uw Virtual Network: 
 ```azurecli-interactive
 az network private-endpoint create \  
     --name myPrivateEndpoint \  
@@ -95,8 +95,8 @@ az network private-endpoint create \
     --group-ids sqlServer \  
     --connection-name myConnection  
  ```
-## <a name="configure-the-private-dns-zone"></a>De private DNS-zone configureren 
-Maak een private DNS-zone voor SQL Database-serverdomein en maak een koppeling met het virtuele netwerk. 
+## <a name="configure-the-private-dns-zone"></a>De Privé-DNS zone configureren 
+Maak een Privé-DNS zone voor SQL Database Server domein en maak een koppelings koppeling met de Virtual Network. 
 ```azurecli-interactive
 az network private-dns zone create --resource-group myResourceGroup \ 
    --name  "privatelink.database.windows.net" 
@@ -121,22 +121,22 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Verbinding maken met een virtuele machine via internet
 
-Maak als volgt verbinding met de VM *myVm* via internet:
+Maak als volgt verbinding met de VM- *myVm* van het Internet:
 
-1. Voer *myVm*in in de zoekbalk van het portaal.
+1. Voer in de zoek balk van de portal *myVm*in.
 
 1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
 1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
 
-1. Open het bestand downloaded.rdp*.
+1. Open het bestand gedownloade. rdp *.
 
     1. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
 
-    1. Voer de gebruikersnaam en het wachtwoord in dat u hebt opgegeven bij het maken van de vm.
+    1. Voer de gebruikers naam en het wacht woord in die u hebt opgegeven bij het maken van de virtuele machine.
 
         > [!NOTE]
-        > Mogelijk moet u **Meer opties** > selecteren**Gebruik een ander account**om de referenties op te geven die u hebt ingevoerd toen u de vm hebt gemaakt.
+        > Mogelijk moet u **meer opties** > selecteren**een ander account gebruiken**om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine.
 
 1. Selecteer **OK**.
 
@@ -144,12 +144,12 @@ Maak als volgt verbinding met de VM *myVm* via internet:
 
 1. Wanneer het VM-bureaublad wordt weergegeven, minimaliseert u het om terug te gaan naar het lokale bureaublad.  
 
-## <a name="access-sql-database-server-privately-from-the-vm"></a>SQL Database Server privé openen vanaf de VM
+## <a name="access-sql-database-server-privately-from-the-vm"></a>SQL Database Server privé benaderen vanuit de VM
 
-In deze sectie maakt u verbinding met de SQL Database Server van de VM met behulp van het Privéeindpunt.
+In deze sectie maakt u via het persoonlijke eind punt verbinding met de SQL Database-Server via de VM.
 
- 1. Open PowerShell in het extern bureaublad van *myVM.*
- 2. Voer nslookup  myserver.database.windows.net Je ontvangt een bericht vergelijkbaar met dit: 
+ 1. Open Power shell in de Extern bureaublad van *myVM*.
+ 2. Nslookup myserver.database.windows.net  invoeren er wordt een bericht weer gegeven dat er ongeveer als volgt uitziet: 
 
 ```
       Server:  UnKnown 
@@ -160,22 +160,22 @@ In deze sectie maakt u verbinding met de SQL Database Server van de VM met behul
       Aliases:  myserver.database.windows.net 
 ```
  3. SQL Server Management Studio installeren 
- 4. Voer in Verbinding maken met de server deze informatie in of selecteer deze: Servertype: Databaseengine selecteren.
- Servernaam: selecteer myserver.database.windows.net gebruikersnaam: voer een gebruikersnaam in die tijdens het maken is opgegeven.
- Wachtwoord: Voer een wachtwoord in dat tijdens het maken is opgegeven.
- Wachtwoord onthouden: Selecteer Ja.
+ 4. Typ of Selecteer in verbinding maken met server de volgende informatie: server type: Selecteer data base-engine.
+ Server naam: Selecteer myserver.database.windows.net gebruikers naam: Voer een gebruikers naam in die tijdens het maken is opgegeven.
+ Wacht woord: Voer een wacht woord in dat u hebt opgegeven tijdens het maken.
+ Wacht woord onthouden: Selecteer Ja.
  
  5. Selecteer **Verbinden**.
- 6. Blader door **Databases** in het linkermenu.
- 7. (Optioneel) Gegevens maken of query's maken uit *mydatabase*
- 8. Sluit de verbinding met extern bureaublad met *myVm*.
+ 6. Bladeren door **data bases** vanuit het menu links.
+ 7. Eventueel Gegevens uit *mydatabase* maken of er een query op uitvoeren
+ 8. Sluit de verbinding met extern bureau blad met *myVm*.
 
 ## <a name="clean-up-resources"></a>Resources opschonen 
-Wanneer dit niet meer nodig is, u de az-groep verwijderen gebruiken om de brongroep en alle resources die deze heeft te verwijderen: 
+U kunt AZ Group Delete gebruiken om de resource groep en alle resources die het heeft, te verwijderen wanneer u deze niet meer nodig hebt: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [Azure Private Link](private-link-overview.md)
+- Meer informatie over [persoonlijke Azure-koppelingen](private-link-overview.md)

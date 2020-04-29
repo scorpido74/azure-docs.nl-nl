@@ -1,7 +1,7 @@
 ---
 title: Wat is de Bing Nieuws zoeken-API?
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het gebruik van de Bing News Search API om op het web te zoeken naar actuele koppen in verschillende categorieën, waaronder koppen en trending topics.
+description: Meer informatie over het gebruik van de Bing Nieuws zoeken-API om op het web te zoeken naar actuele nieuwskoppen over categorieën, met inbegrip van onderwerpen over koppen en trends.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -12,10 +12,10 @@ ms.date: 12/18/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: e0e99c7f677173c64afad3109b2f4accd7cb3cb9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448449"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Wat is de Bing Nieuws zoeken-API?
@@ -56,4 +56,4 @@ Als u snel aan de slag wilt met uw eerste API-aanvraag, kunt u een quickstart pr
 
 * De referentiesectie [Bing Nieuws zoeken-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) bevat definities en informatie over de eindpunten, headers, API-antwoorden en queryparameters waarmee u zoekresultaten voor afbeeldingen kunt aanvragen.
 * In de [Bing-vereisten voor gebruik en weergave](./useanddisplayrequirements.md) staan het acceptabele gebruik van de inhoud en informatie die is verkregen via de Bing Zoeken-API's.
-* Ga naar de [hubpagina van bing Search API](../bing-web-search/search-the-web.md) om de andere beschikbare API's te verkennen.
+* Ga naar de [pagina met Bing Search API-hubs](../bing-web-search/search-the-web.md) om de andere beschik bare api's te verkennen.

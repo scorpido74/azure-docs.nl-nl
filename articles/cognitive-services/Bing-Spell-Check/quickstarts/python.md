@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: spelling controleren met de REST API en Python - Bing Spell Check'
+title: 'Snelstartgids: spelling controleren met de REST API en python-Bing Spellingcontrole'
 titleSuffix: Azure Cognitive Services
-description: Ga aan de slag met de Bing Spell Check REST API om spelling en grammatica te controleren met deze quickstart.
+description: Ga aan de slag met de Bing Spellingcontrole REST API om de spelling en grammatica te controleren met deze Snelstartgids.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.openlocfilehash: 6b0977628f7c3d971804d8597f42425608028081
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448457"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Snelstart: spelling controleren met de Bing Spell Check REST API en Python
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Snelstartgids: spelling controleren met de Bing Spellingcontrole REST API en python
 
 Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. Deze eenvoudige Python-toepassing verzendt een aanvraag naar de API en retourneert een lijst met voorgestelde correcties. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor deze toepassing is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py)
 
@@ -36,7 +36,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
    import json
    ```
 
-2. Maak variabelen voor de tekst waarvan u de spelling wilt controleren, maak de abonnementssleutel en het Bing Spellingcontrole-eindpunt. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
+2. Maak variabelen voor de tekst waarvan u de spelling wilt controleren, maak de abonnementssleutel en het Bing Spellingcontrole-eindpunt. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```python
     api_key = "<ENTER-KEY-HERE>"
@@ -52,7 +52,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
     data = {'text': example_text}
     ```
 
-2. Voeg de parameters voor uw aanvraag toe. Uw marktcode toevoegen `mkt=`na . De marktcode is het land waar u het verzoek indient. Ook, toevoegen van uw spell-check mode na `&mode=`. Modus is `proof` ofwel (vangt de meeste `spell` spelling / grammatica fouten) of (vangt de meeste spelling, maar niet zo veel grammatica fouten).
+2. Voeg de parameters voor uw aanvraag toe. Voeg uw markt code toe `mkt=`na. De markt code is het land van waaruit u de aanvraag maakt. Voeg ook de modus voor spelling controle toe `&mode=`. Modus (de `proof` meeste spelling-en grammatica fouten worden onderschept) of `spell` (de meeste spelling wordt niet zo veel grammatica fouten onderschept).
 
     ```python
     params = {
@@ -88,7 +88,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Als u de opdrachtregel gebruikt, gebruikt u de volgende opdracht om de toepassing uit te voeren.
+Als u de opdracht regel gebruikt, gebruikt u de volgende opdracht om de toepassing uit te voeren.
 
 ```bash
 python <FILE_NAME>.py

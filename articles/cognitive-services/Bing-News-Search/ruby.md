@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Voer een nieuwszoekopdracht uit met Ruby en de Bing News Search REST API'
+title: 'Quick Start: een zoek opdracht voor nieuws uitvoeren met Ruby en het Bing News Search REST API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om een aanvraag naar de REST API van Bing News Search te verzenden via Ruby en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -12,21 +12,21 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: ce1ef2b6c586ddd688bacb755d7c6f2ffd16a0a5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448550"
 ---
-# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Snelstart: Voer een nieuwszoekopdracht uit met Ruby en de Bing News Search REST API
+# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Quick Start: een zoek opdracht voor nieuws uitvoeren met Ruby en het Bing News Search REST API
 
 Gebruik deze quickstart om voor het eerst de Bing Nieuws zoeken-API aan te roepen en een JSON-antwoord te ontvangen. Met deze eenvoudige JavaScript-toepassing wordt een zoekquery naar de API verzonden en worden de resultaten verwerkt.
 
-Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor dit voorbeeld is beschikbaar op [GitHub.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb)
+Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Ruby [2.4 of hoger](https://www.ruby-lang.org/en/downloads/)
+* Ruby [2,4 of hoger](https://www.ruby-lang.org/en/downloads/)
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
@@ -40,7 +40,7 @@ Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice
     require 'json'
     ```
 
-2. Maak variabelen voor het API-eindpunt, de Nieuws zoeken-URL, uw abonnementssleutel en de zoekterm. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
+2. Maak variabelen voor het API-eindpunt, de Nieuws zoeken-URL, uw abonnementssleutel en de zoekterm. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```ruby
     accessKey = "enter key here"

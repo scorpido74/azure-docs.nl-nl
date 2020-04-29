@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Supermood | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Supermood.
+title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met de supersfeer | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en de supersfeer.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,165 +16,165 @@ ms.date: 12/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: acb3704541e4c573da4d5331ee10a9c7256162e1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75640156"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-supermood"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Supermood
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-supermood"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met de supersfeer
 
-In deze zelfstudie leert u hoe u Supermood integreert met Azure Active Directory (Azure AD). Wanneer u Supermood integreert met Azure AD, u het als:
+In deze zelf studie leert u hoe u de supersfeer integreert met Azure Active Directory (Azure AD). Wanneer u de supersfeer van Azure AD integreert, kunt u het volgende doen:
 
-* Beheer in Azure AD die toegang heeft tot Supermood.
-* Stel uw gebruikers in staat om automatisch te worden aangemeld bij Supermood met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure-portal.
+* Controle in azure AD die toegang heeft tot de supersfeer.
+* Stel uw gebruikers in staat om automatisch te worden aangemeld bij supersfeer met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om aan de slag te gaan, heb je de volgende items nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
-* Supermood single sign-on (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Superpunte eenmalige aanmelding (SSO) ingeschakeld abonnement.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-* Supermood ondersteunt **SP en IDP** geïnitieerd sso
-* Supermood ondersteunt **Just In Time** gebruikersinrichting
+* Supersfeer ondersteunt SSO die door **SP en IDP** is gestart
+* Supersfeer biedt ondersteuning **voor Just-in-time** -gebruikers inrichting
 
-## <a name="adding-supermood-from-the-gallery"></a>Supermood toevoegen vanuit de galerij
+## <a name="adding-supermood-from-the-gallery"></a>Supersfeer toevoegen vanuit de galerie
 
-Als u de integratie van Supermood in Azure AD wilt configureren, moet u Supermood vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van de supersfeer in azure AD wilt configureren, moet u de supersfeer van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
-1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
-1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
-1. Typ **Supermood** in het zoekvak in de sectie **Toevoegen in de galerijsectie.**
-1. Selecteer **Supermood** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. **Typ in** de sectie **toevoegen vanuit de galerie** de tekst superpunt in het zoekvak.
+1. Selecteer **supersfeer** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-supermood"></a>Azure AD-aanmelding configureren en testen voor Supermood
+## <a name="configure-and-test-azure-ad-single-sign-on-for-supermood"></a>Eenmalige aanmelding voor Azure AD voor de supersfeer configureren en testen
 
-Azure AD SSO configureren en testen met Supermood met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Supermood.
+Configureer en test Azure AD SSO met de supersfeer van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in de hoofd sfeer.
 
-Als u Azure AD SSO wilt configureren en testen met Supermood, voert u de volgende bouwstenen in:
+Als u Azure AD SSO wilt configureren en testen met een supersfeer, voltooit u de volgende bouw stenen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
-    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
-    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
-1. **[Configureer Supermood SSO](#configure-supermood-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
-    * **[Supermood-testgebruiker maken](#create-supermood-test-user)** - om een tegenhanger van B.Simon in Supermood te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. De **[supersfeer SSO configureren](#configure-supermood-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    * **[Test gebruiker van supersfeer maken](#create-supermood-test-user)** : als u een equivalent van B. Simon wilt hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina **Supermood-toepassingsintegratie** de sectie **Beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
-1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
+1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina voor de integratie van de **supersfeer** toepassing en selecteer de sectie voor het **beheren** van **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer in de sectie **BasisSAML-configuratie** de volgende stappen uit als u de toepassing in de **idp-modus** wilt configureren:
+1. Als u de toepassing in de gestarte modus van **IDP** wilt configureren, voert u de volgende stappen uit in de sectie **basis configuratie van SAML** :
 
-    a. Schakel **Extra URL's instellen in**.
+    a. Schakel **extra Url's instellen**in.
     
-    b. Typ een URL in het tekstvak **Relaystatus:**`https://supermood.co/auth/sso/saml20`
+    b. Typ een URL in het tekstvak **Relay-status** :`https://supermood.co/auth/sso/saml20`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stappen uit als u de toepassing in de met **SP** geïnitieerde modus wilt configureren:
 
-    Typ de URL in het tekstvak **AANmeldings-URL:**`https://supermood.co/app/#!/loginv2`
+    Typ in het tekstvak **URL voor aanmelding** de URL:`https://supermood.co/app/#!/loginv2`
 
 1. Klik op **Opslaan**.
 
-1. Supermood-toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+1. Bij een supersfeer toepassing worden de SAML-beweringen in een specifieke indeling verwacht. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
     ![installatiekopie](common/default-attributes.png)
 
-1. Naast bovenstaande, Supermood applicatie verwacht weinig meer attributen worden teruggegeven in SAML reactie die hieronder worden weergegeven. Deze kenmerken zijn ook vooraf ingevuld, maar u ze bekijken volgens uw vereisten.
+1. In aanvulling op de bovenstaande wordt verwacht dat er nog maar enkele kenmerken worden door gegeven aan de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
 
-    | Name | Bronkenmerk|
+    | Naam | Bronkenmerk|
     | ---------------| ------|
     | voornaam | user.givenname |
     | achternaam | user.surname |
 
-1. Klik op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** op de knop Kopiëren om **de url van de appfederatie-metagegevens** te kopiëren en op uw computer op te slaan.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** op de knop kopiëren om de URL van de **app Federation-meta gegevens** te kopiëren en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
-1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **nieuwe gebruiker** boven aan het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
-   1. Klik **op Maken**.
+   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
+   1. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Supermood.
+In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan de supersfeer.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
-1. Selecteer **Supermood**in de lijst met toepassingen .
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de lijst toepassingen de optie **supersfeer**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
-    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
-1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
-1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
 
-## <a name="configure-supermood-sso"></a>Supermood SSO configureren
+## <a name="configure-supermood-sso"></a>Supersfeer SSO configureren
 
-1. Ga naar het Supermood.co-beheerpaneel als beveiligingsbeheerder.
+1. Ga naar het Supermood.co-beheerders paneel als beveiligings beheerder.
 
-1. Klik op **Mijn account** (linksonder) en Single Sign **On (SSO).**
+1. Klik op **Mijn account** (links linksonder) en **eenmalige aanmelding (SSO)**.
 
-    ![De single certificaat](./media/supermood-tutorial/tutorial_supermood_single.png)
+    ![Het certificaat single](./media/supermood-tutorial/tutorial_supermood_single.png)
 
-1. Klik op **uw SAML 2.0-configuraties**op **Een SAML 2.0-configuratie toevoegen voor een e-maildomein**.
+1. Klik in **uw saml 2,0-configuraties**op **een SAML 2,0-configuratie toevoegen voor een e-mail domein**.
 
     ![Het certificaat toevoegen](./media/supermood-tutorial/tutorial_supermood_add.png)
 
-1. Aan **Een SAML 2.0-configuratie toevoegen voor een e-maildomein**. sectie, voert u de volgende stappen uit:
+1. In **een SAML 2,0-configuratie toevoegen voor een e-mail domein**. voert u de volgende stappen uit:
 
-    ![Het certificaat saml](./media/supermood-tutorial/tutorial_supermood_saml.png)
+    ![De certificaat-SAML](./media/supermood-tutorial/tutorial_supermood_saml.png)
 
-    a. Typ uw domein in het **e-maildomein voor dit** tekstvak van de identiteitsprovider.
+    a. Typ uw domein in het tekstvak **e-mail domein voor deze id-provider** .
 
-    b. Plak in het tekstvak **URL van de metagegevens** gebruiken de url van de **app-federatie-metagegevens** die u hebt gekopieerd van azure-portal.
+    b. Plak in het tekstvak **URL voor meta gegevens gebruiken** de **URL voor de federatieve meta gegevens** van de App die u van Azure Portal hebt gekopieerd.
 
-    c. Klik op**toevoegen**.
+    c. Klik op **Add**.
 
-### <a name="create-supermood-test-user"></a>Supermood-testgebruiker maken
+### <a name="create-supermood-test-user"></a>Test gebruiker van supersfeer maken
 
-In deze sectie, een gebruiker genaamd Britta Simon is gemaakt in Supermood. Supermood ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Supermood, wordt er een nieuwe gemaakt na verificatie. Als u handmatig een gebruiker wilt maken, neemt u contact op met [het ondersteuningsteam van Supermood.](mailto:hello@supermood.fr)
+In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt in supersfeer. Supersfeer biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker niet al aanwezig is in de supersfeer, wordt er na verificatie een nieuwe gemaakt. Als u hand matig een gebruiker moet maken, neemt u contact op met het [ondersteunings team van de supersfeer](mailto:hello@supermood.fr).
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>SSO testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de supermood-tegel in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Supermood waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel supersfeer in het toegangs venster klikt, moet u automatisch worden aangemeld bij de supersfeer waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer Supermood met Azure AD](https://aad.portal.azure.com/)
+- [Probeer het met Azure AD](https://aad.portal.azure.com/)

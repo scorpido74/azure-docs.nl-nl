@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: 12c255f0e4ed11ce8acbd762530604218f8bc12b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448727"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Wat is de Bing Aangepaste zoekopdracht-API?
@@ -36,7 +36,7 @@ U kunt een exemplaar voor aangepaste zoekopdrachten maken met behulp van de [por
 
 Nadat u uw exemplaar voor zoekopdrachten hebt gemaakt, kunt u dit (en optioneel ook een gebruikersinterface) integreren op uw website of in uw toepassing door de Bing Aangepaste zoekopdrachten-API aan te roepen:
 
-![Afbeelding waaruit blijkt dat u verbinding maken met bing aangepaste zoekopdracht via de API](media/BCS-Overview.png "Hoe Bing Custom Search werkt.")
+![Afbeelding die laat zien dat u via de API verbinding kunt maken met Bing aangepaste zoek opdrachten](media/BCS-Overview.png "Hoe Bing Aangepaste zoekopdrachten werkt.")
 
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -47,7 +47,7 @@ Zie [Een exemplaar voor aangepast zoeken definiëren](define-your-custom-view.md
 
 Lees eerst [Vereisten voor gebruik en weergave in Bing](./use-and-display-requirements.md) voor het gebruik van zoekresultaten in uw services en toepassingen.
 
-Ga naar de [hubpagina van bing Search API](../bing-web-search/search-the-web.md) om de andere beschikbare API's te verkennen.
+Ga naar de [pagina met Bing Search API-hubs](../bing-web-search/search-the-web.md) om de andere beschik bare api's te verkennen.
 
 Lees u in in de referentie-inhoud van alle aangepaste zoekeindpunten. De handleiding bevat de eindpunten, headers en queryparameters die u nodig hebt om zoekresultaten op te vragen. Daarnaast vindt u hier definities van de responsobjecten.
 

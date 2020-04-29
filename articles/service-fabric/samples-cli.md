@@ -1,13 +1,13 @@
 ---
 title: Voorbeelden van Azure CLI (az) en Azure Service Fabric CLI (sfctl)
-description: Azure CLI (az) en Azure Service Fabric CLI (sfctl) Samples voor het beheren van clusters, toepassingen en services.
+description: Azure CLI (AZ) en Azure Service Fabric CLI (sfctl) voor beelden van het beheren van clusters, toepassingen en services.
 ms.topic: sample
 ms.date: 04/09/2018
 ms.openlocfilehash: 96339f929c25db213fabe5224dd478022ff43427
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75526648"
 ---
 # <a name="azure-cli-az-and-azure-service-fabric-cli-sfctl-samples"></a>Voorbeelden van Azure CLI (az) en Azure Service Fabric CLI (sfctl)

@@ -9,41 +9,41 @@ author: sgilley
 ms.author: sgilley
 ms.date: 11/06/2019
 ms.openlocfilehash: 754c9799ed4c2fd90cbcf1e9717b0be21edd54cb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75659866"
 ---
 >[!IMPORTANT]
->U de resources die u hebt gemaakt gebruiken als vereisten voor andere Azure Machine Learning-zelfstudies en instructieartikelen.
+>U kunt de resources die u hebt gemaakt als vereisten voor andere Azure Machine Learning zelf studies en artikelen met instructies gebruiken.
 
 ### <a name="delete-everything"></a>Alles verwijderen
 
-Als u niet van plan bent iets te gebruiken dat u hebt gemaakt, verwijdert u de hele brongroep, zodat u geen kosten in rekening brengt.
+Als u niet van plan bent om iets te gebruiken dat u hebt gemaakt, verwijdert u de hele resource groep, zodat u geen kosten in rekening brengt.
 
-1. Selecteer **resourcegroepen** aan de linkerkant van het venster in de Azure-portal.
+1. Selecteer in de Azure Portal **resource groepen** aan de linkerkant van het venster.
  
    ![Een resourcegroep verwijderen in de Azure-portal](./media/aml-ui-cleanup/delete-resources.png)
 
-1. Selecteer in de lijst de resourcegroep die u hebt gemaakt.
+1. Selecteer in de lijst de resource groep die u hebt gemaakt.
 
 1. Selecteer **Resourcegroep verwijderen**.
 
-Als u de brongroep verwijdert, worden ook alle resources verwijderd die u in de ontwerper hebt gemaakt. 
+Als u de resource groep verwijdert, worden ook alle resources die u in de ontwerp functie hebt gemaakt, verwijderd. 
 
-### <a name="delete-individual-assets"></a>Afzonderlijke elementen verwijderen
+### <a name="delete-individual-assets"></a>Afzonderlijke assets verwijderen
 
-Verwijder afzonderlijke elementen in de ontwerper waar u uw experiment hebt gemaakt door ze te selecteren en vervolgens de knop **Verwijderen te** selecteren.
+In de ontwerp functie waar u uw experiment hebt gemaakt, verwijdert u afzonderlijke assets door ze te selecteren en vervolgens de knop **verwijderen** te selecteren.
 
-Het rekendoel dat u hier hebt *gemaakt, wordt automatisch automatisch geschaald* naar nulknooppunten wanneer het niet wordt gebruikt. Deze actie wordt ondernomen om de kosten te minimaliseren.Als u het rekendoel wilt verwijderen, neemt u de volgende stappen uit:
+Het reken doel dat u hier hebt gemaakt, wordt *automatisch geschaald* naar nul knoop punten wanneer het niet wordt gebruikt. Deze actie wordt uitgevoerd om de kosten te minimaliseren.Als u het berekenings doel wilt verwijderen, voert u de volgende stappen uit:
 
-![Elementen verwijderen](./media/aml-ui-cleanup/delete-asset.png)
+![Assets verwijderen](./media/aml-ui-cleanup/delete-asset.png)
 
-U gegevenssets uituw halen uit uw werkruimte door elke gegevensset te selecteren en **Het registreren van u uit te**schakelen.
+U kunt de registratie van gegevens sets opheffen vanuit uw werk ruimte door elke gegevensset te selecteren en **registratie verwijderen**te selecteren.
 
-![Gegevensset uitschrijven](./media/aml-ui-cleanup/unregister-dataset1225.png)
+![Registratie van gegevensset opheffen](./media/aml-ui-cleanup/unregister-dataset1225.png)
 
-Als u een gegevensset wilt verwijderen, gaat u naar het opslagaccount met behulp van de Azure-portal of Azure Storage Explorer en verwijdert u deze elementen handmatig.
+Als u een gegevensset wilt verwijderen, gaat u naar het opslag account met behulp van de Azure Portal of Azure Storage Explorer en verwijdert u deze activa hand matig.
 
 

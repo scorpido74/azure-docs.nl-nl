@@ -1,5 +1,5 @@
 ---
-title: Een Azure-bestandenaandeel maken en gebruiken op Windows VM's
+title: Een Azure Files share maken en gebruiken op Windows-Vm's
 description: In deze quickstart stelt u in de Azure-portal een Azure-bestandsshare instellen in en koppelt u deze aan een virtuele Windows-machine. U maakt verbinding met de bestandsshare en uploadt een bestand naar de bestandsshare. Dan maakt u een momentopname van de bestandsshare, wijzigt u het bestand in de bestandsshare en zet u een eerdere momentopname van de bestandsshare terug.
 author: roygara
 ms.service: storage
@@ -8,21 +8,21 @@ ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 6bbab0ee2eefe6e86c150d5bddab4f8e91a7c92d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75463905"
 ---
-# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Snelstart: Azure-bestanden delen met virtuele Windows-machines maken en beheren
+# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Snelstartgids: Azure Files share maken en beheren met virtuele Windows-machines
 
 Dit artikel bevat de basisstappen voor het maken en gebruiken van een Azure-bestandsshare. In deze quickstart ligt de nadruk op het snel instellen van een Azure-bestandsshare, zodat u kunt ervaren hoe de service werkt. Als u meer gedetailleerde instructies nodig hebt voor het maken en gebruiken van Azure-bestandsshares in uw eigen omgeving, raadpleegt u [Een Azure-bestandsshare gebruiken met Windows](storage-how-to-use-files-windows.md).
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Uw omgeving voorbereiden
 
@@ -31,7 +31,7 @@ In deze quickstart stelt u de volgende items in:
 - Een Azure-opslagaccount
 - Een VM met Windows Server 2016 Datacenter
 
-### <a name="create-a-storage-account"></a>Een opslagaccount maken
+### <a name="create-a-storage-account"></a>Create a storage account
 
 Voordat u kunt gaan werken met een Azure-bestandsshare moet u een Azure-opslagaccount maken. Een v2-opslagaccount voor algemeen gebruik biedt toegang tot alle services van Azure Storage: blobs, bestanden, wachtrijen en tabellen. Met deze quickstart maakt u een v2-opslagaccount voor algemeen gebruik, maar de stappen voor het maken van elk type opslagaccount zijn vergelijkbaar. Een opslagaccount kan een onbeperkt aantal shares bevatten. Een share kan een onbeperkt aantal bestanden opslaan, tot de capaciteitslimiet van het opslagaccount.
 
@@ -46,7 +46,7 @@ Vervolgens gaat u een bestandsshare maken.
 
     ![Bestanden selecteren](./media/storage-files-quick-create-use-windows/click-files.png)
 
-1. Selecteer **Bestandsdelen**.
+1. Selecteer **Bestands share**.
 
     ![De knop Bestandsshare toevoegen selecteren](./media/storage-files-quick-create-use-windows/create-file-share.png)
 
@@ -63,7 +63,7 @@ U hebt nu een Azure-opslagaccount gemaakt en een bestandsshare met één bestand
 ### <a name="deploy-a-vm"></a>Een virtuele machine implementeren
 
 1. Vouw vervolgens het menu aan de linkerkant van de portal uit en kies **Een resource maken** in linkerbovenhoek van de Azure-portal.
-1. Zoek in het zoekvak boven de lijst met **Azure Marketplace-bronnen** naar en selecteer **Windows Server 2016 Datacenter**en kies Vervolgens **Maken**.
+1. In het zoekvak boven de lijst met resources van **Azure Marketplace** zoekt en selecteert u **Windows Server 2016 Data Center**en kiest u **maken**.
 1. Selecteer op het tabblad **Basis**, onder **Projectdetails**, de resourcegroep die u voor deze quickstart hebt gemaakt.
 
    ![Voer basisinformatie over uw virtuele machine in op de portalblade](./media/storage-files-quick-create-use-windows/vm-resource-group-and-subscription.png)
@@ -72,7 +72,7 @@ U hebt nu een Azure-opslagaccount gemaakt en een bestandsshare met één bestand
 1. Behoud de standaardinstellingen voor **Regio**, **Beschikbaarheidsopties**, **Installatiekopie** en **Grootte**.
 1. Voeg onder **Administrator-account***VMadmin* toe als de **gebruikersnaam** en voer een **wachtwoord** in voor de VM.
 1. Onder **Regels voor binnenkomende poort** kiest u **​​Geselecteerde poorten toestaan** en selecteert u **RDP (3389)** en **HTTP** in de vervolgkeuzelijst.
-1. Selecteer **Controleren + maken**.
+1. Selecteer **controleren + maken**.
 1. Selecteer **Maken**. Het duurt enkele minuten voordat de nieuwe VM is voltooid.
 
 1. Als de implementatie van de VM is voltooid, selecteert u **Naar de resource gaan**.
@@ -91,7 +91,7 @@ U hebt nu een nieuwe virtuele machine gemaakt en een gegevensschijf gekoppeld. U
 
    ![Meer keuzes](./media/storage-files-quick-create-use-windows/local-host2.png)
 
-1. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. selecteer **Ja** of **Doorgaan** om de verbinding te maken.
+1. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Selecteer **Ja** of **door gaan** om de verbinding te maken.
 
 ## <a name="map-the-azure-file-share-to-a-windows-drive"></a>De Azure-bestandsshare koppelen aan een Windows-station
 
@@ -101,7 +101,7 @@ U hebt nu een nieuwe virtuele machine gemaakt en een gegevensschijf gekoppeld. U
    ![Het UNC-pad in het deelvenster Verbinding maken van Azure Files](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
 
 1. Open op de VM **Verkenner** en selecteer **Deze pc** in het venster. Hiermee wijzigt u de menu's die beschikbaar zijn op het lint. Selecteer **Netwerkstation toewijzen** in het menu **Computer**.
-1. Selecteer de stationsletter en voer het UNC-pad in. Als u de naamgevingssuggesties in deze quickstart hebt gevolgd, kopieert u * \\qsstorageacct.file.core.windows.net.net\qsfileshare* van **Notepad**.
+1. Selecteer de stationsletter en voer het UNC-pad in. Als u de naamgevings suggesties in deze Quick Start hebt gevolgd, kopieert * \\u qsstorageacct. file. core. Windows. net\qsfileshare* van **Klad blok**.
 
    Zorg ervoor dat beide selectievakjes zijn ingeschakeld.
 
@@ -173,7 +173,7 @@ Net als met on-premises VSS-momentopnamen kunt u de momentopnamen van de gekoppe
 
 1. Selecteer **Terugzetten**. De inhoud van de gehele map wordt recursief naar de oorspronkelijke locatie gekopieerd, op de aanmaaktijd van de momentopname van de share.
 
-   ![Knop Herstellen in](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png) waarschuwingsbericht Opmerking: als uw bestand niet is gewijzigd, ziet u geen vorige versie voor dat bestand omdat dat bestand dezelfde versie is als de momentopname. Dit komt overeen met hoe dit werkt op een Windows-bestandsserver.
+   ![De knop herstellen in een](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png) waarschuwing: als het bestand niet is gewijzigd, wordt er geen eerdere versie van het bestand weer gegeven omdat dit bestand dezelfde versie heeft als de moment opname. Dit is consistent met de manier waarop dit werkt op een Windows-Bestands server.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

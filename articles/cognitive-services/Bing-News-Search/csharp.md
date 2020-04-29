@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: Een nieuwszoekopdracht uitvoeren met C# - Bing News Search REST API'
+title: 'Quick Start: een zoek opdracht voor nieuws uitvoeren met C#-Bing News Search REST API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om een aanvraag naar de REST API van Bing News Search te verzenden via C# en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -12,13 +12,13 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: e6911c51ecfe1c8f6924bf403e9ad00e14558a09
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448478"
 ---
-# <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Snelstart: zoek naar nieuws met C# en de Bing News Search REST API
+# <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Quick Start: zoeken naar nieuws met C# en het Bing News Search REST API
 
 Gebruik deze quickstart om voor het eerst de Bing Nieuws zoeken-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige C#-toepassing stuurt een query naar de API om nieuws te zoeken en geeft het antwoord weer. De volledige code voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingNewsSearchv7.cs).
 
@@ -26,8 +26,8 @@ Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Elke editie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
-* Het [Json.NET](https://www.newtonsoft.com/json) framework, beschikbaar als NuGet-pakket.
+* Een versie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
+* Het [JSON.net](https://www.newtonsoft.com/json) -Framework, beschikbaar als een NuGet-pakket.
 * Als u Linux/MacOS gebruikt, kan deze toepassing worden uitgevoerd met behulp van [Mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
@@ -44,7 +44,7 @@ Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die
     using System.Collections.Generic;
     ```
 
-2. Maak variabelen voor het API-eindpunt, uw abonnementssleutel en zoekterm. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
+2. Maak variabelen voor het API-eindpunt, uw abonnementssleutel en zoekterm. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```csharp
     const string accessKey = "enter key here";
@@ -213,4 +213,4 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app voor één pagina maken](tutorial-bing-news-search-single-page-app.md)
+> [Een web-app met één pagina maken](tutorial-bing-news-search-single-page-app.md)

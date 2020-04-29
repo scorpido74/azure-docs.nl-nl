@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een app implementeren voor Azure Service Fabric-mesh'
+title: 'Zelf studie: een app implementeren in azure Service Fabric mesh'
 description: In deze zelfstudie leert u hoe u een toepassing kunt implementeren in Service Fabric Mesh met behulp van een sjabloon.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75494938"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Zelfstudie: Een toepassing implementeren in Service Fabric Mesh met behulp van een sjabloon
@@ -130,7 +130,7 @@ docker tag seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709 mycontainer
 docker tag seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709 mycontainerregistry.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709
 ```
 
-Meld u aan bij het Azure Container Registry.
+Meld u aan bij de Azure Container Registry.
 
 ```azurecli
 az acr login -n myContainerRegistry

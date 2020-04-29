@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
 ms.openlocfilehash: a90fa0a66fb32b2a885599f09458964188353880
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448833"
 ---
 # <a name="what-is-bing-autosuggest"></a>Wat is Bing Automatische suggesties?
@@ -31,7 +31,7 @@ Als uw toepassing query's verstuurt naar een van de API's van Bing Search, kunt 
 
 De Bing Automatische suggesties-API is een RESTful-webservice die eenvoudig kan worden aangeroepen vanuit elke programmeertaal waarmee HTTP-aanvragen kunnen worden gedaan en JSON kan worden geparseerd. 
 
-1. Maak een [API-account voor Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met toegang tot de Bing Search API's. Als u geen Azure-abonnement hebt, u gratis [een account aanmaken.](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
+1. Maak een [Cognitive Services-API-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met toegang tot de Bing zoeken-API's. Als u geen Azure-abonnement hebt, kunt u gratis [een account maken](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) .
 2. Telkens wanneer een gebruiker een nieuw teken in het zoekvak van uw toepassing typt, wordt deze API aangeroepen.
 3. Verwerk de API-reactie door het geretourneerde JSON-bericht te parseren.
 
@@ -49,9 +49,9 @@ Zie [Uw eerste query maken](quickstarts/csharp.md) om snel aan de slag te gaan m
 
 Lees de [naslaghandleiding over de Automatische suggestie-API voor Bing v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) om goed voorbereid aan de slag te gaan. De handleiding bevat de lijst met eindpunten, headers en queryparameters die u nodig hebt om voorgestelde querytermen op te vragen, en de definities van de antwoordobjecten.
 
-Ga naar de [hubpagina van bing Search API](../bing-web-search/search-the-web.md) om de andere beschikbare API's te verkennen.
+Ga naar de [pagina met Bing Search API-hubs](../bing-web-search/search-the-web.md) om de andere beschik bare api's te verkennen.
 
 
-Meer informatie over het zoeken op het web met behulp van de [Bing Web Search API](../bing-web-search/search-the-web.md)en de andere Bing Search[API's](../bing-web-search/index.yml)verkennen.
+Meer informatie over het zoeken op internet met behulp van de [Bing webzoekopdrachten-API](../bing-web-search/search-the-web.md)en ontdek de andere[Bing zoeken-API's](../bing-web-search/index.yml).
 
 Lees [Gebruiks- en weergavevereisten voor Bing](./useanddisplayrequirements.md) om er zeker van te zijn dat u alle regels voor het gebruik van de zoekresultaten volgt.
