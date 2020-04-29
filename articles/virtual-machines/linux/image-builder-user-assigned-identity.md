@@ -1,6 +1,6 @@
 ---
-title: Een virtual machine-afbeelding maken en een door de gebruiker toegewezen beheerde identiteit gebruiken om toegang te krijgen tot bestanden in Azure Storage (voorbeeld)
-description: Maak virtuele machineafbeelding met Azure Image Builder, waarmee toegang kan worden verkregen tot bestanden die zijn opgeslagen in Azure Storage met behulp van door de gebruiker toegewezen beheerde identiteit.
+title: Een installatie kopie voor een virtuele machine maken en een door de gebruiker toegewezen beheerde identiteit gebruiken om toegang te krijgen tot bestanden in Azure Storage (preview)
+description: Maak een installatie kopie van een virtuele machine met behulp van Azure Image Builder, waarmee u bestanden kunt openen die zijn opgeslagen in Azure Storage met door de gebruiker toegewezen beheerde identiteit.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
@@ -9,24 +9,24 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 manager: gwallace
 ms.openlocfilehash: 27f4073efc8647d331faa14afbda0e15f92b8d50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80060751"
 ---
-# <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Een afbeelding maken en een door de gebruiker toegewezen beheerde identiteit gebruiken om toegang te krijgen tot bestanden in Azure Storage 
+# <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Een installatie kopie maken en een door de gebruiker toegewezen beheerde identiteit gebruiken om toegang te krijgen tot bestanden in Azure Storage 
 
-Azure Image Builder ondersteunt het gebruik van scripts of het kopiëren van bestanden vanaf meerdere locaties, zoals GitHub en Azure-opslag, enz. Om deze te gebruiken, moeten ze extern toegankelijk zijn geweest voor Azure Image Builder, maar u Azure Storage-blobs beveiligen met SAS-tokens.
+Azure Image Builder ondersteunt het gebruik van scripts of het kopiëren van bestanden vanaf meerdere locaties, zoals GitHub en Azure Storage, enzovoort. Als u deze wilt gebruiken, moeten ze extern toegankelijk zijn voor Azure Image Builder, maar kunt u Azure Storage-blobs beveiligen met SAS-tokens.
 
-In dit artikel ziet u hoe u een aangepaste afbeelding maakt met behulp van de Azure VM Image Builder, waarbij de service een door de gebruiker toegewezen beheerde identiteit gebruikt om toegang te krijgen tot bestanden in [Azure-opslag](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) voor het aanpassen van de afbeelding, zonder dat u de bestanden openbaar toegankelijk hoeft te maken of SAS-tokens hoeft in te stellen.
+In dit artikel wordt beschreven hoe u een aangepaste installatie kopie maakt met behulp van de opbouw functie voor installatie kopieën van Azure VM, waarbij de service een door de [gebruiker toegewezen beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) gebruikt voor toegang tot bestanden in azure Storage voor het aanpassen van de installatie kopie, zonder dat u de bestanden openbaar toegankelijk wilt maken of SAS-tokens kunt instellen.
 
-In het onderstaande voorbeeld maakt u twee brongroepen, één wordt gebruikt voor de aangepaste afbeelding en de andere host een Azure Storage-account, dat een scriptbestand bevat. Dit simuleert een scenario in het echte leven, waarbij u mogelijk artefacten of afbeeldingsbestanden in verschillende opslagaccounts hebt, buiten Image Builder. U maakt een door de gebruiker toegewezen identiteit en verleent vervolgens die leesmachtigingen voor het scriptbestand, maar u stelt geen openbare toegang tot dat bestand in. U gebruikt vervolgens de Shell-customizer om dat script te downloaden en uit te voeren vanaf het opslagaccount.
+In het onderstaande voor beeld maakt u twee resource groepen, die worden gebruikt voor de aangepaste installatie kopie, en de andere zal fungeren als host voor een Azure Storage account dat een script bestand bevat. Dit simuleert een scenario voor een echt leven, waar u artefacten kunt bouwen, of afbeeldings bestanden in verschillende opslag accounts, buiten de opbouw functie voor installatie kopieën. U maakt een door de gebruiker toegewezen identiteit en verleent vervolgens die lees machtigingen voor het script bestand, maar u kunt geen open bare toegang tot dat bestand instellen. Vervolgens gebruikt u de shell-aanpassings programma om dat script uit het opslag account te downloaden en uit te voeren.
 
 
 > [!IMPORTANT]
-> Azure Image Builder bevindt zich momenteel in een openbare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
+> Azure Image Builder is momenteel beschikbaar als open bare preview.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="register-the-features"></a>De functies registreren
 Als u Azure Image Builder wilt gebruiken tijdens de preview, moet u de nieuwe functie registreren.
@@ -35,7 +35,7 @@ Als u Azure Image Builder wilt gebruiken tijdens de preview, moet u de nieuwe fu
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
 ```
 
-Controleer de status van de functieregistratie.
+Controleer de status van de functie registratie.
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
@@ -49,7 +49,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-Als ze niet zeggen geregistreerd, voer het volgende uit:
+Als ze niet zijn geregistreerd, voert u de volgende handelingen uit:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -60,7 +60,7 @@ az provider register -n Microsoft.Storage
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-We zullen een aantal stukjes informatie herhaaldelijk gebruiken, dus we zullen een aantal variabelen maken om die informatie op te slaan.
+We zullen enkele gegevens herhaaldelijk gebruiken, dus we maken een aantal variabelen om deze informatie op te slaan.
 
 
 ```console
@@ -76,13 +76,13 @@ imageName=aibCustLinuxImgMsi01
 runOutputName=u1804ManImgMsiro
 ```
 
-Maak een variabele voor uw abonnements-ID. U dit `az account show | grep id`krijgen met behulp van.
+Maak een variabele voor uw abonnements-ID. U kunt dit doen met `az account show | grep id`.
 
 ```console
 subscriptionID=<Your subscription ID>
 ```
 
-Maak de resourcegroepen voor zowel de afbeelding als de scriptopslag.
+Maak de resource groepen voor zowel de installatie kopie als de script opslag.
 
 ```console
 # create resource group for image template
@@ -92,7 +92,7 @@ az group create -n $strResourceGroup -l $location
 ```
 
 
-Maak de opslag en kopieer het voorbeeldscript erin vanuit GitHub.
+Maak de opslag en kopieer het voorbeeld script naar het bestand vanuit GitHub.
 
 ```azurecli-interactive
 # script storage account
@@ -119,7 +119,7 @@ az storage blob copy start \
 
 
 
-Geef Image Builder toestemming om resources te maken in de groep afbeeldingsbronnen. De `--assignee` waarde is de app-registratie-id voor de Image Builder-service. 
+Geef een machtiging voor het maken van de installatie kopie voor de resource groep voor de installatie kopie. De `--assignee` waarde is de app-registratie-id voor de Image Builder-service. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -129,9 +129,9 @@ az role assignment create \
 ```
 
 
-## <a name="create-user-assigned-managed-identity"></a>Beheerde identiteit met gebruiker maken
+## <a name="create-user-assigned-managed-identity"></a>Door de gebruiker toegewezen beheerde identiteit maken
 
-Maak de identiteit en wijs machtigingen toe voor het scriptopslagaccount. Zie [Door gebruikers toegewezen beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)voor meer informatie .
+Maak de identiteit en wijs machtigingen toe voor het script-opslag account. Zie door de [gebruiker toegewezen beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)voor meer informatie.
 
 ```azurecli-interactive
 # Create the user assigned identity 
@@ -148,9 +148,9 @@ imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/p
 ```
 
 
-## <a name="modify-the-example"></a>Het voorbeeld wijzigen
+## <a name="modify-the-example"></a>Het voor beeld wijzigen
 
-Download het voorbeeld .json-bestand en configureer het met de variabelen die u hebt gemaakt.
+Down load het bestand example. json en configureer dit met de variabelen die u hebt gemaakt.
 
 ```console
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage/helloImageTemplateMsi.json -o helloImageTemplateMsi.json
@@ -165,7 +165,7 @@ sed -i -e "s%<runOutputName>%$runOutputName%g" helloImageTemplateMsi.json
 
 ## <a name="create-the-image"></a>De installatiekopie maken
 
-Verzend de afbeeldingsconfiguratie naar de Azure Image Builder-service.
+Verzend de configuratie van de installatie kopie naar de Azure Image Builder-service.
 
 ```azurecli-interactive
 az resource create \
@@ -176,7 +176,7 @@ az resource create \
     -n helloImageTemplateMsi01
 ```
 
-Start de afbeeldingsopbouw.
+Start het maken van de installatie kopie.
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -190,7 +190,7 @@ Wacht tot de build is voltooid. Dit kan ongeveer 15 minuten duren.
 
 ## <a name="create-a-vm"></a>Een virtuele machine maken
 
-Maak een VM op basis van de afbeelding. 
+Maak een virtuele machine op basis van de installatie kopie. 
 
 ```azurecli
 az vm create \
@@ -202,13 +202,13 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Nadat de VM is gemaakt, start u een SSH-sessie met de VM.
+Nadat de VM is gemaakt, start u een SSH-sessie met de virtuele machine.
 
 ```console
 ssh aibuser@<publicIp>
 ```
 
-U moet zien dat de afbeelding is aangepast met een Bericht van de Dag zodra uw SSH-verbinding tot stand is gebracht!
+U ziet dat de installatie kopie is aangepast met een bericht van de dag zodra uw SSH-verbinding tot stand is gebracht.
 
 ```output
 
@@ -221,7 +221,7 @@ U moet zien dat de afbeelding is aangepast met een Bericht van de Dag zodra uw S
 
 ## <a name="clean-up"></a>Opruimen
 
-Wanneer u klaar bent, u de bronnen verwijderen als ze niet meer nodig zijn.
+Wanneer u klaar bent, kunt u de resources verwijderen als ze niet meer nodig zijn.
 
 ```azurecli-interactive
 az identity delete --ids $imgBuilderId
@@ -235,4 +235,4 @@ az group delete -n $strResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Probleemoplossing](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)voor problemen met Azure Image Builder als u problemen ondervindt bij het werken met Azure Image Builder.
+Zie [probleem oplossing](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)als u problemen hebt met het werken met Azure Image Builder.

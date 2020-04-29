@@ -1,5 +1,5 @@
 ---
-title: Bing Video Search C# clientbibliotheek snel aan de slag
+title: Quick start voor Bing Video Search C#-client bibliotheek
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,20 +9,20 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: aahi
 ms.openlocfilehash: d50e1acd104916d68f7fbb84ff568cf4efc0b46b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80289754"
 ---
-Gebruik deze snelle start om te beginnen met zoeken naar nieuws met de Bing Video Search-clientbibliotheek voor C#. Bing Video Search heeft een REST API die compatibel is met de meeste programmeertalen, maar de clientbibliotheek biedt een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) met extra annotaties en functies.
+Gebruik deze Quick Start om te beginnen met zoeken naar nieuws met de Bing Video Search-client bibliotheek voor C#. Hoewel Bing Video Search een REST API compatibel met de meeste programmeer talen heeft, biedt de client bibliotheek een eenvoudige manier om de service te integreren in uw toepassingen. De bron code voor dit voor beeld is te vinden op [github](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) met aanvullende aantekeningen en functies.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Elke editie van [Visual Studio 2017 of hoger](https://visualstudio.microsoft.com/downloads/).
+* Een versie van [Visual Studio 2017 of hoger](https://visualstudio.microsoft.com/downloads/).
 * Het Json.NET-framework, beschikbaar als [NuGet-pakket](https://www.nuget.org/packages/Newtonsoft.Json/).
 
-Als u de clientbibliotheek Bing Video Search aan uw project wilt toevoegen, selecteert u **NuGet-pakketten beheren** vanuit **Solution Explorer** in Visual Studio. Voeg het pakket `Microsoft.Azure.CognitiveServices.Search.VideoSearch` toe.
+Als u de Bing Video Search-client bibliotheek wilt toevoegen aan uw project, selecteert u **NuGet-pakketten beheren** in **Solution Explorer** in Visual Studio. Voeg het pakket `Microsoft.Azure.CognitiveServices.Search.VideoSearch` toe.
 
 Wanneer u het [[NuGet Video Search SDK-pakket]](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0) installeert, worden ook de volgende afhankelijkheden geïnstalleerd:
 
@@ -85,4 +85,4 @@ Wanneer u het [[NuGet Video Search SDK-pakket]](https://www.nuget.org/packages/M
 ## <a name="see-also"></a>Zie ook 
 
 * [Wat is de Bing Video's zoeken-API?](../../overview.md)
-* [Cognitieve services .NET SDK-monsters](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+* [Voor beelden van cognitieve Services .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

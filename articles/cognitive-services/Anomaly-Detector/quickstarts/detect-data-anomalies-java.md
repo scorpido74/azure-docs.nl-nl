@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: afwijkingen in uw tijdreeksgegevens detecteren met behulp van de Anomaly Detector REST API en Java'
+title: 'Snelstartgids: afwijkingen in uw tijdreeks gegevens detecteren met behulp van de afwijkings detector REST API en Java'
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het gebruik van de Api voor anomaliedetector om afwijkingen in uw gegevensreeks op te sporen als batch of op streaminggegevens.
+description: Meer informatie over hoe u de Anomaliey detector API kunt gebruiken om afwijkingen in uw gegevens reeksen op te sporen als een batch of gegevens stromen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,34 +11,34 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
 ms.openlocfilehash: 4e7cc969ff2c36415b8fd1cebafa1873f9efd38c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80239058"
 ---
-# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>Snelstart: afwijkingen in uw tijdreeksgegevens detecteren met behulp van de Anomaly Detector REST API en Java
+# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>Snelstartgids: afwijkingen in uw tijdreeks gegevens detecteren met behulp van de afwijkings detector REST API en Java
 
-Gebruik deze snelle start om de twee detectiemodi van de Anomaly Detector API te gebruiken om afwijkingen in uw tijdreeksgegevens te detecteren. Deze Java-toepassing verzendt twee API-aanvragen met JSON-geformatteerde tijdreeksgegevens en krijgt de antwoorden.
+Gebruik deze Quick Start om de twee detectie modi van de anomalie detectie-API te gebruiken voor het detecteren van afwijkingen in uw time series-gegevens. Deze Java-toepassing verzendt twee API-aanvragen met tijdreeks gegevens in JSON-indeling en ontvangt de antwoorden.
 
 | API-aanvraag                                        | Toepassingsuitvoer                                                                                                                         |
 |----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| Afwijkingen detecteren als een batch                        | De JSON-respons met de anomaliestatus (en andere gegevens) voor elk gegevenspunt in de gegevens van de tijdreeks en de posities van gedetecteerde afwijkingen. |
-| De anomaliestatus van het laatste gegevenspunt detecteren | De JSON-respons met de anomaliestatus (en andere gegevens) voor het meest recente gegevenspunt in de gegevens van de tijdreeksen.                                                                                                                                         |
+| Afwijkingen als een batch detecteren                        | Het JSON-antwoord met de afwijkings status (en andere gegevens) voor elk gegevens punt in de tijdreeks gegevens en de posities van gedetecteerde afwijkingen. |
+| De afwijkings status van het laatste gegevens punt detecteren | Het JSON-antwoord met de afwijkings status (en andere gegevens) voor het laatste gegevens punt in de time series-gegevens.                                                                                                                                         |
 
- Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. U vindt de broncode voor deze quickstart op [GitHub.](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/java-detect-anomalies.java)
+ Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. U vindt de bron code voor deze Quick Start op [github](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/java-detect-anomalies.java).
 
 ## <a name="prerequisites"></a>Vereisten
 
-- De [&trade; Java Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) of hoger.
-- Een anomaliedetectorsleutel en eindpunt
-- Importeer deze bibliotheken uit de Maven Repository
-    - [JSON in Java](https://mvnrepository.com/artifact/org.json/json) pakket
-    - [Apache HttpClient-pakket](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient)
+- De [Java&trade; Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) of hoger.
+- Een anomalie detectie sleutel en eind punt
+- Deze bibliotheken importeren vanuit de Maven-opslag plaats
+    - [Json in Java](https://mvnrepository.com/artifact/org.json/json) -pakket
+    - [Apache httpclient maakt](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) -pakket
 
-- Een JSON-bestand met tijdreeksgegevenspunten. De voorbeeldgegevens voor deze quickstart zijn te vinden op [GitHub.](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json)
+- Een JSON-bestand met gegevens punten van de tijd reeks. De voorbeeld gegevens voor deze Quick Start vindt u op [github](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
 
-### <a name="create-an-anomaly-detector-resource"></a>Een Anomaliedetectorbron maken
+### <a name="create-an-anomaly-detector-resource"></a>Een afwijkende detector-resource maken
 
 [!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
@@ -48,59 +48,59 @@ Gebruik deze snelle start om de twee detectiemodi van de Anomaly Detector API te
     
     [!code-java[Import statements](~/samples-anomaly-detector/quickstarts/java-detect-anomalies.java?name=imports)]
 
-2. Maak variabelen voor uw abonnementssleutel en uw eindpunt. Hieronder vindt u de URI's die u gebruiken voor anomaliedetectie. Deze worden later toegevoegd aan het eindpunt van uw service om url's voor API-aanvragen te maken.
+2. Maak variabelen voor uw abonnements sleutel en uw eind punt. Hieronder vindt u de Uri's die u voor anomalie detectie kunt gebruiken. Deze worden later toegevoegd aan uw service-eind punt om de API-aanvraag-Url's te maken.
 
     |Detectiemethode  |URI  |
     |---------|---------|
-    |Batchdetectie    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
-    |Detectie op het laatste gegevenspunt     | `/anomalydetector/v1.0/timeseries/last/detect`        |
+    |Batch detectie    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
+    |Detectie op het laatste gegevens punt     | `/anomalydetector/v1.0/timeseries/last/detect`        |
 
     [!code-java[Initial key and endpoint variables](~/samples-anomaly-detector/quickstarts/java-detect-anomalies.java?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>Een functie maken om aanvragen te verzenden
 
-1. Maak een nieuwe `sendRequest()` functie genaamd die de hierboven gemaakte variabelen neemt. Voer vervolgens de volgende stappen uit.
+1. Maak een nieuwe functie met `sendRequest()` de naam die de hierboven gemaakte variabelen accepteert. Voer vervolgens de volgende stappen uit.
 
-2. Maak `CloseableHttpClient` een object dat aanvragen naar de API kan verzenden. Stuur het verzoek `HttpPost` naar een aanvraagobject door uw eindpunt te combineren met een URL van de anomaliedetector.
+2. Maak een `CloseableHttpClient` object waarmee aanvragen kunnen worden verzonden naar de API. De aanvraag verzenden naar een `HttpPost` aanvraag object door uw eind punt te combi neren en een anomalie detectie-URL.
 
-3. Gebruik de functie `setHeader()` van het `Content-Type` verzoek `application/json`om de koptekst `Ocp-Apim-Subscription-Key` in te stellen op en voeg uw abonnementssleutel toe aan de koptekst.
+3. Gebruik de functie van `setHeader()` de aanvraag om de `Content-Type` header in `application/json`te stellen op en voeg uw abonnements sleutel `Ocp-Apim-Subscription-Key` toe aan de koptekst.
 
-4. Gebruik de functie `setEntity()` van de aanvraag voor de te sturen gegevens.
+4. Gebruik de functie van `setEntity()` de aanvraag voor de gegevens die moeten worden verzonden.
 
-5. Gebruik de functie `execute()` van de client om de `CloseableHttpResponse` aanvraag te verzenden en op te slaan in een object.
+5. Gebruik de functie van `execute()` de client om de aanvraag te verzenden en op te slaan `CloseableHttpResponse` in een-object.
 
-6. Maak `HttpEntity` een object om de antwoordinhoud op te slaan. Krijg de `getEntity()`inhoud met . Als het antwoord niet leeg is, moet u het antwoord retourneren.
+6. Maak een `HttpEntity` object om de antwoord inhoud op te slaan. De inhoud ophalen met `getEntity()`. Als het antwoord niet leeg is, retourneert u het.
 
     [!code-java[API request method](~/samples-anomaly-detector/quickstarts/java-detect-anomalies.java?name=request)]
 
-## <a name="detect-anomalies-as-a-batch"></a>Afwijkingen detecteren als een batch
+## <a name="detect-anomalies-as-a-batch"></a>Afwijkingen als een batch detecteren
 
-1. Maak een `detectAnomaliesBatch()` methode die wordt aangeroepen om afwijkingen in de gegevens als batch te detecteren. Roep `sendRequest()` de hierboven gemaakte methode aan met uw eindpunt, url, abonnementssleutel en json-gegevens. Haal het resultaat en print het op de console.
+1. Maak een methode met `detectAnomaliesBatch()` de naam om afwijkingen in de gegevens op te sporen als een batch. Roep de `sendRequest()` hierboven gemaakte methode aan met uw eind punt, URL, abonnements sleutel en JSON-gegevens. Bekijk het resultaat en druk het af op de-console.
 
-2. Als het `code` antwoord veld bevat, drukt u de foutcode en het foutbericht af.
+2. Als het antwoord veld `code` bevat, drukt u de fout code en het fout bericht af.
 
-3. Zoek anders de posities van afwijkingen in de gegevensset. Het veld `isAnomaly` van het antwoord bevat een booleaanse waarde met betrekking tot de vraag of een bepaald gegevenspunt een afwijking is. Haal de JSON-array en werk erdoorheen en `true` druk de index van alle waarden af. Deze waarden komen overeen met de index van afwijkende gegevenspunten, indien deze zijn gevonden.
+3. Als dat niet het geval is, kunt u de positie van afwijkingen vinden in de gegevensset. Het veld van `isAnomaly` de respons bevat een Booleaanse waarde die aangeeft of een gegeven gegevens punt een afwijkend is. Haal de JSON-matrix op en herhaal deze door de index van alle `true` waarden af te drukken. Deze waarden komen overeen met de index van afwijkende gegevens punten, als deze zijn gevonden.
 
     [!code-java[Method for batch detection](~/samples-anomaly-detector/quickstarts/java-detect-anomalies.java?name=detectBatch)]
 
-## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>De anomaliestatus van het laatste gegevenspunt detecteren
+## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>De afwijkings status van het laatste gegevens punt detecteren
 
-Maak een `detectAnomaliesLatest()` methode die wordt aangeroepen om de anomaliestatus van het laatste gegevenspunt in de gegevensset te detecteren. Roep `sendRequest()` de hierboven gemaakte methode aan met uw eindpunt, url, abonnementssleutel en json-gegevens. Haal het resultaat en print het op de console.
+Maak een methode met `detectAnomaliesLatest()` de naam om de afwijkings status van het laatste gegevens punt in de gegevensset te detecteren. Roep de `sendRequest()` hierboven gemaakte methode aan met uw eind punt, URL, abonnements sleutel en JSON-gegevens. Bekijk het resultaat en druk het af op de-console.
 
 [!code-java[Latest point detection method](~/samples-anomaly-detector/quickstarts/java-detect-anomalies.java?name=detectLatest)]
 
-## <a name="load-your-time-series-data-and-send-the-request"></a>Laad uw tijdreeksgegevens en verstuur de aanvraag
+## <a name="load-your-time-series-data-and-send-the-request"></a>Laad uw time series-gegevens en verzend de aanvraag
 
-1. Lees in de hoofdmethode van uw toepassing in het JSON-bestand met de gegevens die aan de aanvragen worden toegevoegd.
+1. In de hoofd methode van uw toepassing leest u in het JSON-bestand dat de gegevens bevat die aan de aanvragen worden toegevoegd.
 
-2. Roep de twee anomaliedetectiefuncties aan die hierboven zijn gemaakt.
+2. Roep de twee hierboven gemaakte anomalie detectie functies aan.
 
     [!code-java[Main method](~/samples-anomaly-detector/quickstarts/java-detect-anomalies.java?name=main)]
 
 ### <a name="example-response"></a>Voorbeeld van een antwoord
 
-Een geslaagdantwoord wordt geretourneerd in JSON-indeling. Klik op de onderstaande links om het JSON-antwoord op GitHub te bekijken:
-* [Voorbeeld batchdetectierespons](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
-* [Voorbeeld van de laatste puntdetectierespons](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+Een geslaagde reactie wordt geretourneerd in JSON-indeling. Klik op de onderstaande koppelingen om het JSON-antwoord op GitHub weer te geven:
+* [Voor beeld van een antwoord op een batch detectie](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
+* [Voor beeld van laatste punt detectie respons](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
 
 [!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

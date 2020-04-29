@@ -1,6 +1,6 @@
 ---
-title: Azure Desired State Configuration Extension Handler
-description: Een PowerShell DSC-configuratie uploaden en toepassen op een Azure VM met DSC-extensie
+title: Extensie-handler voor desired state Configuration van Azure
+description: Een Power shell DSC-configuratie op een Azure-VM uploaden en Toep assen met behulp van DSC-extensie
 services: virtual-machines-windows
 documentationcenter: ''
 author: bobbytreed
@@ -14,33 +14,33 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253960"
 ---
-# <a name="powershell-dsc-extension"></a>PowerShell DSC-extensie
+# <a name="powershell-dsc-extension"></a>Power shell DSC-extensie
 
 ## <a name="overview"></a>Overzicht
 
-De PowerShell DSC-extensie voor Windows wordt gepubliceerd en ondersteund door Microsoft. De extensie uploadt en past een PowerShell DSC-configuratie toe op een Azure VM. De DSC Extension roept PowerShell DSC op om de ontvangen DSC-configuratie op de VM uit te voeren. In dit document worden de ondersteunde platforms, configuraties en implementatieopties voor de DSC-extensie voor virtuele machines voor Windows beschreven.
+De Power shell DSC-extensie voor Windows wordt gepubliceerd en ondersteund door micro soft. De uitbrei ding uploadt en past een Power shell DSC-configuratie op een virtuele machine van Azure toe. De DSC-extensie roept Power shell DSC aan om de ontvangen DSC-configuratie op de virtuele machine te regelen. Dit document bevat een overzicht van de ondersteunde platforms, configuraties en implementatie opties voor de DSC-extensie van de virtuele machine voor Windows.
 
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-De DSC Extension ondersteunt de volgende OS
+De DSC-extensie ondersteunt de volgende besturings systemen
 
-Windows Server 2019, Windows Server 2016, Windows Server 2012R2, Windows Server 2012, Windows Server 2008 R2 SP1, Windows Client 7/8.1/10
+Windows Server 2019, Windows Server 2016, Windows Server 2012R2, Windows Server 2012, Windows Server 2008 R2 SP1, Windows-client 7/8.1/10
 
 ### <a name="internet-connectivity"></a>Internetconnectiviteit
 
-De DSC-extensie voor Windows vereist dat de beoogde virtuele machine in staat is om te communiceren met Azure en de locatie van het configuratiepakket (.zip-bestand) als het is opgeslagen op een locatie buiten Azure. 
+De DSC-extensie voor Windows vereist dat de virtuele doel machine kan communiceren met Azure en de locatie van het configuratie pakket (zip-bestand) als deze wordt opgeslagen op een locatie buiten Azure. 
 
 ## <a name="extension-schema"></a>Extensieschema
 
-In het volgende JSON wordt het schema voor het instellingengedeelte van de DSC-extensie weergegeven in een Azure Resource Manager-sjabloon. 
+De volgende JSON toont het schema voor het gedeelte instellingen van de DSC-uitbrei ding in een Azure Resource Manager sjabloon. 
 
 ```json
 {
@@ -95,81 +95,81 @@ In het volgende JSON wordt het schema voor het instellingengedeelte van de DSC-e
 }
 ```
 
-### <a name="property-values"></a>Eigenschapswaarden
+### <a name="property-values"></a>Eigenschaps waarden
 
-| Name | Waarde / Voorbeeld | Gegevenstype |
+| Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | date |
-| uitgever | Microsoft.Powershell.DSC | tekenreeks |
+| uitgever | Micro soft. Power shell. DSC | tekenreeks |
 | type | DSC | tekenreeks |
-| typeHandlerVersie | 2.77 | int |
+| typeHandlerVersion | 2,77 | int |
 
-### <a name="settings-property-values"></a>Eigenschappenwaarden instellingen
+### <a name="settings-property-values"></a>Eigenschaps waarden van instellingen
 
-| Name | Gegevenstype | Beschrijving
+| Naam | Gegevenstype | Beschrijving
 | ---- | ---- | ---- |
-| settings.wmfVersion | tekenreeks | Hiermee geeft u de versie op van het Windows Management Framework die op uw vm moet worden geïnstalleerd. Als u deze eigenschap op 'laatste' instelt, wordt de meest recente versie van WMF geïnstalleerd. De enige huidige mogelijke waarden voor deze eigenschap zijn '4.0', '5.0' en 'latest'. Deze mogelijke waarden zijn onderhevig aan updates. De standaardwaarde is 'laatste'. |
-| settings.configuration.url | tekenreeks | Hiermee geeft u de URL-locatie op van waaruit u uw DSC-configuratiezip-bestand downloaden. Als de opgegeven URL een SAS-token voor toegang vereist, moet u de eigenschap protectedSettings.configurationUrlSasToken instellen op de waarde van uw SAS-token. Deze eigenschap is vereist als instellingen.configuration.script en/of settings.configuration.function zijn gedefinieerd.
-| settings.configuration.script | tekenreeks | Hiermee geeft u de bestandsnaam op van het script dat de definitie van uw DSC-configuratie bevat. Dit script moet zich in de hoofdmap van het zip-bestand bevinden dat is gedownload van de URL die is opgegeven door de eigenschap configuration.url. Deze eigenschap is vereist als settings.configuration.url en/of settings.configuration.script zijn gedefinieerd.
-| settings.configuration.function | tekenreeks | Hiermee geeft u de naam van uw DSC-configuratie op. De benoemde configuratie moet worden opgenomen in het script dat is gedefinieerd door configuration.script. Deze eigenschap is vereist als instellingen.configuration.url en/of settings.configuration.function zijn gedefinieerd.
-| instellingen.configurationArguments | Verzameling | Hiermee definieert u alle parameters die u wilt doorgeven aan uw DSC-configuratie. Deze eigenschap wordt niet versleuteld.
-| settings.configurationData.url | tekenreeks | Hiermee geeft u de URL op van waaruit u uw configuratiegegevensbestand (.pds1) wilt downloaden om te gebruiken als invoer voor uw DSC-configuratie. Als de opgegeven URL een SAS-token voor toegang vereist, moet u de eigenschap protectedSettings.configurationDataUrlSasToken instellen op de waarde van uw SAS-token.
-| settings.privacy.dataIngeschakeld | tekenreeks | Hiermee schakelt u telemetrieverzameling in of uit. De enige mogelijke waarden voor deze eigenschap zijn 'Inschakelen', 'Uitschakelen', ", of $null. Als u deze eigenschap leeg of null laat staan, schakelt u telemetrie in
-| settings.advancedOptions.forcePullAndApply | Booleaanse waarde | Deze instelling is ontworpen om de ervaring van het werken met de extensie om knooppunten te registreren bij Azure Automation DSC te verbeteren.  Als de `$true`waarde is, wacht de extensie op de eerste uitvoering van de configuratie die uit de service is getrokken voordat het succes/de fout wordt teruggezet.  Als de waarde is ingesteld op $false, wordt de status die door de extensie wordt geretourneerd, alleen bedoeld als of het knooppunt is geregistreerd bij azure-automatiseringsstatusconfiguratie en de knooppuntconfiguratie niet wordt uitgevoerd tijdens de registratie.
-| settings.advancedOptions.downloadMappings | Verzameling | Definieert alternatieve locaties om afhankelijkheden zoals WMF en .NET te downloaden
+| Settings. wmfVersion | tekenreeks | Hiermee geeft u de versie op van het Windows Management Framework dat op uw virtuele machine moet worden geïnstalleerd. Als u deze eigenschap instelt op ' meest recente ', wordt de meest recente versie van WMF geïnstalleerd. De enige huidige mogelijke waarden voor deze eigenschap zijn ' 4,0 ', ' 5,0 ' en ' meest recent '. Deze mogelijke waarden zijn onderhevig aan updates. De standaard waarde is ' meest recent '. |
+| Settings. Configuration. URL | tekenreeks | Hiermee geeft u de URL-locatie van waaruit u uw DSC-configuratie-zip-bestand wilt downloaden. Als voor de opgegeven URL een SAS-token voor toegang is vereist, moet u de eigenschap protectedSettings. configurationUrlSasToken instellen op de waarde van uw SAS-token. Deze eigenschap is vereist als instellingen. Configuration. script en/of settings. Configuration. functie zijn gedefinieerd.
+| instellingen. Configuration. script | tekenreeks | Hiermee geeft u de bestands naam op van het script dat de definitie van uw DSC-configuratie bevat. Dit script moet zich in de hoofdmap van het zip-bestand bevindt dat is gedownload van de URL die is opgegeven door de eigenschap Configuration. URL. Deze eigenschap is vereist als instellingen. Configuration. URL en/of settings. Configuration. script zijn gedefinieerd.
+| Settings. Configuration. function | tekenreeks | Hiermee geeft u de naam van uw DSC-configuratie op. De configuratie met de naam moet zijn opgenomen in het script dat is gedefinieerd door Configuration. script. Deze eigenschap is vereist als instellingen. Configuration. URL en/of settings. Configuration. functie zijn gedefinieerd.
+| Settings. configurationArguments | Verzameling | Hiermee definieert u de para meters die u wilt door geven aan uw DSC-configuratie. Deze eigenschap wordt niet versleuteld.
+| Settings. configurationData. URL | tekenreeks | Hiermee geeft u de URL op waaruit uw pds1-bestand (configuratie gegevens) moet worden gedownload om te worden gebruikt als invoer voor uw DSC-configuratie. Als voor de opgegeven URL een SAS-token voor toegang is vereist, moet u de eigenschap protectedSettings. configurationDataUrlSasToken instellen op de waarde van uw SAS-token.
+| Settings. privacy. dataEnabled | tekenreeks | Hiermee wordt de verzameling telemetrie in-of uitgeschakeld. De enige mogelijke waarden voor deze eigenschap zijn ' Enable ', ' Disable ', ' of ' $null. Als u deze eigenschap leeg of null laat, wordt telemetrie ingeschakeld
+| Settings. advancedOptions. forcePullAndApply | Booleaanse waarde | Deze instelling is ontworpen om de ervaring van het werken met de uitbrei ding voor het registreren van knoop punten met Azure Automation DSC te verbeteren.  Als de waarde is `$true`, wacht de uitbrei ding op de eerste uitvoering van de configuratie die wordt opgehaald uit de service voordat het succes/de fout wordt geretourneerd.  Als de waarde is ingesteld op $false, verwijst de status die door de uitbrei ding wordt geretourneerd alleen naar of het knoop punt is geregistreerd met Azure Automation status configuratie is geslaagd en de knooppunt configuratie niet wordt uitgevoerd tijdens de registratie.
+| Settings. advancedOptions. downloadMappings | Verzameling | Definieert alternatieve locaties voor het downloaden van afhankelijkheden, zoals WMF en .NET
 
-### <a name="protected-settings-property-values"></a>Eigenschappenwaarden voor beveiligde instellingen
+### <a name="protected-settings-property-values"></a>Eigenschaps waarden voor beveiligde instellingen
 
-| Name | Gegevenstype | Beschrijving
+| Naam | Gegevenstype | Beschrijving
 | ---- | ---- | ---- |
-| protectedSettings.configurationArguments | tekenreeks | Hiermee definieert u alle parameters die u wilt doorgeven aan uw DSC-configuratie. Deze eigenschap wordt versleuteld. |
-| protectedSettings.configurationUrlSasToken | tekenreeks | Hiermee geeft u het SAS-token op om toegang te krijgen tot de URL die is gedefinieerd door configuration.url. Deze eigenschap wordt versleuteld. |
-| protectedSettings.configurationDataUrlSasToken | tekenreeks | Hiermee geeft u het SAS-token op om toegang te krijgen tot de URL die is gedefinieerd door configurationData.url. Deze eigenschap wordt versleuteld. |
+| protectedSettings.configurationArguments | tekenreeks | Hiermee definieert u de para meters die u wilt door geven aan uw DSC-configuratie. Deze eigenschap wordt versleuteld. |
+| protectedSettings.configurationUrlSasToken | tekenreeks | Hiermee geeft u het SAS-token voor toegang tot de URL die is gedefinieerd door Configuration. URL. Deze eigenschap wordt versleuteld. |
+| protectedSettings.configurationDataUrlSasToken | tekenreeks | Hiermee geeft u het SAS-token voor toegang tot de URL die is gedefinieerd door configurationData. URL. Deze eigenschap wordt versleuteld. |
 
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 
-Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen.
-Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines waarvoor een configuratie na implementatie vereist is.
-Een voorbeeld sjabloon resourcebeheer met de DSC-extensie voor Windows is te vinden in de [Azure Quick Start Gallery.](https://github.com/Azure/azure-quickstart-templates/blob/master/101-automation-configuration/nested/provisionServer.json#L91)
+Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager sjablonen.
+Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines waarvoor na de implementatie configuratie een vereiste is.
+Een voor beeld van een resource manager-sjabloon die de DSC-extensie voor Windows bevat, kunt u vinden in de [Galerie van Azure Quick Start](https://github.com/Azure/azure-quickstart-templates/blob/master/101-automation-configuration/nested/provisionServer.json#L91).
 
 ## <a name="troubleshoot-and-support"></a>Problemen oplossen en ondersteuning
 
 ### <a name="troubleshoot"></a>Problemen oplossen
 
-Gegevens over de status van extensie-implementaties kunnen worden opgehaald uit de Azure-portal en met behulp van de Azure CLI. Als u de implementatiestatus van extensies voor een bepaalde VM wilt bekijken, voert u de volgende opdracht uit met de Azure CLI.
+Gegevens over de status van uitbreidings implementaties kunnen worden opgehaald uit het Azure Portal en met behulp van de Azure CLI. Als u de implementatie status van uitbrei dingen voor een bepaalde virtuele machine wilt bekijken, voert u de volgende opdracht uit met behulp van de Azure CLI.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Extensiepakket wordt gedownload en geïmplementeerd op deze locatie op de Azure VM
+Het uitbreidings pakket wordt gedownload en geïmplementeerd op deze locatie op de Azure VM
 ```
 C:\Packages\Plugins\{Extension_Name}\{Extension_Version}
 ```
 
-Extensie status bestand bevat de sub status en status succes / fout codes samen met de gedetailleerde fout en beschrijving voor elke extensie run.
+Extensie status bestand bevat de substatussen en statussen geslaagd/fout, samen met de gedetailleerde fout en beschrijving voor elke uitbrei ding.
 ```
 C:\Packages\Plugins\{Extension_Name}\{Extension_Version}\Status\{0}.Status  -> {0} being the sequence number
 ```
 
-Extensieuitvoerlogboeken worden aangemeld bij de volgende map:
+Uitvoer logboeken voor extensies worden vastgelegd in de volgende map:
 
 ```
 C:\WindowsAzure\Logs\Plugins\{Extension_Name}\{Extension_Version}
 ```
 
-### <a name="error-codes-and-their-meanings"></a>Foutcodes en hun betekenissen
+### <a name="error-codes-and-their-meanings"></a>Fout codes en hun betekenis
 
 | Foutcode | Betekenis | Mogelijke actie |
 | :---: | --- | --- |
-| 1000 | Algemene fout | Het bericht voor deze fout wordt weergegeven door de specifieke uitzondering in extensielogboeken |
-| 52 | Fout bij installatie van extensie | Het bericht voor deze fout wordt geleverd door de specifieke uitzondering |
-| 1002 | Wmf-installatiefout | Fout bij het installeren van WMF. |
-| 1004 | Ongeldig zip-pakket | Ongeldige rits ; Fout bij het uitpakken van de rits |
-| 1100 | Argumentfout | Geeft een probleem aan in de invoer die door de gebruiker wordt geleverd. Het bericht voor de fout wordt geleverd door de specifieke uitzondering|
+| 1000 | Algemene fout | Het bericht voor deze fout wordt gegeven door de specifieke uitzonde ring in extensie logboeken |
+| 52 | Fout bij installatie van extensie | Het bericht voor deze fout wordt gegeven door de specifieke uitzonde ring |
+| 1002 | WMF-installatie fout | Fout bij het installeren van WMF. |
+| 1004 | Ongeldig zip-pakket | Ongeldige zip; Fout bij het uitpakken van de zip |
+| 1100 | Argument fout | Geeft een probleem aan met de invoer van de gebruiker. Het bericht voor de fout wordt gegeven door de specifieke uitzonde ring|
 
 
 ### <a name="support"></a>Ondersteuning
 
-Als u op enig moment in dit artikel meer hulp nodig hebt, u contact opnemen met de Azure-experts op de [FORUMS VOOR MSDN Azure en Stack Overflow.](https://azure.microsoft.com/support/forums/) U ook een Azure-ondersteuningsincident indienen. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer Ondersteuning krijgen. Lees de veelgestelde vragen over [Microsoft Azure-ondersteuning](https://azure.microsoft.com/support/faq/)voor informatie over het gebruik van Azure Support.
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.

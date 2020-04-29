@@ -1,86 +1,86 @@
 ---
-title: Bronkaartondersteuning voor JavaScript-toepassingen - Azure Monitor Application Insights
-description: Meer informatie over het uploaden van bronkaarten naar uw eigen opslagaccount Blob-container met Behulp van Application Insights.
+title: Ondersteuning van bron toewijzing voor Java script-toepassingen-Azure Monitor Application Insights
+description: Meer informatie over het uploaden van bron kaarten naar uw eigen opslag account BLOB-container met behulp van Application Insights.
 ms.topic: conceptual
 author: markwolff
 ms.author: marwolff
 ms.date: 03/04/2020
 ms.openlocfilehash: 4b452b31338760a8f53eed54420319101836bc00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79474880"
 ---
-# <a name="source-map-support-for-javascript-applications"></a>Bronkaartondersteuning voor JavaScript-toepassingen
+# <a name="source-map-support-for-javascript-applications"></a>Ondersteuning van bron toewijzing voor Java script-toepassingen
 
-Application Insights ondersteunt het uploaden van bronkaarten naar je eigen Storage Account Blob Container.
-Bronkaarten kunnen worden gebruikt om callstacks te ontstoppen die op de pagina van de transactiegegevens van het einde worden gevonden. Elke uitzondering die wordt verzonden door de [JavaScript SDK][ApplicationInsights-JS] of de [Node.js SDK][ApplicationInsights-Node.js] kan worden geminificeerd met bronkaarten.
+Application Insights ondersteunt het uploaden van bron kaarten naar uw eigen opslag account BLOB-container.
+Bron kaarten kunnen worden gebruikt voor het unminify van aanroep stacks op de pagina end-to-end trans actie Details. Uitzonde ringen die worden verzonden door de [Java script-SDK][ApplicationInsights-JS] of de [node. js-SDK][ApplicationInsights-Node.js] kunnen worden unminified met bron kaarten.
 
-![Een oproepstack loskoppelen door te koppelen aan een opslagaccount](./media/source-map-support/details-unminify.gif)
+![Een aanroep stack Unminify door te koppelen met een opslag account](./media/source-map-support/details-unminify.gif)
 
-## <a name="create-a-new-storage-account-and-blob-container"></a>Een nieuw opslagaccount en Blob-container maken
+## <a name="create-a-new-storage-account-and-blob-container"></a>Een nieuw opslag account en BLOB-container maken
 
-Als u al een bestaand opslagaccount of blobcontainer hebt, u deze stap overslaan.
+Als u al een bestaand opslag account of BLOB-container hebt, kunt u deze stap overs Laan.
 
 1. [Een nieuw opslagaccount maken][create storage account]
-2. [Maak een blobcontainer][create blob container] in uw opslagaccount. Zorg ervoor dat u het 'niveau voor openbare toegang' instelt op `Private`, om ervoor te zorgen dat uw bronkaarten niet openbaar toegankelijk zijn.
+2. [Maak een BLOB-container][create blob container] in uw opslag account. Stel het ' open bare toegangs niveau ' in `Private`om ervoor te zorgen dat uw bron kaarten niet openbaar toegankelijk zijn.
 
 > [!div class="mx-imgBorder"]
->![Het toegangsniveau voor containers moet zijn ingesteld op Privé](./media/source-map-support/container-access-level.png)
+>![Het toegangs niveau van de container moet worden ingesteld op privé](./media/source-map-support/container-access-level.png)
 
-## <a name="push-your-source-maps-to-your-blob-container"></a>Uw bronkaarten naar uw Blob-container duwen
+## <a name="push-your-source-maps-to-your-blob-container"></a>Uw bron kaarten naar uw BLOB-container pushen
 
-U moet uw pijplijn voor continue implementatie integreren met uw opslagaccount door deze te configureren om uw bronkaarten automatisch te uploaden naar de geconfigureerde Blob-container. U moet uw bronkaarten niet uploaden naar een submap in de Blob-container. momenteel wordt de bronkaart alleen opgehaald uit de hoofdmap.
+U moet uw continue implementatie pijplijn met uw opslag account integreren door deze zo te configureren dat uw bron kaarten automatisch naar de geconfigureerde BLOB-container worden geüpload. Upload uw bron kaarten niet naar een submap in de BLOB-container. momenteel wordt de bron map alleen opgehaald uit de hoofdmap.
 
-### <a name="upload-source-maps-via-azure-pipelines-recommended"></a>Bronkaarten uploaden via Azure Pipelines (aanbevolen)
+### <a name="upload-source-maps-via-azure-pipelines-recommended"></a>Bron kaarten uploaden via Azure-pijp lijnen (aanbevolen)
 
-Als u Azure Pipelines gebruikt om uw toepassing continu te bouwen en te implementeren, voegt u een [Azure File Copy-taak][azure file copy] toe aan uw pijplijn om uw bronkaarten automatisch te uploaden.
+Als u Azure-pijp lijnen gebruikt om voortdurend uw toepassing te bouwen en te implementeren, voegt u een [Azure-Kopieer][azure file copy] taak toe aan uw pijp lijn om automatisch uw bron kaarten te uploaden.
 
 > [!div class="mx-imgBorder"]
-> ![Een Azure File Copy-taak toevoegen aan uw pijplijn om uw brontoewijzingen te uploaden naar Azure Blob Storage](./media/source-map-support/azure-file-copy.png)
+> ![Een Azure File Copy-taak toevoegen aan uw pijp lijn om uw bron kaarten te uploaden naar Azure Blob Storage](./media/source-map-support/azure-file-copy.png)
 
-## <a name="configure-your-application-insights-resource-with-a-source-map-storage-account"></a>Uw Application Insights-bron configureren met een bronmapopslagaccount
+## <a name="configure-your-application-insights-resource-with-a-source-map-storage-account"></a>Uw Application Insights resource configureren met een opslag account voor de bron map
 
-### <a name="from-the-end-to-end-transaction-details-page"></a>Vanaf de pagina met de end-to-end transactiedetails
+### <a name="from-the-end-to-end-transaction-details-page"></a>Van de pagina end-to-end trans actie Details
 
-Op het tabblad end-to-end transactiedetails u op *Unminify* klikken en wordt een prompt weergegeven om te configureren als uw bron niet is geconfigureerd.
+Op het tabblad end-to-end trans acties kunt u klikken op *Unminify* . er wordt dan een prompt weer gegeven om te configureren als uw bron niet is geconfigureerd.
 
-1. Bekijk in de portal de details van een uitzondering die is geminificeerd.
+1. Bekijk de details van een uitzonde ring die minified is in de portal.
 2. Klik op *Unminify*
-3. Als uw bron niet is geconfigureerd, verschijnt er een bericht waarin u wordt gevraagd te configureren.
+3. Als uw bron niet is geconfigureerd, wordt er een bericht weer gegeven waarin u wordt gevraagd om te configureren.
 
-### <a name="from-the-properties-page"></a>Vanaf de eigenschappenpagina
+### <a name="from-the-properties-page"></a>Op de pagina eigenschappen
 
-Als u het opslagaccount of de Blob-container wilt configureren of wijzigen die is gekoppeld aan uw Application Insights Resource, u dit doen door het tabblad *Eigenschappen van* de toepassingsstatistieken te bekijken.
+Als u het opslag account of de BLOB-container wilt configureren of wijzigen die aan uw Application Insights resource is gekoppeld, kunt u dit doen door het tabblad *Eigenschappen* van Application Insights resource weer te geven.
 
-1. Navigeer naar het tabblad *Eigenschappen* van de bron Application Insights.
-2. Klik op *Blobcontainer bronkaart wijzigen*.
-3. Selecteer een andere Blob-container als de container met bronkaarten.
+1. Ga naar het tabblad *Eigenschappen* van de Application Insights resource.
+2. Klik op *wijzigen bron toewijzing BLOB container*.
+3. Selecteer een andere blob-container als uw bron kaarten container.
 4. Klik op `Apply`.
 
 > [!div class="mx-imgBorder"]
-> ![Uw geselecteerde Azure Blob Container opnieuw configureren door naar het eigenschappenblad te navigeren](./media/source-map-support/reconfigure.png)
+> ![Configureer uw geselecteerde Azure Blob-container opnieuw door naar de Blade eigenschappen te navigeren](./media/source-map-support/reconfigure.png)
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-### <a name="required-role-based-access-control-rbac-settings-on-your-blob-container"></a>RBAC-instellingen (Required role-based access control) op uw Blob-container
+### <a name="required-role-based-access-control-rbac-settings-on-your-blob-container"></a>Vereiste RBAC-instellingen (op rollen gebaseerd toegangs beheer) in de BLOB-container
 
-Elke gebruiker op de portal die deze functie gebruikt, moet ten minste als [opslagblobgegevenslezer][storage blob data reader] aan uw Blob-container zijn toegewezen. U moet deze rol toewijzen aan iemand anders die de bronkaarten via deze functie gebruikt.
+Alle gebruikers op de portal die deze functie gebruiken, moeten ten minste worden toegewezen als een [gegevens lezer][storage blob data reader] voor de opslag-BLOB aan uw BLOB-container. U moet deze rol toewijzen aan iemand anders die de bron kaarten via deze functie gaat gebruiken.
 
 > [!NOTE]
 > Afhankelijk van hoe de container is gemaakt, is dit mogelijk niet automatisch toegewezen aan u of uw team.
 
-### <a name="source-map-not-found"></a>Bronkaart niet gevonden
+### <a name="source-map-not-found"></a>Bron toewijzing is niet gevonden
 
-1. Controleren of de bijbehorende bronmap is geüpload naar de juiste blobcontainer
-2. Controleer of het bronmapbestand is vernoemd naar het JavaScript-bestand waarnaar het wordt toegewezen, met achtervoegsels met `.map`.
+1. Controleer of de bijbehorende bron toewijzing is geüpload naar de juiste BLOB-container
+2. Controleer of het bron toewijzings bestand de naam heeft nadat het Java script-bestand is toegewezen aan `.map`, met een achtervoegsel.
     - Zoekt bijvoorbeeld `/static/js/main.4e2ca5fa.chunk.js` naar de blob met de naam`main.4e2ca5fa.chunk.js.map`
-3. Controleer de console van uw browser om te zien of er fouten worden geregistreerd. Neem dit op in elk ondersteuningsticket.
+3. Controleer de console van uw browser om te zien of er fouten worden geregistreerd. Neem deze op in een ondersteunings ticket.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Taak Azure-bestandskopie](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)
+* [Azure File Copy-taak](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)
 
 
 <!-- Remote URLs -->

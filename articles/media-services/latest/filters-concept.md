@@ -1,6 +1,6 @@
 ---
 title: Filters definiëren in Azure Media Services
-description: In dit onderwerp wordt beschreven hoe u filters maakt, zodat uw client deze kan gebruiken om specifieke secties van een stream te streamen. Media Services creëert dynamische manifesten om deze selectieve streaming te bereiken.
+description: In dit onderwerp wordt beschreven hoe u filters maakt, zodat uw client deze kan gebruiken om specifieke secties van een stroom te streamen. Media Services maakt dynamische manifesten om deze selectief streaming te verzorgen.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,75 +14,75 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79251464"
 ---
 # <a name="filters"></a>Filters
 
-Wanneer uw klant uw inhoud aan klanten levert (Live Streaming events of Video on Demand), heeft uw klant mogelijk meer flexibiliteit nodig dan wat wordt beschreven in het manifestbestand van het standaardassetbestand. Azure Media Services biedt [dynamische manifesten](filters-dynamic-manifest-overview.md) op basis van vooraf gedefinieerde filters. 
+Wanneer u uw inhoud aan klanten levert (live streaming-gebeurtenissen of video op aanvraag), heeft uw client mogelijk meer flexibiliteit nodig dan is beschreven in het manifest bestand van het standaard activum. Azure Media Services biedt [dynamische manifesten](filters-dynamic-manifest-overview.md) op basis van vooraf gedefinieerde filters. 
 
-Filters zijn regels aan de serverzijde waarmee uw klanten dingen kunnen doen zoals: 
+Filters zijn regels aan de server zijde waarmee uw klanten dingen kunnen doen: 
 
-- Speel slechts een gedeelte van een video af (in plaats van de hele video af te spelen). Bijvoorbeeld:
-  - Het manifest verkleinen om een subclip van een live-gebeurtenis weer te geven ('subclipfiltering'), of
-  - Het begin van een video bijsnijden ('een video bijsnijden').
-- Lever alleen de opgegeven weergaves en/of opgegeven taaltracks die worden ondersteund door het apparaat dat wordt gebruikt om de inhoud af te spelen ('weergavefiltering'). 
-- Het presentatievenster (DVR) aanpassen om een beperkte lengte van het DVR-venster in de speler te bieden ("presentatievenster aanpassen").
+- Alleen een sectie van een video afspelen (in plaats van de hele video af te spelen). Bijvoorbeeld:
+  - Verminder het manifest om een subclip van een live-gebeurtenis weer te geven ("subclip filtering") of
+  - Het begin van een video bijsnijden ("een video bijsnijden").
+- Lever alleen de opgegeven vertoningen en/of opgegeven taal sporen die worden ondersteund door het apparaat dat wordt gebruikt voor het afspelen van de inhoud (' weergave filters '). 
+- Stel Presentation Window (DVR) in om een beperkte lengte van het DVR-venster op te geven in de speler ("presentatie venster aanpassen").
 
-Met Media Services u **accountfilters** en **assetfilters** voor uw inhoud maken. Daarnaast u uw vooraf gemaakte filters koppelen aan een **Streaming Locator.**
+Met Media Services kunt u **account filters** en **activa filters** maken voor uw inhoud. Daarnaast kunt u uw vooraf gemaakte filters koppelen aan een **streaming-Locator**.
 
 ## <a name="defining-filters"></a>Filters definiëren
 
 Er zijn twee soorten filters: 
 
-* [Accountfilters](https://docs.microsoft.com/rest/api/media/accountfilters) (globaal) - kunnen worden toegepast op elk item in het Azure Media Services-account en hebben een levensduur van het account.
-* [Asset Filters](https://docs.microsoft.com/rest/api/media/assetfilters) (lokaal) - kan alleen worden toegepast op een actief waarmee het filter is gekoppeld aan de creatie, hebben een levensduur van het item. 
+* [Account filters](https://docs.microsoft.com/rest/api/media/accountfilters) (globaal): kan worden toegepast op alle activa in het Azure Media Services account, een levens duur van het account hebben.
+* [Asset filters](https://docs.microsoft.com/rest/api/media/assetfilters) (lokaal): kan alleen worden toegepast op een Asset waaraan het filter is gekoppeld bij het maken, een levens duur van de Asset heeft. 
 
-**Accountfilters** en typen **activafilters** hebben exact dezelfde eigenschappen voor het definiëren/beschrijven van het filter. Behalve bij het maken van het **assetfilter,** moet u de naam van het actief opgeven waarmee u het filter wilt koppelen.
+De typen **account filters** en **activa filters** hebben precies dezelfde eigenschappen voor het definiëren/beschrijven van het filter. Behalve wanneer u het **activa filter**maakt, moet u de naam van het activum opgeven waaraan u het filter wilt koppelen.
 
-Afhankelijk van uw scenario bepaalt u welk type filter geschikter is (Asset Filter of AccountFilter). Accountfilters zijn geschikt voor apparaatprofielen (weergavefiltering) waarbij assetfilters kunnen worden gebruikt om een specifiek element bij te snijden.
+Afhankelijk van uw scenario, bepaalt u welk type filter het meest geschikt is (Asset filter of account filter). Account filters zijn geschikt voor apparaatprofielen (filters weer gave filteren) waarbij Asset filters kunnen worden gebruikt om een specifiek activum te bijsnijden.
 
-U gebruikt de volgende eigenschappen om de filters te beschrijven. 
+U kunt de volgende eigenschappen gebruiken om de filters te beschrijven. 
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
-|firstKwaliteit|De eerste kwaliteit bitrate van het filter.|
-|presentatieTimeRange|Het tijdsbereik van de presentatie. Deze eigenschap wordt gebruikt voor het filteren van manifestbegin-/eindpunten, de lengte van het presentatievenster en de startpositie live. <br/>Zie [PresentationTimeRange](#presentationtimerange)voor meer informatie.|
-|Tracks|De selectievoorwaarden van de tracks. Zie [tracks voor](#tracks) meer informatie|
+|firstQuality|De bitsnelheid van de eerste kwaliteit van het filter.|
+|presentationTimeRange|Het tijds bereik voor de presentatie. Deze eigenschap wordt gebruikt voor het filteren van begin-en eind punten van het manifest, de lengte van het presentatie venster en de Live start positie. <br/>Zie [PresentationTimeRange](#presentationtimerange)voor meer informatie.|
+|Registreer|Hiermee worden de selectie voorwaarden bijgehouden. Zie voor meer informatie [sporen](#tracks)|
 
-### <a name="presentationtimerange"></a>presentatieTimeRange
+### <a name="presentationtimerange"></a>presentationTimeRange
 
-Gebruik deze eigenschap met **assetfilters**. Het wordt afgeraden om de eigenschap in te stellen met **accountfilters.**
+Gebruik deze eigenschap met **activa filters**. Het is niet raadzaam om de eigenschap in te stellen met **account filters**.
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
-|**endTimestamp**|Van toepassing op Video on Demand (VoD).<br/>Voor de live streaming-presentatie wordt deze stilletjes genegeerd en toegepast wanneer de presentatie eindigt en de stream VoD wordt.<br/>Dit is een lange waarde die een absoluut eindpunt van de presentatie vertegenwoordigt, afgerond op de dichtstbijzijnde volgende GOP-start. Het apparaat is de tijdschaal, dus een endTimestamp van 18000000000 zou zijn voor 3 minuten.<br/>Gebruik startTimestamp en endTimestamp om de fragmenten in de afspeellijst (manifest) bij te snijden.<br/>StartTimestamp=40000000 en endTimestamp=100000000 genereren bijvoorbeeld een afspeellijst met fragmenten van tussen de 4 seconden en 10 seconden van de VoD-presentatie. Als een fragment de grens overschrijdt, wordt het hele fragment in het manifest opgenomen.|
-|**forceEndTimestamp**|Geldt alleen voor live streaming.<br/>Geeft aan of de eigenschap endTimestamp aanwezig moet zijn. Als dit waar is, moet endTimestamp worden opgegeven of wordt een foute aanvraagcode geretourneerd.<br/>Toegestane waarden: onwaar, waar.|
-|**liveBackoffDuur**|Geldt alleen voor live streaming.<br/> Deze waarde definieert de nieuwste live positie die een klant kan zoeken.<br/>Met deze eigenschap u de live afspeelpositie uitstellen en een serverbuffer voor spelers maken.<br/>De eenheid voor deze eigenschap is tijdschaal (zie hieronder).<br/>De maximale live back-off duur is 300 seconden (30000000000).<br/>Een waarde van 20000000000 betekent bijvoorbeeld dat de meest recente beschikbare inhoud 20 seconden vertraagd is van de echte live edge.|
-|**presentatieVensterduur**|Geldt alleen voor live streaming.<br/>Gebruik presentationWindowDuration om een schuifvenster met fragmenten toe te passen om in een afspeellijst op te nemen.<br/>De eenheid voor deze eigenschap is tijdschaal (zie hieronder).<br/>Stel bijvoorbeeld presentatieWindowDuration=12000000000 in om een schuifvenster van twee minuten toe te passen. Media binnen 2 minuten na de live edge worden opgenomen in de afspeellijst. Als een fragment de grens overschrijdt, wordt het hele fragment opgenomen in de afspeellijst. De minimale duur van het presentatievenster is 60 seconden.|
-|**startTimestamp**|Is van toepassing op Video on Demand (VoD) of Live Streaming.<br/>Dit is een lange waarde die een absoluut beginpunt van de stream vertegenwoordigt. De waarde wordt afgerond op de dichtstbijzijnde volgende GOP-start. Het apparaat is de tijdschaal, dus een startTimestamp van 150000000 zou voor 15 seconden.<br/>Gebruik startTimestamp en endTimestampp om de fragmenten in de afspeellijst (manifest) bij te snijden.<br/>StartTimestamp=40000000 en endTimestamp=100000000 genereren bijvoorbeeld een afspeellijst met fragmenten van tussen de 4 seconden en 10 seconden van de VoD-presentatie. Als een fragment de grens overschrijdt, wordt het hele fragment in het manifest opgenomen.|
-|**Tijdschaal**|Is van toepassing op alle tijdstempels en duur in een presentatietijdbereik, opgegeven als het aantal stappen in één seconde.<br/>Standaard is 10000000 - tien miljoen stappen in een seconde, waar elke toename 100 nanoseconden lang zou zijn.<br/>Als u bijvoorbeeld een startTimestamp op 30 seconden wilt instellen, gebruikt u een waarde van 300000000 000 bij het gebruik van de standaardtijdschaal.|
+|**endTimestamp**|Is van toepassing op video on demand (VoD).<br/>Voor de Live Stream-presentatie wordt deze op de achtergrond genegeerd en toegepast wanneer de presentatie wordt beëindigd en de stroom wordt VoD.<br/>Dit is een lange waarde die een absoluut eind punt van de presentatie vertegenwoordigt, afgerond op het dichtstbijzijnde volgende GOP terug start. De eenheid is de tijd schaal, dus een endTimestamp van 1800000000 zou drie minuten zijn.<br/>Gebruik startTimestamp en endTimestamp om de fragmenten die in de afspeel lijst (manifest) staan, te verkleinen.<br/>Bijvoorbeeld: startTimestamp = 40000000 en endTimestamp = 100000000 met behulp van de standaard tijd schaal genereren een afspeel lijst met fragmenten tussen 4 seconden en 10 seconden van de VoD-presentatie. Als een fragment de grens straddles, wordt het volledige fragment opgenomen in het manifest.|
+|**forceEndTimestamp**|Is alleen van toepassing op live streamen.<br/>Hiermee wordt aangegeven of de eigenschap endTimestamp moet aanwezig zijn. Indien waar, moet endTimestamp worden opgegeven of er wordt een ongeldige aanvraag code geretourneerd.<br/>Toegestane waarden: False, True.|
+|**liveBackoffDuration**|Is alleen van toepassing op live streamen.<br/> Met deze waarde wordt de laatste live positie gedefinieerd waarnaar een client kan zoeken.<br/>Met deze eigenschap kunt u de positie van live afspelen vertragen en een buffer aan de server zijde maken voor spelers.<br/>De eenheid voor deze eigenschap is tijdschaal (zie hieronder).<br/>De maximale duur van Live back-ups is 300 seconden (3000000000).<br/>Een waarde van 2000000000 betekent bijvoorbeeld dat de meest recente beschik bare inhoud 20 seconden vertraagd is ten opzichte van de werkelijke Live-rand.|
+|**presentationWindowDuration**|Is alleen van toepassing op live streamen.<br/>Gebruik presentationWindowDuration om een sliding window van fragmenten toe te passen die moeten worden toegevoegd aan een afspeel lijst.<br/>De eenheid voor deze eigenschap is tijdschaal (zie hieronder).<br/>Stel bijvoorbeeld presentationWindowDuration = 1200000000 in om een sliding window van twee minuten toe te passen. Media binnen 2 minuten van de Live Edge worden opgenomen in de afspeel lijst. Als een fragment de grens straddles, wordt het volledige fragment opgenomen in de afspeel lijst. De minimale duur van het presentatie venster is 60 seconden.|
+|**startTimestamp**|Is van toepassing op video on demand (VoD) of live streamen.<br/>Dit is een lange waarde die een absoluut begin punt van de stroom aangeeft. De waarde wordt afgerond naar de dichtstbijzijnde volgende GOP terug start. De eenheid is de tijd schaal, dus een startTimestamp van 150000000 zou 15 seconden zijn.<br/>Gebruik startTimestamp en endTimestampp om de fragmenten die in de afspeel lijst (manifest) staan, te verkleinen.<br/>Bijvoorbeeld: startTimestamp = 40000000 en endTimestamp = 100000000 met behulp van de standaard tijd schaal genereren een afspeel lijst met fragmenten tussen 4 seconden en 10 seconden van de VoD-presentatie. Als een fragment de grens straddles, wordt het volledige fragment opgenomen in het manifest.|
+|**lijnen**|Is van toepassing op alle tijds tempels en duursen in een tijds bereik voor de presentatie, opgegeven als het aantal stappen in één seconde.<br/>De standaard waarde is 10000000-10.000.000 in één seconde, waarbij elke verhoging van 100 nano seconden lang is.<br/>Als u bijvoorbeeld een startTimestamp op 30 seconden wilt instellen, gebruikt u de waarde 300000000 wanneer u de standaard tijdschaal gebruikt.|
 
-### <a name="tracks"></a>Tracks
+### <a name="tracks"></a>Registreer
 
-U geeft een lijst op met eigenschapsvoorwaarden voor filtertracks (FilterTrackPropertyConditions) op basis waarvan de tracks van uw stream (Live Streaming of Video on Demand) moeten worden opgenomen in dynamisch gemaakt manifest. De filters worden gecombineerd met behulp van een logische **EN en** **of OR-bewerking.**
+U geeft een lijst met filter eigenschappen (FilterTrackPropertyConditions) op op basis van de trajecten van uw stroom (live streamen of Video's op aanvraag) moeten worden opgenomen in het dynamisch gemaakte manifest. De filters worden gecombineerd met behulp van een logische **en** - **of** -bewerking.
 
-De eigenschapsvoorwaarden van filterspoor beschrijven spoortypen, waarden (beschreven in de volgende tabel) en bewerkingen (Gelijk, NotEqual). 
+Bij het filteren van eigenschaps voorwaarden worden spoor typen, waarden (beschreven in de volgende tabel) en bewerkingen (gelijk aan NotEqual) beschreven. 
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
-|**Bitrate**|Gebruik de bitrate van het spoor voor het filteren.<br/><br/>De aanbevolen waarde is een bereik van bitrates, in bits per seconde. Bijvoorbeeld "0-2427000".<br/><br/>Opmerking: hoewel u een specifieke bitratewaarde gebruiken, zoals 250000 (bits per seconde), wordt deze benadering niet aanbevolen, omdat de exacte bitrates van de ene asset naar de andere kunnen fluctueren.|
-|**Fourcc**|Gebruik de FourCC-waarde van het spoor voor het filteren.<br/><br/>De waarde is het eerste element van de indeling codecs, zoals gespecificeerd in [RFC 6381](https://tools.ietf.org/html/rfc6381). Momenteel worden de volgende codecs ondersteund: <br/>Voor Video: "avc1", "hev1", "hvc1"<br/>Voor audio: "mp4a", "ec-3"<br/><br/>Als u de FourCC-waarden voor tracks in een asset wilt bepalen, krijgt u het manifestbestand op en onderzoekt u deze.|
-|**Language**|Gebruik de taal van de track voor het filteren.<br/><br/>De waarde is de tag van een taal die u wilt opnemen, zoals gespecificeerd in RFC 5646. Bijvoorbeeld "en".|
-|**Naam**|Gebruik de naam van het spoor om te filteren.|
-|**Type**|Gebruik het type spoor voor het filteren.<br/><br/>De volgende waarden zijn toegestaan: "video", "audio" of "tekst".|
+|**Bitsnelheid**|Gebruik de bitsnelheid van het nummer voor het filteren.<br/><br/>De aanbevolen waarde is een aantal bitrates, in bits per seconde. Bijvoorbeeld ' 0-2427000 '.<br/><br/>Opmerking: Hoewel u een specifieke bitsnelheid kunt gebruiken, zoals 250000 (bits per seconde), wordt deze methode niet aanbevolen, omdat de exacte bitsnelheid van het ene naar het andere activum kunnen variëren.|
+|**FourCC**|Gebruik de FourCC-waarde van het nummer voor filteren.<br/><br/>De waarde is het eerste element van de indeling codecs, zoals opgegeven in [RFC 6381](https://tools.ietf.org/html/rfc6381). Momenteel worden de volgende codecs ondersteund: <br/>For video: "avc1", "hev1", "hvc1"<br/>Voor audio: "mp4a", "EC-3"<br/><br/>Als u de FourCC-waarden voor sporen in een Asset wilt bepalen, kunt u het manifest bestand ophalen en onderzoeken.|
+|**Taal**|De taal van het nummer gebruiken voor het filteren.<br/><br/>De waarde is het label van een taal die u wilt toevoegen, zoals opgegeven in RFC 5646. Bijvoorbeeld ' en '.|
+|**Naam**|Gebruik de naam van het nummer voor filteren.|
+|**Type**|Het type van het nummer gebruiken voor filteren.<br/><br/>De volgende waarden zijn toegestaan: "video", "audio" of "text".|
 
 ### <a name="example"></a>Voorbeeld
 
-In het volgende voorbeeld wordt een filter Live Streaming gedefinieerd: 
+In het volgende voor beeld wordt een filter voor live streams gedefinieerd: 
 
 ```json
 {
@@ -137,28 +137,28 @@ In het volgende voorbeeld wordt een filter Live Streaming gedefinieerd:
 }
 ```
 
-## <a name="associating-filters-with-streaming-locator"></a>Filters koppelen aan Streaming Locator
+## <a name="associating-filters-with-streaming-locator"></a>Filters koppelen aan de streaming-Locator
 
-U een lijst met [activa- of accountfilters](filters-concept.md) opgeven op uw [streaminglocator.](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body) De [Dynamische Verpakker](dynamic-packaging-overview.md) past deze lijst met filters toe samen met de filters die uw client in de URL opgeeft. Deze combinatie genereert een [dynamisch manifest](filters-dynamic-manifest-overview.md), dat is gebaseerd op filters in de URL + filters die u opgeeft op de Streaming Locator. 
+U kunt een lijst met [Asset-of account filters](filters-concept.md) opgeven voor uw [streaming-Locator](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). Met de [dynamische packager](dynamic-packaging-overview.md) wordt deze lijst met filters toegepast, samen met de records die door uw client zijn opgegeven in de URL. Deze combi natie genereert een [dynamisch manifest](filters-dynamic-manifest-overview.md)dat is gebaseerd op filters in de URL + filters die u opgeeft op de streaming-Locator. 
 
 Zie de volgende voorbeelden:
 
-* [Filters koppelen aan Streaming Locator - .NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
-* [Filters koppelen aan Streaming Locator - CLI](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
+* [Filters koppelen aan streaming-Locator-.NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
+* [Filters koppelen aan streaming-Locator-CLI](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
 
 ## <a name="updating-filters"></a>Filters bijwerken
  
-**Streaming Locators** zijn niet updatable, terwijl filters kunnen worden bijgewerkt. 
+**Streaming-Locators** worden niet bijgewerkt terwijl filters kunnen worden bijgewerkt. 
 
-Het wordt afgeraden om de definitie van filters die zijn gekoppeld aan een actief gepubliceerde **Streaming Locator**bij te werken, vooral wanneer CDN is ingeschakeld. Streamingservers en CDN's kunnen interne caches bevatten die kunnen leiden tot verouderde gegevens in de cache die moeten worden geretourneerd. 
+Het wordt niet aanbevolen om de definitie van filters bij te werken die zijn gekoppeld aan een actief gepubliceerde **streaming-Locator**, met name wanneer CDN is ingeschakeld. Streaming-servers en Cdn's kunnen interne caches hebben die ertoe kunnen leiden dat verouderde gegevens in de cache worden geretourneerd. 
 
-Als de filterdefinitie moet worden gewijzigd, u overwegen een nieuw filter te maken en deze toe te voegen aan de URL **van streaming locator** of een nieuwe **streaminglocator** te publiceren die rechtstreeks naar het filter verwijst.
+Als de filter definitie moet worden gewijzigd, kunt u een nieuw filter maken en toevoegen aan de URL van de **streaming-Locator** of een nieuwe **streaming-Locator** publiceren die rechtstreeks verwijst naar het filter.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In de volgende artikelen ziet u hoe u filters programmatisch maken.  
+In de volgende artikelen ziet u hoe u via een programma filters maakt.  
 
-- [Filters maken met REST API's](filters-dynamic-manifest-rest-howto.md)
+- [Filters maken met REST-Api's](filters-dynamic-manifest-rest-howto.md)
 - [Filters maken met .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [Filters maken met CLI](filters-dynamic-manifest-cli-howto.md)
 

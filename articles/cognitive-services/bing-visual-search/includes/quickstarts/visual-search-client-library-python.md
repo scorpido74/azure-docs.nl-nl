@@ -1,5 +1,5 @@
 ---
-title: Bing Visual Search Python-clientbibliotheek snel aan de slag
+title: Quick start voor python-client bibliotheek Bing Visual Search
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,21 +9,21 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
 ms.openlocfilehash: debc5130824a0f661a3736b8d24d950fc789f2f3
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80550000"
 ---
-Gebruik deze snelle start om afbeeldingsinzichten te krijgen van de Bing Visual Search-service met behulp van de Python-clientbibliotheek. Hoewel Bing Visual Search een REST API heeft die compatibel is met de meeste programmeertalen, biedt de clientbibliotheek een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) 
+Gebruik deze Quick Start om image Insights te verkrijgen van de Bing Visual Search-service, met behulp van de python-client bibliotheek. Hoewel Bing Visual Search een REST API compatibel met de meeste programmeer talen heeft, biedt de client bibliotheek een eenvoudige manier om de service te integreren in uw toepassingen. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) 
 
-[Voorbeeld van broncode](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python) |  | van[naslagdocumentatieBibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-visualsearch)[(PyPi)](https://pypi.org/project/azure-cognitiveservices-search-visualsearch/) | [Samples](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
+[Reference documentation](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python) | PyPi-voor[beelden](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/) ([Source code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-visualsearch) | [package)](https://pypi.org/project/azure-cognitiveservices-search-visualsearch/) | voor referentie documentatie
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Python (Python)](https://www.python.org/) 2.x of 3.x
+* [Python](https://www.python.org/) 2. x of 3. x
 * U kunt het best een [virtuele omgeving](https://docs.python.org/3/tutorial/venv.html) gebruiken. Installeer en initialiseer de virtuele omgeving met de [venv-module](https://pypi.python.org/pypi/virtualenv).
-* De Bing Visual Search-clientbibliotheek voor Python. U kunt deze installeren met de volgende opdrachten:
+* De Bing Visual Search-client bibliotheek voor python. U kunt deze installeren met de volgende opdrachten:
     1. `cd mytestenv`
     2. `python -m pip install azure-cognitiveservices-search-visualsearch`
 

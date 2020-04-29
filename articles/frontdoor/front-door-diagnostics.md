@@ -1,6 +1,6 @@
 ---
-title: Statistieken en logboeken controleren in Azure Front Door| Microsoft Documenten
-description: In dit artikel worden de verschillende statistieken en toegangslogboeken beschreven die Azure Front Door ondersteunt
+title: Metrische gegevens en logboeken bewaken in azure front-deur | Microsoft Docs
+description: In dit artikel worden de verschillende metrische gegevens en toegangs logboeken beschreven die door Azure front-deur worden ondersteund
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,99 +12,99 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
 ms.openlocfilehash: b935355cce36a6e26b168db286ab40248f8f0f68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471724"
 ---
-# <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Statistieken en logboeken in Azure Front Door bewaken
+# <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Metrische gegevens en logboeken bewaken in azure front deur
 
-Door Azure Front Door te gebruiken, u resources op de volgende manieren controleren:
+Met behulp van de voor deur van Azure kunt u resources op de volgende manieren controleren:
 
-- **Statistieken**. Azure Front Door heeft momenteel zeven statistieken om prestatiemeteritems weer te geven.
-- **Logboeken**. Met activiteits- en diagnostische logboeken kunnen prestaties, toegang en andere gegevens worden opgeslagen of verbruikt vanuit een bron voor bewakingsdoeleinden.
+- **Metrische gegevens**. Azure front-deur heeft momenteel zeven metrische gegevens om prestatie meter items weer te geven.
+- **Logboeken**. Met activiteiten en Diagnostische logboeken kunnen prestaties, toegang en andere gegevens worden opgeslagen of verbruikt vanuit een resource voor bewakings doeleinden.
 
 ### <a name="metrics"></a>Metrische gegevens
 
-Statistieken zijn een functie voor bepaalde Azure-resources waarmee u prestatiemeteritems in de portal weergeven. De volgende zijn beschikbare Front Door metrics:
+Metrische gegevens zijn een functie voor bepaalde Azure-resources waarmee u prestatie meter items in de portal kunt weer geven. Hieronder vindt u de beschik bare metrische gegevens voor de voor deur:
 
-| Gegevens | Metrische weergavenaam | Eenheid | Dimensies | Beschrijving |
+| Gegevens | Weergave naam voor metrische gegevens | Eenheid | Dimensies | Beschrijving |
 | --- | --- | --- | --- | --- |
-| Aantal aanvragen | Aantal aanvragen | Count | HttpStatus</br>HttpStatusgroep</br>ClientRegio</br>ClientLand | Het aantal verzoeken van klanten die door De Voordeur worden gediend.  |
-| RequestSize | Aanvraaggrootte | Bytes | HttpStatus</br>HttpStatusgroep</br>ClientRegio</br>ClientLand | Het aantal bytes dat wordt verzonden als aanvragen van clients naar Front Door. |
-| ResponseSize | Reactiegrootte | Bytes | HttpStatus</br>HttpStatusgroep</br>ClientRegio</br>ClientLand | Het aantal bytes dat wordt verzonden als antwoorden van Voordeur naar klanten. |
-| TotalLatency TotalLatency | Totale latentie | Milliseconden | HttpStatus</br>HttpStatusgroep</br>ClientRegio</br>ClientLand | De tijd berekend op basis van het verzoek van de klant ontvangen door Front Door totdat de klant erkende de laatste reactie byte van Front Door. |
-| BackendRequestCount | Aantal back-endaanvragen | Count | HttpStatus</br>HttpStatusgroep</br>Back-end | Het aantal verzoeken dat van Voordeur naar backends wordt verzonden. |
-| BackendRequestLatentie | Latentie voor back-endaanvragen | Milliseconden | Back-end | De tijd berekend vanaf het moment dat het verzoek werd verzonden door Front Door naar de backend tot Front Door ontving de laatste reactie byte van de backend. |
-| Back-endHealthPercentage | Backend-statuspercentage | Percentage | Back-end</br>BackendPool | Het percentage succesvolle gezondheidssondes van Voordeur tot backends. |
-| WebApplicationFirewallRequestCount | Aantal firewallaanvragen voor webtoepassingen | Count | PolicyName</br>RegelNaam</br>Actie | Het aantal clientaanvragen dat wordt verwerkt door de beveiliging van de toepassingslaag van Front Door. |
+| RequestCount | Aantal aanvragen | Count | Http status</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Het aantal client aanvragen dat door de voor deur wordt geleverd.  |
+| RequestSize | Aanvraag grootte | Bytes | Http status</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Het aantal bytes dat is verzonden als aanvragen van clients naar de voor deur. |
+| ResponseSize | Grootte van antwoord | Bytes | Http status</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Het aantal bytes dat is verzonden als reacties van de voor deur naar clients. |
+| TotalLatency | Totale latentie | Milliseconden | Http status</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | De tijd die wordt berekend op basis van de aanvraag van de client die wordt ontvangen door de voor deur totdat de client de laatste reactie van de voor deur heeft bevestigd. |
+| BackendRequestCount | Aantal back-aanvragen | Count | Http status</br>HttpStatusGroup</br>Back-end | Het aantal aanvragen dat van de voor deur naar de back-end wordt verzonden. |
+| BackendRequestLatency | Latentie van back-upaanvraag | Milliseconden | Back-end | De tijd die wordt berekend vanaf het moment dat de aanvraag door de voor deur naar de back-end is verzonden tot de voor deur de laatste reactie byte van de back-end heeft ontvangen. |
+| BackendHealthPercentage | Back-status percentage | Percentage | Back-end</br>Hosts | Het percentage geslaagde status tests van front-deur naar back-end. |
+| WebApplicationFirewallRequestCount | Aantal aanvragen voor Web Application firewall | Count | PolicyName</br>RuleName</br>Bewerking | Het aantal client aanvragen dat is verwerkt door de beveiligingslaag van de toepassingslaag. |
 
 ## <a name="activity-logs"></a><a name="activity-log"></a>Activiteitenlogboeken
 
-Activiteitslogboeken geven informatie over de bewerkingen op De Voordeur. Ze bepalen ook de wat, wie, en wanneer voor een schrijfbewerkingen (zetten, plaatsen of verwijderen) genomen op Front Door.
+Activiteiten logboeken bevatten informatie over de bewerkingen die op de voor deur worden uitgevoerd. Ze bepalen ook de What, wie en wanneer er schrijf bewerkingen (put, post of Delete) op de voor deur worden uitgevoerd.
 
 >[!NOTE]
->Activiteitslogboeken bevatten geen leesbewerkingen (get). Ze bevatten ook geen bewerkingen die u uitvoert met behulp van de Azure-portal of de oorspronkelijke Beheer-API.
+>Activiteiten logboeken bevatten geen lees bewerkingen (Get). Ze bevatten ook geen bewerkingen die u uitvoert met behulp van de Azure Portal of de oorspronkelijke beheer-API.
 
-Toegang tot activiteitlogboeken in uw voordeur of alle logboeken van uw Azure-resources in Azure Monitor. Activiteitenlogboeken weergeven:
+U krijgt toegang tot activiteiten Logboeken in uw voor deur of in alle logboeken van uw Azure-resources in Azure Monitor. Activiteitenlogboeken weergeven:
 
-1. Selecteer de instantie Voordeur.
-2. Selecteer **Activiteitslogboek**.
+1. Selecteer uw voor deur-exemplaar.
+2. Selecteer **activiteiten logboek**.
 
     ![Activiteitenlogboek](./media/front-door-diagnostics/activity-log.png)
 
-3. Kies een filterbereik en selecteer **Toepassen**.
+3. Kies een filter bereik en selecteer vervolgens **Toep assen**.
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>Diagnostische logboeken
-Diagnostische logboeken bieden uitgebreide informatie over bewerkingen en fouten die belangrijk zijn voor controle en probleemoplossing. Diagnostische logboeken verschillen van activiteitslogboeken.
+Diagnostische logboeken bieden uitgebreide informatie over bewerkingen en fouten die belang rijk zijn voor controle en probleem oplossing. Diagnostische logboeken verschillen van activiteiten Logboeken.
 
-Activiteitslogboeken bieden inzicht in de bewerkingen die zijn uitgevoerd op Azure-resources. Diagnostische logboeken geven inzicht in bewerkingen die uw resource heeft uitgevoerd. Zie [Diagnostische logboeken voor Azure Monitor](../azure-monitor/platform/platform-logs-overview.md)voor meer informatie .
+Activiteiten logboeken bieden inzicht in de bewerkingen die worden uitgevoerd op Azure-resources. Diagnostische logboeken bieden inzicht in bewerkingen die door uw resource worden uitgevoerd. Zie [Azure monitor Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md)voor meer informatie.
 
 ![Diagnostische logboeken](./media/front-door-diagnostics/diagnostic-log.png)
 
-Ga als volgende voor het configureren van diagnostische logboeken voor uw voordeur:
+Diagnostische logboeken voor uw front-deur configureren:
 
-1. Selecteer uw Azure-voordeur.
+1. Selecteer uw Azure-voor deur.
 
 2. Kies **Diagnostische instellingen**.
 
-3. Selecteer **Diagnostische gegevens inschakelen**. Archiveer diagnostische logboeken samen met statistieken naar een opslagaccount, stream ze naar een gebeurtenishub of stuur ze naar Azure Monitor-logboeken.
+3. Selecteer **Diagnostische gegevens inschakelen**. Archiveer Diagnostische logboeken Samen met metrische gegevens naar een opslag account, stream ze naar een Event Hub of stuur ze naar Azure Monitor-Logboeken.
 
-Front Door biedt momenteel diagnostische logs (batched per uur). Diagnostische logboeken bieden afzonderlijke API-aanvragen bij elke vermelding met het volgende schema:
+De voor deur bevat momenteel Diagnostische logboeken (batched per uur). Diagnostische logboeken bieden afzonderlijke API-aanvragen voor elke vermelding met het volgende schema:
 
 | Eigenschap  | Beschrijving |
 | ------------- | ------------- |
-| BackendHostname | Als de aanvraag is doorgestuurd naar een backend, vertegenwoordigt dit veld de hostnaam van de backend. Dit veld is leeg als de aanvraag is doorgestuurd of doorgestuurd naar een regionale cache (wanneer caching is ingeschakeld voor de routeringsregel). |
-| CacheStatus | Voor cachingscenario's definieert dit veld de cachehit/miss op de POP |
-| ClientIp | Het IP-adres van de klant die het verzoek heeft ingediend. Als er een X-Forwarded-For-header in de aanvraag is opgenomen, wordt het IP-client uit hetzelfde gekozen. |
-| ClientPort | De IP-poort van de client die het verzoek heeft ingediend. |
-| HttpMethod | HTTP-methode die door de aanvraag wordt gebruikt. |
-| Httpstatuscode | De HTTP-statuscode is geretourneerd van de proxy. |
-| HttpStatusDetails | Resulterende status op het verzoek. Betekenis van deze tekenreekswaarde is te vinden in een statusreferentietabel. |
-| HttpVersie | Type van de aanvraag of verbinding. |
-| POP | Korte naam van de rand waar het verzoek landde. |
-| AanvragenBytes | De grootte van het HTTP-aanvraagbericht in bytes, inclusief de aanvraagkoppen en de aanvraaginstantie. |
-| RequestUri | URI van het ontvangen verzoek. |
-| ResponseBytes | Bytes die door de backendserver als antwoord worden verzonden.  |
-| Routeregelnaam | De naam van de routeringsregel die de aanvraag heeft gematcht. |
-| SecurityProtocol (SecurityProtocol) | De TLS/SSL-protocolversie die door het verzoek of null wordt gebruikt als er geen versleuteling is. |
-| SentToOriginShield | Booleaanse veld vertegenwoordigen als er een cache missen op de eerste omgeving en de aanvraag werd verzonden naar de regionale cache. Negeer dit veld als de routeringsregel een omleiding is of wanneer caching niet is ingeschakeld. |
-| Tijdgenomen | De tijdsduur die de actie heeft ondernomen, in milliseconden. |
-| TrackingReferentie | De unieke referentietekenreeks die een aanvraag van Front Door identificeert en ook als X-Azure-Ref-header naar de client wordt verzonden. Vereist voor het zoeken naar details in de toegangslogboeken voor een specifiek verzoek. |
-| Useragent | Het browsertype dat de client heeft gebruikt. |
+| BackendHostname | Als de aanvraag wordt doorgestuurd naar een back-end, vertegenwoordigt dit veld de hostnaam van de back-end. Dit veld is leeg als de aanvraag is omgeleid of doorgestuurd naar een regionale cache (wanneer caching is ingeschakeld voor de routerings regel). |
+| CacheStatus | In het geval van cache scenario's definieert dit veld de cache treffer/Missing in de POP |
+| ClientIp | Het IP-adres van de client die de aanvraag heeft ingediend. Als er een X-doorgestuurd is voor de header in de aanvraag, wordt het client-IP-adres uit hetzelfde gekozen. |
+| ClientPort | De IP-poort van de client die de aanvraag heeft ingediend. |
+| HttpMethod | De HTTP-methode die door de aanvraag wordt gebruikt. |
+| Http status code | De HTTP-status code die is geretourneerd door de proxy. |
+| HttpStatusDetails | De resulterende status van de aanvraag. De betekenis van deze teken reeks waarde is te vinden in een status verwijzings tabel. |
+| HttpVersion | Het type van de aanvraag of verbinding. |
+| POP | De korte naam van de rand waar de aanvraag is gelandd. |
+| RequestBytes | De grootte van het HTTP-aanvraag bericht in bytes, met inbegrip van de aanvraag headers en de hoofd tekst van de aanvraag. |
+| RequestUri | De URI van de ontvangen aanvraag. |
+| ResponseBytes | Bytes dat als reactie door de back-endserver wordt verzonden.  |
+| RoutingRuleName | De naam van de routerings regel die de aanvraag heeft gevonden. |
+| Exemplaar | De TLS/SSL-protocol versie die wordt gebruikt door de aanvraag of null als er geen versleuteling is. |
+| SentToOriginShield | Boolean-veld dat aangeeft of er een cache-Missing is in de eerste omgeving en dat de aanvraag is verzonden naar de regionale cache. Dit veld negeren als de routerings regel een omleiding is of wanneer caching niet is ingeschakeld. |
+| TimeTaken | De duur van de actie in milliseconden. |
+| TrackingReference | De unieke verwijzings reeks die een aanvraag identificeert die wordt geleverd door de voor deur, ook verzonden als X-Azure-ref-header naar de client. Vereist voor het zoeken naar details in de logboeken van de toegang voor een specifieke aanvraag. |
+| User agent | Het browser type dat door de client wordt gebruikt. |
 
-**Let op:** Voor verschillende routeringsconfiguraties en verkeersgedrag kunnen sommige velden zoals backendHostname, cacheStatus, sentToOriginShield en POP-veld met verschillende waarden reageren. In de onderstaande tabel worden de verschillende waarden uitgelegd, deze velden hebben voor verschillende scenario's:
+**Opmerking:** Voor verschillende routerings configuraties en verkeers gedrag kunnen sommige velden, zoals backendHostname, cacheStatus, sentToOriginShield en POP, worden gereageerd met verschillende waarden. In de onderstaande tabel worden de verschillende waarden uitgelegd. deze velden hebben verschillende scenario's:
 
-| Scenario's | Aantal logboekvermeldingen | POP | BackendHostname | SentToOriginShield | CacheStatus |
+| Scenario's | Aantal logboek vermeldingen | POP | BackendHostname | SentToOriginShield | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Routeringsregel zonder caching ingeschakeld | 1 | Edge POP-code | Backend waar het verzoek is doorgestuurd | False | CONFIG_NOCACHE |
-| Routeringsregel met caching ingeschakeld. Cache hit aan de rand POP | 1 | Edge POP-code | Leeg | False | Hit |
-| Routeringsregel met caching ingeschakeld. Cache missen bij edge POP, maar cache hit op ouder cache POP | 2 | 1. Edge POP-code</br>2. POP-code voor bovenliggende cache | 1. POP-hostnaam in bovenliggende cache</br>2. Leeg | 1.</br>2. | 1.</br>2. PARTIAL_HIT |
-| Routeringsregel met caching ingeschakeld. Cache missen op zowel edge en ouder cache POP | 2 | 1. Edge POP-code</br>2. POP-code voor bovenliggende cache | 1. POP-hostnaam in bovenliggende cache</br>2. Backend waarmee cache kan worden ingevuld | 1.</br>2. | 1.</br>2. |
+| Routerings regel zonder caching ingeschakeld | 1 | POP-code van rand | Back-end waar de aanvraag is doorgestuurd | False | CONFIG_NOCACHE |
+| Routerings regel met caching ingeschakeld. Cache treffer aan de rand POP | 1 | POP-code van rand | Leeg | False | BEZOCHT |
+| Routerings regel met caching ingeschakeld. Geen geheugen meer in de POP-context, maar cache is aanwezig in de POP van de bovenliggende cache | 2 | 1. POP-code van rand</br>2. POP-code van bovenliggende cache | 1. POP-hostnaam van bovenliggende cache</br>2. empty | 1. True</br>2. onwaar | 1. MIS</br>2. PARTIAL_HIT |
+| Routerings regel met caching ingeschakeld. Cache-missers aan de rand en de bovenliggende cache POP | 2 | 1. POP-code van rand</br>2. POP-code van bovenliggende cache | 1. POP-hostnaam van bovenliggende cache</br>2. back-end waarmee cache kan worden gevuld | 1. True</br>2. onwaar | 1. MIS</br>2. MIS |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een voordeurprofiel maken](quickstart-create-front-door.md)
-- [Hoe Voordeur werkt](front-door-routing-architecture.md)
+- [Een voor deur profiel maken](quickstart-create-front-door.md)
+- [De werking van de voor deur](front-door-routing-architecture.md)

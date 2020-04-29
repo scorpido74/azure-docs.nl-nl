@@ -9,57 +9,57 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: include file
 ms.openlocfilehash: df577ab2b5e9658fd55324c8fd6fd008621b4d46
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80545910"
 ---
-Dit artikel bevat beveiligingsaanbevelingen voor Virtuele Azure-machines. Volg deze aanbevelingen om te helpen voldoen aan de beveiligingsverplichtingen die in ons model voor gedeelde verantwoordelijkheid worden beschreven. De aanbevelingen helpen u ook de algehele beveiliging van uw web-app-oplossingen te verbeteren. Zie [Gedeelde verantwoordelijkheden voor cloud computing voor](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)meer informatie over wat Microsoft doet om de verantwoordelijkheden van serviceproviders te vervullen.
+Dit artikel bevat beveiligings aanbevelingen voor Azure Virtual Machines. Volg deze aanbevelingen om te voldoen aan de beveiligings verplichtingen die in ons model voor gedeelde verantwoordelijkheid zijn beschreven. De aanbevelingen helpen u ook om de algehele beveiliging van uw web-app-oplossingen te verbeteren. Zie [gedeelde verantwoordelijkheden voor Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)voor meer informatie over wat micro soft doet aan de verantwoordelijkheden van de service provider.
 
-Sommige aanbevelingen van dit artikel kunnen automatisch worden aangepakt door Azure Security Center. Azure Security Center is de eerste verdedigingslinie voor uw resources in Azure. Het analyseert periodiek de beveiligingsstatus van uw Azure-bronnen om potentiële beveiligingsproblemen te identificeren. Het beveelt vervolgens aan hoe de kwetsbaarheden aan te pakken. Zie [Beveiligingsaanbevelingen in Azure Security Center](../articles/security-center/security-center-recommendations.md)voor meer informatie.
+Sommige aanbevelingen van dit artikel kunnen automatisch worden aangepakt door Azure Security Center. Azure Security Center is de eerste verdedigings linie voor uw resources in Azure. De beveiligings status van uw Azure-resources wordt periodiek geanalyseerd om mogelijke beveiligings problemen te identificeren. Vervolgens wordt u geadviseerd om de beveiligings problemen op te lossen. Zie [beveiligings aanbevelingen in azure Security Center](../articles/security-center/security-center-recommendations.md)voor meer informatie.
 
-Zie Wat is Azure Security Center voor algemene informatie over Azure Security [Center?](../articles/security-center/security-center-intro.md)
+Zie [Wat is Azure Security Center?](../articles/security-center/security-center-intro.md)voor algemene informatie over Azure Security Center.
 
 ## <a name="general"></a>Algemeen
 
 | Aanbeveling | Opmerkingen | Security Center |
 |-|----|--|
-| Wanneer u aangepaste VM-afbeeldingen maakt, past u de nieuwste updates toe. | Voordat u afbeeldingen maakt, installeert u de nieuwste updates voor het besturingssysteem en voor alle toepassingen die deel uitmaken van uw afbeelding.  | - |
-| Houd uw VM's actueel. | U de oplossing [Voor updatebeheer](../articles/automation/automation-update-management.md) in Azure Automation gebruiken om updates van het besturingssysteem voor uw Windows- en Linux-computers in Azure te beheren. | [Ja](../articles/security-center/security-center-apply-system-updates.md) |
-| Een back-up van uw VM's. | [Azure Backup](../articles/backup/backup-overview.md) helpt uw toepassingsgegevens te beschermen en heeft minimale bedrijfskosten. Toepassingsfouten kunnen uw gegevens beschadigen en menselijke fouten kunnen bugs in uw toepassingen introduceren. Azure Backup beschermt uw VM's waarop Windows en Linux worden uitgevoerd. | - |
-| Gebruik meerdere VM's voor een grotere veerkracht en beschikbaarheid. | Als uw VM toepassingen uitvoert die in hoge mate beschikbaar moeten zijn, gebruikt u meerdere VM's of [beschikbaarheidssets.](../articles/virtual-machines/windows/manage-availability.md) | - |
-| Neem een business continuity and disaster recovery (BCDR) strategie. | Azure Site Recovery stelt u in staat om te kiezen uit verschillende opties die zijn ontworpen om de bedrijfscontinuïteit te ondersteunen. Het ondersteunt verschillende replicatie- en failoverscenario's. Zie [Over siteherstel](../articles/site-recovery/site-recovery-overview.md)voor meer informatie. | - |
+| Wanneer u aangepaste VM-installatie kopieën bouwt, moet u de meest recente updates Toep assen. | Voordat u installatie kopieën maakt, installeert u de meest recente updates voor het besturings systeem en voor alle toepassingen die deel zullen uitmaken van uw installatie kopie.  | - |
+| Zorg ervoor dat uw virtuele machines actueel blijven. | U kunt de [updatebeheer](../articles/automation/automation-update-management.md) -oplossing in azure Automation gebruiken om updates van het besturings systeem voor uw Windows-en Linux-computers in azure te beheren. | [Ja](../articles/security-center/security-center-apply-system-updates.md) |
+| Maak een back-up van uw Vm's. | [Azure backup](../articles/backup/backup-overview.md) helpt bij het beveiligen van uw toepassings gegevens en minimale operationele kosten. Toepassings fouten kunnen uw gegevens beschadigen en menselijke fouten kunnen leiden tot fouten in uw toepassingen. Azure Backup beveiligt uw virtuele machines waarop Windows en Linux worden uitgevoerd. | - |
+| Gebruik meerdere Vm's voor grotere tolerantie en meer Beschik baarheid. | Als uw VM toepassingen uitvoert die Maxi maal beschikbaar moeten zijn, gebruikt u meerdere Vm's of [beschikbaarheids sets](../articles/virtual-machines/windows/manage-availability.md). | - |
+| Stel een strategie voor bedrijfs continuïteit en nood herstel (BCDR) vast. | Met Azure Site Recovery kunt u kiezen uit verschillende opties die zijn ontworpen ter ondersteuning van bedrijfs continuïteit. Het ondersteunt verschillende scenario's voor replicatie en failover. Zie [over site Recovery](../articles/site-recovery/site-recovery-overview.md)voor meer informatie. | - |
 
 ## <a name="data-security"></a>Gegevensbeveiliging
 
 | Aanbeveling | Opmerkingen | Security Center |
 |-|----|--|
-| Besturingssysteemschijven versleutelen. | [Azure Disk Encryption](../articles/security/azure-security-disk-encryption-overview.md) helpt u uw Windows- en Linux IaaS VM-schijven te versleutelen. Zonder de benodigde sleutels is de inhoud van versleutelde schijven onleesbaar. Schijfversleuteling beschermt opgeslagen gegevens tegen ongeautoriseerde toegang die anders mogelijk zou zijn als de schijf zou worden gekopieerd.| [Ja](../articles/security-center/security-center-apply-disk-encryption.md) |
-| Gegevensschijven versleutelen. | [Azure Disk Encryption](../articles/security/azure-security-disk-encryption-overview.md) helpt u uw Windows- en Linux IaaS VM-schijven te versleutelen. Zonder de benodigde sleutels is de inhoud van versleutelde schijven onleesbaar. Schijfversleuteling beschermt opgeslagen gegevens tegen ongeautoriseerde toegang die anders mogelijk zou zijn als de schijf zou worden gekopieerd.| -  |
-| Beperk geïnstalleerde software. | Beperk geïnstalleerde software tot wat nodig is om uw oplossing met succes toe te passen. Deze richtlijn helpt het aanvalsoppervlak van uw oplossing te verminderen. | - |
-| Gebruik antivirus of antimalware. | In Azure u antimalwaresoftware van beveiligingsleveranciers zoals Microsoft, Symantec, Trend Micro en Kaspersky gebruiken. Deze software helpt uw VM's te beschermen tegen schadelijke bestanden, adware en andere bedreigingen. U Microsoft Antimalware implementeren op basis van uw toepassingsworkloads. Gebruik basisbeveiligde of geavanceerde aangepaste configuratie. Zie [Microsoft Antimalware voor Azure Cloud Services en Virtuele Machines voor](../articles/security/azure-security-antimalware.md)meer informatie. | - |
-| Bewaar sleutels en geheimen veilig. | Vereenvoudig het beheer van uw geheimen en sleutels door eigenaren van uw toepassing een veilige, centraal beheerde optie te bieden. Dit beheer vermindert het risico op een per ongeluk compromis of lek. Azure Key Vault kan uw sleutels veilig opslaan in hardwarebeveiligingsmodules (HSM's) die zijn gecertificeerd voor FIPS 140-2 Level 2. Als u FIPs 140.2 Level 3 moet gebruiken om uw sleutels en geheimen op te slaan, u [Azure Dedicated HSM gebruiken.](../articles/dedicated-hsm/overview.md) | - |
+| De schijven van het besturings systeem versleutelen. | [Azure Disk Encryption](../articles/security/azure-security-disk-encryption-overview.md) helpt u bij het versleutelen van uw Windows-en Linux IaaS-VM-schijven. Zonder de benodigde sleutels zijn de inhoud van versleutelde schijven onleesbaar. Schijf versleuteling beveiligt opgeslagen gegevens van onbevoegde toegang die anders mogelijk zouden zijn als de schijf is gekopieerd.| [Ja](../articles/security-center/security-center-apply-disk-encryption.md) |
+| Gegevens schijven versleutelen. | [Azure Disk Encryption](../articles/security/azure-security-disk-encryption-overview.md) helpt u bij het versleutelen van uw Windows-en Linux IaaS-VM-schijven. Zonder de benodigde sleutels zijn de inhoud van versleutelde schijven onleesbaar. Schijf versleuteling beveiligt opgeslagen gegevens van onbevoegde toegang die anders mogelijk zouden zijn als de schijf is gekopieerd.| -  |
+| Beperk geïnstalleerde software. | Beperk geïnstalleerde software tot wat u nodig hebt om uw oplossing toe te passen. Deze richt lijn helpt de kwets baarheid van uw oplossing te verminderen. | - |
+| Gebruik anti virus of antimalware. | In azure kunt u antimalware-software gebruiken van beveiligings leveranciers zoals micro soft, Symantec, Trend Micro en Kaspersky. Deze software helpt uw Vm's te beschermen tegen schadelijke bestanden, adware en andere bedreigingen. U kunt micro soft antimalware implementeren op basis van de workloads van uw toepassing. Gebruik de standaard instelling veilig-op-basis of geavanceerde aangepaste configuratie. Zie voor meer informatie [micro soft antimalware voor Azure Cloud Services en virtual machines](../articles/security/azure-security-antimalware.md). | - |
+| Bewaar sleutels en geheimen veilig. | Vereenvoudig het beheer van uw geheimen en sleutels door uw eigen aren van uw toepassingen te voorzien van een veilige, centraal beheerde optie. Dit beheer vermindert het risico van een onbedoelde inbreuk of lekkage. Azure Key Vault kunnen uw sleutels veilig opslaan in Hardware Security modules (Hsm's) die zijn gecertificeerd voor FIPS 140-2 level 2. Als u FIPs 140,2 level 3 moet gebruiken om uw sleutels en geheimen op te slaan, kunt u de [speciale HSM van Azure](../articles/dedicated-hsm/overview.md)gebruiken. | - |
 
 ## <a name="identity-and-access-management"></a>Identiteits- en toegangsbeheer 
 
 | Aanbeveling | Opmerkingen | Security Center |
 |-|----|--|
-| VM-verificatie centraliseren. | U de verificatie van uw Windows- en Linux-VM's centraliseren met [Azure Active Directory-verificatie.](../articles/active-directory/develop/authentication-scenarios.md) | - |
+| VM-verificatie centraliseren. | U kunt de verificatie van uw Windows-en Linux-Vm's centraliseren door gebruik te maken van [Azure Active Directory-verificatie](../articles/active-directory/develop/authentication-scenarios.md). | - |
 
 ## <a name="monitoring"></a>Bewaking
 
 | Aanbeveling | Opmerkingen | Security Center |
 |-|----|--|
-| Houd uw VM's in de gaten. | U [Azure Monitor voor VM's](../articles/azure-monitor/insights/vminsights-overview.md) gebruiken om de status van uw Azure VM's en virtuele machineschaalsets te controleren. Prestatieproblemen met een VM kunnen leiden tot serviceonderbreking, wat in strijd is met het beveiligingsprincipe van beschikbaarheid. | - |
+| Bewaak uw Vm's. | U kunt [Azure monitor voor VM's](../articles/azure-monitor/insights/vminsights-overview.md) gebruiken om de status van uw Azure-vm's en virtuele-machine schaal sets te bewaken. Prestatie problemen met een virtuele machine kunnen leiden tot onderbrekingen in de service, waardoor het beveiligings principe van Beschik baarheid wordt geschonden. | - |
 
 ## <a name="networking"></a>Netwerken
 
 | Aanbeveling | Opmerkingen | Security Center |
 |-|----|--|
-| Beperk de toegang tot beheerpoorten. | Aanvallers scannen ip-bereiken in de openbare cloud voor open beheerpoorten en proberen "eenvoudige" aanvallen zoals veelvoorkomende wachtwoorden en bekende ongepatchte kwetsbaarheden. U [just-in-time (JIT) VM-toegang](../articles/security-center/security-center-just-in-time.md) gebruiken om binnenkomend verkeer naar uw Azure VM's te vergrendelen, waardoor de blootstelling aan aanvallen wordt verminderd en u eenvoudige verbindingen met VM's biedt wanneer ze nodig zijn. | - |
-| Beperk de toegang tot het netwerk. | Met netwerkbeveiligingsgroepen u de toegang tot het netwerk beperken en het aantal blootgestelde eindpunten beheren. Zie [Een netwerkbeveiligingsgroep maken, wijzigen of verwijderen](../articles/virtual-network/manage-network-security-group.md)voor meer informatie. | - |
+| Beperk de toegang tot beheer poorten. | Aanvallers scannen de IP-adresbereiken van de open bare Cloud voor open-beheer poorten en proberen eenvoudige aanvallen zoals algemene wacht woorden en bekende problemen met niet-patches. U kunt just [-in-time-VM-toegang](../articles/security-center/security-center-just-in-time.md) gebruiken om inkomend verkeer naar uw Azure-vm's te vergren delen, waardoor de bloot stelling aan aanvallen wordt verkleind. | - |
+| Netwerk toegang beperken. | Met netwerk beveiligings groepen kunt u netwerk toegang beperken en het aantal weer gegeven eind punten beheren. Zie [een netwerk beveiligings groep maken, wijzigen of verwijderen](../articles/virtual-network/manage-network-security-group.md)voor meer informatie. | - |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Neem contact op met uw toepassingsprovider voor meer informatie over aanvullende beveiligingsvereisten. Zie [Beveiligde-ontwikkelingsdocumentatie](../articles/security/fundamentals/abstract-develop-secure-apps.md)voor meer informatie over het ontwikkelen van beveiligde toepassingen.
+Neem contact op met uw toepassings provider voor meer informatie over aanvullende beveiligings vereisten. Zie voor meer informatie over het ontwikkelen van beveiligde toepassingen [documentatie voor beveiligde ontwikkel aars](../articles/security/fundamentals/abstract-develop-secure-apps.md).

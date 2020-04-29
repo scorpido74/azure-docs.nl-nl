@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: zoeken naar afbeeldingen met de Bing Image Search REST API en Python'
+title: 'Snelstartgids: zoeken naar afbeeldingen met behulp van de Bing Image Search REST API en python'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen voor het zoeken van afbeeldingen naar de REST API voor Bing Image Search te verzenden met Python en JSON-antwoorden te ontvangen.
 services: cognitive-services
@@ -12,13 +12,13 @@ ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 6287b9b8e6129fd62a896e5ac1fcca29febbf01a
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478541"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Snelstart: zoeken naar afbeeldingen met de Bing Image Search REST API en Python
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Snelstartgids: zoeken naar afbeeldingen met behulp van de Bing Image Search REST API en python
 
 Gebruik deze quickstart om zoekaanvragen naar de Bing Afbeeldingen zoeken-API te leren sturen. Deze Python-toepassing verzendt een zoekquery naar de API en geeft de URL weer van de eerste afbeelding in de resultaten. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
@@ -27,12 +27,12 @@ U kunt dit voorbeeld uitvoeren als een Jupyter-notebook op [MyBinder](https://my
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
 
 
-De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingImageSearchv7.py) met extra foutafhandeling en annotaties.
+De bron code voor dit voor beeld is beschikbaar [op github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingImageSearchv7.py) met aanvullende fout afhandeling en annotaties.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Python 2.x of 3.x](https://www.python.org/)
+* [Python 2. x of 3. x](https://www.python.org/)
 * De [Python Imaging-bibliotheek (PIL)](https://pillow.readthedocs.io/en/stable/index.html)
 * [matplotlib](https://matplotlib.org/) 
 
@@ -40,7 +40,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. Maak een nieuw Python-bestand in uw favoriete IDE of editor en importeer de volgende modules. Maak variabelen voor uw abonnementssleutel, zoekeindpunt en een zoekterm. `search_url`kan het algemene eindpunt hieronder zijn of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
+1. Maak een nieuw Python-bestand in uw favoriete IDE of editor en importeer de volgende modules. Maak variabelen voor uw abonnementssleutel, zoekeindpunt en een zoekterm. `search_url`Dit kan het globale eind punt zijn of het eind punt van het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```python
     import requests
@@ -67,7 +67,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. Gebruik de `requests`-bibliotheek voor het aanroepen van de Bing Image Search-API. Voeg uw koptekst en parameters toe aan de aanvraag en retourneer de reactie als een JSON-object. Download de URL's naar verschillende miniatuurafbeeldingen uit het `thumbnailUrl` veld van het antwoord.
+2. Gebruik de `requests`-bibliotheek voor het aanroepen van de Bing Image Search-API. Voeg uw koptekst en parameters toe aan de aanvraag en retourneer de reactie als een JSON-object. Haal de Url's op in verschillende miniatuur afbeeldingen van het `thumbnailUrl` veld van de reactie.
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
@@ -153,5 +153,5 @@ Antwoorden die afkomstig zijn van de Bing Afbeeldingen zoeken-API, worden gereto
 * [Wat is de Bing Afbeeldingen zoeken-API?](../overview.md)  
 * [Prijsinformatie](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) voor Bing Search-API's. 
 * [Gratis Cognitive Services-toegangssleutel ophalen](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Azure Cognitive Services-documentatie](https://docs.microsoft.com/azure/cognitive-services)
+* [Documentatie voor Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Naslag voor Bing Afbeeldingen zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

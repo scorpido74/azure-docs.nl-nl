@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: Spraak-naar-spraak vertalen, C# (.NET Framework Windows) - Spraakservice'
+title: 'Snelstartgids: Vertaal spraak-naar-spraak, C# (.NET Framework Windows)-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -11,23 +11,23 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: erhopf
 ms.openlocfilehash: cee0f5c1cdb71f182399356cc7e1dce8d738fd4e
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671065"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u:
+Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Een Azure-spraakbron maken](../../../../get-started.md)
-> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
+> * [Een Azure-spraak resource maken](../../../../get-started.md)
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. Open **Program.cs**en vervang alle code daarin door het volgende.
+1. Open **Program.cs**en vervang alle code hierin door het volgende.
 
    ```csharp
    using System;
@@ -118,15 +118,15 @@ Voordat u aan de slag gaat, moet u:
 
 1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
-1. Kies Alles**opslaan** **op** > de menubalk .
+1. Kies in de menu balk de optie **bestand** > **Opslaan**.
 
 ## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 
-1. Selecteer op de menubalk **Build** > **Build Solution** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
+1. **Selecteer** > in de menu balk build**Build Solution** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
 
-1. Kies **Foutopsporing debuggen** > **(of** druk op **F5)** om de **helloworld-toepassing** te starten.
+1. Kies **debug** > **Start Debugging** (of druk op **F5**) om de toepassing **HelloWorld** te starten.
 
-1. Spreek een Engelse woordgroep of zin in. De applicatie stuurt uw toespraak naar de Spraakservice, die vertaalt en transcribeert naar tekst (in dit geval naar het Duits). De spraakservice stuurt vervolgens de gesynthetiseerde audio en de tekst terug naar de toepassing voor weergave.
+1. Spreek een Engelse woordgroep of zin in. De toepassing stuurt uw spraak naar de speech-service, die vertaalt en transcribeert naar tekst (in dit geval naar Duits). De spraak service verzendt vervolgens de gesynthesizerde audio en de tekst terug naar de toepassing om weer te geven.
 
 ````
 Say something...

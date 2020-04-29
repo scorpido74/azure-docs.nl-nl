@@ -9,52 +9,52 @@ ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
 ms.openlocfilehash: 148ec3eccce71ab7a4a6c1391c0fa4753c248bd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334736"
 ---
 | Resource | Limiet |
 | --- | --- |
-| Azure Front Door-bronnen per abonnement | 100 |
-| Front-end hosts, die aangepaste domeinen per resource bevat | 500 |
-| Routeringsregels per resource | 500 |
-| Back-endpools per resource | 50 |
-| Back-ends per back-end pool | 100 |
-| Padpatronen die overeenkomen met een routeringsregel | 25 |
-| URL's in één cache-zuiveringsgesprek | 100 |
-| Aangepaste firewallregels voor webtoepassingen per beleid | 100 |
-| Firewallbeleid voor webtoepassingen per abonnement | 100 |
-| Webtoepassingsfirewall matchvoorwaarden per aangepaste regel | 10 |
-| IP-adresbereiken van firewallfirewall per wedstrijdvoorwaarde | 600 |
-| Tekenreeks firewallreeks voor webtoepassingen die overeenkomen met waarden per overeenkomstvoorwaarde | 10 |
-| Overeenkomenmet de waardelengte van firewallreeks voor webtoepassingen | 256 |
-| Naamvan de parameternaam van de firewall voor firewall POST | 256 |
-| Http-koptekstlengte van webtoepassingsfirewall | 256 |
-| Cookienaam lengte van firewallfirewall | 256 |
-| Webapplication firewall HTTP-aanvraag lichaamsgrootte geïnspecteerd | 128 kB |
-| Aangepaste antwoordtekstlengte van de firewall voor webtoepassingen | 2 KB |
+| Azure front-deur bronnen per abonnement | 100 |
+| Front-end-hosts, met inbegrip van aangepaste domeinen per resource | 500 |
+| Routerings regels per resource | 500 |
+| Back-endservers per resource | 50 |
+| Back-ends per back-end-pool | 100 |
+| Patroon paden die overeenkomen voor een routerings regel | 25 |
+| Url's in één aanroep voor het opschonen van een cache | 100 |
+| Aangepaste Web Application Firewall regels per beleid | 100 |
+| Web Application firewall-beleid per abonnement | 100 |
+| Overeenkomende Firewall voor waarden per aangepaste regel voor Web Application | 10 |
+| IP-adresbereiken van Web Application firewall per match-voor waarde | 600 |
+| Firewall teken reeks voor webtoepassing overeenkomende waarden per match-voor waarde | 10 |
+| De lengte van de teken reeks voor de firewall voor webtoepassingen | 256 |
+| Lengte van de para meter voor de naam van de hoofd tekst van Web Application firewall | 256 |
+| Lengte van HTTP-header voor Web Application firewall | 256 |
+| Lengte van cookie naam Web Application firewall | 256 |
+| Grootte van de HTTP-aanvraag van de firewall voor webtoepassingen geinspected | 128 kB |
+| Lengte van aangepaste antwoord tekst voor Web Application firewall | 2 KB |
 
 ### <a name="timeout-values"></a>Time-outwaarden
-#### <a name="client-to-front-door"></a>Klant aan Voordeur
-* Front Door heeft een idle TCP-verbindingstime-out van 61 seconden.
+#### <a name="client-to-front-door"></a>Client naar voor deur
+* De voor deur heeft een time-out van 61 seconden voor inactieve TCP-verbindingen.
 
-#### <a name="front-door-to-application-back-end"></a>Voordeur naar toepassing back-end
-* Als het antwoord een geblokte respons is, wordt een 200 geretourneerd als en wanneer het eerste stuk wordt ontvangen.
-* Nadat de HTTP-aanvraag naar de achterkant is doorgestuurd, wacht De voordeur 30 seconden op het eerste pakket van de achterkant. Vervolgens geeft het een 503-fout aan de client. Deze waarde is configureerbaar via het veldsendRecvTimeoutSeconds in de API.
-    * Voor caching-scenario's is deze time-out niet configureerbaar en dus, als een aanvraag in de cache wordt opgeslagen en het duurt meer dan 30 seconden voor het eerste pakket van Front Door of vanaf de backend, wordt een 504-fout teruggestuurd naar de client. 
-* Nadat het eerste pakket van de achterkant is ontvangen, wacht De Voordeur 30 seconden in een niet-actieve time-out. Vervolgens geeft het een 503-fout aan de client. Deze time-outwaarde is niet configureerbaar.
-* Voordeur naar de back-end TCP sessie time-out is 90 seconden.
+#### <a name="front-door-to-application-back-end"></a>Back-end van front-deur naar toepassing
+* Als het antwoord een gedeeld antwoord is, wordt een 200 geretourneerd als of wanneer de eerste segment wordt ontvangen.
+* Nadat de HTTP-aanvraag naar de back-end is doorgestuurd, wacht de front deur 30 seconden voor het eerste pakket van de back-end. Vervolgens wordt er een 503-fout naar de client geretourneerd. Deze waarde kan worden geconfigureerd via het veld sendRecvTimeoutSeconds in de API.
+    * In het geval van cache scenario's kan deze time-out niet worden geconfigureerd en dus als een aanvraag in de cache wordt opgeslagen en deze meer dan 30 seconden duurt voor het eerste pakket van de voor deur of van de back-end, wordt een 504-fout geretourneerd naar de client. 
+* Nadat het eerste pakket is ontvangen van de back-end, wacht de front deur 30 seconden in een time-out voor inactiviteit. Vervolgens wordt er een 503-fout naar de client geretourneerd. Deze time-outwaarde kan niet worden geconfigureerd.
+* De time-out voor de back-end van de TCP-sessie is 90 seconden.
 
-### <a name="upload-and-download-data-limit"></a>Limiet voor het uploaden en downloaden van gegevens
+### <a name="upload-and-download-data-limit"></a>Gegevens limiet uploaden en downloaden
 
-|  | Met chunked transfer codering (CTE) | Zonder HTTP chunking |
+|  | Met gesegmenteerde overdrachts codering (CTE) | Zonder HTTP-Chunking |
 | ---- | ------- | ------- |
-| **Downloaden** | Er is geen limiet aan de downloadgrootte. | Er is geen limiet aan de downloadgrootte. |
-| **Uploaden** |    Er is geen limiet zolang elke CTE-upload minder dan 2 GB bedraagt. | De grootte mag niet groter zijn dan 2 GB. |
+| **Downloaden** | Er is geen limiet voor de download grootte. | Er is geen limiet voor de download grootte. |
+| **Uploaden** |    Er is geen limiet, zolang elke CTE-upload kleiner is dan 2 GB. | De grootte kan niet groter zijn dan 2 GB. |
 
 ### <a name="other-limits"></a>Andere limieten
-* Maximale URL-grootte - 8.192 bytes - Geeft maximale lengte van de ruwe URL op (schema + hostnaam + poort + pad + querytekenreeks van de URL)
-* Maximale querytekenreeksgrootte - 4.096 bytes - Hiermee geeft u de maximale lengte van de querytekenreeks op in bytes.
-* Maximale HTTP-antwoordkopgrootte van url van statussonde - 4.096 bytes - De maximale lengte van alle antwoordkoppen van statussondes opgegeven. 
+* Maximale URL-grootte-8.192 bytes-Hiermee geeft u de maximum lengte van de onbewerkte URL op (schema + hostnaam + poort + pad + query teken reeks van de URL)
+* Maximale grootte van de query teken reeks-4.096 bytes-Hiermee geeft u de maximum lengte van de query reeks op in bytes.
+* Maximale header grootte van het HTTP-antwoord van de status test-URL-4.096 bytes-opgegeven de maximale lengte van alle antwoord headers van status controles. 

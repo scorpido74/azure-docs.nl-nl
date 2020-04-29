@@ -9,11 +9,11 @@ ms.topic: include
 ms.date: 3/11/2020
 ms.custom: include file
 ms.openlocfilehash: cb36863f0072b031a8c40dd3dc8efcf26a29fb58
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80408004"
 ---
 > [!NOTE]
-> Bedankt voor uw interesse in het Azure Digital Twins preview-programma. Vanwege de overweldigende vraag is het previewprogramma tijdelijk gesloten terwijl we ons voorbereiden op de komende release van nieuwe mogelijkheden. Als gevolg hiervan u op dit moment mogelijk geen nieuwe Azure Digital Twins-bronnen maken. Blijf terug kijken voor nieuwe informatie.
+> Hartelijk dank voor uw interesse in het Azure Digital Apparaatdubbels preview-programma. Vanwege een enorme vraag wordt het preview-programma tijdelijk gesloten tijdens de voor bereiding op de aanstaande release van nieuwe mogelijkheden. Als gevolg hiervan is het mogelijk dat u op dit moment geen nieuwe Azure Digital Apparaatdubbels-resources kunt maken. Ga door met het controleren op nieuwe gegevens.

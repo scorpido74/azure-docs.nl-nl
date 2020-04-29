@@ -1,6 +1,6 @@
 ---
-title: Een toegankelijke kaarttoepassing maken met Azure Maps | Microsoft Azure Maps
-description: In dit artikel leert u hoe u een toepassing met toegankelijkheidsfuncties maken met Microsoft Azure Maps.
+title: Een toegankelijke toewijzings toepassing maken met Azure Maps | Microsoft Azure kaarten
+description: In dit artikel leert u hoe u een toepassing bouwt met toegankelijkheids functies met behulp van Microsoft Azure Maps.
 services: azure-maps
 author: rbrundritt
 ms.author: richbrun
@@ -9,80 +9,80 @@ ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
 ms.openlocfilehash: 5fa9e159fa0ac76ce8c585936059fb7f3151c7c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79473316"
 ---
 # <a name="building-an-accessible-application"></a>Een toegankelijke toepassing bouwen
 
-Meer dan 20% van de internetgebruikers heeft behoefte aan toegankelijke webapplicaties. Als zodanig is het belangrijk om ervoor te zorgen dat uw toepassing is ontworpen zodanig dat elke gebruiker het gemakkelijk kan gebruiken. In plaats van te denken van toegankelijkheid als een set van taken te voltooien, denk aan het als onderdeel van uw algehele gebruikerservaring. Hoe toegankelijker uw toepassing, hoe meer mensen deze kunnen gebruiken. 
+Van 20% van Internet gebruikers is een nood zaak voor toegankelijke webtoepassingen. Daarom is het belang rijk om ervoor te zorgen dat uw toepassing zo is ontworpen dat elke gebruiker deze eenvoudig kan gebruiken. Als onderdeel van uw algemene gebruikers ervaring kunt u beter zien wat de toegankelijkheid is van een reeks taken. Hoe meer toegankelijk uw toepassing is, hoe meer mensen deze kunnen gebruiken. 
 
-Als het gaat om rijke interactieve inhoud zoals een kaart, zijn enkele veelvoorkomende toegankelijkheidsoverwegingen:
-- Ondersteuning van de schermlezer voor gebruikers die moeite hebben met het zien van de webapplicatie.
-- Hebben meerdere methoden voor interactie met en navigeren in de webtoepassing, zoals muis, aanraken en toetsenbord.
-- Zorg ervoor dat het kleurcontrast zodanig is dat kleuren niet samensmelten en moeilijk van elkaar te onderscheiden worden. 
+Wanneer het gaat om uitgebreide, interactieve inhoud zoals een kaart, zijn enkele veelvoorkomende aandachtspunten voor toegankelijkheid:
+- Biedt ondersteuning voor de scherm lezer voor gebruikers die moeite hebben met het bekijken van de webtoepassing.
+- Meerdere methoden hebben voor interactie met en het navigeren door de webtoepassing, zoals muis, touch en toetsen bord.
+- Zorg ervoor dat kleur contrast zodanig is dat kleuren niet samen lopen en lastig van elkaar te onderscheiden zijn. 
 
-De Azure Maps Web SDK is vooraf gebouwd met veel toegankelijkheidsfuncties, zoals:
-- Schermlezerbeschrijvingen wanneer de kaart beweegt en wanneer de gebruiker zich richt op een besturingselement of pop-up.
-- Ondersteuning voor muis, aanraking en toetsenbord.
-- Ondersteuning voor toegankelijk kleurcontrast in de routekaartstijl.
+De Azure Maps Web-SDK is gebaseerd op een groot aantal toegankelijkheids functies, zoals:
+- Beschrijvingen van scherm lezers wanneer de kaart wordt verplaatst en wanneer de gebruiker zich richt op een besturings element of pop-up.
+- Ondersteuning voor muis, aanraking en toetsen bord.
+- Ondersteuning voor toegankelijk kleur contrast in de kaart stijl weg.
 
-Volledige toegankelijkheidsgegevens voor alle Microsoft-producten vindt u [hier.](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/) Zoek naar 'Azure Maps-web' om het document specifiek voor de Azure Maps Web SDK te vinden. 
+Meer informatie over de conformiteit van de volledige toegankelijkheid van alle micro soft-producten vindt u [hier](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/). Zoek naar ' Azure Maps Web ' om het document speciaal te vinden voor de Azure Maps Web-SDK. 
 
-## <a name="navigating-the-map"></a>Navigeren op de kaart
+## <a name="navigating-the-map"></a>Navigeren in de kaart
 
-Er zijn verschillende manieren waarop de kaart kan worden ingezoomd, gepand, gedraaid en geworpen. De volgende details alle verschillende manieren om de kaart te navigeren.
+Er zijn verschillende manieren waarop de kaart kan worden ingezoomd, panned, gedraaid en in hoogte kan worden gesteld. Hieronder vindt u meer informatie over de verschillende manieren waarop u kunt navigeren door de kaart.
 
-**De kaart inzoomen**
+**De kaart zoomen**
 
-- Dubbelklik met een muis op de kaart om één niveau in te zoomen.
-- Met een muis schuif je door het wiel om de kaart in te zoomen.
-- Raak met behulp van een aanraakscherm de kaart aan met twee vingers en knijp samen om uit te zoomen of de vingers uit elkaar te spreiden om in te zoomen.
-- Dubbeltik met een aanraakscherm op de kaart om één niveau in te zoomen.
-- Gebruik met de kaart gericht`+`het Plusteken`=`( ) of Gelijkenteken ( ) om in één niveau in te zoomen.
-- Als de kaart is gericht, gebruikt`-`u het minteken, koppelteken ( ) of Underscore (`_`) om één niveau uit te zoomen.
-- Met het zoombesturingselement met een muis, aanraak- of toetsenbordtab/enter-toetsen.
-- Houd de `Shift` knop ingedrukt en druk op de linkermuisknop op de kaart en sleep om een gebied uit te trekken om de kaart in te zoomen.
+- Met een muis dubbelklikt u op de kaart om op één niveau te zoomen.
+- Schuif met behulp van een muis op het wieltje om in te zoomen op de kaart.
+- Met behulp van een touchscreen kunt u de kaart met twee vingers aanraken om uit te zoomen of de vingers van elkaar splitsen om in te zoomen.
+- Dubbeltik op de kaart om op één niveau te zoomen met behulp van een aanraak scherm.
+- Gebruik het plus teken (`+`) of het gelijkteken (`=`) om op één niveau in te zoomen met behulp van de kaart gericht.
+- Als de kaart is gericht, gebruikt u het minteken, afbreek streepje (`-`) of`_`onderstrepings teken () om één niveau uit te zoomen.
+- Het besturings element zoomen met behulp van een muis, Touch-of toetsenbord tabblad/Enter-toets.
+- Houd de `Shift` knop ingedrukt en druk op de knop met de rechter muisknop op de kaart en sleep om een gebied te tekenen om in te zoomen op de kaart in.
 
-**De kaart pannen**
+**Kaart pannen**
 
-- Druk met een muis naar beneden met de linkermuisknop op de kaart en sleep in elke richting.
-- Raak met behulp van een aanraakscherm de kaart aan en sleep in elke richting.
-- Als de kaart is gericht, gebruikt u de pijltoetsen om de kaart te verplaatsen.
+- Met een muis houdt u omlaag met de linkermuisknop op de kaart en sleept u deze naar een wille keurige richting.
+- Gebruik een aanraak scherm om de kaart aan te raken en te slepen in een wille keurige richting.
+- Met de kaart focus, gebruikt u de pijl toetsen om de kaart te verplaatsen.
 
-**De kaart roteren**
+**De kaart draaien**
 
-- Druk met de muis naar beneden met de rechtermuisknop op de kaart en sleep naar links of rechts. 
-- Raak de kaart met twee vingers aan en draai met een aanraakscherm.
-- Gebruik de shifttoets en de pijltoetsen links of rechts met de kaart gericht.
-- Met behulp van het rotatiebesturingselement met een muis, aanraak- of toetsenbordtab/enter-toetsen.
+- Met een muis kunt u op omlaag drukken met de rechter muisknop op de kaart en naar links of rechts slepen. 
+- Gebruik een touchscreen om de kaart met twee vingers te raken en te draaien.
+- Met de kaart focus, gebruikt u de toetsen SHIFT en pijl links of rechts.
+- Het besturings element voor rotatie gebruiken met een muis, aanrakend of toetsen bord/Enter-toets.
 
-**Pitch de kaart**
+**De kaart verkopen**
 
-- Druk met de muis naar beneden met de rechtermuisknop op de kaart en sleep omhoog of omlaag. 
-- Raak met behulp van een aanraakscherm de kaart met twee vingers aan en sleep ze samen omhoog of omlaag.
-- Gebruik de shifttoets plus de pijl-omhoog of pijl-omlaag met de kaart gericht. 
-- Met behulp van de toonhoogte besturingselement met een muis, touch of toetsenbord tab / voer toetsen.
+- Gebruik de muis door met de rechter muisknop op de kaart te klikken en omhoog of omlaag te slepen. 
+- Met een aanraak scherm raakt u de kaart met twee vingers en sleept u deze naar boven of beneden.
+- Met de kaart focus, gebruikt u de Shift-toets plus de toetsen pijl-omhoog of omlaag. 
+- Het besturings element pitch gebruiken met een muis, aanrakend of toetsen bord/Enter-toets.
 
-## <a name="change-the-map-style"></a>De kaartstijl wijzigen
+## <a name="change-the-map-style"></a>De kaart stijl wijzigen
 
-Niet alle ontwikkelaars willen dat alle mogelijke kaartstijlen beschikbaar zijn in hun toepassing. Als de ontwikkelaar de stijlkiezercontrole van de kaart weergeeft, kan de gebruiker de kaartstijl wijzigen met de muis, een aanraking of het toetsenbord met het tabblad of de toets invoeren. De ontwikkelaar kan opgeven welke kaartstijlen ze beschikbaar willen maken in het besturingselement voor de kaartstijlkiezer. Ook kan de ontwikkelaar de kaartstijl programmatisch instellen en wijzigen.
+Niet alle ontwikkel aars willen dat alle mogelijke kaart stijlen beschikbaar zijn in hun toepassing. Als de ontwikkelaar het besturings element stijl kiezer van de kaart weergeeft, kan de gebruiker de kaart stijl wijzigen met behulp van de muis, een touch of het toetsen bord met het tabblad of Enter-toets. De ontwikkelaar kan opgeven welke kaart stijlen ze beschikbaar willen maken in het besturings element kaart stijl kiezer. De ontwikkelaar kan de kaart stijl ook programmatisch instellen en wijzigen.
 
 **Hoog contrast gebruiken**
 
-- Wanneer het kaartbesturingselement is geladen, wordt gecontroleerd of een hoog contrast is ingeschakeld en ondersteunt de browser het.
-- Het kaartbesturingselement controleert niet de hoge contrastmodus van het apparaat. Als de apparaatmodus verandert, wordt de kaart niet. Zo moet de gebruiker de kaart opnieuw laden door de pagina te vernieuwen.
-- Wanneer een hoog contrast wordt gedetecteerd, schakelt de kaartstijl automatisch over naar een hoog contrast en gebruiken alle ingebouwde besturingselementen een stijl met een hoog contrast. ZoomControl, PitchControl, CompassControl, StyleControl en andere ingebouwde besturingselementen gebruiken bijvoorbeeld een stijl met een hoog contrast.
-- Er zijn twee soorten hoog contrast, licht en donker. Als het type hoog contrast kan worden gedetecteerd door de kaartbesturingselementen, wordt het gedrag van de kaart dienovereenkomstig aangepast. Als licht, dan is de grayscale_light kaart stijl zal worden geladen. Als het type niet kan worden gedetecteerd of donker is, wordt de high_contrast_dark stijl geladen.
-- Als u aangepaste besturingselementen maakt, is het handig om te weten of de ingebouwde besturingselementen een stijl met een hoog contrast gebruiken. Ontwikkelaars kunnen een css-klasse toevoegen aan de map container div om te controleren. De css klassen die zouden `high-contrast-dark` `high-contrast-light`worden toegevoegd zijn en . Gebruik het als u JavaScript wilt controleren:
+- Wanneer het kaart besturings element wordt geladen, wordt gecontroleerd of er een hoog contrast is ingeschakeld en wordt dit door de browser ondersteund.
+- Het kaart besturings element bewaakt de modus Hoog contrast van het apparaat niet. Als de modus apparaat wordt gewijzigd, wordt de kaart niet. Daarom moet de gebruiker de kaart opnieuw laden door de pagina te vernieuwen.
+- Wanneer een hoog contrast wordt gedetecteerd, wordt automatisch overgeschakeld naar een hoog contrast en worden alle ingebouwde besturings elementen gebruikt als stijl met een hoog contrast. Voor beeld: ZoomControl, PitchControl, CompassControl, StyleControl en andere ingebouwde besturings elementen, wordt een stijl met een hoog contrast gebruikt.
+- Er zijn twee typen hoog contrast, licht en donker. Als het type van het hoge contrast kan worden gedetecteerd door de besturings elementen van de kaart, wordt het gedrag van de kaart dienovereenkomstig aangepast. Als Light, wordt de stijl van de grayscale_light kaart geladen. Als het type niet kan worden gedetecteerd of donker is, wordt de high_contrast_dark stijl geladen.
+- Als u aangepaste besturings elementen maakt, is het handig om te weten of de ingebouwde besturings elementen een stijl met een hoog contrast gebruiken. Ontwikkel aars kunnen een CSS-klasse toevoegen op de kaart container div om te controleren. De CSS-klassen die worden toegevoegd, `high-contrast-dark` zijn `high-contrast-light`en. Als u wilt controleren met behulp van Java script, gebruikt u:
 
 ```javascript
 map.getMapContainer().classList.contains("high-contrast-dark")
 ```
 
-of: gebruik:
+of gebruik:
 
 ```javascript
 map.getMapContainer().classList.contains("high-contrast-light")
@@ -90,91 +90,91 @@ map.getMapContainer().classList.contains("high-contrast-light")
 
 ## <a name="keyboard-shortcuts"></a>Sneltoetsen
 
-De kaart heeft een aantal sneltoetsen ingebouwd die het gemakkelijker maken om de kaart te gebruiken. Deze sneltoetsen werken wanneer de kaart scherp is.
+De kaart bevat een aantal ingebouwde sneltoetsen waarmee u de kaart gemakkelijker kunt gebruiken. Deze sneltoetsen werken op het moment dat de kaart de focus heeft.
 
-| Sleutel      | Actie                            |
+| Sleutel      | Bewerking                            |
 |----------|-----------------------------------|
-| `Tab` | Navigeer over de besturingselementen en pop-ups in de kaart. |
-| `ESC` | Verplaats de focus van elk element in de kaart naar het kaartelement op het hoogste niveau. |
-| `Ctrl` + `Shift` + `D` | Detailniveau schermlezer in- of uitschakelen.  |
-| Pijltoets-links | De kaart 100 pixels naar links pannen |
-| Pijltoets-rechts | De kaart goed pannen 100 pixels |
-| Pijl | De kaart 100 pixels omlaag pannen |
-| Pijl-omhoog | De kaart 100 pixels oppannen |
-| `Shift`+ pijl-omhoog | Verhoog de toonhoogte met 10 graden |
-| `Shift`+ pijl-omlaag | Verlaag de toonhoogte met 10 graden |
-| `Shift`+ pijl-rechts | Draai de kaart 15 graden met de klok mee |
-| `Shift`+ pijl-links | Draai de kaart 15 graden tegen de klok in |
-| Plusteken`+`( <sup>*</sup>) of`=`Gelijken teken ( ) | Inzoomen |
-| Minteken, Koppelteken`-` <sup>*</sup>( )`_`of Underscore ( ) | Uitzoomen | 
-| `Shift`+ muisslepen op de kaart om gebied te tekenen | Inzoomen op het gebied |
+| `Tab` | Navigeer over de besturings elementen en pop-upvensters in de kaart. |
+| `ESC` | De focus verplaatsen van een wille keurig element in de kaart naar het kaart element op het hoogste niveau. |
+| `Ctrl` + `Shift` + `D` | Detail niveau van de scherm lezer in-of uitschakelen.  |
+| Pijltoets-links | De kaart links van 100 pixels pannen |
+| Pijltoets-rechts | Kaart naar rechts 100 pixels pannen |
+| Pijl-omlaag | De kaart omhoog pannen 100 pixels |
+| Pijl-omhoog | Kaart omhoog 100 pixels pannen |
+| `Shift`+ pijl-omhoog | De kaart hoogte met 10 graden verg Roten |
+| `Shift`+ pijl-omlaag | De kaart hoogte met 10 graden verlagen |
+| `Shift`+ pijl-rechts | De kaart 15 graden rechtsom draaien |
+| `Shift`+ pijl-links | De kaart 15 graden linksom draaien |
+| Plus teken (`+`) of <sup>*</sup>gelijkteken (`=`) | Inzoomen |
+| Minteken, afbreek streepje`-`() of <sup>*</sup>onderstrepings`_`teken () | Uitzoomen | 
+| `Shift`+ muis slepen op kaart naar teken gebied | Inzoomen op gebied |
 
-<sup>*</sup>Deze toetssneltoetsen delen meestal dezelfde toets op een toetsenbord. Deze snelkoppelingen zijn toegevoegd om de gebruikerservaring te verbeteren. Het maakt ook niet uit of de gebruiker de shift-toets gebruikt of niet voor deze snelkoppelingen.
+<sup>*</sup>Deze sneltoetsen delen meestal dezelfde sleutel op een toetsen bord. Deze snelkoppelingen zijn toegevoegd om de gebruikers ervaring te verbeteren. Het maakt ook niet uit of de gebruiker de Shift-toets gebruikt of niet voor deze sneltoetsen.
 
-## <a name="screen-reader-support"></a>Ondersteuning voor Schermlezer
+## <a name="screen-reader-support"></a>Ondersteuning voor scherm lezers
 
-Gebruikers kunnen navigeren op de kaart met behulp van het toetsenbord. Als een schermlezer wordt uitgevoerd, stelt de kaart de gebruiker op de hoogte van wijzigingen in de status ervan. Gebruikers worden bijvoorbeeld op de hoogte gesteld van kaartwijzigingen wanneer de kaart wordt gepaneerd of ingezoomd. Standaard bevat de kaart vereenvoudigde beschrijvingen die het zoomniveau en de coördinaten van het midden van de kaart uitsluiten. De gebruiker kan het detailniveau van deze beschrijvingen `Ctrl`  +  `Shift`  + schakelen met behulp van de korte snede van `D`het toetsenbord.
+Gebruikers kunnen met behulp van het toetsen bord door de kaart navigeren. Als er een scherm lezer wordt uitgevoerd, wordt de gebruiker op de hoogte gebracht van wijzigingen in de status van de kaart. Gebruikers worden bijvoorbeeld op de hoogte gebracht van de toewijzings wijzigingen wanneer de kaart wordt panned of ingezoomd. De kaart biedt standaard vereenvoudigde beschrijvingen waarmee het zoom niveau en de coördinaten van het midden van de kaart worden uitgesloten. De gebruiker kan het detail niveau van deze beschrijvingen in-of uitschakelen met behulp `Ctrl`  +  `Shift`  +  `D`van de kort snede voor het toetsen bord.
 
-Alle aanvullende informatie die op de basiskaart wordt geplaatst, moet dezelfde tekstuele informatie bevatten voor gebruikers van schermlezers. Zorg ervoor dat u waar nodig [toegankelijke rich internettoepassingen (ARIA)](https://www.w3.org/WAI/standards-guidelines/aria/), alt en titelkenmerken toevoegt. 
+Aanvullende informatie die op de basis kaart wordt geplaatst, moet bijbehorende tekstuele informatie bevatten voor gebruikers van scherm lezers. Zorg ervoor dat u waar nodig toegang hebt tot [Aria (Rich Internet Applications)](https://www.w3.org/WAI/standards-guidelines/aria/), de ALT-en title-kenmerken. 
 
-## <a name="make-popups-keyboard-accessible"></a>Pop-ups-toetsenbord toegankelijk maken
+## <a name="make-popups-keyboard-accessible"></a>Pop-upvensters toegankelijk maken voor het toetsen bord
 
-Een markering of symbool wordt vaak gebruikt om een locatie op de kaart weer te geven. Aanvullende informatie over de locatie wordt meestal weergegeven in een pop-up wanneer de gebruiker interactie heeft met de markering. In de meeste toepassingen worden pop-ups weergegeven wanneer een gebruiker op een markering klikt of tikt. Als u klikt en tikt, moet de gebruiker echter respectievelijk een muis en een aanraakscherm gebruiken. Een goede gewoonte is om pop-ups toegankelijk te maken bij het gebruik van een toetsenbord. Deze functionaliteit kan worden bereikt door een pop-up voor elk gegevenspunt te maken en deze aan de kaart toe te voegen. 
+Een markering of symbool wordt vaak gebruikt om een locatie op de kaart weer te geven. Aanvullende informatie over de locatie wordt doorgaans weer gegeven in een pop-upvenster wanneer de gebruiker met de markering communiceert. In de meeste toepassingen worden pop-ups weer gegeven wanneer een gebruiker op een markering klikt of tikt. Als u echter wilt klikken en tikken, moet de gebruiker respectievelijk een muis en een aanraak scherm gebruiken. Het is een goed idee om pop-ups toegankelijk te maken wanneer u een toetsen bord gebruikt. Deze functionaliteit kan worden bereikt door een pop-up te maken voor elk gegevens punt en deze toe te voegen aan de kaart. 
 
-In het volgende voorbeeld worden punten van interesses op de kaart geladen met behulp van een symboollaag en wordt een pop-up toegevoegd aan de kaart voor elk punt van belang. Een verwijzing naar elke pop-up wordt opgeslagen in de eigenschappen van elk gegevenspunt. Het kan ook worden opgehaald voor een markering, zoals wanneer er op een markering wordt geklikt. Wanneer u zich op de kaart concentreert, kan de gebruiker door elke pop-up op de kaart drukken wanneer hij op de tabtoets drukt.
-
-<br/>
-
-<iframe height='500' scrolling='no' title='Een toegankelijke toepassing maken' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de Pen Maak een toegankelijke<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>toepassing</a> van Azure Maps ( ) op <a href='https://codepen.io'>CodePen</a>. </iframe>
+In het volgende voor beeld worden punten van belangen op de kaart geladen met behulp van een symbool laag en wordt een pop-upvenster toegevoegd aan de kaart voor elk gewenst moment. Een verwijzing naar elke pop-up wordt opgeslagen in de eigenschappen van elk gegevens punt. Het kan ook worden opgehaald voor een markering, bijvoorbeeld wanneer er op een markering wordt geklikt. Als er op de kaart wordt gestreefd en u op TAB drukt, kan de gebruiker elke pop-up door lopen op de kaart.
 
 <br/>
 
-## <a name="additional-accessibility-tips"></a>Aanvullende toegankelijkheidstips
+<iframe height='500' scrolling='no' title='Een toegankelijke toepassing maken' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>een toegankelijke toepassing maken</a> met behulp<a href='https://codepen.io/azuremaps'>@azuremaps</a>van Azure Maps () op <a href='https://codepen.io'>CodePen</a>. </iframe>
 
-Hier volgen enkele aanvullende tips om uw webmapping-toepassing toegankelijker te maken.
+<br/>
 
-- Als u veel interactieve puntengegevens op de kaart weergeeft, u overwegen de rommel te verminderen en clustering te gebruiken. 
-- Zorg ervoor dat de verhouding kleurcontrast tussen tekst/symbolen en achtergrondkleuren 4,5:1 of meer is.
-- Houd uw schermlezer (ARIA, alt en titelkenmerken) berichten kort, beschrijvend en zinvol. Vermijd onnodig jargon en afkortingen.
-- Probeer berichten die naar de schermlezer worden verzonden te optimaliseren om korte zinvolle informatie te bieden die gemakkelijk voor de gebruiker te verteren is. Als u bijvoorbeeld de schermlezer op een hoge frequentie wilt bijwerken, bijvoorbeeld wanneer de kaart wordt verplaatst, u de volgende punten uitvoeren:
-    - Wacht tot de kaart klaar is met bewegen om de schermlezer bij te werken.
-    - Geef de updates eens in de paar seconden af. 
-    - Combineer berichten op een logische manier. 
+## <a name="additional-accessibility-tips"></a>Aanvullende tips voor toegankelijkheid
+
+Hier volgen enkele extra tips om uw webtoewijzings toepassing toegankelijker te maken.
+
+- Als veel interactieve punt gegevens op de kaart worden weer gegeven, kunt u overwegen het wirwar te verminderen en clustering te gebruiken. 
+- Zorg ervoor dat de contrast verhouding van de kleur tussen tekst/symbolen en achtergrond kleuren is 4,5:1 of meer.
+- Houd uw scherm lezer (ARIA, ALT en titel kenmerken) berichten kort, beschrijvende en zinvol. Vermijd onnodig jargon en acroniemen.
+- Optimaliseer berichten die naar de scherm lezer worden verzonden om kort herken bare informatie te geven die gemakkelijk is voor de gebruiker om te worden gedigesteerd. Als u bijvoorbeeld de scherm lezer op een hoge frequentie wilt bijwerken, bijvoorbeeld wanneer de kaart wordt verplaatst, kunt u de volgende punten overwegen:
+    - Wacht totdat de toewijzing is voltooid om de scherm lezer bij te werken.
+    - De updates tot één keer per seconde beperken. 
+    - Combi neer berichten op logische wijze samen. 
 - Vermijd het gebruik van kleur als enige manier om informatie over te brengen. Gebruik tekst, pictogrammen of patronen om de kleur aan te vullen of te vervangen. Enkele overwegingen:
-    - Als u een bellenlaag gebruikt om de relatieve waarde tussen gegevenspunten weer te geven, u overwegen de straal van elke bel te schalen, de bel te kleuren of beide. 
-    - Overweeg een symboollaag te gebruiken met verschillende pictogrammen voor verschillende metrische categorieën, zoals driehoeken, sterren en vierkanten. De symboollaag ondersteunt ook het schalen van de grootte van het pictogram. Er kan ook een tekstlabel worden weergegeven.
-    - Als lijngegevens worden weergegeven, kan de breedte worden gebruikt om het gewicht of de grootte weer te geven. Een dash-array patroon kan worden gebruikt om verschillende categorieën lijnen weer te geven. Een symboollaag kan worden gebruikt in combinatie met een lijn om pictogrammen langs de lijn te bedekken. Het gebruik van een pijlpictogram is handig om de stroom of richting van de lijn weer te geven.
-    - Als het weergeven van veelhoekgegevens een patroon, zoals strepen, kan worden gebruikt als alternatief voor kleur. 
-- Sommige visualisaties, zoals heatmaps, tegellagen en afbeeldingslagen, zijn niet toegankelijk voor gebruikers met een visuele beperking. Enkele overwegingen:
-    - Laat de schermlezer beschrijven wat de laag wordt weergegeven wanneer deze aan de kaart wordt toegevoegd. Als er bijvoorbeeld een tegellaag voor weerradarwordt weergegeven, laat de schermlezer zeggen: 'Weerradargegevens zijn bedekt op de kaart'.
-- Beperk de hoeveelheid functionaliteit waarvoor een muismuiszweeft nodig is. Deze functionaliteiten zijn niet toegankelijk voor gebruikers die een toetsenbord of aanraakapparaat gebruiken om met uw toepassing te communiceren. Let op, het is nog steeds een goede gewoonte om een hover stijl voor interactieve inhoud, zoals klikbare pictogrammen, links en knoppen.
-- Probeer door uw toepassing te navigeren met het toetsenbord. Zorg ervoor dat het bestellen van tabbladen logisch is.
-- Als u sneltoetsen maakt, probeert u deze te beperken tot twee toetsen of minder. 
+    - Als u een Bubble laag gebruikt om de relatieve waarde tussen gegevens punten weer te geven, kunt u overwegen om de RADIUS van elke bel te schalen, de ballon te kleuren of beide. 
+    - Overweeg het gebruik van een symbool laag met verschillende pictogrammen voor verschillende metrische categorieën, zoals drie hoeken, sterren en kwadraten. De Symbol-laag biedt ook ondersteuning voor het schalen van de grootte van het pictogram. Er kan ook een tekst label worden weer gegeven.
+    - Als regel gegevens worden weer gegeven, kan de breedte worden gebruikt om het gewicht of de grootte aan te geven. Een patroon met een streepjes matrix kan worden gebruikt om verschillende categorieën met lijnen weer te geven. Een symbool laag kan worden gebruikt in combi natie met een lijn om pictogrammen langs de lijn te bedekken. Het gebruik van een pijl pictogram is handig voor het weer geven van de stroom of richting van de regel.
+    - Als er veelhoek gegevens worden weer gegeven, kan een patroon, zoals strepen, worden gebruikt als alternatief voor kleur. 
+- Sommige visualisaties, zoals Heatmaps, tegel lagen en afbeeldings lagen, zijn niet toegankelijk voor gebruikers met een visuele handicap. Enkele overwegingen:
+    - De scherm lezer beschrijven wat de laag wordt weer gegeven wanneer deze wordt toegevoegd aan de kaart. Als er bijvoorbeeld een weer gave laag met het radar diagram wordt weer gegeven, laat u de scherm lezer zien dat "weer radar gegevens op de kaart worden overlapt".
+- Beperk de hoeveelheid functionaliteit waarvoor een muis aanwijzer nodig is. Deze functionaliteit is niet toegankelijk voor gebruikers die een toetsen bord of aanraak apparaat gebruiken om te communiceren met uw toepassing. Houd er rekening mee dat het een goed idee is om een aanwijs stijl te hebben voor interactieve inhoud, zoals klikbaar pictogrammen, koppelingen en knoppen.
+- Probeer uw toepassing te navigeren met behulp van het toetsen bord. Zorg ervoor dat de volg orde van het tabblad logisch is.
+- Als u sneltoetsen wilt maken, probeert u het te beperken tot twee sleutels of minder. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over toegankelijkheid in de Web SDK-modules.
 
 > [!div class="nextstepaction"]
-> [Toegankelijkheid tekengereedschappen](drawing-tools-interactions-keyboard-shortcuts.md)
+> [Toegankelijkheid van teken hulpprogramma's](drawing-tools-interactions-keyboard-shortcuts.md)
 
 Meer informatie over het ontwikkelen van toegankelijke apps met Microsoft Learn:
 
 > [!div class="nextstepaction"]
-> [Leerpad voor toegankelijkheid in actie digitale badge](https://ready.azurewebsites.net/learning/track/2940)
+> [Leer traject voor toegankelijkheid in actie digitale badge](https://ready.azurewebsites.net/learning/track/2940)
 
-Bekijk deze handige toegankelijkheidstools:
+Bekijk deze nuttige hulpprogram ma's voor toegankelijkheid:
 > [!div class="nextstepaction"]
 > [Toegankelijke apps ontwikkelen](https://developer.microsoft.com/windows/accessible-apps)
 
 > [!div class="nextstepaction"]
-> [WAI-ARIA Overzicht](https://www.w3.org/WAI/standards-guidelines/aria/)
+> [Overzicht van WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/)
 
 > [!div class="nextstepaction"]
-> [Web Toegankelijkheid evaluatietool (WAVE)](https://wave.webaim.org/)
+> [Hulp programma voor het evalueren van webaccessibility (WAVE)](https://wave.webaim.org/)
 
 > [!div class="nextstepaction"]
-> [WebAim-kleurcontrastcontrole](https://webaim.org/resources/contrastchecker/)
+> [WebAim-hulp programma voor kleur contrast](https://webaim.org/resources/contrastchecker/)
 
 > [!div class="nextstepaction"]
-> [Geen Koffie Vision Simulator](https://chrome.google.com/webstore/detail/nocoffee/jjeeggmbnhckmgdhmgdckeigabjfbddl?hl=en-US)
+> [Geen koffie Vision Simulator](https://chrome.google.com/webstore/detail/nocoffee/jjeeggmbnhckmgdhmgdckeigabjfbddl?hl=en-US)

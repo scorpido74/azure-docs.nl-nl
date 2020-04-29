@@ -1,6 +1,6 @@
 ---
-title: Een scale-outprocesserver instellen tijdens het herstel van VMware-vm's en fysieke servers met Azure Site Recovery | Microsoft Docs'
-description: In dit artikel wordt beschreven hoe u scale-out processerver instelt tijdens noodherstel van VMware VM's en fysieke servers.
+title: Een scale-out proces server instellen tijdens het herstel na nood gevallen van virtuele VMware-machines en fysieke servers met Azure Site Recovery | Microsoft Docs '
+description: In dit artikel wordt beschreven hoe u een scale-out proces server instelt tijdens het herstel na nood gevallen van virtuele VMware-machines en fysieke servers.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
@@ -8,76 +8,76 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257145"
 ---
-# <a name="scale-with-additional-process-servers"></a>Schalen met extra processervers
+# <a name="scale-with-additional-process-servers"></a>Schalen met extra proces servers
 
-Wanneer u vmware-vm's of fysieke servers naar Azure repliceert met [siteherstel,](site-recovery-overview.md)wordt er standaard een processerver geïnstalleerd op de configuratieservermachine en wordt deze gebruikt om de gegevensoverdracht tussen Siterecovery en uw on-premises infrastructuur te coördineren. Als u de capaciteit wilt vergroten en uw replicatie-implementatie wilt uitschalen, u extra zelfstandige processervers toevoegen. In dit artikel wordt beschreven hoe u een scale-outprocesserver in- en uitzetten.
+Wanneer u virtuele VMware-machines of fysieke servers naar Azure repliceert met behulp van [site Recovery](site-recovery-overview.md), wordt er standaard een proces server geïnstalleerd op de configuratie server machine en wordt deze gebruikt voor het coördineren van de gegevens overdracht tussen site Recovery en uw on-premises infra structuur. Als u de capaciteit wilt verg Roten en de implementatie van uw replicatie wilt uitbreiden, kunt u extra zelfstandige proces servers toevoegen. In dit artikel wordt beschreven hoe u een scale-out proces server kunt instellen.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
 ### <a name="capacity-planning"></a>Capaciteitsplanning
 
-Zorg ervoor dat u [capaciteitsplanning](site-recovery-plan-capacity-vmware.md) voor VMware-replicatie hebt uitgevoerd. Dit helpt u om te bepalen hoe en wanneer u extra processervers moet implementeren.
+Zorg ervoor dat u de [capaciteits planning](site-recovery-plan-capacity-vmware.md) voor VMware-replicatie hebt uitgevoerd. Zo kunt u bepalen hoe en wanneer u extra proces servers moet implementeren.
 
-Vanaf 9.24 versie, wordt de begeleiding toegevoegd tijdens selectie van processerver voor nieuwe replicaties. Processerver wordt gemarkeerd als Gezond, Waarschuwing en Kritiek op basis van bepaalde criteria. Als u inzicht wilt krijgen in verschillende scenario's die van invloed kunnen zijn op de status van de processerver, controleert u de waarschuwingen van de [processerver.](vmware-physical-azure-monitor-process-server.md#process-server-alerts)
+Vanuit 9,24-versie wordt hulp toegevoegd tijdens het selecteren van de proces server voor nieuwe replicaties. De proces server wordt als in orde, waarschuwing en kritiek gemarkeerd op basis van bepaalde criteria. Bekijk de waarschuwingen van de [proces server](vmware-physical-azure-monitor-process-server.md#process-server-alerts)voor meer informatie over verschillende scenario's die de status van de proces server kunnen beïnvloeden.
 
 > [!NOTE]
-> Het gebruik van een gekloonde processservercomponent wordt niet ondersteund. Volg de stappen in dit artikel voor elke PS-scale-out.
+> Het gebruik van een gekloond proces Server onderdeel wordt niet ondersteund. Volg de stappen in dit artikel voor elke PS-uitschalen.
 
-### <a name="sizing-requirements"></a>Maatseisen 
+### <a name="sizing-requirements"></a>Grootte vereisten 
 
-Controleer de vereisten voor grootte die in de tabel zijn samengevat. Als u uw implementatie over het algemeen moet schalen naar meer dan 200 bronmachines of als u een totale dagelijkse churn rate van meer dan 2 TB hebt, hebt u extra processervers nodig om het verkeersvolume te verwerken.
+Controleer de grootte vereisten die in de tabel worden samenvatten. Als u in het algemeen uw implementatie moet schalen naar meer dan 200 bron machines of als u een totaal dagelijks verloop van meer dan 2 TB hebt, hebt u extra proces servers nodig om het verkeers volume af te handelen.
 
-| **Extra processerver** | **Schijfgrootte cache** | **Gegevenswijzigingssnelheid** | **Beveiligde machines** |
+| **Aanvullende proces server** | **Schijf grootte van cache** | **Gegevens wijzigings frequentie** | **Beveiligde machines** |
 | --- | --- | --- | --- |
-|4 vCPU's (2 sockets * 2 cores \@ 2,5 GHz), 8 GB geheugen |300 GB |250 GB of minder |Repliceren 85 of minder machines. |
-|8 vCPU's (2 sockets * 4 cores \@ 2,5 GHz), 12 GB geheugen |600 GB |250 GB tot 1 TB |Repliceren tussen 85-150 machines. |
-|12 vCPU's (2 sockets * 6 cores \@ 2,5 GHz) 24 GB geheugen |1 TB |1 TB tot 2 TB |Repliceren tussen 150-225 machines. |
+|4 Vcpu's (2 sockets * 2 kernen \@ 2,5 GHz), 8 GB geheugen |300 GB |250 GB of minder |Repliceren 85 of minder machines. |
+|8 Vcpu's (2 sockets * 4 kernen \@ 2,5 GHz), 12 GB geheugen |600 GB |250 GB tot 1 TB |Repliceren tussen 85-150 machines. |
+|12 Vcpu's (2 sockets * 6 kernen \@ 2,5 GHz) 24 GB geheugen |1 TB |1 TB tot 2 TB |Repliceren tussen 150-225 machines. |
 
-Wanneer elke beveiligde bronmachine is geconfigureerd met 3 schijven van elk 100 GB.
+Waarbij elke beveiligde bron machine is geconfigureerd met 3 schijven van 100 GB.
 
 ### <a name="prerequisites"></a>Vereisten
 
-De vereisten voor de extra processerver worden samengevat in de volgende tabel.
+De vereisten voor de extra proces server worden in de volgende tabel samenvatten.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
-## <a name="download-installation-file"></a>Installatiebestand downloaden
+## <a name="download-installation-file"></a>Installatie bestand downloaden
 
-Download het installatiebestand voor de processerver als volgt:
+Down load het installatie bestand voor de proces server als volgt:
 
-1. Meld u aan bij de Azure-portal en blader naar uw Vault voor Herstelservices.
-2. Open **Site Recovery Infrastructure** > **VMWare en Physical Machines** > **Configuration Servers** (onder Voor VMware & Fysieke Machines).
-3. Selecteer de configuratieserver die u wilt inzoomen op de servergegevens. Klik vervolgens op **+ Processerver**.
-4. Selecteer in **Processerver** >  toevoegen**Kiezen waar u uw processerver wilt implementeren,** selecteer **On-premises een scale-out processerver implementeren.**
+1. Meld u aan bij de Azure Portal en blader naar uw Recovery Services kluis.
+2. Open **site Recovery Infrastructure** > -**configuratie servers** voor**VMware en fysieke machines** > (onder voor VMware & fysieke machines).
+3. Selecteer de configuratie server om in te zoomen op de server details. Klik vervolgens op **+ proces server**.
+4. In **proces server** >  toevoegen**kiest u waar u uw proces server wilt implementeren**, selecteert u **een scale-out proces server on-premises implementeren**.
 
-   ![Pagina Servers toevoegen](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
-1. Klik **op De Microsoft Azure Site Recovery Unified Setup downloaden**. Hiermee wordt de nieuwste versie van het installatiebestand gedownload.
+   ![Pagina servers toevoegen](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
+1. Klik op **down load de Microsoft Azure site Recovery Unified Setup**. Hiermee downloadt u de meest recente versie van het installatie bestand.
 
    > [!WARNING]
-   > De installatieversie van de processerver moet hetzelfde zijn als of eerder dan de configuratieserverversie die u hebt uitgevoerd. Een eenvoudige manier om ervoor te zorgen dat versiecompatibiliteit is het gebruik van hetzelfde installatieprogramma, dat u onlangs hebt gebruikt om uw configuratieserver te installeren of bij te werken.
+   > De installatie versie van de proces server moet gelijk zijn aan of lager zijn dan de versie van de configuratie server die u gebruikt. Een eenvoudige manier om ervoor te zorgen dat versie compatibiliteit hetzelfde installatie programma gebruikt, dat u het meest recent hebt gebruikt om de configuratie server te installeren of bij te werken.
 
-## <a name="install-from-the-ui"></a>Installeren vanaf de gebruikersinterface
+## <a name="install-from-the-ui"></a>Installeren via de gebruikers interface
 
-Installeer als volgt. Nadat u de server hebt ingesteld, migreert u bronmachines om deze te gebruiken.
+Installeer dit als volgt. Nadat u de server hebt ingesteld, migreert u de bron machines om deze te gebruiken.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-add-process-server.md)]
 
 
-## <a name="install-from-the-command-line"></a>Installeren vanaf de opdrachtregel
+## <a name="install-from-the-command-line"></a>Installeren vanaf de opdracht regel
 
-Installeren door de volgende opdracht uit te voeren:
+Installeer door de volgende opdracht uit te voeren:
 
 ```
 UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCredsFilePath <MySQL credentials file path>] [/VaultCredsFilePath <Vault credentials file path>] [/EnvType <VMWare/NonVMWare>] [/PSIP <IP address to be used for data transfer] [/CSIP <IP address of CS to be registered with>] [/PassphraseFilePath <Passphrase file path>]
 ```
 
-Waar de parameters van de opdrachtregel als volgt zijn:
+Waarbij de opdracht regel parameters als volgt zijn:
 
 [!INCLUDE [site-recovery-unified-setup-parameters](../../includes/site-recovery-unified-installer-command-parameters.md)]
 
@@ -90,7 +90,7 @@ UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /
 ```
 ### <a name="create-a-proxy-settings-file"></a>Een bestand met proxy-instellingen maken
 
-Als u een proxy moet instellen, wordt een bestand als invoer gebruikt door de parameter ProxySettingsFilePath. U het bestand als volgt maken en als parameter ProxySettingsFilePath van invoer doorgeven.
+Als u een proxy moet instellen, neemt de para meter ProxySettingsFilePath een bestand als invoer. U kunt het bestand als volgt maken en dit door geven als para meter invoer ProxySettingsFilePath.
 
 ```
 * [ProxySettings]
@@ -102,4 +102,4 @@ Als u een proxy moet instellen, wordt een bestand als invoer gebruikt door de pa
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [het beheren van processerverinstellingen](vmware-azure-manage-process-server.md)
+Meer informatie over het beheren van de instellingen van de [proces server](vmware-azure-manage-process-server.md)

@@ -1,54 +1,54 @@
 ---
-title: Back-ups maken van Azure-bestandsshares met REST API
-description: Meer informatie over het gebruik van REST API om back-ups te maken van Azure-bestandsshares in de Vault voor Herstelservices
+title: Back-ups maken van Azure-bestands shares met REST API
+description: Meer informatie over het gebruik van REST API voor het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79248097"
 ---
-# <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Back-up maken van Azure-bestandsshare met Azure Backup via Rest API
+# <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Back-up maken van Azure-bestands share met Azure Backup via rest API
 
-In dit artikel wordt beschreven hoe u een back-up maakt van een Azure File Share met Azure Backup via REST API.
+In dit artikel wordt beschreven hoe u een back-up van een Azure-bestands share maakt met behulp van Azure Backup via REST API.
 
-In dit artikel wordt ervan uitgegaan dat u al een kluis voor herstelservices hebt gemaakt en een beleid hebt gemaakt voor het configureren van back-ups voor uw bestandsshare. Als u dit nog niet hebt gedaan, [raadpleegt](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatevault) u de kluis maken en [maakt u zelfstudies](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy) voor beleidsREST API voor het maken van nieuwe kluizen en beleidsregels.
+In dit artikel wordt ervan uitgegaan dat u al een Recovery Services-kluis en een beleid voor het configureren van back-ups voor uw bestands share hebt gemaakt. Als dat niet het geval is, raadpleegt u de zelf studies voor het maken van de [kluis](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatevault) en het [maken van beleid](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy) rest API voor het maken van nieuwe kluizen en beleid.
 
 Voor dit artikel gebruiken we de volgende bronnen:
 
 - **RecoveryServicesVault**: *azurefilesvault*
 
-- **Beleid:** *schema1*
+- **Beleid:** *schedule1*
 
-- **Resourcegroep**: *azurefiles*
+- **Resource groep**: *Azure files*
 
-- **Opslagaccount**: *testvault2*
+- **Opslag account**: *testvault2*
 
-- **Bestandsshare:** *testshare*
+- **Bestands share**: *testshare*
 
-## <a name="configure-backup-for-an-unprotected-azure-file-share-using-rest-api"></a>Back-up configureren voor een onbeveiligd Azure-bestandsshare met REST API
+## <a name="configure-backup-for-an-unprotected-azure-file-share-using-rest-api"></a>Back-ups configureren voor een niet-beveiligde Azure-bestands share met REST API
 
-### <a name="discover-storage-accounts-with-unprotected-azure-file-shares"></a>Opslagaccounts ontdekken met onbeveiligde Azure-bestandsshares
+### <a name="discover-storage-accounts-with-unprotected-azure-file-shares"></a>Opslag accounts met niet-beveiligde Azure-bestands shares detecteren
 
-De kluis moet alle Azure-opslagaccounts in het abonnement ontdekken met bestandsshares waarvan een back-up kan worden gemaakt naar de Vault voor Herstelservices. Dit wordt geactiveerd met behulp van de [vernieuwingsbewerking](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh). Het is een asynchrone *POST-bewerking* die ervoor zorgt dat de kluis de nieuwste lijst krijgt van alle onbeveiligde Azure File-shares in het huidige abonnement en ze 'caches' maakt. Zodra het bestandsaandeel in de cache is opgeslagen, hebben herstelservices toegang tot het bestandsaandeel en deze kunnen beveiligen.
+De kluis moet alle Azure Storage-accounts in het abonnement detecteren met bestands shares waarvan een back-up kan worden gemaakt naar de Recovery Services kluis. Dit wordt geactiveerd met behulp van de [vernieuwings bewerking](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh). Het is een asynchrone *post* -bewerking die ervoor zorgt dat de kluis de meest recente lijst met alle niet-beveiligde Azure-bestands shares in het huidige abonnement en ' caches ' in de sjabloon krijgt. Zodra de bestands share in de cache is opgeslagen, hebben de Recovery Services toegang tot de bestands share en kunnen deze worden beveiligd.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01&$filter={$filter}
 ```
 
-De POST `{subscriptionId}`URI `{vaultName}` `{vaultresourceGroupName}`heeft `{fabricName}` , , , en parameters. In ons voorbeeld zou de waarde voor de verschillende parameters als volgt zijn:
+De post-URI `{subscriptionId}`heeft `{vaultName}`de `{vaultresourceGroupName}`para meters,, en `{fabricName}` . In ons voor beeld is de waarde voor de verschillende para meters als volgt:
 
 - `{fabricName}`is *Azure*
 
 - `{vaultName}`is *azurefilesvault*
 
-- `{vaultresourceGroupName}`is *azurefiles*
+- `{vaultresourceGroupName}`is *Azure files*
 
-- $filter=backupManagementType eq 'AzureStorage'
+- $filter = backupManagementType EQ ' opslag '
 
-Aangezien alle vereiste parameters in de URI worden gegeven, is er geen behoefte aan een aparte aanvraaginstantie.
+Aangezien alle vereiste para meters in de URI zijn opgegeven, is er geen afzonderlijke aanvraag tekst nodig.
 
 ```http
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
@@ -56,13 +56,13 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 #### <a name="responses"></a>Antwoorden
 
-De bewerking 'vernieuwen' is een [asynchrone bewerking.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) Dit betekent dat deze bewerking een andere bewerking maakt die afzonderlijk moet worden bijgehouden.
+De bewerking vernieuwen is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
-Het retourneert twee antwoorden: 202 (Geaccepteerd) wanneer een andere bewerking wordt gemaakt en 200 (OK) wanneer die bewerking is voltooid.
+Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en 200 (OK) wanneer de bewerking is voltooid.
 
-##### <a name="example-responses"></a>Voorbeeldreacties
+##### <a name="example-responses"></a>Voorbeeld reacties
 
-Zodra de *POST-aanvraag* is ingediend, wordt een antwoord van 202 (Geaccepteerd) geretourneerd.
+Zodra de *post* -aanvraag is verzonden, wordt een antwoord van 202 (geaccepteerd) geretourneerd.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -83,13 +83,13 @@ cca47745-12d2-42f9-b3a4-75335f18fdf6?api-version=2016-12-01’
 'Date': 'Mon, 03 Feb 2020 09:13:25 GMT'
 ```
 
-De resulterende bewerking bijhouden met de koptekst 'Locatie' met een eenvoudige *opdracht GET*
+De resulterende bewerking met behulp van de header ' Location ' met een eenvoudige *Get* -opdracht bijhouden
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/operationResults/cca47745-12d2-42f9-b3a4-75335f18fdf6?api-version=2016-12-01
 ```
 
-Zodra alle Azure Storage-accounts zijn ontdekt, retourneert de opdracht GET een reactie van 200 (Geen inhoud). De kluis kan nu elk opslagaccount met bestandsshares ontdekken waar binnen het abonnement een back-up van kan worden gemaakt.
+Zodra alle Azure Storage accounts zijn gedetecteerd, retourneert de GET-opdracht een reactie van 200 (geen inhoud). De kluis kan nu elk opslag account detecteren met bestands shares waarvan een back-up kan worden gemaakt binnen het abonnement.
 
 ```http
 HTTP/1.1 200 NoContent
@@ -106,17 +106,17 @@ x-ms-routing-request-id  : CENTRALUSEUAP:20200127T105304Z:d9bdb266-8349-4dbd-968
 Date   : Mon, 27 Jan 2020 10:53:04 GMT
 ```
 
-### <a name="get-list-of-storage-accounts-that-can-be-protected-with-recovery-services-vault"></a>Lijst met opslagaccounts krijgen die kunnen worden beveiligd met de vault van Recovery Services
+### <a name="get-list-of-storage-accounts-that-can-be-protected-with-recovery-services-vault"></a>Lijst met opslag accounts ophalen die kunnen worden beveiligd met Recovery Services kluis
 
-Als u wilt bevestigen dat 'caching' wordt uitgevoerd, vermeldt u alle beschermbare opslagaccounts onder het abonnement. Zoek vervolgens het gewenste opslagaccount in het antwoord. Dit gebeurt met behulp van de [GET ProtectableContainers](https://docs.microsoft.com/rest/api/backup/protectablecontainers/list) operatie.
+Als u wilt controleren of ' caching ' is voltooid, vermeldt u alle Beveilig bare opslag accounts in het abonnement. Ga vervolgens naar het gewenste opslag account in het antwoord. Dit wordt gedaan met behulp van de bewerking [ProtectableContainers ophalen](https://docs.microsoft.com/rest/api/backup/protectablecontainers/list) .
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectableContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
 ```
 
-De *GET* URI heeft alle vereiste parameters. Er is geen extra aanvraaginstantie nodig.
+De *Get* -URI heeft alle vereiste para meters. Er is geen aanvullende aanvraag tekst nodig.
 
-Voorbeeld van responslichaam:
+Voor beeld van antwoord tekst:
 
 ```json
 {
@@ -156,11 +156,11 @@ protectableContainers/StorageContainer;Storage;AzureFiles;testvault2",
 }
 ```
 
-Aangezien we het *testvault2-opslagaccount* in de responsinstantie met de vriendelijke naam kunnen vinden, is de bovenstaande vernieuwingsbewerking succesvol. De kluis van herstelservices kan nu met succes opslagaccounts met onbeveiligde bestanden in hetzelfde abonnement ontdekken.
+Omdat we het *testvault2* -opslag account in de antwoord tekst met de beschrijvende naam kunnen vinden, is de eerder uitgevoerde vernieuwings bewerking geslaagd. De Recovery Services-kluis kan nu opslag accounts met niet-beveiligde bestands shares detecteren in hetzelfde abonnement.
 
-### <a name="register-storage-account-with-recovery-services-vault"></a>Opslagaccount registreren bij vault Recovery Services
+### <a name="register-storage-account-with-recovery-services-vault"></a>Opslag account registreren bij Recovery Services kluis
 
-Deze stap is alleen nodig als u het opslagaccount niet eerder bij de kluis hebt geregistreerd. U de kluis registreren via de [ProtectionContainers-Register operatie.](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register)
+Deze stap is alleen nodig als u het opslag account niet eerder hebt geregistreerd bij de kluis. U kunt de kluis registreren via de [ProtectionContainers-register bewerking](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register).
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}?api-version=2016-12-01
@@ -168,14 +168,14 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 Stel de variabelen voor de URI als volgt in:
 
-- {resourceGroupName} - *azurefiles*
-- {fabricName} - *Azure*
-- {vaultName} - *azurefilesvault*
-- {containerName} - Dit is het naamkenmerk in de reactietekst van de bewerking GET ProtectableContainers.
-   In ons voorbeeld is het *StorageContainer; Opslag; AzureFiles;testvault2*
+- {resourceGroupName}- *Azure files*
+- {fabricnaam}- *Azure*
+- {kluisnaam}- *azurefilesvault*
+- {containerName}-dit is het naam kenmerk in de antwoord tekst van de bewerking GET ProtectableContainers.
+   In ons voor beeld is het *StorageContainer; Opslagpad Azure files; testvault2*
 
 >[!NOTE]
-> Neem altijd het naamkenmerk van het antwoord en vul het in dit verzoek in. Niet hardcoderen of de containernaamnotatie maken. Als u deze maakt of hard-code, mislukt de API-aanroep als de containernaamnotatie in de toekomst verandert.
+> Neem altijd het naam kenmerk van het antwoord en vul dit op in deze aanvraag. GEEN vaste code of de indeling van de container naam maken. Als u deze code maakt of inschakelt, mislukt de API-aanroep als de indeling van de container naam in de toekomst wordt gewijzigd.
 
 <br>
 
@@ -183,7 +183,7 @@ Stel de variabelen voor de URI als volgt in:
 PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AzureFiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;AzureFiles;testvault2?api-version=2016-12-01
 ```
 
-De instantie voor aanvragen maken is als volgt:
+De aanvraag tekst voor het maken is als volgt:
 
 ```json
 {
@@ -209,15 +209,15 @@ De instantie voor aanvragen maken is als volgt:
  }
 ```
 
-Voor de volledige lijst van definities van de aanvraaginstantie en andere details verwijzen wij u naar [ProtectionContainers-Register](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register#azurestoragecontainer).
+Raadpleeg [ProtectionContainers-REGI ster](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register#azurestoragecontainer)voor de volledige lijst met definities van de hoofd tekst van de aanvraag en andere details.
 
-Dit is een asynchrone bewerking en retourneert twee antwoorden: "202 Geaccepteerd" wanneer de bewerking wordt geaccepteerd en "200 OK" wanneer de bewerking is voltooid.  Als u de bewerkingsstatus wilt bijhouden, gebruikt u de locatiekoptekst om de laatste status van de bewerking te krijgen.
+Dit is een asynchrone bewerking en retourneert twee antwoorden: "202 geaccepteerd" wanneer de bewerking wordt geaccepteerd en "200 OK" wanneer de bewerking is voltooid.  Als u de bewerkings status wilt bijhouden, gebruikt u de locatie header om de meest recente status van de bewerking op te halen.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AzureFiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;AzureFiles;testvault2/operationresults/1a3c8ee7-e0e5-43ed-b8b3-73cc992b6db9?api-version=2016-12-01
 ```
 
-Voorbeeld van antwoordlichaam wanneer de bewerking is voltooid:
+Voor beeld van een antwoord tekst wanneer de bewerking is voltooid:
 
 ```json
 {
@@ -237,11 +237,11 @@ protectionContainers/StorageContainer;Storage;AzureFiles;testvault2",
 }
 ```
 
-U controleren of de registratie is geslaagd op basis van de waarde van de parameter *registratiestatus* in de antwoordinstantie. In ons geval toont het de status als geregistreerd voor *testvault2,* dus de registratie operatie was succesvol.
+U kunt controleren of de registratie is geslaagd op basis van de waarde van de para meter *registrationstatus* in de hoofd tekst van het antwoord. In ons geval wordt de status weer gegeven als geregistreerd voor *testvault2*, zodat de registratie bewerking is geslaagd.
 
-### <a name="inquire-all-unprotected-files-shares-under-a-storage-account"></a>Alle onbeveiligde bestanden onder een opslagaccount informeer
+### <a name="inquire-all-unprotected-files-shares-under-a-storage-account"></a>Een query uitvoeren op alle niet-beveiligde bestands shares onder een opslag account
 
-U informatie stellen over beschermbare artikelen in een opslagaccount met behulp van de bewerking [Protection Containers-Inquire.](https://docs.microsoft.com/rest/api/backup/protectioncontainers/inquire) Het is een asynchrone bewerking en de resultaten moeten worden bijgehouden met behulp van de locatieheader.
+U kunt informatie opvragen over Beveilig bare items in een opslag account met behulp van de [beveiligings containers-query](https://docs.microsoft.com/rest/api/backup/protectioncontainers/inquire) bewerking. Het is een asynchrone bewerking en de resultaten moeten worden gevolgd met behulp van de locatie-header.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire?api-version=2016-12-01
@@ -249,15 +249,15 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 Stel de variabelen voor de bovenstaande URI als volgt in:
 
-- {vaultName} - *azurefilesvault*
-- {fabricName} - *Azure*
-- {containerName}- Raadpleeg het naamkenmerk in de reactietekst van de bewerking GET ProtectableContainers. In ons voorbeeld is het *StorageContainer; Opslag; AzureFiles;testvault2*
+- {kluisnaam}- *azurefilesvault*
+- {fabricnaam}- *Azure*
+- {containerName}: Raadpleeg het naam kenmerk in de antwoord tekst van de bewerking GET ProtectableContainers. In ons voor beeld is het *StorageContainer; Opslagpad Azure files; testvault2*
 
 ```http
 https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;AzureFiles;testvault2/inquire?api-version=2016-12-01
 ```
 
-Zodra de aanvraag is geslaagd, wordt de statuscode 'OK' geretourneerd
+Zodra de aanvraag is voltooid, wordt de status code ' OK ' geretourneerd.
 
 ```http
 Cache-Control : no-cache
@@ -274,24 +274,24 @@ x-ms-routing-request-id   : CENTRALUSEUAP:20200127T105305Z:68727f1e-b8cf-4bf1-bf
 Date  : Mon, 27 Jan 2020 10:53:05 GMT
 ```
 
-### <a name="select-the-file-share-you-want-to-back-up"></a>Selecteer het bestandsaandeel waarop u een back-up wilt maken
+### <a name="select-the-file-share-you-want-to-back-up"></a>Selecteer de bestands share waarvan u een back-up wilt maken
 
-U alle beschermbare items onder het abonnement weergeven en het gewenste bestandsaandeel vinden waareen back-up van moet worden gemaakt met behulp van de bewerking [GET backupprotectableItems.](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list)
+U kunt alle Beveilig bare items onder het abonnement weer geven en de gewenste bestands share vinden waarvan u een back-up wilt maken met behulp van de bewerking [BackupprotectableItems ophalen](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) .
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems?api-version=2016-12-01&$filter={$filter}
 ```
 
-Bouw de URI als volgt:
+Maak de URI als volgt:
 
-- {vaultName} - *azurefilesvault*
-- {$filter} - *backupManagementType eq 'AzureStorage'*
+- {kluisnaam}- *azurefilesvault*
+- {$filter}- *backupManagementType EQ ' opslag '*
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupProtectableItems?$filter=backupManagementType eq 'AzureStorage'&api-version=2016-12-01
 ```
 
-Voorbeeldrespons:
+Voorbeeld antwoord:
 
 ```json
 Status Code:200
@@ -347,33 +347,33 @@ Status Code:200
 }
 ```
 
-Het antwoord bevat de lijst met alle onbeveiligde bestandsshares en bevat alle informatie die de Azure Recovery Service nodig heeft om de back-up te configureren.
+Het antwoord bevat de lijst met alle niet-beveiligde bestands shares en bevat alle informatie die vereist is voor de Azure Recovery-service om de back-up te configureren.
 
-### <a name="enable-backup-for-the-file-share"></a>Back-up voor het bestandsshare inschakelen
+### <a name="enable-backup-for-the-file-share"></a>Back-up voor de bestands share inschakelen
 
-Nadat het relevante bestandsaandeel is "geïdentificeerd" met de vriendelijke naam, selecteert u het beleid om te beschermen. Raadpleeg [de lijst BeleidsAPI](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)voor meer informatie over bestaand beleid in de kluis. Selecteer vervolgens het [relevante beleid](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get) door te verwijzen naar de beleidsnaam. Als u beleid wilt maken, verwijst u naar [beleidszelfstudie maken](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy).
+Nadat de relevante bestands share is geïdentificeerd met de beschrijvende naam, selecteert u het beleid dat u wilt beveiligen. Raadpleeg de [List Policy API](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)voor meer informatie over bestaande beleids regels in de kluis. Selecteer vervolgens het [relevante beleid](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get) door te verwijzen naar de naam van het beleid. Zie [zelf studie beleid maken](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy)voor het maken van beleid.
 
-Beveiliging inschakelen is een asynchrone *PUT-bewerking* die een 'beveiligd item' maakt.
+Het inschakelen van beveiliging is een asynchrone *put* -bewerking die een ' beveiligd item ' maakt.
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13
 ```
 
-Stel de **containernaam-** en **protecteditemnamevariabelen** in met het kenmerk ID in de antwoordtekst van de bewerking GET backupprotectableitems.
+Stel de variabelen **containerName** en **protecteditemname** in met behulp van het kenmerk id in de antwoord tekst van de bewerking Get backupprotectableitems.
 
-In ons voorbeeld is de id van bestandsshare die we willen beveiligen:
+In ons voor beeld is de ID van de bestands share die u wilt beveiligen:
 
 ```output
 "/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/storagecontainer;storage;azurefiles;testvault2/protectableItems/azurefileshare;testshare
 ```
 
-- {containername} - *storagecontainer;storage;azurefiles;testvault2*
-- {protectedItemName} - *azurefileshare;testshare*
+- {containerName}- *storagecontainer; opslag; Azure files; testvault2*
+- {protectedItemName}- *azurefileshare; testshare*
 
-U ook verwijzen naar het **naamkenmerk** van de beveiligingscontainer en de antwoorden op het beschermde artikel.
+U kunt ook verwijzen naar het **naam** kenmerk van de beveiligings container en de beveiligings reacties van items.
 
 >[!NOTE]
->Neem altijd het naamkenmerk van het antwoord en vul het in dit verzoek in. Niet hardcoderen of maak de containernaamnotatie of beveiligde itemnaamnotatie. Als u deze maakt of hard-code, mislukt de API-aanroep als de containernaamnotatie of beveiligde itemnaamnotatie in de toekomst verandert.
+>Neem altijd het naam kenmerk van het antwoord en vul dit op in deze aanvraag. Zorg dat u geen vaste code maakt of de indeling van de naam van de beveiligde items wilt maken. Als u deze code maakt of inschakelt, mislukt de API-aanroep als de indeling van de container naam of de naam van het beveiligde item in de toekomst wordt gewijzigd.
 
 <br>
 
@@ -381,9 +381,9 @@ U ook verwijzen naar het **naamkenmerk** van de beveiligingscontainer en de antw
 PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;AzureFiles;testvault2/protectedItems/azurefileshare;testshare?api-version=2016-12-01
 ```
 
-Een aanvraaginstantie maken:
+Een aanvraag tekst maken:
 
-In de volgende aanvraaginstantie worden eigenschappen gedefinieerd die nodig zijn om een beveiligd item te maken.
+De volgende aanvraag hoofdtekst definieert eigenschappen die vereist zijn voor het maken van een beveiligd item.
 
 ```json
 {
@@ -395,13 +395,13 @@ In de volgende aanvraaginstantie worden eigenschappen gedefinieerd die nodig zij
 }
 ```
 
-De **sourceResourceId** is de **parentcontainerFabricID** in reactie op GET backupprotectableItems.
+De **sourceResourceId** is de **parentcontainerFabricID** als reactie op Get backupprotectableItems.
 
 Voorbeeldreactie
 
-Het maken van een beveiligd item is een asynchrone bewerking, waardoor een andere bewerking wordt gemaakt die moet worden bijgehouden. Het retourneert twee antwoorden: 202 (Geaccepteerd) wanneer een andere bewerking wordt gemaakt en 200 (OK) wanneer die bewerking is voltooid.
+Het maken van een beveiligd item is een asynchrone bewerking, waarmee een andere bewerking wordt gemaakt die moet worden gevolgd. Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en 200 (OK) wanneer de bewerking is voltooid.
 
-Zodra u het *PUT-verzoek* voor het maken of bijwerken van beveiligde items hebt ingediend, is het eerste antwoord 202 (Geaccepteerd) met een locatiekoptekst.
+Zodra u de *put* -aanvraag voor het maken of bijwerken van beveiligde items verzendt, wordt het eerste antwoord 202 (geaccepteerd) met een locatie header.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -421,15 +421,15 @@ x-ms-routing-request-id  : CENTRALUSEUAP:20200127T105412Z:b55527fa-f473-4f09-b16
 Date : Mon, 27 Jan 2020 10:54:12 GMT
 ```
 
-Houd vervolgens de resulterende bewerking bij met behulp van de locatiekop- of Azure-AsyncOperation-header met een *get-opdracht.*
+Volg vervolgens de resulterende bewerking met behulp van de locatie header of de Azure-AsyncOperation-header met een *Get* -opdracht.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/c3a52d1d-0853-4211-8141-477c65740264?api-version=2016-12-01
 ```
 
-Zodra de bewerking is voltooid, retourneert deze 200 (OK) met de beveiligde iteminhoud in de antwoordtekst.
+Zodra de bewerking is voltooid, wordt 200 (OK) geretourneerd met de inhoud van het beveiligde item in de antwoord tekst.
 
-Voorbeeldresponsinstantie:
+Hoofd tekst van voorbeeld bericht:
 
 ```json
 {
@@ -445,35 +445,35 @@ Voorbeeldresponsinstantie:
 }
 ```
 
-Dit bevestigt dat de beveiliging is ingeschakeld voor het delen van bestanden en dat de eerste back-up wordt geactiveerd volgens het beleidsschema.
+Hiermee wordt bevestigd dat de beveiliging is ingeschakeld voor de bestands share en de eerste back-up wordt geactiveerd volgens het beleids schema.
 
-## <a name="trigger-an-on-demand-backup-for-file-share"></a>Een on-demand back-up activeren voor bestandsshare
+## <a name="trigger-an-on-demand-backup-for-file-share"></a>Een back-up op aanvraag voor de bestands share activeren
 
-Zodra een Azure-bestandsshare is geconfigureerd voor back-ups, worden back-ups uitgevoerd volgens het beleidsschema. U op elk gewenst moment wachten op de eerste geplande back-up of een on-demand back-up activeren.
+Zodra een Azure-bestands share is geconfigureerd voor back-up, worden back-ups uitgevoerd volgens het beleids schema. U kunt wachten op de eerste geplande back-up of op elk gewenst moment een back-up op aanvraag activeren.
 
-Het activeren van een on-demand back-up is een POST-bewerking.
+Het activeren van een back-up op aanvraag is een POST-bewerking.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/backup?api-version=2016-12-01
 ```
 
-{containerName} en {protectedItemName} zijn zoals hierboven opgebouwd en schakelen back-up in. Voor ons voorbeeld vertaalt dit zich in:
+{containerName} en {protectedItemName} zijn eerder geconstrueerd tijdens het inschakelen van back-ups. In ons voor beeld is dit van toepassing op:
 
 ```http
 POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;testvault2/protectedItems/AzureFileShare;testshare/backup?api-version=2017-07-01
 ```
 
-### <a name="create-request-body"></a>Aanvraaginstantie maken
+### <a name="create-request-body"></a>Hoofd tekst van aanvraag maken
 
-Om een on-demand back-up te activeren, volgen de onderdelen van de aanvraaginstantie.
+Als u een back-up op aanvraag wilt activeren, volgt u de onderdelen van de hoofd tekst van de aanvraag.
 
-| Name       | Type                       | Beschrijving                       |
+| Naam       | Type                       | Beschrijving                       |
 | ---------- | -------------------------- | --------------------------------- |
 | Eigenschappen | AzurefilesharebackupReques | BackupRequestResource-eigenschappen |
 
-Raadpleeg voor de volledige lijst met definities van de aanvraaginstantie en andere details [back-ups voor beveiligde items REST API-document.](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body)
+Raadpleeg [back-ups activeren voor beveiligde items rest API document](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body)voor een volledige lijst met definities van de aanvraag tekst en andere details.
 
-Voorbeeld van aanvraaginstantie
+Voor beeld van aanvraag tekst
 
 ```json
 {
@@ -489,13 +489,13 @@ Voorbeeld van aanvraaginstantie
 
 ### <a name="responses"></a>Antwoorden
 
-Het activeren van een on-demand back-up is een [asynchrone bewerking.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) Dit betekent dat deze bewerking een andere bewerking maakt die afzonderlijk moet worden bijgehouden.
+Het activeren van een back-up op aanvraag is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
-Het retourneert twee antwoorden: 202 (Geaccepteerd) wanneer een andere bewerking wordt gemaakt en 200 (OK) wanneer die bewerking is voltooid.
+Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en 200 (OK) wanneer de bewerking is voltooid.
 
-### <a name="example-responses"></a>Voorbeeldreacties
+### <a name="example-responses"></a>Voorbeeld reacties
 
-Zodra u de *POST-aanvraag* voor een on-demand back-up hebt ingediend, is het eerste antwoord 202 (Geaccepteerd) met een locatiekop- of Azure-async-header.
+Zodra u de *post* -aanvraag voor een back-up op aanvraag hebt verzonden, is het eerste antwoord 202 (geaccepteerd) met een locatie header of Azure-async-header.
 
 ```http
 'Cache-Control': 'no-cache'
@@ -516,15 +516,15 @@ Zodra u de *POST-aanvraag* voor een on-demand back-up hebt ingediend, is het eer
 'Content-Length': '0'
 ```
 
-Houd vervolgens de resulterende bewerking bij met behulp van de locatiekop- of Azure-AsyncOperation-header met een *get-opdracht.*
+Volg vervolgens de resulterende bewerking met behulp van de locatie header of de Azure-AsyncOperation-header met een *Get* -opdracht.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/dc62d524-427a-4093-968d-e951c0a0726e?api-version=2016-12-01
 ```
 
-Zodra de bewerking is voltooid, retourneert deze 200 (OK) met de id van de resulterende back-uptaak in de antwoordinstantie.
+Zodra de bewerking is voltooid, wordt 200 (OK) geretourneerd met de ID van de resulterende back-uptaak in de hoofd tekst van het antwoord.
 
-#### <a name="sample-response-body"></a>Voorbeeldresponsinstantie
+#### <a name="sample-response-body"></a>Hoofd tekst van voorbeeld antwoord
 
 ```json
 {
@@ -540,8 +540,8 @@ Zodra de bewerking is voltooid, retourneert deze 200 (OK) met de id van de resul
 }
 ```
 
-Aangezien de back-uptaak een langdurige bewerking is, moet deze worden bijgehouden zoals uitgelegd in de [monitortaken met rest-API-document.](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job)
+Omdat de back-uptaak een langlopende bewerking is, moet deze worden gevolgd zoals uitgelegd in de [taken bewaken met behulp van rest API document](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [herstellen van Azure-bestandsshares met rest-API](restore-azure-file-share-rest-api.md).
+- Meer informatie over het [herstellen van Azure-bestands shares met behulp van rest API](restore-azure-file-share-rest-api.md).

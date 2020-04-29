@@ -1,6 +1,6 @@
 ---
-title: BitLocker-opstartfouten oplossen op een Azure VM | Microsoft Documenten
-description: Meer informatie over het oplossen van BitLocker-opstartfouten in een Azure VM
+title: Problemen met BitLocker-opstart fouten op een Azure VM oplossen | Microsoft Docs
+description: Meer informatie over het oplossen van BitLocker-opstart fouten in een Azure VM
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,43 +13,43 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.openlocfilehash: 80fd91106530c0150a85d508b24041b2263da925
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250008"
 ---
-# <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker-opstartfouten op een Azure-vm
+# <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker-opstart fouten op een virtuele Azure-machine
 
- In dit artikel worden BitLocker-fouten beschreven die u ondervinden wanneer u een virtuele Windows-machine (VM) start in Microsoft Azure.
+ In dit artikel worden BitLocker-fouten beschreven die zich kunnen voordoen wanneer u een virtuele Windows-machine (VM) start in Microsoft Azure.
 
  
 
 ## <a name="symptom"></a>Symptoom
 
- Een Windows-vm wordt niet gestart. Wanneer u de schermafbeeldingen in het venster [Diagnostische gegevens opstart](../windows/boot-diagnostics.md) controleert, ziet u een van de volgende foutmeldingen:
+ Een Windows-VM start niet. Wanneer u de scherm opnamen in het venster [Diagnostische gegevens over opstarten](../windows/boot-diagnostics.md) controleert, ziet u een van de volgende fout berichten:
 
-- Sluit het USB-stuurprogramma aan met de BitLocker-toets
+- Het USB-stuur programma met de BitLocker-sleutel aansluiten
 
-- Je bent buitengesloten. Voer de herstelsleutel in om weer aan de slag te gaan (Toetsenbordindeling: VS) De verkeerde aanmeldingsgegevens zijn te vaak ingevoerd, dus uw pc is vergrendeld om uw privacy te beschermen. Als u de herstelsleutel https://windows.microsoft.com/recoverykeyfaq wilt ophalen, gaat u naar een andere pc of mobiel apparaat. In het geval dat je het nodig hebt, de sleutel-ID is XXXXXXX. U uw pc ook resetten.
+- U bent vergrendeld. Voer de herstel sleutel in om weer aan de slag te gaan (toetsenbord indeling: VS) de onjuiste aanmeldings gegevens zijn te vaak ingevoerd, waardoor uw PC is vergrendeld om uw privacy te beschermen. Als u de herstel sleutel wilt ophalen, https://windows.microsoft.com/recoverykeyfaq gaat u naar vanaf een andere PC of een mobiel apparaat. Als u het nodig hebt, is de sleutel-ID XXXXXXx. U kunt ook uw PC opnieuw instellen.
 
-- Voer het wachtwoord in om dit station te ontgrendelen [ ] Druk op de invoegtoets om het wachtwoord te zien terwijl u typt.
-- Voer uw herstelsleutel in Laad uw herstelsleutel vanaf een USB-apparaat.
+- Voer het wacht woord in om dit station te ontgrendelen [] Druk op de INSERT-toets om het wacht woord te zien terwijl u typt.
+- Voer uw herstel sleutel in om de herstel sleutel van een USB-apparaat te laden.
 
 ## <a name="cause"></a>Oorzaak
 
-Dit probleem kan optreden als de VM het BEK-bestand (BitLocker Recovery Key) niet kan vinden om de versleutelde schijf te decoderen.
+Dit probleem kan optreden als de virtuele machine het BitLocker-herstel sleutel bestand (BEK) niet kan vinden om de versleutelde schijf te ontsleutelen.
 
 ## <a name="solution"></a>Oplossing
 
-Als u dit probleem wilt oplossen, stopt en deallocateert u de VM en start u deze opnieuw op. Deze bewerking dwingt de VM om het BEK-bestand uit de Azure Key Vault op te halen en vervolgens op de versleutelde schijf te plaatsen. 
+U kunt dit probleem oplossen door de virtuele machine te stoppen en de toewijzing ervan ongedaan te maken en vervolgens opnieuw te starten. Met deze bewerking wordt de virtuele machine gedwongen het BEK-bestand op te halen uit de Azure Key Vault en vervolgens op de versleutelde schijf te plaatsen. 
 
-Als deze methode het probleem niet oplost, voert u de volgende stappen uit om het BEK-bestand handmatig te herstellen:
+Als deze methode het probleem niet oplost, voert u de volgende stappen uit om het BEK-bestand hand matig te herstellen:
 
-1. Maak een momentopname van de systeemschijf van de betreffende VM als back-up. Zie [Momentopname een schijf voor](../windows/snapshot-copy-managed-disk.md)meer informatie .
-2. [Koppel de systeemschijf aan een herstelvm](troubleshoot-recovery-disks-portal-windows.md). Als u de opdracht [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) in stap 7 wilt uitvoeren, moet de functie **BitLocker-stationsversleuteling** zijn ingeschakeld in de herstel-vm.
+1. Maak een moment opname van de systeem schijf van de betrokken VM als back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie.
+2. [Koppel de systeem schijf aan een herstel-VM](troubleshoot-recovery-disks-portal-windows.md). Als u de opdracht [Manage-BDE](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) in stap 7 wilt uitvoeren, moet u de functie **BitLocker-stationsversleuteling** ingeschakeld hebben op de virtuele machine voor herstel.
 
-    Wanneer u een beheerde schijf koppelt, ontvangt u mogelijk een foutbericht 'bevat versleutelingsinstellingen en kan daarom niet worden gebruikt als gegevensschijf'. Voer in deze situatie het volgende script uit om opnieuw te proberen de schijf te bevestigen:
+    Wanneer u een beheerde schijf koppelt, ontvangt u mogelijk een fout bericht ' bevat versleutelings instellingen en kan daarom niet worden gebruikt als een gegevens schijf '. In dit geval voert u het volgende script uit om opnieuw te proberen de schijf te koppelen:
 
     ```Powershell
     $rgName = "myResourceGroup"
@@ -67,11 +67,11 @@ Als deze methode het probleem niet oplost, voert u de volgende stappen uit om he
 
     Update-AzVM -VM $vm -ResourceGroupName $recoveryVMRG
     ```
-     U een beheerde schijf niet koppelen aan een vm die is hersteld vanuit een blobafbeelding.
+     U kunt een beheerde schijf niet koppelen aan een virtuele machine die is hersteld vanuit een BLOB-installatie kopie.
 
-3. Nadat de schijf is aangesloten, maakt u een externe bureaubladverbinding met de herstel-vm, zodat u sommige Azure PowerShell-scripts uitvoeren. Zorg ervoor dat u de [nieuwste versie van Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) op de herstel-vm hebt geïnstalleerd.
+3. Nadat de schijf is aangesloten, maakt u een verbinding met een extern bureau blad met de virtuele machine voor herstel zodat u enkele Azure PowerShell scripts kunt uitvoeren. Zorg ervoor dat de [meest recente versie van Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) is geïnstalleerd op de virtuele machine voor herstel.
 
-4. Open een verhoogde Azure PowerShell-sessie (Uitvoeren als beheerder). Voer de volgende opdrachten uit om u aan te melden bij een Azure-abonnement:
+4. Open een verhoogde Azure PowerShell-sessie (als administrator uitvoeren). Voer de volgende opdrachten uit om u aan te melden bij een Azure-abonnement:
 
     ```Powershell
     Add-AzAccount -SubscriptionID [SubscriptionID]
@@ -90,7 +90,7 @@ Als deze methode het probleem niet oplost, voert u de volgende stappen uit om he
                 @{Label ="DiskEncryptionKeyFileName"; Expression = {$_.Tags.DiskEncryptionKeyFileName}}
     ```
 
-    Het volgende is een voorbeeld van de uitvoer. Zoek de BEK-bestandsnaam voor de bijgevoegde schijf. In dit geval gaan we ervan uit dat de schijfletter van de bijgevoegde schijf F is en het BEK-bestand EF7B2F5A-50C6-4637-9F13-7F599C12F85C. BEK, IK HEB JE NOG NIET EEN
+    Hier volgt een voor beeld van de uitvoer. Zoek de naam van het BEK-bestand voor de gekoppelde schijf. In dit geval gaan we ervan uit dat de stationsletter van de gekoppelde schijf F is en dat het BEK-bestand EF7B2F5A-50C6-4637-9F13-7F599C12F85C is. BEK.
 
     ```
     Created             Content Type Volume DiskEncryptionKeyFileName               
@@ -101,13 +101,13 @@ Als deze methode het probleem niet oplost, voert u de volgende stappen uit om he
     4/7/2018 7:26:26 PM Wrapped BEK  H:\    5745719F-4886-4940-9B51-C98AFABE5305.BEK
     ```
 
-    Als u twee dubbele volumes ziet, is het volume met de nieuwere tijdstempel het huidige BEK-bestand dat wordt gebruikt door de herstel-vm.
+    Als er twee dubbele volumes worden weer geven, is het volume met de nieuwere tijds tempel het huidige BEK-bestand dat wordt gebruikt door de herstel-VM.
 
-    Als de waarde **Inhoudstype** **IS WRAPPEd BEK**is, gaat u naar de [KEK-scenario's (Key Encryption Key).](#key-encryption-key-scenario)
+    Als de waarde van het **inhouds type** **verpakte bek**is, gaat u naar de [Kek-Scenario's (Key Encryption Key)](#key-encryption-key-scenario).
 
-    Nu u de naam van het BEK-bestand voor het station hebt, moet u de geheime bestandsnaam maken. BEK-bestand om het station te ontgrendelen.
+    Nu u de naam van het BEK-bestand voor het station hebt, moet u de naam van het geheime bestand maken. BEK-bestand voor het ontgrendelen van het station.
 
-6.  Download het BEK-bestand naar de herstelschijf. In het volgende voorbeeld wordt het BEK-bestand opgeslagen in de map C:\BEK. Controleer of `C:\BEK\` het pad bestaat voordat u de scripts uitvoert.
+6.  Down load het BEK-bestand naar de herstel schijf. In het volgende voor beeld wordt het BEK-bestand opgeslagen in de map C:\BEK. Zorg ervoor dat het `C:\BEK\` pad bestaat voordat u de scripts uitvoert.
 
     ```powershell
     $vault = "myKeyVault"
@@ -119,34 +119,34 @@ Als deze methode het probleem niet oplost, voert u de volgende stappen uit om he
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
     ```
 
-7.  Voer de volgende opdracht uit om de gekoppelde schijf te ontgrendelen met het BEK-bestand.
+7.  Als u de gekoppelde schijf wilt ontgrendelen met behulp van het BEK-bestand, voert u de volgende opdracht uit.
 
     ```powershell
     manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK
     ```
-    In dit voorbeeld is de aangesloten OS-schijf station F. Zorg ervoor dat u de juiste stationsletter gebruikt. 
+    In dit voor beeld is de gekoppelde besturingssysteem schijf station F. Zorg ervoor dat u de juiste stationsletter gebruikt. 
 
-8. Nadat de schijf met succes is ontgrendeld met behulp van de BEK-toets, maakt u de schijf los van de herstel-vm en maakt u de VM opnieuw met behulp van deze nieuwe OS-schijf.
+8. Nadat de schijf is ontgrendeld met behulp van de BEK-sleutel, ontkoppelt u de schijf van de virtuele machine voor herstel en maakt u de virtuele machine opnieuw met behulp van deze nieuwe besturingssysteem schijf.
 
     > [!NOTE]
-    > Het verwisselen van OS Disk wordt niet ondersteund voor VM's met schijfversleuteling.
+    > Het wisselen van de besturingssysteem schijf wordt niet ondersteund voor Vm's die gebruikmaken van schijf versleuteling.
 
-9. Als de nieuwe virtuele machine nog steeds niet normaal kan worden opgestart, probeert u een van de volgende stappen nadat u het station hebt ontgrendeld:
+9. Als de nieuwe virtuele machine nog steeds niet normaal kan worden opgestart, voert u een van de volgende stappen uit nadat u het station hebt ontgrendeld:
 
-    - De beveiliging onderbreken om BitLocker TIJDELIJK uit te schakelen door het volgende uit te voeren:
+    - Stop de beveiliging om BitLocker tijdelijk uit te scha kelen door het volgende uit te voeren:
 
                     manage-bde -protectors -disable F: -rc 0
            
-    - Volledig ontsleutelen van de drive. Voer hiervoor de volgende opdracht uit:
+    - Het station volledig ontsleutelen. Voer hiervoor de volgende opdracht uit:
 
                     manage-bde -off F:
 
-### <a name="key-encryption-key-scenario"></a>Scenario sleutelversleutelingssleutel
+### <a name="key-encryption-key-scenario"></a>Key Encryption Key-scenario
 
-Voer de volgende stappen uit voor een sleutelversleutelingssleutelscenario:
+Voer de volgende stappen uit voor een Key Encryption Key-scenario:
 
-1. Zorg ervoor dat het ingelogde gebruikersaccount de machtiging 'uitgepakt' vereist heeft in het beleid voor key vault access in **de GEBRUIKER| Belangrijkste machtigingen| Cryptografische bewerkingen| Toets uitpakken**.
-2. Sla het volgende script op in een . PS1-bestand:
+1. Zorg ervoor dat voor het aangemelde gebruikers account de machtiging ' onverpakt ' is vereist in het Key Vault toegangs beleid in de **gebruiker | Sleutel machtigingen | Cryptografische bewerkingen | De sleutel voor uitpakken**.
+2. Sla het volgende script op in een. PS1-bestand:
 
     ```powershell
     #Set the Parameters for the script
@@ -232,7 +232,7 @@ Voer de volgende stappen uit voor een sleutelversleutelingssleutelscenario:
     $bekFileBytes = [System.Convert]::FromBase64String($base64Bek);
     [System.IO.File]::WriteAllBytes($bekFilePath,$bekFileBytes)
     ```
-3. Stel de parameters in. Het script verwerkt het KEK-geheim om de BEK-toets te maken en slaat deze vervolgens op in een lokale map op de herstelvm. Zie de sectie [Scriptprobleemoplossing](#script-troubleshooting) als u fouten ontvangt wanneer u het script uitvoert.
+3. Stel de para meters in. Het script verwerkt het KEK-geheim voor het maken van de BEK-sleutel en slaat deze vervolgens op in een lokale map op de virtuele machine voor herstel. Als er fouten optreden wanneer u het script uitvoert, raadpleegt u de sectie [script Troubleshooting](#script-troubleshooting) (Engelstalig).
 
 4. U ziet de volgende uitvoer wanneer het script begint:
 
@@ -248,45 +248,45 @@ Voer de volgende stappen uit voor een sleutelversleutelingssleutelscenario:
         VERBOSE: received 360-byte response of content type application/json; charset=utf-8
 
 
-5. Voer de volgende opdracht uit om de gekoppelde schijf te ontgrendelen met het BEK-bestand:
+5. Als u de gekoppelde schijf wilt ontgrendelen met behulp van het BEK-bestand, voert u de volgende opdracht uit:
 
     ```powershell
     manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK
     ```
-    In dit voorbeeld is de aangesloten OS-schijf station F. Zorg ervoor dat u de juiste stationsletter gebruikt. 
+    In dit voor beeld is de gekoppelde besturingssysteem schijf station F. Zorg ervoor dat u de juiste stationsletter gebruikt. 
 
-6. Nadat de schijf met succes is ontgrendeld met behulp van de BEK-toets, maakt u de schijf los van de herstel-vm en maakt u de VM opnieuw met behulp van deze nieuwe OS-schijf. 
+6. Nadat de schijf is ontgrendeld met behulp van de BEK-sleutel, ontkoppelt u de schijf van de virtuele machine voor herstel en maakt u de virtuele machine opnieuw met behulp van deze nieuwe besturingssysteem schijf. 
 
     > [!NOTE]
-    > Het verwisselen van OS Disk wordt niet ondersteund voor VM's met schijfversleuteling.
+    > Het wisselen van de besturingssysteem schijf wordt niet ondersteund voor Vm's die gebruikmaken van schijf versleuteling.
 
-7. Als de nieuwe virtuele machine nog steeds niet normaal kan worden opgestart, probeert u een van de volgende stappen nadat u het station hebt ontgrendeld:
+7. Als de nieuwe virtuele machine nog steeds niet normaal kan worden opgestart, voert u een van de volgende stappen uit nadat u het station hebt ontgrendeld:
 
-    - De beveiliging onderbreken om BitLocker TIJDELIJK uit te schakelen door de volgende opdracht uit te voeren:
+    - Stop de beveiliging om BitLocker tijdelijk uit te scha kelen door de volgende opdracht uit te voeren:
 
              manage-bde -protectors -disable F: -rc 0
            
-    - Volledig ontsleutelen van de drive. Voer hiervoor de volgende opdracht uit:
+    - Het station volledig ontsleutelen. Voer hiervoor de volgende opdracht uit:
 
                     manage-bde -off F:
-## <a name="script-troubleshooting"></a>Scriptprobleemoplossing
+## <a name="script-troubleshooting"></a>Script problemen oplossen
 
-**Fout: kan bestand of verzameling niet laden**
+**Fout: kan bestand of assembly niet laden**
 
-Deze fout treedt op omdat de paden van de ADAL-assemblages verkeerd zijn. Als de AZ-module alleen voor de huidige gebruiker is geïnstalleerd, bevinden de ADAL-assemblages zich in `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`.
+Deze fout treedt op omdat de paden van de ADAL-Assembly's onjuist zijn. Als de AZ-module alleen is geïnstalleerd voor de huidige gebruiker, zijn de ADAL-Assembly's te `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`vinden in.
 
-U ook `Az.Accounts` zoeken naar map om het juiste pad te vinden.
+U kunt ook zoeken naar `Az.Accounts` een map om het juiste pad te vinden.
 
 **Fout: Get-AzKeyVaultSecret of Get-AzKeyVaultSecret wordt niet herkend als de naam van een cmdlet**
 
-Als u de oude AZ PowerShell-module gebruikt, moet `Get-AzureKeyVaultSecret` `Get-AzureKeyVaultSecret`u de twee opdrachten wijzigen in en .
+Als u de oude AZ Power shell-module gebruikt, moet u de twee opdrachten wijzigen `Get-AzureKeyVaultSecret` in `Get-AzureKeyVaultSecret`en.
 
-**Parametersmonsters**
+**Voor beelden van para meters**
 
-| Parameters  | Voorbeeld van waarde  |Opmerkingen   |
+| Parameters  | Voor beeld van waarde  |Opmerkingen   |
 |---|---|---|
-|  $keyVaultName | myKeyVault212852926  | De naam van de sleutelkluis die de sleutel opslaat |
-|$kekName   |mykey mykey   | De naam van de sleutel die wordt gebruikt om de VM te versleutelen|
-|$secretName   |7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D  | De naam van het geheim van de VM-toets|
-|$bekFilePath   |c:\bek\7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D. BEK BEK |Het pad voor het schrijven van BEK-bestand.|
-|$adTenant  |contoso.onmicrosoft.com   | FQDN of GUID van uw Azure Active Directory die de sleutelkluis host |
+|  $keyVaultName | myKeyVault2112852926  | De naam van de sleutel kluis die de sleutel opslaat |
+|$kekName   |mykey   | De naam van de sleutel die wordt gebruikt om de virtuele machine te versleutelen|
+|$secretName   |7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D  | De naam van het geheim van de VM-sleutel|
+|$bekFilePath   |c:\bek\7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D. BEK |Het pad voor het schrijven van BEK-bestand.|
+|$adTenant  |contoso.onmicrosoft.com   | FQDN of GUID van uw Azure Active Directory die als host fungeert voor de sleutel kluis |

@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: een aangepaste spraakassistent maken - Spraakservice'
+title: 'Snelstartgids: een aangepaste spraak assistent maken-spraak service'
 titleSuffix: Azure Cognitive Services
-description: In dit artikel gebruikt u de Spraak-SDK om een aangepaste spraakassistent te maken.
+description: In dit artikel gebruikt u de Speech SDK om een aangepaste spraak assistent te maken.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: travisw
 zone_pivot_groups: programming-languages-set-fourteen
 ms.openlocfilehash: 4e0cf7a977e0369e6bae4a44fcb22563226a3501
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241204"
 ---
-# <a name="quickstart-create-a-custom-voice-assistant"></a>Snelstart: een aangepaste spraakassistent maken
+# <a name="quickstart-create-a-custom-voice-assistant"></a>Snelstartgids: een aangepaste spraak assistent maken
 
 [!INCLUDE [Header](../includes/quickstarts/voice-assistants/header.md)]
 

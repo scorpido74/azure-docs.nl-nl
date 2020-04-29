@@ -1,37 +1,37 @@
 ---
-title: Linux VM-afbeeldingen selecteren met de Azure CLI
-description: Meer informatie over het gebruik van de Azure CLI om de uitgever, aanbieding, SKU en versie voor Marketplace VM-afbeeldingen te bepalen.
+title: Linux VM-installatie kopieën selecteren met Azure CLI
+description: Meer informatie over het gebruik van de Azure CLI om de uitgever, aanbieding, SKU en versie te bepalen voor VM-installatie kopieën van Marketplace.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 0026c70a3a1a6b5e635e6b43e74b557d4218e6d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250307"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Linux-VM-installatiekopieën zoeken in de Azure Marketplace met de Azure CLI
 
-In dit onderwerp wordt beschreven hoe u de Azure CLI gebruiken om VM-afbeeldingen in de Azure Marketplace te vinden. Gebruik deze informatie om een Marketplace-afbeelding op te geven wanneer u een VM programmatisch maakt met de CLI-, Resource Manager-sjablonen of andere hulpprogramma's.
+In dit onderwerp wordt beschreven hoe u de Azure CLI gebruikt om VM-installatie kopieën te vinden in de Azure Marketplace. Gebruik deze informatie om een Marketplace-installatie kopie op te geven wanneer u via een programma een virtuele machine maakt met de CLI, Resource Manager-sjablonen of andere hulpprogram ma's.
 
-Blader ook door beschikbare afbeeldingen en aanbiedingen met de [Azure Marketplace](https://azuremarketplace.microsoft.com/) storefront, de [Azure-portal](https://portal.azure.com)of [Azure PowerShell.](../windows/cli-ps-findimage.md) 
+Blader ook naar beschik bare installatie kopieën en aanbiedingen met behulp van de [Azure Marketplace](https://azuremarketplace.microsoft.com/) -winkel, de [Azure Portal](https://portal.azure.com)of [Azure PowerShell](../windows/cli-ps-findimage.md). 
 
-Zorg ervoor dat u de nieuwste [Azure CLI hebt](/cli/azure/install-azure-cli) `az login`geïnstalleerd en bent aangemeld bij een Azure-account ( ).
+Zorg ervoor dat u de nieuwste [Azure cli](/cli/azure/install-azure-cli) hebt geïnstalleerd en bent aangemeld bij een Azure-account`az login`().
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
-## <a name="list-popular-images"></a>Populaire afbeeldingen weergeven
+## <a name="list-popular-images"></a>Populaire installatie kopieën weer geven
 
-Voer de opdracht [az vm-afbeeldingslijst](/cli/azure/vm/image) uit, zonder de `--all` optie, om een lijst met populaire VM-afbeeldingen in de Azure Marketplace weer te geven. Voer bijvoorbeeld de volgende opdracht uit om een lijst met populaire afbeeldingen in tabelindeling weer te geven:
+Voer de opdracht [AZ VM Image List](/cli/azure/vm/image) uit zonder de `--all` optie om een lijst met populaire VM-installatie kopieën in azure Marketplace weer te geven. Voer bijvoorbeeld de volgende opdracht uit om een lijst met populaire afbeeldingen in de cache weer te geven in tabel indeling:
 
 ```azurecli
 az vm image list --output table
 ```
 
-De uitvoer omvat de afbeelding URN (de waarde in de kolom *Urn).* Bij het maken van een VM met een van deze populaire Marketplace-afbeeldingen u ook de *UrnAlias*opgeven, een verkorte vorm zoals *UbuntuLTS.*
+De uitvoer bevat de afbeelding URN (de waarde in de kolom *urn* ). Bij het maken van een virtuele machine met een van deze populaire Marketplace-installatie kopieën kunt u ook de *UrnAlias*opgeven, een Inge kort formulier, zoals *UbuntuLTS*.
 
 ```
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
@@ -49,9 +49,9 @@ UbuntuServer   Canonical               16.04-LTS           Canonical:UbuntuServe
 
 ## <a name="find-specific-images"></a>Specifieke installatiekopieën zoeken
 
-Als u een specifieke VM-afbeelding `az vm image list` in de `--all` Marketplace wilt vinden, gebruikt u de opdracht met de optie. Deze versie van de opdracht neemt enige tijd in beslag en kan `--publisher` langdurige uitvoer retourneren, zodat u de lijst meestal filtert op of een andere parameter. 
+Als u een specifieke VM-installatie kopie in Marketplace wilt zoeken `az vm image list` , gebruikt u `--all` de opdracht met de optie. Het duurt enige tijd voordat deze versie van de opdracht is voltooid en kan een langdurige uitvoer retour neren, dus u kunt de `--publisher` lijst doorgaans filteren op of een andere para meter. 
 
-Met de volgende opdracht worden bijvoorbeeld alle Debian-aanbiedingen weergegeven (vergeet niet dat er zonder de `--all` switch alleen de lokale cache van veelvoorkomende afbeeldingen wordt doorzocht):
+Met de volgende opdracht worden bijvoorbeeld alle Debian-aanbiedingen weer gegeven (Houd er `--all` rekening mee dat zonder de switch alleen de lokale cache van algemene installatie kopieën wordt doorzocht):
 
 ```azurecli
 az vm image list --offer Debian --all --output table 
@@ -98,11 +98,11 @@ Debian             credativ     8                    credativ:Debian:8:8.0.20190
 ...
 ```
 
-Vergelijkbare filters toepassen `--location` `--publisher`met `--sku` de opties , en opties. U gedeeltelijke overeenkomsten uitvoeren op een `--offer Deb` filter, zoals zoeken naar alle Debian-afbeeldingen.
+Gelijksoortige filters toep assen `--location`met `--publisher`de opties `--sku` , en. U kunt gedeeltelijke overeenkomsten op een filter uitvoeren, bijvoorbeeld `--offer Deb` om te zoeken naar alle Debian-installatie kopieën.
 
-Als u met de `--location` optie geen bepaalde locatie opgeeft, worden de waarden voor de standaardlocatie geretourneerd. (Stel een andere standaardlocatie in door .) `az configure --defaults location=<location>`
+Als u geen specifieke locatie met de `--location` optie opgeeft, worden de waarden voor de standaard locatie geretourneerd. (Stel een andere standaard locatie in door `az configure --defaults location=<location>`uit te voeren.)
 
-In de volgende opdracht worden bijvoorbeeld alle Debian 8 SKU's op de locatie West-Europa weergegeven:
+Met de volgende opdracht wordt bijvoorbeeld een lijst weer gegeven met alle Debian 8 Sku's op de locatie Europa-west:
 
 ```azurecli
 az vm image list --location westeurope --offer Deb --publisher credativ --sku 8 --all --output table
@@ -142,15 +142,15 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201901221        
 
 ## <a name="navigate-the-images"></a>Navigeren door de afbeeldingen
  
-Een andere manier om een afbeelding op een locatie te vinden, is door de az [vm-lijst-uitgevers](/cli/azure/vm/image), [az vm-lijstaanbiedingen](/cli/azure/vm/image)en de az [vm-lijst-skus-opdrachten](/cli/azure/vm/image) achter elkaar uit te voeren. Met deze opdrachten bepaalt u de volgende waarden:
+Een andere manier om een installatie kopie te vinden op een locatie is het uitvoeren van de [AZ VM Image List-Publishers](/cli/azure/vm/image), [AZ VM Image List-aanbiedingen](/cli/azure/vm/image)en [AZ VM Image List-sku's-](/cli/azure/vm/image) opdrachten in volg orde. Met deze opdrachten bepaalt u deze waarden:
 
 1. Geef de uitgevers van installatiekopieën weer.
 2. Geef de aanbiedingen voor een bepaalde uitgever weer.
 3. Geef de SKU's voor een bepaalde aanbieding weer.
 
-Vervolgens u voor een geselecteerde SKU een te implementeren versie kiezen.
+Voor een geselecteerde SKU kunt u vervolgens een versie kiezen die u wilt implementeren.
 
-In de volgende opdracht worden bijvoorbeeld de afbeeldingsuitgevers op de locatie West-VS weergegeven:
+De volgende opdracht geeft bijvoorbeeld een lijst van de uitgevers van installatie kopieën op de locatie vs-West:
 
 ```azurecli
 az vm image list-publishers --location westus --output table
@@ -186,7 +186,7 @@ westus      akumina
 ...
 ```
 
-Gebruik deze informatie om aanbiedingen van een specifieke uitgever te vinden. Voor de *Canonical-uitgever* in de West-Amerikaanse locatie `azure vm image list-offers`vindt u bijvoorbeeld aanbiedingen door het uitvoeren van . Geef de locatie en de uitgever door zoals in het volgende voorbeeld:
+Gebruik deze informatie om aanbiedingen van een specifieke uitgever te vinden. Bijvoorbeeld, voor de *canonieke* uitgever op de locatie vs-West, zoek aanbiedingen door uit `azure vm image list-offers`te voeren. Geef de locatie en de uitgever op, zoals in het volgende voor beeld:
 
 ```azurecli
 az vm image list-offers --location westus --publisher Canonical --output table
@@ -203,7 +203,7 @@ westus      UbunturollingSnappy
 westus      UbuntuServer
 westus      Ubuntu_Core
 ```
-U ziet dat Canonical in de regio West-VS de *UbuntuServer-aanbieding* op Azure publiceert. Maar welke SKU's? Als u deze `azure vm image list-skus` waarden wilt ontvangen, voert u de locatie, uitgever en aanbieding in die u hebt ontdekt:
+U ziet dat in de regio vs-West, canonieke de *UbuntuServer* -aanbieding op Azure publiceert. Maar welke SKU's? Als u deze waarden wilt ophalen `azure vm image list-skus` , moet u de locatie, uitgever en aanbieding die u hebt gedetecteerd, uitvoeren en instellen:
 
 ```azurecli
 az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer --output table
@@ -234,7 +234,7 @@ westus      18.10-DAILY
 westus      19.04-DAILY
 ```
 
-Gebruik ten `az vm image list` slotte de opdracht om een specifieke versie van de SKU te vinden die u wilt, bijvoorbeeld *18.04-LTS:*
+Gebruik tot slot de `az vm image list` opdracht om een specifieke versie te vinden van de SKU die u wilt gebruiken, bijvoorbeeld *18,04-LTS*:
 
 ```azurecli
 az vm image list --location westus --publisher Canonical --offer UbuntuServer --sku 18.04-LTS --all --output table
@@ -268,17 +268,17 @@ UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201
 ...
 ```
 
-Nu u precies de afbeelding kiezen die u wilt gebruiken door nota te nemen van de URN-waarde. Geef deze waarde `--image` door aan de parameter wanneer u een VM maakt met de opdracht [AZ VM Create.](/cli/azure/vm) Vergeet niet dat u het versienummer in de URN optioneel vervangen door laatste. Deze versie is altijd de nieuwste versie van de afbeelding. 
+U kunt nu precies de installatie kopie kiezen die u wilt gebruiken door rekening te houden met de URN-waarde. Geef deze waarde door aan `--image` de para meter bij het maken van een virtuele machine met de opdracht [AZ VM Create](/cli/azure/vm) . Houd er rekening mee dat u het versie nummer in de URN kunt vervangen door "nieuwste". Deze versie is altijd de nieuwste versie van de installatie kopie. 
 
-Als u een VM implementeert met een resourcemanagersjabloon, `imageReference` stelt u de afbeeldingsparameters afzonderlijk in in de eigenschappen. Zie de [sjabloonverwijzing](/azure/templates/microsoft.compute/virtualmachines).
+Als u een virtuele machine implementeert met een resource manager-sjabloon, stelt u de installatie kopie `imageReference` parameters afzonderlijk in de eigenschappen in. Zie de [sjabloonverwijzing](/azure/templates/microsoft.compute/virtualmachines).
 
 [!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 
-### <a name="view-plan-properties"></a>Eigenschappen van plan weergeven
+### <a name="view-plan-properties"></a>Plan eigenschappen weer geven
 
-Voer de opdracht az vm image [show](/cli/azure/image) uit om de aankoopplangegevens van een afbeelding weer te geven. Als `plan` de eigenschap in `null`de uitvoer niet is, heeft de afbeelding termen die u moet accepteren voordat de programmatische implementatie wordt uitgevoerd.
+Als u de gegevens van het aankoop plan van een afbeelding wilt weer geven, voert u de opdracht [AZ VM Image Show](/cli/azure/image) uit. Als de `plan` eigenschap in de uitvoer niet `null`is, heeft de installatie kopie de voor waarden die u moet accepteren voordat u een programmatische implementatie uitvoert.
 
-De Canonical Ubuntu Server 18.04 LTS-afbeelding heeft bijvoorbeeld geen `plan` aanvullende `null`voorwaarden, omdat de informatie:
+De canonieke Ubuntu Server 18,04 LTS-installatie kopie heeft bijvoorbeeld geen aanvullende voor waarden, omdat `plan` de gegevens `null`er als volgt uitziet:
 
 ```azurecli
 az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
@@ -300,7 +300,7 @@ Uitvoer:
 }
 ```
 
-Als u een vergelijkbare opdracht uitvoert voor de afbeelding `plan` RabbitMQ `product`Certified `publisher`by Bitnami, worden de volgende eigenschappen weergegeven: `name`, , en . (Sommige afbeeldingen hebben `promotion code` ook een eigenschap.) Als u deze afbeelding wilt implementeren, raadpleegt u de volgende secties om de voorwaarden te accepteren en programmatische implementatie in te schakelen.
+Als u een vergelijk bare opdracht uitvoert voor de RabbitMQ die door de BitNami `plan` -installatie `name`kopie `product`wordt gecertificeerd `publisher`, worden de volgende eigenschappen weer gegeven:, en. (Sommige installatie kopieën hebben ook `promotion code` een eigenschap.) Raadpleeg de volgende secties om de voor waarden te accepteren en de programmatische implementatie in te scha kelen om deze installatie kopie te implementeren.
 
 ```azurecli
 az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
@@ -327,13 +327,13 @@ Uitvoer:
 
 ### <a name="accept-the-terms"></a>De gebruiksvoorwaarden accepteren
 
-Gebruik de opdracht accepteren van az [vm-afbeeldingen](/cli/azure/vm/image?) om de licentievoorwaarden te bekijken en te accepteren. Wanneer u de voorwaarden accepteert, schakelt u programmatische implementatie in uw abonnement in. U hoeft slechts één keer per abonnement voor de afbeelding voorwaarden te accepteren. Bijvoorbeeld:
+Als u de licentie voorwaarden wilt weer geven en accepteren, gebruikt u de opdracht [AZ VM image Accept-Terms](/cli/azure/vm/image?) . Wanneer u de voor waarden accepteert, schakelt u programmatische implementatie in voor uw abonnement. U hoeft slechts één keer per abonnement voor de installatie kopie te accepteren. Bijvoorbeeld:
 
 ```azurecli
 az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
 ``` 
 
-De uitvoer `licenseTextLink` omvat a aan de licentievoorwaarden, `accepted` `true`en geeft aan dat de waarde van is:
+De uitvoer bevat een `licenseTextLink` aan de licentie voorwaarden en geeft aan dat de waarde van `accepted` is `true`:
 
 ```
 {
@@ -352,9 +352,9 @@ De uitvoer `licenseTextLink` omvat a aan de licentievoorwaarden, `accepted` `tru
 }
 ```
 
-### <a name="deploy-using-purchase-plan-parameters"></a>Implementeren met behulp van parameters van het aankoopplan
+### <a name="deploy-using-purchase-plan-parameters"></a>Implementeren met behulp van Purchase Plan-para meters
 
-Nadat u de voorwaarden voor de afbeelding hebt geaccepteerd, u een virtuele machine in het abonnement implementeren. Als u de afbeelding `az vm create` wilt implementeren met behulp van de opdracht, geeft u naast een URN voor de afbeelding ook parameters voor het aankoopplan op. Bijvoorbeeld om een VM te implementeren met de RabbitMQ Certified by Bitnami-afbeelding:
+Nadat u de voor waarden voor de installatie kopie hebt geaccepteerd, kunt u een virtuele machine in het abonnement implementeren. Als u de installatie kopie wilt implementeren `az vm create` met behulp van de opdracht, geeft u para meters voor het inkoop plan op naast een URN voor de installatie kopie. Als u bijvoorbeeld een virtuele machine wilt implementeren met de installatie kopie RabbitMQ gecertificeerd door BitNami:
 
 ```azurecli
 az group create --name myResourceGroupVM --location westus
@@ -363,4 +363,4 @@ az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabb
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie Linux VM's maken en beheren met de Azure CLI als u snel een virtuele machine wilt maken door de [afbeeldingsgegevens te gebruiken.](tutorial-manage-vm.md)
+Zie [Linux Vm's maken en beheren met de Azure cli](tutorial-manage-vm.md)om snel een virtuele machine te maken met behulp van de installatie kopie-informatie.

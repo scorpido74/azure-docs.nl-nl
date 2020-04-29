@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: stel zoekopdrachten voor met de Bing Autosuggest REST API en Java'
+title: "Quick Start: Zoek query's Voorst Ellen met de Bing Automatische suggesties REST API en Java"
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over hoe u snel beginnen met het voorstellen van zoektermen in realtime met de Bing Autosuggest API.
+description: Meer informatie over hoe u snel aan de slag kunt met de Automatische suggestie-API voor Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
 ms.openlocfilehash: b3f279ea50e9923e63f7d6090f4dbaca939eb16c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80238971"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Snelstart: stel zoekopdrachten voor met de Bing Autosuggest REST API en Java
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Quick Start: Zoek query's Voorst Ellen met de Bing Automatische suggesties REST API en Java
 
 
-Gebruik deze snelstart om te beginnen met het aanbellen naar de Bing Autosuggest API en het krijgen van de JSON-reactie. Deze eenvoudige Java-toepassing stuurt een gedeeltelijke zoekopdracht naar de API en retourneert suggesties voor zoekopdrachten. Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode van dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java)
+Gebruik deze Quick Start om te beginnen met het aanroepen van de Automatische suggestie-API voor Bing en het verkrijgen van het JSON-antwoord. Met deze eenvoudige Java-toepassing wordt een gedeeltelijke Zoek query naar de API verzonden en worden suggesties voor Zoek opdrachten geretourneerd. Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -44,7 +44,7 @@ Gebruik deze snelstart om te beginnen met het aanbellen naar de Bing Autosuggest
     import com.google.gson.JsonParser;
     ```
 
-2. Maak variabelen voor uw abonnementssleutel, de API-host en -pad, uw [marktcode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)en een zoekopdracht. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
+2. Maak variabelen voor uw abonnements sleutel, de API-host en het pad, uw [markt code](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)en een zoek query. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
     
     ```java
     static String subscriptionKey = "enter key here";
@@ -71,9 +71,9 @@ public static String prettify(String json_text) {
 
 ## <a name="construct-and-send-the-search-request"></a>De zoekaanvraag samenstellen en verzenden
 
-1. Maak een nieuwe `get_suggestions()` methode met de naam en voer de volgende stappen uit:
+1. Maak een nieuwe methode met `get_suggestions()` de naam en voer de volgende stappen uit:
 
-   1. construeer de URL voor uw aanvraag door de API-host en het pad te combineren en uw zoekquery te coderen. Zorg ervoor dat u de query url-codeert voordat u deze toeschrijft. Maak een parameterstekenreeks voor uw query door `mkt=` de marktcode toe `q=` te passen aan de parameter en uw query aan de parameter.
+   1. construeer de URL voor uw aanvraag door de API-host en het pad te combineren en uw zoekquery te coderen. Zorg ervoor dat u de URL van de query versleutelt voordat u deze toevoegt. Maak een teken reeks voor de para meters voor uw query door de markt `mkt=` code toe te voegen aan de `q=` para meter en uw query naar de para meter.
     
       ```java
   
@@ -84,7 +84,7 @@ public static String prettify(String json_text) {
       }
       ```
     
-   2. Maak een nieuwe URL voor de aanvraag met de API-host, het pad en de parameters die hierboven zijn gemaakt. 
+   2. Maak een nieuwe URL voor de aanvraag met de API-host, het pad en de para meters die hierboven zijn gemaakt. 
     
        ```java
        //...
@@ -92,7 +92,7 @@ public static String prettify(String json_text) {
        //...
        ```
     
-   3. Maak `HttpsURLConnection` een object `openConnection()` en gebruik om een verbinding te maken. Stel de aanvraagmethode in op `GET` en voeg uw abonnementssleutel toe aan de `Ocp-Apim-Subscription-Key`-header.
+   3. Een `HttpsURLConnection` -object maken en gebruiken `openConnection()` om een verbinding te maken. Stel de aanvraagmethode in op `GET` en voeg uw abonnementssleutel toe aan de `Ocp-Apim-Subscription-Key`-header.
 
       ```java
        //...
@@ -103,7 +103,7 @@ public static String prettify(String json_text) {
        //...
       ```
 
-   4. Lees in de API-reactie op een `StringBuilder`. Nadat het antwoord is vastgelegd, sluit u de `InputStreamReader` stream en retourneert u het antwoord.
+   4. Lees in de API-reactie op `StringBuilder`een. Nadat het antwoord is vastgelegd, sluit u de `InputStreamReader` stroom en retourneert u het antwoord.
 
        ```java
        //...
@@ -119,7 +119,7 @@ public static String prettify(String json_text) {
        return response.toString();
        ```
 
-2. Roep in de hoofdfunctie `get_suggestions()`van uw toepassing `prettify()`en print het antwoord met behulp van .
+2. In de hoofd functie van uw toepassing roept `get_suggestions()`u het antwoord op en drukt u `prettify()`het af met.
     
     ```java
     public static void main(String[] args) {
@@ -204,7 +204,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app voor één pagina maken](../tutorials/autosuggest.md)
+> [Een web-app met één pagina maken](../tutorials/autosuggest.md)
 
 - [Wat is Bing Automatische suggesties?](../get-suggested-search-terms.md)
 - [Naslaghandleiding Bing Automatische suggesties-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

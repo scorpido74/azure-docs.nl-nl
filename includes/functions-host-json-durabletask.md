@@ -8,15 +8,15 @@ ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 6bb59db4c1b31033b1e116742dedc94621b1c60d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80117020"
 ---
-Configuratie-instellingen voor [duurzame functies](../articles/azure-functions/durable-functions-overview.md).
+Configuratie-instellingen voor [Durable functions](../articles/azure-functions/durable-functions-overview.md).
 
-### <a name="durable-functions-1x"></a>Duurzame functies 1,x
+### <a name="durable-functions-1x"></a>Durable Functions 1. x
 
 ```json
 {
@@ -43,7 +43,7 @@ Configuratie-instellingen voor [duurzame functies](../articles/azure-functions/d
 }
 ```
 
-### <a name="durable-functions-2x"></a><a name="durable-functions-2-0-host-json"></a>Duurzame functies 2.x
+### <a name="durable-functions-2x"></a><a name="durable-functions-2-0-host-json"></a>Durable Functions 2. x
 
 ```json
 {
@@ -90,29 +90,29 @@ Configuratie-instellingen voor [duurzame functies](../articles/azure-functions/d
 
 ```
 
-Namen van taakhubs moeten beginnen met een letter en bestaan alleen uit letters en cijfers. Als dit niet is opgegeven, is de standaardtaakhubnaam voor een functie-app **DurableFunctionsHub.** Zie [Taakhubs voor](../articles/azure-functions/durable-functions-task-hubs.md)meer informatie.
+Namen van taak hubs moeten beginnen met een letter en mogen alleen letters en cijfers bevatten. Als deze niet wordt opgegeven, is de standaard naam van de taak-hub voor een functie-app **DurableFunctionsHub**. Zie [taak hubs](../articles/azure-functions/durable-functions-task-hubs.md)voor meer informatie.
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
-|hubNaam|Duurzame FunctionsHub|Alternatieve [taakhubnamen](../articles/azure-functions/durable-functions-task-hubs.md) kunnen worden gebruikt om meerdere toepassingen voor duurzame functies van elkaar te isoleren, zelfs als ze dezelfde back-end voor opslag gebruiken.|
-|controlQueueBatchSize|32|Het aantal berichten dat tegelijk uit de besturingselementwachtrij moet worden opgehaald.|
-|controlQueueBufferThreshold|256|Het aantal controlewachtrijberichten dat tegelijkertijd in het geheugen kan worden gebufferd, waarna de dispatcher wacht voordat de extra berichten worden gedequeuerd.|
-|partitionCount |4|Het aantal partities voor de besturingselementwachtrij. Kan een positief geheel getal tussen 1 en 16 zijn.|
-|controlQueueVisibilityTimeout |5 minuten|De time-out van de zichtbaarheid van de wachtrijberichten in de wachtrij in de wachtrij.|
-|workItemQueueVisibilityTimeout |5 minuten|De time-out van de wachtrijberichten voor werkitems in de wachtrij.|
-|maxConcurrentActiviteitsfuncties |10x het aantal processors op de huidige machine|Het maximum aantal activiteitsfuncties dat gelijktijdig kan worden verwerkt op één hostexemplaar.|
-|maxConcurrentOrchestratorFuncties |10x het aantal processors op de huidige machine|Het maximum aantal orchestrator-functies dat gelijktijdig kan worden verwerkt op één hostinstantie.|
-|maxQueuePollingInterval|30 seconden|Het maximale controle- en werkitemwachtrijpolling-interval in de *indeling hh:mm:ss.* Hogere waarden kunnen leiden tot hogere latencies voor het verwerken van berichten. Lagere waarden kunnen leiden tot hogere opslagkosten als gevolg van hogere opslagtransacties.|
-|azureStorageConnectionStringName |AzureWebJobsStorage|De naam van de app-instelling met de tekenreeks Azure Storage-verbinding die wordt gebruikt om de onderliggende Azure Storage-resources te beheren.|
-|trackingStoreConnectionStringName||De naam van een verbindingstekenreeks die u wilt gebruiken voor de tabellen Geschiedenis en Instanties. Als dit niet `azureStorageConnectionStringName` is opgegeven, wordt de verbinding gebruikt.|
-|trackingStoreNamePrefix||Het voorvoegsel dat moet worden `trackingStoreConnectionStringName` gebruikt voor de tabellen Geschiedenis en Instanties wanneer dit is opgegeven. Als dit niet is ingesteld, `DurableTask`is de standaardvoorvoegwaarde . Als `trackingStoreConnectionStringName` dit niet is opgegeven, gebruiken de `hubName` tabellen Geschiedenis en Instanties de `trackingStoreNamePrefix` waarde als voorvoegsel en worden elke instelling voor genegeerd.|
-|traceInputsAndOutputs |false|Een waarde die aangeeft of de ingangen en uitvoer van functieaanroepen moeten worden getraceerd. Het standaardgedrag bij het traceren van functieuitvoeringsgebeurtenissen is het opnemen van het aantal bytes in de geserialiseerde ingangen en uitvoer voor functieaanroepen. Dit gedrag biedt minimale informatie over hoe de ingangen en uitgangen eruit zien zonder de logboeken op te zwellen of per ongeluk gevoelige informatie bloot te stellen. Als u deze eigenschap op true instelt, wordt de standaardfunctielogboekregistratie de volledige inhoud van functie-ingangen en uitvoerlogboeken.|
-|logReplayEvents logReplayEvents logReplayEvents logReplay|false|Een waarde die aangeeft of orchestration replay-gebeurtenissen moeten worden geschreven naar Application Insights.|
-|eventGridTopicEndpoint ||De URL van een aangepast eindpunt van een aangepast onderwerp van Azure Event Grid. Wanneer deze eigenschap is ingesteld, worden meldingen van de levenscyclus van orkestratie gepubliceerd naar dit eindpunt. Deze eigenschap ondersteunt de resolutie App-instellingen.|
-|eventGridKeySettingName ||De naam van de app-instelling met de sleutel die wordt gebruikt `EventGridTopicEndpoint`voor het verifiëren met het aangepaste azure-gebeurtenisrasteronderwerp op .|
-|eventGridPublishRetryCount|0|Het aantal keren dat u opnieuw moet proberen als publiceren in het gebeurtenisrasteronderwerp mislukt.|
-|eventGridPublishRetryInterval|5 minuten|Het gebeurtenisraster publiceert het interval voor nieuwe try's in de indeling *hh:mm:ss.*|
-|eventGridPublishEventTypes||Een lijst met gebeurtenistypen die u wilt publiceren in Gebeurtenisraster. Als dit niet is opgegeven, worden alle gebeurtenistypen gepubliceerd. Toegestane waarden `Started`zijn `Completed` `Failed`, `Terminated`, , .|
-|gebruikGracefulShutdown|false|(Preview) Schakel het op een elegante manier afsluiten in om de kans te verkleinen dat de uitvoeringen van de host-uitschakelingen in het proces in het proces mislukken.|
+|hubName|DurableFunctionsHub|Alternatieve namen van [taak hubs](../articles/azure-functions/durable-functions-task-hubs.md) kunnen worden gebruikt om meerdere Durable functions toepassingen van elkaar te isoleren, zelfs als ze dezelfde opslag back-end gebruiken.|
+|controlQueueBatchSize|32|Het aantal berichten dat tegelijkertijd moet worden opgehaald uit de controle wachtrij.|
+|controlQueueBufferThreshold|256|Het aantal controle wachtrij berichten dat in het geheugen tegelijk kan worden gebufferd, op het moment dat de dispatcher wacht voordat extra berichten worden verwijderd.|
+|partitionCount |4|Het aantal partities voor de controle wachtrij. Dit kan een positief geheel getal zijn tussen 1 en 16.|
+|controlQueueVisibilityTimeout |5 minuten|De time-out voor de zicht baarheid van berichten in de wachtrij voor controle wachtrijen.|
+|workItemQueueVisibilityTimeout |5 minuten|De time-out van de zicht baarheid van berichten in de wachtrij voor werk items in de wachtrij.|
+|maxConcurrentActivityFunctions |10X het aantal processors op de huidige computer|Het maximum aantal activiteiten functies dat gelijktijdig kan worden verwerkt op één exemplaar van een host.|
+|maxConcurrentOrchestratorFunctions |10X het aantal processors op de huidige computer|Het maximum aantal Orchestrator-functies dat gelijktijdig kan worden verwerkt op één exemplaar van een host.|
+|maxQueuePollingInterval|30 seconden|Het maximale polling interval voor het beheer en de werk items in de indeling *uu: mm: SS* . Hogere waarden kunnen resulteren in hogere latenties voor bericht verwerking. Lagere waarden kunnen leiden tot hogere opslag kosten vanwege verhoogde opslag transacties.|
+|azureStorageConnectionStringName |AzureWebJobsStorage|De naam van de app-instelling met de Azure Storage connection string gebruikt voor het beheren van de onderliggende Azure Storage resources.|
+|trackingStoreConnectionStringName||De naam van een connection string die moet worden gebruikt voor de tabellen geschiedenis en exemplaren. Als u niets opgeeft, `azureStorageConnectionStringName` wordt de verbinding gebruikt.|
+|trackingStoreNamePrefix||Het voor voegsel dat moet worden gebruikt voor de tabellen geschiedenis `trackingStoreConnectionStringName` en instanties wanneer is opgegeven. Als deze niet is ingesteld, is de standaard waarde `DurableTask`voor het voor voegsel. Als `trackingStoreConnectionStringName` niet is opgegeven, gebruiken de tabellen geschiedenis en exemplaren de `hubName` waarde als voor voegsel en wordt een instelling voor `trackingStoreNamePrefix` genegeerd.|
+|traceInputsAndOutputs |false|Een waarde die aangeeft of de invoer en uitvoer van functie aanroepen moeten worden getraceerd. Het standaard gedrag bij het traceren van functie-uitvoerings gebeurtenissen omvat het aantal bytes in de geserialiseerde invoer en uitvoer voor functie aanroepen. Dit gedrag biedt minimale informatie over hoe de invoer en uitvoer eruitzien zonder de logboeken te vertonen of per ongeluk gevoelige informatie weer te geven. Als u deze eigenschap instelt op True, wordt de volledige inhoud van functie-invoer en-uitvoer in de standaard functie vastgelegd.|
+|logReplayEvents|false|Een waarde die aangeeft of het schrijven van Orchestrator replay-gebeurtenissen naar Application Insights.|
+|eventGridTopicEndpoint ||De URL van een Azure Event Grid aangepast onderwerp-eind punt. Wanneer deze eigenschap is ingesteld, worden meldings gebeurtenissen van de Orchestration-cyclus naar dit eind punt gepubliceerd. Deze eigenschap ondersteunt de resolutie van de app-instellingen.|
+|eventGridKeySettingName ||De naam van de app-instelling met de sleutel die wordt gebruikt voor de verificatie met het `EventGridTopicEndpoint`aangepaste onderwerp Azure Event Grid op.|
+|eventGridPublishRetryCount|0|Het aantal keren dat het opnieuw moet worden uitgevoerd als het publiceren naar het Event Grid-onderwerp mislukt.|
+|eventGridPublishRetryInterval|5 minuten|Het interval voor nieuwe pogingen Event Grid wordt gepubliceerd in de notatie *uu: mm: SS* .|
+|eventGridPublishEventTypes||Een lijst met gebeurtenis typen die moeten worden gepubliceerd naar Event Grid. Als u niets opgeeft, worden alle gebeurtenis typen gepubliceerd. Toegestane waarden zijn `Started`onder `Completed`andere `Failed`, `Terminated`,,.|
+|useGracefulShutdown|false|Evaluatie Schakel probleemloos afsluiten in om de kans op het afsluiten van de host te verminderen tijdens het uitvoeren van de uitvoering van de functie.|
 
-Veel van deze instellingen zijn voor het optimaliseren van de prestaties. Zie [Prestaties en schaal voor](../articles/azure-functions/durable-functions-perf-and-scale.md)meer informatie.
+Veel van deze instellingen zijn voor het optimaliseren van de prestaties. Zie [prestaties en schalen](../articles/azure-functions/durable-functions-perf-and-scale.md)voor meer informatie.

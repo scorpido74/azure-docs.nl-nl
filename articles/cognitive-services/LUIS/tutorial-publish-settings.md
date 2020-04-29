@@ -1,25 +1,25 @@
 ---
-title: 'Zelfstudie: Publicatie-instellingen - LUIS'
-description: Wijzig in deze zelfstudie de publicatie-instellingen om voorspellingen te verbeteren.
+title: 'Zelf studie: publicatie-instellingen-LUIS'
+description: In deze zelf studie wijzigt u de publicatie-instellingen voor het verbeteren van voor spellingen.
 ms.topic: tutorial
 ms.date: 04/01/2020
 ms.openlocfilehash: 19913d16ecb1457ad4edb93ea34e4b96a590aca0
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80545776"
 ---
-# <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>Zelfstudie: Sentimentanalyse toevoegen als publicatie-instelling
+# <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>Zelf studie: sentiment-analyse toevoegen als publicatie-instelling
 
-Wijzig in deze zelfstudie de publicatie-instellingen om sentimentanalyse te extraheren en vervolgens het LUIS-eindpunt op te vragen om het geretourneerde sentiment van een gebruikersutterance te zien.
+In deze zelf studie wijzigt u de publicatie-instellingen om sentiment analyse te extra heren en vervolgens voert u een query uit op het LUIS-eind punt om de geretourneerde sentiment van een gebruiker utterance te bekijken.
 
 **In deze zelfstudie leert u het volgende:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Sentimentanalyse toevoegen als publicatie-instelling
-> * Het sentiment van een utterance ophalen van het gepubliceerde eindpunt
+> * Sentiment-analyse als een publicatie-instelling toevoegen
+> * Sentiment van een utterance ophalen uit het gepubliceerde eind punt
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -29,16 +29,16 @@ De volgende utterances zijn voorbeelden van gevoelens:
 
 |Sentiment|Score|Utterance|
 |:--|:--|:--|
-|negatief|0,01 |De pizza was verschrikkelijk.|
-|positief|0.97 |De kaas pizza was geweldig.|
+|negatief|0,01 |De pizza is awful.|
+|positief|0,97 |De kaas pizza was geweldig.|
 
-Sentimentanalyse is een publicatie-instelling die voor elke uiting geldt. Eenmaal ingesteld, retourneert uw app het gevoel van een utterance zonder dat u gegevens hoeft te labelen.
+Sentimentanalyse is een publicatie-instelling die voor elke uiting geldt. Als uw app eenmaal is ingesteld, wordt de sentiment van een utterance geretourneerd zonder dat u gegevens hoeft te labelen.
 
-Omdat het een publicatie-instelling is, ziet u deze niet gelabeld op de intenties of entiteitenpagina's. De instelling is te zien in het deelvenster [Interactieve test](luis-interactive-test.md#view-sentiment-results) of bij het uitvoeren van tests bij de eindpunt-URL.
+Omdat het een publicatie-instelling is, ziet u deze niet op de pagina's doel items of entiteiten. De instelling is te zien in het deelvenster [Interactieve test](luis-interactive-test.md#view-sentiment-results) of bij het uitvoeren van tests bij de eindpunt-URL.
 
-## <a name="import-example-json-to-begin-app"></a>Voorbeeld .json importeren om app te starten
+## <a name="import-example-json-to-begin-app"></a>Voor beeld van import. json voor het starten van de app
 
-1.  Download en sla het [JSON-bestand van](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)de app op.
+1.  Down load en sla het [JSON-bestand](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)van de app op.
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -48,10 +48,10 @@ Omdat het een publicatie-instelling is, ziet u deze niet gelabeld op de intentie
 
 ## <a name="configure-app-to-include-sentiment-analysis"></a>App configureren voor gebruik van sentimentanalyse
 
-1. Selecteer **Publiceren** in het bovenste menu. Sentimentanalyse is een publicatie-instelling.
+1. Selecteer **publiceren** in het bovenste menu. Sentiment analyse is een publicatie-instelling.
 
-1. Selecteer **Productiesleuf** en selecteer **Instellingen wijzigen**.
-1. Stel de instelling Gevoelanalyse in **op Aan**.
+1. Selecteer **productie sleuf** en selecteer vervolgens **instellingen wijzigen**.
+1. Stel de Sentimentanalyse-instelling in **op aan**.
 
     ![Sentimentanalyse als publicatie-instelling inschakelen](./media/luis-quickstart-intent-and-sentiment-analysis/select-sentiment-publishing-setting.png)
 
@@ -59,7 +59,7 @@ Omdat het een publicatie-instelling is, ziet u deze niet gelabeld op de intentie
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Ga naar het einde van de URL in de adresbalk en vervang _YOUR_QUERY_HERE_ door:
+1. Ga naar het einde van de URL in de adres balk en vervang _YOUR_QUERY_HERE_ door:
 
     `Deliver 2 of the best cheese pizzas ever!!!`
 
@@ -112,7 +112,7 @@ Omdat het een publicatie-instelling is, ziet u deze niet gelabeld op de intentie
     }
     ```
 
-    De sentimentanalyse is positief met een score van 86%.
+    De sentiment-analyse is positief met een Score van 86%.
 
 [!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 

@@ -1,18 +1,18 @@
 ---
-title: 'Zelfstudie: Intenties voorspellen - LUIS'
+title: 'Zelf studie: bedoelingen voors pellen-Luis'
 description: In deze zelfstudie maakt u een aangepaste app waarmee de intentie van een gebruiker wordt voorspeld. Deze app is het eenvoudigste type LUIS-app omdat de app geen verschillende gegevenselementen uit de utterancetekst extraheert, zoals e-mailadressen of datums.
 ms.topic: tutorial
 ms.date: 03/24/2020
 ms.openlocfilehash: c58c96f717de77c065d7f844928714eb4fb3e4db
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80286741"
 ---
-# <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Zelfstudie: Een LUIS-app bouwen om de intenties van gebruikers te bepalen
+# <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Zelf studie: een LUIS-app bouwen om de bedoelingen van de gebruiker te bepalen
 
-In deze zelfstudie maakt u een aangepaste app die de intentie van een gebruiker voorspelt op basis van de utterance (tekst).
+In deze zelf studie maakt u een aangepaste app waarmee de bedoeling van een gebruiker wordt voor speld op basis van de utterance (text).
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -22,7 +22,7 @@ In deze zelfstudie maakt u een aangepaste app die de intentie van een gebruiker 
 > * Voorbeelden van utterances toevoegen
 > * App trainen
 > * App publiceren
-> * Intent-voorspelling ophalen vanaf eindpunt
+> * Intentie van het eind punt ophalen
 
 ## <a name="user-intentions-as-intents"></a>Gebruikersintenties als intents
 
@@ -34,10 +34,10 @@ Deze intenties worden onderverdeeld in **Intents**.
 
 |Intentie|Doel|
 |--|--|
-|`ModifyOrder`|Bepaal de pizzabestelling van de gebruiker.|
-|`Greeting`|Begin bot gesprek.|
-|`ConfirmOrder`|Bevestig pizza bestelling.|
-|`None`|Bepaal of de gebruiker iets vraagt waar de app niet op moet reageren. Deze intent is geleverd als onderdeel van het maken van de app en kan niet worden verwijderd. |
+|`ModifyOrder`|De pizza-volg orde van de gebruiker bepalen.|
+|`Greeting`|Begin met bot-gesprek.|
+|`ConfirmOrder`|Bevestig de pizza-volg orde.|
+|`None`|Bepaal of de gebruiker vraagt om iets dat de app niet moet reageren. Deze intent is geleverd als onderdeel van het maken van de app en kan niet worden verwijderd. |
 
 ## <a name="create-a-new-app"></a>Een nieuwe app maken
 
@@ -45,17 +45,17 @@ Deze intenties worden onderverdeeld in **Intents**.
 
 ## <a name="create-a-new-intent"></a>Een nieuwe intent maken
 
-Een intentie wordt gebruikt om uitingen van gebruikers te classificeren op basis van de intentie van de gebruiker, bepaald op basis van de tekst van de natuurlijke taal.
+Een intentie wordt gebruikt om gebruikers uitingen te classificeren op basis van de bedoeling van de gebruiker, bepaald uit de tekst in natuurlijke taal.
 
-Om een utterance te classificeren, heeft de intentie voorbeelden nodig van gebruikersuitingen die met deze intentie moeten worden geclassificeerd.
+Voor het classificeren van een utterance heeft de bedoeling een voor beeld van een gebruikers uitingen nodig dat met deze intentie moet worden geclassificeerd.
 
-1. Selecteer in de sectie **Bouwen** op de pagina **Intents** de optie **+ Maken** om een nieuwe intentie te maken. Voer de nieuwe `OrderPizza`intentienaam in en selecteer **Gereed**.
+1. Selecteer in de sectie **bouwen** op de pagina **intenties** **+ maken** om een nieuwe intentie te maken. Voer de naam van de nieuwe intentie `OrderPizza`in, en selecteer vervolgens **gereed**.
 
-    De `OrderPizza` intentie wordt voorspeld wanneer een gebruiker een pizza wil bestellen.
+    De `OrderPizza` intentie wordt voor speld wanneer een gebruiker een pizza wil best Ellen.
 
 1. Voeg verschillende voorbeelden van utterances toe aan deze intent waarnaar een gebruiker waarschijnlijk zal vragen:
 
-    |`OrderPizza`voorbeelduitingen|
+    |`OrderPizza`voor beeld uitingen|
     |--|
     |`can i get a pepperoni pizza and a can of coke please`|
     |`can i get a small pizza with onions peppers and olives`|
@@ -66,15 +66,15 @@ Om een utterance te classificeren, heeft de intentie voorbeelden nodig van gebru
 
     ![Voorbeelden van utterances toevoegen](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    Door _voorbeelduitingen aan_te bieden, leert u LUIS over welke soorten uitingen voor deze intentie moeten worden voorspeld.
+    Door _bijvoorbeeld uitingen_te bieden, traint u Luis over welke soorten uitingen voor dit doel moeten worden voor speld.
 
     [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 
 ## <a name="create-remaining-intents"></a>Resterende intenties maken
 
-1. Maak `Greeting` de intentie en voeg de volgende voorbeelduitingen toe. Dit is de bedoeling om te bepalen of een gebruiker een nieuw gesprek met pizzabestellingen begint.
+1. Maak de `Greeting` intentie en voeg het volgende voor beeld uitingen toe. Dit is het doel om te bepalen of een gebruiker een nieuw pizza-order gesprek start.
 
-    |`Greeting`voorbeelduitingen|
+    |`Greeting`voor beeld uitingen|
     |--|
     |`Hi`|
     |`Hello`|
@@ -82,9 +82,9 @@ Om een utterance te classificeren, heeft de intentie voorbeelden nodig van gebru
     |`Start`|
     |`Begin`|
 
-1. Maak `Confirm` de intentie en voeg de volgende voorbeelduitingen toe. Dit is de bedoeling om te bepalen of een gebruiker klaar is met bestellen en accepteert de ordergegevens.
+1. Maak de `Confirm` intentie en voeg het volgende voor beeld uitingen toe. Dit is de bedoeling om te bepalen of een gebruiker klaar is met het best Ellen en de order gegevens accepteert.
 
-    |`Confirm`voorbeelduitingen|
+    |`Confirm`voor beeld uitingen|
     |--|
     |`Go ahead`|
     |`ok`|
@@ -92,7 +92,7 @@ Om een utterance te classificeren, heeft de intentie voorbeelden nodig van gebru
     |`Sure`|
 
 
-## <a name="none-intent-example-utterances"></a>None
+## <a name="none-intent-example-utterances"></a>Voor beeld van geen intentie-uitingen
 
 [!INCLUDE [Follow these steps to add the None intent to the app](includes/add-example-utterances-none-intent.md)]
 
@@ -104,15 +104,15 @@ Om een utterance te classificeren, heeft de intentie voorbeelden nodig van gebru
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
-## <a name="get-intent-prediction"></a>Intent-voorspelling krijgen
+## <a name="get-intent-prediction"></a>Voor spelling van intentie ophalen
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Ga naar het einde van de URL in de adresbalk en voer het:
+1. Ga naar het einde van de URL in de adres balk en voer het volgende in:
 
     `get a medium vegetarian pizza for delivery`
 
-    Dit is niet precies hetzelfde als een voorbeeld uiting, dus het is een goede test om te zien of LUIS kan leren wat moet worden voorspeld met deze bedoeling.
+    Dit is niet precies hetzelfde als een voor beeld van een utterance, dus het is een goede test om te controleren of LUIS kan ontdekken wat er moet worden voor speld met dit doel.
 
     De laatste parameter van de queryreeks is `query`, de utterance**query**. Deze utterance is niet hetzelfde als een van de voorbeeldutterances. Dit is een goede test die de `OrderPizza`-intent als de best scorende intent moet retourneren.
 
@@ -140,15 +140,15 @@ Om een utterance te classificeren, heeft de intentie voorbeelden nodig van gebru
     }
     ```
 
-    De array entiteiten is leeg omdat deze app momenteel geen entiteiten heeft (eenheid gegevens in de uiting om te extraheren).
+    De matrix entities is leeg, omdat deze app momenteel geen entiteiten heeft (de gegevens eenheid in het utterance dat moet worden opgehaald).
 
-    Het JSON-resultaat identificeert de **`prediction.topIntent`** intentie van de hoogste score als eigenschap. Alle scores liggen tussen 1 en 0, waarbij de betere score dichter bij 1 komt.
+    Het JSON-resultaat identificeert de bovenste Score intentie **`prediction.topIntent`** als eigenschap. Alle scores liggen tussen 1 en 0, waarbij de betere score dichter bij 1 liggen.
 
-1. Wijzig de parameter **URL-query** om de intentie begroeting te **targeten:**
+1. Wijzig de URL- **query** parameter in de **begroetings** intentie:
 
     `Howdy`
 
-    Dit is niet precies hetzelfde als een voorbeeld uiting, dus het is een goede test om te zien of LUIS kan leren wat moet worden voorspeld met deze bedoeling.
+    Dit is niet precies hetzelfde als een voor beeld van een utterance, dus het is een goede test om te controleren of LUIS kan ontdekken wat er moet worden voor speld met dit doel.
 
     ```json
     {
@@ -174,7 +174,7 @@ Om een utterance te classificeren, heeft de intentie voorbeelden nodig van gebru
     }
     ```
 
-    Deze voorspelling heeft een betrouwbaarheidsscore van 44%. Als u de betrouwbaarheidsscore wilt verhogen, voegt u tussen de 15 en 30 voorbeelduitingen toe.
+    Deze voor spelling heeft een betrouwbaarheids Score van 44%. Als u de betrouwbaarheids score wilt verg Roten, voegt u tussen 15 en 30 voorbeeld uitingen toe.
 
 ## <a name="client-application-next-steps"></a>Volgende stappen voor clienttoepassing
 
@@ -194,7 +194,7 @@ Nadat LUIS de JSON-reactie heeft geretourneerd, is LUIS klaar met deze aanvraag.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Deze zelfstudie heeft een LUIS-app gemaakt, intenties gemaakt, voorbeelduitingen aan elke intentie toegevoegd, voorbeelduitingen toegevoegd aan de intentie Geen, getraind, gepubliceerd en getest op het eindpunt. Dit zijn de basisstappen voor het compileren van een LUIS-model.
+In deze zelf studie hebt u een LUIS-app gemaakt, worden er gemaakte intenties, een voor beeld van een uitingen toegevoegd aan elke intentie, het toegevoegde voor beeld uitingen aan de geen intentie, getraind, gepubliceerd en getest op het eind punt. Dit zijn de basisstappen voor het compileren van een LUIS-model.
 
 > [!div class="nextstepaction"]
-> [Een onbestaande entiteit toevoegen aan deze app](tutorial-machine-learned-entity.md)
+> [Een opstel bare entiteit toevoegen aan deze app](tutorial-machine-learned-entity.md)

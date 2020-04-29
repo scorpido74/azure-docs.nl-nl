@@ -1,56 +1,56 @@
 ---
-title: Weergavemodi
-description: Beschrijft de verschillende weergavemodi aan de serverzijde
+title: Weergavemodellen
+description: Beschrijft de verschillende rendermethoden van de server
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7f2b1031659864ae338bb0aa320c048ea23c21f3
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681699"
 ---
-# <a name="rendering-modes"></a>Weergavemodi
+# <a name="rendering-modes"></a>Weergavemodellen
 
-Remote Rendering biedt twee hoofdmodi, **de TileBasedComposition-modus** en **de DepthBasedComposition-modus.** Deze modi bepalen hoe de werkbelasting wordt verdeeld over meerdere GPU's op de server. De modus moet worden opgegeven op verbindingstijd en kan niet worden gewijzigd tijdens runtime.
+Externe rendering biedt twee belang rijke modi van de werking, de **TileBasedComposition** -modus en de **DepthBasedComposition** -modus. Deze modi bepalen hoe de werk belasting over meerdere Gpu's op de server wordt verdeeld. De modus moet worden opgegeven op verbindings tijd en kan niet worden gewijzigd tijdens runtime.
 
-Beide modi hebben voordelen, maar ook met inherente functiebeperkingen, dus het kiezen van de meest geschikte modus is use case specific.
+Beide modi worden geleverd met voor delen, maar ook met inherente functie beperkingen, dus het kiezen van de meest geschikte modus is specifiek use-case.
 
-## <a name="modes"></a>Modi
+## <a name="modes"></a>Vormen
 
-De twee modi worden nu nader besproken.
+De twee modi worden nu uitvoerig besproken.
 
-### <a name="tilebasedcomposition-mode"></a>'TileBasedComposition'-modus
+### <a name="tilebasedcomposition-mode"></a>Modus ' TileBasedComposition '
 
-In **de TileBasedComposition-modus** worden specifieke subrechthoeken (tegels) op het scherm weergegeven. De hoofd-GPU stelt de uiteindelijke afbeelding van de tegels samen voordat deze als videoframe naar de client wordt verzonden. Daarom moeten alle GPU's dezelfde set resources hebben voor rendering, zodat de geladen assets in het geheugen van één GPU moeten passen.
+In de **TileBasedComposition** -modus worden met elke betrokken GPU specifieke subrechthoeken (tegels) op het scherm weer gegeven. De belangrijkste GPU maakt de uiteindelijke afbeelding van de tegels voordat deze wordt verzonden als een video frame naar de client. Daarom moeten alle Gpu's dezelfde set resources voor rendering hebben, zodat de geladen assets in één GPU-geheugen moeten passen.
 
-De weergavekwaliteit in deze modus is iets beter dan in **de DepthBasedComposition-modus,** omdat MSAA kan werken aan de volledige geometrie voor elke GPU. De volgende screenshot laat zien dat antialiasing goed werkt voor beide randen hetzelfde:
+De weergave kwaliteit in deze modus is iets beter dan in de **DepthBasedComposition** -modus, omdat MSAA kan werken aan de volledige set geometrie voor elke GPU. In de volgende scherm afbeelding ziet u dat antialiasing goed werkt voor beide randen:
 
 ![MSAA in TileBasedComposition](./media/service-render-mode-quality.png)
 
-Bovendien kan in deze modus elk onderdeel worden overgeschakeld naar een transparant materiaal of worden overgeschakeld naar **see-through-modus** via de [Hiërarchische StateOverrideComponent](../overview/features/override-hierarchical-state.md)
+Bovendien kan in deze modus elk deel worden overgeschakeld naar een transparant materiaal of worden overgeschakeld naar de **weer gave-** modus via de [HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md)
 
-### <a name="depthbasedcomposition-mode"></a>'DepthBasedComposition'-modus
+### <a name="depthbasedcomposition-mode"></a>Modus ' DepthBasedComposition '
 
-In **de DepthBasedComposition-modus** wordt elke betrokken GPU weergegeven met volledige schermresolutie, maar slechts een subset van mazen. De uiteindelijke beeldsamenstelling op de belangrijkste GPU zorgt ervoor dat onderdelen correct worden samengevoegd op basis van hun diepte-informatie. Natuurlijk, geheugen payload is verdeeld over de GPU's, waardoor rendering modellen die niet zou passen in het geheugen van een enkele GPU.Naturally, memory payload is distributed across the GPUU's, waardoor rendering modellen die niet in het geheugen van een enkele GPU passen.
+In de **DepthBasedComposition** -modus wordt elke betrokken GPU weer gegeven met volledige scherm resolutie, maar slechts een subset van mazen. De uiteindelijke samen stelling van de installatie kopie op de belangrijkste GPU zorgt ervoor dat onderdelen goed worden samengevoegd op basis van hun diep gaande informatie. Natuurlijk wordt de geheugen lading verdeeld over de Gpu's, waardoor modellen die niet in één GPU-geheugen passen, kunnen worden weer gegeven.
 
-Elke GPU gebruikt MSAA om lokale inhoud te antialiasen. Er kan echter inherente aliasing zijn tussen randen van verschillende GPU's. Dit effect wordt beperkt door het uiteindelijke beeld na bewerking, maar de MSAA-kwaliteit is nog steeds slechter dan in de **TileBasedComposition-modus.**
+Elke enkele GPU maakt gebruik van MSAA om lokale inhoud te autoaliasren. Er kan echter sprake zijn van inherente aliassen tussen de randen van afzonderlijke Gpu's. Dit effect wordt beperkt door de postprocessing van de uiteindelijke afbeelding, maar de MSAA-kwaliteit is nog steeds erger dan in de **TileBasedComposition** -modus.
 
-MSAA artefacten worden geïllustreerd in ![de volgende afbeelding: MSAA in DepthBasedComposition](./media/service-render-mode-balanced.png)
+MSAA-artefacten worden geïllustreerd in de volgende afbeelding ![: MSAA in DepthBasedComposition](./media/service-render-mode-balanced.png)
 
-Antialiasing werkt goed tussen de sculptuur en het gordijn, omdat beide delen op dezelfde GPU worden weergegeven. Aan de andere kant, de rand tussen gordijn en muur toont een aantal aliasing, omdat deze twee delen zijn samengesteld uit verschillende GPU's.
+Antialiasing werkt goed tussen de Sculpture en het gordijn, omdat beide onderdelen op dezelfde GPU worden weer gegeven. Anderzijds toont de rand tussen gordijn en muur een aantal aliassen, omdat deze twee delen bestaan uit afzonderlijke Gpu's.
 
-De grootste beperking van deze modus is dat geometrieonderdelen niet dynamisch kunnen worden overgeschakeld op transparante materialen en ook niet werkt de **doorzichtige** modus voor de [HierarchicalStateOverrideComponent.](../overview/features/override-hierarchical-state.md) Andere staat overschrijven functies (overzicht, kleurtint, ...) doen werk, dat wel. Ook materialen die tijdens de conversietijd als transparant zijn gemarkeerd, werken in deze modus wel goed.
+De grootste beperking van deze modus is dat geometrie onderdelen niet dynamisch kunnen worden overgeschakeld naar transparante materialen, en de **kijk** modus werkt niet voor de [HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md). Andere functies voor het overschrijven van de status (overzicht, kleur tint,...) werken wel. Ook materiaal dat is gemarkeerd als transparant tijdens de conversie, werkt goed in deze modus.
 
 ### <a name="performance"></a>Prestaties
 
-De prestatiekenmerken voor beide modi variëren afhankelijk van de use case, en het is moeilijk te redeneren of algemene aanbevelingen te geven. Als u niet wordt beperkt door de hierboven genoemde beperkingen (geheugen of transparantie/doorzichtigheid), is het raadzaam om beide modi uit te proberen en de prestaties te controleren met behulp van verschillende cameraposities.
+De prestatie kenmerken voor beide modi variëren op basis van de use-case en zijn moeilijk te reden of bieden algemene aanbevelingen. Als u niet beperkt bent door de hierboven genoemde beperkingen (geheugen of transparantie/Lees-through), wordt u aangeraden beide modi te proberen en de prestaties te bewaken met behulp van verschillende camera posities.
 
-## <a name="setting-the-render-mode"></a>De rendermodus instellen
+## <a name="setting-the-render-mode"></a>De weergave modus instellen
 
-De rendermodus die wordt gebruikt op `AzureSession.ConnectToRuntime` een `ConnectToRuntimeParams`remote rendering VM wordt opgegeven tijdens de .
+De weergave modus die wordt gebruikt op een externe rendering-VM `AzureSession.ConnectToRuntime` wordt opgegeven `ConnectToRuntimeParams`tijdens via de.
 
 ```cs
 async void ExampleConnect(AzureSession session)
@@ -74,4 +74,4 @@ async void ExampleConnect(AzureSession session)
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Sessies](../concepts/sessions.md)
-* [Component hiërarchische status overschrijven](../overview/features/override-hierarchical-state.md)
+* [Overschrijvings onderdeel hiërarchische status](../overview/features/override-hierarchical-state.md)

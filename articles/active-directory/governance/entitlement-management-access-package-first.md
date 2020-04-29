@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie - Toegangspakket maken - Azure AD-rechtenbeheer
-description: Stapsgewijze zelfstudie voor het maken van uw eerste toegangspakket in Azure Active Directory-rechtenbeheer.
+title: Zelf studie-toegangs pakket maken-beheer van rechten van Azure AD
+description: Stapsgewijze zelf studie voor het maken van uw eerste toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,251 +17,251 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2d31ef46dfba31a8f217f68e8d5f98b67d58da5
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80410601"
 ---
-# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Zelfstudie: Uw eerste toegangspakket maken in Azure AD-rechtenbeheer
+# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Zelf studie: uw eerste toegangs pakket maken in het beheer van rechten van Azure AD
 
-Het beheren van toegang tot alle resources die werknemers nodig hebben, zoals groepen, toepassingen en sites, is een belangrijke functie voor organisaties. U wilt werknemers het juiste toegangsniveau geven dat ze nodig hebben om productief te zijn en hun toegang te verwijderen wanneer dit niet langer nodig is.
+Het beheren van de toegang tot alle resources die werk nemers nodig hebben, zoals groepen, toepassingen en sites, is een belang rijke functie voor organisaties. U wilt werk nemers het juiste toegangs niveau geven om productief te zijn en hun toegang te verwijderen wanneer deze niet meer nodig is.
 
-In deze zelfstudie werk je voor Woodgrove Bank als IT-beheerder. U bent gevraagd om een pakket resources te maken voor een marketingcampagne die interne gebruikers kunnen aanvragen voor selfservice. Aanvragen vereisen geen goedkeuring en de toegang van de gebruiker verloopt na 30 dagen. Voor deze zelfstudie zijn de bronnen voor marketingcampagnes slechts lid van één groep, maar het kan een verzameling groepen, toepassingen of SharePoint Online-sites zijn.
+In deze zelf studie werkt u voor de Woodgrove Bank als IT-beheerder. U wordt gevraagd om een pakket met resources te maken voor een marketing campagne waarvoor interne gebruikers een self-service aanvraag kunnen indienen. Aanvragen vereisen geen goed keuring en de gebruikers toegang verloopt na 30 dagen. Voor deze zelf studie zijn de resources van de marketing campagne slechts lid van één groep, maar dit kan een verzameling van groepen, toepassingen of share point online-sites zijn.
 
 ![Overzicht van scenario's](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een toegangspakket maken met een groep als resource
-> * Een gebruiker in uw map toestaan om toegang aan te vragen
-> * Laten zien hoe een interne gebruiker het toegangspakket kan aanvragen
+> * Een toegangs pakket maken met een groep als een resource
+> * Een gebruiker in uw Directory toestaan om toegang aan te vragen
+> * Laat zien hoe een interne gebruiker het toegangs pakket kan aanvragen
 
-Bekijk de volgende video voor een stapsgewijze demonstratie van het implementatieproces voor Azure Active Directory-rechtenbeheer, inclusief het maken van uw eerste toegangspakket:
+Bekijk de volgende video voor een stapsgewijze demonstratie van het proces voor het implementeren van Azure Active Directory rechten beheer, inclusief het maken van uw eerste toegangs pakket:
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-rechtenbeheer wilt gebruiken, moet u een van de volgende licenties hebben:
+Als u Azure AD-beheer wilt gebruiken, moet u over een van de volgende licenties beschikken:
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5-licentie
 
-Zie [Licentievereisten voor](entitlement-management-overview.md#license-requirements)meer informatie.
+Zie [licentie vereisten](entitlement-management-overview.md#license-requirements)voor meer informatie.
 
-## <a name="step-1-set-up-users-and-group"></a>Stap 1: Gebruikers en groep instellen
+## <a name="step-1-set-up-users-and-group"></a>Stap 1: gebruikers en groepen instellen
 
-Een resourcemap heeft een of meer bronnen om te delen. In deze stap maakt u een groep met de naam **Marketingresources** in de map Woodgrove Bank, de doelbron voor beheer van rechten. U stelt ook een interne aanvrager in.
+Een resource directory bevat een of meer resources om te delen. In deze stap maakt u een groep met de naam **Marketing Resources** in de map Woodgrove Bank die de doel resource is voor het beheer van rechten. U hebt ook een interne aanvrager ingesteld.
 
-**Vereiste rol:** Globale beheerder of gebruikersbeheerder
+**Vereiste rol:** Globale beheerder of gebruikers beheerder
 
 ![Gebruikers en groepen maken](./media/entitlement-management-access-package-first/elm-users-groups.png)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) als globale beheerder of gebruikersbeheerder.  
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als globale beheerder of gebruikers beheerder.  
 
-1. Klik in de linkernavigatie op **Azure Active Directory**.
+1. Klik in de linkernavigatiebalk op **Azure Active Directory**.
 
-1. De volgende twee gebruikers maken of configureren. U deze namen of verschillende namen gebruiken. **Admin1** kan de gebruiker zijn waarop u zich momenteel hebt aangemeld.
+1. De volgende twee gebruikers maken of configureren. U kunt deze namen of andere namen gebruiken. **Admin1** kan de gebruiker zijn met wie u momenteel bent aangemeld.
 
-    | Name | Maprol |
+    | Naam | Maprol |
     | --- | --- |
-    | **Beheerder1** | Globale beheerder<br/>-of-<br/>Gebruikersbeheerder |
-    | **Verzoeker1** | Gebruiker |
+    | **Admin1** | Globale beheerder<br/>-of-<br/>Gebruikers beheerder |
+    | **Requestor1** | Gebruiker |
 
-1. Maak een Azure AD-beveiligingsgroep met de naam **Marketingresources** met een **lidmaatschapstype Toegewezen**.
+1. Maak een Azure AD-beveiligings groep met de naam **Marketing Resources** met het lidmaatschaps type **toegewezen**.
 
-    Deze groep is de doelgroep voor het beheer van rechten. De groep moet leeg zijn van leden om te beginnen.
+    Deze groep wordt de doel resource voor het beheer van rechten. De groep moet leeg zijn om te starten.
 
-## <a name="step-2-create-an-access-package"></a>Stap 2: Een toegangspakket maken
+## <a name="step-2-create-an-access-package"></a>Stap 2: een toegangs pakket maken
 
-Een *toegangspakket* is een bundel van resources die een team of project nodig heeft en wordt beheerd met beleid. Toegangspakketten worden gedefinieerd in containers die *catalogi*worden genoemd. In deze stap maakt u een **marketingcampagnetoegangspakket** in de **algemene** catalogus.
+Een *toegangs pakket* is een bundel van resources die een team of project nodig heeft en die wordt beheerd door beleid. Toegangs pakketten worden gedefinieerd in containers die *catalogi*worden genoemd. In deze stap maakt u een toegangs pakket voor een **marketing campagne** in de **algemene** catalogus.
 
-**Vereiste rol:** Globale beheerder, gebruikersbeheerder, cataloguseigenaar of Access-pakketbeheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
 ![Een toegangspakket maken](./media/entitlement-management-access-package-first/elm-access-package.png)
 
-1. Klik in de Azure-portal in de linkernavigatie op **Azure Active Directory**.
+1. Klik in de Azure Portal in het navigatie venster links op **Azure Active Directory**.
 
-2. Klik in het linkermenu op **Identiteitsbeheer**
+2. Klik in het linkermenu op **Identity governance**
 
-3. Klik in het linkermenu op **Toegangspakketten**.  Als u **Access geweigerd**ziet, moet u ervoor zorgen dat er een Azure AD Premium P2-licentie aanwezig is in uw directory.
+3. Klik in het linkermenu op **toegangs pakketten**.  Als u de **toegang geweigerd**ziet, controleert u of er een Azure AD Premium P2-licentie aanwezig is in uw Directory.
 
-4. Klik **op Nieuw toegangspakket**.
+4. Klik op **nieuw toegangs pakket**.
 
-    ![Rechtenbeheer in de Azure-portal](./media/entitlement-management-shared/access-packages-list.png)
+    ![Het beheer van rechten in het Azure Portal](./media/entitlement-management-shared/access-packages-list.png)
 
-5. Typ op het tabblad **Basisbeginselen** het toegangspakket voor **marketingcampagne** en beschrijving **Toegang tot bronnen voor de campagne**.
+5. Typ op het tabblad **basis beginselen** het toegangs pakket naam **marketing campagne** en beschrijving **toegang tot resources voor de campagne**.
 
-6. Laat de vervolgkeuzelijst **Catalogus** instellen op **Algemeen**.
+6. Laat de vervolg keuzelijst **catalogus** ingesteld op **Algemeen**.
 
-    ![Nieuw toegangspakket - tabblad Basisbeginselen](./media/entitlement-management-access-package-first/basics.png)
+    ![Nieuw toegangs pakket-tabblad basis](./media/entitlement-management-access-package-first/basics.png)
 
-7. Klik **op Volgende** om het tabblad **Resourcerollen** te openen.
+7. Klik op **volgende** om het tabblad **resource rollen** te openen.
 
-    Selecteer op dit tabblad de resources en de resourcerol die u in het toegangspakket wilt opnemen.
+    Op dit tabblad selecteert u de resources en de resource functie die u wilt toevoegen in het toegangs pakket.
 
-8. Klik **op Groepen en Teams**.
+8. Klik op **groepen en teams**.
 
-9. Zoek en selecteer in het deelvenster Groepen selecteren de groep **Marketingresources** die u eerder hebt gemaakt.
+9. Zoek en selecteer in het deel venster groepen selecteren de groep **Marketing Resources** die u eerder hebt gemaakt.
 
-    Standaard ziet u groepen binnen en buiten de **algemene** catalogus. Wanneer u een groep buiten **de** algemene catalogus selecteert, wordt deze toegevoegd aan de **algemene** catalogus.
+    Standaard ziet u groepen binnen en buiten de **algemene** catalogus. Wanneer u een groep buiten de **algemene** catalogus selecteert, wordt deze toegevoegd aan de **algemene** catalogus.
 
-    ![Nieuw toegangspakket - tabblad Resourcerollen](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
+    ![Nieuw toegangs pakket-tabblad Resource rollen](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
-10. Klik **op Selecteren** om de groep aan de lijst toe te voegen.
+10. Klik op **selecteren** om de groep toe te voegen aan de lijst.
 
-11. Selecteer **Lid**in de vervolgkeuzelijst **Rol** .
+11. Selecteer **lid**in de vervolg keuzelijst **rol** .
 
-    ![Nieuw toegangspakket - tabblad Resourcerollen](./media/entitlement-management-access-package-first/resource-roles.png)
+    ![Nieuw toegangs pakket-tabblad Resource rollen](./media/entitlement-management-access-package-first/resource-roles.png)
 
     >[!NOTE]
-    > Bij het gebruik van [dynamische groepen](../users-groups-roles/groups-create-rule.md) ziet u geen andere rollen beschikbaar naast de eigenaar. Dit is standaard.
+    > Wanneer u [dynamische groepen](../users-groups-roles/groups-create-rule.md) gebruikt, ziet u geen andere functies die naast de eigenaar beschikbaar zijn. Dit is standaard.
     > ![Overzicht van scenario's](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
 
-12. Klik **op Volgende** om het tabblad Aanvragen te **openen.**
+12. Klik op **volgende** om het tabblad **aanvragen** te openen.
 
-    Op dit tabblad maakt u een aanvraagbeleid. Een *beleid* definieert de regels of vangrails om toegang te krijgen tot een toegangspakket. U maakt een beleid waarmee een specifieke gebruiker in de bronmap dit toegangspakket kan aanvragen.
+    Op dit tabblad maakt u een aanvraag beleid. Een *beleid* definieert de regels of Guardrails voor toegang tot een toegangs pakket. U maakt een beleid waarmee een specifieke gebruiker in de resource directory dit toegangs pakket kan aanvragen.
 
-13. Klik **in** de sectie Gebruikers die toegang kunnen aanvragen op Gebruikers in uw **map** en klik vervolgens op Specifieke gebruikers **en groepen**.
+13. Klik in de sectie **gebruikers die toegang kunnen aanvragen** , op **voor gebruikers in uw directory** en klik vervolgens op **specifieke gebruikers en groepen**.
 
-    ![Nieuw toegangspakket - tabblad Aanvragen](./media/entitlement-management-access-package-first/requests.png)
+    ![Nieuw toegangs pakket-tabblad aanvragen](./media/entitlement-management-access-package-first/requests.png)
 
-14. Klik **op Gebruikers en groepen toevoegen**.
+14. Klik op **gebruikers en groepen toevoegen**.
 
-15. Selecteer in het deelvenster Gebruikers en groepen selecteren de **gebruiker Requestor1** die u eerder hebt gemaakt.
+15. Selecteer in het deel venster gebruikers en groepen selecteren de **Requestor1** -gebruiker die u eerder hebt gemaakt.
 
-    ![Nieuw toegangspakket - Tabblad Aanvragen - Gebruikers en groepen selecteren](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
+    ![Nieuw toegangs pakket-tabblad aanvragen-gebruikers en groepen selecteren](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
 
-16. Klik **op Selecteren**.
+16. Klik op **selecteren**.
 
-17. Schuif omlaag naar de secties **Goedkeuring** en **Aanvragen inschakelen.**
+17. Schuif omlaag naar de secties **goed keuring** en **aanvragen inschakelen** .
 
-18. Goedkeuring **vereisen** instellen op **Nee**.
+18. Verlof **moet goed keuring** zijn ingesteld op **Nee**.
 
-19. Klik op **Ja** inschakelen **voor**Aanvragen inschakelen om dit toegangspakket te kunnen aanvragen zodra het is gemaakt.
+19. Voor **Schakel aanvragen**klikt u op **Ja** om dit toegangs pakket in te scha kelen zodra het is gemaakt.
 
-    ![Nieuw toegangspakket - Tabblad Aanvragen - Aanvragen en Aanvragen inschakelen](./media/entitlement-management-access-package-first/requests-approval-enable.png)
+    ![Nieuw toegangs pakket-tabblad aanvragen-goed keuring en aanvragen inschakelen](./media/entitlement-management-access-package-first/requests-approval-enable.png)
 
-20. Klik **op Volgende** om het tabblad **Levenscyclus** te openen.
+20. Klik op **volgende** om het tabblad **levenscyclus** te openen.
 
-21. Stel **in** de sectie Verloop de **toewijzingen van toegangspakketten in die verlopen** **in aantal dagen**.
+21. Stel in de sectie **verval datum** **toegangs pakket toewijzingen** in op het **aantal dagen**.
 
-22. Stel **toewijzingen verlopen na** **30** dagen.
+22. Stel **toewijzingen verloopt na** **30** dagen.
 
-    ![Nieuw toegangspakket - tabblad Levenscyclus](./media/entitlement-management-access-package-first/lifecycle.png)
+    ![Tabblad nieuw toegangs pakket-levenscyclus](./media/entitlement-management-access-package-first/lifecycle.png)
 
-23. Klik **op Volgende** om het tabblad Controleren + Maken **te** openen.
+23. Klik op **volgende** om het tabblad **controleren + maken** te openen.
 
-    ![Nieuw toegangspakket - Tabblad Controleren + Maken](./media/entitlement-management-access-package-first/review-create.png)
+    ![Nieuw toegangs pakket-tabblad controleren + maken](./media/entitlement-management-access-package-first/review-create.png)
 
-    Na een paar ogenblikken ziet u een melding dat het toegangspakket is gemaakt.
+    Na enkele ogen blikken ziet u een melding dat het toegangs pakket is gemaakt.
 
-24. Klik in het linkermenu van het toegangspakket marketingcampagne op **Overzicht**.
+24. Klik in het linkermenu van het toegangs pakket voor de marketing campagne op **overzicht**.
 
-25. Kopieer de **koppeling Mijn Access-portal**.
+25. Kopieer de **koppeling naar de portal van mijn toegang**.
 
-    Je gebruikt deze link voor de volgende stap.
+    U gebruikt deze koppeling voor de volgende stap.
 
-    ![Overzicht van toegangspakketten - Koppeling mijn Access-portal](./media/entitlement-management-shared/my-access-portal-link.png)
+    ![Overzicht van toegangs pakketten-koppeling naar mijn Access-Portal](./media/entitlement-management-shared/my-access-portal-link.png)
 
-## <a name="step-3-request-access"></a>Stap 3: Toegang aanvragen
+## <a name="step-3-request-access"></a>Stap 3: toegang aanvragen
 
-In deze stap voert u de stappen uit als **interne aanvrager** en vraagt u toegang tot het toegangspakket. Aanvragers dienen hun verzoeken in via een site genaamd de My Access-portal. Met de My Access-portal kunnen aanvragers verzoeken om toegangspakketten indienen, de toegangspakketten bekijken waartoe ze al toegang hebben en hun aanvraaggeschiedenis bekijken.
+In deze stap voert u de stappen uit als **interne aanvrager** en vraagt u toegang tot het toegangs pakket. Aanvragers verzenden hun aanvragen met behulp van een site met de naam mijn toegangs Portal. De portal van mijn toegang kan aanvragers aanvragen voor toegangs pakketten verzenden, de toegangs pakketten waartoe ze al toegang hebben, en hun aanvraag geschiedenis weer geven.
 
 **Vereiste rol:** Interne aanvrager
 
-1. Meld u af bij de Azure-portal.
+1. Meld u af bij de Azure Portal.
 
-1. Navigeer in een nieuw browservenster naar de koppeling Mijn Access-portal die u in de vorige stap hebt gekopieerd.
+1. Navigeer in een nieuw browser venster naar de Portal koppeling van mijn toegang die u in de vorige stap hebt gekopieerd.
 
-1. Meld u aan bij de My Access-portal als **Requestor1**.
+1. Meld u aan bij de portal My Access als **Requestor1**.
 
-    U ziet het toegangspakket **voor marketingcampagnes.**
+    Het toegangs pakket voor de **marketing campagne** moet worden weer geven.
 
-1. Klik indien nodig in de kolom **Beschrijving** op de pijl om details over het toegangspakket weer te geven.
+1. Als dat nodig is, klikt u in de kolom **Beschrijving** op de pijl om de details van het toegangs pakket weer te geven.
 
-    ![Mijn Access-portal - Toegangspakketten](./media/entitlement-management-shared/my-access-access-packages.png)
+    ![Mijn Access-Portal-toegangs pakketten](./media/entitlement-management-shared/my-access-access-packages.png)
 
 1. Klik op het vinkje om het pakket te selecteren.
 
-1. Klik **op Toegang aanvragen** om het deelvenster Toegangs aanvragen te openen.
+1. Klik op **toegang aanvragen** om het deel venster toegang aanvragen te openen.
 
-    ![Knop Mijn toegangsportal - Toegang aanvragen](./media/entitlement-management-access-package-first/my-access-request-access-button.png)
+    ![Mijn toegangs Portal-knop toegang aanvragen](./media/entitlement-management-access-package-first/my-access-request-access-button.png)
 
-1. Typ in het vak **Zakelijke rechtvaardiging** de rechtvaardiging die ik aan de **nieuwe marketingcampagne werk.**
+1. Typ in het vak **zakelijke rechtvaardiging** de uitvulling die **Ik werk aan de nieuwe marketing campagne**.
 
-    ![Mijn Access-portal - Toegang aanvragen](./media/entitlement-management-shared/my-access-request-access.png)
+    ![Mijn Access-portal-toegang aanvragen](./media/entitlement-management-shared/my-access-request-access.png)
 
-1. Klik **op Verzenden**.
+1. Klik op **verzenden**.
 
-1. Klik in het linkermenu op **Geschiedenis aanvragen** om te controleren of uw aanvraag is ingediend.
+1. Klik in het menu links op **aanvraag geschiedenis** om te controleren of uw aanvraag is verzonden.
 
-## <a name="step-4-validate-that-access-has-been-assigned"></a>Stap 4: Valideren dat de toegang is toegewezen
+## <a name="step-4-validate-that-access-has-been-assigned"></a>Stap 4: controleren of de toegang is toegewezen
 
-In deze stap bevestigt u dat de **interne aanvrager** het toegangspakket is toegewezen en dat deze nu lid is van de groep **Marketingresources.**
+In deze stap bevestigt u dat de **interne aanvrager** het toegangs pakket heeft toegewezen en dat ze nu lid zijn van de groep **Marketing Resources** .
 
-**Vereiste rol:** Globale beheerder, gebruikersbeheerder, cataloguseigenaar of Access-pakketbeheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
-1. Meld u af bij de My Access-portal.
+1. Meld u af bij de portal van mijn toegang.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) als **beheerder1**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als **admin1**.
 
-1. Klik op **Azure Active Directory** en klik vervolgens op **Identiteitsbeheer**.
+1. Klik op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
-1. Klik in het linkermenu op **Toegangspakketten**.
+1. Klik in het linkermenu op **toegangs pakketten**.
 
-1. Zoek en klik op het toegangspakket **voor marketingcampagnes.**
+1. Zoek en klik op **Marketing Campaign** Access package.
 
-1. Klik in het linkermenu op **Aanvragen**.
+1. Klik in het menu links op **aanvragen**.
 
-    U ziet Requestor1 en het initiële beleid met de status **Geleverd.**
+    U ziet Requestor1 en het eerste beleid met de status **bezorgd**.
 
-1. Klik op het verzoek om de aanvraaggegevens te bekijken.
+1. Klik op de aanvraag om de details van de aanvraag weer te geven.
 
-    ![Toegangspakket - Details aanvragen](./media/entitlement-management-access-package-first/request-details.png)
+    ![Toegangs pakket-aanvraag Details](./media/entitlement-management-access-package-first/request-details.png)
 
-1. Klik in de linkernavigatie op **Azure Active Directory**.
+1. Klik in de linkernavigatiebalk op **Azure Active Directory**.
 
-1. Klik **op Groepen** en open de groep **Marketingresources.**
+1. Klik op **groepen** en open de groep **Marketing Resources** .
 
-1. Klik **op Leden**.
+1. Klik op **leden**.
 
-    U ziet **Requestor1** als lid.
+    U ziet **Requestor1** vermeld als een lid.
 
-    ![Leden van marketingbronnen](./media/entitlement-management-access-package-first/group-members.png)
+    ![Leden van marketing resources](./media/entitlement-management-access-package-first/group-members.png)
 
-## <a name="step-5-clean-up-resources"></a>Stap 5: Resources opschonen
+## <a name="step-5-clean-up-resources"></a>Stap 5: resources opschonen
 
-In deze stap verwijdert u de wijzigingen die u hebt aangebracht en verwijdert u het toegangspakket **voor marketingcampagne.**
+In deze stap verwijdert u de wijzigingen die u hebt aangebracht en verwijdert u het toegangs pakket voor de **marketing campagne** .
 
-**Vereiste rol:**  Globale beheerder of gebruikersbeheerder
+**Vereiste rol:**  Globale beheerder of gebruikers beheerder
 
-1. Klik in de Azure-portal op **Azure Active Directory** en klik vervolgens op **Identiteitsbeheer**.
+1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
-1. Open het toegangspakket **voor marketingcampagnes.**
+1. Open het toegangs pakket voor de **marketing campagne** .
 
-1. Klik **op Toewijzingen**.
+1. Klik op **toewijzingen**.
 
-1. Klik **voor Requestor1**op de ellips (**...**) en klik vervolgens op **Toegang verwijderen**. Klik in het bericht dat wordt weergegeven op **Ja**.
+1. Klik voor **Requestor1**op het weglatings teken (**...**) en klik vervolgens op **toegang verwijderen**. In het bericht dat wordt weer gegeven, klikt u op **Ja**.
 
-    Na enkele ogenblikken verandert de status van Geleverd naar Verlopen.
+    Na enkele ogen blikken wordt de status gewijzigd van bezorgd in verlopen.
 
-1. Klik **op Resourcerollen**.
+1. Klik op **resource rollen**.
 
-1. Klik voor **Marketingresources**op de ellips (**...**) en klik vervolgens op **Resourcerol verwijderen**. Klik in het bericht dat wordt weergegeven op **Ja**.
+1. Klik voor **Marketing Resources**op het weglatings teken (**...**) en klik vervolgens op **resource functie verwijderen**. In het bericht dat wordt weer gegeven, klikt u op **Ja**.
 
-1. Open de lijst met toegangspakketten.
+1. Open de lijst met toegangs pakketten.
 
-1. Klik voor **marketingcampagne**op de ellips (**...**) en klik vervolgens op **Verwijderen**. Klik in het bericht dat wordt weergegeven op **Ja**.
+1. Klik voor **marketing campagne**op het weglatings teken (**...**) en klik vervolgens op **verwijderen**. In het bericht dat wordt weer gegeven, klikt u op **Ja**.
 
-1. Verwijder in Azure Active Directory alle gebruikers die u hebt gemaakt, zoals **Requestor1** en **Admin1.**
+1. In Azure Active Directory verwijdert u de gebruikers die u hebt gemaakt, zoals **Requestor1** en **admin1**.
 
-1. Verwijder de groep **Marketingbronnen.**
+1. De groep **Marketing Resources** verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga verder naar het volgende artikel voor meer informatie over veelvoorkomende scenariostappen in het beheer van rechten.
+Ga naar het volgende artikel voor meer informatie over veelvoorkomende scenario stappen in het beheer van rechten.
 > [!div class="nextstepaction"]
 > [Algemene scenario's](entitlement-management-scenarios.md)
