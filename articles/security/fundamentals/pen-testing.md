@@ -1,6 +1,6 @@
 ---
-title: Pentests | Microsoft Documenten
-description: Het artikel geeft een overzicht van het penetratietestproces (pentest) en hoe pentest wordt uitgevoerd tegen uw apps die in azure-infrastructuur worden uitgevoerd.
+title: Pen testen | Microsoft Docs
+description: In dit artikel vindt u een overzicht van het proces van indringings tests (Pentest) en hoe u Pentest kunt uitvoeren op uw apps die worden uitgevoerd in de Azure-infra structuur.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,34 +16,34 @@ ms.workload: na
 ms.date: 08/13/2018
 ms.author: terrylan
 ms.openlocfilehash: 413ec8b121838a4ffac4119421ec3266e141618b
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80549255"
 ---
-# <a name="penetration-testing"></a>Penetratietesten
-Een van de voordelen van het gebruik van Azure voor het testen en implementeren van toepassingen is dat u snel omgevingen maken. U hoeft zich geen zorgen te maken over het opvragen, verwerven en "rekken en stapelen" van uw eigen on-premises hardware.
+# <a name="penetration-testing"></a>Indringings tests
+Een van de voor delen van het gebruik van Azure voor het testen en implementeren van toepassingen is dat u snel omgevingen kunt maken. U hoeft zich geen zorgen te maken over uw eigen on-premises hardware voor het aanvragen van opdrachten, voor het verkrijgen en ' rekken en stapelen '.
 
-Dit is geweldig - maar je moet er nog steeds voor zorgen dat u uw normale veiligheid due diligence uit te voeren. Een van de dingen die u waarschijnlijk wilt doen, is penetratietest van de toepassingen die u implementeert in Azure.
+Dit is geweldig, maar u moet er wel zeker van zijn dat u uw normale beveiligings toelaat. Een van de dingen die u waarschijnlijk wilt doen, is de toepassingen die u in azure implementeert, door penetratie testen.
 
-Mogelijk weet u al dat Microsoft [penetratietesten van onze Azure-omgeving](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)uitvoert. Dit helpt azure-verbeteringen te stimuleren.
+Mogelijk weet u dat micro soft de [Azure-omgeving indringings tests](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)uitvoert. Dit helpt Azure-verbeteringen te stimuleren.
 
-We testen uw toepassing niet voor u, maar we begrijpen wel dat u testen op uw eigen toepassingen wilt en moet uitvoeren. Dat is een goede zaak, want wanneer u de beveiliging van uw toepassingen verbetert, helpt u het hele Azure-ecosysteem veiliger te maken.
+Uw toepassing wordt niet door indringing geprotesteerd, maar we willen wel weten dat u uw eigen toepassingen wilt testen. Het is een goed idee, omdat wanneer u de beveiliging van uw toepassingen verbetert, u het volledige Azure-ecosysteem beter kunt beveiligen.
 
-Vanaf 15 juni 2017 heeft Microsoft geen goedkeuring meer nodig om een penetratietest uit te voeren tegen Azure-resources. Klanten die aankomende penetratietestopdrachten tegen Microsoft Azure formeel willen documenteren, worden aangemoedigd om het [azure service penetration testing notification-formulier](https://portal.msrc.microsoft.com/en-us/engage/pentest)in te vullen. Dit proces is alleen gerelateerd aan Microsoft Azure en niet van toepassing op andere Microsoft Cloud Service.
+Vanaf 15 juni 2017 heeft micro soft niet langer vooraf-goed keuring nodig voor het uitvoeren van een indringings test op Azure-resources. Klanten die aanstaande indringings tests op het Microsoft Azure willen documenteren, worden aangemoedigd om het formulier voor het testen van de [Azure service-Indringings melding](https://portal.msrc.microsoft.com/en-us/engage/pentest)in te vullen. Dit proces is alleen gerelateerd aan Microsoft Azure en is niet van toepassing op een andere Microsoft Cloud service.
 
 >[!IMPORTANT]
->Hoewel het melden van Microsoft over pentestactiviteiten niet langer vereist is, moeten klanten nog steeds voldoen aan de [Microsoft Cloud Unified Penetration Testing Rules of Engagement.](https://technet.microsoft.com/mt784683)
+>Hoewel het niet meer nodig is dat micro soft op de hoogte wordt gebracht van de test activiteiten van de pen, moeten de klanten nog steeds voldoen aan de [Microsoft Cloud gecombineerde Indringings test regels van engagement](https://technet.microsoft.com/mt784683).
 
-Standaardtests die u uitvoeren zijn onder andere:
+U kunt onder andere de volgende standaard tests uitvoeren:
 
-* Test op uw eindpunten om de [Top 10-kwetsbaarheden (Open Web Application Security Project) te](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project) ontdekken
-* [Fuzz testen](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) van uw eindpunten
-* [Poortscannen](https://en.wikipedia.org/wiki/Port_scanner) van uw eindpunten
+* Testen op uw eind punten om de [OWASP (open Web Application Security project) van de Top 10](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project) van beveiligings problemen op te slaan
+* [Fuzzy tests](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) van uw eind punten
+* [Poort scans](https://en.wikipedia.org/wiki/Port_scanner) van uw eind punten
 
-Een type test dat u niet uitvoeren is elke vorm [van Denial of Service (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) aanval. Dit omvat het initiëren van een DoS-aanval zelf, of het uitvoeren van gerelateerde tests die kunnen bepalen, demonstreren of simuleren elk type DoS-aanval.
+Een soort test die u niet kunt uitvoeren, is een [DOS-aanval (Denial of service)](https://en.wikipedia.org/wiki/Denial-of-service_attack) . Dit omvat het initiëren van een DoS-aanval zelf of het uitvoeren van gerelateerde tests die het type DoS-aanval kunnen bepalen, demonstreren of simuleren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u een aanstaande penetratietest formeel wilt documenteren tegen uw toepassingen die worden gehost in Microsoft Azure, gaat u naar de [penetratietestregels van engagement](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2) en vult u het testmeldingsformulier in.
+- Als u een aanstaande indringings test wilt documenteren voor uw toepassingen die worden gehost in Microsoft Azure, gaat u naar de [Indringings test regels van betrokkenheid](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2) en vult u het formulier test melding in.

@@ -1,6 +1,6 @@
 ---
-title: Gegevens over bedreigingsinformatie koppelen aan Azure Sentinel| Microsoft Documenten
-description: Meer informatie over het verbinden van gegevens over bedreigingsinformatie met Azure Sentinel.
+title: Bedreigings informatie gegevens verbinden met Azure Sentinel | Microsoft Docs
+description: Meer informatie over het verbinden van bedreigings informatie gegevens met Azure Sentinel.
 documentationcenter: na
 author: yelevin
 manager: rkarlin
@@ -13,104 +13,104 @@ ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
 ms.openlocfilehash: eec07a01edc6b126bb7cd3a814912ea5c5b14195
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80529098"
 ---
-# <a name="connect-data-from-threat-intelligence-providers"></a>Gegevens van aanbieders van bedreigingsinformatie verbinden
+# <a name="connect-data-from-threat-intelligence-providers"></a>Verbinding maken met gegevens van Threat Intelligence-providers
 
 > [!IMPORTANT]
-> De Threat Intelligence-gegevensconnectors in Azure Sentinel zijn momenteel in openbare preview.
-> Deze functie wordt geleverd zonder een serviceniveauovereenkomst en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
+> De Threat Intelligence-gegevens connectors in azure Sentinel zijn momenteel beschikbaar als open bare preview.
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Met Azure Sentinel u de bedreigingsindicatoren importeren die uw organisatie gebruikt, waardoor uw beveiligingsanalisten beter in staat zijn bekende bedreigingen te detecteren en te prioriteren. Verschillende functies van Azure Sentinel worden vervolgens beschikbaar of worden verbeterd:
+Met Azure Sentinel kunt u de bedreigings indicatoren importeren die uw organisatie gebruikt, waardoor de mogelijkheid van uw beveiligings analisten kan worden uitgebreid om bekende bedreigingen te detecteren en te priori teren. Verschillende functies van Azure Sentinel worden beschikbaar of zijn verbeterd:
 
-- **Analytics** bevat een set geplande regelsjablonen die u inschakelen om waarschuwingen en incidenten te genereren op basis van overeenkomsten met logboekgebeurtenissen op basis van uw bedreigingsindicatoren.
+- **Analytics** bevat een reeks geplande regel sjablonen die u kunt inschakelen om waarschuwingen en incidenten te genereren op basis van overeenkomsten met logboek gebeurtenissen van uw bedreigings indicatoren.
 
-- **Werkmappen** bevatten samengevatte informatie over de bedreigingsindicatoren die zijn geïmporteerd in Azure Sentinel en eventuele waarschuwingen die worden gegenereerd uit analyseregels die overeenkomen met uw bedreigingsindicatoren.
+- **Werkmappen** bieden een overzicht van de bedreigings indicatoren die in azure Sentinel zijn geïmporteerd en eventuele waarschuwingen die worden gegenereerd door analyse regels die overeenkomen met uw bedreigings indicatoren.
 
-- **Jachtquery's** stellen beveiligingsonderzoekers in staat om dreigingsindicatoren te gebruiken in de context van veelvoorkomende jachtscenario's.
+- Met **jagers** query's kunnen beveiligings onderzoekers risico indicatoren gebruiken binnen de context van veelvoorkomende jacht-scenario's.
 
-- **Notitieblokken** kunnen bedreigingsindicatoren gebruiken wanneer u afwijkingen onderzoekt en op kwaadwillig gedrag jaagt.
+- **Notebooks** kunnen bedreigings indicatoren gebruiken bij het onderzoeken van afwijkingen en het zoeken naar schadelijke gedragingen.
 
-U bedreigingsindicatoren streamen naar Azure Sentinel met behulp van een van de geïntegreerde TIP-producten (Threat Intelligence Platform) die in de volgende sectie worden vermeld, verbinding maken met TAXII-servers of door directe integratie met de [Microsoft Graph Security tiIndicators API](https://aka.ms/graphsecuritytiindicators)te gebruiken.
+U kunt bedreigings indicatoren streamen naar Azure Sentinel door gebruik te maken van een van de TIP-producten (Integrated Threat Intelligence platform) die worden weer gegeven in de volgende sectie, verbinding te maken met TAXII-servers of door directe integratie met de [Microsoft Graph Security tiIndicators-API](https://aka.ms/graphsecuritytiindicators)te gebruiken.
 
-## <a name="integrated-threat-intelligence-platform-products"></a>Geïntegreerde producten van het platform voor bedreigingsinformatie
+## <a name="integrated-threat-intelligence-platform-products"></a>Geïntegreerde platform producten voor bedreigings informatie
 
-- [MISP Open Source Threat Intelligence Platform](https://www.misp-project.org/)
+- [MISP open source Threat Intelligence-platform](https://www.misp-project.org/)
     
-    Zie de [MISP naar Microsoft Graph Security Script](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/MISP)voor een voorbeeldscript dat clients misp-exemplaren biedt om bedreigingsindicatoren naar de Microsoft Graph Security API te migreren.
+    Voor een voorbeeld script dat clients bevat met MISP-instanties voor het migreren van bedreigings indicatoren naar de Microsoft Graph-beveiligings-API, raadpleegt [u het MISP to Microsoft Graph Security script](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/MISP).
 
 - [Anomali ThreatStream](https://www.anomali.com/products/threatstream)
 
-    Zie de pagina [ThreatStream-downloads](https://ui.threatstream.com/downloads) voor het downloaden van ThreatStream Integrator en Extensies en de instructies voor het koppelen van ThreatStream-informatie aan de Microsoft Graph Security API.
+    Ga naar de pagina [ThreatStream down loads](https://ui.threatstream.com/downloads) om ThreatStream integrator en uitbrei dingen te downloaden en de instructies voor het verbinden van ThreatStream Intelligence met de BEVEILIGINGS-API van Microsoft Graph.
 
-- [Palo Alto Networks MineMeld](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld)
+- [Palo Alto-netwerken MineMeld](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld)
     
-    Zie [IoC's naar de Microsoft Graph Security API verzenden met MineMeld](https://live.paloaltonetworks.com/t5/MineMeld-Articles/Sending-IOCs-to-the-Microsoft-Graph-Security-API-using-MineMeld/ta-p/258540)voor instructies met instructies voor begeleide instructies.
+    Zie [IOCs verzenden naar de Microsoft Graph-beveiligings-API met behulp van MineMeld](https://live.paloaltonetworks.com/t5/MineMeld-Articles/Sending-IOCs-to-the-Microsoft-Graph-Security-API-using-MineMeld/ta-p/258540)voor begeleide instructies.
 
 - [ThreatConnect-platform](https://threatconnect.com/solution/)
 
-    Zie [ThreatConnect-integraties](https://threatconnect.com/integrations/) voor informatie en zoek naar Microsoft Graph Security API op de pagina.
+    Zie [ThreatConnect-integraties](https://threatconnect.com/integrations/) en zoek naar Microsoft Graph-BEVEILIGINGS-API op de pagina voor meer informatie.
 
 
-## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>Azure Sentinel verbinden met uw platform voor bedreigingsinformatie
-
-## <a name="prerequisites"></a>Vereisten  
-
-- Azure AD-rol van globale beheerder of beveiligingsbeheerder om machtigingen te verlenen aan uw TIP-product of aangepaste toepassing die directe integratie met de Microsoft Graph Security tiIndicators API gebruikt.
-
-- Lees- en schrijfmachtigingen voor de Azure Sentinel-werkruimte om uw bedreigingsindicatoren op te slaan.
-
-## <a name="instructions"></a>Instructies
-
-1. [Registreer een toepassing](/graph/auth-v2-service#1-register-your-app) in Azure Active Directory om een toepassings-id, toepassingsgeheim en Azure Active Directory-tenant-id op te halen. U hebt deze waarden nodig voor wanneer u uw geïntegreerde TIP-product of -app configureert die directe integratie met microsoft graph security tiIndicators API gebruikt.
-
-2. [API-machtigingen configureren](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) voor de geregistreerde toepassing: voeg de Microsoft Graph Application permission **ThreatIndicators.ReadWrite.OwnedBy** toe aan uw geregistreerde toepassing.
-
-3. Vraag uw Azure Active Directory-tenantbeheerder om beheerderstoestemming te verlenen voor de geregistreerde toepassing voor uw organisatie. Vanuit de Azure-portal: **Azure Active Directory** > **App-registraties** > **\<_app-naam_>** > **View API Permissions** > Grant admin consent for** \<tenant _name_>**.
-
-4. Configureer uw TIP-product of -app die directe integratie met Microsoft Graph Security tiIndicators API gebruikt om indicatoren naar Azure Sentinel te verzenden door het volgende op te geven:
-    
-    a. De waarden voor de id, het geheim en de tenant-id van de geregistreerde toepassing.
-    
-    b. Geef Azure Sentinel op voor het doelproduct.
-    
-    c. Geef voor de actie een waarschuwing op.
-
-5. Navigeer in de **Azure-portal** > naar Azure Sentinel**Data-connectors** en selecteer vervolgens de **Threat Intelligence Platforms (Preview)-connector.**
-
-6. Selecteer **De pagina Connector openen**openen en maak vervolgens **Verbinding**.
-
-7. Als u de bedreigingsindicatoren wilt bekijken die zijn geïmporteerd in Azure Sentinel, navigeert u naar **Azure Sentinel - Logs** > **SecurityInsights**en vouwt u **ThreatIntelligenceIndicator**uit.
-
-## <a name="connect-azure-sentinel-to-taxii-servers"></a>Azure Sentinel verbinden met TAXII-servers
+## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>Azure-Sentinel verbinden met uw Threat Intelligence-platform
 
 ## <a name="prerequisites"></a>Vereisten  
 
-- Lees- en schrijfmachtigingen voor de Azure Sentinel-werkruimte om uw bedreigingsindicatoren op te slaan.
+- De Azure AD-rol van globale beheerder of beveiligings beheerder om machtigingen te verlenen aan uw TIP-product of een aangepaste toepassing die gebruikmaakt van directe integratie met de Microsoft Graph Security tiIndicators API.
 
-- TAXII 2.0 server URI en Collection ID.
+- Lees-en schrijf machtigingen voor de Azure Sentinel-werk ruimte om uw bedreigings indicatoren op te slaan.
 
 ## <a name="instructions"></a>Instructies
 
-1. Navigeer in de **Azure-portal** > naar Azure Sentinel**Data-connectors** en selecteer vervolgens de **Threat Intelligence - TAXII (Preview)-connector.**
+1. [Registreer een toepassing](/graph/auth-v2-service#1-register-your-app) in azure Active Directory om een toepassings-id, toepassings geheim en Azure Active Directory Tenant-id op te halen. U hebt deze waarden nodig voor wanneer u uw geïntegreerde TIP-product of-app configureert die gebruikmaakt van directe integratie met Microsoft Graph Security tiIndicators-API.
 
-2. Selecteer **Connectorpagina openen**.
+2. [API-machtigingen](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) voor de geregistreerde toepassing configureren: voeg de Microsoft Graph toepassings machtiging **ThreatIndicators. readwrite. OwnedBy** toe aan uw geregistreerde toepassing.
 
-3. Geef de vereiste en optionele informatie op in de tekstvakken.
+3. Vraag uw Azure Active Directory Tenant beheerder om toestemming van de beheerder te verlenen aan de geregistreerde toepassing voor uw organisatie. Vanuit de Azure portal: **Azure Active Directory** > **app-registraties** > **\<_app-naam_>** > **weer geven API-machtigingen** > **verlenen \<beheerders toestemming voor _Tenant naam_>**.
 
-4. Selecteer **Toevoegen** om de verbinding met de TAXII 2.0-server in te schakelen.
+4. Configureer uw TIP-product of-app die gebruikmaakt van directe integratie met Microsoft Graph Security tiIndicators API om indica toren naar Azure Sentinel te verzenden door het volgende op te geven:
+    
+    a. De waarden voor de geregistreerde toepassings-ID, het geheim en de Tenant-ID.
+    
+    b. Geef voor het doel product Azure Sentinel op.
+    
+    c. Geef voor de actie waarschuwing op.
 
-5. Als u extra TAXII 2.0-servers hebt: Herhaal stap 3 en 4.
+5. Navigeer in het Azure Portal naar **Azure Sentinel** > **Data connectors** en selecteer vervolgens de connector **Threat Intelligence platforms (preview)** .
 
-6. Als u de bedreigingsindicatoren wilt bekijken die zijn geïmporteerd in Azure Sentinel, navigeert u naar **Azure Sentinel - Logs** > **SecurityInsights**en vouwt u **ThreatIntelligenceIndicator**uit.
+6. Selecteer de **pagina connector openen**en vervolgens **verbinding maken**.
+
+7. Als u de risico indicatoren wilt weer geven die in azure Sentinel zijn geïmporteerd, gaat u naar **Azure Sentinel-logs-logboeken** > **SecurityInsights**en vouwt u vervolgens **ThreatIntelligenceIndicator**uit.
+
+## <a name="connect-azure-sentinel-to-taxii-servers"></a>Azure-Sentinel verbinden met TAXII-servers
+
+## <a name="prerequisites"></a>Vereisten  
+
+- Lees-en schrijf machtigingen voor de Azure Sentinel-werk ruimte om uw bedreigings indicatoren op te slaan.
+
+- TAXII 2,0-server-URI en verzameling-ID.
+
+## <a name="instructions"></a>Instructies
+
+1. Navigeer in het Azure Portal naar **Azure Sentinel** > **Data connectors** en selecteer vervolgens de connector **Threat Intelligence-TAXII (preview)** .
+
+2. Selecteer de **pagina connector openen**.
+
+3. Geef de vereiste en optionele informatie op in de tekst vakken.
+
+4. Selecteer **toevoegen** om de verbinding met de TAXII 2,0-server in te scha kelen.
+
+5. Als u over extra TAXII 2,0-servers beschikt: Herhaal stap 3 en 4.
+
+6. Als u de risico indicatoren wilt weer geven die in azure Sentinel zijn geïmporteerd, gaat u naar **Azure Sentinel-logs-logboeken** > **SecurityInsights**en vouwt u vervolgens **ThreatIntelligenceIndicator**uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit document hebt u geleerd hoe u uw provider voor bedreigingsinformatie verbinden met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel.
+In dit document hebt u geleerd hoe u uw Threat Intelligence-provider verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over de Azure-Sentinel.
 
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en potentiële bedreigingen.](quickstart-get-visibility.md)
-- Aan de slag met [het detecteren van bedreigingen met Azure Sentinel.](tutorial-detect-threats.md)
+- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).

@@ -1,16 +1,16 @@
 ---
-title: Azure Cosmos DB-prestatietips voor .NET
-description: Meer informatie over opties voor clientconfiguratie om de prestaties van Azure Cosmos DB te verbeteren.
+title: Tips voor Azure Cosmos DB prestaties voor .NET
+description: Meer informatie over client configuratie opties voor het verbeteren van de prestaties van Azure Cosmos DB.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: sngun
 ms.openlocfilehash: ee2743af2f8499aec04d8b6b733e1ba4c2a82083
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80546079"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tips voor betere prestaties van Azure Cosmos DB en .NET
@@ -21,68 +21,68 @@ ms.locfileid: "80546079"
 > * [.NET](performance-tips.md)
 > 
 
-Azure Cosmos DB is een snelle en flexibele gedistribueerde database die naadloos wordt geschaald met gegarandeerde latentie en doorvoer. U hoeft geen grote architectuurwijzigingen aan te brengen of complexe code te schrijven om uw database te schalen met Azure Cosmos DB. Op- en afschalen is net zo eenvoudig als het maken van één API-aanroep. Zie voor meer informatie hoe u [de containerdoorvoer indient](how-to-provision-container-throughput.md) of [hoe u databasedoorvoer indient](how-to-provision-database-throughput.md). Maar omdat Azure Cosmos DB wordt benaderd via netwerkoproepen, zijn er optimalisaties aan de clientzijde die u maken om topprestaties te bereiken wanneer u de [SQL .NET SDK gebruikt.](sql-api-sdk-dotnet-standard.md)
+Azure Cosmos DB is een snelle en flexibele gedistribueerde data base die naadloos kan worden geschaald met gegarandeerde latentie en door voer. U hoeft geen grote architectuur wijzigingen aan te brengen of complexe code te schrijven om uw data base te schalen met Azure Cosmos DB. Omhoog en omlaag schalen is net zo eenvoudig als het maken van één API-aanroep. Zie voor meer informatie [over het inrichten van container doorvoer](how-to-provision-container-throughput.md) of [het inrichten van de doorvoer capaciteit van de data base](how-to-provision-database-throughput.md). Maar omdat Azure Cosmos DB via netwerk aanroepen wordt geopend, zijn er optimalisaties aan de client zijde die u kunt uitvoeren om piek prestaties te bereiken wanneer u de [SQL .NET SDK](sql-api-sdk-dotnet-standard.md)gebruikt.
 
-Als u de prestaties van uw database probeert te verbeteren, u de volgende opties overwegen:
+Als u de prestaties van uw Data Base wilt verbeteren, kunt u de volgende opties overwegen:
 
-## <a name="hosting-recommendations"></a>Hostingaanbevelingen
+## <a name="hosting-recommendations"></a>Aanbevelingen hosten
 
-**Gebruik Windows 64-bits voor query-intensieve workloads in plaats van Linux of Windows 32-bits hostverwerking**
+**Gebruik Windows 64-bits in plaats van Linux of Windows 32-bits host processing voor query-intensieve werk belastingen.**
 
-We raden windows 64-bits hostverwerking aan voor betere prestaties. De SQL SDK bevat een native ServiceInterop.dll om query's lokaal te ontlopen en te optimaliseren. ServiceInterop.dll wordt alleen ondersteund op het Windows x64-platform. Voor Linux en andere niet-ondersteunde platforms waar ServiceInterop.dll niet beschikbaar is, wordt een extra netwerkoproep naar de gateway gemaakt om de geoptimaliseerde query te krijgen. De volgende typen toepassingen gebruiken standaard 32-bits hostverwerking. Voer de volgende stappen uit op basis van het type toepassing om hostverwerking te wijzigen in 64-bits verwerking:
+U wordt aangeraden Windows 64-bits host te verwerken voor betere prestaties. De SQL SDK bevat een systeem eigen ServiceInterop. dll om query's lokaal te parseren en te optimaliseren. ServiceInterop. dll wordt alleen ondersteund op het Windows x64-platform. Voor Linux en andere niet-ondersteunde platforms waarbij ServiceInterop. dll niet beschikbaar is, wordt er een extra netwerk aanroep naar de gateway verzonden om de geoptimaliseerde query te krijgen. De volgende typen toepassingen gebruiken standaard 32-bits host verwerking. Voer de volgende stappen uit op basis van het type van uw toepassing om de verwerking van de host te wijzigen in 64-bits verwerking:
 
-- Voor uitvoerbare toepassingen u de hostverwerking wijzigen door het [platformdoel](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) in te stellen op **x64** in het venster **Projecteigenschappen** op het tabblad **Build.**
+- Voor uitvoer bare toepassingen kunt u de verwerking van een host wijzigen door het [platform doel](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) in te stellen op **x64** in het venster **project eigenschappen** op het tabblad **opbouwen** .
 
-- Voor vstest-gebaseerde testprojecten u de hostverwerking wijzigen door **Standaardprocessorarchitectuur** > **testinstellingen** > **als X64** te selecteren in het menu Visual Studio **Test.**
+- Voor VSTest test projecten kunt u de verwerking van de host wijzigen door test **Test** > **instellingen** > testen**standaard processor architectuur als x64** te selecteren in het menu van Visual Studio **testen** .
 
-- Voor lokaal geïmplementeerde ASP.NET webtoepassingen u de hostverwerking wijzigen door **de 64-bits versie van IIS Express gebruiken voor websites en projecten** te selecteren onder **Tools** > **Options** > Projects en**Solutions** > Web**Projects**.
+- Voor lokaal geïmplementeerde ASP.NET-webtoepassingen kunt u de verwerking van de host wijzigen door **de 64-bits versie van IIS Express voor websites en projecten** te selecteren onder **extra** > **Opties** > **projecten en oplossingen** > **webprojecten**.
 
-- Voor ASP.NET webtoepassingen die op Azure zijn geïmplementeerd, u de hostverwerking wijzigen door het **64-bits** platform in **toepassingsinstellingen** in de Azure-portal te selecteren.
+- Voor ASP.NET-webtoepassingen die in azure zijn geïmplementeerd, kunt u de verwerking van de host wijzigen door het **64-bits** platform te selecteren in **Toepassings instellingen** in de Azure Portal.
 
 > [!NOTE] 
-> Standaard zijn nieuwe Visual Studio-projecten ingesteld op **elke CPU.** We raden u aan uw project in te stellen op **x64,** zodat het niet overschakelt naar **x86.** Een project dat is ingesteld op **Elke CPU** kan eenvoudig overschakelen naar **x86** als een x86-only afhankelijkheid wordt toegevoegd.<br/>
-> ServiceInterop.dll moet zich in de map bevinden waaruit de SDK DLL wordt uitgevoerd. Dit moet alleen een punt van zorg zijn als u dll's handmatig kopieert of aangepaste build-/implementatiesystemen hebt.
+> Nieuwe Visual Studio-projecten worden standaard ingesteld op **elke CPU**. We raden u aan om uw project in te stellen op **x64** zodat het niet wordt overgeschakeld naar **x86**. Een project ingesteld op **een wille keurige CPU** kan eenvoudig overschakelen naar **x86** als er een alleen-x86-afhankelijkheid is toegevoegd.<br/>
+> ServiceInterop. dll moet zich in de map bevindt waarin de SDK-DLL wordt uitgevoerd. Dit is alleen een probleem als u hand matig Dll's kopieert of aangepaste build/Deployment-systemen hebt.
     
-**Garbage Collection aan de serverzijde inschakelen (GC)**
+**Garbage Collection aan de server zijde inschakelen (GC)**
 
-Het verminderen van de frequentie van het ophalen van afval kan helpen in sommige gevallen. Stel [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) in .NET in op `true`.
+Het verminderen van de frequentie van garbagecollection kan in sommige gevallen helpen. Stel in .NET [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) in op `true`.
 
-**De werklast van uw client uitschalen**
+**De werk belasting van uw client uitschalen**
 
-Als u test bij hoge doorvoerniveaus (meer dan 50.000 RU/s), kan de clienttoepassing het knelpunt worden als gevolg van het afdekken van de machine op CPU of netwerkgebruik. Als u dit punt bereikt, u het Azure Cosmos DB-account verder pushen door uw clienttoepassingen op meerdere servers uit te schalen.
+Als u test met hoge doorvoer niveaus (meer dan 50.000 RU/s), kan de client toepassing het knel punt worden als gevolg van het uitvallen van CPU-of netwerk gebruik. Als u dit punt bereikt, kunt u het Azure Cosmos DB-account nog verder pushen door uw client toepassingen op meerdere servers te schalen.
 
 > [!NOTE] 
-> Een hoog CPU-gebruik kan leiden tot verhoogde latentie en een time-out uitzondering aanvragen.
+> Hoog CPU-gebruik kan leiden tot grotere latentie en time-outuitzonderingen voor aanvragen.
 
 ## <a name="networking"></a>Netwerken
 <a id="direct-connection"></a>
 
-**Verbindingsbeleid: Direct Connection-modus gebruiken**
+**Verbindings beleid: modus directe verbinding gebruiken**
 
-Hoe een client verbinding maakt met Azure Cosmos DB heeft belangrijke prestatieimplicaties, vooral voor waargenomen latentie aan clientzijde. Er zijn twee belangrijke configuratie-instellingen beschikbaar voor het configureren van het clientverbindingsbeleid: de *verbindingsmodus* en het *verbindingsprotocol*.  De twee beschikbare modi zijn:
+Hoe een client verbinding maakt met Azure Cosmos DB heeft belang rijke gevolgen voor de prestaties, met name voor de waargenomen latentie aan de client zijde. Er zijn twee belang rijke configuratie-instellingen beschikbaar voor het configureren van beleid voor client verbindingen: de verbindings *modus* en het verbindings *protocol*.  De twee beschik bare modi zijn:
 
-   * Gateway-modus
+   * Gateway modus
       
-     De gatewaymodus wordt ondersteund op alle SDK-platforms en is de geconfigureerde standaardvoor de [Microsoft.Azure.DocumentDB SDK](sql-api-sdk-dotnet.md). Als uw toepassing wordt uitgevoerd binnen een bedrijfsnetwerk met strikte firewallbeperkingen, is de gateway-modus de beste keuze omdat deze de standaard HTTPS-poort en één eindpunt gebruikt. De prestatieafweging is echter dat de gateway-modus een extra netwerkhop omvat elke keer dat gegevens worden gelezen of geschreven naar Azure Cosmos DB. De directe modus biedt dus betere prestaties omdat er minder netwerkhops zijn. We raden ook de gateway-verbindingsmodus aan wanneer u toepassingen uitvoert in omgevingen met een beperkt aantal socketverbindingen.
+     De gateway modus wordt op alle SDK-platforms ondersteund en is de geconfigureerde standaard instelling voor de [micro soft. Azure. DocumentDB-SDK](sql-api-sdk-dotnet.md). Als uw toepassing wordt uitgevoerd in een bedrijfs netwerk met strikte firewall beperkingen, is de gateway modus de beste keuze, omdat deze gebruikmaakt van de standaard HTTPS-poort en een enkel eind punt. De verhoudingen van de prestaties zijn echter wel dat de gateway modus een extra netwerk-hop omvat telkens wanneer gegevens worden gelezen vanuit of geschreven naar Azure Cosmos DB. De directe modus biedt dus betere prestaties omdat er minder netwerk-hops zijn. We raden ook de verbindings modus voor de gateway aan wanneer u toepassingen uitvoert in omgevingen met een beperkt aantal socket verbindingen.
 
-     Wanneer u de SDK in Azure-functies gebruikt, met name in het [verbruiksplan,](../azure-functions/functions-scale.md#consumption-plan)moet u zich bewust zijn van de huidige [beperkingen op verbindingen](../azure-functions/manage-connections.md). In dat geval is de gatewaymodus misschien beter als u ook werkt met andere HTTP-gebaseerde clients binnen uw Azure Functions-toepassing.
+     Wanneer u de SDK in Azure Functions gebruikt, met name in het [verbruiks abonnement](../azure-functions/functions-scale.md#consumption-plan), moet u rekening houden met de huidige [limieten voor verbindingen](../azure-functions/manage-connections.md). In dat geval kan de gateway modus beter zijn als u ook met andere op HTTP gebaseerde clients in uw Azure Functions-toepassing werkt.
 
    * Directe modus
 
-     De directe modus ondersteunt connectiviteit via het TCP-protocol en is de standaardconnectiviteitsmodus als u de [Microsoft.Azure.Cosmos/.NET V3 SDK gebruikt.](sql-api-sdk-dotnet-standard.md)
+     Directe modus ondersteunt connectiviteit via TCP-protocol en is de standaard connectiviteits modus als u gebruikmaakt van de [SDK van micro soft. Azure. Cosmos/. net v3](sql-api-sdk-dotnet-standard.md).
 
-In de gatewaymodus gebruikt Azure Cosmos DB poort 443 en poorten 10250, 10255 en 10256 wanneer u de Azure Cosmos DB API voor MongoDB gebruikt. Poort 10250 wordt toegewezen aan een standaard MongoDB-exemplaar zonder geo-replicatie. Poorten 10255 en 10256 worden toegewezen aan het exemplaar MongoDB met georeplicatie.
+In de gateway modus maakt Azure Cosmos DB gebruik van poort 443 en poorten 10250, 10255 en 10256 wanneer u de Azure Cosmos DB-API voor MongoDB gebruikt. Poort 10250 wordt toegewezen aan een standaard MongoDB-instantie zonder geo-replicatie. Poorten 10255 en 10256 worden toegewezen aan het MongoDB-exemplaar met geo-replicatie.
      
-Wanneer u TCP in de directe modus gebruikt, moet u, naast de gatewaypoorten, ervoor zorgen dat het poortbereik tussen 10000 en 20000 is geopend omdat Azure Cosmos DB dynamische TCP-poorten gebruikt. Als deze poorten niet zijn geopend en u TCP probeert te gebruiken, ontvangt u een fout die niet beschikbaar is voor 503 Service. In deze tabel worden de verbindingsmodi weergegeven die beschikbaar zijn voor verschillende API's en de servicepoorten die voor elke API worden gebruikt:
+Wanneer u TCP in de directe modus gebruikt, moet u, naast de gateway poorten, ervoor zorgen dat het poort bereik tussen 10000 en 20000 open is, omdat Azure Cosmos DB dynamische TCP-poorten gebruikt. Als deze poorten niet zijn geopend en u TCP probeert te gebruiken, ontvangt u een fout bericht van de 503-Service die niet beschikbaar is. In deze tabel ziet u de connectiviteits modi die beschikbaar zijn voor verschillende Api's en de service poorten die worden gebruikt voor elke API:
 
-|Verbindingsmodus  |Ondersteund protocol  |Ondersteunde SDKs  |API/Servicepoort  |
+|Verbindings modus  |Ondersteund protocol  |Ondersteunde Sdk's  |API/service poort  |
 |---------|---------|---------|---------|
-|Gateway  |   HTTPS    |  Alle SDK's    |   SQL (443), MongoDB (10250, 10255, 10256), Tabel (443), Cassandra (10350), Grafiek (443)    |
-|Direct    |     TCP    |  .NET SDK    | Havens in het bereik van 10000 tot en met 20000 |
+|Gateway  |   HTTPS    |  Alle Sdk's    |   SQL (443), MongoDB (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
+|Direct    |     TCP    |  .NET SDK    | Poorten in het 10000 tot en met 20000-bereik |
 
-Azure Cosmos DB biedt een eenvoudig, open RESTful-programmeermodel via HTTPS. Daarnaast biedt het een efficiënt TCP-protocol, dat ook RESTful is in zijn communicatiemodel en beschikbaar is via de .NET client SDK. TCP-protocol maakt gebruik van TLS voor initiële verificatie en versleuteling van verkeer. Gebruik het TCP-protocol waar mogelijk voor de beste prestaties.
+Azure Cosmos DB biedt een eenvoudig open, REST-programmeer model via HTTPS. Daarnaast biedt het een efficiënt TCP-protocol, dat ook wordt doorzocht in het communicatie model en dat beschikbaar is via de .NET-client-SDK. TCP-protocol gebruikt TLS voor initiële verificatie en het versleutelen van verkeer. Gebruik, indien mogelijk, het TCP-protocol voor de beste prestaties.
 
-Voor SDK V3 configureert u de `CosmosClient` verbindingsmodus `CosmosClientOptions`wanneer u de instantie maakt in . Vergeet niet dat de directe modus de standaardmodus is.
+Voor SDK v3 configureert u de verbindings modus wanneer u de `CosmosClient` instantie maakt, in. `CosmosClientOptions` Houd er rekening mee dat de directe modus de standaard instelling is.
 
 ```csharp
 var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -94,7 +94,7 @@ new CosmosClientOptions
 });
 ```
 
-Voor de Microsoft.Azure.DocumentDB SDK configureert u de `DocumentClient` verbindingsmodus `ConnectionPolicy` tijdens het maken van de instantie met behulp van de parameter. Als u de directe modus gebruikt, u de `Protocol` parameter ook instellen met behulp van de `ConnectionPolicy` parameter.
+Voor de micro soft. Azure. DocumentDB SDK configureert u de verbindings modus tijdens het bouwen van het `DocumentClient` exemplaar met behulp `ConnectionPolicy` van de para meter. Als u de directe modus gebruikt, kunt u deze `Protocol` ook instellen met behulp van de `ConnectionPolicy` para meter.
 
 ```csharp
 var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -107,122 +107,122 @@ new ConnectionPolicy
 });
 ```
 
-Omdat TCP alleen in de directe modus wordt ondersteund, wordt het HTTPS-protocol altijd `Protocol` gebruikt `ConnectionPolicy` om met de gateway te communiceren als de waarde in de gateway wordt genegeerd.
+Omdat TCP alleen wordt ondersteund in de directe modus, wordt het HTTPS-protocol altijd gebruikt voor communicatie met de gateway en wordt de `Protocol` waarde in `ConnectionPolicy` genegeerd als u gebruikmaakt van de modus gateway.
 
-![Het azure cosmos DB-verbindingsbeleid](./media/performance-tips/connection-policy.png)
+![Het Azure Cosmos DB verbindings beleid](./media/performance-tips/connection-policy.png)
 
-**Call OpenAsync om opstartlatentie te voorkomen op eerste verzoek**
+**Open async aanroepen om opstart latentie bij eerste aanvraag te voor komen**
 
-Standaard heeft de eerste aanvraag een hogere latentie omdat de adresrouteringstabel moet worden opgehaald. Wanneer u [SDK V2](sql-api-sdk-dotnet.md)gebruikt, belt u `OpenAsync()` eenmaal tijdens de initialisatie om deze opstartlatentie op het eerste verzoek te voorkomen:
+De eerste aanvraag heeft standaard een hogere latentie omdat de routerings tabel van het adres moet worden opgehaald. Wanneer u [SDK v2](sql-api-sdk-dotnet.md)gebruikt, roept `OpenAsync()` u eenmaal aan tijdens de initialisatie om te voor komen dat deze opstart latentie bij de eerste aanvraag:
 
     await client.OpenAsync();
 
 > [!NOTE] 
-> `OpenAsync`genereert aanvragen om de adresrouteringstabel voor alle containers in het account te verkrijgen. Voor accounts die veel containers hebben, maar waarvan `OpenAsync` de toepassing toegang heeft tot een subset van hen, zou een onnodige hoeveelheid verkeer genereren, waardoor de initialisatie traag zou zijn. Dus `OpenAsync` het gebruik kan niet nuttig zijn in dit scenario, omdat het vertraagt het opstarten van toepassingen.
+> `OpenAsync`genereert aanvragen voor het verkrijgen van de routerings tabel van het adres voor alle containers in het account. Voor accounts met veel containers, maar waarvan de toepassing toegang heeft tot een subset hiervan `OpenAsync` , zou een onnodige hoeveelheid verkeer genereren, waardoor de initialisatie traag wordt. Het gebruik `OpenAsync` hiervan is mogelijk niet nuttig in dit scenario, omdat het opstarten van toepassingen wordt vertraagd.
 
    <a id="same-region"></a>
-**Voor prestaties u clients in dezelfde Azure-regio samenvoegen**
+**Voor prestaties, termijnen-clients in dezelfde Azure-regio**
 
-Plaats, indien mogelijk, alle toepassingen die Azure Cosmos DB aanroepen in dezelfde regio als de Azure Cosmos DB-database. Hier is een vergelijking bij benadering: oproepen naar Azure Cosmos DB binnen dezelfde regio zijn voltooid binnen 1 ms tot 2 ms, maar de latentie tussen de westkust en de oostkust van de VS is meer dan 50 ms. Deze latentie kan variëren van aanvraag tot aanvraag, afhankelijk van de route die door de aanvraag wordt genomen wanneer deze van de client naar de azure-datacentergrens gaat. U de laagst mogelijke latentie krijgen door ervoor te zorgen dat de aanroepende toepassing zich binnen dezelfde Azure-regio bevindt als het ingerichte Azure Cosmos DB-eindpunt. Zie [Azure-regio's](https://azure.microsoft.com/regions/#services)voor een lijst met beschikbare regio's .
+Als dat mogelijk is, plaatst u toepassingen die Azure Cosmos DB aanroepen in dezelfde regio als de Azure Cosmos DB-Data Base. Hier volgt een vergelijking van benadering: aanroepen naar Azure Cosmos DB binnen dezelfde regio worden binnen 1 MS tot 2 MS voltooid, maar de latentie tussen de West-en Oost kust van de VS is meer dan 50 MS. Deze latentie kan variëren van aanvraag tot aanvraag, afhankelijk van de route die door de aanvraag wordt genomen, terwijl deze van de client wordt door gegeven aan de grens van het Azure-Data Center. U kunt de laagst mogelijke latentie verkrijgen door ervoor te zorgen dat de aanroepende toepassing zich in dezelfde Azure-regio bevindt als het ingerichte Azure Cosmos DB-eind punt. Zie [Azure-regio's](https://azure.microsoft.com/regions/#services)voor een lijst met beschik bare regio's.
 
-![Het azure cosmos](./media/performance-tips/same-region.png) DB-verbindingsbeleid<a id="increase-threads"></a>
+![Het Azure Cosmos DB verbindings beleid](./media/performance-tips/same-region.png)<a id="increase-threads"></a>
 
 **Het aantal threads/taken verhogen**
 
-Omdat oproepen naar Azure Cosmos DB via het netwerk worden gevoerd, moet u mogelijk de mate van parallellisme van uw aanvragen variëren, zodat de clienttoepassing minimale tijd doorbrengt met wachten tussen aanvragen. Als u bijvoorbeeld de parallelbibliotheek voor [.NET-taak](https://msdn.microsoft.com//library/dd460717.aspx)gebruikt, maakt u in de volgorde van honderden taken die lezen uit of schrijven naar Azure Cosmos DB.
+Omdat aanroepen naar Azure Cosmos DB via het netwerk worden gemaakt, moet u mogelijk de mate van parallelle uitvoering van uw aanvragen variëren, zodat de client toepassing mini maal tijd nodig heeft om te wachten tussen aanvragen. Als u bijvoorbeeld de [parallelle bibliotheek](https://msdn.microsoft.com//library/dd460717.aspx)van .net-taak gebruikt, maakt u op volg orde van honderden taken die worden gelezen van of schrijven naar Azure Cosmos db.
 
 **Versneld netwerken inschakelen**
  
- Om latentie en CPU-jitter te verminderen, raden we u aan om versnelde netwerken in te schakelen op virtuele clientmachines. Zie [Een virtuele Windows-machine maken met versnelde netwerken](../virtual-network/create-vm-accelerated-networking-powershell.md) of Een Virtuele [Linux-machine maken met versnelde netwerken.](../virtual-network/create-vm-accelerated-networking-cli.md)
+ Om latentie en CPU-jitter te verminderen, raden we u aan om versneld netwerken op virtuele client machines in te scha kelen. Zie [een virtuele Windows-machine maken met versneld netwerken](../virtual-network/create-vm-accelerated-networking-powershell.md) of [een virtuele Linux-machine maken met versneld netwerken](../virtual-network/create-vm-accelerated-networking-cli.md).
 
 ## <a name="sdk-usage"></a>SDK-gebruik
-**Installeer de meest recente SDK**
+**De meest recente SDK installeren**
 
-De Azure Cosmos DB SDKs worden voortdurend verbeterd om de beste prestaties te bieden. Bekijk de [Azure Cosmos DB SDK-pagina's](sql-api-sdk-dotnet-standard.md) om de meest recente SDK-pagina's te bepalen en verbeteringen te bekijken.
+De Azure Cosmos DB Sdk's worden voortdurend verbeterd om de beste prestaties te leveren. Raadpleeg de [Azure Cosmos DB SDK](sql-api-sdk-dotnet-standard.md) -pagina's om de meest recente SDK te bepalen en verbeteringen te bekijken.
 
-**Stream-API's gebruiken**
+**Stream-Api's gebruiken**
 
-[.NET SDK V3](sql-api-sdk-dotnet-standard.md) bevat stream-API's die gegevens kunnen ontvangen en retourneren zonder serialisatie. 
+[.NET SDK v3](sql-api-sdk-dotnet-standard.md) bevat stream-api's die gegevens kunnen ontvangen en retour neren zonder serialisatie. 
 
-Toepassingen op het middenniveau die geen reacties rechtstreeks van de SDK verbruiken, maar deze doorgeven aan andere toepassingslagen, kunnen profiteren van de stream-API's. Zie de [artikelbeheervoorbeelden](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement) voor voorbeelden van streamhandling.
+Middle-tier-toepassingen die geen reacties rechtstreeks van de SDK gebruiken, maar door sturen naar andere toepassings lagen, kunnen profiteren van de stream-Api's. Zie de voor beelden van [artikel beheer](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement) voor voor beeld van stroom verwerking.
 
-**Een singleton Azure Cosmos DB-client gebruiken voor de levensduur van uw toepassing**
+**Een singleton Azure Cosmos DB-client gebruiken voor de levens duur van uw toepassing**
 
-Elke `DocumentClient` `CosmosClient` instantie is draadveilig en voert efficiënt verbindingsbeheer uit en werkt in cache bij het werken in de directe modus. Om efficiënt verbindingsbeheer en betere SDK-clientprestaties mogelijk te `AppDomain` maken, raden we u aan één exemplaar per voor de levensduur van de toepassing te gebruiken.
+Elk `DocumentClient` en `CosmosClient` -exemplaar is thread-safe en voert efficiënt verbindings beheer en adres caching uit wanneer deze in de directe modus worden uitgevoerd. Om efficiënt verbindings beheer en betere prestaties van de SDK-client mogelijk te maken, wordt u aangeraden `AppDomain` één exemplaar te gebruiken per voor de levens duur van de toepassing.
 
    <a id="max-connection"></a>
 
-**Verhoog System.Net MaxConnections per host wanneer u de gatewaymodus gebruikt**
+**System.Net MaxConnections per host verg Roten met de gateway modus**
 
-Azure Cosmos DB-aanvragen worden via HTTPS/REST gedaan wanneer u de gatewaymodus gebruikt. Ze zijn onderworpen aan de standaardverbindingslimiet per hostnaam of IP-adres. Mogelijk moet u `MaxConnections` instellen op een hogere waarde (100 tot 1000), zodat de clientbibliotheek meerdere gelijktijdige verbindingen met Azure Cosmos DB kan gebruiken. In .NET SDK 1.8.0 en hoger is de standaardwaarde voor [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 50. Als u de waarde wilt wijzigen, u [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) instellen op een hogere waarde.
+Azure Cosmos DB aanvragen worden gedaan via HTTPS/REST wanneer u de gateway modus gebruikt. Deze worden onderworpen aan de standaard verbindings limiet per hostnaam of IP-adres. Mogelijk moet u een hogere `MaxConnections` waarde instellen (100 tot 1.000), zodat de client bibliotheek meerdere gelijktijdige verbindingen met Azure Cosmos db kan gebruiken. In .NET SDK 1.8.0 en hoger is de standaard waarde voor [ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 50. Als u de waarde wilt wijzigen, kunt u [Documents. client. Connection Policy. MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) op een hogere waarde instellen.
 
-**Parallelle query's afstemmen op partitieverzamelingen**
+**Parallelle query's voor gepartitioneerde verzamelingen afstemmen**
 
-SQL .NET SDK 1.9.0 en hoger ondersteunen parallelle query's, waarmee u een partitieverzameling parallel opvragen. Zie [codevoorbeelden](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) met betrekking tot het werken met de SDK's voor meer informatie. Parallelle query's zijn ontworpen om een betere latentie en doorvoer van query's te bieden dan hun seriële tegenhanger. Parallelle query's bevatten twee parameters die u afstemmen op uw vereisten: 
-- `MaxDegreeOfParallelism`hiermee wordt het maximum aantal partities geregeld dat parallel kan worden opgevraagd. 
-- `MaxBufferedItemCount`hiermee wordt het aantal vooraf opgehaalde resultaten gecontroleerd.
+SQL .NET SDK 1.9.0 en hoger ondersteunen parallelle query's, waarmee u parallel een gepartitioneerde verzameling kunt uitvoeren. Zie [code voorbeelden](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) met betrekking tot het werken met de sdk's voor meer informatie. Parallelle query's zijn ontworpen om betere latentie en door Voer van query's te bieden dan hun seriële tegen hanger. Parallelle query's bieden twee para meters die u aan uw vereisten kunt aanpassen: 
+- `MaxDegreeOfParallelism`Hiermee bepaalt u het maximum aantal partities waarmee gelijktijdig query's kunnen worden uitgevoerd. 
+- `MaxBufferedItemCount`Hiermee bepaalt u het aantal vooraf opgehaalde resultaten.
 
-***Tuning mate van parallellisme***
+***Afstemmings graad van parallelle uitvoering***
 
-Parallelle query werkt door meerdere partities parallel op te vragen. Maar gegevens uit een afzonderlijke partitie worden serieel opgehaald met betrekking tot de query. Instellen `MaxDegreeOfParallelism` in SDK `MaxConcurrency` [V2](sql-api-sdk-dotnet.md) of sdk [V3](sql-api-sdk-dotnet-standard.md) op het aantal partities heeft de beste kans om de meest performante query te bereiken, op voorwaarde dat alle andere systeemomstandigheden hetzelfde blijven. Als u het aantal partities niet kent, u de mate van parallellisme instellen op een hoog aantal. Het systeem kiest het minimum (aantal partities, door de gebruiker geleverde input) als de mate van parallellisme.
+Parallelle query werkt door meerdere partities parallel te doorzoeken. Maar gegevens van een afzonderlijke partitie worden serieel opgehaald ten opzichte van de query. De `MaxDegreeOfParallelism` instelling in [SDK v2](sql-api-sdk-dotnet.md) of `MaxConcurrency` in [SDK v3](sql-api-sdk-dotnet-standard.md) voor het aantal partities is de beste kans om de meest uitvoerende query te bereiken, op voor waarde dat alle andere systeem omstandigheden hetzelfde blijven. Als u het aantal partities niet weet, kunt u de mate van parallelle uitvoering instellen op een hoog getal. Het systeem kiest het minimum (aantal partities, door de gebruiker opgegeven invoer) als de mate van parallelle uitvoering.
 
-Houd er rekening mee dat parallelle query's het meeste voordeel opleveren als de gegevens gelijkmatig over alle partities worden verdeeld met betrekking tot de query. Als de partitieverzameling zo is verdeeld dat alle of het grootste deel van de gegevens die door een query worden geretourneerd, is geconcentreerd in een paar partities (één partitie is het ergste geval), zullen deze partities de uitvoering van de query knelpunten.
+Houd er rekening mee dat parallelle query's het meest voor deel opleveren als de gegevens gelijkmatig worden verdeeld over alle partities met betrekking tot de query. Als de gepartitioneerde verzameling is gepartitioneerd zodat alle of de meeste gegevens die door een query zijn geretourneerd, in een paar partities worden geconcentreerd (één partitie is het ergste geval), kunnen deze partities de prestaties van de query opsporen.
 
 ***MaxBufferedItemCount afstemmen***
     
-Parallelle query is ontworpen om resultaten vooraf op te halen terwijl de huidige batch met resultaten wordt verwerkt door de client. Dit vooraf ophalen helpt de algehele latentie van een query te verbeteren. De `MaxBufferedItemCount` parameter beperkt het aantal vooraf opgehaalde resultaten. Stel `MaxBufferedItemCount` in op het verwachte aantal geretourneerde resultaten (of een hoger aantal) zodat de query het maximale voordeel van vooraf ophalen kan ontvangen.
+Parallelle query is ontworpen om de resultaten vooraf op te halen terwijl de huidige batch met resultaten door de client wordt verwerkt. Deze vooraf ophalen helpt de algehele latentie van een query te verbeteren. De `MaxBufferedItemCount` para meter beperkt het aantal vooraf opgehaalde resultaten. Stel `MaxBufferedItemCount` in op het verwachte aantal geretourneerde resultaten (of een hoger getal), zodat de query het maximale voor deel van het vooraf ophalen kan ontvangen.
 
-Pre-fetching werkt op dezelfde manier, ongeacht de mate van parallellisme, en er is een enkele buffer voor de gegevens van alle partities.  
+Het vooraf ophalen werkt op dezelfde manier, ongeacht de mate van parallellisme, en er is één buffer voor de gegevens van alle partities.  
 
-**Back-off implementeren met opnieuw gebruikNa intervallen**
+**Uitstel implementeren met RetryAfter-intervallen**
 
-Tijdens prestatietests moet u de belasting verhogen totdat een klein aantal aanvragen wordt beperkt. Als aanvragen worden beperkt, moet de clienttoepassing het gaspedaal weer intrappen voor het door de server opgegeven interval voor het opnieuw proberen. Met respect voor de backoff zorgt ervoor dat u een minimale hoeveelheid tijd te wachten tussen nieuwe pogingen. 
+Tijdens de prestatie tests moet u de belasting verg Roten tot een klein aantal aanvragen wordt beperkt. Als aanvragen worden beperkt, moet de client toepassing worden uitgeschakeld op een vertraging voor het door de server opgegeven interval voor nieuwe pogingen. Door de uitstel te respecteren, zorgt u ervoor dat u een minimale hoeveelheid tijd kunt wachten tussen nieuwe pogingen. 
 
-Beleidsondersteuning opnieuw proberen is opgenomen in deze SDK's:
+Ondersteuning voor het beleid voor opnieuw proberen is opgenomen in deze Sdk's:
 - Versie 1.8.0 en hoger van de [.NET SDK voor SQL](sql-api-sdk-dotnet.md) en de [Java SDK voor SQL](sql-api-sdk-java.md)
-- Versie 1.9.0 en hoger van de [Node.js SDK voor SQL](sql-api-sdk-node.md) en de [Python SDK voor SQL](sql-api-sdk-python.md)
-- Alle ondersteunde versies van de [.NET Core](sql-api-sdk-dotnet-core.md) SDKs 
+- Versie 1.9.0 en hoger van de [node. js SDK voor SQL](sql-api-sdk-node.md) en de [python-SDK voor SQL](sql-api-sdk-python.md)
+- Alle ondersteunde versies van de [.net core](sql-api-sdk-dotnet-core.md) sdk's 
 
-Zie [RetryAfter voor](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx)meer informatie.
+Zie [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx)voor meer informatie.
     
-In versie 1.19 en hoger van de .NET SDK is er een mechanisme voor het registreren van aanvullende diagnostische informatie en het oplossen van latentieproblemen, zoals in het volgende voorbeeld wordt weergegeven. U de diagnostische tekenreeks registreren voor aanvragen met een hogere leeslatentie. De vastgelegde diagnostische tekenreeks helpt u te begrijpen hoe vaak u 429 fouten voor een bepaald verzoek hebt ontvangen.
+In versie 1,19 en hoger van de .NET SDK is er een mechanisme voor het vastleggen van aanvullende diagnostische gegevens en latentie problemen bij problemen, zoals wordt weer gegeven in het volgende voor beeld. U kunt de diagnostische teken reeks registreren voor aanvragen met een hogere lees latentie. De vastgelegde diagnostische teken reeks helpt u inzicht te krijgen in het aantal keren dat u 429 fouten hebt ontvangen voor een bepaalde aanvraag.
 
 ```csharp
 ResourceResponse<Document> readDocument = await this.readClient.ReadDocumentAsync(oldDocuments[i].SelfLink);
 readDocument.RequestDiagnosticsString 
 ```
 
-**Cache document URI's voor lagere leeslatentie**
+**Document-Uri's in cache opslaan voor minder lees latentie**
 
-Cache document URI's waar mogelijk voor de best gelezen prestaties. U moet logica definiëren om de bron-id in de cache te bewaren wanneer u een bron maakt. Opzoekingen op basis van resource-id's zijn sneller dan op naam gebaseerde lookups, dus het kaanders plaatsen van deze waarden verbetert de prestaties.
+Cache waar mogelijk document-Uri's voor de beste Lees prestaties. U moet de logica definiëren om de resource-ID in de cache op te slaan wanneer u een resource maakt. Zoek acties op basis van resource-Id's zijn sneller dan op naam gebaseerde zoek acties, waardoor de prestaties worden verbeterd in de cache.
 
    <a id="tune-page-size"></a>
-**De paginagrootte afstemmen voor query's/leesfeeds voor betere prestaties**
+**De pagina grootte voor query's/feeds voor betere prestaties afstemmen**
 
-Wanneer u documenten in bulk leest met leesfeedfunctionaliteit `ReadDocumentFeedAsync`(bijvoorbeeld) of wanneer u een SQL-query uitgeeft, worden de resultaten op een gesegmenteerde manier geretourneerd als de resultaatset te groot is. Standaard worden de resultaten geretourneerd in brokken van 100 items of 1 MB, welke limiet het eerst wordt bereikt.
+Wanneer u een bulk-Lees bewerking uitvoert van documenten met behulp van de functie voor `ReadDocumentFeedAsync`Lees bewerkingen (bijvoorbeeld) of wanneer u een SQL-query uitgeeft, worden de resultaten op een gesegmenteerde manier geretourneerd als de resultatenset te groot is. Standaard worden resultaten geretourneerd in delen van 100 items of 1 MB, waarbij de limiet eerst wordt bereikt.
 
-Om het aantal netwerkretourritten te verminderen dat nodig is om alle toepasselijke resultaten op te halen, u de paginagrootte vergroten door [x-ms-max-item-telling](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) te gebruiken om maar liefst 1.000 kopteksten op te vragen. Wanneer u slechts een paar resultaten hoeft weer te geven, bijvoorbeeld als uw gebruikersinterface of toepassings-API slechts 10 resultaten tegelijk retourneert, u ook de paginagrootte verlagen tot 10 om de doorvoer die wordt verbruikt voor lees- en query's te verminderen.
+Om het aantal netwerk round trips te verminderen dat vereist is om alle toepasselijke resultaten op te halen, kunt u de pagina grootte verg Roten door [x-MS-maximum-item-Count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) te gebruiken om 1.000-headers aan te vragen. Als u slechts enkele resultaten wilt weer geven, bijvoorbeeld als uw gebruikers interface of toepassings-API slechts 10 resultaten per keer retourneert, kunt u ook de pagina grootte verkleinen tot 10 om de door Voer voor lees bewerkingen en query's te verminderen.
 
 > [!NOTE] 
-> Het `maxItemCount` pand mag niet alleen worden gebruikt voor pagination. Het belangrijkste gebruik is om de prestaties van query's te verbeteren door het maximum aantal items dat op één pagina wordt geretourneerd, te verminderen.  
+> De `maxItemCount` eigenschap mag niet alleen worden gebruikt voor paginering. Het belangrijkste gebruik is het verbeteren van de prestaties van query's door het maximum aantal items te verminderen dat op één pagina wordt geretourneerd.  
 
-U ook het paginaformaat instellen met behulp van de beschikbare Azure Cosmos DB SDKs. Met de eigenschap `FeedOptions` [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) u het maximum aantal items instellen dat moet worden geretourneerd in de opsommingsbewerking. Wanneer `maxItemCount` de SDK is ingesteld op -1, vindt de SDK automatisch de optimale waarde, afhankelijk van de documentgrootte. Bijvoorbeeld:
+U kunt ook de pagina grootte instellen met behulp van de beschik bare Azure Cosmos DB Sdk's. Met [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) de eigenschap MaxItemCount `FeedOptions` in kunt u het maximum aantal items instellen dat in de opsommings bewerking moet worden geretourneerd. Wanneer `maxItemCount` is ingesteld op-1, detecteert de SDK automatisch de optimale waarde, afhankelijk van de grootte van het document. Bijvoorbeeld:
     
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
 ```
     
-Wanneer een query wordt uitgevoerd, worden de resulterende gegevens verzonden binnen een TCP-pakket. Als u een te `maxItemCount`lage waarde opgeeft voor , is het aantal ritten dat nodig is om de gegevens binnen het TCP-pakket te verzenden hoog, wat van invloed is op de prestaties. Dus als u niet zeker weet welke `maxItemCount` waarde u voor de eigenschap moet instellen, u deze het beste instellen op -1 en de SDK de standaardwaarde laten kiezen.
+Wanneer een query wordt uitgevoerd, worden de resulterende gegevens verzonden binnen een TCP-pakket. Als u te laag een waarde opgeeft voor `maxItemCount`, is het aantal trips dat nodig is voor het verzenden van de gegevens in het TCP-pakket hoog. Dit is van invloed op de prestaties. Als u niet zeker weet welke waarde voor de `maxItemCount` eigenschap moet worden ingesteld, kunt u deze het beste instellen op-1 en de SDK de standaard waarde laten kiezen.
 
 **Het aantal threads/taken verhogen**
 
-Zie [Het aantal threads/taken verhogen](#increase-threads) in het gedeelte Netwerken van dit artikel.
+Zie [het aantal threads/taken](#increase-threads) in het gedeelte netwerken van dit artikel verg Roten.
 
 ## <a name="indexing-policy"></a>Indexeringsbeleid
  
-**Ongebruikte paden uitsluiten van indexering voor snellere schrijfbewerkingen**
+**Niet-gebruikte paden uitsluiten van indexeren voor snellere schrijf bewerkingen**
 
-Met het Azure Cosmos DB-indexeringsbeleid u ook opgeven welke documentpaden u wilt opnemen in of uitsluiten van indexering met behulp van indexeringspaden (Indexeringsbeleid.IncludedPaths en IndexingPolicy.ExcludedPaths). Indexeringspaden kunnen de schrijfprestaties verbeteren en de indexopslag verminderen voor scenario's waarin de querypatronen vooraf bekend zijn. Dit komt omdat indexeringskosten rechtstreeks correleren met het aantal geïndexeerde unieke paden. Deze code geeft bijvoorbeeld aan hoe u een hele sectie van de documenten (een substructuur) uitsluiten van indexering met behulp van de joker:This code shows how to exclude a entire section of the documents (a subtree) from indexing using the * wildcard:
+Met het Azure Cosmos DB indexerings beleid kunt u ook opgeven welke document paden u wilt opnemen in of uitsluiten van indexeren met behulp van index paden (IndexingPolicy. IncludedPaths en IndexingPolicy. ExcludedPaths). Indexerings paden kunnen de schrijf prestaties verbeteren en de index opslag beperken voor scenario's waarin de query patronen vooraf bekend zijn. Dit komt doordat de index kosten direct overeenkomen met het aantal unieke paden dat is geïndexeerd. Deze code laat bijvoorbeeld zien hoe u een volledige sectie van de documenten (een substructuur) uitsluit van indexeren met behulp van het Joker teken ' * ':
 
 ```csharp
 var collection = new DocumentCollection { Id = "excludedPathCollection" };
@@ -231,20 +231,20 @@ collection.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndex
 collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
 ```
 
-Zie [Azure Cosmos DB-indexeringsbeleid](index-policy.md)voor meer informatie .
+Zie [Azure Cosmos DB Indexing policies](index-policy.md)(Engelstalig) voor meer informatie.
 
 ## <a name="throughput"></a>Doorvoer
 <a id="measure-rus"></a>
 
-**Meet en stem af voor lager gebruik van aanvraageenheden per seconde**
+**Meten en afstemmen voor lagere aanvraag eenheden/tweede gebruik**
 
-Azure Cosmos DB biedt een uitgebreide set databasebewerkingen. Deze bewerkingen omvatten relationele en hiërarchische query's met UDF's, opgeslagen procedures en triggers, allemaal die werken op de documenten in een databaseverzameling. De kosten die aan elk van deze bewerkingen zijn gekoppeld, zijn afhankelijk van de CPU, IO en het geheugen die nodig zijn om de bewerking te voltooien. In plaats van na te denken over en het beheer van hardwareresources, u een Aanvraageenheid (RU) zien als één maatregel voor de resources die nodig zijn om verschillende databasebewerkingen uit te voeren en een aanvraag voor een toepassing te onderhouden.
+Azure Cosmos DB biedt een uitgebreide set database bewerkingen. Deze bewerkingen omvatten relationele en hiërarchische query's met Udf's, opgeslagen procedures en triggers, die allemaal op de documenten in een database verzameling worden uitgevoerd. De kosten voor elk van deze bewerkingen variëren, afhankelijk van de CPU, IO en het geheugen die nodig zijn om de bewerking te volt ooien. In plaats van te denken over en het beheren van hardwarebronnen, kunt u een aanvraag eenheid (RU) beschouwen als een enkele maat eenheid voor de resources die nodig zijn om verschillende database bewerkingen uit te voeren en een toepassings aanvraag te onderhouden.
 
-Doorvoer is ingericht op basis van het aantal [aanvraageenheden](request-units.md) dat voor elke container is ingesteld. Het verbruik van de aanvraageenheid wordt beoordeeld als een tarief per seconde. Aanvragen die het ingerichte tarief van de aanvraageenheid voor hun container overschrijden, zijn beperkt totdat de koers onder het ingerichte niveau voor de container zakt. Als uw toepassing een hoger doorvoerniveau vereist, u uw doorvoer verhogen door extra aanvraageenheden in te richten.
+De door Voer is ingericht op basis van het aantal ingestelde [aanvraag eenheden](request-units.md) voor elke container. Het verbruik van de aanvraag eenheid wordt geëvalueerd als een rente per seconde. Toepassingen die het aantal ingerichte aanvraag eenheden voor hun container overschrijden, zijn beperkt tot het aantal onder het ingerichte niveau voor de container daalt. Als voor uw toepassing een hogere door Voer is vereist, kunt u de door Voer verhogen door extra aanvraag eenheden in te richten.
 
-De complexiteit van een query is van invloed op het aantal aanvraageenheden dat wordt verbruikt voor een bewerking. Het aantal predicaten, de aard van de predicaten, het aantal UDF's en de grootte van de brongegevensset hebben allemaal invloed op de kosten van querybewerkingen.
+De complexiteit van een query is van invloed op het aantal aanvraag eenheden dat voor een bewerking wordt verbruikt. Het aantal predikaten, de aard van de predikaten, het aantal Udf's en de grootte van de bron gegevensset beïnvloeden alle de kosten van de query bewerkingen.
 
-Als u de overhead van een bewerking wilt meten (maken, bijwerken of verwijderen), controleert `ResourceResponse\<T>` `FeedResponse\<T>` u de [x-ms-request-charge-header](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (of de gelijkwaardige `RequestCharge` eigenschap in of in de .NET SDK) om het aantal aanvraageenheden te meten dat door de bewerkingen wordt verbruikt:
+Als u de overhead van een bewerking (maken, bijwerken of verwijderen) wilt meten, inspecteert u de [x-MS-Request-](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) factuurkop tekst ( `RequestCharge` of de `ResourceResponse\<T>` equivalente eigenschap in of `FeedResponse\<T>` in de .NET SDK) om het aantal aanvraag eenheden te meten dat door de bewerkingen wordt verbruikt:
 
 ```csharp
 // Measure the performance (Request Units) of writes
@@ -259,30 +259,30 @@ while (queryable.HasMoreResults)
     }
 ```             
 
-De aanvraagkosten die in deze koptekst worden geretourneerd, zijn een fractie van uw ingerichte doorvoer (dat wil zeggen 2.000 RU's / seconde). Als de vorige query bijvoorbeeld 1.000 documenten van 1 KB retourneert, zijn de kosten van de bewerking 1.000. Dus, binnen een seconde, de server eert slechts twee van dergelijke verzoeken voordat de snelheid beperken van latere verzoeken. Zie [Eenheden aanvragen](request-units.md) en de calculator van de [aanvraageenheid](https://www.documentdb.com/capacityplanner)voor meer informatie.
+De aanvraag kosten die in deze header worden geretourneerd, zijn een fractie van uw ingerichte door Voer (dat wil zeggen 2.000 RUs/seconde). Als de voor gaande query bijvoorbeeld 1.000 1 KB-documenten retourneert, zijn de kosten van de bewerking 1.000. Binnen één seconde worden er dus slechts twee aanvragen door de server gehonoreerd voordat het aantal latere aanvragen wordt beperkt. Zie [aanvraag eenheden](request-units.md) en de [reken eenheid voor aanvragen](https://www.documentdb.com/capacityplanner)voor meer informatie.
 <a id="429"></a>
 
-**Tariefbeperking/aanvraagtarief te groot**
+**Aantal verwerkings frequenties/aanvragen afhandelen te groot**
 
-Wanneer een client probeert de gereserveerde doorvoer voor een account te overschrijden, is er geen prestatiedegradatie op de server en geen gebruik van doorvoercapaciteit boven het gereserveerde niveau. De server beëindigt de aanvraag preventief met RequestRateTooLarge (HTTP-statuscode 429). Het retourneert een [x-ms-retry-after-ms](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) header die de hoeveelheid tijd aangeeft, in milliseconden, dat de gebruiker moet wachten voordat hij het verzoek opnieuw probeert.
+Wanneer een client de gereserveerde door Voer voor een account probeert te overschrijden, is er geen prestatie vermindering op de server en wordt er geen gebruik van de doorvoer capaciteit meer dan het gereserveerde niveau. De server preventief de aanvraag met RequestRateTooLarge te beëindigen (HTTP-status code 429). Het retourneert een [x-MS-retry-after-MS](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) -header die de hoeveelheid tijd, in milliseconden, aangeeft dat de gebruiker moet wachten voordat de aanvraag opnieuw wordt geprobeerd.
 
     HTTP Status 429,
     Status Line: RequestRateTooLarge
     x-ms-retry-after-ms :100
 
-De SDK's vangen allemaal impliciet dit antwoord, respecteren de server-opgegeven retry-after header en proberen het verzoek opnieuw. Tenzij uw account gelijktijdig wordt geopend door meerdere clients, zal de volgende poging slagen.
+De Sdk's ondervangen dit antwoord impliciet, respecteert de door de server opgegeven nieuwe poging na de header en voert de aanvraag opnieuw uit. Tenzij uw account gelijktijdig wordt geopend door meerdere clients, zal de volgende poging slagen.
 
-Als u meer dan één client cumulatief boven het aanvraagpercentage hebt, is het aantal standaardopnieuw proberen dat momenteel intern door de client is ingesteld op 9, mogelijk niet voldoende. In dit geval gooit de client een DocumentClientException met statuscode 429 naar de toepassing. 
+Als u meer dan één client cumulatief op dezelfde manier hebt uitgevoerd, is het standaard aantal nieuwe pogingen dat momenteel is ingesteld op 9 intern door de client mogelijk niet voldoende. In dit geval genereert de client een DocumentClientException met de status code 429 naar de toepassing. 
 
-U het aantal standaardwijzigingen `RetryOptions` wijzigen `ConnectionPolicy` door de instantie in te stellen. Standaard wordt de DocumentClientException met statuscode 429 geretourneerd na een cumulatieve wachttijd van 30 seconden als de aanvraag boven het aanvraagpercentage blijft werken. Deze fout wordt zelfs geretourneerd wanneer het aantal nieuwe opnieuw proberen kleiner is dan het maximale aantal nieuwe try's, ongeacht of de huidige waarde de standaardwaarde van 9 of een door de gebruiker gedefinieerde waarde is.
+U kunt het standaard aantal nieuwe pogingen wijzigen door de `RetryOptions` op het `ConnectionPolicy` exemplaar in te stellen. Standaard wordt de DocumentClientException met de status code 429 geretourneerd na een cumulatieve wacht tijd van 30 seconden als de aanvraag boven het aanvraag aantal blijft. Deze fout wordt weer gegeven zelfs wanneer het huidige aantal nieuwe pogingen kleiner is dan het maximum aantal nieuwe pogingen, of de huidige waarde de standaard instelling is van 9 of een door de gebruiker gedefinieerde waarde.
 
-Het geautomatiseerde gedrag voor het opnieuw proberen helpt de veerkracht en bruikbaarheid voor de meeste toepassingen te verbeteren. Maar het is misschien niet het beste gedrag wanneer u prestatiebenchmarks doet, vooral wanneer u latentie meet. De door de client waargenomen latentie piekt als het experiment de servergaspedaal raakt en ervoor zorgt dat de client SDK stilletjes opnieuw probeert. Om latentiepieken tijdens prestatie-experimenten te voorkomen, meet u de kosten die door elke bewerking worden geretourneerd en zorgt u ervoor dat aanvragen onder het gereserveerde aanvraagpercentage werken. Zie [Eenheden aanvragen voor](request-units.md)meer informatie.
+Het gedrag voor automatische pogingen helpt de flexibiliteit en bruikbaarheid voor de meeste toepassingen te verbeteren. Het is echter mogelijk niet het beste gedrag wanneer u prestatie benchmarks uitvoert, met name wanneer u een latentie meet. De door de client waargenomen latentie krijgt een waarschuwing als het experiment de server beperking bereikt en zorgt ervoor dat de client-SDK op de achtergrond opnieuw probeert. Om latentie pieken te voor komen tijdens prestatie experimenten, meet u de kosten die worden geretourneerd door elke bewerking en zorgt u ervoor dat aanvragen onder het gereserveerde aanvraag tarief vallen. Zie [aanvraag eenheden](request-units.md)voor meer informatie.
 
-**Voor een hogere doorvoer, ontwerp voor kleinere documenten**
+**Voor een hogere door Voer ontwerpen voor kleinere documenten**
 
-De aanvraagkosten (dat wil zeggen de kosten voor het verwerken van aanvragen) van een bepaalde bewerking correleren rechtstreeks met de grootte van het document. Bewerkingen op grote documenten kosten meer dan bewerkingen op kleine documenten.
+De aanvraag kosten (dat wil zeggen, de aanvraag verwerkings kosten) van een bepaalde bewerking correleert direct naar de grootte van het document. Bewerkingen voor grote documenten kosten meer dan bewerkingen op kleine documenten.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Prestatie- en schaaltests met Azure Cosmos DB](performance-testing.md)voor een voorbeeldtoepassing die wordt gebruikt om Azure Cosmos DB te evalueren voor krachtige scenario's op een aantal clientmachines.
+Zie [prestaties en schalen testen met Azure Cosmos DB](performance-testing.md)voor een voorbeeld toepassing die wordt gebruikt om Azure Cosmos DB te evalueren voor scenario's met hoge prestaties op een aantal client computers.
 
-Zie [Partitioneren en schalen in Azure Cosmos DB](partition-data.md)voor meer informatie over het ontwerpen van uw toepassing voor schaal en hoge prestaties.
+Zie [partitioneren en schalen in azure Cosmos DB](partition-data.md)voor meer informatie over het ontwerpen van uw toepassing voor schaal baarheid en hoge prestaties.

@@ -1,6 +1,6 @@
 ---
-title: Beveiligingsaanbevelingen voor Azure Marketplace-afbeeldingen | Microsoft Documenten
-description: Dit artikel bevat aanbevelingen voor afbeeldingen die op de markt zijn opgenomen
+title: Beveiligings aanbevelingen voor installatie kopieën van Azure Marketplace | Microsoft Docs
+description: In dit artikel worden aanbevelingen gegeven voor installatie kopieën die zijn opgenomen in de markt plaats
 services: security
 documentationcenter: na
 author: terrylanfear
@@ -13,65 +13,65 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
 ms.openlocfilehash: 3925e39824d1702ff43a6b981ac997ddab658b96
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80548662"
 ---
-# <a name="security-recommendations-for-azure-marketplace-images"></a>Beveiligingsaanbevelingen voor Azure Marketplace-afbeeldingen
+# <a name="security-recommendations-for-azure-marketplace-images"></a>Beveiligings aanbevelingen voor installatie kopieën van Azure Marketplace
 
-Uw afbeelding moet voldoen aan deze aanbevelingen voor beveiligingsconfiguratie. Dit helpt bij het handhaven van een hoog beveiligingsniveau voor afbeeldingen van partneroplossingen in de Azure Marketplace.
+Uw installatie kopie moet voldoen aan deze beveiligings configuratie aanbevelingen. Zo kunt u een hoog beveiligings niveau voor installatie kopieën van partner oplossingen in azure Marketplace onderhouden.
 
-Voer altijd een beveiligingsdetectie uit op uw afbeelding voordat u deze indient. Als u een beveiligingslek in uw eigen gepubliceerde afbeelding detecteert, moet u uw klanten tijdig informeren over zowel het beveiligingslek als hoe u dit corrigeren.
+Voer altijd een detectie van beveiligings problemen op uw installatie kopie uit voordat u deze verzendt. Als u een beveiligings probleem detecteert in uw eigen gepubliceerde installatie kopie, moet u uw klanten tijdig op de hoogte stellen van het beveiligings probleem en hoe dit kan worden opgelost.
 
-## <a name="open-source-based-images"></a>Afbeeldingen op basis van open source
+## <a name="open-source-based-images"></a>Open-source installatie kopieën
 
 |||
 |--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Categorie**                                                 | **Controleren**                                                                                                                                                                                                                                                                              |
-| Beveiliging                                                     | Installeer de nieuwste beveiligingspatches voor de Linux-distributie.                                                                                                                                                                                                              |
-| Beveiliging                                                     | Volg de richtlijnen van de branche om de VM-afbeelding voor de specifieke Linux-distributie te beveiligen.                                                                                                                                                                                     |
-| Beveiliging                                                     | Beperk het aanvalsoppervlak door een minimale voetafdruk te behouden met alleen de benodigde Windows Server-rollen, -functies, -services en -netwerkpoorten.                                                                                                                                               |
-| Beveiliging                                                     | Scan broncode en resulterende VM-afbeelding op malware.                                                                                                                                                                                                                                   |
-| Beveiliging                                                     | De VHD-afbeelding bevat alleen de nodige vergrendelde accounts die geen standaardwachtwoorden hebben die interactief inloggen mogelijk maken; geen achterdeuren.                                                                                                                                           |
-| Beveiliging                                                     | Firewallregels uitschakelen, tenzij de toepassing er functioneel op vertrouwt, zoals een firewalltoestel.                                                                                                                                                                             |
-| Beveiliging                                                     | Verwijder alle gevoelige informatie uit de VHD-afbeelding, zoals test SSH-toetsen, bekende hosts-bestanden, logboekbestanden en onnodige certificaten.                                                                                                                                       |
+| **Categorie**                                                 | **Kijk**                                                                                                                                                                                                                                                                              |
+| Beveiliging                                                     | Installeer de meest recente beveiligings patches voor de Linux-distributie.                                                                                                                                                                                                              |
+| Beveiliging                                                     | Volg de richt lijnen voor de branche om de VM-installatie kopie te beveiligen voor de specifieke Linux-distributie.                                                                                                                                                                                     |
+| Beveiliging                                                     | Beperk de kwets baarheid door minimale footprint te behouden met alleen de benodigde Windows Server-functies,-onderdelen,-services en-netwerk poorten.                                                                                                                                               |
+| Beveiliging                                                     | Scan de bron code en de resulterende VM-installatie kopie voor malware.                                                                                                                                                                                                                                   |
+| Beveiliging                                                     | De VHD-installatie kopie bevat alleen de benodigde vergrendelde accounts die geen standaard wachtwoorden hebben waarmee interactieve aanmelding zou worden toegestaan. geen deuren terug.                                                                                                                                           |
+| Beveiliging                                                     | Schakel Firewall regels uit, tenzij toepassing functioneel afhankelijk is, zoals een firewall apparaat.                                                                                                                                                                             |
+| Beveiliging                                                     | Verwijder alle gevoelige informatie uit de VHD-installatie kopie, zoals SSH-sleutels, bekende hosts-bestand, logboek bestanden en overbodige certificaten.                                                                                                                                       |
 | Beveiliging                                                     | Vermijd het gebruik van LVM.                                                                                                                                                                                                                                            |
-| Beveiliging                                                     | Neem de nieuwste versies van vereiste bibliotheken op: </br> - OpenSSL v1.0 of hoger </br> - Python 2.5 of hoger (Python 2.6+ is een aanrader) </br> - Python pyasn1 pakket als dit nog niet is geïnstalleerd </br> - d.OpenSSL v 1.0 of hoger                                                                |
-| Beveiliging                                                     | Duidelijke Bash / Shell geschiedenis vermeldingen.                                                                                                                                                                                                                                             |
-| Netwerken                                                   | Neem standaard de SSH-server op. Stel SSH in leven om config te sshd met de volgende optie: ClientAliveInterval 180.                                                                                                                                                        |
-| Netwerken                                                   | Verwijder elke aangepaste netwerkconfiguratie uit de afbeelding. Verwijder de resolv.conf: `rm /etc/resolv.conf`.                                                                                                                                                                                |
-| Implementatie                                                   | Installeer de nieuwste Azure Linux Agent.</br> - Installeren met behulp van het RPM- of Deb-pakket.  </br> - U ook gebruik maken van de handmatige installatieproces, maar de installateur pakketten worden aanbevolen en de voorkeur. </br> - Als u de agent handmatig installeert vanuit de `waagent` GitHub-opslagplaats, kopieert u het bestand eerst naar `/usr/sbin` en wordt uitgevoerd (als hoofd): </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>Het configuratiebestand van `/etc/waagent.conf`de agent wordt geplaatst op . |
-| Implementatie                                                   | Zorg ervoor dat Azure Support onze partners seriële console-uitvoer kan bieden wanneer dat nodig is en een voldoende time-out kan bieden voor het monteren van os-schijven vanuit cloudopslag. Voeg de volgende parameters toe aan `console=ttyS0 earlyprintk=ttyS0 rootdelay=300`de afbeeldingkernelopstartlijn: . |
-| Implementatie                                                   | Geen swap partitie op de OS schijf. Swap kan worden aangevraagd voor creatie op de lokale resourceschijf door de Linux-agent.         |
-| Implementatie                                                   | Maak één hoofdpartitie voor de OS-schijf.      |
-| Implementatie                                                   | Alleen 64-bits besturingssysteem.                                                                                                                                                                                                                                                          |
+| Beveiliging                                                     | De nieuwste versies van de vereiste bibliotheken bevatten: </br> -OpenSSL v 1.0 of hoger </br> -Python 2,5 of hoger (python 2.6 + wordt sterk aanbevolen) </br> -Python pyasn1-pakket als dit nog niet is geïnstalleerd </br> -d. OpenSSL v 1,0 of hoger                                                                |
+| Beveiliging                                                     | Wis de bash/shell-geschiedenis vermeldingen.                                                                                                                                                                                                                                             |
+| Netwerken                                                   | Neem standaard de SSH-server op. Stel SSH in op sshd config met de volgende optie: ' ClientAliveInterval 180.                                                                                                                                                        |
+| Netwerken                                                   | Verwijder een aangepaste netwerk configuratie uit de installatie kopie. Verwijder de omgezette. conf: `rm /etc/resolv.conf`.                                                                                                                                                                                |
+| Implementatie                                                   | Installeer de meest recente Azure Linux-agent.</br> -Installeer met het pakket RPM of het deb.  </br> -U kunt ook het hand matige installatie proces gebruiken, maar de installatie pakketten worden aanbevolen en voor keur. </br> -Als u de agent hand matig installeert vanuit de GitHub-opslag plaats `waagent` , kopieert `/usr/sbin` u het bestand naar en voert u uit (als basis): </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>Het configuratie bestand van de agent wordt `/etc/waagent.conf`geplaatst op. |
+| Implementatie                                                   | Zorg ervoor dat de ondersteuning van Azure onze partners kan voorzien van een seriële console-uitvoer wanneer dat nodig is en een voldoende time-out voor het koppelen van de besturingssysteem schijf van Cloud opslag biedt. Voeg de volgende para meters toe aan de opstart regel `console=ttyS0 earlyprintk=ttyS0 rootdelay=300`voor de installatie kopie-kernel:. |
+| Implementatie                                                   | Geen wissel partitie op de besturingssysteem schijf. De Linux-agent kan worden gevraagd om te maken op de lokale bron schijf.         |
+| Implementatie                                                   | Maak een enkele hoofd partitie voor de besturingssysteem schijf.      |
+| Implementatie                                                   | 64-bits besturings systeem.                                                                                                                                                                                                                                                          |
 
-## <a name="windows-server-based-images"></a>Afbeeldingen op basis van Windows Server
+## <a name="windows-server-based-images"></a>Installatie kopieën op basis van Windows Server
 
 |||
 |-------------| -------------------------|
-| **Categorie**                                                     | **Controleren**                                                                                                                                                                |
-| Beveiliging                                                         | Gebruik een beveiligde os-basisafbeelding. De VHD die wordt gebruikt voor de bron van een afbeelding op basis van Windows Server moet afkomstig zijn van de Windows Server OS-afbeeldingen die via Microsoft Azure worden geleverd. |
-| Beveiliging                                                         | Installeer alle nieuwste beveiligingsupdates.                                                                                                                                     |
-| Beveiliging                                                         | Toepassingen mogen niet afhankelijk zijn van beperkte gebruikersnamen zoals beheerder, root of beheerder.                                                                |
-| Beveiliging                                                         | BitLocker-stationsversleuteling inschakelen voor zowel harde schijven als gegevensharde schijven.                                                             |
-| Beveiliging                                                         | Beperk het aanvalsoppervlak door een minimale voetafdruk te behouden met alleen de benodigde Windows Server-rollen, -functies, -services en-netwerkpoorten ingeschakeld.                         |
-| Beveiliging                                                         | Scan broncode en resulterende VM-afbeelding op malware.                                                                                                                     |
-| Beveiliging                                                         | Stel de beveiligingsupdate van Windows Server-afbeeldingen in op automatische update.                                                                                                                |
-| Beveiliging                                                         | De VHD-afbeelding bevat alleen de nodige vergrendelde accounts die geen standaardwachtwoorden hebben die interactief inloggen mogelijk maken; geen achterdeuren.                             |
-| Beveiliging                                                         | Firewallregels uitschakelen, tenzij de toepassing er functioneel op vertrouwt, zoals een firewalltoestel.                                                               |
-| Beveiliging                                                         | Verwijder alle gevoelige informatie uit de VHD-afbeelding, inclusief HOSTS-bestanden, logboekbestanden en onnodige certificaten.                                              |
-| Implementatie                                                       | Alleen 64-bits besturingssysteem.                            |
+| **Categorie**                                                     | **Kijk**                                                                                                                                                                |
+| Beveiliging                                                         | Gebruik een veilige basis installatie kopie van het besturings systeem. De VHD die wordt gebruikt voor de bron van een installatie kopie op basis van Windows Server moet afkomstig zijn uit de installatie kopieën van Windows Server-besturings systemen die via Microsoft Azure worden meegeleverd. |
+| Beveiliging                                                         | Installeer alle meest recente beveiligings updates.                                                                                                                                     |
+| Beveiliging                                                         | Toepassingen mogen niet afhankelijk zijn van beperkte gebruikers namen, zoals Administrator, root of admin.                                                                |
+| Beveiliging                                                         | Schakel BitLocker-stationsversleuteling in voor zowel harde schijven van het besturings systeem als voor gegevens harde schijven.                                                             |
+| Beveiliging                                                         | Beperk de kwets baarheid door minimale footprint te behouden met alleen de benodigde Windows Server-functies,-onderdelen,-services en-netwerk poorten ingeschakeld.                         |
+| Beveiliging                                                         | Scan de bron code en de resulterende VM-installatie kopie voor malware.                                                                                                                     |
+| Beveiliging                                                         | Stel de beveiligings update voor Windows Server-installatie kopieën in op automatisch bijwerken.                                                                                                                |
+| Beveiliging                                                         | De VHD-installatie kopie bevat alleen de benodigde vergrendelde accounts die geen standaard wachtwoorden hebben waarmee interactieve aanmelding zou worden toegestaan. geen deuren terug.                             |
+| Beveiliging                                                         | Schakel Firewall regels uit, tenzij toepassing functioneel afhankelijk is, zoals een firewall apparaat.                                                               |
+| Beveiliging                                                         | Verwijder alle gevoelige informatie uit de VHD-installatie kopie, inclusief HOSTS-bestanden, logboek bestanden en overbodige certificaten.                                              |
+| Implementatie                                                       | 64-bits besturings systeem.                            |
 
-Zelfs als uw organisatie geen afbeeldingen in de Azure-marktplaats heeft, u overwegen uw Windows- en Linux-afbeeldingsconfiguraties te controleren op basis van deze aanbevelingen.
+Zelfs als uw organisatie geen installatie kopieën heeft in de Azure Marketplace, kunt u de installatie kopieën van Windows en Linux controleren op basis van deze aanbevelingen.
 
-## <a name="contacting-customers"></a>Klanten contact opnemen
+## <a name="contacting-customers"></a>Contact opnemen met klanten
 
-Ga als contact op met klanten en hun e-mails met contactpersonen:
+Klanten en hun e-mail adres identificeren:
 
-1.  Selecteer **Insights**in Cloud Partner Portal aan de linkerkant.
-2.  Gebruik op het tabblad **Orders en gebruik** de velden **Begindatum** en **Einddatum** om het gebruik binnen het vereiste datumbereik op te vragen. Hieruit blijkt welke Azure-abonnementen dagelijks voor de aanbieding zijn gebruikt. Exporteer deze gegevens. 
-3.  Op dezelfde manier u op het tabblad **Klant** uw klantenbestand opvragen en exporteren.
-4.  Koppel de abonnements-id van stap 2 naar de abonnements-id van stap 3 aan om de benodigde klantgegevens te vinden.
+1.  In Cloud Partner-portal selecteert u op de rails de optie **inzichten**.
+2.  Gebruik op het tabblad **Orders en gebruik** de velden **begin datum** en **eind datum** om het gebruik van query's binnen het vereiste datum bereik te doorzoeken. Hier ziet u de Azure-abonnementen die dagelijks zijn gebruikt voor de aanbieding. Deze gegevens exporteren. 
+3.  Op dezelfde manier kunt u op het tabblad **klant** een query uitvoeren op uw klanten.
+4.  Zoek de abonnements-ID van stap 2 in de abonnements-ID uit stap 3 om de benodigde klant gegevens te vinden.

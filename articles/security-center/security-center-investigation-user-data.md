@@ -1,6 +1,6 @@
 ---
-title: Gebruikersgegevens beheren die zijn gevonden in een Azure Security Center-onderzoek
-description: " Meer informatie over het beheren van gebruikersgegevens in de onderzoeksfunctie van Azure Security Center. "
+title: Gebruikers gegevens beheren die zijn gevonden in een Azure Security Center onderzoek
+description: " Meer informatie over het beheren van gebruikers gegevens die zijn gevonden in de onderzoek functie van Azure Security Center. "
 services: operations-management-suite
 documentationcenter: na
 author: memildin
@@ -14,38 +14,38 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
 ms.openlocfilehash: aa262b0be3902f6e143a53f8f1302156fc5aede6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80582986"
 ---
-# <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Gebruikersgegevens beheren die zijn gevonden in een Azure Security Center-onderzoek
-In dit artikel vindt u informatie over het beheren van de gebruikersgegevens in de onderzoeksfunctie van Azure Security Center. Onderzoeksgegevens worden opgeslagen in [Azure Monitor-logboeken](../log-analytics/log-analytics-overview.md) en worden weergegeven in security center. Het beheren van gebruikersgegevens omvat de mogelijkheid om gegevens te verwijderen of te exporteren.
+# <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Gebruikers gegevens beheren die zijn gevonden in een Azure Security Center onderzoek
+Dit artikel bevat informatie over het beheren van de gebruikers gegevens die worden gevonden in de onderzoek functie van Azure Security Center. Onderzoek gegevens worden opgeslagen in [Azure monitor logboeken](../log-analytics/log-analytics-overview.md) en beschikbaar gesteld in Security Center. Het beheren van gebruikers gegevens omvat de mogelijkheid om gegevens te verwijderen of te exporteren.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Persoonsgegevens zoeken en identificeren
-In de Azure-portal u de onderzoeksfunctie van Security Center gebruiken om naar persoonlijke gegevens te zoeken. De onderzoeksfunctie is beschikbaar onder **beveiligingswaarschuwingen**.
+In de Azure Portal kunt u de functie onderzoek van Security Center gebruiken om te zoeken naar persoonlijke gegevens. De functie voor onderzoek is beschikbaar onder **beveiligings waarschuwingen**.
 
-De onderzoeksfunctie toont alle entiteiten, gebruikersgegevens en gegevens onder het tabblad **Entiteiten.**
+In de functie onderzoek worden alle entiteiten, gebruikers gegevens en gegevens op het tabblad **entiteiten** weer gegeven.
 
 ## <a name="securing-and-controlling-access-to-personal-information"></a>Toegang tot persoonsgegevens beveiligen en controleren
-Een gebruiker van het Beveiligingscentrum die de rol van reader-, eigenaar-, inzender- of accountbeheerder heeft toegewezen, heeft toegang tot klantgegevens in de tool.
+Een Security Center gebruiker de rol van lezer, eigenaar, Inzender of account beheerder heeft toegewezen, heeft toegang tot klant gegevens in het hulp programma.
 
-Zie [Ingebouwde rollen voor Azure-toegangsbeheer op basis van azure-rollen](../role-based-access-control/built-in-roles.md) voor meer informatie over de rollen Reader, Owner en Inzender. Zie [Azure-abonnementsbeheerders](../cost-management-billing/manage/add-change-subscription-administrator.md) voor meer informatie over de functie Accountbeheerder.
+Zie [ingebouwde rollen voor op rollen gebaseerd toegangs beheer voor Azure](../role-based-access-control/built-in-roles.md) voor meer informatie over de rollen lezer, eigenaar en Inzender. Zie [beheerders van Azure-abonnementen](../cost-management-billing/manage/add-change-subscription-administrator.md) voor meer informatie over de rol account beheerder.
 
 ## <a name="deleting-personal-data"></a>Persoonlijke gegevens verwijderen
-Een gebruiker van het Beveiligingscentrum die de rol van eigenaar, inzender of accountbeheerder heeft toegewezen, kan de onderzoeksgegevens verwijderen.
+Een Security Center gebruiker aan wie de rol van eigenaar, bijdrager of account beheerder is toegewezen, kan de onderzoek gegevens verwijderen.
 
-Als u een onderzoek wilt `DELETE` verwijderen, u een aanvraag indienen bij de AZURE Resource Manager REST API:
+Als u een onderzoek wilt verwijderen, kunt u `DELETE` een aanvraag indienen bij de Azure Resource Manager rest API:
 
 ```HTTP
 DELETE
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/features/security/incidents/{incidentName}
 ```
 
-De `incidentName` input is te vinden door `GET` alle incidenten aan te geven met behulp van een verzoek:
+U `incidentName` kunt de invoer vinden door alle incidenten te vermelden `GET` met behulp van een aanvraag:
 
 ```HTTP
 GET
@@ -53,8 +53,8 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 ```
 
 ## <a name="exporting-personal-data"></a>Persoonlijke gegevens exporteren
-Een gebruiker van het Beveiligingscentrum die de rol van eigenaar, inzender of accountbeheerder heeft toegewezen, kan de onderzoeksgegevens exporteren. Als u onderzoeksgegevens wilt exporteren, gaat u naar het tabblad **Entiteiten** om de relevante informatie te kopiëren en te plakken.
+Een Security Center gebruiker aan wie de rol van eigenaar, bijdrager of account beheerder is toegewezen, kan de onderzoek gegevens exporteren. Als u onderzoek gegevens wilt exporteren, gaat u naar het tabblad **entiteiten** om de relevante informatie te kopiëren en plakken.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie Gebruikersgegevens beheren in Azure Security Center voor meer informatie over het beheren van [gebruikersgegevens.](security-center-privacy.md)
-Zie [Privégegevens exporteren en verwijderen](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)voor meer informatie over het verwijderen van privégegevens in Azure Monitor-logboeken.
+Zie [gebruikers gegevens beheren in azure Security Center](security-center-privacy.md)voor meer informatie over het beheren van gebruikers gegevens.
+Zie [persoonlijke gegevens exporteren en verwijderen](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)voor meer informatie over het verwijderen van persoonlijke gegevens in azure monitor Logboeken.

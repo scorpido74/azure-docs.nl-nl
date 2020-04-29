@@ -1,95 +1,95 @@
 ---
-title: Certificaten roteren in Azure Kubernetes Service (AKS)
-description: Meer informatie over het roteren van uw certificaten in een AKS-cluster (Azure Kubernetes Service).
+title: Certificaten in azure Kubernetes service (AKS) draaien
+description: Meer informatie over het draaien van uw certificaten in een Azure Kubernetes service (AKS)-cluster.
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
 ms.openlocfilehash: 00dcef4ae0f04fc7f550859238ae8c7e1ad19384
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80549072"
 ---
-# <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Certificaten roteren in Azure Kubernetes Service (AKS)
+# <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Certificaten in azure Kubernetes service (AKS) draaien
 
-Azure Kubernetes Service (AKS) gebruikt certificaten voor verificatie met veel van de componenten. Het kan zijn dat u deze certificaten periodiek moet roteren om veiligheidsredenen of beleidsredenen. U bijvoorbeeld een beleid hebben om al uw certificaten elke 90 dagen te roteren.
+Azure Kubernetes service (AKS) gebruikt certificaten voor verificatie met veel onderdelen. Het kan zijn dat u deze certificaten regel matig moet draaien om beveiligings-of beleids redenen. U kunt bijvoorbeeld een beleid hebben om elke 90 dagen alle certificaten te draaien.
 
-In dit artikel ziet u hoe u de certificaten in uw AKS-cluster roteren.
+In dit artikel wordt beschreven hoe u de certificaten in uw AKS-cluster roteert.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit artikel moet u de Azure CLI-versie 2.0.77 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
+Voor dit artikel moet u de Azure CLI-versie 2.0.77 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
 
-## <a name="aks-certificates-certificate-authorities-and-service-accounts"></a>AKS-certificaten, certificaatautoriteiten en serviceaccounts
+## <a name="aks-certificates-certificate-authorities-and-service-accounts"></a>AKS certificaten, certificerings instanties en service accounts
 
-AKS genereert en gebruikt de volgende certificaten, certificaatautoriteiten en serviceaccounts:
+AKS genereert en gebruikt de volgende certificaten, certificerings instanties en service accounts:
 
-* De AKS API-server maakt een Certificaatautoriteit (CA) genaamd de Cluster CA.
-* De API-server heeft een cluster-CA, die certificaten voor eenrichtingscommunicatie van de API-server naar kubelets ondertekent.
-* Elke kubelet maakt ook een Certificate Signing Request (CSR), die is ondertekend door de Cluster CA, voor communicatie van de kubelet naar de API-server.
-* In het geëetcd-sleutelwaardearchief is een certificaat ondertekend door de cluster-CA voor communicatie van etcd naar de API-server.
-* Het geëetcd-sleutelwaardearchief maakt een CA die certificaten ondertekent om gegevensreplicatie tussen geëetcd replica's in het AKS-cluster te verifiëren en te autoriseren.
-* De API-aggregator gebruikt de cluster-CA om certificaten uit te geven voor communicatie met andere API's. De API-aggregator kan ook een eigen CA hebben voor de uitgifte van deze certificaten, maar gebruikt momenteel de Cluster CA.
-* Elk knooppunt maakt gebruik van een SA-token (Service Account), dat is ondertekend door de Cluster CA.
+* De AKS API-server maakt een certificerings instantie (CA) die de cluster-CA wordt genoemd.
+* De API-server heeft een cluster-CA, die certificaten ondertekent voor eenrichtings communicatie van de API-server naar kubelets.
+* Elke kubelet maakt ook een aanvraag voor certificaat ondertekening (CSR), die door de cluster-CA is ondertekend, voor communicatie van de kubelet naar de API-server.
+* De etcd-sleutel waarde Store heeft een certificaat dat is ondertekend door de cluster-CA voor communicatie van etcd naar de API-server.
+* De etcd-sleutel waarde Store maakt een certificerings instantie die certificaten ondertekent voor het verifiëren en autoriseren van gegevens replicatie tussen etcd-replica's in het AKS-cluster.
+* De API aggregator gebruikt de cluster-CA om certificaten uit te geven voor communicatie met andere Api's. De API aggregator kan ook een eigen certificerings instantie hebben voor het uitgeven van die certificaten, maar maakt momenteel gebruik van de cluster-CA.
+* Elk knoop punt maakt gebruik van een token voor service accounts (SA), dat is ondertekend door de cluster-CA.
 * De `kubectl` client heeft een certificaat voor communicatie met het AKS-cluster.
 
 > [!NOTE]
-> AKS-clusters die vóór maart 2019 zijn gemaakt, hebben certificaten die na twee jaar verlopen. Elk cluster dat na maart 2019 is gemaakt of een cluster waarop zijn certificaten zijn geroteerd, hebben Cluster CA-certificaten die na 30 jaar verlopen. Alle andere certificaten vervallen na twee jaar. Als u wilt controleren wanneer `kubectl get nodes` uw cluster is gemaakt, gebruikt u de *leeftijd* van uw knooppuntgroepen.
+> AKS-clusters die vóór maart 2019 zijn gemaakt, hebben certificaten die na twee jaar verlopen. Elk cluster dat is gemaakt na 2019 maart of een cluster met de geroteerde certificaten heeft cluster-CA-certificaten die na 30 jaar verlopen. Alle andere certificaten verlopen na twee jaar. Als u wilt controleren wanneer het cluster is gemaakt `kubectl get nodes` , gebruikt u om de *leeftijd* van de knooppunt groepen weer te geven.
 > 
-> Bovendien u de vervaldatum van het certificaat van uw cluster controleren. In de volgende opdracht worden bijvoorbeeld de certificaatgegevens voor het *myAKSCluster* weergegeven.
+> Daarnaast kunt u de verval datum van het certificaat van uw cluster controleren. Met de volgende opdracht worden bijvoorbeeld de certificaat gegevens voor het *myAKSCluster* -cluster weer gegeven.
 > ```console
 > kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d > my-cert.crt
 > openssl x509 -in my-cert.crt -text
 > ```
 
-## <a name="rotate-your-cluster-certificates"></a>Uw clustercertificaten roteren
+## <a name="rotate-your-cluster-certificates"></a>Uw cluster certificaten draaien
 
 > [!WARNING]
-> Het roteren van `az aks rotate-certs` uw certificaten met behulp van kan leiden tot maximaal 30 minuten downtime voor uw AKS-cluster.
+> Het draaien van uw `az aks rotate-certs` certificaten met kan tot 30 minuten uitval tijd voor uw AKS-cluster leiden.
 
-Gebruik [az aks-ophaalreferenties][az-aks-get-credentials] om je aan te melden bij je AKS-cluster. Deze opdracht downloadt en `kubectl` configureert ook het clientcertificaat op uw lokale machine.
+Gebruik [AZ AKS Get-referenties][az-aks-get-credentials] om u aan te melden bij uw AKS-cluster. Met deze opdracht wordt ook het `kubectl` client certificaat op uw lokale computer gedownload en geconfigureerd.
 
 ```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
-Hiermee `az aks rotate-certs` u alle certificaten, CV's en SA's op uw cluster roteren.
+Gebruiken `az aks rotate-certs` om alle certificaten, Ca's en sa's in uw cluster te draaien.
 
 ```azurecli
 az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
 > [!IMPORTANT]
-> Het kan tot 30 `az aks rotate-certs` minuten duren voordat deze is voltooid. Als de opdracht mislukt voordat `az aks show` de opdracht is voltooid, gebruikt u om de status van het cluster te *verifiëren: Certificaat roteren .* Als het cluster zich in een `az aks rotate-certs` mislukte status bevindt, wordt u opnieuw uitgevoerd om de certificaten opnieuw te roteren.
+> Het kan tot 30 minuten `az aks rotate-certs` duren voordat de bewerking is voltooid. Als de opdracht mislukt voordat deze wordt voltooid `az aks show` , gebruikt u om te controleren of de status van het cluster is *gedraaid*. Als het cluster zich in een mislukte status bevindt, voert `az aks rotate-certs` u de bewerking opnieuw uit om uw certificaten opnieuw te draaien.
 
-Controleer of de oude certificaten niet `kubectl` langer geldig zijn door een opdracht uit te voeren. Aangezien u de certificaten die `kubectl`door worden gebruikt niet hebt bijgewerkt, ziet u een fout.  Bijvoorbeeld:
+Controleer of de oude certificaten niet meer geldig zijn door een `kubectl` opdracht uit te voeren. Omdat u de gebruikte certificaten niet hebt bijgewerkt `kubectl`, wordt er een fout weer geven.  Bijvoorbeeld:
 
 ```console
 $ kubectl get no
 Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of "crypto/rsa: verification error" while trying to verify candidate authority certificate "ca")
 ```
 
-Werk het certificaat `kubectl` bij `az aks get-credentials`dat wordt gebruikt door het uitvoeren van .
+Update het certificaat dat wordt `kubectl` gebruikt door `az aks get-credentials`uit te voeren.
 
 ```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 
-Controleer of de certificaten zijn `kubectl` bijgewerkt door een opdracht uit te voeren, die nu succesvol is. Bijvoorbeeld:
+Controleer of de certificaten zijn bijgewerkt door een `kubectl` opdracht uit te voeren die nu slaagt. Bijvoorbeeld:
 
 ```console
 kubectl get no
 ```
 
 > [!NOTE]
-> Als u services hebt die bovenop AKS worden uitgevoerd, zoals [Azure Dev Spaces,][dev-spaces]moet u mogelijk ook [certificaten met betrekking tot die services bijwerken.][dev-spaces-rotate]
+> Als u Services hebt die boven op AKS worden uitgevoerd, zoals [Azure dev Spaces][dev-spaces], moet u mogelijk ook [certificaten bijwerken die betrekking hebben op deze services][dev-spaces-rotate] .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel ziet u hoe u de certificaten, DE's en SA's van uw cluster automatisch roteren. U [Aanbevolen procedures voor clusterbeveiliging en upgrades in Azure Kubernetes Service (AKS)][aks-best-practices-security-upgrades] bekijken voor meer informatie over aanbevolen procedures voor AKS-beveiliging.
+In dit artikel wordt uitgelegd hoe u de certificaten, Ca's en Sa's van uw cluster automatisch kunt draaien. U kunt [Best practices voor cluster beveiliging en upgrades in azure Kubernetes service (AKS)][aks-best-practices-security-upgrades] bekijken voor meer informatie over de aanbevolen procedures voor beveiliging van AKS.
 
 
 [azure-cli-install]: /cli/azure/install-azure-cli

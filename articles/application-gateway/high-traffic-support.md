@@ -1,6 +1,6 @@
 ---
-title: Ondersteuning voor een groot verkeersvolume van Application Gateway
-description: In dit artikel vindt u richtlijnen voor het configureren van Azure Application Gateway ter ondersteuning van scenario's met een hoog netwerkverkeer.
+title: Ondersteuning voor Application Gateway High Traffic volume
+description: Dit artikel bevat richt lijnen voor het configureren van Azure-toepassing gateway ter ondersteuning van volume scenario's met een hoog netwerk verkeer.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,56 +8,56 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: caya
 ms.openlocfilehash: 65f404b52a5fc06d8fa5bb5aad291e57fde8caba
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80617205"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Ondersteuning voor intensief verkeer in Application Gateway
 
 >[!NOTE]
-> In dit artikel worden enkele voorgestelde richtlijnen beschreven om u te helpen bij het instellen van uw Application Gateway om extra verkeer te verwerken vanwege het hoge verkeersvolume dat kan optreden als gevolg van de COVID-19-crisis.
+> In dit artikel worden enkele aanbevolen richt lijnen beschreven om u te helpen bij het instellen van uw Application Gateway voor het afhandelen van extra verkeer als gevolg van een groot verkeers volume dat kan optreden door de COVID-19-crisis.
 
-U Application Gateway with Web Application Firewall (WAF) gebruiken voor een schaalbare en veilige manier om verkeer naar uw webtoepassingen te beheren.
+U kunt Application Gateway met Web Application firewall (WAF) gebruiken voor een schaal bare en veilige manier om verkeer naar uw webtoepassingen te beheren.
 
-Met de volgende suggesties u Application Gateway instellen met WAF om extra verkeer te verwerken.
+De volgende suggesties helpen u bij het instellen van Application Gateway met WAF voor het verwerken van extra verkeer.
 
-## <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>Gebruik de v2 SKU over v1 voor de mogelijkheden en prestatievoordelen voor automatisch schalen
-De v2 SKU biedt automatisch schalen om ervoor te zorgen dat uw Application Gateway kan worden opgeschaald naarmate het verkeer toeneemt. Het biedt ook andere belangrijke prestatievoordelen, zoals 5x betere TLS offload prestaties, snellere implementatie en update tijden, zone redundantie, en meer in vergelijking met v1. Zie voor meer informatie onze [v2-documentatie.](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) 
+## <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>Gebruik v2 SKU over v1 voor de mogelijkheden voor automatisch schalen en prestaties
+De v2-SKU biedt automatisch schalen om ervoor te zorgen dat uw Application Gateway kan worden geschaald naarmate het verkeer toeneemt. Het biedt ook andere aanzienlijke prestatie voordelen, zoals 5x betere TLS-offload-prestaties, snellere implementatie-en update tijden, zone redundantie en meer in vergelijking met v1. Zie onze [v2-documentatie](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)voor meer informatie. 
 
-## <a name="set-maximum-instance-count-to-the-maximum-possible-125"></a>Maximaal aantal instance's instellen op het maximaal mogelijke (125)
+## <a name="set-maximum-instance-count-to-the-maximum-possible-125"></a>Stel het maximum aantal instanties in op het Maxi maal mogelijk (125)
  
-Als u een Application Gateway v2 SKU hebt, kan de Toepassingsgateway naar behoefte worden uitgeschaald op de maximaal mogelijke waarde van 125. Dit maakt het mogelijk om de mogelijke toename van het verkeer naar uw toepassingen te behandelen. Er worden alleen kosten in rekening gebracht voor de capaciteitseenheden (CPU's) die u gebruikt.  
+Als u een SKU van Application Gateway v2 hebt en u het maximum aantal exemplaren instelt op de maximale mogelijke waarde van 125, kan de Application Gateway naar behoefte uitschalen. Zo kunt u de mogelijke toename van het verkeer naar uw toepassingen afhandelen. Er worden alleen kosten in rekening gebracht voor de capaciteits eenheden (CUs) die u gebruikt.  
 
-## <a name="set-your-minimum-instance-count-based-on-your-average-cu-usage"></a>Stel het minimumaantal gevallen in op basis van uw gemiddelde CU-gebruik
+## <a name="set-your-minimum-instance-count-based-on-your-average-cu-usage"></a>Stel het minimum aantal exemplaren in op basis van uw gemiddelde CU-gebruik
 
-Ervan uitgaande dat u een Application Gateway v2 SKU hebt, duurt het zes tot zeven minuten om automatisch schalen uit te schalen. Met een hoger minimum aantal instance's kan de Application Gateway uw verkeer beter verwerken wanneer de belasting wordt verhoogd, omdat een piek in het verkeer geen automatische schalingbewerking vereist.  
+Als u een SKU van Application Gateway v2 hebt, neemt automatisch schalen zes tot zeven minuten in beslag. Met een hoger minimum aantal instanties kan de Application Gateway het verkeer beter verwerken wanneer de belasting toeneemt, omdat een piek in verkeer geen automatische schaal bewerking vereist.  
 
-## <a name="alert-if-a-certain-metric-surpasses-75-of-average-cu-utilization"></a>Waarschuwing als een bepaalde statistiek 75% van het gemiddelde CU-gebruik overschrijdt 
-Zie de [documentatie over application gateway metrics](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-visualization) voor een gedetailleerde uitleg van onze statistieken en andere walkthroughs. 
+## <a name="alert-if-a-certain-metric-surpasses-75-of-average-cu-utilization"></a>Waarschuwen als een bepaalde metriek 75% van het gemiddelde CU-gebruik overschrijdt 
+Raadpleeg de [documentatie over Application Gateway metrische gegevens](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-visualization) voor een gedetailleerde uitleg van de metrische gegevens en andere scenario's. 
 
-### <a name="example-setting-up-an-alert-on-75-of-average-cu-usage"></a>Voorbeeld: Een waarschuwing instellen op 75% van het gemiddelde CU-gebruik
+### <a name="example-setting-up-an-alert-on-75-of-average-cu-usage"></a>Voor beeld: een waarschuwing instellen voor 75% van het gemiddelde CU-gebruik
 
-In dit voorbeeld ziet u hoe u de Azure-portal gebruiken om een waarschuwing in te stellen wanneer 75% van het gemiddelde CU-gebruik is bereikt. 
-1. Navigeer naar de **toepassingsgateway.**
-2. Selecteer in het linkerdeelvenster **Statistieken** onder het tabblad **Controle.** 
-3. Voeg een statistiek toe voor **gemiddelde huidige rekeneenheden**. 
-![WAF-statistiek instellen](./media/application-gateway-covid-guidelines/waf-setup-metrics.png)
-4. Als u het minimumaantal exemplaren hebt ingesteld als uw gemiddelde CU-gebruik, gaat u verder en stelt u een waarschuwing in wanneer 75% van uw minimale exemplaren in gebruik zijn. Als uw gemiddelde gebruik bijvoorbeeld 10 CPU's is, stelt u een waarschuwing in op 7,5 CPU's. Dit waarschuwt u als het gebruik toeneemt en geeft u de tijd om te reageren. U het minimum verhogen als u denkt dat dit verkeer zal worden volgehouden om u te waarschuwen dat het verkeer kan toenemen. 
+In dit voor beeld ziet u hoe u de Azure Portal kunt gebruiken om een waarschuwing in te stellen wanneer 75% van het gemiddelde van CU-gebruik is bereikt. 
+1. Navigeer naar uw **Application Gateway**.
+2. Selecteer in het linkerdeel venster **metrische gegevens** op het tabblad **bewaking** . 
+3. Een metriek toevoegen voor **gemiddelde huidige reken eenheden**. 
+![WAF metric instellen](./media/application-gateway-covid-guidelines/waf-setup-metrics.png)
+4. Als u uw minimum aantal instanties hebt ingesteld op uw gemiddelde CU-gebruik, kunt u een waarschuwing instellen wanneer 75% van de minimum instanties in gebruik zijn. Als uw gemiddelde gebruik bijvoorbeeld 10 CUs is, stelt u een waarschuwing in op 7,5. Hiermee wordt u gewaarschuwd als het gebruik toeneemt en u tijd hebt om te reageren. U kunt het minimum verhogen als u denkt dat dit verkeer wordt ondervangen om u te waarschuwen dat verkeer kan toenemen. 
 ![WAF-waarschuwing instellen](./media/application-gateway-covid-guidelines/waf-setup-monitoring-alert.png)
 
 > [!NOTE]
-> U instellen dat de waarschuwing optreedt bij een lager of hoger CU-gebruikspercentage, afhankelijk van hoe gevoelig u wilt zijn voor potentiële verkeerspieken.
+> U kunt instellen dat de waarschuwing wordt uitgevoerd bij een lager of hoger CU-gebruiks percentage, afhankelijk van hoe gevoelig u wilt zijn voor mogelijke verkeers pieken.
 
-## <a name="set-up-waf-with-geofiltering-and-bot-protection-to-stop-attacks"></a>WAF instellen met geofiltering en botbescherming om aanvallen te stoppen
-Als u een extra beveiligingslaag voor uw toepassing wilt, gebruikt u de Application Gateway WAF_v2 SKU voor WAF-mogelijkheden. U de v2 SKU zo configureren dat deze alleen toegang geeft tot uw toepassingen vanuit een bepaald land of land. U stelt een aangepaste WAF-regel in om verkeer expliciet toe te staan of te blokkeren op basis van de geolocatie. Zie voor meer informatie [aangepaste regels voor geofiltering](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules) en het configureren van [aangepaste regels voor Application Gateway WAF_v2 SKU via PowerShell.](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules)
+## <a name="set-up-waf-with-geofiltering-and-bot-protection-to-stop-attacks"></a>WAF met geofiltering en bot-beveiliging instellen om aanvallen te stoppen
+Als u voor uw toepassing een extra beveiligingslaag wilt, gebruikt u de Application Gateway WAF_v2 SKU voor WAF-mogelijkheden. U kunt de v2-SKU zo configureren dat alleen toegang tot uw toepassingen vanuit een bepaald land of bepaalde landen wordt toegestaan. U stelt een aangepaste regel voor WAF in om verkeer expliciet toe te staan of te blok keren op basis van de geolocatie. Zie [geofilterende aangepaste regels](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules) en [aangepaste regels configureren op Application Gateway WAF_v2 SKU via Power shell](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules)voor meer informatie.
 
-Schakel botbescherming in om bekende slechte bots te blokkeren. Dit moet de hoeveelheid verkeer naar uw toepassing te verminderen. Zie [botbeveiliging met instelinstructies](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules)voor meer informatie .
+Schakel bot-beveiliging in om bekende beschadigde bots te blok keren. Dit verlaagt de hoeveelheid verkeer die wordt ontvangen naar uw toepassing. Zie [bot Protection with set up instructies](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules)(Engelstalig) voor meer informatie.
 
 ## <a name="turn-on-diagnostics-on-application-gateway-and-waf"></a>Diagnostische gegevens inschakelen op Application Gateway en WAF
 
-Met diagnostische logboeken u firewalllogboeken, prestatielogboeken en toegangslogboeken weergeven. U deze logboeken in Azure gebruiken om toepassingsgateways te beheren en op te lossen. Zie voor meer informatie onze [diagnostische documentatie.](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#diagnostic-logging) 
+Met Diagnostische logboeken kunt u Firewall logboeken, prestatie logboeken en toegangs logboeken weer geven. U kunt deze logboeken in azure gebruiken om toepassings gateways te beheren en op te lossen. Zie de [Diagnostische documentatie](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#diagnostic-logging)voor meer informatie. 
 
 ## <a name="set-up-an-tls-policy-for-extra-security"></a>Een TLS-beleid instellen voor extra beveiliging
-Zorg ervoor dat u de nieuwste TLS-beleidsversie gebruikt[(AppGwSslPolicy20170401S).](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview#appgwsslpolicy20170401s) Dit dwingt TLS 1.2 en sterkere cijfers. Zie VOOR meer informatie [tls-beleidsversies en ciphersuites configureren via PowerShell.](https://docs.microsoft.com/azure/application-gateway/application-gateway-configure-ssl-policy-powershell)
+Zorg ervoor dat u de meest recente TLS-beleids versie ([AppGwSslPolicy20170401S](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview#appgwsslpolicy20170401s)) gebruikt. Hiermee worden TLS 1,2 en sterkere cijfers afgedwongen. Zie [TLS-beleids versies en coderings suites configureren via Power shell](https://docs.microsoft.com/azure/application-gateway/application-gateway-configure-ssl-policy-powershell)voor meer informatie.

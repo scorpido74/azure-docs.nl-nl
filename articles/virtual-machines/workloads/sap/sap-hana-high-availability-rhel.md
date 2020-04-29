@@ -1,6 +1,6 @@
 ---
-title: Hoge beschikbaarheid van SAP HANA op Azure VM's op RHEL | Microsoft Documenten
-description: Stel een hoge beschikbaarheid van SAP HANA vast op virtuele Azure-machines (VM's).
+title: Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op RHEL | Microsoft Docs
+description: Breng hoge Beschik baarheid van SAP HANA op virtuele machines van Azure (Vm's).
 services: virtual-machines-linux
 documentationcenter: ''
 author: rdeltcheva
@@ -13,13 +13,13 @@ ms.workload: infrastructure
 ms.date: 03/31/2020
 ms.author: radeltch
 ms.openlocfilehash: f1ae2c3c949e8bdbf30c8bef496177d56cd2dcbd
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521399"
 ---
-# <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Hoge beschikbaarheid van SAP HANA op Azure VM's op Red Hat Enterprise Linux
+# <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op Red Hat Enterprise Linux
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -43,201 +43,201 @@ ms.locfileid: "80521399"
 [sap-swcenter]:https://launchpad.support.sap.com/#/softwarecenter
 [template-multisid-db]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
 
-Voor on-premises ontwikkeling u HANA-systeemreplicatie gebruiken of gedeelde opslag gebruiken om een hoge beschikbaarheid voor SAP HANA vast te stellen.
-Op Azure virtual machines (VM's) is HANA System Replication op Azure momenteel de enige ondersteunde functie met hoge beschikbaarheid.
-SAP HANA-replicatie bestaat uit één primair knooppunt en ten minste één secundair knooppunt. Wijzigingen in de gegevens op het primaire knooppunt worden synchroon of asynchroon gerepliceerd naar het secundaire knooppunt.
+Voor on-premises ontwikkeling kunt u gebruikmaken van de HANA-systeem replicatie of het gebruik van gedeelde opslag om hoge Beschik baarheid voor SAP HANA tot stand te brengen.
+Op virtuele machines van Azure (Vm's) is HANA-systeem replicatie op Azure momenteel de enige ondersteunde functie voor hoge Beschik baarheid.
+SAP HANA replicatie bestaat uit één primair knoop punt en ten minste één secundair knoop punt. Wijzigingen in de gegevens op het primaire knoop punt worden synchroon of asynchroon gerepliceerd naar het secundaire knoop punt.
 
-In dit artikel wordt beschreven hoe u de virtuele machines implementeert en configureert, het clusterframework installeert en SAP HANA-systeemreplicatie installeert en configureert.
-In de voorbeeldconfiguraties worden installatieopdrachten, instantienummer **03**en HANA System ID **HN1** gebruikt.
+In dit artikel wordt beschreven hoe u de virtuele machines implementeert en configureert, het cluster raamwerk installeert en SAP HANA systeem replicatie installeert en configureert.
+In de voorbeeld configuraties worden installatie opdrachten, instantie nummer **03**en Hana-systeem-id **HN1** gebruikt.
 
-Lees eerst de volgende SAP Notes en papers:
+Lees eerst de volgende SAP-opmerkingen en-documenten:
 
-* SAP Note [1928533], die heeft:
-  * De lijst met Azure VM-formaten die worden ondersteund voor de implementatie van SAP-software.
-  * Belangrijke capaciteitsinformatie voor Azure VM-formaten.
-  * De ondersteunde SAP-software en besturingssysteem (OS) en databasecombinaties.
-  * De vereiste SAP-kernelversie voor Windows en Linux op Microsoft Azure.
-* SAP Note [2015553] bevat vereisten voor SAP-ondersteunde SAP-softwareimplementaties in Azure.
-* SAP Note [2002167] heeft aanbevolen OS-instellingen voor Red Hat Enterprise Linux
-* SAP Note [2009879] heeft SAP HANA Richtlijnen voor Red Hat Enterprise Linux
-* SAP Note [2178632] heeft gedetailleerde informatie over alle monitoringstatistieken die voor SAP in Azure worden gerapporteerd.
-* SAP Note [2191498] heeft de vereiste SAP Host Agent-versie voor Linux in Azure.
-* SAP Note [2243692] heeft informatie over SAP-licenties op Linux in Azure.
-* SAP Note [1999351] heeft aanvullende informatie over probleemoplossing voor de Azure Enhanced Monitoring Extension voor SAP.
-* [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) heeft alle vereiste SAP Notes voor Linux.
+* SAP-opmerking [1928533], die:
+  * De lijst met Azure-VM-grootten die worden ondersteund voor de implementatie van SAP-software.
+  * Belang rijke informatie over de capaciteit van Azure VM-grootten.
+  * De ondersteunde SAP-software en besturings systemen (OS) en database combinaties.
+  * De vereiste versie van de SAP-kernel voor Windows en Linux op Microsoft Azure.
+* SAP-opmerking [2015553] bevat vereisten voor SAP-ondersteuning voor SAP-software-implementaties in Azure.
+* SAP Note [2002167] heeft aanbevolen instellingen voor het besturings systeem voor Red Hat Enterprise Linux
+* SAP Note [2009879] heeft SAP Hana richt lijnen voor Red Hat Enterprise Linux
+* SAP Note [2178632] bevat gedetailleerde informatie over alle bewakings gegevens die zijn gerapporteerd voor SAP in Azure.
+* SAP Note [2191498] heeft de vereiste SAP host agent-versie voor Linux in Azure.
+* SAP Note [2243692] bevat informatie over SAP-licentie verlening op Linux in Azure.
+* SAP Note [1999351] bevat extra informatie over probleem oplossing voor de uitgebreide bewakings extensie van Azure voor SAP.
+* Op de [SAP Community wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) zijn alle vereiste SAP-notities voor Linux geïnstalleerd.
 * [Azure Virtual Machines planning en implementatie voor SAP op Linux][planning-guide]
-* [Azure Virtual Machines deployment voor SAP op Linux (dit artikel)][deployment-guide]
+* [Azure Virtual Machines-implementatie voor SAP op Linux (dit artikel)][deployment-guide]
 * [Azure Virtual Machines DBMS-implementatie voor SAP op Linux][dbms-guide]
-* [SAP HANA-systeemreplicatie in pacemakercluster](https://access.redhat.com/articles/3004101)
-* Algemene RHEL-documentatie
-  * [Overzicht van invoegtoepassing met hoge beschikbaarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Add-On-beheer met hoge beschikbaarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Invoegtoepassing met hoge beschikbaarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-* Azure-specifieke RHEL-documentatie:
-  * [Ondersteuningsbeleid voor RHEL-clusters met hoge beschikbaarheid - Microsoft Azure Virtual Machines als clusterleden](https://access.redhat.com/articles/3131341)
-  * [Een Red Hat Enterprise Linux 7.4 (en hoger) cluster met hoge beschikbaarheid installeren en configureren op Microsoft Azure](https://access.redhat.com/articles/3252491)
-  * [SAP HANA installeren op Red Hat Enterprise Linux voor gebruik in Microsoft Azure](https://access.redhat.com/solutions/3193782)
+* [SAP HANA systeem replicatie in pacemaker-cluster](https://access.redhat.com/articles/3004101)
+* Algemene documentatie voor RHEL
+  * [Overzicht van Maxi maal beschik bare invoeg toepassingen](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Beheer van Maxi maal beschik bare invoeg toepassingen](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Naslag informatie voor de invoeg toepassing met hoge Beschik baarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+* Specifieke RHEL-documentatie voor Azure:
+  * [Ondersteunings beleid voor RHEL-clusters met hoge Beschik baarheid-Microsoft Azure Virtual Machines als cluster leden](https://access.redhat.com/articles/3131341)
+  * [Installeren en configureren van een cluster met hoge Beschik baarheid van Red Hat Enterprise Linux 7,4 (en hoger) op Microsoft Azure](https://access.redhat.com/articles/3252491)
+  * [SAP HANA op Red Hat Enterprise Linux installeren voor gebruik in Microsoft Azure](https://access.redhat.com/solutions/3193782)
 
 ## <a name="overview"></a>Overzicht
 
-Om een hoge beschikbaarheid te bereiken, is SAP HANA geïnstalleerd op twee virtuele machines. De gegevens worden gerepliceerd met HANA-systeemreplicatie.
+SAP HANA is geïnstalleerd op twee virtuele machines voor een hoge Beschik baarheid. De gegevens worden gerepliceerd met behulp van HANA-systeem replicatie.
 
-![SAP HANA overzicht van hoge beschikbaarheid](./media/sap-hana-high-availability-rhel/ha-hana.png)
+![Overzicht van SAP HANA hoge Beschik baarheid](./media/sap-hana-high-availability-rhel/ha-hana.png)
 
-SAP HANA System Replication setup maakt gebruik van een speciale virtuele hostname en virtuele IP-adressen. Op Azure is een load balancer vereist om een virtueel IP-adres te gebruiken. In de volgende lijst ziet u de configuratie van de load balancer:
+Bij de installatie van de SAP HANA-systeem replicatie worden een specifieke virtuele hostnaam en een virtueel IP-adres gebruikt. Op Azure is een load balancer vereist voor het gebruik van een virtueel IP-adres. De volgende lijst bevat de configuratie van de load balancer:
 
-* Front-end configuratie: IP-adres 10.0.0.13 voor hn1-db
-* Back-endconfiguratie: verbonden met primaire netwerkinterfaces van alle virtuele machines die deel moeten uitmaken van HANA-systeemreplicatie
-* Sondepoort: poort 62503
-* Regels voor taakverdeling: 30313 TCP, 30315 TCP, 30317 TCP, 30340 TCP, 30341 TCP, 30342 TCP
+* Front-end-configuratie: IP-adres 10.0.0.13 voor HN1-db
+* Back-end-configuratie: verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van HANA-systeem replicatie
+* Poort testen: poort 62503
+* Taakverdelings regels: 30313 TCP, 30315 TCP, 30317 TCP, 30340 TCP, 30341 TCP, 30342 TCP
 
 ## <a name="deploy-for-linux"></a>Implementeren voor Linux
 
-De Azure Marketplace bevat een afbeelding voor Red Hat Enterprise Linux 7.4 voor SAP HANA die u gebruiken om nieuwe virtuele machines te implementeren.
+Azure Marketplace bevat een installatie kopie voor Red Hat Enterprise Linux 7,4 voor SAP HANA die u kunt gebruiken om nieuwe virtuele machines te implementeren.
 
 ### <a name="deploy-with-a-template"></a>Implementeren met een sjabloon
 
-U een van de quickstartsjablonen die zich op GitHub bevinden, gebruiken om alle vereiste resources te implementeren. De sjabloon implementeert de virtuele machines, de load balancer, de beschikbaarheidsset, enzovoort.
+U kunt een van de Quick Start-sjablonen gebruiken die zich op GitHub bevinden voor het implementeren van alle vereiste resources. De sjabloon implementeert de virtuele machines, de load balancer, de beschikbaarheidsset, enzovoort.
 Voer de volgende stappen uit om de sjabloon te implementeren:
 
-1. Open de [databasesjabloon][template-multisid-db] op de Azure-portal.
-1. Voer de volgende parameters in:
-    * **Sap-systeem-id:** voer de SAP-systeem-ID in van het SAP-systeem dat u wilt installeren. De id wordt gebruikt als voorvoegsel voor de resources die worden geïmplementeerd.
-    * **Os Type**: Selecteer een van de Linux-distributies. Selecteer in dit voorbeeld **RHEL 7**.
-    * **Db-type**: Selecteer **HANA**.
-    * **Sap-systeemgrootte:** voer het aantal SAPS in dat het nieuwe systeem gaat bieden. Als u niet zeker weet hoeveel SAPS het systeem nodig heeft, vraag het dan aan uw SAP Technology Partner of System Integrator.
-    * **Beschikbaarheid van het systeem**: Selecteer **HA**.
-    * **Gebruikersnaam, beheerderswachtwoord of SSH-sleutel:** Er wordt een nieuwe gebruiker gemaakt die kan worden gebruikt om zich aan te melden bij de machine.
-    * **Subnet-id**: Als u de VM wilt implementeren in een bestaand VNet waarbij een subnet is gedefinieerd waaraan de VM moet worden toegewezen, geeft u de id van dat specifieke subnet een naam. De ID ziet er meestal uit als **/abonnementen/\<abonnements-ID>/resourceGroepen/\<resourcegroepnaam>/providers/Microsoft.Network/virtualNetworks/\<virtuele netwerknaam>/subnets/\<subnetnaam>**. Leeg laten, als u een nieuw virtueel netwerk wilt maken
+1. Open de [Database sjabloon][template-multisid-db] op de Azure Portal.
+1. Voer de volgende para meters in:
+    * **SAP-systeem-id**: Voer de SAP-systeem-id in van het SAP-systeem dat u wilt installeren. De ID wordt gebruikt als een voor voegsel voor de resources die worden geïmplementeerd.
+    * **Type besturings systeem**: Selecteer een van de Linux-distributies. Selecteer voor dit voor beeld **RHEL 7**.
+    * **Db-type**: Selecteer **Hana**.
+    * **SAP-systeem grootte**: Voer het aantal sap's in dat het nieuwe systeem moet bieden. Als u niet zeker weet hoeveel SAP'S het systeem nodig heeft, vraagt u uw SAP-technologie partner of systeem integrator.
+    * **Systeem beschikbaarheid**: Selecteer **ha**.
+    * **Beheerders naam, beheerders wachtwoord of SSH-sleutel**: er wordt een nieuwe gebruiker gemaakt die kan worden gebruikt om u aan te melden bij de computer.
+    * **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID is doorgaans hetzelfde **als\</Subscriptions/-abonnements-\<id>/ResourceGroups/naam van\<de resource groep>/providers/Microsoft.Network/virtualnetworks/\<naam van het virtuele netwerk>/subnets/-subnet naam>**. Laat dit leeg als u een nieuw virtueel netwerk wilt maken
 
 ### <a name="manual-deployment"></a>Handmatige implementatie
 
 1. Maak een resourcegroep.
 1. Maak een virtueel netwerk.
 1. Maak een beschikbaarheidsset.  
-   Stel het domein voor maximale update in.
-1. Maak een load balancer (intern). Wij raden [standaard load balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)aan.
-   * Selecteer het virtuele netwerk dat in stap 2 is gemaakt.
-1. Maak virtuele machine 1.  
-   Gebruik ten minste Red Hat Enterprise Linux 7.4 voor SAP HANA. In dit voorbeeld wordt de Red Hat Enterprise <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> Linux 7.4 gebruikt voor SAP HANA-afbeelding Selecteer de beschikbaarheidsset die is gemaakt in stap 3.
-1. Maak virtuele machine 2.  
-   Gebruik ten minste Red Hat Enterprise Linux 7.4 voor SAP HANA. In dit voorbeeld wordt de Red Hat Enterprise <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> Linux 7.4 gebruikt voor SAP HANA-afbeelding Selecteer de beschikbaarheidsset die is gemaakt in stap 3.
-1. Gegevensschijven toevoegen.
-1. Als u standaard load balancer gebruikt, voert u de volgende configuratiestappen uit:
-   1. Maak eerst een front-end IP-pool:
+   Stel het maximale update domein in.
+1. Maak een load balancer (intern). [Standaard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)worden aanbevolen.
+   * Selecteer het virtuele netwerk dat u in stap 2 hebt gemaakt.
+1. Virtuele machine 1 maken.  
+   Gebruik ten minste Red Hat Enterprise Linux 7,4 voor SAP HANA. In dit voor beeld wordt de Red Hat Enterprise Linux 7,4 voor <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> SAP Hana-afbeelding gebruikt, selecteert u de beschikbaarheidsset die u in stap 3 hebt gemaakt.
+1. Maak de virtuele machine 2.  
+   Gebruik ten minste Red Hat Enterprise Linux 7,4 voor SAP HANA. In dit voor beeld wordt de Red Hat Enterprise Linux 7,4 voor <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> SAP Hana-afbeelding gebruikt, selecteert u de beschikbaarheidsset die u in stap 3 hebt gemaakt.
+1. Voeg gegevens schijven toe.
+1. Als u standaard load balancer gebruikt, volgt u deze configuratie stappen:
+   1. Maak eerst een front-end-IP-adres groep:
 
-      1. Open de load balancer, selecteer **ip-pool frontend**en selecteer **Toevoegen**.
-      1. Voer de naam in van de nieuwe front-end IP-pool (bijvoorbeeld **hana-frontend).**
-      1. Stel de **toewijzing** in **op Statisch** en voer het IP-adres in (bijvoorbeeld **10.0.0.13**).
+      1. Open de load balancer, selecteer de **frontend-IP-adres groep**en selecteer **toevoegen**.
+      1. Voer de naam in van de nieuwe front-end-IP-adres groep (bijvoorbeeld **Hana-frontend**).
+      1. Stel de **toewijzing** in op **statisch** en voer het IP-adres in (bijvoorbeeld **10.0.0.13**).
       1. Selecteer **OK**.
-      1. Nadat de nieuwe front-end IP-pool is gemaakt, moet u het IP-adres van de groep noteren.
+      1. Nadat de nieuwe front-end-IP-groep is gemaakt, noteert u het IP-adres van de groep.
 
-   1. Maak vervolgens een back-endpool:
+   1. Maak vervolgens een back-end-pool:
 
-      1. Open de load balancer, selecteer **backendpools**en selecteer **Toevoegen**.
-      1. Voer de naam in van de nieuwe back-endpool (bijvoorbeeld **hana-backend).**
-      1. Selecteer **Een virtuele machine toevoegen**.
-      1. Selecteer ** Virtuele machine**.
-      1. Selecteer de virtuele machines van het SAP HANA-cluster en hun IP-adressen.
+      1. Open de load balancer, selecteer **back-endservers**en selecteer **toevoegen**.
+      1. Voer de naam van de nieuwe back-end-pool in (bijvoorbeeld **Hana-back-end**).
+      1. Selecteer **een virtuele machine toevoegen**.
+      1. Selecteer * * virtuele machine * *.
+      1. Selecteer de virtuele machines van het SAP HANA cluster en de bijbehorende IP-adressen.
       1. Selecteer **Toevoegen**.
 
-   1. Maak vervolgens een statussonde:
+   1. Maak vervolgens een status test:
 
-      1. Open de load balancer, selecteer **health probes**en selecteer **Toevoegen**.
-      1. Voer de naam van de nieuwe health probe (bijvoorbeeld **hana-hp**).
-      1. Selecteer **TCP** als protocol en poort 625**03**. Houd de **intervalwaarde** ingesteld op 5 en de **drempelwaarde Niet-inorts is** ingesteld op 2.
+      1. Open de load balancer, selecteer **status controles**en selecteer **toevoegen**.
+      1. Voer de naam in van de nieuwe status test (bijvoorbeeld **Hana-HP**).
+      1. Selecteer **TCP** als protocol en poort 625**03**. Laat de waarde voor **interval** ingesteld op 5 en de drempel waarde voor een **onjuiste status** ingesteld op 2.
       1. Selecteer **OK**.
 
-   1. Maak vervolgens de regels voor het balanceren van de lastenafweging:
+   1. Maak vervolgens de regels voor taak verdeling:
    
-      1. Open de load balancer, selecteer **regels voor taakverdeling**en selecteer **Toevoegen**.
-      1. Voer de naam in van de nieuwe regel voor load balancer (bijvoorbeeld **hana-lb).**
-      1. Selecteer het front-end IP-adres, de back-end pool en de gezondheidssonde die u eerder hebt gemaakt (bijvoorbeeld **hana-frontend,** **hana-backend** en **hana-hp).**
-      1. Selecteer **HA-poorten**.
-      1. Verhoog de **idle time-out** tot 30 minuten.
-      1. Zorg ervoor dat **zwevend IP wordt ingeschakeld.**
+      1. Open de load balancer, selecteer **regels voor taak verdeling**en selecteer **toevoegen**.
+      1. Voer de naam in van de nieuwe load balancer regel (bijvoorbeeld **Hana-lb**).
+      1. Selecteer het front-end-IP-adres, de back-end-pool en de status test die u eerder hebt gemaakt (bijvoorbeeld **Hana-frontend**, **Hana-back-end** en **Hana-HP**).
+      1. Selecteer **ha-poorten**.
+      1. Verhoog de **time-out voor inactiviteit** tot 30 minuten.
+      1. Zorg ervoor dat u **zwevende IP-adressen inschakelt**.
       1. Selecteer **OK**.
 
    > [!Note]
-   > Wanneer VM's zonder openbare IP-adressen in de backendpool van interne (geen openbare IP-adres) Standaard Azure-loadbalancer worden geplaatst, is er geen uitgaande internetverbinding, tenzij extra configuratie wordt uitgevoerd om routering naar openbare eindpunten mogelijk te maken. Zie [Openbare eindpuntconnectiviteit voor virtuele machines met Azure Standard Load Balancer in SAP-scenario's](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)met hoge beschikbaarheid voor meer informatie over het bereiken van uitgaande connectiviteit.  
+   > Wanneer Vm's zonder open bare IP-adressen in de back-endadresgroep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd om route ring naar open bare eind punten toe te staan. Zie [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid voor SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)voor meer informatie over het bezorgen van uitgaande verbindingen.  
 
-1. Als uw scenario voorschrijft met behulp van basislastbalans, voert u ook de volgende configuratiestappen uit:
-   1. Configureer de load balancer. Maak eerst een front-end IP-pool:
+1. Als uw scenario gebruikmaakt van basis load balancer, volgt u deze configuratie stappen:
+   1. Configureer de load balancer. Maak eerst een front-end-IP-adres groep:
 
-      1. Open de load balancer, selecteer **ip-pool frontend**en selecteer **Toevoegen**.
-      1. Voer de naam in van de nieuwe front-end IP-pool (bijvoorbeeld **hana-frontend).**
-      1. Stel de **toewijzing** in **op Statisch** en voer het IP-adres in (bijvoorbeeld **10.0.0.13**).
+      1. Open de load balancer, selecteer de **frontend-IP-adres groep**en selecteer **toevoegen**.
+      1. Voer de naam in van de nieuwe front-end-IP-adres groep (bijvoorbeeld **Hana-frontend**).
+      1. Stel de **toewijzing** in op **statisch** en voer het IP-adres in (bijvoorbeeld **10.0.0.13**).
       1. Selecteer **OK**.
-      1. Nadat de nieuwe front-end IP-pool is gemaakt, moet u het IP-adres van de groep noteren.
+      1. Nadat de nieuwe front-end-IP-groep is gemaakt, noteert u het IP-adres van de groep.
 
-   1. Maak vervolgens een back-endpool:
+   1. Maak vervolgens een back-end-pool:
 
-      1. Open de load balancer, selecteer **backendpools**en selecteer **Toevoegen**.
-      1. Voer de naam in van de nieuwe back-endpool (bijvoorbeeld **hana-backend).**
-      1. Selecteer **Een virtuele machine toevoegen**.
-      1. Selecteer de beschikbaarheidsset die is gemaakt in stap 3.
-      1. Selecteer de virtuele machines van het SAP HANA-cluster.
-      1. Selecteer **OK**.
-
-   1. Maak vervolgens een statussonde:
-
-      1. Open de load balancer, selecteer **health probes**en selecteer **Toevoegen**.
-      1. Voer de naam van de nieuwe health probe (bijvoorbeeld **hana-hp**).
-      1. Selecteer **TCP** als protocol en poort 625**03**. Houd de **intervalwaarde** ingesteld op 5 en de **drempelwaarde Niet-inorts is** ingesteld op 2.
+      1. Open de load balancer, selecteer **back-endservers**en selecteer **toevoegen**.
+      1. Voer de naam van de nieuwe back-end-pool in (bijvoorbeeld **Hana-back-end**).
+      1. Selecteer **een virtuele machine toevoegen**.
+      1. Selecteer de beschikbaarheidsset die u hebt gemaakt in stap 3.
+      1. Selecteer de virtuele machines van het SAP HANA cluster.
       1. Selecteer **OK**.
 
-   1. Maak voor SAP HANA 1.0 de regels voor het balanceren van de lastenafweging:
+   1. Maak vervolgens een status test:
 
-      1. Open de load balancer, selecteer **regels voor taakverdeling**en selecteer **Toevoegen**.
-      1. Voer de naam in van de nieuwe regel voor load balancer (bijvoorbeeld hana-lb-3**03**15).
-      1. Selecteer het front-end IP-adres, de back-endpool en de statussonde die u eerder hebt gemaakt (bijvoorbeeld **hana-frontend).**
-      1. Houd het **protocol** ingesteld op **TCP**en voer poort 3**03**15 in.
-      1. Verhoog de **idle time-out** tot 30 minuten.
-      1. Zorg ervoor dat **zwevend IP wordt ingeschakeld.**
+      1. Open de load balancer, selecteer **status controles**en selecteer **toevoegen**.
+      1. Voer de naam in van de nieuwe status test (bijvoorbeeld **Hana-HP**).
+      1. Selecteer **TCP** als protocol en poort 625**03**. Laat de waarde voor **interval** ingesteld op 5 en de drempel waarde voor een **onjuiste status** ingesteld op 2.
+      1. Selecteer **OK**.
+
+   1. Maak voor SAP HANA 1,0 de regels voor taak verdeling:
+
+      1. Open de load balancer, selecteer **regels voor taak verdeling**en selecteer **toevoegen**.
+      1. Voer de naam in van de nieuwe load balancer regel (bijvoorbeeld Hana-lb-3**03**15).
+      1. Selecteer het front-end-IP-adres, de back-end-pool en de status test die u eerder hebt gemaakt (bijvoorbeeld **Hana-** front-end).
+      1. Zorg ervoor dat het **protocol** is ingesteld op **TCP**en voer poort 3**03**15 in.
+      1. Verhoog de **time-out voor inactiviteit** tot 30 minuten.
+      1. Zorg ervoor dat u **zwevende IP-adressen inschakelt**.
       1. Selecteer **OK**.
       1. Herhaal deze stappen voor poort 3**03**17.
 
-   1. Maak voor SAP HANA 2.0 de regels voor het balanceren van de regelvoor de systeemdatabase:
+   1. Voor SAP HANA 2,0 maakt u de regels voor taak verdeling voor de systeem database:
 
-      1. Open de load balancer, selecteer **regels voor taakverdeling**en selecteer **Toevoegen**.
-      1. Voer de naam in van de nieuwe regel voor load balancer (bijvoorbeeld hana-lb-3**03**13).
-      1. Selecteer het front-end IP-adres, de back-endpool en de statussonde die u eerder hebt gemaakt (bijvoorbeeld **hana-frontend).**
-      1. Houd het **protocol** ingesteld op **TCP**en voer poort 3**03**13 in.
-      1. Verhoog de **idle time-out** tot 30 minuten.
-      1. Zorg ervoor dat **zwevend IP wordt ingeschakeld.**
+      1. Open de load balancer, selecteer **regels voor taak verdeling**en selecteer **toevoegen**.
+      1. Voer de naam in van de nieuwe load balancer regel (bijvoorbeeld Hana-lb-3**03**13).
+      1. Selecteer het front-end-IP-adres, de back-end-pool en de status test die u eerder hebt gemaakt (bijvoorbeeld **Hana-** front-end).
+      1. Zorg ervoor dat het **protocol** is ingesteld op **TCP**en voer poort 3**03**13 in.
+      1. Verhoog de **time-out voor inactiviteit** tot 30 minuten.
+      1. Zorg ervoor dat u **zwevende IP-adressen inschakelt**.
       1. Selecteer **OK**.
       1. Herhaal deze stappen voor poort 3**03**14.
 
-   1. Maak voor SAP HANA 2.0 eerst de regels voor het balanceren van de regelvoor de tenant:
+   1. Voor SAP HANA 2,0 maakt u eerst de regels voor taak verdeling voor de Tenant database:
 
-      1. Open de load balancer, selecteer **regels voor taakverdeling**en selecteer **Toevoegen**.
-      1. Voer de naam in van de nieuwe regel voor load balancer (bijvoorbeeld hana-lb-3**03**40).
-      1. Selecteer de ip-adres, backendpool en statussonde die u eerder hebt gemaakt (bijvoorbeeld **hana-frontend).**
-      1. Houd het **protocol** ingesteld op **TCP**en voer poort 3**03**40 in.
-      1. Verhoog de **idle time-out** tot 30 minuten.
-      1. Zorg ervoor dat **zwevend IP wordt ingeschakeld.**
+      1. Open de load balancer, selecteer **regels voor taak verdeling**en selecteer **toevoegen**.
+      1. Voer de naam in van de nieuwe load balancer regel (bijvoorbeeld Hana-lb-3**03**40).
+      1. Selecteer het frontend-IP-adres, de back-endadresgroep en de status test die u eerder hebt gemaakt (bijvoorbeeld **Hana-front-end**).
+      1. Zorg ervoor dat het **protocol** is ingesteld op **TCP**en voer poort 3**03**40 in.
+      1. Verhoog de **time-out voor inactiviteit** tot 30 minuten.
+      1. Zorg ervoor dat u **zwevende IP-adressen inschakelt**.
       1. Selecteer **OK**.
-      1. Herhaal deze stappen voor poorten 3**03**41 en 3**03**42.
+      1. Herhaal deze stappen voor de poorten 3**03**41 en 3**03**42.
 
-Lees voor meer informatie over de vereiste poorten voor SAP HANA het hoofdstuk [Connections to Tenant Databases](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) in de SAP [HANA Tenant Databases](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) guide of SAP Note [2388694][2388694].
+Lees voor meer informatie over de vereiste poorten voor SAP HANA de hoofdstuk [verbindingen met Tenant databases](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) in de hand leiding voor [SAP Hana Tenant-data bases](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) of [SAP Note 2388694][2388694].
 
 > [!IMPORTANT]
-> Schakel geen TCP-tijdstempels in op Azure VM's die achter Azure Load Balancer zijn geplaatst. Als u TCP-tijdstempels inschakelt, worden de statussprobes mislukt. Stel parameter **net.ipv4.tcp_timestamps** in op **0**. Zie [Health Probes van Load Balancer voor](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)meer informatie .
-> Zie ook SAP note [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
+> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. tcp_timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie.
+> Zie ook SAP-opmerking [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
 
 ## <a name="install-sap-hana"></a>SAP HANA installeren
 
-De stappen in deze sectie gebruiken de volgende voorvoegsels:
+Voor de stappen in deze sectie worden de volgende voor voegsels gebruikt:
 
-* **[A]**: De stap is van toepassing op alle knooppunten.
-* **[1]**: De stap is alleen van toepassing op knooppunt 1.
-* **[2]**: De stap is alleen van toepassing op knooppunt 2 van het pacemakercluster.
+* **[A]**: de stap is van toepassing op alle knoop punten.
+* **[1]**: de stap is alleen van toepassing op knoop punt 1.
+* **[2]**: de stap is alleen van toepassing op knoop punt 2 van het pacemaker-cluster.
 
-1. **[A]** De schijfindeling instellen: **Logische volumebeheer (LVM).**
+1. **[A]** de schijf indeling instellen: **Logical Volume Manager (LVM)**.
 
-   We raden u aan LVM te gebruiken voor volumes die gegevens en logboekbestanden opslaan. In het volgende voorbeeld wordt ervan uitgegaan dat er vier gegevensschijven zijn gekoppeld die worden gebruikt om twee volumes te maken.
+   We raden u aan LVM te gebruiken voor volumes die gegevens en logboek bestanden opslaan. In het volgende voor beeld wordt ervan uitgegaan dat aan de virtuele machines vier gegevens schijven zijn gekoppeld die worden gebruikt om twee volumes te maken.
 
-   Vermeld alle beschikbare schijven:
+   Alle beschik bare schijven weer geven:
 
    <pre><code>ls /dev/disk/azure/scsi1/lun*
    </code></pre>
@@ -256,18 +256,18 @@ De stappen in deze sectie gebruiken de volgende voorvoegsels:
    sudo pvcreate /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   Maak een volumegroep voor de gegevensbestanden. Gebruik één volumegroep voor de logboekbestanden en één voor de gedeelde map van SAP HANA:
+   Maak een volume groep voor de gegevens bestanden. Gebruik één volume groep voor de logboek bestanden en een voor de gedeelde map van SAP HANA:
 
    <pre><code>sudo vgcreate vg_hana_data_<b>HN1</b> /dev/disk/azure/scsi1/lun0 /dev/disk/azure/scsi1/lun1
    sudo vgcreate vg_hana_log_<b>HN1</b> /dev/disk/azure/scsi1/lun2
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   Maak de logische volumes. Er wordt een lineair `lvcreate` volume `-i` gemaakt wanneer u zonder de schakelaar gebruikt. We raden u aan een gestreept volume te maken voor betere I/O-prestaties en de streepgrootteaf te stemmen op de waarden die zijn gedocumenteerd in [SAP HANA VM-opslagconfiguraties.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) Het `-i` argument moet het aantal van de `-I` onderliggende fysieke volumes zijn en het argument is de streepgrootte. In dit document worden twee fysieke volumes gebruikt `-i` voor het gegevensvolume, zodat het argument voor de switch is ingesteld op **2**. De streepgrootte voor het gegevensvolume is **256KiB.** Eén fysiek volume wordt gebruikt voor `-i` het `-I` logboekvolume, zodat er geen of schakelaars expliciet worden gebruikt voor de opdrachten voor het logboekvolume.  
+   Maak de logische volumes. Er wordt een lineair volume gemaakt wanneer u `lvcreate` zonder de `-i` switch gebruikt. U wordt aangeraden een striped volume te maken voor betere I/O-prestaties en de Stripe-groottes af te stemmen op de waarden die worden beschreven in [SAP Hana VM-opslag configuraties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage). Het `-i` argument moet het aantal onderliggende fysieke volumes zijn en het `-I` argument is de Stripe-grootte. In dit document worden twee fysieke volumes gebruikt voor het gegevens volume, dus is het `-i` argument switch ingesteld op **2**. De Stripe-grootte voor het gegevens volume is **256KiB**. Er wordt één fysiek volume gebruikt voor het logboek volume, dus `-i` Nee `-I` of switches worden expliciet gebruikt voor de volume opdrachten van het logboek.  
 
    > [!IMPORTANT]
-   > Gebruik `-i` de schakelaar en stel deze in op het nummer van het onderliggende fysieke volume wanneer u meer dan één fysiek volume gebruikt voor elke gegevens, logboeken of gedeelde volumes. Gebruik `-I` de schakelaar om de streepgrootte op te geven bij het maken van een gestreept volume.  
-   > Zie [SAP HANA VM-opslagconfiguraties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) voor aanbevolen opslagconfiguraties, inclusief streepgroottes en het aantal schijven.  
+   > Gebruik de `-i` switch en stel deze in op het nummer van het onderliggende fysieke volume wanneer u meer dan één fysiek volume gebruikt voor elke gegevens, elk logboek of gedeelde volumes. Gebruik de `-I` Schakel optie om de Stripe-grootte op te geven bij het maken van een striped volume.  
+   > Zie [SAP Hana VM-opslag configuraties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) voor aanbevolen opslag configuraties, inclusief Stripe-grootte en aantal schijven.  
 
    <pre><code>sudo lvcreate <b>-i 2</b> <b>-I 256</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
@@ -277,7 +277,7 @@ De stappen in deze sectie gebruiken de volgende voorvoegsels:
    sudo mkfs.xfs /dev/vg_hana_shared_<b>HN1</b>/hana_shared
    </code></pre>
 
-   Maak de mount mappen en kopieer de UUID van alle logische volumes:
+   Maak de koppelings directory's en kopieer de UUID van alle logische volumes:
 
    <pre><code>sudo mkdir -p /hana/data/<b>HN1</b>
    sudo mkdir -p /hana/log/<b>HN1</b>
@@ -286,26 +286,26 @@ De stappen in deze sectie gebruiken de volgende voorvoegsels:
    sudo blkid
    </code></pre>
 
-   Maak `fstab` items voor de drie logische volumes:
+   Vermeldingen `fstab` maken voor de drie logische volumes:
 
    <pre><code>sudo vi /etc/fstab
    </code></pre>
 
-   Voeg de volgende `/etc/fstab` regel in het bestand in:
+   Voeg de volgende regel toe aan `/etc/fstab` het bestand:
 
    <pre><code>/dev/disk/by-uuid/<b>&lt;UUID of /dev/mapper/vg_hana_data_<b>HN1</b>-hana_data&gt;</b> /hana/data/<b>HN1</b> xfs  defaults,nofail  0  2
    /dev/disk/by-uuid/<b>&lt;UUID of /dev/mapper/vg_hana_log_<b>HN1</b>-hana_log&gt;</b> /hana/log/<b>HN1</b> xfs  defaults,nofail  0  2
    /dev/disk/by-uuid/<b>&lt;UUID of /dev/mapper/vg_hana_shared_<b>HN1</b>-hana_shared&gt;</b> /hana/shared/<b>HN1</b> xfs  defaults,nofail  0  2
    </code></pre>
 
-   Monteer de nieuwe volumes:
+   De nieuwe volumes koppelen:
 
    <pre><code>sudo mount -a
    </code></pre>
 
-1. **[A]** De schijfindeling instellen: **Plain Disks**.
+1. **[A]** de schijf indeling instellen: **platte schijven**.
 
-   Voor demosystemen u uw HANA-gegevens en logbestanden op één schijf plaatsen. Maak een partitie op /dev/disk/azure/scsi1/lun0 en maak deze op met xfs:
+   Voor demo systemen kunt u uw HANA-gegevens en-logboek bestanden op één schijf plaatsen. Maak een partitie op/dev/disk/Azure/SCSI1/lun0 en Format teer deze met xfs:
 
    <pre><code>sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/disk/azure/scsi1/lun0'
    sudo mkfs.xfs /dev/disk/azure/scsi1/lun0-part1
@@ -315,92 +315,92 @@ De stappen in deze sectie gebruiken de volgende voorvoegsels:
    sudo vi /etc/fstab
    </code></pre>
 
-   Voeg deze regel in het bestand /etc/fstab in:
+   Voeg deze regel toe aan het bestand/etc/fstab-bestand:
 
    <pre><code>/dev/disk/by-uuid/<b>&lt;UUID&gt;</b> /hana xfs  defaults,nofail  0  2
    </code></pre>
 
-   Maak de doelmap en monteer de schijf:
+   Maak de doel directory en koppel de schijf:
 
    <pre><code>sudo mkdir /hana
    sudo mount -a
    </code></pre>
 
-1. **[A]** Host name resolution instellen voor alle hosts.
+1. **[A] het** omzetten van de hostnaam voor alle hosts instellen.
 
-   U een DNS-server gebruiken of het /etc/hosts-bestand op alle knooppunten wijzigen. In dit voorbeeld ziet u hoe u het bestand /etc/hosts gebruiken.
+   U kunt een DNS-server gebruiken of het bestand/etc/hosts-bestand op alle knoop punten wijzigen. In dit voor beeld ziet u hoe u het bestand/etc/hosts-bestand gebruikt.
    Vervang het IP-adres en de hostnaam in de volgende opdrachten:
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Voeg de volgende regels in het bestand /etc/hosts in. Wijzig het IP-adres en de hostnaam op uw omgeving:
+   Voeg de volgende regels toe aan het bestand/etc/hosts-bestand. Wijzig het IP-adres en de hostnaam zodat deze overeenkomen met uw omgeving:
 
    <pre><code><b>10.0.0.5 hn1-db-0</b>
    <b>10.0.0.6 hn1-db-1</b>
    </code></pre>
 
-1. **[A]** RHEL voor HANA-configuratie
+1. **[A]** RHEL voor Hana-configuratie
 
-   Configureer RHEL zoals beschreven in SAP Note [2292690] <https://access.redhat.com/solutions/2447641>en [2455582] en .
+   Configureer RHEL zoals beschreven in SAP Note [2292690] en [2455582] en <https://access.redhat.com/solutions/2447641>.
 
-1. **[A]** Installeer de SAP HANA
+1. **[A]** de SAP Hana installeren
 
-   Als u SAP HANA-systeemreplicatie wilt installeren, volgt u <https://access.redhat.com/articles/3004101>.
+   Ga als volgt te werk <https://access.redhat.com/articles/3004101>om SAP Hana-systeem replicatie te installeren.
 
-   * Voer het **hdblcm-programma** uit vanaf de HANA DVD. Voer de volgende waarden in op de prompt:
-   * Kies installatie: Voer **1**in.
-   * Selecteer extra onderdelen voor installatie: Enter **1**.
-   * Voer Installatiepad in [/hana/gedeeld]: Selecteer Enter.
-   * Voer de naam van de lokale host in [..]: Selecteer Enter.
-   * Wilt u extra hosts toevoegen aan het systeem? (y/n) [n]: Selecteer Enter.
-   * Voer SAP HANA-systeem-id in: Voer de SID van HANA in, bijvoorbeeld: **HN1**.
-   * Voer instantienummer [00] in: voer het HANA-instantienummer in. Voer **03** in als u de Azure-sjabloon hebt gebruikt of de sectie handmatige implementatie van dit artikel hebt gevolgd.
-   * Selecteer Databasemodus / Voer index in [1]: Selecteer Enter.
-   * Selecteer Systeemgebruik / Enter Index [4]: Selecteer de waarde van het systeemgebruik.
-   * Voer locatie van gegevensvolumes in [/hana/data/HN1]: Selecteer Enter.
-   * Voer locatie van logboekvolumes in [/hana/log/HN1]: Selecteer Enter.
-   * Maximale geheugentoewijzing beperken? [n]: Selecteer Enter.
-   * Voer de naam van certificate host in voor host '...' [...]: Selecteer Enter.
-   * Voer sapadm-wachtwoord (SAPADM) van SAP Host Agent In: voer het gebruikerswachtwoord van de hostagent in.
-   * Sapadm-wachtwoord bevestigen: voer het gebruikerswachtwoord van de hostagent opnieuw in om dit te bevestigen.
-   * Systeembeheerder (hdbadm) Wachtwoord invoeren: voer het wachtwoord van de systeembeheerder in.
-   * Systeembeheerder (hdbadm) wachtwoord bevestigen: voer het wachtwoord van de systeembeheerder opnieuw in om dit te bevestigen.
-   * Voer de thuismap systeembeheerder [/usr/sap/HN1/home] in: Selecteer Enter.
-   * Voer de shell voor het aanmelden van systeembeheerder [/bin/sh] in: Selecteer Enter.
-   * Voer de gebruikersnaam van de systeembeheerder in [1001]: selecteer Enter.
-   * Voer id van gebruikersgroep (sapsys) in [79]: Selecteer Enter.
-   * Systeemwachtwoord (Databasegebruiker) invoeren: voer het wachtwoord van de databasegebruiker in.
-   * Systeemwachtwoord (Databasegebruiker bevestigen): voer het wachtwoord van de databasegebruiker opnieuw in om dit te bevestigen.
-   * Herstart systeem na het opnieuw opstarten van de machine? [n]: Selecteer Enter.
-   * Wilt u doorgaan? (y/n): Valideer de samenvatting. Voer **y** in om door te gaan.
+   * Voer het **hdblcm** -programma uit vanaf de Hana-DVD. Voer de volgende waarden in bij de prompt:
+   * Installatie kiezen: Voer **1**in.
+   * Selecteer extra onderdelen voor installatie: Voer **1**in.
+   * Voer het installatiepad [/Hana/Shared] in: Selecteer ENTER.
+   * Voer de naam van de lokale host [..] in: Selecteer ENTER.
+   * Wilt u extra hosts toevoegen aan het systeem? (j/n) [n]: Selecteer ENTER.
+   * Voer SAP HANA systeem-ID in: Voer de SID van HANA in, bijvoorbeeld: **HN1**.
+   * Voer het exemplaar nummer [00] in: Voer het HANA-exemplaar nummer in. Voer **03** in als u de Azure-sjabloon hebt gebruikt of als u de sectie hand matige implementatie in dit artikel hebt gevolgd.
+   * Database modus selecteren/index invoeren [1]: Selecteer ENTER.
+   * Systeem gebruik selecteren/index invoeren [4]: Selecteer de waarde voor het systeem gebruik.
+   * Voer de locatie van de gegevens volumes [/hana/data/HN1] in: Selecteer ENTER.
+   * Locatie van logboek volumes invoeren [/hana/log/HN1]: Selecteer ENTER.
+   * Maximale geheugen toewijzing beperken? [n]: Selecteer ENTER.
+   * Voer de hostnaam van het certificaat in voor de host... [...]: Selecteer ENTER.
+   * Voer het wacht woord voor de gebruiker van de SAP host agent (sapadm) in: Voer het wacht woord van de Hosta Gent in.
+   * Bevestig het wacht woord van de gebruiker van de SAP-Hosta Gent (sapadm): Voer het wacht woord van de Hosta Gent in om het te bevestigen
+   * Voer het wacht woord voor de systeem beheerder (hdbadm) in: Voer het beheerders wachtwoord voor het systeem in.
+   * Wacht woord van systeem beheerder (hdbadm) bevestigen: Voer het wacht woord van de systeem beheerder nogmaals in om dit te bevestigen.
+   * Voer de basismap van de systeem beheerder in [/usr/sap/HN1/home]: Selecteer ENTER.
+   * Voer aanmeldings shell van systeem beheerder in [/bin/sh]: Selecteer ENTER.
+   * Voer de gebruikers-ID van de systeem beheerder in [1001]: Selecteer ENTER.
+   * ID van gebruikers groep opgeven (sapsys) [79]: Selecteer ENTER.
+   * Voer het wacht woord voor de database gebruiker (systeem) in: Voer het wacht woord voor de database gebruiker in.
+   * Wacht woord van database gebruiker (systeem) bevestigen: Voer het wacht woord voor de database gebruiker opnieuw in om dit te bevestigen.
+   * Systeem opnieuw opstarten nadat de computer opnieuw is opgestart? [n]: Selecteer ENTER.
+   * Wilt u doorgaan? (j/n): Valideer de samen vatting. Voer **y** in om door te gaan.
 
-1. **[A]** Upgrade de SAP Host Agent.
+1. **[A]** de SAP Hosta Gent bijwerken.
 
-   Download het nieuwste SAP Host Agent-archief van het [SAP Software Center][sap-swcenter] en voer de volgende opdracht uit om de agent te upgraden. Vervang het pad naar het archief om naar het bestand te wijzen dat u hebt gedownload:
+   Down load het meest recente SAP host agent-archief vanuit het [SAP Software Center][sap-swcenter] en voer de volgende opdracht uit om de agent bij te werken. Vervang het pad naar het archief zodat dit verwijst naar het bestand dat u hebt gedownload:
 
    <pre><code>sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive &lt;path to SAP Host Agent SAR&gt;
    </code></pre>
 
-1. **[A]** Firewall configureren
+1. **[A]** firewall configureren
 
-   Maak de firewallregel voor de azure load balancer probe-poort.
+   Maak de firewall regel voor de Azure load balancer-test poort.
 
    <pre><code>sudo firewall-cmd --zone=public --add-port=625<b>03</b>/tcp
    sudo firewall-cmd --zone=public --add-port=625<b>03</b>/tcp --permanent
    </code></pre>
 
-## <a name="configure-sap-hana-20-system-replication"></a>SAP HANA 2.0-systeemreplicatie configureren
+## <a name="configure-sap-hana-20-system-replication"></a>SAP HANA 2,0-systeem replicatie configureren
 
-De stappen in deze sectie gebruiken de volgende voorvoegsels:
+Voor de stappen in deze sectie worden de volgende voor voegsels gebruikt:
 
-* **[A]**: De stap is van toepassing op alle knooppunten.
-* **[1]**: De stap is alleen van toepassing op knooppunt 1.
-* **[2]**: De stap is alleen van toepassing op knooppunt 2 van het pacemakercluster.
+* **[A]**: de stap is van toepassing op alle knoop punten.
+* **[1]**: de stap is alleen van toepassing op knoop punt 1.
+* **[2]**: de stap is alleen van toepassing op knoop punt 2 van het pacemaker-cluster.
 
-1. **[A]** Firewall configureren
+1. **[A]** firewall configureren
 
-   Maak firewallregels om HANA-systeemreplicatie en clientverkeer toe te staan. De vereiste poorten worden vermeld op [TCP/IP-poorten van alle SAP-producten.](https://help.sap.com/viewer/ports) De volgende opdrachten zijn slechts een voorbeeld waarmee HANA 2.0 System Replication en clientverkeer naar database SYSTEMDB, HN1 en NW1 kunnen worden gebracht.
+   Maak firewall regels om HANA-systeem replicatie en client verkeer toe te staan. De vereiste poorten worden vermeld op de [TCP/IP-poorten van alle SAP-producten](https://help.sap.com/viewer/ports). De volgende opdrachten zijn slechts een voor beeld van het toestaan van HANA 2,0-systeem replicatie en client verkeer naar data base SYSTEMDB, HN1 en NW1.
 
    <pre><code>sudo firewall-cmd --zone=public --add-port=40302/tcp --permanent
    sudo firewall-cmd --zone=public --add-port=40302/tcp
@@ -420,18 +420,18 @@ De stappen in deze sectie gebruiken de volgende voorvoegsels:
    sudo firewall-cmd --zone=public --add-port=30342/tcp
    </code></pre>
 
-1. **[1]** Maak de tenantdatabase.
+1. **[1]** de Tenant database maken.
 
-   Als u SAP HANA 2.0 of MDC gebruikt, maakt u een tenantdatabase voor uw SAP NetWeaver-systeem. Vervang **NW1** door de SID van uw SAP-systeem.
+   Als u SAP HANA 2,0 of MDC gebruikt, maakt u een Tenant database voor uw SAP net-Weaver-systeem. Vervang **NW1** door de sid van uw SAP-systeem.
 
-   Voer uit als\><hanasid adm de volgende opdracht:
+   Voer de volgende opdracht\>uit als <hanasid adm:
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
-1. **[1]** Systeemreplicatie configureren op het eerste knooppunt:
+1. **[1]** systeem replicatie op het eerste knoop punt configureren:
 
-   Back-up van de\>databases als <hanasid adm:
+   Back-up maken van de\>data bases als <hanasid adm:
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -449,17 +449,17 @@ De stappen in deze sectie gebruiken de volgende voorvoegsels:
    <pre><code>hdbnsutil -sr_enable --name=<b>SITE1</b>
    </code></pre>
 
-1. **[2]** Systeemreplicatie configureren op het tweede knooppunt:
+1. **[2]** systeem replicatie op het tweede knoop punt configureren:
     
-   Registreer het tweede knooppunt om de systeemreplicatie te starten. Voer de volgende opdracht uit\>als <hanasid adm:
+   Registreer het tweede knoop punt om de systeem replicatie te starten. Voer de volgende opdracht uit als <\>hanasid adm:
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b>
    </code></pre>
 
-1. **[1]** Replicatiestatus controleren
+1. **[1]** replicatie status controleren
 
-   Controleer de replicatiestatus en wacht tot alle databases gesynchroniseerd zijn. Als de status onbekend blijft, controleert u de firewall-instellingen.
+   Controleer de replicatie status en wacht totdat alle data bases zijn gesynchroniseerd. Als de status onbekend blijft, controleert u de firewall instellingen.
 
    <pre><code>sudo su - <b>hn1</b>adm -c "python /usr/sap/<b>HN1</b>/HDB<b>03</b>/exe/python_support/systemReplicationStatus.py"
    # | Database | Host     | Port  | Service Name | Volume ID | Site ID | Site Name | Secondary | Secondary | Secondary | Secondary | Secondary     | Replication | Replication | Replication    |
@@ -481,25 +481,25 @@ De stappen in deze sectie gebruiken de volgende voorvoegsels:
    # site name: <b>SITE1</b>
    </code></pre>
 
-## <a name="configure-sap-hana-10-system-replication"></a>SAP HANA 1.0-systeemreplicatie configureren
+## <a name="configure-sap-hana-10-system-replication"></a>SAP HANA 1,0-systeem replicatie configureren
 
-De stappen in deze sectie gebruiken de volgende voorvoegsels:
+Voor de stappen in deze sectie worden de volgende voor voegsels gebruikt:
 
-* **[A]**: De stap is van toepassing op alle knooppunten.
-* **[1]**: De stap is alleen van toepassing op knooppunt 1.
-* **[2]**: De stap is alleen van toepassing op knooppunt 2 van het pacemakercluster.
+* **[A]**: de stap is van toepassing op alle knoop punten.
+* **[1]**: de stap is alleen van toepassing op knoop punt 1.
+* **[2]**: de stap is alleen van toepassing op knoop punt 2 van het pacemaker-cluster.
 
-1. **[A]** Firewall configureren
+1. **[A]** firewall configureren
 
-   Maak firewallregels om HANA-systeemreplicatie en clientverkeer toe te staan. De vereiste poorten worden vermeld op [TCP/IP-poorten van alle SAP-producten.](https://help.sap.com/viewer/ports) De volgende opdrachten zijn slechts een voorbeeld om HANA 2.0-systeemreplicatie toe te staan. Pas het aan uw SAP HANA 1.0 installatie aan.
+   Maak firewall regels om HANA-systeem replicatie en client verkeer toe te staan. De vereiste poorten worden vermeld op de [TCP/IP-poorten van alle SAP-producten](https://help.sap.com/viewer/ports). De volgende opdrachten zijn slechts een voor beeld van het toestaan van HANA 2,0-systeem replicatie. Past u deze aan bij de installatie van SAP HANA 1,0.
 
    <pre><code>sudo firewall-cmd --zone=public --add-port=40302/tcp --permanent
    sudo firewall-cmd --zone=public --add-port=40302/tcp
    </code></pre>
 
-1. **[1]** Maak de vereiste gebruikers.
+1. **[1]** de vereiste gebruikers maken.
 
-   Voer de volgende opdracht uit als hoofd. Zorg ervoor dat u vette tekenreeksen (HANA System ID **HN1** en instantienummer **03)** vervangt door de waarden van uw SAP HANA-installatie:
+   Voer de volgende opdracht uit als basis. Zorg ervoor dat u vetgedrukte teken reeksen (HANA-systeem-ID **HN1** en instantie nummer **03**) vervangt door de waarden van uw SAP Hana-installatie:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -u system -i <b>03</b> 'CREATE USER <b>hdb</b>hasync PASSWORD "<b>passwd</b>"'
@@ -507,51 +507,51 @@ De stappen in deze sectie gebruiken de volgende voorvoegsels:
    hdbsql -u system -i <b>03</b> 'ALTER USER <b>hdb</b>hasync DISABLE PASSWORD LIFETIME'
    </code></pre>
 
-1. **[A]** Maak de keystore-vermelding.
+1. **[A]** de vermelding voor het opslag item maken.
 
-   Voer de volgende opdracht uit als hoofdom een nieuw keystore-item te maken:
+   Voer de volgende opdracht uit als basis voor het maken van een nieuwe vermelding in de opslag locatie:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbuserstore SET <b>hdb</b>haloc localhost:3<b>03</b>15 <b>hdb</b>hasync <b>passwd</b>
    </code></pre>
 
-1. **[1]** Een back-up van de database.
+1. **[1]** Maak een back-up van de data base.
 
-   Een back-up maken van de databases als root:
+   Back-up van de data bases maken als hoofdmap:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -d SYSTEMDB -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')"
    </code></pre>
 
-   Als u een installatie met meerdere tenant's gebruikt, maakt u ook een back-up van de tenantdatabase:
+   Als u een installatie met meerdere tenants gebruikt, moet u ook een back-up maken van de Tenant database:
 
    <pre><code>hdbsql -d <b>HN1</b> -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')"
    </code></pre>
 
-1. **[1]** Systeemreplicatie configureren op het eerste knooppunt.
+1. **[1]** Configureer de systeem replicatie op het eerste knoop punt.
 
-   Maak de primaire site als\><hanasid adm:
+   Maak de primaire site als <hanasid\>adm:
 
    <pre><code>su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
    </code></pre>
 
-1. **[2]** Systeemreplicatie configureren op het secundaire knooppunt.
+1. **[2]** Configureer de systeem replicatie op het secundaire knoop punt.
 
-   Registreer de secundaire site\>als <hanasid adm:
+   Registreer de secundaire site als <hanasid\>adm:
 
    <pre><code>HDB stop
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b>
    HDB start
    </code></pre>
 
-## <a name="create-a-pacemaker-cluster"></a>Een pacemakercluster maken
+## <a name="create-a-pacemaker-cluster"></a>Een pacemaker-cluster maken
 
-Volg de stappen in [Het instellen van Pacemaker op Red Hat Enterprise Linux in Azure](high-availability-guide-rhel-pacemaker.md) om een basispacemakercluster voor deze HANA-server te maken.
+Volg de stappen bij het [instellen van pacemaker op Red Hat Enterprise Linux in azure](high-availability-guide-rhel-pacemaker.md) om een basis pacemaker-cluster voor deze Hana-server te maken.
 
-## <a name="create-sap-hana-cluster-resources"></a>SAP HANA-clusterbronnen maken
+## <a name="create-sap-hana-cluster-resources"></a>SAP HANA cluster resources maken
 
-Installeer de SAP HANA-resourceagents op **alle knooppunten.** Zorg ervoor dat u een opslagplaats inschakelt die het pakket bevat.
+Installeer de SAP HANA resource agents op **Alle knoop punten**. Zorg ervoor dat u een opslag plaats met het pakket inschakelt.
 
 <pre><code># Enable repository that contains SAP HANA resource agents
 sudo subscription-manager repos --enable="rhel-sap-hana-for-rhel-7-server-rpms"
@@ -559,7 +559,7 @@ sudo subscription-manager repos --enable="rhel-sap-hana-for-rhel-7-server-rpms"
 sudo yum install -y resource-agents-sap-hana
 </code></pre>
 
-Maak vervolgens de HANA-topologie. Voer de volgende opdrachten uit op een van de clusterknooppunten van pacemakers:
+Maak vervolgens de HANA-topologie. Voer de volgende opdrachten uit op een van de pacemaker-cluster knooppunten:
 
 <pre><code>sudo pcs property set maintenance-mode=true
 
@@ -593,10 +593,10 @@ sudo pcs constraint colocation add g_ip_<b>HN1</b>_<b>03</b> with master SAPHana
 sudo pcs property set maintenance-mode=false
 </code></pre>
 
-Zorg ervoor dat de clusterstatus in orde is en dat alle resources zijn gestart. Het is niet belangrijk op welk knooppunt de resources worden uitgevoerd.
+Zorg ervoor dat de cluster status OK is en dat alle resources worden gestart. Het is niet belang rijk op welke knoop punten de resources worden uitgevoerd.
 
 > [!NOTE]
-> De time-outs in de bovenstaande configuratie zijn slechts voorbeelden en moeten mogelijk worden aangepast aan de specifieke HANA-setup. Het kan bijvoorbeeld nodig zijn om de starttime-out te verhogen, als het langer duurt om de SAP HANA-database te starten.  
+> De time-outs in de bovenstaande configuratie zijn slechts voor beelden en moeten mogelijk worden aangepast aan de specifieke HANA-instellingen. Het is bijvoorbeeld mogelijk dat u de time-out voor starten moet verhogen als u de SAP HANA data base langer wilt starten.  
 
 <pre><code>sudo pcs status
 
@@ -615,16 +615,16 @@ Zorg ervoor dat de clusterstatus in orde is en dat alle resources zijn gestart. 
 #      vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-0
 </code></pre>
 
-## <a name="test-the-cluster-setup"></a>De clusterinstelling testen
+## <a name="test-the-cluster-setup"></a>De Cluster installatie testen
 
-In dit gedeelte wordt beschreven hoe u uw installatie testen. Voordat u een test start, moet u ervoor zorgen dat pacemaker geen mislukte actie heeft (via de pc-status), er geen onverwachte locatiebeperkingen zijn (bijvoorbeeld restjes van een migratietest) en dat HANA de synchronisatiestatus is, bijvoorbeeld met systemReplicationStatus:
+In deze sectie wordt beschreven hoe u de installatie kunt testen. Voordat u een test start, moet u ervoor zorgen dat pacemaker geen mislukte actie heeft (via de status van pc's), er zijn geen onverwachte locatie beperkingen (bijvoorbeeld rests van een migratie test) en de HANA-synchronisatie status, bijvoorbeeld met systemReplicationStatus:
 
 <pre><code>[root@hn1-db-0 ~]# sudo su - hn1adm -c "python /usr/sap/HN1/HDB03/exe/python_support/systemReplicationStatus.py"
 </code></pre>
 
 ### <a name="test-the-migration"></a>De migratie testen
 
-Resourcestatus voordat de test wordt gestart:
+Resource status voordat u begint met testen:
 
 <pre><code>Clone Set: SAPHanaTopology_HN1_03-clone [SAPHanaTopology_HN1_03]
     Started: [ hn1-db-0 hn1-db-1 ]
@@ -636,14 +636,14 @@ Resource Group: g_ip_HN1_03
     vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-0
 </code></pre>
 
-U het SAP HANA-hoofdknooppunt migreren door de volgende opdracht uit te voeren:
+U kunt het knoop punt SAP HANA Master migreren door de volgende opdracht uit te voeren:
 
 <pre><code>[root@hn1-db-0 ~]# pcs resource move SAPHana_HN1_03-master
 </code></pre>
 
-Als u `AUTOMATED_REGISTER="false"`deze opdracht instelt, moet deze opdracht het SAP HANA-hoofdknooppunt migreren en de groep die het virtuele IP-adres bevat naar hn1-db-1.
+Als u deze `AUTOMATED_REGISTER="false"`opdracht instelt, moet u de SAP Hana hoofd knooppunt en de groep die het virtuele IP-adres bevat, migreren naar HN1-db-1.
 
-Zodra de migratie is gedaan, de 'sudo pcs status' output ziet er als volgt
+Zodra de migratie is voltooid, ziet de uitvoer ' sudo PCs status ' er als volgt uit:
 
 <pre><code>Clone Set: SAPHanaTopology_HN1_03-clone [SAPHanaTopology_HN1_03]
     Started: [ hn1-db-0 hn1-db-1 ]
@@ -655,7 +655,7 @@ Resource Group: g_ip_HN1_03
     vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-1
 </code></pre>
 
-De SAP HANA-bron op hn1-db-0 wordt gestopt. Configureer in dit geval de HANA-instantie als secundair door deze opdracht uit te voeren:
+De SAP HANA resource op HN1-DB-0 is gestopt. In dit geval configureert u het HANA-exemplaar als secundair door de volgende opdracht uit te voeren:
 
 <pre><code>[root@hn1-db-0 ~]# su - hn1adm
 
@@ -665,14 +665,14 @@ hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> hdbnsutil -sr_register --remoteHost=hn1-db-1
 e=sync --name=SITE1
 </code></pre>
 
-De migratie creëert locatiebeperkingen die opnieuw moeten worden verwijderd:
+De migratie maakt locatie beperkingen die opnieuw moeten worden verwijderd:
 
 <pre><code># Switch back to root
 exit
 [root@hn1-db-0 ~]# pcs resource clear SAPHana_HN1_03-master
 </code></pre>
 
-Controleer de status van de HANA-bron met behulp van 'pcs-status'. Zodra HANA is gestart op hn1-db-0, moet de output er zo uitzien
+Bewaak de status van de HANA-resource met de status ' PCs '. Zodra HANA is gestart op HN1-DB-0, ziet de uitvoer er als volgt uit:
 
 <pre><code>Clone Set: SAPHanaTopology_HN1_03-clone [SAPHanaTopology_HN1_03]
     Started: [ hn1-db-0 hn1-db-1 ]
@@ -684,9 +684,9 @@ Resource Group: g_ip_HN1_03
     vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-1
 </code></pre>
 
-### <a name="test-the-azure-fencing-agent"></a>De Azure-afrasteringsagent testen
+### <a name="test-the-azure-fencing-agent"></a>De Azure omheinings agent testen
 
-Resourcestatus voordat de test wordt gestart:
+Resource status voordat u begint met testen:
 
 <pre><code>Clone Set: SAPHanaTopology_HN1_03-clone [SAPHanaTopology_HN1_03]
     Started: [ hn1-db-0 hn1-db-1 ]
@@ -698,19 +698,19 @@ Resource Group: g_ip_HN1_03
     vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-1
 </code></pre>
 
-U de installatie van de Azure-afrasteringsagent testen door de netwerkinterface uit te schakelen op het knooppunt waar SAP HANA als Master wordt uitgevoerd.
-Zie [Red Hat Knowledgebase artikel 79523](https://access.redhat.com/solutions/79523) voor een beschrijving over het simuleren van een netwerkstoring. In dit voorbeeld gebruiken we het net_breaker script om alle toegang tot het netwerk te blokkeren.
+U kunt de installatie van de Azure-omheining testen door de netwerk interface op het knoop punt uit te scha kelen waar SAP HANA als Master wordt uitgevoerd.
+Zie [Red Hat Knowledge Base-artikel 79523](https://access.redhat.com/solutions/79523) voor een beschrijving van het simuleren van een netwerk fout. In dit voor beeld gebruiken we het net_breaker script om alle toegang tot het netwerk te blok keren.
 
 <pre><code>[root@hn1-db-1 ~]# sh ./net_breaker.sh BreakCommCmd 10.0.0.6
 </code></pre>
 
-De virtuele machine moet nu opnieuw opstarten of stoppen, afhankelijk van uw clusterconfiguratie.
-Als u `stonith-action` de instelling instelt op uitgeschakeld, wordt de virtuele machine gestopt en worden de resources gemigreerd naar de draaiende virtuele machine.
+Afhankelijk van de cluster configuratie moet de virtuele machine nu opnieuw worden opgestart of gestopt.
+Als u de `stonith-action` instelling instelt op uit, wordt de virtuele machine gestopt en worden de resources gemigreerd naar de actieve virtuele machine.
 
 > [!NOTE]
-> Het kan tot 15 minuten duren voordat de virtuele machines weer online zijn.
+> Het kan tot vijf tien minuten duren totdat de virtuele machines weer online zijn.
 
-Nadat u de virtuele machine opnieuw hebt gestart, kan de `AUTOMATED_REGISTER="false"`SAP HANA-bron niet als secundair beginnen als u deze instelt. Configureer in dit geval de HANA-instantie als secundair door deze opdracht uit te voeren:
+Nadat u de virtuele machine opnieuw hebt gestart, kan de SAP HANA resource niet worden gestart als secundaire als `AUTOMATED_REGISTER="false"`u deze instelt. In dit geval configureert u het HANA-exemplaar als secundair door de volgende opdracht uit te voeren:
 
 <pre><code>su - <b>hn1</b>adm
 
@@ -723,7 +723,7 @@ exit
 [root@hn1-db-1 ~]# pcs resource cleanup SAPHana_HN1_03-master
 </code></pre>
 
-Resourcestatus na de test:
+Resource status na de test:
 
 <pre><code>Clone Set: SAPHanaTopology_HN1_03-clone [SAPHanaTopology_HN1_03]
     Started: [ hn1-db-0 hn1-db-1 ]
@@ -735,9 +735,9 @@ Resource Group: g_ip_HN1_03
     vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-0
 </code></pre>
 
-### <a name="test-a-manual-failover"></a>Een handmatige failover testen
+### <a name="test-a-manual-failover"></a>Een hand matige failover testen
 
-Resourcestatus voordat de test wordt gestart:
+Resource status voordat u begint met testen:
 
 <pre><code>Clone Set: SAPHanaTopology_HN1_03-clone [SAPHanaTopology_HN1_03]
     Started: [ hn1-db-0 hn1-db-1 ]
@@ -749,12 +749,12 @@ Resource Group: g_ip_HN1_03
     vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-0
 </code></pre>
 
-U een handmatige failover testen door het cluster te stoppen op het hn1-db-0-knooppunt:
+U kunt een hand matige failover testen door het cluster op het knoop punt HN1-DB-0 te stoppen:
 
 <pre><code>[root@hn1-db-0 ~]# pcs cluster stop
 </code></pre>
 
-Na de failover u het cluster opnieuw starten. Als u `AUTOMATED_REGISTER="false"`deze instelt, wordt de SAP HANA-bron op het hn1-db-0-knooppunt niet als secundair gestart. Configureer in dit geval de HANA-instantie als secundair door deze opdracht uit te voeren:
+Na de failover kunt u het cluster opnieuw starten. Als u instelt `AUTOMATED_REGISTER="false"`, kan de SAP Hana resource op het knoop punt HN1-DB-0 niet worden gestart als secundair. In dit geval configureert u het HANA-exemplaar als secundair door de volgende opdracht uit te voeren:
 
 <pre><code>[root@hn1-db-0 ~]# pcs cluster start
 [root@hn1-db-0 ~]# su - hn1adm
@@ -768,7 +768,7 @@ hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> exit
 [root@hn1-db-1 ~]# pcs resource cleanup SAPHana_HN1_03-master
 </code></pre>
 
-Resourcestatus na de test:
+Resource status na de test:
 
 <pre><code>Clone Set: SAPHanaTopology_HN1_03-clone [SAPHanaTopology_HN1_03]
     Started: [ hn1-db-0 hn1-db-1 ]
@@ -785,4 +785,4 @@ Resource Group: g_ip_HN1_03
 * [Azure Virtual Machines planning en implementatie voor SAP][planning-guide]
 * [Azure Virtual Machines-implementatie voor SAP][deployment-guide]
 * [Azure Virtual Machines DBMS-implementatie voor SAP][dbms-guide]
-* Zie [SAP HANA (grote exemplaren) hoge beschikbaarheid en herstel na noodgevallen op Azure](hana-overview-high-availability-disaster-recovery.md) voor meer informatie over het instellen van hoge beschikbaarheid en plannen voor noodherstel van SAP HANA op Azure (grote exemplaren)
+* Zie [SAP Hana (grote instanties) hoge Beschik baarheid en herstel na nood gevallen op Azure](hana-overview-high-availability-disaster-recovery.md) voor meer informatie over het tot stand brengen van een hoge Beschik baarheid en het plannen van nood herstel van SAP Hana op Azure (grote exemplaren).

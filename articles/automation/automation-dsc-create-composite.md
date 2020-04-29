@@ -1,7 +1,7 @@
 ---
-title: Configuraties converteren naar samengestelde resources voor statusconfiguratie - Azure Automation
-description: Meer informatie over het converteren van configuraties naar samengestelde resources voor statusconfiguratie in Azure Automation.
-keywords: dsc, powershell, configuratie, setup
+title: Configuraties converteren naar samengestelde resources voor status configuratie-Azure Automation
+description: Meer informatie over het converteren van configuraties naar samengestelde resources voor status configuratie in Azure Automation.
+keywords: DSC, Power shell, configuratie, installatie
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -11,52 +11,52 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: a39b038d31d1b4a614ff0acf7df2586706bb0404
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585518"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>Configuraties converteren naar samengestelde resources
 
-> Van toepassing op: Windows PowerShell 5.1
+> Van toepassing op: Windows Power shell 5,1
 
-Zodra u aan de slag bent met het ontwerpen van configuraties, u snel 'scenario's' maken die groepen instellingen beheren.
-Voorbeelden hiervan zijn:
+Zodra u aan de slag gaat met het ontwerpen van configuraties, kunt u snel scenario's maken waarmee groepen instellingen worden beheerd.
+Voor beelden zijn:
 
 - een webserver maken
 - een DNS-server maken
-- Een SharePoint-server maken
+- een share Point-server maken
 - een SQL-cluster configureren
-- firewall-instellingen beheren
-- wachtwoordinstellingen beheren
+- Firewall-instellingen beheren
+- wachtwoord instellingen beheren
 
-Als u geïnteresseerd bent in het delen van dit werk met anderen, de beste optie is om de configuratie te verpakken als een [Samengestelde Resource](/powershell/scripting/dsc/resources/authoringresourcecomposite).
+Als u geïnteresseerd bent in het delen van dit werk met anderen, is de beste optie om de configuratie te verpakken als een [samengestelde resource](/powershell/scripting/dsc/resources/authoringresourcecomposite).
 Het maken van samengestelde resources voor de eerste keer kan overweldigend zijn.
 
 > [!NOTE]
-> Dit artikel verwijst naar een oplossing die wordt onderhouden door de Open Source-gemeenschap.
-> Ondersteuning is alleen beschikbaar in de vorm van GitHub-samenwerking, niet van Microsoft.
+> In dit artikel wordt verwezen naar een oplossing die wordt onderhouden door de open source-community.
+> Ondersteuning is alleen beschikbaar in de vorm van GitHub-samen werking, niet van micro soft.
 
-## <a name="community-project-compositeresource"></a>Communityproject: CompositeResource
+## <a name="community-project-compositeresource"></a>Community-Project: CompositeResource
 
-Er is een community-oplossing met de naam [CompositeResource](https://github.com/microsoft/compositeresource) gemaakt om deze uitdaging op te lossen.
+Er is een door de Community onderhouden oplossing gemaakt met de naam [CompositeResource](https://github.com/microsoft/compositeresource) om deze uitdaging op te lossen.
 
-CompositeResource automatiseert het proces van het maken van een nieuwe module vanuit uw configuratie.
-U begint met [het vinden van](https://blogs.technet.microsoft.com/heyscriptingguy/2010/08/10/how-to-reuse-windows-powershell-functions-in-scripts/) het configuratiescript op uw werkstation (of buildserver), zodat het in het geheugen wordt geladen.
-Gebruik vervolgens de functie van de CompositeResource-module om een conversie te automatiseren in plaats van de configuratie uit te voeren om een MOF-bestand te genereren.
-De cmdlet laadt de inhoud van uw configuratie, krijgt de lijst met parameters en genereert een nieuwe module met alles wat u nodig hebt.
+CompositeResource automatiseert het proces van het maken van een nieuwe module op basis van uw configuratie.
+U begint met [punt](https://blogs.technet.microsoft.com/heyscriptingguy/2010/08/10/how-to-reuse-windows-powershell-functions-in-scripts/) met het configuratie script op uw werk station (of build-server) zodat het in het geheugen wordt geladen.
+In plaats van de configuratie uit te voeren voor het genereren van een MOF-bestand, gebruikt u de functie van de CompositeResource-module om een conversie te automatiseren.
+De cmdlet laadt de inhoud van uw configuratie, haalt de lijst met para meters op en genereert een nieuwe module met alles wat u nodig hebt.
 
-Zodra u een module hebt gegenereerd, u de versie verhogen en releasenotes toevoegen telkens wanneer u wijzigingen aanbrengt en deze publiceert naar uw eigen [PowerShellGet-opslagplaats.](https://powershellexplained.com/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo)
+Zodra u een module hebt gegenereerd, kunt u de versie verhogen en release opmerkingen toevoegen telkens wanneer u wijzigingen aanbrengt en deze naar uw eigen [PowerShellGet-opslag plaats](https://powershellexplained.com/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo)publiceert.
 
-Zodra u een samengestelde resourcemodule hebt gemaakt met uw configuratie (of meerdere configuraties), u deze gebruiken in de [composable authoring experience](/azure/automation/compose-configurationwithcompositeresources) in Azure of deze toevoegen aan [DSC Configuration-scripts](/powershell/scripting/dsc/configurations/configurations) om MOF-bestanden te genereren en [de MOF-bestanden te uploaden naar Azure Automation.](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)
-Registreer vervolgens uw servers vanaf [on-premises](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) of [in Azure](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) om configuraties op te halen.
-De laatste update van het project heeft ook [runbooks](https://www.powershellgallery.com/packages?q=DscGallerySamples) voor Azure Automation gepubliceerd om het proces van het importeren van configuraties uit de PowerShell Gallery te automatiseren.
+Wanneer u een samengestelde resource module hebt gemaakt met uw configuratie (of meerdere configuraties), kunt u deze gebruiken in de [ontwerp ervaring](/azure/automation/compose-configurationwithcompositeresources) in azure, of deze toevoegen aan [DSC-configuratie scripts](/powershell/scripting/dsc/configurations/configurations) voor het genereren van MOF-bestanden en [het uploaden van de MOF-bestanden naar Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
+Registreer uw servers vervolgens [on-premises](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) of [in azure](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) om configuraties te halen.
+De meest recente update van het project heeft ook [runbooks](https://www.powershellgallery.com/packages?q=DscGallerySamples) gepubliceerd voor Azure Automation om het proces van het importeren van configuraties vanuit de PowerShell Gallery te automatiseren.
 
-Als u het automatiseren van het maken van samengestelde resources voor DSC wilt uitproberen, gaat u naar de [PowerShell-galerie](https://www.powershellgallery.com/packages/compositeresource/) en downloadt u de oplossing of klikt u op 'Projectsite' om de [documentatie](https://github.com/microsoft/compositeresource)te bekijken.
+Als u het maken van samengestelde resources voor DSC wilt automatiseren, gaat u naar de [PowerShell Gallery](https://www.powershellgallery.com/packages/compositeresource/) en downloadt u de oplossing of klikt u op project site om de [documentatie](https://github.com/microsoft/compositeresource)weer te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van de gewenste configuratie van Windows PowerShell](/powershell/scripting/dsc/overview/overview)
-- [DSC-bronnen](/powershell/scripting/dsc/resources/resources)
-- [Lokaal configuratiebeheer configureren](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- [Overzicht van desired state Configuration voor Windows Power shell](/powershell/scripting/dsc/overview/overview)
+- [DSC-resources](/powershell/scripting/dsc/resources/resources)
+- [De lokale Configuration Manager configureren](/powershell/scripting/dsc/managing-nodes/metaconfig)

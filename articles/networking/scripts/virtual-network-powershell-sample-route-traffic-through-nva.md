@@ -1,5 +1,5 @@
 ---
-title: Voorbeeld van Azure PowerShell-script - Routeverkeer door een virtueel netwerktoestel
+title: Voor beeld van Azure PowerShell script-verkeer routeren via een virtueel netwerk apparaat
 description: Azure PowerShell-voorbeeldscript - verkeer routeren via een virtueel netwerkapparaat met firewall.
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: kumud
 ms.openlocfilehash: 98509399c1f4bd66640152e8a9cb02cf396a1b62
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521476"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance"></a>Verkeer routeren via een virtueel netwerkapparaat
@@ -49,13 +49,13 @@ In dit script worden de volgende opdrachten gebruikt voor het maken van een reso
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)  | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Hiermee maakt u een virtueel Azure-netwerk en front-end-subnet. |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Hiermee maakt u back-end- en DMZ-subnetten. |
-| [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Hiermee maakt u een openbaar IP-adres om toegang te krijgen tot de vm vanaf internet. |
+| [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Hiermee maakt u een openbaar IP-adres voor toegang tot de virtuele machine via internet. |
 | [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | Hiermee maakt u een virtuele netwerkinterface en schakelt u doorsturen via IP in voor deze interface. |
 | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Hiermee maakt u een netwerkbeveiligingsgroep (NSG). |
 | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) | Hiermee maakt u NSG-regels waarmee inkomend verkeer via HTTP- en HTTPS-poorten naar de VM worden toegestaan. |
 | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig)| Hiermee koppelt u de NSG's en routetabellen aan subnetten. |
 | [New-AzRouteTable](/powershell/module/az.network/new-azroutetable)| Hiermee maakt u een routetabel voor alle routes. |
-| [New-AzRouteConfig](/powershell/module/az.network/new-azrouteconfig)| Hiermee maakt u routes om verkeer tussen subnetten en internet te routeren via de VM. |
+| [New-AzRouteConfig](/powershell/module/az.network/new-azrouteconfig)| Maakt routes voor het routeren van verkeer tussen subnetten en Internet via de VM. |
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Hiermee maakt u een virtuele machine en koppelt u de NIC hieraan. Met deze opdracht geeft u ook de installatiekopie van de virtuele machine op die moet worden gebruikt, evenals de beheerdersreferenties. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)  | Hiermee verwijdert u een resourcegroep en de bijhorende resources. |
 

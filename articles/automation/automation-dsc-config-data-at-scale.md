@@ -1,7 +1,7 @@
 ---
-title: Configuratiegegevens op schaal - Azure Automation
-description: Meer informatie over het configureren van gegevens op schaal voor statusconfiguratie in Azure Automation.
-keywords: dsc, powershell, configuratie, setup
+title: Configuratie gegevens op schaal-Azure Automation
+description: Meer informatie over het configureren van gegevens op schaal voor status configuratie in Azure Automation.
+keywords: DSC, Power shell, configuratie, installatie
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -11,46 +11,46 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 644ea1c00af7e71ff56852298fff18e5293c137b
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585563"
 ---
 # <a name="configuration-data-at-scale"></a>Configuratiegegevens op schaal
 
-> Van toepassing op: Windows PowerShell 5.1
+> Van toepassing op: Windows Power shell 5,1
 
 Het beheren van honderden of duizenden servers kan een uitdaging zijn.
-Klanten hebben feedback gegeven dat het moeilijkste aspect eigenlijk het beheren van [configuratiegegevens](/powershell/scripting/dsc/configurations/configdata)is.
-Informatie ordenen over logische constructies zoals locatie, type en omgeving.
+Klanten hebben feedback gegeven die het meest lastigste aspect heeft om [configuratie gegevens](/powershell/scripting/dsc/configurations/configdata)te beheren.
+Gegevens ordenen over logische constructs zoals locatie, type en omgeving.
 
 > [!NOTE]
-> Dit artikel verwijst naar een oplossing die wordt onderhouden door de Open Source-gemeenschap.
-> Ondersteuning is alleen beschikbaar in de vorm van GitHub-samenwerking, niet van Microsoft.
+> In dit artikel wordt verwezen naar een oplossing die wordt onderhouden door de open source-community.
+> Ondersteuning is alleen beschikbaar in de vorm van GitHub-samen werking, niet van micro soft.
 
-## <a name="community-project-datum"></a>Communityproject: Datum
+## <a name="community-project-datum"></a>Community-Project: datum
 
-Er is een door de community onderhouden oplossing met de naam [Datum](https://github.com/gaelcolas/Datum) gemaakt om deze uitdaging op te lossen.
-Datum bouwt voort op geweldige ideeën van andere configuratiebeheerplatforms en implementeert hetzelfde type oplossing voor PowerShell DSC.
-Informatie wordt [georganiseerd in tekstbestanden](https://github.com/gaelcolas/Datum#3-intended-usage) op basis van logische ideeën.
-Voorbeelden hiervan zijn:
+Er is een door de Community bijgehouden oplossing gemaakt met de naam [datum](https://github.com/gaelcolas/Datum) om deze uitdaging op te lossen.
+De datum bouwt voort op fantastische ideeën van andere configuratie beheer platforms en implementeert hetzelfde type oplossing voor Power shell DSC.
+Informatie wordt [in tekst bestanden ingedeeld](https://github.com/gaelcolas/Datum#3-intended-usage) op basis van logische ideeën.
+Voor beelden zijn:
 
-- Instellingen die wereldwijd moeten worden toegepast
-- Instellingen die moeten gelden voor alle servers op een locatie
-- Instellingen die van toepassing moeten zijn op alle databaseservers
-- Individuele serverinstellingen
+- Instellingen die wereld wijd moeten worden toegepast
+- Instellingen die moeten worden toegepast op alle servers op een locatie
+- Instellingen die moeten worden toegepast op alle database servers
+- Afzonderlijke server instellingen
 
-Deze informatie is georganiseerd in de bestandsindeling die u verkiest (JSON, Yaml of PSD1).
-Vervolgens worden cmdlets verstrekt om configuratiegegevensbestanden te genereren door [de informatie](https://github.com/gaelcolas/Datum#datum-tree) van elk bestand te consolideren in één weergave van een server of serverrol.
+Deze informatie is ingedeeld in de gewenste bestands indeling (JSON, yaml of PSD1).
+Vervolgens worden cmdlets verstrekt voor het genereren van configuratie gegevensbestand door de informatie van elk bestand te [consolideren](https://github.com/gaelcolas/Datum#datum-tree) in één weer gave van een server of server functie.
 
-Zodra de gegevensbestanden zijn gegenereerd, u ze gebruiken met [DSC Configuration-scripts](/powershell/scripting/dsc/configurations/write-compile-apply-configuration) om MOF-bestanden te genereren en [de MOF-bestanden te uploaden naar Azure Automation.](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)
-Registreer vervolgens uw servers vanaf [on-premises](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) of [in Azure](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) om configuraties op te halen.
+Zodra de gegevens bestanden zijn gegenereerd, kunt u ze gebruiken met [DSC-configuratie scripts](/powershell/scripting/dsc/configurations/write-compile-apply-configuration) om MOF-bestanden te genereren en [de MOF-bestanden te uploaden naar Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
+Registreer uw servers vervolgens [on-premises](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) of [in azure](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) om configuraties te halen.
 
-Als u Datum wilt uitproberen, gaat u naar de [PowerShell-galerie](https://www.powershellgallery.com/packages/datum/) en downloadt u de oplossing of klikt u op 'Projectsite' om de [documentatie](https://github.com/gaelcolas/Datum#2-getting-started--concepts)te bekijken.
+Als u de datum wilt proberen, gaat u naar de [PowerShell Gallery](https://www.powershellgallery.com/packages/datum/) en downloadt u de oplossing of klikt u op project site om de [documentatie](https://github.com/gaelcolas/Datum#2-getting-started--concepts)weer te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van de gewenste configuratie van Windows PowerShell](/powershell/scripting/dsc/overview/overview)
-- [DSC-bronnen](/powershell/scripting/dsc/resources/resources)
-- [Lokaal configuratiebeheer configureren](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- [Overzicht van desired state Configuration voor Windows Power shell](/powershell/scripting/dsc/overview/overview)
+- [DSC-resources](/powershell/scripting/dsc/resources/resources)
+- [De lokale Configuration Manager configureren](/powershell/scripting/dsc/managing-nodes/metaconfig)

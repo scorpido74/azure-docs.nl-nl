@@ -1,6 +1,6 @@
 ---
-title: Een beveiligingsgebeurtenisondersteuningsticket registreren - Azure | Microsoft Documenten
-description: Als verkoper op de Azure Marketplace, na een potentiële beveiligingsgebeurtenis te hebben geïdentificeerd, moet ik weten hoe ik een geschikt ticket kan registreren.
+title: Een ondersteunings ticket voor beveiligings gebeurtenissen in een logboek vastleggen-Azure | Microsoft Docs
+description: Als verkoper op de Azure Marketplace, met een mogelijke beveiligings gebeurtenis, moet ik weten hoe ze een geschikt ticket kunnen vastleggen.
 documentationcenter: na
 author: DavidBosland
 manager: lakoch
@@ -15,36 +15,36 @@ ms.workload: na
 ms.date: 11/13/2017
 ms.author: terrylan
 ms.openlocfilehash: fc5899fe5aca4bbaa9250cf41b240816e2cbedb0
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80548594"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>Een ondersteuningsticket voor een beveiligingsgebeurtenis maken
 
-1. Navigeer naar [Publisher Support](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636450758943226673) en meld u aan met uw Microsoft-referenties.
-2. Selecteer 'Beveiligingsgebeurtenis' als probleemtype en kies tussen de categorieën 'Beveiligingsincident' en 'Kwetsbaarheid'.
+1. Navigeer naar [ondersteuning voor Publisher](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636450758943226673) en meld u aan met uw micro soft-referenties.
+2. Selecteer beveiligings gebeurtenis als probleem type en kies tussen de categorieën beveiligings incident en beveiligings probleem.
 
-    ![Gebeurtenistype en definitie](./media/event-support-ticket/chart.png)
+    ![Gebeurtenis type en-definitie](./media/event-support-ticket/chart.png)
 
-3. Nadat u probleemtype en rubriek hebt geselecteerd, klikt u op de knop **'Startaanvraag'.** Geef de volgende informatie om ons te helpen het probleem beter te begrijpen.
+3. Nadat u het probleem type en de categorie hebt geselecteerd, klikt u op de knop**aanvraag starten**. Geef de volgende informatie op zodat we het probleem beter kunnen begrijpen.
 
-    i. Wat is het probleem en/of de kwetsbaarheid?
+    i. Wat is het probleem en/of het beveiligings probleem?
 
-    ii. Voor kwetsbaarheden, geef de CVE (mitre.org) of de ingevulde CVSS3 v3 calculator (https://www.first.org/cvss/calculator/3.0).
+    ii. Geef voor beveiligings problemen de CVE (mitre.org) of de ingevulde CVSS3 v3 Calculator (https://www.first.org/cvss/calculator/3.0).
 
-    iii. Is er een oplossing of mitigatie? Zo ja, geef dan de herstelstappen.
+    iii. Is er een oplossing of beperking? Zo ja, dan moet u de herstels tappen opgeven.
 
-    Iv. Heeft u een bericht dat u naar klanten wilt sturen? We zullen met u samenwerken om een geschikt bericht te maken indien van toepassing.
+    4. Hebt u een bericht dat u naar klanten wilt verzenden? We werken samen met u, indien van toepassing, een geschikt bericht.
 
-4. Bevestiging voor indiening - Zodra u uw probleem hebt ingediend, bevestigen we de ontvangst binnen één werkdag en wijzen we uw probleem een prioriteit en ernst toe.
+4. Bevestiging van de verzen ding: Zodra u het probleem hebt verzonden, zullen we de ontvangst binnen één werkdag bevestigen en uw probleem op prioriteit en ernst toewijzen.
 
-    - Als u met ons wilt communiceren over uw probleem, gebruikt u het bevestigingsnummer in alle correspondentie.
-    - U op elk gewenst moment de voortgang van uw probleem bekijken.
+    - Als u met ons wilt communiceren over uw probleem, gebruikt u het bevestigings nummer in alle correspondentie.
+    - U kunt op elk gewenst moment de voortgang van uw probleem weer geven.
 
-5. Wat gebeurt er nu? Afhankelijk van het probleem en de ernst kunnen de volgende stappen worden ondernomen:
+5. Wat gebeurt er nu? Afhankelijk van het probleem en de ernst, kunnen de volgende stappen worden uitgevoerd:
 
-    - Wij zullen de uitkomst van onze beoordeling aan u meedelen. Afhankelijk van de uitkomst kunnen we uw aanbod verwijderen of verzoeken. In dit geval zullen we met u samenwerken om ervoor te zorgen dat de verstoring van de getroffen klanten tot een minimum wordt beperkt.
-    - We zullen met u samenwerken om de impact van het incident/kwetsbaarheid voor onze wederzijdse klanten te beperken.
+    - We zullen het resultaat van de evaluatie met u meedelen. Afhankelijk van het resultaat kunnen we uw aanbieding verwijderen of een aanvraag indienen. In dit geval gaan we met u samen werken om ervoor te zorgen dat de overlast van betrokken klanten wordt geminimaliseerd.
+    - We werken samen met u om de impact van het incident/beveiligings probleem voor onze wederzijdse klanten te verminderen.
 

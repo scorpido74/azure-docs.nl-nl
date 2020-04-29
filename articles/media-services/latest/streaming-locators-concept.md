@@ -1,6 +1,6 @@
 ---
-title: Streaming locators in Azure Media Services | Microsoft Documenten
-description: In dit artikel wordt uitgelegd wat Streaming Locators zijn en hoe ze worden gebruikt door Azure Media Services.
+title: Streaming-locators in Azure Media Services | Microsoft Docs
+description: In dit artikel wordt uitgelegd wat streaming-locators zijn en hoe deze worden gebruikt door Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: 41b2d0ad1e072fb2bf5860ae80f8f25f886b37f7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80582681"
 ---
 # <a name="streaming-locators"></a>Streaming-locators
@@ -24,25 +24,25 @@ Om video's in de uitvoerasset beschikbaar te maken voor clients om af te spelen,
 
 Het proces van het maken van een **streaming-locator** wordt publiceren genoemd. De **streaming-locator** is standaard onmiddellijk geldig nadat u de API-aanroepen hebt gemaakt en totdat deze wordt verwijderd, tenzij u de optionele start- en eindtijden configureert. 
 
-Wanneer u een **streaminglocator**maakt, moet u een **naam van** het actief en een naam van **het streamingbeleid** opgeven. Zie de volgende onderwerpen voor meer informatie:
+Wanneer u een **streaming-Locator**maakt, moet u een **assetnaam** en een naam voor het **streaming-beleid** opgeven. Zie de volgende onderwerpen voor meer informatie:
 
 * [Activa](assets-concept.md)
 * [Beleid voor streaming](streaming-policy-concept.md)
 * [Beleid voor inhoudssleutels](content-key-policy-concept.md)
 
-Je ook de begin- en eindtijd opgeven op je Streaming Locator, waardoor je gebruiker de content alleen tussen deze tijden laat afspelen (bijvoorbeeld tussen 5/1/2019 tot 5/5/2019).  
+U kunt ook de start-en eind tijd opgeven op uw streaming-Locator, zodat uw gebruiker de inhoud niet kan afspelen tussen deze tijden (bijvoorbeeld tussen 5/1/2019 en 5/5/2019).  
 
 ## <a name="considerations"></a>Overwegingen
 
-* **Streaming Locators** zijn niet updatable. 
-* Eigenschappen van **Streaming Locators** die van het type Datetime zijn, zijn altijd in UTC-indeling.
-* U moet een beperkt aantal beleidsregels voor uw Media Service-account ontwerpen en deze opnieuw gebruiken voor uw streaminglocators wanneer dezelfde opties nodig zijn. Zie [Quota en limieten voor](limits-quotas-constraints.md)meer informatie .
+* **Streaming-Locators** kunnen niet worden bijgewerkt. 
+* Eigenschappen van **streaming-Locators** van het type datetime zijn altijd in UTC-indeling.
+* U dient een beperkt aantal beleids regels te ontwerpen voor uw media service-account en deze opnieuw te gebruiken voor uw streaming-Locators wanneer dezelfde opties nodig zijn. Zie [quota's en limieten](limits-quotas-constraints.md)voor meer informatie.
 
-## <a name="create-streaming-locators"></a>Streaming locators maken  
+## <a name="create-streaming-locators"></a>Streaming-Locators maken  
 
 ### <a name="not-encrypted"></a>Niet versleuteld
 
-Als u uw bestand in-the-clear (niet-versleuteld) wilt streamen, stelt u het vooraf gedefinieerde duidelijke streamingbeleid in: op 'Predefined_ClearStreamingOnly' (in .NET u het vooraf gedefinieerde StreamingPolicy.ClearStreamingOnly enum) gebruiken.
+Als u uw bestand in-the-Clear (niet-versleuteld) wilt streamen, stelt u het vooraf gedefinieerde beleid voor Clear streaming in: naar ' Predefined_ClearStreamingOnly ' (in .NET kunt u de Enum PredefinedStreamingPolicy. ClearStreamingOnly gebruiken).
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(
@@ -58,7 +58,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 ### <a name="encrypted"></a>Versleuteld 
 
-Als u uw inhoud wilt versleutelen met de CENC-versleuteling, stelt u uw beleid in op 'Predefined_MultiDrmCencStreaming'. De Widevine-versleuteling wordt toegepast op een DASH-stream en PlayReady naar Smooth. De sleutel wordt geleverd aan een afspeelclient op basis van de geconfigureerde DRM-licenties.
+Als u uw inhoud wilt versleutelen met de CENC-versleuteling, stelt u uw beleid in op Predefined_MultiDrmCencStreaming. De Widevine-versleuteling wordt toegepast op een streep stroom en PlayReady om vloeiend te maken. De sleutel wordt geleverd aan een Play-client op basis van de geconfigureerde DRM-licenties.
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(
@@ -73,38 +73,38 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
     });
 ```
 
-Als u ook uw HLS-stream wilt versleutelen met CBCS (FairPlay), gebruikt u 'Predefined_MultiDrmStreaming'.
+Als u de HLS-stroom ook wilt versleutelen met CBCS (FairPlay), gebruikt u Predefined_MultiDrmStreaming.
 
 > [!NOTE]
-> Widevine is een service van Google Inc. en onderworpen aan de servicevoorwaarden en het privacybeleid van Google, Inc.
+> Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
 
-## <a name="associate-filters-with-streaming-locators"></a>Filters koppelen aan Streaming Locators
+## <a name="associate-filters-with-streaming-locators"></a>Filters koppelen aan streaming-Locators
 
-Zie [Filters: associëren met Streaming Locators](filters-concept.md#associating-filters-with-streaming-locator).
+Zie [filters: koppelen aan stream Locators](filters-concept.md#associating-filters-with-streaming-locator).
 
-## <a name="filter-order-page-streaming-locator-entities"></a>Entiteiten voor filteren, bestellen, streamen van pagina's
+## <a name="filter-order-page-streaming-locator-entities"></a>Filteren, order, entiteiten voor het streamen van een pagina
 
-Zie [Het filteren, bestellen, paging van mediaservices entiteiten](entities-overview.md).
+Zie [filteren, ordenen, pagineren van Media Services entiteiten](entities-overview.md).
 
-## <a name="list-streaming-locators-by-asset-name"></a>Streaminglocators aanbieden op naam van activa
+## <a name="list-streaming-locators-by-asset-name"></a>Streaming-Locators vermelden op naam van activum
 
-Als u Streaming Locators wilt krijgen op basis van de bijbehorende assetnaam, gebruikt u de volgende bewerkingen:
+Als u stroomsgewijze Locators wilt ophalen op basis van de gekoppelde Asset-naam, gebruikt u de volgende bewerkingen:
 
 |Taal|API|
 |---|---|
 |REST|[liststreaminglocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
-|CLI|[az ams asset list-streaming-locators](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
-|.NET|[LijstStreamingLocators](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
+|CLI|[AZ AMS activa List-streaming-Locators](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
+|.NET|[ListStreamingLocators](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
 |Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
-|Node.js|[lijstStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
+|Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
 ## <a name="see-also"></a>Zie ook
 
 * [Activa](assets-concept.md)
 * [Beleid voor streaming](streaming-policy-concept.md)
 * [Beleid voor inhoudssleutels](content-key-policy-concept.md)
-* [Zelfstudie: Video's uploaden, coderen en streamen met .NET](stream-files-tutorial-with-api.md)
+* [Zelf studie: Video's uploaden, coderen en streamen met behulp van .NET](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Een streaminglocator maken en URL's maken](create-streaming-locator-build-url.md)
+[Een streaming-Locator maken en Url's bouwen](create-streaming-locator-build-url.md)

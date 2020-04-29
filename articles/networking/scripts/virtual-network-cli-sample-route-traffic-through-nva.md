@@ -1,5 +1,5 @@
 ---
-title: Voorbeeld van Azure CLI-script - Verkeer routeren via een virtueel netwerktoestel
+title: Voor beeld van Azure CLI-script-verkeer routeren via een virtueel netwerk apparaat
 description: Azure CLI-voorbeeldscript - verkeer routeren via een virtueel netwerkapparaat met firewall.
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
 ms.openlocfilehash: 05581114ce54ed8e92c6457c95f73b20304e419e
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521518"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance"></a>Verkeer routeren via een virtueel netwerkapparaat
@@ -50,13 +50,13 @@ In dit script worden de volgende opdrachten gebruikt voor het maken van een reso
 | [az group create](/cli/azure/group) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [az network vnet create](/cli/azure/network/vnet) | Hiermee maakt u een virtueel Azure-netwerk en front-end-subnet. |
 | [az network subnet create](/cli/azure/network/vnet/subnet) | Hiermee maakt u back-end- en DMZ-subnetten. |
-| [az network public-ip create](/cli/azure/network/public-ip) | Hiermee maakt u een openbaar IP-adres om toegang te krijgen tot de vm vanaf internet. |
+| [az network public-ip create](/cli/azure/network/public-ip) | Hiermee maakt u een openbaar IP-adres voor toegang tot de virtuele machine via internet. |
 | [az network nic create](/cli/azure/network/nic) | Hiermee maakt u een virtuele netwerkinterface en schakelt u doorsturen via IP in voor deze interface. |
 | [az network nsg create](/cli/azure/network/nsg) | Hiermee maakt u een netwerkbeveiligingsgroep (NSG). |
 | [az network nsg rule create](/cli/azure/network/nsg/rule) | Hiermee maakt u NSG-regels waarmee inkomend verkeer via HTTP- en HTTPS-poorten naar de VM worden toegestaan. |
 | [az network vnet subnet update](/cli/azure/network/vnet/subnet)| Hiermee koppelt u de NSG's en routetabellen aan subnetten. |
 | [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create)| Hiermee maakt u een routetabel voor alle routes. |
-| [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create)| Hiermee maakt u routes om verkeer tussen subnetten en internet te routeren via de VM. |
+| [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create)| Maakt routes voor het routeren van verkeer tussen subnetten en Internet via de VM. |
 | [az vm create](/cli/azure/vm) | Hiermee maakt u een virtuele machine en koppelt u de NIC hieraan. Met deze opdracht geeft u ook de installatiekopie van de virtuele machine op die moet worden gebruikt, evenals de beheerdersreferenties. |
 | [az group delete](/cli/azure/group) | Hiermee verwijdert u een resourcegroep en de bijhorende resources. |
 
@@ -64,4 +64,4 @@ In dit script worden de volgende opdrachten gebruikt voor het maken van een reso
 
 Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
-Aanvullende CLI-scriptvoorbeelden voor netwerken zijn te vinden in de documentatie van azure [networking-overzicht](../cli-samples.md)
+Extra Network CLI-voorbeeld scripts vindt u in de [documentatie](../cli-samples.md) van het overzicht van Azure-netwerken

@@ -1,6 +1,6 @@
 ---
-title: Azure-beveiligingsservices en -technologieën | Microsoft Documenten
-description: Het artikel bevat een samengestelde lijst met Azure Security-services en -technologieën.
+title: Azure-beveiligings Services en-technologieën | Microsoft Docs
+description: In dit artikel vindt u een overzicht van Azure-beveiligings Services en-technologieën.
 services: security
 documentationcenter: na
 author: terrylanfear
@@ -16,80 +16,80 @@ ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
 ms.openlocfilehash: 83548063a796401792bd19e7ec27be36a0efa4e4
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80549212"
 ---
-# <a name="security-services-and-technologies-available-on-azure"></a>Beveiligingsservices en -technologieën die beschikbaar zijn in Azure
+# <a name="security-services-and-technologies-available-on-azure"></a>Beveiligings Services en-technologieën die beschikbaar zijn op Azure
 
-In onze gesprekken met huidige en toekomstige Azure-klanten wordt ons vaak gevraagd "heeft u een lijst met alle beveiligingsgerelateerde services en technologieën die Azure te bieden heeft?"
+In onze besprekingen met huidige en toekomstige Azure-klanten wordt u vaak gevraagd "hebt u een lijst met alle aan beveiliging gerelateerde services en technologieën die Azure te bieden heeft?"
 
-Wanneer u de opties van cloudserviceproviders evalueert, is het handig om over deze informatie te beschikken. Daarom hebben we deze lijst op weg om u op weg te helpen.
+Wanneer u opties voor Cloud serviceproviders evalueert, is het handig om deze informatie te bevatten. We hebben deze lijst nu voorzien van de vraag om aan de slag te gaan.
 
-Na verloop van tijd zal deze lijst veranderen en groeien, net als Azure. Zorg ervoor dat u deze pagina regelmatig controleert om op de hoogte te blijven van onze beveiligingsgerelateerde diensten en technologieën.
+In de loop van de tijd wordt deze lijst gewijzigd en groeit, net zoals in Azure. Controleer deze pagina regel matig om op de hoogte te blijven van de beveiligings-gerelateerde services en technologieën.
 
 ## <a name="general-azure-security"></a>Algemene Azure-beveiliging
 |Service|Beschrijving|
 |--------|--------|
-|[Azure&nbsp;Security&nbsp;Center](/azure/security-center/security-center-intro)| Een cloudworkloadbeveiligingsoplossing die beveiligingsbeheer en geavanceerde bescherming tegen bedreigingen biedt voor hybride cloudworkloads.|
-|[Azure Key Vault](/azure/key-vault/key-vault-overview)| Een beveiligde geheimen winkel voor de wachtwoorden, verbinding strings, en andere informatie die u nodig hebt om uw apps werken. |
-|[Azure Monitor-logboeken](/azure/log-analytics/log-analytics-overview)|Een bewakingsservice die telemetrie en andere gegevens verzamelt en een querytaal- en analyse-engine biedt om operationele inzichten te bieden voor uw apps en resources. Kan alleen of met andere services zoals Security Center worden gebruikt. |
-|[Azure Dev/Test Labs](/azure/lab-services/devtest-lab-overview)|Een service waarmee ontwikkelaars en testers snel omgevingen in Azure kunnen maken, terwijl verspilling wordt geminimaliseerd en de kosten worden beperkt.  |
+|[Azure&nbsp;Security&nbsp;Center](/azure/security-center/security-center-intro)| Een werk belasting voor de beveiliging van de cloud die beveiligings beheer en geavanceerde bedreigings beveiliging biedt in hybride Cloud werkbelastingen.|
+|[Azure Key Vault](/azure/key-vault/key-vault-overview)| Een beveiligde geheimen opslag voor de wacht woorden, verbindings reeksen en andere informatie die u nodig hebt om uw apps te laten werken. |
+|[Azure Monitor-logboeken](/azure/log-analytics/log-analytics-overview)|Een bewakings service waarmee telemetrie en andere gegevens worden verzameld, en biedt een query taal en analyse-engine voor het leveren van operationele inzichten voor uw apps en resources. Kan alleen worden gebruikt of met andere services, zoals Security Center. |
+|[Azure dev/test Labs](/azure/lab-services/devtest-lab-overview)|Een service waarmee ontwikkel aars en testers snel omgevingen in azure kunnen maken, terwijl verspilling en beheer kosten worden geminimaliseerd.  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
 
 ## <a name="storage-security"></a>Opslagbeveiliging
 |Service|Beschrijving|
 |------|--------|
-| [Azure&nbsp;&nbsp;Storage&nbsp;Service-versleuteling](/azure/storage/common/storage-service-encryption)|Een beveiligingsfunctie die uw gegevens automatisch versleutelt in Azure-opslag.   |
-|[StorSimple versleutelde hybride opslag](/azure/storsimple/storsimple-ova-overview)| Een geïntegreerde opslagoplossing die opslagtaken tussen on-premises apparaten en Azure-cloudopslag beheert.|
-|[Azure-client-side versleuteling](/azure/storage/common/storage-client-side-encryption)| Een versleutelingsoplossing aan de clientzijde die gegevens in clienttoepassingen versleutelt voordat deze wordt geüpload naar Azure Storage. decodeert ook de gegevens tijdens het downloaden. |
-| [Gedeelde toegangshandtekeningen voor Azure Storage](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)|Een handtekening voor gedeelde toegang biedt gedelegeerde toegang tot bronnen in uw opslagaccount.  |
-|[Azure Storage-accountsleutels](/azure/storage/common/storage-create-storage-account)| Een toegangscontrolemethode voor Azure-opslag die wordt gebruikt voor verificatie wanneer het opslagaccount wordt geopend. |
-|[Azure File deelt met SMB 3.0-versleuteling](/azure/storage/files/storage-files-introduction)|Een netwerkbeveiligingstechnologie die automatische netwerkversleuteling mogelijk maakt voor het SMB-protocol (Server Message Block). |
-|[Azure Storage Analytics](/rest/api/storageservices/Storage-Analytics)| Een registratie- en metrische technologie voor gegevens in uw opslagaccount. |
+| [Versleuteling&nbsp;van&nbsp;Azure&nbsp;Storage-service](/azure/storage/common/storage-service-encryption)|Een beveiligings functie waarmee uw gegevens automatisch worden versleuteld in azure Storage.   |
+|[StorSimple versleutelde hybride opslag](/azure/storsimple/storsimple-ova-overview)| Een geïntegreerde opslag oplossing voor het beheer van opslag taken tussen on-premises apparaten en Azure-Cloud opslag.|
+|[Azure-versleuteling aan de client zijde](/azure/storage/common/storage-client-side-encryption)| Een oplossing voor versleuteling aan client zijde waarmee gegevens binnen client toepassingen worden versleuteld voordat ze naar Azure Storage worden geüpload. tijdens het downloaden worden de gegevens ook ontsleuteld. |
+| [Azure Storage hand tekeningen voor gedeelde toegang](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)|Een Shared Access Signature biedt gedelegeerde toegang tot resources in uw opslag account.  |
+|[Azure Storage account sleutels](/azure/storage/common/storage-create-storage-account)| Een toegangs beheer methode voor Azure Storage die wordt gebruikt voor verificatie wanneer het opslag account wordt geopend. |
+|[Azure-bestands shares met SMB 3,0-versleuteling](/azure/storage/files/storage-files-introduction)|Een netwerk beveiligings technologie die automatische netwerk versleuteling mogelijk maakt voor het SMB-protocol (Server Message Block). |
+|[Azure Opslaganalyse](/rest/api/storageservices/Storage-Analytics)| Een logboek registratie en metrische gegevens voor het genereren van uw opslag account. |
 
 <!------>
 
 ## <a name="database-security"></a>Databasebeveiliging
 |Service|Beschrijving|
 |------|--------|
-| [Azure&nbsp;SQL&nbsp;Firewall](/azure/sql-database/sql-database-firewall-configure)|Een functie voor netwerktoegangscontrole die beschermt tegen netwerkaanvallen in de database. |
-|[Azure&nbsp;&nbsp;SQL-celversleuteling&nbsp;](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| Een databasebeveiligingstechnologie die versleuteling biedt op een gedetailleerd niveau.  |
-| [Azure&nbsp;&nbsp;SQL-verbindingsversleuteling](/azure/sql-database/sql-database-control-access)|Voor de beveiliging regelt SQL Database toegang met firewallregels die de connectiviteit beperken op basis van IP-adres. Met behulp van verificatiemechanismen moeten gebruikers hun identiteit kunnen aantonen en met autorisatiemechanismen worden gebruikers beperkt tot bepaalde gegevens en acties. |
-| [Azure SQL-versleuteling](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Beschermt gevoelige gegevens, zoals creditcardnummers of nationale identificatienummers (bijvoorbeeld Amerikaanse burgerservicenummers), opgeslagen in Azure SQL Database- of SQL Server-databases.  |
-| [Azure&nbsp;&nbsp;SQL-transparante gegevensversleuteling](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| Een databasebeveiligingsfunctie die de opslag van een hele database versleutelt. |
-| [Azure SQL-databasecontrole](/azure/sql-database/sql-database-auditing)|Een databasecontrolefunctie die databasegebeurtenissen bijhoudt en naar een controlelogboek in uw Azure-opslagaccount schrijft.  |
+| [Azure&nbsp;SQL&nbsp;-firewall](/azure/sql-database/sql-database-firewall-configure)|Een functie voor netwerk toegangs beheer die bescherming biedt tegen aanvallen via het netwerk tot data base. |
+|[Versleuteling&nbsp;van&nbsp;het&nbsp;niveau van Azure SQL-cellen](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| Een Data Base-beveiligings technologie die versleuteling op een gedetailleerd niveau biedt.  |
+| [Versleuteling&nbsp;van&nbsp;Azure SQL-verbinding](/azure/sql-database/sql-database-control-access)|Voor de beveiliging regelt SQL Database toegang met firewallregels die de connectiviteit beperken op basis van IP-adres. Met behulp van verificatiemechanismen moeten gebruikers hun identiteit kunnen aantonen en met autorisatiemechanismen worden gebruikers beperkt tot bepaalde gegevens en acties. |
+| [Versleuteling van Azure SQL altijd](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Beveiligt gevoelige gegevens, zoals creditcard nummers of nationale identificatie nummers (bijvoorbeeld Amerikaans-sofi-nummers), die zijn opgeslagen in Azure SQL Database-of SQL Server-data bases.  |
+| [Azure&nbsp;SQL&nbsp;transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| Een functie voor database beveiliging waarmee de opslag van een volledige data base wordt versleuteld. |
+| [Azure SQL Database controle](/azure/sql-database/sql-database-auditing)|Een functie voor het controleren van de data base waarmee database gebeurtenissen worden bijgehouden en naar een audit logboek in uw Azure Storage-account wordt geschreven.  |
 
 
 ## <a name="identity-and-access-management"></a>Identiteits- en toegangsbeheer
 |Service|Beschrijving|
 |------|--------|
-| [Azure-rolegebaseerd&nbsp;&nbsp;&nbsp;toegangsbeheer](/azure/active-directory/role-based-access-control-configure)|Een toegangscontrolefunctie die is ontworpen om gebruikers toegang te geven tot alleen de resources die ze nodig hebben om toegang te krijgen op basis van hun rollen binnen de organisatie.  |
-| [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)|Een cloudgebaseerde verificatierepository die een multi-tenant, cloudgebaseerde directory en meerdere identiteitsbeheerservices binnen Azure ondersteunt.  |
-| [Azure Active Directory B2C](/azure/active-directory-b2c/active-directory-b2c-overview)|Een service voor identiteitsbeheer waarmee u bepalen hoe klanten zich aanmelden, aanmelden en hun profielen beheren wanneer ze azure-gebaseerde toepassingen gebruiken.   |
-| [Azure Active Directory Domain Services](/azure/active-directory-domain-services/overview)| Een cloudgebaseerde en beheerde versie van Active Directory Domain Services. |
-| [Azure-verificatie met meerdere factoren](/azure/active-directory/authentication/multi-factor-authentication)| Een beveiligingsvoorziening die verschillende vormen van verificatie en verificatie gebruikt voordat toegang tot beveiligde informatie wordt toegestaan. |
+| [Access Control&nbsp;op&nbsp;basis&nbsp;van Azure Role](/azure/active-directory/role-based-access-control-configure)|Een functie voor toegangs beheer waarmee gebruikers alleen toegang hebben tot de resources die ze nodig hebben om toegang te krijgen op basis van hun rollen binnen de organisatie.  |
+| [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)|Een op de cloud gebaseerde verificatie opslag die ondersteuning biedt voor een multi tenant, een Cloud Directory en meerdere identiteits beheer Services in Azure.  |
+| [Azure Active Directory B2C](/azure/active-directory-b2c/active-directory-b2c-overview)|Een service voor identiteits beheer waarmee u kunt bepalen hoe klanten zich kunnen aanmelden, aanmelden en hun profielen beheren bij het gebruik van Azure-toepassingen.   |
+| [Azure Active Directory Domain Services](/azure/active-directory-domain-services/overview)| Een op de cloud gebaseerde en beheerde versie van Active Directory Domain Services. |
+| [Azure Multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)| Een beveiligings voorziening die gebruikmaakt van verschillende verificatie-en verificatie methoden voordat toegang tot beveiligde gegevens wordt toegestaan. |
 
-## <a name="backup-and-disaster-recovery"></a>Back-up en herstel na noodgevallen
+## <a name="backup-and-disaster-recovery"></a>Back-ups en herstel na nood gevallen
 |Service|Beschrijving|
 |------|--------|
-| [Azure-back-up&nbsp;](/azure/backup/backup-introduction-to-azure-backup)| Een op Azure gebaseerde service die wordt gebruikt om back-ups te maken en gegevens te herstellen in de Azure-cloud. |
-| [Azure-siteherstel&nbsp;&nbsp;](/azure/site-recovery/site-recovery-overview)|Een onlineservice die workloads nabootst die worden uitgevoerd op fysieke en virtuele machines (VM's) van een primaire site naar een secundaire locatie om herstel van services na een storing mogelijk te maken. |
+| [Azure&nbsp;backup](/azure/backup/backup-introduction-to-azure-backup)| Een Azure-service die wordt gebruikt om back-ups te maken van gegevens in de Azure-Cloud en deze te herstellen. |
+| [Azure&nbsp;site&nbsp;Recovery](/azure/site-recovery/site-recovery-overview)|Een online service die de werk belastingen die worden uitgevoerd op fysieke en virtuele machines (Vm's) van een primaire site naar een secundaire locatie repliceert om het herstel van Services na een storing mogelijk te maken. |
 
 ## <a name="networking"></a>Netwerken
 |Service|Beschrijving|
 |------|--------|
-| [Netwerkbeveiligingsgroepen&nbsp;&nbsp;](/azure/virtual-network/virtual-networks-nsg)| Een op het netwerk gebaseerde toegangscontrolefunctie die een 5-tuple gebruikt om beslissingen toe te staan of te weigeren.  |
-| [Azure VPN-gateway](/azure/vpn-gateway/vpn-gateway-about-vpngateways)| Een netwerkapparaat dat wordt gebruikt als VPN-eindpunt om cross-premises toegang tot Azure Virtual Networks mogelijk te maken.  |
-| [Azure Application Gateway](/azure/application-gateway/application-gateway-introduction)|Een geavanceerde webapplicatieloadbalancer die kan routeren op basis van URL en SSL-offloading kan uitvoeren. |
-|[Firewall voor webtoepassingen](/azure/frontdoor/waf-overview) (WAF)|Een functie van Application Gateway die gecentraliseerde bescherming van uw webapplicaties biedt tegen veelvoorkomende exploits en kwetsbaarheden|
-| [Azure Load Balancer](/azure/load-balancer/load-balancer-overview)|Een TCP/UDP-netwerklastbalans. |
-| [Azure ExpressRoute](/azure/expressroute/expressroute-introduction)| Een speciale WAN-koppeling tussen on-premises netwerken en Azure Virtual Networks. |
-| [Azure-beheer](/azure/traffic-manager/traffic-manager-overview)| Een globale DNS load balancer.|
-| [Azure-toepassingsproxy](/azure/active-directory/active-directory-application-proxy-get-started)| Een authenticerende front-end die wordt gebruikt om externe toegang te beveiligen voor on-premises webtoepassingen. |
-|[Azure Firewall](/azure/firewall/overview)|Een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-bronnen beschermt.|
-|[Azure DDoS-beveiliging](/azure/virtual-network/ddos-protection-overview)|In combinatie met best practices voor applicatieontwerp biedt het verdediging tegen DDoS-aanvallen.|
-|[Eindpunten van virtuele netwerkservice](/azure/virtual-network/virtual-network-service-endpoints-overview)|Hiermee breidt u uw privéadresruimte voor virtuele netwerken en de identiteit van uw VNet uit naar de Azure-services via een directe verbinding.|
+| [Netwerk&nbsp;beveiligings&nbsp;groepen](/azure/virtual-network/virtual-networks-nsg)| Een functie voor toegangs beheer op basis van het netwerk met behulp van een 5-tuple om beslissingen toe te staan of te weigeren.  |
+| [Azure VPN Gateway](/azure/vpn-gateway/vpn-gateway-about-vpngateways)| Een netwerk apparaat dat als een VPN-eind punt wordt gebruikt om cross-premises toegang tot virtuele Azure-netwerken toe te staan.  |
+| [Azure Application Gateway](/azure/application-gateway/application-gateway-introduction)|Een geavanceerde webtoepassing load balancer die op basis van URL kan omleiden en SSL-offloading kan uitvoeren. |
+|[Web Application firewall](/azure/frontdoor/waf-overview) (WAF)|Een functie van Application Gateway waarmee uw webtoepassingen gecentraliseerd worden beschermd tegen veelvoorkomende aanvallen en beveiligings problemen|
+| [Azure Load Balancer](/azure/load-balancer/load-balancer-overview)|Een TCP/UDP-toepassings netwerk load balancer. |
+| [Azure ExpressRoute](/azure/expressroute/expressroute-introduction)| Een specifieke WAN-verbinding tussen on-premises netwerken en virtuele netwerken van Azure. |
+| [Azure Traffic Manager](/azure/traffic-manager/traffic-manager-overview)| Een globale DNS-load balancer.|
+| [Azure-toepassing proxy](/azure/active-directory/active-directory-application-proxy-get-started)| Een verificatie-front-end die wordt gebruikt voor het beveiligen van externe toegang voor webtoepassingen die on-premises worden gehost. |
+|[Azure Firewall](/azure/firewall/overview)|Een beheerde, Cloud service voor netwerk beveiliging die uw Azure Virtual Network-Resources beveiligt.|
+|[Azure DDoS-beveiliging](/azure/virtual-network/ddos-protection-overview)|Gecombineerd met aanbevolen procedures voor het ontwerpen van toepassingen, biedt beveiliging tegen DDoS-aanvallen.|
+|[Service-eind punten Virtual Network](/azure/virtual-network/virtual-network-service-endpoints-overview)|Breidt de privé-adres ruimte van uw virtuele netwerk en de identiteit van uw VNet uit met de Azure-Services, via een directe verbinding.|

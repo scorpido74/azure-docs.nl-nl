@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: verbinding maken met een virtuele machine met een privé-IP-adres: Azure Bastion'
-description: In dit artikel leert u hoe u een Azure Bastion-host maakt vanaf een virtuele machine en veilig verbinding maken met een privé-IP-adres.
+title: 'Quick Start: verbinding maken met een virtuele machine met behulp van een privé-IP-adres: Azure Bastion'
+description: In dit artikel leert u hoe u een Azure bastion-host maakt op basis van een virtuele machine en veilig verbinding maakt met behulp van een privé-IP-adres.
 services: bastion
 author: charwen
 ms.service: bastion
@@ -8,90 +8,90 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: charwen
 ms.openlocfilehash: a420a3253040fff8b767a81f298ede283c1d214b
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80619256"
 ---
-# <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Snelstart: verbinding maken met een virtuele machine met een privé-IP-adres en Azure Bastion
+# <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Quick Start: verbinding maken met een virtuele machine met behulp van een privé-IP-adres en Azure Bastion
 
-In dit quickstart-artikel ziet u hoe u verbinding maken met een virtuele machine met behulp van een privé-IP-adres. Wanneer u verbinding maakt via Bastion, hebben uw virtuele machines geen openbaar IP-adres nodig. De stappen in dit artikel helpen u Bastion te implementeren in uw virtuele netwerk via uw virtuele machine in de portal. Zodra de service is ingericht, is de RDP/SSH-ervaring beschikbaar voor alle virtuele machines in hetzelfde virtuele netwerk.
+In dit Quick Start-artikel ziet u hoe u verbinding kunt maken met een virtuele machine met behulp van een privé-IP-adres. Wanneer u verbinding maakt via Bastion, hebt u geen openbaar IP-adres nodig voor uw virtuele machines. Met de stappen in dit artikel kunt u Bastion implementeren in uw virtuele netwerk via de virtuele machine in de portal. Zodra de service is ingericht, is de RDP/SSH-ervaring beschikbaar voor alle virtuele machines in hetzelfde virtuele netwerk.
 
 ## <a name="prerequisites"></a><a name="prereq"></a>Vereisten
 
 * Een virtueel Azure-netwerk.
-* Een Virtuele Azure-machine in het virtuele netwerk met poort 3389 open.
+* Een virtuele machine van Azure die zich in het virtuele netwerk bevindt en poort 3389 is geopend.
 
 ### <a name="example-values"></a>Voorbeeldwaarden
 
 |**Naam** | **Waarde** |
 | --- | --- |
-| Name |  VNet1Bastion (VNET1Bastion) |
+| Naam |  VNet1Bastion |
 | Regio | eastus |
 | Virtueel netwerk |  VNet1 |
 | + Subnetnaam | AzureBastionSubnet |
 | AzureBastionSubnet-adressen |  10.1.254.0/27 |
 | Openbaar IP-adres |  Nieuwe maken |
-| Naam openbaar IP-adres | Vnet1BastionPIP  |
-| Openbaar IP-adres SKU |  Standard  |
+| Naam openbaar IP-adres | VNet1BastionPIP  |
+| SKU openbaar IP-adres |  Standard  |
 | Toewijzing  | Statisch |
 
 ## <a name="create-a-bastion-host"></a><a name="createvmset"></a>Een Bastion-host maken
 
-Wanneer u een bastionhost in de portal maakt met behulp van een bestaande virtuele machine, komen verschillende instellingen automatisch overeen met uw virtuele machine en/of virtueel netwerk.
+Wanneer u een bastion-host in de portal maakt met behulp van een bestaande virtuele machine, worden verschillende instellingen automatisch standaard in overeenstemming met uw virtuele machine en/of virtuele netwerk.
 
-1. Open de [Azure Portal](https://portal.azure.com). Ga naar uw virtuele machine en klik op **Verbinding maken**.
+1. Open de [Azure Portal](https://portal.azure.com). Ga naar uw virtuele machine en klik vervolgens op **verbinding maken**.
 
    ![instellingen voor virtuele machines](./media/quickstart-host-portal/vm-settings.png)
-1. Selecteer **Bastion**in de vervolgkeuzelijst.
-1. Selecteer **bastion gebruiken**op de pagina Verbinding .
+1. Selecteer **Bastion**in de vervolg keuzelijst.
+1. Selecteer op de pagina verbinding maken de optie **Bastion gebruiken**.
 
    ![Bastion selecteren](./media/quickstart-host-portal/select-bastion.png)
 
-1. Vul op de pagina Bastion de volgende instellingenvelden in:
+1. Vul op de pagina Bastion de volgende instellingen in:
 
-   * **Naam:** Naam van de bastionhost
-   * **Subnet**: Het subnet in uw virtuele netwerk waarop Bastion-bron wordt geïmplementeerd. Het subnet moet worden gemaakt met de naam **AzureBastionSubnet**. Met de naam weet Azure naar welk subnet de Bastion-bron moet worden geïmplementeerd. Dit is anders dan een Gateway-subnet. Gebruik een subnet van ten minste /27 of groter (/27, /26, /25, enzovoort).
+   * **Naam**: naam van de bastion-host
+   * **Subnet**: het subnet in het virtuele netwerk waarop de Bastion-resource wordt geïmplementeerd. Het subnet moet worden gemaakt met de naam **AzureBastionSubnet**. Met de naam kan Azure weten met welk subnet de Bastion-resource moet worden geïmplementeerd. Dit wijkt af van een gateway-subnet. Gebruik een subnet van Mini maal/27 of groter (/27,/26,/25, enzovoort).
    
-      * Selecteer **Subnetconfiguratie beheren**en selecteer **+ Subnet**.
-      * Typ **AzureBastionSubnet**op de subnetpagina Toevoegen .
-      * Geef het adresbereik op in CIDR-notatie. Bijvoorbeeld 10.1.254.0/27.
-      * Selecteer **OK** om het subnet te maken. Navigeer boven aan de pagina terug naar Bastion om de rest van de instellingen te voltooien.
+      * Selecteer **subnet-configuratie beheren**en selecteer vervolgens **+ subnet**.
+      * Op de pagina subnet toevoegen typt u **AzureBastionSubnet**.
+      * Geef het adres bereik in de CIDR-notatie op. Bijvoorbeeld 10.1.254.0/27.
+      * Selecteer **OK** om het subnet te maken. Ga aan de bovenkant van de pagina terug naar Bastion om de rest van de instellingen te volt ooien.
 
-         ![navigeren naar bastion-instellingen](./media/quickstart-host-portal/navigate-bastion.png)
-   * **Openbaar IP-adres**: Dit is het openbare IP-adres van de Bastion-bron waarop RDP/SSH zal worden geopend (via poort 443). Maak een nieuw openbaar IP-adres of gebruik een bestaand IP-adres. Het openbare IP-adres moet zich in dezelfde regio bevinden als de Bastion-bron die u maakt.
-   * **Naam van het openbare IP-adres**: de naam van de bron van het openbare IP-adres.
-1. Klik op het validatiescherm op **Maken**. Wacht ongeveer 5 minuten op het maken en implementeren van de Bastion-bron.
+         ![navigeren naar Bastion-instellingen](./media/quickstart-host-portal/navigate-bastion.png)
+   * **Openbaar IP-adres**: dit is de open bare IP van de Bastion-bron waarop RDP/SSH wordt gebruikt (via poort 443). Maak een nieuw openbaar IP-adres of gebruik een bestaande. Het open bare IP-adres moet zich in dezelfde regio bevinden als de Bastion-resource die u maakt.
+   * **Naam van openbaar IP-adres**: de naam van de resource voor het open bare IP-adres.
+1. Klik op het scherm validatie op **maken**. Wacht ongeveer 5 minuten tot de Bastion-resource is gemaakt en geïmplementeerd.
 
-   ![bastionhost maken](./media/quickstart-host-portal/bastion-settings.png)
+   ![bastion-host maken](./media/quickstart-host-portal/bastion-settings.png)
 
 ## <a name="connect"></a><a name="connect"></a>Verbinding maken
 
-Nadat Bastion is geïmplementeerd in het virtuele netwerk, verandert het scherm in de verbindingspagina.
+Nadat bastion in het virtuele netwerk is geïmplementeerd, wordt het scherm gewijzigd op de pagina verbinding maken.
 
-1. Typ de gebruikersnaam en het wachtwoord voor uw virtuele machine. Selecteer vervolgens **Verbinding maken**.
+1. Typ de gebruikers naam en het wacht woord voor de virtuele machine. Selecteer vervolgens **verbinding maken**.
 
    ![verbinding maken](./media/quickstart-host-portal/connect.png)
-1. De RDP-verbinding met deze virtuele machine via Bastion wordt rechtstreeks geopend in de Azure-portal (via HTML5) met poort 443 en de Bastion-service.
+1. De RDP-verbinding met deze virtuele machine via Bastion wordt rechtstreeks geopend in de Azure Portal (via HTML5) met behulp van poort 443 en de Bastion-service.
 
    ![RDP-verbinding](./media/quickstart-host-portal/443-rdp.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met het virtuele netwerk en de virtuele machines, verwijdert u de brongroep en alle bronnen die deze bevat:
+Wanneer u klaar bent met het virtuele netwerk en de virtuele machines, verwijdert u de resource groep en alle resources die deze bevat:
 
-1. Voer *TestRG1* in het vak **Zoeken** boven aan de portal in en selecteer **TestRG1** in de zoekresultaten.
+1. Voer *TestRG1* in het **zoekvak** boven aan de portal in en selecteer **TestRG1** in de zoek resultaten.
 
 2. Selecteer **Resourcegroep verwijderen**.
 
-3. Typ *TestRG1* voor **TYPE DE NAAM VAN DE BRONGROEP** en selecteer **Verwijderen**.
+3. Voer *TestRG1* in bij **Typ de naam van de resource groep** en selecteer **verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een Bastion-host voor uw virtuele netwerk gemaakt en vervolgens veilig verbonden met een virtuele machine via de Bastion-host.
+In deze Quick Start hebt u een bastion-host voor uw virtuele netwerk gemaakt en vervolgens veilig verbonden met een virtuele machine via de bastion-host.
 
-* Lees het [Bastion-overzicht](bastion-overview.md) en de [veelgestelde vragen over Bastion voor](bastion-faq.md)meer informatie over Azure Bastion.
-* Zie [Werken met NSGs](bastion-nsg.md)als u netwerkbeveiligingsgroepen wilt gebruiken met het subnet Azure Bastion.
-* Zie De [zelfstudie](bastion-create-host-portal.md)voor instructies met uitleg over azure bastion-hostinstellingen.
-* Zie Verbinding maken met een [virtuele machineschaalset met Azure Bastion](bastion-connect-vm-scale-set.md)als u verbinding wilt maken met een virtuele machineschaalset.
+* Lees het [overzicht van Bastion](bastion-overview.md) en de [Veelgestelde vragen over Bastion](bastion-faq.md)voor meer informatie over Azure Bastion.
+* Als u netwerk beveiligings groepen wilt gebruiken met het Azure Bastion-subnet, raadpleegt u [werken met nsg's](bastion-nsg.md).
+* Raadpleeg de [zelf studie](bastion-create-host-portal.md)voor instructies die uitleg bevatten van de instellingen voor de Azure bastion-host.
+* Als u verbinding wilt maken met een schaalset voor virtuele machines, raadpleegt [u verbinding maken met een schaalset voor virtuele machines met behulp van Azure Bastion](bastion-connect-vm-scale-set.md).

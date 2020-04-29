@@ -1,6 +1,6 @@
 ---
-title: Gateway deep dive en best practices voor Apache Hive in Azure HDInsight
-description: Meer informatie over het navigeren door de aanbevolen procedures voor het uitvoeren van Hive-query's via de Azure HDInsight-gateway
+title: Uitgebreide en aanbevolen procedures voor het Apache Hive in azure HDInsight
+description: Meer informatie over het navigeren in de aanbevolen procedures voor het uitvoeren van Hive-query's via de Azure HDInsight-gateway
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,79 +8,79 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 924b1132efeb3ee4211593da190f5b7251029ae3
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80586975"
 ---
-# <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Gateway deep dive en best practices voor Apache Hive in Azure HDInsight
+# <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Uitgebreide en aanbevolen procedures voor het Apache Hive in azure HDInsight
 
-De Azure HDInsight-gateway (Gateway) is de HTTPS-frontend voor HDInsight-clusters. De gateway is verantwoordelijk voor: verificatie, hostresolutie, servicedetectie en andere handige functies die nodig zijn voor een modern gedistribueerd systeem. De functies van de Gateway resulteren in een aantal overhead waarvoor dit document de beste procedures om te navigeren zal beschrijven. Gateway probleemoplossing technieken worden ook besproken.
+De Azure HDInsight-gateway (gateway) is de HTTPS-frontend voor HDInsight-clusters. De gateway is verantwoordelijk voor: authenticatie, host omzetting, service detectie en andere handige functies die nodig zijn voor een modern gedistribueerd systeem. De functies die door de gateway worden verschaft, resulteren in een deel van de overhead waarvoor in dit document de aanbevolen procedures voor het navigeren worden beschreven. Er worden ook technieken voor het oplossen van problemen besproken.
 
 ## <a name="the-hdinsight-gateway"></a>De HDInsight-gateway
 
-De HDInsight-gateway is het enige deel van een HDInsight-cluster dat openbaar toegankelijk is via internet. De Gateway-service is toegankelijk zonder via het `clustername-int.azurehdinsight.net` openbare internet te gaan met behulp van het interne gateway-eindpunt. Met het interne gateway-eindpunt kunnen verbindingen tot stand worden gebracht met de gatewayservice zonder het virtuele netwerk van het cluster te verlaten. De gateway verwerkt alle aanvragen die naar het cluster worden verzonden en stuurt dergelijke aanvragen door naar de juiste componenten en clusterhosts.
+De HDInsight-gateway is het enige deel van een HDInsight-cluster dat openbaar toegankelijk is via internet. De Gateway Service kan worden geopend zonder het open bare Internet via het `clustername-int.azurehdinsight.net` eind punt van de interne gateway te gebruiken. Met het interne gateway-eind punt kunnen verbindingen tot stand worden gebracht met de Gateway Service zonder het virtuele netwerk van het cluster af te sluiten. De gateway verwerkt alle aanvragen die naar het cluster worden verzonden en stuurt dergelijke aanvragen door naar de juiste onderdelen en clusterhosts.
 
-Het volgende diagram geeft een ruwe illustratie van hoe de Gateway een abstractie biedt voor alle verschillende mogelijkheden voor hostresolutie binnen HDInsight.
+Het volgende diagram bevat een ruwe illustratie van de manier waarop de gateway een samen vatting vormt van de verschillende mogelijkheden voor het omzetten van de host in HDInsight.
 
-![Diagram hostresolutie](./media/gateway-best-practices/host-resolution-diagram.png "Diagram hostresolutie")
+![Diagram van host-omzetting](./media/gateway-best-practices/host-resolution-diagram.png "Diagram van host-omzetting")
 
 ## <a name="motivation"></a>Motivatie
 
-De motivatie voor het plaatsen van een gateway voor HDInsight clusters is om een interface voor service discovery en gebruikersverificatie te bieden. De verificatiemechanismen van de gateway zijn vooral relevant voor ESP-clusters.
+De motivatie voor het plaatsen van een gateway voor HDInsight-clusters is een interface te bieden voor service detectie en gebruikers verificatie. De verificatie mechanismen die door de gateway worden gebruikt, zijn vooral relevant voor ESP-clusters.
 
-Voor servicedetectie is het voordeel van de gateway dat elk onderdeel binnen het cluster `clustername.azurehdinsight.net/hive2`kan worden geopend als `host:port` een ander eindpunt onder de Gateway-website ( ), in tegenstelling tot een veelheid aan koppelingen.
+Voor service detectie is het voor deel van de gateway dat elk onderdeel in het cluster als een ander eind punt kan worden gebruikt in combi natie `clustername.azurehdinsight.net/hive2`met de Gateway website (), in `host:port` tegens telling tot een groot aantal paars.
 
-Voor verificatie kunnen gebruikers met de `username:password` Gateway verifiëren met behulp van een referentiepaar. Voor clusters met ESP is deze referentie de gebruikersnaam en het wachtwoord van het domein van de gebruiker. Verificatie naar HDInsight-clusters via de Gateway vereist niet dat de client een kerberos-ticket aanschaft. Aangezien de Gateway `username:password` referenties accepteert en namens de gebruiker het Kerberos-ticket van de gebruiker verwerft, kunnen beveiligde verbindingen met de Gateway worden gemaakt vanuit elke clienthost, inclusief clients die zijn verbonden met verschillende AA-DDS-domeinen dan het (ESP)-cluster.
+Voor verificatie kan de gateway gebruikers verifiëren met behulp van `username:password` een referentie paar. Voor ESP-clusters zou deze referentie de gebruikers naam en het wacht woord van het domein zijn. Voor verificatie voor HDInsight-clusters via de gateway is de client niet verplicht een Kerberos-ticket te verkrijgen. Omdat de gateway referenties `username:password` accepteert en het Kerberos-ticket van de gebruiker verkrijgt namens de gebruiker, kunnen beveiligde verbindingen worden gemaakt met de gateway vanaf elke client host, inclusief clients die zijn gekoppeld aan verschillende AA-DDS-domeinen dan het (ESP)-cluster.
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
-De Gateway is één service (load balanced over two hosts) die verantwoordelijk is voor het doorsturen en doorsturen van aanvragen en verificatie. De gateway kan een doorvoerknelpunt worden voor Hive-query's die een bepaalde grootte overschrijden. Queryprestatiedegradatie kan worden waargenomen wanneer zeer grote **SELECT-query's** worden uitgevoerd op de Gateway via ODBC of JDBC. "Zeer groot" betekent query's die meer dan 5 GB aan gegevens bevatten in rijen of kolommen. Deze query kan een lange lijst met rijen en of een groot aantal kolomen bevatten.
+De gateway is een enkele service (taak verdeling over twee hosts) die verantwoordelijk is voor het door sturen en verifiëren van aanvragen. De gateway kan een doorvoer knelpunt worden voor Hive-query's die een bepaalde grootte overschrijden. Prestatie vermindering van query's kan worden waargenomen wanneer zeer grote **selectie** query's worden uitgevoerd op de gateway via ODBC of JDBC. "Erg groot" betekent query's die meer dan 5 GB aan gegevens in rijen of kolommen opleveren. Deze query kan bestaan uit een lange lijst met rijen en, of een breed aantal kolommen.
 
-De prestatiedegradatie van de gateway rond query's van een groot formaat is omdat de gegevens moeten worden overgedragen van het onderliggende gegevensarchief (ADLS Gen2) naar: de HDInsight Hive Server, de Gateway en ten slotte via de JDBC- of ODBC-stuurprogramma's naar de clienthost.
+De prestaties van de gateway van een grote omvang worden vertraagd omdat de gegevens moeten worden overgebracht van het onderliggende gegevens archief (ADLS Gen2) naar: de HDInsight-Hive-server, de gateway en tot slot via de JDBC-of ODBC-stuur Programma's naar de client host.
 
-In het volgende diagram worden de stappen van een SELECT-query geïllustreerd.
+In het volgende diagram ziet u de stappen van een SELECT-query.
 
-![Resultaatdiagram](./media/gateway-best-practices/result-retrieval-diagram.png "Resultaatdiagram")
+![Resultaat diagram](./media/gateway-best-practices/result-retrieval-diagram.png "Resultaat diagram")
 
-Apache Hive is een relationele abstractie bovenop een HDFS-compatibel bestandssysteem. Deze abstractie betekent **SELECT-instructies** in Hive die overeenkomen met **READ-bewerkingen** op het bestandssysteem. De **READ** READ-bewerkingen worden vertaald naar het juiste schema voordat ze aan de gebruiker worden gerapporteerd. De latentie van dit proces neemt toe met de grootte van de gegevens en de totale hop die nodig is om de eindgebruiker te bereiken.
+Apache Hive is een relationele samen vatting van een bestands systeem dat compatibel is met HDFS. Deze abstractie betekent dat **Select** -instructies in Hive overeenkomen met **Lees** bewerkingen op het bestands systeem. De **Lees** bewerkingen worden vertaald naar het juiste schema voordat ze aan de gebruiker worden gerapporteerd. De latentie van dit proces neemt toe met de grootte van de gegevens en het totale aantal hops dat nodig is om de eind gebruiker te bereiken.
 
-Vergelijkbaar gedrag kan optreden bij het uitvoeren van **CREATE-** of **INSERT-instructies** van grote gegevens, omdat deze opdrachten overeenkomen met **WRITE-bewerkingen** in het onderliggende bestandssysteem. Overweeg gegevens, zoals raw ORC, naar het bestandssysteem/datalake te schrijven in plaats van deze te laden met **INSERT** of **LOAD**.
+Hetzelfde gedrag kan optreden bij het uitvoeren van **Create** -of **Insert** -instructies van grote gegevens, omdat deze opdrachten overeenkomen met **Schrijf** bewerkingen in het onderliggende bestands systeem. Overweeg om gegevens, zoals RAW ORC, te schrijven naar het bestands systeem/datalake in plaats van het te laden met behulp van **Insert** of **Load**.
 
-In clusters met Enterprise Security Pack kan voldoende complex Apache Ranger-beleid leiden tot een vertraging in de compilatietijd van query's, wat kan leiden tot een time-out van de gateway. Als een gateway-time-out wordt opgemerkt in een ESP-cluster, u overwegen het aantal ranger-beleidsregels te verminderen of te combineren.
+In bedrijven met een beveiligd beveiligings pakket kan voldoende complex Apache zwerver-beleid een vertraging veroorzaken in de compilatie tijd van de query, wat kan leiden tot een time-out voor de gateway. Als er een time-out voor de gateway is opgetreden in een ESP-cluster, overweeg dan om het aantal zwerver-beleid te verminderen of te combi neren.
 
-## <a name="troubleshooting-techniques"></a>Technieken voor probleemoplossing
+## <a name="troubleshooting-techniques"></a>Technieken voor probleem oplossing
 
-Er zijn meerdere locaties voor het verzachten en begrijpen van prestatieproblemen die worden bereikt als onderdeel van het bovenstaande gedrag. Gebruik de volgende checklist wanneer u queryprestaties verslechteringen via de HDInsight-gateway:
+Er zijn meerdere locaties voor het beperken en het vaststellen van prestatie problemen die aan het bovenstaande gedrag voldoen. Gebruik de volgende controle lijst wanneer de prestaties van de query worden vertraagd via de HDInsight-gateway:
 
-* Gebruik de clausule **LIMIT** bij het uitvoeren van grote **SELECT-query's.** De **LIMIET-clausule** vermindert de totale rijen die aan de clienthost worden gerapporteerd. De **LIMIET-component** is alleen van invloed op het genereren van resultaten en wijzigt het queryplan niet. Als u de **clausule LIMIET** wilt toepassen `hive.limit.optimize.enable`op het queryplan, gebruikt u de configuratie . **LIMIT** kan worden gecombineerd met een verschuiving met behulp van het argumentformulier **LIMIT x,y**.
+* Gebruik de component **Limit** wanneer u grote **selectie** query's uitvoert. De component **Limit** vermindert het totaal aantal rijen dat is gerapporteerd aan de client-host. De component **Limit** heeft alleen gevolgen voor het genereren van resultaten en wijzigt het query plan niet. Gebruik de configuratie **LIMIT** `hive.limit.optimize.enable`om de component Limit toe te passen op het query plan. De **limiet** kan worden gecombineerd met een offset met behulp van het argument formulier **maximum x, y**.
 
-* Geef uw kolommen van belang bij het uitvoeren van **SELECT-query's** in plaats van **SELECT \* **. Als u minder kolommen selecteert, wordt de hoeveelheid gelezen gegevens verlaagd.
+* Geef uw interessante kolommen een naam wanneer u **Select** -query's uitvoert in plaats van **selecteren \* **. Als u minder kolommen selecteert, wordt de hoeveelheid gegevens die wordt gelezen verlaagd.
 
-* Probeer de query van belang uit te voeren via Apache Beeline. Als resultaat ophalen via Apache Beeline duurt een langere periode van tijd, verwachten vertragingen bij het ophalen van dezelfde resultaten via externe tools.
+* Probeer de query van interest uit te voeren via Apache Beeline. Als het ophalen van resultaten via Apache Beeline een lange periode duurt, worden er vertragingen verwacht bij het ophalen van dezelfde resultaten via externe hulpprogram ma's.
 
-* Test een basisHive-query om ervoor te zorgen dat een verbinding met de HDInsight Gateway kan worden gemaakt. Probeer een basisquery uit te voeren van twee of meer externe hulpprogramma's om ervoor te zorgen dat er geen afzonderlijk hulpprogramma problemen ondervindt.
+* Een eenvoudige Hive-query testen om ervoor te zorgen dat er een verbinding met de HDInsight-gateway tot stand kan worden gebracht. Voer een basis query uit twee of meer externe hulpprogram ma's uit om er zeker van te zijn dat er geen afzonderlijk hulp programma wordt uitgevoerd.
 
-* Bekijk alle Apache Ambari Alerts om ervoor te zorgen dat HDInsight-services gezond zijn. Ambari Alerts kunnen worden geïntegreerd met Azure Monitor voor rapportage en analyse.
+* Bekijk alle Apache Ambari-waarschuwingen om ervoor te zorgen dat HDInsight-Services in orde zijn. Ambari-waarschuwingen kunnen worden geïntegreerd met Azure Monitor voor rapportage en analyse.
 
-* Als u een externe Hive Metastore gebruikt, controleert u of de Azure SQL DB DTU voor de Hive Metastore de limiet niet heeft bereikt. Als de DTU zijn limiet nadert, moet u de databasegrootte vergroten.
+* Als u een externe meta Store van Hive gebruikt, controleert u of de Azure SQL DB-DTU voor de Hive-meta Store de limiet niet heeft bereikt. Als de DTU de limiet nadert, moet u de grootte van de data base verg Roten.
 
-* Zorg ervoor dat tools van derden, zoals PBI of Tableau, pagination gebruiken om tabellen of databases weer te geven. Raadpleeg uw ondersteuningspartners voor deze tools voor hulp bij pagination. Het belangrijkste hulpmiddel dat wordt gebruikt `fetchSize` voor paginatie is de PARAMETER JDBC. Een kleine fetch-grootte kan leiden tot verminderde gatewayprestaties, maar een te grote ophalensgrootte kan resulteren in een gateway-time-out. Fetch size tuning moet worden gedaan op basis van werkbelasting.
+* Zorg ervoor dat hulpprogram ma's van derden, zoals aan pbi of tableau, paginering gebruiken om tabellen of data bases weer te geven. Raadpleeg uw ondersteunings partners voor deze hulpprogram ma's voor hulp bij de paginering. Het belangrijkste hulp programma dat wordt gebruikt voor paginering `fetchSize` is de JDBC-para meter. Een kleine ophaal grootte kan leiden tot gedegradeerde gateway prestaties, maar een time-out voor het ophalen van de gateway kan resulteren. Het afstemmen van het ophalen van grootte moet worden uitgevoerd op basis van de werk belasting.
 
-* Als uw gegevenspijplijn gaat om het lezen van grote hoeveelheden gegevens uit de onderliggende opslag van het HDInsight-cluster, u overwegen een hulpprogramma te gebruiken dat rechtstreeks met Azure Storage wordt gekoppeld, zoals Azure Data Factory
+* Als uw gegevens pijplijn een grote hoeveelheid gegevens uit de onderliggende opslag van het HDInsight-cluster moet lezen, kunt u een hulp programma gebruiken dat rechtstreeks aan Azure Storage, zoals Azure Data Factory
 
-* Overweeg Apache Hive LLAP te gebruiken bij het uitvoeren van interactieve workloads, omdat LLAP een soepelere ervaring kan bieden voor het snel retourneren van queryresultaten
+* Overweeg het gebruik van Apache Hive LLAP bij het uitvoeren van interactieve werk belastingen, omdat LLAP mogelijk een soepelere ervaring biedt om snel query resultaten te retour neren
 
-* Overweeg het aantal threads dat beschikbaar is voor `hive.server2.thrift.max.worker.threads`de Hive Metastore-service te verhogen met behulp van . Deze instelling is vooral relevant wanneer een groot aantal gelijktijdige gebruikers query's indient op het cluster
+* Overweeg het aantal threads dat beschikbaar is voor de Hive-meta Store- `hive.server2.thrift.max.worker.threads`service met te verhogen. Deze instelling is vooral relevant wanneer een groot aantal gelijktijdige gebruikers query's naar het cluster verzenden
 
-* Verminder het aantal nieuwe pogingen dat wordt gebruikt om de Gateway te bereiken vanuit externe hulpprogramma's. Als er meerdere nieuwe pogingen worden gebruikt, u overwegen een exponentieel back-off-beleid te volgen
+* Verminder het aantal nieuwe pogingen om de gateway te bereiken vanuit externe hulpprogram ma's. Als er meerdere nieuwe pogingen worden gebruikt, kunt u overwegen om een beleid voor opnieuw proberen van exponentiële back-ups te volgen
 
-* Overweeg compressiehive in te `hive.exec.compress.output` `hive.exec.compress.intermediate`schakelen met behulp van de configuraties en .
+* Overweeg de compressie component in te scha `hive.exec.compress.output` kelen `hive.exec.compress.intermediate`met behulp van de configuraties en.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Apache Beeline op HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-beeline)
-* [Stappen voor time-outproblemen van HDInsight-gateway](https://docs.microsoft.com/azure/hdinsight/interactive-query/troubleshoot-gateway-timeout)
+* [Apache Beeline in HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-beeline)
+* [Stappen voor probleem oplossing voor HDInsight-gateway](https://docs.microsoft.com/azure/hdinsight/interactive-query/troubleshoot-gateway-timeout)
 * [Virtuele netwerken voor HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)
-* [HDInsight met Express Route](https://docs.microsoft.com/azure/hdinsight/connect-on-premises-network)
+* [HDInsight met Express route](https://docs.microsoft.com/azure/hdinsight/connect-on-premises-network)

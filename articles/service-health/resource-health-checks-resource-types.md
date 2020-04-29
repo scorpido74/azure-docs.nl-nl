@@ -1,235 +1,235 @@
 ---
-title: Ondersteunde resourcetypen via Azure Resource Health | Microsoft Documenten
-description: Ondersteunde resourcetypen via Azure Resource-status
+title: Ondersteunde resource typen via Azure Resource Health | Microsoft Docs
+description: Ondersteunde resource typen via Azure resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: 5cc80147730fdc97b1181690f6e70fc538d4afcc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478903"
 ---
-# <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Resourcetypen en statuscontroles in Azure-bronstatus
-Hieronder vindt u een volledige lijst van alle controles die worden uitgevoerd via resourcestatus door resourcetypen.
+# <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Resource typen en status controles in azure resource Health
+Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd door middel van resource typen.
 
-## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
-|Uitgevoerde controles|
+## <a name="microsoftanalysisservicesservers"></a>Micro soft. AnalysisServices/servers
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is de server operationeel?</li><li>Heeft de server geen geheugen meer?</li><li>Start de server op?</li><li>Herstelt de server?</li></ul>|
+|<ul><li>Is de server actief?</li><li>Is er onvoldoende geheugen beschikbaar voor de server?</li><li>Wordt de server opgestart?</li><li>Wordt de server hersteld?</li></ul>|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
-|Uitgevoerde controles|
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is de Api Management-service operationeel?</li></ul>|
+|<ul><li>Is de API Management-service actief?</li></ul>|
 
-## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
-|Uitgevoerde controles|
+## <a name="microsoftbatchbatchaccounts"></a>Micro soft. batch/batchAccounts
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is het Batch-account actief?</li><li>Is het poolquotum overschreden voor deze batchaccount?</li></ul>|
+|<ul><li>Wordt het batch-account actief?</li><li>Is het groeps quotum overschreden voor dit batch-account?</li></ul>|
 
 ## <a name="microsoftcacheredis"></a>Microsoft.Cache/Redis
-|Uitgevoerde controles|
+|Controles uitgevoerd|
 |---|
-|<ul><li>Zijn alle cacheknooppunten actief?</li><li>Kan de cache worden bereikt vanuit het datacenter?</li><li>Heeft de cache het maximum aantal verbindingen bereikt?</li><li> Heeft de cache het beschikbare geheugen uitgeput? </li><li>Heeft de cache te maken met een groot aantal paginafouten?</li><li>Staat de cache zwaar belast?</li></ul>|
+|<ul><li>Zijn alle cache knooppunten actief?</li><li>Kan de cache worden bereikt binnen het Data Center?</li><li>Is het maximum aantal verbindingen voor de cache bereikt?</li><li> Heeft de cache het beschik bare geheugen uitgeput? </li><li>Is er sprake van een groot aantal pagina fouten in de cache?</li><li>Is de cache onder zware belasting?</li></ul>|
 
-## <a name="microsoftcdnprofile"></a>Microsoft.CDN/profiel
-|Uitgevoerde controles|
+## <a name="microsoftcdnprofile"></a>Micro soft. CDN/profiel
+|Controles uitgevoerd|
 |---|
-|<ul> <li>Is de aanvullende portal toegankelijk voor CDN-configuratiebewerkingen?</li><li>Zijn er aanhoudende leveringsproblemen met de CDN-eindpunten?</li><li>Kunnen gebruikers de configuratie van hun CDN-bronnen wijzigen?</li><li>Worden configuratiewijzigingen in het verwachte tempo doorgevoerd?</li><li>Kunnen gebruikers de CDN-configuratie beheren met behulp van de Azure-portal, PowerShell of de API?</li> </ul>|
+|<ul> <li>Is de aanvullende portal toegankelijk voor CDN-configuratie bewerkingen?</li><li>Zijn er doorlopende leverings problemen met de CDN-eind punten?</li><li>Kunnen gebruikers de configuratie van de CDN-bronnen wijzigen?</li><li>Worden er wijzigingen in de configuratie doorgevoerd tegen het verwachte aantal?</li><li>Kunnen gebruikers de CDN-configuratie beheren met de Azure Portal, Power shell of de API?</li> </ul>|
 
-## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
-|Uitgevoerde controles|
+## <a name="microsoftclassiccomputevirtualmachines"></a>Micro soft. classiccompute/informatie
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is de hostserver actief?</li><li>Is het opstarten van het host-besturingssysteem voltooid?</li><li>Is de virtuele machine container ingericht en ingeschakeld?</li><li>Is er netwerkconnectiviteit tussen de host en het opslagaccount?</li><li>Is het opstarten van het gastbesturingssysteem voltooid?</li><li>Is er doorlopend gepland onderhoud?</li><li>Is de host hardware gedegradeerd en voorspeld om binnenkort mislukken?</li></ul>|
+|<ul><li>Wordt de hostserver actief?</li><li>Is de opstart van het hostbesturingssysteem voltooid?</li><li>Is de virtuele-machine container ingericht en ingeschakeld?</li><li>Is er netwerk verbinding tussen de host en het opslag account?</li><li>Is het starten van het gast besturingssysteem voltooid?</li><li>Is er voortdurend gepland onderhoud?</li><li>Is de host-hardware gedegradeerd en wordt de voor speld binnenkort uitgevoerd?</li></ul>|
 
-## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
-|Uitgevoerde controles|
+## <a name="microsoftcognitiveservicesaccounts"></a>Micro soft. cognitiveservices/accounts
+|Controles uitgevoerd|
 |---|
-|<ul><li>Kan het account worden bereikt vanuit het datacenter?</li><li>Is de Cognitive Services Resource Provider beschikbaar?</li><li>Is de cognitieve service beschikbaar in de juiste regio?</li><li>Kunnen leesbewerkingen worden uitgevoerd op het opslagaccount met de resourcemetagegevens?</li><li>Is het API-aanroepquotum bereikt?</li><li>Is de API-leeslimiet bereikt?</li></ul>|
+|<ul><li>Kan het account worden bereikt vanuit het Data Center?</li><li>Is de Cognitive Services resource provider beschikbaar?</li><li>Is de cognitieve service beschikbaar in de juiste regio?</li><li>Kunnen Lees bewerkingen worden uitgevoerd op het opslag account met de meta gegevens van de resource?</li><li>Is de API-aanroep quota bereikt?</li><li>Is de API-aanroep Lees limiet bereikt?</li></ul>|
 
-## <a name="microsoftcomputehostgroupshosts"></a>Microsoft.compute/hostgroepen/hosts
-|Uitgevoerde controles|
+## <a name="microsoftcomputehostgroupshosts"></a>Micro soft. Compute/hostgroups/hosts
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is de host up and running</li><li>Is de host hardware gedegradeerd?</li><li>Is de host deallocated?</li><li>Is de host hardware service genezen naar verschillende hardware?</li></ul>|
+|<ul><li>Is de host actief</li><li>Is de host-hardware gedegradeerd?</li><li>Is de toewijzing van de host ongedaan gemaakt?</li><li>Is de host-hardware-service hersteld naar andere hardware?</li></ul>|
 
-## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
-|Uitgevoerde controles|
+## <a name="microsoftcomputevirtualmachines"></a>Micro soft. Compute/informatie
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is de server die deze virtuele machine host up and running?</li><li>Is het opstarten van het host-besturingssysteem voltooid?</li><li>Is de virtuele machine container ingericht en ingeschakeld?</li><li>Is er netwerkconnectiviteit tussen de host en het opslagaccount?</li><li>Is het opstarten van het gastbesturingssysteem voltooid?</li><li>Is er doorlopend gepland onderhoud?</li><li>Is de host hardware gedegradeerd en voorspeld om binnenkort mislukken?</li></ul>|
+|<ul><li>Wordt de server die als host fungeert voor deze virtuele machine actief?</li><li>Is de opstart van het hostbesturingssysteem voltooid?</li><li>Is de virtuele-machine container ingericht en ingeschakeld?</li><li>Is er netwerk verbinding tussen de host en het opslag account?</li><li>Is het starten van het gast besturingssysteem voltooid?</li><li>Is er voortdurend gepland onderhoud?</li><li>Is de host-hardware gedegradeerd en wordt de voor speld binnenkort uitgevoerd?</li></ul>|
 
-## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/fabrieken
-|Uitgevoerde controles|
+## <a name="microsoftdatafactoryfactories"></a>Micro soft. DataFactory/fabrieken
+|Controles uitgevoerd|
 |---|
-|<ul><li>Zijn er storingen bij de pijplijnuitgevoerd?</li><li>Is het cluster dat de Data Factory host gezond?</li></ul>|
+|<ul><li>Zijn er problemen met pijplijn uitvoeringen opgetreden?</li><li>Is het cluster dat als host fungeert voor de Data Factory in orde?</li></ul>|
 
-## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
-|Uitgevoerde controles|
+## <a name="microsoftdatalakeanalyticsaccounts"></a>Micro soft. datalakeanalytics/accounts
+|Controles uitgevoerd|
 |---|
-|<ul><li>Hebben gebruikers problemen ondervonden bij het indienen of aanbieden van hun Data Lake Analytics-vacatures?</li><li>Kunnen Data Lake Analytics-taken niet worden voltooid vanwege systeemfouten?</li></ul>|
+|<ul><li>Hebben gebruikers problemen ondervonden met het verzenden of weer geven van hun Data Lake Analytics-taken?</li><li>Kunnen Data Lake Analytics taken niet worden voltooid vanwege systeem fouten?</li></ul>|
 
 
-## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
-|Uitgevoerde controles|
+## <a name="microsoftdatalakestoreaccounts"></a>Micro soft. data Lake Store/accounts
+|Controles uitgevoerd|
 |---|
-|<ul><li>Hebben gebruikers problemen ondervonden met het uploaden van gegevens naar Data Lake Store?</li><li>Hebben gebruikers problemen ondervonden bij het downloaden van gegevens uit de Data Lake Store?</li></ul>|
+|<ul><li>Hebben gebruikers problemen ondervonden bij het uploaden van gegevens naar Data Lake Store?</li><li>Hebben gebruikers problemen ondervonden bij het downloaden van gegevens van Data Lake Store?</li></ul>|
 
-## <a name="microsoftdatamigrationservices"></a>Microsoft.datamigratie/services
-|Uitgevoerde controles|
+## <a name="microsoftdatamigrationservices"></a>Micro soft. datamigration/Services
+|Controles uitgevoerd|
 |---|
-|<ul><li>Heeft de databasemigratieservice geen inlevering?</li><li>Is de databasemigratieservice gestopt vanwege inactiviteit of gebruikersverzoeken?</li></ul>|
+|<ul><li>Kan de data base Migration service niet inrichten?</li><li>Is de data base Migration service gestopt vanwege inactiviteit of gebruikers aanvraag?</li></ul>|
 
-## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/accounts
-|Uitgevoerde controles|
+## <a name="microsoftdatashareaccounts"></a>Micro soft. DataShare/accounts
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is het Data Share-account actief?</li><li>Is het cluster dat de gegevensshare host beschikbaar?</li></ul>|
+|<ul><li>Is het gegevens share account actief?</li><li>Is het cluster dat als host fungeert voor de gegevens share beschikbaar?</li></ul>|
 
-## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
-|Uitgevoerde controles|
+## <a name="microsoftdbformariadbservers"></a>Micro soft. DBforMariaDB/servers
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is de server niet beschikbaar vanwege onderhoud?</li><li>Is de server niet beschikbaar vanwege een herconfiguratie?</li></ul>|
+|<ul><li>Is de server niet beschikbaar vanwege onderhoud?</li><li>Is de server niet beschikbaar omdat deze opnieuw is geconfigureerd?</li></ul>|
 
-## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
-|Uitgevoerde controles|
+## <a name="microsoftdbformysqlservers"></a>Micro soft. DBforMySQL/servers
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is de server niet beschikbaar vanwege onderhoud?</li><li>Is de server niet beschikbaar vanwege een herconfiguratie?</li></ul>|
+|<ul><li>Is de server niet beschikbaar vanwege onderhoud?</li><li>Is de server niet beschikbaar omdat deze opnieuw is geconfigureerd?</li></ul>|
 
-## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
-|Uitgevoerde controles|
+## <a name="microsoftdbforpostgresqlservers"></a>Micro soft. DBforPostgreSQL/servers
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is de server niet beschikbaar vanwege onderhoud?</li><li>Is de server niet beschikbaar vanwege een herconfiguratie?</li></ul>|
+|<ul><li>Is de server niet beschikbaar vanwege onderhoud?</li><li>Is de server niet beschikbaar omdat deze opnieuw is geconfigureerd?</li></ul>|
 
-## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
-|Uitgevoerde controles|
+## <a name="microsoftdevicesiothubs"></a>Micro soft. devices/iothubs
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is de IoT-hub operationeel?</li></ul>|
+|<ul><li>Wordt de IoT-hub actief gemaakt?</li></ul>|
 
-## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.documentdb/databaseAccounts
-|Uitgevoerde controles|
+## <a name="microsoftdocumentdbdatabaseaccounts"></a>Micro soft. documentdb/databaseAccounts
+|Controles uitgevoerd|
 |---|
-|<ul><li>Zijn er database- of incassoaanvragen niet weergegeven vanwege een aazure cosmos DB-service die niet beschikbaar is?</li><li>Zijn er documentaanvragen niet weergegeven vanwege een aazure cosmos DB-service die niet beschikbaar is?</li></ul>|
+|<ul><li>Zijn er geen data base-of verzamelings aanvragen geleverd omdat er geen Azure Cosmos DB service beschikbaar is?</li><li>Zijn er niet-beschik bare document aanvragen verzonden door een Azure Cosmos DB Service?</li></ul>|
 
-## <a name="microsofteventhubnamespaces"></a>Microsoft.eventhub/naamruimten
-|Uitgevoerde controles|
+## <a name="microsofteventhubnamespaces"></a>Micro soft. eventhub/naam ruimten
+|Controles uitgevoerd|
 |---|
-|<ul><li>Ervaart de naamruimte van de gebeurtenishubs door gebruikers gegenereerde fouten?</li><li>Wordt de naamruimte van de Gebeurtenishubs momenteel geüpgraded?</li></ul>|
+|<ul><li>Is de Event Hubs naam ruimte die door de gebruiker gegenereerde fouten ondervindt?</li><li>Wordt er momenteel een upgrade uitgevoerd voor de Event Hubs-naam ruimte?</li></ul>|
 
-## <a name="microsofthdinsightclusters"></a>Microsoft.hdinsight/clusters
-|Uitgevoerde controles|
+## <a name="microsofthdinsightclusters"></a>Micro soft. hdinsight/clusters
+|Controles uitgevoerd|
 |---|
-|<ul><li>Zijn kernservices beschikbaar op het HDInsight-cluster?</li><li>Heeft het HDInsight-cluster in rust toegang tot de sleutel voor BYOK-versleuteling?</li></ul>|
+|<ul><li>Zijn er kern services beschikbaar op het HDInsight-cluster?</li><li>Kan het HDInsight-cluster de sleutel voor BYOK-versleuteling in rust benaderen?</li></ul>|
 
-## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/kluizen
-|Uitgevoerde controles|
+## <a name="microsoftkeyvaultvaults"></a>Micro soft.-sleutel kluis/-kluizen
+|Controles uitgevoerd|
 |---|
-|<ul><li>Zijn aanvragen voor key vault mislukt als gevolg van azure KeyVault-platformproblemen?</li><li>Worden aanvragen om sleutelkluis te beperken vanwege te veel verzoeken van de klant?</li></ul>|
+|<ul><li>Worden aanvragen voor de sleutel kluis mislukt als gevolg van problemen met het Azure-kern systeem van het platform?</li><li>Worden aanvragen voor sleutel kluis beperkt vanwege te veel aanvragen van de klant?</li></ul>|
 
-## <a name="microsoftmachinelearningwebservices"></a>Microsoft.MachineLearning/webServices
-|Uitgevoerde controles|
+## <a name="microsoftmachinelearningwebservices"></a>Micro soft. MachineLearning/webservices
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is de webservice operationeel?</li></ul>|
+|<ul><li>Is de web-service actief?</li></ul>|
 
-## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
-|Uitgevoerde controles|
+## <a name="microsoftmediamediaservices"></a>Micro soft. Media/Media Services
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is de mediadienst operationeel?</li></ul>|
+|<ul><li>Is de media service actief en wordt deze uitgevoerd?</li></ul>|
 
-## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.network/applicationgateways
-|Uitgevoerde controles|
+## <a name="microsoftnetworkapplicationgateways"></a>Micro soft. Network/applicationgateways
+|Controles uitgevoerd|
 |---|
-|<ul><li>Worden de prestaties van de Application Gateway afgebroken?</li><li>Is de Application Gateway beschikbaar?</li></ul>|
+|<ul><li>Zijn de prestaties van de Application Gateway gedegradeerd?</li><li>Is de Application Gateway beschikbaar?</li></ul>|
 
-## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
-|Uitgevoerde controles|
+## <a name="microsoftnetworkconnections"></a>Micro soft. Network/Connections
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is de VPN-tunnel verbonden?</li><li>Zijn er configuratieconflicten in de verbinding?</li><li>Zijn de vooraf gedeelde toetsen goed geconfigureerd?</li><li>Is het VPN on-premises apparaat bereikbaar?</li><li>Zijn er mismatches in het IPSec/IKE-beveiligingsbeleid?</li><li>Is de S2S VPN-verbinding goed ingericht of in een mislukte staat?</li><li>Is de VNET-naar-VNET-verbinding goed ingericht of in een mislukte staat?</li></ul>|
+|<ul><li>Is de VPN-tunnel verbonden?</li><li>Zijn er configuratie conflicten in de verbinding?</li><li>Zijn de vooraf gedeelde sleutels op de juiste wijze geconfigureerd?</li><li>Is het on-premises VPN-apparaat bereikbaar?</li><li>Komen er verschillen in het IPSec/IKE-beveiligings beleid?</li><li>Is de S2S-VPN-verbinding op de juiste wijze ingericht of is de status mislukt?</li><li>Is de VNET-naar-VNET-verbinding goed ingericht of is de status mislukt?</li></ul>|
 
-## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.network/expressroutecircuits
-|Uitgevoerde controles|
+## <a name="microsoftnetworkexpressroutecircuits"></a>Micro soft. Network/expressroutecircuits
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is het ExpressRoute circuit gezond?</li></ul>|
+|<ul><li>Is het ExpressRoute-circuit in orde?</li></ul>|
 
-## <a name="microsoftnetworkfrontdoors"></a>Microsoft.network/frontdoors
-|Uitgevoerde controles|
+## <a name="microsoftnetworkfrontdoors"></a>Micro soft. Network/frontdoors
+|Controles uitgevoerd|
 |---|
-|<ul><li>Reageren backends van de voordeur met fouten op gezondheidssondes?</li><li>Zijn configuratiewijzigingen vertraagd?</li></ul>|
+|<ul><li>Reageren de back-end van de front-deur met fouten aan de status tests?</li><li>Zijn de configuratie wijzigingen vertraagd?</li></ul>|
 
-## <a name="microsoftnetworkloadbalancers"></a>Microsoft.network/LoadBalancers
-|Uitgevoerde controles|
+## <a name="microsoftnetworkloadbalancers"></a>Micro soft. Network/LoadBalancers
+|Controles uitgevoerd|
 |---|
-|<ul><li>Zijn de load balancing endpoints beschikbaar?</li></ul>|
+|<ul><li>Zijn de eind punten voor taak verdeling beschikbaar?</li></ul>|
 
-## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
-|Uitgevoerde controles|
+## <a name="microsoftnetworkvirtualnetworkgateways"></a>Micro soft. Network/virtualNetworkGateways
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is de VPN-gateway bereikbaar vanaf het internet?</li><li>Staat de VPN Gateway in stand-by modus?</li><li>Wordt de VPN-service uitgevoerd op de gateway?</li></ul>|
+|<ul><li>Is de VPN-gateway bereikbaar vanaf het Internet?</li><li>Is de VPN Gateway in de modus stand-by?</li><li>Wordt de VPN-service op de gateway uitgevoerd?</li></ul>|
 
-## <a name="microsoftnotificationhubsnamespace"></a>Microsoft.NotificationHubs/naamruimte
-|Uitgevoerde controles|
+## <a name="microsoftnotificationhubsnamespace"></a>Micro soft. notification hubs/naam ruimte
+|Controles uitgevoerd|
 |---|
-|<ul><li>Kunnen runtime-bewerkingen zoals registratie, installatie of verzenden worden uitgevoerd op de naamruimte?</li></ul>|
+|<ul><li>Kunnen runtime-bewerkingen zoals registratie, installatie of verzenden worden uitgevoerd voor de naam ruimte?</li></ul>|
 
-## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.operationalinsights/workspaces
-|Uitgevoerde controles|
+## <a name="microsoftoperationalinsightsworkspaces"></a>Micro soft. operationalinsights/werk ruimten
+|Controles uitgevoerd|
 |---|
-|<ul><li>Zijn er indexeringsvertragingen voor de werkruimte?</li></ul>|
+|<ul><li>Zijn er vertragingen voor het indexeren van de werk ruimte?</li></ul>|
 
-## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Capaciteiten
-|Uitgevoerde controles|
+## <a name="microsoftpowerbidedicatedcapacities"></a>Micro soft. PowerBIDedicated/capaciteiten
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is de capaciteitsbron operationeel?</li><li>Zijn alle workloads actief?</li></ul>|
+|<ul><li>Is de capaciteits resource actief?</li><li>Zijn alle werk belastingen actief?</li></ul>|
 
-## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/werkruimteCollecties
-|Uitgevoerde controles|
+## <a name="microsoftpowerbiworkspacecollections"></a>Micro soft. PowerBI/workspaceCollections
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is het host-besturingssysteem up and running?</li><li>Is de workspaceCollection bereikbaar van buiten het datacenter?</li><li>Is de Power BI Resource Provider beschikbaar?</li><li>Is de Power BI-service beschikbaar in de juiste regio?</li></ul>|
+|<ul><li>Wordt het hostbesturingssysteem geactiveerd?</li><li>Is de workspaceCollection bereikbaar vanaf buiten het Data Center?</li><li>Is de Power BI resource provider beschikbaar?</li><li>Is de Power BI-service beschikbaar in de juiste regio?</li></ul>|
 
-## <a name="microsoftsearchsearchservices"></a>Microsoft.search/searchServices
-|Uitgevoerde controles|
+## <a name="microsoftsearchsearchservices"></a>Micro soft. Search/searchServices
+|Controles uitgevoerd|
 |---|
-|<ul><li>Kunnen diagnostische bewerkingen worden uitgevoerd op het cluster?</li></ul>|
+|<ul><li>Kunnen er diagnostische bewerkingen worden uitgevoerd op het cluster?</li></ul>|
 
-## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/naamruimten
-|Uitgevoerde controles|
+## <a name="microsoftservicebusnamespaces"></a>Micro soft. ServiceBus/naam ruimten
+|Controles uitgevoerd|
 |---|
-|<ul><li>Worden klanten door gebruikers gegenereerde Service Bus-fouten ervaren?</li><li>Ervaren gebruikers een toename van tijdelijke fouten als gevolg van een upgrade naar de naamruimte van servicebus?</li></ul>|
+|<ul><li>Ondervindt klanten die door de gebruiker zijn gegenereerd Service Bus fouten?</li><li>Ondervinden gebruikers een toename van tijdelijke fouten vanwege een upgrade van de naam ruimte van Service Bus?</li></ul>|
 
-## <a name="microsoftservicefabricclusters"></a>Microsoft.ServiceFabric/clusters
-|Uitgevoerde controles|
+## <a name="microsoftservicefabricclusters"></a>Micro soft. ServiceFabric/clusters
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is het cluster Service Fabric operationeel?</li><li>Kan het cluster ServiceFabric worden beheerd via Azure Resource Manager?</li></ul>|
+|<ul><li>Wordt het Service Fabric cluster actief?</li><li>Kan het Service Fabric-cluster via Azure Resource Manager worden beheerd?</li></ul>|
 
-## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.SQL/managedInstances/databases
-|Uitgevoerde controles|
+## <a name="microsoftsqlmanagedinstancesdatabases"></a>Micro soft. SQL/managedInstances/data bases
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is de database operationeel?</li></ul>|
+|<ul><li>Is de data base actief?</li></ul>|
 
-## <a name="microsoftsqlserverdatabases"></a>Microsoft.SQL/Server/databases
-|Uitgevoerde controles|
+## <a name="microsoftsqlserverdatabases"></a>Micro soft. SQL/server/data bases
+|Controles uitgevoerd|
 |---|
-|<ul><li>Zijn er aanmeldingen in de database?</li></ul>|
+|<ul><li>Hebt u aanmeldingen bij de data base?</li></ul>|
 
-## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
-|Uitgevoerde controles|
+## <a name="microsoftstoragestorageaccounts"></a>Micro soft. Storage/Storage accounts
+|Controles uitgevoerd|
 |---|
-|<ul><li>Zijn aanvragen om gegevens uit het opslagaccount te lezen mislukt als gevolg van problemen met het Azure Storage-platform?</li><li>Zijn aanvragen om gegevens naar het opslagaccount te schrijven mislukt als gevolg van problemen met het Azure Storage-platform?</li><li>Is het opslagcluster waar het opslagaccount zich bevindt niet beschikbaar?</li></ul>|
+|<ul><li>Zijn er aanvragen voor het lezen van gegevens van het opslag account als gevolg van problemen met Azure Storage platform?</li><li>Worden aanvragen voor het schrijven van gegevens naar het opslag account mislukt als gevolg van problemen met de Azure Storage platform?</li><li>Is het opslag cluster waar het opslag account zich bevindt, niet beschikbaar?</li></ul>|
 
-## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
-|Uitgevoerde controles|
+## <a name="microsoftstreamanalyticsstreamingjobs"></a>Micro soft. StreamAnalytics/streamingjobs
+|Controles uitgevoerd|
 |---|
-|<ul><li>Zijn alle hosts waar de taak wordt uitgevoerd up and running?</li><li>Was de baan niet in staat om te beginnen?</li><li>Zijn er lopende runtime upgrades?</li><li>Is de taak in een verwachte status (bijvoorbeeld uitgevoerd of gestopt door de klant)?</li><li>Is de taak ondervonden uit het geheugen uitzonderingen?</li><li>Zijn er geplande compute-updates?</li><li>Is de Execution Manager (besturingsplan) beschikbaar?</li></ul>|
+|<ul><li>Zijn alle hosts waar de taak wordt uitgevoerd?</li><li>Is de taak niet gestart?</li><li>Zijn er doorlopende runtime-upgrades?</li><li>Is de taak in een verwachte status (bijvoorbeeld wordt uitgevoerd of gestopt door de klant)?</li><li>Heeft de taak uitzonde ringen in het geheugen aangetroffen?</li><li>Zijn er doorlopende geplande updates?</li><li>Is de uitvoerings beheerder (besturings plan) beschikbaar?</li></ul>|
 
-## <a name="microsoftwebserverfarms"></a>Microsoft.web/serverFarms
-|Uitgevoerde controles|
+## <a name="microsoftwebserverfarms"></a>Micro soft. web/server farms
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is de hostserver actief?</li><li>Wordt internetinformatieservices uitgevoerd?</li><li>Wordt de Load balancer uitgevoerd?</li><li>Kan het App Service Plan worden bereikt vanuit het datacenter?</li><li>Is het opslagaccount dat de inhoud van de sites voor de serverFarm host?</li></ul>|
+|<ul><li>Wordt de hostserver actief?</li><li>Wordt Internet Information Services uitgevoerd?</li><li>Wordt de Load Balancer uitgevoerd?</li><li>Kan het App Service plan worden bereikt binnen het Data Center?</li><li>Is het opslag account dat als host fungeert voor de site-inhoud voor de server farm beschikbaar?</li></ul>|
 
-## <a name="microsoftwebsites"></a>Microsoft.web/sites
-|Uitgevoerde controles|
+## <a name="microsoftwebsites"></a>Micro soft. web/sites
+|Controles uitgevoerd|
 |---|
-|<ul><li>Is de hostserver actief?</li><li>Wordt de internetinformatieserver uitgevoerd?</li><li>Wordt de Load balancer uitgevoerd?</li><li>Is de Web App bereikbaar vanuit het datacenter?</li><li>Is het opslagaccount dat de site-inhoud host, beschikbaar?</li></ul>|
+|<ul><li>Wordt de hostserver actief?</li><li>Wordt Internet Information Server uitgevoerd?</li><li>Wordt de Load Balancer uitgevoerd?</li><li>Kan de web-app worden bereikt vanuit het Data Center?</li><li>Is het opslag account dat als host fungeert voor de site-inhoud beschikbaar?</li></ul>|
 
 ## <a name="next-steps"></a>Volgende stappen
--  Zie [Inleiding tot het Azure Service Health-dashboard](service-health-overview.md) en Inleiding tot Azure Resource [Health](resource-health-overview.md) om meer over deze services te weten te komen. 
+-  Zie [Inleiding tot Azure service Health dash board](service-health-overview.md) en [Inleiding tot Azure resource Health](resource-health-overview.md) om meer te weten te komen over hen. 
 -  [Veelgestelde vragen over Azure Resource Health](resource-health-faq.md)
-- Stel waarschuwingen in zodat u op de hoogte wordt gesteld van gezondheidsproblemen. Zie [Waarschuwingen configureren voor servicestatusgebeurtenissen voor](../azure-monitor/platform/alerts-activity-log-service-notifications.md)meer informatie . 
+- Stel waarschuwingen in zodat u op de hoogte wordt gesteld van status problemen. Zie [Configure alerts for service Health Events](../azure-monitor/platform/alerts-activity-log-service-notifications.md)(Engelstalig) voor meer informatie. 

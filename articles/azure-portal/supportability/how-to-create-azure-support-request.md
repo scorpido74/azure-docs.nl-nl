@@ -1,6 +1,6 @@
 ---
-title: Een Azure-ondersteuningsaanvraag maken | Microsoft Documenten
-description: Klanten die hulp nodig hebben, kunnen de Azure-portal gebruiken om selfserviceoplossingen te vinden en ondersteuningsaanvragen te maken en te beheren.
+title: Een ondersteunings aanvraag voor Azure maken | Microsoft Docs
+description: Klanten die hulp nodig hebben, kunnen de Azure Portal gebruiken om self-service oplossingen te vinden en ondersteunings aanvragen te maken en te beheren.
 services: Azure Supportability
 author: ganganarayanan
 manager: scotthit
@@ -10,117 +10,117 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: kfollis
 ms.openlocfilehash: 2b68b6ddf19d6b07475e7009b47e162bfb2d0d2f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478983"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Een ondersteuningsaanvraag maken voor Azure
 
 ## <a name="overview"></a>Overzicht
 
-Met Azure u ondersteuningsaanvragen maken en beheren, ook wel ondersteuningstickets genoemd. U aanvragen maken en beheren in de [Azure-portal,](https://portal.azure.com)die in dit artikel wordt behandeld. U aanvragen ook programmatisch maken en beheren met behulp van de [REST API voor Azure-ondersteuningsticket.](/rest/api/support)
+Met Azure kunt u ondersteunings aanvragen maken en beheren, ook wel ondersteunings tickets genoemd. U kunt aanvragen maken en beheren in de [Azure Portal](https://portal.azure.com), die in dit artikel worden besproken. U kunt ook via een programma aanvragen maken en beheren met behulp van de [ondersteunings ticket rest API van Azure](/rest/api/support).
 
 > [!NOTE]
-> De URL van de Azure-portal is specifiek voor de Azure-cloud waarin uw organisatie is geïmplementeerd.
+> De Azure Portal-URL is specifiek voor de Azure-Cloud waar uw organisatie is geïmplementeerd.
 >
->* Azure-portal voor commercieel gebruik is:[https://portal.azure.com](https://portal.azure.com)
->* Azure-portal voor Duitsland is:[https://portal.microsoftazure.de](https://portal.microsoftazure.de)
->* Azure-portal voor de Amerikaanse overheid is:[https://portal.azure.us](https://portal.azure.us)
+>* Azure Portal voor commercieel gebruik:[https://portal.azure.com](https://portal.azure.com)
+>* Azure Portal voor Duitsland is:[https://portal.microsoftazure.de](https://portal.microsoftazure.de)
+>* Azure Portal voor de Verenigde Staten overheid is:[https://portal.azure.us](https://portal.azure.us)
 >
 >
 
-Op basis van feedback van klanten hebben we de ervaring met ondersteuningsaanvragen bijgewerkt om ons te concentreren op drie hoofddoelen:
+Op basis van feedback van klanten hebben we de ervaring voor ondersteunings aanvragen bijgewerkt om te richten op drie hoofd doelen:
 
-* **Gestroomlijnd:** maak ondersteuning en probleemoplossing eenvoudig te vinden en vereenvoudig de manier waarop u een ondersteuningsaanvraag indient.
-* **Geïntegreerd:** u eenvoudig een ondersteuningsaanvraag openen wanneer u een probleem met een Azure-bron oplost, zonder van context te veranderen.
-* **Efficiënt:** verzamel de belangrijkste informatie die uw ondersteuningsmedewerker nodig heeft om uw probleem efficiënt op te lossen.
+* **Gestroomlijnd**: Maak ondersteuning en probleem oplossing eenvoudig om te ontdekken hoe u een ondersteunings aanvraag indient.
+* **Geïntegreerd**: u kunt eenvoudig een ondersteunings aanvraag openen wanneer u een probleem met een Azure-resource oplost zonder de context te scha kelen.
+* **Efficiënt**: Verzamel de belang rijke informatie die uw ondersteunings agent nodig heeft om uw probleem efficiënt op te lossen.
 
 ## <a name="getting-started"></a>Aan de slag
 
-U **hulp + ondersteuning** krijgen in de Azure-portal. Het is beschikbaar in het Azure-portalmenu, de algemene koptekst of het resourcemenu voor een service. Voordat u een ondersteuningsverzoek indienen, moet u over de juiste machtigingen beschikken.
+U krijgt hulp en **ondersteuning** in de Azure Portal. Deze is beschikbaar via het Azure Portal menu, de globale koptekst of het resource menu voor een service. Voordat u een ondersteunings aanvraag kunt indienen, moet u de juiste machtigingen hebben.
 
 ### <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
-Als u een ondersteuningsverzoek wilt maken, moet u [eigenaar,](../../role-based-access-control/built-in-roles.md#owner) [inzender](../../role-based-access-control/built-in-roles.md#contributor) of toegewezen zijn aan de rol [Inzender van ondersteuningsaanvragen](../../role-based-access-control/built-in-roles.md#support-request-contributor) op abonnementsniveau. Als u een ondersteuningsaanvraag zonder abonnement wilt maken, bijvoorbeeld het Azure Active Directory-scenario (AAD), moet u een [beheerder](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)zijn.
+Als u een ondersteunings aanvraag wilt maken, moet u [eigenaar](../../role-based-access-control/built-in-roles.md#owner)of [bijdrager](../../role-based-access-control/built-in-roles.md#contributor) zijn of worden toegewezen aan de rol [Inzender voor ondersteunings aanvragen](../../role-based-access-control/built-in-roles.md#support-request-contributor) op abonnements niveau. Als u een ondersteunings aanvraag wilt maken zonder een abonnement, bijvoorbeeld Azure Active Directory-scenario (AAD), moet u een [beheerder](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)zijn.
 
-### <a name="go-to-help--support-from-the-global-header"></a>Ga naar Help + ondersteuning vanuit de globale koptekst
+### <a name="go-to-help--support-from-the-global-header"></a>Ga naar Help en ondersteuning vanuit de Global header
 
-Ga als een ondersteuningsaanvraag overal in de Azure-portal te werk:
+Als u een ondersteunings aanvraag wilt starten vanaf elke locatie in de Azure Portal:
 
 1. Selecteer het **?** in de globale header. Selecteer vervolgens **Help + ondersteuning**.
 
    ![Help en ondersteuning](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
-2. Selecteer **Nieuw ondersteuningsverzoek**. Volg de aanwijzingen om ons te voorzien van informatie over uw probleem. We stellen een aantal mogelijke oplossingen voor, verzamelen details over het probleem en helpen u het ondersteuningsverzoek in te dienen en bij te houden.
+2. Selecteer een **nieuwe ondersteunings aanvraag**. Volg de aanwijzingen om ons informatie te geven over uw probleem. We suggereren een aantal mogelijke oplossingen, verzamelen Details over het probleem en helpen u bij het indienen en bijhouden van de ondersteunings aanvraag.
 
    ![Nieuw ondersteuningsverzoek](./media/how-to-create-azure-support-request/newsupportrequest2lower.png)
 
-### <a name="go-to-help--support-from-a-resource-menu"></a>Ga naar Help + ondersteuning vanuit een resourcemenu
+### <a name="go-to-help--support-from-a-resource-menu"></a>Ga naar Help en ondersteuning vanuit een resource menu
 
-Als u een ondersteuningsaanvraag wilt starten in de context van de resource, werkt u momenteel met:
+Als u een ondersteunings aanvraag in de context van de resource wilt starten, bent u momenteel bezig met het volgende:
 
-1. Selecteer in het resourcemenu in de sectie **Ondersteuning + probleemoplossing** de optie **Nieuw ondersteuningsverzoek**.
+1. Klik in het menu resource, in de sectie **ondersteuning en probleem oplossing** , op **nieuwe ondersteunings aanvraag**.
 
-   ![In context](./media/how-to-create-azure-support-request/incontext2lower.png)
+   ![In de context](./media/how-to-create-azure-support-request/incontext2lower.png)
 
-2. Volg de aanwijzingen om ons te voorzien van informatie over het probleem dat u ondervindt. Wanneer u het ondersteuningsaanvraagproces vanuit de resource start, zijn sommige opties vooraf voor u geselecteerd.
+2. Volg de aanwijzingen om ons informatie te geven over het probleem dat u hebt. Wanneer u het proces voor de ondersteunings aanvraag vanuit de resource start, zijn sommige opties vooraf voor u geselecteerd.
 
 ## <a name="create-a-support-request"></a>Een ondersteuningsaanvraag maken
 
-We nemen je een aantal stappen onder de rug om informatie over je probleem te verzamelen en je te helpen het op te lossen. Elke stap wordt beschreven in de volgende secties.
+U wordt begeleid bij een aantal stappen voor het verzamelen van informatie over uw probleem en het oplossen van problemen. Elke stap wordt beschreven in de volgende secties.
 
 ### <a name="basics"></a>Basisbeginselen
 
-De eerste stap van het ondersteuningsaanvraagproces verzamelt basisinformatie over uw probleem en uw ondersteuningsplan.
+De eerste stap van het proces voor ondersteunings aanvragen verzamelt basis informatie over uw probleem en uw ondersteunings plan.
 
-Gebruik op het tabblad **Basisbeginselen** van **Nieuw ondersteuningsverzoek**de selecteurs om ons over het probleem te vertellen. Eerst identificeert u enkele algemene categorieën voor het probleemtype en kiest u het gerelateerde abonnement. Selecteer de service, bijvoorbeeld **Virtual Machine met Windows**. Selecteer de resource, zoals de naam van uw virtuele machine. Beschrijf het probleem in uw eigen woorden en **selecteer probleemtype** om specifieker te worden.
+Op het tabblad **basis beginselen** van de **nieuwe ondersteunings aanvraag**gebruikt u de selecters om ons te laten weten wat het probleem is. Eerst identificeert u enkele algemene categorieën voor het probleem type en kiest u het gerelateerde abonnement. Selecteer de service, bijvoorbeeld **virtuele machine met Windows**. Selecteer de resource, zoals de naam van de virtuele machine. Beschrijf het probleem in uw eigen woorden en **Selecteer vervolgens probleem type** voor specifiekere informatie.
 
 ![Blade Grondbeginselen](./media/how-to-create-azure-support-request/basics2lower.png)
 
 > [!NOTE]
-> Azure biedt onbeperkte ondersteuning voor abonnementsbeheer, waaronder facturering, quotaaanpassingen en accountoverdrachten. Voor technische ondersteuning hebt u een ondersteuningsplan nodig. [Meer informatie over ondersteuningsplannen](https://azure.microsoft.com/support/plans).
+> Azure biedt onbeperkte ondersteuning voor abonnements beheer, met inbegrip van facturering, quotum aanpassingen en account overdrachten. Voor technische ondersteuning hebt u een ondersteunings abonnement nodig. Meer [informatie over ondersteunings abonnementen](https://azure.microsoft.com/support/plans).
 >
 >
 
 ### <a name="solutions"></a>Oplossingen
 
-Na het verzamelen van basisinformatie, laten we u vervolgens oplossingen zien om het zelf te proberen. In sommige gevallen kunnen we zelfs een snelle diagnose uitvoeren. Oplossingen zijn geschreven door Azure-technici en lossen de meest voorkomende problemen op.
+Nadat u basis informatie hebt verzameld, worden oplossingen hierna weer gegeven die u zelf kunt proberen. In sommige gevallen kunnen we zelfs een snelle diagnose uitvoeren. Oplossingen worden geschreven door Azure-technici en zullen de meest voorkomende problemen oplossen.
 
 ### <a name="details"></a>Details
 
-Vervolgens verzamelen we aanvullende details over het probleem. Het verstrekken van grondige en gedetailleerde informatie in deze stap helpt ons uw ondersteuningsverzoek door te sturen naar de juiste agent.
+Vervolgens verzamelen we aanvullende informatie over het probleem. Door in deze stap uitgebreide en gedetailleerde informatie te verstrekken, kunnen we uw ondersteunings aanvraag naar de juiste agent routeren.
 
-Vertel ons indien mogelijk wanneer het probleem is begonnen en welke stappen het kan reproduceren. U een bestand uploaden, zoals een logboekbestand of uitvoer uit diagnostische gegevens.
+Laat ons, indien mogelijk, weten wanneer het probleem is gestart en alle stappen om het te reproduceren. U kunt een bestand, zoals een logboek bestand of uitvoer van diagnostische gegevens, uploaden.
 
-Nadat we alle informatie over het probleem hebben, kies dan hoe we ondersteuning krijgen. Selecteer in de sectie **Ondersteuningsmethode** **details**de ernst van de impact. Geef uw gewenste contactmethode, een goed moment om contact met u op te nemen en uw ondersteuningstaal.
+Nadat u alle informatie over het probleem hebt, kiest u hoe u ondersteuning kunt krijgen. Selecteer in de sectie **ondersteunings methode** de **ernst van de**impact. Geef uw voorkeurs methode voor contact personen, een goede tijd om contact met u op te nemen en uw ondersteunings taal.
 
-Vul vervolgens de sectie **Contactgegevens** in, zodat we weten hoe we contact met u kunnen opnemen.
+Vul vervolgens de sectie **contact gegevens** in zodat we weten hoe ze contact met u kunnen opnemen.
 
-### <a name="review--create"></a>Controleren + maken
+### <a name="review--create"></a>Controleren en maken
 
-Vul alle vereiste informatie op elk tabblad in en selecteer **Controleren + maken**. Controleer de details die u naar Ondersteuning stuurt. Ga terug naar een tabblad om een wijziging aan te brengen indien nodig. Als u tevreden bent dat de ondersteuningsaanvraag is voltooid, selecteert u **Maken**.
+Vul alle vereiste gegevens op elk tabblad in en selecteer vervolgens **controleren + maken**. Controleer de details die u gaat verzenden naar ondersteuning. Ga terug naar een tabblad om zo nodig een wijziging aan te brengen. Wanneer u hebt nagevraagd of het ondersteunings verzoek is voltooid, selecteert u **maken**.
 
-Een ondersteuningsmedewerker neemt contact met u op via de door u aangegeven methode. Zie [Ondersteuningsbereik en responsiviteit](https://azure.microsoft.com/support/plans/response/)voor informatie over de initiële responstijd.
+Een ondersteunings agent neemt contact met u op met de methode die u hebt opgegeven. Zie voor meer informatie over de eerste reactie tijd het [ondersteunings bereik en de reactie snelheid](https://azure.microsoft.com/support/plans/response/).
 
-## <a name="all-support-requests"></a>Alle ondersteuningsaanvragen
+## <a name="all-support-requests"></a>Alle ondersteunings aanvragen
 
-U de details en status van ondersteuningsaanvragen bekijken door naar **Help + ondersteuning** >  **alle ondersteuningsverzoeken**te gaan.
+U kunt de details en status van ondersteunings aanvragen weer geven door naar **Help en ondersteuning** >  te gaan voor**alle ondersteunings aanvragen**.
 
-![Alle ondersteuningsaanvragen](./media/how-to-create-azure-support-request/allrequestslower.png)
+![Alle ondersteunings aanvragen](./media/how-to-create-azure-support-request/allrequestslower.png)
 
-Op deze pagina u ondersteuningsaanvragen filteren op **Abonnements-** **en Aanmaakdatum** (UTC) en **Status**. Daarnaast u op deze pagina ondersteuningsverzoeken sorteren en zoeken.
+Op deze pagina kunt u de ondersteunings aanvragen filteren op basis van het **abonnement**, de **aanmaak** datum (UTC) en de **status**. Daarnaast kunt u op deze pagina ondersteunings aanvragen sorteren en zoeken.
 
-Selecteer een ondersteuningsverzoek om details weer te geven, inclusief de ernst en de verwachte tijd die een ondersteuningsmedewerker nodig heeft om te reageren.
+Selecteer een ondersteunings aanvraag om details weer te geven, met inbegrip van de ernst en de verwachte tijd die het duurt voordat een ondersteunings agent reageert.
 
-Als u de ernst van de aanvraag wilt wijzigen, selecteert u **De impact van bedrijven**. Kies uit een lijst met ernst die u wilt toewijzen.
+Als u de ernst van de aanvraag wilt wijzigen, selecteert u **bedrijfs impact**. Kies uit een lijst met de ernst die u wilt toewijzen.
 
 > [!NOTE]
-> Het maximale ernstniveau is afhankelijk van uw ondersteuningsplan. [Meer informatie over ondersteuningsplannen](https://azure.microsoft.com/support/plans).
+> Het maximale Ernst niveau is afhankelijk van uw ondersteunings plan. Meer [informatie over ondersteunings abonnementen](https://azure.microsoft.com/support/plans).
 >
 >
-Bekijk de video voor meer informatie over opties voor zelfhulpondersteuning in Azure:
+Bekijk de volgende video voor meer informatie over de ondersteunings opties voor Self-Help in Azure:
 
 > [!VIDEO https://www.youtube.com/embed/gNhzR5FE9DY]
 
@@ -128,5 +128,5 @@ Bekijk de video voor meer informatie over opties voor zelfhulpondersteuning in A
 
 * [Stuur ons uw feedback en suggesties](https://feedback.azure.com/forums/266794-support-feedback)
 * Neem contact met ons op [Twitter](https://twitter.com/azuresupport)
-* Krijg hulp van uw collega's in de [MSDN-forums](https://social.msdn.microsoft.com/Forums/azure)
-* Meer informatie in [de veelgestelde vragen over Azure Support](https://azure.microsoft.com/support/faq)
+* Hulp krijgen van uw collega's in de [MSDN-Forums](https://social.msdn.microsoft.com/Forums/azure)
+* Meer informatie in de [Veelgestelde vragen over ondersteuning voor Azure](https://azure.microsoft.com/support/faq)

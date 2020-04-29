@@ -1,6 +1,6 @@
 ---
-title: Gegevens migreren van Oracle naar Azure Cosmos DB Cassandra API met Blitzz
-description: Meer informatie over het migreren van gegevens uit Oracle-database naar Azure Cosmos DB Cassandra API met Blitzz.
+title: Gegevens migreren van Oracle naar Azure Cosmos DB Cassandra-API met behulp van Blitzz
+description: Meer informatie over het migreren van gegevens uit Oracle Data Base naar Azure Cosmos DB Cassandra-API met behulp van Blitzz.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,43 +8,43 @@ ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 43d15a7252819a3e4f7635e37458b75e9b7ecca7
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80546269"
 ---
-# <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Gegevens migreren van Oracle naar Azure Cosmos DB Cassandra API-account met Blitzz
+# <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Gegevens migreren van Oracle naar Azure Cosmos DB Cassandra-API-account met behulp van Blitzz
 
-Cassandra API in Azure Cosmos DB is een geweldige keuze geworden voor bedrijfsworkloads die op Oracle worden uitgevoerd om verschillende redenen, zoals:
+Cassandra-API in Azure Cosmos DB is een uitstekende keuze voor zakelijke workloads die op Oracle worden uitgevoerd om verschillende redenen, zoals:
 
-* **Betere schaalbaarheid en beschikbaarheid:** Het elimineert single points of failure, betere schaalbaarheid en beschikbaarheid voor uw toepassingen.
+* **Betere schaal baarheid en beschik baarheid:** Het elimineert afzonderlijke punten aan storingen, betere schaal baarheid en beschik baarheid voor uw toepassingen.
 
-* **Aanzienlijke kostenbesparingen:** U kosten besparen met Azure Cosmos DB, inclusief de kosten van VM's, bandbreedte en alle toepasselijke Oracle-licenties. Bovendien hoeft u de kosten van datacenters, servers, SSD-opslag, netwerken en elektriciteit niet te beheren.
+* **Aanzienlijke kosten besparingen:** U kunt kosten besparen met Azure Cosmos DB, inclusief de kosten van VM'S, band breedte en eventuele toepasselijke Oracle-licenties. Bovendien hoeft u de data centers, servers, SSD-opslag, netwerken en elektriciteits kosten niet te beheren.
 
-* **Geen overhead van beheer en bewaking:** Als volledig beheerde cloudservice verwijdert Azure Cosmos DB de overhead van het beheren en bewaken van een groot aantal instellingen.
+* **Geen overhead voor beheer en controle:** Als volledig beheerde Cloud service verwijdert Azure Cosmos DB de overhead van het beheren en bewaken van een talloze instellingen.
 
-Er zijn verschillende manieren om databaseworkloads van het ene platform naar het andere te migreren. [Blitzz](https://www.blitzz.io) is een tool die een veilige en betrouwbare manier biedt om zero downtime migratie uit te voeren van een verscheidenheid aan databases naar Azure Cosmos DB. In dit artikel worden de stappen beschreven die nodig zijn om gegevens van Oracle-database naar Azure Cosmos DB Cassandra API te migreren met Blitzz.
+Er zijn verschillende manieren om de data base-workloads van het ene platform naar het andere te migreren. [Blitzz](https://www.blitzz.io) is een hulp programma dat een veilige en betrouw bare manier biedt voor het uitvoeren van een back-uptijd van nul van een groot aantal data bases tot Azure Cosmos db. In dit artikel worden de stappen beschreven die nodig zijn om gegevens van Oracle Data Base te migreren naar Azure Cosmos DB Cassandra-API met behulp van Blitzz.
 
-## <a name="benefits-using-blitzz-for-migration"></a>Voordelen met Blitzz voor migratie
+## <a name="benefits-using-blitzz-for-migration"></a>Voor delen van het gebruik van Blitzz voor migratie
 
-Blitzz's migratieoplossing volgt een stapsgewijze aanpak om complexe operationele workloads te migreren. De volgende zijn enkele van de belangrijkste aspecten van Blitzz's zero-downtime migratieplan:
+De migratie oplossing van Blitzz volgt een stapsgewijze benadering van het migreren van complexe operationele workloads. Hier volgen enkele van de belangrijkste aspecten van het migratie plan voor Blitzz met een nul-uitval tijd:
 
-* Het biedt automatische migratie van bedrijfslogica (tabellen, indexen, weergaven) van Oracle-database naar Azure Cosmos DB. U hoeft geen schema's handmatig te maken.
+* Het biedt automatische migratie van bedrijfs logica (tabellen, indexen, weer gaven) van Oracle Data Base naar Azure Cosmos DB. U hoeft geen schema's hand matig te maken.
 
-* Blitzz biedt volume- en parallelle databasereplicatie. Hiermee kunnen zowel de bron- als doelplatforms tijdens de migratie worden gesynchroniseerd met behulp van een techniek genaamd Change-Data-Capture (CDC). Door CDC te gebruiken, haalt Blitzz continu een stroom van wijzigingen uit de brondatabase (Oracle) en past deze toe op de doeldatabase (Azure Cosmos DB).
+* Blitzz biedt de replicatie van grote volumes en parallelle data bases. De bron-en doel platformen kunnen tijdens de migratie in-sync zijn met behulp van een techniek genaamd Change-Data-Capture (CDC). Door CDC te gebruiken, haalt Blitzz continu een stroom wijzigingen van de bron database (Oracle) op en past deze toe op de doel database (Azure Cosmos DB).
 
-* Het is fouttolerant en garandeert precies één keer de levering van gegevens, zelfs tijdens een hardware- of softwarestoring in het systeem.
+* Het is fout tolerant en garandeert precies één keer wanneer er gegevens worden geleverd, zelfs tijdens een hardware-of software fout in het systeem.
 
-* Het beveiligt de gegevens tijdens het transport met behulp van een verscheidenheid van beveiligingsmethoden zoals TLS / SSL, encryptie.
+* Het beveiligt de gegevens tijdens de overdracht met behulp van een aantal beveiligings methoden zoals TLS/SSL, versleuteling.
 
-* Het biedt services om complexe bedrijfslogica geschreven in PL/SQL om te zetten in gelijkwaardige bedrijfslogica in Azure Cosmos DB.
+* Het biedt services voor het converteren van complexe bedrijfs logica die is geschreven in PL/SQL naar gelijkwaardige bedrijfs logica in Azure Cosmos DB.
 
-## <a name="steps-to-migrate-data"></a>Stappen om gegevens te migreren
+## <a name="steps-to-migrate-data"></a>Stappen voor het migreren van gegevens
 
-In deze sectie worden de stappen beschreven die nodig zijn om Blitzz in te stellen en worden gegevens van Oracle-database gemigreerd naar Azure Cosmos DB.
+In deze sectie worden de stappen beschreven die nodig zijn voor het instellen van Blitzz en het migreren van gegevens van Oracle Data Base naar Azure Cosmos DB.
 
-1. Voeg vanaf de computer waar u de Blitzz replicant wilt installeren een beveiligingscertificaat toe. Dit certificaat is vereist door de Blitzz-replicant om een TLS-verbinding met het opgegeven Azure Cosmos DB-account tot stand te brengen. U het certificaat toevoegen met de volgende stappen:
+1. Voeg een beveiligings certificaat toe vanaf de computer waarop u de Blitzz-Replicant wilt installeren. Dit certificaat is vereist voor de Blitzz Replicant om een TLS-verbinding met het opgegeven Azure Cosmos DB-account tot stand te brengen. U kunt het certificaat toevoegen aan de hand van de volgende stappen:
 
    ```bash
    wget https://cacert.omniroot.com/bc2025.crt
@@ -52,13 +52,13 @@ In deze sectie worden de stappen beschreven die nodig zijn om Blitzz in te stell
    keytool -keystore $JAVA_HOME/lib/security/cacerts -importcert -alias bc2025ca -file bc2025.cer
    ```
 
-1. ou kan de Blitzz installatie en de binaire bestanden te krijgen, hetzij door het aanvragen van een demo op de [Blitzz website](https://www.blitzz.io). U ook een [e-mail](mailto:success@blitzz.io) sturen naar het team.
+1. OE kan de Blitzz-installatie en de binaire bestanden ophalen door een demo op de [Blitzz-website](https://www.blitzz.io)aan te vragen. U kunt ook een [e-mail](mailto:success@blitzz.io) verzenden naar het team.
 
-   ![Blitzz replicant tool downloaden](./media/oracle-migrate-cosmos-db-blitzz/blitzz-replicant-download.png)
+   ![Blitzz Replicant-hulp programma downloaden](./media/oracle-migrate-cosmos-db-blitzz/blitzz-replicant-download.png)
 
-   ![Blitzz replicant bestanden](./media/oracle-migrate-cosmos-db-blitzz/replicant-files.png)
+   ![Blitzz Replicant-bestanden](./media/oracle-migrate-cosmos-db-blitzz/replicant-files.png)
 
-1. Stel vanaf de CLI-terminal de configuratie van de brondatabase in. Open het configuratiebestand met de **`vi conf/conn/oracle.yml`** opdracht en voeg een door komma gescheiden lijst met IP-adressen toe van de oracle-knooppunten, poortnummer, gebruikersnaam, wachtwoord en alle andere vereiste details. In de volgende code wordt een voorbeeldconfiguratiebestand weergegeven:
+1. Stel in de CLI-Terminal de configuratie van de bron database in. Open het configuratie bestand met **`vi conf/conn/oracle.yml`** behulp van de opdracht en voeg een door komma's gescheiden lijst met IP-adressen van de Oracle-knoop punten, het poort nummer, de gebruikers naam, het wacht woord en andere vereiste gegevens toe. De volgende code toont een voor beeld van een configuratie bestand:
 
    ```bash
    type: ORACLE
@@ -75,13 +75,13 @@ In deze sectie worden de stappen beschreven die nodig zijn om Blitzz in te stell
    use-ssl: false
    ```
 
-   ![Oracle-verbindingseditor openen](./media/oracle-migrate-cosmos-db-blitzz/open-connection-editor-oracle.png)
+   ![Oracle-verbindings editor openen](./media/oracle-migrate-cosmos-db-blitzz/open-connection-editor-oracle.png)
 
-   ![Oracle-verbindingsconfiguratie](./media/oracle-migrate-cosmos-db-blitzz/oracle-connection-configuration.png)
+   ![Configuratie van Oracle-verbinding](./media/oracle-migrate-cosmos-db-blitzz/oracle-connection-configuration.png)
 
-   Nadat u de configuratiegegevens hebt ingevuld, slaat u het bestand op en sluit u deze.
+   Sla het bestand op en sluit het als u de configuratie gegevens hebt ingevuld.
 
-1. Optioneel u het filterbestand van de brondatabase instellen. Het filterbestand geeft aan welke schema's of tabellen moeten worden gemigreerd. Open het configuratiebestand met de **`vi filter/oracle_filter.yml`** opdracht en voer de volgende configuratiegegevens in:
+1. Desgewenst kunt u het filter bestand van de bron database instellen. Het filter bestand geeft aan welke schema's of tabellen moeten worden gemigreerd. Open het configuratie bestand met **`vi filter/oracle_filter.yml`** behulp van de opdracht en voer de volgende configuratie gegevens in:
 
    ```bash
 
@@ -90,19 +90,19 @@ In deze sectie worden de stappen beschreven die nodig zijn om Blitzz in te stell
    Types: [TABLE]
    ```
  
-   Nadat u de databasefiltergegevens hebt ingevuld, slaat u het bestand op en sluit u deze.
+   Sla het bestand op en sluit het als u de details van het database filter hebt ingevuld.
 
-1. Vervolgens stelt u de configuratie van de doeldatabase in. Maak een Azure [Cosmos DB Cassandra API-account voordat](create-cassandra-dotnet.md#create-a-database-account)u de configuratie definieert. [Kies de juiste partitiesleutel](partitioning-overview.md#choose-partitionkey) uit uw gegevens en maak vervolgens een Keyspace en een tabel om de gemigreerde gegevens op te slaan.
+1. Vervolgens stelt u de configuratie van de doel database in. Voordat u de configuratie definieert, [maakt u een Azure Cosmos DB Cassandra-API-account](create-cassandra-dotnet.md#create-a-database-account). [Kies de juiste partitie sleutel](partitioning-overview.md#choose-partitionkey) van uw gegevens en maak vervolgens een spatie en een tabel om de gemigreerde gegevens op te slaan.
 
-1. Voordat u de gegevens migreert, verhoogt u de containerdoorvoer tot de hoeveelheid die nodig is om uw toepassing snel te laten migreren. U bijvoorbeeld de doorvoer verhogen tot 100000 RU's. Als u de doorvoer schaalt voordat u met de migratie begint, u uw gegevens in minder tijd migreren. 
+1. Voordat u de gegevens migreert, verhoogt u de doorvoer capaciteit van de container naar de hoeveelheid die de toepassing nodig heeft om snel te migreren. U kunt de door Voer bijvoorbeeld verhogen naar 100000 RUs. Wanneer u de door Voer hebt geschaald voordat u de migratie start, helpt u om uw gegevens in minder tijd te migreren. 
 
-   ![Azure Cosmos-container schalen in de hele](./media/oracle-migrate-cosmos-db-blitzz/scale-throughput.png)
+   ![Azure Cosmos-container schalen in](./media/oracle-migrate-cosmos-db-blitzz/scale-throughput.png)
 
-   U moet de doorvoer verlagen nadat de migratie is voltooid. Op basis van de hoeveelheid gegevens die is opgeslagen en de VOOR elke bewerking benodigde RU's, u de benodigde doorvoer schatten na gegevensmigratie. Zie [Doorvoer van containers en databases inrichten voor](set-throughput.md) meer informatie over het schatten van de vereiste RU's en Ru/s schatten met behulp van de artikelen azure cosmos [DB-capaciteitsplanner.](estimate-ru-with-capacity-planner.md)
+   U moet de door Voer verminderen nadat de migratie is voltooid. Op basis van de hoeveelheid opgeslagen gegevens en RUs die is vereist voor elke bewerking, kunt u een schatting maken van de door Voer die is vereist na de gegevens migratie. Zie voor meer informatie over het maken van een schatting van het RUs-vereiste [door Voer inrichten voor containers en data bases](set-throughput.md) en [een schatting van ru/s met behulp van de artikelen van de Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md) .
 
-1. Download het **contactpunt, de poort, gebruikersnaam**en **het primaire wachtwoord** van uw Azure Cosmos-account in het deelvenster **Verbindingstekenreeks.** U gebruikt deze waarden in het configuratiebestand.
+1. Haal het **contact punt, de poort, de gebruikers naam**en het **primaire wacht woord** van uw Azure Cosmos-account op in het deel venster **verbindings reeks** . U gebruikt deze waarden in het configuratie bestand.
 
-1. Stel vanaf de CLI-terminal de configuratie van de doeldatabase in. Open het configuratiebestand met de **`vi conf/conn/cosmosdb.yml`** opdracht en voeg een door komma's gescheiden lijst met hostURI, poortnummer, gebruikersnaam, wachtwoord en andere vereiste parameters toe. Het volgende is een voorbeeld van inhoud in het configuratiebestand:
+1. Stel in de CLI-Terminal de configuratie van de doel database in. Open het configuratie bestand met **`vi conf/conn/cosmosdb.yml`** behulp van de opdracht en voeg een door komma's gescheiden lijst toe met de URI, het poort nummer, de gebruikers naam, het wacht woord en andere vereiste para meters. Hier volgt een voor beeld van de inhoud van het configuratie bestand:
 
    ```bash
    type: COSMOSDB
@@ -117,37 +117,37 @@ In deze sectie worden de stappen beschreven die nodig zijn om Blitzz in te stell
    use-ssl: false
    ```
 
-1. Migreer vervolgens de gegevens met Blitzz. U de Blizz replicant **volledig** uitvoeren of **snapshot-modus:**
+1. Migreer vervolgens de gegevens met behulp van Blitzz. U kunt de blizz-Replicant uitvoeren in de **volledige** of **momentopname** modus:
 
-   * **Volledige modus** - In deze modus blijft de replicant worden uitgevoerd na migratie en luistert naar eventuele wijzigingen op het bronOracle-systeem. Als er wijzigingen worden gedetecteerd, worden ze in realtime gerepliceerd op het doel Azure Cosmos-account.
+   * **Volledige modus** – in deze modus wordt de Replicant nog steeds uitgevoerd na de migratie en wordt er geluisterd naar wijzigingen op het Oracle-bron systeem. Als er wijzigingen worden gedetecteerd, worden deze in realtime gerepliceerd op het doel-Azure Cosmos-account.
 
-   * **Momentopnamemodus** : in deze modus u schemamigratie en eenmalige gegevensreplicatie uitvoeren. Realtime replicatie wordt niet ondersteund met deze optie.
+   * **Momentopname modus** : in deze modus kunt u schema migratie en eenmalige gegevens replicatie uitvoeren. Realtime-replicatie wordt niet ondersteund met deze optie.
 
 
-   Door de bovenstaande twee modi te gebruiken, kan migratie worden uitgevoerd met nul downtime.
+   Als u de bovenstaande twee modi gebruikt, kan de migratie worden uitgevoerd met een downtime van nul.
 
-1. Voer de volgende opdracht uit om gegevens te migreren vanaf de Blitzz replicant CLI-terminal:
+1. Als u gegevens wilt migreren, voert u de volgende opdracht uit vanaf de Blitzz Replicant CLI-terminal:
 
    ```bash
    ./bin/replicant full conf/conn/oracle.yaml conf/conn/cosmosdb.yaml --filter filter/oracle_filter.yaml --replace-existing
    ```
 
-   De replicant UI toont de replicatievoortgang. Zodra de schemamigratie- en momentopnamebewerking is uitgevoerd, wordt de voortgang 100% weergegeven. Nadat de migratie is voltooid, u de gegevens in de doelazure cosmos-database valideren.
+   De Replicant-gebruikers interface toont de voortgang van de replicatie. Zodra de schema migratie en de momentopname bewerking zijn uitgevoerd, wordt in de voortgang 100% weer gegeven. Nadat de migratie is voltooid, kunt u de gegevens valideren in de Azure Cosmos-doel database.
 
-   ![Oracle-gegevensmigratie-uitvoer](./media/oracle-migrate-cosmos-db-blitzz/oracle-data-migration-output.png)
+   ![Uitvoer van Oracle-gegevens migratie](./media/oracle-migrate-cosmos-db-blitzz/oracle-data-migration-output.png)
 
-1. Omdat u de volledige modus voor migratie hebt gebruikt, u bewerkingen uitvoeren zoals gegevens invoegen, bijwerken of verwijderen in de bronoracle-database. Later u valideren dat ze real-time worden gerepliceerd op de doelazure cosmos-database. Zorg ervoor dat u na de migratie de doorvoer die is geconfigureerd voor uw Azure Cosmos-container vermindert.
+1. Omdat u de volledige modus voor migratie hebt gebruikt, kunt u bewerkingen uitvoeren zoals het invoegen, bijwerken of verwijderen van gegevens in de Oracle-bron database. U kunt later controleren of ze realtime worden gerepliceerd in de Azure Cosmos-doel database. Na de migratie moet u de door Voer die is geconfigureerd voor de Azure Cosmos-container verlagen.
 
-1. U de replicant elk punt stoppen en opnieuw starten met **--hervatten** schakelaar. De replicatie wordt hervat vanaf het punt dat is gestopt zonder in te leveren op de consistentie van de gegevens. In de volgende opdracht ziet u hoe u de hervattingsschakelaar gebruikt.
+1. U kunt de Replicant wille keurig punt stoppen en opnieuw starten met **--** de switch hervatten. De replicatie wordt hervat vanaf het punt waarop deze is gestopt zonder dat er wordt gereageerd op de consistentie van de gegevens. De volgende opdracht laat zien hoe u de schakel optie hervatten kunt gebruiken.
 
    ```bash
    ./bin/replicant full conf/conn/oracle.yaml conf/conn/cosmosdb.yaml --filter filter/oracle_filter.yaml --replace-existing --resume
    ```
 
-Zie de [Blitzz replicant demo](https://www.youtube.com/watch?v=y5ZeRK5A-MI)voor meer informatie over de gegevensmigratie naar bestemming, real-time migratie.
+Zie de [Blitzz Replicant-demo](https://www.youtube.com/watch?v=y5ZeRK5A-MI)voor meer informatie over het migreren van gegevens naar doel, realtime migratie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Doorvoer voor containers en databases inrichten](set-throughput.md) 
-* [Aanbevolen procedures voor partitiesleutel](partitioning-overview.md#choose-partitionkey)
-* [RU/s schatten met behulp van de artikelen azure cosmos DB-capaciteitsplanner](estimate-ru-with-capacity-planner.md)
+* [Best practices voor de partitie sleutel](partitioning-overview.md#choose-partitionkey)
+* [Een raming van ru/s met de Azure Cosmos DB capaciteits planner](estimate-ru-with-capacity-planner.md) artikelen

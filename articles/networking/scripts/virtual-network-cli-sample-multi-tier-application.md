@@ -1,5 +1,5 @@
 ---
-title: Voorbeeld van Azure CLI-script - Een netwerk maken voor toepassingen met meerdere lagen
+title: Voor beeld van Azure CLI-script-een netwerk maken voor toepassingen met meerdere lagen
 description: Azure CLI-voorbeeldscript - Het maken van een netwerk voor toepassingen met meerdere lagen.
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
 ms.openlocfilehash: 97e26eaed72bc15ebc46a893d269b05484d8a064
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521546"
 ---
 # <a name="create-a-network-for-multi-tier-applications"></a>Een netwerk maken voor toepassingen met meerdere lagen
@@ -50,7 +50,7 @@ In dit script worden de volgende opdrachten gebruikt voor het maken van een reso
 | [az group create](/cli/azure/group) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [az network vnet create](/cli/azure/network/vnet) | Hiermee maakt u een virtueel Azure-netwerk en front-end-subnet. |
 | [az network subnet create](/cli/azure/network/vnet/subnet) | Hiermee maakt u een back-end-subnet. |
-| [az network public-ip create](/cli/azure/network/public-ip) | Hiermee maakt u een openbaar IP-adres om toegang te krijgen tot de vm vanaf internet. |
+| [az network public-ip create](/cli/azure/network/public-ip) | Hiermee maakt u een openbaar IP-adres voor toegang tot de virtuele machine via internet. |
 | [az network nic create](/cli/azure/network/nic) | Hiermee maakt u virtuele netwerkinterfaces en koppelt deze aan de front-end en back-end-subnetten van het virtuele netwerk. |
 | [az network nsg create](/cli/azure/network/nsg) | Hiermee maakt u netwerkbeveiligingsgroepen (NSG's) die zijn gekoppeld aan de front-end- en back-end-subnetten. |
 | [az network nsg rule create](/cli/azure/network/nsg/rule) |Hiermee maakt u NSG-regels die bepaalde poorten tot specifieke subnetten blokkeren of toestaan. |
@@ -61,4 +61,4 @@ In dit script worden de volgende opdrachten gebruikt voor het maken van een reso
 
 Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
-Aanvullende CLI-scriptvoorbeelden voor netwerken zijn te vinden in de documentatie van azure [networking-overzicht](../cli-samples.md)
+Extra Network CLI-voorbeeld scripts vindt u in de [documentatie](../cli-samples.md) van het overzicht van Azure-netwerken

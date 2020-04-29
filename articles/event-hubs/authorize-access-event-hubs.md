@@ -1,6 +1,6 @@
 ---
 title: Toegang tot Azure Event Hubs autoriseren
-description: In dit artikel vindt u informatie over verschillende opties voor het toestaan van toegang tot Azure Event Hubs-bronnen.
+description: Dit artikel bevat informatie over verschillende opties voor het machtigen van toegang tot Azure Event Hubs-resources.
 services: event-hubs
 ms.service: event-hubs
 documentationcenter: ''
@@ -9,46 +9,46 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
 ms.openlocfilehash: f44be4e1d3d1186f0122bd4669ae800ab42e31d6
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521297"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Toegang tot Azure Event Hubs autoriseren
-Elke keer dat u gebeurtenissen/gegevens publiceert of gebruikt vanuit een gebeurtenishub, probeert uw client toegang te krijgen tot bronnen van Event Hubs. Elk verzoek om een beveiligde bron moet worden geautoriseerd, zodat de service ervoor kan zorgen dat de client over de vereiste machtigingen beschikt om de gegevens te publiceren/consumeren. 
+Elke keer dat u gebeurtenissen/gegevens van een Event Hub publiceert of gebruikt, probeert de client toegang tot Event Hubs resources te krijgen. Elke aanvraag voor een beveiligde resource moet worden geautoriseerd zodat de service kan controleren of de client over de vereiste machtigingen beschikt om de gegevens te publiceren/te gebruiken. 
 
-Azure Event Hubs biedt de volgende opties voor het toestaan van toegang tot beveiligde bronnen:
+Azure Event Hubs biedt de volgende opties voor het machtigen van toegang tot beveiligde resources:
 
 - Azure Active Directory
 - Handtekening voor gedeelde toegang
 
 > [!NOTE]
-> Dit artikel is van toepassing op zowel Gebeurtenishubs als Apache Kafka-scenario's. [Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) 
+> Dit artikel is van toepassing op zowel Event Hubs als [Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) scenario's. 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-Azure Active Directory (Azure AD)-integratie voor Gebeurtenishubs-bronnen biedt rbac (role-based access control) voor fijnmazige controle over de toegang van een client tot resources. U rbac (role-based access control) gebruiken om machtigingen te verlenen aan beveiligingsprincipal, die mogelijk een gebruiker, een groep of een hoofdvoorde van de toepassingsservice is. De beveiligingsprincipal is geverifieerd door Azure AD om een OAuth 2.0-token terug te sturen. Het token kan worden gebruikt om een aanvraag om toegang te krijgen tot een Gebeurtenishubs-bron.
+Azure Active Directory-integratie (Azure AD) voor Event Hubs bronnen biedt op rollen gebaseerd toegangs beheer (RBAC) voor nauw keurige controle over de toegang van een client tot resources. U kunt op rollen gebaseerd toegangs beheer (RBAC) gebruiken om machtigingen te verlenen aan de beveiligingsprincipal, die een gebruiker, een groep of een Application Service-Principal kan zijn. De beveiligingsprincipal wordt door Azure AD geverifieerd om een OAuth 2,0-token te retour neren. Het token kan worden gebruikt voor het autoriseren van een aanvraag voor toegang tot een Event Hubs bron.
 
-Zie de volgende artikelen voor meer informatie over het verifiëren met Azure AD:
+Raadpleeg de volgende artikelen voor meer informatie over verificatie met Azure AD:
 
-- [Aanvragen voor Azure Event Hubs verifiëren met Azure Active Directory](authenticate-application.md)
-- [Toegang tot bronnen van gebeurtenishubs autoriseren met Azure Active Directory](authorize-access-azure-active-directory.md).
+- [Aanvragen voor Azure Event Hubs verifiëren met behulp van Azure Active Directory](authenticate-application.md)
+- [Toegang tot Event hubs resources toestaan met behulp van Azure Active Directory](authorize-access-azure-active-directory.md).
 
-## <a name="shared-access-signatures"></a>Handtekeningen voor gedeelde toegang 
-Shared access signatures (SAS) voor Event Hubs-bronnen bieden beperkte gedelegeerde toegang tot bronnen voor gebeurtenishubs. Het toevoegen van beperkingen op tijdsinterval waarvoor de handtekening geldig is of op machtigingen die het verleent, biedt flexibiliteit bij het beheren van resources. Zie [Verifiëren met gedeelde toegangshandtekeningen (SAS)](authenticate-shared-access-signature.md)voor meer informatie. 
+## <a name="shared-access-signatures"></a>Shared Access signatures 
+Shared Access signatures (SAS) voor Event Hubs resources bieden beperkte gedelegeerde toegang tot Event Hubs resources. Door beperkingen toe te voegen aan een tijds interval waarvoor de hand tekening geldig is of op machtigingen die door deze worden verleend, biedt het beheer van resources flexibiliteit. Zie [verifiëren met behulp van Shared Access signatures (SAS)](authenticate-shared-access-signature.md)voor meer informatie. 
 
-Het toestaan van gebruikers of toepassingen met behulp van een OAuth 2.0-token dat is geretourneerd door Azure AD biedt superieure beveiliging en gebruiksgemak ten opzichte van sas (Shared Access Signatures). Met Azure AD is het niet nodig om de toegangstokens op te slaan met uw code en potentiële beveiligingsproblemen te riskeren. Hoewel u shared access signatures (SAS) blijven gebruiken om fijnmazige toegang tot Event Hubs-bronnen te verlenen, biedt Azure AD vergelijkbare mogelijkheden zonder dat u SAS-tokens hoeft te beheren of zich zorgen hoeft te maken over het intrekken van een gecompromitteerde SAS. 
+Het autoriseren van gebruikers of toepassingen met een OAuth 2,0-token dat wordt geretourneerd door Azure AD biedt een superieure beveiliging en gebruiks gemak over Shared Access signatures (SAS). Met Azure AD hoeft u de toegangs tokens niet op te slaan met uw code en mogelijke beveiligings problemen met Risico's. Hoewel u Shared Access signatures (SAS) kunt blijven gebruiken om nauw keurige toegang tot Event Hubs resources te verlenen, biedt Azure AD soort gelijke mogelijkheden zonder dat u SAS-tokens hoeft te beheren, of om u zorgen te maken over het intrekken van een SAS. 
 
-Standaard zijn alle Bronnen van Event Hubs beveiligd en alleen beschikbaar voor de eigenaar van het account. Hoewel u een van de hierboven beschreven autorisatiestrategieën gebruiken om clients toegang te verlenen tot Event Hub-bronnen. Microsoft raadt aan om Azure AD te gebruiken wanneer dat mogelijk is voor maximale beveiliging en gebruiksgemak.
+Standaard worden alle Event Hubs-resources beveiligd en zijn ze alleen beschikbaar voor de eigenaar van het account. Hoewel u een van de hierboven beschreven verificatie strategieën kunt gebruiken om clients toegang te verlenen tot Event hub-resources. Micro soft raadt u aan Azure AD zo mogelijk te gebruiken voor maximale beveiliging en gebruiks gemak.
 
-Zie Toegang tot bronnen voor [gebeurtenishubs toestaan met behulp van gedeelde toegangshandtekeningen](authorize-access-shared-access-signature.md)voor meer informatie over autorisatie via SAS.
+Zie voor meer informatie over autorisatie met behulp van SAS [toegang verlenen tot Event hubs-resources met behulp van hand tekeningen voor gedeelde toegang](authorize-access-shared-access-signature.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-- Review [RBAC monsters](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) gepubliceerd in onze GitHub repository. 
+- Bekijk de RBAC-voor [beelden](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) die zijn gepubliceerd in onze github-opslag plaats. 
 - Zie de volgende artikelen:
-    - [Aanvragen voor Azure Event Hubs verifiëren vanuit een toepassing met Azure Active Directory](authenticate-application.md)
-    - [Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot gebeurtenishubsbronnen](authenticate-managed-identity.md)
-    - [Aanvragen voor Azure Event Hubs verifiëren met behulp van gedeelde toegangshandtekeningen](authenticate-shared-access-signature.md)
-    - [Toegang tot gebeurtenishubsresources autoriseren met Azure Active Directory](authorize-access-azure-active-directory.md)
-    - [Toegang tot bronnen van gebeurtenishubs autoriseren met behulp van gedeelde toegangshandtekeningen](authorize-access-shared-access-signature.md)
+    - [Aanvragen voor Azure Event Hubs verifiëren vanuit een toepassing met behulp van Azure Active Directory](authenticate-application.md)
+    - [Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Event Hubs bronnen](authenticate-managed-identity.md)
+    - [Aanvragen voor Azure Event Hubs verifiëren met behulp van hand tekeningen voor gedeelde toegang](authenticate-shared-access-signature.md)
+    - [Toegang tot Event Hubs resources autoriseren met behulp van Azure Active Directory](authorize-access-azure-active-directory.md)
+    - [Toegang tot Event Hubs resources autoriseren met behulp van hand tekeningen voor gedeelde toegang](authorize-access-shared-access-signature.md)
 

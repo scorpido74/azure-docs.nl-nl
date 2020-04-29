@@ -1,95 +1,95 @@
 ---
-title: Ondersteuning voor fysieke servermigratie in Azure-migreren
-description: Meer informatie over ondersteuning voor fysieke servermigratie in Azure Migrate.
+title: Ondersteuning voor de migratie van fysieke servers in Azure Migrate
+description: Meer informatie over ondersteuning voor de migratie van fysieke servers in Azure Migrate.
 ms.topic: conceptual
 ms.custom: fasttrack-edit
 ms.date: 01/07/2020
 ms.openlocfilehash: 8f8b94ab77a1eef8e771384f5d69da98a1d7ae6c
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80520285"
 ---
-# <a name="support-matrix-for-physical-server-migration"></a>Ondersteuningsmatrix voor fysieke servermigratie
+# <a name="support-matrix-for-physical-server-migration"></a>Ondersteunings matrix voor de migratie van fysieke servers
 
-In dit artikel worden ondersteuningsinstellingen en -beperkingen voor het migreren van fysieke servers met [Azure Migrate: Servermigratie](migrate-services-overview.md#azure-migrate-server-migration-tool) samengevat. Als u op zoek bent naar informatie over het beoordelen van fysieke servers voor migratie naar Azure, controleert u de [matrix voor beoordelingsondersteuning](migrate-support-matrix-physical.md).
+In dit artikel vindt u een overzicht van de ondersteunings instellingen en beperkingen voor het migreren van fysieke servers met [Azure migrate: Server migratie](migrate-services-overview.md#azure-migrate-server-migration-tool) . Als u informatie zoekt over het beoordelen van fysieke servers voor migratie naar Azure, raadpleegt u de [ondersteunings matrix voor evaluatie](migrate-support-matrix-physical.md).
 
 
 ## <a name="overview"></a>Overzicht
 
-U on-premises machines migreren als fysieke servers, met behulp van op agent gebaseerde replicatie. Met deze tool u een breed scala aan machines migreren naar Azure:
+U kunt on-premises machines als fysieke servers migreren met behulp van replicatie op basis van een agent. Met dit hulp programma kunt u een breed scala aan machines migreren naar Azure:
 
 - On-premises fysieke servers.
-- VM's gevirtualiseerd door platforms zoals Xen, KVM.
-- Hyper-V VM's of VMware VM's als u om de een of andere reden de standaard [Hyper-V-](tutorial-migrate-hyper-v.md) of [VMware-stromen](server-migrate-overview.md) niet wilt gebruiken.
-- VM's die in privéwolken worden uitgevoerd.
-- VM's die worden uitgevoerd in openbare clouds zoals Amazon Web Services (AWS) of Google Cloud Platform (GCP).
+- Vm's gevirtualiseerd door platforms zoals xen, KVM.
+- Virtuele Hyper-V-machines of virtuele VMware-machines als u de standaard [hyper-v-](tutorial-migrate-hyper-v.md) of [VMware](server-migrate-overview.md) -stromen niet wilt gebruiken.
+- Vm's die in persoonlijke Clouds worden uitgevoerd.
+- Vm's die worden uitgevoerd in open bare Clouds, zoals Amazon Web Services (AWS) of Google Cloud Platform (GCP).
 
 
 ## <a name="migration-limitations"></a>Migratiebeperkingen
 
-U maximaal 10 machines tegelijk selecteren voor replicatie. Als u meer machines wilt migreren, repliceer dan in groepen van 10.
+U kunt Maxi maal 10 computers tegelijk selecteren voor replicatie. Als u meer machines wilt migreren, repliceert u in groepen van 10.
 
 
 ## <a name="physical-server-requirements"></a>Vereisten voor fysieke servers
 
-De tabel geeft een overzicht van de ondersteuning voor fysieke servers die u wilt migreren met behulp van op agenten gebaseerde migratie.
+De tabel bevat een overzicht van de ondersteuning voor fysieke servers die u wilt migreren met behulp van migratie op basis van een agent.
 
-**Ondersteuning** | **Details**
+**Ondersteuning** | **Nadere**
 --- | ---
-**Werkbelasting voor machines** | Azure Migrate ondersteunt migratie van elke workload (bijvoorbeeld Active Directory, SQL-server, enz.) die wordt uitgevoerd op een ondersteunde machine.
-**Besturingssystemen** | Voor de meest recente informatie, controleer de ondersteuning van het [besturingssysteem](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) voor Site Recovery. Azure Migrate biedt identieke ondersteuning voor het besturingssysteem.
-**Linux-bestandssysteem/gastopslag** | Voor de laatste informatie, controleer de [Linux-bestandssysteem ondersteuning](../site-recovery/vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) voor Site Recovery. Azure Migrate biedt identieke ondersteuning voor Linux-bestandssystemen.
-**Netwerk/opslag** | Bekijk voor de meest recente informatie de vereisten voor [netwerk-](../site-recovery/vmware-physical-azure-support-matrix.md#network) en [opslag](../site-recovery/vmware-physical-azure-support-matrix.md#storage) voor siteherstel. Azure Migrate biedt identieke netwerk-/opslagvereisten.
-**Azure-vereisten** | Controleer voor de meest recente informatie de [azure-netwerk-,](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover) [opslag-](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)en [rekenvereisten](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) voor siteherstel. Azure Migrate heeft identieke vereisten voor fysieke servermigratie.
-**Mobiliteitsdienst** | De Mobiliteitsserviceagent moet op elke machine die u wilt migreren, worden geïnstalleerd.
-**UEFI-opstart** | De gemigreerde machine in Azure wordt automatisch geconverteerd naar een BIOS-boot Azure VM. Alleen server met Windows Server 2012 en later ondersteund.<br/><br/> De OS-schijf moet maximaal vier partities hebben en volumes moeten worden opgemaakt met NTFS.
-**Doelschijf** | Machines kunnen alleen worden gemigreerd naar beheerde schijven (standaard HDD, premium SSD) in Azure.
-**Schijfgrootte** | 2 TB OS schijf; 8 TB voor dataschijven.
-**Schijflimieten** |  Maximaal 63 schijven per machine.
+**Machine workload** | Azure Migrate ondersteunt de migratie van elke werk belasting (bijvoorbeeld Active Directory, SQL Server, enzovoort) die wordt uitgevoerd op een ondersteunde computer.
+**Besturings systemen** | Raadpleeg de ondersteuning van het [besturings systeem](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) voor site Recovery voor de meest recente informatie. Azure Migrate biedt dezelfde ondersteuning voor het besturings systeem.
+**Linux-bestands systeem/gast opslag** | Raadpleeg de ondersteuning van het Linux- [Bestands systeem](../site-recovery/vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) voor site Recovery voor de meest recente informatie. Azure Migrate biedt identieke ondersteuning voor het Linux-bestands systeem.
+**Netwerk/opslag** | Raadpleeg de vereisten voor het [netwerk](../site-recovery/vmware-physical-azure-support-matrix.md#network) en de [opslag](../site-recovery/vmware-physical-azure-support-matrix.md#storage) voor site Recovery voor de meest recente informatie. Azure Migrate biedt identieke netwerk-en opslag vereisten.
+**Azure-vereisten** | Bekijk de vereisten voor het Azure- [netwerk](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), de [opslag](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)en de [reken kracht](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) voor site Recovery voor de meest recente informatie. Azure Migrate heeft identieke vereisten voor de migratie van fysieke servers.
+**Mobility-service** | De Mobility Service-agent moet zijn geïnstalleerd op elke computer die u wilt migreren.
+**UEFI-opstart** | De gemigreerde machine in azure wordt automatisch geconverteerd naar een BIOS-opstart-VM van Azure. Alleen server met Windows Server 2012 en hoger wordt ondersteund.<br/><br/> De besturingssysteem schijf moet Maxi maal vier partities hebben en volumes moeten worden geformatteerd met NTFS.
+**Doel schijf** | Machines kunnen alleen worden gemigreerd naar Managed disks (standaard HDD, Premium SSD) in Azure.
+**Schijf grootte** | 2 TB besturingssysteem schijf; 8 TB voor gegevens schijven.
+**Schijf limieten** |  Maxi maal 63 schijven per computer.
 **Versleutelde schijven/volumes** |  Machines met versleutelde schijven/volumes worden niet ondersteund voor migratie.
-**Gedeelde schijfcluster** | Wordt niet ondersteund.
+**Gedeeld schijf cluster** | Wordt niet ondersteund.
 **Onafhankelijke schijven** | Ondersteund.
-**Doorgeefschijven** | Ondersteund.
-**NFS** | NFS-volumes die zijn gemonteerd als volumes op de machines worden niet gerepliceerd.
-**iSCSI-doelen** | Machines met iSCSI-doelen worden niet ondersteund voor agentloze migratie.
+**Passthrough-schijven** | Ondersteund.
+**NFS** | NFS-volumes die zijn gekoppeld als volumes op de computers, worden niet gerepliceerd.
+**iSCSI-doelen** | Computers met iSCSI-doelen worden niet ondersteund voor migratie zonder agent.
 **Multipath IO** | Wordt niet ondersteund.
-**Opslag vMotion** | Ondersteund
-**Samenwerkende NIC's** | Wordt niet ondersteund.
+**Storage vMotion** | Ondersteund
+**Team kaarten** | Wordt niet ondersteund.
 **IPv6** | Wordt niet ondersteund.
 
 
 
 ## <a name="replication-appliance-requirements"></a>Replicatie-apparaatvereisten
 
-Als u het replicatietoestel handmatig instelt op een fysieke server, controleert u of het voldoet aan de vereisten die in de tabel zijn samengevat. Wanneer u het Azure Migrate-replicatietoestel instelt als vmware-vm met behulp van de OVA-sjabloon in de Azure Migrate-hub, is het toestel ingesteld met Windows Server 2016 en voldoet het aan de ondersteuningsvereisten. 
+Als u het replicatie apparaat hand matig instelt op een fysieke server, moet u ervoor zorgen dat het voldoet aan de vereisten in de tabel. Wanneer u het Azure Migrate replicatie apparaat instelt als een VMware-VM met behulp van de eicellen-sjabloon die is opgegeven in de Azure Migrate hub, wordt het apparaat ingesteld met Windows Server 2016 en voldoet aan de ondersteunings vereisten. 
 
-- Meer informatie over [vereisten voor replicatietoestel](migrate-replication-appliance.md#appliance-requirements).
-- MySQL moet op het toestel worden geïnstalleerd. Meer informatie over [installatieopties](migrate-replication-appliance.md#mysql-installation).
-- Meer informatie over [URL's](migrate-replication-appliance.md#url-access) waartoe het replicatietoestel moet worden geopend.
+- Meer informatie over [vereisten voor replicatie apparaten](migrate-replication-appliance.md#appliance-requirements).
+- MySQL moet op het apparaat zijn geïnstalleerd. Meer informatie over [installatie opties](migrate-replication-appliance.md#mysql-installation).
+- Meer informatie over [url's](migrate-replication-appliance.md#url-access) waarvoor het replicatie apparaat toegang moet hebben.
 
 ## <a name="azure-vm-requirements"></a>Vereisten voor Azure-VM's
 
-Alle on-premises VM's die zijn gerepliceerd naar Azure moeten voldoen aan de Azure VM-vereisten die in deze tabel zijn samengevat. Wanneer siteherstel een vereiste controle uitvoert voor replicatie, mislukt de controle als niet aan een aantal vereisten wordt voldaan.
+Alle on-premises Vm's die naar Azure worden gerepliceerd, moeten voldoen aan de vereisten voor de Azure-VM die in deze tabel worden samenvatten. Wanneer Site Recovery een controle op vereisten uitvoert voor replicatie, mislukt de controle als aan sommige vereisten niet wordt voldaan.
 
-**Component** | **Vereisten** | **Details**
+**Component** | **Vereisten** | **Nadere**
 --- | --- | ---
-Gastbesturingssysteem | Verifieert ondersteunde besturingssystemen.<br/> U elke werkbelasting migreren die wordt uitgevoerd op een ondersteund besturingssysteem. | Controleren mislukt als niet-ondersteund.
-Gastbesturingssysteemarchitectuur | 64-bits. | Controleren mislukt als niet-ondersteund.
-Grootte van de besturingssysteemschijf | Max. | Controleren mislukt als niet-ondersteund.
-Aantal besturingssysteemschijven | 1 | Controleren mislukt als niet-ondersteund.
-Aantal gegevensschijven | 64 of minder. | Controleren mislukt als niet-ondersteund.
-Gegevensschijfgrootte | Max. | Controleren mislukt als niet-ondersteund.
+Gastbesturingssysteem | Controleert ondersteunde besturings systemen.<br/> U kunt elke werk belasting migreren die wordt uitgevoerd op een ondersteund besturings systeem. | De controle is mislukt als dit niet wordt ondersteund.
+Architectuur van gast besturingssysteem | 64-bits. | De controle is mislukt als dit niet wordt ondersteund.
+Grootte van de besturingssysteemschijf | Maxi maal 2.048 GB. | De controle is mislukt als dit niet wordt ondersteund.
+Aantal besturingssysteemschijven | 1 | De controle is mislukt als dit niet wordt ondersteund.
+Aantal gegevensschijven | 64 of minder. | De controle is mislukt als dit niet wordt ondersteund.
+Grootte van de gegevens schijf | Maxi maal 4.095 GB | De controle is mislukt als dit niet wordt ondersteund.
 Netwerkadapters | Meerdere adapters worden ondersteund. |
-Gedeelde VHD | Wordt niet ondersteund. | Controleren mislukt als niet-ondersteund.
-FC-schijf | Wordt niet ondersteund. | Controleren mislukt als niet-ondersteund.
-BitLocker | Wordt niet ondersteund. | BitLocker moet zijn uitgeschakeld voordat u replicatie voor een machine inschakelt.
-VM-naam | Van 1 tot 63 tekens.<br/> Alleen letters, cijfers en afbreekstreepjes.<br/><br/> De naam van de machine moet beginnen en eindigen met een letter of nummer. |  Werk de waarde in de machine-eigenschappen bij in Siteherstel.
-Verbinding maken na migratie-Windows | Verbinding maken met Azure VM's met Windows na migratie:<br/> - Voordat migratie RDP op de on-premises VM inschakelt. Zorg dat TCP- en UDP-regels zijn toegevoegd voor het profiel **Openbaar** en dat RDP is toegestaan in **Windows Firewall** > **Toegestane apps** voor alle profielen.<br/> Schakel RDP in en sta RDP toe in **Windows Firewall** -> **Toegestane apps en functies** voor **domein- en privénetwerken** voor vpn-toegang. Controleer bovendien of het SAN-beleid van het besturingssysteem is ingesteld op **OnlineAll.** [Meer informatie](prepare-for-migration.md). |
-Verbinding maken na migratie-Linux | Verbinding maken met Azure VM's na migratie met SSH:<br/> Controleer vóór de migratie op de on-premises machine of de Secure Shell-service is ingesteld op Start en dat firewallregels een SSH-verbinding toestaan.<br/> Na failover u op de Azure VM binnenkomende verbindingen met de SSH-poort toestaan voor de regels van de netwerkbeveiligingsgroep op de mislukte over-VM en voor het Azure-subnet waarmee deze is verbonden. Voeg bovendien een openbaar IP-adres voor de VM toe. |  
+Gedeelde VHD | Wordt niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
+FC-schijf | Wordt niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
+BitLocker | Wordt niet ondersteund. | BitLocker moet worden uitgeschakeld voordat u replicatie voor een machine inschakelt.
+VM-naam | Van 1 tot 63 tekens.<br/> Alleen letters, cijfers en afbreekstreepjes.<br/><br/> De naam van de computer moet beginnen en eindigen met een letter of cijfer. |  Werk de waarde in de computer eigenschappen in Site Recovery bij.
+Verbinding maken na migratie-Windows | Verbinding maken met virtuele Azure-machines na de migratie:<br/> -Voordat de migratie RDP op de on-premises VM maakt. Zorg dat TCP- en UDP-regels zijn toegevoegd voor het profiel **Openbaar** en dat RDP is toegestaan in **Windows Firewall** > **Toegestane apps** voor alle profielen.<br/> Schakel voor site-naar-site-VPN-toegang RDP in en sta RDP toe in **Windows Firewall** -> **toegestane apps en functies** voor **domein-en particuliere** netwerken. Controleer bovendien of het SAN-beleid van het besturings systeem is ingesteld op **OnlineAll**. [Meer informatie](prepare-for-migration.md). |
+Verbinding maken na migratie-Linux | Verbinding maken met virtuele Azure-machines na de migratie met SSH:<br/> Controleer voordat u de migratie op de on-premises computer controleert of de Secure shell-service is ingesteld op Start en of de firewall regels een SSH-verbinding toestaan.<br/> Nadat de failover is uitgevoerd op de Azure-VM, moet u binnenkomende verbindingen met de SSH-poort toestaan voor de regels voor de netwerk beveiligings groep op de virtuele machine die is mislukt en voor het Azure-subnet waarmee deze is verbonden. Voeg bovendien een openbaar IP-adres voor de virtuele machine toe. |  
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Fysieke servers [migreren.](tutorial-migrate-physical-virtual-machines.md)
+Fysieke servers [migreren](tutorial-migrate-physical-virtual-machines.md) .
