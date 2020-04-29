@@ -1,7 +1,7 @@
 ---
 title: Ondersteuning voor containers
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het maken van een Azure-containerinstantiebron.
+description: Meer informatie over het maken van een Azure container instance-resource.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,43 +10,43 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 09957461fd92114d1181a570550ee1a189edd8ea
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876409"
 ---
-## <a name="create-an-azure-container-instance-resource"></a>Een Azure Container Instance-bron maken
+## <a name="create-an-azure-container-instance-resource"></a>Een Azure container instance-resource maken
 
-1. Ga naar de pagina [Maken](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances) voor containerinstanties.
+1. Ga naar de pagina [maken](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances) voor container instances.
 
-2. Voer op het tabblad **Basis** de volgende details in:
+2. Voer op het tabblad **basis beginselen** de volgende gegevens in:
 
     |Instelling|Waarde|
     |--|--|
     |Abonnement|Selecteer uw abonnement.|
-    |Resourcegroep|Selecteer de beschikbare resourcegroep of maak `cognitive-services`een nieuwe groep, zoals .|
-    |Containernaam|Voer een naam `cognitive-container-instance`in zoals . De naam moet in lagere caps zijn.|
-    |Locatie|Selecteer een regio voor implementatie.|
-    |Type installatiekopie|Als uw containerafbeelding is opgeslagen in een containerregister waarvoor `Public`geen referenties nodig zijn, kiest u . Als voor toegang tot de containerafbeelding referenties nodig zijn, kiest u `Private`. Raadpleeg [containeropslagplaatsen en afbeeldingen](../../cognitive-services-container-support.md#container-repositories-and-images) voor meer informatie over `Public` `Private` het al dan niet is of niet de containerafbeelding ('Public Preview'). |
-    |Naam van installatiekopie|Voer de containerlocatie Cognitive Services in. De locatie is wat wordt gebruikt `docker pull` als argument voor de opdracht. Raadpleeg de [containeropslagplaatsen en afbeeldingen](../../cognitive-services-container-support.md#container-repositories-and-images) voor de beschikbare afbeeldingsnamen en de bijbehorende opslagplaats.<br><br>De afbeeldingsnaam moet volledig gekwalificeerd zijn met het opgeven van drie delen. Eerst het containerregister, vervolgens de opslagplaats, ten `<container-registry>/<repository>/<image-name>`slotte de naam van de afbeelding: .<br><br>Hier is een `mcr.microsoft.com/azure-cognitive-services/keyphrase` voorbeeld, zou de key phrase extraction afbeelding in het Microsoft Container Registry onder de Azure Cognitive Services repository vertegenwoordigen. Een ander `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` voorbeeld is, dat de afbeelding Van Spraak naar Tekst in de Microsoft-opslagplaats van het containerregister Container Preview zou vertegenwoordigen. |
-    |Besturingssysteemtype|`Linux`|
-    |Grootte|Wijzig de grootte in de voorgestelde aanbevelingen voor uw specifieke cognitive service-container:<br>2 CPU-cores<br>4 GB
+    |Resourcegroep|Selecteer de beschik bare resource groep of maak een nieuwe, `cognitive-services`zoals.|
+    |Containernaam|Voer een naam in `cognitive-container-instance`zoals. De naam moet in kleine letters worden gereduceerd.|
+    |Locatie|Selecteer een regio voor de implementatie.|
+    |Type installatiekopie|Als uw container installatie kopie is opgeslagen in een container register waarvoor geen referenties zijn vereist `Public`, kiest u. Als u toegang hebt tot de container installatie kopie `Private`, moet u de optie referenties kiezen. Raadpleeg [container opslagplaatsen en installatie kopieën](../../cognitive-services-container-support.md#container-repositories-and-images) voor meer informatie over of de container installatie kopie al `Public` dan `Private` niet is (' open bare preview '). |
+    |Naam van installatiekopie|Voer de locatie van de Cognitive Services-container in. De locatie is wat wordt gebruikt als argument voor de `docker pull` opdracht. Raadpleeg de [container opslagplaatsen en installatie kopieën](../../cognitive-services-container-support.md#container-repositories-and-images) voor de beschik bare afbeeldings namen en de bijbehorende opslag plaats.<br><br>De naam van de installatie kopie moet volledig gekwalificeerd zijn om drie delen op te geven. Ten eerste, het container register en vervolgens de naam van de installatie kopie: `<container-registry>/<repository>/<image-name>`.<br><br>Hier ziet u een voor `mcr.microsoft.com/azure-cognitive-services/keyphrase` beeld van de Sleuteltermextractie installatie kopie in de micro soft-container Registry onder de Azure Cognitive Services-opslag plaats. Een ander voor beeld `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` is dat de spraak-naar-tekst afbeelding wordt weer gegeven in de micro soft-opslag plaats van het container voorbeeld container register. |
+    |Type besturings systeem|`Linux`|
+    |Grootte|Wijzig grootte in de voorgestelde aanbevelingen voor uw specifieke cognitieve service-container:<br>twee CPU-kernen<br>4 GB
 
-3. Voer op het tabblad **Netwerken** de volgende details in:
+3. Voer op het tabblad **netwerken** de volgende gegevens in:
 
     |Instelling|Waarde|
     |--|--|
-    |Poorten|Stel de TCP-poort in op `5000`. Onthult de container op poort 5000.|
+    |Poorten|Stel de TCP-poort `5000`in op. Beschrijft de container op poort 5000.|
 
-4. Voer op het tabblad **Geavanceerd** de vereiste omgevingsvariabelen in voor de **factureringsinstellingen** voor containers van de Azure Container Instance-bron:
+4. Voer op het tabblad **Geavanceerd** de vereiste **omgevings variabelen** in voor de instellingen van de container facturering van de Azure container Instance-bron:
 
     | Sleutel | Waarde |
     |--|--|
-    |`apikey`|Gekopieerd van de **pagina Sleutels** van de bron. Het is een tekenreeks met 32 alfanumerieke tekens `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`zonder spaties of streepjes.|
-    |`billing`|Gekopieerd van de **overzichtspagina** van de bron.|
+    |`apikey`|Wordt gekopieerd van de pagina **sleutels** van de resource. Het is een teken reeks van 32 alfanumerieke tekens zonder spaties of streepjes `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+    |`billing`|Wordt gekopieerd van de pagina **overzicht** van de resource.|
     |`eula`|`accept`|
 
-5. Klik **op Controleren en maken**
-6. Nadat validatie is doorgegeven, klikt u op **Maken** om het creatieproces te voltooien
-7. Wanneer de resource is geïmplementeerd, is deze klaar
+5. Klik op **controleren en maken**
+6. Nadat de validatie is geslaagd, klikt u op **maken** om het aanmaak proces te volt ooien
+7. Wanneer de resource is geïmplementeerd, is deze gereed

@@ -9,45 +9,45 @@ ms.date: 03/29/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 84736b7f1dcdf8b186fddbced5dd773e008c0dd2
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80887430"
 ---
-Schijfbarsten wordt ondersteund voor premium SSD's. Bursting wordt ondersteund op alle premium SSD-schijfformaten <= 512 GiB (P20 of lager). Deze schijfformaten ondersteunen barsten op basis van de beste inspanning en maken gebruik van een kredietsysteem om barsten te beheren. Credits accumuleren in een burst bucket wanneer schijfverkeer lager is dan het ingerichte prestatiedoel voor hun schijfgrootte en verbruiken credits wanneer het verkeer buiten het doel barst. Schijfverkeer wordt bijgehouden tegen zowel IOPS als bandbreedte in het beoogde doel. Schijfbarsten omzeilt geen beperkingen van de virtuele machine (VM) op IOPS of doorvoer.
+Schijf bursting wordt ondersteund voor Premium-Ssd's. Bursting wordt ondersteund op een Premium SSD-schijf grootte <= 512 GiB (P20 of lager). Deze schijf grootten ondersteunen de burstisatie op basis van beste inspanningen en gebruiken een tegoed systeem voor het beheren van bursting. De tegoeden worden in een burst-Bucket verzameld wanneer het schijf verkeer lager is dan het ingerichte prestatie doel voor de schijf grootte en crediteert wanneer het verkeer groter wordt dan het doel. Schijf verkeer wordt getraceerd voor zowel IOPS als band breedte in het ingerichte doel. Met schijf burstisatie worden de beperkingen voor de grootte van virtuele machines (VM) niet omzeild op IOPS of door voer.
 
-Schijfbarsten is standaard ingeschakeld op nieuwe implementaties van de schijfformaten die het ondersteunen. Bestaande schijfformaten kunnen, als ze schijfbarsten ondersteunen, het bursten via een van de volgende methoden inschakelen:
+Schijf bursting is standaard ingeschakeld voor nieuwe implementaties van de schijf grootten die dit ondersteunen. Bestaande schijf grootten, als deze schijf bursting ondersteunen, kunnen bursting op een van de volgende manieren inschakelen:
 
-- Maak de schijf los en bevestig deze opnieuw.
-- Stop en start de VM.
+- Ontkoppel de schijf en koppel deze opnieuw.
+- Stop de virtuele machine en start deze.
 
 ## <a name="burst-states"></a>Burst-statussen
 
-Alle burst toepasselijke schijfformaten beginnen met een volledige burst-tebucket wanneer de schijf is aangesloten op een virtuele machine. De maximale duur van het barsten wordt bepaald door de grootte van de burst credit emmer. U alleen ongebruikte credits verzamelen tot de grootte van de kredietemmer. Op elk moment van de tijd, uw schijf burst credit emmer kan worden in een van de volgende drie staten: 
+Alle burst-toepasselijke schijf grootten beginnen met een volledige burst-credit Bucket wanneer de schijf is gekoppeld aan een virtuele machine. De maximale duur van bursting wordt bepaald door de grootte van de burst-credit Bucket. U kunt alleen ongebruikte tegoeden samen voegen tot de grootte van de credit Bucket. Op elk gewenst moment kan de credit Bucket van uw schijf een van de volgende drie statussen hebben: 
 
-- Accruing, wanneer het schijfverkeer minder dan het ingerichte prestatiedoel gebruikt. U krediet verzamelen als schijfverkeer hoger is dan IOPS of bandbreedtedoelen of beide. U nog steeds IO-credits verzamelen wanneer u volledige schijfbandbreedte verbruikt, vice versa.  
+- Wanneer het schijf verkeer minder dan het ingerichte prestatie doel gebruikt. U kunt tegoed optellen als schijf verkeer buiten IOPS of bandbreedte doelen of beide. U kunt nog steeds IO-tegoeden verzamelen wanneer u de band breedte van de volledige schijf verbruikt, omgekeerd.  
 
-- Dalend wanneer het schijfverkeer meer gebruikt dan het beoogde prestatiedoel. Het burst-verkeer zal onafhankelijk credits van IOPS of bandbreedte verbruiken. 
+- Weigeren, wanneer het schijf verkeer meer dan het ingerichte prestatie doel gebruikt. In het burst-verkeer wordt onafhankelijk van de tegoeden van IOPS of band breedte verbruikt. 
 
-- Constant blijven, wanneer het schijfverkeer precies op het beoogde prestatiedoel ligt. 
+- De resterende constante wanneer het schijf verkeer precies op het ingerichte prestatie doel is. 
 
-De schijfformaten die bursting-ondersteuning bieden, samen met de burst-specificaties, worden samengevat in de onderstaande tabel.
+De schijf grootten die ondersteuning bieden voor bursting in combi natie met de burst-specificaties, worden in de onderstaande tabel samenvatten.
 
 ## <a name="regional-availability"></a>Regionale beschikbaarheid
 
-Schijfbarsten is beschikbaar in alle regio's in de openbare cloud.
+Schijf bursting is beschikbaar in alle regio's in de open bare Cloud.
 
-## <a name="disk-sizes"></a>Schijfformaten
+## <a name="disk-sizes"></a>Schijf grootten
 
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
 ## <a name="example-scenarios"></a>Voorbeeldscenario 's
 
-Om u een beter idee te geven van hoe dit werkt, volgen hier een paar voorbeeldscenario's:
+Hier volgen enkele voor beelden van scenario's om u een beter idee te geven van hoe dit werkt:
 
-- Een veelvoorkomend scenario dat kan profiteren van het barsten van de schijf is sneller VM opstarten en applicatie te starten op OS-schijven. Neem een Linux VM met een 8 GiB OS afbeelding als voorbeeld. Als we een P2-schijf als de OS-schijf gebruiken, is het beoogde doel 120 IOPS en 25 MiB. Wanneer VM wordt gestart, wordt er een leespiek naar de OS-schijf weergegeven die de opstartbestanden laadt. Met de introductie van barsten, u lezen op de maximale burst snelheid van 3500 IOPS en 170 MiB, het versnellen van de laadtijd met ten minste 6x. Na het opstarten van de VM is het verkeersniveau op de OS-schijf meestal laag, omdat de meeste gegevensbewerkingen door de toepassing tegen de aangesloten gegevensschijven zijn. Als het verkeer onder het ingerichte doel ligt, verzamelt u credits.
+- Een veelvoorkomend scenario dat kan profiteren van schijf bursting is sneller opstarten van de VM en het starten van toepassingen op besturingssysteem schijven. Neem als voor beeld een Linux-VM met een installatie kopie van 8 GiB-besturings systemen. Als we een P2-schijf als besturingssysteem schijf gebruiken, is het ingerichte doel 120 IOPS en 25 MiB. Wanneer de VM wordt gestart, is er een lees piek voor de besturingssysteem schijf die de opstart bestanden laadt. Met de introductie van bursting kunt u de maximale burst-snelheid van 3500 IOPS en 170 MiB lezen en de laad tijd versnellen door Mini maal 6x. Na het opstarten van de VM is het verkeers niveau op de besturingssysteem schijf meestal laag, omdat de meeste gegevens bewerkingen door de toepassing worden vergeleken met de gekoppelde gegevens schijven. Als het verkeer onder het ingerichte doel ligt, neemt u tegoed op.
 
-- Als u een externe virtuele bureaublad-omgeving host, neemt het leesverkeer naar de OS-schijf aanzienlijk toe wanneer een actieve gebruiker een toepassing als AutoCAD start. In dit geval verbruikt burst-verkeer geaccumuleerde credits, zodat u verder gaan dan het ingerichte doel en de toepassing veel sneller starten.
+- Als u een extern virtueel bureau blad-omgeving host, wordt het verkeer naar de besturingssysteem schijf aanzienlijk verbeterd wanneer een actieve gebruiker een toepassing start zoals AutoCAD. In dit geval verbruikt burst-verkeer geaccumuleerde tegoeden, zodat u verder kunt gaan dan het ingerichte doel en de toepassing veel sneller kan starten.
 
-- Een P1 schijf heeft een ingerichte doelstelling van 120 IOPS en 25 MiB. Als het werkelijke verkeer op de schijf was 100 IOPS en 20 MiB in de afgelopen 1 seconde interval, dan is de ongebruikte 20 IOs en 5 MB worden bijgeschreven op de burst emmer van de schijf. Credits in de burst bucket kunnen later worden gebruikt wanneer het verkeer het ingerichte doel overschrijdt, tot de maximale burst limiet. De maximale burst-limiet definieert het plafond van schijfverkeer, zelfs als u burst-credits hebt om van te consumeren. In dit geval, zelfs als u 10.000 IOs in de kredietemmer hebt, kan een P1-schijf niet meer uitgeven dan de maximale burst van 3.500 IO per seconde.  
+- Een P1-schijf heeft een ingericht doel van 120 IOPS en 25 MiB. Als het daad werkelijke verkeer op de schijf 100 IOPS en 20 MiB in het afgelopen interval van 1 seconde was, worden de niet-gebruikte 20 IOs-en 5 MB gecrediteerd naar de burst-Bucket van de schijf. Tegoeden in de burst-Bucket kunnen later worden gebruikt wanneer het verkeer het ingerichte doel overschrijdt, tot aan de maximum burst-limiet. De maximale burst-limiet bepaalt het maximale schijf verkeer, zelfs als u burst-tegoeden hebt om te gebruiken. In dit geval, zelfs als u 10.000 IOs in de credit Bucket hebt, kan een P1-schijf niet meer dan de maximale burst van 3.500 IO per seconde geven.  

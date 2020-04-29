@@ -1,6 +1,6 @@
 ---
-title: Handleiding voor het instellen van versnelde labaccountvoor Azure Lab Services
-description: Met deze handleiding kunnen beheerders snel een labaccount instellen voor gebruik binnen hun school.
+title: Gids voor het instellen van een versneld Lab-account voor Azure Lab Services
+description: Deze hand leiding helpt beheerders snel een Lab-account in te stellen voor gebruik op hun school.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,101 +14,101 @@ ms.topic: article
 ms.date: 3/18/2020
 ms.author: spelluru
 ms.openlocfilehash: 8fcc46487e7f7c2d075639f10a30cae9950ff31b
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80879578"
 ---
-# <a name="lab-account-setup-guide"></a>Handleiding voor het instellen van lab-account
+# <a name="lab-account-setup-guide"></a>Installatie handleiding voor het lab-account
 
-Als eerste stap moeten beheerders een labaccount instellen binnen uw Azure-abonnement. Een labaccount is een container voor uw klassikale laboratoria en het duurt slechts enkele minuten om het in te stellen.
+Als eerste stap moeten beheerders een Lab-account instellen binnen uw Azure-abonnement. Een Lab-account is een container voor uw klassikale Labs en duurt slechts enkele minuten om in te stellen.
 
-## <a name="understand-your-schools-lab-account-requirements"></a>Begrijp de vereisten van uw school voor labaccount
+## <a name="understand-your-schools-lab-account-requirements"></a>Meer informatie over de vereisten van uw school lab-account
 
-Als u wilt weten hoe u uw labaccount configureren op basis van de behoeften van uw school, moet u deze vragen in overweging nemen.
+Als u wilt weten hoe u uw Lab-account kunt configureren op basis van de behoeften van uw school, moet u rekening houden met de volgende vragen.
 
 ### <a name="do-i-have-access-to-an-azure-subscription"></a>Heb ik toegang tot een Azure-abonnement?
 
-Als u een labaccount wilt maken, hebt u toegang nodig tot een Azure-abonnement dat is geconfigureerd voor uw school. Uw school heeft mogelijk een of meer abonnementen. U gebruikt een abonnement om facturering en beveiliging te beheren voor al uw Azure-bronnen en -services, inclusief labaccounts.
+Als u een Lab-account wilt maken, moet u toegang hebben tot een Azure-abonnement dat is geconfigureerd voor uw school. Uw school heeft mogelijk een of meer abonnementen. U gebruikt een abonnement voor het beheren van facturering en beveiliging voor al uw Azure-resources en-services, met inbegrip van Lab-accounts.
 
-### <a name="how-many-lab-accounts-need-to-be-created"></a>Hoeveel labaccounts moeten worden gemaakt?
+### <a name="how-many-lab-accounts-need-to-be-created"></a>Hoeveel lab-accounts moet er worden gemaakt?
 
-Maak snel aan de slag om snel aan de slag te gaan en maak later extra labaccounts aan als dat nodig is. U bijvoorbeeld uiteindelijk één labaccount per afdeling hebben.
+Als u snel aan de slag wilt gaan, maakt u één Lab-account en maakt u later extra Lab-accounts. Zo kunt u uiteindelijk één Lab-account per afdeling hebben.
 
-### <a name="who-should-be-owners-and-contributors-of-the-lab-account"></a>Wie moeten eigenaren en bijdragers van het lab account?
+### <a name="who-should-be-owners-and-contributors-of-the-lab-account"></a>Wie moet eigen aren zijn en mede werkers van het lab-account?
 
-Uw beheerders zijn meestal de eigenaren en bijdragers voor een labaccount. Zij zijn verantwoordelijk voor het beheer van het beleid dat van toepassing is op alle labs in het labaccount. De persoon die het labaccount maakt, is automatisch eigenaar. U extra eigenaren en bijdragers toevoegen, meestal vanuit de Azure AD-tenant (Azure Directory) die aan uw abonnement is gekoppeld. Dit kan handig zijn om een labaccount te beheren door de eigenaar of de rol van de bijdrager op het labaccountniveau toe te wijsen.
+Uw beheerders zijn doorgaans de eigen aren en mede werkers voor een Lab-account. Ze zijn verantwoordelijk voor het beheer van de beleids regels die van toepassing zijn op alle Labs in het lab-account. De persoon die het lab-account maakt, wordt automatisch een eigenaar. U kunt extra eigen aren en mede werkers toevoegen, doorgaans van de Azure Active Directory Azure AD-Tenant die aan uw abonnement is gekoppeld. Dit kan handig zijn bij het beheren van een Lab-account door de rol eigenaar of Inzender op het niveau van het lab-account toe te wijzen.
 
-### <a name="who-will-be-allowed-to-create-and-manage-labs"></a>Wie mag labs maken en beheren?
+### <a name="who-will-be-allowed-to-create-and-manage-labs"></a>Wie kan Labs maken en beheren?
 
-U ervoor kiezen om uw beheerders en faculteitsleden labs te laten maken en beheren. Deze gebruikers (meestal vanuit de Azure AD-tenant die aan uw abonnement is gekoppeld) worden toegewezen aan de labcreator-rol binnen het labaccount.
+U kunt ervoor kiezen om de leden van uw beheerders en docenten te laten maken en beheren van Labs. Deze gebruikers (doorgaans van de Azure AD-Tenant die aan uw abonnement is gekoppeld) worden toegewezen aan de rol Lab Creator binnen het lab-account.
 
-### <a name="do-you-want-to-give-lab-creators-the-ability-to-save-images-that-can-be-shared-across-labs"></a>Wilt u makers van laboratoria de mogelijkheid bieden om afbeeldingen op te slaan die in laboratoria kunnen worden gedeeld?
+### <a name="do-you-want-to-give-lab-creators-the-ability-to-save-images-that-can-be-shared-across-labs"></a>Wilt u Lab-makers de mogelijkheid geven om afbeeldingen op te slaan die kunnen worden gedeeld in Labs?
 
-Een gedeelde afbeeldingsgalerie is een opslagplaats die u gebruiken voor het opslaan en delen van afbeeldingen. Als je meerdere klassen hebt die dezelfde afbeeldingen nodig hebben, kunnen makers van laboratoria de afbeelding één keer maken en delen in laboratoria. Om aan de slag te gaan, hebt u echter niet per se een gedeelde afbeeldingsgalerie nodig, omdat u er altijd later een toevoegen.
+Een galerie met gedeelde installatie kopieën is een opslag plaats die u kunt gebruiken voor het opslaan en delen van installatie kopieën. Als u meerdere klassen hebt die dezelfde installatie kopieën nodig hebben, kunnen Lab-makers de installatie kopie eenmaal maken en deze delen in Labs. Om aan de slag te gaan, hebt u echter niet per se een galerie met gedeelde afbeeldingen nodig, omdat u er later altijd een kunt toevoegen.
 
-Als je 'ja' hebt geantwoord op deze vraag, moet je een gedeelde afbeeldingsgalerie aan maken of koppelen aan je labaccount. Als je antwoordde : "Ik weet het niet", kun je dit besluit uitstellen tot later.
+Als u ' ja ' hebt geantwoord op deze vraag, moet u een galerie met gedeelde afbeeldingen maken of koppelen aan uw Lab-account. Als u ' Ik weet niet weet ' hebt beantwoord, kunt u deze beslissing uitstellen tot later.
 
-### <a name="which-images-in-azure-marketplace-will-your-classroom-labs-use"></a>Welke afbeeldingen in Azure Marketplace gebruiken uw klaslabs?
+### <a name="which-images-in-azure-marketplace-will-your-classroom-labs-use"></a>Welke installatie kopieën in azure Marketplace worden gebruikt in uw klas lokaal?
 
-Azure Marketplace biedt honderden afbeeldingen die u inschakelen, zodat makers van het lab de afbeelding kunnen gebruiken voor het maken van hun lab. Sommige afbeeldingen kunnen alles bevatten wat een lab al nodig heeft. In andere gevallen u een afbeelding als uitgangspunt gebruiken en vervolgens kan de maker van het lab deze aanpassen door extra toepassingen of hulpprogramma's te installeren.
+Azure Marketplace biedt honderden installatie kopieën die u kunt inschakelen zodat Lab-makers de installatie kopie kunnen gebruiken om hun Lab te maken. Sommige installatie kopieën bevatten mogelijk alles wat een Lab al nodig heeft. In andere gevallen kunt u een afbeelding gebruiken als uitgangs punt, waarna de maker van het lab deze kan aanpassen door aanvullende toepassingen of hulpprogram ma's te installeren.
 
-Als u niet weet welke afbeeldingen u moet gebruiken, u hier later altijd op terugkomen om ze in te schakelen. Ook is de beste manier om te zien welke afbeeldingen beschikbaar zijn, door eerst een labaccount aan te maken. Dit geeft u toegang, zodat u de lijst met beschikbare afbeeldingen en de inhoud ervan bekijken.
+Als u niet weet welke installatie kopieën u moet gebruiken, kunt u dit later alsnog doen om ze weer in te scha kelen. Het is ook de beste manier om te zien welke installatie kopieën er beschikbaar zijn om eerst een Lab-account te maken. Hiermee krijgt u toegang tot, zodat u de lijst met beschik bare afbeeldingen en de bijbehorende inhoud kunt bekijken.
   
-### <a name="do-the-labs-virtual-machines-need-to-have-access-to-other-azure-or-on-premises-resources"></a>Moeten de virtuele machines van het lab toegang hebben tot andere Azure- of on-premises bronnen?
+### <a name="do-the-labs-virtual-machines-need-to-have-access-to-other-azure-or-on-premises-resources"></a>Moeten de virtuele machines van het lab toegang hebben tot andere Azure-of on-premises bronnen?
 
-Wanneer u een labaccount instelt, hebt u ook de mogelijkheid om te peeren met een virtueel netwerk. Als u wilt beslissen of u dit nodig hebt, u rekening houden met de volgende vragen:
+Wanneer u een Lab-account instelt, hebt u ook de optie peering met een virtueel netwerk. Houd rekening met de volgende vragen om te bepalen of u dit nodig hebt:
 
-- **Moet u toegang bieden tot een licentieserver?**
+- **Moet u toegang bieden tot een licentie server?**
   
-   Als u Azure Marketplace-afbeeldingen wilt gebruiken, worden de kosten van de licentie voor het besturingssysteem gebundeld in de prijzen voor labservices. Daarom hoeft u geen licenties te verstrekken voor het besturingssysteem zelf. Voor extra software en toepassingen die zijn geïnstalleerd, moet u echter een licentie bieden.
+   Als u van plan bent om Azure Marketplace-installatie kopieën te gebruiken, worden de kosten van de licentie voor het besturings systeem gebundeld in de prijzen voor Lab-Services. Daarom hoeft u geen licenties voor het besturings systeem zelf op te geven. Voor aanvullende software en toepassingen die zijn geïnstalleerd, moet u echter een licentie opgeven.
 
-- **Hebben de VM's van het lab toegang nodig tot andere on-premises bronnen, zoals een bestandsshare of database?**
+- **Hebben de Lab-Vm's toegang nodig tot andere on-premises resources, zoals een bestands share of data base?**
 
-   U maakt een virtueel netwerk om toegang te bieden tot on-premises bronnen, meestal met behulp van een site-to-site virtuele netwerkgateway. Als u geen virtueel netwerk hebt geconfigureerd, moet u hiervoor extra tijd investeren.
+   U maakt een virtueel netwerk om toegang te bieden tot on-premises resources, meestal door gebruik te maken van een site-naar-site-gateway van een virtueel netwerk. Als er geen virtueel netwerk is geconfigureerd, moet u hiervoor extra tijd investeren.
 
-- **Hebben de VM's van het lab toegang nodig tot andere Azure-bronnen die zich binnen een virtueel netwerk bevinden?**
+- **Moeten de Lab-Vm's toegang hebben tot andere Azure-resources die zich in een virtueel netwerk bevinden?**
 
-   Als u toegang nodig hebt tot Azure-bronnen die *niet* zijn beveiligd binnen een virtueel netwerk, u toegang krijgen tot deze bronnen via het openbare internet, zonder peering te doen.
+   Als u toegang nodig hebt tot Azure-resources die *niet* zijn beveiligd binnen een virtueel netwerk, kunt u toegang krijgen tot deze bronnen via het open bare Internet, zonder dat u een peering hoeft te doen.
 
-Als u "ja" hebt geantwoord op een of meer vragen, moet u het lab-account naar een virtueel netwerk turen. Als je antwoordde : Ik weet het niet, dan u dit besluit uitstellen tot later. U er altijd voor kiezen om een virtueel netwerk te peeren nadat u het labaccount hebt gemaakt.
+Als u ' ja ' hebt gereageerd op een of meer vragen, moet u het lab-account koppelen aan een virtueel netwerk. Als u ' Ik weet niet weet ' hebt beantwoord, kunt u deze beslissing uitstellen tot later. U kunt er altijd voor kiezen om een virtueel netwerk te peeren nadat u het lab-account hebt gemaakt.
 
-## <a name="set-up-your-lab-account"></a>Uw labaccount instellen
+## <a name="set-up-your-lab-account"></a>Uw Lab-account instellen
 
-Nadat u de vereisten voor uw labaccount hebt begrepen, bent u klaar om het in te stellen.
+Nadat u de vereisten voor uw Lab-account hebt begrepen, kunt u deze instellen.
 
-1. **Maak je labaccount aan.** Raadpleeg de zelfstudie over [het maken van een labaccount](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#create-a-lab-account) voor instructies.
+1. **Maak een Lab-account.** Raadpleeg de zelf studie over het [maken van een Lab-account](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#create-a-lab-account) voor instructies.
 
-   Wanneer u een labaccount maakt, u het nuttig vinden om vertrouwd te raken met de Azure-bronnen die ermee gemoeid zijn. Raadpleeg voor meer informatie de volgende artikelen:
+   Wanneer u een Lab-account maakt, kan het handig zijn om vertrouwd te raken met de betrokken Azure-resources. Raadpleeg voor meer informatie de volgende artikelen:
 
    - [Abonnement](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#subscription)
    - [Resourcegroep](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#resource-group)
    - [Lab-account](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#lab-account)
-   - [Klaslokaal lab](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#classroom-lab)
+   - [Klas Lab](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#classroom-lab)
    - [Een regio en locatie selecteren](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regionslocations)
-   - [Naamgevingsrichtlijnen voor resources](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#naming)
+   - [Naamgevings richtlijnen voor bronnen](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#naming)
 
-2. **Gebruikers toevoegen aan de rol van de maker van het lab.** Zie Gebruikers [toevoegen aan de rol van de maker van het lab](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role)voor instructies.
+2. **Gebruikers toevoegen aan de rol Lab Creator.** Zie [gebruikers toevoegen aan de rol Lab Creator](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role)voor instructies.
 
-   Zie ook de [handleiding voor het beheren van identiteit](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#manage-identity)voor meer informatie over de verschillende rollen die kunnen worden toegewezen aan gebruikers die labaccounts en labs beheren.
+   Zie ook de [hand leiding over het beheren van identiteit](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#manage-identity)voor meer informatie over de verschillende rollen die kunnen worden toegewezen aan gebruikers die Lab-accounts en-Labs gaan beheren.
 
-3. **Verbinding maken met een virtueel netwerk met een peer.** Zie voor instructies het [netwerk van uw lab verbinden met een virtueel netwerk met een peer.](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network)
+3. **Verbinding maken met een virtueel netwerk op hetzelfde niveau.** Zie [verbinding maken tussen het netwerk van uw Lab en een virtueel netwerk van een peer](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network)voor instructies.
 
-   Mogelijk moet u ook verwijzen naar instructies voor [het configureren van het adresbereik van de vm's in het lab.](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-lab-accounts#specify-an-address-range-for-vms-in-the-lab)
+   Mogelijk moet u ook verwijzen naar instructies over [het configureren van het adres bereik van de virtuele machine voor het lab](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-lab-accounts#specify-an-address-range-for-vms-in-the-lab).
 
-4. **Afbeeldingen inschakelen en bekijken.** Zie Azure [Marketplace-afbeeldingen inschakelen voor makers van labservices voor](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)instructies.
+4. **Afbeeldingen inschakelen en controleren.** Zie [installatie kopieën van Azure Marketplace inschakelen voor Lab-makers](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)voor instructies.
 
-   Als u de inhoud van elke Azure Marketplace-afbeelding wilt bekijken, selecteert u de naam van de afbeelding. In de volgende schermafbeelding worden bijvoorbeeld de details voor de Ubuntu Data Science VM-afbeelding weergegeven:
+   Als u de inhoud van elke Azure Marketplace-installatie kopie wilt bekijken, selecteert u de naam van de installatie kopie. Op de volgende scherm afbeelding ziet u bijvoorbeeld de details van de Ubuntu-Data Science VM:
 
-   ![Schermafbeelding van Azure Marketplace-afbeeldingen bekijken](../media/setup-guide/review-marketplace-images.png)
+   ![Scherm opname van Azure Marketplace-installatie kopieën controleren](../media/setup-guide/review-marketplace-images.png)
 
-   Als u een gedeelde afbeeldingsgalerie aan uw labaccount hebt gekoppeld en aangepaste afbeeldingen wilt kunnen delen door makers van het lab, voert u stappen uit die vergelijkbaar zijn met de stappen die worden weergegeven in de volgende schermafbeelding:
+   Als u een galerie met gedeelde afbeeldingen hebt gekoppeld aan uw Lab-account en u aangepaste installatie kopieën wilt laten delen door Lab-makers, voltooit u de stappen die vergelijkbaar zijn met die in de volgende scherm afbeelding:
 
-   ![Schermafbeelding van Aangepaste afbeeldingen inschakelen in een gedeelde afbeeldingsgalerie](../media/setup-guide/enable-sig-custom-images.png)
+   ![Scherm opname van het inschakelen van aangepaste installatie kopieën in een galerie met gedeelde afbeeldingen](../media/setup-guide/enable-sig-custom-images.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Lab-accounts beheren](how-to-manage-lab-accounts.md)
 
-- [Handleiding voor het instellen van klassikale laboratorium](setup-guide.md)
+- [Setup-hand leiding voor klas Lab](setup-guide.md)

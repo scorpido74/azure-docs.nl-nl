@@ -1,5 +1,5 @@
 ---
-title: De RDP-gebruikersnaam en -wachtwoord bijwerken in PowerShell
+title: De RDP-gebruikers naam en het wacht woord bijwerken in Power shell
 description: Azure PowerShell-voorbeeldscript - RDP-gebruikersnaam en -wachtwoord bijwerken voor alle Service Fabric-clusterknooppunten van een bepaald knooppunttype.
 services: service-fabric
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.date: 03/19/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: b7f229162ed745408121d898f5af516d22a0c039
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80984926"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>Gebruikersnaam en wachtwoord van de beheerder van de VM's in een cluster bijwerken
@@ -45,7 +45,7 @@ In dit script worden de volgende opdrachten gebruikt: Elke opdracht in de tabel 
 
 ## <a name="duration"></a>Duur
 
-Een enkel knooppunttype met bijvoorbeeld vijf knooppunten heeft een duur van 45 tot 60 minuten om de gebruikersnaam of het wachtwoord te wijzigen. 
+Een enkel knooppunt type met vijf knoop punten, bijvoorbeeld heeft een duur van 45 tot 60 minuten voor het wijzigen van de gebruikers naam of het wacht woord. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

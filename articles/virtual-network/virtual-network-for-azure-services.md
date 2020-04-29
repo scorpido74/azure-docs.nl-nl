@@ -1,7 +1,7 @@
 ---
 title: Virtueel netwerk voor Azure-services
 titlesuffix: Azure Virtual Network
-description: Meer informatie over de voordelen van het implementeren van resources in een virtueel netwerk. Bronnen in virtuele netwerken kunnen met elkaar en on-premises bronnen communiceren, zonder dat er verkeer via internet wordt gebruikt.
+description: Meer informatie over de voor delen van het implementeren van resources in een virtueel netwerk. Resources in virtuele netwerken kunnen met elkaar communiceren, en on-premises resources zonder verkeer dat het Internet passeren.
 services: virtual-network
 documentationcenter: na
 author: malopMSFT
@@ -14,42 +14,42 @@ ms.date: 09/25/2017
 ms.author: malop
 ms.reviewer: kumud
 ms.openlocfilehash: 70266a1280b90b4573073d633a918f701f9ee8c2
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878269"
 ---
-# <a name="deploy-dedicated-azure-services-into-virtual-networks"></a>Dedicated Azure-services implementeren in virtuele netwerken
+# <a name="deploy-dedicated-azure-services-into-virtual-networks"></a>Speciale Azure-Services implementeren in virtuele netwerken
 
-Wanneer u dedicated Azure-services implementeert in een [virtueel netwerk,](virtual-networks-overview.md)u privé communiceren met de servicebronnen via privé-IP-adressen.
+Wanneer u toegewezen Azure-Services in een [virtueel netwerk](virtual-networks-overview.md)implementeert, kunt u met de service bronnen privé communiceren via privé-IP-adressen.
 
-![Services geïmplementeerd in een virtueel netwerk](./media/virtual-network-for-azure-services/deploy-service-into-vnet.png)
+![Services die zijn geïmplementeerd in een virtueel netwerk](./media/virtual-network-for-azure-services/deploy-service-into-vnet.png)
 
 Het implementeren van services binnen een virtueel netwerk biedt de volgende mogelijkheden:
 
-- Bronnen binnen het virtuele netwerk kunnen privé met elkaar communiceren, via privé-IP-adressen. Bijvoorbeeld het rechtstreeks overdragen van gegevens tussen HDInsight en SQL Server die op een virtuele machine wordt uitgevoerd, in het virtuele netwerk.
-- On-premises bronnen hebben toegang tot bronnen in een virtueel netwerk met behulp van privé-IP-adressen via een [VPN-gateway (Site-to-Site)](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti) of [ExpressRoute.](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- Virtuele netwerken kunnen worden [gekeken](virtual-network-peering-overview.md) om resources in de virtuele netwerken in staat te stellen met elkaar te communiceren met behulp van privé-IP-adressen.
-- Service-exemplaren in een virtueel netwerk worden doorgaans volledig beheerd door de Azure-service. Dit omvat het bewaken van de status van de resources en schalen met belasting.
-- Service-exemplaren worden geïmplementeerd in een subnet in een virtueel netwerk. Inkomende en uitgaande netwerktoegang voor het subnet moet worden geopend via [netwerkbeveiligingsgroepen](security-overview.md#network-security-groups), volgens de richtlijnen die door de service worden verstrekt.
-- Bepaalde services leggen ook beperkingen op aan het subnet waarin ze worden ingezet, waardoor de toepassing van beleid, routes of het combineren van VM's en serviceresources binnen hetzelfde subnet wordt beperkt. Neem contact op met elke service over de specifieke beperkingen als ze kunnen veranderen in de tijd. Voorbeelden van dergelijke services zijn Azure NetApp Files, Dedicated HSM, Azure Container Instances, App Service. 
-- Optioneel vereisen services mogelijk een [gedelegeerd subnet](virtual-network-manage-subnet.md#add-a-subnet) als expliciete id waarmee een subnet een bepaalde service kan hosten. Door te delegeren, krijgen services expliciete machtigingen om servicespecifieke resources te maken in het gedelegeerde subnet.
-- Zie een voorbeeld van een REST API-antwoord op een [virtueel netwerk met een gedelegeerd subnet.](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks/get#get-virtual-network-with-a-delegated-subnet) Een uitgebreide lijst van services die gebruik maken van het gedelegeerde subnetmodel kan worden verkregen via de [API beschikbare delegaties.](https://docs.microsoft.com/rest/api/virtualnetwork/availabledelegations/list)
+- Resources binnen het virtuele netwerk kunnen met elkaar communiceren via privé-IP-adressen. Zo kunt u gegevens rechtstreeks overbrengen tussen HDInsight en SQL Server die worden uitgevoerd op een virtuele machine, in het virtuele netwerk.
+- On-premises resources hebben toegang tot bronnen in een virtueel netwerk met behulp van privé-IP-adressen via een [site-to-site VPN (VPN gateway)](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti) of [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Virtuele netwerken kunnen worden gekoppeld om resources in de virtuele netwerken met [elkaar te laten](virtual-network-peering-overview.md) communiceren met behulp van privé-IP-adressen.
+- Service-exemplaren in een virtueel netwerk worden doorgaans volledig beheerd door de Azure-service. Dit omvat het controleren van de status van de resources en schalen met laden.
+- Service-exemplaren worden geïmplementeerd in een subnet in een virtueel netwerk. Binnenkomende en uitgaande netwerk toegang voor het subnet moet worden geopend via [netwerk beveiligings groepen](security-overview.md#network-security-groups), volgens de richt lijnen van de service.
+- Bepaalde services leggen ook beperkingen op het subnet waarin ze worden geïmplementeerd, waardoor de toepassing van beleids regels wordt beperkt, de virtuele machines en service bronnen binnen hetzelfde subnet worden gedistribueerd of gecombineerd. Controleer bij elke service op de specifieke beperkingen, aangezien deze na verloop van tijd kunnen veranderen. Voor beelden van dergelijke services zijn Azure NetApp Files, toegewezen HSM, Azure Container Instances App Service. 
+- Services kunnen eventueel een [gedelegeerd subnet](virtual-network-manage-subnet.md#add-a-subnet) vereisen als een expliciete id die een subnet kan hosten voor een bepaalde service. Door het delegeren van Services krijgen expliciete machtigingen voor het maken van servicespecifieke bronnen in het gedelegeerde subnet.
+- Bekijk een voor beeld van een REST API antwoord op een [virtueel netwerk met een overgedragen subnet](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks/get#get-virtual-network-with-a-delegated-subnet). Een uitgebreide lijst met services die gebruikmaken van het gedelegeerde subnet model kan worden verkregen via de [beschik bare delegaties](https://docs.microsoft.com/rest/api/virtualnetwork/availabledelegations/list) -API.
 
 ### <a name="services-that-can-be-deployed-into-a-virtual-network"></a>Services die kunnen worden geïmplementeerd in een virtueel netwerk
 
-|Categorie|Service| Speciale<sup>1</sup>sup</sup>>1 Subnet
+|Categorie|Service| Toegewezen<sup>1</sup>sup>1</sup> subnet
 |-|-|-|
-| Compute | Virtuele machines: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Virtuele machineschaalsets](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Cloud Service:](https://msdn.microsoft.com/library/azure/jj156091)Alleen virtueel netwerk (klassiek)<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| Nee <br/> Nee <br/> Nee <br/> Nr.<sup>2</sup>sup>2</sup>
-| Netwerk | [Application Gateway - WAF](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Netwerk virtuele apparaten](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn) | Ja <br/> Ja <br/> Ja <br/> Nee
+| Compute | Virtuele machines: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Schaal sets voor virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Cloud service](https://msdn.microsoft.com/library/azure/jj156091): alleen virtueel netwerk (klassiek)<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| Nee <br/> Nee <br/> Nee <br/> Geen<sup>2</sup>sup>2</sup>
+| Netwerk | [Application Gateway-WAF](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Virtuele netwerk apparaten](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn) | Ja <br/> Ja <br/> Ja <br/> Nee
 |Gegevens|[RedisCache](../azure-cache-for-redis/cache-how-to-premium-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure SQL Database Managed Instance](../sql-database/sql-database-managed-instance-connectivity-architecture.md?toc=%2fazure%2fvirtual-network%2ftoc.json)| Ja <br/> Ja <br/> 
-|Analyse | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |Nr.<sup>2</sup>sup>2</su<sup>2</sup>> <br/> Nr.<sup>2</sup> <br/> 
+|Analyse | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |Geen<sup>2</sup>sup>2</su<sup>2</sup>> <br/> Geen<sup>2</sup> <br/> 
 | Identiteit | [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |Nee <br/>
-| Containers | [Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Container Instance (ACI)](https://www.aka.ms/acivnet)<br/>[Azure Container Service Engine](https://github.com/Azure/acs-engine) met Azure Virtual Network CNI-plug-in [plug-in](https://github.com/Azure/acs-engine/tree/master/examples/vnet)<br/>[Azure Functions](../azure-functions/functions-networking-options.md#virtual-network-integration) |Nr.<sup>2</sup>sup>2</sup><br/> Ja <br/><br/> Nee <br/> Ja
-| Web | [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Web Apps](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[App-serviceomgeving](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Ja <br/> Ja <br/> Ja <br/> Ja
-| Gehost | [Azure toegewezen HSM](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Ja <br/> Ja <br/>
+| Containers | [Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Container Instance (ACI)](https://www.aka.ms/acivnet)<br/>[Azure container service-engine](https://github.com/Azure/acs-engine) met Azure Virtual Network cni [-invoeg toepassing](https://github.com/Azure/acs-engine/tree/master/examples/vnet)<br/>[Azure Functions](../azure-functions/functions-networking-options.md#virtual-network-integration) |Geen<sup>2</sup>sup>2</sup><br/> Ja <br/><br/> Nee <br/> Ja
+| Web | [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Web Apps](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[App Service-omgeving](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Ja <br/> Ja <br/> Ja <br/> Ja
+| Zone | [Azure toegewezen HSM](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Ja <br/> Ja <br/>
 | | |
 
-<sup>1</sup> 'Dedicated' houdt in dat alleen servicespecifieke resources in dit subnet kunnen worden geïmplementeerd en niet kunnen worden gecombineerd met vm/VMSs van klanten <br/> 
-<sup>2</sup> Het wordt aanbevolen als een beste praktijk om deze diensten in een speciaal subnet te hebben, maar niet een verplichte eis opgelegd door de dienst.
+<sup>1</sup> ' dedicated ' impliceert dat alleen servicespecifieke resources kunnen worden geïmplementeerd in dit subnet en kan niet worden gecombineerd met de virtuele machine van de klant-VMSSs <br/> 
+<sup>2</sup> het wordt aanbevolen als een best practice om deze services in een toegewezen subnet te hebben, maar dit is geen verplichte vereiste die door de service wordt opgelegd.

@@ -1,73 +1,73 @@
 ---
-title: Opslagoverwegingen voor Azure-functies
-description: Meer informatie over de opslagvereisten van Azure-functies en over het versleutelen van opgeslagen gegevens.
+title: Aandachtspunten voor de opslag van Azure Functions
+description: Meer informatie over de opslag vereisten van Azure Functions en over het versleutelen van opgeslagen gegevens.
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 48ff2dedd997cccb76b13acdadc895504f656ea3
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80984160"
 ---
-# <a name="storage-considerations-for-azure-functions"></a>Opslagoverwegingen voor Azure-functies
+# <a name="storage-considerations-for-azure-functions"></a>Aandachtspunten voor de opslag van Azure Functions
 
-Azure Functions vereist een Azure Storage-account wanneer u een functie-app-exemplaar maakt. De volgende opslagservices kunnen door uw functie-app worden gebruikt:
+Azure Functions moet een Azure Storage-account zijn wanneer u een exemplaar van een functie-app maakt. De volgende opslag Services kunnen worden gebruikt door uw functie-app:
 
 
-|Opslagservice  | Functiesgebruik  |
+|Opslag service  | Functie gebruik  |
 |---------|---------|
-| [Azure Blob-opslag](../storage/blobs/storage-blobs-introduction.md)     | Bindingenstatus- en functietoetsen behouden.  <br/>Ook gebruikt door [taakhubs in duurzame functies.](durable/durable-functions-task-hubs.md) |
-| [Azure-bestanden](../storage/files/storage-files-introduction.md)  | Bestandsshare wordt gebruikt om uw functie-appcode op te slaan en uit te voeren in een [verbruiksplan.](functions-scale.md#consumption-plan) |
-| [Azure-wachtrijopslag](../storage/queues/storage-queues-introduction.md)     | Gebruikt door [taakhubs in duurzame functies](durable/durable-functions-task-hubs.md).   |
-| [Azure Table storage](../storage/tables/table-storage-overview.md)  |  Gebruikt door [taakhubs in duurzame functies](durable/durable-functions-task-hubs.md).       |
+| [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Status-en functie sleutels van bindingen onderhouden.  <br/>Wordt ook gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md). |
+| [Azure Files](../storage/files/storage-files-introduction.md)  | Bestands share gebruikt om de code van uw functie-app op te slaan en uit te voeren in een [verbruiks abonnement](functions-scale.md#consumption-plan). |
+| [Azure-wachtrij opslag](../storage/queues/storage-queues-introduction.md)     | Wordt gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md).   |
+| [Azure-tabel opslag](../storage/tables/table-storage-overview.md)  |  Wordt gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md).       |
 
 > [!IMPORTANT]
 > Als u gebruikmaakt van het hostingabonnement Consumption worden uw functiecode en uw bindingsconfiguratiebestanden opgeslagen in het belangrijkste opslagaccount in Azure File Storage. Wanneer u het belangrijkste opslagaccount verwijdert, wordt de inhoud verwijderd en kan deze niet worden hersteld.
 
 ## <a name="storage-account-requirements"></a>Vereisten voor een opslagaccount
 
-Wanneer u een functie-app maakt, moet u een Azure Storage-account voor algemene doeleinden maken of koppelen dat blob-, wachtrij- en tabelopslag ondersteunt. Dit komt omdat Functions afhankelijk is van Azure Storage voor bewerkingen zoals het beheren van triggers en het uitvoeren van logboeken. Sommige opslagaccounts ondersteunen geen wachtrijen en tabellen. Deze accounts omvatten opslagaccounts met blob, alleen Azure Premium-opslag en opslagaccounts voor algemene doeleinden met ZRS-replicatie. Deze niet-ondersteunde accounts worden uit het blade van het opslagaccount gefilterd bij het maken van een functie-app.
+Wanneer u een functie-app maakt, moet u een Azure Storage-account voor algemeen gebruik maken of koppelen dat ondersteuning biedt voor blob-, wachtrij-en tabel opslag. Dit komt omdat functies afhankelijk zijn van Azure Storage voor bewerkingen, zoals het beheren van triggers en de uitvoering van logboek functies. Sommige opslag accounts bieden geen ondersteuning voor wacht rijen en tabellen. Deze accounts omvatten alleen Blob-opslag accounts, Azure Premium Storage en opslag accounts voor algemeen gebruik met ZRS-replicatie. Deze niet-ondersteunde accounts worden van de Blade opslag account gefilterd bij het maken van een functie-app.
 
 Zie [Introductie van de Azure Storage-services](../storage/common/storage-introduction.md#core-storage-services) voor meer informatie over opslagaccounttypen. 
 
-Hoewel u een bestaand opslagaccount gebruiken met uw functie-app, moet u ervoor zorgen dat deze aan deze vereisten voldoet. Opslagaccounts die zijn gemaakt als onderdeel van de doormaakstroom van de functie-app, voldoen gegarandeerd aan deze vereisten voor opslagaccounts.  
+Hoewel u een bestaand opslag account kunt gebruiken met uw functie-app, moet u ervoor zorgen dat deze aan deze vereisten voldoet. Opslag accounts die zijn gemaakt als onderdeel van de stroom voor het maken van de functie-app, worden gegarandeerd voldoen aan deze vereisten voor opslag accounts.  
 
-## <a name="storage-account-guidance"></a>Richtlijnen voor opslagaccount
+## <a name="storage-account-guidance"></a>Richt lijnen voor opslag accounts
 
-Elke functie-app vereist een opslagaccount om te werken. Als dat account wordt verwijderd, wordt de functie-app niet uitgevoerd. Zie Problemen met betrekking [tot opslag oplossen](functions-recover-storage-account.md)als u opslaggerelateerde problemen wilt oplossen. De volgende aanvullende overwegingen zijn van toepassing op het opslagaccount dat wordt gebruikt door functie-apps.
+Voor elke functie-app moet een opslag account worden gebruikt. Als dat account wordt verwijderd, wordt de functie-app niet uitgevoerd. Zie problemen [met opslag problemen oplossen voor informatie over het](functions-recover-storage-account.md)oplossen van problemen met opslag. De volgende aanvullende overwegingen zijn van toepassing op het opslag account dat wordt gebruikt door functie-apps.
 
-### <a name="storage-account-connection-setting"></a>Instelling voor opslagaccountverbinding
+### <a name="storage-account-connection-setting"></a>Instelling voor verbinding met opslag account
 
-De opslagaccountverbinding wordt onderhouden in de [azurewebjobsstorage-toepassingsinstelling](./functions-app-settings.md#azurewebjobsstorage). 
+De verbinding van het opslag account wordt onderhouden in de [toepassings instelling AzureWebJobsStorage](./functions-app-settings.md#azurewebjobsstorage). 
 
-De tekenreeks voor de verbinding met het opslagaccount moet worden bijgewerkt wanneer u opslagsleutels regenereert. [Lees hier meer over storage key management](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
+Het connection string van het opslag account moet worden bijgewerkt wanneer u de opslag sleutels opnieuw genereert. [Lees hier meer over opslag sleutel beheer](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
 
-### <a name="shared-storage-accounts"></a>Gedeelde opslagaccounts
+### <a name="shared-storage-accounts"></a>Gedeelde opslag accounts
 
-Het is mogelijk voor meerdere functie-apps om hetzelfde opslagaccount te delen zonder problemen. In Visual Studio u bijvoorbeeld meerdere apps ontwikkelen met behulp van de Azure Storage Emulator. In dit geval werkt de emulator als één opslagaccount. Hetzelfde opslagaccount dat door uw functie-app wordt gebruikt, kan ook worden gebruikt om uw toepassingsgegevens op te slaan. Deze aanpak is echter niet altijd een goed idee in een productieomgeving.
+Het is mogelijk dat meerdere functie-apps hetzelfde opslag account delen zonder problemen. In Visual Studio kunt u bijvoorbeeld meerdere apps ontwikkelen met behulp van de Azure Storage-emulator. In dit geval fungeert de emulator als één opslag account. Hetzelfde opslag account dat wordt gebruikt door de functie-app kan ook worden gebruikt om uw toepassings gegevens op te slaan. Deze benadering is echter niet altijd een goed idee in een productie omgeving.
 
 ### <a name="optimize-storage-performance"></a>Opslagprestaties optimaliseren
 
 [!INCLUDE [functions-shared-storage](../../includes/functions-shared-storage.md)]
 
-## <a name="storage-data-encryption"></a>Versleuteling van opslaggegevens
+## <a name="storage-data-encryption"></a>Versleuteling van opslag gegevens
 
-Azure Storage versleutelt alle gegevens in een opslagaccount in rust. Zie [Azure Storage-versleuteling voor gegevens in rust](../storage/common/storage-service-encryption.md).
+Azure Storage versleutelt alle gegevens in een opslag account in rust. Zie [Azure Storage versleuteling voor Data-at-rest](../storage/common/storage-service-encryption.md)voor meer informatie.
 
-Standaard worden gegevens versleuteld met door Microsoft beheerde sleutels. Voor extra controle over versleutelingssleutels u door de klant beheerde sleutels leveren die u gebruiken voor versleuteling van blob- en bestandsgegevens. Deze sleutels moeten aanwezig zijn in Azure Key Vault voor functies om toegang te krijgen tot het opslagaccount. Zie Door de klant beheerde sleutels configureren met Azure Key Vault voor meer informatie [met de Azure-portal.](../storage/common/storage-encryption-keys-portal.md)  
+Standaard worden gegevens versleuteld met door micro soft beheerde sleutels. Voor extra controle over versleutelings sleutels kunt u door de klant beheerde sleutels leveren die worden gebruikt voor het versleutelen van BLOB-en bestands gegevens. Deze sleutels moeten aanwezig zijn in Azure Key Vault om functies te kunnen gebruiken om toegang te krijgen tot het opslag account. Zie [door de klant beheerde sleutels met Azure Key Vault configureren met behulp van de Azure Portal](../storage/common/storage-encryption-keys-portal.md)voor meer informatie.  
 
-## <a name="mount-file-shares-linux"></a>Bestandsshares monteren (Linux)
+## <a name="mount-file-shares-linux"></a>Bestands shares koppelen (Linux)
 
-U bestaande Azure Files-shares aan uw Linux-functie-apps monteren. Door een share te monteren op uw Linux-functie-app, u gebruikmaken van bestaande machine learning-modellen of andere gegevens in uw functies. U [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) de opdracht gebruiken om een bestaand aandeel te monteren op uw Linux-functie-app. 
+U kunt bestaande Azure Files-shares koppelen aan uw Linux-functie-apps. Door een share te koppelen aan uw Linux-functie-app, kunt u gebruikmaken van bestaande machine learning modellen of andere gegevens in uw functies. U kunt de [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) opdracht gebruiken om een bestaande share te koppelen aan uw Linux-functie-app. 
 
-In deze `share-name` opdracht is de naam van het `custom-id` bestaande Azure-bestandenaandeel en kan elke tekenreeks zijn die het aandeel op unieke wijze definieert wanneer het is gemonteerd op de functie-app. Ook `mount-path` is het pad van waaruit het aandeel wordt geopend in uw functie-app. `mount-path`moet in het `/dir-name`formaat, en het `/home`kan niet beginnen met .
+In deze opdracht `share-name` is de naam van de bestaande Azure Files share en `custom-id` kan elke wille keurige teken reeks zijn die een unieke definitie vormt van de share wanneer deze wordt gekoppeld aan de functie-app. Het `mount-path` is ook het pad van waaruit de share wordt geopend in uw functie-app. `mount-path`moet de indeling `/dir-name`hebben en kan niet beginnen met `/home`.
 
-Zie bijvoorbeeld de scripts in [de functie-app Een Python maken en een Azure-bestandenshare monteren.](scripts/functions-cli-mount-files-storage-linux.md) 
+Zie de scripts in [een python-functie-app maken en een Azure Files share koppelen](scripts/functions-cli-mount-files-storage-linux.md)voor een volledig voor beeld. 
 
-Momenteel wordt `storage-type` alleen `AzureFiles` een van ondersteund. U slechts vijf shares monteren op een bepaalde functie-app. Het monteren van een bestandsshare kan de koude starttijd met ten minste 200-300 ms verhogen, of zelfs meer wanneer de opslagrekening zich in een andere regio bevindt.
+Momenteel wordt slechts een `storage-type` van `AzureFiles` ondersteund. U kunt Maxi maal vijf shares koppelen aan een bepaalde functie-app. Het koppelen van een bestands share kan de koude start tijd verhogen met ten minste 200 300ms of zelfs meer wanneer het opslag account zich in een andere regio bevindt.
 
-Het gemonteerde aandeel is beschikbaar voor `mount-path` uw functiecode op de opgegeven. Wanneer `mount-path` is `/path/to/mount`dat bijvoorbeeld, u de doelmap openen op API's van bestandssysteem, zoals in het volgende Python-voorbeeld:
+De gekoppelde share is beschikbaar voor uw functie code op de `mount-path` opgegeven locatie. Wanneer `mount-path` bijvoorbeeld is `/path/to/mount`, hebt u toegang tot de doel directory per bestands systeem-api's, zoals in het volgende python-voor beeld:
 
 ```python
 import os
@@ -78,7 +78,7 @@ files_in_share = os.listdir("/path/to/mount")
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over azure-functies hostingopties.
+Meer informatie over Azure Functions hosting opties.
 
 > [!div class="nextstepaction"]
 > [Schaal en hosting van Azure Functions](functions-scale.md)

@@ -1,28 +1,28 @@
 ---
 title: Een aangepaste DNS beveiligen met een TLS/SSL-binding
-description: Beveilig HTTPS-toegang tot uw aangepaste domein door een TLS/SSL-binding te maken met een certificaat. Verbeter de beveiliging van uw website door HTTPS of TLS 1.2 af te dwingen.
+description: Beveiligde HTTPS-toegang tot uw aangepaste domein door een TLS/SSL-binding met een certificaat te maken. Verbeter de beveiliging van uw website door HTTPS of TLS 1,2 af te dwingen.
 tags: buy-ssl-certificates
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: 9792181379bfa6f9e0337bf14208fe853c16b745
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80811745"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service
 
-In dit artikel ziet u hoe u het [aangepaste domein](app-service-web-tutorial-custom-domain.md) in uw [App Service-app](https://docs.microsoft.com/azure/app-service/) of [functie-app](https://docs.microsoft.com/azure/azure-functions/) beveiligen door een certificaatbinding te maken. Wanneer u klaar bent, hebt u toegang `https://` tot uw App Service-app op `https://www.contoso.com`het eindpunt voor uw aangepaste DNS-naam (bijvoorbeeld). 
+In dit artikel wordt beschreven hoe u het [aangepaste domein](app-service-web-tutorial-custom-domain.md) in uw [app service app](https://docs.microsoft.com/azure/app-service/) of [functie-app](https://docs.microsoft.com/azure/azure-functions/) kunt beveiligen door een certificaat binding te maken. Wanneer u klaar bent, kunt u toegang krijgen tot uw App Service- `https://` app op het eind punt voor uw aangepaste DNS- `https://www.contoso.com`naam (bijvoorbeeld). 
 
 ![Web-app met aangepast TLS/SSL-certificaat](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
-Het beveiligen van een [aangepast domein](app-service-web-tutorial-custom-domain.md) met een certificaat omvat twee stappen:
+Het beveiligen van een [aangepast domein](app-service-web-tutorial-custom-domain.md) met een certificaat bestaat uit twee stappen:
 
-- [Voeg een privécertificaat toe aan App Service](configure-ssl-certificate.md) dat voldoet aan alle vereisten voor [privécertificaten.](configure-ssl-certificate.md#private-certificate-requirements)
--  Maak een TLS-binding voor het bijbehorende aangepaste domein. Deze tweede stap wordt behandeld door dit artikel.
+- [Voeg een persoonlijk certificaat toe aan app service](configure-ssl-certificate.md) dat voldoet aan alle [vereisten voor persoonlijke certificaten](configure-ssl-certificate.md#private-certificate-requirements).
+-  Maak een TLS-binding met het bijbehorende aangepaste domein. Deze tweede stap is opgenomen in dit artikel.
 
 In deze zelfstudie leert u het volgende:
 
@@ -35,14 +35,14 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Volg deze handleiding:
+Als u deze hand leiding wilt volgen:
 
 - [Een App Service-app maken](/azure/app-service/)
-- [Een domeinnaam](app-service-web-tutorial-custom-domain.md) toewijzen aan uw app of [deze kopen en configureren in Azure](manage-custom-dns-buy-domain.md)
-- [Een privécertificaat toevoegen aan uw app](configure-ssl-certificate.md)
+- [Een domein naam toewijzen aan uw app](app-service-web-tutorial-custom-domain.md) of [kopen en configureren in azure](manage-custom-dns-buy-domain.md)
+- [Een persoonlijk certificaat toevoegen aan uw app](configure-ssl-certificate.md)
 
 > [!NOTE]
-> De eenvoudigste manier om een privécertificaat toe te voegen, is door een gratis App Service Managed Certificate (Preview) te [maken.](configure-ssl-certificate.md#create-a-free-certificate-preview)
+> De eenvoudigste manier om een persoonlijk certificaat toe te voegen, is door [een gratis app service beheerd certificaat te maken](configure-ssl-certificate.md#create-a-free-certificate-preview) (preview).
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -50,74 +50,74 @@ Volg deze handleiding:
 
 ## <a name="secure-a-custom-domain"></a>Een aangepast domein beveiligen
 
-Ga als volgt te werk:
+Voer de volgende stappen uit:
 
-Selecteer in de <a href="https://portal.azure.com" target="_blank">Azure-portal</a>in het linkermenu de>**\<app-naam app-naam ** **van App Services.** > 
+Selecteer **App Services** > **app Services\<app-name>** in het menu links in het <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
 
-Start vanuit de linkernavigatie van uw app het dialoogvenster **TLS/SSL-binding** op:
+Open vanuit de linkernavigatiebalk van uw app het dialoog venster **TLS/SSL binding** door:
 
-- **Aangepaste domeinen** > **selecteren Binding toevoegen**
-- **TLS/SSL-instellingen** > **selecteren Voeg TLS/SSL-binding toe**
+- **Aangepaste domeinen** > selecteren**binding toevoegen**
+- **TLS/SSL-instellingen** > selecteren**TLS/SSL-binding toevoegen**
 
-![Binding toevoegen aan domein](./media/configure-ssl-bindings/secure-domain-launch.png)
+![Binding aan domein toevoegen](./media/configure-ssl-bindings/secure-domain-launch.png)
 
-Selecteer **in Aangepast domein**het aangepaste domein waarvoor u een binding wilt toevoegen.
+Selecteer in **aangepast domein**het aangepaste domein waarvoor u een binding wilt toevoegen.
 
-Als uw app al een certificaat heeft voor het geselecteerde aangepaste domein, gaat u rechtstreeks naar [Binding maken.](#create-binding) Anders ga je door.
+Als uw app al een certificaat voor het geselecteerde aangepaste domein heeft, gaat u naar [binding rechtstreeks maken](#create-binding) . Ga anders verder.
 
-### <a name="add-a-certificate-for-custom-domain"></a>Een certificaat toevoegen voor aangepast domein
+### <a name="add-a-certificate-for-custom-domain"></a>Een certificaat voor een aangepast domein toevoegen
 
 Als uw app geen certificaat heeft voor het geselecteerde aangepaste domein, hebt u twee opties:
 
-- **PFX-certificaat uploaden** - Volg de workflow bij [Een privécertificaat uploaden](configure-ssl-certificate.md#upload-a-private-certificate)en selecteer deze optie hier.
-- **App Servicecertificaat importeren** - Volg de werkstroom bij [Een App Service-certificaat importeren](configure-ssl-certificate.md#import-an-app-service-certificate)en selecteer deze optie hier.
+- **PFX-certificaat uploaden** : Volg de werk stroom bij het [uploaden van een persoonlijk certificaat](configure-ssl-certificate.md#upload-a-private-certificate)en selecteer deze optie hier.
+- **App service Certificate importeren** : Volg de werk stroom bij het [importeren van een app service certificaat](configure-ssl-certificate.md#import-an-app-service-certificate)en selecteer deze optie hier.
 
 > [!NOTE]
-> U ook [een gratis certificaat maken](configure-ssl-certificate.md#create-a-free-certificate-preview) (Voorbeeld) of Een Key [Vault-certificaat importeren,](configure-ssl-certificate.md#import-a-certificate-from-key-vault)maar u moet dit afzonderlijk doen en vervolgens terugkeren naar het dialoogvenster **TLS/SSL-binding.**
+> U kunt ook [een gratis certificaat](configure-ssl-certificate.md#create-a-free-certificate-preview) (preview) maken of [een Key Vault certificaat importeren](configure-ssl-certificate.md#import-a-certificate-from-key-vault), maar u moet dit afzonderlijk doen en vervolgens terugkeren naar het dialoog venster **TLS/SSL-binding** .
 
 ### <a name="create-binding"></a>Binding maken
 
-Gebruik de volgende tabel om de TLS-binding in het dialoogvenster **TLS/SSL-binding** te configureren en klik vervolgens op **Binding toevoegen**.
+Gebruik de volgende tabel om u te helpen de TLS-binding te configureren in het dialoog venster **TLS/SSL-binding** en klik vervolgens op **binding toevoegen**.
 
 | Instelling | Beschrijving |
 |-|-|
-| Aangepast domein | De domeinnaam om de TLS/SSL-binding voor toe te voegen. |
-| Duimafdruk privécertificaat | Het certificaat te binden. |
-| TLS/SSL-type | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** - Er kunnen meerdere SNI SSL-bindingen worden toegevoegd. Met deze optie kunnen meerdere TLS/SSL-certificaten meerdere domeinen op hetzelfde IP-adres beveiligen. De meeste moderne browsers (waaronder Internet Explorer, Chrome, Firefox en Opera) ondersteunen SNI (zie [Servernaamaanduiding](https://wikipedia.org/wiki/Server_Name_Indication)voor meer informatie).</li><li>**IP SSL** - Er mag slechts één IP SSL-binding worden toegevoegd. Met deze optie kan slechts één TLS/SSL-certificaat een speciaal openbaar IP-adres beveiligen. Nadat u de binding hebt geconfigureerd, volgt u de stappen in [Remap A-record voor IP SSL.](#remap-a-record-for-ip-ssl)<br/>IP SSL wordt alleen ondersteund in productie- of geïsoleerde lagen. </li></ul> |
+| Aangepast domein | De domein naam waaraan u de TLS/SSL-binding wilt toevoegen. |
+| Vinger afdruk van persoonlijk certificaat | Het certificaat dat moet worden gebonden. |
+| Type TLS/SSL | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** : er kunnen meerdere SNI SSL bindingen worden toegevoegd. Met deze optie kunnen meerdere TLS/SSL-certificaten meerdere domeinen op hetzelfde IP-adres beveiligen. De meeste moderne browsers (waaronder Internet Explorer, Chrome, Firefox en Opera) ondersteunen SNI (Zie [Servernaamindicatie](https://wikipedia.org/wiki/Server_Name_Indication)) voor meer informatie.</li><li>**IP SSL** : er kan slechts één IP SSL binding worden toegevoegd. Met deze optie kan slechts één TLS/SSL-certificaat een specifiek openbaar IP-adres beveiligen. Nadat u de binding hebt geconfigureerd, volgt u de stappen in [een record opnieuw toewijzen voor IP SSL](#remap-a-record-for-ip-ssl).<br/>IP SSL wordt alleen ondersteund in productie-of geïsoleerde lagen. </li></ul> |
 
-Zodra de bewerking is voltooid, wordt de TLS/SSL-status van het aangepaste domein gewijzigd in **Secure.**
+Zodra de bewerking is voltooid, wordt de TLS/SSL-status van het aangepaste domein gewijzigd in **beveiligd**.
 
 ![TLS/SSL-binding geslaagd](./media/configure-ssl-bindings/secure-domain-finished.png)
 
 > [!NOTE]
-> Een **veilige** status in de **aangepaste domeinen** betekent dat deze is beveiligd met een certificaat, maar App Service controleert niet of het certificaat bijvoorbeeld zelf is ondertekend of verlopen, waardoor browsers ook een fout of waarschuwing kunnen weergeven.
+> Een **veilige** status in de **aangepaste domeinen** houdt in dat deze is beveiligd met een certificaat, maar app service controleert niet of het certificaat zelf is ondertekend of is verlopen, bijvoorbeeld, waardoor browsers ook een fout of waarschuwing kunnen weer geven.
 
 ## <a name="remap-a-record-for-ip-ssl"></a>Een record voor IP SSL opnieuw toewijzen
 
-Als u GEEN IP SSL in uw app gebruikt, gaat u naar [HTTPS testen voor uw aangepaste domein.](#test-https)
+Als u IP SSL niet gebruikt in uw app, gaat u door met het [testen van HTTPS voor uw aangepaste domein](#test-https).
 
-Uw app maakt standaard gebruik van een gedeeld openbaar IP-adres. Wanneer u een certificaat bindt met IP SSL, maakt App Service een nieuw, speciaal IP-adres voor uw app.
+Uw app maakt standaard gebruik van een gedeeld openbaar IP-adres. Wanneer u een certificaat verbindt met IP SSL, maakt App Service een nieuw, toegewijd IP-adres voor uw app.
 
-Als u een A-record aan uw app hebt toegewezen, werkt u uw domeinregister bij met dit nieuwe, specifieke IP-adres.
+Als u een A-record aan uw app hebt toegewezen, werkt u het domein register bij met dit nieuwe, toegewezen IP-adres.
 
 De pagina **Aangepast domein** van uw app wordt bijgewerkt met het nieuwe, specifieke IP-adres. [Kopieer dit IP-adres](app-service-web-tutorial-custom-domain.md#info) en [wijs de A-record opnieuw toe](app-service-web-tutorial-custom-domain.md#map-an-a-record) aan dit nieuwe IP-adres.
 
 ## <a name="test-https"></a>HTTPS testen
 
-Blader in verschillende `https://<your.custom.domain>` browsers om te controleren of deze uw app opdient.
+In verschillende browsers, bladert `https://<your.custom.domain>` u naar om te controleren of het uw app in beslag voorziet.
 
 ![Navigatie naar Azure-app in de portal](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
-Uw toepassingscode kan het protocol inspecteren via de "x-appservice-proto" header. De koptekst heeft `http` een `https`waarde van of . 
+Uw toepassings code kan het protocol controleren via de header ' x-appservice-proto '. De header heeft de waarde `http` of. `https` 
 
 > [!NOTE]
 > Als uw app certificaatvalidatiefouten geeft, gebruikt u waarschijnlijk een zelfondertekend certificaat.
 >
 > Als dit niet het geval is, hebt u mogelijk tussenliggende certificaten weggelaten toen u uw certificaat naar het PFX-bestand exporteerde.
 
-## <a name="prevent-ip-changes"></a>IP-wijzigingen voorkomen
+## <a name="prevent-ip-changes"></a>IP-wijzigingen voor komen
 
-Uw binnenkomende IP-adres kan veranderen wanneer u een binding verwijdert, zelfs als die binding IP SSL is. Dit is vooral belangrijk wanneer u een certificaat verlengt dat al in een IP SSL-binding staat. Als u een wijziging in het IP-adres van uw app wilt voorkomen, volgt u in volgorde de volgende stappen:
+Uw inkomende IP-adres kan veranderen wanneer u een binding verwijdert, zelfs als deze binding is IP SSL. Dit is vooral belang rijk bij het vernieuwen van een certificaat dat al in een IP SSL binding is. Als u een wijziging in het IP-adres van uw app wilt voorkomen, volgt u in volgorde de volgende stappen:
 
 1. Upload het nieuwe certificaat.
 2. Verbind het nieuwe certificaat aan het aangepaste domein dat u wilt, zonder het oude certificaat te verwijderen. Met deze actie wordt de oude binding vervangen en niet verwijderd.
@@ -147,11 +147,11 @@ Selecteer in het linkernavigatievenster van de app-pagina **SSL-instellingen**. 
 
 Als de bewerking is voltooid, worden in de app alle verbindingen met lagere TLS-versies geweigerd.
 
-## <a name="handle-tls-termination"></a>TLS-beëindiging afhandelen
+## <a name="handle-tls-termination"></a>TLS-beëindiging verwerken
 
-In App Service vindt [TLS-beëindiging](https://wikipedia.org/wiki/TLS_termination_proxy) plaats bij de netwerklastsbalansen, zodat alle HTTPS-verzoeken uw app bereiken als onversleutelde HTTP-verzoeken. Inspecteer de header `X-Forwarded-Proto` als de app-logica moet controleren of de aanvragen van gebruikers al dan niet zijn versleuteld.
+In App Service wordt [TLS-beëindiging](https://wikipedia.org/wiki/TLS_termination_proxy) uitgevoerd op netwerk taak verdelers, dus alle HTTPS-aanvragen bereiken uw app als niet-versleutelde HTTP-aanvragen. Inspecteer de header `X-Forwarded-Proto` als de app-logica moet controleren of de aanvragen van gebruikers al dan niet zijn versleuteld.
 
-Taalspecifieke configuratiehandleidingen, zoals de [Configuratiegids Linux Node.js,](containers/configure-language-nodejs.md#detect-https-session) laten u zien hoe u een HTTPS-sessie in uw toepassingscode detecteren.
+Taalspecifieke configuratie handleidingen, zoals de [configuratie gids Linux node. js](containers/configure-language-nodejs.md#detect-https-session) , laat zien hoe u een HTTPS-sessie in uw toepassings code kunt detecteren.
 
 ## <a name="automate-with-scripts"></a>Automatiseren met scripts
 
@@ -165,5 +165,5 @@ Taalspecifieke configuratiehandleidingen, zoals de [Configuratiegids Linux Node.
 
 ## <a name="more-resources"></a>Meer bronnen
 
-* [Een TLS/SSL-certificaat gebruiken in uw code in Azure App Service](configure-ssl-certificate-in-code.md)
-* [Veelgestelde vragen: App-servicecertificaten](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [Gebruik een TLS/SSL-certificaat in uw code in Azure App Service](configure-ssl-certificate-in-code.md)
+* [Veelgestelde vragen: App Service certificaten](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

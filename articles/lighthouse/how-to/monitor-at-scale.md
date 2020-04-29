@@ -1,43 +1,43 @@
 ---
 title: Gedelegeerde resources op schaal controleren
-description: Meer informatie over het effectief gebruiken van Azure Monitor Logs op een schaalbare manier voor de klanttenants die u beheert.
+description: Meer informatie over het effectief gebruiken van Azure Monitor-logboeken op schaal bare wijze over de tenants van de klant die u beheert.
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: 9a600cec524c9f715ada9da09dea35f3baa98151
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985198"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Gedelegeerde resources op schaal controleren
 
-Als serviceprovider hebt u mogelijk meerdere klanttenants aan boord genomen voor Azure-gedelegeerd bronbeheer. [Azure Lighthouse](../overview.md) stelt serviceproviders in staat om bewerkingen op schaal uit te voeren voor meerdere tenants tegelijk, waardoor beheertaken efficiënter worden.
+Als service provider hebt u mogelijk meerdere tenants voor klanten voor het beheer van gedelegeerde resources voor Azure voor bereid. Met [Azure Lighthouse](../overview.md) kunnen service providers bewerkingen op verschillende tijdstippen in meerdere tenants tegelijk uitvoeren, waardoor beheer taken efficiënter zijn.
 
-In dit onderwerp ziet u hoe u [Azure Monitor Logs](../../azure-monitor/platform/data-platform-logs.md) op een schaalbare manier gebruiken voor de klanttenants die u beheert.
+In dit onderwerp wordt beschreven hoe u [Azure monitor-logboeken](../../azure-monitor/platform/data-platform-logs.md) op schaal bare wijze kunt gebruiken voor de tenants van de klant die u beheert.
 
-## <a name="create-log-analytics-workspaces"></a>Log Analytics-werkruimten maken
+## <a name="create-log-analytics-workspaces"></a>Log Analytics-werk ruimten maken
 
-Als u gegevens wilt verzamelen, moet u Logboekanalyse-werkruimten maken. Deze Log Analytics-werkruimten zijn unieke omgevingen voor gegevens die worden verzameld door Azure Monitor. Elke werkruimte heeft zijn eigen gegevensopslagplaats en -configuratie en gegevensbronnen en -oplossingen zijn geconfigureerd om hun gegevens in een bepaalde werkruimte op te slaan.
+Als u gegevens wilt verzamelen, moet u Log Analytics-werk ruimten maken. Deze Log Analytics-werk ruimten zijn unieke omgevingen voor gegevens die worden verzameld door Azure Monitor. Elke werk ruimte heeft een eigen gegevens opslagplaats en-configuratie, en gegevens bronnen en-oplossingen zijn geconfigureerd om hun gegevens op te slaan in een bepaalde werk ruimte.
 
-We raden u aan deze werkruimten rechtstreeks in de huurders van de klant te maken. Op deze manier hun gegevens blijft in hun huurders in plaats van te worden geëxporteerd naar de jouwe. Dit maakt het ook mogelijk om gecentraliseerde bewaking van alle resources of services die worden ondersteund door Log Analytics mogelijk te maken, zodat u meer flexibiliteit hebt over welke soorten gegevens u controleert.
+We raden u aan deze werk ruimten rechtstreeks te maken in de tenants van de klant. Op deze manier blijven hun gegevens in hun tenants, in plaats van dat ze naar de andere worden geëxporteerd. Dit biedt ook gecentraliseerde bewaking van alle resources of services die door Log Analytics worden ondersteund, waardoor u meer flexibiliteit hebt in welke typen gegevens u kunt bewaken.
 
-U een Log Analytics-werkruimte maken met behulp van de [Azure-portal,](../../azure-monitor/learn/quick-create-workspace.md)met [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)of met [Azure PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md).
+U kunt een Log Analytics-werk ruimte maken met behulp van de [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md), met behulp van [Azure cli](../../azure-monitor/learn/quick-create-workspace-cli.md)of met behulp van [Azure PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md).
 
-## <a name="deploy-policies-that-log-data"></a>Beleidsregels implementeren die gegevens registreren
+## <a name="deploy-policies-that-log-data"></a>Beleid implementeren waarmee gegevens worden geregistreerd
 
-Nadat u uw Log Analytics-werkruimten hebt gemaakt, u [Azure Policy](../../governance/policy/index.yml) implementeren in uw klanthiërarchieën, zodat diagnostische gegevens worden verzonden naar de juiste werkruimte in elke tenant. Het exacte beleid dat u implementeert, kan variëren afhankelijk van de resourcetypen die u wilt controleren.
+Nadat u uw Log Analytics-werk ruimten hebt gemaakt, kunt u [Azure Policy](../../governance/policy/index.yml) implementeren in uw klant hiërarchieën zodat diagnostische gegevens worden verzonden naar de juiste werk ruimte in elke Tenant. De exacte beleids regels die u implementeert, kunnen variëren, afhankelijk van de resource typen die u wilt bewaken.
 
-Zie [Zelfstudie: Beleid maken en beheren om naleving af te dwingen](../../governance/policy/tutorials/create-and-manage.md)voor meer informatie over het maken van beleid. Deze [communitytool](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/azure-diagnostics-policy-generator) biedt een script waarmee u beleid maken om de specifieke resourcetypen die u kiest, te controleren.
+Zie [zelf studie: beleid maken en beheren om naleving](../../governance/policy/tutorials/create-and-manage.md)af te dwingen voor meer informatie over het maken van beleid. Dit [hulp programma](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/azure-diagnostics-policy-generator) van de Community biedt een script waarmee u beleids regels kunt maken voor het bewaken van de specifieke resource typen die u kiest.
 
-Wanneer u hebt bepaald welk beleid u wilt implementeren, u [deze op schaal implementeren op uw gedelegeerde abonnementen.](policy-at-scale.md)
+Wanneer u hebt vastgesteld welk beleid u wilt implementeren, kunt u [ze op schaal implementeren op uw gedelegeerde abonnementen](policy-at-scale.md).
 
 ## <a name="analyze-the-gathered-data"></a>De verzamelde gegevens analyseren
 
-Nadat u uw beleid hebt geïmplementeerd, worden gegevens geregistreerd in de Log Analytics-werkruimten die u in elke klanttenant hebt gemaakt. Om inzicht te krijgen in alle beheerde klanten, u hulpprogramma's zoals [Azure Monitor Workbooks](../../azure-monitor/platform/workbooks-overview.md) gebruiken om informatie uit meerdere gegevensbronnen te verzamelen en te analyseren.
+Nadat u uw beleid hebt geïmplementeerd, worden de gegevens vastgelegd in de Log Analytics werk ruimten die u hebt gemaakt in elke Tenant van de klant. Als u inzicht wilt krijgen in alle beheerde klanten, kunt u gebruikmaken van hulpprogram ma's zoals [Azure monitor werkmappen](../../azure-monitor/platform/workbooks-overview.md) voor het verzamelen en analyseren van gegevens uit meerdere gegevens bronnen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Azure Monitor](../../azure-monitor/index.yml).
-- Meer informatie over [Azure Monitor-logboeken](../../azure-monitor/platform/data-platform-logs.md).
-- Meer informatie over [cross-tenant management ervaringen](../concepts/cross-tenant-management-experience.md).
+- Meer informatie over [Azure monitor](../../azure-monitor/index.yml).
+- Meer informatie over [Azure monitor-logboeken](../../azure-monitor/platform/data-platform-logs.md).
+- Meer informatie over de [ervaring op het beheer van cross-tenants](../concepts/cross-tenant-management-experience.md).

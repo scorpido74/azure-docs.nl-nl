@@ -1,191 +1,191 @@
 ---
-title: Azure-bronnen - QnA Maker
-description: QnA Maker gebruikt verschillende Azure-bronnen, elk met een ander doel. Als u begrijpt hoe ze afzonderlijk worden gebruikt, u de juiste prijscategorie plannen en selecteren of weten wanneer u uw prijscategorie moet wijzigen. Als u begrijpt hoe ze in combinatie worden gebruikt, u problemen vinden en oplossen wanneer ze zich voordoen.
+title: Azure-resources-QnA Maker
+description: QnA Maker maakt gebruik van verschillende Azure-bronnen, elk met een ander doel. Als u begrijpt hoe deze afzonderlijk worden gebruikt, kunt u de juiste prijs categorie plannen en selecteren of u moet weten wanneer u de prijs categorie wilt wijzigen. Als u begrijpt hoe ze in combi natie worden gebruikt, kunt u problemen opsporen en oplossen wanneer deze zich voordoen.
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.openlocfilehash: 581029d2372f7a2ef704dcf02f266b66440aa246
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80873902"
 ---
-# <a name="azure-resources-for-qna-maker"></a>Azure-bronnen voor QnA Maker
+# <a name="azure-resources-for-qna-maker"></a>Azure-resources voor QnA Maker
 
-QnA Maker gebruikt verschillende Azure-bronnen, elk met een ander doel. Als u begrijpt hoe ze afzonderlijk worden gebruikt, u de juiste prijscategorie plannen en selecteren of weten wanneer u uw prijscategorie moet wijzigen. Als u begrijpt hoe ze _in combinatie_ worden gebruikt, u problemen vinden en oplossen wanneer ze zich voordoen.
+QnA Maker maakt gebruik van verschillende Azure-bronnen, elk met een ander doel. Als u begrijpt hoe deze afzonderlijk worden gebruikt, kunt u de juiste prijs categorie plannen en selecteren of u moet weten wanneer u de prijs categorie wilt wijzigen. Als u begrijpt hoe ze _in combi natie_ worden gebruikt, kunt u problemen opsporen en oplossen wanneer deze zich voordoen.
 
-## <a name="resource-planning"></a>Resourceplanning
+## <a name="resource-planning"></a>Resource planning
 
-Wanneer u voor het eerst een QnA Maker-kennisbank ontwikkelt, is het in de prototypefase gebruikelijk om één QnA Maker-bron te hebben voor zowel testen als productie.
+Wanneer u voor het eerst een QnA Maker Knowledge Base ontwikkelt, is in de prototype fase gebruikelijk dat er één QnA Maker resource is voor testen en productie.
 
-Wanneer u zich in de ontwikkelingsfase van het project bevindt, moet u rekening houden met:
+Wanneer u naar de ontwikkelings fase van het project gaat, moet u rekening houden met het volgende:
 
-* hoeveel talen uw knowledge base-systeem zal bevatten
-* hoeveel regio's u uw kennisbank nodig hebt om beschikbaar te zijn in/uit
-* hoeveel documenten in elk domein uw systeem zal bevatten
+* Hoeveel talen worden er in uw Knowledge Base-systeem bewaard?
+* Hoeveel regio's u nodig hebt om uw Knowledge Base beschikbaar te maken in/van
+* Hoeveel documenten in elk domein uw systeem zal bevatten
 
-Plan om één QnA Maker-bron te hebben die alle kennisbases heeft die dezelfde taal, dezelfde regio en dezelfde combinatie van onderwerpdomeinen hebben.
+Plan voor een enkele QnA Maker resource alle kennis grondslagen met dezelfde taal, dezelfde regio en dezelfde combi natie van onderwerps domeinen.
 
-## <a name="pricing-tier-considerations"></a>Overwegingen van prijsniveaus
+## <a name="pricing-tier-considerations"></a>Overwegingen voor prijs Categorieën
 
-Meestal zijn er drie parameters die u moet overwegen:
+Normaal gesp roken zijn er drie para meters die u moet overwegen:
 
-* **De doorvoer die u nodig hebt van de service:**
-    * Selecteer het juiste [app-abonnement](https://azure.microsoft.com/pricing/details/app-service/plans/) voor uw App-service op basis van uw behoeften. U de app [op-](https://docs.microsoft.com/azure/app-service/manage-scale-up) of neerschalen.
-    * Dit moet ook van invloed zijn op uw Azure **Cognitive Search** SKU-selectie, zie meer details [hier](https://docs.microsoft.com/azure/search/search-sku-tier). Bovendien moet u mogelijk de [capaciteit](../../../search/search-capacity-planning.md) voor cognitief zoeken aanpassen met replica's.
+* **De door Voer die u nodig hebt via de service**:
+    * Selecteer het juiste [app-abonnement](https://azure.microsoft.com/pricing/details/app-service/plans/) voor uw app service op basis van uw behoeften. U kunt de app omhoog of omlaag [schalen](https://docs.microsoft.com/azure/app-service/manage-scale-up) .
+    * Dit moet ook van invloed zijn op uw selectie van Azure **Cognitive Search** SKU. Zie [hier](https://docs.microsoft.com/azure/search/search-sku-tier)voor meer informatie. Daarnaast moet u mogelijk Cognitive Search [capaciteit](../../../search/search-capacity-planning.md) aanpassen met replica's.
 
-* **Grootte en het aantal kennisbases:** kies de juiste [Azure search SKU](https://azure.microsoft.com/pricing/details/search/) voor uw scenario. Meestal bepaalt u het aantal kennisbases dat u nodig hebt op basis van het aantal verschillende onderwerpdomeinen. Zodra onderwerp domein (voor een enkele taal) moet worden in een kennisbank.
+* **Grootte en aantal kennis grondslagen**: Kies de juiste [Azure Search-SKU](https://azure.microsoft.com/pricing/details/search/) voor uw scenario. Normaal gesp roken bepaalt u het aantal kennis grondslagen dat u nodig hebt op basis van het aantal verschillende onderwerps domeinen. Zodra het onderwerp domein (voor een enkele taal) in één kennis database moet zijn.
 
-    U N-1-kennisbases publiceren in een bepaalde laag, waarbij N de maximale indexen is die in de laag zijn toegestaan. Controleer ook de maximale grootte en het aantal toegestane documenten per laag.
+    U kunt N-1 Knowledge bases publiceren in een bepaalde laag, waarbij N de Maxi maal toegestane indexen in de laag is. Controleer ook de maximale grootte en het aantal documenten dat per laag is toegestaan.
 
-    Als uw laag bijvoorbeeld 15 toegestane indexen heeft, u 14 kennisbanken publiceren (1 index per gepubliceerde kennisbank). De vijftiende index wordt gebruikt voor alle kennisbanken voor authoring en testing.
+    Als uw laag bijvoorbeeld 15 toegestane indexen heeft, kunt u 14 Knowledge bases publiceren (1 index per gepubliceerde kennis basis). De vijftiende index wordt gebruikt voor alle kennis grondslagen voor ontwerpen en testen.
 
-* **Aantal documenten als bronnen**: De gratis SKU van de Managementteamservice van QnA Maker beperkt het aantal documenten dat u via de portal en de API's beheren tot 3 (van elk 1 MB). De standaard SKU heeft geen beperkingen op het aantal documenten dat u beheren. Zie meer details [hier](https://aka.ms/qnamaker-pricing).
+* **Aantal documenten als bronnen**: de gratis SKU van de QnA Maker Management-service beperkt het aantal documenten dat u kunt beheren via de portal en de api's tot 3 (van elke grootte van 1 MB). De standaard-SKU heeft geen limieten voor het aantal documenten dat u kunt beheren. Meer informatie vindt u [hier](https://aka.ms/qnamaker-pricing).
 
-De volgende tabel geeft u een aantal richtlijnen op hoog niveau.
+De volgende tabel bevat een aantal richt lijnen op hoog niveau.
 
-|                        | QnA Maker Management | App Service | Azure Cognitive Search | Beperkingen                      |
+|                        | QnA Maker beheer | App Service | Azure Cognitive Search | Beperkingen                      |
 | ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
-| Experiment        | Gratis SKU             | Gratis laag   | Gratis laag    | Tot 2 KB's publiceren, 50 MB groot  |
-| Dev/Testomgeving   | Standaard SKU         | Gedeeld      | Basic        | Tot 14 GB publiceren, 2 GB groot    |
-| Productieomgeving | Standaard SKU         | Basic       | Standard     | Tot 49 GB publiceren, 25 GB groot |
+| Experiment        | Gratis SKU             | Gratis laag   | Gratis laag    | Publiceren tot 2 Kb's, 50 MB aan grootte  |
+| Ontwikkel-en test omgeving   | Standaard SKU         | Gedeeld      | Basic        | Maxi maal 14 Kb's publiceren, grootte van 2 GB    |
+| Productie omgeving | Standaard SKU         | Basic       | Standard     | Publiceer tot 49 Kb's, grootte van 25 GB |
 
 ## <a name="recommended-settings"></a>Aanbevolen instellingen
 
-|DoelQPS | App Service | Azure Cognitive Search |
+|Doel-QPS | App Service | Azure Cognitive Search |
 | -------------------- | ----------- | ------------ |
 | 3             | S1, 1 instantie   | S1, 1 instantie    |
-| 50         | S3, 10 exemplaren       | S1, 12 exemplaren         |
-| 80         | S3, 10 exemplaren      |  S3, 12 instanties  |
-| 100         | P3V2, 10 exemplaren  | S3, 12 instanties, 3 partities   |
+| 50         | S3, 10 instanties       | S1, 12 exemplaren         |
+| 80         | S3, 10 instanties      |  S3, 12 exemplaren  |
+| 100         | P3V2, 10 instanties  | S3, 12 instanties, 3 partities   |
 | 200 tot 250         | P3V2, 20 exemplaren | S3, 12 instanties, 3 partities    |
 
-## <a name="when-to-change-a-pricing-tier"></a>Wanneer wijzigt u een prijscategorie?
+## <a name="when-to-change-a-pricing-tier"></a>Wanneer u een prijs categorie wilt wijzigen
 
 |Upgraden|Reden|
 |--|--|
-|[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) QnA Maker management SKU|U wilt meer QnA-paren of documentbronnen in uw kennisbank hebben.|
-|[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) App Service SKU en controleer de categorie Cognitief zoeken en [maak replica's voor cognitief zoeken](../../../search/search-capacity-planning.md)|Uw kennisbank moet meer aanvragen van uw client-app, zoals een chatbot, verwerken.|
-|[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) Azure Cognitive Search-service|Je bent van plan om veel kennisbanken te hebben.|
+|[Upgrade uitvoeren](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) QnA Maker Management-SKU|U wilt meer QnA-paren of document bronnen in uw Knowledge Base hebben.|
+|[Upgrade uitvoeren](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) App Service SKU en controleer Cognitive Search laag en [maak Cognitive Search replica's](../../../search/search-capacity-planning.md)|Uw Knowledge Base moet meer aanvragen van uw client-app leveren, zoals een chat-bot.|
+|[Upgrade uitvoeren](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) Azure Cognitive Search-service|U bent van plan om veel kennis bases te hebben.|
 
-Ontvang de nieuwste runtime-updates door [uw App-service bij te werken in de Azure-portal.](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)
+Down load de nieuwste runtime-updates door [uw app service in de Azure portal bij te werken](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates).
 
 ## <a name="resource-naming-considerations"></a>Overwegingen voor het benoemen van resources
 
-De resourcenaam voor de QnA `qna-westus-f0-b`Maker-bron, zoals , wordt ook gebruikt om de andere bronnen een naam te geven.
+De resource naam voor de QnA Maker resource, zoals `qna-westus-f0-b`, wordt ook gebruikt voor het benoemen van de andere resources.
 
-Met het venster Azure-portalmaken u een QnA Maker-bron maken en de prijsniveaus voor de andere resources selecteren.
-
-> [!div class="mx-imgBorder"]
-> ![Schermafbeelding van Azure-portal voor het maken van QnA Maker-bronnen](../media/concept-azure-resource/create-blade.png)
-
-Nadat de resources zijn gemaakt, hebben ze dezelfde naam, met uitzondering van de optionele Application Insights-bron, die tekens aan de naam plaatst.
+In het venster Azure Portal maken kunt u een QnA Maker resource maken en de prijs categorieën voor de andere resources selecteren.
 
 > [!div class="mx-imgBorder"]
-> ![Schermafbeelding van azure-portalbronvermelding](../media/concept-azure-resource/all-azure-resources-created-qnamaker.png)
+> ![Scherm afbeelding van Azure Portal voor het maken van QnA Maker resources](../media/concept-azure-resource/create-blade.png)
+
+Nadat de resources zijn gemaakt, hebben ze dezelfde naam, met uitzonde ring van de optionele Application Insights resource, die postpends tekens aan de naam.
+
+> [!div class="mx-imgBorder"]
+> ![Scherm opname van Azure Portal resource-vermelding](../media/concept-azure-resource/all-azure-resources-created-qnamaker.png)
 
 > [!TIP]
-> Maak een nieuwe resourcegroep wanneer u een QnA Maker-bron maakt. Hiermee u alle resources zien die zijn gekoppeld aan de QnA Maker-bron wanneer u zoekt op resourcegroep.
+> Maak een nieuwe resource groep wanneer u een QnA Maker resource maakt. Hiermee kunt u alle resources weer geven die zijn gekoppeld aan de QnA Maker resource bij het zoeken op resource groep.
 
 > [!TIP]
-> Gebruik een naamgevingsconventie om prijsniveaus aan te geven binnen de naam van de resource of de resourcegroep. Wanneer u fouten ontvangt door een nieuwe kennisbank te maken of nieuwe documenten toe te voegen, is de prijscategorie Voor cognitief zoeken een veelvoorkomend probleem.
+> Gebruik een naamgevings Conventie om prijs categorieën aan te geven binnen de naam van de resource of de resource groep. Wanneer er fouten optreden bij het maken van een nieuwe Knowledge Base of het toevoegen van nieuwe documenten, is de Cognitive Search prijs categorie limiet een veelvoorkomend probleem.
 
-## <a name="resource-purposes"></a>Resourcedoeleinden
+## <a name="resource-purposes"></a>Resource doeleinden
 
-Elke Azure-bron die met QnA Maker is gemaakt, heeft een specifiek doel:
+Elke Azure-resource die is gemaakt met QnA Maker heeft een specifiek doel:
 
-* QnA Maker-bron
-* Bron voor cognitief zoeken
+* QnA Maker resource
+* Cognitive Search resource
 * App Service
-* App-abonnementsservice
+* App-plan service
 * Application Insights-service
 
 
-### <a name="cognitive-search-resource"></a>Bron voor cognitief zoeken
+### <a name="cognitive-search-resource"></a>Cognitive Search resource
 
-De [resource Cognitive Search](../../../search/index.yml) is gewend aan:
+De [Cognitive Search](../../../search/index.yml) resource wordt gebruikt voor het volgende:
 
 * De QnA-paren opslaan
-* Geef de eerste rangschikking (ranker #1) van de QnA-paren op tijdens runtime
+* Geef de eerste positie (#1) van de QnA-paren op tijdens runtime
 
-#### <a name="index-usage"></a>Indexgebruik
+#### <a name="index-usage"></a>Index gebruik
 
-De resource houdt één index bij om als testindex te fungeren en de overige indexen correleren met één gepubliceerde kennisbasis elk.
+De resource houdt één index om te fungeren als de test index en de resterende indexen voldoen aan één gepubliceerde kennis database.
 
-Een bron geprijsd om 15 indexen te houden, zal 14 gepubliceerde kennisbanken bevatten, en een index wordt gebruikt voor het testen van alle kennisbases. Deze testindex wordt verdeeld door knowledge base, zodat een query met behulp van het interactieve testvenster de testindex gebruikt, maar alleen resultaten retourneert van de specifieke partitie die is gekoppeld aan de specifieke kennisbank.
+Een resource die is geprijsd op 15 indexen, houdt 14 gepubliceerde kennis grondslagen en een index wordt gebruikt voor het testen van de kennis bases. Deze test index is gepartitioneerd door de Knowledge Base zodat een query die gebruikmaakt van het interactieve test deel venster de test index gebruikt, maar alleen resultaten van de specifieke partitie die is gekoppeld aan de specifieke Knowledge Base, worden geretourneerd.
 
-#### <a name="language-usage"></a>Taalgebruik
+#### <a name="language-usage"></a>Taal gebruik
 
-De eerste kennisbasis die is gemaakt in de QnA Maker-bron wordt gebruikt om de _enkele_ taalset voor de resource Cognitive Search en al zijn indexen te bepalen. U slechts _één taalset_ hebben voor een QnA Maker-service.
+De eerste Knowledge Base die in de QnA Maker resource wordt gemaakt, wordt gebruikt om de _afzonderlijke_ taal sets voor de Cognitive Search resource en alle bijbehorende indexen te bepalen. U kunt slechts _één taal instellen_ voor een QnA Maker-service.
 
-### <a name="qna-maker-resource"></a>QnA Maker-bron
+### <a name="qna-maker-resource"></a>QnA Maker resource
 
-De QnA Maker-bron biedt toegang tot de api's voor het ontwerpen en publiceren, evenals de op de tweede rangschikkingslaag (ranker #2) gebaseerde natuurlijke taalverwerking (NLP) van de QnA-paren tijdens runtime.
+De QnA Maker-resource biedt toegang tot de ontwerp-en publicatie-Api's, evenals de NLP (QnA) op basis van de laag voor natuurlijke taal verwerking (micro #2) die tijdens de uitvoering worden gemaakt.
 
-De tweede rangschikking past intelligente filters toe die metadata en follow-upprompts kunnen bevatten.
+Met de tweede classificatie worden intelligente filters toegepast die meta gegevens en opvolgings vragen kunnen bevatten.
 
-#### <a name="qna-maker-resource-configuration-settings"></a>Configuratie-instellingen voor QnA Maker-bronnen
+#### <a name="qna-maker-resource-configuration-settings"></a>Configuratie-instellingen van QnA Maker bron
 
-Wanneer u een nieuwe kennisbasis maakt in de [QnA Maker-portal,](https://qnamaker.ai)is de **taalinstelling** de enige instelling die wordt toegepast op resourceniveau. U selecteert de taal wanneer u de eerste kennisbasis voor de resource maakt.
+Wanneer u een nieuwe Knowledge Base maakt in de [QnA Maker Portal](https://qnamaker.ai), is de **taal** instelling de enige instelling die op het resource niveau wordt toegepast. U selecteert de taal bij het maken van de eerste Knowledge Base voor de resource.
 
-### <a name="app-service-and-app-service-plan"></a>App-service- en App-serviceplan
+### <a name="app-service-and-app-service-plan"></a>App service-en app service-plan
 
-De [App-service](../../../app-service/index.yml) wordt door uw clientapplicatie gebruikt om toegang te krijgen tot de gepubliceerde kennisbanken via het runtime-eindpunt.
+De [app service](../../../app-service/index.yml) wordt door uw client toepassing gebruikt om toegang te krijgen tot de gepubliceerde kennis grondslagen via het runtime-eind punt.
 
-Om de gepubliceerde kennisbank op te vragen, gebruiken alle gepubliceerde kennisbanken hetzelfde URL-eindpunt, maar geven ze de **knowledge base-ID** op binnen de route.
+Als u een query wilt uitvoeren voor de gepubliceerde kennis database, gebruiken alle gepubliceerde kennis bases hetzelfde URL-eind punt, maar geeft u de **Knowledge Base-id** op in de route.
 
 `{RuntimeEndpoint}/qnamaker/knowledgebases/{kbId}/generateAnswer`
 
 ### <a name="application-insights"></a>Application Insights
 
-[Application Insights](../../../azure-monitor/app/app-insights-overview.md) wordt gebruikt om chatlogs en telemetrie te verzamelen. Bekijk de algemene [Kusto-query's](../how-to/get-analytics-knowledge-base.md) voor informatie over uw service.
+[Application Insights](../../../azure-monitor/app/app-insights-overview.md) wordt gebruikt voor het verzamelen van chat logboeken en telemetrie. Bekijk de algemene [Kusto-query's](../how-to/get-analytics-knowledge-base.md) voor informatie over uw service.
 
-## <a name="share-services-with-qna-maker"></a>Diensten delen met QnA Maker
+## <a name="share-services-with-qna-maker"></a>Services delen met QnA Maker
 
-QnA Maker maakt verschillende Azure-bronnen. Gebruik de volgende tabel om te begrijpen wat u wel en niet delen om het beheer te verminderen en te profiteren van kostendeling:
+QnA Maker maakt verschillende Azure-resources. Gebruik de volgende tabel om te begrijpen wat u wel en niet kunt delen om het beheer te beperken en te profiteren van het delen van kosten:
 
 |Service|Delen|Reden|
 |--|--|--|
 |Cognitive Services|X|Niet mogelijk door het ontwerp|
-|App Service-plan|✔|Vaste schijfruimte die is toegewezen voor een App Service-abonnement. Als andere apps die hetzelfde App Service-abonnement delen aanzienlijke schijfruimte gebruiken, worden problemen ondervonden bij de qnAMaker-appservice.|
+|App Service-plan|✔|Er is een vaste schijf ruimte toegewezen voor een App Service plan. Als andere apps die hetzelfde App Service plan delen, veel schijf ruimte gebruiken, ondervinden de QnAMaker App Service-instantie problemen.|
 |App Service|X|Niet mogelijk door het ontwerp|
 |Application Insights|✔|Kan worden gedeeld|
-|Zoekservice|✔|1. `testkb` is een gereserveerde naam voor de QnAMaker-dienst; het kan niet worden gebruikt door anderen.<br>2. Synoniem kaart `synonym-map` met de naam is gereserveerd voor de QnAMaker service.<br>3. Het aantal gepubliceerde kennisbanken wordt beperkt door de servicelaag zoeken. Als er gratis indexen beschikbaar zijn, kunnen andere services deze gebruiken.|
+|Zoekservice|✔|1. `testkb` is een gereserveerde naam voor de QnAMaker-service. het kan niet worden gebruikt door anderen.<br>2. het synoniem van de map `synonym-map` met de naam is gereserveerd voor de QnAMaker-service.<br>3. het aantal gepubliceerde kennis grondslagen is beperkt door de zoek service laag. Als er gratis indexen beschikbaar zijn, kunnen andere services deze gebruiken.|
 
-### <a name="using-a-single-cognitive-search-service"></a>Eén cognitive search-service gebruiken
+### <a name="using-a-single-cognitive-search-service"></a>Eén Cognitive Search-service gebruiken
 
-Als u een QnA-service en de afhankelijkheden ervan (zoals Zoeken) maakt via de portal, wordt er een zoekservice voor u gemaakt en gekoppeld aan de QnA Maker-service. Nadat deze bronnen zijn gemaakt, u de instelling App-service bijwerken om een eerder bestaande zoekservice te gebruiken en de service die u zojuist hebt gemaakt verwijderen.
+Als u een QnA-service en de bijbehorende afhankelijkheden (zoals zoeken) maakt via de portal, wordt er een zoek service voor u gemaakt en gekoppeld aan de QnA Maker-service. Nadat deze resources zijn gemaakt, kunt u de App Service-instelling bijwerken om een eerder bestaande zoek service te gebruiken en de toepassing verwijderen die u zojuist hebt gemaakt.
 
-Meer informatie over [het configureren](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) van QnA Maker om een andere Cognitive Service-bron te gebruiken dan die welke is gemaakt als onderdeel van het qnA Maker-resourcecreatieproces.
+Meer informatie [over het configureren](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) van QnA Maker voor het gebruik van een andere cognitieve service resource dan die welke is gemaakt als onderdeel van het QnA maker van het maken van resources.
 
-## <a name="management-service-region"></a>Beheerserviceregio
+## <a name="management-service-region"></a>Regio beheer service
 
-De beheerservice van QnA Maker wordt alleen gebruikt voor de QnA Maker-portal en voor de eerste gegevensverwerking. Deze service is alleen beschikbaar in de **regio West-VS.** Er worden geen klantgegevens opgeslagen in deze West US-service.
+De beheer service van QnA Maker wordt alleen gebruikt voor de QnA Maker Portal en voor initiële gegevens verwerking. Deze service is alleen beschikbaar in de regio **VS-West** . Er worden geen klant gegevens opgeslagen in deze service vs-West.
 
 ## <a name="keys-in-qna-maker"></a>Sleutels in QnA Maker
 
-Uw QnA Maker-service behandelt twee soorten sleutels: **het ontwerpen** van sleutels en **queryeindpuntsleutels** die worden gebruikt met de runtime die wordt gehost in de App-service.
+Uw QnA Maker-service behandelt twee soorten sleutels: het **ontwerpen van sleutels** en **query-eindpunt sleutels** die worden gebruikt met de runtime die wordt gehost in de app service.
 
-Als u op zoek bent naar uw **abonnementssleutel,** [is de terminologie gewijzigd.](#subscription-keys)
+Als u op zoek bent naar uw **abonnements sleutel**, [is de terminologie gewijzigd](#subscription-keys).
 
-Gebruik deze sleutels bij het indienen van aanvragen voor de service via API's.
+Gebruik deze sleutels bij het indienen van aanvragen bij de service via Api's.
 
 ![Sleutelbeheer](../media/qnamaker-how-to-key-management/key-management.png)
 
-|Name|Locatie|Doel|
+|Naam|Locatie|Doel|
 |--|--|--|
-|Ontwerpsleutel|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Deze sleutels worden gebruikt om toegang te krijgen tot de [QnA Maker management service API's.](https://go.microsoft.com/fwlink/?linkid=2092179) Met deze API's u de vragen en antwoorden in uw kennisbank bewerken en uw kennisbank publiceren. Deze sleutels worden gemaakt wanneer u een nieuwe QnA Maker-service maakt.<br><br>Zoek deze sleutels op de resource **Cognitive Services** op de pagina **Sleutels.**|
-|Queryeindpunttoets|[QnA Maker-portal](https://www.qnamaker.ai)|Deze sleutels worden gebruikt om het gepubliceerde eindpunt van de kennisbank op te vragen om een antwoord te krijgen op een gebruikersvraag. U gebruikt dit queryeindpunt meestal in uw chatbot of in de clienttoepassingscode die verbinding maakt met de QnA Maker-service. Deze sleutels worden gemaakt wanneer u uw QnA Maker-kennisbank publiceert.<br><br>Zoek deze toetsen op de pagina **Service-instellingen.** Zoek deze pagina in het menu van de gebruiker rechtsboven op de pagina in het vervolgkeuzemenu.|
+|Sleutel ontwerpen|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Deze sleutels worden gebruikt voor toegang tot de Api's van de [QnA Maker Management-service](https://go.microsoft.com/fwlink/?linkid=2092179). Met deze Api's kunt u de vragen en antwoorden in uw Knowledge Base bewerken en uw kennis database publiceren. Deze sleutels worden gemaakt wanneer u een nieuwe QnA Maker-service maakt.<br><br>Deze sleutels vindt u op de pagina **sleutels** van de **Cognitive Services** resource.|
+|Query-eindpunt sleutel|[QnA Maker-portal](https://www.qnamaker.ai)|Deze sleutels worden gebruikt om een query uit te geven op het gepubliceerde Knowledge Base-eind punt om een antwoord te krijgen op de vraag van een gebruiker. Normaal gesp roken gebruikt u dit query-eind punt in uw chat-bot of in de client toepassings code die verbinding maakt met de QnA Maker-service. Deze sleutels worden gemaakt wanneer u uw QnA Maker Knowledge Base publiceert.<br><br>Deze sleutels vindt u op de pagina **Service-instellingen** . Ga naar deze pagina vanuit het menu van de gebruiker in de rechter bovenhoek van de pagina in de vervolg keuzelijst.|
 
 ### <a name="subscription-keys"></a>Abonnementssleutels
 
-De termen authoring en query endpoint key zijn correctieve termen. De vorige termijn was **abonnementssleutel**. Als u andere documentatie ziet die verwijst naar abonnementssleutels, zijn deze gelijk aan het maken van ontwerp- en queryeindpuntsleutels (gebruikt in de runtime).
+De termen ontwerpen en query-eind punt sleutel zijn herstel voorwaarden. De vorige term is **abonnements sleutel**. Als u andere documentatie raadpleegt die verwijst naar abonnements sleutels, zijn deze gelijk aan de ontwerp-en query-eindpunt sleutels (gebruikt in de runtime).
 
-U moet weten wat de sleutel is toegang, knowledge base management of knowledge base querying, om te weten welke sleutel je moet vinden.
+U moet weten welke sleutel u wilt zoeken met beinformatie over de toegang tot de sleutel, het Knowledge Base-beheer of de Knowledge Base-query.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over de [kennisbank](knowledge-base.md) QnA Maker
-* Begrijp een [kennisbasis levenscyclus](development-lifecycle-knowledge-base.md)
-* Limieten voor service en kennisbasis [beoordelen](../limits.md)
+* Meer informatie over de QnA Maker [Knowledge Base](knowledge-base.md)
+* Inzicht in de [levens cyclus van een Knowledge Base](development-lifecycle-knowledge-base.md)
+* [Limieten](../limits.md) voor service-en Knowledge bases controleren
 

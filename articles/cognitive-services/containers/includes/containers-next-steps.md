@@ -1,5 +1,5 @@
 ---
-title: Volgende stappen containers
+title: Containers volgende stappen
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 3820d1d42449fe962c151655768c4aa063eb9529
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876070"
 ---
 ## <a name="next-steps"></a>Volgende stappen 
 
-Laten we blijven werken met Azure Cognitive Services-containers.
+Ga nu verder met het werken met Azure Cognitive Services-containers.
 
 > [!div class="nextstepaction"]
-> [Meer Cognitive Services-containers gebruiken](../../cognitive-services-container-support.md)
+> [Meer Cognitive Services containers gebruiken](../../cognitive-services-container-support.md)

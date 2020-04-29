@@ -1,55 +1,55 @@
 ---
-title: De REST API voor assetconversie
-description: Beschrijft hoe u een asset converteert via de REST API
+title: De activa conversie REST API
+description: Hierin wordt beschreven hoe u een Asset converteert via de REST API
 author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 38116efc9e87eca8e2514a0a84045a69b8d42326
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80887041"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>De REST API voor modelconversie gebruiken
 
-De [modelconversieservice](model-conversion.md) wordt beheerd via een [REST API.](https://en.wikipedia.org/wiki/Representational_state_transfer) In dit artikel worden de API-gegevens van de conversieservice beschreven.
+De [model conversie](model-conversion.md) service wordt beheerd via een [rest API](https://en.wikipedia.org/wiki/Representational_state_transfer). In dit artikel worden de API-Details van de conversie service beschreven.
 
 ## <a name="regions"></a>Regio's
 
-Zie de [lijst met beschikbare regio's](../../reference/regions.md) voor de basis-URL's waarnaar de aanvragen moeten worden verzonden.
+Bekijk de [lijst met beschik bare regio's](../../reference/regions.md) voor de basis-url's om de aanvragen naar te verzenden.
 
-## <a name="common-headers"></a>Algemene kopteksten
+## <a name="common-headers"></a>Algemene headers
 
-### <a name="common-request-headers"></a>Kopteksten met algemene aanvraag
+### <a name="common-request-headers"></a>Algemene aanvraag headers
 
-Deze kopteksten moeten voor alle aanvragen worden opgegeven:
+Deze headers moeten worden opgegeven voor alle aanvragen:
 
-- De **kopautorisatie** moet de waarde hebben van 'Toonder [*TOKEN]",* waarbij [*TOKEN]* een [no-to-servicetoegangstoken](../tokens.md)is.
+- De **autorisatie** -header moet de waarde ' Bearer [*token*] ' bevatten, waarbij [*token*] een [service toegangs token](../tokens.md)is.
 
-### <a name="common-response-headers"></a>Algemene antwoordkoppen
+### <a name="common-response-headers"></a>Algemene antwoord headers
 
 Alle antwoorden bevatten deze kopteksten:
 
-- De **MS-CV** header bevat een unieke tekenreeks die kan worden gebruikt om het gesprek binnen de service te traceren.
+- De kop **MS-CV** bevat een unieke teken reeks die kan worden gebruikt voor het traceren van de aanroep binnen de service.
 
 ## <a name="endpoints"></a>Eindpunten
 
-De conversieservice biedt drie REST API-eindpunten voor:
+De conversie service biedt drie REST API-eind punten voor het volgende:
 
-- modelconversie starten met een opslagaccount dat is gekoppeld aan uw Azure Remote Rendering-account. 
-- modelconversie starten met de *meegeleverde Shared Access Signatures (SAS).*
-- de conversiestatus opvragen
+- model conversie starten met behulp van een opslag account dat is gekoppeld aan uw Azure remote rendering-account. 
+- model conversie starten met behulp van de meegeleverde *SAS (Shared Access signatures)*.
+- query uitvoeren op de conversie status
 
-### <a name="start-conversion-using-a-linked-storage-account"></a>Conversie starten met een gekoppeld opslagaccount
-Uw Azure Remote Rendering Account moet toegang hebben tot het meegeleverde opslagaccount door de stappen te volgen over het [koppelen van opslagaccounts.](../create-an-account.md#link-storage-accounts)
+### <a name="start-conversion-using-a-linked-storage-account"></a>Conversie starten met een gekoppeld opslag account
+Uw Azure-account voor externe rendering moet toegang hebben tot het gegeven opslag account door de stappen te volgen voor het [koppelen van opslag accounts](../create-an-account.md#link-storage-accounts).
 
 | Eindpunt | Methode |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/conversies/maken | POST |
+| /v1/accounts/**accountID**/conversions/Create | POST |
 
-Retourneert de id van de lopende conversie, verpakt in een JSON-document. De veldnaam is "conversionId".
+Retourneert de ID van de actieve conversie, verpakt in een JSON-document. De veld naam is "conversionId".
 
 #### <a name="request-body"></a>Aanvraagbody
 
@@ -72,21 +72,21 @@ Retourneert de id van de lopende conversie, verpakt in een JSON-document. De vel
     }
 }
 ```
-### <a name="start-conversion-using-provided-shared-access-signatures"></a>Conversie starten met opgegeven handtekeningen voor gedeelde toegang
-Als uw ARR-account niet is gekoppeld aan uw opslagaccount, u met deze REST-interface toegang bieden met Behulp van *Shared Access Signatures (SAS).*
+### <a name="start-conversion-using-provided-shared-access-signatures"></a>Conversie starten met behulp van de meegeleverde hand tekeningen voor gedeelde toegang
+Als uw ARR-account niet is gekoppeld aan uw opslag account, kunt u met deze REST-interface toegang bieden met behulp van *Shared Access signatures (SAS)*.
 
 | Eindpunt | Methode |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/conversies/createWithSharedAccessSignature | POST |
+| /v1/accounts/**accountID**/conversions/createWithSharedAccessSignature | POST |
 
-Retourneert de id van de lopende conversie, verpakt in een JSON-document. De veldnaam is "conversionId".
+Retourneert de ID van de actieve conversie, verpakt in een JSON-document. De veld naam is "conversionId".
 
 #### <a name="request-body"></a>Aanvraagbody
 
-De aanvraaginstantie is hetzelfde als in de bovenstaande REST-aanroep maken, maar invoer en uitvoer bevatten *SAS-tokens (Shared Access Signatures).* Deze tokens bieden toegang tot het opslagaccount voor het lezen van de invoer en het schrijven van het conversieresultaat.
+De aanvraag tekst is hetzelfde als in de bovenstaande REST-aanroep maken, maar de invoer en uitvoer bevatten *SAS-tokens (Shared Access signatures)*. Deze tokens bieden toegang tot het opslag account voor het lezen van de invoer en het schrijven van het conversie resultaat.
 
 > [!NOTE]
-> Deze SAS URI-tokens zijn de querytekenreeksen en niet de volledige URI. 
+> Deze SAS URI-tokens zijn de query teken reeksen en niet de volledige URI. 
 
 
 ```json
@@ -110,23 +110,23 @@ De aanvraaginstantie is hetzelfde als in de bovenstaande REST-aanroep maken, maa
 }
 ```
 
-### <a name="poll-conversion-status"></a>Status van pollconversie
-De status van een doorlopende conversie die is gestart met een van de bovenstaande REST-aanroepen, kan worden opgevraagd via de volgende interface:
+### <a name="poll-conversion-status"></a>Status van poll conversie
+De status van een actieve conversie die is gestart met een van de bovenstaande REST-oproepen kan worden opgevraagd met behulp van de volgende Interface:
 
 
 | Eindpunt | Methode |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/conversies/**conversieId** | GET |
+| /v1/accounts/**accountID**/conversions/**conversionId** | GET |
 
-Retourneert een JSON-document met een veld 'status' dat de volgende waarden kan hebben:
+Retourneert een JSON-document met een status veld dat de volgende waarden kan hebben:
 
-- "Hardlopen"
-- "Succes"
-- "Mislukking"
+- Voer
+- Geleverd
+- Veroorzaakt
 
-Als de status 'Fout' is, wordt er een extra foutveld weergegeven met een subveld 'bericht', met foutgegevens. Extra logboeken worden geüpload naar uw uitvoercontainer.
+Als de status ' fout ' is, is er een extra ' fout ' veld met een subveld ' bericht ' met fout gegevens. Extra logboeken worden geüpload naar de uitvoer container.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Azure Blob Storage gebruiken voor modelconversie](blob-storage.md)
-- [Modelconversie](model-conversion.md)
+- [Model conversie](model-conversion.md)

@@ -1,52 +1,52 @@
 ---
 title: PowerShell-voorbeeldscripts
-description: Voorbeelden die laten zien hoe je de front-end gebruiken via PowerShell-scripts
+description: Voor beelden die laten zien hoe u de front-end kunt gebruiken via Power shell-scripts
 author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.openlocfilehash: c45d2fc34ccbab6d813f12563678d036f9f35753
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80891489"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-voorbeeldscripts
 
-Azure Remote Rendering biedt de volgende twee REST-API's:
+Externe rendering van Azure biedt de volgende twee REST-Api's:
 
-- [API voor conversierest](../how-tos/conversion/conversion-rest-api.md)
-- [API sessieREST](../how-tos/session-rest-api.md)
+- [Conversie REST API](../how-tos/conversion/conversion-rest-api.md)
+- [Sessie REST API](../how-tos/session-rest-api.md)
 
-De [ARR-voorbeeldopslagplaats](https://github.com/Azure/azure-remote-rendering) bevat voorbeeldscripts in de map *Scripts* voor interactie met de REST-API's van de service. In dit artikel wordt het gebruik ervan beschreven.
+De [opslag plaats met ARR](https://github.com/Azure/azure-remote-rendering) -voor beelden bevat voorbeeld scripts in de map *scripts* voor interactie met de rest api's van de service. In dit artikel wordt het gebruik beschreven.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de voorbeeldscripts wilt uitvoeren, hebt u een functionele installatie van [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)nodig.
+Als u de voorbeeld scripts wilt uitvoeren, hebt u een functionele installatie van [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)nodig.
 
 1. Azure PowerShell installeren:
-    1. Een PowerShell openen met beheerdersrechten
-    1. Uitvoeren:`Install-Module -Name Az -AllowClobber`
+    1. Open een Power shell met beheerders rechten
+    1. Uitvoeringsrun`Install-Module -Name Az -AllowClobber`
 
-1. Als er fouten worden gemaakt bij het uitvoeren van scripts, moet u ervoor zorgen dat uw [uitvoeringsbeleid](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) op de juiste manier is ingesteld:
-    1. Een PowerShell openen met beheerdersrechten
-    1. Uitvoeren:`Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
+1. Als er fouten optreden met het uitvoeren van scripts, zorgt u ervoor dat het [uitvoerings beleid](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) op de juiste wijze is ingesteld:
+    1. Open een Power shell met beheerders rechten
+    1. Uitvoeringsrun`Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 
 1. [Een Azure Storage-account voorbereiden](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
 
-1. Meld u aan bij uw abonnement met uw Azure Remote Rendering-account:
-    1. Een PowerShell openen
+1. Meld u aan bij uw abonnement dat uw Azure-account voor externe rendering bevat:
+    1. Een Power shell openen
     1. Uitvoeren: `Connect-AzAccount` en volg de aanwijzingen op het scherm.
 
 > [!NOTE]
-> Als uw organisatie meer dan één abonnement heeft, moet u mogelijk de argumenten SubscriptionId en Tenant opgeven. Meer informatie vindt u in de [connect-azaccount-documentatie.](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)
+> Als uw organisatie meer dan één abonnement heeft, moet u mogelijk de argumenten SubscriptionId en Tenant opgeven. Meer informatie vindt u in de [documentatie van Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
 
-1. Download de map *Scripts* in de [Azure Remote Rendering GithHub-repository.](https://github.com/Azure/azure-remote-rendering)
+1. Down load de map *scripts* van de [Azure remote rendering GithHub-opslag plaats](https://github.com/Azure/azure-remote-rendering).
 
 ## <a name="configuration-file"></a>Configuratiebestand
 
-Naast de `.ps1` bestanden is `arrconfig.json` er een die je moet invullen:
+Naast de bestanden `.ps1` `arrconfig.json` die u nodig hebt om het volgende in te vullen:
 
 ```json
 {
@@ -74,74 +74,74 @@ Naast de `.ps1` bestanden is `arrconfig.json` er een die je moet invullen:
 ```
 
 > [!CAUTION]
-> Zorg ervoor dat u backslashes in het LocalAssetDirectoryPath-pad\\\\goed verwijderen door dubbele backslashes te gebruiken: en voorwaartse slashes / te gebruiken in alle andere paden zoals inputFolderPath en inputAssetPath.
+> Zorg ervoor dat backslashes in het pad naar de LocalAssetDirectoryPath juist worden door gebruik te maken van\\\\dubbele backslashes: "" en slashes gebruiken "/" in alle andere paden zoals inputFolderPath en inputAssetPath.
 
-### <a name="accountsettings"></a>accountInstellingen
+### <a name="accountsettings"></a>accountSettings
 
-Zie `arrAccountId` `arrAccountKey`Een [Azure Remote Rendering-account maken voor](../how-tos/create-an-account.md)en zie Een Azure Remote Rendering-account maken .
-Zie `region` de [lijst met beschikbare regio's](../reference/regions.md)voor zie .
+Zie `arrAccountId` `arrAccountKey` [een Azure remote rendering-account maken](../how-tos/create-an-account.md)voor en.
+Zie `region` voor een [lijst met beschik bare regio's](../reference/regions.md).
 
 ### <a name="renderingsessionsettings"></a>renderingSessionSettings
 
-Deze structuur moet worden ingevuld als u **RenderingSession.ps1**wilt uitvoeren.
+Deze structuur moet worden ingevuld als u **RenderingSession. ps1**wilt uitvoeren.
 
-- **vmSize:** Hiermee selecteert u de grootte van de virtuele machine. Selecteer *standaard* of *premium*. Schakel renderingsessies uit als je ze niet meer nodig hebt.
-- **maxLeaseTime:** De duur waarvoor u de VM wilt leasen. Het zal worden stilgelegd wanneer de huurovereenkomst afloopt. De leasetijd kan later worden verlengd (zie hieronder).
+- **vmSize:** Hiermee selecteert u de grootte van de virtuele machine. Selecteer *standaard* of *Premium*. Schakel rendering-sessies uit wanneer u deze niet meer nodig hebt.
+- **maxLeaseTime:** De duur waarvoor u de virtuele machine wilt leasen. Het wordt afgesloten wanneer de lease verloopt. De lease tijd kan later worden verlengd (zie hieronder).
 
-### <a name="assetconversionsettings"></a>assetConversieinstellingen
+### <a name="assetconversionsettings"></a>assetConversionSettings
 
-Deze structuur moet worden ingevuld als u **Conversion.ps1**wilt uitvoeren.
+Deze structuur moet worden ingevuld als u **Conversion. ps1**wilt uitvoeren.
 
-Zie Een [Azure Storage-account voorbereiden](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)voor meer informatie .
+Zie [een Azure Storage-account voorbereiden](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)voor meer informatie.
 
-## <a name="script-renderingsessionps1"></a>Script: RenderingSession.ps1
+## <a name="script-renderingsessionps1"></a>Script: RenderingSession. ps1
 
-Dit script wordt gebruikt voor het maken, query's en stoppen met renderingsessies.
+Dit script wordt gebruikt om rendering van sessies te maken, op te vragen en te stoppen.
 
 > [!IMPORTANT]
-> Zorg ervoor dat je de secties *AccountInstellingen* en *renderingSessionSettings* in arrconfig.json hebt ingevuld.
+> Zorg ervoor dat u de *accountSettings* -en *renderingSessionSettings* -secties in arrconfig. json hebt ingevuld.
 
-### <a name="create-a-rendering-session"></a>Een renderingsessie maken
+### <a name="create-a-rendering-session"></a>Een rendering-sessie maken
 
-Normaal gebruik met een volledig ingevuldarrconfig.json:
+Normaal gebruik met een volledig ingevuld arrconfig. json:
 
 ```PowerShell
 .\RenderingSession.ps1
 ```
 
-Het script roept de [REST API voor sessiebeheer](../how-tos/session-rest-api.md) aan om een rendering VM met de opgegeven instellingen op te draaien. Bij succes, zal het de *sessionId*ophalen. Vervolgens wordt de sessie-eigenschappen gepeild totdat de sessie klaar is of er een fout is opgetreden.
+Het script roept de [rest API voor sessie beheer](../how-tos/session-rest-api.md) aan om een RENDERING-VM te maken met de opgegeven instellingen. Als dit is gelukt, wordt de *sessie-id*opgehaald. Vervolgens worden de sessie-eigenschappen gecontroleerd totdat de sessie gereed is of er een fout is opgetreden.
 
-Ga als een **alternatief config-bestand** te werk:
+Een **alternatief configuratie** bestand gebruiken:
 
 ```PowerShell
 .\RenderingSession.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-U afzonderlijke instellingen uit het config-bestand **overschrijven:**
+U kunt de **afzonderlijke instellingen** van het configuratie bestand overschrijven:
 
 ```PowerShell
 .\RenderingSession.ps1 -Region <region> -VmSize <vmsize> -MaxLeaseTime <hh:mm:ss>
 ```
 
-Als u een sessie alleen **wilt starten zonder polling,** u het als:
+Als u alleen **een sessie zonder polling wilt starten**, kunt u het volgende gebruiken:
 
 ```PowerShell
 .\RenderingSession.ps1 -CreateSession
 ```
 
-De *sessionId* die het script ophaalt, moet worden doorgegeven aan de meeste andere sessieopdrachten.
+De *sessie-id* die door het script wordt opgehaald, moet worden door gegeven aan de meeste andere sessie opdrachten.
 
 ### <a name="retrieve-session-properties"></a>Sessie-eigenschappen ophalen
 
-Voer het als instellen dat de eigenschappen van een sessie worden uitgevoerd:
+Als u de eigenschappen van een sessie wilt ophalen, voert u de volgende handelingen uit:
 
 ```PowerShell
 .\RenderingSession.ps1 -GetSessionProperties -Id <sessionID> [-Poll]
 ```
 
-Als `-Poll` u wilt wachten tot de sessie *gereed* is of er een fout is opgetreden.
+Gebruik `-Poll` om te wachten tot de sessie *gereed* is of er is een fout opgetreden.
 
-### <a name="list-active-sessions"></a>Actieve sessies weergeven
+### <a name="list-active-sessions"></a>Actieve sessies weer geven
 
 ```PowerShell
 .\RenderingSession.ps1 -GetSessions
@@ -158,116 +158,116 @@ Als `-Poll` u wilt wachten tot de sessie *gereed* is of er een fout is opgetrede
 Op dit moment ondersteunen we alleen het wijzigen van de maxLeaseTime van een sessie.
 
 > [!NOTE]
-> De leasetijd wordt altijd meegeteld vanaf het moment dat de sessie-VM in eerste instantie werd gemaakt. Dus om de sessie lease te verlengen met een uur, verhoging *maxLeaseTime* met een uur.
+> De lease tijd wordt altijd geteld vanaf het moment dat de sessie-VM voor het eerst is gemaakt. Als u de sessie lease met een ander uur wilt uitbreiden, verhoogt u *maxLeaseTime* met één uur.
 
 ```PowerShell
 .\RenderingSession.ps1 -UpdateSession -Id <sessionID> -MaxLeaseTime <hh:mm:ss>
 ```
 
-## <a name="script-conversionps1"></a>Script: Conversion.ps1
+## <a name="script-conversionps1"></a>Script: Conversion. ps1
 
-Dit script wordt gebruikt om invoermodellen om te zetten in de specifieke runtime-indeling azure extern renderen.
+Dit script wordt gebruikt om invoer modellen te converteren naar de runtime-indeling van de externe rendering van Azure.
 
 > [!IMPORTANT]
-> Zorg ervoor dat je de secties *AccountInstellingen* en *assetConversionSettings* in arrconfig.json hebt ingevuld.
+> Zorg ervoor dat u de *accountSettings* -en *assetConversionSettings* -secties in arrconfig. json hebt ingevuld.
 
-Het script toont de twee opties om opslagaccounts met de service te gebruiken:
+Het script illustreert de twee opties voor het gebruik van opslag accounts bij de service:
 
-- Opslagaccount gekoppeld aan Azure Remote Rendering Account
-- Toegang bieden tot opslag via Shared Access Signatures (SAS)
+- Opslag account gekoppeld aan Azure remote rendering-account
+- Toegang verlenen tot opslag via Shared Access signatures (SAS)
 
-### <a name="linked-storage-account"></a>Gekoppelde opslagaccount
+### <a name="linked-storage-account"></a>Gekoppeld opslag account
 
-Zodra je arrconfig.json volledig hebt ingevuld en een opslagaccount hebt gekoppeld, kun je de volgende opdracht gebruiken. Het koppelen van uw opslagaccount wordt beschreven bij [Een account maken.](../how-tos/create-an-account.md#link-storage-accounts)
+Wanneer u arrconfig. json volledig hebt ingevuld en een opslag account hebt gekoppeld, kunt u de volgende opdracht gebruiken. Het koppelen van uw opslag account wordt beschreven in [een account maken](../how-tos/create-an-account.md#link-storage-accounts).
 
-Het gebruik van een gekoppeld opslagaccount is de beste manier om de conversieservice te gebruiken, omdat het niet nodig is om handtekeningen voor gedeelde toegang te genereren.
+Het gebruik van een gekoppeld opslag account is de voorkeurs manier om de conversie service te gebruiken omdat er geen gedeelde toegangs handtekeningen hoeven te worden gegenereerd.
 
 ```PowerShell
 .\Conversion.ps1
 ```
 
-1. Upload alle bestanden in `assetConversionSettings.modelLocation` de invoerblobcontainer onder de opgegeven`inputFolderPath`
-1. Roep de [REST API voor modelconversie](../how-tos/conversion/conversion-rest-api.md) om de [modelconversie](../how-tos/conversion/model-conversion.md) te starten
-1. De conversiestatus peilen totdat de conversie is geslaagd of mislukt
-1. Uitvoergegevens van de geconverteerde bestandslocatie (opslagaccount, uitvoercontainer, bestandspad in de container)
+1. Upload alle bestanden die zijn opgenomen `assetConversionSettings.modelLocation` in de naar de container invoer-BLOB onder de opgegeven`inputFolderPath`
+1. De [model conversie rest API](../how-tos/conversion/conversion-rest-api.md) aanroepen om de [model conversie](../how-tos/conversion/model-conversion.md) te starten
+1. De conversie status pollen totdat de conversie is geslaagd of mislukt
+1. Uitvoer Details van de geconverteerde bestands locatie (opslag account, uitvoer container en bestandspad in de container)
 
-### <a name="access-to-storage-via-shared-access-signatures"></a>Toegang tot opslag via handtekeningen voor gedeelde toegang
+### <a name="access-to-storage-via-shared-access-signatures"></a>Toegang tot opslag via Shared Access signatures
 
 ```PowerShell
 .\Conversion.ps1 -UseContainerSas
 ```
 
-Dit zal:
+Dit is:
 
-1. Het lokale bestand `assetConversionSettings.localAssetDirectoryPath` uploaden van de invoerblobcontainer naar de invoerblob
-1. Een SAS URI genereren voor de invoercontainer
-1. Een SAS URI genereren voor de uitvoercontainer
-1. Roep de [REST API voor modelconversie](../how-tos/conversion/conversion-rest-api.md) om de [modelconversie](../how-tos/conversion/model-conversion.md) te starten
-1. De conversiestatus peilen totdat de conversie is geslaagd of mislukt
-1. Uitvoergegevens van de geconverteerde bestandslocatie (opslagaccount, uitvoercontainer, bestandspad in de container)
-1. Een SAS URI uitzetten naar het geconverteerde model in de uitvoerblobcontainer
+1. Upload het lokale bestand van de `assetConversionSettings.localAssetDirectoryPath` naar de BLOB-container voor invoer
+1. Een SAS-URI voor de invoer container genereren
+1. Een SAS-URI voor de uitvoer container genereren
+1. De [model conversie rest API](../how-tos/conversion/conversion-rest-api.md) aanroepen om de [model conversie](../how-tos/conversion/model-conversion.md) te starten
+1. De conversie status pollen totdat de conversie is geslaagd of mislukt
+1. Uitvoer Details van de geconverteerde bestands locatie (opslag account, uitvoer container en bestandspad in de container)
+1. Uitvoer van een SAS-URI naar het geconverteerde model in de uitvoer BLOB-container
 
-### <a name="additional-command-line-options"></a>Aanvullende opdrachtregelopties
+### <a name="additional-command-line-options"></a>Aanvullende opdracht regel opties
 
-Ga als een **alternatief config-bestand** te werk:
+Een **alternatief configuratie** bestand gebruiken:
 
 ```PowerShell
 .\Conversion.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-Als u alleen **modelconversie wilt starten zonder polling,** u het als:
+Als u **model conversie alleen wilt starten zonder polling**, kunt u het volgende gebruiken:
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset
 ```
 
-U afzonderlijke instellingen uit het config-bestand **overschrijven** met de volgende opdrachtregelswitches:
+U kunt de **afzonderlijke instellingen** van het configuratie bestand overschrijven met de volgende opdracht regel opties:
 
 * **Id:** ConversionId gebruikt met GetConversionStatus
-* **ArrAccountId:** arrAccountId van accountInstellingen
-* **ArrAccountKey:** overschrijven voor arrAccountKey van accountInstellingen
-* **Regio:** overschrijven voor regio van accountInstellingen
-* **ResourceGroup:** overschrijven voor resourceGroep van assetConversionSettings
-* **StorageAccountName:** overschrijven voor storageAccountName van assetConversionSettings
-* **BlobInputContainerName:** overschrijven voor blobInputContainer van assetConversionSettings
-* **LocalAssetDirectoryPath:** overschrijven voor localAssetDirectoryPath van assetConversionSettings
-* **InputAssetPath:** overschrijven voor invoerAssetPath van assetConversionSettings
-* **BlobOutputContainerName:** overschrijven voor blobOutputContainerName van assetConversieinstellingen
-* **OutputFolderPath:** overschrijven voor de uitvoerMapPath van assetConversieInstellingen
-* **OutputAssetFileName:** overschrijven voor uitvoerAssetFileName van assetConversieinstellingen
+* **ArrAccountId:** ArrAccountId van accountSettings
+* **ArrAccountKey:** overschrijven voor ArrAccountKey van accountSettings
+* **Regio:** overschrijven voor regio accountSettings
+* **ResourceGroup:** overschrijven voor ResourceGroup van assetConversionSettings
+* **StorageAccountName:** overschrijven voor StorageAccountName van assetConversionSettings
+* **BlobInputContainerName:** overschrijven voor BlobInputContainer van assetConversionSettings
+* **LocalAssetDirectoryPath:** overschrijven voor LocalAssetDirectoryPath van assetConversionSettings
+* **InputAssetPath:** overschrijven voor InputAssetPath van assetConversionSettings
+* **BlobOutputContainerName:** overschrijven voor BlobOutputContainerName van assetConversionSettings
+* **OutputFolderPath:** overschrijven voor de OutputFolderPath van assetConversionSettings
+* **OutputAssetFileName:** overschrijven voor OutputAssetFileName van assetConversionSettings
 
-U bijvoorbeeld een aantal van de gegeven opties als deze combineren:
+U kunt bijvoorbeeld een aantal van de opgegeven opties combi neren:
 
 ```PowerShell
 .\Conversion.ps1 -LocalAssetDirectoryPath "C:\\models\\box" -InputAssetPath box.fbx -OutputFolderPath another/converted/box -OutputAssetFileName newConversionBox.arrAsset
 ```
 
-### <a name="run-the-individual-conversion-stages"></a>De afzonderlijke conversiefasen uitvoeren
+### <a name="run-the-individual-conversion-stages"></a>De afzonderlijke conversie fasen uitvoeren
 
-Als u afzonderlijke stappen van het proces wilt uitvoeren, u het volgende gebruiken:
+Als u afzonderlijke stappen van het proces wilt uitvoeren, kunt u het volgende gebruiken:
 
-Upload alleen gegevens van de opgegeven LocalAssetDirectoryPath
+Alleen gegevens uit de opgegeven LocalAssetDirectoryPath uploaden
 
 ```PowerShell
 .\Conversion.ps1 -Upload
 ```
 
-Start alleen het conversieproces van een model dat al is geüpload naar blobopslag (niet uploaden, peil de conversiestatus niet) Het script retourneert een *conversieId.*
+Het conversie proces van een model dat al is geüpload naar de Blob-opslag starten (niet uitvoeren, de conversie status niet controleren) het script retourneert een *conversionId*.
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset
 ```
 
-En u de conversiestatus van deze conversie ophalen met:
+En u kunt de conversie status van deze conversie ophalen met behulp van:
 
 ```PowerShell
 .\Conversion.ps1 -GetConversionStatus -Id <conversionId> [-Poll]
 ```
 
-Met `-Poll` gebruiken om te wachten tot de conversie is gedaan of er een fout is opgetreden.
+Gebruik `-Poll` om te wachten tot de conversie is voltooid of er is een fout opgetreden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Snelstart: een model weergeven met Unity](../quickstarts/render-model.md)
-- [Snelstart: een model converteren voor rendering](../quickstarts/convert-model.md)
-- [Modelconversie](../how-tos/conversion/model-conversion.md)
+- [Quick Start: een model met Unit renderen](../quickstarts/render-model.md)
+- [Snelstartgids: een model voor rendering converteren](../quickstarts/convert-model.md)
+- [Model conversie](../how-tos/conversion/model-conversion.md)

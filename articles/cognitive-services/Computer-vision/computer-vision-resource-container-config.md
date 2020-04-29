@@ -1,7 +1,7 @@
 ---
-title: Containers configureren - Computer Vision
+title: Containers configureren-Computer Vision
 titleSuffix: Azure Cognitive Services
-description: In dit artikel ziet u hoe u zowel de vereiste als de optionele instellingen voor Tekstcontainers herkennen in Computer Vision configureert.
+description: In dit artikel wordt beschreven hoe u de vereiste en optionele instellingen voor Tekst herkennen containers in Computer Vision kunt configureren.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,58 +12,58 @@ ms.date: 04/01/2020
 ms.author: aahi
 ms.custom: seodec18
 ms.openlocfilehash: 3be302019c712c13bd29d7ed3781151a1648e847
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80879306"
 ---
-# <a name="configure-computer-vision-docker-containers"></a>Computer Vision Docker-containers configureren
+# <a name="configure-computer-vision-docker-containers"></a>Computer Vision docker-containers configureren
 
-U configureert de runtime-omgeving van `docker run` de Computer Vision-container met behulp van de opdrachtargumenten. Deze container heeft verschillende vereiste instellingen, samen met een paar optionele instellingen. Er zijn verschillende [voorbeelden](#example-docker-run-commands) van de opdracht beschikbaar. De containerspecifieke instellingen zijn de factureringsinstellingen. 
+U configureert de runtime-omgeving van de Computer Vision-container `docker run` met behulp van de opdracht argumenten. Deze container heeft verschillende vereiste instellingen, samen met enkele optionele instellingen. Er zijn verschillende [voor beelden](#example-docker-run-commands) van de opdracht beschikbaar. De container-specifieke instellingen zijn de facturerings instellingen. 
 
 ## <a name="configuration-settings"></a>Configuratie-instellingen
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> De [`ApiKey`](#apikey-configuration-setting) [`Billing`](#billing-configuration-setting), [`Eula`](#eula-setting) , en instellingen worden samen gebruikt, en u moet geldige waarden voor alle drie van hen; anders start uw container niet. Zie Facturering voor meer informatie over het gebruik van deze configuratie-instellingen om een container te [instantiëren.](computer-vision-how-to-install-containers.md)
+> De [`ApiKey`](#apikey-configuration-setting)instellingen [`Billing`](#billing-configuration-setting), en [`Eula`](#eula-setting) worden samen gebruikt en u moet geldige waarden opgeven voor alle drie deze. anders kan de container niet worden gestart. Zie [facturering](computer-vision-how-to-install-containers.md)voor meer informatie over het gebruik van deze configuratie-instellingen voor het instantiëren van een container.
 
-## <a name="apikey-configuration-setting"></a>ApiKey-configuratie-instelling
+## <a name="apikey-configuration-setting"></a>Configuratie-instelling ApiKey
 
-De `ApiKey` instelling geeft `Cognitive Services` de Azure-bronsleutel op die wordt gebruikt om factureringsgegevens voor de container bij te houden. U moet een waarde opgeven voor de ApiKey en de waarde moet [`Billing`](#billing-configuration-setting) een geldige sleutel zijn voor de resource Cognitive _Services_ die is opgegeven voor de configuratie-instelling.
+Met `ApiKey` deze instelling geeft u `Cognitive Services` de Azure-resource sleutel op die wordt gebruikt voor het bijhouden van facturerings gegevens voor de container. U moet een waarde opgeven voor de ApiKey en de waarde moet een geldige sleutel zijn voor de _Cognitive Services_ bron die is opgegeven [`Billing`](#billing-configuration-setting) voor de configuratie-instelling.
 
-Deze instelling is te vinden op de volgende plaats:
+Deze instelling bevindt zich op de volgende locatie:
 
-* Azure-portal: **Resourcebeheer van cognitive services,** onder **toetsen**
+* Azure Portal: **Cognitive Services** Resource Management onder **sleutels**
 
-## <a name="applicationinsights-setting"></a>Instelling ApplicationInsights
+## <a name="applicationinsights-setting"></a>ApplicationInsights-instelling
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
-## <a name="billing-configuration-setting"></a>Instelling voor factureringsconfiguratie
+## <a name="billing-configuration-setting"></a>Instelling facturerings configuratie
 
-De `Billing` instelling geeft het eindpunt URI op van de _resource Cognitive Services_ op Azure die wordt gebruikt om factureringsgegevens voor de container te meten. U moet een waarde opgeven voor deze configuratie-instelling en de waarde moet een geldig eindpunt URI zijn voor een _resource cognitive services_ op Azure. De container rapporteert het gebruik ongeveer elke 10 tot 15 minuten.
+Met `Billing` deze instelling geeft u de EINDPUNT-URI op van de _Cognitive Services_ resource op Azure die wordt gebruikt om de facturerings gegevens voor de container te meten. U moet een waarde opgeven voor deze configuratie-instelling en de waarde moet een geldige eindpunt-URI zijn voor een _Cognitive Services_ resource in Azure. De container rapporteert het gebruik ongeveer elke 10 tot 15 minuten.
 
-Deze instelling is te vinden op de volgende plaats:
+Deze instelling bevindt zich op de volgende locatie:
 
-* Azure-portal: overzicht **van cognitieve services,** gelabeld`Endpoint`
+* Azure Portal: **Cognitive Services** overzicht, met het label`Endpoint`
 
-Vergeet niet `vision/v1.0` om de routeroutering toe te voegen aan het eindpunt URI zoals weergegeven in de volgende tabel. 
+Vergeet niet om de `vision/v1.0` route ring toe te voegen aan de URI van het eind punt, zoals wordt weer gegeven in de volgende tabel. 
 
-|Vereist| Name | Gegevenstype | Beschrijving |
+|Vereist| Naam | Gegevenstype | Beschrijving |
 |--|------|-----------|-------------|
-|Ja| `Billing` | Tekenreeks | Factureringseindpunt URI<br><br>Voorbeeld:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
+|Ja| `Billing` | Tekenreeks | URL van het facturerings eindpunt<br><br>Voorbeeld:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
-## <a name="eula-setting"></a>Eula-instelling
+## <a name="eula-setting"></a>Gebruiksrecht overeenkomst instellen
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Vloeiende instellingen
+## <a name="fluentd-settings"></a>Gefluente instellingen
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>HTTP-proxyreferenties instellingen
+## <a name="http-proxy-credentials-settings"></a>Instellingen voor HTTP-proxy referenties
 
 [!INCLUDE [Container shared configuration HTTP proxy settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
@@ -71,44 +71,44 @@ Vergeet niet `vision/v1.0` om de routeroutering toe te voegen aan het eindpunt U
  
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
-## <a name="mount-settings"></a>Montage-instellingen
+## <a name="mount-settings"></a>Koppelings instellingen
 
-Gebruik bindingsbevestigingen om gegevens van en naar de container te lezen en te schrijven. U een invoermount of uitvoerbevestiging `--mount` opgeven door de optie op te geven in de opdracht [Docker run.](https://docs.docker.com/engine/reference/commandline/run/)
+Gebruik bindings koppelingen om gegevens van en naar de container te lezen en te schrijven. U kunt een invoer koppeling of uitvoer koppeling opgeven door de `--mount` optie op te geven in de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) .
 
-De Computer Vision-containers gebruiken geen invoer- of uitvoerbevestigingen om trainings- of servicegegevens op te slaan. 
+De Computer Vision-containers gebruiken geen invoer-of uitvoer koppelingen om training of service gegevens op te slaan. 
 
-De exacte syntaxis van de hostmountlocatie is afhankelijk van het hostbesturingssysteem. Bovendien is de locatie van de [hostcomputer](computer-vision-how-to-install-containers.md#the-host-computer)mogelijk niet toegankelijk vanwege een conflict tussen machtigingen die worden gebruikt door het Docker-serviceaccount en de locatiemachtigingen voor de hostmount. 
+De exacte syntaxis van de locatie voor het koppelen van de host varieert, afhankelijk van het besturings systeem van de host. Daarnaast is de koppel locatie van de [hostcomputer](computer-vision-how-to-install-containers.md#the-host-computer)mogelijk niet toegankelijk als gevolg van een conflict tussen de machtigingen die worden gebruikt door het docker-service account en de machtigingen voor het koppelen van de host-locatie. 
 
-|Optioneel| Name | Gegevenstype | Beschrijving |
+|Optioneel| Naam | Gegevenstype | Beschrijving |
 |-------|------|-----------|-------------|
-|Niet toegestaan| `Input` | Tekenreeks | Computer Vision containers maken hier geen gebruik van.|
-|Optioneel| `Output` | Tekenreeks | Het doel van de uitgangsberg. De standaardwaarde is `/output`. Dit is de locatie van de logs. Dit geldt ook voor containerlogboeken. <br><br>Voorbeeld:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Niet toegestaan| `Input` | Tekenreeks | Computer Vision containers gebruiken deze niet.|
+|Optioneel| `Output` | Tekenreeks | Het doel van de uitvoer koppeling. De standaardwaarde is `/output`. Dit is de locatie van de logboeken. Dit omvat container Logboeken. <br><br>Voorbeeld:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Voorbeeld van opdrachten voor docker-uitgevoerd
+## <a name="example-docker-run-commands"></a>Voor beeld van docker-opdrachten uitvoeren
 
-In de volgende voorbeelden worden de configuratie-instellingen `docker run` gebruikt om te illustreren hoe u opdrachten schrijven en gebruiken.  Eenmaal uitgevoerd, de container blijft draaien totdat u [het stopt.](computer-vision-how-to-install-containers.md#stop-the-container)
+De volgende voor beelden gebruiken de configuratie-instellingen om te laten zien hoe u `docker run` -opdrachten schrijft en gebruikt.  Als de container eenmaal wordt uitgevoerd, blijft deze actief totdat u deze [stopt](computer-vision-how-to-install-containers.md#stop-the-container) .
 
-* **Line-continuation teken**: De Docker commando's in `\`de volgende secties gebruiken de back slash, als een lijn voortzetting teken. Vervang of verwijder dit op basis van de vereisten van uw hostbesturingssysteem. 
-* **Argumentvolgorde:** Wijzig de volgorde van de argumenten niet, tenzij u zeer vertrouwd bent met Docker-containers.
+* **Regel voortzettings teken**: de docker-opdrachten in de volgende secties gebruiken de back slash `\`,, als een regel voortzettings teken. Vervang of verwijder dit op basis van de vereisten van uw host-besturings systeem. 
+* **Argument volgorde**: Wijzig de volg orde van de argumenten niet, tenzij u bekend bent met docker-containers.
 
 Vervang {_argument_name_} door uw eigen waarden:
 
-| Tijdelijke aanduiding | Waarde | Opmaak of voorbeeld |
+| Tijdelijke aanduiding | Waarde | Notatie of voor beeld |
 |-------------|-------|---|
-| **{API_KEY}** | De eindpuntsleutel van `Computer Vision` de bron `Computer Vision` op de pagina Azure Keys. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
-| **{ENDPOINT_URI}** | De waarde van het factureringseindpunt is beschikbaar op de pagina Azure-overzicht. `Computer Vision`| Zie [het verzamelen van vereiste parameters](computer-vision-how-to-install-containers.md#gathering-required-parameters) voor expliciete voorbeelden. |
+| **{API_KEY}** | De eindpunt sleutel van de `Computer Vision` resource op de pagina `Computer Vision` Azure-sleutels. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | De waarde van het facturerings eindpunt is beschikbaar `Computer Vision` op de pagina overzicht van Azure.| Zie [vereiste para meters](computer-vision-how-to-install-containers.md#gathering-required-parameters) voor expliciete voor beelden verzamelen. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> De `Eula` `Billing`opties `ApiKey` en de opties moeten worden opgegeven om de container uit te voeren; Anders start de container niet.  Zie [Facturering voor](computer-vision-how-to-install-containers.md#billing)meer informatie.
-> De ApiKey-waarde **Key** is de `Cognitive Services` sleutel van de pagina Azure Resource-sleutels.
+> De `Eula`opties `Billing`, en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](computer-vision-how-to-install-containers.md#billing)voor meer informatie.
+> De ApiKey-waarde is de **sleutel** van de `Cognitive Services` pagina Azure-resource sleutels.
 
-## <a name="container-docker-examples"></a>Voorbeelden van Container Docker
+## <a name="container-docker-examples"></a>Voor beelden van container docker
 
-De volgende Docker-voorbeelden zijn voor de leescontainer.
+De volgende docker-voor beelden zijn voor de Lees-container.
 
-### <a name="basic-example"></a>Basisvoorbeeld
+### <a name="basic-example"></a>Basis voorbeeld
 
   ```docker
   docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
@@ -118,7 +118,7 @@ De volgende Docker-voorbeelden zijn voor de leescontainer.
   ApiKey={API_KEY} 
   ```
 
-### <a name="logging-example"></a>Voorbeeld van logboekregistratie 
+### <a name="logging-example"></a>Voor beeld van logboek registratie 
 
   ```docker
   docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
@@ -131,4 +131,4 @@ De volgende Docker-voorbeelden zijn voor de leescontainer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijk [hoe u containers installeert en uitvoert.](computer-vision-how-to-install-containers.md)
+* Lees [hoe u containers installeert en uitvoert](computer-vision-how-to-install-containers.md).

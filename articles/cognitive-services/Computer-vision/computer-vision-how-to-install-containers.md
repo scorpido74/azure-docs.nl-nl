@@ -1,7 +1,7 @@
 ---
-title: Containers installeren en uitvoeren - Computer Vision
+title: Containers installeren en uitvoeren-Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Hoe containers voor Computer Vision te downloaden, te installeren en uit te voeren in deze walkthrough-zelfstudie.
+description: Instructies voor het downloaden, installeren en uitvoeren van Computer Vision in deze stapsgewijze zelf studie.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,31 +12,31 @@ ms.date: 04/01/2020
 ms.author: aahi
 ms.custom: seodec18
 ms.openlocfilehash: 5f36c429041a8182551d1f077f0a1229f520e8c1
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80879340"
 ---
-# <a name="install-and-run-read-containers-preview"></a>Lees-containers installeren en uitvoeren (voorbeeld)
+# <a name="install-and-run-read-containers-preview"></a>Lees containers installeren en uitvoeren (preview-versie)
 
-Met containers u de Computer Vision API's in uw eigen omgeving uitvoeren. Containers zijn ideaal voor specifieke vereisten op het gebied van beveiliging en gegevensbeheer. In dit artikel leert u hoe u een Computer Vision-container downloaden, installeren en uitvoeren.
+Met containers kunt u de Computer Vision-Api's uitvoeren in uw eigen omgeving. Containers zijn geweldig voor specifieke vereisten voor beveiliging en gegevens beheer. In dit artikel leert u hoe u een Computer Vision-container downloadt, installeert en uitvoert.
 
-Een enkele Docker-container, *Read*, is beschikbaar voor Computer Vision. Met de *leescontainer* u *afgedrukte tekst* detecteren en extraheren uit afbeeldingen van verschillende objecten met verschillende oppervlakken en achtergronden, zoals ontvangstbewijzen, posters en visitekaartjes. Daarnaast detecteert de *container Lezen* *handgeschreven tekst* in afbeeldingen en biedt het PDF-, TIFF- en meerpaginabestandsondersteuning. Zie de [API-documentatie lezen](concept-recognizing-text.md#read-api) voor meer informatie.
+Er is een afzonderlijke docker-container, *gelezen*, beschikbaar voor computer vision. De *Lees* container stelt u in staat om *gedrukte tekst* te detecteren en uit te pakken van afbeeldingen van verschillende objecten met verschillende Opper vlakken en achtergronden, zoals bevestigingen, posters en visite kaartjes. Daarnaast detecteert de *Lees* container *handgeschreven tekst* in afbeeldingen en biedt PDF, TIFF en ondersteuning voor meerdere pagina's. Zie de [Lees](concept-recognizing-text.md#read-api) API-documentatie voor meer informatie.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet aan de volgende voorwaarden voldoen voordat u de containers gebruikt:
+U moet voldoen aan de volgende vereisten voordat u de containers gebruikt:
 
 |Vereist|Doel|
 |--|--|
-|Docker-engine| U moet de Docker Engine geïnstalleerd op een [hostcomputer.](#the-host-computer) Docker biedt pakketten waarmee de Docker-omgeving op [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) en [Linux](https://docs.docker.com/engine/installation/#supported-platforms) kan worden geconfigureerd. Zie het [Docker-overzicht](https://docs.docker.com/engine/docker-overview/) voor een inleiding tot de basisprincipes van Docker en containers.<br><br> Docker moet zijn geconfigureerd om de containers in staat te stellen verbinding te maken met en factureringsgegevens naar Azure te verzenden. <br><br> **Op Windows**moet Docker ook zijn geconfigureerd om Linux-containers te ondersteunen.<br><br>|
-|Vertrouwdheid met Docker | U moet een basiskennis hebben van Docker-concepten, zoals registers, opslagplaatsen, containers en `docker` containerafbeeldingen, evenals kennis van basisopdrachten.| 
-|Computer Vision-bron |Om de container te kunnen gebruiken, moet u beschikken over:<br><br>Een Azure **Computer Vision-bron** en de bijbehorende API-sleutel het eindpunt URI. Beide waarden zijn beschikbaar op de pagina's Overzicht en Sleutels voor de resource en zijn vereist om de container te starten.<br><br>**{API_KEY}**: Een van de twee beschikbare resourcesleutels op de pagina **Sleutels**<br><br>**{ENDPOINT_URI}**: Het eindpunt zoals vermeld op de **pagina Overzicht**|
+|Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten waarmee de Docker-omgeving op [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) en [Linux](https://docs.docker.com/engine/installation/#supported-platforms) kan worden geconfigureerd. Zie het [Docker-overzicht](https://docs.docker.com/engine/docker-overview/) voor een inleiding tot de basisprincipes van Docker en containers.<br><br> Docker moet worden geconfigureerd zodat de containers verbinding kunnen maken met en facturerings gegevens kunnen verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
+|Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker` opdrachten.| 
+|Computer Vision resource |Als u de container wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure **Computer Vision** -resource en de bijbehorende API-sleutel de EINDPUNT-URI. Beide waarden zijn beschikbaar op de pagina overzicht en sleutels voor de resource en zijn vereist om de container te starten.<br><br>**{API_KEY}**: een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}**: het eind punt op de pagina **overzicht**|
 
-## <a name="request-access-to-the-private-container-registry"></a>Toegang aanvragen tot het register van privécontainers
+## <a name="request-access-to-the-private-container-registry"></a>Toegang aanvragen tot het persoonlijke container register
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -46,31 +46,31 @@ U moet aan de volgende voorwaarden voldoen voordat u de containers gebruikt:
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-### <a name="advanced-vector-extension-support"></a>Ondersteuning voor geavanceerde vectorextensie
+### <a name="advanced-vector-extension-support"></a>Ondersteuning voor geavanceerde vector uitbreidingen
 
-De **hostcomputer** is de computer waarop de dockercontainer wordt uitgevoerd. De host moet [Advanced Vector Extensions](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2) *ondersteunen.* U met de volgende opdracht controleren op AVX2-ondersteuning op Linux-hosts:
+De **hostcomputer** is de computer waarop de docker-container wordt uitgevoerd. De host *moet ondersteuning bieden* voor [Geavanceerde vector uitbreidingen](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2). U kunt de AVX2-ondersteuning op Linux-hosts controleren met de volgende opdracht:
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
 > [!WARNING]
-> De hostcomputer is *vereist* om AVX2 te ondersteunen. De container *werkt niet* goed zonder AVX2-ondersteuning.
+> De hostcomputer is *vereist* voor de ondersteuning van AVX2. De container werkt *niet* correct zonder ondersteuning voor AVX2.
 
-### <a name="container-requirements-and-recommendations"></a>Containervereisten en aanbevelingen
+### <a name="container-requirements-and-recommendations"></a>Container vereisten en aanbevelingen
 
 [!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
-## <a name="get-the-container-image-with-docker-pull"></a>De containerafbeelding biju halen`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie ophalen met`docker pull`
 
-Containerafbeeldingen voor Lezen zijn beschikbaar.
+Er zijn container installatie kopieën voor lezen beschikbaar.
 
-| Container | Containerregister / Repository / Afbeeldingsnaam |
+| Container | Container Registry/opslagplaats/naam van installatie kopie |
 |-----------|------------|
 | Lezen | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
 
-Gebruik [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) de opdracht om een containerafbeelding te downloaden.
+Gebruik de [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) opdracht om een container installatie kopie te downloaden.
 
-### <a name="docker-pull-for-the-read-container"></a>Docker pull voor de Lees-container
+### <a name="docker-pull-for-the-read-container"></a>Docker-pull voor de Lees container
 
 ```bash
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
@@ -78,18 +78,18 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-## <a name="how-to-use-the-container"></a>Hoe de container te gebruiken
+## <a name="how-to-use-the-container"></a>De container gebruiken
 
-Zodra de container zich op de [hostcomputer bevindt,](#the-host-computer)gebruikt u het volgende proces om met de container te werken.
+Wanneer de container zich op de [hostcomputer](#the-host-computer)bevindt, gebruikt u het volgende proces om met de container te werken.
 
-1. [Voer de container](#run-the-container-with-docker-run)uit met de vereiste factureringsinstellingen. Meer [voorbeelden](computer-vision-resource-container-config.md) van `docker run` de opdracht zijn beschikbaar. 
-1. [Query the container prediction endpoint](#query-the-containers-prediction-endpoint). 
+1. [Voer de container uit](#run-the-container-with-docker-run)met de vereiste facturerings instellingen. Er zijn meer [voor beelden](computer-vision-resource-container-config.md) van de `docker run` opdracht beschikbaar. 
+1. [Zoek het Voorspellings eindpunt van de container](#query-the-containers-prediction-endpoint)op. 
 
 ## <a name="run-the-container-with-docker-run"></a>Voer de container uit met`docker run`
 
-Gebruik de opdracht [Docker run](https://docs.docker.com/engine/reference/commandline/run/) om de container uit te voeren. Raadpleeg [het verzamelen van vereiste parameters](#gathering-required-parameters) `{ENDPOINT_URI}` voor `{API_KEY}` meer informatie over hoe u de en waarden krijgen.
+Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om de container uit te voeren. Raadpleeg de [vereiste para meters verzamelen](#gathering-required-parameters) voor meer informatie over het `{ENDPOINT_URI}` ophalen `{API_KEY}` van de waarden en.
 
-[Voorbeelden](computer-vision-resource-container-config.md#example-docker-run-commands) van `docker run` de opdracht zijn beschikbaar.
+[Voor beelden](computer-vision-resource-container-config.md#example-docker-run-commands) van `docker run` de opdracht zijn beschikbaar.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
@@ -101,15 +101,15 @@ ApiKey={API_KEY}
 
 Met deze opdracht gebeurt het volgende:
 
-* Voert de container Lezen uit de containerafbeelding uit.
-* Hiermee wordt 8 CPU-kern en 16 gigabyte (GB) geheugen toegewezen.
-* Stelt TCP-poort 5000 bloot en wijst een pseudo-TTY toe voor de container.
-* Verwijdert automatisch de container nadat deze is afgesloten. De containerafbeelding is nog steeds beschikbaar op de hostcomputer.
+* Voert de Lees container uit van de container installatie kopie.
+* Wijst 8 CPU-kernen en 16 GB aan geheugen toe.
+* Beschrijft TCP-poort 5000 en wijst een pseudo-TTY voor de container toe.
+* Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
 
-Meer [voorbeelden](./computer-vision-resource-container-config.md#example-docker-run-commands) van `docker run` de opdracht zijn beschikbaar. 
+Er zijn meer [voor beelden](./computer-vision-resource-container-config.md#example-docker-run-commands) van de `docker run` opdracht beschikbaar. 
 
 > [!IMPORTANT]
-> De `Eula` `Billing`opties `ApiKey` en de opties moeten worden opgegeven om de container uit te voeren; Anders start de container niet.  Zie [Facturering voor](#billing)meer informatie.
+> De `Eula`opties `Billing`, en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](#billing)voor meer informatie.
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -117,21 +117,21 @@ Meer [voorbeelden](./computer-vision-resource-container-config.md#example-docker
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="query-the-containers-prediction-endpoint"></a>Het voorspellingseindpunt van de container opvragen
+## <a name="query-the-containers-prediction-endpoint"></a>Query uitvoeren op het prediction-eind punt van de container
 
-De container biedt OP RUST gebaseerde queryvoorspellingseindpunt-API's. 
+De container bevat op REST gebaseerde query Voorspellings eindpunt-Api's. 
 
-Gebruik de `http://localhost:5000`host, voor container API's.
+Gebruik de host, `http://localhost:5000`voor container-api's.
 
-### <a name="asynchronous-read"></a>Asynchrone lezen
+### <a name="asynchronous-read"></a>Asynchroon lezen
 
-U `POST /vision/v2.0/read/core/asyncBatchAnalyze` de `GET /vision/v2.0/read/operations/{operationId}` en bewerkingen in overleg gebruiken om een afbeelding asynchroon te lezen, vergelijkbaar met de manier waarop de Computer Vision-service deze bijbehorende REST-bewerkingen gebruikt. De asynchrone POST-methode retourneert een `operationId` die wordt gebruikt als de identifer naar de HTTP GET-aanvraag.
+U kunt de `POST /vision/v2.0/read/core/asyncBatchAnalyze` -en `GET /vision/v2.0/read/operations/{operationId}` -bewerkingen in concert gebruiken om asynchroon een installatie kopie te lezen, vergelijkbaar met de manier waarop de computer vision-service die bijbehorende rest-bewerkingen gebruikt. De asynchrone POST-methode retourneert een `operationId` die wordt gebruikt als id voor de HTTP GET-aanvraag.
 
-Selecteer in de gebruikersinterface van `asyncBatchAnalyze` de branie de optie om deze uit te breiden in de browser. Selecteer vervolgens **Probeer het uit** > **Bestand kiezen**. In dit voorbeeld gebruiken we de volgende afbeelding:
+Selecteer in de Swagger-gebruikers interface `asyncBatchAnalyze` de om deze uit te vouwen in de browser. Selecteer vervolgens **Try it out** > **bestand**uitproberen. In dit voor beeld gebruiken we de volgende afbeelding:
 
-![tabbladen vs spaties](media/tabs-vs-spaces.png)
+![tabbladen versus spaties](media/tabs-vs-spaces.png)
 
-Wanneer de asynchrone post is uitgevoerd, wordt een **HTTP 202-statuscode** geretourneerd. Als onderdeel van het antwoord `operation-location` is er een koptekst met het resultaateindpunt voor de aanvraag.
+Wanneer de asynchrone POST met succes is uitgevoerd, wordt een **HTTP 202-** status code geretourneerd. Als onderdeel van de reactie bevindt zich `operation-location` een kop die het eind punt voor de aanvraag bevat.
 
 ```http
  content-length: 0
@@ -140,7 +140,7 @@ Wanneer de asynchrone post is uitgevoerd, wordt een **HTTP 202-statuscode** gere
  server: Kestrel
 ```
 
-Het `operation-location` is de volledig gekwalificeerde URL en is toegankelijk via een HTTP GET. Hier is het JSON-antwoord `operation-location` van het uitvoeren van de URL van de voorgaande afbeelding:
+De `operation-location` is de volledig gekwalificeerde URL en is toegankelijk via een HTTP Get. Dit is het JSON-antwoord van het uitvoeren `operation-location` van de URL van de vorige installatie kopie:
 
 ```json
 {
@@ -184,9 +184,9 @@ Het `operation-location` is de volledig gekwalificeerde URL en is toegankelijk v
 }
 ```
 
-### <a name="synchronous-read"></a>Synchroon lezen
+### <a name="synchronous-read"></a>Synchrone Lees bewerking
 
-U `POST /vision/v2.0/read/core/Analyze` de bewerking gebruiken om een afbeelding synchroon te lezen. Wanneer de afbeelding in zijn geheel wordt gelezen, dan en alleen dan geeft de API een JSON-antwoord. De enige uitzondering hierop is als er een fout optreedt. Wanneer er een fout optreedt, wordt de volgende JSON geretourneerd:
+U kunt de `POST /vision/v2.0/read/core/Analyze` bewerking gebruiken om een afbeelding synchroon te lezen. Wanneer de afbeelding volledig is gelezen en vervolgens alleen de API retourneert een JSON-antwoord. De enige uitzonde ring hierop is als er een fout optreedt. Als er een fout optreedt, wordt de volgende JSON geretourneerd:
 
 ```json
 {
@@ -194,7 +194,7 @@ U `POST /vision/v2.0/read/core/Analyze` de bewerking gebruiken om een afbeelding
 }
 ```
 
-Het JSON-antwoordobject heeft dezelfde objectgrafiek als de asynchrone versie. Als u een JavaScript-gebruiker bent en de veiligheid van het type wilt, `AnalyzeResult` kunnen de volgende typen worden gebruikt om de JSON-respons als object te casten.
+Het JSON-antwoord object heeft dezelfde object grafiek als de asynchrone versie. Als u een Java script-gebruiker bent en type veiligheid wilt, kan de volgende typen worden gebruikt voor het casten van `AnalyzeResult` het JSON-antwoord als een object.
 
 ```typescript
 export interface AnalyzeResult {
@@ -241,7 +241,7 @@ export interface Word {
 }
 ```
 
-Zie de <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">TypeScript-sandbox <span class="docon docon-navigate-external x-hidden-focus"></span> hier</a> voor een voorbeeldgebruiksvoorbeeld en selecteer **Uitvoeren** om het gebruiksgemak ervan te visualiseren.
+Voor een voor beeld van een use-case raadpleegt u de <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">type script sandbox hier <span class="docon docon-navigate-external x-hidden-focus"></span> </a> en selecteert u **uitvoeren** om het gebruiks gemak te visualiseren.
 
 ## <a name="stop-the-container"></a>De container stoppen
 
@@ -249,17 +249,17 @@ Zie de <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener 
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als u de container uitvoert met een [uitvoerbevestiging](./computer-vision-resource-container-config.md#mount-settings) en logboekregistratie is ingeschakeld, genereert de container logboekbestanden die handig zijn om problemen op te lossen die zich voordoen tijdens het starten of uitvoeren van de container.
+Als u de container uitvoert met een uitvoer [koppeling](./computer-vision-resource-container-config.md#mount-settings) en logboek registratie ingeschakeld, genereert de container logboek bestanden die handig zijn om problemen op te lossen die optreden tijdens het starten of uitvoeren van de container.
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Billing
 
-De containers Cognitive Services verzenden factureringsgegevens naar Azure met behulp van de bijbehorende bron op uw Azure-account.
+De Cognitive Services-containers verzenden facturerings gegevens naar Azure, met behulp van de bijbehorende resource in uw Azure-account.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Zie [Containers configureren](./computer-vision-resource-container-config.md)voor meer informatie over deze opties.
+Zie [containers configureren](./computer-vision-resource-container-config.md)voor meer informatie over deze opties.
 
 <!--blogs/samples/video course -->
 
@@ -267,21 +267,21 @@ Zie [Containers configureren](./computer-vision-resource-container-config.md)voo
 
 ## <a name="summary"></a>Samenvatting
 
-In dit artikel hebt u concepten en werkstroom geleerd voor het downloaden, installeren en uitvoeren van Computer Vision-containers. Samenvatting:
+In dit artikel hebt u concepten en werk stromen geleerd om Computer Vision containers te downloaden, te installeren en uit te voeren. Samenvatting:
 
-* Computer Vision biedt een Linux-container voor Docker, inkapselen Lezen.
-* Containerafbeeldingen worden gedownload uit het containerregister 'Container Preview' in Azure.
-* Containerafbeeldingen worden uitgevoerd in Docker.
-* U de REST API of SDK gebruiken om bewerkingen aan te roepen in leescontainers door de hostURI van de container op te geven.
-* U moet factureringsgegevens opgeven bij het momentmaken van een container.
+* Computer Vision biedt een Linux-container voor docker, Inge kapseld voor lezen.
+* Container installatie kopieën worden gedownload uit het container register container preview in Azure.
+* Container installatie kopieën worden uitgevoerd in docker.
+* U kunt de REST API of SDK gebruiken voor het aanroepen van bewerkingen in containers lezen door de URI van de host van de container op te geven.
+* U moet factuur gegevens opgeven bij het instantiëren van een container.
 
 > [!IMPORTANT]
-> Cognitive Services-containers hebben geen licentie om uit te voeren zonder dat deze is verbonden met Azure voor meting. Klanten moeten de containers te allen tijde in staat stellen factureringsgegevens met de meetservice te communiceren. Cognitive Services-containers verzenden geen klantgegevens (bijvoorbeeld de afbeelding of tekst die wordt geanalyseerd) naar Microsoft.
+> Cognitive Services-containers mogen niet worden uitgevoerd zonder te zijn verbonden met Azure voor meting. Klanten moeten de containers in staat stellen om de facturerings gegevens te allen tijde met de meet service te communiceren. Cognitive Services containers verzenden geen klant gegevens (bijvoorbeeld de afbeelding of tekst die wordt geanalyseerd) naar micro soft.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Containers [configureren controleren](computer-vision-resource-container-config.md) voor configuratie-instellingen
-* Bekijk [het overzicht Computer Vision](Home.md) voor meer informatie over het herkennen van afgedrukte en handgeschreven tekst
-* Raadpleeg de [Computer Vision API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) voor meer informatie over de methoden die door de container worden ondersteund.
-* Raadpleeg [veelgestelde vragen (FAQ)](FAQ.md) om problemen met betrekking tot de Computer Vision-functionaliteit op te lossen.
-* Meer [Cognitive Services-containers gebruiken](../cognitive-services-container-support.md)
+* Containers voor configuratie-instellingen [configureren](computer-vision-resource-container-config.md) controleren
+* Bekijk [Computer Vision overzicht](Home.md) voor meer informatie over het herkennen van gedrukte en handgeschreven tekst
+* Raadpleeg de [Computer Vision-API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) voor meer informatie over de methoden die door de container worden ondersteund.
+* Raadpleeg Veelgestelde [vragen (FAQ)](FAQ.md) voor het oplossen van problemen met betrekking tot de functionaliteit van computer vision.
+* Meer [Cognitive Services containers](../cognitive-services-container-support.md) gebruiken

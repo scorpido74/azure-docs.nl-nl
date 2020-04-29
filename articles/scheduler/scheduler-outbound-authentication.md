@@ -1,6 +1,6 @@
 ---
 title: Uitgaande verificatie
-description: Informatie over het instellen of verwijderen van uitgaande verificatie voor Azure Scheduler
+description: Meer informatie over het instellen of verwijderen van uitgaande verificatie voor Azure scheduler
 services: scheduler
 ms.service: scheduler
 author: derek1ee
@@ -9,64 +9,64 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: 0a8d79af9f45731971cb1be1f39fc193f9d0f0d9
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878966"
 ---
-# <a name="outbound-authentication-for-azure-scheduler"></a>Uitgaande verificatie voor Azure Scheduler
+# <a name="outbound-authentication-for-azure-scheduler"></a>Uitgaande verificatie voor Azure scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) vervangt Azure Scheduler, dat [wordt uitgeschakeld.](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) Als u wilt blijven werken met de taken die u in Scheduler hebt ingesteld, migreert u zo snel mogelijk [naar Azure Logic Apps.](../scheduler/migrate-from-scheduler-to-logic-apps.md) 
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
 >
-> Scheduler is niet langer beschikbaar in de Azure-portal, maar de [REST API-](/rest/api/scheduler) en [Azure Scheduler PowerShell-cmdlets](scheduler-powershell-reference.md) blijven op dit moment beschikbaar, zodat u uw taken en taakverzamelingen beheren.
+> Scheduler is niet meer beschikbaar in de Azure Portal, maar de [rest API](/rest/api/scheduler) en [Azure scheduler Power shell-cmdlets](scheduler-powershell-reference.md) blijven op dit moment beschikbaar, zodat u uw taken en taak verzamelingen kunt beheren.
 
-Azure Scheduler-taken moeten mogelijk services aanroepen waarvoor verificatie vereist is, zoals andere Azure-services, Salesforce.com, Facebook en beveiligde aangepaste websites. De aangeroepen service kan bepalen of de taak Scheduler toegang heeft tot de gevraagde resources. 
+Azure scheduler-taken moeten mogelijk services aanroepen waarvoor verificatie is vereist, zoals andere Azure-Services, Salesforce.com, Facebook en beveiligde aangepaste websites. Met de aangeroepen service kunt u bepalen of de scheduler-taak toegang heeft tot de aangevraagde resources. 
 
-Scheduler ondersteunt deze verificatiemodellen: 
+Scheduler ondersteunt deze verificatie modellen: 
 
-* *Clientcertificaatverificatie* bij het gebruik van SSL/TLS-clientcertificaten
-* *Basisverificatie*
-* *Active Directory OAuth-verificatie*
+* Verificatie van *client* certificaten bij gebruik van SSL/TLS-client certificaten
+* *Basis* verificatie
+* *Active Directory OAuth* -verificatie
 
 ## <a name="add-or-remove-authentication"></a>Verificatie toevoegen of verwijderen
 
-* Als u verificatie wilt toevoegen aan een scheduler-taak, `authentication` voegt u bij het maken of `request` bijwerken van de taak het onderliggende element (JavaScript Object Notation) toe aan het element. 
+* Als u verificatie wilt toevoegen aan een planner taak, voegt u, wanneer u de taak maakt of `authentication` bijwerkt, het onderliggende element JavaScript object NOTATION `request` (JSON) toe aan het-element. 
 
-  Antwoorden geven nooit geheimen terug die worden doorgegeven aan de Scheduler-service via een PUT-, PATCH- of POST-verzoek in het `authentication` object. 
-  In antwoorden worden geheime informatie ingesteld op null of kan een openbaar token worden gebruikt dat de geverifieerde entiteit vertegenwoordigt. 
+  Antwoorden retour neren nooit geheimen die worden door gegeven aan de Scheduler-service via een PUT-, PATCH-of `authentication` post-aanvraag in het-object. 
+  Antwoorden stellen geheime gegevens in op null of kunnen een openbaar token gebruiken dat de geverifieerde entiteit vertegenwoordigt. 
 
-* Als u verificatie wilt verwijderen uit een Scheduler-taak, voert u `authentication` expliciet een PUT- of PATCH-aanvraag uit op de taak en stelt u het object in op null. Het antwoord bevat geen verificatie-eigenschappen.
+* Als u de verificatie van een planner taak wilt verwijderen, voert u een PUT-of PATCH-aanvraag voor de taak `authentication` expliciet uit en stelt u het object in op null. Het antwoord bevat geen verificatie-eigenschappen.
 
-## <a name="client-certificate"></a>Clientcertificaat
+## <a name="client-certificate"></a>Client certificaat
 
-### <a name="request-body---client-certificate"></a>Aanvraagbody - Clientcertificaat
+### <a name="request-body---client-certificate"></a>Aanvraag tekst-client certificaat
 
-Wanneer u verificatie `ClientCertificate` toevoegt met het model, geeft u deze extra elementen op in de aanvraaginstantie.  
+Wanneer u verificatie toevoegt met `ClientCertificate` behulp van het model, geeft u deze extra elementen op in de hoofd tekst van de aanvraag.  
 
 | Element | Vereist | Beschrijving |
 |---------|----------|-------------|
-| **verificatie** (bovenliggend element) | Het verificatieobject voor het gebruik van een SSL/TLS-clientcertificaat |
-| **Type** | Ja | Het verificatietype. Voor SSL/TLS-clientcertificaten is `ClientCertificate`de waarde . |
-| **pfx** | Ja | De basis64-gecodeerde inhoud van het PFX-bestand |
-| **wachtwoord** | Ja | Het wachtwoord voor toegang tot het PFX-bestand |
+| **verificatie** (bovenliggend element) | Het verificatie object voor het gebruik van een SSL/TLS-client certificaat |
+| **voert** | Ja | Het verificatie type. Voor SSL/TLS-client certificaten is `ClientCertificate`de waarde. |
+| **pfx** | Ja | De met base64 gecodeerde inhoud van het PFX-bestand |
+| **wachtwoord** | Ja | Het wacht woord voor toegang tot het PFX-bestand |
 ||| 
 
-### <a name="response-body---client-certificate"></a>Antwoordbody - Clientcertificaat 
+### <a name="response-body---client-certificate"></a>Antwoord tekst-client certificaat 
 
-Wanneer een aanvraag wordt verzonden met verificatiegegevens, bevat het antwoord deze verificatie-elementen.
+Wanneer een aanvraag wordt verzonden met verificatie gegevens, bevat het antwoord deze verificatie-elementen.
 
 | Element | Beschrijving | 
 |---------|-------------| 
-| **verificatie** (bovenliggend element) | Het verificatieobject voor het gebruik van een SSL/TLS-clientcertificaat |
-| **Type** | Het verificatietype. Voor SSL/TLS-clientcertificaten is `ClientCertificate`de waarde . |
-| **certificateThumbprint** |De duimafdruk van het certificaat |
-| **certificateSubjectName** |De naam van het certificaatonderwerp |
-| **certificaatVervaldatum** | De vervaldatum van het certificaat |
+| **verificatie** (bovenliggend element) | Het verificatie object voor het gebruik van een SSL/TLS-client certificaat |
+| **voert** | Het verificatie type. Voor SSL/TLS-client certificaten is `ClientCertificate`de waarde. |
+| **certificateThumbprint** |De vinger afdruk van het certificaat |
+| **certificateSubjectName** |De DN-naam van het certificaat onderwerp |
+| **certificateExpiration** | De verval datum van het certificaat |
 ||| 
 
-### <a name="sample-rest-request---client-certificate"></a>Voorbeeld AANVRAAG REST - Clientcertificaat
+### <a name="sample-rest-request---client-certificate"></a>Voor beeld van REST-aanvraag-client certificaat
 
 ```json
 PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
@@ -103,7 +103,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-### <a name="sample-rest-response---client-certificate"></a>Voorbeeld VAN REST-antwoord - Clientcertificaat
+### <a name="sample-rest-response---client-certificate"></a>Voor beeld REST-antwoord-client certificaat
 
 ```json
 HTTP/1.1 200 OKCache-Control: no-cache
@@ -161,30 +161,30 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 
 ## <a name="basic"></a>Basic
 
-### <a name="request-body---basic"></a>Aanvraag lichaam - Basic
+### <a name="request-body---basic"></a>Hoofd tekst van aanvraag-basis
 
-Wanneer u verificatie `Basic` toevoegt met het model, geeft u deze extra elementen op in de aanvraaginstantie.
+Wanneer u verificatie toevoegt met `Basic` behulp van het model, geeft u deze extra elementen op in de hoofd tekst van de aanvraag.
 
 | Element | Vereist | Beschrijving |
 |---------|----------|-------------|
-| **verificatie** (bovenliggend element) | Het verificatieobject voor het gebruik van basisverificatie | 
-| **Type** | Ja | Het verificatietype. Voor Basisverificatie is `Basic`de waarde . | 
-| **Gebruikersnaam** | Ja | De gebruikersnaam om te verifiëren | 
-| **wachtwoord** | Ja | Het wachtwoord dat u moet verifiëren |
+| **verificatie** (bovenliggend element) | Het verificatie object voor het gebruik van basis verificatie | 
+| **voert** | Ja | Het verificatie type. De waarde is `Basic`voor basis verificatie. | 
+| **gebruikers** | Ja | De gebruikers naam voor verificatie | 
+| **wachtwoord** | Ja | Het wacht woord voor verificatie |
 |||| 
 
-### <a name="response-body---basic"></a>Reactiebody - Basic
+### <a name="response-body---basic"></a>Antwoord tekst-basis
 
-Wanneer een aanvraag wordt verzonden met verificatiegegevens, bevat het antwoord deze verificatie-elementen.
+Wanneer een aanvraag wordt verzonden met verificatie gegevens, bevat het antwoord deze verificatie-elementen.
 
 | Element | Beschrijving | 
 |---------|-------------|
-| **verificatie** (bovenliggend element) | Het verificatieobject voor het gebruik van basisverificatie |
-| **Type** | Het verificatietype. Voor basisverificatie is `Basic`de waarde . |
-| **Gebruikersnaam** | De geverifieerde gebruikersnaam |
+| **verificatie** (bovenliggend element) | Het verificatie object voor het gebruik van basis verificatie |
+| **voert** | Het verificatie type. De waarde is `Basic`voor basis verificatie. |
+| **gebruikers** | De geverifieerde gebruikers naam |
 ||| 
 
-### <a name="sample-rest-request---basic"></a>Voorbeeld AANVRAAG REST - Basic
+### <a name="sample-rest-request---basic"></a>Voor beeld van REST-aanvraag-basis
 
 ```json
 PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
@@ -222,7 +222,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-### <a name="sample-rest-response---basic"></a>Voorbeeld RUST-respons - Basic
+### <a name="sample-rest-response---basic"></a>Voor beeld REST-antwoord-basis
 
 ```json
 HTTP/1.1 200 OK
@@ -279,34 +279,34 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 
 ## <a name="active-directory-oauth"></a>Active Directory OAuth
 
-### <a name="request-body---active-directory-oauth"></a>Aanvraagbody - Active Directory OAuth 
+### <a name="request-body---active-directory-oauth"></a>Aanvraag tekst-Active Directory OAuth 
 
-Wanneer u verificatie `ActiveDirectoryOAuth` toevoegt met het model, geeft u deze extra elementen op in de aanvraaginstantie.
+Wanneer u verificatie toevoegt met `ActiveDirectoryOAuth` behulp van het model, geeft u deze extra elementen op in de hoofd tekst van de aanvraag.
 
 | Element | Vereist | Beschrijving |
 |---------|----------|-------------|
-| **verificatie** (bovenliggend element) | Ja | Het verificatieobject voor het gebruik van ActiveDirectoryOAuth-verificatie |
-| **Type** | Ja | Het verificatietype. Voor ActiveDirectoryOAuth-verificatie is `ActiveDirectoryOAuth`de waarde . |
-| **Huurder** | Ja | De tenant-id voor de Azure AD-tenant. Voer uit in Azure PowerShell om `Get-AzureAccount` de tenant-id voor de Azure AD-tenant te vinden. |
-| **Publiek** | Ja | Deze waarde is `https://management.core.windows.net/`ingesteld op . | 
+| **verificatie** (bovenliggend element) | Ja | Het verificatie object voor het gebruik van ActiveDirectoryOAuth-verificatie |
+| **voert** | Ja | Het verificatie type. De waarde is `ActiveDirectoryOAuth`voor ActiveDirectoryOAuth-verificatie. |
+| **bouw** | Ja | De Tenant-id voor de Azure AD-Tenant. Voer `Get-AzureAccount` in azure PowerShell om de Tenant-id voor de Azure AD-Tenant te vinden. |
+| **gericht** | Ja | Deze waarde is ingesteld op `https://management.core.windows.net/`. | 
 | **clientId** | Ja | De client-id voor de Azure AD-toepassing | 
 | **geheim** | Ja | Het geheim voor de client die het token aanvraagt | 
 |||| 
 
-### <a name="response-body---active-directory-oauth"></a>Reactiebody - Active Directory OAuth
+### <a name="response-body---active-directory-oauth"></a>Antwoord tekst-Active Directory OAuth
 
-Wanneer een aanvraag wordt verzonden met verificatiegegevens, bevat het antwoord deze verificatie-elementen.
+Wanneer een aanvraag wordt verzonden met verificatie gegevens, bevat het antwoord deze verificatie-elementen.
 
 | Element | Beschrijving |
 |---------|-------------|
-| **verificatie** (bovenliggend element) | Het verificatieobject voor het gebruik van ActiveDirectoryOAuth-verificatie |
-| **Type** | Het verificatietype. Voor ActiveDirectoryOAuth-verificatie is `ActiveDirectoryOAuth`de waarde . | 
-| **Huurder** | De tenant-id voor de Azure AD-tenant |
-| **Publiek** | Deze waarde is `https://management.core.windows.net/`ingesteld op . |
+| **verificatie** (bovenliggend element) | Het verificatie object voor het gebruik van ActiveDirectoryOAuth-verificatie |
+| **voert** | Het verificatie type. De waarde is `ActiveDirectoryOAuth`voor ActiveDirectoryOAuth-verificatie. | 
+| **bouw** | De Tenant-id voor de Azure AD-Tenant |
+| **gericht** | Deze waarde is ingesteld op `https://management.core.windows.net/`. |
 | **clientId** | De client-id voor de Azure AD-toepassing |
 ||| 
 
-### <a name="sample-rest-request---active-directory-oauth"></a>Voorbeeldaanvraag REST - Active Directory OAuth
+### <a name="sample-rest-request---active-directory-oauth"></a>Voor beeld van REST-aanvraag-Active Directory OAuth
 
 ```json
 PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
@@ -346,7 +346,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-### <a name="sample-rest-response---active-directory-oauth"></a>Voorbeeld VAN REST-respons - Active Directory OAuth
+### <a name="sample-rest-response---active-directory-oauth"></a>Voor beeld REST-antwoord-Active Directory OAuth
 
 ```json
 HTTP/1.1 200 OK

@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: SQL Python API, SDK & resources'
-description: Lees alles over de SQL Python API en SDK, inclusief releasedatums, pensioendatums en wijzigingen die zijn aangebracht tussen elke versie van de Azure Cosmos DB Python SDK.
+title: 'Azure Cosmos DB: SQL python API, SDK & resources'
+description: Meer informatie over de SQL python-API en SDK, inclusief release datums, pensioen datums en wijzigingen die zijn aangebracht tussen elke versie van de Azure Cosmos DB python SDK.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,16 +9,16 @@ ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
 ms.openlocfilehash: b81a3921ec11d589dadbdebd698ab9ad67d7649c
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80982902"
 ---
-# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK voor SQL API: notities en bronnen vrijgeven
+# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB python SDK voor SQL API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-wijzigingsfeed](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET-wijzigings feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
@@ -27,149 +27,149 @@ ms.locfileid: "80982902"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-resourceprovider](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulkexecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Bulk executor - Java](sql-api-sdk-bulk-executor-java.md)
+> * [Bulk-uitvoerder-.NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk-uitvoerder-java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
 |**SDK downloaden**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API-documentatie**|[Python API-referentiedocumentatie](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
-|**Installatie-instructies voor SDK**|[Installatie-instructies voor Python SDK](https://github.com/Azure/azure-cosmos-python)|
+|**API-documentatie**|[Naslag documentatie voor python API](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
+|**SDK-installatie-instructies**|[Installatie-instructies voor python SDK](https://github.com/Azure/azure-cosmos-python)|
 |**Bijdragen aan SDK**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
-|**Aan de slag**|[Aan de slag met de Python SDK](sql-api-python-application.md)|
-|**Huidig ondersteund platform**|[Python 2.7](https://www.python.org/downloads/) en [Python 3.5](https://www.python.org/downloads/)|
+|**Aan de slag**|[Aan de slag met de python-SDK](sql-api-python-application.md)|
+|**Huidig ondersteund platform**|[Python 2,7](https://www.python.org/downloads/) en [python 3,5](https://www.python.org/downloads/)|
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
 ### <a name="302"></a><a name="3.0.2"/>3.0.2
-* Ondersteuning toegevoegd voor multipolypolymeerinformatie
-* Bug fix in sessie read retry policy
-* Bug oplossing voor onjuiste opvulling problemen tijdens het decoderen van basis 64 strings
+* Er is ondersteuning toegevoegd voor het data type multiveelhoek
+* Fout oplossing in sessie beleid voor opnieuw proberen bij te lezen
+* Fout oplossing voor onjuiste opvullings problemen tijdens het decoderen van basis teken reeksen van 64
 
 ### <a name="301"></a><a name="3.0.1"/>3.0.1
-* Bugfix in LocationCache
-* Bug fix endpoint retry logica
+* Fout oplossing in LocationCache
+* Fout bij het herstellen van de logica van het eind punt
 * Vaste documentatie
 
 ### <a name="300"></a><a name="3.0.0"/>3.0.0
-* Ondersteuning voor multi-regio schrijft.
-* De naamruimte is veranderd in azure.cosmos.
-* Verzamelings- en documentconcepten die zijn omgedoopt tot container en item, document_client omgedoopt tot cosmos_client. 
+* Ondersteuning voor schrijf bewerkingen in meerdere regio's.
+* De naam ruimte is gewijzigd in Azure. Cosmos.
+* Verzamelings-en document concepten waarvan de naam is gewijzigd in container en item, worden document_client gewijzigd in cosmos_client. 
 
 ### <a name="233"></a><a name="2.3.3"/>2.3.3
-* Ondersteuning toegevoegd voor proxy
-* Ondersteuning toegevoegd voor het lezen van wijzigingsfeed
-* Ondersteuning toegevoegd voor verzamelingsquotakoppen
-* Bugfix voor groot sessietokensprobleem
-* Bugfix voor ReadMedia API
-* Bugfix in cache van partitiesleutelbereik
+* Ondersteuning voor proxy toegevoegd
+* Ondersteuning toegevoegd voor het lezen van wijzigings invoer
+* Ondersteuning toegevoegd voor verzamelings quotum headers
+* Probleem met bugfix voor grote sessie-tokens
+* Bugfix voor ReadMedia-API
+* Bugfix in cache voor partitie sleutel bereik
 
-### <a name="232"></a><a name="2.3.2"/>2.3.2
-* Ondersteuning toegevoegd voor standaardpogingen voor verbindingsproblemen.
+### <a name="232"></a><a name="2.3.2"/>verschijnsel
+* Er is ondersteuning toegevoegd voor standaard nieuwe pogingen bij verbindings problemen.
 
 ### <a name="231"></a><a name="2.3.1"/>2.3.1
-* Bijgewerkte documentatie om te verwijzen naar Azure Cosmos DB in plaats van Azure DocumentDB.
+* Bijgewerkte documentatie om te verwijzen naar Azure Cosmos DB in plaats van met Azure DocumentDB.
 
 ### <a name="230"></a><a name="2.3.0"/>2.3.0
-* Deze SDK-versie vereist de nieuwste versie van [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator).
+* Voor deze SDK-versie is de nieuwste versie van [Azure Cosmos DB emulator](https://aka.ms/cosmosdb-emulator)vereist.
 
 ### <a name="221"></a><a name="2.2.1"/>2.2.1
-* Bug fix voor geaggregeerde woordenboek.
-* Bug fix voor het bijsnijden van slashes in de resource link.
-* Tests toegevoegd voor Unicode-codering.
+* Fout oplossing voor cumulatieve woorden lijst.
+* Fout oplossing voor het verkleinen van schuine strepen in de resource koppeling.
+* Er zijn tests toegevoegd voor Unicode-code ring.
 
 ### <a name="220"></a><a name="2.2.0"/>2.2.0
-* Ondersteuning toegevoegd voor een nieuw consistentieniveau genaamd ConsistentPrefix.
+* Er is ondersteuning toegevoegd voor een nieuw consistentie niveau met de naam ConsistentPrefix.
 
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
-* Ondersteuning toegevoegd voor aggregatiequery's (COUNT, MIN, MAX, SOM en AVG).
-* Added an option for disabling TLS verification when running against Cosmos DB Emulator.
-* Verwijderde de beperking van afhankelijke verzoeken module om precies 2.10.0.
-* Verlaagde minimale doorvoer op partitieverzamelingen van 10.100 RU/s naar 2500 RU/s.
-* Added support for enabling script logging during stored procedure execution.
-* REST API versie steeg naar '2017-01-19' met deze release.
+* Er is ondersteuning toegevoegd voor aggregatie query's (aantal, MIN, MAX, SUM en AVG).
+* Er is een optie toegevoegd voor het uitschakelen van TLS-verificatie wanneer deze wordt uitgevoerd op Cosmos DB emulator.
+* De beperking van de module dependent requests is verwijderd zodat deze precies 2.10.0 kan zijn.
+* Minder minimale door Voer voor gepartitioneerde verzamelingen van 10.100 RU/s naar 2500 RU/s.
+* Er is ondersteuning toegevoegd voor het inschakelen van script logboek registratie tijdens de uitvoering van de opgeslagen procedure.
+* REST API versie die is gebump naar ' 2017-01-19 ' met deze release.
 
-### <a name="201"></a><a name="2.0.1"/>2.0.1
-* Redactionele wijzigingen aangebracht in de reacties van documentatie.
+### <a name="201"></a><a name="2.0.1"/>wel
+* Wijzigingen in documentatie zijn aangebracht.
 
 ### <a name="200"></a><a name="2.0.0"/>2.0.0
-* Ondersteuning toegevoegd voor Python 3.5.
-* Ondersteuning toegevoegd voor het bundelen van verbindingen met behulp van een aanvragenmodule.
-* Ondersteuning toegevoegd voor sessieconsistentie.
-* Ondersteuning toegevoegd voor TOP/ORDERBY-query's voor partitieverzamelingen.
+* Er is ondersteuning toegevoegd voor python 3,5.
+* Er is ondersteuning toegevoegd voor groepsgewijze verbindingen met behulp van een module aanvragen.
+* Er is ondersteuning toegevoegd voor de consistentie van sessies.
+* Er is ondersteuning toegevoegd voor TOP/ORDERBY-query's voor gepartitioneerde verzamelingen.
 
 ### <a name="190"></a><a name="1.9.0"/>1.9.0
-* Ondersteuning voor het beleid opnieuw proberen voor geweigerde aanvragen. (Throttled-aanvragen ontvangen een aanvraagpercentage met een te grote uitzondering, foutcode 429.) Azure Cosmos DB probeert standaard negen keer voor elk verzoek wanneer foutcode 429 wordt aangetroffen, ter ere van de retryAfter-tijd in de antwoordkop. Een vaste intervaltijd voor opnieuw proberen kan nu worden ingesteld als onderdeel van de eigenschap RetryOptions op het object Verbindingsbeleid als u de nieuwe poging wilt negerenNa de tijd die door de server tussen de nieuwe pogingen is geretourneerd. Azure Cosmos DB wacht nu maximaal 30 seconden op elk verzoek dat wordt beperkt (ongeacht het aantal nieuwe try's) en retourneert het antwoord met foutcode 429. Deze tijd kan ook worden overschreven in de eigenschap RetryOptions op het object Verbindingsbeleid.
-* Cosmos DB retourneert nu x-ms-throttle-retry-count en x-ms-throttle-retry-wait-time-ms als de responsheaders in elk verzoek om het gaspedaal opnieuw te tellen en de cumulatieve tijd die het verzoek wachtte tussen de pogingen aan te geven.
-* Verwijderde de klasse RetryPolicy en de bijbehorende eigenschap (retry_policy) die in de klasse document_client is weergegeven en introduceerde in plaats daarvan een klasse RetryOptions waarin de eigenschap RetryOptions wordt blootgesteld aan de klasse Verbindingbeleid die kan worden gebruikt om een aantal van de standaardopties voor opnieuw proberen te overschrijven.
+* De ondersteuning voor het beleid voor opnieuw proberen is toegevoegd voor vertraagde aanvragen. (Vertraagde aanvragen ontvangen een aanvraag frequentie te grote uitzonde ring, fout code 429.) Azure Cosmos DB worden standaard negen keer geprobeerd voor elke aanvraag wanneer de fout code 429 wordt aangetroffen, waarbij de retryAfter-tijd in de reactie header wordt nageleefd. Een vast interval voor opnieuw proberen kan nu worden ingesteld als onderdeel van de eigenschap RetryOptions van het object Connection Policy als u de retryAfter-tijd wilt negeren die door de server wordt geretourneerd tussen de nieuwe pogingen. Azure Cosmos DB wacht nu een maximum van 30 seconden voor elke aanvraag die wordt beperkt (ongeacht het aantal nieuwe pogingen) en retourneert de reactie met fout code 429. Deze tijd kan ook worden overschreven in de eigenschap RetryOptions van het object Connection Policy.
+* Cosmos DB retourneert nu x-MS-Throttle-retry-Count en x-MS-Throttle-retry-Wait-Time-MS als de antwoord headers in elke aanvraag om het aantal nieuwe pogingen te geven en de cumulatieve tijd die de aanvraag tussen het opnieuw proberen.
+* De RetryPolicy-klasse en de bijbehorende eigenschap (retry_policy) die op de document_client-klasse beschikbaar zijn gemaakt, zijn verwijderd en in plaats daarvan een RetryOptions-klasse geïntroduceerd waarmee de eigenschap RetryOptions op Connection Policy-klasse wordt weer gegeven die kan worden gebruikt om een aantal van de standaard opties voor opnieuw proberen te negeren.
 
 ### <a name="180"></a><a name="1.8.0"/>1.8.0
-* De ondersteuning voor databaseaccounts met meerdere regio's toegevoegd.
+* De ondersteuning voor meerdere regio's database accounts is toegevoegd.
 
 ### <a name="170"></a><a name="1.7.0"/>1.7.0
-* Toegevoegd de ondersteuning voor Time To Live (TTL) functie voor documenten.
+* De ondersteuning voor time to Live (TTL)-functie voor documenten is toegevoegd.
 
 ### <a name="161"></a><a name="1.6.1"/>1.6.1
-* Bugfixes met betrekking tot server-side partitioning om speciale tekens in partitiesleutelpad toe te staan.
+* Oplossingen met betrekking tot partitioneren aan de server zijde om speciale tekens toe te staan in het pad van de partitie sleutel.
 
 ### <a name="160"></a><a name="1.6.0"/>1.6.0
-* Geïmplementeerde [gepartitioneerde verzamelingen](partition-data.md) en [door de gebruiker gedefinieerde prestatieniveaus](performance-levels.md). 
+* Geïmplementeerde [gepartitioneerde verzamelingen](partition-data.md) en door de [gebruiker gedefinieerde prestatie niveaus](performance-levels.md). 
 
 ### <a name="150"></a><a name="1.5.0"/>1.5.0
-* Voeg Hash & Range-partitieresolvers toe om te helpen bij het sharden van toepassingen in meerdere partities.
+* Voeg voor het toevoegen van & hashes voor het bereik van de sharding-toepassingen op meerdere partities hulp middelen toe.
 
 ### <a name="142"></a><a name="1.4.2"/>1.4.2
-* Implementeer Upsert. Nieuwe UpsertXXX-methoden zijn toegevoegd om de Upsert-functie te ondersteunen.
-* Id-gebaseerde routering implementeren. Geen openbare API wijzigingen, alle wijzigingen intern.
+* Implementeer Upsert. Er zijn nieuwe UpsertXXX-methoden toegevoegd ter ondersteuning van de functie Upsert.
+* Implementeer route ring op basis van ID'S. Geen wijzigingen in de open bare API, alle wijzigingen intern.
 
 ### <a name="120"></a><a name="1.2.0"/>1.2.0
 * Ondersteunt georuimtelijke index.
-* Valideert id-eigenschap voor alle resources. Id's voor resources kunnen geen \, tekens bevatten ?, /, #, tekens of eindigen met een spatie.
-* Hiermee voegt u nieuwe koptekst "indextransformatievoortgang" toe aan ResourceResponse.
+* Valideert de eigenschap ID voor alle resources. Id's voor resources mogen niet de tekens?,/, \, #, bevatten of eindigen met een spatie.
+* Hiermee wordt de voortgang van de index transformatie van de nieuwe header toegevoegd aan ResourceResponse.
 
 ### <a name="110"></a><a name="1.1.0"/>1.1.0
-* Implementeert V2 indexeringsbeleid.
+* Implementeert v2-indexerings beleid.
 
 ### <a name="101"></a><a name="1.0.1"/>1.0.1
-* Ondersteunt proxy-verbinding.
+* Ondersteunt proxy verbinding.
 
 ### <a name="100"></a><a name="1.0.0"/>1.0.0
 * GA SDK.
 
-## <a name="release--retirement-dates"></a>Release & pensioendata
-Microsoft biedt ten minste **12 maanden** van tevoren een melding om een SDK met pensioen te laten gaan om de overgang naar een nieuwere/ondersteunde versie soepel te laten verlopen.
+## <a name="release--retirement-dates"></a>Uittredings datums &
+Micro soft biedt een kennisgeving van ten minste **twaalf maanden** voor het buiten gebruik stellen van een SDK om de overgang naar een nieuwere/ondersteunde versie te versoepelen.
 
-Nieuwe functies en functionaliteit en optimalisaties worden alleen toegevoegd aan de huidige SDK, als zodanig is het raadzaam dat u altijd upgraden naar de nieuwste SDK-versie zo vroeg mogelijk. 
+Nieuwe functies en functionaliteiten en optimalisaties worden alleen toegevoegd aan de huidige SDK, omdat het raadzaam is om altijd zo snel mogelijk een upgrade naar de nieuwste SDK-versie uit te voeren. 
 
-Elk verzoek aan Cosmos DB met behulp van een gepensioneerde SDK wordt afgewezen door de service.
+Alle aanvragen voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK worden geweigerd door de service.
 
 > [!WARNING]
-> Alle versies van de Python SDK voor SQL API voorafgaand aan versie **1.0.0** werden op **29 februari 2016**met pensioen gegaan. 
+> Alle versies van de python-SDK voor SQL API vóór versie **1.0.0** zijn buiten gebruik gesteld op **29 februari 2016**. 
 > 
 > 
 
 > [!WARNING]
-> Alle versies 1.x en 2.x van de Python SDK voor SQL API worden op **30 augustus 2020**buiten gebruik gesteld. 
+> Alle versies 1. x en 2. x van de python-SDK voor SQL-API zullen worden ingetrokken op **30 augustus 2020**. 
 > 
 > 
 
 <br/>
 
-| Versie | Releasedatum | Pensioendatum |
+| Versie | Release datum | Buitengebruikstellings datum |
 | --- | --- | --- |
 | [3.0.2](#3.0.2) |15 november 2018 |--- |
-| [3.0.1](#3.0.1) |04 oktober 2018 |--- |
-| [2.3.3](#2.3.3) |08 september 2018 |30 augustus 2020 |
-| [2.3.2](#2.3.2) |08 mei 2018 |30 augustus 2020 |
+| [3.0.1](#3.0.1) |Okt 04, 2018 |--- |
+| [2.3.3](#2.3.3) |Sept 08, 2018 |30 augustus 2020 |
+| [verschijnsel](#2.3.2) |08 mei 2018 |30 augustus 2020 |
 | [2.3.1](#2.3.1) |21 december 2017 |30 augustus 2020 |
 | [2.3.0](#2.3.0) |10 november 2017 |30 augustus 2020 |
-| [2.2.1](#2.2.1) |29 sep 2017 |30 augustus 2020 |
+| [2.2.1](#2.2.1) |29 sep, 2017 |30 augustus 2020 |
 | [2.2.0](#2.2.0) |10 mei 2017 |30 augustus 2020 |
 | [2.1.0](#2.1.0) |01 mei 2017 |30 augustus 2020 |
-| [2.0.1](#2.0.1) |30 oktober 2016 |30 augustus 2020 |
+| [wel](#2.0.1) |30 oktober 2016 |30 augustus 2020 |
 | [2.0.0](#2.0.0) |29 september 2016 |30 augustus 2020 |
-| [1.9.0](#1.9.0) |07 juli 2016 |30 augustus 2020 |
+| [1.9.0](#1.9.0) |Juli 07, 2016 |30 augustus 2020 |
 | [1.8.0](#1.8.0) |14 juni 2016 |30 augustus 2020 |
 | [1.7.0](#1.7.0) |26 april 2016 |30 augustus 2020 |
 | [1.6.1](#1.6.1) |08 april 2016 |30 augustus 2020 |
@@ -177,19 +177,19 @@ Elk verzoek aan Cosmos DB met behulp van een gepensioneerde SDK wordt afgewezen 
 | [1.5.0](#1.5.0) |03 januari 2016 |30 augustus 2020 |
 | [1.4.2](#1.4.2) |06 oktober 2015 |30 augustus 2020 |
 | 1.4.1 |06 oktober 2015 |30 augustus 2020 |
-| [1.2.0](#1.2.0) |06 augustus 2015 |30 augustus 2020 |
-| [1.1.0](#1.1.0) |09 juli 2015 |30 augustus 2020 |
+| [1.2.0](#1.2.0) |06 van 6 augustus 2015 |30 augustus 2020 |
+| [1.1.0](#1.1.0) |9 juli 2015 |30 augustus 2020 |
 | [1.0.1](#1.0.1) |25 mei 2015 |30 augustus 2020 |
-| [1.0.0](#1.0.0) |07 april 2015 |30 augustus 2020 |
+| [1.0.0](#1.0.0) |7 april 2015 |30 augustus 2020 |
 | 0.9.4-prelease |14 januari 2015 |29 februari 2016 |
 | 0.9.3-prelease |09 december 2014 |29 februari 2016 |
 | 0.9.2-prelease |25 november 2014 |29 februari 2016 |
-| 0.9.1-prelease |23 september 2014 |29 februari 2016 |
+| 0.9.1 tot en-prelease |23 september 2014 |29 februari 2016 |
 | 0.9.0-prelease |21 augustus 2014 |29 februari 2016 |
 
 ## <a name="faq"></a>Veelgestelde vragen
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Zie ook
-Zie Microsoft Azure Cosmos [DB-servicepagina](https://azure.microsoft.com/services/cosmos-db/) voor meer informatie over Cosmos DB. 
+Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db. 
 

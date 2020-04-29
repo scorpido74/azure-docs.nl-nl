@@ -1,7 +1,7 @@
 ---
-title: Containerbeperkingen - LUIS
+title: Container beperkingen-LUIS
 titleSuffix: Azure Cognitive Services
-description: De LUIS-containertalen die worden ondersteund.
+description: De LUIS-container talen die worden ondersteund.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,55 +11,55 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 7fe773b35c5aba31b2fea66bd2be7b2745eac3ee
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80879238"
 ---
-# <a name="language-understanding-luis-container-limitations"></a>Taalbegrip (LUIS) containerbeperkingen
+# <a name="language-understanding-luis-container-limitations"></a>Beperkingen van de container Language Understanding (LUIS)
 
-De LUIS containers hebben een paar opmerkelijke beperkingen. Van niet-ondersteunde afhankelijkheden tot een subset van ondersteunde talen, in dit artikel worden deze beperkingen beschreven.
+De LUIS-containers hebben enkele belang rijke beperkingen. Van niet-ondersteunde afhankelijkheden, naar een subset van talen die worden ondersteund in dit artikel worden deze beperkingen beschreven.
 
-## <a name="supported-dependencies-for-latest-container"></a>Ondersteunde afhankelijkheden `latest` voor container
+## <a name="supported-dependencies-for-latest-container"></a>Ondersteunde afhankelijkheden `latest` voor de container
 
-De nieuwste LUIS-container, uitgebracht op ['build/ 2019',](https://news.microsoft.com/build2019/)ondersteunt:
+De meest recente LUIS-container, uitgebracht op [//build/2019](https://news.microsoft.com/build2019/), biedt ondersteuning voor:
 
-* [Nieuwe vooraf gebouwde domeinen:](luis-reference-prebuilt-domains.md)deze op ondernemingen gerichte domeinen omvatten entiteiten, voorbeelduitingen en patronen. Breid deze domeinen uit voor eigen gebruik.
+* [Nieuwe, vooraf gemaakte domeinen](luis-reference-prebuilt-domains.md): deze domeinen in de onderneming bevatten onder andere entiteiten, voor beeld uitingen en patronen. Breid deze domeinen uit voor eigen gebruik.
 
-## <a name="unsupported-dependencies-for-latest-container"></a>Niet-ondersteunde afhankelijkheden `latest` voor container
+## <a name="unsupported-dependencies-for-latest-container"></a>Niet-ondersteunde afhankelijkheden `latest` voor de container
 
-Als u [wilt exporteren voor containers,](luis-container-howto.md#export-packaged-app-from-luis)moet u niet-ondersteunde afhankelijkheden uit uw LUIS-app verwijderen. Wanneer u probeert te exporteren voor containers, rapporteert de LUIS-portal deze niet-ondersteunde functies die u moet verwijderen.
+Als u de [container wilt exporteren](luis-container-howto.md#export-packaged-app-from-luis), moet u niet-ondersteunde afhankelijkheden verwijderen uit uw Luis-app. Wanneer u probeert te exporteren voor container, rapporteert de LUIS-Portal deze niet-ondersteunde functies die u wilt verwijderen.
 
-U een LUIS-toepassing gebruiken als deze geen van de volgende afhankelijkheden **bevat:**
+U kunt een LUIS-toepassing gebruiken als deze geen van de volgende afhankelijkheden **bevat** :
 
 Niet-ondersteunde app-configuraties|Details|
 |--|--|
-|Niet-ondersteunde containerculturen| Nederlands`nl-NL`( )<br>Japans`ja-JP`( )<br>Duits wordt alleen ondersteund met de [1.0.2 tokenizer](luis-language-support.md#custom-tokenizer-versions).|
-|Niet-ondersteunde entiteiten voor alle culturen|[Sleutelzin](luis-reference-prebuilt-keyphrase.md) voorgebouwde entiteit voor alle culturen|
-|Niet-ondersteunde entiteiten voor`en-US`Engelse () cultuur|[GeographyV2](luis-reference-prebuilt-geographyV2.md) vooraf gebouwde entiteiten|
-|Het priming van de toespraak|Externe afhankelijkheden worden niet ondersteund in de container.|
+|Niet-ondersteunde container culturen| Nederlands (`nl-NL`)<br>Japans (`ja-JP`)<br>Duits wordt alleen ondersteund met de [1.0.2 tokenizer](luis-language-support.md#custom-tokenizer-versions).|
+|Niet-ondersteunde entiteiten voor alle cult uren|Vooraf samengestelde [woordgroepen](luis-reference-prebuilt-keyphrase.md) instantie voor alle cult uren|
+|Niet-ondersteunde entiteiten voor Engels (`en-US`)-cultuur|[GeographyV2](luis-reference-prebuilt-geographyV2.md) vooraf gemaakte entiteiten|
+|Spraak gebeuren|Externe afhankelijkheden worden niet ondersteund in de container.|
 |Sentimentanalyse|Externe afhankelijkheden worden niet ondersteund in de container.|
-|Bing spellingcontrole|Externe afhankelijkheden worden niet ondersteund in de container.|
+|Bing-spelling controle|Externe afhankelijkheden worden niet ondersteund in de container.|
 
 ## <a name="languages-supported"></a>Ondersteunde talen
 
-LUIS-containers ondersteunen een subset van de talen die door LUIS correct [worden ondersteund.](luis-language-support.md#languages-supported) De LUIS-containers kunnen uitingen in de volgende talen begrijpen:
+LUIS-containers bieden ondersteuning voor een subset van de talen die worden [ondersteund](luis-language-support.md#languages-supported) door Luis-goed. De LUIS-containers zijn geschikt voor uitingen in de volgende talen:
 
-| Taal | Landinstelling | Vooraf gebouwd domein | Vooraf gebouwde entiteit | Aanbevelingen voor woordgroepen | **[Tekstanalyse](../text-analytics/language-support.md)<br>(Sentiment en<br>Trefwoorden)|
+| Taal | Landinstelling | Vooraf gebouwd domein | Vooraf gebouwde entiteit | Aanbevelingen voor woordgroepen lijst | **[Tekst analyse](../text-analytics/language-support.md)<br>(Sentiment en<br>Woord|
 |--|--|:--:|:--:|:--:|:--:|
-| Amerikaans Engels | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
+| Amerikaans-Engels | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
 | *[Chinees](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
 | Frans (Frankrijk) |`fr-FR` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Frans (Canada) |`fr-CA` | ❌ | ❌ | ❌ | ✔️ |
 | Duits |`de-DE` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Hindi | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
 | Italiaans |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
-| Koreaans |`ko-KR` | ✔️ | ❌ | ❌ | *Alleen sleutelzin* |
-| Portugees (Brazilië) |`pt-BR` | ✔️ | ✔️ | ✔️ | niet alle subculturen |
+| Koreaans |`ko-KR` | ✔️ | ❌ | ❌ | Alleen *sleutel woorden* |
+| Portugees (Brazilië) |`pt-BR` | ✔️ | ✔️ | ✔️ | niet alle subcultuuren |
 | Spaans (Spanje) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
 | Spaans (Mexico)|`es-MX` | ❌ | ❌ |✔️|✔️|
-| Turks | `tr-TR` |✔️| ❌ | ❌ | *Sentiment* alleen |
+| Turks | `tr-TR` |✔️| ❌ | ❌ | Alleen *sentiment* |
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 

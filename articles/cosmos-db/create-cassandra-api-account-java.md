@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Java-app bouwen om Azure Cosmos DB Cassandra API-account te maken'
+title: 'Zelf studie: een Java-app bouwen om Azure Cosmos DB Cassandra-API-account te maken'
 description: In deze zelfstudie leert u hoe u een Cassandra-API-account maakt en een database (ook wel een keyspace genoemd) en een tabel toevoegt aan dat account met behulp van een Java-toepassing.
 author: kanshiG
 ms.author: govindk
@@ -11,13 +11,13 @@ ms.date: 12/06/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: 971f705099ffec22599af83323e5e15d604c4bca
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80983004"
 ---
-# <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Zelfstudie: Een Cassandra API-account maken in Azure Cosmos DB met behulp van een Java-toepassing om sleutel-/waardegegevens op te slaan
+# <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Zelf studie: een Cassandra-API-account maken in Azure Cosmos DB met behulp van een Java-toepassing voor het opslaan van sleutel/waarde-gegevens
 
 Als ontwikkelaar hebt u mogelijk toepassingen die gebruikmaken van sleutel-/waardeparen. U kunt een Cassandra-API-account in Azure Cosmos DB gebruiken om de sleutel-/waardegegevens op te slaan. In deze zelfstudie wordt beschreven hoe u met een Java-toepassing een Cassandra-API-account maakt in Azure Cosmos DB en een database (ook wel een keyspace genoemd) en een tabel toevoegt. De Java-toepassing gebruikt het [Java-stuurprogramma](https://github.com/datastax/java-driver) om een gebruikersdatabase te maken die gegevens bevat, zoals gebruikers-id, gebruikersnaam en plaats van de gebruiker.  
 
@@ -32,7 +32,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 ## <a name="prerequisites"></a>Vereisten 
 
-* Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint. 
+* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint. 
 
 * Download de nieuwste versie van de [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable). 
 
@@ -43,14 +43,14 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/). 
 
-2. Selecteer **Een resourcedatabases** > maken**Azure** > **Cosmos DB**. 
+2. Selecteer **een resource** > **databases** > maken**Azure Cosmos DB**. 
 
 3. Voer in het deelvenster **Nieuw account** de instellingen in voor het nieuwe Azure Cosmos-account. 
 
    |Instelling   |Voorgestelde waarde  |Beschrijving  |
    |---------|---------|---------|
    |Id   |   Voer een unieke naam in    | Voer een unieke naam in om dit Azure Cosmos-account te identificeren. <br/><br/>Omdat cassandra.cosmosdb.azure.com is toegevoegd aan de id die u hebt opgegeven om het contactpunt te maken, gebruikt u een unieke, maar identificeerbare id.         |
-   |API    |  Cassandra   |  De API bepaalt het type te maken account. <br/> Selecteer **Cassandra**, omdat u in dit artikel een database met brede kolommen maakt die kan worden opgevraagd met behulp van de syntaxis van Cassandra Query Language (CQL).  |
+   |API    |  Cassandra   |  De API bepaalt het type te maken account. <br/> Selecteer **Cassandra**, omdat u in dit artikel een Data Base met een brede kolom maakt waarop query's kunnen worden uitgevoerd met behulp van de syntaxis van de Cassandra query language (CQL).  |
    |Abonnement    |  Uw abonnement        |  Selecteer het Azure-abonnement dat u wilt gebruiken voor dit Azure Cosmos-account.        |
    |Resourcegroep   | Voer een naam in    |  Selecteer **Nieuwe maken** en voer een naam voor de nieuwe resourcegroep voor uw account in. Gebruik dezelfde naam als uw id om het uzelf gemakkelijk te maken.    |
    |Locatie    |  Selecteer de regio het dichtst in de buurt van uw gebruikers    |  Selecteer de geografische locatie waar u het Azure Cosmos-account gaat hosten. Gebruik de locatie die zich het dichtst bij uw gebruikers bevindt, zodat ze de snelst mogelijke toegang tot de gegevens hebben.    |
@@ -63,9 +63,9 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 Haal de gegevens van de verbindingsreeks op uit de Azure-portal en kopieer deze naar het Java-configuratiebestand. De verbindingsreeks stelt uw app in staat om te communiceren met de gehoste database. 
 
-1. Ga vanuit de [Azure-portal](https://portal.azure.com/)naar uw Azure Cosmos-account. 
+1. Ga vanuit het [Azure Portal](https://portal.azure.com/)naar uw Azure Cosmos-account. 
 
-2. Open het deelvenster **Verbindingstekenreeks.**  
+2. Open het deel venster **verbindings reeks** .  
 
 3. Kopieer de waarden voor **CONTACTPUNT**, **POORT**, **GEBRUIKERSNAAM** en **PRIMAIR WACHTWOORD** voor gebruik in de volgende stappen.
 
@@ -102,7 +102,7 @@ Gebruik de volgende stappen om het voorbeeld helemaal opnieuw te maken:
 
 4. Blader naar de map `src/main/java/com/azure/cosmosdb/cassandra/`. Maak in de map cassandra een andere map met de naam `utils`. Deze nieuwe map is bedoeld voor het opslaan van de utils-klassen die nodig zijn om verbinding te maken met het Cassandra-API-account. 
 
-   Voeg de klasse [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) toe om het cluster te maken, en om Cassandra-sessies te openen en te sluiten. Het cluster maakt verbinding met het Cassandra API-account in Azure Cosmos DB en retourneert een sessie om toegang te krijgen. Gebruik de klasse [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) om gegevens van de verbindingsreeks te lezen uit het bestand config.properties. 
+   Voeg de klasse [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) toe om het cluster te maken, en om Cassandra-sessies te openen en te sluiten. Het cluster maakt verbinding met het Cassandra-API-account in Azure Cosmos DB en retourneert een sessie voor toegang. Gebruik de klasse [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) om gegevens van de verbindingsreeks te lezen uit het bestand config.properties. 
 
 5. Het Java-voorbeeld maakt een database met gebruikersgegevens, zoals gebruikersnaam, gebruikers-id en plaats van gebruiker. U moet get- en set-methoden definiëren voor toegang tot gebruikersgegevens in de main-functie.
  

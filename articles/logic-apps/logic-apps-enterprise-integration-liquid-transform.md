@@ -1,6 +1,6 @@
 ---
-title: Json-gegevens converteren met Liquid-transformaties
-description: Transformaties of kaarten maken voor geavanceerde JSON-transformaties met logic-apps en vloeistofsjabloon
+title: JSON-gegevens converteren met liquide trans formaties
+description: Trans formaties of kaarten voor geavanceerde JSON-trans formaties maken met behulp van Logic Apps en vloei bare sjabloon
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,34 +9,34 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 04/01/2020
 ms.openlocfilehash: d2598dfe9d7972dcb764abf4a1239613a1e8417a
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80879170"
 ---
-# <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Geavanceerde JSON-transformaties uitvoeren met Liquid-sjablonen in Azure Logic Apps
+# <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Geavanceerde JSON-trans formaties uitvoeren met liquide sjablonen in Azure Logic Apps
 
-U basis-JSON-transformaties uitvoeren in uw logische apps met native data-bewerkingsacties zoals **Compose** of **Parse JSON**. Als u geavanceerde JSON-transformaties wilt uitvoeren, u sjablonen of kaarten maken met [Liquid,](https://shopify.github.io/liquid/)een open-sourcesjabloontaal voor flexibele web-apps. Een liquid-sjabloon definieert hoe JSON-uitvoer kan worden getransformeerd en ondersteunt complexere JSON-transformaties, zoals iteraties, besturingsstromen, variabelen, enzovoort.
+U kunt eenvoudige JSON-trans formaties uitvoeren in uw Logic apps met systeem eigen gegevens bewerkingen, zoals het **opstellen** of **parseren van JSON**. Als u geavanceerde JSON-trans formaties wilt uitvoeren, kunt u sjablonen of kaarten met [liquide middelen](https://shopify.github.io/liquid/)maken. Dit is een open source sjabloon taal voor flexibele web-apps. Een vloeistof sjabloon definieert hoe de JSON-uitvoer moet worden getransformeerd en ondersteunt complexere JSON-trans formaties, zoals iteraties, controle stromen, variabelen, enzovoort.
 
-Voordat u een Liquid-transformatie in uw logica-app uitvoeren, moet u eerst de JSON-map naar JSON definiëren met een Liquid-sjabloon en die kaart opslaan in uw integratieaccount. In dit artikel ziet u hoe u deze liquid-sjabloon of kaart maken en gebruiken.
+Voordat u een liquide trans formatie in uw logische app kunt uitvoeren, moet u eerst de JSON definiëren in JSON-toewijzing met een vloeistof sjabloon en die kaart opslaan in uw integratie account. In dit artikel wordt beschreven hoe u deze vloeistof sjabloon of kaart maakt en gebruikt.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Basiskennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Een [basisintegratieaccount](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+* Een basis [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
-* Basiskennis over [vloeibare sjabloontaal](https://shopify.github.io/liquid/)
+* Basis kennis over [taal van liquide sjablonen](https://shopify.github.io/liquid/)
 
-## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Vloeibare sjabloon of kaart maken voor uw integratieaccount
+## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Vloeistof sjabloon of kaart maken voor uw integratie account
 
-1. Maak in dit voorbeeld de in deze stap beschreven sjabloon monstervloeistof. In uw liquide sjabloon u [vloeibare filters](https://shopify.github.io/liquid/basics/introduction/#filters)gebruiken, die [gebruikmaken van DotLiquid-](https://github.com/dotliquid/dotliquid) en C#-naamgevingsconventies.
+1. Voor dit voor beeld maakt u de voor beeld vloeistof sjabloon die wordt beschreven in deze stap. U kunt in uw vloeistof sjabloon gebruikmaken van [liquide filters](https://shopify.github.io/liquid/basics/introduction/#filters), die gebruikmaken van [DotLiquid](https://github.com/dotliquid/dotliquid) -en C#-naamgevings conventies.
 
    > [!NOTE]
-   > Zorg ervoor dat de filternamen *de zinsbehuizing* in uw sjabloon gebruiken. Anders werken de filters niet. Kaarten hebben ook [limieten voor bestandsgrootte.](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)
+   > Zorg ervoor dat de namen van de filters *zinnen* in de sjabloon gebruiken. Anders werken de filters niet. Daarnaast hebben Maps de [Bestands grootte limieten](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits).
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -57,111 +57,111 @@ Voordat u een Liquid-transformatie in uw logica-app uitvoeren, moet u eerst de J
    }
    ```
 
-1. Voer in de [Azure-portal](https://portal.azure.com)in `integration accounts`het azure-zoekvak integratieaccounts in en selecteer **deze.**
+1. Voer in het [Azure Portal](https://portal.azure.com), in het zoekvak van Azure, `integration accounts`ENTER en selecteer **integratie accounts**.
 
-   ![Zoek 'Integratieaccounts'](./media/logic-apps-enterprise-integration-liquid-transform/find-integration-accounts.png)
+   !["Integratie accounts" zoeken](./media/logic-apps-enterprise-integration-liquid-transform/find-integration-accounts.png)
 
-1. Zoek en selecteer uw integratieaccount.
+1. Zoek en selecteer uw integratie account.
 
-   ![Integratieaccount selecteren](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
+   ![Integratie account selecteren](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
-1. Selecteer **Kaarten**in het deelvenster **Overzicht** onder **Componenten**.
+1. Selecteer in het deel venster **overzicht** onder **onderdelen**de optie **kaarten**.
 
-    ![De tegel 'Kaarten' selecteren](./media/logic-apps-enterprise-integration-liquid-transform/select-maps-tile.png)
+    ![Tegel ' Maps ' selecteren](./media/logic-apps-enterprise-integration-liquid-transform/select-maps-tile.png)
 
-1. Selecteer in het deelvenster **Kaarten** de optie **Toevoegen** en geef deze gegevens op voor uw kaart:
+1. Selecteer **toevoegen** in het deel venster **kaarten** en geef deze details op voor uw kaart:
 
    | Eigenschap | Waarde | Beschrijving | 
    |----------|-------|-------------|
-   | **Naam** | `JsonToJsonTemplate` | De naam voor uw kaart, die "JsonToJsonTemplate" in dit voorbeeld is | 
-   | **Kaarttype** | **Vloeistof** | Het type voor uw kaart. Voor JSON- tot JSON-transformatie moet u **vloeistof**selecteren. | 
-   | **Kaart** | `SimpleJsonToJsonTemplate.liquid` | Een bestaande Liquid template of kaart bestand te gebruiken voor transformatie, dat is "SimpleJsonToJsonTemplate.liquid" in dit voorbeeld. Als u dit bestand wilt vinden, u de bestandenkiezer gebruiken. Zie Limieten en [configuratie](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)voor limieten voor kaartgrootte . |
+   | **Naam** | `JsonToJsonTemplate` | De naam voor uw kaart, in dit voor beeld ' JsonToJsonTemplate ' | 
+   | **Toewijzings type** | **Liquid** | Het type voor uw kaart. Voor JSON naar JSON-trans formatie moet u **liquide middelen**selecteren. | 
+   | **Kaart** | `SimpleJsonToJsonTemplate.liquid` | In dit voor beeld wordt een bestaande vloeistof sjabloon of kaart bestand gebruikt voor trans formatie, dat "SimpleJsonToJsonTemplate. liquide" is. U kunt dit bestand vinden met behulp van de bestands kiezer. Zie [limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)voor limieten voor kaart grootte. |
    ||| 
 
-   ![Sjabloon Vloeibare toevoegen](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
+   ![Vloeistof sjabloon toevoegen](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
     
-## <a name="add-the-liquid-action-for-json-transformation"></a>Voeg de vloeibare actie voor JSON-transformatie toe
+## <a name="add-the-liquid-action-for-json-transformation"></a>De vloei bare actie voor JSON-trans formatie toevoegen
 
-1. Voer in de Azure-portal de volgende stappen uit om een lege logische app te [maken.](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+1. Voer in de Azure Portal de volgende stappen uit om [een lege logische app te maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Voeg in de Logic App Designer de [trigger van Aanvragen](../connectors/connectors-native-reqres.md#add-request) toe aan uw logische app.
+1. Voeg in de ontwerp functie voor logische apps de [aanvraag trigger](../connectors/connectors-native-reqres.md#add-request) toe aan uw logische app.
 
-1. Kies Onder de trigger De optie **Nieuwe stap**. Voer in het `liquid` zoekvak in als filter en selecteer deze actie: **Transform JSON to JSON - Liquid**
+1. Kies **nieuwe stap**onder de trigger. Typ `liquid` als filter in het zoekvak en selecteer deze actie: **JSON transformeren naar JSON-liquide**
 
-   ![Vloeibare actie zoeken en selecteren](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
+   ![Een liquide actie zoeken en selecteren](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
-1. Open de **lijst Kaart** en selecteer de sjabloon Liquid, namelijk 'JsonToJsonTemplate' in dit voorbeeld.
+1. Open de **kaart** lijst en selecteer uw vloeistof sjabloon in dit voor beeld ' JsonToJsonTemplate '.
 
    ![Kaart selecteren](./media/logic-apps-enterprise-integration-liquid-transform/select-map.png)
 
-   Als de lijst met kaarten leeg is, is uw logische app waarschijnlijk niet gekoppeld aan uw integratieaccount. 
-   Voer de volgende stappen uit om uw logica-app te koppelen aan het integratieaccount met de sjabloon Liquid of map:
+   Als de lijst met kaarten leeg is, is de logische app waarschijnlijk niet gekoppeld aan uw integratie account. 
+   Voer de volgende stappen uit om uw logische app te koppelen aan het integratie account met de vloeistof sjabloon of kaart:
 
-   1. Selecteer **werkstroominstellingen**in het menu van de logische app .
+   1. Selecteer **werk stroom instellingen**in het menu van de logische app.
 
-   1. Selecteer in de lijst **Een integratieaccount selecteren** uw integratieaccount en selecteer **Opslaan**.
+   1. Selecteer in de lijst **een integratie account selecteren** het integratie account en selecteer **Opslaan**.
 
-      ![Logische app koppelen aan integratieaccount](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
+      ![Logische app koppelen aan integratie account](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
 
-1. Voeg nu de eigenschap **Inhoud** toe aan deze actie. Open de lijst **Nieuwe parameter toevoegen** en selecteer **Inhoud**.
+1. Voeg nu de eigenschap **Content** toe aan deze actie. Open de lijst **nieuwe para meter toevoegen** en selecteer **inhoud**.
 
-   ![Eigenschap Inhoud toevoegen aan actie](./media/logic-apps-enterprise-integration-liquid-transform/add-content-property-to-action.png)
+   ![Eigenschap content toevoegen aan actie](./media/logic-apps-enterprise-integration-liquid-transform/add-content-property-to-action.png)
 
-1. Als u de **eigenschapinhoudswaarde** wilt instellen, klikt u in het vak **Inhoud** zodat de lijst met dynamische inhoud wordt weergegeven. Selecteer het **tekenteken** dat de uitvoer van de hoofdinhoud van de trigger vertegenwoordigt.
+1. Als u de waarde van de eigenschap **Content** wilt instellen, klikt u in het vak **inhoud** zodat de lijst met dynamische inhoud wordt weer gegeven. Selecteer het token **Body** , dat de inhoud van de hoofd tekst van de trigger vertegenwoordigt.
 
-   ![Selecteer 'Body'-token voor eigenschapswaarde 'Inhoud'](./media/logic-apps-enterprise-integration-liquid-transform/select-body.png)
+   ![Selecteer hoofd token voor eigenschaps waarde ' content '](./media/logic-apps-enterprise-integration-liquid-transform/select-body.png)
 
    Wanneer u klaar bent, ziet de actie eruit als in dit voorbeeld:
 
-   ![Voltooide actie "Transform JSON to JSON"](./media/logic-apps-enterprise-integration-liquid-transform/finished-transform-action.png)
+   ![De actie JSON naar JSON transformeren is voltooid](./media/logic-apps-enterprise-integration-liquid-transform/finished-transform-action.png)
 
 ## <a name="test-your-logic-app"></a>Uw logische app testen
 
-Plaats JSON-invoer naar uw logische app vanuit [Postman](https://www.getpostman.com/postman) of een soortgelijk hulpmiddel. De getransformeerde JSON-uitvoer van uw logische app ziet er als volgt uit:
+Post JSON input naar uw logische app van [postman](https://www.getpostman.com/postman) of een soortgelijk hulp programma. De getransformeerde JSON-uitvoer van uw logische app ziet eruit als in dit voor beeld:
   
-![Voorbeelduitvoer](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontojson.png)
+![Voorbeeld uitvoer](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontojson.png)
 
-## <a name="more-liquid-action-examples"></a>Meer Vloeibare actievoorbeelden
-Vloeistof is niet beperkt tot alleen JSON transformaties. Hier zijn andere beschikbare transformatieacties die Liquid gebruiken.
+## <a name="more-liquid-action-examples"></a>Meer voor beelden van liquide acties
+Vloei stof is niet beperkt tot JSON-trans formaties. Dit zijn andere beschik bare transformatie acties die gebruikmaken van liquide activiteiten.
 
-* JSON omzetten in tekst
+* JSON transformeren naar tekst
   
-  Hier is de sjabloon Liquid die voor dit voorbeeld wordt gebruikt:
+  Dit is de vloeistof sjabloon die wordt gebruikt voor dit voor beeld:
    
    ``` json
    {{content.firstName | Append: ' ' | Append: content.lastName}}
    ```
-   Hier volgen voorbeeldingangen en uitgangen:
+   Hier volgen enkele voor beelden van invoer en uitvoer:
   
-   ![Voorbeeld uitvoer JSON naar tekst](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
+   ![Voorbeeld uitvoer van JSON naar tekst](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
 
-* XML omzetten in JSON
+* XML transformeren naar JSON
   
-  Hier is de sjabloon Liquid die voor dit voorbeeld wordt gebruikt:
+  Dit is de vloeistof sjabloon die wordt gebruikt voor dit voor beeld:
    
    ``` json
    [{% JSONArrayFor item in content -%}
         {{item}}
     {% endJSONArrayFor -%}]
    ```
-   Hier volgen voorbeeldingangen en uitgangen:
+   Hier volgen enkele voor beelden van invoer en uitvoer:
 
-   ![Voorbeeld uitvoer XML naar JSON](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltojson.png)
+   ![Voor beeld van uitvoer-XML naar JSON](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltojson.png)
 
-* XML omzetten in tekst
+* XML naar tekst transformeren
   
-  Hier is de sjabloon Liquid die voor dit voorbeeld wordt gebruikt:
+  Dit is de vloeistof sjabloon die wordt gebruikt voor dit voor beeld:
 
    ``` json
    {{content.firstName | Append: ' ' | Append: content.lastName}}
    ```
 
-   Hier volgen voorbeeldingangen en uitgangen:
+   Hier volgen enkele voor beelden van invoer en uitvoer:
 
-   ![Voorbeeld van uitvoer-XML naar tekst](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
+   ![Voor beeld van uitvoer-XML naar tekst](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Meer informatie over enterprise integration pack")  
-* [Meer informatie over kaarten](../logic-apps/logic-apps-enterprise-integration-maps.md "Meer informatie over kaarten voor bedrijfsintegratie")  
+* [Meer informatie over de Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Meer informatie over Enterprise Integration Pack")  
+* [Meer informatie over Maps](../logic-apps/logic-apps-enterprise-integration-maps.md "Meer informatie over Enter prise Integration Maps")  
 

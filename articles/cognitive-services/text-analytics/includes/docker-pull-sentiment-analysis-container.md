@@ -1,7 +1,7 @@
 ---
-title: Docker pull voor de Sentiment Analysis container
+title: Docker-pull voor de Sentimentanalyse container
 titleSuffix: Azure Cognitive Services
-description: Docker pull command voor Sentiment Analysis container
+description: Docker-pull-opdracht voor Sentimentanalyse container
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: e502b886c8031174180d40f1c5b7e373a974ee8e
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876994"
 ---
-#### <a name="docker-pull-for-the-sentiment-analysis-container"></a>Docker pull voor de Sentiment Analysis container
+#### <a name="docker-pull-for-the-sentiment-analysis-container"></a>Docker-pull voor de Sentimentanalyse container
 
-Gebruik [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) de opdracht om een containerafbeelding te downloaden uit het Microsoft Container Registry.
+Gebruik de [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) opdracht om een container installatie kopie te downloaden van micro soft container Registry.
 
-Zie de container [Sentiment Analyse](https://go.microsoft.com/fwlink/?linkid=2018654) op de Docker Hub voor een volledige beschrijving van de beschikbare tags voor de containers Text Analytics.
+Zie de [sentimentanalyse](https://go.microsoft.com/fwlink/?linkid=2018654) -container op de docker-hub voor een volledige beschrijving van de beschik bare labels voor de Text Analytics containers.
 
 ```
 docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest

@@ -1,7 +1,7 @@
 ---
-title: Azure Container Instances uitvoeren - Spraakservice
+title: Azure Container Instances-Speech-Service uitvoeren
 titleSuffix: Azure Cognitive Services
-description: Implementeer de spraakservicecontainer in een Azure Container Instance en test deze in een webbrowser.
+description: Implementeer de speech service-container in een Azure-container exemplaar en test deze in een webbrowser.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 610d5ce095097a31ee92c67f0112d1657424858e
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80878745"
 ---
-# <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>De spraakservicecontainer implementeren in Azure Container Instances
+# <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>De speech service-container implementeren op Azure Container Instances
 
-Meer informatie over het implementeren van de [servicecontainer](speech-container-howto.md) Cognitive Services Speech naar Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Deze procedure toont de creatie van een Azure Speech-servicebron. Dan bespreken we het trekken van de bijbehorende container beeld. Tot slot benadrukken we de mogelijkheid om de orkestratie van de twee uit te oefenen vanuit een browser. Het gebruik van containers kan de aandacht van de ontwikkelaars verleggen van het beheren van infrastructuur naar het richten op applicatieontwikkeling.
+Meer informatie over het implementeren van de Cognitive Services [Speech Service](speech-container-howto.md) -container in azure [container instances](https://docs.microsoft.com/azure/container-instances/). Deze procedure illustreert het maken van een Azure Speech Service-Resource. Vervolgens bespreken we het verzamelen van de bijbehorende container installatie kopie. Ten slotte markeren we de mogelijkheid om de indeling van de twee uit een browser uit te oefenen. Door gebruik te maken van containers kan de aandacht van de ontwikkel aars van de infra structuur afnemen in plaats van de ontwikkeling van toepassingen te richten.
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-container-registry"></a>Toegang tot het containerregister aanvragen
+## <a name="request-access-to-the-container-registry"></a>Toegang aanvragen tot het container register
 
-U moet eerst het [formulier Voor het aanvragen van opmerkingen](https://aka.ms/speechcontainerspreview/) van Cognitive Services Speech Containers invullen en indienen om toegang tot de container aan te vragen. 
+U moet eerst het [aanvraag formulier voor de Cognitive Services spraak containers](https://aka.ms/speechcontainerspreview/) volt ooien en verzenden om toegang tot de container aan te vragen. 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 

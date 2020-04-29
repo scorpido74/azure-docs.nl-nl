@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/14/2019
 ms.author: glenga
 ms.openlocfilehash: f64892193eb6cfcce8f948b54e5557b5fa3d90ab
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878239"
 ---
 ```json
@@ -21,13 +21,13 @@ ms.locfileid: "80878239"
 }
 ```
 
-De volgende eigenschappen `extensionBundle`zijn beschikbaar in :
+De volgende eigenschappen zijn beschikbaar in `extensionBundle`:
 
 | Eigenschap | Beschrijving |
 | -------- | ----------- |
-| id | De naamruimte voor microsoft Azure Functions-extensiebundels. |
-| versie | De versie van de bundel te installeren. De runtime Functies kiest altijd de maximaal toegestane versie die wordt gedefinieerd door het versiebereik of -interval. De bovenstaande versiewaarde maakt alle bundelversies mogelijk van 1.0.0 tot maar niet inclusief 2.0.0. Zie de [intervalnotatie voor het opgeven van versiebereiken voor](/nuget/reference/package-versioning#version-ranges)meer informatie. |
+| id | De naam ruimte voor de uitbreidings bundels van Microsoft Azure-functies. |
+| versie | De versie van de bundel die moet worden geïnstalleerd. De functions-runtime kiest altijd de Maxi maal toegestane versie die is gedefinieerd door het versie bereik of-interval. Met de bovenstaande versie waarde kunnen alle bundel versies van 1.0.0 tot maar niet inclusief 2.0.0. Zie de [interval notatie voor het opgeven van versie reeksen](/nuget/reference/package-versioning#version-ranges)voor meer informatie. |
 
-Bundelversies worden verhoogd als pakketten in de bundel veranderen. Belangrijke versiewijzigingen treden op wanneer pakketten in de bundel worden verhoogd met een belangrijke versie. Belangrijke versiewijzigingen in de bundel vallen meestal samen met een wijziging in de hoofdversie van de runtime functies.  
+Bundel versies worden als pakketten in de bundel wijziging verhoogd. De belangrijkste versie wijzigingen treden op wanneer pakketten in de bundel door een primaire versie worden verhoogd. Belang rijke versie wijzigingen in de bundel vallen doorgaans samen met een wijziging in de primaire versie van de functions-runtime.  
 
-De huidige set extensies die door de standaardbundel zijn geïnstalleerd, wordt opgesomd in dit [bestand extensions.json](https://github.com/Azure/azure-functions-extension-bundles/blob/dev/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json).
+De huidige set uitbrei dingen die zijn geïnstalleerd door de standaard bundel, wordt opgesomd in dit [bestand extensies. json](https://github.com/Azure/azure-functions-extension-bundles/blob/dev/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json).

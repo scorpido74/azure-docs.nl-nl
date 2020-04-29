@@ -1,75 +1,75 @@
 ---
-title: Cosmos DB-migratieopties
-description: In dit document worden de verschillende opties beschreven om uw on-premises of cloudgegevens te migreren naar Azure Cosmos DB
+title: Cosmos DB migratie opties
+description: In dit document worden de verschillende opties beschreven voor het migreren van uw on-premises of Cloud gegevens naar Azure Cosmos DB
 author: bharathsreenivas
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: bharathb
 ms.openlocfilehash: 34698a215477abdd7d68c3dfe050657ecf049690
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80984892"
 ---
-# <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Opties om uw on-premises of cloudgegevens te migreren naar Azure Cosmos DB
+# <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Opties voor het migreren van uw on-premises of Cloud gegevens naar Azure Cosmos DB
 
-U gegevens uit verschillende gegevensbronnen laden naar Azure Cosmos DB. Aangezien Azure Cosmos DB meerdere API's ondersteunt, kunnen de doelen bovendien een van de bestaande API's zijn. Om migratiepaden van de verschillende bronnen naar de verschillende Azure Cosmos DB API's te ondersteunen, zijn er meerdere oplossingen die gespecialiseerde afhandeling bieden voor elk migratiepad. Dit document bevat de beschikbare oplossingen en beschrijft hun voordelen en beperkingen.
+U kunt gegevens uit verschillende gegevens bronnen laden naar Azure Cosmos DB. Omdat Azure Cosmos DB meerdere Api's ondersteunt, kunnen de doelen bovendien een van de bestaande Api's zijn. Voor het ondersteunen van migratie paden van de verschillende bronnen naar de verschillende Azure Cosmos DB Api's, zijn er meerdere oplossingen die gespecialiseerde verwerking bieden voor elk migratie traject. In dit document vindt u een lijst met de beschik bare oplossingen en worden de voor delen en beperkingen beschreven.
 
-## <a name="factors-affecting-the-choice-of-migration-tool"></a>Factoren die van invloed zijn op de keuze van het migratieinstrument
+## <a name="factors-affecting-the-choice-of-migration-tool"></a>Factoren die van invloed zijn op de keuze van het migratie hulpprogramma
 
-De volgende factoren bepalen de keuze van het migratiehulpprogramma:
-* **Online versus offline migratie**: Veel migratietools bieden een pad om alleen een eenmalige migratie uit te brengen. Dit betekent dat de toepassingen die toegang hebben tot de database een periode van downtime kunnen ervaren. Sommige migratieoplossingen bieden een manier om een live migratie uit te brengen wanneer er een replicatiepijplijn is ingesteld tussen de bron en het doel.
+De volgende factoren bepalen de keuze van het migratie programma:
+* **Online versus offline migratie**: veel hulpprogram ma's voor migratie bieden een pad voor het uitvoeren van een eenmalige migratie. Dit betekent dat de toepassingen die toegang hebben tot de Data Base een periode van downtime kunnen ondervinden. Sommige migratie oplossingen bieden een manier om een Livemigratie uit te voeren waarbij een replicatie pijplijn is ingesteld tussen de bron en het doel.
 
-* **Gegevensbron**: De bestaande gegevens kunnen worden in verschillende gegevensbronnen zoals Oracle DB2, Datastax Cassanda, Azure SQL Server, PostgreSQL, enz. De gegevens kunnen ook in een bestaand Azure Cosmos DB-account zijn en de bedoeling van migratie kan zijn om het gegevensmodel te wijzigen of de gegevens in een container opnieuw te verdelen met een andere partitiesleutel.
+* **Gegevens bron**: de bestaande gegevens kunnen zich in verschillende gegevens bronnen bevinden, zoals Oracle DB2, Datastax Cassanda, Azure SQL Server, PostgreSQL, enzovoort. De gegevens kunnen zich ook in een bestaand Azure Cosmos DB account bevinden en het doel van de migratie kan het gegevens model wijzigen of de gegevens in een container opnieuw partitioneren met een andere partitie sleutel.
 
-* **Azure Cosmos DB API**: Voor de SQL API in Azure Cosmos DB zijn er verschillende hulpprogramma's ontwikkeld door het Azure Cosmos DB-team die helpen bij de verschillende migratiescenario's. Alle andere API's hebben hun eigen gespecialiseerde set van tools ontwikkeld en onderhouden door de gemeenschap. Aangezien Azure Cosmos DB deze API's op draadprotocolniveau ondersteunt, moeten deze hulpprogramma's ook werken zoals ze gegevens migreren naar Azure Cosmos DB. Ze kunnen echter aangepaste behandeling voor gashendels vereisen, omdat dit concept specifiek is voor Azure Cosmos DB.
+* **Azure Cosmos DB-API**: voor de SQL-api in azure Cosmos DB bestaan er diverse hulpprogram ma's die zijn ontwikkeld door het Azure Cosmos DB team en die ondersteuning bieden voor de verschillende migratie scenario's. Alle andere Api's hebben hun eigen gespecialiseerde set hulpprogram ma's die door de community zijn ontwikkeld en onderhouden. Omdat Azure Cosmos DB deze Api's ondersteunt op een niveau van een kabel protocol, moeten deze hulpprogram ma's werken zoals bij het migreren van gegevens naar Azure Cosmos DB. Het is echter mogelijk dat er aangepaste verwerking vereist is, omdat dit concept specifiek is voor Azure Cosmos DB.
 
-* **Grootte van gegevens**: De meeste migratietools werken erg goed voor kleinere gegevenssets. Wanneer de gegevensset een paar honderd gigabyte overschrijdt, zijn de keuzemogelijkheden van migratietools beperkt. 
+* **Grootte van gegevens**: de meeste migratie hulpprogramma's werken zeer goed voor kleinere gegevens sets. Wanneer de gegevensset meer dan honderd GB overschrijdt, zijn de opties voor migratie hulpprogramma's beperkt. 
 
-* **Verwachte migratieduur:** Migraties kunnen worden geconfigureerd om in een langzaam, incrementeel tempo plaats te vinden dat minder doorvoer verbruikt of de volledige doorvoer kan verbruiken die is ingericht op de doel-Azure Cosmos DB-container en de migratie in minder tijd kan voltooien.
+* **Verwachte migratie duur**: migraties kunnen worden geconfigureerd om te worden uitgevoerd met een traag, incrementeel tempo dat minder door Voer verbruikt of de volledige door Voer die is ingericht op de doel Azure Cosmos DB container verbruikt en de migratie in minder tijd kan volt ooien.
 
 ## <a name="azure-cosmos-db-sql-api"></a>SQL-API voor Azure Cosmos DB
-|**Migratietype**|**Oplossing**|**Overwegingen**|
+|**Type migratie**|**Oplossen**|**Overwegingen**|
 |---------|---------|---------|
-|Offline|[Hulpprogramma voor gegevensmigratie](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull;Niet geschikt voor grote datasets|
-|Offline|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull;Maakt gebruik van de Azure Cosmos DB bulk executor library <br/>&bull;Geschikt voor grote datasets <br/>&bull;Gebrek aan controlepunten - Dit betekent dat als er een probleem optreedt tijdens de migratie, u het hele migratieproces opnieuw moet starten<br/>&bull;Gebrek aan een dode letter wachtrij - Het betekent dat een paar foutieve bestanden kan het hele migratieproces te stoppen.|
-|Offline|[Azure Cosmos DB Spark-connector](https://docs.microsoft.com/azure/cosmos-db/spark-connector)|&bull;Maakt gebruik van de Azure Cosmos DB bulk executor library <br/>&bull;Geschikt voor grote datasets <br/>&bull;Heeft een aangepaste Spark-installatie nodig <br/>&bull;Spark is gevoelig voor schema-inconsistenties en dit kan een probleem zijn tijdens migratie |
-|Offline|[Aangepast gereedschap met cosmos DB-bulkuitvoerderbibliotheek](https://docs.microsoft.com/azure/cosmos-db/migrate-cosmosdb-data)|&bull;Biedt controlepunten, dead-lettering mogelijkheden die migratie tolerantie verhoogt <br/>&bull;Geschikt voor zeer grote datasets (10 TB+)  <br/>&bull;Vereist aangepaste installatie van dit hulpprogramma dat als app-service wordt uitgevoerd |
-|Online|[Cosmos DB-functies + ChangeFeed-API](https://docs.microsoft.com/azure/cosmos-db/change-feed-functions)|&bull;Eenvoudig in te stellen <br/>&bull;Werkt alleen als de bron een Azure Cosmos DB-container is <br/>&bull;Niet geschikt voor grote datasets <br/>&bull;Verwijdert geen verwijderen uit de broncontainer |
-|Online|[Aangepaste migratieservice met ChangeFeed](https://github.com/nomiero/CosmosDBLiveETLSample)|&bull;Biedt voortgangstracking <br/>&bull;Werkt alleen als de bron een Azure Cosmos DB-container is <br/>&bull;Werkt ook voor grotere datasets <br/>&bull;De gebruiker moet een App-service instellen om de feedprocessor wijzigen te hosten <br/>&bull;Verwijdert geen verwijderen uit de broncontainer|
-|Online|[Striim Striim](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-sql-api-migrate-data-striim)|&bull;Werkt met een grote verscheidenheid aan bronnen zoals Oracle, DB2, SQL Server <br/>&bull;Eenvoudig te bouwen ETL-pijpleidingen en biedt een dashboard voor bewaking <br/>&bull;Ondersteunt grotere gegevenssets <br/>&bull;Aangezien dit een tool van derden is, moet het worden gekocht van de markt en geïnstalleerd in de omgeving van de gebruiker|
+|Offline|[Hulp programma voor gegevens migratie](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull;Niet geschikt voor grote gegevens sets|
+|Offline|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull;Maakt gebruik van de bibliotheek van de Azure Cosmos DB bulk-uitvoerder <br/>&bull;Geschikt voor grote gegevens sets <br/>&bull;Geen controle punten: Dit betekent dat als er een probleem optreedt tijdens de migratie, het hele migratie proces opnieuw moet worden gestart<br/>&bull;Geen wachtrij met onbestelbare berichten: Dit betekent dat een aantal foutieve bestanden het gehele migratie proces kan stoppen.|
+|Offline|[Azure Cosmos DB Spark-connector](https://docs.microsoft.com/azure/cosmos-db/spark-connector)|&bull;Maakt gebruik van de bibliotheek van de Azure Cosmos DB bulk-uitvoerder <br/>&bull;Geschikt voor grote gegevens sets <br/>&bull;Vereist een aangepaste Spark-installatie <br/>&bull;Spark is gevoelig voor inconsistenties in het schema en dit kan een probleem zijn tijdens de migratie |
+|Offline|[Aangepast hulp programma met Cosmos DB bibliotheek voor bulksgewijs uitvoerder](https://docs.microsoft.com/azure/cosmos-db/migrate-cosmosdb-data)|&bull;Voorziet in controle punten, functies voor onbestelbare berichten waardoor migratie tolerantie wordt verhoogd <br/>&bull;Geschikt voor zeer grote gegevens sets (10 TB +)  <br/>&bull;Aangepaste Setup van dit hulp programma moet worden uitgevoerd als een App Service |
+|Online|[Cosmos DB functions + ChangeFeed-API](https://docs.microsoft.com/azure/cosmos-db/change-feed-functions)|&bull;Eenvoudig in te stellen <br/>&bull;Werkt alleen als de bron een Azure Cosmos DB container is <br/>&bull;Niet geschikt voor grote gegevens sets <br/>&bull;Er worden geen verwijderingen van de bron container vastgelegd |
+|Online|[Aangepaste migratie service met ChangeFeed](https://github.com/nomiero/CosmosDBLiveETLSample)|&bull;Biedt voortgangs tracering <br/>&bull;Werkt alleen als de bron een Azure Cosmos DB container is <br/>&bull;Werkt ook voor grotere gegevens sets <br/>&bull;Vereist dat de gebruiker een App Service instelt voor het hosten van de Change feed-processor <br/>&bull;Er worden geen verwijderingen van de bron container vastgelegd|
+|Online|[Realtimeplatform](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-sql-api-migrate-data-striim)|&bull;Werkt met een groot aantal verschillende bronnen, zoals Oracle, DB2, SQL Server <br/>&bull;Eenvoudig ETL-pijp lijnen bouwen en een dash board voor bewaking bieden <br/>&bull;Biedt ondersteuning voor grotere gegevens sets <br/>&bull;Aangezien dit een hulp programma van derden is, moet het worden aangeschaft via Marketplace en worden geïnstalleerd in de omgeving van de gebruiker.|
 
-## <a name="azure-cosmos-db-mongo-api"></a>Azure Cosmos DB Mongo API
-|**Migratietype**|**Oplossing**|**Overwegingen**|
+## <a name="azure-cosmos-db-mongo-api"></a>Azure Cosmos DB Mongo-API
+|**Type migratie**|**Oplossen**|**Overwegingen**|
 |---------|---------|---------|
-|Offline|[Hulpprogramma voor gegevensmigratie](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull;Niet geschikt voor grote datasets|
-|Offline|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull;Maakt gebruik van de Azure Cosmos DB bulk executor library <br/>&bull;Geschikt voor grote datasets <br/>&bull;Gebrek aan controlepunten betekent dat elk probleem tijdens de migratie een herstart van het hele migratieproces vereist<br/>&bull;Het ontbreken van een dode letter wachtrij zou betekenen dat een paar foutieve bestanden kan het hele migratieproces te stoppen <br/>&bull;Aangepaste code nodig om de leesdoorvoer voor bepaalde gegevensbronnen te verhogen|
-|Offline|[Bestaande Mongo Tools (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull;Eenvoudig in te stellen en te integreren <br/>&bull;Heeft aangepaste handling nodig voor gashendels|
-|Online|[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db-online)|&bull;Maakt gebruik van de Azure Cosmos DB bulk executor library <br/>&bull;Geschikt voor grote datasets en zorgt voor het repliceren van live changes <br/>&bull;Werkt alleen met andere MongoDB bronnen|
+|Offline|[Hulp programma voor gegevens migratie](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull;Niet geschikt voor grote gegevens sets|
+|Offline|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull;Maakt gebruik van de bibliotheek van de Azure Cosmos DB bulk-uitvoerder <br/>&bull;Geschikt voor grote gegevens sets <br/>&bull;Geen controle punten houdt in dat een probleem tijdens de migratie het opnieuw opstarten van het hele migratie proces vereist.<br/>&bull;Geen wachtrij met onbestelbare berichten zou betekenen dat een paar foutieve bestanden het gehele migratie proces zouden kunnen stoppen <br/>&bull;Aangepaste code nodig om de Lees doorvoer voor bepaalde gegevens bronnen te verg Roten|
+|Offline|[Bestaande Mongo-Hulpprogram Ma's (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull;Eenvoudig in te stellen en te integreren <br/>&bull;Aangepaste verwerking vereist voor beperking|
+|Online|[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db-online)|&bull;Maakt gebruik van de bibliotheek van de Azure Cosmos DB bulk-uitvoerder <br/>&bull;Geschikt voor grote gegevens sets en zorgt voor het repliceren van Live wijzigingen <br/>&bull;Werkt alleen met andere MongoDB-bronnen|
 
 ## <a name="azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra-API
-|**Migratietype**|**Oplossing**|**Overwegingen**|
+|**Type migratie**|**Oplossen**|**Overwegingen**|
 |---------|---------|---------|
-|Offline|[cqlsh COPY, opdracht](https://docs.microsoft.com/azure/cosmos-db/cassandra-import-data#migrate-data-using-cqlsh-copy-command)|&bull;Eenvoudig in te stellen <br/>&bull;Niet geschikt voor grote datasets <br/>&bull;Werkt alleen als de bron een Cassandra-tafel is|
-|Offline|[Tabel kopiëren met Spark](https://docs.microsoft.com/azure/cosmos-db/cassandra-import-data#migrate-data-using-spark) |&bull;Kan gebruik maken van Spark-mogelijkheden om transformatie en inname te paralleleren <br/>&bull;Configuratie nodig met een aangepast beleid voor het opnieuw proberen om gashendels te verwerken|
-|Online|[Striim (van Oracle DB/Apache Cassandra)](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-cassandra-api-migrate-data-striim)|&bull;Werkt met een grote verscheidenheid aan bronnen zoals Oracle, DB2, SQL Server <br/>&bull;Eenvoudig te bouwen ETL-pijpleidingen en biedt een dashboard voor bewaking <br/>&bull;Ondersteunt grotere gegevenssets <br/>&bull;Aangezien dit een tool van derden is, moet het worden gekocht van de markt en geïnstalleerd in de omgeving van de gebruiker|
-|Online|[Blitzz (van Oracle DB/Apache Cassandra)](https://docs.microsoft.com/azure/cosmos-db/oracle-migrate-cosmos-db-blitzz)|<br/>&bull;Ondersteunt grotere gegevenssets <br/>&bull;Aangezien dit een tool van derden is, moet het worden gekocht van de markt en geïnstalleerd in de omgeving van de gebruiker|
+|Offline|[cqlsh kopiëren opdracht](https://docs.microsoft.com/azure/cosmos-db/cassandra-import-data#migrate-data-using-cqlsh-copy-command)|&bull;Eenvoudig in te stellen <br/>&bull;Niet geschikt voor grote gegevens sets <br/>&bull;Werkt alleen wanneer de bron een Cassandra-tabel is|
+|Offline|[Tabel kopiëren met Spark](https://docs.microsoft.com/azure/cosmos-db/cassandra-import-data#migrate-data-using-spark) |&bull;Kan gebruik maken van Spark-mogelijkheden om trans formatie en opname te parallelliseren <br/>&bull;Moet worden geconfigureerd met een aangepast beleid voor opnieuw proberen om beperkingen te verwerken|
+|Online|[Realtimeplatform (uit Oracle DB/Apache Cassandra)](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-cassandra-api-migrate-data-striim)|&bull;Werkt met een groot aantal verschillende bronnen, zoals Oracle, DB2, SQL Server <br/>&bull;Eenvoudig ETL-pijp lijnen bouwen en een dash board voor bewaking bieden <br/>&bull;Biedt ondersteuning voor grotere gegevens sets <br/>&bull;Aangezien dit een hulp programma van derden is, moet het worden aangeschaft via Marketplace en worden geïnstalleerd in de omgeving van de gebruiker.|
+|Online|[Blitzz (uit Oracle DB/Apache Cassandra)](https://docs.microsoft.com/azure/cosmos-db/oracle-migrate-cosmos-db-blitzz)|<br/>&bull;Biedt ondersteuning voor grotere gegevens sets <br/>&bull;Aangezien dit een hulp programma van derden is, moet het worden aangeschaft via Marketplace en worden geïnstalleerd in de omgeving van de gebruiker.|
 
 ## <a name="other-apis"></a>Overige API's
-Voor andere API's dan de SQL API, Mongo API en de Cassandra API zijn er verschillende tools die worden ondersteund door elk van de bestaande ecosystemen van de API. 
+Voor andere Api's dan de SQL-API, Mongo-API en het Cassandra-API, zijn er verschillende hulpprogram ma's die worden ondersteund door elk van de bestaande ecosystemen van de API. 
 
 **Tabel-API** 
-* [Hulpprogramma voor gegevensmigratie](https://docs.microsoft.com/azure/cosmos-db/table-import#data-migration-tool)
-* [AzCopy (AzCopy)](https://docs.microsoft.com/azure/cosmos-db/table-import#migrate-data-by-using-azcopy)
+* [Hulp programma voor gegevens migratie](https://docs.microsoft.com/azure/cosmos-db/table-import#data-migration-tool)
+* [AzCopy](https://docs.microsoft.com/azure/cosmos-db/table-import#migrate-data-by-using-azcopy)
 
 **Gremlin-API**
-* [Bibliotheek voor bulkuitvoervan grafiek](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-graph-dotnet)
+* [Bibliotheek voor bulksgewijs uitvoeren grafiek](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-graph-dotnet)
 * [Gremlin Spark](https://github.com/Azure/azure-cosmosdb-spark/blob/2.4/samples/graphframes/main.scala) 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie door de voorbeeldtoepassingen uit te proberen die de bibliotheek voor bulkuitvoerbestanden in [.NET](bulk-executor-dot-net.md) en [Java gebruiken](bulk-executor-java.md). 
-* De bulkexecutorbibliotheek is geïntegreerd in de Cosmos DB Spark-connector, zie het artikel [azure cosmos DB Spark-connector.](spark-connector.md)  
-* Neem contact op met het Azure Cosmos DB-productteam door een ondersteuningsticket te openen onder het probleemtype 'Algemeen advies' en het probleemsubtype 'Grote (TB+) migraties' voor extra hulp bij grootschalige migraties.
+* Meer informatie over het uitproberen van de voorbeeld toepassingen die de bulk-uitvoerder bibliotheek in [.net](bulk-executor-dot-net.md) en [Java](bulk-executor-java.md)gebruiken. 
+* De bibliotheek bulk-uitvoerder is geïntegreerd in de Cosmos DB Spark-connector, Zie [Azure Cosmos DB artikel Spark-connector](spark-connector.md) voor meer informatie.  
+* Neem contact op met het product team van Azure Cosmos DB door een ondersteunings ticket te openen onder het probleem type ' algemeen advies ' en ' grote (TB +) ' subtype ' voor meer informatie over grootschalige migraties.

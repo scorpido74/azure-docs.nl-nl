@@ -1,6 +1,6 @@
 ---
-title: Een virtueel netwerk maken voor beheerde instantie
-description: In dit artikel wordt beschreven hoe u een virtueel netwerk maakt waarin u Azure SQL Database Managed Instance implementeren.
+title: Een virtueel netwerk voor een beheerd exemplaar maken
+description: In dit artikel wordt beschreven hoe u een virtueel netwerk maakt waarmee u Azure SQL Database beheerde instantie kunt implementeren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,56 +12,56 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
 ms.openlocfilehash: 0ce88f9a61b8aa7c2588a6e077d694afa6fb8631
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878847"
 ---
-# <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Een virtueel netwerk maken voor Azure SQL Database Managed Instance
+# <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Een virtueel netwerk maken voor Azure SQL Database beheerde instantie
 
-In dit artikel wordt uitgelegd hoe u een geldig virtueel netwerk en subnet maakt waar u Azure SQL Database Managed Instance implementeren.
+In dit artikel wordt uitgelegd hoe u een geldig virtueel netwerk en subnet maakt, waar u Azure SQL Database beheerde instantie kunt implementeren.
 
-Azure SQL Database Managed Instance moet worden geïmplementeerd binnen een [virtueel Azure-netwerk.](../virtual-network/virtual-networks-overview.md) Met deze implementatie worden de volgende scenario's mogelijk:
+Azure SQL Database beheerde instantie moet worden geïmplementeerd in een virtueel Azure- [netwerk](../virtual-network/virtual-networks-overview.md). Deze implementatie maakt gebruik van de volgende scenario's:
 
-- Veilig privé-IP-adres
-- Rechtstreeks verbinding maken met een beheerde instantie vanuit een on-premises netwerk
-- Een beheerde instantie verbinden met gekoppelde server of een ander on-premises gegevensarchief
-- Een beheerde instantie verbinden met Azure-bronnen  
+- Beveiligd privé IP-adres
+- Rechtstreeks vanuit een on-premises netwerk verbinding maken met een beheerd exemplaar
+- Een beheerd exemplaar verbinden met een gekoppelde server of een ander on-premises gegevens archief
+- Een beheerd exemplaar verbinden met Azure-resources  
 
 > [!NOTE]
-> U moet [de grootte van het subnet voor Beheerde instantie bepalen](sql-database-managed-instance-determine-size-vnet-subnet.md) voordat u de eerste instantie implementeert. U het formaat van het subnet niet wijzigen nadat u de resources erin hebt geplaatst.
+> U moet [de grootte van het subnet voor het beheerde exemplaar bepalen](sql-database-managed-instance-determine-size-vnet-subnet.md) voordat u de eerste instantie implementeert. U kunt het formaat van het subnet niet wijzigen nadat u de resources in hebt geplaatst.
 >
-> Als u van plan bent een bestaand virtueel netwerk te gebruiken, moet u die netwerkconfiguratie aanpassen aan uw beheerde instantie. Zie [Een bestaand virtueel netwerk wijzigen voor Beheerde instantie voor](sql-database-managed-instance-configure-vnet-subnet.md)meer informatie.
+> Als u van plan bent een bestaand virtueel netwerk te gebruiken, moet u die netwerk configuratie aanpassen aan uw beheerde exemplaar. Zie [een bestaand virtueel netwerk voor een beheerd exemplaar wijzigen](sql-database-managed-instance-configure-vnet-subnet.md)voor meer informatie.
 >
-> Nadat een beheerde instantie is gemaakt, wordt het verplaatsen van de beheerde instantie of VNet naar een andere resourcegroep of abonnement niet ondersteund.  Het verplaatsen van de beheerde instantie naar een ander subnet wordt ook niet ondersteund.
+> Nadat een beheerd exemplaar is gemaakt, wordt het beheerde exemplaar of VNet naar een andere resource groep of een ander abonnement niet ondersteund.  Het is ook niet mogelijk om het beheerde exemplaar naar een ander subnet te verplaatsen.
 >
 
 ## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-De eenvoudigste manier om een virtueel netwerk te maken en te configureren, is door een Azure Resource Manager-implementatiesjabloon te gebruiken.
+De eenvoudigste manier om een virtueel netwerk te maken en te configureren, is door een sjabloon voor Azure Resource Manager implementatie te gebruiken.
 
 1. Meld u aan bij Azure Portal.
 
-2. Selecteer de knop **Implementeren naar Azure:**
+2. Selecteer de knop **implementeren naar Azure** :
 
    <a target="_blank" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json" rel="noopener" data-linktype="external"> <img src="https://azuredeploy.net/deploybutton.png" data-linktype="external"> </a>
 
-   Met deze knop opent u een formulier dat u gebruiken om de netwerkomgeving te configureren waar u Beheerde instantie implementeren.
+   Met deze knop opent u een formulier dat u kunt gebruiken om de netwerk omgeving te configureren waarin u een beheerd exemplaar kunt implementeren.
 
    > [!Note]
-   > Deze sjabloon Azure Resource Manager implementeert een virtueel netwerk met twee subnetten. Eén subnet, **ManagedInstances**genaamd, is gereserveerd voor Beheerde instantie en heeft een vooraf geconfigureerde routetabel. Het andere subnet, **standaard**genoemd, wordt gebruikt voor andere bronnen die toegang moeten krijgen tot beheerde instantie (bijvoorbeeld Azure Virtual Machines).
+   > Met deze Azure Resource Manager sjabloon wordt een virtueel netwerk met twee subnetten geïmplementeerd. Een subnet met de naam **ManagedInstances**is gereserveerd voor het beheerde exemplaar en heeft een vooraf geconfigureerde route tabel. Het andere subnet, dat **standaard**wordt genoemd, wordt gebruikt voor andere resources die toegang moeten hebben tot het beheerde exemplaar (bijvoorbeeld Azure virtual machines).
 
-3. Configureer de netwerkomgeving. In het volgende formulier u parameters van uw netwerkomgeving configureren:
+3. Configureer de netwerk omgeving. Op het volgende formulier kunt u para meters van uw netwerk omgeving configureren:
 
-   ![Resourcebeheersjabloon voor het configureren van het Azure-netwerk](./media/sql-database-managed-instance-vnet-configuration/create-mi-network-arm.png)
+   ![Resource Manager-sjabloon voor het configureren van het Azure-netwerk](./media/sql-database-managed-instance-vnet-configuration/create-mi-network-arm.png)
 
-   U de namen van het virtuele netwerk en de subnetten wijzigen en de IP-bereiken aanpassen die zijn gekoppeld aan uw netwerkbronnen. Nadat u de knop **Aankoop** hebt geselecteerd, wordt uw omgeving in dit formulier gemaakt en geconfigureerd. Als u geen twee subnetten nodig hebt, u de standaardversie verwijderen.
+   U kunt de namen van het virtuele netwerk en subnetten wijzigen en de IP-bereiken aanpassen die aan uw netwerk bronnen zijn gekoppeld. Nadat u de knop **aanschaffen** hebt geselecteerd, wordt in dit formulier uw omgeving gemaakt en geconfigureerd. Als u niet twee subnetten nodig hebt, kunt u de standaard waarde verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Wat is een beheerde instantie voor](sql-database-managed-instance.md)een overzicht.
-- Meer informatie over [connectiviteitsarchitectuur in Managed Instance](sql-database-managed-instance-connectivity-architecture.md).
-- Meer informatie over het [wijzigen van een bestaand virtueel netwerk voor Beheerde instantie](sql-database-managed-instance-configure-vnet-subnet.md).
-- Zie Een Azure SQL Database Managed Instance maken voor een zelfstudie die laat zien hoe u een virtueel netwerk maakt, een beheerde instantie maakt en een database herstelt van een databaseback.For a tutorial that shows how to create a virtual network, create a Managed Instance, create a Managed Instance and restore a database from a database backup, see [Create an Azure SQL Database Managed Instance](sql-database-managed-instance-get-started.md).
-- Zie [Een aangepaste DNS configureren](sql-database-managed-instance-custom-dns.md)voor DNS-problemen.
+- Zie [Wat is een beheerd exemplaar?](sql-database-managed-instance.md)voor een overzicht.
+- Meer informatie over [connectiviteits architectuur in het beheerde exemplaar](sql-database-managed-instance-connectivity-architecture.md).
+- Meer informatie over het [wijzigen van een bestaand virtueel netwerk voor een beheerd exemplaar](sql-database-managed-instance-configure-vnet-subnet.md).
+- Voor een zelf studie waarin wordt getoond hoe u een virtueel netwerk maakt, een beheerd exemplaar maakt en een Data Base herstelt vanuit een back-up van de data base, raadpleegt u [een Azure SQL database beheerd exemplaar maken](sql-database-managed-instance-get-started.md).
+- Zie [Configuring a Custom DNS](sql-database-managed-instance-custom-dns.md)(Engelstalig) voor DNS-problemen.

@@ -1,7 +1,7 @@
 ---
-title: Recept azure containerinstance
+title: Azure container instance-recept
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het implementeren van Cognitive Services Containers op Azure Container Instance
+description: Meer informatie over het implementeren van Cognitive Services-containers in azure container instance
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,41 +11,41 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: f247465c7e2c0a212df2821ebc7165d3ee5b15f3
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876654"
 ---
 # <a name="deploy-and-run-container-on-azure-container-instance"></a>Container implementeren en uitvoeren in Azure Container Instance
 
-Schaal Azure Cognitive Services-toepassingen in de cloud eenvoudig met Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/)met de volgende stappen. Containerization helpt u zich te concentreren op het bouwen van uw applicaties in plaats van het beheren van de infrastructuur. Zie [functies en voordelen](../cognitive-services-container-support.md#features-and-benefits)voor meer informatie over het gebruik van containers.
+Met de volgende stappen kunt u Azure Cognitive Services-toepassingen in de Cloud eenvoudig schalen met Azure [container instances](https://docs.microsoft.com/azure/container-instances/). Met container opslag kunt u zich richten op het bouwen van uw toepassingen in plaats van de infra structuur te beheren. Zie [functies en voor delen](../cognitive-services-container-support.md#features-and-benefits)voor meer informatie over het gebruik van containers.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het recept werkt met elke Cognitive Services container. De cognitive service-bron moet worden gemaakt in de Azure-portal voordat u het recept gebruikt. Elke cognitieve service die containers ondersteunt, heeft een document 'Hoe te installeren' speciaal voor het installeren en configureren van de service voor een container. Voor sommige services is een bestand of een set bestanden vereist als invoer voor de container, het is belangrijk dat u de container met succes begrijpt en hebt gebruikt voordat u deze oplossing gebruikt.
+Het recept werkt met een Cognitive Services-container. De cognitieve service resource moet worden gemaakt in de Azure Portal voordat u het recept gebruikt. Elke cognitieve service die containers ondersteunt, is bedoeld voor het installeren en configureren van de service voor een container. Voor sommige services is een bestand of een set bestanden vereist als invoer voor de container. het is belang rijk dat u de container hebt gebruikt voordat u deze oplossing gebruikt.
 
-* Een cognitive service-bron die is gemaakt in azure-portal.
-* URL **van eindpunt** voor cognitieve service - bekijk de 'Hoe te installeren' van uw specifieke service voor de container, om te zien waar de URL van het eindpunt zich bevindt binnen de Azure-portal en hoe een correct voorbeeld van de URL eruit ziet. De exacte indeling kan van service naar service veranderen.
-* Cognitieve **servicesleutel** - de sleutels staan op de pagina **Sleutels** voor de Azure-bron. Je hebt maar één van de twee sleutels nodig. De toets is een tekenreeks van 32 alfanumerieke tekens.
-* Eén Cognitive Services-container op uw lokale host (uw computer). Zorg ervoor dat je kunt:
-  * Trek de afbeelding `docker pull` omlaag met een opdracht.
-  * Voer de lokale container met succes `docker run` uit met alle vereiste configuratie-instellingen met een opdracht.
-  * Bel het eindpunt van de container en krijg een reactie van HTTP 2xx en een JSON-antwoord terug.
+* Een cognitieve service resource, gemaakt in Azure Portal.
+* URL van het cognitieve service- **eind punt** : Controleer de installatie van uw specifieke service voor de container, zodat u kunt vinden waar de eind punt-URL zich bevindt in het Azure Portal en wat een juist voor beeld van de URL is. De exacte indeling kan veranderen van service naar service.
+* Cognitieve service **sleutel** : de sleutels bevinden zich op de pagina **sleutels** voor de Azure-resource. U hebt slechts een van de twee sleutels nodig. De sleutel is een teken reeks van 32 alfanumerieke tekens.
+* Eén Cognitive Services-container op uw lokale host (uw computer). Zorg ervoor dat u het volgende kunt doen:
+  * Haal de installatie kopie op met `docker pull` een opdracht.
+  * Voer de lokale container uit met alle vereiste configuratie-instellingen met `docker run` een opdracht.
+  * Roep het eind punt van de container aan, waarbij een reactie van HTTP-2xx en een JSON-antwoord wordt teruggestuurd.
 
-Alle variabelen in `<>`hoekbeugels, moeten worden vervangen door uw eigen waarden. Deze vervanging omvat de hoekbeugels.
+Alle variabelen tussen punt haken, `<>`moeten worden vervangen door uw eigen waarden. Deze vervanging omvat de punt haken.
 
 [!INCLUDE [Create a Text Analytics Containers on Azure Container Instances](includes/create-container-instances-resource.md)]
 
-## <a name="use-the-container-instance"></a>De containerinstantie gebruiken
+## <a name="use-the-container-instance"></a>Het container exemplaar gebruiken
 
-1. Selecteer het **overzicht** en kopieer het IP-adres. Het zal een numeriek `55.55.55.55`IP-adres zijn, zoals .
-1. Open een nieuw browsertabblad en gebruik bijvoorbeeld `http://<IP-address>:5000 (http://55.55.55.55:5000`het IP-adres). U ziet de startpagina van de container, zodat u weet dat de container wordt uitgevoerd.
+1. Selecteer het **overzicht** en kopieer het IP-adres. Dit is een numeriek IP-adres, zoals `55.55.55.55`.
+1. Open een nieuw browser tabblad en gebruik het IP-adres, bijvoorbeeld `http://<IP-address>:5000 (http://55.55.55.55:5000`). U ziet de start pagina van de container, zodat u weet dat de container wordt uitgevoerd.
 
-1. Selecteer **Service-API-beschrijving** om de braniepagina voor de container weer te geven.
+1. Selecteer **Service-API-beschrijving** om de Swagger-pagina voor de container weer te geven.
 
-1. Selecteer een **POST** van de POST-API's en selecteer **Probeer het uit**.  De parameters worden weergegeven, inclusief de invoer. Vul de parameters in.
+1. Selecteer een van de **post** -api's en selecteer **try-out**.  De para meters worden weer gegeven met inbegrip van de invoer. Vul de para meters in.
 
-1. Selecteer **Uitvoeren** om de aanvraag naar uw containerexemplaar te verzenden.
+1. Selecteer **uitvoeren** om de aanvraag naar uw container exemplaar te verzenden.
 
-    U hebt containers voor Cognitive Services gemaakt en gebruikt in Azure Container Instance.
+    U hebt Cognitive Services containers gemaakt en gebruikt in azure container instance.

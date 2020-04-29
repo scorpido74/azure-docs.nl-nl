@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een Java-app bouwen met Azure Cosmos DB Async Java SDK om gegevens in SQL API-account te beheren'
+title: 'Zelf studie: een Java-app maken met Azure Cosmos DB async-SDK voor het beheren van gegevens in een SQL-API-account'
 description: In deze zelfstudie leert u hoe u SQL API-accounts kunt gebruiken voor het opslaan van en toegang krijgen tot gegevens in Azure Cosmos DB met behulp van een asynchrone Java-toepassing.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -10,13 +10,13 @@ ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: f81052f68d377603c7148ac2a39da626b426e352
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80985232"
 ---
-# <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Zelfstudie: Een Java-app bouwen met de Async Java SDK om gegevens te beheren die zijn opgeslagen in een SQL API-account
+# <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Zelf studie: een Java-app bouwen met de asynchrone Java-SDK voor het beheren van gegevens die zijn opgeslagen in een SQL-API-account
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -42,11 +42,11 @@ Zorg ervoor dat u over de volgende bronnen beschikt:
 
 * Een actief Azure-account. Als u nog geen account hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/). 
 
-* [Git.](https://git-scm.com/downloads)
+* [Git](https://git-scm.com/downloads).
 
 * [Java Development Kit (JDK) 8+](/java/azure/jdk/?view=azure-java-stable).
 
-* [Maven.](https://maven.apache.org/download.cgi)
+* [Maven](https://maven.apache.org/download.cgi).
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Maak een Azure Cosmos DB-account
 
@@ -54,7 +54,7 @@ Maak een Azure Cosmos-account door de volgende stappen uit te voeren:
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="clone-the-github-repository"></a><a id="GitClone"></a>Kloon de GitHub repository
+## <a name="clone-the-github-repository"></a><a id="GitClone"></a>De GitHub-opslag plaats klonen
 
 Kloon de GitHub-opslagplaats voor [Get Started with Azure Cosmos DB and Java](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started) (Aan de slag met Azure Cosmos DB en Java). Voer bijvoorbeeld vanuit een lokale map het volgende uit als u het voorbeeldproject lokaal wilt ophalen.
 
@@ -77,7 +77,7 @@ De map bevat de map `pom.xml` en het bestand `src/main/java/com/microsoft/azure/
 
 ## <a name="connect-to-an-azure-cosmos-account"></a><a id="Connect"></a>Verbinding maken met een Azure Cosmos-account
 
-Ga vervolgens terug naar de [Azure-portal](https://portal.azure.com) om uw eindpunt en primaire hoofdsleutel op te halen. Uw toepassing heeft het Azure Cosmos DB-eindpunt en de primaire sleutel nodig om te bepalen waarmee verbinding moet worden gemaakt en om ervoor te zorgen dat Azure Cosmos DB de verbinding van uw toepassing vertrouwt. Het bestand `AccountSettings.java` bevat de primaire sleutel en de URI-waarden. 
+Ga vervolgens terug naar de [Azure Portal](https://portal.azure.com) om uw eind punt en de primaire hoofd sleutel op te halen. Uw toepassing heeft het Azure Cosmos DB-eindpunt en de primaire sleutel nodig om te bepalen waarmee verbinding moet worden gemaakt en om ervoor te zorgen dat Azure Cosmos DB de verbinding van uw toepassing vertrouwt. Het bestand `AccountSettings.java` bevat de primaire sleutel en de URI-waarden. 
 
 Ga in Azure Portal naar uw Azure Cosmos-account en klik vervolgens op **Sleutels**. Kopieer de URI en de PRIMAIRE SLEUTEL van de portal en plak deze in het bestand `AccountSettings.java`. 
 
@@ -114,7 +114,7 @@ client = new AsyncDocumentClient.Builder()
 
 ## <a name="create-a-database"></a><a id="CreateDatabase"></a>Een database maken
 
-Maak uw Azure Cosmos-database met de `createDatabaseIfNotExists()` methode van de klasse DocumentClient. Een database is een logische container voor een JSON-documentopslag, gepartitioneerd in verzamelingen.
+Maak uw Azure Cosmos-data base met `createDatabaseIfNotExists()` behulp van de methode van de klasse DocumentClient. Een database is een logische container voor een JSON-documentopslag, gepartitioneerd in verzamelingen.
 
 ```java
 private void createDatabaseIfNotExists() throws Exception 

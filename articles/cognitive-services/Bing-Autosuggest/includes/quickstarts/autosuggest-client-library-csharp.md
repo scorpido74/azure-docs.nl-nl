@@ -1,5 +1,5 @@
 ---
-title: Bing Autosuggest C# clientbibliotheek snel aan de slag
+title: Quick start voor Bing Automatische suggesties C#-client bibliotheek
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,41 +9,41 @@ ms.topic: include
 ms.date: 04/06/2020
 ms.author: aahi
 ms.openlocfilehash: ac46eb0119ac95cf09e48823686a6c563d8d4d4a
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80887534"
 ---
-Ga aan de slag met de Bing Autosuggest-clientbibliotheek voor .NET. Volg deze stappen om het pakket te installeren en probeer de voorbeeldcode voor basistaken uit.
+Ga aan de slag met de Bing Automatische suggesties-client bibliotheek voor .NET. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.
 
-Gebruik de bing-clientbibliotheek voor .NET automatisch voorstellen om zoeksuggesties te ontvangen op basis van gedeeltelijke querytekenreeksen.
+Gebruik de Bing Automatische suggesties-client bibliotheek voor .NET om Zoek suggesties op basis van gedeeltelijke query teken reeksen op te halen.
 
-[Voorbeeldcode](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet) | van de[Sample code](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/BingAutoSuggest/Program.cs) [naslagdocumentatiebibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingAutoSuggest) | [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.AutoSuggest/) | 
+[Reference documentation](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet) | [Voorbeeld code](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/BingAutoSuggest/Program.cs) van[bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingAutoSuggest) | pakket voor referentie documentatie bibliotheek[(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.AutoSuggest/) | 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement - [Maak er gratis een](https://azure.microsoft.com/free/)
-* De huidige versie van [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
+* De huidige versie van [.net core](https://dotnet.microsoft.com/download/dotnet-core).
 
 ## <a name="setting-up"></a>Instellen
 
-### <a name="create-an-azure-resource"></a>Een Azure-bron maken
+### <a name="create-an-azure-resource"></a>Een Azure-resource maken
 
 [!INCLUDE [cognitive-services-bing-autosuggest-signup-requirements](~/includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
-### <a name="create-an-environment-variable"></a>Een omgevingsvariabele maken
+### <a name="create-an-environment-variable"></a>Een omgevings variabele maken
 
 >[!NOTE]
-> De eindpunten voor niet-proefresources die na 1 juli 2019 zijn gemaakt, gebruiken de aangepaste subdomeinindeling hieronder. Zie [Aangepaste subdomeinnamen voor cognitieve services voor](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)meer informatie en een volledige lijst met regionale eindpunten. 
+> De eind punten voor niet-proef resources die zijn gemaakt na 1 juli 2019, gebruiken de aangepaste indeling voor subdomeinen die hieronder wordt weer gegeven. Zie [aangepaste subdomein namen voor Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)voor meer informatie en een volledige lijst met regionale eind punten. 
 
-Maak met behulp van uw sleutel en eindpunt van de resource die u hebt gemaakt twee omgevingsvariabelen voor verificatie:
+Met uw sleutel en eind punt van de resource die u hebt gemaakt, maakt u twee omgevings variabelen voor verificatie:
 <!-- replace the below variable names with the names expected in the code sample.-->
-* `AUTOSUGGEST_SUBSCRIPTION_KEY`- De resourcesleutel voor het verifiëren van uw aanvragen.
-* `AUTOSUGGEST_ENDPOINT`- Het resourceeindpunt voor het verzenden van API-aanvragen. Het zal er als volgt uitzien: 
+* `AUTOSUGGEST_SUBSCRIPTION_KEY`-De bron sleutel voor het verifiëren van uw aanvragen.
+* `AUTOSUGGEST_ENDPOINT`-Het resource-eind punt voor het verzenden van API-aanvragen. Dit ziet er als volgt uit: 
   * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
 
-Gebruik de instructies voor uw besturingssysteem.
+Volg de instructies voor uw besturings systeem.
 <!-- replace the below endpoint and key examples -->
 #### <a name="windows"></a>[Windows](#tab/windows)
 
@@ -52,7 +52,7 @@ setx AUTOSUGGEST_SUBSCRIPTION_KEY <replace-with-your-autosuggest-api-key>
 setx AUTOSUGGEST_ENDPOINT <replace-with-your-autosuggest-api-endpoint>
 ```
 
-Nadat u de omgevingsvariabele hebt toegevoegd, start u het consolevenster opnieuw.
+Nadat u de omgevings variabele hebt toegevoegd, start u het console venster opnieuw.
 
 #### <a name="linux"></a>[Linux](#tab/linux)
 
@@ -65,7 +65,7 @@ Nadat u de omgevingsvariabele toevoegt, voert u `source ~/.bashrc` uit vanuit he
 
 #### <a name="macos"></a>[macOS](#tab/unix)
 
-Bewerk `.bash_profile`uw onaantal en voeg de omgevingsvariabele toe:
+Bewerk uw `.bash_profile`en voeg de omgevings variabele toe:
 
 ```bash
 export AUTOSUGGEST_SUBSCRIPTION_KEY=<replace-with-your-autosuggest-api-key>
@@ -77,21 +77,21 @@ Nadat u de omgevingsvariabele toevoegt, voert u `source .bash_profile` uit vanui
 
 ### <a name="create-a-new-c-application"></a>Een nieuwe C#-toepassing maken
 
-Maak een nieuwe .NET Core-toepassing in uw voorkeurseditor of IDE. 
+Maak een nieuwe .NET core-toepassing in uw voorkeurs editor of IDE. 
 
-Gebruik de `dotnet new` opdracht om in een consolevenster (zoals cmd, PowerShell of Bash) een nieuwe console-app met de naam `bing-autosuggest-quickstart`te maken. Met deze opdracht wordt een eenvoudig "Hello World" C#-project gemaakt met één bronbestand: *program.cs*. 
+In een console venster (zoals cmd, Power shell of bash) gebruikt u de `dotnet new` opdracht om een nieuwe console-app met de naam `bing-autosuggest-quickstart`te maken. Met deze opdracht maakt u een eenvoudig ' Hallo wereld ' C#-project met één bron bestand: *Program.cs*. 
 
 ```console
 dotnet new console -n bing-autosuggest-quickstart
 ```
 
-Wijzig uw map in de nieuw gemaakte app-map. U de toepassing bouwen met:
+Wijzig uw directory in de zojuist gemaakte app-map. U kunt de toepassing samen stellen met:
 
 ```console
 dotnet build
 ```
 
-De buildoutput mag geen waarschuwingen of fouten bevatten. 
+De build-uitvoer mag geen waarschuwingen of fouten bevatten. 
 
 ```console
 ...
@@ -101,7 +101,7 @@ Build succeeded.
 ...
 ```
 
-Open in de projectmap het *program.cs* bestand in uw voorkeurseditor of IDE. Voeg de `using` volgende richtlijnen toe:
+Open het *Program.cs* -bestand in de map van het project in uw voorkeurs editor of IDE. Voeg de volgende `using` instructies toe:
 
 ```csharp
 using System;
@@ -111,7 +111,7 @@ using System.Text;
 using System.Threading.Tasks;
 ```
 
-Maak `Program` in de klasse variabelen voor het Azure-eindpunt en de sleutel van uw bron. Als u de omgevingsvariabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell sluiten en opnieuw openen om toegang te krijgen tot de variabele.
+Maak in `Program` de-klasse variabelen voor het Azure-eind punt en de sleutel van uw resource. Als u de omgevings variabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell waarmee deze wordt uitgevoerd, sluiten en opnieuw openen om toegang te krijgen tot de variabele.
 
 ```csharp
 private const string key_var = "AUTOSUGGEST_SUBSCRIPTION_KEY";
@@ -122,7 +122,7 @@ private const string endpoint_var = "AUTOSUGGEST_ENDPOINT";
 private static readonly string endpoint = Environment.GetEnvironmentVariable(endpoint_var);
 ```
 
-Voeg in de `Main` methode van de toepassing de volgende methodeaanroepen toe, die u later zult definiëren.
+Voeg in de methode `Main` van de toepassing de volgende methode-aanroepen toe, die u later wilt definiëren.
 
 ```csharp
 static void Main(string[] args)
@@ -133,30 +133,30 @@ static void Main(string[] args)
 }
 ```
 
-### <a name="install-the-client-library"></a>De clientbibliotheek installeren
+### <a name="install-the-client-library"></a>De client bibliotheek installeren
 
-Installeer in de toepassingsmap de clientbibliotheek Bing Autosuggest voor .NET met de volgende opdracht:
+Installeer de Bing Automatische suggesties-client bibliotheek voor .NET in de toepassingsmap met de volgende opdracht:
 
 ```console
 dotnet add package Microsoft.Azure.CognitiveServices.Search.AutoSuggest --version 2.0.0
 ```
 
-Als u de Visual Studio IDE gebruikt, is de clientbibliotheek beschikbaar als downloadbaar NuGet-pakket.
+Als u de Visual Studio IDE gebruikt, is de client bibliotheek beschikbaar als een downloadbaar NuGet-pakket.
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
-In deze codefragmenten ziet u hoe u de volgende taken uitvoert met de Bing Autosuggest-clientbibliotheek voor .NET:
+Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Bing Automatische suggesties-client bibliotheek voor .NET:
 
 * [De client verifiëren](#authenticate-the-client)
-* [Een verzoek voor automatisch voorstellen verzenden](#send-an-autosuggest-request)
+* [Een automatische suggestie aanvraag verzenden](#send-an-autosuggest-request)
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
 > [!NOTE]
-> Met deze snelstart wordt ervan uitgegaan dat u [een omgevingsvariabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) hebt gemaakt voor uw Bing Autosuggest-sleutel, met de naam `AUTOSUGGEST_SUBSCRIPTION_KEY`, en een voor uw eindpunt met de naam `AUTOSUGGEST_ENDPOINT`.
+> In deze Quick Start wordt ervan uitgegaan dat u [een omgevings variabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) hebt gemaakt `AUTOSUGGEST_SUBSCRIPTION_KEY`voor uw Bing automatische suggesties sleutel, met de `AUTOSUGGEST_ENDPOINT`naam en één voor uw eind punt met de naam.
 
 
-In een nieuwe asynchrone methode u een client instantiëren met uw eindpunt en sleutel. Maak een [ApiKeyServiceClientCredentials-object](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.apikeyserviceclientcredentials?view=azure-dotnet) met uw sleutel en gebruik het met uw eindpunt om een [AutosuggestClient-object](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclient?view=azure-dotnet) te maken.
+In een nieuwe asynchrone methode maakt u een exemplaar van een client met het eind punt en de sleutel. Maak een [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.apikeyserviceclientcredentials?view=azure-dotnet) -object met uw sleutel en gebruik het met uw eind punt om een [AutosuggestClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclient?view=azure-dotnet) -object te maken.
 
 ```csharp
 async static Task RunQuickstart()
@@ -170,9 +170,9 @@ async static Task RunQuickstart()
 }
 ```
 
-## <a name="send-an-autosuggest-request"></a>Een verzoek voor automatisch voorstellen verzenden
+## <a name="send-an-autosuggest-request"></a>Een automatische suggestie aanvraag verzenden
 
-Gebruik in dezelfde methode de [AutoSuggestMethodAsync-methode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) van de client om een query naar Bing te verzenden. Vervolgens herhalen over de [suggesties](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) antwoord, en druk de eerste suggestie.
+In dezelfde methode gebruikt u de methode [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) van de client om een query naar Bing te verzenden. Herhaal vervolgens het antwoord op de [suggesties](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) en druk het eerste voor stel af.
 
 ```csharp
 var result = await client.AutoSuggestMethodAsync("xb");
@@ -200,7 +200,7 @@ else
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit uw `dotnet run` toepassingsmap uit met de opdracht.
+Voer de toepassing uit vanuit de map van uw `dotnet run` toepassing met de opdracht.
 
 ```dotnet
 dotnet run
@@ -208,7 +208,7 @@ dotnet run
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een abonnement voor Cognitive Services wilt opschonen en verwijderen, u de bron- of brongroep verwijderen. Als u de brongroep verwijdert, worden ook andere bronnen verwijderd die eraan zijn gekoppeld.
+Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -221,4 +221,4 @@ Als u een abonnement voor Cognitive Services wilt opschonen en verwijderen, u de
 ## <a name="see-also"></a>Zie ook
 
 - [Wat is Bing Automatische suggesties?](../../get-suggested-search-terms.md)
-- [Bing Autosuggest dotnet referentie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet)
+- [Bing Automatische suggesties DotNet-verwijzing](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet)

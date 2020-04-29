@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door - Monitoring voor het afstemmen van routeregelregels | Microsoft Documenten
-description: In dit artikel u begrijpen hoe Azure Front Door overeenkomt met welke routeringsregel u moet gebruiken voor een binnenkomende aanvraag
+title: Azure front-deur-routerings regel die overeenkomt met bewaking | Microsoft Docs
+description: Dit artikel helpt u te begrijpen hoe de voor deur van Azure overeenkomt met de routerings regel die moet worden gebruikt voor een inkomende aanvraag
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -12,118 +12,118 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878592"
 ---
-# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Hoe Voordeur aanvragen koppelt aan een routeringsregel
+# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Hoe front-deur overeenkomt met aanvragen voor een routerings regel
 
-Na het opzetten van een verbinding en het doen van een TLS-handshake, wanneer een aanvraag op een Front Door-omgeving landt, is een van de eerste dingen die Front Door doet, bepalen d.m.v. alle configuraties, welke specifieke routeregel moet overeenkomen met het verzoek en vervolgens de gedefinieerde actie. In het volgende document wordt uitgelegd hoe Voordeur bepaalt welke routeconfiguratie moet worden gebruikt bij het verwerken van een HTTP-aanvraag.
+Na het tot stand brengen van een verbinding en het uitvoeren van een TLS-Handshake, wanneer een aanvraag binnen een van de eerste punten in een front-deur omgeving wordt bepaald, wordt bepaald welke routerings regel moet overeenkomen met de aanvraag en de gedefinieerde actie te ondernemen. In het volgende document wordt uitgelegd hoe de voor deur bepaalt welke route configuratie moet worden gebruikt bij het verwerken van een HTTP-aanvraag.
 
-## <a name="structure-of-a-front-door-route-configuration"></a>Structuur van een voordeurrouteconfiguratie
-Een voordeurregelconfiguratie bestaat uit twee belangrijke delen: een "linkerkant" en een "rechterkant". We koppelen het binnenkomende verzoek aan de linkerkant van de route, terwijl de rechterkant bepaalt hoe we de aanvraag verwerken.
+## <a name="structure-of-a-front-door-route-configuration"></a>Structuur van een configuratie voor een front-deur route
+De configuratie van een voor deur routerings regel bestaat uit twee belang rijke onderdelen: een ' aan de linkerkant ' en een ' rechter kant '. We komen overeen met de inkomende aanvraag aan de linkerkant van de route, terwijl aan de rechter kant wordt gedefinieerd hoe de aanvraag wordt verwerkt.
 
-### <a name="incoming-match-left-hand-side"></a>Inkomende wedstrijd (linkerkant)
-De volgende eigenschappen bepalen of de binnenkomende aanvraag overeenkomt met de routeringsregel (of aan de linkerkant):
+### <a name="incoming-match-left-hand-side"></a>Inkomende overeenkomst (links)
+De volgende eigenschappen bepalen of de binnenkomende aanvraag overeenkomt met de routerings regel (of aan de linkerkant):
 
-* **HTTP-protocollen** (HTTP/HTTPS)
-* **Hosts** (bijvoorbeeld www\.foo.com, \*.bar.com)
-* **Paden** (bijvoorbeeld /\*/ /gebruikers/\*, /file.gif)
+* **HTTP-protocollen** (http/https)
+* **Hosts** (bijvoorbeeld www\.-foo.com, \*. bar.com)
+* **Paden** (bijvoorbeeld/\*,/gebruikers/\*,/File.gif)
 
-Deze eigenschappen worden intern uitgebreid, zodat elke combinatie van Protocol/Host/Path een potentiële overeenkomstset is.
+Deze eigenschappen worden intern uitgevouwen zodat elke combi natie van protocol/host/pad een mogelijke overeenkomende set is.
 
-### <a name="route-data-right-hand-side"></a>Routegegevens (rechterkant)
-De beslissing over het verwerken van de aanvraag, hangt af van de vraag of caching is ingeschakeld of niet voor de specifieke route. Als we dus geen antwoord in de cache hebben voor de aanvraag, sturen we het verzoek door naar de juiste backend in de geconfigureerde backendpool.
+### <a name="route-data-right-hand-side"></a>Gegevens routeren (aan de rechter kant)
+De beslissing over het verwerken van de aanvraag is afhankelijk van het feit of caching is ingeschakeld of niet voor de specifieke route. Als er geen antwoord in de cache voor de aanvraag is, wordt de aanvraag doorgestuurd naar de juiste back-end in de geconfigureerde back-end-groep.
 
-## <a name="route-matching"></a>Routematching
-Deze sectie zal zich richten op hoe we overeenkomen met een bepaalde Front Door routing regel. Het basisconcept is dat we altijd overeenkomen met de **meest specifieke match eerst** kijken alleen naar de "linkerkant".  We matchen eerst op basis van http-protocol, dan frontend host, dan het pad.
+## <a name="route-matching"></a>Route vergelijking
+In deze sectie wordt de nadruk gelegd op de manier waarop we overeenkomen met een bepaalde voor deur routerings regel. Het basis concept is dat we altijd overeenkomen met de **meest specifieke overeenkomst eerst** kijken alleen aan de linkerkant.  We passen eerst op basis van het HTTP-protocol, vervolgens de frontend-host en vervolgens het pad.
 
-### <a name="frontend-host-matching"></a>Frontend host matching
-Bij het matchen van Frontend-hosts gebruiken we de logica zoals hieronder:
+### <a name="frontend-host-matching"></a>Overeenkomende host voor frontend
+Bij het vergelijken van frontend-hosts gebruiken we de volgende logica:
 
-1. Zoek naar een routering met een exacte overeenkomst op de host.
-2. Als er geen exacte frontendhosts overeenkomen, weigert u het verzoek en verzendt u een fout van 400 bad request.
+1. Zoek naar een route ring met een exacte overeenkomst op de host.
+2. Als er geen exacte frontend-hosts overeenkomen, moet u de aanvraag afwijzen en een 400-fout met een onjuiste aanvraag verzenden.
 
-Om dit proces verder uit te leggen, laten we eens kijken naar een voorbeeldconfiguratie van front door routes (alleen aan de linkerkant):
+Om dit proces verder uit te leggen, bekijken we een voor beeld van de configuratie van front-deur routes (alleen aan de linkerkant):
 
-| Routeringsregel | Frontend hosts | Pad |
+| Routeringsregel | Frontend-hosts | Pad |
 |-------|--------------------|-------|
 | A | foo.contoso.com | /\* |
 | B | foo.contoso.com | /gebruikers/\* |
-| C | www\.fabrikam.com, foo.adventure-works.com  | /\*, /afbeeldingen/\* |
+| C | www\.-fabrikam.com, Foo.Adventure-Works.com  | /\*, /images/\* |
 
-Als de volgende binnenkomende aanvragen naar De Voordeur zijn verzonden, komen ze overeen met de volgende routeringsregels van bovenaf:
+Als de volgende binnenkomende aanvragen zijn verzonden naar de voor deur, zouden ze overeenkomen met de volgende routerings regels van boven:
 
-| Inkomende frontend host | Overeenkomende routeringsregel(en) |
+| Inkomende frontend-host | Overeenkomende regel (s) voor route ring |
 |---------------------|---------------|
 | foo.contoso.com | A, B |
-| www\.fabrikam.com | C |
-| images.fabrikam.com | Fout 400: Slecht verzoek |
+| www\.-fabrikam.com | C |
+| images.fabrikam.com | Fout 400: ongeldige aanvraag |
 | foo.adventure-works.com | C |
-| contoso.com | Fout 400: Slecht verzoek |
-| www\.adventure-works.com | Fout 400: Slecht verzoek |
-| www\.northwindtraders.com | Fout 400: Slecht verzoek |
+| contoso.com | Fout 400: ongeldige aanvraag |
+| www\.-Adventure-Works.com | Fout 400: ongeldige aanvraag |
+| www\.-northwindtraders.com | Fout 400: ongeldige aanvraag |
 
-### <a name="path-matching"></a>Padmatching
-Nadat u de specifieke frontendhost hebt bepaald en mogelijke routeringsregels hebt gefilterd op alleen de routes met die frontendhost, filtert Front Door vervolgens de routeringsregels op basis van het aanvraagpad. We gebruiken een vergelijkbare logica als frontend hosts:
+### <a name="path-matching"></a>Pad zoeken
+Nadat u de specifieke frontend-host hebt bepaald en mogelijke routerings regels hebt gefilterd op alleen de routes met die frontend-host, worden de routerings regels vervolgens gefilterd op basis van het aanvraag pad. We gebruiken een soort gelijke logica als frontend-hosts:
 
-1. Zoek naar een routeringsregel met een exacte overeenkomst op het pad
-2. Als er geen exacte overeenkomstpaden zijn, zoekt u naar routeringsregels met een pad met jokertekens dat overeenkomt met
-3. Als er geen routeringsregels worden gevonden met een overeenkomend pad, weigert u de aanvraag en retourneert u een HTTP-antwoord van de fout 400: Slecht verzoek.
+1. Zoek naar een routerings regel met een exacte overeenkomst voor het pad
+2. Als er geen exacte overeenkomst paden zijn, zoekt u naar routerings regels met een pad naar een Joker teken dat overeenkomt met
+3. Als er geen routerings regels met een overeenkomend pad worden gevonden, kunt u de aanvraag afwijzen en een 400: fout HTTP-antwoord voor een ongeldige aanvraag retour neren.
 
 >[!NOTE]
-> Paden zonder wildcard worden beschouwd als exacte paden. Zelfs als het pad eindigt in een slash, wordt het nog steeds als exacte overeenkomst beschouwd.
+> Alle paden zonder joker teken worden als exacte paden beschouwd. Zelfs als het pad in een slash eindigt, wordt het toch als exacte overeenkomst beschouwd.
 
-Om verder uit te leggen, laten we eens kijken naar een andere reeks voorbeelden:
+Bekijk voor meer uitleg een andere set voor beelden:
 
 | Routeringsregel | Frontend-host    | Pad     |
 |-------|---------|----------|
-| A     | www\.contoso.com | /        |
-| B     | www\.contoso.com | /\*      |
-| C     | www\.contoso.com | /ab      |
-| D     | www\.contoso.com | /abc     |
-| E     | www\.contoso.com | /abc/    |
-| F     | www\.contoso.com | /abc/\*  |
-| G     | www\.contoso.com | /abc/def |
-| H     | www\.contoso.com | /pad/   |
+| A     | www\.-contoso.com | /        |
+| B     | www\.-contoso.com | /\*      |
+| C     | www\.-contoso.com | /ab      |
+| D     | www\.-contoso.com | /abc     |
+| E     | www\.-contoso.com | ABC    |
+| F     | www\.-contoso.com | ABC\*  |
+| G     | www\.-contoso.com | /abc/def |
+| H     | www\.-contoso.com | /Path   |
 
-Gezien deze configuratie zou de volgende voorbeeldtabel resulteren in:
+Gezien de configuratie is het volgende voor beeld dat overeenkomt met de tabel:
 
-| Binnenkomend verzoek    | Overeenkomende route |
+| Binnenkomende aanvraag    | Overeenkomende route |
 |---------------------|---------------|
-| www\.contoso.com/            | A             |
-| www\.contoso.com/a           | B             |
-| www\.contoso.com/ab          | C             |
-| www\.contoso.com/abc         | D             |
-| www\.contoso.com/abzzz       | B             |
-| www\.contoso.com/abc/        | E             |
-| www\.contoso.com/abc/d       | F             |
-| www\.contoso.com/abc/def     | G             |
-| www\.contoso.com/abc/defzzz  | F             |
-| www\.contoso.com/abc/def/ghi | F             |
-| www\.contoso.com/path        | B             |
-| www\.contoso.com/path/       | H             |
-| www\.contoso.com/path/zzz    | B             |
+| www\.-contoso.com/            | A             |
+| www\.-contoso.com/a           | B             |
+| www\.-contoso.com/AB          | C             |
+| www\.-contoso.com/ABC         | D             |
+| www\.-contoso.com/abzzz       | B             |
+| www\.-contoso.com/ABC/        | E             |
+| www\.-contoso.com/abc/d       | F             |
+| www\.-contoso.com/abc/def     | G             |
+| www\.-contoso.com/ABC/defzzz  | F             |
+| www\.-contoso.com/abc/def/ghi | F             |
+| www\.-contoso.com/Path        | B             |
+| www\.-contoso.com/Path/       | H             |
+| www\.-contoso.com/Path/zzz    | B             |
 
 >[!WARNING]
-> </br> Als er geen routeringsregels zijn voor een exact-match frontendhost met een catch-all route Path (),`/*`dan is er geen overeenkomst met een routeringsregel.
+> </br> Als er geen routerings regels zijn voor een exacte front-end-frontend-host met een ' catch`/*`-all route Path (), is er geen overeenkomst met een routerings regel.
 >
-> Voorbeeldconfiguratie:
+> Voorbeeld configuratie:
 >
 > | Route | Host             | Pad    |
 > |-------|------------------|---------|
-> | A     | profile.contoso.com | /api/\* |
+> | A     | profile.contoso.com | /API\* |
 >
 > Overeenkomende tabel:
 >
-> | Binnenkomend verzoek       | Overeenkomende route |
+> | Binnenkomende aanvraag       | Overeenkomende route |
 > |------------------------|---------------|
-> | profile.domain.com/other | Geen. Fout 400: Slecht verzoek |
+> | profile.domain.com/other | Geen. Fout 400: ongeldige aanvraag |
 
-### <a name="routing-decision"></a>Routeringsbesluit
-Zodra we hebben gekoppeld aan een enkele front door routing regel, moeten we vervolgens kiezen hoe de aanvraag te verwerken. Als voor de overeenkomende routeringsregel een antwoord in de cache beschikbaar is, wordt hetzelfde teruggegeven aan de client. Anders is het volgende dat wordt geëvalueerd of u [URL Opnieuw schrijven (aangepast doorstuurpad)](front-door-url-rewrite.md) hebt geconfigureerd voor de overeenkomende routeringsregel of niet. Als er geen aangepast doorstuurpad is gedefinieerd, wordt de aanvraag doorgestuurd naar de juiste backend in de geconfigureerde backendpool zoals die is. Anders wordt het aanvraagpad bijgewerkt volgens het [aangepaste doorstuurpad](front-door-url-rewrite.md) dat is gedefinieerd en vervolgens doorsturen naar de backend.
+### <a name="routing-decision"></a>Routerings beslissing
+Zodra we overeenkomen met één regel voor de voor deur, moeten we kiezen hoe de aanvraag moet worden verwerkt. Als voor de overeenkomende routerings regel een antwoord in de cache beschikbaar is, wordt hetzelfde door gegeven aan de client. Anders is het volgende dat wordt geëvalueerd, of u nu het [herschrijven van url's (aangepast doorstuur traject)](front-door-url-rewrite.md) hebt geconfigureerd voor de regel voor de overeenkomende route ring of niet. Als er geen aangepast forwarding Path is gedefinieerd, wordt de aanvraag doorgestuurd naar de juiste back-end in de geconfigureerde back-end-groep. Anders wordt het pad naar de aanvraag bijgewerkt volgens het [aangepaste forwarding-pad](front-door-url-rewrite.md) dat is gedefinieerd en wordt vervolgens doorgestuurd naar de back-end.
 
 ## <a name="next-steps"></a>Volgende stappen
 

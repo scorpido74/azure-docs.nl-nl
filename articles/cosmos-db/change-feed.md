@@ -1,6 +1,6 @@
 ---
-title: Werken met de ondersteuning voor wijzigingsfeed in Azure Cosmos DB
-description: Gebruik Azure Cosmos DB-feedondersteuning om wijzigingen in documenten, op gebeurtenissen gebaseerde verwerking zoals triggers bij te houden en caches en analytische systemen up-to-date te houden
+title: Werken met de ondersteuning voor wijzigings invoer in Azure Cosmos DB
+description: Gebruik Azure Cosmos DB Change feed-ondersteuning voor het bijhouden van wijzigingen in documenten, verwerking op basis van gebeurtenissen, zoals triggers, en houd caches en analyse systemen up-to-date
 author: TheovanKraay
 ms.author: thvankra
 ms.service: cosmos-db
@@ -9,96 +9,96 @@ ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
 ms.openlocfilehash: e36e95aeb25c83ccd94f11e25bfe9f1b8f7bfdad
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80984858"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Wijzigingenfeed in Azure Cosmos DB
 
 Ondersteuning voor de wijzigingenfeed in Azure Cosmos DB gebeurt door te luisteren naar een Azure Cosmos DB-container voor wijzigingen. Als output verschijnt er vervolgens een gesorteerde lijst met gewijzigde documenten op volgorde van wijziging. De wijzigingen zijn persistent, kunnen asynchroon en incrementeel worden verwerkt en de uitvoer kan naar een of meer consumenten worden gedistribueerd voor parallelle verwerking.
 
-Meer informatie over [ontwerppatronen voor wijzigingen](change-feed-design-patterns.md).
+Meer informatie over [ontwerp patronen voor veranderingen in feeds](change-feed-design-patterns.md).
 
-## <a name="supported-apis-and-client-sdks"></a>Ondersteunde API's en client SDKs
+## <a name="supported-apis-and-client-sdks"></a>Ondersteunde Api's en client-Sdk's
 
-Deze functie wordt momenteel ondersteund door de volgende Azure Cosmos DB API's en client-SDK's.
+Deze functie wordt momenteel ondersteund door de volgende Azure Cosmos DB-Api's en client-Sdk's.
 
-| **Clientstuurprogramma's** | **SQL-API** | **Azure Cosmos DB's API voor Cassandra** | **Azure Cosmos DB-API voor MongoDB** | **Gremlin-API**|**Tabel-API** |
+| **Clientstuurprogramma's** | **SQL-API** | **API van Azure Cosmos DB voor Cassandra** | **Azure Cosmos DB-API voor MongoDB** | **Gremlin-API**|**Tabel-API** |
 | --- | --- | --- | --- | --- | --- | --- |
 | .NET | Ja | Ja | Ja | Ja | Nee |
 |Java|Ja|Ja|Ja|Ja|Nee|
 |Python|Ja|Ja|Ja|Ja|Nee|
-|Knooppunt/JS|Ja|Ja|Ja|Ja|Nee|
+|Node/JS|Ja|Ja|Ja|Ja|Nee|
 
 ## <a name="change-feed-and-different-operations"></a>Feed en verschillende bewerkingen wijzigen
 
-Vandaag ziet u alle inserts en updates in de wijzigingsfeed. U de wijzigingsfeed niet filteren voor een specifiek type bewerking. Een mogelijk alternatief, is het toevoegen van een "zachte marker" op het item voor updates en filter op basis van dat bij het verwerken van items in de change feed.
+U ziet nu alle invoegingen en updates in de feed voor wijzigingen. U kunt de wijzigings feed niet filteren voor een specifiek type bewerking. Een mogelijke alternatief is het toevoegen van een ' zachte markering ' voor het item voor updates en filteren op basis van die bij het verwerken van items in de wijzigings feed.
 
-Op dit moment wordt de feed niet bijlogboeken geopend. Net als in het vorige voorbeeld u een zachte markering toevoegen aan de items die worden verwijderd. U bijvoorbeeld een kenmerk toevoegen in het item met de naam 'verwijderd' en het instellen op 'true' en een TTL instellen op het item, zodat het automatisch kan worden verwijderd. U de wijzigingsfeed voor historische items lezen (de meest recente wijziging die overeenkomt met het item, de tussentijdse wijzigingen), bijvoorbeeld items die vijf jaar geleden zijn toegevoegd. U de wijzigingsfeed al teruglezen als de oorsprong van uw container, maar als een item wordt verwijderd, wordt het verwijderd uit de wijzigingsfeed.
+Wijzigingen in de feed worden niet in het logboek geregistreerd. Net als in het vorige voor beeld kunt u een zachte markering toevoegen voor de items die worden verwijderd. U kunt bijvoorbeeld een kenmerk toevoegen aan het item met de naam ' verwijderd ' en instellen op ' True ' en een TTL instellen voor het item, zodat het automatisch kan worden verwijderd. U kunt de wijzigings feed voor historische items lezen (de meest recente wijziging die overeenkomt met het item, het bevat geen tussenliggende wijzigingen), bijvoorbeeld items die vijf jaar geleden zijn toegevoegd. U kunt de wijzigings feed tot nu toe lezen als de oorsprong van de container, maar als een item wordt verwijderd, wordt het verwijderd uit de wijzigings feed.
 
-### <a name="sort-order-of-items-in-change-feed"></a>Volgorde van artikelen sorteren in de feed change
+### <a name="sort-order-of-items-in-change-feed"></a>Sorteer volgorde van items in een wijzigings feed
 
-Feeditems wijzigen, zijn in de volgorde van hun wijzigingstijd. Deze sorteervolgorde is gegarandeerd per logische partitiesleutel.
+De wijzigings items worden in de volg orde van de wijzigings tijd van kracht. Deze sorteer volgorde wordt gegarandeerd per logische partitie sleutel.
 
-### <a name="consistency-level"></a>Consistentieniveau
+### <a name="consistency-level"></a>Consistentie niveau
 
-Tijdens het consumeren van de wijzigingsfeed in een uiteindelijk consistentieniveau, kunnen er dubbele gebeurtenissen tussen de volgende feedleesbewerkingen voor wijzigingen plaatsvinden (de laatste gebeurtenis van een leesbewerking wordt weergegeven als de eerste van de volgende bewerking).
+Bij het gebruik van de wijzigings feed in een mogelijk consistentie niveau, kunnen er dubbele gebeurtenissen optreden in de volgende Lees bewerkingen voor de invoer van wijzigingen (de laatste gebeurtenis van één Lees bewerking wordt weer gegeven als de eerste van de volgende).
 
-### <a name="change-feed-in-multi-region-azure-cosmos-accounts"></a>Feed wijzigen in Azure Cosmos-accounts met meerdere regio's
+### <a name="change-feed-in-multi-region-azure-cosmos-accounts"></a>Feed wijzigen in azure Cosmos-accounts met meerdere regio's
 
-Als een schrijfregio mislukt, werkt de wijzigingsfeed in een Azure Cosmos-account met meerdere regio's in de handmatige failover-bewerking en is deze aaneengesloten.
+Als er in een Azure Cosmos-account met meerdere regio's een failover wordt uitgevoerd, werkt de wijziging in de bewerking voor hand matige failover en wordt deze aaneengesloten.
 
-### <a name="change-feed-and-time-to-live-ttl"></a>Feed en Time to Live (TTL) wijzigen
+### <a name="change-feed-and-time-to-live-ttl"></a>Feed en Time to Live wijzigen (TTL)
 
-Als een eigenschap TTL (Time to Live) is ingesteld op een item op -1, blijft de feed voor altijd veranderen. Als de gegevens niet worden verwijderd, blijft deze in de wijzigingsfeed.  
+Als een TTL-eigenschap (Time to Live) is ingesteld voor een item op-1, blijft de wijzigings feed altijd behouden. Als de gegevens niet worden verwijderd, blijft deze in de wijzigings feed.  
 
-### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Voer en _etag, _lsn of _ts wijzigen
+### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Feed en _etag, _lsn of _ts wijzigen
 
-De _etag-indeling is intern en u moet er geen afhankelijkheid van nemen, omdat deze op elk gewenst moment kan veranderen. _ts is een wijziging of een creatietijdstempel. U _ts gebruiken voor chronologische vergelijking. _lsn is een batch-id die alleen wordt toegevoegd voor wijzigingsfeed; het vertegenwoordigt de transactie-ID. Veel items kunnen dezelfde _lsn hebben. ETag op FeedResponse is anders dan de _etag die je op het item ziet. _etag is een interne id en wordt gebruikt voor gelijktijdigheidscontrole vertelt over de versie van het item, terwijl ETag wordt gebruikt voor het rangschikken van de feed.
+De indeling van de _etag is intern en u moet er geen afhankelijkheid van maken, omdat deze op elk gewenst moment kan worden gewijzigd. _ts is een wijziging of een tijds tempel voor het maken. U kunt _ts gebruiken voor chronologische vergelijking. _lsn is een batch-ID die alleen is toegevoegd voor wijzigings invoer. het vertegenwoordigt de trans actie-ID. Veel items hebben mogelijk hetzelfde _lsn. ETag op FeedResponse wijkt af van de _etag die u op het item ziet. _etag is een interne id en wordt gebruikt voor gelijktijdigheids beheer en geeft de versie van het item aan, terwijl ETag wordt gebruikt voor het sequentiëren van de feed.
 
-## <a name="working-with-change-feed"></a>Werken met change feed
+## <a name="working-with-change-feed"></a>Werken met wijzigings feed
 
-U met de wijzigingsfeed werken met de volgende opties:
+U kunt met behulp van de volgende opties met een wijzigings feed werken:
 
-* [Wijzigingsfeed gebruiken met Azure-functies](change-feed-functions.md)
-* [Change feed gebruiken met change feed processor](change-feed-processor.md) 
+* [Change feed gebruiken met Azure Functions](change-feed-functions.md)
+* [Change feed gebruiken met Change feed-processor](change-feed-processor.md) 
 
-Change feed is beschikbaar voor elke logische partitiesleutel in de container en kan worden verdeeld over een of meer consumenten voor parallelle verwerking, zoals in de onderstaande afbeelding wordt weergegeven.
+De wijzigings feed is beschikbaar voor elke logische partitie sleutel in de container en kan worden gedistribueerd voor een of meer consumenten voor parallelle verwerking, zoals wordt weer gegeven in de onderstaande afbeelding.
 
-![Gedistribueerde verwerking van Azure Cosmos DB-wijzigingsfeed](./media/change-feed/changefeedvisual.png)
+![Gedistribueerde verwerking van Azure Cosmos DB Change feed](./media/change-feed/changefeedvisual.png)
 
-## <a name="features-of-change-feed"></a>Kenmerken van de wijzigingsfeed
+## <a name="features-of-change-feed"></a>Functies van wijzigings feed
 
-* De feed wijzigen is standaard ingeschakeld voor alle Azure Cosmos-accounts.
+* De wijzigings feed is standaard ingeschakeld voor alle Azure Cosmos-accounts.
 
-* U uw [ingerichte doorvoer](request-units.md) gebruiken om uit de wijzigingsfeed te lezen, net als elke andere Azure Cosmos DB-bewerking, in een van de regio's die zijn gekoppeld aan uw Azure Cosmos-database.
+* U kunt uw [ingerichte door Voer](request-units.md) gebruiken voor het lezen van de wijzigings feed, net als bij andere Azure Cosmos DB bewerkingen, in een van de regio's die zijn gekoppeld aan uw Azure Cosmos-data base.
 
-* De wijzigingsfeed bevat inserts en updatebewerkingen die zijn uitgevoerd op items in de container. U deletes vastleggen door een 'soft-delete'-vlag in te stellen in uw items (bijvoorbeeld documenten) in plaats van verwijderingen. U ook een eindige vervaldatum instellen voor uw artikelen met de [TTL-mogelijkheid.](time-to-live.md) Bijvoorbeeld 24 uur en gebruik de waarde van die eigenschap om deletes vast te leggen. Met deze oplossing moet u de wijzigingen binnen een korter tijdsinterval verwerken dan de TTL-vervaldatum.
+* De wijzigings feed bevat invoeg-en update-bewerkingen die zijn aangebracht aan items in de container. U kunt verwijderingen vastleggen door een vlag "zacht verwijderen" in te stellen in uw items (bijvoorbeeld documenten) in plaats van verwijderen. U kunt ook een eindige verval periode instellen voor uw items met de [TTL-mogelijkheid](time-to-live.md). Bijvoorbeeld 24 uur en gebruik de waarde van die eigenschap om verwijderingen vast te leggen. Met deze oplossing moet u de wijzigingen verwerken binnen een korter tijds interval dan de TTL-verval periode.
 
-* Elke wijziging in een item wordt precies één keer weergegeven in de wijzigingsfeed en de clients moeten de controlepuntlogica beheren. Als u de complexiteit van het beheer van controlepunten wilt vermijden, biedt de wijzigingsfeedprocessor automatische controlepunten en "ten minste één keer" semantiek. Zie [het gebruik van change feed met change feed processor](change-feed-processor.md).
+* Elke wijziging in een item wordt slechts één keer weer gegeven in de wijzigings feed en de clients moeten de logica voor het controle punt beheren. Als u de complexiteit van het beheer van controle punten wilt voor komen, biedt de Change feed-processor automatische controle punten en ' ten minste eenmaal ' semantiek. Zie [Change feed gebruiken met Change feed processor](change-feed-processor.md).
 
-* Alleen de meest recente wijziging voor een bepaald item is opgenomen in het wijzigingslogboek. Tussentijdse wijzigingen zijn mogelijk niet beschikbaar.
+* Alleen de meest recente wijziging voor een bepaald item is opgenomen in het wijzigings logboek. Tussenliggende wijzigingen zijn mogelijk niet beschikbaar.
 
-* De wijzigingsfeed wordt gesorteerd op de volgorde van wijziging binnen elke logische partitiesleutelwaarde. Er is geen gegarandeerde volgorde in de hoofdwaarden van de partitie.
+* De wijzigings feed wordt gesorteerd op volg orde van wijziging binnen elke logische partitie sleutel waarde. Er is geen gegarandeerde volg orde in de partitie sleutel waarden.
 
-* Wijzigingen kunnen worden gesynchroniseerd vanaf elk point-in-time, dat wil zeggen dat er geen vaste bewaartermijn voor gegevens is waarvoor wijzigingen beschikbaar zijn.
+* Wijzigingen kunnen worden gesynchroniseerd vanuit elk tijdstip, dat wil zeggen dat er geen vaste gegevens Bewaar periode is waarvoor wijzigingen beschikbaar zijn.
 
-* Wijzigingen zijn parallel beschikbaar voor alle logische partitiesleutels van een Azure Cosmos-container. Met deze mogelijkheid kunnen wijzigingen van grote containers parallel door meerdere consumenten worden verwerkt.
+* Wijzigingen zijn parallel beschikbaar voor alle logische partitie sleutels van een Azure Cosmos-container. Met deze mogelijkheid kunnen wijzigingen van grote containers parallel worden verwerkt door meerdere gebruikers.
 
-* Toepassingen kunnen meerdere wijzigingsfeeds tegelijk op dezelfde container aanvragen. ChangeFeedOptions.StartTime kan worden gebruikt om een eerste startpunt te bieden. Bijvoorbeeld om het vervolgtoken te vinden dat overeenkomt met een bepaalde kloktijd. De vervolgtoken heeft, indien opgegeven, voorrang op de waarden StartTime en StartFromBeginning. De precisie van ChangeFeedOptions.StartTime is ~5 sec.
+* Toepassingen kunnen meerdere wijzigings feeds op dezelfde container tegelijk aanvragen. ChangeFeedOptions. StartTime kan worden gebruikt om een eerste begin punt op te geven. Bijvoorbeeld om het vervolg token te vinden dat overeenkomt met een bepaalde klok tijd. De ContinuationToken, indien opgegeven, heeft voor rang op de waarden StartTime en StartFromBeginning. De precisie van ChangeFeedOptions. StartTime is ~ 5 seconden.
 
-## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Feed wijzigen in API's voor Cassandra en MongoDB
+## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Feed wijzigen in Api's voor Cassandra en MongoDB
 
-Feedfunctionaliteit wijzigen wordt opgedoken als wijzigingsstroom in De API van MongoDB en Query met predicaat in Cassandra API. Zie de Change streams in de Azure Cosmos [DB API voor MongoDB voor](mongodb-change-streams.md)meer informatie over de implementatiedetails voor MongoDB.
+De functionaliteit voor het wijzigen van de feed wordt geoppereerd als een wijzigings stroom in de MongoDB-API en query met een predikaat in Cassandra-API. Zie voor meer informatie over de implementatie Details voor MongoDB API de [wijzigings stromen in de Azure Cosmos DB-API voor MongoDb](mongodb-change-streams.md).
 
-Native Apache Cassandra biedt change data capture (CDC), een mechanisme om specifieke tabellen voor archivering te markeren en het afwijzen van schrijft naar die tabellen zodra een configureerbare grootte op de schijf voor het CDC-logboek is bereikt. De wijzigingsfeedfunctie in Azure Cosmos DB API voor Cassandra verbetert de mogelijkheid om de wijzigingen met predicaat op te vragen via CQL. Zie [Feed wijzigen in de Azure Cosmos DB API voor Cassandra voor](cassandra-change-feed.md)meer informatie over de implementatiedetails.
+Systeem eigen Apache Cassandra biedt change data capture (CDC), een mechanisme voor het markeren van specifieke tabellen voor archivering en het afwijzen van schrijf bewerkingen naar die tabellen wanneer een Configureer bare grootte-op-schijf voor het CDC-logboek wordt bereikt. De functie voor het wijzigen van de feed in Azure Cosmos DB-API voor Cassandra verbetert de mogelijkheid om query's uit te voeren op de wijzigingen met een predikaat via CQL. Zie [Change feed in de Azure Cosmos DB-API voor Cassandra voor](cassandra-change-feed.md)meer informatie over de implementatie details.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U nu verder gaan met meer informatie over de wijzigingsfeed in de volgende artikelen:
+U kunt nu door gaan met meer informatie over wijzigings invoer in de volgende artikelen:
 
-* [Opties voor het lezen van wijzigingsfeed](read-change-feed.md)
-* [Wijzigingsfeed gebruiken met Azure-functies](change-feed-functions.md)
-* [De feedprocessor van change gebruiken](change-feed-processor.md)
+* [Opties voor het lezen van een wijzigings feed](read-change-feed.md)
+* [Change feed gebruiken met Azure Functions](change-feed-functions.md)
+* [Een Change feed-processor gebruiken](change-feed-processor.md)

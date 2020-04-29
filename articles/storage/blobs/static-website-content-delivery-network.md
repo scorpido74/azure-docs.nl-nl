@@ -1,6 +1,6 @@
 ---
-title: Een statische website integreren met Azure CDN - Azure Storage
-description: Meer informatie over het cacheen van statische website-inhoud van een Azure Storage-account met behulp van Azure Content Delivery Network (CDN).
+title: Een statische website integreren met Azure CDN-Azure Storage
+description: Meer informatie over het opslaan van statische website-inhoud vanuit een Azure Storage-account met behulp van Azure Content Delivery Network (CDN).
 author: normesta
 ms.service: storage
 ms.subservice: blobs
@@ -8,62 +8,62 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 04/07/2020
 ms.openlocfilehash: 4516e9f48174a0f1f5201c46cf114badf13d99d6
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878804"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>Een statische website integreren met Azure CDN
 
-U [CDN (Azure Content Delivery Network)](../../cdn/cdn-overview.md) inschakelen om inhoud in de cache op te slaan van een [statische website](storage-blob-static-website.md) die wordt gehost in een Azure-opslagaccount. U Azure CDN gebruiken om het aangepaste domeineindpunt voor uw statische website te configureren, aangepaste TLS/SSL-certificaten in te richten en aangepaste herschrijfregels te configureren. Het configureren van Azure CDN resulteert in extra kosten, maar biedt consistente lage latenties naar uw website vanaf elke locatie ter wereld. Azure CDN biedt ook TLS-versleuteling met uw eigen certificaat. 
+U kunt [CDN (Azure Content Delivery Network)](../../cdn/cdn-overview.md) inschakelen voor het opslaan van inhoud van een [statische website](storage-blob-static-website.md) die wordt gehost in een Azure-opslag account. U kunt Azure CDN gebruiken om het aangepaste domein eindpunt te configureren voor uw statische website, aangepaste TLS/SSL-certificaten in te richten en aangepaste regels voor herschrijven te configureren. Het configureren van Azure CDN resulteert in extra kosten, maar biedt consistente lage latenties naar uw website vanaf elke locatie ter wereld. Azure CDN biedt ook TLS-versleuteling met uw eigen certificaat. 
 
 Zie [Azure CDN-prijzen](https://azure.microsoft.com/pricing/details/cdn/) voor meer informatie over prijzen voor Azure CDN.
 
 ## <a name="enable-azure-cdn-for-your-static-website"></a>Azure CDN inschakelen voor uw statische website
 
-U Azure CDN rechtstreeks vanuit uw opslagaccount inschakelen voor uw statische website. Als u voor uw CDN-eindpunt geavanceerde configuratie-instellingen wilt opgeven, zoals [ optimalisatie voor het downloaden van grote bestanden](../../cdn/cdn-optimization-overview.md#large-file-download), kunt u in plaats daarvan de [Azure CDN-extensie](../../cdn/cdn-create-new-endpoint.md) gebruiken om een CDN-profiel en -eindpunt te maken.
+U kunt Azure CDN rechtstreeks vanuit uw opslag account inschakelen voor uw statische website. Als u voor uw CDN-eindpunt geavanceerde configuratie-instellingen wilt opgeven, zoals [ optimalisatie voor het downloaden van grote bestanden](../../cdn/cdn-optimization-overview.md#large-file-download), kunt u in plaats daarvan de [Azure CDN-extensie](../../cdn/cdn-create-new-endpoint.md) gebruiken om een CDN-profiel en -eindpunt te maken.
 
-1. Zoek uw opslagaccount in de Azure-portal en geef het accountoverzicht weer.
+1. Zoek uw opslag account in de Azure Portal en geef het account overzicht weer.
 
-1. Selecteer onder het menu **Klodderservice** **Azure CDN** om de **Azure CDN-pagina** te openen:
+1. Selecteer in het menu **BLOB** -service **Azure CDN** om de pagina **Azure CDN** te openen:
 
     ![Een CDN-eindpunt maken](media/storage-blob-static-website-custom-domain/cdn-storage-new.png)
 
-1. Geef in de sectie **CDN-profiel** op of u een nieuw CDN-profiel wilt maken of een bestaand CDN-profiel wilt gebruiken. Een CDN-profiel is een verzameling CDN-eindpunten die een prijscategorie en provider delen. Voer vervolgens een naam in voor het CDN dat uniek is binnen uw abonnement.
+1. Geef in de sectie **CDN-profiel** op of er een nieuw CDN-profiel moet worden gemaakt of dat er al een wordt gebruikt. Een CDN-profiel is een verzameling CDN-eind punten die een prijs categorie en provider delen. Voer vervolgens een naam in voor de CDN die uniek is binnen uw abonnement.
 
-1. Geef een prijscategorie op voor het CDN-eindpunt. Zie Prijzen van [het Content Delivery Network](https://azure.microsoft.com/pricing/details/cdn/)voor meer informatie over prijzen. Zie [Azure CDN-productfuncties vergelijken](../../cdn/cdn-features.md)voor meer informatie over de functies die beschikbaar zijn voor elke laag.
+1. Geef een prijs categorie op voor het CDN-eind punt. Zie [Content Delivery Network prijzen](https://azure.microsoft.com/pricing/details/cdn/)voor meer informatie over prijzen. Zie [Azure CDN product functies vergelijken](../../cdn/cdn-features.md)voor meer informatie over de beschik bare functies voor elke laag.
 
-1. Geef in het veld **CDN-eindpuntnaam** een naam op voor uw CDN-eindpunt. Het CDN-eindpunt moet uniek zijn in Azure en het eerste deel van de URL van het eindpunt bieden. Het formulier valideert dat de naam van het eindpunt uniek is.
+1. Geef in het veld **naam van CDN-eind punt** een naam op voor uw CDN-eind punt. Het CDN-eind punt moet uniek zijn binnen Azure en biedt het eerste deel van de eind punt-URL. In het formulier wordt gevalideerd of de naam van het eind punt uniek is.
 
-1. Geef uw statische websiteeindpunt op in het veld **Oorspronkelijke hostnaam.** 
+1. Geef het eind punt van de statische website op in het veld **hostnaam van oorsprong** . 
 
-   Als u het statische eindpunt van de website wilt vinden, navigeert u naar de **statische website-instellingen** voor uw opslagaccount.  Kopieer het primaire eindpunt en plak het in de CDN-configuratie.
+   Om het eind punt van een statische website te vinden, gaat u naar de **statische website** -instellingen voor uw opslag account.  Kopieer het primaire eind punt en plak het in de CDN-configuratie.
 
    > [!IMPORTANT]
-   > Zorg ervoor dat u de protocol-id *(bijvoorbeeld*HTTPS) en de trailing slash in de URL verwijdert. Als het statische eindpunt van `https://mystorageaccount.z5.web.core.windows.net/`de website bijvoorbeeld `mystorageaccount.z5.web.core.windows.net` is, geeft u dit op in het veld **Oorspronkelijke hostnaam.**
+   > Zorg ervoor dat u de protocol-id (*bijvoorbeeld*https) en de afsluitende slash in de URL verwijdert. Als het eind punt van de statische website bijvoorbeeld `https://mystorageaccount.z5.web.core.windows.net/`is, geeft `mystorageaccount.z5.web.core.windows.net` u in het veld **hostnaam van oorsprong** op.
 
-   In de volgende afbeelding ziet u een voorbeeldvan eindpuntconfiguratie:
+   In de volgende afbeelding ziet u een voor beeld van een eindpunt configuratie:
 
-   ![Schermafbeelding van voorbeeld-CDN-eindpuntconfiguratie](media/storage-blob-static-website-custom-domain/add-cdn-endpoint.png)
+   ![Scherm opname van voor beeld van CDN-eindpunt configuratie](media/storage-blob-static-website-custom-domain/add-cdn-endpoint.png)
 
-1. Selecteer **Maken**en wacht tot de cdn is indert. Zodra het eindpunt is gemaakt, wordt dit weergegeven in de lijst met eindpunten. (Als er fouten in het formulier zijn, verschijnt er naast dat veld een uitroepteken.)
+1. Selecteer **maken**en wacht tot het CDN is ingericht. Zodra het eindpunt is gemaakt, wordt dit weergegeven in de lijst met eindpunten. (Als het formulier fouten bevat, wordt er een uitroep teken naast dat veld weer gegeven.)
 
-1. Als u wilt controleren of het CDN-eindpunt correct is geconfigureerd, klikt u op het eindpunt om naar de instellingen te navigeren. Zoek in het CDN-overzicht voor uw opslagaccount de hostnaam van eindpunten en navigeer naar het eindpunt, zoals in de volgende afbeelding wordt weergegeven. Het formaat van uw CDN-eindpunt `https://staticwebsitesamples.azureedge.net`is vergelijkbaar met .
+1. Als u wilt controleren of het CDN-eind punt correct is geconfigureerd, klikt u op het eind punt om naar de instellingen te navigeren. Zoek in het CDN-overzicht voor uw opslag account de hostnaam van het eind punt en ga naar het eind punt, zoals wordt weer gegeven in de volgende afbeelding. De indeling van uw CDN-eind punt is vergelijkbaar `https://staticwebsitesamples.azureedge.net`met.
 
-    ![Schermafbeelding van het overzicht van CDN-eindpunt](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
+    ![Scherm afbeelding met overzicht van het CDN-eind punt](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 
-1. Zodra het CDN-eindpunt is ingericht, wordt door door te navigeren naar het CDN-eindpunt de inhoud van het bestand index.html weergegeven dat u eerder naar uw statische website hebt geüpload.
+1. Zodra het CDN-eind punt is ingericht, wordt in de navigatie naar het CDN-eind punt de inhoud weer gegeven van het bestand index. html dat u eerder hebt geüpload naar uw statische website.
 
-1. Als u de oorsprongsinstellingen voor uw CDN-eindpunt wilt controleren, navigeert u naar **Origin** onder de sectie **Instellingen** voor uw CDN-eindpunt. U ziet dat het veld **Origin-type** is ingesteld op *Aangepaste oorsprong* en dat in het veld **Oorspronkelijke hostname** het statische eindpunt van de website wordt weergegeven.
+1. Als u de oorspronkelijke instellingen voor het CDN-eind punt wilt controleren, gaat u naar **oorsprong** in het gedeelte **instellingen** van het CDN-eind punt. U ziet dat het veld van het **type oorsprong** is ingesteld op *aangepaste oorsprong* en dat het veld **hostnaam van oorsprong** het eind punt van de statische website weergeeft.
 
-    ![Schermafbeelding van oorsprongsinstellingen voor CDN-eindpunt](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
+    ![Scherm opname met de oorspronkelijke instellingen voor het CDN-eind punt](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
 
 ## <a name="remove-content-from-azure-cdn"></a>Inhoud verwijderen uit Azure CDN
 
 Als u niet langer een object in de cache in Azure CDN nodig hebt, kunt u een van de volgende stappen uitvoeren:
 
-* Maak de container persoonlijk in plaats van openbaar. Zie [Anonieme leestoegang tot containers en blobs beheren](storage-manage-access-to-resources.md)voor meer informatie.
+* Maak de container persoonlijk in plaats van openbaar. Zie [anonieme lees toegang tot containers en blobs beheren](storage-manage-access-to-resources.md)voor meer informatie.
 * Schakel het CDN-eindpunt uit of verwijder het met behulp van Azure Portal.
 * Wijzig de gehoste service zodat deze niet meer reageert op aanvragen voor het object.
 
@@ -71,4 +71,4 @@ Een object dat al in de cache in Azure CDN is geplaatst, blijft in de cache totd
 
 ## <a name="next-steps"></a>Volgende stappen
 
-(Optioneel) Voeg een aangepast domein toe aan uw Azure CDN-eindpunt. Zie [Zelfstudie: Voeg een aangepast domein toe aan uw Azure CDN-eindpunt.](../../cdn/cdn-map-content-to-custom-domain.md)
+Beschrijving Een aangepast domein toevoegen aan uw Azure CDN-eind punt. Zie [zelf studie: een aangepast domein toevoegen aan uw Azure CDN-eind punt](../../cdn/cdn-map-content-to-custom-domain.md).

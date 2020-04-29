@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door - Load Balancing met Azure's application delivery suite | Microsoft Documenten
-description: In dit artikel vindt u meer informatie over de manier waarop Azure het balanceren van de toepassing met de toepassingsleveringssuite aanbeveelt
+title: Azure front-deur-taak verdeling met de leverings suite van Azure. Microsoft Docs
+description: Dit artikel helpt u bij het aanwijzen van de belasting verdeling met de Application Delivery Suite van Azure
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,73 +12,73 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 44af14a01e7b045b7abb6a84db89a67f3dd22445
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80875279"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Taakverdeling realiseren met de Azure-suite voor toepassingslevering
 
 ## <a name="introduction"></a>Inleiding
-Microsoft Azure biedt meerdere globale en regionale services voor het beheren van de manier waarop uw netwerkverkeer wordt gedistribueerd en in balans wordt gebracht: Traffic Manager, Front Door, Application Gateway en Load Balancer.  Samen met de vele regio's en zonale architectuur van Azure u met behulp van deze services robuuste, schaalbare krachtige toepassingen bouwen.
+Microsoft Azure biedt meerdere globale en regionale Services voor het beheren van de manier waarop uw netwerk verkeer wordt gedistribueerd en taak verdeling: Traffic Manager, front deur, Application Gateway en Load Balancer.  Samen met de vele regio's en zonegebonden-architectuur van Azure kunt u met deze services tegelijk robuuste, schaal bare toepassingen met hoge prestaties bouwen.
 
 ![Application Delivery Suite ][1]
  
 Deze services zijn onderverdeeld in twee categorieën:
-1. **Wereldwijde load-balancing services** zoals Traffic Manager en Front Door verdelen het verkeer van uw eindgebruikers over uw regionale backends, over clouds of zelfs uw hybride on-premises services. Wereldwijde taakverdeling leidt uw verkeer naar de dichtstbijzijnde backend van de service en reageert op veranderingen in de betrouwbaarheid of prestaties van de service om de maximale prestaties voor uw gebruikers te behouden. 
-2. **Regionale load-balancing services** zoals Standard Load Balancer of Application Gateway bieden de mogelijkheid om verkeer binnen virtuele netwerken (VNET's) te distribueren over uw virtuele machines (VM's) of zonale service eindpunten binnen een regio.
+1. **Wereld wijde taakverdelings Services** zoals Traffic Manager en de voor deur distribueren verkeer van uw eind gebruikers over uw regionale back-ends, in verschillende Clouds of zelfs uw hybride on-premises Services. Met globale taak verdeling wordt uw verkeer naar uw dichtstbijzijnde service back-end gerouteerd en worden de wijzigingen in de betrouw baarheid of prestaties van de service gecommuniceerd om permanente en maximale prestaties voor uw gebruikers te behouden. 
+2. **Regionale taakverdelings Services** zoals Standard Load Balancer of Application Gateway bieden de mogelijkheid om verkeer in virtuele netwerken (VNETs) over uw virtuele machines (vm's) of zonegebonden service-eind punten binnen een regio te distribueren.
 
-Het combineren van wereldwijde en regionale diensten in uw toepassing biedt een end-to-end betrouwbare, performante en veilige manier om verkeer van en naar uw gebruikers naar uw IaaS-, PaaS- of on-premises services te leiden. In het volgende gedeelte beschrijven we elk van deze services.
+Het combi neren van wereld wijde en regionale Services in uw toepassing biedt een end-to-end betrouw bare, krachtige en veilige manier om verkeer van en naar uw gebruikers te routeren naar uw IaaS-, PaaS-of on-premises Services. In de volgende sectie worden deze services beschreven.
 
-## <a name="global-load-balancing"></a>Wereldwijde taakverdeling
-**Traffic Manager** biedt globale DNS-taakverdeling. Het kijkt naar inkomende DNS-verzoeken en reageert met een gezonde backend, in overeenstemming met het routeringsbeleid dat de klant heeft geselecteerd. Opties voor routeringsmethoden zijn:
-- Prestatieroutering om de aanvrager naar de dichtstbijzijnde backend te sturen in termen van latentie.
-- Prioriteitsroutering om al het verkeer naar een backend te leiden, met andere backends als back-up.
-- Gewogen round-robin routing, die verkeer verdeelt op basis van de weging die is toegewezen aan elke backend.
-- Geografische routering om ervoor te zorgen dat aanvragers in specifieke geografische regio's worden gericht op de backends die naar die regio's zijn toegewezen (bijvoorbeeld alle aanvragen uit Spanje moeten worden gericht op de Regio Frankrijk Centraal Azure)
-- Subnetrouting waarmee u IP-adresbereiken toewijzen aan backends, zodat aanvragen die afkomstig zijn van deze worden verzonden naar de opgegeven backend (bijvoorbeeld alle gebruikers die verbinding maken vanuit het IP-adresbereik van uw hoofdkantoor van uw bedrijf, moeten andere webinhoud krijgen dan de algemene gebruikers)
+## <a name="global-load-balancing"></a>Globale taak verdeling
+**Traffic Manager** voorziet in globale DNS-taak verdeling. Er wordt gekeken naar inkomende DNS-aanvragen en reageert met een gezonde back-end, in overeenstemming met het routerings beleid dat de klant heeft geselecteerd. Opties voor routerings methoden zijn:
+- Prestatie routering voor het verzenden van de aanvrager naar de dichtstbijzijnde back-end in het kader van de latentie.
+- Prioriteits routering om al het verkeer door te sturen naar een back-end, met andere back-ends als back-ups.
+- Gewogen Round Robin-route ring, waarmee verkeer wordt gedistribueerd op basis van de weging die is toegewezen aan elke back-end.
+- Geografische route ring om ervoor te zorgen dat aanvragers in specifieke geografische regio's worden omgeleid naar de back-ends die aan deze regio's zijn toegewezen (bijvoorbeeld alle aanvragen van Spanje moeten worden omgeleid naar de Frankrijk-centraal Azure-regio)
+- Met subnet routering waarmee u IP-adresbereiken kunt toewijzen aan back-endservers zodat aanvragen die afkomstig zijn van deze, worden verzonden naar de opgegeven back-end (bijvoorbeeld alle gebruikers die verbinding maken vanuit het IP-adres bereik van uw bedrijfs hoofd kantoor)
 
-De client maakt rechtstreeks verbinding met die backend. Azure Traffic Manager detecteert wanneer een backend niet in orde is en leidt de clients vervolgens door naar een andere gezonde instantie. Raadpleeg [azure traffic manager-documentatie](../traffic-manager/traffic-manager-overview.md) voor meer informatie over de service.
+De client maakt rechtstreeks verbinding met die back-end. Azure Traffic Manager detecteert wanneer een back-end beschadigd is en stuurt de clients vervolgens om naar een ander ongezonde exemplaar. Raadpleeg de documentatie van [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) voor meer informatie over de service.
 
-**Azure Front Door** biedt dynamische websiteversnelling (DSA) inclusief wereldwijde HTTP-taakverdeling.  Er wordt gekeken naar binnenkomende HTTP-aanvragen routes naar de dichtstbijzijnde service backend / regio voor de opgegeven hostname, URL-pad en geconfigureerde regels.  
-Front Door beëindigt HTTP-aanvragen aan de rand van het netwerk van Microsoft en sondes actief om wijzigingen in de status of latentie van toepassingen of infrastructuur te detecteren.  Front Door leidt dan altijd het verkeer naar de snelste en beschikbare (gezonde) backend. Raadpleeg de [routeringsarchitectuurdetails](front-door-routing-architecture.md) en [verkeersrouteringsmethoden](front-door-routing-methods.md) van Front Door voor meer informatie over de service.
+De **Azure front-deur** biedt dynamische website versnelling (DSA), inclusief algemene http-taak verdeling.  Er wordt gekeken naar binnenkomende HTTP-aanvragen routes naar de dichtstbijzijnde service back-end/regio voor de opgegeven hostnaam, het URL-pad en de geconfigureerde regels.  
+De voor deur beëindigt HTTP-aanvragen aan de rand van het netwerk van micro soft en controleert actief om de status van de toepassing of infra structuur te detecteren.  Met de voor deur wordt verkeer altijd gerouteerd naar de snelste en beschik bare back-end. Raadpleeg de voor deur [routerings architectuur](front-door-routing-architecture.md) Details en [methoden voor verkeers routering](front-door-routing-methods.md) voor meer informatie over de service.
 
-## <a name="regional-load-balancing"></a>Regionale load balancing
-Application Gateway biedt application delivery controller (ADC) als een service, met verschillende Layer 7 load-balancing mogelijkheden voor uw toepassing. Het stelt klanten in staat om de productiviteit van webfarmen te optimaliseren door CPU-intensieve TLS-beëindiging te ontladen naar de toepassingsgateway. Andere Routeringsmogelijkheden van Layer 7 zijn round-robin-distributie van binnenkomend verkeer, sessieaffiniteit op basis van cookies, URL-padgebaseerde routering en de mogelijkheid om meerdere websites achter één toepassingsgateway te hosten. Application Gateway kan worden geconfigureerd als een naar internet gerichte gateway, een interne gateway of een combinatie van beide. Application Gateway is volledig azure beheerd, schaalbaar en zeer beschikbaar. Het biedt een uitgebreide verzameling diagnostische gegevens en functies voor logboekregistratie voor betere beheersbaarheid.
-Load Balancer is een integraal onderdeel van de Azure SDN-stack en biedt krachtige, low-latency Layer 4 load-balancing services voor alle UDP- en TCP-protocollen. Het beheert inkomende en uitgaande verbindingen. U kunt openbare en interne load-balancedeindpunten configureren en regels definiëren om binnenkomende verbindingen toe te wijzen aan back-end-poolbestemmingen met behulp van TCP- en HTTP-opties voor statustesten om de beschikbaarheid van de service te beheren.
+## <a name="regional-load-balancing"></a>Regionale taak verdeling
+Application Gateway biedt ADC (Application Delivery controller) als een service met verschillende mogelijkheden voor taak verdeling voor laag 7 voor uw toepassing. Hiermee kunnen klanten de productiviteit van webfarms optimaliseren door CPU-intensieve TLS-beëindiging naar de Application Gateway te offloaden. Andere routerings mogelijkheden voor laag 7 zijn onder andere round-robin distributie van inkomend verkeer, sessie affiniteit op basis van cookies, route ring op basis van URL-pad en de mogelijkheid om meerdere websites achter één toepassings gateway te hosten. Application Gateway kunnen worden geconfigureerd als een Internet gerichte gateway, een alleen-interne gateway of een combi natie van beide. Application Gateway is volledig beheerde, schaal bare en Maxi maal beschik bare Azure. Het biedt een uitgebreide verzameling diagnostische gegevens en functies voor logboekregistratie voor betere beheersbaarheid.
+Load Balancer is een integraal onderdeel van de Azure SDN-stack, met hoge prestaties en lage latentie Services voor taak verdeling voor alle UDP-en TCP-protocollen. Het beheert binnenkomende en uitgaande verbindingen. U kunt openbare en interne load-balancedeindpunten configureren en regels definiëren om binnenkomende verbindingen toe te wijzen aan back-end-poolbestemmingen met behulp van TCP- en HTTP-opties voor statustesten om de beschikbaarheid van de service te beheren.
 
 
 ## <a name="choosing-a-global-load-balancer"></a>Een globale load balancer kiezen
-Wanneer u een globale load balancer kiest tussen Traffic Manager en Azure Front Door voor globale routering, moet u overwegen wat vergelijkbaar is en wat er anders is aan de twee services.   Beide diensten bieden
-- **Multigeo redundantie:** Als één regio uitvalt, leidt het verkeer naadloos naar de dichtstbijzijnde regio zonder tussenkomst van de eigenaar van de toepassing.
-- **Dichtstbijzijnde regioroutering:** Verkeer wordt automatisch doorgestuurd naar de dichtstbijzijnde regio
+Bij het kiezen van een globale load balancer tussen Traffic Manager en Azure front deur voor wereld wijde route ring, moet u rekening houden met wat vergelijkbaar is en wat de twee services verschillen.   Beide services bieden
+- **Multi-geo-redundantie:** Als een regio uitvalt, wordt verkeer naadloos gerouteerd naar de dichtstbijzijnde regio zonder tussen komst van de eigenaar van de toepassing.
+- **Dichtstbijzijnde regio routering:** Verkeer wordt automatisch doorgestuurd naar de dichtstbijzijnde regio
 
-</br>In de volgende tabel worden de verschillen tussen Traffic Manager en Azure Front Door beschreven:</br>
+</br>In de volgende tabel worden de verschillen tussen Traffic Manager en Azure front-deur beschreven:</br>
 
 | Traffic Manager | Azure Front Door |
 | --------------- | ------------------------ |
-|**Elk protocol:** Omdat Traffic Manager op de DNS-laag werkt, u elk type netwerkverkeer routeren. HTTP, TCP, UDP, etc. | **HTTP-versnelling:** Met Front Door verkeer is proxied aan de rand van het netwerk van Microsoft.  Hierdoor worden http(s)-aanvragen latentie- en doorvoerverbeteringen weergegeven die de latentie voor TLS-onderhandeling verminderen en het gebruik van hot-verbindingen van AFD naar uw toepassing.|
-|**On-premises routing:** Met routering op een DNS-laag gaat het verkeer altijd van punt naar punt.  Routering van uw filiaal naar uw on-premises datacenter kan een direct pad bewandelen; zelfs op uw eigen netwerk met behulp van Traffic Manager. | **Onafhankelijke schaalbaarheid:** Omdat Front Door werkt met de HTTP-aanvraag, kunnen aanvragen naar verschillende URL-paden worden doorgestuurd naar verschillende backend/ regionale servicepools (microservices) op basis van regels en de status van elke toepassingsmicroservice.|
-|**Factureringsindeling:** DNS-gebaseerde facturering schalen met uw gebruikers en voor diensten met meer gebruikers, plateaus om de kosten te verlagen tegen hoger gebruik. |**Inline beveiliging:** Front Door maakt regels zoals tariefbeperking en IP ACL-ing mogelijk om u uw backends te laten beschermen voordat het verkeer uw toepassing bereikt. 
+|**Elk protocol:** Omdat Traffic Manager werkt op de DNS-laag, kunt u elk type netwerk verkeer routeren. HTTP, TCP, UDP, etc. | **Http-versnelling:** Via het verkeer van de voor deur wordt een proxy aan de rand van het netwerk van micro soft verzonden.  Als gevolg hiervan zien HTTP (S)-aanvragen de latentie en doorvoer verbeteringen de latentie voor TLS-onderhandeling verminderen en het gebruik van warme verbindingen van AFD naar uw toepassing.|
+|**On-premises route ring:** Met route ring op een DNS-laag loopt verkeer altijd van punt naar punt.  Route ring van uw filiaal naar uw on-premises Data Center kan een direct pad hebben. zelfs op uw eigen netwerk met behulp van Traffic Manager. | **Onafhankelijke schaal baarheid:** Omdat front-deur werkt met de HTTP-aanvraag, kunnen aanvragen voor verschillende URL-paden worden doorgestuurd naar verschillende back-end/regionale service groepen (micro Services) op basis van regels en de status van elke toepassings micro service.|
+|**Facturerings indeling:** Facturering op basis van DNS kan worden geschaald met uw gebruikers en voor services met meer gebruikers en voor het verlagen van de kosten bij een hoger gebruik. |**Inline beveiliging:** Met de voor deur kunt u regels, zoals frequentie limiet en IP-ACL, zodanig instellen dat u uw back-ends kunt beveiligen voordat het verkeer uw toepassing bereikt. 
 
-</br>Vanwege de prestaties, operabiliteit en beveiligingsvoordelen voor HTTP-workloads met Front Door, raden we klanten aan Front Door te gebruiken voor hun HTTP-workloads.    Traffic Manager en Front Door kunnen parallel worden gebruikt om al het verkeer voor uw toepassing te bedienen. 
+</br>Vanwege de prestaties, operability en beveiligings voordelen voor HTTP-workloads met de voor deur, raden we klanten aan om de voor deur van hun HTTP-workloads te gebruiken.    Traffic Manager en de voor deur kunnen parallel worden gebruikt om al het verkeer voor uw toepassing te leveren. 
 
-## <a name="building-with-azures-application-delivery-suite"></a>Bouwen met azure's application delivery suite 
-We raden aan dat alle websites, API's, services geografisch redundant zijn en waar mogelijk verkeer aan de gebruikers leveren vanaf de dichtstbijzijnde (laagste latentie) locatie.  Door services van Traffic Manager, Front Door, Application Gateway en Load Balancer te combineren, u geografisch en zonig redundant bouwen om de betrouwbaarheid, schaal en prestaties te maximaliseren.
+## <a name="building-with-azures-application-delivery-suite"></a>Voortbouwend met de leverings suite van Azure Application 
+We raden aan dat alle websites, Api's, services geografisch redundant zijn en het verkeer naar de gebruikers van de dichtstbijzijnde (laagste latentie) locatie waar mogelijk naar hen worden overgebracht.  Door services te combi neren van Traffic Manager, front-deur, Application Gateway en Load Balancer kunt u geografisch en zonally redundant bouwen om de betrouw baarheid, schaal en prestaties te maximaliseren.
 
-In het volgende diagram beschrijven we een voorbeeldservice die een combinatie van al deze services gebruikt om een wereldwijde webservice te bouwen.   In dit geval heeft de architect Traffic Manager gebruikt om naar globale backends te routeren voor bestands- en objectweergave, terwijl de url-paden van Front Door worden gebruikt om URL-paden wereldwijd te routeren die overeenkomen met het patroon /store/* naar de service die ze naar App Service hebben gemigreerd terwijl alle andere aanvragen worden routerd naar regionale toepassingsgateways.
+In het volgende diagram beschrijven we een voorbeeld service die gebruikmaakt van een combi natie van al deze services voor het bouwen van een wereld wijde webservice.   In dit geval heeft de architect Traffic Manager gebruikt voor het routeren van globale back-ends voor bestands-en object levering, terwijl front-deur wordt gebruikt voor het globaal routeren van URL-paden die overeenkomen met het patroon/Store/* naar de service die ze hebben gemigreerd naar App Service terwijl alle andere aanvragen naar regionale toepassings gateways worden gerouteerd.
 
-In de regio heeft de applicatieontwikkelaar voor hun IaaS-service besloten dat alle URL's die overeenkomen met het patroon /afbeeldingen/* worden geserveerd vanuit een speciale groep VM's die verschillen van de rest van de webfarm.
+In de regio voor hun IaaS-service heeft de ontwikkelaar van de toepassing besloten dat alle Url's die overeenkomen met het patroon/images/* worden geleverd vanuit een specifieke groep virtuele machines die verschillen van de rest van de webfarm.
 
-Bovendien moet de standaard VM-groep met de dynamische inhoud praten met een back-enddatabase die wordt gehost op een cluster met hoge beschikbaarheid. De volledige implementatie wordt ingesteld via Azure Resource Manager.
+Daarnaast moet de standaard-VM-groep met de dynamische inhoud communiceren met een back-end-data base die wordt gehost op een cluster met hoge Beschik baarheid. De volledige implementatie wordt ingesteld via Azure Resource Manager.
 
 In het volgende diagram ziet u de architectuur van dit scenario:
 
-![Gedetailleerde architectuur voor toepassingsleveringssuite][2] 
+![Gedetailleerde architectuur van Application Delivery Suite][2] 
 
 > [!NOTE]
-> Dit voorbeeld is slechts een van de vele mogelijke configuraties van de load-balancing services die Azure biedt. Traffic Manager, Front Door, Application Gateway en Load Balancer kunnen worden gemengd en afgestemd op uw behoeften op het gebied van taakverdeling. Als TLS/SSL-offload of Layer 7-verwerking bijvoorbeeld niet nodig is, kan Load Balancer worden gebruikt in plaats van Application Gateway.
+> Dit voor beeld is slechts een van de vele mogelijke configuraties van de taakverdelings services die Azure biedt. Traffic Manager, front deur, Application Gateway en Load Balancer kunnen worden gecombineerd en afgestemd op uw behoeften voor taak verdeling. Als bijvoorbeeld TLS/SSL-offload of Layer 7-verwerking niet nodig is, kan Load Balancer worden gebruikt in plaats van Application Gateway.
 
 
 ## <a name="next-steps"></a>Volgende stappen

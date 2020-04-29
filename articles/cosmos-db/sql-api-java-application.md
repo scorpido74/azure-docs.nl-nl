@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Zelfstudie voor het ontwikkelen van Java-toepassingen met Azure Cosmos DB'
-description: 'Zelfstudie: In deze zelfstudie van java-webtoepassingen ziet u hoe u de Azure Cosmos DB en de SQL API gebruiken om gegevens op te slaan en te openen van een Java-toepassing die wordt gehost op Azure-websites.'
+title: 'Zelf studie: zelf studie voor de ontwikkeling van Java-toepassingen met Azure Cosmos DB'
+description: 'Zelf studie: in deze zelf studie over Java-webtoepassingen ziet u hoe u de Azure Cosmos DB en de SQL-API kunt gebruiken om gegevens op te slaan en te openen vanuit een Java-toepassing die wordt gehost op Azure websites.'
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: ramkris
 ms.openlocfilehash: 2e38aeba198f875961024f8c25c7fb0123479f87
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80985266"
 ---
-# <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Zelfstudie: Een Java-webtoepassing bouwen met Azure Cosmos DB en de SQL-API
+# <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Zelf studie: een Java-webtoepassing bouwen met behulp van Azure Cosmos DB en de SQL-API
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -42,7 +42,7 @@ In deze zelfstudie over het maken van een Java-toepassing wordt uitgelegd hoe u 
 ## <a name="prerequisites-for-this-java-web-application-tutorial"></a><a id="Prerequisites"></a>Vereisten voor deze zelfstudie over Java-webtoepassingen
 Voordat u met deze zelfstudie over het ontwikkelen van toepassingen aan de slag gaat, moet u beschikken over het volgende:
 
-* Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint. 
+* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -62,7 +62,7 @@ Begin met het maken van een Azure Cosmos DB-account. Als u al een account hebt o
 ## <a name="step-2-create-the-java-jsp-application"></a><a id="CreateJSP"></a>Stap 2: De Java JSP-toepassing maken
 De JSP-toepassing maken:
 
-1. Eerst beginnen we met het maken van een Java-project. Start Eclipse en klik achtereenvolgens op **File** (Bestand), **New** (Nieuw) en **Dynamic Web Project** (Dynamisch webproject). Als u Dynamic **Web Project** niet als een beschikbaar project ziet, gaat u als volgt te werk: klik op **Bestand**, klik op **Nieuw**, klik op **Project**..., vouw **Web**uit, klik op **Dynamisch webproject**en klik op **Volgende**.
+1. Eerst gaan we beginnen met het maken van een Java-project. Start Eclipse en klik achtereenvolgens op **File** (Bestand), **New** (Nieuw) en **Dynamic Web Project** (Dynamisch webproject). Als u het **dynamische webproject** niet ziet als een beschikbaar project, doet u het volgende: Klik op **bestand**, klik op **Nieuw**, klik op **project**..., vouw het **Web**uit, klik op **dynamisch webproject**en klik op **volgende**.
    
     ![JSP Java-toepassing ontwikkelen](./media/sql-api-java-application/image10.png)
 2. Voer in het vak **Project name** (Projectnaam) een projectnaam in en selecteer in de vervolgkeuzelijst **Target Runtime** (Doelruntime) eventueel een waarde (bijvoorbeeld Apache Tomcat v7.0) en klik vervolgens op **Finish** (Voltooien). Door een doelruntime te selecteren, kunt u het project lokaal via Eclipse uitvoeren.
@@ -87,14 +87,14 @@ De eenvoudigste manier om de SQL Java SDK en de bijbehorende afhankelijkheden op
 Hiervoor moet u de volgende stappen uitvoeren om het project te converteren naar een Maven-project:
 
 1. Klik met de rechtermuisknop in de Projectverkenner, klik op **Configure** (Configureren) en klik vervolgens op **Convert to Maven Project** (Configureren naar een Maven-project).
-2. Accepteer in **het venster Nieuwe POM maken** de standaardinstellingen en klik op **Voltooien**.
+2. Accepteer de standaard instellingen in het venster **nieuwe pom maken** en klik op **volt ooien**.
 3. Ga naar de **Projectverkenner** en open het bestand pom.xml.
 4. Klik op het tabblad **Dependencies** (Afhankelijkheden) van het deelvenster **Dependencies** (Afhankelijkheden) op **Add** (Toevoegen).
 5. Ga in het venster **Select Dependency** (Afhankelijkheid selecteren) als volgt te werk:
    
    * Typ com.microsoft.azure in het vak **Groeps-id**.
-   * Voer azure-documentdb in het vak **Artefact-id** in.
-   * Voer **in het** vak Versie 1.5.1 in.
+   * Voer in het vak **artefact-id** Azure-documentdb in.
+   * Typ 1.5.1 in het vak **versie** .
      
    ![SQL Java Application SDK installeren](./media/sql-api-java-application/image13.png)
      
@@ -250,7 +250,7 @@ Hiervoor moet u de volgende stappen uitvoeren om het project te converteren naar
    
             return gson.fromJson(todoItemDocument.toString(), TodoItem.class);
         }
-5. Net als Azure Cosmos-databases en -verzamelingen worden documenten ook verwezen naar zelfkoppelingen. Met de volgende Help-functie kunt u documenten ophalen met een ander kenmerk (bijvoorbeeld 'id') in plaats van een self link-element:
+5. Net als bij Azure Cosmos-data bases en-verzamelingen worden documenten ook verwezen door Self links. Met de volgende Help-functie kunt u documenten ophalen met een ander kenmerk (bijvoorbeeld 'id') in plaats van een self link-element:
    
         private Document getDocumentById(String id) {
             // Retrieve the document using the DocumentClient.
@@ -742,7 +742,7 @@ Alle voorbeelden in deze zelfstudie zijn opgenomen in het [todo](https://github.
 8. Klik in het scherm **Local Destination** (Lokale bestemming) op **Browse** (Bladeren) om een map te selecteren waarnaar de opslag kan worden gekopieerd en klik op **Next** (Volgende).
 9. Zorg er in het scherm **Select a wizard to use for importing projects** (Een wizard selecteren waarmee projecten worden geïmporteerd) voor dat **Import existing projects** (Bestaande projecten selecteren) is geselecteerd en klik op **Next** (Volgende).
 10. Schakel in het scherm **Import Projects** (Projecten importeren) het selectievakje uit voor het **DocumentDB-project** en klik op **Finish** (Voltooien). Het DocumentDB-project bevat de Azure Cosmos DB Java SDK die we in plaats daarvan als een afhankelijkheid zullen toevoegen.
-11. Navigeer in **Projectverkenner** naar azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java en vervang de waarden voor HOST en MASTER_KEY door de URI en PRIMAIRE SLEUTEL voor uw Azure Cosmos DB-account en sla het bestand vervolgens op. Zie Stap 1 voor meer [informatie. Maak een Azure Cosmos-databaseaccount](#CreateDB).
+11. Navigeer in **Projectverkenner** naar azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java en vervang de waarden voor HOST en MASTER_KEY door de URI en PRIMAIRE SLEUTEL voor uw Azure Cosmos DB-account en sla het bestand vervolgens op. Zie stap 1 voor meer informatie [. Een Azure Cosmos-database account maken](#CreateDB).
 12. Klik in **Projectverkenner** met de rechtermuisknop op **azure-documentdb-java-sample**, klik op **Opbouwpad** en vervolgens op **Opbouwpad configureren**.
 13. Selecteer in het rechterdeelvenster van het scherm **Java Build Path** (Java-opbouwpad) het tabblad **Libraries** (Bibliotheken) en klik vervolgens op **Add External JARs** (Externe JAR's toevoegen). Navigeer naar de locatie van het bestand lombok.jar en klik op **Open** (Openen) en **OK**.
 14. Gebruik stap 12 om het venster **Properties** (Eigenschappen) opnieuw te openen en klik in het linkerdeelvenster vervolgens op **Targeted Runtimes** (Beoogde runtimes).
@@ -753,5 +753,5 @@ Alle voorbeelden in deze zelfstudie zijn opgenomen in het [todo](https://github.
 19. Verplaats in het venster **Add and Remove** (Toevoegen en verwijderen) **azure-documentdb-java-sample** naar het vak **Configured** (Geconfigureerd) en klik vervolgens op **Finish** (Voltooien).
 20. Klik op het tabblad **Servers** met de rechtermuisknop op **Tomcat v7.0-server op localhost** en klik vervolgens op **Opnieuw starten**.
 21. Ga in een browser naar `http://localhost:8080/azure-documentdb-java-sample/` en begin met het toevoegen van taken aan uw takenlijst. Als u de standaardpoortwaarden hebt gewijzigd, wijzigt u 8080 in de waarde die u hebt geselecteerd.
-22. Zie Stap 6 als u uw project wilt implementeren op een [Azure-website. Implementeer uw toepassing op Azure-websites](#Deploy).
+22. Zie stap 6 als u uw project wilt implementeren op een Azure-website [. Implementeer uw toepassing op Azure websites](#Deploy).
 

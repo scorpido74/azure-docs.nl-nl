@@ -1,7 +1,7 @@
 ---
-title: Een container configureren voor Formulierherkenning
+title: Een container voor de formulier herkenner configureren
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het configureren van de container Formulierherkenning om formulier- en tabelgegevens te ontken.
+description: Meer informatie over het configureren van de formulier Recognizer-container voor het parseren van formulier-en tabel gegevens.
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
@@ -10,57 +10,57 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: bc48c0ba23e73adec312adfeeb1fcd57dba6ceec
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80879153"
 ---
-# <a name="configure-form-recognizer-containers"></a>Form Recognizer-containers configureren
+# <a name="configure-form-recognizer-containers"></a>Containers voor formulier herkenning configureren
 
-Met Azure Form Recognizer-containers u een toepassingsarchitectuur bouwen die is geoptimaliseerd om te profiteren van zowel robuuste cloudmogelijkheden als randplaats.
+U kunt met behulp van Azure Form Recognizer-containers een toepassings architectuur maken die is geoptimaliseerd om te profiteren van zowel robuuste Cloud mogelijkheden als Edge-locatie.
 
-U configureert de runtime-time-omgeving `docker run` van form recognizer met behulp van de opdrachtargumenten. Deze container heeft verschillende vereiste instellingen en een paar optionele instellingen. Zie de sectie ['Voorbeeld docker run'-opdrachten](#example-docker-run-commands) voor een paar voorbeelden. De containerspecifieke instellingen zijn de factureringsinstellingen.
+U configureert de indeling van de formulier Recognizer-container run-time `docker run` met behulp van de opdracht argumenten. Deze container heeft verschillende vereiste instellingen en enkele optionele instellingen. Zie de sectie [' voor beeld van docker-opdrachten uitvoeren '](#example-docker-run-commands) voor enkele voor beelden. De container-specifieke instellingen zijn de facturerings instellingen.
 
 > [!IMPORTANT]
-> De form recognizer-containers gebruiken momenteel versie 1.0 van de API voor formulierherkenning. U hebt toegang tot de nieuwste versie van de API door in plaats daarvan de beheerde service te gebruiken.
+> De Form Recognizer-containers gebruiken momenteel versie 1,0 van de API voor formulier herkenning. U kunt in plaats daarvan de meest recente versie van de API openen met behulp van de beheerde service.
 
 ## <a name="configuration-settings"></a>Configuratie-instellingen
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> De [`ApiKey`](#apikey-configuration-setting) [`Billing`](#billing-configuration-setting)instellingen [`Eula`](#eula-setting) en instellingen worden samen gebruikt. U moet geldige waarden opgeven voor alle drie de instellingen; anders start uw container niet. Zie Facturering voor meer informatie over het gebruik van deze configuratie-instellingen om een container te [instantiëren.](form-recognizer-container-howto.md#billing)
+> De [`ApiKey`](#apikey-configuration-setting)instellingen [`Billing`](#billing-configuration-setting), en [`Eula`](#eula-setting) worden samen gebruikt. U moet geldige waarden opgeven voor alle drie de instellingen; anders kan de container niet worden gestart. Zie [facturering](form-recognizer-container-howto.md#billing)voor meer informatie over het gebruik van deze configuratie-instellingen voor het instantiëren van een container.
 
-## <a name="apikey-configuration-setting"></a>ApiKey-configuratie-instelling
+## <a name="apikey-configuration-setting"></a>Configuratie-instelling ApiKey
 
-De `ApiKey` instelling geeft de Azure-bronsleutel op die wordt gebruikt om factureringsgegevens voor de container bij te houden. De waarde voor de ApiKey moet een geldige sleutel zijn voor `Billing` de _bron Formulierherkenning_ waarvoor is opgegeven in de sectie 'Factureringsconfiguratieinstelling'.
+Met `ApiKey` deze instelling geeft u de Azure-resource sleutel op die wordt gebruikt voor het bijhouden van facturerings gegevens voor de container. De waarde voor ApiKey moet een geldige sleutel zijn voor de _formulier Recognizer_ -resource die is opgegeven `Billing` in de sectie facturerings configuratie-instelling.
 
-U deze instelling vinden in de Azure-portal in **Form Recognizer Resource Management**onder **Sleutels**.
+U kunt deze instelling vinden in de Azure Portal, in de vorm van het **resource beheer voor formulieren**, onder **sleutels**.
 
-## <a name="applicationinsights-setting"></a>Instelling ApplicationInsights
+## <a name="applicationinsights-setting"></a>ApplicationInsights-instelling
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
-## <a name="billing-configuration-setting"></a>Instelling voor factureringsconfiguratie
+## <a name="billing-configuration-setting"></a>Instelling facturerings configuratie
 
-De `Billing` instelling geeft het eindpunt URI op van de _bron Formulierherkenning_ op Azure die wordt gebruikt om factureringsgegevens voor de container te meten. De waarde voor deze configuratie-instelling moet een geldig eindpunt URI zijn voor een _Form Recognizer-bron_ op Azure. De container rapporteert het gebruik ongeveer elke 10 tot 15 minuten.
+Met `Billing` deze instelling geeft u de EINDPUNT-URI op van de _formulier Recognizer_ -resource in azure die wordt gebruikt om de facturerings gegevens voor de container te meten. De waarde voor deze configuratie-instelling moet een geldige eind punt-URI zijn voor een _formulier Recognizer_ -resource in Azure. De container rapporteert het gebruik ongeveer elke 10 tot 15 minuten.
 
-U vindt deze instelling in de Azure-portal in **formulierherkenningsoverzicht**onder **Eindpunt**.
+U kunt deze instelling vinden in het Azure Portal, in het **overzicht van formulier herkenning**, onder **eind punt**.
 
-|Vereist| Name | Gegevenstype | Beschrijving |
+|Vereist| Naam | Gegevenstype | Beschrijving |
 |--|------|-----------|-------------|
-|Ja| `Billing` | Tekenreeks | Factureringseindpunt URI. Zie het verzamelen van [vereiste parameters](form-recognizer-container-howto.md#gathering-required-parameters)voor meer informatie over het verkrijgen van de factureringuri. Zie [Aangepaste subdomeinnamen voor cognitieve services voor](../cognitive-services-custom-subdomains.md)meer informatie en een volledige lijst met regionale eindpunten. |
+|Ja| `Billing` | Tekenreeks | URL van het facturerings eindpunt. Zie [vereiste para meters verzamelen](form-recognizer-container-howto.md#gathering-required-parameters)voor meer informatie over het verkrijgen van de facturerings-URI. Zie [aangepaste subdomein namen voor Cognitive Services](../cognitive-services-custom-subdomains.md)voor meer informatie en een volledige lijst met regionale eind punten. |
 
-## <a name="eula-setting"></a>Eula-instelling
+## <a name="eula-setting"></a>Gebruiksrecht overeenkomst instellen
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Vloeiende instellingen
+## <a name="fluentd-settings"></a>Gefluente instellingen
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>HTTP-proxyreferenties instellingen
+## <a name="http-proxy-credentials-settings"></a>Instellingen voor HTTP-proxy referenties
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
@@ -69,47 +69,47 @@ U vindt deze instelling in de Azure-portal in **formulierherkenningsoverzicht**o
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
 
-## <a name="mount-settings"></a>Montage-instellingen
+## <a name="mount-settings"></a>Koppelings instellingen
 
-Gebruik bindingsbevestigingen om gegevens van en naar de container te lezen en te schrijven. U een invoerhouder of een uitvoerbevestiging opgeven door de `--mount` optie in de [ `docker run` opdracht](https://docs.docker.com/engine/reference/commandline/run/)op te geven.
+Gebruik bindings koppelingen om gegevens van en naar de container te lezen en te schrijven. U kunt een invoer koppeling of een uitvoer koppeling opgeven door de `--mount` optie op te geven in de [ `docker run` opdracht](https://docs.docker.com/engine/reference/commandline/run/).
 
-De Form Recognizer-container vereist een invoerbevestiging en een uitvoerbevestiging. De invoerbevestiging kan alleen-lezen zijn en is vereist voor toegang tot de gegevens die worden gebruikt voor training en scoren. De uitvoerbevestiging moet beschrijfbaar zijn en u gebruikt deze om de modellen en tijdelijke gegevens op te slaan.
+De container voor de formulier herkenning vereist een invoer koppeling en een uitvoer koppeling. De invoer koppeling kan alleen-lezen zijn en is vereist voor toegang tot de gegevens die worden gebruikt voor training en scores. De uitvoer koppeling moet schrijfbaar zijn en u kunt deze gebruiken om de modellen en tijdelijke gegevens op te slaan.
 
-De exacte syntaxis van de hostmountlocatie is afhankelijk van het hostbesturingssysteem. Bovendien is de berglocatie van de [hostcomputer](form-recognizer-container-howto.md#the-host-computer) mogelijk niet toegankelijk vanwege een conflict tussen de machtigingen van de Docker-serviceaccount en de locatiemachtigingen voor de hostmount.
+De exacte syntaxis van de locatie voor het koppelen van de host varieert, afhankelijk van het besturings systeem van de host. Daarnaast is de koppelings locatie van de [hostcomputer](form-recognizer-container-howto.md#the-host-computer) mogelijk niet toegankelijk vanwege een conflict tussen de machtigingen van het docker-service account en de machtigingen van de host-koppelings locatie.
 
-|Optioneel| Name | Gegevenstype | Beschrijving |
+|Optioneel| Naam | Gegevenstype | Beschrijving |
 |-------|------|-----------|-------------|
-|Vereist| `Input` | Tekenreeks | Het doel van de invoerberg. De standaardwaarde is `/input`.    <br><br>Voorbeeld:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Vereist| `Output` | Tekenreeks | Het doel van de uitgangsberg. De standaardwaarde is `/output`.  <br><br>Voorbeeld:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Vereist| `Input` | Tekenreeks | Het doel van de invoer koppeling. De standaardwaarde is `/input`.    <br><br>Voorbeeld:<br>`--mount type=bind,src=c:\input,target=/input`|
+|Vereist| `Output` | Tekenreeks | Het doel van de uitvoer koppeling. De standaardwaarde is `/output`.  <br><br>Voorbeeld:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Voorbeeld van opdrachten voor docker-uitgevoerd
+## <a name="example-docker-run-commands"></a>Voor beeld van docker-opdrachten uitvoeren
 
-In de volgende voorbeelden worden de configuratie-instellingen `docker run` gebruikt om te illustreren hoe u opdrachten schrijven en gebruiken. Wanneer deze wordt uitgevoerd, blijft de container draaien totdat u [deze stopt.](form-recognizer-container-howto.md#stop-the-container)
+De volgende voor beelden gebruiken de configuratie-instellingen om te laten zien hoe u `docker run` -opdrachten schrijft en gebruikt. Wanneer deze wordt uitgevoerd, blijft de container actief totdat u [deze stopt](form-recognizer-container-howto.md#stop-the-container).
 
-* **Line-continuation teken**: De Docker-opdrachten in de\\volgende secties gebruiken een back slash ( ) als een lijn voortzetting teken. Vervang of verwijder dit teken, afhankelijk van de vereisten van uw hostbesturingssysteem.
-* **Argumentvolgorde:** wijzig de volgorde van de argumenten niet, tenzij u bekend bent met Docker-containers.
+* **Regel voortzettings teken**: de docker-opdrachten in de volgende secties gebruiken een back slash\\() als een regel voortzettings teken. Vervang of verwijder dit teken, afhankelijk van de vereisten van uw hostbesturingssysteem.
+* **Argument volgorde**: Wijzig de volg orde van de argumenten alleen als u bekend bent met docker-containers.
 
-Vervang {_argument_name}_ in de volgende tabel door uw eigen waarden:
+Vervang {_argument_name_} in de volgende tabel door uw eigen waarden:
 
 | Tijdelijke aanduiding | Waarde |
 |-------------|-------|
-| **{FORM_RECOGNIZER_API_KEY}** | De sleutel die wordt gebruikt om de container te starten. Het is beschikbaar op de pagina Formulierherkenningssleutels van azure portal Form. |
-| **{FORM_RECOGNIZER_ENDPOINT_URI}** | De URI-waarde voor factureringseindpunt is beschikbaar op de pagina Overzicht van formulierherkenning voor Azure-portalformulier.|
-| **{COMPUTER_VISION_API_KEY}** | De sleutel is beschikbaar op de pagina Azure portal Computer Vision API Keys.|
-| **{COMPUTER_VISION_ENDPOINT_URI}** | Het eindpunt van facturering. Als u een cloudgebaseerde Computer Vision-bron gebruikt, is de URI-waarde beschikbaar op de pagina Van Azure portal Computer Vision API-overzicht. Als u een *container voor cognitief services-herkennen-tekst* gebruikt, gebruikt u de URL `docker run` van het factureringseindpunt die is doorgegeven aan de container in de opdracht. |
+| **{FORM_RECOGNIZER_API_KEY}** | De sleutel die wordt gebruikt om de container te starten. Deze is beschikbaar op de pagina Azure Portal formulier Recognizer Keys. |
+| **{FORM_RECOGNIZER_ENDPOINT_URI}** | De waarde voor de URL van het facturerings eindpunt is beschikbaar op de pagina overzicht van Azure Portal formulier Recognizer.|
+| **{COMPUTER_VISION_API_KEY}** | De sleutel is beschikbaar op de pagina Azure Portal Computer Vision-API sleutels.|
+| **{COMPUTER_VISION_ENDPOINT_URI}** | Het facturerings eindpunt. Als u een Computer Vision resource op basis van de Cloud gebruikt, is de URI-waarde beschikbaar op de overzichts pagina Azure Portal Computer Vision-API. Als u een cognitieve- *Services-Recognize-Text* -container gebruikt, gebruikt u de URL van het facturerings eindpunt dat is door `docker run` gegeven aan de container in de opdracht. |
 
-Zie [het verzamelen van vereiste parameters](form-recognizer-container-howto.md#gathering-required-parameters) voor meer informatie over het verkrijgen van deze waarden.
+Zie [vereiste para meters verzamelen](form-recognizer-container-howto.md#gathering-required-parameters) voor meer informatie over het verkrijgen van deze waarden.
 
 [!INCLUDE [cognitive-services-custom-subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> Als u de container `Eula` `Billing`wilt `ApiKey` uitvoeren, geeft u de opties en opties op; Anders start de container niet. Zie [Facturering voor](#billing-configuration-setting)meer informatie.
+> Als u de container wilt uitvoeren, `Eula`geeft `Billing`u de `ApiKey` opties, en op. anders wordt de container niet gestart. Zie [facturering](#billing-configuration-setting)voor meer informatie.
 
-## <a name="form-recognizer-container-docker-examples"></a>Voorbeelden van Form Recognizer container Docker
+## <a name="form-recognizer-container-docker-examples"></a>Docker-voor beelden van de container voor formulier herkenning
 
-De volgende Voorbeelden van Docker zijn voor de container Van de Vormerkenning.
+De volgende docker-voor beelden zijn voor de formulier Recognizer-container.
 
-### <a name="basic-example-for-form-recognizer"></a>Basisvoorbeeld voor Formulierherkenning
+### <a name="basic-example-for-form-recognizer"></a>Basis voorbeeld voor formulier herkenning
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
@@ -123,7 +123,7 @@ FormRecognizer:ComputerVisionApiKey={COMPUTER_VISION_API_KEY} \
 FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 ```
 
-### <a name="logging-example-for-form-recognizer"></a>Voorbeeld van logboekregistratie voor Formulierherkenning
+### <a name="logging-example-for-form-recognizer"></a>Voor beeld van logboek registratie voor formulier herkenning
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
@@ -140,4 +140,4 @@ Logging:Console:LogLevel:Default=Information
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Bekijk het installeren en uitvoeren van containers](form-recognizer-container-howto.md).
+* Controleer de [installatie-en uitvoer containers](form-recognizer-container-howto.md).

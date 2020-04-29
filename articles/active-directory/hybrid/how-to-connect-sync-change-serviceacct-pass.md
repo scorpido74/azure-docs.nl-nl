@@ -1,8 +1,8 @@
 ---
-title: 'Azure AD Connect-synchronisatie: het ADSync-serviceaccount wijzigen | Microsoft Documenten'
-description: In dit onderwerpdocument wordt de versleutelingssleutel beschreven en hoe u deze verlaten nadat het wachtwoord is gewijzigd.
+title: 'Azure AD Connect synchronisatie: het ADSync-service account wijzigen | Microsoft Docs'
+description: In dit onderwerp document wordt de versleutelings sleutel beschreven en wordt aangegeven hoe u deze kunt afbreken nadat het wacht woord is gewijzigd.
 services: active-directory
-keywords: Azure AD-synchronisatieserviceaccount, wachtwoord
+keywords: Azure AD Sync-Service account, wacht woord
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -18,110 +18,110 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b2a0d0b77b6db481b13785907a1359d2bbe3e9b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80984501"
 ---
-# <a name="changing-the-adsync-service-account-password"></a>Het wachtwoord van het ADSync-serviceaccount wijzigen
-Als u het wachtwoord van het ADSync-serviceaccount wijzigt, kan de synchronisatieservice niet correct worden gestart totdat u de versleutelingssleutel hebt verlaten en het wachtwoord van het ADSync-serviceaccount opnieuw hebt geïnitialiseerd. 
+# <a name="changing-the-adsync-service-account-password"></a>Het wacht woord voor het ADSync-service account wijzigen
+Als u het wacht woord voor het ADSync-service account wijzigt, kan de synchronisatie service niet goed worden gestart totdat u de versleutelings sleutel hebt verlaten en het wacht woord voor het ADSync-service account opnieuw hebt geïnitialiseerd. 
 
-Azure AD Connect gebruikt als onderdeel van de synchronisatieservices een versleutelingssleutel om de wachtwoorden van het AD DS-connector-account en het ADSync-serviceaccount op te slaan.  Deze accounts worden versleuteld voordat ze in de database worden opgeslagen. 
+Azure AD Connect, als onderdeel van de synchronisatie Services, gebruikt een versleutelings sleutel voor het opslaan van de wacht woorden van het AD DS Connector-account en het ADSync-service account.  Deze accounts worden versleuteld voordat ze worden opgeslagen in de-data base. 
 
-De gebruikte versleutelingssleutel wordt beveiligd met [Windows Data Protection (DPAPI).](https://msdn.microsoft.com/library/ms995355.aspx) DPAPI beschermt de versleutelingssleutel met behulp van het **ADSync-serviceaccount.** 
+De versleutelings sleutel die wordt gebruikt, is beveiligd met [Windows Data Protection (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx). DPAPI beveiligt de versleutelings sleutel met behulp van het **ADSync-service account**. 
 
-Als u het wachtwoord van het serviceaccount moet wijzigen, u de procedures gebruiken bij [Het verlaten van de ADSync-serviceaccountversleutelingssleutel](#abandoning-the-adsync-service-account-encryption-key) om dit te bereiken.  Deze procedures moeten ook worden gebruikt als u de encryptiesleutel om welke reden dan ook moet verlaten.
+Als u het wacht woord van het service account wilt wijzigen, kunt u de procedures in [de versleutelings sleutel voor het ADSync-service account afbreken](#abandoning-the-adsync-service-account-encryption-key) om dit te bereiken.  Deze procedures moeten ook worden gebruikt als u de versleutelings sleutel om de een of andere reden moet afbreken.
 
-## <a name="issues-that-arise-from-changing-the-password"></a>Problemen die voortvloeien uit het wijzigen van het wachtwoord
-Er zijn twee dingen die moeten worden gedaan wanneer u het wachtwoord van het serviceaccount wijzigt.
+## <a name="issues-that-arise-from-changing-the-password"></a>Problemen die zich voordoen bij het wijzigen van het wacht woord
+Er zijn twee dingen die moeten worden uitgevoerd wanneer u het wacht woord van het service account wijzigt.
 
-Eerst moet u het wachtwoord wijzigen onder Windows Service Control Manager.  Totdat dit probleem is opgelost, ziet u de volgende fouten:
+Eerst moet u het wacht woord wijzigen onder Windows-service besturings beheer.  Totdat dit probleem is opgelost, ziet u de volgende fouten:
 
 
-- Als u de synchronisatieservice probeert te starten in Windows Service Control Manager, ontvangt u de foutmelding "**Windows kan de Microsoft Azure AD Sync-service niet starten op lokale computer**". **Fout 1069: De service is niet gestart vanwege een aanmeldingsfout.**"
-- Onder Windows Event Viewer bevat het systeemgebeurtenislogboek een fout met **gebeurtenis-id 7038** en bericht "**De ADSync-service kan zich niet aanmelden zoals bij het momenteel geconfigureerde wachtwoord vanwege de volgende fout: de gebruikersnaam of het wachtwoord is onjuist.**"
+- Als u de synchronisatie service in Windows Service Control Manager probeert te starten, wordt het volgende fout bericht weer gegeven: '**Windows kan de Microsoft Azure AD synchronisatie service op de lokale computer niet starten**'. **Fout 1069: de service is niet gestart vanwege een fout bij het aanmelden.**
+- Onder Windows Logboeken bevat het systeem gebeurtenis logboek een fout met **gebeurtenis-ID 7038** en bericht '**de ADSync-service kan niet worden aangemeld met het momenteel geconfigureerde wacht woord vanwege de volgende fout: de gebruikers naam of het wacht woord is onjuist.**'
 
-Ten tweede kan de synchronisatieservice, onder specifieke voorwaarden, als het wachtwoord wordt bijgewerkt, de versleutelingssleutel niet meer ophalen via DPAPI. Zonder de versleutelingssleutel kan de synchronisatieservice de wachtwoorden die nodig zijn om te synchroniseren naar/van on-premises AD en Azure AD niet decoderen.
-U ziet fouten zoals:
+Ten tweede, onder specifieke omstandigheden, als het wacht woord is bijgewerkt, kan de synchronisatie service de versleutelings sleutel niet meer ophalen via DPAPI. Zonder de versleutelings sleutel kan de synchronisatie service de wacht woorden die vereist zijn om te synchroniseren met of van on-premises AD en Azure AD niet ontsleutelen.
+Er worden fouten weer geven zoals:
 
-- Als u onder Windows Service Control Manager de synchronisatieservice probeert te starten en de versleutelingssleutel niet ophalen, mislukt deze met fout<strong>Windows kan de Microsoft Azure AD Sync niet starten op lokale computer. Bekijk het logboek systeemgebeurtenis voor meer informatie. Als dit een niet-Microsoft-service is, neemt u contact op met de serviceleverancier en raadpleegt u servicespecifieke foutcode -21451857952</strong>."
-- Onder Windows Event Viewer bevat het gebeurtenislogboek van de toepassing een fout met **gebeurtenis-id 6028** en foutbericht *'De serverversleutelingssleutel kan niet worden geopend'.*
+- Als u in Windows Service Control Manager de synchronisatie service probeert te starten en de versleutelings sleutel niet kan ophalen, mislukt de fout '<strong>Windows kan de Microsoft Azure AD synchronisatie op de lokale computer niet starten. Raadpleeg het systeem gebeurtenis logboek voor meer informatie. Als dit een niet-micro soft-service is, neemt u contact op met de leverancier van de service en gaat u naar servicespecifieke fout code-21451857952</strong>.
+- Onder Windows Logboeken bevat het gebeurtenis logboek van de toepassing een fout met **gebeurtenis-ID 6028** en fout bericht *' de server versleutelings sleutel is niet toegankelijk '.*
 
-Als u wilt voorkomen dat u deze fouten ontvangt, volgt u de procedures in [Het verlaten van de adsync-serviceaccountversleutelingssleutel](#abandoning-the-adsync-service-account-encryption-key) bij het wijzigen van het wachtwoord.
+Om ervoor te zorgen dat deze fouten niet worden weer gegeven, volgt u de procedures in [de versleutelings sleutel voor het ADSync-service account afbreken](#abandoning-the-adsync-service-account-encryption-key) wanneer u het wacht woord wijzigt.
  
-## <a name="abandoning-the-adsync-service-account-encryption-key"></a>De versleutelingssleutel van de ADSync-serviceaccount verlaten
+## <a name="abandoning-the-adsync-service-account-encryption-key"></a>De versleutelings sleutel voor het ADSync-service account wordt afgebroken
 >[!IMPORTANT]
 >De volgende procedures zijn alleen van toepassing op Azure AD Connect build 1.1.443.0 of ouder.
 
-Gebruik de volgende procedures om de versleutelingssleutel te verlaten.
+Gebruik de volgende procedures om de versleutelings sleutel te verlaten.
 
-### <a name="what-to-do-if-you-need-to-abandon-the-encryption-key"></a>Wat te doen als u de versleutelingssleutel moet verlaten
+### <a name="what-to-do-if-you-need-to-abandon-the-encryption-key"></a>Wat u moet doen als u de versleutelings sleutel wilt verlaten
 
-Als u de versleutelingssleutel moet verlaten, gebruikt u de volgende procedures om dit te bereiken.
+Als u de versleutelings sleutel wilt verlaten, gebruikt u de volgende procedures om dit te bereiken.
 
-1. [De synchronisatieservice stoppen](#stop-the-synchronization-service)
+1. [De synchronisatie service stoppen](#stop-the-synchronization-service)
 
-1. [De bestaande versleutelingssleutel verlaten](#abandon-the-existing-encryption-key)
+1. [De bestaande versleutelings sleutel afbreken](#abandon-the-existing-encryption-key)
 
-2. [Het wachtwoord van het AD DS-connector-account opgeven](#provide-the-password-of-the-ad-ds-connector-account)
+2. [Geef het wacht woord van het AD DS Connector-account op](#provide-the-password-of-the-ad-ds-connector-account)
 
-3. [Het wachtwoord van het ADSync-serviceaccount opnieuw initialiseren](#reinitialize-the-password-of-the-adsync-service-account)
+3. [Het wacht woord van het ADSync-service account opnieuw initialiseren](#reinitialize-the-password-of-the-adsync-service-account)
 
-4. [De synchronisatieservice starten](#start-the-synchronization-service)
+4. [De synchronisatie service starten](#start-the-synchronization-service)
 
-#### <a name="stop-the-synchronization-service"></a>De synchronisatieservice stoppen
-Eerst u de service stoppen in Windows Service Control Manager.  Zorg ervoor dat de service niet wordt uitgevoerd wanneer u deze probeert te stoppen.  Als het is, wachten tot het is voltooid en dan stoppen.
+#### <a name="stop-the-synchronization-service"></a>De synchronisatie service stoppen
+Eerst kunt u de service stoppen in het Windows-service besturings beheer.  Zorg ervoor dat de service niet wordt uitgevoerd wanneer u deze probeert te stoppen.  Als dat het geval is, wacht u totdat de bewerking is voltooid en stopt u deze.
 
 
 1. Ga naar Windows Service Control Manager (START → Services).
-2. Selecteer **Microsoft Azure AD Sync** en klik op Stoppen.
+2. Selecteer **Microsoft Azure AD synchronisatie** en klik op stoppen.
 
-#### <a name="abandon-the-existing-encryption-key"></a>De bestaande versleutelingssleutel verlaten
-Verlaat de bestaande versleutelingssleutel zodat er nieuwe versleutelingssleutel kan worden gemaakt:
+#### <a name="abandon-the-existing-encryption-key"></a>De bestaande versleutelings sleutel afbreken
+De bestaande versleutelings sleutel afbreken zodat de nieuwe versleutelings sleutel kan worden gemaakt:
 
-1. Meld u aan bij uw Azure AD Connect Server als beheerder.
+1. Meld u als beheerder aan bij uw Azure AD Connect-server.
 
-2. Start een nieuwe PowerShell-sessie.
+2. Een nieuwe Power shell-sessie starten.
 
 3. Navigeer naar map:`'$env:ProgramFiles\Microsoft Azure AD Sync\bin\'`
 
-4. Voer de opdracht uit:`./miiskmu.exe /a`
+4. Voer de volgende opdracht uit:`./miiskmu.exe /a`
 
-![Hulpprogramma voor synchronisatiesleutel azure AD Connect](./media/how-to-connect-sync-change-serviceacct-pass/key5.png)
+![Hulp programma voor synchronisatie van versleutelings sleutel Azure AD Connect](./media/how-to-connect-sync-change-serviceacct-pass/key5.png)
 
-#### <a name="provide-the-password-of-the-ad-ds-connector-account"></a>Het wachtwoord van het AD DS-connector-account opgeven
-Omdat de bestaande wachtwoorden die in de database zijn opgeslagen niet meer kunnen worden gedecodeerd, moet u de synchronisatieservice het wachtwoord van het AD DS-connector-account opgeven. De synchronisatieservice versleutelt de wachtwoorden met de nieuwe versleutelingssleutel:
+#### <a name="provide-the-password-of-the-ad-ds-connector-account"></a>Geef het wacht woord van het AD DS Connector-account op
+Als de bestaande wacht woorden in de data base niet langer kunnen worden ontsleuteld, moet u de synchronisatie service opgeven met het wacht woord van het AD DS Connector-account. Met de synchronisatie service worden de wacht woorden versleuteld met de nieuwe versleutelings sleutel:
 
-1. Start de Synchronisatieservicebeheer (START → Synchronisatieservice).
-</br>![Onderhoudsbeheer synchroniseren](./media/how-to-connect-sync-change-serviceacct-pass/startmenu.png)  
-2. Ga naar het tabblad **Connectors.**
-3. Selecteer de **AD-connector** die overeenkomt met uw on-premises AD. Als u meer dan één AD-connector hebt, herhaalt u de volgende stappen voor elk van deze elementen.
-4. Selecteer **Eigenschappen**onder **Acties**.
-5. Selecteer verbinding maken met **Active Directory Forest**in het pop-updialoogvenster:
-6. Voer het wachtwoord van het AD DS-account in het tekstvak **Wachtwoord** in. Als u het wachtwoord niet kent, moet u het instellen op een bekende waarde voordat u deze stap uitvoert.
-7. Klik op **OK** om het nieuwe wachtwoord op te slaan en het pop-updialoogvenster te sluiten.
-![Hulpprogramma voor synchronisatiesleutel azure AD Connect](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
+1. Start de Synchronization Service Manager (START → synchronisatie service).
+</br>![Service Manager synchroniseren](./media/how-to-connect-sync-change-serviceacct-pass/startmenu.png)  
+2. Ga naar het tabblad **connectors** .
+3. Selecteer de **ad-connector** die overeenkomt met uw on-premises AD. Als u meer dan één AD-connector hebt, herhaalt u de volgende stappen voor elk van deze.
+4. Onder **acties**, selecteert u **Eigenschappen**.
+5. Selecteer in het pop-updialoogvenster **verbinding maken met Active Directory forest**:
+6. Voer het wacht woord van het AD DS account in het tekstvak **wacht woord** in. Als u het wacht woord niet kent, moet u dit instellen op een bekende waarde voordat u deze stap uitvoert.
+7. Klik op **OK** om het nieuwe wacht woord op te slaan en het pop-updialoogvenster te sluiten.
+![Hulp programma voor synchronisatie van versleutelings sleutel Azure AD Connect](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
 
-#### <a name="reinitialize-the-password-of-the-adsync-service-account"></a>Het wachtwoord van het ADSync-serviceaccount opnieuw initialiseren
-U het wachtwoord van het Azure AD-serviceaccount niet rechtstreeks aan de synchronisatieservice verstrekken. In plaats daarvan moet u de cmdlet **Add-ADSyncAADServiceAccount** gebruiken om het Azure AD-serviceaccount opnieuw te initialiseren. De cmdlet reset het accountwachtwoord en stelt het beschikbaar voor de synchronisatieservice:
+#### <a name="reinitialize-the-password-of-the-adsync-service-account"></a>Het wacht woord van het ADSync-service account opnieuw initialiseren
+U kunt het wacht woord van het Azure AD-service account niet rechtstreeks opgeven bij de synchronisatie service. In plaats daarvan moet u de cmdlet **add-ADSyncAADServiceAccount** gebruiken om het Azure AD-service account opnieuw te initialiseren. De cmdlet stelt het account wachtwoord opnieuw in en maakt het beschikbaar voor de synchronisatie service:
 
-1. Start een nieuwe PowerShell-sessie op de Azure AD Connect-server.
-2. Run cmdlet `Add-ADSyncAADServiceAccount`.
-3. Geef in het pop-updialoogvenster de azure AD Global-beheerdersreferenties op voor uw Azure AD-tenant.
-![Hulpprogramma voor synchronisatiesleutel azure AD Connect](./media/how-to-connect-sync-change-serviceacct-pass/key7.png)
-4. Als dit lukt, ziet u de powershell-opdrachtprompt.
+1. Start een nieuwe Power shell-sessie op de Azure AD Connect-server.
+2. Voer de `Add-ADSyncAADServiceAccount`cmdlet uit.
+3. Geef in het pop-upvenster de globale beheerders referenties voor Azure AD op voor uw Azure AD-Tenant.
+![Hulp programma voor synchronisatie van versleutelings sleutel Azure AD Connect](./media/how-to-connect-sync-change-serviceacct-pass/key7.png)
+4. Als dat lukt, wordt de Power shell-opdracht prompt weer gegeven.
 
-#### <a name="start-the-synchronization-service"></a>De synchronisatieservice starten
-Nu de synchronisatieservice toegang heeft tot de versleutelingssleutel en alle wachtwoorden die deze nodig heeft, u de service opnieuw starten in Windows Service Control Manager:
+#### <a name="start-the-synchronization-service"></a>De synchronisatie service starten
+Nu de synchronisatie service toegang heeft tot de versleutelings sleutel en alle wacht woorden die ze nodig hebben, kunt u de service opnieuw starten in Windows Service Control Manager:
 
 
 1. Ga naar Windows Service Control Manager (START → Services).
-2. Selecteer **Microsoft Azure AD Sync** en klik op Opnieuw starten.
+2. Selecteer **Microsoft Azure AD synchronisatie** en klik op opnieuw starten.
 
 ## <a name="next-steps"></a>Volgende stappen
-**Overzichtsonderwerpen**
+**Overzichts onderwerpen**
 
-* [Synchronisatie van Azure AD Connect: synchronisatie begrijpen en aanpassen](how-to-connect-sync-whatis.md)
+* [Azure AD Connect synchronisatie: synchronisatie begrijpen en aanpassen](how-to-connect-sync-whatis.md)
 
 * [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)
