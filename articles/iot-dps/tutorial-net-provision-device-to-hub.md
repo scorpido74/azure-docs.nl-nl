@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie - Apparaat inrichten met Azure IoT Hub Device Provisioning Service (.NET)
-description: In deze zelfstudie ziet u hoe u uw apparaat inrichten op één IoT-hub met behulp van de DPS (Azure IoT Hub Device Provisioning Service) via .NET.
+title: Zelf studie-apparaat inrichten met behulp van Azure IoT Hub Device Provisioning Service (.NET)
+description: Deze zelf studie laat zien hoe u uw apparaat kunt inrichten voor één IoT-hub met behulp van Azure IoT Hub Device Provisioning Service (DPS) met behulp van .NET.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -10,13 +10,13 @@ services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
 ms.openlocfilehash: 9d5b1511ffb48f587d4ee5c5a7d2b0ee9216018f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74976771"
 ---
-# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Zelfstudie: Het apparaat inschrijven voor een IoT-hub met de Azure IoT Hub Provisioning Service Client (.NET)
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Zelf studie: het apparaat inschrijven bij een IoT-hub met behulp van de Azure IoT Hub Provisioning Service-client (.NET)
 
 In de vorige zelfstudie hebt u geleerd hoe u een apparaat kunt instellen om verbinding te maken met Device Provisioning Service. In deze zelfstudie leert u hoe u deze service gebruikt om uw apparaat in te richten voor één IoT-hub. U gebruikt daarvoor zowel **_Individuele registratie_** als **_Registratiegroepen_**. In deze handleiding ontdekt u hoe u:
 
@@ -129,7 +129,7 @@ Er zijn twee manieren om het apparaat te registreren bij Device Provisioning Ser
     Console.ReadLine();
     ```
         
-1. Klik in de Visual Studio Solution Explorer met de rechtermuisknop op uw oplossing en klik vervolgens op **Startupprojecten instellen...**. Selecteer **Project Eén opstart**en selecteer vervolgens het project **DeviceProvisioning** in het vervolgkeuzemenu.  
+1. Klik in Visual Studio Solution Explorer met de rechter muisknop op uw oplossing en klik vervolgens op **opstart projecten instellen...**. Selecteer **één opstart project**en selecteer vervolgens het project **DeviceProvisioning** in de vervolg keuzelijst.  
 
 1. Voer de app voor het .NET-apparaat **DeviceProvisiong** uit. Deze moet de inrichting van het apparaat instellen: 
 
@@ -240,7 +240,7 @@ Zodra het apparaat is opgestart, worden de volgende acties uitgevoerd. Zie het [
     ![Geslaagde verbinding met de hub in de portal](./media/tutorial-net-provision-device-to-hub/hub-connect-success.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Het apparaat inschrijven

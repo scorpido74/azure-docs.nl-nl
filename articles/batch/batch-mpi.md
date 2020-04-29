@@ -4,12 +4,12 @@ description: Meer informatie over het uitvoeren van MPI-toepassingen (Message Pa
 ms.topic: article
 ms.date: 03/13/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aad2b649c92716a807d577bb4f112d47d447545e
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 39c7aff0618daafc2c02efaea229de3741804c7a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115972"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231693"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Taken met meerdere instanties gebruiken voor het uitvoeren van MPI-toepassingen (Message Passing Interface) in batch
 
@@ -181,9 +181,7 @@ De volgende omgevings variabelen worden gemaakt door de batch-service voor gebru
 Zie [omgevings variabelen voor reken knooppunten][msdn_env_var]voor volledige informatie over deze en de andere batch compute node-omgevings variabelen, inclusief de inhoud en zicht baarheid.
 
 > [!TIP]
-> Het batch Linux MPI code sample bevat een voor beeld van hoe u een aantal van deze omgevings variabelen kunt gebruiken. Met het [coördinatie-cmd bash-][coord_cmd_example] script worden algemene toepassings-en invoer bestanden gedownload van Azure Storage, wordt een NFS-share (Network File System) op het hoofd knooppunt ingesteld, en worden de andere knoop punten die aan de taak met meerdere instanties zijn toegewezen, geconfigureerd als NFS-clients.
->
->
+> Het batch Linux MPI code sample bevat een voor beeld van hoe u een aantal van deze omgevings variabelen kunt gebruiken.
 
 ## <a name="resource-files"></a>Bron bestanden
 Er zijn twee sets bron bestanden voor het uitvoeren van taken met meerdere instanties: **algemene bron bestanden** die door *alle* taken worden gedownload (zowel primaire als subtaken), en de **bron bestanden** die zijn opgegeven voor de taak voor meerdere exemplaren zelf, waarbij *alleen de primaire* taak wordt gedownload.

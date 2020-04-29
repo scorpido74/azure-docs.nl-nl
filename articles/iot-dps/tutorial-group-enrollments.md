@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie - Gesimuleerd X.509-apparaat inrichten op Azure IoT Hub met Java- en inschrijvingsgroepen
-description: Maak en informeer in deze zelfstudie een gesimuleerd X.509-apparaat met Java-apparaat en serviceSDK- en inschrijvingsgroepen voor DPS (IoT Hub Device Provisioning Service)
+title: Zelf studie-een gesimuleerd X. 509-apparaat naar Azure IoT Hub met behulp van Java-en registratie groepen
+description: In deze zelf studie kunt u een gesimuleerd X. 509-apparaat maken en inrichten met behulp van Java-apparaat en Service-SDK en registratie groepen voor IoT Hub Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -10,13 +10,13 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc
 ms.openlocfilehash: d6cb3af134ff272d79cfc440047a3d90733ee9e8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74976805"
 ---
-# <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Zelfstudie: Een gesimuleerd X.509-apparaat maken en inrichten met Java-apparaat en service SDK- en groepsinschrijvingen voor IoT Hub Device Provisioning Service
+# <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Zelf studie: een gesimuleerd X. 509-apparaat maken en inrichten met behulp van Java-apparaat en Service-SDK en groeps registraties voor IoT Hub Device Provisioning Service
 
 In deze stappen wordt getoond hoe u een gesimuleerd X.509-apparaat maakt op een ontwikkelcomputer met Windows OS en het codevoorbeeld gebruikt om dit gesimuleerde apparaat te verbinden met de Device Provisioning Service en uw IoT-hub met behulp van registratiegroepen. 
 
@@ -76,7 +76,7 @@ Voltooi de stappen in [Set up the IoT Hub Device Provisioning Service with the A
 
     1. Voeg de `[Provisioning Connection String]` voor de inrichtingsservice als volgt toe vanuit de portal:
 
-        1. Navigeer naar uw inrichtingsservice in de [Azure-portal.](https://portal.azure.com)
+        1. Navigeer naar uw inrichtings service in de [Azure Portal](https://portal.azure.com).
 
         1. Open **Gedeeld toegangsbeleid** en selecteer een beleid met de machtiging *EnrollmentWrite*.
 
@@ -149,7 +149,7 @@ Voltooi de stappen in [Set up the IoT Hub Device Provisioning Service with the A
 
 ## <a name="simulate-the-device"></a>Het apparaat simuleren
 
-1. Selecteer overzicht en noteer in het overzichtsblad van de Service voor apparaatvoorziening **overzicht** en noteer het globale eindpunt van uw _ID-bereik_ en _inrichtingsservice_.
+1. Selecteer op de Blade overzicht van Device Provisioning Service **overzicht** en noteer uw _id-bereik_ en het _globale eind punt_voor het inrichten van de service.
 
     ![Service-informatie](./media/tutorial-group-enrollments/extract-dps-endpoints.png)
 
@@ -251,7 +251,7 @@ Voltooi de stappen in [Set up the IoT Hub Device Provisioning Service with the A
 Als u wilt blijven doorwerken met het voorbeeld van de apparaatclient en deze beter wilt leren kennen, wis de resources die in deze Snelstartgids zijn gemaakt dan niet. Als u niet wilt doorgaan, gebruikt u de volgende stappen om alle resources die via deze Snelstartgids zijn gemaakt, te verwijderen.
 
 1. Sluit het uitvoervenster van het voorbeeld van de apparaatclient op de computer.
-1. Klik in het linkermenu in de Azure Portal op **Alle resources** en selecteer uw Device Provisioning Service. Open het **mes Inschrijvingen beheren** voor uw service en klik op het tabblad **Individuele inschrijvingen.** Selecteer de *registratie-id* van het apparaat dat u in deze Quickstart hebt ingeschreven en klik op de knop **Verwijderen** bovenaan. 
+1. Klik in het linkermenu in de Azure Portal op **Alle resources** en selecteer uw Device Provisioning Service. Open de Blade **inschrijvingen beheren** voor uw service en klik vervolgens op het tabblad **afzonderlijke inschrijvingen** . Selecteer de *registratie-id* van het apparaat dat u in deze Quick Start hebt Inge schreven en klik bovenaan op de knop **verwijderen** . 
 1. Klik in het linkermenu in de Azure Portal op **Alle resources** en selecteer vervolgens uw IoT-hub. Open de blade **IoT-apparaten** voor uw hub, selecteer de *apparaat-id* van het apparaat dat u hebt geregistreerd in deze quickstart en klik vervolgens bovenaan op de knop **Verwijderen**.
 
 

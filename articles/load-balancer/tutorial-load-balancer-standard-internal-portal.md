@@ -1,7 +1,7 @@
 ---
-title: 'Zelfstudie: Een interne load balancer maken - Azure-portal'
+title: 'Zelf studie: een interne load balancer maken-Azure Portal'
 titleSuffix: Azure Load Balancer
-description: In deze zelfstudie ziet u hoe u een interne standaardloadbalancer maakt met behulp van de Azure-portal.
+description: In deze zelf studie wordt uitgelegd hoe u een interne standaard load balancer maakt met behulp van de Azure Portal.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -16,35 +16,35 @@ ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: 918a7700df6b5be3ebca7949875127e42f8d3a91
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75780379"
 ---
-# <a name="tutorial-balance-internal-traffic-load-with-a-standard-load-balancer-in-the-azure-portal"></a>Zelfstudie: Interne verkeersbelasting in evenwicht brengen met een standaardloadbalancer in de Azure-portal
+# <a name="tutorial-balance-internal-traffic-load-with-a-standard-load-balancer-in-the-azure-portal"></a>Zelf studie: het verdelen van intern verkeer met een standaard load balancer in het Azure Portal
 
-Taakverdeling zorgt voor een hogere beschikbaarheid en betere schaalbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines (VM's). U de Azure-portal gebruiken om een standaardloadbalancer te maken en intern verkeer tussen VM's in evenwicht te brengen. In deze zelfstudie ziet u hoe u een interne load balancer, back-endservers en netwerkbronnen maken en configureren op de standaardprijslaag.
+Taakverdeling zorgt voor een hogere beschikbaarheid en betere schaalbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines (VM's). U kunt de Azure Portal gebruiken om een standaard load balancer te maken en intern verkeer tussen virtuele machines te verdelen. In deze zelf studie wordt uitgelegd hoe u een interne load balancer, back-endservers en netwerk bronnen maakt en configureert op de prijs categorie Standard.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint. 
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
 
 Indien gewenst, kunt u deze stappen uitvoeren met behulp van de [Azure CLI](load-balancer-get-started-ilb-arm-cli.md) of [Azure PowerShell](load-balancer-get-started-ilb-arm-ps.md) in plaats van met de portal.
 
-Als u de stappen wilt uitvoeren met deze [https://portal.azure.com](https://portal.azure.com)zelfstudie, meldt u zich aan bij de Azure-portal op .
+Als u de stappen wilt uitvoeren met deze zelf studie, meldt u [https://portal.azure.com](https://portal.azure.com)zich aan bij de Azure Portal op.
 
 ## <a name="create-a-vnet-back-end-servers-and-a-test-vm"></a>Een VNet, back-endservers en een test-VM maken
 
-Eerst moet u een virtueel netwerk (VNet) maken. Maak in het VNet twee VM's die u gebruiken voor de backendpool van uw standaardloadbalancer en een derde VM die u gebruiken voor het testen van de load balancer. 
+Eerst moet u een virtueel netwerk (VNet) maken. Maak in het VNet twee virtuele machines die u wilt gebruiken voor de back-end-pool van uw standaard load balancer en een derde VM die moet worden gebruikt voor het testen van de load balancer. 
 
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-1. Selecteer linksboven**Networking** > in de portal de optie Een**virtueel netwerknetwerk voor** **bronnen** > maken .
+1. Selecteer in de linkerbovenhoek van de Portal de optie **een resource** > **netwerken** > **virtueel netwerk**maken.
    
 1. In het deelvenster **Virtueel netwerk maken** typt of selecteert u de volgende waarden:
    
    - **Naam**: Typ **MyVNet**.
    - **Resourcegroep**: selecteer **Nieuwe maken**, voer vervolgens **MyResourceGroupLB** in en selecteer **OK**. 
-   - **Subnetnaam** > **Name**: Typ **MyBackendSubnet**.
+   - **Subnetnaam** > **:** Typ **MyBackendSubnet**.
    
 1. Selecteer **Maken**.
 
@@ -52,12 +52,12 @@ Eerst moet u een virtueel netwerk (VNet) maken. Maak in het VNet twee VM's die u
 
 ### <a name="create-virtual-machines"></a>Virtuele machines maken
 
-1. Selecteer linksboven in de portal **de** > optie Een resource**Compute** > **Windows Server 2016-datacenter maken**. 
+1. Selecteer in de linkerbovenhoek van de Portal de optie **een resource** > **maken Compute** > **Windows Server 2016 Data Center**. 
    
 1. In **Een virtuele machine maken** typt of selecteert u de volgende waarden op het tabblad **Basisinformatie**:
-   - **Abonnementsbrongroep** > **Resource Group**: devallijst en selecteer **MyResourceGroupLB**.
-   - **Instantie details** > **Virtuele machinenaam:** Typ **MyVM1**.
-   - **Instantiedetails** > **regio**: Selecteer **Oost-VS 2**.
+   - **Abonnements** > **resource groep**: vervolg keuzelijst en selecteer **MyResourceGroupLB**.
+   - **Details** > van de naam van de**virtuele machine**: Typ **MyVM1**.
+   - **Exemplaar Details** > **regio**: Selecteer **VS Oost 2**.
   
    
 1. Selecteer het tabblad **Netwerken** of selecteer **Volgende: Schijven** en vervolgens **Volgende: Netwerken**. 
@@ -65,18 +65,18 @@ Eerst moet u een virtueel netwerk (VNet) maken. Maak in het VNet twee VM's die u
    Zorg ervoor dat de volgende opties zijn geselecteerd:
    - **Virtueel netwerk**: **MyVNet**
    - **Subnet**: **MyBackendSubnet**
-   - **NIC-netwerkbeveiligingsgroep**: Selecteer **Basic**.
-   - **Openbare IP->** Selecteer **Nieuw maken** en voer de volgende waarden in en selecteer **OK:**
+   - **NIC-netwerk beveiligings groep**: Selecteer **basis**.
+   - **Open bare IP-** > Selecteer **nieuwe maken** en voer de volgende waarden in en selecteer **OK**:
        - **Naam**: **MyVM1-IP**
-       - **SKU**: **Standaard selecteren**
-   - **Openbare binnenkomende poorten:** selecteer **Geselecteerde poorten toestaan**.
-   - **Binnenkomende poorten selecteren:** Val uit en selecteer **RDP (3389)**
+       - **SKU**: Selecteer **standaard**
+   - **Open bare binnenkomende poorten**: Selecteer **geselecteerde poorten toestaan**.
+   - **Selecteer binnenkomende poorten**: vervolg keuzelijst en selecteer **RDP (3389)**
 
    
    
 1. Selecteer het tabblad **Beheer** of selecteer **Volgende** > **Beheer**. Stel bij **Bewaking****Diagnostische gegevens over opstarten** in op **Uit**.
    
-1. Selecteer **Controleren + maken**.
+1. Selecteer **controleren + maken**.
    
 1. Controleer de instellingen en selecteer vervolgens **Maken**. 
 
@@ -86,9 +86,9 @@ Eerst moet u een virtueel netwerk (VNet) maken. Maak in het VNet twee VM's die u
 
 ## <a name="create-a-standard-load-balancer"></a>Een standaardversie van een load balancer maken
 
-Maak een standaard interne load balancer met behulp van de portal. De naam en het IP-adres die u maakt, worden automatisch geconfigureerd als de front-end van de load balancer.
+Maak een interne standaard load balancer met behulp van de portal. De naam en het IP-adres die u maakt, worden automatisch geconfigureerd als de front-end van de load balancer.
 
-1. Selecteer linksboven in de portal **de** > optie Een**resource NetwerkloadBalancer****Networking** > maken .
+1. Selecteer in de linkerbovenhoek van de portal **een resource** > **maken netwerk** > **Load Balancer**.
    
 2. Voer op het tabblad **Basis** van de pagina **Load balancer maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer **Controleren + maken**:
 
@@ -96,18 +96,18 @@ Maak een standaard interne load balancer met behulp van de portal. De naam en he
     | ---                     | ---                                                |
     | Abonnement               | Selecteer uw abonnement.    |    
     | Resourcegroep         | Selecteer **Nieuwe maken** en typ *MyResourceGroupLB* in het tekstvak.|
-    | Name                   | *myLoadBalancer*                                   |
+    | Naam                   | *myLoadBalancer*                                   |
     | Regio         | Selecteer **VS - oost 2**.                                        |
     | Type          | selecteer **Intern**.                                        |
-    | SKU           | Selecteer **Standaard**.                          |
+    | SKU           | Selecteer **standaard**.                          |
     | Virtueel netwerk           | Selecteer *MyVNet*.                          |    
-    | Toewijzing ip-adres              | Selecteer **Statisch**.   |
+    | Toewijzing van IP-adres              | Selecteer **Statisch**.   |
     | Privé IP-adres|typ een adres dat zich in de adresruimte van uw virtuele netwerk en subnet bevindt, bijvoorbeeld *10.3.0.7*.  |
 
 3. Klik op het tabblad **Beoordelen en maken** op **Maken**. 
    
 
-## <a name="create-standard-load-balancer-resources"></a>Bronnen voor standaardlastbalansresources maken
+## <a name="create-standard-load-balancer-resources"></a>Standaard load balancer-resources maken
 
 In dit gedeelte configureert u de instellingen van de load balancer voor een back-endadresgroep en een statustest, en geeft u regels voor de load balancer op.
 
@@ -123,7 +123,7 @@ De load balancer gebruikt een backend-adresgroep om verkeer te distribueren over
    
 1. Op de pagina **Een back-endpool toevoegen** typt of selecteert u de volgende waarden:
    
-   - **Naam:** Typ **MyBackendPool**.
+   - **Naam**: Typ **MyBackendPool**.
    
 1. Onder **virtuele machines**. 
    1. Voeg **MyVM1** en **MyVM2** aan de back-endpool toe.
@@ -258,7 +258,7 @@ Als u de load balancer en alle bijbehorende resources wilt verwijderen omdat u d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een standaard interne load balancer gemaakt. U hebt netwerresources, back-endservers, een statustest en regels voor de load balancer gemaakt en geconfigureerd. U hebt IIS geïnstalleerd op de back-end-VM's en een test-VM gebruikt om de load balancer in de browser te testen. 
+In deze zelf studie hebt u een interne standaard-load balancer gemaakt. U hebt netwerresources, back-endservers, een statustest en regels voor de load balancer gemaakt en geconfigureerd. U hebt IIS geïnstalleerd op de back-end-VM's en een test-VM gebruikt om de load balancer in de browser te testen. 
 
 Hierna leert u hoe u taken verdeelt over VM's in meerdere beschikbaarheidszones.
 

@@ -1,6 +1,6 @@
 ---
-title: Een app voor continue patiëntbewaking maken met Azure IoT Central | Microsoft Documenten
-description: Leer een continue toepassing voor patiëntbewaking bouwen met Azure IoT Central-toepassingssjablonen.
+title: Een voortdurende app voor het controleren van patiënten maken met Azure IoT Central | Microsoft Docs
+description: Leer hoe u een continue patiënten-bewakings toepassing maakt met behulp van Azure IoT Central-toepassings sjablonen.
 author: philmea
 ms.author: philmea
 ms.date: 09/24/2019
@@ -9,120 +9,120 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 35ac39109bfcb4dc63b738c947d2ad8caf8ac0a6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77021284"
 ---
-# <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Zelfstudie: Een sjabloon voor continue patiëntbewaking implementeren en doorlopen
+# <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Zelf studie: een sjabloon voor het controleren van doorlopende patiënten implementeren en bewaken
 
 
 
-In deze zelfstudie ziet u als oplossingsbouwer hoe u aan de slag gaan door een iot central-sjabloon voor continue patiëntbewaking te implementeren. U leert hoe u de sjabloon implementeert, wat er uit het vak is opgenomen en wat u vervolgens doen.
+In deze zelf studie ziet u, als een oplossings functie, hoe u aan de slag kunt gaan door een IoT Central continue patiënten-toepassings sjabloon te implementeren. U leert hoe u de sjabloon implementeert, wat is opgenomen in het vak en wat u nu kunt doen.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een toepassingssjabloon maken
-> * De toepassingssjabloon doorlopen
+> * Een toepassings sjabloon maken
+> * De toepassings sjabloon door lopen
 
-## <a name="create-an-application-template"></a>Een toepassingssjabloon maken
+## <a name="create-an-application-template"></a>Een toepassings sjabloon maken
 
-Navigeer naar de [website azure IoT Central-toepassingsbeheer](https://apps.azureiotcentral.com/). Selecteer **Bouwen** op de navigatiebalk aan de linkerkant en klik op het tabblad **Gezondheidszorg.** 
+Ga naar de [website van Azure IOT Central Application Manager](https://apps.azureiotcentral.com/). Selecteer **samen stellen** in de navigatie balk aan de linkerkant en klik vervolgens op het tabblad **gezondheids zorg** . 
 
 >[!div class="mx-imgBorder"] 
->![App manager Healthcare](media/app-manager-health.png)
+>![Gezondheids zorg voor app manager](media/app-manager-health.png)
 
-Klik **op** de knop App maken om te beginnen met het maken van uw toepassing en meld u vervolgens aan met een persoonlijk, werk- of schoolaccount van Microsoft. Het brengt u naar de **nieuwe toepassingspagina.**
+Klik op de knop **app maken** om de toepassing te gaan maken en meld u aan met een persoonlijk, werk-of school account van micro soft. Hiermee gaat u naar de pagina **nieuwe toepassing** .
 
-![Toepassing Gezondheidszorg maken](media/app-manager-health-create.png)
+![Gezondheids zorg voor de toepassing maken](media/app-manager-health-create.png)
 
-![Factureringsgegevens voor toepassinggezondheidszorg maken](media/app-manager-health-create-billinginfo.png)
+![Facturerings gegevens voor de betalings zorg van de toepassing maken](media/app-manager-health-create-billinginfo.png)
 
-Ga als u uw toepassing maken:
+Uw toepassing maken:
 
-1. Azure IoT Central stelt automatisch een toepassingsnaam voor op basis van de sjabloon die u hebt geselecteerd. U deze naam accepteren of uw eigen vriendelijke toepassingsnaam invoeren, zoals **Continue patiëntbewaking.** Azure IoT Central genereert ook een uniek URL-voorvoegsel voor u op basis van de naam van de toepassing. Je bent vrij om dit URL-voorvoegsel te wijzigen in iets dat meer gedenkwaardig is als je wilt.
+1. In azure IoT Central wordt automatisch een toepassings naam voorgesteld op basis van de sjabloon die u hebt geselecteerd. U kunt deze naam accepteren of uw eigen beschrijvende toepassings naam invoeren, zoals een **voortdurende patiënt bewaking**. Azure IoT Central genereert ook een uniek URL-voor voegsel voor u op basis van de naam van de toepassing. Als u wilt, kunt u dit URL-voor voegsel wijzigen in iets eenvoudiger te onthouden.
 
-2. U selecteren of u de toepassing wilt maken met behulp van het *gratis* prijsplan of een van de *standaardprijsplannen.* Toepassingen die u maakt met behulp van het gratis abonnement zijn gratis voor zeven dagen voordat ze verlopen en staan maximaal vijf gratis apparaten toe. U een toepassing op elk gewenst moment van het gratis abonnement naar een standaardprijsplan verplaatsen voordat deze verloopt. Als u het gratis abonnement kiest, moet u uw contactgegevens invoeren en kiezen of u informatie en tips van Microsoft wilt ontvangen. Toepassingen die u maakt met behulp van een standaardabonnement ondersteunen maximaal twee gratis apparaten en vereisen dat u uw Azure-abonnementsgegevens invoert voor facturering.
+2. U kunt kiezen of u de toepassing wilt maken met behulp van het *gratis* prijs plan of een van de *standaard* prijzen plannen. Toepassingen die u maakt met behulp van het gratis abonnement, zijn zeven dagen beschikbaar voordat ze verlopen en bieden Maxi maal vijf gratis apparaten. U kunt een toepassing verplaatsen van het gratis abonnement naar een Standard-prijs plan op elk moment voordat het verloopt. Als u kiest voor het gratis abonnement, moet u uw contact gegevens invoeren en kiezen of u informatie en tips van micro soft wilt ontvangen. Toepassingen die u maakt met behulp van een Standard-abonnement ondersteunen Maxi maal twee gratis apparaten en u moet uw Azure-abonnements gegevens invoeren voor facturering.
 
-3. Selecteer **Maken** onder aan de pagina om uw toepassing te implementeren.
+3. Selecteer onder aan de pagina **maken** om uw toepassing te implementeren.
 
-## <a name="walk-through-the-application-template"></a>De toepassingssjabloon doorlopen
+## <a name="walk-through-the-application-template"></a>De toepassings sjabloon door lopen
 
 ### <a name="dashboards"></a>Dashboards
 
-Nadat u de app-sjabloon hebt geïmplementeerd, landt u eerst op het **lamna-dashboard voor patiëntbewaking.** Lamna Healthcare is een fictief ziekenhuissysteem dat twee ziekenhuizen bevat: Woodgrove Hospital en Burkville Hospital. Op dit operatordashboard voor Het Ziekenhuis van Woodgrove ziet u informatie en telemetrie over de apparaten in deze sjabloon, samen met een reeks opdrachten, taken en acties die u uitvoeren. Vanuit het dashboard u:
+Na de implementatie van de app-sjabloon gaat u eerst naar het **Lamna in de gaten**houden. Lamna gezondheids zorg is een fictief ziekenhuis systeem dat twee zieken huizen bevat: Woodgrove ziekenhuis en Burkville zieken huis. Op dit operator dashboard voor Woodgrove zieken huizen ziet u informatie en telemetrie over de apparaten in deze sjabloon, samen met een set opdrachten, taken en acties die u kunt uitvoeren. Vanuit het dash board kunt u het volgende doen:
 
-* Bekijk de telemetrie en eigenschappen van het apparaat, zoals het **batterijniveau** van uw apparaat of de **verbindingsstatus.**
+* Zie telemetrie van apparaten en eigenschappen, zoals het **accu niveau** van het apparaat of de **connectiviteits** status.
 
-* Bekijk de **plattegrond** en locatie van het Smart Vitals Patch-apparaat.
+* Bekijk het **vloer plan** en de locatie van het Smart vitale patch-apparaat.
 
-* **Heringericht van** de Smart Vitals Patch voor een nieuwe patiënt.
+* De Smart vitale patch opnieuw **inrichten** voor een nieuwe patiënt.
 
-* Zie een voorbeeld van een **provider dashboard** dat een ziekenhuis zorg team kan zien om hun patiënten te volgen.
+* Bekijk een voor beeld van een **provider dashboard** dat een ziekenhuis Care team kan zien om hun patiënten bij te houden.
 
-* Wijzig de **patiëntstatus** van uw apparaat om aan te geven of het apparaat wordt gebruikt voor een scenario op afstand of op afstand.
-
->[!div class="mx-imgBorder"] 
->![Lamna in-patient](media/lamna-in-patient.png)
-
-U ook op **Ga naar het dashboard van externe patiënten** klikken om het tweede bedieningsdashboard te zien dat wordt gebruikt voor het Burkville-ziekenhuis. Dit dashboard bevat een vergelijkbare set acties, telemetrie en informatie. Bovendien u zien dat meerdere apparaten worden gebruikt en hebben de mogelijkheid om **de firmware bij** te werken op elk.
+* Wijzig de **status** van de patiënt van uw apparaat om aan te geven of het apparaat wordt gebruikt voor een in-patiënten of extern scenario.
 
 >[!div class="mx-imgBorder"] 
->![Lamna afstandsbediening](media/lamna-remote.png)
+>![Lamna in-patiënten](media/lamna-in-patient.png)
 
-Op beide dashboards u altijd terugkoppelen naar deze documentatie.
-
-### <a name="device-templates"></a>Apparaatsjablonen
-
-Als u op het tabblad **Apparaatsjablonen** klikt, ziet u dat er twee verschillende apparaattypen zijn die deel uitmaken van de sjabloon:
-
-* **Smart Vitals Patch**: Dit apparaat vertegenwoordigt een patch die verschillende soorten vitale functies meet. Het kan worden gebruikt voor het monitoren van patiënten in en buiten het ziekenhuis. Als u op de sjabloon klikt, ziet u dat de patch naast het verzenden van apparaatgegevens zoals batterijniveau en apparaattemperatuur, ook gezondheidsgegevens van patiënten, zoals de ademhalingssnelheid en bloeddruk, verzendt.
-
-* **Smart Knee Brace**: Dit apparaat vertegenwoordigt een kniebrace die patiënten kunnen gebruiken bij het herstellen van een knieprothese operatie. Als u op deze sjabloon klikt, ziet u naast apparaatgegevens ook mogelijkheden zoals bewegingsbereik en versnelling.
+U kunt ook klikken op **naar het dash board van de externe patiënt** om het tweede operator dashboard te zien dat voor Burkville ziekenhuis wordt gebruikt. Dit dash board bevat een soort gelijke set acties, telemetrie en informatie. Bovendien ziet u dat er meerdere apparaten worden gebruikt en de mogelijkheid hebben om **de firmware** op elk apparaat bij te werken.
 
 >[!div class="mx-imgBorder"] 
->![Sjabloon voor smart vitals-patchapparaten](media/smart-vitals-device-template.png)
+>![Lamna extern](media/lamna-remote.png)
 
-Als u op het tabblad **Apparaatgroepen** klikt, ziet u ook dat voor deze apparaatsjablonen automatisch apparaatgroepen voor hen zijn gemaakt.
+Op beide Dash boards kunt u altijd een koppeling naar deze documentatie maken.
+
+### <a name="device-templates"></a>Apparaatinstellingen
+
+Als u op het tabblad **device templates** klikt, ziet u dat er twee verschillende typen apparaten zijn die deel uitmaken van de sjabloon:
+
+* **Smart vitale patch**: dit apparaat vertegenwoordigt een patch die verschillende soorten vitale tekens meet. Het kan worden gebruikt voor het bewaken van patiënten in en buiten het zieken huis. Als u op de sjabloon klikt, ziet u dat naast het verzenden van apparaatgegevens, zoals het accu niveau en de Tempe ratuur van het apparaat, ook de status gegevens van patiënten, zoals het Ademhalings tempo en de bloed druk, worden verzonden.
+
+* **Krul haak**: dit apparaat vertegenwoordigt een knie accolade die patiënten mogelijk gebruiken bij het herstellen van een chirurgische. Als u op deze sjabloon klikt, worden de mogelijkheden, zoals het aantal bewegingen en de versnelling, weer gegeven naast de apparaatgegevens.
+
+>[!div class="mx-imgBorder"] 
+>![Sjabloon Smart vitale patch-apparaat](media/smart-vitals-device-template.png)
+
+Als u op het tabblad **Apparaatgroepen** klikt, ziet u ook dat voor deze Apparaatinstellingen automatisch apparaatgroepen worden gemaakt.
 
 ### <a name="rules"></a>Regels
 
-Wanneer u naar het tabblad Regels springt, ziet u drie regels die in de toepassingssjabloon bestaan:
+Wanneer u naar het tabblad regels gaat, ziet u drie regels die voor komen in de toepassings sjabloon:
 
-* **Brace temperatuur hoog**: Deze regel wordt geactiveerd wanneer de temperatuur&deg;van het apparaat van de Smart Knee Brace groter is dan 95 F over een periode van 5 minuten. U deze regel gebruiken om de patiënt en het zorgteam te waarschuwen en het apparaat op afstand af te koelen.
+* **Hoge beugel-Tempe ratuur**: deze regel wordt geactiveerd wanneer de apparaats temperatuur van de slimme knie accolade groter is&deg;dan 95 F over een periode van vijf minuten. U kunt deze regel gebruiken om het patiënten-en Care team te waarschuwen en het apparaat op afstand af te koelen.
 
-* **Val gedetecteerd**: Deze regel wordt geactiveerd als een val van een patiënt wordt gedetecteerd. U deze regel gebruiken om een actie te configureren om een operationeel team in te zetten om de gevallen patiënt bij te staan.
+* **Herfst gedetecteerd**: deze regel wordt geactiveerd als er een patiënt wordt gedetecteerd. U kunt deze regel gebruiken om een actie te configureren voor het implementeren van een operationeel team om de patiënt te helpen die zich heeft voordoen.
 
-* **Patch batterij bijna leeg**: Deze regel wordt geactiveerd wanneer het batterijniveau op het apparaat onder de 10% komt. U deze regel gebruiken om een melding aan de patiënt te activeren om hun apparaat op te laden.
+* **Accu laag patch**: deze regel wordt geactiveerd wanneer het accu niveau op het apparaat lager is dan 10%. U kunt deze regel gebruiken om een melding naar de patiënt te activeren om het apparaat in rekening te brengen.
 
 >[!div class="mx-imgBorder"] 
->![Brace temperatuur hoge regel](media/brace-temp-rule.png)
+>![Hoge regel voor haak-Tempe ratuur](media/brace-temp-rule.png)
 
 ### <a name="devices"></a>Apparaten
 
-Klik op het tabblad **Apparaten** en selecteer een instantie van de **Smart Knee Brace**. U ziet dat er drie weergaven zijn om informatie te verkennen over het specifieke apparaat dat u hebt geselecteerd. Deze weergaven worden gemaakt en gepubliceerd bij het bouwen van de apparaatsjabloon voor uw apparaat, wat betekent dat ze consistent zijn op alle apparaten die u verbindt of simuleert.
+Klik op het tabblad **apparaten** en selecteer vervolgens een exemplaar van de **slimme knie accolade**. U ziet dat er drie weer gaven zijn om informatie over het geselecteerde apparaat dat u hebt geselecteerd, te verkennen. Deze weer gaven worden gemaakt en gepubliceerd bij het bouwen van de sjabloon voor het apparaat voor uw apparaat. Dit betekent dat ze consistent zijn op alle apparaten die u verbindt of simuleert.
 
-De **dashboardweergave** geeft een overzicht van telemetrie en eigenschappen die afkomstig zijn van het apparaat dat operatorgeoriënteerd is.
+In de **Dashboard** weergave wordt een overzicht gegeven van de telemetrie en de eigenschappen die afkomstig zijn van het apparaat waarop de operator georiënteerd is.
 
-Op het tabblad **Eigenschappen** u cloud-eigenschappen bewerken en eigenschappen van het lees-/schrijfapparaat lezen/schrijven.
+Op het tabblad **Eigenschappen** kunt u de eigenschappen van de Cloud en het lezen/schrijven van apparaten bewerken.
 
-Op het tabblad **Opdrachten** u opdrachten uitvoeren die zijn gemodelleerd als onderdeel van uw apparaatsjabloon.
+Op het tabblad **opdrachten** kunt u opdrachten uitvoeren die zijn gemodelleerd als onderdeel van de sjabloon voor het apparaat.
 
 >[!div class="mx-imgBorder"] 
->![Kniebrace weergaven](media/knee-brace-dashboard.png)
+>![Weer gaven voor knie accolades](media/knee-brace-dashboard.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze toepassing niet blijft gebruiken, verwijdert u de toepassing door **naar Beheer > toepassingsinstellingen** te gaan en klikt u op **Verwijderen**.
+Als u deze toepassing niet meer wilt gebruiken, verwijdert u de toepassing door naar **beheer > toepassings instellingen** te gaan en op **verwijderen**te klikken.
 
 >[!div class="mx-imgBorder"] 
 >![App verwijderen](media/admin-delete.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar het volgende artikel voor meer informatie over het maken van een providerdashboard dat verbinding maakt met uw IoT Central-toepassing.
+Ga naar het volgende artikel voor meer informatie over het maken van een provider dashboard dat verbinding maakt met uw IoT Central-toepassing.
 
 > [!div class="nextstepaction"]
-> [Een providerdashboard maken](howto-health-data-triage.md)
+> [Een provider dashboard bouwen](howto-health-data-triage.md)

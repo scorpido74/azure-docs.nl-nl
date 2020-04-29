@@ -1,6 +1,6 @@
 ---
-title: PowerShell-voorbeeld- Failovergroep - Azure SQL Database-single database
-description: Azure PowerShell-voorbeeldscript om een enkele database van Azure SQL Database te maken, deze toe te voegen aan een failovergroep en failover te testen.
+title: Power shell-voor beeld-Failovergroep-Azure SQL Database afzonderlijke data base
+description: Azure PowerShell voorbeeld script om een Azure SQL Database afzonderlijke Data Base te maken, deze toe te voegen aan een failovergroep en failover te testen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,21 +12,21 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
 ms.openlocfilehash: 7315f747fb7319521b25e2eb6e7af72449867888
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73691783"
 ---
-# <a name="use-powershell-to-add-an-azure-sql-database-single-database-to-a-failover-group"></a>PowerShell gebruiken om een enkele database van Azure SQL Database toe te voegen aan een failovergroep 
+# <a name="use-powershell-to-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Power shell gebruiken om een Azure SQL Database afzonderlijke data base toe te voegen aan een failovergroep 
 
-Met dit PowerShell-scriptvoorbeeld wordt één database gemaakt, wordt een failovergroep gemaakt, wordt de database toegevoegd en wordt failover getest. 
+In dit voor beeld van een Power shell-script maakt u één data base, maakt u een failovergroep, voegt u de data base toe en wordt de failover getest. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de PowerShell lokaal te installeren en te gebruiken, vereist deze zelfstudie AZ PowerShell 1.4.0 of hoger. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+Als u ervoor kiest om Power shell lokaal te installeren en te gebruiken, hebt u voor deze zelf studie AZ Power shell 1.4.0 of hoger nodig. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 ## <a name="sample-scripts"></a>Voorbeeldscripts
 
@@ -34,7 +34,7 @@ Als u ervoor kiest om de PowerShell lokaal te installeren en te gebruiken, verei
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Gebruik de volgende opdracht om de resourcegroep en alle bijbehorende resources te verwijderen.
+Gebruik de volgende opdracht om de resource groep en alle bijbehorende resources te verwijderen.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
@@ -47,15 +47,15 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | Opdracht | Opmerkingen |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
-| [Nieuw-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die individuele databases en elastische pools host. |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Hiermee maakt u een firewallregel voor een logische server. | 
-| [Nieuwe AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u een nieuwe Azure SQL Database single database. | 
-| [Nieuwe AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Hiermee maakt u een nieuwe failovergroep. |
-| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Krijgt een of meer SQL-databases. |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Hiermee voegt u een of meer Azure SQL-databases toe aan een failovergroep. |
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Hiermee worden Azure SQL Database-failovergroepen op- of weergegeven. |
-| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Hiermee wordt een failover van een Failovergroep van Azure SQL Database uitgevoerd. |
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Een resourcegroep verwijderen | 
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die individuele databases en elastische pools host. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Hiermee maakt u een firewall regel voor een logische server. | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u een nieuwe Azure SQL Database afzonderlijke data base. | 
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Hiermee maakt u een nieuwe failovergroep. |
+| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Hiermee worden een of meer SQL-data bases opgehaald. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Hiermee voegt u een of meer Azure SQL-data bases toe aan een failovergroep. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Hiermee worden Azure SQL Database failover-groepen opgehaald of weer gegeven. |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Hiermee wordt een failover uitgevoerd van een Azure SQL Database failovergroep. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resource groep | 
 
 ## <a name="next-steps"></a>Volgende stappen
 

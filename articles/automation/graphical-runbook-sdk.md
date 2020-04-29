@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 21f6ff8078d5a1db88b2fde33c9063a56b3ee43a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 0058c0a0cedf2ea3f6c32f8f8368cca5b8dc6e3c
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81682911"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509003"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>De Azure Automation grafische runbook SDK gebruiken
 
@@ -18,7 +18,7 @@ Met [grafische runbooks](automation-graphical-authoring-intro.md) kunt u de comp
 
 ## <a name="prerequisites"></a>Vereisten
 
-Importeer het `Microsoft.Azure.Automation.GraphicalRunbook.Model` pakket in uw project.
+Importeer het `Microsoft.Azure.Management.Automation.GraphicalRunbook.Model` pakket in uw project.
 
 ## <a name="create-a-runbook-object-instance"></a>Een runbook-object instantie maken
 

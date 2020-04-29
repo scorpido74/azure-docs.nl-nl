@@ -1,34 +1,36 @@
 ---
-title: Het rangschikken van gelijkenisalgoritme
+title: Algoritme voor vergelijk Bareiteit
 titleSuffix: Azure Cognitive Search
-description: Hoe het gelijkenisalgoritme in te stellen om een nieuw gelijkenisalgoritme voor rangschikking te proberen
+description: Het gelijkenis algoritme instellen om het nieuwe gelijkenis algoritme voor classificatie te proberen
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.openlocfilehash: c327440649300533c94c2a1956e3c45f433c9780
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1975c13162316b4132bae34659b1c5af8e416573
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409971"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231608"
 ---
-# <a name="ranking-algorithm-in-azure-cognitive-search"></a>Classificatiealgoritme in Azure Cognitive Search
+# <a name="ranking-algorithm-in-azure-cognitive-search"></a>Classificatie algoritme in azure Cognitive Search
 
 > [!IMPORTANT]
-> Vanaf 15 juli 2020 zullen nieuw opgerichte zoekservices gebruik maken van de BM25-rankingfunctie, die in de meeste gevallen heeft bewezen zoekrankings te bieden die beter aansluiten bij de verwachtingen van de gebruiker dan de huidige standaardrangschikking.  Naast de superieure rangschikking maakt BM25 ook configuratieopties mogelijk voor het afstemmen van resultaten op basis van factoren zoals de grootte van het document.  
+> Vanaf 15 juli 2020 worden voor nieuwe zoek services automatisch de functie BM25-classificatie gebruikt, die in de meeste gevallen is bewezen om zoek acties te bieden die beter zijn afgestemd op de gebruikers verwachtingen dan de huidige standaard classificatie. Naast de superieure positie biedt BM25 ook configuratie opties voor het afstemmen van resultaten op basis van factoren zoals de document grootte.  
 >
-> Met deze wijziging ziet u waarschijnlijk kleine veranderingen in het bestellen van uw zoekresultaten.   Voor degenen die de impact van deze wijziging willen testen, hebben we in de API 2019-05-06-Preview een mogelijkheid beschikbaar gesteld om BM25-scores op nieuwe indexen in te schakelen.  
+> Met deze wijziging worden waarschijnlijk lichte wijzigingen in de volg orde van de zoek resultaten weer geven. Voor degenen die de impact van deze wijziging willen testen, is het BM25-algoritme beschikbaar in de API-versie 2019-05-06-preview.  
 
-In dit artikel wordt beschreven hoe u een service die vóór 15 juli 2020 is gemaakt, bijwerken om het nieuwe BM25-classificatiealgoritme te gebruiken.
+In dit artikel wordt beschreven hoe u het nieuwe BM25-classificatie algoritme kunt gebruiken voor bestaande Zoek Services voor nieuwe indexen die worden gemaakt en opgevraagd met behulp van de preview-API.
 
-Azure Cognitive Search zal gebruik maken van de officiële Lucene implementatie van de Okapi BM25 algoritme, *BM25Similarity*, die de eerder gebruikte *ClassicSimilarity* implementatie zal vervangen. Net als het oudere ClassicSimilarity-algoritme is BM25Similarity een TF-IDF-achtige ophaalfunctie die de term frequentie (TF) en de omgekeerde documentfrequentie (IDF) gebruikt als variabelen om relevantiescores voor elk documentquerypaar te berekenen, wat vervolgens gebruikt voor ranking. Hoewel conceptueel vergelijkbaar met de oudere Classic Similarity algoritme, BM25 neemt zijn wortel in probabilistische informatie ophalen om te verbeteren op het. BM25 biedt ook geavanceerde aanpassingsopties, zoals de gebruiker in staat stellen om te beslissen hoe de relevantiescore schaalt met de term frequentie van overeenkomende termen.
+Azure Cognitive Search is bezig met het aannemen van de officiële lucene-implementatie van het okapi BM25-algoritme, *BM25Similarity*, waarmee de eerder gebruikte *ClassicSimilarity* -implementatie wordt vervangen. Net als het oudere ClassicSimilarity-algoritme is BM25Similarity een TF-IDF-achtige ophaal functie die gebruikmaakt van de term frequentie (TF) en de inverse document frequentie (IDF) als variabelen voor het berekenen van relevantie scores voor elk document-query paar dat vervolgens wordt gebruikt voor de rang schikking. 
 
-## <a name="how-to-test-bm25-today"></a>Hoe bm25 vandaag te testen
+In het algemeen lijkt het alsof het oudere klassieke gelijkenis algoritme BM25 de hoofdmap in Probabilistic informatie op te halen om deze te verbeteren. BM25 biedt ook geavanceerde aanpassings opties, zoals het toestaan van de gebruiker om te bepalen hoe de relevantie score wordt geschaald met de term frequentie van overeenkomende voor waarden.
 
-Wanneer u een nieuwe index maakt, u een eigenschap 'gelijkenis' instellen. U moet de versie *2019-05-06-Preview* gebruiken, zoals hieronder weergegeven.
+## <a name="how-to-test-bm25-today"></a>BM25 vandaag testen
+
+Wanneer u een nieuwe index maakt, kunt u een **soort gelijke** eigenschappen instellen om het algoritme op te geven. U moet de `api-version=2019-05-06-Preview`gebruiken, zoals hieronder wordt weer gegeven.
 
 ```
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview
@@ -57,32 +59,35 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 }
 ```
 
-Voor services die vóór 15 juli 2020 zijn gemaakt: Als de gelijkenis wordt weggelaten of ingesteld op null, gebruikt de index het oude klassieke gelijkenisalgoritme.
+De eigenschap **gelijkenis** is nuttig tijdens deze tussentijdse periode wanneer beide algoritmen beschikbaar zijn, alleen op bestaande services. 
 
-Voor services die na 15 juli 2020 zijn gemaakt: Als de gelijkenis wordt weggelaten of ingesteld op null, gebruikt de index het nieuwe BM25-gelijkenisalgoritme.
+| Eigenschap | Beschrijving |
+|----------|-------------|
+| gelijkenis | Optioneel. Geldige waarden zijn *"#Microsoft. Azure. Search. ClassicSimilarity"* of *"#Microsoft. Azure. Search. BM25Similarity"*. <br/> Vereist `api-version=2019-05-06-Preview` of hoger voor een zoek service die is gemaakt vóór 15 juli 2020. |
 
-U de gelijkeniswaarde ook expliciet instellen als een van de volgende twee waarden: *#Microsoft.Azure.Search.ClassicSimilarity* of *#Microsoft.Azure.Search.BM25Similarity.*
+Voor nieuwe services die zijn gemaakt na 15 juli 2020, wordt BM25 automatisch gebruikt en is het enige gelijkenis algoritme. Als u een **gelijkenis** wilt instellen met `ClassicSimilarity` een nieuwe service, wordt er een 400-fout geretourneerd, omdat die algoritme niet wordt ondersteund voor een nieuwe service.
 
+Voor bestaande services die zijn gemaakt voor 15 juli 2020, blijft de klassieke gelijkenis het standaard algoritme. Als de eigenschap **gelijkenis** wordt wegge laten of op null is ingesteld, gebruikt de index het Klassieke algoritme. Als u het nieuwe algoritme wilt gebruiken, moet u **gelijkwaardigheid** instellen, zoals hierboven wordt beschreven.
 
-## <a name="bm25-similarity-parameters"></a>BM25 gelijkenisparameters
+## <a name="bm25-similarity-parameters"></a>BM25 gelijkenis parameters
 
-BM25-gelijkenis voegt twee aanpasbare parameters van de gebruiker toe om de berekende relevantiescore te bepalen:
+BM25 gelijkenis voegt twee door de gebruiker aanpas bare para meters toe om de berekende relevantie score te bepalen.
 
-### <a name="k1"></a>k1 k1
+### <a name="k1"></a>K1
 
-De *parameter K1* regelt de schaalfunctie tussen de termfrequentie van elke overeenkomende termen tot de uiteindelijke relevantiescore van een documentquerypaar.
+De *K1* para meter bepaalt de schaal functie tussen de term frequentie van elke overeenkomende voor waarden en de uiteindelijke relevantie Score van een document-query paar.
 
-Een waarde van nul vertegenwoordigt een "binair model", waarbij de bijdrage van één overeenkomende term hetzelfde is voor alle overeenkomende documenten, ongeacht hoe vaak die term in de tekst wordt weergegeven, terwijl een grotere k1-waarde de score laat toenemen naarmate er meer gevallen van dezelfde term vindt u in het document. Azure Cognitive Search gebruikt standaard een waarde van 1,2 voor de parameter K1. Het gebruik van een hogere k1-waarde kan belangrijk zijn in gevallen waarin we verwachten dat meerdere termen deel uitmaken van een zoekopdracht. In die gevallen willen we mogelijk documenten bevoordelen die overeenkomen met veel van de verschillende querytermen die worden doorzocht op documenten die slechts één, meerdere keren overeenkomen. Bijvoorbeeld, bij het opvragen van de index voor documenten met de termen "Apollo Spaceflight", willen we misschien de score van een artikel over de Griekse mythologie, die de term "Apollo" bevat een paar dozijn keer, zonder vermeldingen van "Spaceflight", in vergelijking met een ander artikel dat expliciet noemt zowel "Apollo" en "Spaceflight" een handvol keer alleen. 
+Een waarde van nul staat voor een ' binair model ', waarbij de bijdrage van één overeenkomende term hetzelfde is voor alle overeenkomende documenten, ongeacht hoe vaak de term voor komt in de tekst, terwijl een grotere K1-waarde de score kan blijven verhogen naarmate er meer exemplaren van dezelfde term worden gevonden in het document. Azure Cognitive Search gebruikt standaard de waarde 1,2 voor de K1-para meter. Het gebruik van een hogere K1-waarde kan belang rijk zijn in gevallen waarin we verwachten dat er meerdere termen deel uitmaken van een zoek opdracht. In dergelijke gevallen is het mogelijk om te voor komen dat documenten die overeenkomen met veel van de verschillende query termen, worden doorzocht op documenten die slechts één keer hetzelfde zijn. Als u bijvoorbeeld een query uitvoert op de index voor documenten met de termen ' Apollo spaceflight ', is het mogelijk dat de Score van een artikel over Griekse Mythology dat de term ' Apollo ' bevat, een aantal dozijn keer, zonder vermeldingen van ' spaceflight ', in vergelijking met een ander artikel expliciet wordt vermeld, waarbij zowel ' Apollo ' als ' spaceflight ' slechts een aantal malen wordt aangegeven. 
  
 ### <a name="b"></a>b
 
-De *parameter b* bepaalt hoe de lengte van een document de relevantiescore beïnvloedt.
+De *b* -para meter bepaalt hoe de lengte van een document van invloed is op de Score van relevantie.
 
-Een waarde van 0,0 betekent dat de lengte van het document geen invloed heeft op de score, terwijl een waarde van 1,0 betekent dat de impact van de termfrequentie op de relevantiescore wordt genormaliseerd door de lengte van het document. De standaardwaarde die wordt gebruikt in Azure Cognitive Search voor de b-parameter is 0,75. Het normaliseren van de term frequentie door de lengte van het document is nuttig in gevallen waarin we langere documenten willen bestraffen. In sommige gevallen bevatten langere documenten (zoals een complete roman) eerder veel irrelevante termen, in vergelijking met veel kortere documenten.
+Een waarde van 0,0 betekent dat de lengte van het document niet van invloed is op de score, terwijl een waarde van 1,0 betekent dat de impact van de term frequentie op relevantie score wordt genormaliseerd door de lengte van het document. De standaard waarde die in azure Cognitive Search voor de b-para meter wordt gebruikt, is 0,75. Het normaliseren van de term frequentie door de lengte van het document is handig in gevallen waarin we meer documenten willen bestraffen. In sommige gevallen worden langere documenten (zoals een volledig roman) waarschijnlijk veel irrelevante voor waarden bevatten, vergeleken met veel kortere documenten.
 
-### <a name="setting-k1-and-b-parameters"></a>K1- en b-parameters instellen
+### <a name="setting-k1-and-b-parameters"></a>K1 en b-para meters instellen
 
-Als u de b- of k1-waarden wilt aanpassen, voegt u deze eenvoudig toe als eigenschappen aan het object gelijkenis wanneer u BM25 gebruikt:
+Als u de b-of K1-waarden wilt aanpassen, voegt u ze toe als eigenschappen aan het object soort gelijke objecten wanneer u BM25 gebruikt:
 
 ```json
     "similarity": {
@@ -92,16 +97,15 @@ Als u de b- of k1-waarden wilt aanpassen, voegt u deze eenvoudig toe als eigensc
     }
 ```
 
-Het gelijkenisalgoritme kan alleen worden ingesteld op de tijd voor het maken van indexen. Dit betekent dat het gelijkenisalgoritme dat wordt gebruikt, niet kan worden gewijzigd voor bestaande indexen. De *parameters "b"* en *"k1"* kunnen worden gewijzigd bij het bijwerken van een bestaande indexdefinitie die BM25 gebruikt. Als u deze waarden op een bestaande index wijzigt, wordt de index ten minste enkele seconden offline gehaald, waardoor uw indexerings- en queryaanvragen mislukken. Daarom moet u de parameter 'allowIndexDowntime=true' instellen in de queryreeks van uw updateaanvraag:
+Het algoritme voor gelijkenis kan alleen worden ingesteld tijdens het maken van de index. Dit betekent dat het gebruikte gelijkenis algoritme niet kan worden gewijzigd voor bestaande indexen. De para meters *"b"* en *"K1"* kunnen worden gewijzigd bij het bijwerken van een bestaande index definitie die gebruikmaakt van BM25. Als u deze waarden voor een bestaande index wijzigt, wordt de index ten minste enkele seconden offline gezet, waardoor uw indexerings-en query aanvragen mislukken. Als gevolg hiervan moet u de para meter ' allowIndexDowntime = True ' instellen in de query reeks van uw update-aanvraag:
 
 ```http
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
 ```
 
-
 ## <a name="see-also"></a>Zie ook  
 
- [Azure Cognitive Search REST](https://docs.microsoft.com/rest/api/searchservice/)   
- [Scoreprofielen toevoegen aan uw index](index-add-scoring-profiles.md)    
- [Index &#40;Azure Cognitive Search REST&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)   
-  [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
++ [Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/searchservice/)   
++ [Score profielen toevoegen aan uw index](index-add-scoring-profiles.md)    
++ [Index-API maken](https://docs.microsoft.com/rest/api/searchservice/create-index)   
++ [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

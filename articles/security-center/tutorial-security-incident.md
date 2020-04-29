@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie voor incidentresponse - Azure Security Center
-description: In deze zelfstudie leert u hoe u beveiligingswaarschuwingen triageren, de hoofdoorzaak & bereik van een incident bepalen en beveiligingsgegevens doorzoeken.
+title: Zelf studie incident respons-Azure Security Center
+description: In deze zelf studie leert u hoe u beveiligings waarschuwingen kunt sorterenen, hoe u de hoofd oorzaak & bereik van een incident kunt bepalen en hoe u beveiligings gegevens zoekt.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
 ms.openlocfilehash: 971b93422e2b3f2053e0c5564c7ba924a631d810
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80585772"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Zelfstudie: Reageren op beveiligingsincidenten
@@ -29,10 +29,10 @@ Security Center analyseert voortdurend de werkbelasting van uw hybride cloud met
 > * Verder onderzoek uitvoeren om de oorzaak en het bereik van een beveiligingsincident te bepalen
 > * Zoek beveiligingsgegevens die bij het onderzoek kunnen helpen
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
-Als u de functies in deze zelfstudie wilt doorlopen, moet u op de standaardprijslaag van het Beveiligingscentrum staan. U kunt Security Center Standard kosteloos proberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie. In de snelstartgids [Onboard your Azure subscription to Security Center Standard](security-center-get-started.md) (Uw Azure-abonnement registreren voor Security Center Standard) wordt u begeleid bij het upgraden naar Standard.
+Als u de functies die in deze zelf studie worden behandeld wilt door lopen, moet u zich in de prijs categorie Standard van Security Center bevindt. U kunt Security Center Standard kosteloos proberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie. In de snelstartgids [Onboard your Azure subscription to Security Center Standard](security-center-get-started.md) (Uw Azure-abonnement registreren voor Security Center Standard) wordt u begeleid bij het upgraden naar Standard.
 
 ## <a name="scenario"></a>Scenario
 Contoso heeft enkele van de on-premises resources onlangs naar Azure gemigreerd, met inbegrip van een aantal line-of-business workloads en SQL-databases op virtuele machines. Het Contoso Core Computer Security Incident Response Team (CSIRT) heeft een probleem met het onderzoeken van mogelijke beveiligingskwesties. De oorzaak hiervan is dat het bedrijf geen beveiligingsintelligence heeft die is geïntegreerd in de aanwezige hulpmiddelen voor het reageren op incidenten. Doordat deze integratie niet is doorgevoerd, ontstaat er een probleem tijdens de detectiefase (teveel onjuist positieve resultaten), en tijdens de beoordelings- en diagnosefase. Als onderdeel van deze migratie besloten ze Security Center in te schakelen om hen te helpen dit probleem aan te pakken.
@@ -43,12 +43,12 @@ Voor dit scenario gaan we ons richten op de rollen van de volgende personen die 
 
 ![Levenscyclus van reacties op incidenten](./media/tutorial-security-incident/security-center-incident-response.png)
 
-Judy houdt zich bezig met beveiligingsbewerkingen. Hun verantwoordelijkheden omvatten:
+Judy houdt zich bezig met beveiligingsbewerkingen. Hun verantwoordelijkheden zijn onder andere:
 
 * Het ononderbroken bewaken van en reageren op bedreigingen.
 * Indien nodig een probleem doorverwijzen naar de eigenaar van de workloads in de cloud of naar de beveiligingsanalist.
 
-Sam is een security analist en hun verantwoordelijkheden omvatten:
+Sam is een beveiligings analist en hun verantwoordelijkheden zijn:
 
 * Het onderzoeken van aanvallen.
 * Het oplossen van problemen die worden vermeld in beveiligingswaarschuwingen.
@@ -87,7 +87,7 @@ Security Center biedt een overkoepelend overzicht van alle beveiligingswaarschuw
 
    ![Onderzoek](./media/tutorial-security-incident/tutorial-security-incident-fig5.png)
 
-   De onderzoekskaart is een grafische weergave van de entiteiten die zijn verbonden met deze beveiligingswaarschuwing of dit incident. Door op een entiteit in de kaart te klikken, toont de informatie over die entiteit nieuwe entiteiten en wordt de kaart uitgebreid. De eigenschappen van de entiteit die in de kaart is geselecteerd, zijn gemarkeerd in het deelvenster aan de rechterkant van de pagina. Welke informatie op elk tabblad beschikbaar is, is afhankelijk van de geselecteerde entiteit. Bekijk tijdens het onderzoeksproces alle relevante informatie om de beweging van de aanvaller beter te begrijpen.
+   De onderzoekskaart is een grafische weergave van de entiteiten die zijn verbonden met deze beveiligingswaarschuwing of dit incident. Door op een entiteit in de kaart te klikken, toont de informatie over die entiteit nieuwe entiteiten en wordt de kaart uitgebreid. De eigenschappen van de entiteit die in de kaart is geselecteerd, zijn gemarkeerd in het deelvenster aan de rechterkant van de pagina. Welke informatie op elk tabblad beschikbaar is, is afhankelijk van de geselecteerde entiteit. Bekijk tijdens het onderzoek alle relevante informatie om de beweging van de aanvaller beter te begrijpen.
 
 2. Als u meer bewijs nodig hebt of meer onderzoek moet verrichten voor entiteiten die tijdens het onderzoek zijn gevonden, gaat u verder met de volgende stap.
 
@@ -108,13 +108,13 @@ Andere snelstartgidsen en zelfstudies in deze verzameling zijn gebaseerd op deze
 
 Als u automatisch inrichten wilt uitschakelen:
 
-1. Ga terug naar het hoofdmenu van het Beveiligingscentrum en selecteer **Beveiligingsbeleid**.
+1. Ga terug naar het hoofd menu van Security Center en selecteer **beveiligings beleid**.
 2. Selecteer het abonnement waarvoor u automatisch inrichten wilt uitschakelen.
 3. Ga naar **Beveiligingsbeleid – Gegevensverzameling** en selecteer onder **Onboarding** de optie **Uit** om automatisch inrichten uit te schakelen.
 4. Selecteer **Opslaan**.
 
 >[!NOTE]
-> Als u de automatische inrichting uitschakelt, wordt de log-analyse-agent niet verwijderd uit Azure VM's waar de agent is ingericht. Door automatische inrichting uit te schakelen, wordt de beveiligingsbewaking voor uw resources beperkt.
+> Als u automatische inrichting uitschakelt, wordt de Log Analytics-agent niet verwijderd van Azure-Vm's waar de agent is ingericht. Door automatische inrichting uit te schakelen, wordt de beveiligingsbewaking voor uw resources beperkt.
 >
 
 ## <a name="next-steps"></a>Volgende stappen

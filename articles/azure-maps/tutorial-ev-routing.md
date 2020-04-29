@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Elektrische voertuigen routeren met Azure Notebooks (Python) | Microsoft Azure Maps'
-description: Route elektrische voertuigen met behulp van Microsoft Azure Maps routing API's en Azure Notebooks.
+title: 'Zelf studie: elektrische Voer tuigen routeren met behulp van Azure Notebooks (python) | Microsoft Azure kaarten'
+description: Stuur elektrische Voer tuigen met behulp van Microsoft Azure Maps routerings-Api's en Azure Notebooks.
 author: philmea
 ms.author: philmea
 ms.date: 11/12/2019
@@ -10,92 +10,92 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 3118ca39ec0efd42c9f7b622c91f857034ef4b03
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80333838"
 ---
-# <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Zelfstudie: Elektrische voertuigen routeren met Azure Notebooks (Python)
+# <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Zelf studie: elektrische Voer tuigen routeren met behulp van Azure Notebooks (python)
 
-Azure Maps is een portfolio van GEOspatialservice-API's die native zijn geïntegreerd in Azure. Met deze API's kunnen ontwikkelaars, ondernemingen en ISV's locatiebewuste apps, IoT,mobility, logistiek en asset tracking-oplossingen ontwikkelen. 
+Azure Maps is een port Folio met georuimtelijke service-Api's die systeem eigen zijn geïntegreerd in Azure. Met deze Api's kunnen ontwikkel aars, ondernemingen en Isv's de locatie bewuste apps, IoT, mobiliteit, logistiek en oplossingen voor het bijhouden van activa ontwikkelen. 
 
-De Azure Maps REST API's kunnen worden aangeroepen vanuit talen zoals Python en R om scenario's voor georuimtelijke gegevensanalyse en machine learning mogelijk te maken. Azure Maps biedt een robuuste set [routerings-API's](https://docs.microsoft.com/rest/api/maps/route) waarmee gebruikers routes tussen verschillende gegevenspunten kunnen berekenen. De berekeningen zijn gebaseerd op verschillende omstandigheden, zoals het type voertuig of bereikbaar gebied. 
+De Azure Maps REST-Api's kunnen worden aangeroepen vanuit talen als python en R voor het inschakelen van georuimtelijke gegevens analyse en machine learning scenario's. Azure Maps biedt een robuuste set [routerings-api's](https://docs.microsoft.com/rest/api/maps/route) waarmee gebruikers routes tussen verschillende gegevens punten kunnen berekenen. De berekeningen zijn gebaseerd op verschillende voor waarden, zoals het type van het Voer tuig of het bereik bare gebied. 
 
-In deze tutorial, je loopt helpen een bestuurder wiens elektrische voertuig batterij is laag. De bestuurder moet het dichtstbijzijnde laadstation vinden vanaf de locatie van het voertuig.
+In deze zelf studie leert u hoe u een stuur programma kunt gebruiken waarvan de batterij van het elektrische Voer tuig laag is. Het stuur programma moet het meest geschikte laad station vinden op de locatie van het Voer tuig.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een Jupyter-notitieblok maken en uitvoeren op [Azure-notitieblokken](https://docs.microsoft.com/azure/notebooks) in de cloud.
-> * Bel Azure Maps REST API's in Python.
-> * Zoek naar een bereik op basis van het verbruiksmodel van de elektrische auto.
-> * Zoek naar oplaadpunten voor elektrische voertuigen binnen het bereik, of isochrone.
-> * Maak de bereikgrens en laadstations weer op een kaart.
-> * Vind en visualiseer een route naar het dichtstbijzijnde laadstation voor elektrische voertuigen op basis van de rijtijd.
+> * Een Jupyter-notebook maken en uitvoeren op [Azure notebooks](https://docs.microsoft.com/azure/notebooks) in de Cloud.
+> * Roep Azure Maps REST-Api's in python.
+> * Zoek een bereik bare reeks op basis van het verbruiks model van het elektriciteits medium.
+> * Zoek naar elektrische laad stations voor Voer tuigen binnen het bereik dat bereikbaar is of isochrone.
+> * De bereik grens en de laad stations van een kaart weer geven.
+> * Zoek en visualiseer een route naar het dichtstbijzijnde elektrische Voer tuig op basis van de schijf tijd.
 
 
 ## <a name="prerequisites"></a>Vereisten 
 
-Als u deze zelfstudie wilt voltooien, moet u eerst een Azure Maps-account maken en uw primaire sleutel (abonnementssleutel) oppakken. 
+Als u deze zelf studie wilt volt ooien, moet u eerst een Azure Maps-account maken en uw primaire sleutel (abonnements sleutel) ophalen. 
 
-Als u een Azure Maps-accountabonnement wilt maken, volgt u instructies in [Een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps). U hebt een Azure Maps-accountabonnement nodig met de s1-prijslaag. 
+Als u een abonnement voor een Azure Maps account wilt maken, volgt u de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps). U hebt een abonnement voor Azure Maps-account nodig met de prijs categorie S1. 
 
-Als u de primaire abonnementssleutel voor uw account wilt opvragen, volgt u de instructies in [de primaire sleutel op te halen.](quick-demo-map-app.md#get-the-primary-key-for-your-account)
+Volg de instructies in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account)om de primaire abonnements sleutel voor uw account op te halen.
 
-Zie Verificatie beheren in Azure [Maps voor](./how-to-manage-authentication.md)meer informatie over verificatie in Azure Maps.
+Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
 
-## <a name="create-an-azure-notebook"></a>Een Azure-notitieblok maken
+## <a name="create-an-azure-notebook"></a>Een Azure-notebook maken
 
-Als u deze zelfstudie wilt volgen, moet u een Azure-notitieblokproject maken en het Jupyter-notitieblokbestand downloaden en uitvoeren. Het notitieblokbestand bevat Python-code, waarmee het scenario in deze zelfstudie wordt geïmplementeerd. Ga als volgt te werk om een Azure-notitieblokproject te maken en het Jupyter-notitieblokdocument ernaar te uploaden:
+Als u deze zelf studie wilt volgen, moet u een Azure notebook-project maken en het Jupyter-notebook bestand downloaden en uitvoeren. Het notitieblok bestand bevat de python-code, waarmee het scenario in deze zelf studie wordt geïmplementeerd. Voer de volgende stappen uit om een Azure notebook-project te maken en het Jupyter notebook-document ernaar te uploaden:
 
-1. Ga naar [Azure-notitieblokken](https://notebooks.azure.com) en meld u aan. Zie [Snelstart: Aanmelden en een gebruikersnaam instellen](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks)voor meer informatie.
-1. Selecteer boven aan uw openbare profielpagina **Mijn projecten**.
+1. Ga naar [Azure notebooks](https://notebooks.azure.com) en meld u aan. Zie [Quick Start: Meld u aan en stel een gebruikers-id in](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks)voor meer informatie.
+1. Selecteer aan de bovenkant van de pagina met het open bare profiel **Mijn projecten**.
 
-    ![De knop Mijn projecten](./media/tutorial-ev-routing/myproject.png)
+    ![De knop mijn projecten](./media/tutorial-ev-routing/myproject.png)
 
-1. Selecteer **op** de pagina Mijn projecten de optie **Nieuw project**.
+1. Op de pagina **Mijn projecten** selecteert u **Nieuw project**.
  
    ![De knop Nieuw project](./media/tutorial-ev-routing/create-project.png)
 
-1. Voer in het deelvenster **Nieuw project maken** een projectnaam en project-ID in.
+1. Voer in het deel venster **Nieuw project maken** een project naam en project-id in.
  
-    ![Het deelvenster Nieuw project maken](./media/tutorial-ev-routing/create-project-window.png)
+    ![Het deel venster Nieuw project maken](./media/tutorial-ev-routing/create-project-window.png)
 
 1. Selecteer **Maken**.
 
-1. Nadat uw project is gemaakt, downloadt u dit [Jupyter-notitieblokdocumentbestand](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) uit de [Azure Maps Jupyter-notitieblokopslagplaats.](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)
+1. Nadat het project is gemaakt, downloadt u dit [Jupyter notebook-document bestand](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) vanuit de [Azure Maps Jupyter-notebook opslagplaats](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook).
 
-1. Selecteer uw project in de lijst projecten op de pagina **Mijn projecten** en selecteer **Uploaden** om het documentbestand van Jupyter-notitieblok te uploaden. 
+1. Selecteer in de lijst projecten op de pagina **Mijn projecten** het project en selecteer vervolgens **uploaden** om het Jupyter notebook-document bestand te uploaden. 
 
-    ![notitieblok uploaden](./media/tutorial-ev-routing/upload-notebook.png)
+    ![notitie blok uploaden](./media/tutorial-ev-routing/upload-notebook.png)
 
-1. Upload het bestand vanaf uw computer en selecteer **Gereed**.
+1. Upload het bestand van uw computer en selecteer vervolgens **gereed**.
 
-1. Nadat de upload is voltooid, wordt uw bestand weergegeven op uw projectpagina. Dubbelklik op het bestand om het te openen als een Jupyter-notitieblok.
+1. Nadat het uploaden is voltooid, wordt het bestand weer gegeven op de pagina van uw project. Dubbel klik op het bestand om dit te openen als een Jupyter-notebook.
 
-Probeer inzicht te krijgen in de functionaliteit die in het notitieblokbestand is geïmplementeerd. Voer de code, in het notitieblokbestand, één cel tegelijk uit. U de code in elke cel uitvoeren door de knop **Uitvoeren** boven aan de notitieblok-app te selecteren.
+Probeer de functionaliteit te begrijpen die in het notitieblok bestand is geïmplementeerd. Voer de code in het notebook-bestand één cel tegelijk uit. U kunt de code in elke cel uitvoeren door de knop **uitvoeren** boven aan de app notebook te selecteren.
 
-  ![De knop Uitvoeren](./media/tutorial-ev-routing/run.png)
+  ![De knop uitvoeren](./media/tutorial-ev-routing/run.png)
 
-## <a name="install-project-level-packages"></a>Pakketten op projectniveau installeren
+## <a name="install-project-level-packages"></a>Pakketten op project niveau installeren
 
-Als u de code in het notitieblok wilt uitvoeren, installeert u pakketten op projectniveau door de volgende stappen uit te voeren:
+Als u de code in het notitie blok wilt uitvoeren, installeert u pakketten op project niveau door de volgende stappen uit te voeren:
 
-1. Download het [*bestand requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) uit de [Azure Maps Jupyter-laptopopslagplaats](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)en upload het vervolgens naar uw project.
-1. Selecteer **projectinstellingen**in het projectdashboard . 
-1. Selecteer in het deelvenster **Projectinstellingen** het tabblad **Omgeving** en selecteer **Vervolgens Toevoegen**.
-1. Ga als volgt te werk onder **Stappen voor omgevingsinstellingen:**   
-    a. Selecteer **Requirements.txt**in de eerste vervolgkeuzelijst .  
-    b. Selecteer in de tweede vervolgkeuzelijst uw *requirements.txt-bestand.*  
-    c. Selecteer **Python Versie 3.6** als versie in de derde vervolgkeuzelijst.
+1. Down load het bestand [*Requirements. txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) van de [Azure Maps Jupyter notebook repository](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)en upload het vervolgens naar uw project.
+1. Selecteer in het project dashboard **project instellingen**. 
+1. Selecteer in het deel venster **project instellingen** het tabblad **omgeving** en selecteer vervolgens **toevoegen**.
+1. Ga als volgt te werk onder **omgevings instellingen**:   
+    a. Selecteer in de eerste vervolg keuzelijst **vereisten. txt**.  
+    b. Selecteer in de tweede vervolg keuzelijst het bestand *Requirements. txt* .  
+    c. Selecteer **python versie 3,6** als uw versie in de derde vervolg keuzelijst.
 1. Selecteer **Opslaan**.
 
     ![Pakketten installeren](./media/tutorial-ev-routing/install-packages.png)
 
-## <a name="load-the-required-modules-and-frameworks"></a>Laad de benodigde modules en frameworks
+## <a name="load-the-required-modules-and-frameworks"></a>De vereiste modules en frameworks laden
 
-Voer het volgende script uit om alle vereiste modules en frameworks te laden.
+Als u alle vereiste modules en frameworks wilt laden, voert u het volgende script uit.
 
 ```Python
 import time
@@ -104,13 +104,13 @@ import urllib.parse
 from IPython.display import Image, display
 ```
 
-## <a name="request-the-reachable-range-boundary"></a>Vraag de bereikgrens aan
+## <a name="request-the-reachable-range-boundary"></a>De bereik grens opvragen
 
-Een pakketbezorger heeft een aantal elektrische voertuigen in zijn vloot. Overdag moeten elektrische voertuigen worden opgeladen zonder terug te hoeven keren naar het magazijn. Elke keer dat de resterende lading daalt tot minder dan een uur, zoekt u naar een set van laadstations die binnen een bereik van bereik zijn. In wezen zoekt u naar een laadstation wanneer de batterij bijna leeg is. En, krijg je de grens informatie voor dat bereik van laadpalen. 
+Een bedrijf voor levering van pakketten heeft in zijn vloot enkele elektrische Voer tuigen. Gedurende de dag moeten elektrische Voer tuigen worden gefactureerd zonder terug te hoeven naar het magazijn. Telkens wanneer de resterende kosten minder dan een uur duren, zoekt u naar een set laad stations die zich binnen een bereik bevinden dat kan worden bereikt. In wezen zoekt u naar een oplaad station wanneer er weinig kosten in rekening worden gebracht. En u krijgt de grens informatie voor het bereik van de oplaad stations. 
 
-Omdat het bedrijf de voorkeur geeft aan routes die een balans van economie en snelheid vereisen, is de gevraagde routeType *eco.* In het volgende script wordt de [API Routebereik opvragen](https://docs.microsoft.com/rest/api/maps/route/getrouterange) van de routeringsservice azure maps. Het maakt gebruik van parameters voor het verbruik van het voertuig model. Het script ontleden vervolgens het antwoord om een veelhoekobject van de geojson-indeling te maken, dat het maximaal bereik van de auto vertegenwoordigt.
+Omdat het bedrijf de voor keur geeft aan het gebruik van routes waarvoor een evenwicht tussen de economie en de snelheid is vereist, is de aangevraagde routeType *Eco*. Met het volgende script wordt de [API Get route Range](https://docs.microsoft.com/rest/api/maps/route/getrouterange) van de Azure Maps Routing-service aangeroepen. Het maakt gebruik van para meters voor het verbruiks model van het Voer tuig. Het script parseert vervolgens het antwoord voor het maken van een veelhoek object van de geojson-indeling, die het maximum bereik van de auto aangeeft.
 
-Voer het script uit in de volgende cel om de grenzen voor het bereik van het elektrische voertuig te bepalen:
+Als u de grenzen voor het bereik van het elektrische Voer tuig wilt bepalen, voert u het script uit in de volgende cel:
 
 ```python
 subscriptionKey = "Your Azure Maps key"
@@ -152,13 +152,13 @@ boundsData = {
              }
 ```
 
-## <a name="search-for-electric-vehicle-charging-stations-within-the-reachable-range"></a>Zoek naar oplaadpunten voor elektrische voertuigen binnen het bereik
+## <a name="search-for-electric-vehicle-charging-stations-within-the-reachable-range"></a>Zoeken naar elektrische laad stations voor Voer tuigen binnen het bereik
 
-Nadat u het bereik (isochrone) voor het elektrische voertuig hebt bepaald, u zoeken naar laadstations binnen dat bereik. 
+Nadat u het bereikable (isochrone) voor het elektrische medium hebt vastgesteld, kunt u zoeken naar laad stations binnen dat bereik. 
 
-In het volgende script wordt de API azure maps [post search inside geometry aanroept.](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) Het zoekt naar oplaadpunten voor elektrisch voertuig, binnen de grenzen van het maximaal bereik van de auto. Vervolgens onteinde het script het antwoord op een array van bereikbare locaties.
+Met het volgende script wordt de Azure Maps [post Search aangeroepen in de geometrie-API](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry). Het zoekt naar de laad stations voor het elektrische medium, binnen de grenzen van het maximum bereik van de auto. Vervolgens wordt het antwoord door het script geparseerd naar een matrix van bereik bare locaties.
 
-Voer het volgende script uit om te zoeken naar oplaadpunten voor elektrische voertuigen binnen het bereik van het volgende:
+Voer het volgende script uit om te zoeken naar elektrische laad stations voor Voer tuigen binnen het bereik dat bereikbaar is:
 
 ```python
 # Search for electric vehicle stations within reachable range.
@@ -171,11 +171,11 @@ for loc in range(len(searchPolyResponse["results"])):
                 reachableLocations.append(location)
 ```
 
-## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>Het bereik en de laadpunten uploaden naar Azure Maps Data Service
+## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>De bereik bare bereik-en laad punten uploaden naar Azure Maps-gegevens service
 
-Op een kaart wilt u de laadstations en de grens voor het maximaal bereik van het elektrische voertuig visualiseren. Upload hiervoor de grensgegevens en laadstations gegevens als geojson objecten naar Azure Maps Data Service. Gebruik de [API voor gegevensupload](https://docs.microsoft.com/rest/api/maps/data/uploadpreview). 
+Op een kaart wilt u de laad stations en de grens voor het maximale bereik van het elektrische medium visualiseren. Als u dit wilt doen, uploadt u de grens gegevens en laadt u gegevens van stations als geojson-objecten om de gegevens service te Azure Maps. Gebruik de [Data upload-API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview). 
 
-Als u de grens- en oplaadpuntgegevens wilt uploaden naar Azure Maps Data Service, voert u de volgende twee cellen uit:
+Als u de grens-en oplaad punt gegevens wilt uploaden naar Azure Maps-gegevens service, voert u de volgende twee cellen uit:
 
 ```python
 rangeData = {
@@ -237,9 +237,9 @@ while True:
 poiUdid = getPoiUdid["udid"]
 ```
 
-## <a name="render-the-charging-stations-and-reachable-range-on-a-map"></a>De laadstations en het bereik op een kaart weergeven
+## <a name="render-the-charging-stations-and-reachable-range-on-a-map"></a>De laad stations en het bereik van bereiken op een kaart renderen
 
-Nadat u de gegevens naar de gegevensservice hebt geüpload, belt u de Azure Maps [Get Map Image-service](https://docs.microsoft.com/rest/api/maps/render/getmapimage). Deze service wordt gebruikt om de laadpunten en de maximaal bereikbare grens op de statische kaartafbeelding weer te geven door het volgende script uit te voeren:
+Nadat u de gegevens naar de gegevens service hebt geüpload, roept u de Azure Maps [kaart-installatie kopie ophalen](https://docs.microsoft.com/rest/api/maps/render/getmapimage)aan. Deze service wordt gebruikt voor het weer geven van de verwerkings punten en de maximale bereik bare grens op de statische kaart installatie kopie door het volgende script uit te voeren:
 
 ```python
 # Get boundaries for the bounding box.
@@ -276,16 +276,16 @@ poiRangeMap = await staticMapResponse.content.read()
 display(Image(poiRangeMap))
 ```
 
-![Een kaart met het locatiebereik](./media/tutorial-ev-routing/location-range.png)
+![Een kaart met het locatie bereik](./media/tutorial-ev-routing/location-range.png)
 
 
-## <a name="find-the-optimal-charging-station"></a>Vind het optimale laadstation
+## <a name="find-the-optimal-charging-station"></a>Het optimale oplaad station zoeken
 
-Ten eerste wilt u alle potentiële laadstations binnen het bereik bepalen. Vervolgens wilt u weten welke van hen kan worden bereikt in een minimale hoeveelheid tijd. 
+Eerst wilt u alle mogelijke laad stations bepalen binnen het bereik dat kan worden bereikt. Vervolgens wilt u weten welke van deze kunnen worden bereikt binnen een minimum tijd. 
 
-In het volgende script wordt de Azure Maps [Matrix Routing API aangeschreven.](https://docs.microsoft.com/rest/api/maps/route/postroutematrix) Het retourneert de opgegeven voertuiglocatie, de reistijd en de afstand tot elk laadstation. Het script in de volgende cel onteert het antwoord op het dichtstbijzijnde bereikbare laadstation met betrekking tot de tijd te vinden.
+Met het volgende script wordt de API voor de Azure Maps- [matrix routering](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)aangeroepen. Het retourneert de opgegeven locatie voor het Voer tuig, de reis tijd en de afstand tot elk oplaad station. Het script in de volgende cel parseert het antwoord voor het vinden van het dichtstbijzijnde bereik bare opheffings station met betrekking tot tijd.
 
-Voer het script uit in de volgende cel om het dichtstbijzijnde bereikbare laadstation te vinden dat in de minste tijd bereikbaar is:
+Als u wilt zoeken naar het dichtstbijzijnde bereik dat kan worden bereikt, moet u het script uitvoeren in de volgende cel:
 
 ```python
 locationData = {
@@ -312,11 +312,11 @@ minDistLoc.extend([reachableLocations[minDistIndex][1], reachableLocations[minDi
 closestChargeLoc = ",".join(str(i) for i in minDistLoc)
 ```
 
-## <a name="calculate-the-route-to-the-closest-charging-station"></a>Bereken de route naar het dichtstbijzijnde laadstation
+## <a name="calculate-the-route-to-the-closest-charging-station"></a>De route naar het dichtstbijzijnde oplaad station berekenen
 
-Nu u het dichtstbijzijnde laadstation hebt gevonden, u de [API Routeroutebeschrijvingen](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) ophalen om de gedetailleerde route op te vragen van de huidige locatie van het elektrische voertuig naar het laadstation.
+Nu u het dichtstbijzijnde oplaad station hebt gevonden, kunt u de [API route richtingen ophalen](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) aanroepen om de gedetailleerde route van de huidige locatie van het elektrische medium naar het oplaad station aan te vragen.
 
-Voer het script uit in de volgende cel om de route naar het laadstation te krijgen en het antwoord te ontleden om een geojsonobject te maken dat de route vertegenwoordigt:
+Als u de route naar het oplaad station wilt ophalen en het antwoord wilt parseren om een geojson-object te maken dat de route vertegenwoordigt, voert u het script uit in de volgende cel:
 
 ```python
 # Get the route from the electric vehicle's current location to the closest charging station. 
@@ -334,11 +334,11 @@ routeData = {
      }
 ```
 
-## <a name="visualize-the-route"></a>Visualiseer de route
+## <a name="visualize-the-route"></a>De route visualiseren
 
-Als u de route wilt visualiseren, uploadt u de routegegevens eerst als geojson-object naar Azure Maps Data Service. Gebruik hiervoor de Azure Maps [Data Upload API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview). Bel vervolgens de renderingservice, [Get Map Image API](https://docs.microsoft.com/rest/api/maps/render/getmapimage), om de route op de kaart weer te geven en te visualiseren.
+Als u de route wilt visualiseren, uploadt u de route gegevens eerst als een geojson-object naar Azure Maps data service. Gebruik hiervoor de Azure Maps [Data upload-API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview). Roep vervolgens de rendering-service aan, [down load kaart afbeeldings-API](https://docs.microsoft.com/rest/api/maps/render/getmapimage), om de route op de kaart weer te geven en te visualiseren.
 
-Voer het volgende script uit om een afbeelding voor de gerenderde route op de kaart te krijgen:
+Als u een afbeelding wilt ophalen voor de gerenderde route op de kaart, voert u het volgende script uit:
 
 ```python
 # Upload the route data to Azure Maps Data Service.
@@ -389,17 +389,17 @@ display(Image(staticMapImage))
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u Azure Maps REST API's rechtstreeks aanroepen en Azure Maps-gegevens visualiseren met behulp van Python.
+In deze zelf studie hebt u geleerd hoe u Azure Maps REST-Api's rechtstreeks aanroept en Azure Maps gegevens visualert met behulp van python.
 
-Zie het alsvolgt in de apuisten van Azure Maps die in deze zelfstudie worden gebruikt:
+Zie voor het verkennen van de Azure Maps Api's die in deze zelf studie worden gebruikt:
 
-* [Routebereik krijgen](https://docs.microsoft.com/rest/api/maps/route/getrouterange)
-* [Zoeken in de map plaatsen](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)
+* [Route bereik ophalen](https://docs.microsoft.com/rest/api/maps/route/getrouterange)
+* [Zoeken in geometrie plaatsen](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)
 * [Gegevens uploaden](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)
-* [Render - Kaartafbeelding krijgen](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Matrix voor postroutes](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
-* [Routeroutebeschrijving opvragen](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
+* [Afbeelding van de kaart ophalen](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [Route matrix plaatsen](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
+* [Route beschrijving ophalen](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 
-Zie Azure Maps REST API's voor een volledige lijst met AZURE Maps REST [API's.](https://docs.microsoft.com/azure/azure-maps/consumption-model)
+Zie [Azure Maps rest api's](https://docs.microsoft.com/azure/azure-maps/consumption-model)voor een volledige lijst met Azure Maps rest api's.
 
-Zie [Azure-notitieblokken](https://docs.microsoft.com/azure/notebooks)voor meer informatie over Azure-notitieblokken.
+Zie [Azure notebooks](https://docs.microsoft.com/azure/notebooks)voor meer informatie over Azure notebooks.

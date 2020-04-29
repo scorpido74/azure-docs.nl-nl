@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-voorbeelden - Event Grid | Microsoft Docs
-description: In dit artikel vindt u een tabel met koppelingen naar CLI-scriptvoorbeelden (Command Line Interface) voor Gebeurtenisraster.
+description: Dit artikel bevat een tabel met koppelingen naar de script voorbeelden van Azure-opdracht regel interface (CLI) voor Event Grid.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -11,10 +11,10 @@ ms.tgt_pltfrm: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 0cef3f5ae7c647236d52e4c571e5fc382e1560f4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76514609"
 ---
 # <a name="azure-cli-samples-for-event-grid"></a>Azure CLI-voorbeelden voor Event Grid

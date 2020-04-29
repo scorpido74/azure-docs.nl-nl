@@ -1,6 +1,6 @@
 ---
-title: Toepassing verwijderen uit een cluster in Powershell
-description: 'Azure PowerShell Script-voorbeeld : verwijder een toepassing uit een cluster van servicefabric.'
+title: Toepassing verwijderen uit een cluster in Power shell
+description: Azure PowerShell-voorbeeld script-een toepassing verwijderen uit een Service Fabric cluster.
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -15,15 +15,15 @@ ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 9ac4c23468c74b5a2c6874de2cb6b8d0e6b9e7dd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75610281"
 ---
-# <a name="remove-an-application-from-a-service-fabric-cluster-using-powershell"></a>Een toepassing verwijderen uit een cluster van Servicefabric met Powershell
+# <a name="remove-an-application-from-a-service-fabric-cluster-using-powershell"></a>Een toepassing verwijderen uit een Service Fabric-cluster met behulp van Power shell
 
-Met dit voorbeeldscript wordt een actief uitvoerende servicefabric-toepassingsinstantie verwijderd en wordt een toepassingstype en -versie uit het cluster verwijderd.  Het verwijderen van het exemplaar van de toepassing betekent dat ook alle actieve service-exemplaren worden verwijderd die aan die toepassing zijn gekoppeld. Pas de parameters zo nodig aan. 
+Met dit voorbeeld script wordt een actief Service Fabric toepassings exemplaar verwijderd en wordt de registratie van een toepassings type en-versie uit het cluster ongedaan gemaakt.  Het verwijderen van het exemplaar van de toepassing betekent dat ook alle actieve service-exemplaren worden verwijderd die aan die toepassing zijn gekoppeld. Pas de parameters zo nodig aan. 
 
 Installeer indien nodig de Service Fabric PowerShell-module met de [Service Fabric-SDK](../service-fabric-get-started.md). 
 
@@ -37,11 +37,11 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Remove-serviceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) | Hiermee verwijdert u een actief exemplaar van de Service Fabric-toepassingsinstantie uit het cluster.  |
-| [Register-ServiceFabricApplicationType uitschrijven](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | De registratie van een servicefabric-toepassingstype en -versie uit het cluster wordt losgekoppeld. |
+| [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) | Hiermee verwijdert u een actief Service Fabric toepassings exemplaar uit het cluster.  |
+| [Registratie ongedaan maken-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | Hiermee wordt de registratie van een Service Fabric toepassings type en-versie uit het cluster ongedaan gemaakt. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure PowerShell-documentatie](/powershell/azure/service-fabric/?view=azureservicefabricps)voor meer informatie over de PowerShell-module servicefabric.
+Zie [Azure PowerShell-documentatie](/powershell/azure/service-fabric/?view=azureservicefabricps)voor meer informatie over de service Fabric Power shell-module.
 
 Meer PowerShell-voorbeelden voor Azure Service Fabric vindt u in de [voorbeelden van Azure PowerShell](../service-fabric-powershell-samples.md).

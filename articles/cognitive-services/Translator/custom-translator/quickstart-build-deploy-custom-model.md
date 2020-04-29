@@ -10,10 +10,10 @@ ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
 ms.openlocfilehash: a22ae3b4b11a4eac7da147cf3ad896bbad435448
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80370210"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Snelstart: Een aangepast model voor vertalen bouwen, implementeren en gebruiken
@@ -26,21 +26,21 @@ Dit artikel biedt stapsgewijze instructies voor het bouwen van een vertaalsystee
 
 2. Een abonnement op de Translator Text-API via de Azure-portal. U hebt de Translator Text-API-abonnementssleutel nodig om uw werkruimte te koppelen in Custom Translator. Zie [registreren voor de Translator Text-API](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
 
-3. Wanneer u beide bovenstaande hebt, meldt u zich aan bij de portal [Voor aangepaste vertalers](https://portal.customtranslator.azure.ai) om werkruimten, projecten te maken, bestanden te uploaden en modellen te maken/implementeren.
+3. Wanneer u beide voor gaande hebt, meldt u zich aan bij de [aangepaste Vertaal](https://portal.customtranslator.azure.ai) Portal om werk ruimten, projecten te maken, bestanden te uploaden en modellen te maken/implementeren.
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
-Als u de eerste keer gebruiker bent, wordt u gevraagd akkoord te gaan met de Servicevoorwaarden, een werkruimte te maken en uw werkruimte te koppelen aan een Microsoft Translator Text API-abonnement.
+Als u voor de eerste keer een gebruiker bent, wordt u gevraagd om akkoord te gaan met de service voorwaarden, om een werk ruimte te maken en uw werk ruimte te koppelen aan het micro soft Translator Text-API-abonnement.
 
-![Werkruimte](media/quickstart/terms-of-service.png)
-![maken](media/quickstart/create-workspace-1.png)
-![Werkruimte](media/quickstart/create-workspace-2.png)
-![maken](media/quickstart/create-workspace-3.png)
-![Werkruimte](media/quickstart/create-workspace-4.png)
-![maken](media/quickstart/create-workspace-5.png)
-![Werkruimte maken Werkruimte maken Werkruimte maken Werkruimte maken Werkruimte maken Werkruimte maken](media/quickstart/create-workspace-6.png)
+![](media/quickstart/terms-of-service.png)
+![](media/quickstart/create-workspace-1.png)
+![](media/quickstart/create-workspace-2.png)
+![Werk ruimte](media/quickstart/create-workspace-3.png)
+maken werk ruimte maken werk ruimte maken werk ruimte maken werk ruimte maken werkruimte maken werk ruimte maken![](media/quickstart/create-workspace-4.png)
+![](media/quickstart/create-workspace-5.png)
+![](media/quickstart/create-workspace-6.png)
 
-Ga bij volgende bezoeken aan de portal Aangepaste vertaler naar de pagina Instellingen waar u uw werkruimte beheren, meer werkruimten maken, uw Microsoft Translator Text API-abonnementssleutel koppelen aan uw werkruimten, mede-eigenaren toevoegen en een abonnementssleutel.
+Ga naar de pagina instellingen van de aangepaste Vertaal Portal, waar u uw werk ruimte kunt beheren, maak meer werk ruimten, koppel uw micro soft Translator Text-API-abonnements sleutel aan uw werk ruimten, voeg mede-eigen aars toe en wijzig een abonnements sleutel.
 
 ## <a name="create-a-project"></a>Een project maken
 

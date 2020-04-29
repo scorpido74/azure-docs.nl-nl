@@ -1,6 +1,6 @@
 ---
-title: CLI-script - Slow query-logboeken downloaden - Azure Database voor MariaDB
-description: In dit voorbeeld van Azure CLI-script ziet u hoe u de slow querylogs van een Azure Database voor MariaDB-server in- en downloadt.
+title: CLI-script-trage query logboeken downloaden-Azure Database for MariaDB
+description: Dit Azure CLI-voorbeeld script laat zien hoe u de langzame query logboeken van een Azure Database for MariaDB-server inschakelt en downloadt.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
@@ -9,10 +9,10 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 12/02/2019
 ms.openlocfilehash: a6d4ed70418f39b24a68362d5006f3f374693cb6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74777345"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>Logboeken voor langzame query's van een Azure Database for MariaDB-server inschakelen en downloaden met behulp van Azure CLI
@@ -33,7 +33,7 @@ Gebruik de volgende opdracht om de resourcegroep en alle resources die er aan zi
 ## <a name="script-explanation"></a>Uitleg van het script
 Dit script maakt gebruik van de opdrachten die in de volgende tabel worden weergegeven:
 
-| **Opdracht** | **Opmerkingen** |
+| **Cmd** | **Opmerkingen** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create) | Hiermee wordt een MariaDB-server gemaakt waarop de databases worden gehost. |

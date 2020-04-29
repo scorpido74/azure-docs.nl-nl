@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Een app voor verbonden afvalbeheer maken met Azure IoT Central'
-description: 'Zelfstudie: Leer een beheertoepassing voor verbonden afvalbeheer maken met Azure IoT Central-toepassingssjablonen.'
+title: 'Zelf studie: een verbonden afval beheer-app maken met Azure IoT Central'
+description: 'Zelf studie: meer informatie over het maken van een verbonden afval beheer toepassing met behulp van Azure IoT Central-toepassings sjablonen.'
 author: miriambrus
 ms.author: miriamb
 ms.date: 11/12/2019
@@ -8,265 +8,265 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77426357"
 ---
-# <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Zelfstudie: Een toepassing voor verbonden afvalbeheer maken in IoT Central
+# <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Zelf studie: een verbonden afval beheer toepassing maken in IoT Central
 
 
 
-Met deze zelfstudie u een Azure IoT Central-toepassing voor verbonden afvalbeheer maken op basis van de sjabloon **voor afvalbeheerbeheer van** IoT Central Connected. 
+In deze zelf studie wordt u begeleid bij het maken van een met Azure IoT Central verbonden afval beheer toepassing vanuit de sjabloon IoT Central **verbonden afval beheer** toepassing. 
 
 In deze zelfstudie leert u het volgende: 
 
 > [!div class="checklist"]
 
-> * Gebruik de azure IoT Central **Connected-afvalbeheersjabloon** om uw beheertoepassing voor verbonden afvalbeheer te maken
-> * Bedieningsdashboard verkennen en aanpassen 
-> * Sjabloon voor verbonden afvalopslagapparaten verkennen
+> * Gebruik de sjabloon voor het beheer van verbonden **afval** van Azure IOT Central om uw verbonden afval beheer toepassing te maken
+> * Het dash board van de operator verkennen en aanpassen 
+> * Sjabloon voor het apparaat voor verbonden afval bakken verkennen
 > * Gesimuleerde apparaten verkennen
 > * Regels verkennen en configureren
 > * Taken configureren
-> * Uw toepassingsbranding aanpassen met whitelabeling
+> * Uw huis stijl aanpassen met behulp van witlabels
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor deze zelfstudie hebt u het volgende nodig:
--  Een Azure-abonnement wordt aanbevolen. U optioneel een gratis proefperiode van 7 dagen gebruiken. Als u geen Azure-abonnement hebt, u er een maken op de [aanmeldingspagina van Azure.](https://aka.ms/createazuresubscription)
+-  U wordt aangeraden een Azure-abonnement te nemen. U kunt eventueel een gratis proef versie van 7 dagen gebruiken. Als u geen Azure-abonnement hebt, kunt u er een maken op de [Azure-aanmeldings pagina](https://aka.ms/createazuresubscription).
 
-## <a name="create-connected-waste-management-app-in-iot-central"></a>Connected Waste Management-app maken in IoT Central
+## <a name="create-connected-waste-management-app-in-iot-central"></a>Een verbonden afval beheer-app maken in IoT Central
 
-In deze sectie gebruikt u de azure IoT Central **Connected-afvalbeheersjabloon** om uw toepassing voor verbonden afvalbeheer te maken in IoT Central.
+In deze sectie gebruikt u de Azure IoT Central- **sjabloon voor het beheer van verbonden afval** om uw verbonden afval beheer toepassing te maken in IOT Central.
 
-Ga als volgende voor een nieuwe Azure IoT Central connected waste management-toepassing:  
+Een nieuwe Azure IoT Central-toepassing voor het beheer van verbonden afval maken:  
 
-1. Navigeer naar de website [van Azure IoT Central-startpagina.](https://aka.ms/iotcentral)
+1. Ga naar de website van de [Azure IOT Central-start pagina](https://aka.ms/iotcentral) .
 
-    Als u een Azure-abonnement hebt, meldt u zich aan met de referenties die u gebruikt om toegang te krijgen, anders meldt u zich aan met een Microsoft-account:
+    Als u een Azure-abonnement hebt, meldt u zich aan met de referenties die u gebruikt om het te openen. u kunt zich ook aanmelden met een Microsoft-account:
 
     ![Voer uw organisatieaccount in](./media/tutorial-connectedwastemanagement/sign-in.png)
 
-2. Klik op **Bouwen** in het linkerdeelvenster en selecteer het tabblad **Overheid.** Op de overheidspagina worden verschillende toepassingssjablonen van de overheid weergegeven.
+2. Klik op **Build** in het linkerdeel venster en selecteer het tabblad **Government** . Op de pagina Government worden verschillende Government-toepassings sjablonen weer gegeven.
 
-    ![Sjablonen voor overheidsapps maken](./media/tutorial-connectedwastemanagement/iotcentral-government-tab-overview.png)
+    ![Sjablonen voor Government-apps bouwen](./media/tutorial-connectedwastemanagement/iotcentral-government-tab-overview.png)
 
-1. Selecteer de toepassingssjabloon **Verbonden afvalbeheer.** Deze sjabloon bevat sjabloon voor een voorbeeld van verbonden afvalopslag, gesimuleerd apparaat, bedieningsdashboard en vooraf geconfigureerde controleregels.    
+1. Selecteer de sjabloon **verbonden afval beheer** toepassing. Deze sjabloon bevat voor beelden van gekoppelde afval lade, gesimuleerd apparaat, operator dashboard en vooraf geconfigureerde bewakings regels.    
 
-2. Klik **op App maken**, waarmee het formulier Nieuwe **toepassingwordt** geopend met de volgende velden:
-    * **Toepassingsnaam**. Standaard maakt de toepassing gebruik *van Verbonden afvalbeheer,* gevolgd door een unieke ID-tekenreeks die IoT Central genereert. Kies eventueel een vriendelijke toepassingsnaam. U de naam van de toepassing later ook wijzigen.
-    * **URL** – Optioneel u kiezen voor de gewenste URL. U de URL later ook wijzigen. 
-    * Als u een Azure-abonnement hebt, voert u uw *directory, Azure-abonnement en Regio in.* Als u geen abonnement hebt, u **een gratis proefperiode van 7 dagen** inschakelen en de vereiste contactgegevens invullen.  
+2. Klik op **app maken**, waarmee u een nieuw formulier voor het maken van een **toepassing** kunt openen met de volgende velden:
+    * **Toepassings naam**. De toepassing maakt standaard gebruik van *verbonden afval beheer* , gevolgd door een unieke id-reeks die IOT Central gegenereerd. U kunt desgewenst een beschrijvende toepassings naam kiezen. U kunt de toepassings naam later ook wijzigen.
+    * **URL** : u kunt desgewenst de gewenste URL kiezen. U kunt de URL later ook wijzigen. 
+    * Als u een Azure-abonnement hebt, voert u uw *adres lijst, het Azure-abonnement en de regio*in. Als u geen abonnement hebt, kunt u een **gratis proef versie van 7 dagen** inschakelen en de vereiste contact gegevens volt ooien.  
 
     Zie de [snelstart over het maken van een toepassing](../core/quick-deploy-iot-central.md)voor meer informatie over directory's en abonnementen.
 
-5. Klik onder aan de pagina op De knop **Maken.** 
+5. Klik op de knop **maken** onder aan de pagina. 
 
-    ![Azure IoT Central Create Connected Waste Application pagina](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement.png)
+    ![Azure IoT Central-pagina voor het maken van een verbonden afval toepassing](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement.png)
     
-    ![Azure IoT Central-factureringsgegevens maken](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
+    ![Azure IoT Central gekoppelde facturerings gegevens maken](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
 
  
-6. U hebt nu een verbonden afvalbeheer-app gemaakt met behulp van de azure IoT Central **Connected-afvalbeheersjabloon.** 
+6. U hebt nu een verbonden afval beheer-app gemaakt met behulp van de sjabloon voor het **beheer van verbonden afval**van Azure IOT Central. 
 
-Gefeliciteerd! Uw nieuw gemaakte toepassing wordt geleverd met vooraf geconfigureerd:
-* Voorbeeldoperatordashboards
-* Voorbeeld van vooraf gedefinieerde sjablonen voor verbonden afvalopslag
-* Gesimuleerde aangesloten afvalbakapparaten
+Gefeliciteerd! Uw zojuist gemaakte toepassing wordt geleverd met vooraf geconfigureerd:
+* Voor beeld-operator dashboards
+* Voor beeld van vooraf gedefinieerde gekoppelde afval lade-sjablonen voor apparaten
+* Gesimuleerde gekoppelde afval bakken-apparaten
 * Vooraf geconfigureerde regels en taken
-* Voorbeeld van branding met behulp van white labeling 
+* Voor beeld van een huis stijl met wit labelen 
 
-Het is uw toepassing en u het op elk gewenst moment wijzigen. Laten we nu de toepassing verkennen en enkele aanpassingen maken.  
+Het is uw toepassing en u kunt deze op elk gewenst moment wijzigen. We gaan nu de toepassing verkennen en enkele aanpassingen aanbrengen.  
 
-## <a name="explore-and-customize-operator-dashboard"></a>Bedieningsdashboard verkennen en aanpassen 
-Na het maken van de applicatie kom je terecht in het **Wide Waste connected waste management dashboard.**
+## <a name="explore-and-customize-operator-dashboard"></a>Het dash board van de operator verkennen en aanpassen 
+Nadat u de toepassing hebt gemaakt die u hebt gelandd in het **dash board voor het beheer van verbonden afval**.
 
-   ![Dashboard verbonden afvalbeheer](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard1.png)
+   ![Dash board voor verbonden afval beheer](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard1.png)
 
-Als bouwer u weergaven op het dashboard voor operators maken en aanpassen. Voordat u probeert aan te passen, gaan we het dashboard verkennen. 
+Als ontwerper kunt u weer gaven maken en aanpassen in het dash board voor Opera tors. Voordat u probeert te aanpassen, gaan we het dash board verkennen. 
 
 > [!NOTE]
-> Alle gegevens die in het dashboard worden weergegeven, zijn gebaseerd op gesimuleerde apparaatgegevens, die in de volgende sectie worden onderzocht. 
+> Alle gegevens die in het dash board worden weer gegeven, zijn gebaseerd op gesimuleerde apparaatgegevens, die in de volgende sectie worden verkend. 
 
-Het dashboard bestaat uit verschillende soorten tegels:
+Het dash board bestaat uit verschillende soorten tegels:
 
-* ***Wide World Waste utility image tile***: de eerste tegel in het dashboard is een afbeeldingstegel van een fictief Afvalbedrijf "Wide World Waste". U de tegel aanpassen en uw eigen afbeelding plaatsen of verwijderen. 
+* ***Tegel***: de eerste tegel in het dash board is een afbeeldings tegel van een fictief afval programma voor grote wereld wijd afval. U kunt de tegel aanpassen en uw eigen installatie kopie plaatsen of verwijderen. 
 
-* ***Afbeeldingstegel afvalopslag:*** u afbeeldings- en inhoudstegels gebruiken om een visuele weergave te maken van het apparaat dat wordt gecontroleerd, samen met een beschrijvende tekst. 
+* Tegel met afbeeldingen van ***afval bakken***: u kunt afbeeldingen en inhouds tegels gebruiken om een visuele weer gave te maken van het apparaat dat wordt bewaakt samen met een beschrijvende tekst. 
 
-* ***KPI-tegel opvulniveau***: de tegel geeft een waarde weer die wordt gerapporteerd door een *vulniveausensor* in een afvalopslaglocatie. *Vulniveau* en andere sensoren zoals *geurmeter* of *gewicht* in een afvalbak kunnen op afstand worden gecontroleerd. Een operator kan actie ondernemen, zoals het verzenden van vuilniswagens. 
+* ***KPI-tegel op opvul niveau***: de tegel geeft een waarde weer die is gerapporteerd door een sensor op *opvul niveau* in een afval lade. *Opvul niveau* en andere Sens oren zoals *odor meter* of *gewicht* in een afval lade kunnen op afstand worden bewaakt. Een operator kan actie ondernemen, zoals de mand verzamelings truck voor het verzenden van de Prullenbak. 
 
-*  ***Gebiedskaart voor afvalbewaking***: de kaart maakt gebruik van Azure Maps, die u rechtstreeks configureren in Azure IoT Central. De kaarttegel geeft de locatie van het apparaat weer. Probeer over de kaart te zweven en probeer de besturingselementen over de kaart, zoals inzoomen, uitzoomen of uitvouwen.
+*  ***Overzicht van de bewakings ruimte***: de kaart maakt gebruik van Azure Maps, die u rechtstreeks in azure IOT Central kunt configureren. Op de kaart tegel wordt de locatie van het apparaat weer gegeven. Beweeg de muis aanwijzer over de kaart en probeer de besturings elementen op de kaart uit, zoals inzoomen, uitzoomen of uitvouwen.
 
-     ![Dashboardkaart verbonden afvalbeheer](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-map.png)
-
-
-* ***Vul-, geur-, gewichtsbalkdiagram:** u één of meerdere telemetriegegevens van een apparaat visualiseren in een staafdiagram. U ook het staafdiagram uitbreiden.  
-
-  ![Dashboarddiagram verbonden afvalbeheer](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-barchart.png)
+     ![Dash board toewijzing verbonden afval beheer](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-map.png)
 
 
-* **Inhoudstegel Field Services**: het dashboard bevat een koppeling naar hoe u integreren met Dynamics 365 Field Services vanuit uw Azure IoT Central-toepassing. U bijvoorbeeld Field Services gebruiken om tickets te maken voor het verzenden van afvalophaalservices. 
+* ***Lijn diagram voor vulling, odor, gewichts niveau**: u kunt een of meer telemetriegegevens van een apparaat in een staaf diagram visualiseren. U kunt ook het staaf diagram verg Roten.  
+
+  ![Staaf diagram voor verbonden afval beheer dashboard](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-barchart.png)
 
 
-### <a name="customize-dashboard"></a>Dashboard aanpassen 
+* **Inhouds tegel voor veld Services**: het dash board bevat een koppeling naar de integratie met Dynamics 365-veld services van uw Azure IOT Central-toepassing. U kunt bijvoorbeeld Field Services gebruiken om tickets te maken voor het verzenden van Collection-Services voor verplaatsen. 
 
-Als bouwer u weergaven in dashboard voor operators aanpassen. U proberen:
-1. Klik op **Bewerken** om het **dashboard voor verbonden afvalbeheer in De Wijwereld**aan te passen. U het dashboard aanpassen door op het menu **Bewerken te** klikken. Zodra het dashboard in de **bewerkingsmodus** is, u nieuwe tegels toevoegen of configureren 
+
+### <a name="customize-dashboard"></a>Dash board aanpassen 
+
+Als bouwer kunt u weer gaven in het dash board aanpassen voor Opera tors. U kunt het volgende proberen:
+1. Klik op **bewerken** om het **Wide World Connected afval beheer-dash board**aan te passen. U kunt het dash board aanpassen door te klikken op het menu **bewerken** . Wanneer het dash board zich in de **bewerkings** modus bevindt, kunt u nieuwe tegels toevoegen of configureren 
 
     ![Dashboard bewerken](./media/tutorial-connectedwastemanagement/edit-dashboard.png)
 
-2. U ook klikken op **+ Nieuw** om nieuw dashboard te maken en configureren vanaf nul. U meerdere dashboards hebben en u navigeren tussen uw dashboards vanuit het dashboardmenu. 
+2. U kunt ook klikken op **+ Nieuw** om een nieuw dash board te maken en helemaal nieuwe configureren. U kunt meerdere Dash boards hebben en u kunt scha kelen tussen uw Dash boards in het menu van het dash board. 
 
-## <a name="explore-connected-waste-bin-device-template"></a>Sjabloon voor verbonden afvalopslagapparaten verkennen
+## <a name="explore-connected-waste-bin-device-template"></a>Sjabloon voor het apparaat voor verbonden afval bakken verkennen
 
-Een apparaatsjabloon in Azure IoT Central definieert de mogelijkheden van een apparaat, dat telemetrie, eigenschappen of opdrachten kan zijn. Als bouwer u apparaatsjablonen definiëren die de mogelijkheden vertegenwoordigen van de apparaten waarmee u verbinding maakt. 
+Met een apparaatprofiel in azure IoT Central definieert u de mogelijkheid van een apparaat, dat telemetrie, eigenschappen of opdracht kan zijn. Als opbouw functie kunt u apparaatprofielen definiëren die de mogelijkheid vertegenwoordigen van de apparaten die u wilt verbinden. 
  
 
-De **toepassing Verbonden afvalbeheer** wordt geleverd met een sjabloon voor een sjabloon voor een apparaat met een eigen beheervan de afvalbak.
+De **verbonden afval beheer** toepassing wordt geleverd met een voor beeld van een gekoppelde sjabloon voor het koppelen van afval bakken.
 
-Ga als een voorbeeld van het apparaat:
+De sjabloon voor het apparaat weer geven:
 
-1. Klik op **Apparaatsjablonen** in het linkerdeelvenster van uw toepassing in IoT Central. 
+1. Klik op **device-sjablonen** in het linkerdeel venster van uw toepassing in IOT Central. 
 
-    ![Apparaatsjabloon](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
+    ![Apparaatprofiel](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
-2. In de lijst Apparaatsjablonen ziet u **Verbonden afvalopslag**. Open door op de naam te klikken.
+2. In de lijst met Apparaatinstellingen ziet u de **gekoppelde afval lade**. Open door op de naam te klikken.
 
-3. Vertrouwd te raken met de mogelijkheden van de apparaatsjabloon. U zien dat het definieert sensoren zoals *Vulniveau,* *Geur meter,* *gewicht,* *locatie,* en anderen.
+3. Raadpleeg de mogelijkheden van de sjabloon voor het apparaat. U kunt zien dat Sens oren als *opvul niveau*, *odor meter*, *gewicht*, *locatie*en andere worden gedefinieerd.
 
-   ![Apparaatsjabloon](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
+   ![Apparaatprofiel](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
    
 
-### <a name="customizing-the-device-template"></a>De apparaatsjabloon aanpassen
+### <a name="customizing-the-device-template"></a>De sjabloon voor het apparaat aanpassen
 
 Probeer het volgende aan te passen:
-1. Navigeren **naar aanpassen vanuit** het menu apparaatsjabloon
-2. Het `Odor meter` telemetrietype zoeken
-3. De **weergavenaam** `Odor meter` bijwerken naar`Odor level`
-4. U ook proberen de meeteenheid bijwerken of *de minwaarde* en *de maximumwaarde* instellen
-5. **Eventuele** wijzigingen opslaan 
+1. Ga naar **aanpassen** via het menu van de sjabloon voor het apparaat
+2. Het `Odor meter` type telemetrie zoeken
+3. De **weergave naam** van `Odor meter` wijzigen in`Odor level`
+4. U kunt ook de maat eenheid bijwerken of de *minimum waarde* en de *maximum waarde* instellen
+5. Wijzigingen **Opslaan** 
 
-### <a name="add-a-cloud-property"></a>Een cloudeigenschap toevoegen 
+### <a name="add-a-cloud-property"></a>Een Cloud eigenschap toevoegen 
 
-1. Navigeren naar **de eigenschap Cloud** vanuit het menu apparaatsjabloon
-2. Voeg een nieuwe cloudeigenschap toe door te klikken op **+ Cloudeigenschap toevoegen**. In IoT Central u een eigenschap toevoegen die relevant is voor het apparaat, maar waarvan niet wordt verwacht dat deze door een apparaat wordt verzonden. Een cloudproperty kan bijvoorbeeld een waarschuwingsdrempel zijn die specifiek is voor installatiegebied, asset-informatie of onderhoudsinformatie en andere informatie. 
-3. **Eventuele** wijzigingen opslaan 
+1. Ga naar de **eigenschap Cloud** in het menu van de sjabloon voor het apparaat
+2. Voeg een nieuwe Cloud eigenschap toe door op **+ Cloud eigenschap toevoegen**te klikken. In IoT Central kunt u een eigenschap toevoegen die relevant is voor het apparaat, maar niet naar verwachting door een apparaat wordt verzonden. Een voor beeld: een Cloud eigenschap kan een drempel waarde zijn die specifiek is voor de installatie, informatie over activa of onderhouds informatie en andere informatie. 
+3. Wijzigingen **Opslaan** 
  
 ### <a name="views"></a>Weergaven 
-* De sjabloon voor verbonden afvalopslagapparaten wordt geleverd met vooraf gedefinieerde weergaven. Bekijk de weergaven en je updates maken. De weergaven definiëren hoe operators de apparaatgegevens zien, maar ook cloud-eigenschappen invoeren. 
+* De sjabloon voor het koppelen van afval bakken is voorzien van vooraf gedefinieerde weer gaven. Bekijk de weer gaven en u kunt updates maken. De weer gaven bepalen hoe Opera tors de gegevens van het apparaat zien, maar ook Cloud eigenschappen in te voeren. 
 
-  ![Weergave van apparaatsjabloon's](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-views.png)
+  ![Sjabloon weergaven voor apparaten](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-views.png)
 
 ### <a name="publish"></a>Publiceren 
 
-* Als u wijzigingen hebt aangebracht, moet u de apparaatsjabloon **publiceren.** 
+* Als u wijzigingen hebt aangebracht, moet u ervoor zorgen dat u de sjabloon voor het apparaat **publiceert** . 
 
 ### <a name="create-a-new-device-template"></a>Een nieuwe apparaatsjabloon maken 
 
-* Selecteer **+ Nieuw** om een nieuwe apparaatsjabloon te maken en volg het creatieproces. U helemaal opnieuw een aangepaste apparaatsjabloon maken of u een apparaatsjabloon kiezen in de Azure-apparaatcatalogus. 
+* Selecteer **+ Nieuw** om een nieuwe sjabloon voor het apparaat te maken en volg het aanmaak proces. U kunt zelf een volledig nieuwe sjabloon maken of een sjabloon voor een apparaat uit de Azure-Apparaatbeheer kiezen. 
 
 ## <a name="explore-simulated-devices"></a>Gesimuleerde apparaten verkennen
 
-In IoT Central u gesimuleerde apparaten maken om uw apparaatsjabloon en -toepassing te testen. 
+In IoT Central kunt u gesimuleerde apparaten maken om de sjabloon en toepassing van uw apparaat te testen. 
 
-De **toepassing Verbonden afvalbeheer** heeft twee gesimuleerde apparaten die zijn toegewezen aan de sjabloon voor de aangesloten afvalopslag. 
+De **verbonden afval beheer** toepassing beschikt over twee gesimuleerde apparaten die zijn toegewezen aan de sjabloon voor aangesloten afval lade. 
 
-### <a name="to-view-the-devices"></a>Ga als het gaat om het bekijken van de apparaten:
+### <a name="to-view-the-devices"></a>De apparaten weer geven:
 
-1. Navigeer naar **apparaat vanuit** het linkerdeelvenster van IoT Centraal. 
+1. Ga naar **apparaat** vanuit IOT Central linkerdeel venster. 
 
    ![Apparaten](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices.png)
 
-2. Selecteer en klik op het apparaat Verbonden afvalopslag.  
+2. Selecteer en klik op verbonden afval lade apparaat.  
 
      ![Apparaat 1](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices-bin1.png)
 
-3. Navigeer naar het tabblad **Cloudeigenschappen** en probeer de `Bin full alert threshold` waarde bij te werken van `95` . `100` 
-* Ga naar het tabblad **Apparaateigenschappen** en het tabblad **Apparaatdashboard.** 
+3. Ga naar het tabblad **Cloud eigenschappen** , probeer de `Bin full alert threshold` waarde bij `95` te `100`werken van naar. 
+* Verken **het tabblad apparaateigenschappen en** het tabblad **apparaat-dash board** . 
 
 > [!NOTE]
-> Houd er rekening mee dat alle tabbladen zijn geconfigureerd via de **apparaatsjabloonweergaven**.
+> Houd er rekening mee dat alle tabbladen zijn geconfigureerd in de **weer gaven**van de apparaatinstellingen.
 
 ### <a name="add-new-devices"></a>Nieuwe apparaten toevoegen
 
-* U nieuwe apparaten toevoegen door op **+ Nieuw** te klikken op het tabblad **Apparaten.** 
+* U kunt nieuwe apparaten toevoegen door op het tabblad **apparaten** op **+ Nieuw** te klikken. 
 
 ## <a name="explore-and-configure-rules"></a>Regels verkennen en configureren
 
-In Azure IoT Central u regels maken om automatisch te controleren op apparaattelemetrie en acties activeren wanneer aan een of meer voorwaarden is voldaan. De acties kunnen bestaan uit het verzenden van e-mailmeldingen, het activeren van een Microsoft Flow-actie of een webhook-actie om gegevens naar andere services te verzenden.
+In azure IoT Central kunt u regels maken om de telemetrie van apparaten automatisch te controleren en acties activeren wanneer aan een of meer voor waarden wordt voldaan. De acties omvatten mogelijk het verzenden van e-mail meldingen, het activeren van een Microsoft Flow actie of een webhook-actie voor het verzenden van gegevens naar andere services.
 
-De toepassing **Verbonden afvalbeheer** heeft vier voorbeeldregels.
+De toepassing voor het **beheer van verbonden afval** heeft vier voorbeeld regels.
 
-### <a name="to-view-rules"></a>Regels bekijken:
-1. Navigeren naar **regels vanuit** het linkerdeelvenster van IoT Centraal
+### <a name="to-view-rules"></a>Regels weer geven:
+1. Navigeren naar **regels** uit IOT Central linkerdeel venster
 
    ![Regels](./media/tutorial-connectedwastemanagement/connectedwastemanagement-rules.png)
 
-2. De **waarschuwing Volledig opslaglocatie selecteren**
+2. De **volledige waarschuwing** voor de lade selecteren
 
-     ![Waarschuwing voor volledige opslaglocatie](./media/tutorial-connectedwastemanagement/connectedwastemanagement-binfullalert.png)
+     ![Volledige bin-waarschuwing](./media/tutorial-connectedwastemanagement/connectedwastemanagement-binfullalert.png)
 
- 3. De `Bin full alert` controles wanneer **voorwaarde** `Fill level is greater than or equal to Bin full alert threshold`.
+ 3. De `Bin full alert` controle op **voor waarde** `Fill level is greater than or equal to Bin full alert threshold`.
 
-    Het `Bin full alert threshold` is een *cloudeigenschap* `Connected waste bin` die is gedefinieerd in de apparaatsjabloon. 
+    De `Bin full alert threshold` is een *Cloud eigenschap* die is gedefinieerd `Connected waste bin` in de sjabloon voor het apparaat. 
 
-Laten we nu een e-mailactie maken.
+Nu gaan we een e-mail actie maken.
 
-### <a name="create-an-email-action"></a>Een e-mailactie maken
-Ga als lid van de actie voor de regel:
-1. Selecteer **+ E-mail**. 
-2. Voer *een hoge pH-waarschuwing in* als de vriendelijke **weergavenaam** voor de actie.
-3. Voer het e-mailadres in dat is gekoppeld aan uw IoT Central-account in **Aan**. 
-4. Voer eventueel een notitie in die u wilt opnemen in de tekst van de e-mail.
-5. Selecteer **Gereed** om de actie te voltooien.
+### <a name="create-an-email-action"></a>Een e-mail actie maken
+Een e-mail actie configureren in de acties lijst van de regel:
+1. Selecteer **+ e-mail adres**. 
+2. Voer een *hoge pH-waarschuwing* in als de beschrijvende **weergave naam** voor de actie.
+3. Voer het e-mail **adres in dat is gekoppeld aan uw**IOT Central account in. 
+4. Voer eventueel een opmerking in die u wilt toevoegen in de tekst van het e-mail bericht.
+5. Selecteer **gereed** om de actie te volt ooien.
 6. Selecteer **Opslaan** om de nieuwe regel op te slaan en te activeren. 
 
-U moet e-mail ontvangen wanneer aan de geconfigureerde **voorwaarde** is voldaan.
+U ontvangt een e-mail wanneer aan de geconfigureerde **voor waarde** is voldaan.
 
 > [!NOTE]
-> De applicatie stuurt e-mail elke keer dat aan een voorwaarde wordt voldaan. **Schakel** de regel uit om geen e-mail meer te ontvangen van de geautomatiseerde regel. 
+> Telkens wanneer aan een voor waarde wordt voldaan, verzendt de toepassing een e-mail bericht. **Schakel** de regel uit om het ontvangen van e-mail van de automatische regel te stoppen. 
   
-Ga als lid van het volgende over een nieuwe regel: 
-1. Selecteer **+Nieuw** in het **linkerdeelvenster.**
+Een nieuwe regel maken: 
+1. Selecteer **+ Nieuw** op de **regels** in het linkerdeel venster.
 
 ## <a name="configure-jobs"></a>Taken configureren
 
-Met IoT Central u met taken updates voor apparaat- of cloudeigenschappen activeren op meerdere apparaten. Naast eigenschappen u ook taken gebruiken om apparaatopdrachten op meerdere apparaten te activeren. IoT Central automatiseert de workflow voor u. 
+In IoT Central kunt u met taken apparaat-of Cloud eigenschappen updates op meerdere apparaten activeren. Naast eigenschappen kunt u ook taken gebruiken om opdrachten op meerdere apparaten te activeren. De werk stroom wordt door IoT Central automatisch geautomatiseerd. 
 
-1. Ga vanuit het linkerdeelvenster naar **Vacatures.** 
-2. Klik **op +Nieuw** en configureer een of meer taken. 
+1. Ga naar **taken** in het linkerdeel venster. 
+2. Klik op **+ Nieuw** en configureer een of meer taken. 
 
 
 ## <a name="customize-your-application"></a>Uw toepassing aanpassen 
 
-Als bouwer u verschillende instellingen wijzigen om de gebruikerservaring in uw toepassing aan te passen.
+Als ontwerper kunt u verschillende instellingen wijzigen om de gebruikers ervaring in uw toepassing aan te passen.
 
-### <a name="to-change-the-application-theme"></a>Ga als u het toepassingsthema wijzigen:
+### <a name="to-change-the-application-theme"></a>Het toepassings thema wijzigen:
 
-1. Ga naar **Administratie > Uw toepassing aanpassen.**
-3. Gebruik de knop **Wijzigen** om een afbeelding te kiezen die u wilt uploaden als het **toepassingslogo.**
-4. Gebruik de knop **Wijzigen** om een **browserafbeelding** te kiezen die wordt weergegeven op browsertabbladen.
-5. U ook de **standaardbrowserkleuren** vervangen door HTML-hexadecimale kleurcodes toe te voegen.
+1. Ga naar **beheer > uw toepassing**aan te passen.
+3. Gebruik de knop **wijzigen** om een afbeelding te kiezen die u wilt uploaden als het **toepassings logo**.
+4. Gebruik de knop **wijzigen** om een **browser pictogram** afbeelding te kiezen die wordt weer gegeven op de tabbladen van de browser.
+5. U kunt ook de standaard **browser kleuren** vervangen door HTML-hexadecimale kleur codes toe te voegen.
 
-   ![Azure IoT Central past uw toepassing aan](./media/tutorial-connectedwastemanagement/connectedwastemanagement-customize-your-application.png)
+   ![Uw toepassing aanpassen met Azure IoT Central](./media/tutorial-connectedwastemanagement/connectedwastemanagement-customize-your-application.png)
 
-6. U toepassingsafbeeldingen ook wijzigen door naar de **instellingen voor beheer > toepassing** te gaan en **afbeeldingsknop selecteren** om een afbeelding te kiezen die u als toepassingsafbeelding wilt uploaden.
-7. Ten slotte u **het thema** ook wijzigen door op **Instellingen** op de mastkop van de toepassing te klikken.
+6. U kunt ook installatie kopieën van toepassingen wijzigen door te gaan naar de **beheer > toepassings instellingen** en de knop **afbeelding selecteren** om een afbeelding te kiezen die u als de installatie kopie van de toepassing wilt uploaden.
+7. Ten slotte kunt u het **thema** ook wijzigen door te klikken op **instellingen** in het Impressum van de toepassing.
 
   
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze toepassing niet blijft gebruiken, verwijdert u uw toepassing met de volgende stappen:
+Als u deze toepassing niet wilt blijven gebruiken, verwijdert u uw toepassing met de volgende stappen:
 
-1. Open het tabblad Beheer in het linkerdeelvenster van uw IoT Central-toepassing.
-2. Selecteer Toepassingsinstellingen en klik onder aan de pagina op Verwijderen.
+1. Open het tabblad beheer in het linkerdeel venster van uw IoT Central-toepassing.
+2. Selecteer toepassings instellingen en klik onder aan de pagina op de knop verwijderen.
 
   
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [connected waste management concepten](./concepts-connectedwastemanagement-architecture.md)
+* Meer informatie over de [concepten van een verbonden afval beheer](./concepts-connectedwastemanagement-architecture.md)

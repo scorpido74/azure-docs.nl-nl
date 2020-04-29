@@ -1,7 +1,7 @@
 ---
-title: 'Tutorial 2: Trein krediet risico modellen'
+title: 'Zelf studie 2: Credit risico modellen trainen'
 titleSuffix: ML Studio (classic) - Azure
-description: Een gedetailleerde zelfstudie waarin wordt uitgelegd hoe u een oplossing voor voorspellende analyses maakt voor kredietrisicobeoordeling in Azure Machine Learning Studio (klassiek). Deze zelfstudie is deel twee van een driedelige reeks. Ze laat zien hoe u modellen moet trainen en evalueren.
+description: Een gedetailleerde zelf studie waarin wordt getoond hoe u een predictive analytics oplossing kunt maken voor een beoordeling van een credit risico in Azure Machine Learning Studio (klassiek). Deze zelfstudie is deel twee van een driedelige reeks. Ze laat zien hoe u modellen moet trainen en evalueren.
 keywords: kredietrisico, predictive analytics-oplossing, risico-evaluatie
 author: sdgilley
 ms.author: sgilley
@@ -11,25 +11,25 @@ ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
 ms.openlocfilehash: 8feca17f10bb891f0ca5577b2363f95901da4a46
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79217875"
 ---
-# <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Zelfstudie 2: Model's voor kredietrisico's trainen - Azure Machine Learning Studio (klassiek)
+# <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Zelf studie 2: Credit risico modellen trainen-Azure Machine Learning Studio (klassiek)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-In deze zelfstudie wordt uitgebreid ingegaan op het ontwikkelingsproces van een predictive analytics-oplossing. Je ontwikkelt een eenvoudig model in Machine Learning Studio (klassiek).  Vervolgens implementeert u het model als een Azure Machine Learning-webservice.  Dit geïmplementeerde model kan voorspellingen doen op basis van nieuwe gegevens. Deze zelfstudie is **deel twee van een driedelige reeks**.
+In deze zelfstudie wordt uitgebreid ingegaan op het ontwikkelingsproces van een predictive analytics-oplossing. U ontwikkelt een eenvoudig model in Machine Learning Studio (klassiek).  Vervolgens implementeert u het model als een Azure Machine Learning-webservice.  Dit geïmplementeerde model kan voorspellingen doen op basis van nieuwe gegevens. Deze zelfstudie is **deel twee van een driedelige reeks**.
 
 Stel dat u iemands kredietrisico moet voorspellen op basis van de gegevens die deze persoon in een kredietaanvraag heeft ingevuld.  
 
-Kredietrisicobeoordeling is een complex probleem, maar in deze zelfstudie wordt het enigszins vereenvoudigd. U gebruikt het als een voorbeeld van hoe u een oplossing voor voorspellende analyses maken met Microsoft Azure Machine Learning Studio (klassiek). U gebruikt Azure Machine Learning Studio (klassiek) en een Machine Learning-webservice voor deze oplossing.  
+Kredietrisicobeoordeling is een complex probleem, maar in deze zelfstudie wordt het enigszins vereenvoudigd. U gebruikt deze als voor beeld van hoe u een predictive analytics oplossing kunt maken met behulp van Microsoft Azure Machine Learning Studio (klassiek). U gebruikt Azure Machine Learning Studio (klassiek) en een Machine Learning-webservice voor deze oplossing.  
 
 In deze driedelige zelfstudie begint u met openbaar beschikbare kredietrisicogegevens.  Vervolgens ontwikkelt en traint u een voorspellend model.  En ten slotte implementeert u het model als een webservice.
 
-In [deel één van de zelfstudie](tutorial-part1-credit-risk.md)hebt u een Machine Learning Studio (klassieke) werkruimte gemaakt, gegevens geüpload en een experiment gemaakt.
+In [deel één van de zelf studie](tutorial-part1-credit-risk.md)hebt u een machine learning Studio (klassieke) werk ruimte gemaakt, gegevens geüpload en een experiment gemaakt.
 
 In dit deel van de zelfstudie gaat u het volgende doen:
  
@@ -46,14 +46,14 @@ Voltooi [deel één van de zelfstudie](tutorial-part1-credit-risk.md).
 
 ## <a name="train-multiple-models"></a><a name="train"></a>Meerdere modellen trainen
 
-Een van de voordelen van het gebruik van Azure Machine Learning Studio (klassiek) voor het maken van machine learning-modellen is de mogelijkheid om meer dan één type model tegelijk in één experiment uit te proberen en de resultaten te vergelijken. Dit type experiment helpt u de beste oplossing voor uw probleem te vinden.
+Een van de voor delen van het gebruik van Azure Machine Learning Studio (klassiek) voor het maken van machine learning modellen is de mogelijkheid om meer dan één type model tegelijk te proberen in één experiment en de resultaten te vergelijken. Dit type experiment helpt u de beste oplossing voor uw probleem te vinden.
 
 In het experiment dat we ontwikkelen in deze zelfstudie, maakt u twee verschillende soorten modellen en vergelijkt vervolgens hun scoreresultaten om te beslissen welk algoritme u wilt gebruiken in ons laatste experiment.  
 
 Er zijn verschillende modellen waaruit u kunt kiezen. Als u de beschikbare modellen wilt zien, vouwt u het **Machine Learning**-knooppunt uit in het modulepalet en vervolgens **Initialize Model** en de knooppunten eronder. Voor dit experiment, selecteert u de modules [Two-Class Support Vector Machine][two-class-support-vector-machine] (SVM) en de module [Two-Class Boosted Decision Tree][two-class-boosted-decision-tree].
 
 > [!TIP]
-> Zie Hoe u [algoritmen voor Microsoft Azure Machine Learning Studio (klassiek) wilt kiezen](algorithm-choice.md)om te bepalen welk Machine Learning-algoritme het beste past bij het specifieke probleem dat u probeert op te lossen.
+> Raadpleeg [How to choose algorithms for Microsoft Azure machine learning Studio (klassiek)](algorithm-choice.md)als u wilt weten welke machine learning algoritme het beste past bij het probleem dat u wilt oplossen.
 > 
 > 
 
@@ -190,9 +190,9 @@ Aan de rechterkant van de grafiek, klikt u op **Scored dataset** of **Scored dat
 Door deze waarden te onderzoeken, kunt u bepalen welk model de resultaten die u zoekt het dichtst benadert. U kunt teruggaan en uw experiment herhalen door parameterwaarden in de verschillende modellen te wijzigen. 
 
 De wetenschap en kunst van het interpreteren van deze resultaten en het afstemmen van de modelprestaties vallen buiten deze zelfstudie. U kunt de volgende artikelen lezen voor meer informatie:
-- [Modelprestaties evalueren in Azure Machine Learning Studio (klassiek)](evaluate-model-performance.md)
-- [Parameters kiezen om uw algoritmen te optimaliseren in Azure Machine Learning Studio (klassiek)](algorithm-parameters-optimize.md)
-- [Modelresultaten interpreteren in Azure Machine Learning Studio (klassiek)](interpret-model-results.md)
+- [Model prestaties in Azure Machine Learning Studio evalueren (klassiek)](evaluate-model-performance.md)
+- [Para meters kiezen voor het optimaliseren van uw algoritmen in Azure Machine Learning Studio (klassiek)](algorithm-parameters-optimize.md)
+- [Model resultaten interpreteren in Azure Machine Learning Studio (klassiek)](interpret-model-results.md)
 
 > [!TIP]
 > Telkens wanneer u het experiment uitvoert, wordt een record van deze iteratie opgeslagen in de uitvoeringsgeschiedenis. U kunt deze iteraties bekijken en ze opnieuw bekijken door te klikken op **VIEW RUN HISTORY** onder het canvas. U kunt ook klikken op **Prior Ru** in het **Properties**-venster om terug te keren naar de iteratie direct vóór de versie die u hebt geopend.
@@ -200,7 +200,7 @@ De wetenschap en kunst van het interpreteren van deze resultaten en het afstemme
 > U kunt een kopie van de iteraties van uw experiment maken door te klikken op **SAVE AS** onder het canvas. 
 > Gebruik de eigenschappen **Summary** en **Description** van het experiment om bij te houden wat u hebt geprobeerd in uw iteraties.
 > 
-> Zie [Experiment-iteraties beheren in Azure Machine Learning Studio (klassiek) voor](manage-experiment-iterations.md)meer informatie.  
+> Zie [experimenten-iteraties beheren in azure machine learning Studio (klassiek)](manage-experiment-iterations.md)voor meer informatie.  
 > 
 > 
 

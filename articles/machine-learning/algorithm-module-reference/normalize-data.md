@@ -1,7 +1,7 @@
 ---
-title: 'Gegevens normaliseren: moduleverwijzing'
+title: 'Gegevens normaliseren: module verwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module Gegevens normaliseren in Azure Machine Learning om een gegevensset te transformeren door middel *van normalisatie*..
+description: Meer informatie over het gebruik van de module normaliseren gegevens in Azure Machine Learning om een gegevensset te transformeren met behulp van *normalisatie*.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,103 +10,103 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: a740c81aa165e221bca19987c7b3c62da56b0402
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477524"
 ---
-# <a name="normalize-data-module"></a>Gegevensmodule normaliseren
+# <a name="normalize-data-module"></a>Gegevens module normaliseren
 
-In dit artikel wordt een module beschreven in Azure Machine Learning designer (preview).
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
-Gebruik deze module om een gegevensset te transformeren door middel *van normalisatie.*
+Gebruik deze module om een gegevensset te transformeren met behulp van *normalisatie*.
 
-Normalisatie is een techniek die vaak wordt toegepast als onderdeel van gegevensvoorbereiding voor machine learning. Het doel van normalisatie is om de waarden van numerieke kolommen in de gegevensset te wijzigen om een gemeenschappelijke schaal te gebruiken, zonder verschillen in waardenbereiken te verstoren of informatie te verliezen. Normalisatie is ook vereist voor sommige algoritmen om de gegevens correct te modelleren.
+Normalisatie is een techniek die vaak wordt toegepast als onderdeel van de gegevens voorbereiding voor machine learning. Het doel van normalisatie is het wijzigen van de waarden van de numerieke kolommen in de gegevensset voor het gebruik van een gemeen schappelijke schaal, zonder verschillen in de waardenbereiken te vervormen of gegevens verlies. Normalisatie is ook vereist voor sommige algoritmen om de gegevens correct te model leren.
 
-Stel dat uw invoergegevensset één kolom bevat met waarden variërend van 0 tot 1 en een andere kolom met waarden variërend van 10.000 tot 100.000. Het grote verschil in de *schaal* van de getallen kan problemen veroorzaken wanneer u probeert om de waarden te combineren als functies tijdens het modelleren.
+Stel bijvoorbeeld dat uw invoer gegevensset één kolom bevat met waarden van 0 tot 1 en een andere kolom met waarden van 10.000 tot 100.000. Het grote verschil in de *schaal* van de getallen kan problemen veroorzaken bij het combi neren van de waarden als onderdelen tijdens het model leren.
 
-*Normalisering* voorkomt deze problemen door nieuwe waarden te maken die de algemene verdeling en verhoudingen in de brongegevens behouden, terwijl waarden binnen een schaal blijven die wordt toegepast op alle numerieke kolommen die in het model worden gebruikt.
+*Normalisatie* voor komt deze problemen door nieuwe waarden te maken die de algemene distributie en verhoudingen in de bron gegevens behouden, terwijl waarden binnen een schaal worden toegepast op alle numerieke kolommen die in het model worden gebruikt.
 
 Deze module biedt verschillende opties voor het transformeren van numerieke gegevens:
 
-- U alle waarden wijzigen in een schaal van 0-1 of de waarden transformeren door ze te vertegenwoordigen als percentielrangen in plaats van absolute waarden.
-- U normalisatie toepassen op één kolom of op meerdere kolommen in dezelfde gegevensset.
-- Als u de pijplijn moet herhalen of dezelfde normalisatiestappen op andere gegevens moet toepassen, u de stappen opslaan als een normalisatietransformatie en deze toepassen op andere gegevenssets met hetzelfde schema.
+- U kunt alle waarden wijzigen in een 0-1-schaal of de waarden transformeren door ze te vertegenwoordigen als percentiel posities in plaats van absolute waarden.
+- U kunt normalisatie Toep assen op één kolom of op meerdere kolommen in dezelfde gegevensset.
+- Als u de pijp lijn moet herhalen of dezelfde normalisatie stappen op andere gegevens wilt Toep assen, kunt u de stappen als een normalisatie transformatie opslaan en deze Toep assen op andere gegevens sets die hetzelfde schema hebben.
 
 > [!WARNING]
-> Sommige algoritmen vereisen dat gegevens worden genormaliseerd voordat ze een model trainen. Andere algoritmen voeren hun eigen gegevensschaling of normalisatie uit. Wanneer u daarom een machine learning-algoritme kiest om te gebruiken bij het bouwen van een voorspellend model, moet u de gegevensvereisten van het algoritme controleren voordat u normalisatie toepast op de trainingsgegevens.
+> Voor sommige algoritmen moeten gegevens worden genormaliseerd voordat een model kan worden getraind. Andere algoritmen voeren hun eigen gegevens schaaling of normalisatie uit. Daarom moet u, wanneer u een machine learning algoritme kiest om te gebruiken bij het bouwen van een voorspellend model, de gegevens vereisten van het algoritme controleren voordat u normalisatie toepast op de trainings gegevens.
 
-##  <a name="configure-normalize-data"></a>Normalize-gegevens configureren
+##  <a name="configure-normalize-data"></a>Normaliseren van gegevens configureren
 
-U met deze module slechts één normalisatiemethode tegelijk toepassen. Daarom wordt dezelfde normalisatiemethode toegepast op alle kolommen die u selecteert. Als u verschillende normalisatiemethoden wilt gebruiken, gebruikt u een tweede instantie **van Gegevens normaliseren**.
+U kunt per keer slechts één normalisatie methode Toep assen met behulp van deze module. Daarom wordt dezelfde normalisatie methode toegepast op alle kolommen die u selecteert. Als u verschillende normalisatie methoden wilt gebruiken, moet u een tweede exemplaar van **normaliseren gegevens**gebruiken.
 
-1. Voeg de module **Gegevens normaliseren** toe aan uw pijplijn. U vindt de module In Azure Machine Learning, onder **Gegevenstransformatie,** in de categorie **Schalen en Verkleinen.**
+1. Voeg de module **Normal data-gegevens** toe aan de pijp lijn. U kunt de module vinden in Azure Machine Learning, onder **gegevens transformatie**, in de categorie **schalen en verminderen** .
 
-2. Sluit een gegevensset aan die ten minste één kolom van alle getallen bevat.
+2. Verbind een gegevensset die ten minste één kolom met alle getallen bevat.
 
-3. Gebruik de kolomkiezer om de numerieke kolommen te kiezen om te normaliseren. Als u geen afzonderlijke kolommen kiest, worden standaard **alle** numerieke typekolommen in de invoer opgenomen en wordt hetzelfde normalisatieproces toegepast op alle geselecteerde kolommen. 
+3. Gebruik de kolom kiezer om te kiezen welke numerieke kolommen moeten worden genormaliseerd. Als u geen afzonderlijke kolommen kiest, worden standaard **alle** numerieke kolom typen in de invoer opgenomen en wordt hetzelfde normalisatie proces toegepast op alle geselecteerde kolommen. 
 
-    Dit kan leiden tot vreemde resultaten als u numerieke kolommen die niet moeten worden genormaliseerd! Controleer de kolommen altijd zorgvuldig.
+    Dit kan leiden tot vreemde resultaten als u numerieke kolommen opneemt die niet normaal mogen worden genormaliseerd. Controleer de kolommen altijd zorgvuldig.
 
-    Als er geen numerieke kolommen worden gedetecteerd, controleert u de kolommetagegevens om te controleren of het gegevenstype van de kolom een ondersteund numeriek type is.
+    Als er geen numerieke kolommen worden gedetecteerd, controleert u de meta gegevens van de kolom om te controleren of het gegevens type van de kolom een ondersteund numeriek type is.
 
     > [!TIP]
-    > Als u ervoor wilt zorgen dat kolommen van een bepaald type als invoer worden geleverd, probeert u de module [Kolommen selecteren in gegevensset](./select-columns-in-dataset.md) te gebruiken voordat **gegevens worden genormaliterd**.
+    > Om ervoor te zorgen dat kolommen van een specifiek type als invoer worden opgegeven, probeert u de module [select columns in dataset uit](./select-columns-in-dataset.md) te voeren voordat u **gegevens normaliseert**.
 
-4. **Gebruik 0 voor constante kolommen wanneer deze optie wordt ingeschakeld:** Selecteer deze optie wanneer een numerieke kolom één onveranderlijke waarde bevat. Dit zorgt ervoor dat dergelijke kolommen niet worden gebruikt bij normalisatiebewerkingen.
+4. **0 voor constante kolommen gebruiken wanneer dit selectie**vakje is ingeschakeld: Selecteer deze optie als een wille keurige numerieke kolom één ongewijzigde waarde bevat. Dit zorgt ervoor dat dergelijke kolommen niet worden gebruikt in normalisatie bewerkingen.
 
-5. Kies in de vervolgkeuzelijst **Transformatiemethode** één wiskundige functie die u wilt toepassen op alle geselecteerde kolommen. 
+5. Kies in de vervolg keuzelijst **transformatie methode** één wiskundige functie die u wilt Toep assen op alle geselecteerde kolommen. 
   
-    - **Zscore**: Converteert alle waarden naar een z-score.
+    - **Zscore**: converteert alle waarden naar een z-Score.
     
-      De waarden in de kolom worden getransformeerd met de volgende formule:  
+      De waarden in de kolom worden getransformeerd met behulp van de volgende formule:  
   
       ![normalisatie met z&#45;scores](media/module/aml-normalization-z-score.png)
   
-      Gemiddelde en standaarddeviatie worden voor elke kolom afzonderlijk berekend. De standaarddeviatie van de populatie wordt gebruikt.
+      Gemiddelde en standaard afwijking worden voor elke kolom afzonderlijk berekend. Standaard deviatie voor populatie wordt gebruikt.
   
-    - **MinMax**: De min-max normalisator reschaalt elke functie lineair naar het interval [0,1].
+    - **MinMax**: met de min-maximum normalisatie wordt elke functie lineair geschaald naar het interval van [0, 1].
     
-      Opnieuw schalen naar het interval [0,1] wordt gedaan door de waarden van elke functie te verschuiven, zodat de minimale waarde 0 is en vervolgens te delen door de nieuwe maximale waarde (het verschil tussen de oorspronkelijke maximale en minimale waarden).
+      U kunt het interval voor [0, 1] opnieuw schalen door de waarden van elke functie te verschuiven zodat de minimale waarde 0 is en vervolgens te delen door de nieuwe maximale waarde (dit is het verschil tussen de oorspronkelijke maximum-en minimum waarden).
       
-      De waarden in de kolom worden getransformeerd met de volgende formule:  
+      De waarden in de kolom worden getransformeerd met behulp van de volgende formule:  
   
-      ![normalisatie met behulp van de min&#45;max-functie](media/module/aml-normalization-minmax.png "AML_normalization-minmax")  
+      ![normalisatie met de functie min&#45;Max](media/module/aml-normalization-minmax.png "AML_normalization-minmax")  
   
-    - **Logistiek**: De waarden in de kolom worden getransformeerd met behulp van de volgende formule:
+    - **Logistiek**: de waarden in de kolom worden getransformeerd met behulp van de volgende formule:
 
-      ![formule voor normalisatie door logistieke functie](media/module/aml-normalization-logistic.png "AML_normalization-logistiek")  
+      ![formule voor normalisatie per logistiek functie](media/module/aml-normalization-logistic.png "AML_normalization-logistiek")  
   
-    - **LogNormal:** Deze optie converteert alle waarden naar een lognormale schaal.
+    - **Logaritmisch**: met deze optie worden alle waarden geconverteerd naar een logaritmische schaal.
   
-      De waarden in de kolom worden getransformeerd met de volgende formule:
+      De waarden in de kolom worden getransformeerd met behulp van de volgende formule:
   
-      ![formulelogboek&#45;normale verdeling](media/module/aml-normalization-lognormal.png "AML_normalization-lognormaal")
+      ![formule logboek&#45;normale distributie](media/module/aml-normalization-lognormal.png "AML_normalization-logaritmisch")
     
-      Hier μ en σ zijn de parameters van de distributie, die empirisch van de gegevens als maximumwaarschijnlijkheidsramingen, voor elke kolom afzonderlijk wordt gegevens berekend.  
+      Hier zijn μ en σ de para meters van de distributie, berekend op basis van de gegevens als Maxi maal waarschijnlijke schattingen voor elke kolom afzonderlijk.  
   
-    - **TanH**: Alle waarden worden omgezet in een hyperbolische raaklijn.
+    - **TanH**: alle waarden worden geconverteerd naar een hyperbolische tangens.
     
-      De waarden in de kolom worden getransformeerd met de volgende formule:
+      De waarden in de kolom worden getransformeerd met behulp van de volgende formule:
     
-      ![normalisatie met de tanh-functie](media/module/aml-normalization-tanh.png "AML_normalization-tanh")
+      ![normalisatie met de functie tanh](media/module/aml-normalization-tanh.png "AML_normalization-TANH")
 
-6. Verzend de pijplijn of dubbelklik op de module **Gegevens normaliseren** en selecteer **Geselecteerd uitvoeren**. 
+6. Verzend de pijp lijn, of dubbel klik op de module **normaliseren gegevens** en selecteer **geselecteerde uitvoeren**. 
 
 ## <a name="results"></a>Resultaten
 
-De module **Gegevens normaliseren** genereert twee uitgangen:
+In de module **normaliseren gegevens** worden twee uitvoer gegenereerd:
 
-- Als u de getransformeerde waarden wilt weergeven, klikt u met de rechtermuisknop op de module en selecteert u **Visualiseren**.
+- Als u de getransformeerde waarden wilt weer geven, klikt u met de rechter muisknop op de module en selecteert u **visualiseren**.
 
-    Waarden worden standaard op hun plaats getransformeerd. Als u de getransformeerde waarden wilt vergelijken met de oorspronkelijke waarden, gebruikt u de module [Kolommen toevoegen](./add-columns.md) om de gegevenssets opnieuw te combineren en de kolommen naast elkaar weer te geven.
+    Standaard worden waarden getransformeerd. Als u de getransformeerde waarden wilt vergelijken met de oorspronkelijke waarden, gebruikt u de module [kolommen toevoegen](./add-columns.md) om de gegevens sets opnieuw samen te voegen en de kolommen naast elkaar weer te geven.
 
-- Als u de transformatie wilt opslaan zodat u dezelfde normalisatiemethode op een andere gegevensset toepassen, selecteert u de module en selecteert u **Gegevensset Registreren** onder het tabblad **Uitvoer** in het rechterdeelvenster.
+- Als u de trans formatie wilt opslaan zodat u dezelfde normalisatie methode op een andere gegevensset kunt Toep assen, selecteert u de module en selecteert u **gegevensset registreren** onder het tabblad **uitvoer** in het rechterdeel venster.
 
-    U vervolgens de opgeslagen transformaties laden vanuit de groep **Transformaties** van het linkernavigatiedeelvenster en deze toepassen op een gegevensset met hetzelfde schema met behulp [van Transformatie toepassen](apply-transformation.md).  
+    U kunt de opgeslagen trans formaties vervolgens laden vanuit de groep **trans formaties** van het navigatie deel venster links en deze Toep assen op een gegevensset met hetzelfde schema met behulp van [Apply Transform](apply-transformation.md).  
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

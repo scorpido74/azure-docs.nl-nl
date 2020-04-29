@@ -1,6 +1,6 @@
 ---
-title: "& Azure Data Lake Analytics voor query's maken - Azure CLI"
-description: Meer informatie over het gebruik van de Azure Command-line Interface om een Azure Data Lake Analytics-account te maken en een U-SQL-taak in te dienen.
+title: '& query maken Azure Data Lake Analytics-Azure CLI'
+description: Meer informatie over het gebruik van de Azure-opdracht regel interface voor het maken van een Azure Data Lake Analytics-account en het verzenden van een U-SQL-taak.
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -8,28 +8,28 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 06/18/2017
 ms.openlocfilehash: d9fc9bee98391f7272a417324b9c3a540b6adbe6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79474506"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Aan de slag met Azure Data Lake Analytics met Azure CLI
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-In dit artikel wordt beschreven hoe u de Azure CLI-opdrachtregelinterface gebruiken om Azure Data Lake Analytics-accounts te maken, USQL-taken en -catalogi in te dienen. De taak leest een TSV-bestand (door tabs gescheiden waarden) en converteert dat naar een CSV-bestand (door komma's gescheiden waarden). 
+In dit artikel wordt beschreven hoe u de Azure CLI-opdracht regel interface gebruikt voor het maken van Azure Data Lake Analytics accounts, het verzenden van USQL-taken en-catalogi. De taak leest een TSV-bestand (door tabs gescheiden waarden) en converteert dat naar een CSV-bestand (door komma's gescheiden waarden). 
 
 ## <a name="prerequisites"></a>Vereisten
 Voordat u begint, hebt u de volgende items nodig:
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
-* In dit artikel moet u de Azure CLI-versie 2.0 of hoger uitvoeren. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli). 
+* Voor dit artikel moet u de Azure CLI-versie 2,0 of hoger uitvoeren. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli). 
 
 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-U aanmeldt bij uw Azure-abonnement:
+Meld u aan bij uw Azure-abonnement:
 
 ```azurecli
 az login
@@ -48,7 +48,7 @@ az account set --subscription <subscription id>
 ## <a name="create-data-lake-analytics-account"></a>Een Data Lake Analytics-account maken
 U hebt een Data Lake Analytics-account nodig voordat u taken kunt uitvoeren. Geef de volgende items op om een Data Lake Analytics-account te maken:
 
-* **Azure Resource Group**. Er moet een Data Lake Analytics-account zijn gemaakt binnen een Azure-resourcegroep. Met [Azure Resource Manager](../azure-resource-manager/management/overview.md) kunt u met de resources in uw toepassing als groep gebruiken. U kunt alle resources voor uw toepassing implementeren, bijwerken of verwijderen in een enkele, gecoördineerde bewerking.  
+* **Azure-resource groep**. Er moet een Data Lake Analytics-account zijn gemaakt binnen een Azure-resourcegroep. Met [Azure Resource Manager](../azure-resource-manager/management/overview.md) kunt u met de resources in uw toepassing als groep gebruiken. U kunt alle resources voor uw toepassing implementeren, bijwerken of verwijderen in een enkele, gecoördineerde bewerking.  
 
 De bestaande resourcegroepen onder uw abonnement weergeven:
 
@@ -62,9 +62,9 @@ Een nieuwe resourcegroep maken:
 az group create --name "<Resource Group Name>" --location "<Azure Location>"
 ```
 
-* **Gegevens Lake Analytics-accountnaam**. Elk Data Lake Analytics-account heeft een naam.
+* **Data Lake Analytics account naam**. Elk Data Lake Analytics-account heeft een naam.
 * **Locatie**. Gebruik een van de Azure-datacenters die ondersteuning bieden voor Data Lake Analytics.
-* **Standaard Data Lake Store-account**: elk Data Lake Analytics-account heeft een standaard Data Lake Store-account.
+* **Standaard data Lake Store account**: elk data Lake Analytics account heeft een standaard data Lake Store-account.
 
 De bestaande Data Lake Store-accounts weergeven:
 
@@ -96,7 +96,7 @@ In deze zelfstudie verwerkt u een aantal zoeklogboeken.  Het zoeklogboek kan wor
 
 Azure Portal biedt een gebruikersinterface waarmee u een aantal voorbeeldbestanden kunt kopiëren naar het Data Lake Store-account, waaronder een zoeklogboekbestand. Zie [Brongegevens voorbereiden](data-lake-analytics-get-started-portal.md) om de gegevens te uploaden naar het Data Lake Store-standaardaccount.
 
-Als u bestanden wilt uploaden met Azure CLI, gebruikt u de volgende opdrachten:
+Gebruik de volgende opdrachten om bestanden te uploaden met behulp van Azure CLI:
 
 ```azurecli
 az dls fs upload --account "<Data Lake Store Account Name>" --source-path "<Source File Path>" --destination-path "<Destination File Path>"
@@ -192,6 +192,6 @@ az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-fr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Data Lake Analytics](/cli/azure/dla)voor het referentiedocument Van Data Lake Analytics Analytics .
-* Zie [Data Lake Store](/cli/azure/dls)voor het referentiedocument Voor Azure CLI van Data Lake Store .
+* Zie [Data Lake Analytics](/cli/azure/dla)voor een overzicht van de data Lake Analytics Azure cli-referentie document.
+* Zie [Data Lake Store](/cli/azure/dls)voor een overzicht van de data Lake Store Azure cli-referentie document.
 * Zie [Websitelogboeken analyseren met Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md) voor een complexere query.

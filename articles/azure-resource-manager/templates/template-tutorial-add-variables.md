@@ -1,60 +1,60 @@
 ---
-title: Zelfstudie - variabele toevoegen aan sjabloon
-description: Voeg variabelen toe aan uw Azure Resource Manager-sjabloon om de syntaxis te vereenvoudigen.
+title: Zelf studie-variabele aan sjabloon toevoegen
+description: Voeg variabelen toe aan uw Azure Resource Manager sjabloon om de syntaxis te vereenvoudigen.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: b1df86e5b593edec784de21e21a4399274d820bb
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80411691"
 ---
-# <a name="tutorial-add-variables-to-your-arm-template"></a>Zelfstudie: variabelen toevoegen aan uw ARM-sjabloon
+# <a name="tutorial-add-variables-to-your-arm-template"></a>Zelf studie: variabelen toevoegen aan uw ARM-sjabloon
 
-In deze zelfstudie leert u hoe u een variabele toevoegt aan uw Azure Resource Manager-sjabloon (ARM). Variabelen vereenvoudigen uw sjablonen doordat u één keer een expressie schrijven en opnieuw gebruiken in de sjabloon. Deze tutorial duurt **7 minuten** om te voltooien.
+In deze zelf studie leert u hoe u een variabele kunt toevoegen aan de sjabloon Azure Resource Manager (ARM). Variabelen vereenvoudigen uw sjablonen door u in te scha kelen een expressie één keer te schrijven en opnieuw te gebruiken in de sjabloon. Het volt ooien van deze zelf studie duurt **zeven minuten** .
 
 ## <a name="prerequisites"></a>Vereisten
 
-We raden u aan de [zelfstudie over functies in](template-tutorial-add-functions.md)te vullen, maar dit is niet vereist.
+U wordt aangeraden de [zelf studie over functies](template-tutorial-add-functions.md)uit te voeren, maar dit is niet vereist.
 
-U moet beschikken over Visual Studio Code met de extensie Hulpmiddelen voor ResourceBeheer en Azure PowerShell of Azure CLI. Zie [sjabloongereedschappen voor](template-tutorial-create-first-template.md#get-tools)meer informatie .
+U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en een Azure PowerShell of Azure CLI. Zie voor meer informatie [sjabloon hulpprogramma's](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Sjabloon bekijken
+## <a name="review-template"></a>Sjabloon controleren
 
-Aan het einde van de vorige zelfstudie had uw sjabloon de volgende JSON:
+Aan het einde van de vorige zelf studie had uw sjabloon de volgende JSON:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json":::
 
-De parameter voor de naam van het opslagaccount is moeilijk te gebruiken omdat u een unieke naam moet opgeven. Als je de eerdere tutorials in deze serie hebt voltooid, ben je waarschijnlijk moe van het raden van een unieke naam. U lost dit probleem op door een variabele toe te voegen die een unieke naam voor het opslagaccount construeert.
+De para meter voor de naam van het opslag account is moeilijk te gebruiken omdat u een unieke naam moet opgeven. Als u de eerdere zelf studies in deze serie hebt voltooid, is het waarschijnlijk een unieke naam te raden. U lost dit probleem op door een variabele toe te voegen die een unieke naam voor het opslag account bouwt.
 
 ## <a name="use-variable"></a>Variabele gebruiken
 
-In het volgende voorbeeld worden de wijzigingen belicht om een variabele aan uw sjabloon toe te voegen die een unieke naam van het opslagaccount maakt. Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
+In het volgende voor beeld worden de wijzigingen gemarkeerd om een variabele aan uw sjabloon toe te voegen waarmee een unieke opslag accountnaam wordt gemaakt. Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json" range="1-47" highlight="5-9,29-31,36":::
 
-Merk op dat het een variabele met de naam **uniqueStorageName**bevat. Deze variabele gebruikt vier functies om een tekenreekswaarde te construeren.
+U ziet dat het een variabele bevat met de naam **uniqueStorageName**. Deze variabele maakt gebruik van vier functies om een teken reeks waarde te maken.
 
-Je bent al bekend met de [parameters](template-functions-deployment.md#parameters) functie, dus we zullen het niet onderzoeken.
+U bent al bekend met de functie [para meters](template-functions-deployment.md#parameters) , dus we onderzoeken deze niet.
 
-U bent ook bekend met de functie [resourceGroup.](template-functions-resource.md#resourcegroup) In dit geval krijgt u de eigenschap **id in** plaats van de **locatieeigenschap,** zoals in de vorige zelfstudie wordt weergegeven. De eigenschap **id** retourneert de volledige id van de resourcegroep, inclusief de naam van de abonnements-id en de naam van de resourcegroep.
+U bent ook bekend met de functie [resourceGroup](template-functions-resource.md#resourcegroup) . In dit geval haalt u de eigenschap **id** op in plaats van de eigenschap **Location** , zoals wordt weer gegeven in de vorige zelf studie. De eigenschap **id** retourneert de volledige id van de resource groep, met inbegrip van de abonnements-id en de naam van de resource groep.
 
-Met de functie [uniqueString](template-functions-string.md#uniquestring) wordt een hashwaarde van 13 tekens gewaaratwaard. De geretourneerde waarde wordt bepaald door de parameters die u doorgeeft. Voor deze zelfstudie gebruikt u de brongroep-id als invoer voor de hashwaarde. Dat betekent dat u deze sjabloon implementeren in verschillende resourcegroepen en een andere unieke tekenreekswaarde krijgen. U krijgt echter dezelfde waarde als u implementeert in dezelfde resourcegroep.
+Met de functie [Unique string](template-functions-string.md#uniquestring) maakt u een hash-waarde van 13 tekens. De geretourneerde waarde wordt bepaald door de para meters die u doorgeeft. Voor deze zelf studie gebruikt u de ID van de resource groep als invoer voor de hash-waarde. Dit betekent dat u deze sjabloon kunt implementeren in verschillende resource groepen en een andere unieke teken reeks waarde kunt krijgen. U krijgt echter dezelfde waarde als u implementeert in dezelfde resource groep.
 
-De [concatfunctie](template-functions-string.md#concat) neemt waarden en combineert ze. Voor deze variabele neemt deze de tekenreeks van de parameter en de tekenreeks van de functie uniqueString en combineert deze in één tekenreeks.
+De functie [concat](template-functions-string.md#concat) heeft waarden en combineert deze. Voor deze variabele wordt de teken reeks uit de para meter en de teken reeks uit de Unique string-functie gebruikt en gecombineerd tot één teken reeks.
 
-Met de parameter **StoragePrefix** u een voorvoegsel doorgeven waarmee u opslagaccounts identificeren. U uw eigen naamgevingsconventie maken die het gemakkelijker maakt om opslagaccounts na implementatie te identificeren vanuit een lange lijst met bronnen.
+Met de para meter **storagePrefix** kunt u een voor voegsel door geven dat u helpt bij het identificeren van opslag accounts. U kunt uw eigen naamgevings Conventie maken die het eenvoudiger maakt om opslag accounts te identificeren na de implementatie vanuit een lange lijst met resources.
 
-Tot slot wordt opgemerkt dat de opslagnaam nu is ingesteld op de variabele in plaats van op een parameter.
+Ten slotte ziet u dat de opslag naam nu is ingesteld op de variabele in plaats van een para meter.
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 
-Laten we de sjabloon implementeren. Het implementeren van deze sjabloon is eenvoudiger dan de vorige sjablonen omdat u alleen het voorvoegsel voor de opslagnaam opgeeft.
+We gaan de sjabloon implementeren. Het implementeren van deze sjabloon is eenvoudiger dan de vorige sjablonen omdat u alleen het voor voegsel voor de opslag naam opgeeft.
 
-Zie [Resourcegroep maken](template-tutorial-create-first-template.md#create-resource-group)als u de resourcegroep niet hebt gemaakt. In het voorbeeld wordt ervan uitgegaan dat u de **variabele templateFile** hebt ingesteld op het pad naar het sjabloonbestand, zoals wordt weergegeven in de [eerste zelfstudie.](template-tutorial-create-first-template.md#deploy-template)
+Als u de resource groep nog niet hebt gemaakt, raadpleegt u [resource groep maken](template-tutorial-create-first-template.md#create-resource-group). In het voor beeld wordt ervan uitgegaan dat u de **templateFile** -variabele hebt ingesteld op het pad naar het sjabloon bestand, zoals wordt weer gegeven in de [eerste zelf studie](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -69,7 +69,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Als u deze implementatieopdracht wilt uitvoeren, moet u over de [nieuwste versie](/cli/azure/install-azure-cli) van Azure CLI beschikken.
+Als u deze implementatie opdracht wilt uitvoeren, moet u de [nieuwste versie](/cli/azure/install-azure-cli) van Azure cli hebben.
 
 ```azurecli
 az deployment group create \
@@ -82,31 +82,31 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Als de implementatie is mislukt, gebruikt u de **foutopsporingsschakelaar** met de opdracht implementatie om de foutopsporingslogboeken weer te geven.  U ook de **verbose-schakelaar** gebruiken om de volledige foutopsporingslogboeken weer te geven.
+> Als de implementatie is mislukt, gebruikt u de switch **debug** met de implementatie opdracht om de logboeken voor fout opsporing weer te geven.  U kunt ook de **uitgebreide** switch gebruiken om de volledige logboeken voor fout opsporing weer te geven.
 
 ## <a name="verify-deployment"></a>Implementatie verifiëren
 
-U de implementatie verifiëren door de brongroep te verkennen vanuit de Azure-portal.
+U kunt de implementatie controleren door de resource groep te verkennen van de Azure Portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Selecteer **Resourcegroepen**in het linkermenu .
-1. Selecteer de resourcegroep die u hebt geïmplementeerd.
-1. U ziet dat een opslagaccountbron is geïmplementeerd. De naam van het opslagaccount is **opslag** plus een reeks willekeurige tekens.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer **resource groepen**in het menu links.
+1. Selecteer de resource groep die u hebt geïmplementeerd.
+1. U ziet dat er een opslag account resource is geïmplementeerd. De naam van het opslag account is **Store** plus een teken reeks van wille keurige tekens.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u doorgaat naar de volgende zelfstudie, hoeft u de brongroep niet te verwijderen.
+Als u verdergaat met de volgende zelf studie, hoeft u de resource groep niet te verwijderen.
 
-Als u nu stopt, u de resources die u hebt geïmplementeerd, opschonen door de resourcegroep te verwijderen.
+Als u nu stopt, wilt u misschien de resources opschonen die u hebt geïmplementeerd door de resource groep te verwijderen.
 
-1. Selecteer **resourcegroep** in de linkermenu in de Azure-portal.
+1. Selecteer in de Azure Portal **resource groep** in het menu links.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
 3. Selecteer de naam van de resourcegroep.
-4. Selecteer **Brongroep verwijderen** in het bovenste menu.
+4. Selecteer **resource groep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een variabele toegevoegd die een unieke naam voor een opslagaccount maakt. In de volgende zelfstudie retourneert u een waarde van het geïmplementeerde opslagaccount.
+In deze zelf studie hebt u een variabele toegevoegd waarmee een unieke naam voor een opslag account wordt gemaakt. In de volgende zelf studie retourneert u een waarde uit het geïmplementeerde opslag account.
 
 > [!div class="nextstepaction"]
 > [Uitvoer toevoegen](template-tutorial-add-outputs.md)

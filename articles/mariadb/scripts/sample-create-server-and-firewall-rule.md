@@ -1,5 +1,5 @@
 ---
-title: CLI-script - Server maken - Azure Database voor MariaDB
+title: CLI-script-server maken-Azure Database for MariaDB
 description: In dit CLI-voorbeeldscript wordt een Azure Database for MariaDB-server gemaakt en een firewallregel op serverniveau geconfigureerd.
 author: ajlam
 ms.author: andrela
@@ -9,10 +9,10 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 11/28/2018
 ms.openlocfilehash: 3e0c17bbb413c2036ad1a3794dc029aaef0fe68c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74771714"
 ---
 # <a name="create-a-mariadb-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Een MariaDB-server maken en een firewallregel configureren met de Azure CLI
@@ -33,7 +33,7 @@ Gebruik de volgende opdracht om de resourcegroep en alle resources die er aan zi
 ## <a name="script-explanation"></a>Uitleg van het script
 Dit script maakt gebruik van de opdrachten die in de volgende tabel worden weergegeven:
 
-| **Opdracht** | **Opmerkingen** |
+| **Cmd** | **Opmerkingen** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create) | Hiermee wordt een MariaDB-server gemaakt waarop de databases worden gehost. |

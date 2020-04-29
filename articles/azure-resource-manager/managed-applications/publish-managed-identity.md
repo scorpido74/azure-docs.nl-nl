@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
-ms.openlocfilehash: dbf75262440474c5cb50a6d733ac7cba212b5f3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 277faa2d47df9fddd1762d90d9aa2fb5bf00d4df
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75651655"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508123"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>Door Azure beheerde toepassing met beheerde identiteit
 
@@ -54,7 +54,7 @@ Een beheerde toepassing kan met beheerde identiteit worden geconfigureerd via de
 
 ```json
 "outputs": {
-    "managedIdentity": "[parse('{\"Type\":\"SystemAssigned\"}')]"
+    "managedIdentity": { "Type": "SystemAssigned" }
 }
 ```
 
@@ -66,71 +66,65 @@ Hieronder vindt u enkele aanbevelingen voor het gebruik van CreateUIDefinition v
 - Voor de beheerde identiteit is complexe consumenten invoer vereist.
 - De beheerde identiteit is vereist bij het maken van de beheerde toepassing.
 
-#### <a name="systemassigned-createuidefinition"></a>SystemAssigned CreateUIDefinition
+#### <a name="managed-identity-createuidefinition-control"></a>Beheer van beheerde identiteit CreateUIDefinition
 
-Een basis CreateUIDefinition die de SystemAssigned-identiteit voor de beheerde toepassing mogelijk maakt.
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
-  "handler": "Microsoft.Azure.CreateUIDef",
-  "version": "0.1.2-preview",
-    "parameters": {
-        "basics": [
-            {}
-        ],
-        "steps": [
-        ],
-        "outputs": {
-            "managedIdentity": "[parse('{\"Type\":\"SystemAssigned\"}')]"
-        }
-    }
-}
-```
-
-#### <a name="userassigned-createuidefinition"></a>UserAssigned CreateUIDefinition
-
-Een Basic-CreateUIDefinition die een door de **gebruiker toegewezen identiteits** bron als invoer gebruikt en de UserAssigned-identiteit voor de beheerde toepassing maakt.
+CreateUIDefinition biedt ondersteuning voor een ingebouwd [beheerd identiteits beheer](./microsoft-managedidentity-identityselector.md).
 
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
   "handler": "Microsoft.Azure.CreateUIDef",
-  "version": "0.1.2-preview",
-    "parameters": {
-        "basics": [
-            {}
-        ],
-        "steps": [
-            {
-                "name": "manageIdentity",
-                "label": "Identity",
-                "subLabel": {
-                    "preValidation": "Manage Identities",
-                    "postValidation": "Done"
-                },
-                "bladeTitle": "Identity",
-                "elements": [
-                    {
-                        "name": "userAssignedText",
-                        "type": "Microsoft.Common.TextBox",
-                        "label": "User assigned managed identity",
-                        "defaultValue": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.ManagedIdentity/userassignedidentites/myuserassignedidentity",
-                        "visible": true
-                    }
-                ]
-            }
-        ],
-        "outputs": {
-            "managedIdentity": "[parse(concat('{\"Type\":\"UserAssigned\",\"UserAssignedIdentities\":{',string(steps('manageIdentity').userAssignedText),':{}}}'))]"
-        }
+  "version": "0.0.1-preview",
+  "parameters": {
+    "basics": [],
+    "steps": [
+      {
+        "name": "applicationSettings",
+        "label": "Application Settings",
+        "subLabel": {
+          "preValidation": "Configure your application settings",
+          "postValidation": "Done"
+        },
+        "bladeTitle": "Application Settings",
+        "elements": [
+          {
+            "name": "appName",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Managed application Name",
+            "toolTip": "Managed application instance name",
+            "visible": true
+          },
+          {
+            "name": "appIdentity",
+            "type": "Microsoft.ManagedIdentity.IdentitySelector",
+            "label": "Managed Identity Configuration",
+            "toolTip": {
+              "systemAssignedIdentity": "Enable system assigned identity to grant the managed application access to additional existing resources.",
+              "userAssignedIdentity": "Add user assigned identities to grant the managed application access to additional existing resources."
+            },
+            "defaultValue": {
+              "systemAssignedIdentity": "Off"
+            },
+            "options": {
+              "hideSystemAssignedIdentity": false,
+              "hideUserAssignedIdentity": false,
+              "readOnlySystemAssignedIdentity": false
+            },
+            "visible": true
+          }
+        ]
+      }
+    ],
+    "outputs": {
+      "applicationResourceName": "[steps('applicationSettings').appName]",
+      "location": "[location()]",
+      "managedIdentity": "[steps('applicationSettings').appIdentity]"
     }
+  }
 }
 ```
 
-Met de CreateUIDefinition. json hierboven wordt een gebruikers ervaring gemaakt met een tekstvak voor een gebruiker om de door de klant **toegewezen identiteit** Azure-resource-id in te voeren. De gegenereerde ervaring ziet er als volgt uit:
-
-![Voor beeld van door gebruiker toegewezen identiteits CreateUIDefinition](./media/publish-managed-identity/user-assigned-identity.png)
+![Beheerde identiteit CreateUIDefinition](./media/publish-managed-identity/msi-cuid.png)
 
 ### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen gebruiken
 
@@ -218,7 +212,7 @@ Beheerde identiteiten kunnen ook worden gebruikt voor het implementeren van een 
 
 Wanneer u de implementatie van de beheerde toepassing koppelt aan bestaande resources, moeten zowel de bestaande Azure-resource als een door de **gebruiker toegewezen identiteit** worden gegeven met de toepasselijke roltoewijzing voor die bron.
 
- Een voor beeld van een CreateUIDefinition waarvoor twee invoer vereist is: een resource-ID van een netwerk interface en een door de gebruiker toegewezen id-resource-id.
+ Een voor beeld van een CreateUIDefinition waarvoor twee invoer vereist is: een resource-ID van een netwerk interface en een door de gebruiker toegewezen id-Resource-ID.
 
 ```json
 {

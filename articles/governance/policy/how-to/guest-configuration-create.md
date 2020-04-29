@@ -3,12 +3,12 @@ title: Gast configuratie beleidsregels voor Windows maken
 description: Meer informatie over het maken van een Azure Policy-gast configuratie beleid voor Windows.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: f09bb543f73e37bd211a55e2238808f57585bb18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a75525b25945dd9548d7c293d5965cc67eb463dc
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024894"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509615"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Gast configuratie beleidsregels voor Windows maken
 
@@ -16,7 +16,7 @@ Voordat u een aangepast beleid maakt, is het een goed idee om de conceptuele ove
  
 Ga voor meer informatie over het maken van gast configuratie beleidsregels voor Linux naar de pagina [beleid voor gast configuratie maken voor Linux](./guest-configuration-create-linux.md)
 
-Bij het controleren van Windows gebruikt gast configuratie een resource module voor [desired state Configuration](/powershell/scripting/dsc/overview/overview) (DSC) en een configuratie bestand. De DSC-configuratie definieert de toestand waarin de machine zich moet bevindt.
+Bij het controleren van Windows gebruikt gast configuratie een resource module voor [desired state Configuration](/powershell/scripting/dsc/overview/overview) (DSC) om het configuratie bestand te maken. De DSC-configuratie definieert de toestand waarin de machine zich moet bevindt.
 Als de evaluatie van de configuratie mislukt, wordt het beleids effect **auditIfNotExists** geactiveerd en wordt de computer als **niet-compatibel**beschouwd.
 
 [Azure Policy-gast configuratie](../concepts/guest-configuration.md) kan alleen worden gebruikt voor het controleren van instellingen binnen machines. Herstel van instellingen binnen computers is nog niet beschikbaar.

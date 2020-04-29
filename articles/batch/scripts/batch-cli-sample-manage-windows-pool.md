@@ -1,5 +1,5 @@
 ---
-title: Voorbeeld van Azure CLI Script - Windows Pool in batch
+title: Voor beeld van Azure CLI-script-Windows-groep in batch
 description: Dit script toont enkele van de opdrachten die in de Azure CLI beschikbaar zijn voor het maken en beheren van een groep Windows-rekenknooppunten in Azure Batch.
 services: batch
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/12/2019
 ms.author: labrenne
 ms.openlocfilehash: 1adbdcf5d2bcf8acf4a8f5d61ee3b95ba8b7402b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77023171"
 ---
 # <a name="cli-example-create-and-manage-a-windows-pool-in-azure-batch"></a>CLI-voorbeeld: een Windows-groep maken en beheren in Azure Batch

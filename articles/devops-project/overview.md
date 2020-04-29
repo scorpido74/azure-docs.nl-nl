@@ -1,6 +1,6 @@
 ---
-title: Overzicht van Azure DevOps Projects | Microsoft Docs
-description: Ontdek de waarde van Azure DevOps Projects
+title: Overzicht van Azure DevOps starter | Microsoft Docs
+description: Meer informatie over de waarde voor Azure DevOps starter
 services: devops-project
 documentationcenter: ''
 author: mlearned
@@ -12,37 +12,37 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 05/03/2018
+ms.date: 03/24/2020
 ms.author: mlearned
-ms.openlocfilehash: d39702f8e30046dd3cf634fc67ed7095471cd629
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 99a1fdb8caff9953041c996d0f5581318ce11c66
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "71971479"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233683"
 ---
-# <a name="overview-of-azure-devops-projects"></a>Overzicht van Azure DevOps Projects
+# <a name="overview-of-azure-devops-starter"></a>Overzicht van Azure DevOps starter
 
- Azure DevOps Projects zorgt ervoor dat u eenvoudig aan de slag kunt met Azure. U kunt met enkele eenvoudige stappen vanuit de Azure-portal uw favoriete type app starten in de Azure-service van uw keuze. 
+ Met Azure DevOps starter kunt u gemakkelijk aan de slag met Azure. U kunt met enkele eenvoudige stappen vanuit de Azure-portal uw favoriete type app starten in de Azure-service van uw keuze. 
 
- DevOps Projects stelt alles in wat u nodig hebt voor het ontwikkelen, implementeren en controleren van uw toepassing. Met het DevOps Project-dashboard kunt u het doorvoeren, compileren en implementeren van code controleren, allemaal vanuit één weergave in de Azure-portal.
+ DevOps starter stelt alles in wat u nodig hebt voor het ontwikkelen, implementeren en bewaken van uw toepassing. U kunt het DevOps-starter dash board gebruiken voor het bewaken van code doorvoer, builds en implementaties, allemaal vanaf één weer gave in de Azure Portal.
 
-## <a name="why-should-i-use-devops-projects"></a>Waarom zou ik Azure DevOps Projects gebruiken?
+## <a name="advantages-of-using-devops-starter"></a>Voor delen van het gebruik van DevOps starter
 
-  DevOps Projects automatiseert de configuratie van een volledige pijplijn voor continue integratie (CI) en continue levering (CD) naar Azure.  U kunt beginnen met bestaande code of een van de gegeven voorbeeldtoepassingen gebruiken. Vervolgens kunt u die toepassing snel implementeren in verschillende Azure-services, zoals Virtual Machines, App Service, Azure Kubernetes Service (AKS), Azure SQL Database en Azure Service Fabric.  
+  DevOps starter automatiseert de installatie van een volledige doorlopende integratie (CI) en continue levering (CD)-pijp lijn naar Azure.  U kunt beginnen met bestaande code of een van de gegeven voorbeeldtoepassingen gebruiken. Vervolgens kunt u die toepassing snel implementeren in verschillende Azure-services, zoals Virtual Machines, App Service, Azure Kubernetes Service (AKS), Azure SQL Database en Azure Service Fabric.  
 
-  DevOps Projects verricht alle taken voor de eerste configuratie van een DevOps-pijplijn, met inbegrip van het instellen van de initiële Git-opslagplaats, het configureren van de CI/CD-pijplijn, het maken van een Application Insights-resource voor controledoeleinden en het genereren van één enkele weergave van de complete oplossing via een DevOps Projects-dashboard in de Azure-portal.
+  DevOps starter voert al het werk uit voor de eerste configuratie van een DevOps-pijp lijn, met inbegrip van alles uit het instellen van de eerste Git-opslag plaats, het configureren van de CI/CD-pijp lijn, het maken van een Application Insights resource voor bewaking en het leveren van een enkele weer gave van de volledige oplossing met het maken van een DevOps Projects dash board in de Azure Portal.
 
-U kunt DevOps Projects gebruiken om:
+U kunt DevOps starter gebruiken voor het volgende:
 
 * Snel een toepassing implementeren in Azure
 * De installatie van een VSTS CI/CD-pijplijn te automatiseren
 * Te bekijken en begrijpen hoe u een CI/CD-pijplijn correct instelt
 * De release-pijplijnen verder aan te passen op basis van uw specifieke scenario's
 
-## <a name="how-do-i-use-devops-projects"></a>Hoe kan ik Azure DevOps Projects gebruiken?
+## <a name="how-to-use-devops-starter"></a>DevOps starter gebruiken?
 
-  Azure DevOps Projects is beschikbaar via de Azure-portal. U maakt een Azure DevOps Projects-resource in de portal, net zoals u een gewone Azure-resource maakt. DevOps Projects werkt zoals een wizard, wat inhoudt dat de verschillende configuratieopties achtereenvolgens worden aangeboden.  
+  DevOps starter is beschikbaar via de Azure Portal. U maakt een DevOps starter-resource op dezelfde manier als u een andere Azure-resource maakt vanuit de portal. DevOps Projects werkt zoals een wizard, wat inhoudt dat de verschillende configuratieopties achtereenvolgens worden aangeboden.  
 
 U kiest een aantal configuratieopties om de eerste installatie uit te voeren. Het gaat om deze opties:
 
@@ -55,27 +55,27 @@ U kiest een aantal configuratieopties om de eerste installatie uit te voeren. He
 * De locatie van Azure-services kiezen
 * Kiezen uit verschillende prijscategorieën voor Azure-services
 
-Nadat u DevOps Project hebt gebruikt, kunt u alle resources ook vanaf één locatie verwijderen, namelijk vanuit het DevOps Project-dashboard in de Azure-portal.
+Nadat u DevOps starter hebt gebruikt, kunt u ook alle resources uit één locatie verwijderen uit het DevOps-starter dash board op de Azure Portal.
 
-## <a name="devops-projects-and-azure-devops-integration"></a>DevOps Projects en Azure DevOps integreren
+## <a name="devops-starter-and-azure-devops-integration"></a>DevOps starter-en Azure DevOps-integratie
 
-DevOps Projects werkt op basis van Azure DevOps. DevOps Projects automatiseert al het werk dat in Azure Pipelines nodig is voor het instellen van een CI/CD-pijplijn. Het maakt een Git-repository in een nieuwe of bestaande Azure DevOps-organisatie en voert vervolgens een voorbeeldtoepassing of uw bestaande code door in een nieuwe Git-repository.  
+DevOps Starter wordt aangedreven door Azure DevOps. DevOps starter automatiseert al het werk dat nodig is in azure-pijp lijnen om een CI/CD-pijp lijn in te stellen. Het maakt een Git-repository in een nieuwe of bestaande Azure DevOps-organisatie en voert vervolgens een voorbeeldtoepassing of uw bestaande code door in een nieuwe Git-repository.  
 
-Met de automatisering wordt ook een CI-trigger voor de build gemaakt, zodat elke nieuwe codedoorvoer een build tot gevolg heeft. DevOps Projects maakt ook een CD-trigger en implementeert elke nieuwe geslaagde build in de Azure-service van uw keuze.  
+Met de automatisering wordt ook een CI-trigger voor de build gemaakt, zodat elke nieuwe codedoorvoer een build tot gevolg heeft. DevOps Starter maakt een CD-trigger en implementeert elke nieuwe geslaagde build met de Azure-service van uw keuze.  
 
 De build- en release-pijplijnen kunnen worden aangepast voor aanvullende scenario's. U kunt de build- en release-pijplijnen ook klonen voor gebruik in andere projecten.
 
-Nadat het DevOps-project is gemaakt, kunt u het volgende doen:
+Nadat u uw DevOps starter hebt gemaakt, kunt u het volgende doen:
 
 * De build- en releasepijplijn aanpassen
 * Met behulp van pull-aanvragen de codestroom beheren en een hoge kwaliteit garanderen
 * Elke doorvoer (commit) testen en compileren voordat u de code samenvoegt om de kwaliteit nog verder te verbeteren
 * Achterstand en problemen samen met de toepassing bijhouden
 
-## <a name="how-do-i-start-using-devops-projects"></a>Hoe kan ik aan de slag gaan met DevOps Project?
+## <a name="getting-started-with-devops-starter"></a>Aan de slag met DevOps starter
 
-* [Aan de slag met DevOps Projects](https://docs.microsoft.com/azure/devops-project/azure-devops-project-github)
+* [Aan de slag met DevOps starter](https://docs.microsoft.com/azure/devops-project/azure-devops-project-github)
 
-##  <a name="devops-projects-videos"></a>Video’s over DevOps Projects
+##  <a name="devops-starter-videos"></a>DevOps-start Video's
 
-* [Create CI/CD with Azure DevOps Projects](https://www.youtube.com/watch?v=NuYDAs3kNV8) (Engelstalig)
+* [CI/CD maken met Azure DevOps starter](https://www.youtube.com/watch?v=NuYDAs3kNV8)

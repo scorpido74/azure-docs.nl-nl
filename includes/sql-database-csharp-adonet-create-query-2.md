@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67176113"
 ---
 ## <a name="c-program-example"></a>Voorbeeld van C#-programma
@@ -26,7 +26,7 @@ In de volgende secties van dit artikel wordt een C#-programma gepresenteerd dat 
 
 Voor de `CREATE TABLE`-instructies is het trefwoord **VERWIJZINGEN** nodig voor het maken van een FK-relatie (*refererende sleutel*) tussen twee tabellen. Als u *tempdb* gebruikt, geeft u commentaar bij het trefwoord `--REFERENCES` met behulp van twee streepjes aan het begin.
 
-Op de ERD wordt de relatie tussen de twee tabellen weergegeven. De waarden in de *onderliggende* kolom **tabEmployee.DepartmentCode** zijn beperkt tot waarden uit de *bovenliggende* kolom **tabDepartment.DepartmentCode.**
+Op de ERD wordt de relatie tussen de twee tabellen weergegeven. De waarden in de *onderliggende* kolom **tabEmployee. DepartmentCode** zijn beperkt tot waarden uit de *bovenliggende* kolom **tabDepartment. DepartmentCode** .
 
 ![ERD met refererende sleutel](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 

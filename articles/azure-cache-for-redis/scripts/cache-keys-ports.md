@@ -1,6 +1,6 @@
 ---
-title: Download de hostnaam, poorten, sleutels - Azure Cache for Redis - Azure CLI
-description: In dit voorbeeld van Azure CLI-code ziet u hoe u de hostnaam, poorten en sleutels voor een Azure-cache voor bijvoorbeeld Redis ophalen.
+title: De hostnaam, poorten en sleutels ophalen-Azure cache voor redis-Azure CLI
+description: Dit Azure CLI-code voorbeeld laat zien hoe u de hostnaam, poorten en sleutels voor een Azure-cache kunt ophalen voor een redis-exemplaar.
 author: yegu-ms
 ms.author: yegu
 tags: azure-service-management
@@ -9,15 +9,15 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.openlocfilehash: 199c5707e9ecd887af64e271184e151ce0966745
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75411308"
 ---
-# <a name="get-the-hostname-ports-and-keys-for-azure-cache-for-redis"></a>Download de hostnaam, poorten en sleutels voor Azure Cache voor Redis
+# <a name="get-the-hostname-ports-and-keys-for-azure-cache-for-redis"></a>De hostnaam, poorten en sleutels voor Azure cache ophalen voor redis
 
-In dit scenario leert u hoe u de hostnaam, poorten en sleutels ophaalt die worden gebruikt om verbinding te maken met een Azure-cache voor bijvoorbeeld Redis.
+In dit scenario leert u hoe u de hostnaam, poorten en sleutels kunt ophalen die worden gebruikt om verbinding te maken met een Azure-cache voor redis-exemplaar.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -28,16 +28,16 @@ In dit scenario leert u hoe u de hostnaam, poorten en sleutels ophaalt die worde
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script gebruikt de volgende opdrachten om de hostnaam, sleutels en poorten van een Azure Cache voor redis-instantie op te halen. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt om de hostnaam, sleutels en poorten van een Azure-cache op te halen voor redis-exemplaar. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az redis show](https://docs.microsoft.com/cli/azure/redis) | Gegevens ophalen van een Azure-cache voor bijvoorbeeld Redis. |
-| [az redis lijst-toetsen](https://docs.microsoft.com/cli/azure/redis) | Toegangssleutels ophalen voor een Azure-cache voor bijvoorbeeld Redis. |
+| [AZ redis show](https://docs.microsoft.com/cli/azure/redis) | Details ophalen van een Azure-cache voor redis-exemplaar. |
+| [AZ redis List-Keys](https://docs.microsoft.com/cli/azure/redis) | De toegangs sleutels voor een Azure-cache ophalen voor een redis-exemplaar. |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
-Aanvullende Azure-cache voor Redis CLI-scriptvoorbeelden is te vinden in de [Azure Cache for Redis-documentatie.](../cli-samples.md)
+Extra Azure cache voor redis CLI-voorbeeld scripts vindt u in de [Azure-cache voor redis-documentatie](../cli-samples.md).

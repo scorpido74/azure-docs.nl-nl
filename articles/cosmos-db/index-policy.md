@@ -4,14 +4,14 @@ description: Meer informatie over het configureren en wijzigen van het standaard
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 04/28/2020
 ms.author: tisande
-ms.openlocfilehash: 930f156ebec76be860e7af02d41540ce67982f92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f010ec46c41c2302cc9c99a631fd18b1af9661eb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80292069"
+ms.locfileid: "82232067"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indexeringsbeleid in Azure Cosmos DB
 
@@ -97,6 +97,26 @@ Als deze eigenschap niet is opgegeven, hebben deze eigenschappen de volgende sta
 
 Zie [deze sectie](how-to-manage-indexing-policy.md#indexing-policy-examples) voor voor beelden van indexerings beleid voor het opnemen en uitsluiten van paden.
 
+## <a name="includeexclude-precedence"></a>Voor rang opnemen/uitsluiten
+
+Als uw opgenomen paden en uitgesloten paden een conflict veroorzaken, heeft het precieze pad prioriteit.
+
+Hier volgt een voorbeeld:
+
+**Opgenomen pad**:`/food/ingredients/nutrition/*`
+
+**Uitgesloten pad**:`/food/ingredients/*`
+
+In dit geval heeft het opgenomen pad voor rang op het uitgesloten pad, omdat dit nauw keuriger is. Op basis van deze paden worden alle gegevens in `food/ingredients` het pad, of genest binnen, uitgesloten van de index. De uitzonde ring hiervan zijn gegevens in het opgenomen `/food/ingredients/nutrition/*`pad:, dat wordt geïndexeerd.
+
+Hier volgen enkele regels voor de prioriteit van opgenomen en uitgesloten paden in Azure Cosmos DB:
+
+- Diepere paden zijn nauw keuriger dan smallere paden. bijvoorbeeld: `/a/b/?` is nauw keuriger dan `/a/?`.
+
+- De `/?` is nauw keuriger `/*`dan. Het is `/a/?` bijvoorbeeld nauw keuriger `/a/*` dan `/a/?` dat voor rang heeft.
+
+- Het pad `/*` moet een opgenomen pad of uitgesloten pad zijn.
+
 ## <a name="spatial-indexes"></a>Ruimtelijke indexen
 
 Wanneer u een ruimtelijk pad definieert in het indexerings beleid, moet u definiëren welke ```type``` index moet worden toegepast op dat pad. Mogelijke typen voor ruimtelijke indexen zijn onder andere:
@@ -114,6 +134,8 @@ Met Azure Cosmos DB worden standaard geen ruimtelijke indexen gemaakt. Als u rui
 ## <a name="composite-indexes"></a>Samengestelde indexen
 
 Query's die een `ORDER BY` -component met twee of meer eigenschappen hebben, hebben een samengestelde index nodig. U kunt ook een samengestelde index definiëren om de prestaties van veel gelijkheid en bereik query's te verbeteren. Standaard zijn er geen samengestelde indexen gedefinieerd, dus u moet zo nodig [samengestelde indexen toevoegen](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) .
+
+In tegens telling tot met opgenomen of uitgesloten paden kunt u geen pad maken `/*` met het Joker teken. Elk samengesteld pad heeft een impliciet `/?` aan het einde van het pad dat u niet hoeft op te geven. Samengestelde paden leiden naar een scalaire waarde. Dit is de enige waarde die wordt opgenomen in de samengestelde index.
 
 Wanneer u een samengestelde index definieert, geeft u het volgende op:
 

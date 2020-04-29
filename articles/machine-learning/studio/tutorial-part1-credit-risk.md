@@ -1,7 +1,7 @@
 ---
-title: 'Zelfstudie 1: Kredietrisico voorspellen'
+title: 'Zelf studie 1: krediet risico voors pellen'
 titleSuffix: ML Studio (classic) - Azure
-description: Een gedetailleerde zelfstudie waarin wordt uitgelegd hoe u een oplossing voor voorspellende analyses maakt voor kredietrisicobeoordeling in Azure Machine Learning Studio (klassiek). Deze zelfstudie is deel één van een driedelige serie.  U leert een werkruimte maken, gegevens uploaden en een experiment maken.
+description: Een gedetailleerde zelf studie waarin wordt getoond hoe u een predictive analytics oplossing kunt maken voor een beoordeling van een credit risico in Azure Machine Learning Studio (klassiek). Deze zelfstudie is deel één van een driedelige serie.  U leert een werkruimte maken, gegevens uploaden en een experiment maken.
 keywords: kredietrisico, predictive analytics-oplossing, risico-evaluatie
 author: sdgilley
 ms.author: sgilley
@@ -11,30 +11,30 @@ ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
 ms.openlocfilehash: 6fd8573c78d80c950bdeb41ec01e2835def3979a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79204253"
 ---
-# <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Zelfstudie 1: Kredietrisico voorspellen - Azure Machine Learning Studio (klassiek)
+# <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Zelf studie 1: krediet risico voors pellen-Azure Machine Learning Studio (klassiek)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-In deze zelfstudie wordt uitgebreid ingegaan op het ontwikkelingsproces van een predictive analytics-oplossing. Je ontwikkelt een eenvoudig model in Machine Learning Studio (klassiek).  Vervolgens implementeert u het model als een Azure Machine Learning-webservice.  Dit geïmplementeerde model kan voorspellingen doen op basis van nieuwe gegevens. Deze zelfstudie is **deel één van een driedelige serie**.
+In deze zelfstudie wordt uitgebreid ingegaan op het ontwikkelingsproces van een predictive analytics-oplossing. U ontwikkelt een eenvoudig model in Machine Learning Studio (klassiek).  Vervolgens implementeert u het model als een Azure Machine Learning-webservice.  Dit geïmplementeerde model kan voorspellingen doen op basis van nieuwe gegevens. Deze zelfstudie is **deel één van een driedelige serie**.
 
 Stel dat u iemands kredietrisico moet voorspellen op basis van de gegevens die deze persoon in een kredietaanvraag heeft ingevuld.  
 
-Kredietrisicobeoordeling is een complex probleem, maar in deze zelfstudie wordt het enigszins vereenvoudigd. U gebruikt het als een voorbeeld van hoe u een oplossing voor voorspellende analyses maken met Microsoft Azure Machine Learning Studio (klassiek). U gebruikt Azure Machine Learning Studio (klassiek) en een Machine Learning-webservice voor deze oplossing.  
+Kredietrisicobeoordeling is een complex probleem, maar in deze zelfstudie wordt het enigszins vereenvoudigd. U gebruikt deze als voor beeld van hoe u een predictive analytics oplossing kunt maken met behulp van Microsoft Azure Machine Learning Studio (klassiek). U gebruikt Azure Machine Learning Studio (klassiek) en een Machine Learning-webservice voor deze oplossing.  
 
 In deze driedelige zelfstudie begint u met openbaar beschikbare kredietrisicogegevens.  Vervolgens ontwikkelt en traint u een voorspellend model.  En ten slotte implementeert u het model als een webservice.
 
 In dit deel van de zelfstudie gaat u het volgende doen: 
  
 > [!div class="checklist"]
-> * Een machine learning studio (klassieke) werkruimte maken
+> * Een Machine Learning Studio (klassieke) werk ruimte maken
 > * Bestaande gegevens uploaden
 > * Een experiment maken
 
@@ -42,28 +42,28 @@ U kunt dit experiment vervolgens gebruiken om [modellen te trainen in deel 2](tu
 
 ## <a name="prerequisites"></a>Vereisten
 
-In deze zelfstudie wordt ervan uitgegaan dat u Machine Learning Studio (klassiek) minstens één keer eerder hebt gebruikt en dat u enig begrip hebt van machine learning-concepten. Er wordt niet van uitgegaan dat u een expert bent.
+In deze zelf studie wordt ervan uitgegaan dat u Machine Learning Studio (klassiek) ten minste één keer hebt gebruikt en dat u over machine learning concepten kunt kijken. Er wordt niet van uitgegaan dat u een expert bent.
 
-Als u Azure **Machine Learning Studio (klassiek)** nog nooit eerder hebt gebruikt, u beginnen met de quickstart, [Uw eerste data science-experiment maken in Azure Machine Learning Studio (klassiek).](create-experiment.md) De quickstart neemt je voor het eerst mee door Machine Learning Studio (klassiek). U ziet hoe u modules naar uw experiment sleept, ze aan elkaar koppelt, het experiment uitvoert en de resultaten weergeeft.
+Als u **Azure machine learning Studio (klassiek)** nog nooit eerder hebt gebruikt, kunt u beginnen met de Snelstartgids, [uw eerste experimentele experiment voor data technologie in azure machine learning Studio (klassiek) maken](create-experiment.md). U gaat de eerste keer door de Snelstartgids Machine Learning Studio (klassiek). U ziet hoe u modules naar uw experiment sleept, ze aan elkaar koppelt, het experiment uitvoert en de resultaten weergeeft.
 
 
 > [!TIP] 
-> In de [Azure AI Gallery](https://gallery.azure.ai) vindt u een werkende kopie van het experiment dat u in deze zelfstudie gaat ontwikkelen. Ga naar **[Zelfstudie - Voorspel kredietrisico's](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** en klik op **Openen in Studio** om een kopie van het experiment te downloaden naar uw Machine Learning Studio (klassieke) werkruimte.
+> In de [Azure AI Gallery](https://gallery.azure.ai) vindt u een werkende kopie van het experiment dat u in deze zelfstudie gaat ontwikkelen. Ga naar **[zelf studie: krediet risico voors pellen](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** en klik op **Open in Studio** om een kopie van het experiment te downloaden naar de werk ruimte machine learning Studio (klassiek).
 > 
 
 
-## <a name="create-a-machine-learning-studio-classic-workspace"></a>Een machine learning studio (klassieke) werkruimte maken
+## <a name="create-a-machine-learning-studio-classic-workspace"></a>Een Machine Learning Studio (klassieke) werk ruimte maken
 
-Als u Machine Learning Studio (klassiek) wilt gebruiken, moet u een Microsoft Azure Machine Learning Studio (klassieke) werkruimte hebben. Deze werkruimte bevat de hulpprogramma's die u nodig hebt om experimenten te maken, beheren en publiceren.  
+Als u Machine Learning Studio (klassiek) wilt gebruiken, moet u een Microsoft Azure Machine Learning Studio (klassieke) werk ruimte hebben. Deze werkruimte bevat de hulpprogramma's die u nodig hebt om experimenten te maken, beheren en publiceren.  
 
-Zie Een azure [machine learning studio (klassieke) werkruimte maken en delen](create-workspace.md)als u een werkruimte wilt maken.
+Zie [een Azure machine learning Studio (klassieke) werk ruimte maken en delen](create-workspace.md)voor meer informatie over het maken van een werk ruimte.
 
-Nadat uw werkruimte is gemaakt, opent u[https://studio.azureml.net/Home](https://studio.azureml.net/Home)Machine Learning Studio (klassiek). Als u meer dan één werkruimte hebt, kunt u de werkruimte selecteren op de werkbalk in de rechterbovenhoek van het venster.
+Nadat uw werk ruimte is gemaakt, opent u Machine Learning Studio (klassiek[https://studio.azureml.net/Home](https://studio.azureml.net/Home)) (). Als u meer dan één werkruimte hebt, kunt u de werkruimte selecteren op de werkbalk in de rechterbovenhoek van het venster.
 
-![Werkruimte selecteren in Studio (klassiek)](./media/tutorial-part1-credit-risk/open-workspace.png)
+![Werk ruimte in Studio selecteren (klassiek)](./media/tutorial-part1-credit-risk/open-workspace.png)
 
 > [!TIP]
-> Als u eigenaar bent van de werkruimte, kunt u de experimenten waaraan u werkt met anderen delen door ze uit te nodigen in de werkruimte. Dit kan in Machine Learning Studio (klassiek) op de **pagina INSTELLINGEN.** U hebt alleen het Microsoft- of organisatie-account van elke gebruiker nodig.
+> Als u eigenaar bent van de werkruimte, kunt u de experimenten waaraan u werkt met anderen delen door ze uit te nodigen in de werkruimte. U kunt dit doen in Machine Learning Studio (klassiek) op de pagina **instellingen** . U hebt alleen het Microsoft- of organisatie-account van elke gebruiker nodig.
 > 
 > Klik op de pagina **SETTINGS** op **USERS** (gebruikers) en klik op **INVITE MORE USERS** (meer gebruikers uitnodigen) onderaan het venster.
 > 
@@ -79,7 +79,7 @@ De gegevensset **german.data** bevat rijen met 20 variabelen voor 1000 kredietaa
 
 De UCI-website bevat een beschrijving van de kenmerken van de functievector voor deze gegevens. Deze gegevens omvatten financiële gegevens, kredietgeschiedenis, werknemersstatus en persoonlijke gegevens. Voor elke aanvrager is een binaire beoordeling gegeven die aangeeft of deze een laag of een hoog kredietrisico heeft. 
 
-U gebruikt deze gegevens om een voorspellend model te trainen. Wanneer u klaar bent, moet uw model in staat zijn om een functievector voor een nieuw individu te accepteren en te voorspellen of ze een laag of hoog kredietrisico zijn.  
+U gebruikt deze gegevens om een voorspellend model te trainen. Wanneer u klaar bent, moet uw model een functie Vector kunnen accepteren voor een nieuwe persoon en te voors pellen of ze een laag of hoog krediet risico zijn.  
 
 Er is een interessante wending.
 
@@ -97,7 +97,7 @@ Als het model iemand vervolgens ten onrechte classificeert als een laag kredietr
 
 ### <a name="convert-the-dataset-format"></a>De gegevenssetindeling converteren
 
-In de oorspronkelijke gegevensset worden de gegevens gescheiden door witruimte. Machine Learning Studio (klassiek) werkt beter met een CSV-bestand (comma-separated value), zodat u de gegevensset converteert door spaties te vervangen door komma's.  
+In de oorspronkelijke gegevensset worden de gegevens gescheiden door witruimte. Machine Learning Studio (klassiek) werkt beter met een CSV-bestand (Comma-Separated Value), dus u converteert de gegevensset door spaties te vervangen door komma's.  
 
 Er zijn veel manieren om deze gegevens te converteren. Eén manier is de volgende Windows PowerShell-opdracht te gebruiken:   
 
@@ -109,11 +109,11 @@ Een andere manier is met behulp van de sed-opdracht van Unix:
 
 In beide gevallen hebt u een door komma's gescheiden versie van de gegevens gemaakt in een bestand met de naam **german.csv** dat u in uw experiment kunt gebruiken.
 
-### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>Upload de dataset naar Machine Learning Studio (klassiek)
+### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>De gegevensset uploaden naar Machine Learning Studio (klassiek)
 
-Zodra de gegevens zijn geconverteerd naar CSV-indeling, moet u deze uploaden naar Machine Learning Studio (klassiek). 
+Zodra de gegevens zijn geconverteerd naar de CSV-indeling, moet u deze uploaden naar Machine Learning Studio (klassiek). 
 
-1. Open de startpagina van machine learning[https://studio.azureml.net](https://studio.azureml.net)studio (klassieke) ( ). 
+1. Open de start pagina[https://studio.azureml.net](https://studio.azureml.net)van machine learning Studio (klassiek). 
 
 2. Klik in het menu ![Menu](./media/tutorial-part1-credit-risk/menu.png) in de linkerbovenhoek van het venster, klik op **Azure Machine Learning**, selecteer **Studio** en meld u aan.
 
@@ -131,7 +131,7 @@ Zodra de gegevens zijn geconverteerd naar CSV-indeling, moet u deze uploaden naa
 
 8. Selecteer als gegevenstype **Generic CSV File With no header (.nh.csv)** (generiek CSV-bestand zonder koptekst).
 
-9. Voeg een beschrijving toe als je wilt.
+9. Voeg indien gewenst een beschrijving toe.
 
 10. Klik op het vinkje **OK**.  
 
@@ -139,17 +139,17 @@ Zodra de gegevens zijn geconverteerd naar CSV-indeling, moet u deze uploaden naa
 
 Hiermee worden de gegevens geüpload naar een gegevenssetmodule die u in een experiment kunt gebruiken.
 
-U gegevenssets beheren die u naar Studio (klassiek) hebt geüpload door links van het venster Studio (klassiek) op het tabblad **GEGEVENSSETGEGEVENS** te klikken.
+U kunt gegevens sets beheren die u hebt geüpload naar Studio (klassiek) door te klikken op het tabblad **gegevens sets** links in het venster Studio (klassiek).
 
 ![Gegevenssets beheren](./media/tutorial-part1-credit-risk/dataset-list.png)
 
-Zie [Uw trainingsgegevens importeren in Azure Machine Learning Studio (klassiek)](import-data.md)voor meer informatie over het importeren van andere typen gegevens in een experiment.
+Zie [uw trainings gegevens importeren in azure machine learning Studio (klassiek)](import-data.md)voor meer informatie over het importeren van andere typen gegevens in een experiment.
 
 ## <a name="create-an-experiment"></a>Een experiment maken
 
-De volgende stap in deze zelfstudie is het maken van een experiment in Machine Learning Studio (klassiek) dat gebruik maakt van de gegevensset die u hebt geüpload.  
+De volgende stap in deze zelf studie is het maken van een experiment in Machine Learning Studio (klassiek) dat gebruikmaakt van de gegevensset die u hebt geüpload.  
 
-1. Klik in Studio (klassiek) op **+NIEUW** onder aan het venster.
+1. In Studio (klassiek), klikt u op **+ Nieuw** onder aan het venster.
 1. Selecteer **EXPERIMENT** en selecteer 'Blank Experiment' (leeg experiment). 
 
     ![Een nieuw experiment maken](./media/tutorial-part1-credit-risk/create-new-experiment.png)
@@ -173,15 +173,15 @@ De volgende stap in deze zelfstudie is het maken van een experiment in Machine L
 
 ### <a name="prepare-the-data"></a>De gegevens voorbereiden
 
-U de eerste 100 rijen van de gegevens en wat statistische informatie voor de hele gegevensset bekijken: Klik op de uitvoerpoort van de gegevensset (de kleine cirkel onderaan) en selecteer **Visualiseren**.  
+U kunt de eerste 100 rijen van de gegevens en enkele statistische gegevens voor de hele gegevensset weer geven: Klik op de uitvoer poort van de gegevensset (de kleine cirkel aan de onderkant) en selecteer **visualiseren**.  
 
-Omdat het gegevensbestand niet met kolomkoppen is geleverd, heeft Studio (klassiek) generieke koppen (Col1, Col2, *enz.).* Goede koppen zijn niet essentieel voor het maken van een model, maar ze maken het gemakkelijker om met de gegevens in het experiment te werken. Wanneer u dit model uiteindelijk publiceert in een webservice, helpen de koppen u ook bij het identificeren van de kolommen voor de gebruiker van de service.  
+Omdat het gegevens bestand geen kolom koppen bevat, heeft Studio (klassiek) algemene koppen (Kol1, col2, *enzovoort*) verstrekt. Goede koppen zijn niet essentieel voor het maken van een model, maar ze maken het gemakkelijker om met de gegevens in het experiment te werken. Wanneer u dit model uiteindelijk publiceert in een webservice, helpen de koppen u ook bij het identificeren van de kolommen voor de gebruiker van de service.  
 
 U kunt kolomkoppen toevoegen met behulp van de module [Edit Metadata][edit-metadata] (metagegevens bewerken).
 
 U gebruikt de module [Edit Metadata][edit-metadata] om de metagegevens van een gegevensset te wijzigen. In dit geval om meer beschrijvende namen voor de kolomkoppen op te geven. 
 
-Als u [Metagegevens bewerken][edit-metadata]wilt gebruiken, geeft u eerst op welke kolommen u wilt wijzigen (in dit geval allemaal.) Vervolgens geeft u de actie op die moet worden uitgevoerd op deze kolommen (in dit geval kolomkoppen wijzigen.)
+Als u [meta gegevens bewerken][edit-metadata]wilt gebruiken, geeft u eerst op welke kolommen u wilt aanpassen (in dit geval allemaal.) Vervolgens geeft u de actie op die moet worden uitgevoerd voor deze kolommen (in dit geval wordt de kolom koppen gewijzigd.)
 
 1. Typ in het modulepalet 'metadata' in het vak **Search**. [Edit Metadata][edit-metadata] wordt weergegeven in de modulelijst.
 
@@ -297,7 +297,7 @@ Zie voor meer informatie over het gebruik van R-scripts in uw experimenten [Exte
 In deze zelfstudie hebt u de volgende stappen voltooid: 
  
 > [!div class="checklist"]
-> * Een machine learning studio (klassieke) werkruimte maken
+> * Een Machine Learning Studio (klassieke) werk ruimte maken
 > * Bestaande gegevens uploaden naar de werkruimte
 > * Een experiment maken
 

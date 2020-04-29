@@ -1,5 +1,5 @@
 ---
-title: Een VM- en opslagaccount maken voor een schaalbare toepassing in Azure
+title: Een virtuele machine en een opslag account maken voor een schaal bare toepassing in azure
 description: Informatie over hoe u een VM implementeert die wordt gebruikt om een schaalbare toepassing uit te voeren met behulp van Azure Blob-opslag
 author: roygara
 ms.service: storage
@@ -8,10 +8,10 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: 60bb227af7cc886bb35cbd045cc8a27cf82ae903
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75372241"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>Een virtuele machine en een opslagaccount maken voor een schaalbare toepassing
@@ -21,11 +21,11 @@ Deze zelfstudie is deel één van een serie. In deze zelfstudie leert u hoe u ee
 In deel 1 van de reeks leert u het volgende:
 
 > [!div class="checklist"]
-> * Een opslagaccount maken
+> * Create a storage account
 > * Een virtuele machine maken
 > * Een aangepaste scriptextensie configureren
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -41,7 +41,7 @@ Maak een Azure-resourcegroep met behulp van de opdracht [New-AzResourceGroup](/p
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-## <a name="create-a-storage-account"></a>Een opslagaccount maken
+## <a name="create-a-storage-account"></a>Create a storage account
  
 Met het voorbeeld worden 50 grote bestanden geüpload naar een blobcontainer in een Azure Storage-account. Een opslagaccount biedt een unieke naamruimte voor het opslaan en openen van uw Azure Storage-gegevensobjecten. Maak een opslagaccount in de resourcegroep die u hebt gemaakt met behulp van de opdracht [New-AzStorageAccount](/powershell/module/az.Storage/New-azStorageAccount).
 
@@ -126,7 +126,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName myResourceGroup `
 In deel één van de reeks hebt u geleerd hoe u een opslagaccount maakt, een virtuele machine implementeert en de virtuele machine configureert met de juiste vereisten. U hebt onder meer het volgende gedaan:
 
 > [!div class="checklist"]
-> * Een opslagaccount maken
+> * Create a storage account
 > * Een virtuele machine maken
 > * Een aangepaste scriptextensie configureren
 

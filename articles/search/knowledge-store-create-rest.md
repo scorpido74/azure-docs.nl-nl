@@ -1,7 +1,7 @@
 ---
-title: Een kennisarchief maken (voorbeeld) met REST
+title: Een kennis archief maken (preview) met behulp van REST
 titleSuffix: Azure Cognitive Search
-description: Gebruik de REST API en Postman om een Azure Cognitive Search-kennisarchief te maken voor aanhoudende verrijkingen uit een AI-verrijkingspijplijn. Deze functie is momenteel beschikbaar als openbare preview-versie.
+description: Gebruik de REST API en postman om een Azure Cognitive Search Knowledge Store te maken voor persistentie van een AI-verrijkings pijplijn. Deze functie is momenteel beschikbaar als openbare preview-versie.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -9,110 +9,110 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 12/30/2019
 ms.openlocfilehash: 478a7e03b432006b429c96e03307fd8e494c88ff
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77472312"
 ---
-# <a name="create-a-knowledge-store-using-rest-and-postman"></a>Maak een kenniswinkel met REST en Postman
+# <a name="create-a-knowledge-store-using-rest-and-postman"></a>Maak een kennis archief met behulp van REST en postman
 
 > [!IMPORTANT] 
-> Knowledge store is momenteel in openbare preview. Preview-functionaliteit wordt geleverd zonder overeenkomst op serviceniveau en wordt niet aanbevolen voor productieworkloads. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie. De [REST API versie 2019-05-06-Preview](search-api-preview.md) biedt preview functies. Er is momenteel beperkte portalondersteuning en geen .NET SDK-ondersteuning.
+> Het kennis archief is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
 
-Een kennisarchief bevat uitvoer uit een Azure Cognitive Search-verrijkingspijplijn voor latere analyse of andere downstreamverwerking. Een met AI verrijkte pijplijn accepteert afbeeldingsbestanden of ongestructureerde tekstbestanden, indexeert ze met Azure Cognitive Search, past AI-verrijkingen uit Cognitive Services toe (zoals beeldanalyse en verwerking van natuurlijke talen) en slaat de resultaten vervolgens op in een kennisarchief in Azure Storage. U hulpprogramma's zoals Power BI of Storage Explorer in de Azure-portal gebruiken om de kenniswinkel te verkennen.
+Een kennis archief bevat uitvoer van een Azure Cognitive Search-verrijkings pijplijn voor latere analyses of andere downstream-verwerking. Een AI-verrijkte pijp lijn accepteert afbeeldings bestanden of ongestructureerde tekst bestanden, indexeert deze met behulp van Azure Cognitive Search, maakt AI-verrijkingen van Cognitive Services (zoals afbeeldings analyse en natuurlijke taal verwerking) en slaat de resultaten vervolgens op in een kennis archief in Azure Storage. U kunt hulpprogram ma's als Power BI of Storage Explorer in de Azure Portal gebruiken om het kennis archief te verkennen.
 
-In dit artikel gebruikt u de REST API-interface om AI-verrijkingen in te nemen, te indexeren en toe te passen op een reeks hotelbeoordelingen. De hotelbeoordelingen worden geïmporteerd in Azure Blob-opslag. De resultaten worden opgeslagen als kennisarchief in Azure Table-opslag.
+In dit artikel gebruikt u de REST API-interface om AI-verrijkingen op te nemen, te indexeren en toe te passen op een aantal functionerings gesprekken met hotels. De Hotel beoordelingen worden geïmporteerd in Azure Blob-opslag. De resultaten worden opgeslagen als een kennis archief in azure-tabel opslag.
 
-Nadat u de kenniswinkel hebt gemaakt, u meer informatie krijgen over hoe u toegang krijgt tot de kenniswinkel met [Storage Explorer](knowledge-store-view-storage-explorer.md) of [Power BI.](knowledge-store-connect-power-bi.md)
+Nadat u het kennis archief hebt gemaakt, kunt u leren hoe u toegang krijgt tot het kennis archief met behulp van [Storage Explorer](knowledge-store-view-storage-explorer.md) of [Power bi](knowledge-store-connect-power-bi.md).
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 > [!TIP]
-> We raden [postman desktop app](https://www.getpostman.com/) voor dit artikel. De [broncode](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) voor dit artikel bevat een Postman-verzameling met alle aanvragen. 
+> U wordt aangeraden om de [desktop-app](https://www.getpostman.com/) voor dit artikel te plaatsen. De [bron code](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) voor dit artikel bevat een postman-verzameling met alle aanvragen. 
 
 ## <a name="create-services-and-load-data"></a>Services maken en gegevens laden
 
-Deze quickstart maakt gebruik van Azure Cognitive Search, Azure Blob-opslag en [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) voor de AI. 
+Deze Snelstartgids maakt gebruik van Azure Cognitive Search, Azure Blob Storage en [azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) voor de AI. 
 
-Omdat de werklast zo klein is, wordt Cognitive Services achter de schermen afgetapt om gratis verwerking te bieden voor maximaal 20 transacties per dag. Omdat de gegevensset zo klein is, u het maken of koppelen van een resource voor Cognitive Services overslaan.
+Omdat de werk belasting zo klein is, wordt Cognitive Services achter de schermen getikt om gratis Maxi maal 20 trans acties te kunnen verwerken. Omdat de gegevensset zo klein is, kunt u het maken of koppelen van een Cognitive Services resource overs Laan.
 
-1. [Download HotelReviews_Free.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Deze gegevens zijn hotelbeoordelinggegevens die zijn opgeslagen in een CSV-bestand (afkomstig van Kaggle.com) en bevatten 19 stukjes feedback van klanten over één hotel. 
+1. [Down load HotelReviews_Free. CSV](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Deze gegevens zijn gegevens van een hotel beoordeling die zijn opgeslagen in een CSV-bestand (afkomstig van Kaggle.com) en bevat 19 delen van klanten feedback over één hotel. 
 
-1. [Maak een Azure-opslagaccount](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) aan of [zoek een bestaand account](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) onder uw huidige abonnement. U gebruikt Azure-opslag voor zowel de te importeren ruwe inhoud als de kennisopslag die het eindresultaat is.
+1. [Een Azure Storage-account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) of [een bestaand account vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) onder uw huidige abonnement. U gebruikt Azure Storage voor zowel de onbewerkte inhoud die u wilt importeren als het kennis archief dat het eind resultaat heeft.
 
-   Kies het accounttype **StorageV2 (V2 voor algemeen gebruik).**
+   Kies het account type **StorageV2 (algemeen gebruik v2)** .
 
-1. Open de blobservicespagina's en maak een container met de naam *hotelbeoordelingen.*
+1. Open de pagina's van de BLOB Services en maak een container met de naam *Hotel-Recensies*.
 
 1. Klik op **Uploaden**.
 
-    ![De gegevens uploaden](media/knowledge-store-create-portal/upload-command-bar.png "Upload de hotelrecensies")
+    ![De gegevens uploaden](media/knowledge-store-create-portal/upload-command-bar.png "De Hotels-beoordelingen uploaden")
 
-1. Selecteer het **HotelReviews-Free.csv-bestand** dat u in de eerste stap hebt gedownload.
+1. Selecteer het bestand **HotelReviews-Free. CSV** dat u in de eerste stap hebt gedownload.
 
     ![De Azure Blob-container maken](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "De Azure Blob-container maken")
 
-1. U bent bijna klaar met deze bron, maar voordat u deze pagina's verlaat, gebruikt u een koppeling in het linkernavigatiedeelvenster om de pagina **Toegangssleutels** te openen. Ontvang een verbindingstekenreeks om gegevens uit blob-opslag op te halen. Een verbindingstekenreeks lijkt op het volgende voorbeeld:`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
+1. U bent bijna klaar met deze resource, maar voordat u deze pagina's verlaat, gebruikt u een koppeling in het navigatie deel venster aan de linkerkant om de pagina **toegangs sleutels** te openen. Een connection string ophalen om gegevens op te halen uit de Blob-opslag. Een connection string ziet er ongeveer uit zoals in het volgende voor beeld:`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
-1. Nog steeds in de portal, overschakelen naar Azure Cognitive Search. [Maak een nieuwe service](search-create-service-portal.md) of [zoek een bestaande service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). U gebruik maken van een gratis service voor deze oefening.
+1. Ga nog in de portal naar Azure Cognitive Search. [Een nieuwe service maken](search-create-service-portal.md) of [een bestaande service zoeken](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). U kunt voor deze oefening een gratis service gebruiken.
 
 ## <a name="configure-postman"></a>Postman configureren
 
-Installeer en stel Postman in.
+Postman installeren en instellen.
 
 ### <a name="download-and-install-postman"></a>Postman downloaden en installeren
 
-1. Download de broncode van de [Postman-verzameling](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json).
-1. Selecteer **Bestand** > **importeren** om de broncode te importeren in Postman.
-1. Selecteer het tabblad **Verzamelingen** en selecteer de knop **...** (ellips).
-1. Selecteer **Bewerken**. 
+1. Down load de [bron code van de Postman-verzameling](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json).
+1. Selecteer **bestand** > **importeren** om de bron code te importeren in een postman.
+1. Selecteer het tabblad **verzamelingen** en selecteer vervolgens de knop **...** (weglatings tekens).
+1. Selecteer **bewerken**. 
    
-   ![Postbode-app met navigatie](media/knowledge-store-create-rest/postman-edit-menu.png "Ga naar het menu Bewerken in Postman")
-1. Selecteer in het dialoogvenster **Bewerken** het tabblad **Variabelen.** 
+   ![Postman-app met navigatie](media/knowledge-store-create-rest/postman-edit-menu.png "Ga naar het menu bewerken in postman")
+1. Selecteer in het dialoog venster **bewerken** het tabblad **variabelen** . 
 
-Op het tabblad **Variabelen** u waarden toevoegen die Postman inwisselt telkens wanneer deze een specifieke variabele in dubbele beugels tegenkomt. Postman vervangt het symbool `{{admin-key}}` bijvoorbeeld door de huidige `admin-key`waarde die u instelt voor . Postman maakt de vervanging in URL's, headers, de aanvraagbody, enzovoort. 
+Op het tabblad **variabelen** kunt u waarden toevoegen die na elke keer dat er wordt vervangen door een specifieke variabele tussen dubbele accolades wordt aangetroffen. Postman vervangt bijvoorbeeld het symbool `{{admin-key}}` door de huidige waarde die u hebt ingesteld voor. `admin-key` Postman maakt de vervanging in Url's, kopteksten, de hoofd tekst van de aanvraag, enzovoort. 
 
-`admin-key`Ga naar de azure cognitive search-service en selecteer het `search-service-name` tabblad `storage-account-name` **Sleutels.** Wijzigen en de waarden die u hebt gekozen in [Services maken.](#create-services-and-load-data) Stel `storage-connection-string` in met de waarde op het tabblad **Toegangssleutels van** het opslagaccount. U de standaardwaarden voor de andere waarden verlaten.
+Als u de waarde voor `admin-key`wilt ophalen, gaat u naar de Azure Cognitive Search-service en selecteert u `search-service-name` het `storage-account-name` tabblad **sleutels** . Wijzig en de waarden die u hebt gekozen in [Services maken](#create-services-and-load-data). Stel `storage-connection-string` in met behulp van de waarde op het tabblad **toegangs sleutels** van het opslag account. U kunt de standaard waarde voor de andere waarden laten staan.
 
-![Tabblad Variabelen van de postman-app](media/knowledge-store-create-rest/postman-variables-window.png "Het variabelenvenster van de postbode")
+![Het tabblad app-variabelen van postman](media/knowledge-store-create-rest/postman-variables-window.png "Het venster variabelen van postman")
 
 
 | Variabele    | Waar te verkrijgen? |
 |-------------|-----------------|
-| `admin-key` | Op de pagina **Sleutels** van de Azure Cognitive Search-service.  |
-| `api-version` | Vertrek als **2019-05-06-Preview**. |
-| `datasource-name` | Laat als **hotel-reviews-ds**. | 
-| `indexer-name` | Laat als **hotel-reviews-ixr**. | 
-| `index-name` | Laat als **hotel-reviews-ix**. | 
-| `search-service-name` | De naam van de Azure Cognitive Search-service. De URL `https://{{search-service-name}}.search.windows.net`is . | 
-| `skillset-name` | Laat als **hotel-reviews-ss**. | 
+| `admin-key` | Op de pagina **sleutels** van de Azure Cognitive Search-service.  |
+| `api-version` | Geef **een voor beeld van 2019-05-06**. |
+| `datasource-name` | Als **Hotel laten zien-Recensies-Active Directory**. | 
+| `indexer-name` | Verlof als **Hotel-beoordelingen-IXR**. | 
+| `index-name` | Als **Hotel laten zien, beoordelingen-IX**. | 
+| `search-service-name` | De naam van de Azure Cognitive Search-service. De URL is `https://{{search-service-name}}.search.windows.net`. | 
+| `skillset-name` | Verlof als **Hotel-beoordelingen-SS**. | 
 | `storage-account-name` | De naam van het opslagaccount. | 
-| `storage-connection-string` | Selecteer in het opslagaccount op het tabblad **Toegangssleutels** **toets1** > **verbindingstekenreeks**. | 
-| `storage-container-name` | Laat als **hotel-reviews**. | 
+| `storage-connection-string` | Selecteer in het opslag account op het tabblad **toegangs sleutels** de optie **key1** > -**verbindings reeks**. | 
+| `storage-container-name` | Zorg ervoor dat u zich als **Hotel bekijkt**. | 
 
-### <a name="review-the-request-collection-in-postman"></a>Bekijk de aanvraagverzameling in Postbode
+### <a name="review-the-request-collection-in-postman"></a>Bekijk de verzameling aanvragen in postman
 
-Wanneer u een kennisarchief maakt, moet u vier HTTP-aanvragen uitgeven: 
+Wanneer u een kennis archief maakt, moet u vier HTTP-aanvragen doen: 
 
-- **PUT-verzoek om de index te maken:** deze index bevat de gegevens die Azure Cognitive Search gebruikt en retourneert.
-- **POST-verzoek om de gegevensbron te maken:** deze gegevensbron verbindt uw Azure Cognitive Search-gedrag met het opslagaccount van de gegevens- en kennisarchief. 
-- **PUT-aanvraag om de skillset te maken:** De skillset geeft de verrijkingen aan die worden toegepast op uw gegevens en de structuur van de kenniswinkel.
-- **PUT-aanvraag om de indexer te maken:** Als u de indexer uitvoert, worden de gegevens gelezen, wordt de skillset toepast en worden de resultaten opgeslagen. U moet dit verzoek als laatste uitvoeren.
+- **De aanvraag voor het maken van de index plaatsen**: deze index bevat de gegevens die door Azure Cognitive Search worden gebruikt en wordt geretourneerd.
+- **Post-aanvraag voor het maken van de gegevens bron**: deze gegevens bron verbindt uw Azure Cognitive Search gedrag met het opslag account van de gegevens en het kennis archief. 
+- De **aanvraag voor het maken van de vaardig heden plaatsen**: de vaardig heden bevat de verrijkingen die worden toegepast op uw gegevens en de structuur van het kennis archief.
+- **Put-aanvraag om de Indexeer functie te maken: als**de Indexeer functie wordt uitgevoerd, worden de gegevens gelezen, wordt de vaardig heden toegepast en worden de resultaten opgeslagen. U moet deze aanvraag als laatste uitvoeren.
 
-De [broncode](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) bevat een Postman-verzameling met de vier aanvragen. Als u de aanvragen wilt indienen, selecteert u in Postman het tabblad voor de aanvraag. Voeg vervolgens `api-key` `Content-Type` kopteksten toe en vraag deze aan. Stel de `api-key` waarde `{{admin-key}}`in op . Stel de `Content-type` `application/json`waarde in op . 
+De [bron code](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) bevat een postman-verzameling die de vier aanvragen heeft. Als u de aanvragen wilt uitgeven, selecteert u in postman het tabblad voor de aanvraag. Voeg vervolgens `api-key` kopteksten `Content-Type` en aanvragen toe. Stel de waarde `api-key` in op `{{admin-key}}`. Stel de waarde `Content-type` in `application/json`op. 
 
-![Schermafbeelding van de interface van de postbode voor kopteksten](media/knowledge-store-create-rest/postman-headers-ui.png)
+![Scherm opname van de interface van Postman voor kopteksten](media/knowledge-store-create-rest/postman-headers-ui.png)
 
 > [!Note]
-> U moet `api-key` `Content-type` instellen en headers in al uw verzoeken. Als De postbode een variabele herkent, wordt de `{{admin-key}}` variabele weergegeven in oranje tekst, zoals in de vorige schermafbeelding. Als de variabele verkeerd is gespeld, wordt deze in rode tekst weergegeven.
+> U moet in `api-key` al `Content-type` uw aanvragen koppen en kopteksten instellen. Als Postman een variabele herkent, wordt de variabele in oranje tekst weer gegeven, `{{admin-key}}` zoals in de vorige scherm afbeelding. Als de variabele verkeerd is gespeld, wordt deze in een rode tekst weer gegeven.
 >
 
 ## <a name="create-an-azure-cognitive-search-index"></a>Een Azure Cognitive Services-index maken
 
-Maak een Azure Cognitive Search-index om de gegevens weer te geven waarop u wilt zoeken, filteren en verbeteringen toepassen. Maak de index door een `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}`PUT-verzoek uit te geven aan . Postbode vervangt symbolen die zijn ingesloten in `{{search-service-name}}` `{{index-name}}`dubbele `{{api-version}}`accolades (zoals , en ) door de waarden die u inStelt in [Postman configureren](#configure-postman). Als u een ander hulpmiddel gebruikt om uw REST-opdrachten uit te geven, moet u deze variabelen zelf vervangen.
+Maak een Azure Cognitive Search-index voor de gegevens die u wilt doorzoeken, filteren en Toep assen van verbeteringen in. Maak de index door een PUT-aanvraag te `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}`verzenden naar. Postman vervangt symbolen tussen dubbele accolades ( `{{search-service-name}}`zoals, `{{index-name}}`en `{{api-version}}`) door de waarden die u instelt in [postman configureren](#configure-postman). Als u een ander hulp programma gebruikt om uw REST-opdrachten uit te voeren, moet u deze variabelen zelf vervangen.
 
-Stel de structuur van uw Azure Cognitive Search-index in de hoofdtekst van de aanvraag in. Ga in Postman, `api-key` nadat `Content-type` u de kopteksten en kopteksten hebt ingesteld, naar het deelvenster **Lichaam** van het verzoek. U ziet de volgende JSON. Als u dit niet doet, selecteert u **Raw** > **JSON (toepassing/json)** en plakt u de volgende code als de hoofdtekst:
+Stel de structuur van uw Azure Cognitive Search-index in de hoofd tekst van de aanvraag in. Ga in postman naar het deel venster `api-key` `Content-type` **hoofd tekst** van de aanvraag, nadat u de-en-headers hebt ingesteld. De volgende JSON moet worden weer geven. Als dat niet het geval is, selecteert u **onbewerkte** > **JSON (toepassing/JSON)** en plakt u de volgende code als hoofd tekst:
 
 ```JSON
 {
@@ -147,15 +147,15 @@ Stel de structuur van uw Azure Cognitive Search-index in de hoofdtekst van de aa
 
 ```
 
-Deze indexdefinitie is een combinatie van gegevens die u aan de gebruiker wilt presenteren (de naam van het hotel, recensie-inhoud, de datum), zoekmetagegevens en AI-verbeteringsgegevens (Sentiment, Sleutelzinnen en Taal).
+Deze index definitie is een combi natie van gegevens die u aan de gebruiker wilt presen teren (de naam van het Hotel, de inhoud, de datum, de meta gegevens van de zoek opdracht en de AI-verbetering) (sentiment, de zinnen en de taal).
 
-Selecteer **Verzenden** om de PUT-aanvraag uit te geven. Je zou de `201 - Created`status moeten zien. Als u een andere status ziet, zoekt u in het deelvenster **Lichaam** naar een JSON-antwoord met een foutbericht. 
+Selecteer **verzenden** om de put-aanvraag uit te geven. U ziet de status `201 - Created`. Als er een andere status wordt weer gegeven, zoekt u in het deel venster **hoofd tekst** naar een JSON-antwoord met een fout bericht. 
 
-## <a name="create-the-datasource"></a>De gegevensbron maken
+## <a name="create-the-datasource"></a>De gegevens bron maken
 
-Sluit vervolgens Azure Cognitive Search aan op de hotelgegevens die u hebt opgeslagen in blob-opslag. Als u de gegevensbron wilt `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`maken, stuurt u een POST-verzoek naar . U moet `api-key` de `Content-Type` kop- en kopteksten instellen zoals eerder besproken. 
+Vervolgens verbindt u Azure Cognitive Search met de Hotel gegevens die u hebt opgeslagen in Blob Storage. Als u de gegevens bron wilt maken, moet u `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`een post-aanvraag verzenden naar. U moet de `api-key` en `Content-Type` -headers instellen zoals eerder is beschreven. 
 
-Ga in Postman naar de aanvraag **Gegevensbron maken** en vervolgens naar het deelvenster **Lichaam.** De volgende code zou moeten worden weergegeven:
+Ga in postman naar de aanvraag **gegevens bron maken** en vervolgens naar het deel venster **hoofd tekst** . De volgende code zou moeten worden weergegeven:
 
 ```json
 {
@@ -167,17 +167,17 @@ Ga in Postman naar de aanvraag **Gegevensbron maken** en vervolgens naar het dee
 }
 ```
 
-Selecteer **Verzenden** om de post-aanvraag uit te geven. 
+Selecteer **verzenden** om de post-aanvraag uit te geven. 
 
-## <a name="create-the-skillset"></a>De skillset maken 
+## <a name="create-the-skillset"></a>De vaardig heden maken 
 
-De volgende stap is het opgeven van de skillset, die zowel de toe te passen verbeteringen als de kenniswinkel aangeeft waar de resultaten worden opgeslagen. Selecteer in Postman het tabblad **Skillset maken.** Met dit verzoek `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}`wordt een PUT naar . Stel `api-key` de `Content-type` kopteksten en kopteksten in zoals u eerder deed. 
+De volgende stap is het opgeven van de vaardig heden die de uitbrei dingen bevat die moeten worden toegepast en de kennis opslag waar de resultaten worden opgeslagen. Selecteer in postman het tabblad **vaardig heden maken** . Met deze aanvraag wordt een PUT `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}`naar verzonden. Stel de `api-key` koptekst `Content-type` en in zoals u eerder hebt gedaan. 
 
-Er zijn twee grote objecten `skills` `knowledgeStore`op het hoogste niveau: en . Elk object `skills` in het object is een verrijkingsservice. Elke verrijkingsdienst heeft `inputs` en `outputs`. Het `LanguageDetectionSkill` heeft `targetName` een `Language`output van . De waarde van dit knooppunt wordt door de meeste andere vaardigheden gebruikt als input. De bron `document/Language`is. De mogelijkheid om de uitvoer van het ene knooppunt als `ShaperSkill`invoer naar het andere te gebruiken is nog duidelijker in , wat aangeeft hoe de gegevens in de tabellen van de kennisopteslaan stromen.
+Er zijn twee grote objecten op het hoogste niveau `skills` : `knowledgeStore`en. Elk object in het `skills` object is een verrijkings service. Elke verrijkings service `inputs` heeft `outputs`en. De `LanguageDetectionSkill` bevat een uitvoer `targetName` van `Language`. De waarde van dit knoop punt wordt door de meeste andere vaardig heden gebruikt als invoer. De bron is `document/Language`. De mogelijkheid om de uitvoer van het ene knoop punt te gebruiken als de invoer naar een andere, `ShaperSkill`is nog steeds duidelijker in, waardoor wordt aangegeven hoe de gegevens in de tabellen van het kennis archief worden opgeslagen.
 
-Het `knowledge_store` object maakt verbinding met `{{storage-connection-string}}` het opslagaccount via de variabele Postman. `knowledge_store`bevat een set toewijzingen tussen het verbeterde document en tabellen en kolommen in de kenniswinkel. 
+Het `knowledge_store` object maakt verbinding met het opslag account via `{{storage-connection-string}}` de variabele postman. `knowledge_store`bevat een set met toewijzingen tussen het uitgebreide document en de tabellen en kolommen in het kennis archief. 
 
-Als u de skillset wilt genereren, selecteert u de knop **Verzenden** in Postbode om het verzoek in te dienen:
+Als u de vaardig heden wilt genereren, selecteert u de knop **verzenden** in postman om de aanvraag in te stellen:
 
 ```json
 {
@@ -305,13 +305,13 @@ Als u de skillset wilt genereren, selecteert u de knop **Verzenden** in Postbode
 }
 ```
 
-## <a name="create-the-indexer"></a>De indexerer maken
+## <a name="create-the-indexer"></a>De Indexeer functie maken
 
-De laatste stap is het maken van de indexer. De indexer leest de gegevens en activeert de skillset. Selecteer in Postman de aanvraag **Indexer maken** en bekijk de instantie. De definitie van de indexer verwijst naar verschillende andere resources die u al hebt gemaakt: de gegevensbron, de index en de skillset. 
+De laatste stap bestaat uit het maken van de Indexeer functie. De Indexeer functie leest de gegevens en activeert de vaardig heden. In postman selecteert u de aanvraag voor het maken van een **Indexeer functie** en bekijkt u de hoofd tekst. De definitie van de Indexeer functie verwijst naar verschillende andere resources die u al hebt gemaakt: de gegevens bron, de index en de vaardig heden. 
 
-Het `parameters/configuration` object bepaalt hoe de indexering van de gegevens wordt inneemt. In dit geval bevindt de invoergegevens zich in één document met een kopregel en door komma's gescheiden waarden. De documentsleutel is een unieke id voor het document. Voordat u het coderen, de documentsleutel is de URL van het brondocument. Ten slotte worden de uitvoerwaarden voor vaardigheden, zoals taalcode, sentiment en sleutelzinnen, toegewezen aan hun locaties in het document. Hoewel er één waarde `Language`voor `Sentiment` is, wordt toegepast op `pages`elk element in de array van . `Keyphrases`is een array die ook wordt toegepast `pages` op elk element in de array.
+Het `parameters/configuration` object bepaalt hoe de Indexeer functie de gegevens opneemt. In dit geval bevindt de invoer gegevens zich in één document met een koptekst regel en door komma's gescheiden waarden. De document sleutel is een unieke id voor het document. Voordat u code ring maakt, is de document sleutel de URL van het bron document. Ten slotte worden de uitvoer waarden van de vaardigheidset, zoals taal code, sentiment en sleutel zinnen, toegewezen aan hun locaties in het document. Hoewel er sprake is van één `Language`waarde `Sentiment` voor, wordt toegepast op elk element in de `pages`matrix van. `Keyphrases`is een matrix die ook wordt toegepast op elk element in de `pages` matrix.
 
-Nadat u `api-key` de `Content-type` kopteksten en kopteksten hebt ingesteld en hebt bevestigd dat de hoofdtekst van de aanvraag vergelijkbaar is met de volgende broncode, selecteert u **Verzenden** in Postbode. Postbode stuurt een PUT-verzoek naar `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}`. Azure Cognitive Search maakt en voert de indexer uit. 
+Nadat u de `api-key` kop en `Content-type` hebt ingesteld en hebt bevestigd dat de hoofd tekst van de aanvraag vergelijkbaar is met de volgende bron code, selecteert u **verzenden** in postman. Postman verzendt een PUT-aanvraag `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}`naar. De Indexeer functie wordt door Azure Cognitive Search gemaakt en uitgevoerd. 
 
 ```json
 {
@@ -344,20 +344,20 @@ Nadat u `api-key` de `Content-type` kopteksten en kopteksten hebt ingesteld en h
 
 ## <a name="run-the-indexer"></a>De indexeerfunctie uitvoeren 
 
-Ga in de Azure-portal naar de **overzichtspagina** van de Azure Cognitive Search-service. Selecteer het tabblad **Indexers** en selecteer **vervolgens hotels-reviews-ixr.** Als de indexerer nog niet is uitgevoerd, selecteert u **Uitvoeren**. De indexeringstaak kan een aantal waarschuwingen met betrekking tot taalherkenning genereren. De gegevens bevatten een aantal beoordelingen die zijn geschreven in talen die nog niet worden ondersteund door de cognitieve vaardigheden. 
+Ga in het Azure Portal naar de **overzichts** pagina van de Azure Cognitive Search-service. Selecteer het tabblad **Indexeer functies** en selecteer vervolgens **Hotels-Recensies-IXR**. Als de Indexeer functie nog niet is uitgevoerd, selecteert u **uitvoeren**. De Indexeer taak kan enkele waarschuwingen met betrekking tot taal herkenning veroorzaken. De gegevens bevatten enkele beoordelingen die zijn geschreven in talen die nog niet worden ondersteund door de cognitieve vaardig heden. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u uw gegevens hebt verrijkt met behulp van Cognitive Services en de resultaten hebt geprojecteerd in een kennisarchief, u Storage Explorer of Power BI gebruiken om uw verrijkte gegevensset te verkennen.
+Nu u uw gegevens hebt verrijkt met behulp van Cognitive Services en de resultaten naar een kennis archief hebt geprojecteerd, kunt u Storage Explorer of Power BI gebruiken om uw verrijkte gegevensset te verkennen.
 
-Zie deze walkthrough voor meer informatie over het verkennen van deze kenniswinkel met Storage Explorer:
+Zie dit overzicht voor meer informatie over het verkennen van dit kennis archief met behulp van Storage Explorer:
 
 > [!div class="nextstepaction"]
 > [Weergeven met Storage Explorer](knowledge-store-view-storage-explorer.md)
 
-Zie deze walkthrough voor meer informatie over het aansluiten van deze kenniswinkel op Power BI:
+Zie dit overzicht voor meer informatie over het verbinden van dit kennis archief met Power BI:
 
 > [!div class="nextstepaction"]
 > [Verbinden met Power BI](knowledge-store-connect-power-bi.md)
 
-Als u deze oefening wilt herhalen of een andere AI-verrijkingswalkthrough wilt proberen, verwijdert u de **hotel-reviews-idxr-indexeerder.** Als u de indexer verwijderen, wordt de gratis dagelijkse transactieteller op nul gezet.
+Als u deze oefening wilt herhalen of een andere AI-verrijkings scenario wilt uitproberen, verwijdert u de **idxr** indexer. Als u de Indexeer functie verwijdert, wordt de gratis dagelijkse transactie teller opnieuw ingesteld op nul.

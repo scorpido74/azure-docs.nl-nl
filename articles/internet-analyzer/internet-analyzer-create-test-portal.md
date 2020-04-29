@@ -1,6 +1,6 @@
 ---
-title: Een Internet Analyzer-test maken met Portal | Microsoft Documenten
-description: In dit artikel leert u hoe u uw eerste Internet Analyzer-test maakt.
+title: Een Internet Analyzer-test maken met behulp van de portal | Microsoft Docs
+description: In dit artikel leert u hoe u uw eerste Internet Analyzer-test kunt maken.
 services: internet-analyzer
 author: megan-beatty
 ms.service: internet-analyzer
@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 64bbed9b558d4c20889b28a5247e2113d20daa77
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73501769"
 ---
-# <a name="create-an-internet-analyzer-test-using-portal-preview"></a>Een Internet Analyzer-test maken met Portal (Preview)
+# <a name="create-an-internet-analyzer-test-using-portal-preview"></a>Een Internet Analyzer-test maken met behulp van de portal (preview)
 
-Er zijn twee manieren om een Internet Analyzer-bron te maken: met behulp van de Azure-portal of met [CLI.](internet-analyzer-cli.md) Met deze sectie u een nieuwe Azure Internet Analyzer-bron maken met behulp van onze portalervaring.
+Er zijn twee manieren om een Internet Analyzer-resource te maken: met behulp van de Azure Portal of [cli](internet-analyzer-cli.md). Deze sectie helpt u bij het maken van een nieuwe Azure Internet Analyzer-resource met onze portal-ervaring.
 
 > [!IMPORTANT]
 > Deze openbare preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -24,55 +24,55 @@ Er zijn twee manieren om een Internet Analyzer-bron te maken: met behulp van de 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-De openbare preview is wereldwijd beschikbaar voor gebruik; gegevensopslag is echter beperkt tot *US West 2* tijdens de preview.
+De open bare preview is beschikbaar voor gebruik wereld wijd. gegevens opslag is echter beperkt tot *US West 2* tijdens de preview-versie.
 
 ## <a name="basics"></a>Basisbeginselen
 
-1. Krijg toegang tot internetanalyzer-preview's door de [Azure Internet Analyzer FAQ](internet-analyzer-faq.md) **voorbeeldinstructies te volgen?**
-2. Klik op de startpagina in de [Azure-portal](https://preview.portal.azure.com)op **+ Een resource maken**. Internet Analyzer is momenteel alleen beschikbaar via de previewversie van de Azure-portal.
-3. Zoek op de pagina **Nieuw** naar 'Internet Analyzer' in het veld *Zoeken in de marketplace.*
-4. Klik op **Internet Analyzer (voorbeeld)**. Zorg ervoor dat de uitgever *Microsoft* is en de categorie *Netwerken*.
-5. Klik op de pagina **Internet Analyzer (preview)** op **Maken** om de pagina **Een internetanalyzer maken** te openen.
-6. Geef de volgende configuratie-instellingen op voor uw Internet Analyzer-bron:
+1. Toegang tot internet Analyzer preview verkrijgen door de **Hoe kan ik deel te nemen aan de preview-versie** van de [Veelgestelde vragen over Azure Internet Analyzer](internet-analyzer-faq.md).
+2. Klik op de start pagina in de [Azure Portal](https://preview.portal.azure.com)op **+ een resource maken**. Internet Analyzer is momenteel alleen beschikbaar vanuit de preview-versie van de Azure Portal.
+3. Zoek op de pagina **Nieuw** naar ' Internet Analyzer ' in het veld *Marketplace doorzoeken* .
+4. Klik op **Internet Analyzer (preview-versie)**. Zorg ervoor dat de uitgever van *micro soft* is en dat de categorie *netwerk*is.
+5. Klik op de pagina **Internet Analyzer (preview)** op **maken** om de pagina **een Internet Analyzer maken** te openen.
+6. Geef de volgende configuratie-instellingen op voor uw Internet Analyzer-resource:
 
-    * **Abonnement:** Het Azure-abonnement om de nieuwe Internet Analyzer-bron te hosten. ***Gebruik dezelfde abonnements-id die wordt gebruikt om preview-toegang aan te vragen.***
-    * **Resourcegroep:** De Azure-brongroep waarin de nieuwe Internet Analyzer-bron wordt gemaakt. Als u geen bestaande resourcegroep hebt, u een nieuwe groep maken.
-    * **Naam:** De naam van het nieuwe internetanalyzer-bronprofiel.
-    * **Regio:** De openbare azure-regio waarin de bron wordt gemaakt. Tijdens de preview is alleen *US West 2* beschikbaar.
+    * **Abonnement:** Het Azure-abonnement voor het hosten van de nieuwe Internet Analyzer-resource. ***Gebruik dezelfde abonnements-ID die wordt gebruikt om Preview-toegang aan te vragen.***
+    * **Resource groep:** De Azure-resource groep waarin de nieuwe Internet Analyzer-resource wordt gemaakt. Als u geen bestaande resource groep hebt, kunt u een nieuwe maken.
+    * **Naam:** De naam van het nieuwe Internet Analyzer-resource profiel.
+    * **Regio:** De open bare Azure-regio waarin de resource wordt gemaakt. Tijdens de preview-periode is alleen *VS West 2* beschikbaar.
 
-7. Wanneer u klaar bent met het opgeven van uw profielinstellingen, klikt u op **Controleren + maken**.
+7. Wanneer u klaar bent met het opgeven van de profiel instellingen, klikt u op **controleren + maken**.
 
 ## <a name="configuration"></a>Configuratie
 
-Het voltooien van de basisstappen is een vereiste voor het configureren van een test en het insluiten van de JavaScript-client. Zodra u een profiel hebt gemaakt, gaat u naar **Instellingen > Configuratie** om uw eerste test te configureren.
+Het volt ooien van de basis stappen is een vereiste voor het configureren van een test en het insluiten van de Java script-client. Nadat u een profiel hebt gemaakt, gaat u naar **instellingen > configuratie** om uw eerste test te configureren.
 
-1. Geef uw test een naam in het vak **Testnaam.**
-2. Voeg een beschrijving toe voor uw test in het veld **Beschrijving.**
-3. Klik **op Eindpunt configureren** - er verschijnt een tabblad aan de rechterkant. Selecteer het type eindpunt dat u wilt configureren: één Azure-regio, meerdere Azure-regio's of een aangepast eindpunt.
+1. Geef uw test een naam in het vak **test naam** .
+2. Voeg in het veld **Beschrijving** een beschrijving voor uw test toe.
+3. Klik op **eind punt configureren** : er wordt een tabblad weer gegeven aan de rechter kant. Selecteer het type eind punt dat u wilt configureren: één Azure-regio, meerdere Azure-regio's of een aangepast eind punt.
 
     >
-    ***Vooraf geconfigureerde eindpunten: enkele en meerdere Azure-regiocombinaties***
-    * Selecteer een regio of een reeks regio's in een [vooraf geconfigureerde lijst met Azure-eindpunten](internet-analyzer-faq.md).
-    * Selecteer vervolgens het type toepassings- of contentdelivery-architectuur dat u wilt evalueren.
-        * Eén Azure-regio: siteversnelling[(Azure Front Door),](https://azure.microsoft.com/services/frontdoor/)statische inhoudscache[(Azure CDN voor Microsoft)](https://azure.microsoft.com/services/cdn/)of geen.
-        * Meerdere Azure-regio's: siteversnelling[(Azure Front Door),](https://azure.microsoft.com/services/frontdoor/)DNS-besturing ([Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/))  
+    ***Vooraf geconfigureerde eind punten: een combi natie van één en meerdere Azure-regio's***
+    * Selecteer een regio of set regio's uit een [vooraf geconfigureerde lijst met Azure-eind punten](internet-analyzer-faq.md).
+    * Selecteer vervolgens het type toepassing of de architectuur voor het leveren van inhoud die u wilt evalueren.
+        * Eén Azure-regio: site versnelling ([Azure front deur](https://azure.microsoft.com/services/frontdoor/)), statische inhoud in de cache opslaan ([Azure CDN voor micro soft](https://azure.microsoft.com/services/cdn/)) of geen.
+        * Meerdere Azure-regio's: site versnelling ([Azure front-deur](https://azure.microsoft.com/services/frontdoor/)), DNS-besturing ([Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/))  
 
-    ***Aangepaste eindpunten***
-    * Volg de instructies op de pagina [Aangepast eindpunt maken.](internet-analyzer-custom-endpoint.md)
-    * Plak de HTTPS URL-locatie van de afbeelding met één pixel in de portal.
+    ***Aangepaste eind punten***
+    * Volg de instructies op de pagina [aangepast eind punt maken](internet-analyzer-custom-endpoint.md) .
+    * Plak de locatie van de HTTPS-URL van de afbeelding met één pixel in de portal.
     >
 
-4. Klik **op Toevoegen** om het eindpunt aan uw test toe te voegen.
-5. Herhaal stap 1-4 om uw tweede eindpunt te configureren. Eindpunt B wordt altijd gemeten ten opzichte van Eindpunt A - overweeg bij het configureren van eindpunten welk eindpunt uw testbesturingselement moet zijn.
-6. Klik **op** de knop Opslaan om de test op te slaan. Zodra u een test hebt opgeslagen, u de eindpunten van een bepaalde test niet meer bewerken.
-7. Selecteer de test(s) die u wilt starten en klik op **Starttest**. Hiermee wordt de ***status*** van uw test(en) gewijzigd in ***Uitvoeren.*** U op elk gewenst moment met tests beginnen, maar de JavaScript-client moet zijn ingesloten om te kunnen beginnen met het verzamelen van metingen.
-8. Voeg meer tests toe op elk gewenst moment. Houd er rekening mee dat de unieke JavaScript-client pas wordt gegenereerd als er één test is gemaakt.
+4. Klik op **toevoegen** om het eind punt toe te voegen aan uw test.
+5. Herhaal de stappen 1-4 om uw tweede eind punt te configureren. Eind punt B wordt altijd relatief gemeten ten opzichte van eind punt A: Houd bij het configureren van eind punten rekening met het eind punt dat u wilt testen.
+6. Klik op de knop **Opslaan** om uw test op te slaan. Wanneer u een test hebt opgeslagen, kunt u de eind punten van een bepaalde test niet meer bewerken.
+7. Selecteer de test (s) die u wilt starten en klik op **Test starten**. Hiermee wordt de ***status*** van uw test (s) gewijzigd in ***wordt uitgevoerd***. U kunt testen op elk gewenst moment starten, maar de Java script-client moet zijn Inge sloten voor de test om te beginnen met het verzamelen van metingen.
+8. Voeg op elk moment meer tests toe. Houd er rekening mee dat de unieke java script-client pas wordt gegenereerd als er een test is gemaakt.
 
 ## <a name="embed-client"></a>Client insluiten
 
-Om een test te starten, moet de JavaScript-client zijn ingesloten in uw webtoepassing. Nadat u ten minste één test hebt geconfigureerd, klikt u op **Controleren + maken,** gaat u naar **Instellingen > Configuratie**en kopieert u de JavaScript-client. Specifieke instructies zijn te vinden op de pagina [Embed Internet Analyzer Client.](internet-analyzer-embed-client.md)  
+Als u een test wilt starten, moet de Java script-client zijn Inge sloten in uw webtoepassing. Nadat u ten minste één test hebt geconfigureerd, klikt u op **controleren + maken**, gaat u naar **instellingen > configuratie**en kopieert u de Java script-client. Specifieke instructies vindt u op de pagina [Internet Analyzer insluiten-client](internet-analyzer-embed-client.md) .  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Lees de [veelgestelde vragen over internetanalyse](internet-analyzer-faq.md)
-* Meer informatie over het insluiten van de [Internet Analyzer-client](internet-analyzer-embed-client.md) en het maken van een [aangepast eindpunt](internet-analyzer-custom-endpoint.md).
+* Lees de [Veelgestelde vragen over Internet analyse](internet-analyzer-faq.md)
+* Meer informatie over het insluiten van de [Internet Analyzer-client](internet-analyzer-embed-client.md) en het maken van een [aangepast eind punt](internet-analyzer-custom-endpoint.md).

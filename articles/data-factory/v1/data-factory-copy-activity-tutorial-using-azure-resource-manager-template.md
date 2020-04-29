@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een pijplijn maken met resourcebeheersjabloon '
+title: 'Zelf studie: een pijp lijn maken met de Resource Manager-sjabloon '
 description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn met behulp van een Azure Resource Manager-sjabloon. Met deze pijplijn worden gegevens vanuit een Azure-blobopslag gekopieerd naar een Azure SQL-database.
 services: data-factory
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: dd559a8dd0bd59b50f4a3fa663f57874d948bf71
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75438861"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Zelfstudie: een Azure Resource Manager-sjabloon gebruiken voor het maken van een Data Factory-pijplijn om gegevens te kopiëren 
@@ -26,7 +26,7 @@ ms.locfileid: "75438861"
 > * [De wizard Kopiëren](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Azure Resource Manager-sjabloon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [Azure Resource Manager sjabloon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 > 
@@ -36,7 +36,7 @@ ms.locfileid: "75438861"
 
 In deze zelfstudie wordt uitgelegd hoe u een Azure Resource Manager-sjabloon maakt om een Azure-gegevensfactory te maken. In de gegevenspijplijn in deze zelfstudie worden gegevens van een brongegevensarchief gekopieerd naar een doelgegevensarchief. Er worden geen invoergegevens mee getransformeerd in uitvoergegevens. Zie [Zelfstudie: een pijplijn maken om gegevens te transformeren met een Hadoop-cluster](data-factory-build-your-first-pipeline.md) voor meer informatie over het transformeren van gegevens met Azure Data Factory.
 
-In deze zelfstudie maakt u een pijplijn met één activiteit erin: kopieeractiviteit. De kopieeractiviteit in Data Factory kopieert gegevens uit een ondersteund gegevensarchief naar een ondersteund sinkgegevensarchief. Zie [Ondersteunde gegevensarchieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevensarchieven die worden ondersteund als bron en als sink. De activiteit wordt mogelijk gemaakt door een wereldwijd beschikbare service waarmee gegevens veilig, betrouwbaar en schaalbaar kunnen worden gekopieerd tussen verschillende gegevensarchieven. Zie [Activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md)en gegevensverkeer voor meer informatie over de activiteit Kopiëren .
+In deze zelfstudie maakt u een pijplijn met één activiteit erin: kopieeractiviteit. De kopieeractiviteit in Data Factory kopieert gegevens uit een ondersteund gegevensarchief naar een ondersteund sinkgegevensarchief. Zie [Ondersteunde gegevensarchieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevensarchieven die worden ondersteund als bron en als sink. De activiteit wordt mogelijk gemaakt door een wereldwijd beschikbare service waarmee gegevens veilig, betrouwbaar en schaalbaar kunnen worden gekopieerd tussen verschillende gegevensarchieven. Zie [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md)voor meer informatie over de Kopieer activiteit.
 
 Een pijplijn kan meer dan één activiteit hebben. Ook kunt u twee activiteiten koppelen (de ene activiteit na de andere laten uitvoeren) door de uitvoergegevensset van één activiteit in te stellen als invoergegevensset voor een andere activiteit. Zie [Meerdere activiteiten in een pijplijn](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) voor meer informatie. 
 
@@ -383,14 +383,14 @@ Het is een unieke tekenreeks op basis van de resourcegroep-id.
 ### <a name="defining-data-factory-entities"></a>Data Factory-entiteiten definiëren
 De volgende Data Factory-entiteiten worden in de JSON-sjabloon gedefinieerd: 
 
-1. [Gekoppelde Azure Storage-service](#azure-storage-linked-service)
+1. [Azure Storage gekoppelde service](#azure-storage-linked-service)
 2. [Een gekoppelde Azure SQL-service](#azure-sql-database-linked-service)
 3. [De Azure Blob-gegevensset](#azure-blob-dataset)
 4. [De Azure SQL-gegevensset](#azure-sql-dataset)
 5. [De gegevenspijplijn met een kopieerbewerking](#data-pipeline)
 
 #### <a name="azure-storage-linked-service"></a>Een gekoppelde Azure Storage-service
-De AzureStorageLinkedService koppelt uw Azure-opslagaccount aan de gegevensfactory. U hebt een container gemaakt en gegevens geüpload naar dit opslagaccount als onderdeel van [de vereisten](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). In deze sectie geeft u de naam en sleutel van uw Azure Storage-account op. Zie [Een gekoppelde Azure Storage-service](data-factory-azure-blob-connector.md#azure-storage-linked-service) voor meer informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van een gekoppelde Azure Storage-service. 
+De AzureStorageLinkedService koppelt uw Azure-opslagaccount aan de gegevensfactory. U hebt een container gemaakt en gegevens naar dit opslag account geüpload als onderdeel van de [vereisten](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). In deze sectie geeft u de naam en sleutel van uw Azure Storage-account op. Zie [Een gekoppelde Azure Storage-service](data-factory-azure-blob-connector.md#azure-storage-linked-service) voor meer informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van een gekoppelde Azure Storage-service. 
 
 ```json
 {

@@ -1,5 +1,5 @@
 ---
-title: VM-netwerkverkeer filteren - Voorbeeld van Azure CLI-script
+title: VM-netwerk verkeer filteren-voor beeld van Azure CLI-script
 description: Azure CLI-voorbeeldscript - binnenkomend en uitgaand VM-netwerkverkeer filteren.
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.openlocfilehash: 71de6c9c3f742e006762fb8778948cff2e5d96af
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74084034"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic-script-sample"></a>Voorbeeldscript binnenkomend en uitgaand VM-netwerkverkeer filteren

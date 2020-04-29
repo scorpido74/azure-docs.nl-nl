@@ -1,5 +1,5 @@
 ---
-title: Een VM maken door een beheerde schijf als OS-schijf te koppelen - CLI-voorbeeld
+title: Een virtuele machine maken door een beheerde schijf te koppelen als besturingssysteem schijf-CLI-voor beeld
 description: Voorbeeld van Azure CLI-script - Een virtuele machine maken door een beheerde schijf te koppelen als besturingssysteemschijf
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -17,10 +17,10 @@ ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 1616466619c7c7627106c09de703d02a7c40d248
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75458398"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>Een virtuele machine maken met behulp van een bestaande beheerde besturingssysteemschijf met CLI

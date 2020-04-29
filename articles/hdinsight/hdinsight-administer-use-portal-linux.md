@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/23/2020
-ms.openlocfilehash: 8380cfcbf267b117108d46794153bd5a61b8ec6a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 8170a0190e2d322c07f8f4978a77a8171579cbfb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116227"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232884"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Apache Hadoop clusters in HDInsight beheren door gebruik te maken van de Azure Portal
 
@@ -200,9 +200,9 @@ Op de [Start pagina](#homePage)van het cluster:
 
 Het wacht woord wordt gewijzigd op alle knoop punten in het cluster.
 
-### <a name="change-the-ssh-user-password"></a>Het SSH-gebruikers wachtwoord wijzigen
+### <a name="change-the-ssh-user-password-or-public-key"></a>Het wacht woord of de open bare sleutel van de SSH-gebruiker wijzigen
 
-1. Gebruik een tekst editor om de volgende tekst op te slaan als een bestand met de naam **ChangePassword.sh**.
+1. Gebruik een tekst editor om de volgende tekst op te slaan als een bestand met de naam **changecredentials.sh**.
 
     > [!IMPORTANT]  
     > U moet een editor gebruiken die LF als regel einde gebruikt. Als de editor gebruikmaakt van CRLF, werkt het script niet.
@@ -222,13 +222,13 @@ Het wacht woord wordt gewijzigd op alle knoop punten in het cluster.
    | Veld | Waarde |
    | --- | --- |
    | Script type | Selecteer **-aangepast** in de vervolg keuzelijst.|
-   | Naam |"SSH-wacht woord wijzigen" |
-   | Bash-script-URI |De URI naar het changepassword.sh-bestand |
+   | Naam |"SSH-referenties wijzigen" |
+   | Bash-script-URI |De URI naar het changecredentials.sh-bestand |
    | Knooppunt type (n): (Head, worker, Nimbus, supervisor of Zookeeper.) |✓ voor alle weer gegeven knooppunt typen |
    | Parameters |Voer de SSH-gebruikers naam en vervolgens het nieuwe wacht woord in. Er moet één spatie tussen de gebruikers naam en het wacht woord zijn. De volgende tekens worden niet ondersteund in SSH-wacht woorden: "'/\ <% ~ | $ &
    | Deze script actie persistent maken... |Vul dit veld uit. |
 
-6. Selecteer **maken** om het script toe te passen. Zodra het script is voltooid, kunt u met SSH verbinding maken met het cluster met het nieuwe wacht woord.
+6. Selecteer **maken** om het script toe te passen. Zodra het script is voltooid, kunt u met SSH verbinding maken met het cluster met de nieuwe referenties.
 
 ## <a name="find-the-subscription-id"></a>De abonnements-ID zoeken
 

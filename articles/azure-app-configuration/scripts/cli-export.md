@@ -1,7 +1,7 @@
 ---
-title: Voorbeeld van Azure CLI Script - Exporteren vanuit een Azure App Configuration Store
+title: Voor beeld van Azure CLI-script-exporteren vanuit een Azure-app configuratie archief
 titleSuffix: Azure App Configuration
-description: Azure CLI-script gebruiken om configuratie te exporteren vanuit Azure App-configuratie
+description: Een Azure CLI-script gebruiken voor het exporteren van de configuratie uit Azure-app configuratie
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -10,10 +10,10 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 3e014504fc1e94c3b323a49b408fa992de00d14a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77523616"
 ---
 # <a name="export-from-an-azure-app-configuration-store"></a>Exporteren vanuit een Azure-app-configuratiearchief
@@ -39,14 +39,14 @@ az appconfig kv export --name myTestAppConfigStore --file ~/Export.json
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script gebruikt de volgende opdrachten om te exporteren vanuit een App Configuration Store. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt om vanuit een app-configuratie archief te exporteren. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az appconfig kv export](/cli/azure/appconfig/kv#az-appconfig-kv-export) | Exporteert uit een app-configuratieopslagbron. |
+| [AZ appconfig KV export](/cli/azure/appconfig/kv#az-appconfig-kv-export) | Exporteert vanuit een app-configuratie archiefbestand. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
-Aanvullende CLI-scriptvoorbeelden voor app-configuratie zijn te vinden in de [bemonsteringen van Azure App Configuration CLI.](../cli-samples.md)
+Extra CLI-script voorbeelden voor configuratie van apps vindt u in de voor beelden van de [Azure-app configuratie-cli](../cli-samples.md).

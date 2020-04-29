@@ -1,17 +1,17 @@
 ---
 title: VNet-eind punten beheren-Azure Portal-Azure Database for MySQL
 description: Azure Database for MySQL VNet-service-eind punten en-regels maken en beheren met behulp van de Azure Portal
-author: bolzmj
-ms.author: mbolz
+author: kummanish
+ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: fec85f7d87bbfe0039744b9ea63239083ff1c8a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba63c65c2b0d7abda089c3dfd315bfe499632cc0
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063536"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509224"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Azure Database for MySQL VNet-service-eind punten en VNet-regels maken en beheren met behulp van de Azure Portal
 Service-eindpunten en -regels voor virtuele netwerken (VNets) breiden de privé-adresruimte van een virtueel netwerk uit naar uw Azure Database for MySQL-server. Zie [Azure database for mysql server VNet-service-eind punten](concepts-data-access-and-security-vnet.md)voor een overzicht van Azure database for MySQL VNet-service-eind punten, met inbegrip van beperkingen. VNet-service-eind punten zijn beschikbaar in alle ondersteunde regio's voor Azure Database for MySQL.

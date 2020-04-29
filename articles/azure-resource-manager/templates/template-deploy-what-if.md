@@ -3,29 +3,27 @@ title: Sjabloonimlementatie wat-als (preview)
 description: Bepaal welke wijzigingen er in uw resources optreden voordat u een Azure Resource Manager sjabloon implementeert.
 author: mumian
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 04/28/2020
 ms.author: jgao
-ms.openlocfilehash: b5b19bf9d630230fbdb8cec41cc77718bbbb4585
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f13789912e5b801295f1f926a12db50849cd75d8
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192379"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509581"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Wat als'-bewerking van ARM-sjabloon implementatie (preview-versie)
 
-Voordat u een Azure Resource Manager-sjabloon (ARM) implementeert, wilt u mogelijk een voor beeld bekijken van de wijzigingen die zich voordoen. Azure Resource Manager biedt de What-if-bewerking om te laten zien hoe resources worden gewijzigd als u de sjabloon implementeert. Met de bewerking What-if worden geen wijzigingen aangebracht in bestaande resources. In plaats daarvan worden de wijzigingen voor speld als de opgegeven sjabloon wordt geïmplementeerd.
+Voordat u een Azure Resource Manager-sjabloon (ARM) implementeert, kunt u een voor beeld bekijken van de wijzigingen die zich voordoen. Azure Resource Manager biedt de What-if-bewerking om te laten zien hoe resources worden gewijzigd als u de sjabloon implementeert. Met de bewerking What-if worden geen wijzigingen aangebracht in bestaande resources. In plaats daarvan worden de wijzigingen voor speld als de opgegeven sjabloon wordt geïmplementeerd.
 
 > [!NOTE]
 > De What-if-bewerking is momenteel beschikbaar als preview-versie. In het geval van een preview-versie kunnen de resultaten soms aangeven dat een resource wordt gewijzigd wanneer er niets wordt gewijzigd. We werken eraan om deze problemen te reduceren, maar we hebben uw hulp nodig. Meld deze problemen op [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
 
-U kunt de What-if-bewerking gebruiken met de Power shell-opdrachten of de REST API bewerkingen.
+U kunt de What-if-bewerking met Azure PowerShell, Azure CLI of REST API-bewerkingen gebruiken.
 
 ## <a name="install-powershell-module"></a>Power shell-module installeren
 
-Als u wilt gebruiken wat-als in Power shell, moet u Power shell core hebben (6. x of 7. x). Als u Power shell 5. x of eerder hebt, moet u [uw versie van Power shell bijwerken](/powershell/scripting/install/installing-powershell).
-
-Nadat u hebt gecontroleerd of u de juiste versie van Power shell hebt, installeert u een preview-versie van de module AZ. resources in de Power shell Gallery.
+Als u wilt gebruiken wat-als in Power shell, moet u een preview-versie van de module AZ. resources van de Power shell Gallery installeren. Voordat u de module installeert, moet u ervoor zorgen dat u Power shell core (6. x of 7. x) hebt. Als u Power shell 5. x of eerder hebt, moet u [uw versie van Power shell bijwerken](/powershell/scripting/install/installing-powershell). U kunt de preview-module niet installeren op Power shell 5. x of lager.
 
 ### <a name="install-preview-version"></a>Preview-versie installeren
 
@@ -60,9 +58,13 @@ Als u eerder een alpha-versie van de What-if-module hebt geïnstalleerd, verwijd
 
 U kunt nu wat als gebruiken.
 
+## <a name="install-azure-cli-module"></a>Azure CLI-module installeren
+
+Als u wilt gebruiken wat-als in azure CLI, moet u over Azure CLI 2.5.0 of hoger beschikken. Installeer, indien nodig, [de nieuwste versie van Azure cli](/cli/azure/install-azure-cli).
+
 ## <a name="see-results"></a>Resultaten weer geven
 
-In Power shell bevat de uitvoer kleur codes die u helpen de verschillende soorten wijzigingen te zien.
+Wanneer u wat-als gebruikt in Power shell of Azure CLI, bevat de uitvoer kleur codes die u helpen de verschillende soorten wijzigingen te zien.
 
 ![Implementatie van Resource Manager-sjabloon wat-als-bewerking fullresourcepayload en type wijziging](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
@@ -97,11 +99,9 @@ Resource changes: 1 to modify.
 
 ## <a name="what-if-commands"></a>Wat-als-opdrachten
 
-U kunt Azure PowerShell of Azure REST API gebruiken voor de What-if-bewerking.
-
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Als u een voor beeld van de wijzigingen wilt bekijken voordat u een sjabloon `-Whatif` implementeert, voegt u de para meter switch toe aan de implementatie opdracht.
+Als u de wijzigingen wilt bekijken voordat u een sjabloon `-Whatif` implementeert, voegt u de para meter switch toe aan de implementatie opdracht.
 
 * `New-AzResourceGroupDeployment -Whatif`voor implementaties van resource groepen
 * `New-AzSubscriptionDeployment -Whatif`en `New-AzDeployment -Whatif` voor implementaties op abonnements niveau
@@ -115,6 +115,23 @@ De voor gaande opdrachten retour neren een tekst samenvatting die u hand matig k
 
 * `$results = Get-AzResourceGroupDeploymentWhatIfResult`voor implementaties van resource groepen
 * `$results = Get-AzSubscriptionDeploymentWhatIfResult`of `$results = Get-AzDeploymentWhatIfResult` voor implementaties op abonnements niveau
+
+### <a name="azure-cli"></a>Azure CLI
+
+Als u de wijzigingen wilt bekijken voordat u een `what-if` sjabloon implementeert, gebruikt u met de implementatie opdracht.
+
+* `az deployment group what-if`voor implementaties van resource groepen
+* `az deployment sub what-if`voor implementaties op abonnements niveau
+
+U kunt ook de `--confirm-with-what-if` para meter gebruiken om de wijzigingen te bekijken en u wordt gevraagd om door te gaan met de implementatie.
+
+* `az deployment group create --confirm-with-what-if`voor implementaties van resource groepen
+* `az deployment sub create --confirm-with-what-if`voor implementaties op abonnements niveau
+
+De voor gaande opdrachten retour neren een tekst samenvatting die u hand matig kunt controleren. Als u een JSON-object wilt ophalen dat u programmatisch kunt controleren op wijzigingen, gebruikt u:
+
+* `az deployment group what-if --no-pretty-print`voor implementaties van resource groepen
+* `az deployment sub what-if --no-pretty-print`voor implementaties op abonnements niveau
 
 ### <a name="azure-rest-api"></a>Azure REST API
 
@@ -141,10 +158,17 @@ Met de bewerking What-if wordt zes verschillende soorten wijzigingen vermeld:
 
 ## <a name="result-format"></a>Resultaat indeling
 
-U kunt het detail niveau bepalen dat wordt geretourneerd over de voorspelde wijzigingen. Gebruik in de implementatie opdrachten`New-Az*Deployment`() de para meter **-WhatIfResultFormat** . Gebruik in de programmatische object`Get-Az*DeploymentWhatIf`opdrachten () de para meter **ResultFormat** .
+U bepaalt het detail niveau dat wordt geretourneerd over de voorspelde wijzigingen. U hebt hiervoor twee opties:
 
-Stel de indelings parameter in op **FullResourcePayloads** om een lijst met resources op te halen die worden gewijzigd en Details over de eigenschappen die worden gewijzigd. Stel de indelings parameter in op **ResourceIdOnly** om een lijst met resources op te halen die worden gewijzigd. De standaard waarde is **FullResourcePayloads**.  
+* **FullResourcePayloads** : retourneert een lijst met resources die worden gewijzigd en Details over de eigenschappen die worden gewijzigd
+* **ResourceIdOnly** : retourneert een lijst met resources die worden gewijzigd
 
+De standaard waarde is **FullResourcePayloads**.
+
+Voor Power shell-implementatie opdrachten gebruikt `-WhatIfResultFormat` u de para meter. Gebruik de `ResultFormat` para meter in de programmatische-object opdrachten.
+
+Voor Azure CLI gebruikt u de `--result-format` para meter.
+ 
 In de volgende resultaten ziet u de twee verschillende uitvoer indelingen:
 
 - Volledige nettoladingen van resources
@@ -197,6 +221,8 @@ In de volgende resultaten ziet u de twee verschillende uitvoer indelingen:
 
 Laten we een aantal tests uitvoeren om te zien hoe-als werkt. Implementeer eerst een [sjabloon waarmee een virtueel netwerk wordt gemaakt](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-before.json). U gebruikt dit virtuele netwerk om te testen hoe wijzigingen worden gerapporteerd met wat-als.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroup `
   -Name ExampleGroup `
@@ -206,9 +232,24 @@ New-AzResourceGroupDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-before.json"
 ```
 
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name ExampleGroup \
+  --location "Central US"
+az deployment group create \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-before.json"
+```
+
+---
+
 ### <a name="test-modification"></a>Wijziging testen
 
-Nadat de implementatie is voltooid, bent u klaar om de bewerking wat als' te testen. Met deze tijd implementeert u een [sjabloon waarmee het virtuele netwerk wordt gewijzigd](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json). Er ontbreken een of meer originele Tags, een subnet is verwijderd en het adres voorvoegsel is gewijzigd.
+Nadat de implementatie is voltooid, bent u klaar om de bewerking wat als' te testen. Deze keer dat u een [sjabloon implementeert waarmee het virtuele netwerk wordt gewijzigd](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json). Er ontbreken een of meer originele Tags, een subnet is verwijderd en het adres voorvoegsel is gewijzigd.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -216,6 +257,16 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName ExampleGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```
+
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group what-if \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
+```
+
+---
 
 De What-if-uitvoer ziet er ongeveer als volgt uit:
 
@@ -260,6 +311,8 @@ Sommige van de eigenschappen die worden weer gegeven als verwijderd, worden niet
 
 Nu kunnen we de What-if-resultaten programmatisch evalueren door de opdracht in te stellen op een variabele.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 $results = Get-AzResourceGroupDeploymentWhatIfResult `
   -ResourceGroupName ExampleGroup `
@@ -275,19 +328,41 @@ foreach ($change in $results.Changes)
 }
 ```
 
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
+```azurecli
+results=$(az deployment group what-if --resource-group ExampleGroup --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json" --no-pretty-print)
+```
+
+---
+
 ## <a name="confirm-deletion"></a>Verwijdering bevestigen
 
 De bewerking What-if ondersteunt het gebruik van de [implementatie modus](deployment-modes.md). Als deze modus is ingesteld op volt ooien, worden de resources die niet in de sjabloon staan, verwijderd. In het volgende voor beeld wordt een [sjabloon geïmplementeerd waarvoor geen resources zijn gedefinieerd](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) in de volledige modus.
 
 Als u de wijzigingen wilt bekijken voordat u een sjabloon `-Confirm` implementeert, gebruikt u de para meter switch met de implementatie opdracht. Als de wijzigingen naar verwachting zijn, moet u bevestigen dat u de implementatie wilt volt ooien.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroupDeployment `
-  -Confirm `
   -ResourceGroupName ExampleGroup `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json" `
-  -Mode Complete
+  -Mode Complete `
+  -Confirm `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json"
 ```
+
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --resource-group ExampleGroup \
+  --mode Complete \
+  --confirm-with-what-if \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json"
+```
+
+---
 
 Omdat er geen resources zijn gedefinieerd in de sjabloon en de implementatie modus is ingesteld op voltooid, wordt het virtuele netwerk verwijderd.
 
@@ -326,4 +401,5 @@ U ziet de verwachte wijzigingen en u kunt bevestigen dat u de implementatie wilt
 
 - Als u onjuiste resultaten van de preview-versie van What-if ziet, kunt u de problemen [https://aka.ms/whatifissues](https://aka.ms/whatifissues)melden op.
 - Zie [resources implementeren met arm-sjablonen en Azure PowerShell](deploy-powershell.md)voor meer informatie over het implementeren van sjablonen met Azure PowerShell.
+- Zie [resources implementeren met arm-sjablonen en Azure cli](deploy-cli.md)voor meer informatie over het implementeren van sjablonen met Azure cli.
 - Zie [resources implementeren met arm-sjablonen en Resource Manager rest API](deploy-rest.md)als u sjablonen wilt implementeren met rest.

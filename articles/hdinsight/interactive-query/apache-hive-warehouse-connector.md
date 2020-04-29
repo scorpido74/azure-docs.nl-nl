@@ -6,21 +6,22 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: f386530ffb3a074a5c1db1d9f28535d28c8b1284
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: 77623a89e52a5e15fbb4159ff49d9377e53e7d4c
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78252411"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509530"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Apache Spark en Apache Hive integreren met de Hive-Warehouse connector
 
-De Apache Hive Warehouse connector (HWC) is een bibliotheek waarmee u gemakkelijker kunt werken met Apache Spark en Apache Hive door ondersteunende taken, zoals het verplaatsen van gegevens tussen Spark DataFrames en Hive-tabellen, en het omleiden van Spark-streaminggegevens in Hive-tabellen. Hive Warehouse connector werkt als een brug tussen Spark en Hive. Scala, Java en python worden ondersteund voor ontwikkeling.
+De Apache Hive Warehouse connector (HWC) is een bibliotheek waarmee u gemakkelijker kunt werken met Apache Spark en Apache Hive. Eenvoudiger door ondersteunende taken zoals het verplaatsen van gegevens tussen Spark-DataFrames en Hive-tabellen. En het leiden van Spark-streaminggegevens in Hive-tabellen. Hive Warehouse connector werkt als een brug tussen Spark en Hive. Scala, Java en python worden ondersteund voor ontwikkeling.
 
-Met de component Warehouse connector kunt u profiteren van de unieke functies van Hive en Spark om krachtige toepassingen voor Big data te bouwen. Apache Hive biedt ondersteuning voor database transacties die atomisch, consistent, geïsoleerd en duurzaam zijn. Zie [Hive-trans acties](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions)voor meer informatie over zuren en trans acties in Hive. Hive biedt ook gedetailleerde beveiligings controles via Apache zwerver en analytische verwerking met lage latentie die niet beschikbaar is in Apache Spark.
+Met de Hive-Warehouse connector kunt u profiteren van de unieke onderdelen van Hive en Spark. Functies die worden gebruikt voor het bouwen van krachtige toepassingen met Big data. Apache Hive biedt ondersteuning voor database transacties die atomisch, consistent, geïsoleerd en duurzaam zijn. Zie [Hive-trans acties](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions)voor meer informatie over zuren en trans acties in Hive. Hive biedt ook gedetailleerde beveiligings controles via Apache zwerver en analytische verwerking met lage latentie die niet beschikbaar is in Apache Spark.
 
-Apache Spark heeft een Structured streaming API die streaming-mogelijkheden biedt die niet beschikbaar zijn in Apache Hive. Vanaf HDInsight 4,0 kunnen Apache Spark 2.3.1 en Apache Hive 3.1.0 afzonderlijke meta Stores bevatten, waardoor interoperabiliteit lastig kan zijn. De Hive-Warehouse connector maakt het gemakkelijker om Spark en Hive samen te gebruiken. De HWC-bibliotheek laadt gegevens van LLAP-daemons parallel uitvoerender, en maakt deze efficiënter en schaalbaar dan het gebruik van een standaard JDBC-verbinding van Spark naar Hive.
+Apache Spark heeft een Structured streaming API die streaming-mogelijkheden biedt die niet beschikbaar zijn in Apache Hive. Vanaf HDInsight 4,0 hebben Apache Spark 2.3.1 en Apache Hive 3.1.0 afzonderlijke meta Stores. Deze afzonderlijke meta Stores kunnen de interoperabiliteit lastig maken. De Hive-Warehouse connector maakt het gemakkelijker om Spark en Hive samen te gebruiken. De HWC-bibliotheek laadt gegevens van LLAP-daemons (lage latentie Analytical Processing) parallel. Met deze actie is het efficiënter en aanpasbaarer dan het gebruik van een standaard JDBC-verbinding van Spark naar Hive.
 
 ![architectuur van de Hive-Warehouse connector](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
 
@@ -72,7 +73,7 @@ Navigeer vanuit uw Spark Ambari-webgebruikersinterface naar **Spark2** > **confi
 
 ![Configuratie van Apache Ambari Spark2](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-Selecteer **eigenschap toevoegen...** , indien nodig, om het volgende toe te voegen of bij te werken:
+Selecteer **eigenschap toevoegen...** als dat nodig is om de volgende waarde toe te voegen of bij te werken:
 
 | Sleutel | Waarde |
 |----|----|
@@ -111,7 +112,7 @@ Voer de volgende stappen uit om een Spark-shell-sessie te starten:
     --conf spark.security.credentials.hiveserver2.enabled=false
     ```
 
-    Er verschijnt een welkomst bericht en een `scala>` prompt waarin u opdrachten kunt invoeren.
+    U ziet een welkomst bericht en een `scala>` prompt waarin u opdrachten kunt invoeren.
 
 1. Nadat u de Spark-shell hebt gestart, kunt u een component Warehouse connector-exemplaar starten met behulp van de volgende opdrachten:
 
@@ -122,13 +123,13 @@ Voer de volgende stappen uit om een Spark-shell-sessie te starten:
 
 ### <a name="connecting-and-running-queries-on-enterprise-security-package-esp-clusters"></a>Verbinding maken en query's uitvoeren op Enterprise Security Package (ESP)-clusters
 
-De Enterprise Security Package (ESP) biedt mogelijkheden op ondernemings niveau zoals op Active Directory gebaseerde verificatie, ondersteuning voor meerdere gebruikers en toegangs beheer op basis van rollen voor Apache Hadoop clusters in azure HDInsight. Zie [Enterprise Security package gebruiken in HDInsight](../domain-joined/apache-domain-joined-architecture.md)voor meer informatie over ESP.
+De Enterprise Security Package (ESP) biedt mogelijkheden op ondernemings niveau zoals op Active Directory gebaseerde verificatie. En ondersteuning voor meerdere gebruikers, en toegangs beheer op basis van rollen voor Apache Hadoop clusters in azure HDInsight. Zie [Enterprise Security package gebruiken in HDInsight](../domain-joined/apache-domain-joined-architecture.md)voor meer informatie over ESP.
 
-1. SSH in het hoofd knooppunt voor uw Apache Spark-cluster. Zie [verbinding maken met HDInsight (Apache Hadoop) met SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)voor meer informatie over het maken van verbinding met uw cluster met SSH.
+1. SSH in het hoofd knooppunt voor uw Apache Spark-cluster.
 
 1. Typ `kinit` en meld u aan met een domein gebruiker.
 
-1. Start Spark-shell met de volledige lijst met configuratie parameters, zoals hieronder wordt weer gegeven. Alle waarden in hoofd letters tussen punt haken moeten worden opgegeven op basis van het cluster. Zie de sectie over de installatie van de [Hive-Warehouse connector](#hive-warehouse-connector-setup)als u de waarden voor de invoer van de onderstaande para meters wilt weten.:
+1. Start Spark-shell met de volledige lijst met configuratie parameters, zoals hieronder wordt weer gegeven. Alle waarden in hoofd letters tussen punt haken moeten worden opgegeven op basis van het cluster. Zie de sectie over de installatie van de [Hive-Warehouse connector](#hive-warehouse-connector-setup)als u de waarden voor de invoer van de onderstaande para meters wilt weten.
 
     ```bash
     spark-shell --master yarn \
@@ -181,7 +182,7 @@ Spark ondersteunt geen systeem eigen ondersteuning voor het schrijven naar de ta
 
 Met hive Warehouse connector kunt u met Spark streaming gegevens schrijven naar Hive-tabellen.
 
-Volg de onderstaande stappen om een component Warehouse connector-voor beeld te maken waarmee gegevens uit een Spark-stroom op localhost-poort 9999 worden opgenomen in een Hive-tabel.
+Volg de onderstaande stappen om een Hive Warehouse-connector te maken. In het voor beeld worden gegevens uit een Spark-stroom op localhost-poort 9999 opgenomen in een Hive-tabel.
 
 1. Volg de stappen onder [verbinding maken en query's uitvoeren](#connecting-and-running-queries).
 
@@ -193,7 +194,7 @@ Volg de onderstaande stappen om een component Warehouse connector-voor beeld te 
 
 1. Genereer gegevens voor de Spark-stroom die u hebt gemaakt door de volgende stappen uit te voeren:
     1. Open een tweede SSH-sessie op hetzelfde Spark-cluster.
-    1. Typ `nc -lk 9999`bij de opdracht prompt. Met deze opdracht wordt het netcat-hulp programma gebruikt voor het verzenden van gegevens van de opdracht regel naar de opgegeven poort.
+    1. Typ `nc -lk 9999`bij de opdracht prompt. Met deze opdracht wordt `netcat` het hulp programma gebruikt voor het verzenden van gegevens van de opdracht regel naar de opgegeven poort.
 
 1. Ga terug naar de eerste SSH-sessie en maak een nieuwe Hive-tabel om de streaminggegevens te bewaren. Voer in de Spark-shell de volgende opdracht in:
 
@@ -224,7 +225,7 @@ Volg de onderstaande stappen om een component Warehouse connector-voor beeld te 
     hive.table("stream_table").show()
     ```
 
-Gebruik **CTRL + C** om netcat te stoppen bij de tweede SSH-sessie. Gebruiken `:q` om Spark-shell te verlaten voor de eerste SSH-sessie.
+Gebruik **CTRL + C** om te `netcat` stoppen met de tweede SSH-sessie. Gebruiken `:q` om Spark-shell te verlaten voor de eerste SSH-sessie.
 
 ### <a name="securing-data-on-spark-esp-clusters"></a>Gegevens beveiligen op Spark ESP-clusters
 
@@ -253,7 +254,7 @@ Gebruik **CTRL + C** om netcat te stoppen bij de tweede SSH-sessie. Gebruiken `:
 
         ![Hive-beleids lijst van de component Warehouse connector zwerver](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    a. Geef een gewenste beleids naam op. Data base selecteren: **standaard**, Hive-tabel: **demo**, Hive-kolom: **naam**, gebruiker: **rsadmin2**, toegangs typen: **selecteren**, en **gedeeltelijk masker: weer geven laatste 4** van het menu **optie masker selecteren** . Klik op **Add**.
+    a. Geef een beleids naam op. Data base selecteren: **standaard**, Hive-tabel: **demo**, Hive-kolom: **naam**, gebruiker: **rsadmin2**, toegangs typen: **selecteren**, en **gedeeltelijk masker: weer geven laatste 4** van het menu **optie masker selecteren** . Klik op **Add**.
                 ![beleid maken](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Bekijk de inhoud van de tabel opnieuw. Na het Toep assen van het beleid voor zwerver, kunnen we alleen de laatste vier tekens van de kolom zien.
 

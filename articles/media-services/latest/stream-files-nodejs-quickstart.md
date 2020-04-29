@@ -1,6 +1,6 @@
 ---
-title: Videobestanden streamen met Azure Media Services - Node.js | Microsoft Documenten
-description: Volg de stappen van deze zelfstudie om een nieuw Azure Media Services-account te maken, een bestand te coderen en te streamen naar Azure Media Player.
+title: Video bestanden streamen met Azure Media Services-node. js | Microsoft Docs
+description: Volg de stappen in deze zelf studie om een nieuw Azure Media Services-account te maken, een bestand te coderen en te streamen naar Azure Media Player.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,19 +14,19 @@ ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: juliako
 ms.openlocfilehash: fa9fbf3bac55ca0b26c3644b7f6818fa96088612
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "69639394"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>Zelfstudie: Een extern bestand coderen op basis van URL en de video streamen - Node.js
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>Zelf studie: een extern bestand coderen op basis van URL en de video-node. js streamen
 
-In deze zelfstudie ziet u hoe eenvoudig het is om video's te coderen en te streamen op een breed scala aan browsers en apparaten die Azure Media Services gebruiken. De invoerinhoud kan worden opgegeven met HTTPS-URL's, SAS-URL's of paden naar bestanden in Azure Blob-opslag.
+In deze zelf studie leert u hoe eenvoudig het is om Video's te coderen en te streamen op een groot aantal verschillende browsers en apparaten met behulp van Azure Media Services. De invoerinhoud kan worden opgegeven met HTTPS-URL's, SAS-URL's of paden naar bestanden in Azure Blob-opslag.
 
-Het voorbeeld in dit artikel codeert inhoud die u toegankelijk maakt via een HTTPS-URL. Op dit moment biedt AMS v3 geen ondersteuning voor gesegmenteerde overdrachtscodering via HTTPS-URL's.
+In het voor beeld in dit artikel wordt inhoud gecodeerd die u via een HTTPS-URL kunt openen. Op dit moment biedt AMS v3 geen ondersteuning voor gesegmenteerde overdrachtscodering via HTTPS-URL's.
 
-Tegen het einde van de tutorial zul je in staat zijn om een video te streamen.  
+Aan het einde van de zelf studie kunt u een video streamen.  
 
 ![De video afspelen](./media/stream-files-nodejs-quickstart/final-video.png)
 
@@ -34,21 +34,21 @@ Tegen het einde van de tutorial zul je in staat zijn om een video te streamen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Node.js](https://nodejs.org/en/download/) installeren
+- [Node. js](https://nodejs.org/en/download/) installeren
 - [Een Azure Media Services-account maken](create-account-cli-how-to.md).<br/>Vergeet niet de waarden die u hebt gebruikt voor de namen van de resourcegroep en het Media Services-account.
 - Volg de stappen in [Access Azure Media Services API with the Azure CLI](access-api-cli-how-to.md) (Toegang tot de Azure Media Services-API met de Azure CLI) en sla de referenties op. U hebt deze nodig voor toegang tot de API.
 
 ## <a name="download-and-configure-the-sample"></a>Het voorbeeld downloaden en configureren
 
-Kloon een GitHub-repository met het voorbeeld van streaming Node.js naar uw machine met de volgende opdracht:  
+Kloon een GitHub-opslag plaats met het streaming node. js-voor beeld naar uw computer met behulp van de volgende opdracht:  
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-node-tutorials.git
  ```
 
-Het voorbeeld bevindt zich in de map [StreamFilesSample.](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/master/AMSv3Samples/StreamFilesSample)
+Het voor beeld bevindt zich in de map [StreamFilesSample](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/master/AMSv3Samples/StreamFilesSample) .
 
-Open [index.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L25) in je gedownloadproject. Vervang `endpoint config` de waarden door referenties die u hebt gekregen van [de toegang tot API's](access-api-cli-how-to.md).
+Open [index. js](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L25) in het gedownloade project. Vervang de `endpoint config` waarden door referenties die u hebt gekregen van [toegang tot api's](access-api-cli-how-to.md).
 
 In het voorbeeld worden de volgende acties uitgevoerd:
 
@@ -62,15 +62,15 @@ In het voorbeeld worden de volgende acties uitgevoerd:
 
 ## <a name="run-the-sample-app"></a>De voorbeeld-app uitvoeren
 
-1. De app downloadt gecodeerde bestanden. Maak een map waar u wilt dat de uitvoerbestanden gaan en werk de waarde van de variabele **outputFolder** in het [bestand index.js bij.](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L39)
-1. Open **opdrachtprompt,** blader naar de map van het voorbeeld en voer de volgende opdrachten uit.
+1. De App downloadt gecodeerde bestanden. Maak een map waarin de uitvoer bestanden moeten worden geplaatst en werk de waarde van de variabele **outputFolder** in het bestand [index. js](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L39) bij.
+1. Open de **opdracht prompt**, blader naar de map van het voor beeld en voer de volgende opdrachten uit.
 
     ```
     npm install 
     node index.js
     ```
 
-Nadat het is uitgevoerd, moet u vergelijkbare uitvoer zien:
+Nadat deze is uitgevoerd, ziet u vergelijk bare uitvoer:
 
 ![Voer](./media/stream-files-nodejs-quickstart/run.png)
 
@@ -81,7 +81,7 @@ In dit artikel gebruiken we Azure Media Player om de stream te testen.
 > [!NOTE]
 > Als een speler wordt gehost op een https-site, moet u de URL bijwerken naar 'https'.
 
-1. Open een webbrowser en [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)navigeer naar .
+1. Open een webbrowser en ga naar [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
 2. Plak in het vak **URL:** een van de streaming URL's die u hebt verkregen door het uitvoeren van de toepassing. 
  
      U kunt de URL plakken in de HLS-, Dash-, of Smooth-indeling. Azure Media Player schakelt over op naar een geschikt streaming-protocol zodat de stream automatisch op uw apparaat wordt afgespeeld.
@@ -91,7 +91,7 @@ Azure Media Player kan worden gebruikt voor testdoeleinden, maar mag niet worden
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u geen van de resources in uw resourcegroep meer nodig hebt, inclusief de Media Services en opslagaccounts die u voor deze zelfstudie hebt gemaakt, verwijdert u de brongroep.
+Als u een van de resources in de resource groep niet meer nodig hebt, met inbegrip van de Media Services-en opslag accounts die u voor deze zelf studie hebt gemaakt, verwijdert u de resource groep.
 
 Voer de volgende CLI-opdracht uit:
 
@@ -101,9 +101,9 @@ az group delete --name amsResourceGroup
 
 ## <a name="see-also"></a>Zie ook
 
-[Foutcodes voor taak](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+[Taak fout codes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Concepten van Media Services](concepts-overview.md)
+> [Media Services concepten](concepts-overview.md)

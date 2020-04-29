@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een probleem met de routering van een VM-netwerk diagnosticeren - Azure-portal'
+title: 'Zelf studie: een probleem met een VM-netwerk routering vaststellen-Azure Portal'
 titleSuffix: Azure Network Watcher
 description: In deze snelstart leert u hoe u met behulp van de functie Volgende hop van Azure Network Watcher een diagnose uitvoert voor een probleem met de routering in een netwerk van virtuele machines.
 services: network-watcher
@@ -18,10 +18,10 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 52d398fa9c258528ef8f87842ba94f139bbf737b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76845218"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Zelfstudie: Diagnose van een routeringsprobleem in een netwerk van virtuele machines met behulp van Azure Portal
@@ -36,7 +36,7 @@ Wanneer u een virtuele machine (VM) implementeert, maakt Azure verschillende sta
 
 Als u dat liever doet, kunt u de diagnose van een routeringsprobleem in een netwerk van virtuele machines ook uitvoeren met behulp van [Azure CLI](diagnose-vm-network-routing-problem-cli.md) of [Azure PowerShell](diagnose-vm-network-routing-problem-powershell.md).
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
@@ -46,11 +46,11 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 1. Selecteer **+ Een resource maken** in de linkerbovenhoek van Azure Portal.
 2. Selecteer **Compute** en selecteer vervolgens **Windows Server 2016 Datacenter** of **Ubuntu Server 17.10 VM**.
-3. Voer de volgende gegevens in of selecteer de volgende gegevens, accepteer de standaardinstellingen voor de overige instellingen en selecteer **OK:**
+3. Voer de volgende informatie in of Selecteer deze, accepteer de standaard waarden voor de overige instellingen en selecteer **OK**:
 
     |Instelling|Waarde|
     |---|---|
-    |Name|myVm|
+    |Naam|myVm|
     |Gebruikersnaam| Voer een gebruikersnaam naar keuze in.|
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Abonnement| Selecteer uw abonnement.|
@@ -89,7 +89,7 @@ Azure maakt automatisch routes naar standaardbestemmingen. U kunt uw eigen, aang
     | Virtuele machine         | Selecteer myVm                                            |
     | Netwerkinterface       | myvm - uw netwerkinterface kan een andere naam hebben.   |
     | IP-adres van bron       | 10.0.0.4                                               |
-    | IP-adres van doel  | 13.107.21.200 - Een van de adressen voor <www.bing.com>. |
+    | IP-adres van doel  | 13.107.21.200: een van de adressen voor <www.bing.com>. |
 
     ![Volgende hop](./media/diagnose-vm-network-routing-problem/next-hop.png)
 
@@ -114,7 +114,7 @@ U kunt de resourcegroep en alle gerelateerde resources die deze bevat verwijdere
 
 1. Voer *myResourceGroup* in het vak **Zoeken** bovenaan de portal in. Wanneer u **myResourceGroup** ziet in de zoekresultaten, selecteert u deze.
 2. Selecteer **Resourcegroep verwijderen**.
-3. Typ *myResourceGroup* voor **TYPE DE NAAM VAN DE RESOURCEGROEP:** en selecteer **Verwijderen**.
+3. Voer *myResourceGroup* in bij **Typ de naam van de resource groep:** en selecteer **verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

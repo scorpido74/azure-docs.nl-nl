@@ -4,12 +4,12 @@ description: Meer informatie over hoe u de cluster-automatische schaal functie k
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 732c405cad20aef3485b521fa245cb504a809c40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ebbeab82031ddc037c7885e7453e603a8f440a1
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129061"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509241"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Schaal een cluster automatisch om te voldoen aan de vereisten van de toepassing op de Azure Kubernetes-service (AKS)
 
@@ -44,7 +44,7 @@ Zowel de horizontale pod voor automatisch schalen als cluster automatisch schale
 
 Voor meer informatie over hoe het cluster automatisch schalen niet kan worden geschaald, raadpleegt u [welke typen van de cluster automatisch schalen een knoop punt niet kunnen verwijderen?][autoscaler-scaledown]
 
-De automatische schaal functie van het cluster maakt gebruik van opstart parameters voor dingen zoals tijds intervallen tussen schaal gebeurtenissen en resource drempels. Deze para meters worden gedefinieerd door het Azure-platform en zijn momenteel niet beschikbaar voor aanpassing. Zie [Wat zijn de para meters voor cluster-automatische schalen?][autoscaler-parameters]voor meer informatie over de para meters die door de cluster-automatische schaal functie worden gebruikt.
+De automatische schaal functie van het cluster maakt gebruik van opstart parameters voor dingen zoals tijds intervallen tussen schaal gebeurtenissen en resource drempels. Zie [Wat zijn de para meters voor cluster-automatische schalen?][autoscaler-parameters]voor meer informatie over de para meters die door de cluster-automatische schaal functie worden gebruikt.
 
 Het cluster en de horizontale pod kunnen samen worden gebruikt en worden vaak geïmplementeerd in een cluster. In combi natie met de horizontale Pod is de automatische schaal aanpassing gericht op het uitvoeren van het aantal vereiste aantallen dat nodig is om te voldoen aan de vraag van de toepassing. De cluster automatisch schalen is gericht op het uitvoeren van het aantal knoop punten dat vereist is voor de ondersteuning van de geplande peulen.
 

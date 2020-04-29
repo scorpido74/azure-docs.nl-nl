@@ -9,32 +9,32 @@ ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4bcee1097010bb8746b11185a470ca2584485c3f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73488887"
 ---
-1. Selecteer op de portalpagina voor uw virtuele wan in de sectie **Connectiviteit** **VPN-sites** om de pagina VPN-sites te openen.
+1. Selecteer op de pagina Portal voor uw virtuele WAN in het gedeelte **connectiviteit** de optie **VPN-sites** om de pagina VPN-sites te openen.
 2. Op de pagina **VPN sites** klikt u op **+Site maken**.
 
-   ![Basics](./media/virtual-wan-tutorial-site-include/basics.png "Basisbeginselen")
-3. Vul op de pagina **VPN-site maken** op het tabblad **Basisbeginselen** de volgende velden in:
+   ![Basisbeginselen](./media/virtual-wan-tutorial-site-include/basics.png "Basisbeginselen")
+3. Vul op de pagina **VPN-site maken** op het tabblad **basis beginselen** de volgende velden in:
 
-    * **Regio** - Voorheen locatie genoemd. Dit is de locatie waarin u deze sitebron wilt maken.
-    * **Naam** - De naam waarmee u wilt verwijzen naar uw on-premises site.
-    * **Apparaatleverancier** - De naam van de leverancier van het VPN-apparaat (bijvoorbeeld: Citrix, Cisco, Barracuda). Als u dit doet, kan het Azure-team uw omgeving beter begrijpen om in de toekomst extra optimalisatiemogelijkheden toe te voegen of om u te helpen problemen op te lossen.
-    * **Border Gateway Protocol** - Inschakelen impliceert dat alle verbindingen van de site zijn BGP ingeschakeld. Uiteindelijk stelt u de BGP-informatie in voor elke link van de VPN-site in de sectie Links. Het configureren van BGP op een Virtual WAN is gelijk aan het configureren van BGP op een Azure virtual network gateway VPN. Uw on-premises BGP-peeradres mag niet hetzelfde zijn als het openbare IP-adres van uw VPN naar het apparaat of de VNet-adresruimte van de VPN-site. Gebruik een ander IP-adres op het VPN-apparaat voor uw IP-peer-peer. Het kan een adres zijn dat is toegewezen aan de loopback-interface op het apparaat. Het kan echter geen APIPA-adres (169.254.x.x) zijn. Geef dit adres op in de bijbehorende VPN-site die de locatie vertegenwoordigt. Zie [Over BGP met Azure VPN Gateway](../articles/vpn-gateway/vpn-gateway-bgp-overview.md)voor BGP-vereisten. U altijd een VPN-verbinding bewerken om de BGP-parameters bij te werken (Peering IP op de link en de AS #) zodra de BGP-instelling van de VPN-site is ingeschakeld.
-    * **Privéadresruimte** - De IP-adresruimte die zich op uw on-premises locatie bevindt. Verkeer dat bestemd is voor deze adresruimte wordt doorgestuurd naar uw lokale site. Dit is vereist wanneer BGP niet is ingeschakeld voor de site.
-    * **Hubs** - De hub waarmee u verbinding wilt maken met uw site. Een site kan alleen worden verbonden met de hubs die een VPN Gateway hebben. Als u geen hub ziet, maakt u eerst een VPN-gateway in die hub.
-4. Selecteer **Koppelingen** om informatie toe te voegen over de fysieke koppelingen in de vertakking. Als u een CPE-apparaat voor virtuele wan-partners hebt, neemt u contact met hen op om te zien of deze informatie wordt uitgewisseld met Azure als onderdeel van de uploadvan branch-informatie die is ingesteld vanaf hun systemen.
+    * **Regio** -eerder aangeduid als locatie. Dit is de locatie waar u deze site resource wilt maken in.
+    * **Naam** : de naam waarmee u naar uw on-premises site wilt verwijzen.
+    * **Leverancier van apparaat** : de naam van de leverancier van het VPN-apparaat (bijvoorbeeld: Citrix, Cisco, barracuda). Als u dit doet, kan het Azure-team beter inzicht krijgen in uw omgeving om in de toekomst extra optimalisatie mogelijkheden toe te voegen of om u te helpen bij het oplossen van problemen.
+    * **Border Gateway Protocol** : inschakelen impliceert alle verbindingen van de site BGP ingeschakeld. Uiteindelijk moet u de BGP-gegevens voor elke koppeling van de VPN-site instellen in de sectie koppelingen. Het configureren van BGP op een virtueel WAN is gelijk aan het configureren van BGP op een virtuele Azure-netwerk gateway VPN. Het adres van uw on-premises BGP-peer mag niet hetzelfde zijn als het open bare IP-adres van uw VPN naar het apparaat of de VNet-adres ruimte van de VPN-site. Gebruik een ander IP-adres op het VPN-apparaat voor uw BGP-peer-IP. Het kan een adres zijn dat is toegewezen aan de loopback-interface op het apparaat. Het kan echter geen APIPA-adres (169.254. x. x) zijn. Geef dit adres op in de bijbehorende VPN-site die de locatie vertegenwoordigt. Zie [over BGP met Azure VPN gateway](../articles/vpn-gateway/vpn-gateway-bgp-overview.md)voor de BGP-vereisten. U kunt altijd een VPN-verbinding bewerken om de BGP-para meters (peering-IP op de koppeling en de als #) bij te werken zodra de BGP-instelling VPN-site is ingeschakeld.
+    * **Persoonlijke adres ruimte** : de IP-adres ruimte die zich op uw on-premises site bevindt. Verkeer dat bestemd is voor deze adresruimte wordt doorgestuurd naar uw lokale site. Dit is vereist wanneer BGP niet is ingeschakeld voor de site.
+    * **Hubs** : de hub waarmee u de site wilt verbinden. Een site kan alleen worden verbonden met hubs die een VPN Gateway hebben. Als u geen hub ziet, maakt u eerst een VPN-gateway in die hub.
+4. Selecteer **koppelingen** om informatie over de fysieke koppelingen op de vertakking toe te voegen. Als u een virtueel WAN-partner CPE-apparaat hebt, kunt u contact opnemen met de apparaten om te zien of deze gegevens worden uitgewisseld met Azure als onderdeel van de gegevens die vanuit hun systemen worden geüpload.
 
-   ![Verwijzigingen](./media/virtual-wan-tutorial-site-include/links.png "Koppelingen")
+   ![koppelen](./media/virtual-wan-tutorial-site-include/links.png "Koppelingen")
 
-    * **Linknaam** - Een naam die u wilt opgeven voor de fysieke link op de VPN-site. Voorbeeld: mylink1.
-    * **Providernaam** - De naam van de fysieke link op de VPN-site. Voorbeeld: ATT, Verizon.
-    * **Snelheid** - Dit is de snelheid van het VPN-apparaat op de branchlocatie. Voorbeeld: 50, wat betekent dat 50 Mbps de snelheid is van het VPN-apparaat op de branchsite.
-    * **IP-adres** - Openbaar IP-adres van het on-prem-apparaat via deze link. Optioneel u het privé-IP-adres opgeven van uw on-premises VPN-apparaat dat zich achter ExpressRoute bevindt.
-5. U het selectievakje gebruiken om extra koppelingen te verwijderen of toe te voegen. Vier links per VPN-site worden ondersteund. Als u bijvoorbeeld vier ISP (internetserviceprovider) op de vestigingslocatie hebt, u vier koppelingen maken. één per isp, en de informatie voor elke link.
-6. Zodra u klaar bent met het invullen van de velden, selecteert u **Controleren + maken** om de site te verifiëren en te maken.
-7. Bekijk de status op de pagina VPN-sites. De site gaat naar **Verbinding nodig** omdat de site nog niet is aangesloten op de hub.
+    * **Naam van koppeling** : een naam die u wilt opgeven voor de fysieke koppeling op de VPN-site. Voor beeld: mylink1.
+    * **Provider naam** : de naam van de fysieke koppeling op de VPN-site. Voor beeld: ATT, Verizon.
+    * **Snelheid** : dit is de snelheid van het VPN-apparaat op de vertakkings locatie. Voor beeld: 50, wat betekent dat 50 Mbps de snelheid van het VPN-apparaat op de filiaal site is.
+    * **IP-adres** : het open bare IP-adres van het on-premises apparaat met behulp van deze koppeling. U kunt desgewenst het privé-IP-adres van uw on-premises VPN-apparaat opgeven dat zich achter ExpressRoute bevindt.
+5. U kunt het selectie vakje gebruiken om extra koppelingen te verwijderen of toe te voegen. Vier koppelingen per VPN-site worden ondersteund. Als u bijvoorbeeld vier ISP'S (Internet provider) op de vertakkings locatie hebt, kunt u vier koppelingen maken. Eén per provider en geef de gegevens voor elke koppeling op.
+6. Wanneer u klaar bent met het invullen van de velden, selecteert u **controleren + maken** om de site te controleren en te maken.
+7. Bekijk de status op de pagina VPN-sites. De site gaat naar de **verbinding die nodig** is, omdat de site nog niet is verbonden met de hub.

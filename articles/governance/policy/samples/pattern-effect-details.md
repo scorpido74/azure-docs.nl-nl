@@ -1,42 +1,42 @@
 ---
-title: 'Patroon: Effecten van een beleidsdefinitie'
-description: Dit Azure-beleidspatroon geeft een voorbeeld van het gebruik van de verschillende effecten van een beleidsdefinitie.
+title: 'Patroon: effecten van een beleids definitie'
+description: Dit Azure Policy patroon bevat een voor beeld van het gebruik van de verschillende effecten van een beleids definitie.
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: 1a9aec50bd328b76271d54f7830c75e0848d3cde
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80372641"
 ---
-# <a name="azure-policy-pattern-effects"></a>Azure-beleidspatroon: effecten
+# <a name="azure-policy-pattern-effects"></a>Azure Policy patroon: effecten
 
-Azure Policy heeft een aantal [effecten](../concepts/effects.md) die bepalen hoe de service reageert op niet-compatibele resources. Sommige effecten zijn eenvoudig en vereisen geen extra eigenschappen in de beleidsdefinitie, terwijl andere verschillende eigenschappen vereisen.
+Azure Policy heeft een aantal [effecten](../concepts/effects.md) die bepalen hoe de service reageert op niet-compatibele resources. Sommige effecten zijn eenvoudig en vereisen geen extra eigenschappen in de beleids definitie, terwijl anderen verschillende eigenschappen nodig hebben.
 
-## <a name="sample-1-simple-effect"></a>Voorbeeld 1: Eenvoudig effect
+## <a name="sample-1-simple-effect"></a>Voor beeld 1: eenvoudig effect
 
-Met deze beleidsdefinitie wordt gecontroleerd of de tag die is gedefinieerd in **parametertagName** bestaat op de geëvalueerde resource. Als de tag nog niet bestaat, wordt het [wijzigingseffect](../concepts/effects.md#modify) geactiveerd om de tag toe te voegen met de waarde in **parametertagValue**.
+Deze beleids definitie controleert of het label dat in para meter **tagName** is gedefinieerd, bestaat op de geëvalueerde resource. Als het label nog niet bestaat, wordt het [wijzigings](../concepts/effects.md#modify) effect geactiveerd om de tag toe te voegen met de waarde in para meter **tagValue**.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json":::
 
-### <a name="sample-1-explanation"></a>Voorbeeld 1: Uitleg
+### <a name="sample-1-explanation"></a>Voor beeld 1: uitleg
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json" range="40-50":::
 
-Voor **een wijzigingseffect** is het **blok policyRule.then.details** vereist dat **roleDefinitionIds** en **operations definieert.** Deze parameters informeren Azure Policy welke rollen nodig zijn om de tag toe te voegen en de resource te herstellen en die de bewerking **wijzigen** om uit te voeren. In dit voorbeeld wordt de **bewerking** _toegevoegd_ en worden de parameters gebruikt om de tag en de waarde ervan in te stellen.
+Een **wijzigings** effect vereist het **policyRule. then. Details** -blok waarmee **roleDefinitionIds** en **bewerkingen**worden gedefinieerd. Met deze para meters wordt Azure Policy welke functies nodig zijn om het label toe te voegen en de resource te herstellen en te **wijzigen** welke bewerking moet worden uitgevoerd. In dit voor beeld wordt **operation** de bewerking _toegevoegd_ en worden de para meters gebruikt om de tag en de waarde ervan in te stellen.
 
-## <a name="sample-2-complex-effect"></a>Voorbeeld 2: Complex effect
+## <a name="sample-2-complex-effect"></a>Voor beeld 2: complex effect
 
-Deze beleidsdefinitie controleert elke virtuele machine voor wanneer een extensie, gedefinieerd in parameters **uitgever** en **type,** niet bestaat. Het maakt gebruik van [auditIfNotExists](../concepts/effects.md#auditifnotexists) om een resource met betrekking tot de virtuele machine te controleren om te zien of er een instantie bestaat die overeenkomt met de gedefinieerde parameters. In dit voorbeeld wordt het type **extensies** gecontroleerd.
+Met deze beleids definitie wordt elke virtuele machine gecontroleerd op het moment dat een uitbrei ding, gedefinieerd in de para meters **Uitgever** en **type**, niet bestaat. [AuditIfNotExists](../concepts/effects.md#auditifnotexists) wordt gebruikt om een resource te controleren die aan de virtuele machine is gerelateerd om te zien of er een exemplaar bestaat dat overeenkomt met de gedefinieerde para meters. In dit voor beeld wordt het type **extensies** gecontroleerd.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-2.json":::
 
-### <a name="sample-2-explanation"></a>Voorbeeld 2: Uitleg
+### <a name="sample-2-explanation"></a>Voor beeld 2: uitleg
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-2.json" range="45-58":::
 
-Een **auditIfNotExists** effect vereist de **policyRule.then.details** blok om zowel een **type** als het bestaan te **definiërenVoorwaarde** om naar te zoeken. Het **bestaanVoorwaarde** gebruikt beleidstaalelementen, zoals [logische operatoren,](../concepts/definition-structure.md#logical-operators)om te bepalen of er een overeenkomende gerelateerde resource bestaat. In dit voorbeeld worden de waarden die voor elke [alias](../concepts/definition-structure.md#aliases) worden gecontroleerd, gedefinieerd in parameters.
+Voor een **auditIfNotExists** -effect is het **policyRule. then. Details** -blok vereist om zowel een **type** als de **existenceCondition** te definiëren waarnaar moet worden gezocht. De **existenceCondition** gebruikt beleids taal elementen, zoals [logische Opera tors](../concepts/definition-structure.md#logical-operators), om te bepalen of er een overeenkomende gerelateerde resource bestaat. In dit voor beeld worden de waarden die worden gecontroleerd op elke [alias](../concepts/definition-structure.md#aliases) gedefinieerd in para meters.
 
 ## <a name="next-steps"></a>Volgende stappen
 

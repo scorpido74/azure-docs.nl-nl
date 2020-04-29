@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een server ontwerpen - Azure CLI - Azure Database voor MySQL'
+title: 'Zelf studie: een server ontwerpen-Azure CLI-Azure Database for MySQL'
 description: In deze zelfstudie wordt uitgelegd hoe u een Azure Database voor MySQL-server en -database maakt en beheert via Azure CLI vanaf de opdrachtregel.
 author: ajlam
 ms.author: andrela
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
 ms.openlocfilehash: 080e4b119048f2c204e6617405c7c053c7f24cea
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80382831"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Zelfstudie: een Azure Database for MySQL ontwerpen met Azure CLI
@@ -22,19 +22,19 @@ Azure Database voor MySQL is een relationele databaseservice in de Microsoft Clo
 > [!div class="checklist"]
 > * Een Azure Database voor MySQL maken
 > * De serverfirewall configureren
-> * [Mysql-opdrachtregelgereedschap gebruiken](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) om een database te maken
+> * Het [opdracht regel programma mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) gebruiken om een Data Base te maken
 > * Voorbeeldgegevens laden
 > * Querygegevens
 > * Gegevens bijwerken
 > * Gegevens terugzetten
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
 
-U de Azure Cloud Shell in de browser gebruiken of [Azure CLI op]( /cli/azure/install-azure-cli) uw eigen computer installeren om de codeblokken in deze zelfstudie uit te voeren.
+U kunt de Azure Cloud Shell in de browser gebruiken of [Azure cli installeren]( /cli/azure/install-azure-cli) op uw eigen computer om de code blokken in deze zelf studie uit te voeren.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest de Azure CLI lokaal te installeren en te gebruiken, moet u in dit artikel de Azure CLI-versie 2.0 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli). 
+Als u ervoor kiest om de Azure CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2,0 of hoger. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli). 
 
 Als u meerdere abonnementen hebt, kiest u het abonnement waarin de resource is opgenomen of wordt gefactureerd. Selecteer een specifiek abonnements-ID in uw account met de opdracht [az account set](/cli/azure/account#az-account-set).
 ```azurecli-interactive
@@ -53,13 +53,13 @@ az group create --name myresourcegroup --location westus
 ## <a name="create-an-azure-database-for-mysql-server"></a>Een Azure-database voor MySQL-server maken
 Maak een Azure Database for MySQL-server met de opdracht az mysql server create. Een server kan meerdere databases beheren. Een aparte database wordt doorgaans gebruikt voor elk project of voor elke gebruiker.
 
-In het volgende voorbeeld wordt een Azure-database voor MySQL-server gemaakt die zich in `westus` bevindt in de resourcegroep `myresourcegroup` met de naam `mydemoserver`. De server heeft een `myadmin`beheerdersgebruiker met de naam . Dit is een Gen 5-server voor Algemeen gebruik met twee vCores. Vervang het `<server_admin_password>` door uw eigen waarde.
+In het volgende voorbeeld wordt een Azure-database voor MySQL-server gemaakt die zich in `westus` bevindt in de resourcegroep `myresourcegroup` met de naam `mydemoserver`. De server heeft een beheerders gebruiker met `myadmin`de naam. Dit is een Gen 5-server voor Algemeen gebruik met twee vCores. Vervang het `<server_admin_password>` door uw eigen waarde.
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
 ```
 De parameterwaarde voor de sku-naam volgt de conventie {prijscategorie} \_{compute-generatie}\_{vCores}, zoals in de onderstaande voorbeelden:
-+ `--sku-name B_Gen5_2`kaarten naar Basic, Gen 5 en 2 vCores.
++ `--sku-name B_Gen5_2`wordt toegewezen aan Basic-, Gen 5-en 2-vCores.
 + `--sku-name GP_Gen5_32` komt overeen met Algemeen gebruik, Gen 5 en 32 vCores.
 + `--sku-name MO_Gen5_2` komt overeen met Geoptimaliseerd voor geheugen, Gen 5 en 2 vCores.
 
@@ -201,7 +201,7 @@ In deze zelfstudie hebt u het volgende geleerd:
 > [!div class="checklist"]
 > * Een Azure-database voor MySQL-server maken
 > * De serverfirewall configureren
-> * [Mysql-opdrachtregelgereedschap gebruiken](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) om een database te maken
+> * Het [opdracht regel programma mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) gebruiken om een Data Base te maken
 > * Voorbeeldgegevens laden
 > * Querygegevens
 > * Gegevens bijwerken

@@ -1,6 +1,6 @@
 ---
-title: Videobestanden streamen met Azure Media Services en de Azure CLI
-description: Volg de stappen van deze zelfstudie om een nieuw Azure Media Services-account te maken, een bestand te coderen en te streamen naar Azure Media Player.
+title: Video bestanden streamen met Azure Media Services en de Azure CLI
+description: Volg de stappen in deze zelf studie om een nieuw Azure Media Services-account te maken, een bestand te coderen en te streamen naar Azure Media Player.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,19 +14,19 @@ ms.custom: ''
 ms.date: 08/19/2019
 ms.author: juliako
 ms.openlocfilehash: 91259e10966173cb701b867f5b3ed362112beef3
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80382780"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>Zelfstudie: Een extern bestand coderen op basis van URL en de video streamen - Azure CLI
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>Zelf studie: een extern bestand coderen op basis van URL en de video streamen-Azure CLI
 
-In deze zelfstudie ziet u hoe u video's eenvoudig coderen en streamen op verschillende browsers en apparaten met Azure Media Services en de Azure CLI. U invoerinhoud opgeven met HTTPS- of SAS-URL's of paden naar bestanden in Azure Blob-opslag.
+Deze zelf studie laat zien hoe u eenvoudig Video's kunt coderen en streamen op verschillende browsers en apparaten met behulp van Azure Media Services en de Azure CLI. U kunt invoer inhoud opgeven door gebruik te maken van HTTPS-of SAS-Url's of-paden naar bestanden in Azure Blob-opslag.
 
-Het voorbeeld in dit artikel codeert inhoud die u toegankelijk maakt via een HTTPS-URL. Media Services v3 ondersteunt momenteel geen chunked transfer codering via HTTPS URL's.
+In het voor beeld in dit artikel wordt inhoud gecodeerd die u via een HTTPS-URL kunt openen. Media Services V3 biedt momenteel geen ondersteuning voor gesegmenteerde overdrachts codering via HTTPS-Url's.
 
-Tegen het einde van deze zelfstudie kun je een video streamen.  
+Aan het einde van deze zelf studie kunt u een video streamen.  
 
 ![De video afspelen](./media/stream-files-dotnet-quickstart/final-video.png)
 
@@ -34,9 +34,9 @@ Tegen het einde van deze zelfstudie kun je een video streamen.
 
 ## <a name="create-a-media-services-account"></a>Een Media Services-account kunt maken
 
-Voordat u media-inhoud in Azure versleutelen, coderen, analyseren, beheren en streamen, moet u een Media Services-account maken. Dat account moet zijn gekoppeld aan een of meer opslagaccounts.
+Voordat u media-inhoud in azure kunt versleutelen, coderen, analyseren, beheren en streamen, moet u een Media Services-account maken. Dit account moet worden gekoppeld aan een of meer opslag accounts.
 
-Uw Media Services-account en alle bijbehorende opslagaccounts moeten in hetzelfde Azure-abonnement zitten. We raden u aan opslagaccounts te gebruiken die zich op dezelfde plaats bevinden als het Media Services-account om de kosten voor latentie en gegevensuitgangte beperken.
+Uw Media Services-account en alle gekoppelde opslag accounts moeten zich in hetzelfde Azure-abonnement bevallen. We raden u aan om opslag accounts te gebruiken die zich op dezelfde locatie bevinden als het Media Services-account om de kosten voor latentie en gegevens uitvoer te beperken.
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -46,9 +46,9 @@ az group create -n amsResourceGroup -l westus2
 
 ### <a name="create-an-azure-storage-account"></a>Een Azure-opslagaccount maken
 
-In dit voorbeeld maken we een Algemeen Doel v2 Standard LRS-account aan.
+In dit voor beeld maken we een standaard-LRS-account voor algemeen gebruik.
 
-Als u wilt experimenteren met opslagaccounts, gebruikt u `--sku Standard_LRS`. Wanneer u een SKU kiest voor `--sku Standard_RAGRS`productie, u overwegen om geografische replicatie te gebruiken voor bedrijfscontinuïteit. Zie [Opslagaccounts](/cli/azure/storage/account) voor meer informatie.
+Als u wilt experimenteren met opslagaccounts, gebruikt u `--sku Standard_LRS`. Wanneer u een SKU voor productie kiest, kunt u overwegen om `--sku Standard_RAGRS`te gebruiken, die geografische replicatie biedt voor bedrijfs continuïteit. Zie [Opslagaccounts](/cli/azure/storage/account) voor meer informatie.
 
 ```azurecli-interactive
 az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup
@@ -60,7 +60,7 @@ az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_L
 az ams account create --n amsaccount -g amsResourceGroup --storage-account amsstorageaccount -l westus2
 ```
 
-Je krijgt een antwoord als volgt:
+U krijgt een antwoord als volgt:
 
 ```
 {
@@ -83,13 +83,13 @@ Je krijgt een antwoord als volgt:
 
 ## <a name="start-the-streaming-endpoint"></a>Het streaming-eindpunt starten
 
-Met de volgende opdracht Azure CLI wordt het standaard **eindpunt voor streaming gestart.**
+Met de volgende Azure CLI-opdracht wordt het standaard **streaming-eind punt**gestart.
 
 ```azurecli-interactive
 az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 ```
 
-Je krijgt een antwoord als volgt:
+U krijgt een antwoord als volgt:
 
 ```
 {
@@ -118,21 +118,21 @@ Je krijgt een antwoord als volgt:
 }
 ```
 
-Als het streamingeindpunt al actief is, ontvangt u dit bericht:
+Als het streaming-eind punt al wordt uitgevoerd, wordt dit bericht weer gegeven:
 
 ```
 (InvalidOperation) The server cannot execute the operation in its current state.
 ```
 
-## <a name="create-a-transform-for-adaptive-bitrate-encoding"></a>Een transformatie maken voor adaptieve bitratecodering
+## <a name="create-a-transform-for-adaptive-bitrate-encoding"></a>Een trans formatie maken voor het coderen van een adaptieve bitsnelheid
 
-Maak een **Transformatie** om veelvoorkomende taken voor het coderen of analyseren van video's te configureren. In dit voorbeeld doen we adaptieve bitrate codering. Vervolgens dienen we een baan in onder de transformatie die we hebben gemaakt. De taak is het verzoek aan Media Services om de transformatie toe te passen op de opgegeven invoer van video- of audio-inhoud.
+Maak een **Transformatie** om veelvoorkomende taken voor het coderen of analyseren van video's te configureren. In dit voor beeld maken we een adaptieve bitsnelheid-code ring. Vervolgens verzenden we een taak onder de trans formatie die we hebben gemaakt. De taak is de aanvraag om Media Services de trans formatie toe te passen op de opgegeven video-of audio-inhoud.
 
 ```azurecli-interactive
 az ams transform create --name testEncodingTransform --preset AdaptiveStreaming --description 'a simple Transform for Adaptive Bitrate Encoding' -g amsResourceGroup -a amsaccount
 ```
 
-Je krijgt een antwoord als volgt:
+U krijgt een antwoord als volgt:
 
 ```
 {
@@ -158,13 +158,13 @@ Je krijgt een antwoord als volgt:
 
 ## <a name="create-an-output-asset"></a>Een uitvoeractivum maken
 
-Maak een **uitvoeritem** dat u gebruiken als de uitvoer van de coderingstaak.
+Maak een uitvoer **activum** dat moet worden gebruikt als uitvoer van de coderings taak.
 
 ```azurecli-interactive
 az ams asset create -n testOutputAssetName -a amsaccount -g amsResourceGroup
 ```
 
-Je krijgt een antwoord als volgt:
+U krijgt een antwoord als volgt:
 
 ```
 {
@@ -183,22 +183,22 @@ Je krijgt een antwoord als volgt:
 }
 ```
 
-## <a name="start-a-job-by-using-https-input"></a>Een taak starten met HTTPS-invoer
+## <a name="start-a-job-by-using-https-input"></a>Een taak starten met behulp van HTTPS-invoer
 
-Wanneer u taken indient om video's te verwerken, moet u Media Services vertellen waar u de invoervideo vinden. Een optie is het opgeven van een HTTPS-URL als de taakinvoer, zoals in dit voorbeeld wordt weergegeven.
+Wanneer u taken voor het verwerken van Video's verzendt, moet u Media Services waar u de invoer video kunt vinden. Een optie is om een HTTPS-URL op te geven als de taak invoer, zoals wordt weer gegeven in dit voor beeld.
 
-Wanneer u `az ams job start` uitvoert, kunt u een label instellen op de uitvoer van de taak. U het label vervolgens gebruiken om te bepalen waar het uitvoermiddel voor is.
+Wanneer u `az ams job start` uitvoert, kunt u een label instellen op de uitvoer van de taak. U kunt vervolgens het label gebruiken om aan te geven waar het uitvoer activum voor staat.
 
-- Als u een waarde aan het label toewijst, stelt u '--output-assets' in op 'assetname=label'.
-- Als u geen waarde aan het label toewijst, stelt u '--output-assets' in op 'assetname='.
+- Als u een waarde aan het label toewijst, stelt u '--output-assets ' in op ' assets = label '.
+- Als u geen waarde aan het label toewijst, stelt u '--output-assets ' in op ' assets = '.
 
-  Merk op dat we "=" toevoegen aan de `output-assets`.
+  U ziet dat we ' = ' aan de `output-assets`hebben toegevoegd.
 
 ```azurecli-interactive
 az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup
 ```
 
-Je krijgt een antwoord als volgt:
+U krijgt een antwoord als volgt:
 
 ```
 {
@@ -235,15 +235,15 @@ Je krijgt een antwoord als volgt:
 
 ### <a name="check-status"></a>Status controleren
 
-Controleer binnen vijf minuten de status van de taak. Het zou 'Klaar' moeten zijn. Het is nog niet klaar, controleer het over een paar minuten nog eens. Als het klaar is, gaat u naar de volgende stap en maakt u een **streaminglocator.**
+Controleer de status van de taak binnen vijf minuten. Dit moet ' voltooid ' zijn. Het is niet voltooid, controleer over enkele minuten opnieuw. Wanneer het is voltooid, gaat u naar de volgende stap en maakt u een **streaming-Locator**.
 
 ```azurecli-interactive
 az ams job show -a amsaccount -g amsResourceGroup -t testEncodingTransform -n testJob001
 ```
 
-## <a name="create-a-streaming-locator-and-get-a-path"></a>Maak een streaming locator en krijg een pad
+## <a name="create-a-streaming-locator-and-get-a-path"></a>Een streaming-Locator maken en een pad ophalen
 
-Wanneer de codering is voltooid, bestaat de volgende stap eruit om de video in de uitvoerasset beschikbaar te maken voor weergave door clients. Maak hiervoor eerst een Streaming Locator. Bouw vervolgens streaming-URL's die clients kunnen gebruiken.
+Wanneer de codering is voltooid, bestaat de volgende stap eruit om de video in de uitvoerasset beschikbaar te maken voor weergave door clients. Hiervoor maakt u eerst een streaming-Locator. Bouw vervolgens streaming-Url's die clients kunnen gebruiken.
 
 ### <a name="create-a-streaming-locator"></a>Een streaming-locator te maken
 
@@ -251,7 +251,7 @@ Wanneer de codering is voltooid, bestaat de volgende stap eruit om de video in d
 az ams streaming-locator create -n testStreamingLocator --asset-name testOutputAssetName --streaming-policy-name Predefined_ClearStreamingOnly  -g amsResourceGroup -a amsaccount 
 ```
 
-Je krijgt een antwoord als volgt:
+U krijgt een antwoord als volgt:
 
 ```
 {
@@ -271,13 +271,13 @@ Je krijgt een antwoord als volgt:
 }
 ```
 
-### <a name="get-streaming-locator-paths"></a>Download streaming locator-paden
+### <a name="get-streaming-locator-paths"></a>Paden voor streaming-Locator ophalen
 
 ```azurecli-interactive
 az ams streaming-locator get-paths -a amsaccount -g amsResourceGroup -n testStreamingLocator
 ```
 
-Je krijgt een antwoord als volgt:
+U krijgt een antwoord als volgt:
 
 ```
 {
@@ -308,19 +308,19 @@ Je krijgt een antwoord als volgt:
 }
 ```
 
-Kopieer het HTTP-pad voor live streaming (HLS). In dit geval is `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`het.
+Kopieer het HLS-pad (HTTP Live streaming). In dit geval is `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`dat.
 
-## <a name="build-the-url"></a>De URL samenstellen
+## <a name="build-the-url"></a>De URL bouwen
 
-### <a name="get-the-streaming-endpoint-host-name"></a>De naam van de streaming endpointhost opmaken
+### <a name="get-the-streaming-endpoint-host-name"></a>De hostnaam van het streaming-eind punt ophalen
 
 ```azurecli-interactive
 az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 ```
 
-Kopieer de waarde van `hostName`. In dit geval is `amsaccount-usw22.streaming.media.azure.net`het.
+Kopieer de waarde van `hostName`. In dit geval is `amsaccount-usw22.streaming.media.azure.net`dat.
 
-### <a name="assemble-the-url"></a>De URL samenvoegen
+### <a name="assemble-the-url"></a>De URL samen stellen
 
 'https://' + &lt;waarde van hostnaam&gt; + &lt;padwaarde Hls&gt;
 
@@ -328,23 +328,23 @@ Hier volgt een voorbeeld:
 
 `https://amsaccount-usw22.streaming.media.azure.net/7f19e783-927b-4e0a-a1c0-8a140c49856c/ignite.ism/manifest(format=m3u8-aapl)`
 
-## <a name="test-playback-by-using-azure-media-player"></a>Afspelen testen met Azure Media Player
+## <a name="test-playback-by-using-azure-media-player"></a>Testen afspelen met behulp van Azure Media Player
 
 > [!NOTE]
-> Als een speler wordt gehost op een HTTPS-site, moet u de URL starten met 'https'.
+> Als een speler wordt gehost op een HTTPS-site, moet u ervoor zorgen dat u de URL met ' https ' start.
 
-1. Open een webbrowser en [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)ga naar .
-2. Plak in het **vak URL** de URL die u in de vorige sectie hebt gebouwd. U de URL plakken in de indeling HLS, Dash of Vloeiend. Azure Media Player gebruikt automatisch een geschikt streamingprotocol voor afspelen op uw apparaat.
-3. Selecteer **Speler bijwerken**.
+1. Open een webbrowser en ga naar [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
+2. Plak in het vak **URL** de URL die u in de vorige sectie hebt gemaakt. U kunt de URL in HLS, Dash of Smooth plakken. Azure Media Player wordt automatisch een geschikt streaming-protocol gebruikt voor afspelen op het apparaat.
+3. Selecteer **Update speler**.
 
 >[!NOTE]
 >Azure Media Player kan worden gebruikt voor testdoeleinden, maar mag niet worden gebruikt in een productieomgeving.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u geen van de bronnen in uw resourcegroep meer nodig hebt, inclusief de MediaServices en opslagaccounts die u voor deze zelfstudie hebt gemaakt, verwijdert u de brongroep.
+Als u een van de resources in de resource groep niet meer nodig hebt, met inbegrip van de Media Services-en opslag accounts die u voor deze zelf studie hebt gemaakt, verwijdert u de resource groep.
 
-Voer deze opdracht Azure CLI uit:
+Voer deze Azure CLI-opdracht uit:
 
 ```azurecli-interactive
 az group delete --name amsResourceGroup

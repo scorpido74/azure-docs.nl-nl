@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 08/20/2019
 ms.author: juliako
 ms.openlocfilehash: 63f2abe7a3890efbaf4c79186467a3eb20d8afda
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80382984"
 ---
-# <a name="azure-cli-example-reset-the-account-credentials"></a>Voorbeeld van Azure CLI: de accountreferenties opnieuw instellen
+# <a name="azure-cli-example-reset-the-account-credentials"></a>Azure CLI-voor beeld: de account referenties opnieuw instellen
 
 In het Azure CLI-script in dit artikel ziet u hoe u de referenties van uw account opnieuw kunt instellen en de app.config-instellingen kunt terugkrijgen.
 
@@ -45,5 +45,5 @@ az ams account sp reset-credentials \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [az ams](/cli/azure/ams)
+* [AZ AMS](/cli/azure/ams)
 * [Referenties opnieuw instellen](/cli/azure/ams/account/sp#az-ams-account-sp-reset-credentials)

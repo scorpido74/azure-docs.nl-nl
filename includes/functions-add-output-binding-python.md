@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: glenga
 ms.openlocfilehash: 8bdd8b9d900cc50fdeb34ff7d233ac4d7e17a45c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78191016"
 ---
-Update *HttpExample\\\_\_\_\_init .py* om de `msg` volgende code aan te passen, waarbij de parameter wordt toegevoegd aan de functiedefinitie en `msg.set(name)` onder de `if name:` instructie.
+Werk *\\\_HttpExample\_init\_. py bij met de volgende code door de para meter toe te voegen aan de functie definitie en de\_* `msg.set(name)` `if name:` `msg` instructie.
 
 :::code language="python" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/__init__.py":::
 
-De `msg` parameter is een [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest)instantie van de . De `set` methode schrijft een tekenreeksbericht naar de wachtrij, in dit geval wordt de naam doorgegeven aan de functie in de URL-querytekenreeks.
+De `msg` para meter is een exemplaar van [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest)de. De `set` methode schrijft een teken reeks bericht naar de wachtrij, in dit geval de naam die is door gegeven aan de functie in de URL-query teken reeks.

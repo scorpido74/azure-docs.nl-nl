@@ -1,6 +1,6 @@
 ---
 title: Videobestanden streamen met Azure Media Services - .NET | Microsoft Docs
-description: Volg de stappen van deze zelfstudie om een nieuw Azure Media Services-account te maken, een bestand te coderen en te streamen naar Azure Media Player.
+description: Volg de stappen in deze zelf studie om een nieuw Azure Media Services-account te maken, een bestand te coderen en te streamen naar Azure Media Player.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,18 +14,18 @@ ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: juliako
 ms.openlocfilehash: df4092ecc3f7d075f1a2821854cdb668ee2cebe5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77191211"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Zelfstudie: Een extern bestand coderen op basis van URL en de video streamen - .NET
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Zelf studie: een extern bestand coderen op basis van URL en de video-.NET streamen
 
-In deze zelfstudie ziet u hoe eenvoudig het is om video's te coderen en te streamen op een breed scala aan browsers en apparaten die Azure Media Services gebruiken. De invoerinhoud kan worden opgegeven met HTTPS-URL's, SAS-URL's of paden naar bestanden in Azure Blob-opslag.
+In deze zelf studie leert u hoe eenvoudig het is om Video's te coderen en te streamen op een groot aantal verschillende browsers en apparaten met behulp van Azure Media Services. De invoerinhoud kan worden opgegeven met HTTPS-URL's, SAS-URL's of paden naar bestanden in Azure Blob-opslag.
 Met het voorbeeld in dit onderwerp wordt inhoud gecodeerd die u toegankelijk maakt via een HTTPS-URL. Op dit moment biedt AMS v3 geen ondersteuning voor gesegmenteerde overdrachtscodering via HTTPS-URL's.
 
-Tegen het einde van de tutorial zul je in staat zijn om een video te streamen.  
+Aan het einde van de zelf studie kunt u een video streamen.  
 
 ![De video afspelen](./media/stream-files-dotnet-quickstart/final-video.png)
 
@@ -47,7 +47,7 @@ Gebruik de volgende opdracht om een GitHub-opslagplaats te klonen op uw computer
 
 Het voorbeeld bevindt zich in de map [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles).
 
-Open [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json) in uw gedownloade project. Vervang de waarden door referenties die u hebt verkregen via [toegang tot API's](access-api-cli-how-to.md).
+Open [appSettings. json](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json) in het gedownloade project. Vervang de waarden door referenties die u hebt verkregen via [toegang tot API's](access-api-cli-how-to.md).
 
 In het voorbeeld worden de volgende acties uitgevoerd:
 
@@ -79,7 +79,7 @@ In dit artikel gebruiken we Azure Media Player om de stream te testen.
 > [!NOTE]
 > Als een speler wordt gehost op een https-site, moet u de URL bijwerken naar 'https'.
 
-1. Open een webbrowser en [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)navigeer naar .
+1. Open een webbrowser en ga naar [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
 2. Plak in het vak **URL:** een van de streaming URL's die u hebt verkregen door het uitvoeren van de toepassing. 
  
      U kunt de URL plakken in de HLS-, Dash-, of Smooth-indeling. Azure Media Player schakelt over op naar een geschikt streaming-protocol zodat de stream automatisch op uw apparaat wordt afgespeeld.
@@ -89,7 +89,7 @@ Azure Media Player kan worden gebruikt voor testdoeleinden, maar mag niet worden
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u geen van de resources in uw resourcegroep meer nodig hebt, inclusief de Media Services en opslagaccounts die u voor deze zelfstudie hebt gemaakt, verwijdert u de brongroep.
+Als u een van de resources in de resource groep niet meer nodig hebt, met inbegrip van de Media Services-en opslag accounts die u voor deze zelf studie hebt gemaakt, verwijdert u de resource groep.
 
 Voer de volgende CLI-opdracht uit:
 

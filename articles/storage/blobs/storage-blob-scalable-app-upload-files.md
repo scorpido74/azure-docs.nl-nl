@@ -1,6 +1,6 @@
 ---
-title: Grote hoeveelheden willekeurige gegevens parallel aan Azure Storage uploaden
-description: Meer informatie over het gebruik van de Azure Storage-clientbibliotheek om grote hoeveelheden willekeurige gegevens parallel aan een Azure Storage-account te uploaden
+title: Grote hoeveel heden wille keurige gegevens parallel uploaden naar Azure Storage
+description: Meer informatie over het gebruik van de Azure Storage-client bibliotheek voor het uploaden van grote hoeveel heden wille keurige gegevens parallel met een Azure Storage-account
 author: roygara
 ms.service: storage
 ms.topic: tutorial
@@ -8,10 +8,10 @@ ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: dd87e1a9bcff55813dff420976df58351386fb34
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75371935"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Grote hoeveelheden willekeurige gegevens gelijktijdig uploaden naar Azure Storage
@@ -26,9 +26,9 @@ In deel twee van de serie leert u het volgende:
 > * De toepassing uitvoeren
 > * Het aantal verbindingen valideren
 
-Azure Blob-opslag biedt een schaalbare service voor het opslaan van gegevens. Om er zeker van te kunnen zijn of uw toepassing optimaal presteert, is het raadzaam te weten hoe blob-opslag werkt. Kennis van de limieten voor Azure-blobs is belangrijk, voor meer informatie over deze limieten bezoek: [Schaalbaarheid en prestatiedoelen voor Blob-opslag](../blobs/scalability-targets.md).
+Azure Blob-opslag biedt een schaalbare service voor het opslaan van gegevens. Om er zeker van te kunnen zijn of uw toepassing optimaal presteert, is het raadzaam te weten hoe blob-opslag werkt. De kennis van de limieten voor Azure-blobs is belang rijk voor meer informatie over deze limieten: [schaal baarheid en prestatie doelen voor Blob Storage](../blobs/scalability-targets.md).
 
-[Partitienaamgeving](../blobs/storage-performance-checklist.md#partitioning) is een andere potentieel belangrijke factor bij het ontwerpen van een krachtige toepassing met behulp van blobs. Voor blokgroottes groter dan of gelijk aan 4 MiB worden [blokblobs](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) met hoge doorvoer gebruikt en de naamgeving van partities heeft geen invloed op de prestaties. Voor blokformaten van minder dan 4 MiB maakt Azure-opslag gebruik van een op bereik gebaseerd partitieschema om de balans te schalen en te laden. Deze configuratie betekent dat bestanden met vergelijkbare naamconventies of voorvoegsels naar dezelfde partitie gaan. Deze logica bevat de naam van de container waar de bestanden naar worden geüpload. In deze zelfstudie gebruikt u de bestanden die GUID's voor namen en willekeurig gegenereerde inhoud bevatten. Deze worden vervolgens naar vijf verschillende containers met willekeurige namen geüpload.
+De [naam van een partitie](../blobs/storage-performance-checklist.md#partitioning) is een andere mogelijk belang rijke factor bij het ontwerpen van een toepassing met hoge prestaties met behulp van blobs. Voor blok grootten die groter zijn dan of gelijk zijn aan 4 MiB, worden [blok-blobs met hoge door Voer](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) gebruikt en worden de prestaties van de partitie niet beïnvloed. Voor de blok grootte kleiner dan 4 MiB gebruikt Azure Storage een partitie schema op basis van bereik om te schalen en taak verdeling. Deze configuratie betekent dat bestanden met vergelijkbare naamconventies of voorvoegsels naar dezelfde partitie gaan. Deze logica bevat de naam van de container waar de bestanden naar worden geüpload. In deze zelfstudie gebruikt u de bestanden die GUID's voor namen en willekeurig gegenereerde inhoud bevatten. Deze worden vervolgens naar vijf verschillende containers met willekeurige namen geüpload.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -44,7 +44,7 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="configure-the-connection-string"></a>De verbindingsreeks configureren
 
-Ga in Azure Portal naar het nieuwe opslagaccount. Selecteer bij **Instellingen** in uw opslagaccount de optie **Toegangssleutels**. Kopieer de **verbindingsreeks** uit de primaire of secundaire sleutel. Meld u aan bij de virtuele machine die u tijdens de vorige zelfstudie hebt gemaakt. Open een **Opdrachtprompt** als beheerder en voer de opdracht `setx` uit met de `/m`-switch. Met deze opdracht wordt een omgevingsvariabele van een machine-instelling opgeslagen. De omgevingsvariabele wordt pas beschikbaar wanneer u de **Opdrachtprompt** opnieuw laadt. ** \<StorageConnectionString\> vervangen** in het volgende voorbeeld:
+Ga in Azure Portal naar het nieuwe opslagaccount. Selecteer bij **Instellingen** in uw opslagaccount de optie **Toegangssleutels**. Kopieer de **verbindingsreeks** uit de primaire of secundaire sleutel. Meld u aan bij de virtuele machine die u tijdens de vorige zelfstudie hebt gemaakt. Open een **Opdrachtprompt** als beheerder en voer de opdracht `setx` uit met de `/m`-switch. Met deze opdracht wordt een omgevingsvariabele van een machine-instelling opgeslagen. De omgevingsvariabele wordt pas beschikbaar wanneer u de **Opdrachtprompt** opnieuw laadt. Vervang ** \<storageConnectionString\> ** in het volgende voor beeld:
 
 ```
 setx storageconnectionstring "<storageConnectionString>" /m
@@ -68,10 +68,10 @@ Naast het instellen van de limietinstellingen voor threads en verbindingen zijn 
 
 |Eigenschap|Waarde|Beschrijving|
 |---|---|---|
-|[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| Met deze instelling wordt de blob in blokken opgesplitst bij het uploaden. Voor de hoogste prestaties moet deze waarde acht keer het aantal cores zijn. |
+|[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| Met deze instelling wordt de blob in blokken opgesplitst bij het uploaden. Voor de hoogste prestaties moet deze waarde acht maal het aantal kernen zijn. |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| waar| Met deze eigenschap wordt de controle uitgeschakeld van de MD5-hash van de inhoud die wordt geüpload. MD5-validatie zorgt voor een snellere overdracht. Maar hiermee wordt de geldigheid of de integriteit van de bestanden die worden overgebracht, niet bevestigd.   |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Deze eigenschap bepaalt of een MD5-hash wordt berekend en samen met het bestand opgeslagen.   |
-| [Opnieuw proberenBeleid](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| Twee seconden uitstel bij maximaal tien nieuwe pogingen |Hiermee bepaalt u het beleid voor het opnieuw proberen van aanvragen. Bij verbindingsfouten wordt opnieuw geprobeerd. In dit voorbeeld is een [ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry)-beleid geconfigureerd met een uitstel van twee seconden en een maximumaantal nieuwe pogingen van 10. Deze instelling is belangrijk wanneer uw toepassing dicht bij het bereiken van de schaalbaarheidsdoelen voor Blob-opslag komt. Zie [Schaalbaarheids- en prestatiedoelen voor Blob-opslag voor](../blobs/scalability-targets.md)meer informatie.  |
+| [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| Twee seconden uitstel bij maximaal tien nieuwe pogingen |Hiermee bepaalt u het beleid voor het opnieuw proberen van aanvragen. Bij verbindingsfouten wordt opnieuw geprobeerd. In dit voorbeeld is een [ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry)-beleid geconfigureerd met een uitstel van twee seconden en een maximumaantal nieuwe pogingen van 10. Deze instelling is belang rijk wanneer uw toepassing bijna de schaalbaarheids doelen voor Blob Storage aanraakt. Zie [schaalbaarheids-en prestatie doelen voor Blob Storage](../blobs/scalability-targets.md)voor meer informatie.  |
 
 De taak `UploadFilesAsync` wordt in het volgende voorbeeld weergegeven:
 

@@ -1,38 +1,38 @@
 ---
-title: Zelfstudie - Een Azure Cosmos DB binden aan uw Azure Spring Cloud-toepassing
-description: In deze zelfstudie leert u hoe u Azure Cosmos DB binden aan uw Azure Spring Cloud-toepassing
+title: 'Zelf studie: een Azure Cosmos DB binden aan uw Azure lente-Cloud toepassing'
+description: In deze zelf studie leert u hoe u Azure Cosmos DB bindt aan uw Azure lente-Cloud toepassing
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: brendm
 ms.openlocfilehash: 1566b6ab59e858217adcf6818e1d62f851f37eb1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76277567"
 ---
-# <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Een Azure Cosmos DB-database binden aan uw Azure Spring Cloud-toepassing
+# <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Een Azure Cosmos DB-Data Base koppelen aan uw Azure lente-Cloud toepassing
 
-In plaats van uw Spring Boot-toepassingen handmatig te configureren, u bepaalde Azure-services automatisch aan uw toepassingen binden met Azure Spring Cloud. In dit artikel wordt uitgelegd hoe u uw toepassing binden aan een Azure Cosmos DB-database.
+In plaats van uw Spring-opstart toepassingen hand matig te configureren, kunt u de geselecteerde Azure-Services automatisch binden aan uw toepassingen met behulp van Azure veer Cloud. In dit artikel wordt beschreven hoe u uw toepassing verbindt met een Azure Cosmos DB-Data Base.
 
 Vereisten:
 
-* Een geïmplementeerde Azure Spring Cloud-instantie. Volg onze [quickstart bij het implementeren via de Azure CLI](spring-cloud-quickstart-launch-app-cli.md) om aan de slag te gaan.
-* Een Azure Cosmos DB-account met een minimummachtigingsniveau van inzender.
+* Een geïmplementeerd Azure veer Cloud-instantie. Volg onze [Snelstartgids voor de implementatie via de Azure cli](spring-cloud-quickstart-launch-app-cli.md) om aan de slag te gaan.
+* Een Azure Cosmos DB account met een mini maal machtigings niveau voor Inzender.
 
 ## <a name="bind-azure-cosmos-db"></a>Azure Cosmos DB binden
 
-Azure Cosmos DB heeft vijf verschillende API-typen die binding ondersteunen. De volgende procedure laat zien hoe ze te gebruiken:
+Azure Cosmos DB heeft vijf verschillende typen API die ondersteuning bieden voor binding. De volgende procedure laat zien hoe u deze gebruikt:
 
-1. Hiermee maakt u een Azure Cosmos DB-database. Raadpleeg de snelstart bij [het maken van een database](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) voor hulp. 
+1. Hiermee maakt u een Azure Cosmos DB-database. Raadpleeg de Snelstartgids over het [maken van een Data Base](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) voor meer informatie. 
 
-1. Neem de naam van uw database op. Voor deze procedure is de databasenaam **testdb**.
+1. Noteer de naam van uw data base. Voor deze procedure is de naam van de Data Base **testdb**.
 
-1. Voeg een van de volgende afhankelijkheden toe aan het pom.xml-bestand van uw Azure Spring Cloud-toepassing. Kies de afhankelijkheid die geschikt is voor uw API-type.
+1. Voeg een van de volgende afhankelijkheden toe aan het pom. XML-bestand van uw Azure veer Cloud-toepassing. Kies de afhankelijkheid die geschikt is voor uw API-type.
 
-    * API-type: Core (SQL)
+    * API-type: core (SQL)
 
       ```xml
       <dependency>
@@ -80,22 +80,22 @@ Azure Cosmos DB heeft vijf verschillende API-typen die binding ondersteunen. De 
       </dependency>
       ```
 
-1. Met `az spring-cloud app update` deze functie u `az spring-cloud app deployment create` de huidige implementatie bijwerken of gebruiken om een nieuwe implementatie te maken. Deze opdrachten worden bijgewerkt of maken de toepassing met de nieuwe afhankelijkheid.
+1. Gebruik `az spring-cloud app update` om de huidige implementatie bij te werken of `az spring-cloud app deployment create` gebruik om een nieuwe implementatie te maken. Met deze opdrachten kunt u de toepassing bijwerken of maken met de nieuwe afhankelijkheid.
 
-1. Ga naar uw Azure Spring Cloud-servicepagina in de Azure-portal. Ga naar **Toepassingsdashboard** en selecteer de toepassing die u wilt binden aan Azure Cosmos DB. Deze toepassing is dezelfde toepassing die u in de vorige stap hebt bijgewerkt of geïmplementeerd.
+1. Ga naar de pagina Azure lente-Cloud service in de Azure Portal. Ga naar het **toepassings dashboard** en selecteer de toepassing die u wilt verbinden met Azure Cosmos db. Deze toepassing is hetzelfde als die u in de vorige stap hebt bijgewerkt of geïmplementeerd.
 
-1. Selecteer **Servicebinding**en selecteer **Servicebinding maken**. Als u het formulier wilt invullen, selecteert u:
-   * De **waarde van het type Binding** Azure Cosmos **DB**.
+1. Selecteer **service binding**en selecteer **service binding maken**. Selecteer om het formulier in te vullen:
+   * De waarde van het **bindings type** **Azure Cosmos DB**.
    * Het API-type.
-   * Je databasenaam.
+   * De naam van uw data base.
    * Het Azure Cosmos DB-account.
 
     > [!NOTE]
-    > Als u Cassandra gebruikt, gebruikt u een sleutelruimte voor de databasenaam.
+    > Als u Cassandra gebruikt, gebruikt u een sleutel ruimte voor de naam van de data base.
 
-1. Start de toepassing opnieuw door **Opnieuw starten** te selecteren op de toepassingspagina.
+1. Start de toepassing opnieuw door **opnieuw opstarten** te selecteren op de pagina van de toepassing.
 
-1. Als u wilt weten of de service correct is gebonden, selecteert u de bindende naam en controleert u de details ervan. Het `property` veld moet vergelijkbaar zijn met dit voorbeeld:
+1. Om ervoor te zorgen dat de service correct is gebonden, selecteert u de naam van de binding en controleert u de gegevens. Het `property` veld moet vergelijkbaar zijn met dit voor beeld:
 
     ```
     azure.cosmosdb.uri=https://<some account>.documents.azure.com:443
@@ -105,7 +105,7 @@ Azure Cosmos DB heeft vijf verschillende API-typen die binding ondersteunen. De 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u uw Azure Spring Cloud-toepassing binden aan een Azure Cosmos DB-database. Ga door naar de volgende zelfstudie voor meer informatie over het binden van uw toepassing aan een Azure-cache voor Redis-cache.
+In deze zelf studie hebt u geleerd hoe u uw Azure lente-Cloud toepassing verbindt met een Azure Cosmos DB-Data Base. Ga verder met de volgende zelf studie als u wilt weten hoe u uw toepassing kunt binden aan een Azure-cache voor redis-cache.
 
 > [!div class="nextstepaction"]
-> [Meer informatie over hoe u binden aan een Azure-cache voor Redis-cache](spring-cloud-tutorial-bind-redis.md)
+> [Meer informatie over het binden van een Azure-cache voor redis-cache](spring-cloud-tutorial-bind-redis.md)

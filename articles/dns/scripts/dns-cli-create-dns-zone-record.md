@@ -1,5 +1,5 @@
 ---
-title: Een DNS-zone en -record maken voor een domeinnaam - Azure CLI - Azure DNS
+title: Een DNS-zone en-record maken voor een domein naam-Azure CLI-Azure DNS
 description: In dit voorbeeld van een Azure CLI-script ziet u hoe u een DNS-zone maakt en registreert voor een domeinnaam
 services: dns
 author: rohinkoul
@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 09/20/2019
 ms.author: rohink
 ms.openlocfilehash: b1db9ffb895470dd9224dc020eb82b0bbf6560c1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76939310"
 ---
 # <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Voorbeeld van Azure CLI-script: een DNS-zone maken en registreren

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 046a4bc9abb936ca6f9fcecd0f660a723edb092b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80117002"
 ---
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
@@ -55,7 +55,7 @@ Wanneer de virtuele machine is gemaakt, toont de Azure CLI informatie die lijkt 
 
 ## <a name="open-port-80-for-web-traffic"></a>Poort 80 openen voor webverkeer 
 
-Standaard worden alleen SSH-verbindingen toegestaan naar Linux-VM’s die zijn geïmplementeerd in Azure. Omdat deze VM wordt gebruikt als een webserver, moet u poort 80 openen voor verkeer vanaf internet. Gebruik de opdracht [open poort van AZ VM](/cli/azure/vm) om de gewenste poort te openen.  
+Standaard worden alleen SSH-verbindingen toegestaan naar Linux-VM’s die zijn geïmplementeerd in Azure. Omdat deze VM wordt gebruikt als een webserver, moet u poort 80 openen voor verkeer vanaf internet. Gebruik de opdracht [AZ VM Open-Port](/cli/azure/vm) om de gewenste poort te openen.  
  
 ```azurecli-interactive
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM

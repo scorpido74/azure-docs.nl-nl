@@ -1,40 +1,40 @@
 ---
 title: Apache Hive als ETL-hulp programma gebruiken-Azure HDInsight
 description: Gebruik Apache Hive om ETL-gegevens in azure HDInsight uit te pakken, te transformeren en te laden.
-ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: be331f36a6305b05ce83a2b2d5fdfb73a154ce3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: c289892246cfce3ffac3f668577073a2af92511f
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623123"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509547"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Apache Hive gebruiken als een hulp programma voor uitpakken, transformeren en laden (ETL)
 
-Normaal gesp roken moet u inkomende gegevens opschonen en transformeren voordat u ze laadt in een doel dat geschikt is voor analyse. Uitpakken, transformeren en laden (ETL)-bewerkingen worden gebruikt om gegevens voor te bereiden en te laden in een gegevens bestemming.  Apache Hive op HDInsight kan in ongestructureerde gegevens worden gelezen, de gegevens naar behoefte verwerken en vervolgens de gegevens in een relationeel Data Warehouse laden voor systemen voor de beslissings ondersteuning. In deze benadering worden gegevens geëxtraheerd uit de bron en opgeslagen in schaal bare opslag, zoals Azure Storage blobs of Azure Data Lake Storage. De gegevens worden vervolgens getransformeerd met behulp van een reeks Hive-query's en wordt ten slotte in de Hive klaargezet voor het bulksgewijs laden van gegevens in de doel gegevensopslag.
+Normaal gesp roken moet u inkomende gegevens opschonen en transformeren voordat u ze laadt in een doel dat geschikt is voor analyse. Uitpakken, transformeren en laden (ETL)-bewerkingen worden gebruikt om gegevens voor te bereiden en te laden in een gegevens bestemming.  Apache Hive op HDInsight kan in ongestructureerde gegevens worden gelezen, de gegevens naar behoefte verwerken en vervolgens de gegevens in een relationeel Data Warehouse laden voor systemen voor de beslissings ondersteuning. In deze benadering worden gegevens opgehaald uit de bron. Vervolgens opgeslagen in aanpas bare opslag, zoals Azure Storage blobs of Azure Data Lake Storage. De gegevens worden vervolgens getransformeerd met behulp van een reeks Hive-query's. Vervolgens wordt de module in de voor bereiding geladen om bulksgewijs te laden in het doel gegevens archief.
 
 ## <a name="use-case-and-model-overview"></a>Overzicht van use-cases en modellen
 
-In de volgende afbeelding ziet u een overzicht van de use-case en het model voor ETL-automatisering. Invoer gegevens worden getransformeerd om de juiste uitvoer te genereren.  Tijdens die trans formatie kunnen de gegevens vorm, gegevens type en even taal wijzigen.  ETL-processen kunnen Britse naar metriek converteren, tijd zones wijzigen en de nauw keurigheid verbeteren om te uitlijnen met bestaande gegevens in het doel.  ETL-processen kunnen ook nieuwe gegevens combi neren met bestaande gegevens om de rapportage up-to-date te houden of om meer inzicht te krijgen in bestaande gegevens.  Toepassingen zoals rapportage hulpprogramma's en-services kunnen deze gegevens vervolgens in de gewenste indeling gebruiken.
+In de volgende afbeelding ziet u een overzicht van de use-case en het model voor ETL-automatisering. Invoer gegevens worden getransformeerd om de juiste uitvoer te genereren.  Tijdens die trans formatie worden de gegevens vorm, het gegevens type en de even taal gewijzigd.  ETL-processen kunnen Britse naar metriek converteren, tijd zones wijzigen en de nauw keurigheid verbeteren om te uitlijnen met bestaande gegevens in het doel. ETL-processen kunnen ook nieuwe gegevens combi neren met bestaande gegevens om de rapportage up-to-date te houden of om meer inzicht te krijgen in bestaande gegevens. Toepassingen zoals rapportage hulpprogramma's en-services kunnen deze gegevens vervolgens in de gewenste indeling gebruiken.
 
 ![Apache Hive als ETL-architectuur](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
 
-Hadoop wordt doorgaans gebruikt in ETL-processen waarmee een groot aantal tekst bestanden (zoals Csv's) of een kleiner, maar vaak veranderende hoeveelheid tekst bestanden of beide worden geïmporteerd.  Hive is een uitstekend hulp programma dat u kunt gebruiken om de gegevens voor te bereiden voordat u deze in de gegevens bestemming laadt.  Met hive kunt u een schema maken over het CSV en een SQL-achtige taal gebruiken om MapReduce-Program ma's te genereren die met de gegevens werken.
+Hadoop wordt doorgaans gebruikt in ETL-processen die een groot aantal tekst bestanden importeren (zoals Csv's). Of een kleiner, maar vaak veranderende hoeveelheid tekst bestanden, of beide.  Hive is een uitstekend hulp programma dat u kunt gebruiken om de gegevens voor te bereiden voordat u deze in de gegevens bestemming laadt.  Met hive kunt u een schema maken over het CSV en een SQL-achtige taal gebruiken om MapReduce-Program ma's te genereren die met de gegevens werken.
 
-De gebruikelijke stappen voor het gebruik van Hive om ETL uit te voeren zijn als volgt:
+De volgende stappen voor het gebruik van Hive om ETL uit te voeren zijn:
 
 1. Gegevens laden in Azure Data Lake Storage of Azure Blob Storage.
 2. Maak een meta gegevens archief-data base (met behulp van Azure SQL Database) voor gebruik door Hive in het opslaan van uw schema's.
 3. Maak een HDInsight-cluster en verbind het gegevens archief.
 4. Definieer het schema dat moet worden toegepast op de Lees tijd van gegevens in het gegevens archief:
 
-    ```
+    ```hql
     DROP TABLE IF EXISTS hvac;
 
     --create the hvac table on comma-separated sensor data stored in Azure Storage blobs
@@ -66,30 +66,28 @@ Gegevens bronnen zijn meestal externe gegevens die kunnen worden vergeleken met 
 
 ## <a name="output-targets"></a>Uitvoer doelen
 
-U kunt Hive gebruiken om gegevens uit te voeren op verschillende doelen, waaronder:
+U kunt Hive gebruiken om gegevens naar verschillende soorten doelen uit te voeren, waaronder:
 
 * Een relationele data base, zoals SQL Server of Azure SQL Database.
 * Een Data Warehouse, zoals Azure SQL Data Warehouse.
 * Er.
 * Azure Table-en Blob-opslag.
 * Toepassingen of services waarvoor gegevens moeten worden verwerkt in specifieke indelingen of als bestanden die specifieke typen gegevens structuur bevatten.
-* Een JSON-document archief zoals [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
+* Een JSON-document archief zoals Azure Cosmos DB.
 
 ## <a name="considerations"></a>Overwegingen
 
 Het ETL-model wordt doorgaans gebruikt wanneer u het volgende wilt doen:
 
-* Laad stroom gegevens of grote volumes met semi-gestructureerde of ongestructureerde gegevens uit externe bronnen in een bestaand data base-of informatie systeem.
-* Reinig, Transformeer en valideer de gegevens voordat u deze laadt, mogelijk door meer dan één trans formatie door middel van het cluster te gebruiken.
-* Genereer rapporten en visualisaties die regel matig worden bijgewerkt. Als het rapport bijvoorbeeld te lang duurt om te genereren gedurende de dag, kunt u het rapport plannen om 's nachts uit te voeren. Als u automatisch een Hive-query wilt uitvoeren, kunt u [Azure Logic apps](../../logic-apps/logic-apps-overview.md) en Power shell gebruiken.
+`*`Laad stroom gegevens of grote volumes met semi-gestructureerde of ongestructureerde gegevens uit externe bronnen in een bestaand data base-of informatie systeem.
+`*`Reinig, Transformeer en valideer de gegevens voordat u deze laadt, mogelijk door meer dan één trans formatie door middel van het cluster te gebruiken.
+`*`Genereer rapporten en visualisaties die regel matig worden bijgewerkt. Als het rapport bijvoorbeeld te lang duurt om te genereren gedurende de dag, kunt u het rapport plannen om 's nachts uit te voeren. Als u automatisch een Hive-query wilt uitvoeren, kunt u [Azure Logic apps](../../logic-apps/logic-apps-overview.md) en Power shell gebruiken.
 
 Als het doel voor de gegevens geen data base is, kunt u een bestand genereren in de juiste indeling in de query, bijvoorbeeld een CSV. Dit bestand kan vervolgens worden geïmporteerd in Excel of Power BI.
 
-Als u verschillende bewerkingen wilt uitvoeren op de gegevens als onderdeel van het ETL-proces, kunt u overwegen hoe u deze beheert. Als de bewerkingen worden beheerd door een extern programma, in plaats van als een werk stroom binnen de oplossing, moet u beslissen of sommige bewerkingen parallel kunnen worden uitgevoerd en om te detecteren wanneer elke taak is voltooid. Het gebruik van een werk stroom mechanisme zoals Oozie binnen Hadoop kan eenvoudiger zijn dan een reeks bewerkingen proberen te organiseren met externe scripts of aangepaste Program ma's. Zie [werk stroom-en taak](https://msdn.microsoft.com/library/dn749829.aspx)indeling voor meer informatie over Oozie.
+Als u verschillende bewerkingen wilt uitvoeren op de gegevens als onderdeel van het ETL-proces, kunt u overwegen hoe u deze beheert. Bepaal met bewerkingen die worden beheerd door een extern programma, in plaats van een werk stroom binnen de oplossing, of sommige bewerkingen parallel kunnen worden uitgevoerd. En om te detecteren wanneer elke taak is voltooid. Het gebruik van een werk stroom mechanisme zoals Oozie binnen Hadoop kan eenvoudiger zijn dan een reeks bewerkingen proberen te organiseren met externe scripts of aangepaste Program ma's.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [ETL op schaal](apache-hadoop-etl-at-scale.md)
-* [Een gegevens pijplijn operationeel maken](../hdinsight-operationalize-data-pipeline.md)
-
-<!-- * [ETL Deep Dive](../hdinsight-etl-deep-dive.md) -->
+* [`Operationalize a data pipeline`](../hdinsight-operationalize-data-pipeline.md)

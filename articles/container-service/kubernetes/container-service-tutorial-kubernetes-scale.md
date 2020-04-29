@@ -8,16 +8,16 @@ ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 2ea8a5428c1fabdfda4f2298c0559792537df481
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78273990"
 ---
 # <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>(AFGESCHAFT) Kubernetes-schillen en Kubernetes-infrastructuur schalen
 
 > [!TIP]
-> Zie [Zelfstudie: Toepassingen schalen in Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-scale.md)voor de bijgewerkte versie die deze zelfstudie gebruikt voor Azure Kubernetes Service.
+> Voor de bijgewerkte versie van deze zelf studie die gebruikmaakt van de Azure Kubernetes-service, raadpleegt u [zelf studie: toepassingen schalen in azure Kubernetes service (AKS)](../../aks/tutorial-kubernetes-scale.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -42,7 +42,7 @@ Als u deze stappen niet hebt uitgevoerd en deze zelfstudie wilt volgen, gaat u t
 
 Tot nu toe zijn de Azure Vote-front-end en het Redis-exemplaar geïmplementeerd, elk met één replica. U kunt dit controleren door de opdracht [kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) uit te voeren.
 
-Ga [https://shell.azure.com](https://shell.azure.com) naar Cloud Shell openen in uw browser.
+Ga naar [https://shell.azure.com](https://shell.azure.com) om Cloud shell in uw browser te openen.
 
 ```console
 kubectl get pods

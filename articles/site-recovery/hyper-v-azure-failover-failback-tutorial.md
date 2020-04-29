@@ -1,6 +1,6 @@
 ---
-title: Failover van Hyper-V VM's instellen voor Azure in Azure-siteherstel
-description: Meer informatie over het mislukken van Hyper-V VM's naar Azure met Azure Site Recovery.
+title: Failover van virtuele Hyper-V-machines instellen in Azure in Azure Site Recovery
+description: Meer informatie over het uitvoeren van een failover van virtuele Hyper-V-machines naar Azure met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -9,19 +9,19 @@ ms.date: 12/16/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 03826abf6da94859c510f4c127dfce035aa79370
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75498171"
 ---
-# <a name="fail-over-hyper-v-vms-to-azure"></a>Fail over Hyper-V VM's naar Azure
+# <a name="fail-over-hyper-v-vms-to-azure"></a>Failover van virtuele Hyper-V-machines naar Azure
 
-In deze zelfstudie wordt beschreven hoe u falen over Hyper-V VM's naar Azure met [Azure Site Recovery](site-recovery-overview.md). Nadat u een failover hebt uitgevoerd, valt u terug op uw on-premises site wanneer deze beschikbaar is. In deze zelfstudie leert u het volgende:
+In deze zelf studie wordt beschreven hoe u een failover voor virtuele Hyper-V-machines naar Azure met [Azure site Recovery](site-recovery-overview.md). Nadat u een failover hebt uitgevoerd, valt u terug op uw on-premises site wanneer deze beschikbaar is. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Controleer de hyper-v VM-eigenschappen om te controleren of ze voldoen aan azure-vereisten.
-> * Fail over specifieke VM's naar Azure.
+> * Controleer de eigenschappen van de Hyper-V-virtuele machine om te controleren of aan de vereisten van Azure wordt voldaan.
+> * Failover van specifieke Vm's naar Azure.
 
 
 Dit is de vijfde zelfstudie in een reeks. In deze zelfstudie wordt ervan uitgegaan dat u de taken in de vorige zelfstudies al hebt voltooid.    
@@ -31,7 +31,7 @@ Dit is de vijfde zelfstudie in een reeks. In deze zelfstudie wordt ervan uitgega
 3. Noodherstel configureren voor [virtuele Hyper-V-machines](tutorial-hyper-v-to-azure.md) of voor [virtuele Hyper-V-machines die worden beheerd in System Center VMM-clouds](tutorial-hyper-v-vmm-to-azure.md)
 4. [Noodherstelanalyse uitvoeren](tutorial-dr-drill-azure.md)
 
-[Meer informatie over](failover-failback-overview.md#types-of-failover) verschillende soorten failover. Als u meerdere VM's in een herstelplan wilt mislukken, bekijkt u [dit artikel](site-recovery-failover.md).
+[Meer informatie over](failover-failback-overview.md#types-of-failover) verschillende typen failover. Als u een failover wilt uitvoeren voor meerdere Vm's in een herstel plan, raadpleegt u [dit artikel](site-recovery-failover.md).
 
 ## <a name="prepare-for-failover"></a>Voorbereiden op een failover 
 Zorg ervoor dat er zich geen momentopnamen bevinden op de virtuele machine en dat de on-premises virtuele machine is uitgeschakeld tijdens failback. Dit helpt ervoor te zorgen dat gegevens tijdens de replicatie consistent blijven. Schakel de on-premises virtuele machine niet in tijdens failback. 
@@ -58,9 +58,9 @@ Klik in **Beveiligde items** op **Gerepliceerde items** > VM.
 
 ## <a name="fail-over-to-azure"></a>Failover naar Azure
 
-1. Klik in**gerepliceerde items** **instellingen** > op de vm-> **failover**.
+1. Klik in **instellingen** > **gerepliceerde items**op de virtuele machine > **failover**.
 2. Selecteer bij **Failover****Meest recent** als het herstelpunt. 
-3. Selecteer **Sluit de computer af voordat de failover wordt gestart**. Site Recovery probeert virtuele bronmachines af te sluiten voordat de failover wordt geactiveerd. De failover wordt voortgezet zelfs als het afsluiten is mislukt. U de failovervoortgang volgen op de pagina **Vacatures.**
+3. Selecteer **Sluit de computer af voordat de failover wordt gestart**. Site Recovery probeert virtuele bronmachines af te sluiten voordat de failover wordt geactiveerd. De failover wordt voortgezet zelfs als het afsluiten is mislukt. U kunt de voortgang van de failover op de pagina **taken** volgen.
 4. Na het controleren van de failover, klikt u op **Doorvoeren**. Hiermee worden alle beschikbare herstelpunten verwijderd.
 
 > [!WARNING]
@@ -68,16 +68,16 @@ Klik in **Beveiligde items** op **Gerepliceerde items** > VM.
 
 ## <a name="connect-to-failed-over-vm"></a>Verbinding maken met mislukte VM
 
-1. Als u na failover verbinding wilt maken met Azure VM's met Behulp van Extern bureaublad-protocol (RDP) en Secure Shell (SSH), [controleert u of aan de vereisten is voldaan.](failover-failback-overview.md#connect-to-azure-after-failover)
-2. Ga na failover naar de VM en valideer door er verbinding mee te [maken.](../virtual-machines/windows/connect-logon.md)
-3. Gebruik **Herstelpunt wijzigen** als u een ander herstelpunt wilt gebruiken na een failover. Nadat je de failover hebt begaan in de volgende stap, is deze optie niet meer beschikbaar.
-4. Na validatie selecteert u **Commit** om het herstelpunt van de VM na failover af te ronden.
-5. Nadat je je hebt vastgezet, worden alle andere beschikbare herstelpunten verwijderd. Met deze stap wordt de failover voltooid.
+1. Als u na een failover verbinding wilt maken met virtuele Azure-machines met behulp van Remote Desktop Protocol (RDP) en Secure Shell (SSH), [controleert u of aan de vereisten is voldaan](failover-failback-overview.md#connect-to-azure-after-failover).
+2. Ga na een failover naar de virtuele machine en valideer deze door [verbinding te maken](../virtual-machines/windows/connect-logon.md) .
+3. **Herstel punt voor wijzigingen** gebruiken als u na een failover een ander herstel punt wilt gebruiken. Nadat u de failover in de volgende stap hebt doorgevoerd, is deze optie niet meer beschikbaar.
+4. Na validatie selecteert u **door voeren** om het herstel punt van de virtuele machine na een failover te volt ooien.
+5. Nadat u de wijzigingen hebt doorgevoerd, worden alle andere beschik bare herstel punten verwijderd. Met deze stap wordt de failover voltooid.
 
 >[!TIP]
-> Als u verbindingsproblemen ondervindt na een failover, volgt u de [handleiding voor probleemoplossing.](site-recovery-failover-to-azure-troubleshoot.md)
+> Als u na de failover problemen ondervindt met de verbinding, volgt u de [hand leiding](site-recovery-failover-to-azure-troubleshoot.md)voor het oplossen van problemen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Na failover u de Azure VM's opnieuw beveiligen, zodat ze worden gerepliceerd van Azure naar on-premises. Nadat de VM's opnieuw zijn beveiligd en repliceren naar de on-premises site, u vervolgens niet meer terugvallen vanuit Azure wanneer u er klaar voor bent.
+Na een failover kunt u de Azure-Vm's opnieuw beveiligen zodat ze van Azure naar on-premises worden gerepliceerd. Nadat de Vm's opnieuw zijn beveiligd en repliceren naar de on-premises site, kunt u een failback uitvoeren van Azure wanneer u klaar bent.

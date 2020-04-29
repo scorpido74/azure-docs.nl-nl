@@ -3,12 +3,12 @@ title: Java-toepassingen overal bewaken-Azure Monitor Application Insights
 description: Toepassings prestatie bewaking voor Java-toepassingen die worden uitgevoerd in een wille keurige omgeving zonder de app te instrumenteren. Zoek de hoofd oorzaak van de problemen d met behulp van gedistribueerde tracering en toepassings overzicht.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 5d930d349a2ab1efbd7a61904874bf6bdb411889
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 478e42669339ac015076c89da103d91080090685
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641886"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509207"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Configuratie opties-Java zelfstandige agent voor Azure Monitor Application Insights
 
@@ -33,14 +33,14 @@ Meer informatie en aanvullende configuratie opties vindt u hieronder voor meer i
 
 ## <a name="configuration-file-path"></a>Pad naar configuratie bestand
 
-Application Insights Java 3,0 Preview verwacht dat het configuratie bestand wordt benoemd `ApplicationInsights.json`en zich in dezelfde map als `applicationinsights-agent-3.0.0-PREVIEW.jar`bevindt.
+Application Insights Java 3,0 Preview verwacht dat het configuratie bestand wordt benoemd `ApplicationInsights.json`en zich in dezelfde map als `applicationinsights-agent-3.0.0-PREVIEW.4.jar`bevindt.
 
 U kunt uw eigen pad naar een configuratie bestand opgeven met
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`omgevings variabele of
 * `applicationinsights.configurationFile`Java-systeem eigenschap
 
-Als u een relatief pad opgeeft, wordt dit omgezet ten opzichte van de `applicationinsights-agent-3.0.0-PREVIEW.jar` map waar zich bevindt.
+Als u een relatief pad opgeeft, wordt dit omgezet ten opzichte van de `applicationinsights-agent-3.0.0-PREVIEW.4.jar` map waar zich bevindt.
 
 ## <a name="connection-string"></a>Verbindingsreeks
 
@@ -150,11 +150,13 @@ Als u bepaalde JMX-metrische gegevens hebt die u wilt vastleggen:
 }
 ```
 
-## <a name="micrometer"></a>Micrometer
+## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Micrometer (inclusief metrische gegevens van de lente-boot-klep)
 
-Standaard, als uw toepassing [micrometer](https://micrometer.io)gebruikt, wordt Application Insights 3,0 (beginnend met preview. 2) nu toegevoegd aan het globale REGI ster van micrometer en worden er micrometer-metrische gegevens vastgelegd.
+Als uw toepassing [micrometer](https://micrometer.io)gebruikt, worden de metrische gegevens die worden verzonden naar het globale REGI ster van micrometer vastgelegd in Application Insights 3,0 (te beginnen met preview. 2).
 
-Als u deze functie wilt uitschakelen:
+Als uw toepassing [veer boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)gebruikt, wordt in Application Insights 3,0 (te beginnen met preview. 4) nu de metrische gegevens vastgelegd die zijn geconfigureerd met een Spring boot-klep (die gebruikmaakt van micrometer, maar het globale REGI ster van micrometer niet gebruikt).
+
+Als u deze functies wilt uitschakelen:
 
 ```json
 {

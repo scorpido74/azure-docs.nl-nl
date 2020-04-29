@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: de clientbibliotheek van Bing Visual Search gebruiken'
+title: 'Snelstartgids: de Bing Visual Search-client bibliotheek gebruiken'
 titleSuffix: Azure Cognitive Services
-description: De Visual Search API biedt clientbibliotheken waarmee u eenvoudig zoekmogelijkheden in uw toepassingen integreren. Gebruik deze snelstart om zoekverzoeken te verzenden en resultaten terug te krijgen.
+description: De Visual Search-API biedt client bibliotheken waarmee u eenvoudig zoek functies in uw toepassingen kunt integreren. Gebruik deze Snelstartgids om Zoek opdrachten te verzenden en de resultaten terug te halen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 03/26/2020
 ms.author: aahi
 ms.openlocfilehash: e1d3a947df486cd347c17afae5d8dbce21878e09
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80549993"
 ---
-# <a name="quickstart-use-the-bing-visual-search-client-library"></a>Snelstart: de clientbibliotheek van Bing Visual Search gebruiken
+# <a name="quickstart-use-the-bing-visual-search-client-library"></a>Snelstartgids: de Bing Visual Search-client bibliotheek gebruiken
 
 ::: zone pivot="programming-language-csharp"
 

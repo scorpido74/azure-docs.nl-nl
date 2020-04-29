@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 087530fd3834c4ec4620c087134bee0ed26bb6c9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78399779"
 ---
 # <a name="deprecated-deploy-and-use-azure-container-registry"></a>(AFGESCHAFT) Azure Container Registry implementeren en gebruiken
 
 > [!TIP]
-> Zie [Zelfstudie: Azure Container Registry voor](../../aks/tutorial-kubernetes-prepare-acr.md)de bijgewerkte versie van deze zelfstudie die Azure Kubernetes Service gebruikt.
+> Voor de bijgewerkte versie van deze zelf studie die gebruikmaakt van de Azure Kubernetes-service, raadpleegt [u zelf studie: implementeren en gebruiken Azure container Registry](../../aks/tutorial-kubernetes-prepare-acr.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -46,7 +46,7 @@ Een resourcegroep maken met de opdracht [az group create](/cli/azure/group#az-gr
 az group create --name myResourceGroup --location westeurope
 ```
 
-Maak een Azure Container-register met de opdracht [AZ ACR Create.](/cli/azure/acr#az-acr-create) De naam van een containerregister **moet uniek zijn**.
+Maak een Azure container Registry met de opdracht [AZ ACR Create](/cli/azure/acr#az-acr-create) . De naam van een containerregister **moet uniek zijn**.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic

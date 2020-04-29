@@ -15,10 +15,10 @@ ms.custom: mvc
 ms.date: 01/18/2019
 ms.author: spelluru
 ms.openlocfilehash: ee9a68df685095244fc9471b7d4ab0f6cee0642d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68360262"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Zelfstudie: Een lab openen in Azure DevTest Labs
@@ -31,11 +31,11 @@ In deze zelfstudie voert u de volgende acties uit:
 > * Verbinding maken met de virtuele machine
 > * De claim op de virtuele machine ongedaan maken
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="access-the-lab"></a>Toegang tot het lab
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **Alle resources** in het menu aan de linkerkant. 
 3. Selecteer **DevTest Labs** voor het resourcetype. 
 4. Selecteer het lab. 
@@ -61,12 +61,12 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
     Als u verbinding wilt maken met een Linux-VM, moet SSH- en/of RDP-toegang worden ingeschakeld voor de virtuele machine. Zie, [Extern bureaublad installeren en configureren om verbinding te maken met een virtuele Linux-machine in Azure](../virtual-machines/linux/use-remote-desktop.md) voor stappen voor het maken van verbinding met een Linux-VM via RDP. 
 
     > [!NOTE]
-    > Er zijn andere manieren om naar de pagina Virtuele machine voor uw VM te gaan. Hier zijn een aantal van hen: 
+    > Er zijn andere manieren om naar de virtuele-machine pagina voor uw VM te gaan. Hier volgen enkele voor beelden: 
     > 
-    > 1. Zoek naar alle VM's in uw abonnement. Selecteer uw VM in de lijst met VM's om naar de pagina **Virtuele machine** te gaan.
-    > 2. Navigeer naar de pagina **Resourcegroep** voor de resourcegroep. Selecteer vervolgens uw VM in de lijst met bronnen in de resourcegroep om naar de pagina **Virtuele machine** te gaan. 
+    > 1. Zoek naar alle virtuele machines in uw abonnement. Selecteer in de lijst met virtuele machines de **virtuele machine** die u naar de pagina van de VM wilt gaan.
+    > 2. Navigeer naar de pagina **resource groep** voor de resource groep. Selecteer vervolgens uw VM in de lijst met resources in de resource groep om naar de pagina **virtuele machine** te gaan. 
     >
-    > Gebruik de knop **Verbinding** maken niet op de werkbalk op de pagina **Virtuele machine** die u bereikt met behulp van de opties. Navigeer in plaats daarvan naar de pagina **Virtuele machine** vanaf de pagina **DevTest Labs** zoals in dit artikel wordt weergegeven en gebruik vervolgens de knop Verbinding **maken** op de werkbalk.
+    > Gebruik de knop **verbinden** in de werk balk op de pagina **virtuele machine** waar u toegang tot hebt, met behulp van de volgende opties. Ga in plaats daarvan naar de pagina met de **virtuele machine** op de pagina **DevTest Labs** , zoals wordt weer gegeven in dit artikel, en gebruik vervolgens de knop **verbinding maken** op de werk balk.
 
 
 ## <a name="unclaim-the-vm"></a>De claim op de virtuele machine ongedaan maken

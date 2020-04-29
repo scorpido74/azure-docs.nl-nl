@@ -1,5 +1,5 @@
 ---
-title: CLI-script - Server maken - Azure Database voor MySQL
+title: CLI-script-server maken-Azure Database for MySQL
 description: In dit CLI-voorbeeldscript wordt een Azure Database for MySQL-server gemaakt en een firewallregel op serverniveau geconfigureerd.
 author: ajlam
 ms.author: andrela
@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.topic: sample
 ms.date: 12/02/2019
 ms.openlocfilehash: a210d2d11c9d9fccd000a6dffbf1f8730bda0c8b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74765788"
 ---
 # <a name="create-a-mysql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Een MySQL-server maken en een firewallregel configureren met de Azure CLI
@@ -33,7 +33,7 @@ Gebruik de volgende opdracht om de resourcegroep en alle resources die er aan zi
 ## <a name="script-explanation"></a>Uitleg van het script
 Dit script maakt gebruik van de opdrachten die in de volgende tabel worden weergegeven:
 
-| **Opdracht** | **Opmerkingen** |
+| **Cmd** | **Opmerkingen** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [az mysql server create](/cli/azure/mysql/server#az-mysql-server-create) | Hiermee wordt een MySQL-server gemaakt waar de databases worden gehost. |

@@ -1,5 +1,5 @@
 ---
-title: Bouw uw eerste gegevensfabriek (REST)
+title: Uw eerste data factory bouwen (REST)
 description: In deze zelfstudie maakt u een Azure Data Factory-voorbeeldpijplijn met behulp van de Data Factory-REST API.
 services: data-factory
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/01/2017
 ms.openlocfilehash: 9d8b05a2268a122289c529050c75fd27dd73245b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75438955"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Zelfstudie: uw eerste Azure-gegevensfactory bouwen met de Data Factory-REST API
 > [!div class="op_single_selector"]
 > * [Overzicht en vereisten](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-> * [Powershell](data-factory-build-your-first-pipeline-using-powershell.md)
+> * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager-sjabloon](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST-API](data-factory-build-your-first-pipeline-using-rest-api.md)
 >
@@ -51,13 +51,13 @@ De pijplijn in deze zelfstudie heeft één activiteit: **HDInsight-componentacti
 * Volg de instructies in [dit artikel](../../active-directory/develop/howto-create-service-principal-portal.md) voor het volgende:
   1. Maak een webtoepassing met de naam **ADFGetStartedApp** in Azure Active Directory.
   2. Haal de **client-id** en **geheime sleutel** op.
-  3. Krijg **tenant-ID**.
+  3. **Tenant-id**ophalen.
   4. Wijs de **ADFGetStartedApp**-toepassing toe aan de rol **Inzender Data Factory**.
-* Azure [PowerShell](/powershell/azure/overview)installeren .
+* Installeer [Azure PowerShell](/powershell/azure/overview).
 * Start **PowerShell** en voer de volgende opdracht uit. Houd Azure PowerShell open tot het einde van deze zelfstudie. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren.
-  1. Voer **Connect-AzAccount** uit en voer de gebruikersnaam en het wachtwoord in die u gebruikt om u aan te melden bij de Azure-portal.
-  2. Voer **Get-AzSubscription** uit om alle abonnementen voor dit account te bekijken.
-  3. **Run Get-azsubscription -SubscriptionName NameOfAzureSubscription | Stel AzContext in** om het abonnement te selecteren waarmee u wilt werken. Vervang **NameOfAzureSubscription** door de naam van uw Azure-abonnement.
+  1. Voer **Connect-AzAccount** uit en voer de gebruikers naam en het wacht woord in die u gebruikt om u aan te melden bij de Azure Portal.
+  2. Voer **Get-AzSubscription** uit om alle abonnementen voor dit account weer te geven.
+  3. Voer **Get-AzSubscription-Subscriptionname NameOfAzureSubscription | Stel-AzContext** in om het abonnement te selecteren waarmee u wilt werken. Vervang **NameOfAzureSubscription** door de naam van uw Azure-abonnement.
 * Maak een Azure-resourcegroep met de naam **ADFTutorialResourceGroup** door de volgende opdracht uit te voeren in PowerShell:
 
     ```powershell
@@ -84,7 +84,7 @@ Maak de volgende JSON-bestanden in de map waar curl.exe staat.
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> Vervang **accountname** en **accountkey** door de naam en sleutel van uw Azure Storage-account. Zie [Toegangssleutels voor opslagaccount beheren](../../storage/common/storage-account-keys-manage.md)voor meer informatie over het ophalen van uw opslagtoegangssleutel.
+> Vervang **accountname** en **accountkey** door de naam en sleutel van uw Azure Storage-account. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md)voor meer informatie over het verkrijgen van uw toegangs sleutel voor opslag.
 >
 >
 
@@ -129,10 +129,10 @@ De volgende tabel bevat beschrijvingen van de JSON-eigenschappen die in het code
 Houd rekening met de volgende punten:
 
 * Met de bovenstaande JSON maakt Data Factory voor u een HDInsight-cluster **op basis van Linux**. Zie [Gekoppelde on-demand HDInsight-service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) voor meer informatie.
-* U **uw eigen HDInsight-cluster** gebruiken in plaats van een on-demand HDInsight-cluster te gebruiken. Zie [Gekoppelde HDInsight-service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) voor meer informatie.
+* U kunt **uw eigen hdinsight-cluster** gebruiken in plaats van een on-demand hdinsight-cluster te gebruiken. Zie [Gekoppelde HDInsight-service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) voor meer informatie.
 * Het HDInsight-cluster maakt een **standaardcontainer** in de blobopslag die u hebt opgegeven in de JSON (**linkedServiceName**). HDInsight verwijdert deze container niet wanneer het cluster wordt verwijderd. Dit gedrag is standaard. Met een gekoppelde on-demand HDInsight-service wordt er steeds een HDInsight-cluster gemaakt wanneer er een segment wordt verwerkt, tenzij er een bestaand livecluster is (**timeToLive**). Het cluster wordt verwijderd wanneer het verwerken is voltooid.
 
-    Naarmate er meer segmenten worden verwerkt, verschijnen er meer containers in uw Azure-blobopslag. Als u deze niet nodig hebt voor het oplossen van problemen met taken, kunt u ze verwijderen om de opslagkosten te verlagen. De namen van deze containers volgen een patroon: "adf**yourdatafactoryname**-**linkedservicename**-datetimestamp". Gebruik hulpprogramma's zoals [Microsoft Opslagverkenner](https://storageexplorer.com/) om containers in uw Azure-blobopslag te verwijderen.
+    Naarmate er meer segmenten worden verwerkt, verschijnen er meer containers in uw Azure-blobopslag. Als u deze niet nodig hebt voor het oplossen van problemen met taken, kunt u ze verwijderen om de opslagkosten te verlagen. De namen van deze containers volgen een patroon: ADF**naamvanuwgegevensfactory**-**linkedservicename**-/tijdstempel.. Gebruik hulpprogramma's zoals [Microsoft Opslagverkenner](https://storageexplorer.com/) om containers in uw Azure-blobopslag te verwijderen.
 
 Zie [Gekoppelde on-demand HDInsight-service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) voor meer informatie.
 
@@ -306,7 +306,7 @@ In deze stap maakt u een Azure-gegevensfactory met de naam **FirstDataFactoryRES
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
-3. Bekijk de resultaten. Als de gegevensfabriek is gemaakt, ziet u de JSON voor de gegevensfabriek in de **resultaten**; anders ziet u een foutbericht.
+3. Bekijk de resultaten. Als de data factory is gemaakt, ziet u de JSON voor de data factory in de **resultaten**. anders wordt er een fout bericht weer gegeven.
 
     ```powershell
     Write-Host $results
@@ -320,7 +320,7 @@ Houd rekening met de volgende punten:
   3. Voer de volgende twee opdrachten uit voor het aanroepen van de REST API om de gegevensfactory te maken en de resultaten van de bewerking af te drukken.
 * Als u Data Factory-exemplaren wilt maken, moet u bijdrager/beheerder zijn van het Azure-abonnement
 * De naam van de gegevensfactory wordt in de toekomst mogelijk geregistreerd als DNS-naam en wordt daarmee ook voor iedereen zichtbaar.
-* Als u de fout ontvangt: "**Dit abonnement is niet geregistreerd om naamruimte Microsoft.DataFactory te gebruiken**", doe dan een van de volgende handelingen en probeer opnieuw te publiceren:
+* Als u de fout melding '**dit abonnement is niet geregistreerd voor gebruik van de naam ruimte micro soft. DataFactory**' ontvangt, voert u een van de volgende handelingen uit en probeert u opnieuw te publiceren:
 
   * Voer in Azure PowerShell de volgende opdracht uit om de Data Factory-provider te registreren:
 
@@ -458,7 +458,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 ```
 
 > [!IMPORTANT]
-> Het maken van een on-demand HDInsight-cluster duurt normaal gesproken enige tijd (ongeveer 20 minuten). Verwacht daarom dat de pijplijn **ongeveer 30 minuten** nodig heeft om het segment te verwerken.
+> Het maken van een on-demand HDInsight-cluster duurt normaal gesproken enige tijd (ongeveer 20 minuten). Daarom moet de pijp lijn **ongeveer 30 minuten** duren om het segment te verwerken.
 >
 >
 

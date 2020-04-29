@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Aangepaste gebeurtenissen verzenden naar hybride verbinding - Gebeurtenisraster'
-description: 'Zelfstudie: Gebruik Azure Event Grid en Azure CLI om een onderwerp te publiceren en u te abonneren op die gebeurtenis. Een hybride verbinding wordt gebruikt voor het eindpunt.'
+title: 'Zelf studie: aangepaste gebeurtenissen naar hybride verbinding verzenden-Event Grid'
+description: 'Zelf studie: gebruik Azure Event Grid en Azure CLI om een onderwerp te publiceren en u te abonneren op deze gebeurtenis. Een hybride verbinding wordt gebruikt voor het eindpunt.'
 services: event-grid
 keywords: ''
 author: spelluru
@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: 2773d06fdfc606faaab88340fc2ef9685bba21f9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73720701"
 ---
-# <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Zelfstudie: Aangepaste gebeurtenissen routeren naar hybride verbindingen voor Azure Relay met Azure CLI en gebeurtenisraster
+# <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Zelf studie: aangepaste gebeurtenissen door sturen naar Azure Relay Hybride verbindingen met Azure CLI en Event Grid
 
 Azure Event Grid is een gebeurtenisservice voor de cloud. Azure Relay Hybrid Connections is een van de ondersteunde gebeurtenis-handlers. U gebruikt hybride verbindingen als gebeurtenis-handler wanneer u gebeurtenissen uit toepassingen moet verwerken die geen openbaar eindpunt hebben. Deze toepassingen bevinden zich mogelijk in uw bedrijfsnetwerk. In dit artikel gebruikt u de Azure CLI om een aangepast onderwerp te maken, u op het aangepaste onderwerp te abonneren en de gebeurtenis te activeren om het resultaat weer te geven. U verstuurt de gebeurtenissen naar de hybride verbinding.
 
@@ -51,7 +51,7 @@ az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 
 ## <a name="subscribe-to-a-custom-topic"></a>Abonneren op een aangepast onderwerp
 
-U abonneert u op een evenementrasteronderwerp om Event Grid te vertellen welke gebeurtenissen u wilt bijhouden. In het volgende voorbeeld wordt u geabonneerd op het aangepaste onderwerp dat u hebt gemaakt en wordt de resource-id van de hybrideverbinding voor het eindpunt doorgegeven. De id van hybride verbinding heeft deze indeling:
+U abonneert u op een event grid-onderwerp om te zien Event Grid welke gebeurtenissen u wilt bijhouden. In het volgende voor beeld wordt een abonnement genomen op het aangepaste onderwerp dat u hebt gemaakt en wordt de resource-ID van de hybride verbinding voor het eind punt door gegeven. De id van hybride verbinding heeft deze indeling:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Relay/namespaces/<relay-namespace>/hybridConnections/<hybrid-connection-name>`
 
@@ -80,7 +80,7 @@ U ziet dat er een [vervaldatum](concepts.md#event-subscription-expiration) is in
 
 U hebt een toepassing nodig die gebeurtenissen uit de hybride verbinding kan ophalen. Het [voorbeeld van een hybride verbindingsconsumer voor C# van Microsoft Azure Event Grid](https://github.com/Azure-Samples/event-grid-dotnet-hybridconnection-destination) voert die bewerking uit. U hebt de vereiste stappen al uitgevoerd.
 
-1. Zorg ervoor dat je Visual Studio 2019 of hoger hebt.
+1. Zorg ervoor dat u Visual Studio 2019 of hoger hebt.
 
 1. Kloon de opslagplaats naar uw lokale computer.
 

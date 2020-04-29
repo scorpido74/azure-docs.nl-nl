@@ -1,32 +1,32 @@
 ---
-title: Gebeurtenisfiltering voor Azure Event Grid
-description: Beschrijft hoe u gebeurtenissen filtert bij het maken van een Azure Event Grid-abonnement.
+title: Gebeurtenis filtering voor Azure Event Grid
+description: Hierin wordt beschreven hoe u gebeurtenissen filtert bij het maken van een Azure Event Grid-abonnement.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/21/2019
+ms.date: 04/28/2020
 ms.author: spelluru
-ms.openlocfilehash: ce1bb3760ae73a9eaeee3cde957cc94841ebdf29
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: ab5dd716253875e4a992b94a4e143cb3e806a4b0
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731943"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509649"
 ---
-# <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Inzicht in gebeurtenisfiltering voor eventgrid-abonnementen
+# <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Gebeurtenis filters begrijpen voor Event Grid-abonnementen
 
-In dit artikel worden de verschillende manieren beschreven waarop u filteren welke gebeurtenissen naar uw eindpunt worden verzonden. Wanneer u een gebeurtenisabonnement maakt, hebt u drie opties voor het filteren:
+In dit artikel worden de verschillende manieren beschreven waarop u kunt filteren welke gebeurtenissen naar uw eind punt worden verzonden. Wanneer u een gebeurtenis abonnement maakt, hebt u drie opties voor het filteren:
 
 * Gebeurtenistypen
 * Onderwerp begint met of eindigt met
-* Geavanceerde velden en operatoren
+* Geavanceerde velden en Opera tors
 
-## <a name="event-type-filtering"></a>Filtering van gebeurtenistype
+## <a name="event-type-filtering"></a>Filter gebeurtenis type
 
-Standaard worden alle [gebeurtenistypen](event-schema.md) voor de gebeurtenisbron naar het eindpunt verzonden. U besluiten om alleen bepaalde gebeurtenistypen naar uw eindpunt te sturen. U bijvoorbeeld een melding krijgen van updates voor uw resources, maar niet op de hoogte worden gesteld van andere bewerkingen, zoals verwijderingen. Filter in dat geval `Microsoft.Resources.ResourceWriteSuccess` op het gebeurtenistype. Geef een array met de `All` gebeurtenistypen of geef op om alle gebeurtenistypen voor de gebeurtenisbron op te halen.
+Standaard worden alle [gebeurtenis typen](event-schema.md) voor de gebeurtenis bron naar het eind punt verzonden. U kunt ervoor kiezen om alleen bepaalde gebeurtenis typen naar uw eind punt te verzenden. U kunt bijvoorbeeld een melding ontvangen over updates voor uw resources, maar niet op de hoogte worden gesteld van andere bewerkingen, zoals verwijderingen. In dat geval filtert u op `Microsoft.Resources.ResourceWriteSuccess` het gebeurtenis type. Geef een matrix met de gebeurtenis typen op, of `All` Geef op om alle gebeurtenis typen voor de gebeurtenis bron op te halen.
 
-De syntaxis van JSON voor filteren op gebeurtenistype is:
+De JSON-syntaxis voor filteren op gebeurtenis type is:
 
 ```json
 "filter": {
@@ -37,13 +37,13 @@ De syntaxis van JSON voor filteren op gebeurtenistype is:
 }
 ```
 
-## <a name="subject-filtering"></a>Onderwerpfiltering
+## <a name="subject-filtering"></a>Filteren op onderwerp
 
-Geef voor eenvoudige filtering op onderwerp een begin- of eindwaarde voor het onderwerp op. U bijvoorbeeld opgeven met `.txt` welke het onderwerp eindigt om alleen gebeurtenissen te krijgen die betrekking hebben op het uploaden van een tekstbestand naar een opslagaccount. U het onderwerp filteren `/blobServices/default/containers/testcontainer` om alle gebeurtenissen voor die container op te halen, maar niet met andere containers in het opslagaccount.
+Geef voor eenvoudig filteren op onderwerp een begin-of eind waarde voor het onderwerp op. U kunt bijvoorbeeld opgeven dat het onderwerp eindigt met `.txt` om alleen gebeurtenissen op te halen met betrekking tot het uploaden van een tekst bestand naar een opslag account. U kunt ook filteren of het onderwerp begint met `/blobServices/default/containers/testcontainer` om alle gebeurtenissen voor die container op te halen, maar niet andere containers in het opslag account.
 
-Wanneer u gebeurtenissen publiceert naar aangepaste onderwerpen, maakt u onderwerpen voor uw evenementen waarmee abonnees gemakkelijk kunnen weten of ze geïnteresseerd zijn in het evenement. Abonnees gebruiken de eigenschap onderwerp om gebeurtenissen te filteren en te routeren. Overweeg het pad toe te voegen voor de plaats waar de gebeurtenis is gebeurd, zodat abonnees kunnen filteren op segmenten van dat pad. Met het pad kunnen abonnees gebeurtenissen in beperkte of brede lijnen filteren. Als u een pad `/A/B/C` met drie segmenten opgeeft zoals in `/A` het onderwerp, kunnen abonnees filteren op het eerste segment om een brede set gebeurtenissen te krijgen. Die abonnees krijgen evenementen `/A/B/C` met `/A/D/E`onderwerpen als of . Andere abonnees kunnen `/A/B` filteren op een smallere set gebeurtenissen te krijgen.
+Bij het publiceren van gebeurtenissen naar aangepaste onderwerpen maakt u onderwerpen voor uw evenementen waarmee abonnees eenvoudig kunnen zien of ze geïnteresseerd zijn in de gebeurtenis. Abonnees gebruiken de eigenschap Subject om gebeurtenissen te filteren en te routeren. Overweeg het pad toe te voegen voor waar de gebeurtenis zich voordeed, zodat abonnees kunnen filteren op segmenten van dat pad. Met het pad kunnen abonnees de gebeurtenissen op een smalle of brede manier filteren. Als u een drie segment pad opgeeft, `/A/B/C` zoals in het onderwerp, kunnen abonnees filteren op het eerste `/A` segment om een grote set gebeurtenissen te verkrijgen. Deze abonnees ontvangen gebeurtenissen met onderwerpen als `/A/B/C` of `/A/D/E`. Andere abonnees kunnen filteren op `/A/B` om een smalle set gebeurtenissen te verkrijgen.
 
-De syntaxis JSON voor filteren op onderwerp is:
+De JSON-syntaxis voor filteren op onderwerp is:
 
 ```json
 "filter": {
@@ -55,13 +55,13 @@ De syntaxis JSON voor filteren op onderwerp is:
 
 ## <a name="advanced-filtering"></a>Geavanceerd filteren
 
-Als u wilt filteren op waarden in de gegevensvelden en de vergelijkingsoperator wilt opgeven, gebruikt u de geavanceerde filteroptie. Bij geavanceerde filtering geeft u het volgende op:
+Als u wilt filteren op waarden in de gegevens velden en de vergelijkings operator wilt opgeven, gebruikt u de geavanceerde filter optie. In geavanceerde filtering geeft u het volgende op:
 
-* type operator - Het type vergelijking.
-* toets - Het veld in de gebeurtenisgegevens die u gebruikt voor het filteren. Het kan een getal zijn, booleaanof touw.
-* waarden - De waarde of waarden die moeten worden vergeleken met de sleutel.
+* operator type: het type vergelijking.
+* sleutel: het veld in de gebeurtenis gegevens die u gebruikt voor het filteren van. Dit kan een getal, een Booleaanse waarde of een teken reeks zijn.
+* waarden: de waarde of waarden die moeten worden vergeleken met de sleutel.
 
-Als u één filter met meerdere waarden opgeeft, wordt een **OK-bewerking** uitgevoerd, zodat de waarde van het sleutelveld een van deze waarden moet zijn. Hier volgt een voorbeeld:
+Als u één filter met meerdere waarden opgeeft, wordt een **of** -bewerking uitgevoerd, zodat de waarde van het sleutel veld een van deze waarden moet zijn. Hier volgt een voorbeeld:
 
 ```json
 "advancedFilters": [
@@ -76,7 +76,7 @@ Als u één filter met meerdere waarden opgeeft, wordt een **OK-bewerking** uitg
 ]
 ```
 
-Als u meerdere verschillende filters opgeeft, wordt een **AND-bewerking** uitgevoerd, zodat aan elke filtervoorwaarde moet worden voldaan. Hier volgt een voorbeeld: 
+Als u meerdere verschillende filters opgeeft, wordt er een **en** -bewerking uitgevoerd, dus er moet aan elke filter voorwaarde worden voldaan. Hier volgt een voorbeeld: 
 
 ```json
 "advancedFilters": [
@@ -97,49 +97,50 @@ Als u meerdere verschillende filters opgeeft, wordt een **AND-bewerking** uitgev
 ]
 ```
 
-### <a name="operator"></a>Operator
+### <a name="operators"></a>Operators
 
-De beschikbare operatoren voor nummers zijn:
+De beschik bare Opera tors voor **getallen** zijn:
 
-* AantalGroter dan
-* NumberGreaterThanOrEquals NumberGreaterThanOrEquals NumberGreaterThanOrEquals NumberGreater
-* Numberlessthan
-* Numberlessthanorequals
+* NumberGreaterThan
+* NumberGreaterThanOrEquals
+* NumberLessThan
+* NumberLessThanOrEquals
 * NumberIn
-* NummerNotin
+* NumberNotIn
 
-De beschikbare operator voor booleleans is: BoolEquals
+De beschik bare operator voor **Booleaanse** waarden is: 
+- BoolEquals
 
-De beschikbare operatoren voor tekenreeksen zijn:
+De beschik bare Opera tors voor **teken reeksen** zijn:
 
-* Tekenreeksbevat
+* StringContains
 * StringBeginsWith
 * StringEndsWith
-* Stringin
-* StringNotin
+* StringIn
+* StringNotIn
 
-Alle snaarvergelijkingen zijn case-insensitve.
+Alle teken reeks vergelijkingen zijn **niet** hoofdletter gevoelig.
 
 ### <a name="key"></a>Sleutel
 
-Gebruik de volgende waarden voor gebeurtenissen in het schema gebeurtenisraster voor gebeurtenissen:
+Voor gebeurtenissen in het Event Grid schema gebruikt u de volgende waarden voor de sleutel:
 
 * Id
 * Onderwerp
 * Onderwerp
-* EventType (EventType)
-* Gegevensversie
-* Gebeurtenisgegevens (zoals Data.key1)
+* Type
+* DataVersion
+* Gebeurtenis gegevens (zoals data. Key1)
 
-Voor gebeurtenissen in het cloudgebeurtenissenschema gebruikt u de volgende waarden voor de sleutel:
+Voor gebeurtenissen in het schema voor Cloud gebeurtenissen gebruikt u de volgende waarden voor de sleutel:
 
-* EventId (EventId)
+* Gebeurtenis
 * Bron
-* EventType (EventType)
-* EventTypeVersie
-* Gebeurtenisgegevens (zoals Data.key1)
+* Type
+* EventTypeVersion
+* Gebeurtenis gegevens (zoals data. Key1)
 
-Gebruik voor het aangepaste invoerschema de velden gebeurtenisgegevens (zoals Data.key1).
+Voor het aangepaste invoer schema gebruikt u de velden voor gebeurtenis gegevens (zoals data. Key1).
 
 ### <a name="values"></a>Waarden
 
@@ -154,13 +155,162 @@ De waarden kunnen zijn:
 
 Geavanceerde filtering heeft de volgende beperkingen:
 
-* Vijf geavanceerde filters per gebeurtenisrasterabonnement
-* 512 tekens per tekenreekswaarde
-* Vijf waarden voor **in** en **niet in** operators
+* Vijf geavanceerde filters per Event grid-abonnement
+* 512 tekens per teken reeks waarde
+* Vijf waarden voor **in** en **niet in** Opera tors
 
 Dezelfde sleutel kan in meer dan één filter worden gebruikt.
 
+### <a name="examples"></a>Voorbeelden
+
+### <a name="stringcontains"></a>StringContains
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringContains",
+    "key": "data.key1",
+    "values": [
+        "microsoft", 
+        "azure"
+    ]
+}]
+```
+
+### <a name="stringbeginswith"></a>StringBeginsWith
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringBeginsWith",
+    "key": "data.key1",
+    "values": [
+        "event", 
+        "grid"
+    ]
+}]
+```
+
+### <a name="stringendswith"></a>StringEndsWith
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringEndsWith",
+    "key": "data.key1",
+    "values": [
+        "jpg", 
+        "jpeg", 
+        "png"
+    ]
+}]
+```
+
+### <a name="stringin"></a>StringIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringIn",
+    "key": "data.key1",
+    "values": [
+        "exact", 
+        "string", 
+        "matches"
+    ]
+}]
+```
+
+### <a name="stringnotin"></a>StringNotIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringNotIn",
+    "key": "data.key1",
+    "values": [
+        "aws", 
+        "bridge"
+    ]
+}]
+```
+
+### <a name="numberin"></a>NumberIn
+
+```json
+
+"advancedFilters": [{
+    "operatorType": "NumberIn",
+    "key": "data.counter",
+    "values": [
+        5,
+        1
+    ]
+}]
+
+```
+
+### <a name="numbernotin"></a>NumberNotIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberNotIn",
+    "key": "data.counter",
+    "values": [
+        41,
+        0,
+        0
+    ]
+}]
+```
+
+### <a name="numberlessthan"></a>NumberLessThan
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberLessThan",
+    "key": "data.counter",
+    "value": 100
+}]
+```
+
+### <a name="numbergreaterthan"></a>NumberGreaterThan
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberGreaterThan",
+    "key": "data.counter",
+    "value": 20
+}]
+```
+
+### <a name="numberlessthanorequals"></a>NumberLessThanOrEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberLessThanOrEquals",
+    "key": "data.counter",
+    "value": 100
+}]
+```
+
+### <a name="numbergreaterthanorequals"></a>NumberGreaterThanOrEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberGreaterThanOrEquals",
+    "key": "data.counter",
+    "value": 30
+}]
+```
+
+### <a name="boolequals"></a>BoolEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "BoolEquals",
+    "key": "data.isEnabled",
+    "value": true
+}]
+```
+
+
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Gebeurtenissen filteren voor gebeurtenisraster voor](how-to-filter-events.md)meer informatie over het filteren van gebeurtenissen met PowerShell en Azure CLI.
-* Zie [Aangepaste gebeurtenissen maken en routeren met Azure Event Grid](custom-event-quickstart.md)om snel aan de slag te gaan met gebeurtenisraster.
+* Zie [gebeurtenissen filteren voor Event grid voor](how-to-filter-events.md)meer informatie over het filteren van gebeurtenissen met Power shell en Azure cli.
+* Zie [aangepaste gebeurtenissen maken en routeren met Azure Event grid](custom-event-quickstart.md)om snel aan de slag te gaan met Event grid.

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Uw domein en subdomein hosten - Azure DNS'
-description: In dit artikel leest u hoe u Azure DNS configureert om uw DNS-zones te hosten.
+title: 'Zelf studie: uw domein en subdomein hosten-Azure DNS'
+description: In dit artikel vindt u informatie over het configureren van Azure DNS voor het hosten van uw DNS-zones.
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: 8f29a2bbe0eb392927dd111b13e2260111ddd18e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79238970"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Zelfstudie: uw domein hosten in Azure DNS
@@ -30,17 +30,17 @@ In deze zelfstudie leert u het volgende:
 > * Controleren of de delegatie werkt
 
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet een domeinnaam beschikbaar hebben om mee te testen waarmee u hosten in Azure DNS. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
+U moet een domein naam hebben om te kunnen testen met die u in Azure DNS kunt hosten. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
 
-Het voorbeelddomein dat voor deze zelfstudie wordt gebruikt, is contoso.net, maar gebruikt uw eigen domeinnaam.
+Het voorbeeld domein dat voor deze zelf studie wordt gebruikt, is contoso.net, maar u kunt uw eigen domein naam gebruiken.
 
 ## <a name="create-a-dns-zone"></a>Een DNS-zone maken
 
-1. Ga naar de [Azure-portal](https://portal.azure.com/) om een DNS-zone te maken. Zoek naar **DNS-zones**en selecteer deze.
+1. Ga naar de [Azure Portal](https://portal.azure.com/) om een DNS-zone te maken. Zoek en selecteer **DNS-zones**.
 
    ![DNS-zone](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
@@ -60,7 +60,7 @@ Voordat u uw DNS-zone naar Azure DNS kunt delegeren, moet u weten wat de naamser
 
 1. Nu de DNS-zone is gemaakt, selecteert u **Alle resources** in het deelvenster **Favorieten** in Azure Portal. Selecteer op de pagina **Alle resources** uw DNS-zone. Als het abonnement dat u hebt geselecteerd al verschillende resources bevat, kunt u uw domeinnaam invoeren in het vak **Filteren op naam** om gemakkelijk toegang te krijgen tot de toepassingsgateway. 
 
-1. U vindt de naamservers op de pagina DNS-zone. In dit voorbeeld is aan de zone contoso.net naamservers toegewezen gekregen *ns1-01.azure-dns.com,* *ns2-01.azure-dns.net,* *ns3-01.azure-dns.org*en *ns4-01.azure-dns.info*:
+1. U vindt de naamservers op de pagina DNS-zone. In dit voor beeld is aan de zone contoso.net de naam servers *ns1-01.Azure-DNS.com*, *ns2-01.Azure-DNS.net*, *ns3-01.Azure-DNS.org*en *ns4-01.Azure-DNS.info*toegewezen:
 
    ![Lijst met naamservers](./media/dns-delegate-domain-azure-dns/viewzonens500.png)
 

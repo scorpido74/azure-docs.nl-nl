@@ -11,13 +11,13 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2019
 ms.author: eamono
 ms.openlocfilehash: 9f99ce5862850c2453e9e72241fff77fe091616f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "65521433"
 ---
-# <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Zelfstudie: Azure Automation integreren met Event Grid en Microsoft Teams
+# <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Zelf studie: Azure Automation integreren met Event Grid en micro soft teams
 
 In deze zelfstudie leert u het volgende:
 
@@ -28,7 +28,7 @@ In deze zelfstudie leert u het volgende:
 > * Hiermee wordt een Event Grid-abonnement gemaakt.
 > * Een virtuele machine maken die het runbook activeert.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -53,7 +53,7 @@ Voor het volgen van deze zelfstudie is een [Azure Automation-account](../automat
 4. Selecteer **Importeren** en noem het runbook **Watch VMWrite**.
 
 5. Nadat het is geïmporteerd, selecteert u **Bewerken** om de runbookbron weer te geven. 
-6. Werk de regel 74 in `Tag` het `Tags`script bij om te gebruiken in plaats van .
+6. Werk de regel 74 in het script bij om `Tag` te gebruiken `Tags`in plaats van.
 
     ```powershell
     Update-AzureRmVM -ResourceGroupName $VMResourceGroup -VM $VM -Tag $Tag | Write-Verbose
@@ -70,7 +70,7 @@ Voor het volgen van deze zelfstudie is een [Azure Automation-account](../automat
 
 3. Voer **AzureAutomationIntegration** in voor de naam en selecteer **Maken**.
 
-4. Kopieer de webhook-URL naar het klembord en sla deze op. De webhook-URL wordt gebruikt voor het verzenden van gegevens naar Microsoft Teams.
+4. Kopieer de webhook-URL naar het klem bord en sla deze op. De webhook-URL wordt gebruikt voor het verzenden van gegevens naar Microsoft Teams.
 
 5. Selecteer **Gereed** om de webhook op te slaan.
 
@@ -105,7 +105,7 @@ Voor het volgen van deze zelfstudie is een [Azure Automation-account](../automat
     4. Schakel in de vervolgkeuzelijst **Gedefinieerde gebeurtenistypen** alle opties uit behalve **Schrijven resource gelukt**.
 
         > [!NOTE] 
-        > Azure Resource Manager maakt momenteel geen onderscheid tussen Maken en bijwerken, dus het implementeren van deze zelfstudie voor alle Microsoft.Resources.ResourceWriteSuccess-gebeurtenissen in uw Azure-abonnement kan leiden tot een hoog aantal oproepen.
+        > Azure Resource Manager maakt momenteel geen onderscheid tussen Create en update. het implementeren van deze zelf studie voor alle gebeurtenissen van micro soft. resources. ResourceWriteSuccess in uw Azure-abonnement kan leiden tot een groot aantal aanroepen.
     1. Selecteer **Webhook** voor **Eindpunttype**.
     2. Klik op **Een eindpunt selecteren**. Plak op de pagina **Webhook selecteren** die wordt geopend, de webhook-URL die u hebt gemaakt voor het runbook Watch-VMWrite.
     3. Voer onder **FILTERS** het abonnement en de resourcegroep in waarin u wilt zoeken naar de nieuwe virtuele machines die zijn gemaakt. Dit ziet er als volgt uit: `/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachines`

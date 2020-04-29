@@ -7,15 +7,15 @@ ms.topic: include
 ms.author: rgarcia
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 8bef7b12f4d9d9a63e41441ef22b029b2ee5afd1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74276951"
 ---
-## <a name="putting-everything-together"></a>Alles in elkaar zetten
+## <a name="putting-everything-together"></a>Alles samen zetten
 
-Hier is hoe `MainActivity` het volledige klassenbestand eruit moet zien, nadat alle verschillende elementen zijn samengesteld. U het gebruiken als een verwijzing om te vergelijken met uw eigen bestand, en ter plaatse als je kan verschillen links.
+Hier ziet u hoe het `MainActivity` volledige klassen bestand eruit moet zien, nadat alle verschillende elementen samen zijn geplaatst. U kunt deze gebruiken als referentie om te vergelijken met uw eigen bestand, en als er verschillen zijn opgetreden.
 
 ```java
 package com.example.myfirstapp;
@@ -244,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u gezien hoe u een nieuwe Android-app maken die ARCore-functionaliteit integreert met Azure Spatial Anchors. Ga voor meer informatie over de Azure Spatial Anchors-bibliotheek door naar de handleiding over het maken en vinden van ankers.
+In deze zelf studie hebt u gezien hoe u een nieuwe Android-app kunt maken die de ARCore-functionaliteit integreert met Azure spatiale ankers. Ga voor meer informatie over de Azure Spatial Anchors-bibliotheek door naar de handleiding over het maken en vinden van ankers.
 
 > [!div class="nextstepaction"]
 > [Create and locate anchors using Azure Spatial Anchors](/azure/spatial-anchors/create-locate-anchors-overview) (Ankers maken en vinden met Azure Spatial Anchors)

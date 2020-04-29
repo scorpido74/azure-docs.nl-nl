@@ -1,38 +1,38 @@
 ---
-title: Zelfstudie - parameters toevoegen aan sjabloon
-description: Voeg parameters toe aan uw Azure Resource Manager-sjabloon om deze herbruikbaar te maken.
+title: Zelf studie-para meters aan sjabloon toevoegen
+description: Voeg para meters toe aan uw Azure Resource Manager sjabloon om deze opnieuw te kunnen bruikbaar maken.
 author: mumian
 ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: de7ec961672db2f3120e00f1a42b33f71e7ab092
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80437819"
 ---
-# <a name="tutorial-add-parameters-to-your-arm-template"></a>Zelfstudie: parameters toevoegen aan uw ARM-sjabloon
+# <a name="tutorial-add-parameters-to-your-arm-template"></a>Zelf studie: para meters toevoegen aan uw ARM-sjabloon
 
-In de [vorige zelfstudie](template-tutorial-add-resource.md)hebt u geleerd hoe u een opslagaccount aan de sjabloon toevoegen en implementeren. In deze zelfstudie leert u hoe u de armsjabloon (Azure Resource Manager) verbeteren door parameters toe te voegen. Deze tutorial duurt ongeveer **14 minuten** om te voltooien.
+In de [vorige zelf studie](template-tutorial-add-resource.md)hebt u geleerd hoe u een opslag account toevoegt aan de sjabloon en hoe u deze implementeert. In deze zelf studie leert u hoe u de sjabloon voor de Azure Resource Manager (ARM) kunt verbeteren door para meters toe te voegen. Deze zelf studie duurt ongeveer **14 minuten** .
 
 ## <a name="prerequisites"></a>Vereisten
 
-We raden u aan de [zelfstudie over resources in](template-tutorial-add-resource.md)te vullen, maar dit is niet vereist.
+U wordt aangeraden de [zelf studie over resources](template-tutorial-add-resource.md)te volt ooien, maar dit is niet vereist.
 
-U moet beschikken over Visual Studio Code met de extensie Hulpmiddelen voor ResourceBeheer en Azure PowerShell of Azure CLI. Zie [sjabloongereedschappen voor](template-tutorial-create-first-template.md#get-tools)meer informatie .
+U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en een Azure PowerShell of Azure CLI. Zie voor meer informatie [sjabloon hulpprogramma's](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Sjabloon bekijken
+## <a name="review-template"></a>Sjabloon controleren
 
-Aan het einde van de vorige zelfstudie had uw sjabloon de volgende JSON:
+Aan het einde van de vorige zelf studie had uw sjabloon de volgende JSON:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json":::
 
-Je hebt misschien gemerkt dat er een probleem is met deze sjabloon. De naam van het opslagaccount is hardgecodeerd. U deze sjabloon alleen gebruiken om elke keer hetzelfde opslagaccount te implementeren. Als u een opslagaccount met een andere naam wilt implementeren, moet u een nieuwe sjabloon maken, wat uiteraard geen praktische manier is om uw implementaties te automatiseren.
+Mogelijk hebt u gemerkt dat er een probleem is met deze sjabloon. De naam van het opslag account is vastgelegd in een vaste code. U kunt deze sjabloon alleen gebruiken om elk keer hetzelfde opslag account te implementeren. Als u een opslag account met een andere naam wilt implementeren, moet u een nieuwe sjabloon maken. Dit is uiteraard geen praktische manier om uw implementaties te automatiseren.
 
 ## <a name="make-template-reusable"></a>Sjabloon herbruikbaar maken
 
-Als u uw sjabloon herbruikbaar wilt maken, voegen we een parameter toe die u gebruiken om een naam van een opslagaccount door te geven. De gemarkeerde JSON in het volgende voorbeeld geeft aan wat er in uw sjabloon is gewijzigd. De parameter **storageName** wordt geïdentificeerd als een tekenreeks. De maximale lengte is ingesteld op 24 tekens om te voorkomen dat namen die te lang zijn.
+Als u uw sjabloon opnieuw wilt gebruiken, gaan we een para meter toevoegen waarmee u de naam van een opslag account kunt door geven. De gemarkeerde JSON in het volgende voor beeld laat zien wat er in uw sjabloon is gewijzigd. De para meter voor de **opslag** -id wordt geïdentificeerd als een teken reeks. De maximale lengte is ingesteld op 24 tekens om te voor komen dat namen te lang zijn.
 
 Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
 
@@ -40,9 +40,9 @@ Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 
-Laten we de sjabloon implementeren. In het volgende voorbeeld wordt de sjabloon geïmplementeerd met Azure CLI of PowerShell. U ziet dat u de naam van het opslagaccount opgeeft als een van de waarden in de opdracht implementatie. Geef voor de naam van het opslagaccount dezelfde naam op die u in de vorige zelfstudie hebt gebruikt.
+We gaan de sjabloon implementeren. In het volgende voor beeld wordt de sjabloon geïmplementeerd met Azure CLI of Power shell. U ziet dat u de naam van het opslag account opgeeft als een van de waarden in de implementatie opdracht. Geef voor de naam van het opslag account dezelfde naam op die u in de vorige zelf studie hebt gebruikt.
 
-Zie [Resourcegroep maken](template-tutorial-create-first-template.md#create-resource-group)als u de resourcegroep niet hebt gemaakt. In het voorbeeld wordt ervan uitgegaan dat u de **variabele templateFile** hebt ingesteld op het pad naar het sjabloonbestand, zoals wordt weergegeven in de [eerste zelfstudie.](template-tutorial-create-first-template.md#deploy-template)
+Als u de resource groep nog niet hebt gemaakt, raadpleegt u [resource groep maken](template-tutorial-create-first-template.md#create-resource-group). In het voor beeld wordt ervan uitgegaan dat u de **templateFile** -variabele hebt ingesteld op het pad naar het sjabloon bestand, zoals wordt weer gegeven in de [eerste zelf studie](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -56,7 +56,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Als u deze implementatieopdracht wilt uitvoeren, moet u over de [nieuwste versie](/cli/azure/install-azure-cli) van Azure CLI beschikken.
+Als u deze implementatie opdracht wilt uitvoeren, moet u de [nieuwste versie](/cli/azure/install-azure-cli) van Azure cli hebben.
 
 ```azurecli
 az deployment group create \
@@ -68,27 +68,27 @@ az deployment group create \
 
 ---
 
-## <a name="understand-resource-updates"></a>Informatie over resource-updates
+## <a name="understand-resource-updates"></a>Resource-updates begrijpen
 
-In de vorige sectie hebt u een opslagaccount met dezelfde naam geïmplementeerd als u eerder had gemaakt. U vraagt zich misschien af hoe de resource wordt beïnvloed door de herschikking.
+In de vorige sectie hebt u een opslag account geïmplementeerd met dezelfde naam die u eerder hebt gemaakt. U vraagt zich misschien af hoe de resource wordt beïnvloed door de herimplementatie.
 
-Als de resource al bestaat en er geen wijziging wordt gedetecteerd in de eigenschappen, wordt er geen actie ondernomen. Als de resource al bestaat en een eigenschap is gewijzigd, wordt de resource bijgewerkt. Als de bron niet bestaat, wordt deze gemaakt.
+Als de resource al bestaat en er geen wijziging wordt gedetecteerd in de eigenschappen, wordt er geen actie ondernomen. Als de resource al bestaat en een eigenschap is gewijzigd, wordt de resource bijgewerkt. Als de resource niet bestaat, wordt deze gemaakt.
 
-Deze manier van omgaan met updates betekent dat uw sjabloon alle resources kan bevatten die u nodig hebt voor een Azure-oplossing. U de sjabloon veilig opnieuw implementeren en weten dat resources alleen worden gewijzigd of gemaakt wanneer dat nodig is. Als u bijvoorbeeld bestanden aan uw opslagaccount hebt toegevoegd, u het opslagaccount opnieuw implementeren zonder deze bestanden te verliezen.
+Deze manier van het afhandelen van updates betekent dat uw sjabloon alle resources kan bevatten die u nodig hebt voor een Azure-oplossing. U kunt de sjabloon veilig opnieuw implementeren en weet dat de resources zijn gewijzigd of alleen worden gemaakt wanneer dat nodig is. Als u bijvoorbeeld bestanden aan uw opslag account hebt toegevoegd, kunt u het opslag account opnieuw implementeren zonder dat deze bestanden verloren gaan.
 
-## <a name="customize-by-environment"></a>Aanpassen op omgeving
+## <a name="customize-by-environment"></a>Aanpassen per omgeving
 
-Met parameters kunt u de implementatie aanpassen door waarden op te geven die voor een specifieke omgeving zijn aangepast. U bijvoorbeeld verschillende waarden doorgeven op basis van de vraag of u implementeert in een omgeving voor ontwikkeling, testen en productie.
+Met parameters kunt u de implementatie aanpassen door waarden op te geven die voor een specifieke omgeving zijn aangepast. U kunt bijvoorbeeld verschillende waarden door geven op basis van het feit of u implementeert in een omgeving voor ontwikkeling, testen en productie.
 
-De vorige sjabloon heeft altijd een Standard_LRS-opslagaccount geïmplementeerd. U wilt misschien de flexibiliteit om verschillende SKU's te implementeren, afhankelijk van de omgeving. In het volgende voorbeeld worden de wijzigingen weergegeven om een parameter voor SKU toe te voegen. Kopieer het hele bestand en plak over uw sjabloon.
+In de vorige sjabloon is altijd een Standard_LRS Storage-account geïmplementeerd. Mogelijk wilt u de flexibiliteit om verschillende Sku's te implementeren, afhankelijk van de omgeving. In het volgende voor beeld ziet u de wijzigingen voor het toevoegen van een para meter voor SKU. Kopieer het hele bestand en plak over uw sjabloon.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json" range="1-40" highlight="10-23,32":::
 
-De parameter **storageSKU** heeft een standaardwaarde. Deze waarde wordt gebruikt wanneer een waarde niet is opgegeven tijdens de implementatie. Het heeft ook een lijst van toegestane waarden. Deze waarden komen overeen met de waarden die nodig zijn om een opslagaccount te maken. U wilt niet dat gebruikers van uw sjabloon in SKU's worden doorgegeven die niet werken.
+De **storageSKU** -para meter heeft een standaard waarde. Deze waarde wordt gebruikt wanneer tijdens de implementatie geen waarde is opgegeven. Het bevat ook een lijst met toegestane waarden. Deze waarden komen overeen met de waarden die nodig zijn voor het maken van een opslag account. U wilt niet dat gebruikers van uw sjabloon door geven in Sku's die niet werken.
 
 ## <a name="redeploy-template"></a>Sjabloon opnieuw implementeren
 
-Je bent klaar om weer in te zetten. Omdat de standaard SKU is ingesteld op **Standard_LRS,** hoeft u geen waarde voor die parameter op te geven.
+U bent klaar om te implementeren. Omdat de standaard-SKU is ingesteld op **Standard_LRS**, hoeft u geen waarde voor die para meter op te geven.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -113,9 +113,9 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Als de implementatie is mislukt, gebruikt u de **foutopsporingsschakelaar** met de opdracht implementatie om de foutopsporingslogboeken weer te geven.  U ook de **verbose-schakelaar** gebruiken om de volledige foutopsporingslogboeken weer te geven.
+> Als de implementatie is mislukt, gebruikt u de switch **debug** met de implementatie opdracht om de logboeken voor fout opsporing weer te geven.  U kunt ook de **uitgebreide** switch gebruiken om de volledige logboeken voor fout opsporing weer te geven.
 
-Als u de flexibiliteit van uw sjabloon wilt zien, zetten we opnieuw in. Stel deze tijd de parameter SKU in op **Standard_GRS**. U een nieuwe naam opgeven om een ander opslagaccount aan te maken of dezelfde naam gebruiken om uw bestaande opslagaccount bij te werken. Beide opties werken.
+Voor een overzicht van de flexibiliteit van uw sjabloon, gaan we opnieuw implementeren. In deze tijd stelt u de SKU-para meter in op **Standard_GRS**. U kunt een nieuwe naam door geven om een ander opslag account te maken of dezelfde naam gebruiken om uw bestaande opslag account bij te werken. Beide opties werken.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -140,7 +140,7 @@ az deployment group create \
 
 ---
 
-Tot slot, laten we nog een test uitvoeren en zien wat er gebeurt als je slaagt in een SKU die niet een van de toegestane waarden is. In dit geval testen we het scenario waarin een gebruiker van uw sjabloon denkt dat **basic** een van de SKU's is.
+Ten slotte gaan we nog een test uitvoeren en zien wat er gebeurt wanneer u een SKU doorgeeft die geen van de toegestane waarden is. In dit geval testen we het scenario waarbij een gebruiker van uw sjabloon een van de Sku's als **basis** beschouwt.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -165,22 +165,22 @@ az deployment group create \
 
 ---
 
-De opdracht mislukt onmiddellijk met een foutbericht waarin staat welke waarden zijn toegestaan. Resourcemanager identificeert de fout voordat de implementatie wordt gestart.
+De opdracht mislukt onmiddellijk met een fout bericht dat aangeeft welke waarden zijn toegestaan. Resource Manager identificeert de fout voordat de implementatie wordt gestart.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u doorgaat naar de volgende zelfstudie, hoeft u de brongroep niet te verwijderen.
+Als u verdergaat met de volgende zelf studie, hoeft u de resource groep niet te verwijderen.
 
-Als u nu stopt, u de resources die u hebt geïmplementeerd, opschonen door de resourcegroep te verwijderen.
+Als u nu stopt, wilt u misschien de resources opschonen die u hebt geïmplementeerd door de resource groep te verwijderen.
 
-1. Selecteer **resourcegroep** in de linkermenu in de Azure-portal.
+1. Selecteer in de Azure Portal **resource groep** in het menu links.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
 3. Selecteer de naam van de resourcegroep.
-4. Selecteer **Brongroep verwijderen** in het bovenste menu.
+4. Selecteer **resource groep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt de sjabloon die in de [eerste zelfstudie is](template-tutorial-create-first-template.md) gemaakt, verbeterd door parameters toe te voegen. In de volgende zelfstudie leert u over sjabloonfuncties.
+U hebt de sjabloon die in de [eerste zelf studie](template-tutorial-create-first-template.md) is gemaakt, verbeterd door para meters toe te voegen. In de volgende zelf studie leert u over sjabloon functies.
 
 > [!div class="nextstepaction"]
-> [Sjabloonfuncties toevoegen](template-tutorial-add-functions.md)
+> [Sjabloon functies toevoegen](template-tutorial-add-functions.md)

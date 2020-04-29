@@ -1,16 +1,16 @@
 ---
-title: 'PowerShell: monitor met webserverlogboeken'
-description: Meer informatie over het gebruik van Azure PowerShell om de implementatie en het beheer van App Service te automatiseren. In dit voorbeeld ziet u hoe u een app met webserverlogboeken controleren.
+title: 'Power shell: monitor met webserver logboeken'
+description: Meer informatie over het gebruik van Azure PowerShell voor het automatiseren van de implementatie en het beheer van App Service. In dit voor beeld ziet u hoe u een app bewaken met webserver logboeken.
 tags: azure-service-management
 ms.assetid: 5805d7cd-9e56-4eba-bd85-75b013690ff5
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
 ms.openlocfilehash: c9b3ab6f8115f68ead478c0de21e4661d3ca032c
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80437937"
 ---
 # <a name="monitor-a-web-appwith-web-server-logs"></a>Een web-app bewaken met webserverlogboeken

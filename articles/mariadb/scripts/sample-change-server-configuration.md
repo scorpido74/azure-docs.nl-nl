@@ -1,5 +1,5 @@
 ---
-title: CLI-script - Serverparameters wijzigen - Azure Database voor MariaDB
+title: CLI-script-server parameters wijzigen-Azure Database for MariaDB
 description: Dit CLI-voorbeeldscript maakt een lijst met alle beschikbare serverconfiguratieopties en werkt de waarde van innodb_lock_wait_timeout bij.
 author: ajlam
 ms.author: andrela
@@ -9,10 +9,10 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 12/02/2019
 ms.openlocfilehash: 515eb7523c5a08d52ad5eb4f7bd261f3f4e03fc4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74771804"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>Configuraties van een Azure Database for MariaDB-server opsommen en bijwerken met behulp van Azure CLI
@@ -33,7 +33,7 @@ Gebruik de volgende opdracht om de resourcegroep en alle resources die er aan zi
 ## <a name="script-explanation"></a>Uitleg van het script
 Dit script maakt gebruik van de opdrachten die in de volgende tabel worden weergegeven:
 
-| **Opdracht** | **Opmerkingen** |
+| **Cmd** | **Opmerkingen** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create) | Hiermee wordt een MariaDB-server gemaakt waarop de databases worden gehost. |

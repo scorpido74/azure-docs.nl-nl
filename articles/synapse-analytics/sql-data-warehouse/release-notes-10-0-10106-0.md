@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: fce60a10818943a9c6d420044d97c0c5b803de32
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 813baba37684525c336bc34a49e496f54a19288d
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133320"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509734"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Release opmerkingen bij Azure Synapse Analytics
 
@@ -25,9 +25,10 @@ In dit artikel vindt u een overzicht van de nieuwe functies en verbeteringen in 
 
 ## <a name="check-your-azure-synapse-version"></a>Uw Azure Synapse-versie controleren
 
-Wanneer er nieuwe functies zijn geïmplementeerd in alle regio's, controleert u de versie die is geïnstalleerd in uw exemplaar en de meest recente release opmerkingen voor de beschik baarheid van functies. Als u de versie wilt controleren, maakt u verbinding met uw SQL-groep via SQL Server Management Studio `SELECT @@VERSION;` (SSMS) en voert u uit om de huidige versie te retour neren.
+Wanneer er nieuwe functies zijn geïmplementeerd in alle regio's, controleert u de versie die is geïnstalleerd in uw exemplaar en de meest recente release opmerkingen voor de beschik baarheid van functies. Als u de versie wilt controleren, maakt u verbinding met uw SQL-groep via SQL Server Management Studio `SELECT @@VERSION;` (SSMS) en voert u uit om de huidige versie te retour neren. Gebruik deze versie om te controleren welke release is toegepast op de SQL-groep. De datum in de uitvoer geeft de maand aan voor de release die wordt toegepast op de SQL-groep. Dit is alleen van toepassing op verbeteringen op service niveau. 
 
-Gebruik de versie die is geïdentificeerd om te bevestigen welke release is toegepast op de SQL-groep. De datum in de uitvoer geeft de maand aan voor de release die wordt toegepast op de SQL-groep.
+Zorg ervoor dat de juiste versie is geïnstalleerd in de opmerking bij de release voor hulp bij het maken van verbeteringen. 
+
 
 > [!NOTE]
 > De product naam die is geretourneerd door@VERSION Select @, wordt gewijzigd van Microsoft Azure SQL Data Warehouse naar Azure Synapse Analytics. Er wordt een geavanceerde kennisgeving verzonden voordat de wijziging wordt doorgevoerd. Deze wijziging is van belang voor klanten die de product naam uit het resultaat van SELECT@VERSION @ in hun toepassings code hebben geparseerd. Als u wijzigingen in de toepassings code wilt voor komen door het product opnieuw in te stellen, gebruikt u deze opdrachten om server Property te zoeken naar de product naam en-versie van de Data Base: om versie nummer XX te retour neren. X. XXXXX. X (zonder product naam) gebruik deze opdracht:
@@ -40,13 +41,20 @@ Gebruik de versie die is geïdentificeerd om te bevestigen welke release is toeg
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
+
+
 ## <a name="april-2020"></a>April 2020
 
 | Service verbeteringen | Details |
 | --- | --- |
 |**Database compatibiliteits niveau (preview-versie)**| Met deze release kunnen gebruikers nu het compatibiliteits niveau van een Data Base instellen om de Transact-SQL-taal en het verwerkings gedrag van query's te verkrijgen van een specifieke versie van de Synapse SQL-engine. Zie [sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) en [ALTER data base scoped Configuration](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)(Engelstalig) voor meer informatie.|
 |**Sp_describe_undeclared_parameters**| Gebruikers toestaan de meta gegevens weer te geven over niet-gedeclareerde para meters in een Transact-SQL-batch. Zie [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie.|
-|**[Visual Studio 16,6 Preview 2](/visualstudio/releases/2019/release-notes-preview) -SQL Server Data tools (SSDT)** | Deze release bevat de volgende verbeteringen en oplossingen voor SSDT: </br> </br> -Een probleem opgelost waarbij het wijzigen van een tabel waarnaar wordt verwezen door een gerealiseerde weer gave (MV) ertoe leidt dat Alter View-instructies worden gegenereerd. dit wordt niet ondersteund voor MVs<br/><br/> -Een wijziging geïmplementeerd om ervoor te zorgen dat de schema vergelijking niet mislukt als er beveiligings objecten op rijniveau aanwezig zijn in de data base of het project. Beveiligings objecten op rijniveau worden momenteel niet ondersteund voor SSDT.  <br/><br/> -SQL Server-objectverkenner-time-outdrempeling is verhoogd om time-outs te voor komen bij het weer geven van een groot aantal objecten in de data base<br/><br/> -De manier waarop SQL Server-objectverkenner de lijst met database objecten ophaalt, heeft geoptimaliseerd om instabiliteit te verminderen en de prestaties te verbeteren bij het invullen van de object Verkenner |
+
+## <a name="march-2020"></a>Maart 2020
+
+| Verbeteringen in het hulp programma                                         | Details                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **[Visual Studio 16,6 Preview 2](/visualstudio/releases/2019/release-notes-preview) -SQL Server Data tools (SSDT)** | Deze release bevat de volgende verbeteringen en oplossingen voor SSDT: </br> </br> -Een probleem opgelost waarbij het wijzigen van een tabel waarnaar wordt verwezen door een gerealiseerde weer gave (MV) ertoe leidt dat Alter View-instructies worden gegenereerd. dit wordt niet ondersteund voor MVs<br/><br/> -Een wijziging geïmplementeerd om ervoor te zorgen dat de schema vergelijking niet mislukt als er beveiligings objecten op rijniveau aanwezig zijn in de data base of het project. Beveiligings objecten op rijniveau worden momenteel niet ondersteund voor SSDT.  <br/><br/> -SQL Server-objectverkenner-time-outdrempeling is verhoogd om time-outs te voor komen bij het weer geven van een groot aantal objecten in de data base<br/><br/> -De manier waarop SQL Server-objectverkenner de lijst met database objecten ophaalt, heeft geoptimaliseerd om instabiliteit te verminderen en de prestaties te verbeteren bij het invullen van de object Verkenner |
 
 ## <a name="january-2020"></a>Januari 2020
 

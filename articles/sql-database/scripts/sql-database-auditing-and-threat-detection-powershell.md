@@ -1,6 +1,6 @@
 ---
-title: PowerShell-voorbeeld van auditing en Advanced Threat Protection - Azure SQL Database
-description: Azure PowerShell-voorbeeldscript voor het configureren van auditing en geavanceerde bedreigingsbeveiliging in een Azure SQL-database
+title: Power shell-voor beeld van controle en geavanceerde beveiliging tegen bedreigingen-Azure SQL Database
+description: Azure PowerShell voorbeeld script voor het configureren van controle en geavanceerde beveiliging tegen bedreigingen in een Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,21 +12,21 @@ ms.author: datrigan
 ms.reviewer: carlrab, vanto
 ms.date: 08/05/2019
 ms.openlocfilehash: f5e107058f983df98f7d14dbe1b41ce5a66f2535
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76719973"
 ---
-# <a name="use-powershell-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>PowerShell gebruiken om SQL Database auditing en Advanced Threat Protection te configureren
+# <a name="use-powershell-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>Power shell gebruiken voor het configureren van SQL Database controle en geavanceerde bedreigingen beveiliging
 
-In dit PowerShell-scriptvoorbeeld worden SQL Database auditing en Advanced Threat Protection geconfigureerd.
+Met dit Power shell-voorbeeld script worden SQL Database controle en geavanceerde beveiliging tegen bedreigingen geconfigureerd.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de PowerShell lokaal te installeren en te gebruiken, vereist deze zelfstudie AZ PowerShell 1.4.0 of hoger. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+Als u ervoor kiest om Power shell lokaal te installeren en te gebruiken, hebt u voor deze zelf studie AZ Power shell 1.4.0 of hoger nodig. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -34,7 +34,7 @@ Als u ervoor kiest om de PowerShell lokaal te installeren en te gebruiken, verei
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Gebruik de volgende opdracht om de resourcegroep en alle bijbehorende resources te verwijderen.
+Gebruik de volgende opdracht om de resource groep en alle bijbehorende resources te verwijderen.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
@@ -47,11 +47,11 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | Opdracht | Opmerkingen |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
-| [Nieuw-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die één database of elastische pool host. |
-| [Nieuwe AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u een enkele database of elastische pool. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die één database of elastische pool host. |
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u een enkele database of elastische pool. |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Hiermee maakt u een opslagaccount. |
-| [Set-azsqldatabaseauditing](/powershell/module/az.sql/set-azsqldatabaseauditing) | Hiermee wordt het controlebeleid voor een database ingesteld. |
-| [Set-azsqldatabaseThreatDetectionPolicy](/powershell/module/az.sql/set-azsqldatabasethreatdetectionpolicy) | Hiermee stelt u een geavanceerd beleid voor bedreigingsbescherming in op een database. |
+| [Set-AzSqlDatabaseAuditing](/powershell/module/az.sql/set-azsqldatabaseauditing) | Hiermee wordt het controlebeleid voor een database ingesteld. |
+| [Set-AzSqlDatabaseThreatDetectionPolicy](/powershell/module/az.sql/set-azsqldatabasethreatdetectionpolicy) | Hiermee stelt u een geavanceerd beveiligings beleid voor bedreigingen in voor een Data Base. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

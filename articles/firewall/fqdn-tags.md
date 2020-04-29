@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 04/24/2020
 ms.author: victorh
-ms.openlocfilehash: 6396f8292a4c54f7fce237439f37c3e8156d59e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4fcadb6d930f7863c733dad105432a64127b59b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "74169039"
+ms.locfileid: "82232646"
 ---
 # <a name="fqdn-tags-overview"></a>Overzicht van FQDN-labels
 
@@ -36,6 +36,7 @@ In de volgende tabel ziet u de huidige FQDN-Tags die u kunt gebruiken. Micro sof
 |App Service Environment (ASE)|Hiermee staat u uitgaande toegang tot ASE-platform verkeer toe. Dit label geldt niet voor klantspecifieke opslag-en SQL-eind punten die zijn gemaakt door ASE. Deze moeten worden ingeschakeld via [service-eind punten](../virtual-network/tutorial-restrict-network-access-to-resources.md) of hand matig worden toegevoegd.<br><br>Zie [een app service Environment vergren delen](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)voor meer informatie over het integreren van Azure Firewall met ASE.|
 |Azure Backup|Hiermee wordt uitgaande toegang tot de Azure Backup Services toegestaan.|
 |Azure HDInsight|Hiermee staat u uitgaande toegang toe voor verkeer van HDInsight-platform. Dit label geldt niet voor klantspecifieke opslag of SQL-verkeer van HDInsight. Schakel deze optie in met [service-eind punten](../virtual-network/tutorial-restrict-network-access-to-resources.md) of voeg ze hand matig toe.|
+|WindowsVirtualDesktop (WVD)|Hiermee staat u het verkeer van een virtueel Windows-bureaublad platform toe. Dit label geldt niet voor implementatie-specifieke opslag en Service Bus eind punten die zijn gemaakt door WVD. Daarnaast zijn er regels voor DNS-en KMS-netwerken vereist. Voor meer informatie over het integreren van Azure Firewall met WVD raadpleegt [u Azure firewall gebruiken voor het beveiligen van Windows-implementaties van virtuele Bureau bladen](protect-windows-virtual-desktop.md). 
 
 > [!NOTE]
 > Wanneer u de FQDN-tag in een toepassings regel selecteert, moet het veld Protocol: poort worden ingesteld op **https**.

@@ -1,58 +1,58 @@
 ---
-title: Zelfstudie - parameterbestand gebruiken om sjabloon te implementeren
-description: Gebruik parameterbestanden die de waarden bevatten die moeten worden gebruikt voor het implementeren van uw Azure Resource Manager-sjabloon.
+title: Zelf studie-parameter bestand voor de implementatie van de sjabloon gebruiken
+description: Gebruik parameter bestanden die de waarden bevatten die moeten worden gebruikt voor het implementeren van uw Azure Resource Manager-sjabloon.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: b91041b96a3819dbace3898d92226f0351f0f973
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80411511"
 ---
-# <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Zelfstudie: Parameterbestanden gebruiken om uw ARM-sjabloon te implementeren
+# <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Zelf studie: parameter bestanden gebruiken voor het implementeren van uw ARM-sjabloon
 
-In deze zelfstudie leert u hoe u [parameterbestanden](parameter-files.md) gebruikt om de waarden op te slaan die u tijdens de implementatie doorgeeft. In de vorige zelfstudies hebt u inlineparameters gebruikt met de opdracht implementatie. Deze aanpak werkte voor het testen van uw Azure Resource Manager (ARM)-sjabloon, maar bij het automatiseren van implementaties kan het eenvoudiger zijn om een set waarden voor uw omgeving door te geven. Parameterbestanden maken het eenvoudiger om parameterwaarden voor een specifieke omgeving te verpakken. In deze zelfstudie maakt u parameterbestanden voor ontwikkel- en productieomgevingen. Het duurt ongeveer **12 minuten** om te voltooien.
+In deze zelf studie leert u hoe u [parameter bestanden](parameter-files.md) kunt gebruiken voor het opslaan van de waarden die tijdens de implementatie worden door gegeven. In de vorige zelf studies hebt u inline-para meters gebruikt met de implementatie opdracht. Deze aanpak werkt voor het testen van uw Azure Resource Manager-sjabloon (ARM), maar bij het automatiseren van implementaties kan het gemakkelijker worden om een set waarden voor uw omgeving door te geven. Met parameter bestanden kunt u gemakkelijker parameter waarden voor een specifieke omgeving inpakken. In deze zelf studie maakt u parameter bestanden voor ontwikkel-en productie omgevingen. Het duurt ongeveer **12 minuten** om te volt ooien.
 
 ## <a name="prerequisites"></a>Vereisten
 
-We raden u aan de [zelfstudie over tags in](template-tutorial-add-tags.md)te vullen, maar dit is niet vereist.
+U wordt aangeraden de [zelf studie over Tags](template-tutorial-add-tags.md)te volt ooien, maar dit is niet vereist.
 
-U moet beschikken over Visual Studio Code met de extensie Hulpmiddelen voor ResourceBeheer en Azure PowerShell of Azure CLI. Zie [sjabloongereedschappen voor](template-tutorial-create-first-template.md#get-tools)meer informatie .
+U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en een Azure PowerShell of Azure CLI. Zie voor meer informatie [sjabloon hulpprogramma's](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Sjabloon bekijken
+## <a name="review-template"></a>Sjabloon controleren
 
-Uw sjabloon heeft veel parameters die u tijdens de implementatie opgeven. Aan het einde van de vorige zelfstudie zag uw sjabloon eruit als volgt:
+De sjabloon bevat een groot aantal para meters die u tijdens de implementatie kunt opgeven. Aan het einde van de vorige zelf studie is uw sjabloon als volgt bekeken:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json":::
 
-Deze sjabloon werkt goed, maar nu wilt u eenvoudig de parameters beheren die u voor de sjabloon doorgeeft.
+Deze sjabloon werkt goed, maar nu wilt u de para meters die u doorgeeft, eenvoudig beheren voor de sjabloon.
 
-## <a name="add-parameter-files"></a>Parameterbestanden toevoegen
+## <a name="add-parameter-files"></a>Parameter bestanden toevoegen
 
-Parameterbestanden zijn JSON-bestanden met een structuur die vergelijkbaar is met uw sjabloon. In het bestand geeft u de parameterwaarden op die u tijdens de implementatie wilt doorgeven.
+Parameter bestanden zijn JSON-bestanden met een structuur die vergelijkbaar is met uw sjabloon. In het bestand geeft u de parameter waarden op die u tijdens de implementatie wilt door geven.
 
-Maak in VS-code een nieuw bestand met de volgende inhoud. Sla het bestand op met de naam **azuredeploy.parameters.dev.json**.
+Maak in VS code een nieuw bestand met de volgende inhoud. Sla het bestand op met de naam **azuredeploy. para meters. dev. json**.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
-Dit bestand is het parameterbestand voor de ontwikkelomgeving. Merk op dat het Standard_LRS gebruikt voor het opslagaccount, resources met een v-voorvoegsel noemt en de **omgevingstag** instelt op **Dev**. **dev**
+Dit bestand is het parameter bestand voor de ontwikkel omgeving. U ziet dat deze Standard_LRS gebruikt voor het opslag account, namen van resources met een **dev** -voor voegsel en het **omgevings** label instelt op **dev**.
 
-Maak opnieuw een nieuw bestand met de volgende inhoud. Sla het bestand op met de naam **azuredeploy.parameters.prod.json**.
+Maak opnieuw een nieuw bestand met de volgende inhoud. Sla het bestand op met de naam **azuredeploy. para meters. Prod. json**.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
-Dit bestand is het parameterbestand voor de productieomgeving. Merk op dat het Standard_GRS gebruikt voor het opslagaccount, resources met een **contoso-voorvoegsel** noemt en de **milieutag** instelt op **Productie**. In een echte productieomgeving wilt u ook een app-service met een SKU gebruiken, anders dan gratis, maar we blijven die SKU gebruiken voor deze zelfstudie.
+Dit bestand is het parameter bestand voor de productie omgeving. U ziet dat deze Standard_GRS gebruikt voor het opslag account, resources benoemt met een voor voegsel van **Contoso** en de **omgevings** label instelt op **productie**. In een echte productie omgeving zou u ook een app service willen gebruiken met een andere SKU dan gratis, maar we blijven die SKU gebruiken voor deze zelf studie.
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 
 Gebruik Azure CLI of Azure PowerShell om de sjabloon te implementeren.
 
-Als laatste test van uw sjabloon maken we twee nieuwe resourcegroepen. Een voor de dev milieu en een voor de productie-omgeving.
+Als laatste test van uw sjabloon gaan we twee nieuwe resource groepen maken. Een voor de ontwikkel omgeving en één voor de productie omgeving.
 
-Eerst zetten we in op de dev-omgeving.
+Eerst gaan we implementeren in de ontwikkel omgeving.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -71,7 +71,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Als u deze implementatieopdracht wilt uitvoeren, moet u over de [nieuwste versie](/cli/azure/install-azure-cli) van Azure CLI beschikken.
+Als u deze implementatie opdracht wilt uitvoeren, moet u de [nieuwste versie](/cli/azure/install-azure-cli) van Azure cli hebben.
 
 ```azurecli
 templateFile="{path-to-the-template-file}"
@@ -88,7 +88,7 @@ az deployment group create \
 
 ---
 
-Nu zetten we in op de productieomgeving.
+Nu gaan we implementeren naar de productie omgeving.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -121,29 +121,29 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Als de implementatie is mislukt, gebruikt u de **foutopsporingsschakelaar** met de opdracht implementatie om de foutopsporingslogboeken weer te geven.  U ook de **verbose-schakelaar** gebruiken om de volledige foutopsporingslogboeken weer te geven.
+> Als de implementatie is mislukt, gebruikt u de switch **debug** met de implementatie opdracht om de logboeken voor fout opsporing weer te geven.  U kunt ook de **uitgebreide** switch gebruiken om de volledige logboeken voor fout opsporing weer te geven.
 
 ## <a name="verify-deployment"></a>Implementatie verifiëren
 
-U de implementatie verifiëren door de brongroepen te verkennen vanuit de Azure-portal.
+U kunt de implementatie controleren door de resource groepen van de Azure Portal te verkennen.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Selecteer **Resourcegroepen**in het linkermenu .
-1. U ziet de twee nieuwe resourcegroepen die u hebt geïmplementeerd in deze zelfstudie.
-1. Selecteer een van beide resourcegroepen en bekijk de geïmplementeerde resources. Ze komen overeen met de waarden die u hebt opgegeven in het parameterbestand voor die omgeving.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer **resource groepen**in het menu links.
+1. U ziet de twee nieuwe resource groepen die u in deze zelf studie hebt geïmplementeerd.
+1. Selecteer een resource groep en Bekijk de geïmplementeerde resources. U ziet dat ze overeenkomen met de waarden die u hebt opgegeven in het parameter bestand voor die omgeving.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-1. Selecteer **resourcegroep** in de linkermenu in de Azure-portal.
-2. Voer de naam van de resourcegroep in het veld **Filter by name** in. Als u deze reeks hebt voltooid, u drie brongroepen verwijderen: myResourceGroup, myResourceGroupDev en myResourceGroupProd.
+1. Selecteer in de Azure Portal **resource groep** in het menu links.
+2. Voer de naam van de resourcegroep in het veld **Filter by name** in. Als u deze serie hebt voltooid, hebt u drie resource groepen om myResourceGroup, myResourceGroupDev en myResourceGroupProd te verwijderen.
 3. Selecteer de naam van de resourcegroep.
-4. Selecteer **Brongroep verwijderen** in het bovenste menu.
+4. Selecteer **resource groep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gefeliciteerd, u bent klaar met deze inleiding tot het implementeren van sjablonen in Azure. Laat het ons weten als je opmerkingen en suggesties hebt in de feedbacksectie. Bedankt!
+Gefeliciteerd, u hebt deze inleiding voltooid voor het implementeren van sjablonen in Azure. Laat het ons weten als u opmerkingen en suggesties hebt in het gedeelte feedback. Bedankt!
 
-De volgende zelfstudiereeks gaat verder in meer details over het implementeren van sjablonen.
+De volgende reeks zelf studies gaat meer details over het implementeren van sjablonen.
 
 > [!div class="nextstepaction"]
 > [Een lokale sjabloon implementeren](./deployment-tutorial-local-template.md)
