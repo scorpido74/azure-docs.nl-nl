@@ -1,6 +1,6 @@
 ---
-title: Problemen met YARN in Azure HDInsight oplossen
-description: Krijg antwoorden op veelgestelde vragen over het werken met Apache Hadoop YARN en Azure HDInsight.
+title: Problemen met GARENs in azure HDInsight oplossen
+description: Krijg antwoorden op veelgestelde vragen over het werken met Apache Hadoop GARENs en Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,23 +8,23 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79272199"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Problemen met Apache Hadoop YARN oplossen met behulp van Azure HDInsight
 
-Meer informatie over de belangrijkste problemen en hun resoluties bij het werken met Apache Hadoop YARN payloads in Apache Ambari.
+Meer informatie over de belangrijkste problemen en hun oplossingen bij het werken met Apache Hadoop GARENs-nettoladingen in Apache Ambari.
 
-## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Hoe maak ik een nieuwe GAREN-wachtrij op een cluster?
+## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Hoe kan ik een nieuwe GARENs wachtrij op een cluster maken?
 
 ### <a name="resolution-steps"></a>Oplossingen
 
-Gebruik de volgende stappen in Ambari om een nieuwe GAREN-wachtrij te maken en vervolgens de capaciteitstoewijzing tussen alle wachtrijen in evenwicht te brengen.
+Gebruik de volgende stappen in Ambari om een nieuwe garen wachtrij te maken en de capaciteits toewijzing te verdelen over alle wacht rijen.
 
-In dit voorbeeld worden twee bestaande wachtrijen **(standaard** en **thriftsvr)** beide gewijzigd van 50% capaciteit naar 25% capaciteit, waardoor de nieuwe wachtrij (spark) 50% capaciteit krijgt.
+In dit voor beeld worden twee bestaande wacht rijen (**standaard** en **thriftsvr**) gewijzigd van 50% capaciteit in 25% capaciteit, waardoor de nieuwe wachtrij (Spark) 50% capaciteit wordt weer geven.
 
 | Wachtrij | Capaciteit | Maximale capaciteit |
 | --- | --- | --- |
@@ -32,49 +32,49 @@ In dit voorbeeld worden twee bestaande wachtrijen **(standaard** en **thriftsvr)
 | thrftsvr | 25% | 50% |
 | spark | 50% | 50% |
 
-1. Selecteer het pictogram **Ambari-weergaven** en selecteer vervolgens het rasterpatroon. Selecteer vervolgens **YARN Queue Manager**.
+1. Selecteer het pictogram **Ambari weer gaven** en selecteer vervolgens het raster patroon. Selecteer vervolgens **garening Queue Manager**.
 
-    ![Apache Ambari dashboard YARN Queue Manager](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
-2. Selecteer de **standaardwachtrij.**
+    ![Ambari-dash board voor Apache-wachtrij beheer](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
+2. Selecteer de **standaard** wachtrij.
 
-    ![Apache Ambari YARN selecteert standaardwachtrij](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
-3. Wijzig voor de **standaardwachtrij** de **capaciteit** van 50% naar 25%. Voor de **thriftsvr** wachtrij, verander de **capaciteit** naar 25%.
+    ![Apache Ambari-garen selecteren standaard wachtrij](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
+3. Voor de **standaard** wachtrij wijzigt u de **capaciteit** van 50% in 25%. Voor de **thriftsvr** -wachtrij wijzigt u de **capaciteit** in 25%.
 
-    ![De capaciteit wijzigen in 25% voor de standaard- en spaarzame vr-wachtrijen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
-4. Als u een nieuwe wachtrij wilt maken, selecteert u **Wachtrij toevoegen**.
+    ![De capaciteit wijzigen in 25% voor de standaard-en thriftsvr-wacht rijen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
+4. Selecteer **wachtrij toevoegen**om een nieuwe wachtrij te maken.
 
-    ![Apache Ambari YARN-dashboard Wachtrij toevoegen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
+    ![Ambari-invoeg wachtrij voor Apache-garen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
 5. Geef de nieuwe wachtrij een naam.
 
-    ![Apache Ambari YARN-dashboardnaam Wachtrij](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
+    ![Naam wachtrij voor Apache Ambari GARENs-dash board](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
-6. Laat de **capaciteitswaarden** op 50% staan en selecteer vervolgens de knop **Handelingen.**
+6. Wijzig de **capaciteits** waarden bij 50% en selecteer vervolgens de knop **acties** .
 
-    ![Apache Ambari YARN selecteer actie](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
-7. Selecteer **Wachtrijen opslaan en vernieuwen**.
+    ![Bewerking voor Ambari-garen selecteren voor Apache](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
+7. Selecteer **opslaan en wacht rijen vernieuwen**.
 
-    ![Wachtrijen opslaan en vernieuwen selecteren](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
+    ![Selecteer opslaan en wacht rijen vernieuwen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
-Deze wijzigingen zijn direct zichtbaar op de YARN Scheduler UI.
+Deze wijzigingen zijn direct zichtbaar in de gebruikers interface van de GARENs-planner.
 
-### <a name="additional-reading"></a>Aanvullende lezing
+### <a name="additional-reading"></a>Aanvullende Lees bewerkingen
 
-- [Apache Hadoop YARN CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
+- [Apache Hadoop garen CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 
-## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Hoe download ik YARN-logboeken van een cluster?
+## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Hoe kan ik GARENs van een cluster downloaden?
 
 ### <a name="resolution-steps"></a>Oplossingen
 
-1. Maak verbinding met het HDInsight-cluster via een Secure Shell -client (SSH). Zie [Aanvullende lectuur](#additional-reading-2)voor meer informatie.
+1. Maak verbinding met het HDInsight-cluster met behulp van een SSH-client (Secure Shell). Zie [aanvullende Lees bewerkingen](#additional-reading-2)voor meer informatie.
 
-1. Voer de volgende opdracht uit om alle toepassings-in-het-d-toepassingen van de YARN-toepassingen aan te geven die momenteel worden uitgevoerd:
+1. Voer de volgende opdracht uit om een lijst weer te geven van alle toepassings-Id's van de garen toepassingen die momenteel worden uitgevoerd:
 
     ```apache
     yarn top
     ```
 
-    De id's worden vermeld in de kolom **APPLICATIONID.** U logboeken downloaden uit de **kolom APPLICATIONID.**
+    De Id's worden weer gegeven in de kolom **APPLICATIONID** . U kunt Logboeken downloaden vanuit de kolom **APPLICATIONID** .
 
     ```apache
     YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root
@@ -89,57 +89,57 @@ Deze wijzigingen zijn direct zichtbaar op de YARN Scheduler UI.
      application_1490377567345_0006 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628430    2442645  10.00   18:20:20 Thrift JDBC/ODBC Server
     ```
 
-1. Als u YARN-containerlogboeken voor alle toepassingsmodellen wilt downloaden, gebruikt u de volgende opdracht:
+1. Als u garen-container logboeken voor alle toepassings Masters wilt downloaden, gebruikt u de volgende opdracht:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am ALL > amlogs.txt
     ```
 
-    Met deze opdracht wordt een logboekbestand met de naam amlogs.txt ge.
+    Met deze opdracht maakt u een logboek bestand met de naam amlogs. txt.
 
-1. Als u YARN-containerlogboeken wilt downloaden voor alleen de nieuwste toepassingsmaster, gebruikt u de volgende opdracht:
+1. Gebruik de volgende opdracht om alleen garen-container logboeken te downloaden voor de meest recente toepassings Master:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am -1 > latestamlogs.txt
     ```
 
-    Met deze opdracht wordt een logboekbestand met de naam latestamlogs.txt aangenomen.
+    Met deze opdracht maakt u een logboek bestand met de naam latestamlogs. txt.
 
-1. Als u YARN-containerlogboeken wilt downloaden voor de eerste twee toepassingsmodellen, gebruikt u de volgende opdracht:
+1. Als u garen-container logboeken voor de eerste twee toepassings Masters wilt downloaden, gebruikt u de volgende opdracht:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt
     ```
 
-    Met deze opdracht wordt een logboekbestand met de naam first2amlogs.txt.
+    Met deze opdracht maakt u een logboek bestand met de naam first2amlogs. txt.
 
-1. Als u alle YARN-containerlogboeken wilt downloaden, gebruikt u de volgende opdracht:
+1. Als u alle garen-container logboeken wilt downloaden, gebruikt u de volgende opdracht:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> > logs.txt
     ```
 
-    Met deze opdracht wordt een logboekbestand met de naam logs.txt.
+    Met deze opdracht maakt u een logboek bestand met de naam logs. txt.
 
-1. Als u het YARN-containerlogboek voor een specifieke container wilt downloaden, gebruikt u de volgende opdracht:
+1. Als u het garen-container logboek voor een specifieke container wilt downloaden, gebruikt u de volgende opdracht:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt
     ```
 
-    Met deze opdracht wordt een logboekbestand met de naam containerlogs.txt.
+    Met deze opdracht maakt u een logboek bestand met de naam containerlogs. txt.
 
-### <a name="additional-reading"></a><a name="additional-reading-2"></a>Aanvullende lezing
+### <a name="additional-reading"></a><a name="additional-reading-2"></a>Aanvullende Lees bewerkingen
 
-- [Verbinding maken met HDInsight (Apache Hadoop) met Behulp van SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
-- [Apache Hadoop YARN concepten en toepassingen](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
+- [Verbinding maken met HDInsight (Apache Hadoop) met behulp van SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [Apache Hadoop GARENs en toepassingen](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als je je probleem niet hebt gezien of niet in staat bent om je probleem op te lossen, ga je naar een van de volgende kanalen voor meer ondersteuning:
+Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
-- Krijg antwoorden van Azure-experts via [Azure Community Support.](https://azure.microsoft.com/support/community/)
+- Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-- Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met - het officiële Microsoft Azure-account voor het verbeteren van de klantervaring. De Azure-community verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
+- Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-- Als u meer hulp nodig hebt, u een ondersteuningsaanvraag indienen via de [Azure-portal.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Selecteer **Ondersteuning** op de menubalk of open de **Help + ondersteuningshub.** Voor meer gedetailleerde informatie, bekijk [Hoe maak je een Azure-ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Toegang tot abonnementsbeheer en factureringsondersteuning is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geboden via een van de [Azure Support-abonnementen](https://azure.microsoft.com/support/plans/).
+- Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

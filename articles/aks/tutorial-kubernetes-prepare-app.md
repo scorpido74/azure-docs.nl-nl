@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: feab8495536b3306fd96793323d51644570b401b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77593157"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Zelfstudie: Toepassing voorbereiden voor AKS (Azure Kubernetes Service)
@@ -100,7 +100,7 @@ Stop en verwijder de containerexemplaren en -resources met de opdracht [docker-c
 docker-compose down
 ```
 
-Wanneer de lokale toepassing is verwijderd, hebt u een Docker-afbeelding die de Azure Vote-toepassing bevat, *azure-vote-front,* voor gebruik met de volgende zelfstudie.
+Wanneer de lokale toepassing is verwijderd, hebt u een docker-installatie kopie die de Azure stem-toepassing, *Azure-stem*voor gebruik, bevat met de volgende zelf studie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

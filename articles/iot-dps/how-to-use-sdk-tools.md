@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub Device Provisioning Service SDKs-hulpprogramma's gebruiken
-description: In dit document worden de hulpprogramma's voor de ontwikkeling van Azure IoT Hub Device Provisioning Service (DPS) (SDK's) beoordeeld
+title: Hulpprogram ma's voor Azure IoT Hub Device Provisioning Service Sdk's gebruiken
+description: In dit document worden de hulpprogram ma's van Azure IoT Hub Device Provisioning Service (DPS) Sdk's voor ontwikkeling beschreven
 author: robinsh
 ms.author: robinsh
 ms.date: 04/09/2018
@@ -8,50 +8,50 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79271523"
 ---
-# <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Hoe tools in de SDK's te gebruiken om de ontwikkeling voor provisioning te vereenvoudigen
-De IoT Hub Device Provisioning Service vereenvoudigt het inrichtingsproces met zero-touch, just-in-time [automatische inrichting](concepts-auto-provisioning.md) op een veilige en schaalbare manier.  Beveiligingsattest in de vorm van X.509-certificaat of Trusted Platform Module (TPM) is vereist.  Microsoft werkt ook samen met [andere beveiligingshardwarepartners](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) om het vertrouwen in het beveiligen van IoT-implementatie te verbeteren. Inzicht in de hardware beveiligingsvereiste kan heel uitdagend zijn voor ontwikkelaars. Er is een set Azure IoT Provisioning Service SDK's beschikbaar, zodat ontwikkelaars een gemakslaag kunnen gebruiken voor het schrijven van clients die met de inrichtingsservice praten. De SDK's bieden ook voorbeelden voor veelvoorkomende scenario's en een reeks tools om beveiligingsattestation in ontwikkeling te vereenvoudigen.
+# <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>De hulpprogram ma's in de Sdk's gebruiken om de ontwikkeling van het inrichten te vereenvoudigen
+De IoT Hub Device Provisioning Service vereenvoudigt het inrichtings proces met Zero-Touch, just-in-time- [inrichting](concepts-auto-provisioning.md) op een veilige en schaal bare manier.  Er is een beveiligings attest in de vorm van X. 509-certificaat of Trusted Platform Module (TPM) vereist.  Micro soft is ook in samen werking met [andere partners voor beveiligingshardware](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) om het vertrouwen in de beveiliging van IOT-implementatie te verbeteren. Meer informatie over de vereiste voor hardware-beveiliging kan voor ontwikkel aars behoorlijk lastig zijn. Er wordt een set met Sdk's voor Azure IoT Provisioning Service gegeven, zodat ontwikkel aars een laag kunnen gebruiken voor het schrijven van clients die met de inrichtings service communiceren. De Sdk's bieden ook voor beelden voor veelvoorkomende scenario's en een set hulpprogram ma's om beveiligings attesten in ontwikkeling te vereenvoudigen.
 
-## <a name="trusted-platform-module-tpm-simulator"></a>Simulator Trusted Platform Module (TPM)
-[TPM](https://docs.microsoft.com/azure/iot-dps/concepts-security) kan verwijzen naar een standaard voor het veilig opslaan van sleutels om het platform te verifiëren, of het kan verwijzen naar de I / O-interface die wordt gebruikt om te communiceren met de modules die de standaard implementeren. TPM's kunnen bestaan als discrete hardware, geïntegreerde hardware, firmware-gebaseerde of software-based.  In productie bevindt TPM zich op het apparaat, als discrete hardware, geïntegreerde hardware of op firmware gebaseerde hardware. In de testfase wordt een softwaregebaseerde TPM-simulator aan ontwikkelaars geleverd.  Deze simulator is alleen beschikbaar voor ontwikkeling op Windows-platform voor nu.
+## <a name="trusted-platform-module-tpm-simulator"></a>Trusted Platform Module (TPM) Simulator
+[TPM](https://docs.microsoft.com/azure/iot-dps/concepts-security) kan verwijzen naar een standaard voor het veilig opslaan van sleutels om het platform te verifiëren, of kan verwijzen naar de I/O-interface die wordt gebruikt om te communiceren met de modules die de standaard implementeren. Tpm's kan bestaan als afzonderlijke hardware, geïntegreerde hardware, op firmware gebaseerd of op software gebaseerd.  TPM bevindt zich in productie op het apparaat, hetzij als discrete hardware, geïntegreerde hardware of op basis van de firmware. In de test fase wordt een op software gebaseerde TPM-Simulator aan ontwikkel aars verschaft.  Deze simulator is nu alleen beschikbaar voor het ontwikkelen op het Windows-platform.
 
-Stappen voor het gebruik van de TPM-simulator zijn:
-1. [Bereid de ontwikkelomgeving voor](https://docs.microsoft.com/azure/iot-dps/quick-enroll-device-x509-java) en kloon de GitHub-repository:
+De stappen voor het gebruik van de TPM-Simulator zijn:
+1. [Bereid de ontwikkel omgeving](https://docs.microsoft.com/azure/iot-dps/quick-enroll-device-x509-java) voor en kloon de GitHub-opslag plaats:
    ```
    git clone https://github.com/Azure/azure-iot-sdk-java.git
    ```
-2. Navigeer naar de map ```azure-iot-sdk-java/provisioning/provisioning-tool/tpm-simulator/```TPM-simulator onder .
-3. Voer Simulator.exe uit voordat u een clienttoepassing voor inrichtingsapparaat uitvoert.
-4. Laat de simulator tijdens het inrichtingsproces op de achtergrond draaien om registratie-ID en goedkeuringssleutel te verkrijgen.  Beide waarden zijn slechts geldig voor één exemplaar van de run.
+2. Navigeer naar de map TPM simulator onder ```azure-iot-sdk-java/provisioning/provisioning-tool/tpm-simulator/```.
+3. Voer Simulator. exe uit voordat u een client toepassing voor inrichtings apparaat uitvoert.
+4. Laat de Simulator tijdens het inrichtings proces op de achtergrond uitvoeren om registratie-ID en goedkeurings sleutel te verkrijgen.  Beide waarden zijn alleen geldig voor één exemplaar van de uitvoering.
 
-## <a name="x509-certificate-generator"></a>X.509 certificaatgenerator
-[X.509-certificaten](https://docs.microsoft.com/azure/iot-dps/concepts-security#x509-certificates) kunnen worden gebruikt als een attestmechanisme om de productie te schalen en de inrichting van apparaten te vereenvoudigen.  Er zijn [verschillende manieren](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) om een X.509-certificaat te verkrijgen:
-* Voor de productieomgeving raden we u aan een X.509 CA-certificaat aan te schaffen bij een openbare certificeringsinstantie.
-* Voor de testomgeving u een X.509-basiscertificaat of X.509-certificaatketen genereren met behulp van:
-    * OpenSSL: U scripts gebruiken voor het genereren van certificaten:
+## <a name="x509-certificate-generator"></a>X. 509-certificaat generator
+[X. 509-certificaten](https://docs.microsoft.com/azure/iot-dps/concepts-security#x509-certificates) kunnen worden gebruikt als Attestation-mechanisme voor het schalen van productie en het vereenvoudigen van het inrichten van apparaten.  Er zijn [verschillende manieren](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) om een X. 509-certificaat te verkrijgen:
+* Voor productie omgeving raden we u aan om een X. 509 CA-certificaat te kopen bij een open bare basis certificerings instantie.
+* Voor test omgevingen kunt u een X. 509-basis certificaat of een X. 509-certificaat keten genereren met behulp van:
+    * OpenSSL: u kunt scripts gebruiken voor het genereren van certificaten:
         * [Node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools)
-        * [PowerShell of Bash](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)
+        * [Power shell of bash](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)
         
-    * Device Identity Composition Engine (DICE) Emulator: DICE kan worden gebruikt voor cryptografische apparaatidentiteit en attestation op basis van TLS-protocol en X.509-clientcertificaten.  [Meer informatie](https://www.microsoft.com/research/publication/device-identity-dice-riot-keys-certificates/) over de identiteit van apparaten met DICE.
+    * Engine voor het samen stellen van de apparaat-id (DOBBEL ring): dobbel stenen kunnen worden gebruikt voor cryptografische apparaat-id en-Attestation op basis van TLS-protocol en X. 509-client certificaten.  Meer [informatie](https://www.microsoft.com/research/publication/device-identity-dice-riot-keys-certificates/) over apparaat-ID'S met dobbel stenen.
 
-### <a name="using-x509-certificate-generator-with-dice-emulator"></a>X.509 certificaatgenerator gebruiken met DICE emulator
-De SDK's bieden een X.509 certificaat generator met DICE emulator, gelegen in de [Java SDK](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-tools/provisioning-x509-cert-generator).  Deze generator werkt cross-platform.  Het gegenereerde certificaat kan worden gebruikt voor ontwikkeling in andere talen.
+### <a name="using-x509-certificate-generator-with-dice-emulator"></a>X. 509-certificaat generator met de-dobbel stenen-emulator gebruiken
+De Sdk's bieden een X. 509-certificaat generator met een DOBBELer-emulator, die zich in de [Java-SDK](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-tools/provisioning-x509-cert-generator)bevindt.  Deze generator werkt op verschillende platforms.  Het gegenereerde certificaat kan worden gebruikt voor ontwikkeling in andere talen.
 
-Momenteel, terwijl de DICE Emulator een root certificaat, een tussentijds certificaat, een blad certificaat, en bijbehorende prive-sleutel.  Het basiscertificaat of het tussencertificaat kan echter niet worden gebruikt om een afzonderlijk bladcertificaat te ondertekenen.  Als u van plan bent het scenario voor groepsinschrijving te testen waarbij één ondertekeningscertificaat wordt gebruikt om de bladcertificaten van meerdere apparaten te ondertekenen, u OpenSSL gebruiken om een reeks certificaten te produceren.
+De dobbel stenen emulator voert momenteel een basis certificaat, een tussenliggend certificaat, een blad certificaat en de bijbehorende persoonlijke sleutel uit.  Het basis certificaat of het tussenliggende certificaat kan echter niet worden gebruikt voor het ondertekenen van een afzonderlijk blad certificaat.  Als u een scenario voor groeps inschrijving wilt testen waarbij één handtekening certificaat wordt gebruikt voor het ondertekenen van de blad certificaten van meerdere apparaten, kunt u OpenSSL gebruiken om een keten van certificaten te maken.
 
-Ga als volgt te werk om x.509-certificaat te genereren met behulp van deze generator:
-1. [Bereid de ontwikkelomgeving voor](https://docs.microsoft.com/azure/iot-dps/quick-enroll-device-x509-java) en kloon de GitHub-repository:
+Het X. 509-certificaat genereren met behulp van deze generator:
+1. [Bereid de ontwikkel omgeving](https://docs.microsoft.com/azure/iot-dps/quick-enroll-device-x509-java) voor en kloon de GitHub-opslag plaats:
    ```
    git clone https://github.com/Azure/azure-iot-sdk-java.git
    ```
-2. Wijzig de root in azure-iot-sdk-java.
-3. Voer ```mvn install -DskipTests=true``` uit om alle vereiste pakketten te downloaden en de SDK samen te stellen
-4. Navigeer naar de hoofdmap voor X.509-certificaatgenerator in ```azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator```.
+2. Wijzig de hoofdmap in azure-IOT-SDK-java.
+3. Voer ```mvn install -DskipTests=true``` uit om alle vereiste pakketten te downloaden en de SDK te compileren
+4. Navigeer naar de hoofdmap voor X. 509-certificaat Generator ```azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator```in.
 5. Bouwen met```mvn clean install```
 6. Voer het hulpprogramma uit met behulp van de volgende opdrachten:
    ```
@@ -59,11 +59,11 @@ Ga als volgt te werk om x.509-certificaat te genereren met behulp van deze gener
    java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
    ```
 7. Wanneer u hierom wordt gevraagd, kunt u ook een _algemene naam_ invoeren voor de certificaten.
-8. De tool genereert lokaal een **Client Cert,** de **Client Cert Private Key**, Intermediate **Cert**en het **Root Cert**.
+8. Het hulp programma genereert lokaal een **client certificaat**, de **persoonlijke sleutel van het client certificaat**, het **tussenliggende certificaat**en het **basis certificaat**.
 
-**Client Cert** is het bladcertificaat op het apparaat.  **Client Cert** en de bijbehorende **Client Cert Private Key** zijn nodig in de apparaatclient. Afhankelijk van welke taal u kiest, kan het mechanisme om dit in de clienttoepassing te plaatsen, anders zijn.  Zie voor meer informatie de [Quickstarts](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509) op het maken van gesimuleerd apparaat met X.509 voor meer informatie.
+**Client certificaat** is het Leaf-certificaat op het apparaat.  Het **client certificaat** en de bijbehorende **persoonlijke sleutel van het client certificaat** zijn vereist in de apparaatclient. Afhankelijk van de taal die u kiest, kan het mechanisme dat u wilt opnemen in de client toepassing anders zijn.  Zie voor meer informatie de [Quick](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509) starts op gesimuleerd apparaat maken met X. 509 voor meer informatie.
 
-Het hoofdcertificaat of tussenproduct kan worden gebruikt om een inschrijvingsgroep of individuele inschrijving [programmatisch](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments-sdks) of met behulp van de [portal](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments)te maken.
+Het basis certificaat of tussenliggende kan worden gebruikt voor het maken van een inschrijvings groep of een individuele inschrijving [via een programma](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments-sdks) of via de [Portal](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments).
 
 ## <a name="next-steps"></a>Volgende stappen
-* Ontwikkelen met behulp van de [Azure IoT SDK]( https://github.com/Azure/azure-iot-sdks) voor Azure IoT Hub en Azure IoT Hub Device Provisioning Service
+* Ontwikkelen met behulp van de [Azure IOT SDK]( https://github.com/Azure/azure-iot-sdks) voor Azure IOT hub en Azure IOT hub Device Provisioning Service
