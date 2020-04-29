@@ -1,7 +1,7 @@
 ---
-title: Richtlijnen voor het benoemen van trefwoorden - Spraakservice
+title: Richt lijnen voor naamgeving van tref woorden-spraak service
 titleSuffix: Azure Cognitive Services
-description: Het maken van een effectief zoekwoord is essentieel om ervoor te zorgen dat uw apparaat consistent en nauwkeurig reageert.
+description: Het maken van een effectief sleutel woord is essentieel om ervoor te zorgen dat uw apparaat consistent en nauw keurig reageert.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,33 +11,33 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
 ms.openlocfilehash: c00d27e5e7b7a8d614ce94ea4024b6093669757c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399848"
 ---
-# <a name="guidelines-for-creating-an-effective-keyword"></a>Richtlijnen voor het maken van een effectief zoekwoord
+# <a name="guidelines-for-creating-an-effective-keyword"></a>Richt lijnen voor het maken van een effectief tref woord
 
-Het maken van een effectief zoekwoord is essentieel om ervoor te zorgen dat uw apparaat consistent en nauwkeurig reageert. Het aanpassen van uw zoekwoord is een effectieve manier om uw apparaat te differentiëren en uw branding te versterken. In dit artikel leert u enkele leidende principes voor het maken van een effectief zoekwoord.
+Het maken van een effectief sleutel woord is essentieel om ervoor te zorgen dat uw apparaat consistent en nauw keurig reageert. Het aanpassen van uw tref woord is een efficiënte manier om uw apparaat te onderscheiden en uw huis stijl te versterken. In dit artikel leert u enkele richt lijnen voor het maken van een effectief sleutel woord.
 
-## <a name="choose-an-effective-keyword"></a>Kies een effectief zoekwoord
+## <a name="choose-an-effective-keyword"></a>Een effectief tref woord kiezen
 
-Houd rekening met de volgende richtlijnen wanneer u een zoekwoord kiest:
+Houd rekening met de volgende richt lijnen wanneer u een tref woord kiest:
 
 > [!div class="checklist"]
-> * Uw trefwoord moet een Engels woord of woordgroep zijn.
+> * Het sleutel woord moet een Engels woord of woord groep zijn.
 > * Het duurt niet langer dan twee seconden om te zeggen.
-> * Woorden van 4 tot 7 lettergrepen werken het beste. Bijvoorbeeld, "Hey, Computer" is een goed zoekwoord. Alleen "Hey" is een arme.
-> * Trefwoorden moeten de algemene Engelse uitspraakregels volgen.
-> * Een uniek of zelfs een verzonnen woord dat volgt gemeenschappelijke Engelse uitspraak regels kunnen verminderen valse positieven. 'Computerama' kan bijvoorbeeld een goed zoekwoord zijn.
-> * Kies geen gemeenschappelijk woord. Bijvoorbeeld, "eten" en "gaan" zijn woorden die mensen zeggen vaak in gewone gesprek. Het kunnen valse triggers zijn voor uw apparaat.
-> * Vermijd het gebruik van een trefwoord dat alternatieve uitspraken kan hebben. Gebruikers zouden moeten weten de "juiste" uitspraak om hun apparaat te reageren. '509' kan bijvoorbeeld worden uitgesproken als 'vijf nul negen', 'vijf oh negen' of 'vijfhonderd negen'. "R.E.I." kan worden uitgesproken als "r-e-i" of "ray." "Levend" kan worden uitgesproken als "/līv/" of "/liv/".
-> * Gebruik geen speciale tekens, symbolen of cijfers. 'Go#' en '20 + katten' kunnen bijvoorbeeld problematische zoekwoorden zijn. Echter, "go sharp" of "twintig plus katten" zou kunnen werken. U nog steeds gebruik maken van de symbolen in uw branding en gebruik maken van marketing en documentatie om de juiste uitspraak te versterken.
+> * Woorden van 4 tot 7 letter grepen werken het beste. "Hoi computer" is bijvoorbeeld een goed tref woord. Alleen een ' Hoi ' is een slechte versie.
+> * Tref woorden moeten volgen op algemene regels voor de uitspraak van het Engels.
+> * Een uniek of zelfs een opgesteld woord dat voldoet aan de algemene Engelse regels voor uitspraak, kan fout-positieven verminderen. Zo kan ' computerama ' een goed tref woord zijn.
+> * Kies geen algemeen woord. "Eten" en "Go" zijn bijvoorbeeld woorden die mensen vaak in een gewone conversatie hebben gedicteerd. Ze kunnen worden ingesteld op ONWAAR voor uw apparaat.
+> * Vermijd het gebruik van een tref woord dat mogelijk alternatieve uitspraak heeft. Gebruikers moeten de uitspraak van het ' recht ' weten om hun apparaat te laten reageren. "509" kan bijvoorbeeld "5 0 9," "5 0 9," of "509" worden uitgesp roken. "R.E.I." kan worden uitgesp roken "r-e-i" of "Ray". ' Live ' kan worden uitgesp roken '/līv/' of '/Liv/'.
+> * Gebruik geen speciale tekens, symbolen of cijfers. Bijvoorbeeld ' go # ' en ' 20 + katten ' kunnen problematische tref woorden zijn. ' Go Sharp ' of ' twintig plus katten ' kan echter wel werken. U kunt nog steeds de symbolen in uw huis stijl gebruiken en marketing en documentatie gebruiken om de juiste uitspraak te versterken.
 
 > [!NOTE]
-> Als u een handelsmerkwoord als trefwoord kiest, moet u ervoor zorgen dat u eigenaar bent van dat handelsmerk of dat u toestemming hebt van de eigenaar van het handelsmerk om het woord te gebruiken. Microsoft is niet aansprakelijk voor eventuele juridische problemen die kunnen voortvloeien uit uw keuze van trefwoord.
+> Als u een woord in handels merk kiest als uw tref woord, zorg er dan voor dat u eigenaar bent van het handels merk of dat u toestemming hebt van de eigenaar van het handels merk om het woord te gebruiken. Micro soft is niet aansprakelijk voor juridische problemen die kunnen voortvloeien uit uw keuze aan tref woorden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [maken van een aangepast zoekwoord met Spraakstudio](speech-devices-sdk-create-kws.md).
+Meer informatie over het [maken van een aangepast sleutel woord met behulp van speech Studio](speech-devices-sdk-create-kws.md).

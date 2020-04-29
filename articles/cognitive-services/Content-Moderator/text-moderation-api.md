@@ -1,7 +1,7 @@
 ---
-title: Tekstmoderatie - Inhoudsmoderator
+title: Tekst toezicht-Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Gebruik tekstmoderatie voor mogelijke ongewenste tekst, persoonlijke gegevens en aangepaste lijsten met termen.
+description: Tekst toezicht gebruiken voor mogelijke ongewenste tekst, persoonlijke gegevens en aangepaste lijsten met termen.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 41e88dd5a08de485f770559959843ba3b54e590f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81274007"
 ---
-# <a name="learn-text-moderation-concepts"></a>Ideeën voor tekstbeheer
+# <a name="learn-text-moderation-concepts"></a>Concepten van tekst toezicht leren
 
-Gebruik de machinematige tekstmoderatie en [de](Review-Tool-User-Guide/human-in-the-loop.md) mogelijkheden voor menselijke beoordeling van contentmoderator om tekstinhoud te modereren.
+Content Moderator gebruik de door de machine gesteunde tekst toezicht en de functies voor [menselijke beoordeling](Review-Tool-User-Guide/human-in-the-loop.md) voor gematigde tekst inhoud.
 
-U kunt de inhoud blokkeren, goedkeuren of controleren op basis van uw beleid en drempelwaarden. Gebruik het om menselijke moderatie van omgevingen waar partners, werknemers en consumenten tekstinhoud genereren, te vergroten. Het gaat hierbij om chatruimten, discussieborden, chatbots, e-commerce-catalogi en documenten. 
+U kunt de inhoud blokkeren, goedkeuren of controleren op basis van uw beleid en drempelwaarden. Gebruik it om de menselijke toezicht te verbeteren van omgevingen waar partners, werk nemers en consumenten tekst inhoud genereren. Het gaat hierbij om chatruimten, discussieborden, chatbots, e-commerce-catalogi en documenten. 
 
 Het antwoord van de service bevat de volgende informatie:
 
-- Godslastering: term-based matching met ingebouwde lijst van profane termen in verschillende talen
-- Indeling: machine-ondersteunde classificatie in drie categorieën
+- Scheld woorden: op term gebaseerde overeenkomst met ingebouwde lijst met ongepaste termen in verschillende talen
+- Classificatie: door de machine ondersteunde classificatie in drie categorieën
 - Persoonsgegevens
 - Automatisch gecorrigeerde tekst
 - Oorspronkelijke tekst
@@ -34,7 +34,7 @@ Het antwoord van de service bevat de volgende informatie:
 
 ## <a name="profanity"></a>Grof taalgebruik
 
-Als de API profane termen in een van de [ondersteunde talen](Text-Moderation-API-Languages.md)detecteert, worden deze termen opgenomen in het antwoord. Het antwoord bevat ook`Index`hun locatie ( ) in de oorspronkelijke tekst. De `ListId` in de volgende steekproef JSON verwijst naar termen gevonden in [aangepaste termen lijsten](try-terms-list-api.md) indien beschikbaar.
+Als de API in een van de [ondersteunde talen](Text-Moderation-API-Languages.md)ongepaste termen detecteert, worden deze termen opgenomen in het antwoord. Het antwoord bevat ook hun locatie (`Index`) in de oorspronkelijke tekst. De `ListId` in de volgende voor beeld-JSON verwijst naar termen die zijn gevonden in de [lijst met aangepaste termen](try-terms-list-api.md) , indien beschikbaar.
 
     "Terms": [
     {
@@ -45,15 +45,15 @@ Als de API profane termen in een van de [ondersteunde talen](Text-Moderation-API
     }
 
 > [!NOTE]
-> Wijs deze voor `eng` de **taalparameter** toe of laat deze leeg om het door de machine ondersteunde **classificatieantwoord** (voorbeeldfunctie) te zien. **Deze functie ondersteunt alleen Engels.**
+> Voor de para meter **taal** wijst `eng` of laat u het leeg om de door de machine ondersteunde **classificatie** te zien (preview-functie). **Deze functie ondersteunt alleen Engels**.
 >
-> Gebruik de [ISO 639-3-code](http://www-01.sil.org/iso639-3/codes.asp) van de ondersteunde talen in dit artikel of laat deze leeg voor detectie **van godslasteringstermen.**
+> Gebruik de [ISO 639-3-code](http://www-01.sil.org/iso639-3/codes.asp) **van de** ondersteunde talen die in dit artikel worden vermeld, of laat het leeg.
 
 ## <a name="classification"></a>Classificatie
 
-De machineondersteunde **tekstclassificatiefunctie** van Content Moderator ondersteunt **alleen Engels**en helpt bij het detecteren van mogelijk ongewenste inhoud. De gemarkeerde inhoud kan worden beoordeeld als ongepast, afhankelijk van de context. Het geeft de waarschijnlijkheid van elke categorie en kan een menselijke beoordeling aanbevelen. De functie maakt gebruik van een getraind model om mogelijke beledigende, denigrerende of discriminerende taal te identificeren. Dit omvat slang, verkorte woorden, beledigend, en opzettelijk verkeerd gespelde woorden voor beoordeling. 
+De **functie voor tekst classificatie** met automatische ondersteuning van content moderator ondersteunt **alleen Engels**en helpt mogelijk ongewenste inhoud te detecteren. De gemarkeerde inhoud kan worden beoordeeld als ongepast, afhankelijk van de context. Het brengt de kans op elke categorie over en kan een menselijke beoordeling aanbevelen. De functie maakt gebruik van een getraind model om mogelijke beledigende, negatieve of discriminerende taal te identificeren. Dit omvat slang, kortere woorden, aanstootgevende woorden en opzettelijk verkeerd gespelde termen voor beoordeling. 
 
-In het volgende uittreksel in het JSON-extract ziet u een voorbeelduitvoer:
+In de volgende extractie in de JSON-analyse wordt een voorbeeld uitvoer weer gegeven:
 
     "Classification": {
         "ReviewRecommended": true,
@@ -70,22 +70,22 @@ In het volgende uittreksel in het JSON-extract ziet u een voorbeelduitvoer:
 
 ### <a name="explanation"></a>Uitleg
 
-- `Category1`verwijst naar mogelijke aanwezigheid van taal die in bepaalde situaties als seksueel expliciet of volwassen kan worden beschouwd.
-- `Category2`verwijst naar mogelijke aanwezigheid van taal die in bepaalde situaties als seksueel suggestief of volwassen kan worden beschouwd.
-- `Category3`verwijst naar mogelijke aanwezigheid van taal die in bepaalde situaties als beledigend kan worden beschouwd.
-- `Score`is tussen 0 en 1. Hoe hoger de score, hoe hoger het model voorspelt dat de categorie van toepassing kan zijn. Deze functie is gebaseerd op een statistisch model in plaats van handmatig gecodeerde resultaten. We raden u aan te testen met uw eigen inhoud om te bepalen hoe elke categorie aansluit bij uw vereisten.
-- `ReviewRecommended`is waar of onwaar, afhankelijk van de interne scoredrempels. Klanten moeten beoordelen of ze deze waarde moeten gebruiken of aangepaste drempels moeten bepalen op basis van hun inhoudsbeleid.
+- `Category1`verwijst naar de mogelijke aanwezigheid van taal die in bepaalde situaties als seksueel expliciet of volwassen kan worden beschouwd.
+- `Category2`verwijst naar de mogelijke aanwezigheid van een taal die in bepaalde situaties kan worden beschouwd als expliciet of verouderd.
+- `Category3`verwijst naar de mogelijke aanwezigheid van taal die in bepaalde situaties als aanstootgevend kan worden beschouwd.
+- `Score`ligt tussen 0 en 1. Hoe hoger de score, hoe hoger het model is om te voors pellen dat de categorie van toepassing kan zijn. Deze functie is afhankelijk van een statistisch model in plaats van hand matig gecodeerde resultaten. We raden u aan om te testen met uw eigen inhoud om te bepalen hoe elke categorie wordt uitgelijnd op uw vereisten.
+- `ReviewRecommended`is waar of onwaar, afhankelijk van de drempel waarden van de interne Score. Klanten moeten beoordelen of u deze waarde moet gebruiken of besluiten over aangepaste drempel waarden op basis van hun inhouds beleid.
 
 ## <a name="personal-data"></a>Persoonsgegevens
 
-De functie persoonsgegevens detecteert de mogelijke aanwezigheid van deze informatie:
+De functie persoonlijke gegevens detecteert de mogelijke aanwezigheid van deze gegevens:
 
 - E-mailadres
-- Amerikaans postadres
+- Post adres van de Verenigde Staten
 - IP-adres
-- Amerikaans telefoonnummer
+- Telefoon nummer VS
 
-In het volgende voorbeeld ziet u een voorbeeldreactie:
+In het volgende voor beeld ziet u een voor beeld van een antwoord:
 
 ```json
 "pii":{
@@ -125,23 +125,23 @@ In het volgende voorbeeld ziet u een voorbeeldreactie:
 
 ## <a name="auto-correction"></a>Automatische correctie
 
-Stel dat de invoertekst is (de 'lzay' en 'f0x' opzettelijk zijn):
+Stel dat de invoer tekst (de ' lzay ' en ' f0x ' opzettelijk is):
 
     The qu!ck brown f0x jumps over the lzay dog.
 
-Als u om automatische correctie vraagt, bevat het antwoord de gecorrigeerde versie van de tekst:
+Als u voor de automatische correctie vraagt, bevat het antwoord de gecorrigeerde versie van de tekst:
 
     The quick brown fox jumps over the lazy dog.
 
-## <a name="creating-and-managing-your-custom-lists-of-terms"></a>Uw aangepaste lijsten met termen maken en beheren
+## <a name="creating-and-managing-your-custom-lists-of-terms"></a>Uw aangepaste lijsten met voor waarden maken en beheren
 
-Hoewel de standaard, globale lijst met termen voor de meeste gevallen geweldig werkt, u screenen op termen die specifiek zijn voor uw bedrijfsbehoeften. U bijvoorbeeld concurrerende merknamen filteren uit berichten van gebruikers.
+De standaard instelling is dat de algemene lijst met termen prima werkt in de meeste gevallen. u kunt het beste een scherm maken met de termen die specifiek zijn voor uw bedrijfs behoeften. U kunt bijvoorbeeld de naam van een concurrerend merk uit berichten van gebruikers filteren.
 
 > [!NOTE]
 > Er is een maximumlimiet van **5 terminologielijsten** waarbij elke lijst **niet meer dan 10.000 termen mag bevatten**.
 >
 
-In het volgende voorbeeld wordt de overeenkomende lijst-id weergegeven:
+In het volgende voor beeld ziet u de overeenkomende lijst-ID:
 
     "Terms": [
     {
@@ -151,8 +151,8 @@ In het volgende voorbeeld wordt de overeenkomende lijst-id weergegeven:
         "Term": "crap"
     }
 
-De inhoudsmoderator biedt een [TERM List API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) met bewerkingen voor het beheren van aangepaste termenlijsten. Begin met de [API-console termlists](try-terms-list-api.md) en gebruik de monsters van de REST API-code. Bekijk ook de [Term Lists .NET quickstart](term-lists-quickstart-dotnet.md) als u bekend bent met Visual Studio en C#.
+De Content Moderator biedt een [term List-API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) met bewerkingen voor het beheren van aangepaste termen lijsten. Begin met de [API-console van de termen lijst](try-terms-list-api.md) en gebruik de rest API code voorbeelden. Bekijk ook de [term lijsten .net Quick](term-lists-quickstart-dotnet.md) start als u bekend bent met Visual Studio en C#.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Test station de [Text moderation API console](try-text-api.md) en gebruik de REST API code samples. Bekijk ook de sectie Tekstmatiging van de [.NET SDK snelstart](dotnet-sdk-quickstart.md) als u bekend bent met Visual Studio en C#.
+Test de [API-console tekst toezicht](try-text-api.md) en gebruik de rest API code voorbeelden. Kijk ook naar het gedeelte tekst toezicht van de [.NET SDK Quick](dotnet-sdk-quickstart.md) start als u bekend bent met Visual Studio en C#.

@@ -1,6 +1,6 @@
 ---
-title: Elementen van de e-mail met B2B-uitnodigingen - Azure Active Directory | Microsoft Documenten
-description: E-mailsjabloon voor uitnodiging voor Azure Active Directory B2B-uitnodiging
+title: Elementen van het e-mail adres voor B2B-uitnodiging-Azure Active Directory | Microsoft Docs
+description: E-mail sjabloon uitnodiging voor Azure Active Directory B2B-samen werking
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,86 +13,86 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0429cfb62c319675806d76b4759b776a7b32dbcb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81407226"
 ---
-# <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>De elementen van de e-mail met uitnodiging voor B2B-samenwerking - Azure Active Directory
+# <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>De elementen van het e-mail adres uitnodiging voor B2B-samen werking-Azure Active Directory
 
-Uitnodigingse-mails zijn een essentieel onderdeel om partners aan boord te krijgen als B2B-samenwerkingsgebruikers in Azure AD. Hoewel het niet vereist is [dat u een e-mail stuurt om iemand uit te nodigen met behulp van B2B-samenwerking,](add-user-without-invite.md)geeft dit de gebruiker alle informatie die hij nodig heeft om een beslissing te nemen over het al dan niet accepteren van uw uitnodiging. Het geeft hen ook een link die ze altijd kunnen verwijzen naar in de toekomst wanneer ze nodig hebben om terug te keren naar uw middelen.
+E-mail berichten van de uitnodiging zijn een essentieel onderdeel om partners aan boord te brengen als B2B-samenwerkings gebruikers in azure AD. Hoewel het [niet vereist is dat u een e-mail bericht verzendt om iemand uit te nodigen via B2B-samen werking](add-user-without-invite.md), krijgt de gebruiker alle informatie die ze nodig hebben om een beslissing te nemen over de vraag of u de uitnodiging wilt accepteren. Het biedt ook een koppeling waarmee ze in de toekomst altijd naar uw resources kunnen terugkeren.
 
-![Schermafbeelding van de e-mail met de B2B-uitnodiging](media/invitation-email-elements/invitation-email.png)
+![Scherm opname van het e-mail adres voor B2B-uitnodiging](media/invitation-email-elements/invitation-email.png)
 
 > [!NOTE]
-> Deze nieuwe e-mailsjabloon wordt nog steeds uitgerold naar alle tenants, dus sommige huurders gebruiken nog steeds een ouder ontwerp. Eind mei 2020 zullen uitnodigingen van alle huurders gebruik maken van deze sjabloon.
+> Deze nieuwe e-mail sjabloon wordt nog steeds doorgevoerd naar alle tenants, waardoor sommige tenants nog steeds een ouder ontwerp gebruiken. Aan het eind van mei 2020 wordt deze sjabloon gebruikt voor uitnodigingen van alle tenants.
 
-## <a name="explaining-the-email"></a>Uitleg over de e-mail
+## <a name="explaining-the-email"></a>Uitleg over het e-mail bericht
 
-Laten we eens kijken naar een paar elementen van de e-mail, zodat u weet hoe het beste om hun mogelijkheden te gebruiken.
+Laten we eens kijken naar enkele elementen van het e-mail bericht, zodat u weet hoe u de mogelijkheden ervan kunt gebruiken.
 
 ### <a name="subject"></a>Onderwerp
 
-Het onderwerp van de e-mail volgt dit patroon:
+Het onderwerp van het e-mail bericht volgt dit patroon:
 
-&lt;gebruikersnaam&gt; nodigde u uit om toegang te krijgen tot toepassingen binnen hun organisatie.
+&lt;gebruikers&gt; naam heeft u uitgenodigd om toegang te krijgen tot toepassingen binnen hun organisatie.
 
 ### <a name="from-address"></a>Van-adres
 
-We gebruiken een LinkedIn-achtig patroon voor het Van-adres. Dit patroon moet duidelijk maken dat, invites@microsoft.comhoewel de e-mail afkomstig is van, de uitnodiging is van een andere organisatie. De indeling is: <invites@microsoft.com> Microsoft Uitnodigingen &lt;of&gt; <invites@microsoft.com>Microsoft uitnodigingen namens tenantname . 
+We gebruiken een LinkedIn-like-patroon voor het adres van. Dit patroon moet duidelijk maken dat het e-mail bericht invites@microsoft.comafkomstig is van een andere organisatie. De indeling is: micro soft <invites@microsoft.com> -uitnodigingen of uitnodigingen&gt; <invites@microsoft.com>van micro soft namens &lt;Tenant naam. 
 
-### <a name="reply-to"></a>Reageren op
+### <a name="reply-to"></a>Beantwoorden
 
-De e-mail met antwoord wordt ingesteld op de e-mail van de genodigde wanneer deze beschikbaar is, zodat het beantwoorden van de e-mail een e-mail terugstuurt naar de genodigde.
+Het e-mail bericht wordt ingesteld op het e-mail adres van de uitnodiging als deze beschikbaar is, zodat het e-mail bericht wordt teruggestuurd naar de uitnodiging.
 
-### <a name="phishing-warning"></a>Waarschuwing voor phishing
+### <a name="phishing-warning"></a>Phishing-waarschuwing
 
-De e-mail begint met een korte waarschuwing aan de gebruiker over phishing, hen te waarschuwen dat ze alleen uitnodigingen moeten accepteren die ze verwachten. Het is een goede gewoonte om ervoor te zorgen dat de partners die u uitnodigt niet verrast zullen zijn door uw uitnodiging door het van tevoren aan hen te vermelden.
+Het e-mail bericht begint met een korte waarschuwing voor de gebruiker over phishing en waarschuwt dat ze alleen uitnodigingen mogen accepteren die ze verwachten. Het is raadzaam om ervoor te zorgen dat de partners die u uitnodigt, niet worden verzorgd door de uitnodiging door deze vooraf te vermelden.
 
-![Afbeelding van de phishingwaarschuwing in de e-mail](media/invitation-email-elements/phishing-warning.png)
+![Afbeelding van de malafide waarschuwing in het e-mail bericht](media/invitation-email-elements/phishing-warning.png)
 
-### <a name="inviters-information"></a>Informatie van genodigde
+### <a name="inviters-information"></a>Informatie van de uitnodiging
 
-De e-mail bevat informatie over de genodigde en de organisatie van wie ze de uitnodiging verzenden. Dit omvat de naam en het e-mailadres van de afzender, evenals de naam en het primaire domein dat aan de organisatie is gekoppeld. Al deze informatie moet de genodigde helpen een weloverwogen beslissing te nemen over het accepteren van de uitnodiging.
+Het e-mail bericht bevat informatie over de uitnodiging en de organisatie die de uitnodiging verzendt. Dit zijn onder andere de naam en het e-mail adres van de afzender, evenals de naam en het primaire domein dat is gekoppeld aan de organisatie. Al deze informatie kan de uitnodiging helpen om een weloverwogen beslissing te nemen over het accepteren van de uitnodiging.
 
-![Afbeelding van de informatie van de genodigde in de e-mail](media/invitation-email-elements/inviters-information.png)
+![Afbeelding van de informatie van de uitnodiger in het e-mail bericht](media/invitation-email-elements/inviters-information.png)
 
-### <a name="invitation-message"></a>Uitnodigingsbericht
+### <a name="invitation-message"></a>Uitnodigings bericht
 
-Als de genodigde een bericht als onderdeel van zijn uitnodiging bevat wanneer hij [een gastgebruiker uitnodigt voor de directory, groep of app](add-users-administrator.md) of wanneer hij de [uitnodigings-API gebruikt,](customize-invitation-api.md)wordt het bericht gemarkeerd in het hoofdgedeelte van de e-mail. Ook de naam en profielafbeelding van de genodigde zijn inbegrepen als deze een afbeelding heeft ingesteld. Het bericht zelf is een tekstgebied, dus om veiligheidsredenen verwerkt het geen HTML-tags.
+Als de uitnodiging een bericht als onderdeel van de uitnodigingen bevat wanneer ze [een gast gebruiker uitnodigen voor de Directory, groep of app](add-users-administrator.md) of wanneer ze [de API van de uitnodiging gebruiken](customize-invitation-api.md), wordt het bericht gemarkeerd in het hoofd gedeelte van de e-mail. Ook inbegrepen zijn de naam en profiel afbeelding van de uitnodigings functie als ze er een hebben ingesteld. Het bericht zelf is een tekst gebied, waardoor de HTML-tags om veiligheids redenen niet worden verwerkt.
 
-![Afbeelding van het uitnodigingsbericht in de e-mail](media/invitation-email-elements/invitation-message.png)
+![Afbeelding van het uitnodigings bericht in de e-mail](media/invitation-email-elements/invitation-message.png)
 
-### <a name="accept-button-and-redirect-url"></a>Knop Accepteren en URL omleiden
+### <a name="accept-button-and-redirect-url"></a>De knop en omleidings-URL accepteren
 
-Het volgende gedeelte van de e-mail bevat informatie over waar de genodigde zal worden genomen nadat ze de uitnodiging hebben geaccepteerd, evenals een knop om dit te doen.  In de toekomst kan de genodigde deze link altijd gebruiken om rechtstreeks terug te keren naar uw bronnen.
+In de volgende sectie van het e-mail bericht vindt u informatie over waar de uitnodiging wordt gedaan na het accepteren van de uitnodigingen, evenals een knop om dit te doen.  In de toekomst kan de genodigde altijd deze koppeling gebruiken om rechtstreeks naar uw resources te gaan.
 
-![Afbeelding van de knop Accepteren en URL omleiden in de e-mail](media/invitation-email-elements/accept-button.png)
+![Afbeelding van de knop accepteren en de omleidings-URL in het e-mail bericht](media/invitation-email-elements/accept-button.png)
 
-### <a name="footer-section"></a>Footer sectie
+### <a name="footer-section"></a>Voet tekst sectie
 
-De voettekst bevat meer informatie over de uitnodiging die wordt verzonden. Er is altijd een optie voor de genodigde om toekomstige uitnodigingen te blokkeren. Als de organisatie [een privacyverklaring](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area)heeft ingesteld, wordt de koppeling naar de verklaring hier weergegeven.  Anders geeft een notitie aan dat de organisatie geen privacyverklaring heeft ingesteld.
+De voet tekst bevat meer informatie over de uitnodiging die wordt verzonden. Er is altijd een optie voor de uitnodiging voor het blok keren van toekomstige uitnodigingen. Als de organisatie [een privacyverklaring heeft ingesteld](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area), wordt de koppeling naar de instructie hier weer gegeven.  Anders wordt met een notitie aangegeven dat de organisatie geen privacyverklaring heeft ingesteld.
 
-![Afbeelding van de footersectie in de e-mail](media/invitation-email-elements/footer-section.png)
+![Afbeelding van de voet tekst sectie in het e-mail bericht](media/invitation-email-elements/footer-section.png)
  
 ## <a name="how-the-language-is-determined"></a>Hoe de taal wordt bepaald
 
-De taal die aan de gastgebruiker wordt gepresenteerd in de uitnodigingse-mail wordt bepaald door de volgende instellingen. Deze instellingen worden weergegeven in volgorde van voorrang. Als een instelling niet is geconfigureerd, bepaalt de volgende instelling in de lijst de taal.
+De taal die wordt weer gegeven aan de gast gebruiker in het e-mail bericht met de uitnodiging wordt bepaald door de volgende instellingen. Deze instellingen worden weer gegeven in volg orde van prioriteit. Als een instelling niet is geconfigureerd, bepaalt de volgende instelling in de lijst de taal.
 
-- De eigenschap **messageLanguage** van het object [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) als de uitnodigings-API maken wordt gebruikt
--   De eigenschap **preferredLanguage** die is opgegeven in het [gebruikersobject](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) van de gast
--   De **meldingstaal** die is ingesteld in de eigenschappen van de thuistenant van de gastgebruiker (alleen voor Azure AD-tenants)
--   De **notificatietaal** die is ingesteld in de eigenschappen van de resourcetenant
+- De eigenschap **messageLanguage** van het [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) -object als de Create API voor de uitnodiging wordt gebruikt
+-   De eigenschap **preferredLanguage** die is opgegeven in het [gebruikers object](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) van de gast
+-   De **taal** van de meldingen die is ingesteld in de eigenschappen van de thuis Tenant van de gast gebruiker (alleen voor Azure AD-tenants)
+-   De **taal** van de meldingen die is ingesteld in de eigenschappen van de resource-Tenant
 
-Als geen van deze instellingen is geconfigureerd, wordt de taal standaard ingesteld op Engels (VS).
+Als geen van deze instellingen is geconfigureerd, is de taal standaard ingesteld op Engels (VS).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen over Azure AD B2B-samenwerking:
+Raadpleeg de volgende artikelen over Azure AD B2B-samen werking:
 
-- [Wat is Azure AD B2B-samenwerking](what-is-b2b.md)
-- [Hoe voegen Azure Active Directory-beheerders B2B-samenwerkingsgebruikers toe?](add-users-administrator.md)
-- [Hoe voegen informatiewerkers B2B-samenwerkingsgebruikers toe?](add-users-information-worker.md)
-- [B2B-uitnodigingsuitnodiging en inwisseling](redemption-experience.md)
-- [B2B-samenwerkingsgebruikers toevoegen zonder uitnodiging](add-user-without-invite.md)
+- [Wat is Azure AD B2B-samen werking](what-is-b2b.md)
+- [Hoe kunnen Azure Active Directory beheerders gebruikers voor B2B-samen werking toevoegen?](add-users-administrator.md)
+- [Hoe voegen informatie werkers B2B-samenwerkings gebruikers toe?](add-users-information-worker.md)
+- [Inwisseling uitnodiging voor B2B-samen werking](redemption-experience.md)
+- [Gebruikers van B2B-samen werking zonder uitnodiging toevoegen](add-user-without-invite.md)

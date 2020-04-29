@@ -5,52 +5,52 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
 ms.openlocfilehash: 17d8c0157fcd478d01452167d240fb67daeeda5b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399609"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u een Azure-account- en spraakserviceabonnement hebt. Als u geen account en abonnement hebt, [probeert u de spraakservice gratis.](../../../get-started.md)
+In dit artikel wordt ervan uitgegaan dat u een Azure-account en een spraak service-abonnement hebt. Als u geen account en abonnement hebt, [kunt u de spraak service gratis uitproberen](../../../get-started.md).
 
 ## <a name="install-the-speech-sdk"></a>De Speech-SDK installeren
 
-Voordat u iets doen, moet u de Speech SDK installeren. Volg afhankelijk van uw platform de instructies onder het gedeelte <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">Get the Speech SDK <span class="docon docon-navigate-external x-hidden-focus"></span> </a> van het Speech SDK-artikel.
+Voordat u iets kunt doen, moet u de Speech SDK installeren. Volg afhankelijk van uw platform de instructies in de sectie <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">de <span class="docon docon-navigate-external x-hidden-focus"></span> SDK voor spraak ophalen</a> van het artikel Speech SDK.
 
 ## <a name="import-dependencies"></a>Afhankelijkheden importeren
 
-Als u de voorbeelden in dit `import` artikel wilt uitvoeren, neemt u de volgende instructies op boven aan het python-codebestand.
+Als u de voor beelden in dit artikel wilt uitvoeren, `import` voegt u de volgende instructies toe boven aan het python-code bestand.
 
 ```python
 import os
 import azure.cognitiveservices.speech as speechsdk
 ```
 
-## <a name="sensitive-data-and-environment-variables"></a>Gevoelige gegevens en omgevingsvariabelen
+## <a name="sensitive-data-and-environment-variables"></a>Gevoelige gegevens en omgevings variabelen
 
-De voorbeeldbroncode in dit artikel is afhankelijk van omgevingsvariabelen voor het opslaan van gevoelige gegevens, zoals de abonnementssleutel voor spraakbronnen en regio. Het python-codebestand bevat twee waarden die zijn toegewezen `SPEECH__SUBSCRIPTION__KEY` aan `SPEECH__SERVICE__REGION`de omgevingsvariabelen van de hostmachines, namelijk en . Beide variabelen bevinden zich op het globale bereik, waardoor ze toegankelijk zijn binnen de functiedefinitie van het codebestand. Zie [omgevingsvariabelen en toepassingsconfiguratie](../../../../cognitive-services-security.md#environment-variables-and-application-configuration)voor meer informatie over omgevingsvariabelen.
+De voorbeeld bron code in dit artikel is afhankelijk van omgevings variabelen voor het opslaan van gevoelige gegevens, zoals de sleutel van het abonnement voor spraak bronnen en de regio. Het python-code bestand bevat twee waarden die zijn toegewezen uit de omgevings variabelen van de `SPEECH__SUBSCRIPTION__KEY` hostcomputer `SPEECH__SERVICE__REGION`, te weten en. Beide variabelen bevinden zich in het globale bereik, waardoor ze toegankelijk zijn in de functie definitie van het code bestand. Zie [omgevings variabelen en toepassings configuratie](../../../../cognitive-services-security.md#environment-variables-and-application-configuration)voor meer informatie over omgevings variabelen.
 
 ```python
 speech_key, service_region = os.environ['SPEECH__SUBSCRIPTION__KEY'], os.environ['SPEECH__SERVICE__REGION']
 ```
 
-## <a name="create-a-speech-translation-configuration"></a>Een configuratie van spraakvertaling maken
+## <a name="create-a-speech-translation-configuration"></a>Een configuratie voor spraak omzetting maken
 
-Als u de spraakservice wilt aanroepen met [`SpeechTranslationConfig`][config]de Spraak-SDK, moet u een . . Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en bijbehorende regio, eindpunt, host of autorisatietoken.
+Als u de spraak service wilt aanroepen met behulp van de Speech SDK [`SpeechTranslationConfig`][config], moet u een maken. Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en de bijbehorende regio, het eind punt, de host of het autorisatie token.
 
 > [!TIP]
-> Ongeacht of u spraakherkenning, spraaksynthese, vertaling of intentieherkenning uitvoert, u maakt altijd een configuratie.
+> Ongeacht of u spraak herkenning, spraak synthese, vertaling of intentie herkenning uitvoert, maakt u altijd een configuratie.
 
-Er zijn een paar manieren waarop [`SpeechTranslationConfig`][config]u een initialiseren:
+Er zijn een paar manieren waarop u een [`SpeechTranslationConfig`][config]kunt initialiseren:
 
-* Met een abonnement: pas in een sleutel en de bijbehorende regio.
-* Met een eindpunt: geef een eindpunt van de spraakservice door. Een sleutel- of autorisatietoken is optioneel.
-* Met een host: geef een hostadres door. Een sleutel- of autorisatietoken is optioneel.
-* Met een autorisatietoken: geef een autorisatietoken en de bijbehorende regio door.
+* Met een abonnement: Geef een sleutel en de bijbehorende regio door.
+* Met een eind punt: Pass in een speech service-eind punt. Een sleutel-of autorisatie token is optioneel.
+* Met een host: Geef een hostadres door. Een sleutel-of autorisatie token is optioneel.
+* Met een autorisatie token: Geef een autorisatie token en de bijbehorende regio door.
 
-Laten we eens kijken [`SpeechTranslationConfig`][config] hoe een wordt gemaakt met behulp van een sleutel en regio. Zie de [pagina regioondersteuning](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) om uw regio-id te vinden.
+Laten we eens kijken hoe een [`SpeechTranslationConfig`][config] is gemaakt met behulp van een sleutel en regio. Bekijk de [ondersteunings](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) pagina voor regio's om uw regio-id te vinden.
 
 ```python
 from_language, to_language = 'en-US', 'de'
@@ -60,9 +60,9 @@ def translate_speech_to_text():
             subscription=speech_key, region=service_region)
 ```
 
-## <a name="change-source-language"></a>Brontaal wijzigen
+## <a name="change-source-language"></a>Bron taal wijzigen
 
-Een veelvoorkomende taak voor spraakvertaling is het opgeven van de invoer -taal (of bron). Laten we eens kijken hoe je de invoertaal in het Italiaans zou veranderen. In uw code kunt [`SpeechTranslationConfig`][config] u communiceren met `speech_recognition_language` de instantie en de eigenschap toewijzen.
+Een veelvoorkomende taak van spraak omzetting is het opgeven van de invoer-(of bron-) taal. Laten we eens kijken hoe u de invoer taal wijzigt in Italiaans. In uw code, communiceert u [`SpeechTranslationConfig`][config] met het exemplaar en wijst `speech_recognition_language` u deze toe aan de eigenschap.
 
 ```python
 def translate_speech_to_text():
@@ -73,11 +73,11 @@ def translate_speech_to_text():
     translation_config.speech_recognition_language = from_language
 ```
 
-De [`speech_recognition_language`][recognitionlang] accommodatie verwacht een tekenreeks voor taal-landformaat. U elke waarde in de kolom **Locale** vermelden in de lijst met ondersteunde [landlocaties/talen.](../../../language-support.md)
+De [`speech_recognition_language`][recognitionlang] eigenschap verwacht een indelings teken reeks voor taal-land instellingen. U kunt elke waarde in de kolom **land instelling** opgeven in de lijst met ondersteunde [land instellingen/talen](../../../language-support.md).
 
-## <a name="add-translation-language"></a>Vertaaltaal toevoegen
+## <a name="add-translation-language"></a>Vertaal taal toevoegen
 
-Een andere veelvoorkomende taak voor spraakvertaling is het opgeven van doelvertaaltalen, er is er ten minste één vereist, maar veelvouden worden ondersteund. In het volgende codefragment worden zowel Frans als Duits als vertaaltaal als doel.
+Een andere veelvoorkomende taak van spraak omzetting is het opgeven van talen voor doel omzetting, ten minste één is vereist, maar meerdere worden ondersteund. In het volgende code fragment, zowel Frans als Duits als Vertaal taal doelen.
 
 ```python
 def translate_speech_to_text():
@@ -91,13 +91,13 @@ def translate_speech_to_text():
     translation_config.add_target_language("de")
 ```
 
-Bij elke [`add_target_language`][addlang]oproep naar , wordt een nieuwe doelvertaaltaal opgegeven. Met andere woorden, wanneer spraak wordt herkend vanuit de brontaal, is elke doelvertaling beschikbaar als onderdeel van de resulterende vertaalbewerking.
+Bij elke aanroep van [`add_target_language`][addlang]wordt een nieuwe doel taal voor vertalen opgegeven. Met andere woorden, wanneer spraak wordt herkend vanuit de bron taal, is elke doel omzetting beschikbaar als onderdeel van de resulterende Vertaal bewerking.
 
-## <a name="initialize-a-translation-recognizer"></a>Een vertaalherkenninginitialiseren
+## <a name="initialize-a-translation-recognizer"></a>Een omzettings herkenning initialiseren
 
-Nadat u een [`SpeechTranslationConfig`][config], de volgende stap is [`TranslationRecognizer`][recognizer]het initialiseren van een . Wanneer u een [`TranslationRecognizer`][recognizer]initialiseren, moet je het `translation_config`doorgeven van uw . Het configuratieobject biedt de referenties die de spraakservice nodig heeft om uw aanvraag te valideren.
+Nadat u een [`SpeechTranslationConfig`][config]hebt gemaakt, is de volgende stap het initialiseren van [`TranslationRecognizer`][recognizer]een. Wanneer u een [`TranslationRecognizer`][recognizer]initialiseert, moet u het door geven aan uw `translation_config`. Het configuratie object bevat de referenties die de speech-service nodig heeft om uw aanvraag te valideren.
 
-Als u spraak herkent met de standaardmicrofoon van uw apparaat, ziet deze [`TranslationRecognizer`][recognizer] er als volgt uit:
+Als u spraak wilt herkennen met de standaard microfoon van uw apparaat, ziet u het [`TranslationRecognizer`][recognizer] volgende:
 
 ```python
 def translate_speech_to_text():
@@ -111,12 +111,12 @@ def translate_speech_to_text():
             translation_config=translation_config)
 ```
 
-Als u het audio-invoerapparaat wilt opgeven, moet [`AudioConfig`][audioconfig] u een `audio_config` parameter maken [`TranslationRecognizer`][recognizer]en de parameter opgeven bij het initialiseren van uw .
+Als u het audio-invoer apparaat wilt opgeven, moet u een [`AudioConfig`][audioconfig] maken en de `audio_config` para meter opgeven bij het initialiseren van uw [`TranslationRecognizer`][recognizer].
 
 > [!TIP]
-> [Meer informatie over het krijgen van de apparaat-id voor uw audio-invoerapparaat](../../../how-to-select-audio-input-devices.md).
+> [Meer informatie over het ophalen van de apparaat-id voor het apparaat voor audio-invoer](../../../how-to-select-audio-input-devices.md).
 
-Eerst verwijst u als `AudioConfig` volgt naar het object:
+Eerst verwijst u als volgt naar `AudioConfig` het object:
 
 ```python
 def translate_speech_to_text():
@@ -132,7 +132,7 @@ def translate_speech_to_text():
             translation_config=translation_config, audio_config=audio_config)
 ```
 
-Als u een audiobestand wilt verstrekken in plaats van een microfoon `audioConfig`te gebruiken, moet u nog steeds een . Wanneer u echter [`AudioConfig`][audioconfig]een - in `use_default_microphone=True`plaats van te `filename="path-to-file.wav"` bellen `filename` met - maakt, belt u met en verstrekt u de parameter.
+Als u een audio bestand wilt opgeven in plaats van een microfoon te gebruiken, moet u nog steeds een `audioConfig`opgeven. Wanneer u [`AudioConfig`][audioconfig]echter een maakt in plaats van aan `use_default_microphone=True`te roepen, roept u aan `filename="path-to-file.wav"` en geeft u de `filename` para meter op.
 
 ```python
 def translate_speech_to_text():
@@ -150,7 +150,7 @@ def translate_speech_to_text():
 
 ## <a name="translate-speech"></a>Spraak vertalen
 
-Om spraak te vertalen, vertrouwt de Speech SDK op een microfoon of een audiobestandsinvoer. Spraakherkenning vindt plaats vóór spraakvertaling. Nadat alle objecten zijn geïnitialiseerd, roept u de functie herkennen-eens aan en krijgt u het resultaat.
+Om spraak te kunnen vertalen, is de spraak-SDK afhankelijk van een microfoon of een audio bestand invoer. Spraak herkenning vindt plaats voordat spraak wordt vertaald. Wanneer alle objecten zijn geïnitialiseerd, roept u de functie recognize Once aan en haalt u het resultaat op.
 
 ```python
 import os
@@ -187,18 +187,18 @@ def get_result_text(reason, result):
 translate_speech_to_text()
 ```
 
-Zie [de basisprincipes van spraakherkenning](../../../speech-to-text-basics.md)voor meer informatie over spraak-naar-tekst.
+Zie [basis beginselen van spraak herkenning](../../../speech-to-text-basics.md)voor meer informatie over spraak naar tekst.
 
-## <a name="synthesize-translations"></a>Vertalingen synthetiseren
+## <a name="synthesize-translations"></a>Vertalingen voor synthesizer
 
-Na een succesvolle spraakherkenning en vertaling bevat het resultaat alle vertalingen in een woordenboek. De [`translations`][translations] woordenboeksleutel is de doelvertaaltaal en de waarde is de vertaalde tekst. Herkende spraak kan worden vertaald en vervolgens gesynthetiseerd in een andere taal (spraak-naar-spraak).
+Na een geslaagde spraak herkenning en-omzetting bevat het resultaat alle vertalingen in een woorden lijst. De [`translations`][translations] woordenlijst sleutel is de taal voor de doel omzetting en de waarde is de vertaalde tekst. Herkende spraak kan worden vertaald en vervolgens in een andere taal (spraak naar spraak) worden gesynthesizerd.
 
 ### <a name="event-based-synthesis"></a>Op gebeurtenissen gebaseerde synthese
 
-Het `TranslationRecognizer` object legt `Synthesizing` een gebeurtenis bloot. De gebeurtenis wordt meerdere keren geactiveerd en biedt een mechanisme om de gesynthetiseerde audio uit het resultaat van de vertaalherkenning op te halen. Als u naar meerdere talen vertaalt, raadpleegt u [handmatige synthese](#manual-synthesis). Geef de synthesestem op [`voice_name`][voicename] door een gebeurtenishandler `Synthesizing` toe te wijs en een gebeurtenishandler voor de gebeurtenis op te nemen, de audio op te nemen. In het volgende voorbeeld wordt de vertaalde audio opgeslagen als een *.wav-bestand.*
+Het `TranslationRecognizer` object toont een `Synthesizing` gebeurtenis. De gebeurtenis wordt meerdere keren geactiveerd en biedt een mechanisme voor het ophalen van de gesynthesizerde audio uit het resultaat van de vertalings herkenning. Zie [hand matige synthese](#manual-synthesis)als u naar meerdere talen wilt vertalen. Geef de synthese stem op door een [`voice_name`][voicename] gebeurtenis-handler `Synthesizing` toe te wijzen en de audio op te halen. In het volgende voor beeld wordt de vertaalde audio opgeslagen als *WAV* -bestand.
 
 > [!IMPORTANT]
-> De gebeurtenisgebaseerde synthese werkt slechts met één vertaling, voeg **geen** meerdere doelvertaaltalen toe. Bovendien moet [`voice_name`][voicename] het dezelfde taal zijn als bijvoorbeeld de doelvertaaltaal; `"de"` kon in `"de-DE-Hedda"`kaart brengen naar .
+> De op gebeurtenissen gebaseerde synthese werkt alleen met één vertaling, Voeg **geen** meerdere talen voor doel omzetting toe. Daarnaast moet het [`voice_name`][voicename] dezelfde taal zijn als de taal van de doel omzetting, bijvoorbeeld; `"de"` kan worden toegewezen `"de-DE-Hedda"`aan.
 
 ```python
 import os
@@ -250,9 +250,9 @@ def get_result_text(reason, result):
 translate_speech_to_text()
 ```
 
-### <a name="manual-synthesis"></a>Handmatige synthese
+### <a name="manual-synthesis"></a>Hand matige synthese
 
-Het [`translations`][translations] woordenboek kan worden gebruikt om audio uit de vertaaltekst te synthetiseren. Door elke vertaling te herhalen en de vertaling te synthetiseren. Bij het `SpeechSynthesizer` maken `SpeechConfig` van een instantie [`speech_synthesis_voice_name`][speechsynthesisvoicename] moet het object zijn eigenschap hebben ingesteld op de gewenste stem. Het volgende voorbeeld vertaalt naar vijf talen en elke vertaling wordt vervolgens gesynthetiseerd naar een audiobestand in de overeenkomstige neurale taal.
+De [`translations`][translations] woorden lijst kan worden gebruikt om de audio van de Vertaal tekst te defragmenteren. Herhaal elke vertaling en synthesizer de vertaling. Bij het maken `SpeechSynthesizer` van een exemplaar `SpeechConfig` moet de [`speech_synthesis_voice_name`][speechsynthesisvoicename] eigenschap van het object op de gewenste stem zijn ingesteld. In het volgende voor beeld worden de vijf talen omgezet en elke vertaling wordt vervolgens op een audio bestand in de bijbehorende Neural-taal gesynthesizerd.
 
 ```python
 import os
@@ -300,7 +300,7 @@ def synthesize_translations(result):
 translate_speech_to_text()
 ```
 
-Voor meer informatie over spraaksynthese, zie [de basisprincipes van spraaksynthese.](../../../text-to-speech-basics.md)
+Zie [basis beginselen van spraak synthese](../../../text-to-speech-basics.md)voor meer informatie over spraak synthese.
 
 [config]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.speechtranslationconfig?view=azure-python
 [audioconfig]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python

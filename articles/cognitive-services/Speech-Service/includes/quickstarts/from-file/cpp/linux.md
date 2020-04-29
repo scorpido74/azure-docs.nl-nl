@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
 ms.openlocfilehash: ef0ee6047bd23206a2c0122b9409e00cee5f0ddf
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400487"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u:
+Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Een Azure-spraakbron maken](../../../../get-started.md)
-> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programming-language-cpp)
+> * [Een Azure-spraak resource maken](../../../../get-started.md)
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programming-language-cpp)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
@@ -29,12 +29,12 @@ Voordat u aan de slag gaat, moet u:
 
 1. Vervang in dit nieuwe bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel van de Speech-service.
 
-1. Vervang de `YourServiceRegion` tekenreeks door de **regio-id** van [regio](https://aka.ms/speech/sdkregion) die is gekoppeld aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de teken `YourServiceRegion` reeks door de **regio-id** uit de [regio](https://aka.ms/speech/sdkregion) die is gekoppeld aan uw `westus` abonnement (bijvoorbeeld voor het gratis proef abonnement).
 
-1. Vervang de `whatstheweatherlike.wav` tekenreeks door uw eigen bestandsnaam.
+1. Vervang de teken `whatstheweatherlike.wav` reeks door uw eigen bestands naam.
 
 > [!NOTE]
-> De Spraak-SDK wordt standaard herkend door het gebruik van en-ons voor de taal, zie [Brontaal opgeven voor spraak naar tekst](../../../../how-to-specify-source-language.md) voor informatie over het kiezen van de brontaal.
+> De spraak-SDK wordt standaard herkend door en-US voor de taal. Zie de [bron taal voor spraak opgeven](../../../../how-to-specify-source-language.md) voor de tekst voor informatie over het kiezen van de bron taal.
 
 ## <a name="build-the-app"></a>De app bouwen
 
@@ -53,7 +53,7 @@ Voordat u aan de slag gaat, moet u:
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
-* Voer op een **ARM64-systeem** (64-bits) de volgende opdracht uit om de toepassing te bouwen.
+* Voer op een **ARM64** -systeem (64-bits) de volgende opdracht uit om de toepassing te bouwen.
 
   ```sh
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
@@ -75,7 +75,7 @@ Voordat u aan de slag gaat, moet u:
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
      ```
 
-   * Voer op een **ARM64-systeem** (64-bits) de volgende opdracht in.
+   * Voer de volgende opdracht in op een **ARM64** -systeem (64-bits).
 
      ```sh
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/arm64"
@@ -87,7 +87,7 @@ Voordat u aan de slag gaat, moet u:
    ./helloworld
    ```
 
-1. Uw audiobestand wordt verzonden naar de spraakservice en de eerste uiting in het bestand wordt getranscribeerd naar tekst, die in hetzelfde venster wordt weergegeven.
+1. Uw audio bestand wordt verzonden naar de speech-service en de eerste utterance in het bestand wordt naar tekst getranscribeerd, die in hetzelfde venster wordt weer gegeven.
 
    ```text
    Recognizing first result...

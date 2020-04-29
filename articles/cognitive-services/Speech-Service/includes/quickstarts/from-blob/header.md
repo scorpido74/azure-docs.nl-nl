@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: spraak herkennen die is opgeslagen in blobopslag - Spraakservice'
+title: 'Quick Start: spraak herkennen die zijn opgeslagen in de Blob Storage-Speech-Service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -12,14 +12,14 @@ ms.date: 03/13/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 514d1197c5e6d0f4c0f38faf24c6c2522d489820
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400930"
 ---
-In deze quickstart gebruikt u een REST API om spraak uit bestanden in een batchproces te herkennen. Een batchproces voert de spraaktranscriptie uit zonder gebruikersinteracties. Het geeft u een eenvoudig programmeermodel, zonder de noodzaak om gelijktijdigheid, aangepaste spraakmodellen of andere details te beheren. Het omvat geavanceerde controleopties, terwijl efficiënt gebruik wordt gemaakt van Azure-spraakservicebronnen.
+In deze Quick start gaat u een REST API gebruiken om spraak te herkennen van bestanden in een batch-proces. Een batch-proces voert de spraak transcriptie uit zonder gebruikers interacties. Het biedt u een eenvoudig programmeer model, zonder de nood zaak om gelijktijdigheid, aangepaste spraak modellen of andere gegevens te beheren. Dit omvat geavanceerde beheer opties, terwijl er efficiënt gebruik wordt gemaakt van Azure speech-service bronnen.
 
-Zie [batchtranscriptie voor](../../../batch-transcription.md)meer informatie over de beschikbare opties en configuratiedetails.
+Zie [batch transcriptie](../../../batch-transcription.md)voor meer informatie over de beschik bare opties en configuratie details.
 
-De volgende quickstart loopt u door een gebruiksvoorbeeld.
+In de volgende snelstartgids vindt u een voor beeld van het gebruik.

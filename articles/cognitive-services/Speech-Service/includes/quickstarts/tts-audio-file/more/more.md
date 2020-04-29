@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: trbye
 ms.openlocfilehash: 793efa7bb3165a74861a9fb437379de84ccb6688
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400302"
 ---
-## <a name="additional-language-and-platform-support"></a>Aanvullende taal- en platformondersteuning
+## <a name="additional-language-and-platform-support"></a>Aanvullende taal-en platform ondersteuning
 
-Als u op dit tabblad hebt geklikt, hebt u waarschijnlijk geen snelle start in uw favoriete programmeertaal gezien. Maak je geen zorgen, we hebben extra quickstart materialen en code samples beschikbaar op GitHub. Gebruik de tabel om het juiste voorbeeld te vinden voor uw programmeertaal en platform/OS-combinatie.
+Als u op dit tabblad hebt geklikt, ziet u waarschijnlijk geen Snelstartgids in uw favoriete programmeer taal. Geen zorgen: er zijn extra Quick Start-materialen en code voorbeelden beschikbaar op GitHub. Gebruik de tabel om het juiste voor beeld te vinden voor uw programmeer taal en combi natie van platform/OS.
 
-| Taal | Extra quickstarts | Codevoorbeelden |
+| Taal | Extra Quick starts | Codevoorbeelden |
 |--|--|--|
-| C# | [Naar een luidspreker][1-speaker] | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Eenheid][unity], [Xamarin][xamarin] |
-| C++ | [Naar een luidspreker][2-speaker] | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac] |
-| Java | [Naar een luidspreker][3-speaker] | [Android][java-android], [JRE][java-jre] |
-| Javascript | [Node.js naar een audiobestand][js-node] | [Windows, Linux, macOS][js-code] |
-| Objective-C | [iOS naar speaker,][obj-iOS-qck] [macOS naar speaker][obj-macOS-qck] | [iOS][obj-iOS], [macOS][obj-macOS] |
-| Python | [Naar een luidspreker][4-speaker] | [Windows, Linux, macOS][python] |
-| Swift | [iOS naar speaker,][swift-iOS-qck] [macOS naar speaker][swift-macOS-qck] | [iOS][swift-iOS], [macOS][swift-macOS] |
+| C# | [Naar een spreker][1-speaker] | [.NET Framework][dotnet], [.net core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
+| C++ | [Naar een spreker][2-speaker] | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac] |
+| Java | [Naar een spreker][3-speaker] | [Android][java-android], [jre][java-jre] |
+| Javascript | [Node. js naar een audio bestand][js-node] | [Windows, Linux, macOS][js-code] |
+| Objective-C | [IOS naar spreker][obj-iOS-qck], [macOS naar spreker][obj-macOS-qck] | [IOS][obj-iOS], [macOS][obj-macOS] |
+| Python | [Naar een spreker][4-speaker] | [Windows, Linux, macOS][python] |
+| Swift | [IOS naar spreker][swift-iOS-qck], [macOS naar spreker][swift-macOS-qck] | [IOS][swift-iOS], [macOS][swift-macOS] |
 
 [1-speaker]: ../../../../quickstarts/text-to-speech.md?pivots=programming-language-csharp
 

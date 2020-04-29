@@ -1,7 +1,7 @@
 ---
-title: Basics voor spraakherkenning - Spraakservice
+title: Basis beginselen van spraak herkenning-spraak service
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het gebruik van de Spraak-SDK om spraak-naar-tekst te converteren. In dit artikel leert u over objectconstructie, ondersteunde audio-invoerindelingen en configuratieopties voor spraakherkenning.
+description: Meer informatie over het gebruik van de Speech SDK voor het converteren van spraak naar tekst. In dit artikel leert u meer over object constructie, ondersteunde audio-invoer indelingen en configuratie opties voor spraak herkenning.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,18 +12,18 @@ ms.date: 04/14/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-sixteen
 ms.openlocfilehash: bdf8db4a7c946a50698d35aada5950ded671afb7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81399750"
 ---
-# <a name="learn-the-basics-of-speech-recognition"></a>Leer de basisprincipes van spraakherkenning
+# <a name="learn-the-basics-of-speech-recognition"></a>Meer informatie over de basis beginselen van spraak herkenning
 
-Een van de belangrijkste kenmerken van de Spraakdienst is de mogelijkheid om menselijke spraak te herkennen en te transcriberen (vaak aangeduid als spraak naar tekst). In dit artikel leert u hoe u de Spraak-SDK gebruiken in uw apps en producten om spraakherkenning van hoge kwaliteit uit te voeren.
+Een van de belangrijkste functies van de speech-service is de mogelijkheid om menselijk speech te herkennen en te transcriberen (dit wordt ook wel spraak naar tekst genoemd). In dit artikel leert u hoe u de Speech SDK in uw apps en producten kunt gebruiken voor het uitvoeren van spraak herkenning van hoge kwaliteit.
 
 > [!TIP]
-> Als je nog geen kans hebt gehad om een van onze quickstarts te voltooien, raden we je aan om de banden te schoppen en zelf spraakherkenning uit te proberen.
+> Als u een van onze Quick starts nog niet hebt kunnen volt ooien, raden we u aan om de banden te starten en de spraak herkenning zelf uit te proberen.
 > * [Spraak herkennen met een microfoon](quickstarts/speech-to-text-from-microphone.md)
 
 ::: zone pivot="programming-language-csharp"
@@ -52,4 +52,4 @@ Een van de belangrijkste kenmerken van de Spraakdienst is de mogelijkheid om men
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Codec gecomprimeerde audio-indelingen gebruiken](how-to-use-codec-compressed-audio-input-streams.md)
+* [Gecomprimeerde audio-indelingen van codec gebruiken](how-to-use-codec-compressed-audio-input-streams.md)

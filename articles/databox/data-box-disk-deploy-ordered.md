@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie voor het bestellen van Azure Data Box Disk | Microsoft Documenten
+title: Zelf studie voor het best Ellen van Azure Data Box Disk | Microsoft Docs
 description: Gebruik deze zelfstudie om te leren hoe u zich registreert en een Azure Data Box Disk bestelt waarmee u gegeven in Azure importeert.
 services: databox
 author: alkohli
@@ -10,13 +10,13 @@ ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
 ms.openlocfilehash: 7b27f10567816884b14a0a2c69e3bd8e85cb7a76
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81398706"
 ---
-# <a name="tutorial-order-an-azure-data-box-disk"></a>Zelfstudie: Een Azure-gegevensvakschijf bestellen
+# <a name="tutorial-order-an-azure-data-box-disk"></a>Zelf studie: een Azure Data Box Disk best Ellen
 
 Azure Data Box Disk is een hybride cloudoplossing waarmee u uw on-premises gegevens snel, eenvoudig en betrouwbaar in Azure importeert. U zet uw gegevens op SSD-schijven (solid-state drives) die Microsoft naar u heeft verstuurd en u stuurt de schijven terug. Deze gegevens worden vervolgens geüpload in Azure.
 
@@ -39,23 +39,23 @@ Voltooi voordat u met de implementatie begint de volgende configuratievereisten 
 
 Zorg voordat u begint voor het volgende:
 - U hebt een clientcomputer beschikbaar van waaruit u de gegevens kunt kopiëren. De clientcomputer moet voldoen aan deze vereisten:
-    - Voer een [ondersteund besturingssysteem uit](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
+    - Een [ondersteund besturings systeem](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)uitvoeren.
     - Andere [vereiste software](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) is geïnstalleerd in het geval van een Windows-client.  
 
 ## <a name="order-data-box-disk"></a>Data Box Disk bestellen
 
-Log hier in:
+Meld u aan bij:
 
-- De Azure-portal op https://portal.azure.com deze URL: om gegevensboxschijf te bestellen.
-- Of de Azure Government-portal https://portal.azure.usop deze URL: . Ga voor meer informatie naar [Verbinding maken met Azure Government via de portal.](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)
+- Het Azure Portal op deze URL: https://portal.azure.com om data Box disk te best Ellen.
+- Of de Azure Government Portal op deze URL: https://portal.azure.us. Ga voor meer informatie naar [verbinding maken met Azure Government met behulp van de portal](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
-Volg de volgende stappen om Data Box Disk te bestellen.
+Voer de volgende stappen uit om Data Box Disk te best Ellen.
 
 1. Klink linksboven in de hoek van de portal op **+ Een resource maken** en zoek naar *Azure Data Box*. Klik op **Azure Data Box**.
     
    ![Zoek naar Azure Data Box 1](media/data-box-disk-deploy-ordered/search-data-box11.png)
 
-2. Klik **op Maken**.
+2. Klik op **maken**.
 
 3. Controleer of de Data Box-service beschikbaar is in uw regio. Voer de volgende gegevens in of selecteer deze en klik op **Toepassen**.
 
@@ -82,21 +82,21 @@ Volg de volgende stappen om Data Box Disk te bestellen.
     |Doel-Azure-regio| Selecteer een regio voor uw opslagaccount.<br> Momenteel worden opslagaccounts in alle regio's in de VS, West- en Noord-Europa, Canada en Australië ondersteund. |
     |Geschatte gegevensgrootte in TB| Voer een schatting in TB in. <br>Op basis van de gegevensgrootte stuurt Microsoft u het juiste aantal SSD-schijven van 8 TB (7 TB aan bruikbare capaciteit). <br>De maximale bruikbare capaciteit van 5 schijven is 35 TB. |
     |Wachtwoordsleutel voor schijf| Geef de wachtwoordsleutel voor schijf op als u het selectievakje **Aangepaste sleutel gebruiken in plaats van door Azure gegenereerde sleutel** inschakelt. <br> Geef een alfanumerieke sleutel tussen 12 tot 32 tekens lang op met ten minste één numeriek en één speciaal teken. Alleen de speciale tekens `@?_+` zijn toegestaan. <br> U kunt deze optie overslaan en de door Azure gegenereerde wachtwoordsleutel gebruiken om uw schijven te ontgrendelen.|
-    |Opslaglocatie     | Kies een opslagaccount, beheerde schijven of beide. <br> Selecteer op basis van het opgegeven Azure-gebied een opslagaccount in de gefilterde lijst van een bestaand opslagaccount. Data Box Disk kan worden gekoppeld aan slechts 1 opslagaccount. <br> U kunt ook een nieuw account van het type **Algemeen gebruik v1**, **Algemeen gebruik v2** of **Blob-opslag** maken. <br>Opslagaccounts met virtuele netwerken worden ondersteund. Als u wilt dat de Data Box-service kan werken met beveiligde opslagaccounts, schakelt u in de firewallinstellingen van het opslagaccount de vertrouwde services in. Zie voor meer informatie hoe u [Azure Data Box toevoegt als een vertrouwde service](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).|
+    |Opslaglocatie     | Kies een opslagaccount, beheerde schijven of beide. <br> Selecteer op basis van de opgegeven Azure-regio een opslag account in de gefilterde lijst van een bestaand opslag account. Data Box Disk kan worden gekoppeld aan slechts één opslag account. <br> U kunt ook een nieuw account van het type **Algemeen gebruik v1**, **Algemeen gebruik v2** of **Blob-opslag** maken. <br>Opslagaccounts met virtuele netwerken worden ondersteund. Als u wilt dat de Data Box-service kan werken met beveiligde opslagaccounts, schakelt u in de firewallinstellingen van het opslagaccount de vertrouwde services in. Zie [Azure data Box toevoegen als een vertrouwde service](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)voor meer informatie.|
 
     Als u een opslagaccount selecteert als de opslaglocatie, ziet u het volgende scherm:
 
-    ![Gegevensvakschijfvolgorde voor opslagaccount](media/data-box-disk-deploy-ordered/order-storage-account.png)
+    ![Data Box Disk volgorde voor het opslag account](media/data-box-disk-deploy-ordered/order-storage-account.png)
 
-    Als u Data Box Disk gebruikt om beheerde schijven te maken van de on-premises VHD's, moet u ook de volgende informatie verstrekken:
+    Als Data Box Disk gebruikt om beheerde schijven te maken op basis van de on-premises Vhd's, moet u ook de volgende informatie opgeven:
 
     |Instelling  |Waarde  |
     |---------|---------|
-    |Resourcegroep     | Maak een nieuwe resourcegroep als u beheerde schijven wilt maken van on-premises VHD's. Gebruik een bestaande brongroep alleen als deze is gemaakt voor de volgorde van de gegevensboxschijf voor beheerde schijf door de Data Box-service. <br> Er wordt slechts één resourcegroep ondersteund.|
+    |Resourcegroep     | Maak een nieuwe resource groep als u beheerde schijven wilt maken op basis van on-premises Vhd's. Gebruik een bestaande resource groep alleen als deze is gemaakt voor Data Box Disk volg orde voor de Data Box-Service voor beheerde schijven. <br> Er wordt slechts één resource groep ondersteund.|
 
-    ![Volgorde van gegevensvakschijf voor beheerde schijf](media/data-box-disk-deploy-ordered/order-managed-disks.png)
+    ![Data Box Disk volgorde voor beheerde schijf](media/data-box-disk-deploy-ordered/order-managed-disks.png)
 
-    Het opslagaccount dat is opgegeven voor beheerde schijven wordt gebruikt als een opslagaccount waarin de gegevens worden klaargezet. De Data Box-service uploadt de VHD's naar het opslagaccount voor tijdelijke bestanden en zet deze vervolgens om in beheerde schijven en wordt verplaatst naar de brongroepen. Zie [Uploaden van gegevens naar Azure controleren](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure) voor meer informatie.
+    Het opslagaccount dat is opgegeven voor beheerde schijven wordt gebruikt als een opslagaccount waarin de gegevens worden klaargezet. De Data Box-Service uploadt de Vhd's naar het staging Storage-account en converteert die vervolgens naar Managed disks en verplaatst naar de resource groepen. Zie [Uploaden van gegevens naar Azure controleren](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure) voor meer informatie.
 
 13. Klik op **Volgende**.
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
 ms.openlocfilehash: 871f992f6457a846d29a7145d53a7e382cbe10dd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400715"
 ---
 ## <a name="prerequisites"></a>Vereisten
@@ -16,20 +16,20 @@ ms.locfileid: "81400715"
 Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een Azure-spraakbron maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
-> * Zorg ervoor dat u toegang hebt tot een microfoon voor audio-opname
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een Azure-spraak resource maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
+> * Zorg ervoor dat u toegang tot een microfoon hebt voor het vastleggen van audio
 
 ## <a name="open-your-project-in-visual-studio"></a>Uw project openen in Visual Studio
 
-De eerste stap is ervoor te zorgen dat u uw project open hebt in Visual Studio.
+De eerste stap is om ervoor te zorgen dat uw project in Visual Studio is geopend.
 
 1. Start **Visual Studio 2019**.
-2. Laad uw project en open *Program.cs.*
+2. Laad uw project en open *Program.cs*.
 
 ## <a name="source-code"></a>Broncode
 
-Vervang de inhoud van het *Program.cs* bestand door de volgende C#-code.
+Vervang de inhoud van het *Program.cs* -bestand door de volgende C#-code.
 
 ```csharp
 using System;
@@ -85,17 +85,17 @@ namespace Speech.Recognition
 
 [!INCLUDE [replace key and region](../replace-key-and-region.md)]
 
-## <a name="code-explanation"></a>Code uitleg
+## <a name="code-explanation"></a>Uitleg bij code
 
 [!INCLUDE [code explanation](../code-explanation.md)]
 
 ## <a name="build-and-run-app"></a>App bouwen en uitvoeren
 
-Nu bent u klaar om uw app opnieuw op te bouwen en de spraakherkenningsfunctionaliteit te testen met behulp van de spraakservice.
+Nu bent u klaar om uw app opnieuw te bouwen en de functionaliteit voor spraak herkenning te testen met behulp van de speech-service.
 
-1. **Compileer de code** - Kies op de menubalk van Visual Studio **Build** > **Solution**.
-2. **Start uw app** - Kies op de menubalk Debug**genfout opsporing van** **foutopsporing debuggen** > of druk op <kbd>F5</kbd>.
-3. **Start erkenning** - Het zal u vragen om een zin in het Engels te spreken. Uw toespraak wordt verzonden naar de spraakservice, getranscribeerd als tekst en weergegeven in de console.
+1. **De code compileren** **: Kies** > build**Build Solution**in de menu balk van Visual Studio.
+2. **Start uw app** -vanuit de menu balk, kies **fout** > **opsporing starten** of druk op <kbd>F5</kbd>.
+3. De **herkenning starten** : u wordt gevraagd om een woord groep in het Engels te spreken. Uw spraak wordt verzonden naar de spraak service, getranscribeerd als tekst en weer gegeven in de-console.
 
 ## <a name="next-steps"></a>Volgende stappen
 

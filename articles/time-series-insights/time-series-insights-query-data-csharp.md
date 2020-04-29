@@ -1,6 +1,6 @@
 ---
-title: Gegevens uit een GA-omgeving opvragen met C#-code - Azure Time Series Insights | Microsoft Documenten
-description: Meer informatie over het opvragen van gegevens uit een Azure Time Series Insights-omgeving met behulp van een aangepaste app die is geschreven in C#.
+title: Gegevens opvragen uit een GA-omgeving met C#-code-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over het opvragen van gegevens uit een Azure Time Series Insights omgeving met behulp van een aangepaste app die is geschreven in C#.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,73 +12,73 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: 754d1b80236d138693987cccee7a218ccd96b16b
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81383888"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Querygegevens uit de GA-omgeving met Inzichten in Azure Time Series met C #
+# <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Gegevens opvragen uit de Azure Time Series Insights GA-omgeving met C #
 
-In dit c#-voorbeeld wordt uitgelegd hoe u de [GA-query-API's](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) gebruiken om gegevens uit GA-omgevingen met azure-time-reeksen te bevragen.
+Dit C#-voor beeld laat zien hoe u de [Ga query-api's](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) kunt gebruiken om gegevens uit Azure time series Insights ga-omgevingen op te vragen.
 
 > [!TIP]
-> Bekijk GA C# [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)code samples op .
+> GA C#-code voorbeelden weer [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)geven op.
 
 ## <a name="summary"></a>Samenvatting
 
-De onderstaande voorbeeldcode toont de volgende kenmerken:
+De voorbeeld code hieronder bevat de volgende functies:
 
-* Een toegangstoken aanschaffen via Azure Active Directory met [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).
+* Een toegangs token verkrijgen via Azure Active Directory met behulp van [micro soft. Identity model. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).
 
-* Hoe dat verkregen toegangstoken `Authorization` door te geven in de header van volgende Query API-aanvragen. 
+* Het aangeschafte toegangs token in de `Authorization` koptekst van volgende query-API-aanvragen door geven. 
 
-* De voorbeeldaanroepen elk van de GA Query API's laten zien hoe HTTP-aanvragen worden gedaan om de:
-    * [Get Environments API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environments-api) to return the environments the user has access to
-    * [API voor beschikbaarheid van omgeving en beschikbaarheid](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-availability-api)
-    * [Api voor omgevingmetagegevens](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-metadata-api) ophalen om metagegevens van omgevingop te halen
-    * [API voor gebeurtenissen voor omgevingen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)
-    * [API voor omgevingsaggregaten verzamelen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api)
+* In het voor beeld wordt elk van de GA query-Api's gedemonstreerd hoe HTTP-aanvragen worden gedaan voor:
+    * De [omgevings-API ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environments-api) om de omgevingen te retour neren waartoe de gebruiker toegang heeft
+    * [API voor omgevings beschikbaarheid ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-availability-api)
+    * [API voor omgevings gegevens ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-metadata-api) om de meta gegevens van de omgeving op te halen
+    * [API voor omgevings gebeurtenissen ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)
+    * [API voor samen stellen van omgeving ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api)
     
-* Hoe te communiceren met de GA Query API's met behulp van WSS om een bericht:
+* Hoe u kunt communiceren met de GA query-Api's met behulp van WSS om het volgende te doen:
 
-   * [Gestreamde API voor omgevingsgebeurtenissen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-streamed-api)
-   * [Gestreamde API voor omgevingsaggregaten](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-streamed-api)
+   * [Gestreamde API voor de omgevings gebeurtenissen ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-streamed-api)
+   * [Gestreamde API voor de omgeving ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-streamed-api)
 
-## <a name="prerequisites-and-setup"></a>Voorwaarden en installatie
+## <a name="prerequisites-and-setup"></a>Vereisten en installatie
 
-Voer de volgende stappen uit voordat u de voorbeeldcode compileert en uitvoert:
+Voer de volgende stappen uit voordat u de voorbeeld code compileert en uitvoert:
 
-1. [Inrichten van een GA Azure Time Series Insights-omgeving.](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)
-1. Configureer uw Azure Time Series Insights-omgeving voor Azure Active Directory zoals beschreven in [Verificatie en autorisatie.](time-series-insights-authentication-and-authorization.md) 
-1. Installeer de vereiste projectafhankelijkheden.
-1. Bewerk de onderstaande voorbeeldcode door elke **#DUMMY#** te vervangen door de juiste omgevings-id.
-1. Voer de code uit in Visual Studio.
+1. [Richt een GA Azure time series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started) -omgeving in.
+1. Configureer uw Azure Time Series Insights-omgeving voor Azure Active Directory zoals beschreven in [verificatie en autorisatie](time-series-insights-authentication-and-authorization.md). 
+1. Installeer de vereiste project afhankelijkheden.
+1. Bewerk de voorbeeld code hieronder door elk **#DUMMY #** te vervangen door de juiste omgevings-id.
+1. Voer de code in Visual Studio uit.
 
 ## <a name="project-dependencies"></a>Projectafhankelijkheden
 
-Het wordt aanbevolen om de nieuwste versie van Visual Studio te gebruiken:
+Het is raadzaam om de nieuwste versie van Visual Studio te gebruiken:
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) - Versie 16.4.2+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) -versie 16.4.2 +
 
-De voorbeeldcode heeft twee vereiste afhankelijkheden:
+De voorbeeld code bevat twee vereiste afhankelijkheden:
 
-* [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) - 3.13.9-pakket.
-* [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) - 9.0.1 pakket.
+* Het pakket [micro soft. Identity model. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -3.13.9.
+* [Newton soft. json](https://www.nuget.org/packages/Newtonsoft.Json) -9.0.1-pakket.
 
-Download de pakketten in Visual Studio 2019 door de optie **Build** > **Build Solution te** selecteren.
+Down load de pakketten in Visual Studio 2019 **door de** > optie build**Build Solution** te selecteren.
 
-U ook de pakketten toevoegen met [NuGet 2.12+](https://www.nuget.org/):
+U kunt de pakketten ook toevoegen met behulp van [NuGet 2.12 +](https://www.nuget.org/):
 
 * `dotnet add package Newtonsoft.Json --version 9.0.1`
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 3.13.9`
 
-## <a name="c-sample-code"></a>C#voorbeeldcode
+## <a name="c-sample-code"></a>C#-voorbeeld code
 
 [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees de [query-API-verwijzing](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)voor meer informatie over query's.
+- Lees de [query-API-verwijzing](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)voor meer informatie over het uitvoeren van query's.
 
-- Lees hoe u [een JavaScript-app aansluit met de SDK van de client](https://github.com/microsoft/tsiclient) met Time Series Insights.
+- Lees hoe u [met de client-SDK verbinding maakt met een Java script-app](https://github.com/microsoft/tsiclient) om te time series Insights.

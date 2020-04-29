@@ -1,7 +1,7 @@
 ---
-title: Aangepaste vaardigheid formulierherkenning (C#)
+title: Aangepaste vaardigheid van de formulier herkenning (C#)
 titleSuffix: Azure Cognitive Search
-description: Meer informatie over het maken van een aangepaste vaardigheid voor formulierherkenning met C# en Visual Studio.
+description: Meer informatie over het maken van aangepaste vaardig heden voor een formulier herkenning met C# en Visual Studio.
 manager: nitinme
 author: PatrickFarley
 ms.author: pafarley
@@ -9,51 +9,51 @@ ms.service: cognitive-search
 ms.topic: article
 ms.date: 01/21/2020
 ms.openlocfilehash: 713b790c432f0e416392243262aed4b0fcda8892
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81274573"
 ---
-# <a name="example-create-a-form-recognizer-custom-skill"></a>Voorbeeld: een aangepaste vaardigheid voor formulierherkenning maken
+# <a name="example-create-a-form-recognizer-custom-skill"></a>Voor beeld: een aangepaste vaardigheid voor het herkennen van een formulier maken
 
-In dit azure cognitive search-vaardigheidssetvoorbeeld leert u hoe u een aangepaste vaardigheid voor formulierherkenning maakt met C# en Visual Studio. Form Recognizer analyseert documenten en haalt sleutel-/waardeparen en tabelgegevens uit. Door Form Recognizer in de [aangepaste vaardigheidsinterface](cognitive-search-custom-skill-interface.md)te verpakken, u deze mogelijkheid toevoegen als een stap in een end-to-end verrijkingspijplijn. De pijplijn kan vervolgens de documenten laden en andere transformaties uitvoeren.
+In dit voor beeld van Azure Cognitive Search vaardig heden leert u hoe u een aangepaste vaardigheid voor een formulier herkenning kunt maken met C# en Visual Studio. Met de formulier herkenning worden documenten geanalyseerd en worden sleutel-waardeparen en tabel gegevens geëxtraheerd. Door de formulier herkenning in te stellen op de [aangepaste vaardigheids interface](cognitive-search-custom-skill-interface.md), kunt u deze mogelijkheid toevoegen als een stap in een end-to-end-verrijkings pijplijn. De pijp lijn kan de documenten vervolgens laden en andere trans formaties uitvoeren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (elke editie).
-- Ten minste vijf vormen van hetzelfde type. U voorbeeldgegevens gebruiken die bij deze handleiding zijn verstrekt.
+- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (alle edities).
+- Ten minste vijf vormen van hetzelfde type. U kunt voorbeeld gegevens gebruiken die in deze hand leiding zijn opgenomen.
 
-## <a name="create-a-form-recognizer-resource"></a>Een bron voor formulierherkenning maken
+## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
 
 [!INCLUDE [create resource](../cognitive-services/form-recognizer/includes/create-resource.md)]
 
 ## <a name="train-your-model"></a>Uw model trainen
 
-U moet een formulierherkenningsmodel trainen met uw invoerformulieren voordat u deze vaardigheid gebruikt. Volg de [cURL snelstart](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/curl-train-extract) om te leren hoe je een model te trainen. U de voorbeeldformulieren gebruiken die in die quickstart zijn opgegeven, of u uw eigen gegevens gebruiken. Zodra het model is getraind, kopieert u de ID-waarde naar een veilige locatie.
+U moet een model voor formulier herkenning trainen met uw invoer formulieren voordat u deze vaardigheid gebruikt. Volg de [krul Snelstartgids](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/curl-train-extract) voor meer informatie over het trainen van een model. U kunt gebruikmaken van de voorbeeld formulieren in die Snelstartgids of u kunt uw eigen gegevens gebruiken. Wanneer het model is getraind, kopieert u de ID-waarde naar een veilige locatie.
 
 ## <a name="set-up-the-custom-skill"></a>De aangepaste vaardigheid instellen
 
-Deze zelfstudie maakt gebruik van het [AnalyzeForm-project](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Vision/AnalyzeForm) in de GitHub-opslagplaats [Azure Search Power Skills.](https://github.com/Azure-Samples/azure-search-power-skills) Kloon deze repository naar uw lokale machine en navigeer naar **Vision/AnalyzeForm/** om toegang te krijgen tot het project. Open vervolgens _AnalyzeForm.csproj_ in Visual Studio. Met dit project wordt een Azure-functiebron gemaakt die voldoet aan de [aangepaste vaardigheidsinterface](cognitive-search-custom-skill-interface.md) en kan worden gebruikt voor Azure Cognitive Search-verrijking. Het neemt formulierdocumenten als invoer aan en het voert (als tekst) de sleutel/waardeparen uit die u opgeeft.
+Deze zelf studie maakt gebruik van het [AnalyzeForm](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Vision/AnalyzeForm) -project in de GitHub-opslag plaats [Azure Search Power skills](https://github.com/Azure-Samples/azure-search-power-skills) . Kloon deze opslag plaats naar uw lokale machine en navigeer naar **Vision/AnalyzeForm/** om het project te openen. Open vervolgens _AnalyzeForm. csproj_ in Visual Studio. Dit project maakt een Azure-functie resource die voldoet aan de [aangepaste vaardigheids interface](cognitive-search-custom-skill-interface.md) en kan worden gebruikt voor de verrijking van azure-Cognitive Search. Er worden formulieren gevormd als invoer en de sleutel/waarde-paren die u opgeeft, worden uitgevoerd (als tekst).
 
-Voeg eerst omgevingsvariabelen op projectniveau toe. Zoek het project **AnalyzeForm** in het linkerdeelvenster, klik er met de rechtermuisknop op en selecteer **Eigenschappen**. Klik **in** het venster Eigenschappen op het tabblad **Foutopsporing** en zoek het veld **Omgevingsvariabelen.** Klik **op Toevoegen** om de volgende variabelen toe te voegen:
-* `FORMS_RECOGNIZER_ENDPOINT_URL`met de waarde die is ingesteld op de URL van uw eindpunt.
-* `FORMS_RECOGNIZER_API_KEY`met de waarde die is ingesteld op uw abonnementssleutel.
-* `FORMS_RECOGNIZER_MODEL_ID`met de waarde ingesteld op de ID van het model dat u hebt getraind.
-* `FORMS_RECOGNIZER_RETRY_DELAY`met de waarde ingesteld op 1000. Deze waarde is de tijd in milliseconden waarop het programma wacht voordat de query opnieuw wordt geprobeerd.
-* `FORMS_RECOGNIZER_MAX_ATTEMPTS`met de waarde ingesteld op 100. Deze waarde is het aantal keren dat het programma de service opvraagt terwijl het probeert een succesvol antwoord te krijgen.
+Voeg eerst omgevings variabelen op project niveau toe. Zoek het project **AnalyzeForm** in het linkerdeel venster, klik er met de rechter muisknop op en selecteer **Eigenschappen**. Klik in het venster **Eigenschappen** op het tabblad **fout opsporing** en zoek het veld **omgevings variabelen** . Klik op **toevoegen** om de volgende variabelen toe te voegen:
+* `FORMS_RECOGNIZER_ENDPOINT_URL`met de waarde die is ingesteld op uw eind punt-URL.
+* `FORMS_RECOGNIZER_API_KEY`met de waarde die is ingesteld op uw abonnements sleutel.
+* `FORMS_RECOGNIZER_MODEL_ID`met de waarde die is ingesteld op de ID van het model dat u hebt getraind.
+* `FORMS_RECOGNIZER_RETRY_DELAY`waarvan de waarde is ingesteld op 1000. Deze waarde is de tijd in milliseconden die het programma wacht voordat de query opnieuw wordt uitgevoerd.
+* `FORMS_RECOGNIZER_MAX_ATTEMPTS`waarvan de waarde is ingesteld op 100. Deze waarde is het aantal keren dat het programma de service zal opvragen tijdens het ophalen van een geslaagd antwoord.
 
-Open _vervolgens AnalyzeForm.cs_ en `fieldMappings` zoek de variabele, die verwijst naar het *veldtoewijzingen.json-bestand.* Dit bestand (en de variabele waarnaar verwijst) definieert de lijst met sleutels die u uit uw formulieren wilt extraheren en een aangepast label voor elke sleutel. Een waarde `{ "Address:", "address" }, { "Invoice For:", "recipient" }` van middelen die het script bijvoorbeeld alleen `Address:` opslaat, slaat alleen de waarden op voor de gedetecteerde en `Invoice For:` velden en labelt deze waarden met `"address"` respectievelijk. `"recipient"`
+Open vervolgens _AnalyzeForm.cs_ en zoek de `fieldMappings` variabele, die verwijst naar het bestand *met veld toewijzingen. json* . Dit bestand (en de variabele waarmee ernaar wordt verwezen) definieert de lijst met sleutels die u wilt extra heren uit uw formulieren en een aangepast label voor elke sleutel. Zo `{ "Address:", "address" }, { "Invoice For:", "recipient" }` betekent een waarde dat het script alleen de waarden voor de gedetecteerde `Address:` en `Invoice For:` velden opslaat, en worden deze waarden labelen met `"address"` `"recipient"`respectievelijk.
 
-Tot slot, `contentType` let op de variabele. In dit script wordt het opgegeven formulierherkenningsmodel uitgevoerd op externe documenten `application/json`waarnaar wordt verwezen op URL, zodat het inhoudstype . Als u lokale bestanden wilt analyseren door hun bytestreams op te nemen `contentType` in de HTTP-aanvragen, moet u het mimetype wijzigen in het juiste [MIME-type](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) voor uw bestand.
+Let ten slotte op `contentType` de variabele. Met dit script wordt het opgegeven formulier Recognizer-model uitgevoerd op externe documenten waarnaar wordt verwezen door de URL, zodat het `application/json`inhouds type. Als u lokale bestanden wilt analyseren door de byte-streams in de HTTP-aanvragen op te nemen, moet u `contentType` het juiste [MIME-type](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) voor het bestand wijzigen.
 
 ## <a name="test-the-function-from-visual-studio"></a>De functie testen vanuit Visual Studio
 
-Nadat u uw project hebt bewerkt, slaat u het op en stelt u het **AnalyzeForm-project** in als het opstartproject in Visual Studio (als het nog niet is ingesteld). Druk vervolgens op **F5** om de functie in uw lokale omgeving uit te voeren. Gebruik een REST-service zoals [Postman](https://www.postman.com/) om de functie te bellen.
+Nadat u het project hebt bewerkt, slaat u het op en stelt u het **AnalyzeForm** -project in als het opstart project in Visual Studio (als dit nog niet is ingesteld). Druk vervolgens op **F5** om de functie uit te voeren in uw lokale omgeving. Gebruik een REST-service zoals [postman](https://www.postman.com/) om de functie aan te roepen.
 
 ### <a name="http-request"></a>HTTP-aanvraag
 
-U doet het volgende verzoek om de functie te bellen.
+U maakt de volgende aanvraag om de functie aan te roepen.
 
 ```HTTP
 POST https://localhost:7071/api/analyze-form
@@ -61,7 +61,7 @@ POST https://localhost:7071/api/analyze-form
 
 ### <a name="request-body"></a>Aanvraagbody
 
-Begin met de onderstaande sjabloon voor het aanvraaglichaam.
+Begin met de onderstaande sjabloon voor aanvraag tekst.
 
 ```json
 {
@@ -77,19 +77,19 @@ Begin met de onderstaande sjabloon voor het aanvraaglichaam.
 }
 ```
 
-Hier moet u de URL opgeven van een formulier dat hetzelfde type heeft als de formulieren waarmee u hebt getraind. Voor testdoeleinden u een van uw trainingsformulieren gebruiken. Als u de cURL quickstart hebt gevolgd, bevinden uw formulieren zich in een Azure blob-opslagaccount. Open Azure Storage Explorer, zoek een formulierbestand, klik er met de rechtermuisknop op en selecteer **Gedeelde toegangshandtekening downloaden**. In het volgende dialoogvenster wordt een URL en SAS-token weergegeven. Voer deze tekenreeksen in de `"formUrl"` velden en `"formSasToken"` velden van uw aanvraaglichaam, respectievelijk.
+Hier moet u de URL opgeven van een formulier dat hetzelfde type heeft als de formulieren waarmee u hebt getraind. Voor test doeleinden kunt u een van uw trainings formulieren gebruiken. Als u de krul Snelstartgids hebt gevolgd, worden uw formulieren in een Azure Blob-opslag account geplaatst. Open Azure Storage Explorer, zoek een formulier bestand, klik er met de rechter muisknop op en selecteer **Shared Access Signature ophalen**. Het volgende dialoog venster bevat een URL en SAS-token. Voer deze teken reeksen in `"formUrl"` de `"formSasToken"` velden en van de hoofd tekst van de aanvraag in.
 
 > [!div class="mx-imgBorder"]
-> ![Azure-opslagverkenner; een pdf-document is geselecteerd](media/cognitive-search-skill-form/form-sas.png)
+> ![Azure Storage Explorer; Er is een PDF-document geselecteerd](media/cognitive-search-skill-form/form-sas.png)
 
-Als u een extern document wilt analyseren dat zich niet in `"formUrl"` Azure blob-opslag bevindt, plakt u de URL in het veld en laat u het `"formSasToken"` veld leeg.
+Als u een extern document wilt analyseren dat zich niet in Azure Blob-opslag bevindt, plakt `"formUrl"` u de URL in `"formSasToken"` het veld en laat u het veld leeg.
 
 > [!NOTE]
-> Wanneer de vaardigheid is geïntegreerd in een skillset, worden de URL en het token geleverd door Cognitive Search.
+> Wanneer de vaardigheid is geïntegreerd in een vaardig heden, worden de URL en het token verschaft door Cognitive Search.
 
 ### <a name="response"></a>Antwoord
 
-U ziet een antwoord dat vergelijkbaar is met het volgende voorbeeld:
+Er wordt een antwoord weer gegeven dat vergelijkbaar is met het volgende voor beeld:
 
 ```json
 {
@@ -109,17 +109,17 @@ U ziet een antwoord dat vergelijkbaar is met het volgende voorbeeld:
 
 ## <a name="publish-the-function-to-azure"></a>De functie publiceren in Azure
 
-Wanneer u tevreden bent met het functiegedrag, u het publiceren.
+Wanneer u tevreden bent met het functie gedrag, kunt u het publiceren.
 
-1. Klik in de **Solution Explorer** in Visual Studio met de rechtermuisknop op het project en selecteer **Publiceren**. Kies **Nieuwe** > **publicatie maken**.
-1. Als u Visual Studio nog niet hebt gekoppeld aan uw Azure-account, selecteert u **Een account toevoegen....**
-1. Volg de aanwijzingen op het scherm. Geef een unieke naam op voor uw app-service, het Azure-abonnement, de brongroep, het hostingplan en het opslagaccount dat u wilt gebruiken. U een nieuwe brongroep, een nieuw hostingplan en een nieuw opslagaccount maken als u deze nog niet hebt. Wanneer u klaar bent, selecteert u **Maken**.
-1. Nadat de implementatie is voltooid, ziet u de URL van de site. Deze URL is het adres van uw functie-app in Azure. Sla het op een tijdelijke locatie op.
-1. Navigeer in de [Azure-portal](https://portal.azure.com)naar de resourcegroep en zoek naar de `AnalyzeForm` functie die u hebt gepubliceerd. Zie hosttoetsen onder de sectie **Beheren.** Kopieer de *standaardhostsleutel* en sla deze op een tijdelijke locatie op.
+1. Klik in de **Solution Explorer** in Visual Studio met de rechter muisknop op het project en selecteer **publiceren**. Kies **nieuwe** > **publicatie**maken.
+1. Als u Visual Studio nog niet hebt verbonden met uw Azure-account, selecteert u **een account toevoegen....**
+1. Volg de aanwijzingen op het scherm. Geef een unieke naam op voor uw app service, het Azure-abonnement, de resource groep, het hosting plan en het opslag account dat u wilt gebruiken. U kunt een nieuwe resource groep, een nieuw hosting plan en een nieuw opslag account maken als u deze nog niet hebt. Wanneer u klaar bent, selecteert u **maken**.
+1. Nadat de implementatie is voltooid, ziet u de URL van de site. Deze URL is het adres van uw functie-app in Azure. Sla het bestand op een tijdelijke locatie op.
+1. Navigeer in het [Azure Portal](https://portal.azure.com)naar de resource groep en zoek naar de `AnalyzeForm` functie die u hebt gepubliceerd. Onder de sectie **beheren** ziet u de host-sleutels. Kopieer de *standaardhosts* sleutel en sla deze op een tijdelijke locatie op.
 
-## <a name="connect-to-your-pipeline"></a>Verbinding maken met uw pijplijn
+## <a name="connect-to-your-pipeline"></a>Verbinding maken met uw pijp lijn
 
-Als u deze vaardigheid wilt gebruiken in een pijplijn voor cognitief zoeken, moet u een vaardigheidsdefinitie toevoegen aan uw vaardigheden. Het volgende JSON-blok is een voorbeeldvaardigheidsdefinitie (u moet de ingangen en uitvoer bijwerken om uw specifieke scenario en vaardighedenomgeving weer te geven). Vervang `AzureFunctionEndpointUrl` de URL van `AzureFunctionDefaultHostKey` uw functie en vervang deze door uw hostsleutel.
+Als u deze vaardigheid wilt gebruiken in een Cognitive Search pijp lijn, moet u een vaardigheids definitie toevoegen aan uw vaardig heden. Het volgende JSON-blok is een voor beeld van een vaardigheids definitie (u moet de invoer en uitvoer bijwerken zodat deze overeenkomen met uw specifieke scenario en uw vaardig heden-omgeving). Vervang `AzureFunctionEndpointUrl` door de URL van uw functie en `AzureFunctionDefaultHostKey` Vervang door de sleutel van uw host.
 
 ```json
 { 
@@ -162,10 +162,10 @@ Als u deze vaardigheid wilt gebruiken in een pijplijn voor cognitief zoeken, moe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze handleiding hebt u een aangepaste vaardigheid gemaakt vanuit de Azure Form Recognizer-service. Zie de volgende bronnen voor meer informatie over aangepaste vaardigheden. 
+In deze hand leiding hebt u een aangepaste vaardigheid gemaakt op basis van de Azure Form Recognizer-service. Zie de volgende bronnen voor meer informatie over aangepaste vaardig heden. 
 
-* [Azure Search Power Skills: een opslagplaats van aangepaste vaardigheden](https://github.com/*zure-Samples/azure-search-power-skills)
-* [Een aangepaste vaardigheid toevoegen aan een AI-verrijkingspijplijn](cognitive-search-custom-skill-interface.md)
+* [Azure Search Power vaardig heden: een opslag plaats met aangepaste vaardig heden](https://github.com/*zure-Samples/azure-search-power-skills)
+* [Een aangepaste vaardigheid toevoegen aan een AI-verrijkings pijplijn](cognitive-search-custom-skill-interface.md)
 * [Een set vaardigheden definiëren](cognitive-search-defining-skillset.md)
-* [Een skillset (REST) maken](https://docs.microsoft.com/rest/api/*earchservice/create-skillset)
-* [Met kaart verrijkte velden toewijzen](cognitive-search-output-field-mapping.md)
+* [Een vaardig heden maken (REST)](https://docs.microsoft.com/rest/api/*earchservice/create-skillset)
+* [Verrijkte velden toewijzen](cognitive-search-output-field-mapping.md)

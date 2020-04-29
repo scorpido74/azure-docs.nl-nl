@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: afgedrukte tekst extraheren - REST, cURL'
+title: 'Snelstartgids: gedrukte tekst extra heren-REST, krul'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart extraheert u tekst uit een afbeelding met behulp van de Computer Vision-API met cURL.
 services: cognitive-services
@@ -12,22 +12,22 @@ ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: b91ca8a92e39e54d74c6a8ac87ab2b38829d4013
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81405066"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-curl"></a>Snelstart: gedrukte tekst (OCR) extraheren met de Computer Vision REST API en cURL
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-curl"></a>Snelstartgids: Afdruk bare tekst (OCR) extra heren met behulp van de Computer Vision REST API en krul
 
-In deze quickstart haalt u afgedrukte tekst met optische tekenherkenning (OCR) uit een afbeelding met behulp van de Computer Vision REST API. Met de [OCR-methode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) u afgedrukte tekst in een afbeelding detecteren en herkende tekens extraheren in een machinebruikbare tekenstroom.
+In deze Quick Start haalt u gedrukte tekst op met behulp van de Computer Vision REST API met OCR (optische teken herkenning) van een afbeelding. Met de [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) -methode kunt u gedrukte tekst in een afbeelding detecteren en herkende tekens uitpakken in een door een machine bruikbare teken stroom.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - U moet [cURL](https://curl.haxx.se/windows) hebben.
-- U moet beschikken over een abonnementssleutel voor Computer Vision. U een gratis testsleutel krijgen van [Try Cognitive Services.](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Computer Vision en uw sleutel te krijgen.
+- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen.
 
 ## <a name="create-and-run-the-sample-command"></a>Een voorbeeldopdracht maken en uitvoeren
 
@@ -36,7 +36,7 @@ U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 1. Kopieer de volgende opdracht naar een teksteditor.
 1. Breng waar nodig de volgende wijzigingen in de opdracht aan:
     1. Vervang de waarde van `<subscriptionKey>` door uw abonnementssleutel.
-    1. Vervang het eerste deel van`westcentralus`de aanvraag-URL ( ) door de tekst in uw eigen eindpunt-URL.
+    1. Vervang het eerste deel van de aanvraag-URL`westcentralus`() door de tekst in uw eigen eind punt-URL.
         [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
     1. Wijzig eventueel de afbeeldings-URL in de aanvraagtekst (`https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\`) naar de URL van een andere afbeelding die u wilt analyseren.
 1. Open een opdrachtpromptvenster.

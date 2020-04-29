@@ -1,120 +1,120 @@
 ---
-title: Azure Automation State Configuration continuous deployment with Chocolatey
-description: Beschrijft de continue implementatie van DevOps met azure automation-statusconfiguratie met de Chocolatey-pakketbeheerder. Bevat een voorbeeld met volledige JSON Resource Manager-sjabloon en PowerShell-bron.
+title: Doorlopende implementatie van configuratie met Azure Automation status met Choco lade
+description: Beschrijft de continue implementatie van DevOps met behulp van de configuratie van Azure Automation State met de chocolade Package Manager. Bevat een voor beeld met een volledige JSON Resource Manager-sjabloon en Power shell-bron.
 services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0c61a431b985e494148500ed0a7aeb106534ed2c
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81392125"
 ---
-# <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Continue implementatie naar virtuele machines bieden met configuratie van automatiseringsstatus en chocolatey
+# <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Een continue implementatie naar virtuele machines bieden met behulp van de configuratie van de automatiserings status en chocolade
 
-In een DevOps-wereld zijn er veel tools om te helpen met verschillende punten in de continue integratiepijplijn. Azure Automation [State Configuration](automation-dsc-overview.md) is een welkome nieuwe toevoeging aan de opties die DevOps-teams kunnen gebruiken. 
+In een DevOps-wereld zijn er veel hulpprogram ma's om te helpen bij verschillende punten in de pipeline voor continue integratie. Azure Automation [status configuratie](automation-dsc-overview.md) is een nieuwe aanvulling op de opties die DevOps teams kunnen gebruiken. 
 
-Azure Automation is een beheerde service in Microsoft Azure waarmee u verschillende taken automatiseren met runbooks, knooppunten en gedeelde bronnen, zoals referenties, planningen en globale variabelen. Azure Automation State Configuration breidt deze automatiseringsmogelijkheden uit met PowerShell Desired State Configuration (DSC)-hulpprogramma's. Hier is een geweldig [overzicht.](automation-dsc-overview.md)
+Azure Automation is een beheerde service in Microsoft Azure waarmee u verschillende taken kunt automatiseren met runbooks, knoop punten en gedeelde bronnen, zoals referenties, schema's en globale variabelen. Met de configuratie van de Azure Automation-status wordt deze automatiserings mogelijkheid uitgebreid met hulpprogram ma's voor desired state Configuration (DSC) van Power shell. Hier volgt een geweldig [overzicht](automation-dsc-overview.md).
 
-In dit artikel wordt uitgelegd hoe u cd's (Continue implementatie) instelt voor een Windows-computer. U de techniek eenvoudig uitbreiden om zoveel Windows-computers op te nemen als nodig is in de rol, bijvoorbeeld een website, en van daaruit naar extra rollen gaan.
+In dit artikel wordt beschreven hoe u doorlopende implementatie (CD) instelt voor een Windows-computer. U kunt de techniek eenvoudig uitbreiden met zo veel Windows-computers als nodig is voor de rol, bijvoorbeeld een website, en daar gaat u naar extra rollen.
 
-![Continue implementatie voor IaaS VM's](./media/automation-dsc-cd-chocolatey/cdforiaasvm.png)
+![Continue implementatie voor IaaS-Vm's](./media/automation-dsc-cd-chocolatey/cdforiaasvm.png)
 
 >[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor installatie-instructies voor az-modules op uw hybride runbookworker. Voor uw Automatiseringsaccount u uw modules bijwerken naar de nieuwste versie met [Azure PowerShell-modules bijwerken in Azure Automation.](automation-update-azure-modules.md)
+>Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
 
 ## <a name="at-a-high-level"></a>Op een hoog niveau
 
-Er is nogal wat aan de hand hier, maar gelukkig kan worden opgesplitst in twee belangrijke processen:
+Er is hier heel iets aan de slag, maar gelukkig kan het worden onderverdeeld in twee hoofd processen:
 
-- Code schrijven en testen, vervolgens installatiepakketten maken en publiceren voor grote en secundaire versies van het systeem.
-- Vm's maken en beheren die de code in de pakketten installeren en uitvoeren.  
+- Code schrijven en testen, vervolgens installatie pakketten maken en publiceren voor primaire en secundaire versies van het systeem.
+- Vm's maken en beheren waarmee de code in de pakketten wordt geïnstalleerd en uitgevoerd.  
 
-Zodra beide kernprocessen zijn geïmplementeerd, is het eenvoudig om het pakket op uw VM's automatisch bij te werken wanneer nieuwe versies worden gemaakt en geïmplementeerd.
+Wanneer beide kern processen zijn geïmplementeerd, is het eenvoudig om het pakket op uw Vm's automatisch bij te werken, omdat nieuwe versies worden gemaakt en geïmplementeerd.
 
 ## <a name="component-overview"></a>Overzicht van onderdelen
 
-Package managers zoals [apt-get](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool) zijn bekend in de Linux wereld, maar niet zozeer in de Windows-wereld.
-[Chocolatey](https://chocolatey.org/) is zo'n ding, en Scott Hanselman's [blog](https://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx) over het onderwerp is een geweldige introductie. In een notendop, Chocolatey u de opdrachtregel gebruiken om pakketten te installeren vanuit een centrale opslagplaats op een Windows-besturingssysteem. U uw eigen opslagplaats maken en beheren en Chocolatey kan pakketten installeren van een willekeurig aantal opslagplaatsen die u aanwijst.
+Pakket beheerders zoals [apt-get](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool) zijn goed bekend in de Linux-wereld, maar niet zo veel in de Windows-wereld.
+Het [is een goed idee](https://chocolatey.org/) om de [blog](https://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx) van Scott Hanselman in het onderwerp een fantastische inleiding te hebben. In een kort gezegd kunt u met chocolade de opdracht regel gebruiken om pakketten van een centrale opslag plaats te installeren op een Windows-besturings systeem. U kunt uw eigen opslag plaats maken en beheren, en Choco lade kan pakketten installeren vanaf elk gewenst aantal opslag plaatsen die u opgeeft.
 
-[PowerShell DSC](/powershell/scripting/dsc/overview/overview) is een PowerShell-tool waarmee u de gewenste configuratie voor een machine declareren. Als u bijvoorbeeld wilt dat Chocolatey wordt geïnstalleerd, IIS is geïnstalleerd, poort 80 is geopend en versie 1.0.0 van uw website wilt installeren, implementeert de DSC Local Configuration Manager (LCM) die configuratie. Een DSC pull-server bevat een opslagplaats met configuraties voor uw machines. De LCM op elke machine controleert regelmatig om te zien of de configuratie overeenkomt met de opgeslagen configuratie. Het kan de status rapporteren of proberen de machine weer in lijn te brengen met de opgeslagen configuratie. U de opgeslagen configuratie op de pull-server bewerken om ervoor te zorgen dat een machine of set machines in overeenstemming komt met de gewijzigde configuratie.
+[Power shell DSC](/powershell/scripting/dsc/overview/overview) is een Power shell-hulp programma waarmee u de gewenste configuratie voor een machine kunt declareren. Als u bijvoorbeeld wilt dat Choco lade geïnstalleerd, IIS geïnstalleerd, poort 80 geopend en versie 1.0.0 van uw website is geïnstalleerd, implementeert de DSC Local Configuration Manager (LCM) die configuratie. Een DSC-pull-server bevat een opslag plaats met configuraties voor uw machines. De LCM wordt op elke computer periodiek gecontroleerd om te zien of de configuratie overeenkomt met de opgeslagen configuratie. Het rapport kan de status rapporteren of proberen de machine weer in te zetten met de opgeslagen configuratie. U kunt de opgeslagen configuratie op de pull-server bewerken om ervoor te zorgen dat een machine of een set van machines wordt uitgelijnd met de gewijzigde configuratie.
 
-Een DSC-bron is een codemodule met specifieke mogelijkheden, zoals het beheren van netwerken, Active Directory of SQL Server. De Chocolatey DSC Resource weet hoe je toegang krijgt tot een NuGet Server (onder andere), pakketten downloaden, pakketten installeren, enzovoort. Er zijn veel andere DSC-bronnen in de [PowerShell Gallery.](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title) U installeert deze modules op uw Azure Automation State Configuration pull-server voor gebruik door uw configuraties.
+Een DSC-resource is een module code met specifieke mogelijkheden, zoals het beheren van netwerken, Active Directory of SQL Server. De chocolade DSC-resource weet hoe u toegang kunt krijgen tot een NuGet-server (onder andere), pakketten downloaden, pakketten installeert, enzovoort. Er zijn veel andere DSC-resources in de [PowerShell Gallery](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title). U installeert deze modules op de pull-server voor de configuratie van de Azure Automation status voor gebruik door uw configuraties.
 
-Resource Manager-sjablonen bieden een declaratieve manier om uw infrastructuur te genereren, bijvoorbeeld netwerken, subnetten, netwerkbeveiliging en routering, load balancers, NIC's, VM's, enzovoort. Hier is een [artikel](../azure-resource-manager/management/deployment-models.md) dat het Resource Manager-implementatiemodel (declaratief) vergelijkt met het Azure Service Management (ASM of klassiek) implementatiemodel (noodzakelijk). Dit artikel bevat een bespreking van de belangrijkste resourceproviders: compute, storage en netwerk.
+Resource Manager-sjablonen bieden een declaratieve manier voor het genereren van uw infra structuur, bijvoorbeeld netwerken, subnetten, netwerk beveiliging en route ring, load balancers, Nic's, Vm's, enzovoort. Hier volgt een [artikel](../azure-resource-manager/management/deployment-models.md) dat het Resource Manager-implementatie model (declaratief) vergelijkt met het Azure Service Management (ASM of klassiek)-implementatie model (verplicht). Dit artikel bevat een bespreking van de belangrijkste resource providers: compute, Storage en Network.
 
-Een belangrijk kenmerk van een Resource Manager-sjabloon is de mogelijkheid om een VM-extensie in de VM te installeren terwijl deze is ingericht. Een VM-extensie heeft specifieke mogelijkheden, zoals het uitvoeren van een aangepast script, het installeren van antivirussoftware en het uitvoeren van een DSC-configuratiescript. Er zijn vele andere soorten VM-extensies.
+Een belang rijke functie van een resource manager-sjabloon is de mogelijkheid om een VM-extensie te installeren in de virtuele machine wanneer deze is ingericht. Een VM-extensie heeft specifieke mogelijkheden, zoals het uitvoeren van een aangepast script, het installeren van antivirus software en het uitvoeren van een DSC-configuratie script. Er zijn veel andere typen VM-extensies.
 
 ## <a name="quick-trip-around-the-diagram"></a>Snelle reis rond het diagram
 
-Vanaf de bovenkant schrijf je je code, bouw je deze, test je deze en maak je een installatiepakket. Chocolatey kan omgaan met verschillende soorten installatiepakketten, zoals MSI, MSU, ZIP. En je hebt de volledige kracht van PowerShell om de werkelijke installatie te doen als Chocolatey's native mogelijkheden niet aan de beurt zijn. Zet het pakket op een plaats bereikbaar - een pakket repository. In dit gebruiksvoorbeeld wordt een openbare map gebruikt in een Azure Blob-opslagaccount, maar deze kan overal zijn. Chocolatey werkt native met NuGet servers en een paar anderen voor het beheer van pakket metadata. [In dit artikel](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) worden de opties beschreven. In het gebruiksvoorbeeld wordt NuGet gebruikt. Een Nuspec is metadata over uw pakketten. De Nuspec-informatie wordt gecompileerd in een NuPkg en opgeslagen op een NuGet-server. Wanneer uw configuratie een pakket op naam aanvraagt en verwijst naar een NuGet-server, grijpt de Chocolatey DSC-bron op de VM het pakket en installeert het. U ook een specifieke versie van een pakket aanvragen.
+Vanaf de bovenkant schrijft u uw code, bouwt u deze, test u deze en maakt u een installatie pakket. Choco lade kan verschillende typen installatie pakketten verwerken, zoals MSI, MSU, ZIP. En u beschikt over de volledige kracht van Power shell om de daad werkelijke installatie uit te voeren als de systeem eigen mogelijkheden van Choco lade niet zijn. Plaats het pakket op een plek die bereikbaar is, een package-opslag plaats. In dit voor beeld wordt een open bare map in een Azure Blob-opslag account gebruikt, maar deze kan zich overal bevinden. Chocolade werkt standaard met NuGet-servers en enkele andere voor het beheer van de meta gegevens van pakketten. In [dit artikel](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) worden de opties beschreven. In het gebruiks voorbeeld wordt NuGet gebruikt. Een Nuspec is meta gegevens over uw pakketten. De Nuspec-gegevens worden gecompileerd in een NuPkg en opgeslagen op een NuGet-server. Als uw configuratie een pakket met de naam opvraagt en naar een NuGet-server verwijst, wordt het pakket door de chocolade DSC-resource op de VM gepakt en geïnstalleerd. U kunt ook een specifieke versie van een pakket aanvragen.
 
-Linksonder in de afbeelding staat een Azure Resource Manager-sjabloon. In dit gebruiksvoorbeeld registreert de VM-extensie de VM met de Pull-server Azure Automation State Configuration als knooppunt. De configuratie wordt twee keer opgeslagen in de pull-server: één keer als platte tekst en eenmaal gecompileerd als MOF-bestand. In de Azure-portal vertegenwoordigt de MOF een knooppuntconfiguratie, in tegenstelling tot een eenvoudige configuratie. Het is het artefact dat is gekoppeld aan een knooppunt, zodat het knooppunt de configuratie kent. Details hieronder laten zien hoe u de knooppuntconfiguratie aan het knooppunt toewijzen.
+In de linkerbenedenhoek van de afbeelding bevindt zich een Azure Resource Manager sjabloon. In dit voor beeld registreert de VM-extensie de VM met de Azure Automation status configuratie pull-server als een knoop punt. De configuratie wordt twee keer opgeslagen op de pull-server: eenmaal als tekst zonder opmaak en eenmaal gecompileerd als MOF-bestand. In de Azure Portal vertegenwoordigt de MOF een knooppunt configuratie, in tegens telling tot een eenvoudige configuratie. Het is het artefact dat is gekoppeld aan een knoop punt zodat het knoop punt de configuratie kent. In de onderstaande details ziet u hoe u de knooppunt configuratie aan het knoop punt toewijst.
 
-Het maken van de Nuspec, het samenstellen en opslaan in een NuGet-server is een klein ding. En je beheert al VM's. 
+Het maken van de Nuspec, het compileren ervan en het opslaan op een NuGet-server is een kleine ding. En u bent al bezig met het beheren van virtuele machines. 
 
-Als u de volgende stap naar continue implementatie neemt, moet u de pull-server één keer instellen, uw knooppunten één keer registreren en de eerste configuratie op de server maken en opslaan. Aangezien pakketten worden geüpgraded en geïmplementeerd naar de repository, hoeft u alleen de configuratie en knooppuntconfiguratie op de pull-server te vernieuwen als dat nodig is.
+Als u de volgende stap voor continue implementatie wilt uitvoeren, moet u de pull-server één keer configureren, uw knoop punten tegelijk registreren en de eerste configuratie op de server maken en opslaan. Als pakketten worden geüpgraded en geïmplementeerd naar de opslag plaats, hoeft u de configuratie-en knooppunt configuratie alleen op de pull-server te vernieuwen als dat nodig is.
 
-Als u niet begint met een resourcemanagersjabloon, is dat prima. Er zijn PowerShell-opdrachten waarmee u uw VM's registreren bij de pull-server. Zie [Onboarding-machines voor beheer door Azure Automation State Configuration voor](automation-dsc-onboarding.md)meer informatie.
+Als u niet met een resource manager-sjabloon begint, is dat prima. Er zijn Power shell-opdrachten waarmee u uw Vm's bij de pull-server kunt registreren. Zie voor meer informatie [onboarding machines voor beheer door Azure Automation status configuratie](automation-dsc-onboarding.md).
 
-## <a name="about-the-usage-example"></a>Over het gebruiksvoorbeeld
+## <a name="about-the-usage-example"></a>Over het gebruiks voorbeeld
 
-Het gebruiksvoorbeeld in dit artikel begint met een VM van een algemene Windows Server 2012 R2-afbeelding uit de Azure-galerie. U vanaf elke opgeslagen afbeelding beginnen en vervolgens vanaf daar tweaken met de DSC-configuratie.
-Het wijzigen van de configuratie die in een afbeelding wordt gebakken, is echter veel moeilijker dan het dynamisch bijwerken van de configuratie met DSC.
+Het voor beeld van het gebruik in dit artikel begint met een virtuele machine van een generieke installatie kopie van Windows Server 2012 R2 vanuit de Azure Gallery. U kunt beginnen met een opgeslagen installatie kopie en vervolgens van daaruit verfijnen met de DSC-configuratie.
+Het wijzigen van de configuratie die in een installatie kopie wordt geïntegreerde, is echter veel moeilijker dan het dynamisch bijwerken van de configuratie met behulp van DSC.
 
-U hoeft geen Resource Manager-sjabloon en de VM-extensie te gebruiken om deze techniek met uw VM's te gebruiken. En uw VM's hoeven niet op Azure te staan om onder cd-beheer te staan. Het enige dat nodig is, is dat Chocolatey wordt geïnstalleerd en de LCM geconfigureerd op de VM, zodat het weet waar de pull-server is.
+U hoeft geen Resource Manager-sjabloon en de VM-extensie te gebruiken om deze techniek met uw Vm's te gebruiken. En uw Vm's hoeven zich niet in azure te bezien onder CD-beheer. Dat is alles wat nodig is dat chocolade wordt geïnstalleerd en de LCM die is geconfigureerd op de virtuele machine, zodat u weet waar de pull-server zich bevindt.
 
-Wanneer u een pakket bijwerkt op een vm die in productie is, moet u die vm uit de rotatie halen terwijl de update is geïnstalleerd. Hoe je dit doet varieert sterk. Met een VM achter een Azure Load Balancer u bijvoorbeeld een aangepaste sonde toevoegen. Laat het eindpunt van de sonde tijdens het bijwerken van de VM een 400 retourneren. De tweak die nodig is om deze verandering te veroorzaken kan worden binnen uw configuratie, net als de tweak om het terug te schakelen naar het retourneren van een 200 zodra de update is voltooid.
+Wanneer u een pakket bijwerkt op een virtuele machine die in productie is, moet u deze VM uit de rotatie halen terwijl de update wordt geïnstalleerd. Hoe u dit doet, varieert aanzienlijk. Als u bijvoorbeeld een virtuele machine achter een Azure Load Balancer, kunt u een aangepaste test toevoegen. Laat tijdens het bijwerken van de virtuele machine het eind punt een 400 retour neren. De verfijning die nodig is om deze wijziging te veroorzaken, kan zich in uw configuratie bevindt, evenals de verfijning om deze terug te zetten om een 200 te retour neren nadat de update is voltooid.
 
-Volledige bron voor dit gebruiksvoorbeeld is in [dit Visual Studio-project](https://github.com/sebastus/ARM/tree/master/CDIaaSVM) op GitHub.
+De volledige bron voor dit gebruiks voorbeeld bevindt zich in [dit Visual Studio-project](https://github.com/sebastus/ARM/tree/master/CDIaaSVM) op github.
 
-## <a name="step-1-set-up-the-pull-server-and-automation-account"></a>Stap 1: Het pull-server- en automatiseringsaccount instellen
+## <a name="step-1-set-up-the-pull-server-and-automation-account"></a>Stap 1: de pull-server en het Automation-account instellen
 
-Op een geverifieerde`Connect-AzAccount`( ) PowerShell opdrachtregel: (kan een paar minuten duren terwijl de pull-server is ingesteld)
+Op een geverifieerde`Connect-AzAccount`() Power shell-opdracht regel: (kan enkele minuten duren terwijl de pull-server is ingesteld)
 
 ```azurepowershell-interactive
 New-AzResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
 New-AzAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT
 ```
 
-U uw Automation-account in een van de volgende regio's (ook wel locaties genoemd): Oost-VS 2, Zuid-Centraal VS, US Gov Virginia, West-Europa, Zuidoost-Azië, Japan-Oost, Centraal-India en Australië Zuidoost, Canada Centraal, Noord-Europa.
+U kunt uw Automation-account in een van de volgende regio's plaatsen (ook wel locaties genoemd): VS-Oost 2, Zuid-Centraal VS, US Gov-Virginia, Europa-west, Zuidoost-Azië, Japan-Oost, Centraal-India en Australië-zuidoost, Canada-centraal Europa-noord.
 
-## <a name="step-2-make-vm-extension-tweaks-to-the-resource-manager-template"></a>Stap 2: Vm-extensietweaks maken voor de sjabloon ResourceManager
+## <a name="step-2-make-vm-extension-tweaks-to-the-resource-manager-template"></a>Stap 2: de aanpassingen van de VM-extensie maken voor de Resource Manager-sjabloon
 
-Details voor VM-registratie (met behulp van de PowerShell DSC VM-extensie) die is opgegeven in deze [Azure Quickstart-sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver).
-Met deze stap registreert u uw nieuwe VM met de pull-server in de lijst met statusconfiguratieknooppunten. Een deel van deze registratie is het opgeven van de knooppuntconfiguratie die moet worden toegepast op het knooppunt. Deze node configuratie hoeft nog niet te bestaan in de pull server, dus het is prima dat stap 4 is waar dit wordt gedaan voor de eerste keer. Maar hier in stap 2 moet je wel de naam van het knooppunt en de naam van de configuratie hebben bepaald. In dit gebruiksvoorbeeld is het knooppunt 'isvbox' en is de configuratie 'ISVBoxConfig'. De naam van de nodeconfiguratie (die moet worden opgegeven in DeploymentTemplate.json) is dus 'ISVBoxConfig.isvbox'.
+Details voor de registratie van de virtuele machine (met behulp van de Power shell DSC-extensie) die is opgenomen in deze [Azure Quick](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver)start-sjabloon.
+Met deze stap wordt de nieuwe virtuele machine geregistreerd bij de pull-server in de lijst met status configuratie knooppunten. In deze registratie wordt de knooppunt configuratie opgegeven die op het knoop punt moet worden toegepast. Deze knooppunt configuratie hoeft nog niet te bestaan op de pull-server. het is dus een goed probleem dat stap 4 de eerste keer wordt uitgevoerd. Maar u moet in stap 2 de naam van het knoop punt en de naam van de configuratie hebben bepaald. In dit voor beeld is het knoop punt ' isvbox ' en de configuratie is ' ISVBoxConfig '. De naam van de knooppunt configuratie (die moet worden opgegeven in DeploymentTemplate. json) is dus ' ISVBoxConfig. isvbox '.
 
-## <a name="step-3-add-required-dsc-resources-to-the-pull-server"></a>Stap 3: Vereiste DSC-resources toevoegen aan de pull-server
+## <a name="step-3-add-required-dsc-resources-to-the-pull-server"></a>Stap 3: de vereiste DSC-resources toevoegen aan de pull-server
 
-De PowerShell Gallery is ingeschakeld om DSC-resources te installeren in uw Azure Automation-account.
-Navigeer naar de gewenste resource en klik op de knop 'Implementeren naar Azure-automatisering'.
+De PowerShell Gallery is instrumenteel om DSC-resources in uw Azure Automation-account te installeren.
+Ga naar de gewenste resource en klik op de knop implementeren in Azure Automation.
 
-![Voorbeeld van PowerShell Gallery](./media/automation-dsc-cd-chocolatey/xNetworking.PNG)
+![PowerShell Gallery-voor beeld](./media/automation-dsc-cd-chocolatey/xNetworking.PNG)
 
-Een andere techniek die onlangs aan de Azure-portal is toegevoegd, stelt u in staat om nieuwe modules binnen te halen of bestaande modules bij te werken. Klik door de bron van het automatiseringsaccount, de tegel Activa en ten slotte de tegel Modules. Met het pictogram Bladeren in de galerie u de lijst met modules in de galerie bekijken, inzoomen op details en uiteindelijk importeren in uw Automatiseringsaccount. Dit is een geweldige manier om uw modules van tijd tot tijd up-to-date te houden. En de importfunctie controleert afhankelijkheden met andere modules om ervoor te zorgen dat niets uit de pas loopt.
+Een andere techniek die onlangs aan de Azure Portal is toegevoegd, biedt u de mogelijkheid om nieuwe modules op te halen of bestaande modules bij te werken. Klik op de resource van het Automation-account, de tegel assets en tenslotte op de tegel modules. Met het pictogram Browse Gallery kunt u de lijst met modules in de galerie bekijken, inzoomen op Details en uiteindelijk importeren in uw Automation-account. Dit is een uitstekende manier om uw modules van tijd tot tijd up-to-date te houden. En met de import functie wordt gecontroleerd op afhankelijkheden met andere modules om te controleren of er niets is gesynchroniseerd.
 
-Er is ook een handmatige aanpak, die slechts één keer per resource wordt gebruikt, tenzij u deze later wilt upgraden. Zie [Integratiemodules voor Azure Automation voor](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)meer informatie over het ontwerpen van PowerShell-integratiemodules.
+Er is ook een hand matige aanpak die slechts één keer per resource wordt gebruikt, tenzij u deze later wilt bijwerken. Zie [integratie modules ontwerpen voor Azure Automation](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)voor meer informatie over het ontwerpen van Power shell-integratie modules.
 
 >[!NOTE]
->De mapstructuur van een PowerShell-integratiemodule voor een Windows-computer is iets anders dan de mapstructuur die wordt verwacht door de Azure Automation. 
+>De mapstructuur van een Power shell-integratie module voor een Windows-computer is iets anders dan de mapstructuur die wordt verwacht door de Azure Automation. 
 
-1. Installeer [Windows Management Framework v5](https://aka.ms/wmf5latest) (niet nodig voor Windows 10).
+1. Installeer [Windows Management Framework V5](https://aka.ms/wmf5latest) (niet vereist voor Windows 10).
 
-2. Installeer de integratiemodule.
+2. Installeer de integratie module.
 
     ```azurepowershell-interactive
     Install-Module –Name MODULE-NAME`    <—grabs the module from the PowerShell Gallery
     ```
 
-3. Kopieer de modulemap van **c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME** naar een tijdelijke map.
+3. Kopieer de map module van **C:\Program Files\WindowsPowerShell\Modules\MODULE-name** naar een tijdelijke map.
 
-4. Verwijder voorbeelden en documentatie uit de hoofdmap.
+4. Verwijder voor beelden en documentatie uit de hoofdmap.
 
-5. Rits de hoofdmap dicht en geef het ZIP-bestand een naam met de naam van de map.
+5. U kunt de hoofdmap van het ZIP-bestand voorzien van de naam van de map.
 
-6. Plaats het ZIP-bestand op een bereikbare HTTP-locatie, zoals blob-opslag in een Azure Storage-account.
+6. Plaats het ZIP-bestand in een bereik bare HTTP-locatie, zoals Blob Storage in een Azure Storage-account.
 
 7. Voer de volgende opdracht uit.
 
@@ -124,11 +124,11 @@ Er is ook een handmatige aanpak, die slechts één keer per resource wordt gebru
       -Name MODULE-NAME –ContentLinkUri 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
     ```
 
-Het meegeleverde voorbeeld implementeert deze stappen voor cChoco en xNetworking. 
+Het opgenomen voor beeld implementeert deze stappen voor cChoco en xNetworking. 
 
-## <a name="step-4-add-the-node-configuration-to-the-pull-server"></a>Stap 4: De knooppuntconfiguratie toevoegen aan de pull-server
+## <a name="step-4-add-the-node-configuration-to-the-pull-server"></a>Stap 4: de knooppunt configuratie toevoegen aan de pull-server
 
-Er is niets bijzonders aan de eerste keer dat u uw configuratie importeert in de pull-server en compileert. Alle latere importen of compilaties van dezelfde configuratie zien er precies hetzelfde uit. Elke keer dat u uw pakket bijwerkt en het naar de productie moet pushen, doet u deze stap nadat u ervoor hebt gezorgd dat het configuratiebestand correct is , inclusief de nieuwe versie van uw pakket. Hier is het configuratiebestand **ISVBoxConfig.ps1:**
+Er is niets speciaal voor de eerste keer dat u uw configuratie in de pull-server importeert en compileert. Alle latere invoer of compilaties van dezelfde configuratie zien er precies hetzelfde uit. Telkens wanneer u het pakket bijwerkt en het moet worden gepusht naar productie, voert u deze stap uit nadat u hebt gecontroleerd of het configuratie bestand juist is, met inbegrip van de nieuwe versie van uw pakket. Hier is het configuratie bestand **ISVBoxConfig. ps1**:
 
 ```powershell
 Configuration ISVBoxConfig
@@ -173,7 +173,7 @@ Configuration ISVBoxConfig
 }
 ```
 
-Hier is het **script Nieuw-ConfigurationScript.ps1** (aangepast om de Az-module te gebruiken):
+Dit is het script **New-ConfigurationScript. ps1** (gewijzigd voor het gebruik van de module AZ):
 
 ```powershell
 Import-AzAutomationDscConfiguration `
@@ -192,30 +192,30 @@ Get-AzAutomationDscCompilationJob `
     -Id $compilationJobId
 ```
 
-Deze stappen resulteren in een nieuwe node configuratie genaamd **ISVBoxConfig.isvbox** wordt geplaatst op de pull-server. De naam van de `configurationName.nodeName`nodeconfiguratie is gebouwd als .
+Deze stappen resulteren in een nieuwe knooppunt configuratie met de naam **ISVBoxConfig. isvbox** op de pull-server worden geplaatst. De naam van de knooppunt configuratie is `configurationName.nodeName`gebouwd als.
 
-## <a name="step-5-create-and-maintain-package-metadata"></a>Stap 5: Metagegevens van pakketten maken en onderhouden
+## <a name="step-5-create-and-maintain-package-metadata"></a>Stap 5: de meta gegevens van het pakket maken en onderhouden
 
-Voor elk pakket dat je in de pakketrepository stopt, heb je een Nuspec nodig die het beschrijft. Het moet worden gecompileerd en opgeslagen op uw NuGet-server. Dit proces wordt [hier](https://docs.nuget.org/create/creating-and-publishing-a-package)beschreven. 
+Voor elk pakket dat u in de opslag plaats van het pakket plaatst, hebt u een Nuspec nodig waarin het wordt beschreven. Het moet worden gecompileerd en opgeslagen op uw NuGet-server. Dit proces wordt [hier](https://docs.nuget.org/create/creating-and-publishing-a-package)beschreven. 
 
-Je **MyGet.org** gebruiken als NuGet-server. U deze dienst kopen, maar u is een gratis starter SKU. Bij [NuGet](https://www.nuget.org/)vind je instructies voor het installeren van je eigen NuGet-server voor je privépakketten.
+U kunt **MyGet.org** gebruiken als een NuGet-server. U kunt deze service kopen, maar thee is een gratis start-SKU. Op [NuGet](https://www.nuget.org/)vindt u instructies voor het installeren van uw eigen NuGet-server voor uw privé-pakketten.
 
-## <a name="step-6-tie-it-all-together"></a>Stap 6: Bind alles bij elkaar
+## <a name="step-6-tie-it-all-together"></a>Stap 6: alles koppelen
 
-Elke keer dat een versie QA passeert en is goedgekeurd voor implementatie, wordt het pakket gemaakt en worden nuspec en nupkg bijgewerkt en geïmplementeerd op de NuGet-server. De configuratie (stap 4) moet ook worden bijgewerkt om akkoord te gaan met het nieuwe versienummer. Het moet vervolgens worden verzonden naar de pull-server en gecompileerd.
+Telkens wanneer een versie QA gaat en is goedgekeurd voor implementatie, wordt het pakket gemaakt en worden nuspec en nupkg bijgewerkt en geïmplementeerd naar de NuGet-server. De configuratie (stap 4) moet ook worden bijgewerkt om overeen te komen met het nieuwe versie nummer. Deze moet vervolgens worden verzonden naar de pull-server en worden gecompileerd.
 
-Vanaf dat moment is het aan de VM's die afhankelijk zijn van die configuratie om de update te trekken en te installeren. Elk van deze updates is eenvoudig - slechts een lijn of twee van PowerShell. Voor Azure DevOps zijn sommige van deze ingebouwde buildtaken die kunnen worden geketend in een build. Dit [artikel](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) geeft meer details. Deze [GitHub repo](https://github.com/Microsoft/vso-agent-tasks) beschrijft de beschikbare buildtaken.
+Vanaf dat moment is het tot de virtuele machines die afhankelijk zijn van die configuratie om de update te halen en te installeren. Elk van deze updates is eenvoudig: slechts een regel of twee van Power shell. Voor Azure DevOps worden sommige van deze ingekapseld in bouw taken die kunnen worden samengevoegd in een build. In dit [artikel](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) vindt u meer informatie. Deze [github opslag plaats](https://github.com/Microsoft/vso-agent-tasks) bevat informatie over de beschik bare build-taken.
 
 ## <a name="related-articles"></a>Verwante artikelen:
-* [Overzicht azure automation DSC](automation-dsc-overview.md)
-* [Onboarding machines voor beheer door Azure Automation DSC](automation-dsc-onboarding.md)
+* [Overzicht van Azure Automation DSC](automation-dsc-overview.md)
+* [Onboarding van machines voor beheer door Azure Automation DSC](automation-dsc-onboarding.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Azure Automation State Configuration](automation-dsc-overview.md)voor een overzicht.
-- Zie [Aan de slag met Azure Automation State Configuration](automation-dsc-getting-started.md)om aan de slag te gaan.
-- Zie [Configuraties compileren in Azure Automation State Configuration](automation-dsc-compile.md)voor meer informatie over het samenstellen van DSC-configuraties, zodat u ze toewijzen aan doelknooppunten.
-- Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)voor een PowerShell-cmdletreferentie.
-- Zie Azure Automation State Configuration Pricing voor prijsinformatie voor [prijsinformatie.](https://azure.microsoft.com/pricing/details/automation/)
-- Zie [Continue implementatie met Azure Automation State Configuration en Chocolatey](automation-dsc-cd-chocolatey.md)voor een voorbeeld van het gebruik van Azure Automation State Configuration in a continuous deployment pipeline.
+- Zie [Azure Automation State Configuration](automation-dsc-overview.md)(Engelstalig) voor een overzicht.
+- Zie aan de slag [met de configuratie van de Azure Automation-status](automation-dsc-getting-started.md)om aan de slag te gaan.
+- Zie [configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md)voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
+- Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)(Engelstalig) voor een Power shell-cmdlet-verwijzing.
+- Zie [prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/)voor prijs informatie.
+- Voor een voor beeld van het gebruik van Azure Automation status configuratie in een pijp lijn voor continue implementatie raadpleegt u [continue implementatie met behulp van Azure Automation-status configuratie en Choco lade](automation-dsc-cd-chocolatey.md).

@@ -1,7 +1,7 @@
 ---
-title: Beschikbaarheid van scenario's - Spraakservice
+title: Beschik baarheid van scenario-spraak service
 titleSuffix: Azure Cognitive Services
-description: De Speech SDK bevat vele scenario's in een breed scala aan programmeertalen en omgevingen. Nog niet alle scenario's zijn beschikbaar in alle programmeertalen of alle omgevingen. Hieronder vindt u de beschikbaarheid van elk scenario.
+description: De Speech SDK biedt een groot aantal scenario's met verschillende programmeer talen en omgevingen. Niet alle scenario's zijn nog beschikbaar in alle programmeer talen of in alle omgevingen. Hieronder vindt u de beschik baarheid van elk scenario.
 services: cognitive-services
 author: chrisbasoglu
 manager: xdh
@@ -11,52 +11,52 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cbasoglu
 ms.openlocfilehash: a72e5055a3b0f858a732ec28eeab511b09dd450c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81400150"
 ---
-# <a name="scenario-availability"></a>Beschikbaarheid van scenario's
+# <a name="scenario-availability"></a>Beschik baarheid scenario
 
-De Speech SDK bevat vele scenario's in een breed scala aan programmeertalen en omgevingen. Nog niet alle scenario's zijn beschikbaar in alle programmeertalen of alle omgevingen. Hieronder vindt u de beschikbaarheid van elk scenario.
+De Speech SDK biedt een groot aantal scenario's met verschillende programmeer talen en omgevingen. Niet alle scenario's zijn nog beschikbaar in alle programmeer talen of in alle omgevingen. Hieronder vindt u de beschik baarheid van elk scenario.
 
-- **Spraakherkenning (SR), woordgroeplijst, intentie, vertaling en on-premises containers**
+- **Spraak herkenning (SR), woordgroepen lijst, intentie, vertaling en on-premises containers**
   - C++/Windows & Linux & macOS
-  - C# (Framework & .NET Core)/Windows & UWP & Unity & Xamarin & Linux & macOS
-  - Java (Jre en Android)
-  - JavaScript (Brower en NodeJS)
+  - C# (Framework & .NET core)/Windows & UWP & unit & Xamarin & Linux & macOS
+  - Java (jre en Android)
+  - Java script (browser en NodeJS)
   - Python
   - Swift
   - Objective-C  
 - **Tekst-naar-spraak (TTS)**
   - C++/Windows & Linux
-  - C#/Windows & UWP & Unity
-  - Java (Jre en Android)
+  - C#/Windows & UWP & eenheid
+  - Java (jre en Android)
   - Python
   - Swift
   - Objective-C
-  - TTS REST API kan in elke andere situatie worden gebruikt.
-- **Keyword Spotting (KWS)**
+  - TTS-REST API kunnen worden gebruikt in elke andere situatie.
+- **Trefwoord herkennen (KWS)**
   - C++/Windows & Linux
   - C#/Windows & Linux
   - Python/Windows & Linux
-  - Java/Windows & Linux & Android (Spraakapparaten SDK)
-  - Keyword spotting (KWS) functionaliteit kan werken met elk microfoontype, officiële KWS-ondersteuning is momenteel echter beperkt tot de microfoonarrays in de Azure Kinect DK-hardware of de Speech Devices SDK
+  - Java/Windows & Linux & Android (Speech-apparaten SDK)
+  - De functionaliteit van trefwoord herkennen (KWS) kan worden gebruikt voor elk type microfoon, maar de ondersteuning van officiële KWS is momenteel beperkt tot de microfoon matrices die zijn gevonden in de Azure Kinect DK-hardware of de speech-apparaten SDK
 - **Spraakassistenten**
   - C++/Windows & Linux & macOS
   - C#/Windows
-  - Java/Windows & Linux & macOS & Android (Spraakapparaten SDK)
-- **Gesprekstranscriptie**
+  - Java/Windows & Linux & macOS & Android (Speech apparaten SDK)
+- **Gesprek transcriptie**
   - C++/Windows & Linux
-  - C# (Framework & .NET Core)/Windows & UWP & Linux
-  - Java/Windows & Linux & Android (Spraakapparaten SDK)
-- **Gesprek met meerdere apparaten**
+  - C# (Framework & .NET core)/Windows & UWP & Linux
+  - Java/Windows & Linux & Android (Speech-apparaten SDK)
+- **Conversatie met meerdere apparaten**
   - C++/Windows
-  - C# (Framework & .NET Core)/Windows
-- **Gesprekscentrum Transcriptie**
-  - REST API en kan in elke situatie worden gebruikt
-- **Codec Gecomprimeerde audio-invoer**
+  - C# (Framework & .NET core)/Windows
+- **Call Center transcriptie**
+  - REST API en kunnen in elke situatie worden gebruikt
+- **Door codec gecomprimeerde audio-invoer**
   - C++/Linux
-  - C#/Linux
+  - C#-/Linux
   - Java/Linux, Android en iOS

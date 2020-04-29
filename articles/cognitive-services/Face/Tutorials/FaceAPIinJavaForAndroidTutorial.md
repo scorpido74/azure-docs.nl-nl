@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie: Gezichten in een afbeelding detecteren met de Android SDK'
 titleSuffix: Azure Cognitive Services
-description: In deze zelfstudie maakt u een eenvoudige Android-app die de Face-service gebruikt om gezichten in een afbeelding te detecteren en te framen.
+description: In deze zelf studie maakt u een eenvoudige Android-app die gebruikmaakt van de face-service voor het detecteren van en het frame van gezichten in een afbeelding.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: dd986a7557f468b939aefe1da825c9834618047f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81402922"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Zelfstudie: een Android-app maken om gezichten in een afbeelding te herkennen en te omlijsten
 
-In deze zelfstudie maakt u een Android-toepassing die de Azure Face-service via de Java SDK gebruikt om menselijke gezichten in een afbeelding te detecteren. Er wordt een geselecteerde afbeelding weergegeven en een kader rond elk gedetecteerd gezicht getekend.
+In deze zelf studie maakt u een Android-toepassing die gebruikmaakt van de Azure face-service, via de Java-SDK, om menselijke gezichten in een installatie kopie te detecteren. Er wordt een geselecteerde afbeelding weergegeven en een kader rond elk gedetecteerd gezicht getekend.
 
 In deze handleiding ontdekt u hoe u:
 
 > [!div class="checklist"]
 > - Een Android-app maken
-> - De Face-clientbibliotheek installeren
+> - De face-client bibliotheek installeren
 > - De clientbibliotheek gebruiken om gezichten in een afbeelding te detecteren
 > - Een kader rond elk gedetecteerd gezicht tekenen
 
@@ -33,13 +33,13 @@ In deze handleiding ontdekt u hoe u:
 
 De volledige voorbeeldcode is beschikbaar in de opslagplaats [Cognitive Services Face Android](https://github.com/Azure-Samples/cognitive-services-face-android-sample) op GitHub.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. 
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Face-abonnementssleutel. U kunt een abonnementssleutel voor een gratis proefversie downloaden van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om je te abonneren op de Face-service en je sleutel te krijgen. Maak vervolgens [omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de tekenreeks sleutel- `FACE_SUBSCRIPTION_KEY` en `FACE_ENDPOINT`serviceeindpunt, benoemd en , respectievelijk.
-- Elke editie van [Visual Studio 2015 of 2017](https://www.visualstudio.com/downloads/).
-- [Android Studio](https://developer.android.com/studio/) met API level 22 of hoger.
+- De sleutel van het gezichts abonnement. U kunt een abonnementssleutel voor een gratis proefversie downloaden van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op de face-service en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service- `FACE_SUBSCRIPTION_KEY` eindpunt `FACE_ENDPOINT`teken reeks, respectievelijk met de naam en.
+- Elke versie van [Visual Studio 2015 of 2017](https://www.visualstudio.com/downloads/).
+- [Android Studio](https://developer.android.com/studio/) met API-niveau 22 of hoger.
 
 ## <a name="create-the-android-studio-project"></a>Het Android Studio-project maken
 
@@ -99,11 +99,11 @@ Vouw in het deelvenster **Project** achtereenvolgens **app**, **manifests** uit 
 
 ## <a name="upload-image-and-detect-faces"></a>Afbeelding uploaden en gezichten detecteren
 
-Uw app detecteert gezichten door de **faceClient.Face.DetectWithStreamAsync-methode** aan te roepen, waarmee de [API REST detecteren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) wordt verpakt en een lijst met **Face-exemplaren** wordt geretourneerd.
+Uw app detecteert gezichten door de methode **faceClient. Face. DetectWithStreamAsync** aan te roepen, waarmee de rest API voor [detecteren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) wordt ingepakt en een lijst met **gezichts** instanties wordt geretourneerd.
 
 Elke geretourneerde **Face**-instantie bevat een rechthoek om de locatie ervan aan te geven, plus een reeks optionele gezichtskenmerken. In dit voorbeeld worden alleen de rechthoeken om de gezichten aangevraagd.
 
-Voeg de volgende twee methoden in de klasse **MainActivity** in. Wanneer gezichtsherkenning is voltooid, roept de app de **methode drawFaceRectanglesOnBitmap** aan om de **ImageView**te wijzigen. U gaat vervolgens deze methode definiëren.
+Voeg de volgende twee methoden in de klasse **MainActivity** in. Wanneer het gezichts detectie is voltooid, roept de app de **drawFaceRectanglesOnBitmap** -methode aan om de **ImageView**te wijzigen. U gaat vervolgens deze methode definiëren.
 
 [!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_detection_methods)]
 
@@ -123,7 +123,7 @@ Voer de toepassing uit en blader naar een afbeelding met een gezicht. Wacht enke
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u de Face Java SDK gebruiken om een toepassing te maken om gezichten in een afbeelding te detecteren en te framen. Meer informatie over de details van gezichtsdetectie.
+In deze zelf studie hebt u geleerd hoe u de gezichts-Java-SDK gebruikt om een toepassing te maken voor het detecteren van en het frame van gezichten in een afbeelding. Meer informatie over de details van gezichtsdetectie.
 
 > [!div class="nextstepaction"]
 > [Gezichten in afbeeldingen detecteren](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: 3d9718d7c1b3182d1f7bc16cd81b38635c051a85
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399937"
 ---
 :::row:::
     :::column span="3":::
-        Bij de ontwikkeling voor Android zijn er twee Spraak-SDK's beschikbaar. De Java Speech SDK is native beschikbaar als Een Android-pakket, of de .NET Speech SDK kan worden gebruikt met **Xamarin.Android** als het implementeert .NET Standard 2.0.
+        Bij het ontwikkelen voor Android zijn er twee spraak-Sdk's beschikbaar. De SDK voor Java speech is standaard beschikbaar als een Android-pakket, of de .NET Speech SDK kan worden gebruikt met **Xamarin. Android** tijdens de implementatie van .net Standard 2,0.
     :::column-end:::
     :::column:::
         <br>
@@ -31,7 +31,7 @@ ms.locfileid: "81399937"
 
 :::row:::
     :::column span="3":::
-        Xamarin.Android onthult de volledige Android SDK voor .NET-ontwikkelaars. Bouw volledig native Android-apps met C# of F# in Visual Studio. Zie <a href="https://docs.microsoft.com/xamarin/android/" target="_blank">Xamarin.Android <span class="docon docon-navigate-external x-hidden-focus"></span> </a> voor meer informatie
+        Xamarin. Android stelt de volledige Android SDK voor .NET-ontwikkel aars beschikbaar. Bouw volledig ingebouwde Android-apps met behulp van C# of F # in Visual Studio. Zie <a href="https://docs.microsoft.com/xamarin/android/" target="_blank">Xamarin. Android <span class="docon docon-navigate-external x-hidden-focus"></span> </a> (Engelstalig) voor meer informatie.
     :::column-end:::
     :::column:::
         <br>

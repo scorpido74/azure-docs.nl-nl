@@ -1,7 +1,7 @@
 ---
-title: HTTP naar HTTPS-omleiding met CLI
+title: HTTP-naar-HTTPS-omleiding via CLI
 titleSuffix: Azure Application Gateway
-description: Meer informatie over het maken van een toepassingsgateway en het toevoegen van een certificaat voor TLS-beëindiging met behulp van de Azure CLI.
+description: Meer informatie over het maken van een toepassings gateway en het toevoegen van een certificaat voor het beëindigen van TLS met behulp van de Azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
 ms.openlocfilehash: 6bf8f3b7bfb446db78f0c97a246977fec6cd54cb
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312146"
 ---
-# <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Een toepassingsgateway maken met HTTP naar HTTPS-omleiding met de Azure CLI
+# <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Een toepassings gateway met HTTP-naar-HTTPS-omleiding maken met behulp van Azure CLI
 
-U de Azure CLI gebruiken om een [toepassingsgateway](overview.md) te maken met een certificaat voor TLS/SSL-beëindiging. Er wordt een routeringsregel gebruikt om HTTP-verkeer om te leiden naar de HTTPS-poort in uw toepassingsgateway. In dit voorbeeld maakt u ook een [virtuele machineschaalset](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) voor de backendpool van de toepassingsgateway die twee virtuele machine-exemplaren bevat.
+U kunt de Azure CLI gebruiken om een [toepassings gateway](overview.md) te maken met een certificaat voor het beëindigen van TLS/SSL. Er wordt een routerings regel gebruikt om HTTP-verkeer om te leiden naar de HTTPS-poort in uw toepassings gateway. In dit voor beeld maakt u ook een [schaalset voor virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) voor de back-end-pool van de toepassings gateway die twee exemplaren van virtuele machines bevat.
 
 In dit artikel leert u het volgende:
 
@@ -25,10 +25,10 @@ In dit artikel leert u het volgende:
 > * Een zelfondertekend certificaat maken
 > * Een netwerk instellen
 > * Een toepassingsgateway maken met behulp van het certificaat
-> * Een listener- en omleidingsregel toevoegen
+> * Een listener-en omleidings regel toevoegen
 > * Een virtuele-machineschaalset maken met de standaard back-endgroep
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -36,7 +36,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 ## <a name="create-a-self-signed-certificate"></a>Een zelfondertekend certificaat maken
 
-Voor productiegebruik moet u een geldig certificaat importeren dat is ondertekend door een vertrouwde provider. U maakt voor deze zelfstudie een zelfondertekend certificaat en pfx-bestand via de openssl-opdracht.
+Voor productie gebruik moet u een geldig certificaat importeren dat is ondertekend door een vertrouwde provider. U maakt voor deze zelfstudie een zelfondertekend certificaat en pfx-bestand via de openssl-opdracht.
 
 ```console
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
@@ -115,11 +115,11 @@ az network application-gateway create \
 - *appGatewayFrontendIP*: hiermee wordt *myAGPublicIPAddress* aan *appGatewayHttpListener* toegewezen.
 - *rule1* - De standaardrouteringsregel die aan *appGatewayHttpListener* is gekoppeld.
 
-## <a name="add-a-listener-and-redirection-rule"></a>Een listener- en omleidingsregel toevoegen
+## <a name="add-a-listener-and-redirection-rule"></a>Een listener-en omleidings regel toevoegen
 
 ### <a name="add-the-http-port"></a>De HTTP-poort toevoegen
 
-U het maken van [frontend-port frontend-port az-netwerktoepassingen](/cli/azure/network/application-gateway/frontend-port#az-network-application-gateway-frontend-port-create) gebruiken om de HTTP-poort toe te voegen aan de toepassingsgateway.
+U kunt [AZ Network Application-Gateway frontend-Port Create](/cli/azure/network/application-gateway/frontend-port#az-network-application-gateway-frontend-port-create) gebruiken om de HTTP-poort toe te voegen aan de toepassings gateway.
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -131,7 +131,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-the-http-listener"></a>De HTTP-listener toevoegen
 
-U [de http-listener create van az Network-application-gateway gebruiken](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) om de listener met de naam *myListener* toe te voegen aan de toepassingsgateway.
+U kunt [AZ Network Application-Gateway HTTP-listener Create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) gebruiken om de listener met de naam *myListener* toe te voegen aan de toepassings gateway.
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -142,9 +142,9 @@ az network application-gateway http-listener create \
   --gateway-name myAppGateway
 ```
 
-### <a name="add-the-redirection-configuration"></a>De omleidingsconfiguratie toevoegen
+### <a name="add-the-redirection-configuration"></a>De configuratie van de omleiding toevoegen
 
-Voeg de HTTP-omleidingsconfiguratie toe aan de toepassingsgateway met behulp van [az-netwerk-gateway redirect-config maken](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
+Voeg de HTTP-naar-HTTPS-omleidings configuratie toe aan de toepassings gateway met [AZ Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -157,9 +157,9 @@ az network application-gateway redirect-config create \
   --include-query-string true
 ```
 
-### <a name="add-the-routing-rule"></a>De routeringsregel toevoegen
+### <a name="add-the-routing-rule"></a>De regel voor door sturen toevoegen
 
-Voeg de routeringsregel met de naam *rule2* toe aan de omleidingsconfiguratie aan de toepassingsgateway met behulp van [de AZ-netwerktoepassingsgatewayregel.](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create)
+Voeg de regel voor door sturen met de naam *firewallregel2* met de configuratie van de omleiding naar de toepassings gateway met [AZ Network Application-Gateway Rule Create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create)toe.
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -173,7 +173,7 @@ az network application-gateway rule create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Een virtuele-machineschaalset maken
 
-In dit voorbeeld maakt u een virtuele machineschaalset met de naam myvmss met de naam *myvmss* die servers biedt voor de backendpool in de toepassingsgateway. De virtuele machines in de schaalset worden gekoppeld aan *myBackendSubnet* en *appGatewayBackendPool*. U kunt [az vmss create](/cli/azure/vmss#az-vmss-create) gebruiken om de schaalset te maken.
+In dit voor beeld maakt u een schaalset voor virtuele machines met de naam *myvmss* die servers biedt voor de back-end-groep in de toepassings gateway. De virtuele machines in de schaalset worden gekoppeld aan *myBackendSubnet* en *appGatewayBackendPool*. U kunt [az vmss create](/cli/azure/vmss#az-vmss-create) gebruiken om de schaalset te maken.
 
 ```azurecli-interactive
 az vmss create \
@@ -218,19 +218,19 @@ az network public-ip show \
 
 ![Beveiligingswaarschuwing](./media/redirect-http-to-https-cli/application-gateway-secure.png)
 
-Als u de beveiligingswaarschuwing wilt accepteren als u een zelfondertekend certificaat hebt gebruikt, selecteert u **Details** en **gaat u vervolgens naar de webpagina**. Uw beveiligde NGINX-site wordt vervolgens weergegeven zoals in het volgende voorbeeld:
+Als u de beveiligings waarschuwing wilt accepteren als u een zelfondertekend certificaat hebt gebruikt, selecteert u **Details** en **gaat u naar de webpagina**. Uw beveiligde NGINX-site wordt vervolgens weergegeven zoals in het volgende voorbeeld:
 
 ![Basis-URL testen in de toepassingsgateway](./media/redirect-http-to-https-cli/application-gateway-nginxtest.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een zelfondertekend certificaat maken
 > * Een netwerk instellen
 > * Een toepassingsgateway maken met behulp van het certificaat
-> * Een listener- en omleidingsregel toevoegen
+> * Een listener-en omleidings regel toevoegen
 > * Een virtuele-machineschaalset maken met de standaard back-endgroep
 
 

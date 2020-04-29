@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
 ms.openlocfilehash: 57c66cb3597d8811be3caef74fa36af193b93be7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400766"
 ---
 ## <a name="prerequisites"></a>Vereisten
@@ -16,19 +16,19 @@ ms.locfileid: "81400766"
 Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een Azure-spraakbron maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programming-language-cpp)
-> * Zorg ervoor dat u toegang hebt tot een microfoon voor audio-opname
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een Azure-spraak resource maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programming-language-cpp)
+> * Zorg ervoor dat u toegang tot een microfoon hebt voor het vastleggen van audio
 
 ## <a name="source-code"></a>Broncode
 
-Maak een C++ bronbestand met de naam *helloworld.cpp*en plak de volgende code erin.
+Maak een C++-bron bestand met de naam *HelloWorld. cpp*en plak de volgende code in het.
 
 [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/linux/from-microphone/helloworld.cpp#code)]
 
 [!INCLUDE [replace key and region](../replace-key-and-region.md)]
 
-## <a name="code-explanation"></a>Code uitleg
+## <a name="code-explanation"></a>Uitleg bij code
 
 [!INCLUDE [code explanation](../code-explanation.md)]
 
@@ -49,7 +49,7 @@ Maak een C++ bronbestand met de naam *helloworld.cpp*en plak de volgende code er
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
-* Voer op een **ARM64-systeem** (64-bits) de volgende opdracht uit om de toepassing te bouwen.
+* Voer op een **ARM64** -systeem (64-bits) de volgende opdracht uit om de toepassing te bouwen.
 
   ```sh
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
@@ -71,7 +71,7 @@ Maak een C++ bronbestand met de naam *helloworld.cpp*en plak de volgende code er
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
      ```
 
-   * Voer op een **ARM64-systeem** (64-bits) de volgende opdracht in.
+   * Voer de volgende opdracht in op een **ARM64** -systeem (64-bits).
 
      ```sh
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/arm64"

@@ -1,6 +1,6 @@
 ---
-title: De Azure Arc voor servers (preview)-agent beheren
-description: In dit artikel worden de verschillende beheertaken beschreven die u doorgaans uitvoert tijdens de levenscyclus van de Azure Arc voor servers Connected Machine-agent.
+title: De Azure-Arc voor servers (preview)-agent beheren
+description: In dit artikel worden de verschillende beheer taken beschreven die u normaal gesp roken uitvoert tijdens de levens cyclus van de Azure-Arc voor servers aangesloten machine agent.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
@@ -9,50 +9,50 @@ ms.author: magoedte
 ms.date: 04/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 5ad2127b4cb9da3ca83aa04bd1885908a88dba62
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81308962"
 ---
-# <a name="managing-and-maintaining-the-connected-machine-agent"></a>Het beheren en onderhouden van de Connected Machine-agent
+# <a name="managing-and-maintaining-the-connected-machine-agent"></a>De verbonden machine agent beheren en onderhouden
 
-Na de eerste implementatie van de Azure Arc voor servers (preview) Connected Machine-agent voor Windows of Linux, moet u de agent mogelijk opnieuw configureren, upgraden of van de computer verwijderen als deze de pensioenfase in de levenscyclus heeft bereikt. U deze routineonderhoudstaken eenvoudig handmatig of via automatisering beheren, wat zowel operationele fouten als kosten vermindert.
+Na de eerste implementatie van de Azure-Arc voor servers (preview) verbonden computer agent voor Windows of Linux moet u de agent mogelijk opnieuw configureren, bijwerken of verwijderen van de computer als deze de buiten gebruiks telling van de levens fase heeft bereikt. U kunt deze routine onderhouds taken eenvoudig hand matig of via Automation beheren, waardoor zowel de operationele fout als de onkosten worden verminderd.
 
-## <a name="upgrading-agent"></a>Upgradeagent
+## <a name="upgrading-agent"></a>Agent bijwerken
 
-De Azure Connected Machine-agent voor Windows en Linux kan handmatig of automatisch worden geüpgraded naar de nieuwste release, afhankelijk van uw vereisten. In de volgende tabel worden de methoden beschreven die worden ondersteund om de agentupgrade uit te voeren.
+De Azure Connected machine-agent voor Windows en Linux kan hand matig worden bijgewerkt naar de meest recente versie of automatisch afhankelijk van uw vereisten. In de volgende tabel worden de methoden beschreven die worden ondersteund om de upgrade van de agent uit te voeren.
 
 | Besturingssysteem | Upgrademethode |
 |------------------|----------------|
 | Windows | Handmatig<br> Windows Update |
 | Ubuntu | [Apt](https://help.ubuntu.com/lts/serverguide/apt.html) |
-| SUSE Linux Enterprise Server | [zypper zypper](https://en.opensuse.org/SDB:Zypper_usage_11.3) |
-| RedHat Enterprise, Amazon, CentOS Linux | [Yum](https://wiki.centos.org/PackageManagement/Yum) | 
+| SUSE Linux Enterprise Server | [Zypper](https://en.opensuse.org/SDB:Zypper_usage_11.3) |
+| Red Hat Enter prise, Amazon, CentOS linux | [yum](https://wiki.centos.org/PackageManagement/Yum) | 
 
 ### <a name="windows-agent"></a>Windows-agent
 
-Als u de agent op een Windows-machine wilt bijwerken naar de nieuwste versie, is de agent beschikbaar bij Microsoft Update en kan deze worden geïmplementeerd met uw bestaande software-updatebeheerproces. Het kan ook handmatig worden uitgevoerd vanuit de opdrachtprompt, vanuit een script of andere `AzureConnectedMachine.msi`automatiseringsoplossing of vanuit de wizard UI door het uitvoeren van . 
+Als u de agent op een Windows-computer wilt bijwerken naar de nieuwste versie, is de agent beschikbaar vanaf Microsoft Update en kan deze worden geïmplementeerd met uw bestaande software-update beheer proces. Het kan ook hand matig worden uitgevoerd vanaf de opdracht prompt, vanuit een script of andere Automation-oplossing, of vanuit de wizard gebruikers `AzureConnectedMachine.msi`interface door uit te voeren. 
 
 > [!NOTE]
-> * Als u de agent wilt upgraden, moet u *beheerdersmachtigingen* hebben.
-> * Als u handmatig wilt upgraden, moet u eerst het Installatiepakket downloaden en kopiëren naar een map op de doelserver of vanuit een gedeelde netwerkmap. 
+> * Als u de agent wilt bijwerken, moet u over *beheerders* machtigingen beschikken.
+> * Als u de upgrade hand matig wilt uitvoeren, moet u eerst het installatie pakket downloaden en kopiëren naar een map op de doel server of vanuit een gedeelde netwerkmap. 
 
-Als u niet bekend bent met de opdrachtregelopties voor Windows Installer-pakketten, controleert u [msiexec-standaard opdrachtregelopties](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options) en [msiexec-opdrachtregelopties](https://docs.microsoft.com/windows/win32/msi/command-line-options).
+Als u niet bekend bent met de opdracht regel opties voor Windows Installer-pakketten, raadpleegt u [Msiexec Standard-opdracht regel opties](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options) en [Msiexec-opdracht regel opties](https://docs.microsoft.com/windows/win32/msi/command-line-options).
 
-#### <a name="to-upgrade-using-the-setup-wizard"></a>Upgraden met de wizard Setup
+#### <a name="to-upgrade-using-the-setup-wizard"></a>Bijwerken met behulp van de installatie wizard
 
-1. Meld u aan bij de computer met een account met beheerdersrechten.
+1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. **AzureConnectedMachineAgent.msi** uitvoeren om de wizard Setup te starten.
+2. Voer **AzureConnectedMachineAgent. msi** uit om de installatie wizard te starten.
 
-De wizard Setup detecteert of er een vorige versie bestaat en voert vervolgens automatisch een upgrade van de agent uit. Wanneer de upgrade is voltooid, wordt de wizard Setup automatisch gesloten.
+De wizard Setup detecteert of een vorige versie bestaat en voert vervolgens automatisch een upgrade van de agent uit. Wanneer de upgrade is voltooid, wordt de wizard Setup automatisch gesloten.
 
-#### <a name="to-upgrade-from-the-command-line"></a>Upgraden vanaf de opdrachtregel
+#### <a name="to-upgrade-from-the-command-line"></a>Een upgrade uitvoeren vanaf de opdracht regel
 
-1. Meld u aan bij de computer met een account met beheerdersrechten.
+1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. Voer de volgende opdracht uit om de `C:\Support\Logs` agent in stilte te upgraden en een installatielogboekbestand in de map te maken.
+2. Voer de volgende opdracht uit om de agent op de achtergrond bij te werken `C:\Support\Logs` en een installatie logboek bestand te maken in de map.
 
     ```dos
     msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentupgradesetup.log"
@@ -60,167 +60,167 @@ De wizard Setup detecteert of er een vorige versie bestaat en voert vervolgens a
 
 ### <a name="linux-agent"></a>Linux-agent
 
-Om de agent op een Linux-machine bij te werken naar de nieuwste versie, gaat het om twee opdrachten. Eén opdracht om de lokale pakketindex bij te werken met de lijst met de laatst beschikbare pakketten uit de repositories en één opdracht om het lokale pakket te upgraden. 
+Als u de agent op een Linux-computer wilt bijwerken naar de nieuwste versie, zijn er twee opdrachten nodig. Eén opdracht voor het bijwerken van de lokale pakket index met de lijst met meest recente beschik bare pakketten van de opslag plaatsen en één opdracht om het lokale pakket bij te werken. 
 
 > [!NOTE]
-> Als u de agent wilt upgraden, moet u *roottoegangsmachtigingen* hebben of met een account met verhoogde rechten met Sudo.
+> Als u de agent wilt bijwerken, moet u toegangs machtigingen voor het *hoofd* hebben of met een account met verhoogde rechten met behulp van sudo.
 
-#### <a name="upgrade-ubuntu"></a>Ubuntu upgraden
+#### <a name="upgrade-ubuntu"></a>Ubuntu bijwerken
 
-1. Voer de volgende opdracht uit om de lokale pakketindex bij te werken met de laatste wijzigingen in de repositories:
+1. Voer de volgende opdracht uit om de lokale pakket index bij te werken met de meest recente wijzigingen die in de opslag plaatsen zijn aangebracht:
 
     ```bash
     apt update
     ```
 
-2. Voer de volgende opdracht uit om uw systeem te upgraden:
+2. Voer de volgende opdracht uit om uw systeem bij te werken:
 
     ```bash
     apt upgrade
     ```
 
-Acties van de [apt-opdracht,](https://help.ubuntu.com/lts/serverguide/apt.html) zoals het installeren en `/var/log/dpkg.log` verwijderen van pakketten, worden geregistreerd in het logboekbestand.
+Acties van de [apt](https://help.ubuntu.com/lts/serverguide/apt.html) -opdracht, zoals het installeren en verwijderen van pakketten, worden geregistreerd in `/var/log/dpkg.log` het logboek bestand.
 
 #### <a name="upgrade-red-hatcentosamazon-linux"></a>Upgrade Red Hat/CentOS/Amazon Linux
 
-1. Voer de volgende opdracht uit om de lokale pakketindex bij te werken met de laatste wijzigingen in de repositories:
+1. Voer de volgende opdracht uit om de lokale pakket index bij te werken met de meest recente wijzigingen die in de opslag plaatsen zijn aangebracht:
 
     ```bash
     yum check-update
     ```
 
-2. Voer de volgende opdracht uit om uw systeem te upgraden:
+2. Voer de volgende opdracht uit om uw systeem bij te werken:
 
     ```bash
     yum update
     ```
 
-Acties van de [opdracht yum,](https://access.redhat.com/articles/yum-cheat-sheet) zoals installatie en verwijdering `/var/log/yum.log` van pakketten, worden geregistreerd in het logboekbestand. 
+Acties van de [yum](https://access.redhat.com/articles/yum-cheat-sheet) -opdracht, zoals het installeren en verwijderen van pakketten, worden geregistreerd in `/var/log/yum.log` het logboek bestand. 
 
-#### <a name="upgrade-suse-linux-enterprise"></a>Upgrade SUSE Linux Enterprise
+#### <a name="upgrade-suse-linux-enterprise"></a>Upgrade van SUSE Linux Enter prise
 
-1. Voer de volgende opdracht uit om de lokale pakketindex bij te werken met de laatste wijzigingen in de repositories:
+1. Voer de volgende opdracht uit om de lokale pakket index bij te werken met de meest recente wijzigingen die in de opslag plaatsen zijn aangebracht:
 
     ```bash
     zypper refresh
     ```
 
-2. Voer de volgende opdracht uit om uw systeem te upgraden:
+2. Voer de volgende opdracht uit om uw systeem bij te werken:
 
     ```bash
     zypper update
     ```
 
-Acties van de [zypper](https://en.opensuse.org/Portal:Zypper) opdracht, zoals de installatie en `/var/log/zypper.log` verwijdering van pakketten, worden geregistreerd in het logbestand. 
+Acties van de [Zypper](https://en.opensuse.org/Portal:Zypper) -opdracht, zoals het installeren en verwijderen van pakketten, worden geregistreerd in `/var/log/zypper.log` het logboek bestand. 
 
-## <a name="about-the-azcmagent-tool"></a>Over de azcmagent tool
+## <a name="about-the-azcmagent-tool"></a>Over het hulp programma Azcmagent
 
-De azcmagent-tool (Azcmagent.exe) wordt gebruikt om de Azure Arc voor servers (preview) Connected Machine-agent tijdens de installatie te configureren of om de oorspronkelijke configuratie van de agent na de installatie te wijzigen. Azcmagent.exe biedt opdrachtregelparameters om de agent aan te passen en de status ervan te bekijken:
+Het hulp programma Azcmagent (Azcmagent. exe) wordt gebruikt voor het configureren van de Azure-Arc voor servers (preview-versie) verbonden machine agent tijdens de installatie, of wijzig de eerste configuratie van de agent na de installatie. Azcmagent. exe biedt opdracht regel parameters voor het aanpassen van de agent en het weer geven van de status:
 
-* **Verbinding maken** - De machine verbinden met Azure Arc
+* **Connect** : de computer verbinden met Azure Arc
 
-* **Loskoppelen** - De machine loskoppelen van Azure Arc
+* De verbinding met de computer met Azure Arc **verbreken**
 
-* **Opnieuw verbinding maken** - Een losgekoppelde machine opnieuw verbinden met Azure Arc
+* **Opnieuw verbinding maken** : om opnieuw verbinding te maken met een niet-verbonden machine met Azure Arc
 
-* **Weergeven** - De status van de agent weergeven en de configuratie-eigenschappen (naam van de brongroep, abonnements-id, versie, enz.), die u kunnen helpen bij het oplossen van een probleem met de agent.
+* De agent status **weer geven en** de bijbehorende configuratie-eigenschappen (naam van de resource groep, abonnements-id, versie enzovoort), die u kan helpen bij het oplossen van een probleem met de agent.
 
-* **-h of --help** - Toont beschikbare opdrachtregelparameters
+* **-h of--Help** : toont beschik bare opdracht regel parameters
 
-    Als u bijvoorbeeld gedetailleerde hulp wilt zien `azcmagent reconnect -h`voor de parameter **Opnieuw verbinden,** typt u . 
+    Als u bijvoorbeeld gedetailleerde Help voor de para meter **reconnect** wilt weer geven `azcmagent reconnect -h`, typt u. 
 
-* **-v of --verbose** - Verbose logging inschakelen
+* **-v of-uitgebreid** -uitgebreide logboek registratie inschakelen
 
-U een **Verbinding**maken, **Verbreken**en opnieuw handmatig **verbinden** terwijl u interactief bent aangemeld, of automatiseren met dezelfde serviceprincipal die u hebt gebruikt om meerdere agents aan boord te nemen of met een [microsoft-identiteitsplatformtoegangstoken](../../active-directory/develop/access-tokens.md). Als u geen serviceprincipal hebt gebruikt om de machine te registreren bij Azure Arc voor servers (voorbeeld), raadpleegt u het volgende [artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) om een serviceprincipal te maken.
+U kunt een **verbinding maken**, de verbinding **verbreken**en hand matig **opnieuw verbinding maken** terwijl u zich interactief aanmeldt, of automatiseren met dezelfde service-principal die u hebt gebruikt om meerdere agents uit te voeren of met een [toegangs token](../../active-directory/develop/access-tokens.md)van het micro soft Identity platform. Raadpleeg het volgende [artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) om een service-principal te maken als u geen Service-Principal hebt gebruikt om de machine te registreren met Azure Arc voor servers (preview).
 
 ### <a name="connect"></a>Verbinding maken
 
-Met deze parameter wordt een resource in Azure Resource Manager die de machine vertegenwoordigt, gemaakt in Azure. De bron bevindt zich in de opgegeven abonnementsgroep en resourcegroep en `--location` gegevens over de machine worden opgeslagen in het Azure-gebied dat door de instelling is opgegeven. De standaardresourcenaam is de hostnaam van deze machine als deze niet is opgegeven.
+Met deze para meter geeft u een resource op in Azure Resource Manager waarmee de machine wordt gemaakt in Azure. De resource bevindt zich in het opgegeven abonnement en de resource groep en de gegevens over de machine worden opgeslagen in de Azure `--location` -regio die is opgegeven door de instelling. De standaard resource naam is de hostnaam van deze computer als deze niet is opgegeven.
 
-Een certificaat dat overeenkomt met de door het systeem toegewezen identiteit van de machine wordt vervolgens lokaal gedownload en opgeslagen. Zodra deze stap is voltooid, beginnen de Azure Connected Machine Metadata Service en Guest Configuration Agent te synchroniseren met Azure Arc voor servers (preview).
+Een certificaat dat overeenkomt met de door het systeem toegewezen identiteit van de computer, wordt vervolgens lokaal gedownload en opgeslagen. Zodra deze stap is voltooid, beginnen de Azure Connected machine-Metadata Service en de gast configuratie agent te synchroniseren met Azure Arc voor servers (preview).
 
-Voer de volgende opdracht uit om verbinding te maken met een serviceprincipal:
+Als u verbinding wilt maken met behulp van een Service-Principal, voert u de volgende opdracht uit:
 
 `azcmagent connect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
 
-Voer de volgende opdracht uit om verbinding te maken met een toegangstoken:
+Als u verbinding wilt maken met behulp van een toegangs token, voert u de volgende opdracht uit:
 
 `azcmagent connect --access-token <> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
 
-Voer de volgende opdracht uit om verbinding te maken met uw verhoogde ingelogde referenties (interactief):
+Voer de volgende opdracht uit om verbinding te maken met uw referenties met verhoogde bevoegdheden (interactief):
 
 `azcmagent connect --tenant-id <TenantID> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
 
 ### <a name="disconnect"></a>Verbinding verbreken
 
-Met deze parameter wordt een resource in Azure Resource Manager die de machine vertegenwoordigt, verwijderd in Azure. Het verwijdert de agent niet uit de machine, dit moet als een afzonderlijke stap worden gedaan. Als de machine is losgekoppeld, als u deze opnieuw wilt registreren `azcmagent connect` bij Azure Arc voor servers (voorbeeld), gebruikt u zo dat er een nieuwe bron voor wordt gemaakt in Azure.
+Met deze para meter wordt een resource opgegeven in Azure Resource Manager die de machine vertegenwoordigt die wordt verwijderd in Azure. De agent wordt niet van de computer verwijderd. dit moet als een afzonderlijke stap worden uitgevoerd. Als u de computer opnieuw wilt registreren met Azure-Arc voor servers (preview), gebruikt `azcmagent connect` u dit zodat er een nieuwe resource wordt gemaakt in Azure.
 
-Voer de volgende opdracht uit om de verbinding met een serviceprincipal te verbreken:
+Voer de volgende opdracht uit om de verbinding met een service-principal te verbreken:
 
 `azcmagent disconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
 
-Voer de volgende opdracht uit om de verbinding met een toegangstoken te verbreken:
+Als u de verbinding wilt verbreken met een toegangs token, voert u de volgende opdracht uit:
 
 `azcmagent disconnect --access-token <accessToken>`
 
-Voer de volgende opdracht uit om verbinding te maken met uw verhoogde ingelogde referenties (interactief):
+Voer de volgende opdracht uit als u de verbinding wilt verbreken met de referenties die zijn toegevoegd aan een verhoogde bevoegdheid (interactief):
 
 `azcmagent disconnect --tenant-id <tenantID>`
 
 ### <a name="reconnect"></a>Opnieuw verbinden
 
-Deze parameter verbindt de reeds geregistreerde of verbonden machine opnieuw met Azure Arc voor servers (voorbeeld). Dit kan nodig zijn als de machine ten minste 45 dagen is uitgeschakeld om het certificaat te laten verlopen. Deze parameter gebruikt de meegeleverde verificatieopties om nieuwe referenties op te halen die overeenkomen met de Azure Resource Manager-bron die deze machine vertegenwoordigt.
+Met deze para meter wordt de reeds geregistreerde of verbonden computer opnieuw verbonden met Azure Arc voor servers (preview-versie). Dit kan nodig zijn als de machine is uitgeschakeld, ten minste 45 dagen voordat het certificaat verloopt. Deze para meter gebruikt de beschik bare verificatie opties om nieuwe referenties op te halen die overeenkomen met de Azure Resource Manager bron van deze computer.
 
-Deze opdracht vereist hogere bevoegdheden dan de Azure [Connected Machine Onboarding-rol.](overview.md#required-permissions)
+Voor deze opdracht zijn hogere bevoegdheden vereist dan de [met Azure verbonden computer](overview.md#required-permissions) voorbereidings functie.
 
-Voer de volgende opdracht uit om opnieuw verbinding te maken met een serviceprincipal:
+Als u opnieuw verbinding wilt maken met behulp van een Service-Principal, voert u de volgende opdracht uit:
 
 `azcmagent reconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
 
-Voer de volgende opdracht uit om opnieuw verbinding te maken met een access token:
+Als u opnieuw verbinding wilt maken met behulp van een toegangs token, voert u de volgende opdracht uit:
 
 `azcmagent reconnect --access-token <accessToken>`
 
-Voer de volgende opdracht uit om opnieuw verbinding te maken met uw verhoogde ingelogde referenties (interactief):
+Voer de volgende opdracht uit om opnieuw verbinding te maken met uw referenties met verhoogde bevoegdheden (interactief):
 
 `azcmagent reconnect --tenant-id <tenantID>`
 
 ## <a name="remove-the-agent"></a>De agent verwijderen
 
-Voer een van de volgende methoden uit om de Windows- of Linux Connected Machine-agent van de machine te verwijderen. Het verwijderen van de agent maakt de machine niet uit met Arc voor servers (voorbeeld), dit is een apart proces dat u uitvoert wanneer u de machine niet meer in Azure hoeft te beheren.
+Voer een van de volgende methoden uit om de met Windows of Linux verbonden machine agent te verwijderen van de computer. Als de agent wordt verwijderd, wordt de registratie van de computer bij ARC voor servers (preview) niet ongedaan gemaakt. Dit is een afzonderlijk proces dat u uitvoert wanneer u de computer niet meer hoeft te beheren in Azure.
 
 ### <a name="windows-agent"></a>Windows-agent
 
-Beide methoden verwijderen de agent, maar verwijderen de map *C:\Program Files\AzureConnectedMachineAgent* niet op de machine.
+Met beide van de volgende methoden wordt de agent verwijderd, maar wordt de map *C:\Program Files\AzureConnectedMachineAgent* niet verwijderd van de computer.
 
-#### <a name="uninstall-from-control-panel"></a>Verwijderen uit Configuratiescherm
+#### <a name="uninstall-from-control-panel"></a>Verwijderen in het configuratie scherm
 
-1. Ga als volgt te werk om de Windows-agent van de machine te verwijderen:
+1. Ga als volgt te werk om de Windows-agent te verwijderen van de computer:
 
-    a. Meld u aan bij de computer met een account met beheerdersmachtigingen.  
-    b. Selecteer **programma's en onderdelen**in **het Configuratiescherm**.  
-    c. Selecteer in **Programma's en onderdelen** **Azure Connected Machine Agent**, selecteer **Verwijderen**en selecteer **Vervolgens Ja**.  
+    a. Meld u bij de computer aan met een account met beheerders machtigingen.  
+    b. Selecteer in **het configuratie scherm**de optie **Program ma's en onderdelen**.  
+    c. In **Program ma's en onderdelen**selecteert u **Azure Connected machine agent**, selecteert u **verwijderen**en selecteert u vervolgens **Ja**.  
 
     >[!NOTE]
-    > U de wizard agentsetup ook uitvoeren door te dubbelklikken op het **installatiepakket AzureConnectedMachineAgent.msi.**
+    > U kunt de wizard Setup van agent ook uitvoeren door te dubbel klikken op het installatie pakket **AzureConnectedMachineAgent. msi** .
 
-#### <a name="uninstall-from-the-command-line"></a>Verwijderen van de opdrachtregel
+#### <a name="uninstall-from-the-command-line"></a>Verwijderen vanaf de opdracht regel
 
-Als u de agent handmatig wilt verwijderen uit de opdrachtprompt of een geautomatiseerde methode wilt gebruiken, zoals een script, u het volgende voorbeeld gebruiken. Eerst moet u de productcode, een GUID die de hoofdidentificatie van het toepassingspakket is, ophalen uit het besturingssysteem. De verwijderen wordt uitgevoerd met behulp van de `msiexec /x {Product Code}`opdrachtregel Msiexec.exe - .
+Als u de agent hand matig wilt verwijderen via de opdracht prompt of als u een automatische methode wilt gebruiken, zoals een script, kunt u het volgende voor beeld gebruiken. Eerst moet u de product code ophalen. Dit is een GUID die de principal-id van het toepassings pakket is van het besturings systeem. Het verwijderen wordt uitgevoerd met behulp van de opdracht regel Msiexec. `msiexec /x {Product Code}`exe.
     
-1. Open de registereditor.
+1. Open de REGI ster-editor.
 
-2. Zoek en `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall`kopieer de productcode GUID onder registersleutel.
+2. Zoek onder register `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall`sleutel naar de GUID van de product code en kopieer deze.
 
-3. U de agent vervolgens verwijderen met behulp van Msiexec aan de hand van de volgende voorbeelden:
+3. U kunt de agent vervolgens verwijderen via Msiexec met behulp van de volgende voor beelden:
 
-   * Vanuit het type opdrachtregel:
+   * Vanaf het opdracht regel type:
 
        ```dos
        msiexec.exe /x {product code GUID} /qn
        ```
 
-   * U dezelfde stappen uitvoeren met PowerShell:
+   * U kunt dezelfde stappen uitvoeren met behulp van Power shell:
 
        ```powershell
        Get-ChildItem -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall | `
@@ -232,32 +232,32 @@ Als u de agent handmatig wilt verwijderen uit de opdrachtprompt of een geautomat
 ### <a name="linux-agent"></a>Linux-agent
 
 > [!NOTE]
-> Als u de agent wilt verwijderen, moet u *roottoegangsmachtigingen* hebben of met een account met verhoogde rechten met Sudo.
+> Als u de agent wilt verwijderen, moet u toegangs machtigingen voor het *hoofd* hebben of met een account met verhoogde rechten met behulp van sudo.
 
-Om de Linux-agent te verwijderen, is de opdracht om te gebruiken afhankelijk van het Linux-besturingssysteem.
+Als u de Linux-agent wilt verwijderen, is de opdracht die moet worden gebruikt, afhankelijk van het Linux-besturings systeem.
 
-- Voer voor Ubuntu de volgende opdracht uit:
+- Voor Ubuntu voert u de volgende opdracht uit:
 
     ```bash
     sudo apt purge azcmagent
     ```
 
-- Voer voor RHEL, CentOS en Amazon Linux de volgende opdracht uit:
+- Voor RHEL, CentOS en Amazon Linux voert u de volgende opdracht uit:
 
     ```bash
     sudo yum remove azcmagent
     ```
 
-- Voer voor SLES de volgende opdracht uit:
+- Voor SLES voert u de volgende opdracht uit:
 
     ```bash
     sudo zypper remove azcmagent
     ```
 
-## <a name="unregister-machine"></a>Kassamachine
+## <a name="unregister-machine"></a>Registratie van machine ongedaan maken
 
-Als u van plan bent de machine niet meer te beheren met ondersteunende services in Azure, voert u de volgende stappen uit om de registratie van de machine bij Arc voor servers uit te zeggen (voorbeeld). U deze stappen uitvoeren voor of nadat u het agent Connected Machine uit de machine hebt verwijderd.
+Als u van plan bent om het beheer van de machine met ondersteunende services in azure te stoppen, voert u de volgende stappen uit om de registratie van de computer bij te werken met Arc voor servers (preview). U kunt deze stappen uitvoeren vóór of na het verwijderen van de verbonden machine agent van de computer.
 
-1. Open Azure Arc voor servers (preview) door naar de [Azure-portal](https://aka.ms/hybridmachineportal)te gaan.
+1. Open Azure-Arc voor servers (preview) door naar de [Azure Portal](https://aka.ms/hybridmachineportal)te gaan.
 
-2. Selecteer de machine in de lijst, selecteer de ellips (**...**) en selecteer **Verwijderen**.
+2. Selecteer de computer in de lijst, selecteer het beletsel teken (**...**) en selecteer vervolgens **verwijderen**.

@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: Documentatie over spraak naar tekst
-summary: Spraak-naar-tekst van de Spraakservice, ook wel spraakherkenning genoemd, maakt real-time en batchtranscriptie van audiostreams in tekst mogelijk.
+summary: Spraak-naar-tekst van de speech-service, ook wel spraak herkenning genoemd, biedt realtime-en batch transcriptie van audio-streams in tekst.
 metadata:
-  title: Spraak-naar-tekstdocumentatie - Zelfstudies, API-verwijzing - Azure Cognitive Services | Microsoft Documenten
+  title: Documentatie voor spraak naar tekst-zelf studies, API-verwijzing-Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,13 +12,13 @@ metadata:
   ms.date: 03/19/2020
   ms.author: trbye
   ms.openlocfilehash: 717c4e0322b48eca0acfacd20ed527a629bd1ff0
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401408"
 landingContent:
-- title: Over spraak-naar-tekst
+- title: Over spraak naar tekst
   linkLists:
   - linkListType: overview
     links:
@@ -36,7 +36,7 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: Spraak herkennen die is opgeslagen in blobopslag
       url: quickstarts/from-blob.md
-- title: Ontwikkelen met spraak-naar-tekst
+- title: Ontwikkelen met spraak naar tekst
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -68,5 +68,5 @@ landingContent:
       url: language-support.md#speech-to-text
     - text: Veelgestelde vragen over spraak naar tekst
       url: faq-stt.md
-    - text: Spraak-naar-tekst-prijzen
+    - text: Prijs informatie voor spraak naar tekst
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

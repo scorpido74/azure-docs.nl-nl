@@ -1,6 +1,6 @@
 ---
-title: Niet-compatibele Azure Automation State Configuration-servers herstellen
-description: Configuraties op aanvraag opnieuw toepassen op servers waar de configuratiestatus is afgedreven
+title: Niet-compatibele Azure Automation status configuratie servers herstellen
+description: Configuraties op aanvraag opnieuw Toep assen op servers waar de configuratie status is gedrijfd
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,41 +9,40 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: cc5884e1f70bdccee4e7a113e6e3ee2d6604b50a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: dfe62c54bfb10d70f1dbf19daec90eec68e66431
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81406088"
 ---
 # <a name="remediate-noncompliant-dsc-servers"></a>Niet-compatibele DSC-servers herstellen
 
-Wanneer servers zijn geregistreerd bij Azure Automation State `ApplyOnly`Configuration, is de configuratiemodus ingesteld op , `ApplyandMonitor`of `ApplyAndAutoCorrect`. Als de modus niet `ApplyAndAutoCorrect`is ingesteld op , blijven servers die om welke reden dan ook van een compatibele status afglijden niet-compatibel totdat ze handmatig zijn gecorrigeerd.
+Als servers zijn geregistreerd met Azure Automation status configuratie, wordt de configuratie modus ingesteld op `ApplyOnly`, `ApplyandMonitor`of `ApplyAndAutoCorrect`. Als de modus niet is ingesteld `ApplyAndAutoCorrect`op, blijven servers die van een compatibele status zijn, om welke reden dan ook niet-compatibel.
 
-Azure compute biedt een functie met de naam Run Command waarmee klanten scripts in virtuele machines kunnen uitvoeren.
-Dit document biedt voorbeeldscripts voor deze functie wanneer de configuratiedrift handmatig wordt gecorrigeerd.
+Azure Compute biedt een functie met de naam run-opdracht waarmee klanten scripts in virtuele machines kunnen uitvoeren.
+Dit document bevat voorbeeld scripts voor deze functie wanneer de configuratie-drift hand matig wordt gecorrigeerd.
 
-## <a name="correct-drift-of-windows-virtual-machines-using-powershell"></a>Drift van Virtuele Windows-machines corrigeren met PowerShell
+## <a name="correct-drift-of-windows-virtual-machines-using-powershell"></a>Juiste drift van virtuele Windows-machines met behulp van Power shell
 
-Zie de documentatiepagina [PowerShell-scripts uitvoeren in uw Windows VM met Opdracht](/azure/virtual-machines/windows/run-command)Uitvoeren voor stapsgewijze instructies met de functie Opdracht uitvoeren op virtuele Windows-machines.
+Zie de documentatie pagina [Power shell-scripts uitvoeren in uw Windows-VM met de opdracht uitvoeren](/azure/virtual-machines/windows/run-command)voor stapsgewijze instructies voor het uitvoeren van de opdracht functie op virtuele Windows-machines.
 
-Als u een configuratieknooppunt azure automation state forceert om de nieuwste configuratie te downloaden en toe te passen, gebruikt u de cmdlet [Update-DscConfiguration.](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration)
+Gebruik de cmdlet [Update-DscConfiguration](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration) om een configuratie knooppunt van Azure Automation status af te dwingen om de nieuwste configuratie te downloaden en toe te passen.
 
 ```powershell
 Update-DscConfiguration -Wait -Verbose
 ```
 
-## <a name="correct-drift-of-linux-virtual-machines"></a>Juiste drift van Linux virtuele machines
+## <a name="correct-drift-of-linux-virtual-machines"></a>Juiste drift van virtuele Linux-machines
 
-Vergelijkbare functionaliteit is momenteel niet beschikbaar voor Linux-servers.
-De enige optie is om het registratieproces te herhalen.
-
-Voor Azure-knooppunten u drift vanaf de Azure-portal of met cmdlets van de Az-module corrigeren. Details over dit proces worden gedocumenteerd in [Onboarding-machines voor beheer door Azure Automation State Configuration](automation-dsc-onboarding.md#onboard-vms-by-using-the-azure-portal).
-Voor hybride knooppunten u drift corrigeren met behulp van de meegeleverde Python-scripts.
-Zie [PowerShell DSC voor Linux repo](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer).
+Vergelijk bare functionaliteit is momenteel niet beschikbaar voor Linux-servers.
+De enige optie is om het registratie proces te herhalen.
+Voor Azure-knoop punten kunt u de drift in het Azure Portal corrigeren of met AZ module-cmdlets. Details over dit proces worden beschreven in [onboarding-machines voor beheer door Azure Automation status configuratie](automation-dsc-onboarding.md#onboard-a-vm-using-azure-portal).
+Voor hybride knoop punten kunt u de drift corrigeren met behulp van de meegeleverde python-scripts.
+Zie [Power shell DSC voor Linux opslag plaats](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)voor een PowerShell-cmdletreferentie.
-- Zie [Continue implementatie met Azure Automation State Configuration en Chocolatey](automation-dsc-cd-chocolatey.md)voor een voorbeeld van het gebruik van Azure Automation State Configuration in a continuous deployment pipeline.
+- Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)(Engelstalig) voor een Power shell-cmdlet-verwijzing.
+- Voor een voor beeld van het gebruik van Azure Automation status configuratie in een pijp lijn voor continue implementatie raadpleegt u [continue implementatie met behulp van Azure Automation-status configuratie en Choco lade](automation-dsc-cd-chocolatey.md).

@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 02/25/2020
 ms.custom: mvc
 ms.openlocfilehash: 22aad0e601c600e582cbea0cea82dd67a20a2c06
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81392677"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Zelfstudie: Kubernetes bijwerken in AKS (Azure Kubernetes Service)
@@ -37,7 +37,7 @@ Voordat u een cluster bijwerkt, gebruikt u de opdracht [az aks get-upgrades][] o
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-In het volgende voorbeeld is de huidige versie *1.14.8*en worden de beschikbare versies weergegeven onder de kolom *Upgrades.*
+In het volgende voor beeld is de huidige versie *1.14.8*en de beschik bare versies worden weer gegeven in de kolom *upgrades* .
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
@@ -55,16 +55,16 @@ Om onderbreking van actieve toepassingen te minimaliseren, worden AKS-knooppunte
 1. Als het nieuwe knooppunt klaar en is toegevoegd aan het cluster, worden er pods gepland op het knooppunt.
 1. Het oude knooppunt wordt verwijderd en het proces van afbakenen en legen begint op het volgende knooppunt in het cluster.
 
-Gebruik de opdracht [az aks upgrade][] als u het AKS-cluster wilt bijwerken. In het volgende voorbeeld wordt het cluster ge-overweg naar Kubernetes-versie *1.14.6*.
+Gebruik de opdracht [az aks upgrade][] als u het AKS-cluster wilt bijwerken. In het volgende voor beeld wordt het cluster bijgewerkt naar Kubernetes versie *1.14.6*.
 
 > [!NOTE]
-> U kunt slechts één secundaire versie per keer bijwerken. U bijvoorbeeld upgraden van *1.14.x* naar *1.15.x,* maar u niet rechtstreeks upgraden van *1.14.x* naar *1.16.x.* Om te upgraden van *1.14.x* naar *1.16.x*, eerst upgraden van *1.14.x* naar *1.15.x*, voer dan een andere upgrade uit van *1.15.x* naar *1.16.x*.
+> U kunt slechts één secundaire versie per keer bijwerken. U kunt bijvoorbeeld upgraden van *1.14. x* naar *1.15. x*, maar niet rechtstreeks upgraden van *1.14. x* naar *1.16. x* . Als u een upgrade van *1.14. x* naar *1.16. x*wilt uitvoeren, moet u eerst upgraden van *1.14. x* naar *1.15. x*en vervolgens een andere upgrade uitvoeren van *1.15. x* naar *1.16. x*.
 
 ```azurecli
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.15.5
 ```
 
-De volgende verkorte voorbeelduitvoer toont de *kubernetesVersion* rapporteert nu *1.15.5:*
+In de volgende gecomprimeerde voorbeeld uitvoer ziet u de *kubernetesVersion* nu rapporten *1.15.5*:
 
 ```json
 {
@@ -97,7 +97,7 @@ Controleer als volgt of de upgrade is geslaagd met de opdracht [az aks show][]:
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-In de volgende voorbeelduitvoer ziet u dat het AKS-cluster *KubernetesVersion 1.15.5*uitvoert:
+In de volgende voorbeeld uitvoer ziet u het AKS-cluster voert *KubernetesVersion 1.15.5*uit:
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
@@ -114,7 +114,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Wanneer u het cluster verwijdert, wordt de Azure Active Directory-service-principal die door het AKS-cluster wordt gebruikt niet verwijderd. Zie [Overwegingen voor en verwijdering van AKS service-principal][sp-delete] voor stappen voor het verwijderen van de service-principal. Als u een beheerde identiteit hebt gebruikt, wordt de identiteit beheerd door het platform en hoeft u geen geheimen in te richten of te roteren.
+> Wanneer u het cluster verwijdert, wordt de Azure Active Directory-service-principal die door het AKS-cluster wordt gebruikt niet verwijderd. Zie [Overwegingen voor en verwijdering van AKS service-principal][sp-delete] voor stappen voor het verwijderen van de service-principal. Als u een beheerde identiteit hebt gebruikt, wordt de identiteit beheerd door het platform en hoeft u geen geheimen in te richten of te draaien.
 
 ## <a name="next-steps"></a>Volgende stappen
 

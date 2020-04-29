@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs als gebeurtenisrasterbron
-description: Beschrijft de eigenschappen die worden geleverd voor gebeurtenishubs met Azure Event Grid
+title: Azure Event Hubs als Event Grid bron
+description: Beschrijft de eigenschappen die worden gegeven voor Event hubs-gebeurtenissen met Azure Event Grid
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: fd65c20f07a091fa1fc8a6cbf003986e1096ebe3
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393345"
 ---
-# <a name="azure-event-hubs-as-an-event-grid-source"></a>Azure Event Hubs als gebeurtenisrasterbron
+# <a name="azure-event-hubs-as-an-event-grid-source"></a>Azure Event Hubs als Event Grid bron
 
-In dit artikel worden de eigenschappen en het schema voor gebeurtenishubs-gebeurtenissen weergeven.Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md)
+In dit artikel vindt u de eigenschappen en het schema voor Event hubs-gebeurtenissen.Zie [Azure Event grid-gebeurtenis schema](event-schema.md)voor een inleiding tot gebeurtenis schema's.
 
-## <a name="event-grid-event-schema"></a>Gebeurtenisschema gebeurtenisraster
+## <a name="event-grid-event-schema"></a>Event Grid-gebeurtenisschema
 
-### <a name="available-event-types"></a>Beschikbare gebeurtenistypen
+### <a name="available-event-types"></a>Beschik bare gebeurtenis typen
 
-Event Hubs zendt het gebeurtenistype **Microsoft.EventHub.CaptureFileCreated** uit wanneer een opnamebestand wordt gemaakt.
+Event Hubs verzendt het gebeurtenis type **micro soft. EventHub. CaptureFileCreated** wanneer een capture-bestand wordt gemaakt.
 
-### <a name="example-event"></a>Voorbeeldgebeurtenis
+### <a name="example-event"></a>Voorbeeld gebeurtenis
 
-In deze voorbeeldgebeurtenis wordt het schema weergegeven van een gebeurtenisgebeurtenis die wordt verhoogd wanneer de opnamefunctie een bestand opslaat: 
+Deze voorbeeld gebeurtenis toont het schema van een event hubs-gebeurtenis die optreedt wanneer de functie Capture een bestand opslaat: 
 
 ```json
 [
@@ -53,43 +53,43 @@ In deze voorbeeldgebeurtenis wordt het schema weergegeven van een gebeurtenisgeb
 ]
 ```
 
-### <a name="event-properties"></a>Gebeurtenis-eigenschappen
+### <a name="event-properties"></a>Gebeurtenis eigenschappen
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| onderwerp | tekenreeks | Volledig resourcepad naar de gebeurtenisbron. Dit veld is niet schrijfbaar. Event Grid biedt deze waarde. |
+| onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
 | Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
 | eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
-| eventTime | tekenreeks | De tijd dat de gebeurtenis wordt gegenereerd op basis van de UTC-tijd van de provider. |
-| id | tekenreeks | Unieke id voor de gebeurtenis. |
-| data | object | Gebeurtenishubgebeurtenisgegevens. |
+| eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
+| id | tekenreeks | De unieke id voor de gebeurtenis. |
+| data | object | Event hub-gebeurtenis gegevens. |
 | dataVersion | tekenreeks | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
 | metadataVersion | tekenreeks | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 
-Het gegevensobject heeft de volgende eigenschappen:
+Het gegevens object heeft de volgende eigenschappen:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| fileUrl | tekenreeks | Het pad naar het opnamebestand. |
-| Bestandstype | tekenreeks | Het bestandstype van het vastleggensbestand. |
-| partitionId | tekenreeks | De shard-ID. |
-| sizeInBytes | geheel getal | De bestandsgrootte. |
-| gebeurtenisAantal | geheel getal | Het aantal gebeurtenissen in het bestand. |
-| eersteSequenceNumber | geheel getal | Het kleinste volgnummer uit de wachtrij. |
-| lastSequenceNumber | geheel getal | Het laatste volgnummer uit de wachtrij. |
-| firstEnqueueTime | tekenreeks | De eerste keer vanuit de wachtrij. |
-| lastEnqueueTime | tekenreeks | De laatste keer uit de wachtrij. |
+| fileUrl | tekenreeks | Het pad naar het opname bestand. |
+| Type | tekenreeks | Het bestands type van het opname bestand. |
+| partitionId | tekenreeks | De Shard-ID. |
+| sizeInBytes | geheel getal | De bestands grootte. |
+| eventCount | geheel getal | Het aantal gebeurtenissen in het bestand. |
+| firstSequenceNumber | geheel getal | Het kleinste Volg nummer uit de wachtrij. |
+| lastSequenceNumber | geheel getal | Het laatste Volg nummer van de wachtrij. |
+| firstEnqueueTime | tekenreeks | De eerste keer van de wachtrij. |
+| lastEnqueueTime | tekenreeks | De laatste tijd van de wachtrij. |
 
 ## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
 
 |Titel  |Beschrijving  |
 |---------|---------|
-| [Zelfstudie: big data streamen naar een datawarehouse](event-grid-event-hubs-integration.md) | Wanneer Gebeurtenishubs een Capture-bestand maakt, stuurt gebeurtenisraster een gebeurtenis naar een functie-app. De app haalt het capture-bestand op en migreert gegevens naar een gegevensmagazijn. |
+| [Zelf studie: stream big data naar een Data Warehouse](event-grid-event-hubs-integration.md) | Wanneer Event Hubs een opname bestand maakt, wordt Event Grid een gebeurtenis naar een functie-app verzonden. De app haalt het opname bestand op en migreert gegevens naar een Data Warehouse. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Wat is gebeurtenisraster voor](overview.md) een inleiding tot Azure Event Grid?
-* Zie [Abonnement op gebeurtenisrastervoor](subscription-creation-schema.md)meer informatie over het maken van een Azure Event Grid-abonnement .
-* Zie [Big Data streamen naar een datawarehouse](event-grid-event-hubs-integration.md)voor informatie over het afhandelen van gebeurtenishubs.
+* Zie [Wat is Event grid?](overview.md) voor een inleiding tot Azure Event grid.
+* Zie [Event grid Subscription schema](subscription-creation-schema.md)voor meer informatie over het maken van een Azure Event grid-abonnement.
+* Zie [Stream Big data in een Data Warehouse](event-grid-event-hubs-integration.md)voor meer informatie over het afhandelen van Event hubs-gebeurtenissen.

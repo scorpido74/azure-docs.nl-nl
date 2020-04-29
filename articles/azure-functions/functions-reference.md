@@ -1,25 +1,25 @@
 ---
-title: Richtlijnen voor het ontwikkelen van Azure-functies
-description: Leer de concepten en technieken azure functions die u nodig hebt om functies in Azure te ontwikkelen, voor alle programmeertalen en bindingen.
+title: Hulp bij het ontwikkelen van Azure Functions
+description: Meer informatie over de Azure Functions-concepten en-technieken die u nodig hebt voor het ontwikkelen van functies in azure, in alle programmeer talen en bindingen.
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.openlocfilehash: b6af3d7ab1fdd35391c9a189162c57dfb259f2d4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81405342"
 ---
 # <a name="azure-functions-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions
-In Azure-functies delen specifieke functies een aantal belangrijke technische concepten en componenten, ongeacht de taal of binding die u gebruikt. Voordat u in het leren van details die specifiek zijn voor een bepaalde taal of binding, moet u lezen door middel van dit overzicht dat van toepassing is op alle van hen.
+In Azure Functions delen specifieke functies enkele kern technische concepten en onderdelen, ongeacht de taal of binding die u gebruikt. Lees de informatie in dit overzicht die van toepassing is op alle voor waarden, voordat u naar een bepaalde taal of binding gaat gaan.
 
-In dit artikel wordt ervan uitgegaan dat u het [overzicht Azure-functies](functions-overview.md)al hebt gelezen.
+In dit artikel wordt ervan uitgegaan dat u het [Azure functions overzicht](functions-overview.md)al hebt gelezen.
 
-## <a name="function-code"></a>Functiecode
-Een *functie* is het primaire concept in Azure-functies. Een functie bevat twee belangrijke stukken - uw code, die kan worden geschreven in een verscheidenheid van talen, en sommige config, de function.json bestand. Voor gecompileerde talen wordt dit config-bestand automatisch gegenereerd uit annotaties in uw code. Voor scripttalen moet u het config-bestand zelf opgeven.
+## <a name="function-code"></a>Functie code
+Een *functie* is het primaire concept in azure functions. Een functie bevat twee belang rijke onderdelen: uw code, die in verschillende talen kan worden geschreven, en een bepaalde configuratie, het bestand function. json. Voor gecompileerde talen wordt dit configuratie bestand automatisch gegenereerd vanuit aantekeningen in uw code. Voor script talen moet u zelf het configuratie bestand opgeven.
 
-Het bestand function.json definieert de trigger, bindingen en andere configuratie-instellingen van de functie. Elke functie kan slechts één trigger hebben. De runtime gebruikt dit config-bestand om de gebeurtenissen te bepalen die moeten worden gecontroleerd en hoe gegevens kunnen worden doorgegeven aan en gegevens van een functie-uitvoering kunnen worden verzonden. Het volgende is een voorbeeld function.json bestand.
+Het bestand function. json definieert de trigger, bindingen en andere configuratie-instellingen van de functie. Elke functie kan slechts één trigger hebben. De runtime gebruikt dit configuratie bestand om te bepalen welke gebeurtenissen moeten worden bewaakt en hoe gegevens moeten worden door gegeven en hoe gegevens kunnen worden opgehaald uit een functie-uitvoering. Hier volgt een voor beeld van een function. JSON-bestand.
 
 ```json
 {
@@ -36,63 +36,63 @@ Het bestand function.json definieert de trigger, bindingen en andere configurati
 }
 ```
 
-Zie [Azure Functions triggers and bindings concepts](functions-triggers-bindings.md)voor meer informatie.
+Zie [Azure functions triggers en bindingen concepten](functions-triggers-bindings.md)voor meer informatie.
 
-De `bindings` eigenschap is waar u zowel triggers als bindingen configureert. Elke binding deelt een paar gemeenschappelijke instellingen en een aantal instellingen die specifiek zijn voor een bepaald type binding. Elke binding vereist de volgende instellingen:
+De `bindings` eigenschap is waar u zowel triggers als bindingen configureert. Elke binding deelt enkele algemene instellingen en enkele instellingen die specifiek zijn voor een bepaald type binding. Voor elke binding zijn de volgende instellingen vereist:
 
 | Eigenschap | Waarden/typen | Opmerkingen |
 | --- | --- | --- |
-| `type` |tekenreeks |Bindend type. Bijvoorbeeld `queueTrigger`. |
-| `direction` |'in', 'out' |Geeft aan of de binding is voor het ontvangen van gegevens in de functie of het verzenden van gegevens van de functie. |
-| `name` |tekenreeks |De naam die wordt gebruikt voor de gebonden gegevens in de functie. Voor C#, dit is een argument naam; voor JavaScript is dit de sleutel in een lijst met sleutels/waarde. |
+| `type` |tekenreeks |Bindings type. Bijvoorbeeld `queueTrigger`. |
+| `direction` |' in ', ' out ' |Geeft aan of de binding is voor het ontvangen van gegevens van de functie of het verzenden van gegevens van de functie. |
+| `name` |tekenreeks |De naam die wordt gebruikt voor de afhankelijke gegevens in de functie. Voor C# is dit een argument naam; voor Java script is het de sleutel in een lijst met sleutel/waarden. |
 
 ## <a name="function-app"></a>Function App
-Een functie-app biedt een uitvoeringscontext in Azure waarin uw functies worden uitgevoerd. Als zodanig is het de eenheid van implementatie en beheer voor uw functies. Een functie-app bestaat uit een of meer afzonderlijke functies die worden beheerd, geïmplementeerd en samen worden geschaald. Alle functies in een functie-app delen hetzelfde prijsplan, implementatiemethode en runtime-versie. Zie een functie-app als een manier om je functies te ordenen en collectief te beheren. Zie [Een functie-app beheren](functions-how-to-use-azure-function-app-settings.md)voor meer informatie. 
+Een functie-app biedt een uitvoerings context in azure waarin uw functies worden uitgevoerd. Zo is het de implementatie-en beheer eenheid voor uw functies. Een functie-app bestaat uit een of meer afzonderlijke functies die met elkaar worden beheerd, geïmplementeerd en geschaald. Alle functies in een functie-app delen hetzelfde prijs plan, dezelfde implementatie methode en dezelfde runtime versie. U kunt een functie-app beschouwen als een manier om uw functies te organiseren en gezamenlijk te beheren. Zie [een functie-app beheren](functions-how-to-use-azure-function-app-settings.md)voor meer informatie. 
 
 > [!NOTE]
-> Alle functies in een functie-app moeten in dezelfde taal worden geschreven. In [eerdere versies](functions-versions.md) van de runtime azure-functies was dit niet vereist.
+> Alle functies in een functie-app moeten in dezelfde taal zijn geschreven. In [eerdere versies](functions-versions.md) van de Azure functions runtime is dit niet vereist.
 
 ## <a name="folder-structure"></a>Mapstructuur
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-Het bovenstaande is de standaardmapstructuur (en aanbevolen) voor een functie-app. Als u de bestandslocatie van de code van `scriptFile` een functie wilt wijzigen, wijzigt u het gedeelte van het _functie.json-bestand._ We raden u ook aan [pakketimplementatie](deployment-zip-push.md) te gebruiken om uw project te implementeren in uw functie-app in Azure. U ook bestaande hulpprogramma's zoals [continue integratie en implementatie](functions-continuous-deployment.md) en Azure DevOps gebruiken.
+Hierboven vindt u de standaard (en aanbevolen) mapstructuur voor een functie-app. Als u de bestands locatie van een functie code wilt wijzigen, wijzigt u de `scriptFile` sectie van het bestand _Function. json_ . We raden u ook aan om [pakket implementatie](deployment-zip-push.md) te gebruiken voor het implementeren van uw project in uw functie-app in Azure. U kunt ook bestaande hulpprogram ma's zoals [continue integratie en implementatie](functions-continuous-deployment.md) en Azure DevOps gebruiken.
 
 > [!NOTE]
-> Als u een pakket handmatig implementeert, moet u uw _host.json-bestands-_ en functiemappen rechtstreeks naar de `wwwroot` map implementeren. Neem de `wwwroot` map niet op in uw implementaties. Anders kom je `wwwroot\wwwroot` uit bij mappen.
+> Als u een pakket hand matig implementeert, moet u ervoor zorgen dat u uw _host. json_ -bestand `wwwroot` en functie mappen rechtstreeks naar de map implementeert. Neem de `wwwroot` map niet op in uw implementaties. Anders eindigt u met `wwwroot\wwwroot` mappen.
 
-#### <a name="use-local-tools-and-publishing"></a>Lokale tools en publicatie gebruiken
-Functie-apps kunnen worden geschreven en gepubliceerd met behulp van een verscheidenheid aan tools, waaronder [Visual Studio](./functions-develop-vs.md), Visual [Studio Code](functions-create-first-function-vs-code.md), [IntelliJ](./functions-create-maven-intellij.md), [Eclipse](./functions-create-maven-eclipse.md), en de Azure Functions [Core Tools](./functions-develop-local.md). Zie [Azure-functies lokaal coderen en testen](./functions-develop-local.md)voor meer informatie.
+#### <a name="use-local-tools-and-publishing"></a>Lokale hulpprogram ma's en publicatie gebruiken
+Functie-apps kunnen worden gemaakt en gepubliceerd met behulp van verschillende hulpprogram ma's, waaronder [Visual Studio](./functions-develop-vs.md), [Visual Studio code](functions-create-first-function-vs-code.md), [IntelliJ](./functions-create-maven-intellij.md), [eclips](./functions-create-maven-eclipse.md)en de [Azure functions core tools](./functions-develop-local.md). Zie [code en test Azure functions lokaal](./functions-develop-local.md)voor meer informatie.
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
-## <a name="how-to-edit-functions-in-the-azure-portal"></a><a id="fileupdate"></a>Functies bewerken in de Azure-portal
-Met de functie-editor die in de Azure-portal is ingebouwd, u uw code en uw *function.json-bestand* direct inline bijwerken. Dit wordt alleen aanbevolen voor kleine wijzigingen of proofs of concept - beste praktijk is het gebruik van een lokale ontwikkeling tool zoals VS Code.
+## <a name="how-to-edit-functions-in-the-azure-portal"></a><a id="fileupdate"></a>Functies bewerken in de Azure Portal
+Met de functions-editor die in de Azure Portal is ingebouwd, kunt u uw code en uw *functie. json* -bestand direct inline bijwerken. Dit wordt alleen aanbevolen voor kleine wijzigingen of de controle van concepten best practice het gebruik van een lokaal ontwikkelings programma zoals VS code.
 
 ## <a name="parallel-execution"></a>Parallelle uitvoering
-Wanneer meerdere triggeringgebeurtenissen sneller optreden dan een runtime met één thread kan deze verwerken, kan de runtime de functie meerdere keren parallel aanroepen.  Als een functie-app het [hostingplan Verbruik](functions-scale.md#how-the-consumption-and-premium-plans-work)gebruikt, kan de functie-app automatisch worden uitgeschaald.  Elk exemplaar van de functie-app, of de app nu wordt uitgevoerd op het hostingplan Voor verbruik of een regulier [App Service-hostingplan,](../app-service/overview-hosting-plans.md)kan gelijktijdige functie-aanroepen parallel verwerken met behulp van meerdere threads.  Het maximum aantal gelijktijdige functie-aanroepen in elke functie-app-instantie varieert afhankelijk van het type trigger dat wordt gebruikt en de bronnen die worden gebruikt door andere functies in de functie-app.
+Als er meerdere activerings gebeurtenissen sneller optreden dan een functie-runtime met één thread, kan deze de functie meerdere keren tegelijk aanroepen.  Als een functie-app het [verbruiks hosting plan](functions-scale.md#how-the-consumption-and-premium-plans-work)gebruikt, kan de functie-app automatisch worden uitgeschaald.  Elk exemplaar van de functie-app, of de app wordt uitgevoerd op het verbruiks-hosting plan of een regulier [app service hosting abonnement](../app-service/overview-hosting-plans.md), kan gelijktijdig gelijktijdige functie aanroepen verwerken met behulp van meerdere threads.  Het maximum aantal gelijktijdige functie aanroepen in elk functie-app-exemplaar is afhankelijk van het type trigger dat wordt gebruikt, evenals de resources die worden gebruikt door andere functies in de functie-app.
 
-## <a name="functions-runtime-versioning"></a>Runtime-versie van functies
+## <a name="functions-runtime-versioning"></a>Functions runtime versie beheer
 
-U de versie van de `FUNCTIONS_EXTENSION_VERSION` runtime van de functies configureren met behulp van de app-instelling. De waarde '~3' geeft bijvoorbeeld aan dat uw functie-app 3.x als belangrijkste versie gebruikt. Functie-apps worden geüpgraded naar elke nieuwe secundaire versie die wordt uitgebracht. Zie [Azure Functions runtime-versies targeten](set-runtime-version.md)voor meer informatie, waaronder het weergeven van de exacte versie van uw functie-app.
+U kunt de versie van de functions-runtime configureren `FUNCTIONS_EXTENSION_VERSION` met de app-instelling. De waarde "~ 3" geeft bijvoorbeeld aan dat uw functie-app 3. x als de primaire versie gaat gebruiken. Functie-apps worden bijgewerkt naar elke nieuwe secundaire versie zodra deze worden vrijgegeven. Zie [runtime-versies van Azure functions instellen](set-runtime-version.md)voor meer informatie over het weer geven van de exacte versie van uw functie-app.
 
 ## <a name="repositories"></a>Opslagplaatsen
-De code voor Azure-functies is open source en is opgeslagen in GitHub-repositories:
+De code voor Azure Functions is open source en opgeslagen in GitHub-opslag plaatsen:
 
 * [Azure Functions](https://github.com/Azure/Azure-Functions)
-* [Azure Functions-host](https://github.com/Azure/azure-functions-host/)
-* [Azure-portal voor functies](https://github.com/azure/azure-functions-ux)
-* [Azure-functiessjablonen](https://github.com/azure/azure-functions-templates)
+* [Azure Functions host](https://github.com/Azure/azure-functions-host/)
+* [Azure Functions Portal](https://github.com/azure/azure-functions-ux)
+* [Azure Functions sjablonen](https://github.com/azure/azure-functions-templates)
 * [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/)
 * [Azure WebJobs SDK-extensies](https://github.com/Azure/azure-webjobs-sdk-extensions/)
 
 ## <a name="bindings"></a>Bindingen
-Hier is een tabel van alle ondersteunde bindingen.
+Hier volgt een tabel met alle ondersteunde bindingen.
 
 [!INCLUDE [dynamic compute](../../includes/functions-bindings.md)]
 
-Heeft u problemen met fouten die afkomstig zijn van de bindingen? Controleer de documentatie [van Azure Functions Binding Error Codes.](functions-bindings-error-pages.md)
+Ondervindt u problemen met de fouten die afkomstig zijn van de bindingen? Raadpleeg de documentatie over de [Azure functions bindings fout codes](functions-bindings-error-pages.md) .
 
-## <a name="reporting-issues"></a>Problemen melden
+## <a name="reporting-issues"></a>Rapportage problemen
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -100,6 +100,6 @@ Zie de volgende bronnen voor meer informatie:
 
 * [Azure Functions triggers en bindingen](functions-triggers-bindings.md)
 * [Azure-functies lokaal programmeren en testen](./functions-develop-local.md)
-* [Aanbevolen procedures voor Azure-functies](functions-best-practices.md)
-* [Naslaginformatie over Azure Functions C#-ontwikkelaars](functions-dotnet-class-library.md)
-* [Naslaginformatie over Azure Functions Node.js-ontwikkelaars](functions-reference-node.md)
+* [Aanbevolen procedures voor Azure Functions](functions-best-practices.md)
+* [Naslag informatie voor Azure Functions C#-ontwikkel aars](functions-dotnet-class-library.md)
+* [Naslag informatie over Azure Functions node. js-ontwikkel aars](functions-reference-node.md)

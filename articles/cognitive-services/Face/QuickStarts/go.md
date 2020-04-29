@@ -1,7 +1,7 @@
 ---
 title: 'Snelstart: Gezichten in een afbeelding detecteren met de REST API en Go'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart detecteert u gezichten van een afbeelding met behulp van de Face-service met Go.
+description: In deze Snelstartgids detecteert u gezichten van een afbeelding met behulp van de face-service met go.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: b3e6f5746df6197938d3a91de5ff11b1a311d762
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81402950"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Snelstart: Gezichten in een afbeelding detecteren met de REST API en Go
 
-In deze quickstart gebruikt u de Azure Face REST API met Go om menselijke gezichten in een afbeelding te detecteren.
+In deze Snelstartgids gebruikt u de Azure face REST API met Go om menselijke gezichten in een installatie kopie te detecteren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Face-abonnementssleutel. U kunt een abonnementssleutel voor een gratis proefversie downloaden van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om je te abonneren op de Face-service en je sleutel te krijgen.
+- De sleutel van het gezichts abonnement. U kunt een abonnementssleutel voor een gratis proefversie downloaden van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op de face-service en uw sleutel op te halen.
 - Een code-editor zoals [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="write-the-script"></a>Het script schrijven
@@ -108,11 +108,11 @@ func main() {
 }
 ```
 
-U moet de `subscriptionKey` waarde bijwerken met uw abonnementssleutel `uriBase` en de tekenreeks wijzigen zodat deze de juiste eindpunttekenreeks bevat.
+U moet de `subscriptionKey` waarde bijwerken met de abonnements sleutel en de `uriBase` teken reeks zodanig wijzigen dat deze de juiste eindpunt teken reeks bevat.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-Desgewenst kunt u ook het veld `imageUrl` zo wijzigen dat het verwijst naar uw eigen invoerafbeelding. U ook het `returnFaceAttributes` veld wijzigen dat aangeeft welke gezichtskenmerken u wilt ophalen.
+Desgewenst kunt u ook het veld `imageUrl` zo wijzigen dat het verwijst naar uw eigen invoerafbeelding. U kunt ook het `returnFaceAttributes` veld wijzigen waarmee wordt aangegeven welke gezichts kenmerken moeten worden opgehaald.
 
 ## <a name="run-the-script"></a>Het script uitvoeren
 
@@ -311,7 +311,7 @@ Er wordt een JSON-tekenreeks van gedetecteerde gezichtsgegevens weergegeven op d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een Go Console-toepassing geschreven die de Azure Face-service aanroept om gezichten in een afbeelding te detecteren en hun kenmerken terug te sturen. Lees het naslagmateriaal bij de Face-API voor meer informatie.
+In deze Quick Start hebt u een go-console toepassing geschreven die de Azure face-service aanroept om gezichten te detecteren in een installatie kopie en de kenmerken ervan te retour neren. Lees het naslagmateriaal bij de Face-API voor meer informatie.
 
 > [!div class="nextstepaction"]
 > [Face-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

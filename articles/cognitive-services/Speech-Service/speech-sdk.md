@@ -1,7 +1,7 @@
 ---
-title: Over de Speech SDK - Spraakservice
+title: Over de Speech SDK-Speech-Service
 titleSuffix: Azure Cognitive Services
-description: De Speech software development kit (SDK) onthult veel van de Spraakservicemogelijkheden, waardoor het gemakkelijker wordt om spraakgestuurde toepassingen te ontwikkelen.
+description: De speech Software Development Kit (SDK) toont veel van de mogelijkheden van de spraak service, waardoor het eenvoudiger wordt om toepassingen met spraak functionaliteit te ontwikkelen.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,83 +11,83 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
 ms.openlocfilehash: f663c9af8c352d0170c633fe76b3fbc5268aad1e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399855"
 ---
 # <a name="about-the-speech-sdk"></a>Info over de Speech-SDK
 
-De Speech software development kit (SDK) onthult veel van de Spraakservicemogelijkheden, om u in staat te stellen spraakgestuurde toepassingen te ontwikkelen. De Speech SDK is beschikbaar in vele programmeertalen en op alle platforms.
+De speech Software Development Kit (SDK) toont veel van de mogelijkheden van de spraak service, om u te ondersteunen bij het ontwikkelen van toepassingen met spraak herkenning. De Speech SDK is beschikbaar in veel programmeer talen en op alle platforms.
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
-## <a name="scenario-capabilities"></a>Scenariomogelijkheden
+## <a name="scenario-capabilities"></a>Scenario mogelijkheden
 
-De Speech SDK onthult veel functies van de Spraakservice, maar niet allemaal. De mogelijkheden van de Speech SDK worden vaak gekoppeld aan scenario's. De Speech SDK is ideaal voor zowel real-time als niet-real-time scenario's, met behulp van lokale apparaten, bestanden, Azure blob-opslag en zelfs invoer- en uitvoerstromen. Wanneer een scenario niet haalbaar is met de Speech SDK, zoekt u naar een REST API-alternatief.
+De Speech-SDK maakt veel functies van de speech-service beschikbaar, maar niet alle. De mogelijkheden van de Speech SDK zijn vaak gekoppeld aan scenario's. De Speech SDK is ideaal voor realtime-en niet-real-time scenario's, met behulp van lokale apparaten, bestanden, Azure Blob-opslag en zelfs invoer-en uitvoer stromen. Wanneer een scenario niet kan worden behaald met de Speech SDK, zoekt u naar een REST API alternatief.
 
 ### <a name="speech-to-text"></a>Spraak naar tekst
 
-[Spraak-naar-tekst](speech-to-text.md) (ook wel *spraakherkenning*genoemd) transcribeert audiostreams naar tekst die uw toepassingen, hulpprogramma's of apparaten kunnen gebruiken of weergeven. Gebruik spraak-naar-tekst met [Language Understanding (LUIS)](../luis/index.yml) om gebruikersintenties af te leiden van getranscribeerde spraak en te handelen op spraakopdrachten. Gebruik [Spraakvertaling](speech-translation.md) om spraakinvoer te vertalen naar een andere taal met één gesprek. Zie [Basisbeginselen van spraak naar tekst](speech-to-text-basics.md)voor meer informatie.
+Met [spraak naar tekst](speech-to-text.md) (ook wel *spraak herkenning*genoemd) worden audio stromen getranscribeerd naar tekst die uw toepassingen, hulpprogram ma's of apparaten kunnen gebruiken of weer geven. Gebruik spraak-naar-tekst met [Language Understanding (Luis)](../luis/index.yml) om gebruikers intentie af te leiden van transcribed speech en Act on Voice Commands. Gebruik [spraak omzetting](speech-translation.md) om spraak invoer te vertalen naar een andere taal met één aanroep. Zie [basis beginselen van spraak naar tekst](speech-to-text-basics.md)voor meer informatie.
 
 ### <a name="text-to-speech"></a>Tekst naar spraak
 
-[Tekst-naar-spraak](text-to-speech.md) (ook bekend als *spraaksynthese)* zet tekst om in mens-achtige gesynthetiseerde spraak. De invoertekst is tekenreeksliteralals of gebruikt de [SSML (Speech Synthesis Markup Language).](speech-synthesis-markup.md) Zie [Tekst-naar-spraaktaal en spraakondersteuning](language-support.md#text-to-speech)voor meer informatie over standaard- of neurale stemmen.
+[Tekst-naar-spraak](text-to-speech.md) (ook wel *spraak-synthese*genoemd) converteert tekst naar humane-achtige gesynthesizerde spraak. De invoer tekst is letterlijke teken reeksen of het gebruik van de [SSML (Speech synthese Markup Language)](speech-synthesis-markup.md). Zie voor meer informatie over de standaard-of Neural stemmen [tekst-naar-spraak-taal en spraak ondersteuning](language-support.md#text-to-speech).
 
 ### <a name="voice-assistants"></a>Spraakassistenten
 
-Spraakassistenten die de Speech SDK gebruiken, stellen ontwikkelaars in staat om natuurlijke, mensachtige conversationele interfaces te maken voor hun toepassingen en ervaringen. De spraakassistentservice zorgt voor een snelle, betrouwbare interactie tussen een apparaat en een assistent. De implementatie maakt gebruik van het Direct Line Speech-kanaal van het Bot Framework of de geïntegreerde aangepaste opdrachtenservice (Preview) voor taakvoltooiing. Daarnaast kunnen spraakassistenten worden gemaakt met behulp van de [Custom Voice Portal](https://aka.ms/customvoice) om een unieke spraakervaring te creëren.
+Met de spraak-SDK kunnen ontwikkel aars natuurlijke, menselijke-achtige gespreks interfaces maken voor hun toepassingen en ervaringen. De Voice Assistant-service biedt snelle, betrouw bare interactie tussen een apparaat en een assistent. De implementatie maakt gebruik van het direct lijn speech Channel van het bot-Framework of de geïntegreerde service voor het volt ooien van taken (preview). Daarnaast kunnen spraak assistenten worden gemaakt met behulp van de [aangepaste Voice Portal](https://aka.ms/customvoice) om een unieke spraak ervaring te creëren.
 
-#### <a name="keyword-spotting"></a>Trefwoordspotten
+#### <a name="keyword-spotting"></a>Tref woord herkennen
 
-Het concept van [keyword spotting](speech-devices-sdk-create-kws.md) wordt ondersteund in de Speech SDK. Trefwoord spotten is de handeling van het identificeren van een trefwoord in spraak, gevolgd door een actie bij het horen van het trefwoord. 'Hey Cortana' activeert bijvoorbeeld de Cortana-assistent.
+Het concept van [trefwoord herkennen](speech-devices-sdk-create-kws.md) wordt ondersteund in de Speech SDK. Trefwoord herkennen is de handeling van het identificeren van een sleutel woord in spraak, gevolgd door een actie na het horen van het sleutel woord. Bijvoorbeeld: "Hey Cortana" zou de Cortana-assistent activeren.
 
-### <a name="meeting-scenarios"></a>Vergaderscenario's
+### <a name="meeting-scenarios"></a>Scenario's voor vergaderingen
 
-De Speech SDK is perfect voor het transcriberen van vergaderscenario's, of het nu gaat om één apparaat of een gesprek met meerdere apparaten.
+De Speech SDK is perfect voor het overzetten van Vergader scenario's, hetzij van een apparaat of een conversatie met meerdere apparaten.
 
 #### <a name="conversation-transcription"></a>Gesprektranscriptie
 
-[Conversation Transcription](conversation-transcription.md) maakt real-time (en asynchrone) spraakherkenning, luidsprekeridentificatie en zinstoeschrijving aan elke spreker mogelijk (ook bekend als *diarisatie).* Het is perfect voor het transcriberen van persoonlijke vergaderingen met de mogelijkheid om sprekers te onderscheiden.
+[Conversatie transcriptie](conversation-transcription.md) maakt spraak herkenning in realtime (en asynchroon) mogelijk, waarbij elke spreker (ook wel bekend als *diarization*) wordt toegeschreven. Het is ideaal voor het overzetten van persoonlijke vergaderingen met de mogelijkheid om de luid sprekers te onderscheiden.
 
-#### <a name="multi-device-conversation"></a>Gesprek met meerdere apparaten
+#### <a name="multi-device-conversation"></a>Conversatie met meerdere apparaten
 
-Met [Multi-device Conversation](multi-device-conversation.md)sluit u meerdere apparaten of clients in een gesprek aan om spraak- of tekstberichten te verzenden, met eenvoudige ondersteuning voor transcriptie en vertaling.
+Met een [gesprek met meerdere](multi-device-conversation.md)apparaten kunt u meerdere apparaten of clients in een gesprek verbinden om berichten op basis van spraak of tekst te verzenden, met eenvoudige ondersteuning voor transcriptie en vertaling.
 
-### <a name="custom--agent-scenarios"></a>Aangepaste / agentscenario's
+### <a name="custom--agent-scenarios"></a>Aangepaste/Agent scenario's
 
-De SpraakSDK kan worden gebruikt voor het transcriberen van callcenterscenario's, waarbij telefoniegegevens worden gegenereerd.
+De Speech-SDK kan worden gebruikt voor het transcriberen van oproep centrum scenario's, waar telefoon gegevens worden gegenereerd.
 
 #### <a name="call-center-transcription"></a>Callcentertranscriptie
 
-[Call Center Transcriptie](call-center-transcription.md) is een gemeenschappelijk scenario voor spraak-naar-tekst voor het transcriberen van grote hoeveelheden telefoniegegevens die afkomstig kunnen zijn van verschillende systemen, zoals Interactive Voice Response (IVR). De nieuwste spraakherkenningsmodellen van de Spraakdienst blinken uit in het transcriberen van deze telefoniegegevens, zelfs in gevallen waarin de gegevens voor een mens moeilijk te begrijpen zijn.
+[Call Center transcriptie](call-center-transcription.md) is een veelvoorkomend scenario voor spraak naar tekst voor het transcriberen van grote hoeveel heden telefoon gegevens die afkomstig kunnen zijn van verschillende systemen, zoals Interactive Voice Response (IVR). De nieuwste spraakherkennings modellen van de speech-service Excel bij het transcriberen van deze telefoon gegevens, zelfs in gevallen waarin de gegevens moeilijk te begrijpen zijn.
 
-### <a name="codec-compressed-audio-input"></a>Codec gecomprimeerde audio-invoer
+### <a name="codec-compressed-audio-input"></a>Door codec gecomprimeerde audio-invoer
 
-Verschillende programmeertalen Van De Sdk van de Toespraak steunen codec samengeperste audioinputstromen. Zie <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">gecomprimeerde <span class="docon docon-navigate-external x-hidden-focus"> </span>audio-invoerindelingen gebruiken voor </a>meer informatie.
+Diverse spraak-SDK-programmeer talen ondersteunen codec gecomprimeerde audio-invoer stromen. Zie <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">gecomprimeerde audio-invoer indelingen <span class="docon docon-navigate-external x-hidden-focus"> </span>gebruiken </a>voor meer informatie.
 
 ## <a name="rest-api"></a>REST-API
 
-Hoewel de SpraakSDK veel functiemogelijkheden van de Spraakservice omvat, wilt u voor sommige scenario's de REST-API gebruiken.
+Hoewel de spraak-SDK een groot aantal functies van de spraak service omvat, kunt u voor sommige scenario's de REST API gebruiken.
 
 ### <a name="batch-transcription"></a>Batchtranscriptie
 
-[Batch transcriptie](batch-transcription.md) maakt asynchrone spraak-naar-tekst transcriptie van grote hoeveelheden gegevens. Batch transcriptie is alleen mogelijk vanuit de REST API. Naast het converteren van spraakaudio naar tekst, maakt batch spraak-naar-tekst ook diarisatie en sentiment-analyse mogelijk.
+[Batch transcriptie](batch-transcription.md) maakt asynchrone spraak-naar-tekst-transcriptie met grote hoeveel heden gegevens mogelijk. Batch-transcriptie is alleen mogelijk vanuit het REST API. Met batch spraak naar tekst kunt u niet alleen spraak-audio omzetten naar tekst, maar ook diarization-en sentiment-analyses.
 
 ## <a name="customization"></a>Aanpassing
 
-De Spraakservice biedt geweldige functionaliteit met zijn standaardmodellen voor spraak-naar-tekst, tekst-naar-spraak en spraakvertaling. Soms wilt u de basislijnprestaties verhogen om nog beter te werken met uw unieke use case. De Speech Service heeft een verscheidenheid aan no-code aanpassingstools die het gemakkelijk maken, en u een concurrentievoordeel te creëren met aangepaste modellen op basis van uw eigen gegevens. Deze modellen zijn alleen beschikbaar voor u en uw organisatie.
+De speech-service biedt uitstekende functionaliteit met de standaard modellen voor spraak naar tekst, tekst naar spraak en spraak omzetting. Soms wilt u mogelijk de basislijn prestaties verhogen zodat deze nog beter werken met uw unieke gebruiks case. De speech-service beschikt over een aantal hulpprogram ma's waarmee u geen code kunt aanpassen en waarmee u een competitief voor deel kunt maken met aangepaste modellen op basis van uw eigen gegevens. Deze modellen zijn alleen beschikbaar voor u en uw organisatie.
 
-### <a name="custom-speech-to-text"></a>Aangepaste spraak-naar-tekst
+### <a name="custom-speech-to-text"></a>Custom Speech-naar-tekst
 
-Wanneer u spraak-naar-tekst gebruikt voor herkenning en transcriptie in een unieke omgeving, u aangepaste akoestische, taal- en uitspraakmodellen maken en trainen om omgevingsgeluid of branchespecifieke woordenschat aan te pakken. Het maken en beheren van no-code Custom Speech-modellen is beschikbaar via de [Custom Speech Portal.](https://aka.ms/customspeech) Zodra het Custom Speech-model is gepubliceerd, kan het worden verbruikt door de Speech SDK.
+Wanneer u spraak-naar-tekst gebruikt voor herkenning en transcriptie in een unieke omgeving, kunt u aangepaste akoestische, taal en uitspraak modellen maken en trainen om omgevings lawaai of branchespecifieke woorden lijsten te verhelpen. Het maken en beheren van Custom Speech modellen zonder code is beschikbaar via de [Custom speech Portal](https://aka.ms/customspeech). Zodra het Custom Speech model is gepubliceerd, kan het worden gebruikt door de spraak-SDK.
 
 ### <a name="custom-text-to-speech"></a>Aangepaste tekst-naar-spraak
 
-Aangepaste tekst-naar-spraak, ook wel bekend als Custom Voice, is een set van online tools waarmee u een herkenbare, unieke stem voor uw merk maken. Het maken en beheren van no-code Custom Voice-modellen is beschikbaar via de [Custom Voice Portal.](https://aka.ms/customvoice) Zodra het Custom Voice-model is gepubliceerd, kan het worden verbruikt door de Speech SDK.
+Aangepaste tekst-naar-spraak, ook wel bekend als aangepaste spraak, is een set online hulpprogram ma's waarmee u een herken bare, een-van-een-stem kunt maken voor uw merk. Het maken en beheren van aangepaste spraak modellen zonder code is beschikbaar via de [aangepaste Voice Portal](https://aka.ms/customvoice). Zodra het aangepaste spraak model is gepubliceerd, kan het worden gebruikt door de spraak-SDK.
 
-## <a name="get-the-speech-sdk"></a>Download de Spraak-SDK
+## <a name="get-the-speech-sdk"></a>De Speech SDK ophalen
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
@@ -126,4 +126,4 @@ Aangepaste tekst-naar-spraak, ook wel bekend als Custom Voice, is een set van on
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Uw proefabonnement voor Speech ophalen](https://azure.microsoft.com/try/cognitive-services/)
-* [Bekijk hoe u spraak in C herkent #](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+* [Zie spraak herkennen in C #](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 04/02/2020
 ms.author: trbye
 ms.openlocfilehash: fdcb5bb57afe145b57cb1223242d4d5625a2dfb7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400792"
 ---
-De abonnementssleutel voor spraakbronnen en het gebied zijn vereist om een spraakconfiguratieobject te maken. Het configuratieobject is nodig om een object voor spraakherkenning te instantiëren.
+De sleutel en de regio van het spraak bron abonnement zijn vereist voor het maken van een spraak configuratie object. Het configuratie object is vereist voor het instantiëren van een spraak herkennings object.
 
-De instantie herkennende instantie legt meerdere manieren bloot om spraak te herkennen. In dit voorbeeld wordt spraak eenmaal herkend. Met deze functionaliteit laat de spraakservice weten dat u één woordgroep verzendt voor herkenning en dat wanneer de woordgroep is geïdentificeerd om spraak niet meer te herkennen. Zodra het resultaat is opgeleverd, zal de code de herkenningreden naar de console schrijven.
+Het Recognizer-exemplaar biedt meerdere manieren om spraak te herkennen. In dit voor beeld wordt spraak eenmaal herkend. Met deze functionaliteit kan de speech-service weten dat u één woord groep verstuurt voor herkenning en dat zodra de woord groep is geïdentificeerd om te stoppen met het herkennen van spraak. Zodra het resultaat is verkregen, wordt de herkennings reden door de code naar de console geschreven.
 
 > [!TIP]
-> De Spraak-SDK wordt standaard `en-us` herkend voor de taal, zie [Brontaal opgeven voor spraak naar tekst](../../../how-to-specify-source-language.md) voor informatie over het kiezen van de brontaal.
+> De spraak-SDK wordt standaard herkend voor gebruik `en-us` voor de taal. Zie de [bron taal voor spraak opgeven voor tekst](../../../how-to-specify-source-language.md) voor informatie over het kiezen van de bron taal.

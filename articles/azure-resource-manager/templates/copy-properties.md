@@ -1,24 +1,24 @@
 ---
 title: Meerdere exemplaren van een eigenschap definiëren
-description: Gebruik de kopieerbewerking in een Azure Resource Manager-sjabloon om meerdere keren te herhalen bij het maken van een eigenschap op een resource.
+description: Gebruik een Kopieer bewerking in een Azure Resource Manager sjabloon om meerdere keren te herhalen bij het maken van een eigenschap in een resource.
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: 831ae1af202a1cdf52bdd2bdf0d9a042a97ba52f
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81391336"
 ---
-# <a name="property-iteration-in-arm-templates"></a>Eigenschapiteratie in ARM-sjablonen
+# <a name="property-iteration-in-arm-templates"></a>Eigenschaps herhaling in ARM-sjablonen
 
-In dit artikel ziet u hoe u meer dan één instantie van een eigenschap maakt in uw Azure Resource Manager-sjabloon (ARM). Door het **kopieerelement** toe te voegen aan de sectie eigenschappen van een resource in uw sjabloon, u tijdens de implementatie dynamisch het aantal items voor een eigenschap instellen. U hoeft ook niet de syntaxis van de sjabloon te herhalen.
+In dit artikel wordt beschreven hoe u meer dan één exemplaar van een eigenschap in uw Azure Resource Manager-sjabloon (ARM) kunt maken. Door het element **copy** toe te voegen aan de sectie eigenschappen van een resource in uw sjabloon, kunt u het aantal items voor een eigenschap tijdens de implementatie dynamisch instellen. U hoeft ook geen sjabloon syntaxis te herhalen.
 
-U ook kopiëren met [resources,](copy-resources.md) [variabelen](copy-variables.md)en [uitvoer](copy-outputs.md)gebruiken.
+U kunt ook kopiëren met [resources](copy-resources.md), [variabelen](copy-variables.md)en [uitvoer](copy-outputs.md)gebruiken.
 
-## <a name="property-iteration"></a>Eigenschapiteratie
+## <a name="property-iteration"></a>Eigenschaps herhaling
 
-Het kopieerelement heeft de volgende algemene indeling:
+Het element Copy heeft de volgende algemene indeling:
 
 ```json
 "copy": [
@@ -30,13 +30,13 @@ Het kopieerelement heeft de volgende algemene indeling:
 ]
 ```
 
-Geef voor **naam**de naam op van de resourceeigenschap die u wilt maken.
+Geef bij **naam**de naam op van de resource-eigenschap die u wilt maken.
 
-De eigenschap **aantal** geeft het aantal iteraties op dat u voor de eigenschap wilt hebben.
+De eigenschap **Count** geeft het aantal iteraties op dat u voor de eigenschap wilt.
 
-De **eigenschap invoer** geeft de eigenschappen op die u wilt herhalen. U maakt een array met elementen die zijn opgebouwd uit de waarde in de **eigenschap invoer.**
+De eigenschap **input** geeft de eigenschappen aan die u wilt herhalen. U maakt een matrix van elementen die zijn gemaakt op basis van de waarde in de eigenschap **input** .
 
-In het volgende voorbeeld `copy` ziet u hoe u deze toepast op de eigenschap dataDisks op een virtuele machine:
+In het volgende voor beeld ziet u `copy` hoe u kunt Toep assen op de eigenschap data disks op een virtuele machine:
 
 ```json
 {
@@ -80,9 +80,9 @@ In het volgende voorbeeld `copy` ziet u hoe u deze toepast op de eigenschap data
 }
 ```
 
-Wanneer u `copyIndex` binnen een eigenschapsiteratie gebruikt, moet u de naam van de iteratie opgeven. Eigenschapiteratie ondersteunt ook een offsetargument. De verschuiving moet na de naam van de iteratie komen, zoals copyIndex('dataDisks', 1).
+U ziet dat wanneer `copyIndex` u een eigenschaps herhaling gebruikt, de naam van de herhaling moet opgeven. Eigenschaps herhaling ondersteunt ook een argument Offset. De offset moet worden opgegeven na de naam van de iteratie, zoals functie copyindex (' data disks ', 1).
 
-Resource Manager `copy` breidt de array uit tijdens de implementatie. De naam van de array wordt de naam van de eigenschap. De invoerwaarden worden de objecteigenschappen. De geïmplementeerde sjabloon wordt:
+Resource Manager breidt de `copy` matrix uit tijdens de implementatie. De naam van de matrix wordt de naam van de eigenschap. De invoer waarden worden de object eigenschappen. De geïmplementeerde sjabloon wordt:
 
 ```json
 {
@@ -111,9 +111,9 @@ Resource Manager `copy` breidt de array uit tijdens de implementatie. De naam va
       ...
 ```
 
-De kopieerbewerking is handig bij het werken met arrays, omdat u elk element in de array herhalen. Gebruik `length` de functie op de array om het `copyIndex` aantal iteraties op te geven en de huidige index in de array op te halen.
+De Kopieer bewerking is handig bij het werken met matrices, omdat u elk element in de matrix kunt door lopen. Gebruik de `length` functie op de matrix om het aantal voor herhalingen op te geven `copyIndex` en om de huidige index in de matrix op te halen.
 
-Met de volgende voorbeeldsjabloon wordt een failovergroep gemaakt voor databases die als array worden doorgegeven.
+Met de volgende voorbeeld sjabloon wordt een failovergroep gemaakt voor data bases die worden door gegeven als een matrix.
 
 ```json
 {
@@ -171,7 +171,7 @@ Met de volgende voorbeeldsjabloon wordt een failovergroep gemaakt voor databases
 }
 ```
 
-Het kopieerelement is een array, zodat u meer dan één eigenschap voor de resource opgeven.
+Het element Copy is een matrix, zodat u meer dan één eigenschap voor de resource kunt opgeven.
 
 ```json
 {
@@ -199,7 +199,7 @@ Het kopieerelement is een array, zodat u meer dan één eigenschap voor de resou
 }
 ```
 
-U samen resource- en propertyiteratie gebruiken. Verwijs de eigenschapiteratie op naam.
+U kunt resource en eigenschaps herhaling samen gebruiken. Verwijzing naar eigenschaps herhaling op naam.
 
 ```json
 {
@@ -233,27 +233,27 @@ U samen resource- en propertyiteratie gebruiken. Verwijs de eigenschapiteratie o
 }
 ```
 
-## <a name="copy-limits"></a>Kopieerlimieten
+## <a name="copy-limits"></a>Limieten kopiëren
 
-De telling mag niet hoger zijn dan 800.
+De telling mag niet groter zijn dan 800.
 
-De telling kan geen negatief getal zijn. Als u een sjabloon implementeert met Azure PowerShell 2.6 of hoger, Azure CLI 2.0.74 of hoger of REST **API-versie 2019-05-10** of hoger, u het aantal instellen op nul. Eerdere versies van PowerShell, CLI en de REST API ondersteunen geen nul voor telling.
+De telling kan geen negatief getal zijn. Als u een sjabloon implementeert met Azure PowerShell 2,6 of hoger, Azure CLI 2.0.74 of hoger of REST API versie **2019-05-10** of hoger, kunt u Count instellen op nul. Eerdere versies van Power shell, CLI en de REST API bieden geen ondersteuning voor aantal nul.
 
-## <a name="example-templates"></a>Voorbeeldsjablonen
+## <a name="example-templates"></a>Voorbeeld sjablonen
 
-In het volgende voorbeeld wordt een algemeen scenario weergegeven voor het maken van meer dan één waarde voor een eigenschap.
+In het volgende voor beeld ziet u een veelvoorkomend scenario voor het maken van meer dan één waarde voor een eigenschap.
 
 |Template  |Beschrijving  |
 |---------|---------|
-|[VM-implementatie met een variabel aantal gegevensschijven](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Implementeert verschillende gegevensschijven met een virtuele machine. |
+|[VM-implementatie met een variabele aantal gegevens schijven](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Hiermee worden verschillende gegevens schijven met een virtuele machine geïmplementeerd. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Zelfstudie: meerdere resource-exemplaren maken met ARM-sjablonen](template-tutorial-create-multiple-instances.md)voor het doorlopen van een zelfstudie.
-* Zie voor andere toepassingen van het kopieerelement:
-  * [Resourceiteratie in ARM-sjablonen](copy-resources.md)
-  * [Variabele iteratie in ARM-sjablonen](copy-variables.md)
-  * [Uitvoeriteratie in ARM-sjablonen](copy-outputs.md)
-* Zie [ARM-sjablonen ontwerpen](template-syntax.md)als u meer wilt weten over de secties van een sjabloon.
-* Zie [Een toepassing implementeren met ARM-sjabloon](deploy-powershell.md)voor meer informatie over het implementeren van uw sjabloon.
+* Zie [zelf studie: meerdere resource-instanties maken met arm-sjablonen](template-tutorial-create-multiple-instances.md)om een zelf studie te door lopen.
+* Zie voor andere toepassingen van het element copy:
+  * [Resource iteratie in ARM-sjablonen](copy-resources.md)
+  * [Variabele herhaling in ARM-sjablonen](copy-variables.md)
+  * [Uitvoer herhaling in ARM-sjablonen](copy-outputs.md)
+* Zie [arm-sjablonen ontwerpen](template-syntax.md)als u meer wilt weten over de secties van een sjabloon.
+* Zie [een toepassing implementeren met een arm-sjabloon](deploy-powershell.md)voor meer informatie over het implementeren van uw sjabloon.
 

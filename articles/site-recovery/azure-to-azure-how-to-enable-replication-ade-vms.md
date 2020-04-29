@@ -1,6 +1,6 @@
 ---
-title: Replicatie inschakelen voor versleutelde Azure VM's in Azure Site Recovery
-description: In dit artikel wordt beschreven hoe u replicatie configureert voor VM's met Azure-schijfversleuteling van de ene Azure-regio naar de andere met behulp van Siteherstel.
+title: Replicatie inschakelen voor versleutelde Azure-Vm's in Azure Site Recovery
+description: In dit artikel wordt beschreven hoe u replicatie kunt configureren voor Azure Disk Encryption Vm's van een Azure-regio naar een andere met behulp van Site Recovery.
 author: asgang
 manager: rochakm
 ms.service: site-recovery
@@ -8,152 +8,152 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 2bbb02df782439d934e96e7c16f28b9c11cc01fe
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81408627"
 ---
-# <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Virtuele machines met Azure-schijfversleuteling repliceren naar een andere Azure-regio
+# <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Virtuele machines die met Azure Disk Encryption zijn ingeschakeld repliceren naar een andere Azure-regio
 
-In dit artikel wordt beschreven hoe u Azure VM's repliceren met ADE-schijfversleuteling (Azure Disk Encryption) ingeschakeld, van de ene Azure-regio naar de andere.
+In dit artikel wordt beschreven hoe u virtuele Azure-machines repliceert Azure Disk Encryption met behulp van de ene Azure-regio naar de andere.
 
 >[!NOTE]
-> Siteherstel ondersteunt momenteel ADE, met en zonder Azure Active Directory (AAD) voor VM's met Windows-besturingssystemen. Voor Linux-besturingssystemen ondersteunen we Alleen ADE zonder AAD. Bovendien moeten de VM's voor machines met ADE 1.1 (zonder AAD) beheerde schijven gebruiken. VM's met onbeheerde schijven worden niet ondersteund. Als u overschakelt van ADE 0.1 (met AAD) naar 1.1, moet u replicatie uitschakelen en replicatie voor een virtuele machine inschakelen nadat u 1.1 hebt ingeschakeld.
+> Site Recovery biedt momenteel ondersteuning voor ADE, met en zonder Azure Active Directory (AAD) voor virtuele machines waarop Windows-besturings systemen worden uitgevoerd. Voor Linux-besturings systemen ondersteunen we alleen ADE zonder AAD. Daarnaast moeten de virtuele machines met behulp van beheerde schijven voor computers met ADE 1,1 (zonder AAD). Vm's met niet-beheerde schijven worden niet ondersteund. Als u overschakelt van ADE 0,1 (met AAD) naar 1,1, moet u replicatie uitschakelen en replicatie inschakelen voor een VM na het inschakelen van 1,1.
 
 
-## <a name="required-user-permissions"></a><a id="required-user-permissions"></a>Vereiste gebruikersmachtigingen
-Siteherstel vereist dat de gebruiker machtigingen heeft om de sleutelkluis in het doelgebied te maken en sleutels uit de kluis van de sleutelvan het brongebied naar de sleutelkluis van het doelgebied te kopiëren.
+## <a name="required-user-permissions"></a><a id="required-user-permissions"></a>Vereiste gebruikers machtigingen
+Site Recovery vereist dat de gebruiker gemachtigd is om de sleutel kluis te maken in de doel regio en sleutels te kopiëren van de sleutel kluis van het bron gebied naar de sleutel kluis met de doel regio.
 
-Om replicatie van vm's met schijfversleuteling vanuit de Azure-portal mogelijk te maken, heeft de gebruiker de volgende machtigingen nodig voor zowel het brongebied als de **bronsleutelkluizen.**
+De gebruiker heeft de volgende machtigingen nodig voor de **bron-en doel regio** sleutel kluizen om replicatie van virtuele machines met schijf versleuteling in te scha kelen vanaf de Azure Portal.
 
-- Machtigingen voor sleutelkluizen
-    - Lijst, Maken en oppakken
+- Sleutel kluis machtigingen
+    - Weer geven, maken en ophalen
     
-- Geheime machtigingen voor belangrijke kluizen
-    - Geheime beheeroperaties
-        - Oppakken, aanbieden en instellen
+- Geheime machtigingen voor sleutel kluis
+    - Beheer bewerkingen voor geheimen
+        - Ophalen, lijst en instellen
     
-- Key vault key permissions (alleen vereist als de VM's sleutelversleutelingssleutel gebruiken om schijfversleutelingssleutels te versleutelen)
-    - Belangrijke beheerbewerkingen
-        - Oppakken, aanbieden en maken
+- Sleutel kluis sleutel machtigingen (alleen vereist als de virtuele machines de sleutel versleutelings sleutel gebruiken voor het versleutelen van schijf versleutelings sleutels)
+    - Bewerkingen voor sleutel beheer
+        - Ophalen, vermelden en maken
     - Cryptografische bewerkingen
-        - Decoderen en versleutelen
+        - Ontsleutelen en versleutelen
 
-Als u machtigingen wilt beheren, gaat u naar de sleutelbron in de portal. Voeg de vereiste machtigingen voor de gebruiker toe. In het volgende voorbeeld ziet u hoe u machtigingen inschakelt voor de sleutelkluis *ContosoWeb2Keyvault*, die zich in het brongebied bevindt.
+Als u machtigingen wilt beheren, gaat u naar de resource van de sleutel kluis in de portal. Voeg de vereiste machtigingen voor de gebruiker toe. In het volgende voor beeld ziet u hoe u machtigingen inschakelt voor de sleutel kluis *ContosoWeb2Keyvault*die zich in de bron regio bevindt.
 
-1. Ga naar **Het** > Beleid van Home**Keyvaults** > **ContosoWeb2KeyVault > Toegang**.
+1. Ga naar **Home** > -ContosoWeb2KeyVault-**kluizen** > **> toegangs beleid**.
 
-   ![Venster Machtigingen voor sleutelkluizen](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-1.png)
+   ![Het venster sleutel kluis machtigingen](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-1.png)
 
-2. U zien dat er geen gebruikersmachtigingen zijn. Selecteer **Nieuw toevoegen**. Voer de gebruikers- en machtigingengegevens in.
+2. U kunt zien dat er geen gebruikers machtigingen zijn. Selecteer **Nieuw toevoegen**. Voer de gegevens van de gebruiker en de machtiging in.
 
-   ![Keyvault-machtigingen](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-2.png)
+   ![Machtigingen voor de sleutel kluis](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-2.png)
 
-Als de gebruiker die disaster recovery (DR) inschakelt geen machtigingen heeft om de sleutels te kopiëren, kan een beveiligingsbeheerder die over de juiste machtigingen beschikt, het volgende script gebruiken om de versleutelingsgeheimen en sleutels naar het doelgebied te kopiëren.
+Als de gebruiker die nood herstel (DR) inschakelt, niet over de machtigingen beschikt om de sleutels te kopiëren, kan een beveiligings beheerder met de juiste machtigingen het volgende script gebruiken om de versleutelings geheimen en sleutels te kopiëren naar de doel regio.
 
-Als u machtigingen wilt oplossen, raadpleegt u later in dit artikel belangrijke problemen met de machtigingen voor [de kluis.](#trusted-root-certificates-error-code-151066)
+Raadpleeg de [belang rijke problemen met machtigingen voor sleutel kluis](#trusted-root-certificates-error-code-151066) verderop in dit artikel voor het oplossen van problemen.
 
 >[!NOTE]
->Als u replicatie van vm's met schijfversleuteling vanaf de portal wilt inschakelen, hebt u ten minste machtigingen voor de sleutelkluizen, geheimen en sleutels nodig.
+>Als u de replicatie van virtuele machines met schijf versleuteling wilt inschakelen vanuit de portal, moet u ten minste ' lijst ' machtigingen hebben voor de sleutel kluizen, geheimen en sleutels.
 
-## <a name="copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script"></a>Schijfversleutelingssleutels naar het DR-gebied kopiëren met het PowerShell-script
+## <a name="copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script"></a>Schijf versleutelings sleutels kopiëren naar de DR-regio met behulp van het Power shell-script
 
-1. [Open de raw-scriptcode 'CopyKeys'.](https://aka.ms/ade-asr-copy-keys-code)
-2. Kopieer het script naar een bestand en noem het **Copy-keys.ps1**.
-3. Open de Windows PowerShell-toepassing en ga naar de map waar u het bestand hebt opgeslagen.
-4. Kopieersleutels.ps1 uitvoeren.
+1. [Open de onbewerkte script code ' CopyKeys '](https://aka.ms/ade-asr-copy-keys-code).
+2. Kopieer het script naar een bestand en geef het de naam **copy-Keys. ps1**.
+3. Open de Windows Power shell-toepassing en ga naar de map waarin u het bestand hebt opgeslagen.
+4. Voer Copy-Keys. ps1 uit.
 5. Geef Azure-referenties op om u aan te melden.
-6. Selecteer het **Azure-abonnement** van uw VM's.
-7. Wacht tot de resourcegroepen zijn geladen en selecteer vervolgens de **resourcegroep** van uw VM's.
-8. Selecteer de VM's in de lijst die wordt weergegeven. Alleen VM's die zijn ingeschakeld voor schijfversleuteling staan op de lijst.
-9. Selecteer de **doellocatie**.
+6. Selecteer het **Azure-abonnement** van uw vm's.
+7. Wacht tot de resource groepen zijn geladen en selecteer vervolgens de **resource groep** van uw vm's.
+8. Selecteer de virtuele machines in de lijst die wordt weer gegeven. Alleen virtuele machines die zijn ingeschakeld voor schijf versleuteling, staan in de lijst.
+9. Selecteer de **doel locatie**.
 
-    - **Kluiskluizen van schijfversleutelingssleutel**
-    - **Key encryption key vaults**
+    - **Sleutel kluizen voor schijf versleuteling**
+    - **Key Encryption Key-kluizen**
 
-   Siteherstel maakt standaard een nieuwe sleutelkluis in het doelgebied. De naam van de kluis heeft een 'asr'-achtervoegsel dat is gebaseerd op de versleutelingssleutels van de bron-VM-schijf. Als er al een sleutelkluis bestaat die is gemaakt door Site Recovery, wordt deze opnieuw gebruikt. Selecteer indien nodig een andere sleutelkluis in de lijst.
+   Site Recovery maakt standaard een nieuwe sleutel kluis in de doel regio. De naam van de kluis heeft een ' ASR '-achtervoegsel dat is gebaseerd op de versleutelings sleutels van de bron-VM-schijf. Als er al een sleutel kluis bestaat die is gemaakt door Site Recovery, wordt deze opnieuw gebruikt. Selecteer indien nodig een andere sleutel kluis in de lijst.
 
 ## <a name="enable-replication"></a>Replicatie inschakelen
 
-De primaire Azure-regio is bijvoorbeeld Oost-Azië en de secundaire regio Zuidoost-Azië.
+Voor dit voor beeld is de primaire Azure-regio Azië-oost en is de secundaire regio Zuid Azië-oost.
 
-1. Selecteer **+Repliceren**in de kluis .
+1. Selecteer **+ repliceren**in de kluis.
 2. Let op de volgende velden.
-    - **Bron:** Het punt van oorsprong van de VM's, dat in dit geval **Azure**is.
-    - **Bronlocatie:** de Azure-regio waar u uw virtuele machines wilt beschermen. In dit voorbeeld is de bronlocatie 'Oost-Azië'.
-    - **Implementatiemodel:** het Azure-implementatiemodel van de bronmachines.
-    - **Bronabonnement**: Het abonnement waartoe uw bronvirtuele machines behoren. Het kan elk abonnement zijn dat zich in dezelfde Azure Active Directory-tenant bevindt als de kluis van uw herstelservices.
-    - **Resourcegroep:** de resourcegroep waartoe uw bronvirtuele machines behoren. Alle VM's in de geselecteerde resourcegroep worden in de volgende stap voor bescherming weergegeven.
+    - **Bron**: het herkomst punt van de virtuele machines, in dit geval **Azure**.
+    - **Bron locatie**: de Azure-regio waar u uw virtuele machines wilt beveiligen. Voor dit voor beeld is de bron locatie Azië-oost.
+    - **Implementatie model**: het Azure-implementatie model van de bron machines.
+    - **Bron abonnement**: het abonnement waartoe de virtuele bron machines behoren. Dit kan elk abonnement zijn dat zich in dezelfde Azure Active Directory Tenant bevindt als de Recovery Services-kluis.
+    - **Resource groep**: de resource groep waartoe de virtuele bron machine behoort. Alle virtuele machines in de geselecteerde resource groep worden in de volgende stap weer gegeven voor beveiliging.
 
-3. Selecteer **in virtuele machines** > **virtuele machines**elke virtuele machine die u wilt repliceren. U kunt alleen machines selecteren waarvoor replicatie kan worden ingeschakeld. Selecteer vervolgens **OK**.
+3. Selecteer in **virtual machines** > **virtuele machines selecteren**de VM die u wilt repliceren. U kunt alleen machines selecteren waarvoor replicatie kan worden ingeschakeld. Selecteer vervolgens **OK**.
 
-4. In **Instellingen**u de volgende doelsite-instellingen configureren.
+4. In **instellingen**kunt u de volgende instellingen voor de doel site configureren.
 
-    - **Doellocatie:** de locatie waar uw brongegevens van virtuele machine worden gerepliceerd. Site recovery biedt een lijst met geschikte doelregio's op basis van de locatie van de geselecteerde machine. We raden u aan dezelfde locatie te gebruiken als de locatie van de Vault Recovery Services.
-    - **Doelabonnement:** het doelabonnement dat wordt gebruikt voor noodherstel. Standaard is het doelabonnement hetzelfde als het bronabonnement.
-    - **Doelgroepgroep**: de resourcegroep waartoe al uw gerepliceerde virtuele machines behoren. Siteherstel maakt standaard een nieuwe resourcegroep in de doelgroep. De naam krijgt het "asr" achtervoegsel. Als er al een resourcegroep bestaat die is gemaakt door Azure Site Recovery, wordt deze opnieuw gebruikt. U er ook voor kiezen om het aan te passen, zoals in de volgende sectie wordt weergegeven. De locatie van de doelgroep kan elke Azure-regio zijn, behalve het gebied waar de virtuele bronmachines worden gehost.
-    - **Virtueel netwerk target:** Siteherstel maakt standaard een nieuw virtueel netwerk in het doelgebied. De naam krijgt het "asr" achtervoegsel. Het is toegewezen aan uw bronnetwerk en wordt gebruikt voor toekomstige bescherming. [Meer informatie](site-recovery-network-mapping-azure-to-azure.md) over netwerktoewijzing.
-    - **Doelopslagaccounts (als uw bron-VM geen beheerde schijven gebruikt)**: Siterecovery maakt standaard een nieuw doelopslagaccount door de configuratie van uw bron-VM-opslag na te bootsen. Als er al een opslagaccount bestaat, wordt het opnieuw gebruikt.
-    - **Replicabeheerde schijven (als uw bron-VM beheerde schijven gebruikt):** Siterecovery maakt nieuwe replicabeheerde schijven in het doelgebied om de beheerde schijven van de bron-VM van hetzelfde opslagtype (standaard of premium) te spiegelen als de beheerde schijven van de bron-VM.
-    - **Cacheopslagaccounts:** Siteherstel heeft een extra opslagaccount nodig, *cacheopslag* genaamd in het brongebied. Alle wijzigingen op de bron-VM's worden bijgehouden en naar het cacheopslagaccount verzonden. Ze worden dan gerepliceerd naar de doellocatie.
-    - **Beschikbaarheidsset**: Siteherstel maakt standaard een nieuwe beschikbaarheiddie is ingesteld in het doelgebied. De naam heeft het achtervoegsel "asr". Als er al een beschikbaarheidsset bestaat die is gemaakt door Site Recovery, wordt deze opnieuw gebruikt.
-    - **Schijfversleutelingssleutelkluizen:** Siteherstel maakt standaard een nieuwe sleutelkluis in het doelgebied. Het heeft een "asr" achtervoegsel dat is gebaseerd op de bron VM schijf encryptiesleutels. Als er al een sleutelkluis is gemaakt die is gemaakt door Azure Site Recovery, wordt deze opnieuw gebruikt.
-    - **Key encryption key vaults:** Standaard maakt Site Recovery een nieuwe sleutelkluis in het doelgebied. De naam heeft een "asr" achtervoegsel dat is gebaseerd op de bron VM sleutel encryptiesleutels. Als er al een sleutelkluis is gemaakt door Azure Site Recovery, wordt deze opnieuw gebruikt.
-    - **Replicatiebeleid:** definieert de instellingen voor herstelpuntbewaargeschiedenis en app-consistente momentopnamefrequentie. Siteherstel maakt standaard een nieuw replicatiebeleid met standaardinstellingen van *24 uur* voor herstelpuntbehoud en *60 minuten* voor de app-consistente momentopnamefrequentie.
+    - **Doel locatie**: de locatie waar de gegevens van de virtuele bron machine worden gerepliceerd. Site Recovery biedt een lijst met geschikte doel regio's op basis van de locatie van de geselecteerde machine. U wordt aangeraden dezelfde locatie te gebruiken als de locatie van de Recovery Services kluis.
+    - **Doel abonnement**: het doel abonnement dat wordt gebruikt voor herstel na nood gevallen. Het doel abonnement is standaard hetzelfde als het bron abonnement.
+    - **Doel resource groep**: de resource groep waarvan al uw gerepliceerde virtuele machines deel uitmaken. Site Recovery maakt standaard een nieuwe resource groep in de doel regio. Met de naam wordt het achtervoegsel ' ASR ' opgehaald. Als er al een resource groep bestaat die is gemaakt door Azure Site Recovery, wordt deze opnieuw gebruikt. U kunt er ook voor kiezen om deze aan te passen, zoals wordt weer gegeven in de volgende sectie. De locatie van de doel resource groep kan een wille keurige Azure-regio zijn, behalve de regio waarin de virtuele bron machines worden gehost.
+    - **Virtueel netwerk van doel**: standaard maakt site Recovery een nieuw virtueel netwerk in de doel regio. Met de naam wordt het achtervoegsel ' ASR ' opgehaald. Het wordt toegewezen aan uw bron netwerk en wordt gebruikt voor toekomstige beveiliging. [Meer informatie](site-recovery-network-mapping-azure-to-azure.md) over netwerk toewijzing.
+    - **Doel opslag accounts (als uw bron-VM geen Managed disks gebruikt)**: standaard maakt site Recovery een nieuw doel opslag account door de mimicking van de bron-VM te configureren. Als er al een opslag account bestaat, wordt dit opnieuw gebruikt.
+    - **Beheerde replica schijven (als uw bron-VM gebruikmaakt van beheerde schijven)**: site Recovery maakt nieuwe replica beheerde schijven in de doel regio om de beheerde schijven van de bron-VM van hetzelfde opslag type (Standard of Premium) te spie gelen als de beheerde schijven van de bron-VM.
+    - **Cache opslag accounts**: voor site Recovery is een extra opslag account met de naam *cache opslag* in de bron regio vereist. Alle wijzigingen op de bron-Vm's worden bijgehouden en verzonden naar het cache-opslag account. Ze worden vervolgens gerepliceerd naar de doel locatie.
+    - **Beschikbaarheidsset**: standaard maakt site Recovery een nieuwe beschikbaarheidsset in de doel regio. De naam heeft het achtervoegsel ' ASR '. Als een beschikbaarheidsset die is gemaakt door Site Recovery al bestaat, wordt deze opnieuw gebruikt.
+    - **Sleutel kluizen voor schijf versleuteling**: standaard maakt site Recovery een nieuwe sleutel kluis in de doel regio. Het bevat een "ASR"-achtervoegsel dat is gebaseerd op de versleutelings sleutels van de bron-VM-schijf. Als een sleutel kluis die is gemaakt door Azure Site Recovery al bestaat, wordt deze opnieuw gebruikt.
+    - Key **Encryption Key-kluizen**: standaard maakt site Recovery een nieuwe sleutel kluis in de doel regio. De naam heeft een ' ASR '-achtervoegsel dat is gebaseerd op de versleutelings sleutels van de bron-VM. Als een sleutel kluis die is gemaakt door Azure Site Recovery al bestaat, wordt deze opnieuw gebruikt.
+    - **Replicatie beleid**: definieert de instellingen voor de Bewaar geschiedenis van het herstel punt en de frequentie van de app-consistente moment opname. Site Recovery maakt standaard een nieuw replicatie beleid met standaard instellingen van *24 uur* voor de Bewaar periode van het herstel punt en *60 minuten* voor de frequentie van de app-consistente moment opname.
 
-## <a name="customize-target-resources"></a>Doelbronnen aanpassen
+## <a name="customize-target-resources"></a>Doel resources aanpassen
 
-Voer deze stappen uit om de standaarddoelinstellingen voor siteherstel te wijzigen.
+Volg deze stappen om de Site Recovery standaard doel instellingen te wijzigen.
 
-1. Selecteer **Aanpassen** naast 'Doelabonnement' om het standaarddoelabonnement te wijzigen. Selecteer het abonnement in de lijst met abonnementen die beschikbaar zijn in de Azure AD-tenant.
+1. Selecteer **aanpassen** naast doel abonnement om het standaard doel abonnement te wijzigen. Selecteer het abonnement in de lijst met abonnementen die beschikbaar zijn in de Azure AD-Tenant.
 
-2. Selecteer **Aanpassen** naast 'Resourcegroep, Netwerk-, opslag- en beschikbaarheidssets' om de volgende standaardinstellingen te wijzigen:
-    - Selecteer **voor doelgroepgroep Target**de brongroep in de lijst met resourcegroepen op de doellocatie van het abonnement.
-    - Selecteer **voor virtueel netwerk Target**het netwerk uit een lijst met virtuele netwerken op de doellocatie.
-    - Voor **beschikbaarheidsset**u beschikbaarheidssetinstellingen toevoegen aan de VM, als deze deel uitmaken van een beschikbaarheidsset in het brongebied.
-    - Selecteer **voor Doelopslagaccounts**het account dat u wilt gebruiken.
+2. Selecteer **aanpassen** naast resource groep, netwerk, opslag en beschikbaarheids sets om de volgende standaard instellingen te wijzigen:
+    - Voor **doel resource groep**selecteert u de resource groep in de lijst met resource groepen op de doel locatie van het abonnement.
+    - Voor het **virtuele netwerk**van het doel selecteert u het netwerk in een lijst met virtuele netwerken op de doel locatie.
+    - Voor **beschikbaarheidsset**kunt u instellingen voor beschikbaarheids sets toevoegen aan de VM als deze deel uitmaken van een beschikbaarheidsset in de bron regio.
+    - Selecteer voor **doel opslag accounts**het account dat u wilt gebruiken.
 
-2. Selecteer **Aanpassen** naast 'Versleutelingsinstellingen' om de volgende standaardinstellingen te wijzigen:
-   - Selecteer voor de kluis van de **doelschijfversleuteling**de kluis van de doelschijfversleuteling in de lijst met sleutelkluizen op de doellocatie van het abonnement.
-   - Selecteer voor de kluis van de **doelsleutelsleutel**de kluis van de doelsleutelsleutel in de lijst met sleutelkluizen op de doellocatie van het abonnement.
+2. Selecteer **aanpassen** naast versleutelings instellingen om de volgende standaard instellingen te wijzigen:
+   - Selecteer voor de **doel schijf versleutelings sleutel**kluis de doel schijf versleutelings sleutel kluis in de lijst met sleutel kluizen op de doel locatie van het abonnement.
+   - Selecteer de sleutel kluis van **de doel sleutel**versleutelen in de lijst met sleutel kluizen op de doel locatie van het abonnement.
 
-3. Selecteer **Doelbron** > **maken Replicatie inschakelen**.
-4. Nadat de VM's zijn ingeschakeld voor replicatie, u de status van de VM's controleren onder **Gerepliceerde items**.
+3. Selecteer **doel bron** > maken**replicatie inschakelen**.
+4. Nadat de Vm's zijn ingeschakeld voor replicatie, kunt u de status van de virtuele machines controleren onder **gerepliceerde items**.
 
 >[!NOTE]
->Tijdens de eerste replicatie kan het enige tijd duren voordat de status is vernieuwd, zonder duidelijke voortgang. Klik **op Vernieuwen** om de nieuwste status te krijgen.
+>Tijdens de eerste replicatie kan het enige tijd duren voordat de status is vernieuwd, zonder dat de voortgang wordt verduidelijkt. Klik op **vernieuwen** om de meest recente status op te halen.
 
-## <a name="update-target-vm-encryption-settings"></a>Doel-VM-coderingsinstellingen bijwerken
-In de volgende scenario's moet u de instellingen voor doel-VM-versleuteling bijwerken:
-  - U hebt de replicatie van siteherstel ingeschakeld op de VM. Later hebt u schijfversleuteling ingeschakeld op de bron-VM.
-  - U hebt de replicatie van siteherstel ingeschakeld op de VM. Later hebt u de schijfversleutelingssleutel of sleutelversleutelingssleutel op de bron-VM gewijzigd.
+## <a name="update-target-vm-encryption-settings"></a>Versleutelings instellingen voor de doel-VM bijwerken
+In de volgende scenario's moet u de versleutelings instellingen voor de doel-VM bijwerken:
+  - U hebt Site Recovery replicatie ingeschakeld op de VM. Later hebt u schijf versleuteling ingeschakeld op de bron-VM.
+  - U hebt Site Recovery replicatie ingeschakeld op de VM. Later hebt u de schijf versleutelings sleutel of sleutel versleutelings sleutel gewijzigd op de bron-VM.
 
-U [een script](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) gebruiken om de versleutelingssleutels naar het doelgebied te kopiëren en vervolgens de doelversleutelingsinstellingen in **Herstelservices vault** > *replicated item* > **Properties** > Compute and Network bij te**werken.**
+U kunt [een script](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) gebruiken om de versleutelings sleutels te kopiëren naar de doel regio en vervolgens de instellingen voor doel versleuteling bij te werken in de **Recovery Services-kluis** > *gerepliceerd item* > **Eigenschappen** > **Compute en netwerk**.
 
-![Dialoogvenster ADE-instellingen bijwerken](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
+![Dialoog venster ADE-instellingen bijwerken](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
 
-## <a name="troubleshoot-key-vault-permission-issues-during--azure-to-azure-vm-replication"></a><a id="trusted-root-certificates-error-code-151066"></a>Problemen met belangrijke machtigingen voor kluizen oplossen tijdens Azure-to-Azure VM-replicatie
+## <a name="troubleshoot-key-vault-permission-issues-during--azure-to-azure-vm-replication"></a><a id="trusted-root-certificates-error-code-151066"></a>Problemen met machtigingen voor sleutel kluis oplossen tijdens replicatie van Azure naar Azure-VM'S
 
-Azure Site Recovery vereist ten minste leestoestemming op de kluis Sleutelbron bron en schrijf toestemming op de doelgroep sleutelkluis om het geheim te lezen en te kopiëren naar de doelgroep sleutel kluis. 
+Azure Site Recovery moet ten minste lees machtigingen hebben voor de bron regio sleutel kluis en schrijf machtiging voor de sleutel kluis van de doel regio om het geheim te lezen en te kopiëren naar de sleutel kluis met de doel regio. 
 
-**Oorzaak 1:** U hebt geen "GET"-toestemming op het **brongebied Sleutelkluis** om de toetsen te lezen. </br>
-**Hoe op te lossen:** Ongeacht of u een abonnementsbeheerder bent of niet, het is belangrijk dat u toestemming krijgt voor de sleutelkluis.
+**Oorzaak 1:** U beschikt niet over de machtiging ' GET ' voor de **sleutel kluis van de bron regio** om de sleutels te lezen. </br>
+**Oplossen:** Ongeacht of u een abonnements beheerder bent of niet, is het belang rijk dat u de machtiging verkrijgen voor de sleutel kluis hebt.
 
-1. Ga naar bronregio Sleutelkluis die in dit voorbeeld 'ContososourceKeyvault' > **Access-beleid** is 
-2. Voeg onder **Principal selecteren** uw gebruikersnaamdradmin@contoso.comtoe: "
-3. Selecteer ONDER **Sleutelmachtigingen** GET 
-4. Selecteer **onder Geheime machtiging** GET 
-5. Het toegangsbeleid opslaan
+1. Ga naar de bron regio sleutel kluis die in dit voor beeld ' ContososourceKeyvault ' is > **toegangs beleid** 
+2. Onder **Principal selecteren** uw gebruikers naam toevoegen bijvoorbeeld:dradmin@contoso.com
+3. Selecteer bij **sleutel machtigingen** Get 
+4. Selecteer onder **geheime machtigingen** ophalen 
+5. Het toegangs beleid opslaan
 
-**Oorzaak 2:** U hebt geen toestemming nodig voor de **kluis Sleutel van doelgebied** om de toetsen te schrijven. </br>
+**Oorzaak 2:** U hebt niet de vereiste machtigingen voor de **sleutel kluis van de doel regio** om de sleutels te schrijven. </br>
 
-*Bijvoorbeeld:* U probeert een VM met sleutelkluis *ContososourceKeyvault* op een brongebied te repliceren.
-U hebt alle machtigingen op de sleutelkluis van het brongebied. Maar tijdens de bescherming selecteert u de reeds gemaakte key vault ContosotargetKeyvault, die geen machtigingen heeft. Er treedt een fout op.
+*Bijvoorbeeld*: u probeert een virtuele machine met sleutel kluis *ContososourceKeyvault* te repliceren op een bron regio.
+U hebt alle machtigingen voor de sleutel kluis van de bron regio. Maar tijdens de beveiliging selecteert u de al gemaakte sleutel kluis ContosotargetKeyvault, die geen machtigingen heeft. Er treedt een fout op.
 
-Toestemming vereist voor [de kluis Van doelsleutel](#required-user-permissions)
+Machtiging vereist voor de [doel sleutel kluis](#required-user-permissions)
 
-**Hoe op te lossen:** Ga naar **het** > Beleid**van Home Keyvaults** > **ContosotargetKeyvault** > **Access** en voeg de juiste machtigingen toe.
+**Oplossen:** Ga naar **Home** > **Keyvaults** > -**ContosotargetKeyvault** > -**toegangs beleid** en voeg de juiste machtigingen toe.
 
 ## <a name="next-steps"></a>Volgende stappen
 

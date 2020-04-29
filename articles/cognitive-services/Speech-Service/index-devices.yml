@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: Documentatie over Speech Devices
-summary: De Speech Devices SDK is een vooraf afgestemde bibliotheek die is gekoppeld aan speciaal gebouwde, microfoon array development kits.
+summary: De SDK voor spraak apparaten is een vooraf geclusterde bibliotheek die is gekoppeld aan de ontwikkelings Kits voor het doel van de microfoon matrix.
 metadata:
-  title: Documentatie van spraakapparaten - Zelfstudies, API-verwijzing - Azure Cognitive Services | Microsoft Documenten
+  title: Documentatie voor spraak apparaten-zelf studies, API-verwijzing-Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,13 +12,13 @@ metadata:
   ms.date: 03/10/2020
   ms.author: trbye
   ms.openlocfilehash: 76bb63654778a08244e2207839e12812b7227dff
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401366"
 landingContent:
-- title: Over de Spraakapparaten SDK
+- title: Over de speech-apparaten SDK
   linkLists:
   - linkListType: overview
     links:
@@ -26,19 +26,19 @@ landingContent:
       url: speech-devices-sdk.md
   - linkListType: quickstart
     links:
-    - text: Spraakapparaten SDK (Windows) gebruiken
+    - text: De SDK voor spraak apparaten gebruiken (Windows)
       url: speech-devices-sdk-quickstart.md?pivots=platform-windows
-    - text: Spraakapparaten SDK (Linux) gebruiken
+    - text: De SDK voor spraak apparaten gebruiken (Linux)
       url: speech-devices-sdk-quickstart.md?pivots=platform-linux
-    - text: Spraakapparaten SDK (Android) gebruiken
+    - text: Speech apparaten SDK (Android) gebruiken
       url: speech-devices-sdk-quickstart.md?pivots=platform-android
-- title: Ontwikkelen met spraakapparaten SDK
+- title: Ontwikkelen met de SDK voor spraak apparaten
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Een microfoonarray ontwerpen
+    - text: Een microfoon matrix ontwerpen
       url: speech-devices-sdk-microphone.md
-    - text: Opstelling van de Roobo v1 Kit
+    - text: De roobo v1-Kit instellen
       url: speech-devices-sdk-roobo-v1.md
 - title: Naslaginformatie
   linkLists:

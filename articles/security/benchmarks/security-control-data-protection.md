@@ -1,6 +1,6 @@
 ---
-title: Azure-beveiligingsbeheer - gegevensbeveiliging
-description: Gegevensbeveiliging van Azure Security Control
+title: Azure-beveiligings beheer-gegevens beveiliging
+description: Gegevens beveiliging van Azure-beveiligings beheer
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
@@ -8,127 +8,127 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 035894c80e619851264aae91daa2d7852d156964
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81408548"
 ---
-# <a name="security-control-data-protection"></a>Beveiligingscontrole: gegevensbescherming
+# <a name="security-control-data-protection"></a>Beveiligings beheer: gegevens beveiliging
 
-De aanbevelingen voor gegevensbescherming richten zich op het aanpakken van problemen in verband met versleuteling, toegangscontrolelijsten, identiteitsgebaseerde toegangscontrole en controlelogboekregistratie voor gegevenstoegang.
+Aanbevelingen voor gegevens beveiliging zijn gericht op het adresseren van problemen met betrekking tot versleuteling, Toegangs beheer lijsten, op id's gebaseerd toegangs beheer en controle logboek registratie voor gegevens toegang.
 
-## <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Een inventaris van gevoelige informatie bijhouden
+## <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: een inventaris van gevoelige informatie onderhouden
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 4.1 | 13.1 | Klant |
+| 4.1 | 13,1 | Klant |
 
-Gebruik tags om te helpen bij het bijhouden van Azure-bronnen die gevoelige informatie opslaan of verwerken.
+Gebruik Tags om Azure-resources te helpen bij het bijhouden of verwerken van gevoelige informatie.
 
 - [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-## <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Systemen isoleren die gevoelige informatie opslaan of verwerken
+## <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: systemen isoleren die gevoelige informatie opslaan of verwerken
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 4.2 | 13.2, 2.10 | Klant |
+| 4.2 | 13,2, 2,10 | Klant |
 
-Isolatie implementeren met afzonderlijke abonnementen en beheergroepen voor afzonderlijke beveiligingsdomeinen, zoals omgevingstype en gegevensgevoeligheidsniveau. U het toegangsniveau beperken tot uw Azure-resources die uw toepassingen en bedrijfsomgevingen vereisen. U de toegang tot Azure-bronnen beheren via azure Active Directory-toegangsbeheer op basis van azure directory-rollen. 
+Implementeer isolatie met afzonderlijke abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau. U kunt het toegangs niveau voor uw Azure-resources beperken die worden vereist door uw toepassingen en bedrijfs omgevingen. U kunt de toegang tot Azure-resources beheren via Azure Active Directory op rollen gebaseerd toegangs beheer. 
 
-- [Extra Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
-- [Managementgroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Beheergroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create)
 
 - [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-## <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Toezicht houden op en blokkeren van ongeoorloofde overdracht van gevoelige informatie
+## <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: niet-geautoriseerde overdracht van gevoelige gegevens controleren en blok keren
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 4.3 | 13.3 | Gedeeld |
+| 4.3 | 13,3 | Gedeeld |
 
-Maak gebruik van een oplossing van derden van Azure Marketplace op netwerkperimeters die controleert op ongeautoriseerde overdracht van gevoelige informatie en dergelijke overdrachten blokkeert, terwijl informatiebeveiligingsprofessionals worden gewaarschuwd.
+Maak gebruik van een oplossing van een derde partij in azure Marketplace op netwerk verbindingen die monitors voor niet-geautoriseerde overdracht van gevoelige informatie en blok keren van dergelijke overdrachten tijdens het waarschuwen van informatie beveiliging.
 
-Voor het onderliggende platform dat door Microsoft wordt beheerd, beschouwt Microsoft alle klantinhoud als gevoelig en waakt het tegen verlies en blootstelling van klantgegevens. Om ervoor te zorgen dat klantgegevens binnen Azure veilig blijven, heeft Microsoft een reeks robuuste besturingselementen en mogelijkheden voor gegevensbescherming geïmplementeerd en onderhouden.
+Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en beschermd tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
 
-- [Inzicht in de bescherming van klantgegevens in Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-## <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Alle gevoelige informatie tijdens het transport versleutelen
+## <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: alle gevoelige gegevens in de overdracht versleutelen
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 4.4 | 14.4 | Gedeeld |
+| 4.4 | 14,4 | Gedeeld |
 
-Versleutel alle gevoelige informatie tijdens het transport. Zorg ervoor dat clients die verbinding maken met uw Azure-bronnen, kunnen onderhandelen over TLS 1.2 of hoger.
+Versleutel alle gevoelige gegevens tijdens de overdracht. Zorg ervoor dat alle clients die verbinding maken met uw Azure-resources, TLS 1,2 of hoger kunnen onderhandelen.
 
-Volg de aanbevelingen van azure security center voor versleuteling in rust en versleuteling tijdens het transport, indien van toepassing.
+Volg Azure Security Center aanbevelingen voor het versleutelen van de rest en de versleuteling in de door Voer, indien van toepassing.
 
-- [Versleuteling tijdens het transport met Azure begrijpen](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [Meer informatie over versleuteling in transit met Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
 
-## <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Gebruik een actief detectiehulpmiddel om gevoelige gegevens te identificeren
+## <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: een actief detectie hulpprogramma gebruiken om gevoelige gegevens te identificeren
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 4.5 | 14.5 | Gedeeld |
+| 4,5 | 14,5 | Gedeeld |
 
-Wanneer er geen functie beschikbaar is voor uw specifieke service in Azure, gebruikt u een actief detectiehulpprogramma van derden om alle gevoelige informatie te identificeren die is opgeslagen, verwerkt of verzonden door de technologiesystemen van de organisatie, inclusief die op locatie, of bij een externe serviceprovider, en werkt u de gevoelige informatievoorraad van de organisatie bij.
+Als er geen functie beschikbaar is voor uw specifieke service in azure, gebruikt u een actief detectie hulpprogramma van derden om alle gevoelige informatie te identificeren die is opgeslagen, verwerkt of verzonden door de technologie systemen van de organisatie, met inbegrip van de locaties op locatie of op een externe service provider, en de gevoelige informatie-inventaris van de organisatie bij te werken.
 
-Gebruik Azure Information Protection voor het identificeren van gevoelige informatie in Office 365-documenten.
+Gebruik Azure Information Protection voor het identificeren van gevoelige gegevens in Office 365-documenten.
 
-Gebruik Azure SQL Information Protection om te helpen bij het classificeren en labelen van informatie die is opgeslagen in Azure SQL-databases.
+Gebruik Azure SQL Information Protection om u te helpen bij het classificeren en labelen van informatie die is opgeslagen in Azure SQL-data bases.
 
-- [Azure SQL Data Discovery implementeren](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
+- [Azure SQL-gegevens detectie implementeren](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
 
-- [Azure-informatiebeveiliging implementeren](https://docs.microsoft.com/azure/information-protection/deployment-roadmap)
+- [Azure Information Protection implementeren](https://docs.microsoft.com/azure/information-protection/deployment-roadmap)
 
-- [Inzicht in de bescherming van klantgegevens in Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-## <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Gebruik op rollen gebaseerd toegangscontrole om de toegang tot bronnen te beheren
+## <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 4.6 | 14.6 | Klant |
+| 4.6 | 14,6 | Klant |
 
-Gebruik Azure AD RBAC om de toegang tot gegevens en bronnen te beheren en gebruik anders servicespecifieke toegangsbeheermethoden.
+Gebruik Azure AD RBAC om de toegang tot gegevens en resources te beheren. anders kunt u gebruikmaken van servicespecifieke methoden voor toegangs beheer.
 
-- [RBAC configureren in Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [RBAC configureren in azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
-## <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: Gebruik hostgebaseerde preventie van gegevensverlies om toegangscontrole af te dwingen
+## <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: voor komen dat gegevens verlies op basis van host wordt gebruikt voor het afdwingen van toegangs beheer
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 4.7 | 14.7 | Gedeeld |
+| 4,7 | 14,7 | Gedeeld |
 
-Indien vereist voor naleving van compute resources, implementeert u een tool van derden, zoals een geautomatiseerde oplossing voor gegevensverliespreventie op basis van een host, om toegangscontroles tot gegevens af te dwingen, zelfs wanneer gegevens van een systeem worden gekopieerd.
+Als dat nodig is voor de naleving van de reken bronnen, implementeert u een hulp programma van derden, zoals een geautomatiseerde oplossing voor gegevens verlies op basis van een host voor het afdwingen van toegangs beheer voor gegevens, zelfs wanneer gegevens worden gekopieerd uit een systeem.
 
-Voor het onderliggende platform dat wordt beheerd door Microsoft, Microsoft behandelt alle klantinhoud als gevoelig en gaat tot het uiterste om te waken tegen verlies van klantgegevens en blootstelling. Om ervoor te zorgen dat klantgegevens binnen Azure veilig blijven, heeft Microsoft een reeks robuuste besturingselementen en mogelijkheden voor gegevensbescherming geïmplementeerd en onderhouden.
+Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en gaat u naar een fantastische lengte om te beschermen tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
 
-- [Inzicht in de bescherming van klantgegevens in Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-## <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Versleutel gevoelige informatie in rust
+## <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: gevoelige informatie op rest versleutelen
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 4.8 | 14.8 | Klant |
+| 4,8 | 14,8 | Klant |
 
-Gebruik versleuteling in rust op alle Azure-bronnen. Microsoft raadt azure aan om uw versleutelingssleutels te beheren, maar er is in sommige gevallen de optie om uw eigen sleutels te beheren. 
+Gebruik versleuteling in rust voor alle Azure-resources. Micro soft raadt u aan Azure te laten beheren van uw versleutelings sleutels, maar in sommige gevallen kunt u ook uw eigen sleutels beheren. 
 
-- [Versleuteling in rust in Azure begrijpen](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+- [Meer informatie over versleuteling in de rest van Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
 
-- [Beheerde versleutelingssleutels van klanten configureren](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal)
+- [Door de klant beheerde versleutelings sleutels configureren](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal)
 
-## <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Logboeken en waarschuwing en waarschuwing over wijzigingen in kritieke Azure-resources
+## <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: wijzigingen in essentiële Azure-resources vastleggen en waarschuwen
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 4.9 | 14.9 | Klant |
+| 4,9 | 14,9 | Klant |
 
-Gebruik Azure Monitor met het Azure-activiteitenlogboek om waarschuwingen te maken voor wanneer er wijzigingen plaatsvinden in kritieke Azure-bronnen.
+Gebruik Azure Monitor met het Azure-activiteiten logboek om waarschuwingen te maken voor wanneer wijzigingen worden aangebracht in essentiële Azure-resources.
 
-- [Waarschuwingen maken voor azure-activiteitenlogboekgebeurtenissen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk de volgende security control: [Vulnerability Management](security-control-vulnerability-management.md)
+- Zie het volgende beveiligings beheer: [beveiligings beheer](security-control-vulnerability-management.md)

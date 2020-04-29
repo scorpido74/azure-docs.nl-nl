@@ -1,5 +1,5 @@
 ---
-title: Beschikbaarheidswaarschuwingen instellen met Azure Application Insights | Microsoft Documenten
+title: Beschikbaarheids waarschuwingen instellen met Azure-toepassing Insights | Microsoft Docs
 description: Stel webtests in Application Insights in. Ontvang een waarschuwing wanneer een website niet meer beschikbaar is of traag reageert.
 ms.topic: conceptual
 author: lgayhardt
@@ -7,71 +7,71 @@ ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 5af6aec2267384c37f664522d075bf26c632e7e9
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81382885"
 ---
 # <a name="availability-alerts"></a>Beschikbaarheidswaarschuwingen
 
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) verzendt regelmatig webaanvragen naar uw toepassing vanaf verschillende punten over de hele wereld. Het kan u waarschuwen als uw toepassing niet reageert, of als het te traag reageert.
+[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) verzendt regelmatig webaanvragen naar uw toepassing vanaf verschillende punten over de hele wereld. U kunt hiermee een waarschuwing ontvangen als uw toepassing niet reageert of als deze te langzaam reageert.
 
 ## <a name="enable-alerts"></a>Waarschuwingen inschakelen
 
-Waarschuwingen worden nu standaard automatisch ingeschakeld, maar om de waarschuwing volledig te configureren moet u eerst uw beschikbaarheidstest maken.
+Waarschuwingen worden nu standaard automatisch ingeschakeld, maar om de waarschuwing volledig te configureren, moet u eerst uw beschikbaarheids test maken.
 
-![Ervaring creëren](./media/availability-alerts/create-test.png)
+![Ervaring maken](./media/availability-alerts/create-test.png)
 
 > [!NOTE]
->  Met de [nieuwe uniforme waarschuwingen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)moeten de ernst van de waarschuwingsregel en de meldingsvoorkeuren met [actiegroepen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) **worden** geconfigureerd in de waarschuwingservaring. Zonder de volgende stappen ontvangt u alleen in-portal meldingen.
+>  Met de [nieuwe Unified Alerts](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)moeten de voor keuren voor waarschuwings regels en meldingen met [actie groepen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) **worden** geconfigureerd in de-ervaring met waarschuwingen. Zonder de volgende stappen ontvangt u alleen meldingen in de portal.
 
-1. Na het opslaan van de beschikbaarheidstest, klik je op het tabblad details op de ellips door de test die je net hebt gemaakt. Klik op "waarschuwing bewerken".
+1. Nadat de beschikbaarheids test is opgeslagen, klikt u op het tabblad Details op het weglatings teken van de test die u zojuist hebt gemaakt. Klik op waarschuwing bewerken.
 
    ![Bewerken na opslaan](./media/availability-alerts/edit-alert.png)
 
-2. Stel het gewenste ernstniveau, regelbeschrijving en vooral in - de actiegroep die de meldingsvoorkeuren heeft die u wilt gebruiken voor deze waarschuwingsregel.
+2. Stel het gewenste Ernst niveau, de beschrijving van de regel en het belangrijkste in voor de actie groep met de meldings voorkeuren die u wilt gebruiken voor deze waarschuwings regel.
 
    ![Bewerken na opslaan](./media/availability-alerts/set-action-group.png)
 
 > [!NOTE]
-> Beschikbaarheidswaarschuwingen die via deze ervaring zijn gemaakt, zijn op basis van de status. Dit betekent dat wanneer aan de waarschuwingscriteria wordt voldaan, één waarschuwing wordt gegenereerd wanneer de site wordt gedetecteerd als niet beschikbaar. Als de site de volgende keer dat de waarschuwingscriteria wordt geëvalueerd nog steeds is uitgeschakeld, genereert dit geen nieuwe waarschuwing. Dus als uw site een uur uit viel en u een e-mailwaarschuwing had ingesteld, ontvangt u alleen een e-mail wanneer de site uitviel en een volgende e-mail wanneer de site een back-up maakte. U ontvangt geen doorlopende waarschuwingen om u eraan te herinneren dat de site nog steeds niet beschikbaar was.
+> Beschikbaarheids waarschuwingen die zijn gemaakt via deze ervaring zijn op basis van status. Dit betekent dat wanneer aan de waarschuwings criteria wordt voldaan, een enkele waarschuwing wordt gegenereerd wanneer de site als niet-beschikbaar wordt gedetecteerd. Als de site nog steeds niet actief is, wordt de volgende keer dat de waarschuwings criteria worden geëvalueerd, geen nieuwe waarschuwing gegenereerd. Als uw site gedurende een uur niet actief was en u een e-mail waarschuwing hebt ingesteld, zou u alleen een e-mail ontvangen wanneer de site is afgesloten en een daaropvolgende e-mail wanneer er een back-up van de site is gemaakt. U ontvangt geen doorlopende waarschuwingen die u eraan herinneren dat de site nog steeds niet beschikbaar is.
 
-### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Waarschuwing op X van Y-locaties die fouten melden
+### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Melding over problemen met de X-en Y-locaties
 
-De waarschuwingsregel X van Y-locaties is standaard ingeschakeld in de [nieuwe uniforme waarschuwingen-ervaring](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), wanneer u een nieuwe beschikbaarheidstest maakt. U zich afmelden door de optie 'klassiek' te selecteren of de waarschuwingsregel uit te schakelen.
+De waarschuwing regel voor de X-locaties van de Y-locatie is standaard ingeschakeld in de [nieuwe Unified Alerts-ervaring](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)wanneer u een nieuwe beschikbaarheids test maakt. U kunt zich afmelden door de optie ' klassiek ' te selecteren of de waarschuwings regel uit te scha kelen.
 
 > [!NOTE]
-> Configureer de actiegroepen om meldingen te ontvangen wanneer de waarschuwing wordt geactiveerd door de bovenstaande stappen te volgen. Zonder deze stap ontvangt u alleen meldingen in de portal wanneer de regel wordt geactiveerd.
+> Configureer de actie groepen om meldingen te ontvangen wanneer de waarschuwing wordt geactiveerd door de bovenstaande stappen te volgen. Zonder deze stap ontvangt u alleen meldingen over de Portal wanneer de regel wordt geactiveerd.
 >
 
-### <a name="alert-on-availability-metrics"></a>Waarschuwing over beschikbaarheidsstatistieken
+### <a name="alert-on-availability-metrics"></a>Waarschuwing voor metrische gegevens over beschik baarheid
 
-Met behulp van de [nieuwe uniforme waarschuwingen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)u ook waarschuwen voor gesegmenteerde gegevens over de beschikbaarheid van aggregaten en de duur van de test:
+Met de [nieuwe Unified Alerts](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)kunt u een waarschuwing ontvangen voor metrische gegevens over een gesegmenteerde geaggregeerde Beschik baarheid en voor het testen van de duur.
 
-1. Selecteer een resource Application Insights in de ervaring Met statistieken en selecteer een statistiek beschikbaarheid:
+1. Selecteer een Application Insights bron in de werk ervaring metrische gegevens en selecteer een beschikbaarheids metriek:
 
-    ![Selectie van beschikbaarheidsstatistieken](./media/availability-alerts/select-metric.png)
+    ![Selectie van metrische beschikbaarheids gegevens](./media/availability-alerts/select-metric.png)
 
-2. De optie Waarschuwingen configureren in het menu brengt u naar de nieuwe ervaring waar u specifieke tests of locaties selecteren om de waarschuwingsregel in te stellen. U de actiegroepen voor deze waarschuwingsregel hier ook configureren.
+2. Met de optie waarschuwingen configureren in het menu gaat u naar de nieuwe ervaring waarin u specifieke tests of locaties kunt selecteren voor het instellen van een waarschuwings regel voor. U kunt ook de actie groepen voor deze waarschuwings regel configureren.
 
-### <a name="alert-on-custom-analytics-queries"></a>Waarschuwing voor aangepaste analysequery's
+### <a name="alert-on-custom-analytics-queries"></a>Waarschuwing voor aangepaste analyse query's
 
-Met behulp van de [nieuwe uniforme waarschuwingen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)u waarschuwen voor [aangepaste logboekquery's.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log) Met aangepaste query's u waarschuwen voor elke willekeurige voorwaarde die u helpt het meest betrouwbare signaal van beschikbaarheidsproblemen te krijgen. Dit is ook van toepassing als u aangepaste beschikbaarheidsresultaten verzendt met de TrackAvailability SDK.
+Met de [nieuwe Unified Alerts](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)kunt u waarschuwingen op [aangepaste logboek query's](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log)uitvoeren. Met aangepaste query's kunt u een waarschuwing sturen op elke wille keurige voor waarde die u helpt om het meest betrouw bare signaal van beschikbaarheids problemen op te lossen. Dit is ook van toepassing als u aangepaste beschikbaarheids resultaten verzendt met behulp van de TrackAvailability-SDK.
 
 > [!Tip]
-> De statistieken over beschikbaarheidsgegevens bevatten eventuele aangepaste beschikbaarheidsresultaten die u mogelijk indient door onze TrackAvailability SDK te bellen. U de waarschuwing en ondersteuning voor metrische gegevens gebruiken om te waarschuwen voor aangepaste beschikbaarheidsresultaten.
+> De metrische gegevens over de beschik baarheid bevatten alle aangepaste beschikbaarheids resultaten die u kunt indienen door onze TrackAvailability SDK aan te roepen. U kunt de waarschuwing voor metrische gegevens over metrieken gebruiken om te waarschuwen voor aangepaste beschikbaarheids resultaten.
 >
 
 ## <a name="automate-alerts"></a>Waarschuwingen automatiseren
 
-Als u dit proces wilt automatiseren met Azure Resource Manager-sjablonen, raadpleegt u de [metrische waarschuwing maken met resourcebeheersjabloondocumentatie.](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)
+Raadpleeg de documentatie [Create a metric Alert with Resource Manager-sjabloon](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert) voor het automatiseren van dit proces met Azure Resource Manager sjablonen.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Specifiek [artikel over probleemoplossing](troubleshoot-availability.md).
+Speciaal [artikel voor probleem oplossing](troubleshoot-availability.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Webtests met meerdere stappen](availability-multistep.md)
-* [Webtests voor url-ping](monitor-web-app-availability.md)
+* [Webtests voor URL-ping](monitor-web-app-availability.md)

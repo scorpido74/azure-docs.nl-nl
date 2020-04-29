@@ -1,7 +1,7 @@
 ---
-title: Basisbeginselen van spraakvertaling - Spraakservice
+title: Basis beginselen van spraak omzetting-spraak service
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het gebruik van de Spraak-SDK om spraak te vertalen. In dit artikel leert u over objectconstructie, ondersteunde audio-invoerindelingen en configuratieopties voor spraakvertaling.
+description: Meer informatie over het gebruik van de Speech SDK voor het vertalen van spraak. In dit artikel leert u meer over object constructie, ondersteunde audio-invoer indelingen en configuratie opties voor spraak omzetting.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,20 +12,20 @@ ms.date: 04/13/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 04ece5ccf91056af02bd450eb760534b82de5959
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399645"
 ---
-# <a name="learn-the-basics-of-speech-translation"></a>Leer de basisprincipes van spraakvertaling
+# <a name="learn-the-basics-of-speech-translation"></a>Meer informatie over de basis beginselen van spraak omzetting
 
-Een van de belangrijkste kenmerken van de Spraakdienst is de mogelijkheid om menselijke spraak te herkennen en te vertalen naar andere talen. In dit artikel leert u hoe u de Spraak-SDK gebruiken in uw apps en producten om spraakvertaling van hoge kwaliteit uit te voeren.
+Een van de belangrijkste functies van de speech-service is de mogelijkheid om menselijke spraak te herkennen en te vertalen naar andere talen. In dit artikel leert u hoe u de Speech SDK in uw apps en producten kunt gebruiken om spraak vertalingen van hoge kwaliteit uit te voeren.
 
 > [!TIP]
-> Als je nog geen kans hebt gehad om een van onze quickstarts te voltooien, raden we je aan om de banden te schoppen en spraakvertaling zelf uit te proberen.
+> Als u een van onze Quick starts nog niet hebt kunnen volt ooien, raden we u aan om de banden te starten en zelf een spraak omzetting uit te voeren.
 > * [Spraak naar tekst omzetten](quickstarts/translate-speech-to-text.md)
-> * [Spraak vertalen naar meerdere talen](quickstarts/translate-speech-to-text-multiple-languages.md)
+> * [Spraak omzetten naar meerdere talen](quickstarts/translate-speech-to-text-multiple-languages.md)
 > * [Spraak naar spraak omzetten](quickstarts/translate-speech-to-speech.md)
 
 ::: zone pivot="programming-language-csharp"
@@ -50,4 +50,4 @@ Een van de belangrijkste kenmerken van de Spraakdienst is de mogelijkheid om men
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Codec gecomprimeerde audio-indelingen gebruiken](how-to-use-codec-compressed-audio-input-streams.md)
+* [Gecomprimeerde audio-indelingen van codec gebruiken](how-to-use-codec-compressed-audio-input-streams.md)

@@ -1,6 +1,6 @@
 ---
-title: Apparaatbeveiligingsberichten verzenden
-description: Meer informatie over het verzenden van uw beveiligingsberichten met Azure Security Center voor IoT.
+title: Beveiligings berichten van het apparaat verzenden
+description: Meer informatie over het verzenden van uw beveiligings berichten met Azure Security Center voor IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,51 +16,51 @@ ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 4877493982671b1b5db686715ef854f25c2966ea
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81310982"
 ---
-# <a name="send-security-messages-sdk"></a>Beveiligingsberichten SDK verzenden
+# <a name="send-security-messages-sdk"></a>SDK voor beveiligings berichten verzenden
 
-In deze handleiding worden de mogelijkheden van het Azure Security Center for IoT-service uitgelegd wanneer u ervoor kiest om beveiligingsberichten van uw apparaat te verzamelen en te verzenden zonder een Azure Security Center voor IoT-agent te gebruiken en wordt uitgelegd hoe u dit doet.
+In deze hand leiding vindt u informatie over de Azure Security Center voor IoT-service mogelijkheden wanneer u ervoor kiest om de beveiligings berichten van uw apparaat te verzamelen en te verzenden zonder een Azure Security Center voor IoT-agent te gebruiken en wordt uitgelegd hoe u dit doet.
 
 In deze handleiding leert u het volgende:
 
 > [!div class="checklist"]
-> * Beveiligingsberichten verzenden met de Azure IoT C SDK
-> * Beveiligingsberichten verzenden met de Azure IoT C# SDK
-> * Beveiligingsberichten verzenden met de Azure IoT Python SDK
-> * Beveiligingsberichten verzenden met de Azure IoT Node.js SDK
-> * Beveiligingsberichten verzenden met de Azure IoT Java SDK
+> * Beveiligings berichten verzenden met behulp van de Azure IoT C-SDK
+> * Beveiligings berichten verzenden met behulp van de Azure IoT C# SDK
+> * Beveiligings berichten verzenden met behulp van de Azure IoT python SDK
+> * Beveiligings berichten verzenden met behulp van de Azure IoT node. js SDK
+> * Beveiligings berichten verzenden met behulp van de Azure IoT Java SDK
 
 ## <a name="azure-security-center-for-iot-capabilities"></a>Azure Security Center voor IoT-mogelijkheden
 
-Azure Security Center for IoT kan elke vorm van beveiligingsberichtgegevens verwerken en analyseren, zolang de verzonden gegevens voldoen aan het [Azure Security Center for IoT-schema](https://aka.ms/iot-security-schemas) en het bericht is ingesteld als een beveiligingsbericht.
+Azure Security Center voor IoT kan elk soort beveiligings bericht gegevens verwerken en analyseren, zolang de gegevens die worden verzonden, voldoen aan de [Azure Security Center voor IOT-schema](https://aka.ms/iot-security-schemas) en het bericht is ingesteld als een beveiligings bericht.
 
-## <a name="security-message"></a>Beveiligingsbericht
+## <a name="security-message"></a>Beveiligings bericht
 
-Azure Security Center for IoT definieert een beveiligingsbericht aan de hand van de volgende criteria:
+Azure Security Center voor IoT definieert een beveiligings bericht aan de hand van de volgende criteria:
 
-- Als het bericht is verzonden met Azure IoT SDK
-- Als het bericht voldoet aan het [beveiligingsberichtschema](https://aka.ms/iot-security-schemas)
-- Als het bericht is ingesteld als een beveiligingsbericht voordat het
+- Als het bericht is verzonden met de Azure IoT SDK
+- Als het bericht voldoet aan het schema voor het [beveiligings bericht](https://aka.ms/iot-security-schemas)
+- Als het bericht is ingesteld als een beveiligings bericht voordat het wordt verzonden
 
-Elk beveiligingsbericht bevat de metagegevens `AgentVersion` `MessageSchemaVersion` van de afzender, zoals `AgentId`, en een lijst met beveiligingsgebeurtenissen.
-Het schema definieert de geldige en vereiste eigenschappen van het beveiligingsbericht, inclusief de typen gebeurtenissen.
-
-> [!NOTE]
-> Verzonden berichten die niet aan het schema voldoen, worden genegeerd. Zorg ervoor dat u het schema verifieert voordat u de verzendende gegevens start, omdat genegeerde berichten momenteel niet zijn opgeslagen.
+Elk beveiligings bericht bevat de meta gegevens van de afzender, `AgentId`zoals `AgentVersion`, `MessageSchemaVersion` en een lijst met beveiligings gebeurtenissen.
+Het schema definieert de geldige en vereiste eigenschappen van het beveiligings bericht, met inbegrip van de typen gebeurtenissen.
 
 > [!NOTE]
-> Berichten die niet zijn ingesteld als een beveiligingsbericht met de Azure IoT SDK, worden niet doorgestuurd naar de Azure Security Center for IoT-pijplijn.
+> Berichten die worden verzonden die niet voldoen aan het schema, worden genegeerd. Zorg ervoor dat u het schema verifieert voordat u het verzenden van gegevens start, omdat genegeerde berichten momenteel niet zijn opgeslagen.
 
-## <a name="valid-message-example"></a>Voorbeeld van geldig bericht
+> [!NOTE]
+> Berichten die worden verzonden die niet zijn ingesteld als een beveiligings bericht met behulp van de Azure IoT SDK, worden niet doorgestuurd naar de Azure Security Center voor IoT-pijp lijn.
 
-In het onderstaande voorbeeld ziet u een geldig object met een beveiligingsbericht. Het voorbeeld bevat de `ProcessCreate` metagegevens van het bericht en één beveiligingsgebeurtenis.
+## <a name="valid-message-example"></a>Geldig bericht voorbeeld
 
-Zodra dit bericht is ingesteld als een beveiligingsbericht en is verzonden, wordt dit bericht verwerkt door Azure Security Center for IoT.
+In het onderstaande voor beeld ziet u een geldig beveiligings bericht object. Het voor beeld bevat de meta gegevens van `ProcessCreate` het bericht en één beveiligings gebeurtenis.
+
+Eenmaal ingesteld als een beveiligings bericht en verzonden, wordt dit bericht verwerkt door Azure Security Center voor IoT.
 
 ```json
 "AgentVersion": "0.0.1",
@@ -90,19 +90,19 @@ Zodra dit bericht is ingesteld als een beveiligingsbericht en is verzonden, word
 ]
 ```
 
-## <a name="send-security-messages"></a>Beveiligingsberichten verzenden
+## <a name="send-security-messages"></a>Beveiligings berichten verzenden
 
-Verstuur beveiligingsberichten *zonder* azure security center voor IoT-agent te gebruiken, met behulp van de [Azure IoT C-apparaat SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview), [Azure IoT C#-apparaat SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview), Azure [IoT Node.js SDK,](https://github.com/Azure/azure-iot-sdk-node) [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)of Azure [IoT Java SDK](https://github.com/Azure/azure-iot-sdk-java).
+Beveiligings berichten verzenden *zonder* Azure Security Center te gebruiken voor IOT-agent, met behulp van de [Azure IOT C-SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview), [Azure IOT C# Device SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview), [Azure IoT node. js SDK](https://github.com/Azure/azure-iot-sdk-node), [Azure IOT python SDK](https://github.com/Azure/azure-iot-sdk-python)of [Azure IOT Java SDK](https://github.com/Azure/azure-iot-sdk-java).
 
-Als u de apparaatgegevens van uw apparaten wilt verzenden voor verwerking door Azure Security Center for IoT, gebruikt u een van de volgende API's om berichten te markeren voor de juiste routering naar Azure Security Center voor IoT-verwerkingspijplijn.
+Als u de apparaatgegevens van uw apparaten wilt verzenden voor verwerking door Azure Security Center voor IoT, gebruikt u een van de volgende Api's om berichten te markeren voor juiste route ring naar Azure Security Center voor IoT-verwerkings pijplijn.
 
-Alle gegevens die worden verzonden, zelfs als ze zijn gemarkeerd met de juiste koptekst, moeten ook voldoen aan het [Azure Security Center for IoT-berichtschema.](https://aka.ms/iot-security-schemas)
+Alle gegevens die worden verzonden, zelfs als deze zijn gemarkeerd met de juiste header, moeten ook voldoen aan de [Azure Security Center voor IOT-berichten schema](https://aka.ms/iot-security-schemas).
 
-### <a name="send-security-message-api"></a>API voor beveiligingsbericht verzenden
+### <a name="send-security-message-api"></a>Beveiligings bericht-API verzenden
 
-De API **voor beveiligingsberichten verzenden** is momenteel beschikbaar in C en C#, Python, Node.js en Java.
+De API voor het **verzenden van beveiligings berichten** is momenteel beschikbaar in C en C#, Python, node. js en Java.
 
-#### <a name="c-api"></a>C-API
+#### <a name="c-api"></a>C API
 
 ```c
 bool SendMessageAsync(IoTHubAdapter* iotHubAdapter, const void* data, size_t dataSize) {
@@ -160,7 +160,7 @@ private static async Task SendSecurityMessageAsync(string messageContent)
 }
 ```
 
-#### <a name="nodejs-api"></a>Node.js API
+#### <a name="nodejs-api"></a>Node. js-API
 
 ```typescript
 var Protocol = require('azure-iot-device-mqtt').Mqtt
@@ -195,9 +195,9 @@ function SendSecurityMessage(messageContent)
 
 #### <a name="python-api"></a>Python-API
 
-Als u de Python API wilt gebruiken, moet u het [azure-iot-apparaat](https://pypi.org/project/azure-iot-device/)van het pakket installeren.
+Als u de python-API wilt gebruiken, moet u het pakket [Azure-IOT-Device](https://pypi.org/project/azure-iot-device/)installeren.
 
-Wanneer u de Python API gebruikt, u het beveiligingsbericht via de module of via het apparaat verzenden met behulp van de unieke apparaat- of moduleverbindingstekenreeks. Gebruik **IoTHubDeviceClient**en met een module bij het gebruik van het volgende Voorbeeld van Python-script met een apparaat **IoTHubDeviceClient**.
+Wanneer u de python-API gebruikt, kunt u het beveiligings bericht via de module of via het apparaat verzenden met behulp van het unieke apparaat of de module connection string. Gebruik, als u het volgende python-script voorbeeld gebruikt, met een apparaat, **IoTHubDeviceClient**en met een module, **IoTHubModuleClient**.
 
 ```python
 from azure.iot.device.aio import IoTHubDeviceClient, IoTHubModuleClient
@@ -229,10 +229,10 @@ public void SendSecurityMessage(string message)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees het [overzicht](overview.md) van de Azure Security Center for IoT-service
-- Meer informatie over Azure Security Center voor [IoT-architectuur](architecture.md)
-- De [service inschakelen](quickstart-onboard-iot-hub.md)
-- Lees de [faq](resources-frequently-asked-questions.md)
-- Meer informatie over hoe u toegang krijgt tot [ruwe beveiligingsgegevens](how-to-security-data-access.md)
-- Aanbevelingen [begrijpen](concept-recommendations.md)
-- Inzicht in [waarschuwingen](concept-security-alerts.md)
+- Lees het [overzicht](overview.md) van de Azure Security Center voor IOT-service
+- Meer informatie over Azure Security Center voor IoT- [architectuur](architecture.md)
+- De [service](quickstart-onboard-iot-hub.md) inschakelen
+- Lees de [Veelgestelde vragen](resources-frequently-asked-questions.md)
+- Meer informatie over het openen van [onbewerkte beveiligings gegevens](how-to-security-data-access.md)
+- Meer informatie over [aanbevelingen](concept-recommendations.md)
+- Meer informatie over [waarschuwingen](concept-security-alerts.md)

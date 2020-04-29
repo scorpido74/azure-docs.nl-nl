@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door - Veelgestelde vragen
-description: Deze pagina biedt antwoorden op veelgestelde vragen over Azure Front Door
+title: Voor deur van Azure, veelgestelde vragen
+description: Op deze pagina vindt u antwoorden op veelgestelde vragen over Azure front deur
 services: frontdoor
 documentationcenter: ''
 author: sohamnchatterjee
@@ -12,158 +12,158 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
 ms.openlocfilehash: e2785baab27f5bfc996b57607816062195a19b2b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81313754"
 ---
-# <a name="frequently-asked-questions-for-azure-front-door"></a>Veelgestelde vragen voor Azure Front Door
+# <a name="frequently-asked-questions-for-azure-front-door"></a>Veelgestelde vragen over de voor deur van Azure
 
-In dit artikel worden veelgestelde vragen beantwoord over azure front door-functies en -functionaliteit. Als u het antwoord op uw vraag niet ziet, u contact met ons opnemen via de volgende kanalen (in escalerende volgorde):
+In dit artikel vindt u antwoorden op veelgestelde vragen over de functies en functionaliteit van Azure front deur. Als u het antwoord op uw vraag niet ziet, kunt u contact met ons opnemen via de volgende kanalen (in de volg orde waarin ze worden doorzocht):
 
-1. De reacties sectie van dit artikel.
-2. [Azure Front Door UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025).
-3. **Microsoft-ondersteuning:** Als u een nieuw ondersteuningsverzoek wilt maken, selecteert u in de Azure-portal op het tabblad **Help** de knop **Help + ondersteuning** en selecteert u Vervolgens Nieuw **ondersteuningsverzoek**.
+1. De sectie opmerkingen van dit artikel.
+2. [Azure front-deur UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025).
+3. **Microsoft ondersteuning:** Als u een nieuwe ondersteunings aanvraag wilt maken, selecteert u in het Azure Portal op het tabblad **Help** de knop **Help en ondersteuning** en selecteert u vervolgens **nieuwe ondersteunings aanvraag**.
 
 ## <a name="general"></a>Algemeen
 
 ### <a name="what-is-azure-front-door"></a>Wat is Azure Front Door?
 
-Azure Front Door is een Application Delivery Network (ADN) als service, die verschillende layer 7 load-balancing mogelijkheden biedt voor uw toepassingen. Het biedt dynamische site versnelling (DSA) samen met de wereldwijde load balancing met bijna real-time failover. Het is een zeer beschikbare en schaalbare service, die volledig wordt beheerd door Azure.
+Azure front deur is een Application Delivery Network (ADN) als een service, met verschillende mogelijkheden voor de taak verdeling van laag 7 voor uw toepassingen. Het biedt dynamische site versnelling (DSA) samen met globale taak verdeling met een nabije realtime failover. Het is een Maxi maal beschik bare en schaal bare service die volledig wordt beheerd door Azure.
 
-### <a name="what-features-does-azure-front-door-support"></a>Welke functies ondersteunt Azure Front Door?
+### <a name="what-features-does-azure-front-door-support"></a>Welke functies worden ondersteund door Azure front-deur?
 
-Azure Front Door ondersteunt dynamic site acceleration (DSA), TLS/SSL offloading en end-to-end TLS, Web Application Firewall, cookie-based session affinity, url path-based routing, gratis certificaten en meerdere domeinbeheer, en anderen. Zie Overzicht van Azure Front [Door](front-door-overview.md)voor een volledige lijst met ondersteunde functies.
+Azure front deur biedt ondersteuning voor dynamische site versnelling (DSA), TLS/SSL-offloading en end-to-end TLS, Web Application firewall, op cookies gebaseerde sessie affiniteit, op URL-pad gebaseerde route ring, gratis certificaten en meerdere domein beheer, en andere. Zie [overzicht van Azure front deur](front-door-overview.md)voor een volledige lijst met ondersteunde functies.
 
-### <a name="what-is-the-difference-between-azure-front-door-and-azure-application-gateway"></a>Wat is het verschil tussen Azure Front Door en Azure Application Gateway?
+### <a name="what-is-the-difference-between-azure-front-door-and-azure-application-gateway"></a>Wat is het verschil tussen de Azure front-deur en de Azure-toepassing-gateway?
 
-Hoewel zowel Front Door als Application Gateway laag 7 (HTTP/HTTPS) load balancers zijn, is het belangrijkste verschil dat Front Door een wereldwijde service is, terwijl Application Gateway een regionale service is. Terwijl Front Door de balans kan laden tussen uw verschillende schaaleenheden/clusters/stempeleenheden in verschillende regio's, u met Application Gateway de balans tussen uw VM's/containers etc. laden die zich binnen de schaaleenheid bevinden.
+Hoewel zowel de voor deur als de Application Gateway laag 7 (HTTP/HTTPS) load balancers zijn, is het belangrijkste verschil dat de voor deur een wereld wijde service is, terwijl Application Gateway een regionale service is. Met Application Gateway kunt u een taak verdeling tussen uw virtuele machines/containers/clusters/stempels in verschillende regio's, met behulp van de voor deur, waarmee u het evenwicht tussen uw Vm's en recipiënten, enzovoort.
 
-### <a name="when-should-we-deploy-an-application-gateway-behind-front-door"></a>Wanneer moeten we een Application Gateway achter De Voordeur implementeren?
+### <a name="when-should-we-deploy-an-application-gateway-behind-front-door"></a>Wanneer moet een Application Gateway achter aan de voor deur worden geïmplementeerd?
 
-De belangrijkste scenario's waarom men Application Gateway achter Front Door zou moeten gebruiken zijn:
+De belangrijkste scenario's waarvan een moet worden gebruikt Application Gateway achter de voor deur zijn:
 
-- Front Door kan alleen op pad gebaseerde load balancing uitvoeren op mondiaal niveau, maar als men het balansverkeer nog verder wil laden binnen hun virtuele netwerk (VNET), dan moeten ze Application Gateway gebruiken.
-- Aangezien Voordeur niet werkt op VM/containerniveau, kan het niet doen Connection Draining. Met Application Gateway u echter Connection Draining doen. 
-- Met een Application Gateway achter AFD kan men 100% TLS/SSL offload bereiken en alleen HTTP-aanvragen routeren binnen hun virtuele netwerk (VNET).
-- Front Door en Application Gateway ondersteunen beide sessieaffiniteit. Terwijl Front Door het volgende verkeer van een gebruikerssessie naar hetzelfde cluster of backend in een bepaald gebied kan leiden, kan Application Gateway het verkeer naar dezelfde server binnen het cluster leiden.  
+- Met de voor deur kan alleen op het globale niveau taak verdeling op basis van een pad worden uitgevoerd, maar als er nog meer verkeer in het virtuele netwerk (VNET) moet worden geladen, moeten ze Application Gateway gebruiken.
+- Omdat de voor deur niet werkt op een VM-of container niveau, kan er geen verbinding worden verbroken. Met Application Gateway kunt u echter de verbinding verbreken. 
+- Met een Application Gateway achter AFD, kan een van 100% TLS/SSL-offload worden gerealiseerd en kunnen alleen HTTP-aanvragen worden gerouteerd binnen hun virtuele netwerk (VNET).
+- De voor deur en Application Gateway de affiniteit van de ondersteunings sessie. Hoewel de front-deur volgend verkeer van een gebruikers sessie naar hetzelfde cluster of dezelfde back-end in een bepaalde regio kan omleiden, kan Application Gateway het verkeer naar dezelfde server in het cluster affinitize.  
 
-### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>Kunnen we Azure Load Balancer achter voordeur implementeren?
+### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>Kunnen we Azure Load Balancer implementeren achter de voor deur?
 
-Azure Front Door heeft een openbare VIP of een openbaar beschikbare DNS-naam nodig om het verkeer naar te leiden. Het implementeren van een Azure Load Balancer achter Front Door is een veelvoorkomende use case.
+Azure front deur moet een openbaar VIP of een openbaar beschik bare DNS-naam hebben om het verkeer naar te sturen. Het implementeren van een Azure Load Balancer achter deur is een veelvoorkomende use-case.
 
-### <a name="what-protocols-does-azure-front-door-support"></a>Welke protocollen ondersteunt Azure Front Door?
+### <a name="what-protocols-does-azure-front-door-support"></a>Welke protocollen ondersteunt Azure front-deur?
 
-Azure Front Door ondersteunt HTTP, HTTPS en HTTP/2.
+Azure front-deur ondersteunt HTTP, HTTPS en HTTP/2.
 
-### <a name="how-does-azure-front-door-support-http2"></a>Hoe ondersteunt Azure Front Door HTTP/2?
+### <a name="how-does-azure-front-door-support-http2"></a>Hoe biedt Azure front-deur ondersteuning voor HTTP/2?
 
-Http/2-protocolondersteuning is alleen beschikbaar voor clients die verbinding maken met Azure Front Door. De communicatie naar backends in de backend pool is meer dan HTTP/1.1. HTTP/2-ondersteuning is standaard ingeschakeld.
+Ondersteuning voor HTTP/2-protocollen is alleen beschikbaar voor clients die alleen verbinding maken met de front-deur van Azure. De communicatie met back-ends in de back-end-groep is via HTTP/1.1. HTTP/2-ondersteuning is standaard ingeschakeld.
 
-### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>Welke middelen worden vandaag ondersteund als onderdeel van backend pool?
+### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>Welke bronnen worden vandaag ondersteund als onderdeel van de back-end-groep?
 
-Backend-groepen kunnen bestaan uit opslag, web-app, Kubernetes-exemplaren of andere aangepaste hostname met openbare connectiviteit. Azure Front Door vereist dat de backends worden gedefinieerd via een openbaar IP of een openbaar oplosbare DNS-hostnaam. Leden van backendpools kunnen zich in verschillende zones, regio's of zelfs buiten Azure bevinden, zolang ze openbare connectiviteit hebben.
+Back-endservers kunnen bestaan uit opslag, Web-app, Kubernetes-instanties of een andere aangepaste hostnaam die open bare connectiviteit heeft. Voor de Azure-deur moeten de back-ends worden gedefinieerd via een openbaar IP-adres of een openbaar omzet bare DNS-hostnaam. Leden van back-endservers kunnen zich in zones, regio's of zelfs buiten Azure bevinden, zolang ze open bare connectiviteit hebben.
 
 ### <a name="what-regions-is-the-service-available-in"></a>In welke regio's is de service beschikbaar?
 
-Azure Front Door is een wereldwijde service en is niet gebonden aan een specifieke Azure-regio. De enige locatie die u moet opgeven tijdens het maken van een voordeur is de locatie van de brongroep, die in principe aangeeft waar de metagegevens voor de resourcegroep worden opgeslagen. Front Door-bron zelf wordt gemaakt als een globale bron en de configuratie wordt wereldwijd geïmplementeerd in alle POP's (Point of Presence). 
+Azure front-deur is een wereld wijde service en is niet gebonden aan een specifieke Azure-regio. De enige locatie die u moet opgeven tijdens het maken van een voor deur is de locatie van de resource groep, die in principe aangeeft waar de meta gegevens voor de resource groep worden opgeslagen. De voor deur van de resource zelf wordt gemaakt als globale resource en de configuratie wordt globaal geïmplementeerd op alle Pop's (Presence Point). 
 
-### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Wat zijn de POP-locaties voor Azure Front Door?
+### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Wat zijn de POP-locaties voor Azure front-deur?
 
-Azure Front Door heeft dezelfde lijst met POP-locaties (Point of Presence) als Azure CDN van Microsoft. Raadpleeg [Azure CDN POP-locaties van Microsoft](https://docs.microsoft.com/azure/cdn/cdn-pop-locations)voor de volledige lijst met onze POP's.
+De front-deur van Azure heeft dezelfde lijst met POP-locaties (Point of Presence) als Azure CDN van micro soft. Voor de volledige lijst met onze Pop's verwijzen we naar [Azure CDN pop-locaties van micro soft](https://docs.microsoft.com/azure/cdn/cdn-pop-locations).
 
-### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Is Azure Front Door een speciale implementatie voor mijn toepassing of wordt deze gedeeld door klanten?
+### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Is de voor deur van Azure een speciale implementatie voor mijn toepassing of wordt deze gedeeld met klanten?
 
-Azure Front Door is een wereldwijd gedistribueerde multi-tenant service. De infrastructuur voor Front Door wordt dus gedeeld door al haar klanten. Door echter een frontdoorprofiel aan te maken, definieert u de specifieke configuratie die nodig is voor uw toepassing en hebben geen wijzigingen in uw frontdeur invloed op andere frontdoorconfiguraties.
+Azure front-deur is een wereld wijd gedistribueerde multi tenant-service. De infra structuur voor de voor deur wordt dus gedeeld door alle klanten. Als u echter een front deur profiel maakt, definieert u de specifieke configuratie die is vereist voor uw toepassing. er zijn geen wijzigingen aangebracht aan de voor deur van andere front-deur configuraties.
 
 ### <a name="is-http-https-redirection-supported"></a>Wordt HTTP->HTTPS-omleiding ondersteund?
 
-Ja. Azure Front Door ondersteunt zelfs de omleiding van host-, pad- en querytekenreeksen en een deel van de omleiding van url's. Meer informatie over [url-omleiding](front-door-url-redirect.md). 
+Ja. In feite ondersteunt Azure front-deur hosts, paden en het omleiden van query reeksen, evenals een deel van URL-omleiding. Meer informatie over [URL-omleiding](front-door-url-redirect.md). 
 
-### <a name="in-what-order-are-routing-rules-processed"></a>In welke volgorde worden routeringsregels verwerkt?
+### <a name="in-what-order-are-routing-rules-processed"></a>In welke volg orde worden routerings regels verwerkt?
 
-Routes voor uw voordeur worden niet besteld en een specifieke route wordt geselecteerd op basis van de beste match. Meer informatie over [hoe Front Door aanvragen koppelt aan een routeringsregel.](front-door-route-matching.md)
+Routes voor de voor deur worden niet besteld en een specifieke route wordt geselecteerd op basis van de beste overeenkomst. Meer informatie over [de voor deur die overeenkomt met aanvragen voor een routerings regel](front-door-route-matching.md).
 
-### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Hoe vergrendel ik de toegang tot mijn backend tot alleen Azure Front Door?
+### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Hoe kan ik Vergrendel de toegang tot mijn back-end naar een Azure front-deur?
 
-Als u uw toepassing wilt vergrendelen om alleen verkeer van uw specifieke voordeur te accepteren, moet u IP-ACL's instellen voor uw backend en vervolgens het verkeer op uw backend beperken tot de specifieke waarde van de koptekst 'X-Azure-FDID' die door Voordeur wordt verzonden. Deze stappen worden hieronder beschreven:
+Als u uw toepassing wilt vergren delen om alleen verkeer van uw specifieke voor deur te accepteren, moet u IP-Acl's instellen voor uw back-end en vervolgens het verkeer op uw back-end beperken tot de specifieke waarde van de header X-Azure-FDID die wordt verzonden door de voor deur. Deze stappen worden hieronder beschreven:
 
-- Configureer IP ACLing voor uw backends om verkeer te accepteren van de backend IP-adresruimte van Azure Front Door en alleen de infrastructuurservices van Azure. Raadpleeg de IP-details hieronder voor ACLing uw backend:
+- Configureer IP-Acl's voor voor uw back-ends om verkeer te accepteren van de back-end-IP-adres ruimte van de Azure front deur en alleen de infrastructuur services van Azure. Raadpleeg de onderstaande IP-gegevens voor Acl's voor van uw back-end:
  
-    - Raadpleeg de sectie *AzureFrontDoor.Backend* in [Azure IP Ranges and Service Tags](https://www.microsoft.com/download/details.aspx?id=56519) for Front Door's IPv4 backend IP address range or you can also use the service tag *AzureFrontDoor.Backend* in your [network security groups](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) or with Azure [Firewall](https://docs.microsoft.com/azure/firewall/service-tags).
-    - Ip-ruimte **voor IPv6-backend** van Front Door, terwijl deze wordt weergegeven in de servicetag, wordt niet vermeld in het JSON-bestand met Azure IP-bereiken. Als u op zoek bent naar een expliciet IPv6-adresbereik, is het momenteel beperkt tot`2a01:111:2050::/44`
-    - De [basisinfrastructuurservices](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) van Azure via gevirtualiseerde host-IP-adressen: `168.63.129.16` en`169.254.169.254`
+    - Raadpleeg de sectie *AzureFrontDoor. back-end* in [Azure IP-bereiken en-Tags](https://www.microsoft.com/download/details.aspx?id=56519) voor het IPv4-back-end-IP-adres bereik van de front deur of u kunt ook de service label *AzureFrontDoor. back-end* gebruiken in uw [netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) of met [Azure firewall](https://docs.microsoft.com/azure/firewall/service-tags).
+    - De **IPv6** -back-end van de front-ends tijdens de dekking van de servicetag wordt niet weer gegeven in het JSON-bestand van het Azure IP-bereik. Als u op zoek bent naar een expliciet IPv6-adres bereik, is dit momenteel beperkt tot`2a01:111:2050::/44`
+    - De [basis infrastructuur services](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) van Azure via gevirtualiseerde host-IP `168.63.129.16` -adressen: en`169.254.169.254`
 
     > [!WARNING]
-    > De ip-ruimte van Front Door kan later veranderen, maar we zullen ervoor zorgen dat voordat dat gebeurt, we zouden hebben geïntegreerd met [Azure IP Ranges en Service Tags](https://www.microsoft.com/download/details.aspx?id=56519). We raden u aan zich te abonneren op [Azure IP Ranges en Service Tags](https://www.microsoft.com/download/details.aspx?id=56519) voor eventuele wijzigingen of updates.
+    > De backend-back-end van de voor deur kan later worden gewijzigd, maar we zorgen ervoor dat voordat dat gebeurt, dat we hebben geïntegreerd met [Azure IP-bereiken en-Tags](https://www.microsoft.com/download/details.aspx?id=56519). U wordt aangeraden om u te abonneren op [Azure IP-bereiken en service Tags](https://www.microsoft.com/download/details.aspx?id=56519) voor eventuele wijzigingen of updates.
 
--    Voer een GET-bewerking uit op `2020-01-01` uw voordeur met de API-versie of hoger. Zoek `frontdoorID` in de API-aanroep naar veld. Filter op de inkomende header '**X-Azure-FDID'** die door Front Door naar `frontdoorID`uw backend wordt verzonden met de waarde als die van het veld. 
+-    Voer een GET-bewerking uit op uw voor deur met de `2020-01-01` API-versie of hoger. Zoek in de API-aanroep naar `frontdoorID` veld. Filter op de inkomende header '**X-Azure-FDID**' die door de voor deur naar uw back-end wordt verzonden met de waarde `frontdoorID`van het veld. 
 
-### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>Kan de anycast IP veranderen over de levensduur van mijn voordeur?
+### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>Kan het anycast-IP-adres worden gewijzigd gedurende de levens duur van mijn front-deur?
 
-De frontend anycast IP voor uw voordeur mag doorgaans niet veranderen en kan statisch blijven gedurende de levensduur van de voordeur. Er zijn echter **geen garanties** voor hetzelfde. Neem geen directe afhankelijkheden van het IP.
+Het front-end-frontend-IP-adres voor de voor deur moet normaal gesp roken niet worden gewijzigd en kan statisch blijven gedurende de levens duur van de voor deur. Er zijn echter **geen garanties** voor dezelfde. Neem geen directe afhankelijkheden op het IP-adres.
 
-### <a name="does-azure-front-door-support-static-or-dedicated-ips"></a>Ondersteunt Azure Front Door statische of toegewezen IP's?
+### <a name="does-azure-front-door-support-static-or-dedicated-ips"></a>Ondersteunt de front-deur van Azure statische of toegewezen Ip's?
 
-Nee, Azure Front Door ondersteunt momenteel geen statische of speciale frontend-IP's. 
+Nee, Azure front deur biedt momenteel geen ondersteuning voor statische of speciale frontend-IP-adressen. 
 
-### <a name="does-azure-front-door-support-x-forwarded-for-headers"></a>Ondersteunt Azure Front Door x-forwarded-for headers?
+### <a name="does-azure-front-door-support-x-forwarded-for-headers"></a>Ondersteunt Azure front-deur x-doorgestuurd-voor kopteksten?
 
-Ja, Azure Front Door ondersteunt de X-Forwarded-For-, X-Forwarded-Host en X-Forwarded-Proto-headers. Voor X-Forwarded-For als de header al aanwezig was, voegt Front Door de clientsocket IP eraan toe. Anders voegt het de header met de client socket IP als de waarde. Voor X-Forwarded-Host en X-Forwarded-Proto wordt de waarde overschreven.
+Ja, de Azure-front-deur ondersteunt de headers X-forward-for, X-forward-host en X-forward-proto. Voor X-doorgestuurd: als de header al aanwezig is, wordt het IP-adres van de client aan de voor deur toegevoegd. Anders wordt de header met het IP-adres van de client-socket als waarde toegevoegd. Voor X-doorgestuurd-host en X-doorgestuurd-proto wordt de waarde overschreven.
 
-Meer informatie over de door de [voordeur ondersteunde HTTP-headers](front-door-http-headers-protocol.md).  
+Meer informatie over de [ondersteunde HTTP-headers voor de voor deur](front-door-http-headers-protocol.md).  
 
-### <a name="how-long-does-it-take-to-deploy-an-azure-front-door-does-my-front-door-still-work-when-being-updated"></a>Hoe lang duurt het om een Azure Front Door te implementeren? Werkt mijn voordeur nog steeds wanneer deze wordt bijgewerkt?
+### <a name="how-long-does-it-take-to-deploy-an-azure-front-door-does-my-front-door-still-work-when-being-updated"></a>Hoe lang duurt het om een Azure front-deur te implementeren? Werkt mijn front-deur nog steeds wanneer ze worden bijgewerkt?
 
-Een nieuwe front door creatie of updates van een bestaande Front Door duurt ongeveer 3 tot 5 minuten voor wereldwijde implementatie. Dat betekent dat in ongeveer 3 tot 5 minuten, uw Front Door configuratie zal worden ingezet in al onze POP's wereldwijd.
+Een nieuwe voor deur maken of updates voor een bestaande front-deur neemt ongeveer drie tot vijf minuten in beslag voor wereld wijde implementatie. Dat betekent ongeveer 3 tot 5 minuten dat de configuratie van de voor deur wordt geïmplementeerd in al onze Pop's wereld wijd.
 
-Opmerking - Het duurt ongeveer 30 minuten voordat aangepaste TLS/SSL-certificaatupdates wereldwijd worden geïmplementeerd.
+Opmerking: aangepaste TLS/SSL-certificaat updates nemen ongeveer 30 minuten in beslag.
 
-Alle updates voor routes of backend pools etc. zijn naadloos en veroorzaken nul downtime (als de nieuwe configuratie juist is). Certificaatupdates zijn ook atoom en veroorzaken geen uitval, tenzij u overstapt van 'AFD Managed' naar 'Gebruik uw eigen cert' of vice versa.
+Eventuele updates van routes of back-end-Pools, enzovoort, zijn naadloos en veroorzaken geen downtime (als de nieuwe configuratie juist is). Certificaat updates zijn ook atomisch en veroorzaken geen storingen, tenzij u overschakelt van ' AFD Managed ' naar ' uw eigen certificaat gebruiken ' of andersom.
 
 
 ## <a name="configuration"></a>Configuratie
 
-### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Kan Azure Front Door-laadbalans of routeverkeer binnen een virtueel netwerk?
+### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Kan de taak verdeling van de voor deur van Azure voor de voor grond zijn of verkeer binnen een virtueel netwerk routeren?
 
-Azure Front Door (AFD) vereist een openbare IP of openbaar oplosbare DNS-naam om verkeer te routeren. Het antwoord is dus dat geen AFD rechtstreeks kan routeren binnen een virtueel netwerk, maar het gebruik van een Application Gateway of Azure Load Balancer daartussen zal dit scenario oplossen.
+Voor de Azure-deur (AFD) is een openbaar IP-adres of een openbaar omgezette DNS-naam vereist om verkeer te routeren. Het antwoord is dus geen AFD direct in staat te stellen om binnen een virtueel netwerk te routeren, maar met behulp van een Application Gateway of Azure Load Balancer in tussen wordt dit scenario opgelost.
 
-### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Wat zijn de verschillende time-outs en limieten voor Azure Front Door?
+### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Wat zijn de verschillende time-outs en limieten voor de Azure front-deur?
 
-Meer informatie over alle gedocumenteerde [time-outs en limieten voor Azure Front Door](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits).
+Meer informatie over alle gedocumenteerde [time-outs en limieten voor de Azure front-deur](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits).
 
 ## <a name="performance"></a>Prestaties
 
-### <a name="how-does-azure-front-door-support-high-availability-and-scalability"></a>Hoe ondersteunt Azure Front Door hoge beschikbaarheid en schaalbaarheid?
+### <a name="how-does-azure-front-door-support-high-availability-and-scalability"></a>Hoe ondersteunt Azure front-deur hoge Beschik baarheid en schaal baarheid?
 
-Azure Front Door is een wereldwijd gedistribueerd multi-tenant platform met enorme hoeveelheden capaciteit om tegemoet te komen aan de schaalbaarheidsbehoeften van uw toepassing. Front Door wordt geleverd vanaf de rand van het wereldwijde netwerk van Microsoft en biedt wereldwijde mogelijkheden voor het balanceren van de lasten, waarmee u falen over uw hele toepassing of zelfs individuele microservices in verschillende regio's of verschillende clouds.
+Azure front-deur is een wereld wijd gedistribueerd multi tenant platform met grote hoeveel heden capaciteit voor de schaal baarheids behoeften van uw toepassing. De deur van het wereld wijde netwerk van micro soft biedt wereld wijde mogelijkheden voor taak verdeling waarmee u een failover kunt uitvoeren voor uw hele toepassing of zelfs voor afzonderlijke micro Services in regio's of verschillende Clouds.
 
 ## <a name="tls-configuration"></a>TLS-configuratie
 
-### <a name="what-tls-versions-are-supported-by-azure-front-door"></a>Welke TLS-versies worden ondersteund door Azure Front Door?
+### <a name="what-tls-versions-are-supported-by-azure-front-door"></a>Welke TLS-versies worden ondersteund door Azure front-deur?
 
-Alle Front Door profielen die na september 2019 zijn gemaakt, gebruiken TLS 1.2 als standaardminimum.
+Voor alle profielen voor de voorste deur die na september 2019 worden gemaakt, wordt TLS 1,2 als standaard minimum gebruikt.
 
-Front Door ondersteunt TLS-versies 1.0, 1.1 en 1.2. TLS 1.3 wordt nog niet ondersteund.
+De front-deur ondersteunt TLS-versies 1,0, 1,1 en 1,2. TLS 1,3 wordt nog niet ondersteund.
 
-### <a name="what-certificates-are-supported-on-azure-front-door"></a>Welke certificaten worden ondersteund op Azure Front Door?
+### <a name="what-certificates-are-supported-on-azure-front-door"></a>Welke certificaten worden ondersteund op de front-deur van Azure?
 
-Als u het HTTPS-protocol wilt inschakelen voor het veilig leveren van inhoud op een aangepast frontdoordomein, u ervoor kiezen om een certificaat te gebruiken dat wordt beheerd door Azure Front Door of uw eigen certificaat te gebruiken.
-De voordeur beheerde optie voorziet in een standaard TLS/SSL-certificaat via Digicert en wordt opgeslagen in De Sleutelkluis van De Voordeur. Als u ervoor kiest om uw eigen certificaat te gebruiken, u een certificaat van een ondersteunde CA aan boord nemen en kan het een standaard TLS, uitgebreid validatiecertificaat of zelfs een wildcardcertificaat zijn. Zelfondertekende certificaten worden niet ondersteund. Meer informatie over [het inschakelen van HTTPS voor een aangepast domein](https://aka.ms/FrontDoorCustomDomainHTTPS).
+Als u het HTTPS-protocol wilt inschakelen voor het veilig leveren van inhoud op een aangepast domein voor de voor deur, kunt u kiezen of u een certificaat wilt gebruiken dat wordt beheerd door Azure front deur of dat u uw eigen certificaat gebruikt.
+Met de voor deur beheerde optie wordt een standaard TLS/SSL-certificaat ingericht via Digicert en opgeslagen in de Key Vault van de front-deur. Als u ervoor kiest uw eigen certificaat te gebruiken, kunt u een certificaat van een ondersteunde CA onboarden en een standaard TLS-, uitgebreide validatie certificaat of zelfs een certificaat met Joker tekens. Zelfondertekende certificaten worden niet ondersteund. Meer informatie [over het inschakelen van HTTPS voor een aangepast domein](https://aka.ms/FrontDoorCustomDomainHTTPS).
 
-### <a name="does-front-door-support-autorotation-of-certificates"></a>Ondersteunt Front Door autorotatie van certificaten?
+### <a name="does-front-door-support-autorotation-of-certificates"></a>Ondersteunt front-deur het omdraaien van certificaten?
 
-Voor de optie Voordeurbeheercertificaat worden de certificaten automatisch gedraaid door Voordeur. Als u een door de voordeur beheerd certificaat gebruikt en ziet dat de vervaldatum van het certificaat minder dan 60 dagen verwijderd is, dient u een ondersteuningsticket in.
-</br>Voor uw eigen aangepaste TLS/SSL-certificaat wordt autorotatie niet ondersteund. Net als bij de manier waarop het de eerste keer is ingesteld voor een bepaald aangepast domein, moet u Front Door wijzen op de juiste certificaatversie in uw Key Vault en ervoor zorgen dat de serviceprincipal voor Front Door nog steeds toegang heeft tot de Key Vault. Deze bijgewerkte certificaatimplementatiebewerking door Front Door is atoom en veroorzaakt geen productie-impact op voorwaarde dat de onderwerpnaam of SAN voor het certificaat niet verandert.
+Voor de optie beheerd certificaat voor de voor deur worden de certificaten automatisch gedraaid door de voor deur. Als u een door de voor deur beheerd certificaat gebruikt en u ziet dat de verval datum van het certificaat korter is dan 60 dagen, kunt u een ondersteunings ticket indienen.
+</br>Voor uw eigen aangepaste TLS/SSL-certificaat wordt autorotation niet ondersteund. Net als bij het instellen van de eerste keer voor een aangepast domein, moet u de voor deur naar de juiste certificaat versie in uw Key Vault pointen en ervoor zorgen dat de service-principal voor de voor deur nog steeds toegang heeft tot de Key Vault. Deze bijgewerkte certificaat lancerings bewerking door de voor deur is Atomic en heeft geen invloed op de productie, mits de object naam of het SAN voor het certificaat niet verandert.
 
-### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Wat zijn de huidige cipher suites ondersteund door Azure Front Door?
+### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Wat zijn de huidige coderings suites die worden ondersteund door de Azure front-deur?
 
-Voor TLS1.2 worden de volgende ciphersuites ondersteund
+Voor TLS 1.2 worden de volgende coderings suites ondersteund
 
 TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 
-Bij het gebruik van aangepaste domeinen met TLS1.0/1.1 worden de volgende ciphersuites ondersteund:
+Wanneer u aangepaste domeinen met TLS 1.0/1.1 gebruikt, worden de volgende coderings suites ondersteund:
 
 - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
@@ -186,54 +186,54 @@ Bij het gebruik van aangepaste domeinen met TLS1.0/1.1 worden de volgende cipher
 - TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 - TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
 
-### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>Kan ik tls-beleid configureren om TLS-protocolversies te beheren?
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>Kan ik TLS-beleid configureren voor het beheren van TLS-protocol versies?
 
-U een minimale TLS-versie configureren in Azure Front Door in de aangepaste domeinHTTPS-instellingen via Azure portal of de [Azure REST API.](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion) Momenteel u kiezen tussen 1.0 en 1.2.
+U kunt een minimale TLS-versie in azure front-deur configureren in de HTTPS-instellingen van het aangepaste domein via Azure Portal of [Azure rest API](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion). Op dit moment kunt u kiezen tussen 1,0 en 1,2.
 
-### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Kan ik Front Door configureren om alleen specifieke cijfersuites te ondersteunen?
+### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Kan ik front-deur zo configureren dat alleen specifieke coderings suites worden ondersteund?
 
-Nee, het configureren van Front Door voor specifieke cipher suites wordt niet ondersteund. U echter uw eigen aangepaste TLS/SSL-certificaat krijgen van uw Certificate Authority (bijvoorbeeld Verisign, Entrust of Digicert) en specifieke cijfersuites op het certificaat hebben gemarkeerd wanneer u het hebt gegenereerd. 
+Nee, het configureren van de voor deur voor specifieke coderings suites wordt niet ondersteund. U kunt echter uw eigen aangepaste TLS/SSL-certificaat van uw certificerings instantie ontvangen (bijvoorbeeld VeriSign, belasters of Digicert) en specifieke coderings suites op het certificaat hebben gemarkeerd wanneer het is gegenereerd. 
 
-### <a name="does-front-door-support-ocsp-stapling"></a>Ondersteunt Front Door OCSP nieten?
+### <a name="does-front-door-support-ocsp-stapling"></a>Biedt front-deur ondersteuning voor het koppelen van OCSP?
 
-Ja, OCSP-nieting wordt standaard ondersteund door Front Door en er is geen configuratie vereist.
+Ja, OCSP-nietfunctie wordt standaard door de voor deur ondersteund en er is geen configuratie vereist.
 
-### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Ondersteunt Azure Front Door ook herversleuteling van verkeer naar de backend?
+### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Ondersteunt Azure front-deur ook het opnieuw versleutelen van verkeer naar de back-end?
 
-Ja, Azure Front Door ondersteunt TLS/SSL-offload en end-to-end TLS, waarmee het verkeer opnieuw wordt versleuteld naar de backend. In feite, aangezien de verbindingen met de backend plaatsvinden via het openbare IP, is het raadzaam dat u uw voordeur configureren om HTTPS te gebruiken als het doorsturen protocol.
+Ja, Azure front deur ondersteunt TLS/SSL-offload en end-to-end TLS, waarmee het verkeer opnieuw wordt versleuteld naar de back-end. Omdat de verbindingen met de back-end een openbaar IP-adres hebben, wordt aanbevolen dat u de voor deur configureert om HTTPS te gebruiken als het doorstuur protocol.
 
-### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>Ondersteunt Front Door zelfondertekende certificaten op de backend voor HTTPS-verbinding?
+### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>Ondersteunt front-deur zelfondertekende certificaten op de back-end voor HTTPS-verbinding?
 
-Nee, zelfondertekende certificaten worden niet ondersteund op Front Door en de beperking geldt voor beide:
+Nee, zelfondertekende certificaten worden niet op de voor deur ondersteund en de beperking is van toepassing op beide:
 
-1. **Backends**: U zelfondertekende certificaten niet gebruiken wanneer u het verkeer doorstuurt als HTTPS- of HTTPS-statussondes of de cache vult voor vanaf de oorsprong voor routeringsregels met caching ingeschakeld.
-2. **Frontend**: U zelfondertekende certificaten niet gebruiken wanneer u uw eigen aangepaste TLS/SSL-certificaat gebruikt voor het inschakelen van HTTPS op uw aangepaste domein.
+1. **Back**-ends: u kunt geen zelfondertekende certificaten gebruiken wanneer u het verkeer doorstuurt als HTTPS-of https-status controle of het invullen van de cache voor van oorsprong voor routerings regels waarvoor caching is ingeschakeld.
+2. Front- **End**: u kunt geen zelfondertekende certificaten gebruiken wanneer u uw eigen aangepaste TLS/SSL-certificaat gebruikt om https in te scha kelen voor uw aangepaste domein.
 
-### <a name="why-is-https-traffic-to-my-backend-failing"></a>Waarom mislukt HTTPS-verkeer naar mijn backend?
+### <a name="why-is-https-traffic-to-my-backend-failing"></a>Waarom is HTTPS-verkeer naar mijn back-end mislukt?
 
-Voor het hebben van succesvolle HTTPS-verbindingen met uw backend, of het nu gaat om statussondes of voor doorsturen van aanvragen, kunnen er twee redenen zijn waarom HTTPS-verkeer mogelijk mislukt:
+Als u een geslaagde HTTPS-verbinding met de back-end wilt maken, ongeacht of de status test of aanvragen worden doorgestuurd, kunnen er twee redenen zijn waarom HTTPS-verkeer kan mislukken:
 
-1. **Foutie naam van het certificaatonderwerp:** Voor HTTPS-verbindingen verwacht Front Door dat uw backend certificaat presenteert van een geldige CA met onderwerpnaam(en) die overeenkomt met de backendhostnaam. Als uw backendhostnaam bijvoorbeeld is `myapp-centralus.contosonews.net` ingesteld op en het certificaat dat uw backend `*myapp-centralus*.contosonews.net` presenteert tijdens de TLS-handshake die noch in de onderwerpnaam heeft, `myapp-centralus.contosonews.net` weigert de voordeur de verbinding en resulteert dit in een fout. 
-    1. **Oplossing:** Hoewel het niet wordt aanbevolen vanuit het oogpunt van naleving, u deze fout oplossen door de naamcontrole van het certificaatvak voor uw voordeur uit te schakelen. Dit is aanwezig onder Instellingen in Azure-portal en onder BackendPoolsInstellingen in de API.
-2. **Backend hostingcertificaat van ongeldige CA:** Alleen certificaten van [geldige CA's](/azure/frontdoor/front-door-troubleshoot-allowed-ca) kunnen worden gebruikt aan de backend met Voordeur. Certificaten van interne CV's of zelfondertekende certificaten zijn niet toegestaan.
+1. De naam van het **certificaat onderwerp komt niet overeen**: voor HTTPS-verbindingen verwacht de voor deur dat uw back-end een certificaat van een geldige CA met de naam van de back-end (en) overeenkomt met de backend-hostnaam. Als bijvoorbeeld de hostnaam `myapp-centralus.contosonews.net` `myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net` van de back-end is ingesteld op en het certificaat dat uw back-end presenteert tijdens de TLS-Handshake, noch de naam van het onderwerp, wordt de verbinding door de voor deur geweigerd en wordt er een fout geretourneerd. 
+    1. **Oplossing**: Hoewel het niet wordt aangeraden om het probleem op te lossen, kunt u deze fout omzeilen door de naam van de certificaat houder voor uw deur te controleren. Dit is aanwezig onder instellingen in Azure Portal en onder BackendPoolsSettings in de API.
+2. **Backend-hosting certificaat van ongeldige ca**: alleen certificaten van [geldige certificerings instanties](/azure/frontdoor/front-door-troubleshoot-allowed-ca) kunnen worden gebruikt op de back-end met de voor deur. Certificaten van interne Ca's of zelfondertekende certificaten zijn niet toegestaan.
 
 ## <a name="diagnostics-and-logging"></a>Diagnostische gegevens en logboekregistratie
 
-### <a name="what-types-of-metrics-and-logs-are-available-with-azure-front-door"></a>Welke typen statistieken en logboeken zijn beschikbaar met Azure Front Door?
+### <a name="what-types-of-metrics-and-logs-are-available-with-azure-front-door"></a>Welke soorten metrische gegevens en logboeken zijn beschikbaar met Azure front-deur?
 
-Zie [Statistieken en logboeken voor voor de voordeur controleren voor](front-door-diagnostics.md)informatie over logboeken en andere diagnostische mogelijkheden.
+Zie [metrische gegevens en logboeken voor de voor deur bewaken](front-door-diagnostics.md)voor meer informatie over Logboeken en andere diagnostische mogelijkheden.
 
-### <a name="what-is-the-retention-policy-on-the-diagnostics-logs"></a>Wat is het bewaarbeleid voor de diagnostische logboeken?
+### <a name="what-is-the-retention-policy-on-the-diagnostics-logs"></a>Wat is het Bewaar beleid voor de diagnostische logboeken?
 
-Diagnostische logboeken stromen naar het opslagaccount van de klant en klanten kunnen het bewaarbeleid instellen op basis van hun voorkeur. Diagnostische logboeken kunnen ook worden verzonden naar een gebeurtenishub of Azure Monitor-logboeken. Zie [Azure Front Door Diagnostics](front-door-diagnostics.md)voor meer informatie .
+Diagnostische logboeken stroomt naar het opslag account van klanten en klanten kunnen het Bewaar beleid instellen op basis van hun voor keur. Diagnostische logboeken kunnen ook worden verzonden naar een event hub of Azure Monitor-Logboeken. Zie voor meer informatie [Azure front-deur diagnostiek](front-door-diagnostics.md).
 
-### <a name="how-do-i-get-audit-logs-for-azure-front-door"></a>Hoe krijg ik controlelogboeken voor Azure Front Door?
+### <a name="how-do-i-get-audit-logs-for-azure-front-door"></a>Hoe kan ik audit logboeken voor Azure front-deur ophalen?
 
-Controlelogboeken zijn beschikbaar voor Azure Front Door. Klik in de portal op **Activiteitslogboek** in het menublad van uw voordeur om toegang te krijgen tot het controlelogboek. 
+Er zijn audit logboeken beschikbaar voor de front-deur van Azure. Klik in de portal op **activiteiten logboek** in de menu-Blade van de voor deur om toegang te krijgen tot het audit logboek. 
 
-### <a name="can-i-set-alerts-with-azure-front-door"></a>Kan ik waarschuwingen instellen met Azure Front Door?
+### <a name="can-i-set-alerts-with-azure-front-door"></a>Kan ik waarschuwingen instellen met behulp van de voor deur van Azure?
 
-Ja, Azure Front Door biedt ondersteuning voor waarschuwingen. Waarschuwingen worden geconfigureerd op basis van metrische gegevens. 
+Ja, de voor deur van Azure biedt ondersteuning voor waarschuwingen. Waarschuwingen worden geconfigureerd voor metrische gegevens. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

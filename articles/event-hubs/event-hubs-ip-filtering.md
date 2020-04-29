@@ -1,6 +1,6 @@
 ---
-title: Firewallregels azure-gebeurtenishubs | Microsoft Documenten
-description: Gebruik Firewallregels om verbindingen toe te staan van specifieke IP-adressen naar Azure Event Hubs.
+title: Firewall regels voor Azure Event Hubs | Microsoft Docs
+description: Gebruik firewall regels om verbindingen van specifieke IP-adressen toe te staan aan Azure Event Hubs.
 services: event-hubs
 documentationcenter: ''
 author: spelluru
@@ -12,67 +12,67 @@ ms.topic: article
 ms.date: 12/20/2019
 ms.author: spelluru
 ms.openlocfilehash: 18212726f0ab921a05a3b640a32754c62958d047
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393145"
 ---
-# <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>IP-firewallregels configureren voor een naamruimte van Azure Event Hubs
-Standaard zijn naamruimten van Event Hubs toegankelijk vanaf internet, zolang de aanvraag wordt geleverd met geldige verificatie en autorisatie. Met IP-firewall u deze verder beperken tot alleen een set IPv4-adressen of IPv4-adresbereiken in [CIDR-notatie (Classless Inter-Domain Routing).](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+# <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>IP-firewall regels configureren voor een Azure Event Hubs-naam ruimte
+Event Hubs naam ruimten zijn standaard toegankelijk vanuit Internet zolang de aanvraag een geldige verificatie en autorisatie heeft. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
-Deze functie is handig in scenario's waarin Azure Event Hubs alleen toegankelijk moeten zijn vanaf bepaalde bekende sites. Met firewallregels u regels configureren om verkeer te accepteren dat afkomstig is van specifieke IPv4-adressen. Als u bijvoorbeeld Gebeurtenishubs met [Azure Express-route][express-route]gebruikt, u een **firewallregel** maken om verkeer toe te staan vanaf alleen uw on-premises infrastructuur-IP-adressen. 
+Deze functie is handig in scenario's waarin Azure Event Hubs alleen toegankelijk moet zijn vanaf bepaalde bekende sites. Met firewall regels kunt u regels configureren voor het accepteren van verkeer dat afkomstig is van specifieke IPv4-adressen. Als u bijvoorbeeld Event Hubs met [Azure Express route][express-route]gebruikt, kunt u een **firewall regel** maken om alleen verkeer toe te staan van uw on-premises IP-adressen van de infra structuur. 
 
 >[!WARNING]
-> Als u IP-filtering inschakelt, kan voorkomen dat andere Azure-services interactie hebben met gebeurtenishubs.
+> Het inschakelen van IP-filtering kan verhinderen dat andere Azure-Services communiceren met Event Hubs.
 >
-> Vertrouwde Microsoft-services worden niet ondersteund wanneer virtuele netwerken worden geïmplementeerd.
+> Vertrouwde micro soft-services worden niet ondersteund wanneer virtuele netwerken zijn geïmplementeerd.
 >
-> Veelvoorkomende Azure-scenario's die niet werken met virtuele netwerken (houd er rekening mee dat de lijst **NIET** volledig is) -
+> Algemene scenario's voor Azure die niet met virtuele netwerken werken (Houd er rekening mee dat de lijst **niet** volledig is)-
 > - Azure Monitor (diagnostische instelling)
 > - Azure Stream Analytics
 > - Integratie met Azure Event Grid
-> - Azure IoT-hubroutes
-> - Azure IoT Device Explorer
+> - Azure-IoT Hub routes
+> - Azure IoT-Device Explorer
 >
-> De volgende Microsoft-services moeten zich in een virtueel netwerk bevinden
+> De volgende micro soft-services moeten zich in een virtueel netwerk bevinden
 > - Azure Web Apps
 > - Azure Functions
 
 
-## <a name="ip-firewall-rules"></a>IP-firewallregels
-De IP-firewallregels worden toegepast op het naamruimteniveau van Gebeurtenishubs. Daarom zijn de regels van toepassing op alle verbindingen van clients die een ondersteund protocol gebruiken. Elke verbindingspoging vanaf een IP-adres dat niet overeenkomt met een toegestane IP-regel op de naamruimte van gebeurtenishubs, wordt afgewezen als ongeautoriseerd. In het antwoord wordt geen IP-regel vermeld. IP-filterregels worden op volgorde toegepast en de eerste regel die overeenkomt met het IP-adres bepaalt de actie Accepteren of weigeren.
+## <a name="ip-firewall-rules"></a>IP-firewall regels
+De IP-firewall regels worden toegepast op het niveau van de Event Hubs naam ruimte. Daarom gelden de regels voor alle verbindingen van clients die gebruikmaken van elk ondersteund protocol. Een verbindings poging van een IP-adres dat niet overeenkomt met een toegestane IP-regel op de Event Hubs naam ruimte, wordt geweigerd als niet-geautoriseerd. De IP-regel wordt niet vermeld in het antwoord. IP-filter regels worden in volg orde toegepast en de eerste regel die overeenkomt met het IP-adres, bepaalt de accepteren of afwijzen.
 
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken
-In deze sectie ziet u hoe u de Azure-portal gebruiken om IP-firewallregels te maken voor een naamruimte voor gebeurtenishubs. 
+In deze sectie wordt beschreven hoe u de Azure Portal gebruikt om IP-firewall regels voor een Event Hubs naam ruimte te maken. 
 
-1. Navigeer naar de **naamruimte van** uw gebeurtenishubs in de [Azure-portal.](https://portal.azure.com)
-2. Selecteer **netwerkoptie** in het linkermenu. Als u de optie **Alle netwerken** selecteert, accepteert de gebeurtenishub verbindingen vanaf elk IP-adres. Deze instelling is gelijk aan een regel die het IP-adresbereik 0.0.0/0/0 accepteert. 
+1. Navigeer naar uw **Event hubs-naam ruimte** in de [Azure Portal](https://portal.azure.com).
+2. Selecteer in het linkermenu **netwerk** optie. Als u de optie **alle netwerken** selecteert, accepteert de Event hub verbindingen van elk IP-adres. Deze instelling komt overeen met een regel die het IP-adres bereik 0.0.0.0/0 accepteert. 
 
-    ![Firewall - Alle netwerken optie geselecteerd](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. Als u de toegang tot specifieke netwerken en IP-adressen wilt beperken, selecteert u de optie **Geselecteerde netwerken.** Voer in de sectie **Firewall** de volgende stappen uit:
-    1. Selecteer De optie **IP-adres van uw client toevoegen** om uw huidige client-IP toegang te geven tot de naamruimte. 
-    2. Voer **voor adresbereik**een specifiek IPv4-adres of een bereik van IPv4-adres in CIDR-notatie in. 
-    3. Geef op of u **vertrouwde Microsoft-services wilt toestaan om deze firewall te omzeilen.** 
+    ![Optie Firewall: alle netwerken geselecteerd](./media/event-hubs-firewall/firewall-all-networks-selected.png)
+1. Selecteer de optie **geselecteerde netwerken** om de toegang tot specifieke netwerken en IP-adressen te beperken. Voer de volgende stappen uit in de sectie **firewall** :
+    1. Selecteer **de optie uw IP-adres voor client toevoegen** om uw huidige client-IP de toegang tot de naam ruimte te geven. 
+    2. Voer bij **adres bereik**een specifiek IPv4-adres of een bereik van IPv4-adres in CIDR-notatie in. 
+    3. Geef op of u wilt **toestaan dat vertrouwde micro soft-services deze firewall overs Laan**. 
 
-        ![Firewall - Alle netwerken optie geselecteerd](./media/event-hubs-firewall/firewall-selected-networks-trusted-access-disabled.png)
-3. Selecteer **Opslaan** op de werkbalk om de instellingen op te slaan. Wacht een paar minuten tot de bevestiging wordt weergegeven op de portalmeldingen.
+        ![Optie Firewall: alle netwerken geselecteerd](./media/event-hubs-firewall/firewall-selected-networks-trusted-access-disabled.png)
+3. Selecteer **Opslaan** op de werk balk om de instellingen op te slaan. Wacht een paar minuten totdat de bevestiging op de portal meldingen wordt weer gegeven.
 
 
 ## <a name="use-resource-manager-template"></a>Resource Manager-sjabloon gebruiken
 
 > [!IMPORTANT]
-> Firewallregels worden ondersteund in **standaard-** en **speciale** lagen van gebeurtenishubs. Deze worden niet ondersteund in de Basic-laag.
+> Firewall regels worden ondersteund in de **standaard** -en **toegewezen** lagen van Event hubs. Deze worden niet ondersteund in de Basic-laag.
 
-Met de volgende sjabloon Resourcemanager u een IP-filterregel toevoegen aan een bestaande naamruimte voor gebeurtenishubs.
+Met de volgende Resource Manager-sjabloon kunt u een IP-filter regel toevoegen aan een bestaande Event Hubs naam ruimte.
 
-Sjabloonparameters:
+Sjabloon parameters:
 
-- **ipMask** is één IPv4-adres of een blok IP-adressen in CIDR-notatie. In CIDR-notatie 70.37.104.0/24 vertegenwoordigt bijvoorbeeld de 256 IPv4-adressen van 70.37.104.0 tot 70.37.104.255, waarbij 24 het aantal significante voorvoegselbits voor het bereik aangeven.
+- **ipMask** is een enkel IPv4-adres of een blok met IP-adressen in CIDR-notatie. Bijvoorbeeld, in CIDR-notatie 70.37.104.0/24 staat voor de IPv4-adressen 256 van 70.37.104.0 naar 70.37.104.255, met 24 waarmee het aantal belang rijke voorvoegsel bits voor het bereik wordt aangegeven.
 
 > [!NOTE]
-> Hoewel er geen weigeringsregels mogelijk zijn, is de sjabloon Azure Resource Manager ingesteld op **'Toestaan'** waardoor verbindingen niet worden beperkt.
-> Bij het maken van virtual network- of firewalls-regels moeten we de ***'defaultAction'*** wijzigen
+> Hoewel er geen regels kunnen worden geweigerd, is voor de Azure Resource Manager sjabloon de standaard actie ingesteld op **' toestaan '** , waardoor verbindingen niet worden beperkt.
+> Wanneer u Virtual Network of firewall regels maakt, moeten we de ***' defaultAction '*** wijzigen
 > 
 > from
 > ```json
@@ -150,9 +150,9 @@ Als u de sjabloon wilt implementeren, volgt u de instructies voor [Azure Resourc
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende koppeling voor het beperken van de toegang tot gebeurtenishubs tot virtuele Azure-netwerken:
+Zie de volgende koppeling voor meer informatie over het beperken van toegang tot Event Hubs voor virtuele netwerken van Azure:
 
-- [Eindpunten van virtuele netwerkservice voor gebeurtenishubs][lnk-vnet]
+- [Service-eind punten Virtual Network voor Event Hubs][lnk-vnet]
 
 <!-- Links -->
 

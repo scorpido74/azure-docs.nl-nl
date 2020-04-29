@@ -1,6 +1,6 @@
 ---
-title: WAF-v2-regels (Azure Web Application Firewall) v2
-description: In dit artikel vindt u een overzicht van waf-regels (Web Application Firewall) v2 op Azure Application Gateway.
+title: Aangepaste regels voor Azure Web Application firewall (WAF) v2 op Application Gateway
+description: Dit artikel bevat een overzicht van aangepaste WAF-regels (Web Application firewall) op Azure-toepassing gateway.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -8,36 +8,36 @@ ms.service: web-application-firewall
 ms.date: 04/14/2020
 ms.author: victorh
 ms.openlocfilehash: c0f802f5113e38e811c110ee913099e76fa7be0b
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81383817"
 ---
-# <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Aangepaste regels voor Web Application Firewall v2 op Azure Application Gateway
+# <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Aangepaste regels voor Web Application firewall v2 op Azure-toepassing gateway
 
-De WAF(Azure Application Gateway Web Application Firewall) v2 wordt geleverd met een vooraf geconfigureerde, door platforms beheerde regelset die bescherming biedt tegen veel verschillende soorten aanvallen. Deze aanvallen omvatten cross site scripting, SQL-injectie, en anderen. Als u een WAF-beheerder bent, u uw eigen regels schrijven om de basisregels (CRS)-regels uit te breiden. Uw regels kunnen aangevraagd verkeer blokkeren of toestaan op basis van overeenkomende criteria.
+De Azure-toepassing gateway Web Application firewall (WAF) v2 wordt geleverd met een vooraf geconfigureerde, door een platform beheerde ruleset die bescherming biedt tegen een groot aantal verschillende soorten aanvallen. Deze aanvallen omvatten cross-site scripting, SQL-injectie en andere. Als u een WAF-beheerder bent, kunt u uw eigen regels schrijven om de regels voor basisregel sets (CRS) te verbeteren. Uw regels kunnen het aangevraagde verkeer blok keren of toestaan op basis van de overeenkomende criteria.
 
-Met aangepaste regels u uw eigen regels maken die worden geëvalueerd voor elk verzoek dat door de WAF gaat. Deze regels hebben een hogere prioriteit dan de rest van de regels in de beheerde regelsets. De aangepaste regels bevatten een regelnaam, regelprioriteit en een reeks overeenkomende voorwaarden. Als aan deze voorwaarden is voldaan, wordt een actie ondernomen (om toe te staan of te blokkeren).
+Met aangepaste regels kunt u uw eigen regels maken die worden geëvalueerd voor elke aanvraag die via de WAF wordt door gegeven. Deze regels bevatten een hogere prioriteit dan de rest van de regels in de beheerde regel sets. De aangepaste regels bevatten de naam van de regel, de prioriteit van de regel en een matrix met overeenkomende voor waarden. Als aan deze voor waarden wordt voldaan, wordt er een actie ondernomen (om toe te staan of te blok keren).
 
-U bijvoorbeeld alle aanvragen blokkeren vanaf een IP-adres in het bereik 192.168.5.4/24. In deze regel is de operator *IPMatch,* de matchValues is het IP-adresbereik (192.168.5.4/24) en de actie is om het verkeer te blokkeren. U stelt ook de naam en prioriteit van de regel in.
+U kunt bijvoorbeeld alle aanvragen van een IP-adres in het bereik 192.168.5.4/24 blok keren. In deze regel is de operator *IPMatch*, het matchValues is het IP-adres bereik (192.168.5.4/24) en de actie om het verkeer te blok keren. U kunt ook de naam en prioriteit van de regel instellen.
 
-Aangepaste regels ondersteunen het gebruik van samengestelde logica om meer geavanceerde regels te maken die voldoen aan uw beveiligingsbehoeften. Bijvoorbeeld (Voorwaarde 1 **en** Voorwaarde 2) **of** Voorwaarde 3). Dit betekent dat als aan voorwaarde 1 **en** voorwaarde 2 is voldaan **of** als voorwaarde 3 is voldaan, de WAF de actie moet ondernemen die is opgegeven in de aangepaste regel.
+Aangepaste regels bieden ondersteuning voor het gebruik van samengestelde logica om geavanceerde regels te maken die voldoen aan uw beveiligings behoeften. Bijvoorbeeld (Condition 1 **en** condition 2) **of** condition 3). Dit betekent dat als aan voor waarde 1 **en** voor waarde 2 is voldaan, **of** als aan voor waarde 3 wordt voldaan, de WAF de actie moet uitvoeren die is opgegeven in de aangepaste regel.
 
-Verschillende matching voorwaarden binnen dezelfde regel worden altijd samengesteld met behulp van **en**. Blokkeer bijvoorbeeld verkeer vanaf een specifiek IP-adres en alleen als ze een bepaalde browser gebruiken.
+Verschillende overeenkomende voor waarden binnen dezelfde regel worden altijd samengesteld met **en**. Bijvoorbeeld verkeer blok keren van een specifiek IP-adres en alleen als ze een bepaalde browser gebruiken.
 
-Als u wilt **of** twee verschillende voorwaarden, moeten de twee voorwaarden in verschillende regels. Blokkeer bijvoorbeeld verkeer vanaf een specifiek IP-adres of blokkeer verkeer als ze een specifieke browser gebruiken.
+Als u **of** twee verschillende voor waarden wilt, moeten de twee voor waarden in verschillende regels zijn. Bijvoorbeeld verkeer blok keren van een specifiek IP-adres of verkeer blok keren als ze een specifieke browser gebruiken.
 
 > [!NOTE]
-> Het maximum aantal WAF aangepaste regels is 100. Zie [Azure-abonnements- en servicelimieten, quota en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)voor meer informatie over limieten voor toepassingsgateways.
+> Het maximum aantal aangepaste WAF-regels is 100. Zie [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)voor meer informatie over Application Gateway limieten.
 
-Reguliere expressies worden ook ondersteund in aangepaste regels, net als in de CRS-regelsets. Zie Voorbeelden 3 en 5 voor voorbeelden in [Firewallregels voor webtoepassingen maken en gebruiken.](create-custom-waf-rules.md)
+Reguliere expressies worden ook ondersteund in aangepaste regels, net als in de CRS-rules. Voor beelden, zie voor beelden 3 en 5 in [aangepaste Web Application firewall regels maken en gebruiken](create-custom-waf-rules.md).
 
-## <a name="allowing-vs-blocking"></a>Vs. blokkeren toestaan
+## <a name="allowing-vs-blocking"></a>Toestaan versus blok keren
 
-Het toestaan en blokkeren van verkeer is eenvoudig met aangepaste regels. U bijvoorbeeld al het verkeer blokkeren dat afkomstig is van een reeks IP-adressen. U een andere regel maken om verkeer toe te staan als het verzoek afkomstig is van een specifieke browser.
+Het toestaan en blok keren van verkeer is eenvoudig met aangepaste regels. U kunt bijvoorbeeld al het verkeer dat afkomstig is van een bereik van IP-adressen blok keren. U kunt een andere regel maken om verkeer toe te staan als de aanvraag afkomstig is van een specifieke browser.
 
-Als u iets wilt `-Action` toestaan, moet u ervoor zorgen dat de parameter is ingesteld op **Toestaan**. Als u iets wilt `-Action` blokkeren, moet u ervoor zorgen dat de parameter is ingesteld op **Blokkeren.**
+Als u iets wilt toestaan, moet `-Action` u ervoor zorgen dat de para meter is ingesteld op **toestaan**. Als u iets wilt blok keren, `-Action` controleert u of de para meter is ingesteld op **blok keren**.
 
 ```azurepowershell
 $AllowRule = New-AzApplicationGatewayFirewallCustomRule `
@@ -55,7 +55,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-De `$BlockRule` vorige toewijzingen aan de volgende aangepaste regel in Azure Resource Manager:
+In het `$BlockRule` vorige voor gaande wordt de volgende aangepaste regel in azure Resource Manager:
 
 ```json
 "customRules": [
@@ -86,46 +86,46 @@ De `$BlockRule` vorige toewijzingen aan de volgende aangepaste regel in Azure Re
     ], 
 ```
 
-Deze aangepaste regel bevat een naam, prioriteit, een actie en de reeks overeenkomende voorwaarden waaraan moet worden voldaan om de actie te laten plaatsvinden. Zie de volgende veldbeschrijvingen voor meer uitleg over deze velden. Zie Bijvoorbeeld aangepaste regels, zie [Firewallregels voor webtoepassingen maken en gebruiken](create-custom-waf-rules.md).
+Deze aangepaste regel bevat een naam, prioriteit, een actie en de matrix van overeenkomende voor waarden waaraan moet worden voldaan voordat de actie wordt uitgevoerd. Zie de volgende veld beschrijvingen voor meer uitleg van deze velden. Zie aangepaste regels voor [Web Application firewall maken en gebruiken](create-custom-waf-rules.md)voor meer informatie.
 
 ## <a name="fields-for-custom-rules"></a>Velden voor aangepaste regels
 
-### <a name="name-optional"></a>Naam [optioneel]
+### <a name="name-optional"></a>Naam [Optioneel]
 
-De naam van de regel.  Het verschijnt in de logboeken.
+De naam van de regel.  Deze wordt weer gegeven in de logboeken.
 
 ### <a name="priority-required"></a>Prioriteit [vereist]
 
-- Hiermee bepaalt u de regelwaarderingsvolgorde. Hoe lager de waarde, hoe eerder de evaluatie van de regel. Het toegestane bereik is van 1-100. 
-- Moet uniek zijn in alle aangepaste regels. Een regel met prioriteit 40 wordt geëvalueerd vóór een regel met prioriteit 80.
+- Bepaalt de volg orde van de regel. Hoe lager de waarde, hoe eerder de evaluatie van de regel. Het toegestane bereik is 1-100. 
+- Moet uniek zijn voor alle aangepaste regels. Een regel met prioriteit 40 wordt geëvalueerd vóór een regel met de prioriteit 80.
 
-### <a name="rule-type-required"></a>Regeltype [vereist]
+### <a name="rule-type-required"></a>Regel type [vereist]
 
-Op dit moment moet **matchrule**zijn.
+Momenteel moet **MatchRule**zijn.
 
-### <a name="match-variable-required"></a>Wedstrijdvariabele [vereist]
+### <a name="match-variable-required"></a>Overeenkomende variabele [required]
 
 Moet een van de variabelen zijn:
 
-- RemoteAddr – IP-adres/hostnaam van de externe computerverbinding
-- AanvraagMethode – HTTP-aanvraagmethode (GET, POST, PUT, DELETE, enzovoort.)
-- QueryString – Variabele in de URI
-- PostArgs - Argumenten verzonden in de POST lichaam. Aangepaste regels met deze wedstrijdvariabele worden alleen toegepast als de koptekst 'Inhoud-type' is ingesteld op 'application/x-www-form-urlencoded' en 'multipart/form-data'.
-- RequestUri – URI van het verzoek
-- Kopteksten aanvragen – Kopteksten van de aanvraag
-- RequestBody – Dit bevat de gehele aanvraaginstantie als geheel. Aangepaste regels met deze wedstrijdvariabele worden alleen toegepast als de koptekst 'Inhoud-type' is ingesteld op 'application/x-www-form-urlencoded'. 
-- RequestCookies – Cookies van het verzoek
+- RemoteAddr: IP-adres/hostnaam van de verbinding met de externe computer
+- RequestMethod: HTTP-aanvraag methode (GET, POST, PUT, DELETE, enzovoort)
+- Query string: variabele in de URI
+- PostArgs: argumenten verzonden in de hoofd tekst van het bericht. Aangepaste regels die gebruikmaken van deze match-variabele worden alleen toegepast als de header content-type is ingesteld op Application/x-www-form-urlencoded en meerdelige/form-data.
+- RequestUri: de URI van de aanvraag
+- RequestHeaders: headers van de aanvraag
+- RequestBody: dit bevat de volledige hoofd tekst van de aanvraag. Aangepaste regels die gebruikmaken van deze match-variabele worden alleen toegepast als de header content-type is ingesteld op Application/x-www-form-urlencoded. 
+- RequestCookies: cookies van de aanvraag
 
-### <a name="selector-optional"></a>Kiezer [optioneel]
+### <a name="selector-optional"></a>Selector [Optioneel]
 
-Beschrijft het veld van de matchVariable-verzameling. Als de matchVariable bijvoorbeeld RequestHeaders is, kan de kiezer zich op de header *User-Agent* begeven.
+Beschrijft het veld van de matchVariable-verzameling. Als de matchVariable bijvoorbeeld RequestHeaders is, kan de selector zich op de header *User-agent* bevindt.
 
 ### <a name="operator-required"></a>Operator [vereist]
 
-Moet een van de volgende marktdeelnemers zijn:
+Dit moet een van de volgende Opera tors zijn:
 
-- IPMatch - alleen gebruikt wanneer Match Variable *RemoteAddr* is
-- Gelijk – invoer is hetzelfde als de MatchValue
+- IPMatch: wordt alleen gebruikt als de overeenkomende variabele *RemoteAddr* is
+- Gelijk – de invoer is hetzelfde als de MatchValue
 - Contains
 - LessThan
 - GreaterThan
@@ -133,38 +133,38 @@ Moet een van de volgende marktdeelnemers zijn:
 - GreaterThanOrEqual
 - BeginsWith
 - EndsWith
-- Regex
-- Geomatch (preview)
+- Reguliere
+- Geoovereenkomst (preview-versie)
 
-### <a name="negate-condition-optional"></a>Voorwaarde voor uitlaten [optioneel]
+### <a name="negate-condition-optional"></a>Voor waarde voor negatie [Optioneel]
 
-Ontkent de huidige toestand.
+De huidige voor waarde wordt genegeerd.
 
-### <a name="transform-optional"></a>Transformeren [optioneel]
+### <a name="transform-optional"></a>Transformeren [Optioneel]
 
-Een lijst met tekenreeksen met namen van transformaties die moeten worden uitgevoerd voordat de overeenkomst wordt geprobeerd. Dit kunnen de volgende transformaties zijn:
+Een lijst met teken reeksen met namen van trans formaties voordat de overeenkomst wordt geprobeerd. Dit kunnen de volgende trans formaties zijn:
 
 - Kleine letters
 - Trim
 - UrlDecode
 - UrlEncode 
-- Nulls verwijderen
+- RemoveNulls
 - HtmlEntityDecode
 
-### <a name="match-values-required"></a>Overeenkomen met waarden [vereist]
+### <a name="match-values-required"></a>Overeenkomende waarden [required]
 
-Lijst van waarden om tegen aan te passen, die kan worden gezien als *zijnde OF*'ed. Het kunnen bijvoorbeeld IP-adressen of andere tekenreeksen zijn. De waardenotatie is afhankelijk van de vorige operator.
+Lijst met waarden die moeten worden vergeleken, wat kan worden beschouwd als *or*' Ed '. Het kan bijvoorbeeld IP-adressen of andere teken reeksen zijn. De notatie van de waarde is afhankelijk van de vorige operator.
 
 ### <a name="action-required"></a>Actie [vereist]
 
-- Toestaan : hiermee machtigt u de transactie en slaat u alle andere regels over. De opgegeven aanvraag wordt toegevoegd aan de lijst met toegestane plaatsen en zodra deze overeenkomen, stopt de aanvraag de verdere evaluatie en wordt deze naar de backendpool verzonden. Regels die in de lijst met toegestane regels staan, worden niet geëvalueerd voor verdere aangepaste regels of beheerde regels.
-- Blokkeren – Blokkeert de transactie op basis van *SecDefaultAction* (detectie/preventiemodus). Net als de actie Toestaan wordt de evaluatie, zodra de aanvraag is geëvalueerd en toegevoegd aan de bloklijst, gestopt en wordt de aanvraag geblokkeerd. Elk verzoek daarna voldoet aan dezelfde voorwaarden zal niet worden geëvalueerd en zal gewoon worden geblokkeerd. 
-- Log - Laat de regel schrijven naar het logboek, maar laat de rest van de regels draaien voor evaluatie. De andere aangepaste regels worden geëvalueerd in volgorde van prioriteit, gevolgd door de beheerde regels.
+- Toestaan: Hiermee wordt de trans actie geautoriseerd, waarbij alle andere regels worden overgeslagen. De opgegeven aanvraag wordt toegevoegd aan de acceptatie lijst en eenmaal overeenkomen, de aanvraag stopt verder met de evaluatie en wordt verzonden naar de back-end-groep. Regels die zich op de acceptatie lijst bevinden, worden niet geëvalueerd voor verdere aangepaste regels of beheerde regels.
+- Blok: blokkeert de trans actie op basis van *SecDefaultAction* (detectie/preventie modus). Net als bij de actie voor toestaan, zodra de aanvraag is geëvalueerd en toegevoegd aan de lijst met geblokkeerde websites, wordt de evaluatie gestopt en wordt de aanvraag geblokkeerd. Aanvragen na die voldoen aan dezelfde voor waarden worden niet geëvalueerd en worden alleen geblokkeerd. 
+- Log: Hiermee kan de regel naar het logboek schrijven, maar kan de rest van de regels worden uitgevoerd voor evaluatie. De andere aangepaste regels worden geëvalueerd in volg orde van prioriteit, gevolgd door de beheerde regels.
 
-## <a name="geomatch-custom-rules-preview"></a>Aangepaste regels voor Geomatch (voorbeeld)
+## <a name="geomatch-custom-rules-preview"></a>Aangepaste regels voor geomatching (preview-versie)
 
-Met aangepaste regels u aangepaste regels maken die voldoen aan de exacte behoeften van uw toepassingen en beveiligingsbeleid. U de toegang tot uw webapplicaties per land/regio beperken. Zie [Aangepaste regels voor Geomatch (voorbeeld) voor](geomatch-custom-rules.md)meer informatie.
+Met aangepaste regels kunt u op maat gemaakte regels maken voor de exacte behoeften van uw toepassingen en beveiligings beleid. U kunt de toegang tot uw webtoepassingen beperken op basis van land/regio. Zie voor meer informatie [aangepaste regels voor geomatching (preview-versie)](geomatch-custom-rules.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u meer te weten bent over aangepaste regels, [maakt u uw eigen aangepaste regels.](create-custom-waf-rules.md)
+Nadat u meer informatie over aangepaste regels hebt [gemaakt, maakt u uw eigen aangepaste regels](create-custom-waf-rules.md).

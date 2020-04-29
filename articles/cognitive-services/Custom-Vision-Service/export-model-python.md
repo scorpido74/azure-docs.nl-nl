@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie: TensorFlow-model uitvoeren in Python - Custom Vision Service'
 titleSuffix: Azure Cognitive Services
-description: Leer hoe u een TensorFlow-model uitvoert in Python. Dit artikel is alleen van toepassing op modellen die worden geëxporteerd uit beeldclassificatieprojecten in de aangepaste vision-service.
+description: Leer hoe u een TensorFlow-model uitvoert in Python. Dit artikel is alleen van toepassing op modellen die zijn geëxporteerd uit afbeeldings classificatie projecten in de Custom Vision-service.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: 6fcbd84b3cda4adace9c1229f5ed03c3dce68fc0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81404120"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Zelfstudie: TensorFlow-model uitvoeren in Python
@@ -22,7 +22,7 @@ ms.locfileid: "81404120"
 Nadat u [uw TensorFlow-model](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) hebt geëxporteerd uit de Custom Vision Service, wordt in deze snelstartgids beschreven hoe u dit model lokaal kunt gebruiken voor het classificeren van afbeeldingen.
 
 > [!NOTE]
-> Deze zelfstudie is alleen van toepassing op modellen die worden geëxporteerd uit beeldclassificatieprojecten.
+> Deze zelf studie is alleen van toepassing op modellen die zijn geëxporteerd uit afbeeldings classificatie projecten.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -68,7 +68,7 @@ with open(labels_filename, 'rt') as lf:
 
 ## <a name="prepare-an-image-for-prediction"></a>Een afbeelding voorbereiden voor voorspelling
 
-Er zijn een paar stappen die u moet nemen om de afbeelding voor te bereiden op voorspelling. Deze stappen bootsen de afbeeldingsbewerking na die wordt uitgevoerd tijdens de training:
+Er zijn een paar stappen die u moet uitvoeren om de installatie kopie voor te bereiden voor de voor spelling. Deze stappen bootsen de afbeeldingsbewerking na die wordt uitgevoerd tijdens de training:
 
 ### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>Open het bestand en maak een afbeelding in de BGR-kleurruimte
 
@@ -172,7 +172,7 @@ def update_orientation(image):
 
 ## <a name="predict-an-image"></a>Een afbeelding voorspellen
 
-Zodra het beeld is voorbereid als een tensor, kunnen we het door het model sturen voor een voorspelling:
+Zodra de afbeelding is voor bereid als een tensor, kunnen we deze via het model verzenden voor een voor spelling:
 
 ```Python
 
@@ -210,7 +210,7 @@ De resultaten van het verwerken van de afbeeldingstensor door het model moet ver
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Leer vervolgens hoe u uw model verpakken in een mobiele toepassing:
+Vervolgens leert u hoe u uw model in een mobiele toepassing kunt inpakken:
 * [Geëxporteerd Tensorflow-model gebruiken in een Android-toepassing](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
 * [Geëxporteerd CoreML-model gebruiken in een Swift iOS-toepassing](https://go.microsoft.com/fwlink/?linkid=857726)
 * [Geëxporteerd CoreML-model gebruiken in een iOS-toepassing met Xamarin](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)

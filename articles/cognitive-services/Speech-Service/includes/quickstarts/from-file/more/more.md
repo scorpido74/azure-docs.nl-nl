@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: trbye
 ms.openlocfilehash: 5ebd56e102ab2ac113e509ea44966aa5f67e9b75
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400476"
 ---
-## <a name="additional-language-and-platform-support"></a>Aanvullende taal- en platformondersteuning
+## <a name="additional-language-and-platform-support"></a>Aanvullende taal-en platform ondersteuning
 
-Als u op dit tabblad hebt geklikt, hebt u waarschijnlijk geen snelle start in uw favoriete programmeertaal gezien. Maak je geen zorgen, we hebben extra quickstart materialen en code samples beschikbaar op GitHub. Gebruik de tabel om het juiste voorbeeld te vinden voor uw programmeertaal en platform/OS-combinatie.
+Als u op dit tabblad hebt geklikt, ziet u waarschijnlijk geen Snelstartgids in uw favoriete programmeer taal. Geen zorgen: er zijn extra Quick Start-materialen en code voorbeelden beschikbaar op GitHub. Gebruik de tabel om het juiste voor beeld te vinden voor uw programmeer taal en combi natie van platform/OS.
 
-| Taal | Extra quickstarts | Codevoorbeelden |
+| Taal | Extra Quick starts | Codevoorbeelden |
 |--|--|--|
-| C# | [Van microfoon][1-mic], [Van blob][1-blob] | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Eenheid][unity], [Xamarin][xamarin] |
-| C++ | [Van microfoon][2-mic], [Van blob][2-blob] | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac] |
-| Java | [Van microfoon][3-mic], [Van blob][3-blob] | [Android][java-android], [JRE][java-jre] |
-| Javascript | [Browser van mic][js-browser], [Node.js uit bestand][js-node] | [Windows, Linux, macOS][js-code] |
-| Objective-C | [iOS van microfoon,][obj-iOS-qck] [macOS van microfoon][obj-macOS-qck] | [iOS][obj-iOS], [macOS][obj-macOS] |
-| Python | [Van microfoon][4-mic], [Van blob][4-blob] | [Windows, Linux, macOS][python] |
-| Swift | [iOS van microfoon,][swift-iOS-qck] [macOS van microfoon][swift-macOS-qck] | [iOS][swift-iOS], [macOS][swift-macOS] |
+| C# | [Van Mic][1-mic], [van BLOB][1-blob] | [.NET Framework][dotnet], [.net core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
+| C++ | [Van Mic][2-mic], [van BLOB][2-blob] | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac] |
+| Java | [Van Mic][3-mic], [van BLOB][3-blob] | [Android][java-android], [jre][java-jre] |
+| Javascript | [Browser van Mic][js-browser], [node. js vanuit bestand][js-node] | [Windows, Linux, macOS][js-code] |
+| Objective-C | [IOS van Mic][obj-iOS-qck], [macOS van Mic][obj-macOS-qck] | [IOS][obj-iOS], [macOS][obj-macOS] |
+| Python | [Van Mic][4-mic], [van BLOB][4-blob] | [Windows, Linux, macOS][python] |
+| Swift | [IOS van Mic][swift-iOS-qck], [macOS van Mic][swift-macOS-qck] | [IOS][swift-iOS], [macOS][swift-macOS] |
 
 [1-mic]: ../../../../quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp
 [1-blob]: ../../../../quickstarts/from-blob.md?pivots=programming-language-csharp

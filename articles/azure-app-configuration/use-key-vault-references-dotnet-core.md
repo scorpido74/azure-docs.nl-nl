@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie voor het gebruik van Verwijzingen naar azure-app-configuratiesleutelvault in een ASP.NET Core-app | Microsoft Documenten
-description: In deze zelfstudie leert u hoe u de Key Vault-referenties van Azure App Configuration gebruiken vanuit een ASP.NET Core-app
+title: Zelf studie voor het gebruik van Azure-app configuratie Key Vault verwijzingen in een ASP.NET Core-app | Microsoft Docs
+description: In deze zelf studie leert u hoe u Key Vault verwijzingen van Azure-app configuratie kunt gebruiken vanuit een ASP.NET Core-app
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -15,92 +15,92 @@ ms.date: 04/08/2020
 ms.author: lcozzens
 ms.custom: mvc
 ms.openlocfilehash: 4641c50f0579e2a8db514df58c0401eb2173d793
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81309051"
 ---
-# <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Zelfstudie: Key Vault-verwijzingen gebruiken in een ASP.NET Core-app
+# <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Zelf studie: Key Vault verwijzingen gebruiken in een ASP.NET Core-app
 
-In deze zelfstudie leert u hoe u de Azure App Configuration-service samen met Azure Key Vault gebruiken. App Configuration en Key Vault zijn aanvullende services die naast elkaar worden gebruikt in de meeste implementaties van toepassingen.
+In deze zelf studie leert u hoe u de Azure-app Configuration-service kunt gebruiken in combi natie met Azure Key Vault. App-configuratie en Key Vault zijn complementaire services die naast elkaar worden gebruikt in de meeste toepassings implementaties.
 
-App-configuratie helpt u de services samen te gebruiken door sleutels te maken die verwijzen naar waarden die zijn opgeslagen in Key Vault. Wanneer app-configuratie dergelijke sleutels maakt, worden de URI's van key vault-waarden opgeslagen in plaats van de waarden zelf.
+Met app-configuratie kunt u de services gezamenlijk gebruiken door sleutels te maken die verwijzen naar waarden die zijn opgeslagen in Key Vault. Wanneer de app-configuratie dergelijke sleutels maakt, worden de Uri's van Key Vault waarden opgeslagen in plaats van de waarden zelf.
 
-Uw toepassing gebruikt de clientprovider App-configuratie om Key Vault-verwijzingen op te halen, net als voor andere sleutels die zijn opgeslagen in app-configuratie. In dit geval zijn de waarden die zijn opgeslagen in app-configuratie URI's die verwijzen naar de waarden in de sleutelkluis. Het zijn geen Key Vault-waarden of referenties. Omdat de clientprovider de sleutels herkent als Key Vault-referenties, gebruikt deze Key Vault om hun waarden op te halen.
+In uw toepassing wordt gebruikgemaakt van de client provider voor app-configuratie om Key Vault verwijzingen op te halen, net zoals bij andere sleutels die zijn opgeslagen in de app-configuratie. In dit geval zijn de waarden die zijn opgeslagen in de app-configuratie Uri's die verwijzen naar de waarden in de Key Vault. Ze zijn niet Key Vault waarden of referenties. Omdat de client provider de sleutels als Key Vault verwijzingen herkent, wordt Key Vault gebruikt om de waarden op te halen.
 
-Uw toepassing is verantwoordelijk voor het correct verifiëren van zowel app-configuratie als Key Vault. De twee diensten communiceren niet rechtstreeks.
+Uw toepassing is verantwoordelijk voor het correct verifiëren van de app-configuratie en de Key Vault. De twee services communiceren niet rechtstreeks.
 
-In deze zelfstudie ziet u hoe u Key Vault-verwijzingen in uw code implementeert. Dit is gebaseerd op de web-app die is geïntroduceerd in de quickstarts. Voordat u verdergaat, [voltooit u eerst een ASP.NET Core-app met app-configuratie.](./quickstart-aspnet-core-app.md)
+In deze zelf studie wordt uitgelegd hoe u Key Vault verwijzingen in uw code implementeert. Dit is gebaseerd op de web-app die is geïntroduceerd in de quickstarts. Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configuratie](./quickstart-aspnet-core-app.md) .
 
-U elke codeeditor gebruiken om de stappen in deze zelfstudie uit te voeren. [Visual Studio Code](https://code.visualstudio.com/) is bijvoorbeeld een cross-platform codeeditor die beschikbaar is voor de Windows-, macOS- en Linux-besturingssystemen.
+U kunt elke code-editor gebruiken om de stappen in deze zelf studie uit te voeren. [Visual Studio code](https://code.visualstudio.com/) is bijvoorbeeld een platformoverschrijdende code-editor die beschikbaar is voor de Windows-, macOS-en Linux-besturings systemen.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Maak een app-configuratiesleutel die verwijst naar een waarde die is opgeslagen in Key Vault.
+> * Een app-configuratie sleutel maken die verwijst naar een waarde die is opgeslagen in Key Vault.
 > * Toegang tot de waarde van deze sleutel vanuit een ASP.NET Core-webtoepassing.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Installeer de [.NET Core SDK](https://dotnet.microsoft.com/download)voordat u deze zelfstudie start.
+Voordat u met deze zelf studie begint, installeert u de [.net core SDK](https://dotnet.microsoft.com/download).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-vault"></a>Een kluis maken
 
-1. Selecteer de optie **Een resource maken** in de linkerbovenhoek van de Azure-portal:
+1. Selecteer de optie **een resource maken** in de linkerbovenhoek van de Azure portal:
 
-    ![Uitvoer nadat het maken van sleutelkluizen is voltooid](./media/quickstarts/search-services.png)
-1. Voer in het zoekvak **Sleutelkluis**in .
-1. Selecteer **Sleutelkluizen** aan de linkerkant in de lijst met resultaten.
-1. Selecteer Toevoegen **in Sleutelkluizen** **.**
-1. Geef aan de rechterkant in **De sleutelkluis maken**de volgende informatie op:
-    - Selecteer **Abonnement** om een abonnement te kiezen.
-    - Selecteer **in Resourcegroep**De optie **Nieuw maken** en voer een naam van de resourcegroep in.
-    - In **Key vault name**is een unieke naam vereist. Voer voor deze zelfstudie **Contoso-vault2**in.
-    - Kies in de vervolgkeuzelijst **Regio** een locatie.
-1. Laat de andere **opties voor sleutelkluis maken** met hun standaardwaarden.
+    ![Uitvoer nadat het maken van de sleutel kluis is voltooid](./media/quickstarts/search-services.png)
+1. Voer in het zoekvak **Key Vault**in.
+1. Selecteer in de lijst met resultaten de optie **sleutel kluizen** aan de linkerkant.
+1. Selecteer **toevoegen**in **sleutel kluizen**.
+1. Geef aan de rechter kant in **sleutel kluis maken**de volgende informatie op:
+    - Selecteer **abonnement** om een abonnement te kiezen.
+    - Selecteer in **resource groep**de optie **nieuwe maken** en voer een naam voor de resource groep in.
+    - In de naam van de **sleutel kluis**is een unieke naam vereist. Voer voor deze zelf studie **Contoso-vault2**in.
+    - Kies een locatie in de vervolg keuzelijst **regio** .
+1. Wijzig de andere opties voor **sleutel kluis maken** met de standaard waarden.
 1. Selecteer **Maken**.
 
-Op dit moment is uw Azure-account de enige die toegang heeft tot deze nieuwe kluis.
+Op dit moment is uw Azure-account het enige dat is gemachtigd voor toegang tot deze nieuwe kluis.
 
-![Uitvoer nadat het maken van sleutelkluizen is voltooid](./media/quickstarts/vault-properties.png)
+![Uitvoer nadat het maken van de sleutel kluis is voltooid](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Een geheim toevoegen aan Key Vault
 
-Om een geheim aan de kluis toe te voegen, moet u slechts een paar extra stappen nemen. Voeg in dit geval een bericht toe dat u gebruiken om Key Vault retrieval te testen. Het bericht heet **Message**en u slaat de waarde 'Hallo van Sleutelkluis' erin op.
+Als u een geheim wilt toevoegen aan de kluis, hoeft u slechts een paar extra stappen uit te voeren. In dit geval voegt u een bericht toe dat u kunt gebruiken om Key Vault ophalen te testen. Het bericht wordt **bericht**genoemd en u slaat de waarde ' Hello from key Vault ' op.
 
-1. Selecteer **Geheimen**op de eigenschappenpagina's Van De Sleutelkluis .
-1. Selecteer **Genereren/importeren**.
-1. Voer in het deelvenster **Een geheim maken** de volgende waarden in:
-    - **Uploadopties:** Voer **Handleiding**in .
-    - **Naam:** Voer **bericht**in .
-    - **Waarde:** Voer **Hallo in vanuit Key Vault**.
-1. Laat de andere **Een geheime** eigenschappen maken met hun standaardwaarden.
+1. Selecteer op de pagina eigenschappen van Key Vault de optie **geheimen**.
+1. Selecteer **genereren/importeren**.
+1. Voer in het deel venster **een geheim maken** de volgende waarden in:
+    - **Opties voor uploaden**: Voer **hand matig**in.
+    - **Naam**: Voer een **bericht**in.
+    - **Waarde**: Voer een **Hello van Key Vault in**.
+1. Zorg ervoor dat u de andere **geheime eigenschappen maakt** met de standaard waarden.
 1. Selecteer **Maken**.
 
-## <a name="add-a-key-vault-reference-to-app-configuration"></a>Een Key Vault-verwijzing toevoegen aan app-configuratie
+## <a name="add-a-key-vault-reference-to-app-configuration"></a>Een Key Vault verwijzing toevoegen aan de app-configuratie
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Alle resources**en selecteer vervolgens de instantie app-configuratiearchief die u in de snelstart hebt gemaakt.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **alle resources**en selecteer vervolgens de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
 
-1. Selecteer **Configuratieverkenner**.
+1. Selecteer **Configuration Explorer**.
 
-1. Selecteer **+ Referentie van** > **de toetskluis maken**en geef vervolgens de volgende waarden op:
-    - **Sleutel:** Selecteer **TestApp:Instellingen:KeyVaultMessage**.
-    - **Label:** Laat deze waarde leeg.
-    - **Abonnement,** **Resourcegroep**en **Sleutelkluis:** voer de waarden in die overeenkomen met die in de sleutelkluis die u in de vorige sectie hebt gemaakt.
-    - **Geheim:** selecteer het geheime bericht met de naam **Message** dat u in de vorige sectie hebt gemaakt.
+1. Selecteer **+** > **verwijzing naar sleutel kluis**maken en geef vervolgens de volgende waarden op:
+    - **Sleutel**: Select **TestApp: Settings: KeyVaultMessage**.
+    - **Label**: laat deze waarde leeg.
+    - **Abonnement**, **resource groep**en **sleutel kluis**: Voer de waarden in die overeenkomen met die in de sleutel kluis die u hebt gemaakt in de vorige sectie.
+    - **Geheim**: Selecteer het geheime **bericht** dat u in de vorige sectie hebt gemaakt.
 
 ## <a name="connect-to-key-vault"></a>Verbinding maken met Key Vault
 
-1. In deze zelfstudie gebruikt u een serviceprincipal voor verificatie naar Key Vault. Als u deze serviceprincipal wilt maken, gebruikt u de opdracht Azure CLI [az ad sp create-for-rbac:](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)
+1. In deze zelf studie gebruikt u een service-principal voor verificatie om Key Vault. Als u deze service-principal wilt maken, gebruikt u de opdracht Azure CLI [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
 
     ```azurecli
     az ad sp create-for-rbac -n "http://mySP" --sdk-auth
     ```
 
-    Met deze bewerking wordt een reeks sleutel-/waardeparen geretourneerd:
+    Met deze bewerking wordt een reeks sleutel/waarde-paren geretourneerd:
 
     ```console
     {
@@ -116,15 +116,15 @@ Om een geheim aan de kluis toe te voegen, moet u slechts een paar extra stappen 
     }
     ```
 
-1. Voer de volgende opdracht uit om de serviceprincipal toegang te geven tot uw sleutelkluis:
+1. Voer de volgende opdracht uit om de Service-Principal toegang te geven tot uw sleutel kluis:
 
     ```cmd
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
     ```
 
-1. Omgevingsvariabelen toevoegen om de waarden van *clientId,* *clientSecret*en *tenantId op*te slaan .
+1. U kunt omgevings variabelen toevoegen om de waarden van *clientId*, *clientSecret*en *tenantId*op te slaan.
 
-    #### <a name="windows-command-prompt"></a>[Opdrachtprompt voor Windows](#tab/cmd)
+    #### <a name="windows-command-prompt"></a>[Windows-opdracht prompt](#tab/cmd)
 
     ```cmd
     setx AZURE_CLIENT_ID <clientId-of-your-service-principal>
@@ -151,27 +151,27 @@ Om een geheim aan de kluis toe te voegen, moet u slechts een paar extra stappen 
     ---
 
     > [!NOTE]
-    > Deze Key Vault-referenties worden alleen in uw toepassing gebruikt. Uw toepassing verifieert rechtstreeks naar Key Vault met deze referenties. Ze worden nooit doorgegeven aan de app-configuratieservice.
+    > Deze Key Vault referenties worden alleen in uw toepassing gebruikt. Uw toepassing verifieert rechtstreeks aan Key Vault met deze referenties. Ze worden nooit door gegeven aan de app-configuratie service.
 
-1. Start uw terminal opnieuw op om deze nieuwe omgevingsvariabelen te laden.
+1. Start de Terminal opnieuw op om deze nieuwe omgevings variabelen te laden.
 
-## <a name="update-your-code-to-use-a-key-vault-reference"></a>Uw code bijwerken om een Key Vault-referentie te gebruiken
+## <a name="update-your-code-to-use-a-key-vault-reference"></a>Uw code bijwerken om een Key Vault referentie te gebruiken
 
-1. Voeg een verwijzing toe naar de vereiste NuGet-pakketten door de volgende opdracht uit te voeren:
+1. Voeg een verwijzing naar de vereiste NuGet-pakketten toe door de volgende opdracht uit te voeren:
 
     ```dotnetcli
     dotnet add package Azure.Identity
     ```
 
-1. Open *Program.cs*en voeg verwijzingen toe naar de volgende vereiste pakketten:
+1. Open *Program.cs*en voeg verwijzingen toe aan de volgende vereiste pakketten:
 
     ```csharp
     using Azure.Identity;
     ```
 
-1. Werk `CreateWebHostBuilder` de methode bij om `config.AddAzureAppConfiguration` app-configuratie te gebruiken door de methode aan te roepen. Neem `ConfigureKeyVault` de optie op en geef de juiste referenties door aan uw Key Vault.
+1. Werk de `CreateWebHostBuilder` methode bij voor het gebruik van app- `config.AddAzureAppConfiguration` configuratie door de methode aan te roepen. Neem de `ConfigureKeyVault` optie op en geef de juiste referenties door aan uw Key Vault.
 
-    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -192,7 +192,7 @@ Om een geheim aan de kluis toe te voegen, moet u slechts een paar extra stappen 
             .UseStartup<Startup>();
     ```
 
-    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -214,9 +214,9 @@ Om een geheim aan de kluis toe te voegen, moet u slechts een paar extra stappen 
             .UseStartup<Startup>());
     ```
 
-1. Wanneer u de verbinding met app-configuratie hebt geïnitialiseerd, stelt u de verbinding met Key Vault in door de `ConfigureKeyVault` methode aan te roepen. Na de initialisatie hebt u toegang tot de waarden van Key Vault-verwijzingen op dezelfde manier als de waarden van de normale app-configuratiesleutels.
+1. Wanneer u de verbinding met de app-configuratie hebt geïnitialiseerd, stelt u de verbinding met Key Vault in door `ConfigureKeyVault` de methode aan te roepen. Na de initialisatie kunt u de waarden van Key Vault verwijzingen op dezelfde manier openen als de waarden van reguliere app-configuratie sleutels.
 
-    Als u dit proces in actie wilt zien, opent u *Index.cshtml* in de map **Weergaven** > **start.** Vervang de inhoud ervan door de volgende code:
+    Als u dit proces in actie wilt zien, opent u *index. cshtml* in de**basismap** voor **weer gaven** > . Vervang de inhoud door de volgende code:
 
     ```html
     @using Microsoft.Extensions.Configuration
@@ -236,25 +236,25 @@ Om een geheim aan de kluis toe te voegen, moet u slechts een paar extra stappen 
         and @Configuration["TestApp:Settings:KeyVaultMessage"]</h1>
     ```
 
-    U hebt toegang tot de waarde van de Key Vault-referentie **TestApp:Instellingen:KeyVaultMessage** op dezelfde manier als voor de configuratiewaarde van **TestApp:Instellingen:Bericht**.
+    U hebt toegang tot de waarde van de Key Vault Reference **TestApp: Settings: KeyVaultMessage** op dezelfde manier als voor de configuratie waarde van **TestApp: Settings: Message**.
 
 ## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
 
-1. Als u de app wilt bouwen met de .NET Core CLI, voert u de volgende opdracht uit in de opdrachtshell:
+1. Als u de app wilt bouwen met behulp van de .NET Core SLI, voert u de volgende opdracht uit in de opdracht shell:
 
     ```dotnetcli
     dotnet build
     ```
 
-1. Nadat de build is voltooid, gebruikt u de volgende opdracht om de web-app lokaal uit te voeren:
+1. Wanneer de build is voltooid, gebruikt u de volgende opdracht om de web-app lokaal uit te voeren:
 
     ```dotnetcli
     dotnet run
     ```
 
-1. Open een browservenster en `http://localhost:5000`ga naar , wat de standaard-URL is voor de web-app die lokaal wordt gehost.
+1. Open een browser venster en ga naar `http://localhost:5000`. Dit is de standaard-URL voor de web-app die lokaal wordt gehost.
 
-    ![Quickstart lokale app starten](./media/key-vault-reference-launch-local.png)
+    ![Starten van lokale app voor Quick Start](./media/key-vault-reference-launch-local.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -262,7 +262,7 @@ Om een geheim aan de kluis toe te voegen, moet u slechts een paar extra stappen 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een app-configuratiesleutel gemaakt die verwijst naar een waarde die is opgeslagen in Key Vault. Ga door naar de volgende zelfstudie voor meer informatie over het toevoegen van een door Azure beheerde servicedie de toegang tot app-configuratie en sleutelkluis stroomlijnt.
+In deze zelf studie hebt u een app-configuratie sleutel gemaakt die verwijst naar een waarde die is opgeslagen in Key Vault. Ga door naar de volgende zelf studie voor meer informatie over het toevoegen van een door Azure beheerde service-identiteit die de toegang tot de app-configuratie en Key Vault stroomlijnt.
 
 > [!div class="nextstepaction"]
-> [Beheerde identiteitsintegratie](./howto-integrate-azure-managed-service-identity.md)
+> [Beheerde identiteits integratie](./howto-integrate-azure-managed-service-identity.md)

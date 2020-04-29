@@ -1,7 +1,7 @@
 ---
-title: Kies een spraakherkenningsmodus met de Spraak-SDK
+title: Een modus voor spraak herkenning kiezen met de spraak-SDK
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het kiezen van de beste herkenningsmodus bij het gebruik van de SpraakSDK.
+description: Meer informatie over het kiezen van de beste herkennings modus wanneer u de Speech SDK gebruikt.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,25 +12,25 @@ ms.date: 03/10/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 5fdca371e9188ef69068ddbcaa416cbb2b44054c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402155"
 ---
-# <a name="choose-a-speech-recognition-mode"></a>Kies een spraakherkenningsmodus
+# <a name="choose-a-speech-recognition-mode"></a>Een modus voor spraak herkenning kiezen
 
-Wanneer u de spraakherkenningsbewerkingen van spraak naar tekst overweegt, biedt de [Speech SDK](speech-sdk.md) meerdere modi voor het verwerken van spraak. Conceptueel, ook wel de *herkenningsmodus*genoemd. In dit artikel worden de verschillende herkenningsmodi vergeleken.
+Wanneer u spraak-naar-tekst herkennings bewerkingen overweegt, biedt de [Speech SDK](speech-sdk.md) meerdere modi voor het verwerken van spraak. Conceptueel gezien, ook wel de *herkennings modus*genoemd. In dit artikel worden de verschillende herkennings modi vergeleken.
 
-## <a name="recognize-once"></a>Eén keer herkennen
+## <a name="recognize-once"></a>Eenmaal herkennen
 
-Als u elke uiting één "zin" tegelijk wilt verwerken, gebruikt u de functie Eén keer herkennen. Deze methode detecteert een herkende uiting van de invoer die begint aan het begin van gedetecteerde spraak tot de volgende pauze. Meestal markeert een pauze het einde van een zin of gedachtegang.
+Als u elke utterance één zin per keer wilt verwerken, gebruikt u de functie ' eenmaal herkennen '. Met deze methode wordt een herkend utterance gedetecteerd van de invoer vanaf het begin van de gedetecteerde spraak tot de volgende onderbreking. Normaal gesp roken markeert een pauze het einde van een zin of regel.
 
-Aan het einde van een herkende utterance stopt de service met het verwerken van audio van dat verzoek. De maximale limiet voor erkenning is een zinsduur van 20 seconden.
+Aan het einde van een herkende utterance stopt de service de verwerking van de audio van deze aanvraag. De maximum limiet voor herkenning is een lengte van een zin van 20 seconden.
 
 ::: zone pivot="programming-language-csharp"
 
-Zie de `RecognizeOnceAsync` [.NET Speech SDK-documenten](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync)voor meer informatie over het gebruik van de functie.
+Zie de [documentatie voor .net Speech SDK](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync)voor meer informatie over het gebruik van de `RecognizeOnceAsync` functie.
 
 ```csharp
 var result = await recognizer.RecognizeOnceAsync();
@@ -39,7 +39,7 @@ var result = await recognizer.RecognizeOnceAsync();
 ::: zone-end
 ::: zone pivot="programming-language-cpp"
 
-Zie de `RecognizeOnceAsync` [C++ Speech SDK-documenten](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognizeonceasync)voor meer informatie over het gebruik van de functie.
+Zie de [documentatie van C++ Speech SDK](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognizeonceasync)voor meer informatie over het gebruik van de `RecognizeOnceAsync` functie.
 
 ```cpp
 auto result = recognize->RecognizeOnceAsync().get();
@@ -48,7 +48,7 @@ auto result = recognize->RecognizeOnceAsync().get();
 ::: zone-end
 ::: zone pivot="programming-language-java"
 
-Zie de Java `recognizeOnceAsync` [Speech SDK-documenten](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechRecognizer.recognizeOnceAsync?view=azure-java-stable)voor meer informatie over het gebruik van de functie.
+Zie de [documentatie voor Java Speech SDK](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechRecognizer.recognizeOnceAsync?view=azure-java-stable)voor meer informatie over het gebruik van de `recognizeOnceAsync` functie.
 
 ```java
 SpeechRecognitionResult result = recognizer.recognizeOnceAsync().get();
@@ -57,7 +57,7 @@ SpeechRecognitionResult result = recognizer.recognizeOnceAsync().get();
 ::: zone-end
 ::: zone pivot="programming-language-python"
 
-Zie de Python `recognize_once` [Speech SDK-documenten](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python#recognize-once------azure-cognitiveservices-speech-speechrecognitionresult)voor meer informatie over het gebruik van de functie.
+Zie de [documentatie van python Speech SDK](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python#recognize-once------azure-cognitiveservices-speech-speechrecognitionresult)voor meer informatie over het gebruik van de `recognize_once` functie.
 
 ```python
 result = speech_recognizer.recognize_once()
@@ -66,13 +66,13 @@ result = speech_recognizer.recognize_once()
 ::: zone-end
 ::: zone pivot="programming-language-more"
 
-Zie de [verwijzingsdocumenten voor spraakSDK voor](speech-to-text.md#speech-sdk-reference-docs)extra talen .
+Zie de [naslag documentatie voor Speech SDK](speech-to-text.md#speech-sdk-reference-docs)voor aanvullende talen.
 
 ::: zone-end
 
 ## <a name="continuous"></a>Continu
 
-Als u langdurige herkenning nodig hebt, gebruikt u de start- en bijbehorende stopfuncties voor continue herkenning. De startfunctie start en blijft alle uitingen verwerken totdat u de stopfunctie aanroept, of totdat er te veel tijd in stilte is verstreken. Wanneer u de continue modus gebruikt, moet u zich registreren voor de verschillende gebeurtenissen die zullen vuren bij het optreden. De gebeurtenis 'herkend' wordt bijvoorbeeld geactiveerd wanneer spraakherkenning plaatsvindt. U moet een gebeurtenishandler hebben om met herkenning om te gaan.
+Als u langlopende herkenning nodig hebt, gebruikt u de start-en bijbehorende stop functies voor doorlopende herkenning. De functie start wordt gestart en doorloopt de verwerking van alle uitingen totdat u de functie stop aanroept, of totdat er te veel tijd in stilte is verstreken. Wanneer u de doorlopende modus gebruikt, moet u zich registreren bij de verschillende gebeurtenissen die tijdens het optreden worden gestart. Zo wordt de gebeurtenis ' herkend ' geactiveerd wanneer spraak herkenning wordt uitgevoerd. U moet een gebeurtenis-handler hebben om de herkenning te kunnen afhandelen.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -154,17 +154,17 @@ speech_recognizer.stop_continuous_recognition()
 ::: zone-end
 ::: zone pivot="programming-language-more"
 
-Zie de [verwijzingsdocumenten voor spraakSDK voor](speech-to-text.md#speech-sdk-reference-docs)extra talen .
+Zie de [naslag documentatie voor Speech SDK](speech-to-text.md#speech-sdk-reference-docs)voor aanvullende talen.
 
 ::: zone-end
 
 ## <a name="dictation"></a>Dicteren
 
-Bij het gebruik van continue herkenning u dicteerverwerking inschakelen met behulp van de bijbehorende functie 'dicteren inschakelen'. Deze modus zorgt ervoor dat de instantie spraakconfig woordbeschrijvingen van zinsstructuren zoals interpunctie interpreteert. Bijvoorbeeld, de uiting "Woont u in de stad vraagteken" zou worden geïnterpreteerd als de tekst "Woont u in de stad?".
+Bij het gebruik van doorlopende herkenning kunt u de verwerking van spraak herkenning inschakelen met behulp van de bijbehorende functie ' dicteren inschakelen '. Deze modus zorgt ervoor dat het spraak configuratie-exemplaar Word-beschrijvingen interpreteert, zoals Lees tekens. Bijvoorbeeld: het utterance ' hebt u Live in het stads vraag teken ' zou worden geïnterpreteerd als de tekst ' wilt u in de stad wonen? '.
 
 ::: zone pivot="programming-language-csharp"
 
-Zie de `EnableDictation` [.NET Speech SDK-documenten](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EnableDictation)voor meer informatie over het gebruik van de functie.
+Zie de [documentatie voor .net Speech SDK](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EnableDictation)voor meer informatie over het gebruik van de `EnableDictation` functie.
 
 ```csharp
 // Enable diction
@@ -174,7 +174,7 @@ SpeechConfig.EnableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-cpp"
 
-Zie de `EnableDictation` [C++ Speech SDK-documenten](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation)voor meer informatie over het gebruik van de functie.
+Zie de [documentatie van C++ Speech SDK](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation)voor meer informatie over het gebruik van de `EnableDictation` functie.
 
 ```cpp
 // Enable diction
@@ -184,7 +184,7 @@ SpeechConfig->EnableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-java"
 
-Zie de Java `enableDictation` [Speech SDK-documenten](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechConfig.enableDictation?view=azure-java-stable)voor meer informatie over het gebruik van de functie.
+Zie de [documentatie voor Java Speech SDK](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechConfig.enableDictation?view=azure-java-stable)voor meer informatie over het gebruik van de `enableDictation` functie.
 
 ```java
 // Enable diction
@@ -194,7 +194,7 @@ SpeechConfig.enableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-python"
 
-Zie de Python `enable_dictation` [Speech SDK-documenten](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--)voor meer informatie over het gebruik van de functie.
+Zie de [documentatie van python Speech SDK](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--)voor meer informatie over het gebruik van de `enable_dictation` functie.
 
 ```python
 # Enable diction
@@ -204,11 +204,11 @@ SpeechConfig.enable_dictation()
 ::: zone-end
 ::: zone pivot="programming-language-more"
 
-Zie de [verwijzingsdocumenten voor spraakSDK voor](speech-to-text.md#speech-sdk-reference-docs)extra talen .
+Zie de [naslag documentatie voor Speech SDK](speech-to-text.md#speech-sdk-reference-docs)voor aanvullende talen.
 
 ::: zone-end
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Ontdek aanvullende Speech SDK-voorbeelden op GitHub](https://aka.ms/csspeech/samples)
+> [Aanvullende voor beelden van Speech SDK op GitHub verkennen](https://aka.ms/csspeech/samples)

@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: Gedrukte tekst extraheren - REST, Python'
+title: 'Snelstartgids: gedrukte tekst extra heren-REST, python'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart extraheert u tekst uit een afbeelding met behulp van de Computer Vision-API met Python.
 services: cognitive-services
@@ -12,29 +12,29 @@ ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 7daa630c47fc677f6659fa51cca6583a0b583865
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81404387"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>Snelstart: gedrukte tekst (OCR) extraheren met de Computer Vision REST API en Python
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>Snelstartgids: Afdruk bare tekst (OCR) extra heren met behulp van de Computer Vision REST API en python
 
 > [!NOTE]
-> Als u Tekst in de Engelse taal extraheert, u overwegen de nieuwe [bewerking Lezen te](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)gebruiken. Er is [een Python quickstart](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/python-hand-text) beschikbaar. 
+> Als u Engelse taal tekst wilt extra heren, kunt u overwegen de nieuwe [Lees bewerking](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)te gebruiken. Een [python-Snelstartgids](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/python-hand-text) is beschikbaar. 
 
-In deze quickstart haalt u afgedrukte tekst met optische tekenherkenning (OCR) uit een afbeelding met behulp van de Computer Vision REST API. Met de [OCR-methode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) u afgedrukte tekst in een afbeelding detecteren en herkende tekens extraheren in een machinebruikbare tekenstroom.
+In deze Quick Start kunt u gedrukte tekst met behulp van de Computer Vision REST API extra heren met optische teken herkenning (OCR) van een afbeelding. Met de [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) -methode kunt u gedrukte tekst in een afbeelding detecteren en herkende tekens uitpakken in een door een machine bruikbare teken stroom.
 
 U kunt deze snelstart stapsgewijs uitvoeren met behulp van een Jupyter Notebook op [MyBinder](https://mybinder.org). Selecteer de volgende knop om Binder te starten:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/try/cognitive-services/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/try/cognitive-services/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - [Python](https://www.python.org/downloads/) moet geïnstalleerd zijn als u het voorbeeld lokaal wilt uitvoeren.
-- U moet beschikken over een abonnementssleutel voor Computer Vision. U een gratis testsleutel krijgen van [Try Cognitive Services.](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Computer Vision en uw sleutel te krijgen. Maak vervolgens [omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de tekenreeks sleutel- `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`serviceeindpunt, benoemd en , respectievelijk.
+- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service- `COMPUTER_VISION_SUBSCRIPTION_KEY` eindpunt `COMPUTER_VISION_ENDPOINT`teken reeks, respectievelijk met de naam en.
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
@@ -106,9 +106,9 @@ plt.show()
 plt.axis("off")
 ```
 
-## <a name="upload-image-from-local-storage"></a>Afbeelding uploaden vanuit lokale opslag
+## <a name="upload-image-from-local-storage"></a>Afbeelding uploaden van lokale opslag
 
-Als u een lokale afbeelding wilt analyseren, stelt u de header Content-Type in op toepassing/octetstream en stelt u de aanvraaginstantie in op een bytearray in plaats van JSON-gegevens.
+Als u een lokale installatie kopie wilt analyseren, stelt u de content-type-header in op application/octet-stream en stelt u de hoofd tekst van de aanvraag in op een byte matrix in plaats van JSON-gegevens.
 
 ```python
 image_path = "<path-to-local-image-file>"
@@ -226,7 +226,7 @@ Een geslaagd antwoord wordt geretourneerd in JSON-indeling. De voorbeeldwebpagin
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Verken vervolgens een Python-toepassing die Computer Vision gebruikt om optische tekenherkenning (OCR) uit te voeren; slim bijgesneden miniaturen maken; en visuele functies in afbeeldingen detecteren, categoriseren, taggen en beschrijven.
+Verken vervolgens een python-toepassing die Computer Vision gebruikt voor het uitvoeren van optische teken herkenning (OCR). miniaturen met slimme bijgesneden maken; en het detecteren, categoriseren, labelen en beschrijven van visuele functies in afbeeldingen.
 
 > [!div class="nextstepaction"]
 > [Zelfstudie voor de Computer Vision-API met Python](../Tutorials/PythonTutorial.md)

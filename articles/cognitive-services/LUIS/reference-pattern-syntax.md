@@ -1,142 +1,142 @@
 ---
-title: Verwijzing naar de syntaxis van patroon - LUIS
-description: Maak entiteiten om belangrijke gegevens uit gebruikersuitingen te extraheren in LUIS-apps (Language Understanding). Geëxtraheerde gegevens worden gebruikt door de clienttoepassing.
+title: Naslag informatie over patroon syntaxis-LUIS
+description: Maak entiteiten voor het extra heren van belang rijke gegevens van gebruikers uitingen in apps van Language Understanding (LUIS). Geëxtraheerde gegevens worden gebruikt door de client toepassing.
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
 ms.openlocfilehash: cc24667f43dfedc032f52c40fc5f8fe5c80bad70
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81382150"
 ---
 # <a name="pattern-syntax"></a>Patroonsyntaxis
 
-Patroonsyntaxis is een sjabloon voor een utterance. De sjabloon moet woorden en entiteiten bevatten die u wilt overeenkomen, evenals woorden en [interpunctie](luis-reference-application-settings.md#punctuation-normalization) die u wilt negeren. Het is **geen** gewone uitdrukking.
+De syntaxis van het patroon is een sjabloon voor een utterance. De sjabloon moet woorden en entiteiten bevatten die u wilt laten overeenkomen, evenals woorden en [interpunctie](luis-reference-application-settings.md#punctuation-normalization) die u wilt negeren. Het is **geen** reguliere expressie.
 
 > [!CAUTION]
-> Patronen omvatten alleen machine-geleerde entiteit ouders, niet subcomponenten.
+> Patronen bestaan alleen uit door machines geleerde entiteits-Parents, geen subonderdelen.
 
-Entiteiten in patronen worden omgeven `{}`door krullende haakjes, . Patronen kunnen entiteiten en entiteiten met rollen omvatten. [Patroon.any](luis-concept-entity-types.md#patternany-entity) is een entiteit die alleen in patronen wordt gebruikt.
+Entiteiten in patronen worden omgeven door accolades, `{}`. Patronen kunnen entiteiten en entiteiten met rollen bevatten. [Patroon. any](luis-concept-entity-types.md#patternany-entity) is een entiteit die alleen in patronen wordt gebruikt.
 
-De syntaxis van de patroon ondersteunt de volgende syntaxis:
+De syntaxis van het patroon ondersteunt de volgende syntaxis:
 
-|Functie|Syntaxis|Nestniveau|Voorbeeld|
+|Functie|Syntaxis|Niveau nesten|Voorbeeld|
 |--|--|--|--|
-|Entiteit| {}- krullende haakjes|2|Waar is formulier {entity-name}?|
-|optioneel|[] - vierkante haakjes<BR><BR>Er is een limiet van 3 op nestniveaus van een combinatie van optionele en |2|Het vraagteken is optioneel [?]|
-|Groeperen|() - haakjes|2|is (a \| b)|
-|of| \|- verticale balk (pijp)<br><br>Er is een limiet van 2 op de verticale balken (Of) in één groep |-|Waar is vorm ({form-name-short} &#x7c; {form-name-long} &#x7c; {form-number})|
-|begin en/of einde van de uiting|^ - caret|-|^begin de uiting<br>de utterance is gedaan^<br>^strikte letterlijke overeenkomst van volledige uiting met {aantal} entiteit^|
+|vennootschap| {}-accolades|2|Waar is formulier {entity-name}?|
+|optioneel|[]-vier Kante haken<BR><BR>Er is een limiet van 3 op geneste niveaus van een combi natie van optioneel en groepering |2|Het vraag teken is optioneel [?]|
+|shapes|()-haakjes|2|is (a \| b)|
+|of| \|-verticale streep (pipe)<br><br>Er is een limiet van 2 op de verticale balken (of) in één groep |-|Waar is formulier ({Form-name-Short} &#x7c; {Form-name-Long} &#x7c; {Form-Number})|
+|begin en/of einde van utterance|^-caret|-|^ utterance starten<br>de utterance is voltooid.<br>^ strikte letterlijke overeenkomst van de volledige utterance met {Number} entiteit ^|
 
-## <a name="nesting-syntax-in-patterns"></a>Syntaxis in patronen nesten
+## <a name="nesting-syntax-in-patterns"></a>Syntaxis nesten in patronen
 
-De **optionele** syntaxis, met vierkante haakjes, kan twee niveaus worden genest. Bijvoorbeeld: `[[this]is] a new form`. In dit voorbeeld worden de volgende uitingen mogelijk:
+De **optionele** syntaxis met vier Kante haken kan twee niveaus genest zijn. Bijvoorbeeld: `[[this]is] a new form`. In dit voor beeld worden de volgende uitingen toegestaan:
 
-|Genest optioneel utterance-voorbeeld|Uitleg|
+|Genest optioneel utterance-voor beeld|Uitleg|
 |--|--|
-|dit is een nieuwe vorm|komt overeen met alle woorden in patroon|
-|is een nieuwe vorm|komt overeen met de buitenste optionele woorden en niet-optionele woorden in patroon|
-|een nieuw formulier|komt alleen overeen met de vereiste woorden|
+|Dit is een nieuw formulier|komt overeen met alle woorden in het patroon|
+|is een nieuw formulier|komt overeen met buitenste optionele woord en niet-optionele woorden in een patroon|
+|een nieuw formulier|komt overeen met alleen de vereiste woorden|
 
-De **syntaxis van de groepering,** met haakjes, kan twee niveaus worden genest. Bijvoorbeeld: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Met deze functie kan een van de drie entiteiten worden gekoppeld.
+De **groeperings** syntaxis met haakjes kan twee niveaus genest zijn. Bijvoorbeeld: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Met deze functie kunnen de drie entiteiten overeenkomen.
 
-Als Entiteit1 een locatie is met rollen zoals oorsprong (Seattle) en bestemming (Caïro) en entiteit 2 is een bekende bouwnaam van een lijstentiteit (RedWest-C), worden in de volgende uitingen dit patroon toegewezen:
+Als Entity1 een locatie is met functies zoals origin (Seattle) en doel (Cairo) en entiteit 2 is een bekend gebouw naam van een lijst entiteit (RedWest-C), zou de volgende uitingen worden toegewezen aan dit patroon:
 
-|Voorbeeld van geneste groeperingsuiting|Uitleg|
+|Voor beeld van geneste groeperings utterance|Uitleg|
 |--|--|
-|RedWest-C|komt overeen met de entiteit van de buitenste groepering|
-|Seattle|komt overeen met een van de entiteiten van de binnenste groep|
-|Cairo|komt overeen met een van de entiteiten van de binnenste groep|
+|RedWest-C|komt overeen met buitenste groeperings entiteit|
+|Seattle|komt overeen met een van de binnenste groeperings entiteiten|
+|Cairo|komt overeen met een van de binnenste groeperings entiteiten|
 
-## <a name="nesting-limits-for-groups-with-optional-syntax"></a>Nestlimieten voor groepen met optionele syntaxis
+## <a name="nesting-limits-for-groups-with-optional-syntax"></a>Limieten voor groepen met optionele syntaxis nesten
 
-Een combinatie van **groepering** met **optionele** syntaxis heeft een limiet van 3 nestniveaus.
+Een combi natie van **groepering** met **optionele** syntaxis heeft een limiet van 3 geneste niveaus.
 
 |Toegestaan|Voorbeeld|
 |--|--|
-|Ja|( [ ( test1 &#x7c; test2 ) ] &#x7c; test3 )|
-|Nee|( [ [ [ [ test1 ] &#x7c; test2 ) ] ] &#x7c; test3 )|
+|Ja|([(test1 &#x7c; Test2)] &#x7c; Test3)|
+|Nee|([([test1] &#x7c; Test2)] &#x7c; Test3)|
 
-## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Nestlimieten voor groepen met of-ingsyntaxis
+## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Limieten voor het nesten van groepen met de syntaxis
 
-Een combinatie van **groepering** met **or-ing** syntaxis heeft een limiet van 2 verticale balken.
+Een combi natie van **groepering** met **of-ING-** syntaxis heeft een limiet van 2 verticale balken.
 
 |Toegestaan|Voorbeeld|
 |--|--|
-|Ja|( test1 &#x7c; test2 &#x7c; ( test3 &#x7c; test4 ) )|
-|Nee|( test1 &#x7c; test2 &#x7c; test3 &#x7c; ( test4 &#x7c; test5 ) |
+|Ja|(test1 &#x7c; Test2 &#x7c; (Test3 &#x7c; test4))|
+|Nee|(test1 &#x7c; Test2 &#x7c; Test3 &#x7c; (test4 &#x7c; test5)) |
 
-## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Syntaxis om een entiteit toe te voegen aan een patroonsjabloon
-Als u een entiteit aan de patroonsjabloon wilt toevoegen, `Who does {Employee} manage?`omringt u de entiteitsnaam met krullende accolades, zoals .
+## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Syntaxis om een entiteit toe te voegen aan een patroon sjabloon
+Als u een entiteit wilt toevoegen aan de patroon sjabloon, plaatst u de naam van de entiteit tussen accolades, zoals `Who does {Employee} manage?`.
 
 |Patroon met entiteit|
 |--|
 |`Who does {Employee} manage?`|
 
-## <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>Syntaxis om een entiteit en rol toe te voegen aan een patroonsjabloon
-Een entiteitsrol wordt `{entity:role}` aangeduid als met de entiteitsnaam gevolgd door een dubbele punt en vervolgens de rolnaam. Als u een entiteit met een rol wilt toevoegen aan de patroonsjabloon, `Book a ticket from {Location:Origin} to {Location:Destination}`omringt u de naam en rolnaam van de entiteit met krullende accolades, zoals .
+## <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>Syntaxis voor het toevoegen van een entiteit en rol aan een patroon sjabloon
+Een entiteits functie wordt aangeduid `{entity:role}` met de naam van de entiteit, gevolgd door een dubbele punt, en vervolgens de naam van de rol. Als u een entiteit met een rol wilt toevoegen aan de patroon sjabloon, plaatst u de naam van de entiteit en de naam van de `Book a ticket from {Location:Origin} to {Location:Destination}`rol door accolades, zoals.
 
-|Patroon met entiteitsrollen|
+|Patroon met entiteits rollen|
 |--|
 |`Book a ticket from {Location:Origin} to {Location:Destination}`|
 
-## <a name="syntax-to-add-a-patternany-to-pattern-template"></a>Syntaxis om een patroon toe te voegen aan patroonsjabloon
-Met de entiteit Pattern.any u een entiteit met een verschillende lengte aan het patroon toevoegen. Zolang de patroonsjabloon wordt gevolgd, kan het patroon.elke lengte zijn.
+## <a name="syntax-to-add-a-patternany-to-pattern-template"></a>Syntaxis voor het toevoegen van een patroon. elke sjabloon voor een patroon
+Het patroon. elke entiteit kunt u een entiteit van een lengte van variërend aan het patroon toevoegen. Zolang de patroon sjabloon wordt gevolgd, is het patroon. elk kan elk wille keurig lengte zijn.
 
-Als u een **entiteit pattern.any** in de patroonsjabloon wilt toevoegen, omringt `How much does {Booktitle} cost and what format is it available in?`u de entiteit Pattern.any met de krullende accolades, zoals .
+Als u een **patroon wilt toevoegen. een wille keurige** entiteit in de patroon sjabloon, rondom het patroon. elke entiteit met de `How much does {Booktitle} cost and what format is it available in?`accolades, zoals.
 
-|Patroon met Patroon.elke entiteit|
+|Patroon met patroon. elke entiteit|
 |--|
 |`How much does {Booktitle} cost and what format is it available in?`|
 
-|Boektitels in het patroon|
+|Boek titels in het patroon|
 |--|
-|Hoeveel kost **stelen dit boek** kosten en welk formaat is het beschikbaar in?|
-|Hoeveel vraagt de **kosten** en in welk formaat is het beschikbaar?|
-|Hoeveel kost **The Curious Incident of the Dog in the Night-Time** en in welk formaat is het beschikbaar?|
+|Wat zijn de kosten van **Dit boek** , maar wat is er beschikbaar in?|
+|Wat zijn de kosten voor de **vraag** en welke indeling is er beschikbaar in?|
+|Wat gebeurt er met **het nieuws gierige incidenten van de hond in de nacht** kosten en in welke indeling deze beschikbaar is?|
 
-De woorden van de titel van het boek zijn niet verwarrend voor LUIS, omdat LUIS weet waar de titel van het boek eindigt, op basis van het patroon.elke entiteit.
+De woorden van de boek titel zijn niet verwarrend voor LUIS, omdat LUIS weet waar de titel van het boek eindigt, op basis van het patroon. elke entiteit.
 
 ## <a name="explicit-lists"></a>Expliciete lijsten
 
-maak een [expliciete lijst](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) via de ontwerp-API om de uitzondering toe te staan wanneer:
+Maak een [expliciete lijst](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) via de ontwerp-API om de uitzonde ring toe te staan wanneer:
 
-* Je patroon bevat een [patroon.](luis-concept-entity-types.md#patternany-entity)
-* En dat patroon syntaxis maakt de mogelijkheid van een onjuiste entiteit extractie op basis van de uiting.
+* Uw patroon bevat een [patroon.](luis-concept-entity-types.md#patternany-entity)
+* En met deze patroon syntaxis kan een onjuiste entiteits extractie worden uitgevoerd op basis van de utterance.
 
-Stel dat u een patroon hebt dat `[]`zowel optionele syntaxis, als syntaxis van de entiteit bevat, `{}`gecombineerd op een manier om gegevens onjuist te extraheren.
+Stel dat u een patroon hebt met zowel optionele syntaxis, `[]`als de syntaxis van de entiteit, `{}`, gecombineerd op een manier om gegevens onjuist op te halen.
 
-Denk aan het patroon '[zoek] e-mail over {subject} [van {person}]'.
+Overweeg het patroon [Find] e-mail over {subject} [van {person}].
 
-In de volgende uitingen worden het **onderwerp** en de **persoonsentiteit** correct en onjuist geëxtraheerd:
+In de volgende uitingen worden het **onderwerp** en de **persoons** entiteit op de juiste wijze en onjuist opgehaald:
 
 |Utterance|Entiteit|Juiste extractie|
 |--|--|:--:|
-|e-mail over honden van Chris|subject=honden<br>persoon=Chris|✔|
-|e-mail over de man uit La Mancha|subject=de man<br>persoon=La Mancha|X|
+|e-mail over honden van Chris|onderwerp = honden<br>persoon = Chris|✔|
+|e-mail over de man van La Mancha|onderwerp = de man<br>persoon = La Mancha|X|
 
-In de vorige tabel moet `the man from La Mancha` het onderwerp (een boektitel) zijn, `from`maar omdat het onderwerp het optionele woord bevat, wordt de titel onjuist voorspeld.
+In de voor gaande tabel moet het onderwerp ( `the man from La Mancha` de titel van een boek) zijn, maar omdat het onderwerp het `from`optionele woord bevat, is de titel onjuist voor speld.
 
-Als u deze uitzondering op `the man from la mancha` het patroon wilt oplossen, voegt u als expliciete lijstovereenkomst toe voor de entiteit {subject} met behulp van de [ontwerp-API voor expliciete lijst](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8).
+Als u deze uitzonde ring wilt herstellen naar `the man from la mancha` het patroon, voegt u als een expliciete lijst overeenkomst toe voor de entiteit {subject} met behulp [van de API voor het maken van expliciete lijsten](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8).
 
-## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Syntaxis om optionele tekst in een sjabloonutterance te markeren
-De optionele tekst in de utterance markeren `[]`met de syntaxis van de reguliere expressie vierkant beugel. De optionele tekst kan alleen vierkante haakjes tot twee haakjes plaatsen.
+## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Syntaxis voor het markeren van optionele tekst in een sjabloon utterance
+Markeer optionele tekst in de utterance met de reguliere expressie vier Kante haakjes syntaxis `[]`. Met de optionele tekst kunnen vier Kante haken Maxi maal twee haken worden genest.
 
 |Patroon met optionele tekst|Betekenis|
 |--|--|
 |`[find] email about {subject} [from {person}]`|`find`en `from {person}` zijn optioneel|
-|'Kunt u mij helpen[?]|Het leesteken is optioneel|
+|' Kan ik me helpen [?]|Het lees teken is optioneel|
 
-Leestekens (`?`, `!` `.`, ) moeten worden genegeerd en u moet ze negeren met behulp van de syntaxis van de vierkante haakjes in patronen.
+Lees tekens (`?`, `!`, `.`) moeten worden genegeerd en u moet ze negeren met de syntaxis van het vier Kante haakje in patronen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over patronen:
 
 * [Patronen toevoegen](luis-how-to-model-intent-pattern.md)
-* [Hoe patroon.een entiteit toe te voegen](luis-how-to-add-entities.md#add-a-patternany-entity)
-* [Patronen Concepten](luis-concept-patterns.md)
+* [Een patroon toevoegen. elke entiteit](luis-how-to-add-entities.md#add-a-patternany-entity)
+* [Patronen concepten](luis-concept-patterns.md)
 
-Begrijp hoe [sentiment](luis-reference-prebuilt-sentiment.md) wordt geretourneerd in de .json-reactie.
+Begrijp hoe [sentiment](luis-reference-prebuilt-sentiment.md) wordt geretourneerd in het. json-antwoord.

@@ -1,6 +1,6 @@
 ---
-title: Lokale configuratie van beveiligingsagent (C#)
-description: Meer informatie over de Azure Security Center for IoT-beveiligingsservice, het lokale configuratiebestand van beveiligingsagenten voor C#.
+title: Lokale configuratie van beveiligings agent (C#)
+description: Meer informatie over de Azure Security Center voor de IoT-beveiligings service, het lokale configuratie bestand van de beveiligings agent voor C#.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,53 +16,53 @@ ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
 ms.openlocfilehash: adf0d72763e0cb1892d64c68a6dce05abbf6f582
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311663"
 ---
-# <a name="understanding-the-local-configuration-file-c-agent"></a>Inzicht in het lokale configuratiebestand (C#-agent)
+# <a name="understanding-the-local-configuration-file-c-agent"></a>Informatie over het lokale configuratie bestand (C#-agent)
 
-De Azure Security Center for IoT-beveiligingsagent gebruikt configuraties van een lokaal configuratiebestand.
+In de Azure Security Center voor IoT-beveiligings agent worden configuraties van een lokaal configuratie bestand gebruikt.
 
-De beveiligingsagent leest het configuratiebestand eenmaal wanneer de agent wordt opgestart. Configuraties in het lokale configuratiebestand bevatten zowel verificatieconfiguratie als andere agentgerelateerde configuraties.
+De beveiligings agent leest het configuratie bestand eenmaal wanneer de agent wordt gestart. Configuraties die in het lokale configuratie bestand worden gevonden, bevatten zowel de verificatie configuratie als andere aan de agent gerelateerde configuraties.
 
-De C#-beveiligingsagent gebruikt meerdere configuratiebestanden:
+De C#-beveiligings agent gebruikt meerdere configuratie bestanden:
 
-- **General.config** - Agent gerelateerde configuraties.
-- **Authentication.config** - Verificatiegerelateerde configuratie (inclusief verificatiegegevens).
-- **SecurityIotInterface.config** - IoT gerelateerde configuraties.
+- **Algemeen. config** -gerelateerde configuraties van agent.
+- **Verificatie. config** -gerelateerde configuratie van authenticatie (inclusief verificatie gegevens).
+- Configuratie van **SecurityIotInterface. config** -gerelateerde IOT.
 
-De configuratiebestanden bevatten de standaardconfiguratie. Verificatieconfiguratie wordt ingevuld tijdens de installatie van de agent en wijzigingen in het configuratiebestand worden aangebracht wanneer de agent opnieuw wordt opgestart.
+De configuratie bestanden bevatten de standaard configuratie. Verificatie configuratie wordt ingevuld tijdens de installatie van de agent en wijzigingen in het configuratie bestand worden gemaakt wanneer de agent opnieuw wordt gestart.
 
-## <a name="configuration-file-location"></a>Locatie van configuratiebestand
+## <a name="configuration-file-location"></a>Locatie van configuratie bestand
 
 Voor Linux:
 
-- Configuratiebestanden van het `/var/ASCIoTAgent`besturingssysteem bevinden zich in .
+- Configuratie bestanden voor het besturings systeem bevinden zich in `/var/ASCIoTAgent`.
 
 Voor Windows:
 
-- Configuratiebestanden van het besturingssysteem bevinden zich in de map van de beveiligingsagent.
+- Configuratie bestanden voor het besturings systeem bevinden zich in de map van de beveiligings agent.
 
-### <a name="generalconfig-configurations"></a>Algemene configuraties van config
+### <a name="generalconfig-configurations"></a>Algemene configuratie configuraties
 
-| Configuratienaam | Mogelijke waarden | Details |
+| Configuratie naam | Mogelijke waarden | Details |
 |:-----------|:---------------|:--------|
-| agentId | GUID | Unieke agent-id |
-| readRemoteConfigurationTimeout lezen | TimeSpan | Tijdsperiode voor het ophalen van externe configuratie van IoT Hub. Als de agent de configuratie niet binnen de opgegeven tijd kan ophalen, wordt er een time-out van de bewerking.|
-| schedulerInterval | TimeSpan | Interval van interne planner. |
-| producentInterval | TimeSpan | Interval van de producent van gebeurtenissen. |
-| consumentInterval | TimeSpan | Interval van de consument van de gebeurtenis. |
-| highPriorityQueueSizePercentage | 0 < nummer < 1 | Het gedeelte van de totale cache dat is toegewezen aan berichten met een hoge prioriteit. |
-| Loglevel | "Uit", "Fatal", "Error", "Warning", "Information", "Debug"  | Log berichten gelijk en boven deze ernst worden geregistreerd op debug console (Syslog in Linux). |
-| fileLogLevel |  "Uit", "Fatal", "Error", "Warning", "Information", "Debug"| Log berichten gelijk en boven deze ernst worden geregistreerd om bestand (Syslog in Linux). |
-| diagnosticVerbosityLevel | "Geen", "Sommige", "Alle", | Verbosity niveau van diagnostische gebeurtenissen. Geen - diagnostische gebeurtenissen worden niet verzonden, Sommige - Alleen diagnostische gebeurtenissen met een hoog belang worden verzonden, Alle - alle logboeken worden ook verzonden als diagnostische gebeurtenissen. |
+| agentId | GUID | Unieke id van agent |
+| readRemoteConfigurationTimeout | TimeSpan | De tijds periode voor het ophalen van de externe configuratie van IoT Hub. Als de agent de configuratie niet binnen de opgegeven tijd kan ophalen, wordt er een time-out van de bewerking uitgevoerd.|
+| schedulerInterval | TimeSpan | Intern scheduler-interval. |
+| producerInterval | TimeSpan | Werk interval van de gebeurtenis producent. |
+| consumerInterval | TimeSpan | Interval van gebeurtenis verbruiker werk nemer. |
+| highPriorityQueueSizePercentage | 0 < getal < 1 | Het gedeelte van het totale cache geheugen dat is toegewezen voor berichten met een hoge prioriteit. |
+| logLevel | "Off", "onherstelbare", "fout", "waarschuwing", "informatie", "fouten opsporen"  | Logboek berichten die gelijk zijn aan deze Ernst, worden vastgelegd in de console fout opsporing (syslog in Linux). |
+| fileLogLevel |  "Off", "onherstelbare", "fout", "waarschuwing", "informatie", "fouten opsporen"| Logboek berichten die gelijk zijn aan deze Ernst, worden geregistreerd in een bestand (syslog in Linux). |
+| diagnosticVerbosityLevel | "Geen", "enkele", "alle", | Uitgebreidheids niveau van diagnostische gebeurtenissen. Geen: er worden geen diagnostische gebeurtenissen verzonden, alleen bepaalde diagnostische gebeurtenissen met hoge urgentie worden verzonden, alle-alle logboeken worden ook als diagnostische gebeurtenissen verzonden. |
 | logFilePath | Pad naar bestand | Als fileLogLevel > uit, worden logboeken naar dit bestand geschreven. |
-| defaultEventPriority defaultEventPriority defaultEventPriority defaultEvent | "Hoog", "Laag", "Uit" | Standaardgebeurtenisprioriteit. |
+| defaultEventPriority | ' Hoog ', ' laag ', ' uit ' | Standaard prioriteit van gebeurtenis. |
 
-### <a name="generalconfig-example"></a>Voorbeeld van General.config
+### <a name="generalconfig-example"></a>Algemeen. config-voor beeld
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -81,22 +81,22 @@ Voor Windows:
 </General>
 ```
 
-### <a name="authenticationconfig"></a>Authentication.config
+### <a name="authenticationconfig"></a>Verificatie. config
 
-| Configuratienaam | Mogelijke waarden | Details |
+| Configuratie naam | Mogelijke waarden | Details |
 |:-----------|:---------------|:--------|
-| moduleNaam | tekenreeks | Naam van de identiteit van de beveiligingsmodule. Deze naam moet overeenkomen met de naam van de moduleidentiteit in het apparaat. |
-| deviceId | tekenreeks | ID van het apparaat (zoals geregistreerd in Azure IoT Hub). || schedulerInterval | Tijdspantekenreeks | Interval van interne planner. |
-| gatewayHostname | tekenreeks | Hostnaam van de Azure Iot Hub. Meestal <mijn-hub>.azure-devices.net |
-| Filepath | tekenreeks - pad naar bestand | Pad naar het bestand dat het verificatiegeheim bevat.|
-| type | "SymmetricKey", "SelfSignedCertificate" | Het gebruikersgeheim voor verificatie. Kies *SymmetricKey* als het gebruikersgeheim een symmetrische sleutel is, kies *zelfondertekend certificaat* als het geheim een zelfondertekend certificaat is. |
-| identity | "DPS", "Module", "Apparaat" | Verificatie-identiteit - DPS als verificatie wordt uitgevoerd via DPS, Module als verificatie wordt gemaakt met behulp van modulereferenties of als verificatie wordt uitgevoerd met behulp van apparaatreferenties.
-| certificaatLocationKind |  "LocalFile", "Store" | LocalFile als het certificaat is opgeslagen in een bestand, slaat u op als het certificaat zich in een certificaatarchief bevindt. |
+| moduleName | tekenreeks | De naam van de identiteit van de beveiligings module. Deze naam moet overeenkomen met de naam van de module-id in het apparaat. |
+| deviceId | tekenreeks | ID van het apparaat (zoals geregistreerd in azure IoT Hub). || schedulerInterval | Time span-teken reeks | Intern scheduler-interval. |
+| gatewayHostname | tekenreeks | De hostnaam van de Azure IOT hub. Doorgaans <mijn hub>. azure-devices.net |
+| Bestandspad | teken reeks-pad naar bestand | Het pad naar het bestand dat het verificatie geheim bevat.|
+| type | "SymmetricKey", "SelfSignedCertificate" | Het gebruikers geheim voor authenticatie. Kies *SymmetricKey* als het gebruikers geheim een symmetrische sleutel is, kies het *zelfondertekende certificaat* als het geheim een zelf ondertekend certificaat is. |
+| identity | ' DPS ', ' module ', ' apparaat ' | Verificatie-identiteit: DPS als verificatie wordt uitgevoerd via DPS, module als verificatie wordt uitgevoerd met behulp van de module referenties of het apparaat als verificatie wordt uitgevoerd met behulp van de referenties van het apparaat.
+| certificateLocationKind |  "LocalFile", "Store" | LocalFile als het certificaat wordt opgeslagen in een bestand, opslaan als het certificaat zich in een certificaat archief bevindt. |
 | idScope | tekenreeks | ID-bereik van DPS |
-| registratieId | tekenreeks  | DPS-apparaatregistratie-ID. |
+| Registratie | tekenreeks  | Registratie-ID van DPS-apparaat. |
 |
 
-### <a name="authenticationconfig-example"></a>Voorbeeld van Authentication.config
+### <a name="authenticationconfig-example"></a>Verificatie. config-voor beeld
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -113,14 +113,14 @@ Voor Windows:
 </Authentication>
 ```
 
-### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface.config
+### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface. config
 
-| Configuratienaam | Mogelijke waarden | Details |
+| Configuratie naam | Mogelijke waarden | Details |
 |:-----------|:---------------|:--------|
-| transportType | "Ampq" "Mqtt" | IoT Hub-transporttype. |
+| Transport type | "Ampq" "Mqtt" | Transport type IoT Hub. |
 |
 
-### <a name="securityiotinterfaceconfig-example"></a>Voorbeeld van SecurityIotInterface.config
+### <a name="securityiotinterfaceconfig-example"></a>Voor beeld van SecurityIotInterface. config
 
 ```XML
 <ExternalInterface>
@@ -131,10 +131,10 @@ Voor Windows:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees het [overzicht](overview.md) van de Azure Security Center for IoT-service
-- Meer informatie over Azure Security Center voor [IoT-architectuur](architecture.md)
-- De Azure Security Center for IoT-service [inschakelen](quickstart-onboard-iot-hub.md)
-- Lees de veelgestelde vragen over azure security center voor [IoT-service](resources-frequently-asked-questions.md)
-- Meer informatie over hoe u toegang krijgt tot [ruwe beveiligingsgegevens](how-to-security-data-access.md)
-- Aanbevelingen [begrijpen](concept-recommendations.md)
-- [Beveiligingswaarschuwingen begrijpen](concept-security-alerts.md)
+- Lees het [overzicht](overview.md) van de Azure Security Center voor IOT-service
+- Meer informatie over Azure Security Center voor IoT- [architectuur](architecture.md)
+- De Azure Security Center inschakelen voor IoT- [service](quickstart-onboard-iot-hub.md)
+- Lees de [Veelgestelde vragen over](resources-frequently-asked-questions.md) de Azure Security Center voor IOT-service
+- Meer informatie over het openen van [onbewerkte beveiligings gegevens](how-to-security-data-access.md)
+- Meer informatie over [aanbevelingen](concept-recommendations.md)
+- Beveiligings [waarschuwingen](concept-security-alerts.md) begrijpen

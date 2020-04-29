@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: spraak synthetiseren, Python - Spraakservice'
+title: 'Quick Start: een synthese van spraak, python-Speech-Service'
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het synthetiseren van spraak in Python met behulp van de Speech SDK
+description: Meer informatie over het maken van spraak in python met behulp van de Speech SDK
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
 ms.openlocfilehash: e6daa0aaaca283dec11937d961886f95f1972b49
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400366"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u:
+Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Een Azure-spraakbron maken](../../../../get-started.md)
-> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
+> * [Een Azure-spraak resource maken](../../../../get-started.md)
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
 
 ## <a name="support-and-updates"></a>Ondersteuning en updates
 
@@ -51,9 +51,9 @@ Of u kunt deze quickstart-zelfstudie downloaden als een [Jupyter](https://jupyte
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>De Speech-SDK installeren en gebruiken met Visual Studio Code
 
-1. Download en installeer een 64-bits versie van [Python](https://www.python.org/downloads/), 3,5 tot 3,8, op uw computer.
+1. Down load en installeer een 64-bits versie van [python](https://www.python.org/downloads/), 3,5 tot 3,8 op uw computer.
 1. Download en installeer [Visual Studio Code](https://code.visualstudio.com/Download).
-1. Open Visual Studio Code en installeer de Python-extensie. Selecteer**Extensies** **voor bestandsvoorkeuren** > **Preferences** > in het menu. Zoek naar **Python**.
+1. Open Visual Studio Code en installeer de Python-extensie. Selecteer**extensies** voor **Bestands** > **Voorkeuren** > in het menu. Zoek naar **Python**.
 
    ![De Python-extensie installeren](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-extension.png)
 
@@ -69,12 +69,12 @@ Of u kunt deze quickstart-zelfstudie downloaden als een [Jupyter](https://jupyte
 1. Kopieer en plak de [Python-code](#sample-code) en sla deze op in het zojuist gemaakte bestand.
 1. Voeg de gegevens van uw Speech Service-abonnement in.
 1. Als er een Python-interpreter is geselecteerd, wordt deze onder aan het venster weergegeven, links van de statusbalk.
-   Anders wordt er een lijst met beschikbare Python-interpreters geopend. Open het opdrachtpalet (Ctrl+Shift+P) en voer **Python in: Selecteer Tolk**. Kies de juiste versie.
+   Anders wordt er een lijst met beschikbare Python-interpreters geopend. Open het opdracht palet (CTRL + SHIFT + P) en voer **python in: Select interpreter**. Kies de juiste versie.
 1. U kunt het Python Speech-SDK-pakket installeren vanuit Visual Studio Code. Doe dat als het pakket nog niet is geïnstalleerd voor de Python-interpreter die u hebt geselecteerd.
-   Open een terminal voor het installeren van het Speech-SDK-pakket. Breng het opdrachtpalet opnieuw naar boven (Ctrl+Shift+P) en voer **Terminal in: Nieuwe geïntegreerde terminal maken**.
+   Open een terminal voor het installeren van het Speech-SDK-pakket. Breng het opdracht palet opnieuw aan (CTRL + SHIFT + P) en voer de **volgende Terminal in: nieuwe geïntegreerde terminal maken**.
    Voer in de terminal die wordt geopend, de opdracht `python -m pip install azure-cognitiveservices-speech` in, of de juiste opdracht voor uw systeem.
 1. Als u de voorbeeldcode wilt uitvoeren, klikt u met de rechtermuisknop ergens in de editor. Selecteer **Python-bestand uitvoeren in de Terminal**.
-   Typ tekst wanneer u wordt gevraagd. De gesynthetiseerde audio wordt kort daarna afgespeeld.
+   Typ een tekst wanneer u hierom wordt gevraagd. De gesynthesizerde audio wordt binnenkort afgespeeld.
 
    ![Een voorbeeld uitvoeren](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-run-tts.png)
 
@@ -87,4 +87,4 @@ Als er zich problemen voordoen met deze instructies, raadpleegt u de uitgebreide
 ## <a name="see-also"></a>Zie ook
 
 - [Een aangepaste stem maken](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Aangepaste spraakvoorbeelden opnemen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Aangepaste spraak voorbeelden vastleggen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

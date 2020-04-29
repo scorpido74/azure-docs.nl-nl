@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: Dev-platform instellen'
+title: 'Snelstartgids: platform voor ontwikkel aars instellen'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart leert u hoe u de Speech SDK installeert voor uw voorkeursplatform en programmeertaalcombinatie.
+description: In deze Quick Start leert u hoe u de Speech SDK kunt installeren voor de combi natie van uw voorkeurs platform en programmeer taal.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,17 +12,17 @@ ms.date: 04/04/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-three
 ms.openlocfilehash: 67ade64cdb3b2da6f78f77beb4d0cdc993715c9a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400867"
 ---
-# <a name="quickstart-setup-development-environment"></a>Snelstart: Ontwikkelomgeving instellen
+# <a name="quickstart-setup-development-environment"></a>Snelstartgids: ontwikkel omgeving instellen
 
 ::: zone pivot="programming-language-csharp"
 
-**Kies uw doelomgeving**
+**Kies uw doel omgeving**
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -49,7 +49,7 @@ ms.locfileid: "81400867"
 
 ::: zone pivot="programming-language-cpp"
 
-**Kies uw doelomgeving**
+**Kies uw doel omgeving**
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -68,9 +68,9 @@ ms.locfileid: "81400867"
 
 ::: zone pivot="programming-language-java"
 
-**Kies uw doelomgeving**
+**Kies uw doel omgeving**
 
-# <a name="java-runtime"></a>[Java Runtime](#tab/jre)
+# <a name="java-runtime"></a>[Java-runtime](#tab/jre)
 
 [!INCLUDE [jre](../includes/quickstarts/platform/java-jre.md)]
 

@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie: Gegevens van gezichten in een afbeelding detecteren en weergeven met behulp van de .NET SDK'
 titleSuffix: Azure Cognitive Services
-description: In deze zelfstudie maakt u een Windows-app die de Face-service gebruikt om gezichten in een afbeelding te detecteren en te framen.
+description: In deze zelf studie maakt u een Windows-app die gebruikmaakt van de face-service om gezichten in een installatie kopie te detecteren en te frame.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: b4458920ec8b3e0c302f6e0654891b83ed07264f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81402896"
 ---
-# <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Zelfstudie: Een WPF-app (Windows Presentation Framework) maken om gezichtsgegevens in een afbeelding weer te geven
+# <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Zelf studie: een Windows Presentation Framework (WPF)-app maken voor het weer geven van gezichts gegevens in een installatie kopie
 
-In deze zelfstudie leert u hoe u de Azure Face-service via de SDK .NET-client gebruiken om gezichten in een afbeelding te detecteren en vervolgens die gegevens in de gebruikersinterface weer te geven. U maakt een WPF-toepassing die gezichten detecteert, een kader rond elk gezicht tekent en een beschrijving van het gezicht in de statusbalk weergeeft. 
+In deze zelf studie leert u hoe u de Azure face-service, via de .NET-client-SDK, kunt gebruiken om gezichten in een installatie kopie te detecteren en deze gegevens vervolgens weer te geven in de gebruikers interface. U maakt een WPF-toepassing die gezichten detecteert, tekent een kader rond elk gezicht en geeft een beschrijving van het gezicht weer in de status balk. 
 
 In deze handleiding ontdekt u hoe u:
 
 > [!div class="checklist"]
 > - Een WPF-toepassing maken
-> - De Face-clientbibliotheek installeren
+> - De face-client bibliotheek installeren
 > - De clientbibliotheek gebruiken om gezichten in een afbeelding te detecteren
 > - Een kader rond elk gedetecteerd gezicht tekenen
 > - Een beschrijving van het gemarkeerde gezicht op de statusbalk weergeven
@@ -34,13 +34,13 @@ In deze handleiding ontdekt u hoe u:
 
 De volledige voorbeeldcode is beschikbaar in de opslagplaats [Cognitive Face CSharp sample](https://github.com/Azure-Samples/Cognitive-Face-CSharp-sample) (Cognitive Face CSharp-voorbeeld) op GitHub.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. 
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. 
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Face-abonnementssleutel. U kunt een abonnementssleutel voor een gratis proefversie downloaden van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om je te abonneren op de Face-service en je sleutel te krijgen. Maak vervolgens [omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de tekenreeks sleutel- `FACE_SUBSCRIPTION_KEY` en `FACE_ENDPOINT`serviceeindpunt, benoemd en , respectievelijk.
-- Elke editie van [Visual Studio 2015 of 2017](https://www.visualstudio.com/downloads/).
+- De sleutel van het gezichts abonnement. U kunt een abonnementssleutel voor een gratis proefversie downloaden van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op de face-service en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service- `FACE_SUBSCRIPTION_KEY` eindpunt `FACE_ENDPOINT`teken reeks, respectievelijk met de naam en.
+- Elke versie van [Visual Studio 2015 of 2017](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-the-visual-studio-project"></a>Het Visual Studio-project maken
 
@@ -49,7 +49,7 @@ Volg deze stappen voor het maken van een nieuw WPF-toepassingsproject.
 1. Open het dialoogvenster Nieuw project in Visual Studio. Vouw **Geïnstalleerd** en vervolgens **Visual C#** uit en selecteer **WPF App (.NET Framework)**.
 1. Noem de toepassing **FaceTutorial** en klik vervolgens op **OK**.
 1. Download de vereiste NuGet-pakketten. Klik met de rechtermuisknop op uw project in Solution Explorer en selecteer **NuGet-pakketten beheren**. Zoek en installeer vervolgens het volgende pakket:
-    - [Microsoft.Azure.CognitiveServices.Vision.Face 2.5.0-preview.1](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1)
+    - [Micro soft. Azure. CognitiveServices. Vision. Face 2.5.0-Preview. 1](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1)
 
 ## <a name="add-the-initial-code"></a>De initiële code toevoegen
 
@@ -57,7 +57,7 @@ In deze sectie voegt u het basisframework van de app toe zonder de gezichtsbepal
 
 ### <a name="create-the-ui"></a>Gebruikersinterface maken
 
-Open *MainWindow.xaml* en vervang de&mdash;inhoud door de volgende code met deze code maakt het ui-venster. De `FacePhoto_MouseMove` `BrowseButton_Click` methoden en methoden zijn gebeurtenishandlers die u later zult definiëren.
+Open *mainwindow. xaml* en vervang de inhoud door de volgende code&mdash;. met deze code wordt het venster gebruikers interface gemaakt. De `FacePhoto_MouseMove` methoden `BrowseButton_Click` en zijn gebeurtenis-handlers die u later wilt definiëren.
 
 [!code-xaml[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml?name=snippet_xaml)]
 
@@ -67,15 +67,15 @@ Open *MainWindow.xaml.cs* en voeg de naamruimten van de clientbibliotheek te, sa
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_using)]
 
-Voeg vervolgens de volgende code in de klasse **MainWindow** in. Met deze code wordt een **FaceClient-exemplaar** gemaakt met de abonnementssleutel en het eindpunt.
+Voeg vervolgens de volgende code in de klasse **MainWindow** in. Met deze code wordt een **FaceClient** -exemplaar gemaakt met behulp van de abonnements sleutel en het eind punt.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_fields)]
 
-Voeg vervolgens de **MainWindow-constructor** toe. Het controleert uw URL-tekenreeks voor eindpunten en koppelt deze vervolgens aan het clientobject.
+Voeg vervolgens de **mainwindow** -constructor toe. Hiermee wordt de teken reeks voor de eind punt-URL gecontroleerd en vervolgens gekoppeld aan het client object.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_constructor)]
 
-Voeg tot slot de methoden **BrowseButton_Click** en **FacePhoto_MouseMove** aan de klasse toe. Deze methoden komen overeen met de gebeurtenishandlers die zijn opgegeven in *MainWindow.xaml*. Met de methode **BrowseButton_Click** wordt het dialoogvenster **OpenFileDialog** gemaakt, waarmee de gebruiker een JPG-afbeelding kan selecteren. Daarna wordt de afbeelding in het hoofdvenster weergegeven. U voegt de resterende code voor **BrowseButton_Click** en **FacePhoto_MouseMove** later toe. Kijk ook naar de verwijzing `faceList`, een lijst met **DetectedFace**-objecten. Deze verwijzing is waar uw app de werkelijke gezichtsgegevens opslaat en belt.
+Voeg tot slot de methoden **BrowseButton_Click** en **FacePhoto_MouseMove** aan de klasse toe. Deze methoden komen overeen met de gebeurtenis-handlers die zijn gedeclareerd in *mainwindow. xaml*. Met de methode **BrowseButton_Click** wordt het dialoogvenster **OpenFileDialog** gemaakt, waarmee de gebruiker een JPG-afbeelding kan selecteren. Daarna wordt de afbeelding in het hoofdvenster weergegeven. U voegt de resterende code voor **BrowseButton_Click** en **FacePhoto_MouseMove** later toe. Kijk ook naar de verwijzing `faceList`, een lijst met **DetectedFace**-objecten. Deze verwijzing is waar uw app de werkelijke gezichts gegevens opslaat en aanroept.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_start)]
 
@@ -95,19 +95,19 @@ Druk op **Start** in het menu om uw app te testen. Als het app-venster wordt geo
 
 Uw app detecteert gezichten door de methode **FaceClient.Face.DetectWithStreamAsync** aan te roepen. Deze verpakt de [Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)-REST API voor het uploaden van een lokale afbeelding.
 
-Voeg de volgende methode in de klasse **MainWindow** in, onder de methode **FacePhoto_MouseMove**. Met deze methode wordt een lijst met gezichtskenmerken gedefinieerd om het ingediende afbeeldingsbestand op te halen en te lezen in een **stream**. Vervolgens worden beide objecten doorgegeven aan de methodeaanroep **DetectWithStreamAsync**.
+Voeg de volgende methode in de klasse **MainWindow** in, onder de methode **FacePhoto_MouseMove**. Deze methode definieert een lijst met gezichts kenmerken om het verzonden afbeeldings bestand op te halen en in een **stroom**te lezen. Vervolgens worden beide objecten doorgegeven aan de methodeaanroep **DetectWithStreamAsync**.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_uploaddetect)]
 
 ## <a name="draw-rectangles-around-faces"></a>Rechthoeken rond gezichten tekenen
 
-Vervolgens voegt u de code toe om een rechthoek rond elk gedetecteerd gezicht in de afbeelding te tekenen. Voeg in de klasse **MainWindow** de volgende code toe aan het eind van de methode **BrowseButton_Click**, na de regel `FacePhoto.Source = bitmapSource`. Deze code vult een lijst met gedetecteerde gezichten van de aanroep naar **UploadAndDetectFaces**. Vervolgens wordt een rechthoek rond elk gezicht getekend en de aangepaste afbeelding weergegeven in het hoofdvenster.
+Vervolgens voegt u de code toe om een rechthoek rond elk gedetecteerd gezicht in de afbeelding te tekenen. Voeg in de klasse **MainWindow** de volgende code toe aan het eind van de methode **BrowseButton_Click**, na de regel `FacePhoto.Source = bitmapSource`. Met deze code wordt een lijst met gedetecteerde gezichten gevuld vanuit de aanroep van **UploadAndDetectFaces**. Vervolgens wordt een rechthoek rond elk gezicht getekend en de aangepaste afbeelding weergegeven in het hoofdvenster.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_mid)]
 
 ## <a name="describe-the-faces"></a>De gezichten beschrijven
 
-Voeg de volgende methode toe aan de klasse **MainWindow**, onder de methode **UploadAndDetectFaces**. Met deze methode worden de opgehaalde gezichtskenmerken omgezet in een tekenreeks die het gezicht beschrijft.
+Voeg de volgende methode toe aan de klasse **MainWindow**, onder de methode **UploadAndDetectFaces**. Met deze methode worden de opgehaalde gezichts kenmerken geconverteerd naar een teken reeks die het gezicht beschrijft.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_facedesc)]
 

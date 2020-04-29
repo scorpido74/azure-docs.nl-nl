@@ -1,5 +1,5 @@
 ---
-title: PowerShell-voorbeeld - SQL Data Sync-synchronisatieschema bijwerken
+title: Power shell-voor beeld-SQL Data Sync synchronisatie schema bijwerken
 description: Azure PowerShell-voorbeeldscript voor het bijwerken van het synchronisatieschema voor SQL Data Sync
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 00f9e217df65838e75f351dfe00fb60594acdcfc
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81383496"
 ---
 # <a name="use-powershell-to-update-the-sync-schema-in-an-existing-sync-group"></a>PowerShell gebruiken voor het bijwerken van het synchronisatieschema in een bestaande synchronisatiegroep
@@ -26,16 +26,16 @@ Met dit PowerShell-voorbeeld werkt u het synchronisatieschema bij in een bestaan
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de PowerShell lokaal te installeren en te gebruiken, vereist deze zelfstudie AZ PowerShell 1.4.0 of hoger. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+Als u ervoor kiest om Power shell lokaal te installeren en te gebruiken, hebt u voor deze zelf studie AZ Power shell 1.4.0 of hoger nodig. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 Zie [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met SQL Data Sync](../sql-database-sync-data.md) voor een overzicht van SQL Data Sync.
 
 > [!IMPORTANT]
-> Azure SQL Data Sync biedt op dit moment geen ondersteuning voor azure SQL-database beheerde instantie.
+> Azure SQL Data Sync biedt op dit moment geen ondersteuning voor het beheerde exemplaar van Azure SQL database.
 
 ## <a name="examples"></a>Voorbeelden
 
-### <a name="add-all-tables-to-the-sync-schema"></a>Alle tabellen toevoegen aan het synchronisatieschema
+### <a name="add-all-tables-to-the-sync-schema"></a>Alle tabellen aan het synchronisatie schema toevoegen
 
 In het volgende voorbeeld wordt het databaseschema vernieuwd en worden alle geldige tabellen in de hubdatabase aan het synchronisatieschema toegevoegd.
 
@@ -78,16 +78,16 @@ Het script **UpdateSyncSchema** gebruikt de volgende opdrachten. Elke opdracht i
 | Opdracht | Opmerkingen |
 |---|---|
 | [Get-AzSqlSyncGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncgroup) | Retourneert informatie over een synchronisatiegroep. |
-| [Update-azsqlsyncgroup](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncgroup) | Werkt een synchronisatiegroep bij. |
+| [Update-AzSqlSyncGroup](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncgroup) | Werkt een synchronisatiegroep bij. |
 | [Get-AzSqlSyncMember](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncmember) | Retourneert informatie over een synchronisatielid. |
 | [Get-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncschema) | Retourneert informatie over een synchronisatieschema. |
-| [Update-azsqlsyncschema](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncschema) | Werkt een synchronisatieschema bij. |
+| [Update-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncschema) | Werkt een synchronisatieschema bij. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Raadpleeg de [documentatie over Azure PowerShell](/powershell/azure/overview) voor meer informatie over Azure PowerShell.
 
-Aanvullende SQL-database PowerShell-scriptvoorbeelden zijn te vinden in [Azure SQL-database PowerShell-scripts.](../sql-database-powershell-samples.md)
+Aanvullende SQL database Power shell-voorbeeld scripts vindt u in [Azure SQL database Power shell](../sql-database-powershell-samples.md)-script.
 
 Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
 
@@ -99,7 +99,7 @@ Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
         - [PowerShell gebruiken om te synchroniseren tussen een Azure SQL-database en een on-premises database](sql-database-sync-data-between-azure-onprem.md)
 - Data Sync-agent: [Data Sync-agent voor Azure SQL Data Sync](../sql-database-data-sync-agent.md)
 - Best practices: [Best practices voor Azure SQL Data Sync](../sql-database-best-practices-data-sync.md)
-- Monitor - [SQL-gegevenssynchronisatie met Azure Monitor-logboeken controleren](../sql-database-sync-monitor-oms.md)
+- SQL Data Sync controleren [met Azure monitor-logboeken](../sql-database-sync-monitor-oms.md)
 - Problemen oplossen: [Problemen met Azure SQL Data Sync oplossen](../sql-database-troubleshoot-data-sync.md)
 - Het synchronisatieschema bijwerken
     - Met Transact-SQL: [De replicatie van schemawijzigingen in Azure SQL Data Sync automatiseren](../sql-database-update-sync-schema.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Blink configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
-description: Meer informatie over het configureren van Azure Active Directory om gebruikersaccounts automatisch in te richten en te de-provisionen in Blink.
+title: 'Zelf studie: Blink configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts om te blinken.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,137 +16,137 @@ ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: 314445275f99898913bd91eb8abc2a5acdab098a
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81381026"
 ---
-# <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Zelfstudie: Blink configureren voor automatische gebruikersinrichting
+# <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Zelf studie: Blink configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelfstudie is om de stappen aan te tonen die moeten worden uitgevoerd in Blink en Azure Active Directory (Azure AD) om Azure AD te configureren om gebruikers automatisch te voorzien en te de-provisionen voor Blink.
+Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in Blink en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers om te blinken.
 
 > [!NOTE]
-> In deze zelfstudie wordt een connector beschreven die is gebouwd bovenop de Azure AD User Provisioning Service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
+> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
 >
-> Deze connector bevindt zich momenteel in Public Preview. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over de algemene gebruiksvoorwaarden van Microsoft Azure.
+> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt:
+In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
-* Een Azure AD-tenant
-* [Een Blink-tenant](https://joinblink.com/pricing)
-* Een gebruikersaccount in Blink met beheerdersmachtigingen.
+* Een Azure AD-Tenant
+* [Een Blink-Tenant](https://joinblink.com/pricing)
+* Een gebruikers account in Blink met beheerders machtigingen.
 
-## <a name="assigning-users-to-blink"></a>Gebruikers toewijzen aan Blink
+## <a name="assigning-users-to-blink"></a>Gebruikers toewijzen om te blinken
 
-Azure Active Directory gebruikt een concept genaamd *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In het kader van automatische gebruikersinrichting worden alleen de gebruikers en/of groepsleden die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van automatische gebruikers inrichting worden alleen de gebruikers en/of groeps leden gesynchroniseerd die zijn toegewezen aan een toepassing in azure AD.
 
-Voordat u automatische gebruikersinrichting configureert en inschakelt, moet u bepalen welke gebruikers en/of groepsleden in Azure AD toegang tot Blink nodig hebben. Zodra u hebt besloten, u deze gebruikers en/of groepen toewijzen aan Blink door de instructies hier te volgen:
-* [Een gebruiker of groep toewijzen aan een bedrijfsapp](../manage-apps/assign-user-or-group-access-portal.md)
+Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groeps leden in azure AD toegang nodig hebben om te blinken. Nadat u hebt besloten, kunt u deze gebruikers en/of groepen toewijzen aan het Knip peren door de instructies hier te volgen:
+* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-blink"></a>Belangrijke tips voor het toewijzen van gebruikers aan Blink
+## <a name="important-tips-for-assigning-users-to-blink"></a>Belang rijke tips voor het toewijzen van gebruikers om te blinken
 
-* Het wordt aanbevolen dat één Azure AD-gebruiker aan Blink wordt toegewezen om de automatische configuratie van gebruikersinrichting te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
+* U wordt aangeraden één Azure AD-gebruiker toe te laten knip peren om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker aan Blink toewijst, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het toewijzingsdialoogvenster. Gebruikers met de **functie Standaardtoegang** zijn uitgesloten van inrichten.
+* Wanneer u een gebruiker toewijst om te blinken, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
 
-## <a name="setup-blink-for-provisioning"></a>Blink instellen voor inrichten
+## <a name="setup-blink-for-provisioning"></a>Setup-knip peren voor inrichting
 
-1. Log een [ondersteuningsaanvraag of](https://support.joinblink.com) support@joinblink.com e-mail **Blink-ondersteuning** om een SCIM-token aan te vragen. .
+1. Een [ondersteunings Case](https://support.joinblink.com) of **ondersteuning** voor e support@joinblink.com -mail berichten in het logboek vastleggen om een scim-token aan te vragen. .
 
-2.  Kopieer het **SCIM-verificatietoken**. Deze waarde wordt ingevoerd in het veld Geheim token op het tabblad Inrichten van uw Blink-toepassing in de Azure-portal.
+2.  Kopieer het **scim-verificatie token**. Deze waarde wordt ingevoerd in het veld geheime token op het tabblad inrichting van uw Blink-toepassing in de Azure Portal.
 
-## <a name="add-blink-from-the-gallery"></a>Blink toevoegen vanuit de galerie
+## <a name="add-blink-from-the-gallery"></a>Knip peren toevoegen vanuit de galerie
 
-Voordat u Blink configureert voor automatische gebruikersvoorziening met Azure AD, moet u Blink uit de Azure AD-toepassingsgalerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Voordat u met Azure AD de functie voor het automatisch inrichten van gebruikers kunt configureren, moet u knip peren van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-**Voer de volgende stappen uit om Blink toe te voegen vanuit de Azure AD-toepassingsgalerie:**
+**Voer de volgende stappen uit om knip peren toe te voegen vanuit de Azure AD-toepassings galerie:**
 
-1. Selecteer **Azure Active Directory**in de **[Azure-portal](https://portal.azure.com)** in het linkernavigatiedeelvenster .
+1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **Nieuwe toepassing** boven aan het deelvenster.
+3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Blink**in het zoekvak, selecteer **Blink** in het deelvenster Resultaten en klik op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Voer in het zoekvak **knip peren**in het paneel **resultaten in en** klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-    ![Knipperen in de resultatenlijst](common/search-new-app.png)
+    ![Knip peren in de lijst met resultaten](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-blink"></a>Automatische gebruikersvoorziening configureren in Blink 
+## <a name="configuring-automatic-user-provisioning-to-blink"></a>Automatische gebruikers inrichting configureren om te blinken 
 
-In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers in Blink te maken, bij te werken en uit te schakelen op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
+In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
 > [!TIP]
-> U er ook voor kiezen om saml-gebaseerde eenmalige aanmelding in te schakelen voor Blink, volgens de instructies in de [zelfstudie voor eenmalig aanmelden blink](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial). Eenmalige aanmelding kan onafhankelijk van automatische gebruikersinrichting worden geconfigureerd, hoewel deze twee functies elkaar complimenteren
+> U kunt er ook voor kiezen om op SAML gebaseerde eenmalige aanmelding in te scha kelen voor het Knip peren, gevolgd door de instructies in de [zelf studie voor het blinken van een eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar in de compliment
 
-### <a name="to-configure-automatic-user-provisioning-for-blink-in-azure-ad"></a>Ga als een automatisch beheer van de gebruiker voor Blink in Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-blink-in-azure-ad"></a>Automatische gebruikers inrichting voor Blink in azure AD configureren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **Knipperen**in de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **Blink**.
 
-    ![De koppeling Blink in de lijst Toepassingen](common/all-applications.png)
+    ![De knipperende koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **Inrichten.**
+3. Selecteer het tabblad **inrichten** .
 
-    ![Tabblad Inrichten](common/provisioning.png)
+    ![Tabblad inrichten](common/provisioning.png)
 
-4. Stel de **inrichtingsmodus** in op **Automatisch**.
+4. Stel de **inrichtings modus** in op **automatisch**.
 
-    ![Tabblad Inrichten](common/provisioning-automatic.png)
+    ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Voer onder de sectie `https://api.joinblink.com/scim` **Beheerdersreferenties** invoer in **Tenant-URL**in . Voer de waarde van de **SCIM-verificatietoken** in die eerder in **Secret Token**is opgehaald. Klik **op Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met Blink. Als de verbinding mislukt, zorgt u ervoor dat uw Blink-account beheerdersmachtigingen heeft en probeert u het opnieuw.
+5. Selecteer in de sectie **beheerders referenties** de `https://api.joinblink.com/scim` invoer in de **Tenant-URL**. Voer de waarde voor het **scim-verificatie token** in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Blink. Als de verbinding mislukt, zorg er dan voor dat uw Blink-account beheerders machtigingen heeft en probeer het opnieuw.
 
-    ![Tenant URL + Token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fouten moet ontvangen en schakel het selectievakje in - **Stuur een e-mailmelding wanneer er een fout optreedt**.
+6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
 
-    ![E-mail met meldingen](common/provisioning-notification-email.png)
+    ![E-mail melding](common/provisioning-notification-email.png)
 
 7. Klik op **Opslaan**.
 
-8. Selecteer Azure **Active Directory-gebruikers synchroniseren om te knipperen**onder de sectie **Toewijzingen** .
+8. Selecteer in de sectie **toewijzingen** de optie **synchroniseren Azure Active Directory gebruikers om te blinken**.
 
-    ![Gebruikerstoewijzingen knipperen](media/blink-provisioning-tutorial/User_mappings.png)
+    ![Gebruikers toewijzingen blinken](media/blink-provisioning-tutorial/User_mappings.png)
 
-9. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Blink in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **Eigenschappen matching** worden gebruikt om de gebruikersaccounts in Blink te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
+9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD om te blinken in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Blink voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Gebruikerskenmerken knipperen](media/blink-provisioning-tutorial/user-attributes.png)
+    ![Gebruikers kenmerken blinken](media/blink-provisioning-tutorial/user-attributes.png)
 
-10. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+10. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
-11. Als u de Azure AD-inrichtingsservice voor Blink wilt inschakelen, wijzigt u de **instelstatus** in **Aan** in de sectie **Instellingen.**
+11. Als u de Azure AD-inrichtings service wilt inschakelen voor Blink, **wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
-    ![Status inrichten ingeschakeld](common/provisioning-toggle-on.png)
+    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
 
-12. Definieer de gebruikers die u wilt inrichten in Blink door de gewenste waarden in **Bereik** te kiezen in de sectie **Instellingen.**
+12. Definieer de gebruikers die u wilt inrichten om te blinken door de gewenste waarden in het **bereik** in de sectie **instellingen** te kiezen.
 
-    ![Inrichtingskader](common/provisioning-scope.png)
+    ![Inrichtings bereik](common/provisioning-scope.png)
 
-15. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
+15. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
-    ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
+    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste synchronisatie duurt langer om uit te voeren dan de volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U de sectie **Synchronisatiedetails** gebruiken om de voortgang te controleren en koppelingen naar het installatieactiviteitsrapport te volgen, waarin alle acties worden beschreven die zijn uitgevoerd door de Azure AD-inrichtingsservice in Blink.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op het Knip programma.
 
-Zie [Rapportage over automatische gebruikersaccountinrichting voor](../app-provisioning/check-status-user-account-provisioning.md)meer informatie over het lezen van de azure AD-inrichtingslogboeken.
+Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
 ms.openlocfilehash: 10a11168b8046dbcc877f45141571fccdca879f0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400349"
 ---
 ## <a name="prerequisites"></a>Vereisten
@@ -19,7 +19,7 @@ ms.locfileid: "81400349"
     * Windows: x64 en x86.
     * Mac: Mac OS X-versie 10.12 of hoger.
     * Linux: Ubuntu 16.04/18.04, Debian 9, RHEL 7/8, CentOS 7/8 op x64.
-* Voer op Linux deze opdrachten uit om de vereiste pakketten te installeren:
+* Voer op Linux de volgende opdrachten uit om de vereiste pakketten te installeren:
 
 # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
@@ -35,7 +35,7 @@ sudo apt-get update
 sudo apt-get install build-essential libssl1.0.2 libasound2
 ```
 
-# <a name="rhel--centos-8"></a>[RHEL / CentOS 8](#tab/rhel-centos)
+# <a name="rhel--centos-8"></a>[RHEL/CentOS 8](#tab/rhel-centos)
 
 ```Bash
 sudo yum update
@@ -43,11 +43,11 @@ sudo yum install alsa-lib openssl python3
 ```
 
 > [!NOTE]
-> Volg op RHEL/CentOS 7/8 de instructies voor [het configureren van OpenSSL voor Linux.](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)
+> Volg in RHEL/CentOS 7/8 de instructies voor het [configureren van openssl voor Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 ---
 
-* In Windows heb je de [Microsoft Visual C++ Redistributable voor Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) nodig voor je platform.
+* In Windows hebt u [micro soft Visual C++ Redistributable voor Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) voor uw platform nodig.
 
 ## <a name="install-the-speech-sdk"></a>De Speech-SDK installeren
 
@@ -115,9 +115,9 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>De Speech-SDK installeren en gebruiken met Visual Studio Code
 
-1. Download en installeer een 64-bits versie van [Python](https://www.python.org/downloads/), 3,5 tot 3,8, op uw computer.
+1. Down load en installeer een 64-bits versie van [python](https://www.python.org/downloads/), 3,5 tot 3,8 op uw computer.
 1. Download en installeer [Visual Studio Code](https://code.visualstudio.com/Download).
-1. Open Visual Studio Code en installeer de Python-extensie. Selecteer**Extensies** **voor bestandsvoorkeuren** > **Preferences** > in het menu. Zoek naar **Python**.
+1. Open Visual Studio Code en installeer de Python-extensie. Selecteer**extensies** voor **Bestands** > **Voorkeuren** > in het menu. Zoek naar **Python**.
 
    ![De Python-extensie installeren](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-extension.png)
 
@@ -133,12 +133,12 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. Kopieer en plak de [Python-code](#sample-code) en sla deze op in het zojuist gemaakte bestand.
 1. Voeg de gegevens van uw Speech Service-abonnement in.
 1. Als er een Python-interpreter is geselecteerd, wordt deze onder aan het venster weergegeven, links van de statusbalk.
-   Anders wordt er een lijst met beschikbare Python-interpreters geopend. Open het opdrachtpalet<kbd>(Ctrl+Shift+P)</kbd>en voer **Python in: Selecteer Tolk**. Kies de juiste versie.
+   Anders wordt er een lijst met beschikbare Python-interpreters geopend. Open het opdracht palet (<kbd>CTRL + SHIFT + P</kbd>) en voer **python in: Select interpreter**. Kies de juiste versie.
 1. U kunt het Python Speech-SDK-pakket installeren vanuit Visual Studio Code. Doe dat als het pakket nog niet is geïnstalleerd voor de Python-interpreter die u hebt geselecteerd.
-   Open een terminal voor het installeren van het Speech-SDK-pakket. Breng het opdrachtpalet opnieuw naar boven<kbd>(Ctrl+Shift+P)</kbd>en voer **Terminal in: Nieuwe geïntegreerde terminal maken**.
+   Open een terminal voor het installeren van het Speech-SDK-pakket. Breng het opdracht palet opnieuw aan (<kbd>CTRL + SHIFT + P</kbd>) en voer de **volgende Terminal in: nieuwe geïntegreerde terminal maken**.
    Voer in de terminal die wordt geopend, de opdracht `python -m pip install azure-cognitiveservices-speech` in, of de juiste opdracht voor uw systeem.
 1. Als u de voorbeeldcode wilt uitvoeren, klikt u met de rechtermuisknop ergens in de editor. Selecteer **Python-bestand uitvoeren in de Terminal**.
-   Uw tekst wordt omgezet in spraak en opgeslagen in de opgegeven audiogegevens.
+   Uw tekst wordt geconverteerd naar spraak en opgeslagen in de opgegeven audio gegevens.
 
    ```console
    Speech synthesized to [helloworld.wav] for text [Hello world!]
@@ -153,4 +153,4 @@ Als er zich problemen voordoen met deze instructies, raadpleegt u de uitgebreide
 ## <a name="see-also"></a>Zie ook
 
 - [Een aangepaste stem maken](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Aangepaste spraakvoorbeelden opnemen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Aangepaste spraak voorbeelden vastleggen](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

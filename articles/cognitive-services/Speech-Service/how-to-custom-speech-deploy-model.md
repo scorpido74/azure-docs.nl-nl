@@ -1,7 +1,7 @@
 ---
-title: Een model implementeren voor aangepaste spraak - spraakservice
+title: Een model voor Custom Speech-Speech-Service implementeren
 titleSuffix: Azure Cognitive Services
-description: In dit document leert u hoe u een eindpunt maken en implementeren met de portal Aangepaste spraak.
+description: In dit document leert u hoe u een eind punt maakt en implementeert met behulp van de Custom Speech Portal.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,43 +11,43 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 9d48f09fe5d5c736f65b6a76211dd3fec85479ea
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402181"
 ---
 # <a name="deploy-a-custom-model"></a>Aangepaste model implementeren
 
-Nadat u gegevens hebt geüpload en geïnspecteerd, de nauwkeurigheid hebt geëvalueerd en een aangepast model hebt getraind, u een aangepast eindpunt implementeren om te gebruiken met uw apps, hulpprogramma's en producten. In dit document leert u hoe u een eindpunt maken en implementeren met behulp van de [portal Aangepaste spraak.](https://speech.microsoft.com/customspeech)
+Nadat u gegevens hebt geüpload en geinspectet, de nauw keurigheid hebt geëvalueerd en een aangepast model hebt getraind, kunt u een aangepast eind punt implementeren voor gebruik met uw apps, hulpprogram ma's en producten. In dit document leert u hoe u een eind punt maakt en implementeert met behulp van de [Custom speech Portal](https://speech.microsoft.com/customspeech).
 
-## <a name="create-a-custom-endpoint"></a>Een aangepast eindpunt maken
+## <a name="create-a-custom-endpoint"></a>Een aangepast eind punt maken
 
-Als u een nieuw aangepast eindpunt wilt maken, meldt u zich aan bij de [portal Aangepaste spraak](https://speech.microsoft.com/customspeech) en selecteert u **Implementatie** in het menu Aangepaste spraak boven aan de pagina. Als dit je eerste run is, zul je merken dat er geen eindpunten in de tabel staan. Nadat u een eindpunt hebt gemaakt, gebruikt u deze pagina om elk geïmplementeerd eindpunt bij te houden.
+Als u een nieuw aangepast eind punt wilt maken, meldt u zich aan bij de [Custom speech Portal](https://speech.microsoft.com/customspeech) en selecteert u **implementatie** in het menu Custom speech boven aan de pagina. Als dit de eerste keer is dat u uitvoert, ziet u dat er geen eind punten in de tabel staan. Nadat u een eind punt hebt gemaakt, gebruikt u deze pagina om elk geïmplementeerd eind punt bij te houden.
 
-Selecteer vervolgens **Eindpunt toevoegen** en voer een **naam** en **beschrijving** in voor uw aangepaste eindpunt. Selecteer vervolgens het aangepaste model dat u aan dit eindpunt wilt koppelen. Vanaf deze pagina u ook logboekregistratie inschakelen. Met logboekregistratie u het eindpuntverkeer controleren. Als het verkeer is uitgeschakeld, wordt het verkeer niet opgeslagen.
+Selecteer vervolgens **eind punt toevoegen** en voer een **naam** en **Beschrijving** in voor het aangepaste eind punt. Selecteer vervolgens het aangepaste model dat u aan dit eind punt wilt koppelen. Op deze pagina kunt u ook logboek registratie inschakelen. Met logboek registratie kunt u eindpunt verkeer bewaken. Als deze is uitgeschakeld, wordt verkeer niet opgeslagen.
 
 ![Een model implementeren](./media/custom-speech/custom-speech-deploy-model.png)
 
 > [!NOTE]
-> Vergeet niet om de gebruiksvoorwaarden en prijsdetails te accepteren.
+> Vergeet niet om akkoord te gaan met de gebruiks voorwaarden en prijs gegevens.
 
-Selecteer vervolgens **Maken**. Met deze actie keert u terug naar de **pagina Implementatie.** De tabel bevat nu een vermelding die overeenkomt met uw aangepaste eindpunt. De status van het eindpunt geeft de huidige status weer. Het kan tot 30 minuten duren voordat een nieuw eindpunt wordt geinstantt met uw aangepaste modellen. Wanneer de status van de implementatie wordt gewijzigd in **Voltooien,** is het eindpunt klaar voor gebruik.
+Selecteer vervolgens **maken**. Met deze actie keert u terug naar de **implementatie** pagina. De tabel bevat nu een vermelding die overeenkomt met uw aangepaste eind punt. De status van het eind punt toont de huidige status. Het kan tot 30 minuten duren om een nieuw eind punt te instantiëren met uw aangepaste modellen. Wanneer de status van de implementatie verandert in **voltooid**, is het eind punt klaar voor gebruik.
 
-Nadat uw eindpunt is geïmplementeerd, wordt de naam van het eindpunt weergegeven als koppeling. Klik op de koppeling om informatie weer te geven die specifiek is voor uw eindpunt, zoals de eindpuntsleutel, de URL van eindpunt en voorbeeldcode.
+Nadat het eind punt is geïmplementeerd, wordt de naam van het eind punt weer gegeven als een koppeling. Klik op de koppeling om informatie weer te geven die specifiek is voor uw eind punt, zoals de eindpunt sleutel, eind punt-URL en voorbeeld code.
 
-## <a name="view-logging-data"></a>Logboekregistratiegegevens weergeven
+## <a name="view-logging-data"></a>Logboek gegevens weer geven
 
-Logboekregistratiegegevens kunnen worden gedownload onder **> Details**.
+Logboek gegevens kunnen worden gedownload onder **eindpunt > Details**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Lees [hier](how-to-specify-source-language.md)hoe u uw aangepaste model gebruiken.
+* Meer informatie over het gebruik van uw [aangepaste model.](how-to-specify-source-language.md)
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Uw gegevens voorbereiden en testen](how-to-custom-speech-test-data.md)
-* [Uw gegevens inspecteren](how-to-custom-speech-inspect-data.md)
+* [Uw gegevens controleren](how-to-custom-speech-inspect-data.md)
 * [Uw gegevens evalueren](how-to-custom-speech-evaluate-data.md)
 * [Uw model trainen](how-to-custom-speech-train-model.md)
 * [Uw model implementeren](how-to-custom-speech-deploy-model.md)

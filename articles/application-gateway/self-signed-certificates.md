@@ -1,7 +1,7 @@
 ---
 title: Zelfondertekend certificaat genereren met een aangepaste basis-CA
 titleSuffix: Azure Application Gateway
-description: Meer informatie over het genereren van een zelfondertekend certificaat van Azure Application Gateway met een aangepaste basis-CA
+description: Meer informatie over het genereren van een zelfondertekend certificaat van Azure-toepassing gateway met een aangepaste basis certificerings instantie
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,86 +9,86 @@ ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
 ms.openlocfilehash: 5ceefb076b63df942cfff202946f6b82050bbab9
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311946"
 ---
-# <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Een zelfondertekend certificaat van Azure Application Gateway genereren met een aangepaste basis-CA
+# <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Een zelfondertekend certificaat van Azure-toepassing gateway genereren met een aangepaste basis-CA
 
-De Application Gateway v2 SKU introduceert het gebruik van Trusted Root Certificates om backend servers toe te staan. Hiermee worden verificatiecertificaten verwijderd die vereist waren in de v1 SKU. Het *rootcertificaat* is een Basis-64 gecodeerde X.509(. CER) het rootcertificaat opmaken vanaf de backendcertificaatserver. Het identificeert de root certificaat autoriteit (CA) die het servercertificaat heeft uitgegeven en het servercertificaat wordt vervolgens gebruikt voor de TLS / SSL-communicatie.
+Met de SKU van Application Gateway v2 wordt het gebruik van vertrouwde basis certificaten geïntroduceerd voor het toestaan van back-endservers. Hiermee worden verificatie certificaten verwijderd die vereist waren in de V1-SKU. Het *basis certificaat* is een Base-64 Encoded X. 509 (. CER) basis certificaat van de back-end-certificaat server indelen. Het identificeert de basis certificerings instantie (CA) die het server certificaat heeft uitgegeven en het server certificaat wordt vervolgens gebruikt voor de TLS/SSL-communicatie.
 
-Application Gateway vertrouwt standaard op het certificaat van uw website als deze is ondertekend door een bekende CA (bijvoorbeeld GoDaddy of DigiCert). U hoeft het basiscertificaat in dat geval niet expliciet te uploaden. Zie [Overzicht van TLS-beëindiging en end-to-end TLS met Application Gateway](ssl-overview.md)voor meer informatie. Als u echter een dev/testomgeving hebt en geen geverifieerd CA-ondertekend certificaat wilt kopen, u uw eigen aangepaste CA maken en er een zelfondertekend certificaat mee maken. 
+Application Gateway vertrouwt het certificaat van uw website standaard als dit is ondertekend door een bekende certificerings instantie (bijvoorbeeld GoDaddy of DigiCert). U hoeft het basis certificaat niet expliciet in dat geval te uploaden. Zie [overzicht van TLS-beëindiging en end-to-end-TLS met Application Gateway](ssl-overview.md)voor meer informatie. Als u echter een ontwikkel-en test omgeving hebt en geen geverifieerde certificerings instantie wilt aanschaffen, kunt u uw eigen aangepaste CA maken en een zelfondertekend certificaat maken met het certificaat. 
 
 > [!NOTE]
-> Zelfondertekende certificaten worden standaard niet vertrouwd en kunnen moeilijk te onderhouden zijn. Ook kunnen ze gebruik maken van verouderde hash en cipher suites die misschien niet sterk zijn. Voor een betere beveiliging, de aankoop van een certificaat ondertekend door een bekende certificaat autoriteit.
+> Zelfondertekende certificaten worden niet standaard vertrouwd en kunnen lastig zijn om te onderhouden. Ze kunnen ook verouderde hash-en coderings suites gebruiken die mogelijk niet sterk zijn. Voor betere beveiliging koopt u een certificaat dat is ondertekend door een bekende certificerings instantie.
 
-In dit artikel leert u hoe u:
+In dit artikel leert u het volgende:
 
-- Maak uw eigen aangepaste certificaatautoriteit
-- Een zelfondertekend certificaat maken dat is ondertekend door uw aangepaste CA
-- Een zelfondertekend rootcertificaat uploaden naar een toepassingsgateway om de backendserver te verifiëren
+- Uw eigen aangepaste certificerings instantie maken
+- Een zelfondertekend certificaat maken dat is ondertekend door uw aangepaste certificerings instantie
+- Een zelfondertekend basis certificaat uploaden naar een Application Gateway voor het verifiëren van de back-end-server
 
 ## <a name="prerequisites"></a>Vereisten
 
-- **[OpenSSL](https://www.openssl.org/) op een computer met Windows of Linux** 
+- **[Openssl](https://www.openssl.org/) op een computer met Windows of Linux** 
 
-   Hoewel er andere hulpprogramma's beschikbaar kunnen zijn voor certificaatbeheer, maakt deze zelfstudie gebruik van OpenSSL. Je OpenSSL gebundeld vinden met veel Linux-distributies, zoals Ubuntu.
+   Er kunnen andere hulpprogram ma's beschikbaar zijn voor certificaat beheer, maar in deze zelf studie wordt gebruikgemaakt van OpenSSL. U kunt OpenSSL bundelen met veel Linux-distributies, zoals Ubuntu.
 - **Een webserver**
 
    Bijvoorbeeld Apache, IIS of NGINX om de certificaten te testen.
 
-- **Een Application Gateway v2 SKU**
+- **Een SKU van Application Gateway v2**
    
-  Zie [Quickstart: Direct webverkeer met Azure Application Gateway - Azure portal](quick-create-portal.md)als u geen bestaande toepassingsgateway hebt.
+  Als u geen bestaande toepassings gateway hebt, raadpleegt u [Quick Start: direct Web Traffic with Azure-toepassing gateway-Azure Portal](quick-create-portal.md).
 
 ## <a name="create-a-root-ca-certificate"></a>Een basis-CA-certificaat maken
 
-Maak uw basis-CA-certificaat met OpenSSL.
+Maak uw basis-CA-certificaat met behulp van OpenSSL.
 
-### <a name="create-the-root-key"></a>De hoofdtoets maken
+### <a name="create-the-root-key"></a>De basis sleutel maken
 
-1. Meld u aan bij uw computer waar OpenSSL is geïnstalleerd en voer de volgende opdracht uit. Hierdoor wordt een met een wachtwoord beveiligde sleutel aanmaakt.
+1. Meld u aan bij de computer waarop OpenSSL is geïnstalleerd en voer de volgende opdracht uit. Hiermee maakt u een met een wacht woord beveiligde sleutel.
 
    ```
    openssl ecparam -out contoso.key -name prime256v1 -genkey
    ```
-1. Typ bij de prompt een sterk wachtwoord. Bijvoorbeeld ten minste negen tekens, met hoofdletters, kleine letters, getallen en symbolen.
+1. Typ bij de prompt een sterk wacht woord. Bijvoorbeeld ten minste negen tekens, met behulp van hoofd letters, kleine letters, cijfers en symbolen.
 
-### <a name="create-a-root-certificate-and-self-sign-it"></a>Een rootcertificaat maken en het zelf ondertekenen
+### <a name="create-a-root-certificate-and-self-sign-it"></a>Een basis certificaat maken en zelf ondertekenen
 
-1. Gebruik de volgende opdrachten om de csr en het certificaat te genereren.
+1. Gebruik de volgende opdrachten om de CSR en het certificaat te genereren.
 
    ```
    openssl req -new -sha256 -key contoso.key -out contoso.csr
 
    openssl x509 -req -sha256 -days 365 -in contoso.csr -signkey contoso.key -out contoso.crt
    ```
-   Met de vorige opdrachten wordt het basiscertificaat gemaakt. U gebruikt dit om uw servercertificaat te ondertekenen.
+   Met de vorige opdrachten maakt u het basis certificaat. U gebruikt deze om uw server certificaat te ondertekenen.
 
-1. Wanneer u daarom wordt gevraagd, typt u het wachtwoord voor de hoofdsleutel en de organisatiegegevens voor de aangepaste CA, zoals Land, Staat, Org, OU en de volledig gekwalificeerde domeinnaam (dit is het domein van de uitgever).
+1. Wanneer u hierom wordt gevraagd, typt u het wacht woord voor de hoofd sleutel en de organisatie gegevens voor de aangepaste certificerings instantie, zoals land, provincie, organisatie, OE en de Fully Qualified Domain Name (dit is het domein van de uitgever).
 
-   ![rootcertificaat maken](media/self-signed-certificates/root-cert.png)
+   ![basis certificaat maken](media/self-signed-certificates/root-cert.png)
 
-## <a name="create-a-server-certificate"></a>Een servercertificaat maken
+## <a name="create-a-server-certificate"></a>Een server certificaat maken
 
-Vervolgens maakt u een servercertificaat met OpenSSL.
+Vervolgens maakt u een server certificaat met behulp van OpenSSL.
 
 ### <a name="create-the-certificates-key"></a>De sleutel van het certificaat maken
 
-Gebruik de volgende opdracht om de sleutel voor het servercertificaat te genereren.
+Gebruik de volgende opdracht om de sleutel voor het server certificaat te genereren.
 
    ```
    openssl ecparam -out fabrikam.key -name prime256v1 -genkey
    ```
 
-### <a name="create-the-csr-certificate-signing-request"></a>De CSR maken (certificaatondertekeningsaanvraag)
+### <a name="create-the-csr-certificate-signing-request"></a>De CSR maken (aanvraag voor certificaat ondertekening)
 
-De CSR is een openbare sleutel die aan een CA wordt gegeven bij het aanvragen van een certificaat. De CA geeft het certificaat voor deze specifieke aanvraag uit.
+De CSR is een open bare sleutel die aan een CA wordt toegewezen bij het aanvragen van een certificaat. De CA geeft het certificaat voor deze specifieke aanvraag uit.
 
 > [!NOTE]
-> De CN (Algemene naam) voor het servercertificaat moet afwijken van het domein van de uitgever. In dit geval is `www.contoso.com` de GN voor de uitgever bijvoorbeeld en is `www.fabrikam.com`het CN van het servercertificaat .
+> De CN (common name) voor het server certificaat moet verschillen van het domein van de verlener. In dit geval is `www.contoso.com` de CN voor de verlener en de CN van het server certificaat. `www.fabrikam.com`
 
 
 1. Gebruik de volgende opdracht om de CSR te genereren:
@@ -97,47 +97,47 @@ De CSR is een openbare sleutel die aan een CA wordt gegeven bij het aanvragen va
    openssl req -new -sha256 -key fabrikam.key -out fabrikam.csr
    ```
 
-1. Wanneer u daarom wordt gevraagd, typt u het wachtwoord voor de hoofdsleutel en de organisatiegegevens voor de aangepaste CA: Land, Staat, Org, OU en de volledig gekwalificeerde domeinnaam. Dit is het domein van de website en het moet anders zijn dan de uitgever.
+1. Wanneer u hierom wordt gevraagd, typt u het wacht woord voor de hoofd sleutel en de organisatie gegevens voor de aangepaste CA: land, provincie, org, OE en de Fully Qualified Domain Name. Dit is het domein van de website en het moet afwijken van de verlener.
 
-   ![Servercertificaat](media/self-signed-certificates/server-cert.png)
+   ![Server certificaat](media/self-signed-certificates/server-cert.png)
 
-### <a name="generate-the-certificate-with-the-csr-and-the-key-and-sign-it-with-the-cas-root-key"></a>Het certificaat genereren met de CSR en de sleutel en ondertekenen met de hoofdsleutel van de CA
+### <a name="generate-the-certificate-with-the-csr-and-the-key-and-sign-it-with-the-cas-root-key"></a>Genereer het certificaat met de CSR en de sleutel en onderteken het met de basis sleutel van de CA
 
 1. Gebruik de volgende opdracht om het certificaat te maken:
 
    ```
    openssl x509 -req -in fabrikam.csr -CA  contoso.crt -CAkey contoso.key -CAcreateserial -out fabrikam.crt -days 365 -sha256
    ```
-### <a name="verify-the-newly-created-certificate"></a>Het nieuw gemaakte certificaat verifiëren
+### <a name="verify-the-newly-created-certificate"></a>Het zojuist gemaakte certificaat verifiëren
 
-1. Gebruik de volgende opdracht om de uitvoer van het CRT-bestand af te drukken en de inhoud ervan te verifiëren:
+1. Gebruik de volgende opdracht om de uitvoer van het CRT-bestand af te drukken en de inhoud ervan te controleren:
 
    ```
    openssl x509 -in fabrikam.crt -text -noout
    ```
 
-   ![Certificaatverificatie](media/self-signed-certificates/verify-cert.png)
+   ![Certificaat verificatie](media/self-signed-certificates/verify-cert.png)
 
 1. Controleer de bestanden in uw map en zorg ervoor dat u de volgende bestanden hebt:
 
-   - contoso.crt
-   - contoso.key
-   - fabrikam.crt
-   - fabrikam.key
+   - contoso. CRT
+   - contoso. key
+   - fabrikam. CRT
+   - fabrikam. key
 
-## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>Het certificaat configureren in de TLS-instellingen van uw webserver
+## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>Het certificaat in de TLS-instellingen van uw webserver configureren
 
-Configureer TLS op uw webserver met de fabrikam.crt- en fabrikam.key-bestanden. Als uw webserver geen twee bestanden kan verwerken, u deze combineren tot één .pem- of .pfx-bestand met OpenSSL-opdrachten.
+Configureer op uw webserver TLS met de bestanden fabrikam. CRT en fabrikam. key. Als uw webserver geen twee bestanden kan gebruiken, kunt u deze combi neren in één. pem-of. pfx-bestand met behulp van OpenSSL-opdrachten.
 
 ### <a name="iis"></a>IIS
 
-Zie [Hoe u geïmporteerde certificaten op een webserver in Windows Server 2003 installeert](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)voor instructies over het importeren van certificaten en het uploaden als servercertificaat op IIS.
+Zie [procedure: geïmporteerde certificaten installeren op een webserver in Windows server 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)voor instructies over het importeren van een certificaat en het uploaden ervan als server certificaat in IIS.
 
-Zie SSL instellen [op IIS 7 voor](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)tls-bindende instructies.
+Zie [SSL instellen in IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)voor instructies voor TLS-binding.
 
 ### <a name="apache"></a>Apache
 
-De volgende configuratie is een voorbeeld [van virtuele host die is geconfigureerd voor SSL](https://cwiki.apache.org/confluence/display/HTTPD/NameBasedSSLVHosts) in Apache:
+De volgende configuratie is een voor beeld [van een virtuele host die is geconfigureerd voor SSL](https://cwiki.apache.org/confluence/display/HTTPD/NameBasedSSLVHosts) in Apache:
 
 ```
 <VirtualHost www.fabrikam:443>
@@ -151,46 +151,46 @@ De volgende configuratie is een voorbeeld [van virtuele host die is geconfiguree
 
 ### <a name="nginx"></a>NGINX
 
-De volgende configuratie is een voorbeeld [VAN NGINX-serverblokkering](https://nginx.org/docs/http/configuring_https_servers.html) met TLS-configuratie:
+De volgende configuratie is een voor beeld van een [NGINX-server blok](https://nginx.org/docs/http/configuring_https_servers.html) met TLS-configuratie:
 
 ![NGINX met TLS](media/self-signed-certificates/nginx-ssl.png)
 
-## <a name="access-the-server-to-verify-the-configuration"></a>Toegang tot de server om de configuratie te verifiëren
+## <a name="access-the-server-to-verify-the-configuration"></a>Toegang tot de server om de configuratie te controleren
 
-1. Voeg het basiscertificaat toe aan de vertrouwde hoofdmap van uw machine. Wanneer u de website bezoekt, moet u ervoor zorgen dat de volledige certificaatketen in de browser wordt weergegeven.
+1. Voeg het basis certificaat toe aan het vertrouwde basis archief van de computer. Wanneer u de website opent, moet u ervoor zorgen dat de volledige certificaat keten wordt weer gegeven in de browser.
 
    ![Vertrouwde basiscertificaten](media/self-signed-certificates/trusted-root-cert.png)
 
    > [!NOTE]
-   > Er wordt aangenomen dat DNS is geconfigureerd om de naam van de webserver (in dit voorbeeld www.fabrikam.com) naar het IP-adres van uw webserver te richten. Als dit niet het probleem is, u het [hosts-bestand](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d) bewerken om de naam op te lossen.
-1. Blader naar uw website en klik op het vergrendelingspictogram in het adresvak van uw browser om de site- en certificaatgegevens te verifiëren.
+   > Er wordt van uitgegaan dat DNS is geconfigureerd om de naam van de webserver (in dit voor beeld www.fabrikam.com) te laten wijzen aan het IP-adres van uw webserver. Als dat niet het geval is, kunt u het [bestand hosts](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d) bewerken om de naam op te lossen.
+1. Blader naar uw website en klik op het vergrendelings pictogram in het adresvak van uw browser om de site-en certificaat gegevens te controleren.
 
-## <a name="verify-the-configuration-with-openssl"></a>De configuratie verifiëren met OpenSSL
+## <a name="verify-the-configuration-with-openssl"></a>De configuratie controleren met OpenSSL
 
-U OpenSSL ook gebruiken om het certificaat te verifiëren.
+U kunt ook OpenSSL gebruiken om het certificaat te verifiëren.
 
 ```
 openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 ```
 
-![Verificatie van OpenSSL-certificaat](media/self-signed-certificates/openssl-verify.png)
+![OpenSSL-certificaat verificatie](media/self-signed-certificates/openssl-verify.png)
 
-## <a name="upload-the-root-certificate-to-application-gateways-http-settings"></a>Het hoofdcertificaat uploaden naar de HTTP-instellingen van application gateway
+## <a name="upload-the-root-certificate-to-application-gateways-http-settings"></a>Het basis certificaat uploaden naar de HTTP-instellingen van de Application Gateway
 
-Als u het certificaat wilt uploaden in Application Gateway, moet u het .crt-certificaat exporteren naar een .cer-indeling Base-64 gecodeerd. Aangezien .crt al de openbare sleutel bevat in de basis-64 gecodeerde indeling, wijzigt u de bestandsextensie van .crt naar .cer. 
+Als u het certificaat in Application Gateway wilt uploaden, moet u het. CRT-certificaat exporteren naar een. CER-indeling basis-64-code ring. Omdat CRT de open bare sleutel in de indeling base-64 bevat, kunt u de bestands extensie alleen wijzigen van. CRT naar. cer. 
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Als u het vertrouwde basiscertificaat vanuit de portal wilt uploaden, selecteert u de **HTTP-instellingen** en kiest u het **HTTPS-protocol.**
+Als u het vertrouwde basis certificaat wilt uploaden vanuit de portal, selecteert u de **http-instellingen** en kiest u het **https** -protocol.
 
-![Een certificaat toevoegen via de portal](media/self-signed-certificates/portal-cert.png)
+![Een certificaat toevoegen met behulp van de portal](media/self-signed-certificates/portal-cert.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-U azure CLI of Azure PowerShell ook gebruiken om het hoofdcertificaat te uploaden. De volgende code is een Azure PowerShell-voorbeeld.
+U kunt ook Azure CLI of Azure PowerShell gebruiken om het basis certificaat te uploaden. De volgende code is een Azure PowerShell-voor beeld.
 
 > [!NOTE]
-> In het volgende voorbeeld wordt een vertrouwd rootcertificaat aan de toepassingsgateway toegevoegd, wordt een nieuwe HTTP-instelling gemaakt en wordt een nieuwe regel toegevoegd, ervan uitgaande dat de backendpool en de listener al bestaan.
+> In het volgende voor beeld wordt een vertrouwd basis certificaat toegevoegd aan de toepassings gateway, wordt een nieuwe HTTP-instelling gemaakt en een nieuwe regel toegevoegd, ervan uitgaande dat de back-end-pool en de listener al bestaan.
 
 ```azurepowershell
 ## Add the trusted root certificate to the Application Gateway
@@ -263,14 +263,14 @@ Add-AzApplicationGatewayRequestRoutingRule `
 Set-AzApplicationGateway -ApplicationGateway $gw 
 ```
 
-### <a name="verify-the-application-gateway-backend-health"></a>De backendstatus van de toepassingsgateway verifiëren
+### <a name="verify-the-application-gateway-backend-health"></a>De status van de back-end van de toepassings Gateway controleren
 
-1. Klik op de **backendstatusweergave** van de toepassingsgateway om te controleren of de sonde in orde is.
-1. U moet zien dat de status **in orde** is voor de HTTPS-sonde.
+1. Klik op de weer gave **back-end** van uw toepassings gateway om te controleren of de test in orde is.
+1. U ziet dat de status **in orde** is voor de https-test.
 
-![HTTPS-sonde](media/self-signed-certificates/https-probe.png)
+![HTTPS-test](media/self-signed-certificates/https-probe.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Overzicht van TLS-beëindiging en end-to-end TLS met Application Gateway](ssl-overview.md)voor meer informatie over SSL\TLS in Application Gateway.
+Zie [overzicht van TLS-beëindiging en end-to-end-TLS met Application Gateway](ssl-overview.md)voor meer informatie over SSL\TLS in Application Gateway.
 

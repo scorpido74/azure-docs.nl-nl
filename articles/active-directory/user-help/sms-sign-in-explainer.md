@@ -1,6 +1,6 @@
 ---
-title: Gebruikerservaring via sms voor telefoonnummer (voorbeeld) - Azure AD
-description: Meer informatie over de gebruikerservaring van sms-aanmeldingvoor nieuwe of bestaande telefoonnummers
+title: SMS-aanmeld gebruikers ervaring voor telefoon nummer (preview)-Azure AD
+description: Meer informatie over de gebruikers ervaring voor SMS-aanmelding voor nieuwe of bestaande telefoon nummers
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,63 +13,63 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: e5369247fc1e31bafb158e83a54bf8badf721d0d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81378832"
 ---
-# <a name="use-your-phone-number-as-a-user-name-preview"></a>Uw telefoonnummer gebruiken als gebruikersnaam (voorbeeld)
+# <a name="use-your-phone-number-as-a-user-name-preview"></a>Gebruik uw telefoon nummer als een gebruikers naam (preview-versie)
 
-Het registreren van een apparaat geeft uw telefoon toegang tot de services van uw organisatie en geeft uw organisatie geen toegang tot uw telefoon. Als u een beheerder bent, u meer informatie vinden in [Gebruikers configureren en inschakelen voor verificatie via sms.](../authentication/howto-authentication-sms-signin.md)
+Wanneer u een apparaat registreert, krijgt u toegang tot de services van uw organisatie en kunt u uw organisatie geen toegang geven tot uw telefoon. Als u een beheerder bent, kunt u meer informatie vinden in [configureren en gebruikers inschakelen voor verificatie op basis van SMS](../authentication/howto-authentication-sms-signin.md).
 
-Als uw organisatie geen sms-aanmelding beschikbaar heeft gemaakt, ziet u geen optie voor het account wanneer u een telefoon registreert met uw account.  
+Als uw organisatie geen SMS-aanmelding beschikbaar heeft gemaakt, wordt er geen optie voor weer gegeven wanneer u een telefoon registreert bij uw account.  
 
-## <a name="when-you-have-a-new-phone-number"></a>Wanneer u een nieuw telefoonnummer hebt
+## <a name="when-you-have-a-new-phone-number"></a>Wanneer u een nieuw telefoon nummer hebt
 
-Als u een nieuwe telefoon of nieuw nummer krijgt en u registreert deze bij een organisatie waarvoor sms-aanmelding beschikbaar is, ervaart u het normale registratieproces voor telefoons:
+Als u een nieuwe telefoon of nieuw nummer krijgt en u registreert bij een organisatie waarvoor SMS-aanmelding beschikbaar is, wordt het normale registratie proces voor de telefoon uitgevoerd:
 
-1. Selecteer **Methode toevoegen**.
-1. Selecteer **Telefoon**.
-1. Voer telefoonnummer in en selecteer **Tekst mij een code**.
-1. Nadat u de code hebt ingevoerd, selecteert u **Volgende**.
-1. U ziet een prompt die zegt: "SMS geverifieerd. Uw telefoon is met succes geregistreerd."
+1. Selecteer **methode toevoegen**.
+1. Selecteer **telefoon**.
+1. Voer het telefoon nummer in en selecteer **SMS me een code**.
+1. Nadat u de code hebt ingevoerd, selecteert u **volgende**.
+1. Er wordt een prompt weer gegeven met de tekst "SMS geverifieerd. De registratie van uw telefoon is voltooid. "
 
 > [!Important]
-> Vanwege een bekend probleem in de preview, voor een korte tijd het toevoegen van telefoonnummer zal niet registreren het nummer voor SMS-aanmelding. Je moet je aanmelden met het toegevoegde nummer en vervolgens de aanwijzingen volgen om het nummer voor sms-aanmelding te registreren.
+> Als gevolg van een bekend probleem in de preview, wordt voor een korte periode het toevoegen van een telefoon nummer het nummer voor SMS-aanmelding niet geregistreerd. U moet zich aanmelden met het toegevoegde nummer en vervolgens de prompts volgen om het nummer voor SMS-aanmelding te registreren.
 
-### <a name="when-the-phone-number-is-in-use"></a>Wanneer het telefoonnummer in gebruik is
+### <a name="when-the-phone-number-is-in-use"></a>Wanneer het telefoon nummer wordt gebruikt
 
-Als u een telefoonnummer probeert te gebruiken dat iemand anders in uw organisatie gebruikt, ziet u het volgende bericht:
+Als u probeert een telefoon nummer te gebruiken dat iemand anders in uw organisatie gebruikt, wordt het volgende bericht weer gegeven:
 
-![Foutbericht wanneer uw telefoonnummer al is gebruikt](media/sms-sign-in-explainer/sms-sign-in-error.png)
+![Fout bericht wanneer uw telefoon nummer al wordt gebruikt](media/sms-sign-in-explainer/sms-sign-in-error.png)
 
-Neem contact op met uw beheerder om het probleem op te lossen.
+Neem contact op met uw beheerder om het probleem te verhelpen.
 
 ## <a name="when-you-have-an-existing-number"></a>Wanneer u een bestaand nummer hebt
 
-Als u al een telefoonnummer bij een organisatie gebruikt en uw telefoonnummer als gebruikersnaam gebruikt, u zich via de volgende stappen aanmelden.
+Als u al een telefoon nummer met een organisatie gebruikt en u uw telefoon nummer gebruikt terwijl er een gebruikers naam beschikbaar is, kunt u zich aan de hand van de volgende stappen aanmelden.
 
-1. Wanneer aanmelden via sms beschikbaar is, wordt een banner weergegeven met de vraag of u het telefoonnummer voor sms-aanmelding wilt inschakelen:
+1. Wanneer SMS-aanmelding beschikbaar is, wordt er een banner weer gegeven waarin u wordt gevraagd of u het telefoon nummer voor SMS-aanmelding wilt inschakelen:
 
     [![](media/sms-sign-in-explainer/sms-sign-in-banner.png "Banner to enable SMS sign-in for a phone number")](media/sms-sign-in-explainer/sms-sign-in-banner.png#lightbox)
 
-1. Er wordt ook een knop **Inschakelen** weergegeven als u de caret selecteert op de tegel telefoonmethode:
+1. Er wordt ook een knop **inschakelen** weer gegeven als u het caret selecteert op de tegel telefoon methode:
 
     [![](media/sms-sign-in-explainer/sms-sign-in-phone-method.png "Banner to enable SMS sign-in for a phone number")](media/sms-sign-in-explainer/sms-sign-in-phone-method.png#lightbox)
 
-1. Als u de methode wilt inschakelen, selecteert u **Inschakelen**. U wordt gevraagd de actie te bevestigen:
+1. Selecteer **inschakelen**om de methode in te scha kelen. U wordt gevraagd de actie te bevestigen:
 
-    ![Bevestigingsdialoogvenster om aanmelden via sms in te schakelen voor een telefoonnummer](media/sms-sign-in-explainer/sms-sign-in-confirmation.png)
+    ![Bevestigings venster om SMS-aanmelding voor een telefoon nummer in te scha kelen](media/sms-sign-in-explainer/sms-sign-in-confirmation.png)
 
 1. Selecteer **Inschakelen**.
 
-## <a name="when-you-remove-your-phone-number"></a>Wanneer u uw telefoonnummer verwijdert
+## <a name="when-you-remove-your-phone-number"></a>Wanneer u uw telefoon nummer verwijdert
 
-1. Als u het telefoonnummer wilt verwijderen, selecteert u de knop Verwijderen op de tegel van de sms-aanmeldingsmethode.
+1. Als u het telefoon nummer wilt verwijderen, selecteert u de knop verwijderen op de tegel SMS-aanmeldings methode.
 
     [![](media/sms-sign-in-explainer/sms-sign-in-delete-method.png "Banner to delete SMS sign-in for a phone number")](media/sms-sign-in-explainer/sms-sign-in-delete-method.png#lightbox)
 
-2. Wanneer u wordt gevraagd de actie te bevestigen, selecteert u **OK**.
+2. Wanneer u wordt gevraagd om de actie te bevestigen, selecteert u **OK**.
 
-U een telefoonnummer dat wordt gebruikt als standaardaanmeldingsmethode niet verwijderen. Als u het nummer wilt verwijderen, moet u de standaardaanmeldingsmethode wijzigen en vervolgens het telefoonnummer opnieuw verwijderen.
+U kunt geen telefoon nummer verwijderen dat in gebruik is als de standaard methode voor het aanmelden. Als u het nummer wilt verwijderen, moet u de standaard aanmeldings methode wijzigen en vervolgens het telefoon nummer opnieuw verwijderen.

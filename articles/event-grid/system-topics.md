@@ -1,6 +1,6 @@
 ---
-title: Systeemonderwerpen in Azure Event Grid
-description: Beschrijft systeemonderwerpen in Azure Event Grid.
+title: Systeem onderwerpen in Azure Event Grid
+description: Hierin worden systeem onderwerpen beschreven in Azure Event Grid.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,30 +8,30 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 46bceeb31fa38068c6c4f9f3a86ed556ad39effb
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393157"
 ---
-# <a name="system-topics-in-azure-event-grid"></a>Systeemonderwerpen in Azure Event Grid
-De Azure Event Grid-service maakt systeemonderwerpen wanneer u een eerste gebeurtenisabonnement maakt voor een Azure-gebeurtenisbron. Momenteel maakt Event Grid geen systeemonderwerpen voor onderwerpbronnen die zijn gemaakt vóór 15 maart 2020. Voor alle onderwerpbronnen die u op of na deze datum hebt gemaakt, maakt Gebeurtenisraster automatisch systeemonderwerpen. In dit artikel worden **systeemonderwerpen** beschreven in Azure Event Grid.
+# <a name="system-topics-in-azure-event-grid"></a>Systeem onderwerpen in Azure Event Grid
+De Azure Event Grid-Service maakt systeem onderwerpen wanneer u een eerste gebeurtenis abonnement voor een Azure-gebeurtenis bron maakt. Event Grid maakt momenteel geen systeem onderwerpen voor de Onderwerpgegevens die zijn gemaakt vóór mrt, 15, 2020. Voor alle onderwerps bronnen die u op of na deze datum hebt gemaakt, maakt Event Grid automatisch systeem onderwerpen. In dit artikel worden **systeem onderwerpen** beschreven in azure Event grid.
 
 > [!NOTE]
-> Deze functie is momenteel niet ingeschakeld voor azure government cloud. 
+> Deze functie is momenteel niet ingeschakeld voor Azure Government Cloud. 
 
 ## <a name="overview"></a>Overzicht
-Wanneer u een eerste gebeurtenisabonnement maakt voor een Azure-gebeurtenisbron, zoals Azure Storage-account, wordt bij het inrichtingsproces voor het abonnement een extra bron gemaakt van het type **Microsoft.EventGrid/systemTopics**. Wanneer het laatste gebeurtenisabonnement op de Azure-gebeurtenisbron wordt verwijderd, wordt het systeemonderwerp automatisch verwijderd.
+Wanneer u een eerste gebeurtenis abonnement maakt voor een Azure-gebeurtenis bron, zoals Azure Storage account, wordt door het inrichtings proces voor het abonnement een extra resource van het type **micro soft. EventGrid/systemTopics**gemaakt. Wanneer het laatste gebeurtenis abonnement op de Azure-gebeurtenis bron wordt verwijderd, wordt het onderwerp System automatisch verwijderd.
 
-Het systeemonderwerp is niet van toepassing op aangepaste onderwerpscenario's, dat wil zeggen gebeurtenisrasteronderwerpen en gebeurtenisrasterdomeinen. 
+Systeem onderwerp is niet van toepassing op aangepaste scenario's, dat wil zeggen, Event Grid onderwerpen en Event Grid domeinen. 
 
 ## <a name="location"></a>Locatie
-Voor Azure-gebeurtenisbronnen die zich in een specifieke regio/locatie bevinden, wordt het systeemonderwerp gemaakt op dezelfde locatie als de Azure-gebeurtenisbron. Als u bijvoorbeeld een gebeurtenisabonnement maakt voor een Azure blob-opslag in Oost-VS, wordt het systeemonderwerp gemaakt in Oost-VS. Voor algemene Azure-gebeurtenisbronnen, zoals Azure-abonnementen, resourcegroepen of Azure Maps, maakt Event Grid het systeemonderwerp op **algemene** locatie. 
+Voor Azure-gebeurtenis bronnen die zich in een specifieke regio/locatie bevinden, wordt het systeem onderwerp gemaakt op dezelfde locatie als de Azure-gebeurtenis bron. Als u bijvoorbeeld een gebeurtenis abonnement maakt voor een Azure Blob-opslag in VS-Oost, wordt het onderwerp System gemaakt in VS-Oost. Voor algemene Azure-gebeurtenis bronnen, zoals Azure-abonnementen, resource groepen of Azure Maps, maakt Event Grid het onderwerp System op de **globale** locatie. 
 
 ## <a name="resource-group"></a>Resourcegroep 
-In het algemeen wordt het systeemonderwerp gemaakt in dezelfde resourcegroep waarin de Azure-gebeurtenisbron zich bevindt. Voor gebeurtenisabonnementen die zijn gemaakt op Azure-abonnementsbereik, wordt het systeemonderwerp gemaakt onder de resourcegroep **Default-EventGrid**. Als de resourcegroep niet bestaat, maakt Azure Event Grid deze voordat u het systeemonderwerp maakt. 
+In het algemeen wordt het systeem onderwerp gemaakt in dezelfde resource groep als waarin de Azure-gebeurtenis bron zich bevindt. Voor gebeurtenis abonnementen die zijn gemaakt bij een Azure-abonnement, wordt het onderwerp System gemaakt onder de **standaard-EventGrid**van de resource groep. Als de resource groep niet bestaat, wordt deze door Azure Event Grid gemaakt voordat het onderwerp System wordt gemaakt. 
 
-Wanneer u de brongroep met het opslagaccount probeert te verwijderen, ziet u het systeemonderwerp in de lijst met getroffen bronnen.  
+Wanneer u de resource groep probeert te verwijderen met het opslag account, wordt het onderwerp System weer geven in de lijst met betrokken resources.  
 
 ![Resourcegroep verwijderen](./media/system-topics/delete-resource-group.png)
 

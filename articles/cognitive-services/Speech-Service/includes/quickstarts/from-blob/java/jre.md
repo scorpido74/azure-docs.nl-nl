@@ -5,83 +5,83 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: trbye
 ms.openlocfilehash: 804cc2213379364002a093509f2393e375c3971b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81401003"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u:
+Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
-> * [Een Azure-spraakbron maken](../../../../get-started.md)
-> * [Een bronbestand uploaden naar een Azure-blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
+> * [Een Azure-spraak resource maken](../../../../get-started.md)
+> * [Een bron bestand uploaden naar een Azure-Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 
-## <a name="open-your-project-in-eclipse"></a>Open uw project in Eclipse
+## <a name="open-your-project-in-eclipse"></a>Open uw project in eclips
 
-De eerste stap is om ervoor te zorgen dat u uw project open in Eclipse.
+De eerste stap is om ervoor te zorgen dat uw project in eclips is geopend.
 
 1. Eclipse starten
-2. Laad uw project `Main.java`en open .
+2. Laad uw project en open `Main.java`het.
 
 ## <a name="add-a-reference-to-gson"></a>Een verwijzing naar Gson toevoegen
-We zullen gebruik maken van een externe JSON serializer / deserializer in deze quickstart. Voor Java hebben we gekozen voor [Gson.](https://github.com/google/gson)
+In deze Quick Start maakt u gebruik van een externe JSON-serialisatiefunctie/deserialisatie. Voor Java hebben we gekozen voor [Gson](https://github.com/google/gson).
 
-Open uw pom.xml en voeg de volgende verwijzing toe.
+Open pom. XML en voeg de volgende verwijzing toe.
 
 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)]
 
-## <a name="start-with-some-boilerplate-code"></a>Begin met een soort boilerplate-code
+## <a name="start-with-some-boilerplate-code"></a>Begin met een van de standaard code
 
-Laten we wat code toevoegen die werkt als een skelet voor ons project.
+Laten we een code toevoegen die als een skelet voor het project werkt.
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=1-13,95-105,206-207)]
 
 [!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
-## <a name="json-wrappers"></a>JSON Wikkels
+## <a name="json-wrappers"></a>JSON-wrappers
 
-Aangezien de REST API's aanvragen in JSON-formaat aannemen en ook resultaten in JSON retourneren, konden we met hen communiceren met alleen tekenreeksen, maar dat wordt niet aanbevolen.
-Om de aanvragen en reacties gemakkelijker te beheren, verklaren we een paar klassen te gebruiken voor het serialiseren / deserialiseren van de JSON.
+Als de aanvragen van de REST API in JSON-indeling worden uitgevoerd en de resultaten worden geretourneerd in JSON, kunnen ze met alleen teken reeksen communiceren, maar dit wordt niet aanbevolen.
+Om de aanvragen en reacties gemakkelijker te kunnen beheren, declareren we een aantal klassen die moeten worden gebruikt voor het serialiseren/deserialiseren van de JSON.
 
-Ga je gang en `Main`zet hun verklaringen voor .
+Plaats de declaraties vooraf `Main`.
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=15-93)]
 
-## <a name="create-and-configure-an-http-client"></a>Een Http-client maken en configureren
-Het eerste wat we nodig hebben is een Http-client met een juiste basis-URL en verificatieset.
-Deze code `Main` invoegen in[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=106-113)]
+## <a name="create-and-configure-an-http-client"></a>Een HTTP-client maken en configureren
+Het eerste wat u nodig hebt, is een HTTP-client waarvoor een juiste basis-URL en verificatieset is ingesteld.
+Deze code invoegen in `Main`[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=106-113)]
 
-## <a name="generate-a-transcription-request"></a>Een transcriptieaanvraag genereren
-Vervolgens genereren we het transcriptieverzoek. Deze code `Main` toevoegen aan[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=115-116)]
+## <a name="generate-a-transcription-request"></a>Een transcriptie-aanvraag genereren
+Vervolgens genereren we de transcriptie-aanvraag. Voeg deze code toe `Main` aan[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=115-116)]
 
-## <a name="send-the-request-and-check-its-status"></a>Stuur het verzoek en controleer de status
-Nu plaatsen we het verzoek bij de Spraakservice en controleren we de initiële reactiecode. Deze antwoordcode geeft eenvoudig aan of de service het verzoek heeft ontvangen. De service retourneert een url in de antwoordkoppen, dat is de locatie waar de transcriptiestatus wordt opgeslagen.
+## <a name="send-the-request-and-check-its-status"></a>De aanvraag verzenden en de status controleren
+Nu gaan we de aanvraag verzenden naar de speech-service en de eerste respons code controleren. Deze antwoord code geeft eenvoudigweg aan of de service de aanvraag heeft ontvangen. De service retourneert een URL in de antwoord headers die de locatie is waar de transcriptie-status wordt opgeslagen.
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=118-129)]
 
-## <a name="wait-for-the-transcription-to-complete"></a>Wachten tot de transcriptie is voltooid
-Aangezien de service de transcriptie asynchroon verwerkt, moeten we om de zoveel tijd peilen voor de status ervan. We controleren elke 5 seconden.
+## <a name="wait-for-the-transcription-to-complete"></a>Wacht tot de transcriptie is voltooid
+Omdat de transcriptie asynchroon wordt verwerkt, moeten we elke regel vaak de status van de service controleren. We controleren elke vijf seconden.
 
-We kunnen de status controleren door de inhoud op te halen op de Url die we kregen toen het verzoek werd geplaatst. Wanneer we de inhoud terugkrijgen, deserialiseren we deze in een van onze helperklassen om het gemakkelijker te maken om ermee om te gaan.
+We kunnen de status controleren door de inhoud op te halen bij de URL die we hebben ontvangen toen de aanvraag werd verzonden. Wanneer de inhoud weer wordt opgehaald, deserialiseren we deze in een van onze helperklasse om gemakkelijker te kunnen communiceren met.
 
-Hier is de polling code met status weergave voor alles behalve een succesvolle voltooiing, zullen we dat nu doen.
+Dit is de polling code met status weergave voor alles, behalve een geslaagde voltooiing, we doen dat nu.
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=131-159,192-204)]
 
-## <a name="display-the-transcription-results"></a>De transcriptieresultaten weergeven
-Zodra de service de transcriptie heeft voltooid, worden de resultaten opgeslagen in een andere url die we kunnen krijgen van de statusrespons.
+## <a name="display-the-transcription-results"></a>De transcriptie-resultaten weer geven
+Zodra de service de transcriptie heeft voltooid, worden de resultaten opgeslagen in een andere URL die we vanaf het status antwoord kunnen ontvangen.
 
-We downloaden de inhoud van die URL, deserialiseren de JSON en doorlopen de resultaten die de weergavetekst afdrukken.
+De inhoud van de URL wordt gedownload, de JSON gedeserialiseerd en de resultaten door lopen die worden afgedrukt op de weergave tekst.
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=6-160-190)]
 
 ## <a name="check-your-code"></a>Controleer uw code
-Op dit punt, uw code moet er zo uitzien: (We hebben een aantal opmerkingen toegevoegd aan deze versie) [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java]
+Op dit moment moet uw code er als volgt uitzien: (er zijn enkele opmerkingen aan deze versie toegevoegd) [! code-Java [] (~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java]
 
 ## <a name="build-and-run-your-app"></a>Uw app bouwen en uitvoeren
 
-Nu bent u klaar om uw app te bouwen en onze spraakherkenning te testen met behulp van de Spraakservice.
+Nu bent u klaar om uw app te bouwen en de spraak herkenning te testen met behulp van de speech-service.
 
 ## <a name="next-steps"></a>Volgende stappen
 

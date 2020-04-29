@@ -1,6 +1,6 @@
 ---
-title: Azure-beveiligingsbeheer - Voorraad- en assetbeheer
-description: Voorraad voorraad en beheer van Azure-beveiliging
+title: Azure-beveiligings beheer-inventarisatie en Asset Management
+description: Azure Security Control-inventaris en Asset Management
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
@@ -8,171 +8,171 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: aece7278d134145e00b027c184f3817d5566e1e5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81408365"
 ---
-# <a name="security-control-inventory-and-asset-management"></a>Beveiligingsbeheer: voorraad- en vermogensbeheer
+# <a name="security-control-inventory-and-asset-management"></a>Beveiligings beheer: inventarisatie en activa beheer
 
-Aanbevelingen voor voorraad- en vermogensbeheer zijn gericht op het aanpakken van problemen die verband houden met het actief beheren (inventaris, bijhouden en corrigeren) van alle Azure-resources, zodat alleen geautoriseerde resources toegang krijgen en ongeautoriseerde en onbeheerde resources worden geïdentificeerd en verwijderd.
+Aanbevelingen voor inventarisatie en Asset Management richten zich op het adresseren van problemen met betrekking tot het actief beheren (inventariseren, bijhouden en corrigeren) van alle Azure-resources, zodat alleen geautoriseerde resources toegang krijgen en niet-geautoriseerde en onbeheerde bronnen worden geïdentificeerd en verwijderd.
 
-## <a name="61-use-automated-asset-discovery-solution"></a>6.1: Gebruik geautomatiseerde Asset Discovery-oplossing
+## <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatische Asset-detectie oplossing gebruiken
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 6.1 | 1.1, 1.2, 1.3, 1.4, 9.1, 12.1 | Klant |
+| 6.1 | 1,1, 1,2, 1,3, 1,4, 9,1, 12,1 | Klant |
 
-Gebruik Azure Resource Graph om alle bronnen (zoals compute, storage, netwerk, poorten en protocollen, enz.) in uw abonnement(en) op te vragen/te ontdekken.  Zorg voor de juiste (lees)machtigingen in uw tenant en opsommen van alle Azure-abonnementen en resources binnen uw abonnementen.
+Gebruik Azure resource Graph voor het opvragen/detecteren van alle resources (zoals compute, opslag, netwerk, poorten en protocollen enz.) binnen uw abonnement (en).  Zorg ervoor dat de juiste (Lees-) machtigingen voor uw Tenant en alle Azure-abonnementen en resources in uw abonnementen inventariseren.
 
-Hoewel klassieke Azure-bronnen kunnen worden ontdekt via Resource Graph, is het ten zeerste aan te raden om azure resource manager-resources in de toekomst te maken en te gebruiken.
+Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek, is het raadzaam om Azure Resource Manager resources te maken en te gebruiken.
 
-- [Query's maken met Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Query's maken met Azure resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
 
-- [Uw Azure-abonnementen weergeven](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Uw Azure-abonnementen weer geven](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-- [Azure RBAC begrijpen](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-## <a name="62-maintain-asset-metadata"></a>6.2: Metagegevens van activa onderhouden
+## <a name="62-maintain-asset-metadata"></a>6,2: meta gegevens van activa onderhouden
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
 | 6.2 | 1.5 | Klant |
 
-Tags toepassen op Azure-resources met metagegevens om ze logisch te ordenen in een taxonomie.
+Pas Tags toe op Azure-resources die meta gegevens geven om ze logisch in een taxonomie te organiseren.
 
 - [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-## <a name="63-delete-unauthorized-azure-resources"></a>6.3: Ongeautoriseerde Azure-bronnen verwijderen
+## <a name="63-delete-unauthorized-azure-resources"></a>6,3: niet-geautoriseerde Azure-resources verwijderen
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
 | 6.3 | 1.6 | Klant |
 
-Gebruik tagging, beheergroepen en afzonderlijke abonnementen, waar nodig, om assets te ordenen en bij te houden. Verzoen de voorraad regelmatig en zorg ervoor dat ongeautoriseerde bronnen tijdig uit het abonnement worden verwijderd.
+Gebruik Tags, beheer groepen en afzonderlijke abonnementen, waar nodig, om assets te organiseren en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement.
 
-- [Extra Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
-- [Managementgroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Beheergroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create)
 
 - [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-## <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4: Een voorraad van goedgekeurde Azure-resources definiëren en onderhouden
+## <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: een inventaris van goedgekeurde Azure-resources definiëren en onderhouden
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
 | 6.4 | 2.1 | Klant |
 
-Maak een inventaris van goedgekeurde Azure-resources en goedgekeurde software voor rekenbronnen volgens onze organisatorische behoeften.
+Maak een inventaris van goedgekeurde Azure-resources en goedgekeurde software voor Compute-resources conform onze organisatorische behoeften.
 
-## <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Monitor voor niet-goedgekeurde Azure-bronnen
+## <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitor voor niet-goedgekeurde Azure-resources
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 6.5 | 2.3, 2.4 | Klant |
+| 6.5 | 2,3, 2,4 | Klant |
 
-Gebruik Azure Policy om beperkingen op te leggen aan het type resources dat in uw abonnement(en) kan worden gemaakt.
+Gebruik Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in uw abonnement (en).
 
-Gebruik Azure Resource Graph om bronnen binnen hun abonnement(en) te zoeken/ontdekken.  Controleer of alle Azure-resources die in de omgeving aanwezig zijn, zijn goedgekeurd.
+Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen hun abonnement (en).  Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
 
-- [Azure-beleid configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
 - [Query's maken met Azure Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
 
-## <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Monitor voor niet-goedgekeurde softwaretoepassingen binnen compute resources
+## <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: monitor voor niet-goedgekeurde software toepassingen binnen reken resources
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 6.6 | 2.3, 2.4 | Klant |
+| 6.6 | 2,3, 2,4 | Klant |
 
-Gebruik Azure virtual machine Inventory om het verzamelen van informatie over alle software op virtuele machines te automatiseren. Softwarenaam, Versie, Uitgever en Vernieuwingstijd zijn beschikbaar via de Azure-portal. Als u toegang wilt krijgen tot de installatiedatum en andere informatie, schakelt u diagnostische gegevens op gastniveau in en brengt u de Windows-gebeurtenislogboeken naar een Logboekanalysewerkruimte.
+Gebruik Azure virtual machine Inventory om het verzamelen van informatie over alle software op Virtual Machines te automatiseren. De software naam, versie, uitgever en tijd van vernieuwen zijn beschikbaar via de Azure Portal. Als u toegang wilt krijgen tot installatie datum en andere informatie, schakelt u Diagnostische gegevens op gast niveau in en brengt u de Windows-gebeurtenis Logboeken in een Log Analytics-werk ruimte.
 
-- [Azure-voorraad voor virtuele machines inschakelen](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
+- [Inventarisatie van virtuele Azure-machines inschakelen](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
 
-## <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Niet-goedgekeurde Azure-bronnen en -softwaretoepassingen verwijderen
+## <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: niet-goedgekeurde Azure-resources en software toepassingen verwijderen
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
 | 6.7 | 2,5 | Klant |
 
-Gebruik de file integrity monitoring (Change Tracking) van Azure Security Center en de inventaris van virtuele machines om alle software te identificeren die op virtuele machines is geïnstalleerd. U uw eigen proces implementeren voor het verwijderen van ongeautoriseerde software. U ook een oplossing van derden gebruiken om niet-goedgekeurde software te identificeren.
+Gebruik Azure Security Center File Integrity Monitoring (Wijzigingen bijhouden) en virtual machine Inventory om alle software te identificeren die op Virtual Machines is geïnstalleerd. U kunt uw eigen proces voor het verwijderen van onbevoegde software implementeren. U kunt ook een oplossing van derden gebruiken om niet-goedgekeurde software te identificeren.
 
-- [Bestandsintegriteitscontrole gebruiken](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring#using-file-integrity-monitoring)
+- [Bestands integriteit controleren gebruiken](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring#using-file-integrity-monitoring)
 
-- [Inzicht in Azure Change Tracking](https://docs.microsoft.com/azure/automation/change-tracking)
+- [Meer informatie over Azure Wijzigingen bijhouden](https://docs.microsoft.com/azure/automation/change-tracking)
 
-- [Azure-voorraad voor virtuele machines inschakelen](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
+- [Inventarisatie van virtuele Azure-machines inschakelen](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
 
-## <a name="68-use-only-approved-applications"></a>6.8: Gebruik alleen goedgekeurde aanvragen
+## <a name="68-use-only-approved-applications"></a>6,8: alleen goedgekeurde toepassingen gebruiken
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
 | 6.8 | 2,6 | Klant |
 
-Gebruik Azure Security Center Adaptive Application Controls om ervoor te zorgen dat alleen geautoriseerde software wordt uitgevoerd en dat alle ongeautoriseerde software wordt geblokkeerd voor het uitvoeren op Azure Virtual Machines.
+Gebruik Azure Security Center adaptieve toepassings controles om ervoor te zorgen dat alleen geautoriseerde software wordt uitgevoerd en alle niet-geautoriseerde software wordt geblokkeerd voor uitvoering op Azure Virtual Machines.
 
-- [Azure Security Center Adaptive Application Controls gebruiken](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+- [Azure Security Center adaptieve toepassings besturings elementen gebruiken](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
-## <a name="69-use-only-approved-azure-services"></a>6.9: Alleen goedgekeurde Azure-services gebruiken
+## <a name="69-use-only-approved-azure-services"></a>6,9: alleen goedgekeurde Azure-Services gebruiken
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 6.9 | 2,6 | Klant |
+| 6,9 | 2,6 | Klant |
 
-Gebruik Azure Policy om te beperken welke services u in uw omgeving inrichten.
+Gebruik Azure Policy om te beperken welke services u in uw omgeving kunt inrichten.
 
-- [Azure-beleid configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-- [Een specifiek brontype weigeren met Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [Een specifiek resource type weigeren met Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
 
-## <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10: Inventaris bijhouden van goedgekeurde softwaretitels
+## <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: een inventaris van goedgekeurde software titels onderhouden
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 6.10 | 2.7 | Klant |
+| 6,10 | 2.7 | Klant |
 
-Gebruik Azure Security Center Adaptive Application Controls om op te geven op welke bestandstypen een regel al dan niet van toepassing is.
+Gebruik Azure Security Center adaptieve toepassings besturings elementen om op te geven welke bestands typen een regel kan of niet van toepassing is op.
 
-Implementeer een oplossing van derden als dit niet aan de eis voldoet.
+Implementeer een oplossing van derden als deze niet aan de vereiste voldoet.
 
-- [Azure Security Center Adaptive Application Controls gebruiken](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+- [Azure Security Center adaptieve toepassings besturings elementen gebruiken](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
-## <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11: De mogelijkheid van gebruikers om te communiceren met Azure Resource Manager beperken
+## <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6,11: de mogelijkheid van gebruikers om te communiceren met Azure Resource Manager beperken
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 6.11 | 2.9 | Klant |
+| 6,11 | 2.9 | Klant |
 
-Gebruik Voorwaardelijke toegang voor Azure om de interactie van gebruikers met Azure Resources Manager te beperken door 'Bloktoegang' voor de Microsoft Azure Management-app te configureren.
+Gebruik voorwaardelijke toegang van Azure om gebruikers de mogelijkheid te bieden om met Azure Resource Manager te communiceren door ' toegang blok keren ' te configureren voor de app Microsoft Azure-beheer.
 
-- [Voorwaardelijke toegang configureren om toegang tot Azure Resources Manager te blokkeren](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [Voorwaardelijke toegang configureren om de toegang tot Azure-bronnen beheer te blok keren](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
 
-## <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Beperk de mogelijkheid van gebruikers om scripts uit te voeren binnen compute resources
+## <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: de mogelijkheid van gebruikers om scripts uit te voeren binnen reken bronnen beperken
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 6.12 | 2.9 | Klant |
+| 6,12 | 2.9 | Klant |
 
-Afhankelijk van het type scripts u beveiligingssysteemspecifieke configuraties of bronnen van derden gebruiken om de mogelijkheid van gebruikers om scripts uit te voeren binnen Azure compute resources te beperken.  U ook gebruikmaken van Azure Security Center Adaptive Application Controls om ervoor te zorgen dat alleen geautoriseerde software wordt uitgevoerd en dat alle ongeautoriseerde software wordt geblokkeerd voor het uitvoeren op Azure Virtual Machines.
+Afhankelijk van het type scripts kunt u specifieke configuraties van het besturings systeem of bronnen van derden gebruiken om de mogelijkheid van gebruikers om scripts uit te voeren binnen Azure Compute-resources te beperken.  U kunt ook gebruikmaken van Azure Security Center adaptieve toepassings controles om ervoor te zorgen dat alleen geautoriseerde software wordt uitgevoerd en alle niet-geautoriseerde software wordt geblokkeerd voor uitvoering op Azure Virtual Machines.
 
-- [PowerShell-scriptuitvoering beheren in Windows-omgevingen](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [De uitvoering van Power shell-scripts beheren in Windows-omgevingen](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
-- [Azure Security Center Adaptive Application Controls gebruiken](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+- [Azure Security Center adaptieve toepassings besturings elementen gebruiken](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
-## <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Toepassingen met een hoog risico fysiek of logisch scheiden
+## <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: toepassingen met een hoog risico fysiek of logisch scheiden
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 6.13 | 2.9 | Klant |
+| 6,13 | 2.9 | Klant |
 
-Software die vereist is voor bedrijfsactiviteiten, maar een hoger risico voor de organisatie kan opleveren, moet worden geïsoleerd binnen zijn eigen virtuele machine en/of virtueel netwerk en voldoende zijn beveiligd met een Azure Firewall- of Netwerkbeveiligingsgroep.
+Software die vereist is voor bedrijfs activiteiten, maar die een groter risico kan opleveren voor de organisatie, moet worden geïsoleerd in een eigen virtuele machine en/of virtueel netwerk en voldoende beveiligd zijn met een Azure Firewall of een netwerk beveiligings groep.
 
 - [Een virtueel netwerk maken](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
-- [Hoe maak je een NSG met een security config](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [Een NSG maken met een beveiligings configuratie](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de volgende beveiligingsbesturingselement: [beveiligde configuratie](security-control-secure-configuration.md)
+- Zie het volgende beveiligings beheer: [beveiligde configuratie](security-control-secure-configuration.md)

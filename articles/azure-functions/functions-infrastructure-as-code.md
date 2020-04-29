@@ -1,47 +1,47 @@
 ---
-title: Functie-app-bronimplementatie naar Azure automatiseren
-description: Meer informatie over het maken van een Azure Resource Manager-sjabloon waarmee uw functie-app wordt geïmplementeerd.
+title: Functie implementatie van app-resources automatiseren naar Azure
+description: Meer informatie over het bouwen van een Azure Resource Manager sjabloon waarmee uw functie-app wordt geïmplementeerd.
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81382529"
 ---
-# <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Resourceimplementatie voor uw functie-app automatiseren in Azure-functies
+# <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>De implementatie van resources voor uw functie-app in Azure Functions automatiseren
 
-U een Azure Resource Manager-sjabloon gebruiken om een functie-app te implementeren. In dit artikel worden de vereiste resources en parameters beschreven om dit te doen. Mogelijk moet u extra resources implementeren, afhankelijk van de [triggers en bindingen](functions-triggers-bindings.md) in uw functie-app.
+U kunt een Azure Resource Manager sjabloon gebruiken om een functie-app te implementeren. In dit artikel vindt u een overzicht van de vereiste resources en para meters. Mogelijk moet u aanvullende bronnen implementeren, afhankelijk van de [Triggers en bindingen](functions-triggers-bindings.md) in uw functie-app.
 
 Zie [Azure Resource Manager-sjablonen samenstellen](../azure-resource-manager/templates/template-syntax.md) voor meer informatie over het maken van sjablonen.
 
-Zie voor voorbeeldsjablonen:
-- [Functie-app op verbruiksplan]
-- [Functie-app op Azure App Service-abonnement]
+Zie voor voorbeeld sjablonen:
+- [Functie-app voor verbruiks abonnement]
+- [Functie-app voor Azure App Service plan]
 
-## <a name="required-resources"></a>Vereiste resources
+## <a name="required-resources"></a>Vereiste bronnen
 
-Een Azure-functie-implementatie bestaat meestal uit deze bronnen:
+Een Azure Functions-implementatie bestaat meestal uit de volgende bronnen:
 
-| Resource                                                                           | Vereiste | Verwijzing naar syntaxis en eigenschappen                                                         |   |
+| Resource                                                                           | Vereiste | Naslag informatie en eigenschappen                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| Een functie-app                                                                     | Vereist    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
-| Een [Azure Storage-account](../storage/index.yml)                                   | Vereist    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| Een [component Application Insights](../azure-monitor/app/app-insights-overview.md) | Optioneel    | [Microsoft.Insights/componenten](/azure/templates/microsoft.insights/components)         |   |
-| Een [hostingplan](./functions-scale.md)                                             | Optioneel<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
+| Een functie-app                                                                     | Vereist    | [Micro soft. web/sites](/azure/templates/microsoft.web/sites)                             |   |
+| Een [Azure Storage](../storage/index.yml) -account                                   | Vereist    | [Micro soft. Storage/Storage accounts](/azure/templates/microsoft.storage/storageaccounts) |   |
+| Een [Application Insights](../azure-monitor/app/app-insights-overview.md) onderdeel | Optioneel    | [Micro soft. Insights/onderdelen](/azure/templates/microsoft.insights/components)         |   |
+| Een [hosting abonnement](./functions-scale.md)                                             | Optioneel<sup>1</sup>    | [Micro soft. web/server farms](/azure/templates/microsoft.web/serverfarms)                 |   |
 
-<sup>1.</sup> Een hostingplan is alleen vereist wanneer u ervoor kiest om uw functie-app uit te voeren op een [Premium-abonnement](./functions-premium-plan.md) of op een [App Service-abonnement.](../app-service/overview-hosting-plans.md)
+<sup>1</sup> Een hosting plan is alleen vereist wanneer u uw functie-app wilt uitvoeren in een [Premium-abonnement](./functions-premium-plan.md) of op een [app service plan](../app-service/overview-hosting-plans.md).
 
 > [!TIP]
-> Hoewel dit niet nodig is, wordt het ten zeerste aanbevolen om Application Insights voor uw app te configureren.
+> Hoewel dit niet vereist is, wordt het ten zeerste aanbevolen om Application Insights voor uw app te configureren.
 
 <a name="storage"></a>
 ### <a name="storage-account"></a>Storage-account
 
-Voor een functie-app is een Azure-opslagaccount vereist. U hebt een account voor algemeen gebruik nodig dat blobs, tabellen, wachtrijen en bestanden ondersteunt. Zie Azure [Functions-opslagaccountvereisten](storage-considerations.md#storage-account-requirements)voor meer informatie .
+Een Azure-opslag account is vereist voor een functie-app. U hebt een algemeen doel account nodig dat blobs, tabellen, wacht rijen en bestanden ondersteunt. Zie [Azure functions vereisten voor opslag accounts](storage-considerations.md#storage-account-requirements)voor meer informatie.
 
 ```json
 {
@@ -56,11 +56,11 @@ Voor een functie-app is een Azure-opslagaccount vereist. U hebt een account voor
 }
 ```
 
-Bovendien moet de `AzureWebJobsStorage` eigenschap worden opgegeven als een app-instelling in de siteconfiguratie. Als de functie-app geen Toepassingsinzichten gebruikt voor `AzureWebJobsDashboard` controle, moet deze ook worden opgegeven als app-instelling.
+Daarnaast moet de eigenschap `AzureWebJobsStorage` worden opgegeven als een app-instelling in de site configuratie. Als de functie-app geen gebruik maakt van Application Insights voor bewaking, moet `AzureWebJobsDashboard` deze ook worden opgegeven als een app-instelling.
 
-De runtime azure-functies gebruikt de `AzureWebJobsStorage` verbindingstekenreeks om interne wachtrijen te maken.  Wanneer Application Insights niet is ingeschakeld, `AzureWebJobsDashboard` gebruikt de runtime de verbindingstekenreeks om u aan te melden bij Azure Table-opslag en het tabblad **Monitor** in de portal van stroom te voorzien.
+De Azure Functions runtime gebruikt de `AzureWebJobsStorage` Connection String om interne wacht rijen te maken.  Als Application Insights niet is ingeschakeld, gebruikt de runtime de `AzureWebJobsDashboard` Connection String om u aan te melden bij Azure Table Storage en het tabblad **monitor** in de portal uit te scha kelen.
 
-Deze eigenschappen zijn `appSettings` opgegeven in `siteConfig` de verzameling in het object:
+Deze eigenschappen zijn opgegeven in de `appSettings` verzameling in het `siteConfig` object:
 
 ```json
 "appSettings": [
@@ -77,7 +77,7 @@ Deze eigenschappen zijn `appSettings` opgegeven in `siteConfig` de verzameling i
 
 ### <a name="application-insights"></a>Application Insights
 
-Application Insights wordt aanbevolen voor het bewaken van uw functie-apps. De Application Insights-bron wordt gedefinieerd met het type **Microsoft.Insights/components** en het soort **web:**
+Application Insights wordt aanbevolen voor het bewaken van uw functie-apps. De Application Insights resource is gedefinieerd met het type **micro soft. Insights/onderdelen** en het soort **Web**:
 
 ```json
         {
@@ -96,7 +96,7 @@ Application Insights wordt aanbevolen voor het bewaken van uw functie-apps. De A
         },
 ```
 
-Daarnaast moet de instrumentatiesleutel worden verstrekt aan `APPINSIGHTS_INSTRUMENTATIONKEY` de functie-app met behulp van de toepassingsinstelling. Deze eigenschap is `appSettings` opgegeven in `siteConfig` de verzameling in het object:
+Daarnaast moet de instrumentatie sleutel aan de functie-app worden door gegeven met de `APPINSIGHTS_INSTRUMENTATIONKEY` toepassings instelling. Deze eigenschap is opgegeven in de `appSettings` verzameling in het `siteConfig` object:
 
 ```json
 "appSettings": [
@@ -107,16 +107,16 @@ Daarnaast moet de instrumentatiesleutel worden verstrekt aan `APPINSIGHTS_INSTRU
 ]
 ```
 
-### <a name="hosting-plan"></a>Hostingplan
+### <a name="hosting-plan"></a>Hosting plan
 
-De definitie van het hostingplan varieert en kan een van de volgende zijn:
-* [Verbruiksplan](#consumption) (standaard)
+De definitie van het hosting plan varieert, en kan een van de volgende zijn:
+* [Verbruiks abonnement](#consumption) (standaard)
 * [Premium-abonnement](#premium)
-* [App-serviceplan](#app-service-plan)
+* [App Service plan](#app-service-plan)
 
 ### <a name="function-app"></a>Function App
 
-De functie-app resource wordt gedefinieerd met behulp van een bron van het type **Microsoft.Web /sites** en natura **functionapp:**
+De functie-app resource wordt gedefinieerd met behulp van een resource van het type **micro soft. web/sites** en de soort **functionapp**:
 
 ```json
 {
@@ -133,18 +133,18 @@ De functie-app resource wordt gedefinieerd met behulp van een bron van het type 
 ```
 
 > [!IMPORTANT]
-> Als u expliciet een hostingplan definieert, is een extra item nodig in de array dependsOn:`"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
+> Als u een hosting plan expliciet definieert, zou u een extra item nodig hebben in de dependsOn-matrix:`"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
 
-Een functie-app moet de volgende toepassingsinstellingen bevatten:
+Een functie-app moet deze toepassings instellingen bevatten:
 
 | Naam van instelling                 | Beschrijving                                                                               | Voorbeeldwaarden                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
-| AzureWebJobsStorage          | Een verbindingstekenreeks met een opslagaccount die de runtime van functies gebruikt voor interne wachtrijen | Zie [Opslagaccount](#storage)       |
-| FUNCTIONS_EXTENSION_VERSION  | De versie van de runtime van Azure-functies                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | De taalstack die moet worden gebruikt voor functies in deze app                                   | `dotnet`, `node` `java`, `python`, of`powershell` |
-| WEBSITE_NODE_DEFAULT_VERSION | Alleen nodig als `node` u de taalstapel gebruikt, geeft u de versie op die moet worden gebruikt              | `10.14.1`                             |
+| AzureWebJobsStorage          | Een connection string naar een opslag account dat door de functions-runtime wordt gebruikt voor interne wachtrij gebruik | Zie [Storage-account](#storage)       |
+| FUNCTIONS_EXTENSION_VERSION  | De versie van de Azure Functions runtime                                                | `~2`                                  |
+| FUNCTIONS_WORKER_RUNTIME     | De taal stack die moet worden gebruikt voor functies in deze app                                   | `dotnet``java`,, `node` `python`, of`powershell` |
+| WEBSITE_NODE_DEFAULT_VERSION | Dit is alleen nodig als `node` u de taal stack gebruikt. Hiermee geeft u de versie op die moet worden gebruikt              | `10.14.1`                             |
 
-Deze eigenschappen worden `appSettings` opgegeven in `siteConfig` de verzameling in de eigenschap:
+Deze eigenschappen zijn opgegeven in de `appSettings` verzameling in de `siteConfig` eigenschap:
 
 ```json
 "properties": {
@@ -173,17 +173,17 @@ Deze eigenschappen worden `appSettings` opgegeven in `siteConfig` de verzameling
 
 <a name="consumption"></a>
 
-## <a name="deploy-on-consumption-plan"></a>Implementeren op verbruiksplan
+## <a name="deploy-on-consumption-plan"></a>Implementeren in verbruiks abonnement
 
-In het verbruiksplan wordt automatisch rekenkracht toegewezen wanneer uw code wordt uitgevoerd, worden deze zo nodig uitgeschaald om de belasting te verwerken en wordt vervolgens geschaald wanneer de code niet wordt uitgevoerd. U hoeft niet te betalen voor niet-actieve VM's en u hoeft niet van tevoren capaciteit te reserveren. Zie [Azure Functions schalen en hosten](functions-scale.md#consumption-plan)voor meer informatie.
+Het verbruiks plan wijst automatisch reken kracht toe wanneer uw code wordt uitgevoerd, wordt zo nodig geschaald om de belasting te verwerken en vervolgens wordt geschaald wanneer code niet wordt uitgevoerd. U hoeft niet te betalen voor niet-actieve Vm's en u hoeft de capaciteit niet vooraf te reserveren. Zie [Azure functions schalen en hosten](functions-scale.md#consumption-plan)voor meer informatie.
 
-Zie [Functie-app op het beheerplan voor]een voorbeeld van Azure Resource Manager.For a sample Azure Resource Manager template, see Function app on Consumption plan .
+Zie [functie-app voor verbruiks abonnement]voor een voor beeld-Azure Resource Manager sjabloon.
 
-### <a name="create-a-consumption-plan"></a>Een verbruiksplan maken
+### <a name="create-a-consumption-plan"></a>Een verbruiks plan maken
 
-Een verbruiksplan hoeft niet te worden gedefinieerd. Een wordt automatisch gemaakt of geselecteerd op basis van een regio wanneer u de functie-app bron zelf maakt.
+Een verbruiks plan hoeft niet te worden gedefinieerd. Wanneer u de resource van de functie-app zelf maakt, wordt er automatisch een per regio gemaakt of geselecteerd.
 
-Het verbruiksplan is een speciaal type "serverfarm"-bron. Voor Windows u dit `Dynamic` opgeven met `computeMode` `sku` behulp van de waarde voor de eigenschappen en de eigenschappen:
+Het verbruiks plan is een speciaal type resource ' server farm '. Voor Windows kunt u deze opgeven met behulp van `Dynamic` de waarde voor `computeMode` de `sku` eigenschappen en:
 
 ```json
 {  
@@ -206,15 +206,15 @@ Het verbruiksplan is een speciaal type "serverfarm"-bron. Voor Windows u dit `Dy
 ```
 
 > [!NOTE]
-> Het verbruiksplan kan niet expliciet worden gedefinieerd voor Linux. Het wordt automatisch gemaakt.
+> Het verbruiks plan kan niet expliciet worden gedefinieerd voor Linux. Het wordt automatisch gemaakt.
 
-Als u uw verbruiksplan expliciet definieert, `serverFarmId` moet u de eigenschap in de app zo instellen dat deze verwijst naar de resource-id van het plan. U moet ervoor zorgen dat `dependsOn` de functie-app ook een instelling voor het plan heeft.
+Als u het verbruiks abonnement expliciet definieert, moet u de `serverFarmId` eigenschap op de app instellen zodat deze verwijst naar de resource-id van het plan. Zorg ervoor dat de functie-app ook een `dependsOn` instelling voor het plan heeft.
 
 ### <a name="create-a-function-app"></a>Een functie-app maken
 
 #### <a name="windows"></a>Windows
 
-Voor Windows vereist een verbruiksplan twee extra `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` `WEBSITE_CONTENTSHARE`instellingen in de siteconfiguratie: en . Deze eigenschappen configureren het opslagaccount en bestandspad waar de functie-appcode en -configuratie zijn opgeslagen.
+In Windows zijn voor een verbruiks abonnement twee extra instellingen vereist in de site `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` configuratie `WEBSITE_CONTENTSHARE`: en. Met deze eigenschappen configureert u het opslag account en het bestandspad waar de code en configuratie van de functie-app worden opgeslagen.
 
 ```json
 {
@@ -261,7 +261,7 @@ Voor Windows vereist een verbruiksplan twee extra `WEBSITE_CONTENTAZUREFILECONNE
 
 #### <a name="linux"></a>Linux
 
-Op Linux moet de `kind` functie-app `functionapp,linux`zijn ingesteld op `reserved` , `true`en het moet de eigenschap ingesteld op:
+Op Linux `kind` moet de functie-app zijn ingesteld op `functionapp,linux`en moet de `reserved` eigenschap zijn ingesteld op: `true`
 
 ```json
 {
@@ -303,13 +303,13 @@ Op Linux moet de `kind` functie-app `functionapp,linux`zijn ingesteld op `reserv
 
 <a name="premium"></a>
 
-## <a name="deploy-on-premium-plan"></a>Implementeren op Premium-abonnement
+## <a name="deploy-on-premium-plan"></a>Implementeren in Premium-abonnement
 
-Het Premium-abonnement biedt dezelfde schaalvergroting als het verbruiksplan, maar bevat speciale resources en extra mogelijkheden. Zie [Azure Functions Premium Plan](./functions-premium-plan.md)voor meer informatie.
+Het Premium-abonnement biedt dezelfde schaal als het verbruiks abonnement, maar bevat speciale resources en aanvullende mogelijkheden. Zie [Azure functions Premium-abonnement](./functions-premium-plan.md)voor meer informatie.
 
 ### <a name="create-a-premium-plan"></a>Een Premium-abonnement maken
 
-Een Premium-abonnement is een speciaal type "serverfarm"-bron. U dit opgeven `EP1` `EP2`door `EP3` een `Name` van beide `sku` te gebruiken, of voor de eigenschapswaarde in het [beschrijvingsobject](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object).
+Een Premium-abonnement is een speciaal type resource ' server farm '. U kunt dit opgeven met behulp `EP1`van `EP2`ofwel of `EP3` voor de `Name` waarde van de eigenschap `sku` in het [object beschrijving](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object).
 
 ```json
 {
@@ -334,7 +334,7 @@ Een Premium-abonnement is een speciaal type "serverfarm"-bron. U dit opgeven `EP
 
 ### <a name="create-a-function-app"></a>Een functie-app maken
 
-Een functie-app op een `serverFarmId` Premium-abonnement moet de eigenschap hebben ingesteld op de resource-id van het plan dat eerder is gemaakt. Bovendien vereist een Premium-abonnement twee extra instellingen `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` `WEBSITE_CONTENTSHARE`in de siteconfiguratie: en . Deze eigenschappen configureren het opslagaccount en bestandspad waar de functie-appcode en -configuratie zijn opgeslagen.
+Voor een functie-app voor een Premium-abonnement `serverFarmId` moet de eigenschap zijn ingesteld op de resource-id van het abonnement dat u eerder hebt gemaakt. Daarnaast is voor een Premium-abonnement twee extra instellingen vereist in de site configuratie `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` : `WEBSITE_CONTENTSHARE`en. Met deze eigenschappen configureert u het opslag account en het bestandspad waar de code en configuratie van de functie-app worden opgeslagen.
 
 ```json
 {
@@ -384,15 +384,15 @@ Een functie-app op een `serverFarmId` Premium-abonnement moet de eigenschap hebb
 
 <a name="app-service-plan"></a>
 
-## <a name="deploy-on-app-service-plan"></a>Implementeren op App-serviceplan
+## <a name="deploy-on-app-service-plan"></a>Implementeren op App Service plan
 
-In het App Service-abonnement wordt uw functie-app uitgevoerd op speciale VM's op Basic-, Standaard- en Premium SKU's, vergelijkbaar met web-apps. Zie het uitgebreide overzicht van azure [app service-abonnementen voor](../app-service/overview-hosting-plans.md)meer informatie over de werking van het App Service-abonnement.
+In het App Service plan wordt uw functie-app uitgevoerd op specifieke Vm's op basis-, standaard-en Premium-Sku's, vergelijkbaar met web apps. Zie het [overzicht van Azure app service plannen](../app-service/overview-hosting-plans.md)voor meer informatie over de werking van het app service plan.
 
-Zie [Functie-app op Azure App Service-abonnement]voor een voorbeeld van Azure Resource Manager-sjabloon .
+Zie voor een voorbeeld Azure Resource Manager sjabloon [functie-app op Azure app service plan].
 
 ### <a name="create-an-app-service-plan"></a>Een App Service-plan maken
 
-Een App Service-abonnement wordt gedefinieerd door een resource 'serverfarm'.
+Een App Service-abonnement wordt gedefinieerd door een resource ' server farm '.
 
 ```json
 {
@@ -410,7 +410,7 @@ Een App Service-abonnement wordt gedefinieerd door een resource 'serverfarm'.
 }
 ```
 
-Als u uw app op Linux `kind` wilt `Linux`uitvoeren, moet u ook de app instellen op:
+Als u uw app op Linux wilt uitvoeren, moet u ook `kind` het `Linux`volgende instellen:
 
 ```json
 {
@@ -431,7 +431,7 @@ Als u uw app op Linux `kind` wilt `Linux`uitvoeren, moet u ook de app instellen 
 
 ### <a name="create-a-function-app"></a>Een functie-app maken
 
-Een functie-app op een App `serverFarmId` Service-abonnement moet de eigenschap hebben ingesteld op de resource-id van het plan dat eerder is gemaakt.
+Voor een functie-app voor een App Service plan moet `serverFarmId` de eigenschap zijn ingesteld op de resource-id van het abonnement dat u eerder hebt gemaakt.
 
 ```json
 {
@@ -470,7 +470,7 @@ Een functie-app op een App `serverFarmId` Service-abonnement moet de eigenschap 
 }
 ```
 
-Linux-apps moeten `linuxFxVersion` ook `siteConfig`een eigenschap bevatten onder . Als u alleen code implementeert, wordt de waarde hiervoor bepaald door de gewenste runtimestack:
+Linux-apps moeten ook een `linuxFxVersion` eigenschap bevatten `siteConfig`onder. Als u alleen code implementeert, wordt de waarde voor dit bepaald door de gewenste runtime stack:
 
 | Stack            | Voorbeeldwaarde                                         |
 |------------------|-------------------------------------------------------|
@@ -516,7 +516,7 @@ Linux-apps moeten `linuxFxVersion` ook `siteConfig`een eigenschap bevatten onder
 }
 ```
 
-Als u [een aangepaste containerafbeelding implementeert,](./functions-create-function-linux-custom-image.md) `linuxFxVersion` moet u deze opgeven met en een configuratie opnemen waarmee uw afbeelding kan worden getrokken, zoals in [Web App voor containers.](/azure/app-service/containers) Ook ingesteld `WEBSITES_ENABLE_APP_SERVICE_STORAGE` `false`op , omdat uw app-inhoud wordt geleverd in de container zelf:
+Als u [een aangepaste container installatie kopie implementeert](./functions-create-function-linux-custom-image.md), moet u deze opgeven `linuxFxVersion` met en configuratie toevoegen waarmee de installatie kopie kan worden opgehaald, zoals in [Web App for containers](/azure/app-service/containers). Stel `WEBSITES_ENABLE_APP_SERVICE_STORAGE` ook in op `false`, omdat de inhoud van uw app wordt opgegeven in de container zelf:
 
 ```json
 {
@@ -574,10 +574,10 @@ Als u [een aangepaste containerafbeelding implementeert,](./functions-create-fun
 
 ## <a name="customizing-a-deployment"></a>Een implementatie aanpassen
 
-Een functie-app heeft veel onderliggende bronnen die u gebruiken in uw implementatie, waaronder app-instellingen en opties voor bronbeheer. U er ook voor kiezen om de **onderliggende bronbron source** te verwijderen en in plaats daarvan een andere [implementatieoptie](functions-continuous-deployment.md) te gebruiken.
+Een functie-app heeft veel onderliggende resources die u kunt gebruiken in uw implementatie, waaronder app-instellingen en opties voor bron beheer. U kunt er ook voor kiezen om de **sourcecontrols** onderliggende resource te verwijderen en in plaats daarvan een andere [implementatie optie](functions-continuous-deployment.md) te gebruiken.
 
 > [!IMPORTANT]
-> Als u uw toepassing met Azure Resource Manager wilt implementeren, is het belangrijk om te begrijpen hoe resources in Azure worden geïmplementeerd. In het volgende voorbeeld worden configuraties op het hoogste niveau toegepast met behulp van **siteConfig**. Het is belangrijk om deze configuraties op een topniveau in te stellen, omdat ze informatie overbrengen naar de runtime en implementatie-engine voor functies. Informatie op het hoogste niveau is vereist voordat de **onderliggende bronbesturingselementen/webbron** worden toegepast. Hoewel het mogelijk is om deze instellingen te configureren in de **bron voor config/appSettings** op kinderniveau, moet in sommige gevallen uw functie-app worden geïmplementeerd *voordat* **config/appSettings** wordt toegepast. Wanneer u bijvoorbeeld functies met [Logic Apps](../logic-apps/index.yml)gebruikt, zijn uw functies afhankelijk van een andere bron.
+> Als u uw toepassing wilt implementeren met behulp van Azure Resource Manager, is het belang rijk om te begrijpen hoe resources in Azure worden geïmplementeerd. In het volgende voor beeld worden configuraties op het hoogste niveau toegepast met behulp van **siteConfig**. Het is belang rijk deze configuraties op het hoogste niveau in te stellen, omdat ze informatie overbrengen naar de runtime-en implementatie-engine van functions. Informatie op het hoogste niveau is vereist voordat de onderliggende **sourcecontrols/** WebResource wordt toegepast. Hoewel het mogelijk is om deze instellingen te configureren in de resource van het onderliggende **configuratie/appSettings** , in sommige gevallen moet uw functie-app worden geïmplementeerd *voordat* **config/appSettings** wordt toegepast. Als u bijvoorbeeld functies gebruikt met [Logic apps](../logic-apps/index.yml), zijn uw functies een afhankelijkheid van een andere resource.
 
 ```json
 {
@@ -641,28 +641,28 @@ Een functie-app heeft veel onderliggende bronnen die u gebruiken in uw implement
 }
 ```
 > [!TIP]
-> Deze sjabloon maakt gebruik van de waarde van de project-app-instellingen, waarin de basismap wordt ingesteld waarin de Implementatieengine voor functies (Kudu) zoekt naar implementeerbare code. [Project](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file) In onze repository bevinden onze functies zich in een submap van de **src** map. In het voorgaande voorbeeld stellen we de `src`waarde van de app-instellingen in op . Als uw functies zich in de hoofdmap van uw opslagplaats bevinden of als u niet implementeert vanuit bronbeheer, u deze waarde voor app-instellingen verwijderen.
+> Deze sjabloon maakt gebruik van de waarde van de [project](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file) app-instellingen, waarmee de basis directory wordt ingesteld waarin de functions Deployment Engine (kudu) zoekt naar de code die kan worden geïmplementeerd. In onze opslag plaats bevinden onze functies zich in een submap van de map **src** . In het vorige voor beeld stellen we de waarde van de app-instellingen `src`in op. Als uw functies zich in de hoofdmap van uw opslag plaats bevinden of als u niet vanuit broncode beheer implementeert, kunt u deze waarde voor app-instellingen verwijderen.
 
 ## <a name="deploy-your-template"></a>De sjabloon implementeren
 
-U een van de volgende manieren gebruiken om uw sjabloon te implementeren:
+U kunt een van de volgende manieren gebruiken om uw sjabloon te implementeren:
 
-* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+* [Zo](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure-CLI](../azure-resource-manager/templates/deploy-cli.md)
 * [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
-* [REST-API](../azure-resource-manager/templates/deploy-rest.md)
+* [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>De knop Implementeren in Azure
 
-Vervang ```<url-encoded-path-to-azuredeploy-json>``` door een [door de URL gecodeerde](https://www.bing.com/search?q=url+encode) `azuredeploy.json` versie van het ruwe pad van uw bestand in GitHub.
+Vervang ```<url-encoded-path-to-azuredeploy-json>``` door een [URL-gecodeerde](https://www.bing.com/search?q=url+encode) versie van het onbewerkte pad `azuredeploy.json` van het bestand in github.
 
-Hier is een voorbeeld dat afwaardering gebruikt:
+Hier volgt een voor beeld waarin prijs verlaging wordt gebruikt:
 
 ```markdown
 [![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>)
 ```
 
-Hier is een voorbeeld dat HTML gebruikt:
+Hier volgt een voor beeld waarin gebruik wordt gemaakt van HTML:
 
 ```html
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"></a>
@@ -670,7 +670,7 @@ Hier is een voorbeeld dat HTML gebruikt:
 
 ### <a name="deploy-using-powershell"></a>Implementeren met PowerShell
 
-Met de volgende PowerShell-opdrachten wordt een resourcegroep gemaakt en wordt een sjabloon geïmplementeerd waarmee een functie-app met de vereiste resources wordt gemaakt. Als u lokaal wilt worden uitgevoerd, moet [Azure PowerShell](/powershell/azure/install-az-ps) zijn geïnstalleerd. Ren [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount) om je aan te melden.
+Met de volgende Power shell-opdrachten maakt u een resource groep en implementeert u een sjabloon waarmee een functie-app met de vereiste resources wordt gemaakt. Als u lokaal wilt uitvoeren, moet [Azure PowerShell](/powershell/azure/install-az-ps) zijn geïnstalleerd. Voer [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount) uit om aan te melden.
 
 ```powershell
 # Register Resource Providers if they're not already registered
@@ -687,17 +687,17 @@ $TemplateParams = @{"appName" = "<function-app-name>"}
 New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile template.json -TemplateParameterObject $TemplateParams -Verbose
 ```
 
-Als u deze implementatie wilt testen, u een [sjabloon als deze](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json) gebruiken waarmee een functie-app op Windows wordt gemaakt in een verbruiksplan. Vervang `<function-app-name>` door een unieke naam voor uw functie-app.
+Als u deze implementatie wilt testen, kunt u een [sjabloon als deze](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json) gebruiken die een functie-app in Windows maakt in een verbruiks abonnement. Vervang `<function-app-name>` door een unieke naam voor uw functie-app.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het ontwikkelen en configureren van Azure-functies.
+Meer informatie over het ontwikkelen en configureren van Azure Functions.
 
 * [Naslaginformatie over Azure Functions voor ontwikkelaars](functions-reference.md)
-* [Instellingen voor Azure-functie-apps configureren](functions-how-to-use-azure-function-app-settings.md)
+* [Instellingen voor Azure function-apps configureren](functions-how-to-use-azure-function-app-settings.md)
 * [Uw eerste Azure-functie maken](functions-create-first-azure-function.md)
 
 <!-- LINKS -->
 
-[Functie-app op verbruiksplan]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dynamic/azuredeploy.json
-[Functie-app op Azure App Service-abonnement]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dedicated/azuredeploy.json
+[Functie-app voor verbruiks abonnement]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dynamic/azuredeploy.json
+[Functie-app voor Azure App Service plan]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dedicated/azuredeploy.json

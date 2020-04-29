@@ -1,113 +1,113 @@
 ---
 title: Een zelfstandig Azure Automation-account maken
-description: In dit artikel vindt u de stappen van het maken, testen en gebruiken van een voorbeeldbeveiligingshoofdverificatie in Azure Automation.
+description: Dit artikel begeleidt u stapsgewijs door de stappen voor het maken, testen en gebruiken van een voor beeld van een beveiligings-principal-verificatie in Azure Automation.
 services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: 72a40363edf0e83eea26ee697ce992226da0db4f
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81392292"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Een zelfstandig Azure Automation-account maken
 
-In dit artikel ziet u hoe u een Azure Automation-account maakt in de Azure-portal. U het portalautomation-account gebruiken om automatisering te evalueren en te leren over automatisering zonder aanvullende beheeroplossingen of integratie met Azure Monitor-logboeken te gebruiken. U deze beheeroplossingen toevoegen of integreren met Azure Monitor-logboeken voor geavanceerde bewaking van runbook-taken op elk moment in de toekomst.
+In dit artikel wordt beschreven hoe u een Azure Automation-account maakt in de Azure Portal. U kunt het portal Automation-account gebruiken om te evalueren en meer te weten te komen over Automation zonder extra beheer oplossingen of integratie met Azure Monitor-logboeken te gebruiken. U kunt deze beheer oplossingen toevoegen of de integratie met Azure Monitor logboeken voor geavanceerde bewaking van runbook-taken op elk gewenst moment in de toekomst.
 
-Met een Automation-account u runbooks verifiëren door resources te beheren in Azure Resource Manager of het klassieke implementatiemodel. Met één Automation-account kunt u resources in alle regio's en abonnementen voor een bepaalde tenant beheren.
+Met een Automation-account kunt u runbooks verifiëren door resources te beheren in een Azure Resource Manager of het klassieke implementatie model. Met één Automation-account kunt u resources in alle regio's en abonnementen voor een bepaalde tenant beheren.
 
-Wanneer u een Automatiseringsaccount maakt in de Azure-portal, wordt het **run as-account** automatisch gemaakt. Met dit account worden de volgende taken uitgevoerd:
+Wanneer u een Automation-account maakt in de Azure Portal, wordt het **uitvoeren als** -account automatisch gemaakt. Dit account voert de volgende taken uit:
 
-* Hiermee maakt u een serviceprincipal in Azure Active Directory (Azure AD).
+* Hiermee maakt u een Service-Principal in Azure Active Directory (Azure AD).
 * Hiermee maakt u een certificaat.
-* Wijst het RBAC (Contributor Role-Based Access Control) toe, dat Azure Resource Manager-resources beheert met behulp van runbooks.
+* Hiermee wijst u het Access Control (RBAC) op basis van rollen toe, waarmee Azure Resource Manager bronnen met behulp van runbooks worden beheerd.
 
-Met dit account dat voor u is gemaakt, u snel beginnen met het bouwen en implementeren van runbooks om uw automatiseringsbehoeften te ondersteunen.
+Als dit account voor u is gemaakt, kunt u snel runbooks bouwen en implementeren ter ondersteuning van uw automatiserings behoeften.
 
-## <a name="permissions-required-to-create-an-automation-account"></a>Machtigingen die nodig zijn om een Automatiseringsaccount te maken
+## <a name="permissions-required-to-create-an-automation-account"></a>Benodigde machtigingen voor het maken van een Automation-account
 
-Als u een Automatiseringsaccount wilt maken of bijwerken en de in dit artikel beschreven taken wilt voltooien, moet u over de volgende bevoegdheden en machtigingen beschikken:
+Als u een Automation-account wilt maken of bijwerken en de in dit artikel beschreven taken wilt uitvoeren, moet u over de volgende bevoegdheden en machtigingen beschikken:
 
-* Als u een Automatiseringsaccount wilt maken, moet uw Azure AD-gebruikersaccount worden `Microsoft.Automation` toegevoegd aan een rol met machtigingen die gelijkwaardig zijn aan de rol Eigenaar voor resources. Zie [Op rollen gebaseerd toegangsbeheer in Azure Automation](automation-role-based-access-control.md)voor meer informatie.
-* Als **app-registraties** zijn ingesteld op **Ja,** kunnen niet-beheerders in uw Azure AD-tenant in de Azure-portal onder**gebruikersinstellingen**van **Azure Active Directory** > **MANAGE** > active [directory-toepassingen registreren.](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions) Als **app-registraties** is ingesteld op **Nee,** moet de gebruiker die deze actie uitvoert, een globale beheerder zijn in Azure AD.
+* Als u een Automation-account wilt maken, moet uw Azure AD-gebruikers account worden toegevoegd aan een rol met machtigingen die `Microsoft.Automation` equivalent zijn aan de rol van eigenaar voor resources. Zie voor meer informatie [Access Control op basis van rollen in azure Automation](automation-role-based-access-control.md).
+* Als **app-registraties** is ingesteld op **Ja**, worden in de Azure Portal, onder **Azure Active Directory** > **MANAGE** > **gebruikers instellingen**beheren, gebruikers die geen beheerder zijn in uw Azure AD-Tenant [Active Directory toepassingen geregistreerd](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Als **app-registraties** is ingesteld op **Nee**, moet de gebruiker die deze actie uitvoert een globale beheerder zijn in azure AD.
 
-Als u geen lid bent van het Active Directory-exemplaar van het abonnement voordat u wordt toegevoegd aan de algemene administrator-/coadministratorrol van het abonnement, wordt u als gast aan Active Directory toegevoegd. In dit scenario ziet u dit bericht in het deelvenster Automatiseringsaccount toevoegen:`You do not have permissions to create.`
+Als u geen lid bent van het Active Directory exemplaar van het abonnement voordat u wordt toegevoegd aan de rol van de globale beheerder/cobeheerder van het abonnement, wordt u als gast toegevoegd aan Active Directory. In dit scenario ziet u dit bericht in het deel venster Automation-account toevoegen:`You do not have permissions to create.`
 
-Als een gebruiker eerst wordt toegevoegd aan de algemene rol Administrator/Coadministrator, u de gebruiker verwijderen uit de Active Directory-instantie van het abonnement. U de gebruiker voorlezen aan de rol Gebruiker in Active Directory.
+Als een gebruiker eerst wordt toegevoegd aan de rol globale beheerder/cobeheerdersrol, kunt u de gebruiker uit het Active Directory-exemplaar van het abonnement verwijderen. U kunt de gebruiker lezen voor de gebruikersrol in Active Directory.
 
-Ga als volgt te werk om gebruikersrollen te verifiëren:
+Gebruikers rollen controleren:
 
-1. Ga in de Azure-portal naar het deelvenster Azure Active Directory.
-1. Selecteer **Gebruikers en groepen**.
-1. Selecteer **Alle gebruikers**selecteren .
-1. Nadat u een specifieke gebruiker hebt geselecteerd, selecteert u **Profiel**. De waarde van het kenmerk **Gebruikerstype** onder het profiel van de gebruiker mag niet **Gast**zijn.
+1. Ga in het Azure Portal naar het deel venster Azure Active Directory.
+1. Selecteer **gebruikers en groepen**.
+1. Selecteer **alle gebruikers**.
+1. Nadat u een specifieke gebruiker hebt geselecteerd, selecteert u **profiel**. De waarde van het kenmerk **gebruikers type** onder het profiel van de gebruiker mag niet **gast**zijn.
 
-## <a name="create-a-new-automation-account-in-the-azure-portal"></a>Een nieuw automatiseringsaccount maken in de Azure-portal
+## <a name="create-a-new-automation-account-in-the-azure-portal"></a>Een nieuw Automation-account maken in de Azure Portal
 
-Voer de volgende stappen uit om een Azure Automation-account in de Azure-portal te maken:
+Voer de volgende stappen uit om een Azure Automation-account te maken in de Azure Portal:
 
-1. Meld u aan bij de Azure-portal met een account dat lid is van de rol abonnementsbeheerders en een medebeheerder van het abonnement.
-1. Selecteer **+ Een resource maken**.
-1. Zoeken naar **automatisering**. Selecteer **Automatisering**in de zoekresultaten .
+1. Meld u aan bij de Azure Portal met een account dat lid is van de rol abonnements beheerders en een mede beheerder van het abonnement.
+1. Selecteer **+ een resource maken**.
+1. Zoek naar **Automation**. Selecteer in de zoek resultaten **Automation**.
 
-   ![Zoeken naar en selecteer &-besturingselement voor automatisering in de Azure Marketplace](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)
+   ![& besturings element voor automatisering zoeken en selecteren in azure Marketplace](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)
 
-1. Selecteer in het volgende scherm **Nieuw maken**.
+1. Selecteer in het volgende scherm **nieuwe maken**.
 
-   ![Automatiseringsaccount toevoegen](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
+   ![Automation-account toevoegen](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
 
    > [!NOTE]
-   > Als u het volgende bericht ziet in het deelvenster Automatiseringsaccount toevoegen, is uw account geen lid van de rol abonnementbeheerders en een medebeheerder van het abonnement.
+   > Als het volgende bericht wordt weer gegeven in het deel venster Automation-account toevoegen, is uw account geen lid van de rol abonnements beheerders en een mede beheerder van het abonnement.
    >
-   > ![Waarschuwing voor automatiseringsaccount toevoegen](media/automation-create-standalone-account/create-account-without-perms.png)
+   > ![Waarschuwing voor Automation-account toevoegen](media/automation-create-standalone-account/create-account-without-perms.png)
 
-1. Voer in het deelvenster Automatiseringsaccount toevoegen een naam in voor uw nieuwe automatiseringsaccount in het veld **Naam.** Je deze naam niet veranderen nadat deze is gekozen. 
+1. Voer in het deel venster Automation-account toevoegen een naam in voor uw nieuwe Automation-account in het veld **naam** . U kunt deze naam niet wijzigen nadat deze is gekozen. 
 
     > [!NOTE]
-    > Naam van automatiseringsaccount is uniek per regio en resourcegroep. Namen voor verwijderde automatiseringsaccounts zijn mogelijk niet onmiddellijk beschikbaar.
+    > De namen van Automation-accounts zijn uniek per regio en resource groep. Namen voor verwijderde Automation-accounts zijn mogelijk niet onmiddellijk beschikbaar.
 
-1. Als u meer dan één abonnement hebt, gebruikt u het veld **Abonnement** om het abonnement op te geven dat voor het nieuwe account moet worden gebruikt.
-1. Voer **voor resourcegroep**een nieuwe of bestaande resourcegroep in of selecteer deze.
-1. Selecteer **voor Locatie**een Azure-datacenterlocatie.
-1. Controleer voor de optie **Azure Run As-account maken** of **Ja** is geselecteerd en klik op **Maken**.
+1. Als u meer dan één abonnement hebt, gebruikt u het veld **abonnement** om het abonnement op te geven dat voor het nieuwe account moet worden gebruikt.
+1. Voor **resource groep**, voert u een nieuwe of bestaande resource groep in of selecteert u deze.
+1. Selecteer bij **locatie**een locatie van een Azure-Data Center.
+1. Voor de optie **uitvoeren als-account voor Azure maken** , Controleer of **Ja** is geselecteerd en klik vervolgens op **maken**.
 
    > [!NOTE]
-   > Als u ervoor kiest het run as-account niet te maken door **Nee** te selecteren voor **Azure Run Als-account maken,** wordt er een bericht weergegeven in het deelvenster Automatiseringsaccount toevoegen. Hoewel het account is gemaakt in de Azure-portal, heeft het account geen overeenkomstige verificatie-identiteit in uw abonnement op het klassieke implementatiemodel of in de directoryservice voor Azure Resource Manager-abonnementen. Daarom heeft het automatiseringsaccount geen toegang tot bronnen in uw abonnement. Dit voorkomt dat runbooks die naar dit account verwijzen, taken kunnen verifiëren en uitvoeren ten opzichte van resources in die implementatiemodellen.
+   > Als u ervoor kiest om het uitvoeren als-account niet te maken door **Nee** te selecteren voor het maken van een **uitvoeren als-account voor Azure**, wordt er een bericht weer gegeven in het deel venster Automation-account toevoegen. Hoewel het account wordt gemaakt in de Azure Portal, heeft het account geen overeenkomstige verificatie-id in het klassieke implementatie model abonnement of in de Directory service van het Azure Resource Manager abonnement. Daarom heeft het Automation-account geen toegang tot resources in uw abonnement. Hiermee wordt voor komen dat runbooks die verwijzen naar dit account, in staat zijn om taken te verifiëren en uit te voeren op resources in die implementatie modellen.
    >
-   > ![Waarschuwing voor automatiseringsaccount toevoegen](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
+   > ![Waarschuwing voor Automation-account toevoegen](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
    >
-   > Wanneer de serviceprincipal niet is gemaakt, wordt de rol Inzender niet toegewezen.
+   > Wanneer de Service-Principal niet is gemaakt, wordt de rol Inzender niet toegewezen.
    >
 
-1. Als u de voortgang van het aanmaken van het automatiseringsaccount wilt bijhouden, selecteert u **Meldingen** in het menu.
+1. Als u de voortgang van het maken van het Automation-account wilt bijhouden, selecteert u **meldingen** in het menu.
 
 ### <a name="resources-included"></a>Beschikbare resources
 
-Wanneer het Automation-account is gemaakt, worden er automatisch verschillende resources voor u gemaakt. Na het maken kunnen deze runbooks veilig worden verwijderd als u ze niet wilt bewaren. De Run As-accounts kunnen worden gebruikt om te verifiëren voor uw account in een runbook en moet worden overgelaten, tenzij u een andere account maakt of deze niet nodig hebt. In de volgende tabel vindt u een overzicht van de bronnen voor het Uitvoeren als-account.
+Wanneer het Automation-account is gemaakt, worden er automatisch verschillende resources voor u gemaakt. Na het maken kunnen deze runbooks veilig worden verwijderd als u deze niet wilt blijven gebruiken. De uitvoeren als-accounts kunnen worden gebruikt om te verifiëren bij uw account in een runbook, en moet blijven staan, tenzij u een andere maakt of niet nodig hebt. In de volgende tabel vindt u een overzicht van de bronnen voor het Uitvoeren als-account.
 
 | Resource | Beschrijving |
 | --- | --- |
-| AzureAutomationTutorial Runbook |Een voorbeeld van een grafisch runbook dat laat zien hoe u zich verifiëren met het account Uitvoeren als. Het runbook krijgt alle Resource Manager-bronnen. |
-| AzureAutomationTutorialScript Runbook |Een voorbeeld van PowerShell-runbook dat laat zien hoe u zich verifiëren met het Run As-account. Het runbook krijgt alle Resource Manager-bronnen. |
-| AzureAutomationTutorialPython2-runbook |Een voorbeeld van Python-runbook dat laat zien hoe u zich verifiëren met het Run As-account. In het runbook worden alle resourcegroepen weergegeven die in het abonnement aanwezig zijn. |
-| AzureRunAsCertificate |Een certificaatitem dat automatisch wordt gemaakt wanneer het automatiseringsaccount wordt gemaakt of met behulp van een PowerShell-script voor een bestaand account. Het certificaat wordt geverifieerd met Azure, zodat u Azure Resource Manager-resources beheren vanuit runbooks. Dit certificaat is één jaar geldig. |
-| AzureRunAsConnection |Een verbindingselement dat automatisch wordt gemaakt wanneer het automatiseringsaccount wordt gemaakt of met behulp van een PowerShell-script voor een bestaand account. |
+| AzureAutomationTutorial Runbook |Een voor beeld van een grafisch runbook dat laat zien hoe u kunt verifiëren met behulp van het uitvoeren als-account. Het runbook haalt alle Resource Manager-resources op. |
+| AzureAutomationTutorialScript Runbook |Een voor beeld van een Power shell-runbook dat laat zien hoe u kunt verifiëren met behulp van het uitvoeren als-account. Het runbook haalt alle Resource Manager-resources op. |
+| AzureAutomationTutorialPython2-runbook |Een voor beeld van een python-runbook dat laat zien hoe u kunt verifiëren met behulp van het uitvoeren als-account. Het runbook bevat een lijst met alle resource groepen die aanwezig zijn in het abonnement. |
+| AzureRunAsCertificate |Een certificaat Asset dat automatisch wordt gemaakt wanneer het Automation-account wordt gemaakt, of met behulp van een Power shell-script voor een bestaand account. Het certificaat wordt geverifieerd met Azure, zodat u Azure Resource Manager resources kunt beheren vanuit runbooks. Dit certificaat is één jaar geldig. |
+| AzureRunAsConnection |Een verbindings element dat automatisch wordt gemaakt bij het maken van het Automation-account of met behulp van een Power shell-script voor een bestaand account. |
 
-## <a name="create-a-classic-run-as-account"></a>Een Klassiek run as-account maken
+## <a name="create-a-classic-run-as-account"></a>Een klassiek uitvoeren als-account maken
 
-Classic Run As-accounts worden niet langer standaard gemaakt wanneer u een Azure Automation-account maakt. Als je nog steeds een Classic Run As-account nodig hebt:
+Klassieke uitvoeren als-accounts worden niet meer standaard gemaakt wanneer u een Azure Automation-account maakt. Als u nog steeds een klassiek uitvoeren als-account nodig hebt:
 
-1. Selecteer in uw Automatiseringsaccount **Uitvoeren als accounts** onder **Accountinstellingen**.
-2. Selecteer **Azure Classic Run as Account**.
-3. Klik **op Maken** om door te gaan met Het maken van een Klassiek uitvoeren als account.
+1. Selecteer in uw Automation-account **uitvoeren als-accounts** onder **account instellingen**.
+2. Selecteer een **klassiek uitvoeren als-account voor Azure**.
+3. Klik op **maken** om door te gaan met het maken van een klassiek uitvoeren als-account.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Grafische ontwerpen in Azure Automation](automation-graphical-authoring-intro.md)voor meer informatie over grafisch ontwerpen.
-* Zie [Mijn eerste PowerShell-runbook](automation-first-runbook-textual-powershell.md)om aan de slag te gaan met PowerShell-runbooks.
-* Zie [Mijn eerste PowerShell-werkstroomrunboek](automation-first-runbook-textual.md)om aan de slag te gaan met PowerShell-werkstroom.
-* Zie [Mijn eerste Python2 runbook](automation-first-runbook-textual-python2.md)om aan de slag te gaan met Python 2 runbooks.
-* Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)voor een PowerShell-cmdletreferentie.
+* Zie voor meer informatie over grafisch ontwerpen [grafisch ontwerpen in azure Automation](automation-graphical-authoring-intro.md).
+* Zie [mijn eerste Power shell-runbook](automation-first-runbook-textual-powershell.md)om aan de slag te gaan met Power shell-runbooks.
+* Zie [mijn eerste Power shell workflow-runbook](automation-first-runbook-textual.md)om aan de slag te gaan met Power shell workflow-runbooks.
+* Zie [mijn eerste Python2-runbook](automation-first-runbook-textual-python2.md)om aan de slag te gaan met python 2-runbooks.
+* Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)(Engelstalig) voor een Power shell-cmdlet-verwijzing.

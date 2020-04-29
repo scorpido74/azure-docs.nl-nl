@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 03/16/2020
 ms.author: trbye
 ms.openlocfilehash: 2aec3cc96e123da57166f1c304254d520a96e156
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81400575"
 ---
-De standaard audiostreaming-indeling is WAV (16kHz of 8kHz, 16-bits en mono PCM). Buiten WAV / PCM worden ook de hieronder vermelde gecomprimeerde invoerformaten ondersteund. [Extra configuratie](../how-to-use-codec-compressed-audio-input-streams.md) is nodig om de onderstaande indelingen in te schakelen.
+De standaard indeling voor audio-streaming is WAV (16kHz of 8kHz, 16-bits en mono PCM). Buiten WAV/PCM worden de hieronder weer gegeven gecomprimeerde invoer indelingen ook ondersteund. Er is [aanvullende configuratie](../how-to-use-codec-compressed-audio-input-streams.md) nodig om de hieronder vermelde indelingen in te scha kelen.
 
-- Mp3
+- MP3
 - OPUS/OGG
 - FLAC
-- ALAW in golvende container
-- MULAW in wav container
+- ALAW in WAV-container
+- MULAW in WAV-container

@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: Documentatie over gespreksscenario's
-summary: Bekijk de verschillende gespreksscenario's. Leer gesprekstranscriptie of gespreksonderwerp met meerdere apparaten gebruiken in vergaderscenario's en transcriptie in callcenterscenario's.
+summary: Bekijk de verschillende gespreks scenario's. Meer informatie over het gebruik van conversatie transcriptie of uitwisseling van meerdere apparaten in Vergader scenario's en transcriptie in Call Center-scenario's.
 metadata:
-  title: Documentatie van gespreksscenario's - Zelfstudies, API-verwijzing - Azure Cognitive Services | Microsoft Documenten
+  title: Documentatie voor discussie scenario's-zelf studies, API-verwijzing-Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,35 +12,35 @@ metadata:
   ms.date: 03/16/2020
   ms.author: trbye
   ms.openlocfilehash: 1766174d053b480674da26ef3e915bcf3fdf280a
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401458"
 landingContent:
-- title: Gesprekstranscriptie (vergaderscenario)
+- title: Over gesprek transcriptie (scenario voor vergaderingen)
   linkLists:
   - linkListType: overview
     links:
-    - text: Wat is gesprekstranscriptie in vergaderingen?
+    - text: Wat is conversatie transcriptie in vergaderingen?
       url: conversation-transcription.md
   - linkListType: how-to-guide
     links:
-    - text: Real-time gesprektranscriptie
+    - text: Real-time gesprek transcriptie
       url: how-to-use-conversation-transcription.md
     - text: Asynchrone gesprektranscriptie
       url: how-to-async-conversation-transcription.md
-- title: Over multi-device conversation (vergaderscenario)
+- title: Over uitwisseling van meerdere apparaten (scenario voor vergaderingen)
   linkLists:
   - linkListType: overview
     links:
-    - text: Wat is Multi-device Conversation?
+    - text: Wat is een conversatie met meerdere apparaten?
       url: multi-device-conversation.md
   - linkListType: quickstart
     links:
     - text: Een gesprek beginnen en eraan deelnemen
       url: quickstarts/multi-device-conversation.md
-- title: Call Center Transcriptie (aangepast/agent scenario)
+- title: Call Center transcriptie (aangepast/agent scenario)
   linkLists:
   - linkListType: overview
     links:
@@ -50,9 +50,9 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Ondersteuning voor gesprekstranscriptie
+    - text: Ondersteuning voor conversatie transcriptie-taal
       url: conversation-transcription.md#language-support
-    - text: Ondersteuning voor gespreksgesprekken met meerdere apparaten
+    - text: Ondersteuning voor conversaties met meerdere apparaten
       url: multi-device-conversation.md#language-support
-    - text: Prijzen voor spraaktranscriptie
+    - text: Prijzen voor speech transcriptie
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

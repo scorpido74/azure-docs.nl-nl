@@ -11,31 +11,31 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: 59c121f09858114cecfaeb45e257315d1ab92935
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81403429"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Snelstart: Gezichten in een afbeelding detecteren met de REST API en Java
 
-In deze quickstart gebruikt u de Azure Face REST API met Java om menselijke gezichten in een afbeelding te detecteren.
+In deze Quick Start gebruikt u de Azure face REST API met Java om menselijke gezichten in een installatie kopie te detecteren.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint. 
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Face-abonnementssleutel. U kunt een abonnementssleutel voor een gratis proefversie downloaden van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om je te abonneren op de Face-service en je sleutel te krijgen.
+- De sleutel van het gezichts abonnement. U kunt een abonnementssleutel voor een gratis proefversie downloaden van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op de face-service en uw sleutel op te halen.
 - Een Java IDE naar keuze.
 
 ## <a name="create-the-java-project"></a>Het Java-project maken
 
-1. Maak een nieuwe command-line Java-app in je IDE en voeg een **hoofdklasse** toe met een **hoofdmethode.**
+1. Maak een nieuwe opdracht regel-java-app in uw IDE en voeg een **hoofd** klasse met een **hoofd** methode toe.
 1. Importeer de volgende bibliotheken in uw Java-project. Als u Maven gebruikt, worden de Maven-coördinaten opgegeven voor elke bibliotheek.
-   - [Apache HTTP-client](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.6)
-   - [Apache HTTP-kern](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.10)
+   - [Apache HTTP-client](https://hc.apache.org/downloads.cgi) (org. apache. httpcomponents: httpclient maakt: 4.5.6)
+   - [Apache HTTP core](https://hc.apache.org/downloads.cgi) (org. apache. httpcomponents: httpcore: 4.4.10)
    - [JSON-bibliotheek](https://github.com/stleary/JSON-java) (org.json:json:20180130)
-   - [Apache Commons logging](https://commons.apache.org/proper/commons-logging/download_logging.cgi) (commons-logging:commons-logging:1.1.2)
+   - [Apache Commons-logboek registratie](https://commons.apache.org/proper/commons-logging/download_logging.cgi) (Commons-logboek registratie:/logboek registratie: 1.1.2)
 
 ## <a name="add-face-detection-code"></a>Gezichtsdetectiecode toevoegen
 
@@ -65,7 +65,7 @@ import org.json.JSONObject;
 
 ### <a name="add-essential-fields"></a>Essentiële velden toevoegen
 
-Vervang de **hoofdklasse** door de volgende code. Met deze gegevens wordt aangegeven hoe de Face-service moet worden verbonden en waar de invoergegevens kunnen worden opgehaald. U moet het `subscriptionKey` veld bijwerken met de waarde van uw `uriBase` abonnementssleutel en de tekenreeks wijzigen zodat deze de juiste eindpunttekenreeks bevat. U kunt ook de waarde `imageWithFaces` instellen voor een pad dat naar een ander afbeeldingsbestand verwijst.
+Vervang de **hoofd** klasse door de volgende code. Met deze gegevens wordt aangegeven hoe de Face-service moet worden verbonden en waar de invoergegevens kunnen worden opgehaald. U moet het `subscriptionKey` veld bijwerken met de waarde van uw abonnements sleutel en de `uriBase` teken reeks zodanig wijzigen dat het de juiste eindpunt teken reeks bevat. U kunt ook de waarde `imageWithFaces` instellen voor een pad dat naar een ander afbeeldingsbestand verwijst.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -88,7 +88,7 @@ public class Main {
 
 ### <a name="call-the-face-detection-rest-api"></a>De REST API voor de gezichtsdetectie aanroepen
 
-Voeg de **hoofdmethode** toe met de volgende code. Hiermee wordt een REST-aanroep naar de Face-API gemaakt om informatie over het gezicht te detecteren in de externe afbeelding (de tekenreeks `faceAttributes` geeft aan welke gezichtskenmerken moeten worden opgehaald). Vervolgens worden de uitvoergegevens naar een JSON-tekenreeks geschreven.
+Voeg de methode **Main** toe met de volgende code. Hiermee wordt een REST-aanroep naar de Face-API gemaakt om informatie over het gezicht te detecteren in de externe afbeelding (de tekenreeks `faceAttributes` geeft aan welke gezichtskenmerken moeten worden opgehaald). Vervolgens worden de uitvoergegevens naar een JSON-tekenreeks geschreven.
 
 ```Java
     public static void main(String[] args) {
@@ -122,7 +122,7 @@ Voeg de **hoofdmethode** toe met de volgende code. Hiermee wordt een REST-aanroe
 
 ### <a name="parse-the-json-response"></a>Het JSON-antwoord parseren
 
-Direct onder de vorige code voegt u het volgende blok toe. Hiermee worden de geretourneerde JSON-gegevens omgezet in een meer leesbare indeling voordat ze in de console worden weergegeven. Sluit ten slotte het try-catch-blok, de **hoofdmethode** en de **hoofdklasse** af.
+Direct onder de vorige code voegt u het volgende blok toe. Hiermee worden de geretourneerde JSON-gegevens omgezet in een meer leesbare indeling voordat ze in de console worden weergegeven. Ten slotte sluit u het try-catch-blok, de **hoofd** methode en de **hoofd** klasse.
 
 ```Java
             if (entity != null)
@@ -248,7 +248,7 @@ Compileer de code en voer deze uit. Bij een geslaagd antwoord worden de Face-geg
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een eenvoudige Java-consoletoepassing gemaakt die REST-aanroepen naar de Azure Face API gebruikt om gezichten in een afbeelding te detecteren en hun kenmerken terug te sturen. Vervolgens leert u hoe u meer kunt doen met deze functionaliteit in een Android-toepassing.
+In deze Quick Start hebt u een eenvoudige Java-Console toepassing gemaakt die REST-aanroepen gebruikt naar de Azure-Face-API om gezichten in een installatie kopie te detecteren en hun kenmerken te retour neren. Vervolgens leert u hoe u meer kunt doen met deze functionaliteit in een Android-toepassing.
 
 > [!div class="nextstepaction"]
 > [Zelfstudie: een Android-app maken om gezichten te herkennen en omlijsten](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)

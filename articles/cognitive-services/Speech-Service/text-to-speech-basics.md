@@ -1,7 +1,7 @@
 ---
-title: Spraaksynthese basics - Spraakservice
+title: Basis beginselen van spraak synthese-spraak service
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het gebruik van de Spraak-SDK om tekst-naar-spraak te converteren. In dit artikel leert u over objectconstructie, ondersteunde audio-uitvoerindelingen en aangepaste configuratieopties voor spraaksynthese.
+description: Meer informatie over het gebruik van de Speech SDK om tekst naar spraak te converteren. In dit artikel leert u meer over object constructie, ondersteunde indelingen voor audio-uitvoer en aangepaste configuratie opties voor spraak synthese.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,23 +12,23 @@ ms.date: 04/14/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-sixteen
 ms.openlocfilehash: 74f762dd0004bf72b703d0f611a16762b1ff028d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81399556"
 ---
-# <a name="learn-the-basics-of-speech-synthesis"></a>Leer de basisprincipes van spraaksynthese
+# <a name="learn-the-basics-of-speech-synthesis"></a>Meer informatie over de basis beginselen van spraak synthese
 
-In dit artikel leert u veelvoorkomende ontwerppatronen voor het maken van tekst-naar-spraaksynthese met behulp van de Speech SDK. U begint met het doen van basisconfiguratie en synthese, en ga verder met meer geavanceerde voorbeelden voor aangepaste applicatie-ontwikkeling, waaronder:
+In dit artikel leert u veelvoorkomende ontwerp patronen voor het uitvoeren van tekst-naar-spraak-synthese met de Speech SDK. U begint met het uitvoeren van basis configuratie en synthese en gaat verder met geavanceerde voor beelden voor het ontwikkelen van aangepaste toepassingen, waaronder:
 
-* Reacties ontvangen als in-memory streams
-* Uitvoersamplesnelheid en bitsnelheid aanpassen
-* Syntheseaanvragen indienen met SSML (taal voor spraaksynthese)
-* Neurale stemmen gebruiken
+* Antwoorden ophalen als in-Memory streams
+* De voorbeeld frequentie en bitsnelheid van uitvoer aanpassen
+* Aanvragen voor synthese verzenden met behulp van SSML (Markup Language voor spraak-synthese)
+* Neural stemmen gebruiken
 
 > [!TIP]
-> Als je nog geen kans hebt gehad om een van onze quickstarts te voltooien, raden we je aan om de banden te schoppen en zelf spraakherkenning uit te proberen.
+> Als u een van onze Quick starts nog niet hebt kunnen volt ooien, raden we u aan om de banden te starten en de spraak herkenning zelf uit te proberen.
 > * [Spraak herkennen met een microfoon](quickstarts/text-to-speech.md)
 
 ::: zone pivot="programming-language-csharp"

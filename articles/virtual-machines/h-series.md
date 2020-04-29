@@ -1,6 +1,6 @@
 ---
-title: H-serie - Azure Virtual Machines
-description: Specificaties voor de H-serie VM's.
+title: H-serie-Azure Virtual Machines
+description: Specificaties voor de virtuele machines uit de H-serie.
 services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
@@ -8,52 +8,52 @@ ms.topic: article
 ms.date: 03/10/2020
 ms.author: lahugh
 ms.openlocfilehash: 6e0257f8a32d05f49dd67195f22d387319358ef2
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81314133"
 ---
 # <a name="h-series"></a>H-serie
 
-Vm's uit de H-serie zijn geoptimaliseerd voor toepassingen die worden aangedreven door hoge CPU-frequenties of grote geheugen-eisen per kern. Vm's uit de H-serie zijn voorzien van 8 of 16 Intel Xeon E5 2667 v3-processorkernen, tot 14 GB RAM per CPU-kern en geen hyperthreading. H-serie beschikt over 56 Gb/sec Mellanox FDR InfiniBand in een niet-blokkerende vetboom configuratie voor consistente RDMA prestaties. Vm's uit de H-serie ondersteunen Intel MPI 5.x en MS-MPI.
+Virtuele machines uit de H-serie zijn geoptimaliseerd voor toepassingen die worden aangedreven door hoge CPU-frequenties of grote geheugen per kern vereisten. Met de H-serie Vm's functie 8 of 16 Intel Xeon E5 2667 v3-processor kernen, tot 14 GB aan RAM per CPU-kern en zonder hyperthreading. Functies van de H-serie 56 GB/sec Mellanox FDR InfiniBand in een niet-blokkerende Fat-structuur configuratie voor consistente RDMA-prestaties. Virtuele machines uit de H-serie ondersteunen Intel MPI 5. x en MS-MPI.
 
 ACU: 290-300
 
-Premium opslag: niet ondersteund
+Premium Storage: niet ondersteund
 
-Premium Storage Caching: niet ondersteund
+Premium Storage caching: niet ondersteund
 
-Live migratie: niet ondersteund
+Livemigratie: niet ondersteund
 
-Updates voor geheugenbehoud: niet ondersteund
+Updates voor het behouden van geheugen: niet ondersteund
 
-| Grootte | vCPU | Processor | Geheugen (GB) | Geheugenbandbreedte GB/s | Cpu-frequentie baseren (GHz) | All-cores frequentie (GHz, piek) | Single-core frequentie (GHz, piek) | RDMA-prestaties (Gb/s) | ONDERSTEUNING VOOR MPI | Tijdelijke opslag (GB) | Max. aantal gegevensschijven | Max. doorvoer schijf: IOPS | Max Ethernet-NIC's |
+| Grootte | vCPU | Processor | Geheugen (GB) | Geheugen bandbreedte GB/s | Basis-CPU-frequentie (GHz) | Frequentie van alle kernen (GHz, piek) | Frequentie met één kern geheugen (GHz, piek) | RDMA-prestaties (GB/s) | MPI-ondersteuning | Tijdelijke opslag (GB) | Max. aantal gegevensschijven | Max. doorvoer schijf: IOPS | Maximum aantal Ethernet Nic's |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_H8   | 8  | Intel Xeon E5 2667 v3 | 56 | 40 | 3,2 | 3,3 | 3.6 | - | Intel 5.x, MS-MPI | 1000 | 32 | 32 x 500 | 2 |
-| Standard_H16  | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3,2 | 3,3 | 3.6 | - | Intel 5.x, MS-MPI | 2000 | 64 | 64 x 500 | 4 |
-| Standard_H8m  | 8  | Intel Xeon E5 2667 v3 | 112 | 40 | 3,2 | 3,3 | 3.6 | - | Intel 5.x, MS-MPI | 1000 | 32 | 32 x 500 | 2 |
-| Standard_H16m | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3,2 | 3,3 | 3.6 | - | Intel 5.x, MS-MPI | 2000 | 64 | 64 x 500 | 4 |
-| Standard_H16r <sup>1.</sup>  | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3,2 | 3,3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 64 x 500 | 4 |
-| Standard_H16mr <sup>1.</sup> | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3,2 | 3,3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 64 x 500 | 4 |
+| Standard_H8   | 8  | Intel Xeon E5 2667 v3 | 56 | 40 | 3,2 | 3,3 | 3,6 | - | Intel 5. x, MS-MPI | 1000 | 32 | 32 x 500 | 2 |
+| Standard_H16  | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3,2 | 3,3 | 3,6 | - | Intel 5. x, MS-MPI | 2000 | 64 | 64 x 500 | 4 |
+| Standard_H8m  | 8  | Intel Xeon E5 2667 v3 | 112 | 40 | 3,2 | 3,3 | 3,6 | - | Intel 5. x, MS-MPI | 1000 | 32 | 32 x 500 | 2 |
+| Standard_H16m | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3,2 | 3,3 | 3,6 | - | Intel 5. x, MS-MPI | 2000 | 64 | 64 x 500 | 4 |
+| Standard_H16r <sup>1</sup>  | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3,2 | 3,3 | 3,6 | 56 | Intel 5. x, MS-MPI | 2000 | 64 | 64 x 500 | 4 |
+| Standard_H16mr <sup>1</sup> | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3,2 | 3,3 | 3,6 | 56 | Intel 5. x, MS-MPI | 2000 | 64 | 64 x 500 | 4 |
 
-<sup>1</sup> Voor MPI-toepassingen wordt het speciale RDMA-backend-netwerk ingeschakeld door het FDR InfiniBand-netwerk.
+<sup>1</sup> voor mpi-toepassingen is het gereserveerde RDMA-back-end-netwerk ingeschakeld door het FDR InfiniBand-netwerk.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 
-## <a name="supported-os-images-linux"></a>Ondersteunde OS-afbeeldingen (Linux)
+## <a name="supported-os-images-linux"></a>Ondersteunde installatie kopieën van besturings systemen (Linux)
  
-De Azure Marketplace heeft veel Linux-distributies die RDMA-connectiviteit ondersteunen:
+Azure Marketplace heeft veel Linux-distributies die ondersteuning bieden voor RDMA-connectiviteit:
   
-* **CentOS-gebaseerde HPC** - Voor niet-SR-IOV-geschikte VM's, CentOS-gebaseerde versie 6.5 HPC of een latere versie, tot 7,5 zijn geschikt. Voor VM's uit de H-serie worden versies 7.1 tot en met 7.5 aanbevolen. RDMA drivers en Intel MPI 5.1 zijn geïnstalleerd op de VM.
-  Voor SR-IOV VM's wordt CentOS-HPC 7.6 geoptimaliseerd en vooraf geladen met de RDMA-stuurprogramma's en verschillende MPI-pakketten geïnstalleerd.
-  Voor andere RHEL/CentOS VM-afbeeldingen voegt u de InfiniBandLinux-extensie toe om InfiniBand in te schakelen. Deze Linux VM-extensie installeert Mellanox OFED-drivers (op SR-IOV VM's) voor RDMA-connectiviteit. De volgende PowerShell-cmdlet installeert de nieuwste versie (versie 1.0) van de InfiniBandDriverLinux-extensie op een bestaande VM die geschikt is voor RDMA. De VM die geschikt is voor RDMA heet *myVM* en wordt als volgt geïmplementeerd in de resourcegroep *myResourceGroup* in de regio *West-VS:*
+* **Op CentOS gebaseerde HPC** : voor virtuele machines die niet met SR-IOV kunnen worden gebruikt, zijn op CentOS gebaseerde versie 6,5 HPC of een hogere versie 7,5 geschikt. Voor virtuele machines met de H-serie wordt versie 7,1 tot 7,5 aanbevolen. RDMA-Stuur Programma's en Intel MPI 5,1 zijn geïnstalleerd op de virtuele machine.
+  Voor virtuele machines met SR-IOV wordt CentOS-HPC 7,6 geoptimaliseerd en vooraf geladen met de RDMA-Stuur Programma's en verschillende MPI-pakketten die zijn geïnstalleerd.
+  Voor andere VM-installatie kopieën van RHEL/CentOS voegt u de extensie InfiniBandLinux toe om InfiniBand in te scha kelen. Deze Linux VM-extensie installeert Mellanox OFED-Stuur programma's (op SR-IOV-Vm's) voor RDMA-connectiviteit. Met de volgende Power shell-cmdlet wordt de nieuwste versie (versie 1,0) van de InfiniBandDriverLinux-extensie geïnstalleerd op een bestaande, RDMA-compatibele VM. De RDMA-capable VM heet *myVM* en wordt als volgt geïmplementeerd in de resource groep met de naam *myResourceGroup* in de regio *VS West* :
 
   ```powershell
   Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
   ```
-  Vm-extensies kunnen ook worden opgenomen in Azure Resource Manager-sjablonen voor eenvoudige implementatie met het volgende JSON-element:
+  VM-extensies kunnen ook worden opgenomen in Azure Resource Manager sjablonen voor een eenvoudige implementatie met het volgende JSON-element:
   ```json
   "properties":{
   "publisher": "Microsoft.HpcCompute",
@@ -62,7 +62,7 @@ De Azure Marketplace heeft veel Linux-distributies die RDMA-connectiviteit onder
   } 
   ```
   
-  Met de volgende opdracht wordt de nieuwste versie 1.0 InfiniBandDriverLinux-extensie geïnstalleerd op alle VM's die geschikt zijn voor RDMA in een bestaande virtuele machineschaalset met de naam *myVMSS* geïmplementeerd in de brongroep *myResourceGroup:*
+  Met de volgende opdracht wordt de meest recente versie 1,0 InfiniBandDriverLinux-extensie geïnstalleerd op alle virtuele machines met RDMA-functionaliteit in een bestaande VM-schaalset met de naam *myVMSS* geïmplementeerd in de resource groep met de naam *myResourceGroup*:
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
   Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
@@ -71,23 +71,23 @@ De Azure Marketplace heeft veel Linux-distributies die RDMA-connectiviteit onder
   ```
   
   > [!NOTE]
-  > Op de CentOS-gebaseerde HPC-afbeeldingen worden kernelupdates uitgeschakeld in het **configuratiebestand van Yum.** Dit komt omdat Linux RDMA-stuurprogramma's worden gedistribueerd als een RPM-pakket en stuurprogramma-updates mogelijk niet werken als de kernel wordt bijgewerkt.
+  > Op de op CentOS gebaseerde HPC-installatie kopieën worden kernel-updates uitgeschakeld in het configuratie bestand **yum** . Dit komt doordat Linux RDMA-Stuur Programma's worden gedistribueerd als een RPM-pakket, en updates van Stuur Programma's kunnen mogelijk niet worden uitgevoerd als de kernel wordt bijgewerkt.
   >
   
 
-* **SUSE Linux Enterprise Server** - SLES 12 SP3 voor HPC, SLES 12 SP3 voor HPC (Premium), SLES 12 SP1 voor HPC, SLES 12 SP1 voor HPC (Premium), SLES 12 SP4 en SLES 15. RDMA-stuurprogramma's zijn geïnstalleerd en Intel MPI-pakketten worden gedistribueerd op de VM. Installeer MPI door de volgende opdracht uit te voeren:
+* **SuSE Linux Enterprise Server** -SLES 12 SP3 voor HPC, SLES 12 SP3 voor HPC (Premium), SLES 12 SP1 voor HPC, SLES 12 SP1 voor HPC (Premium), SLES 12 SP4 en SLES 15. RDMA-Stuur Programma's worden geïnstalleerd en Intel MPI-pakketten worden gedistribueerd op de VM. Installeer MPI door de volgende opdracht uit te voeren:
 
   ```bash
   sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
   ```
   
-* **Ubuntu** - Ubuntu Server 16.04 LTS, 18.04 LTS. Rdma-stuurprogramma's configureren op de VM en registreer u bij Intel om Intel MPI te downloaden:
+* **Ubuntu** -Ubuntu Server 16,04 LTS, 18,04 LTS. Stuur Programma's voor RDMA configureren op de VM en registreren bij Intel om Intel MPI te downloaden:
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../includes/virtual-machines-common-ubuntu-rdma.md)]  
 
-  Zie [InfiniBand](./workloads/hpc/enable-infiniband.md)inschakelen voor meer informatie over het inschakelen van InfiniBand.
+  Zie [Enable InfiniBand](./workloads/hpc/enable-infiniband.md)voor meer informatie over het inschakelen van Infiniband, het instellen van MPI.
 
-## <a name="other-sizes"></a>Andere maten
+## <a name="other-sizes"></a>Andere grootten
 
 - [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
@@ -98,4 +98,4 @@ De Azure Marketplace heeft veel Linux-distributies die RDMA-connectiviteit onder
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe [Azure compute units (ACU)](acu.md) u kunnen helpen bij het vergelijken van rekenprestaties in Azure SKU's.
+Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.

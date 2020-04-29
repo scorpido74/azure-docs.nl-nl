@@ -1,7 +1,7 @@
 ---
-title: Automatische taaldetectie gebruiken voor spraak naar tekst
+title: Automatische taal detectie voor spraak naar tekst gebruiken
 titleSuffix: Azure Cognitive Services
-description: De Speech SDK ondersteunt automatische taaldetectie voor spraak naar tekst. Bij het gebruik van deze functie wordt de meegeleverde audio vergeleken met een opgegeven lijst met talen en wordt de meest waarschijnlijke overeenkomst bepaald. De geretourneerde waarde kan vervolgens worden gebruikt om het taalmodel te selecteren dat wordt gebruikt voor spraak naar tekst.
+description: De Speech SDK ondersteunt automatische taal detectie voor spraak op tekst. Wanneer u deze functie gebruikt, wordt de opgegeven audio vergeleken met een opgegeven lijst met talen en wordt de meest waarschijnlijke overeenkomst bepaald. De geretourneerde waarde kan vervolgens worden gebruikt om het taal model te selecteren dat wordt gebruikt voor spraak naar tekst.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,29 +12,29 @@ ms.date: 03/16/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: fefbe793fa4a6b90ba9bf8d468d42dcbd315759c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402202"
 ---
-# <a name="automatic-language-detection-for-speech-to-text"></a>Automatische taaldetectie voor spraak naar tekst
+# <a name="automatic-language-detection-for-speech-to-text"></a>Automatische taal detectie voor spraak naar tekst
 
-Automatische taaldetectie wordt gebruikt om te bepalen welke waarschijnlijk e-match voor audio doorgegeven aan de Speech SDK in vergelijking met een lijst van de verstrekte talen. De waarde die wordt geretourneerd door automatische taaldetectie wordt vervolgens gebruikt om het taalmodel voor spraak naar tekst te selecteren, zodat u een nauwkeurigere transcriptie krijgt. Zie [Taalondersteuning](language-support.md)om te zien welke talen beschikbaar zijn.
+Automatische taal detectie wordt gebruikt om de meest waarschijnlijke overeenkomst te bepalen voor audio die wordt door gegeven aan de Speech SDK in vergelijking met een lijst met de opgegeven talen. De waarde die wordt geretourneerd door automatische taal detectie wordt vervolgens gebruikt voor het selecteren van het taal model voor spraak naar tekst, zodat u een nauw keurigere transcriptie krijgt. Zie [taal ondersteuning](language-support.md)voor meer informatie over de talen die beschikbaar zijn.
 
-In dit artikel leert u hoe `AutoDetectSourceLanguageConfig` u `SpeechRecognizer` een object maken en de gedetecteerde taal ophalen.
+In dit artikel leert u hoe u kunt gebruiken `AutoDetectSourceLanguageConfig` om een `SpeechRecognizer` object te maken en de gedetecteerde taal op te halen.
 
 > [!IMPORTANT]
-> Deze functie is alleen beschikbaar voor de Speech SDK voor C#, C++, Java en Python.
+> Deze functie is alleen beschikbaar voor de Speech SDK voor C#, C++, Java en python.
 
-## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatische taaldetectie met de SpraakSDK
+## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatische taal detectie met de Speech SDK
 
-Automatische taaldetectie heeft momenteel een service-side limiet van twee talen per detectie. Houd deze beperking in `AudoDetectSourceLanguageConfig` gedachten bij het bouwen van uw object. In de onderstaande voorbeelden maakt `AutoDetectSourceLanguageConfig`u een , `SpeechRecognizer`vervolgens gebruiken om een te construeren .
+Automatische taal detectie heeft momenteel een limiet aan services zijde van twee talen per detectie. Houd deze beperking in acht wanneer u uw `AudoDetectSourceLanguageConfig` object wilt bouwen. In de onderstaande voor beelden maakt u een `AutoDetectSourceLanguageConfig`en gebruikt u deze om een `SpeechRecognizer`te maken.
 
 > [!TIP]
-> U ook een aangepast model opgeven dat u wilt gebruiken bij het uitvoeren van spraak naar tekst. Zie [Een aangepast model gebruiken voor automatische taaldetectie voor](#use-a-custom-model-for-automatic-language-detection)meer informatie.
+> U kunt ook een aangepast model opgeven dat moet worden gebruikt voor het uitvoeren van spraak op tekst. Zie voor meer informatie [een aangepast model gebruiken voor automatische taal detectie](#use-a-custom-model-for-automatic-language-detection).
 
-In de volgende fragmenten wordt uitgelegd hoe u automatische taaldetectie in uw apps gebruiken:
+De volgende code fragmenten laten zien hoe u automatische taal detectie in uw apps kunt gebruiken:
 
 ::: zone pivot="programming-language-csharp"
 
@@ -118,11 +118,11 @@ detected_language = auto_detect_source_language_result.language
 
 ::: zone-end
 
-## <a name="use-a-custom-model-for-automatic-language-detection"></a>Een aangepast model gebruiken voor automatische taaldetectie
+## <a name="use-a-custom-model-for-automatic-language-detection"></a>Een aangepast model gebruiken voor automatische taal detectie
 
-Naast taaldetectie met spraakservicemodellen, u een aangepast model opgeven voor verbeterde herkenning. Als er geen aangepast model is geleverd, gebruikt de service het standaardtaalmodel.
+Naast taal detectie met behulp van Speech-Service modellen, kunt u een aangepast model voor verbeterde herkenning opgeven. Als er geen aangepast model wordt gegeven, gebruikt de service het standaard taal model.
 
-In de onderstaande fragmenten u een aangepast model opgeven in uw gesprek met de spraakservice. Als de gedetecteerde `en-US`taal is, wordt het standaardmodel gebruikt. Als de gedetecteerde `fr-FR`taal is, wordt het eindpunt voor het aangepaste model gebruikt:
+In de onderstaande fragmenten ziet u hoe u een aangepast model kunt opgeven in de aanroep van de spraak service. Als de gedetecteerde taal `en-US`is, wordt het standaard model gebruikt. Als de gedetecteerde taal `fr-FR`is, wordt het eind punt voor het aangepaste model gebruikt:
 
 ::: zone pivot="programming-language-csharp"
 
@@ -184,4 +184,4 @@ AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig =
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [SpraakSDK-referentiedocumentatie](speech-sdk.md)
+- [Naslag documentatie voor Speech SDK](speech-sdk.md)

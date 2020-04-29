@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie voor het bestellen van Azure-gegevensvak | Microsoft Documenten
+title: Zelf studie voor het best Ellen van Azure Data Box | Microsoft Docs
 description: Ontdek wat de implementatievereisten zijn en hoe u een Azure Data Box kunt bestellen
 services: databox
 author: alkohli
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: alkohli
 ms.openlocfilehash: 46dd89694857138d28255d5b1a86a8c947680520
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81398672"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Zelfstudie: Azure Data Box bestellen
@@ -50,7 +50,7 @@ Voer de volgende stappen uit in de Azure-portal om een apparaat te bestellen.
     
    [![Zoek naar Azure Data Box 1](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
 
-3. Klik **op Maken**.
+3. Klik op **maken**.
 
 4. Controleer of de Data Box-service beschikbaar is in uw regio. Voer de volgende gegevens in of selecteer deze en klik op **Toepassen**. 
 
@@ -61,9 +61,9 @@ Voer de volgende stappen uit in de Azure-portal om een apparaat te bestellen.
     |Bronland     |   Selecteer het land/de regio waar uw gegevens zich momenteel bevinden.         |
     |Doel-Azure-regio     |     Selecteer de Azure-regio waarnaar u uw gegevens wilt overdragen.        |
 
-5. Selecteer **Data Box**. De maximale bruikbare capaciteit voor een enkele bestelling is 80 TB. U kunt meerdere bestellingen doen voor grotere gegevensgrootten.
+5. Selecteer **Data Box**. De maximale bruikbare capaciteit voor één bestelling is 80 TB. U kunt meerdere bestellingen doen voor grotere gegevensgrootten.
 
-      [![Optie 1 gegevensvak selecteren](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
+      [![Selecteer Data Box optie 1](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
 
 6. Voer in **Bestellen** de **Orderdetails** in. Voer de volgende gegevens in of selecteer deze en klik op **Volgende**.
     
@@ -72,19 +72,19 @@ Voer de volgende stappen uit in de Azure-portal om een apparaat te bestellen.
     |Naam     |  Geef een beschrijvende naam op om de bestelling te volgen. <br> De naam kan tussen 3 en 24 tekens bevatten (letters, cijfers en afbreekstreepjes). <br> De naam moet beginnen en eindigen met een letter of cijfer.      |
     |Resourcegroep     |   Gebruik een bestaande of maak een nieuwe. <br> Een resourcegroep is een logische container voor resources die samen kunnen worden beheerd of geïmplementeerd.         |
     |Doel-Azure-regio     | Selecteer een regio voor uw opslagaccount. <br> Ga naar [Beschikbaarheid in de regio](data-box-overview.md#region-availability) voor meer informatie.        |
-    |Opslaglocatie     | Kies een opslagaccount, beheerde schijven of beide. <br> Selecteer een of meer opslagaccounts in de gefilterde lijst van een bestaand opslagaccount, gebaseerd op de opgegeven Azure-regio. Data Box kan worden gekoppeld aan maximaal 10 opslagaccounts. <br> U kunt ook een nieuw account van het type **Algemeen gebruik v1**, **Algemeen gebruik v2** of **Blob-opslag** maken. <br>Opslagaccounts met virtuele netwerken worden ondersteund. Als u wilt dat de Data Box-service kan werken met beveiligde opslagaccounts, schakelt u in de firewallinstellingen van het opslagaccount de vertrouwde services in. Zie voor meer informatie hoe u [Azure Data Box toevoegt als een vertrouwde service](../storage/common/storage-network-security.md#exceptions).|
+    |Opslaglocatie     | Kies een opslagaccount, beheerde schijven of beide. <br> Selecteer een of meer opslagaccounts in de gefilterde lijst van een bestaand opslagaccount, gebaseerd op de opgegeven Azure-regio. Data Box kan worden gekoppeld aan maximaal 10 opslagaccounts. <br> U kunt ook een nieuw account van het type **Algemeen gebruik v1**, **Algemeen gebruik v2** of **Blob-opslag** maken. <br>Opslagaccounts met virtuele netwerken worden ondersteund. Als u wilt dat de Data Box-service kan werken met beveiligde opslagaccounts, schakelt u in de firewallinstellingen van het opslagaccount de vertrouwde services in. Zie [Azure data Box toevoegen als een vertrouwde service](../storage/common/storage-network-security.md#exceptions)voor meer informatie.|
 
     Als u een opslagaccount selecteert als de opslaglocatie, ziet u het volgende scherm:
 
-    ![Data Box order voor opslag account](media/data-box-deploy-ordered/order-storage-account.png)
+    ![Data Box volgorde voor het opslag account](media/data-box-deploy-ordered/order-storage-account.png)
 
-    Als u met Data Box beheerde schijven maakt van de on-premises VHD's, moet u ook de volgende informatie verstrekken:
+    Als Data Box gebruikt om beheerde schijven te maken op basis van de on-premises Vhd's, moet u ook de volgende informatie opgeven:
 
     |Instelling  |Waarde  |
     |---------|---------|
-    |Resourcegroepen     | Maak nieuwe resourcegroepen als u beheerde schijven wilt maken van on-premises virtuele harde schijven. U een bestaande brongroep alleen gebruiken als de resourcegroep eerder is gemaakt bij het maken van een databoxorder voor beheerde schijf door de Data Box-service. <br> U kunt meerdere resourcegroepen opgeven door de namen te scheiden met een puntkomma. Er worden maximaal tien resourcegroepen ondersteund.|
+    |Resourcegroepen     | Maak nieuwe resourcegroepen als u beheerde schijven wilt maken van on-premises virtuele harde schijven. U kunt een bestaande resource groep alleen gebruiken als de resource groep eerder is gemaakt tijdens het maken van een Data Box bestelling voor beheerde schijven door Data Box-Service. <br> U kunt meerdere resourcegroepen opgeven door de namen te scheiden met een puntkomma. Er worden maximaal tien resourcegroepen ondersteund.|
 
-    ![Data Box-order voor beheerde schijf](media/data-box-deploy-ordered/order-managed-disks.png)
+    ![Data Box volgorde voor beheerde schijf](media/data-box-deploy-ordered/order-managed-disks.png)
 
     Het opslagaccount dat is opgegeven voor beheerde schijven wordt gebruikt als een opslagaccount waarin de gegevens worden klaargezet. De Data Box-service uploadt de virtuele harde schijven als pagina-blobs naar dit opslagaccount waarna de schijven worden omgezet in beheerde schijven en naar de resourcegroepen worden verplaatst. Zie [Uploaden van gegevens naar Azure controleren](data-box-deploy-picked-up.md#verify-data-upload-to-azure) voor meer informatie.
 

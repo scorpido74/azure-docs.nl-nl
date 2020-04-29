@@ -1,6 +1,6 @@
 ---
-title: HTTP naar HTTPS-omleiding met PowerShell - Azure Application Gateway
-description: Meer informatie over het maken van een toepassingsgateway met omgeleid verkeer van HTTP naar HTTPS met Azure PowerShell.
+title: HTTP-naar-HTTPS-omleiding met Power shell-Azure-toepassing gateway
+description: Meer informatie over het maken van een toepassings gateway met omgeleid verkeer van HTTP naar HTTPS met Azure PowerShell.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: d905be7c4a922a1a7eb3d1318be28da896e8a7e9
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312007"
 ---
-# <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Een toepassingsgateway maken met HTTP naar HTTPS-omleiding met Azure PowerShell
+# <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Een toepassings gateway met HTTP-naar-HTTPS-omleiding maken met behulp van Azure PowerShell
 
-U de Azure PowerShell gebruiken om een [toepassingsgateway](overview.md) te maken met een certificaat voor TLS/SSL-beëindiging. Er wordt een routeringsregel gebruikt om HTTP-verkeer om te leiden naar de HTTPS-poort in uw toepassingsgateway. In dit voorbeeld maakt u ook een [virtuele machineschaalset](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) voor de backendpool van de toepassingsgateway die twee virtuele machine-exemplaren bevat. 
+U kunt de Azure PowerShell gebruiken om een [toepassings gateway](overview.md) te maken met een certificaat voor het beëindigen van TLS/SSL. Er wordt een routerings regel gebruikt om HTTP-verkeer om te leiden naar de HTTPS-poort in uw toepassings gateway. In dit voor beeld maakt u ook een [schaalset voor virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) voor de back-end-pool van de toepassings gateway die twee exemplaren van virtuele machines bevat. 
 
 In dit artikel leert u het volgende:
 
@@ -24,18 +24,18 @@ In dit artikel leert u het volgende:
 > * Een zelfondertekend certificaat maken
 > * Een netwerk instellen
 > * Een toepassingsgateway maken met behulp van het certificaat
-> * Een listener- en omleidingsregel toevoegen
+> * Een listener-en omleidings regel toevoegen
 > * Een virtuele-machineschaalset maken met de standaard back-endgroep
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Voor deze zelfstudie is de Azure PowerShell-module versie 1.0.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u de opdrachten in deze zelfstudie `Login-AzAccount` wilt uitvoeren, moet u ook worden uitgevoerd om een verbinding met Azure te maken.
+Voor deze zelf studie is de Azure PowerShell module versie 1.0.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u de opdrachten in deze zelf studie wilt uitvoeren, moet u `Login-AzAccount` ook uitvoeren om een verbinding te maken met Azure.
 
 ## <a name="create-a-self-signed-certificate"></a>Een zelfondertekend certificaat maken
 
-Voor productiegebruik moet u een geldig certificaat importeren dat is ondertekend door een vertrouwde provider. Voor deze zelfstudie maakt u een zelfondertekend certificaat met behulp van [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate). U kunt [Export-PfxCertificate ](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) gebruiken met de Thumbprint die is geretourneerd om een ​​PFX-bestand uit het certificaat te exporteren.
+Voor productie gebruik moet u een geldig certificaat importeren dat is ondertekend door een vertrouwde provider. Voor deze zelfstudie maakt u een zelfondertekend certificaat met behulp van [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate). U kunt [Export-PfxCertificate ](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) gebruiken met de Thumbprint die is geretourneerd om een ​​PFX-bestand uit het certificaat te exporteren.
 
 ```powershell
 New-SelfSignedCertificate `
@@ -65,7 +65,7 @@ Export-PfxCertificate `
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een Azure-brongroep met de naam *myResourceGroupAG* met [nieuwe azresourcegroep](/powershell/module/az.resources/new-azresourcegroup). 
+Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een Azure-resource groep met de naam *myResourceGroupAG* met behulp van [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). 
 
 ```powershell
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
@@ -73,7 +73,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Netwerkbronnen maken
 
-Maak de subnetconfiguraties voor *myBackendSubnet* en *myAGSubnet* met [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Maak het virtuele netwerk *myVNet* met behulp van [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) met de subnetconfiguraties. En ten slotte, maak het openbare IP-adres genaamd *myAGPublicIPAddress* met behulp van [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Deze resources worden gebruikt om de netwerkverbinding naar de toepassingsgateway en de bijbehorende bronnen te leveren.
+Maak de subnet-configuraties voor *myBackendSubnet* en *myAGSubnet* met behulp van [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Maak het virtuele netwerk met de naam *myVNet* met behulp van [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) met de subnet-configuraties. En ten slotte maakt u het open bare IP-adres met de naam *myAGPublicIPAddress* met behulp van [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Deze resources worden gebruikt om de netwerkverbinding naar de toepassingsgateway en de bijbehorende bronnen te leveren.
 
 ```powershell
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -99,7 +99,7 @@ $pip = New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>IP-configuraties en front-endpoort maken
 
-*MyAGSubnet* koppelen dat u eerder hebt gemaakt met de toepassingsgateway met [behulp van New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration). Wijs *myAGPublicIPAddress* toe aan de toepassingsgateway met [nieuwe-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig). En dan u de HTTPS-poort maken met behulp van [New-AzApplicationGatewayFrontendPort.](/powershell/module/az.network/new-azapplicationgatewayfrontendport)
+Koppel *myAGSubnet* die u eerder hebt gemaakt voor de toepassings gateway met behulp van [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration). Wijs *myAGPublicIPAddress* toe aan de toepassings gateway met behulp van [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig). Daarna kunt u de HTTPS-poort maken met behulp van [New-AzApplicationGatewayFrontendPort](/powershell/module/az.network/new-azapplicationgatewayfrontendport).
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -119,7 +119,7 @@ $frontendPort = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool-and-settings"></a>Back-endpool en instellingen maken
 
-Maak de backend pool met de naam *appGatewayBackendPool* voor de toepassingsgateway met [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Configureer de instellingen voor de backendpool met [Nieuwe-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting).
+Maak de back-end-groep met de naam *appGatewayBackendPool* voor de toepassings gateway met behulp van [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Configureer de instellingen voor de back-end [-groep met New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting).
 
 ```powershell
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
@@ -136,7 +136,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 Een listener is vereist om de toepassingsgateway in te schakelen om het verkeer op de juiste manier naar de back-endpool door te sturen. In dit voorbeeld maakt u een basis-listener die luistert naar HTTPS-verkeer op de basis-URL. 
 
-Maak een certificaatobject met [Nieuw-AzApplicationGatewaySslCertificate](/powershell/module/az.network/new-azapplicationgatewaysslcertificate) en maak vervolgens een listener met de naam *appGatewayHttpListener* met [nieuwe azapplicationgatewayhttplistener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) met de frontend-configuratie, frontendpoort en certificaat die u eerder hebt gemaakt. Er is een regel vereist, zodat de listener weet welke back-endpool moet worden gebruikt voor binnenkomend verkeer. Maak een basisregel met de naam *Rule1* met [nieuwe azApplicationGateway-routeregel](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
+Maak een certificaat object met behulp van [New-AzApplicationGatewaySslCertificate](/powershell/module/az.network/new-azapplicationgatewaysslcertificate) en maak een listener met de naam *appGatewayHttpListener* met behulp van [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) met de front-end-configuratie, de frontend-poort en het certificaat dat u eerder hebt gemaakt. Er is een regel vereist, zodat de listener weet welke back-endpool moet worden gebruikt voor binnenkomend verkeer. Maak een basis regel met de naam *firewallregel1* met behulp van [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
 
 ```powershell
 $pwd = ConvertTo-SecureString `
@@ -163,7 +163,7 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>De toepassingsgateway maken
 
-Nu u de benodigde ondersteunende bronnen hebt gemaakt, geeft u parameters op voor de toepassingsgateway met de naam *myAppGateway* met behulp van [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku)en maakt u deze vervolgens met [Nieuw-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) met het certificaat.
+Nu u de nodige ondersteunende resources hebt gemaakt, geeft u para meters op voor de toepassings gateway met de naam *myAppGateway* met behulp van [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku)en maakt u deze met behulp van [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) met het certificaat.
 
 ```powershell
 $sku = New-AzApplicationGatewaySku `
@@ -185,11 +185,11 @@ $appgw = New-AzApplicationGateway `
   -SslCertificates $cert
 ```
 
-## <a name="add-a-listener-and-redirection-rule"></a>Een listener- en omleidingsregel toevoegen
+## <a name="add-a-listener-and-redirection-rule"></a>Een listener-en omleidings regel toevoegen
 
 ### <a name="add-the-http-port"></a>De HTTP-poort toevoegen
 
-Voeg de HTTP-poort toe aan de toepassingsgateway met [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport).
+Voeg de HTTP-poort toe aan de toepassings gateway met behulp van [add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport).
 
 ```powershell
 $appgw = Get-AzApplicationGateway `
@@ -203,7 +203,7 @@ Add-AzApplicationGatewayFrontendPort `
 
 ### <a name="add-the-http-listener"></a>De HTTP-listener toevoegen
 
-Voeg de HTTP-listener met de naam *myListener* toe aan de toepassingsgateway met [Add-AzApplicationGatewayHttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener).
+Voeg de HTTP-listener met de naam *myListener* toe aan de toepassings gateway met behulp van [add-AzApplicationGatewayHttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener).
 
 ```powershell
 $fipconfig = Get-AzApplicationGatewayFrontendIPConfig `
@@ -220,9 +220,9 @@ Add-AzApplicationGatewayHttpListener `
   -ApplicationGateway $appgw
 ```
 
-### <a name="add-the-redirection-configuration"></a>De omleidingsconfiguratie toevoegen
+### <a name="add-the-redirection-configuration"></a>De configuratie van de omleiding toevoegen
 
-Voeg de HTTP-omleidingsconfiguratie toe aan de toepassingsgateway met [Add-AzApplicationRedirectConfiguration](/powershell/module/az.network/add-azapplicationgatewayredirectconfiguration).
+Voeg de HTTP-naar-HTTPS-omleidings configuratie toe aan de toepassings gateway met behulp van [add-AzApplicationGatewayRedirectConfiguration](/powershell/module/az.network/add-azapplicationgatewayredirectconfiguration).
 
 ```powershell
 $defaultListener = Get-AzApplicationGatewayHttpListener `
@@ -236,9 +236,9 @@ Add-AzApplicationGatewayRedirectConfiguration -Name httpToHttps `
   -ApplicationGateway $appgw
 ```
 
-### <a name="add-the-routing-rule"></a>De routeringsregel toevoegen
+### <a name="add-the-routing-rule"></a>De regel voor door sturen toevoegen
 
-Voeg de routeringsregel toe aan de omleidingsconfiguratie aan de toepassingsgateway met [Add-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule).
+Voeg de regel voor door sturen met de configuratie van de omleiding toe aan de toepassings gateway met behulp van [add-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule).
 
 ```powershell
 $myListener = Get-AzApplicationGatewayHttpListener `
@@ -320,7 +320,7 @@ Update-AzVmss `
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
-U [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) gebruiken om het openbare IP-adres van de toepassingsgateway te krijgen. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. Bijvoorbeeld: http://52.170.203.149
+U kunt [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) gebruiken om het open bare IP-adres van de toepassings gateway op te halen. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. Bijvoorbeeld: http://52.170.203.149
 
 ```powershell
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -328,17 +328,17 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Beveiligingswaarschuwing](./media/redirect-http-to-https-powershell/application-gateway-secure.png)
 
-Als u de beveiligingswaarschuwing wilt accepteren als u een zelfondertekend certificaat hebt gebruikt, selecteert u **Details** en **gaat u vervolgens naar de webpagina**. Uw beveiligde IIS-website wordt vervolgens weergegeven zoals in het volgende voorbeeld:
+Als u de beveiligings waarschuwing wilt accepteren als u een zelfondertekend certificaat hebt gebruikt, selecteert u **Details** en **gaat u naar de webpagina**. Uw beveiligde IIS-website wordt vervolgens weergegeven zoals in het volgende voorbeeld:
 
 ![Basis-URL testen in de toepassingsgateway](./media/redirect-http-to-https-powershell/application-gateway-iistest.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een zelfondertekend certificaat maken
 > * Een netwerk instellen
 > * Een toepassingsgateway maken met behulp van het certificaat
-> * Een listener- en omleidingsregel toevoegen
+> * Een listener-en omleidings regel toevoegen
 > * Een virtuele-machineschaalset maken met de standaard back-endgroep

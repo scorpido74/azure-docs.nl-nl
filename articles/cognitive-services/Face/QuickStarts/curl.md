@@ -11,25 +11,25 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: 7e7eb9ba942cd29db824388c02b2933c533c4b45
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81403023"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Snelstart: Gezichten in een afbeelding detecteren met de Face REST API en cURL
 
-In deze quickstart gebruikt u de Azure Face REST API met cURL om menselijke gezichten in een afbeelding te detecteren.
+In deze Quick Start gebruikt u de Azure face REST API met krul om menselijke gezichten in een installatie kopie te detecteren.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint. 
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Face-abonnementssleutel. U kunt een abonnementssleutel voor een gratis proefversie downloaden van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om je te abonneren op de Face-service en je sleutel te krijgen.
+- De sleutel van het gezichts abonnement. U kunt een abonnementssleutel voor een gratis proefversie downloaden van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op de face-service en uw sleutel op te halen.
 
 ## <a name="write-the-command"></a>De opdracht schrijven
  
-U gebruikt een opdracht als volgt om de Face API aan te roepen en gezichtskenmerkgegevens uit een afbeelding te halen. Kopieer eerst de code in een teksteditor&mdash;u moet wijzigingen aanbrengen in bepaalde gedeelten van de opdracht voordat u deze kunt uitvoeren.
+U gebruikt een opdracht als de volgende om de Face-API aan te roepen en face-kenmerk gegevens op te halen uit een installatie kopie. Kopieer eerst de code in een teksteditor&mdash;u moet wijzigingen aanbrengen in bepaalde gedeelten van de opdracht voordat u deze kunt uitvoeren.
 
 ```shell
 curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://<My Endpoint String>.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
@@ -40,7 +40,7 @@ Vervang `<Subscription Key>` door een geldige Face-abonnementssleutel.
 
 ### <a name="face-endpoint-url"></a>Eindpunt-URL voor Face
 
-De URL `https://<My Endpoint String>.com/face/v1.0/detect` geeft het Azure Face-eindpunt aan waarvoor een query moet worden uitgevoerd. Mogelijk moet u het eerste deel van deze URL wijzigen zodat het overeenkomt met het eindpunt dat overeenkomt met uw abonnementssleutel.
+De URL `https://<My Endpoint String>.com/face/v1.0/detect` geeft het Azure Face-eindpunt aan waarvoor een query moet worden uitgevoerd. Mogelijk moet u het eerste deel van deze URL wijzigen zodat deze overeenkomt met het eind punt dat overeenkomt met uw abonnements sleutel.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -53,7 +53,7 @@ De queryreeks van de Face-eindpunt-URL geeft op welke gezichtskenmerken moeten w
 ```
 
 ### <a name="image-source-url"></a>Bron-URL van afbeelding
-De bron-URL geeft aan welke afbeelding moet worden gebruikt als invoer. U dit wijzigen om te wijzen op elke afbeelding die u wilt analyseren.
+De bron-URL geeft aan welke afbeelding moet worden gebruikt als invoer. U kunt dit wijzigen zodat deze verwijst naar een wille keurige afbeelding die u wilt analyseren.
 
 ```
 https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
@@ -157,7 +157,7 @@ Nadat u de wijzigingen hebt aangebracht, opent u een opdrachtprompt en voert u d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een cURL-opdracht geschreven waarmee de Azure Face-service wordt aangenomen om gezichten in een afbeelding te detecteren en hun kenmerken terug te sturen. Lees het naslagmateriaal bij de Face-API voor meer informatie.
+In deze Quick Start hebt u een krul opdracht geschreven waarmee de Azure face-service wordt aangeroepen om gezichten in een installatie kopie te detecteren en hun kenmerken te retour neren. Lees het naslagmateriaal bij de Face-API voor meer informatie.
 
 > [!div class="nextstepaction"]
 > [Face-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

@@ -1,6 +1,6 @@
 ---
-title: Gebeurtenisbron gebeurtenishubs toevoegen - Azure Time Series Insights | Microsoft Documenten
-description: Meer informatie over het toevoegen van een gebeurtenisbron van Azure Event Hubs aan uw Time Series Insights-omgeving.
+title: Een Event Hubs gebeurtenis bron toevoegen-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over het toevoegen van een Azure Event Hubs gebeurtenis bron aan uw Time Series Insights omgeving.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,109 +12,109 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 021ac5fccf4d694895ab9941bd46dd2388f49af9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81407462"
 ---
-# <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Een gebeurtenisbron voor gebeurtenishubs toevoegen aan uw Time Series Insights-omgeving
+# <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Een Event Hub gebeurtenis bron toevoegen aan uw Time Series Insights omgeving
 
-In dit artikel wordt beschreven hoe u de Azure-portal gebruiken om een gebeurtenisbron toe te voegen die gegevens uit Azure Event Hubs leest aan uw Azure Time Series Insights-omgeving.
+In dit artikel wordt beschreven hoe u de Azure Portal kunt gebruiken om een gebeurtenis bron toe te voegen waarmee gegevens worden gelezen van Azure Event Hubs naar uw Azure Time Series Insights omgeving.
 
 > [!NOTE]
-> De stappen die in dit artikel worden beschreven, zijn van toepassing op zowel de Time Series Insights GA- als de Time Series Insights Preview-omgevingen.
+> De stappen die in dit artikel worden beschreven, zijn van toepassing op de voorbeeld omgevingen Time Series Insights GA en Time Series Insights.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Maak een Time Series Insights-omgeving zoals beschreven in [Een Azure Time Series Insights-omgeving maken.](./time-series-insights-update-create-environment.md)
-- Maak een Event Hub. Lees [De naamruimte van Een gebeurtenishubs en een gebeurtenishub maken met behulp van de Azure-portal.](../event-hubs/event-hubs-create.md)
-- De gebeurtenishub moet actieve berichtgebeurtenissen naar de gebeurtenis hebben verzonden. Meer informatie over het [verzenden van gebeurtenissen naar Azure Event Hubs met behulp van het .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
-- Maak een speciale consumentengroep in de gebeurtenishub waarvan de Time Series Insights-omgeving kan worden gebruikt. Elke Time Series Insights-gebeurtenisbron moet een eigen speciale consumentengroep hebben die niet wordt gedeeld met andere consumenten. Als meerdere lezers gebeurtenissen uit dezelfde consumentengroep consumeren, zullen alle lezers waarschijnlijk fouten vertonen. Er is een limiet van 20 consumentengroepen per eventhub. Lees voor meer informatie de [programmeerhandleiding Event Hubs.](../event-hubs/event-hubs-programming-guide.md)
+- Een Time Series Insights omgeving maken zoals beschreven in [een Azure time series Insights omgeving maken](./time-series-insights-update-create-environment.md).
+- Maak een Event Hub. Lees [een event hubs naam ruimte en een event hub maken met behulp van de Azure Portal](../event-hubs/event-hubs-create.md).
+- Er moeten actieve bericht gebeurtenissen naar het Event Hub worden verzonden. Meer informatie over [het verzenden van gebeurtenissen naar Azure Event hubs met behulp van de .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
+- Maak een speciale Consumer groep in de Event Hub waarvan de Time Series Insights omgeving kan worden gebruikt. Elke Time Series Insights gebeurtenis bron moet een eigen toegewezen consumenten groep hebben die niet met een andere consument wordt gedeeld. Als meerdere lezers gebeurtenissen van dezelfde consumenten groep gebruiken, kunnen alle lezers waarschijnlijk fouten vertonen. Er is een limiet van 20 consumenten groepen per Event Hub. Lees de [Event hubs-programmeer gids](../event-hubs/event-hubs-programming-guide.md)voor meer informatie.
 
-### <a name="add-a-consumer-group-to-your-event-hub"></a>Een consumentengroep toevoegen aan uw gebeurtenishub
+### <a name="add-a-consumer-group-to-your-event-hub"></a>Een Consumer groep toevoegen aan uw Event Hub
 
-Toepassingen gebruiken consumentengroepen om gegevens uit Azure Event Hubs te halen. Als u gegevens uit uw gebeurtenishub betrouwbaar wilt lezen, biedt u een speciale consumentengroep die alleen wordt gebruikt door deze Time Series Insights-omgeving.
+Toepassingen gebruiken consumenten groepen voor het ophalen van gegevens uit Azure Event Hubs. Als u gegevens op een betrouw bare manier van uw Event Hub wilt lezen, geeft u een speciale consumenten groep op die alleen door deze Time Series Insights omgeving wordt gebruikt.
 
-Ga als volgende over een nieuwe consumentengroep in uw eventhub:
+Een nieuwe consumenten groep toevoegen aan uw Event Hub:
 
-1. Zoek en open uw gebeurtenishub-instantie in de [Azure-portal](https://portal.azure.com)in het **deelvenster Overzicht** van de naamruimte van uw gebeurtenishub. Selecteer **Entiteiten > gebeurtenishubs** of zoek uw instantie onder **Naam**.
+1. Zoek en open in het [Azure Portal](https://portal.azure.com)het event hub-exemplaar in het deel venster **overzicht** van uw event hub naam ruimte. Selecteer **entiteiten > Event hubs** of Zoek uw instantie onder **naam**.
 
-    [![Naamruimte van de gebeurtenishub openen](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png#lightbox)
+    [![De Event Hub naam ruimte openen](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png#lightbox)
 
-1. Selecteer in de instantie gebeurtenishub **entiteiten > consumentengroepen**. Selecteer vervolgens **+ Consumentengroep** om een nieuwe consumentengroep toe te voegen. 
+1. Selecteer in uw Event Hub-exemplaar **entiteiten > consumenten groepen**. Selecteer vervolgens **+ consumenten groep** om een nieuwe consumenten groep toe te voegen. 
 
-   [![Gebeurtenishub - Een consumentengroep toevoegen](media/time-series-insights-how-to-add-an-event-source-eventhub/add-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/add-event-hub-consumer-group.png#lightbox)
+   [![Event hub-een Consumer groep toevoegen](media/time-series-insights-how-to-add-an-event-source-eventhub/add-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/add-event-hub-consumer-group.png#lightbox)
 
-   Selecteer anders een bestaande consumentengroep en ga naar de volgende sectie.
+   Anders selecteert u een bestaande consumenten groep en gaat u naar de volgende sectie.
 
-1. Voer op de pagina **Consumentengroepen** een nieuwe unieke waarde in voor **Naam**.  Gebruik dezelfde naam wanneer u een nieuwe gebeurtenisbron maakt in de time series Insights-omgeving.
+1. Voer op de pagina **consumenten groepen** een nieuwe unieke waarde in voor **naam**.  Gebruik dezelfde naam wanneer u een nieuwe gebeurtenis bron maakt in de Time Series Insights omgeving.
 
 1. Selecteer **Maken**.
 
-## <a name="add-a-new-event-source"></a>Een nieuwe gebeurtenisbron toevoegen
+## <a name="add-a-new-event-source"></a>Een nieuwe gebeurtenis bron toevoegen
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Zoek uw bestaande Time Series Insights-omgeving. Selecteer in het linkermenu **Alle bronnen**en selecteer vervolgens de omgeving Time Series Insights.
+1. Zoek uw bestaande Time Series Insights-omgeving. Selecteer in het menu links **alle resources**en selecteer vervolgens uw time series Insights omgeving.
 
-1. Selecteer **Gebeurtenisbronnen**en selecteer **Toevoegen**.
+1. Selecteer **gebeurtenis bronnen**en selecteer vervolgens **toevoegen**.
 
-   [![Selecteer onder Gebeurtenisbronnen de knop Toevoegen](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png#lightbox)
+   [![Selecteer onder gebeurtenis bronnen de knop toevoegen](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png#lightbox)
 
-1. Voer een waarde in voor **de bronnaam van gebeurtenissen** `Contoso-TSI-GA-Event-Hub-ES`die uniek is voor deze Time Series Insights-omgeving, zoals .
+1. Voer een waarde in voor de **gebeurtenis bron naam** die uniek is voor deze time series Insights omgeving, `Contoso-TSI-GA-Event-Hub-ES`zoals.
 
-1. Selecteer **gebeurtenishub**voor **Bron**.
+1. Voor **bron**selecteert u **Event hub**.
 
-1. Selecteer de juiste waarden voor **de optie Importeren:**
+1. Selecteer de juiste waarden voor de **optie importeren**:
 
-   * Als u een bestaande gebeurtenishub in een van uw abonnementen hebt, selecteert u **Gebeurtenishub gebruiken via beschikbare abonnementen**. Deze optie is de makkelijkste aanpak.
+   * Als u een bestaande Event Hub hebt in een van uw abonnementen, selecteert u **Event hub gebruiken uit beschik bare abonnementen**. Deze optie is de eenvoudigste benadering.
 
-     [![Een optie voor het importeren van gebeurtenisbron selecteren](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-event-hub-select-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-event-hub-select-import-option.png#lightbox)
+     [![Selecteer een optie voor het importeren van gebeurtenis bronnen](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-event-hub-select-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-event-hub-select-import-option.png#lightbox)
 
-    *  In de volgende tabel worden de vereiste eigenschappen voor de optie **Gebeurtenishub gebruiken beschreven vanuit de** optie Beschikbare abonnementen:
+    *  In de volgende tabel worden de vereiste eigenschappen voor de optie **Event hub gebruiken van beschik bare abonnementen** beschreven:
 
-       [![Details van abonnements- en gebeurtenishub](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png#lightbox)
+       [![Details van abonnement en Event Hub](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png#lightbox)
 
        | Eigenschap | Beschrijving |
        | --- | --- |
-       | Abonnement | Het abonnement van de gewenste gebeurtenishub-instantie en naamruimte behoort tot. |
-       | Event hub-naamruimte | De naamruimte van de gebeurtenishub waartoe de gewenste gebeurtenishub-instantie behoort. |
-       | Event Hub-naam | De naam van de gewenste gebeurtenishub-instantie. |
-       | Beleidswaarde gebeurtenishub | Selecteer het gewenste beleid voor gedeelde toegang. U het beleid voor gedeelde toegang maken op het tabblad **Configureer configureren.** Elk beleid voor gedeelde toegang heeft een naam, machtigingen die u instelt en toegangssleutels. Het beleid voor gedeelde toegang voor uw gebeurtenisbron *moet* **leesmachtigingen** hebben. |
-       | Beleidssleutel gebeurtenishub | Vooraf ingevuld vanuit de geselecteerde beleidswaarde van gebeurtenishub. |
+       | Abonnement | Het abonnement waartoe de gewenste Event Hub instantie en naam ruimte behoort. |
+       | Event hub-naamruimte | De naam ruimte van de Event Hub waarvan de gewenste Event Hub instantie deel uitmaakt. |
+       | Event Hub-naam | De naam van de gewenste Event Hub-instantie. |
+       | Waarde van Event hub-beleid | Selecteer het gewenste beleid voor gedeelde toegang. U kunt het beleid voor gedeelde toegang maken op het tabblad Event Hub **configureren** . Elk gedeeld toegangs beleid heeft een naam, machtigingen die u instelt en toegangs sleutels. Het gedeelde toegangs beleid voor uw gebeurtenis bron *moet* **Lees** machtigingen hebben. |
+       | Event hub-beleids sleutel | Vooraf ingevuld op basis van de geselecteerde Event hub-beleids waarde. |
 
-    * Als de gebeurtenishub buiten uw abonnementen staat of als u geavanceerde opties wilt selecteren, selecteert u **Gebeurtenishub-instellingen handmatig opgeven.**
+    * Als de Event Hub extern is voor uw abonnementen of als u geavanceerde opties wilt selecteren, selecteert u **Event hub-instellingen hand matig opgeven**.
 
-       In de volgende tabel worden de vereiste eigenschappen voor de optie **Gebeurtenishub-instellingen handmatig opgeven beschreven:**
+       De volgende tabel beschrijft de vereiste eigenschappen voor de optie voor het **opgeven van Event hub-instellingen hand matig** :
  
        | Eigenschap | Beschrijving |
        | --- | --- |
-       | Abonnements-id | Het abonnement van de gewenste gebeurtenishub-instantie en naamruimte behoort tot. |
-       | Resourcegroep | De resourcegroep van de gewenste gebeurtenishub-instantie en naamruimte behoort tot. |
-       | Event hub-naamruimte | De naamruimte van de gebeurtenishub waartoe de gewenste gebeurtenishub-instantie behoort. |
-       | Event Hub-naam | De naam van de gewenste gebeurtenishub-instantie. |
-       | Beleidswaarde gebeurtenishub | Selecteer het gewenste beleid voor gedeelde toegang. U het beleid voor gedeelde toegang maken op het tabblad **Configureer configureren.** Elk beleid voor gedeelde toegang heeft een naam, machtigingen die u instelt en toegangssleutels. Het beleid voor gedeelde toegang voor uw gebeurtenisbron *moet* **leesmachtigingen** hebben. |
-       | Beleidssleutel gebeurtenishub | De gedeelde toegangssleutel die wordt gebruikt om de toegang tot de naamruimte van de servicebus te verifiëren. Voer hier de primaire of secundaire sleutel in. |
+       | Abonnements-id | Het abonnement waartoe de gewenste Event Hub instantie en naam ruimte behoort. |
+       | Resourcegroep | De resource groep waarvan de gewenste Event Hub instantie en naam ruimte behoort. |
+       | Event hub-naamruimte | De naam ruimte van de Event Hub waarvan de gewenste Event Hub instantie deel uitmaakt. |
+       | Event Hub-naam | De naam van de gewenste Event Hub-instantie. |
+       | Waarde van Event hub-beleid | Selecteer het gewenste beleid voor gedeelde toegang. U kunt het beleid voor gedeelde toegang maken op het tabblad Event Hub **configureren** . Elk gedeeld toegangs beleid heeft een naam, machtigingen die u instelt en toegangs sleutels. Het gedeelde toegangs beleid voor uw gebeurtenis bron *moet* **Lees** machtigingen hebben. |
+       | Event hub-beleids sleutel | De gedeelde toegangs sleutel die wordt gebruikt voor het verifiëren van toegang tot de naam ruimte Service Bus. Voer hier de primaire of secundaire sleutel in. |
 
-    * Beide opties delen de volgende configuratieopties:
+    * Beide opties delen de volgende configuratie opties:
 
        | Eigenschap | Beschrijving |
        | --- | --- |
-       | Event Hub-consumentengroep | De consumentengroep die gebeurtenissen leest vanuit de gebeurtenishub. We raden u ten zeerste aan een speciale consumentengroep te gebruiken voor uw gebeurtenisbron. |
-       | Serialisatie-indeling voor gebeurtenissen | Momenteel is JSON de enige beschikbare serialisatie-indeling. Gebeurtenisberichten moeten in deze indeling staan of gegevens kunnen niet worden gelezen. |
-       | Naam van de timestamp-eigenschap | Als u deze waarde wilt bepalen, moet u inzicht krijgen in de berichtindeling van de berichtgegevens die naar de gebeurtenishub worden verzonden. Deze waarde is de **naam** van de specifieke gebeurteniseigenschap in de berichtgegevens die u als gebeurtenistijdstempel wilt gebruiken. De waarde is hoofdlettergevoelig. Als deze niet leeg is gelaten, wordt de **gebeurteniswachtrijtijd** in de gebeurtenisbron gebruikt als gebeurtenistijdstempel. |
+       | Event Hub-consumentengroep | De Consumer groep die gebeurtenissen van de Event Hub leest. We raden u ten zeerste aan om een speciale consumenten groep voor uw gebeurtenis bron te gebruiken. |
+       | Serialisatie-indeling voor gebeurtenissen | Op dit moment is JSON de enige beschik bare serialisatie-indeling. Gebeurtenis berichten moeten de volgende indeling hebben of gegevens kunnen niet worden gelezen. |
+       | Naam van de timestamp-eigenschap | Als u deze waarde wilt bepalen, moet u weten wat de bericht indeling is van de bericht gegevens die naar de Event Hub worden verzonden. Deze waarde is de **naam** van de specifieke gebeurtenis eigenschap in de bericht gegevens die u wilt gebruiken als de tijds tempel van de gebeurtenis. De waarde is hoofdletter gevoelig. Als dit veld leeg blijft, wordt de tijd voor het **plaatsen van gebeurtenissen** in de gebeurtenis bron gebruikt als tijds tempel van de gebeurtenis. |
 
-1. Voeg de speciale time series Insights-groepsnaam toe die u aan uw gebeurtenishub hebt toegevoegd.
+1. Voeg de toegewezen Time Series Insights naam van de Consumer groep toe die u hebt toegevoegd aan uw Event Hub.
 
 1. Selecteer **Maken**.
 
-   Nadat de gebeurtenisbron is gemaakt, wordt Time Series Insights automatisch gestart met het streamen van gegevens naar uw omgeving.
+   Nadat de gebeurtenis bron is gemaakt, begint Time Series Insights automatisch gegevens stromen naar uw omgeving.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Definieer beleid voor gegevenstoegang](time-series-insights-data-access.md) om de gegevens te beveiligen.
+* [Definieer gegevens toegangs beleid](time-series-insights-data-access.md) voor het beveiligen van de gegevens.
 
-* [Gebeurtenissen naar](time-series-insights-send-events.md) de gebeurtenisbron verzenden.
+* [Gebeurtenissen verzenden](time-series-insights-send-events.md) naar de bron van de gebeurtenis.
 
-* Toegang tot uw omgeving in de [Time Series Insights explorer.](https://insights.timeseries.azure.com)
+* Toegang tot uw omgeving in de [Time Series Insights Explorer](https://insights.timeseries.azure.com).

@@ -1,6 +1,6 @@
 ---
-title: Azure Security Control - Penetratietests en rode teamoefeningen
-description: Azure Security Control Penetratietests en Rode Team-oefeningen
+title: Azure-beveiligings beheer-indringings tests en rode team oefeningen
+description: Tests voor indringing van Azure-beveiligings beheer en Red team-oefeningen
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
@@ -8,29 +8,29 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: fe9c672e53ea0f46328320daf75f65fd77f5db29
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81408296"
 ---
-# <a name="security-control-penetration-tests-and-red-team-exercises"></a>Security Control: Penetratietests en Rode Team-oefeningen
+# <a name="security-control-penetration-tests-and-red-team-exercises"></a>Beveiligings controle: indringings tests en rode team oefeningen
 
-Test de algehele kracht van de verdediging van een organisatie (de technologie, de processen en de mensen) door de doelstellingen en acties van een aanvaller te simuleren.
+Test de algehele kracht van de verdediging van een organisatie (de technologie, de processen en de personen) door de doel stellingen en acties van een aanvaller te simuleren.
 
-## <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1: Voer regelmatig penetratietests uit van uw Azure-resources en zorg voor herstel van alle kritieke beveiligingsbevindingen
+## <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herbemiddeling van alle essentiële beveiligings resultaten
 
-| Azure-id | CIS-iD's | Verantwoordelijkheid |
+| Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 11.1 | 20.1, 20.2, 20.3, 20.4, 20.5, 20.6, 20.7, 20.8 | Gedeeld |
+| 11,1 | 20,1, 20,2, 20,3, 20,4, 20,5, 20,6, 20,7, 20,8 | Gedeeld |
 
-Volg de Microsoft Rules of Engagement om ervoor te zorgen dat uw penetratietests niet in strijd zijn met het Microsoft-beleid. Gebruik de strategie en uitvoering van Red Teaming en live site penetratietesten van Microsoft op basis van door Microsoft beheerde cloudinfrastructuur, -services en -toepassingen.
+Volg de instructies van micro soft om ervoor te zorgen dat uw indringings tests niet worden geschonden door het micro soft-beleid. Gebruik de strategie van micro soft en de uitvoering van de implementatie van de indringing van een live site in de Cloud, services en toepassingen die door micro soft worden beheerd.
 
-- [Penetratie testen regels van betrokkenheid](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+- [Regels van betrokkenheid voor het testen van indringing](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Microsoft Cloud rode teams](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Terug naar het [azure security benchmark-overzicht](overview.md)
+- Ga terug naar het [overzicht van Azure Security Bench Mark](overview.md)

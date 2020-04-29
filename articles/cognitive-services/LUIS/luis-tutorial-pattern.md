@@ -1,18 +1,18 @@
 ---
-title: 'Zelfstudie: Patronen - LUIS'
-description: Gebruik patronen om de intentie en entiteitsvoorspelling te vergroten en tegelijkertijd minder voorbeelduitingen in deze zelfstudie te geven. Het patroon wordt geleverd als een voorbeeld van een sjabloonutterance, dat syntaxis bevat om entiteiten en negeerbare tekst te identificeren.
+title: 'Zelf studie: patronen-LUIS'
+description: Gebruik patronen om de intentie en de voor spelling van de entiteit te verg Roten met minder voor beeld-uitingen in deze zelf studie. Het patroon wordt geleverd als een sjabloon utterance-voor beeld, inclusief de syntaxis voor het identificeren van entiteiten en het negeren van tekst.
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.openlocfilehash: 826334fafd04a6357f529b1dc07408ff1c15ce5c
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81380775"
 ---
-# <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Zelfstudie: Algemene indelingen voor patroonsjabloon-uitingen toevoegen om voorspellingen te verbeteren
+# <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Zelf studie: utterance-indelingen van algemene patroon Sjablonen toevoegen om voor spellingen te verbeteren
 
-Gebruik in deze zelfstudie patronen om de intentie en entiteitsvoorspelling te vergroten, waardoor u minder voorbeelduitingen geven. Het patroon is een sjabloonutterance die is toegewezen aan een intentie, die syntaxis bevat om entiteiten en negeerbare tekst te identificeren.
+In deze zelf studie gebruikt u patronen om de intentie en de voor spellingen van de entiteit te verg Roten, zodat u minder voor beeld uitingen kunt opgeven. Het patroon is een sjabloon utterance die is toegewezen aan een intentie, die de syntaxis bevat voor het identificeren van entiteiten en het negeren van tekst.
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -28,36 +28,36 @@ Gebruik in deze zelfstudie patronen om de intentie en entiteitsvoorspelling te v
 
 Er zijn twee soorten uitingen opgeslagen in de LUIS-app:
 
-* Voorbeelduitingen in de intentie
-* Sjabloonuitingen in het patroon
+* Voor beeld van uitingen in het doel
+* Sjabloon uitingen in het patroon
 
-Als u sjabloonuitingen als een patroon toevoegt, u in het algemeen minder voorbeelduitingen aan een intentie toevoegen.
+Door sjabloon uitingen toe te voegen als een patroon, kunt u minder voor beeld uitingen voor een intentie bieden.
 
-Een patroon wordt toegepast als een combinatie van tekstmatching en machine learning.  De sjabloonutterance in het patroon, samen met de voorbeelduitingen in de intentie, geeft LUIS een beter begrip van welke uitingen passen bij de intentie.
+Een patroon wordt toegepast als een combi natie van tekst matching en machine learning.  De sjabloon utterance in het patroon, samen met het uitingen-voor beeld in de intentie, bieden LUIS een beter inzicht in wat uitingen het doel is.
 
-## <a name="import-example-app-and-clone-to-new-version"></a>Voorbeeld-app en kloon importeren naar nieuwe versie
+## <a name="import-example-app-and-clone-to-new-version"></a>Voor beeld-App importeren en klonen naar nieuwe versie
 
 Voer de volgende stappen uit:
 
-1.  Download en sla het [JSON-bestand van](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true)de app op.
+1.  Down load en sla het [JSON-bestand](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true)van de app op.
 
-1. Importeer de JSON in een nieuwe app in de [preview LUIS-portal](https://preview.luis.ai). Selecteer **op** de pagina Mijn apps de optie **+ Nieuwe app voor een gesprek**en selecteer Importeren als **JSON**. Selecteer het bestand dat u in de vorige stap hebt gedownload.
+1. Importeer de JSON in een nieuwe app in de [Preview-Luis Portal](https://preview.luis.ai). Selecteer op de pagina **mijn apps** **+ nieuwe app voor conversatie**en selecteer vervolgens **importeren als JSON**. Selecteer het bestand dat u in de vorige stap hebt gedownload.
 
-1. Selecteer in de sectie **Beheren** op het tabblad **Versies** de actieve versie en selecteer **Vervolgens Kloon**. Geef de gekloonde versie een naam. `patterns` Klonen is een uitstekende manier om te experimenteren met verschillende functies van LUIS zonder dat de oorspronkelijke versie wordt gewijzigd. Omdat de versienaam wordt gebruikt als onderdeel van de URL-route, kan de naam geen tekens bevatten die niet zijn toegestaan in een URL.
+1. Selecteer in de sectie **beheren** op het tabblad **versies** de actieve versie en selecteer vervolgens **klonen**. Noem de gekloonde `patterns`versie. Klonen is een uitstekende manier om te experimenteren met verschillende functies van LUIS zonder dat de oorspronkelijke versie wordt gewijzigd. Omdat de versienaam wordt gebruikt als onderdeel van de URL-route, kan de naam geen tekens bevatten die niet zijn toegestaan in een URL.
 
 ## <a name="create-new-intents-and-their-utterances"></a>Nieuwe intenties en de bijbehorende utterances maken
 
-De twee intenties vinden de manager of de directe rapporten van de manager, op basis van de utterancetekst. De moeilijkheid is dat de twee bedoelingen verschillende dingen _betekenen,_ maar de meeste woorden zijn hetzelfde. Alleen de woordvolgorde is anders. Om de intentie correct te kunnen voorspellen, zou het veel voorbeelden moeten hebben.
+De twee intenties vinden de Manager of de directe ondergeschikten van de Manager, op basis van de utterance tekst. Het probleem is dat de twee intenties verschillende dingen _betekenen_ , maar dat de meeste woorden hetzelfde zijn. Alleen de woord volgorde wijkt af. Om ervoor te zorgen dat de intentie correct wordt voor speld, moet het een groot aantal voor beelden hebben.
 
-1. Selecteer **Bouwen** op de navigatiebalk.
+1. Selecteer **samen stellen** op de navigatie balk.
 
-1. Selecteer op de pagina **Intents** **+ Maken** om een nieuwe intentie te maken.
+1. Selecteer op de pagina **intenties** **+ maken** om een nieuwe intentie te maken.
 
 1. Voer in het pop-updialoogvenster `OrgChart-Manager` in en selecteer vervolgens **Done**.
 
     ![Pop-upvenster om een nieuw bericht te maken](media/luis-tutorial-pattern/hr-create-new-intent-popup.png)
 
-1. Voeg voorbeelden van utterances toe aan de intentie. Deze uitingen zijn niet _precies_ gelijk, maar hebben wel een patroon dat kan worden geëxtraheerd.
+1. Voeg voorbeelden van utterances toe aan de intentie. Deze uitingen zijn niet _precies_ hetzelfde, maar hebben wel een patroon dat kan worden geëxtraheerd.
 
     |Voorbeelden van utterances|
     |--|
@@ -71,7 +71,7 @@ De twee intenties vinden de manager of de directe rapporten van de manager, op b
 
 1. Selecteer **Intents** in de linkernavigatiebalk.
 
-1. Selecteer **+ Maken** om een nieuwe intentie te maken. Voer in het pop-updialoogvenster `OrgChart-Reports` in en selecteer vervolgens **Done**.
+1. Selecteer **+ maken** om een nieuwe intentie te maken. Voer in het pop-updialoogvenster `OrgChart-Reports` in en selecteer vervolgens **Done**.
 
 1. Voeg voorbeelden van utterances toe aan de intentie.
 
@@ -99,7 +99,7 @@ De twee intenties vinden de manager of de directe rapporten van de manager, op b
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Ga naar het einde van de URL _YOUR_QUERY_HERE_ in `Who is the boss of Jill Jones?`de adresbalk en vervang YOUR_QUERY_HERE door: .
+1. Ga naar het einde van de URL in de adres balk en vervang _YOUR_QUERY_HERE_ door: `Who is the boss of Jill Jones?`.
 
     ```json
     {
@@ -189,16 +189,16 @@ De twee intenties vinden de manager of de directe rapporten van de manager, op b
     }
     ```
 
-De scores van de twee topintents zijn dichtbij, maar de hoogste intentie is niet significant hoog (meer dan 60%) en is niet ver genoeg boven de score van de volgende intentie.
+De scores van de twee belangrijkste doel einden zijn dicht, maar de hoogste intentie is niet aanzienlijk hoog (meer dan 60%) en niet veel genoeg boven de Score van de volgende intentie.
 
-Omdat LUIS training is niet precies hetzelfde elke keer (er is een beetje variatie), deze top twee scores kunnen omkeren op de volgende training cyclus. Het resultaat is dat de verkeerde intent kan worden geretourneerd.
+Omdat LUIS-training niet precies hetzelfde is (er is een beetje van variatie), kunnen deze bovenste twee scores worden omwille van de volgende trainings cyclus. Het resultaat is dat de verkeerde intent kan worden geretourneerd.
 
 Gebruik patronen om de score van de juiste intent een aanzienlijk hoger percentage te geven en ervoor te zorgen dat de score verder weg ligt van de eerstvolgende hogere score.
 
 Laat dit tweede browservenster geopend. U hebt het verderop in deze zelfstudie namelijk weer nodig.
 
 ## <a name="template-utterances"></a>Sjabloon-utterances
-Vanwege de aard van het human resource onderwerp domein, zijn er een paar gemeenschappelijke manieren om te vragen over relaties met werknemers in organisaties. Bijvoorbeeld:
+Vanwege de aard van het domein van de menselijke bron, zijn er enkele veelvoorkomende manieren om de relaties van werk nemers in organisaties te vragen. Bijvoorbeeld:
 
 |Utterances|
 |--|
@@ -211,18 +211,18 @@ Dit zijn voorbeelden van sjabloon-utterances voor deze intent:
 
 |Voorbeelden van sjabloon-utterances|betekenis van de syntaxis|
 |--|--|
-|`Who does {Employee} report to[?]`|Verwisselbare`{Employee}`<br>Negeren`[?]`|
-|`Who reports to {Employee}[?]`|Verwisselbare`{Employee}`<br>Negeren`[?]`|
+|`Who does {Employee} report to[?]`|uitwisselbaar`{Employee}`<br>negeren`[?]`|
+|`Who reports to {Employee}[?]`|uitwisselbaar`{Employee}`<br>negeren`[?]`|
 
-De syntaxis `{Employee}` markeert de locatie van de entiteit in de sjabloon-utterance en geeft aan om welke entiteit het gaat. De optionele `[?]`syntaxis, markeert woorden of [interpunctie](luis-reference-application-settings.md#punctuation-normalization) die optioneel is. LUIS kijkt naar de utterance, waarbij de optionele tekst tussen de haakjes wordt genegeerd.
+De syntaxis `{Employee}` markeert de locatie van de entiteit in de sjabloon-utterance en geeft aan om welke entiteit het gaat. De optionele syntaxis, `[?]`, markeert woorden of [Lees tekens](luis-reference-application-settings.md#punctuation-normalization) die optioneel zijn. LUIS kijkt naar de utterance, waarbij de optionele tekst tussen de haakjes wordt genegeerd.
 
-Hoewel de syntaxis eruit ziet als een gewone expressie, is het geen gewone expressie. Alleen de accolades, `{}`, en de vierkant haakjes, `[]`, worden als syntaxis ondersteund. Ze kunnen tot maximaal twee niveaus worden genest.
+Hoewel de syntaxis eruitziet als een reguliere expressie, is het geen reguliere expressie. Alleen de accolades, `{}`, en de vierkant haakjes, `[]`, worden als syntaxis ondersteund. Ze kunnen tot maximaal twee niveaus worden genest.
 
-Als een patroon kan worden gekoppeld aan een _utterance,_ moeten eerst de entiteiten in de utterance overeenkomen met de entiteiten in de sjabloonutterance. Dit betekent dat de entiteiten voldoende voorbeelden moeten hebben in voorbeelduitingen met een hoge mate van voorspelling voordat patronen met entiteiten succesvol zijn. De sjabloon helpt echter niet bij het voorspellen van entiteiten, alleen van intenties.
+Als u een patroon wilt laten overeenkomen met een utterance, moeten _eerst_ de entiteiten in de utterance overeenkomen met de entiteiten in de sjabloon utterance. Dit betekent dat de entiteiten voldoende voor beelden in voor beeld uitingen hebben met een hoge mate van voor spelling voordat patronen met entiteiten slagen. De sjabloon helpt echter niet bij het voorspellen van entiteiten, alleen van intenties.
 
 **Hoewel u voor patronen minder voorbeeld-utterances hoeft op te geven, komt het patroon niet overeen als de entiteiten niet worden gedetecteerd.**
 
-### <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>De patronen voor de intentie OrgChart-Manager toevoegen
+### <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>De patronen voor het organigram toevoegen-Manager intentie
 
 1. Selecteer **Build** in het bovenste menu.
 
@@ -239,9 +239,9 @@ Als een patroon kan worden gekoppeld aan een _utterance,_ moeten eerst de entite
     |`Who is {Employee}['s] supervisor[?]`|
     |`Who is the boss of {Employee}[?]`|
 
-    Deze sjabloonuitingen omvatten de entiteit **Werknemer** met de aantekening op krullende haakjes.
+    Deze sjabloon uitingen de **werknemers** entiteit met de gekrulde haak notatie bevatten.
 
-1. Terwijl u nog steeds op de pagina Patronen staat, selecteert u de intentie **OrgChart-Reports** en voert u de volgende sjabloonuitingen in:
+1. Terwijl u nog steeds op de pagina patronen klikt, selecteert u het **organigram-rapporten** opzet en voert u de volgende sjabloon uitingen in:
 
     |Sjabloon-utterances|
     |:--|
@@ -254,13 +254,13 @@ Als een patroon kan worden gekoppeld aan een _utterance,_ moeten eerst de entite
 
 ### <a name="query-endpoint-when-patterns-are-used"></a>Query uitvoeren op eindpunt wanneer patronen worden gebruikt
 
-Nu de patronen aan de app zijn toegevoegd, trainen, publiceren en query de app op de voorspelling runtime eindpunt.
+Nu de patronen worden toegevoegd aan de app, Train, publiceert u de app op het moment van de voor spelling runtime.
 
-1. Selecteer **Trein**. Nadat de training is voltooid, selecteert u **Publiceren** en selecteert u de **productiesleuf** en selecteert u **Gereed**.
+1. **Trein**selecteren. Nadat de training is voltooid, selecteert u **publiceren** en selecteert u de **productie** sleuf en selecteert u vervolgens **gereed**.
 
-1. Nadat het publiceren is voltooid, schakelt u browsertabbladen terug naar het tabblad URL van eindpunt.
+1. Nadat het publiceren is voltooid, gaat u terug naar het tabblad eind punt-URL op de browser tabbladen.
 
-1. Ga naar het einde van de URL in de adresbalk en vervang _YOUR_QUERY_HERE_ door:`Who is the boss of Jill Jones?`
+1. Ga naar het einde van de URL in de adres balk en vervang _YOUR_QUERY_HERE_ door:`Who is the boss of Jill Jones?`
 
     ```json
     {
@@ -350,11 +350,11 @@ Nu de patronen aan de app zijn toegevoegd, trainen, publiceren en query de app o
     }
     ```
 
-De intentievoorspelling is nu aanzienlijk zelfverzekerder en de volgende hoogste intentiescore is aanzienlijk lager. Deze twee intenties zullen niet flip-flop tijdens de training.
+De intentie voorspelling is nu aanzienlijk meer vertrouwen en de Score van het volgende hoogste niveau is aanzienlijk lager. Deze twee intenties worden niet gespiegeld tijdens de training.
 
 ### <a name="working-with-optional-text-and-prebuilt-entities"></a>Werken met optionele tekst en voorafgemaakte entiteiten
 
-De vorige patroonsjabloon-utterances in deze zelfstudie hadden enkele voorbeelden van optionele tekst `'s`, zoals het gebruik van het vraagteken, `?`. Stel dat u huidige en toekomstige datums in de utterancetekst moet toestaan.
+De vorige patroonsjabloon-utterances in deze zelfstudie hadden enkele voorbeelden van optionele tekst `'s`, zoals het gebruik van het vraagteken, `?`. Stel dat u huidige en toekomstige datums wilt toestaan in de utterance-tekst.
 
 Voorbeelden van utterances zijn:
 
@@ -365,9 +365,9 @@ Voorbeelden van utterances zijn:
 |OrgChart-Manager|`Who will be Jill Jones manager in a month?`|
 |OrgChart-Manager|`Who will be Jill Jones manager on March 3?`|
 
-In elk van deze voorbeelden wordt gebruikgemaakt van een werkwoordsvorm, `was`, `is`, `will be`, evenals een datum, `March 3`, `now`, en `in a month`, die LUIS correct moet voorspellen. De laatste twee voorbeelden in de tabel gebruiken bijna `in` `on`dezelfde tekst, behalve voor en .
+In elk van deze voorbeelden wordt gebruikgemaakt van een werkwoordsvorm, `was`, `is`, `will be`, evenals een datum, `March 3`, `now`, en `in a month`, die LUIS correct moet voorspellen. U ziet dat de laatste twee voor beelden in de tabel bijna dezelfde tekst gebruiken, `in` met `on`uitzonde ring van en.
 
-Voorbeeldsjabloonuitingen die deze optionele informatie mogelijk maken:
+Voorbeeld sjabloon uitingen die deze optionele informatie toestaan:
 
 |Intentie|Voorbeeld-utterances met optionele tekst en voorafgemaakte entiteiten|
 |:--|:--|
@@ -378,11 +378,11 @@ Voorbeeldsjabloonuitingen die deze optionele informatie mogelijk maken:
 Dankzij het gebruik van de optionele syntaxis met vierkante haken, `[]`, kan deze optionele tekst eenvoudig worden toegevoegd aan de sjabloon-utterance en worden genest tot het tweede niveau met `[[]]`, en kunnen entiteiten of tekst worden opgenomen.
 
 
-**Vraag: Waarom zijn `w` alle letters, de eerste letter in elke sjabloon uiting, kleine letters? Moeten ze niet optioneel boven- of ondergrens?** De utterance die door de clienttoepassing naar het query-eindpunt wordt verzonden, wordt omgezet in kleine letters. De sjabloon-utterance kan uit hoofdletters of kleine letters bestaan en dat geldt ook voor de eindpunt-utterance. De vergelijking wordt altijd uitgevoerd na de conversie naar kleine letters.
+**Vraag: Waarom zijn alle `w` letters, de eerste letter van elke sjabloon utterance, kleine letters? Is het niet zo dat ze ook in de bovenste of kleine letters worden gesteld?** De utterance die door de clienttoepassing naar het query-eindpunt wordt verzonden, wordt omgezet in kleine letters. De sjabloon-utterance kan uit hoofdletters of kleine letters bestaan en dat geldt ook voor de eindpunt-utterance. De vergelijking wordt altijd uitgevoerd na de conversie naar kleine letters.
 
 **Vraag: Waarom maakt het vooraf gemaakte getal geen deel uit van de sjabloon-utterance als 3 maart wordt voorspeld als het getal `3` en als de datum `March 3`?** De sjabloon-utterance maakt contextueel gebruik van een datum, letterlijk zoals in `March 3`, of figuurlijk zoals `in a month`. Een datum kan een waarde bevatten, maar een getal hoeft niet per se als een datum te worden beschouwd. Gebruik altijd de entiteit die het beste het type aangeeft dat u wilt laten retourneren in de JSON-voorspellingsresultaten.
 
-**Vraag: Hoe zit het met slecht geformuleerde utterances zoals `Who will {Employee}['s] manager be on March 3?`.** Grammaticaal verschillende werkwoordsvormen, zoals deze waarbij `will` en `be` van elkaar zijn gescheiden, moeten als een nieuwe sjabloon-utterance worden ingesteld. De bestaande sjabloon-utterance zal een dergelijke werkwoordsvorm niet herkennen. Het doel van de utterance is weliswaar niet veranderd, maar dat geldt wel voor de woordplaatsing in de utterance. Deze wijziging heeft gevolgen voor de voorspelling in LUIS. U [groeperen en of](#use-the-or-operator-and-groups) de werkwoord-tijden om deze uitingen te combineren.
+**Vraag: Hoe zit het met slecht geformuleerde utterances zoals `Who will {Employee}['s] manager be on March 3?`.** Grammaticaal verschillende werkwoordsvormen, zoals deze waarbij `will` en `be` van elkaar zijn gescheiden, moeten als een nieuwe sjabloon-utterance worden ingesteld. De bestaande sjabloon-utterance zal een dergelijke werkwoordsvorm niet herkennen. Het doel van de utterance is weliswaar niet veranderd, maar dat geldt wel voor de woordplaatsing in de utterance. Deze wijziging heeft gevolgen voor de voorspelling in LUIS. U kunt de [groep en of](#use-the-or-operator-and-groups) het werk woord tien tallen om deze uitingen te combi neren.
 
 **Houd er rekening mee dat als eerste entiteiten worden gevonden, waarna het patroon wordt vergeleken.**
 
@@ -396,13 +396,13 @@ Dankzij het gebruik van de optionele syntaxis met vierkante haken, `[]`, kan dez
     |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
     |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
 
-2. Selecteer **Trainen** in de navigatiebalk om de app te trainen.
+2. Selecteer **trainen** in de navigatie balk om de app te trainen.
 
-3. Nadat de training is voltooid, selecteert u **Testen** boven aan het paneel om het testpaneel te openen.
+3. Nadat de training is voltooid, selecteert u **testen** boven aan het deel venster om het deel venster testen te openen.
 
 4. Voer verschillende test-utterances in om te controleren of het patroon overeenkomt en de intentiescore hoog genoeg is.
 
-    Nadat u de eerste utterance hebt ingevoerd, selecteert u **Inspect** onder het resultaat zodat u alle voorspellingsresultaten kunt zien. Elke utterance moet de **intentie OrgChart-Manager** hebben en de waarden voor de entiteiten werknemer en datetimeV2 extraheren.
+    Nadat u de eerste utterance hebt ingevoerd, selecteert u **Inspect** onder het resultaat zodat u alle voorspellingsresultaten kunt zien. Elk utterance moet het **organigram-Manager** intentie hebben en de waarden voor de entiteiten van werk nemers en datetimeV2 ophalen.
 
     |Utterance|
     |--|
@@ -413,45 +413,45 @@ Dankzij het gebruik van de optionele syntaxis met vierkante haken, `[]`, kan dez
     |`Who will be Jill Jones manager next Month`|
     |`Who will be Jill Jones manager in a month?`|
 
-Voor al deze utterances zijn de daarin opgenomen entiteiten gevonden en daarom komen ze overeen met hetzelfde patroon en hebben ze een hoge voorspellingsscore. U hebt een paar patronen toegevoegd die overeenkomen met veel variaties van uitingen. U hoefde geen voorbeelduitingen toe te voegen aan de intentie om de sjabloonutterance in het patroon te laten werken.
+Voor al deze utterances zijn de daarin opgenomen entiteiten gevonden en daarom komen ze overeen met hetzelfde patroon en hebben ze een hoge voorspellingsscore. U hebt enkele patronen toegevoegd die overeenkomen met een groot aantal verschillende uitingen. U hoeft geen voor beeld-uitingen toe te voegen aan het doel om de sjabloon utterance te laten werken in het patroon.
 
-Dit gebruik van patronen voorzien:
-* Hogere voorspellingsscores
-* Met dezelfde voorbeelduitingen in de intentie
-* Met slechts een paar goed geconstrueerde sjabloonuitingen in het patroon
+Dit is het gebruik van patronen die zijn opgenomen:
+* Hogere scores voor de voor spelling
+* Met hetzelfde voor beeld uitingen in het doel
+* Met slechts een paar goed opgemaakte sjabloon uitingen in het patroon
 
-### <a name="use-the-or-operator-and-groups"></a>De OPERATOR en groepen van de OK gebruiken
+### <a name="use-the-or-operator-and-groups"></a>De operator OR en groepen gebruiken
 
-Verschillende van de vorige sjabloonuitingen zijn zeer dicht. Gebruik de **syntaxis groep** `()` en **OK** `|` om de sjabloonuitingen te verminderen.
+Enkele van de vorige sjabloon uitingens worden bijna gesloten. Gebruik de **groep** `()` en **of** `|` syntaxis om de sjabloon uitingen te reduceren.
 
-De volgende 2 patronen kunnen worden gecombineerd `()` tot `|` één patroon met behulp van de groep en de OK-syntaxis.
+De volgende twee patronen kunnen in één patroon worden gecombineerd met behulp `()` van de `|` groep en of syntaxis.
 
 |Intentie|Voorbeeld-utterances met optionele tekst en voorafgemaakte entiteiten|
 |--|--|
 |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
 |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
 
-De nieuwe sjabloonutterance is:
+Het nieuwe sjabloon utterance is:
 
 `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`.
 
-Dit maakt gebruik van een **groep** `in` rond `on` de vereiste werkwoordtijd en de optionele en met een **of** pijp tussen hen.
+Dit maakt gebruik van een **groep** rond de vereiste term tien tallen `in` en `on` de optionele en met een **or** -pipe ertussen.
 
-1. Selecteer **op** de pagina Patronen het filter **OrgChart-Manager.** Verklein de lijst `manager`door te zoeken naar .
+1. Selecteer op de pagina **patronen** het filter **organigram-Manager** . Verfijn de lijst door te zoeken `manager`.
 
-1. Eén versie van de sjabloonutterance behouden (in de volgende stap bewerken) en de andere varianten verwijderen.
+1. Behoud één versie van de sjabloon utterance (om in de volgende stap te bewerken) en verwijder de andere variaties.
 
 1. Wijzig de sjabloon-utterance in: 
 
     `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`
 
-2. Selecteer **Trainen** in de navigatiebalk om de app te trainen.
+2. Selecteer **trainen** in de navigatie balk om de app te trainen.
 
-3. Nadat de training is voltooid, selecteert u **Testen** boven aan het paneel om het testpaneel te openen.
+3. Nadat de training is voltooid, selecteert u **testen** boven aan het deel venster om het deel venster testen te openen.
 
-    Gebruik het deelvenster Testen om versies van de utterance te testen:
+    Gebruik het test venster om versies van de utterance te testen:
 
-    |Uitingen die u wilt invoeren in het deelvenster Testen|
+    |Uitingen invoeren in het test venster|
     |--|
     |`Who is Jill Jones manager this month`|
     |`Who is Jill Jones manager on July 5th`|
@@ -460,11 +460,11 @@ Dit maakt gebruik van een **groep** `in` rond `on` de vereiste werkwoordtijd en 
     |`Who will be Jill Jones manager in a month`|
     |`Who will be Jill Jones manager on July 5th`|
 
-Door meer patroonsyntaxis te gebruiken, vermindert u het aantal sjabloonuitingen dat u in uw app moet behouden, terwijl u nog steeds een hoge voorspellingsscore hebt.
+Door meer patroon syntaxis te gebruiken, vermindert u het aantal sjabloon uitingen dat u in uw app moet onderhouden, terwijl u nog steeds een hoge Voorspellings score hebt.
 
-### <a name="use-the-utterance-beginning-and-ending-anchors"></a>De begin- en eindankers van uitingen gebruiken
+### <a name="use-the-utterance-beginning-and-ending-anchors"></a>De utterance begin-en eind ankerpunten gebruiken
 
-De syntaxis van het patroon biedt de `^`syntaxis van een caret begin- en einduitingsanker. De begin- en eindutteranceankers kunnen samen worden gebruikt om zeer specifieke en mogelijk letterlijke uitingen te targeten of afzonderlijk worden gebruikt om intents te targeten.
+De syntaxis van het patroon biedt het begin-en eind utterance-anker `^`syntaxis van een caret,. De begin-en eind utterance-ankers kunnen samen worden gebruikt om een zeer specifieke en mogelijk letterlijke utterance te bereiken of om afzonderlijk te worden gebruikt voor doel intentie.
 
 ## <a name="using-patternany-entity"></a>Pattern.any-entiteit gebruiken
 
@@ -496,29 +496,29 @@ De lengte varieert en er zijn woorden die verwarrend kunnen zijn voor LUIS om te
 |Wie heeft {FormName} geschreven[?]|
 |Is {FormName} gepubliceerd in het Frans[?]|
 
-### <a name="add-example-utterances-with-patternany"></a>Voorbeelduitingen toevoegen met Pattern.any
+### <a name="add-example-utterances-with-patternany"></a>Voeg bijvoorbeeld uitingen toe met een patroon.
 
 1. Selecteer **Build** in de bovenste navigatiebalk en selecteer vervolgens **Intenties** in de linkernavigatiebalk.
 
 1. Selecteer **FindForm** in de lijst met intenties.
 
-1. Voeg enkele voorbeelduitingen toe. De tekst die moet worden voorspeld als een patroon.any is in **vette tekst**. De formuliernaam is moeilijk te bepalen aan de andere woorden eromheen in de utterance. Het patroon.any zal helpen door de grenzen van de entiteit te markeren.
+1. Voeg een voor beeld van een uitingen toe. De tekst die als een patroon moet worden voor speld. deze is **vetgedrukt weer gegeven**. De naam van het formulier is moeilijk te bepalen van de andere woorden in het utterance. Het patroon. alle helpt bij het markeren van de grenzen van de entiteit.
 
-    |Voorbeeld van een utterance|Formuliernaam|
+    |Voorbeeld van een utterance|Formulier naam|
     |--|--|
-    |Waar is het formulier **Wat te doen wanneer er brand uitbreekt in het lab** en wie moet het ondertekenen wanneer ik het heb gelezen?|Wat te doen als er brand uitbreekt in het Lab
-    |Waar is **Aanvraag voor relocatie van nieuwe medewerker in het bedrijf** op de server?|Verzoek verhuizing van werknemer nieuw bij het bedrijf|
-    |Wie heeft "**Aanvragen voor gezondheid en welzijn op de hoofdcampus**" geschreven en wat is de meest recente versie?|Gezondheids- en wellnessverzoeken op de hoofdcampus|
-    |Ik ben op zoek naar het formulier met de naam "**Aanvraag voor verplaatsen van kantoor met inbegrip van fysieke activa**“. |Office-verplaatsingsaanvraag inclusief fysieke elementen|
+    |Waar is het formulier **Wat te doen wanneer er brand uitbreekt in het lab** en wie moet het ondertekenen wanneer ik het heb gelezen?|Wat te doen wanneer een brand wordt afgebroken in het lab
+    |Waar is **Aanvraag voor relocatie van nieuwe medewerker in het bedrijf** op de server?|Nieuwe locatie aanvragen van een werk nemer die nieuw is voor het bedrijf|
+    |Wie heeft "**Aanvragen voor gezondheid en welzijn op de hoofdcampus**" geschreven en wat is de meest recente versie?|Status-en Wellness-aanvragen op de hoofd vestiging|
+    |Ik ben op zoek naar het formulier met de naam "**Aanvraag voor verplaatsen van kantoor met inbegrip van fysieke activa**“. |Office-aanvraag voor verplaatsen, inclusief fysieke activa|
 
     Zonder een entiteit Pattern.any kan het lastig zijn voor LUIS om te begrijpen waar de titel van het formulier eindigt vanwege de vele variaties van de namen van formulieren.
 
 ### <a name="create-a-patternany-entity"></a>Een Pattern.any-entiteit maken
-De entiteit Pattern.any extraheert entiteiten met verschillende lengten. Het werkt alleen in een patroon omdat het patroon het begin en einde van de entiteit markeert met syntaxis.
+De entiteit Pattern.any extraheert entiteiten met verschillende lengten. Het werkt alleen in een patroon omdat het patroon het begin en het einde van de entiteit markeert met de syntaxis.
 
 1. Selecteer **Entiteiten** in de linkernavigatiebalk.
 
-1. Selecteer **+ Maken,** `FormName`voer de naam in en selecteer **Pattern.a.** als type. Selecteer **Maken**.
+1. Selecteer **+ maken**, voer de naam `FormName`in en selecteer **patroon. elk** type. Selecteer **Maken**.
 
 ### <a name="add-a-pattern-that-uses-the-patternany"></a>Een patroon toevoegen dat gebruikmaakt van de Pattern.any
 
@@ -554,9 +554,9 @@ De entiteit Pattern.any extraheert entiteiten met verschillende lengten. Het wer
 
 Als u merkt dat het patroon, wanneer dit een Pattern.any bevat, entiteiten onjuist extraheert, gebruikt u een [expliciete lijst](reference-pattern-syntax.md#explicit-lists) om dit probleem te verhelpen.
 
-## <a name="what-did-this-tutorial-accomplish"></a>Wat heeft deze tutorial te bereiken?
+## <a name="what-did-this-tutorial-accomplish"></a>Wat heeft deze zelf studie gedaan?
 
-Deze zelfstudie heeft patronen toegevoegd om LUIS te helpen de intentie te voorspellen met een aanzienlijk hogere score zonder meer voorbeelduitingen toe te voegen. Door entiteiten en te negeren tekst te markeren kon LUIS het patroon toepassen op meer verschillende utterances.
+In deze zelf studie zijn patronen toegevoegd om LUIS te helpen voors pellen met een aanzienlijk hogere Score zonder dat u meer voorbeeld uitingen hoeft toe te voegen. Door entiteiten en te negeren tekst te markeren kon LUIS het patroon toepassen op meer verschillende utterances.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

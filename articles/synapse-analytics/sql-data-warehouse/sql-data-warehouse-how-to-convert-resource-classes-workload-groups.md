@@ -1,6 +1,6 @@
 ---
-title: Resourceklasse converteren naar een werkbelastinggroep
-description: Meer informatie over het maken van een werkbelastinggroep die vergelijkbaar is met een resourceklasse in Azure SQL Data Warehouse.
+title: Resource klasse converteren naar een werkbelasting groep
+description: Meer informatie over het maken van een werkbelasting groep die vergelijkbaar is met een resource klasse in Azure SQL Data Warehouse.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,22 +12,22 @@ ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 5d73ba8f21fe7731fb751d42a8497ff8e1ebba7d
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81383628"
 ---
-# <a name="convert-resource-classes-to-workload-groups"></a>Resourceklassen converteren naar werkbelastinggroepen
+# <a name="convert-resource-classes-to-workload-groups"></a>Resource klassen omzetten in werkbelasting groepen
 
-Werkbelastinggroepen bieden een mechanisme om systeembronnen te isoleren en te bevatten.  Bovendien u met werkbelastinggroepen uitvoeringsregels instellen voor de aanvragen die in deze aanvragen worden uitgevoerd.  Met een uitvoeringsregel voor het uitvoeren van een time-out voor query's kunnen op hol geslagen queryquery's worden geannuleerd zonder tussenkomst van de gebruiker.  In dit artikel wordt uitgelegd hoe u een bestaande resourceklasse gebruiken en een werkbelastinggroep met een vergelijkbare configuratie maken.  Daarnaast wordt een optionele time-outregel voor query's toegevoegd.
+Werkbelasting groepen bieden een mechanisme om systeem bronnen te isoleren en te bevatten.  Daarnaast kunt u met werkbelasting groepen uitvoerings regels instellen voor de aanvragen die hierop worden uitgevoerd.  Een regel voor het uitvoeren van een query time-out kan overmatige query's annuleren zonder tussen komst van de gebruiker.  In dit artikel wordt uitgelegd hoe u een bestaande resource klasse maakt en een werkbelasting groep met een vergelijk bare configuratie kunt maken.  Daarnaast wordt een regel voor een optionele time-out voor query's toegevoegd.
 
 > [!NOTE]
-> Zie de [sectie Toewijzingen van resourceklassen mengen met classificaties](sql-data-warehouse-workload-classification.md#mixing-resource-class-assignments-with-classifiers) in het [conceptdocument Workloadclassification](sql-data-warehouse-workload-classification.md) voor richtlijnen voor het tegelijkertijd gebruiken van werkbelastinggroepen en resourceklassen.
+> Zie de sectie [toewijzingen van resource klassen combi neren met classificaties](sql-data-warehouse-workload-classification.md#mixing-resource-class-assignments-with-classifiers) in het concept document [classificatie werk belasting](sql-data-warehouse-workload-classification.md) voor richt lijnen voor het gebruik van werkbelasting groepen en resource klassen.
 
-## <a name="understanding-the-existing-resource-class-configuration"></a>Inzicht in de bestaande configuratie van resourceklasse
+## <a name="understanding-the-existing-resource-class-configuration"></a>Informatie over de configuratie van de bestaande resource klasse
 
-Workloadgroepen vereisen een `REQUEST_MIN_RESOURCE_GRANT_PERCENT` parameter die het percentage van de totale systeemresources per aanvraag opgeeft.  Toewijzing van resources gebeurt voor resourceklassen door [gelijktijdigheidsruimten](resource-classes-for-workload-management.md#what-are-resource-classes) toe te wijzen.  Gebruik de sys.dm_workload_management_workload_groups_stats `REQUEST_MIN_RESOURCE_GRANT_PERCENT` <link tbd> DMV om de te specificeren waarde te bepalen.  De onderstaande queryquery retourneert bijvoorbeeld een `REQUEST_MIN_RESOURCE_GRANT_PERCENT` waarde die kan worden gebruikt voor de parameter om een werkbelastinggroep te maken die vergelijkbaar is met staticrc40.
+Voor werkbelasting groepen is een `REQUEST_MIN_RESOURCE_GRANT_PERCENT` para meter met de naam vereist, waarmee het percentage van de totale systeem resources die per aanvraag worden toegewezen.  Resource toewijzing wordt uitgevoerd voor [resource klassen](resource-classes-for-workload-management.md#what-are-resource-classes) door gelijktijdigheids sleuven toe te wijzen.  Als u wilt bepalen welke waarde moet `REQUEST_MIN_RESOURCE_GRANT_PERCENT`worden opgegeven, gebruikt u de <link tbd> sys. dm_workload_management_workload_groups_stats dmv.  De onderstaande query query retourneert bijvoorbeeld een waarde die kan worden gebruikt voor de `REQUEST_MIN_RESOURCE_GRANT_PERCENT` para meter om een werkbelasting groep te maken die lijkt op staticrc40.
 
 ```sql
 SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant_percent
@@ -36,15 +36,15 @@ SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant
 ```
 
 > [!NOTE]
-> Workloadgroepen werken op basis van het percentage van de totale systeemresources.  
+> Werkbelasting groepen worden uitgevoerd op basis van het percentage van de algemene systeem resources.  
 
-Omdat werkworkloadgroepen werken op basis van het percentage van de totale systeemresources, terwijl u op schaal t/m opschaalt, verandert het percentage resources dat is toegewezen aan statische resourceklassen ten opzichte van de algemene systeemresources.  Staticrc40 bij DW1000c wijst bijvoorbeeld 9,6% van de totale systeembronnen toe.  Bij DW2000c wordt 19,2% toegewezen.  Dit model is vergelijkbaar als u wilt opschalen voor gelijktijdigheid versus meer resources per aanvraag wilt toewijzen.
+Omdat werkbelasting groepen worden uitgevoerd op basis van het percentage van de algemene systeem bronnen, worden de resources die zijn toegewezen aan statische resource klassen ten opzichte van de algemene systeem resources gewijzigd, wanneer u omhoog of omlaag schaalt.  Staticrc40 op DW1000c wijst bijvoorbeeld 9,6% van de algemene systeem bronnen toe.  Op DW2000c wordt 19,2% toegewezen.  Dit model is vergelijkbaar als u wilt opschalen voor gelijktijdigheid en meer resources per aanvraag wilt toewijzen.
 
-## <a name="create-workload-group"></a>Workloadgroep maken
+## <a name="create-workload-group"></a>Werkbelasting groep maken
 
-Met de `REQUEST_MIN_RESOURCE_GRANT_PERCENT`bekende u de <link> syntaxis VAN DE WERKBELASTINGGROEP MAKEN gebruiken om de werkbelastinggroep te maken.  U optioneel `MIN_PERCENTAGE_RESOURCE` een optie opgeven die groter is dan nul om resources voor de werkbelastinggroep te isoleren.  U ook optioneel `CAP_PERCENTAGE_RESOURCE` minder dan 100 opgeven om de hoeveelheid resources te beperken die de werkbelastinggroep kan verbruiken.  
+Met de bekende `REQUEST_MIN_RESOURCE_GRANT_PERCENT`kunt u de groep workload maken <link> gebruiken om de werkbelasting groep te maken.  U kunt optioneel een `MIN_PERCENTAGE_RESOURCE` waarde opgeven die groter is dan nul om resources voor de werkbelasting groep te isoleren.  U kunt eventueel ook minder dan 100 `CAP_PERCENTAGE_RESOURCE` opgeven om de hoeveelheid resources te beperken die de werkbelasting groep mag verbruiken.  
 
-In het onderstaande voorbeeld wordt ingesteld `MIN_PERCENTAGE_RESOURCE` dat 9,6% van de systeembronnen wordt toegewezen aan `wgDataLoads` en garandeert dat één query alle keren kan worden uitgevoerd.  Bovendien `CAP_PERCENTAGE_RESOURCE` is ingesteld op 38,4% en beperkt deze werkbelastinggroep tot vier gelijktijdige aanvragen.  Door de `QUERY_EXECUTION_TIMEOUT_SEC` parameter in te stellen op 3600, wordt elke query die langer dan 1 uur duurt automatisch geannuleerd.
+In het onderstaande voor beeld `MIN_PERCENTAGE_RESOURCE` wordt de om 9,6% van de systeem resources toe `wgDataLoads` te wijzen en garandeert een query alle keren mogelijk.  Daarnaast `CAP_PERCENTAGE_RESOURCE` is ingesteld op 38,4% en wordt deze werkbelasting groep beperkt tot vier gelijktijdige aanvragen.  Door de `QUERY_EXECUTION_TIMEOUT_SEC` para meter in te stellen op 3600, wordt elke query die gedurende meer dan 1 uur wordt uitgevoerd, automatisch geannuleerd.
 
 ```sql
 CREATE WORKLOAD GROUP wgDataLoads WITH  
@@ -56,10 +56,10 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 
 ## <a name="create-the-classifier"></a>De classificatie maken
 
-Voorheen werd het toewijzen van query's naar resourceklassen gedaan met [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Als u dezelfde functionaliteit en toewijzingsaanvragen wilt bereiken voor werkbelastinggroepen, gebruikt u de syntaxis VAN DE [WERKBELASTINGKLASSEALSER MAKEN.](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  Met behulp van sp_addrolemember alleen toegestaan om middelen in kaart te brengen naar een aanvraag op basis van een login.  Een classificatie biedt extra opties naast inloggen, zoals:
+Voorheen werd de toewijzing van query's aan resource klassen uitgevoerd met [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Als u dezelfde functionaliteit wilt gebruiken en aanvragen wilt toewijzen aan werkbelasting groepen, gebruikt u de [classificatie syntaxis werk belasting maken](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Als u sp_addrolemember gebruikt, hebt u alleen de mogelijkheid om resources toe te wijzen aan een aanvraag op basis van een aanmelding.  Een classificatie biedt extra opties naast aanmelding, zoals:
     - label
     - Sessie
-    - tijd In het onderstaande voorbeeld `AdfLogin` worden query's uit `factloads` de aanmelding `wgDataLoads` geplaatst waarop ook het [OPTION-label](sql-data-warehouse-develop-label.md) is ingesteld op de bovenstaande werkbelastinggroep.
+    - tijd in het onderstaande voor beeld worden query's toegewezen `AdfLogin` uit de aanmelding waarvoor ook het [optie label](sql-data-warehouse-develop-label.md) is `factloads` ingesteld op de eerder `wgDataLoads` gemaakte werkbelasting groep.
 
 ```sql
 CREATE WORKLOAD CLASSIFIER wcDataLoads WITH  
@@ -68,9 +68,9 @@ CREATE WORKLOAD CLASSIFIER wcDataLoads WITH
  ,WLM_LABEL = 'factloads')
 ```
 
-## <a name="test-with-a-sample-query"></a>Testen met een voorbeeldquery
+## <a name="test-with-a-sample-query"></a>Testen met een voorbeeld query
 
-Hieronder vindt u een voorbeeldquery en een DMV-query om ervoor te zorgen dat de werkbelastinggroep en classificatie correct zijn geconfigureerd.
+Hieronder vindt u een voorbeeld query en een DMV-query om te controleren of de werkbelasting groep en de classificatie correct zijn geconfigureerd.
 
 ```sql
 SELECT SUSER_SNAME() --should be 'AdfLogin'
@@ -88,7 +88,7 @@ SELECT request_id, [label], classifier_name, group_name, command
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Werkbelastingisolatie](sql-data-warehouse-workload-isolation.md)
-- [Een workloadgroep maken](quickstart-configure-workload-isolation-tsql.md)
-- [WORKLOADKLASSEIFIER MAKEN (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?&view=azure-sqldw-latest)
-- [WORKLOADGROEP MAKEN (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
+- [Isolatie van werk belasting](sql-data-warehouse-workload-isolation.md)
+- [Een werkbelasting groep maken](quickstart-configure-workload-isolation-tsql.md)
+- [CLASSIFICATIE van werk belasting maken (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?&view=azure-sqldw-latest)
+- [Werkbelasting groep maken (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)

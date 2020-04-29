@@ -1,7 +1,7 @@
 ---
-title: Aan de slag met Aangepaste spraak - Spraakservice
+title: Aan de slag met Custom Speech-Speech-Service
 titleSuffix: Azure Cognitive Services
-description: Custom Speech is een set online tools waarmee u onze spraak-naar-tekst nauwkeurigheid voor uw toepassingen, tools en producten evalueren en verbeteren. Alles wat nodig is om te beginnen zijn een handvol test audiobestanden. Volg de onderstaande links om een aangepaste spraak-naar-tekst-ervaring te maken.
+description: Custom Speech is een set online-hulpprogram ma's waarmee u de nauw keurigheid van spraak naar tekst voor uw toepassingen, hulpprogram ma's en producten kunt evalueren en verbeteren. Alles wat u nodig hebt om aan de slag te gaan zijn een aantal test audio bestanden. Volg de onderstaande koppelingen om aan de slag te gaan met het maken van een aangepaste spraak-naar-tekst-ervaring.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,63 +11,63 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
 ms.openlocfilehash: a52735ee62f564a5dc536fd2b7d3539406388341
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402071"
 ---
-# <a name="what-is-custom-speech"></a>Wat is aangepaste spraak?
+# <a name="what-is-custom-speech"></a>Wat is Custom Speech?
 
-[Aangepaste spraak](https://aka.ms/customspeech) is een set online tools waarmee u de spraak-naar-tekstnauwkeurigheid van Microsoft voor uw toepassingen, hulpprogramma's en producten evalueren en verbeteren. Alles wat nodig is om te beginnen zijn een handvol test audiobestanden. Volg de onderstaande links om een aangepaste spraak-naar-tekst-ervaring te maken.
+[Custom speech](https://aka.ms/customspeech) is een set online-hulpprogram ma's waarmee u de nauw keurigheid van de spraak naar tekst van micro soft kunt evalueren en verbeteren voor uw toepassingen, hulpprogram ma's en producten. Alles wat u nodig hebt om aan de slag te gaan zijn een aantal test audio bestanden. Volg de onderstaande koppelingen om aan de slag te gaan met het maken van een aangepaste spraak-naar-tekst-ervaring.
 
-## <a name="whats-in-custom-speech"></a>Wat staat er in aangepaste spraak?
+## <a name="whats-in-custom-speech"></a>Wat is er in Custom Speech?
 
-Voordat u iets doen met Aangepaste spraak, hebt u een Azure-account en een spraakserviceabonnement nodig. Zodra u een account hebt, u uw gegevens voorbereiden, trainen en testen van uw modellen, de herkenningskwaliteit inspecteren, de nauwkeurigheid evalueren en uiteindelijk het aangepaste spraak-naar-tekstmodel implementeren en gebruiken.
+Voordat u iets met Custom Speech kunt doen, hebt u een Azure-account en een spraak service-abonnement nodig. Zodra u een account hebt, kunt u uw gegevens voorbereiden, uw modellen trainen en testen, de herkennings kwaliteit controleren, de nauw keurigheid evalueren en uiteindelijk het aangepaste spraak-naar-tekst model implementeren en gebruiken.
 
-In dit diagram worden de stukken belicht die deel uitmaken van de [portal Aangepaste spraak](https://aka.ms/customspeech). Gebruik de onderstaande links voor meer informatie over elke stap.
+Dit diagram markeert de onderdelen waaruit de [Custom speech Portal](https://aka.ms/customspeech)is gemaakt. Gebruik de onderstaande koppelingen voor meer informatie over elke stap.
 
-![Hiermee worden de verschillende componenten belicht die deel uitmaken van de portal Aangepaste spraak.](./media/custom-speech/custom-speech-overview.png)
+![Hier worden de verschillende onderdelen van de Custom Speech Portal gemarkeerd.](./media/custom-speech/custom-speech-overview.png)
 
-1. [Abonneer u op en maak een project](#set-up-your-azure-account) - Maak een Azure-account en abonneer u op de spraakservice. Dit uniforme abonnement geeft u toegang tot spraak-naar-tekst, tekst-naar-spraak, spraakvertaling en de [aangepaste spraakportal.](https://speech.microsoft.com/customspeech) Maak vervolgens met uw spraakserviceabonnement uw eerste aangepaste spraakproject.
+1. [Abonneren en een project maken](#set-up-your-azure-account) : Maak een Azure-account en Abonneer u op de spraak service. Dit uniforme abonnement geeft u toegang tot spraak naar tekst, tekst naar spraak, spraak omzetting en de [Custom speech Portal](https://speech.microsoft.com/customspeech). Maak vervolgens uw eerste Custom Speech project met behulp van uw abonnement op de spraak service.
 
-2. [Testgegevens uploaden](how-to-custom-speech-test-data.md) - Testgegevens (audiobestanden) uploaden om het spraak-naar-tekst-aanbod van Microsoft voor uw toepassingen, hulpprogramma's en producten te evalueren.
+2. [Test gegevens uploaden](how-to-custom-speech-test-data.md) test gegevens uploaden (audio bestanden) om de spraak-naar-tekst-aanbieding van micro soft voor uw toepassingen, hulpprogram ma's en producten te evalueren.
 
-3. [Controleer de herkenningskwaliteit](how-to-custom-speech-inspect-data.md) - Gebruik de [aangepaste spraakportal](https://speech.microsoft.com/customspeech) om geüploade audio af te spelen en de kwaliteit van de spraakherkenning van uw testgegevens te inspecteren. Zie [Gegevens inspecteren voor](how-to-custom-speech-inspect-data.md)kwantitatieve metingen.
+3. [Herkennings kwaliteit inspecteren](how-to-custom-speech-inspect-data.md) : gebruik de [Custom speech Portal](https://speech.microsoft.com/customspeech) voor het afspelen van geüploade audio en controleer de kwaliteit van de spraak herkenning van uw test gegevens. Zie [gegevens controleren](how-to-custom-speech-inspect-data.md)voor kwantitatieve metingen.
 
-4. [Nauwkeurigheid evalueren](how-to-custom-speech-evaluate-data.md) - Evalueer de nauwkeurigheid van het spraak-naar-tekstmodel. De [aangepaste spraakportal](https://speech.microsoft.com/customspeech) biedt een *Word-foutpercentage,* dat kan worden gebruikt om te bepalen of extra training vereist is. Als u tevreden bent met de nauwkeurigheid, u de API's van spraakservice rechtstreeks gebruiken. Als u de nauwkeurigheid met een relatief gemiddelde van 5% - 20% wilt verbeteren, gebruikt u het tabblad **Training** in de portal om aanvullende trainingsgegevens te uploaden, zoals transcripties met een menselijk label en gerelateerde tekst.
+4. [Nauw keurigheid evalueren](how-to-custom-speech-evaluate-data.md) : Evalueer de nauw keurigheid van het spraak-naar-tekst model. De [Custom speech-Portal](https://speech.microsoft.com/customspeech) biedt een *woord fout*, dat kan worden gebruikt om te bepalen of extra training vereist is. Als u tevreden bent met de nauw keurigheid, kunt u de speech service-Api's rechtstreeks gebruiken. Als u de nauw keurigheid wilt verbeteren met een relatief gemiddelde van 5%-20%, gebruikt u het tabblad **training** in de portal voor het uploaden van aanvullende trainings gegevens, zoals transcripten met menselijke labels en gerelateerde tekst.
 
-5. [Train het model](how-to-custom-speech-train-model.md) - Verbeter de nauwkeurigheid van uw spraak-naar-tekstmodel door schriftelijke transcripties (10-1.000 uur) en gerelateerde tekst (<200 MB) samen met uw audiotestgegevens te verstrekken. Deze gegevens helpen bij het trainen van het spraak-naar-tekstmodel. Na de training, opnieuw testen, en als je tevreden bent met het resultaat, u uw model implementeren.
+5. [Train het model](how-to-custom-speech-train-model.md) : Verbeter de nauw keurigheid van uw spraak-naar-tekst model door geschreven transcripten (10-1000 uur) en gerelateerde tekst (<200 MB) samen met uw audio test gegevens op te geven. Deze gegevens helpen u bij het trainen van het spraak-naar-tekst-model. Wanneer u klaar bent met trainingen, testen en als u tevreden bent met het resultaat, kunt u uw model implementeren.
 
-6. [Het model implementeren](how-to-custom-speech-deploy-model.md) - Maak een aangepast eindpunt voor uw spraak-naar-tekstmodel en gebruik het in uw toepassingen, hulpprogramma's of producten.
+6. [Het model implementeren](how-to-custom-speech-deploy-model.md) : Maak een aangepast eind punt voor uw spraak-naar-tekst-model en gebruik het in uw toepassingen, hulpprogram ma's of producten.
 
 ## <a name="set-up-your-azure-account"></a>Uw Azure-account instellen
 
-Een abonnement op de spraakservice is vereist voordat u de [portal Aangepaste spraak](https://speech.microsoft.com/customspeech) gebruiken om een aangepast model te maken. Volg deze instructies om een standaard abonnement op de spraakservice te maken: [Een spraakabonnement maken](get-started.md#new-resource).
+Er is een abonnement op de spraak service vereist voordat u de [Custom speech Portal](https://speech.microsoft.com/customspeech) kunt gebruiken om een aangepast model te maken. Volg deze instructies voor het maken van een standaard abonnement op spraak service: [een spraak abonnement maken](get-started.md#new-resource).
 
 > [!NOTE]
-> Zorg ervoor dat u standaard (S0)-abonnementen maakt, gratis proefabonnementen (F0) worden niet ondersteund.
+> Zorg ervoor dat u Standard (S0)-abonnementen maakt, maar gratis proef abonnementen (F0) worden niet ondersteund.
 
-Zodra u een Azure-account en een spraakserviceabonnement hebt gemaakt, moet u zich aanmelden bij [de portal Aangepaste spraak](https://speech.microsoft.com/customspeech) en uw abonnement verbinden.
+Zodra u een Azure-account en een spraak service-abonnement hebt gemaakt, moet u zich aanmelden bij [Custom speech Portal](https://speech.microsoft.com/customspeech) en uw abonnement verbinden.
 
-1. Haal uw abonnementssleutel voor spraakservice op van de Azure-portal.
-2. Aanmelden bij de [portal Aangepaste spraak](https://aka.ms/custom-speech).
-3. Selecteer het abonnement waaraan u moet werken en maak een spraakproject.
-4. Als u uw abonnement wilt wijzigen, gebruikt u het **tandwielpictogram** in de bovenste navigatienavigatie.
+1. Haal uw abonnements sleutel voor uw spraak service op uit de Azure Portal.
+2. Meld u aan bij de [Custom speech Portal](https://aka.ms/custom-speech).
+3. Selecteer het abonnement waarmee u wilt werken en maak een spraak project.
+4. Als u uw abonnement wilt wijzigen, gebruikt u het **tandwiel** -pictogram in de bovenste navigatie balk.
 
 ## <a name="how-to-create-a-project"></a>Een project maken
 
-Inhoud zoals gegevens, modellen, tests en eindpunten worden georganiseerd in **Projecten** in de [portal Aangepaste spraak.](https://speech.microsoft.com/customspeech) Elk project is specifiek voor een domein en land/taal. U bijvoorbeeld een project maken voor callcenters die Engels gebruiken in de Verenigde Staten.
+Inhoud, zoals gegevens, modellen, testen en eind punten, zijn ingedeeld in **projecten** in de [Custom speech Portal](https://speech.microsoft.com/customspeech). Elk project is specifiek voor een domein en land/taal. U kunt bijvoorbeeld een project maken voor call centers die Engels gebruiken in de Verenigde Staten.
 
-Als u uw eerste project wilt maken, selecteert u de **spraak-naar-tekst/Aangepaste spraak**en klikt u op **Nieuw project**. Volg de instructies van de wizard om uw project te maken. Nadat u een project hebt gemaakt, ziet u vier tabbladen: **Gegevens,** **Testen,** **Training**en **Implementatie**. Gebruik de koppelingen in [volgende stappen](#next-steps) om te leren hoe u elk tabblad gebruiken.
+Als u uw eerste project wilt maken, selecteert u spraak **naar tekst/aangepaste spraak**en klikt u vervolgens op **Nieuw project**. Volg de instructies in de wizard om het project te maken. Nadat u een project hebt gemaakt, ziet u vier tabbladen: **gegevens**, **testen**, **training**en **implementatie**. Gebruik de koppelingen in de [volgende stappen](#next-steps) voor meer informatie over het gebruik van elk tabblad.
 
 > [!IMPORTANT]
-> De [Custom Speech portal](https://aka.ms/custom-speech) is onlangs bijgewerkt! Als u eerdere gegevens, modellen, tests en gepubliceerde eindpunten hebt gemaakt in de CRIS.ai portal of met API's, moet u een nieuw project maken in de nieuwe portal om verbinding te maken met deze oude entiteiten.
+> De [Custom speech Portal](https://aka.ms/custom-speech) is onlangs bijgewerkt. Als u eerdere gegevens, modellen, tests en gepubliceerde eind punten in de CRIS.ai-portal of met Api's hebt gemaakt, moet u een nieuw project maken in de nieuwe portal om verbinding met deze oude entiteiten te maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Uw gegevens voorbereiden en testen](how-to-custom-speech-test-data.md)
-* [Uw gegevens inspecteren](how-to-custom-speech-inspect-data.md)
+* [Uw gegevens controleren](how-to-custom-speech-inspect-data.md)
 * [Uw gegevens evalueren](how-to-custom-speech-evaluate-data.md)
 * [Uw model trainen](how-to-custom-speech-train-model.md)
 * [Uw model implementeren](how-to-custom-speech-deploy-model.md)

@@ -1,131 +1,131 @@
 ---
-title: Azure-activiteitenlogboek verzamelen en analyseren in Azure Monitor
-description: Verzamel het Azure Activity Log in Azure Monitor Logs en gebruik de bewakingsoplossing om het Azure-activiteitenlogboek voor al uw Azure-abonnementen te analyseren en te doorzoeken.
+title: Azure-activiteiten logboek in Azure Monitor verzamelen en analyseren
+description: Verzamel het Azure-activiteiten logboek in Azure Monitor logboeken en gebruik de bewakings oplossing om het Azure-activiteiten logboek te analyseren en doorzoeken op al uw Azure-abonnementen.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/14/2020
 ms.openlocfilehash: 098aeaa06a26c57744402722aa3eacc51ea85fb7
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81382858"
 ---
-# <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>Azure Activity-logboek verzamelen en analyseren in Azure Monitor
-Het [Azure Activity-logboek](platform-logs-overview.md) is een [platformlogboek](platform-logs-overview.md) dat inzicht biedt in gebeurtenissen op abonnementsniveau die zich in Azure hebben voorgedaan. Hoewel u het activiteitenlogboek in de Azure-portal bekijken, moet u het configureren om naar een werkruimte voor Log Analytics te verzenden om extra functies van Azure Monitor in te schakelen. In dit artikel wordt beschreven hoe u deze configuratie uitvoert en hoe u het activiteitenlogboek naar Azure-opslag- en gebeurtenishubs verzendt.
+# <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>Azure-activiteiten logboek in Azure Monitor verzamelen en analyseren
+Het [Azure-activiteiten logboek](platform-logs-overview.md) is een [platform logboek](platform-logs-overview.md) dat inzicht biedt in gebeurtenissen op abonnements niveau die zich in azure hebben voorgedaan. U kunt het activiteiten logboek weer geven in de Azure Portal door het te configureren voor verzen ding naar een Log Analytics-werk ruimte om aanvullende functies van Azure Monitor in te scha kelen. In dit artikel wordt beschreven hoe u deze configuratie uitvoert en hoe u het activiteiten logboek verzendt naar Azure Storage en Event hubs.
 
-Het verzamelen van het activiteitenlogboek in een werkruimte loganalytics biedt de volgende voordelen:
+Het verzamelen van het activiteiten logboek in een Log Analytics werk ruimte biedt de volgende voor delen:
 
-- Er zijn geen kosten verbonden aan het innemen van gegevens of gegevensbewaarkosten voor activiteitslogboekgegevens die zijn opgeslagen in een loganalytics-werkruimte.
-- Correleer gegevens over activiteitslogboeken met andere bewakingsgegevens die door Azure Monitor worden verzameld.
-- Gebruik logboekquery's om complexe analyses uit te voeren en diepgaande inzichten te krijgen over items in het activiteitenlogboek.
-- Gebruik logboekwaarschuwingen met activiteitsvermeldingen, zodat u complexere waarschuwingslogica instellen.
-- Winkel activiteit logboekvermeldingen voor langer dan 90 dagen.
-- Consolideer logboekitems van meerdere Azure-abonnementen en tenants in één locatie voor analyse samen.
+- Geen gegevens opname of gegevens retentie voor activiteiten logboek gegevens die zijn opgeslagen in een Log Analytics-werk ruimte.
+- Correleer activiteiten logboek gegevens met andere bewakings gegevens die zijn verzameld door Azure Monitor.
+- Gebruik logboek query's om complexe analyses uit te voeren en uitgebreide inzichten te verkrijgen over activiteiten logboek vermeldingen.
+- Gebruik logboek waarschuwingen met activiteiten vermeldingen die meer complexe logica voor waarschuwingen toestaan.
+- Vermeldingen in het activiteiten logboek worden langer dan 90 dagen bewaard.
+- Consolideer logboek vermeldingen van meerdere Azure-abonnementen en-tenants naar één locatie voor analyse tegelijk.
 
 > [!IMPORTANT]
-> Voor het verzamelen van logboeken over tenants is [Azure Lighthouse](/azure/lighthouse)vereist.
+> Voor het verzamelen van Logboeken tussen tenants is [Azure Lighthouse](/azure/lighthouse)vereist.
 
-## <a name="collecting-activity-log"></a>Logboek activiteit verzamelen
-Het activiteitenlogboek wordt automatisch verzameld voor [weergave in de Azure-portal.](activity-log-view.md) Als u deze wilt verzamelen in een Log Analytics-werkruimte of azure-opslag- of gebeurtenishubs wilt verzenden, maakt u een [diagnostische instelling](diagnostic-settings.md). Dit is dezelfde methode die wordt gebruikt door resource logs waardoor het consistent is voor alle [platformlogs.](platform-logs-overview.md)  
+## <a name="collecting-activity-log"></a>Activiteiten logboek verzamelen
+Het activiteiten logboek wordt automatisch verzameld voor [weer gave in de Azure Portal](activity-log-view.md). Als u deze wilt verzamelen in een Log Analytics-werk ruimte of als u Azure Storage of event hubs wilt verzenden, maakt u een [Diagnostische instelling](diagnostic-settings.md). Dit is dezelfde methode die wordt gebruikt door bron logboeken, zodat deze consistent is voor alle [platform logboeken](platform-logs-overview.md).  
 
-Als u een diagnostische instelling voor het logboek Activiteit wilt maken, selecteert u **Diagnostische instellingen** in het menu **Activiteitslogboek** in Azure Monitor. Zie [Diagnostische instelling maken om platformlogboeken en -statistieken in Azure te verzamelen](diagnostic-settings.md) voor meer informatie over het maken van de instelling. Zie [Rubrieken in het logboek Activiteit](activity-log-view.md#categories-in-the-activity-log) voor een beschrijving van de categorieën die u filteren. Als u oudere instellingen hebt, moet u deze uitschakelen voordat u een diagnostische instelling maakt. Als beide zijn ingeschakeld, kunnen dubbele gegevens worden ingevoerd.
+Als u een diagnostische instelling voor het activiteiten logboek wilt maken, selecteert u **Diagnostische instellingen** in het menu **activiteiten logboek** in azure monitor. Zie [Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure](diagnostic-settings.md) voor meer informatie over het maken van de instelling. Zie [Categorieën in het activiteiten logboek](activity-log-view.md#categories-in-the-activity-log) voor een beschrijving van de categorieën die u kunt filteren. Als u verouderde instellingen hebt, moet u deze uitschakelen voordat u een diagnostische instelling maakt. Als beide zijn ingeschakeld, kan dit leiden tot dubbele gegevens.
 
 ![Diagnostische instellingen](media/diagnostic-settings-subscription/diagnostic-settings.png)
 
 
 > [!NOTE]
-> Momenteel u alleen een diagnostische instelling op abonnementsniveau maken met behulp van de Azure-portal en een resourcemanagersjabloon. 
+> Op dit moment kunt u alleen een diagnostische instelling op abonnements niveau maken met behulp van de Azure Portal en een resource manager-sjabloon. 
 
 
-## <a name="legacy-settings"></a>Verouderde instellingen 
-Hoewel diagnostische instellingen de voorkeur hebben om het activiteitslogboek naar verschillende bestemmingen te verzenden, blijven oudere methoden werken als u niet kiest voor vervanging door een diagnostische instelling. Diagnostische instellingen hebben de volgende voordelen ten opzichte van oudere methoden en het wordt aanbevolen dat u uw configuratie bijwerkt:
+## <a name="legacy-settings"></a>Oude instellingen 
+Diagnostische instellingen zijn de voorkeurs methode voor het verzenden van het activiteiten logboek naar verschillende bestemmingen. verouderde methoden blijven werken als u niet wilt vervangen door een diagnostische instelling. Diagnostische instellingen hebben de volgende voor delen ten opzichte van oudere methoden en het wordt aanbevolen om uw configuratie bij te werken:
 
-- Consistente methode voor het verzamelen van alle platformlogs.
-- Het logboek activiteit verzamelen over meerdere abonnementen en tenants.
-- Filterverzameling om alleen logboeken voor bepaalde categorieën te verzamelen.
-- Alle categorieën van activiteitenlogboeken verzamelen. Sommige categorieën worden niet verzameld met behulp van een verouderde methode.
-- Snellere latentie voor het innemen van logboeken. De vorige methode heeft ongeveer 15 minuten latentie, terwijl diagnostische instellingen voegt slechts ongeveer 1 minuut.
+- Consistente methode voor het verzamelen van alle platform Logboeken.
+- Verzamel activiteiten logboek over meerdere abonnementen en tenants.
+- Filter verzameling om alleen logboeken voor bepaalde categorieën te verzamelen.
+- Verzamel alle activiteiten logboek categorieën. Sommige categorieën worden niet verzameld met een verouderde methode.
+- Snellere latentie voor opname van Logboeken. De vorige methode heeft ongeveer 15 minuten latentie terwijl Diagnostische instellingen meer dan 1 minuut toevoegen.
 
 
 
-### <a name="log-profiles"></a>Logboekprofielen
-Logboekprofielen zijn de verouderde methode voor het verzenden van het activiteitslogboek naar Azure-opslag- of gebeurtenishubs. Gebruik de volgende procedure om te blijven werken met een logboekprofiel of om het uit te schakelen ter voorbereiding op het migreren naar een diagnostische instelling.
+### <a name="log-profiles"></a>Logboek profielen
+Logboek profielen zijn de verouderde methode voor het verzenden van het activiteiten logboek naar Azure Storage of event hubs. Gebruik de volgende procedure om met een logboek profiel te blijven werken of om het uit te scha kelen als voor bereiding op het migreren naar een diagnostische instelling.
 
-1. Selecteer **Activiteitslogboek**in het menu **Azure Monitor** in de Azure-portal .
+1. Selecteer in het menu **Azure monitor** van de Azure Portal het **activiteiten logboek**.
 3. Klik op **Diagnostische instellingen**.
 
    ![Diagnostische instellingen](media/diagnostic-settings-subscription/diagnostic-settings.png)
 
-4. Klik op de paarse banner voor de legacy-ervaring.
+4. Klik op de banner paars voor de oude ervaring.
 
-    ![Ervaring met legacy](media/diagnostic-settings-subscription/legacy-experience.png)
+    ![Verouderde ervaring](media/diagnostic-settings-subscription/legacy-experience.png)
 
 ### <a name="log-analytics-workspace"></a>Log Analytics-werkruimte
-De verouderde methode voor het verzamelen van het logboek activiteit in een werkruimte log Analytics verbindt het logboek in de werkruimteconfiguratie. 
+De verouderde methode voor het verzamelen van het activiteiten logboek in een Log Analytics-werk ruimte is het koppelen van het logboek in de werkruimte configuratie. 
 
-1. Selecteer in het menu **Logboekanalyse-werkruimten** in de Azure-portal de werkruimte om het activiteitenlogboek te verzamelen.
-1. Selecteer **azure-activiteitenlogboek**in de sectie **Werkruimtegegevensbronnen in** het menu van de werkruimte .
-1. Klik op het abonnement dat u wilt aansluiten.
+1. Selecteer in het menu **log Analytics werk ruimten** in de Azure Portal de werk ruimte om het activiteiten logboek te verzamelen.
+1. Selecteer in de sectie **werkruimte gegevens bronnen** van het menu van de werk ruimte **Azure-activiteiten logboek**.
+1. Klik op het abonnement dat u wilt verbinden.
 
     ![Workspaces](media/activity-log-collect/workspaces.png)
 
-1. Klik **op Verbinding maken** om het activiteitslogboek in het abonnement te verbinden met de geselecteerde werkruimte. Als het abonnement al is verbonden met een andere werkruimte, klikt u eerst op **Verbinding verbreken** om de verbinding te verbreken.
+1. Klik op **verbinden** om het activiteiten logboek in het abonnement te verbinden met de geselecteerde werk ruimte. Als het abonnement al is verbonden met een andere werk ruimte, klikt u eerst op **verbinding verbreken** om de verbinding te verbreken.
 
-    ![Werkruimten verbinden](media/activity-log-collect/connect-workspace.png)
-
-
-Als u de instelling wilt uitschakelen, voert u dezelfde procedure uit en klikt u op **Verbinding verbreken** om het abonnement uit de werkruimte te verwijderen.
+    ![Werk ruimten verbinden](media/activity-log-collect/connect-workspace.png)
 
 
-## <a name="analyze-activity-log-in-log-analytics-workspace"></a>Activiteitslogboek analyseren in de werkruimte Log Analytics
-Wanneer u een activiteitenlogboek koppelt aan een werkruimte loganalytics, worden items naar de werkruimte geschreven in een tabel met de naam *AzureActivity* die u ophalen met een [logboekquery](../log-query/log-query-overview.md). De structuur van deze tabel is afhankelijk van de [categorie van de logvermelding.](activity-log-view.md#categories-in-the-activity-log) Zie [gebeurtenisschema azure activity log](activity-log-schema.md) voor een beschrijving van elke categorie.
+Als u de instelling wilt uitschakelen, voert u dezelfde procedure uit en klikt u op **verbinding verbreken** om het abonnement uit de werk ruimte te verwijderen.
 
 
-### <a name="data-structure-changes"></a>Wijzigingen in gegevensstructuur
-Diagnostische instellingen verzamelen dezelfde gegevens als de verouderde methode die wordt gebruikt om het activiteitslogboek te verzamelen met enkele wijzigingen in de structuur van de *AzureActivity-tabel.*
+## <a name="analyze-activity-log-in-log-analytics-workspace"></a>Activiteiten logboek in Log Analytics werk ruimte analyseren
+Wanneer u een activiteiten logboek verbindt met een Log Analytics-werk ruimte, worden er items naar de werk ruimte geschreven in een tabel met de naam *AzureActivity* die u met een [logboek query](../log-query/log-query-overview.md)kunt ophalen. De structuur van deze tabel is afhankelijk van de [categorie van de logboek vermelding](activity-log-view.md#categories-in-the-activity-log). Zie [Azure activiteiten logboek gebeurtenis schema](activity-log-schema.md) voor een beschrijving van elke categorie.
 
-De kolommen in de volgende tabel zijn afgeschaft in het bijgewerkte schema. Ze bestaan nog steeds in *AzureActivity,* maar ze hebben geen gegevens. De vervanging voor deze kolommen zijn niet nieuw, maar ze bevatten dezelfde gegevens als de afgeschafte kolom. Ze zijn in een andere indeling, dus het kan nodig zijn om logboekquery's die ze gebruiken te wijzigen. 
+
+### <a name="data-structure-changes"></a>Wijzigingen in de gegevens structuur
+Diagnostische instellingen verzamelen dezelfde gegevens als de oude methode die wordt gebruikt voor het verzamelen van het activiteiten logboek met enkele wijzigingen in de structuur van de tabel *AzureActivity* .
+
+De kolommen in de volgende tabel zijn afgeschaft in het bijgewerkte schema. Ze zijn nog steeds aanwezig in *AzureActivity* , maar ze hebben geen gegevens. De vervanging voor deze kolommen is niet nieuw, maar bevat dezelfde gegevens als de afgeschafte kolom. Ze hebben een andere indeling, dus u moet mogelijk logboek query's wijzigen die deze gebruiken. 
 
 | Afgeschafte kolom | Vervangende kolom |
 |:---|:---|
-| ActiviteitStatus    | ActivityStatusValue    |
-| ActiviteitSubstatus | ActivitySubstatusWaarde |
+| Activity status    | ActivityStatusValue    |
+| ActivitySubstatus | ActivitySubstatusValue |
 | OperationName     | OperationNameValue     |
-| ResourceProvider  | ResourceProviderWaarde  |
+| ResourceProvider  | ResourceProviderValue  |
 
 > [!IMPORTANT]
-> In sommige gevallen kunnen de waarden in deze kolommen in alle hoofdletters zijn. Als u een query hebt die deze kolommen bevat, moet u de [operator =~](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators) gebruiken om een ongevoelige vergelijking uit te voeren.
+> In sommige gevallen kunnen de waarden in deze kolommen in hoofd letters worden getypt. Als u een query hebt die deze kolommen bevat, moet u de [operator = ~](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators) gebruiken om een niet-hoofdletter gevoelige vergelijking te maken.
 
-De volgende kolom is toegevoegd aan *AzureActivity* in het bijgewerkte schema:
+De volgende kolom zijn toegevoegd aan *AzureActivity* in het bijgewerkte schema:
 
 - Authorization_d
 - Claims_d
 - Properties_d
 
 
-## <a name="activity-logs-analytics-monitoring-solution"></a>Monitoringoplossing activity logs Analytics
-De azure log analytics-bewakingsoplossing wordt binnenkort afgeschaft en vervangen door een werkmap met behulp van het bijgewerkte schema in de werkruimte Log Analytics. U de oplossing nog steeds gebruiken als u deze al hebt ingeschakeld, maar deze kan alleen worden gebruikt als u het activiteitenlogboek verzamelt met oudere instellingen. 
+## <a name="activity-logs-analytics-monitoring-solution"></a>Bewakings oplossing voor activiteiten logboeken
+De bewakings oplossing voor Azure Log Analytics wordt binnenkort afgeschaft en vervangen door een werkmap met het bijgewerkte schema in de Log Analytics-werk ruimte. U kunt de oplossing blijven gebruiken als u deze al hebt ingeschakeld, maar deze kan alleen worden gebruikt als u het activiteiten logboek verzamelt met behulp van verouderde instellingen. 
 
 
 
-### <a name="use-the-solution"></a>Gebruik de oplossing
-Bewakingsoplossingen zijn toegankelijk via het menu **Monitor** in de Azure-portal. Selecteer **Meer** in de sectie **Inzichten** om de **pagina Overzicht** met de oplossingstegels te openen. Op de tegel **Azure Activity Logs** wordt een aantal **AzureActivity-records** in uw werkruimte weergegeven.
+### <a name="use-the-solution"></a>De oplossing gebruiken
+Bewakings oplossingen zijn toegankelijk via het menu **monitor** in de Azure Portal. Selecteer **meer** in het gedeelte **inzichten** om de **overzichts** pagina te openen met de oplossings tegels. De tegel **activiteiten logboeken van Azure** bevat een telling van het aantal **AzureActivity** -records in uw werk ruimte.
 
-![Tegel Azure Activity Logs](media/collect-activity-logs/azure-activity-logs-tile.png)
-
-
-Klik op de tegel **Azure Activity Logs** om de weergave Azure Activity **Logs** te openen. De weergave bevat de visualisatie-onderdelen in de volgende tabel. Elk onderdeel bevat maximaal 10 items die overeenkomen met de criteria van die onderdelen voor het opgegeven tijdsbereik. U een logboekquery uitvoeren die alle overeenkomende records retourneert door onder aan het onderdeel op **Alles weergeven** te klikken.
-
-![Azure-activiteitslogboekendashboard](media/collect-activity-logs/activity-log-dash.png)
+![Tegel Azure-activiteiten logboeken](media/collect-activity-logs/azure-activity-logs-tile.png)
 
 
-### <a name="enable-the-solution-for-new-subscriptions"></a>De oplossing inschakelen voor nieuwe abonnementen
-Binnenkort u de Activity Logs Analytics-oplossing niet meer aan uw abonnement toevoegen via de Azure-portal. U het toevoegen met de volgende procedure met een resourcemanagersjabloon. 
+Klik op de tegel **Azure-activiteiten logboeken** om de weer gave **Azure-activiteiten logboeken** te openen. De weer gave bevat de visualisatie onderdelen in de volgende tabel. Elk onderdeel bevat Maxi maal 10 items die overeenkomen met de criteria van die onderdelen voor het opgegeven tijds bereik. U kunt een logboek query uitvoeren waarmee alle overeenkomende records worden geretourneerd door te klikken op **Alles bekijken** onder aan het onderdeel.
 
-1. Kopieer de volgende json naar een bestand genaamd *ActivityLogTemplate*.json.
+![Dash board Azure-activiteiten logboeken](media/collect-activity-logs/activity-log-dash.png)
+
+
+### <a name="enable-the-solution-for-new-subscriptions"></a>De oplossing voor nieuwe abonnementen inschakelen
+U kunt de activiteiten logboek analyse niet meer aan uw abonnement toevoegen met behulp van de Azure Portal. U kunt deze toevoegen aan de hand van de volgende procedure met een resource manager-sjabloon. 
+
+1. Kopieer de volgende JSON naar een bestand met de naam *ActivityLogTemplate*. json.
 
     ```json
     {
@@ -203,7 +203,7 @@ Binnenkort u de Activity Logs Analytics-oplossing niet meer aan uw abonnement to
     }    
     ```
 
-2. Implementeer de sjabloon met de volgende PowerShell-opdrachten:
+2. Implementeer de sjabloon met behulp van de volgende Power shell-opdrachten:
 
     ```PowerShell
     Connect-AzAccount
@@ -214,6 +214,6 @@ Binnenkort u de Activity Logs Analytics-oplossing niet meer aan uw abonnement to
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [activiteitenlogboek](platform-logs-overview.md).
-- Meer informatie over het [Azure Monitor-gegevensplatform](data-platform.md).
-- Gebruik [logboekquery's](../log-query/log-query-overview.md) om gedetailleerde informatie uit uw activiteitenlogboek weer te geven.
+- Meer informatie over het [activiteiten logboek](platform-logs-overview.md).
+- Meer informatie over het [Azure monitor-gegevens platform](data-platform.md).
+- Gebruik [logboek query's](../log-query/log-query-overview.md) om gedetailleerde informatie uit uw activiteiten logboek weer te geven.

@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: spraak herkennen uit een audiobestand - Spraakservice'
+title: 'Quick Start: spraak herkennen vanuit een audio bestand-spraak service'
 titleSuffix: Azure Cognitive Services
-description: In deze snelle start gebruikt u de Spraak-SDK om spraak uit een audiobestand te herkennen.
+description: In deze Quick Start gebruikt u de Speech SDK om spraak van een audio bestand te herkennen.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 0480177bd504052804c9aa833f18d827f688f661
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400625"
 ---
-# <a name="quickstart-recognize-speech-from-an-audio-file"></a>Snelstart: spraak herkennen uit een audiobestand
+# <a name="quickstart-recognize-speech-from-an-audio-file"></a>Quick Start: spraak herkennen vanuit een audio bestand
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/from-file/header.md)]

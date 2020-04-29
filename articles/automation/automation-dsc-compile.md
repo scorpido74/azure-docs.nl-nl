@@ -1,56 +1,56 @@
 ---
-title: DSC-configuraties compileren in Azure-automatiseringsstatusconfiguratie
-description: In dit artikel wordt beschreven hoe u DSC-configuraties (Desired State Configuration) compileren voor Azure Automation.
+title: DSC-configuraties compileren in de configuratie van de Azure Automation status
+description: In dit artikel wordt beschreven hoe u desired state Configuration (DSC)-configuraties voor Azure Automation kunt compileren.
 services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: f7558745442ac26fc33a063ff66fe170d08487ac
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81392088"
 ---
-# <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>DSC-configuraties compileren in Azure-automatiseringsstatusconfiguratie
+# <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>DSC-configuraties compileren in de configuratie van de Azure Automation status
 
-U de configuraties van de gewenste statusconfiguratie (DSC) op de volgende manieren compileren in azure-automatiseringsstatusconfiguratie:
+U kunt de configuratie van desired state Configuration (DSC) in Azure Automation status op de volgende manieren compileren:
 
-- Compilatieservice azure state configuration
-  - Beginnersmethode met interactieve gebruikersinterface
-   - De status van de taak eenvoudig bijhouden
+- Azure status configuratie compilatie service
+  - Methode voor beginners met interactieve gebruikers interface
+   - Eenvoudig de taak status bijhouden
 
 - Windows PowerShell
-  - Bellen vanuit Windows PowerShell op lokaal werkstation of buildservice
-  - Integreren met ontwikkelingstestpijplijn
-  - Complexe parameterwaarden opgeven
-  - Werken met knooppuntgegevens en niet-knooppuntgegevens op schaal
-  - Aanzienlijke prestatieverbetering
+  - Aanroepen vanuit Windows Power shell op het lokale werk station of de build-service
+  - Integreren met de ontwikkelings test pijplijn
+  - Complexe parameter waarden opgeven
+  - Werken met knoop punt-en niet-knooppunt gegevens op schaal
+  - Aanzienlijke prestatie verbetering
 
-U azure resource beheersjablonen ook gebruiken met Azure Desired State Configuration (DSC)-extensie om configuraties naar uw Azure VM's te pushen. De Azure DSC-extensie maakt gebruik van het Azure VM Agent-framework voor het leveren, uitvoeren en rapporteren over DSC-configuraties die worden uitgevoerd op Azure VM's. Zie [Extensie gewenste statusconfiguratie met Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)voor compilatiedetails. 
+U kunt ook Azure Resource Manager sjablonen met de extensie Azure desired state Configuration (DSC) gebruiken om configuraties naar uw Azure-Vm's te pushen. De Azure DSC-uitbrei ding maakt gebruik van het Azure VM-agent Framework voor het leveren, door voeren en rapporteren van DSC-configuraties die worden uitgevoerd op virtuele Azure-machines. Zie [desired state Configuration extension with Azure Resource Manager Templates](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)(Engelstalig) voor meer informatie over de compilatie van Azure Resource Manager sjablonen. 
 
 >[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor installatie-instructies voor az-modules op uw hybride runbookworker. Voor uw Automatiseringsaccount u uw modules bijwerken naar de nieuwste versie met [Azure PowerShell-modules bijwerken in Azure Automation.](automation-update-azure-modules.md)
+>Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
 
-## <a name="compiling-a-dsc-configuration-in-azure-state-configuration"></a>Een DSC-configuratie samenstellen in Azure-statusconfiguratie
+## <a name="compiling-a-dsc-configuration-in-azure-state-configuration"></a>Een DSC-configuratie in de Azure-status configuratie compileren
 
 ### <a name="portal"></a>Portal
 
-1. Klik in uw automatiseringsaccount op **Configuratie (DSC)** op Statusconfiguratie .
-1. Klik op het tabblad **Configuraties** en klik vervolgens op de configuratienaam die u wilt compileren.
-1. Klik **op Compileren**.
-1. Als de configuratie geen parameters heeft, wordt u gevraagd om te bevestigen of u deze wilt compileren. Als de configuratie parameters heeft, wordt het blad **Configuratie compileren** geopend, zodat u parameterwaarden opgeven.
-1. De pagina Compilatietaak wordt geopend, zodat u de status van compilatietaak bijhouden. U deze pagina ook gebruiken om de knooppuntconfiguraties (MOF-configuratiedocumenten) te volgen die op de pull-server azure automation state configuration zijn geplaatst.
+1. Klik in uw Automation-account op **State Configuration (DSC)**.
+1. Klik op het tabblad **configuraties** en klik vervolgens op de naam van de configuratie die u wilt compileren.
+1. Klik op **compileren**.
+1. Als de configuratie geen para meters heeft, wordt u gevraagd om te bevestigen of u deze wilt compileren. Als de configuratie para meters heeft, wordt de Blade **configuratie voor compileren** geopend, zodat u parameter waarden kunt opgeven.
+1. De pagina compilatie taak wordt geopend, zodat u de status van de compilatie taak kunt bijhouden. U kunt deze pagina ook gebruiken om de knooppunt configuraties (MOF-configuratie documenten) bij te houden die zijn geplaatst op de configuratie pull-server van de Azure Automation status.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-U [Start-AzAutomationDscCompilationJob](/powershell/module/az.automation/start-azautomationdsccompilationjob) gebruiken om te beginnen met het compileren met Windows PowerShell. De volgende voorbeeldcode begint met het samenstellen van een DSC-configuratie genaamd **SampleConfig**.
+U kunt [Start-AzAutomationDscCompilationJob](/powershell/module/az.automation/start-azautomationdsccompilationjob) gebruiken om te beginnen met het compileren met Windows Power shell. Met de volgende voorbeeld code wordt de compilatie van een DSC-configuratie met de naam **SampleConfig**gestart.
 
 ```powershell
 Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 ```
 
-`Start-AzAutomationDscCompilationJob`retourneert een compilatietaakobject dat u gebruiken om de taakstatus bij te houden. U dit compilatietaakobject vervolgens gebruiken met [Get-AzAutomationDscCompilationJob](/powershell/module/az.automation/get-azautomationdsccompilationjob) om de status van de compilatietaak te bepalen en [Get-AzAutomationDscCompilationJobOutput](/powershell/module/az.automation/get-azautomationdscconfiguration) om de streams (uitvoer) weer te geven. In het volgende voorbeeld wordt gestart met de compilatie van de SampleConfig-configuratie, wordt gewacht tot deze is voltooid en worden de streams weergegeven.
+`Start-AzAutomationDscCompilationJob`retourneert een compilatie taak object dat u kunt gebruiken om de taak status bij te houden. U kunt dit compilatie taak object vervolgens gebruiken met [Get-AzAutomationDscCompilationJob](/powershell/module/az.automation/get-azautomationdsccompilationjob) om de status van de compilatie taak te bepalen, en [Get-AzAutomationDscCompilationJobOutput](/powershell/module/az.automation/get-azautomationdscconfiguration) om de streams weer te geven (uitvoer). In het volgende voor beeld wordt de compilatie van de SampleConfig-configuratie gestart, wordt gewacht tot deze is voltooid en worden vervolgens de streams weer gegeven.
 
 ```powershell
 $CompilationJob = Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
@@ -64,11 +64,11 @@ while($null -eq $CompilationJob.EndTime -and $null -eq $CompilationJob.Exception
 $CompilationJob | Get-AzAutomationDscCompilationJobOutput –Stream Any
 ```
 
-### <a name="declare-basic-parameters"></a>Basisparameters declareren
+### <a name="declare-basic-parameters"></a>Algemene para meters declareren
 
-Parameterdeclaratie in DSC-configuraties, inclusief parametertypen en -eigenschappen, werkt hetzelfde als in Azure Automation-runbooks. Zie [Een runbook starten in Azure Automation](automation-starting-a-runbook.md) voor meer informatie over runbook-parameters.
+Parameter declaraties in DSC-configuraties, inclusief parameter typen en eigenschappen, werken hetzelfde als in Azure Automation runbooks. Zie [een Runbook starten in azure Automation](automation-starting-a-runbook.md) voor meer informatie over runbook-para meters.
 
-In het `FeatureName` volgende `IsPresent` voorbeeld worden de waarden van eigenschappen in de configuratie **parametersExample.sample** node die tijdens de compilatie worden gegenereerd, gebruikt en parameters gebruikt.
+In het volgende voor `FeatureName` beeld `IsPresent` worden en para meters gebruikt om de waarden van eigenschappen in de **ParametersExample. voorbeeld** knooppunt configuratie te bepalen, gegenereerd tijdens de compilatie.
 
 ```powershell
 Configuration ParametersExample
@@ -98,17 +98,17 @@ Configuration ParametersExample
 }
 ```
 
-U DSC-configuraties compileren die basisparameters gebruiken in de azure automation state configuration portal of met Azure PowerShell.
+U kunt DSC-configuraties compileren die basis parameters gebruiken in de configuratie portal van de Azure Automation status of met Azure PowerShell.
 
 #### <a name="portal"></a>Portal
 
-In de portal u parameterwaarden invoeren nadat u op Compileren hebt **geklikt.**
+In de portal kunt u parameter waarden invoeren nadat u op **compileren**hebt geklikt.
 
-![Parameters voor het compileren van configuratie](./media/automation-dsc-compile/DSC_compiling_1.png)
+![Configuratie compilatie parameters](./media/automation-dsc-compile/DSC_compiling_1.png)
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 
-PowerShell vereist parameters in een [hashtable,](/powershell/module/microsoft.powershell.core/about/about_hash_tables)waarbij de sleutel overeenkomt met de parameternaam en de waarde gelijk is aan de parameterwaarde.
+Power shell vereist para meters in een [hashtabel](/powershell/module/microsoft.powershell.core/about/about_hash_tables), waarbij de sleutel overeenkomt met de parameter naam en de waarde gelijk is aan de waarde van de para meter.
 
 ```powershell
 $Parameters = @{
@@ -119,23 +119,23 @@ $Parameters = @{
 Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'ParametersExample' -Parameters $Parameters
 ```
 
-Zie `PSCredential` [Referentie-elementen](#credential-assets)voor informatie over het doorgeven van objecten als parameters .
+Zie [referentie](#credential-assets)-assets `PSCredential` voor informatie over het door geven van objecten als para meters.
 
-### <a name="compile-configurations-containing-composite-resources-in-azure-automation"></a>Configuraties compileren die samengestelde resources bevatten in Azure Automation
+### <a name="compile-configurations-containing-composite-resources-in-azure-automation"></a>Configuraties met samengestelde resources in Azure Automation compileren
 
-Met de functie **Samengestelde resources** u DSC-configuraties gebruiken als geneste bronnen in een configuratie. Met deze functie u meerdere configuraties op één resource toepassen. Zie [Samengestelde resources: een DSC-configuratie gebruiken als resource](/powershell/scripting/dsc/resources/authoringresourcecomposite) voor meer informatie over samengestelde resources.
-
-> [!NOTE]
-> Om ervoor te zorgen dat configuraties met samengestelde resources correct worden samengesteld, moet u eerst alle DSC-resources waarop de composieten vertrouwen, importeren in Azure Automation. Het toevoegen van een DSC-samengestelde resource is niet anders dan het toevoegen van een PowerShell-module aan Azure Automation. Dit proces wordt gedocumenteerd in [Modules beheren in Azure Automation.](/azure/automation/shared-resources/modules)
-
-### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>ConfigurationData beheren bij het samenstellen van configuraties in Azure Automation
-
-`ConfigurationData`is een ingebouwde DSC-parameter waarmee u structurele configuratie scheiden van elke omgevingsspecifieke configuratie tijdens het gebruik van PowerShell DSC. Zie ["Wat" scheiden van "Waar" in PowerShell DSC voor](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/)meer informatie.
+Met de functie **samengestelde resources** kunt u DSC-configuraties gebruiken als geneste resources in een configuratie. Met deze functie kunt u meerdere configuraties op één resource Toep assen. Zie [Composite resources: een DSC-configuratie gebruiken als resource](/powershell/scripting/dsc/resources/authoringresourcecomposite) voor meer informatie over samengestelde resources.
 
 > [!NOTE]
-> Bij het opstellen in Azure Automation `ConfigurationData` State Configuration u gebruik maken in Azure PowerShell, maar niet in de Azure-portal.
+> Als configuraties met samengestelde resources op de juiste wijze worden gecompileerd, moet u eerst importeren in Azure Automation van de DSC-resources waarvan de samengesteldes afhankelijk zijn. Het toevoegen van een DSC-samengestelde resource wijkt af van het toevoegen van een Power shell-module aan Azure Automation. Dit proces wordt beschreven in [modules beheren in azure Automation](/azure/automation/shared-resources/modules).
 
-Het volgende voorbeeld dat `ConfigurationData` DSC-configuratie wordt gebruikt via de `$ConfigurationData` trefwoorden en `$AllNodes` trefwoorden. Hiervoor heb je ook de [xWebAdministration module](https://www.powershellgallery.com/packages/xWebAdministration/) nodig.
+### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>ConfigurationData beheren bij het compileren van configuraties in Azure Automation
+
+`ConfigurationData`is een ingebouwde DSC-para meter waarmee u de structurele configuratie kunt scheiden van elke omgevings-specifieke configuratie terwijl u Power shell DSC gebruikt. Zie [' What ' van ' where ' in Power shell DSC scheiden](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/)voor meer informatie.
+
+> [!NOTE]
+> Bij het compileren in Azure Automation status configuratie kunt u gebruiken `ConfigurationData` in azure PowerShell, maar niet in de Azure Portal.
+
+In het volgende voor beeld wordt `ConfigurationData` de DSC `$ConfigurationData` - `$AllNodes` configuratie gebruikt via de sleutel woorden en. U hebt ook de [module xWebAdministration](https://www.powershellgallery.com/packages/xWebAdministration/) nodig voor dit voor beeld.
 
 ```powershell
 Configuration ConfigurationDataSample
@@ -156,7 +156,7 @@ Configuration ConfigurationDataSample
 }
 ```
 
-U de vorige DSC-configuratie compileren met Windows PowerShell. In het volgende script worden twee knooppuntconfiguraties toegevoegd aan de azure automation state configuration pull-service: **ConfigurationDataSample.MyVM1** en **ConfigurationDataSample.MyVM3**.
+U kunt de voor gaande DSC-configuratie compileren met Windows Power shell. Met het volgende script worden twee knooppunt configuraties aan de pull-service van de Azure Automation status configuratie toegevoegd: **ConfigurationDataSample. MyVM1** en **ConfigurationDataSample. MyVM3**.
 
 ```powershell
 $ConfigData = @{
@@ -183,24 +183,24 @@ $ConfigData = @{
 Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'ConfigurationDataSample' -ConfigurationData $ConfigData
 ```
 
-### <a name="work-with-assets-in-azure-automation-during-compilation"></a>Werken met assets in Azure Automation tijdens het maken van
+### <a name="work-with-assets-in-azure-automation-during-compilation"></a>Werken met assets in Azure Automation tijdens de compilatie
 
-Assetreferenties zijn hetzelfde in zowel Azure Automation State Configuration als runbooks. Raadpleeg de volgende artikelen voor meer informatie:
+Activa verwijzingen zijn hetzelfde in de Azure Automation status configuratie en runbooks. Raadpleeg de volgende artikelen voor meer informatie:
 
 - [Certificaten](automation-certificates.md)
 - [Verbindingen](automation-connections.md)
 - [Referenties](automation-credentials.md)
 - [Variabelen](automation-variables.md)
 
-#### <a name="credential-assets"></a>Referentie-elementen
+#### <a name="credential-assets"></a>Referentie-assets
 
-DSC-configuraties in Azure Automation kunnen verwijzen `Get-AutomationPSCredential` naar automatiseringsreferentie-elementen met behulp van de cmdlet. Als een configuratie een parameter `PSCredential` heeft `Get-AutomationPSCredential` die een object opgeeft, gebruikt u de tekenreeksnaam van een azure automation-referentieactief door te geven aan de cmdlet om de referentie op te halen. Maak vervolgens gebruik van dat object `PSCredential` voor de parameter die het object vereist. Achter de schermen wordt de Azure Automation-referentieasset met die naam opgehaald en doorgegeven aan de configuratie. In het onderstaande voorbeeld wordt dit scenario in actie weergegeven.
+DSC-configuraties in Azure Automation kunnen verwijzen naar Automation- `Get-AutomationPSCredential` referentie assets met behulp van de-cmdlet. Als een configuratie een para meter heeft waarmee een `PSCredential` object wordt opgegeven `Get-AutomationPSCredential` , gebruikt u door de naam van de teken reeks van een Azure Automation referentie-element door te geven aan de cmdlet om de referentie op te halen. Maak vervolgens het gebruik van dat object voor de para meter `PSCredential` die het object vereist. Achter de schermen wordt het Azure Automation referentie-element met die naam opgehaald en door gegeven aan de configuratie. In het onderstaande voor beeld ziet u dit scenario in actie.
 
-Om referenties veilig te houden in knooppuntconfiguraties (MOF-configuratiedocumenten) moet de referenties in het MOF-bestand voor knooppuntconfiguratie worden versleuteld. Momenteel moet u PowerShell DSC toestemming geven om referenties uit te geven in platte tekst tijdens de MOF-generatie van knooppuntconfiguratie. PowerShell DSC is zich er niet van bewust dat Azure Automation het hele MOF-bestand na de productie versleutelt via een compilatietaak.
+Het beveiligen van referenties in knooppunt configuraties (MOF-configuratie documenten) vereist het versleutelen van de referenties in het MOF-bestand van de knooppunt configuratie. U moet op dit moment Power shell DSC-machtiging verlenen voor het uitvoeren van referenties in tekst zonder opmaak tijdens het genereren van de configuratie van de knoop punten. Power shell DSC is niet bekend dat Azure Automation het volledige MOF-bestand versleutelt nadat het is gegenereerd via een compilatie taak.
 
-U PowerShell DSC vertellen dat het goed is dat referenties in platte tekst worden uitgevoerd in de gegenereerde knooppuntconfiguratie-MOFs met behulp van configuratiegegevens. U moet `PSDscAllowPlainTextPassword = $true` `ConfigurationData` doorgeven voor elke knooppuntbloknaam die in de DSC-configuratie wordt weergegeven en referenties gebruikt.
+U kunt Power shell DSC zodanig informeren dat de referenties in onbewerkte tekst in het gegenereerde knoop punt configuratie-Mof's met behulp van configuratie gegevens. U moet door `PSDscAllowPlainTextPassword = $true` geven `ConfigurationData` voor elke knooppunt blok naam die wordt weer gegeven in de DSC-configuratie en referenties gebruiken.
 
-In het volgende voorbeeld wordt een DSC-configuratie weergegeven die gebruikmaakt van een automatiseringsreferentie-asset.
+In het volgende voor beeld ziet u een DSC-configuratie die gebruikmaakt van een Automation-referentie-Asset.
 
 ```powershell
 Configuration CredentialSample
@@ -220,7 +220,7 @@ Configuration CredentialSample
 }
 ```
 
-U de vorige DSC-configuratie compileren met PowerShell. Met de volgende PowerShell-code worden twee knooppuntconfiguraties toegevoegd aan de pull-server azure automation state configuration: **CredentialSample.MyVM1** en **CredentialSample.MyVM2**.
+U kunt de voor gaande DSC-configuratie compileren met Power shell. Met de volgende Power shell-code worden twee knooppunt configuraties toegevoegd aan de pull-server van de Azure Automation status configuratie: **CredentialSample. MyVM1** en **CredentialSample. MyVM2**.
 
 ```powershell
 $ConfigData = @{
@@ -242,38 +242,38 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 ```
 
 > [!NOTE]
-> Wanneer de compilatie is voltooid, `The 'Microsoft.PowerShell.Management' module was not imported because the 'Microsoft.PowerShell.Management' snap-in was already imported.` ontvangt u mogelijk het foutbericht U dit bericht veilig negeren.
+> Wanneer de compilatie is voltooid, kan het fout bericht `The 'Microsoft.PowerShell.Management' module was not imported because the 'Microsoft.PowerShell.Management' snap-in was already imported.` worden weer gegeven dat u dit bericht veilig kunt negeren.
 
-## <a name="compiling-your-dsc-configuration-in-windows-powershell"></a>Uw DSC-configuratie samenstellen in Windows PowerShell
+## <a name="compiling-your-dsc-configuration-in-windows-powershell"></a>De DSC-configuratie in Windows Power shell compileren
 
-U ook knooppuntconfiguraties (MOF-bestanden) importeren die buiten Azure zijn gecompileerd. De import omvat compilatie van een ontwikkelaarswerkstation of in een service zoals [Azure DevOps.](https://dev.azure.com) Deze aanpak heeft meerdere voordelen, waaronder prestaties en betrouwbaarheid.
+U kunt ook knooppunt configuraties (MOF-bestanden) importeren die buiten Azure zijn gecompileerd. De import omvat de compilatie van een ontwikkelaars werkstation of een service zoals [Azure DevOps](https://dev.azure.com). Deze benadering heeft meerdere voor delen, waaronder prestaties en betrouw baarheid.
 
-Compileren in Windows PowerShell biedt ook de mogelijkheid om configuratie-inhoud te ondertekenen. De DSC-agent verifieert een ondertekende knooppuntconfiguratie lokaal op een beheerd knooppunt. Verificatie zorgt ervoor dat de configuratie die op het knooppunt wordt toegepast, afkomstig is van een geautoriseerde bron.
+Compileren in Windows Power shell biedt ook de mogelijkheid om configuratie-inhoud te ondertekenen. De DSC-agent verifieert lokaal een ondertekende knooppunt configuratie op een beheerd knoop punt. Verificatie zorgt ervoor dat de configuratie die op het knoop punt wordt toegepast, afkomstig is van een geautoriseerde bron.
 
 > [!NOTE]
-> Een knooppuntconfiguratiebestand mag niet groter zijn dan 1 MB om Azure Automation toe te staan het te importeren.
+> Een configuratie bestand voor een knoop punt mag niet groter zijn dan 1 MB zodat Azure Automation het kan importeren.
 
-Zie [Verbeteringen in WMF 5.1 - Configuratie en module ondertekenen](/powershell/scripting/wmf/whats-new/dsc-improvements#dsc-module-and-configuration-signing-validations)voor meer informatie over het ondertekenen van knooppuntconfiguraties.
+Zie voor meer informatie over het ondertekenen van knooppunt configuraties [verbeteringen in WMF 5,1-configuratie en module ondertekenen](/powershell/scripting/wmf/whats-new/dsc-improvements#dsc-module-and-configuration-signing-validations).
 
 ### <a name="compile-the-dsc-configuration"></a>De DSC-configuratie compileren
 
-Het proces voor het compileren van DSC-configuraties in Windows PowerShell is opgenomen in de PowerShell DSC-documentatie [Schrijf, Compileren en Toepassen van een configuratie.](/powershell/scripting/dsc/configurations/write-compile-apply-configuration#compile-the-configuration)
-U dit proces uitvoeren vanaf een werkstation voor ontwikkelaars of binnen een buildservice, zoals [Azure DevOps.](https://dev.azure.com) U vervolgens de MOF-bestanden importeren die zijn geproduceerd door de configuratie samen te stellen in de Azure State Configuration-service.
+Het proces voor het compileren van DSC-configuraties in Windows Power shell is opgenomen in de Power shell DSC-documentatie [schrijven, compileren en Toep assen van een configuratie](/powershell/scripting/dsc/configurations/write-compile-apply-configuration#compile-the-configuration).
+U kunt dit proces uitvoeren vanaf een ontwikkelaars werkstation of binnen een build-service, zoals [Azure DevOps](https://dev.azure.com). U kunt vervolgens de MOF-bestanden importeren die zijn gemaakt door de configuratie te compileren in de Azure-status configuratie service.
 
-### <a name="import-a-node-configuration-in-the-azure-portal"></a>Een knooppuntconfiguratie importeren in de Azure-portal
+### <a name="import-a-node-configuration-in-the-azure-portal"></a>Een knooppunt configuratie in de Azure Portal importeren
 
-1. Klik in uw automatiseringsaccount op **Configuratie (DSC)** onder **Configuratiebeheer**.
-1. Klik op de pagina Statusconfiguratie (DSC) op het tabblad **Configuraties** en klik vervolgens op **Toevoegen**.
-1. Klik op de pagina Importeren op het mappictogram naast het veld **Knooppuntconfiguratiebestand** om te zoeken naar een MOF-bestand voor knooppuntconfiguratie op uw lokale computer.
+1. Klik in uw Automation-account op **State Configuration (DSC)** onder **configuratie beheer**.
+1. Klik op de pagina status configuratie (DSC) op het tabblad **configuraties** en klik vervolgens op **toevoegen**.
+1. Klik op de pagina importeren op het mappictogram naast het veld **knooppunt configuratie bestand** om te bladeren naar een MOF-bestand van een knooppunt configuratie op de lokale computer.
 
-   ![Zoeken naar lokaal bestand](./media/automation-dsc-compile/import-browse.png)
+   ![Bladeren naar lokaal bestand](./media/automation-dsc-compile/import-browse.png)
 
-1. Voer een naam in het veld **Configuratienaam** in. Deze naam moet overeenkomen met de naam van de configuratie waaruit de knooppuntconfiguratie is samengesteld.
+1. Voer een naam in het veld **configuratie naam** in. Deze naam moet overeenkomen met de naam van de configuratie waaruit de knooppunt configuratie is gecompileerd.
 1. Klik op **OK**.
 
-### <a name="import-a-node-configuration-with-azure-powershell"></a>Een knooppuntconfiguratie importeren met Azure PowerShell
+### <a name="import-a-node-configuration-with-azure-powershell"></a>Een knooppunt configuratie met Azure PowerShell importeren
 
-U de [cmdlet Import-AzAutomationDscNodeConfiguration](/powershell/module/az.automation/import-azautomationdscnodeconfiguration) gebruiken om een knooppuntconfiguratie in uw automatiseringsaccount te importeren.
+U kunt de cmdlet [import-AzAutomationDscNodeConfiguration](/powershell/module/az.automation/import-azautomationdscnodeconfiguration) gebruiken om een knooppunt configuratie te importeren in uw Automation-account.
 
 ```powershell
 Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAccount' -ResourceGroupName 'MyResourceGroup' -ConfigurationName 'MyNodeConfiguration' -Path 'C:\MyConfigurations\TestVM1.mof'
@@ -281,9 +281,9 @@ Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAcco
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Aan de slag met Azure Automation State Configuration](automation-dsc-getting-started.md)om aan de slag te gaan.
-- Zie [Configuraties compileren in Azure Automation State Configuration](automation-dsc-compile.md)voor meer informatie over het samenstellen van DSC-configuraties, zodat u ze toewijzen aan doelknooppunten.
-- Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)voor een PowerShell-cmdletreferentie.
-- Zie Azure Automation State Configuration Pricing voor prijsinformatie voor [prijsinformatie.](https://azure.microsoft.com/pricing/details/automation/)
-- Zie [Continue implementatie naar virtuele machines met Azure Automation State Configuration en Chocolatey](automation-dsc-cd-chocolatey.md)als u een voorbeeld wilt zien van het gebruik van Azure Automation State Configuration in a continuous deployment pipeline.
+- Zie aan de slag [met de configuratie van de Azure Automation-status](automation-dsc-getting-started.md)om aan de slag te gaan.
+- Zie [configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md)voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
+- Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)(Engelstalig) voor een Power shell-cmdlet-verwijzing.
+- Zie [prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/)voor prijs informatie.
+- Voor een voor beeld van het gebruik van Azure Automation status configuratie in een pijp lijn voor continue implementatie raadpleegt u [continue implementatie naar virtuele machines met behulp van de configuratie van Azure Automation State en Choco lade](automation-dsc-cd-chocolatey.md).

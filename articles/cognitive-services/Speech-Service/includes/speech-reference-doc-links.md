@@ -10,38 +10,38 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: trbye
 ms.openlocfilehash: 50dd7ddb636658ec6d29c2669d02320c73167fde
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399705"
 ---
-## <a name="reference-docs"></a>Referentiedocumenten
+## <a name="reference-docs"></a>Referentie documenten
 
-De Spraakservice biedt twee SDK's. De eerste SDK is de primaire [Speech SDK](../speech-sdk.md) en biedt de meeste functionaliteiten die nodig zijn om te communiceren met de Spraakservice. De tweede SDK is specifiek voor apparaten, de toepasselijke naam van de [Spraakapparaten SDK](../speech-devices-sdk.md). Beide SDK's zijn beschikbaar in vele talen.
+De speech-service biedt twee Sdk's. De eerste SDK is de primaire [spraak-SDK](../speech-sdk.md) en biedt de meeste functies die nodig zijn om te communiceren met de spraak service. De tweede SDK is specifiek voor apparaten, die op de juiste wijze de [SDK voor spraak apparaten](../speech-devices-sdk.md)heeft genoemd. Beide Sdk's zijn beschikbaar in veel talen.
 
-### <a name="speech-sdk-reference-docs"></a>SpraakSDK-referentiedocumenten
+### <a name="speech-sdk-reference-docs"></a>Naslag documenten voor Speech SDK
 
-Gebruik de volgende lijst om de juiste Speech SDK-referentiedocumenten te vinden:
+Gebruik de volgende lijst om de juiste Speech SDK-referentie documenten te vinden:
 
-- <a href="https://aka.ms/csspeech/csharpref" target="_blank" rel="noopener">C# SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/csharpref" target="_blank" rel="noopener">C#-SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://aka.ms/csspeech/cppref" target="_blank" rel="noopener">C++ SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/javaref" target="_blank" rel="noopener">Java SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/javaref" target="_blank" rel="noopener">Java-SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://aka.ms/csspeech/pythonref" target="_blank" rel="noopener">Python-SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/javascriptref" target="_blank" rel="noopener">JavaScript SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/objectivecref" target="_blank" rel="noopener">Objective-C SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/javascriptref" target="_blank" rel="noopener">Java script-SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/objectivecref" target="_blank" rel="noopener">Doel-C SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 > [!TIP]
-> De Spraakservice SDK wordt actief onderhouden en bijgewerkt. Om wijzigingen bij te houden, verwijzen updates en functietoevoegingen naar de [spraaksdk-releasenotities.](../releasenotes.md)
+> De Speech Service SDK wordt actief bijgehouden en bijgewerkt. Voor het bijhouden van wijzigingen, verwijzen updates en functie toevoegingen naar de opmerkingen bij de release van de [SDK](../releasenotes.md).
 
-### <a name="speech-devices-sdk-reference-docs"></a>SDK-referentiedocumenten voor spraakapparaten
+### <a name="speech-devices-sdk-reference-docs"></a>SDK-documentatie voor speech-apparaten
 
-De [Speech Devices SDK](../speech-devices-sdk.md) is een superset van de Speech SDK, met uitgebreide functionaliteit voor specifieke apparaten. Als u de Spraakapparaten SDK wilt downloaden, moet u eerst [een ontwikkelkit kiezen.](../get-speech-devices-sdk.md#choose-a-development-kit)
+De [SDK voor spraak apparaten](../speech-devices-sdk.md) is een superset van de spraak-SDK, met uitgebreide functionaliteit voor specifieke apparaten. Als u de SDK voor spraak apparaten wilt downloaden, moet u eerst [een Development Kit kiezen](../get-speech-devices-sdk.md#choose-a-development-kit).
 
-### <a name="rest-api-references"></a>REST API-verwijzingen
+### <a name="rest-api-references"></a>REST API verwijzingen
 
-Voor verwijzingen van verschillende SPRAAKservice REST API's, verwijzen naar de onderstaande vermelding:
+Raadpleeg de onderstaande vermelding voor verwijzingen van de REST Api's van de speech-service:
 
-- [REST-API: spraak-naar-tekst](../rest-speech-to-text.md)
-- [REST API: Tekst-naar-spraak](../rest-text-to-speech.md)
-- <a href="https://cris.ai/swagger/ui/index" target="_blank" rel="noopener">REST API: Batch transcriptie en aanpassing<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- [REST API: spraak naar tekst](../rest-speech-to-text.md)
+- [REST API: tekst-naar-spraak](../rest-text-to-speech.md)
+- <a href="https://cris.ai/swagger/ui/index" target="_blank" rel="noopener">REST API: batch transcriptie en-aanpassing<span class="docon docon-navigate-external x-hidden-focus"></span></a>

@@ -1,5 +1,5 @@
 ---
-title: Veelgestelde vragen over Azure Automation | Microsoft Documenten
+title: Azure Automation Veelgestelde vragen | Microsoft Docs
 description: Antwoorden op veelgestelde vragen over Azure Automation.
 services: automation
 ms.subservice: ''
@@ -8,40 +8,40 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/25/2020
 ms.openlocfilehash: 3fa29f3df5f0434c4c61e8d12adbb3f55156a29f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81405965"
 ---
 # <a name="azure-automation-frequently-asked-questions"></a>Veelgestelde vragen over Azure Automation
 
-Deze veelgestelde vragen van Microsoft is een lijst met veelgestelde vragen over Azure Automation. Als u aanvullende vragen over de mogelijkheden, ga naar de discussie forum en post uw vragen. Wanneer een vraag vaak wordt gesteld, voegen we deze toe aan dit artikel, zodat deze snel en gemakkelijk kan worden gevonden.
+Deze veelgestelde vragen over micro soft vindt u een lijst met veel gestelde antwoorden over Azure Automation. Als u aanvullende vragen over de mogelijkheden hebt, gaat u naar het discussie forum en plaatst u uw vragen. Wanneer een vraag regel matig wordt gesteld, voegen we deze toe aan dit artikel zodat het snel en eenvoudig kan worden gevonden.
 
 >[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor installatie-instructies voor az-modules op uw hybride runbookworker. Voor uw Automatiseringsaccount u uw modules bijwerken naar de nieuwste versie met [Azure PowerShell-modules bijwerken in Azure Automation.](automation-update-azure-modules.md)
+>Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
 
 ## <a name="update-management-solution"></a>Oplossing voor updatebeheer
 
-### <a name="can-i-prevent-unexpected-os-level-upgrades"></a>Kan ik onverwachte upgrades op OS-niveau voorkomen?
+### <a name="can-i-prevent-unexpected-os-level-upgrades"></a>Kan ik onverwachte upgrades op besturingssysteem niveau voor komen?
 
-Op sommige Linux-varianten, zoals Red Hat Enterprise Linux, kunnen upgrades op OS-niveau plaatsvinden via pakketten. Dit kan leiden tot updatebeheerruns waarbij het versienummer van het besturingssysteem verandert. Omdat Updatemanagement dezelfde methoden gebruikt om pakketten bij te werken die een beheerder lokaal op een Linux-machine gebruikt, is dit gedrag opzettelijk.
+Bij sommige Linux-varianten, zoals Red Hat Enterprise Linux, kunnen upgrades op besturingssysteem niveau worden uitgevoerd via pakketten. Dit kan leiden tot Updatebeheer uitvoeringen waarin het versie nummer van het besturings systeem wordt gewijzigd. Omdat Updatebeheer dezelfde methoden gebruikt voor het bijwerken van pakketten die een beheerder lokaal op een Linux-computer gebruikt, is dit gedrag opzettelijk.
 
-Gebruik de functie **Uitsluiting** om te voorkomen dat de versie van het besturingssysteem wordt bijgewerkt via implementaties van Updatebeheer.
+Gebruik de functie **uitsluiting** om te voor komen dat u de versie van het besturings systeem bijwerkt via updatebeheer-implementaties.
 
-In Red Hat Enterprise Linux, het `redhat-release-server.x86_64`pakket naam uit te sluiten is .
+In Red Hat Enterprise Linux is `redhat-release-server.x86_64`de naam van het pakket die moet worden uitgesloten.
 
-### <a name="why-arent-criticalsecurity-updates-applied"></a>Waarom worden er geen kritieke/beveiligingsupdates toegepast?
+### <a name="why-arent-criticalsecurity-updates-applied"></a>Waarom worden essentiële/beveiligings updates niet toegepast?
 
-Wanneer u updates implementeert voor een Linux-machine, u updateclassificaties selecteren. Met deze optie worden de updates gefilterd die aan de opgegeven criteria voldoen. Dit filter wordt lokaal op de machine toegepast wanneer de update wordt geïmplementeerd.
+Wanneer u updates op een Linux-machine implementeert, kunt u update classificaties selecteren. Met deze optie worden de updates die voldoen aan de opgegeven criteria, gefilterd. Dit filter wordt lokaal op de computer toegepast wanneer de update wordt geïmplementeerd.
 
-Omdat UpdateManagement updateverrijking uitvoert in de cloud, u sommige updates in Updatebeheer markeren als een beveiligingseffect, ook al beschikt de lokale machine niet over die informatie. Als u kritieke updates toepast op een Linux-machine, zijn er mogelijk updates die niet zijn gemarkeerd als een beveiligingseffect op die machine en daarom niet worden toegepast. Updatebeheer kan deze machine echter nog steeds melden als niet-compatibel omdat deze aanvullende informatie over de relevante update bevat.
+Omdat Updatebeheer verrijking update uitvoert in de Cloud, kunt u sommige updates in Updatebeheer markeren als gevolg van een beveiligings effect, zelfs als de lokale computer deze informatie niet bevat. Als u essentiële updates toepast op een Linux-computer, zijn er mogelijk updates die niet zijn gemarkeerd als een beveiligings effect op die computer en daarom niet worden toegepast. Updatebeheer kan de computer echter toch als niet-compatibel rapporteren omdat deze aanvullende informatie over de relevante update heeft.
 
-Het implementeren van updates door updateclassificatie werkt niet op RTM-versies van CentOS. Als u updates voor CentOS correct wilt implementeren, selecteert u alle classificaties om ervoor te zorgen dat updates worden toegepast. Voor SUSE kan het selecteren van ONLY **Other updates** als classificatie ertoe leiden dat er eerst extra beveiligingsupdates worden geïnstalleerd als beveiligingsupdates met betrekking tot zypper (package manager) of de afhankelijkheden ervan eerst vereist zijn. Dit gedrag is een beperking van zypper. In sommige gevallen moet u de update-implementatie opnieuw uitvoeren en vervolgens de implementatie verifiëren via het updatelogboek.
+Het implementeren van updates op update classificatie werkt niet in de RTM-versies van CentOS. Als u updates voor CentOS correct wilt implementeren, selecteert u alle classificaties om er zeker van te zijn dat er updates worden toegepast. Voor SUSE selecteert u alleen **andere updates** als de classificatie kan ertoe leiden dat er extra beveiligings updates worden geïnstalleerd als de beveiligings updates met betrekking tot Zypper (pakket beheer) of de afhankelijkheden hiervan eerst zijn vereist. Dit gedrag is een beperking van Zypper. In sommige gevallen kan het nodig zijn om de update-implementatie opnieuw uit te voeren en de implementatie te controleren via het Update logboek.
 
-### <a name="can-i-deploy-updates-across-azure-tenants"></a>Kan ik updates implementeren voor Azure-tenants?
+### <a name="can-i-deploy-updates-across-azure-tenants"></a>Kan ik updates implementeren in azure-tenants?
 
-Als u machines hebt die moeten worden gepatcht in een andere Azure-tenant die rapporteert aan Updatebeheer, moet u een volgende tijdelijke oplossing gebruiken om ze in te stellen. U de cmdlet [Nieuw-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) gebruiken met de `ForUpdateConfiguration` opgegeven parameter om een planning te maken. U de cmdlet [Nieuw-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) gebruiken en de `NonAzureComputer` machines in de andere tenant doorgeven aan de parameter. In het volgende voorbeeld ziet u hoe u dit doet.
+Als u computers hebt die patches in een andere Azure-Tenant rapportage nodig hebben om Updatebeheer, moet u een volgende tijdelijke oplossing gebruiken om ze te laten plannen. U kunt de cmdlet [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) gebruiken met de `ForUpdateConfiguration` para meter die is opgegeven voor het maken van een schema. U kunt de cmdlet [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) gebruiken en de computers in de andere Tenant door geven aan `NonAzureComputer` de para meter. In het volgende voor beeld ziet u hoe u dit doet.
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -55,7 +55,7 @@ New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationA
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als uw vraag hier niet wordt beantwoord, u de volgende bronnen voor aanvullende vragen en antwoorden verwijzen.
+Als uw vraag hier niet wordt beantwoord, kunt u de volgende bronnen raadplegen voor aanvullende vragen en antwoorden.
 
 - [Azure Automation](https://social.msdn.microsoft.com/Forums/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)
 - [Feedbackforum](https://feedback.azure.com/forums/905242-update-management)

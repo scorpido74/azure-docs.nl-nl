@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: spraak synthetiseren voor een spreker - Spraakservice'
+title: 'Quick Start: spraak op een spreker-Speech-Service'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart gebruikt u de SpraakSDK om tekst om te zetten in gesynthetiseerde spraak en de uitvoer op een luidspreker af te spelen.
+description: In deze Quick start gaat u de Speech SDK gebruiken om tekst te converteren naar gesynthesizerde spraak en de uitvoer op een spreker af te spelen.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: e624c6c291dcd3ac17571cd93d67ac909d04f3d4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400403"
 ---
-# <a name="quickstart-synthesize-speech-to-a-speaker"></a>Snelstart: spraak voor een spreker synthetiseren
+# <a name="quickstart-synthesize-speech-to-a-speaker"></a>Snelstartgids: spraak op een spreker afkunsten
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/tts/header.md)]

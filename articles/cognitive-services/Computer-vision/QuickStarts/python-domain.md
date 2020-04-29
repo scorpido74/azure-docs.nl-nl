@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: domeinspecifieke inhoud - REST, Python'
+title: 'Snelstartgids: domein-specifieke inhoud-REST, python'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart gebruikt u domeinmodellen om beroemdheden en oriëntatiepunten in een afbeelding te identificeren met behulp van de Computer Vision-API met Python.
 services: cognitive-services
@@ -12,26 +12,26 @@ ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 8aa49b044abcbd65a67a854a9da85cbc1471cda6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81404429"
 ---
 # <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Snelstart: Een externe domeinmodel gebruiken met de REST-API en Python in Computer Vision
 
-In deze quickstart gebruikt u een domeinmodel om oriëntatiepunten of, optioneel, beroemdheden in een op afstand opgeslagen afbeelding te identificeren met behulp van de Computer Vision REST API. Met de methode [Domeinspecifieke inhoud herkennen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) past u een domeinspecifiek model toe om inhoud in een afbeelding te herkennen.
+In deze Snelstartgids gebruikt u een domein model om bezienswaardigheden of, eventueel, beroemdheden in een extern opgeslagen installatie kopie te identificeren met behulp van de Computer Vision REST API. Met de methode [Domeinspecifieke inhoud herkennen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) past u een domeinspecifiek model toe om inhoud in een afbeelding te herkennen.
 
 U kunt deze snelstart stapsgewijs uitvoeren met behulp van een Jupyter Notebook op [MyBinder](https://mybinder.org). Selecteer de volgende knop om Binder te starten:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/try/cognitive-services/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/try/cognitive-services/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - [Python](https://www.python.org/downloads/) moet geïnstalleerd zijn als u het voorbeeld lokaal wilt uitvoeren.
-- U moet beschikken over een abonnementssleutel voor Computer Vision. U een gratis testsleutel krijgen van [Try Cognitive Services.](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Computer Vision en uw sleutel te krijgen. Maak vervolgens [omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de tekenreeks sleutel- `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`serviceeindpunt, benoemd en , respectievelijk.
+- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service- `COMPUTER_VISION_SUBSCRIPTION_KEY` eindpunt `COMPUTER_VISION_ENDPOINT`teken reeks, respectievelijk met de naam en.
 
 ## <a name="create-and-run-the-landmarks-sample"></a>Het voorbeeld met oriëntatiepunten maken en uitvoeren
 
@@ -203,7 +203,7 @@ Verwijder de bestanden van beide voorbeelden wanneer u deze niet meer nodig hebt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Verken vervolgens een Python-toepassing die Computer Vision gebruikt om optische tekenherkenning (OCR) uit te voeren; slim bijgesneden miniaturen maken; en visuele functies in afbeeldingen detecteren, categoriseren, taggen en beschrijven.
+Verken vervolgens een python-toepassing die Computer Vision gebruikt voor het uitvoeren van optische teken herkenning (OCR). miniaturen met slimme bijgesneden maken; en het detecteren, categoriseren, labelen en beschrijven van visuele functies in afbeeldingen.
 
 > [!div class="nextstepaction"]
 > [Zelfstudie voor de Computer Vision-API met Python](../Tutorials/PythonTutorial.md)

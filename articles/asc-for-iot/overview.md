@@ -1,6 +1,6 @@
 ---
 title: Overzicht van services
-description: Lees meer over Azure Security Center voor IoT-functies en -services en begrijp hoe Azure Security Center for IoT uitgebreide IoT-beveiliging biedt.
+description: Meer informatie over Azure Security Center voor IoT-functies en-services, en begrijpen hoe Azure Security Center voor IoT uitgebreide IoT-beveiliging biedt.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,45 +15,45 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
 ms.openlocfilehash: f4601de6ee495def43d1267131193762ea482d2a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81310926"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Kennismaking met Azure Security Center for IoT
 
-Verenig beveiligingsbeheer en maak end-to-end bedreigingsdetectie en -analyse mogelijk voor hybride cloudworkloads en uw Azure IoT-oplossing.
+U kunt het beveiligings beheer combi neren en end-to-end detectie van bedreigingen en analyses voor de hybride Cloud werkbelastingen en uw Azure IoT-oplossing inschakelen.
 
-## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>Beveilig uw volledige IoT-oplossing van IoT-apparaten tot Azure-cloud
+## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>Beveilig uw volledige IoT-oplossing van IoT-apparaten naar Azure Cloud
 
-Kies uit onze naadloze oplossing zonder agent of profiteer van uitgebreide beveiliging op basis van agenten, Azure Security Center for IoT biedt bedreigingspreventie en -analyse voor elk apparaat, IoT Edge en IoT Hub, voor uw IoT-assets.
+U kunt kiezen uit onze naadloze oplossing zonder agents of profiteren van uitgebreide beveiliging op basis van een agent, Azure Security Center voor IoT zorgt voor preventie en analyse van bedreigingen voor elk apparaat, IoT Edge en IoT Hub, in uw IoT-middelen.
 
-Aangezien miljarden nieuwe apparaten zijn verbonden met het internet en geïntegreerd in ons dagelijks leven en onze bedrijven, moeten uw beveiligingsteams ervoor zorgen dat hun beveiligingsstrategieën snel genoeg evolueren om elk nieuw aanvalsoppervlak te dekken. Net als elk ander systeem, om uw IoT-oplossing volledig te beveiligen, vereist het bescherming in elke fase van de implementatie.
+Omdat miljarden nieuwe apparaten zijn verbonden met het internet en zijn geïntegreerd in onze dagelijkse levens duur en onze bedrijven, moeten uw beveiligings strategieën ervoor zorgen dat hun beveiligings strategie snel genoeg worden ontwikkeld om elk nieuw aanvals oppervlak te kunnen behandelen. Net als bij elk ander systeem, om uw IoT-oplossing uitgebreid te beveiligen, is beveiliging in elke fase van de implementatie vereist.
 
-Azure Security Center for IoT vereenvoudigt de bescherming van hybride workloads door uniforme zichtbaarheid en controle, adaptieve bedreigingspreventie en intelligente bedreigingsdetectie en -respons te bieden voor workloads die op edge, on-premises, in Azure en in andere clouds worden uitgevoerd.
+Azure Security Center voor IoT vereenvoudigt de bescherming van hybride werk belasting door eenvormige zicht baarheid en controle te bieden, adaptieve bedreigingen te voor komen, en detectie van intelligente dreigingen en reacties op werk belastingen die worden uitgevoerd op Edge, on-premises, in Azure en in andere Clouds.
 
 ![Azure Security Center for IoT-architectuur](./media/architecture/azure-iot-security-architecture.png)
 
-### <a name="unified-visibility-and-control"></a>Uniforme zichtbaarheid en controle
+### <a name="unified-visibility-and-control"></a>Unified Visibility and Control
 
-Krijg een uniform overzicht van de beveiliging voor al uw on-premises en cloudworkloads, inclusief uw Azure IoT-oplossing. Nieuwe apparaten aan boord en pas beveiligingsbeleid toe op uw workloads (Leaf-apparaten, Microsoft Edge-apparaten, IoT Hub) om te garanderen dat de beveiligingsnormen en de verbeterde beveiligingshouding worden nageleefd.
+Geniet van een uniforme weer gave van beveiliging in al uw on-premises en Cloud werkbelastingen, inclusief uw Azure IoT-oplossing. Nieuwe apparaten onboarden en beveiligings beleid Toep assen voor uw werk belastingen (Leaf-apparaten, micro soft edge-apparaten, IoT Hub) om te zorgen voor naleving van beveiligings normen en verbeterde beveiligings postuur.
 
-### <a name="adaptive-threat-prevention"></a>Adaptieve dreigingspreventie
+### <a name="adaptive-threat-prevention"></a>Adaptieve bedreigingen voor komen
 
-Gebruik Azure Security Center voor IoT om de beveiliging van machines, netwerken en Azure-services continu te bewaken. Kies uit honderden ingebouwde beveiligingsbeoordelingen of maak uw eigen in het centrale Azure Security Center voor IoT Hub-dashboard. Optimaliseer uw beveiligingsinstellingen en verbeter uw beveiligingsscore met bruikbare aanbevelingen voor virtuele machines, netwerken, apps en gegevens. Met nieuw toegevoegde IoT-mogelijkheden u nu het aanvalsoppervlak voor uw Azure IoT-oplossing verkleinen en problemen oplossen voordat ze kunnen worden benut.
+Gebruik Azure Security Center voor IoT om voortdurend de beveiliging van computers, netwerken en Azure-Services te bewaken. Kies uit honderden ingebouwde beveiligings beoordelingen of maak uw eigen in het centrale Azure Security Center voor IoT Hub dash board. Optimaliseer uw beveiligings instellingen en verbeter uw beveiligings Score met actie-aanbevelingen voor virtuele machines, netwerken, apps en gegevens. Met nieuw toegevoegde IoT-mogelijkheden kunt u nu de kwets baarheid voor uw Azure IoT-oplossing verlagen en problemen oplossen voordat ze kunnen worden misbruikt.
 
-### <a name="intelligent-threat-detection-and-response"></a>Intelligente detectie en respons van bedreigingen
+### <a name="intelligent-threat-detection-and-response"></a>Detectie en reactie van intelligente dreigingen
 
-Gebruik geavanceerde analyses en de Microsoft Intelligent Security Graph om een voorsprong te krijgen op evoluerende cyberaanvallen. Ingebouwde gedragsanalyses en machine learning identificeren aanvallen en zero-day exploits. Controleer uw IoT-oplossing op inkomende aanvallen en activiteiten na inbreuk. Stroomlijn het onderzoek en de herstelfunctie van apparaten met interactieve tools en contextuele bedreigingsinformatie.
+Gebruik geavanceerde analyses en de Microsoft Intelligent Security Graph om een rand te krijgen over het ontwikkelen van Cyber aanvallen. Ingebouwde gedrags analyse en machine learning het identificeren van aanvallen en Zero-day exploits. Bewaak uw IoT-oplossing voor inkomende aanvallen en activiteiten die na inbreuk zijn. Het onderzoeken en oplossen van apparaten stroom lijnen met interactieve hulpprogram ma's en contextuele Threat Intelligence.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit overzicht leert u over de functies en services van Azure Security Center for IoT. Zie de volgende artikelen voor meer informatie over Azure Security Center for IoT-architectuur, vereisten en meer informatie over hoe u aan de slag gaan:
+In dit overzicht hebt u geleerd over de functies en services van Azure Security Center voor IoT. Raadpleeg de volgende artikelen voor meer informatie over Azure Security Center voor IoT-architectuur, vereisten en informatie over hoe u aan de slag kunt gaan:
 
 - [Architectuur](architecture.md)
 - [Servicevereisten](service-prerequisites.md)
 - [Aan de slag](getting-started.md)
-- [Definieer uw oplossing](quickstart-configure-your-solution.md)
-- [Veelgestelde vragen over Azure Security Center for IoT](resources-frequently-asked-questions.md)
+- [Uw oplossing definiëren](quickstart-configure-your-solution.md)
+- [Veelgestelde vragen over Azure Security Center voor IoT](resources-frequently-asked-questions.md)
 - [Azure Security Center voor IoT-waarschuwingen](concept-security-alerts.md)

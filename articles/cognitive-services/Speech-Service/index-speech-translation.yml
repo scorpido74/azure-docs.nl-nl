@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: Documentatie over spraakomzetting
-summary: Spraakvertaling van de Spraakservice maakt real-time, meertalige spraak-naar-spraak- en spraak-naar-tekstvertaling van audiostreams mogelijk
+summary: Spraak omzetting van de speech-service biedt de mogelijkheid om audio gegevensstromen in realtime, meertalige spraak naar spraak en spraak naar tekst te converteren
 metadata:
-  title: Documentatie voor spraakvertaling - Zelfstudies, API-verwijzing - Azure Cognitive Services | Microsoft Documenten
+  title: Documentatie voor spraak omzetting-zelf studies, API-verwijzing-Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,13 +12,13 @@ metadata:
   ms.date: 04/13/2020
   ms.author: trbye
   ms.openlocfilehash: 5d5c1cdae695b68f45d55b51b76d88c2f93c50d1
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401423"
 landingContent:
-- title: Over spraakvertaling
+- title: Over spraak omzetting
   linkLists:
   - linkListType: overview
     links:
@@ -34,7 +34,7 @@ landingContent:
       url: quickstarts/translate-speech-to-text-multiple-languages.md
     - text: Spraak naar spraak omzetten
       url: quickstarts/translate-speech-to-speech.md
-- title: Ontwikkelen met spraakvertaling
+- title: Ontwikkelen met spraak omzetting
   linkLists:
   - linkListType: learn
     links:
@@ -52,5 +52,5 @@ landingContent:
       url: language-support.md#speech-translation
     - text: Veelgestelde vragen over spraakomzetting
       url: https://www.microsoft.com/translator/business/faq/
-    - text: Prijzen voor spraakvertaling
+    - text: Prijzen voor spraak omzetting
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

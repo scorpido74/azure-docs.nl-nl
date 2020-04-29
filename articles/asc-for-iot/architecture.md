@@ -1,6 +1,6 @@
 ---
 title: Architectuur voor de oplossing
-description: Meer informatie over de informatiestroom in de Azure Security Center for IoT-service.
+description: Meer informatie over de stroom van informatie in de Azure Security Center voor IoT-service.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,56 +16,56 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 4cc7d1982555f058a4ea23f7d8a6fdc2d83e484d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311753"
 ---
 # <a name="azure-security-center-for-iot-architecture"></a>Azure Security Center for IoT-architectuur
 
-In dit artikel wordt de functionele systeemarchitectuur van de Azure Security Center for IoT-oplossing uitgelegd.
+In dit artikel wordt de functionele systeem architectuur uitgelegd van de Azure Security Center voor IoT-oplossing.
 
-## <a name="azure-security-center-for-iot-components"></a>Azure Security Center voor IoT-componenten
+## <a name="azure-security-center-for-iot-components"></a>Azure Security Center voor IoT-onderdelen
 
-Azure Security Center for IoT bestaat uit de volgende componenten:
+Azure Security Center voor IoT bestaat uit de volgende onderdelen:
 
-- IoT Hub-integratie
-- Apparaatagenten (optioneel)
-- Beveiligingsbericht SDK verzenden
-- Analytics-pijplijn
+- Integratie van IoT Hub
+- Apparaat-agents (optioneel)
+- SDK voor beveiligings berichten verzenden
+- Analytics-pijp lijn
 
-### <a name="azure-security-center-for-iot-workflows"></a>Azure Security Center voor IoT-werkstromen
+### <a name="azure-security-center-for-iot-workflows"></a>Azure Security Center voor IoT-werk stromen
 
-Azure Security Center for IoT werkt in een van de twee functiewerkstromen: ingebouwd en verbeterd
+Azure Security Center voor IoT werkt op een van de twee functie werk stromen: ingebouwd en uitgebreid
 
 ### <a name="built-in"></a>Ingebouwd
 
-In **de ingebouwde** modus is Azure Security Center for IoT ingeschakeld wanneer u ervoor kiest om de **optie Beveiliging** in te schakelen in uw IoT-hub. De ingebouwde modus biedt realtime bewaking, aanbevelingen en waarschuwingen en biedt zichtbaarheid in één stap voor apparaten en ongeëvenaarde beveiliging. De ingebouwde modus vereist geen installatie van agenten op alle apparaten en maakt gebruik van geavanceerde analyses van geregistreerde activiteiten om uw veldapparaat te analyseren en te beschermen.
+In de **ingebouwde** modus is Azure Security Center voor IOT ingeschakeld wanneer u ervoor kiest om de optie **beveiliging** in uw IOT hub in te scha kelen. Dankzij realtime bewaking, aanbevelingen en waarschuwingen biedt de ingebouwde modus een beschermte en ongeëvenaarde beveiliging voor apparaten in één stap. Voor de build-in modus is geen agent geïnstalleerd op apparaten en wordt gebruikgemaakt van geavanceerde analyses op geregistreerde activiteiten om uw veld apparaat te analyseren en beveiligen.
 
 ### <a name="enhanced"></a>Verbeterd
 
-In **de uitgebreide** modus verzamelen, verzamelen en analyseren de agents, nadat ze de **beveiligingsoptie** in uw IoT-hub hebben ingeschakeld en Azure Security Center voor IoT-apparaatagents op uw apparaten hebben geïnstalleerd, en nadat ze onbewerkte beveiligingsgebeurtenissen van uw apparaten verzamelen, samenvoegen en analyseren. Onbewerkte beveiligingsgebeurtenissen kunnen IP-verbindingen, procescreatie, gebruikersaanmeldingen en andere beveiligingsrelevante informatie bevatten. Azure Security Center voor IoT-apparaatagents verwerken ook gebeurtenisaggregatie om een hoge netwerkdoorvoer te voorkomen. De agents zijn zeer aanpasbaar, zodat u ze gebruiken voor specifieke taken, zoals het verzenden van alleen belangrijke informatie tegen de snelste SLA, of voor het aggregeren van uitgebreide beveiligingsinformatie en context in grotere segmenten, waardoor hogere servicekosten worden vermeden.
+Na het **inschakelen van de** optie **beveiliging** in uw IOT hub en het installeren van Azure Security Center voor IOT Device agents op uw apparaten, verzamelen en analyseren de agents onbewerkte beveiligings gebeurtenissen van uw apparaten. Onbewerkte beveiligings gebeurtenissen kunnen IP-verbindingen, het maken van processen, gebruikers aanmeldingen en andere informatie over beveiliging zijn. Azure Security Center voor IoT-apparaat-agents verwerken ook gebeurtenissen aggregatie om te voor komen dat hoge netwerk doorvoer wordt door voer. De agents zijn zeer aanpasbaar, zodat u ze kunt gebruiken voor specifieke taken, zoals het verzenden van belang rijke informatie op de snelste SLA, of voor het samen voegen van uitgebreide beveiligings informatie en-context in grotere segmenten, waardoor er hogere service kosten worden bespaard.
 
 ![Azure Security Center for IoT-architectuur](./media/architecture/azure-iot-security-architecture.png)
 
-Apparaatagents en andere toepassingen gebruiken het **Azure-beveiligingsbericht SDK** om beveiligingsgegevens naar Azure IoT Hub te verzenden. IoT Hub pikt deze informatie op en stuurt deze door naar de Azure Security Center for IoT-service.
+Apparaat-agents en andere toepassingen gebruiken de SDK voor het **verzenden van beveiligings berichten van Azure** om beveiligings gegevens naar Azure IOT hub te verzenden. IoT Hub haalt deze informatie op en stuurt deze door naar de Azure Security Center voor IoT-service.
 
-Zodra de Azure Security Center for IoT-service is ingeschakeld, stuurt IoT Hub naast de doorgestuurde gegevens ook al zijn interne gegevens voor analyse door Azure Security Center for IoT. Deze gegevens omvatten gegevens, gegevens over de werkingslogboeken van het apparaat, apparaatidentiteiten en hubconfiguratie. Al deze informatie helpt bij het maken van de Azure Security Center for IoT-analysepijplijn.
+Zodra de Azure Security Center voor IoT-service is ingeschakeld, wordt naast de doorgestuurde IoT Hub gegevens ook alle interne gegevens voor analyse verzonden door Azure Security Center voor IoT. Deze gegevens omvatten onder andere de bewerkingen voor het bewerkings logboek van de Cloud, apparaat-id's en de configuratie van de hub. Al deze informatie helpt u bij het maken van de Azure Security Center voor IoT Analytics-pijp lijn.
 
-Azure Security Center for IoT analytics pipeline ontvangt ook extra threat intelligence streams van verschillende bronnen binnen Microsoft en Microsoft partners. De volledige analysepijplijn van het Azure Security Center voor IoT werkt met elke klantconfiguratie die op de service is gemaakt (zoals aangepaste waarschuwingen en het gebruik van de SDK voor verzenden beveiligingsbericht).
+Azure Security Center voor IoT Analytics-pijp lijn ontvangt ook extra Threat Intelligence-streams van verschillende bronnen in micro soft-en micro soft-partners. Het Azure Security Center voor IoT-volledige analyse pijplijn werkt met elke klant configuratie die is gemaakt voor de service (zoals aangepaste waarschuwingen en het gebruik van de SDK voor het verzenden van beveiligings berichten).
 
-Met behulp van de analysepijplijn combineert Azure Security Center for IoT alle informatiestromen om bruikbare aanbevelingen en waarschuwingen te genereren. De pijplijn bevat zowel aangepaste regels die zijn gemaakt door beveiligingsonderzoekers en -experts, als machine learning-modellen die zoeken naar afwijkingen van standaardapparaatgedrag en risicoanalyse.
+Met behulp van de analytische pijp lijn combineert Azure Security Center voor IoT alle gegevens stromen om aanbevelingen en waarschuwingen te genereren die actie kunnen ondernemen. De pijp lijn bevat zowel aangepaste regels die zijn gemaakt door veiligheids onderzoekers als experts, en machine learning modellen zoekt naar afwijkingen vanuit het standaard gedrag van apparaten en risico analyse.
 
-Azure Security Center voor IoT-aanbevelingen en waarschuwingen (analytics pipeline output) wordt geschreven naar de Log Analytics-werkruimte van elke klant. Inclusief de ruwe gebeurtenissen in de werkruimte, evenals de waarschuwingen en aanbevelingen maakt diepe duik onderzoeken en query's met behulp van de exacte details van de verdachte activiteiten gedetecteerd.
+Azure Security Center voor IoT-aanbevelingen en-waarschuwingen (analyse pijplijn uitvoer) wordt geschreven naar de Log Analytics werk ruimte van elke klant. Met inbegrip van de onbewerkte gebeurtenissen in de werk ruimte en de waarschuwingen en aanbevelingen kunnen grondige onderzoeken en query's worden uitgevoerd met de exacte details van de gedetecteerde verdachte activiteiten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel leert u over de basisarchitectuur en workflow van Azure Security Center for IoT-oplossing. Zie de volgende artikelen voor meer informatie over vereisten, hoe u aan de slag en uw beveiligingsoplossing in schakelt in IoT Hub:
+In dit artikel hebt u geleerd over de basis architectuur en werk stroom van Azure Security Center voor IoT-oplossing. Raadpleeg de volgende artikelen voor meer informatie over de vereisten, hoe u aan de slag kunt gaan en uw beveiligings oplossing in IoT Hub kunt inschakelen:
 
 - [Servicevereisten](service-prerequisites.md)
 - [Aan de slag](getting-started.md)
 - [De oplossing configureren](quickstart-configure-your-solution.md)
-- [Beveiliging inschakelen in IoT-hub](quickstart-onboard-iot-hub.md)
-- [Veelgestelde vragen over Azure Security Center for IoT](resources-frequently-asked-questions.md)
+- [Beveiliging in IoT Hub inschakelen](quickstart-onboard-iot-hub.md)
+- [Veelgestelde vragen over Azure Security Center voor IoT](resources-frequently-asked-questions.md)
 - [Beveiligingswaarschuwingen in Azure Security Center for IoT](concept-security-alerts.md)
